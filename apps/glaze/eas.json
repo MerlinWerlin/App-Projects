@@ -23,6 +23,12 @@
       "autoIncrement": true,
       "channel": "production",
       "env": {
+        "GLAZE_NATIVE": "0"
+      }
+    },
+    "production-native": {
+      "extends": "production",
+      "env": {
         "GLAZE_NATIVE": "1"
       }
     }

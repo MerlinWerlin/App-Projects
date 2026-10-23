@@ -43,7 +43,11 @@ test('eas.json channels equal their profile names', () => {
   for (const name of ['development', 'preview', 'production']) {
     assert.equal(eas.build[name]?.channel, name);
   }
-  for (const [name, profile] of Object.entries(eas.build)) assert.equal(profile.channel, name);
+  for (const [name, profile] of Object.entries(eas.build)) {
+    // A profile that extends another (production-native extends production) shares its update channel.
+    const base = (profile as { extends?: string }).extends;
+    assert.equal(profile.channel ?? (base ? eas.build[base]?.channel : undefined), base ?? name);
+  }
 });
 
 test('the updates adapter skips Expo Go and dev runs and loads expo-updates lazily', () => {

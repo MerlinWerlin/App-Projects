@@ -2,8 +2,9 @@ node_modules/
 .expo/
 dist/
 web-build/
-ios/
-android/
+# generated native projects only; local Expo modules under apps/*/modules keep their ios/ and android/ sources
+/apps/*/ios/
+/apps/*/android/
 *.log
 .env*
 *.p8

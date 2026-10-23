@@ -22,6 +22,9 @@ echo === 1/2 Type check: npx tsc --noEmit ===>> tsc-report.txt
 echo Type-checking the whole project, this takes a minute...
 call npx tsc --noEmit --ignoreDeprecations 6.0 >> tsc-report.txt 2>&1
 echo.>> tsc-report.txt
+echo === 1b Node-side check: npx tsc -p tsconfig.node.json (tests, ops, app.config.ts) ===>> tsc-report.txt
+call npx tsc -p tsconfig.node.json --ignoreDeprecations 6.0 >> tsc-report.txt 2>&1
+echo.>> tsc-report.txt
 echo === 2/2 Bundle check: npx expo export --platform ios ===>> tsc-report.txt
 echo Building the iOS bundle to check it compiles, this takes a few minutes...
 call npx expo export --platform ios --output-dir "%TEMP%\glaze-export-check" >> tsc-report.txt 2>&1

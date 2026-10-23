@@ -4,6 +4,10 @@ Couch runs inside **Expo Go** for this trial. It starts in demo mode with three 
 
 Please answer the yes/no questions first (copy them into a comment on the Couch build page); how to open Couch is below them.
 
+## New since your last test (23 Oct)
+1. When Couch opens, does the remote-press animation play smoothly and hand over to the remote within about 3 seconds? yes / no
+(In Expo Go the home-screen icon is Expo's own; the new gold d-pad icon shows on TestFlight builds.)
+
 ## New since your last test (22 Oct)
 1. Apps tab: the tiles are now the real apps (Netflix, YouTube, Disney+, Stan, Prime Video, iview, SBS, 7plus, 9Now, 10 Play, BINGE, Kayo and more) with their real icons, even in demo mode. They need an internet connection the first time; offline you see name tiles. Do the right icons show for every app? yes / no
 2. Apps tab: popular US, UK and European apps are in the demo list too (Max, Hulu, Peacock, YouTube TV, ESPN, Crunchyroll, TED, BBC iPlayer, ITVX, Channel 4, NOW, CANAL+, ARD, ZDF, RTL+, RaiPlay, Viaplay, DAZN and more). On a real TV, Couch shows the apps that TV has, with official icons for about 60 services. yes / no

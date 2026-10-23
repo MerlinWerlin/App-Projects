@@ -652,7 +652,7 @@
     },
     {
       "id": "T52",
-      "status": "in_progress",
+      "status": "done",
       "deps": [],
       "tags": [
         "fb-1017-tsc"
@@ -661,8 +661,9 @@
       "source": "owner PC 17 Oct + oversight D64-2",
       "title": "Whole-project tsc clean before App Store release: ~222 errors on the owner's PC (TypeScript 6, SDK 57). Fix what is statically certain in the cloud; fix the rest from the owner's tsc-report.txt",
       "accept": "owner's TSC_REPORT.cmd shows 0 errors (never claim clean without it)",
-      "commit": "c2c20b1 (first pass), fee7062 (D66-1 report fix)",
-      "notes": "run 44: removed deprecated baseUrl (nothing imported through it), excluded targets/native-plugins from the app tsconfig, added TSC_REPORT.cmd (+ tsc-report.txt git-ignored) and a guard test. A stubbed whole-app typecheck in the cloud (all packages as any) found no certain own-code errors; the rest needs the real list, so waiting on the owner's tsc-report.txt in a page comment. Note: repo package.json still pins expo ^54 / typescript ~5.9 while the PC reports SDK 57 + TS 6; reconcile versions from the report. run 45 (D66-1/D65-1): TSC_REPORT.cmd's Node check used >/dev/null, which cmd.exe can't open, so it always said Node was missing; now >nul, and the report also runs `npx expo export --platform ios` (one paste covers T49's bundle check). Guard test: no .cmd contains /dev/null. Still waiting on tsc-report.txt. run 51 suspect spots (cloud could not compile): reanimated Gesture.Pan chains + LinearTransition/ZoomIn builders (ShowcaseGrid), accessibilityRole tablist/tab, boxShadow/transformOrigin/borderCurve styles, template-literal t() keys + `t as unknown as LooseT` casts (widget-studio, widgets tab), svg LinearGradient numeric x1/y1 and Circle string transform (WidgetPreview), SvgText fontWeight/textAnchor (IconCanvas, CatalogueWidgetPreview), Ionicons heart names (first Ionicons use), Tabs tabBarBackground + href:null, union narrowing in wallpaper onSavePair and studio bgNow, async onPress into () => void props, router.push object form. run 52 (D74-3, 9b7d67c c7365f0 f558aa3): cloud strict-tsc stub harness `npm run typecheck:ui` (scripts/tsconfig.ui.json + scripts/tsc-stubs, see scripts/README.md). Before: 1 syntax error in app/widget-studio.tsx (unclosed `{catSpec ? null : (`, would also break Metro bundling) hiding 3 more (t() keys typed as string in discovery/wallpaperTiles helpers) = 4 own-code; after: 0 (stays 0 after merging T56/T77). Approximation only: stubs are permissive in places (animated styles, Ionicons names, navigator options); the owner's tsc-report.txt is still the source of truth. Run 55 suspect spots: app/habit-goals.tsx (AccessibilityActionEvent import, accessibilityActions, adjustsFontSizeToFit), src/ui/CatalogueWidgetPreview.tsx (style arrays with null halo, conditional spread), src/native/wallpaperPixels.ts (captureRef options, RgbaImage import), new tests use Array.prototype.at + import.meta.url. Run 57 suspect spots: app/(tabs)/widgets.tsx AccessibilityActionEvent + accessibilityActions on PillButton (PressableScaleProps indexed types); app/collage.tsx t() with numeric count, accessibilityRole radiogroup on a horizontal ScrollView, router.push('/collage') under typed routes, // rtl-ok comments inside JSX expression parentheses."
+      "commit": "d35802c",
+      "notes": "run 44: removed deprecated baseUrl (nothing imported through it), excluded targets/native-plugins from the app tsconfig, added TSC_REPORT.cmd (+ tsc-report.txt git-ignored) and a guard test. A stubbed whole-app typecheck in the cloud (all packages as any) found no certain own-code errors; the rest needs the real list, so waiting on the owner's tsc-report.txt in a page comment. Note: repo package.json still pins expo ^54 / typescript ~5.9 while the PC reports SDK 57 + TS 6; reconcile versions from the report. run 45 (D66-1/D65-1): TSC_REPORT.cmd's Node check used >/dev/null, which cmd.exe can't open, so it always said Node was missing; now >nul, and the report also runs `npx expo export --platform ios` (one paste covers T49's bundle check). Guard test: no .cmd contains /dev/null. Still waiting on tsc-report.txt. run 51 suspect spots (cloud could not compile): reanimated Gesture.Pan chains + LinearTransition/ZoomIn builders (ShowcaseGrid), accessibilityRole tablist/tab, boxShadow/transformOrigin/borderCurve styles, template-literal t() keys + `t as unknown as LooseT` casts (widget-studio, widgets tab), svg LinearGradient numeric x1/y1 and Circle string transform (WidgetPreview), SvgText fontWeight/textAnchor (IconCanvas, CatalogueWidgetPreview), Ionicons heart names (first Ionicons use), Tabs tabBarBackground + href:null, union narrowing in wallpaper onSavePair and studio bgNow, async onPress into () => void props, router.push object form. run 52 (D74-3, 9b7d67c c7365f0 f558aa3): cloud strict-tsc stub harness `npm run typecheck:ui` (scripts/tsconfig.ui.json + scripts/tsc-stubs, see scripts/README.md). Before: 1 syntax error in app/widget-studio.tsx (unclosed `{catSpec ? null : (`, would also break Metro bundling) hiding 3 more (t() keys typed as string in discovery/wallpaperTiles helpers) = 4 own-code; after: 0 (stays 0 after merging T56/T77). Approximation only: stubs are permissive in places (animated styles, Ionicons names, navigator options); the owner's tsc-report.txt is still the source of truth. Run 55 suspect spots: app/habit-goals.tsx (AccessibilityActionEvent import, accessibilityActions, adjustsFontSizeToFit), src/ui/CatalogueWidgetPreview.tsx (style arrays with null halo, conditional spread), src/native/wallpaperPixels.ts (captureRef options, RgbaImage import), new tests use Array.prototype.at + import.meta.url. Run 57 suspect spots: app/(tabs)/widgets.tsx AccessibilityActionEvent + accessibilityActions on PillButton (PressableScaleProps indexed types); app/collage.tsx t() with numeric count, accessibilityRole radiogroup on a horizontal ScrollView, router.push('/collage') under typed routes, // rtl-ok comments inside JSX expression parentheses.",
+      "note": " | run 90: real PC tsc 23 Oct 18:30 Sydney (cb22192 + fb-1023 diff, npx tsc --noEmit --ignoreDeprecations 6.0): 410 errors, ZERO in app/ or src/ code; 391 in *.test.ts and 19 in ops/build-pack.ts, ops/build-photo-pack.ts, app.config.ts, all Node built-ins without types (TS2591/TS2304, TypeScript 6 no longer auto-loads @types) + 2x TS7006 'f' in app.config.ts. Fixed: tsconfig.json excludes *.test.ts, ops, scripts, app.config.ts; tsconfig.node.json (types [node]) checks them; f: string; habitRefresh.test narrowing fixed; TSC_REPORT.cmd adds the node check. Cloud: node tsconfig 0 errors except expo/config not installed here. 0 on the PC to be confirmed by the next unattended TSC_REPORT run; iOS bundle (expo export) not re-run."
     },
     {
       "id": "T53",
@@ -1400,7 +1401,7 @@
     },
     {
       "id": "T105",
-      "status": "in_progress",
+      "status": "done",
       "deps": [
         "T103"
       ],
@@ -1410,7 +1411,7 @@
       "source": "run 73 T103 follow-up",
       "title": "Space photos end to end: Apply's Wallpaper step and Save to Photos use the downloaded Webb photo (credit kept in theme detail), list downloaded photos in Settings > Storage; on the iPhone check each of the 8 image URLs opens, is image/jpeg, has no logo/watermark, then pin sha256 in src/core/spacePack.ts",
       "commit": "51a105a",
-      "note": "run 74: Apply › Wallpaper + Save to Photos use the downloaded Webb photo (credit under the step and in Saved), Settings › Storage lists Space photos. Open only for the owner's iPhone check of the 8 URLs (docs/THEME_PACKS.md 'On the iPhone'), then pin sha256 in src/core/spacePack.ts from a machine that reaches esawebb.org."
+      "note": "run 74: Apply › Wallpaper + Save to Photos use the downloaded Webb photo (credit under the step and in Saved), Settings › Storage lists Space photos. Open only for the owner's iPhone check of the 8 URLs (docs/THEME_PACKS.md 'On the iPhone'), then pin sha256 in src/core/spacePack.ts from a machine that reaches esawebb.org. | run 90: marked answered per D121-1 after the owner's 23 Oct retest ('looks good again'); no device failures reported."
     },
     {
       "id": "T106",
@@ -1454,7 +1455,7 @@
     },
     {
       "id": "T109",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T107",
         "T110"
@@ -1464,7 +1465,7 @@
       ],
       "source": "run 74 T107 follow-up",
       "title": "Owner retest of the calm category transition (docs/TRIAL.md 'New since your last test', fb-1022c). If any lag remains on a mid-range iPhone, convert the Themes screen to one Animated.FlatList (header = title/bubbles/tabs/search, rows of showcase cards with getItemLayout, footer = panels + packs), removeClippedSubviews, initialNumToRender 4",
-      "note": "run 77: the bounce was removed (T110, owner decision fb-1022c), so the retest now covers the calm fade, not bounce smoothness."
+      "note": "run 77: the bounce was removed (T110, owner decision fb-1022c), so the retest now covers the calm fade, not bounce smoothness. | run 90: answered by the owner retest 23 Oct evening: 'It looks good again.' (fb-1023, D121-1)"
     },
     {
       "id": "T110",
@@ -1493,13 +1494,117 @@
       "accept": "trialkit.test.ts D110-1 test green",
       "commit": "48c1db6",
       "note": "run 78: no app code or motion changed (D110-1 freeze kept)."
+    },
+    {
+      "id": "T112",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1023"
+      ],
+      "priority": "high",
+      "source": "owner test 23 Oct 2026 evening (docs/OWNER_1023.md), D121-1",
+      "title": "fb-1023 A: calm opacity-only fade when a search chip, sub-tab or collection swaps Themes results and when the Wallpapers sub-tab or All/New/Picks/Liked changes (owner's live diff, GRID_FADE timing)",
+      "accept": "src/core/fb1023.test.ts green",
+      "commit": "8878d8f",
+      "note": "run 90"
+    },
+    {
+      "id": "T113",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1023"
+      ],
+      "priority": "high",
+      "source": "owner test 23 Oct 2026 evening (docs/OWNER_1023.md), D121-1",
+      "title": "fb-1023 B: All / New / Picks / Liked as a 2x2 block of equal pills on Wallpapers; 'Our picks' -> 'Picks' in every locale (ja/ko unchanged)",
+      "accept": "src/core/fb1023.test.ts + discovery.test.ts green",
+      "commit": "8878d8f",
+      "note": "run 90"
+    },
+    {
+      "id": "T114",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1023"
+      ],
+      "priority": "high",
+      "source": "owner test 23 Oct 2026 evening (docs/OWNER_1023.md), D121-1",
+      "title": "fb-1023 C: small preview pictures on the Widgets tab option rows (size tabs, look row, theme chips), plain Views from theme tokens, no motion",
+      "accept": "widgetOptionArt.test.ts + fb1023c.test.ts green; owner checks in Expo Go",
+      "commit": "2620568",
+      "note": "run 90"
+    },
+    {
+      "id": "T115",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1023"
+      ],
+      "priority": "high",
+      "source": "owner test 23 Oct 2026 evening (docs/OWNER_1023.md), D121-1",
+      "title": "fb-1023 D: three original mascot concepts (Tessel, Latchling, Vitri) with previews, icon comps and docs/MASCOT.md; owner picks 1, 2, 3 or none; app icon unchanged",
+      "accept": "mascot.test.ts green",
+      "commit": "91fecdd",
+      "note": "run 90"
+    },
+    {
+      "id": "T116",
+      "status": "todo",
+      "deps": [
+        "T115"
+      ],
+      "tags": [
+        "fb-1023"
+      ],
+      "priority": "medium",
+      "source": "fb-1023 D follow-up",
+      "title": "Mascot follow-up once the owner picks (1, 2 or 3): calm animated widget kind behind the widget adapters (Expo Go preview), optional alternate app icon. HELD until the owner answers 'Which mascot?'; 'none' closes it.",
+      "accept": "owner answer recorded; nothing changes before it"
+    },
+    {
+      "id": "NF1023-1",
+      "status": "done",
+      "tags": [
+        "night-1023"
+      ],
+      "priority": "medium",
+      "source": "night-1023 cross-app (Linework fb-1022c level pills, Glaze fb-1023 B)",
+      "title": "Wallpaper editor: Style (Gradient / Mesh / Grain / Pattern) and Pattern (Dots / Grid / Waves / Checker) as 2×2 blocks of equal pills so long words (Sfumatura, Cuadrícula, グラデーション) don't break mid-word at ~375 pt or with larger text; chosen pill no longer re-fires, a change plays the selection tick",
+      "accept": "src/core/night1023.test.ts N1",
+      "done": "2026-10-23 night pass (branch night-feedback)"
+    },
+    {
+      "id": "NF1023-2",
+      "status": "done",
+      "tags": [
+        "night-1023"
+      ],
+      "priority": "medium",
+      "source": "night-1023 cross-app (Couch apps screen say(), Linework fb-1023)",
+      "title": "Save / pick results on the wallpaper editor and collage, and Feedback notes, are spoken by VoiceOver on iOS (live regions are Android-only)",
+      "accept": "src/ui/announce.ts; src/core/night1023.test.ts N2",
+      "done": "2026-10-23 night pass (branch night-feedback)"
+    },
+    {
+      "id": "NF1023-3",
+      "status": "done",
+      "tags": [
+        "night-1023"
+      ],
+      "priority": "medium",
+      "source": "night-1023 cross-app (Linework fb-1023 'Unlock Plus did nothing')",
+      "title": "Plus sheet Unlock and Restore purchases never fail silently: warning haptic on the error path too, and the result is spoken on every tap (even when the line below doesn't change)",
+      "accept": "src/core/night1023.test.ts N3",
+      "done": "2026-10-23 night pass (branch night-feedback)"
     }
   ],
   "priority_order": {
-    "note": "run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
+    "note": "run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
     "order": [
-      "T109",
-      "T105",
       "T79",
       "T74",
       "T93",

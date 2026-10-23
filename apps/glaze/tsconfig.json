@@ -1,4 +1,5 @@
 {
+  "//": "App code only (T52, fb-1023). Node-side files (*.test.ts, ops/*.ts, app.config.ts) are checked by tsconfig.node.json with types [node]; the cloud UI stub check is scripts/tsconfig.ui.json.",
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
@@ -17,6 +18,11 @@
     "targets",
     "native-plugins",
     ".expo/web",
-    "dist"
+    "dist",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "ops",
+    "scripts",
+    "app.config.ts"
   ]
 }

@@ -46,11 +46,26 @@ def row(t):
 
 pct = round(100 * done / len(tasks)) if tasks else 0
 kit = bool(status.get("trial_kit"))
-kit_block = ("""<button id="kit" class="btn" type="button">Download trial kit (.zip)</button>
-<p class="small" id="kitmsg">Save it on your PC, unzip it, and double-click START_TRIAL.cmd inside the glaze folder. If anything turns red, paste trial-log.txt (next to START_TRIAL.cmd) into a comment here.</p>"""
-             + (f'<p class="small">Trial kit: commit <strong>{e(str(status["trial_kit_commit"]))}</strong>. START_TRIAL.cmd prints the commit it was built from first; if it shows a different code, you have an older copy, so download the kit again.</p>' if status.get("trial_kit_commit") else "")
-             if kit else ('<p class="small">The trial kit download appears here after the next build run.</p>'
-                          if status.get("stage", "build") != "build" else '<p class="small">The trial kit appears here once the app scaffold exists.</p>'))
+# PC side (owner, 23 Oct 2026): the PC auto-start (Desktop\\Apps\\_auto) installs each new build, runs
+# TSC_REPORT.cmd unattended and restarts Expo, so "Your next step" no longer asks for kit downloads or .cmd files.
+open_step = '<p class="small"><strong>How to open the newest build:</strong> open Glaze from Expo Go &gt; Recently opened, about 10 minutes after a new build. Your PC installs it and restarts Expo by itself.</p>'
+kit_block = ("""<section><h2>Build files</h2><p class="small">Your PC's auto-start picks up each new build from this page; you don't need to download anything.""" + (f' Current kit: commit <span class="mono">{e(str(status["trial_kit_commit"]))}</span>.' if status.get("trial_kit_commit") else "") + """</p>
+<button id="kit" class="btn" type="button">Manual copy of the trial kit (.zip, not needed)</button><p class="small" id="kitmsg"></p></section>""") if kit else ""
+
+import base64
+MASCOTS = [("1", "Tessel", "a porcelain tile with a pink glaze drip; the drip slowly lengthens and settles"),
+           ("2", "Latchling", "a frosted-glass padlock with a glowing keyhole; the glow breathes and it blinks"),
+           ("3", "Vitri", "a stained-glass sun-catcher; it sways gently and sparkles now and then")]
+def mascot_block():
+    figs = []
+    for n, name, line in MASCOTS:
+        f = root / f"docs/mascot/mascot-{n}.svg"
+        if not f.exists():
+            return ""
+        uri = "data:image/svg+xml;base64," + base64.b64encode(f.read_bytes()).decode()
+        figs.append(f'<figure style="margin:0;flex:1 1 150px;max-width:220px"><img src="{uri}" alt="Mascot {n}, {e(name)}: {e(line)}" style="width:100%;height:auto;border-radius:22px"><figcaption class="small"><b>{n}. {e(name)}</b> - {e(line)}</figcaption></figure>')
+    return ('<section><h2>Mascot idea: which one (1, 2, 3 or none)?</h2><p class="small">Three original concepts for a small calm companion (mascot, maybe the app icon, and an animated widget). Details in docs/MASCOT.md. Nothing in the app changes until you pick.</p>'
+            f'<div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:10px">{"".join(figs)}</div></section>')
 
 page = f"""<title>Glaze Build</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,10 +114,12 @@ a{{color:var(--accent)}}
 <ol class="stages" aria-label="Progress to your iPhone">{''.join(stage_li(i, l) for i, (_, l) in enumerate(STAGES))}</ol>
 <div class="bar" role="img" aria-label="{done} of {len(tasks)} tasks done"><i></i></div>
 <div class="stats"><span>Tasks <b>{done}/{len(tasks)}</b></span><span>Trial tasks <b>{trial_done}/{len(trial_ids)}</b></span><span>Tests <b>{e(str(status["tests"]))}</b></span><span>Typecheck <b>{e(str(status["typecheck"]))}</b></span><span>Last run <b>{e(status["last_run"])}</b></span></div></header>
-<section class="next"><h2>Your next step</h2><p>{e(status["next_for_owner"])}</p>{kit_block}</section>
+<section class="next"><h2>Your next step</h2><p>{e(status["next_for_owner"])}</p>{open_step}</section>
+{mascot_block()}
 <section><h2>Feedback</h2><p>Comment on this page from any device. The next build run turns each comment into a task, replies, and resolves it when fixed. Claude and Codex review the app together every overseer cycle; their directives handled so far: <span class="mono">{e(str(status.get("oversight_seen") or "none yet"))}</span>.</p></section>
 {market_block()}
 <section><h2>Backlog</h2><div class="tbl"><table>{''.join(row(t) for t in tasks)}</table></div></section>
+{kit_block}
 <section><h2>Recent runs</h2><ul class="log">{''.join(f'<li>{e(l)}</li>' for l in runlog)}</ul></section>
 <p class="mono">The repo bundle for the build runs is attached to this page.</p>
 </div>
@@ -118,7 +135,7 @@ a{{color:var(--accent)}}
       var bin = atob((await r.text()).replace(/\\s+/g,'')); var bytes = new Uint8Array(bin.length);
       for (var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
       await dl.save({{filename:'glaze-trial-kit.zip', data: new Blob([bytes], {{type:'application/zip'}})}});
-      m.textContent='Saved. Unzip it on your PC and double-click START_TRIAL.cmd inside the glaze folder.';
+      m.textContent='Saved.';
     }} catch(err) {{ m.textContent=(err&&err.code==='declined')?'Download cancelled. Tap the button again when ready.':'Could not download the kit ('+(err&&err.code||err&&err.message||'error')+'). Leave a comment here and the next run will look at it.'; }}
   }});
 }})();

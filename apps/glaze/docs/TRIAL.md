@@ -12,7 +12,8 @@ Open Glaze from Expo Go > Recently opened (about 10 minutes after this build) an
 - **A. Calm chip fade:** on Themes, tap the search chips (Games / Movie night / Storybook), switch sub-tabs and open a collection. Do the results just fade in softly (no slide, no zoom, no bounce), and does it feel calm? yes / no. Same on Wallpapers when you switch the sub-tab or All / New / Picks / Liked? yes / no
 - **B. 2×2 pills:** on Wallpapers, do All / New / Picks / Liked sit as a neat 2×2 block of equal pills (two on top, two below), and does "Picks" read well in your language? yes / no
 - **C. Widget pictures:** on Widgets, do the size tabs (Small / Medium / Large / Lock), the look row (theme / clear glass / tinted glass / glow) and the theme chips now show small pictures? Are they big and clear enough to tell apart at a glance (the clear-glass one can be faint on light themes)? yes / no
-- **D. Mascot:** look at the three mascot concepts on the Glaze Build page (Tessel, Latchling, Vitri; details in docs/MASCOT.md). Which mascot: 1, 2, 3 or none?
+- **D. Icon or mascot:** keep the new glaze-drip app icon, or use mascot 1, 2 or 3 (Tessel, Latchling, Vitri on the Glaze Build page; details in docs/MASCOT.md)? The icon is a proposal until you pick.
+- **E. Opening animation:** when Glaze starts, does the glaze-pour opening feel calm and hand over to the app within about 3 seconds? yes / no
 
 ### Earlier: calm category bubbles (22 Oct evening, run 77) — you said "It looks good again"
 - Bounce removed, grid cross-fade, rest of Themes calm: answered yes (owner retest 23 Oct).

@@ -22,9 +22,9 @@ function nativePieces(): NativePiece[] {
   const dir = join(__dirname, 'native-plugins');
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
-    .filter((f) => f.endsWith('.json'))
+    .filter((f: string) => f.endsWith('.json'))
     .sort()
-    .map((f) => JSON.parse(readFileSync(join(dir, f), 'utf8')) as NativePiece);
+    .map((f: string) => JSON.parse(readFileSync(join(dir, f), 'utf8')) as NativePiece);
 }
 
 function mergeUnique(a: unknown, b: unknown): unknown {
