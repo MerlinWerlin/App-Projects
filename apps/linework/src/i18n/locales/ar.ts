@@ -936,7 +936,7 @@ export const ar: Translation = {
   // T86: v2 empty state action on My drawings (app/drawings.tsx, src/ui/v2/EmptyStateV2.tsx)
   'drawings.empty.action': "شُفّ شيئًا",
   'drawings.empty.actionHint': "يفتح القوالب لتختار شيئًا لتشفّه",
-  'plus.feature.library': "كل القوالب: أكثر من 350 رسمة في كل الفئات",
+  'plus.feature.library': "كل القوالب: أكثر من 800 رسمة في كل الفئات",
   'plus.feature.outline': "وضع الخطوط الخارجية لصورك",
   'plus.trial.left': { zero: "تجربة مجانية: لم يبقَ أي يوم", one: "تجربة مجانية: بقي يوم واحد", two: "تجربة مجانية: بقي يومان", few: "تجربة مجانية: بقي {count} أيام", many: "تجربة مجانية: بقي {count} يومًا", other: "تجربة مجانية: بقي {count} يوم" },
   'plus.trial.ended': "انتهت تجربتك المجانية",

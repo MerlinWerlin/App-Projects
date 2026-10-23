@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Arched window frame</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 92 336 L 92 152 A 108 108 0 0 1 308 152 L 308 336 Z"/>
+    <path d="M 112 316 L 112 152 A 88 88 0 0 1 288 152 L 288 316 Z"/>
+    <path d="M 186 40 L 214 40 L 208 76 L 192 76 Z"/>
+    <path d="M 80 336 L 320 336 A 4 4 0 0 1 324 340 L 324 354 A 4 4 0 0 1 320 358 L 80 358 A 4 4 0 0 1 76 354 L 76 340 A 4 4 0 0 1 80 336 Z"/>
+    <path d="M 84 150 L 120 150 L 120 168 L 84 168 Z"/>
+    <path d="M 280 150 L 316 150 L 316 168 L 280 168 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 196 347 A 4 4 0 1 0 204 347 A 4 4 0 1 0 196 347 Z"/>
+    <path d="M 112 300 L 288 300"/>
+  </g>
+</svg>

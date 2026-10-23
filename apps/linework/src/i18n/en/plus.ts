@@ -51,7 +51,7 @@ export const plus = {
   'plus.pack.patterns': 'Patterns and mandalas II',
   'plus.pack.lettering-plus': 'Lettering styles',
   'plus.packComingSoon': '{name}, coming soon',
-  'plus.feature.library': "Every template: 350+ drawings in all categories",
+  'plus.feature.library': "Every template: 800+ drawings in all categories",
   'plus.feature.outline': "Outline mode for your photos",
   'plus.trial.left': { one: "Free trial: {count} day left", other: "Free trial: {count} days left" },
   'plus.trial.ended': "Your free trial has ended",

@@ -887,7 +887,7 @@ export const ja: Translation = {
   // T86: v2 empty state action on My drawings (app/drawings.tsx, src/ui/v2/EmptyStateV2.tsx)
   'drawings.empty.action': "何かをなぞる",
   'drawings.empty.actionHint': "テンプレートを開いて、なぞるものを選びます",
-  'plus.feature.library': "すべてのテンプレート：全カテゴリで350点以上",
+  'plus.feature.library': "すべてのテンプレート：全カテゴリで800点以上",
   'plus.feature.outline': "写真の輪郭モード",
   'plus.trial.left': { one: "無料トライアル：残り{count}日", other: "無料トライアル：残り{count}日" },
   'plus.trial.ended': "無料トライアルは終了しました",

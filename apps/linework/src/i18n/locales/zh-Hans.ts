@@ -873,7 +873,7 @@ export const zhHans: Translation = {
   // T86: v2 empty state action on My drawings (app/drawings.tsx, src/ui/v2/EmptyStateV2.tsx)
   'drawings.empty.action': "描点什么吧",
   'drawings.empty.actionHint': "打开模板，挑选要描的内容",
-  'plus.feature.library': "全部模板：所有分类共 350 多幅",
+  'plus.feature.library': "全部模板：所有分类共 800 多幅",
   'plus.feature.outline': "照片轮廓模式",
   'plus.trial.left': { one: "免费试用：还剩 {count} 天", other: "免费试用：还剩 {count} 天" },
   'plus.trial.ended': "你的免费试用已结束",

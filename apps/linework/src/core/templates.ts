@@ -8,6 +8,7 @@ import { lettering } from './templateArt/lettering.ts';
 import { shapes } from './templateArt/shapes.ts';
 import { mandalas } from './templateArt/mandalas.ts';
 import { botanical } from './templateArt/botanical.ts';
+import { flowers2 } from './templateArt/baked/flowers2.ts';
 import { wildlife } from './templateArt/wildlife.ts';
 import { ornament } from './templateArt/ornament.ts';
 import { scenes } from './templateArt/scenes.ts';
@@ -23,12 +24,17 @@ import { sealife } from './templateArt/baked/sealife.ts';
 import { animals2 } from './templateArt/baked/animals2.ts';
 import { figures } from './templateArt/baked/figures.ts';
 import { stilllife2 } from './templateArt/baked/stilllife2.ts';
+import { stilllife3 } from './templateArt/baked/stilllife3.ts';
 import { places2 } from './templateArt/baked/places2.ts';
 import { fantasy2 } from './templateArt/baked/fantasy2.ts';
 import { shapes2 } from './templateArt/baked/shapes2.ts';
 import { flash } from './templateArt/baked/flash.ts';
 import { game2 } from './templateArt/baked/game2.ts';
 import { heroes2 } from './templateArt/baked/heroes2.ts';
+import { wildlife3 } from './templateArt/baked/wildlife3.ts';
+import { kidsfantasy } from './templateArt/baked/kidsfantasy.ts';
+import { mandalas2 } from './templateArt/baked/mandalas2.ts';
+import { patterns2 } from './templateArt/baked/patterns2.ts';
 import { trade } from './templateArt/trade.ts';
 
 export type TemplateCategory =
@@ -113,12 +119,14 @@ export const DEFAULT_DETAIL_WIDTH = 2;
 export const TEMPLATES: readonly Template[] = [
   ...flowers,
   ...botanical,
+  ...flowers2,
   ...animals,
   ...wildlife,
   ...faces,
   ...lettering,
   ...shapes,
   ...mandalas,
+  ...mandalas2,
   ...ornament,
   ...scenes,
   ...cute,
@@ -133,13 +141,17 @@ export const TEMPLATES: readonly Template[] = [
   ...animals2,
   ...figures,
   ...stilllife2,
+  ...stilllife3,
   ...places2,
   ...fantasy2,
   ...shapes2,
   ...flash,
   ...game2,
   ...heroes2,
+  ...wildlife3,
+  ...patterns2,
   ...trade,
+  ...kidsfantasy,
 ];
 
 export function templateLevel(t: Template): TemplateLevel {

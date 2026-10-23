@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Twisted squares medallion</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 200 A 160 160 0 1 0 360 200 A 160 160 0 1 0 40 200 Z"/>
+    <path d="M 200 40 L 360 200 L 200 360 L 40 200 Z M 261.2 52.2 L 347.8 261.2 L 138.8 347.8 L 52.2 138.8 Z M 313.1 86.9 L 313.1 313.1 L 86.9 313.1 L 86.9 86.9 Z M 347.8 138.8 L 261.2 347.8 L 52.2 261.2 L 138.8 52.2 Z"/>
+    <path d="M 164 200 A 36 36 0 1 0 236 200 A 36 36 0 1 0 164 200 Z"/>
+  </g>
+</svg>

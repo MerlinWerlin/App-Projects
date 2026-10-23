@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Notched corner frame</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 74 70 L 326 70 A 34 34 0 0 0 360 104 L 360 296 A 34 34 0 0 0 326 330 L 74 330 A 34 34 0 0 0 40 296 L 40 104 A 34 34 0 0 0 74 70 Z"/>
+    <path d="M 84 88 L 316 88 A 26 26 0 0 0 342 114 L 342 286 A 26 26 0 0 0 316 312 L 84 312 A 26 26 0 0 0 58 286 L 58 114 A 26 26 0 0 0 84 88 Z"/>
+    <path d="M 200 58 L 212 70 L 200 82 L 188 70 Z"/>
+    <path d="M 200 318 L 212 330 L 200 342 L 188 330 Z"/>
+    <path d="M 40 188 L 52 200 L 40 212 L 28 200 Z"/>
+    <path d="M 360 188 L 372 200 L 360 212 L 348 200 Z"/>
+  </g>
+</svg>

@@ -902,7 +902,7 @@ export const it: Translation = {
   // T86: v2 empty state action on My drawings (app/drawings.tsx, src/ui/v2/EmptyStateV2.tsx)
   'drawings.empty.action': "Ricalca qualcosa",
   'drawings.empty.actionHint': "Apre i modelli per scegliere cosa ricalcare",
-  'plus.feature.library': "Tutti i modelli: oltre 350 disegni in ogni categoria",
+  'plus.feature.library': "Tutti i modelli: oltre 800 disegni in ogni categoria",
   'plus.feature.outline': "Modalità contorno per le tue foto",
   'plus.trial.left': { one: "Prova gratuita: manca {count} giorno", many: "Prova gratuita: mancano {count} di giorni", other: "Prova gratuita: mancano {count} giorni" },
   'plus.trial.ended': "La tua prova gratuita è terminata",
