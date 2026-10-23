@@ -1115,6 +1115,26 @@
       "title": "fb-1022e: Stan icon vanished — store icon lookups queued one at a time (Apple ~20/min limit), favourites first, kept on the phone 30 days, not subject to the 8 s TV-icon timeout; TESTFLIGHT_COUCH.cmd",
       "status": "done",
       "done": "2026-10-22 live session"
+    },
+    {
+      "id": "NF1023-1",
+      "title": "night-1023 (from Linework fb-1023 'Unlock Plus did nothing'): Plus Buy / Restore / tip results also show as a toast (haptic, spoken by VoiceOver, visible wherever the page is scrolled, re-shown on a repeat tap); inline lines kept",
+      "status": "done",
+      "tags": [
+        "night-1023"
+      ],
+      "done": "2026-10-23 night pass (branch night-feedback)",
+      "note": "app/plus.tsx report(); guard tests/night-1023.test.ts"
+    },
+    {
+      "id": "NF1023-2",
+      "title": "night-1023 (never fail silently, iOS VoiceOver): a failed remote key (incl. keyboard / numpad / source sheets) and a failed app launch are announced on iOS; live regions and role=alert are Android-only",
+      "status": "done",
+      "tags": [
+        "night-1023"
+      ],
+      "done": "2026-10-23 night pass (branch night-feedback)",
+      "note": "src/ui/useAnnounce.ts (iOS only, 1.5 s dedupe so remote + Apps don't double up); app/(tabs)/remote.tsx, app/(tabs)/apps.tsx; guard tests/night-1023.test.ts"
     }
   ],
   "codex_delegable": [

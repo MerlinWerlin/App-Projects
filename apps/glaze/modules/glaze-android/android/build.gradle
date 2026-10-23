@@ -1,0 +1,24 @@
+// Local Expo module (autolinked from ./modules by expo-modules-autolinking, SDK 54).
+// Same shape as the `create-expo-module --local` template for SDK 52+: the
+// expo-module-gradle-plugin applies kotlin-android and wires expo-modules-core.
+// VERIFY on the PC: `GLAZE_NATIVE=1 npx expo prebuild -p android && npx expo run:android`.
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+group = 'app.glaze.androidmodule'
+version = '0.1.0'
+
+android {
+  // Not "app.glaze.native": `native` is a reserved Java keyword, and autolinking generates
+  // Java (ExpoModulesPackageList.java) that imports this package.
+  namespace "app.glaze.androidmodule"
+  defaultConfig {
+    versionCode 1
+    versionName "0.1.0"
+  }
+  lintOptions {
+    abortOnError false
+  }
+}

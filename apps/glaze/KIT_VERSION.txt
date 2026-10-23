@@ -1,7 +1,7 @@
 Glaze trial kit
-Built from commit: 118d43c (2026-10-22)
-Includes up to: T110 calm category bubbles (owner test 22 Oct evening: no bounce, soft tint fade, grid cross-fade)
+Built from commit: 9203c69 (2026-10-24)
+Includes up to: fb-1023 (owner test 23 Oct evening: calm chip fade, 2x2 Picks pills, widget option pictures, mascot concepts; T52 tsconfig split)
 
 If "Built from commit" above shows a dollar sign instead of a short code, this folder is a
 working copy, not a downloaded kit. Compare the code with the newest kit commit shown on the
-Glaze Build page ("Trial kit" line). If they differ, download the kit again from that page.
+Glaze Build page ("Build files"). If they differ, wait for the PC auto-start to install the new build.

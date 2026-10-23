@@ -1,0 +1,173 @@
+diff --git a/app/(tabs)/themes.tsx b/app/(tabs)/themes.tsx
+--- a/app/(tabs)/themes.tsx
++++ b/app/(tabs)/themes.tsx
+@@ -647,6 +647,7 @@ export default function ThemesScreen() {
+                 empty={showcaseEmpty}
+                 likedIds={likedIds}
+                 onToggleLike={toggleLike}
++                fadeKey={`${group ?? ''}|${tab}|${collection ?? ''}`}
+               />
+             </>
+           ) : null}
+diff --git a/app/(tabs)/wallpapers.tsx b/app/(tabs)/wallpapers.tsx
+--- a/app/(tabs)/wallpapers.tsx
++++ b/app/(tabs)/wallpapers.tsx
+@@ -7,7 +7,10 @@
+ // picks, core/discovery.ts), narrows Still and Pairs; Live lists the person's own loops and hides
+ // it. Hearts on theme and pair tiles like a wallpaper on this device only. No counts or ranks.
+ import { useFocusEffect, useRouter } from 'expo-router';
+-import { useCallback, useMemo, useState } from 'react';
++import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
++import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
++import { pageTransition } from '../../src/core/categoryPaging';
++import { easeOutCurve } from '../../src/theme/motion';
+ import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+ import { DISCOVERY_TABS, discoveryTabKey, type DiscoveryTab } from '../../src/core/discovery';
+ import { ALL_THEMES } from '../../src/core/plusThemes';
+@@ -84,6 +87,20 @@ export default function WallpapersTab() {
+   }, []);
+   const onOpen = useCallback((href: string) => router.push(href), [router]);
+
++  // fb-1023: switching sub-tab or All/New/Picks/Liked fades the tiles in (opacity only, the calm fb-1022c rule).
++  const fade = useSharedValue(1);
++  const lastKey = useRef(`${tab}|${discovery}`);
++  useEffect(() => {
++    const key = `${tab}|${discovery}`;
++    if (key === lastKey.current) return;
++    lastKey.current = key;
++    const tr = pageTransition(0, 1);
++    if (tr.kind === 'none') return;
++    fade.value = tr.fromOpacity;
++    fade.value = withTiming(1, { duration: tr.durationMs, easing: easeOutCurve });
++  }, [tab, discovery, fade]);
++  const gridFade = useAnimatedStyle(() => ({ opacity: fade.value }));
++
+   const liveEmpty = tab === 'live' && loops.length === 0;
+   const discovering = discoveryApplies(tab);
+   const footnote = [textV2.footnote, textStyleFor(script, textV2.footnote), { color: c.inkSecondary }];
+@@ -100,7 +117,7 @@ export default function WallpapersTab() {
+       <View style={styles.body}>
+         <Segmented label={t('tabs.wallpapersTab.subTabs')} options={options} value={tab} onChange={onTab} />
+         {discovering ? (
+-          <Segmented label={t('tabs.wallpapersTab.discover.label')} options={discoveryOptions} value={discovery} onChange={onDiscovery} />
++          <Segmented grid label={t('tabs.wallpapersTab.discover.label')} options={discoveryOptions} value={discovery} onChange={onDiscovery} />
+         ) : null}
+         {discovering && discovery === 'picks' ? <Text style={footnote}>{t('themes.discover.picksNote')}</Text> : null}
+         {discoveryEmpty ? (
+@@ -124,7 +141,7 @@ export default function WallpapersTab() {
+             {t('tabs.wallpapersTab.liveEmpty')}
+           </Text>
+         ) : null}
+-        <View style={styles.grid}>
++        <Animated.View style={[styles.grid, gridFade]}>
+           {rows.map((row) => (
+             <View key={row.map((r) => r.id).join('|')} style={styles.row}>
+               {row.map((tile) => (
+@@ -142,7 +159,7 @@ export default function WallpapersTab() {
+               ))}
+             </View>
+           ))}
+-        </View>
++        </Animated.View>
+         {shown < tiles.length ? (
+           <PillButton label={t('tabs.wallpapersTab.showMore')} variant="tinted" icon="chevron-down" onPress={() => setPages((p) => p + 1)} />
+         ) : null}
+diff --git a/src/core/discovery.test.ts b/src/core/discovery.test.ts
+--- a/src/core/discovery.test.ts
++++ b/src/core/discovery.test.ts
+@@ -117,9 +117,9 @@ test('discovery and heart copy is in every locale', () => {
+   }
+ });
+
+-test('the picks tab is labelled as our picks, never as popularity, counts or ranks', () => {
++test('the picks tab is labelled Picks (owner fb-1023), never as popularity, counts or ranks', () => {
+   const label = lookup(en as unknown as CatalogueTree, 'themes.discover.picks');
+-  assert.equal(label, 'Our picks');
++  assert.equal(label, 'Picks');
+   const keys = discoveryI18nKeys();
+   for (const [locale, cat] of [['en', en], ...Object.entries(TRANSLATIONS)] as const) {
+     for (const key of keys) {
+diff --git a/src/ui/Segmented.tsx b/src/ui/Segmented.tsx
+--- a/src/ui/Segmented.tsx
++++ b/src/ui/Segmented.tsx
+@@ -23,13 +23,15 @@ type Props<T extends string> = {
+   style?: StyleProp<ViewStyle>;
+   /** Stack the options as full-width rows (owner fb-1017: long shape names never truncate or wrap mid-word). */
+   vertical?: boolean;
++  /** fb-1023: lay four options out as a 2×2 block of equal pills (two on top, two below). */
++  grid?: boolean;
+ };
+
+ /**
+  * Segmented control, design v2 (docs/DESIGN_V2.md §8, T56): a pill track on `fill` with the
+  * chosen option as a raised thumb. One choice from a few options, ≥ 48 pt segments, haptic on change.
+  */
+-export function Segmented<T extends string>({ label, options, value, onChange, style, vertical = false }: Props<T>) {
++export function Segmented<T extends string>({ label, options, value, onChange, style, vertical = false, grid = false }: Props<T>) {
+   const { c, scheme } = useColorsV2();
+   const { t, script } = useT();
+   const raised = shadowV2('card', scheme);
+@@ -37,7 +39,7 @@ export function Segmented<T extends string>({ label, options, value, onChange, s
+     <View
+       accessibilityRole="radiogroup"
+       accessibilityLabel={label}
+-      style={[styles.row, continuous, vertical && styles.column, { backgroundColor: c.fill }, style]}
++      style={[styles.row, continuous, vertical && styles.column, grid && styles.grid, { backgroundColor: c.fill }, style]}
+     >
+       {options.map((o) => {
+         const selected = o.value === value;
+@@ -56,6 +58,7 @@ export function Segmented<T extends string>({ label, options, value, onChange, s
+               styles.seg,
+               continuous,
+               vertical && styles.segVertical,
++              grid && styles.segGrid,
+               selected && [{ backgroundColor: c.surfaceRaised }, raised],
+               { opacity: pressed ? 0.7 : 1 },
+             ]}
+@@ -107,6 +110,9 @@ const styles = StyleSheet.create({
+     paddingHorizontal: spaceV2.lg,
+     gap: spaceV2.sm,
+   },
++  // fb-1023: 2×2 block; each pill takes half the track minus the gap, labels stay on one line.
++  grid: { flexWrap: 'wrap', borderRadius: radiusV2.group },
++  segGrid: { flexGrow: 1, flexShrink: 0, flexBasis: '45%' },
+   preview: { alignItems: 'center', justifyContent: 'center' },
+   text: { textAlign: 'center', flexShrink: 1 },
+   textVertical: { textAlign: 'auto', flex: 1 },
+diff --git a/src/ui/ShowcaseGrid.tsx b/src/ui/ShowcaseGrid.tsx
+--- a/src/ui/ShowcaseGrid.tsx
++++ b/src/ui/ShowcaseGrid.tsx
+@@ -53,9 +53,11 @@ type GridProps = {
+   /** T77: liked theme ids (device-local). Hearts show only when `onToggleLike` is given. */
+   likedIds?: ReadonlySet<string>;
+   onToggleLike?: (id: string) => void;
++  /** fb-1023: when this changes (a search chip, sub-tab or collection), the grid does the same calm fade as a page change. */
++  fadeKey?: string;
+ };
+
+-export function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusBadge, plusNote, freeIds, freeBadge, freeNote, newIds, empty, likedIds, onToggleLike }: GridProps) {
++export function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusBadge, plusNote, freeIds, freeBadge, freeNote, newIds, empty, likedIds, onToggleLike, fadeKey = '' }: GridProps) {
+   const { isRTL } = useT();
+   const { width } = useWindowDimensions();
+   const columns = showcaseColumns(width);
+@@ -65,14 +67,18 @@ export function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusB
+   // Page change: the whole grid fades up from GRID_FADE_FROM (opacity only, ease-out).
+   const fade = useSharedValue(1);
+   const lastPage = useRef(pageIndex);
++  const lastKey = useRef(fadeKey);
+   useEffect(() => {
+     const from = lastPage.current;
++    const keyChanged = lastKey.current !== fadeKey;
+     lastPage.current = pageIndex;
+-    const tr = pageTransition(from, pageIndex);
++    lastKey.current = fadeKey;
++    // fb-1023: a chip / sub-tab swap counts as a change too (same opacity-only fade, no slide or scale).
++    const tr = pageTransition(from, keyChanged && from === pageIndex ? from + 1 : pageIndex);
+     if (tr.kind === 'none') return;
+     fade.value = tr.fromOpacity;
+     fade.value = withTiming(1, { duration: tr.durationMs, easing: easeOutCurve });
+-  }, [pageIndex, fade]);
++  }, [pageIndex, fadeKey, fade]);
+   const gridStyle = useAnimatedStyle(() => ({ opacity: fade.value }));
+
+   const pan = useMemo(

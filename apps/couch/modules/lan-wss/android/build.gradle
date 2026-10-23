@@ -1,0 +1,20 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+group = 'expo.modules.lanwss'
+version = '0.1.0'
+
+android {
+  namespace "expo.modules.lanwss"
+  defaultConfig {
+    versionCode 1
+    versionName "0.1.0"
+  }
+}
+
+dependencies {
+  // Already in React Native's dependency graph; Gradle resolves to the highest requested version.
+  implementation "com.squareup.okhttp3:okhttp:4.12.0"
+}

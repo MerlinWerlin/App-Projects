@@ -47,7 +47,8 @@
         "foregroundImage": "./assets/brand/adaptive-foreground.png",
         "monochromeImage": "./assets/brand/adaptive-monochrome.png",
         "backgroundColor": "#E9E0FB"
-      }
+      },
+      "edgeToEdgeEnabled": true
     },
     "plugins": [
       "expo-router",

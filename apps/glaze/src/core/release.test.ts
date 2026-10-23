@@ -29,8 +29,22 @@ test('eas.json has development, preview and production profiles', () => {
   assert.equal(production.autoIncrement, true);
   for (const [name, profile] of Object.entries({ development, preview, production })) {
     assert.equal(profile.channel, name, `${name} profile publishes to the ${name} update channel`);
+  }
+  for (const [name, profile] of Object.entries({ development, preview })) {
     assert.deepEqual(profile.env, { GLAZE_NATIVE: '1' }, `${name} profile turns on the native pieces`);
   }
+  // Owner TestFlight fix 24 Oct 2026: the first TestFlight build matches the Expo Go app the owner tested
+  // (native pieces off, Glaze's own uncompiled modules not linked). production-native turns them on later.
+  assert.deepEqual(production.env, { GLAZE_NATIVE: '0' });
+  const native = eas.build['production-native'] as Record<string, unknown>;
+  assert.equal(native.extends, 'production');
+  assert.deepEqual(native.env, { GLAZE_NATIVE: '1' });
+});
+
+test('first TestFlight build links none of Glaze\'s own native modules (modules-off)', () => {
+  const pkg = JSON.parse(read('package.json')) as { expo?: { autolinking?: { nativeModulesDir?: string } } };
+  assert.equal(pkg.expo?.autolinking?.nativeModulesDir, './modules-off');
+  assert.ok(read('modules-off/README.md').includes('production-native'));
 });
 
 test('App Group is the owner group everywhere it is declared', () => {

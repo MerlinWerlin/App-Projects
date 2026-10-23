@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Library manifest: merged into the app at build time, so no config plugin is needed. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <!-- Optional, so devices without live wallpapers can still install Glaze. -->
+  <uses-feature android:name="android.software.live_wallpaper" android:required="false" />
+
+  <application>
+    <service
+      android:name="app.glaze.androidmodule.GlazeVideoWallpaperService"
+      android:permission="android.permission.BIND_WALLPAPER"
+      android:exported="true"
+      android:label="Glaze Live">
+      <intent-filter>
+        <action android:name="android.service.wallpaper.WallpaperService" />
+      </intent-filter>
+      <meta-data
+        android:name="android.service.wallpaper"
+        android:resource="@xml/glaze_wallpaper" />
+    </service>
+  </application>
+</manifest>
