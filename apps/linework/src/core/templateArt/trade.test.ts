@@ -46,3 +46,11 @@ test('trade: every name translated in all 10 pack locales', () => {
     for (const t of trade) assert.ok(names[`templates.name.${t.id}`], `${loc} ${t.id}`);
   }
 });
+
+test('trade: every template has exactly one known sub-category', async () => {
+  const { tradeSubOf } = await import('../tradeSubs.ts');
+  for (const t of trade) {
+    assert.ok(tradeSubOf(t), `${t.id} has no sub-category`);
+    assert.equal((t.tags ?? []).filter((x) => x.startsWith('sub-')).length, 1, t.id);
+  }
+});

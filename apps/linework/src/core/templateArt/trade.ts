@@ -85,13 +85,25 @@ const deg = (a: number) => `${Number.isInteger(a) ? a : a.toFixed(1)}°`;
 
 type Spec = { id: string; name: string; level: TemplateLevel; tags: string[]; paths: string[]; detail?: string[] };
 
+/** Sub-category from the id (src/core/tradeSubs.ts). */
+function subFor(id: string): string {
+  if (/^(angle-|protractor|set-square)/.test(id)) return 'angles';
+  if (/^(dovetail|finger-joint|mitre-)/.test(id)) return 'carpentry';
+  if (/^(roof-pitch|stair-stringer|square-check)/.test(id)) return 'framing';
+  if (/^(weld-|bolt-circle)/.test(id)) return 'metal';
+  if (/^pipe-/.test(id)) return 'pipe';
+  if (/^(herringbone|chevron)/.test(id)) return 'tiling';
+  if (/^grid-iso/.test(id)) return 'drafting';
+  return 'layout';
+}
+
 function make(s: Spec): Template {
   return {
     id: `trade-${s.id}`,
     name: s.name,
     category: 'trade',
     level: s.level,
-    tags: ['trade', 'workshop', 'angle', ...s.tags],
+    tags: ['trade', 'workshop', 'angle', `sub-${subFor(s.id)}`, ...s.tags],
     viewBox: VB,
     strokeWidth: 3,
     detailWidth: 1.6,

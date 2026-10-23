@@ -81,6 +81,7 @@ import {
 } from '../../src/ui/v2';
 import { PillSegmented, type PillSegment } from '../../src/ui/v2/PillSegmented';
 import { usePlus } from '../../src/plus/usePlus';
+import { TRADE_SUBS, inTradeSub, tradeSubCounts, type TradeSub } from '../../src/core/tradeSubs';
 import { starterIds, templateLocked } from '../../src/plus/access';
 import { STARTER_TEMPLATE_COUNT } from '../../src/plus/entitlement';
 
@@ -187,7 +188,14 @@ export default function TemplatesScreen() {
   const deferredQuery = useDeferredValue(query);
   const favSet = useMemo<ReadonlySet<string>>(() => new Set(favorites), [favorites]);
   const category = shelfCategory(shelf);
-  const pool = useMemo(() => shelfPool(TEMPLATES, shelf), [shelf]);
+  // fb-1023b: Trade & workshop has its own sub-category chips (Angles, Carpentry, Metal & welding, ...).
+  const [tradeSub, setTradeSub] = useState<TradeSub | null>(null);
+  useEffect(() => {
+    if (shelf !== 'trade') setTradeSub(null);
+  }, [shelf]);
+  const shelfAll = useMemo(() => shelfPool(TEMPLATES, shelf), [shelf]);
+  const subCounts = useMemo(() => tradeSubCounts(shelfAll), [shelfAll]);
+  const pool = useMemo(() => (shelf === 'trade' ? inTradeSub(shelfAll, tradeSub) : shelfAll), [shelf, shelfAll, tradeSub]);
   const filters = useMemo<TemplateFilters>(
     () => ({ query: deferredQuery, category, level, collection, favoritesOnly }),
     [deferredQuery, category, level, collection, favoritesOnly],
@@ -359,6 +367,41 @@ export default function TemplatesScreen() {
           />
         ))}
       </ScrollView>
+
+      {shelf === 'trade' ? (
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+          accessibilityLabel={t('templates.tradeSub.groupLabel')}
+          style={{ marginHorizontal: -gutter, marginTop: spaceV2.x3 }}
+          contentContainerStyle={{ paddingHorizontal: gutter, gap: spaceV2.x2, paddingVertical: spaceV2.x1 }}
+        >
+          <FilterPill
+            label={t('templates.tradeSub.all')}
+            count={shelfAll.length}
+            active={tradeSub === null}
+            accessibilityLabel={t('templates.tradeSub.all')}
+            onPress={() => {
+              animateResults();
+              setTradeSub(null);
+            }}
+          />
+          {TRADE_SUBS.filter((sub) => subCounts[sub] > 0).map((sub) => (
+            <FilterPill
+              key={sub}
+              label={tDynamic(`templates.tradeSub.${sub}`, sub)}
+              count={subCounts[sub]}
+              active={tradeSub === sub}
+              accessibilityLabel={tDynamic(`templates.tradeSub.${sub}`, sub)}
+              onPress={() => {
+                animateResults();
+                setTradeSub(tradeSub === sub ? null : sub);
+              }}
+            />
+          ))}
+        </ScrollView>
+      ) : null}
 
       {/* Level */}
       <PillSegmented
