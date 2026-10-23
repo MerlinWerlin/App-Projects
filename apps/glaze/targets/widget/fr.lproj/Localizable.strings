@@ -1,0 +1,52 @@
+/* Glaze widget extension strings (T86), French. Machine translation awaiting native-speaker
+   review (docs/I18N.md). Same keys as en.lproj. */
+
+"habit.name.water" = "Eau";
+"habit.name.sleep" = "Sommeil";
+"habit.name.steps" = "Pas";
+"habit.name.mood" = "Humeur";
+
+"habit.unit.ml" = "ml";
+"habit.unit.hours" = "h";
+"habit.unit.steps" = "pas";
+
+"habit.desc.water" = "Touchez +150 ml à chaque verre. Remis à zéro à minuit.";
+"habit.desc.sleep" = "Notez votre sommeil heure par heure.";
+"habit.desc.steps" = "Comptez vos pas à la main, par 500.";
+"habit.desc.mood" = "Choisissez votre humeur du jour.";
+
+"habit.goalOf" = "sur %1$@ %2$@";
+
+"habit.a11y.add" = "Ajouter %1$@ %2$@";
+"habit.a11y.remove" = "Retirer %1$@ %2$@";
+"habit.a11y.moodDown" = "Baisser l’humeur";
+"habit.a11y.moodUp" = "Monter l’humeur";
+"habit.a11y.mood1" = "Noter l’humeur : très mal";
+"habit.a11y.mood2" = "Noter l’humeur : bof";
+"habit.a11y.mood3" = "Noter l’humeur : ça va";
+"habit.a11y.mood4" = "Noter l’humeur : bien";
+"habit.a11y.mood5" = "Noter l’humeur : super";
+
+"habit.mood.0" = "Pas encore noté";
+"habit.mood.1" = "Très mal";
+"habit.mood.2" = "Bof";
+"habit.mood.3" = "Ça va";
+"habit.mood.4" = "Bien";
+"habit.mood.5" = "Super";
+
+"Log a habit" = "Noter une habitude";
+"Log mood" = "Noter l’humeur";
+"Habit" = "Habitude";
+"Direction" = "Sens";
+"Level" = "Niveau";
+
+"Clock" = "Horloge";
+"The time, in your Glaze theme." = "L’heure, avec votre thème Glaze.";
+"Date" = "Date";
+"Today's date, in your Glaze theme." = "La date du jour, avec votre thème Glaze.";
+"Time and date for your Lock Screen." = "L’heure et la date pour l’écran verrouillé.";
+"Photo" = "Photo";
+"A photo you pick in Glaze." = "Une photo choisie dans Glaze.";
+"Choose a photo in Glaze" = "Choisissez une photo dans Glaze";
+"Little Line" = "Petite phrase";
+"A short, gentle line that changes every hour." = "Une petite phrase douce qui change toutes les heures.";

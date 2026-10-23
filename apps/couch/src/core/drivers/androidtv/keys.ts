@@ -1,0 +1,93 @@
+/**
+ * Canonical key -> Android KeyEvent KEYCODE_* number (android.view.KeyEvent constants), sent in
+ * remote_key_inject. Values are the public Android SDK constants; which ones a given TV honours is
+ * UNVERIFIED on hardware.
+ *
+ * Not mapped: VOICE (native voice needs remote_voice_* audio streaming, not a key).
+ */
+import type { Key } from '../../keys';
+
+export const KEYCODE = {
+  HOME: 3,
+  BACK: 4,
+  NUM_0: 7,
+  NUM_1: 8,
+  NUM_2: 9,
+  NUM_3: 10,
+  NUM_4: 11,
+  NUM_5: 12,
+  NUM_6: 13,
+  NUM_7: 14,
+  NUM_8: 15,
+  NUM_9: 16,
+  DPAD_UP: 19,
+  DPAD_DOWN: 20,
+  DPAD_LEFT: 21,
+  DPAD_RIGHT: 22,
+  DPAD_CENTER: 23,
+  VOLUME_UP: 24,
+  VOLUME_DOWN: 25,
+  POWER: 26,
+  ENTER: 66,
+  DEL: 67,
+  MINUS: 69,
+  MENU: 82,
+  SEARCH: 84,
+  MEDIA_PLAY_PAUSE: 85,
+  MEDIA_REWIND: 89,
+  MEDIA_FAST_FORWARD: 90,
+  VOLUME_MUTE: 164,
+  CHANNEL_UP: 166,
+  CHANNEL_DOWN: 167,
+  SETTINGS: 176,
+  TV_INPUT: 178,
+  PROG_RED: 183,
+  PROG_GREEN: 184,
+  PROG_YELLOW: 185,
+  PROG_BLUE: 186,
+} as const;
+
+export const ANDROIDTV_KEYS: Partial<Record<Key, number>> = {
+  POWER: KEYCODE.POWER,
+  UP: KEYCODE.DPAD_UP,
+  DOWN: KEYCODE.DPAD_DOWN,
+  LEFT: KEYCODE.DPAD_LEFT,
+  RIGHT: KEYCODE.DPAD_RIGHT,
+  OK: KEYCODE.DPAD_CENTER,
+  BACK: KEYCODE.BACK,
+  HOME: KEYCODE.HOME,
+  MENU: KEYCODE.MENU,
+  INPUT: KEYCODE.TV_INPUT,
+  SOURCE: KEYCODE.TV_INPUT,
+  VOL_UP: KEYCODE.VOLUME_UP,
+  VOL_DOWN: KEYCODE.VOLUME_DOWN,
+  MUTE: KEYCODE.VOLUME_MUTE,
+  CH_UP: KEYCODE.CHANNEL_UP,
+  CH_DOWN: KEYCODE.CHANNEL_DOWN,
+  REW: KEYCODE.MEDIA_REWIND,
+  PLAY_PAUSE: KEYCODE.MEDIA_PLAY_PAUSE,
+  FF: KEYCODE.MEDIA_FAST_FORWARD,
+  BACKSPACE: KEYCODE.DEL,
+  ENTER: KEYCODE.ENTER,
+  SEARCH: KEYCODE.SEARCH,
+  SETTINGS: KEYCODE.SETTINGS,
+  NUM_0: KEYCODE.NUM_0,
+  NUM_1: KEYCODE.NUM_1,
+  NUM_2: KEYCODE.NUM_2,
+  NUM_3: KEYCODE.NUM_3,
+  NUM_4: KEYCODE.NUM_4,
+  NUM_5: KEYCODE.NUM_5,
+  NUM_6: KEYCODE.NUM_6,
+  NUM_7: KEYCODE.NUM_7,
+  NUM_8: KEYCODE.NUM_8,
+  NUM_9: KEYCODE.NUM_9,
+  NUM_DASH: KEYCODE.MINUS,
+  RED: KEYCODE.PROG_RED,
+  GREEN: KEYCODE.PROG_GREEN,
+  YELLOW: KEYCODE.PROG_YELLOW,
+  BLUE: KEYCODE.PROG_BLUE,
+};
+
+export function androidKeyCode(key: Key): number | undefined {
+  return ANDROIDTV_KEYS[key];
+}

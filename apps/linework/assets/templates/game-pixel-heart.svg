@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Pixel heart</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 70 60 L 170 60 L 170 100 L 210 100 L 210 80 L 230 80 L 230 60 L 330 60 L 330 80 L 350 80 L 350 100 L 370 100 L 370 180 L 350 180 L 350 200 L 330 200 L 330 220 L 310 220 L 310 240 L 290 240 L 290 260 L 270 260 L 270 280 L 250 280 L 250 300 L 230 300 L 230 320 L 210 320 L 210 340 L 190 340 L 190 320 L 170 320 L 170 300 L 150 300 L 150 280 L 130 280 L 130 260 L 110 260 L 110 240 L 90 240 L 90 220 L 70 220 L 70 200 L 50 200 L 50 180 L 30 180 L 30 100 L 50 100 L 50 80 L 70 80 Z"/>
+    <path d="M 70 100 L 70 140 M 90 80 L 90 100 M 90 120 L 90 140 M 110 100 L 110 120 M 130 80 L 130 100 M 90 80 L 130 80 M 70 100 L 90 100 M 110 100 L 130 100 M 90 120 L 110 120 M 70 140 L 90 140"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 348 58 L 356 58 L 356 66 L 364 66 L 364 74 L 356 74 L 356 82 L 348 82 L 348 74 L 340 74 L 340 66 L 348 66 Z"/>
+    <path d="M 45 323 L 51 323 L 51 329 L 57 329 L 57 335 L 51 335 L 51 341 L 45 341 L 45 335 L 39 335 L 39 329 L 45 329 Z"/>
+  </g>
+</svg>

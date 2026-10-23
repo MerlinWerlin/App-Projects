@@ -1,0 +1,107 @@
+{
+  "registerPrompt": { "type": "response", "id": "register_0", "payload": { "pairingType": "PROMPT", "returnValue": true } },
+  "registered": { "type": "registered", "id": "register_0", "payload": { "client-key": "a1b2c3d4e5f60718293a4b5c6d7e8f90" } },
+  "registerDenied": { "type": "error", "id": "register_0", "error": "403 User denied access", "payload": {} },
+  "registerCancelled": { "type": "error", "id": "register_0", "error": "403 cancelled", "payload": {} },
+  "hello": { "type": "hello", "id": "hello_0", "payload": { "protocolVersion": 1, "deviceType": "tv", "deviceOS": "webOS", "deviceOSVersion": "4.1.0" } },
+  "pointerSocket": {
+    "type": "response",
+    "id": "<id>",
+    "payload": { "socketPath": "wss://192.168.1.77:3001/resources/4f3b0c6e1d2a5b7c8e9f0a1b2c3d4e5f60718293/netinput.pointer.sock", "returnValue": true }
+  },
+  "pointerSocketLegacy": {
+    "type": "response",
+    "id": "<id>",
+    "payload": { "socketPath": "ws://192.168.1.77:3000/resources/4f3b0c6e1d2a5b7c8e9f0a1b2c3d4e5f60718293/netinput.pointer.sock", "returnValue": true }
+  },
+  "ok": { "type": "response", "id": "<id>", "payload": { "returnValue": true } },
+  "insufficientPermissions": { "type": "error", "id": "<id>", "error": "401 insufficient permissions", "payload": {} },
+  "noSuchService": { "type": "error", "id": "<id>", "error": "404 no such service or method", "payload": {} },
+  "returnValueFalse": { "type": "response", "id": "<id>", "payload": { "returnValue": false, "errorCode": -1000, "errorText": "Invalid input source" } },
+  "launchPoints": {
+    "type": "response",
+    "id": "<id>",
+    "payload": {
+      "subscribed": false,
+      "caseDetail": { "change": [], "serviceCountryCode": "USA", "localeCode": "en-US" },
+      "launchPoints": [
+        {
+          "id": "netflix",
+          "launchPointId": "netflix_default",
+          "title": "Netflix",
+          "icon": "http://192.168.1.77:3000/resources/8a9b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b/bmV0ZmxpeF84MHg4MC5wbmc=.png",
+          "largeIcon": "http://192.168.1.77:3000/resources/0b1a2f3e4d5c6b7a8f9e0d1c2b3a4f5e6d7c8b9a/bmV0ZmxpeF8xMzB4MTMwLnBuZw==.png",
+          "bgColor": "#000000",
+          "removable": true,
+          "systemApp": false
+        },
+        {
+          "id": "youtube.leanback.v4",
+          "launchPointId": "youtube.leanback.v4_default",
+          "title": "YouTube",
+          "icon": "http://192.168.1.77:3000/resources/1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d/eW91dHViZV84MHg4MC5wbmc=.png",
+          "removable": true,
+          "systemApp": false
+        },
+        {
+          "id": "com.webos.app.livetv",
+          "launchPointId": "com.webos.app.livetv_default",
+          "title": "Live TV",
+          "icon": "",
+          "removable": false,
+          "systemApp": true
+        },
+        { "launchPointId": "broken_entry", "title": "No id" },
+        {
+          "id": "netflix",
+          "launchPointId": "netflix_profile",
+          "title": "Netflix (second launch point)",
+          "icon": "http://192.168.1.77:3000/resources/ffff/dup.png"
+        }
+      ],
+      "returnValue": true
+    }
+  },
+  "launchPointsOffLan": {
+    "type": "response",
+    "id": "<id>",
+    "payload": {
+      "launchPoints": [
+        { "id": "cloud.app", "title": "Cloud Icon", "largeIcon": "https://cdn.example.com/icons/cloud.png" },
+        { "id": "local.app", "title": "Local Icon", "icon": "http://192.168.1.77:3000/resources/aa/local.png" },
+        { "id": "path.app", "title": "Path Icon", "icon": "/media/cryptofs/apps/path/icon.png" }
+      ],
+      "returnValue": true
+    }
+  },
+  "apps": {
+    "type": "response",
+    "id": "<id>",
+    "payload": {
+      "apps": [
+        { "id": "com.webos.app.browser", "title": "Web Browser", "icon": "http://192.168.1.77:3000/resources/2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e/YnJvd3Nlci5wbmc=.png" }
+      ],
+      "returnValue": true
+    }
+  },
+  "inputList": {
+    "type": "response",
+    "id": "<id>",
+    "payload": {
+      "devices": [
+        { "id": "HDMI_1", "label": "HDMI 1", "port": 1, "appId": "com.webos.app.hdmi1", "icon": "http://192.168.1.77:3000/resources/aa/hdmi.png", "connected": true, "favorite": false, "modified": false },
+        { "id": "HDMI_2", "label": "Game console", "port": 2, "appId": "com.webos.app.hdmi2", "connected": false, "favorite": false, "modified": true },
+        { "id": "AV_1", "label": "AV", "port": 1, "appId": "com.webos.app.externalinput.av1", "connected": false },
+        { "label": "No id" }
+      ],
+      "returnValue": true
+    }
+  },
+  "foregroundHdmi2": { "type": "response", "id": "<id>", "payload": { "appId": "com.webos.app.hdmi2", "windowId": "", "processId": "", "returnValue": true } },
+  "volumeLegacy": { "type": "response", "id": "<id>", "payload": { "muted": false, "scenario": "mastervolume_tv_speaker", "active": false, "action": "requested", "volume": 14, "returnValue": true, "subscribed": false } },
+  "volumeStatus": {
+    "type": "response",
+    "id": "<id>",
+    "payload": { "volumeStatus": { "activeStatus": true, "adjustVolume": true, "maxVolume": 100, "muteStatus": false, "volume": 23, "mode": "normal", "soundOutput": "tv_speaker" }, "callerId": "secondscreen.client", "returnValue": true }
+  }
+}

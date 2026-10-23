@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Tulip</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 158 112 L 176 150 L 200 102 L 224 150 L 242 112 C 262 165 252 222 200 232 C 148 222 138 165 158 112 Z"/>
+    <path d="M 176 150 C 178 190 188 216 200 232 M 224 150 C 222 190 212 216 200 232"/>
+    <path d="M 200 232 C 197 280 203 325 200 372"/>
+    <path d="M 200 334 C 160 322 130 282 134 238 C 166 258 190 292 200 334 Z"/>
+    <path d="M 201 304 C 240 292 266 256 262 214 C 234 234 210 266 201 304 Z"/>
+    <path d="M 120 372 L 280 372"/>
+  </g>
+</svg>

@@ -1,0 +1,52 @@
+/* Glaze widget extension strings (T86), Japanese. Machine translation awaiting native-speaker
+   review (docs/I18N.md). Same keys as en.lproj. */
+
+"habit.name.water" = "水分";
+"habit.name.sleep" = "睡眠";
+"habit.name.steps" = "歩数";
+"habit.name.mood" = "気分";
+
+"habit.unit.ml" = "ml";
+"habit.unit.hours" = "時間";
+"habit.unit.steps" = "歩";
+
+"habit.desc.water" = "飲むたびに +150 ml をタップ。0時にリセットされます。";
+"habit.desc.sleep" = "睡眠を1時間ずつ記録します。";
+"habit.desc.steps" = "歩数を500歩ずつ手で記録します。";
+"habit.desc.mood" = "今日の気分を選びます。";
+
+"habit.goalOf" = "目標 %1$@ %2$@";
+
+"habit.a11y.add" = "%1$@ %2$@ 追加";
+"habit.a11y.remove" = "%1$@ %2$@ 減らす";
+"habit.a11y.moodDown" = "気分を下げる";
+"habit.a11y.moodUp" = "気分を上げる";
+"habit.a11y.mood1" = "気分を記録：最悪";
+"habit.a11y.mood2" = "気分を記録：いまいち";
+"habit.a11y.mood3" = "気分を記録：ふつう";
+"habit.a11y.mood4" = "気分を記録：いい感じ";
+"habit.a11y.mood5" = "気分を記録：最高";
+
+"habit.mood.0" = "未記録";
+"habit.mood.1" = "最悪";
+"habit.mood.2" = "いまいち";
+"habit.mood.3" = "ふつう";
+"habit.mood.4" = "いい感じ";
+"habit.mood.5" = "最高";
+
+"Log a habit" = "習慣を記録";
+"Log mood" = "気分を記録";
+"Habit" = "習慣";
+"Direction" = "方向";
+"Level" = "レベル";
+
+"Clock" = "時計";
+"The time, in your Glaze theme." = "Glaze のテーマで時刻を表示。";
+"Date" = "日付";
+"Today's date, in your Glaze theme." = "Glaze のテーマで今日の日付を表示。";
+"Time and date for your Lock Screen." = "ロック画面用の時刻と日付。";
+"Photo" = "写真";
+"A photo you pick in Glaze." = "Glaze で選んだ写真。";
+"Choose a photo in Glaze" = "Glaze で写真を選んでください";
+"Little Line" = "ひとこと";
+"A short, gentle line that changes every hour." = "1時間ごとに変わる、短くやさしいひとこと。";

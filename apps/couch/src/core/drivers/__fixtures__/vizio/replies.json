@@ -1,0 +1,15 @@
+{
+  "pairStart": {"STATUS":{"RESULT":"SUCCESS","DETAIL":"Success"},"ITEM":{"PAIRING_REQ_TOKEN":73241,"CHALLENGE_TYPE":1}},
+  "pairStartBlocked": {"STATUS":{"RESULT":"BLOCKED","DETAIL":"Blocked"}},
+  "pairFinish": {"STATUS":{"RESULT":"SUCCESS","DETAIL":"Success"},"ITEM":{"AUTH_TOKEN":"Zm9vYmFyMTIz"}},
+  "pairWrongPin": {"STATUS":{"RESULT":"CHALLENGE_INCORRECT","DETAIL":"Challenge incorrect"}},
+  "pairCancel": {"STATUS":{"RESULT":"SUCCESS","DETAIL":"Success"}},
+  "success": {"STATUS":{"RESULT":"SUCCESS","DETAIL":"Success"}},
+  "unauthorized": {"STATUS":{"RESULT":"UNAUTHORIZED","DETAIL":"Unauthorized"}},
+  "invalidParameter": {"STATUS":{"RESULT":"INVALID_PARAMETER","DETAIL":"invalid parameter"}},
+  "powerOn": {"STATUS":{"RESULT":"SUCCESS","DETAIL":"Success"},"ITEMS":[{"HASHVAL":0,"CNAME":"power_mode","TYPE":"T_VALUE_V1","NAME":"Power Mode","VALUE":1}],"URI":"/state/device/power_mode"},
+  "powerStandby": {"STATUS":{"RESULT":"SUCCESS","DETAIL":"Success"},"ITEMS":[{"HASHVAL":0,"CNAME":"power_mode","TYPE":"T_VALUE_V1","NAME":"Power Mode","VALUE":0}],"URI":"/state/device/power_mode"},
+  "volume": {"STATUS":{"RESULT":"SUCCESS","DETAIL":"Success"},"HASHLIST":[1129765394,2165394817],"ITEMS":[{"HASHVAL":3518438562,"CNAME":"volume","TYPE":"T_VALUE_V1","NAME":"Volume","VALUE":22}],"URI":"/menu_native/dynamic/tv_settings/audio/volume"},
+  "currentInput": {"STATUS":{"RESULT":"SUCCESS","DETAIL":"Success"},"ITEMS":[{"HASHVAL":1890234511,"CNAME":"current_input","TYPE":"T_LIST_V1","NAME":"Current Input","VALUE":"HDMI-1"}],"PARAMETERS":{"FLAT":"TRUE","HASHONLY":"FALSE","HELPTEXT":"FALSE"},"URI":"/menu_native/dynamic/tv_settings/devices/current_input"},
+  "inputs": {"STATUS":{"RESULT":"SUCCESS","DETAIL":"Success"},"HASHLIST":[2087319876,3105876512],"GROUP":"G_DEVICES","NAME":"Name Input","PARAMETERS":{"FLAT":"TRUE","HELPTEXT":"FALSE","HASHONLY":"FALSE"},"ITEMS":[{"HASHVAL":1000000001,"CNAME":"cast","NAME":"CAST","TYPE":"T_DEVICE_V1","READONLY":"TRUE","VALUE":{"NAME":"CAST","METADATA":""}},{"HASHVAL":1000000002,"CNAME":"hdmi1","NAME":"HDMI-1","TYPE":"T_DEVICE_V1","VALUE":{"NAME":"Xbox","METADATA":""}},{"HASHVAL":1000000003,"CNAME":"hdmi2","NAME":"HDMI-2","TYPE":"T_DEVICE_V1","VALUE":{"NAME":"","METADATA":""}},{"HASHVAL":1000000004,"CNAME":"hdmi3","NAME":"HDMI-3","TYPE":"T_DEVICE_V1","VALUE":{"NAME":"Apple TV","METADATA":""}},{"HASHVAL":1000000005,"CNAME":"comp","NAME":"COMP","TYPE":"T_DEVICE_V1","VALUE":{"NAME":"","METADATA":""}},{"HASHVAL":1000000006,"CNAME":"tuner","NAME":"TV","TYPE":"T_DEVICE_V1","VALUE":{"NAME":"","METADATA":""}}],"URI":"/menu_native/dynamic/tv_settings/devices/name_input"}
+}

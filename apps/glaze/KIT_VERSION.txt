@@ -1,0 +1,7 @@
+Glaze trial kit
+Built from commit: 118d43c (2026-10-22)
+Includes up to: T110 calm category bubbles (owner test 22 Oct evening: no bounce, soft tint fade, grid cross-fade)
+
+If "Built from commit" above shows a dollar sign instead of a short code, this folder is a
+working copy, not a downloaded kit. Compare the code with the newest kit commit shown on the
+Glaze Build page ("Trial kit" line). If they differ, download the kit again from that page.

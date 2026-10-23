@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Ribbon banner</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 92 140 C 160 118 240 118 308 140 L 308 228 C 240 206 160 206 92 228 Z"/>
+    <path d="M 92 176 L 30 180 L 56 216 L 30 252 L 106 248 L 92 228 M 308 176 L 370 180 L 344 216 L 370 252 L 294 248 L 308 228"/>
+    <path d="M 112 160 C 170 142 230 142 288 160 M 112 204 C 170 186 230 186 288 204"/>
+    <path d="M 40 296 L 360 296 M 40 326 L 360 326 M 40 356 L 360 356"/>
+  </g>
+</svg>

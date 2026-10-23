@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Circles in a square grid</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 50 50 L 350 50 L 350 350 L 50 350 Z"/>
+    <path d="M 50 100 A 50 50 0 1 0 150 100 A 50 50 0 1 0 50 100 Z"/>
+    <path d="M 50 200 A 50 50 0 1 0 150 200 A 50 50 0 1 0 50 200 Z"/>
+    <path d="M 50 300 A 50 50 0 1 0 150 300 A 50 50 0 1 0 50 300 Z"/>
+    <path d="M 150 100 A 50 50 0 1 0 250 100 A 50 50 0 1 0 150 100 Z"/>
+    <path d="M 150 200 A 50 50 0 1 0 250 200 A 50 50 0 1 0 150 200 Z"/>
+    <path d="M 150 300 A 50 50 0 1 0 250 300 A 50 50 0 1 0 150 300 Z"/>
+    <path d="M 250 100 A 50 50 0 1 0 350 100 A 50 50 0 1 0 250 100 Z"/>
+    <path d="M 250 200 A 50 50 0 1 0 350 200 A 50 50 0 1 0 250 200 Z"/>
+    <path d="M 250 300 A 50 50 0 1 0 350 300 A 50 50 0 1 0 250 300 Z"/>
+    <path d="M 129.3 150 A 20.7 20.7 0 1 0 170.7 150 A 20.7 20.7 0 1 0 129.3 150 Z"/>
+    <path d="M 129.3 250 A 20.7 20.7 0 1 0 170.7 250 A 20.7 20.7 0 1 0 129.3 250 Z"/>
+    <path d="M 229.3 150 A 20.7 20.7 0 1 0 270.7 150 A 20.7 20.7 0 1 0 229.3 150 Z"/>
+    <path d="M 229.3 250 A 20.7 20.7 0 1 0 270.7 250 A 20.7 20.7 0 1 0 229.3 250 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 50 50 L 350 350 M 350 50 L 50 350"/>
+  </g>
+</svg>

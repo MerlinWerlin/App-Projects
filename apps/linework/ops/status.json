@@ -1,0 +1,18 @@
+{
+  "tests": 629,
+  "typecheck": "core only (registry unreachable) + offline strict UI typecheck (stubs) clean",
+  "last_run": "2026-10-23 11:35 Sydney",
+  "stage": "release-prep",
+  "oversight_seen": "1792709370-a644",
+  "headline": "Release set-up: 14-day free trial, then Linework Plus A$2.99 once — and the library is now 529 original templates with an instant-opening Templates screen. Your App Store Connect steps are below.",
+  "next_for_owner": [
+    "Retest in Expo Go (docs/TRIAL.md 'New 22 Oct late'): Templates opens instantly; browse Animals 41, Faces 30, Still life 24, Places 28, Fantasy 24, Shapes 20, tattoo flash, Heroes 26 (new hero team), Game world 31; pick a mascot from docs/CAST.md.",
+    "App Store Connect: sign the Paid Apps agreement and add bank + tax details (Business).",
+    "Create the in-app purchase: Non-Consumable, Product ID com.jared797.linework.plus, A$2.99.",
+    "Put docs/privacy.html and docs/support.html online (GitHub Pages) and add the URLs.",
+    "Run TESTFLIGHT_PRECHECK.cmd first; if it fails, paste testflight-precheck.txt into a comment on this page. If it passes, run TESTFLIGHT_LINEWORK.cmd, then test a sandbox purchase in TestFlight.",
+    "Paste the listing from docs/STORE.md, add style (a) screenshots, submit for review."
+  ],
+  "trial_kit": true,
+  "next_stage": "testflight"
+}

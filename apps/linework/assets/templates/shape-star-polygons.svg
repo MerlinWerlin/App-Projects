@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Star polygon set</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 110 32 L 155.8 173.1 L 35.8 85.9 L 184.2 85.9 L 64.2 173.1 Z"/>
+    <path d="M 290 32 L 323.8 180.3 L 229 61.4 L 366 127.4 L 214 127.4 L 351 61.4 L 256.2 180.3 Z"/>
+    <path d="M 110 212 L 165.2 345.2 L 32 290 L 165.2 234.8 L 110 368 L 54.8 234.8 L 188 290 L 54.8 345.2 Z"/>
+    <path d="M 290 212 L 316.7 363.3 L 239.9 230.2 L 357.5 329 L 213.2 276.5 L 366.8 276.5 L 222.5 329 L 340.1 230.2 L 263.3 363.3 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 32 110 A 78 78 0 1 0 188 110 A 78 78 0 1 0 32 110 Z M 107 110 A 3 3 0 1 0 113 110 A 3 3 0 1 0 107 110 Z"/>
+    <path d="M 212 110 A 78 78 0 1 0 368 110 A 78 78 0 1 0 212 110 Z M 287 110 A 3 3 0 1 0 293 110 A 3 3 0 1 0 287 110 Z"/>
+    <path d="M 32 290 A 78 78 0 1 0 188 290 A 78 78 0 1 0 32 290 Z M 107 290 A 3 3 0 1 0 113 290 A 3 3 0 1 0 107 290 Z"/>
+    <path d="M 212 290 A 78 78 0 1 0 368 290 A 78 78 0 1 0 212 290 Z M 287 290 A 3 3 0 1 0 293 290 A 3 3 0 1 0 287 290 Z"/>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+{
+  "powerActive": {"result":[{"status":"active"}],"id":1},
+  "powerStandby": {"result":[{"status":"standby"}],"id":1},
+  "volumeInformation": {"result":[[{"target":"speaker","volume":18,"mute":false,"maxVolume":100,"minVolume":0},{"target":"headphone","volume":10,"mute":false,"maxVolume":100,"minVolume":0}]],"id":7},
+  "playingHdmi1": {"result":[{"uri":"extInput:hdmi?port=1","source":"extInput:hdmi","title":"HDMI 1"}],"id":8},
+  "playingAppIllegalState": {"error":[7,"Illegal State"],"id":8},
+  "displayOff": {"error":[40005,"Display Is Turned off"],"id":9},
+  "noSuchMethod": {"error":[12,"getFooBar"],"id":10},
+  "ok": {"result":[],"id":11}
+}

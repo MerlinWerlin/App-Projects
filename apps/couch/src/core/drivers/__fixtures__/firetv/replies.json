@@ -1,0 +1,22 @@
+{
+  "wakeFireOs": "",
+  "wakeVegaXml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><service xmlns=\"urn:dial-multiscreen-org:schemas:dial\"><name>FireTVRemote</name><state>running</state><additionalData><platform>Vega OS</platform></additionalData></service>",
+  "pinDisplay": {"description": "OK"},
+  "pinVerify": {"description": "c2VjcmV0LWNsaWVudC10b2tlbg"},
+  "pinVerifyWrong": {"description": "Invalid PIN"},
+  "propertiesFireOs": {"deviceName": "Living Room Fire TV", "model": "AFTKA", "os": "Fire OS 7.6.6.9", "manufacturer": "Amazon"},
+  "propertiesVega": {"deviceName": "Bedroom Fire TV Stick", "model": "AFTCA001", "os": "Vega OS 1.1", "manufacturer": "Amazon"},
+  "propertiesKepler": {"deviceName": "Fire TV Stick", "platform": "Kepler"},
+  "ok": {"description": "OK"},
+  "apps": [
+    {"appName": "Netflix", "packageName": "com.netflix.ninja", "iconArtSmallUri": "https://m.media-amazon.example/images/netflix-small.png"},
+    {"appName": "YouTube", "packageName": "com.amazon.firetv.youtube", "iconArtSmallUri": "https://m.media-amazon.example/images/youtube-small.png"},
+    {"appName": "Prime Video", "packageName": "com.amazon.avod"},
+    {"appName": "Settings Shortcut"},
+    {"name": "Plex", "id": "com.plexapp.android"}
+  ],
+  "appsLanIcons": {"apps": [
+    {"appName": "Kodi", "packageName": "org.xbmc.kodi", "iconArtSmallUri": "http://192.168.1.80:8080/icons/org.xbmc.kodi.png"},
+    {"appName": "Netflix", "packageName": "com.netflix.ninja", "iconArtSmallUri": "https://m.media-amazon.example/images/netflix-small.png"}
+  ]}
+}

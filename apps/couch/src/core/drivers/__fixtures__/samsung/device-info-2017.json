@@ -1,0 +1,33 @@
+{
+  "device": {
+    "FrameTVSupport": "false",
+    "GamePadSupport": "true",
+    "ImeSyncedSupport": "true",
+    "OS": "Tizen",
+    "VoiceSupport": "false",
+    "countryCode": "GB",
+    "description": "Samsung DTV RCR",
+    "developerIP": "0.0.0.0",
+    "developerMode": "0",
+    "duid": "uuid:7a1d22b0-11cc-4e2a-9f10-0c8d3e4f5a6b",
+    "firmwareVersion": "Unknown",
+    "id": "uuid:7a1d22b0-11cc-4e2a-9f10-0c8d3e4f5a6b",
+    "ip": "10.0.0.17",
+    "model": "17_KANTM_UHD",
+    "modelName": "UE49MU6400",
+    "name": "Bedroom TV",
+    "networkType": "wired",
+    "resolution": "3840x2160",
+    "smartHubAgreement": "true",
+    "type": "Samsung SmartTV",
+    "udn": "uuid:7a1d22b0-11cc-4e2a-9f10-0c8d3e4f5a6b",
+    "wifiMac": "5C:49:7D:00:11:22"
+  },
+  "id": "uuid:7a1d22b0-11cc-4e2a-9f10-0c8d3e4f5a6b",
+  "isSupport": "{\"DMP_DRM_PLAYREADY\":\"false\",\"DMP_DRM_WIDEVINE\":\"false\",\"DMP_available\":\"true\",\"EDEN_available\":\"true\",\"FrameTVSupport\":\"false\",\"ImeSyncedSupport\":\"true\",\"TokenAuthSupport\":\"true\",\"remote_available\":\"true\",\"remote_fourDirections\":\"true\",\"remote_touchPad\":\"true\",\"remote_voiceControl\":\"false\"}\n",
+  "name": "Bedroom TV",
+  "remote": "1.0",
+  "type": "Samsung SmartTV",
+  "uri": "http://10.0.0.17:8001/api/v2/",
+  "version": "2.0.25"
+}

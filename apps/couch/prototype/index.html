@@ -1,0 +1,559 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Couch Remote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one phone-width column shaped like a handset remote; header shows the active TV, three tabs, sheets slide up from the bottom */
+:root{
+  --bg:#E4E8EC; --body:#F6F7F9; --key:#FFFFFF; --key-edge:#CDD3DA; --ink:#1C232B; --muted:#5D6873;
+  --accent:#2F5BD3; --accent-soft:#E3EAFB; --power:#C43D3D; --ok:#2C7A54; --warn:#9B6A12;
+  --shadow:0 1px 0 var(--key-edge), 0 2px 6px rgba(30,40,55,.08);
+  --display:"Sora","Avenir Next","Segoe UI","Inter Display","Inter",sans-serif;
+  --text:"Manrope","Helvetica Neue","Inter",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  /* fb-1017b H2 key face (src/ui/icons/keyFaceColors.ts): top lit 7% toward white, bottom 5% toward keyEdge,
+     white gloss fading out by 18%, keyEdge inner shade from 78%. applyTheme() sets these per remote theme. */
+  --kf-top:color-mix(in srgb,var(--key) 93%,#fff); --kf-bot:color-mix(in srgb,var(--key) 95%,var(--key-edge));
+  --kf-gloss:rgba(255,255,255,.6); --kf-shade:color-mix(in srgb,var(--key-edge) 18%,transparent);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1115; --body:#171B21; --key:#222831; --key-edge:#0A0C0F; --ink:#E6EAEF; --muted:#98A3AF;
+  --accent:#86A6FF; --accent-soft:#1E2A47; --power:#FF7A72; --ok:#6CC796; --warn:#E5B35A;
+  --shadow:0 1px 0 var(--key-edge), 0 2px 8px rgba(0,0,0,.35); color-scheme:dark;
+  --kf-gloss:rgba(255,255,255,.14); --kf-shade:color-mix(in srgb,var(--key-edge) 35%,transparent)}}
+:root[data-theme="dark"]{
+  --bg:#0E1115; --body:#171B21; --key:#222831; --key-edge:#0A0C0F; --ink:#E6EAEF; --muted:#98A3AF;
+  --accent:#86A6FF; --accent-soft:#1E2A47; --power:#FF7A72; --ok:#6CC796; --warn:#E5B35A;
+  --shadow:0 1px 0 var(--key-edge), 0 2px 8px rgba(0,0,0,.35); color-scheme:dark;
+  --kf-gloss:rgba(255,255,255,.14); --kf-shade:color-mix(in srgb,var(--key-edge) 35%,transparent)}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--text);font-size:15px;line-height:1.45;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:420px;margin:0 auto;padding-inline:16px;padding-block:16px 40px;display:flex;flex-direction:column;gap:14px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tvbar{display:flex;align-items:center;gap:10px;background:var(--body);border-radius:16px;padding:10px 12px;border:0;width:100%;text-align:left}
+.led{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 20%,transparent);flex:none}
+.led.off{background:var(--muted);box-shadow:none}
+.tvbar .nm{font-family:var(--display);font-weight:600;font-size:16px}
+.tvbar .sub{font-size:12.5px;color:var(--muted)}
+.tvbar .ms{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--body);border-radius:12px;padding:4px}
+.tabs button{border:0;background:none;border-radius:9px;padding:9px 0;font-weight:600;font-size:14px;color:var(--muted)}
+.tabs button[aria-selected="true"]{background:var(--key);color:var(--ink);box-shadow:var(--shadow)}
+.remote{background:var(--body);border-radius:28px;padding:20px 18px 18px;display:flex;flex-direction:column;gap:18px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.key{background:var(--key);border:0;border-radius:var(--radius,14px);box-shadow:var(--shadow);min-height:48px;min-width:48px;display:grid;place-items:center;font-weight:600;font-size:13px;transition:transform .08s}
+.key:active,.key.hit{transform:translateY(1px) scale(.97);background:var(--accent-soft)}
+.key svg{width:22px;height:22px}
+/* fb-1017b H2: every icon is an inline SVG from the app's own path data (#icon-paths, src/ui/icons/paths.ts):
+   24 viewBox, stroke 1.9, round caps and joins, filled parts solid; colour is currentColor from the theme. */
+svg.ic{flex:none;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+svg.ic .f{fill:currentColor;stroke:none}
+/* physical key face (KeyFace.tsx): gradient face, thin top highlight, soft inner shade at the bottom */
+.key,.rocker,.x{background:linear-gradient(180deg,var(--kf-gloss) 0,transparent 18%),linear-gradient(180deg,transparent 78%,var(--kf-shade) 100%),linear-gradient(180deg,var(--kf-top),var(--kf-bot))}
+.key.power{color:var(--power)}
+.key.round{border-radius:50%}
+.key.wide{flex:1}
+/* fb-1017-ok / fb-1017b H1: one size variable (--pad) drives ring, OK key and arrow areas (src/core/dpadGeometry.ts).
+   OK key = 52% of the ring (DPAD_KEY_RATIO), a true circle centred with translate(-50%,-50%); each arrow takes the
+   24% band between the key and the ring edge. Label bold ~21pt at 260 (.081), line-height 1. Raised bevel (OkBevel):
+   white light fading out by 36%, keyEdge shade from 64%, soft keyEdge drop shadow. */
+.pad{--pad:min(260px,72vw);position:relative;width:var(--pad);height:var(--pad);margin:0 auto;border-radius:50%;background:var(--ring,var(--key));box-shadow:var(--shadow)}
+.pad button{position:absolute;border:0;background:none;display:grid;place-items:center;color:var(--muted)}
+.pad button svg{width:calc(var(--pad)*.1);height:calc(var(--pad)*.1)}
+.pad .u,.pad .d{left:calc(var(--pad)*.24);width:calc(var(--pad)*.52);height:calc(var(--pad)*.24)}.pad .u{top:0}.pad .d{bottom:0}
+.pad .l,.pad .r{top:calc(var(--pad)*.24);height:calc(var(--pad)*.52);width:calc(var(--pad)*.24)}.pad .l{left:0}.pad .r{right:0}
+.pad button.hit{color:var(--accent)}
+.pad .okb{top:50%;left:50%;width:calc(var(--pad)*.52);height:calc(var(--pad)*.52);transform:translate(-50%,-50%);transform-origin:50% 50%;border-radius:50%;padding:0;background:var(--accent);color:var(--accent-ink,#fff);font-family:var(--display);font-weight:700;font-size:calc(var(--pad)*.081);line-height:1;box-shadow:inset 0 0 0 calc(var(--pad)*.031) var(--accent-soft),0 3px 6px color-mix(in srgb,var(--key-edge) 45%,transparent);background-image:linear-gradient(180deg,rgba(255,255,255,.3) 0,rgba(255,255,255,0) 36%,transparent 64%,color-mix(in srgb,var(--key-edge) 35%,transparent) 100%);transition:transform .12s}
+.pad .okb.hit{filter:brightness(1.15);transform:translate(-50%,-50%) scale(.94)}
+.touch{width:100%;aspect-ratio:1.25;border-radius:22px;background:var(--key);box-shadow:var(--shadow);display:grid;place-items:center;color:var(--muted);font-size:13px;touch-action:none;user-select:none;position:relative;overflow:hidden}
+.touch .dot{position:absolute;width:44px;height:44px;border-radius:50%;background:var(--accent-soft);pointer-events:none;transform:translate(-50%,-50%)}
+.rocker{display:flex;flex-direction:column;background:var(--key);border-radius:24px;box-shadow:var(--shadow);width:60px;align-items:center}
+.rocker button{border:0;background:none;height:52px;width:60px;display:grid;place-items:center;border-radius:24px}
+.rocker button.hit{background:var(--accent-soft)}
+.rocker span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.rocker svg{width:20px;height:20px}
+.mid{display:grid;grid-template-columns:repeat(2,52px);gap:10px}
+.log{font-family:var(--mono);font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;min-height:18px}
+.log b{color:var(--ink);font-weight:500}
+.seg{display:inline-flex;background:var(--key);border-radius:99px;padding:3px;box-shadow:var(--shadow)}
+.seg button{border:0;background:none;border-radius:99px;padding:5px 12px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink,#fff)}
+.promise{font-size:12.5px;color:var(--muted);text-align:center}
+.simple .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.simple .key{min-height:84px;font-size:17px;border-radius:20px;flex-direction:column;gap:4px;display:flex;align-items:center;justify-content:center}
+.simple .key svg{width:30px;height:30px}
+/* lists */
+h2{font-family:var(--display);font-size:17px;margin:0;text-wrap:balance}
+.panel{background:var(--body);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+/* fb-1017b H3 app tiles (src/ui/apps/AppTile.tsx): 4:3 artwork edge to edge on top, name below. Demo apps carry
+   original abstract art (#demo-apps, from src/core/demo.ts); apps without art get the house tile: the name in
+   Couch type on a palette gradient picked from the app id. No symbol or emoji glyphs, no service logos. */
+.app{border:0;background:var(--key);border-radius:16px;box-shadow:var(--shadow);padding:0;display:flex;flex-direction:column;align-items:stretch;min-width:0;overflow:hidden;color:var(--ink)}
+.app .art{position:relative;display:block;width:100%;aspect-ratio:4/3;overflow:hidden;background:var(--body);container-type:inline-size}
+.app .art svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.app .wm{position:absolute;left:8px;right:8px;bottom:6px;color:#fff;font-family:var(--display);font-weight:700;font-size:13cqw;line-height:1.2;text-align:start;white-space:nowrap;overflow:hidden;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.app .hl{position:absolute;inset:0;display:grid;place-items:center;padding:0 8px;color:#fff;font-family:var(--display);font-weight:700;line-height:1.12;text-align:center;white-space:pre-line;text-shadow:0 1px 2px rgba(0,0,0,.18)}
+.app .cap{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 8px 10px;min-width:0}
+.app .nm{font-size:12.5px;font-weight:600;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app:active{background:var(--accent-soft)}
+.tv{display:flex;align-items:center;gap:12px;background:var(--key);border-radius:14px;padding:12px;box-shadow:var(--shadow);border:0;width:100%;text-align:left}
+.tv .t{flex:1;min-width:0}.tv>span>.ic{display:block;width:24px;height:24px}
+.tv .t b{display:block}
+.tv .t small{color:var(--muted);font-size:12.5px}
+.chip{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.chip.beta{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:700;background:var(--accent);color:var(--accent-ink,#fff);min-height:46px}
+.btn.ghost{background:var(--key);color:var(--ink);box-shadow:var(--shadow)}
+.setting{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.setting small{display:block;color:var(--muted);font-size:12.5px}
+.switch{width:50px;height:30px;border-radius:99px;border:0;background:var(--key-edge);position:relative;flex:none}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .15s}
+.switch[aria-checked="true"]{background:var(--accent)}
+.switch[aria-checked="true"]::after{left:23px}
+.plus{border:2px dashed var(--key-edge);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.plus b{font-family:var(--display)}
+.mono{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums}
+.diag{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:13.5px}
+.diag dt{color:var(--muted)} .diag dd{margin:0;text-align:right}
+/* sheet */
+.scrim{position:fixed;inset:0;background:rgba(10,14,20,.45);display:flex;align-items:flex-end;justify-content:center;z-index:10}
+.sheet{background:var(--body);width:100%;max-width:440px;border-radius:24px 24px 0 0;padding:18px 16px calc(22px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;max-height:88%;overflow:auto;animation:up .22s ease-out}
+@keyframes up{from{transform:translateY(30px);opacity:.6}}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}.key{transition:none}}
+.sheet .hd{display:flex;justify-content:space-between;align-items:center}
+.x{border:0;border-radius:50%;width:36px;height:36px;box-shadow:var(--shadow);display:grid;place-items:center;color:var(--ink);padding:0}
+.x svg{width:16px;height:16px}
+.tvbar .chev{width:16px;height:16px;color:var(--muted);margin-left:2px}
+.field{width:100%;font:inherit;font-size:17px;padding:12px 14px;border-radius:12px;border:1px solid var(--key-edge);background:var(--key);color:var(--ink)}
+.code{display:flex;gap:6px}
+.code input{width:100%;min-width:0;text-align:center;font-family:var(--mono);font-size:22px;text-transform:uppercase;padding:10px 0}
+.scan{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13.5px}
+.spin{width:18px;height:18px;border-radius:50%;border:2px solid var(--accent-soft);border-top-color:var(--accent);animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(1turn)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+.note{font-size:13px;color:var(--muted)}
+.tip{background:var(--accent-soft);border-radius:12px;padding:10px 12px;font-size:13.5px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;font-weight:600;z-index:20;max-width:calc(100% - 32px)}
+.demo{font-size:11.5px;text-align:center;color:var(--muted)}
+.key.lbl{flex-direction:column;gap:2px;display:flex;align-items:center;justify-content:center;font-size:11.5px;padding:6px 10px;min-width:64px}
+.key.lbl svg{width:20px;height:20px}
+.colors{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.colors button{border:0;height:30px;border-radius:99px;box-shadow:var(--shadow);background:var(--c);transition:transform .08s}
+.colors button.hit{transform:scale(.94);filter:brightness(1.2)}
+.voice{border:0;display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:15px;width:100%;user-select:none;touch-action:none}
+.voice svg{width:22px;height:22px}
+.voice.on{background:var(--accent);color:var(--accent-ink,#fff)}
+.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.numpad .key{min-height:56px;font-family:var(--display);font-size:20px}
+.srcs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.srcs .key{min-height:56px;font-size:15px}
+.srcs .key.cur{box-shadow:0 0 0 2px var(--accent)}
+.app em{font-style:normal;font-size:10.5px;color:var(--accent);font-weight:700}
+.irstep{display:flex;align-items:center;gap:12px;background:var(--key);border-radius:14px;padding:12px;box-shadow:var(--shadow)}
+.irstep .num{font-family:var(--mono);font-size:22px;min-width:3ch;text-align:center}
+.split{display:flex;gap:10px}.split .btn{flex:1}
+/* owner-1017 T58: remote themes mirrored from src/theme/remoteThemes.ts (tokens in #remote-themes JSON below).
+   applyTheme() sets the custom properties; textures are generated (gradients + inline SVG noise), never images. */
+.themebar{max-width:420px;margin:0 auto;padding:12px 16px 0;display:flex;justify-content:flex-end;align-items:center;gap:8px;font-size:12.5px;color:var(--muted)}
+.themebar select{font:inherit;font-weight:600;color:var(--ink);background:var(--key);border:1px solid var(--key-edge);border-radius:99px;padding:5px 10px}
+html[data-shot] [data-chrome],html[data-shot] .demo{display:none!important}
+/* T83: the apps store shot carries no small print and no second name label under each tile */
+html[data-shot] .appsnote,html[data-shot] .app .cap{display:none!important}
+.rthemes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.rthemes button{border:0;background:none;padding:4px 0;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--muted);min-width:0}
+.rthemes i{width:38px;height:38px;border-radius:50%;background:conic-gradient(var(--sa) 0 50%,var(--sb) 0);box-shadow:inset 0 0 0 3px var(--sc),var(--shadow)}
+.rthemes button[aria-pressed="true"]{color:var(--ink)}
+.rthemes button[aria-pressed="true"] i{outline:2px solid var(--accent);outline-offset:2px}
+.rthemes small{font-size:9.5px;color:var(--accent);font-weight:700}
+.rthemes span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html[data-rtheme] body{background:radial-gradient(130% 70% at 50% 42%,color-mix(in srgb,var(--glow) 24%,transparent),transparent 68%) fixed,var(--stage)}
+html[data-rtheme] .remote{position:relative;isolation:isolate;box-shadow:0 0 0 1px color-mix(in srgb,var(--ink) 7%,transparent),0 26px 70px -20px color-mix(in srgb,var(--glow) 70%,transparent)}
+html[data-rtheme] .remote::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;pointer-events:none;opacity:var(--tex-op,0)}
+html[data-rtheme] .pad::before{content:"";position:absolute;inset:calc(var(--pad)*.055);border-radius:50%;pointer-events:none;background:conic-gradient(from -42deg,var(--ring-lit) 0 84deg,color-mix(in srgb,var(--ring-lit) 22%,transparent) 84deg 360deg);-webkit-mask:radial-gradient(closest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px));mask:radial-gradient(closest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px))}
+html[data-tex="glass"] .remote::before{background:linear-gradient(165deg,var(--t1) 0%,transparent 55%),linear-gradient(180deg,rgba(255,255,255,.14),transparent 16%)}
+html[data-tex="paper"] .remote::before{background:var(--noise),linear-gradient(180deg,var(--t1),var(--t2))}
+html[data-tex="velvet"] .remote::before{background:var(--noise-fine),radial-gradient(110% 60% at 25% 0%,var(--t1),transparent 62%),radial-gradient(90% 55% at 85% 100%,var(--t1),transparent 70%),linear-gradient(180deg,var(--t2),var(--t1))}
+html[data-tex="brushed"] .remote::before{background:var(--brush),linear-gradient(100deg,transparent 20%,rgba(255,255,255,.75) 46%,transparent 54%,rgba(255,255,255,.35) 78%,transparent 90%),linear-gradient(180deg,var(--t1),var(--t2))}
+html[data-tex="woodgrain"] .remote::before{background:var(--wood),repeating-linear-gradient(90deg,var(--t1) 0 14px,var(--t2) 18px 22px,var(--t3) 26px 40px,var(--t1) 46px 52px)}
+html[data-tex="woodgrain"] .remote{box-shadow:inset 0 0 0 3px color-mix(in srgb,var(--key-edge) 70%,transparent),0 26px 70px -20px color-mix(in srgb,var(--glow) 60%,transparent)}
+html[data-tex="neon"] .remote::before{background:radial-gradient(90% 40% at 0% 0%,var(--t1),transparent 70%),radial-gradient(90% 40% at 100% 100%,var(--t2),transparent 70%)}
+html[data-tex="neon"] .remote{box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--t1) 85%,transparent),inset 0 0 26px color-mix(in srgb,var(--t1) 30%,transparent),0 0 0 1px color-mix(in srgb,var(--t2) 45%,transparent),0 0 60px -8px color-mix(in srgb,var(--t2) 70%,transparent)}
+html[data-tex="neon"] .key,html[data-tex="neon"] .rocker,html[data-tex="neon"] .seg{box-shadow:0 0 0 1px color-mix(in srgb,var(--t1) 55%,transparent),0 0 14px -4px var(--t1)}
+html[data-tex="neon"] .pad{box-shadow:0 0 0 1px color-mix(in srgb,var(--t2) 60%,transparent),0 0 28px -6px var(--t2)}
+html[data-tex="candy"] .remote::before{background:radial-gradient(circle,rgba(255,255,255,.85) 1.6px,transparent 2.2px) 0 0/18px 18px,radial-gradient(60% 40% at 10% 5%,var(--t1),transparent 70%),radial-gradient(60% 40% at 95% 45%,var(--t2),transparent 70%),radial-gradient(70% 45% at 20% 100%,var(--t3),transparent 70%)}
+html[data-tex="brass"] .remote::before{background:var(--brush),linear-gradient(170deg,var(--t1),var(--t2))}
+html[data-tex="brass"] .remote{box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--accent) 60%,transparent),0 26px 70px -20px color-mix(in srgb,var(--glow) 55%,transparent)}
+html[data-tex="brass"] .pad{box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 55%,transparent),var(--shadow)}
+html[data-tex="aurora"] .remote::before{background:radial-gradient(55% 35% at 20% 15%,var(--t1),transparent 70%),radial-gradient(55% 35% at 80% 35%,var(--t2),transparent 70%),radial-gradient(65% 40% at 40% 85%,var(--t3),transparent 70%);background-size:200% 200%;animation:aurora 26s ease-in-out infinite alternate}
+html[data-tex="aurora"] body{background:radial-gradient(70% 40% at 25% 30%,color-mix(in srgb,var(--t1) 20%,transparent),transparent 70%) fixed,radial-gradient(70% 45% at 80% 60%,color-mix(in srgb,var(--glow) 26%,transparent),transparent 70%) fixed,var(--stage)}
+@keyframes aurora{0%{background-position:0% 0%}50%{background-position:100% 40%}100%{background-position:30% 100%}}
+@media (prefers-reduced-motion:reduce){html[data-tex="aurora"] .remote::before{animation:none}}
+html[data-shot] *{animation-play-state:paused!important}
+:root{
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .36 0 0 0 0 .28 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --noise-fine:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --brush:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.004 .9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .32 0 0 0 0 .35 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3C/svg%3E");
+  --wood:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='600'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.09 .006' numOctaves='4' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .36 0 0 0 0 .2 0 0 0 0 .1 0 0 0 1.1 -.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");
+}
+</style>
+
+<div class="themebar" data-chrome><label for="themesel">Theme</label><select id="themesel"></select></div>
+<div class="wrap" id="app"></div>
+
+<script type="application/json" id="remote-themes">
+{
+ "midnight":{"bg":"#0B1020","stage":"#070A14","body":"#141B2E","key":"#1E2740","keyEdge":"#05070D","ink":"#E8EDF7","muted":"#A3AECB","accent":"#4062E8","accentSoft":"#26346A","accentInk":"#FFFFFF","power":"#FF8A80","ring":"#1E2740","ringLit":"#8FA6FF","glow":"#4D6BFF","radius":14,"texture":{"kind":"glass","colors":["#2A3760","#141B2E"],"opacity":0.35}},
+ "daylight":{"bg":"#ECE8E1","stage":"#E2DDD4","body":"#F8F5EF","key":"#FFFFFF","keyEdge":"#D3CCC0","ink":"#1F232A","muted":"#5C6470","accent":"#2F5BD3","accentSoft":"#DCE5FB","accentInk":"#FFFFFF","power":"#B83232","ring":"#FFFFFF","ringLit":"#2F5BD3","glow":null,"radius":14,"texture":{"kind":"paper","colors":["#F8F5EF","#EFEAE0"],"opacity":0.5}},
+ "oled":{"bg":"#000000","stage":"#000000","body":"#000000","key":"#121212","keyEdge":"#000000","ink":"#F2F2F2","muted":"#A6A6A6","accent":"#2A63E0","accentSoft":"#0F2148","accentInk":"#FFFFFF","power":"#FF6B6B","ring":"#121212","ringLit":"#6E9BFF","glow":null,"radius":12,"texture":{"kind":"none","colors":[],"opacity":0}},
+ "cinema":{"bg":"#16070A","stage":"#0E0406","body":"#2A0D13","key":"#3B121B","keyEdge":"#0C0305","ink":"#FBEDEA","muted":"#E0B3AE","accent":"#E8B04A","accentSoft":"#5A3A12","accentInk":"#2A1606","power":"#FF9C8F","ring":"#3B121B","ringLit":"#F2C46A","glow":"#FF8A3D","radius":16,"texture":{"kind":"velvet","colors":["#4A1621","#2A0D13"],"opacity":0.6}},
+ "aluminium":{"bg":"#C9CDD2","stage":"#B8BDC3","body":"#DCDFE3","key":"#EEF0F2","keyEdge":"#9AA1A9","ink":"#1B1F24","muted":"#4A525B","accent":"#1F6FB2","accentSoft":"#CFE0EF","accentInk":"#FFFFFF","power":"#A82828","ring":"#E6E9EC","ringLit":"#1F6FB2","glow":null,"radius":10,"texture":{"kind":"brushed","colors":["#E4E7EA","#CDD1D6"],"opacity":0.55}},
+ "retro":{"bg":"#2B1A10","stage":"#1E120B","body":"#D9BC92","key":"#F4EBD8","keyEdge":"#6B4428","ink":"#2A1C10","muted":"#55402C","accent":"#A8401A","accentSoft":"#E9C7A8","accentInk":"#FFFFFF","power":"#A3271B","ring":"#F4EBD8","ringLit":"#A8401A","glow":"#FFB25E","radius":8,"texture":{"kind":"woodgrain","colors":["#D9BC92","#C9A577","#E3C9A2"],"opacity":0.6}},
+ "walnut":{"bg":"#1C110A","stage":"#130B06","body":"#4B2E1B","key":"#5E3B24","keyEdge":"#24140A","ink":"#FBF1E1","muted":"#E6CFAE","accent":"#D4A85A","accentSoft":"#7A5232","accentInk":"#2A1906","power":"#FFB4A0","ring":"#5E3B24","ringLit":"#F0C878","glow":"#E8A657","radius":12,"texture":{"kind":"woodgrain","colors":["#4B2E1B","#3B2213","#5C3A22"],"opacity":0.7}},
+ "neon":{"bg":"#07040F","stage":"#040209","body":"#120A24","key":"#1B1033","keyEdge":"#FF3EA5","ink":"#F4EEFF","muted":"#B9A8E0","accent":"#FF3EA5","accentSoft":"#4A1240","accentInk":"#14060F","power":"#FF7AB8","ring":"#1B1033","ringLit":"#3EF2FF","glow":"#3EF2FF","radius":14,"texture":{"kind":"neon","colors":["#FF3EA5","#3EF2FF"],"opacity":0.35}},
+ "candy":{"bg":"#FBE7F0","stage":"#F6DCE8","body":"#FFF4F8","key":"#FFFFFF","keyEdge":"#F0C4D7","ink":"#3A2340","muted":"#6E5378","accent":"#8A4FD8","accentSoft":"#EADCFB","accentInk":"#FFFFFF","power":"#C2336A","ring":"#FFFFFF","ringLit":"#8A4FD8","glow":null,"radius":20,"texture":{"kind":"candy","colors":["#FFE3EE","#E3F4FF","#FFF6D9"],"opacity":0.6}},
+ "forest":{"bg":"#0B1A12","stage":"#06110B","body":"#13291D","key":"#1C3828","keyEdge":"#040C07","ink":"#EEF3E6","muted":"#B5C7A8","accent":"#C9A15A","accentSoft":"#4A3A1A","accentInk":"#1C1405","power":"#FF9B85","ring":"#1C3828","ringLit":"#D9B46E","glow":"#8FBF5A","radius":14,"texture":{"kind":"brass","colors":["#24432F","#13291D"],"opacity":0.4}},
+ "aurora":{"bg":"#060B18","stage":"#03060F","body":"#0E1628","key":"#18233B","keyEdge":"#02040A","ink":"#EAF6F4","muted":"#A2BFC4","accent":"#3FD6A8","accentSoft":"#12463C","accentInk":"#04201A","power":"#FF8F9E","ring":"#18233B","ringLit":"#7CF0D0","glow":"#7A5CFF","radius":16,"texture":{"kind":"aurora","colors":["#3FD6A8","#7A5CFF","#2FA8FF"],"opacity":0.45,"animated":true}}
+}
+</script>
+<!-- fb-1017b H2: exact copy of ICON_PATHS (src/ui/icons/paths.ts), ICON_NAMES order; tests/prototype-icons.test.ts keeps them identical -->
+<script type="application/json" id="icon-paths">
+{
+ "power":[{"d":"M6.86 6.87A8 8 0 1 0 17.14 6.87"},{"d":"M12 3v8.5"}],
+ "source":[{"d":"M9 8.5V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-2.5"},{"d":"M3 12h11.5M11 8.5l3.5 3.5-3.5 3.5"}],
+ "settings":[{"d":"M9.96 4.99L10.5 2.52L13.5 2.52L14.04 4.99L15.52 5.6L17.64 4.23L19.77 6.36L18.4 8.48L19.01 9.96L21.48 10.5L21.48 13.5L19.01 14.04L18.4 15.52L19.77 17.64L17.64 19.77L15.52 18.4L14.04 19.01L13.5 21.48L10.5 21.48L9.96 19.01L8.48 18.4L6.36 19.77L4.23 17.64L5.6 15.52L4.99 14.04L2.52 13.5L2.52 10.5L4.99 9.96L5.6 8.48L4.23 6.36L6.36 4.23L8.48 5.6z"},{"d":"M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0z"}],
+ "home":[{"d":"M3.5 11.5 12 4l8.5 7.5"},{"d":"M6 9.5V19a1 1 0 0 0 1 1h3.5v-5h3v5H17a1 1 0 0 0 1-1V9.5"}],
+ "back":[{"d":"M8.5 5 4 9.5 8.5 14"},{"d":"M4 9.5h10.5a5.25 5.25 0 0 1 0 10.5H11"}],
+ "menu":[{"d":"M4 6.5h16M4 12h16M4 17.5h16"}],
+ "mute":[{"d":"M3.5 10v4a1 1 0 0 0 1 1h3l4.6 3.7a.6.6 0 0 0 .98-.47V5.77a.6.6 0 0 0-.98-.47L7.5 9h-3a1 1 0 0 0-1 1z"},{"d":"M16.5 9.5l5 5M21.5 9.5l-5 5"}],
+ "volUp":[{"d":"M12 5v14M5 12h14"}],
+ "volDown":[{"d":"M5 12h14"}],
+ "chUp":[{"d":"M6 15l6-6 6 6"}],
+ "chDown":[{"d":"M6 9l6 6 6-6"}],
+ "playPause":[{"d":"M3.5 6.6v10.8a.7.7 0 0 0 1.07.6l8.6-5.4a.7.7 0 0 0 0-1.2l-8.6-5.4A.7.7 0 0 0 3.5 6.6z"},{"d":"M17 6.5v11M21 6.5v11"}],
+ "rewind":[{"d":"M11.5 7v10a.6.6 0 0 1-.95.5L3.6 12.5a.6.6 0 0 1 0-1l6.95-5a.6.6 0 0 1 .95.5z"},{"d":"M20.5 7v10a.6.6 0 0 1-.95.5l-6.95-5a.6.6 0 0 1 0-1l6.95-5a.6.6 0 0 1 .95.5z"}],
+ "fastForward":[{"d":"M3.5 7v10a.6.6 0 0 0 .95.5l6.95-5a.6.6 0 0 0 0-1L4.45 6.5A.6.6 0 0 0 3.5 7z"},{"d":"M12.5 7v10a.6.6 0 0 0 .95.5l6.95-5a.6.6 0 0 0 0-1l-6.95-5a.6.6 0 0 0-.95.5z"}],
+ "mic":[{"d":"M9 6a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0z"},{"d":"M5.5 11a6.5 6.5 0 0 0 13 0"},{"d":"M12 17.5V21M9 21h6"}],
+ "keyboard":[{"d":"M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2z"},{"d":"M5 10a1 1 0 1 0 2 0a1 1 0 1 0 -2 0z","fill":true},{"d":"M9 10a1 1 0 1 0 2 0a1 1 0 1 0 -2 0z","fill":true},{"d":"M13 10a1 1 0 1 0 2 0a1 1 0 1 0 -2 0z","fill":true},{"d":"M17 10a1 1 0 1 0 2 0a1 1 0 1 0 -2 0z","fill":true},{"d":"M7 14.25h10"}],
+ "numpad":[{"d":"M4.3 6a1.7 1.7 0 1 0 3.4 0a1.7 1.7 0 1 0 -3.4 0z","fill":true},{"d":"M10.3 6a1.7 1.7 0 1 0 3.4 0a1.7 1.7 0 1 0 -3.4 0z","fill":true},{"d":"M16.3 6a1.7 1.7 0 1 0 3.4 0a1.7 1.7 0 1 0 -3.4 0z","fill":true},{"d":"M4.3 12a1.7 1.7 0 1 0 3.4 0a1.7 1.7 0 1 0 -3.4 0z","fill":true},{"d":"M10.3 12a1.7 1.7 0 1 0 3.4 0a1.7 1.7 0 1 0 -3.4 0z","fill":true},{"d":"M16.3 12a1.7 1.7 0 1 0 3.4 0a1.7 1.7 0 1 0 -3.4 0z","fill":true},{"d":"M4.3 18a1.7 1.7 0 1 0 3.4 0a1.7 1.7 0 1 0 -3.4 0z","fill":true},{"d":"M10.3 18a1.7 1.7 0 1 0 3.4 0a1.7 1.7 0 1 0 -3.4 0z","fill":true},{"d":"M16.3 18a1.7 1.7 0 1 0 3.4 0a1.7 1.7 0 1 0 -3.4 0z","fill":true}],
+ "apps":[{"d":"M6 4h2.5a2 2 0 0 1 2 2v2.5a2 2 0 0 1 -2 2h-2.5a2 2 0 0 1 -2 -2v-2.5a2 2 0 0 1 2 -2z"},{"d":"M15.5 4h2.5a2 2 0 0 1 2 2v2.5a2 2 0 0 1 -2 2h-2.5a2 2 0 0 1 -2 -2v-2.5a2 2 0 0 1 2 -2z"},{"d":"M6 13.5h2.5a2 2 0 0 1 2 2v2.5a2 2 0 0 1 -2 2h-2.5a2 2 0 0 1 -2 -2v-2.5a2 2 0 0 1 2 -2z"},{"d":"M15.5 13.5h2.5a2 2 0 0 1 2 2v2.5a2 2 0 0 1 -2 2h-2.5a2 2 0 0 1 -2 -2v-2.5a2 2 0 0 1 2 -2z"}],
+ "tv":[{"d":"M4.5 4h15a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-15a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2z"},{"d":"M12 17v3.5M8 20.5h8"}],
+ "search":[{"d":"M4 10.5a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0z"},{"d":"M15.4 15.4 20.5 20.5"}],
+ "up":[{"d":"M6.5 14.5 12 9l5.5 5.5"}],
+ "down":[{"d":"M6.5 9.5 12 15l5.5-5.5"}],
+ "left":[{"d":"M14.5 6.5 9 12l5.5 5.5"}],
+ "right":[{"d":"M9.5 6.5 15 12l-5.5 5.5"}],
+ "close":[{"d":"M6 6l12 12M18 6 6 18"}],
+ "backspace":[{"d":"M9 5h10.5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-6.5-7z"},{"d":"M12 9.5l5 5M17 9.5l-5 5"}],
+ "enter":[{"d":"M20 5v6a3 3 0 0 1-3 3H5"},{"d":"M9 10l-4 4 4 4"}],
+ "check":[{"d":"M5 12.5l4.5 4.5L19 7.5"}],
+ "plus":[{"d":"M12 5v14M5 12h14"}],
+ "minus":[{"d":"M5 12h14"}],
+ "speaker":[{"d":"M3.5 10v4a1 1 0 0 0 1 1h3l4.6 3.7a.6.6 0 0 0 .98-.47V5.77a.6.6 0 0 0-.98-.47L7.5 9h-3a1 1 0 0 0-1 1z"},{"d":"M16.5 9a4.2 4.2 0 0 1 0 6"},{"d":"M19 6.5a7.8 7.8 0 0 1 0 11"}],
+ "timer":[{"d":"M4.5 13.5a7.5 7.5 0 1 0 15 0a7.5 7.5 0 1 0 -15 0z"},{"d":"M10 3h4M12 3v3"},{"d":"M12 13.5V9.5"},{"d":"M18.2 7.3l1.5-1.5"}]
+}
+</script>
+<!-- fb-1017b H3: demo apps (src/core/demo.ts DEMO_TV_APPS + DEMO_APP_ART, English names) and house tiles (src/core/apps.ts
+     fallbackTile / tileLabel / tileLabelScale); tests/prototype-icons.test.ts keeps them identical -->
+<script type="application/json" id="demo-apps">
+[
+ {"id":"demo.cinema","name":"Cinema","pinned":true,"art":{"from":"#3B2F7A","to":"#14123A","shapes":[{"kind":"poly","points":[[0,90],[120,10],[120,40]],"fill":"#FFFFFF","opacity":0.16},{"kind":"poly","points":[[0,90],[120,48],[120,70]],"fill":"#FFFFFF","opacity":0.1},{"kind":"circle","cx":92,"cy":22,"r":6,"fill":"#FFD59A","opacity":0.9},{"kind":"circle","cx":104,"cy":34,"r":3,"fill":"#FFD59A","opacity":0.6}]}},
+ {"id":"demo.sports","name":"Sports","pinned":true,"art":{"from":"#2FA36B","to":"#145C46","shapes":[{"kind":"ring","cx":30,"cy":70,"r":34,"stroke":"#FFFFFF","width":3,"opacity":0.28},{"kind":"ring","cx":30,"cy":70,"r":18,"stroke":"#FFFFFF","width":3,"opacity":0.4},{"kind":"rect","x":62,"y":-10,"w":10,"h":120,"r":2,"fill":"#FFFFFF","opacity":0.18,"rotate":24},{"kind":"circle","cx":96,"cy":26,"r":9,"fill":"#F6F1C8","opacity":0.95}]}},
+ {"id":"demo.music","name":"Music","pinned":true,"art":{"from":"#F2786A","to":"#7A2E73","shapes":[{"kind":"rect","x":22,"y":44,"w":9,"h":30,"r":4.5,"fill":"#FFFFFF","opacity":0.85},{"kind":"rect","x":37,"y":28,"w":9,"h":46,"r":4.5,"fill":"#FFFFFF","opacity":0.7},{"kind":"rect","x":52,"y":50,"w":9,"h":24,"r":4.5,"fill":"#FFFFFF","opacity":0.85},{"kind":"rect","x":67,"y":20,"w":9,"h":54,"r":4.5,"fill":"#FFFFFF","opacity":0.6},{"kind":"rect","x":82,"y":38,"w":9,"h":36,"r":4.5,"fill":"#FFFFFF","opacity":0.75},{"kind":"ring","cx":104,"cy":14,"r":22,"stroke":"#FFFFFF","width":2,"opacity":0.2}]}},
+ {"id":"demo.news","name":"News","pinned":false,"art":{"from":"#4E6E9E","to":"#1E2D4E","shapes":[{"kind":"rect","x":16,"y":20,"w":40,"h":34,"r":4,"fill":"#FFFFFF","opacity":0.22},{"kind":"rect","x":64,"y":22,"w":40,"h":5,"r":2.5,"fill":"#FFFFFF","opacity":0.8},{"kind":"rect","x":64,"y":33,"w":32,"h":5,"r":2.5,"fill":"#FFFFFF","opacity":0.5},{"kind":"rect","x":64,"y":44,"w":36,"h":5,"r":2.5,"fill":"#FFFFFF","opacity":0.5},{"kind":"rect","x":16,"y":62,"w":88,"h":5,"r":2.5,"fill":"#FFFFFF","opacity":0.35},{"kind":"rect","x":16,"y":72,"w":60,"h":5,"r":2.5,"fill":"#FFFFFF","opacity":0.25}]}},
+ {"id":"demo.kids","name":"Kids","pinned":false,"art":{"from":"#FFD25E","to":"#F2884B","shapes":[{"kind":"circle","cx":30,"cy":34,"r":16,"fill":"#FFFFFF","opacity":0.55},{"kind":"circle","cx":62,"cy":58,"r":22,"fill":"#5BC8D8","opacity":0.75},{"kind":"circle","cx":96,"cy":30,"r":12,"fill":"#8C6FE0","opacity":0.7},{"kind":"circle","cx":100,"cy":72,"r":7,"fill":"#FFFFFF","opacity":0.6},{"kind":"circle","cx":22,"cy":74,"r":5,"fill":"#FFFFFF","opacity":0.6}]}},
+ {"id":"demo.photos","name":"Photos","pinned":false,"art":{"from":"#8CC9F0","to":"#2F8C9A","shapes":[{"kind":"circle","cx":90,"cy":24,"r":10,"fill":"#FFF2C4","opacity":0.95},{"kind":"rect","x":24,"y":26,"w":46,"h":40,"r":5,"fill":"#FFFFFF","opacity":0.35,"rotate":-8},{"kind":"rect","x":40,"y":32,"w":46,"h":40,"r":5,"fill":"#FFFFFF","opacity":0.6,"rotate":6},{"kind":"poly","points":[[44,66],[58,50],[70,60],[78,52],[86,66]],"fill":"#2F8C9A","opacity":0.55}]}},
+ {"id":"house.radio","name":"Radio","pinned":false,"house":{"h1":"#7FC79C","h2":"#2F7A55","text":"Radio","scale":0.19}},
+ {"id":"house.weather","name":"Weather","pinned":false,"house":{"h1":"#5FC2C9","h2":"#227A86","text":"Weather","scale":0.155}},
+ {"id":"house.games","name":"Game Night","pinned":false,"house":{"h1":"#9A86F2","h2":"#4B3BA8","text":"Game Night","scale":0.13}}
+]
+</script>
+<script>
+(function(){
+/* owner-1017 T58: remote themes. THEMES is parsed from the #remote-themes JSON (a copy of the colour tokens in
+   src/theme/remoteThemes.ts; tests/prototype-themes.test.ts keeps them identical). ?theme=<id> picks one,
+   ?shot=1 hides demo chrome and uses generic demo TVs for store/render.mjs, ?view=add|numpad|voice|tvs|apps|keyboard|switch opens that state. */
+var THEMES=JSON.parse(document.getElementById('remote-themes').textContent);
+var THEME_NAMES={midnight:'Midnight',daylight:'Daylight',oled:'OLED Black',cinema:'Cinema Red',aluminium:'Brushed Aluminium',retro:'Retro Wood',walnut:'Walnut & Brass',neon:'Neon Arcade',candy:'Pastel Candy',forest:'Forest',aurora:'Aurora'};
+var FREE_THEMES=['midnight','daylight','oled'];
+var Q=new URLSearchParams(location.search),SHOT=Q.get('shot')==='1';
+if(SHOT)document.documentElement.setAttribute('data-shot','');
+function lum(h){var n=parseInt(h.slice(1),16),c=[(n>>16)&255,(n>>8)&255,n&255].map(function(v){v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]}
+var TVARS=['--bg','--stage','--body','--key','--key-edge','--ink','--muted','--accent','--accent-soft','--accent-ink','--power','--ring','--ring-lit','--glow','--radius','--tex-op','--t1','--t2','--t3','--shadow','color-scheme','--kf-top','--kf-bot','--kf-gloss','--kf-shade'];
+/* keyFaceColors() from src/ui/icons/keyFaceColors.ts: mix toward white / keyEdge, gloss and shade by key lightness */
+function mixHex(a,b,t){var x=parseInt(a.slice(1),16),y=parseInt(b.slice(1),16);return '#'+[16,8,0].map(function(sh){var p=(x>>sh)&255,q=(y>>sh)&255;return ('0'+Math.round(p+(q-p)*t).toString(16)).slice(-2)}).join('').toUpperCase()}
+function keyFace(t){var dark=lum(t.key)<.4;return {'--kf-top':mixHex(t.key,'#FFFFFF',.07),'--kf-bot':mixHex(t.key,t.keyEdge,.05),'--kf-gloss':'rgba(255,255,255,'+(dark?.14:.6)+')','--kf-shade':'color-mix(in srgb,'+t.keyEdge+' '+(dark?35:18)+'%,transparent)'}}
+function applyTheme(id){
+ var r=document.documentElement,st=r.style,t=THEMES[id];
+ TVARS.forEach(function(v){st.removeProperty(v)});
+ if(!t){r.removeAttribute('data-rtheme');r.removeAttribute('data-tex');return ''}
+ var dark=lum(t.bg)<.18,c=t.texture.colors;
+ var set={'--bg':t.bg,'--stage':t.stage,'--body':t.body,'--key':t.key,'--key-edge':t.keyEdge,'--ink':t.ink,'--muted':t.muted,'--accent':t.accent,'--accent-soft':t.accentSoft,'--accent-ink':t.accentInk,'--power':t.power,'--ring':t.ring,'--ring-lit':t.ringLit,'--glow':t.glow||'transparent','--radius':t.radius+'px','--tex-op':String(t.texture.opacity),'--t1':c[0]||t.body,'--t2':c[1]||c[0]||t.body,'--t3':c[2]||c[0]||t.body,
+  '--shadow':dark?'0 1px 0 var(--key-edge), 0 2px 8px rgba(0,0,0,.4)':'0 1px 0 var(--key-edge), 0 2px 6px rgba(30,40,55,.10)','color-scheme':dark?'dark':'light'};
+ var kf=keyFace(t);Object.keys(kf).forEach(function(k){set[k]=kf[k]});
+ Object.keys(set).forEach(function(k){st.setProperty(k,set[k])});
+ r.setAttribute('data-rtheme',id);r.setAttribute('data-tex',t.texture.kind);
+ return id;
+}
+function storedTheme(){try{return localStorage.getItem('couch.remoteTheme')||''}catch(e){return ''}}
+function saveTheme(id){try{localStorage.setItem('couch.remoteTheme',id)}catch(e){}}
+function setTheme(id){S.rtheme=applyTheme(id);saveTheme(S.rtheme);var sel=document.getElementById('themesel');if(sel)sel.value=S.rtheme}
+function themeChips(){
+ return '<div class="setting"><span>Remote theme<small>Changes colours only. Every button stays free in every theme.</small></span></div><div class="rthemes" role="group" aria-label="Remote theme">'+
+ Object.keys(THEMES).map(function(id){var t=THEMES[id];return '<button data-rt="'+id+'" aria-pressed="'+(S.rtheme===id)+'" aria-label="'+THEME_NAMES[id]+' theme" style="--sa:'+t.body+';--sb:'+t.accent+';--sc:'+t.key+'"><i></i><span>'+THEME_NAMES[id]+'</span>'+(FREE_THEMES.indexOf(id)<0?'<small>Plus · try it</small>':'')+'</button>'}).join('')+'</div>';
+}
+var ICON_PATHS=JSON.parse(document.getElementById('icon-paths').textContent);
+/* icon(name): inline SVG from the app's path data; stroked parts use currentColor, parts with fill are solid */
+function icon(name,cls){var parts=ICON_PATHS[name];if(!parts)throw new Error('no icon '+name);
+ return '<svg class="ic'+(cls?' '+cls:'')+'" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+parts.map(function(p){return '<path d="'+p.d+'"'+(p.fill?' class="f"':'')+'/>'}).join('')+'</svg>'}
+var ICON={};Object.keys(ICON_PATHS).forEach(function(n){ICON[n]=icon(n)});
+var S={
+ tab:'remote',mode:'pad',simple:false,haptics:true,
+ tvs:[
+  /* generic demo TVs only: no maker or platform names anywhere in the prototype */
+  {id:1,name:'Living room',model:'4K TV · Wi-Fi',plat:'Wi-Fi',on:true,ms:24,colors:true},
+  {id:2,name:'Bedroom',model:'Streaming stick · Wi-Fi',plat:'Wi-Fi',on:true,ms:31,colors:false},
+  {id:3,name:'Study',model:'Projector · infrared',plat:'Infrared',on:false,ms:null,colors:true}
+ ],cur:1,last:null,vol:14,
+ /* demo apps: invented names with original abstract art; house tiles for apps without art. Never a service's logo or colours;
+    the real app shows each app's icon exactly as the TV supplies it */
+ apps:JSON.parse(document.getElementById('demo-apps').textContent),
+ source:'HDMI 1',
+ log:[]
+};
+var app=document.getElementById('app'),sheetEl=null,returnFocus=null;
+function cur(){return S.tvs.find(function(t){return t.id===S.cur})}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function toast(m){var t=document.createElement('div');t.className='toast';t.setAttribute('role','status');t.textContent=m;document.body.appendChild(t);setTimeout(function(){t.remove()},2200)}
+
+/* MockTv driver: same shape as src/core/driver.ts in the port */
+function send(key,label){
+ var tv=cur();
+ if(!tv.on && key!=='POWER'){toast(tv.name+' is off. Tap power to wake it.');return}
+ if(key==='POWER'){tv.on=!tv.on;tv.ms=tv.on?(20+Math.round(Math.random()*30)):null;render();toast(tv.on?'Waking '+tv.name+' (Wake-on-LAN)':tv.name+' turned off');return}
+ if(key==='VOL_UP')S.vol=Math.min(100,S.vol+1);
+ if(key==='VOL_DOWN')S.vol=Math.max(0,S.vol-1);
+ var ms=Math.max(9,Math.round((tv.ms||30)+(Math.random()*16-8)));tv.ms=ms;
+ S.last={k:label||key,ms:ms};
+ if(S.haptics&&navigator.vibrate){try{navigator.vibrate(8)}catch(e){}}
+ var logEl=document.getElementById('log');if(logEl)logEl.innerHTML='<span>sent <b>'+esc(S.last.k)+'</b></span><span>'+ms+' ms · vol '+S.vol+'</span>';
+ var m=document.getElementById('ms');if(m)m.textContent=ms+' ms';
+}
+function hit(el){if(!el)return;el.classList.add('hit');setTimeout(function(){el.classList.remove('hit')},140)}
+
+function header(){
+ var tv=cur();
+ return '<button class="tvbar" data-act="switch" aria-label="Switch TV, current '+esc(tv.name)+'"><span class="led'+(tv.on?'':' off')+'"></span><span><div class="nm">'+esc(tv.name)+'</div><div class="sub">'+esc(tv.model)+(tv.on?' · connected':' · off')+'</div></span><span class="ms" id="ms">'+(tv.on?tv.ms+' ms':'—')+'</span>'+icon('down','chev')+'</button>'+
+ '<div class="tabs" role="tablist">'+['remote','apps','tvs'].map(function(t){return '<button role="tab" data-tab="'+t+'" aria-selected="'+(S.tab===t)+'">'+{remote:'Remote',apps:'Apps',tvs:'TVs'}[t]+'</button>'}).join('')+'</div>';
+}
+function k(key,label,cls,inner){return '<button class="key '+(cls||'')+'" data-key="'+key+'" aria-label="'+label+'">'+(inner||label)+'</button>'}
+function viewRemote(){
+ if(S.simple)return '<div class="remote simple"><div class="grid">'+
+  k('POWER','Power','power',ICON.power+'Power')+k('HOME','Home','',ICON.home+'Home')+
+  k('VOL_UP','Volume up','',ICON.volUp+'Louder')+k('CH_UP','Channel up','',ICON.chUp+'Next channel')+
+  k('VOL_DOWN','Volume down','',ICON.volDown+'Quieter')+k('CH_DOWN','Channel down','',ICON.chDown+'Previous channel')+k('SOURCE','Source','',ICON.source+'Source')+k('MUTE','Mute','',ICON.mute+'Mute')+
+  '</div><div class="log" id="log"><span>Simple mode</span><span>turn off in TVs › Settings</span></div></div><p class="promise">Every button is free. No subscription, no ads.</p>';
+ var nav=S.mode==='pad'?
+  '<div class="pad" role="group" aria-label="Direction pad"><button class="u" data-key="UP" aria-label="Up">'+ICON.up+'</button><button class="l" data-key="LEFT" aria-label="Left">'+ICON.left+'</button><button class="okb" data-key="OK" aria-label="OK">OK</button><button class="r" data-key="RIGHT" aria-label="Right">'+ICON.right+'</button><button class="d" data-key="DOWN" aria-label="Down">'+ICON.down+'</button></div>':
+  '<div class="touch" id="touch" role="application" aria-label="Touchpad: swipe to move, tap to select">Swipe to move · tap to select</div>';
+ var tv=cur(),colours=tv.colors!==false;
+ return '<div class="remote">'+
+ '<div class="row">'+k('POWER','Power','power lbl',ICON.power+'Power')+k('SOURCE','Source, now '+S.source,'lbl',ICON.source+'Source')+k('SETTINGS','TV settings','lbl',ICON.settings+'Settings')+'</div>'+
+ '<div class="row" style="justify-content:center"><div class="seg" role="group" aria-label="Navigation style"><button data-mode="pad" aria-pressed="'+(S.mode==='pad')+'">D-pad</button><button data-mode="touch" aria-pressed="'+(S.mode==='touch')+'">Touchpad</button></div></div>'+
+ nav+
+ '<button class="voice" id="voice" aria-label="Hold to talk to your TV">'+ICON.mic+'<span>Hold to talk</span></button>'+
+ '<div class="row">'+k('BACK','Back','wide',ICON.back)+k('HOME','Home','wide',ICON.home)+k('MENU','Menu','wide',ICON.menu)+'</div>'+
+ '<div class="row">'+
+  '<div class="rocker" role="group" aria-label="Volume"><button data-key="VOL_UP" aria-label="Volume up">'+ICON.volUp+'</button><span>Vol</span><button data-key="VOL_DOWN" aria-label="Volume down">'+ICON.volDown+'</button></div>'+
+  '<div class="mid">'+k('MUTE','Mute','',ICON.mute)+k('NUMPAD','Number pad','',ICON.numpad)+k('KEYBOARD','Keyboard','',ICON.keyboard)+k('APPS','App list','',ICON.apps)+'</div>'+
+  '<div class="rocker" role="group" aria-label="Channel"><button data-key="CH_UP" aria-label="Channel up">'+ICON.chUp+'</button><span>Ch</span><button data-key="CH_DOWN" aria-label="Channel down">'+ICON.chDown+'</button></div>'+
+ '</div>'+
+ '<div class="row">'+k('REW','Rewind','wide',ICON.rewind)+k('PLAY_PAUSE','Play or pause','wide',ICON.playPause)+k('FF','Fast forward','wide',ICON.fastForward)+'</div>'+
+ (colours?'<div class="colors" role="group" aria-label="Colour buttons">'+[['RED','Red','#D9473F'],['GREEN','Green','#2E9A5A'],['YELLOW','Yellow','#E3B22B'],['BLUE','Blue','#2F6BD3']].map(function(c){return '<button data-key="'+c[0]+'" aria-label="'+c[1]+' button" style="--c:'+c[2]+'"></button>'}).join('')+'</div>':'')+
+ '<div class="log" id="log" aria-live="polite">'+(S.last?'<span>sent <b>'+esc(S.last.k)+'</b></span><span>'+S.last.ms+' ms · vol '+S.vol+'</span>':'<span>Ready</span><span>arrow keys work too</span>')+'</div>'+
+ '</div><p class="promise">Every button is free. No subscription, no ads, no tracking.</p><p class="demo">Prototype · demo TVs, nothing is sent to a real TV</p>';
+}
+/* demo art: same shapes as AppTile.tsx DemoArtView, 120 x 90 box, gradient top-left to bottom-right */
+function demoArt(a,n){var g='da'+n,o=function(s){return s.opacity==null?1:s.opacity};
+ return '<svg viewBox="0 0 120 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="'+g+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+a.from+'"/><stop offset="1" stop-color="'+a.to+'"/></linearGradient></defs><rect width="120" height="90" fill="url(#'+g+')"/>'+
+ a.shapes.map(function(s){
+  if(s.kind==='circle')return '<circle cx="'+s.cx+'" cy="'+s.cy+'" r="'+s.r+'" fill="'+s.fill+'" fill-opacity="'+o(s)+'"/>';
+  if(s.kind==='ring')return '<circle cx="'+s.cx+'" cy="'+s.cy+'" r="'+s.r+'" fill="none" stroke="'+s.stroke+'" stroke-width="'+s.width+'" stroke-opacity="'+o(s)+'"/>';
+  if(s.kind==='rect')return '<rect x="'+s.x+'" y="'+s.y+'" width="'+s.w+'" height="'+s.h+'" rx="'+s.r+'" fill="'+s.fill+'" fill-opacity="'+o(s)+'"'+(s.rotate?' transform="rotate('+s.rotate+' '+(s.x+s.w/2)+' '+(s.y+s.h/2)+')"':'')+'/>';
+  return '<polygon points="'+s.points.map(function(p){return p.join(',')}).join(' ')+'" fill="'+s.fill+'" fill-opacity="'+o(s)+'"/>';
+ }).join('')+'</svg>';
+}
+/* house tile (AppTile.tsx HouseTile): name in Couch type on the palette gradient picked from the app id */
+function houseArt(h,n){var g='ht'+n;
+ return '<svg viewBox="0 0 120 90" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="'+g+'b" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="'+h.h1+'"/><stop offset="1" stop-color="'+h.h2+'"/></linearGradient><linearGradient id="'+g+'s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="120" height="90" fill="url(#'+g+'b)"/><rect width="120" height="90" fill="url(#'+g+'s)"/></svg>'+
+ '<span class="hl" style="font-size:'+(h.scale*100)+'cqw">'+esc(h.text)+'</span>';
+}
+function viewApps(){
+ var a=S.apps.map(function(x,i){return {x:x,i:i}}).sort(function(p,q){return (q.x.pinned-p.x.pinned)||(p.i-q.i)});
+ return '<div class="panel"><div class="row"><h2>On '+esc(cur().name)+'</h2><span class="note appsnote">long-press to pin</span></div><div class="apps">'+
+ a.map(function(e){var x=e.x;return '<button class="app'+(x.pinned?' pin':'')+'" data-launch="'+esc(x.name)+'" aria-label="'+esc(x.name+(x.pinned?', pinned':''))+'"><span class="art">'+(x.art?demoArt(x.art,e.i)+'<b class="wm">'+esc(x.name)+'</b>':houseArt(x.house,e.i))+'</span><span class="cap"><span class="nm">'+esc(x.name)+'</span>'+(x.pinned?'<em>Pinned</em>':'')+'</span></button>'}).join('')+
+ '</div><p class="note appsnote">Pinned apps sit first. Tap opens the app on the TV. Demo apps use original Couch artwork. With a real TV, each tile shows the icon your TV supplies for that app.</p></div>';
+}
+function viewTvs(){
+ var tv=cur();
+ return '<div class="panel"><div class="row"><h2>Your TVs</h2><button class="btn" data-act="add">Add a TV</button></div>'+
+ S.tvs.map(function(t){return '<button class="tv" data-pick="'+t.id+'"><span class="led'+(t.on?'':' off')+'"></span><span class="t"><b>'+esc(t.name)+(t.id===S.cur?' · in use':'')+'</b><small>'+esc(t.model)+'</small></span><span class="chip">'+esc(t.plat)+'</span></button>'}).join('')+
+ '</div>'+
+ '<div class="panel"><h2>Connection</h2><dl class="diag"><dt>TV</dt><dd>'+esc(tv.name)+'</dd><dt>Status</dt><dd>'+(tv.on?'Connected':'Off, wakes with power')+'</dd><dt>Last key</dt><dd class="mono">'+(S.last?esc(S.last.k)+' · '+S.last.ms+' ms':'—')+'</dd><dt>Reconnects today</dt><dd class="mono">1</dd><dt>Address</dt><dd class="mono">192.168.1.'+(20+tv.id)+'</dd></dl><button class="btn ghost" data-act="copydiag">Copy connection report</button></div>'+
+ '<div class="panel"><h2>Settings</h2>'+
+ '<div class="setting"><span>Simple mode<small>Big power, volume, channel and home buttons only</small></span><button class="switch" role="switch" data-sw="simple" aria-checked="'+S.simple+'" aria-label="Simple mode"></button></div>'+
+ '<div class="setting"><span>Haptics<small>A small tap on every key press</small></span><button class="switch" role="switch" data-sw="haptics" aria-checked="'+S.haptics+'" aria-label="Haptics"></button></div>'+
+ themeChips()+
+ '<div class="plus"><b>Couch Plus · one-time A$7.99</b><span class="note">Home and Lock Screen widgets, live volume on the Lock Screen, a remote on your watch, themes and one-tap macros. Pay once, keep it. Nothing on the remote ever needs it.</span><button class="btn ghost" data-act="plus">See Couch Plus</button></div>'+
+ '</div>';
+}
+function render(){
+ app.innerHTML=header()+(S.tab==='remote'?viewRemote():S.tab==='apps'?viewApps():viewTvs());
+ if(S.tab==='remote'&&S.mode==='touch'&&!S.simple)bindTouch();
+ if(S.tab==='remote'&&!S.simple)bindVoice();
+}
+function bindTouch(){
+ var el=document.getElementById('touch'),x0,y0,t0,dot;
+ el.addEventListener('pointerdown',function(e){x0=e.clientX;y0=e.clientY;t0=Date.now();el.setPointerCapture(e.pointerId);var r=el.getBoundingClientRect();dot=document.createElement('div');dot.className='dot';dot.style.left=(e.clientX-r.left)+'px';dot.style.top=(e.clientY-r.top)+'px';el.appendChild(dot)});
+ el.addEventListener('pointermove',function(e){if(x0==null)return;var dx=e.clientX-x0,dy=e.clientY-y0,r=el.getBoundingClientRect();if(dot){dot.style.left=(e.clientX-r.left)+'px';dot.style.top=(e.clientY-r.top)+'px'}
+  if(Math.abs(dx)>36||Math.abs(dy)>36){var key=Math.abs(dx)>Math.abs(dy)?(dx>0?'RIGHT':'LEFT'):(dy>0?'DOWN':'UP');send(key);x0=e.clientX;y0=e.clientY;t0=0}});
+ el.addEventListener('pointerup',function(e){if(t0&&Date.now()-t0<250)send('OK');x0=null;if(dot){dot.remove();dot=null}});
+}
+/* sheets */
+function openSheet(html,label){
+ closeSheet();returnFocus=document.activeElement;
+ sheetEl=document.createElement('div');sheetEl.className='scrim';
+ sheetEl.innerHTML='<div class="sheet" role="dialog" aria-modal="true" aria-label="'+esc(label)+'">'+html+'</div>';
+ sheetEl.addEventListener('click',function(e){if(e.target===sheetEl)closeSheet()});
+ document.body.appendChild(sheetEl);
+ var f=sheetEl.querySelector('input,button.btn,button');if(f&&!SHOT)f.focus();
+}
+function closeSheet(){if(sheetEl){sheetEl.remove();sheetEl=null;if(returnFocus&&returnFocus.focus)returnFocus.focus()}}
+function hd(t){return '<div class="hd"><h2>'+t+'</h2><button class="x" data-act="close" aria-label="Close">'+ICON.close+'</button></div>'}
+function keyboardSheet(){
+ openSheet(hd('Type on '+esc(cur().name))+'<input class="field" id="kbd" placeholder="Search for a show" autocomplete="off"><p class="note">Letters appear on the TV as you type. Return sends search.</p><div class="row"><button class="btn ghost wide" data-act="kbclear" style="flex:1">Clear on TV</button><button class="btn" data-act="kbsend" style="flex:1">Search</button></div>','Keyboard');
+ var i=document.getElementById('kbd'),prev='';
+ i.addEventListener('input',function(){var v=i.value;if(v.length>prev.length)send('TEXT','"'+v.slice(prev.length)+'"');else send('BACKSPACE','backspace');prev=v});
+ i.addEventListener('keydown',function(e){if(e.key==='Enter'){send('ENTER','search "'+i.value+'"');closeSheet()}});
+}
+function switchSheet(){
+ openSheet(hd('Control which TV?')+S.tvs.map(function(t){return '<button class="tv" data-pick="'+t.id+'"><span class="led'+(t.on?'':' off')+'"></span><span class="t"><b>'+esc(t.name)+'</b><small>'+esc(t.model)+'</small></span>'+(t.id===S.cur?'<span class="chip">In use</span>':'')+'</button>'}).join('')+'<button class="btn ghost" data-act="add">Add a TV</button>','Switch TV');
+}
+/* generic demo TVs; pair = how that kind of TV pairs: allow prompt, on-screen code, or a network setting first */
+var found=[{plat:'Wi-Fi',model:'Living room TV',ip:'192.168.1.41',pair:'allow'},{plat:'Wi-Fi',model:'Bedroom streaming stick',ip:'192.168.1.52',pair:'code'},{plat:'Wi-Fi',model:'Kitchen TV',ip:'192.168.1.60',pair:'setting'}];
+function addSheet(){
+ openSheet(hd('Add a TV')+'<div class="scan" id="scan"><span class="spin"></span>Looking for TVs on your Wi-Fi…</div><div id="found" style="display:flex;flex-direction:column;gap:8px"></div><p class="note">Turn the TV on and keep your phone on the same Wi-Fi. Tap your TV when it appears.</p>'+
+  '<button class="tv" data-act="ir"><span style="color:var(--accent)">'+ICON.tv+'</span><span class="t"><b>Older TV, or not on Wi-Fi?</b><small>Use infrared on Android phones that have it. Find the right code by testing volume.</small></span></button>'+
+  '<button class="btn ghost" data-act="manual" style="min-height:38px;align-self:flex-start;padding:6px 12px;font-size:13px">Still not listed? Enter its address</button>','Add a TV');
+ var i=0,box=sheetEl.querySelector('#found');
+ (function next(){if(!sheetEl||!document.body.contains(box))return;if(i>=found.length){var s=sheetEl.querySelector('#scan');if(s)s.innerHTML='Found '+found.length+' TVs';return}
+  var f=found[i];box.insertAdjacentHTML('beforeend','<button class="tv" data-pair="'+i+'"><span class="t"><b>'+esc(f.model)+'</b><small class="mono">'+f.ip+'</small></span><span class="chip">'+esc(f.plat)+'</span></button>');i++;setTimeout(next,SHOT?0:450)})();
+}
+function pairSheet(idx){
+ var f=found[idx],body;
+ if(f.pair==='allow')body='<div class="scan"><span class="spin"></span>Waiting for your TV…</div><div class="tip">Your TV is asking to allow Couch. Use the TV remote to choose <b>Allow</b>. If it asks every time, look for a setting that lets it remember your phone.</div><button class="btn" data-act="paired" data-i="'+idx+'">I pressed Allow</button>';
+ else if(f.pair==='code')body='<p>Enter the code showing on your TV.</p><div class="code">'+[0,1,2,3,4,5].map(function(n){return '<input class="field" id="c'+n+'" maxlength="1" inputmode="text" aria-label="Code character '+(n+1)+'">'}).join('')+'</div><button class="btn" data-act="paired" data-i="'+idx+'">Pair</button>';
+ else body='<div class="tip">This TV needs one setting first: turn on <b>control by mobile apps</b> in its network settings.</div><button class="btn" data-act="paired" data-i="'+idx+'">Done, connect</button>';
+ openSheet(hd('Pair '+esc(f.model))+body+'<label class="note" for="tvname">Name</label><input class="field" id="tvname" value="TV '+(S.tvs.length+1)+'">','Pair TV');
+ sheetEl.querySelectorAll('.code input').forEach(function(inp,n,all){inp.addEventListener('input',function(){if(inp.value&&all[n+1])all[n+1].focus()})});
+}
+var SOURCES=['TV','HDMI 1','HDMI 2','HDMI 3','HDMI 4','AV'];
+function sourceSheet(){
+ openSheet(hd('Source')+'<div class="srcs">'+SOURCES.map(function(s){return '<button class="key'+(s===S.source?' cur':'')+'" data-src="'+s+'">'+s+'</button>'}).join('')+'</div><p class="note">The list comes from your TV where it shares one. If not, Couch cycles through sources like the button on your TV remote.</p><button class="btn ghost" data-src="NEXT">Next source</button>','Source');
+}
+function numpadSheet(){
+ var n='<div class="numpad">'+[1,2,3,4,5,6,7,8,9].map(function(d){return '<button class="key" data-num="'+d+'">'+d+'</button>'}).join('')+'<button class="key" data-num="-" aria-label="Dash">–</button><button class="key" data-num="0">0</button><button class="key" data-num="OK" aria-label="Enter">OK</button></div>';
+ openSheet(hd('Channel number')+'<div class="mono" id="numshow" style="font-size:26px;text-align:center;min-height:36px">&nbsp;</div>'+n+'<p class="note">For free-to-air channels. Digits go straight to the TV.</p>','Number pad');
+}
+/* infrared: the app lists TV makers here; the prototype uses generic code groups so it names no brand */
+var IRBRANDS=['Common TV codes','Older TVs','Projectors','Not sure'],IRTOTAL={'Common TV codes':6,'Older TVs':5,'Projectors':4,'Not sure':42},ir={brand:null,set:1,total:0};
+function irSheet(){
+ openSheet(hd('Set up with infrared')+'<div class="tip">Works on phones with an infrared blaster. Phones without one use Wi-Fi.</div><p>Which codes should Couch try?</p><div class="srcs">'+IRBRANDS.map(function(b){return '<button class="key" data-irbrand="'+b+'">'+b+'</button>'}).join('')+'</div>','Infrared setup');
+}
+function irTest(){
+ openSheet(hd(esc(ir.brand)+' · find your code')+'<p>Point your phone at the TV and tap <b>Volume up</b>.</p><div class="irstep"><span class="num">'+ir.set+'</span><span class="t" style="flex:1"><b>Code '+ir.set+' of '+ir.total+'</b><br><small class="note">Each code is a different signal set TVs use.</small></span><button class="key" data-act="irsend" aria-label="Send volume up">'+ICON.volUp+'</button></div><p>Did the TV volume go up?</p><div class="split"><button class="btn ghost" data-act="irno">No, try next</button><button class="btn" data-act="iryes">Yes, it worked</button></div>','Find code');
+}
+function irSave(){
+ openSheet(hd('Code '+ir.set+' works')+'<p class="note">Couch will use this code for every button on this TV.</p><label class="note" for="tvname">Name</label><input class="field" id="tvname" value="TV '+(S.tvs.length+1)+'"><button class="btn" data-act="irdone">Save TV</button>','Save TV');
+}
+function bindVoice(){
+ var v=document.getElementById('voice');if(!v)return;
+ v.addEventListener('pointerdown',function(){v.classList.add('on');v.querySelector('span').textContent='Listening… let go to send'});
+ function up(){if(!v.classList.contains('on'))return;v.classList.remove('on');v.querySelector('span').textContent='Hold to talk';send('VOICE','voice: "find cooking shows"');toast('Sent to the TV assistant: "find cooking shows"')}
+ v.addEventListener('pointerup',up);v.addEventListener('pointerleave',up);
+}
+function plusSheet(){openSheet(hd('Couch Plus')+'<p>One payment of <b>A$7.99</b>. No subscription, no renewals.</p><ul class="note" style="margin:0;padding-left:18px"><li>Home and Lock Screen widgets</li><li>Live volume on the Lock Screen</li><li>A remote on your watch</li><li>Themes and one-tap macros like "Movie night"</li></ul><p class="note">Power, keyboard, touchpad, apps and every TV stay free whether you buy this or not.</p><button class="btn" data-act="close">Not now</button>','Couch Plus')}
+
+document.addEventListener('click',function(e){
+ var b=e.target.closest('button');if(!b)return;
+ if(b.dataset.tab){S.tab=b.dataset.tab;render();return}
+ if(b.dataset.mode){S.mode=b.dataset.mode;render();return}
+ if(b.dataset.key){var kk=b.dataset.key;hit(b);
+  if(kk==='KEYBOARD'){keyboardSheet();return}
+  if(kk==='APPS'){S.tab='apps';render();return}
+  if(kk==='SOURCE'){sourceSheet();return}
+  if(kk==='NUMPAD'){numpadSheet();return}
+  send(kk,b.getAttribute('aria-label'));return}
+ if(b.dataset.src){var s=b.dataset.src;if(s==='NEXT'){s=SOURCES[(SOURCES.indexOf(S.source)+1)%SOURCES.length]}S.source=s;send('SOURCE','source '+s);closeSheet();render();toast('Source: '+s);return}
+ if(b.dataset.num){hit(b);var d=b.dataset.num,sh=document.getElementById('numshow');if(d==='OK'){send('ENTER','channel '+sh.textContent.trim());closeSheet();return}sh.textContent=(sh.textContent.trim()+d).slice(-5);send('NUM_'+d,'digit '+d);return}
+ if(b.dataset.irbrand){ir.brand=b.dataset.irbrand;ir.set=1;ir.total=IRTOTAL[ir.brand];irTest();return}
+ if(b.id==='voice')return;
+ if(b.dataset.launch){send('LAUNCH','open '+b.dataset.launch);toast('Opening '+b.dataset.launch);return}
+ if(b.dataset.pick){S.cur=+b.dataset.pick;S.last=null;closeSheet();render();toast('Now controlling '+cur().name);return}
+ if(b.dataset.pair){pairSheet(+b.dataset.pair);return}
+ if(b.dataset.sw){S[b.dataset.sw]=!S[b.dataset.sw];render();return}
+ if(b.dataset.rt){setTheme(S.rtheme===b.dataset.rt?'':b.dataset.rt);render();return}
+ var a=b.dataset.act;
+ if(a==='close')closeSheet();
+ else if(a==='switch')switchSheet();
+ else if(a==='add')addSheet();
+ else if(a==='plus')plusSheet();
+ else if(a==='kbsend'){var v=document.getElementById('kbd').value;send('ENTER','search "'+v+'"');closeSheet()}
+ else if(a==='kbclear'){document.getElementById('kbd').value='';send('CLEAR','clear')}
+ else if(a==='ir')irSheet();
+ else if(a==='irsend'){hit(b);toast('Sent volume up with code '+ir.set)}
+ else if(a==='irno'){if(ir.set>=ir.total){toast('Tried every '+ir.brand+' code. Try "Not sure" to test them all.');irSheet();return}ir.set++;irTest()}
+ else if(a==='iryes')irSave();
+ else if(a==='irdone'){var nm=(document.getElementById('tvname').value||'TV').trim(),id=Date.now();S.tvs.push({id:id,name:nm,model:ir.brand+' · infrared code '+ir.set,plat:'Infrared',on:true,ms:5});S.cur=id;S.tab='remote';S.last=null;closeSheet();render();toast(nm+' added')}
+ else if(a==='manual'){openSheet(hd('Enter IP address')+'<input class="field mono" id="ip" inputmode="decimal" placeholder="192.168.1.40"><p class="note">Find it on the TV under Settings › Network › Status.</p><button class="btn" data-act="ipgo">Connect</button>','Enter IP')}
+ else if(a==='ipgo'){var ip=document.getElementById('ip').value.trim();if(!/^(\d{1,3}\.){3}\d{1,3}$/.test(ip)){toast('Enter an address like 192.168.1.40');return}closeSheet();toast('Checking '+ip+'… (demo)')}
+ else if(a==='paired'){var f=found[+b.dataset.i],nm=(document.getElementById('tvname').value||f.model).trim(),id=Date.now();S.tvs.push({id:id,name:nm,model:f.model,plat:f.plat,on:true,ms:30});S.cur=id;S.tab='remote';S.last=null;closeSheet();render();toast(nm+' added')}
+ else if(a==='copydiag'){var tv=cur(),txt='Couch connection report\nTV: '+tv.name+' ('+tv.model+', '+tv.plat+')\nStatus: '+(tv.on?'connected':'off')+'\nLast key: '+(S.last?S.last.k+' '+S.last.ms+' ms':'none');
+  try{navigator.clipboard.writeText(txt).then(function(){toast('Report copied')},function(){toast('Copy blocked here')})}catch(err){toast('Copy blocked here')}}
+});
+document.addEventListener('keydown',function(e){
+ if(sheetEl){if(e.key==='Escape'){closeSheet();return}
+  if(e.key==='Tab'){var f=sheetEl.querySelectorAll('button,input');if(!f.length)return;var first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault()}else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault()}}
+  return}
+ if(S.tab!=='remote'||e.target.tagName==='INPUT')return;
+ var map={ArrowUp:'UP',ArrowDown:'DOWN',ArrowLeft:'LEFT',ArrowRight:'RIGHT',Enter:'OK',Backspace:'BACK','+':'VOL_UP','-':'VOL_DOWN',m:'MUTE',h:'HOME'};
+ var kk=map[e.key];if(!kk)return;e.preventDefault();
+ hit(document.querySelector('[data-key="'+kk+'"]'));send(kk);
+});
+/* theme switcher + screenshot states */
+(function(){
+ var sel=document.getElementById('themesel');
+ sel.innerHTML='<option value="">System (light or dark)</option>'+Object.keys(THEMES).map(function(id){return '<option value="'+id+'">'+THEME_NAMES[id]+(FREE_THEMES.indexOf(id)<0?' (Plus)':'')+'</option>'}).join('');
+ sel.addEventListener('change',function(){setTheme(sel.value);render()});
+ var want=Q.get('theme');
+ S.rtheme=applyTheme(want!==null&&THEMES[want]?want:storedTheme());sel.value=S.rtheme;
+ if(SHOT){
+  /* store screenshots: generic demo TVs only, no platform or brand names */
+  S.last={k:'OK',ms:24};
+ }
+ var view=Q.get('view');
+ if(view==='tvs')S.tab='tvs';
+ if(view==='apps')S.tab='apps';
+ render();
+ if(view==='add')addSheet();
+ if(view==='numpad'){numpadSheet();var sh=document.getElementById('numshow');if(sh)sh.textContent='701'}
+ if(view==='keyboard'){keyboardSheet();var kb=document.getElementById('kbd');if(kb)kb.value='cooking shows'}
+ if(view==='switch')switchSheet();
+ if(view==='voice'){var v=document.getElementById('voice');if(v){v.classList.add('on');v.querySelector('span').textContent='Listening… let go to send'}}
+})();
+})();
+</script>
+
+</body></html>

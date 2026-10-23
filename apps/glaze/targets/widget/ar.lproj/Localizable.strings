@@ -1,0 +1,52 @@
+/* Glaze widget extension strings (T86), Arabic. Machine translation awaiting native-speaker
+   review (docs/I18N.md). Same keys as en.lproj. */
+
+"habit.name.water" = "ماء";
+"habit.name.sleep" = "نوم";
+"habit.name.steps" = "خطوات";
+"habit.name.mood" = "مزاج";
+
+"habit.unit.ml" = "مل";
+"habit.unit.hours" = "س";
+"habit.unit.steps" = "خطوات";
+
+"habit.desc.water" = "اضغط +150 مل كلما شربت. يُعاد التعيين عند منتصف الليل.";
+"habit.desc.sleep" = "سجّل نومك ساعة بساعة.";
+"habit.desc.steps" = "عُدّ خطواتك يدويًا كل 500 خطوة.";
+"habit.desc.mood" = "اختر شعورك اليوم.";
+
+"habit.goalOf" = "من %1$@ %2$@";
+
+"habit.a11y.add" = "إضافة %1$@ %2$@";
+"habit.a11y.remove" = "إنقاص %1$@ %2$@";
+"habit.a11y.moodDown" = "خفض المزاج";
+"habit.a11y.moodUp" = "رفع المزاج";
+"habit.a11y.mood1" = "تسجيل المزاج: سيئ جدًا";
+"habit.a11y.mood2" = "تسجيل المزاج: منخفض";
+"habit.a11y.mood3" = "تسجيل المزاج: لا بأس";
+"habit.a11y.mood4" = "تسجيل المزاج: جيد";
+"habit.a11y.mood5" = "تسجيل المزاج: رائع";
+
+"habit.mood.0" = "غير مسجّل";
+"habit.mood.1" = "سيئ جدًا";
+"habit.mood.2" = "منخفض";
+"habit.mood.3" = "لا بأس";
+"habit.mood.4" = "جيد";
+"habit.mood.5" = "رائع";
+
+"Log a habit" = "تسجيل عادة";
+"Log mood" = "تسجيل المزاج";
+"Habit" = "عادة";
+"Direction" = "الاتجاه";
+"Level" = "المستوى";
+
+"Clock" = "ساعة";
+"The time, in your Glaze theme." = "الوقت بسمة Glaze الخاصة بك.";
+"Date" = "التاريخ";
+"Today's date, in your Glaze theme." = "تاريخ اليوم بسمة Glaze الخاصة بك.";
+"Time and date for your Lock Screen." = "الوقت والتاريخ لشاشة القفل.";
+"Photo" = "صورة";
+"A photo you pick in Glaze." = "صورة تختارها في Glaze.";
+"Choose a photo in Glaze" = "اختر صورة في Glaze";
+"Little Line" = "سطر قصير";
+"A short, gentle line that changes every hour." = "سطر قصير ولطيف يتغيّر كل ساعة.";

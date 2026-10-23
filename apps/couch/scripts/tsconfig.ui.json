@@ -1,0 +1,23 @@
+{
+  "//": "Offline strict type-check of app/ and src/ (UI included) against hand-written stubs in scripts/tsc-stubs (oversight D75-1). Run: tsc -p scripts/tsconfig.ui.json (or npm run typecheck:ui). The PC's `npx tsc --noEmit` with real types stays the authority.",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "types": [],
+    "typeRoots": [],
+    "paths": {
+      "@/*": ["../src/*"]
+    }
+  },
+  "include": ["tsc-stubs/*.d.ts", "../app/**/*.ts", "../app/**/*.tsx", "../src/**/*.ts", "../src/**/*.tsx"],
+  "exclude": ["../**/*.test.ts", "../**/*.test.tsx", "../**/__tests__/**", "../**/*.fakes.ts", "../node_modules"]
+}

@@ -1,0 +1,55 @@
+// `plus` namespace, pt-BR. MACHINE TRANSLATION awaiting native-speaker review (docs/I18N.md).
+import type { LocaleMessages } from '../../catalogue.ts';
+
+export const ptBR: NonNullable<LocaleMessages['plus']> = {
+  lock: {
+    subjectIntro: '{subject} faz parte do Glaze Plus.',
+    price: 'Pagamento único de {price}. Sem assinatura, nunca.',
+    included: 'O que está incluído',
+    widgets: 'Estilos extras de widget',
+    symbols: 'Conjuntos de símbolos selecionados',
+    loops: 'Playlists do Live Lock e loops de tema',
+    free: 'Sempre grátis',
+    freeIcons: 'Ícones próprios, sem limite',
+    freeInstall: 'Instalação por perfil e por Atalhos',
+    freeLive: 'Tela Bloqueada animada com seu próprio vídeo',
+    notNow: 'Agora não',
+    oneMoment: 'Só um momento…',
+    unlock: 'Desbloquear (em breve)',
+    unlockHint: 'O Glaze Plus ainda não está à venda',
+    unavailable: 'O Glaze Plus chega com a versão da loja.',
+    close: "Fechar",
+    restore: "Restaurar compras",
+    restoreHint: "Procura uma compra anterior do Glaze Plus e desbloqueia de novo",
+    restored: "Glaze Plus restaurado. Obrigado!",
+    restoreNone: "Nenhuma compra anterior do Glaze Plus foi encontrada.",
+    restoreFailed: "Não foi possível restaurar agora. Tente mais tarde.",
+    themes: {
+      one: 'Mais {count} tema em {packs} pacotes',
+      many: 'Mais {count} de temas em {packs} pacotes',
+      other: 'Mais {count} temas em {packs} pacotes',
+    },
+    freeThemes: {
+      one: '{count} tema ilustrado inicial e o criador de papel de parede',
+      many: '{count} de temas ilustrados iniciais e o criador de papel de parede',
+      other: '{count} temas ilustrados iniciais e o criador de papel de parede',
+    },
+  },
+  tipJar: {
+    title: 'Caixinha de gorjeta',
+    body: 'Gostando do Glaze? Deixe uma gorjeta opcional. Não desbloqueia nada; é só um obrigado.',
+    small: 'Gorjeta pequena',
+    kind: 'Gorjeta gentil',
+    generous: 'Gorjeta generosa',
+    soon: 'Chega com a versão da loja.',
+    a11y: 'Caixinha de gorjeta. Gorjetas opcionais para apoiar o Glaze. Não desbloqueia nada. Chega com a versão da loja.',
+  },
+  packErrors: {
+    network: 'Não foi possível acessar o pacote. Verifique sua conexão e tente de novo.',
+    integrity: 'O download estava danificado e foi descartado. Tente de novo.',
+    appVersion: 'Este pacote precisa de uma versão mais nova do Glaze.',
+    cancelled: 'Download cancelado.',
+    disabled: 'Os pacotes de temas chegam com a versão da loja',
+    generic: 'Algo deu errado com este pacote. Tente de novo.',
+  },
+};

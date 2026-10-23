@@ -1,0 +1,28 @@
+{
+ "researched": "2026-10-18 (public App Store pages us/au + 9 roundups; competitor screenshots could not be viewed). Full detail with names and sources: docs/MARKET.md",
+ "rows": [
+  ["Widget app A (most-reviewed, ~776K ratings)", "Widgets + wallpapers", "Subscription monthly/annual, ads", "US$1.99–29.99"],
+  ["Widget theme app B (~527K)", "Widgets + themes + icon packs", "Subscription, 3-day trial, ad unlocks", "US$4.99–49.99"],
+  ["3-in-1 theme app C (~345K)", "Icons + widgets + wallpaper in one tap", "Weekly or annual, ads", "US$4.99–29.99 (10 tiers)"],
+  ["Live wallpaper app D (~311K)", "4K/live wallpapers, widgets, icons", "Weekly/annual, ads, rewarded video", "US$4.99–34.99"],
+  ["Wallpaper app E (~164K)", "Wallpapers incl. matched lock+home pairs", "Cheap PRO, ads", "US$4.99/yr or US$12.99 forever"],
+  ["Live wallpaper editor F (~114K)", "Video to live wallpaper editor", "Weekly/monthly/annual/lifetime", "US$3.99/wk … US$69.99 lifetime"],
+  ["Icon changer G (~55K, 3.9★)", "Bulk icons + widgets", "One-time unlocks + subscriptions", "US$9.99–14.99 unlock; US$9.99/mo"],
+  ["Live wallpaper app H (~52K)", "Live lock+home sets, DIY studio", "3-day trial → weekly/yearly, watermark", "US$3.99–7.99/wk; US$24.99–34.99/yr"],
+  ["Pro widget builder I (~26K)", "Widget builder", "One-time slot packs, no subscription", "US$7.99 per pack"],
+  ["Icon theme app J (~14K)", "Icon themes + icon maker", "Weekly/monthly/yearly + lifetime", "US$3.99/wk … US$19.99 lifetime"],
+  ["Glaze (proposal, owner decides)", "Icons + bulk install + themes + Live Lock Screen + matching widgets", "One-time Glaze Plus, no ads", "US$4.99 / A$7.99 once"]
+ ],
+ "takeaways": [
+  "Weekly subscriptions dominate; one clear one-time price is our sharpest difference.",
+  "Ads, especially one ad per icon or item, are the most hated thing in the category: Glaze has none.",
+  "Paywall dark patterns (hidden close button, paywall at launch, paid parts inside 'free' themes) are named in reviews: honest labels win trust.",
+  "Icon install friction (one shortcut per app, slow launches, wrong app opening) is the biggest pain: our bulk install + guided flow is the core advantage.",
+  "Profile-based icon install may hit App Review guideline 5.5 (one leader dropped it): Glaze now has a one-line switch; recommend off for the first App Store submission.",
+  "Theme-matched widget sets are table stakes for 3-in-1 apps and we lacked them: the core generator is now built (T58).",
+  "Users browse by mood (cute, neon, anime-style, dark, seasonal) and want big previews: category bubbles queued (T57).",
+  "Live wallpapers are fragile on iOS and no app leads them: Live Lock Screen on iOS 26 is an opening if we stay honest about limits.",
+  "iOS 26 Liquid Glass looks now sell, and several leaders look dated: v2 design tokens and components are in (T54).",
+  "Curated, original, family-safe content stands out against AI filler and NSFW items."
+ ]
+}

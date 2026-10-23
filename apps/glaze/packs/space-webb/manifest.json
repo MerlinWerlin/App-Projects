@@ -1,0 +1,819 @@
+{
+  "format": "glaze-photo-pack",
+  "version": 1,
+  "kind": "photo",
+  "id": "space-webb",
+  "name": "Space",
+  "plus": false,
+  "minAppVersion": "0.1.0",
+  "themes": [
+    {
+      "id": "space-pillars",
+      "name": "Pillars of Creation",
+      "tagline": "Towers of gas and newborn stars, seen by Webb.",
+      "palette": {
+        "bg": "#0B0A1F",
+        "surface": "#1A1638",
+        "accent": "#F2B45C",
+        "ink": "#FFF4E0",
+        "glyph": "#FFE7B8"
+      },
+      "iconStyle": {
+        "shape": "squircle",
+        "background": {
+          "kind": "glass",
+          "tint": "#1A1438",
+          "opacity": 0.55
+        },
+        "glyphColour": "#FFE7B8",
+        "glyphSet": "feather",
+        "showLabel": true,
+        "glyphScale": 0.44
+      },
+      "wallpaper": {
+        "kind": "mesh",
+        "colours": [
+          "#0B0A1F",
+          "#3A1E3F",
+          "#8A4B2E",
+          "#1D2350"
+        ],
+        "seed": 10301,
+        "angle": 170,
+        "grain": 0.08
+      },
+      "widget": {
+        "style": "glass",
+        "font": "display",
+        "accent": "#F2B45C"
+      },
+      "plus": false,
+      "packId": "space-webb",
+      "art": {
+        "colours": {
+          "primary": "#F2B45C",
+          "secondary": "#7C5CFF",
+          "accent": "#FFD98A",
+          "ink": "#0B0A1F",
+          "light": "#FFF8E7"
+        },
+        "motifs": [
+          "star",
+          "sparkle"
+        ],
+        "frame": "none",
+        "frameRole": "light",
+        "texture": "starfield",
+        "textureRole": "light",
+        "stickers": [
+          {
+            "motif": "sparkle",
+            "corner": "tr",
+            "scale": 0.2,
+            "rotation": 0
+          }
+        ],
+        "composition": "sky",
+        "displayFont": "display"
+      },
+      "categories": [
+        "dark",
+        "nature"
+      ],
+      "tags": [
+        "space",
+        "webb",
+        "jwst",
+        "telescope",
+        "astronomy",
+        "stars",
+        "photo",
+        "free",
+        "nebula",
+        "pillars",
+        "eagle nebula",
+        "gold",
+        "navy"
+      ],
+      "addedAt": "2026-10-22",
+      "photo": {
+        "title": "Webb Takes a Stunning, Star-Filled Portrait of the Pillars of Creation (Full View)",
+        "releaseId": "weic2216b",
+        "pageUrl": "https://esawebb.org/images/weic2216b/",
+        "imageUrl": "https://cdn.esawebb.org/archives/images/publicationjpg/weic2216b.jpg",
+        "credit": "NASA, ESA, CSA, STScI; J. DePasquale, A. Koekemoer, A. Pagan (STScI).",
+        "approxBytes": 4200000,
+        "licence": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "checkedAt": "2026-10-22"
+      }
+    },
+    {
+      "id": "space-cosmic-cliffs",
+      "name": "Cosmic Cliffs",
+      "tagline": "The glowing edge of a star-forming region in Carina.",
+      "palette": {
+        "bg": "#0A0E24",
+        "surface": "#18203F",
+        "accent": "#F0A35E",
+        "ink": "#FDF1E2",
+        "glyph": "#FFE2C0"
+      },
+      "iconStyle": {
+        "shape": "rounded",
+        "background": {
+          "kind": "glass",
+          "tint": "#14193A",
+          "opacity": 0.55
+        },
+        "glyphColour": "#FFE2C0",
+        "glyphSet": "feather",
+        "showLabel": true,
+        "glyphScale": 0.44
+      },
+      "wallpaper": {
+        "kind": "mesh",
+        "colours": [
+          "#0A0E24",
+          "#23305E",
+          "#7A4A3A",
+          "#C98A55"
+        ],
+        "seed": 10302,
+        "angle": 170,
+        "grain": 0.08
+      },
+      "widget": {
+        "style": "glass",
+        "font": "display",
+        "accent": "#F0A35E"
+      },
+      "plus": false,
+      "packId": "space-webb",
+      "art": {
+        "colours": {
+          "primary": "#F0A35E",
+          "secondary": "#5C7CFF",
+          "accent": "#FFD5A1",
+          "ink": "#0B0A1F",
+          "light": "#FFF8E7"
+        },
+        "motifs": [
+          "star",
+          "sparkle",
+          "cloud"
+        ],
+        "frame": "none",
+        "frameRole": "light",
+        "texture": "starfield",
+        "textureRole": "light",
+        "stickers": [
+          {
+            "motif": "star",
+            "corner": "tr",
+            "scale": 0.2,
+            "rotation": 0
+          }
+        ],
+        "composition": "sky",
+        "displayFont": "display"
+      },
+      "categories": [
+        "dark",
+        "nature"
+      ],
+      "tags": [
+        "space",
+        "webb",
+        "jwst",
+        "telescope",
+        "astronomy",
+        "stars",
+        "photo",
+        "free",
+        "nebula",
+        "carina",
+        "cliffs",
+        "amber",
+        "blue"
+      ],
+      "addedAt": "2026-10-22",
+      "photo": {
+        "title": "NIRCam Image of the \"Cosmic Cliffs\" in Carina",
+        "releaseId": "weic2205a",
+        "pageUrl": "https://esawebb.org/images/weic2205a/",
+        "imageUrl": "https://cdn.esawebb.org/archives/images/publicationjpg/weic2205a.jpg",
+        "credit": "NASA, ESA, CSA, and STScI",
+        "approxBytes": 2300000,
+        "licence": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "checkedAt": "2026-10-22"
+      }
+    },
+    {
+      "id": "space-tarantula",
+      "name": "Tarantula Nebula",
+      "tagline": "A cavern of young stars in violet and rose.",
+      "palette": {
+        "bg": "#120A26",
+        "surface": "#231544",
+        "accent": "#C78BFF",
+        "ink": "#F7EEFF",
+        "glyph": "#F1DDFF"
+      },
+      "iconStyle": {
+        "shape": "circle",
+        "background": {
+          "kind": "glass",
+          "tint": "#24124A",
+          "opacity": 0.55
+        },
+        "glyphColour": "#F1DDFF",
+        "glyphSet": "feather",
+        "showLabel": true,
+        "glyphScale": 0.44
+      },
+      "wallpaper": {
+        "kind": "mesh",
+        "colours": [
+          "#120A26",
+          "#3B1D63",
+          "#8E3C7A",
+          "#2A1F5C"
+        ],
+        "seed": 10303,
+        "angle": 170,
+        "grain": 0.08
+      },
+      "widget": {
+        "style": "glass",
+        "font": "display",
+        "accent": "#C78BFF"
+      },
+      "plus": false,
+      "packId": "space-webb",
+      "art": {
+        "colours": {
+          "primary": "#C78BFF",
+          "secondary": "#FF8FB8",
+          "accent": "#FFE08A",
+          "ink": "#0B0A1F",
+          "light": "#FFF8E7"
+        },
+        "motifs": [
+          "star",
+          "sparkle"
+        ],
+        "frame": "none",
+        "frameRole": "light",
+        "texture": "starfield",
+        "textureRole": "light",
+        "stickers": [
+          {
+            "motif": "sparkle",
+            "corner": "tr",
+            "scale": 0.2,
+            "rotation": 0
+          }
+        ],
+        "composition": "sky",
+        "displayFont": "display"
+      },
+      "categories": [
+        "dark",
+        "nature"
+      ],
+      "tags": [
+        "space",
+        "webb",
+        "jwst",
+        "telescope",
+        "astronomy",
+        "stars",
+        "photo",
+        "free",
+        "nebula",
+        "tarantula",
+        "violet",
+        "purple",
+        "pink"
+      ],
+      "addedAt": "2026-10-22",
+      "photo": {
+        "title": "Tarantula Nebula (NIRCam Image)",
+        "releaseId": "weic2212a",
+        "pageUrl": "https://esawebb.org/images/weic2212a/",
+        "imageUrl": "https://cdn.esawebb.org/archives/images/publicationjpg/weic2212a.jpg",
+        "credit": "NASA, ESA, CSA, and STScI",
+        "approxBytes": 2700000,
+        "licence": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "checkedAt": "2026-10-22"
+      }
+    },
+    {
+      "id": "space-cas-a",
+      "name": "Cassiopeia A",
+      "tagline": "The bright shell of an exploded star.",
+      "palette": {
+        "bg": "#0C0B1C",
+        "surface": "#1C1A36",
+        "accent": "#FF9E6B",
+        "ink": "#FFF0E6",
+        "glyph": "#FFD8C2"
+      },
+      "iconStyle": {
+        "shape": "squircle",
+        "background": {
+          "kind": "glass",
+          "tint": "#1E1534",
+          "opacity": 0.55
+        },
+        "glyphColour": "#FFD8C2",
+        "glyphSet": "feather",
+        "showLabel": true,
+        "glyphScale": 0.44
+      },
+      "wallpaper": {
+        "kind": "mesh",
+        "colours": [
+          "#0C0B1C",
+          "#4A1F38",
+          "#B8573C",
+          "#3B3A7A"
+        ],
+        "seed": 10304,
+        "angle": 170,
+        "grain": 0.08
+      },
+      "widget": {
+        "style": "glass",
+        "font": "display",
+        "accent": "#FF9E6B"
+      },
+      "plus": false,
+      "packId": "space-webb",
+      "art": {
+        "colours": {
+          "primary": "#FF9E6B",
+          "secondary": "#9C7CFF",
+          "accent": "#FFE6A3",
+          "ink": "#0B0A1F",
+          "light": "#FFF8E7"
+        },
+        "motifs": [
+          "star",
+          "sparkle"
+        ],
+        "frame": "none",
+        "frameRole": "light",
+        "texture": "starfield",
+        "textureRole": "light",
+        "stickers": [
+          {
+            "motif": "star",
+            "corner": "tr",
+            "scale": 0.2,
+            "rotation": 0
+          }
+        ],
+        "composition": "sky",
+        "displayFont": "display"
+      },
+      "categories": [
+        "dark",
+        "nature"
+      ],
+      "tags": [
+        "space",
+        "webb",
+        "jwst",
+        "telescope",
+        "astronomy",
+        "stars",
+        "photo",
+        "free",
+        "supernova",
+        "cassiopeia",
+        "orange",
+        "remnant"
+      ],
+      "addedAt": "2026-10-22",
+      "photo": {
+        "title": "Cas A (NIRCam image)",
+        "releaseId": "weic2330a",
+        "pageUrl": "https://esawebb.org/images/weic2330a/",
+        "imageUrl": "https://cdn.esawebb.org/archives/images/publicationjpg/weic2330a.jpg",
+        "credit": "NASA, ESA, CSA, STScI, D. Milisavljevic (Purdue University), T. Temim (Princeton University), I. De Looze (University of Gent)",
+        "approxBytes": 3400000,
+        "licence": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "checkedAt": "2026-10-22"
+      }
+    },
+    {
+      "id": "space-cas-a-infrared",
+      "name": "Infrared Remnant",
+      "tagline": "Cassiopeia A in mid-infrared: ember red and teal.",
+      "palette": {
+        "bg": "#0D0A18",
+        "surface": "#1F1730",
+        "accent": "#FF6F61",
+        "ink": "#FFEDEA",
+        "glyph": "#FFD3CC"
+      },
+      "iconStyle": {
+        "shape": "rounded",
+        "background": {
+          "kind": "glass",
+          "tint": "#24142E",
+          "opacity": 0.55
+        },
+        "glyphColour": "#FFD3CC",
+        "glyphSet": "feather",
+        "showLabel": true,
+        "glyphScale": 0.44
+      },
+      "wallpaper": {
+        "kind": "mesh",
+        "colours": [
+          "#0D0A18",
+          "#4D1626",
+          "#A33A2E",
+          "#1E4F5C"
+        ],
+        "seed": 10305,
+        "angle": 170,
+        "grain": 0.08
+      },
+      "widget": {
+        "style": "glass",
+        "font": "body",
+        "accent": "#FF6F61"
+      },
+      "plus": false,
+      "packId": "space-webb",
+      "art": {
+        "colours": {
+          "primary": "#FF6F61",
+          "secondary": "#4FD1C5",
+          "accent": "#FFC48A",
+          "ink": "#0B0A1F",
+          "light": "#FFF8E7"
+        },
+        "motifs": [
+          "star",
+          "sparkle"
+        ],
+        "frame": "none",
+        "frameRole": "light",
+        "texture": "starfield",
+        "textureRole": "light",
+        "stickers": [
+          {
+            "motif": "sparkle",
+            "corner": "tr",
+            "scale": 0.2,
+            "rotation": 0
+          }
+        ],
+        "composition": "sky",
+        "displayFont": "display"
+      },
+      "categories": [
+        "dark",
+        "nature"
+      ],
+      "tags": [
+        "space",
+        "webb",
+        "jwst",
+        "telescope",
+        "astronomy",
+        "stars",
+        "photo",
+        "free",
+        "supernova",
+        "cassiopeia",
+        "infrared",
+        "red",
+        "teal"
+      ],
+      "addedAt": "2026-10-22",
+      "photo": {
+        "title": "Cassiopeia A (MIRI Image)",
+        "releaseId": "weic2311a",
+        "pageUrl": "https://esawebb.org/images/weic2311a/",
+        "imageUrl": "https://cdn.esawebb.org/archives/images/publicationjpg/weic2311a.jpg",
+        "credit": "NASA, ESA, CSA, D. Milisavljevic (Purdue University), T. Temim (Princeton University), I. De Looze (UGent), J. DePasquale (STScI)",
+        "approxBytes": 2200000,
+        "licence": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "checkedAt": "2026-10-22"
+      }
+    },
+    {
+      "id": "space-rho-ophiuchi",
+      "name": "Rho Ophiuchi",
+      "tagline": "The closest star nursery to us, in Webb’s first-year portrait.",
+      "palette": {
+        "bg": "#0A0C1E",
+        "surface": "#191D3A",
+        "accent": "#FFC861",
+        "ink": "#FFF7E3",
+        "glyph": "#FFEBB5"
+      },
+      "iconStyle": {
+        "shape": "squircle",
+        "background": {
+          "kind": "glass",
+          "tint": "#141A3A",
+          "opacity": 0.55
+        },
+        "glyphColour": "#FFEBB5",
+        "glyphSet": "feather",
+        "showLabel": true,
+        "glyphScale": 0.44
+      },
+      "wallpaper": {
+        "kind": "mesh",
+        "colours": [
+          "#0A0C1E",
+          "#2B2551",
+          "#6B4A2E",
+          "#B07A3E"
+        ],
+        "seed": 10306,
+        "angle": 170,
+        "grain": 0.08
+      },
+      "widget": {
+        "style": "glass",
+        "font": "display",
+        "accent": "#FFC861"
+      },
+      "plus": false,
+      "packId": "space-webb",
+      "art": {
+        "colours": {
+          "primary": "#FFC861",
+          "secondary": "#6F8CFF",
+          "accent": "#FFE9A8",
+          "ink": "#0B0A1F",
+          "light": "#FFF8E7"
+        },
+        "motifs": [
+          "star",
+          "sparkle",
+          "cloud"
+        ],
+        "frame": "none",
+        "frameRole": "light",
+        "texture": "starfield",
+        "textureRole": "light",
+        "stickers": [
+          {
+            "motif": "star",
+            "corner": "tr",
+            "scale": 0.2,
+            "rotation": 0
+          }
+        ],
+        "composition": "sky",
+        "displayFont": "display"
+      },
+      "categories": [
+        "dark",
+        "nature"
+      ],
+      "tags": [
+        "space",
+        "webb",
+        "jwst",
+        "telescope",
+        "astronomy",
+        "stars",
+        "photo",
+        "free",
+        "nebula",
+        "ophiuchus",
+        "nursery",
+        "gold",
+        "anniversary"
+      ],
+      "addedAt": "2026-10-22",
+      "photo": {
+        "title": "Rho Ophiuchi cloud complex",
+        "releaseId": "weic2316a",
+        "pageUrl": "https://esawebb.org/images/weic2316a/",
+        "imageUrl": "https://cdn.esawebb.org/archives/images/publicationjpg/weic2316a.jpg",
+        "credit": "NASA, ESA, CSA, STScI, K. Pontoppidan (STScI), A. Pagan (STScI)",
+        "approxBytes": 2000000,
+        "licence": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "checkedAt": "2026-10-22"
+      }
+    },
+    {
+      "id": "space-cartwheel",
+      "name": "Cartwheel Galaxy",
+      "tagline": "A galaxy ring half a billion light-years away.",
+      "palette": {
+        "bg": "#070A1A",
+        "surface": "#141A33",
+        "accent": "#7FB8FF",
+        "ink": "#EEF5FF",
+        "glyph": "#D8E8FF"
+      },
+      "iconStyle": {
+        "shape": "circle",
+        "background": {
+          "kind": "glass",
+          "tint": "#101834",
+          "opacity": 0.55
+        },
+        "glyphColour": "#D8E8FF",
+        "glyphSet": "feather",
+        "showLabel": true,
+        "glyphScale": 0.44
+      },
+      "wallpaper": {
+        "kind": "mesh",
+        "colours": [
+          "#070A1A",
+          "#18264F",
+          "#5A2E5E",
+          "#B06A3A"
+        ],
+        "seed": 10307,
+        "angle": 170,
+        "grain": 0.08
+      },
+      "widget": {
+        "style": "glass",
+        "font": "display",
+        "accent": "#7FB8FF"
+      },
+      "plus": false,
+      "packId": "space-webb",
+      "art": {
+        "colours": {
+          "primary": "#7FB8FF",
+          "secondary": "#FF9F7A",
+          "accent": "#FFE3A0",
+          "ink": "#0B0A1F",
+          "light": "#FFF8E7"
+        },
+        "motifs": [
+          "star",
+          "sparkle",
+          "planet"
+        ],
+        "frame": "none",
+        "frameRole": "light",
+        "texture": "starfield",
+        "textureRole": "light",
+        "stickers": [
+          {
+            "motif": "planet",
+            "corner": "tr",
+            "scale": 0.2,
+            "rotation": 0
+          }
+        ],
+        "composition": "sky",
+        "displayFont": "display"
+      },
+      "categories": [
+        "dark"
+      ],
+      "tags": [
+        "space",
+        "webb",
+        "jwst",
+        "telescope",
+        "astronomy",
+        "stars",
+        "photo",
+        "free",
+        "galaxy",
+        "cartwheel",
+        "blue",
+        "ring"
+      ],
+      "addedAt": "2026-10-22",
+      "photo": {
+        "title": "Cartwheel Galaxy (NIRCam and MIRI Composite Image)",
+        "releaseId": "weic2211a",
+        "pageUrl": "https://esawebb.org/images/weic2211a/",
+        "imageUrl": "https://cdn.esawebb.org/archives/images/publicationjpg/weic2211a.jpg",
+        "credit": "NASA, ESA, CSA, STScI",
+        "approxBytes": 4000000,
+        "licence": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "checkedAt": "2026-10-22"
+      }
+    },
+    {
+      "id": "space-pillars-infrared",
+      "name": "Ghostly Pillars",
+      "tagline": "The Pillars of Creation in dusky mid-infrared.",
+      "palette": {
+        "bg": "#0E0B1A",
+        "surface": "#1E1A30",
+        "accent": "#D9B99B",
+        "ink": "#F6EFE8",
+        "glyph": "#EDE0D2"
+      },
+      "iconStyle": {
+        "shape": "square",
+        "background": {
+          "kind": "glass",
+          "tint": "#1E1A30",
+          "opacity": 0.6
+        },
+        "glyphColour": "#EDE0D2",
+        "glyphSet": "feather",
+        "showLabel": true,
+        "glyphScale": 0.44
+      },
+      "wallpaper": {
+        "kind": "mesh",
+        "colours": [
+          "#0E0B1A",
+          "#2A2338",
+          "#5E4A4A",
+          "#2F3B52"
+        ],
+        "seed": 10308,
+        "angle": 170,
+        "grain": 0.08
+      },
+      "widget": {
+        "style": "outline",
+        "font": "body",
+        "accent": "#D9B99B"
+      },
+      "plus": false,
+      "packId": "space-webb",
+      "art": {
+        "colours": {
+          "primary": "#D9B99B",
+          "secondary": "#8E9CC8",
+          "accent": "#F4E1C1",
+          "ink": "#0B0A1F",
+          "light": "#FFF8E7"
+        },
+        "motifs": [
+          "star",
+          "moon"
+        ],
+        "frame": "none",
+        "frameRole": "light",
+        "texture": "starfield",
+        "textureRole": "light",
+        "stickers": [
+          {
+            "motif": "moon",
+            "corner": "tr",
+            "scale": 0.2,
+            "rotation": 0
+          }
+        ],
+        "composition": "sky",
+        "displayFont": "display"
+      },
+      "categories": [
+        "dark",
+        "minimal"
+      ],
+      "tags": [
+        "space",
+        "webb",
+        "jwst",
+        "telescope",
+        "astronomy",
+        "stars",
+        "photo",
+        "free",
+        "nebula",
+        "pillars",
+        "infrared",
+        "grey",
+        "moody"
+      ],
+      "addedAt": "2026-10-22",
+      "photo": {
+        "title": "Pillars of Creation (MIRI Image)",
+        "releaseId": "weic2218a",
+        "pageUrl": "https://esawebb.org/images/weic2218a/",
+        "imageUrl": "https://cdn.esawebb.org/archives/images/large/weic2218a.jpg",
+        "credit": "NASA, ESA, CSA, STScI, J. DePasquale (STScI), A. Pagan (STScI)",
+        "approxBytes": 586000,
+        "licence": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "checkedAt": "2026-10-22"
+      }
+    }
+  ]
+}

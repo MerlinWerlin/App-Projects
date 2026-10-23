@@ -1,0 +1,1642 @@
+{
+  "app": "tracing",
+  "title": "Linework (AR tracing, working title)",
+  "updated": "2026-10-22",
+  "milestones": {
+    "TRIAL": [
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "T05",
+      "T06",
+      "T07",
+      "T08"
+    ]
+  },
+  "tasks": [
+    {
+      "id": "T01",
+      "status": "done",
+      "deps": [],
+      "title": "Repo scaffold: Expo (latest stable SDK you know) + TypeScript strict + Expo Router stack (index, templates, prepare, trace, lightbox, settings placeholders), app.json (name Linework, slug linework, iOS NSCameraUsageDescription + NSPhotoLibraryUsageDescription strings, android CAMERA), tokens.ts light/dark from PLAN §4, fonts, package.json scripts (start, test = node --test over src/core/**/*.test.ts, typecheck), @expo/ngrok devDependency; START_TRIAL.cmd, start-trial.sh and docs/TRIAL.md already exist — keep them working",
+      "accept": "Expo Go-only dependencies (PLAN §5); node --test runs; tsc clean when deps are installed (or deferred if the registry is unreachable — see WORKFLOW step 4)",
+      "commit": "ce8eeae"
+    },
+    {
+      "id": "T02",
+      "status": "done",
+      "deps": [
+        "T01"
+      ],
+      "title": "src/core/transform.ts + grid.ts + image.ts: overlay transform (pan, pinch about focal point, rotate, clamp scale 0.1–8, fit-to-view, reset, mirror flag, locked flag ignores gestures), grid geometry (3×3, 4×4, custom), resize-to-max and rotate-90 maps",
+      "accept": "node:test unit tests cover composition order, focal-point pinch, clamping, lock, mirror, grid lines",
+      "commit": "b922f01"
+    },
+    {
+      "id": "T03",
+      "status": "done",
+      "deps": [
+        "T01"
+      ],
+      "title": "src/core/outline.ts: RGBA -> grayscale -> 3x3/5x5 gaussian -> Sobel magnitude -> threshold from detail 0..1 (percentile based) -> optional dilate for thickness 1..4 -> invert option -> RGBA line art (dark lines on transparent); chunked API (processRows generator) so UI can yield",
+      "accept": "tests on tiny synthetic images (vertical edge, square, flat image = no lines, invert, thickness); 1024x1024 benchmark logged in RUNLOG",
+      "commit": "7896796"
+    },
+    {
+      "id": "T04",
+      "status": "done",
+      "deps": [
+        "T02"
+      ],
+      "title": "Trace screen: CameraView (back) full screen; overlay Image with Animated transform from gesture-handler (pinch, rotation, pan simultaneous) using src/core/transform; vertical opacity slider; glass buttons: lock, flashlight (enableTorch), grid (SVG lines), mirror, touch-lock (full-screen catcher, long-press 1s to unlock), reset fit; expo-keep-awake; haptics; accessibility labels; camera permission flow + denied state with Open Settings + Lightbox fallback",
+      "accept": "renders with a mocked camera in tests where feasible; every control wired; no tracing control behind Plus",
+      "commit": "37daef0"
+    },
+    {
+      "id": "T05",
+      "status": "done",
+      "deps": [
+        "T01"
+      ],
+      "title": "Home screen + image sources: Trace a photo (expo-image-picker library), Take a photo (camera), recent images (src/core/recent.ts + AsyncStorage, copy picked image into documentDirectory), templates row, settings gear, first-run tips cards (3), empty states",
+      "accept": "recent.ts unit tests; navigation to /prepare with the image uri",
+      "commit": "08256d8"
+    },
+    {
+      "id": "T06",
+      "status": "done",
+      "deps": [
+        "T03",
+        "T05"
+      ],
+      "title": "Prepare screen + outline mode in app: preview, Original/Outline toggle, detail + thickness sliders, invert, rotate 90, Start tracing; pipeline ImageManipulator (≤1024px, base64 jpeg) -> jpeg-js -> core outline (chunked with yields + spinner) -> upng-js PNG in cache -> overlay uri",
+      "accept": "adapter unit-tested with a small JPEG fixture in node; UI shows progress and handles errors",
+      "commit": "0544461"
+    },
+    {
+      "id": "T07",
+      "status": "done",
+      "deps": [
+        "T05"
+      ],
+      "title": "Templates: 24 original SVG line-art templates drawn in-house (simple clean strokes: 4 each Animals, Flowers, Faces, Lettering grid, Shapes, Mandalas), catalogue in src/core/templates.ts, grid screen, tap -> prepare/trace (rendered via react-native-svg or rasterised)",
+      "accept": "catalogue test (ids unique, files exist); every template renders; no copied artwork",
+      "commit": "226b8e0"
+    },
+    {
+      "id": "T08",
+      "status": "done",
+      "deps": [
+        "T04",
+        "T06",
+        "T07"
+      ],
+      "title": "TRIAL polish + QA: Lightbox screen, Settings screen (defaults persisted), toasts/hints, dark mode, safe areas, large touch targets, error boundaries; full walk-through of every flow; docs/TRIAL.md test script for the owner (what to try, how to send feedback via build page comments); set status headline 'Ready to try on your iPhone'",
+      "accept": "all tests + typecheck green; walk-through notes in RUNLOG; trial kit published",
+      "commit": "85e7378"
+    },
+    {
+      "id": "T09",
+      "status": "done",
+      "deps": [
+        "T08"
+      ],
+      "title": "Timelapse: record the drawing with CameraView recordAsync (overlay hidden from the recording), speed-up note, save to Photos via expo-media-library with permission flow",
+      "accept": "flow works in Expo Go; permission denied handled",
+      "commit": "73b30ef + 0440ea5",
+      "note": "camera switches to video mode only while recording; device check pending"
+    },
+    {
+      "id": "T10",
+      "status": "done",
+      "deps": [
+        "T08"
+      ],
+      "title": "Photo-to-paper check: snapshot the camera view with the overlay ghosted to compare progress; plus 'sketch steps' reveal (overlay by detail level: outline coarse -> fine)",
+      "accept": "core logic tested; UI wired",
+      "commit": "0193faa + 0440ea5",
+      "note": "compare alignment uses cover-fit; verify on device"
+    },
+    {
+      "id": "T11",
+      "status": "done",
+      "deps": [
+        "T08"
+      ],
+      "title": "Linework Plus scaffolding: src/plus/ entitlement interface with a mock store (real IAP later in a dev build), locked template packs UI, tip jar placeholder; test asserting nothing under src/core or app/trace imports src/plus",
+      "accept": "test passes; every tracing tool reachable without Plus",
+      "commit": "68e35a3"
+    },
+    {
+      "id": "T12",
+      "status": "done",
+      "deps": [
+        "T08"
+      ],
+      "title": "Accessibility + performance pass: VoiceOver labels everywhere, Dynamic Type sanity, reduced motion, outline mode speed on 1024px (optimise typed arrays, avoid allocations), memory on large photos",
+      "accept": "notes + numbers in RUNLOG; fixes merged",
+      "commit": "723cedb",
+      "note": "Done for core outline perf + Home/Templates/ui components; remaining screens moved to T17"
+    },
+    {
+      "id": "T13",
+      "status": "todo",
+      "deps": [
+        "T08"
+      ],
+      "title": "PC verification: full npm install, npx tsc --noEmit, npx expo export (iOS) and fix every error; confirm SDK version matches the owner's Expo Go (written for SDK 54; upgrade with npx expo install expo@latest + --fix if Expo Go needs newer) — needs the registry (overseer on the PC, or a run where npm is reachable)",
+      "accept": "tsc clean, export succeeds, lockfile committed; status typecheck = full",
+      "note": "Owner can now run VERIFY.cmd and paste verify-report.txt (D65-1)"
+    },
+    {
+      "id": "T14",
+      "status": "done",
+      "deps": [
+        "T08"
+      ],
+      "title": "Recent images: store file names relative to documentDirectory/images and rebuild full paths on load (iOS container path changes after app updates); migrate existing absolute entries",
+      "accept": "recent tests cover relative/absolute migration",
+      "commit": "c5d3669"
+    },
+    {
+      "id": "T15",
+      "status": "done",
+      "deps": [
+        "T08"
+      ],
+      "title": "Prepare polish: skip re-encoding the rotated original while in Outline mode; clean old outline PNGs in cache/outline on launch (keep newest 10)",
+      "accept": "no redundant manipulate calls; cache bounded",
+      "commit": "6d9c6b3"
+    },
+    {
+      "id": "T16",
+      "status": "todo",
+      "deps": [
+        "T13"
+      ],
+      "title": "Real-JPEG fixture test: decode the embedded 16x16 JPEG with jpeg-js and encode with upng-js in node (needs node_modules)",
+      "accept": "test runs under npm test once deps install",
+      "note": "D77-1: next allowed task; still needs the registry (unreachable run 57)"
+    },
+    {
+      "id": "T17",
+      "status": "done",
+      "deps": [
+        "T08"
+      ],
+      "title": "Accessibility gaps on trace/prepare/lightbox/settings: accessibility actions to nudge/scale/rotate the overlay; maxFontSizeMultiplier on glass pills and progress pill; accessible loading view; hide decorative icons; iOS progress announcements via AccessibilityInfo.announceForAccessibility; header roles; settings radios use checked + wrap on large text; locked lightbox controls state hint",
+      "accept": "every control on those screens labelled and usable with VoiceOver; ui-check green",
+      "commit": "fb62c60"
+    },
+    {
+      "id": "T18",
+      "status": "done",
+      "deps": [
+        "T09"
+      ],
+      "title": "Timelapse follow-ups: Back/Lightbox while recording stop the clip first and stay on screen (keep the clip); delete discarded clips from cache",
+      "accept": "tests + ui-check green",
+      "commit": "c068b64"
+    },
+    {
+      "id": "T19",
+      "status": "todo",
+      "deps": [
+        "T13"
+      ],
+      "title": "Device check of run-3 features on the owner's iPhone (Expo Go): record/stop/save timelapse (mode switch latency, no mic prompt, aspect ratio), paper-check snapshot alignment vs live preview, sketch-steps speed; controls row wrapping on narrow phones — fix what the owner or PC verification reports",
+      "accept": "owner feedback or PC verification addressed"
+    },
+    {
+      "id": "T20",
+      "title": "Oversight D5-1: route all expo-file-system/legacy use (useTimelapse, usePaperCheck, native/storage, outlineDeps) through one adapter src/native/fs.ts; guard test that no other file imports expo-file-system. No behaviour change.",
+      "status": "done",
+      "deps": [],
+      "commit": "dc2cba9"
+    },
+    {
+      "id": "T21",
+      "status": "done",
+      "deps": [],
+      "title": "Owner feedback 1: photo-to-line-art quality — outline v2 (faces via LBP cascade, subject vs background, skin-aware smoothing, dark-side DoG + fine scale, local contrast normalisation, thinning, gap linking, smoothed tapered strokes)",
+      "accept": "owner feedback item addressed; tests green",
+      "commit": "3fde0a3",
+      "source": "owner"
+    },
+    {
+      "id": "T22",
+      "status": "done",
+      "deps": [],
+      "title": "Owner feedback 2: detail/thickness controls — detail 0–100 % with real extra features, thickness 0.5–8 px with thickness-aware line scale; functional presets (Best match, Fine line art, Detailed portrait, Clean outline, Bold outline, Simplified, Detailed illustration); background mode; photo type",
+      "accept": "owner feedback item addressed; tests green",
+      "commit": "a2d556e",
+      "source": "owner"
+    },
+    {
+      "id": "T23",
+      "status": "done",
+      "deps": [],
+      "title": "Owner feedback 3: template library — 86 new original templates (botanical, wildlife & pets, ornament/mandalas/lettering, places/fantasy/still life/faces) with beginner/intermediate/advanced levels and occasion tags",
+      "accept": "owner feedback item addressed; tests green",
+      "commit": "ecd98a2",
+      "source": "owner"
+    },
+    {
+      "id": "T24",
+      "status": "done",
+      "deps": [],
+      "title": "Owner feedback 4: trace workspace — captions on every control, lock explained, touch lock explained with one-time sheet, visible banner and hold-to-exit ring, black-screen cause fixed, Exit button in Lightbox",
+      "accept": "owner feedback item addressed; tests green",
+      "commit": "aa51146",
+      "source": "owner"
+    },
+    {
+      "id": "T25",
+      "status": "done",
+      "deps": [],
+      "title": "Owner feedback 5: template discovery — search, level filter, categories, occasion/style collections, favourites, recently traced templates on Home",
+      "accept": "owner feedback item addressed; tests green",
+      "commit": "e818c3d",
+      "source": "owner"
+    },
+    {
+      "id": "T26",
+      "status": "done",
+      "deps": [],
+      "title": "Owner device check of outline v2 + presets + templates on iPhone: outline time per change (target < 2.5 s; if slower, add a quick 640 px preview pass), portrait features on real selfies, template list scrolling smoothness with ~110 SVGs; fix what the owner reports",
+      "accept": "owner feedback addressed",
+      "source": "owner",
+      "notes": "Oversight D8-1: if the owner reports the preview still lags, first drop the preview to 256 px and raise the debounce to 300 ms (src prepare preview settings) before touching the engine.",
+      "commit": "owner tested in Expo Go (SDK 57) 17 Oct: languages good; feedback became fb-1017 T47-T52"
+    },
+    {
+      "id": "T27",
+      "status": "todo",
+      "deps": [
+        "T26"
+      ],
+      "title": "Template library round 2: art-nouveau frame, damask, dog portrait, more pets, more realistic faces/hands, Easter & baby collections; re-draw weaker pieces (herbarium bellflower, wedding wreath leaves, koi head)",
+      "accept": "each new piece reviewed by eye; tests green",
+      "note": "freeze lifted by the owner test 17 Oct (fb-1017)",
+      "hold": "D77-1 release-prep freeze until the owner picks a screenshot style and default outline"
+    },
+    {
+      "id": "T28",
+      "status": "done",
+      "deps": [],
+      "title": "Oversight D7-1: outline feels instant — 250 ms debounce, quick 320 px preview with the same engine (decoded source + analysis shared) shown with a 'Refining…' badge, then the full result; a newer change aborts both stages of the older job",
+      "accept": "test that a newer request supersedes an older one; final output unchanged; tests green",
+      "commit": "13e636b"
+    },
+    {
+      "id": "T29",
+      "status": "done",
+      "deps": [],
+      "title": "Oversight D7-2: TRIAL.md re-test list with explicit yes/no questions (black-screen fix first, outline speed, quality, templates); T27 waits for the owner's re-test",
+      "accept": "guard test; tests green",
+      "commit": "a08e8ca"
+    },
+    {
+      "id": "T30",
+      "status": "done",
+      "deps": [],
+      "title": "Premium polish foundation (rules 1,3,5,6): src/core/motion.ts tokens + pure helpers (stagger, detents, focus idle) with tests; src/theme/motion.ts (useReduceMotion, useAppActive, springTo/fadeTo, useEntrance); PressableScale; Skeleton shimmer; success haptic; elevation + tabular tokens; Toast springs in/out; Button/GlassButton press-scale",
+      "accept": "tests green; no new deps",
+      "tags": [
+        "polish-1013"
+      ],
+      "commit": "d0709df"
+    },
+    {
+      "id": "T31",
+      "status": "done",
+      "deps": [
+        "T30"
+      ],
+      "title": "Premium polish L1+L2+L3+L5(trace side): Trace focus mode (controls fade out after 3 s idle, back on first tap, never while dragging, Touch lock banner unaffected); opacity slider floating % bubble + selection-haptic detents 25/50/75/100; lock padlock morph + success haptic + brief frame flash around the overlay, unlock reverses; camera + overlay fade in on mount",
+      "accept": "reduce-motion honoured; transform/opacity native-driven; tests green",
+      "tags": [
+        "polish-1013"
+      ],
+      "commit": "49f4b51"
+    },
+    {
+      "id": "T32",
+      "status": "done",
+      "deps": [
+        "T30"
+      ],
+      "title": "Premium polish L4: Prepare outline wait shows a Skeleton in the preview frame; finished line art wipes in left to right (~400 ms); preset chip changes cross-fade the preview instead of popping; outline-ready success haptic; tabular % in progress badge",
+      "accept": "no outline-engine change; tests green",
+      "tags": [
+        "polish-1013"
+      ],
+      "commit": "d016140"
+    },
+    {
+      "id": "T33",
+      "status": "done",
+      "deps": [
+        "T30"
+      ],
+      "title": "Premium polish L6: Templates grid stagger (first mount, max 8), PressableScale cards, favourite heart pops with the spring + selection haptic, category chips slide an underline indicator, LayoutAnimation on filter add/remove, designed empty state",
+      "accept": "tests green",
+      "tags": [
+        "polish-1013"
+      ],
+      "commit": "766a537"
+    },
+    {
+      "id": "T34",
+      "status": "done",
+      "deps": [
+        "T30"
+      ],
+      "title": "Premium polish L7 + rules 2,4,6 app-wide: Home paper-grain (static SVG noise) + hero buttons with soft ink-blue SVG sheen, recents stagger, designed empty states; _layout: native slide for pushes, Prepare→Trace fade through graphite (L5 nav side), modal/sheet transitions ≤350 ms, splash fades into Home after fonts load; Settings toggles selection haptic",
+      "accept": "tests green",
+      "tags": [
+        "polish-1013"
+      ],
+      "commit": "1545bc8"
+    },
+    {
+      "id": "T35",
+      "status": "done",
+      "deps": [
+        "T31",
+        "T32",
+        "T33",
+        "T34"
+      ],
+      "title": "Premium polish review: read-only pass over T31–T34 with strict-tsc stub typings; fix compile/runtime risks; confirm reduce motion + haptics setting respected everywhere",
+      "accept": "tests green",
+      "tags": [
+        "polish-1013"
+      ],
+      "commit": "3eabf90"
+    },
+    {
+      "id": "T36",
+      "status": "done",
+      "deps": [
+        "T35"
+      ],
+      "tags": [
+        "polish-1013"
+      ],
+      "title": "Owner device check of the premium polish (docs/TRIAL.md 'New tonight'): focus mode wake tap, controls stay up during a >3 s pinch, slider bubble + detent ticks, lock flash, outline wipe/cross-fade, template stagger/heart/underline, splash + nav transitions, Reduce Motion fades; fix anything reported as slow, jumpy or in the way",
+      "accept": "owner feedback on the polish handled",
+      "commit": "owner tested in Expo Go (SDK 57) 17 Oct: languages good; feedback became fb-1017 T47-T52"
+    },
+    {
+      "id": "T37",
+      "title": "Oversight D12-1: one yes/no re-test question per visible polish item (focus mode, opacity bubble, lock morph, sketch reveal) in docs/TRIAL.md, guard test; kit rebuilt only from a green checkpoint",
+      "status": "done",
+      "deps": [
+        "T35"
+      ],
+      "tags": [
+        "polish-1013"
+      ],
+      "commit": "0fbbfb5"
+    },
+    {
+      "id": "T38",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1016"
+      ],
+      "title": "Owner 1016 R1 release identity: iOS bundleIdentifier + Android package com.jared797.linework; ios.config.usesNonExemptEncryption false; eas.json profiles development (developmentClient, internal), preview (internal), production (autoIncrement); START_TRIAL.cmd keeps working",
+      "accept": "app.json + eas.json updated, guard test, trial kit unaffected",
+      "commit": "64caafe"
+    },
+    {
+      "id": "T39",
+      "status": "done",
+      "deps": [
+        "T38"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "title": "Owner 1016 R2 OTA updates: expo-updates for EAS Update (runtimeVersion policy appVersion, channels development/preview/production in eas.json), PUSH_UPDATE.cmd (asks for a note, npx eas-cli@latest update --channel production, pause), docs/RELEASING.md plain words (OTA vs new TestFlight build); never crashes Expo Go",
+      "accept": "config + script + doc + guard test; update check is a no-op in Expo Go/dev",
+      "commit": "00d68d2"
+    },
+    {
+      "id": "T40",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1016"
+      ],
+      "title": "Owner 1016 R3a i18n layer: expo-localization + small typed i18n (interpolation, plurals via Intl.PluralRules), follows phone language with a Settings override (persisted), every user-facing string in app/ and src/ui moved to the English catalogue; test fails on hard-coded UI strings",
+      "accept": "src/i18n core tested with node:test; scanner test green; Settings language picker",
+      "commit": "0bf5650 de54027 223473c 70c65fb c222c05"
+    },
+    {
+      "id": "T41",
+      "status": "done",
+      "deps": [
+        "T40"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "title": "Owner 1016 R3b catalogues: Spanish, French, German, Italian, Portuguese (Brazil), Japanese, Korean, Simplified Chinese, Hindi, Arabic — complete key parity with English, plural categories per language, placeholders preserved; marked machine translations awaiting native review",
+      "accept": "parity + placeholder + plural-category tests green",
+      "commit": "bdcdcc1 07a3d38 70a5ea5 49c32de f2818a3"
+    },
+    {
+      "id": "T42",
+      "status": "done",
+      "deps": [
+        "T40"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "title": "Owner 1016 R3c adaptive layout: Arabic RTL (I18nManager allowRTL/forceRTL + reload on direction change, start/end styles, mirrored chevrons/back gesture; traced image, camera and outline never mirrored; numbers/percent stay LTR), text expansion wraps and buttons grow, CJK/Devanagari/Arabic line heights + system font fallback, Intl dates/numbers/units, pseudo-locale (accented, +40%) and RTL layout checks of main screens, docs/I18N.md",
+      "accept": "style scanner (no left/right in UI styles), pseudo-locale + RTL tests green, docs/I18N.md",
+      "commit": "c032baf 90700df 060f58f"
+    },
+    {
+      "id": "T43",
+      "status": "done",
+      "deps": [
+        "T42"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "title": "Owner 1016 R3 follow-up: script-aware font family + line heights applied across all screens (system font for CJK/Devanagari/Arabic, taller line heights; Latin pixel-identical)",
+      "accept": "every custom-font text uses useTypography",
+      "commit": "022626f"
+    },
+    {
+      "id": "T44",
+      "status": "done",
+      "deps": [
+        "T41",
+        "T43"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "title": "Review after the i18n merge: strict tsc with stub typings, key/placeholder check, rules-of-hooks check",
+      "accept": "no genuine errors",
+      "commit": "none needed (no bugs found)"
+    },
+    {
+      "id": "T45",
+      "status": "done",
+      "deps": [
+        "T13"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "title": "Owner check of languages + release on device/PC: switch languages in Settings, Arabic RTL restart (camera/image never mirrored), no truncation in German/French; owner runs eas login / eas init / eas update:configure and first TestFlight build per docs/RELEASING.md; fix anything reported",
+      "accept": "owner feedback handled",
+      "commit": "owner tested in Expo Go (SDK 57) 17 Oct: languages good; feedback became fb-1017 T47-T52"
+    },
+    {
+      "id": "T46",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "owner-1016"
+      ],
+      "title": "Native-speaker review of the 10 machine-translated catalogues (owner to arrange or accept as-is); track notes from the translation run (lettering template names kept in English, Arabic trace term تتبّع vs شفّ, App Store privacy-label wording per language)",
+      "accept": "reviewed catalogues or owner sign-off"
+    },
+    {
+      "id": "T47",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1017"
+      ],
+      "title": "F1 crash fix: Hermes has no Intl.PluralRules — pluralCategory uses a guarded constructor with a CLDR fallback table; tests with Intl.PluralRules deleted; test rule against unguarded new Intl.X( for APIs Hermes lacks; audit every Intl use",
+      "accept": "Templates + photo pick no longer crash on Hermes; tests green",
+      "priority": "outranks all but trial blockers",
+      "commit": "7902464"
+    },
+    {
+      "id": "T48",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1017"
+      ],
+      "title": "F2 clear messages for images: friendly in-app message when a picked image fails (unsupported format, too large, HEIC, out of memory) and an error boundary around Prepare/outline with 'Try another photo'; ordinary photos work",
+      "accept": "no render error on bad images; tests green",
+      "priority": "outranks all but trial blockers",
+      "commit": "00f45f5"
+    },
+    {
+      "id": "T49",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1017"
+      ],
+      "title": "F3 better outlines: Canny pipeline (CLAHE, smoothing, Sobel, NMS, auto hysteresis, thinning), XDoG Sketch + Line art + Bold styles, speck removal + gap bridging, Detail/Line weight sliders per style, Invert/dark paper; fixture set + golden-metric tests; before/after metrics in RUNLOG; PLAN note on native subject cut-out",
+      "accept": "measured improvement, tests green, Expo Go compatible",
+      "priority": "outranks all but trial blockers",
+      "commit": "1c4dfdf, fcb3fb2"
+    },
+    {
+      "id": "T50",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1017"
+      ],
+      "title": "F4 template line thickness (mirror PC exactly): LineWeight thick/medium/thin, LINE_SCALE, templateStroke, AsyncStorage key, GlassButton before Mirror, trace.lines.* keys in 11 locales, Lightbox too, templateStroke test",
+      "accept": "matches PC copy; tests green",
+      "priority": "outranks all but trial blockers",
+      "commit": "2f3f7e3"
+    },
+    {
+      "id": "T51",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1017"
+      ],
+      "title": "F5 templates tip card (mirror PC exactly): templates.tip.title/body in 11 locales, card at top of list header before level ChoiceBar",
+      "accept": "matches PC copy; tests green",
+      "priority": "outranks all but trial blockers",
+      "commit": "dd96ae1"
+    },
+    {
+      "id": "T52",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1017"
+      ],
+      "title": "Target Expo SDK 57 in the repo (package pins, react-dom allowed, config tests tolerant of the PC's SDK 57 install) so npm test is green on the PC",
+      "accept": "suite green on PC SDK 57 install",
+      "priority": "outranks all but trial blockers",
+      "commit": "70fa7d1"
+    },
+    {
+      "id": "T53",
+      "status": "todo",
+      "deps": [
+        "T49"
+      ],
+      "tags": [
+        "fb-1017",
+        "native"
+      ],
+      "title": "NATIVE (after TestFlight dev build): true subject cut-out / background removal via iOS Vision subject lifting behind a src/native adapter; Expo Go keeps the JS estimate",
+      "accept": "dev build only; adapter with JS fallback",
+      "priority": "later"
+    },
+    {
+      "id": "T54",
+      "status": "done",
+      "deps": [
+        "T49"
+      ],
+      "tags": [
+        "fb-1017"
+      ],
+      "title": "Pass the Prepare outline style (Sketch / Line art / Bold) to /trace so the step-by-step sketch guide uses the same engine as the chosen style",
+      "accept": "sketch steps match the chosen style",
+      "commit": "13bfb23",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T55",
+      "status": "todo",
+      "deps": [
+        "T47",
+        "T48",
+        "T49",
+        "T50",
+        "T51"
+      ],
+      "tags": [
+        "fb-1017"
+      ],
+      "title": "Owner re-test of fb-1017 on iPhone: Templates open, photo pick, friendly image errors (HEIC/large), new outline styles on real photos, line thickness, tip card; tune styles on real photos from feedback",
+      "accept": "owner feedback handled",
+      "note": "22 Oct owner test (fb-1022): 'line tracing looks done'. Default outline style still the owner's pick."
+    },
+    {
+      "id": "T56",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "release-prep"
+      ],
+      "title": "Release R1: original app icon + splash (pencil line motif, tokens); confirm eas.json profiles (done in T38)",
+      "accept": "icon/splash in app.json",
+      "commit": "494638d",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T57",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "release-prep"
+      ],
+      "title": "Release R3: docs/privacy.html ('Data Not Collected') + support page",
+      "accept": "pages present",
+      "commit": "566f2e7",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T58",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "release-prep"
+      ],
+      "title": "Release R4: store listing copy App Store + Play in docs/STORE.md (title, subtitle, keywords, description, 6 screenshot captions), 11 languages later; no competitor names",
+      "accept": "STORE.md",
+      "commit": "a19d068",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T59",
+      "status": "done",
+      "deps": [
+        "T56",
+        "T57",
+        "T58"
+      ],
+      "tags": [
+        "release-prep"
+      ],
+      "title": "Release R5: end-to-end pass of every screen/control, permissions denied/allowed, dark mode, accessibility labels; fix gaps; then docs/RELEASE_CHECKLIST.md",
+      "accept": "checklist written",
+      "commit": "63cf8ac ef53eff 952b715"
+    },
+    {
+      "id": "T60",
+      "status": "in_progress",
+      "deps": [
+        "T59"
+      ],
+      "tags": [
+        "release-prep",
+        "native"
+      ],
+      "title": "Release R2: real IAP for Linework Plus (A$2.99 one-time) in the TestFlight build, restore purchases — needs owner App Store Connect setup",
+      "accept": "dev build only",
+      "note": "22 Oct: code done (src/plus/iapStore.ts, expo-iap, A$2.99 non-consumable). Needs owner App Store Connect setup + a TestFlight sandbox purchase to close."
+    },
+    {
+      "id": "T61",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight"
+      ],
+      "title": "D65-1: VERIFY.cmd at the repo root (and trial kit) — npm install, tsc --noEmit, npm test, expo export ios → verify-report.txt with exit codes + first 40 error lines",
+      "accept": "guard test",
+      "commit": "d96ada9"
+    },
+    {
+      "id": "T62",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "M1 market research → docs/MARKET.md (12 apps, us+au, prices, features, complaints, screenshot playbook, pricing proposal) + build-page summary",
+      "accept": "MARKET.md + page section",
+      "commit": "0c26e55"
+    },
+    {
+      "id": "T63",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "M2 feature gaps ranked by want × cheapness (T64–T71), each citing MARKET.md",
+      "accept": "tasks in backlog",
+      "commit": "0c26e55"
+    },
+    {
+      "id": "T64",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "Steady camera: lock focus/exposure while the overlay is locked (CameraView autofocus off) + Settings toggle 'Keep focus while locked'; hint to use 0.5× lens with torch on supported phones",
+      "accept": "focus stays put when a hand enters the frame; tests green",
+      "reason": "MARKET §4.4: overlay drift / refocus is the #2 complaint (~30–35%); one prop + one setting = cheapest big win",
+      "commit": "c1908cd"
+    },
+    {
+      "id": "T65",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "Original 'Cute & Chibi' template category: 20 original kawaii-style pieces (animals, food, plants, characters of our own design), levels, 11-locale names",
+      "accept": "20 pieces reviewed by eye; tests green",
+      "reason": "MARKET §2.1: anime/cute in 8 of 12 apps and the top content complaint where missing; we have none",
+      "commit": "70ae28f"
+    },
+    {
+      "id": "T66",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "Guided first trace: 20-second onboarding (stand your phone on a glass/books/stand illustration, place paper, lock, trace) replacing the 3-card tips; skippable, replayable from Settings",
+      "accept": "onboarding flow; i18n; Reduce Motion",
+      "reason": "MARKET §4.5–4.6: awkward setup and confusing first use / unlabeled icons recur in most apps",
+      "commit": "86f29f7"
+    },
+    {
+      "id": "T67",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "My drawings: free local gallery — after tracing, snap the paper (reuse paper check), save photo + source/template + date; before/after view; never locked",
+      "accept": "gallery screen; local only; tests for store",
+      "reason": "MARKET §2.3 + §4.7: portfolios are liked and users rage when saved work is locked or lost",
+      "commit": "fd38a8a"
+    },
+    {
+      "id": "T68",
+      "status": "todo",
+      "deps": [
+        "T65"
+      ],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "Beginner course: 5 short original lessons (lines & shapes → simple objects → animals → faces → shading) built on sketch steps + templates; progress ticks",
+      "accept": "course screen; tests green",
+      "reason": "MARKET §2.2: lessons in 11 of 12 apps; highest-rated leaders pair lessons with templates",
+      "hold": "D77-1 release-prep freeze until the owner picks a screenshot style and default outline"
+    },
+    {
+      "id": "T69",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "Local progress on Home: drawings finished, time traced, day streak (no account, no nagging)",
+      "accept": "Home card; core tests",
+      "reason": "MARKET §2.4 + §5: stats/streaks in ~5 apps give a reason to return; cheap with local storage",
+      "commit": "dfe6e1f"
+    },
+    {
+      "id": "T70",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "Time-lapse plan: keep the Expo Go path (camera-only clip, overlay never recorded, no watermark); add src/native/recording adapter interface for a later native screen+overlay recorder; surface time-lapse on Home/Trace intro",
+      "accept": "adapter + docs; tests",
+      "reason": "MARKET §5 + takeaway 6: recording is in ≥5 apps; watermark-free clips are praised",
+      "hold": "D77-1 release-prep freeze until the owner picks a screenshot style and default outline"
+    },
+    {
+      "id": "T71",
+      "status": "todo",
+      "deps": [
+        "T65"
+      ],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "Template categories round: original Vehicles, Food and Tattoo-style flash/patterns sets (8–10 each) + seasonal mini-pack",
+      "accept": "pieces reviewed by eye; tests",
+      "reason": "MARKET §2.5–2.6: leaders advertise 300+ templates with these standard categories",
+      "hold": "D77-1 release-prep freeze until the owner picks a screenshot style and default outline",
+      "note": "fb-1022 (22 Oct) covers vehicles, food and seasonal inside the new Kids category; tattoo flash still open."
+    },
+    {
+      "id": "T72",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "M3 docs/DESIGN_V2.md: iOS 'bubbly' design — palette, type scale, radii, shadows, materials, components, before/after per screen",
+      "accept": "DESIGN_V2.md",
+      "reason": "OWNER_1018 M3: write the design first",
+      "commit": "c9035a1"
+    },
+    {
+      "id": "T73",
+      "status": "done",
+      "deps": [
+        "T72"
+      ],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "M3 foundation: theme v2 tokens + shared components (LargeTitleHeader collapsing on scroll, InsetGroup/Row, BubbleCard squircle, PillButton, CategoryBubble, GlassBar via expo-blur, SoftShadow) with Reduce Motion + RTL",
+      "accept": "components + tests green",
+      "commit": "9abc25a"
+    },
+    {
+      "id": "T74",
+      "status": "done",
+      "deps": [
+        "T73"
+      ],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "M3 migrate Home + Settings (large title, inset-grouped Settings, bubbly hero cards)",
+      "accept": "screens migrated; ui-check green",
+      "commit": "fe12da7 d983fe9",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T75",
+      "status": "done",
+      "deps": [
+        "T73"
+      ],
+      "tags": [
+        "market-1018",
+        "ref-1018"
+      ],
+      "title": "M3 migrate Templates: big category bubbles / sub-tabs (New, Animals, Flowers, Cute & chibi, Letters, Seasonal…) in a horizontal scroller above a 2-column grid of tall rounded preview cards with soft shadows; pastel section backgrounds; springy selection (MARKET 'Design reference 18 Oct' §2)",
+      "accept": "screen migrated",
+      "commit": "0351530",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T76",
+      "status": "done",
+      "deps": [
+        "T73"
+      ],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "M3 migrate Prepare, Plus, Lightbox to glass materials (one screen per commit; Trace sheets/pills split to T91)",
+      "accept": "screens migrated",
+      "commit": "e560943 cdafc12 38c4899",
+      "done": "2026-10-18 run 55"
+    },
+    {
+      "id": "T77",
+      "status": "done",
+      "deps": [
+        "T74",
+        "T75"
+      ],
+      "tags": [
+        "market-1018",
+        "ref-1018"
+      ],
+      "title": "M4 store screenshot set: 6+ shots at 1320×2868 following MARKET §6 and 'Design reference 18 Oct' §1 — one feature per shot, short bold headline; build both styles for the owner to pick: (a) serif headline on a pastel gradient, tilted phone, cut-out cards/sparkles bursting out of the frame; (b) bold rounded sans on one strong brand colour. Shots: hand with pencil tracing on paper under the phone, photo→sketch Before → After, templates grid, 'Every tool free', lessons/steps, opacity slider blown up with its % bubble, languages; touch ripples, enlarged pop-ups, hand-drawn arrows. Original art, no badges/ranking claims, SVG sources in store/",
+      "accept": "store/ assets in both styles + captions in 11 locales",
+      "commit": "334c830"
+    },
+    {
+      "id": "T78",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "M5 outlines stay high: real-photo-like fixtures (hair, fur, low light), make the owner's preferred style the default after T55, record comparison in MARKET §8",
+      "accept": "metrics in RUNLOG; MARKET updated",
+      "reason": "OWNER_1018 M5 + MARKET §8: photo→sketch quality is a key comparison point",
+      "commit": "60acac7",
+      "note": "fixtures + golden floors + Sketch low-light tuning done; default style unchanged until the owner answers T55 (Line art and Bold steadiest on hard fixtures)"
+    },
+    {
+      "id": "T79",
+      "status": "done",
+      "deps": [
+        "T73"
+      ],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "Add expo-blur (+ expo-linear-gradient if used) with `npx expo install` when the registry/PC is reachable and switch GlassBar/GlassSheet from the opaque fallback to BlurView (TODO in src/ui/v2/Glass.tsx) — per D72-2: add `npx expo install expo-blur expo-linear-gradient` to START_TRIAL.cmd/start-trial.sh and VERIFY right after `expo install expo@latest`; no owner chore",
+      "accept": "blur on bars/sheets in Expo Go; fallback kept for Reduce Transparency",
+      "commit": "49e52b5 3840726",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T80",
+      "status": "done",
+      "deps": [
+        "T67",
+        "T69"
+      ],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "Home: progress card counts trace sessions while 'My drawings' counts saved snapshots — reword the progress stat to 'sessions' (11 locales) or count saved drawings, so the two numbers never disagree",
+      "accept": "one meaning per number; tests",
+      "commit": "9794df3",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T81",
+      "status": "done",
+      "deps": [
+        "T74"
+      ],
+      "tags": [
+        "ref-1018"
+      ],
+      "title": "Bottom tab bar (Trace / Templates / My drawings / Settings) with clear Feather icons in the bubbly iOS look (expo-router Tabs, Expo Go); Prepare/Trace/Lightbox/Plus stay full-screen stack routes over the tabs; RTL order, labels from the catalogue, 44 pt targets; update PLAN §3",
+      "accept": "tabs work; deep routes unchanged; ui-check + tests green",
+      "commit": "40a6dbb",
+      "done": "2026-10-18 run 55"
+    },
+    {
+      "id": "T82",
+      "status": "done",
+      "deps": [
+        "T75"
+      ],
+      "tags": [
+        "ref-1018"
+      ],
+      "title": "Template detail sheet: tap a card → large preview sheet (GlassSheet) with name, level, favourite and one big primary PillButton 'Start tracing' (line thickness choice inside); long-press/quick trace kept",
+      "accept": "sheet opens from grid; Start tracing goes to /trace",
+      "commit": "9ef06e7",
+      "done": "2026-10-18 run 55"
+    },
+    {
+      "id": "T83",
+      "status": "done",
+      "deps": [
+        "T73"
+      ],
+      "tags": [
+        "ref-1018"
+      ],
+      "title": "Step indicator with ticks for the photo flow: Pick image → Outline → Trace, shown on Prepare and the trace intro (v2 component, RTL, a11y 'step 2 of 3')",
+      "accept": "component + pure step logic tested; shown on Prepare",
+      "commit": "4d366cc",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T84",
+      "status": "done",
+      "deps": [
+        "T73"
+      ],
+      "tags": [
+        "ref-1018"
+      ],
+      "title": "Premium touches: concentric ripple on tap for primary buttons/cards (Reduce Motion → none) and an enlarged value pop-up above the thumb while dragging any slider (opacity, detail, line weight)",
+      "accept": "ripple + pop-up components; Reduce Motion respected",
+      "commit": "7e4b17c 0f0055c",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T85",
+      "status": "done",
+      "deps": [
+        "T67"
+      ],
+      "tags": [
+        "ref-1018"
+      ],
+      "title": "Success moment when a drawing is finished: 'Finished!' sheet with sparkles + success haptic after paper check / Done (Save to My drawings, Trace again; time-lapse save later), Reduce Motion fades",
+      "accept": "sheet shown on finish; i18n 11 locales",
+      "commit": "2dfb4e8",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T86",
+      "status": "done",
+      "deps": [
+        "T73"
+      ],
+      "tags": [
+        "ref-1018"
+      ],
+      "title": "Designed 'nothing here yet' empty states (My drawings, Favourites, Recents, no search results) with original art, pastel background and one clear action button",
+      "accept": "each empty state has one action; i18n",
+      "commit": "cd17a60",
+      "done": "2026-10-18 run 54"
+    },
+    {
+      "id": "T87",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "release-prep",
+        "owner"
+      ],
+      "title": "Before store submission (owner decides, see docs/STORE.md top): confirm the name 'Linework' is free in both stores; host docs/privacy.html + docs/support.html and fill in the support email; either make Linework Plus live with a real pack or drop the Plus sentences from the listing; confirm the App Privacy answer given the EAS Update check (privacy page discloses it)",
+      "accept": "owner decisions recorded in STORE.md",
+      "note": "Research half done run 58 (3927ae0, D78-2): exact \"Linework\" is taken on the App Store (social/wallet app); our listing name \"Linework: Trace & Sketch\" does not clash; 3 fallback names in docs/STORE.md \"Name check\". Owner decisions still open."
+    },
+    {
+      "id": "T88",
+      "status": "todo",
+      "deps": [
+        "T58"
+      ],
+      "tags": [
+        "release-prep"
+      ],
+      "title": "Localised store listings for the other 10 languages from docs/STORE.md (same limits, counted by script; machine translation flagged for native review like T46)",
+      "accept": "STORE.md per-locale sections + count test"
+    },
+    {
+      "id": "T89",
+      "status": "done",
+      "deps": [
+        "T86"
+      ],
+      "tags": [
+        "ref-1018"
+      ],
+      "title": "Use EmptyStateV2 (favourites / recents / search variants, T86) on Templates in place of T75's inline empty card, and on Home's empty recents",
+      "accept": "one component for all empty states",
+      "note": "D74-2: before T76 (deps changed from T76 to T86)",
+      "commit": "275edb9",
+      "done": "2026-10-18 run 55"
+    },
+    {
+      "id": "T90",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight-D74-1"
+      ],
+      "title": "Strict-tsc stub harness: scripts/tsc-stubs/ type stubs for react-native/expo/etc. modules the cloud cannot install + `npm run typecheck:ui` that typechecks app/ and src/ against them; run every checkpoint alongside ui-check; RUNLOG notes which errors are stub-only",
+      "accept": "npm run typecheck:ui runs offline; real errors found are fixed",
+      "commit": "32dbf9f f4b8beb 0745fa8",
+      "done": "2026-10-18 run 55"
+    },
+    {
+      "id": "T91",
+      "status": "done",
+      "deps": [
+        "T76",
+        "T81",
+        "T82",
+        "T89"
+      ],
+      "tags": [
+        "market-1018"
+      ],
+      "title": "M3 migrate Trace screen sheets/pills to glass materials (last per D72-3; camera view stays uncluttered)",
+      "accept": "trace migrated; camera unchanged",
+      "commit": "08ef114..3ade965"
+    },
+    {
+      "id": "T92",
+      "status": "done",
+      "deps": [
+        "T81",
+        "T82"
+      ],
+      "tags": [
+        "ref-1018"
+      ],
+      "title": "Tab-bar polish: drop Templates' back chevron (now a tab root), trim double bottom safe-area padding on ScreenV2 tab screens, hide the bar while the keyboard is open (Templates search), template card spoken label says 'Open {name} preview'",
+      "accept": "no extra bottom gap; search keyboard not covered; ui-check + typecheck:ui clean",
+      "commit": "1de513d 88d159f"
+    },
+    {
+      "id": "T93",
+      "status": "todo",
+      "deps": [
+        "T77"
+      ],
+      "tags": [
+        "ref-1018",
+        "release-prep"
+      ],
+      "title": "Store screenshots: once the owner picks style (a) or (b), render localised sets for the 10 other languages from store/captions.json (check German/French line breaks, Arabic mirroring) and install Fraunces/SF Pro Rounded faces for the final export",
+      "accept": "store/jpg/<locale>/ for the picked style, sizes counted by test",
+      "hold": "D77-1 release-prep freeze until the owner picks a screenshot style and default outline"
+    },
+    {
+      "id": "T94",
+      "status": "done",
+      "deps": [
+        "T91"
+      ],
+      "tags": [
+        "ref-1018"
+      ],
+      "title": "CompareView + FinishSheet on v2 glass (shared by Trace paper-check and My drawings), then retire GlassButton and the v1 paths of Toast/VerticalSlider once nothing uses them",
+      "accept": "no v1 glass imports left; ui-check + typecheck:ui clean",
+      "commit": "16bdd50 (merge c2b7545)"
+    },
+    {
+      "id": "T95",
+      "status": "done",
+      "deps": [
+        "T94"
+      ],
+      "tags": [
+        "ref-1018"
+      ],
+      "title": "Camera-only raw colours to cameraGlass tokens: VerticalSlider BUBBLE_FILL/track rgba and the v1 `glass` token still used by trace.tsx, TouchLock, SketchStepsBar, LockButton (no visual change)",
+      "accept": "no raw rgba in camera controls; ui-check + typecheck:ui clean",
+      "priority": "later",
+      "commit": "4a84c2e (merge eee4c5a)"
+    },
+    {
+      "id": "T96",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1022",
+        "owner"
+      ],
+      "title": "fb-1022 T1 'Heroes' category: at least 12 original templates (original caped heroes in hero poses (flying, landing, standing), masked heroes, hero sidekick pets, ninjas, knights, original shield emblems); Beginner/Intermediate/Advanced mix",
+      "accept": "src/core/templateArt/heroes.ts + test (count, bounds, budget, banned franchise words); every piece rendered and checked by eye; names in all 11 locales",
+      "priority": "owner",
+      "commit": "88b6034"
+    },
+    {
+      "id": "T97",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1022",
+        "owner"
+      ],
+      "title": "fb-1022 T1 'Game world' category: at least 12 original templates (pixel-game style characters and items (sword, potion, heart, coin, chest), robots and mechs, race cars, cute monsters, original gamepad); Beginner/Intermediate/Advanced mix",
+      "accept": "src/core/templateArt/game.ts + test (count, bounds, budget, banned franchise words); every piece rendered and checked by eye; names in all 11 locales",
+      "priority": "owner",
+      "commit": "50d4b4c"
+    },
+    {
+      "id": "T98",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1022",
+        "owner"
+      ],
+      "title": "fb-1022 T1 'Movie night' category: at least 12 original templates (space explorers and rockets, aliens (original), dinosaurs, dragons and wizards, robots, popcorn and clapperboard); Beginner/Intermediate/Advanced mix",
+      "accept": "src/core/templateArt/movies.ts + test (count, bounds, budget, banned franchise words); every piece rendered and checked by eye; names in all 11 locales",
+      "priority": "owner",
+      "commit": "8122504"
+    },
+    {
+      "id": "T99",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1022",
+        "owner"
+      ],
+      "title": "fb-1022 T1 'Fairy tales' category: at least 12 original templates (princesses, castles, carriages, mermaids, unicorns, fairies, crowns, magic wands, frog prince); Beginner/Intermediate/Advanced mix",
+      "accept": "src/core/templateArt/fairytales.ts + test (count, bounds, budget, banned franchise words); every piece rendered and checked by eye; names in all 11 locales",
+      "priority": "owner",
+      "commit": "2c606f7"
+    },
+    {
+      "id": "T100",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1022",
+        "owner"
+      ],
+      "title": "fb-1022 T1 'Kids' category: at least 12 original templates (woodland and safari animals, dinosaurs, pets, vehicles, food, alphabet letters, Halloween and Christmas); Beginner/Intermediate/Advanced mix",
+      "accept": "src/core/templateArt/kids.ts + test (count, bounds, budget, banned franchise words); every piece rendered and checked by eye; names in all 11 locales",
+      "priority": "owner",
+      "commit": "be17a40"
+    },
+    {
+      "id": "T101",
+      "status": "done",
+      "deps": [
+        "T96",
+        "T97",
+        "T98",
+        "T99",
+        "T100"
+      ],
+      "tags": [
+        "fb-1022",
+        "owner"
+      ],
+      "title": "fb-1022 T1 integration: 5 new categories in the registry, shelf (New = the 5 new sets, first after All/New), 11-locale labels and names, STORE.md counts; tip card kept",
+      "accept": "npm test, typecheck:ui, ui-check green",
+      "priority": "owner",
+      "commit": "a822adb"
+    },
+    {
+      "id": "T102",
+      "status": "done",
+      "deps": [
+        "T101"
+      ],
+      "tags": [
+        "fb-1022",
+        "owner"
+      ],
+      "title": "fb-1022 T2 store screenshots show the new categories (shot 04 grid + bubbles + headline count, both styles; captions in 11 locales)",
+      "accept": "store/ regenerated + rendered, storeAssets test green",
+      "priority": "owner",
+      "commit": "ecd47f8"
+    },
+    {
+      "id": "T103",
+      "status": "todo",
+      "deps": [
+        "T101"
+      ],
+      "tags": [
+        "fb-1022",
+        "owner-action"
+      ],
+      "title": "Owner retest of fb-1022 in Expo Go: browse the 5 new categories, trace a few at each level",
+      "accept": "owner feedback",
+      "priority": "owner"
+    },
+    {
+      "id": "T104",
+      "status": "done",
+      "deps": [
+        "T101"
+      ],
+      "tags": [
+        "fb-1022",
+        "oversight"
+      ],
+      "title": "D104-1: test that every fb-1022 template has a non-empty, unique name in all 11 locales and the New bubble lists exactly the five sets; fix what it finds",
+      "accept": "src/i18n/newSets.test.ts green",
+      "commit": "6921bd0",
+      "note": "caught game-friendly-robot's stale translation (clashed with movie-robot in 7 locales) and orn-hello duplicating hello-block-letters (renamed 'Hello card lettering')"
+    },
+    {
+      "id": "T105",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B1: audit every template's category; add a 'Sea life' category (whale, nautilus, koi, fish move there; owl to Birds & insects; hot-air balloons to Buildings & landscapes) and a curated allowed-subjects test",
+      "accept": "src/core/templateSubjects.test.ts green; sealife label in 11 locales",
+      "commit": "9fdc382"
+    },
+    {
+      "id": "T106",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B4: near-duplicate shape guard (occupancy fingerprint, fuzzy overlap) over the whole catalogue",
+      "accept": "src/core/templateDuplicates.test.ts green",
+      "commit": "9fdc382"
+    },
+    {
+      "id": "T107",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B4: measure template storage + bundle size; write docs/TEMPLATE_BUDGET.md with numbers and a library-size recommendation (base app vs on-demand packs)",
+      "accept": "doc with measured numbers",
+      "commit": "(run 78 checkpoint)"
+    },
+    {
+      "id": "T108",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B5: monetisation comparison in docs/MARKET.md (yearly ~A$3-4 vs one-time vs ads), recommendation marked 'owner decides'",
+      "accept": "MARKET.md section",
+      "commit": "(run 78 checkpoint)"
+    },
+    {
+      "id": "T109",
+      "status": "done",
+      "deps": [
+        "T105",
+        "T106"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B2 batch 1: 30 original kawaii pieces — food with faces, sweets, plants, clouds/weather (cute category, kawaiiFood.ts + packs/kawaiiFood.ts names in 10 locales)",
+      "accept": "30 pieces, levels mixed, tests green, rendered + checked by eye",
+      "commit": "d568df5"
+    },
+    {
+      "id": "T110",
+      "status": "done",
+      "deps": [
+        "T105",
+        "T106"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B2 batch 2: 30 original kawaii pieces — animals, objects/stationery, chibi original kids and creatures incl. cast member Pip (kawaiiFriends.ts + packs/kawaiiFriends.ts)",
+      "accept": "30 pieces, tests green, checked by eye",
+      "commit": "c6a53b0"
+    },
+    {
+      "id": "T111",
+      "status": "done",
+      "deps": [
+        "T105",
+        "T106"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B3: grow Movie night to 40+ with original genre pieces (sci-fi, monsters, detectives, cowboys, pirates) incl. cast Nova, Inspector Quill, Captain Ottoline, Sheriff Sage (docs/CAST.md); names in packs/moviesMore.ts",
+      "accept": "movies >= 40, tests green, checked by eye",
+      "commit": "da463cc"
+    },
+    {
+      "id": "T112",
+      "status": "done",
+      "deps": [
+        "T105",
+        "T106"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B3: grow Fairy tales to 40+ (knights, castles, enchanted forests, witches' cottages, princesses/princes, dragons, mermaids, fairies, giants, talking animals) incl. cast Bramble, Fern, Mossy; names in packs/fairytalesMore.ts",
+      "accept": "fairytales >= 40, tests green, checked by eye",
+      "commit": "51f7da4"
+    },
+    {
+      "id": "T113",
+      "status": "done",
+      "deps": [
+        "T105",
+        "T106"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B4 batch: Sea life set (25+ original sea creatures at three levels; sealife.ts + packs/sealife.ts)",
+      "accept": "sealife >= 25, tests green",
+      "commit": "3b4336c"
+    },
+    {
+      "id": "T114",
+      "status": "done",
+      "deps": [
+        "T109",
+        "T110",
+        "T111",
+        "T112",
+        "T113"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B4 integration: register batches, English names generated, New bubble includes the fb-1022b sets, store copy counts ('300+ templates'), TEMPLATES.md, guard tests relaxed from exact counts to minimums",
+      "accept": "tests + typecheck:ui + ui-check green",
+      "note": "run 79: New bubble = fb-1022 sets + Sea life + kawaii- prefix (D110-2); store copy 500+ in 11 locales; STORE.md; shot 04 re-rendered both styles",
+      "commit": "0f4847f"
+    },
+    {
+      "id": "T115",
+      "status": "done",
+      "deps": [
+        "T114"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B4 next batches toward 500+ (per docs/TEMPLATE_BUDGET.md): grow thin shelves (Animals 8, Faces 7, Still life 7, Places 8, Fantasy 6, Shapes 4) and more cute/kids/game, 25-30 per batch, run after run",
+      "accept": "catalogue >= 500",
+      "commit": "5f2c363",
+      "note": "run 79: 354 -> 529 via T120-T124 (5 parallel batches)"
+    },
+    {
+      "id": "T116",
+      "status": "todo",
+      "deps": [
+        "T114"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner-action"
+      ],
+      "title": "Owner retest of fb-1022b in Expo Go: Sea life shelf, kawaii, Movie night, Fairy tales, the cast; pick a mascot from docs/CAST.md; choose monetisation (MARKET.md)",
+      "accept": "owner feedback"
+    },
+    {
+      "id": "T117",
+      "status": "done",
+      "deps": [
+        "T113"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "B4: bake generated template art into finished path strings (scripts/bake-templates.ts → src/core/templateArt/baked/*.ts), templates.ts imports the baked files; test baked == generated. Importing the catalogue now takes seconds because occlude-based sets generate at module load (docs/TEMPLATE_BUDGET.md)",
+      "accept": "catalogue import < 300 ms in node; tests green",
+      "commit": "d67d33b",
+      "note": "run 79: 18 generated sets baked (scripts/bake-templates.ts, baked/sets.ts); catalogue import 13 s -> 0.3 s; guards baked.test.ts + templateLoad.test.ts (D110-1)"
+    },
+    {
+      "id": "T118",
+      "title": "fb-1022c: opening animation — pencil draws the brand line, light runs along it until loaded (src/ui/IntroDraw.tsx); native splash shows the pencil only",
+      "status": "done",
+      "tags": [
+        "fb-1022c"
+      ],
+      "done": "2026-10-22 live session"
+    },
+    {
+      "id": "T119",
+      "title": "fb-1022c: Templates level control in two rows (All / Beginner, Intermediate / Advanced) so the words have room",
+      "status": "done",
+      "tags": [
+        "fb-1022c"
+      ],
+      "done": "2026-10-22 live session"
+    },
+    {
+      "id": "T120",
+      "title": "Owner 22 Oct night: 14-day free trial then Linework Plus A$2.99; after the trial own-photo tracing + 24 starters stay free, full library + outline mode need Plus (src/plus/access.ts, locks in Templates/Home/Prepare, Plus screen)",
+      "status": "done",
+      "tags": [
+        "release-prep",
+        "owner-1022d"
+      ],
+      "done": "2026-10-22 live session"
+    },
+    {
+      "id": "T121",
+      "title": "Release copy: name Linework: Trace & Sketch, subtitle Trace photos onto real paper, promo/description/pricing in docs/STORE.md, support email in privacy/support pages, RELEASE_CHECKLIST owner steps",
+      "status": "done",
+      "tags": [
+        "release-prep",
+        "owner-1022d"
+      ],
+      "done": "2026-10-22 live session"
+    },
+    {
+      "id": "T122",
+      "title": "Owner: App Store Connect Paid Apps agreement + IAP product + pages hosting, then TESTFLIGHT_LINEWORK.cmd, sandbox purchase, listing, submit (docs/RELEASE_CHECKLIST.md)",
+      "status": "todo",
+      "tags": [
+        "release-prep",
+        "owner"
+      ]
+    },
+    {
+      "id": "T123",
+      "status": "done",
+      "deps": [
+        "T117"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "Animals & pets batch: 35 original animals (animals2.ts, ani-)",
+      "commit": "425f78f",
+      "note": "commit message says T120 (renumbered after merging the owner live session 2, which used T120-T122)"
+    },
+    {
+      "id": "T124",
+      "status": "done",
+      "deps": [
+        "T117"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "Faces & figures 23 + Still life 18 (figures.ts, stilllife2.ts)",
+      "commit": "c326b38",
+      "note": "commit message says T121 (renumbered after merging the owner live session 2, which used T120-T122)"
+    },
+    {
+      "id": "T125",
+      "status": "done",
+      "deps": [
+        "T117"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "Buildings & landscapes 20 + Fantasy 18 (places2.ts, fantasy2.ts)",
+      "commit": "b0b128b",
+      "note": "commit message says T122 (renumbered after merging the owner live session 2, which used T120-T122)"
+    },
+    {
+      "id": "T126",
+      "status": "done",
+      "deps": [
+        "T117"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner",
+        "market-1018"
+      ],
+      "title": "Shapes practice 16 + tattoo flash 16 in Frames & patterns (shapes2.ts, flash.ts; closes the tattoo part of T71)",
+      "commit": "fb38972",
+      "note": "commit message says T123 (renumbered after merging the owner live session 2, which used T120-T122)"
+    },
+    {
+      "id": "T127",
+      "status": "done",
+      "deps": [
+        "T117"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "Game world 16 + Heroes 13 with an original hero team (game2.ts, heroes2.ts, CAST.md)",
+      "commit": "adbd38f",
+      "note": "commit message says T124 (renumbered after merging the owner live session 2, which used T120-T122)"
+    },
+    {
+      "id": "T128",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "fb-1022b"
+      ],
+      "title": "Repo bundle headroom (8.7 MB at run 79; WORKFLOW says < 10 MB, and the artifact host caps a text file at 16 MB = ~12 MB of bundle after base64): (1) stop committing the generated review SVGs in assets/templates (export on demand; templates.test compares toSvgString against generated output) — halves per-batch growth; (2) since history keeps old blobs, add a split restore to WORKFLOW: a frozen base bundle file plus an incremental bundle (git bundle create out.bundle <base>..main), restore = clone base then fetch the incremental",
+      "accept": "per-batch bundle growth halved; split restore documented and tested on a scratch clone"
+    },
+    {
+      "id": "T129",
+      "status": "todo",
+      "deps": [
+        "T128"
+      ],
+      "tags": [
+        "fb-1022b",
+        "owner"
+      ],
+      "title": "Batches toward 600 (TEMPLATE_BUDGET target): Birds & insects 14, Lettering 11, Mandalas 11, Kids 25 are now the thin shelves; plus a polish pass on pieces the workers flagged (wolf ruff, panda arms, sloth limbs, sleeping dragon, cauldron flames, hill village, Tidewave collar, paisley sprigs)",
+      "accept": "catalogue >= 600; guards green"
+    },
+    {
+      "id": "T130",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "release"
+      ],
+      "title": "D111-2: startup never waits on the template catalogue; app + intro go ahead after INTRO_MS.maxWait (3 s) even if fonts/languages are still loading",
+      "accept": "startupReady cap test; layout/intro import no catalogue",
+      "commit": "b230bd4"
+    },
+    {
+      "id": "T131",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "release"
+      ],
+      "title": "D112-2: TESTFLIGHT_PRECHECK.cmd runs install, npx tsc --noEmit and npx expo export --platform ios into testflight-precheck.txt (stops at first failure) before TESTFLIGHT_LINEWORK.cmd",
+      "accept": "scaffold test D112-2; checklist runs the pre-check first",
+      "commit": "5996b6d"
+    }
+  ],
+  "priority_note": "RELEASE (owner 22 Oct night, docs/OWNER_1022D.md): the owner is taking Linework to the App Store. Freeze features: only fix what blocks release (T60 sandbox purchase, owner reports). Do not change pricing, the trial, the locks, names or store copy without an owner comment. fb-1022b (owner 22 Oct evening, docs/OWNER_1022B.md) outranks everything except trial blockers: T114 finish, T117 bake, then T115 batches, then T116 owner retest. Pick order: trial blockers → open owner-comment tasks → D75-2 done (T91, T92, T77 in run 56) → T94 compare/finish glass → fb-1017 → rest; T93 after the owner picks a screenshot style. T60 waits for the dev build; T27/T71 content after release assets."
+}

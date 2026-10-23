@@ -1,0 +1,52 @@
+/* Glaze widget extension strings (T86), Portuguese (Brazil). Machine translation awaiting
+   native-speaker review (docs/I18N.md). Same keys as en.lproj. */
+
+"habit.name.water" = "Água";
+"habit.name.sleep" = "Sono";
+"habit.name.steps" = "Passos";
+"habit.name.mood" = "Humor";
+
+"habit.unit.ml" = "ml";
+"habit.unit.hours" = "h";
+"habit.unit.steps" = "passos";
+
+"habit.desc.water" = "Toque em +150 ml quando beber. Zera à meia-noite.";
+"habit.desc.sleep" = "Registre seu sono uma hora por vez.";
+"habit.desc.steps" = "Conte passos à mão em blocos de 500.";
+"habit.desc.mood" = "Escolha como está o seu dia.";
+
+"habit.goalOf" = "de %1$@ %2$@";
+
+"habit.a11y.add" = "Adicionar %1$@ %2$@";
+"habit.a11y.remove" = "Tirar %1$@ %2$@";
+"habit.a11y.moodDown" = "Baixar humor";
+"habit.a11y.moodUp" = "Subir humor";
+"habit.a11y.mood1" = "Registrar humor: péssimo";
+"habit.a11y.mood2" = "Registrar humor: pra baixo";
+"habit.a11y.mood3" = "Registrar humor: ok";
+"habit.a11y.mood4" = "Registrar humor: bem";
+"habit.a11y.mood5" = "Registrar humor: ótimo";
+
+"habit.mood.0" = "Sem registro";
+"habit.mood.1" = "Péssimo";
+"habit.mood.2" = "Pra baixo";
+"habit.mood.3" = "Ok";
+"habit.mood.4" = "Bem";
+"habit.mood.5" = "Ótimo";
+
+"Log a habit" = "Registrar um hábito";
+"Log mood" = "Registrar humor";
+"Habit" = "Hábito";
+"Direction" = "Direção";
+"Level" = "Nível";
+
+"Clock" = "Relógio";
+"The time, in your Glaze theme." = "A hora, no seu tema do Glaze.";
+"Date" = "Data";
+"Today's date, in your Glaze theme." = "A data de hoje, no seu tema do Glaze.";
+"Time and date for your Lock Screen." = "Hora e data para a tela bloqueada.";
+"Photo" = "Foto";
+"A photo you pick in Glaze." = "Uma foto que você escolhe no Glaze.";
+"Choose a photo in Glaze" = "Escolha uma foto no Glaze";
+"Little Line" = "Frase curta";
+"A short, gentle line that changes every hour." = "Uma frase curta e gentil que muda a cada hora.";

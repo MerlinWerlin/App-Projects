@@ -1,0 +1,62 @@
+/* Glaze widget extension strings (T86). English source. Keys used from Swift: HabitText in
+   HabitStore.swift (habit.*), App Intent titles in HabitIntents.swift, and the SwiftUI string
+   literals in the other widgets (looked up by their English text). Every sibling <lang>.lproj has
+   the same keys; src/core/widgetStrings.test.ts checks keys and %@ arguments. */
+
+/* Habit names */
+"habit.name.water" = "Water";
+"habit.name.sleep" = "Sleep";
+"habit.name.steps" = "Steps";
+"habit.name.mood" = "Mood";
+
+/* Short units after a number */
+"habit.unit.ml" = "ml";
+"habit.unit.hours" = "h";
+"habit.unit.steps" = "steps";
+
+/* Widget gallery descriptions */
+"habit.desc.water" = "Tap +150 ml as you drink. Resets at midnight.";
+"habit.desc.sleep" = "Log your sleep an hour at a time.";
+"habit.desc.steps" = "Count steps by hand in blocks of 500.";
+"habit.desc.mood" = "Pick how today feels.";
+
+/* Under the value: "of 2,000 ml". 1 = goal, 2 = unit */
+"habit.goalOf" = "of %1$@ %2$@";
+
+/* Button accessibility labels. 1 = amount, 2 = unit */
+"habit.a11y.add" = "Add %1$@ %2$@";
+"habit.a11y.remove" = "Take off %1$@ %2$@";
+"habit.a11y.moodDown" = "Lower mood";
+"habit.a11y.moodUp" = "Raise mood";
+"habit.a11y.mood1" = "Log mood: awful";
+"habit.a11y.mood2" = "Log mood: low";
+"habit.a11y.mood3" = "Log mood: okay";
+"habit.a11y.mood4" = "Log mood: good";
+"habit.a11y.mood5" = "Log mood: great";
+
+/* Mood levels */
+"habit.mood.0" = "Not logged";
+"habit.mood.1" = "Awful";
+"habit.mood.2" = "Low";
+"habit.mood.3" = "Okay";
+"habit.mood.4" = "Good";
+"habit.mood.5" = "Great";
+
+/* App Intent titles (keys are the English literals in HabitIntents.swift) */
+"Log a habit" = "Log a habit";
+"Log mood" = "Log mood";
+"Habit" = "Habit";
+"Direction" = "Direction";
+"Level" = "Level";
+
+/* Other widgets' gallery names and text (keys are the English literals in their Swift files) */
+"Clock" = "Clock";
+"The time, in your Glaze theme." = "The time, in your Glaze theme.";
+"Date" = "Date";
+"Today's date, in your Glaze theme." = "Today's date, in your Glaze theme.";
+"Time and date for your Lock Screen." = "Time and date for your Lock Screen.";
+"Photo" = "Photo";
+"A photo you pick in Glaze." = "A photo you pick in Glaze.";
+"Choose a photo in Glaze" = "Choose a photo in Glaze";
+"Little Line" = "Little Line";
+"A short, gentle line that changes every hour." = "A short, gentle line that changes every hour.";

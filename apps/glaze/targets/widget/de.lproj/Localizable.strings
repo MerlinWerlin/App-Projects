@@ -1,0 +1,52 @@
+/* Glaze widget extension strings (T86), German. Machine translation awaiting native-speaker
+   review (docs/I18N.md). Same keys as en.lproj. */
+
+"habit.name.water" = "Wasser";
+"habit.name.sleep" = "Schlaf";
+"habit.name.steps" = "Schritte";
+"habit.name.mood" = "Stimmung";
+
+"habit.unit.ml" = "ml";
+"habit.unit.hours" = "Std.";
+"habit.unit.steps" = "Schritte";
+
+"habit.desc.water" = "Tippe bei jedem Glas auf +150 ml. Wird um Mitternacht zurückgesetzt.";
+"habit.desc.sleep" = "Trage deinen Schlaf Stunde für Stunde ein.";
+"habit.desc.steps" = "Zähle Schritte von Hand in Blöcken von 500.";
+"habit.desc.mood" = "Wähle, wie sich der Tag anfühlt.";
+
+"habit.goalOf" = "von %1$@ %2$@";
+
+"habit.a11y.add" = "%1$@ %2$@ hinzufügen";
+"habit.a11y.remove" = "%1$@ %2$@ abziehen";
+"habit.a11y.moodDown" = "Stimmung runter";
+"habit.a11y.moodUp" = "Stimmung hoch";
+"habit.a11y.mood1" = "Stimmung eintragen: mies";
+"habit.a11y.mood2" = "Stimmung eintragen: gedrückt";
+"habit.a11y.mood3" = "Stimmung eintragen: okay";
+"habit.a11y.mood4" = "Stimmung eintragen: gut";
+"habit.a11y.mood5" = "Stimmung eintragen: super";
+
+"habit.mood.0" = "Nicht eingetragen";
+"habit.mood.1" = "Mies";
+"habit.mood.2" = "Gedrückt";
+"habit.mood.3" = "Okay";
+"habit.mood.4" = "Gut";
+"habit.mood.5" = "Super";
+
+"Log a habit" = "Gewohnheit eintragen";
+"Log mood" = "Stimmung eintragen";
+"Habit" = "Gewohnheit";
+"Direction" = "Richtung";
+"Level" = "Stufe";
+
+"Clock" = "Uhr";
+"The time, in your Glaze theme." = "Die Uhrzeit in deinem Glaze-Theme.";
+"Date" = "Datum";
+"Today's date, in your Glaze theme." = "Das heutige Datum in deinem Glaze-Theme.";
+"Time and date for your Lock Screen." = "Uhrzeit und Datum für deinen Sperrbildschirm.";
+"Photo" = "Foto";
+"A photo you pick in Glaze." = "Ein Foto, das du in Glaze auswählst.";
+"Choose a photo in Glaze" = "Wähle ein Foto in Glaze";
+"Little Line" = "Kleine Zeile";
+"A short, gentle line that changes every hour." = "Eine kurze, sanfte Zeile, die sich jede Stunde ändert.";

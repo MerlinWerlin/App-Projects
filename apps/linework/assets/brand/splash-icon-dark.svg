@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Linework brand art, original to this repo: one continuous ink line that loops once and ends at a pencil tip. Tokens from docs/DESIGN_V2.md: paper #F7F3EE, line #E7E0D6, ink #3B5BDB (dark #91A7FF), graphite #1F1D1A, sunny #FFC94D, bubblegum #FF7AA2. Dark splash: dark ink on the #121110 paper background set in app.json. -->
+<g id="motif" transform="translate(-155 -96.35) scale(1.15)">
+    <!-- fb-1022c: pencil only, resting where the line starts; the app (src/ui/IntroDraw.tsx) then draws the line -->
+    <g transform="translate(214 760) rotate(-38)">
+      <path d="M 0 0 L 96 -40 L 96 40 Z" fill="#F1D9B5"/>
+      <path d="M 0 0 L 34 -14 L 34 14 Z" fill="#1F1D1A"/>
+      <rect x="96" y="-40" width="196" height="80" fill="#FFC94D"/>
+      <rect x="96" y="-40" width="196" height="26" fill="#FFD978"/>
+      <rect x="292" y="-40" width="34" height="80" fill="#B9B2A8"/>
+      <path d="M 326 -40 L 350 -40 Q 376 -40 376 -14 L 376 14 Q 376 40 350 40 L 326 40 Z" fill="#FF7AA2"/>
+    </g>
+  </g>
+</svg>

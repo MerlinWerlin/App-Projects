@@ -1,0 +1,1135 @@
+{
+  "app": "tvremote",
+  "title": "Couch (universal TV remote, working title)",
+  "updated": "2026-10-22",
+  "tasks": [
+    {
+      "id": "T01",
+      "status": "done",
+      "deps": [],
+      "title": "Repo scaffold: Expo SDK (latest stable) + TypeScript + Expo Router + dev-client, ESLint, Vitest/Jest for src/core, tokens copied from prototype :root, fonts, tab bar Remote/Apps/TVs, settings route",
+      "accept": "npx tsc clean, tests run, app boots in Expo Go-compatible mock mode",
+      "commit": "59d9c6e",
+      "note": "Closed on offline evidence (oversight D2-1): scaffold + trial kit; core tsc + bun tests green. Full npm install / jest / tsc --noEmit / expo prebuild still need PC verification (T18)."
+    },
+    {
+      "id": "T02",
+      "status": "done",
+      "deps": [
+        "T01"
+      ],
+      "title": "src/core types, Key enum, TvDriver interface, MockTv driver with latency + event log, demo mode toggle",
+      "accept": "unit tests for MockTv; demo mode selectable from TVs tab",
+      "commit": "59d9c6e",
+      "note": "Core + RemoteSession + SessionProvider; demo mode toggle on TVs tab. Full npm install / jest / tsc --noEmit / expo prebuild still need PC verification (T18)."
+    },
+    {
+      "id": "T03",
+      "status": "done",
+      "deps": [
+        "T02"
+      ],
+      "title": "Remote screen port from prototype: d-pad + OK, back/home/menu, volume rocker, channel, mute, power, playback row, touchpad mode with swipe->direction and tap->OK, haptics, accessibility labels",
+      "accept": "every control calls driver.sendKey with the right Key; snapshot or RTL test",
+      "commit": "b7d66a0",
+      "note": "Layout-as-data tests; RTL render test pending installs (T19)."
+    },
+    {
+      "id": "T04",
+      "status": "done",
+      "deps": [
+        "T02"
+      ],
+      "title": "Keyboard sheet (send text live + send-on-enter) and Apps grid (listApps/launchApp, favourites pinned)",
+      "accept": "tests against MockTv",
+      "commit": "85e7c78",
+      "note": "diffText/LiveTyper + sortApps tested against MockTv; RTL pending (T19)."
+    },
+    {
+      "id": "T05",
+      "status": "done",
+      "deps": [
+        "T02"
+      ],
+      "title": "Roku ECP driver: device-info, keypress/keydown/keyup, Lit_ text, query/apps, launch, PowerOn; fixtures from docs; 'Control by mobile apps' error detection + help copy",
+      "accept": "driver tests with recorded fixtures; 403 maps to the settings help screen",
+      "commit": "afdaaf0",
+      "note": "Tested against fixtures reconstructed from ECP docs only, not hardware."
+    },
+    {
+      "id": "T06",
+      "status": "done",
+      "deps": [
+        "T02"
+      ],
+      "title": "Discovery core: SSDP M-SEARCH builder + response parser (roku, samsung, lg, sony), mDNS record mapping (_androidtvremote2, _amzn-wplay, _viziocast), unicast subnet probe fallback, manual IP; native adapters react-native-udp + react-native-zeroconf behind interfaces",
+      "accept": "parser tests with real sample payloads; probe logic tested with fake fetch",
+      "commit": "8c447e0",
+      "note": "Fixtures reconstructed; native udp/zeroconf behind guarded requires, not installed."
+    },
+    {
+      "id": "T07",
+      "status": "done",
+      "deps": [
+        "T06"
+      ],
+      "title": "Add-TV flow + saved TVs: scan list, pair step per platform (prompt/code/PIN), name + room, last IP + MAC, multi-TV switcher, Wake-on-LAN magic packet",
+      "accept": "flow works end to end against MockTv; wol packet bytes unit-tested",
+      "commit": "b7796b5",
+      "note": "Flow end to end vs MockTv; store is in-memory until a persistent KV lands (T20). Only Roku + demo pair for real; other platforms 'coming soon' until their drivers are wired."
+    },
+    {
+      "id": "T08",
+      "status": "done",
+      "deps": [
+        "T02"
+      ],
+      "title": "Samsung Tizen driver: WSS :8002 URL/name encoding, token persist, KEY_* map, app launch, text where supported; Expo module 'lan-wss' that accepts self-signed certs only for RFC1918 hosts",
+      "accept": "message-builder tests; module compiles in prebuild for iOS + Android",
+      "commit": "27a98d0",
+      "note": "Driver + message builders tested against reconstructed frames; wired into driverFor when a ws transport exists (T26). Remaining: lan-wss native sources were never committed (.gitignore ignored android/ ios/), recreated in T27; compile check at PC prebuild (T18). Run 4 (D6-1): closed as done-pending-T18: driver and frames are tested against fixtures; the lan-wss native compile check happens at the first PC prebuild (T18 accept covers it)."
+    },
+    {
+      "id": "T09",
+      "status": "done",
+      "deps": [
+        "T08"
+      ],
+      "title": "LG webOS driver: SSAP register manifest, client-key persist, pointer input socket for keys, volume/mute/apps/inputs/IME text, reuse lan-wss",
+      "accept": "tests with recorded SSAP frames",
+      "commit": "eeb34f3",
+      "note": "SSAP driver against reconstructed frames; wired into driverFor when lan-wss ws exists. Manifest signature reproduced from memory: diff against aiowebostv before real-TV test (T33)."
+    },
+    {
+      "id": "T10",
+      "status": "done",
+      "deps": [
+        "T02"
+      ],
+      "title": "Google/Android TV driver: client cert gen (react-native-quick-crypto), pairing secret hash, protobuf schema (protobufjs), remote messages keycodes/IME/launch URI, over react-native-tcp-socket TLS",
+      "accept": "pairing hash matches androidtvremote2 test vectors; protobuf round-trip tests",
+      "commit": "3b354bb",
+      "note": "Pure-TS core (protobuf, pairing hash, keycodes, driver over injected TLS). Native TLS + RSA identity + mDNS wiring remain (T31)."
+    },
+    {
+      "id": "T11",
+      "status": "done",
+      "deps": [
+        "T07"
+      ],
+      "title": "Diagnostics screen: per-TV latency (rolling ms), last error, reconnect log, copyable report; auto-reconnect on AppState foreground",
+      "accept": "tests for reconnect backoff",
+      "commit": "1b861fd",
+      "note": "Diagnostics screen + Reconnector (backoff, foreground)."
+    },
+    {
+      "id": "T12",
+      "status": "done",
+      "deps": [],
+      "title": "Docs: app.json infoPlist (NSLocalNetworkUsageDescription, NSBonjourServices), Android manifest perms via config plugin; docs/multicast-request.md (Apple entitlement request text); docs/STORE.md listing draft with non-affiliation line",
+      "accept": "prebuild produces the keys; docs present",
+      "commit": "751d234",
+      "note": "Config + docs done; prebuild key check moved to T18."
+    },
+    {
+      "id": "T13",
+      "status": "done",
+      "deps": [
+        "T07"
+      ],
+      "title": "Fire TV beta driver (wake :8009, PIN display/verify, /v1/FireTV keys, launch); Vega OS detection -> unsupported message",
+      "accept": "fixture tests; flagged beta in UI",
+      "commit": "664d149",
+      "note": "Beta driver against reconstructed fixtures; x-api-key default UNVERIFIED; not wired (needs lanFetch + PIN step, T34)."
+    },
+    {
+      "id": "T14",
+      "status": "done",
+      "deps": [
+        "T03"
+      ],
+      "title": "Simple mode (big power/volume/channel/home), one-handed layout, settings: haptics, theme, simple mode PIN-free toggle",
+      "accept": "RTL tests",
+      "commit": "a120e04",
+      "note": "Prefs in memory (T20 persistence); RTL pending (T19)."
+    },
+    {
+      "id": "T15",
+      "status": "done",
+      "deps": [
+        "T07"
+      ],
+      "title": "Couch Plus scaffolding: entitlement flag, paywall sheet that never blocks a control, tip jar; iOS widget + Live Activity target plan (docs/widgets.md)",
+      "accept": "no control path checks entitlement (test enforces)",
+      "commit": "53b767c",
+      "note": "Entitlement + stub purchases (never charge) + tip jar data + Plus screen + docs/widgets.md; guard test: controls never import src/plus, no billing package."
+    },
+    {
+      "id": "T16",
+      "status": "done",
+      "deps": [
+        "T05"
+      ],
+      "title": "Vizio, Sony Bravia, Philips REST drivers (verify protocol details against pyvizio/pybravia/ha-philipsjs first)",
+      "accept": "fixture tests",
+      "commit": "27e078c",
+      "note": "Sony/Vizio/Philips drivers + pure-TS crypto against fixtures. Not wired: Sony needs a PSK pair step (T30); Vizio/Philips need a LAN-trusting native fetch (T32)."
+    },
+    {
+      "id": "T17",
+      "status": "done",
+      "deps": [
+        "T03"
+      ],
+      "title": "Android IR blaster Expo module (ConsumerIrManager) + small IR code sets for top brands (licence-checked source) + infrared code-test setup flow (owner feedback 12 Oct item 5)",
+      "accept": "module source present (compiles at PC prebuild); hasIrEmitter false path handled (iPhone/Expo Go never crash); pure-TS code-test state machine tested: pick brand or Not sure, tap Volume up, did it work?, step through code sets, name it (default 'TV n')",
+      "tags": [
+        "fb-1012"
+      ],
+      "priority": 1,
+      "commit": "60558ed",
+      "note": "One code set per brand (UNVERIFIED on hardware); module source compiles only at PC prebuild; IR TVs not persisted yet (T28)."
+    },
+    {
+      "id": "T18",
+      "status": "todo",
+      "deps": [],
+      "title": "PC verification: npm install, expo install expo@latest + --fix, commit package-lock.json, npm test (jest) + npx tsc --noEmit green, expo prebuild shows LAN keys (T12) and lan-wss compiles (T08)",
+      "accept": "lockfile committed; jest + tsc green on a machine with registry access",
+      "note": "Blocked in the cloud: npm registry unreachable. Needs the overseer's PC verify or the owner's first START_TRIAL (trial-log.txt). From run 5, START_TRIAL also logs `tsc --noEmit` (D8-1), so the owner's trial-log.txt covers install + typecheck. Run 36: VERIFY.cmd (D65-1, T64) gives the owner a one-click verify-report.txt to paste as a comment; close T18 from that report."
+    },
+    {
+      "id": "T19",
+      "status": "todo",
+      "deps": [
+        "T18"
+      ],
+      "title": "RTL render tests: remote (every control -> sendKey), apps grid, keyboard sheet, settings toggles, simple mode, add-TV flow",
+      "accept": "jest ui project green"
+    },
+    {
+      "id": "T20",
+      "status": "done",
+      "deps": [],
+      "title": "Persistence for saved TVs, pins and prefs: @react-native-async-storage/async-storage (Expo Go compatible) behind the KV interface; load saved TVs into the session on start (last used TV first)",
+      "accept": "store tests with fake KV; app restores TVs after restart",
+      "commit": "27d6594",
+      "note": "AsyncStorage via guarded src/native/kv.ts; restore on start (src/core/restore.ts)."
+    },
+    {
+      "id": "T21",
+      "status": "done",
+      "deps": [
+        "T07"
+      ],
+      "title": "Phone Wi-Fi IP via expo-network getIpAddressAsync for the subnet probe; Wake button using sendWol when UDP + MAC available",
+      "accept": "probe runs automatically when IP known; tests with fakes",
+      "commit": "4c37e4c",
+      "note": "expo-network phone IP (guarded) → automatic subnet probe; Wake button when MAC + UDP (dev build)."
+    },
+    {
+      "id": "T22",
+      "status": "done",
+      "deps": [
+        "T03"
+      ],
+      "tags": [
+        "fb-1012"
+      ],
+      "priority": 1,
+      "title": "Remote layout v2 (owner feedback 12 Oct item 1): labelled Power / Source / Settings row, prominent hold-to-talk voice button, 123 number-pad sheet, red/green/yellow/blue keys shown only when the driver has 'colorKeys'; Key enum + per-driver key maps for SOURCE, SETTINGS, NUM_0-9, RED/GREEN/YELLOW/BLUE, VOICE",
+      "accept": "matches prototype v2 viewRemote; controls test covers every Key; colour row hidden on Roku; numpad sends NUM_* then ENTER; no app shortcuts on the remote screen",
+      "commit": "786ddad",
+      "note": "Merged run 3. UI hand-checked (bun build resolves all imports); device check in trial."
+    },
+    {
+      "id": "T23",
+      "status": "done",
+      "deps": [
+        "T22"
+      ],
+      "tags": [
+        "fb-1012"
+      ],
+      "priority": 1,
+      "title": "Source picker sheet (owner feedback item 2): driver listInputs/setInput where supported (Roku TV inputs, mock), else SOURCE key / Next source cycling",
+      "accept": "pure-TS source logic tested against MockTv and Roku fixtures; sheet matches prototype sourceSheet",
+      "commit": "5c6db67",
+      "note": "Roku TV inputs via ECP Input* keys (UNVERIFIED); Roku players cycle-free (no inputs)."
+    },
+    {
+      "id": "T24",
+      "status": "done",
+      "deps": [
+        "T22"
+      ],
+      "tags": [
+        "fb-1012"
+      ],
+      "priority": 1,
+      "title": "Voice (owner feedback item 3): native voice where the protocol supports it (beginVoice), else on-device speech-to-text typed into the TV search; Expo Go falls back to the keyboard",
+      "accept": "voice strategy tested in pure TS; no new native module in Expo Go path (speech adapter guarded)",
+      "commit": "477cfd0",
+      "note": "Native voice only on MockTv today; real TVs use keyboard fallback until a speech module lands in the dev build (T29)."
+    },
+    {
+      "id": "T25",
+      "status": "done",
+      "deps": [
+        "T04"
+      ],
+      "tags": [
+        "fb-1012"
+      ],
+      "priority": 1,
+      "title": "App icons from the TV at runtime (owner feedback item 4): Roku /query/icon/<id>, Samsung/webOS where available, one tile style with house-style fallback; never bundled or redrawn service logos",
+      "accept": "appIcon tested against fixtures; Apps grid tiles show TV icon or fallback; guard test: no logo assets in repo",
+      "commit": "35a0ad1",
+      "note": "Roku /query/icon URL; Samsung ed.apps.icon UNVERIFIED; house-style fallback tile; no-logos guard test."
+    },
+    {
+      "id": "T26",
+      "status": "done",
+      "deps": [
+        "T07"
+      ],
+      "tags": [
+        "fb-1012"
+      ],
+      "priority": 1,
+      "title": "Add-TV flow v2 (owner feedback item 5, Wi-Fi part): scan first, no IP typing in normal use (address entry is a last-resort link), infrared entry row, default names 'TV 1', 'TV 2'; folds in D4-1 (factory returns MockTv/null cleanly when lan-wss is absent) and wiring SamsungDriver into driverFor when a ws transport exists",
+      "accept": "addTv tests for default names and scan-first state; D4-1 test; matches prototype v2 addTv sheet",
+      "commit": "480c6a0",
+      "note": "Samsung wired into driverFor only when lan-wss ws transport exists (D4-1 test tests/driver-factory.test.ts)."
+    },
+    {
+      "id": "T27",
+      "status": "done",
+      "deps": [],
+      "title": "Recreate lan-wss native sources (iOS Swift URLSessionWebSocketTask + podspec, Android Kotlin OkHttp) per modules/lan-wss/README.md; .gitignore fixed to ignore only root ios/ android/",
+      "accept": "files present in git; README rule (self-signed only for RFC 1918 literal hosts) enforced natively; compile check at PC prebuild",
+      "commit": "d07705c",
+      "note": "UNVERIFIED native sources; compile at PC prebuild (T18)."
+    },
+    {
+      "id": "T28",
+      "status": "done",
+      "deps": [
+        "T17",
+        "T20"
+      ],
+      "title": "Persist IR TVs: Tv.irBrand/irSet fields, saved-TV store round trip, driverFor('ir') rebuilds IrDriver from transport.ir (guarded transmitter)",
+      "accept": "store + factory tests; IR TV survives restart",
+      "commit": "27d6594",
+      "note": "IR TVs persisted (irBrand/irSet), rebuilt via transport.ir."
+    },
+    {
+      "id": "T29",
+      "status": "todo",
+      "deps": [
+        "T18"
+      ],
+      "title": "Speech-to-text in the dev build: add expo-speech-recognition (on-device), wire src/native/speech.ts guarded loader, mic permission strings; Expo Go keeps keyboard fallback",
+      "accept": "loader null-safe in Expo Go; dev build hold-to-talk types into TV search",
+      "note": "Freeze D6-1 lifted in run 35: the owner tested in Expo Go on 17 Oct (fb-1017b). Still needs T18 (PC) for native modules. Held again by oversight D65-2 (run 36): no breadth until the owner retests H1-H3.",
+      "hold": "D65-2"
+    },
+    {
+      "id": "T30",
+      "status": "done",
+      "deps": [
+        "T16",
+        "T26"
+      ],
+      "title": "Sony Bravia in the add-TV flow: PSK pair step (how to set a pre-shared key on the TV, then type it), wire SonyDriver into driverFor/isSupported (fetch only), save PSK as Tv.token",
+      "accept": "addTv + factory tests",
+      "commit": "1045739",
+      "note": "Pre-shared key pair step; SonyDriver wired (fetch only)."
+    },
+    {
+      "id": "T31",
+      "status": "todo",
+      "deps": [
+        "T10",
+        "T18"
+      ],
+      "title": "Google TV native side: TLS client socket with client cert exposing peer RSA key (Expo module or react-native-tcp-socket), per-install RSA-2048 identity, mDNS _androidtvremote2._tcp discovery, wire AndroidTvDriver with code pair step",
+      "accept": "dev build pairs with a Google TV (owner test)",
+      "note": "Freeze D6-1 lifted in run 35: the owner tested in Expo Go on 17 Oct (fb-1017b). Still needs T18 (PC) for native modules. Held again by oversight D65-2 (run 36): no breadth until the owner retests H1-H3.",
+      "hold": "D65-2"
+    },
+    {
+      "id": "T32",
+      "status": "done",
+      "deps": [
+        "T27"
+      ],
+      "title": "LAN-trusting HTTPS fetch in lan-wss (RFC 1918 only, exposes response headers) so Vizio (:7345) and Philips (:1926) drivers can be wired, with PIN pair steps",
+      "accept": "factory tests; UNVERIFIED native",
+      "commit": "99b6878",
+      "note": "lan-wss fetch (RFC 1918 self-signed only, headers exposed); Transport.lanFetch wired in appTransport. UNVERIFIED native."
+    },
+    {
+      "id": "T33",
+      "status": "todo",
+      "deps": [
+        "T09"
+      ],
+      "title": "Verify the webOS pairing manifest signature byte-for-byte against aiowebostv's published constant (Apache-2.0) when the network allows reading it; fix fixtures if different",
+      "accept": "manifest matches reference",
+      "note": "Freeze D6-1 lifted in run 35: the owner tested in Expo Go on 17 Oct (fb-1017b).  Held again by oversight D65-2 (run 36): no breadth until the owner retests H1-H3.",
+      "hold": "D65-2"
+    },
+    {
+      "id": "T34",
+      "status": "todo",
+      "deps": [
+        "T13",
+        "T16",
+        "T32"
+      ],
+      "title": "Wire Vizio, Philips and Fire TV (beta) into add-TV: PIN pair steps calling startPairing/finishPairing, driverFor via transport.lanFetch (null → coming soon), tokens saved",
+      "accept": "addTv + factory tests with fake lanFetch",
+      "note": "Freeze D6-1 lifted in run 35: the owner tested in Expo Go on 17 Oct (fb-1017b).  Held again by oversight D65-2 (run 36): no breadth until the owner retests H1-H3.",
+      "hold": "D65-2"
+    },
+    {
+      "id": "T35",
+      "status": "done",
+      "deps": [
+        "T22",
+        "T24",
+        "T26"
+      ],
+      "tags": [
+        "oversight-D6-2"
+      ],
+      "title": "Expo Go trial-path safety for the v2 UI (D6-2): voice fallback tests, IR setup hidden on iPhone, SDK 55 import audit in docs/QA_TRIAL.md",
+      "accept": "tests/trial-safety.test.ts green; QA_TRIAL run 4 section",
+      "commit": "2d8d6c4",
+      "note": "Also: hold-to-talk locks page scrolling while held; app.json NSAppTransportSecurity.NSAllowsLocalNetworking for plain-http LAN control in the dev build."
+    },
+    {
+      "id": "T36",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight-D8-1"
+      ],
+      "title": "Trial kit typecheck (D8-1): START_TRIAL.cmd runs `npx tsc --noEmit` after install, tees it into trial-log.txt with the exit code, never blocks expo start; TRIAL.md mentions it",
+      "accept": "tests/trial-kit.test.ts checks order and non-blocking",
+      "note": "Gives T18 its typecheck evidence from the owner's first run.",
+      "commit": "52e1474"
+    },
+    {
+      "id": "T37",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "polish-1013"
+      ],
+      "priority": 0,
+      "title": "Polish foundation: src/theme/motion.ts tokens, useReducedMotion, haptic kinds + Haptics setting gate, PressableScale, FadeIn stagger + animateNextLayout, SkeletonBlock/WithSkeleton, useActive (pause when unfocused/backgrounded), fx bus, elevation/tabular/backdrop tokens, tab cross-fade, native stack slide, splash fade",
+      "accept": "tests/polish-foundation.test.ts; core tsc; bun build resolves",
+      "note": "Premium polish (docs/POLISH.md). Built-in RN Animated (native driver, transform/opacity) + LayoutAnimation, AccessibilityInfo Reduce Motion; react-native-svg is the only new dep; no core-logic changes. Merged run 8 (lead wiring 1280db4). Code-complete, not run on a device; Expo Go check is the owner's trial.",
+      "commit": "94eec54"
+    },
+    {
+      "id": "T38",
+      "status": "done",
+      "deps": [
+        "T37"
+      ],
+      "tags": [
+        "polish-1013"
+      ],
+      "priority": 0,
+      "title": "P1 Cinema glow behind the remote: near-black backdrop, 2-3 react-native-svg RadialGradients breathing (0.55-0.8, 6-8 s) and drifting, key-press pulse from the key's direction, warm swell on power, marquee dots ripple on connect, Glow setting (Warm amber default / Cool blue / Violet / Match TV / Off), Reduce Motion = static, AA contrast kept",
+      "accept": "glow palette + contrast tests; pref parse/sanitize tests; paused when inactive",
+      "note": "Premium polish (docs/POLISH.md). Built-in RN Animated (native driver, transform/opacity) + LayoutAnimation, AccessibilityInfo Reduce Motion; react-native-svg is the only new dep; no core-logic changes. Merged run 8 (lead wiring 1280db4). Code-complete, not run on a device; Expo Go check is the owner's trial.",
+      "commit": "e29fefe"
+    },
+    {
+      "id": "T39",
+      "status": "done",
+      "deps": [
+        "T37"
+      ],
+      "tags": [
+        "polish-1013"
+      ],
+      "priority": 0,
+      "title": "P2 Controls: d-pad inner ring highlight + scale + haptic (heavy for Power), hold-to-repeat volume/channel with haptic tick per step, floating volume HUD (springs in, fades), touchpad fading light trail, breathing mic ring while listening",
+      "accept": "repeat timing pure helper tests; HUD state tests",
+      "note": "Premium polish (docs/POLISH.md). Built-in RN Animated (native driver, transform/opacity) + LayoutAnimation, AccessibilityInfo Reduce Motion; react-native-svg is the only new dep; no core-logic changes. Merged run 8 (lead wiring 1280db4). Code-complete, not run on a device; Expo Go check is the owner's trial.",
+      "commit": "5780496"
+    },
+    {
+      "id": "T40",
+      "status": "done",
+      "deps": [
+        "T37"
+      ],
+      "tags": [
+        "polish-1013"
+      ],
+      "priority": 0,
+      "title": "P3 Connection: status pill searching shimmer -> connected dot pop + success haptic -> reconnecting amber pulse; TV switcher cards press-scale; active TV name cross-fades in the header; toasts spring in/out with a haptic",
+      "accept": "status->animation mapping tests",
+      "note": "Premium polish (docs/POLISH.md). Built-in RN Animated (native driver, transform/opacity) + LayoutAnimation, AccessibilityInfo Reduce Motion; react-native-svg is the only new dep; no core-logic changes. Merged run 8 (lead wiring 1280db4). Code-complete, not run on a device; Expo Go check is the owner's trial.",
+      "commit": "8309db9"
+    },
+    {
+      "id": "T41",
+      "status": "done",
+      "deps": [
+        "T37"
+      ],
+      "tags": [
+        "polish-1013"
+      ],
+      "priority": 0,
+      "title": "P4 Sheets (number pad, source picker, keyboard): shared Sheet that springs up over a dim backdrop, keys press-scale with haptic",
+      "accept": "all three sheets use the shared Sheet; a11y labels kept",
+      "note": "Premium polish (docs/POLISH.md). Built-in RN Animated (native driver, transform/opacity) + LayoutAnimation, AccessibilityInfo Reduce Motion; react-native-svg is the only new dep; no core-logic changes. Merged run 8 (lead wiring 1280db4). Code-complete, not run on a device; Expo Go check is the owner's trial.",
+      "commit": "a4b16a7"
+    },
+    {
+      "id": "T42",
+      "status": "done",
+      "deps": [
+        "T37"
+      ],
+      "tags": [
+        "polish-1013"
+      ],
+      "priority": 0,
+      "title": "P5 Apps tab: icon tiles stagger in and press-scale, fallback tiles get a subtle react-native-svg gradient sheen, shimmer skeleton while apps load, designed empty states (apps, TVs)",
+      "accept": "no-logos guard still green; empty-state copy tests",
+      "note": "Premium polish (docs/POLISH.md). Built-in RN Animated (native driver, transform/opacity) + LayoutAnimation, AccessibilityInfo Reduce Motion; react-native-svg is the only new dep; no core-logic changes. Merged run 8 (lead wiring 1280db4). Code-complete, not run on a device; Expo Go check is the owner's trial.",
+      "commit": "e53e1b7"
+    },
+    {
+      "id": "T43",
+      "status": "done",
+      "deps": [
+        "T37"
+      ],
+      "tags": [
+        "oversight-D12-1"
+      ],
+      "priority": 0,
+      "title": "Pin react-native-svg to the SDK 55 tilde range and rebuild the trial kit from the green polish commit (D12-1)",
+      "accept": "package.json uses ~15.12.1; trial-kit.zip.b64.txt republished from this run's HEAD",
+      "note": "Exact SDK 55 bundled version could not be checked from the cloud (npm + GitHub raw blocked); ~15.12.1 is the earlier runs' choice, and START_TRIAL's `expo install --fix` aligns it on the PC.",
+      "commit": "2ef5f49"
+    },
+    {
+      "id": "T44",
+      "status": "done",
+      "deps": [
+        "T38",
+        "T39"
+      ],
+      "tags": [
+        "oversight-D12-2"
+      ],
+      "priority": 0,
+      "title": "Polish guardrail (D12-2, POLISH rule 7): idle animations stop on blur/background, Reduce Motion gives a still look",
+      "accept": "src/ui/motion/idle.test.ts green: policy table + wiring checks for useActive, CinemaGlow, VoiceButton",
+      "note": "Pure idleMode()/isForeground() in src/ui/motion/idle.ts now drives CinemaGlow and the mic ring; behaviour unchanged except Reduce Motion also stops any running glow loop. Not run on a device.",
+      "commit": "2ef5f49"
+    },
+    {
+      "id": "T45",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1016"
+      ],
+      "priority": 1,
+      "title": "R1 Release identity: com.jared797.couch (iOS + Android), usesNonExemptEncryption false, eas.json development/preview/production, local-network text + Bonjour types, docs/RELEASING.md multicast-entitlement steps + form wording",
+      "accept": "app.json/eas.json updated; docs/RELEASING.md + docs/multicast-request.md name com.jared797.couch",
+      "note": "Identity, eas.json, local-network text + Bonjour types, RELEASING.md + multicast steps. Android TV pairing still reports packageName app.couchremote.android to the TV because byte-exact fixtures encode it (cosmetic; T54).",
+      "commit": "fa98c0b"
+    },
+    {
+      "id": "T46",
+      "status": "done",
+      "deps": [
+        "T45"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "priority": 1,
+      "title": "R2 OTA updates: expo-updates (runtimeVersion appVersion, channels), guarded quiet update check (no-op in Expo Go/__DEV__), PUSH_UPDATE.cmd, docs/RELEASING.md OTA vs TestFlight",
+      "accept": "tests: updates loader returns null/no-op without module and in Expo Go; PUSH_UPDATE.cmd CRLF",
+      "commit": "fa98c0b"
+    },
+    {
+      "id": "T47",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1016"
+      ],
+      "priority": 1,
+      "title": "R3a i18n core: typed t() with interpolation + plurals, Intl number/date, locale resolution, language pref, pseudo-locale, script typography, Text + NeverMirror wrappers",
+      "accept": "src/i18n tests green",
+      "commit": "d9a6857"
+    },
+    {
+      "id": "T48",
+      "status": "done",
+      "deps": [
+        "T47"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "priority": 1,
+      "title": "R3b move every user-facing string in app/ into src/i18n/catalog/en/app.ts; use src/ui/Text; start/end instead of left/right",
+      "accept": "no hard-coded UI strings in app/",
+      "commit": "2bc4ae5"
+    },
+    {
+      "id": "T49",
+      "status": "done",
+      "deps": [
+        "T47"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "priority": 1,
+      "title": "R3c move every user-facing string in src/ui and src/state into src/i18n/catalog/en/ui.ts; use src/ui/Text; wrap d-pad/arrows/rockers/transport/touchpad in NeverMirror; start/end elsewhere; mirrored chevrons",
+      "accept": "no hard-coded UI strings in src/ui; never-mirror test green",
+      "commit": "9fc8369"
+    },
+    {
+      "id": "T50",
+      "status": "done",
+      "deps": [
+        "T47"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "priority": 1,
+      "title": "R3d RTL switching (I18nManager allowRTL/forceRTL + reload), language picker in Settings, voice uses selected language, scanners (hard-coded strings, physical left/right, never-mirror), docs/I18N.md",
+      "accept": "scanner tests + RTL decision tests green",
+      "commit": "60ba8f2"
+    },
+    {
+      "id": "T51",
+      "status": "done",
+      "deps": [
+        "T48",
+        "T49"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "priority": 1,
+      "title": "R3e user-facing copy produced in src/core (SETTING_COPY, options, empty states, errors, add-TV/IR steps, diagnostics) becomes message keys; consumers translate",
+      "accept": "core copy only via catalogue",
+      "commit": "ac86e97",
+      "note": "~190 core.* keys; constants translate on read (withCopy/copyTable). Driver error messages left for T53."
+    },
+    {
+      "id": "T52",
+      "status": "done",
+      "deps": [
+        "T48",
+        "T49",
+        "T51"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "priority": 1,
+      "title": "R3f machine-translated catalogues for es, fr, de, it, pt-BR, ja, ko, zh-Hans, hi, ar (complete, placeholders match, plural forms per CLDR)",
+      "accept": "tests/i18n-catalogues green: every key in every locale, placeholders match",
+      "note": "Run 30: 246 keys (T52a/b/c). Run 31: 143 T51 core keys + 90 T53 driver keys in all 10 locales (T52a-c, T52d-1..3); STRICT_MISSING=true. 479 keys, 0 missing.",
+      "commit": "bf59f37"
+    },
+    {
+      "id": "T53",
+      "status": "done",
+      "deps": [
+        "T51"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "priority": 1,
+      "title": "R3g user-facing driver error messages (src/core/drivers/** DriverError texts reaching toasts via describeError, VEGA_OS_MESSAGE, Roku/Sony blocked messages) and add-tv-ir brand choice via irBrandChoiceLabel() go through the catalogue",
+      "accept": "pseudo-locale test covers a driver error; no English sentences in driver user messages",
+      "commit": "df88850",
+      "note": "Run 31: driverError()/asDriverError() translate at throw time; 90 core.driver.* keys; tests/i18n-driver-errors.test.ts scans drivers for English literals."
+    },
+    {
+      "id": "T54",
+      "status": "done",
+      "deps": [
+        "T45"
+      ],
+      "tags": [
+        "owner-1016"
+      ],
+      "priority": 2,
+      "title": "Android TV pairing: report packageName com.jared797.couch (regenerate byte-exact remote_configure fixtures)",
+      "accept": "androidtv proto/driver tests green with new package name",
+      "commit": "c7b9ffb",
+      "note": "Run 31: COUCH_APP_PACKAGE in src/core/appIdentity.ts (tested against app.json); Android TV remote_configure fixture regenerated byte-exact; Philips app_id aligned."
+    },
+    {
+      "id": "T55",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1017-ok",
+        "oversight-D63-1"
+      ],
+      "priority": 0,
+      "title": "OK button (owner feedback 17 Oct): true circle exactly centred in the d-pad ring, ~40% of diameter, from one size variable (src/core/dpadGeometry.ts); label lineHeight = fontSize, no font padding; press scales from its own centre; symmetric arrow hit areas; SE to Pro Max, large Dynamic Type, every theme, RTL; prototype fixed the same way",
+      "accept": "dpadGeometry tests across iPhone widths and font scales; DPad source guard; prototype OK centred; TRIAL.md 'OK button centred?' check",
+      "commit": "80b2761",
+      "note": "Run 34: src/core/dpadGeometry.ts (one diameter: OK key 40%, centred on integer points, equal gap, label lineHeight = fontSize via Text tight, includeFontPadding false); 43 geometry tests (SE..Pro Max, font scale 1..3.12) + DPad/prototype source guard; prototype halo moved inside the key (was 46% outside), centred with translate."
+    },
+    {
+      "id": "T56",
+      "status": "done",
+      "deps": [
+        "T55"
+      ],
+      "tags": [
+        "owner-1017",
+        "oversight-D62-1"
+      ],
+      "priority": 2,
+      "title": "T1 Theme system: typed remote theme tokens (src/theme/remoteThemes.ts: surface, key face, edge/bevel, key text, d-pad ring, accent, glow, press style, radius, optional generated texture); every remote control, sheet and the glow read it; Settings > Themes screen with live preview, instant apply (cross-fade), remembered per device; Reduce Motion; WCAG AA contrast test on every key label; themes never change what a button does, never hide a control, never move the OK key",
+      "accept": "contrast test per theme; theme pref persisted; Themes screen in catalogue (all 11 locales); RTL/never-mirror tests pass under every theme; no new native deps",
+      "commit": "6100926",
+      "note": "Run 34: remoteTheme pref, useRemoteTheme + RemoteThemeContext, PlusThemeProvider in src/plus, all remote controls/sheets/glow wired, RemoteTexture, Themes screen with live preview + Try it, glow pref \"theme\". Not run on a device."
+    },
+    {
+      "id": "T57",
+      "status": "done",
+      "deps": [
+        "T56"
+      ],
+      "tags": [
+        "owner-1017",
+        "oversight-D62-1"
+      ],
+      "priority": 2,
+      "title": "T2 Ten original themes (Midnight default, Daylight, OLED Black free; Cinema Red, Brushed Aluminium, Retro Wood, Neon Arcade, Pastel Candy, Forest, Aurora as Couch Plus with Try it preview); generated textures only (SVG/gradients/noise); Aurora glow pauses when idle",
+      "accept": "10 themes, 3 free, Plus gating only in src/plus, Try it works without buying, every control free in every theme",
+      "commit": "ada5d47",
+      "note": "Run 34: 10 themes (3 free) in src/theme/remoteThemes.ts, WCAG AA labelPairs test per theme, generated textures only."
+    },
+    {
+      "id": "T58",
+      "status": "done",
+      "deps": [
+        "T55"
+      ],
+      "tags": [
+        "owner-1017"
+      ],
+      "priority": 2,
+      "title": "T3 Mirror the 10 themes into prototype/index.html with a theme switcher in the demo (same tokens as src/theme/remoteThemes.ts)",
+      "accept": "prototype renders every theme in a plain browser; token parity test",
+      "commit": "8f0656c",
+      "note": "Run 34: embedded token JSON + switcher, ?theme= / ?shot=1 / ?view=, parity test."
+    },
+    {
+      "id": "T59",
+      "status": "done",
+      "deps": [
+        "T58"
+      ],
+      "tags": [
+        "owner-1017"
+      ],
+      "priority": 2,
+      "title": "T4 Store screenshot kit: store/render.mjs (Playwright + preinstalled Chromium) renders the prototype demo state into 1320x2868, 1242x2688 and 1080x1920 framed marketing images (SVG device frame, benefit headline from the i18n catalogue, one theme per shot), contact sheet store/screenshots/index.html, published on the build page under 'Store screenshots'",
+      "accept": "PNGs per size, no brand names/real TV UIs/streaming logos, headline strings in catalogue, published and linked",
+      "commit": "4e7425c",
+      "note": "Run 34: store/render.mjs, 6 shots x 3 sizes + JPEG previews + contact sheet; published on the build page under Store screenshots (generated output is gitignored; rerun node store/render.mjs)."
+    },
+    {
+      "id": "T60",
+      "status": "done",
+      "deps": [
+        "T55"
+      ],
+      "tags": [
+        "fb-1017b",
+        "H1"
+      ],
+      "priority": 0,
+      "title": "H1 OK button bigger: OK key ~52% of the d-pad ring diameter (arrow band still >= 44pt deep), bold label ~20-22pt scaling with the key, subtle raised bevel/shadow from theme tokens, same exact centring rules as T55; geometry test updated",
+      "accept": "dpadGeometry tests at SE..Pro Max and large Dynamic Type: key ratio 0.50-0.55, arrow band >= 44pt, label 20-22pt at scale 1, centred; DPad uses theme bevel tokens",
+      "commit": "deccc08",
+      "note": "Run 35: OK key 40% -> ~52% (134pt in a 260pt pad, 130 in 252), arrow band 63pt (>=44 rule with 0.50 floor for tiny pads), bold label 21pt (28 max with Dynamic Type), OkBevel raised face + keyEdge drop shadow; arrows via RemoteIcon."
+    },
+    {
+      "id": "T61",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1017b",
+        "H2"
+      ],
+      "priority": 0,
+      "title": "H2 Real button artwork (app): original SVG icon set (react-native-svg) in one stroke weight/corner style, tinted by theme tokens, with optional duotone/3D key shading; replaces every emoji/text glyph used as an icon on the remote and its sheets; accessibility labels kept; test that no emoji/text-glyph icons remain in app/ and src/ui",
+      "accept": "src/ui/icons with tests; controls carry icon ids; no-emoji-icons test green",
+      "commit": "3e49c7f",
+      "note": "Run 35: 31 original SVG icons (src/ui/icons/paths.ts, 1.9 stroke, round caps), KeyFace physical-key shading with AA contrast test, every remote/sheet/HUD glyph replaced; tests/no-emoji-icons.test.ts with an empty allowlist."
+    },
+    {
+      "id": "T62",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1017b",
+        "H1",
+        "H2",
+        "H3"
+      ],
+      "priority": 0,
+      "title": "H1-H3 in the prototype: bigger OK key (52%), the same original SVG icon set replacing glyphs, polished abstract placeholder app tiles; re-render store screenshots so they match",
+      "accept": "prototype guard tests updated; no emoji glyph icons in prototype; render.mjs runs",
+      "commit": "f5de2d6",
+      "note": "Run 35: prototype OK key 52% + bevel, icon table copied exactly from ICON_PATHS (test), key faces, demo tiles; brand names removed from the prototype default state; store/render.mjs writes publish/ (6 x 1320x2868 JPEG q85, ~1 MB) published on the build page."
+    },
+    {
+      "id": "T63",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1017b",
+        "H3"
+      ],
+      "priority": 0,
+      "title": "H3 App tiles: TV-supplied icons fetched + cached, full-bleed with correct aspect/cropping, crisp at @3x, loading shimmer, polished house-style fallback (app name typographic tile, deterministic colour); MockTv demo uses original abstract placeholder tiles (no brand names/look-alikes); TRIAL.md explains real logos come from the TV",
+      "accept": "icon cache + tile tests; no emoji in tiles; no bundled/drawn logos (no-logos test); TRIAL.md note",
+      "commit": "331c963",
+      "note": "Run 35: AppIconCache (tv+app keyed, dedupe, failure retry, LRU), 4:3 full-bleed TV icons with fit/crop rule, shimmer, typographic fallback tile, invented demo apps with abstract art; bare MockTv demo apps de-branded by the lead."
+    },
+    {
+      "id": "T64",
+      "title": "VERIFY.cmd + tools/verify.ps1: npm install, expo align, tsc --noEmit, npm test, expo export ios -> verify-report.txt (exit code + first 40 error lines per step); in trial kit; TRIAL.md step",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "D65-1"
+      ],
+      "priority": 1,
+      "note": "Run 36. Owner pastes verify-report.txt as a page comment to clear T18."
+    },
+    {
+      "id": "T65",
+      "title": "VERIFY.cmd: 'where node >/dev/null' -> '>nul' (cmd.exe has no /dev/null, so the check always failed); test that no .cmd/.bat/.ps1 contains /dev/null",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "D66-1"
+      ],
+      "priority": 1,
+      "note": "Run 37. tests/windows-scripts.test.ts. Trial kit republished."
+    },
+    {
+      "id": "T66",
+      "title": "M4 TV-supplied app icons on every platform: audit + fill gaps (Roku /query/icon, webOS icon URLs, Samsung Tizen where its REST/ws API exposes icons, Android/Google TV and Fire TV where available), fixture tests per driver, cache + full-bleed @3x tiles via AppIconCache; build-page note that real logos appear once a TV is connected. Never bundle or draw logos.",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018",
+        "M4"
+      ],
+      "priority": 1,
+      "note": "Owner insists tiles show the real app pictures (OWNER_1018 M4); MARKET.md: app launch is a top-valued feature.",
+      "commit": "1bee3ef"
+    },
+    {
+      "id": "T67",
+      "title": "M3a docs/DESIGN_V2.md (iOS-native look: palette, type scale, radii, shadows, materials, component list, before/after per screen) + shared primitives: LargeTitleHeader (collapses on scroll), InsetGroupedList/Row, Card (continuous corners), PillButton, BlurMaterial (expo-blur, AA contrast), elevation tokens; theme tokens from section F keep working; Expo Go only",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018",
+        "M3"
+      ],
+      "priority": 1,
+      "note": "OWNER_1018 M3; MARKET.md UI patterns.",
+      "commit": "6106ac0"
+    },
+    {
+      "id": "T68",
+      "title": "M3b Migrate screens to DESIGN_V2 components one by one (Settings, TVs, add-TV, Apps, Themes, Diagnostics, then remote chrome; d-pad geometry untouched, never mirrored), tests green after each",
+      "status": "done",
+      "deps": [
+        "T67"
+      ],
+      "tags": [
+        "market-1018",
+        "M3"
+      ],
+      "priority": 1,
+      "note": "OWNER_1018 M3. Run 42: steps 1-3 done (Settings d757298, TVs 85baf14, Diagnostics a5edd4e), one screen per commit per D72-2. Continue with 4 Plus, 5 Themes, 6 Add TV, 7 Apps, 8 Remote chrome last. Follow-ups: TVs tab bottom padding vs tab bar; i18n scanner flags generic signatures (T78). Run 43: steps 4-7 done (Plus 67bb4ff, Themes d6e9b6a, Add TV 882c73c, Add TV infrared 39cdc9c, Apps e102350). Step 8 (remote chrome) split out as T79 (held by D73-1). Tab-bar padding follow-up dropped: the tab bar does not float over content.",
+      "commit": "e102350"
+    },
+    {
+      "id": "T69",
+      "title": "M5 Refresh store screenshots with the MARKET.md playbook: shot 1 outcome, shot 2 price promise ('Every button free. No ads. No subscription.'), then discovery, keyboard/voice, apps (abstract tiles), themes, multi-TV; headline >=7% height, max 2 lines, catalogue keys; republish the 6.9\" JPEG set",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018",
+        "M5"
+      ],
+      "priority": 1,
+      "note": "Done run 45 per oversight D77-1 (T79 dep dropped: the remote stays on old chrome under D73-1, shots render the prototype). 7 shots, publish/ JPEGs on the build page.",
+      "commit": "fec49e6"
+    },
+    {
+      "id": "T70",
+      "title": "Gap: silent fast reconnect when the app returns to the foreground or the phone wakes, 'Reconnecting...' in the status pill (never a modal), keep-alive per driver; fixture tests",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018",
+        "M2"
+      ],
+      "priority": 1,
+      "note": "MARKET.md 'What users hate' #5: drops when the phone sleeps/switches apps — top functional complaint; cheap (reconnect.ts exists).",
+      "commit": "f1b619e"
+    },
+    {
+      "id": "T71",
+      "title": "Gap: lost-remote help in add-TV: explain the TV-side Allow/PIN prompt before it appears, say which brands need the physical remote once, offer Wake (WoL) and IR (Android) paths; i18n in all locales",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018",
+        "M2"
+      ],
+      "priority": 1,
+      "note": "MARKET.md 'What users hate' #6 and takeaway 4: Allow prompt blocks the lost-remote case; cheap (copy + flow).",
+      "commit": "e4379c4"
+    },
+    {
+      "id": "T72",
+      "title": "Gap: long-press repeat on every rocker and transport key (FF/RW, channel, volume) + free sleep timer (phone-side timer that sends Power, survives backgrounding where possible, cancel from the remote)",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018",
+        "M2"
+      ],
+      "priority": 1,
+      "note": "MARKET.md features we lack #2-3; cheap, pure core + UI.",
+      "commit": "1d28e6c"
+    },
+    {
+      "id": "T73",
+      "title": "Gap: editable app shortcuts: long-press to reorder/remove favourites in the Apps tab, persisted per TV",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018",
+        "M2"
+      ],
+      "priority": 1,
+      "note": "MARKET.md features we lack #4: users dislike fixed shortcuts; cheap.",
+      "commit": "6be2e16"
+    },
+    {
+      "id": "T74",
+      "title": "Gap: Larger Text audit of the remote and sheets at the largest accessibility sizes (reflow, no overlap) + store copy line on accessibility; ui-check test",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018",
+        "M2"
+      ],
+      "priority": 1,
+      "note": "MARKET.md hate #7 and takeaway 9: competitors break with Larger Text; cheap differentiator.",
+      "commit": "3619a8d"
+    },
+    {
+      "id": "T75",
+      "title": "Gap: one-time rating prompt policy (Apple's StoreReview after 7 days and 3 successful sessions, max once per version, never after an error) behind a guarded loader for Expo Go",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018",
+        "M2"
+      ],
+      "priority": 1,
+      "note": "MARKET.md hate #8: pushy rating prompts; cheap.",
+      "commit": "819af4f+b443a05"
+    },
+    {
+      "id": "T76",
+      "title": "Gap: cast photos and videos from the phone to the TV over DLNA/UPnP AVTransport (local HTTP file server needs a native module: dev build, behind an adapter that never crashes Expo Go); Couch Plus decides later whether casting is free",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018",
+        "M2"
+      ],
+      "priority": 1,
+      "note": "MARKET.md features we lack #1: 5 of 13 competitors have casting; medium-high cost (native). Run 43: part 1 done (4805d25): src/core/cast (SSDP MediaRenderer, description parse, AVTransport SOAP, CastSession, MediaServer port + guarded native stub), docs/CASTING.md, fixtures only. Next: T80 native file server + cast screen (dev build). Run 44: closed as part 1 (core + guarded adapter); native media server, picker and Cast sheet continue in T80.",
+      "commit": "4805d25"
+    },
+    {
+      "id": "T77",
+      "title": "Gap: Couch Plus Home Screen widget (WidgetKit via config plugin; TV power/volume/inputs), dev build only, behind an adapter",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "market-1018",
+        "M2"
+      ],
+      "priority": 1,
+      "note": "MARKET.md takeaway 8 and review requests: nobody ships a good widget; higher cost (native). Run 44: part 1 done (befd0e8): src/core/widget (couch://widget deep links, tap gate, snapshot), guarded src/native/widgetBridge.ts, src/ui/widget link handler + snapshot sync (Plus read only there; widget taps always send the key), docs/WIDGET.md. Not wired into app/_layout.tsx yet (trial-path safety, see DECISIONS run 44); native WidgetKit/AppWidget part is T82.",
+      "commit": "befd0e8"
+    },
+    {
+      "id": "T78",
+      "title": "i18n scanner: stop flagging TypeScript generic signatures (e.g. function f<V>(a: X<V>)) as hard-coded text",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "tooling"
+      ],
+      "note": "Found by the T68 worker in run 42; worked around in app/settings.tsx.",
+      "commit": "1f4f347"
+    },
+    {
+      "id": "T79",
+      "title": "M3b step 8: remote screen chrome on DESIGN_V2 (header, TV switcher, sheets; d-pad geometry untouched, never mirrored), one commit",
+      "status": "todo",
+      "deps": [
+        "T68"
+      ],
+      "tags": [
+        "market-1018",
+        "M3"
+      ],
+      "priority": 1,
+      "hold": "D73-1",
+      "note": "Oversight D73-1: keep the remote on the old code until the owner's VERIFY report (T18) or an Expo Go retest comes back clean."
+    },
+    {
+      "id": "T80",
+      "title": "Casting part 2: native media-server module (modules/media-server, HTTP with Range) + photo/video picker + Cast sheet on the remote, hidden in Expo Go",
+      "status": "todo",
+      "deps": [
+        "T76",
+        "T18"
+      ],
+      "tags": [
+        "market-1018",
+        "M2"
+      ],
+      "priority": 1,
+      "note": "See docs/CASTING.md. Needs a dev build; free unless the owner decides otherwise. Held by oversight D77-1 (run 45) until the owner's VERIFY report (T18) or a dev build exists.",
+      "hold": "D77-1"
+    },
+    {
+      "id": "T81",
+      "title": "Offline strict type-check of app/ and src/ui against hand-written React / React Native / Expo stubs (scripts/tsc-stubs, scripts/tsconfig.ui.json, npm run typecheck:ui) in every green check",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "tooling",
+        "oversight-D75-1"
+      ],
+      "note": "Oversight D75-1. First run: 0 own-code errors after the stubs gained the real RN props Couch uses; probes confirm it catches wrong hook types, misspelt props/style keys and undefined components. tests/typecheck-ui.test.ts runs it when there is no node_modules.",
+      "commit": "ee951d9, 3de335b"
+    },
+    {
+      "id": "T82",
+      "title": "Widget part 2 (Couch Plus, dev build): WidgetKit extension + App Group via config plugin, modules/widget-bridge (setSnapshot, reloadTimelines), iOS 17 interactive buttons, Android AppWidget; then wire <WidgetLinkHost /> and app/+native-intent.tsx (docs/WIDGET.md)",
+      "status": "todo",
+      "deps": [
+        "T77",
+        "T18"
+      ],
+      "tags": [
+        "market-1018",
+        "M2"
+      ],
+      "priority": 1,
+      "note": "Needs a dev build and a compile check on the PC before any native code ships (an uncompiled extension could break the owner's EAS build). Held by oversight D77-1 (run 45) until the owner's VERIFY report (T18) or a dev build exists.",
+      "hold": "D77-1"
+    },
+    {
+      "id": "T83",
+      "title": "Store shot 05 polish: drop the in-screen footnote ('Pinned apps sit first ... Demo apps use original Couch artwork ...') and the duplicate name labels over the tiles in ?shot=1 mode, so the apps shot has no small print; remove now-unused headline keys noAds/voice/numpad once nothing references them",
+      "status": "done",
+      "deps": [
+        "T69"
+      ],
+      "tags": [
+        "market-1018",
+        "M5"
+      ],
+      "priority": 1,
+      "commit": "71eaa6c",
+      "note": "Done run 46 (D81-1): ?shot=1 hides the apps footnote, the \"long-press to pin\" hint and the caption strip under each tile (the tile art already carries the name); noAds/voice/numpad removed from all 11 catalogues; 7 shots re-rendered."
+    },
+    {
+      "id": "T84",
+      "title": "fb-1022 C1: real streaming apps with their official icons (TV icon first, else App Store artwork fetched at runtime via the iTunes Search API, house tile offline); demo mode lists the real services; 'not affiliated' line under the Apps grid",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1022"
+      ],
+      "priority": 0,
+      "note": "Done live with the owner's chat 22 Oct 2026 (Couch build runs since 20 Oct had not checkpointed). src/core/storeIcons.ts + tests; demo apps = 16 AU/US services; store-screenshot prototype keeps invented apps (SCREENSHOT_DEMO_APPS) until the owner approves logos in screenshots."
+    },
+    {
+      "id": "T85",
+      "title": "owner-1022b: US/UK/EU services (about 60 in the icon catalogue, regions), Favourites only, Choose apps screen (per-TV hidden apps), Walnut & Brass wood theme",
+      "status": "done",
+      "done": "2026-10-22 live session"
+    },
+    {
+      "id": "T86",
+      "title": "fb-1022d: volume / mute HUD sat under the Dynamic Island; now offset by the safe-area top inset",
+      "status": "done",
+      "done": "2026-10-22 live session"
+    },
+    {
+      "id": "T87",
+      "title": "fb-1022e: Stan icon vanished — store icon lookups queued one at a time (Apple ~20/min limit), favourites first, kept on the phone 30 days, not subject to the 8 s TV-icon timeout; TESTFLIGHT_COUCH.cmd",
+      "status": "done",
+      "done": "2026-10-22 live session"
+    }
+  ],
+  "codex_delegable": [
+    "T06",
+    "T10",
+    "T12",
+    "T16"
+  ],
+  "owner_gates": [
+    "Real-TV smoke tests each morning",
+    "Apple multicast entitlement",
+    "Final name",
+    {
+      "id": "G-price-1018",
+      "text": "Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (docs/MARKET.md Pricing proposal) — owner decides"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Row of beach huts</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 36 316 L 36 196 L 72 150 L 108 196 L 108 316 Z"/>
+    <path d="M 54 226 L 90 226 L 90 316 L 54 316 Z"/>
+    <path d="M 65 178 A 7 7 0 1 0 79 178 A 7 7 0 1 0 65 178 Z"/>
+    <path d="M 44 316 L 44 334"/>
+    <path d="M 100 316 L 100 334"/>
+    <path d="M 118 316 L 118 204 L 154 158 L 190 204 L 190 316 Z"/>
+    <path d="M 136 234 L 172 234 L 172 316 L 136 316 Z"/>
+    <path d="M 147 186 A 7 7 0 1 0 161 186 A 7 7 0 1 0 147 186 Z"/>
+    <path d="M 126 316 L 126 334"/>
+    <path d="M 182 316 L 182 334"/>
+    <path d="M 200 316 L 200 196 L 236 150 L 272 196 L 272 316 Z"/>
+    <path d="M 218 226 L 254 226 L 254 316 L 218 316 Z"/>
+    <path d="M 229 178 A 7 7 0 1 0 243 178 A 7 7 0 1 0 229 178 Z"/>
+    <path d="M 208 316 L 208 334"/>
+    <path d="M 264 316 L 264 334"/>
+    <path d="M 282 316 L 282 204 L 318 158 L 354 204 L 354 316 Z"/>
+    <path d="M 300 234 L 336 234 L 336 316 L 300 316 Z"/>
+    <path d="M 311 186 A 7 7 0 1 0 325 186 A 7 7 0 1 0 311 186 Z"/>
+    <path d="M 290 316 L 290 334"/>
+    <path d="M 346 316 L 346 334"/>
+    <path d="M 24 334 Q 120 328 200 334 Q 280 340 376 330"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 54 202 L 54 226 M 54 316 L 54 316"/>
+    <path d="M 72 202 L 72 226 M 72 316 L 72 316"/>
+    <path d="M 90 202 L 90 316"/>
+    <path d="M 145 234 L 145 316"/>
+    <path d="M 154 234 L 154 316"/>
+    <path d="M 163 234 L 163 316"/>
+    <path d="M 218 202 L 218 226 M 218 316 L 218 316"/>
+    <path d="M 236 202 L 236 226 M 236 316 L 236 316"/>
+    <path d="M 254 202 L 254 316"/>
+    <path d="M 309 234 L 309 316"/>
+    <path d="M 318 234 L 318 316"/>
+    <path d="M 327 234 L 327 316"/>
+    <path d="M 60 356 Q 70 352 80 356 M 180 366 Q 190 362 200 366 M 300 354 Q 310 350 320 354"/>
+  </g>
+</svg>

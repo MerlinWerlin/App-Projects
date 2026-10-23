@@ -1,0 +1,53 @@
+// `plus` namespace, hi. MACHINE TRANSLATION awaiting native-speaker review (docs/I18N.md).
+import type { LocaleMessages } from '../../catalogue.ts';
+
+export const hi: NonNullable<LocaleMessages['plus']> = {
+  lock: {
+    subjectIntro: '{subject} Glaze Plus का हिस्सा है।',
+    price: 'एक बार {price}। कभी कोई सदस्यता नहीं।',
+    included: 'क्या शामिल है',
+    widgets: 'अतिरिक्त विजेट स्टाइल',
+    symbols: 'चुने हुए चिह्न सेट',
+    loops: 'Live Lock प्लेलिस्ट और थीम लूप',
+    free: 'हमेशा मुफ़्त',
+    freeIcons: 'अपने आइकन बनाना, असीमित',
+    freeInstall: 'प्रोफ़ाइल और Shortcuts से इंस्टॉल',
+    freeLive: 'अपने वीडियो के साथ Live लॉक स्क्रीन',
+    notNow: 'अभी नहीं',
+    oneMoment: 'एक पल…',
+    unlock: 'अनलॉक करें (जल्द आ रहा है)',
+    unlockHint: 'Glaze Plus अभी बिक्री पर नहीं है',
+    unavailable: 'Glaze Plus स्टोर रिलीज़ के साथ आएगा।',
+    close: "बंद करें",
+    restore: "खरीदारी वापस लाएँ",
+    restoreHint: "पहले की Glaze Plus खरीदारी ढूँढकर उसे फिर से अनलॉक करता है",
+    restored: "Glaze Plus वापस आ गया। धन्यवाद!",
+    restoreNone: "पहले की कोई Glaze Plus खरीदारी नहीं मिली।",
+    restoreFailed: "अभी वापस नहीं ला सके। बाद में फिर कोशिश करें।",
+    themes: {
+      one: '{packs} पैक में {count} और थीम',
+      other: '{packs} पैक में {count} और थीम',
+    },
+    freeThemes: {
+      one: '{count} चित्रित स्टार्टर थीम और वॉलपेपर मेकर',
+      other: '{count} चित्रित स्टार्टर थीम और वॉलपेपर मेकर',
+    },
+  },
+  tipJar: {
+    title: 'टिप जार',
+    body: 'Glaze पसंद आ रहा है? अपनी मर्ज़ी से टिप दें। इससे कुछ अनलॉक नहीं होता; यह बस धन्यवाद है।',
+    small: 'छोटी टिप',
+    kind: 'अच्छी टिप',
+    generous: 'बड़ी टिप',
+    soon: 'स्टोर रिलीज़ के साथ आ रहा है।',
+    a11y: 'टिप जार। Glaze को सपोर्ट करने के लिए वैकल्पिक टिप। कुछ अनलॉक नहीं होता। स्टोर रिलीज़ के साथ आ रहा है।',
+  },
+  packErrors: {
+    network: 'पैक तक नहीं पहुँच सके। अपना कनेक्शन जाँचें और फिर कोशिश करें।',
+    integrity: 'डाउनलोड खराब था, इसलिए हटा दिया गया। फिर कोशिश करें।',
+    appVersion: 'इस पैक के लिए Glaze का नया वर्ज़न चाहिए।',
+    cancelled: 'डाउनलोड रद्द किया गया।',
+    disabled: 'थीम पैक स्टोर रिलीज़ के साथ आएँगे',
+    generic: 'इस पैक में कुछ गड़बड़ हुई। फिर कोशिश करें।',
+  },
+};

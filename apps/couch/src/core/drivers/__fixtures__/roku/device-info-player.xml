@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<device-info>
+	<udn>29380007-0800-1025-80a4-d83154332d80</udn>
+	<serial-number>YJ00BBBBBBBB</serial-number>
+	<device-id>S0B1234BBBBB</device-id>
+	<advertising-id>00000000-0000-0000-0000-000000000000</advertising-id>
+	<vendor-name>Roku</vendor-name>
+	<model-name>Roku Express 4K+</model-name>
+	<model-number>3941X</model-number>
+	<model-region>US</model-region>
+	<is-tv>false</is-tv>
+	<is-stick>false</is-stick>
+	<ui-resolution>1080p</ui-resolution>
+	<supports-ethernet>false</supports-ethernet>
+	<wifi-mac>d8:31:34:44:5e:01</wifi-mac>
+	<network-type>wifi</network-type>
+	<network-name>HomeNet</network-name>
+	<friendly-device-name>Bedroom Roku</friendly-device-name>
+	<friendly-model-name>Roku Express 4K+</friendly-model-name>
+	<default-device-name>Roku Express 4K+ - YJ00BBBBBBBB</default-device-name>
+	<user-device-name>Bedroom Roku</user-device-name>
+	<user-device-location>Bedroom</user-device-location>
+	<software-version>14.1.4</software-version>
+	<software-build>4209</software-build>
+	<secure-device>true</secure-device>
+	<language>en</language>
+	<country>US</country>
+	<locale>en_US</locale>
+	<power-mode>PowerOn</power-mode>
+	<supports-suspend>false</supports-suspend>
+	<supports-find-remote>false</supports-find-remote>
+	<supports-wake-on-wlan>false</supports-wake-on-wlan>
+	<developer-enabled>false</developer-enabled>
+	<search-enabled>true</search-enabled>
+	<voice-search-enabled>true</voice-search-enabled>
+</device-info>

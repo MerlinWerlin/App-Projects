@@ -1,0 +1,52 @@
+/* Glaze widget extension strings (T86), Korean. Machine translation awaiting native-speaker
+   review (docs/I18N.md). Same keys as en.lproj. */
+
+"habit.name.water" = "물";
+"habit.name.sleep" = "수면";
+"habit.name.steps" = "걸음";
+"habit.name.mood" = "기분";
+
+"habit.unit.ml" = "ml";
+"habit.unit.hours" = "시간";
+"habit.unit.steps" = "걸음";
+
+"habit.desc.water" = "마실 때마다 +150 ml를 탭하세요. 자정에 초기화됩니다.";
+"habit.desc.sleep" = "수면을 1시간 단위로 기록하세요.";
+"habit.desc.steps" = "걸음 수를 500보 단위로 직접 기록하세요.";
+"habit.desc.mood" = "오늘의 기분을 고르세요.";
+
+"habit.goalOf" = "목표 %1$@ %2$@";
+
+"habit.a11y.add" = "%1$@ %2$@ 추가";
+"habit.a11y.remove" = "%1$@ %2$@ 빼기";
+"habit.a11y.moodDown" = "기분 낮추기";
+"habit.a11y.moodUp" = "기분 올리기";
+"habit.a11y.mood1" = "기분 기록: 최악";
+"habit.a11y.mood2" = "기분 기록: 별로";
+"habit.a11y.mood3" = "기분 기록: 보통";
+"habit.a11y.mood4" = "기분 기록: 좋음";
+"habit.a11y.mood5" = "기분 기록: 최고";
+
+"habit.mood.0" = "기록 없음";
+"habit.mood.1" = "최악";
+"habit.mood.2" = "별로";
+"habit.mood.3" = "보통";
+"habit.mood.4" = "좋음";
+"habit.mood.5" = "최고";
+
+"Log a habit" = "습관 기록";
+"Log mood" = "기분 기록";
+"Habit" = "습관";
+"Direction" = "방향";
+"Level" = "단계";
+
+"Clock" = "시계";
+"The time, in your Glaze theme." = "Glaze 테마로 보는 시간.";
+"Date" = "날짜";
+"Today's date, in your Glaze theme." = "Glaze 테마로 보는 오늘 날짜.";
+"Time and date for your Lock Screen." = "잠금 화면용 시간과 날짜.";
+"Photo" = "사진";
+"A photo you pick in Glaze." = "Glaze에서 고른 사진.";
+"Choose a photo in Glaze" = "Glaze에서 사진을 고르세요";
+"Little Line" = "한 줄";
+"A short, gentle line that changes every hour." = "매시간 바뀌는 짧고 다정한 한 줄.";

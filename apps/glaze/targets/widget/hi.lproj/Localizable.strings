@@ -1,0 +1,52 @@
+/* Glaze widget extension strings (T86), Hindi. Machine translation awaiting native-speaker
+   review (docs/I18N.md). Same keys as en.lproj. */
+
+"habit.name.water" = "पानी";
+"habit.name.sleep" = "नींद";
+"habit.name.steps" = "कदम";
+"habit.name.mood" = "मूड";
+
+"habit.unit.ml" = "मि.ली.";
+"habit.unit.hours" = "घं.";
+"habit.unit.steps" = "कदम";
+
+"habit.desc.water" = "पानी पीते समय +150 मि.ली. पर टैप करें। आधी रात को रीसेट होता है।";
+"habit.desc.sleep" = "अपनी नींद एक-एक घंटा करके दर्ज करें।";
+"habit.desc.steps" = "कदम 500 के हिस्सों में हाथ से गिनें।";
+"habit.desc.mood" = "चुनें कि आज कैसा लग रहा है।";
+
+"habit.goalOf" = "%1$@ %2$@ में से";
+
+"habit.a11y.add" = "%1$@ %2$@ जोड़ें";
+"habit.a11y.remove" = "%1$@ %2$@ घटाएँ";
+"habit.a11y.moodDown" = "मूड घटाएँ";
+"habit.a11y.moodUp" = "मूड बढ़ाएँ";
+"habit.a11y.mood1" = "मूड दर्ज करें: बहुत बुरा";
+"habit.a11y.mood2" = "मूड दर्ज करें: उदास";
+"habit.a11y.mood3" = "मूड दर्ज करें: ठीक-ठाक";
+"habit.a11y.mood4" = "मूड दर्ज करें: अच्छा";
+"habit.a11y.mood5" = "मूड दर्ज करें: बढ़िया";
+
+"habit.mood.0" = "दर्ज नहीं";
+"habit.mood.1" = "बहुत बुरा";
+"habit.mood.2" = "उदास";
+"habit.mood.3" = "ठीक-ठाक";
+"habit.mood.4" = "अच्छा";
+"habit.mood.5" = "बढ़िया";
+
+"Log a habit" = "आदत दर्ज करें";
+"Log mood" = "मूड दर्ज करें";
+"Habit" = "आदत";
+"Direction" = "दिशा";
+"Level" = "स्तर";
+
+"Clock" = "घड़ी";
+"The time, in your Glaze theme." = "आपकी Glaze थीम में समय।";
+"Date" = "तारीख़";
+"Today's date, in your Glaze theme." = "आपकी Glaze थीम में आज की तारीख़।";
+"Time and date for your Lock Screen." = "लॉक स्क्रीन के लिए समय और तारीख़।";
+"Photo" = "फ़ोटो";
+"A photo you pick in Glaze." = "Glaze में आपकी चुनी हुई फ़ोटो।";
+"Choose a photo in Glaze" = "Glaze में एक फ़ोटो चुनें";
+"Little Line" = "छोटी पंक्ति";
+"A short, gentle line that changes every hour." = "हर घंटे बदलने वाली एक छोटी, कोमल पंक्ति।";

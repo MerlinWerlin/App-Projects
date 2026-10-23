@@ -1,0 +1,1 @@
+Source from the glaze build page, commit 118d43ce6b683ac758649263a7b1b13a5edd1a92, copied to this PC 2026-10-23_1041.

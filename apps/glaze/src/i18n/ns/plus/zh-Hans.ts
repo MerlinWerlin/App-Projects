@@ -1,0 +1,51 @@
+// `plus` namespace, zh-Hans. MACHINE TRANSLATION awaiting native-speaker review (docs/I18N.md).
+import type { LocaleMessages } from '../../catalogue.ts';
+
+export const zhHans: NonNullable<LocaleMessages['plus']> = {
+  lock: {
+    subjectIntro: '{subject}属于 Glaze Plus。',
+    price: '一次性 {price}。永不订阅。',
+    included: '包含内容',
+    widgets: '额外的小组件样式',
+    symbols: '精选符号集',
+    loops: 'Live Lock 播放列表和主题循环',
+    free: '始终免费',
+    freeIcons: '自制图标，不限数量',
+    freeInstall: '描述文件批量安装和快捷指令安装',
+    freeLive: '用你自己的视频制作动态锁定屏幕',
+    notNow: '以后再说',
+    oneMoment: '请稍候…',
+    unlock: '解锁（即将推出）',
+    unlockHint: 'Glaze Plus 尚未开售',
+    unavailable: 'Glaze Plus 将随商店版本推出。',
+    close: "关闭",
+    restore: "恢复购买",
+    restoreHint: "查找之前的 Glaze Plus 购买并重新解锁",
+    restored: "已恢复 Glaze Plus。谢谢！",
+    restoreNone: "未找到之前的 Glaze Plus 购买。",
+    restoreFailed: "暂时无法恢复，请稍后再试。",
+    themes: {
+      other: '{packs} 个主题包中的另外 {count} 个主题',
+    },
+    freeThemes: {
+      other: '{count} 个插画入门主题和墙纸制作',
+    },
+  },
+  tipJar: {
+    title: '小费罐',
+    body: '喜欢 Glaze 吗？可以留下一笔自愿的小费。它不会解锁任何内容，只是表达感谢。',
+    small: '小额小费',
+    kind: '暖心小费',
+    generous: '慷慨小费',
+    soon: '将随商店版本推出。',
+    a11y: '小费罐。支持 Glaze 的自愿小费。不解锁任何内容。将随商店版本推出。',
+  },
+  packErrors: {
+    network: '无法连接到主题包。请检查网络连接后重试。',
+    integrity: '下载内容已损坏，已被丢弃。请重试。',
+    appVersion: '此主题包需要更新版本的 Glaze。',
+    cancelled: '下载已取消。',
+    disabled: '主题包将随商店版本推出',
+    generic: '此主题包出现问题。请重试。',
+  },
+};

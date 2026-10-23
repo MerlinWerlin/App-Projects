@@ -1,0 +1,55 @@
+// `plus` namespace, it. MACHINE TRANSLATION awaiting native-speaker review (docs/I18N.md).
+import type { LocaleMessages } from '../../catalogue.ts';
+
+export const it: NonNullable<LocaleMessages['plus']> = {
+  lock: {
+    subjectIntro: '{subject} fa parte di Glaze Plus.',
+    price: 'Pagamento unico di {price}. Nessun abbonamento, mai.',
+    included: 'Cosa include',
+    widgets: 'Stili widget extra',
+    symbols: 'Set di simboli selezionati',
+    loops: 'Playlist Live Lock e loop dei temi',
+    free: 'Sempre gratis',
+    freeIcons: 'Icone tue, senza limiti',
+    freeInstall: 'Installazione con profilo e con Comandi',
+    freeLive: 'Schermata di blocco animata con il tuo video',
+    notNow: 'Non ora',
+    oneMoment: 'Un momento…',
+    unlock: 'Sblocca (in arrivo)',
+    unlockHint: 'Glaze Plus non è ancora in vendita',
+    unavailable: 'Glaze Plus arriva con la versione dello store.',
+    close: "Chiudi",
+    restore: "Ripristina acquisti",
+    restoreHint: "Cerca un acquisto precedente di Glaze Plus e lo sblocca di nuovo",
+    restored: "Glaze Plus ripristinato. Grazie!",
+    restoreNone: "Nessun acquisto precedente di Glaze Plus trovato.",
+    restoreFailed: "Impossibile ripristinare ora. Riprova più tardi.",
+    themes: {
+      one: '{count} tema in più in {packs} pacchetti',
+      many: '{count} di temi in più in {packs} pacchetti',
+      other: '{count} temi in più in {packs} pacchetti',
+    },
+    freeThemes: {
+      one: '{count} tema illustrato iniziale e il creatore di sfondi',
+      many: '{count} di temi illustrati iniziali e il creatore di sfondi',
+      other: '{count} temi illustrati iniziali e il creatore di sfondi',
+    },
+  },
+  tipJar: {
+    title: 'Mance',
+    body: 'Ti piace Glaze? Lascia una mancia facoltativa. Non sblocca nulla; è solo un grazie.',
+    small: 'Mancia piccola',
+    kind: 'Mancia gentile',
+    generous: 'Mancia generosa',
+    soon: 'In arrivo con la versione dello store.',
+    a11y: 'Mance. Mance facoltative per sostenere Glaze. Non sblocca nulla. In arrivo con la versione dello store.',
+  },
+  packErrors: {
+    network: 'Impossibile raggiungere il pacchetto. Controlla la connessione e riprova.',
+    integrity: 'Il download era danneggiato ed è stato scartato. Riprova.',
+    appVersion: 'Questo pacchetto richiede una versione più recente di Glaze.',
+    cancelled: 'Download annullato.',
+    disabled: 'I pacchetti di temi arrivano con la versione dello store',
+    generic: 'Qualcosa è andato storto con questo pacchetto. Riprova.',
+  },
+};

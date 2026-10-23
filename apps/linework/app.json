@@ -1,0 +1,97 @@
+{
+  "expo": {
+    "name": "Linework",
+    "slug": "linework",
+    "scheme": "linework",
+    "version": "1.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/febfc445-71b5-42f1-b8a6-1a88dac92ec1"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jared797.linework",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "NSCameraUsageDescription": "Linework shows your camera view behind the image so you can trace it onto paper. Recording only happens when you tap Record, and stays on your device. Nothing is uploaded.",
+        "NSPhotoLibraryUsageDescription": "Linework lets you pick a photo to trace. Your photos stay on this device.",
+        "NSPhotoLibraryAddUsageDescription": "Linework saves your timelapse to Photos. Nothing is uploaded."
+      }
+    },
+    "android": {
+      "package": "com.jared797.linework",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#F7F3EE"
+      },
+      "permissions": [
+        "android.permission.CAMERA"
+      ],
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Linework shows your camera view behind the image so you can trace it onto paper. Recording only happens when you tap Record, and stays on your device. Nothing is uploaded.",
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Linework lets you pick a photo to trace. Your photos stay on this device.",
+          "savePhotosPermission": "Linework saves your timelapse to Photos. Nothing is uploaded.",
+          "isAccessMediaLocationEnabled": false
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Linework lets you pick a photo to trace. Your photos stay on this device.",
+          "cameraPermission": "Linework can take a photo for you to trace. Nothing is uploaded."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 240,
+          "resizeMode": "contain",
+          "backgroundColor": "#F7F3EE",
+          "dark": {
+            "image": "./assets/splash-icon-dark.png",
+            "backgroundColor": "#121110"
+          }
+        }
+      ],
+      "expo-status-bar"
+    ],
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "experiments": {
+      "typedRoutes": false
+    },
+    "owner": "jared797",
+    "extra": {
+      "eas": {
+        "projectId": "febfc445-71b5-42f1-b8a6-1a88dac92ec1"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+CACHE-CONTROL: max-age = 1800
+EXT:
+Location: http://192.168.1.41:1400/xml/device_description.xml
+Server: Linux UPnP/1.0 HomeAudio/57.3
+st: urn:schemas-upnp-org:device:MediaRenderer:1
+usn: uuid:0d6b7c11-2233-4455-8899-aabbccddeeff::urn:schemas-upnp-org:device:MediaRenderer:1
+

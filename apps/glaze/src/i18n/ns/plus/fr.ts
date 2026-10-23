@@ -1,0 +1,55 @@
+// `plus` namespace, fr. MACHINE TRANSLATION awaiting native-speaker review (docs/I18N.md).
+import type { LocaleMessages } from '../../catalogue.ts';
+
+export const fr: NonNullable<LocaleMessages['plus']> = {
+  lock: {
+    subjectIntro: '{subject} fait partie de Glaze Plus.',
+    price: 'Paiement unique de {price}. Jamais d’abonnement.',
+    included: 'Ce qui est inclus',
+    widgets: 'Styles de widgets supplémentaires',
+    symbols: 'Jeux de symboles choisis',
+    loops: 'Playlists Live Lock et boucles de thème',
+    free: 'Toujours gratuit',
+    freeIcons: 'Icônes personnalisées, sans limite',
+    freeInstall: 'Installation par profil et par Raccourcis',
+    freeLive: 'Écran verrouillé animé avec votre vidéo',
+    notNow: 'Pas maintenant',
+    oneMoment: 'Un instant…',
+    unlock: 'Débloquer (bientôt)',
+    unlockHint: 'Glaze Plus n’est pas encore en vente',
+    unavailable: 'Glaze Plus arrive avec la version de l’App Store.',
+    close: "Fermer",
+    restore: "Restaurer les achats",
+    restoreHint: "Recherche un achat Glaze Plus antérieur et le débloque à nouveau",
+    restored: "Glaze Plus restauré. Merci !",
+    restoreNone: "Aucun achat Glaze Plus antérieur n’a été trouvé.",
+    restoreFailed: "Restauration impossible pour le moment. Réessayez plus tard.",
+    themes: {
+      one: '{count} thème de plus dans {packs} packs',
+      many: '{count} de thèmes de plus dans {packs} packs',
+      other: '{count} thèmes de plus dans {packs} packs',
+    },
+    freeThemes: {
+      one: '{count} thème illustré de départ et le créateur de fonds d’écran',
+      many: '{count} de thèmes illustrés de départ et le créateur de fonds d’écran',
+      other: '{count} thèmes illustrés de départ et le créateur de fonds d’écran',
+    },
+  },
+  tipJar: {
+    title: 'Pourboires',
+    body: 'Vous aimez Glaze ? Laissez un pourboire facultatif. Il ne débloque rien ; c’est juste un merci.',
+    small: 'Petit pourboire',
+    kind: 'Gentil pourboire',
+    generous: 'Pourboire généreux',
+    soon: 'Arrive avec la version de l’App Store.',
+    a11y: 'Pourboires. Pourboires facultatifs pour soutenir Glaze. Ne débloque rien. Arrive avec la version de l’App Store.',
+  },
+  packErrors: {
+    network: 'Impossible d’atteindre le pack. Vérifiez votre connexion et réessayez.',
+    integrity: 'Le téléchargement était endommagé et a été supprimé. Réessayez.',
+    appVersion: 'Ce pack nécessite une version plus récente de Glaze.',
+    cancelled: 'Téléchargement annulé.',
+    disabled: 'Les packs de thèmes arrivent avec la version de l’App Store',
+    generic: 'Un problème est survenu avec ce pack. Réessayez.',
+  },
+};

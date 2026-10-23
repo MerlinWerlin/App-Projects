@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+CACHE-CONTROL: max-age=1800
+EXT:
+LOCATION: http://192.168.1.88:52323/dmr.xml
+SERVER: Linux/4.9 UPnP/1.0 KD-55X85J/1.0
+ST: urn:schemas-sony-com:service:ScalarWebAPI:1
+USN: uuid:00000003-0000-1010-8000-a0c4a5e1b2c3::urn:schemas-sony-com:service:ScalarWebAPI:1
+X-AV-Physical-Unit-Info: pa="BRAVIA KD-55X85J";
+X-AV-Server-Info: av=5.0; cn="Sony Corporation"; mn="BRAVIA KD-55X85J"; mv="3.0";
+

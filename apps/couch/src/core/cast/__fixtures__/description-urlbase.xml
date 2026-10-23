@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0" xmlns:dlna="urn:schemas-dlna-org:device-1-0">
+  <specVersion><major>1</major><minor>0</minor></specVersion>
+  <URLBase>http://192.168.1.40:49152/</URLBase>
+  <device>
+    <deviceType>urn:schemas-upnp-org:device:MediaRenderer:1</deviceType>
+    <friendlyName>Living Room &amp; Den Screen</friendlyName>
+    <manufacturer>Example Devices</manufacturer>
+    <modelName>Screen 55</modelName>
+    <UDN>uuid:5f9ec1b3-ed59-4f2e-9b7c-0a1b2c3d4e5f</UDN>
+    <dlna:X_DLNADOC>DMR-1.50</dlna:X_DLNADOC>
+    <serviceList>
+      <service>
+        <serviceType>urn:schemas-upnp-org:service:RenderingControl:1</serviceType>
+        <serviceId>urn:upnp-org:serviceId:RenderingControl</serviceId>
+        <SCPDURL>/upnp/RenderingControl.xml</SCPDURL>
+        <controlURL>/upnp/control/RenderingControl1</controlURL>
+        <eventSubURL>/upnp/event/RenderingControl1</eventSubURL>
+      </service>
+      <service>
+        <serviceType>urn:schemas-upnp-org:service:ConnectionManager:1</serviceType>
+        <serviceId>urn:upnp-org:serviceId:ConnectionManager</serviceId>
+        <SCPDURL>/upnp/ConnectionManager.xml</SCPDURL>
+        <controlURL>/upnp/control/ConnectionManager1</controlURL>
+        <eventSubURL>/upnp/event/ConnectionManager1</eventSubURL>
+      </service>
+      <service>
+        <serviceType>urn:schemas-upnp-org:service:AVTransport:1</serviceType>
+        <serviceId>urn:upnp-org:serviceId:AVTransport</serviceId>
+        <SCPDURL>/upnp/AVTransport.xml</SCPDURL>
+        <controlURL>upnp/control/AVTransport1</controlURL>
+        <eventSubURL>/upnp/event/AVTransport1</eventSubURL>
+      </service>
+    </serviceList>
+  </device>
+</root>

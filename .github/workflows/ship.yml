@@ -1,0 +1,133 @@
+# Ship an app when its owner approves.
+#
+# How approval works: a build run (or Claude) opens a pull request that changes apps/<app>/RELEASE.json
+# (and the code). Merging that pull request in the GitHub app IS the approval: this workflow then
+#   mode "build"  -> builds the iOS app on Expo (EAS) and uploads it to App Store Connect / TestFlight
+#   mode "update" -> publishes an over-the-air update to phones already running that app version
+# Nothing ships without a merge to main. Secrets are set once by the owner (docs/SHIPPING.md).
+name: ship
+
+on:
+  push:
+    branches: [main]
+    paths: ['apps/*/RELEASE.json']
+  workflow_dispatch:
+    inputs:
+      app:
+        description: 'App folder (linework, glaze, couch)'
+        required: true
+        type: string
+
+concurrency:
+  group: ship-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.pick.outputs.apps }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - id: pick
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "apps=[\"${{ inputs.app }}\"]" >> "$GITHUB_OUTPUT"
+          else
+            echo "apps=$(scripts/changed-apps.sh)" >> "$GITHUB_OUTPUT"
+          fi
+
+  ship:
+    needs: detect
+    if: needs.detect.outputs.apps != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJson(needs.detect.outputs.apps) }}
+    defaults:
+      run:
+        working-directory: apps/${{ matrix.app }}
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check the owner's one-time setup
+        run: |
+          missing=""
+          for s in EXPO_TOKEN ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8 APPLE_TEAM_ID; do
+            [ -n "${!s}" ] || missing="$missing $s"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Missing GitHub secrets:$missing (see docs/SHIPPING.md)"; exit 1
+          fi
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Read RELEASE.json
+        id: rel
+        run: |
+          echo "mode=$(jq -r '.mode // "build"' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          echo "note=$(jq -r '.note // "Owner-approved release"' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          echo "ascAppId=$(jq -r '.ascAppId // empty' RELEASE.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Install packages
+        run: npm install --no-audit --no-fund
+
+      - name: Link the Expo project (first time only)
+        run: |
+          if [ "$(jq -r '.expo.extra.eas.projectId // empty' app.json)" = "" ]; then
+            eas init --non-interactive --force
+            eas update:configure --non-interactive || true
+          fi
+
+      - name: App Store Connect key for signing and upload
+        if: steps.rel.outputs.mode == 'build'
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          ASC_APP_ID: ${{ steps.rel.outputs.ascAppId }}
+        run: |
+          printf '%s\n' "$ASC_KEY_P8" > "$RUNNER_TEMP/asc.p8"
+          {
+            echo "EXPO_ASC_API_KEY_PATH=$RUNNER_TEMP/asc.p8"
+            echo "EXPO_ASC_KEY_ID=$ASC_KEY_ID"
+            echo "EXPO_ASC_ISSUER_ID=$ASC_ISSUER_ID"
+          } >> "$GITHUB_ENV"
+          # Submit profile for this run only (never committed): upload with the API key, no Apple password.
+          jq --arg p "$RUNNER_TEMP/asc.p8" --arg k "$ASC_KEY_ID" --arg i "$ASC_ISSUER_ID" --arg a "$ASC_APP_ID" '
+            .submit.production.ios = ({ascApiKeyPath: $p, ascApiKeyId: $k, ascApiKeyIssuerId: $i}
+              + (if $a == "" then {} else {ascAppId: $a} end))' eas.json > eas.tmp.json
+          mv eas.tmp.json eas.json
+
+      - name: Build and upload to TestFlight
+        if: steps.rel.outputs.mode == 'build'
+        env:
+          EXPO_APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: eas build --platform ios --profile production --non-interactive --auto-submit --no-wait --message "${{ steps.rel.outputs.note }}"
+
+      - name: Publish an over-the-air update
+        if: steps.rel.outputs.mode == 'update'
+        run: eas update --channel production --non-interactive --message "${{ steps.rel.outputs.note }}"
+
+      - name: Summary
+        run: |
+          echo "### ${{ matrix.app }}: ${{ steps.rel.outputs.mode }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "${{ steps.rel.outputs.note }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Build progress and TestFlight upload: https://expo.dev (Builds / Submissions)." >> "$GITHUB_STEP_SUMMARY"

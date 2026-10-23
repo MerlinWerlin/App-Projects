@@ -1,0 +1,55 @@
+// `plus` namespace, es. MACHINE TRANSLATION awaiting native-speaker review (docs/I18N.md).
+import type { LocaleMessages } from '../../catalogue.ts';
+
+export const es: NonNullable<LocaleMessages['plus']> = {
+  lock: {
+    subjectIntro: '{subject} forma parte de Glaze Plus.',
+    price: 'Pago único de {price}. Sin suscripción, nunca.',
+    included: 'Qué incluye',
+    widgets: 'Estilos de widget extra',
+    symbols: 'Conjuntos de símbolos seleccionados',
+    loops: 'Listas de Live Lock y bucles de tema',
+    free: 'Siempre gratis',
+    freeIcons: 'Iconos propios, sin límite',
+    freeInstall: 'Instalación por perfil y por Atajos',
+    freeLive: 'Pantalla bloqueada animada con tu propio vídeo',
+    notNow: 'Ahora no',
+    oneMoment: 'Un momento…',
+    unlock: 'Desbloquear (próximamente)',
+    unlockHint: 'Glaze Plus aún no está a la venta',
+    unavailable: 'Glaze Plus llegará con la versión de la tienda.',
+    close: "Cerrar",
+    restore: "Restaurar compras",
+    restoreHint: "Busca una compra anterior de Glaze Plus y la vuelve a desbloquear",
+    restored: "Glaze Plus restaurado. ¡Gracias!",
+    restoreNone: "No se encontró ninguna compra anterior de Glaze Plus.",
+    restoreFailed: "No se pudo restaurar ahora. Inténtalo más tarde.",
+    themes: {
+      one: '{count} tema más en {packs} paquetes',
+      many: '{count} de temas más en {packs} paquetes',
+      other: '{count} temas más en {packs} paquetes',
+    },
+    freeThemes: {
+      one: '{count} tema ilustrado inicial y el creador de fondos',
+      many: '{count} de temas ilustrados iniciales y el creador de fondos',
+      other: '{count} temas ilustrados iniciales y el creador de fondos',
+    },
+  },
+  tipJar: {
+    title: 'Bote de propinas',
+    body: '¿Te gusta Glaze? Deja una propina opcional. No desbloquea nada; solo es un gracias.',
+    small: 'Propina pequeña',
+    kind: 'Propina amable',
+    generous: 'Propina generosa',
+    soon: 'Llegará con la versión de la tienda.',
+    a11y: 'Bote de propinas. Propinas opcionales para apoyar Glaze. No desbloquea nada. Llegará con la versión de la tienda.',
+  },
+  packErrors: {
+    network: 'No se pudo acceder al paquete. Revisa tu conexión e inténtalo de nuevo.',
+    integrity: 'La descarga estaba dañada y se descartó. Inténtalo de nuevo.',
+    appVersion: 'Este paquete necesita una versión más reciente de Glaze.',
+    cancelled: 'Descarga cancelada.',
+    disabled: 'Los paquetes de temas llegarán con la versión de la tienda',
+    generic: 'Algo salió mal con este paquete. Inténtalo de nuevo.',
+  },
+};

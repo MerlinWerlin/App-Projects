@@ -1,0 +1,22 @@
+{
+  "//": "Cloud strict-tsc approximation for the UI (D74-3, T52). Third-party types come from hand-written stubs in scripts/tsc-stubs; see scripts/README.md. Not a substitute for the PC tsc-report (TSC_REPORT.cmd).",
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "target": "esnext",
+    "lib": ["dom", "esnext"],
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "noUncheckedIndexedAccess": false,
+    "skipLibCheck": false,
+    "types": [],
+    "noErrorTruncation": true
+  },
+  "include": ["tsc-stubs/**/*.d.ts", "../app/**/*.ts", "../app/**/*.tsx", "../src/**/*.ts", "../src/**/*.tsx"],
+  "exclude": ["../**/*.test.ts", "../**/*.test.tsx", "../targets", "../native-plugins", "../modules", "../node_modules"]
+}

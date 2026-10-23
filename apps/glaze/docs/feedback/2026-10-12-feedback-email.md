@@ -1,0 +1,7 @@
+# Owner requirement: in-app feedback that emails the owner — 12 Oct 2026 (verbatim)
+
+Received with the owner review (docs/feedback/2026-10-12-owner-review.md). Ships in the next trial.
+
+---
+
+Add a "Send feedback" section (Settings row + a small entry on the Themes tab, and a "Report a problem" link in error states). It composes an email to jared.bradley272@gmail.com whose subject ALWAYS starts with "Glaze feedback" followed by the type, e.g. "Glaze feedback – Bug – v1.0.0 (build N)". Types: Bug, Idea, Theme request, Icon request (app name), Other. Body template: the user's message, then a short machine-readable block (app version, iOS/OS version, device model, active theme id, icon shape, Expo Go or standalone) so feedback can be triaged automatically. Optional screenshot attachment picked from Photos. Implementation: expo-mail-composer (works in Expo Go; no server, no account, no cost). If MailComposer.isAvailableAsync() is false (no Mail account), show the address as selectable text with Copy address and Copy message buttons, and offer a mailto: link as a best effort. Keep the address in one constant (src/config/feedback.ts) so it can switch to a dedicated support address before store release. The app itself still collects no data (the user sends the email from their own Mail app), so the privacy label stays "Data Not Collected"; say this on the screen. Test the subject/body builder in src/core with node --test.

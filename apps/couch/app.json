@@ -1,0 +1,55 @@
+{
+  "expo": {
+    "name": "Couch",
+    "slug": "couch-remote",
+    "scheme": "couch",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jared797.couch",
+      "infoPlist": {
+        "NSLocalNetworkUsageDescription": "Couch finds and controls TVs and streaming players on your Wi-Fi. Nothing leaves your home network.",
+        "NSBonjourServices": [
+          "_androidtvremote2._tcp",
+          "_amzn-wplay._tcp",
+          "_viziocast._tcp"
+        ],
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true
+        },
+        "CFBundleAllowMixedLocalizations": true
+      },
+      "config": {
+        "usesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.jared797.couch"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-localization",
+      "./plugins/withLanAccess",
+      "expo-splash-screen",
+      "expo-status-bar"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    },
+    "extra": {
+      "supportsRTL": true
+    },
+    "owner": "jared797"
+  }
+}

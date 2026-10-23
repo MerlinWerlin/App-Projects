@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+LOCATION: http://203.0.113.7:8080/description.xml
+ST: urn:schemas-upnp-org:device:MediaRenderer:1
+USN: uuid:11111111-2222-3333-4444-555555555555::urn:schemas-upnp-org:device:MediaRenderer:1
+

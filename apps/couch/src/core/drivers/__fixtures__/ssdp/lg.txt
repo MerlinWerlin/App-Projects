@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+CACHE-CONTROL: max-age=1800
+DATE: Mon, 12 Oct 2026 18:04:12 GMT
+EXT:
+LOCATION: http://192.168.1.77:1956/
+SERVER: WebOS/4.1.0 UPnP/1.0
+ST: urn:lge-com:service:webos-second-screen:1
+USN: uuid:7d3a1c22-41f0-4b8e-a2d1-0c9e6b5f4a11::urn:lge-com:service:webos-second-screen:1
+DLNADeviceName.lge.com: %5BLG%5D%20webOS%20TV%20OLED55C1
+

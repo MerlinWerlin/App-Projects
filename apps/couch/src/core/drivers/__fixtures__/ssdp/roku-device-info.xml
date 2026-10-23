@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<device-info>
+	<udn>29380007-0800-1025-80a4-d83154332d7e</udn>
+	<serial-number>X01900ABCDEF</serial-number>
+	<device-id>S00000000001</device-id>
+	<vendor-name>Roku</vendor-name>
+	<model-name>Roku Ultra</model-name>
+	<model-number>4800X</model-number>
+	<model-region>US</model-region>
+	<is-tv>false</is-tv>
+	<is-stick>false</is-stick>
+	<supports-ethernet>true</supports-ethernet>
+	<wifi-mac>d8:31:34:33:2d:7e</wifi-mac>
+	<network-type>wifi</network-type>
+	<user-device-name>Living Room</user-device-name>
+	<friendly-device-name>Living Room</friendly-device-name>
+	<friendly-model-name>Roku Ultra</friendly-model-name>
+	<default-device-name>Roku Ultra - X01900ABCDEF</default-device-name>
+	<software-version>12.5.0</software-version>
+	<power-mode>PowerOn</power-mode>
+	<developer-enabled>false</developer-enabled>
+	<supports-find-remote>true</supports-find-remote>
+</device-info>

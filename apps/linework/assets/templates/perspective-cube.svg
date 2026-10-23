@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Cube in perspective</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 110 170 L 250 170 L 250 310 L 110 310 Z"/>
+    <path d="M 180 100 L 310 100 L 310 230 L 180 230 Z"/>
+    <path d="M 110 170 L 180 100 M 250 170 L 310 100 M 250 310 L 310 230 M 110 310 L 180 230"/>
+    <path d="M 70 340 L 330 340"/>
+  </g>
+</svg>

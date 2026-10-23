@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Nose study, front view</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 176 60 C 174 120 160 180 140 230 C 126 262 124 286 150 296"/>
+    <path d="M 224 60 C 226 120 240 180 260 230 C 274 262 276 286 250 296"/>
+    <path d="M 150 296 C 158 316 180 318 186 302 Q 200 320 214 302 C 220 318 242 316 250 296"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 170 300 C 176 292 184 292 186 302"/>
+    <path d="M 230 300 C 224 292 216 292 214 302"/>
+    <path d="M 186 250 Q 200 236 214 250"/>
+    <path d="M 120 250 C 112 270 116 296 134 312"/>
+    <path d="M 280 250 C 288 270 284 296 266 312"/>
+  </g>
+</svg>

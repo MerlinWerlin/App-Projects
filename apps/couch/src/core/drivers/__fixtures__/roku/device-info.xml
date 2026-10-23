@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<device-info>
+	<udn>29380007-0800-1025-80a4-d83154332d7e</udn>
+	<serial-number>X01900AAAAAA</serial-number>
+	<device-id>S0A1234AAAAA</device-id>
+	<advertising-id>00000000-0000-0000-0000-000000000000</advertising-id>
+	<vendor-name>TCL</vendor-name>
+	<model-name>TCL &#8226; Roku TV</model-name>
+	<model-number>7105X</model-number>
+	<model-region>US</model-region>
+	<is-tv>true</is-tv>
+	<is-stick>false</is-stick>
+	<screen-size>55</screen-size>
+	<panel-id>2</panel-id>
+	<mobile-has-live-tv>true</mobile-has-live-tv>
+	<ui-resolution>1080p</ui-resolution>
+	<tuner-type>ATSC</tuner-type>
+	<supports-ethernet>true</supports-ethernet>
+	<wifi-mac>d8:31:34:33:2d:7e</wifi-mac>
+	<wifi-driver>realtek</wifi-driver>
+	<has-wifi-extender>false</has-wifi-extender>
+	<has-wifi-5G-support>true</has-wifi-5G-support>
+	<can-use-wifi-extender>true</can-use-wifi-extender>
+	<ethernet-mac>d8:31:34:33:2d:7f</ethernet-mac>
+	<network-type>wifi</network-type>
+	<network-name>HomeNet</network-name>
+	<friendly-device-name>Living Room &amp; Kitchen TV</friendly-device-name>
+	<friendly-model-name>TCL&#8226;Roku TV</friendly-model-name>
+	<default-device-name>TCL&#8226;Roku TV - X01900AAAAAA</default-device-name>
+	<user-device-name>Living Room &amp; Kitchen TV</user-device-name>
+	<user-device-location>Living room</user-device-location>
+	<build-number>DCA.00E04209A</build-number>
+	<software-version>14.1.4</software-version>
+	<software-build>4209</software-build>
+	<secure-device>true</secure-device>
+	<language>en</language>
+	<country>US</country>
+	<locale>en_US</locale>
+	<time-zone-auto>true</time-zone-auto>
+	<time-zone>US/Pacific</time-zone>
+	<time-zone-name>United States/Pacific</time-zone-name>
+	<time-zone-tz>America/Los_Angeles</time-zone-tz>
+	<time-zone-offset>-420</time-zone-offset>
+	<clock-format>12-hour</clock-format>
+	<uptime>348231</uptime>
+	<power-mode>PowerOn</power-mode>
+	<supports-suspend>true</supports-suspend>
+	<supports-find-remote>true</supports-find-remote>
+	<find-remote-is-possible>false</find-remote-is-possible>
+	<supports-audio-guide>true</supports-audio-guide>
+	<supports-rva>true</supports-rva>
+	<has-hands-free-voice-remote>false</has-hands-free-voice-remote>
+	<developer-enabled>false</developer-enabled>
+	<keyed-developer-id/>
+	<search-enabled>true</search-enabled>
+	<search-channels-enabled>true</search-channels-enabled>
+	<voice-search-enabled>true</voice-search-enabled>
+	<notifications-enabled>true</notifications-enabled>
+	<notifications-first-use>false</notifications-first-use>
+	<supports-private-listening>true</supports-private-listening>
+	<supports-private-listening-dtv>true</supports-private-listening-dtv>
+	<supports-warm-standby>true</supports-warm-standby>
+	<headphones-connected>false</headphones-connected>
+	<supports-audio-settings>false</supports-audio-settings>
+	<expert-pq-enabled>1.0</expert-pq-enabled>
+	<supports-ecs-textedit>true</supports-ecs-textedit>
+	<supports-ecs-microphone>true</supports-ecs-microphone>
+	<supports-wake-on-wlan>true</supports-wake-on-wlan>
+	<supports-airplay>true</supports-airplay>
+	<has-play-on-roku>true</has-play-on-roku>
+	<has-mobile-screensaver>true</has-mobile-screensaver>
+	<support-url>roku.com/support</support-url>
+	<grandcentral-version>11.4.1</grandcentral-version>
+	<supports-trc>true</supports-trc>
+	<trc-version>3.0</trc-version>
+	<trc-channel-version>9.3.10</trc-channel-version>
+	<davinci-version>2.8.20</davinci-version>
+	<av-sync-calibration-enabled>3.0</av-sync-calibration-enabled>
+</device-info>

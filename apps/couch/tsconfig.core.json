@@ -1,0 +1,60 @@
+{
+  "//": "Standalone check for the pure-TS core (no Expo/RN types needed): tsc -p tsconfig.core.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": []
+  },
+  "include": [
+    "src/core/**/*.ts",
+    "src/theme/tokens.ts",
+    "src/theme/design.ts",
+    "src/ui/v2/headerCollapse.ts",
+    "src/ui/v2/pillColors.ts",
+    "src/theme/motion.ts",
+    "src/theme/remoteThemes.ts",
+    "src/theme/themePicker.ts",
+    "src/ui/remote/press.ts",
+    "src/ui/remote/textureArt.ts",
+    "src/ui/fx/bus.ts",
+    "src/ui/sheetPhase.ts",
+    "src/native/storeReview.ts",
+    "src/native/mediaServer.ts",
+    "src/native/widgetBridge.ts",
+    "src/ui/widget/linkHandler.ts",
+    "src/ui/widget/snapshotSync.ts",
+    "src/ui/widget/nativeIntent.ts",
+    "src/ui/remote/simple.ts",
+    "src/ui/apps/emptyCopy.ts",
+    "src/ui/fx/hud.ts",
+    "src/ui/icons/names.ts",
+    "src/ui/icons/paths.ts",
+    "src/ui/apps/tileModel.ts",
+    "src/ui/icons/keyFaceColors.ts",
+    "src/ui/remote/repeat.ts",
+    "src/ui/fx/connection.ts",
+    "src/ui/toastQueue.ts",
+    "src/ui/fx/glow.ts",
+    "src/ui/fx/keyDir.ts",
+    "src/ui/motion/idle.ts",
+    "src/i18n/core.ts",
+    "src/i18n/locales.ts",
+    "src/i18n/catalog/**/*.ts",
+    "src/theme/typography.ts",
+    "src/i18n/direction.ts",
+    "src/i18n/scan.ts"
+  ],
+  "exclude": [
+    "**/*.test.ts",
+    "**/__tests__/**"
+  ]
+}

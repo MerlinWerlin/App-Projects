@@ -1,0 +1,37 @@
+{
+  "_note": "Reconstructed, NOT captured from hardware. UNVERIFIED shape of the ed.apps.icon reply. imageBase64 is a 1x1 house-blue PNG made for the test, not a real app icon.",
+  "icon": {
+    "data": {
+      "iconPath": "/opt/share/webappservice/apps_icon/FirstScreen/111299001912/250x250.png",
+      "imageBase64": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGPI6/nwHwAGQALqgCqx2gAAAABJRU5ErkJggg=="
+    },
+    "event": "ed.apps.icon",
+    "from": "host"
+  },
+  "iconWrapped": {
+    "data": {
+      "data": {
+        "iconPath": "/opt/share/webappservice/apps_icon/FirstScreen/111299001912/250x250.png",
+        "imageBase64": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAf\nFcSJAAAADUlEQVR4nGPI6/nwHwAGQALqgCqx2gAAAABJRU5ErkJggg=="
+      }
+    },
+    "event": "ed.apps.icon",
+    "from": "host"
+  },
+  "iconEmpty": {
+    "data": {
+      "iconPath": "/opt/share/webappservice/apps_icon/FirstScreen/111299001912/250x250.png",
+      "imageBase64": ""
+    },
+    "event": "ed.apps.icon",
+    "from": "host"
+  },
+  "iconOtherPath": {
+    "data": {
+      "iconPath": "/opt/share/webappservice/apps_icon/FirstScreen/3201907018807/250x250.png",
+      "imageBase64": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGPI6/nwHwAGQALqgCqx2gAAAABJRU5ErkJggg=="
+    },
+    "event": "ed.apps.icon",
+    "from": "host"
+  }
+}

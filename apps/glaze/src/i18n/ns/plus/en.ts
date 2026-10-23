@@ -1,0 +1,52 @@
+// English strings for the `plus` namespace (merged into src/i18n/locales/en.ts).
+// Add keys here first, then the same paths to every sibling locale file (docs/I18N.md).
+export const en = {
+  lock: {
+    subjectIntro: '{subject} is part of Glaze Plus.',
+    price: 'One-time {price}. No subscription, ever.',
+    included: 'What’s included',
+    widgets: 'Extra widget styles',
+    symbols: 'Curated symbol sets',
+    loops: 'Live Lock playlists and theme loops',
+    free: 'Always free',
+    freeIcons: 'Make-your-own icons, unlimited',
+    freeInstall: 'Bulk profile and Shortcuts install',
+    freeLive: 'Live Lock Screen with your own video',
+    notNow: 'Not now',
+    oneMoment: 'One moment…',
+    unlock: 'Unlock (coming soon)',
+    unlockHint: 'Glaze Plus is not on sale yet',
+    unavailable: 'Glaze Plus arrives with the store release.',
+    close: "Close",
+    restore: "Restore purchases",
+    restoreHint: "Checks for an earlier Glaze Plus purchase and unlocks it again",
+    restored: "Glaze Plus restored. Thank you!",
+    restoreNone: "No earlier Glaze Plus purchase was found.",
+    restoreFailed: "Couldn’t restore right now. Try again later.",
+    themes: {
+      one: '{count} more theme in {packs} packs',
+      other: '{count} more themes in {packs} packs',
+    },
+    freeThemes: {
+      one: '{count} illustrated starter theme and the wallpaper maker',
+      other: '{count} illustrated starter themes and the wallpaper maker',
+    },
+  },
+  tipJar: {
+    title: 'Tip jar',
+    body: 'Enjoying Glaze? Leave an optional tip. It unlocks nothing; it just says thanks.',
+    small: 'Small tip',
+    kind: 'Kind tip',
+    generous: 'Generous tip',
+    soon: 'Coming with the store release.',
+    a11y: 'Tip jar. Optional tips to support Glaze. Unlocks nothing. Coming with the store release.',
+  },
+  packErrors: {
+    network: 'Couldn’t reach the pack. Check your connection and try again.',
+    integrity: 'The download was damaged, so it was discarded. Try again.',
+    appVersion: 'This pack needs a newer version of Glaze.',
+    cancelled: 'Download cancelled.',
+    disabled: 'Theme packs arrive with the store release',
+    generic: 'Something went wrong with this pack. Try again.',
+  },
+} as const;

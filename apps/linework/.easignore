@@ -1,0 +1,16 @@
+*.log
+*.txt
+.DS_Store
+.claude/
+.env*
+.expo/
+.trial-status
+android/
+coverage/
+dist/
+index.html
+ios/
+node_modules/
+ops/
+trial-log.txt
+web-build/

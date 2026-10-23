@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+CACHE-CONTROL: max-age=1800
+EXT:
+LOCATION: http://192.168.1.1:5000/rootDesc.xml
+SERVER: OpenWRT/OpenWrt UPnP/1.1 MiniUPnPd/2.2.1
+ST: urn:schemas-upnp-org:device:InternetGatewayDevice:1
+USN: uuid:a1b2c3d4-0000-0000-0000-000000000001::urn:schemas-upnp-org:device:InternetGatewayDevice:1
+

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Lips study</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 84 194 C 136.2 147.5 171 145.5 200 171.1 C 229 145.5 263.8 147.5 316 194 C 263.8 297.5 136.2 297.5 84 194 Z"/>
+    <path d="M 84 194 C 153.6 204.4 246.4 204.4 316 194"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 200 200 L 200 186"/>
+    <path d="M 168 152 Q 200 140 232 152"/>
+    <path d="M 200 236 C 196 246 196 256 200 262"/>
+    <path d="M 74 214 Q 80 220 74 228"/>
+    <path d="M 326 214 Q 320 220 326 228"/>
+  </g>
+</svg>

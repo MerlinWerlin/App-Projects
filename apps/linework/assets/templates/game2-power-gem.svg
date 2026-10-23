@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Power-up gem</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 110 160 L 158 104 L 242 104 L 290 160 L 200 316 Z"/>
+    <path d="M 110 160 L 290 160"/>
+    <path d="M 158 104 L 176 160 L 200 104 L 224 160 L 242 104"/>
+    <path d="M 176 160 L 200 316 L 224 160"/>
+    <path d="M 130 160 L 200 316 M 270 160 L 200 316"/>
+    <path d="M 300 72 Q 304.4 87.6 320 92 Q 304.4 96.4 300 112 Q 295.6 96.4 280 92 Q 295.6 87.6 300 72 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 70.1 121 L 47.6 108 M 125 66.1 L 112 43.6 M 275 66.1 L 288 43.6 M 329.9 121 L 352.4 108 M 347.7 222 L 373.3 226.6 M 52.3 222 L 26.7 226.6"/>
+    <path d="M 150 132 L 162 118"/>
+    <path d="M 96 288 Q 98.6 297.4 108 300 Q 98.6 302.6 96 312 Q 93.4 302.6 84 300 Q 93.4 297.4 96 288 Z"/>
+    <path d="M 316 281 Q 318 288 325 290 Q 318 292 316 299 Q 314 292 307 290 Q 314 288 316 281 Z"/>
+    <path d="M 140 356 L 260 356"/>
+  </g>
+</svg>

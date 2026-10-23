@@ -1,0 +1,45 @@
+{
+  "connect": {
+    "data": {
+      "clients": [
+        {
+          "attributes": { "name": "Q291Y2ggUmVtb3Rl", "token": "12345678" },
+          "connectTime": 1760262000123,
+          "deviceName": "Q291Y2ggUmVtb3Rl",
+          "id": "3a5b7c1e-2d4f-4e6a-8b9c-0d1e2f3a4b5c",
+          "isHost": false
+        }
+      ],
+      "id": "3a5b7c1e-2d4f-4e6a-8b9c-0d1e2f3a4b5c",
+      "token": "12345678"
+    },
+    "event": "ms.channel.connect"
+  },
+  "connectNoToken": {
+    "data": {
+      "clients": [],
+      "id": "9f8e7d6c-5b4a-4321-8765-0fedcba98765"
+    },
+    "event": "ms.channel.connect"
+  },
+  "unauthorized": { "event": "ms.channel.unauthorized" },
+  "promptTimeout": { "event": "ms.channel.timeOut" },
+  "clientConnect": {
+    "data": { "attributes": { "name": "T3RoZXI=" }, "connectTime": 1760262001000, "deviceName": "T3RoZXI=", "id": "c0ffee00-0000-4000-8000-000000000001", "isHost": false },
+    "event": "ms.channel.clientConnect"
+  },
+  "imeStart": { "data": "", "event": "ms.remote.imeStart" },
+  "imeEnd": { "data": "", "event": "ms.remote.imeEnd" },
+  "installedApps": {
+    "data": {
+      "data": [
+        { "appId": "3201907018807", "app_type": 2, "icon": "/opt/share/webappservice/apps_icon/FirstScreen/3201907018807/250x250.png", "is_lock": 0, "name": "Netflix" },
+        { "appId": "111299001912", "app_type": 2, "icon": "/opt/share/webappservice/apps_icon/FirstScreen/111299001912/250x250.png", "is_lock": 0, "name": "YouTube" },
+        { "appId": "org.tizen.browser", "app_type": 4, "icon": "", "is_lock": 0, "name": "Internet " },
+        { "app_type": 2, "name": "Broken entry without appId" }
+      ]
+    },
+    "event": "ed.installedApp.get",
+    "from": "host"
+  }
+}

@@ -1,0 +1,12 @@
+// Barrel for the `ui` namespace.
+export { en } from './en.ts';
+export { es } from './es.ts';
+export { fr } from './fr.ts';
+export { de } from './de.ts';
+export { it } from './it.ts';
+export { ptBR } from './pt-BR.ts';
+export { ja } from './ja.ts';
+export { ko } from './ko.ts';
+export { zhHans } from './zh-Hans.ts';
+export { hi } from './hi.ts';
+export { ar } from './ar.ts';

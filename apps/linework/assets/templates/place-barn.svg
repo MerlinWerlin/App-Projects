@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Farm barn and silo</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 110 330 L 110 230 L 126 180 L 180 148 L 234 180 L 250 230 L 250 330 Z"/>
+    <path d="M 148 262 L 212 262 L 212 330 L 148 330 Z"/>
+    <path d="M 166 188 L 194 188 L 194 216 L 166 216 Z"/>
+    <path d="M 181.4 148.8 L 180 148 L 276 136 L 330 166 L 234 180 L 232.3 179 M 231.3 178.4 L 223.5 173.8 M 221.9 172.8 L 214.1 168.2 M 213.3 167.7 L 201 160.5 M 200.4 160.1 L 191.8 155 M 190.8 154.4 L 183 149.8"/>
+    <path d="M 308.3 169.2 L 330 166 L 346 214 L 250 230 L 234 180 L 242.9 178.7 M 244.8 178.4 L 254.8 177 M 257.2 176.6 L 306.5 169.4"/>
+    <path d="M 250 330 L 346 312 L 346 214 L 250 230 Z"/>
+    <path d="M 282 252 L 306 252 L 306 274 L 282 274 Z"/>
+    <path d="M 44 330 L 44 180 C 44 140 98 140 98 180 L 98 330 Z"/>
+    <path d="M 24 336 L 376 336"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 180 262 L 180 330"/>
+    <path d="M 148 262 L 180 330"/>
+    <path d="M 180 262 L 148 330"/>
+    <path d="M 180 262 L 212 330"/>
+    <path d="M 212 262 L 180 330"/>
+    <path d="M 166 202 L 194 202"/>
+    <path d="M 220.5 172 L 316.5 158.5"/>
+    <path d="M 207 164 L 303 151"/>
+    <path d="M 193.5 156 L 289.5 143.5"/>
+    <path d="M 246 217.5 L 342 202"/>
+    <path d="M 242 205 L 338 190"/>
+    <path d="M 238 192.5 L 334 178"/>
+    <path d="M 298 320 L 298 222"/>
+    <path d="M 44 200 L 98 200"/>
+    <path d="M 44 250 L 98 250"/>
+    <path d="M 44 300 L 98 300"/>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+{
+  "//": "Hand-computed frames (varint length prefix + protobuf message), hex. Reconstructed from public protocol knowledge, NOT captured from hardware. See README.md.",
+  "pairing_server": {
+    "requestAck": "17 080210c801 5a10 0a0e 4c6976696e6720526f6f6d205456",
+    "options": "10 080210c801 a20108 0a0408031006 1801",
+    "configurationAck": "08 080210c801 fa0100",
+    "secretAck": "0e 080210c801 ca0206 0a04deadbeef",
+    "badSecret": "05 0802 109203",
+    "badConfiguration": "05 0802 109103"
+  },
+  "pairing_client": {
+    "request": "20 080210c801 5219 0a09 61747672656d6f7465 120c 436f7563682052656d6f7465",
+    "options": "10 080210c801 a20108 0a0408031006 1801",
+    "configuration": "10 080210c801 f20108 0a0408031006 1001",
+    "secretPrefix": "2a 080210c801 c20222 0a20"
+  },
+  "remote_server": {
+    "configure": "18 0a16 08ee04 1211 0a06 546573745456 1207 4578616d706c65",
+    "setActive": "02 1200",
+    "startOn": "05 c202 02 0801",
+    "startOff": "03 c202 00",
+    "ping": "06 4204 0807 1009",
+    "error": "04 1a02 0801",
+    "imeKeyInject": "06 a201 03 0a01 41"
+  },
+  "remote_client": {
+    "configure": "3c 0a3a 08ee04 1235 0a0c 436f7563682052656d6f7465 1205 436f756368 1801 220131 2a12 636f6d2e6a61726564373937 2e636f756368 3205 302e312e30",
+    "setActive": "05 1203 08ee04",
+    "pong": "04 4a02 0807",
+    "keyUpShort": "06 5204 0813 1003",
+    "powerShort": "06 5204 081a 1003",
+    "okStartLong": "06 5204 0817 1001",
+    "okEndLong": "06 5204 0817 1002"
+  }
+}

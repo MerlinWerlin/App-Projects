@@ -1,0 +1,43 @@
+// English catalogue: Settings screen. Keys are prefixed 'settings.'.
+export const settings = {
+  'settings.language.title': 'Language',
+  'settings.language.system': 'Phone language ({name})',
+  'settings.language.hint': 'Linework follows your phone’s language unless you pick one here.',
+  'settings.language.restartTitle': 'Restart to switch direction',
+  'settings.language.restartBody': 'Linework will restart so the layout can switch between left-to-right and right-to-left.',
+  'settings.language.restartNow': 'Restart now',
+  'settings.language.restartManual': 'Close and reopen Linework to finish switching the layout direction.',
+  'settings.language.machineNote': 'Translations other than English are machine translations awaiting review by native speakers.',
+  'settings.language.systemHint': 'Follow the language set on this phone',
+
+  'settings.tracing.title': 'Tracing',
+  'settings.tracing.startingOpacity': 'Starting opacity',
+  'settings.tracing.startingOpacityHint': 'How see-through the image starts on the trace screen',
+  'settings.tracing.gridAtStart': 'Grid at start',
+  'settings.tracing.gridOption': 'Grid {name}',
+  'settings.tracing.grid.off': 'Off',
+  'settings.tracing.grid.3x3': '3×3',
+  'settings.tracing.grid.4x4': '4×4',
+  'settings.tracing.outlineStyle': 'Outline style at start',
+  'settings.tracing.outlineStyleHint': 'The style each new outline starts with',
+  'settings.tracing.outlineStyleOption': 'Outline style {name}',
+  'settings.tracing.keepAwake': 'Keep screen awake while tracing',
+  'settings.tracing.haptics': 'Haptics',
+  'settings.look.title': 'Look & feel',
+  'settings.look.footer': 'Linework follows your phone’s light or dark appearance.',
+  'settings.focusLock.label': 'Keep focus while locked',
+  'settings.focusLock.hint': 'Stops the camera refocusing when your hand moves into view',
+  'settings.guide.row': 'Show the setup guide',
+  'settings.guide.hint': 'Four quick steps: standing your phone, picking a picture, locking it and tracing',
+
+  'settings.free.title': 'Free, for good',
+  'settings.free.body': 'Every tracing tool in Linework is free: camera tracing, opacity, lock, flashlight, grid, mirror, touch-lock, lightbox, outline mode and your own photos. No ads, no trial, no weekly subscription.',
+  'settings.free.plusLink': 'Linework Plus and tip jar',
+  'settings.free.plusHint': 'Optional one-time extras. Never gates a tracing tool.',
+
+  'settings.privacy.title': 'Privacy',
+  'settings.privacy.body': 'Data Not Collected. Linework has no accounts, no analytics and no ads. Your photos stay on this phone and are never uploaded; outlines are made on the device.',
+
+  'settings.about.title': 'About',
+  'settings.about.body': 'Linework {version}. Templates are original line art made for Linework.',
+} as const;

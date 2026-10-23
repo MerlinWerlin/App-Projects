@@ -1,0 +1,52 @@
+/* Glaze widget extension strings (T86), Simplified Chinese. Machine translation awaiting
+   native-speaker review (docs/I18N.md). Same keys as en.lproj. */
+
+"habit.name.water" = "喝水";
+"habit.name.sleep" = "睡眠";
+"habit.name.steps" = "步数";
+"habit.name.mood" = "心情";
+
+"habit.unit.ml" = "毫升";
+"habit.unit.hours" = "小时";
+"habit.unit.steps" = "步";
+
+"habit.desc.water" = "每喝一次轻点 +150 毫升。午夜归零。";
+"habit.desc.sleep" = "按小时记录睡眠。";
+"habit.desc.steps" = "以 500 步为单位手动记步。";
+"habit.desc.mood" = "选择今天的心情。";
+
+"habit.goalOf" = "目标 %1$@ %2$@";
+
+"habit.a11y.add" = "增加 %1$@ %2$@";
+"habit.a11y.remove" = "减少 %1$@ %2$@";
+"habit.a11y.moodDown" = "心情下调";
+"habit.a11y.moodUp" = "心情上调";
+"habit.a11y.mood1" = "记录心情：很糟";
+"habit.a11y.mood2" = "记录心情：低落";
+"habit.a11y.mood3" = "记录心情：还行";
+"habit.a11y.mood4" = "记录心情：不错";
+"habit.a11y.mood5" = "记录心情：超棒";
+
+"habit.mood.0" = "未记录";
+"habit.mood.1" = "很糟";
+"habit.mood.2" = "低落";
+"habit.mood.3" = "还行";
+"habit.mood.4" = "不错";
+"habit.mood.5" = "超棒";
+
+"Log a habit" = "记录习惯";
+"Log mood" = "记录心情";
+"Habit" = "习惯";
+"Direction" = "方向";
+"Level" = "等级";
+
+"Clock" = "时钟";
+"The time, in your Glaze theme." = "以你的 Glaze 主题显示时间。";
+"Date" = "日期";
+"Today's date, in your Glaze theme." = "以你的 Glaze 主题显示今天的日期。";
+"Time and date for your Lock Screen." = "锁定屏幕上的时间和日期。";
+"Photo" = "照片";
+"A photo you pick in Glaze." = "你在 Glaze 中选择的照片。";
+"Choose a photo in Glaze" = "在 Glaze 中选择一张照片";
+"Little Line" = "一句话";
+"A short, gentle line that changes every hour." = "每小时更换的一句简短温柔的话。";

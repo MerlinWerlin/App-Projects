@@ -1,0 +1,29 @@
+{
+ "date": "18 Oct 2026",
+ "note": "From docs/MARKET.md (12 iOS tracing / AR drawing apps, US + AU App Store, 2026 roundups). Competitor names stay in MARKET.md only. Store screenshots could not be viewed (pages expose blank placeholders). Prices in USD; AU runs about 1.5-2x.",
+ "columns": ["App (by US chart rank / ratings)", "Rating (count)", "Model", "Typical cost / year", "Lessons", "Cute/anime", "Photo to sketch", "Lock", "Grid"],
+ "rows": [
+  ["Leader A (#7, 94K ratings)", "4.5 (94K)", "ads + weekly subs", "$29-35 or $5-11/wk", "daily", "yes", "yes", "-", "-"],
+  ["Leader B (#16)", "4.7 (74K)", "ads + weekly/yearly", "$30-40", "3 levels + video", "yes", "yes", "-", "-"],
+  ["Leader C (#49)", "4.6 (59K)", "ad to enter + subs", "$7-25/wk", "yes", "yes", "yes (weak reviews)", "asked for", "-"],
+  ["Leader D (#106)", "4.7 (25K)", "Pro tiers, mostly free", "$5-50", "yes", "yes", "-", "-", "-"],
+  ["Veteran lessons app (#162)", "4.2 (9.8K)", "subs + upsells", "$30-80, lifetime $150", "550+", "yes", "yes", "-", "-"],
+  ["Projector app (#86)", "4.3 (6.7K)", "ads + subs", "$10-50", "yes", "asked for", "-", "screen lock", "-"],
+  ["Editor's Choice tracer", "4.3 (2.8K)", "paywall after 1 drawing", "$50-70", "yes", "-", "-", "anchor", "-"],
+  ["Artist tool (AU #29)", "4.4 AU (793)", "subs", "$10-40", "video", "-", "value layers", "card anchor", "-"],
+  ["Linework", "not released", "free, no ads", "$0 (optional one-time Plus $4.99)", "course queued (T68)", "20 new (T65)", "3 free styles", "lock + touch-lock + focus lock", "yes"]
+ ],
+ "takeaways": [
+  "Leaders win with cute/anime templates + lessons + own-photo tracing: we now have a Cute & chibi category; a beginner course is queued.",
+  "Paywalls are the #1 complaint in almost every app: 'every tool free, no ads, no subscription' is our headline.",
+  "Typical cost is US$30-40/yr (A$50-60), weekly plans up to US$9.99+/wk: a one-time US$4.99 Plus is about 85% cheaper.",
+  "Overlay drift / refocus is the #2 complaint: focus now stays put while the image is locked.",
+  "Grid, mirror and favourites are almost absent from listings: we have them, so show them in screenshots.",
+  "Time-lapse recording is common: ours never records the guide and has no watermark.",
+  "Users lose work: new free 'My drawings' gallery keeps snapshots on the phone.",
+  "Confusing first use and icon-only controls recur: new 4-step setup guide, captions everywhere.",
+  "Store pages lead with the outcome: our first 3 shots = drawing on paper, 'free, no ads', photo to sketch.",
+  "AU prices run 1.5-2x US in this category: A$7.99 one-time is a strong local message."
+ ],
+ "price": "Proposed (owner decides): all tracing free forever; optional Linework Plus one-time US$4.99 / A$7.99 for extra template packs and themes; tip jar."
+}
