@@ -115,6 +115,8 @@ export const de: Translation = {
   'templates.category.fantasy': 'Fantasy & Gothic',
   'templates.category.stilllife': 'Stillleben & Objekte',
   'templates.category.shapes': 'Einfache Formen',
+  'templates.category.trade': "Handwerk & Werkstatt",
+  'templates.tradeNote': "Winkel sind exakt. Längen sind auf dem Papier nicht maßstabsgetreu.",
   'templates.category.cute': 'Süß & Chibi',
   'templates.category.heroes': 'Helden',
   'templates.category.game': 'Spielwelt',

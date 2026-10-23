@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Radius arcs set</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 78 360 A 38 38 0 0 0 40 322"/>
+    <path d="M 116 360 A 76 76 0 0 0 40 284"/>
+    <path d="M 154 360 A 114 114 0 0 0 40 246"/>
+    <path d="M 192 360 A 152 152 0 0 0 40 208"/>
+    <path d="M 230 360 A 190 190 0 0 0 40 170"/>
+    <path d="M 268 360 A 228 228 0 0 0 40 132"/>
+    <path d="M 306 360 A 266 266 0 0 0 40 94"/>
+    <path d="M 344 360 A 304 304 0 0 0 40 56"/>
+    <path d="M 40 360 L 380 360"/>
+    <path d="M 40 360 L 40 20"/>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Circle divided into 3</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 200 A 160 160 0 1 0 360 200 A 160 160 0 1 0 40 200 Z"/>
+    <path d="M 195 200 A 5 5 0 1 0 205 200 A 5 5 0 1 0 195 200 Z"/>
+    <path d="M 200 192 L 200 40"/>
+    <path d="M 193.1 204 L 61.4 280"/>
+    <path d="M 206.9 204 L 338.6 280"/>
+    <path d="M 138.9 170.2 L 141.7 167.4 L 141.7 181.4"/>
+    <path d="M 138.9 181.4 L 144.5 181.4"/>
+    <path d="M 148 170.2 L 149.4 167.4 L 155 167.4 L 156.4 169.5 L 156.4 172.3 L 148 181.4 L 156.4 181.4"/>
+    <path d="M 160.6 167.4 L 166.2 167.4 L 167.6 168.8 L 167.6 180 L 166.2 181.4 L 160.6 181.4 L 159.2 180 L 159.2 168.8 L 160.6 167.4"/>
+    <path d="M 171.8 167.4 L 174.6 167.4 L 176 168.8 L 176 171.6 L 174.6 173 L 171.8 173 L 170.4 171.6 L 170.4 168.8 L 171.8 167.4"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 112 200 A 88 88 0 1 0 288 200 A 88 88 0 1 0 112 200 Z"/>
+  </g>
+</svg>

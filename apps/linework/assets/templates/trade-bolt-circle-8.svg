@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>8-hole bolt circle flange</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 30 200 A 170 170 0 1 0 370 200 A 170 170 0 1 0 30 200 Z"/>
+    <path d="M 130 200 A 70 70 0 1 0 270 200 A 70 70 0 1 0 130 200 Z"/>
+    <path d="M 108 200 A 92 92 0 1 0 292 200 A 92 92 0 1 0 108 200 Z"/>
+    <path d="M 189 72 A 11 11 0 1 0 211 72 A 11 11 0 1 0 189 72 Z"/>
+    <path d="M 98.5 109.5 A 11 11 0 1 0 120.5 109.5 A 11 11 0 1 0 98.5 109.5 Z"/>
+    <path d="M 61 200 A 11 11 0 1 0 83 200 A 11 11 0 1 0 61 200 Z"/>
+    <path d="M 98.5 290.5 A 11 11 0 1 0 120.5 290.5 A 11 11 0 1 0 98.5 290.5 Z"/>
+    <path d="M 189 328 A 11 11 0 1 0 211 328 A 11 11 0 1 0 189 328 Z"/>
+    <path d="M 279.5 290.5 A 11 11 0 1 0 301.5 290.5 A 11 11 0 1 0 279.5 290.5 Z"/>
+    <path d="M 317 200 A 11 11 0 1 0 339 200 A 11 11 0 1 0 317 200 Z"/>
+    <path d="M 279.5 109.5 A 11 11 0 1 0 301.5 109.5 A 11 11 0 1 0 279.5 109.5 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 72 200 A 128 128 0 1 0 328 200 A 128 128 0 1 0 72 200 Z"/>
+    <path d="M 200 140 L 200 36"/>
+    <path d="M 157.6 157.6 L 84 84"/>
+    <path d="M 140 200 L 36 200"/>
+    <path d="M 157.6 242.4 L 84 316"/>
+    <path d="M 200 260 L 200 364"/>
+    <path d="M 242.4 242.4 L 316 316"/>
+    <path d="M 260 200 L 364 200"/>
+    <path d="M 242.4 157.6 L 316 84"/>
+  </g>
+</svg>

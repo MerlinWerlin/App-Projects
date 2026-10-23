@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>30° angle guide</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 80 300 L 340 300"/>
+    <path d="M 80 300 L 305.2 170"/>
+    <path d="M 194.7 257.4 L 206.7 257.4 L 200.7 265.4 L 204.7 265.4 L 206.7 268.4 L 206.7 274.4 L 204.7 277.4 L 196.7 277.4 L 194.7 275.4"/>
+    <path d="M 212.7 257.4 L 220.7 257.4 L 222.7 259.4 L 222.7 275.4 L 220.7 277.4 L 212.7 277.4 L 210.7 275.4 L 210.7 259.4 L 212.7 257.4"/>
+    <path d="M 228.7 257.4 L 232.7 257.4 L 234.7 259.4 L 234.7 263.4 L 232.7 265.4 L 228.7 265.4 L 226.7 263.4 L 226.7 259.4 L 228.7 257.4"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 170 300 A 90 90 0 0 0 157.9 255"/>
+  </g>
+</svg>

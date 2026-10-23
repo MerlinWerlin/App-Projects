@@ -115,6 +115,8 @@ export const ar: Translation = {
   'templates.category.fantasy': 'الخيال والطراز القوطي',
   'templates.category.stilllife': 'الطبيعة الصامتة والأشياء',
   'templates.category.shapes': 'أشكال بسيطة',
+  'templates.category.trade': "الحِرف والورشة",
+  'templates.tradeNote': "الزوايا دقيقة. الأطوال على الورق ليست بمقياس رسم.",
   'templates.category.cute': 'لطيف وتشيبي',
   'templates.category.heroes': 'أبطال',
   'templates.category.game': 'عالم الألعاب',

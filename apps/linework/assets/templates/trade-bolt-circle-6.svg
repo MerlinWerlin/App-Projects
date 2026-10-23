@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>6-hole bolt circle flange</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 30 200 A 170 170 0 1 0 370 200 A 170 170 0 1 0 30 200 Z"/>
+    <path d="M 148 200 A 52 52 0 1 0 252 200 A 52 52 0 1 0 148 200 Z"/>
+    <path d="M 186 82 A 14 14 0 1 0 214 82 A 14 14 0 1 0 186 82 Z"/>
+    <path d="M 83.8 141 A 14 14 0 1 0 111.8 141 A 14 14 0 1 0 83.8 141 Z"/>
+    <path d="M 83.8 259 A 14 14 0 1 0 111.8 259 A 14 14 0 1 0 83.8 259 Z"/>
+    <path d="M 186 318 A 14 14 0 1 0 214 318 A 14 14 0 1 0 186 318 Z"/>
+    <path d="M 288.2 259 A 14 14 0 1 0 316.2 259 A 14 14 0 1 0 288.2 259 Z"/>
+    <path d="M 288.2 141 A 14 14 0 1 0 316.2 141 A 14 14 0 1 0 288.2 141 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 82 200 A 118 118 0 1 0 318 200 A 118 118 0 1 0 82 200 Z"/>
+    <path d="M 200 140 L 200 36"/>
+    <path d="M 148 170 L 58 118"/>
+    <path d="M 148 230 L 58 282"/>
+    <path d="M 200 260 L 200 364"/>
+    <path d="M 252 230 L 342 282"/>
+    <path d="M 252 170 L 342 118"/>
+  </g>
+</svg>

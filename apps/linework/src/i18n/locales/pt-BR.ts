@@ -115,6 +115,8 @@ export const ptBR: Translation = {
   'templates.category.fantasy': 'Fantasia e gótico',
   'templates.category.stilllife': 'Natureza-morta e objetos',
   'templates.category.shapes': 'Formas simples',
+  'templates.category.trade': "Ofícios e oficina",
+  'templates.tradeNote': "Os ângulos são exatos. Os comprimentos não estão em escala no papel.",
   'templates.category.cute': 'Fofo e chibi',
   'templates.category.heroes': 'Heróis',
   'templates.category.game': 'Mundo dos games',

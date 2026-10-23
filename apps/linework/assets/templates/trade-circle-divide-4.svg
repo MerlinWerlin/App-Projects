@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Circle divided into 4</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 200 A 160 160 0 1 0 360 200 A 160 160 0 1 0 40 200 Z"/>
+    <path d="M 195 200 A 5 5 0 1 0 205 200 A 5 5 0 1 0 195 200 Z"/>
+    <path d="M 200 192 L 200 40"/>
+    <path d="M 192 200 L 40 200"/>
+    <path d="M 200 208 L 200 360"/>
+    <path d="M 208 200 L 360 200"/>
+    <path d="M 158.9 162.4 L 157.5 163.8 L 151.9 163.8 L 150.5 162.4 L 150.5 158.2 L 151.9 156.8 L 157.5 156.8 L 158.9 158.2 L 158.9 166.6 L 156.1 170.8 L 151.2 170.8"/>
+    <path d="M 163.1 156.8 L 168.7 156.8 L 170.1 158.2 L 170.1 169.4 L 168.7 170.8 L 163.1 170.8 L 161.7 169.4 L 161.7 158.2 L 163.1 156.8"/>
+    <path d="M 174.3 156.8 L 177.1 156.8 L 178.5 158.2 L 178.5 161 L 177.1 162.4 L 174.3 162.4 L 172.9 161 L 172.9 158.2 L 174.3 156.8"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 112 200 A 88 88 0 1 0 288 200 A 88 88 0 1 0 112 200 Z"/>
+  </g>
+</svg>

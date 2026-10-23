@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Fillet weld T-joint</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 60 300 L 340 300 L 340 340 L 60 340 Z"/>
+    <path d="M 180 300 L 180 90 L 220 90 L 220 300 Z"/>
+    <path d="M 180 300 L 180 252 L 132 300 Z"/>
+    <path d="M 220 300 L 220 252 L 268 300 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 280 L 360 280"/>
+  </g>
+</svg>

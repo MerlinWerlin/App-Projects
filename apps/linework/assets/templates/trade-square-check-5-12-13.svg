@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>5-12-13 square check</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 80 330 L 340 330 L 80 221.7 Z"/>
+    <path d="M 102 330 L 102 308 L 80 308"/>
+    <path d="M 201.2 347.2 L 204.4 344 L 204.4 360"/>
+    <path d="M 201.2 360 L 207.6 360"/>
+    <path d="M 211.6 347.2 L 213.2 344 L 219.6 344 L 221.2 346.4 L 221.2 349.6 L 211.6 360 L 221.2 360"/>
+    <path d="M 56.8 267.8 L 48 267.8 L 47.2 275 L 54.4 274.2 L 56.8 276.6 L 56.8 281.4 L 55.2 283.8 L 48.8 283.8 L 47.2 282.2"/>
+    <path d="M 223.2 257 L 226.4 253.8 L 226.4 269.8"/>
+    <path d="M 223.2 269.8 L 229.6 269.8"/>
+    <path d="M 233.6 253.8 L 243.2 253.8 L 238.4 260.2 L 241.6 260.2 L 243.2 262.6 L 243.2 267.4 L 241.6 269.8 L 235.2 269.8 L 233.6 268.2"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 101.7 330 L 101.7 320"/>
+    <path d="M 123.3 330 L 123.3 320"/>
+    <path d="M 145 330 L 145 320"/>
+    <path d="M 166.7 330 L 166.7 320"/>
+    <path d="M 188.3 330 L 188.3 320"/>
+    <path d="M 210 330 L 210 320"/>
+    <path d="M 231.7 330 L 231.7 320"/>
+    <path d="M 253.3 330 L 253.3 320"/>
+    <path d="M 275 330 L 275 320"/>
+    <path d="M 296.7 330 L 296.7 320"/>
+    <path d="M 318.3 330 L 318.3 320"/>
+    <path d="M 80 308.3 L 90 308.3"/>
+    <path d="M 80 286.7 L 90 286.7"/>
+    <path d="M 80 265 L 90 265"/>
+    <path d="M 80 243.3 L 90 243.3"/>
+  </g>
+</svg>

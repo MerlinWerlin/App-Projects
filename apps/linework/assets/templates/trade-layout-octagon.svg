@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Octagon layout</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 200 45 L 86.9 91.9 L 40 205 L 86.9 318.1 L 200 365 L 313.1 318.1 L 360 205 L 313.1 91.9 Z"/>
+    <path d="M 180.8 267.4 L 184 264.2 L 184 280.2"/>
+    <path d="M 180.8 280.2 L 187.2 280.2"/>
+    <path d="M 191.2 264.2 L 200.8 264.2 L 196 270.6 L 199.2 270.6 L 200.8 273 L 200.8 277.8 L 199.2 280.2 L 192.8 280.2 L 191.2 278.6"/>
+    <path d="M 213.6 264.2 L 204.8 264.2 L 204 271.4 L 211.2 270.6 L 213.6 273 L 213.6 277.8 L 212 280.2 L 205.6 280.2 L 204 278.6"/>
+    <path d="M 218.4 264.2 L 221.6 264.2 L 223.2 265.8 L 223.2 269 L 221.6 270.6 L 218.4 270.6 L 216.8 269 L 216.8 265.8 L 218.4 264.2"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 205 A 160 160 0 1 0 360 205 A 160 160 0 1 0 40 205 Z"/>
+    <path d="M 196 205 A 4 4 0 1 0 204 205 A 4 4 0 1 0 196 205 Z"/>
+    <path d="M 200 205 L 200 45"/>
+    <path d="M 200 205 L 86.9 91.9"/>
+    <path d="M 200 205 L 40 205"/>
+    <path d="M 200 205 L 86.9 318.1"/>
+    <path d="M 200 205 L 200 365"/>
+    <path d="M 200 205 L 313.1 318.1"/>
+    <path d="M 200 205 L 360 205"/>
+    <path d="M 200 205 L 313.1 91.9"/>
+  </g>
+</svg>

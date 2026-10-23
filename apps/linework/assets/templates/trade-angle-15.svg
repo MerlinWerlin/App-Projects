@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>15° angle guide</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 80 300 L 340 300"/>
+    <path d="M 80 300 L 331.1 232.7"/>
+    <path d="M 200.9 277.6 L 204.9 273.6 L 204.9 293.6"/>
+    <path d="M 200.9 293.6 L 208.9 293.6"/>
+    <path d="M 225.9 273.6 L 214.9 273.6 L 213.9 282.6 L 222.9 281.6 L 225.9 284.6 L 225.9 290.6 L 223.9 293.6 L 215.9 293.6 L 213.9 291.6"/>
+    <path d="M 231.9 273.6 L 235.9 273.6 L 237.9 275.6 L 237.9 279.6 L 235.9 281.6 L 231.9 281.6 L 229.9 279.6 L 229.9 275.6 L 231.9 273.6"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 170 300 A 90 90 0 0 0 166.9 276.7"/>
+  </g>
+</svg>

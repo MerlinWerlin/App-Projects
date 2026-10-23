@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>30° mitre for a 6-sided frame</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 175 330 L 365 330"/>
+    <path d="M 198.1 290 L 365 290"/>
+    <path d="M 175 330 L 80 165.5"/>
+    <path d="M 198.1 290 L 114.6 145.5"/>
+    <path d="M 175 330 L 198.1 290"/>
+    <path d="M 237.9 217.1 L 248.7 217.1 L 243.3 224.3 L 246.9 224.3 L 248.7 227 L 248.7 232.4 L 246.9 235.1 L 239.7 235.1 L 237.9 233.3"/>
+    <path d="M 254.1 217.1 L 261.3 217.1 L 263.1 218.9 L 263.1 233.3 L 261.3 235.1 L 254.1 235.1 L 252.3 233.3 L 252.3 218.9 L 254.1 217.1"/>
+    <path d="M 268.5 217.1 L 272.1 217.1 L 273.9 218.9 L 273.9 222.5 L 272.1 224.3 L 268.5 224.3 L 266.7 222.5 L 266.7 218.9 L 268.5 217.1"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 215 330 A 40 40 0 0 0 195 295.4"/>
+  </g>
+</svg>

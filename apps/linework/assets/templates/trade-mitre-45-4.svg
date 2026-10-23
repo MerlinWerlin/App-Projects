@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>45° mitre for a 4-sided frame</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 80 330 L 270 330"/>
+    <path d="M 120 290 L 270 290"/>
+    <path d="M 80 330 L 80 140"/>
+    <path d="M 120 290 L 120 140"/>
+    <path d="M 80 330 L 120 290"/>
+    <path d="M 175.9 254.1 L 175.9 236.1 L 167.8 248.7 L 178.6 248.7"/>
+    <path d="M 193 236.1 L 183.1 236.1 L 182.2 244.2 L 190.3 243.3 L 193 246 L 193 251.4 L 191.2 254.1 L 184 254.1 L 182.2 252.3"/>
+    <path d="M 198.4 236.1 L 202 236.1 L 203.8 237.9 L 203.8 241.5 L 202 243.3 L 198.4 243.3 L 196.6 241.5 L 196.6 237.9 L 198.4 236.1"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 120 330 A 40 40 0 0 0 108.3 301.7"/>
+  </g>
+</svg>

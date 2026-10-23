@@ -28,6 +28,7 @@ export const CATEGORY_SUBJECTS: Readonly<Record<TemplateCategory, readonly strin
   movies: ['movie', 'film', 'cinema', 'space', 'astronaut', 'rocket', 'saucer', 'alien', 'planet', 'dinosaur', 't-rex', 'wizard', 'dragon', 'robot', 'pirate', 'treasure', 'popcorn', 'clapperboard', 'jungle', 'sci-fi', 'spaceship', 'ship', 'monster', 'detective', 'cowboy', 'sheriff', 'ghost', 'vampire', 'mummy', 'adventure', 'explorer', 'spy', 'superstar', 'western', 'noir', 'creature', 'captain', 'galaxy', 'cast'],
   fairytales: ['fairy', 'fairy-tale', 'fairytale', 'storybook', 'crown', 'wand', 'slipper', 'castle', 'unicorn', 'princess', 'prince', 'king', 'queen', 'frog', 'carriage', 'tower', 'mermaid', 'knight', 'coach', 'dragon', 'giant', 'witch', 'cottage', 'enchanted', 'forest', 'troll', 'gnome', 'elf', 'pixie', 'beanstalk', 'magic', 'spell', 'talking', 'once upon', 'cast'],
   kids: ['kids', 'little', 'friendly', 'smiling', 'baby', 'busy', 'abc', 'cute', 'happy', 'simple', 'toy', 'cartoon'],
+  trade: ['trade', 'workshop', 'angle', 'mitre', 'bevel', 'protractor', 'square', 'circle', 'grid', 'weld', 'dovetail', 'joint', 'pipe', 'flange', 'layout', 'pitch', 'stringer', 'radius', 'polygon'],
   shapes: ['cube', 'circles', 'circle', 'stars', 'polygons', 'spiral', 'shape', 'triangle', 'square', 'sphere', 'cylinder', 'cone', 'pyramid', 'torus', 'prism', 'hexagon', 'perspective', 'isometric', 'polygon'],
 };
 

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Stair stringer at 42°</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 50 340 L 50 293.2 L 102 293.2 L 102 246.4 L 154 246.4 L 154 199.5 L 206 199.5 L 206 152.7 L 258 152.7 L 258 105.9 L 310 105.9"/>
+    <path d="M 50 340 L 310 105.9"/>
+    <path d="M 50 340 L 310 340"/>
+    <path d="M 291 329 L 291 311 L 282.9 323.6 L 293.7 323.6"/>
+    <path d="M 297.3 314.6 L 299.1 311 L 306.3 311 L 308.1 313.7 L 308.1 317.3 L 297.3 329 L 308.1 329"/>
+    <path d="M 313.5 311 L 317.1 311 L 318.9 312.8 L 318.9 316.4 L 317.1 318.2 L 313.5 318.2 L 311.7 316.4 L 311.7 312.8 L 313.5 311"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 110 340 A 60 60 0 0 0 94.6 299.9"/>
+    <path d="M 50 340 L 310 105.9"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Square layout</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 200 45 L 40 205 L 200 365 L 360 205 Z"/>
+    <path d="M 194.4 270.6 L 192.8 272.2 L 186.4 272.2 L 184.8 270.6 L 184.8 265.8 L 186.4 264.2 L 192.8 264.2 L 194.4 265.8 L 194.4 275.4 L 191.2 280.2 L 185.6 280.2"/>
+    <path d="M 199.2 264.2 L 205.6 264.2 L 207.2 265.8 L 207.2 278.6 L 205.6 280.2 L 199.2 280.2 L 197.6 278.6 L 197.6 265.8 L 199.2 264.2"/>
+    <path d="M 212 264.2 L 215.2 264.2 L 216.8 265.8 L 216.8 269 L 215.2 270.6 L 212 270.6 L 210.4 269 L 210.4 265.8 L 212 264.2"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 205 A 160 160 0 1 0 360 205 A 160 160 0 1 0 40 205 Z"/>
+    <path d="M 196 205 A 4 4 0 1 0 204 205 A 4 4 0 1 0 196 205 Z"/>
+    <path d="M 200 205 L 200 45"/>
+    <path d="M 200 205 L 40 205"/>
+    <path d="M 200 205 L 200 365"/>
+    <path d="M 200 205 L 360 205"/>
+  </g>
+</svg>

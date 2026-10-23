@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>U-groove weld prep</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 66 150 L 156 150 L 174 210 A 22 22 0 0 0 196 232 L 196 250 L 66 250 Z"/>
+    <path d="M 334 150 L 244 150 L 226 210 A 22 22 0 0 1 204 232 L 204 250 L 334 250 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 280 L 360 280"/>
+  </g>
+</svg>

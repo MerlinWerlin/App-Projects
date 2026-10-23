@@ -115,6 +115,8 @@ export const ja: Translation = {
   'templates.category.fantasy': 'ファンタジー・ゴシック',
   'templates.category.stilllife': '静物・小物',
   'templates.category.shapes': 'シンプルな図形',
+  'templates.category.trade': "職人・工房",
+  'templates.tradeNote': "角度は正確です。紙の上の長さは縮尺どおりではありません。",
   'templates.category.cute': 'かわいい・ちび',
   'templates.category.heroes': 'ヒーロー',
   'templates.category.game': 'ゲームの世界',
