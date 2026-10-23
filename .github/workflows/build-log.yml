@@ -47,10 +47,10 @@ jobs:
           fi
           jq '{id, status, appVersion, appBuildVersion, error}' "$RUNNER_TEMP/b.json" > "$RUNNER_TEMP/sum.txt" 2>>"$RUNNER_TEMP/err.txt"
           : > "$RUNNER_TEMP/logs.txt"
-          for u in $(jq -r '.logFiles[]? // empty' "$RUNNER_TEMP/b.json"); do curl -sL "$u" >> "$RUNNER_TEMP/logs.txt"; echo >> "$RUNNER_TEMP/logs.txt"; done
+          for u in $(jq -r '.logFiles[]? // empty' "$RUNNER_TEMP/b.json"); do curl -sL "$u" -o "$RUNNER_TEMP/one"; (gunzip -c "$RUNNER_TEMP/one" 2>/dev/null || cat "$RUNNER_TEMP/one") >> "$RUNNER_TEMP/logs.txt"; echo >> "$RUNNER_TEMP/logs.txt"; done
           # EAS logs are JSON lines; keep the message text, then the lines around errors.
           (jq -r 'select(.msg) | (.phase // "") + " | " + .msg' "$RUNNER_TEMP/logs.txt" 2>/dev/null || cat "$RUNNER_TEMP/logs.txt") > "$RUNNER_TEMP/plain.txt"
-          grep -n -i -E "error|fail|❌|not found|cannot|unable" "$RUNNER_TEMP/plain.txt" | head -60 > "$RUNNER_TEMP/hits.txt"
+          grep -n -i -E "error|fail|❌|not found|cannot|unable|ERESOLVE|peer|npm ERR|npm error" "$RUNNER_TEMP/plain.txt" | head -80 > "$RUNNER_TEMP/hits.txt"
           tail -n 60 "$RUNNER_TEMP/plain.txt" > "$RUNNER_TEMP/tail.txt"
           body=$(printf '**build-log %s**\n\n```\n%s\n%s\n```\n\nError lines:\n```\n%s\n```\n\nLast lines:\n```\n%s\n```\n' "${{ inputs.app }}" "$(cat "$RUNNER_TEMP/sum.txt")" "$(tail -c 3000 "$RUNNER_TEMP/err.txt")" "$(head -c 25000 "$RUNNER_TEMP/hits.txt")" "$(tail -c 25000 "$RUNNER_TEMP/tail.txt")")
           gh api "repos/${{ github.repository }}/commits/${{ github.sha }}/comments" -f body="$body" > /dev/null
