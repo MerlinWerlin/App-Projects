@@ -16,7 +16,7 @@ All five go into GitHub → MerlinWerlin/App-projects → **Settings → Secrets
 | Secret name | Where to get it |
 |---|---|
 | `EXPO_TOKEN` | expo.dev → (your avatar) → **Account settings → Access tokens → Create token**. Copy it once. |
-| `ASC_KEY_P8` | appstoreconnect.apple.com → **Users and Access → Integrations → App Store Connect API → Team Keys → +**. Name "GitHub ship", access **App Manager**. Download the `.p8` file (only once!) and paste its whole text, including the BEGIN/END lines. |
+| `ASC_KEY_P8` | appstoreconnect.apple.com → **Users and Access → Integrations → App Store Connect API → Team Keys → +**. Name "GitHub ship", access **Admin** (needed so Expo can create signing certificates for new apps). Download the `.p8` file (only once!) and paste its whole text, including the BEGIN/END lines. |
 | `ASC_KEY_ID` | The **Key ID** shown next to that key. |
 | `ASC_ISSUER_ID` | The **Issuer ID** at the top of the same page. |
 | `APPLE_TEAM_ID` | developer.apple.com → **Account → Membership details → Team ID** (10 characters). |
