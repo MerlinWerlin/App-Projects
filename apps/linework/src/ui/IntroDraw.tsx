@@ -38,7 +38,18 @@ function Pencil() {
 /** A four-point sparkle centred on (0,0), radius 1 (scaled by the caller). */
 const SPARK_D = 'M 0 -1 Q 0.12 -0.12 1 0 Q 0.12 0.12 0 1 Q -0.12 0.12 -1 0 Q -0.12 -0.12 0 -1 Z';
 
-export function IntroDraw({ ready, dark, onDone }: { ready: boolean; dark: boolean; onDone: () => void }) {
+export function IntroDraw({
+  ready,
+  dark,
+  onReveal,
+  onDone,
+}: {
+  ready: boolean;
+  dark: boolean;
+  /** Fade-out starts: mount the app underneath now (fb-1023: the app's native screens covered the intro). */
+  onReveal?: () => void;
+  onDone: () => void;
+}) {
   const { width, height } = useWindowDimensions();
   const colors = dark ? BRAND.dark : BRAND.light;
   // Same size and place as the native splash image (app.json imageWidth 240, centred) so the hand-over is seamless.
@@ -62,6 +73,7 @@ export function IntroDraw({ ready, dark, onDone }: { ready: boolean; dark: boole
     if (finishing.current || !drawn.current || !readyRef.current) return;
     finishing.current = true;
     setTimeout(() => {
+      onReveal?.();
       Animated.timing(fade, { toValue: 0, duration: INTRO_MS.fadeOut, easing: Easing.out(Easing.quad), useNativeDriver: false }).start(() => {
         for (const l of loops.current) l.stop();
         onDone();
@@ -101,9 +113,13 @@ export function IntroDraw({ ready, dark, onDone }: { ready: boolean; dark: boole
         }
         Animated.timing(draw, { toValue: 1, duration: INTRO_MS.draw, easing: Easing.inOut(Easing.cubic), useNativeDriver: false }).start(() => {
           if (!alive) return;
-          drawn.current = true;
           startLights();
-          finish.current();
+          // Always show at least one pass of the light along the line, even when the app is already loaded.
+          setTimeout(() => {
+            if (!alive) return;
+            drawn.current = true;
+            finish.current();
+          }, INTRO_MS.shimmer);
         });
       });
     return () => {

@@ -886,4 +886,7 @@ export const ja: Translation = {
   'templates.locked': "Plus",
   'templates.lockedLabel': "{name}、Linework Plus が必要",
   'prepare.outlineLocked': "輪郭モードは Linework Plus に含まれます",
+  'plus.buyFailedTitle': "解除されませんでした",
+  'plus.buyFailed': "購入は完了せず、請求もされていません。少し待ってからもう一度お試しください。",
+  'plus.storeNotReady': "現在 App Store で Linework Plus を購入できません。請求はされていません。後でもう一度お試しください。",
 };

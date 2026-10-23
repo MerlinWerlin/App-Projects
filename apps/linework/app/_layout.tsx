@@ -79,11 +79,16 @@ export default function RootLayout() {
   // Opening (fb-1022c): the native splash hands over to IntroDraw on its first frame; the pencil draws the brand line,
   // light runs along it while fonts and languages load, then it fades away over the app. Never takes touches.
   const [introDone, setIntroDone] = useState(false);
-  const intro = introDone ? null : <IntroDraw ready={ready} dark={isDark} onDone={() => setIntroDone(true)} />;
+  // fb-1023: in a store build the app's native screens draw over any JS view, so the app mounts only once the intro
+  // has drawn the line and starts fading (onReveal), never on top of it.
+  const [revealed, setRevealed] = useState(false);
+  const intro = introDone ? null : (
+    <IntroDraw ready={ready} dark={isDark} onReveal={() => setRevealed(true)} onDone={() => setIntroDone(true)} />
+  );
 
   // If fonts fail to load we still render with system fonts. The intro stays in the same place in the tree before and
   // after `ready`, so it never restarts.
-  const app = ready ? (
+  const app = ready && revealed ? (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: c.paper }}>
       <SafeAreaProvider>
         <StatusBar style={isDark ? 'light' : 'dark'} />

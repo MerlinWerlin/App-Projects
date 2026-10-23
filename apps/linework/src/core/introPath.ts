@@ -78,7 +78,7 @@ export function introSamples(count = 40): { t: number; x: number; y: number }[] 
 }
 
 /** Timings (ms). The line draws once; the light runs along it until the app is ready. */
-export const INTRO_MS = { draw: 1300, shimmer: 1100, settle: 220, fadeOut: 320, maxWait: 3000 } as const;
+export const INTRO_MS = { draw: 1600, shimmer: 1100, settle: 150, fadeOut: 380, maxWait: 3000 } as const;
 
 /**
  * D111-2: the app (and the intro's fade) go ahead when fonts and languages are loaded, or after INTRO_MS.maxWait

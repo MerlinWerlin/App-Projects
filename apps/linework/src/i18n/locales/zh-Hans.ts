@@ -872,4 +872,7 @@ export const zhHans: Translation = {
   'templates.locked': "Plus",
   'templates.lockedLabel': "{name}，需要 Linework Plus",
   'prepare.outlineLocked': "轮廓模式属于 Linework Plus",
+  'plus.buyFailedTitle': "未解锁",
+  'plus.buyFailed': "购买未完成，也未扣费。请稍后再试。",
+  'plus.storeNotReady': "App Store 目前无法提供 Linework Plus，未扣费。请稍后再试。",
 };

@@ -886,4 +886,7 @@ export const de: Translation = {
   'templates.locked': "Plus",
   'templates.lockedLabel': "{name}, braucht Linework Plus",
   'prepare.outlineLocked': "Der Konturmodus gehört zu Linework Plus",
+  'plus.buyFailedTitle': "Nicht freigeschaltet",
+  'plus.buyFailed': "Der Kauf wurde nicht abgeschlossen, es wurde nichts berechnet. Bitte versuche es gleich noch einmal.",
+  'plus.storeNotReady': "Der App Store bietet Linework Plus gerade nicht an. Es wurde nichts berechnet. Bitte versuche es später noch einmal.",
 };
