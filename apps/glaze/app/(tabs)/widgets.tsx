@@ -15,6 +15,9 @@
 // T94: touch and hold the same button (or VoiceOver "decrement") takes one step off.
 // T91: the grid is drawn row by row (src/core/widgetGrid.ts); a card whose neighbour has a log
 // button or goal chip reserves an empty slot of the same height, so rows stay even.
+// fb-1023 C: every option row is visual as well as text: theme chips show a swatch of the theme,
+// look chips a swatch of the look (solved like the widgets), size tabs a tiny widget outline in
+// that size's aspect (src/core/widgetOptionArt.ts, drawn by src/ui/WidgetOptionArt.tsx). No motion.
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
@@ -51,6 +54,8 @@ import { LargeTitleScrollView, PillButton, SquircleCard } from '../../src/ui/v2'
 import { CatalogueWidgetPreview } from '../../src/ui/CatalogueWidgetPreview';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
+import { SizeArt, SwatchArt } from '../../src/ui/WidgetOptionArt';
+import { lookSwatch, themeSwatch, type Swatch } from '../../src/core/widgetOptionArt';
 
 /** Untyped lookup for keys carried in data (tabNav card name/size keys). */
 type LooseT = (key: string, params?: Record<string, string | number>) => string;
@@ -103,6 +108,8 @@ export default function WidgetsTab() {
   );
   const cat = useMemo(() => studioCatalogue(set), [set]);
   const looks: WidgetLook[] = useMemo(() => previewLooks(set.tokens), [set]);
+  // fb-1023 C: one swatch per look, from the same tokens (and photo colours) as the previews.
+  const lookSwatches: Map<WidgetLook, Swatch> = useMemo(() => new Map(looks.map((l) => [l, lookSwatch(l, set.tokens)])), [looks, set]);
   const editable: string[] = useMemo(() => [...studioKinds(set), ...catalogueStudioKinds()], [set]);
   const cards: WidgetTabCard[] = useMemo(() => widgetTabCards(size, editable), [size, editable]);
 
@@ -356,7 +363,7 @@ export default function WidgetsTab() {
                 { backgroundColor: on ? c.tint : c.fill, opacity: pressed ? 0.7 : 1 },
               ]}
             >
-              <View style={[styles.dot, { backgroundColor: x.palette.accent, borderColor: on ? c.onTint : c.separator }]} />
+              <SwatchArt swatch={themeSwatch(x.palette)} ring={on ? c.onTint : c.separator} />
               <Text style={[...label('subhead'), styles.bold, { color: on ? c.onTint : c.ink }]} numberOfLines={1}>
                 {x.name}
               </Text>
@@ -377,6 +384,7 @@ export default function WidgetsTab() {
         {looks.map((l) => {
           const on = l === look;
           const name = tl(widgetLookKey(l));
+          const swatch = lookSwatches.get(l) ?? lookSwatch(l, set.tokens);
           return (
             <Pressable
               key={l}
@@ -386,6 +394,7 @@ export default function WidgetsTab() {
               accessibilityState={{ selected: on }}
               style={({ pressed }) => [styles.chip, continuous, { backgroundColor: on ? c.tint : c.fill, opacity: pressed ? 0.7 : 1 }]}
             >
+              <SwatchArt swatch={swatch} ring={on ? c.onTint : c.separator} />
               <Text style={[...label('subhead'), styles.bold, { color: on ? c.onTint : c.ink }]} numberOfLines={1}>
                 {name}
               </Text>
@@ -407,6 +416,7 @@ export default function WidgetsTab() {
               accessibilityState={{ selected: on }}
               style={[styles.sizeTab, continuous, on ? { backgroundColor: c.surface } : null]}
             >
+              <SizeArt size={s} stroke={on ? c.tint : c.inkSecondary} fill={on ? c.tintSoft : 'transparent'} />
               <Text style={[...label('footnote'), styles.bold, styles.centre, { color: on ? c.ink : c.inkSecondary }]} numberOfLines={2}>
                 {name}
               </Text>
@@ -436,7 +446,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: spaceV2.sm,
   },
-  dot: { width: 14, height: 14, borderRadius: 7, borderWidth: StyleSheet.hairlineWidth },
   bold: { fontWeight: '600' },
   centre: { textAlign: 'center' },
   sizes: {
@@ -453,6 +462,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: spaceV2.xs,
+    // fb-1023 C: room for the size picture above the label.
+    paddingVertical: spaceV2.xs,
+    gap: spaceV2.xxs,
   },
   note: { paddingHorizontal: GUTTER, marginTop: spaceV2.md },
   grid: {

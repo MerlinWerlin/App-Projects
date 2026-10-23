@@ -40,6 +40,7 @@ import { useStudio } from '../src/store/studio';
 import { continuous, radiusV2, sizeV2, spaceV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import { haptic } from '../src/ui/haptics';
+import { useAnnounce } from '../src/ui/announce';
 import { localizedTypeV2, noMirror } from '../src/ui/i18nLayout';
 import { PhoneFrame, phoneScreenSize } from '../src/ui/PhoneFrame';
 import { pickCollagePhotos } from '../src/ui/pickCollagePhotos';
@@ -72,6 +73,8 @@ export default function CollageScreen() {
   const [themeId, setThemeId] = useState<string | null>(null);
   const [picking, setPicking] = useState(false);
   const [status, setStatus] = useState<Status>(null);
+  // VoiceOver hears every save / pick result (live regions are Android-only; night 23 Oct).
+  useAnnounce(status?.text, status);
   const saver = useOffscreenCapture<CollageData>({ waitForReady: true, readyTimeoutMs: 15000 });
 
   // Start from the theme the person applied in the studio (starter themes only), else the first.

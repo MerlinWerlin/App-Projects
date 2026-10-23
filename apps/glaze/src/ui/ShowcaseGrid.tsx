@@ -53,9 +53,11 @@ type GridProps = {
   /** T77: liked theme ids (device-local). Hearts show only when `onToggleLike` is given. */
   likedIds?: ReadonlySet<string>;
   onToggleLike?: (id: string) => void;
+  /** fb-1023: when this changes (a search chip, sub-tab or collection), the grid does the same calm fade as a page change. */
+  fadeKey?: string;
 };
 
-export function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusBadge, plusNote, freeIds, freeBadge, freeNote, newIds, empty, likedIds, onToggleLike }: GridProps) {
+export function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusBadge, plusNote, freeIds, freeBadge, freeNote, newIds, empty, likedIds, onToggleLike, fadeKey = '' }: GridProps) {
   const { isRTL } = useT();
   const { width } = useWindowDimensions();
   const columns = showcaseColumns(width);
@@ -65,14 +67,18 @@ export function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusB
   // Page change: the whole grid fades up from GRID_FADE_FROM (opacity only, ease-out).
   const fade = useSharedValue(1);
   const lastPage = useRef(pageIndex);
+  const lastKey = useRef(fadeKey);
   useEffect(() => {
     const from = lastPage.current;
+    const keyChanged = lastKey.current !== fadeKey;
     lastPage.current = pageIndex;
-    const tr = pageTransition(from, pageIndex);
+    lastKey.current = fadeKey;
+    // fb-1023: a chip / sub-tab swap counts as a change too (same opacity-only fade, no slide or scale).
+    const tr = pageTransition(from, keyChanged && from === pageIndex ? from + 1 : pageIndex);
     if (tr.kind === 'none') return;
     fade.value = tr.fromOpacity;
     fade.value = withTiming(1, { duration: tr.durationMs, easing: easeOutCurve });
-  }, [pageIndex, fade]);
+  }, [pageIndex, fadeKey, fade]);
   const gridStyle = useAnimatedStyle(() => ({ opacity: fade.value }));
 
   const pan = useMemo(

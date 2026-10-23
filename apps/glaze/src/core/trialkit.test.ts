@@ -66,7 +66,7 @@ test('D110-1: the kit names the commit it was built from and START_TRIAL prints 
   assert.match(read('.gitattributes'), /^KIT_VERSION\.txt\s+export-subst$/m);
   const stamp = read('KIT_VERSION.txt');
   assert.match(stamp, /Built from commit: \$Format:%h\$/);
-  assert.match(stamp, /T110 calm category bubbles/);
+  assert.match(stamp, /Includes up to: fb-1023/);
   const cmd = read('START_TRIAL.cmd');
   assert.ok(cmd.indexOf('type KIT_VERSION.txt') > 0, 'cmd prints the stamp');
   assert.ok(cmd.indexOf('type KIT_VERSION.txt') < cmd.indexOf('npm install'), 'stamp printed before install');

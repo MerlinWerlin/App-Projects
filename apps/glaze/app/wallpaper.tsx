@@ -46,6 +46,7 @@ import { ContextTip } from '../src/ui/ContextTip';
 import { PhotoCropEditor } from '../src/ui/PhotoCropEditor';
 import { SwitchRow } from '../src/ui/Switch';
 import { haptic } from '../src/ui/haptics';
+import { useAnnounce } from '../src/ui/announce';
 import { localizedTypeV2, noMirror } from '../src/ui/i18nLayout';
 import { pickBackgroundPhoto } from '../src/ui/pickBackgroundPhoto';
 import { Skeleton } from '../src/ui/Skeleton';
@@ -120,28 +121,44 @@ function Segmented<T extends string>({
   value,
   onChange,
   label,
+  grid = false,
 }: {
   options: { id: T; label: string }[];
   value: T;
   onChange: (v: T) => void;
   label: string;
+  /**
+   * Night 23 Oct (cross-app, from Linework fb-1022c and Glaze fb-1023 B): four options as a 2×2 block of
+   * equal pills, so words like "Sfumatura", "Cuadrícula" or "グラデーション" get room instead of breaking
+   * mid-word in a quarter-width segment (iPhone ~375 pt, larger text, long locales).
+   */
+  grid?: boolean;
 }) {
   const { c } = useColorsV2();
   const { t, script } = useT();
   const tt = localizedTypeV2(script);
   return (
-    <View style={[styles.segment, { backgroundColor: c.fill }]} accessibilityRole="radiogroup" accessibilityLabel={label}>
+    <View
+      style={[styles.segment, grid && styles.segmentGrid, { backgroundColor: c.fill }]}
+      accessibilityRole="radiogroup"
+      accessibilityLabel={label}
+    >
       {options.map((o) => {
         const selected = o.id === value;
         return (
           <Pressable
             key={o.id}
-            onPress={() => onChange(o.id)}
+            onPress={() => {
+              // Same as the shared Segmented: no re-fire on the chosen pill, selection tick on change.
+              if (selected) return;
+              haptic('select');
+              onChange(o.id);
+            }}
             accessibilityRole="radio"
             accessibilityLabel={t('wallpaper.option', { group: label, option: o.label })}
             accessibilityState={{ selected, checked: selected }}
             hitSlop={3}
-            style={[styles.segmentItem, selected && { backgroundColor: c.surfaceRaised }]}
+            style={[styles.segmentItem, grid && styles.segmentItemGrid, selected && { backgroundColor: c.surfaceRaised }]}
           >
             <Text style={[tt.label, styles.segmentText, { color: selected ? c.tint : c.inkSecondary }]}>
               {o.label}
@@ -252,6 +269,8 @@ export default function WallpaperScreen() {
     return sizeForScreen(s.width, s.height).id;
   });
   const [status, setStatus] = useState<Status>(null);
+  // VoiceOver hears every save / pick result (live regions are Android-only; night 23 Oct).
+  useAnnounce(status?.text, status);
 
   const size = WALLPAPER_SIZES.find((s) => s.id === sizeId) ?? WALLPAPER_SIZES[WALLPAPER_SIZES.length - 1];
   const previewH = Math.round((PREVIEW_W * size.height) / size.width);
@@ -623,9 +642,10 @@ export default function WallpaperScreen() {
             <Text accessibilityRole="header" style={[tt.heading, { color: c.ink }]}>
               {t('wallpaper.design.style')}
             </Text>
-            <Segmented label={t('wallpaper.design.style')} options={kinds} value={params.kind} onChange={(kind) => update({ kind })} />
+            <Segmented grid label={t('wallpaper.design.style')} options={kinds} value={params.kind} onChange={(kind) => update({ kind })} />
             {params.kind === 'pattern' ? (
               <Segmented
+                grid
                 label={t('wallpaper.design.pattern')}
                 options={WALLPAPER_PATTERNS.map((p) => ({ id: p, label: t(PATTERN_KEYS[p]) }))}
                 value={params.pattern ?? 'dots'}
@@ -797,6 +817,8 @@ const styles = StyleSheet.create({
   phone: { ...continuous, borderRadius: radiusV2.card, overflow: 'hidden', borderWidth: StyleSheet.hairlineWidth },
   card: { ...continuous, borderRadius: radiusV2.card, borderWidth: StyleSheet.hairlineWidth, padding: spaceV2.lg, gap: spaceV2.md },
   segment: { flexDirection: 'row', borderRadius: radiusV2.pill, padding: 3 },
+  // 2×2 block (night 23 Oct): rounded track like the shared Segmented grid; each pill takes half the row.
+  segmentGrid: { flexWrap: 'wrap', borderRadius: radiusV2.group, gap: 3 },
   segmentItem: {
     flex: 1,
     minHeight: sizeV2.touch - 6,
@@ -805,6 +827,7 @@ const styles = StyleSheet.create({
     borderRadius: radiusV2.pill,
     paddingHorizontal: spaceV2.xs,
   },
+  segmentItemGrid: { flexGrow: 1, flexShrink: 0, flexBasis: '45%', paddingHorizontal: spaceV2.sm },
   stepper: { flexDirection: 'row', alignItems: 'center', minHeight: sizeV2.touch },
   stepValue: { minWidth: 56, textAlign: 'center' },
   segmentText: { textAlign: 'center' },

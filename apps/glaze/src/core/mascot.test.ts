@@ -1,0 +1,69 @@
+// fb-1023 D (owner idea, "maybe"): mascot concepts. Concept only, so these are source guards:
+// the three preview SVGs are small and self-contained, docs/MASCOT.md asks the owner question,
+// and the real app icon config is untouched.
+import assert from 'node:assert/strict';
+import { existsSync, readFileSync, statSync } from 'node:fs';
+import { join } from 'node:path';
+import { test } from 'node:test';
+
+const root = process.cwd();
+const path = (...p: string[]) => join(root, ...p);
+const read = (...p: string[]) => readFileSync(path(...p), 'utf8');
+const N = ['1', '2', '3'];
+
+test('fb-1023 D: three mascot preview SVGs and icon SVGs exist, each under 8 KB', () => {
+  for (const n of N) {
+    for (const file of [`mascot-${n}.svg`, `mascot-${n}-icon.svg`]) {
+      const p = path('docs', 'mascot', file);
+      assert.ok(existsSync(p), `${file} exists`);
+      assert.ok(statSync(p).size < 8 * 1024, `${file} is under 8 KB`);
+    }
+    const svg = read('docs', 'mascot', `mascot-${n}.svg`);
+    assert.match(svg, /^<svg [^>]*viewBox="0 0 240 240"/);
+    assert.match(read('docs', 'mascot', `mascot-${n}-icon.svg`), /^<svg [^>]*viewBox="0 0 1024 1024"/);
+  }
+});
+
+test('fb-1023 D: mascot SVGs are self-contained (no <image>, no external href/url, no <text>)', () => {
+  for (const n of N) {
+    for (const file of [`mascot-${n}.svg`, `mascot-${n}-icon.svg`]) {
+      const svg = read('docs', 'mascot', file);
+      assert.doesNotMatch(svg, /<image\b/i, `${file}: no <image>`);
+      assert.doesNotMatch(svg, /<text\b/i, `${file}: no <text>`);
+      assert.doesNotMatch(svg, /<(script|foreignObject|use)\b/i, `${file}: no script/foreignObject/use`);
+      assert.doesNotMatch(svg, /href\s*=/i, `${file}: no href`);
+      assert.doesNotMatch(svg, /url\(\s*['"]?(https?:|data:|\/\/)/i, `${file}: only local url(#id) refs`);
+      assert.doesNotMatch(svg, /@import/i);
+    }
+  }
+});
+
+test('fb-1023 D: three distinct mascots (different previews)', () => {
+  const svgs = N.map((n) => read('docs', 'mascot', `mascot-${n}.svg`));
+  assert.equal(new Set(svgs).size, 3);
+});
+
+test('fb-1023 D: MASCOT.md has the three concepts, originality statement and the owner question', () => {
+  const md = read('docs', 'MASCOT.md');
+  assert.match(md, /Which mascot \(1, 2, 3 or none\)\?/);
+  for (const name of ['Tessel', 'Latchling', 'Vitri']) assert.match(md, new RegExp(`## \\d\\. ${name}`));
+  for (const n of N) assert.match(md, new RegExp(`mascot/mascot-${n}\\.(png|svg)`));
+  assert.match(md, /## Originality/);
+  assert.match(md, /Nothing changes in the app until you pick/);
+  assert.match(read('docs', 'LICENSES.md'), /Mascot concepts/);
+});
+
+test('fb-1023 D: the mascot is not wired in (the app icon is the faceless brand mark, not a mascot)', () => {
+  const expo = JSON.parse(read('app.json')).expo;
+  // Night 23 Oct: the app got its own icon, a faceless glaze-pour tile from assets/brand (src/core/introGlaze.ts).
+  // The mascot choice stays open: no icon, splash or plugin may point at the mascot concepts.
+  assert.equal(expo.icon, './assets/brand/icon.png');
+  assert.equal(expo.ios?.icon, undefined);
+  assert.equal(expo.android?.icon, undefined);
+  assert.match(expo.android?.adaptiveIcon?.foregroundImage ?? '', /^\.\/assets\/brand\//);
+  assert.doesNotMatch(read('app.json'), /mascot/i);
+  assert.doesNotMatch(read('app.config.ts'), /mascot/i);
+  assert.doesNotMatch(JSON.stringify(expo.plugins ?? []), /alternate-app-icons|mascot/i);
+  // The brand mark has no face (no eyes, smile or blush from the Tessel concept).
+  assert.doesNotMatch(read('assets', 'brand', 'icon.svg'), /#1D1A21/i);
+});

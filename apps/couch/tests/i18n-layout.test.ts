@@ -19,6 +19,7 @@ const PHYSICAL_OK: Record<string, string> = {
   'src/ui/remote/Touchpad.tsx': 'touchpad swipes map to the TV physical left/right',
   'src/ui/remote/ColorKeys.tsx': 'red/green/yellow/blue keep the TV order',
   'src/ui/fx/VolumeHud.tsx': 'right-aligned number column (digits)',
+  'src/ui/IntroRemote.tsx': 'opening animation: logo art laid out in fixed viewBox coordinates (inside NEVER_MIRROR_STYLE)',
 };
 
 describe('i18n layout (owner-1016)', () => {
@@ -37,7 +38,7 @@ describe('i18n layout (owner-1016)', () => {
   });
 
   it('every physical-direction control is wrapped to stay left-to-right in RTL', () => {
-    for (const f of ['src/ui/remote/DPad.tsx', 'src/ui/remote/Touchpad.tsx', 'src/ui/remote/ColorKeys.tsx', 'src/ui/remote/RemoteKey.tsx', 'src/ui/remote/SimpleRemote.tsx', 'app/(tabs)/remote.tsx']) {
+    for (const f of ['src/ui/remote/DPad.tsx', 'src/ui/remote/Touchpad.tsx', 'src/ui/remote/ColorKeys.tsx', 'src/ui/remote/RemoteKey.tsx', 'src/ui/remote/SimpleRemote.tsx', 'app/(tabs)/remote.tsx', 'src/ui/IntroRemote.tsx']) {
       expect({ f, wrapped: usesNeverMirror(read(f)) }).toEqual({ f, wrapped: true });
     }
     expect(read('src/ui/NeverMirror.tsx')).toContain("NEVER_MIRROR_STYLE = { direction: 'ltr' }");

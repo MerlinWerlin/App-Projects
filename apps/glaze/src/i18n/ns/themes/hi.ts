@@ -82,7 +82,7 @@ export const hi: NonNullable<LocaleMessages['themes']> = {
     label: 'थीम दिखाएँ',
     all: 'सभी',
     new: 'नई',
-    picks: 'हमारी पसंद',
+    picks: 'पसंद',
     liked: 'पसंदीदा',
     picksNote: 'Glaze टीम द्वारा चुनी गई।',
     newEmpty: 'अभी कुछ नया नहीं',

@@ -82,7 +82,7 @@ export const fr: NonNullable<LocaleMessages['themes']> = {
     label: 'Afficher les thèmes',
     all: 'Tous',
     new: 'Nouveautés',
-    picks: 'Notre sélection',
+    picks: 'Sélection',
     liked: 'Favoris',
     picksNote: 'Choisis par l’équipe Glaze.',
     newEmpty: 'Rien de nouveau pour l’instant',

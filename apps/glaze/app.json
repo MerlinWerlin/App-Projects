@@ -42,7 +42,12 @@
     },
     "android": {
       "package": "com.jared797.glaze",
-      "versionCode": 1
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/brand/adaptive-foreground.png",
+        "monochromeImage": "./assets/brand/adaptive-monochrome.png",
+        "backgroundColor": "#E9E0FB"
+      }
     },
     "plugins": [
       "expo-router",
@@ -67,6 +72,19 @@
         {
           "supportsRTL": true
         }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/brand/splash-icon.png",
+          "imageWidth": 240,
+          "resizeMode": "contain",
+          "backgroundColor": "#F4F1F7",
+          "dark": {
+            "image": "./assets/brand/splash-icon-dark.png",
+            "backgroundColor": "#0F0D12"
+          }
+        }
       ]
     ],
     "experiments": {
@@ -77,6 +95,7 @@
       "eas": {
         "projectId": "8dcff573-80a3-457e-9791-f41552a0d678"
       }
-    }
+    },
+    "icon": "./assets/brand/icon.png"
   }
 }

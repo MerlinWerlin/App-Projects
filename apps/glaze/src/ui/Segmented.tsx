@@ -23,13 +23,15 @@ type Props<T extends string> = {
   style?: StyleProp<ViewStyle>;
   /** Stack the options as full-width rows (owner fb-1017: long shape names never truncate or wrap mid-word). */
   vertical?: boolean;
+  /** fb-1023: lay four options out as a 2×2 block of equal pills (two on top, two below). */
+  grid?: boolean;
 };
 
 /**
  * Segmented control, design v2 (docs/DESIGN_V2.md §8, T56): a pill track on `fill` with the
  * chosen option as a raised thumb. One choice from a few options, ≥ 48 pt segments, haptic on change.
  */
-export function Segmented<T extends string>({ label, options, value, onChange, style, vertical = false }: Props<T>) {
+export function Segmented<T extends string>({ label, options, value, onChange, style, vertical = false, grid = false }: Props<T>) {
   const { c, scheme } = useColorsV2();
   const { t, script } = useT();
   const raised = shadowV2('card', scheme);
@@ -37,7 +39,7 @@ export function Segmented<T extends string>({ label, options, value, onChange, s
     <View
       accessibilityRole="radiogroup"
       accessibilityLabel={label}
-      style={[styles.row, continuous, vertical && styles.column, { backgroundColor: c.fill }, style]}
+      style={[styles.row, continuous, vertical && styles.column, grid && styles.grid, { backgroundColor: c.fill }, style]}
     >
       {options.map((o) => {
         const selected = o.value === value;
@@ -56,6 +58,7 @@ export function Segmented<T extends string>({ label, options, value, onChange, s
               styles.seg,
               continuous,
               vertical && styles.segVertical,
+              grid && styles.segGrid,
               selected && [{ backgroundColor: c.surfaceRaised }, raised],
               { opacity: pressed ? 0.7 : 1 },
             ]}
@@ -107,6 +110,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: spaceV2.lg,
     gap: spaceV2.sm,
   },
+  // fb-1023: 2×2 block; each pill takes half the track minus the gap, labels stay on one line.
+  grid: { flexWrap: 'wrap', borderRadius: radiusV2.group },
+  segGrid: { flexGrow: 1, flexShrink: 0, flexBasis: '45%' },
   preview: { alignItems: 'center', justifyContent: 'center' },
   text: { textAlign: 'center', flexShrink: 1 },
   textVertical: { textAlign: 'auto', flex: 1 },

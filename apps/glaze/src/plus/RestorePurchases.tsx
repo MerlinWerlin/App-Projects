@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useT } from '../i18n';
 import { spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
+import { announce } from '../ui/announce';
 import { haptic } from '../ui/haptics';
 import { textStyleFor } from '../ui/i18nLayout';
 import { PillButton } from '../ui/PillButton';
@@ -34,10 +35,13 @@ export function RestorePurchases({ onRestored }: Props) {
       const found = await restore();
       setOutcome(found ? 'restored' : 'none');
       haptic(found ? 'success' : 'warning');
+      // Spoken on every tap, even when the line below doesn't change (night 23 Oct; live regions are Android-only).
+      announce(t(found ? 'plus.lock.restored' : 'plus.lock.restoreNone'));
       if (found) onRestored?.();
     } catch {
       setOutcome('failed');
       haptic('warning');
+      announce(t('plus.lock.restoreFailed'));
     } finally {
       setBusy(false);
     }

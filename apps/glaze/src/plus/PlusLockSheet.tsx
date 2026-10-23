@@ -7,6 +7,7 @@ import { useT } from '../i18n';
 import { continuous, radiusV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import type { FeatherName } from '../ui/featherName';
+import { announce } from '../ui/announce';
 import { haptic } from '../ui/haptics';
 import { textStyleFor } from '../ui/i18nLayout';
 import { PillButton } from '../ui/PillButton';
@@ -66,11 +67,15 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
         onUnlocked?.();
         onClose();
       } else if (res === 'unavailable') {
+        // Never silent (night 23 Oct, from Linework fb-1023 "Unlock Plus did nothing"): felt, shown and spoken on every tap.
         haptic('warning');
         setMessage(t('plus.lock.unavailable'));
+        announce(t('plus.lock.unavailable'));
       }
     } catch {
+      haptic('warning');
       setMessage(t('plus.lock.unavailable'));
+      announce(t('plus.lock.unavailable'));
     } finally {
       setBusy(false);
     }
