@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Nested polygons geometric mandala</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 265.1 42.9 L 357.1 134.9 L 357.1 265.1 L 265.1 357.1 L 134.9 357.1 L 42.9 265.1 L 42.9 134.9 L 134.9 42.9 Z"/>
+    <path d="M 200 50 L 317.3 106.5 L 346.2 233.4 L 265.1 335.1 L 134.9 335.1 L 53.8 233.4 L 82.7 106.5 Z"/>
+    <path d="M 200 72 L 310.9 136 L 310.9 264 L 200 328 L 89.1 264 L 89.1 136 Z"/>
+    <path d="M 262.3 114.2 L 300.8 232.8 L 200 306 L 99.2 232.8 L 137.7 114.2 Z"/>
+    <path d="M 259.4 140.6 L 259.4 259.4 L 140.6 259.4 L 140.6 140.6 Z"/>
+    <path d="M 200 262 L 146.3 169 L 253.7 169 Z"/>
+    <path d="M 170 200 A 30 30 0 1 0 230 200 A 30 30 0 1 0 170 200 Z"/>
+  </g>
+</svg>
