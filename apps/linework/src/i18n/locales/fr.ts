@@ -902,7 +902,7 @@ export const fr: Translation = {
   // T86: v2 empty state action on My drawings (app/drawings.tsx, src/ui/v2/EmptyStateV2.tsx)
   'drawings.empty.action': "Décalquer quelque chose",
   'drawings.empty.actionHint': "Ouvre les modèles pour choisir quoi décalquer",
-  'plus.feature.library': "Tous les modèles : plus de 350 dessins dans toutes les catégories",
+  'plus.feature.library': "Tous les modèles : plus de 800 dessins dans toutes les catégories",
   'plus.feature.outline': "Mode contour pour vos photos",
   'plus.trial.left': { one: "Essai gratuit : {count} jour restant", many: "Essai gratuit : {count} de jours restants", other: "Essai gratuit : {count} jours restants" },
   'plus.trial.ended': "Votre essai gratuit est terminé",

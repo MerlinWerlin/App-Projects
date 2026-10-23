@@ -885,7 +885,7 @@ export const ptBR: Translation = {
   // T86: v2 empty state action on My drawings (app/drawings.tsx, src/ui/v2/EmptyStateV2.tsx)
   'drawings.empty.action': "Decalcar algo",
   'drawings.empty.actionHint': "Abre os modelos para escolher algo para decalcar",
-  'plus.feature.library': "Todos os modelos: mais de 350 desenhos em todas as categorias",
+  'plus.feature.library': "Todos os modelos: mais de 800 desenhos em todas as categorias",
   'plus.feature.outline': "Modo contorno para suas fotos",
   'plus.trial.left': { one: "Teste grátis: falta {count} dia", many: "Teste grátis: faltam {count} de dias", other: "Teste grátis: faltam {count} dias" },
   'plus.trial.ended': "Seu teste grátis terminou",

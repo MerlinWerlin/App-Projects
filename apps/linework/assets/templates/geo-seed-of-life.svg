@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Seed of life</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 140 200 A 60 60 0 1 0 260 200 A 60 60 0 1 0 140 200 Z"/>
+    <path d="M 140 140 A 60 60 0 1 0 260 140 A 60 60 0 1 0 140 140 Z M 192 170 A 60 60 0 1 0 312 170 A 60 60 0 1 0 192 170 Z M 192 230 A 60 60 0 1 0 312 230 A 60 60 0 1 0 192 230 Z M 140 260 A 60 60 0 1 0 260 260 A 60 60 0 1 0 140 260 Z M 88 230 A 60 60 0 1 0 208 230 A 60 60 0 1 0 88 230 Z M 88 170 A 60 60 0 1 0 208 170 A 60 60 0 1 0 88 170 Z"/>
+    <path d="M 80 200 A 120 120 0 1 0 320 200 A 120 120 0 1 0 80 200 Z"/>
+    <path d="M 66 200 A 134 134 0 1 0 334 200 A 134 134 0 1 0 66 200 Z"/>
+  </g>
+</svg>

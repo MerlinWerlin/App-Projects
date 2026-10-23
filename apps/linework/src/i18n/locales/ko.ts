@@ -887,7 +887,7 @@ export const ko: Translation = {
   // T86: v2 empty state action on My drawings (app/drawings.tsx, src/ui/v2/EmptyStateV2.tsx)
   'drawings.empty.action': "무언가 따라 그리기",
   'drawings.empty.actionHint': "템플릿을 열어 따라 그릴 것을 고릅니다",
-  'plus.feature.library': "모든 템플릿: 모든 카테고리의 350개 이상 그림",
+  'plus.feature.library': "모든 템플릿: 모든 카테고리의 800개 이상 그림",
   'plus.feature.outline': "내 사진용 윤곽선 모드",
   'plus.trial.left': { one: "무료 체험: {count}일 남음", other: "무료 체험: {count}일 남음" },
   'plus.trial.ended': "무료 체험이 끝났어요",

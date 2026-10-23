@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Toy sailboat with striped sails</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 201 40 L 244 52 L 201 64 Z"/>
+    <path d="M 64 254 L 336 254 Q 316 308 272 314 L 128 314 Q 84 308 64 254 Z"/>
+    <path d="M 72 274 L 328 274"/>
+    <path d="M 210 76 L 210 238 L 326 238 Z"/>
+    <path d="M 192 96 L 192 238 L 92 238 Z"/>
+    <path d="M 201 40 L 201 40 M 201 64 L 201 254"/>
+    <path d="M 24 334 Q 46 320 68 334 Q 90 320 112 334 Q 134 320 156 334 Q 178 320 200 334 Q 222 320 244 334 Q 266 320 288 334 Q 310 320 332 334 Q 354 320 376 334"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 132 292 A 8 8 0 1 0 148 292 A 8 8 0 1 0 132 292 Z"/>
+    <path d="M 192 292 A 8 8 0 1 0 208 292 A 8 8 0 1 0 192 292 Z"/>
+    <path d="M 252 292 A 8 8 0 1 0 268 292 A 8 8 0 1 0 252 292 Z"/>
+    <path d="M 210 120 L 241.5 120 M 210 160 L 270.1 160 M 210 200 L 298.8 200"/>
+    <path d="M 46 360 Q 68 350 90 360 Q 112 350 134 360 Q 156 350 178 360 Q 200 350 222 360 Q 244 350 266 360 Q 288 350 310 360 Q 332 350 354 360"/>
+    <path d="M 330 58 Q 332.6 67.4 342 70 Q 332.6 72.6 330 82 Q 327.4 72.6 318 70 Q 327.4 67.4 330 58 Z"/>
+    <path d="M 70 111 Q 72 118 79 120 Q 72 122 70 129 Q 68 122 61 120 Q 68 118 70 111 Z"/>
+  </g>
+</svg>

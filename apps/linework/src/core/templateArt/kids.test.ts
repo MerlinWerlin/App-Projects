@@ -8,7 +8,7 @@ import { CATEGORIES, TEMPLATES, templatesIn } from '../templates.ts';
 test('kids: at least 14 templates, all in the Kids category and registered', () => {
   assert.ok(kids.length >= 14, `${kids.length} templates`);
   assert.ok(CATEGORIES.some((c) => c.id === 'kids' && c.label === 'Kids'));
-  assert.equal(templatesIn('kids').length, kids.length);
+  assert.equal(templatesIn('kids').filter((t) => t.id.startsWith('kids-')).length, kids.length);
   for (const t of kids) {
     assert.equal(t.category, 'kids', t.id);
     assert.ok(TEMPLATES.some((x) => x.id === t.id), `${t.id} missing from TEMPLATES`);

@@ -887,7 +887,7 @@ export const de: Translation = {
   // T86: v2 empty state action on My drawings (app/drawings.tsx, src/ui/v2/EmptyStateV2.tsx)
   'drawings.empty.action': "Etwas nachzeichnen",
   'drawings.empty.actionHint': "Öffnet die Vorlagen, um etwas zum Nachzeichnen auszuwählen",
-  'plus.feature.library': "Alle Vorlagen: über 350 Zeichnungen in allen Kategorien",
+  'plus.feature.library': "Alle Vorlagen: über 800 Zeichnungen in allen Kategorien",
   'plus.feature.outline': "Konturmodus für deine Fotos",
   'plus.trial.left': { one: "Gratis-Test: noch {count} Tag", other: "Gratis-Test: noch {count} Tage" },
   'plus.trial.ended': "Dein Gratis-Test ist abgelaufen",

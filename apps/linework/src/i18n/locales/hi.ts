@@ -887,7 +887,7 @@ export const hi: Translation = {
   // T86: v2 empty state action on My drawings (app/drawings.tsx, src/ui/v2/EmptyStateV2.tsx)
   'drawings.empty.action': "कुछ ट्रेस करें",
   'drawings.empty.actionHint': "ट्रेस करने के लिए कुछ चुनने हेतु टेम्पलेट खोलता है",
-  'plus.feature.library': "सभी टेम्पलेट: हर श्रेणी में 350+ ड्रॉइंग",
+  'plus.feature.library': "सभी टेम्पलेट: हर श्रेणी में 800+ ड्रॉइंग",
   'plus.feature.outline': "अपनी फ़ोटो के लिए आउटलाइन मोड",
   'plus.trial.left': { one: "मुफ़्त ट्रायल: {count} दिन बाकी", other: "मुफ़्त ट्रायल: {count} दिन बाकी" },
   'plus.trial.ended': "आपका मुफ़्त ट्रायल खत्म हो गया",

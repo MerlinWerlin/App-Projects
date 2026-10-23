@@ -885,7 +885,7 @@ export const es: Translation = {
   // T86: v2 empty state action on My drawings (app/drawings.tsx, src/ui/v2/EmptyStateV2.tsx)
   'drawings.empty.action': "Calcar algo",
   'drawings.empty.actionHint': "Abre Plantillas para elegir algo que calcar",
-  'plus.feature.library': "Todas las plantillas: más de 350 dibujos en todas las categorías",
+  'plus.feature.library': "Todas las plantillas: más de 800 dibujos en todas las categorías",
   'plus.feature.outline': "Modo contorno para tus fotos",
   'plus.trial.left': { one: "Prueba gratis: queda {count} día", many: "Prueba gratis: quedan {count} de días", other: "Prueba gratis: quedan {count} días" },
   'plus.trial.ended': "Tu prueba gratis ha terminado",
