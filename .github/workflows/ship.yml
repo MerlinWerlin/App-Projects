@@ -98,32 +98,21 @@ jobs:
             eas update:configure --non-interactive || true
           fi
 
-      - name: App Store Connect key for signing and upload
+      - name: Submit profile (App Store Connect app id)
         if: steps.rel.outputs.mode == 'build'
         env:
-          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
-          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
-          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
           ASC_APP_ID: ${{ steps.rel.outputs.ascAppId }}
         run: |
-          printf '%s\n' "$ASC_KEY_P8" > "$RUNNER_TEMP/asc.p8"
-          {
-            echo "EXPO_ASC_API_KEY_PATH=$RUNNER_TEMP/asc.p8"
-            echo "EXPO_ASC_KEY_ID=$ASC_KEY_ID"
-            echo "EXPO_ASC_ISSUER_ID=$ASC_ISSUER_ID"
-          } >> "$GITHUB_ENV"
-          # Submit profile for this run only (never committed): upload with the API key, no Apple password.
-          jq --arg p "$RUNNER_TEMP/asc.p8" --arg k "$ASC_KEY_ID" --arg i "$ASC_ISSUER_ID" --arg a "$ASC_APP_ID" '
-            .submit.production.ios = ({ascApiKeyPath: $p, ascApiKeyId: $k, ascApiKeyIssuerId: $i}
-              + (if $a == "" then {} else {ascAppId: $a} end))' eas.json > eas.tmp.json
-          mv eas.tmp.json eas.json
+          # Signing credentials and the upload key live on Expo's servers (set up once from the PC, 23 Oct 2026),
+          # so the build only needs to know which App Store Connect app to upload to.
+          if [ -n "$ASC_APP_ID" ]; then
+            jq --arg a "$ASC_APP_ID" '.submit.production.ios = ((.submit.production.ios // {}) + {ascAppId: $a})' eas.json > eas.tmp.json
+            mv eas.tmp.json eas.json
+          fi
 
       - name: Build and upload to TestFlight
         if: steps.rel.outputs.mode == 'build'
         env:
-          EXPO_APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-          # Lets EAS log in to Apple with the API key (no password) to check / renew signing in CI.
-          EXPO_APPLE_TEAM_TYPE: ${{ vars.APPLE_TEAM_TYPE || 'INDIVIDUAL' }}
           EAS_BUILD_NO_EXPO_GO_WARNING: 'true'
         run: |
           set -o pipefail
