@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Perpendicular bisector construction</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 60 220 L 200 220 L 340 220"/>
+    <path d="M 200 66.9 L 200 220 L 200 373.1"/>
+    <path d="M 56 220 A 4 4 0 1 0 64 220 A 4 4 0 1 0 56 220 Z"/>
+    <path d="M 336 220 A 4 4 0 1 0 344 220 A 4 4 0 1 0 336 220 Z"/>
+    <path d="M 231.1 194.6 L 229.7 196 L 224.1 196 L 222.7 194.6 L 222.7 190.4 L 224.1 189 L 229.7 189 L 231.1 190.4 L 231.1 198.8 L 228.3 203 L 223.4 203 M 235.3 189 L 240.9 189 L 242.3 190.4 L 242.3 201.6 L 240.9 203 L 235.3 203 L 233.9 201.6 L 233.9 190.4 L 235.3 189 M 246.5 189 L 249.3 189 L 250.7 190.4 L 250.7 193.2 L 249.3 194.6 L 246.5 194.6 L 245.1 193.2 L 245.1 190.4 L 246.5 189"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 218 220 L 218 202 L 200 202"/>
+    <path d="M 217.5 132.9 A 180 180 0 0 0 178.2 84.3"/>
+    <path d="M 178.2 355.7 A 180 180 0 0 0 217.5 307.1"/>
+    <path d="M 221.8 84.3 A 180 180 0 0 0 182.5 132.9"/>
+    <path d="M 182.5 307.1 A 180 180 0 0 0 221.8 355.7"/>
+  </g>
+</svg>

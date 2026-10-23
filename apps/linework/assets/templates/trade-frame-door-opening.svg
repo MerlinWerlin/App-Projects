@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Door opening framing with lintel</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 30 46 L 370 46 L 370 62 L 30 62 Z"/>
+    <path d="M 30 62 L 370 62 L 370 78 L 30 78 Z"/>
+    <path d="M 30 340 L 128 340 L 128 356 L 30 356 Z"/>
+    <path d="M 272 340 L 370 340 L 370 356 L 272 356 Z"/>
+    <path d="M 30 78 L 44 78 L 44 340 L 30 340 Z M 356 78 L 370 78 L 370 340 L 356 340 Z M 100 78 L 114 78 L 114 340 L 100 340 Z M 286 78 L 300 78 L 300 340 L 286 340 Z M 114 150 L 128 150 L 128 340 L 114 340 Z M 272 150 L 286 150 L 286 340 L 272 340 Z"/>
+    <path d="M 114 116 L 286 116 L 286 150 L 114 150 Z"/>
+    <path d="M 153 78 L 167 78 L 167 116 L 153 116 Z M 193 78 L 207 78 L 207 116 L 193 116 Z M 233 78 L 247 78 L 247 116 L 233 116 Z"/>
+    <path d="M 179.3 99.5 L 179.3 108.5 L 184.7 108.5 M 187.9 99.5 L 190.6 99.5 M 189.2 99.5 L 189.2 108.5 M 187.9 108.5 L 190.6 108.5 M 193.7 108.5 L 193.7 99.5 L 199.1 108.5 L 199.1 99.5 M 200.9 99.5 L 206.3 99.5 M 203.6 99.5 L 203.6 108.5 M 213.5 99.5 L 208.1 99.5 L 208.1 108.5 L 213.5 108.5 M 208.1 104 L 212.2 104 M 215.3 99.5 L 215.3 108.5 L 220.7 108.5"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 114 133 L 286 133"/>
+    <path d="M 268 340 A 140 140 0 0 0 218 232.8"/>
+  </g>
+</svg>

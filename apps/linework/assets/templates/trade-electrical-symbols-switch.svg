@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Switch symbols (generic)</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 72 120 A 8 8 0 1 0 88 120 A 8 8 0 1 0 72 120 Z M 85.7 114.3 L 115.4 84.6 M 115.4 84.6 L 125.3 94.5"/>
+    <path d="M 192 120 A 8 8 0 1 0 208 120 A 8 8 0 1 0 192 120 Z M 235.4 84.6 L 164.6 155.4 M 235.4 84.6 L 245.3 94.5 M 164.6 155.4 L 154.7 145.5"/>
+    <path d="M 312 120 A 8 8 0 1 0 328 120 A 8 8 0 1 0 312 120 Z M 355.4 84.6 L 284.6 155.4 M 284.6 84.6 L 355.4 155.4 M 355.4 84.6 L 365.3 94.5 M 284.6 155.4 L 274.7 145.5"/>
+    <path d="M 72 290 A 8 8 0 1 0 88 290 A 8 8 0 1 0 72 290 Z M 85.7 284.3 L 115.4 254.6 M 115.4 254.6 L 125.3 264.5"/>
+    <path d="M 46.2 302.3 L 117.6 276.3 M 107.6 275.4 L 117.6 276.3 L 110.5 283.4"/>
+    <path d="M 192 290 A 8 8 0 1 0 208 290 A 8 8 0 1 0 192 290 Z M 205.7 284.3 L 235.4 254.6 M 235.4 254.6 L 245.3 264.5 M 228.3 261.7 L 238.2 271.6"/>
+    <path d="M 302 290 A 18 18 0 1 0 338 290 A 18 18 0 1 0 302 290 Z"/>
+    <path d="M 313 290 A 7 7 0 1 0 327 290 A 7 7 0 1 0 313 290 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 140 30 L 140 370"/>
+    <path d="M 260 30 L 260 370"/>
+    <path d="M 20 205 L 380 205"/>
+  </g>
+</svg>

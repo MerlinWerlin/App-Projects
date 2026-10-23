@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Hexagon by compass (radius stepped six times)</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 50 200 A 150 150 0 1 0 350 200 A 150 150 0 1 0 50 200 Z"/>
+    <path d="M 200 50 L 70.1 125 L 70.1 275 L 200 350 L 329.9 275 L 329.9 125 Z"/>
+    <path d="M 186.8 300.7 L 189 298.5 L 189 309.5 M 186.8 309.5 L 191.2 309.5 M 194 300.7 L 195 298.5 L 199.5 298.5 L 200.5 300.2 L 200.5 302.4 L 194 309.5 L 200.5 309.5 M 203.9 298.5 L 208.3 298.5 L 209.4 299.6 L 209.4 308.4 L 208.3 309.5 L 203.9 309.5 L 202.8 308.4 L 202.8 299.6 L 203.9 298.5 M 212.7 298.5 L 214.9 298.5 L 216 299.6 L 216 301.8 L 214.9 302.9 L 212.7 302.9 L 211.6 301.8 L 211.6 299.6 L 212.7 298.5"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 70.1 125 A 150 150 0 0 0 329.9 125 M 70.1 275 A 150 150 0 0 0 200 50 M 200 350 A 150 150 0 0 0 70.1 125 M 329.9 275 A 150 150 0 0 0 70.1 275 M 329.9 125 A 150 150 0 0 0 200 350 M 200 50 A 150 150 0 0 0 329.9 275"/>
+    <path d="M 197 200 A 3 3 0 1 0 203 200 A 3 3 0 1 0 197 200 Z"/>
+  </g>
+</svg>

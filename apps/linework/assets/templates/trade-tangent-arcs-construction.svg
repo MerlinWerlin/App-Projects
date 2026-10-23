@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Tangent arcs joining two circles</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 60 240 A 50 50 0 1 0 160 240 A 50 50 0 1 0 60 240 Z"/>
+    <path d="M 255 230 A 35 35 0 1 0 325 230 A 35 35 0 1 0 255 230 Z"/>
+    <path d="M 140 200 A 110 110 0 0 0 269.7 201.5"/>
+    <path d="M 94.4 287.5 A 250 250 0 0 0 309.1 259.3"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 110 240 L 205.9 111.9 L 290 230"/>
+    <path d="M 94.4 287.5 L 172.4 50 L 309.1 259.3"/>
+    <path d="M 202.9 111.9 A 3 3 0 1 0 208.9 111.9 A 3 3 0 1 0 202.9 111.9 Z"/>
+    <path d="M 169.4 50 A 3 3 0 1 0 175.4 50 A 3 3 0 1 0 169.4 50 Z"/>
+    <path d="M 107 240 A 3 3 0 1 0 113 240 A 3 3 0 1 0 107 240 Z"/>
+    <path d="M 287 230 A 3 3 0 1 0 293 230 A 3 3 0 1 0 287 230 Z"/>
+    <path d="M 226.7 130.5 A 160 160 0 0 0 182.2 97.2"/>
+    <path d="M 227.7 99.1 A 145 145 0 0 0 186.6 128.3"/>
+  </g>
+</svg>

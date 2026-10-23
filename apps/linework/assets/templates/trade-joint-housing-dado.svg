@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Housing (dado) joint</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 250 L 175 250 L 175 275 L 225 275 L 225 250 L 360 250 L 360 320 L 40 320 Z"/>
+    <path d="M 175 50 L 225 50 L 225 220 L 175 220 Z"/>
+    <path d="M 260 150 L 260 230 M 263.8 221.8 L 260 230 L 256.2 221.8"/>
+    <path d="M 279.5 286.7 L 281.8 284.5 L 281.8 295.5 M 279.5 295.5 L 284 295.5 M 292.2 284.5 L 287.8 295.5 M 295.5 284.5 L 302.1 284.5 L 298.8 288.9 L 301 288.9 L 302.1 290.6 L 302.1 293.9 L 301 295.5 L 296.6 295.5 L 295.5 294.4"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 175 220 L 225 220"/>
+    <path d="M 50 300 L 60 310"/>
+    <path d="M 75 300 L 85 310"/>
+    <path d="M 100 300 L 110 310"/>
+    <path d="M 125 300 L 135 310"/>
+    <path d="M 150 300 L 160 310"/>
+    <path d="M 250 300 L 260 310"/>
+    <path d="M 275 300 L 285 310"/>
+    <path d="M 300 300 L 310 310"/>
+    <path d="M 325 300 L 335 310"/>
+    <path d="M 350 300 L 360 310"/>
+  </g>
+</svg>

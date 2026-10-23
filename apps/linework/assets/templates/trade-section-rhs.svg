@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Square hollow section</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 110 80 L 290 80 A 30 30 0 0 1 320 110 L 320 290 A 30 30 0 0 1 290 320 L 110 320 A 30 30 0 0 1 80 290 L 80 110 A 30 30 0 0 1 110 80 Z"/>
+    <path d="M 118 108 L 282 108 A 10 10 0 0 1 292 118 L 292 282 A 10 10 0 0 1 282 292 L 118 292 A 10 10 0 0 1 108 282 L 108 118 A 10 10 0 0 1 118 108 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 200 60 L 200 340"/>
+    <path d="M 60 200 L 340 200"/>
+  </g>
+</svg>

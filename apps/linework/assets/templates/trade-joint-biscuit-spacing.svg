@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Biscuit joint spacing layout</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 90 L 360 90 L 360 190 L 40 190 Z"/>
+    <path d="M 40 210 L 360 210 L 360 310 L 40 310 Z"/>
+    <path d="M 46 190 A 40 40 0 0 1 98 190 M 46 210 A 40 40 0 0 0 98 210 M 110 190 A 40 40 0 0 1 162 190 M 110 210 A 40 40 0 0 0 162 210 M 174 190 A 40 40 0 0 1 226 190 M 174 210 A 40 40 0 0 0 226 210 M 238 190 A 40 40 0 0 1 290 190 M 238 210 A 40 40 0 0 0 290 210 M 302 190 A 40 40 0 0 1 354 190 M 302 210 A 40 40 0 0 0 354 210"/>
+    <path d="M 46.5 67 L 48.5 65 L 48.5 75 M 46.5 75 L 50.5 75 M 58 65 L 54 75 M 61 67 L 62 65 L 66 65 L 67 66.5 L 67 68.5 L 61 75 L 67 75"/>
+    <path d="M 102.5 67 L 104.5 65 L 104.5 75 M 102.5 75 L 106.5 75"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 72 160 L 72 196"/>
+    <path d="M 72 240 L 72 204"/>
+    <path d="M 136 160 L 136 196"/>
+    <path d="M 136 240 L 136 204"/>
+    <path d="M 200 160 L 200 196"/>
+    <path d="M 200 240 L 200 204"/>
+    <path d="M 264 160 L 264 196"/>
+    <path d="M 264 240 L 264 204"/>
+    <path d="M 328 160 L 328 196"/>
+    <path d="M 328 240 L 328 204"/>
+    <path d="M 40 80 L 72 80 M 66.6 77.5 L 72 80 L 66.6 82.5 M 45.4 82.5 L 40 80 L 45.4 77.5"/>
+    <path d="M 72 80 L 136 80 M 130.6 77.5 L 136 80 L 130.6 82.5 M 77.4 82.5 L 72 80 L 77.4 77.5"/>
+  </g>
+</svg>

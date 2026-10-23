@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Half-lap joint</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 250 L 190 250 L 190 280 L 250 280 L 250 310 L 40 310 Z"/>
+    <path d="M 190 120 L 360 120 L 360 180 L 250 180 L 250 150 L 190 150 Z"/>
+    <path d="M 220 192 L 220 268 M 223.8 259.8 L 220 268 L 216.2 259.8"/>
+    <path d="M 269.5 261.7 L 271.8 259.5 L 271.8 270.5 M 269.5 270.5 L 274 270.5 M 282.2 259.5 L 277.8 270.5 M 285.5 261.7 L 286.6 259.5 L 291 259.5 L 292.1 261.2 L 292.1 263.4 L 285.5 270.5 L 292.1 270.5"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 190 280 L 190 310"/>
+    <path d="M 190 150 L 190 180"/>
+    <path d="M 190 180 L 250 180"/>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Arc through three points</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 362.6 197.4 A 230 230 0 0 0 37.4 197.4"/>
+    <path d="M 37.4 197.4 L 118.7 163.7 L 200 130 L 281.3 163.7 L 362.6 197.4"/>
+    <path d="M 107.2 136 L 118.7 163.7 L 200 360"/>
+    <path d="M 292.8 136 L 281.3 163.7 L 200 360"/>
+    <path d="M 32.4 197.4 A 5 5 0 1 0 42.4 197.4 A 5 5 0 1 0 32.4 197.4 Z M 195 130 A 5 5 0 1 0 205 130 A 5 5 0 1 0 195 130 Z M 357.6 197.4 A 5 5 0 1 0 367.6 197.4 A 5 5 0 1 0 357.6 197.4 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 129.8 159.1 L 125.2 148 L 114.1 152.6"/>
+    <path d="M 292.4 168.3 L 297 157.2 L 285.9 152.6"/>
+    <path d="M 190 360 L 210 360"/>
+    <path d="M 200 350 L 200 364"/>
+  </g>
+</svg>

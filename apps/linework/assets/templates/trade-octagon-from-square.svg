@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Octagon from a square (corner arcs)</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 60 60 L 340 60 L 340 340 L 60 340 Z"/>
+    <path d="M 142 60 L 258 60 L 340 142 L 340 258 L 258 340 L 142 340 L 60 258 L 60 142 Z"/>
+    <path d="M 185.6 82.4 L 188 80 L 188 92 M 185.6 92 L 190.4 92 M 193.4 80 L 200.6 80 L 197 84.8 L 199.4 84.8 L 200.6 86.6 L 200.6 90.2 L 199.4 92 L 194.6 92 L 193.4 90.8 M 210.2 80 L 203.6 80 L 203 85.4 L 208.4 84.8 L 210.2 86.6 L 210.2 90.2 L 209 92 L 204.2 92 L 203 90.8 M 213.8 80 L 216.2 80 L 217.4 81.2 L 217.4 83.6 L 216.2 84.8 L 213.8 84.8 L 212.6 83.6 L 212.6 81.2 L 213.8 80"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 60 60 L 340 340"/>
+    <path d="M 340 60 L 60 340"/>
+    <path d="M 60 258 A 198 198 0 0 0 258 60"/>
+    <path d="M 142 60 A 198 198 0 0 0 340 258"/>
+    <path d="M 340 142 A 198 198 0 0 0 142 340"/>
+    <path d="M 258 340 A 198 198 0 0 0 60 142"/>
+  </g>
+</svg>

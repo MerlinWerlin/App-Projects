@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Equal 45° lateral layout</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 30 170 L 137.6 170 L 277.3 30.3"/>
+    <path d="M 370 170 L 232.4 170 L 319.7 72.7"/>
+    <path d="M 277.3 30.3 L 319.7 72.7"/>
+    <path d="M 30 230 L 370 230"/>
+    <path d="M 137.6 170 L 150 200 L 232.4 170"/>
+    <path d="M 282 168 L 282 152 L 274.8 163.2 L 284.4 163.2 M 297.2 152 L 288.4 152 L 287.6 159.2 L 294.8 158.4 L 297.2 160.8 L 297.2 165.6 L 295.6 168 L 289.2 168 L 287.6 166.4 M 302 152 L 305.2 152 L 306.8 153.6 L 306.8 156.8 L 305.2 158.4 L 302 158.4 L 300.4 156.8 L 300.4 153.6 L 302 152"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 20 200 L 150 200 L 380 200"/>
+    <path d="M 150 200 L 305.6 44.4"/>
+    <path d="M 250 200 A 100 100 0 0 0 220.7 129.3"/>
+  </g>
+</svg>

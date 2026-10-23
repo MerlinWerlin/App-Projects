@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Equal angle section</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 80 340 L 80 80 L 108 80 A 8 8 0 0 1 116 88 L 116 280 A 24 24 0 0 0 140 304 L 332 304 A 8 8 0 0 1 340 312 L 340 340 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 80 106 L 96 90 M 80 122 L 112 90 M 80 138 L 116 102 M 80 154 L 116 118 M 80 170 L 116 134 M 80 186 L 116 150 M 80 202 L 116 166 M 80 218 L 116 182 M 80 234 L 116 198 M 80 250 L 116 214 M 80 266 L 116 230 M 80 282 L 116 246 M 80 298 L 116 262 M 80 314 L 116 278 M 80 330 L 116 294 M 86 340 L 116 310 M 102 340 L 116 326 M 116 320 L 132 304 M 116 336 L 148 304 M 128 340 L 164 304 M 144 340 L 180 304 M 160 340 L 196 304 M 176 340 L 212 304 M 192 340 L 228 304 M 208 340 L 244 304 M 224 340 L 260 304 M 240 340 L 276 304 M 256 340 L 292 304 M 272 340 L 308 304 M 288 340 L 324 304 M 304 340 L 334 310 M 320 340 L 334 326"/>
+  </g>
+</svg>

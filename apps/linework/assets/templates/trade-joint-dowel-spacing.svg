@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Dowel joint layout</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 60 L 360 60 L 360 130 L 40 130 Z"/>
+    <path d="M 40 260 L 360 260 L 360 330 L 40 330 Z"/>
+    <path d="M 58 95 A 12 12 0 1 0 82 95 A 12 12 0 1 0 58 95 Z M 58 295 A 12 12 0 1 0 82 295 A 12 12 0 1 0 58 295 Z M 138 95 A 12 12 0 1 0 162 95 A 12 12 0 1 0 138 95 Z M 138 295 A 12 12 0 1 0 162 295 A 12 12 0 1 0 138 295 Z M 238 95 A 12 12 0 1 0 262 95 A 12 12 0 1 0 238 95 Z M 238 295 A 12 12 0 1 0 262 295 A 12 12 0 1 0 238 295 Z M 318 95 A 12 12 0 1 0 342 95 A 12 12 0 1 0 318 95 Z M 318 295 A 12 12 0 1 0 342 295 A 12 12 0 1 0 318 295 Z"/>
+    <path d="M 364.5 109.3 L 366.3 107.5 L 366.3 116.5 M 364.5 116.5 L 368.1 116.5 M 374.8 107.5 L 371.2 116.5 M 377.5 109.3 L 378.4 107.5 L 382 107.5 L 382.9 108.9 L 382.9 110.7 L 377.5 116.5 L 382.9 116.5"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 30 95 L 370 95"/>
+    <path d="M 30 295 L 370 295"/>
+    <path d="M 70 140 L 70 250"/>
+    <path d="M 150 140 L 150 250"/>
+    <path d="M 250 140 L 250 250"/>
+    <path d="M 330 140 L 330 250"/>
+    <path d="M 20 60 L 20 95 M 22.5 89.6 L 20 95 L 17.5 89.6 M 17.5 65.4 L 20 60 L 22.5 65.4"/>
+  </g>
+</svg>

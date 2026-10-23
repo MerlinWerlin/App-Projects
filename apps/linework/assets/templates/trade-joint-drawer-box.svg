@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Drawer box joint corner</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 40 L 190 40 L 190 150 L 40 150 Z"/>
+    <path d="M 56 56 L 174 56 L 174 134 L 56 134 Z"/>
+    <path d="M 230 40 L 270 40 L 270 85.7 L 230 85.7 L 230 131.4 L 270 131.4 L 270 177.1 L 230 177.1 L 230 222.9 L 270 222.9 L 270 268.6 L 230 268.6 L 230 314.3 L 270 314.3 L 270 360 L 230 360"/>
+    <path d="M 230 40 L 360 40"/>
+    <path d="M 230 360 L 360 360"/>
+    <path d="M 230 40 L 230 360"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 270 40 L 270 360"/>
+  </g>
+</svg>

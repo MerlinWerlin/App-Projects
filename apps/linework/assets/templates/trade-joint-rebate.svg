@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Rebate (rabbet) joint</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 60 360 L 60 140 L 100 140 L 100 180 L 140 180 L 140 360 Z"/>
+    <path d="M 170 70 L 370 70 L 370 110 L 170 110 Z"/>
+    <path d="M 200 120 L 148 150 M 157 149.2 L 148 150 L 153.2 142.6"/>
+    <path d="M 70.5 123 L 72.5 121 L 72.5 131 M 70.5 131 L 74.5 131 M 82 121 L 78 131 M 85 123 L 86 121 L 90 121 L 91 122.5 L 91 124.5 L 85 131 L 91 131"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 100 180 L 100 360"/>
+  </g>
+</svg>
