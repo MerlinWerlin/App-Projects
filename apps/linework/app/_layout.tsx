@@ -16,6 +16,7 @@ import { initI18n, useDeviceLanguageWatcher, useT } from '../src/i18n';
 import { startupDirectionCheck } from '../src/i18n/direction';
 import { checkForUpdateQuietly } from '../src/native/updates';
 import { IntroDraw } from '../src/ui/IntroDraw';
+import { INTRO_MS, startupReady } from '../src/core/introPath';
 import { isRTL } from '../src/i18n/direction';
 
 // Trace runs on a dark camera view; its backdrop is the dark graphite so Prepare → Trace fades through graphite.
@@ -68,7 +69,13 @@ export default function RootLayout() {
     }
   }, []);
 
-  const ready = (loaded || !!error) && i18nReady;
+  // D111-2: never an endless splash — go ahead after INTRO_MS.maxWait even if fonts or languages are still loading.
+  const [timedOut, setTimedOut] = useState(false);
+  useEffect(() => {
+    const id = setTimeout(() => setTimedOut(true), INTRO_MS.maxWait);
+    return () => clearTimeout(id);
+  }, []);
+  const ready = startupReady(loaded || !!error, i18nReady, timedOut ? INTRO_MS.maxWait : 0);
   // Opening (fb-1022c): the native splash hands over to IntroDraw on its first frame; the pencil draws the brand line,
   // light runs along it while fonts and languages load, then it fades away over the app. Never takes touches.
   const [introDone, setIntroDone] = useState(false);

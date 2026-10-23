@@ -78,4 +78,13 @@ export function introSamples(count = 40): { t: number; x: number; y: number }[] 
 }
 
 /** Timings (ms). The line draws once; the light runs along it until the app is ready. */
-export const INTRO_MS = { draw: 1600, shimmer: 1100, settle: 150, fadeOut: 380 } as const;
+export const INTRO_MS = { draw: 1600, shimmer: 1100, settle: 150, fadeOut: 380, maxWait: 3000 } as const;
+
+/**
+ * D111-2: the app (and the intro's fade) go ahead when fonts and languages are loaded, or after INTRO_MS.maxWait
+ * from launch even if they are not (system fonts / the default language until they arrive), so a slow device never
+ * sees an endless splash. Never waits on the template catalogue.
+ */
+export function startupReady(fontsDone: boolean, i18nDone: boolean, elapsedMs: number): boolean {
+  return (fontsDone && i18nDone) || elapsedMs >= INTRO_MS.maxWait;
+}
