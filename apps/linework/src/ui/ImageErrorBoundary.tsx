@@ -1,8 +1,8 @@
 // T48: friendly message when a photo can't be opened or processed, instead of a red render error.
 // - ImageErrorMessage: the card (what happened + what to try), used directly for async errors.
 // - ImageErrorBoundary: React error boundary that shows the same card when its children throw while rendering.
-import { Component, type ErrorInfo, type ReactNode } from 'react';
-import { Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { Component, useEffect, type ErrorInfo, type ReactNode } from 'react';
+import { AccessibilityInfo, Platform, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useTheme } from '../theme/useTheme';
 import { radius, space } from '../theme/tokens';
 import { useTypography } from '../theme/typography';
@@ -52,6 +52,18 @@ export function ImageErrorMessage({ kind, onRetry, onTryAnother, onGoBack, style
   const { c } = useTheme();
   const { t } = useT();
   const retry = onRetry && canRetry(kind) ? onRetry : undefined;
+  const title = t(TITLE[kind]);
+  const body = t(BODY[kind]);
+  // Night 23 Oct (cross-app, from Couch/Glaze "never silent"): live regions and role="alert" are not spoken on
+  // iOS, so VoiceOver users heard nothing when a photo couldn't be opened. Say it once per error kind.
+  useEffect(() => {
+    if (Platform.OS !== 'ios') return;
+    try {
+      AccessibilityInfo.announceForAccessibility(`${title}. ${body}`);
+    } catch {
+      // Screen reader API unavailable: the card is still on screen.
+    }
+  }, [kind, title, body]);
   return (
     <View
       accessibilityLiveRegion="polite"
@@ -71,13 +83,13 @@ export function ImageErrorMessage({ kind, onRetry, onTryAnother, onGoBack, style
         maxFontSizeMultiplier={1.4}
         style={{ ...ty.face('display'), fontSize: 19, lineHeight: ty.lhOf(25), color: c.graphite }}
       >
-        {t(TITLE[kind])}
+        {title}
       </Text>
       <Text
         accessibilityRole="alert"
         style={{ ...ty.face('body'), fontSize: 15, lineHeight: ty.lhOf(21), color: c.graphite, marginTop: space.xs }}
       >
-        {t(BODY[kind])}
+        {body}
       </Text>
       {retry ? (
         <Button title={t('common.tryAgain')} variant="secondary" icon="refresh-cw" onPress={retry} style={{ marginTop: space.md }} />
