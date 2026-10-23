@@ -1,4 +1,5 @@
 {
   "mode": "build",
-  "note": "Glaze: app icon, opening animation, calm fades and 2x2 tabs, icon/mascot question; TestFlight-safe native settings (24 Oct)"
+  "note": "Glaze: app icon, opening animation, calm fades and 2x2 tabs, icon/mascot question; TestFlight-safe native settings (24 Oct)",
+  "ascAppId": "6826415074"
 }
