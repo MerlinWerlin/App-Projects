@@ -122,6 +122,9 @@ jobs:
         if: steps.rel.outputs.mode == 'build'
         env:
           EXPO_APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          # Lets EAS log in to Apple with the API key (no password) to check / renew signing in CI.
+          EXPO_APPLE_TEAM_TYPE: ${{ vars.APPLE_TEAM_TYPE || 'INDIVIDUAL' }}
+          EAS_BUILD_NO_EXPO_GO_WARNING: 'true'
         run: |
           set -o pipefail
           eas build --platform ios --profile production --non-interactive --auto-submit --no-wait --message "${{ steps.rel.outputs.note }}" 2>&1 | tee "$RUNNER_TEMP/ship.log"
