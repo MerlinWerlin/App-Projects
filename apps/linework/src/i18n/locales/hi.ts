@@ -886,4 +886,7 @@ export const hi: Translation = {
   'templates.locked': "Plus",
   'templates.lockedLabel': "{name}, Linework Plus चाहिए",
   'prepare.outlineLocked': "आउटलाइन मोड Linework Plus का हिस्सा है",
+  'plus.buyFailedTitle': "अनलॉक नहीं हुआ",
+  'plus.buyFailed': "खरीदारी पूरी नहीं हुई और कोई शुल्क नहीं लिया गया। कृपया थोड़ी देर बाद फिर कोशिश करें।",
+  'plus.storeNotReady': "App Store अभी Linework Plus नहीं दे रहा है। कोई शुल्क नहीं लिया गया। कृपया बाद में फिर कोशिश करें।",
 };

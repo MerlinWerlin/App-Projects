@@ -60,4 +60,7 @@ export const plus = {
   'plus.notInExpoGo': "Purchases work in the App Store version",
   'plus.endTrial': "End trial now (test build)",
   'plus.resetTrial': "Restart trial (test build)",
+  'plus.buyFailedTitle': "Not unlocked",
+  'plus.buyFailed': "The purchase didn't go through, and nothing was charged. Please try again in a moment.",
+  'plus.storeNotReady': "The App Store isn't offering Linework Plus right now. Nothing was charged. Please try again later.",
 } as const;

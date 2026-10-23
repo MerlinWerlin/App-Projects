@@ -67,7 +67,12 @@ export default function PlusScreen() {
   const onBuy = async () => {
     select();
     const s = await plus.purchase();
-    if (s.owned) tap();
+    if (s.owned) {
+      tap();
+      return;
+    }
+    // Never fail silently (fb-1023): say whether the store answered at all.
+    Alert.alert(t('plus.buyFailedTitle'), plus.price ? t('plus.buyFailed') : t('plus.storeNotReady'));
   };
 
   const goBack = () => {

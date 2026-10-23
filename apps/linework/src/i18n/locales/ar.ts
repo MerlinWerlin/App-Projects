@@ -935,4 +935,7 @@ export const ar: Translation = {
   'templates.locked': "Plus",
   'templates.lockedLabel': "{name}، يتطلب Linework Plus",
   'prepare.outlineLocked': "وضع الخطوط الخارجية جزء من Linework Plus",
+  'plus.buyFailedTitle': "لم يُفتح القفل",
+  'plus.buyFailed': "لم تكتمل عملية الشراء ولم يُخصم أي مبلغ. حاول مرة أخرى بعد قليل.",
+  'plus.storeNotReady': "لا يعرض App Store الآن Linework Plus. لم يُخصم أي مبلغ. حاول لاحقًا.",
 };

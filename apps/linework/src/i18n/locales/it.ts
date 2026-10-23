@@ -901,4 +901,7 @@ export const it: Translation = {
   'templates.locked': "Plus",
   'templates.lockedLabel': "{name}, richiede Linework Plus",
   'prepare.outlineLocked': "La modalità contorno fa parte di Linework Plus",
+  'plus.buyFailedTitle': "Non sbloccato",
+  'plus.buyFailed': "L’acquisto non è andato a buon fine e non è stato addebitato nulla. Riprova tra poco.",
+  'plus.storeNotReady': "L’App Store non offre Linework Plus in questo momento. Non è stato addebitato nulla. Riprova più tardi.",
 };

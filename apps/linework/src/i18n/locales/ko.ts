@@ -886,4 +886,7 @@ export const ko: Translation = {
   'templates.locked': "Plus",
   'templates.lockedLabel': "{name}, Linework Plus 필요",
   'prepare.outlineLocked': "윤곽선 모드는 Linework Plus에 포함돼요",
+  'plus.buyFailedTitle': "잠금 해제되지 않았어요",
+  'plus.buyFailed': "구매가 완료되지 않았고 요금도 청구되지 않았어요. 잠시 후 다시 시도해 주세요.",
+  'plus.storeNotReady': "지금은 App Store에서 Linework Plus를 구매할 수 없어요. 요금은 청구되지 않았어요. 나중에 다시 시도해 주세요.",
 };
