@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Isometric 30° grid</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 0 0 L 0 400"/>
+    <path d="M 69.3 0 L 69.3 400"/>
+    <path d="M 138.6 0 L 138.6 400"/>
+    <path d="M 207.8 0 L 207.8 400"/>
+    <path d="M 277.1 0 L 277.1 400"/>
+    <path d="M 346.4 0 L 346.4 400"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 0 40 L 69.3 0"/>
+    <path d="M 330.7 0 L 400 40"/>
+    <path d="M 0 80 L 138.6 0"/>
+    <path d="M 261.4 0 L 400 80"/>
+    <path d="M 0 120 L 207.8 0"/>
+    <path d="M 192.2 0 L 400 120"/>
+    <path d="M 0 160 L 277.1 0"/>
+    <path d="M 122.9 0 L 400 160"/>
+    <path d="M 0 200 L 346.4 0"/>
+    <path d="M 53.6 0 L 400 200"/>
+    <path d="M 0 240 L 400 9.1"/>
+    <path d="M 0 9.1 L 400 240"/>
+    <path d="M 0 280 L 400 49.1"/>
+    <path d="M 0 49.1 L 400 280"/>
+    <path d="M 0 320 L 400 89.1"/>
+    <path d="M 0 89.1 L 400 320"/>
+    <path d="M 0 360 L 400 129.1"/>
+    <path d="M 0 129.1 L 400 360"/>
+    <path d="M 0 400 L 400 169.1"/>
+    <path d="M 0 169.1 L 400 400"/>
+    <path d="M 69.3 400 L 400 209.1"/>
+    <path d="M 0 209.1 L 330.7 400"/>
+    <path d="M 138.6 400 L 400 249.1"/>
+    <path d="M 0 249.1 L 261.4 400"/>
+    <path d="M 207.8 400 L 400 289.1"/>
+    <path d="M 0 289.1 L 192.2 400"/>
+    <path d="M 277.1 400 L 400 329.1"/>
+    <path d="M 0 329.1 L 122.9 400"/>
+    <path d="M 346.4 400 L 400 369.1"/>
+    <path d="M 0 369.1 L 53.6 400"/>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>35° roof pitch</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 50 320 L 200 215 L 350 320"/>
+    <path d="M 40 320 L 360 320"/>
+    <path d="M 182.9 345 L 193.7 345 L 188.3 352.2 L 191.9 352.2 L 193.7 354.9 L 193.7 360.3 L 191.9 363 L 184.7 363 L 182.9 361.2"/>
+    <path d="M 208.1 345 L 198.2 345 L 197.3 353.1 L 205.4 352.2 L 208.1 354.9 L 208.1 360.3 L 206.3 363 L 199.1 363 L 197.3 361.2"/>
+    <path d="M 213.5 345 L 217.1 345 L 218.9 346.8 L 218.9 350.4 L 217.1 352.2 L 213.5 352.2 L 211.7 350.4 L 211.7 346.8 L 213.5 345"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 200 215 L 200 320"/>
+    <path d="M 214 320 L 214 306 L 200 306"/>
+    <path d="M 120 320 A 70 70 0 0 0 107.3 279.8"/>
+  </g>
+</svg>

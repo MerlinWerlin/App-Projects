@@ -115,6 +115,8 @@ export const hi: Translation = {
   'templates.category.fantasy': 'फ़ैंटेसी और गॉथिक',
   'templates.category.stilllife': 'स्टिल लाइफ़ और वस्तुएँ',
   'templates.category.shapes': 'सरल आकार',
+  'templates.category.trade': "कारीगरी और वर्कशॉप",
+  'templates.tradeNote': "कोण सटीक हैं। काग़ज़ पर लंबाई पैमाने पर नहीं है।",
   'templates.category.cute': 'प्यारे और चिबी',
   'templates.category.heroes': 'हीरो',
   'templates.category.game': 'गेम की दुनिया',

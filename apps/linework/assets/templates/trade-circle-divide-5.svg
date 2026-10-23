@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Circle divided into 5</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 200 A 160 160 0 1 0 360 200 A 160 160 0 1 0 40 200 Z"/>
+    <path d="M 195 200 A 5 5 0 1 0 205 200 A 5 5 0 1 0 195 200 Z"/>
+    <path d="M 200 192 L 200 40"/>
+    <path d="M 192.4 197.5 L 47.8 150.6"/>
+    <path d="M 195.3 206.5 L 106 329.4"/>
+    <path d="M 204.7 206.5 L 294 329.4"/>
+    <path d="M 207.6 197.5 L 352.2 150.6"/>
+    <path d="M 156.6 151.6 L 165 151.6 L 159.4 165.6"/>
+    <path d="M 167.8 154.4 L 169.2 151.6 L 174.8 151.6 L 176.2 153.7 L 176.2 156.5 L 167.8 165.6 L 176.2 165.6"/>
+    <path d="M 180.4 151.6 L 183.2 151.6 L 184.6 153 L 184.6 155.8 L 183.2 157.2 L 180.4 157.2 L 179 155.8 L 179 153 L 180.4 151.6"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 112 200 A 88 88 0 1 0 288 200 A 88 88 0 1 0 112 200 Z"/>
+  </g>
+</svg>

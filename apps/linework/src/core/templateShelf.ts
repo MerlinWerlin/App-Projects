@@ -14,7 +14,7 @@ export const NEW_SHELF_PARAM = 'new';
  * Categories that make up the "New" bubble: the set added most recently. T65 (18 Oct 2026) added Cute & chibi; fb-1022 (22 Oct 2026) added Heroes, Game world, Movie night, Fairy tales and Kids; fb-1022b added Sea life and the kawaii batches (NEW_ID_PREFIXES).
  * When a new set ships (T71 …), put its category here and drop the old one.
  */
-export const NEW_SETS: readonly TemplateCategory[] = ['heroes', 'game', 'movies', 'fairytales', 'kids', 'sealife'];
+export const NEW_SETS: readonly TemplateCategory[] = ['heroes', 'game', 'movies', 'fairytales', 'kids', 'sealife', 'trade'];
 
 /**
  * Batches that joined an older category and still count as New (fb-1022b, D110-2): the kawaii food/friends batches
@@ -24,6 +24,7 @@ export const NEW_ID_PREFIXES: readonly string[] = ['kawaii-'];
 
 /** Bubble order after All and New: the most asked-for first (market-1018), then the rest of the catalogue. */
 export const SHELF_ORDER: readonly TemplateCategory[] = [
+  'trade',
   'heroes',
   'game',
   'movies',

@@ -37,6 +37,8 @@ export function starterIds(templates: readonly Template[], count: number): Set<s
   const byCat = new Map<string, Template[]>();
   for (const t of templates) {
     if ((t.level ?? 'beginner') !== 'beginner') continue;
+    // The Trade & workshop pack is Linework Plus only (owner 23 Oct 2026): never a free starter.
+    if (t.category === 'trade') continue;
     const list = byCat.get(t.category) ?? [];
     list.push(t);
     byCat.set(t.category, list);

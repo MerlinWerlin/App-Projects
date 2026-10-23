@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>3-4-5 square check</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 80 330 L 340 330 L 80 135 Z"/>
+    <path d="M 102 330 L 102 308 L 80 308"/>
+    <path d="M 212.4 360 L 212.4 344 L 205.2 355.2 L 214.8 355.2"/>
+    <path d="M 47.2 224.5 L 56.8 224.5 L 52 230.9 L 55.2 230.9 L 56.8 233.3 L 56.8 238.1 L 55.2 240.5 L 48.8 240.5 L 47.2 238.9"/>
+    <path d="M 236.8 210.5 L 228 210.5 L 227.2 217.7 L 234.4 216.9 L 236.8 219.3 L 236.8 224.1 L 235.2 226.5 L 228.8 226.5 L 227.2 224.9"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 145 330 L 145 320"/>
+    <path d="M 210 330 L 210 320"/>
+    <path d="M 275 330 L 275 320"/>
+    <path d="M 80 265 L 90 265"/>
+    <path d="M 80 200 L 90 200"/>
+  </g>
+</svg>

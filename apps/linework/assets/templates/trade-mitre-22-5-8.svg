@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>22.5° mitre for a 8-sided frame</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 186.1 330 L 336.1 330"/>
+    <path d="M 202.6 290 L 336.1 290"/>
+    <path d="M 186.1 330 L 80 223.9"/>
+    <path d="M 202.6 290 L 108.3 195.6"/>
+    <path d="M 186.1 330 L 202.6 290"/>
+    <path d="M 224.1 213.7 L 225.9 210.1 L 233.1 210.1 L 234.9 212.8 L 234.9 216.4 L 224.1 228.1 L 234.9 228.1"/>
+    <path d="M 238.5 213.7 L 240.3 210.1 L 247.5 210.1 L 249.3 212.8 L 249.3 216.4 L 238.5 228.1 L 249.3 228.1"/>
+    <path d="M 256.1 224.2 L 260.4 224.2 L 260.4 228.1 L 256.1 228.1 L 256.1 224.2"/>
+    <path d="M 256.1 226.2 L 260.4 226.2"/>
+    <path d="M 270.9 210.1 L 261 210.1 L 260.1 218.2 L 268.2 217.3 L 270.9 220 L 270.9 225.4 L 269.1 228.1 L 261.9 228.1 L 260.1 226.3"/>
+    <path d="M 276.3 210.1 L 279.9 210.1 L 281.7 211.9 L 281.7 215.5 L 279.9 217.3 L 276.3 217.3 L 274.5 215.5 L 274.5 211.9 L 276.3 210.1"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 226.1 330 A 40 40 0 0 0 201.4 293"/>
+  </g>
+</svg>

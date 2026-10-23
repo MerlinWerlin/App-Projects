@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Circle divided into 12</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 200 A 160 160 0 1 0 360 200 A 160 160 0 1 0 40 200 Z"/>
+    <path d="M 195 200 A 5 5 0 1 0 205 200 A 5 5 0 1 0 195 200 Z"/>
+    <path d="M 200 192 L 200 40"/>
+    <path d="M 196 193.1 L 120 61.4"/>
+    <path d="M 193.1 196 L 61.4 120"/>
+    <path d="M 192 200 L 40 200"/>
+    <path d="M 193.1 204 L 61.4 280"/>
+    <path d="M 196 206.9 L 120 338.6"/>
+    <path d="M 200 208 L 200 360"/>
+    <path d="M 204 206.9 L 280 338.6"/>
+    <path d="M 206.9 204 L 338.6 280"/>
+    <path d="M 208 200 L 360 200"/>
+    <path d="M 206.9 196 L 338.6 120"/>
+    <path d="M 204 193.1 L 280 61.4"/>
+    <path d="M 173.4 143.5 L 181.8 143.5 L 177.6 149.1 L 180.4 149.1 L 181.8 151.2 L 181.8 155.4 L 180.4 157.5 L 174.8 157.5 L 173.4 156.1"/>
+    <path d="M 186 143.5 L 191.6 143.5 L 193 144.9 L 193 156.1 L 191.6 157.5 L 186 157.5 L 184.6 156.1 L 184.6 144.9 L 186 143.5"/>
+    <path d="M 197.2 143.5 L 200 143.5 L 201.4 144.9 L 201.4 147.7 L 200 149.1 L 197.2 149.1 L 195.8 147.7 L 195.8 144.9 L 197.2 143.5"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 112 200 A 88 88 0 1 0 288 200 A 88 88 0 1 0 112 200 Z"/>
+  </g>
+</svg>

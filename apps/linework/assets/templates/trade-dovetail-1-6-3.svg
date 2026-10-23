@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Dovetail layout 1:6, 3 tails</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 50 250 L 72 250 L 48.7 110 L 151.3 110 L 128 250 L 172 250 L 148.7 110 L 251.3 110 L 228 250 L 272 250 L 248.7 110 L 351.3 110 L 328 250 L 350 250"/>
+    <path d="M 50 250 L 50 330"/>
+    <path d="M 350 250 L 350 330"/>
+    <path d="M 50 330 L 350 330"/>
+    <path d="M 185 54 L 189 50 L 189 70"/>
+    <path d="M 185 70 L 193 70"/>
+    <path d="M 201.6 53.2 L 206.4 53.2 L 206.4 57.6 L 201.6 57.6 L 201.6 53.2"/>
+    <path d="M 201.6 55.4 L 206.4 55.4"/>
+    <path d="M 201.6 65.6 L 206.4 65.6 L 206.4 70 L 201.6 70 L 201.6 65.6"/>
+    <path d="M 201.6 67.8 L 206.4 67.8"/>
+    <path d="M 217 50 L 210 50 L 206 56 L 206 68 L 208 70 L 216 70 L 218 68 L 218 62 L 216 60 L 208 60 L 206 62"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 50 110 L 350 110"/>
+    <path d="M 72 210 A 40 40 0 0 0 65.4 210.5"/>
+  </g>
+</svg>

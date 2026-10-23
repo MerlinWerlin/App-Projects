@@ -115,6 +115,8 @@ export const ko: Translation = {
   'templates.category.fantasy': '판타지와 고딕',
   'templates.category.stilllife': '정물과 사물',
   'templates.category.shapes': '간단한 도형',
+  'templates.category.trade': "작업장·기술",
+  'templates.tradeNote': "각도는 정확해요. 종이 위의 길이는 실제 비율이 아니에요.",
   'templates.category.cute': '귀여운 치비',
   'templates.category.heroes': '히어로',
   'templates.category.game': '게임 세계',

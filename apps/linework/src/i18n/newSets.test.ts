@@ -57,9 +57,9 @@ test('template names are unique per locale (whole catalogue)', () => {
 });
 
 test('the New bubble lists the fb-1022 sets plus Sea life and the kawaii batches (D110-2)', () => {
-  assert.deepEqual([...NEW_SETS].sort(), [...FB_1022_SETS, 'sealife'].sort());
+  assert.deepEqual([...NEW_SETS].sort(), [...FB_1022_SETS, 'sealife', 'trade'].sort());
   const pool = shelfPool(TEMPLATES, 'new');
-  assert.deepEqual([...new Set(pool.map((t) => t.category))].sort(), [...FB_1022_SETS, 'cute', 'sealife'].sort());
+  assert.deepEqual([...new Set(pool.map((t) => t.category))].sort(), [...FB_1022_SETS, 'cute', 'sealife', 'trade'].sort());
   const expected = TEMPLATES.filter((t) => NEW_SETS.includes(t.category) || t.id.startsWith('kawaii-'));
   assert.deepEqual(pool.map((t) => t.id), expected.map((t) => t.id));
   assert.ok(pool.filter((t) => t.category === 'sealife').length >= 30);

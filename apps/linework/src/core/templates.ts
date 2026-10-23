@@ -29,6 +29,7 @@ import { shapes2 } from './templateArt/baked/shapes2.ts';
 import { flash } from './templateArt/baked/flash.ts';
 import { game2 } from './templateArt/baked/game2.ts';
 import { heroes2 } from './templateArt/baked/heroes2.ts';
+import { trade } from './templateArt/trade.ts';
 
 export type TemplateCategory =
   | 'flowers'
@@ -48,7 +49,8 @@ export type TemplateCategory =
   | 'movies'
   | 'fairytales'
   | 'kids'
-  | 'shapes';
+  | 'shapes'
+  | 'trade';
 
 /** Complexity level shown as a filter: beginner = few bold shapes, advanced = intricate detail. */
 export type TemplateLevel = 'beginner' | 'intermediate' | 'advanced';
@@ -96,6 +98,7 @@ export const CATEGORIES: readonly { id: TemplateCategory; label: string }[] = [
   { id: 'fairytales', label: 'Fairy tales' },
   { id: 'kids', label: 'Kids' },
   { id: 'shapes', label: 'Simple shapes' },
+  { id: 'trade', label: 'Trade & workshop' },
 ];
 
 export const LEVELS: readonly { id: TemplateLevel; label: string }[] = [
@@ -136,6 +139,7 @@ export const TEMPLATES: readonly Template[] = [
   ...flash,
   ...game2,
   ...heroes2,
+  ...trade,
 ];
 
 export function templateLevel(t: Template): TemplateLevel {

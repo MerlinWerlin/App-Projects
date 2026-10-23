@@ -115,6 +115,8 @@ export const zhHans: Translation = {
   'templates.category.fantasy': '奇幻与哥特',
   'templates.category.stilllife': '静物与物品',
   'templates.category.shapes': '简单形状',
+  'templates.category.trade': "工艺与车间",
+  'templates.tradeNote': "角度精确。纸上的长度不按比例。",
   'templates.category.cute': '可爱Q版',
   'templates.category.heroes': '英雄',
   'templates.category.game': '游戏世界',

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Chevron 45° floor layout</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 200 40.4 L 20.4 220"/>
+    <path d="M 200 40.4 L 379.6 220"/>
+    <path d="M 200 88.5 L 20.4 268.1"/>
+    <path d="M 200 88.5 L 379.6 268.1"/>
+    <path d="M 200 136.6 L 20.4 316.2"/>
+    <path d="M 200 136.6 L 379.6 316.2"/>
+    <path d="M 200 184.7 L 20.4 364.3"/>
+    <path d="M 200 184.7 L 379.6 364.3"/>
+    <path d="M 200 232.7 L 52.9 379.8"/>
+    <path d="M 200 232.7 L 347.1 379.8"/>
+    <path d="M 200 280.8 L 101 379.8"/>
+    <path d="M 200 280.8 L 299 379.8"/>
+    <path d="M 200 328.9 L 149.1 379.8"/>
+    <path d="M 200 328.9 L 250.9 379.8"/>
+    <path d="M 200 377 L 197.2 379.8"/>
+    <path d="M 200 377 L 202.8 379.8"/>
+    <path d="M 200 20 L 200 380"/>
+    <path d="M 20 20 L 380 20 L 380 380 L 20 380 Z"/>
+    <path d="M 292 68 L 292 52 L 284.8 63.2 L 294.4 63.2"/>
+    <path d="M 307.2 52 L 298.4 52 L 297.6 59.2 L 304.8 58.4 L 307.2 60.8 L 307.2 65.6 L 305.6 68 L 299.2 68 L 297.6 66.4"/>
+    <path d="M 312 52 L 315.2 52 L 316.8 53.6 L 316.8 56.8 L 315.2 58.4 L 312 58.4 L 310.4 56.8 L 310.4 53.6 L 312 52"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 20 200 L 380 200"/>
+  </g>
+</svg>

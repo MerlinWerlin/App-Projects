@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>15° mitre for a 12-sided frame</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 209.9 330 L 359.9 330"/>
+    <path d="M 220.6 290 L 359.9 290"/>
+    <path d="M 209.9 330 L 80 255"/>
+    <path d="M 220.6 290 L 100 220.4"/>
+    <path d="M 209.9 330 L 220.6 290"/>
+    <path d="M 246.6 208.7 L 250.2 205.1 L 250.2 223.1"/>
+    <path d="M 246.6 223.1 L 253.8 223.1"/>
+    <path d="M 269.1 205.1 L 259.2 205.1 L 258.3 213.2 L 266.4 212.3 L 269.1 215 L 269.1 220.4 L 267.3 223.1 L 260.1 223.1 L 258.3 221.3"/>
+    <path d="M 274.5 205.1 L 278.1 205.1 L 279.9 206.9 L 279.9 210.5 L 278.1 212.3 L 274.5 212.3 L 272.7 210.5 L 272.7 206.9 L 274.5 205.1"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 249.9 330 A 40 40 0 0 0 220.3 291.4"/>
+  </g>
+</svg>

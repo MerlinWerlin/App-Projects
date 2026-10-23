@@ -141,6 +141,12 @@ export function TemplateDetailSheet({ template, favorite, onToggleFavorite, onSt
             <View style={{ flexDirection: 'row', marginTop: spaceV2.x2 }}>
               <LevelBadge level={templateLevel(tpl)} />
             </View>
+            {tpl.category === 'trade' ? (
+              // fb-1023b: camera tracing has no physical scale, so the trade pack promises exact angles only.
+              <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('footnote'), { color: c.muted, marginTop: spaceV2.x2 }]}>
+                {t('templates.tradeNote')}
+              </Text>
+            ) : null}
           </View>
           <Pressable
             onPress={() => {

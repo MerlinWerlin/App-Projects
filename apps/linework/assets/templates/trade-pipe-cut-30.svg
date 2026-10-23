@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Pipe end cut at 30°</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 50 150 L 300 150"/>
+    <path d="M 50 250 L 126.8 250"/>
+    <path d="M 300 150 L 126.8 250"/>
+    <path d="M 50 150 A 14 50 0 0 0 50 250"/>
+    <path d="M 139.7 281 L 150.5 281 L 145.1 288.2 L 148.7 288.2 L 150.5 290.9 L 150.5 296.3 L 148.7 299 L 141.5 299 L 139.7 297.2"/>
+    <path d="M 155.9 281 L 163.1 281 L 164.9 282.8 L 164.9 297.2 L 163.1 299 L 155.9 299 L 154.1 297.2 L 154.1 282.8 L 155.9 281"/>
+    <path d="M 170.3 281 L 173.9 281 L 175.7 282.8 L 175.7 286.4 L 173.9 288.2 L 170.3 288.2 L 168.5 286.4 L 168.5 282.8 L 170.3 281"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 30 200 L 360 200"/>
+    <path d="M 166.8 250 A 40 40 0 0 0 161.4 230"/>
+  </g>
+</svg>

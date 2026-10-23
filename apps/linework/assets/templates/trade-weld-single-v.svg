@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Single-V butt weld prep (60°)</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 66 150 L 138.3 150 L 196 250 L 66 250 Z"/>
+    <path d="M 334 150 L 261.7 150 L 204 250 L 334 250 Z"/>
+    <path d="M 192.8 91 L 186.5 91 L 182.9 96.4 L 182.9 107.2 L 184.7 109 L 191.9 109 L 193.7 107.2 L 193.7 101.8 L 191.9 100 L 184.7 100 L 182.9 101.8"/>
+    <path d="M 199.1 91 L 206.3 91 L 208.1 92.8 L 208.1 107.2 L 206.3 109 L 199.1 109 L 197.3 107.2 L 197.3 92.8 L 199.1 91"/>
+    <path d="M 213.5 91 L 217.1 91 L 218.9 92.8 L 218.9 96.4 L 217.1 98.2 L 213.5 98.2 L 211.7 96.4 L 211.7 92.8 L 213.5 91"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 280 L 360 280"/>
+  </g>
+</svg>

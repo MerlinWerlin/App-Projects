@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>75° angle guide</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 80 300 L 340 300"/>
+    <path d="M 80 300 L 147.3 48.9"/>
+    <path d="M 173 213.3 L 185 213.3 L 177 233.3"/>
+    <path d="M 201 213.3 L 190 213.3 L 189 222.3 L 198 221.3 L 201 224.3 L 201 230.3 L 199 233.3 L 191 233.3 L 189 231.3"/>
+    <path d="M 207 213.3 L 211 213.3 L 213 215.3 L 213 219.3 L 211 221.3 L 207 221.3 L 205 219.3 L 205 215.3 L 207 213.3"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 170 300 A 90 90 0 0 0 103.3 213.1"/>
+  </g>
+</svg>
