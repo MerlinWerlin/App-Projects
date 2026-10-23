@@ -103,7 +103,7 @@ export const ar: NonNullable<LocaleMessages['themes']> = {
     label: 'عرض السمات',
     all: 'الكل',
     new: 'جديد',
-    picks: 'اختياراتنا',
+    picks: 'مختارات',
     liked: 'المفضلة',
     picksNote: 'اختارها فريق Glaze.',
     newEmpty: 'لا جديد الآن',

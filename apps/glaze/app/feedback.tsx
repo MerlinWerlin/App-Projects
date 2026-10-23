@@ -30,6 +30,7 @@ import { useColorsV2 } from '../src/theme/useTokens';
 import { PillButton } from '../src/ui/PillButton';
 import { deviceDiagnostics, feedbackMailto, loadDiagnostics, openMailto } from '../src/ui/feedbackDevice';
 import { haptic } from '../src/ui/haptics';
+import { useAnnounce } from '../src/ui/announce';
 import { textStyleFor } from '../src/ui/i18nLayout';
 import { useToast } from '../src/ui/Toast';
 
@@ -70,6 +71,8 @@ export default function FeedbackScreen() {
   const [mailOk, setMailOk] = useState(null as boolean | null);
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState(null as string | null);
+  // VoiceOver hears a failed photo pick / copy (live regions are Android-only; night 23 Oct).
+  useAnnounce(note);
   const alive = useRef(true);
 
   useEffect(() => {

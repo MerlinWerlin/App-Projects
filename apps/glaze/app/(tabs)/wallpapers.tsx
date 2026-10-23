@@ -7,7 +7,10 @@
 // picks, core/discovery.ts), narrows Still and Pairs; Live lists the person's own loops and hides
 // it. Hearts on theme and pair tiles like a wallpaper on this device only. No counts or ranks.
 import { useFocusEffect, useRouter } from 'expo-router';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { pageTransition } from '../../src/core/categoryPaging';
+import { easeOutCurve } from '../../src/theme/motion';
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { DISCOVERY_TABS, discoveryTabKey, type DiscoveryTab } from '../../src/core/discovery';
 import { ALL_THEMES } from '../../src/core/plusThemes';
@@ -84,6 +87,20 @@ export default function WallpapersTab() {
   }, []);
   const onOpen = useCallback((href: string) => router.push(href), [router]);
 
+  // fb-1023: switching sub-tab or All/New/Picks/Liked fades the tiles in (opacity only, the calm fb-1022c rule).
+  const fade = useSharedValue(1);
+  const lastKey = useRef(`${tab}|${discovery}`);
+  useEffect(() => {
+    const key = `${tab}|${discovery}`;
+    if (key === lastKey.current) return;
+    lastKey.current = key;
+    const tr = pageTransition(0, 1);
+    if (tr.kind === 'none') return;
+    fade.value = tr.fromOpacity;
+    fade.value = withTiming(1, { duration: tr.durationMs, easing: easeOutCurve });
+  }, [tab, discovery, fade]);
+  const gridFade = useAnimatedStyle(() => ({ opacity: fade.value }));
+
   const liveEmpty = tab === 'live' && loops.length === 0;
   const discovering = discoveryApplies(tab);
   const footnote = [textV2.footnote, textStyleFor(script, textV2.footnote), { color: c.inkSecondary }];
@@ -100,7 +117,7 @@ export default function WallpapersTab() {
       <View style={styles.body}>
         <Segmented label={t('tabs.wallpapersTab.subTabs')} options={options} value={tab} onChange={onTab} />
         {discovering ? (
-          <Segmented label={t('tabs.wallpapersTab.discover.label')} options={discoveryOptions} value={discovery} onChange={onDiscovery} />
+          <Segmented grid label={t('tabs.wallpapersTab.discover.label')} options={discoveryOptions} value={discovery} onChange={onDiscovery} />
         ) : null}
         {discovering && discovery === 'picks' ? <Text style={footnote}>{t('themes.discover.picksNote')}</Text> : null}
         {discoveryEmpty ? (
@@ -124,7 +141,7 @@ export default function WallpapersTab() {
             {t('tabs.wallpapersTab.liveEmpty')}
           </Text>
         ) : null}
-        <View style={styles.grid}>
+        <Animated.View style={[styles.grid, gridFade]}>
           {rows.map((row) => (
             <View key={row.map((r) => r.id).join('|')} style={styles.row}>
               {row.map((tile) => (
@@ -142,7 +159,7 @@ export default function WallpapersTab() {
               ))}
             </View>
           ))}
-        </View>
+        </Animated.View>
         {shown < tiles.length ? (
           <PillButton label={t('tabs.wallpapersTab.showMore')} variant="tinted" icon="chevron-down" onPress={() => setPages((p) => p + 1)} />
         ) : null}

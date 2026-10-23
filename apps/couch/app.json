@@ -23,17 +23,34 @@
       },
       "config": {
         "usesNonExemptEncryption": false
-      }
+      },
+      "icon": "./assets/brand/icon.png"
     },
     "android": {
-      "package": "com.jared797.couch"
+      "package": "com.jared797.couch",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/brand/adaptive-icon.png",
+        "backgroundColor": "#2B2B2C"
+      }
     },
     "plugins": [
       "expo-router",
       "expo-font",
       "expo-localization",
       "./plugins/withLanAccess",
-      "expo-splash-screen",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/brand/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#0E0E0F",
+          "dark": {
+            "image": "./assets/brand/splash-icon.png",
+            "backgroundColor": "#0E0E0F"
+          }
+        }
+      ],
       "expo-status-bar"
     ],
     "experiments": {
@@ -50,6 +67,8 @@
     "extra": {
       "supportsRTL": true
     },
-    "owner": "jared797"
+    "owner": "jared797",
+    "icon": "./assets/brand/icon.png",
+    "backgroundColor": "#0E0E0F"
   }
 }

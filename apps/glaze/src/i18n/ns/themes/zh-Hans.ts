@@ -82,7 +82,7 @@ export const zhHans: NonNullable<LocaleMessages['themes']> = {
     label: '显示主题',
     all: '全部',
     new: '新上架',
-    picks: '我们的精选',
+    picks: '精选',
     liked: '喜欢',
     picksNote: '由 Glaze 团队挑选。',
     newEmpty: '暂时没有新主题',

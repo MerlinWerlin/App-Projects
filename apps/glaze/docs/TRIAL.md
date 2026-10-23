@@ -3,16 +3,19 @@
 The app runs inside **Expo Go**, a free app that loads development builds from your PC.
 
 1. **iPhone:** install **Expo Go** from the App Store (once).
-2. **PC:** install **Node.js LTS** from https://nodejs.org if `node -v` in PowerShell doesn't print a version (once).
-3. **PC:** open the **Glaze Build** page in a browser, tap **Download trial kit (.zip)**, unzip it, open the `glaze` folder and double-click **START_TRIAL.cmd**. The first run installs packages for a few minutes, then shows a QR code. (The overseer may also keep a copy in `Desktop\Apps\glaze\code`.)
-4. **iPhone:** scan the QR code with the Camera app. It opens Glaze in Expo Go. Keep the PC window open while you test.
+2. **PC (automatic since 23 Oct):** your PC's auto-start (`Desktop\Apps\_auto`) installs each new build, runs the type check by itself and restarts Expo. You don't download kits or run any .cmd files.
+3. **iPhone:** open Glaze from **Expo Go > Recently opened**, about 10 minutes after a new build.
 
-## New since your last test (22 Oct evening, run 77): calm category bubbles
-Download the new trial kit (the page's button; an older copy on the PC still has the bounce), run START_TRIAL.cmd and answer yes / no in a page comment. **Check the copy first:** START_TRIAL.cmd now prints "Built from commit: ..." before anything else; that code must match the "Trial kit: commit ..." line on the Glaze Build page. If it shows a different code, or prints no commit at all, it is the older copy: download the kit again.
+## New since your last test (23 Oct evening, run 90): fb-1023
+Open Glaze from Expo Go > Recently opened (about 10 minutes after this build) and answer yes / no in a page comment.
 
-- **Bounce removed:** tap between category bubbles quickly. The bubble no longer grows or springs: the chosen one just gets a soft tint ring and glow that fades in (about 0.15 s), the old one fades back, and the row slides the chosen bubble into view. Does it feel calm, with no lag? yes / no
-- **Grid cross-fade:** when the category changes, does the grid simply fade to the new themes (no slide, no zoom, no cards popping in one by one)? yes / no
-- **Rest of Themes:** pressing a theme card or a pill now eases down gently (no springy rebound), cards no longer stagger in when the screen opens, and nothing "pops" when you stop scrolling. Anything still bouncy on the Themes screen? Tell us where. yes / no
+- **A. Calm chip fade:** on Themes, tap the search chips (Games / Movie night / Storybook), switch sub-tabs and open a collection. Do the results just fade in softly (no slide, no zoom, no bounce), and does it feel calm? yes / no. Same on Wallpapers when you switch the sub-tab or All / New / Picks / Liked? yes / no
+- **B. 2×2 pills:** on Wallpapers, do All / New / Picks / Liked sit as a neat 2×2 block of equal pills (two on top, two below), and does "Picks" read well in your language? yes / no
+- **C. Widget pictures:** on Widgets, do the size tabs (Small / Medium / Large / Lock), the look row (theme / clear glass / tinted glass / glow) and the theme chips now show small pictures? Are they big and clear enough to tell apart at a glance (the clear-glass one can be faint on light themes)? yes / no
+- **D. Mascot:** look at the three mascot concepts on the Glaze Build page (Tessel, Latchling, Vitri; details in docs/MASCOT.md). Which mascot: 1, 2, 3 or none?
+
+### Earlier: calm category bubbles (22 Oct evening, run 77) — you said "It looks good again"
+- Bounce removed, grid cross-fade, rest of Themes calm: answered yes (owner retest 23 Oct).
 
 ## New 22 Oct: your G1–G5 changes (about 5 minutes)
 Answer yes / no in a page comment:
@@ -27,7 +30,7 @@ Answer yes / no in a page comment:
 7. **Space photo end to end:** with a Space theme downloaded, does Apply › Wallpaper save the real Webb photo (credit shown under the step and in "Saved")? Turn on Aeroplane Mode and tap Download on another Space theme: do you get a friendly "offline" message with **Try again** (no half photo)? Settings › Storage: are downloaded Space photos listed with size and Remove? yes / no
 
 ## New 18 Oct: quick yes/no (about 10 minutes)
-**First**, double-click **TSC_REPORT.cmd** in the `glaze` folder and paste `tsc-report.txt` into a page comment: the 18 Oct screens were only type-checked in the cloud. Then start the trial as above and answer yes / no in a comment (add a word on anything odd):
+Open Glaze as above and answer yes / no in a comment (add a word on anything odd):
 
 1. **Tab bar:** five tabs at the bottom (Themes / Widgets / Icons / Wallpapers / Live), and the gear at the top of Themes opens Settings? yes / no
 2. **Category bubbles:** on Themes, do the round category bubbles scroll sideways and filter the grid below? yes / no
@@ -69,7 +72,7 @@ Send feedback from Settings or paste trial-log.txt into a page comment.
 To remove the icons later: Settings > General > VPN & Device Management > Glaze icons > Remove Profile.
 
 ## Known limits of this trial
-- First trial build: it was written and unit-tested in the cloud (317 core tests) but the full install, typecheck and bundle run on your PC for the first time. **If anything is red, paste `trial-log.txt` (it sits next to START_TRIAL.cmd) into a page comment.** If the error appears after the QR step, copy the window text too.
+- The code is written and unit-tested in the cloud; your PC's auto-start does the full install, type check and Expo restart. Type-check results reach the build through Claude in your chat, so you don't paste reports.
 - Things only your phone can prove: the profile install path from Expo Go, icon PNGs coming out sharp (not blank), and Photos album creation with "Limited" photo access.
 - Live Lock Screen, Live Photo export and widgets need the full build later.
 
@@ -77,6 +80,6 @@ To remove the icons later: Settings > General > VPN & Device Management > Glaze 
 Leave a comment on the **Glaze Build** page (any device). The next build run turns each comment into a task, replies, and resolves it when fixed. Screenshots help — say which tab and what you tapped.
 
 ## If it doesn't work
-- QR scans but Expo Go says the SDK is unsupported: run START_TRIAL.cmd again (it moves the project to the newest Expo SDK) and update Expo Go.
-- "tunnel" errors: press Ctrl+C, run `npx expo start` (same Wi-Fi as the phone) instead.
-- Anything else: paste `trial-log.txt` (next to START_TRIAL.cmd) and the PC window's messages into a build page comment.
+- Glaze isn't in Expo Go > Recently opened, or still looks like the old build: wait 10 more minutes (the PC may still be installing), then say so in a page comment. If the PC copy is ever started by hand, START_TRIAL.cmd prints "Built from commit: ..." first; it should match the kit commit under "Build files" on the Glaze Build page.
+- Expo Go says the SDK is unsupported: update Expo Go from the App Store.
+- Anything else: leave a page comment saying which tab and what you tapped.

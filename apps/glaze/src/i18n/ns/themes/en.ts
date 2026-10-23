@@ -88,7 +88,7 @@ export const en = {
     label: 'Show themes',
     all: 'All',
     new: 'New',
-    picks: 'Our picks',
+    picks: 'Picks',
     liked: 'Liked',
     picksNote: 'Chosen by the Glaze team.',
     newEmpty: 'Nothing new right now',

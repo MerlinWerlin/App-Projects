@@ -117,9 +117,9 @@ test('discovery and heart copy is in every locale', () => {
   }
 });
 
-test('the picks tab is labelled as our picks, never as popularity, counts or ranks', () => {
+test('the picks tab is labelled Picks (owner fb-1023), never as popularity, counts or ranks', () => {
   const label = lookup(en as unknown as CatalogueTree, 'themes.discover.picks');
-  assert.equal(label, 'Our picks');
+  assert.equal(label, 'Picks');
   const keys = discoveryI18nKeys();
   for (const [locale, cat] of [['en', en], ...Object.entries(TRANSLATIONS)] as const) {
     for (const key of keys) {

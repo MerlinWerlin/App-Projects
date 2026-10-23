@@ -9,11 +9,22 @@ import { TIP_TIERS, tipJarCopy } from '../src/plus/tipJar';
 import { list, space, textStyle } from '../src/theme/design';
 import { FreePromise } from '../src/ui/Screen';
 import { Text } from '../src/ui/Text';
+import { showToast } from '../src/ui/Toast';
 import { Card, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } from '../src/ui/v2';
 
 function noteFor(r: PurchaseResult, t: ReturnType<typeof useT>): string {
   if (r.ok) return r.kind === 'plus' ? t('app.plus.thanksPlus') : t('app.plus.thanksTip');
   return r.message;
+}
+
+/**
+ * Never fail silently (night 23 Oct, from Linework fb-1023 "tapping Unlock Plus did nothing"): besides the
+ * line under the buttons, every Buy / Restore / tip result also shows as a toast. The toast is felt (haptic),
+ * spoken by VoiceOver (the inline line's live region is Android-only), visible wherever the page is scrolled
+ * (the tip line sits below the list), and shows again on a repeat tap even when the inline line can't change.
+ */
+function report(note: string, ok: boolean): void {
+  showToast(note, ok ? 'success' : 'warning');
 }
 
 /**
@@ -32,15 +43,29 @@ export default function PlusScreen() {
 
   const buy = useCallback((action: 'buy' | 'restore') => {
     applyPurchase(plusStore(), purchaseProvider(), action)
-      .then((r) => setBuyNote(noteFor(r, t)))
-      .catch(() => setBuyNote(t('app.plus.failed')));
+      .then((r) => {
+        const note = noteFor(r, t);
+        setBuyNote(note);
+        report(note, r.ok);
+      })
+      .catch(() => {
+        setBuyNote(t('app.plus.failed'));
+        report(t('app.plus.failed'), false);
+      });
   }, [t]);
 
   const tip = useCallback((id: string) => {
     purchaseProvider()
       .tip(id)
-      .then((r) => setTipNote(noteFor(r, t)))
-      .catch(() => setTipNote(t('app.plus.failed')));
+      .then((r) => {
+        const note = noteFor(r, t);
+        setTipNote(note);
+        report(note, r.ok);
+      })
+      .catch(() => {
+        setTipNote(t('app.plus.failed'));
+        report(t('app.plus.failed'), false);
+      });
   }, [t]);
 
   return (

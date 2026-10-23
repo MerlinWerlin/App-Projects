@@ -45,6 +45,7 @@ import { RemoteButton, RemoteKey, Rocker } from '../../src/ui/remote/RemoteKey';
 import { SimpleRemote } from '../../src/ui/remote/SimpleRemote';
 import { Touchpad } from '../../src/ui/remote/Touchpad';
 import { TvHeader } from '../../src/ui/remote/TvHeader';
+import { useAnnounce } from '../../src/ui/useAnnounce';
 
 /** Splits a `...Rich` message around its {slot} so the slot can be a nested styled element. */
 function splitRich(text: string, slot: string): [string, string] {
@@ -59,6 +60,8 @@ export default function RemoteScreen() {
   const t = useT();
   const router = useRouter();
   const { session, snap } = useSession();
+  // A failed key (here or in the keyboard / numpad / source sheets) is spoken on iOS too (night 23 Oct).
+  useAnnounce(snap.lastError);
   const { prefs } = usePrefs();
   const oneHanded = prefs.oneHanded !== 'off';
   // Larger Text (T74, src/core/textScale.ts): rows of labels turn into stacks when the scaled

@@ -6,16 +6,19 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { INTRO_MS, startupReady } from '../src/core/introRemote';
 import { statusBarStyle } from '../src/core/prefs';
 import { useT } from '../src/i18n/react';
 import { PlusThemeProvider } from '../src/plus/themes';
 import { LifecycleProvider } from '../src/state/lifecycle';
-import { PrefsProvider } from '../src/state/prefs';
+import { PrefsProvider, usePrefs } from '../src/state/prefs';
 import { RatingPromptHost } from '../src/state/useRatingPrompt';
 import { useQuietUpdate } from '../src/state/useQuietUpdate';
 import { SessionProvider } from '../src/state/session';
+import { IntroRemote } from '../src/ui/IntroRemote';
 import { ToastHost } from '../src/ui/Toast';
 import { registerBlurView, type BlurViewLike } from '../src/ui/v2/blurRegistry';
 import { useReducedMotion } from '../src/theme/useReducedMotion';
@@ -26,9 +29,10 @@ import { useScheme, useTheme } from '../src/theme/useTheme';
 registerBlurView(BlurView as unknown as BlurViewLike);
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
-// Premium polish rule 6: the splash fades into the first screen once fonts are loaded.
+// Premium polish rule 6: the splash fades into the first screen. night-intro: the splash image is the intro's first
+// frame (same art, size and place), so this short fade only smooths the hand-over to IntroRemote.
 try {
-  SplashScreen.setOptions?.({ duration: 320, fade: true });
+  SplashScreen.setOptions?.({ duration: INTRO_MS.splashFade, fade: true });
 } catch {
   // Older expo-splash-screen without setOptions: plain hide.
 }
@@ -45,13 +49,16 @@ export default function RootLayout() {
     JetBrainsMono_400Regular,
   });
 
+  // Never an endless splash: go ahead after INTRO_MS.maxWait even if fonts are still loading (system fonts until then).
+  const [timedOut, setTimedOut] = useState(false);
   useEffect(() => {
-    if (loaded || error) SplashScreen.hideAsync().catch(() => {});
-  }, [loaded, error]);
+    const id = setTimeout(() => setTimedOut(true), INTRO_MS.maxWait);
+    return () => clearTimeout(id);
+  }, []);
+  // The i18n catalogues are bundled (synchronous), so only fonts can hold startup back.
+  const ready = startupReady(loaded || !!error, true, timedOut ? INTRO_MS.maxWait : 0);
 
-  // Fall back to system fonts if loading fails; never block the remote on fonts.
-  if (!loaded && !error) return null;
-
+  // Providers mount at once (saved TVs restore and discovery start while the intro plays); only the navigator waits.
   return (
     <SafeAreaProvider>
       <PrefsProvider>
@@ -59,15 +66,47 @@ export default function RootLayout() {
         <PlusThemeProvider>
           <SessionProvider>
             <LifecycleProvider>
-              <RootStack />
-              {/* Toasts draw above every screen (premium polish rule 5). */}
-              <ToastHost />
-              <RatingPromptHost />
+              <RootShell ready={ready} />
             </LifecycleProvider>
           </SessionProvider>
         </PlusThemeProvider>
       </PrefsProvider>
     </SafeAreaProvider>
+  );
+}
+
+/**
+ * night-intro: the app and the opening animation side by side. Linework fb-1023 lesson: in a store build the
+ * navigator's native screens draw over any JS view above them, so the intro is the LAST sibling and the navigator only
+ * mounts when the intro starts fading (onReveal). The intro keeps its place in the tree, so it never restarts.
+ */
+function RootShell({ ready }: { ready: boolean }) {
+  const theme = useTheme();
+  const { prefs, loaded } = usePrefs();
+  const [revealed, setRevealed] = useState(false);
+  const [introDone, setIntroDone] = useState(false);
+  const app =
+    ready && revealed ? (
+      <>
+        <RootStack />
+        {/* Toasts draw above every screen (premium polish rule 5). */}
+        <ToastHost />
+        <RatingPromptHost />
+      </>
+    ) : null;
+  const intro = introDone ? null : (
+    <IntroRemote
+      ready={ready}
+      haptics={loaded && prefs.haptics}
+      onReveal={() => setRevealed(true)}
+      onDone={() => setIntroDone(true)}
+    />
+  );
+  return (
+    <View style={{ flex: 1, backgroundColor: theme.bg }}>
+      {app}
+      {intro}
+    </View>
   );
 }
 

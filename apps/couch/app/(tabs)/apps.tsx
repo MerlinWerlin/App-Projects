@@ -20,6 +20,7 @@ import { FadeIn, animateNextLayout } from '../../src/ui/motion/FadeIn';
 import { SkeletonBlock, WithSkeleton } from '../../src/ui/motion/Skeleton';
 import { DemoNote } from '../../src/ui/Screen';
 import { Text } from '../../src/ui/Text';
+import { useAnnounce } from '../../src/ui/useAnnounce';
 import { boxShadow, continuous, list, radii, space, textStyle } from '../../src/theme/design';
 import { useReducedMotion } from '../../src/theme/useReducedMotion';
 import { Card, LargeTitleHeader, PillButton, useDesign } from '../../src/ui/v2';
@@ -413,6 +414,8 @@ export default function AppsScreen() {
   );
 
   const message = snap.lastError ?? status;
+  // A failed app launch is spoken on iOS too (say() covers the status line; night 23 Oct).
+  useAnnounce(snap.lastError);
   const canEdit = load !== null && emptyKind === null;
 
   return (

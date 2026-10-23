@@ -82,7 +82,7 @@ export const ptBR: NonNullable<LocaleMessages['themes']> = {
     label: 'Mostrar temas',
     all: 'Todos',
     new: 'Novos',
-    picks: 'Nossas escolhas',
+    picks: 'Escolhas',
     liked: 'Curtidos',
     picksNote: 'Escolhidos pela equipe do Glaze.',
     newEmpty: 'Nada novo por enquanto',

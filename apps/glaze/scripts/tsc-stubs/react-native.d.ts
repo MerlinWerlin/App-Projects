@@ -933,7 +933,7 @@ declare module 'react-native' {
     // Animated props accept Animated values anywhere a style value is accepted.
     type WithAnimatedValue<T> = T extends object ? { [K in keyof T]?: WithAnimatedValue<T[K]> | AnimatedNode } : T | AnimatedNode;
     // Style values may be Animated nodes; kept permissive (any) as the real mapped type is huge.
-    type AnimatedProps<P> = { [K in keyof P]: K extends 'style' ? any : P[K] };
+    type AnimatedProps<P> = { [K in keyof P]: K extends 'style' ? any : P[K] | AnimatedNode };
     type AnimatedComponent<C extends ComponentType<any>> = ComponentType<AnimatedProps<import('react').ComponentProps<C>> & import('react').RefAttributes<any>>;
     function createAnimatedComponent<C extends ComponentType<any>>(component: C): AnimatedComponent<C>;
     const View: AnimatedComponent<typeof import('react-native').View>;

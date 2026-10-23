@@ -5,21 +5,25 @@ import { useFonts } from 'expo-font';
 import { Stack, type ErrorBoundaryProps } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
+import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { durations } from '../src/theme/motion';
-import { I18nProvider, useT } from '../src/i18n';
+import { INTRO_MS, startupReady } from '../src/core/introGlaze';
+import { I18nProvider, loadLocaleOverride, useT } from '../src/i18n';
 import { restoreDownloadedPacks } from '../src/native/packs';
 import { textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import { ErrorFallback } from '../src/ui/ErrorBoundary';
+import { IntroGlaze } from '../src/ui/IntroGlaze';
 import { ToastProvider } from '../src/ui/Toast';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 // Register downloaded packs' motifs while fonts load, before any screen reads the studio (T50).
 restoreDownloadedPacks().catch(() => {});
-// Splash fades into the first screen once fonts are in (POLISH rule 6).
+// The native splash (the empty porcelain tile) hands over to IntroGlaze on its first frame; the two are drawn
+// identically, so this fade is invisible (POLISH rule 6).
 try {
   SplashScreen.setOptions({ fade: true, duration: durations.slow });
 } catch {
@@ -46,7 +50,7 @@ export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
 }
 
 export default function RootLayout() {
-  const { c } = useColorsV2();
+  const { c, scheme } = useColorsV2();
   const [loaded, error] = useFonts({
     Manrope_400Regular,
     Manrope_600SemiBold,
@@ -57,24 +61,61 @@ export default function RootLayout() {
     ...Feather.font,
   });
 
+  // The saved language is read once at launch (I18nProvider shares the same promise), so the first app frame is
+  // already in the right language when the intro fades.
+  const [i18nReady, setI18nReady] = useState(false);
   useEffect(() => {
-    if (loaded || error) SplashScreen.hideAsync().catch(() => {});
-  }, [loaded, error]);
+    loadLocaleOverride()
+      .catch(() => null)
+      .finally(() => setI18nReady(true));
+  }, []);
 
+  // Never an endless splash: go ahead after INTRO_MS.maxWait even if fonts or languages are still loading.
+  const [timedOut, setTimedOut] = useState(false);
+  useEffect(() => {
+    const id = setTimeout(() => setTimedOut(true), INTRO_MS.maxWait);
+    return () => clearTimeout(id);
+  }, []);
   // If fonts fail we still render with system fonts rather than block the app.
-  if (!loaded && !error) return null;
+  const ready = startupReady(loaded || !!error, i18nReady, timedOut ? INTRO_MS.maxWait : 0);
+
+  useEffect(() => {
+    // Belt and braces: IntroGlaze hides the splash on its first frame; never leave it up once the app can show.
+    if (ready) SplashScreen.hideAsync().catch(() => {});
+  }, [ready]);
+
+  // Opening: the glaze pours over the tile, then the intro fades over the app. In a store build the app's native
+  // screens draw over any JS view above the navigator (Linework fb-1023), so the intro is a sibling after the app and
+  // the app mounts only once the intro starts fading (onReveal), never on top of it. The intro keeps its place in the
+  // tree before and after `ready`, so it never restarts.
+  const [revealed, setRevealed] = useState(false);
+  const [introDone, setIntroDone] = useState(false);
+  const intro = introDone ? null : (
+    <IntroGlaze ready={ready} dark={scheme === 'dark'} onReveal={() => setRevealed(true)} onDone={() => setIntroDone(true)} />
+  );
+
+  // (Built in an if-block, not a ternary: same meaning as `ready && revealed ? (...) : null`.)
+  let app: ReactNode = null;
+  if (ready && revealed) {
+    app = (
+      <GestureHandlerRootView style={{ flex: 1, backgroundColor: c.bg }}>
+        <SafeAreaProvider>
+          <StatusBar style="auto" />
+          <I18nProvider>
+            <ToastProvider>
+              <RootStack />
+            </ToastProvider>
+          </I18nProvider>
+        </SafeAreaProvider>
+      </GestureHandlerRootView>
+    );
+  }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: c.bg }}>
-      <SafeAreaProvider>
-        <StatusBar style="auto" />
-        <I18nProvider>
-          <ToastProvider>
-            <RootStack />
-          </ToastProvider>
-        </I18nProvider>
-      </SafeAreaProvider>
-    </GestureHandlerRootView>
+    <View style={{ flex: 1, backgroundColor: c.bg }}>
+      {app}
+      {intro}
+    </View>
   );
 }
 

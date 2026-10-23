@@ -647,6 +647,7 @@ export default function ThemesScreen() {
                 empty={showcaseEmpty}
                 likedIds={likedIds}
                 onToggleLike={toggleLike}
+                fadeKey={`${group ?? ''}|${tab}|${collection ?? ''}`}
               />
             </>
           ) : null}
