@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Isometric cylinder (four-centre ellipses)</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 117.7 72.5 A 164.5 164.5 0 0 1 282.3 72.5 M 282.3 72.5 A 54.8 54.8 0 0 1 282.3 167.5 M 282.3 167.5 A 164.5 164.5 0 0 1 117.7 167.5 M 117.7 167.5 A 54.8 54.8 0 0 1 117.7 72.5"/>
+    <path d="M 90.3 290 A 54.8 54.8 0 0 0 117.7 337.5 A 164.5 164.5 0 0 0 282.3 337.5 A 54.8 54.8 0 0 0 309.7 290"/>
+    <path d="M 90.3 120 L 90.3 290"/>
+    <path d="M 309.7 120 L 309.7 290"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 200 25 L 364.5 120 L 200 215 L 35.5 120 Z M 200 215 L 282.3 72.5 M 200 215 L 117.7 72.5 M 200 25 L 282.3 167.5 M 200 25 L 117.7 167.5"/>
+    <path d="M 309.7 290 A 54.8 54.8 0 0 0 282.3 242.5 A 164.5 164.5 0 0 0 117.7 242.5 A 54.8 54.8 0 0 0 90.3 290"/>
+    <path d="M 200 120 L 200 290"/>
+  </g>
+</svg>

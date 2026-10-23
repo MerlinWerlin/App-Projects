@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Knee bracket with 45° brace</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 60 40 L 90 40 L 90 130 L 90 160 L 90 310 L 240 310 L 270 310 L 360 310 L 360 340 L 60 340 Z"/>
+    <path d="M 90 130 L 270 310"/>
+    <path d="M 90 160 L 240 310"/>
+    <path d="M 67 70 A 8 8 0 1 0 83 70 A 8 8 0 1 0 67 70 Z M 67 250 A 8 8 0 1 0 83 250 A 8 8 0 1 0 67 250 Z M 302 325 A 8 8 0 1 0 318 325 A 8 8 0 1 0 302 325 Z M 332 325 A 8 8 0 1 0 348 325 A 8 8 0 1 0 332 325 Z"/>
+    <path d="M 207.5 298.5 L 207.5 285.5 L 201.7 294.6 L 209.5 294.6 M 219.9 285.5 L 212.7 285.5 L 212.1 291.4 L 217.9 290.7 L 219.9 292.7 L 219.9 296.6 L 218.6 298.5 L 213.4 298.5 L 212.1 297.2 M 223.8 285.5 L 226.4 285.5 L 227.7 286.8 L 227.7 289.4 L 226.4 290.7 L 223.8 290.7 L 222.5 289.4 L 222.5 286.8 L 223.8 285.5"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 238.9 278.9 A 44 44 0 0 0 226 310"/>
+    <path d="M 108 310 L 108 292 L 90 292"/>
+  </g>
+</svg>

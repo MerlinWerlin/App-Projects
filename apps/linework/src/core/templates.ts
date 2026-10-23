@@ -36,6 +36,7 @@ import { kidsfantasy } from './templateArt/baked/kidsfantasy.ts';
 import { mandalas2 } from './templateArt/baked/mandalas2.ts';
 import { patterns2 } from './templateArt/baked/patterns2.ts';
 import { trade } from './templateArt/trade.ts';
+import { trade2 } from './templateArt/trade2.ts';
 
 export type TemplateCategory =
   | 'flowers'
@@ -152,6 +153,7 @@ export const TEMPLATES: readonly Template[] = [
   ...patterns2,
   ...trade,
   ...kidsfantasy,
+  ...trade2,
 ];
 
 export function templateLevel(t: Template): TemplateLevel {

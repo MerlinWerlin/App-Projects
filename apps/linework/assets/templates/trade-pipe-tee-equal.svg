@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Equal pipe tee layout</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 30 170 L 170 170 L 170 40"/>
+    <path d="M 370 170 L 230 170 L 230 40"/>
+    <path d="M 30 230 L 370 230"/>
+    <path d="M 170 170 L 200 200 L 230 170"/>
+    <path d="M 170 40 L 230 40"/>
+    <path d="M 244.4 258.4 L 242.8 260 L 236.4 260 L 234.8 258.4 L 234.8 253.6 L 236.4 252 L 242.8 252 L 244.4 253.6 L 244.4 263.2 L 241.2 268 L 235.6 268 M 249.2 252 L 255.6 252 L 257.2 253.6 L 257.2 266.4 L 255.6 268 L 249.2 268 L 247.6 266.4 L 247.6 253.6 L 249.2 252 M 262 252 L 265.2 252 L 266.8 253.6 L 266.8 256.8 L 265.2 258.4 L 262 258.4 L 260.4 256.8 L 260.4 253.6 L 262 252"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 20 200 L 200 200 L 380 200"/>
+    <path d="M 200 200 L 200 26"/>
+    <path d="M 218 200 L 218 182 L 200 182"/>
+  </g>
+</svg>

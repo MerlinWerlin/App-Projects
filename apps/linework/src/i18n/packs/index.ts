@@ -20,11 +20,12 @@ import { kidsfantasyNames } from './kidsfantasy.ts';
 import { mandalas2Names } from './mandalas2.ts';
 import { flowers2Names } from './flowers2.ts';
 import { patterns2Names } from './patterns2.ts';
+import { trade2Names } from './trade2.ts';
 
 export type PackLocale = Exclude<LocaleCode, 'en'>;
 export type PackNames = Readonly<Record<PackLocale, Readonly<Record<string, string>>>>;
 
-export const PACKS: readonly PackNames[] = [kawaiiFoodNames, kawaiiFriendsNames, sealifeNames, moviesMoreNames, fairytalesMoreNames, animals2Names, figuresNames, places2Names, shapes2Names, game2Names, tradeNames, stilllife3Names, wildlife3Names, kidsfantasyNames, mandalas2Names, flowers2Names, patterns2Names];
+export const PACKS: readonly PackNames[] = [kawaiiFoodNames, kawaiiFriendsNames, sealifeNames, moviesMoreNames, fairytalesMoreNames, animals2Names, figuresNames, places2Names, shapes2Names, game2Names, tradeNames, stilllife3Names, wildlife3Names, kidsfantasyNames, mandalas2Names, flowers2Names, patterns2Names, trade2Names];
 
 /** All pack names for one locale, merged. */
 export function packNames(locale: PackLocale): Record<string, string> {

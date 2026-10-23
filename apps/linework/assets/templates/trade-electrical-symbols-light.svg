@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Lighting symbols (generic)</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 56 120 A 24 24 0 1 0 104 120 A 24 24 0 1 0 56 120 Z M 97 103 L 63 137 M 63 103 L 97 137"/>
+    <path d="M 166 134 L 234 134 M 224 134 A 24 24 0 0 0 176 134 M 217 117 L 200 134 M 183 117 L 200 134"/>
+    <path d="M 300 120 A 20 20 0 1 0 340 120 A 20 20 0 1 0 300 120 Z"/>
+    <path d="M 313 120 A 7 7 0 1 0 327 120 A 7 7 0 1 0 313 120 Z"/>
+    <path d="M 36 282 L 124 282 L 124 298 L 36 298 Z"/>
+    <path d="M 36 272 L 36 308"/>
+    <path d="M 124 272 L 124 308"/>
+    <path d="M 174 290 A 26 26 0 1 0 226 290 A 26 26 0 1 0 174 290 Z M 200 290 Q 189.7 277.7 200 268 M 200 290 Q 194.5 305 180.9 301 M 200 290 Q 215.8 287.2 219.1 301"/>
+    <path d="M 302 290 A 18 18 0 1 0 338 290 A 18 18 0 1 0 302 290 Z M 314 290 A 6 6 0 1 0 326 290 A 6 6 0 1 0 314 290 Z M 341.4 308 A 28 28 0 0 0 341.4 272 M 347.6 313.1 A 36 36 0 0 0 347.6 266.9"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 140 30 L 140 370"/>
+    <path d="M 260 30 L 260 370"/>
+    <path d="M 20 205 L 380 205"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Fillet weld symbol</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 150 130 L 340 130"/>
+    <path d="M 364 108 L 340 130 L 364 152"/>
+    <path d="M 150 320 L 360 320 L 360 350 L 150 350 Z"/>
+    <path d="M 250 320 L 250 190 L 276 190 L 276 320"/>
+    <path d="M 250 320 L 250 296 L 226 320 Z"/>
+    <path d="M 276 320 L 276 296 L 300 320 Z"/>
+    <path d="M 215 130 L 215 162 L 247 130 Z"/>
+    <path d="M 150 130 L 237 307 M 236.7 293 L 237 307 L 226.1 298.2"/>
+  </g>
+</svg>

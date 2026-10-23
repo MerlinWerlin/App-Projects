@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Splined mitre joint</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 360 340 L 60 340 L 60 40"/>
+    <path d="M 360 270 L 130 270 L 130 40"/>
+    <path d="M 60 340 L 130 270"/>
+    <path d="M 360 340 L 360 270"/>
+    <path d="M 60 40 L 130 40"/>
+    <path d="M 80.2 277.4 L 122.6 319.8 L 109.8 332.6 L 67.4 290.2 Z"/>
+    <path d="M 162 308 L 162 292 L 154.8 303.2 L 164.4 303.2 M 177.2 292 L 168.4 292 L 167.6 299.2 L 174.8 298.4 L 177.2 300.8 L 177.2 305.6 L 175.6 308 L 169.2 308 L 167.6 306.4 M 182 292 L 185.2 292 L 186.8 293.6 L 186.8 296.8 L 185.2 298.4 L 182 298.4 L 180.4 296.8 L 180.4 293.6 L 182 292"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 150 340 A 90 90 0 0 0 123.6 276.4"/>
+    <path d="M 109.5 290.5 A 70 70 0 0 0 60 270"/>
+  </g>
+</svg>

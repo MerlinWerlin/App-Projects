@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Ellipse by pins and string</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 40 200 A 160 100 0 1 0 360 200 A 160 100 0 1 0 40 200 Z"/>
+    <path d="M 75.1 200 L 275.1 111.7 L 324.9 200"/>
+    <path d="M 69.1 200 A 6 6 0 1 0 81.1 200 A 6 6 0 1 0 69.1 200 Z"/>
+    <path d="M 318.9 200 A 6 6 0 1 0 330.9 200 A 6 6 0 1 0 318.9 200 Z"/>
+    <path d="M 271.1 111.7 A 4 4 0 1 0 279.1 111.7 A 4 4 0 1 0 271.1 111.7 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 20 200 L 380 200"/>
+    <path d="M 200 80 L 200 320"/>
+    <path d="M 62.4 181.6 A 160 160 0 0 0 90.2 216.4"/>
+    <path d="M 309.8 216.4 A 160 160 0 0 0 337.6 181.6"/>
+    <path d="M 75.1 200 L 200 100 L 324.9 200"/>
+  </g>
+</svg>

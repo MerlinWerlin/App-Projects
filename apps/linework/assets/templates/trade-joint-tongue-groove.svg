@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Tongue and groove profile</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 30 160 L 164 160 L 170 166 L 170 187 L 198 187 L 198 213 L 170 213 L 170 240 L 30 240 Z"/>
+    <path d="M 370 160 L 226 160 L 220 166 L 220 187 L 248 187 L 248 213 L 220 213 L 220 240 L 370 240 Z"/>
+    <path d="M 197.6 124.4 L 200 122 L 200 134 M 197.6 134 L 202.4 134 M 211.4 122 L 206.6 134 M 215 122 L 222.2 122 L 218.6 126.8 L 221 126.8 L 222.2 128.6 L 222.2 132.2 L 221 134 L 216.2 134 L 215 132.8"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 209 138 L 209 150"/>
+    <path d="M 40 175 Q 58 200 40 225"/>
+    <path d="M 62 175 Q 80 200 62 225"/>
+    <path d="M 84 175 Q 102 200 84 225"/>
+    <path d="M 106 175 Q 124 200 106 225"/>
+    <path d="M 128 175 Q 146 200 128 225"/>
+    <path d="M 150 175 Q 168 200 150 225"/>
+    <path d="M 250 175 Q 268 200 250 225"/>
+    <path d="M 272 175 Q 290 200 272 225"/>
+    <path d="M 294 175 Q 312 200 294 225"/>
+    <path d="M 316 175 Q 334 200 316 225"/>
+    <path d="M 338 175 Q 356 200 338 225"/>
+    <path d="M 360 175 Q 378 200 360 225"/>
+  </g>
+</svg>

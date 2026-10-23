@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Ellipse by the four-centre method</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 317.5 142.5 A 228.3 228.3 0 0 0 82.5 142.5 A 67 67 0 0 0 82.5 257.5 A 228.3 228.3 0 0 0 317.5 257.5 A 67 67 0 0 0 317.5 142.5 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 36 200 L 364 200"/>
+    <path d="M 200 51.7 L 200 348.3"/>
+    <path d="M 350 200 L 200 110"/>
+    <path d="M 324.4 131 L 200 338.3"/>
+    <path d="M 317.5 142.5 L 200 338.3 L 82.5 142.5"/>
+    <path d="M 82.5 257.5 L 200 61.7 L 317.5 257.5"/>
+    <path d="M 280 200 A 3 3 0 1 0 286 200 A 3 3 0 1 0 280 200 Z"/>
+    <path d="M 114 200 A 3 3 0 1 0 120 200 A 3 3 0 1 0 114 200 Z"/>
+    <path d="M 246 148.6 A 60 60 0 0 0 259.1 99.6"/>
+  </g>
+</svg>
