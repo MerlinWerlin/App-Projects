@@ -271,13 +271,19 @@ export type ExportSettings = {
   bitrate: number;
 };
 
+/**
+ * Target average bitrate (bits/s) for a width x height export at 30 fps: ~0.08 bits/pixel/frame
+ * for HEVC, ~1.6x that for H.264; rounded to 100 kbps.
+ */
+export function exportBitrate(width: number, height: number, codec: Codec): number {
+  const bpp = codec === 'hevc' ? 0.08 : 0.13;
+  return Math.round((width * height * 30 * bpp) / 100_000) * 100_000;
+}
+
 /** Export settings for a device: portrait at native resolution, 30 fps, no audio, ≤ 15 s. */
 export function exportSettings(device: Device, opts: { codec?: Codec } = {}): ExportSettings {
   const codec = opts.codec ?? 'hevc';
-  const pixels = device.pixels.width * device.pixels.height;
-  // ~0.08 bits/pixel/frame for HEVC, ~1.6x that for H.264; rounded to 100 kbps.
-  const bpp = codec === 'hevc' ? 0.08 : 0.13;
-  const bitrate = Math.round((pixels * 30 * bpp) / 100_000) * 100_000;
+  const bitrate = exportBitrate(device.pixels.width, device.pixels.height, codec);
   return {
     width: device.pixels.width,
     height: device.pixels.height,

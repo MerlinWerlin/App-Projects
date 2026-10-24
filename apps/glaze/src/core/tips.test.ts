@@ -32,7 +32,9 @@ test('the three T09 first-run tips keep their ids, order and meaning', () => {
   );
   assert.match(getTip('icons-added').title, /added, not replaced/);
   assert.match(getTip('bulk-install').body, /one profile/);
-  assert.match(getTip('live-lock').body, /Lock Screen/);
+  assert.match(getTip('live-lock').body, /Live Photo/);
+  assert.match(getTip('bulk-install').body, /Optional beta/);
+  assert.match(getTip('bulk-install').body, /Shortcuts method/);
 });
 
 test('catalogue has the contextual tips, unique ids, short bodies', () => {
@@ -65,7 +67,8 @@ test('copy is honest about iOS limits', () => {
   assert.match(getTip('icon-shapes').body, /rounded square/);
   assert.match(getTip('missing-app').body, /can’t see which apps are installed/);
   assert.match(getTip('install-not-verified').body, /Not Verified/);
-  assert.match(getTip('live-loop').body, /iOS 26/);
+  assert.match(getTip('live-loop').body, /isn’t a constant loop/);
+  assert.doesNotMatch(TIPS.map((t) => t.body).join(' '), /Live Lock|Loop your own/);
   assert.match(getTip('live-loop').body, /Expo Go/);
   assert.match(getTip('icon-override').body, /keeps your image/);
   const all = TIPS.map((t) => `${t.title} ${t.body}`).join(' ');

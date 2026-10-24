@@ -17,6 +17,8 @@ export const ar: NonNullable<LocaleMessages['themes']> = {
   plusPacks: 'حزم Plus',
   plusPacksBody: 'عاين أيًّا منها. ‏Glaze Plus شراء لمرة واحدة، وليس اشتراكًا أبدًا.',
   space: { title: 'الفضاء · صور حقيقية من ويب', body: 'مجاني. صور حقيقية من تلسكوب جيمس ويب الفضائي؛ لا تُنزَّل كل صورة إلا عند النقر على تنزيل في السمة.' },
+  // T130: the free art-pack themes (themes/<id>/).
+  art: { title: 'فن · خلفيات أصلية', body: 'مجاني. خلفيات فنية أصلية مع أيقونات متناسقة ورسوم عائمة للأدوات. لا شيء للتنزيل.' },
   plusPacksEmpty: 'لا توجد حزم Plus بعد',
   packEmpty: '{name} لا تزال قيد الرسم',
   plusNote: 'Glaze Plus.',

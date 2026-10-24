@@ -1,6 +1,6 @@
 // Lock Screen accessory: time, date and a small theme glyph.
 // Accessory widgets are drawn by the system in vibrant/tinted modes, so colour is mostly ignored;
-// the theme supplies the name and font choice.
+// the theme supplies the font choice. T125: the theme name is never shown.
 import SwiftUI
 import WidgetKit
 
@@ -46,14 +46,9 @@ struct LockAccessoryView: View {
             .lineLimit(1)
         }
         Spacer(minLength: 0)
-        VStack(spacing: 2) {
-          Image(systemName: "drop.fill")
-            .font(.system(size: 16, weight: .bold))
-            .widgetAccentable()
-          Text(t.name)
-            .font(.system(size: 9, weight: .semibold))
-            .lineLimit(1)
-        }
+        Image(systemName: "drop.fill")
+          .font(.system(size: 16, weight: .bold))
+          .widgetAccentable()
       }
       .containerBackground(for: .widget) { Color.clear }
     }

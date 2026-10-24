@@ -3,7 +3,10 @@ import CoreVideo
 import ImageIO
 import UIKit
 
-/// One loop ready for the Lock Screen: a portrait, silent .mov in Caches plus a still preview.
+/// One loop ready for the Lock Screen: a 3:4 portrait, silent .mov in Caches plus a still preview
+/// that is the first frame of that same 3:4 render (T135: Apple ignores animated artwork whose
+/// preview or video doesn't match the key's aspect ratio, and wants the preview to match the
+/// video's first frame).
 struct ExportedLoop: @unchecked Sendable {
   let projectID: String
   let name: String
@@ -12,7 +15,7 @@ struct ExportedLoop: @unchecked Sendable {
   let durationSeconds: Double
 }
 
-/// Turns a LivelockProject into a portrait video at the export size:
+/// Turns a LivelockProject into a portrait video at the export size (1080x1440, 3:4, T135):
 /// crop (display-oriented pixel rect) + trim + speed, video track only (no audio), H.264 or HEVC.
 /// Results are cached in Caches/GlazeLivelock keyed by every input, so restarting the same
 /// playlist does not re-encode.
@@ -38,6 +41,8 @@ final class LoopExporter: @unchecked Sendable {
     }
     let asset = AVURLAsset(url: out)
     let duration = try await asset.load(.duration).seconds
+    // The preview is the exported file's own first frame, so it has the export's 3:4 size and
+    // matches what the video starts with.
     let preview = try await Self.previewImage(asset)
     return ExportedLoop(
       projectID: project.id,
@@ -321,7 +326,7 @@ final class LoopExporter: @unchecked Sendable {
   static func cacheKey(_ p: LivelockProject, _ s: LivelockExportSettings) -> String {
     let r = p.cropRect
     let text = [
-      "v1", p.sourceUri, p.kind,
+      "v2-3x4", p.sourceUri, p.kind, // v2: 3:4 artwork export (T135); never reuse a v1 screen-aspect file
       "\(p.trim.startMs)-\(p.trim.endMs)",
       "\(r.x),\(r.y),\(r.width),\(r.height)",
       "\(p.sourceWidth)x\(p.sourceHeight)",
@@ -336,9 +341,12 @@ final class LoopExporter: @unchecked Sendable {
     return String(hash, radix: 16)
   }
 
+  /// First frame (time zero, no tolerance) of the exported 3:4 loop, at full export size.
   static func previewImage(_ asset: AVURLAsset) async throws -> UIImage {
     let generator = AVAssetImageGenerator(asset: asset)
     generator.appliesPreferredTrackTransform = true
+    generator.requestedTimeToleranceBefore = .zero
+    generator.requestedTimeToleranceAfter = .zero
     if #available(iOS 16.0, *) {
       let (cg, _) = try await generator.image(at: .zero)
       return UIImage(cgImage: cg)

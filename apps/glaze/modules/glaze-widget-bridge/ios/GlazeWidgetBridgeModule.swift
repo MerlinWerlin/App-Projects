@@ -13,6 +13,9 @@ private let themeKey = "glaze.theme.v1"
 /// T59: widget-set payload (src/core/widgetSets.ts WIDGET_SET_KEY, written by the Widget Studio).
 private let widgetSetKey = "glaze.widgets.v2"
 private let photoFile = "widget-photo.jpg"
+/// T125: backup copy of the theme JSON in the App Group container (ThemeStore.swift reads it when
+/// the UserDefaults key is missing). Keep in sync with WIDGET_THEME_FILE in src/core/widgetTheme.ts.
+private let themeFile = "theme.json"
 /// T73: habit trackers (written by the app, src/core/habits.ts HABITS_KEY) and the tap log
 /// (written by the widget extension's App Intents, src/core/habitLog.ts HABIT_LOG_KEY).
 private let habitsKey = "glaze.habits.v1"
@@ -24,9 +27,25 @@ public class GlazeWidgetBridgeModule: Module {
     Name("GlazeWidgetBridge")
 
     /// Stores the widget theme JSON (built in JS by serializeWidgetTheme) and reloads widgets.
+    /// T125: also writes theme.json into the App Group container; either write is enough.
     AsyncFunction("setTheme") { (json: String) -> Bool in
-      guard let defaults = UserDefaults(suiteName: appGroup) else { return false }
-      defaults.set(json, forKey: themeKey)
+      var wrote = false
+      if let defaults = UserDefaults(suiteName: appGroup) {
+        defaults.set(json, forKey: themeKey)
+        wrote = true
+      }
+      if
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
+        let data = json.data(using: .utf8)
+      {
+        do {
+          try data.write(to: container.appendingPathComponent(themeFile), options: .atomic)
+          wrote = true
+        } catch {
+          // UserDefaults alone is still enough for the extension.
+        }
+      }
+      guard wrote else { return false }
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }
@@ -87,6 +106,53 @@ public class GlazeWidgetBridgeModule: Module {
       return true
     }
 
+    /// T131 Seamless widget: crops (x, y, w, h) out of the wallpaper (wallpaper pixels of the
+    /// upright image, computed in JS by src/core/seamlessWidget.ts seamlessCrop), draws the hero
+    /// (transparent PNG, may be "") centred-fit on top with the same 6 % padding as heroRect, caps
+    /// the long edge at 1200 px and writes seamless-<family>.png into the App Group container.
+    /// Then reloads only the "GlazeSeamless" widget (targets/widget/SeamlessWidget.swift).
+    AsyncFunction("setSeamless") { (wallpaperUri: String, x: Double, y: Double, w: Double, h: Double, heroUri: String, family: String) -> Bool in
+      guard ["small", "medium", "large"].contains(family) else { return false }
+      guard
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
+        let wallpaper = GlazeWidgetBridgeModule.loadImage(wallpaperUri),
+        let source = GlazeWidgetBridgeModule.uprightCGImage(wallpaper)
+      else { return false }
+      let bounds = CGRect(x: 0, y: 0, width: CGFloat(source.width), height: CGFloat(source.height))
+      let wanted = CGRect(x: CGFloat(x), y: CGFloat(y), width: CGFloat(w), height: CGFloat(h)).integral.intersection(bounds)
+      guard !wanted.isNull, wanted.width >= 1, wanted.height >= 1, let cropped = source.cropping(to: wanted) else { return false }
+
+      let longest = max(wanted.width, wanted.height)
+      let k: CGFloat = longest > 1200 ? 1200 / longest : 1
+      let target = CGSize(width: max(1, floor(wanted.width * k)), height: max(1, floor(wanted.height * k)))
+      let hero: UIImage? = heroUri.isEmpty ? nil : GlazeWidgetBridgeModule.loadImage(heroUri)
+
+      let format = UIGraphicsImageRendererFormat.default()
+      format.scale = 1
+      format.opaque = true
+      let composed = UIGraphicsImageRenderer(size: target, format: format).image { _ in
+        UIImage(cgImage: cropped).draw(in: CGRect(origin: .zero, size: target))
+        if let hero = hero, hero.size.width > 0, hero.size.height > 0 {
+          let pad = min(target.width, target.height) * 0.06
+          let box = CGRect(origin: .zero, size: target).insetBy(dx: pad, dy: pad)
+          let s = min(box.width / hero.size.width, box.height / hero.size.height)
+          let hw = hero.size.width * s
+          let hh = hero.size.height * s
+          hero.draw(in: CGRect(x: (target.width - hw) / 2, y: (target.height - hh) / 2, width: hw, height: hh))
+        }
+      }
+      guard let data = composed.pngData() else { return false }
+      do {
+        try data.write(to: container.appendingPathComponent("seamless-\(family).png"), options: .atomic)
+      } catch {
+        return false
+      }
+      if #available(iOS 14.0, *) {
+        WidgetCenter.shared.reloadTimelines(ofKind: "GlazeSeamless")
+      }
+      return true
+    }
+
     /// Removes the widget photo (the widget falls back to its gradient placeholder).
     AsyncFunction("clearPhoto") { () -> Bool in
       guard
@@ -102,6 +168,28 @@ public class GlazeWidgetBridgeModule: Module {
     if #available(iOS 14.0, *) {
       WidgetCenter.shared.reloadAllTimelines()
     }
+  }
+
+  /// T131: a local image from a file:// URI or a plain path.
+  private static func loadImage(_ uri: String) -> UIImage? {
+    let url: URL = uri.hasPrefix("file://")
+      ? (URL(string: uri) ?? URL(fileURLWithPath: uri))
+      : URL(fileURLWithPath: uri)
+    return UIImage(contentsOfFile: url.path)
+  }
+
+  /// T131: the image's pixels the right way up (EXIF orientation applied), at its pixel size, so
+  /// crop rectangles computed in JS from the displayed width/height line up.
+  private static func uprightCGImage(_ image: UIImage) -> CGImage? {
+    if image.imageOrientation == .up, let cg = image.cgImage { return cg }
+    let pixelSize = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
+    guard pixelSize.width >= 1, pixelSize.height >= 1 else { return nil }
+    let format = UIGraphicsImageRendererFormat.default()
+    format.scale = 1
+    let redrawn = UIGraphicsImageRenderer(size: pixelSize, format: format).image { _ in
+      image.draw(in: CGRect(origin: .zero, size: pixelSize))
+    }
+    return redrawn.cgImage
   }
 
   private static func downscale(_ image: UIImage, maxEdge: CGFloat) -> UIImage {

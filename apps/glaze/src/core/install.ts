@@ -247,12 +247,65 @@ export type Illustration =
   | 'install-button'
   | 'not-verified'
   | 'home-remove'
-  | 'remove-profile';
+  | 'remove-profile'
+  | 'safari-page'
+  | 'allow-dialog'
+  | 'home-icons';
 
 export type StepCardData = { id: string; title: string; body: string; illustration: Illustration };
 
-/** Illustrated steps for the bulk profile flow. */
-export function profileStepCards(profileCount: number = 1): StepCardData[] {
+/** T126: the exact on-screen steps when the profile is served to Safari from the iPhone. */
+export const SAFARI_PROFILE_STEPS: readonly string[] = Object.freeze([
+  'Tap Install in Safari.',
+  'Safari asks to allow a configuration profile download: tap Allow, then Close.',
+  'Open Settings: tap “Profile Downloaded” near the top (or General > VPN & Device Management), tap Install, enter your passcode, Install.',
+  'Your icons appear on the Home Screen.',
+]);
+
+/** Cards shared by both delivery routes, after the route-specific ones. */
+function commonProfileCards(): StepCardData[] {
+  return [
+    {
+      id: 'not-verified',
+      title: 'Why "Not Verified"?',
+      body: 'Glaze makes the profile on your iPhone, so it is not signed by a company certificate and iOS labels it "Not Verified". It only adds Home Screen shortcuts that open your apps. It does not manage your device and cannot read any of your data. You can remove it any time.',
+      illustration: 'not-verified',
+    },
+    {
+      id: 'hide-old',
+      title: 'Hide the old icons',
+      body: 'Long-press an original app icon, tap Remove App, then Remove from Home Screen. The app stays installed in the App Library with all its data.',
+      illustration: 'home-remove',
+    },
+    {
+      id: 'remove',
+      title: 'To remove later',
+      body: removeGuide().join(' '),
+      illustration: 'remove-profile',
+    },
+  ];
+}
+
+/**
+ * Illustrated steps for the bulk profile flow. `route` 'safari' (T126, the profile is served to
+ * Safari from this iPhone) gives the four Safari steps; 'share' (fallback builds) keeps the
+ * share sheet / Files steps.
+ */
+export function profileStepCards(profileCount: number = 1, route: 'safari' | 'share' = 'share'): StepCardData[] {
+  if (route === 'safari') {
+    const [safari, allow, settings, home] = SAFARI_PROFILE_STEPS;
+    return [
+      { id: 'safari', title: 'Install in Safari', body: safari, illustration: 'safari-page' },
+      { id: 'allow', title: 'Allow the download', body: allow, illustration: 'allow-dialog' },
+      { id: 'settings', title: 'Install in Settings', body: settings, illustration: 'install-button' },
+      { id: 'home', title: 'Your icons appear', body: home, illustration: 'home-icons' },
+      ...commonProfileCards(),
+    ];
+  }
+  return [...shareProfileCards(profileCount), ...commonProfileCards()];
+}
+
+function shareProfileCards(profileCount: number): StepCardData[] {
   const many = profileCount > 1;
   return [
     {
@@ -275,24 +328,6 @@ export function profileStepCards(profileCount: number = 1): StepCardData[] {
       body: 'Open Settings and tap "Profile Downloaded" near the top (or General > VPN & Device Management). Tap Install, enter your passcode, tap Install again, then Done. Not there? Fully close Settings, open it again and go to General > VPN & Device Management > Downloaded Profile. iOS deletes a downloaded profile after about 8 minutes, so if it is gone, tap the file in Files again and go straight to Settings.',
       illustration: 'install-button',
     },
-    {
-      id: 'not-verified',
-      title: 'Why "Not Verified"?',
-      body: 'Glaze makes the profile on your iPhone, so it is not signed by a company certificate and iOS labels it "Not Verified". It only adds Home Screen shortcuts that open your apps. It does not manage your device and cannot read any of your data. You can remove it any time.',
-      illustration: 'not-verified',
-    },
-    {
-      id: 'hide-old',
-      title: 'Hide the old icons',
-      body: 'Long-press an original app icon, tap Remove App, then Remove from Home Screen. The app stays installed in the App Library with all its data.',
-      illustration: 'home-remove',
-    },
-    {
-      id: 'remove',
-      title: 'To remove later',
-      body: removeGuide().join(' '),
-      illustration: 'remove-profile',
-    },
   ];
 }
 
@@ -307,6 +342,8 @@ export type InstallState = {
   shortcutsDone: string[];
   /** Last method the person picked. */
   choice: InstallChoice;
+  /** T126: present (true) once the person tapped a method card; absent while `choice` is the default. */
+  choiceExplicit?: true;
 };
 
 export function defaultInstallState(): InstallState {
@@ -343,6 +380,7 @@ export function sanitizeInstallState(raw: unknown): InstallState {
   }
   s.shortcutsDone = stringList(r.shortcutsDone);
   if (r.choice === 'bulk' || r.choice === 'shortcuts') s.choice = r.choice;
+  if (r.choiceExplicit === true) s.choiceExplicit = true;
   return s;
 }
 

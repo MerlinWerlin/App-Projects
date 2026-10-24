@@ -1,7 +1,9 @@
 // Reads the active Glaze theme that the app writes into the App Group.
 // Writer: modules/glaze-widget-bridge (UserDefaults suite `group.com.jared797.glaze`, key `glaze.theme.v1`).
 // Schema: src/core/widgetTheme.ts (WidgetTheme v1). Decoding is tolerant: any missing or invalid
-// field falls back to the Porcelain defaults below, matching DEFAULT_WIDGET_THEME in TS.
+// field falls back to the Glaze defaults below (plum to coral, light ink), matching
+// DEFAULT_WIDGET_THEME in TS. T125: a backup copy of the same JSON is read from `theme.json` in the
+// App Group container when the UserDefaults key is missing. The theme name is never rendered.
 import Foundation
 import SwiftUI
 import UIKit
@@ -11,6 +13,7 @@ enum GlazeShared {
   static let appGroup = "group.com.jared797.glaze"
   static let themeKey = "glaze.theme.v1"
   static let photoFile = "widget-photo.jpg"
+  static let themeFile = "theme.json"
 }
 
 enum WidgetSurfaceStyle: String {
@@ -23,17 +26,21 @@ enum WidgetFontChoice: String {
 
 struct WidgetTheme: Decodable {
   var v: Int = 1
-  var themeId: String = "porcelain"
-  var name: String = "Porcelain"
-  var bg: [String] = ["#F6F3F5", "#FFFFFF"]
-  var surface: String = "#FFFFFF"
-  var accent: String = "#7A2E6B"
-  var ink: String = "#1E1A1D"
+  var themeId: String = "glaze"
+  var name: String = "Glaze"
+  var bg: [String] = ["#7A2E6B", "#E0794F"]
+  var surface: String = "#4A1A42"
+  var accent: String = "#FFC9A8"
+  var ink: String = "#FFF7F2"
   var style: WidgetSurfaceStyle = .solid
   var font: WidgetFontChoice = .display
   var updatedAt: String = "1970-01-01T00:00:00.000Z"
 
   static let fallback = WidgetTheme()
+
+  /// T125: mirrors PALE_BG_LUMINANCE / PALE_ACCENT_MIX in src/core/widgetTheme.ts.
+  static let paleLuminance: Double = 0.8
+  static let paleAccentMix: Double = 0.35
 
   init() {}
 
@@ -78,6 +85,19 @@ struct WidgetTheme: Decodable {
   // MARK: Colours
 
   var bgColors: [Color] { bg.map { Color(hex: $0) } }
+
+  /// T125: the two gradient stops widgets paint (src/core/widgetTheme.ts widgetBackgroundStops).
+  /// When every stop is pale, the last one is pulled toward the accent so pastel themes still read
+  /// as their theme rather than plain white.
+  var backgroundHexes: [String] {
+    let stops: [String] = bg.isEmpty ? WidgetTheme.fallback.bg : Array(bg.prefix(2))
+    let first = stops[0]
+    let last = stops[stops.count - 1]
+    let pale = stops.allSatisfy { GlazeHex.luminance($0) >= WidgetTheme.paleLuminance }
+    return [first, pale ? GlazeHex.mix(last, accent, WidgetTheme.paleAccentMix) : last]
+  }
+
+  var backgroundColors: [Color] { backgroundHexes.map { Color(hex: $0) } }
   var surfaceColor: Color { Color(hex: surface) }
   var accentColor: Color { Color(hex: accent) }
   var inkColor: Color { Color(hex: ink) }
@@ -93,15 +113,29 @@ struct WidgetTheme: Decodable {
 }
 
 enum ThemeStore {
-  /// Reads and decodes the theme; never fails (falls back to Porcelain).
+  /// Reads and decodes the theme; never fails. UserDefaults first, then the theme.json copy in the
+  /// App Group container, then the Glaze default.
   static func load() -> WidgetTheme {
-    guard
+    if
       let defaults = UserDefaults(suiteName: GlazeShared.appGroup),
       let json = defaults.string(forKey: GlazeShared.themeKey),
       let data = json.data(using: .utf8),
-      let theme = try? JSONDecoder().decode(WidgetTheme.self, from: data),
-      theme.v == 1
-    else { return .fallback }
+      let theme = decode(data)
+    {
+      return theme
+    }
+    if
+      let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GlazeShared.appGroup),
+      let data = try? Data(contentsOf: container.appendingPathComponent(GlazeShared.themeFile)),
+      let theme = decode(data)
+    {
+      return theme
+    }
+    return .fallback
+  }
+
+  private static func decode(_ data: Data) -> WidgetTheme? {
+    guard let theme = try? JSONDecoder().decode(WidgetTheme.self, from: data), theme.v == 1 else { return nil }
     return theme
   }
 
@@ -117,6 +151,46 @@ enum ThemeStore {
 }
 
 // MARK: - Hex colours
+
+/// T125: hex maths for the pale-background rule (mirrors src/core/colour.ts).
+enum GlazeHex {
+  static func rgb(_ input: String) -> (r: Double, g: Double, b: Double)? {
+    var s = input.trimmingCharacters(in: .whitespaces)
+    if s.hasPrefix("#") { s.removeFirst() }
+    if s.count == 3 { s = s.map { "\($0)\($0)" }.joined() }
+    var value: UInt64 = 0
+    guard s.count == 6, Scanner(string: s).scanHexInt64(&value) else { return nil }
+    return (
+      r: Double((value >> 16) & 0xFF) / 255,
+      g: Double((value >> 8) & 0xFF) / 255,
+      b: Double(value & 0xFF) / 255
+    )
+  }
+
+  /// WCAG relative luminance, 0 (black) to 1 (white). Unreadable input counts as dark.
+  static func luminance(_ hex: String) -> Double {
+    guard let c = rgb(hex) else { return 0 }
+    return 0.2126 * linear(c.r) + 0.7152 * linear(c.g) + 0.0722 * linear(c.b)
+  }
+
+  /// Linear sRGB-space mix: t = 0 gives a, t = 1 gives b. `#RRGGBB`.
+  static func mix(_ a: String, _ b: String, _ t: Double) -> String {
+    guard let x = rgb(a), let y = rgb(b) else { return a }
+    let k = min(max(t, 0), 1)
+    let r = channel(x.r + (y.r - x.r) * k)
+    let g = channel(x.g + (y.g - x.g) * k)
+    let bl = channel(x.b + (y.b - x.b) * k)
+    return String(format: "#%02X%02X%02X", r, g, bl)
+  }
+
+  private static func linear(_ v: Double) -> Double {
+    v <= 0.04045 ? v / 12.92 : pow((v + 0.055) / 1.055, 2.4)
+  }
+
+  private static func channel(_ v: Double) -> Int32 {
+    Int32(min(max((v * 255).rounded(), 0), 255))
+  }
+}
 
 extension Color {
   static func isHex(_ input: String) -> Bool {
@@ -157,11 +231,11 @@ struct GlazeBackground: View {
   let theme: WidgetTheme
 
   var body: some View {
-    let colors = theme.bgColors
+    // T125: always two stops (pale themes get an accent-tinted second stop), corner to corner.
     let fill = LinearGradient(
-      colors: colors.count > 1 ? colors : [colors.first ?? .gray, colors.first ?? .gray],
-      startPoint: .top,
-      endPoint: .bottom
+      colors: theme.backgroundColors,
+      startPoint: .topLeading,
+      endPoint: .bottomTrailing
     )
     switch theme.style {
     case .solid:

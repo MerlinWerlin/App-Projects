@@ -22,7 +22,7 @@ export const zhHans: NonNullable<LocaleMessages['tips']> = {
     wallpaper: '照片和墙纸',
     icons: '图标、形状和单独设置',
     install: '安装图标',
-    live: '动态锁定屏幕',
+    live: '实况照片',
   },
   places: {
     firstRun: '主题标签页',
@@ -30,7 +30,7 @@ export const zhHans: NonNullable<LocaleMessages['tips']> = {
     wallpaper: '墙纸制作',
     icons: '图标标签页',
     install: '安装图标',
-    live: 'Live Lock 标签页',
+    live: 'Live 标签页',
     shapes: '图标形状设置',
     override: '图标标签页',
     addApp: '图标标签页',
@@ -41,12 +41,12 @@ export const zhHans: NonNullable<LocaleMessages['tips']> = {
       body: 'iOS 不允许任何应用更改其他应用的图标。Glaze 会添加一个带主题的快捷方式来打开真正的应用；把原图标移到 App 资源库即可。',
     },
     bulkInstall: {
-      title: '一次安装所有图标',
-      body: 'Glaze 把整套图标放进一个描述文件，你只需在设置中安装一次，无需为每个应用制作快捷指令。',
+      title: '批量安装（可选测试版）',
+      body: '可选测试版：一个描述文件在“设置”中一次安装整套图标。引导式“快捷指令”方式是默认方式，始终可用。',
     },
     liveLock: {
-      title: '让锁定屏幕动起来',
-      body: '在 Live Lock 标签页中，把你自己的视频或 GIF 循环播放在锁定屏幕上。',
+      title: '制作实况照片墙纸',
+      body: '在 Live 标签页把视频转换成实况照片。在“照片 › 共享 › 用作墙纸”中设置，唤醒 iPhone 时它会动起来。',
     },
     themePick: {
       title: '从主题开始',
@@ -77,8 +77,8 @@ export const zhHans: NonNullable<LocaleMessages['tips']> = {
       body: '描述文件是在你的手机上生成的，没有签名，所以设置中显示“未验证”。它只会添加主屏幕图标。',
     },
     liveLoop: {
-      title: '循环真正动起来的地方',
-      body: '在 iOS 26 上，完整版 Glaze 会在锁定屏幕上循环播放；在较早的 iOS 上，长按时会播放实况照片。Expo Go 只显示预览。',
+      title: '实况照片如何动起来',
+      body: '实况照片墙纸会在你唤醒或按压锁定屏幕时动起来，并不会一直循环。Expo Go 只显示预览。',
     },
   },
 };

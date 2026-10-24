@@ -24,7 +24,7 @@ export const it: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'Foto e sfondi',
     icons: 'Icone, forme e personalizzazioni',
     install: 'Installare le icone',
-    live: 'Schermata di blocco animata',
+    live: 'Live Photo',
   },
   places: {
     firstRun: 'Scheda Temi',
@@ -32,7 +32,7 @@ export const it: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'Creatore di sfondi',
     icons: 'Scheda Icone',
     install: 'Installa icone',
-    live: 'Scheda Live Lock',
+    live: 'Scheda Live',
     shapes: 'Impostazioni forma icona',
     override: 'Scheda Icone',
     addApp: 'Scheda Icone',
@@ -43,12 +43,12 @@ export const it: NonNullable<LocaleMessages['tips']> = {
       body: 'iOS non permette a nessuna app di cambiare l’icona di un’altra. Glaze aggiunge un collegamento a tema che apre l’app vera; sposta le originali nella Libreria app.',
     },
     bulkInstall: {
-      title: 'Installa tutte le icone insieme',
-      body: 'Glaze mette tutto il set in un profilo: lo installi una volta in Impostazioni invece di creare un comando per ogni app.',
+      title: 'Installazione in blocco (beta facoltativa)',
+      body: 'Beta facoltativa: un solo profilo installa tutto il set in una volta in Impostazioni. Il metodo guidato con Comandi Rapidi è quello predefinito e funziona sempre.',
     },
     liveLock: {
-      title: 'Fai muovere la schermata di blocco',
-      body: 'Riproduci in loop il tuo video o GIF sulla schermata di blocco dalla scheda Live Lock.',
+      title: 'Crea uno sfondo Live Photo',
+      body: 'Trasforma un video in Live Photo nella scheda Live. Impostalo da Foto › Condividi › Usa come sfondo; si muove quando riattivi l’iPhone.',
     },
     themePick: {
       title: 'Parti da un tema',
@@ -79,8 +79,8 @@ export const it: NonNullable<LocaleMessages['tips']> = {
       body: 'Il profilo è creato sul tuo telefono e non è firmato, quindi Impostazioni mostra Non verificato. Aggiunge solo icone alla schermata Home.',
     },
     liveLoop: {
-      title: 'Dove i loop si muovono davvero',
-      body: 'Su iOS 26 la versione completa di Glaze riproduce il loop sulla schermata di blocco; sulle versioni precedenti una Live Photo parte tenendo premuto. Expo Go mostra solo un’anteprima.',
+      title: 'Come si muovono le Live Photo',
+      body: 'Uno sfondo Live Photo si muove quando riattivi o premi la schermata di blocco; non è un loop continuo. Expo Go mostra solo un’anteprima.',
     },
   },
 };

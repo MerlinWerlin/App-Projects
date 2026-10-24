@@ -1,29 +1,23 @@
-// How to get a loop onto the iPhone Lock Screen, per iOS version and Glaze build (T30).
+// How to get a loop onto the iPhone Lock Screen, per iOS version and Glaze build (T30, T127).
 // Pure TS (no React Native imports) so the copy and the decisions are unit-tested.
 //
-// The honest facts (docs/AUDIT_2026-10-12.md "iOS limits"):
-// - No app can set a wallpaper; iOS wallpapers never animate a GIF or a plain video.
-// - iOS 26+ with the full Glaze build: a true loop, played as the animated artwork of Glaze's
-//   muted Now Playing item (docs/LIVELOCK.md). It stays while Glaze is playing it.
-// - iOS 16–25 with the full build: a Live Photo wallpaper (docs/LIVEPHOTO.md). It moves only
-//   briefly (on wake, or when you touch and hold, depending on the iOS version), never a loop.
+// The honest facts (docs/OWNER_1024E.md (part C), Apple support article 120734):
+// - No app can set a wallpaper, and no app can make the Lock Screen play a video or a GIF.
+// - What Glaze can do: save the loop as a Live Photo (TestFlight / full build, videos only,
+//   modules/glaze-livephoto). The user sets it themselves: Photos › Share › Use as Wallpaper,
+//   with the Live Photo button on. On iOS 17 or later it plays briefly when the iPhone wakes,
+//   then rests on the still frame. It never loops forever. iOS 16 shows Live Photo wallpapers
+//   as stills.
+// - T127: the old Now Playing "Live Lock Screen" (modules/glaze-livelock) is no longer part of
+//   any flow: the owner found a media player over the normal wallpaper confusing, and tapping
+//   it did nothing. The native module stays in the repo, unused by the UI.
 // - Expo Go (the trial): preview only; you can save a still-frame wallpaper and the clip itself.
 
 export type LiveBuild = 'expo-go' | 'full';
 export type LiveKind = 'video' | 'gif';
-export type LiveMode = 'loop' | 'live-photo' | 'still';
 
-export type ApplyInput = { iosMajor: number; build: LiveBuild; kind: LiveKind };
-
-export type ApplyInstructions = {
-  mode: LiveMode;
-  headline: string;
-  steps: string[];
-  limits: string[];
-};
-
-/** First iOS version with the Now Playing animated artwork loop (matches LIVELOCK_MIN_IOS). */
-export const LOOP_MIN_IOS = 26;
+/** First iOS version whose Lock Screen plays Live Photo wallpapers again (Apple support 120734). */
+export const LIVE_PHOTO_WALLPAPER_MIN_IOS = 17;
 
 export const WALLPAPER_PATH = 'Settings › Wallpaper › Add New Wallpaper › Photos';
 
@@ -40,101 +34,72 @@ export function parseIosMajor(version: unknown): number {
   return n > 0 ? n : 0;
 }
 
-const GIF_LIMIT = 'iOS wallpapers never animate a GIF directly. Glaze has to turn it into a moving Lock Screen another way.';
+// ---------------------------------------------------------------------------
+// The Live Photo guide (T127): one honest sentence, three illustrated steps, short notes.
 
-const STILL_STEPS: readonly string[] = [
-  'Frame it in the loop editor, then tap Save to Photos when the moment you like is showing (the preview pauses there; a GIF uses its first frame).',
-  'Tap Still frame wallpaper. Glaze saves it at your iPhone’s screen size.',
-  `Open ${WALLPAPER_PATH} and pick the still Glaze saved.`,
-  'Check the clock does not cover anything important, then tap Add and Set as Wallpaper Pair (or Customise Home Screen).',
+export type GuideStepId = 'photos' | 'share' | 'lock';
+export type GuideStep = { id: GuideStepId; title: string; body: string };
+export type GuideNoteId = 'moves' | 'needs' | 'old-ios' | 'alt-path';
+/** Why Glaze can't save the Live Photo here (null = it can). */
+export type GuideNotice = 'needs-full' | 'needs-build' | 'gif' | null;
+
+/** English source of the guide; liveUi.guide.* in every catalogue carries the same text. */
+export const GUIDE_TEXT = {
+  title: 'Put it on your Lock Screen',
+  honest:
+    'iOS doesn’t let any app set your wallpaper or play a video on the Lock Screen. Glaze saves your loop as a Live Photo, and you set it yourself in three quick steps.',
+  needsFull: 'Saving a Live Photo needs the Glaze TestFlight app. In this preview, use Save to Photos to keep a still frame or the clip.',
+  needsBuild:
+    'This build of Glaze can’t save Live Photos. Install the latest Glaze TestFlight build; meanwhile, Save to Photos keeps a still frame or the clip.',
+  moves: 'It moves for a moment when you wake your iPhone, then rests on the still frame. It doesn’t loop forever.',
+  needs:
+    'Live Photo wallpapers move on iOS 17 or later. Low Power Mode or Reduce Motion keeps it still, and if iOS says Motion not available, it stays a still picture.',
+  oldIos: 'On iOS {version}, Live Photo wallpapers stay still. Update to iOS 17 or later to see it move.',
+  altPath: 'You can also start from {path} › Live Photo.',
+} as const;
+
+export const GUIDE_STEPS: readonly GuideStep[] = [
+  { id: 'photos', title: 'Open it in Photos', body: 'Open the Photos app and tap the Live Photo Glaze saved. It’s the newest item in Recents.' },
+  { id: 'share', title: 'Share › Use as Wallpaper', body: 'Tap the Share button, scroll down and tap Use as Wallpaper.' },
+  {
+    id: 'lock',
+    title: 'Turn on Live Photo, then Add',
+    body: 'Check the Live Photo button at the bottom is on (not crossed out), then tap Add and Set as Wallpaper Pair.',
+  },
 ];
 
-function fullBuildNote(iosMajor: number, kind: LiveKind): string {
-  if (iosMajor >= LOOP_MIN_IOS) {
-    return `The full Glaze build can loop this ${kind === 'gif' ? 'GIF' : 'clip'} on your Lock Screen on iOS ${iosMajor}.`;
-  }
-  if (iosMajor > 0) {
-    return kind === 'gif'
-      ? `The full Glaze build loops GIFs on the Lock Screen on iOS ${LOOP_MIN_IOS} or later; on iOS ${iosMajor} it can save a video (not a GIF) as a Live Photo.`
-      : `On iOS ${iosMajor} the full Glaze build can save this clip as a Live Photo, which moves briefly but does not loop. A true loop needs iOS ${LOOP_MIN_IOS} or later.`;
-  }
-  return `The full Glaze build loops clips on the Lock Screen on iOS ${LOOP_MIN_IOS} or later, and saves Live Photos on earlier versions.`;
-}
+export type GuideInput = {
+  iosMajor: number;
+  build: LiveBuild;
+  kind: LiveKind;
+  /** false when this full build has no GlazeLivePhoto module; omit while unknown. */
+  moduleReady?: boolean;
+};
 
-/** Step-by-step instructions and honest limits for this device, build and source kind. */
-export function applyInstructions(input: ApplyInput): ApplyInstructions {
-  const iosMajor = parseIosMajor(input.iosMajor);
-  const { build, kind } = input;
+export type LivePhotoGuide = {
+  /** Glaze can save this loop as a Live Photo here. */
+  canSave: boolean;
+  notice: GuideNotice;
+  steps: GuideStep[];
+  notes: GuideNoteId[];
+};
 
-  if (build === 'expo-go') {
-    const limits = [
-      'You are trying Glaze in Expo Go, so it can preview the loop but cannot put a moving Lock Screen on your iPhone.',
-      fullBuildNote(iosMajor, kind),
-      'Save the clip too, so you can use it with the full build later.',
-    ];
-    if (kind === 'gif') limits.unshift(GIF_LIMIT);
-    return {
-      mode: 'still',
-      headline: 'Preview here, then save a still frame as your wallpaper',
-      steps: [...STILL_STEPS],
-      limits,
-    };
-  }
-
-  if (iosMajor >= LOOP_MIN_IOS) {
-    const limits = [
-      'The loop plays as Glaze’s Now Playing artwork, so it stays only while Glaze is playing it.',
-      'Playing music or a podcast in another app replaces it; start it again from Glaze afterwards.',
-      'Low Power Mode stops it. It is always silent.',
-    ];
-    if (kind === 'gif') limits.unshift('iOS never animates a GIF wallpaper itself; Glaze converts your GIF to a short video for the loop.');
-    return {
-      mode: 'loop',
-      headline: `iOS ${iosMajor}: a true looping Lock Screen`,
-      steps: [
-        'Frame, trim and set the speed in the loop editor (or add a few loops to the playlist).',
-        'Tap Set on Lock Screen (or Set playlist on Lock Screen). Glaze prepares the loop, then starts playing it.',
-        'Lock your iPhone. The loop fills the Lock Screen every time it wakes.',
-        'To stop, tap Stop in Glaze or pause it from the player on the Lock Screen.',
-      ],
-      limits,
-    };
-  }
-
-  // Full build, iOS 16–25 (or unknown): Live Photo wallpaper for videos.
-  const versionLabel = iosMajor > 0 ? `iOS ${iosMajor}` : 'This iOS version';
-  if (kind === 'gif') {
-    return {
-      mode: 'still',
-      headline: `${versionLabel}: save a still frame (GIFs can’t be Live Photos)`,
-      steps: [...STILL_STEPS],
-      limits: [
-        GIF_LIMIT,
-        'Live Photo export needs a video. Turn the GIF into a video first (for example with a screen recording) and pick that in Glaze.',
-        `A true loop needs iOS ${LOOP_MIN_IOS} or later.`,
-      ],
-    };
-  }
-  return {
-    mode: 'live-photo',
-    headline: `${versionLabel}: a Live Photo wallpaper`,
-    steps: [
-      'Frame and trim the clip in the loop editor.',
-      'Tap Save as Live Photo. Glaze saves the first 3 seconds of the loop to Photos.',
-      `Open ${WALLPAPER_PATH} and pick the Live Photo Glaze saved.`,
-      'If a Live Photo button is offered, turn it on so it plays, then tap Add.',
-    ],
-    limits: [
-      'A Live Photo wallpaper is not a constant loop: it plays briefly when the iPhone wakes or when you touch and hold, depending on the iOS version. Some versions show it as a still.',
-      `A true loop needs iOS ${LOOP_MIN_IOS} or later.`,
-    ],
-  };
+/**
+ * The Live Lock Screen guide for this device. Always three steps (Photos, Share › Use as
+ * Wallpaper, Live Photo on); the notice says when Glaze itself can't save the Live Photo.
+ */
+export function livePhotoGuide(input: GuideInput): LivePhotoGuide {
+  const ios = parseIosMajor(input.iosMajor);
+  const notice: GuideNotice =
+    input.build === 'expo-go' ? 'needs-full' : input.moduleReady === false ? 'needs-build' : input.kind === 'gif' ? 'gif' : null;
+  const notes: GuideNoteId[] = ['moves', ios > 0 && ios < LIVE_PHOTO_WALLPAPER_MIN_IOS ? 'old-ios' : 'needs', 'alt-path'];
+  return { canSave: notice === null, notice, steps: GUIDE_STEPS.map((s) => ({ ...s })), notes };
 }
 
 // ---------------------------------------------------------------------------
 // What can be saved
 
-export type SaveOptionId = 'lock-loop' | 'live-photo' | 'still-frame' | 'clip';
+export type SaveOptionId = 'live-photo' | 'still-frame' | 'clip';
 
 export type SaveOption = {
   id: SaveOptionId;
@@ -146,13 +111,11 @@ export type SaveOption = {
 };
 
 /**
- * What this build can save for a video or GIF. Pass iosMajor when known; without it the
- * full-build loop is listed as available (the native adapter checks the version itself).
+ * What this build can save for a video or GIF. T127: there is no "looping Lock Screen" option
+ * any more (Now Playing is gone from the UI); a Live Photo is the moving option.
  */
-export function saveOptions(build: LiveBuild, kind: LiveKind, iosMajor?: number): SaveOption[] {
-  const ios = iosMajor === undefined ? undefined : parseIosMajor(iosMajor);
+export function saveOptions(build: LiveBuild, kind: LiveKind): SaveOption[] {
   const full = build === 'full';
-  const loopOk = full && (ios === undefined || ios === 0 || ios >= LOOP_MIN_IOS);
   const livePhotoOk = full && kind === 'video';
   return [
     {
@@ -181,17 +144,6 @@ export function saveOptions(build: LiveBuild, kind: LiveKind, iosMajor?: number)
         : !full
           ? 'Needs the full Glaze build.'
           : 'Live Photos need a video, not a GIF.',
-    },
-    {
-      id: 'lock-loop',
-      label: 'Looping Lock Screen',
-      detail: 'Plays the loop on the Lock Screen while Glaze is playing it.',
-      available: loopOk,
-      unavailableReason: loopOk
-        ? undefined
-        : !full
-          ? 'Needs the full Glaze build.'
-          : `Needs iOS ${LOOP_MIN_IOS} or later.`,
     },
   ];
 }
@@ -235,9 +187,10 @@ export function stillFrameSeconds(currentSec: number, trim: { startMs: number; e
 export function heroSubline(build: LiveBuild, iosMajor: number): string {
   const ios = parseIosMajor(iosMajor);
   if (build === 'expo-go') {
-    return 'Frame and preview it here, then save a still wallpaper and the clip. The full Glaze build makes it move.';
+    return 'Frame and preview it here, then save a still wallpaper and the clip. The full Glaze build saves it as a Live Photo.';
   }
-  if (ios >= LOOP_MIN_IOS) return 'Loops on your Lock Screen while Glaze plays it. Silent, and you can stop it any time.';
-  if (ios > 0) return `On iOS ${ios} it becomes a Live Photo that moves briefly when your iPhone wakes.`;
-  return 'Trim, frame and preview it, then follow the steps for your iPhone.';
+  if (ios > 0 && ios < LIVE_PHOTO_WALLPAPER_MIN_IOS) {
+    return `On iOS ${ios} a Live Photo wallpaper stays still. It moves on iOS 17 or later.`;
+  }
+  return 'Saved as a Live Photo you set as your wallpaper. It moves when you wake your iPhone.';
 }

@@ -64,12 +64,12 @@ export const fr: NonNullable<LocaleMessages['themeUi']> = {
       body: 'iOS ne permet à aucune app de changer l’icône d’une autre. Glaze ajoute un raccourci thématique qui ouvre la vraie app ; rangez les originales dans la bibliothèque d’apps.',
     },
     'bulk-install': {
-      title: 'Installez toutes les icônes d’un coup',
-      body: 'Glaze réunit tout votre jeu dans un profil : vous installez une seule fois dans Réglages au lieu de créer un raccourci par app.',
+      title: 'Installation groupée (bêta facultative)',
+      body: 'Bêta facultative : un seul profil installe tout votre ensemble d’un coup dans Réglages. La méthode guidée avec Raccourcis est celle par défaut et marche toujours.',
     },
     'live-lock': {
-      title: 'Animez votre écran verrouillé',
-      body: 'Mettez en boucle votre vidéo ou GIF sur l’écran verrouillé depuis l’onglet Live Lock.',
+      title: 'Créer un fond d’écran Live Photo',
+      body: 'Transformez une vidéo en Live Photo dans l’onglet Live. Définissez-la via Photos › Partager › Utiliser en fond d’écran ; elle s’anime quand vous réveillez l’iPhone.',
     },
     'theme-pick': {
       title: 'Partez d’un thème',
@@ -100,8 +100,8 @@ export const fr: NonNullable<LocaleMessages['themeUi']> = {
       body: 'Le profil est créé sur votre téléphone et n’est pas signé : Réglages affiche donc Non vérifié. Il ajoute seulement des icônes à l’écran d’accueil.',
     },
     'live-loop': {
-      title: 'Où les boucles bougent vraiment',
-      body: 'Sous iOS 26, la version complète de Glaze joue la boucle sur l’écran verrouillé ; sur les iOS plus anciens, une Live Photo se lit par appui long. Expo Go n’affiche qu’un aperçu.',
+      title: 'Comment s’animent les Live Photos',
+      body: 'Un fond d’écran Live Photo s’anime quand vous réveillez ou touchez l’écran verrouillé ; ce n’est pas une boucle continue. Expo Go n’affiche qu’un aperçu.',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

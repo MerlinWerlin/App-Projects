@@ -3,13 +3,17 @@
 // (targets/widget/ThemeStore.swift) decodes the same shape. Keep both sides in sync.
 // Pure TS (no React Native / Expo) so Node can run and test it directly.
 
-import { isHex, normalizeHex } from './colour.ts';
+import { isHex, mix, normalizeHex, relativeLuminance } from './colour.ts';
 import type { Theme } from './themes.ts';
 
 export const WIDGET_THEME_VERSION = 1;
 export const WIDGET_APP_GROUP = 'group.com.jared797.glaze';
 export const WIDGET_THEME_KEY = 'glaze.theme.v1';
 export const WIDGET_PHOTO_FILE = 'widget-photo.jpg';
+/** T125: the same JSON as a file in the App Group container (backup read path for the extension). */
+export const WIDGET_THEME_FILE = 'theme.json';
+/** T125: AsyncStorage key holding the last widget theme the app applied (serialised WidgetTheme). */
+export const ACTIVE_WIDGET_THEME_KEY = 'glaze.activeWidgetTheme.v1';
 
 export type WidgetSurfaceStyle = 'glass' | 'solid' | 'outline';
 export type WidgetFont = 'display' | 'body';
@@ -29,19 +33,41 @@ export type WidgetTheme = {
   updatedAt: string;
 };
 
-/** Used when nothing (or nothing valid) has been written yet. Matches ThemeStore.swift defaults. */
+/**
+ * Used when nothing (or nothing valid) has been written yet. Matches ThemeStore.swift defaults.
+ * T125: a plum-to-coral Glaze gradient with light ink, so an unthemed widget still looks like Glaze
+ * (never near-white). `surface` is a deep plum, used for text on accent fills (the Date "today" dot).
+ */
 export const DEFAULT_WIDGET_THEME: WidgetTheme = Object.freeze({
   v: 1,
-  themeId: 'porcelain',
-  name: 'Porcelain',
-  bg: ['#F6F3F5', '#FFFFFF'],
-  surface: '#FFFFFF',
-  accent: '#7A2E6B',
-  ink: '#1E1A1D',
+  themeId: 'glaze',
+  name: 'Glaze',
+  bg: ['#7A2E6B', '#E0794F'],
+  surface: '#4A1A42',
+  accent: '#FFC9A8',
+  ink: '#FFF7F2',
   style: 'solid',
   font: 'display',
   updatedAt: '1970-01-01T00:00:00.000Z',
 }) as WidgetTheme;
+
+/** T125: a background stop at or above this WCAG luminance counts as pale. Mirrored in ThemeStore.swift. */
+export const PALE_BG_LUMINANCE = 0.8;
+/** T125: how far the last stop of a pale background is pulled toward the accent. Mirrored in Swift. */
+export const PALE_ACCENT_MIX = 0.35;
+
+/**
+ * T125: the gradient stops a widget paints. Pale pastel themes (every stop pale) would read as plain
+ * white, so their last stop is mixed toward the accent; the result is always two stops.
+ * ThemeStore.swift `WidgetTheme.backgroundHexes` implements the same rule.
+ */
+export function widgetBackgroundStops(t: Pick<WidgetTheme, 'bg' | 'accent'>): string[] {
+  const stops = t.bg.length > 0 ? t.bg.slice(0, 2) : [...DEFAULT_WIDGET_THEME.bg];
+  const first = stops[0];
+  const last = stops[stops.length - 1];
+  const pale = stops.every((c) => relativeLuminance(c) >= PALE_BG_LUMINANCE);
+  return [first, pale ? mix(last, t.accent, PALE_ACCENT_MIX) : last];
+}
 
 const STYLES: readonly WidgetSurfaceStyle[] = ['glass', 'solid', 'outline'];
 const FONTS: readonly WidgetFont[] = ['display', 'body'];
@@ -136,4 +162,27 @@ export function parseWidgetTheme(input: unknown): WidgetTheme | null {
     font,
     updatedAt,
   };
+}
+
+/**
+ * T125: the widget theme to (re)write at app launch. Prefers a fresh build from the applied theme's id
+ * (so colour fixes in app updates reach the widgets), then the stored JSON as written, then the theme
+ * the Icon Studio last used. Null when nothing was ever chosen (the extension shows its default).
+ */
+export function launchWidgetTheme<T extends Theme>(
+  storedRaw: string | null,
+  lookup: (id: string) => T | undefined,
+  studioThemeId: string | null,
+  now: Date = new Date(),
+): WidgetTheme | null {
+  const stored = storedRaw ? parseWidgetTheme(storedRaw) : null;
+  if (stored) {
+    const theme = lookup(stored.themeId);
+    return theme ? widgetThemeFrom(theme, now) : stored;
+  }
+  if (studioThemeId) {
+    const theme = lookup(studioThemeId);
+    if (theme) return widgetThemeFrom(theme, now);
+  }
+  return null;
 }

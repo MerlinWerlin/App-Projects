@@ -2,9 +2,14 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { DEVICES, DEFAULT_DEVICE, MAX_LOOP_MS, lockAspect, newProject, type LoopProject } from './loop.ts';
+import { DEVICES, DEFAULT_DEVICE, MAX_LOOP_MS, cropRect, lockAspect, newProject, type LoopProject } from './loop.ts';
 import {
+  ARTWORK_EXPORT_HEIGHT,
+  ARTWORK_EXPORT_WIDTH,
   LIVELOCK_PAYLOAD_VERSION,
+  artworkCropRect,
+  artworkExport,
+  isThreeByFour,
   MAX_LIVELOCK_PROJECTS,
   buildLivelockPayload,
   isLocalSourceUri,
@@ -26,13 +31,19 @@ function project(id: string, over: Partial<LoopProject> = {}): LoopProject {
   };
 }
 
-test('builds a versioned payload with the device export settings', () => {
+test('builds a versioned payload with the 3:4 animated artwork export (T135)', () => {
   const r = buildLivelockPayload([project('a')], DEFAULT_DEVICE);
   assert.ok(r.ok);
   if (!r.ok) return;
   assert.equal(r.payload.version, LIVELOCK_PAYLOAD_VERSION);
-  assert.equal(r.payload.export.width, DEFAULT_DEVICE.pixels.width);
-  assert.equal(r.payload.export.height, DEFAULT_DEVICE.pixels.height);
+  // Never the screen size: Apple ignores animated artwork whose aspect doesn't match the key.
+  assert.equal(r.payload.export.width, 1080);
+  assert.equal(r.payload.export.height, 1440);
+  assert.equal(r.payload.export.width * 4, r.payload.export.height * 3);
+  for (const d of DEVICES) {
+    const rd = buildLivelockPayload([project('a')], d);
+    assert.ok(rd.ok && rd.payload.export.width === ARTWORK_EXPORT_WIDTH && rd.payload.export.height === ARTWORK_EXPORT_HEIGHT, d.id);
+  }
   assert.equal(r.payload.export.fps, 30);
   assert.equal(r.payload.export.codec, 'hevc');
   assert.equal(r.payload.export.maxDurationMs, MAX_LOOP_MS);
@@ -46,7 +57,7 @@ test('h264 codec option is passed through', () => {
   assert.ok(r.ok && r.payload.export.codec === 'h264');
 });
 
-test('crop rect is inside the source, even-sized and at the Lock Screen aspect', () => {
+test('crop rect is inside the source, even-sized, exactly 3:4 and covers the user crop (T135)', () => {
   for (const device of DEVICES) {
     for (const crop of [
       { scale: 1, offsetX: 0, offsetY: 0 },
@@ -57,6 +68,8 @@ test('crop rect is inside the source, even-sized and at the Lock Screen aspect',
         [1920, 1080],
         [1080, 1920],
         [640, 640],
+        [3840, 2160],
+        [721, 1279],
       ]) {
         const r = buildLivelockPayload([project('a', { crop, sourceWidth: w, sourceHeight: h })], device);
         assert.ok(r.ok);
@@ -66,11 +79,47 @@ test('crop rect is inside the source, even-sized and at the Lock Screen aspect',
         assert.ok(rect.x + rect.width <= w && rect.y + rect.height <= h);
         assert.equal(rect.width % 2, 0);
         assert.equal(rect.height % 2, 0);
-        // Within the 2 px even-rounding of cropRect.
-        assert.ok(Math.abs(rect.width - rect.height * lockAspect(device)) <= 2);
+        assert.ok(isThreeByFour(rect.width, rect.height), `${rect.width}x${rect.height} is 3:4`);
+        const user = cropRect({ width: w, height: h }, lockAspect(device), crop);
+        // Covers the user's height whenever a 3:4 rect that tall fits in the source.
+        if (user.height * 0.75 <= w && user.height <= h) assert.ok(rect.height >= user.height, `${w}x${h} ${device.id}`);
+        // Otherwise it is the largest 3:4 rect that fits (within one 6x8 step).
+        else assert.ok(rect.width > w - 6 || rect.height > h - 8);
       }
     }
   }
+});
+
+test('artworkCropRect keeps the user crop centre and clamps inside the source', () => {
+  const src = { width: 3840, height: 2160 };
+  // Small user crop in the middle: same centre, covers its height.
+  const user = { x: 1800, y: 900, width: 200, height: 400 };
+  const r = artworkCropRect(src, user);
+  assert.ok(isThreeByFour(r.width, r.height));
+  assert.ok(r.height >= 400 && r.height < 408);
+  assert.ok(Math.abs(r.x + r.width / 2 - 1900) <= 1);
+  assert.ok(Math.abs(r.y + r.height / 2 - 1100) <= 1);
+  // Crop at the left edge: moved right just enough to stay inside.
+  const edge = artworkCropRect(src, { x: 0, y: 0, width: 994, height: 2160 });
+  assert.deepEqual(edge, { x: 0, y: 0, width: 1620, height: 2160 });
+  // Portrait 1080x1920 at full frame: the largest 3:4 is 1080x1440, centred.
+  assert.deepEqual(artworkCropRect({ width: 1080, height: 1920 }, { x: 98, y: 0, width: 884, height: 1920 }), {
+    x: 0,
+    y: 240,
+    width: 1080,
+    height: 1440,
+  });
+  // Bad input falls back to the whole source; tiny sources don't crash.
+  assert.ok(isThreeByFour(artworkCropRect(src, { x: NaN, y: 0, width: 0, height: 0 }).width, 2160));
+  assert.deepEqual(artworkCropRect({ width: 4, height: 4 }, { x: 0, y: 0, width: 4, height: 4 }), { x: 0, y: 0, width: 4, height: 4 });
+});
+
+test('artworkExport: 1080x1440, ≤ 60 fps, codec and bitrate', () => {
+  const e = artworkExport();
+  assert.deepEqual([e.width, e.height, e.codec], [1080, 1440, 'hevc']);
+  assert.ok(e.fps > 0 && e.fps <= 60);
+  assert.equal(e.maxDurationMs, MAX_LOOP_MS);
+  assert.ok(artworkExport('h264').bitrate > e.bitrate);
 });
 
 test('trim and speed are sanitised; trim never exceeds the 15 s loop', () => {
@@ -147,6 +196,8 @@ test('parseLivelockPayload accepts built payloads and rejects malformed ones', (
   assert.equal(bad((o) => (o.version = 2)), null);
   assert.equal(bad((o) => (o.export.codec = 'vp9')), null);
   assert.equal(bad((o) => (o.export.width = 5000)), null); // landscape
+  assert.equal(bad((o) => ((o.export.width = 1170), (o.export.height = 2532))), null); // screen aspect, not 3:4
+  assert.equal(bad((o) => (o.export.fps = 120)), null);
   assert.equal(bad((o) => (o.projects = [])), null);
   assert.equal(bad((o) => (o.projects[0].sourceUri = 'https://x')), null);
   assert.equal(bad((o) => (o.projects[0].speed = 2)), null);

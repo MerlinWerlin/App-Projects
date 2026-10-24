@@ -29,7 +29,7 @@ const base: LocaleMessages = {
     error: 'Une erreur s’est produite',
     itemCount: { zero: 'Aucun élément', one: '{count} élément', many: '{count} d’éléments', other: '{count} éléments' },
   },
-  tabs: { themes: 'Thèmes', icons: 'Icônes', live: 'Verrouillage animé', settings: 'Réglages' },
+  tabs: { themes: 'Thèmes', icons: 'Icônes', live: 'Live', settings: 'Réglages' },
   settings: {
     language: {
       title: 'Langue',

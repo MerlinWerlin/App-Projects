@@ -55,12 +55,12 @@ export const en = {
   method: {
     heading: 'How to install',
     groupLabel: 'Install method',
-    bulk: 'Bulk install',
+    bulk: 'Bulk install (beta)',
     recommended: 'Recommended',
     bulkNone: 'None of these apps has a link a profile can open. Use Shortcuts.',
     bulkBody: {
-      one: 'One profile adds {count} icon at once. Takes about two minutes.',
-      other: 'One profile adds {count} icons at once. Takes about two minutes.',
+      one: 'One profile adds {count} icon at once, through Safari. Beta: it may not reach Settings on every iPhone. Shortcuts always works.',
+      other: 'One profile adds {count} icons at once, through Safari. Beta: it may not reach Settings on every iPhone. Shortcuts always works.',
     },
     shortcuts: 'Shortcuts',
     shortcutsBody: 'One shortcut per app with the Shortcuts app. Works for every app, about a minute each.',
@@ -169,5 +169,31 @@ export const en = {
     available: 'Glaze draws each icon and asks your launcher to pin it. Confirm each one in the launcher dialog.',
     preview: 'Pinning icons arrives with the full Glaze build for Android. In this preview, save the icons to Photos and use your launcher’s icon settings.',
     pin: 'Pin icons to Home Screen',
+  },
+  // T126: profile served to Safari from this iPhone, and the guided Shortcuts path.
+  safari: {
+    intro: 'Glaze draws your icons, builds one profile on this iPhone and opens it in Safari straight from the iPhone. Nothing is uploaded.',
+    generateHint: 'Draws the icons, builds the profile and opens it in Safari',
+    opening: 'Opening Safari',
+    openAgain: 'Open in Safari again',
+    openAgainA11y: 'Open {file} in Safari again',
+    shareInstead: 'Share the file instead',
+    hurry: 'Safari can fetch the profile for about a minute after Glaze opens it. If Safari says it can’t connect, come back here and tap Open in Safari again.',
+    oneAtATime: 'Your icons are split into {files} profiles. iOS keeps one downloaded profile at a time: install part 1 in Settings, come back here, then open the next part.',
+    failed: 'Glaze could not open the profile in Safari. Tap Share the file instead and send it to yourself with Mail or AirDrop, or use Shortcuts.',
+    fallbackNote: 'This build can’t open the profile in Safari, so it goes through the share sheet, and iOS often won’t install a profile saved to Files. Use Shortcuts (recommended here), or send the file to yourself with Mail or AirDrop.',
+    page: { title: 'Glaze icons', body: 'Tap Install. Safari asks to allow a configuration profile download: tap Allow, then Close, and finish in Settings.', button: 'Install' },
+    cards: {
+      safari: { title: 'Install in Safari', body: 'Tap Install in Safari.' },
+      allow: { title: 'Allow the download', body: 'Safari asks to allow a configuration profile download: tap Allow, then Close.' },
+      settings: { title: 'Install in Settings', body: 'Open Settings: tap “Profile Downloaded” near the top (or General > VPN & Device Management), tap Install, enter your passcode, Install.' },
+      home: { title: 'Your icons appear', body: 'Your icons appear on the Home Screen.' },
+    },
+  },
+  guided: {
+    next: 'Next: {app}',
+    showNext: 'Show the steps',
+    allDone: 'All icons done. You can move the original icons to the App Library.',
+    oneAtATime: 'One icon at a time: follow the steps for the next app, tick it off, and Glaze opens the steps for the one after.',
   },
 } as const;

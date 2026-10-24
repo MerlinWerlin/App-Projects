@@ -56,6 +56,34 @@ export interface WidgetsAdapter {
    * Group once; never lowers a value. Expo Go / Android / older bridge: { available: false }.
    */
   migrateLocalHabits(localRaw: string | null, now?: Date, goals?: HabitGoals): Promise<HabitsSyncResult>;
+  /**
+   * T131: Seamless widget. The bridge crops `cropPx` (wallpaper pixels, src/core/seamlessWidget.ts
+   * seamlessCrop) out of the wallpaper, draws the hero centred-fit on top, writes
+   * `seamless-<size>.png` into the App Group and reloads the "GlazeSeamless" widget.
+   * Expo Go / Android / a build whose bridge predates T131: { available: false } and nothing runs.
+   */
+  setSeamless(input: SeamlessInput): Promise<WidgetsResult>;
+}
+
+/** T131: inputs for widgets.setSeamless (local file:// URIs; never uploaded anywhere). */
+export type SeamlessInput = {
+  wallpaperUri: string;
+  /** Crop rectangle in wallpaper pixels (whole numbers, inside the image). */
+  cropPx: { x: number; y: number; w: number; h: number };
+  /** Transparent hero art drawn on top; null/empty = wallpaper crop only. */
+  heroUri?: string | null;
+  size: 'small' | 'medium' | 'large';
+};
+
+/** T131: true when the input is something the bridge can act on (checked before calling native). */
+export function validSeamlessInput(input: SeamlessInput | null | undefined): boolean {
+  if (!input || typeof input.wallpaperUri !== 'string' || input.wallpaperUri.length === 0) return false;
+  if (input.size !== 'small' && input.size !== 'medium' && input.size !== 'large') return false;
+  const c = input.cropPx;
+  if (!c) return false;
+  const nums = [c.x, c.y, c.w, c.h];
+  if (!nums.every((n) => typeof n === 'number' && Number.isFinite(n))) return false;
+  return c.x >= 0 && c.y >= 0 && c.w >= 1 && c.h >= 1;
 }
 
 /** Shape exposed by modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift. */
@@ -66,6 +94,16 @@ type NativeBridge = {
   setWidgetSet?(json: string): Promise<boolean>;
   getHabits?(): Promise<{ habits?: string | null; log?: string | null } | null>;
   setHabits?(json: string): Promise<boolean>;
+  /** T131: crop + compose + write seamless-<family>.png, reload "GlazeSeamless". */
+  setSeamless?(
+    wallpaperUri: string,
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    heroUri: string,
+    family: string,
+  ): Promise<boolean>;
 };
 
 function isExpoGo(): boolean {
@@ -172,4 +210,29 @@ export const widgets: WidgetsAdapter = {
   syncHabits,
   logHabit,
   migrateLocalHabits,
+  setSeamless,
 };
+
+async function setSeamless(input: SeamlessInput): Promise<WidgetsResult> {
+  try {
+    const status = await isAvailable();
+    const mod = status.available ? loadNative() : null;
+    if (!mod) return { available: false, ok: false, reason: status.reason };
+    if (typeof mod.setSeamless !== 'function') return { available: false, ok: false, reason: 'not-built' };
+    if (!validSeamlessInput(input)) return { available: true, ok: false, reason: 'failed' };
+    const c = input.cropPx;
+    return run((m) =>
+      m.setSeamless?.(
+        input.wallpaperUri,
+        Math.round(c.x),
+        Math.round(c.y),
+        Math.round(c.w),
+        Math.round(c.h),
+        input.heroUri ?? '',
+        input.size,
+      ),
+    );
+  } catch {
+    return { available: true, ok: false, reason: 'failed' };
+  }
+}

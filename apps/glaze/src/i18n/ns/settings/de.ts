@@ -55,7 +55,7 @@ export const de: NonNullable<LocaleMessages['settings']> = {
     feedbackHint: 'Schreib dem Glaze-Team aus deiner eigenen Mail-App',
   },
   plus: {
-    body: 'Einmalpreis. Niemals ein Abo. Eigene Symbole erstellen, beide Installationswege und Live Lock mit deinem eigenen Video bleiben kostenlos.',
+    body: 'Einmalpreis. Niemals ein Abo. Eigene Symbole erstellen, beide Installationswege und der Live-Photo-Maker mit deinem eigenen Video bleiben kostenlos.',
     more: 'Was Glaze Plus enthält',
     moreHint: 'Erklärt die einmalige Freischaltung und ihren Inhalt',
   },
@@ -82,7 +82,7 @@ export const de: NonNullable<LocaleMessages['settings']> = {
     addedTitle: 'Symbole werden hinzugefügt, nicht ersetzt',
     addedBody: 'iOS lässt keine App das Symbol einer anderen App ändern. Glaze fügt stattdessen Kurzbefehle mit deinem neuen Look zum Home-Bildschirm hinzu. Ein Tipp darauf öffnet die echte App.',
     waysTitle: 'Zwei Wege zum Hinzufügen',
-    waysBody: 'Gesamt: Ein Profil fügt alle Symbole auf einmal hinzu (empfohlen). Kurzbefehle: Füge Symbole einzeln mit der Kurzbefehle-App hinzu, wenn du kein Profil installieren möchtest.',
+    waysBody: 'Kurzbefehle (empfohlen): Glaze führt dich durch das Hinzufügen jedes Symbols mit der Kurzbefehle-App. Sammelinstallation (optionale Beta): Ein Profil fügt alle Symbole auf einmal hinzu.',
     originalsTitle: 'Wohin die Original-Symbole kommen',
     originalsBody: 'Halte ein Original-Symbol gedrückt, tippe auf „App entfernen“ und dann auf „Vom Home-Bildschirm entfernen“. Die App bleibt installiert und landet in der App-Mediathek (nach der letzten Seite nach links wischen).',
     removeTitle: 'Glaze-Symbole entfernen',

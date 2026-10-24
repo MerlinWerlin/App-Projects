@@ -163,4 +163,30 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
     preview: 'Fixar ícones chega com a versão completa do Glaze para Android. Nesta prévia, salve os ícones no Fotos e use os ajustes de ícone do seu launcher.',
     pin: 'Fixar ícones na tela inicial',
   },
+  // T126: profile served to Safari from this iPhone, and the guided Shortcuts path.
+  safari: {
+    intro: 'O Glaze desenha seus ícones, cria um perfil neste iPhone e o abre no Safari direto do iPhone. Nada é enviado.',
+    generateHint: 'Desenha os ícones, cria o perfil e o abre no Safari',
+    opening: 'Abrindo o Safari',
+    openAgain: 'Abrir no Safari de novo',
+    openAgainA11y: 'Abrir {file} no Safari de novo',
+    shareInstead: 'Compartilhar o arquivo',
+    hurry: 'O Safari consegue baixar o perfil por cerca de um minuto depois que o Glaze o abre. Se o Safari disser que não consegue se conectar, volte aqui e toque em Abrir no Safari de novo.',
+    oneAtATime: 'Seus ícones foram divididos em {files} perfis. O iOS guarda um perfil baixado por vez: instale a parte 1 nos Ajustes, volte aqui e abra a próxima parte.',
+    failed: 'O Glaze não conseguiu abrir o perfil no Safari. Toque em Compartilhar o arquivo e envie para você mesmo por Mail ou AirDrop, ou use Atalhos.',
+    fallbackNote: 'Esta versão não consegue abrir o perfil no Safari, então ele vai pela folha de compartilhamento, e o iOS muitas vezes não instala um perfil salvo no Arquivos. Use Atalhos (recomendado aqui) ou envie o arquivo para você mesmo por Mail ou AirDrop.',
+    page: { title: 'Ícones do Glaze', body: 'Toque em Instalar. O Safari pede para permitir o download de um perfil de configuração: toque em Permitir, depois em Fechar, e termine nos Ajustes.', button: 'Instalar' },
+    cards: {
+      safari: { title: 'Instalar no Safari', body: 'Toque em Instalar no Safari.' },
+      allow: { title: 'Permitir o download', body: 'O Safari pede para permitir o download de um perfil de configuração: toque em Permitir, depois em Fechar.' },
+      settings: { title: 'Instalar nos Ajustes', body: 'Abra os Ajustes: toque em “Perfil Transferido” no topo (ou Geral > VPN e Gerenciamento de Dispositivos), toque em Instalar, digite seu código, Instalar.' },
+      home: { title: 'Seus ícones aparecem', body: 'Seus ícones aparecem na Tela de Início.' },
+    },
+  },
+  guided: {
+    next: 'Próximo: {app}',
+    showNext: 'Ver os passos',
+    allDone: 'Todos os ícones prontos. Você pode mover os ícones originais para a Biblioteca de Apps.',
+    oneAtATime: 'Um ícone por vez: siga os passos do próximo app, marque como feito e o Glaze abre os passos do seguinte.',
+  },
 };

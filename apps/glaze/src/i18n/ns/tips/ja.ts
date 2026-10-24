@@ -22,7 +22,7 @@ export const ja: NonNullable<LocaleMessages['tips']> = {
     wallpaper: '写真と壁紙',
     icons: 'アイコン、形、個別設定',
     install: 'アイコンのインストール',
-    live: 'Live ロック画面',
+    live: 'Live Photos',
   },
   places: {
     firstRun: 'テーマタブ',
@@ -30,7 +30,7 @@ export const ja: NonNullable<LocaleMessages['tips']> = {
     wallpaper: '壁紙メーカー',
     icons: 'アイコンタブ',
     install: 'アイコンをインストール',
-    live: 'Live Lock タブ',
+    live: 'Live タブ',
     shapes: 'アイコンの形の設定',
     override: 'アイコンタブ',
     addApp: 'アイコンタブ',
@@ -41,12 +41,12 @@ export const ja: NonNullable<LocaleMessages['tips']> = {
       body: 'iOS では、アプリが他のアプリのアイコンを変更できません。Glaze は本物のアプリを開くテーマ付きショートカットを追加します。元のアイコンは App ライブラリへ移しましょう。',
     },
     bulkInstall: {
-      title: 'すべてのアイコンを一度にインストール',
-      body: 'Glaze はセット全体を 1 つのプロファイルにまとめるので、アプリごとにショートカットを作らず、設定で一度インストールするだけです。',
+      title: '一括インストール（任意のベータ）',
+      body: '任意のベータ版：1 つのプロファイルでセット全体を設定から一度にインストールします。ガイド付きのショートカット方式が標準で、いつでも使えます。',
     },
     liveLock: {
-      title: 'ロック画面を動かそう',
-      body: 'Live Lock タブから、自分の動画や GIF をロック画面でループ再生できます。',
+      title: 'Live Photos の壁紙を作る',
+      body: 'Live タブでビデオを Live Photos に変換します。写真 › 共有 › 壁紙に設定 から設定すると、iPhone のスリープ解除時に動きます。',
     },
     themePick: {
       title: 'テーマから始めよう',
@@ -77,8 +77,8 @@ export const ja: NonNullable<LocaleMessages['tips']> = {
       body: 'プロファイルはお使いのスマートフォンで作られ署名されていないため、設定に「未検証」と表示されます。ホーム画面にアイコンを追加するだけです。',
     },
     liveLoop: {
-      title: 'ループが実際に動く場所',
-      body: 'iOS 26 では Glaze のフル版がロック画面でループ再生します。それより前の iOS では長押しで Live Photo が再生されます。Expo Go ではプレビューのみです。',
+      title: 'Live Photos の動き方',
+      body: 'Live Photos の壁紙は、ロック画面をスリープ解除したり押したりしたときに動きます。ずっとループするわけではありません。Expo Go はプレビューのみです。',
     },
   },
 };

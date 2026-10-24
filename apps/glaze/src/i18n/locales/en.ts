@@ -52,7 +52,7 @@ export const en = {
   tabs: { ...tabsNs,
     themes: 'Themes',
     icons: 'Icons',
-    live: 'Live Lock',
+    live: 'Live',
     settings: 'Settings',
   },
   settings: { ...settingsNs,

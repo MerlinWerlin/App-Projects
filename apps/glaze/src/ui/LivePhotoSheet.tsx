@@ -1,9 +1,15 @@
 // "Save as Live Photo" for the Live editor (T11): the button, the save flow and a sheet that
 // explains the result (how to set it as a wallpaper, permission denied, needs the full build).
+// T127: this is THE Live Lock Screen action now (primary pill). The "saved" sheet shows the same
+// three illustrated steps as the editor's guide; Expo Go / builds without the module explain
+// that Live Photo saving needs the TestFlight app and point to Save to Photos.
 import { useState } from 'react';
 import { Dimensions, Linking, StyleSheet, Text, View, type TextStyle } from 'react-native';
 import { deviceForScreen, type LoopProject } from '../core/loop';
 import { livephoto, livePhotoProblem, type LivePhotoReason } from '../native/livephoto';
+import { GUIDE_STEPS } from '../core/liveSteps';
+import { LivePhotoGuideSteps } from './LivePhotoGuide';
+import { localizedStep } from './liveContext';
 import { useT, type TFunction } from '../i18n';
 import { continuous, radiusV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
@@ -21,17 +27,9 @@ export type LivePhotoSheetState =
   | { kind: 'failed' };
 
 function why(t: TFunction, reason: Exclude<LivePhotoReason, null>): string {
-  if (reason === 'expo-go') return t('liveUi.livePhoto.whyExpoGo');
+  if (reason === 'expo-go') return t('liveUi.guide.needsFull');
   if (reason === 'android') return t('liveUi.livePhoto.whyAndroid');
-  return t('liveUi.livePhoto.whyNotBuilt');
-}
-
-function setSteps(t: TFunction): string[] {
-  return [
-    t('liveUi.livePhoto.setOpen', { path: t('liveUi.wallpaperPath') }),
-    t('liveUi.livePhoto.setPick'),
-    t('liveUi.tapLivePhoto'),
-  ];
+  return t('liveUi.guide.needsBuild');
 }
 
 function cameraSteps(t: TFunction): string[] {
@@ -42,13 +40,20 @@ function cameraSteps(t: TFunction): string[] {
   ];
 }
 
+/** The guide's three steps in the app language (same keys as liveContext.localizedGuide). */
+function guideSteps(t: TFunction) {
+  return GUIDE_STEPS.map((s) => localizedStep(t, s.id));
+}
+
 /** Self-contained button + sheet. `getProject` returns the latest edits at tap time. */
 type SaveAsLivePhotoButtonProps = {
   /** Latest edits at tap time. */
   getProject: () => LoopProject;
+  /** Called on tap before anything else (the editor flushes its pending edits here). */
+  onBeforeSave?: () => void;
 };
 
-export function SaveAsLivePhotoButton({ getProject }: SaveAsLivePhotoButtonProps) {
+export function SaveAsLivePhotoButton({ getProject, onBeforeSave }: SaveAsLivePhotoButtonProps) {
   const { t } = useT();
   const [busy, setBusy] = useState(false);
   const [state, setState] = useState<LivePhotoSheetState | null>(null);
@@ -56,6 +61,11 @@ export function SaveAsLivePhotoButton({ getProject }: SaveAsLivePhotoButtonProps
   const onPress = async () => {
     if (busy) return;
     haptic('select');
+    try {
+      onBeforeSave?.();
+    } catch {
+      // Saving edits is best effort; the Live Photo uses the in-memory project anyway.
+    }
     const project = getProject();
     const s = Dimensions.get('screen');
     const device = deviceForScreen(s.width, s.height);
@@ -85,7 +95,6 @@ export function SaveAsLivePhotoButton({ getProject }: SaveAsLivePhotoButtonProps
     <>
       <PillButton
         label={busy ? t('liveUi.livePhoto.saving') : t('liveUi.livePhoto.button')}
-        variant="tinted"
         icon="aperture"
         busy={busy}
         block
@@ -117,7 +126,6 @@ export function LivePhotoSheet({ state, onClose }: LivePhotoSheetProps) {
   switch (s.kind) {
     case 'saved':
       message = t('liveUi.livePhoto.msgSaved');
-      steps = setSteps(t);
       stepsTitle = t('liveUi.livePhoto.setTitle');
       break;
     case 'denied':
@@ -156,6 +164,12 @@ export function LivePhotoSheet({ state, onClose }: LivePhotoSheetProps) {
           <Text style={[...type.body, styles.stepText, { color: c.ink }]}>{step}</Text>
         </View>
       ))}
+      {s.kind === 'saved' ? (
+        <>
+          <LivePhotoGuideSteps steps={guideSteps(t)} />
+          <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('liveUi.guide.moves')}</Text>
+        </>
+      ) : null}
       {s.kind === 'denied' ? (
         <PillButton
           label={t('liveUi.openSettings')}

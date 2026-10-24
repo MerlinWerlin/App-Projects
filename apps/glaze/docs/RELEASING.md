@@ -133,3 +133,29 @@ in the widget extension has been tested on a real device until you do this.
 - Updates are free on Expo's free plan for a small number of users; Glaze sends no other data.
 - The project id lives in `app.json` under `extra.eas.projectId` once `eas init` has run; this repo
   deliberately has no made-up id.
+
+## 7. Native pieces (switch one off without the others)
+
+One `production-native` TestFlight build carries every native piece. If the EAS log shows a Swift
+`error:` in one piece, switch **only that piece** off for the next build and keep the rest. Each
+piece is reached from JS through an adapter in `src/native/` that uses `requireOptionalNativeModule`,
+so a piece that isn't in the build behaves like Expo Go (no crash, the screen falls back).
+Audit of every Swift file: `docs/NATIVE_AUDIT_1024.md`.
+
+| Piece | Lives in | Switch off for one build | What the app does without it |
+| --- | --- | --- | --- |
+| Widget extension (GlazeWidgets, A) | `targets/widget/`, registered by `native-plugins/widgets.json` | Rename `native-plugins/widgets.json` to `widgets.json.off` (app.config.ts only reads `*.json`). That also drops the App Group entitlement from the app. | No Glaze widgets in the gallery; the bridge calls still succeed or no-op. |
+| Widget bridge module (A) | `modules/glaze-widget-bridge` | Move the folder out of `modules/` (for example to `modules-parked/glaze-widget-bridge`; nothing links that folder). | `widgets.*` returns `{ available: false }`; widgets keep showing the Glaze default theme. |
+| Profile server module (B) | `modules/glaze-profile-server` | Move the folder out of `modules/` (for example to `modules-parked/glaze-profile-server`). | `profileServer.status()` is "not-built": Shortcuts is the default method, Bulk uses the share sheet. |
+| Live Photo / Live Lock (C) | `modules/glaze-livephoto`, `modules/glaze-livelock` | Same: move the folder out of `modules/`. | The adapters report unavailable. |
+
+Notes:
+- Do **not** move a module into `modules-off/`: that folder is what the plain `production` profile
+  links (it must stay empty).
+- `"platforms": []` in a module's `expo-module.config.json` should also stop autolinking (Expo
+  skips a module whose platform list doesn't include the one being built), but moving the folder
+  is the certain switch.
+- The source-guard tests read the parked Swift by its `modules/...` path, so a parked piece makes
+  those tests fail on purpose: move it back (or update the paths) once the compile error is fixed.
+- `PROFILE_INSTALL_ENABLED` in `src/config/install.ts` stays the one switch for showing the profile
+  method at all; it is separate from whether the server module is built.

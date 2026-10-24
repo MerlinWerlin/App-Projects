@@ -10,6 +10,7 @@ import { FIRST_CATALOGUE_DATE, THEMES, getTheme, withArt, type Theme, type Theme
 import type { WallpaperParams } from './wallpaper.ts';
 import { AURORA_PACK_ID, NEW_PLUS_THEMES } from './themesNew.ts';
 import { spaceThemeById } from './spacePack.ts';
+import { artPackThemeById } from './artPackThemes.ts';
 import { STORYPLAY_PACK_ID, STORYPLAY_PACK_NAME, STORYPLAY_PLUS_THEMES } from './themesStoryPlay.ts';
 
 export type PlusPack = {
@@ -486,7 +487,8 @@ export const ALL_THEMES: readonly Theme[] = Object.freeze([...THEMES, ...PLUS_TH
 export function getAnyTheme(id: string | null | undefined): Theme | undefined {
   if (typeof id !== 'string') return undefined;
   // T103: the free Space (Webb) photo themes resolve here too (detail, studio, apply).
-  return ALL_THEMES.find((t) => t.id === id) ?? getTheme(id) ?? spaceThemeById(id);
+  // T130: so do the free art-pack themes (themes/<id>/, src/core/artPackThemes.ts).
+  return ALL_THEMES.find((t) => t.id === id) ?? getTheme(id) ?? spaceThemeById(id) ?? artPackThemeById(id);
 }
 
 /**
