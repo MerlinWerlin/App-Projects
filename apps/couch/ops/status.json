@@ -1,12 +1,12 @@
 {
   "stage": "owner-tested",
   "trial_kit": true,
-  "oversight_seen": 127,
-  "tests": "1600 pass (bun, Jest-compatible)",
+  "oversight_seen": 129,
+  "tests": "1605 pass (bun, Jest-compatible)",
   "typecheck": "core clean; app/ and src/ui clean against offline stubs (new, D75-1); full app tsc with real types needs PC verification",
-  "last_run": "2026-10-24 07:51 Sydney",
-  "headline": "New: your gold d-pad icon and a remote-press startup animation",
-  "next_for_owner": "1) Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (23 Oct, 22 Oct and 18–19 Oct) in a comment here: double-click UPDATE_AND_START.cmd in Desktop\\Apps, then open Couch from Expo Go > Recently opened (the trial kit below stays as a fallback). The remote screen's new look waits for your answers. 2) Decide the Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (Market research below). 3) In Desktop\\Apps\\couch double-click VERIFY.cmd and paste verify-report.txt into a comment (full PC check, T18). 4) Real TV discovery on TestFlight still needs Apple's multicast entitlement (docs/RELEASING.md section d).",
+  "last_run": "2026-10-24 11:56 Sydney",
+  "headline": "Couch has its App Store Connect id; waiting for the next TestFlight ship",
+  "next_for_owner": "1) Open Couch on your iPhone (Expo Go > Recently opened, or TestFlight once the build is out) and answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (24 Oct, 23 Oct, 22 Oct and 18–19 Oct) in a comment here. The remote screen's new look waits for your answers. 2) Decide the Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (Market research below). 3) Couch's App Store Connect id (6826135134) is in place; the next auto-ship should reach the iOS build step, and Claude fixes any compile errors it reports. 4) Real TV discovery on TestFlight still needs Apple's multicast entitlement (docs/RELEASING.md section d).",
   "screenshots": {
     "dir": "store/screenshots/publish",
     "size": "1320x2868",

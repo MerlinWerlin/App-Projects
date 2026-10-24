@@ -4,6 +4,9 @@ Couch runs inside **Expo Go** for this trial. It starts in demo mode with three 
 
 Please answer the yes/no questions first (copy them into a comment on the Couch build page); how to open Couch is below them.
 
+## New since your last test (24 Oct)
+1. Settings > "Send feedback or request a feature": the page opens, and sending starts an email to you with your message filled in. yes / no
+
 ## New since your last test (23 Oct)
 1. When Couch opens, does the remote-press animation play smoothly and hand over to the remote within about 3 seconds? yes / no
 (In Expo Go the home-screen icon is Expo's own; the new gold d-pad icon shows on TestFlight builds.)
@@ -37,26 +40,15 @@ Open Couch as described under "How to open Couch" below. Then copy these into a 
 5. The round OK button in the middle of the d-pad sits exactly centred, a clean circle with an even gap all round? yes / no (a screenshot in the comment helps)
 
 ## How to open Couch
-Your PC now copies each new Couch build into `Desktop\Apps\couch` by itself (hourly refresh).
-1. Double-click **UPDATE_AND_START.cmd** in `Desktop\Apps`.
-2. On the iPhone, open **Expo Go** and tap Couch under **Recently opened** (first time only: scan the QR code shown in the window with the iPhone Camera).
-3. Couch opens on the Remote tab in demo mode. Answer the questions above in a comment on the Couch build page: "works", or paste trial-log.txt if anything is red. Comments are read first on every build run.
+Nothing to do on the PC: it picks up each new Couch build and starts it by itself.
+1. On the iPhone, open **Expo Go** and tap Couch under **Recently opened**. Once the TestFlight build is out, you can open Couch from **TestFlight** instead (that copy shows the gold d-pad icon).
+2. Couch opens on the Remote tab in demo mode.
+3. Answer the questions above in a comment on the Couch build page ("works" is fine too). Comments are read first on every build run.
 
-You need Expo Go from the App Store (free) and Node.js LTS from https://nodejs.org on the PC (free; accept the defaults).
-
-**Fallback (if Desktop\Apps\couch is missing):** use **Download trial kit** on the Couch build page, unzip it anywhere and double-click **START_TRIAL.cmd**. The first run takes a few minutes; it updates Expo to the version Expo Go needs, checks the code compiles (into trial-log.txt; red lines there don't stop the app), then shows a QR code to scan with the iPhone Camera.
+You need Expo Go (free, App Store) or TestFlight.
 
 Things to try: the Power / Source / Settings row, the d-pad, volume, the 123 pad, hold-to-talk (in Expo Go it opens the keyboard instead), the source picker, the Apps tab and switching TVs on the TVs tab.
 
-**About the Apps tab:** in demo mode the app tiles (Cinema, Sports, Music, News, Kids, Photos) are made-up placeholders with simple artwork. Once Couch is connected to your own TV, the tiles show the real app logos, which come from the TV itself. If a TV doesn't give a logo, the tile shows the app's name instead.
-
-PC and iPhone do not need to be on the same Wi-Fi (the script uses a tunnel).
-
 ## If something goes wrong
-- The script writes **trial-log.txt** next to START_TRIAL.cmd. If anything is red, paste trial-log.txt (and a photo of the window) into a comment on the Couch build page; the next build run reads comments first.
-- "Project is incompatible with this version of Expo Go": close the window and run START_TRIAL.cmd again (it updates Expo each time).
-- Windows asks about firewall access for Node: allow it.
-- To stop, press Ctrl+C in the window or just close it.
-
-## One more click: VERIFY.cmd (helps the build, 5 minutes)
-Couch's builder runs in the cloud and can't install the full toolchain, so the last full check has to happen on your PC. Double-click **VERIFY.cmd** in the Couch folder (`Desktop\Apps\couch`, or the unzipped kit). It installs, typechecks, runs every test and builds the iPhone bundle, then writes **verify-report.txt** (each step's result and the first error lines). Open it, copy everything and paste it into a comment on the Couch build page. Nothing on your phone is needed, and it never changes your code. If an earlier copy only said "Node.js is not installed" even though Node is installed, that was a bug in VERIFY.cmd (fixed 17 Oct, run 37): download the trial kit again and rerun it.
+- Couch is missing from Expo Go's Recently opened, or Expo Go says the project is incompatible: say so in a comment (a screenshot helps). The PC restarts Couch with each new build, so it usually comes back within the hour.
+- Anything looks wrong or a button does nothing: a comment with a screenshot is all the build needs.

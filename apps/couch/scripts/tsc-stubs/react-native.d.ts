@@ -286,6 +286,7 @@ declare module 'react-native' {
     defaultValue?: string;
     placeholder?: string;
     placeholderTextColor?: ColorValue;
+    textAlignVertical?: 'auto' | 'top' | 'bottom' | 'center';
     onChangeText?: (text: string) => void;
     onSubmitEditing?: (e: NativeSyntheticEvent<{ text: string }>) => void;
     onKeyPress?: (e: NativeSyntheticEvent<{ key: string }>) => void;
@@ -535,6 +536,7 @@ declare module 'react-native' {
     OS: 'ios' | 'android' | 'web' | 'windows' | 'macos';
     Version: number | string;
     isPad?: boolean;
+    constants: { [key: string]: unknown };
     select<T>(specifics: { ios?: T; android?: T; web?: T; native?: T; default?: T }): T;
   };
 

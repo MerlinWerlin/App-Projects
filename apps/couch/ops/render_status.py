@@ -26,7 +26,7 @@ STAGES = ["build", "trial", "owner-tested", "release-prep"]
 stage_html = " → ".join(f'<b class="cur">{e(x)}</b>' if x == stage else e(x) for x in STAGES)
 kit = ""
 if status.get("trial_kit"):
-    kit = ("""<section class="kit"><h2>Try it on your iPhone</h2><p>Download the trial kit, unzip it on your PC, double-click <b>START_TRIAL.cmd</b> and scan the QR code with your iPhone camera (Expo Go installed). Steps are in <span class="mono">docs/TRIAL.md</span> inside the zip. If anything is red, paste <span class="mono">trial-log.txt</span> into a comment on this page.</p>"""
+    kit = ("""<section class="kit"><h2>Try it on your iPhone</h2><p>Open <b>Expo Go</b> on your iPhone and tap Couch under Recently opened (or open it from <b>TestFlight</b> once that build is out). Your PC starts each new build by itself. Answer the yes/no questions from <span class="mono">docs/TRIAL.md</span> in a comment on this page. The kit below is only a spare copy of the code.</p>"""
            """<p style="margin-top:10px"><button id="dl" type="button">Download trial kit</button> <span id="dlmsg" class="mono"></span></p></section>"""
            """<script>(async()=>{const b=document.getElementById('dl'),m=document.getElementById('dlmsg');let d=null;try{d=await window.claude?.use?.('downloads')}catch(_){}"""
            """b.addEventListener('click',async()=>{m.textContent='Preparing…';try{const r=await fetch('trial-kit.zip.b64.txt');if(!r.ok)throw new Error('kit not found');const t=(await r.text()).trim();const bin=atob(t);const u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);"""
