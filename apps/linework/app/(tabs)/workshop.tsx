@@ -32,15 +32,15 @@ const SUBS = TRADE_SUBS.filter((s) => COUNTS[s] > 0);
 
 /** Blueprint palette: the same in light and dark mode (it is the look of this tab). */
 export const BLUEPRINT = {
-  bg: '#0C2440',
-  card: '#0F2D50',
-  grid: '#1A4570',
-  line: '#5FB8E8',
-  art: '#E6F3FF',
-  ink: '#E6F3FF',
-  muted: '#8DB4D6',
-  active: '#5FB8E8',
-  onActive: '#0C2440',
+  bg: '#0C2440', // theme-colour-ok: fixed blueprint look (owner 24 Oct)
+  card: '#0F2D50', // theme-colour-ok: fixed blueprint look (owner 24 Oct)
+  grid: '#1A4570', // theme-colour-ok: fixed blueprint look (owner 24 Oct)
+  line: '#5FB8E8', // theme-colour-ok: fixed blueprint look (owner 24 Oct)
+  art: '#E6F3FF', // theme-colour-ok: fixed blueprint look (owner 24 Oct)
+  ink: '#E6F3FF', // theme-colour-ok: fixed blueprint look (owner 24 Oct)
+  muted: '#8DB4D6', // theme-colour-ok: fixed blueprint look (owner 24 Oct)
+  active: '#5FB8E8', // theme-colour-ok: fixed blueprint look (owner 24 Oct)
+  onActive: '#0C2440', // theme-colour-ok: fixed blueprint look (owner 24 Oct)
 } as const;
 const MONO = Platform.select({ ios: 'Menlo', android: 'monospace', default: 'monospace' });
 const GAP = spaceV2.x3;

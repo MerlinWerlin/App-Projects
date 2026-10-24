@@ -700,6 +700,7 @@ export interface TextInputProps extends ViewProps {
   value?: string | undefined;
   allowFontScaling?: boolean | undefined;
   maxFontSizeMultiplier?: number | null | undefined;
+  textAlignVertical?: 'auto' | 'top' | 'bottom' | 'center' | undefined;
 }
 export class TextInput extends React.Component<TextInputProps> {
   isFocused(): boolean;
@@ -744,6 +745,22 @@ export interface ActivityIndicatorProps extends ViewProps {
   size?: number | 'small' | 'large' | undefined;
 }
 export class ActivityIndicator extends React.Component<ActivityIndicatorProps> {}
+
+// ---------------------------------------------------------------- StatusBar (imperative API, RN 0.81)
+export type StatusBarStyle = 'default' | 'light-content' | 'dark-content';
+export interface StatusBarProps extends ViewProps {
+  animated?: boolean | undefined;
+  barStyle?: StatusBarStyle | null | undefined;
+  hidden?: boolean | undefined;
+  backgroundColor?: ColorValue | undefined;
+  translucent?: boolean | undefined;
+}
+export class StatusBar extends React.Component<StatusBarProps> {
+  static setBarStyle(style: StatusBarStyle, animated?: boolean): void;
+  static setHidden(hidden: boolean, animation?: 'none' | 'fade' | 'slide'): void;
+  static setBackgroundColor(color: ColorValue, animated?: boolean): void;
+  static setTranslucent(translucent: boolean): void;
+}
 
 // ---------------------------------------------------------------- Animated
 type ViewClass = typeof View;
