@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android"],
+  "apple": {
+    "modules": ["MediaServerModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.mediaserver.MediaServerModule"]
+  }
+}

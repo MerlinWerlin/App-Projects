@@ -29,6 +29,7 @@
     "src/ui/sheetPhase.ts",
     "src/native/storeReview.ts",
     "src/native/mediaServer.ts",
+    "src/native/mediaPicker.ts",
     "src/native/widgetBridge.ts",
     "src/ui/widget/linkHandler.ts",
     "src/ui/widget/snapshotSync.ts",

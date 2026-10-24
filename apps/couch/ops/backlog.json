@@ -1031,7 +1031,7 @@
     {
       "id": "T80",
       "title": "Casting part 2: native media-server module (modules/media-server, HTTP with Range) + photo/video picker + Cast sheet on the remote, hidden in Expo Go",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T76",
         "T18"
@@ -1041,8 +1041,8 @@
         "M2"
       ],
       "priority": 1,
-      "note": "See docs/CASTING.md. Needs a dev build; free unless the owner decides otherwise. Held by oversight D77-1 (run 45) until the owner's VERIFY report (T18) or a dev build exists.",
-      "hold": "D77-1"
+      "note": "See docs/CASTING.md. Needs a dev build; free unless the owner decides otherwise. Held by oversight D77-1 (run 45) until the owner's VERIFY report (T18) or a dev build exists. Superseded 24 Oct by cast-1024 (T89-T92, owner brief; D77-1 hold lifted for casting by the owner's request).",
+      "commit": "superseded"
     },
     {
       "id": "T81",
@@ -1145,6 +1145,113 @@
       ],
       "commit": "b6a1915",
       "note": "run 66; store shots re-rendered and republished"
+    },
+    {
+      "id": "T89",
+      "title": "cast-1024 A core: CastDriver implementations (DLNA AVTransport over CastSession, Roku media player via ECP, MockCast demo), connected-TV renderer probe + SSDP, CastQueue (queue/next/prev/slideshow/loop) state machine, contract tests with DLNA/Roku fixtures",
+      "status": "done",
+      "deps": [
+        "T76"
+      ],
+      "tags": [
+        "cast-1024"
+      ],
+      "priority": 1,
+      "note": "docs/OWNER_1024_CAST.md phase A; contract src/core/cast/driver.ts + queueTypes.ts; run 70, fixtures only, not tried on a real TV",
+      "commit": "8bc0ea2"
+    },
+    {
+      "id": "T90",
+      "title": "cast-1024 A native: modules/media-server Expo module (iOS Swift NWListener, Android Kotlin ServerSocket) serving one file per token with Content-Type, Content-Length, HTTP Range; stops in background",
+      "status": "done",
+      "deps": [
+        "T76"
+      ],
+      "tags": [
+        "cast-1024"
+      ],
+      "priority": 1,
+      "note": "TestFlight/dev build only; never compiled in the cloud; run 70, fixtures only, not tried on a real TV",
+      "commit": "02103da"
+    },
+    {
+      "id": "T91",
+      "title": "cast-1024 A UI: Cast tab (picker via guarded expo-image-picker, queue, next/prev, play/pause/seek, slideshow interval, loop), demo mode with MockCast and 'works in the TestFlight build' note in Expo Go, remote play/pause controls an active cast, 11 languages",
+      "status": "done",
+      "deps": [
+        "T89",
+        "T92"
+      ],
+      "tags": [
+        "cast-1024"
+      ],
+      "priority": 1,
+      "note": "built in the same wave against the contracts; run 70, fixtures only, not tried on a real TV",
+      "commit": "d1b2126"
+    },
+    {
+      "id": "T92",
+      "title": "cast-1024 B: AirPlay / Screen Mirroring button (modules/route-picker AVRoutePickerView behind src/native/routePicker.ts) + one-screen Control Centre guide; free",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "cast-1024"
+      ],
+      "priority": 1,
+      "commit": "a82395e",
+      "note": "; run 70, fixtures only, not tried on a real TV"
+    },
+    {
+      "id": "T93",
+      "title": "cast-1024 C: full screen mirroring to non-AirPlay TVs (ReplayKit broadcast extension + VideoToolbox + live stream server)",
+      "status": "todo",
+      "deps": [
+        "T89",
+        "T90"
+      ],
+      "tags": [
+        "cast-1024"
+      ],
+      "priority": 3,
+      "hold": "owner-later",
+      "note": "Design note + estimate in docs/OWNER_1024_CAST.md phase C; later round, not this one"
+    },
+    {
+      "id": "T94",
+      "title": "D133-2 OTA safety: source-guard test that every import of modules/media-server, modules/route-picker and expo-image-picker goes through a guarded adapter (tests/cast-native-guard.test.ts)",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "cast-1024"
+      ],
+      "priority": 1,
+      "commit": "f9b54f6",
+      "note": "run 71; scans app/, src/, modules/; adapters require inside try/catch; local modules use requireOptionalNativeModule; adapters report unavailable without native side"
+    },
+    {
+      "id": "T95",
+      "title": "D133-1 native 1.0.1 build triage: when App-Projects shows the Couch 1.0.1 ship result, attribute each error to media-server / route-picker / expo-image-picker / other, fix the smallest piece or guard a failing module out of the native build",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "cast-1024"
+      ],
+      "priority": 1,
+      "note": "run 71: waiting, no 1.0.1 ship run yet (App-Projects main SHIP_BASE cfdfa5c, app.json 1.0.0; no new ship/couch-* branch since 20261024-1420)"
+    },
+    {
+      "id": "T96",
+      "title": "D134-1: each run check App-Projects for the Couch 1.0.1 ship (SHIP_BASE past cfdfa5c, RELEASE.json mode build); after two more unshipped runs record the likely skip reason; TRIAL.md leads with TestFlight",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "cast-1024"
+      ],
+      "priority": 1,
+      "note": "TRIAL.md leads with TestFlight (run 73); two ship checks done, skip reason recorded in status.native_build_1_0_1 (run 74)."
     }
   ],
   "codex_delegable": [

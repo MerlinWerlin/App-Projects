@@ -32,8 +32,14 @@ describe('store screenshot kit (T59)', () => {
   });
 
   it('one theme per shot, from the shared theme ids', () => {
-    const themes = [...render.matchAll(/name: '[\w-]+', key: '[\w.]+',(?: vars: \{[^}]*\},)? theme: '(\w+)'/g)].map((m) => m[1]);
-    expect(themes).toEqual(['charcoal', 'daylight', 'retro', 'aurora', 'cinema', 'neon', 'forest']);
+    // only the main SHOTS block; SHOTS_IOS (owner's App Store set, App-Projects 9288117) is checked separately
+    const block = (name: string) => render.slice(render.indexOf(`export const ${name} = [`), render.indexOf('];', render.indexOf(`export const ${name} = [`)));
+    const themesOf = (b: string) => [...b.matchAll(/name: '[\w-]+', key: '[\w.]+',(?: vars: \{[^}]*\},)? theme: '(\w+)'/g)].map((m) => m[1]);
+    expect(themesOf(block('SHOTS'))).toEqual(['charcoal', 'daylight', 'retro', 'aurora', 'cinema', 'neon', 'forest']);
+    // the App Store set uses free themes only (Couch Plus is not on sale yet)
+    const ios = themesOf(block('SHOTS_IOS'));
+    expect(ios.length).toBe(6);
+    for (const t of ios) expect(['charcoal', 'daylight', 'midnight', 'oled']).toContain(t);
   });
 
   it('names no TV maker, platform or streaming service in its output strings or contact sheet', () => {

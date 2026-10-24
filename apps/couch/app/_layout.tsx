@@ -18,6 +18,7 @@ import { PrefsProvider, usePrefs } from '../src/state/prefs';
 import { RatingPromptHost } from '../src/state/useRatingPrompt';
 import { useQuietUpdate } from '../src/state/useQuietUpdate';
 import { SessionProvider } from '../src/state/session';
+import { CastProvider } from '../src/state/cast';
 import { IntroRemote } from '../src/ui/IntroRemote';
 import { ToastHost } from '../src/ui/Toast';
 import { registerBlurView, type BlurViewLike } from '../src/ui/v2/blurRegistry';
@@ -65,9 +66,12 @@ export default function RootLayout() {
         {/* Remote-theme access (owner-1017): Plus unlock + "Try it", read by useRemoteTheme(). */}
         <PlusThemeProvider>
           <SessionProvider>
-            <LifecycleProvider>
-              <RootShell ready={ready} />
-            </LifecycleProvider>
+            {/* cast-1024: Cast tab state (targets for the session's TVs, queue, file server). */}
+            <CastProvider>
+              <LifecycleProvider>
+                <RootShell ready={ready} />
+              </LifecycleProvider>
+            </CastProvider>
           </SessionProvider>
         </PlusThemeProvider>
       </PrefsProvider>
@@ -159,6 +163,8 @@ function RootStack() {
         />
         {/* Owner 24 Oct 2026: Send feedback / request a feature (from Settings; draws its own large title). */}
         <Stack.Screen name="feedback" />
+        {/* cast-1024 (T92): AirPlay / Screen Mirroring guide, opened from the Cast tab. */}
+        <Stack.Screen name="airplay" options={{ presentation: 'modal' }} />
         <Stack.Screen name="choose-apps" options={{ headerShown: true, title: t('app.chooseApps.title'), headerStyle: { backgroundColor: theme.body }, headerTintColor: theme.ink }} />
         <Stack.Screen name="themes" options={{ headerShown: true, title: t('app.themes.title'), headerStyle: { backgroundColor: theme.body }, headerTintColor: theme.ink }} />
         <Stack.Screen name="plus" options={{ headerShown: true, title: t('app.plus.title'), headerStyle: { backgroundColor: theme.body }, headerTintColor: theme.ink }} />

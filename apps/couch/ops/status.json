@@ -1,12 +1,12 @@
 {
   "stage": "owner-tested",
   "trial_kit": true,
-  "oversight_seen": 130,
-  "tests": "1614 pass (bun, Jest-compatible)",
+  "oversight_seen": 136,
+  "tests": "1747 pass (bun, Jest-compatible)",
   "typecheck": "core clean; app/ and src/ui clean against offline stubs (new, D75-1); full app tsc with real types needs PC verification",
-  "last_run": "2026-10-24 13:55 Sydney",
-  "headline": "TestFlight build: passed (you tested the first build on 24 Oct); new work ships as over-the-air updates",
-  "next_for_owner": "1) Open Couch on your iPhone (TestFlight, or Expo Go > Recently opened) and answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (24 Oct, 23 Oct, 22 Oct and 18–19 Oct) in a comment here. The remote screen's new look waits for your answers. 2) Decide the Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (Market research below). 3) Multicast entitlement: requested 24 Oct; nothing to do until Apple's email arrives, then say so in a comment and the build switches real TV discovery on.",
+  "last_run": "2026-10-25 03:51 Sydney (run 75, idle)",
+  "headline": "TestFlight 1.0.1 (Cast): still waiting for auto-ship (check 2 of 2, D134-1); likely the 2-native-builds-per-day limit, should clear around 11:30 Sydney 25 Oct.",
+  "next_for_owner": "1) Open Couch from TestFlight on your iPhone (Expo Go only works once the PC copy is on SDK 58) and answer the yes/no questions under 'New since your last test' in docs/TRIAL.md, starting with the new Cast questions (24 Oct evening), in a comment here. 2) When the next TestFlight build arrives, try casting a photo and a video to one of your TVs and say which TV it was; casting is not tested on a real TV yet. 3) Decide the Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (Market research below). Casting stays free either way. 4) Multicast entitlement: requested 24 Oct; when Apple's email arrives, say so in a comment.",
   "screenshots": {
     "dir": "store/screenshots/publish",
     "size": "1320x2868",
@@ -80,5 +80,14 @@
       "Lead store screenshots with the price promise and our own remote, never logos or '100+ brands' claims (T69)."
     ],
     "logos": "Real app logos: Couch's Apps tab shows each app's real icon as soon as a TV is connected, because the TV itself supplies the image (Roku, LG, Samsung, Sony; see docs/APP_ICONS.md). Demo mode shows original placeholder tiles. Couch never bundles or draws streaming logos (App Review and trademark risk)."
+  },
+  "ship": "native build needed: new native code (modules/media-server, modules/route-picker, expo-image-picker dependency + plugin), app.json version 1.0.0 -> 1.0.1 per docs/RELEASING.md (c). An OTA update alone reaches 1.0.0 phones with the Cast tab in demo-only mode (guarded, no crash).",
+  "native_build_1_0_1": {
+    "state": "waiting",
+    "checked": "2026-10-24 run 74 (14:51Z)",
+    "media-server": "not built yet",
+    "route-picker": "not built yet",
+    "expo-image-picker": "not built yet",
+    "note": "App-Projects main 163cc2f (14:51Z): apps/couch SHIP_BASE still cfdfa5c, RELEASE.json mode update, app.json 1.0.0; newest ship/couch-* branches are 1310 and 1420 Sydney (both 1.0.0, older). Skip reason (D134-1, check 2 of 2): not an open Couch PR (none since #22) and not the quiet-window rule (last owner Couch commit 11:32Z, over 3 h ago; only non-Couch commits since: marketing 13:02Z/13:06Z). Auto-ship is running (Glaze PR #74 at 14:21Z). Most likely cause: the 2-native-builds-per-24h cap (Couch ship merges #9 and #11 around 22:30Z-00:25Z 23-24 Oct), which clears ~00:30Z 25 Oct. Auto-ship rules are not in the public repo, so this cannot be confirmed from here. Guards verified by tests/cast-native-guard.test.ts (D133-2)."
   }
 }

@@ -22,7 +22,9 @@ export default function TabsLayout() {
       }}
     >
       <Tabs.Screen name="remote" options={{ title: t('app.tabs.remote'), tabBarLabel: t('app.tabs.remote'), tabBarAccessibilityLabel: t('app.tabs.remote') }} />
-      <Tabs.Screen name="apps" options={{ title: t('app.tabs.apps'), tabBarLabel: t('app.tabs.apps'), tabBarAccessibilityLabel: t('app.tabs.apps') }} />
+      {/* cast-1024: photos and videos from the phone to the TV (free). */}
+      <Tabs.Screen name="cast" options={{ title: t('app.tabs.cast'), tabBarLabel: t('app.tabs.cast'), tabBarAccessibilityLabel: t('app.tabs.cast') }} />
+      <Tabs.Screen name="apps"options={{ title: t('app.tabs.apps'), tabBarLabel: t('app.tabs.apps'), tabBarAccessibilityLabel: t('app.tabs.apps') }} />
       <Tabs.Screen name="tvs" options={{ title: t('app.tabs.tvs'), tabBarLabel: t('app.tabs.tvs'), tabBarAccessibilityLabel: t('app.tabs.tvs') }} />
     </Tabs>
   );

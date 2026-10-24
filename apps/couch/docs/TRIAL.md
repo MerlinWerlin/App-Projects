@@ -1,8 +1,16 @@
-# Try Couch on your iPhone (demo mode)
+# Try Couch on your iPhone
 
-Couch runs inside **Expo Go** for this trial. It starts in demo mode with three pretend TVs, so nothing is sent to a real TV yet. Finding and controlling your own TVs needs a full app build later.
+Open Couch from **TestFlight** (it has the gold d-pad icon). It starts in demo mode with three pretend TVs when no TV is found. Expo Go is only a fallback now: your Expo Go is on SDK 58, so Couch shows under "Recently opened" only once the PC copy runs on SDK 58 too.
 
 Please answer the yes/no questions first (copy them into a comment on the Couch build page); how to open Couch is below them.
+
+## New since your last test (24 Oct, evening): Cast
+The current TestFlight build (1.0.0) and Expo Go run the Cast tab in demo mode. Casting to a real TV needs the TestFlight 1.0.1 build, which has not been built yet.
+1. There is a new Cast tab next to Remote. "Choose photos and videos" opens your photo library, and the picked items show as a queue. yes / no
+2. Cast tab (demo TV): play/pause, next/previous, -10 s / +10 s on a video, and the slideshow with its interval chips all respond. yes / no
+3. While something is casting, the Remote tab shows a small "Casting" pill, and Play/Pause on the remote pauses the cast. yes / no
+4. "AirPlay / Screen Mirroring" opens the iPhone's AirPlay list (TestFlight build) or a short guide (Expo Go). yes / no
+5. TestFlight build, only if you have a TV handy: cast a photo and a video to your TV. Did they show? Which TV was it? yes / no
 
 ## New since your last test (24 Oct)
 1. Settings > "Send feedback or request a feature": the page opens, and sending starts an email to you with your message filled in. yes / no
@@ -42,15 +50,16 @@ Open Couch as described under "How to open Couch" below. Then copy these into a 
 5. The round OK button in the middle of the d-pad sits exactly centred, a clean circle with an even gap all round? yes / no (a screenshot in the comment helps)
 
 ## How to open Couch
-Nothing to do on the PC: it picks up each new Couch build and starts it by itself.
-1. On the iPhone, open **Expo Go** and tap Couch under **Recently opened**. Once the TestFlight build is out, you can open Couch from **TestFlight** instead (that copy shows the gold d-pad icon).
-2. Couch opens on the Remote tab in demo mode.
+Nothing to do on the PC: it picks up each new Couch build by itself, and new builds reach TestFlight automatically.
+1. On the iPhone, open **TestFlight** and tap **Open** next to Couch. When TestFlight offers an update, install it first.
+2. Couch opens on the Remote tab (demo mode when no TV is found).
 3. Answer the questions above in a comment on the Couch build page ("works" is fine too). Comments are read first on every build run.
 
-You need Expo Go (free, App Store) or TestFlight.
+Fallback: **Expo Go** > Recently opened > Couch. This only works while the PC copy matches your Expo Go version (SDK 58); if Expo Go says the project is incompatible, use TestFlight.
 
 Things to try: the Power / Source / Settings row, the d-pad, volume, the 123 pad, hold-to-talk (in Expo Go it opens the keyboard instead), the source picker, the Apps tab and switching TVs on the TVs tab.
 
 ## If something goes wrong
-- Couch is missing from Expo Go's Recently opened, or Expo Go says the project is incompatible: say so in a comment (a screenshot helps). The PC restarts Couch with each new build, so it usually comes back within the hour.
+- Couch is missing from TestFlight, or a TestFlight build will not open: say so in a comment (a screenshot helps).
+- Expo Go says the project is incompatible: expected while the PC copy is on an older SDK than your Expo Go (58). Use TestFlight.
 - Anything looks wrong or a button does nothing: a comment with a screenshot is all the build needs.
