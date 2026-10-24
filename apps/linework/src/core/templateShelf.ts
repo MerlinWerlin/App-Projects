@@ -20,11 +20,13 @@ export const NEW_SETS: readonly TemplateCategory[] = ['heroes', 'game', 'movies'
  * Batches that joined an older category and still count as New (fb-1022b, D110-2): the kawaii food/friends batches
  * live in Cute & chibi next to the T65 pieces, so they are picked by id prefix.
  */
-export const NEW_ID_PREFIXES: readonly string[] = ['kawaii-'];
+export const NEW_ID_PREFIXES: readonly string[] = ['kawaii-', 'char-'];
 
 /** Bubble order after All and New: the most asked-for first (market-1018), then the rest of the catalogue. */
 export const SHELF_ORDER: readonly TemplateCategory[] = [
   'trade',
+  // owner 24 Oct 2026: Letters is a must-have (one template per character, 16 styles), so it sits first in the row.
+  'lettering',
   'heroes',
   'game',
   'movies',
@@ -33,7 +35,6 @@ export const SHELF_ORDER: readonly TemplateCategory[] = [
   'animals',
   'flowers',
   'cute',
-  'lettering',
   'wildlife',
   'sealife',
   'faces',

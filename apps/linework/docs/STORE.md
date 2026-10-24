@@ -51,7 +51,7 @@ Comma separated, no spaces after commas, no word that is already in the name or 
 tracing,ar,camera,outline,stencil,lightbox,template,anime,chibi,cute,art,projector,kids,learn,line
 ```
 
-### Description (≤4000) [2897]
+### Description (≤4000) [3137]
 ```text
 Trace anything onto real paper. Stand your phone over a sheet of paper, pick a photo or a template, and Linework shows it on top of the live camera view so you can draw along the lines with your own pencil.
 
@@ -62,8 +62,9 @@ PHOTO TO SKETCH
 • Pick a style: Sketch for soft pencil-like lines, Line art for crisp edges, Bold lines for just the main shapes, or let Best match choose.
 • Adjust detail and line thickness, keep only the subject or the whole scene, and switch to white lines for dark paper.
 
-500+ TEMPLATES TO TRACE
-• Original line art in 18 categories: sea life, heroes, game world, movie night, fairy tales, kids, cute & chibi, flowers & botanicals, animals & pets, birds & insects, faces & figures, lettering, mandalas, frames & patterns, buildings & landscapes, fantasy, still life and simple shapes.
+1,900+ TEMPLATES TO TRACE
+• Letters in 16 styles, one letter per template: bubble, retro, calligraphy, script, pixel, graffiti, blackletter, stencil, western, art deco, typewriter and more.
+• Original line art in 19 categories, including a Workshop of exact angles, joints and layouts: sea life, heroes, game world, movie night, fairy tales, kids, cute & chibi, flowers & botanicals, animals & pets, birds & insects, faces & figures, letters, trade & workshop, mandalas, frames & patterns, buildings & landscapes, fantasy, still life and simple shapes.
 • Filter by level from beginner to advanced, search, and tap the heart to keep favourites.
 
 STEADY WHILE YOU DRAW
@@ -97,9 +98,9 @@ FREE TRIAL, THEN ONE SMALL PRICE
 Everything is free for 14 days. After that, tracing your own photos with every tracing tool and 24 starter templates stay free. Linework Plus unlocks the full template library and photo-to-outline once, for A$2.99. No subscription.
 ```
 
-### What's New in version 1.0 (≤500) [174]
+### What's New in version 1.0 (≤500) [167]
 ```text
-Welcome to Linework 1.0! Trace photos and 500+ original templates onto paper, turn any photo into a sketch, lock it steady and record a timelapse. Every tracing tool is free.
+Welcome to Linework 1.0! Trace photos and 1,900+ templates onto paper, turn any photo into a sketch, lock it steady and record a timelapse. Every tracing tool is free.
 ```
 
 ### URLs
@@ -175,7 +176,7 @@ Two styles to A/B test (Apple product page optimisation or Play store listing ex
 | 1 | **Trace anything onto paper** | Your phone over the page, your pencil on the lines | Outcome: phone on a glass over paper, a real hand with a pencil tracing, the finished drawing half done underneath |
 | 2 | **Every tool free** | No ads. No subscription. No account. | The differentiator: the full control row with every label visible |
 | 3 | **Any photo to a sketch** | Three line styles, made on your phone | Photo-to-sketch Before → After |
-| 4 | **500+ templates to trace** | Heroes, fairy tales, game world, kids and more | Templates grid with category bubbles |
+| 4 | **1,900+ templates to trace** | Heroes, fairy tales, game world, kids and more | Templates grid with category bubbles |
 | 5 | **Lock it. Draw steady.** | Lock, touch lock and focus that stays put | Lock and touch lock on the trace screen |
 | 6 | **Draw it step by step** | Big shapes first, fine lines last | Sketch steps |
 | 7 | **Fade it just right** | Slide the opacity until you see your pencil | Opacity slider blown up |
@@ -192,7 +193,7 @@ Two styles to A/B test (Apple product page optimisation or Play store listing ex
 3. **Any photo to a sketch**
    - (a) Peach-to-cream gradient. Two tilted cards overlapping: an original photo (our own pet photo) labelled "Before" and its Line art outline labelled "After", the After card breaking out of the phone frame; a curved arrow between them.
    - (b) Ink blue. Phone on the prepare screen with the Original / Outline switch on Outline; a small strip of the three styles (Sketch, Line art, Bold lines) as enlarged chips beside it.
-4. **500+ templates to trace**
+4. **1,900+ templates to trace**
    - (a) Mint gradient. Phone on the Templates screen; three template cards (a chibi character, a rose, a lettering piece from our own set) float out of the grid at different angles, with sparkles.
    - (b) Ink blue. Upright phone with category bubbles across the top and the large preview grid; one category bubble ("Heroes") enlarged beside the phone.
 5. **Lock it. Draw steady.**

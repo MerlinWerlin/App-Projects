@@ -33,11 +33,12 @@ import { animals3Names } from './animals3.ts';
 import { figures2Names } from './figures2.ts';
 import { places3Names } from './places3.ts';
 import { fantasy3Names } from './fantasy3.ts';
+import { lettersNames } from './letters.ts';
 
 export type PackLocale = Exclude<LocaleCode, 'en'>;
 export type PackNames = Readonly<Record<PackLocale, Readonly<Record<string, string>>>>;
 
-export const PACKS: readonly PackNames[] = [kawaiiFoodNames, kawaiiFriendsNames, sealifeNames, moviesMoreNames, fairytalesMoreNames, animals2Names, figuresNames, places2Names, shapes2Names, game2Names, tradeNames, stilllife3Names, wildlife3Names, kidsfantasyNames, mandalas2Names, flowers2Names, patterns2Names, trade2Names, wild2Names, flowers3Names, lettering2Names, mandalas3Names, kids2Names, shapes3Names, patterns3Names, stilllife4Names, animals3Names, figures2Names, places3Names, fantasy3Names];
+export const PACKS: readonly PackNames[] = [kawaiiFoodNames, kawaiiFriendsNames, sealifeNames, moviesMoreNames, fairytalesMoreNames, animals2Names, figuresNames, places2Names, shapes2Names, game2Names, tradeNames, stilllife3Names, wildlife3Names, kidsfantasyNames, mandalas2Names, flowers2Names, patterns2Names, trade2Names, wild2Names, flowers3Names, lettering2Names, mandalas3Names, kids2Names, shapes3Names, patterns3Names, stilllife4Names, animals3Names, figures2Names, places3Names, fantasy3Names, lettersNames];
 
 /** All pack names for one locale, merged. */
 export function packNames(locale: PackLocale): Record<string, string> {

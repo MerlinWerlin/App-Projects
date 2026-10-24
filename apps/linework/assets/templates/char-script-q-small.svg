@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Script small q</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M202 264Q186 282 164 282Q146 282 133 269Q121 257 121 230Q121 207 131 180Q140 154 159 136Q178 118 204 118Q217 118 223 123Q229 127 229 134V135L233 120H279L230 348L182 360Z"/>
+    <path d="M210 228 227 149Q224 138 213 138Q201 138 190 153Q180 168 174 189Q169 210 169 226Q169 242 173 246Q178 251 185 251Q192 251 199 245Q206 239 210 228Z"/>
+  </g>
+</svg>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Linework Support</title>
+<style>
+  :root {
+    --paper: #F5F1EA; --card: #FFFFFF; --line: #DDD5C8; --text: #22201C; --muted: #6E675D;
+    --ink: #2346A8; --ink-soft: #E3E8F7; --warn: #A2620F; --warn-soft: #FBEFD9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14130F; --card: #1D1B17; --line: #34302A; --text: #EEE8DE; --muted: #A39B8F;
+      --ink: #8FA8FF; --ink-soft: #1E2846; --warn: #E7B464; --warn-soft: #3A2C14;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--paper); color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font: 700 2rem/1.2 Georgia, "Times New Roman", serif; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 32px 0 8px; }
+  .meta { color: var(--muted); margin: 0 0 24px; }
+  p, li { overflow-wrap: anywhere; }
+  nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  nav a {
+    background: var(--ink-soft); color: var(--ink); text-decoration: none; border-radius: 999px;
+    padding: 6px 14px; font-size: 0.95rem; font-weight: 600;
+  }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 16px; margin: 10px 0; }
+  summary { cursor: pointer; padding: 14px 18px; font-weight: 600; list-style-position: outside; }
+  details > div { padding: 0 18px 14px; }
+  details[open] summary { border-bottom: 1px solid var(--line); margin-bottom: 10px; }
+  ul, ol { padding-left: 1.2em; }
+  a { color: var(--ink); }
+  .todo { background: var(--warn-soft); color: var(--warn); border-radius: 6px; padding: 1px 6px; font-weight: 600; }
+  footer { color: var(--muted); font-size: 0.9rem; margin-top: 40px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Linework Support</h1>
+  <p class="meta">Help for Linework, the free tracing app. Every tracing tool is free: no ads, no account, no subscription.</p>
+
+  <nav aria-label="Topics">
+    <a href="#setup">Setting up</a>
+    <a href="#tracing">Tracing</a>
+    <a href="#outline">Outlines</a>
+    <a href="#lightbox">Lightbox</a>
+    <a href="#languages">Languages</a>
+    <a href="#permissions">Permissions</a>
+    <a href="#plus">Linework Plus</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <h2 id="setup">Setting up</h2>
+  <details open>
+    <summary>How do I set up my phone over the paper?</summary>
+    <div>
+      <ol>
+        <li>Stand your phone about 20–30 cm above the paper: on a phone stand, on a drinking glass, or across two stacks of books, with the back camera pointing down at the paper.</li>
+        <li>Make sure there is room for your hand to draw underneath, and that the paper is lit evenly. The <em>Torch</em> button turns on the flashlight if it is dark.</li>
+        <li>Tape the paper down if you can, so it does not slide while you draw.</li>
+      </ol>
+      <p>Linework shows a short four-step setup guide the first time you open it. You can watch it again any time from <em>Settings → Show the setup guide</em>.</p>
+    </div>
+  </details>
+  <details>
+    <summary>The camera keeps refocusing when my hand moves in.</summary>
+    <div><p>Lock the image (see below). With <em>Settings → Keep focus while locked</em> switched on, the camera keeps its focus while the image is locked, so your hand does not make it blur.</p></div>
+  </details>
+
+  <h2 id="tracing">Tracing</h2>
+  <details>
+    <summary>How do I size and place the picture?</summary>
+    <div><p>On the trace screen, pinch to make the picture bigger or smaller, use two fingers to rotate it and drag with one finger to move it. <em>Reset</em> centres it again. <em>Mirror</em> flips it left to right, and <em>Grid</em> adds a 3×3 or 4×4 guide grid.</p></div>
+  </details>
+  <details>
+    <summary>How do I stop the picture moving while I draw? (Lock and Touch lock)</summary>
+    <div>
+      <p><strong>Lock</strong> fixes the picture in place: pinch, rotate and drag are switched off until you tap it again.</p>
+      <p><strong>Touch lock</strong> makes the whole screen ignore taps, so your hand can rest on the phone. To leave touch lock, press and hold anywhere on the screen for one second.</p>
+      <p>Linework also keeps the screen awake while you trace (you can turn this off in Settings).</p>
+    </div>
+  </details>
+  <details>
+    <summary>How do I see both the picture and my pencil? (Opacity)</summary>
+    <div><p>Swipe the opacity slider on the right edge of the trace screen up or down to make the picture more or less see-through. Set a starting opacity in <em>Settings → Starting opacity</em>.</p></div>
+  </details>
+  <details>
+    <summary>Can it show me the drawing step by step?</summary>
+    <div><p>Yes. Tap <em>Steps</em> on the trace screen and Linework reveals the picture from big shapes to fine lines, one step at a time. Use the arrows to go forward or back.</p></div>
+  </details>
+  <details>
+    <summary>How do I record a timelapse?</summary>
+    <div><p>Tap <em>Record</em> on the trace screen. Linework records the camera view (up to 10 minutes, no sound, and the overlay picture is not in the video). When you stop, tap <em>Save to Photos</em> to keep it, or discard it. Nothing is saved unless you ask.</p></div>
+  </details>
+  <details>
+    <summary>How do I check or keep my finished drawing?</summary>
+    <div><p>Tap <em>Check</em> to take a snapshot of your paper and compare it with the picture. From there you can save it to <em>My drawings</em>, a free gallery that stays on your phone.</p></div>
+  </details>
+
+  <h2 id="outline">Outline styles</h2>
+  <details>
+    <summary>How do I turn a photo into a sketch?</summary>
+    <div>
+      <p>After you pick a photo, switch <em>Original / Outline</em> to <em>Outline</em>. Linework turns the photo into clean line art on your phone; nothing is uploaded.</p>
+      <ul>
+        <li><strong>Style:</strong> choose a look such as Best match, Sketch (soft pencil-like lines), Line art (crisp edges) or Bold lines (just the main edges, thick and easy to see).</li>
+        <li><strong>Detail:</strong> low keeps the main shapes; high adds hair, folds and texture.</li>
+        <li><strong>Line thickness:</strong> from hairline to extra bold.</li>
+        <li><strong>Background:</strong> Subject only, Soft or Everything.</li>
+        <li><strong>White lines:</strong> for drawing on dark paper.</li>
+      </ul>
+      <p>All styles are free.</p>
+    </div>
+  </details>
+  <details>
+    <summary>Are the templates free?</summary>
+    <div><p>Yes. Every template in the Templates screen is free to trace, in categories like flowers, animals, cute and chibi, lettering, mandalas and more. Tap the heart to keep favourites.</p></div>
+  </details>
+
+  <h2 id="lightbox">Lightbox</h2>
+  <details>
+    <summary>What is Lightbox mode?</summary>
+    <div><p>Lightbox shows the picture full-bright on a white screen so you can lay thin paper over your phone or tablet and trace directly on top, with no camera. Turn the screen brightness up, lay the paper on, then tap <em>Lock</em>. Tap <em>Exit</em> to go back. You can open it from the trace screen.</p></div>
+  </details>
+
+  <h2 id="languages">Languages</h2>
+  <details>
+    <summary>Which languages does Linework speak?</summary>
+    <div>
+      <p>English, Español, Français, Deutsch, Italiano, Português (Brasil), 日本語, 한국어, 简体中文, हिन्दी and العربية. Linework follows your phone's language. To choose another one, go to <em>Settings → Language</em>. Switching to or from Arabic restarts the app so the layout can change direction.</p>
+      <p>Translations other than English are machine translations that are still being reviewed by native speakers. Spotted a mistake? Let us know.</p>
+    </div>
+  </details>
+
+  <h2 id="permissions">Permissions</h2>
+  <details>
+    <summary>I said "Don't Allow" to the camera or photos. How do I fix it?</summary>
+    <div>
+      <p>Linework will show an <em>Open Settings</em> button. Or do it yourself:</p>
+      <ul>
+        <li><strong>iPhone / iPad:</strong> open the Settings app → scroll down to <em>Linework</em> → turn on <em>Camera</em>, and set <em>Photos</em> to the access you want.</li>
+        <li><strong>Android:</strong> Settings → Apps → Linework → Permissions → allow Camera (and Photos and videos if asked).</li>
+      </ul>
+      <p>Without the camera you can still trace using Lightbox mode. Linework only uses the camera and photos on your device and never uploads them. See the <a href="privacy.html">Privacy Policy</a>.</p>
+    </div>
+  </details>
+
+  <h2 id="plus">Linework Plus</h2>
+  <details>
+    <summary>What is Linework Plus?</summary>
+    <div><p>Every tracing tool is free. Linework Plus is an optional one-time purchase for extra template packs. It never locks a tracing tool, and there is no subscription. Find it in <em>Settings → Linework Plus and tip jar</em>.</p></div>
+  </details>
+  <details>
+    <summary>How do I restore my purchase on a new phone?</summary>
+    <div><p>Sign in to the same Apple ID (or Google account) you bought it with, open <em>Settings → Linework Plus and tip jar</em> and tap <em>Restore purchases</em>. Linework has no accounts of its own, so the App Store or Google Play is the record of your purchase.</p></div>
+  </details>
+  <details>
+    <summary>How do I get a refund?</summary>
+    <div><p>Purchases are handled by Apple or Google, so refunds go through them: on iPhone use reportaproblem.apple.com, on Android use your Google Play order history.</p></div>
+  </details>
+
+  <h2 id="contact">Contact</h2>
+  <p>Something not working, or an idea? Email <a href="mailto:jaredbradley272@gmail.com">jaredbradley272@gmail.com</a>. Please include your phone model and what you were doing. Linework collects no data, so we can only see what you tell us.</p>
+
+  <footer>Linework · Support · Updated 18 October 2026 · <a href="privacy.html">Privacy Policy</a></footer>
+</main>
+</body>
+</html>

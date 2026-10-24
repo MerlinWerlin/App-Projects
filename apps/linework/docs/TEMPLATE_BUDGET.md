@@ -44,3 +44,11 @@ Per template: beginner 225 × 2.9 KB raw / 1.0 KB gzip · intermediate 187 × 6.
 - T117 done: generated sets are baked into finished path strings (`scripts/bake-templates.ts`), so the phone never runs generation code; the startup freeze the overseer flagged is gone.
 - The download estimate still holds: 529 templates add ≈ 1 MB compressed; 1 000 would add ≈ 2 MB. **Target stays 600 in the base app**, then reassess with a real `eas build` size report.
 - New constraint found: the build artifact carries the repo as one git bundle (8.7 MB now, limit 10 MB). Each 30-template batch adds roughly 0.25 MB (generator + baked file + review SVGs). Git history keeps every old blob, so deleting files does not shrink the bundle; T125 halves future growth (stop committing the generated review SVGs) and adds a split restore (frozen base bundle + small incremental bundle) before the library grows past ~600.
+
+## Update 24 Oct 2026: Letters, 1 940 templates
+
+730 one-character Letters templates (16 styles, `src/core/templateArt/letters/`, generated from open-licence font
+outlines by `scripts/gen-letters.py`, integer coordinates) take the library from 1 210 to **1 940**. They are small:
+≈ 0.8 MB of TypeScript in total (≈ 1.1 KB per letter; the distressed Typewriter style is the largest at ≈ 3.3 KB),
+so the exported SVG total is 7.54 MB and stays under the 8 MB guard without raising it. Letters are exempt from the
+near-duplicate guard (the same character in two typefaces is meant to look alike); `letterStyles.test.ts` guards them.

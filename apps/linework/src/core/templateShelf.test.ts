@@ -20,7 +20,7 @@ test('New is the most recently added sets (fb-1022 + fb-1022b Sea life and kawai
   assert.deepEqual([...NEW_SETS], ['heroes', 'game', 'movies', 'fairytales', 'kids', 'sealife', 'trade']);
   const fresh = newTemplates(TEMPLATES);
   assert.ok(fresh.length >= 10);
-  assert.ok(fresh.every((t) => NEW_SETS.includes(t.category) || t.id.startsWith('kawaii-')));
+  assert.ok(fresh.every((t) => NEW_SETS.includes(t.category) || t.id.startsWith('kawaii-') || t.id.startsWith('char-')));
   assert.ok(fresh.some((t) => t.id.startsWith('kawaii-') && t.category === 'cute'));
   assert.equal(isNewTemplate(LIB[0]), false);
   assert.equal(isNewTemplate(LIB[2]), true);
@@ -31,7 +31,7 @@ test('shelf order covers every catalogue category exactly once', () => {
   assert.equal(new Set(SHELF_ORDER).size, SHELF_ORDER.length);
   assert.deepEqual([...SHELF_ORDER].sort(), CATEGORIES.map((c) => c.id).sort());
   // fb-1023b: the paid Trade & workshop pack leads the row.
-  assert.deepEqual(SHELF_ORDER.slice(0, 10), ['trade', 'heroes', 'game', 'movies', 'fairytales', 'kids', 'animals', 'flowers', 'cute', 'lettering']);
+  assert.deepEqual(SHELF_ORDER.slice(0, 10), ['trade', 'lettering', 'heroes', 'game', 'movies', 'fairytales', 'kids', 'animals', 'flowers', 'cute']);
 });
 
 test('parseShelf: new, categories, junk', () => {
