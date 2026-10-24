@@ -7,7 +7,7 @@ import { Card, Disc, Press, Screen, T } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 
 export default function Home() {
-  const { t, theme, stats } = useApp();
+  const { t, theme, stats, freeLeft } = useApp();
   const router = useRouter();
   const today = dayKey(new Date());
   const daily = dailyLine(PACKS, today);
@@ -27,6 +27,14 @@ export default function Home() {
           <T>⚙︎</T>
         </Press>
       </View>
+
+      {freeLeft != null ? (
+        <Press label={freeLeft > 0 ? t('home.freeLeft', { n: freeLeft }) : t('home.freeDone')} onPress={() => router.push('/plus')} style={{ marginTop: SP(4), alignSelf: 'flex-start', backgroundColor: freeLeft > 0 ? theme.cardHi : theme.rec, borderRadius: R.pill, paddingHorizontal: SP(4), paddingVertical: SP(2) }}>
+          <T kind="small" color={freeLeft > 0 ? theme.ink : theme.recInk} style={{ fontWeight: '800' }}>
+            {freeLeft > 0 ? `🎟 ${t('home.freeLeft', { n: freeLeft })}` : `🔓 ${t('home.freeDone')}`}
+          </T>
+        </Press>
+      ) : null}
 
       {/* Daily */}
       {daily ? (

@@ -9,7 +9,7 @@ import { Button, Card, Disc, Screen, T, Toastish } from '../src/ui/kit.tsx';
 import { SP } from '../src/ui/theme.ts';
 
 export default function Plus() {
-  const { t, theme, plus, plusPrice, plusKind, buyPlus, restorePlus } = useApp();
+  const { t, theme, owned: plus, freeLeft, plusPrice, plusKind, buyPlus, restorePlus } = useApp();
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
@@ -35,6 +35,11 @@ export default function Plus() {
       <T color={theme.sub} center style={{ marginTop: SP(2) }}>
         {t('plus.body')}
       </T>
+      {freeLeft != null ? (
+        <T kind="bodyB" color={freeLeft > 0 ? theme.rew : theme.rec} center style={{ marginTop: SP(2) }}>
+          {freeLeft > 0 ? t('home.freeLeft', { n: freeLeft }) : t('home.freeDone')}
+        </T>
+      ) : null}
       <Card style={{ marginTop: SP(5), gap: SP(3) }}>
         {(['plus.f1', 'plus.f2', 'plus.f3', 'plus.f4', 'plus.f5'] as const).map((k) => (
           <View key={k} style={{ flexDirection: 'row', gap: SP(3) }}>

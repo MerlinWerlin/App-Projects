@@ -9,7 +9,7 @@ import { Button, Card, Chip, Divider, Screen, SectionTitle, T, Toastish, ToggleR
 import { SP } from '../src/ui/theme.ts';
 
 export default function Settings() {
-  const { t, theme, prefs, setPref, plus, restorePlus, stats, lang } = useApp();
+  const { t, theme, prefs, setPref, owned: plus, restorePlus, stats, lang } = useApp();
   const router = useRouter();
   const [msg, setMsg] = useState<string | null>(null);
   const version = Constants.expoConfig?.version ?? '1.0.0';

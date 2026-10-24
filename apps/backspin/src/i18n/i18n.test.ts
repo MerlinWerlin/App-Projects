@@ -27,5 +27,5 @@ test('t fills placeholders and falls back to English', () => {
 });
 
 test('no UI text claims more lines than the packs have', () => {
-  assert.match(en['plus.f1'], /950\+/);
+  assert.match(en['plus.f2'], /950\+/);
 });
