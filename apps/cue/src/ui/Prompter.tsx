@@ -215,7 +215,7 @@ export const Prompter = forwardRef<PrompterHandle, Props>(function Prompter(p, r
         onLayout={(e) => setViewport(e.nativeEvent.layout.height)}
         accessible
         accessibilityRole="text"
-        accessibilityLabel={parsed.words.length ? undefined : ' '}
+        accessibilityLabel="Teleprompter"
         accessibilityHint="Tap to pause or resume. Drag to scroll. Pinch to resize text."
       >
         <View style={[st.fill, { transform: [{ scaleX: prefs.mirrorH ? -1 : 1 }, { scaleY: flipY }] }]}>
