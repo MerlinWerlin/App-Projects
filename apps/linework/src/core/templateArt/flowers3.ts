@@ -345,31 +345,10 @@ function banksiaArt(): Art {
   }
   const lattice = inside(spiral.trim(), cone);
   const florets = hooks(cone, 150, 252, 60, 290, 13, 7);
-  // merge-art review (24 Oct 2026): two long, narrow saw-toothed leaves set along the stem, as on a real banksia; the
-  // earlier fan of six leaves from one point read as a cannabis leaf on the contact sheet.
-  const leaves = [
-    { x: 200, y: 318, a: -58, len: 150 },
-    { x: 201, y: 346, a: 62, len: 140 },
-  ].map(({ x, y, a, len }) => ({ x, y, a, len, p: serrated(x, y, a, len, 13, 11) }));
+  const leaves = [-62, -36, 36, 62, -112, 112].map((a) => ({ a, p: serrated(200, 300, a, a > 90 || a < -90 ? 110 : 150, 15, 10) }));
   return layered([
     { sil: cone, d: [lattice, florets] },
-    ...leaves.map(({ x, y, a, len, p }) => ({
-      sil: p,
-      d: [
-        inside(line(x, y, ...polar(x, y, len * 0.92, a)), p),
-        // side veins: short strokes from the midrib toward each saw tooth
-        inside(
-          [0.25, 0.4, 0.55, 0.7, 0.85]
-            .flatMap((k) => [-1, 1].map((side) => {
-              const [mx, my] = polar(x, y, len * k, a);
-              const [ex, ey] = polar(mx, my, 9, a + side * 55);
-              return line(mx, my, ex, ey);
-            }))
-            .join(' '),
-          p,
-        ),
-      ],
-    })),
+    ...leaves.map(({ a, p }) => ({ sil: p, d: [inside(line(200, 300, ...polar(200, 300, 140, a)), p)] })),
     { sil: tube([[200, 296], [204, 340], [200, 384]], 14, 12), d: ['M 196 330 L 192 344'] },
   ]);
 }
@@ -380,7 +359,7 @@ export const flowers3: Template[] = [
   // beginner
   tpl('hibiscus', 'Tropical hibiscus flower', 'beginner', ['hibiscus', 'flower', 'tropical', 'summer', 'stylized'], hibiscusArt()),
   tpl('pansy', 'Garden pansy flower', 'beginner', ['pansy', 'flower', 'garden', 'spring', 'stylized'], pansyArt()),
-  tpl('cosmos', 'Meadow cosmos flower', 'beginner', ['cosmos', 'flower', 'meadow', 'summer', 'stylized'], cosmosArt()),
+  tpl('cosmos', 'Summer meadow cosmos flower', 'beginner', ['cosmos', 'flower', 'meadow', 'summer', 'stylized'], cosmosArt()),
   tpl('marigold', 'Ruffled marigold flower', 'beginner', ['marigold', 'flower', 'garden', 'autumn', 'stylized'], marigoldArt()),
   tpl('gerbera', 'Gerbera daisy', 'beginner', ['gerbera', 'daisy', 'flower', 'bright', 'stylized'], gerberaArt()),
   tpl('sweet-pea', 'Sweet pea flowers', 'beginner', ['sweet-pea', 'flower', 'cottage', 'climber', 'stylized'], sweetPeaArt()),

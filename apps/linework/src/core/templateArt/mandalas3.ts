@@ -170,7 +170,7 @@ const hexagram = T(
 
 const heartRing = T(
   'heart-ring',
-  'Heart ring mandala',
+  'Ring of hearts mandala',
   'beginner',
   ['mandala', 'love', 'hearts', 'cute'],
   [
@@ -257,7 +257,7 @@ const k16small = Array.from({ length: 8 }, (_, i) => kite(76, 10, 22.5 + i * 45)
 const compassRegs = [...k16main, ...k16diag].map((k) => region(k.p));
 const compass16 = T(
   'compass-16',
-  'Vintage sixteen-point compass',
+  'Vintage nautical compass rose',
   'intermediate',
   ['compass', 'navigation', 'nautical', 'vintage'],
   [

@@ -174,6 +174,15 @@ export default function SettingsScreen() {
             accessibilityLabel={t('settings.free.plusLink')}
             accessibilityHint={t('settings.free.plusHint')}
           />
+          <InsetRow
+            title={t('feedback.row')}
+            subtitle={t('feedback.rowHint')}
+            icon="mail"
+            iconFill={c.pastels[5]}
+            onPress={() => router.push('/feedback')}
+            accessibilityLabel={t('feedback.row')}
+            accessibilityHint={t('feedback.rowHint')}
+          />
           <InsetRow title={t('settings.privacy.title')} subtitle={t('settings.privacy.body')} icon="shield" iconFill={c.pastels[3]} />
         </InsetGroup>
       </ScreenV2>

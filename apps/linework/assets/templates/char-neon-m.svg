@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Neon outline M</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M256 223 268 201V322H256Z"/>
+    <path d="M280 178 291 156V322H280Z"/>
+    <path d="M303 134 315 112V322H303Z"/>
+    <path d="M224 218 218 206 299 52H312Z"/>
+    <path d="M211 192 204 180 272 52H285Z"/>
+    <path d="M132 203 144 225V322H132Z"/>
+    <path d="M109 158 120 180V322H109Z"/>
+    <path d="M85 113 97 135V322H85Z"/>
+    <path d="M180 251H167L73 74V322H62V52H75Z"/>
+    <path d="M207 251H193L88 52H102Z"/>
+    <path d="M327 74 233 251H220L115 52H128L227 239L325 52H338V322H327Z"/>
+  </g>
+</svg>

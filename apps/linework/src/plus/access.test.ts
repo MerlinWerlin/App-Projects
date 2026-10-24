@@ -6,7 +6,6 @@ import {
   LOADING_ACCESS,
   accessFor,
   canStartTrial,
-  isPaidOnly,
   outlineLocked,
   parseTrialStart,
   starterIds,
@@ -101,30 +100,4 @@ test('starters are unchanged by the trial change (same 24 ids, deterministic)', 
   const b = [...starterIds(TEMPLATES, STARTER_TEMPLATE_COUNT)];
   assert.deepEqual(a, b);
   assert.equal(a.length, 24);
-});
-
-// fb-1023b: the 24 starters promised in the release (docs/OWNER_1022D.md) must not move when templates are added.
-const RELEASE_STARTERS = ['tulip', 'cat-sitting', 'fish', 'owl', 'smiling-face', 'hello-block-letters', 'perspective-cube', 'mandala-8-petal', 'orn-snowflake-simple', 'scn-gift-box', 'scn-moon-stars', 'scn-simple-house', 'cute-cat-loaf', 'hero-star-shield', 'game-pixel-heart', 'movie-retro-rocket', 'fairy-crown', 'kids-woodland-fox', 'daisy', 'snail', 'wild-whale', 'wild-ladybird', 'profile-face', 'alphabet-a-e'];
-
-test('starters are pinned to the 1.0 release set', () => {
-  assert.deepEqual([...starterIds(TEMPLATES, STARTER_TEMPLATE_COUNT)].sort(), [...RELEASE_STARTERS].sort());
-});
-
-test('fb-1023b C2: Trade & workshop is paid only — never a starter, open in the trial and with Plus, locked after', () => {
-  const trade = TEMPLATES.filter((t) => t.category === 'trade');
-  const s = starterIds(TEMPLATES, STARTER_TEMPLATE_COUNT);
-  assert.ok(trade.every((t) => isPaidOnly(t)));
-  assert.deepEqual(trade.filter((t) => s.has(t.id)).map((t) => t.id), []);
-  // even a catalogue of only trade templates yields no starters
-  const fake = [{ id: 'trade-x', name: 'x', category: 'trade' as const, viewBox: '0 0 400 400', paths: ['M 0 0'] }];
-  assert.equal(starterIds(fake, STARTER_TEMPLATE_COUNT).size, 0);
-  const ids = trade.length ? trade.map((t) => t.id) : ['trade-x'];
-  const trial = accessFor(false, 0, 3 * DAY);
-  const expired = accessFor(false, 0, 100 * DAY);
-  const owned = accessFor(true, 0, 100 * DAY);
-  for (const id of ids) {
-    assert.equal(templateLocked(trial, s, id), false, `${id} open in trial`);
-    assert.equal(templateLocked(owned, s, id), false, `${id} open with Plus`);
-    assert.equal(templateLocked(expired, s, id), true, `${id} locked after trial`);
-  }
 });

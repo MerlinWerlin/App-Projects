@@ -20,11 +20,13 @@ export const NEW_SETS: readonly TemplateCategory[] = ['heroes', 'game', 'movies'
  * Batches that joined an older category and still count as New (fb-1022b, D110-2): the kawaii food/friends batches
  * live in Cute & chibi next to the T65 pieces, so they are picked by id prefix.
  */
-export const NEW_ID_PREFIXES: readonly string[] = ['kawaii-'];
+export const NEW_ID_PREFIXES: readonly string[] = ['kawaii-', 'char-'];
 
 /** Bubble order after All and New: the most asked-for first (market-1018), then the rest of the catalogue. */
 export const SHELF_ORDER: readonly TemplateCategory[] = [
   'trade',
+  // owner 24 Oct 2026: Letters is a must-have (one template per character, 16 styles), so it sits first in the row.
+  'lettering',
   'heroes',
   'game',
   'movies',
@@ -33,7 +35,6 @@ export const SHELF_ORDER: readonly TemplateCategory[] = [
   'animals',
   'flowers',
   'cute',
-  'lettering',
   'wildlife',
   'sealife',
   'faces',
@@ -44,6 +45,12 @@ export const SHELF_ORDER: readonly TemplateCategory[] = [
   'stilllife',
   'shapes',
 ];
+
+/**
+ * Categories that live in their own bottom tab instead of the Templates bubble row (owner 24 Oct 2026: Trade &
+ * workshop is the Workshop tab). They stay searchable on Templates and a deep link to them still shows the bubble.
+ */
+export const TAB_SHELVES: readonly TemplateCategory[] = ['trade'];
 
 export function isNewTemplate(t: Template, sets: readonly TemplateCategory[] = NEW_SETS): boolean {
   return sets.includes(t.category) || NEW_ID_PREFIXES.some((p) => t.id.startsWith(p));
@@ -86,7 +93,10 @@ export function shelfBubbles(
   const order = [...SHELF_ORDER, ...CATEGORIES.map((c) => c.id).filter((id) => !SHELF_ORDER.includes(id))];
   const out: Shelf[] = ['all'];
   if (templates.some((t) => isNewTemplate(t, sets)) || current === 'new') out.push('new');
-  for (const id of order) if (have.has(id) || id === current) out.push(id);
+  for (const id of order) {
+    if (TAB_SHELVES.includes(id) && id !== current) continue;
+    if (have.has(id) || id === current) out.push(id);
+  }
   return out;
 }
 

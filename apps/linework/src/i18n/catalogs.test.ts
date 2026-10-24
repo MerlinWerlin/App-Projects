@@ -22,7 +22,7 @@ const COMPLETE: readonly LocaleCode[] = [
 const enKeys = Object.keys(EN);
 
 test('English keys are prefixed with an area', () => {
-  for (const k of enKeys) assert.match(k, /^(common|home|templates|settings|plus|prepare|trace|lightbox|drawings)\.[\w.-]+$/, k);
+  for (const k of enKeys) assert.match(k, /^(common|home|templates|settings|plus|prepare|trace|lightbox|drawings|workshop|feedback)\.[\w.-]+$/, k);
 });
 
 for (const { code } of LOCALES) {

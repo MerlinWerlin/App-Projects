@@ -1,4 +1,4 @@
-// Tab group (T81, PLAN §3): Trace (Home, /) · Templates · My drawings · Settings under a frosted bottom tab bar
+// Tab group (T81, PLAN §3; Workshop added 24 Oct 2026): Trace (Home, /) · Templates · Workshop · My drawings · Settings under a frosted bottom tab bar
 // (src/ui/v2/TabBarV2.tsx, tab list in src/core/tabs.ts). The (tabs) group adds no path segment, so the URLs stay
 // /, /templates, /drawings and /settings. Prepare / Trace / Lightbox / Plus are full-screen routes on the root Stack
 // (app/_layout.tsx) and cover the bar when pushed.
@@ -28,6 +28,7 @@ export default function TabsLayout() {
     >
       <Tabs.Screen name="index" options={{ title: t('common.nav.trace') }} />
       <Tabs.Screen name="templates" options={{ title: t('common.nav.templates') }} />
+      <Tabs.Screen name="workshop" options={{ title: t('common.nav.workshop') }} />
       <Tabs.Screen name="drawings" options={{ title: t('drawings.title'), headerShown: true }} />
       <Tabs.Screen name="settings" options={{ title: t('common.nav.settings') }} />
     </Tabs>

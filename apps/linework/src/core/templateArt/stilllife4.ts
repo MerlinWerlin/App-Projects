@@ -400,7 +400,7 @@ export const stilllife4: Template[] = [
   tpl('perfume', 'Perfume bottle with atomizer', 'beginner', ['bottle', 'perfume', 'glass', 'vintage', 'simple', 'gift'], perfume()),
   tpl('wine-glass', 'Wine glass and bottle', 'beginner', ['bottle', 'glass', 'wine', 'dinner', 'simple', 'realistic'], wineBottleGlass()),
   tpl('bread-board', 'Bread loaf on a board', 'beginner', ['bread', 'loaf', 'kitchen', 'bakery', 'simple', 'realistic'], bread()),
-  tpl('headphones', 'Studio headphones', 'beginner', ['headphones', 'music', 'audio', 'simple', 'objects', 'stylized'], headphones()),
+  tpl('headphones', 'Simple headphones', 'beginner', ['headphones', 'music', 'audio', 'simple', 'objects', 'stylized'], headphones()),
   tpl('light-bulb', 'Glowing light bulb', 'beginner', ['bulb', 'light', 'idea', 'simple', 'objects', 'stylized'], bulb()),
   tpl('record-player', 'Record player from above', 'intermediate', ['record', 'turntable', 'music', 'vinyl', 'retro', 'objects'], recordPlayer()),
   tpl('toolbox', 'Toolbox with tools', 'intermediate', ['toolbox', 'tools', 'hammer', 'workshop', 'objects', 'realistic'], toolbox()),
@@ -410,6 +410,6 @@ export const stilllife4: Template[] = [
   tpl('oil-lamp', 'Oil lamp with glass chimney', 'intermediate', ['lamp', 'oil', 'light', 'vintage', 'antique', 'objects'], oilLamp()),
   tpl('bicycle', 'Classic bicycle', 'advanced', ['bicycle', 'bike', 'cycling', 'vintage', 'realistic', 'objects'], bicycle()),
   tpl('guitar', 'Detailed acoustic guitar', 'advanced', ['guitar', 'music', 'acoustic', 'instrument', 'realistic', 'objects'], guitar()),
-  tpl('sewing-machine', 'Antique sewing machine', 'advanced', ['sewing machine', 'sewing', 'craft', 'vintage', 'antique', 'realistic'].map((t) => t.replace(' ', '-')), sewingMachine()),
+  tpl('sewing-machine', 'Heirloom sewing machine', 'advanced', ['sewing machine', 'sewing', 'craft', 'vintage', 'antique', 'realistic'].map((t) => t.replace(' ', '-')), sewingMachine()),
   tpl('espresso', 'Espresso machine with cup', 'advanced', ['espresso', 'coffee', 'cup', 'kitchen', 'cafe', 'realistic'], espresso()),
 ];
