@@ -45,5 +45,8 @@
   "screenshots": {
     "APP_IPHONE_67": "apps/linework/store/jpg/a"
   },
-  "availability": "all"
+  "availability": "all",
+  "attachBuild": "latest",
+  "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+  "reviewNotes": "No account or login. Linework overlays a photo or template on the live camera so the user can trace it onto paper. Every tracing tool is free and never locked. In-app purchases: '14-day Trial' (free non-consumable, starts a 14-day trial of the full template library and outline mode, per guideline 3.1.1) and 'Linework Plus' (A$2.99 non-consumable, unlocks the full library and outline mode permanently). Both are on the Plus tab; Restore purchases is on the same screen. No data is collected; all photos and drawings stay on the device. Lightbox mode works without camera access."
 }

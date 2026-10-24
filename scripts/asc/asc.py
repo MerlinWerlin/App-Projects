@@ -168,6 +168,12 @@ def status(app):
             sets = get(f"/v1/appStoreVersionLocalizations/{loc['id']}/appScreenshotSets")["data"]
             say("  - Screenshot sets: " + (", ".join(f"{attrs(s)['screenshotDisplayType']}" for s in sets) or "none"))
         try:
+            d = get(f"/v1/appStoreVersions/{ver['id']}/appStoreReviewDetail")["data"]
+            da = attrs(d) if d else {}
+            say("  - App Review contact: " + ("complete" if da.get("contactEmail") and da.get("contactPhone") and da.get("contactLastName") else "missing name/phone/email (owner)") + (", notes set" if da.get("notes") else ""))
+        except Exception:
+            say("  - App Review contact: not set (owner: name, phone, email)")
+        try:
             b = get(f"/v1/appStoreVersions/{ver['id']}/build")["data"]
             say(f"  - Build attached: {attrs(b)['version'] if b else 'none'}")
         except Exception as e:
@@ -192,6 +198,7 @@ def status(app):
         say(f"- Price schedule: set ({ps['id']})")
     except Exception as e:
         say(f"- Price schedule: not set ({str(e)[:120]})")
+    say(f"- Content rights: {attrs(a).get('contentRightsDeclaration')}")
     say(f"- Listing file apps/{app}/store/listing.json: {'present' if lst else 'missing'}")
 
 
@@ -288,8 +295,34 @@ def apply(app):
         if lst.get("copyright"):
             step("Copyright", lambda: call("PATCH", f"/v1/appStoreVersions/{ver['id']}",
                  {"data": {"type": "appStoreVersions", "id": ver["id"], "attributes": {"copyright": lst["copyright"]}}}))
+        if lst.get("attachBuild") == "latest":
+            def attach():
+                v = attrs(ver)["versionString"]
+                bs = get("/v1/builds", **{"filter[app]": app_id, "filter[preReleaseVersion.version]": v,
+                                          "filter[processingState]": "VALID", "sort": "-uploadedDate", "limit": 1})["data"]
+                if not bs:
+                    raise RuntimeError(f"no processed build for {v} yet")
+                call("PATCH", f"/v1/appStoreVersions/{ver['id']}/relationships/build", {"data": {"type": "builds", "id": bs[0]["id"]}})
+                say(f"  - build {attrs(bs[0])['version']} attached")
+            step("Attach newest processed build", attach)
+        if lst.get("reviewNotes"):
+            def notes():
+                try:
+                    d = get(f"/v1/appStoreVersions/{ver['id']}/appStoreReviewDetail")["data"]
+                except RuntimeError:
+                    d = None
+                body = {"notes": lst["reviewNotes"], "demoAccountRequired": False}
+                if d:
+                    call("PATCH", f"/v1/appStoreReviewDetails/{d['id']}", {"data": {"type": "appStoreReviewDetails", "id": d["id"], "attributes": body}})
+                else:
+                    call("POST", "/v1/appStoreReviewDetails", {"data": {"type": "appStoreReviewDetails", "attributes": body,
+                         "relationships": {"appStoreVersion": {"data": {"type": "appStoreVersions", "id": ver["id"]}}}}})
+            step("Notes for App Review", notes)
         for disp, folder in (lst.get("screenshots") or {}).items():
             step(f"Screenshots {disp}", lambda disp=disp, folder=folder: upload_shots(ver["id"], locale, disp, folder))
+    if lst.get("contentRights"):
+        step("Content rights", lambda: call("PATCH", f"/v1/apps/{app_id}", {"data": {"type": "apps", "id": app_id,
+             "attributes": {"contentRightsDeclaration": lst["contentRights"]}}}))
     if lst.get("availability") == "all":
         step("Availability: all countries and regions", lambda: ensure_availability(app_id))
     for iap in lst.get("inAppPurchases", []):
