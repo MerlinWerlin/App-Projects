@@ -385,6 +385,43 @@ def ensure_iap(app_id, iap, locale):
         say(f"  - price set: {terr} {amount}")
 
 
+def debug(app):
+    rel, lst = app_cfg(app)
+    app_id = rel["ascAppId"]
+    info, _ = editable_info(app_id)
+    ar = get(f"/v1/appInfos/{info['id']}/ageRatingDeclaration")["data"]
+    say("### age rating attrs: " + json.dumps(attrs(ar))[:1500])
+    try:
+        call("PATCH", f"/v1/ageRatingDeclarations/{ar['id']}", {"data": {"type": "ageRatingDeclarations", "id": ar["id"], "attributes": {"gambling": False}}})
+        say("- PATCH gambling=false ok")
+    except Exception as e:
+        say(f"- PATCH gambling=false: {e}")
+    try:
+        call("PATCH", f"/v1/ageRatingDeclarations/{ar['id']}", {"data": {"type": "ageRatingDeclarations", "id": ar["id"], "attributes": {"violenceCartoonOrFantasy": "NONE"}}})
+        say("- PATCH violenceCartoonOrFantasy=NONE ok")
+    except Exception as e:
+        say(f"- PATCH violence NONE: {e}")
+    ver, _ = editable_version(app_id)
+    for loc in get(f"/v1/appStoreVersions/{ver['id']}/appStoreVersionLocalizations")["data"]:
+        for st in get(f"/v1/appStoreVersionLocalizations/{loc['id']}/appScreenshotSets")["data"]:
+            shots = get(f"/v1/appScreenshotSets/{st['id']}/appScreenshots")["data"]
+            say(f"### set {attrs(st)['screenshotDisplayType']}: {len(shots)} shots: " + "; ".join(
+                f"{attrs(x).get('fileName')} {(attrs(x).get('assetDeliveryState') or {}).get('state')}" for x in shots))
+    for i in get(f"/v1/apps/{app_id}/inAppPurchasesV2", limit=50)["data"]:
+        say(f"### IAP {attrs(i)['productId']} {attrs(i)['state']}")
+        for rel_name in ("inAppPurchaseLocalizations", "iapPriceSchedule", "inAppPurchaseAvailability", "appStoreReviewScreenshot"):
+            try:
+                d = get(f"/v2/inAppPurchases/{i['id']}/{rel_name}")["data"]
+                say(f"- {rel_name}: " + (json.dumps([attrs(x) for x in d])[:300] if isinstance(d, list) else ("set" if d else "none")))
+            except Exception as e:
+                say(f"- {rel_name}: {str(e)[:200]}")
+        try:
+            mp = get(f"/v1/inAppPurchasePriceSchedules/{i['id']}/manualPrices", limit=5, include="inAppPurchasePricePoint")
+            say(f"- manual prices: {len(mp['data'])}; " + json.dumps([attrs(x) for x in mp.get('included', [])])[:200])
+        except Exception as e:
+            say(f"- manual prices: {str(e)[:200]}")
+
+
 if __name__ == "__main__":
     mode, app = sys.argv[1], sys.argv[2]
     say(f"# App Store Connect {mode}: {app} ({time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime())})")
@@ -402,7 +439,7 @@ if __name__ == "__main__":
                 say("**Apple rejected the API key (401) as both a Team and an Individual key.**")
                 diagnose()
                 raise
-        (status if mode == "status" else apply)(app)
+        {"status": status, "apply": apply, "debug": debug}[mode](app)
         if mode == "apply":
             say("")
             status(app)
