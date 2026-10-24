@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Backspin Support</title>
+<link rel="icon" href="img/icon.png">
+<style>
+:root{--paper:#FBF7F2;--card:#FFFFFF;--line:#E6DFEE;--text:#1A1726;--muted:#5A5370;--ink:#B3261E;--ink-soft:#FBE3E0}
+@media (prefers-color-scheme: dark){:root{--paper:#14111F;--card:#1F1B2E;--line:#352F4D;--text:#F6F1FF;--muted:#B8AFD0;--ink:#2FD6C2;--ink-soft:#123B38}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:720px;margin:0 auto;padding:32px 16px 64px}
+h1{font:800 2rem/1.15 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:1.15rem;margin:32px 0 8px}
+p,li{overflow-wrap:anywhere}
+.meta{color:var(--muted);margin:0 0 24px}
+.badge{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;gap:16px;align-items:flex-start}
+.badge .tick{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink-soft);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:22px}
+.badge strong{display:block;font-size:1.25rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 20px;margin-top:16px}
+ul,ol{padding-left:1.2em}a{color:var(--ink)}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+nav a{background:var(--ink-soft);color:var(--ink);text-decoration:none;border-radius:999px;padding:6px 14px;font-size:.95rem;font-weight:600}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0}
+summary{cursor:pointer;padding:14px 18px;font-weight:600}
+details>div{padding:0 18px 14px}details[open] summary{border-bottom:1px solid var(--line);margin-bottom:10px}
+header{display:flex;gap:18px;align-items:center;margin:8px 0 18px}header img{width:84px;height:84px;border-radius:19px;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+.sub{color:var(--muted);font-size:1.15rem;margin:2px 0 0}
+.cta{display:inline-block;background:var(--line);color:var(--muted);font-weight:700;border-radius:12px;padding:12px 20px;margin:6px 0 4px}
+.shots{display:flex;gap:12px;overflow-x:auto;padding:18px 0;scroll-snap-type:x mandatory}
+.shots img{height:min(520px,68vh);width:auto;border-radius:16px;scroll-snap-align:start;box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.lead{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.lead div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.lead h3{margin:0 0 4px;font-size:1.05rem}.lead p{margin:0;color:var(--muted)}
+footer{color:var(--muted);font-size:.9rem;margin-top:40px;display:flex;flex-wrap:wrap;gap:6px 18px}
+</style>
+</head>
+<body>
+<main>
+<h1>Backspin Support</h1>
+<p class="meta">Help for Backspin, the reverse-singing party game. Your first 10 goes are free with everything switched on; after that, one lifetime unlock. No ads, no account, no subscription.</p>
+<nav aria-label="Topics"><a href="#play">How to play</a><a href="#sound">Sound and the microphone</a><a href="#plus">Free goes and Backspin Plus</a><a href="#contact">Contact</a></nav>
+<h2 id="play">How to play</h2><details><summary>How does a round work?</summary><div><ol><li><strong>Say it:</strong> record the line normally.</li><li><strong>Hear it backwards:</strong> Backspin plays it in reverse. Loop it or slow it down.</li><li><strong>Copy it:</strong> record yourself copying the backwards sound, not the words.</li><li><strong>The flip:</strong> Backspin flips your copy forwards and scores how close it sounds to the original.</li></ol></div></details><details><summary>How is the score worked out?</summary><div><p>Closeness (0 to 100) compares the sound, rhythm and length of your flipped copy with your original, on your phone. Have fun with it: the laughs are in the wobbly results.</p></div></details><details><summary>What is the daily challenge?</summary><div><p>One new line every day for everyone. Play it on the Play tab to keep your streak going, then share your score.</p></div></details><details><summary>How does Party mode work?</summary><div><p>Add 2 to 8 players, pick <em>Copy it</em> (highest closeness wins) or <em>Guess it</em> (one player records secretly, the others hear only the backwards copy and guess), choose the rounds and pass the phone.</p></div></details><h2 id="sound">Sound and the microphone</h2><details><summary>It says it couldn&#x27;t hear anything.</summary><div><p>Hold the phone a little closer and keep holding the button for the whole line. Check the ring/silent switch and volume for playback.</p></div></details><details><summary>I said Don&#x27;t Allow to the microphone.</summary><div><p>Open the Settings app → scroll down to <em>Backspin</em> → turn on <em>Microphone</em>. Backspin only records while you hold the button and never uploads anything. See the <a href="privacy.html">Privacy Policy</a>.</p></div></details><h2 id="plus">Free goes and Backspin Plus</h2><details><summary>What are the 10 free goes?</summary><div><p>Every scored round is one go. Your first 10 goes are free with every pack, voice effect and party size switched on. The Play tab shows how many you have left. A party that starts inside your free goes always finishes.</p></div></details><details><summary>What happens after the 10th go?</summary><div><p>New rounds need Backspin Plus, a one-time lifetime unlock. Your saved takes still play and share without it.</p></div></details><details><summary>How do I restore my purchase?</summary><div><p>Sign in with the same Apple ID and tap <em>Restore purchase</em> on the Backspin Plus screen or in Settings.</p></div></details><details><summary>How do I get a refund?</summary><div><p>Purchases are handled by Apple, so refunds go through Apple at reportaproblem.apple.com.</p></div></details>
+<h2 id="contact">Contact</h2>
+<p>Something not working, or an idea? Email <a href="mailto:jaredbradley272@gmail.com">jaredbradley272@gmail.com</a>, or use <em>Settings → Send feedback or ideas</em> in the app. Please include your phone model and what you were doing. Backspin collects no data, so we only see what you tell us.</p>
+<footer>Backspin · Support · Updated 25 October 2026 · <a href="privacy.html">Privacy Policy</a></footer>
+</main>
+</body>
+</html>

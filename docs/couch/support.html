@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Couch Support</title>
+<link rel="icon" href="img/icon.png">
+<style>
+:root{--paper:#F4F5F7;--card:#FFFFFF;--line:#DDE1E6;--text:#1C232B;--muted:#5D6873;--ink:#2F5BD3;--ink-soft:#E3EAFB}
+@media (prefers-color-scheme: dark){:root{--paper:#0E1115;--card:#171B21;--line:#2A3038;--text:#E6EAEF;--muted:#98A3AF;--ink:#86A6FF;--ink-soft:#1B2540}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:720px;margin:0 auto;padding:32px 16px 64px}
+h1{font:800 2rem/1.15 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:1.15rem;margin:32px 0 8px}
+p,li{overflow-wrap:anywhere}
+.meta{color:var(--muted);margin:0 0 24px}
+.badge{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;gap:16px;align-items:flex-start}
+.badge .tick{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink-soft);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:22px}
+.badge strong{display:block;font-size:1.25rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 20px;margin-top:16px}
+ul,ol{padding-left:1.2em}a{color:var(--ink)}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+nav a{background:var(--ink-soft);color:var(--ink);text-decoration:none;border-radius:999px;padding:6px 14px;font-size:.95rem;font-weight:600}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0}
+summary{cursor:pointer;padding:14px 18px;font-weight:600}
+details>div{padding:0 18px 14px}details[open] summary{border-bottom:1px solid var(--line);margin-bottom:10px}
+header{display:flex;gap:18px;align-items:center;margin:8px 0 18px}header img{width:84px;height:84px;border-radius:19px;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+.sub{color:var(--muted);font-size:1.15rem;margin:2px 0 0}
+.cta{display:inline-block;background:var(--line);color:var(--muted);font-weight:700;border-radius:12px;padding:12px 20px;margin:6px 0 4px}
+.shots{display:flex;gap:12px;overflow-x:auto;padding:18px 0;scroll-snap-type:x mandatory}
+.shots img{height:min(520px,68vh);width:auto;border-radius:16px;scroll-snap-align:start;box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.lead{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.lead div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.lead h3{margin:0 0 4px;font-size:1.05rem}.lead p{margin:0;color:var(--muted)}
+footer{color:var(--muted);font-size:.9rem;margin-top:40px;display:flex;flex-wrap:wrap;gap:6px 18px}
+</style>
+</head>
+<body>
+<main>
+<h1>Couch Support</h1>
+<p class="meta">Help for Couch, the free universal TV remote. Every button is free: no ads, no account, no subscription.</p>
+<nav aria-label="Topics"><a href="#setup">Connecting your TV</a><a href="#remote">Using the remote</a><a href="#price">Price</a><a href="#contact">Contact</a></nav>
+<h2 id="setup">Connecting your TV</h2><details><summary>How do I add my TV?</summary><div><ol><li>Turn the TV on and make sure your phone is on the same Wi-Fi.</li><li>Open the TVs tab and tap <em>Add a TV</em>. Couch looks for TVs and streaming players on your network.</li><li>Tap your TV. Some TVs ask you to press <em>Allow</em> on the TV screen or type a code shown on the TV.</li></ol></div></details><details><summary>My TV doesn&#x27;t show up.</summary><div><ul><li>Check that the phone and TV are on the same Wi-Fi (not a guest network).</li><li>On iPhone, make sure Local Network is on: Settings → Couch → Local Network.</li><li>Some TVs need network control turned on in their own settings first; Couch tells you when it can tell.</li><li>Still not listed? Tap <em>Enter its address</em> and type the TV's IP address from its network settings.</li></ul></div></details><details><summary>Can I try it without a TV?</summary><div><p>Yes. Turn on <em>Demo mode</em> on the TVs tab to try the remote with demo TVs. Nothing is sent to a real TV.</p></div></details><h2 id="remote">Using the remote</h2><details><summary>How do I type on the TV?</summary><div><p>Tap the keyboard button on the remote. Letters appear on the TV as you type, and Return sends the search.</p></div></details><details><summary>Can I control more than one TV?</summary><div><p>Yes, as many as you like. Tap the TV name at the top to switch.</p></div></details><details><summary>It says Reconnecting.</summary><div><p>Couch reconnects by itself when you come back to the app. If the TV was off, turn it on; some TVs can be woken over Wi-Fi.</p></div></details><h2 id="price">Price</h2><details><summary>Is it really free?</summary><div><p>Yes. Every remote control is free, with no ads, no trial and no subscription.</p></div></details>
+<h2 id="contact">Contact</h2>
+<p>Something not working, or an idea? Email <a href="mailto:jaredbradley272@gmail.com">jaredbradley272@gmail.com</a>, or use <em>Settings → Send feedback or request a feature</em> in the app. Please include your phone model and what you were doing. Couch collects no data, so we only see what you tell us.</p>
+<footer>Couch · Support · Updated 25 October 2026 · <a href="privacy.html">Privacy Policy</a></footer>
+</main>
+</body>
+</html>

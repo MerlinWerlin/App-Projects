@@ -1,0 +1,25 @@
+{
+  "locale": "en-AU",
+  "version": "1.0",
+  "name": "Couch: TV Remote",
+  "subtitle": "Universal remote for smart TVs",
+  "promotionalText": "Every button free, forever. No ads, no trials, no weekly subscription.",
+  "keywords": "control,streaming,wifi,keyboard,touchpad,apps,television,stick,box,player,channel,volume,power",
+  "description": "Couch is a universal remote for the TVs and streaming players in your home. Every button is free, forever: power, d-pad, touchpad, keyboard, volume, channels, app launcher and as many TVs as you own. No ads, no trials, no weekly plans, no tracking.\n\n• Works over your Wi-Fi with TVs and players running Roku, Samsung Tizen, LG webOS and Google TV / Android TV, with Fire TV in beta.\n• Finds your TV on your Wi-Fi in seconds, or enter its address.\n• Fast: a persistent connection, auto-reconnect when you come back to the app, and Wake-on-LAN for TVs that support it.\n• Type with your phone's keyboard, swipe on the touchpad, open your TV's apps in one tap.\n• Switch between TVs in one tap.\n• Simple mode: big power, volume, channel and home buttons for kids and grandparents.\n• Built for accessibility: large targets, haptics and VoiceOver labels, with buttons that grow with your text size up to the largest accessibility sizes.\n• Try it first with demo TVs, no TV needed.\n• Private: no account and no analytics. Your commands go straight from your phone to your TV on your home network.\n\nCouch is an independent app and is not affiliated with, endorsed by or sponsored by Roku, Samsung, LG, Google, Amazon, Vizio, Sony or Philips. All trademarks belong to their owners.",
+  "whatsNew": "Welcome to Couch! A free universal TV remote: every button free, no ads, no subscription.",
+  "primaryCategory": "UTILITIES",
+  "secondaryCategory": "ENTERTAINMENT",
+  "copyright": "2026 Jared Bradley",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/couch/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/couch/support.html",
+  "marketingUrl": "https://merlinwerlin.github.io/App-Projects/couch/",
+  "_ownerToDo": "Couch Plus price is still an open owner decision (docs/ROADMAP.md; proposal A$7.99 one-time) and the purchase provider is a stub, so no in-app purchase is listed. Add inAppPurchases here once the price is set and StoreKit is wired.",
+  "ageRating": "none",
+  "screenshots": {
+    "APP_IPHONE_67": "apps/couch/store/jpg/ios"
+  },
+  "availability": "all",
+  "attachBuild": "latest",
+  "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+  "reviewNotes": "No account or login. Couch is a Wi-Fi TV remote. To review without a TV: open the TVs tab and turn on Demo mode; demo TVs work with every control and nothing is sent to a real TV. With a real TV, the phone and TV must be on the same Wi-Fi; Couch asks for Local Network access to find it, and some TVs show an Allow prompt or a code on the TV. Every remote control is free and there are no in-app purchases in this version. Platform names in the description are used only to describe compatibility; Couch is not affiliated with those companies. App icons on the Apps tab come from the TV itself or from the public iTunes Search API. No data is collected."
+}
