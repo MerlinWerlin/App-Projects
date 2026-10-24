@@ -1,0 +1,48 @@
+# App Store Connect listing sync for any App Factory app.
+# Trigger: a commit that changes apps/<app>/store/ASC_REQUEST.json ({"mode": "status" | "apply"}).
+#   status -> read-only report of the app's App Store Connect record
+#   apply  -> pushes apps/<app>/store/listing.json (name, subtitle, text, URLs, category, age rating, in-app purchase)
+# Never submits for review. The report is posted as a comment on the triggering commit.
+name: store
+
+on:
+  push:
+    paths: ['apps/*/store/ASC_REQUEST.json']
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - id: pick
+        run: |
+          apps=$(git diff --name-only HEAD~1 HEAD -- 'apps/*/store/ASC_REQUEST.json' | cut -d/ -f2 | sort -u | tr '\n' ' ')
+          [ -n "$apps" ] || apps=$(ls apps)
+          echo "apps=$apps" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pyjwt cryptography requests
+      - name: Sync
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          : > all.md
+          for app in ${{ steps.pick.outputs.apps }}; do
+            mode=$(jq -r '.mode // "status"' "apps/$app/store/ASC_REQUEST.json" 2>/dev/null || echo status)
+            REPORT="r-$app.md" python scripts/asc/asc.py "$mode" "$app" || true
+            cat "r-$app.md" >> all.md; echo >> all.md
+          done
+      - name: Post the report on the commit
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -s all.md ] || echo "store sync produced no report" > all.md
+          gh api "repos/${{ github.repository }}/commits/${{ github.sha }}/comments" -F body=@all.md > /dev/null

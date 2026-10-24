@@ -1,0 +1,30 @@
+{
+  "locale": "en-AU",
+  "version": "1.0",
+  "name": "Linework: Trace & Sketch",
+  "subtitle": "Trace photos onto real paper",
+  "promotionalText": "New: Workshop, exact angles, joints and layouts for trades, plus letters in 16 styles. Free for 14 days, then unlock once for A$2.99. No ads, no subscription.",
+  "keywords": "tracing,stencil,template,workshop,angle,carpentry,lettering,calligraphy,font,scrapbook,mural,kids",
+  "description": "Trace anything onto real paper. Stand your phone over a sheet of paper, pick a photo or a template, and Linework shows it on top of the live camera view so you can draw along the lines with your own pencil.\n\nMade for scrapbooking, journaling, cards, crafts, signs and lettering, wall art and murals, woodwork and trades, kids' colouring and cake decorating.\n\nNew: the Workshop. Exact angles, joints and layouts for carpenters, welders, tilers and every trade, plus letters in 16 styles for hand lettering.\n\nEvery tracing tool is free. No ads, no weekly subscription, no account.\n\nPHOTO TO SKETCH\n• Turn any photo into clean line art right on your phone. Nothing is uploaded.\n• Pick a style: Sketch for soft pencil-like lines, Line art for crisp edges, Bold lines for just the main shapes, or let Best match choose.\n• Adjust detail and line thickness, keep only the subject or the whole scene, and switch to white lines for dark paper.\n\n1,900+ TEMPLATES TO TRACE\n• Letters in 16 styles, one letter per template: bubble, retro, calligraphy, script, pixel, graffiti, blackletter, stencil, western, art deco, typewriter and more.\n• Original line art in 19 categories, including a Workshop of exact angles, joints and layouts: sea life, heroes, game world, movie night, fairy tales, kids, cute & chibi, flowers & botanicals, animals & pets, birds & insects, faces & figures, letters, trade & workshop, mandalas, frames & patterns, buildings & landscapes, fantasy, still life and simple shapes.\n• Filter by level from beginner to advanced, search, and tap the heart to keep favourites.\n\nSTEADY WHILE YOU DRAW\n• Lock the picture in place so a stray touch can't move it.\n• Touch lock lets your hand rest on the screen; press and hold to leave it.\n• Keep focus while locked, so the camera doesn't blur when your hand moves in.\n• The screen stays awake while you trace.\n\nALL THE TRACING TOOLS\n• Opacity slider: fade the picture until you can see both it and your pencil.\n• Pinch to size, two fingers to rotate, drag to move, one tap to reset.\n• Flashlight, a 3×3 or 4×4 grid, and mirror to flip the picture.\n• Sketch steps: reveal the picture from big shapes to fine lines, one step at a time.\n• Lightbox: show the picture full-bright on a white screen and trace over your phone or tablet with thin paper, no camera needed.\n\nKEEP WHAT YOU MAKE\n• Record a timelapse of your drawing (up to 10 minutes, no watermark) and save it to Photos when you choose.\n• Check your work: snap your paper and compare it with the picture side by side.\n• Save finished drawings to My drawings, a free gallery on your phone.\n• See your drawings, minutes drawn and streak, kept only on your device.\n\nEASY TO START\n• A four-step setup guide shows you how to stand your phone on a stand, a glass or a pile of books.\n• Every control has a clear label, not just an icon.\n• In 11 languages: English, Spanish, French, German, Italian, Portuguese (Brazil), Japanese, Korean, Simplified Chinese, Hindi and Arabic, with a right-to-left layout for Arabic.\n\nPRIVATE BY DESIGN\nData Not Collected. No analytics, no ads, no tracking and no accounts. Your photos, outlines and drawings stay on your device.\n\nFREE TRIAL, THEN ONE SMALL PRICE\nEverything is free for 14 days. After that, tracing your own photos with every tracing tool and 24 starter templates stay free. Linework Plus unlocks the full template library and photo-to-outline once, for A$2.99. No subscription.",
+  "whatsNew": "Welcome to Linework 1.0! Trace photos and 1,900+ templates onto paper, turn any photo into a sketch, lock it steady and record a timelapse. Every tracing tool is free.",
+  "primaryCategory": "GRAPHICS_AND_DESIGN",
+  "secondaryCategory": "EDUCATION",
+  "copyright": "2026 Jared Bradley",
+  "privacyPolicyUrl": null,
+  "supportUrl": null,
+  "marketingUrl": null,
+  "inAppPurchases": [
+    {
+      "productId": "com.jared797.linework.plus",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "Linework Plus",
+      "displayName": "Linework Plus",
+      "description": "Unlocks every template and outline mode",
+      "reviewNote": "Non-consumable unlock of the full template library and photo-to-outline. Tracing tools are never locked. Test: Plus tab > Unlock.",
+      "price": {
+        "territory": "AUS",
+        "amount": "2.99"
+      }
+    }
+  ]
+}
