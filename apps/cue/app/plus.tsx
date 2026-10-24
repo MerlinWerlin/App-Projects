@@ -1,13 +1,15 @@
-/** Paywall without dark patterns: says what's free, one clear price, restore, close always visible. */
+/** Paywall without dark patterns: what stays free first, one clear one-time price, restore, close always visible. */
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { t, type MessageKey } from '../src/i18n';
 import { success } from '../src/native/haptics';
 import { useApp } from '../src/state/AppState';
-import { Btn, type IconName } from '../src/ui/kit';
+import { RADIUS } from '../src/theme/theme';
+import { Btn, Txt, type IconName } from '../src/ui/kit';
 
 const FEATURES: [IconName, MessageKey, MessageKey][] = [
   ['mic-outline', 'plus.f.voice', 'plus.f.voice.body'],
@@ -41,34 +43,73 @@ export default function Plus() {
   };
 
   return (
-    <ScrollView style={{ backgroundColor: theme.bg }} contentContainerStyle={{ padding: 20, paddingBottom: insets.bottom + 30 }}>
-      <Text style={[st.lead, { color: theme.ink }]}>{t('plus.lead')}</Text>
-      <Text style={[st.promise, { color: theme.sub }]}>{t('plus.promise')}</Text>
-      {FEATURES.map(([icon, title, body]) => (
-        <View key={title} style={[st.feat, { backgroundColor: theme.card, borderColor: theme.line }]}>
-          <Ionicons name={icon} size={24} color={theme.accent} />
-          <View style={{ flex: 1 }}>
-            <Text style={[st.featTitle, { color: theme.ink }]}>{t(title)}</Text>
-            <Text style={{ color: theme.sub, marginTop: 2 }}>{t(body)}</Text>
-          </View>
+    <ScrollView style={{ backgroundColor: theme.bg }} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: insets.bottom + 30 }}>
+      <View style={st.hero}>
+        <View style={st.mark}>
+          <LinearGradient colors={['#DDB063', '#C9973F', '#9C7028']} style={StyleSheet.absoluteFill} />
+          <Ionicons name="sparkles" size={30} color="#1A1408" />
         </View>
-      ))}
+        <Txt v="largeTitle" style={{ textAlign: 'center' }}>
+          {t('plus.title')}
+        </Txt>
+        <Txt tone="sub" style={{ textAlign: 'center', maxWidth: 320 }}>
+          {t('plus.lead')}
+        </Txt>
+      </View>
+
+      <View style={[st.card, { backgroundColor: theme.card, borderColor: theme.line }, theme.shadow]}>
+        {FEATURES.map(([icon, title, body], i) => (
+          <View key={title} style={[st.feat, i < FEATURES.length - 1 && { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.line }]}>
+            <View style={[st.featIcon, { backgroundColor: theme.accentWash }]}>
+              <Ionicons name={icon} size={18} color={theme.accentText} />
+            </View>
+            <View style={{ flex: 1, gap: 2 }}>
+              <Txt v="headline">{t(title)}</Txt>
+              <Txt v="callout" tone="sub">
+                {t(body)}
+              </Txt>
+            </View>
+          </View>
+        ))}
+      </View>
+
+      <View style={[st.free, { borderColor: theme.line }]}>
+        <Ionicons name="lock-open-outline" size={18} color={theme.sub} />
+        <View style={{ flex: 1 }}>
+          <Txt v="headline">{t('plus.free.title')}</Txt>
+          <Txt v="callout" tone="sub">
+            {t('plus.free.body')}
+          </Txt>
+        </View>
+      </View>
+
       {app.tier === 'plus' ? (
-        <Text style={[st.lead, { color: theme.accent, fontSize: 18, marginTop: 20 }]}>{t('plus.thanks')}</Text>
+        <Txt v="title" tone="accent" style={{ textAlign: 'center', marginTop: 24 }}>
+          {t('plus.thanks')}
+        </Txt>
       ) : (
-        <>
-          <Btn label={price ? t('plus.buy', { price }) : t('plus.buyNoPrice')} onPress={() => void act('buy')} disabled={busy} style={{ marginTop: 20 }} />
-          <Btn label={t('plus.restore')} kind="secondary" onPress={() => void act('restore')} disabled={busy} style={{ marginTop: 10 }} />
-          {!app.purchases.available ? <Text style={{ color: theme.sub, marginTop: 12, textAlign: 'center' }}>{t('plus.unavailable')}</Text> : null}
-        </>
+        <View style={{ marginTop: 22, gap: 10 }}>
+          <Btn label={price ? t('plus.buy', { price }) : t('plus.buyNoPrice')} icon="sparkles" onPress={() => void act('buy')} disabled={busy} />
+          <Txt v="caption" tone="faint" style={{ textAlign: 'center' }}>
+            {t('plus.once')}
+          </Txt>
+          <Btn label={t('plus.restore')} kind="secondary" onPress={() => void act('restore')} disabled={busy} />
+          {!app.purchases.available ? (
+            <Txt v="caption" tone="sub" style={{ textAlign: 'center', marginTop: 4 }}>
+              {t('plus.unavailable')}
+            </Txt>
+          ) : null}
+        </View>
       )}
     </ScrollView>
   );
 }
 
 const st = StyleSheet.create({
-  lead: { fontSize: 24, fontWeight: '800' },
-  promise: { fontSize: 15, marginTop: 8, marginBottom: 14, lineHeight: 21 },
-  feat: { flexDirection: 'row', gap: 14, alignItems: 'center', padding: 14, borderRadius: 14, borderWidth: StyleSheet.hairlineWidth, marginTop: 10 },
-  featTitle: { fontSize: 16, fontWeight: '700' },
+  hero: { alignItems: 'center', gap: 10, paddingTop: 12, paddingBottom: 24 },
+  mark: { width: 76, height: 76, borderRadius: 26, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', marginBottom: 6 },
+  card: { borderRadius: RADIUS.card, borderWidth: StyleSheet.hairlineWidth },
+  feat: { flexDirection: 'row', gap: 14, alignItems: 'center', paddingHorizontal: 16, paddingVertical: 14 },
+  featIcon: { width: 36, height: 36, borderRadius: 11, alignItems: 'center', justifyContent: 'center' },
+  free: { flexDirection: 'row', gap: 12, alignItems: 'flex-start', marginTop: 14, padding: 16, borderRadius: RADIUS.card, borderWidth: 1, borderStyle: 'dashed' },
 });

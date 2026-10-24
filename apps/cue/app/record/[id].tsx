@@ -19,8 +19,8 @@ import { t } from '../../src/i18n';
 import { reason } from '../../src/native/errors';
 import { success, thud } from '../../src/native/haptics';
 import { useApp } from '../../src/state/AppState';
-import { PROMPTER } from '../../src/theme/theme';
-import { Btn, IconBtn } from '../../src/ui/kit';
+import { FONT, PROMPTER, RADIUS } from '../../src/theme/theme';
+import { Btn, Glass, IconBtn, Txt } from '../../src/ui/kit';
 import { Prompter, type PrompterHandle } from '../../src/ui/Prompter';
 
 export default function RecordScreen() {
@@ -80,14 +80,24 @@ export default function RecordScreen() {
 
   if (!camPerm?.granted || !micPerm?.granted) {
     const denied = (camPerm && !camPerm.granted && !camPerm.canAskAgain) || (micPerm && !micPerm.granted && !micPerm.canAskAgain);
+    const th = app.theme;
     return (
-      <ScrollView style={{ backgroundColor: app.theme.bg }} contentContainerStyle={[st.perm, { paddingTop: insets.top + 40 }]}>
-        <Ionicons name="videocam-outline" size={56} color={app.theme.accent} />
-        <Text style={[st.permTitle, { color: app.theme.ink }]}>{t('perm.camera.title')}</Text>
-        <Text style={[st.permBody, { color: app.theme.sub }]}>{t('perm.camera.body')}</Text>
-        <Text style={[st.permTitle, { color: app.theme.ink, fontSize: 18 }]}>{t('perm.mic.title')}</Text>
-        <Text style={[st.permBody, { color: app.theme.sub }]}>{t('perm.mic.body')}</Text>
-        {denied ? <Text style={[st.permBody, { color: app.theme.danger }]}>{t('perm.denied')}</Text> : null}
+      <ScrollView style={{ backgroundColor: th.bg }} contentContainerStyle={[st.perm, { paddingTop: insets.top + 48, paddingBottom: insets.bottom + 24 }]}>
+        <View style={[st.permMark, { backgroundColor: th.accentWash }]}>
+          <Ionicons name="videocam-outline" size={34} color={th.accentText} />
+        </View>
+        <Txt v="largeTitle" style={{ textAlign: 'center' }}>{t('perm.camera.title')}</Txt>
+        <Txt tone="sub" style={st.permBody}>{t('perm.camera.body')}</Txt>
+        <View style={[st.permCard, { backgroundColor: th.card, borderColor: th.line }]}>
+          <View style={st.permRow}>
+            <Ionicons name="mic-outline" size={20} color={th.accentText} />
+            <View style={{ flex: 1 }}>
+              <Txt v="headline">{t('perm.mic.title')}</Txt>
+              <Txt v="callout" tone="sub">{t('perm.mic.body')}</Txt>
+            </View>
+          </View>
+        </View>
+        {denied ? <Txt v="callout" tone="danger" style={st.permBody}>{t('perm.denied')}</Txt> : null}
         <Btn
           label={denied ? t('perm.openSettings') : t('perm.allow')}
           onPress={async () => {
@@ -95,7 +105,7 @@ export default function RecordScreen() {
             if (!camPerm?.granted) await askCam();
             if (!micPerm?.granted) await askMic();
           }}
-          style={{ alignSelf: 'stretch', marginTop: 12 }}
+          style={{ alignSelf: 'stretch', marginTop: 20 }}
         />
         <Btn label={t('common.cancel')} kind="secondary" onPress={() => router.back()} style={{ alignSelf: 'stretch', marginTop: 10 }} />
       </ScrollView>
@@ -148,7 +158,7 @@ export default function RecordScreen() {
     <View style={st.fill}>
       <StatusBar hidden />
       <CameraView ref={cam} style={StyleSheet.absoluteFill} facing={facing} mode="video" onCameraReady={() => setReady(true)} />
-      <View style={[st.scriptBox, { top: insets.top + 56, backgroundColor: `rgba(0,0,0,${prefs.scriptOpacity})` }]}>
+      <View style={[st.scriptBox, { top: insets.top + 60, backgroundColor: `rgba(7,8,12,${prefs.scriptOpacity})`, borderColor: recording ? TALLY : 'rgba(255,255,255,0.08)' }]}>
         <Prompter
           ref={prompter}
           parsed={parsed}
@@ -172,50 +182,65 @@ export default function RecordScreen() {
           <Text style={st.count}>{count}</Text>
         </View>
       ) : null}
-      <View style={[st.top, { paddingTop: insets.top + 6 }]}>
-        <IconBtn icon="close" label={t('prompt.close')} onPress={() => (recording ? cam.current?.stopRecording() : router.back())} color="#fff" bg="rgba(0,0,0,0.4)" />
+      <View style={[st.top, { paddingTop: insets.top + 8 }]}>
+        <Glass tint="dark" style={st.round}>
+          <IconBtn icon="close" label={t('prompt.close')} onPress={() => (recording ? cam.current?.stopRecording() : router.back())} color="#F1EEE6" />
+        </Glass>
         <View style={{ flex: 1 }} />
         {recording ? (
-          <View style={st.rec}>
+          <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 7 }]}>
             <View style={st.recDot} />
             <Text style={st.recText}>{formatDuration(secs)}</Text>
-          </View>
+          </Glass>
         ) : null}
-        <IconBtn icon="camera-reverse-outline" label={t('record.flipCamera')} onPress={() => !recording && app.setPrefs({ recordCamera: facing === 'front' ? 'back' : 'front' })} color="#fff" bg="rgba(0,0,0,0.4)" />
+        <Glass tint="dark" style={st.round}>
+          <IconBtn icon="camera-reverse-outline" label={t('record.flipCamera')} onPress={() => !recording && app.setPrefs({ recordCamera: facing === 'front' ? 'back' : 'front' })} color="#F1EEE6" />
+        </Glass>
       </View>
-      <View style={[st.bottom, { paddingBottom: insets.bottom + 18 }]}>
-        <Pressable onPress={pickSection} disabled={recording || !parsed.sections.length} accessibilityRole="button" accessibilityLabel={t('record.section')} style={st.sectionChip}>
-          <Text style={st.sectionText} numberOfLines={1}>
-            {section === null ? t('record.wholeScript') : parsed.sections[section]?.title}
-          </Text>
+      <View style={[st.bottom, { paddingBottom: insets.bottom + 22 }]}>
+        <Pressable onPress={pickSection} disabled={recording || !parsed.sections.length} accessibilityRole="button" accessibilityLabel={t('record.section')} style={{ width: 120 }}>
+          <Glass tint="dark" style={[st.chip, { opacity: recording ? 0.5 : 1 }]}>
+            <Text style={st.chipText} numberOfLines={1}>
+              {section === null ? t('record.wholeScript') : parsed.sections[section]?.title}
+            </Text>
+          </Glass>
         </Pressable>
-        <Pressable onPress={toggle} accessibilityRole="button" accessibilityLabel={recording ? t('record.stop') : t('record.start')} style={st.shutter}>
+        <Pressable onPress={toggle} accessibilityRole="button" accessibilityLabel={recording ? t('record.stop') : t('record.start')} style={({ pressed }) => [st.shutter, { transform: [{ scale: pressed ? 0.94 : 1 }] }]}>
           <View style={[st.shutterInner, recording && st.shutterStop]} />
         </Pressable>
-        <View style={st.sectionChip}>
-          <Text style={st.sectionText}>{takes ? `${takes} ✓` : ' '}</Text>
+        <View style={{ width: 120, alignItems: 'center' }}>
+          {takes ? (
+            <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
+              <Ionicons name="checkmark-circle" size={15} color="#D9AD5E" />
+              <Text style={st.chipText}>{takes}</Text>
+            </Glass>
+          ) : null}
         </View>
       </View>
     </View>
   );
 }
 
+const TALLY = '#E2463B';
+
 const st = StyleSheet.create({
   fill: { flex: 1, backgroundColor: '#000' },
-  perm: { padding: 28, alignItems: 'center', gap: 10 },
-  permTitle: { fontSize: 22, fontWeight: '800', textAlign: 'center', marginTop: 10 },
-  permBody: { fontSize: 16, textAlign: 'center', lineHeight: 22 },
-  scriptBox: { position: 'absolute', left: 10, right: 10, height: '38%', borderRadius: 16, overflow: 'hidden' },
+  perm: { paddingHorizontal: 28, alignItems: 'center', gap: 12 },
+  permMark: { width: 76, height: 76, borderRadius: 26, alignItems: 'center', justifyContent: 'center', marginBottom: 8 },
+  permBody: { textAlign: 'center' },
+  permCard: { alignSelf: 'stretch', borderRadius: RADIUS.card, borderWidth: StyleSheet.hairlineWidth, padding: 16, marginTop: 10 },
+  permRow: { flexDirection: 'row', gap: 12, alignItems: 'flex-start' },
+  scriptBox: { position: 'absolute', left: 12, right: 12, height: '38%', borderRadius: RADIUS.card, overflow: 'hidden', borderWidth: 1.5 },
   center: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, alignItems: 'center', justifyContent: 'center' },
-  count: { fontSize: 120, fontWeight: '900', color: '#fff' },
-  top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, gap: 10 },
-  rec: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: 14, paddingHorizontal: 10, paddingVertical: 5 },
-  recDot: { width: 10, height: 10, borderRadius: 5, backgroundColor: '#FF3B30' },
-  recText: { color: '#fff', fontWeight: '700', fontVariant: ['tabular-nums'] },
+  count: { fontFamily: FONT.display, fontSize: 150, color: '#F1EEE6', fontVariant: ['tabular-nums'] },
+  top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, gap: 8 },
+  round: { borderRadius: 22 },
+  chip: { borderRadius: RADIUS.pill, paddingHorizontal: 14, minHeight: 38, alignItems: 'center', justifyContent: 'center' },
+  chipText: { fontFamily: FONT.bodyBold, fontSize: 13.5, color: '#F1EEE6' },
+  recDot: { width: 9, height: 9, borderRadius: 5, backgroundColor: TALLY },
+  recText: { fontFamily: FONT.display, fontSize: 16, color: '#F1EEE6', fontVariant: ['tabular-nums'] },
   bottom: { position: 'absolute', bottom: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' },
-  sectionChip: { width: 110, minHeight: 36, borderRadius: 18, backgroundColor: 'rgba(0,0,0,0.45)', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 10 },
-  sectionText: { color: '#fff', fontWeight: '600', fontSize: 13 },
-  shutter: { width: 78, height: 78, borderRadius: 39, borderWidth: 5, borderColor: '#fff', alignItems: 'center', justifyContent: 'center' },
-  shutterInner: { width: 60, height: 60, borderRadius: 30, backgroundColor: '#FF3B30' },
-  shutterStop: { width: 30, height: 30, borderRadius: 6 },
+  shutter: { width: 82, height: 82, borderRadius: 41, borderWidth: 4, borderColor: 'rgba(241,238,230,0.95)', alignItems: 'center', justifyContent: 'center' },
+  shutterInner: { width: 64, height: 64, borderRadius: 32, backgroundColor: TALLY },
+  shutterStop: { width: 30, height: 30, borderRadius: 8 },
 });

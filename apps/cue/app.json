@@ -7,7 +7,7 @@
     "orientation": "default",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/brand/icon.png",
-    "backgroundColor": "#0F0F11",
+    "backgroundColor": "#10131C",
     "owner": "jared797",
     "ios": {
       "supportsTablet": true,
@@ -27,7 +27,7 @@
       "package": "com.jared797.cue",
       "adaptiveIcon": {
         "foregroundImage": "./assets/brand/adaptive-icon.png",
-        "backgroundColor": "#0F0F11"
+        "backgroundColor": "#10131C"
       },
       "permissions": [
         "android.permission.CAMERA",
@@ -64,7 +64,7 @@
           "image": "./assets/brand/splash-icon.png",
           "imageWidth": 180,
           "resizeMode": "contain",
-          "backgroundColor": "#0F0F11"
+          "backgroundColor": "#10131C"
         }
       ],
       "expo-status-bar"
