@@ -35,6 +35,11 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
       - name: Install packages
         run: npm install --no-audit --no-fund
+      - name: Link the Expo project (apps whose app.json has no projectId yet)
+        run: |
+          if [ "$(jq -r '.expo.extra.eas.projectId // empty' app.json)" = "" ]; then
+            eas init --non-interactive --force || true
+          fi
       - name: Collect
         run: |
           set +e
