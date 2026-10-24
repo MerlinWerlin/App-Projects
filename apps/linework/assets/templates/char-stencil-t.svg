@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
-  <title>Stencil T</title>
-  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M93 43Q116 46 118 46H155V64Q128 66 121 91Q119 98 116 104Q111 122 104 127H93Z"/>
-    <path d="M229 250Q229 270 238 274Q242 276 247 277Q252 278 258 281V294H142V281Q147 279 153 278Q158 276 162 274Q171 269 171 258V46H229Z"/>
-    <path d="M282 46Q284 46 307 43V127H296Q289 122 285 110Q281 98 279 91Q277 84 273 78Q264 66 245 64V46Z"/>
-  </g>
-</svg>

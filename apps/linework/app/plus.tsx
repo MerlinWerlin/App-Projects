@@ -1,7 +1,9 @@
 // Linework Plus (owner decision 22 Oct 2026: 14-day free trial, then A$2.99 one-time; docs/OWNER_1022D.md). Large
 // title, trial status, "Free forever" as an inset group, the Plus offer as a pastel hero BubbleCard with the real
 // App Store purchase (src/plus/iapStore.ts) in store builds. Expo Go has no store: the Buy button says so, and the
-// __DEV__ links simulate a purchase or end the trial so the locks can be tried.
+// __DEV__ links simulate a purchase or start / end the trial so the locks can be tried.
+// Guideline 3.1.1 (docs/OWNER_1024.md): the trial is a free "14-day Trial" in-app purchase the person starts here,
+// under a disclosure of its length, what stays free, what locks when it ends and the Plus price (TrialOfferText).
 import { Alert, Pressable, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { Stack, useRouter } from 'expo-router';
@@ -23,6 +25,9 @@ import {
   type TipAmountId,
 } from '../src/plus/entitlement';
 import { usePlus } from '../src/plus/usePlus';
+import { TRIAL_DAYS, canStartTrial } from '../src/plus/access';
+import { TrialOfferText } from '../src/plus/TrialOffer';
+import { startTrialWithAlerts } from '../src/plus/trialFlow';
 import { useT } from '../src/i18n';
 import type { MessageKey } from '../src/i18n/en';
 
@@ -57,12 +62,18 @@ export default function PlusScreen() {
   const plus = usePlus();
   const owned = plus.state.owned;
   const price = plus.price ?? PLUS_PRICE;
+  const reason = plus.access.reason;
+  const offerTrial = canStartTrial(plus.access);
   const trialLine =
-    plus.access.reason === 'owned'
+    reason === 'owned'
       ? t('plus.trial.owned')
-      : plus.access.reason === 'trial'
+      : reason === 'trial'
         ? t('plus.trial.left', { count: plus.access.daysLeft })
-        : t('plus.trial.ended');
+        : reason === 'none'
+          ? t('plus.trial.notStarted')
+          : reason === 'expired'
+            ? t('plus.trial.ended')
+            : '';
 
   const onBuy = async () => {
     select();
@@ -105,6 +116,9 @@ export default function PlusScreen() {
   };
 
   const simulateText = owned ? t('plus.clearSimulated') : t('plus.simulate');
+  // Test builds: start the trial without a store (Expo Go), end it, restart it, or forget it to see the offer again.
+  const devTrialOp: 'start' | 'end' = reason === 'trial' ? 'end' : 'start';
+  const devTrialText = reason === 'trial' ? t('plus.endTrial') : reason === 'expired' ? t('plus.resetTrial') : t('plus.startTrialDev');
 
   return (
     <>
@@ -116,7 +130,7 @@ export default function PlusScreen() {
         <Text
           accessibilityLiveRegion="polite"
           maxFontSizeMultiplier={maxFontScaleV2}
-          style={[text('headline'), { color: plus.access.reason === 'expired' ? c.graphite : c.ink, marginBottom: spaceV2.x6 }]}
+          style={[text('headline'), { color: reason === 'expired' ? c.graphite : c.ink, marginBottom: spaceV2.x6 }]}
         >
           {trialLine}
         </Text>
@@ -159,6 +173,22 @@ export default function PlusScreen() {
           >
             {t('plus.price', { price })}
           </Text>
+          {offerTrial ? (
+            // 3.1.1: the trial's length, what stays free, what locks and the price, before "Start free trial".
+            <View style={{ marginBottom: spaceV2.x4, gap: spaceV2.x4 }}>
+              <TrialOfferText price={price} />
+              <PillButton
+                title={t('plus.startTrial')}
+                icon="clock"
+                onPress={() => {
+                  startTrialWithAlerts(plus).catch(() => {});
+                }}
+                disabled={plus.busy || plus.loading}
+                haptic="none"
+                accessibilityHint={t('plus.startTrialHint', { days: TRIAL_DAYS })}
+              />
+            </View>
+          ) : null}
           {owned ? (
             <View
               accessible
@@ -186,6 +216,8 @@ export default function PlusScreen() {
           ) : (
             <PillButton
               title={plus.canBuy ? t('plus.buy', { price }) : t('plus.notInExpoGo')}
+              variant={offerTrial ? 'secondary' : 'primary'}
+              block
               onPress={() => {
                 onBuy().catch(() => {});
               }}
@@ -226,17 +258,34 @@ export default function PlusScreen() {
           {__DEV__ ? (
             <Pressable
               onPress={() => {
-                plus.setTrialEnded(plus.access.reason !== 'expired').catch(() => {});
+                plus.devTrial(devTrialOp).catch(() => {});
               }}
               accessibilityRole="button"
-              accessibilityLabel={plus.access.reason === 'expired' ? t('plus.resetTrial') : t('plus.endTrial')}
+              accessibilityLabel={devTrialText}
               style={{ minHeight: sizeV2.touch, alignItems: 'center', justifyContent: 'center' }}
             >
               <Text
                 maxFontSizeMultiplier={maxFontScaleV2}
                 style={[text('subhead'), { color: c.muted, textDecorationLine: 'underline', textAlign: 'center' }]}
               >
-                {plus.access.reason === 'expired' ? t('plus.resetTrial') : t('plus.endTrial')}
+                {devTrialText}
+              </Text>
+            </Pressable>
+          ) : null}
+          {__DEV__ && (reason === 'trial' || reason === 'expired') ? (
+            <Pressable
+              onPress={() => {
+                plus.devTrial('clear').catch(() => {});
+              }}
+              accessibilityRole="button"
+              accessibilityLabel={t('plus.clearTrial')}
+              style={{ minHeight: sizeV2.touch, alignItems: 'center', justifyContent: 'center' }}
+            >
+              <Text
+                maxFontSizeMultiplier={maxFontScaleV2}
+                style={[text('subhead'), { color: c.muted, textDecorationLine: 'underline', textAlign: 'center' }]}
+              >
+                {t('plus.clearTrial')}
               </Text>
             </Pressable>
           ) : null}

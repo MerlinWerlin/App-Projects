@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
-  <title>Classic serif capital B</title>
-  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M98 44H198Q244 44 267 56Q290 69 290 98Q290 144 235 153V154Q302 162 302 211Q302 248 275 262Q247 277 196 277H98V270H120V50H98Z"/>
-    <path d="M185 159V270H200Q219 270 226 258Q233 245 233 220V203Q233 181 224 170Q215 159 192 159Z"/>
-    <path d="M185 50V153H193Q211 153 217 142Q224 132 224 110V94Q224 70 218 60Q212 50 195 50Z"/>
-  </g>
-</svg>

@@ -9,8 +9,6 @@ import { prepare } from './prepare.ts';
 import { trace } from './trace.ts';
 import { lightbox } from './lightbox.ts';
 import { drawings } from './drawings.ts';
-import { workshop } from './workshop.ts';
-import { feedback } from './feedback.ts';
 import type { Message } from '../core.ts';
 
 export const en = {
@@ -23,8 +21,6 @@ export const en = {
   ...trace,
   ...lightbox,
   ...drawings,
-  ...workshop,
-  ...feedback,
 } as const;
 
 export type MessageKey = keyof typeof en;

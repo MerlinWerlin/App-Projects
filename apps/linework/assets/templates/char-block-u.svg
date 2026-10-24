@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
-  <title>Block U</title>
-  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M320 252Q320 270 315 284Q309 299 296 309Q283 320 259 325Q236 331 200 331Q164 331 141 325Q117 320 104 309Q91 299 85 284Q80 270 80 252V60Q80 46 94 46H155Q169 46 169 60V237Q169 244 175 250Q181 255 201 255Q221 255 227 250Q233 244 233 237V60Q233 46 247 46H306Q320 46 320 60Z"/>
-  </g>
-</svg>

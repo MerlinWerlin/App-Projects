@@ -6,14 +6,17 @@ import { trade } from '../core/templateArt/trade.ts';
 import { accessFor, starterIds, templateLocked } from './access.ts';
 import { STARTER_TEMPLATE_COUNT } from './entitlement.ts';
 
-test('trade: Linework Plus only after the trial, never a free starter', () => {
+test('trade: Linework Plus only after (and before) the trial, never a free starter', () => {
   const starters = starterIds(TEMPLATES, STARTER_TEMPLATE_COUNT);
   const expired = accessFor(false, 0, 100 * 86_400_000);
+  const notStarted = accessFor(false, null, 100 * 86_400_000);
   const trial = accessFor(false, 0, 0);
+  const owned = accessFor(true, null, 0);
   for (const t of trade) {
     assert.ok(!starters.has(t.id), `${t.id} is a starter`);
     assert.equal(templateLocked(expired, starters, t.id), true, t.id);
+    assert.equal(templateLocked(notStarted, starters, t.id), true, t.id);
     assert.equal(templateLocked(trial, starters, t.id), false, t.id);
+    assert.equal(templateLocked(owned, starters, t.id), false, t.id);
   }
 });
-

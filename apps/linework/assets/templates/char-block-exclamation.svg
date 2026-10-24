@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
-  <title>Block exclamation mark</title>
-  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M230 223H170Q156 223 156 210L150 60Q149 46 163 46H237Q251 46 250 60L245 210Q244 223 230 223Z"/>
-    <path d="M236 325H165Q151 325 151 311V260Q151 246 165 246H236Q250 246 250 260V311Q250 325 236 325Z"/>
-  </g>
-</svg>
