@@ -1,0 +1,45 @@
+{
+  "id": "lw-v001",
+  "app": "linework",
+  "title": "Can't draw? Trace it",
+  "accent": "#2346A8",
+  "branded": true,
+  "shots": [
+    {
+      "image": "../../../../apps/linework/store/jpg/a/01-trace.jpg",
+      "caption": "Can't draw? Trace it.",
+      "seconds": 2.4,
+      "motion": "in"
+    },
+    {
+      "image": "img/p01.jpg",
+      "caption": "Pick a cute template",
+      "seconds": 2.2,
+      "motion": "up"
+    },
+    {
+      "image": "../../../../apps/linework/store/jpg/a/04-photo-sketch.jpg",
+      "caption": "Or turn any photo into lines",
+      "seconds": 2.4,
+      "motion": "out"
+    },
+    {
+      "image": "../../../../apps/linework/store/jpg/a/07-lock.jpg",
+      "caption": "Lock it. Draw steady.",
+      "seconds": 2.2,
+      "motion": "down"
+    },
+    {
+      "image": "img/p03.jpg",
+      "caption": "Tattoo flash, letters, kawaii",
+      "seconds": 2.2,
+      "motion": "in"
+    }
+  ],
+  "end": {
+    "title": "Linework",
+    "line": "Trace & Sketch for iPhone",
+    "sub": "No ads. No subscription.",
+    "seconds": 2.4
+  }
+}
