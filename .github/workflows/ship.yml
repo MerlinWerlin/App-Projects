@@ -89,6 +89,9 @@ jobs:
           echo "ascAppId=$(jq -r '.ascAppId // empty' RELEASE.json)" >> "$GITHUB_OUTPUT"
           # Optional build profile (default production), e.g. "production-native" for Glaze's native parts.
           echo "profile=$(jq -r '.profile // "production"' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          # Optional: skip EAS capability sync when capabilities were set by hand in the Apple developer site
+          # (Apple's API can't assign App Groups).
+          echo "skipCapSync=$(jq -r 'if .skipCapabilitySync then "1" else "" end' RELEASE.json)" >> "$GITHUB_OUTPUT"
 
       - name: Install packages
         run: npm install --no-audit --no-fund
@@ -129,6 +132,7 @@ jobs:
         if: steps.rel.outputs.mode == 'build'
         env:
           EAS_BUILD_NO_EXPO_GO_WARNING: 'true'
+          EXPO_NO_CAPABILITY_SYNC: ${{ steps.rel.outputs.skipCapSync }}
         run: |
           set -o pipefail
           eas build --platform ios --profile "${{ steps.rel.outputs.profile }}" --non-interactive --auto-submit-with-profile production --no-wait --message "${{ steps.rel.outputs.note }}" 2>&1 | tee "$RUNNER_TEMP/ship.log"
