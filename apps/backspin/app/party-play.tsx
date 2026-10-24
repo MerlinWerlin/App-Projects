@@ -18,7 +18,7 @@ import { SP, TYPE } from '../src/ui/theme.ts';
 import { useRecorder } from '../src/ui/useRecorder.ts';
 
 export default function PartyPlay() {
-  const { t, theme, plus, recordRound } = useApp();
+  const { t, theme, recordRound } = useApp();
   const router = useRouter();
   const [party, setParty] = useState<Party | null>(partyStore.get());
   const [handoff, setHandoff] = useState(true);
@@ -88,7 +88,8 @@ export default function PartyPlay() {
   }
 
   const player = party.players[party.turn];
-  const pick = partyLine(PACKS, party, plus);
+  // A party that started inside the free goes always finishes, even if it uses them up.
+  const pick = partyLine(PACKS, party, true);
   const next = () => {
     save(finishTurn(party, points ?? 0));
     setPoints(null);

@@ -7,13 +7,15 @@ export type Pack = { id: PackId; emoji: string; free: boolean | number; lines: L
 
 /** Pack order on the Packs screen. `free: true` = all free, a number = that many lines free, false = Plus. */
 export const PACK_META: { id: PackId; emoji: string; free: boolean | number }[] = [
+  // Jared 24 Oct 2026: everything is open during the 10 free goes, then the lifetime unlock opens it for good,
+  // so packs carry no per-line locks.
   { id: 'warmup', emoji: '👋', free: true },
-  { id: 'party', emoji: '🎉', free: 40 },
+  { id: 'party', emoji: '🎉', free: true },
   { id: 'animals', emoji: '🐸', free: true },
   { id: 'kids', emoji: '🧸', free: true },
-  { id: 'twisters', emoji: '👅', free: 20 },
-  { id: 'songs', emoji: '🎶', free: 15 },
-  { id: 'aussie', emoji: '🦘', free: 15 },
+  { id: 'twisters', emoji: '👅', free: true },
+  { id: 'songs', emoji: '🎶', free: true },
+  { id: 'aussie', emoji: '🦘', free: true },
 ];
 
 export function buildPacks(lines: Record<string, Line[]>): Pack[] {
@@ -182,6 +184,11 @@ export function guessMatches(guess: string, answer: string): boolean {
 }
 
 // ---------- Plus ----------
+/** Jared 24 Oct 2026: "10 free goes and then it's 2 lifetime". Every scored round counts as a go. */
+export const FREE_GOES = 10;
+/** Full access: bought, or still inside the free goes. */
+export const hasAccess = (owned: boolean, roundsPlayed: number) => owned || roundsPlayed < FREE_GOES;
+export const freeGoesLeft = (owned: boolean, roundsPlayed: number) => (owned ? null : Math.max(0, FREE_GOES - roundsPlayed));
 export const FREE_SAVES = 12;
 export const canSaveMore = (saved: number, plus: boolean) => plus || saved < FREE_SAVES;
 /** Longest take, in seconds. */

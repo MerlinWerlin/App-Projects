@@ -12,7 +12,7 @@ import { R, SP } from '../../src/ui/theme.ts';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function Takes() {
-  const { t, theme, takes, plus, removeTake } = useApp();
+  const { t, theme, takes, owned: plus, removeTake } = useApp();
   const ins = useSafeAreaInsets();
   const [open, setOpen] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);

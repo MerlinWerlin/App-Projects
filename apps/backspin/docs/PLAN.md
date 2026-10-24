@@ -26,10 +26,11 @@
 - **Audio route lesson:** iOS plays through the earpiece while recording is allowed, so every playback switches the session to playback first.
 - **Android:** its recorder can't write WAV, so Backspin can't reverse on Android in Expo Go yet and says so. The store build needs a small native PCM recorder (backlog B10).
 
-## Money
-- Free: every round, Warm-up, Animals, Family packs; 40/20/15/15 free lines of Party/Twisters/Songs/Aussie; the daily; Party for up to 4; chipmunk effect; 12 saved takes; 15 s takes.
-- **Backspin Plus**, one-time non-consumable `com.jared797.backspin.plus`: all packs, all effects, unlimited saves, 8-player party, 30 s takes. **Price: Jared decides** (proposed A$3.99).
-- No ads, no tracking SDKs, recordings never uploaded. App Privacy: Data Not Collected.
+## Money (Jared, 24 Oct 2026: "10 free goes and then it's 2 lifetime")
+- **10 free goes** with everything switched on (every pack, effect, party size, save). Each scored round counts as a go; a party that starts inside the free goes always finishes. The home screen shows how many are left.
+- After that, new rounds need **Backspin Plus**, a one-time lifetime unlock (non-consumable `com.jared797.backspin.plus`) at **A$1.99**, the App Store price nearest "$2". Set it in App Store Connect when the app is created. Saved takes still play and share without it.
+- No ads, no subscription, no tracking SDKs, and recordings are never uploaded. App Privacy: Data Not Collected.
+- The store copy (store/listing.draft.json) still describes the earlier free-core model and needs rewording before submission.
 
 ## Rules (from the App Factory starter standard)
 Same Expo SDK 57 as the other apps, Expo Go first, native-only features behind guarded adapters, no "index" flash, FlatList with fixed rows, calm motion and haptics settings, real error messages on save and share, plain-words permission screen, dark mode, accessibility labels, every string in `src/i18n/en.ts` with 13 Luna translations, no competitor names outside docs/MARKET.md, original art only, never claim a feature works on a real phone until Jared confirms it.

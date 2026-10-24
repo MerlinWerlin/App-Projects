@@ -8,6 +8,7 @@ import { shareText } from '../src/native/device.ts';
 import { clearScratch, saveTakeFiles } from '../src/native/files.ts';
 import { useApp } from '../src/state/app.tsx';
 import { Button, Screen } from '../src/ui/kit.tsx';
+import { OutOfGoes } from '../src/ui/OutOfGoes.tsx';
 import { RoundEngine, type RoundResult } from '../src/ui/RoundEngine.tsx';
 import { SP } from '../src/ui/theme.ts';
 
@@ -33,10 +34,11 @@ export default function Round() {
     return r ? { ...r, locked: false } : null;
   }, [mode, lineId, seed, plus]);
 
-  if (pick?.locked) {
+  // Out of free goes (and not bought): the round can't start; a finished round's reveal stays on screen.
+  if ((!plus && !result) || pick?.locked) {
     return (
       <Screen>
-        <Button title={t('round.locked')} icon="🔒" onPress={() => router.replace('/plus')} />
+        <OutOfGoes />
       </Screen>
     );
   }

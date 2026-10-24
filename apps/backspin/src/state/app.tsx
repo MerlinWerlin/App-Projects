@@ -2,7 +2,7 @@
 // and theme. Loads once at startup; the splash stays up until it has (no "index" flash, App Factory lesson).
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { AccessibilityInfo, useColorScheme } from 'react-native';
-import { NO_STREAK, playDaily, type Streak } from '../core/game.ts';
+import { freeGoesLeft, hasAccess, NO_STREAK, playDaily, type Streak } from '../core/game.ts';
 import { makeT, matchLang, type Catalog, type Lang } from '../i18n/core.ts';
 import { CATALOGS } from '../i18n/catalogs.ts';
 import { deleteTakeFiles } from '../native/files.ts';
@@ -47,7 +47,12 @@ type Ctx = {
   takes: Take[];
   addTake: (t: Take) => void;
   removeTake: (id: string) => void;
+  /** Full access (bought, or still inside the 10 free goes). Gates every feature. */
   plus: boolean;
+  /** Bought the lifetime unlock. */
+  owned: boolean;
+  /** Free goes left, or null once bought. */
+  freeLeft: number | null;
   plusKind: 'store' | 'test';
   plusPrice: string | null;
   buyPlus: () => Promise<BuyResult>;
@@ -166,7 +171,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const value: Ctx = {
     ready, prefs, setPref, stats, recordRound, takes, addTake, removeTake,
-    plus, plusKind: store.kind, plusPrice, buyPlus, restorePlus,
+    plus: hasAccess(plus, stats.rounds), owned: plus, freeLeft: freeGoesLeft(plus, stats.rounds), plusKind: store.kind, plusPrice, buyPlus, restorePlus,
     t, lang, theme, calm: prefs.calm || reduceMotion,
   };
   return <AppCtx.Provider value={value}>{children}</AppCtx.Provider>;

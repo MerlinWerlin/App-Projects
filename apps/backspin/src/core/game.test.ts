@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import lines from '../content/lines.json' with { type: 'json' };
 import quips from '../content/quips.json' with { type: 'json' };
 import {
-  buildPacks, canPlayLine, canSaveMore, dailyLine, dailyShareText, dareFor, finishTurn, guessMatches, liveStreak,
+  buildPacks, canPlayLine, freeGoesLeft, hasAccess, canSaveMore, dailyLine, dailyShareText, dareFor, finishTurn, guessMatches, liveStreak,
   newParty, NO_STREAK, partyLine, partyOver, playDaily, standings, titleFor, verdict, type Line, type Quips,
 } from './game.ts';
 
@@ -26,11 +26,16 @@ test('content: every pack has lines, ids are unique, lines are short', () => {
   assert.ok(total >= 900, `total ${total}`);
 });
 
-test('free lines and Plus', () => {
+test('10 free goes, then the lifetime unlock', () => {
   const party = packs.find((p) => p.id === 'party')!;
-  assert.ok(canPlayLine(party, 0, false));
-  assert.ok(!canPlayLine(party, 100, false));
-  assert.ok(canPlayLine(party, 100, true));
+  assert.ok(canPlayLine(party, 100, false));
+  assert.ok(hasAccess(false, 0));
+  assert.ok(hasAccess(false, 9));
+  assert.ok(!hasAccess(false, 10));
+  assert.ok(hasAccess(true, 500));
+  assert.equal(freeGoesLeft(false, 3), 7);
+  assert.equal(freeGoesLeft(false, 30), 0);
+  assert.equal(freeGoesLeft(true, 3), null);
   assert.ok(canSaveMore(3, false));
   assert.ok(!canSaveMore(12, false));
 });

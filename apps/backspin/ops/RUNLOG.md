@@ -3,3 +3,4 @@
 - 2026-10-24 Claude: PC check found expo-asset 58 hoisted (expo-audio's peer is "*"), breaking the iOS bundle; pinned expo-asset ~57.0.20.
 - 2026-10-24 Claude: added @expo/ngrok dev dependency (Expo Go tunnel needs it, as in Couch).
 - 2026-10-24 Claude: moved to Expo SDK 58 (Jared's Expo Go is on 58; same pins as Couch's working PC copy). Exact versions are finalised by expo install --fix on the PC and committed back.
+- 2026-10-24 Claude: money model changed per Jared: 10 free goes with everything, then a lifetime unlock at A$1.99 (OutOfGoes screen, home counter, Plus copy); paywall strings re-translated by Luna.
