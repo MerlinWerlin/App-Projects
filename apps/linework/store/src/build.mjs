@@ -83,6 +83,8 @@ function icon(name, cx, cy, s, color = '#FFFFFF', sw = 2) {
     case 'home': return g('<path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/>');
     case 'templates': return g('<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>');
     case 'drawings': return g('<path d="M4 20h16M6 16l9-9 3 3-9 9H6z"/>');
+    case 'tool': return g('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L4 16.8V20h3.2l5.3-5.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>');
+    case 'star': return g('<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>');
     case 'settings': return g('<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>');
     default: return '';
   }
@@ -269,7 +271,7 @@ function prepareScreen(mode = 'outline') {
 }
 const GRID = [['hero-standing-tall', 'Caped hero'], ['fairy-castle-simple', 'Castle'], ['game-pixel-sword', 'Pixel sword'], ['kids-woodland-fox', 'Little fox'], ['movie-retro-rocket', 'Rocket'], ['fairy-unicorn-cute', 'Unicorn'], ['cute-whale', 'Whale'], ['bot-tulip-pair', 'Tulips']];
 function templatesScreen(active = 'All') {
-  const cats = ['All', 'New', 'Heroes', 'Fairy tales', 'Kids'];
+  const cats = ['All', 'New', 'Letters', 'Heroes', 'Fairy tales'];
   let cx = 40;
   const bubbles = cats.map((c) => {
     const w = c.length * 13.5 + 48, on = c === active;
@@ -284,22 +286,84 @@ function templatesScreen(active = 'All') {
   }).join('');
   return `<rect width="600" height="1300" fill="${C.paper}"/>${statusBar(false)}
   <text x="40" y="150" font-family="${SERIF}" font-weight="700" font-size="56" fill="${C.graphite}">Templates</text>
-  <rect x="40" y="176" width="520" height="58" rx="29" fill="${C.card}" stroke="${C.line}" stroke-width="2"/>${icon('search', 76, 205, 28, C.muted)}<text x="102" y="213" font-family="${SANS}" font-size="22" fill="${C.muted}">Search 500+ templates</text>
+  <rect x="40" y="176" width="520" height="58" rx="29" fill="${C.card}" stroke="${C.line}" stroke-width="2"/>${icon('search', 76, 205, 28, C.muted)}<text x="102" y="213" font-family="${SANS}" font-size="22" fill="${C.muted}">Search 1,900+ templates</text>
   ${bubbles}${cards}${tabBar('templates')}`;
 }
+// Letters (owner 24 Oct 2026): Templates with the Letters bubble on, style tiles and one-letter cards.
+const LETTER_COUNTS = { bubble: 39, retro: 39, calligraphy: 53, pixel: 39, graffiti: 39, western: 39 };
+const LETTER_TILES = [['bubble', 'Bubble'], ['retro', 'Retro'], ['calligraphy', 'Calligraphy'], ['pixel', 'Pixel'], ['graffiti', 'Graffiti'], ['western', 'Western']];
+function lettersScreen(activeStyle = 'calligraphy') {
+  const cats = ['All', 'New', 'Letters', 'Heroes'];
+  let cx = 40;
+  const bubbles = cats.map((c) => {
+    const w = c.length * 13.5 + 48, on = c === 'Letters';
+    const s = `<rect x="${cx}" y="250" width="${w}" height="58" rx="29" fill="${on ? C.ink : C.card}" stroke="${on ? C.ink : C.line}" stroke-width="2"/><text x="${cx + w / 2}" y="287" text-anchor="middle" font-family="${SANS}" font-weight="600" font-size="22" fill="${on ? '#FFFFFF' : C.graphite}">${esc(c)}</text>`;
+    cx += w + 12;
+    return s;
+  }).join('');
+  const tiles = LETTER_TILES.map(([st, n], i) => {
+    const x = 40 + (i % 3) * 176, y = 330 + Math.floor(i / 3) * 176, on = st === activeStyle;
+    return `<rect x="${x}" y="${y}" width="164" height="164" rx="24" fill="${on ? C.card : '#FFE3EC'}" stroke="${on ? C.ink : C.line}" stroke-width="${on ? 4 : 2}"/>${art(`char-${st}-a`, x + 42, y + 14, 80, { width: 8 })}<text x="${x + 82}" y="${y + 126}" text-anchor="middle" font-family="${SANS}" font-weight="700" font-size="21" fill="${C.graphite}">${n}</text><text x="${x + 82}" y="${y + 150}" text-anchor="middle" font-family="${SANS}" font-size="17" fill="${C.muted}">${LETTER_COUNTS[st]}</text>`;
+  }).join('');
+  const cards = [['char-calligraphy-l', 'Calligraphy L'], ['char-calligraphy-o-small', 'Calligraphy o'], ['char-calligraphy-v', 'Calligraphy V'], ['char-calligraphy-e-small', 'Calligraphy e']].map(([a, n], i) => {
+    const x = 40 + (i % 2) * 268, y = 700 + Math.floor(i / 2) * 248;
+    return `<g filter="url(#shSoft)"><rect x="${x}" y="${y}" width="252" height="232" rx="26" fill="${C.card}"/></g><rect x="${x + 12}" y="${y + 12}" width="228" height="160" rx="18" fill="${C.paper}"/>${art(a, x + 56, y + 12, 160, { width: 6 })}<text x="${x + 22}" y="${y + 210}" font-family="${SANS}" font-weight="600" font-size="22" fill="${C.graphite}">${n}</text>`;
+  }).join('');
+  return `<rect width="600" height="1300" fill="${C.paper}"/>${statusBar(false)}
+  <text x="40" y="150" font-family="${SERIF}" font-weight="700" font-size="56" fill="${C.graphite}">Templates</text>
+  <rect x="40" y="176" width="520" height="58" rx="29" fill="${C.card}" stroke="${C.line}" stroke-width="2"/>${icon('search', 76, 205, 28, C.muted)}<text x="102" y="213" font-family="${SANS}" font-size="22" fill="${C.muted}">Search 1,900+ templates</text>
+  ${bubbles}${tiles}${cards}${tabBar('templates')}`;
+}
+// Workshop tab (owner 24 Oct 2026): blueprint navy, cyan grid, square technical cards.
+const BP = { bg: '#0F2236', grid: '#1D3A57', line: '#7FD6F2', card: '#132B44', text: '#E6F4FB', muted: '#8EA3BC' };
+function blueprintGrid(w, h, step = 30) {
+  let d = '';
+  for (let x = 0; x <= w; x += step) d += `M${x} 0V${h}`;
+  for (let y = 0; y <= h; y += step) d += `M0 ${y}H${w}`;
+  return `<path d="${d}" stroke="${BP.grid}" stroke-width="1" fill="none"/>`;
+}
+const WORK_TILES = [['Angles', 15], ['Carpentry', 22], ['Framing', 14], ['Metal', 18], ['Pipe', 12], ['Layout', 16]];
+const WORK_CARDS = [['trade-angle-45', 'ANGLE 45°'], ['trade-dovetail-1-6-3', 'DOVETAIL 1:6'], ['trade-mitre-30-6', 'MITRE 30° ×6'], ['trade-circle-divide-8', 'CIRCLE ÷ 8']];
+function workshopScreen(active = 'Angles') {
+  const MONO = "'SF Mono', Menlo, 'DejaVu Sans Mono', monospace";
+  const tiles = WORK_TILES.map(([n, k], i) => {
+    const x = 40 + (i % 3) * 176, y = 250 + Math.floor(i / 3) * 104, on = n === active;
+    return `<rect x="${x}" y="${y}" width="164" height="92" rx="6" fill="${on ? '#1C3D5E' : BP.card}" stroke="${on ? BP.line : '#2C4D6E'}" stroke-width="${on ? 3 : 1.5}"/><text x="${x + 16}" y="${y + 40}" font-family="${MONO}" font-weight="700" font-size="21" fill="${on ? BP.line : BP.text}">${n.toUpperCase()}</text><text x="${x + 16}" y="${y + 72}" font-family="${MONO}" font-size="17" fill="${BP.muted}">${k} TEMPLATES</text>`;
+  }).join('');
+  const cards = WORK_CARDS.map(([a, n], i) => {
+    const x = 40 + (i % 2) * 268, y = 480 + Math.floor(i / 2) * 330;
+    return `<rect x="${x}" y="${y}" width="252" height="312" rx="4" fill="${BP.card}" stroke="${BP.line}" stroke-width="1.5"/>${art(a, x + 16, y + 14, 220, { color: BP.text, width: 4 })}<text x="${x + 16}" y="${y + 290}" font-family="${MONO}" font-weight="600" font-size="19" fill="${BP.line}">${n}</text>`;
+  }).join('');
+  return `<g data-dark="1"><rect width="600" height="1300" fill="${BP.bg}"/>${blueprintGrid(600, 1300)}${statusBar(true)}
+  <text x="40" y="150" font-family="${MONO}" font-weight="700" font-size="50" fill="${BP.text}">Workshop</text>
+  <text x="40" y="198" font-family="${MONO}" font-size="20" fill="${BP.muted}">Exact angles, joints and layouts</text>
+  ${tiles}${cards}${tabBar('tool')}</g>`;
+}
+// Linework Plus (one-time unlock): no price figure on purpose (it varies by country).
+function plusScreen() {
+  const rows = [['Every template, 1,900+', 'templates'], ['All 16 letter styles', 'star'], ['The Workshop pack', 'tool'], ['Outline mode for any photo', 'wand']];
+  return `<rect width="600" height="1300" fill="${C.paper}"/>${statusBar(false)}
+  <circle cx="300" cy="230" r="90" fill="${C.inkSoft}"/>${icon('star', 300, 230, 96, C.ink, 2)}
+  <text x="300" y="390" text-anchor="middle" font-family="${SERIF}" font-weight="700" font-size="54" fill="${C.graphite}">Linework Plus</text>
+  <text x="300" y="440" text-anchor="middle" font-family="${SANS}" font-size="24" fill="${C.muted}">One-time unlock. Yours to keep.</text>
+  ${rows.map(([t, ic], i) => `<rect x="48" y="${500 + i * 112}" width="504" height="96" rx="24" fill="${C.card}" stroke="${C.line}" stroke-width="2"/>${icon(ic, 104, 548 + i * 112, 38, C.ink, 2.2)}<text x="144" y="${558 + i * 112}" font-family="${SANS}" font-weight="600" font-size="25" fill="${C.graphite}">${esc(t)}</text>${icon('check', 512, 548 + i * 112, 30, C.ok, 3)}`).join('')}
+  <rect x="48" y="980" width="504" height="100" rx="50" fill="${C.ink}"/><text x="300" y="1042" text-anchor="middle" font-family="${SANS}" font-weight="700" font-size="30" fill="#FFFFFF">Unlock once</text>
+  <text x="300" y="1130" text-anchor="middle" font-family="${SANS}" font-size="21" fill="${C.muted}">No subscription · No ads · Tracing tools stay free</text>`;
+}
 const TABS = {
-  en: ['Trace', 'Templates', 'My drawings', 'Settings'],
-  ja: ['トレース', 'テンプレート', 'マイ作品', '設定'],
-  ar: ['تتبّع', 'القوالب', 'رسوماتي', 'الإعدادات'],
+  en: ['Trace', 'Templates', 'Workshop', 'My drawings', 'Settings'],
+  ja: ['トレース', 'テンプレート', '工房', 'マイ作品', '設定'],
+  ar: ['تتبّع', 'القوالب', 'الورشة', 'رسوماتي', 'الإعدادات'],
 };
 function tabBar(on, lang = 'en') {
   const names = TABS[lang];
-  let tabs = [['home', names[0]], ['templates', names[1]], ['drawings', names[2]], ['settings', names[3]]];
+  let tabs = [['home', names[0]], ['templates', names[1]], ['tool', names[2]], ['drawings', names[3]], ['settings', names[4]]];
   if (lang === 'ar') tabs = tabs.reverse();
   const ff = lang === 'en' ? SANS : FALLBACK_SCRIPTS;
-  return `<rect x="0" y="1186" width="600" height="114" fill="${C.card}"/><rect x="0" y="1186" width="600" height="2" fill="${C.line}"/>` + tabs.map(([ic, l], i) => {
-    const x = 75 + i * 150, c = ic === on ? C.ink : C.muted;
-    return `${icon(ic, x, 1222, 32, c, 2.2)}<text x="${x}" y="1262" text-anchor="middle" font-family="${ff}" font-weight="600" font-size="17" fill="${c}">${esc(l)}</text>`;
+  const dark = on === 'tool';
+  return `<rect x="0" y="1186" width="600" height="114" fill="${dark ? '#0E1B2E' : C.card}"/><rect x="0" y="1186" width="600" height="2" fill="${dark ? '#24405F' : C.line}"/>` + tabs.map(([ic, l], i) => {
+    const x = 60 + i * 120, c = ic === on ? (dark ? '#7FD6F2' : C.ink) : dark ? '#8EA3BC' : C.muted;
+    return `${icon(ic, x, 1222, 30, c, 2.2)}<text x="${x}" y="1262" text-anchor="middle" font-family="${ff}" font-weight="600" font-size="15" fill="${c}">${esc(l)}</text>`;
   }).join('');
 }
 const HOME = {
@@ -424,7 +488,7 @@ const SHOTS = [
     },
   },
   {
-    id: '04-templates', lines: ['500+ templates', 'to trace'], sub: 'Heroes, fairy tales, game world, kids',
+    id: '04-templates', lines: ['1,900+ templates', 'to trace'], sub: 'Letters, heroes, fairy tales, kids and more',
     a() {
       const tc = (x, y, rot, a, l) => card(x, y, 360, 420, rot, `<rect x="20" y="20" width="320" height="300" rx="24" fill="${C.paper}"/>${art(a, 40, 30, 280, { width: 5 })}`, { label: l });
       return bgA('#E6F7EF', '#D3F0E3', '#C4E8D9') + phone(660, 1920, 760, -6, templatesScreen('All')) +
@@ -453,56 +517,43 @@ const SHOTS = [
     },
   },
   {
-    id: '06-steps', lines: ['Draw it', 'step by step'], sub: 'Big shapes first, fine lines last',
+    id: '06-letters', lines: ['Letters in', '16 styles'], sub: 'Bubble, retro, calligraphy, pixel and more',
     a() {
-      const names = ['Big shapes', 'Main shapes', 'Details', 'Fine lines'];
-      const cards = names.map((n, i) => {
-        const x = 40 + i * 310, y = 950 + (i % 2) * 90;
-        const clipH = [0.35, 0.6, 0.85, 1][i];
-        const cid = `st${i}`;
-        return card(x, y, 290, 380, -9 + i * 6, `<rect x="16" y="16" width="258" height="258" rx="20" fill="${C.paper}"/><clipPath id="${cid}"><rect x="16" y="16" width="258" height="${258 * clipH}"/></clipPath><g clip-path="url(#${cid})">${art('cute-penguin', 22, 22, 246, { width: 4 + (3 - i) * 2.5 })}</g><circle cx="44" cy="44" r="26" fill="${C.ink}"/><text x="44" y="54" text-anchor="middle" font-family="${SANS}" font-weight="700" font-size="28" fill="#FFF">${i + 1}</text>`, { label: n });
-      }).join('');
-      return bgA('#FFF8DB', '#FFEFB8', '#FBE29A') + phone(660, 2140, 700, 5, traceScreen({ subject: 'cute-penguin', opacity: 65, steps: 'Step 2 of 4 — Main shapes', active: ['steps'] })) + cards +
-        arrow('M 180 1440 C 300 1600 1000 1600 1140 1440', [1140, 1440], -45, C.graphite, 8, true) +
-        sparkle(1220, 860, 34, '#FFFFFF') + sparkle(100, 2500, 40, '#FFFFFF') + sparkle(1210, 2300, 24, C.ink);
+      const word = [['char-bubble-h', -10], ['char-calligraphy-a', 6], ['char-pixel-p', -6], ['char-retro-p', 8], ['char-western-y', -5]];
+      const cards = word.map(([a, r], i) => card(70 + i * 240, 860 + (i % 2) * 110, 220, 270, r, `<rect x="14" y="14" width="192" height="192" rx="20" fill="${C.paper}"/>${art(a, 20, 20, 180, { width: 7 })}`)).join('');
+      return bgA('#FFE8EE', '#FCD5DF', '#F6C3D2') + phone(660, 2020, 720, -5, lettersScreen('calligraphy')) + cards +
+        sparkle(130, 820, 36, '#FFFFFF') + sparkle(1220, 1340, 30, C.ink) + sparkle(1200, 2500, 40, '#FFFFFF') + sparkle(120, 2450, 26, C.ink);
     },
     b() {
-      const seg = [0, 1, 2, 3].map((i) => `<rect x="${110 + i * 270}" y="980" width="250" height="22" rx="11" fill="#FFFFFF" fill-opacity="${i < 2 ? 1 : 0.3}"/>${i < 1 ? icon('check', 235 + i * 270, 1060, 52, '#FFFFFF', 3) : ''}`).join('');
-      const bar = `<text x="660" y="930" text-anchor="middle" font-family="${ROUNDED}" font-weight="800" font-size="64" fill="#FFFFFF">Step 2 of 4 — Main shapes</text>${seg}`;
-      return bgB() + bar + phone(660, 1920, 800, 0, traceScreen({ subject: 'cute-penguin', opacity: 65, steps: 'Step 2 of 4 — Main shapes', active: ['steps'] }), { shadow: 'shDeep' });
+      return bgB() + phone(600, 1840, 780, 0, lettersScreen('calligraphy'), { shadow: 'shDeep' }) +
+        popup(930, 960, 320, 320, `${art('char-calligraphy-a', 30, 18, 260, { width: 7 })}`, { filter: 'shDeep', r: 40 }) +
+        chip(1090, 1360, 'Calligraphy', null, { size: 1.3, color: C.ink, filter: 'shDeep' });
     },
   },
   {
-    id: '07-opacity', lines: ['Fade it', 'just right'], sub: 'Slide the opacity until you see your pencil',
+    id: '07-workshop', lines: ['Exact angles', 'for the workshop'], sub: 'Angles, joints and layouts to trace',
     a() {
-      const panel = `${bigSlider(150, 80, 900, 65)}`;
-      return bgA('#FFE8EE', '#FCD5DF', '#F6C3D2') + phone(470, 1900, 700, -7, traceScreen({ subject: 'wild-butterfly-specimen', opacity: 65 })) +
-        popup(890, 880, 300, 1060, panel, { r: 150 }) + `<g transform="translate(-80 0)"></g>` +
-        ripple(1040, 1229, '#FFFFFF', 80, 3, 0.8) + finger(1060, 1250, -16, 0.95, '#E58C6B') +
-        arrow('M 940 1990 C 900 2160 820 2200 720 2160', [720, 2160], 160, C.graphite) +
-        sparkle(160, 900, 40, '#FFFFFF') + sparkle(1230, 2400, 34, '#FFFFFF') + sparkle(840, 860, 22, C.ink);
+      const tc = (x, y, rot, a, l) => `<g transform="rotate(${rot} ${x + 170} ${y + 200})"><rect x="${x}" y="${y}" width="340" height="400" rx="8" fill="#132B44" filter="url(#shCard)"/><rect x="${x}" y="${y}" width="340" height="400" rx="8" fill="none" stroke="#7FD6F2" stroke-width="3"/>${art(a, x + 20, y + 16, 300, { color: '#E6F4FB', width: 4 })}<text x="${x + 22}" y="${y + 378}" font-family="'SF Mono', Menlo, 'DejaVu Sans Mono', monospace" font-weight="700" font-size="30" fill="#7FD6F2">${l}</text></g>`;
+      return bgA('#E7EEF6', '#D3DFEC', '#C2D2E4') + phone(640, 1960, 740, 6, workshopScreen('Angles')) +
+        tc(40, 900, -9, 'trade-angle-45', 'ANGLE 45°') + tc(930, 1120, 8, 'trade-dovetail-1-6-3', 'DOVETAIL') +
+        sparkle(1200, 880, 34, '#FFFFFF') + sparkle(140, 2450, 40, '#FFFFFF') + sparkle(1230, 2400, 24, C.ink);
     },
     b() {
-      return bgB() + phone(520, 1880, 640, 0, traceScreen({ subject: 'wild-butterfly-specimen', opacity: 65 }), { shadow: 'shDeep' }) +
-        popup(890, 900, 300, 1220, bigSlider(150, 90, 1040, 65, { track: C.inkSoft, fill: C.ink, bubble: '#22201C' }), { r: 150, filter: 'shDeep' }) +
-        ripple(1040, 1294, '#FFFFFF', 80, 2, 0.6);
+      return bgB() + phone(600, 1840, 780, 0, workshopScreen('Angles'), { shadow: 'shDeep' }) +
+        chip(1080, 1000, 'Angles', 'tool', { size: 1.4, color: C.ink, filter: 'shDeep' });
     },
   },
   {
-    id: '08-languages', lines: ['Speaks', '11 languages'], sub: 'English, 日本語, Español, العربية and more',
+    id: '08-plus', lines: ['Pay once.', 'Keep it all.'], sub: 'One unlock for every template. No subscription.',
     a() {
-      const words = [['Trace', 210, 960, -8], ['トレース', 1080, 1010, 7], ['Calcar', 160, 1500, 6], ['تتبّع', 1140, 1560, -6], ['ट्रेस', 180, 2080, -5], ['따라 그리기', 1060, 2160, 6], ['Nachzeichnen', 330, 2620, 4], ['描摹', 1100, 2620, -7]];
-      const bubbles = words.map(([w, x, y, r]) => {
-        const fs = 52, tw = Math.max(140, w.length * fs * (/[　-鿿가-힯]/.test(w) ? 0.98 : 0.6)), h = 120;
-        return `<g transform="translate(${x} ${y}) rotate(${r})" filter="url(#shSoft)"><rect x="${-tw / 2 - 40}" y="${-h / 2}" width="${tw + 80}" height="${h}" rx="60" fill="#FFFFFF"/><path d="M -20 ${h / 2 - 2} L -4 ${h / 2 + 30} L 20 ${h / 2 - 2} Z" fill="#FFFFFF"/><text y="18" text-anchor="middle" font-family="${SANS}, ${FALLBACK_SCRIPTS}" font-weight="700" font-size="${fs}" fill="${C.ink}">${esc(w)}</text></g>`;
-      }).join('');
-      const g = id('rb');
-      return `<linearGradient id="${g}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE7DE"/><stop offset="0.35" stop-color="#FFF3D1"/><stop offset="0.65" stop-color="#DDF3E8"/><stop offset="1" stop-color="#E2E0FA"/></linearGradient><rect width="${W}" height="${H}" fill="url(#${g})"/>` +
-        phone(660, 1820, 720, -5, homeScreen('ja')) + bubbles + sparkle(660, 860, 34, '#FFFFFF') + sparkle(1240, 1300, 26, C.ink) + sparkle(80, 1800, 30, C.ink);
+      const chips = [['No ads', 'check', 290, 1000, -8], ['No subscription', 'check', 900, 1080, 7], ['No account', 'check', 330, 2600, 6]]
+        .map(([l, ic, x, y, r]) => chip(x, y, l, ic, { rot: r, size: 1.3 })).join('');
+      return bgA('#FFF8DB', '#FFEFB8', '#FBE29A') + phone(660, 1900, 740, -5, plusScreen()) + chips +
+        sparkle(1220, 900, 36, '#FFFFFF') + sparkle(100, 1700, 28, C.ink) + sparkle(1210, 2450, 40, '#FFFFFF');
     },
     b() {
-      return bgB() + phone(260, 1840, 470, -0, homeScreen('en'), { shadow: 'shDeep' }) + phone(1060, 1840, 470, 0, homeScreen('ar'), { shadow: 'shDeep' }) + phone(660, 1780, 520, 0, homeScreen('ja'), { shadow: 'shDeep' }) +
-        ['English', '日本語', 'العربية'].map((l, i) => chip([260, 660, 1060][i], 2620, l, null, { color: C.ink, size: 1.1, filter: 'shDeep' })).join('');
+      return bgB() + phone(660, 1820, 800, 0, plusScreen(), { shadow: 'shDeep' }) +
+        ['No ads', 'No subscription', 'No account'].map((l, i) => chip([270, 660, 1050][i], 2680, l, 'check', { color: C.ink, size: 1.05, filter: 'shDeep' })).join('');
     },
   },
 ];

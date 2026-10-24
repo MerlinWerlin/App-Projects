@@ -9,11 +9,11 @@ Eight shots at 1320×2868 (6.9-inch iPhone portrait), each in two styles for the
 | 01 | Trace anything onto paper | Hand with a pencil tracing on paper under the phone, ripple at the pencil tip |
 | 02 | Every tool free | All the labelled tool pills: Lock, Torch, Grid, Mirror, Steps, Lightbox, Record, Photo |
 | 03 | Any photo to a sketch | Before → After: the photo and its outline, and the three line styles |
-| 04 | 500+ templates to trace | Templates grid with category bubbles |
+| 04 | 1,900+ templates to trace | Templates grid with category bubbles (Letters among them) |
 | 05 | Lock it. Draw steady. | Lock button blown up with tap ripples, touch-lock banner |
-| 06 | Draw it step by step | Four sketch steps, from big shapes to fine lines |
-| 07 | Fade it just right | Opacity slider blown up with its 65% bubble, finger and ripples |
-| 08 | Speaks 11 languages | English, Japanese and Arabic (right-to-left) home screens, "Trace" in many scripts |
+| 06 | Letters in 16 styles | Letters bubble with style tiles, letter cards spelling HAPPY (24 Oct 2026) |
+| 07 | Exact angles for the workshop | The blueprint Workshop tab with trade template cards (24 Oct 2026) |
+| 08 | Pay once. Keep it all. | Linework Plus one-time unlock (no price figure: prices vary by country), No ads / No subscription / No account chips (24 Oct 2026) |
 
 ## Styles
 
