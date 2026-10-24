@@ -15,6 +15,7 @@ Identity already set in `app.json`: iOS bundle ID and Android package are both *
 3. Turn on EAS Update. This adds `updates.url` to `app.json` (it is deliberately missing until you run this):
    `npx eas-cli@latest update:configure`
 4. Create the app record in App Store Connect (appstoreconnect.apple.com → Apps → "+" → New App): platform iOS, name Couch (or a variant if the name is taken), bundle ID **com.jared797.couch** (pick it from the list; if it is not there yet, the first `eas build` registers it for you, then come back), SKU anything, e.g. `couch`.
+   Done 24 Oct 2026: the Couch app record exists; its App Store Connect Apple ID is **6826135134** (`ascAppId` in the shipped repo's `apps/couch/RELEASE.json`, added by the owner in App-Projects 6d8782e, used by auto-ship for TestFlight uploads).
 5. Commit the `app.json` changes those commands made.
 
 ---

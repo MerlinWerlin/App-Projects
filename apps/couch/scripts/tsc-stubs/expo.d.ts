@@ -154,3 +154,13 @@ declare module 'react-native-svg' {
   export class Stop extends Component<{ offset: NumberProp; stopColor?: string; stopOpacity?: NumberProp }> {}
   export class Pattern extends Component<SvgCommon & { id: string; width?: NumberProp; height?: NumberProp; patternUnits?: string; x?: NumberProp; y?: NumberProp }> {}
 }
+
+declare module 'expo-constants' {
+  // Subset of expo-constants used by app/feedback.tsx (stub gap, D75-1).
+  const Constants: {
+    expoConfig?: { version?: string; name?: string; [key: string]: unknown } | null;
+    platform?: { ios?: { model?: string | null; buildNumber?: string | null }; android?: { versionCode?: number | null } };
+    [key: string]: unknown;
+  };
+  export default Constants;
+}
