@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Pixel R</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M269 269V223H360V86H314V40H40V360H131V269H177V314H223V360H360V314H314V269Z"/>
+    <path d="M269 86V177H223V223H131V86Z"/>
+  </g>
+</svg>

@@ -652,7 +652,7 @@ function grasshopperArt(): Art {
 
 export const wild2: Template[] = [
   // beginner
-  tpl('river-bird', 'Kingfisher bird on a branch', 'beginner', ['kingfisher', 'bird', 'river', 'branch', 'stylized'], kingfisherArt()),
+  tpl('river-bird', 'River kingfisher bird on a perch', 'beginner', ['kingfisher', 'bird', 'river', 'branch', 'stylized'], kingfisherArt()),
   tpl('toucan', 'Toucan bird', 'beginner', ['toucan', 'bird', 'tropical', 'jungle', 'stylized'], toucanArt()),
   tpl('pelican', 'Standing pelican bird', 'beginner', ['pelican', 'bird', 'waterbird', 'coast', 'stylized'], pelicanArt()),
   tpl('crow', 'Crow bird on a fence post', 'beginner', ['crow', 'bird', 'fence', 'countryside', 'stylized'], crowArt()),
@@ -660,18 +660,18 @@ export const wild2: Template[] = [
   tpl('ant', 'Worker ant insect', 'beginner', ['ant', 'insect', 'bug', 'garden', 'stylized'], antArt()),
   tpl('caterpillar', 'Garden caterpillar', 'beginner', ['caterpillar', 'insect', 'garden', 'kids', 'stylized'], caterpillarArt()),
   tpl('spider', 'Garden spider on its web', 'beginner', ['spider', 'web', 'garden', 'halloween', 'stylized'], spiderArt()),
-  tpl('firefly', 'Summer night firefly', 'beginner', ['firefly', 'insect', 'night', 'summer', 'stylized'], fireflyArt()),
+  tpl('firefly', 'Night-time firefly', 'beginner', ['firefly', 'insect', 'night', 'summer', 'stylized'], fireflyArt()),
   // intermediate
   tpl('woodpecker', 'Woodpecker bird on a tree trunk', 'intermediate', ['woodpecker', 'bird', 'woodland', 'tree', 'stylized'], woodpeckerArt()),
   tpl('magpie', 'Long-tailed magpie bird', 'intermediate', ['magpie', 'bird', 'branch', 'garden', 'stylized'], magpieArt()),
   tpl('stork', 'Wading stork bird', 'intermediate', ['stork', 'bird', 'wetland', 'waterbird', 'stylized'], storkArt()),
   tpl('cockatoo', 'Crested cockatoo bird', 'intermediate', ['cockatoo', 'bird', 'crest', 'tropical', 'stylized'], cockatooArt()),
-  tpl('mantis', 'Praying mantis insect', 'intermediate', ['mantis', 'insect', 'bug', 'garden', 'stylized'], mantisArt()),
+  tpl('mantis', 'Garden praying mantis insect', 'intermediate', ['mantis', 'insect', 'bug', 'garden', 'stylized'], mantisArt()),
   tpl('stag-beetle', 'Woodland stag beetle', 'intermediate', ['beetle', 'insect', 'bug', 'woodland', 'symmetrical'], stagBeetleArt()),
-  tpl('damselfly', 'Damselfly insect on a reed', 'intermediate', ['damselfly', 'insect', 'reed', 'wetland', 'stylized'], damselflyArt()),
+  tpl('damselfly', 'Slender damselfly insect resting on a reed', 'intermediate', ['damselfly', 'insect', 'reed', 'wetland', 'stylized'], damselflyArt()),
   // advanced
   tpl('wren', 'Wren bird on a briar branch', 'advanced', ['wren', 'bird', 'songbird', 'branch', 'realistic'], wrenArt()),
   tpl('cicada', 'Cicada insect wing study', 'advanced', ['cicada', 'insect', 'wings', 'summer', 'symmetrical'], cicadaArt()),
-  tpl('eagle-head', 'Eagle head profile', 'advanced', ['eagle', 'bird', 'portrait', 'feathers', 'realistic'], eagleArt()),
+  tpl('eagle-head', 'Bold eagle head profile', 'advanced', ['eagle', 'bird', 'portrait', 'feathers', 'realistic'], eagleArt()),
   tpl('grasshopper', 'Grasshopper on a grass blade', 'advanced', ['grasshopper', 'insect', 'meadow', 'summer', 'realistic'], grasshopperArt()),
 ];

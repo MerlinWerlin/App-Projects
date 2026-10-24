@@ -115,6 +115,8 @@ export default function RootLayout() {
           />
           <Stack.Screen name="lightbox" options={{ headerShown: false, animation: 'fade' }} />
           <Stack.Screen name="plus" options={{ title: t('common.nav.plus') }} />
+          {/* Owner 24 Oct 2026: Send feedback / request a feature (from Settings). */}
+          <Stack.Screen name="feedback" options={{ title: t('feedback.title') }} />
         </Stack>
       </SafeAreaProvider>
     </GestureHandlerRootView>

@@ -40,16 +40,6 @@ export function accessFor(owned: boolean, trialStart: number | null, now: number
   return { full: false, reason: 'expired', daysLeft: 0 };
 }
 
-/**
- * Paid-only categories (fb-1023b, owner 23 Oct 2026): never starters, so after the trial they need Linework Plus.
- * The 14-day trial still previews them like everything else.
- */
-export const PAID_ONLY_CATEGORIES: readonly string[] = ['trade'];
-
-export function isPaidOnly(t: Pick<Template, 'category'>): boolean {
-  return PAID_ONLY_CATEGORIES.includes(t.category);
-}
-
 /** While loading: unlocked-looking (no lock flash) but not claiming a trial; resolves within a frame or two. */
 export const LOADING_ACCESS: Access = { full: true, reason: 'loading', daysLeft: 0 };
 
@@ -92,7 +82,7 @@ export function starterIds(templates: readonly Template[], count: number): Set<s
   for (const t of templates) {
     if ((t.level ?? 'beginner') !== 'beginner') continue;
     // The Trade & workshop pack is Linework Plus only (owner 23 Oct 2026): never a free starter.
-    if (isPaidOnly(t)) continue;
+    if (t.category === 'trade') continue;
     const list = byCat.get(t.category) ?? [];
     list.push(t);
     byCat.set(t.category, list);

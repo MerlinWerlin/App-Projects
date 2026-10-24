@@ -4,9 +4,9 @@ import type { PackNames } from './index.ts';
 
 export const flowers3Names: PackNames = {
   es: {
-    'templates.name.flor2-hibiscus': 'Flor de hibisco tropical',
+    'templates.name.flor2-hibiscus': 'Hibisco tropical en flor',
     'templates.name.flor2-pansy': 'Pensamiento de jardín',
-    'templates.name.flor2-cosmos': 'Flor de cosmos silvestre',
+    'templates.name.flor2-cosmos': 'Cosmos de pradera estival',
     'templates.name.flor2-marigold': 'Caléndula rizada',
     'templates.name.flor2-gerbera': 'Margarita gerbera',
     'templates.name.flor2-sweet-pea': 'Flores de guisante de olor',
@@ -22,9 +22,9 @@ export const flowers3Names: PackNames = {
     'templates.name.flor2-banksia': 'Cono de flor de banksia',
   },
   fr: {
-    'templates.name.flor2-hibiscus': 'Fleur d’hibiscus tropicale',
+    'templates.name.flor2-hibiscus': 'Hibiscus tropical en fleur',
     'templates.name.flor2-pansy': 'Pensée du jardin',
-    'templates.name.flor2-cosmos': 'Fleur de cosmos des prés',
+    'templates.name.flor2-cosmos': 'Cosmos des prés d’été',
     'templates.name.flor2-marigold': 'Œillet d’Inde à volants',
     'templates.name.flor2-gerbera': 'Marguerite gerbera',
     'templates.name.flor2-sweet-pea': 'Fleurs de pois de senteur',
@@ -42,7 +42,7 @@ export const flowers3Names: PackNames = {
   de: {
     'templates.name.flor2-hibiscus': 'Tropische Hibiskusblüte',
     'templates.name.flor2-pansy': 'Gartenstiefmütterchen',
-    'templates.name.flor2-cosmos': 'Wiesen-Schmuckkörbchen',
+    'templates.name.flor2-cosmos': 'Sommerwiesen-Schmuckkörbchen',
     'templates.name.flor2-marigold': 'Gefüllte Studentenblume',
     'templates.name.flor2-gerbera': 'Gerbera-Gänseblümchen',
     'templates.name.flor2-sweet-pea': 'Duftwickenblüten',
@@ -58,9 +58,9 @@ export const flowers3Names: PackNames = {
     'templates.name.flor2-banksia': 'Banksien-Blütenzapfen',
   },
   it: {
-    'templates.name.flor2-hibiscus': 'Fiore di ibisco tropicale',
+    'templates.name.flor2-hibiscus': 'Ibisco tropicale in fiore',
     'templates.name.flor2-pansy': 'Viola del pensiero da giardino',
-    'templates.name.flor2-cosmos': 'Fiore di cosmea di prato',
+    'templates.name.flor2-cosmos': 'Cosmea di prato estivo',
     'templates.name.flor2-marigold': 'Tagete arricciata',
     'templates.name.flor2-gerbera': 'Margherita gerbera',
     'templates.name.flor2-sweet-pea': 'Fiori di pisello odoroso',
@@ -76,9 +76,9 @@ export const flowers3Names: PackNames = {
     'templates.name.flor2-banksia': 'Cono di fiore di banksia',
   },
   'pt-BR': {
-    'templates.name.flor2-hibiscus': 'Flor de hibisco dos trópicos',
+    'templates.name.flor2-hibiscus': 'Hibisco tropical em flor',
     'templates.name.flor2-pansy': 'Amor-perfeito de jardim',
-    'templates.name.flor2-cosmos': 'Flor de cosmos do campo',
+    'templates.name.flor2-cosmos': 'Cosmos do prado de verão',
     'templates.name.flor2-marigold': 'Cravo-de-defunto rendado',
     'templates.name.flor2-gerbera': 'Margarida gérbera',
     'templates.name.flor2-sweet-pea': 'Flores de ervilha-de-cheiro',
@@ -94,9 +94,9 @@ export const flowers3Names: PackNames = {
     'templates.name.flor2-banksia': 'Cone de flor de banksia',
   },
   ja: {
-    'templates.name.flor2-hibiscus': '南国のハイビスカスの花',
+    'templates.name.flor2-hibiscus': '南国のハイビスカス',
     'templates.name.flor2-pansy': '庭のパンジー',
-    'templates.name.flor2-cosmos': '野のコスモスの花',
+    'templates.name.flor2-cosmos': '夏の草原のコスモス',
     'templates.name.flor2-marigold': 'フリルのマリーゴールド',
     'templates.name.flor2-gerbera': 'ガーベラ',
     'templates.name.flor2-sweet-pea': 'スイートピーの花',
@@ -112,9 +112,9 @@ export const flowers3Names: PackNames = {
     'templates.name.flor2-banksia': 'バンクシアの花穂',
   },
   ko: {
-    'templates.name.flor2-hibiscus': '열대 히비스커스 꽃',
+    'templates.name.flor2-hibiscus': '열대 히비스커스 꽃송이',
     'templates.name.flor2-pansy': '정원의 팬지꽃',
-    'templates.name.flor2-cosmos': '들판의 코스모스 꽃',
+    'templates.name.flor2-cosmos': '여름 들판의 코스모스',
     'templates.name.flor2-marigold': '주름진 메리골드 꽃',
     'templates.name.flor2-gerbera': '거베라 데이지',
     'templates.name.flor2-sweet-pea': '스위트피 꽃',
@@ -130,9 +130,9 @@ export const flowers3Names: PackNames = {
     'templates.name.flor2-banksia': '방크시아 꽃송이',
   },
   'zh-Hans': {
-    'templates.name.flor2-hibiscus': '热带扶桑花',
+    'templates.name.flor2-hibiscus': '热带扶桑花朵',
     'templates.name.flor2-pansy': '园中三色堇',
-    'templates.name.flor2-cosmos': '草地波斯菊',
+    'templates.name.flor2-cosmos': '夏日草地波斯菊',
     'templates.name.flor2-marigold': '褶边万寿菊',
     'templates.name.flor2-gerbera': '非洲菊',
     'templates.name.flor2-sweet-pea': '香豌豆花',
@@ -150,7 +150,7 @@ export const flowers3Names: PackNames = {
   hi: {
     'templates.name.flor2-hibiscus': 'उष्णकटिबंधीय गुड़हल का फूल',
     'templates.name.flor2-pansy': 'बगीचे का पैंज़ी फूल',
-    'templates.name.flor2-cosmos': 'घास के मैदान का कॉसमॉस फूल',
+    'templates.name.flor2-cosmos': 'गर्मियों के मैदान का कॉसमॉस',
     'templates.name.flor2-marigold': 'झालरदार गेंदे का फूल',
     'templates.name.flor2-gerbera': 'जरबेरा डेज़ी',
     'templates.name.flor2-sweet-pea': 'मीठी मटर के फूल',
@@ -168,7 +168,7 @@ export const flowers3Names: PackNames = {
   ar: {
     'templates.name.flor2-hibiscus': 'زهرة كركديه استوائية',
     'templates.name.flor2-pansy': 'زهرة البنفسج الثلاثي',
-    'templates.name.flor2-cosmos': 'زهرة كوزموس المروج',
+    'templates.name.flor2-cosmos': 'زهرة كوزموس من مرج صيفي',
     'templates.name.flor2-marigold': 'زهرة القطيفة المكشكشة',
     'templates.name.flor2-gerbera': 'زهرة الجربيرا',
     'templates.name.flor2-sweet-pea': 'أزهار البازلاء العطرة',

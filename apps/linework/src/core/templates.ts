@@ -35,9 +35,12 @@ import { wildlife3 } from './templateArt/baked/wildlife3.ts';
 import { kidsfantasy } from './templateArt/baked/kidsfantasy.ts';
 import { mandalas2 } from './templateArt/baked/mandalas2.ts';
 import { patterns2 } from './templateArt/baked/patterns2.ts';
+import { trade } from './templateArt/trade.ts';
+import { trade2 } from './templateArt/trade2.ts';
 import { wild2 } from './templateArt/baked/wild2.ts';
 import { flowers3 } from './templateArt/baked/flowers3.ts';
 import { lettering2 } from './templateArt/baked/lettering2.ts';
+import { letters } from './templateArt/letters/index.ts';
 import { mandalas3 } from './templateArt/baked/mandalas3.ts';
 import { kids2 } from './templateArt/baked/kids2.ts';
 import { shapes3 } from './templateArt/baked/shapes3.ts';
@@ -47,8 +50,6 @@ import { animals3 } from './templateArt/baked/animals3.ts';
 import { figures2 } from './templateArt/baked/figures2.ts';
 import { places3 } from './templateArt/baked/places3.ts';
 import { fantasy3 } from './templateArt/baked/fantasy3.ts';
-import { trade } from './templateArt/trade.ts';
-import { trade2 } from './templateArt/trade2.ts';
 
 export type TemplateCategory =
   | 'flowers'
@@ -104,7 +105,7 @@ export const CATEGORIES: readonly { id: TemplateCategory; label: string }[] = [
   { id: 'wildlife', label: 'Birds & insects' },
   { id: 'sealife', label: 'Sea life' },
   { id: 'faces', label: 'Faces & figures' },
-  { id: 'lettering', label: 'Lettering' },
+  { id: 'lettering', label: 'Letters' },
   { id: 'patterns', label: 'Frames & patterns' },
   { id: 'mandalas', label: 'Mandalas & geometric' },
   { id: 'places', label: 'Buildings & landscapes' },
@@ -169,6 +170,8 @@ export const TEMPLATES: readonly Template[] = [
   ...wild2,
   ...flowers3,
   ...lettering2,
+  // Letters (owner 24 Oct 2026): one template per character in 16 styles, from open-licence font outlines.
+  ...letters,
   ...mandalas3,
   ...kids2,
   ...shapes3,

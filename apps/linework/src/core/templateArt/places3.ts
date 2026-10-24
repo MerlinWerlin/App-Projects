@@ -192,6 +192,26 @@ function campsiteArt(): Art {
   ]);
 }
 
+function palmBeachArt(): Art {
+  const trunk = 'M 150 344 Q 150 250 206 150 L 218 156 Q 166 252 168 344 Z';
+  const crown: P = [212, 150];
+  const fronds = [-70, -30, 10, 50, 90, 130].map((deg, i) => petal(crown[0], crown[1], deg, i % 2 ? 92 : 104, 16, 0.4));
+  const rings: string[] = [];
+  for (let k = 1; k < 9; k++) {
+    const t = k / 9;
+    const y = 344 - 190 * t;
+    const xl = 150 + (206 - 150) * t * t;
+    rings.push(line(xl, y, xl + 16, y + 3));
+  }
+  const ribs = [-70, -30, 10, 50, 90, 130].map((deg, i) => line(...crown, ...polar(crown[0], crown[1], (i % 2 ? 92 : 104) * 0.85, deg)));
+  return layered([
+    { sil: fronds, d: ribs },
+    { sil: trunk, d: rings },
+    { sil: [circle(212, 156, 8), circle(224, 164, 8)] },
+    { sil: 'M 254 262 A 60 60 0 0 1 374 262 Z' },
+    { sil: '', p: ['M 24 262 L 376 262', 'M 24 300 Q 120 290 200 300 Q 300 312 376 296'], d: ripples(30, 370, 270, 290, 2, 4) },
+  ]);
+}
 
 function fencedHillsArt(): Art {
   const hillFront = 'M 24 384 L 24 290 Q 120 236 220 270 Q 300 296 376 262 L 376 384 Z';
@@ -621,7 +641,7 @@ export const places3: Template[] = [
   tpl('stilt-house', 'Raised house on stilts', 'beginner', ['house', 'stilts', 'veranda', 'tropical', 'architecture'], stiltHouseArt()),
   tpl('country-church', 'Country church with a steeple', 'beginner', ['church', 'steeple', 'village', 'countryside', 'architecture'], countryChurchArt()),
   tpl('campsite', 'Lakeside campsite tent', 'beginner', ['lake', 'tent', 'camping', 'mountain', 'campfire'], campsiteArt()),
-  // merge-art review (24 Oct 2026): "Palm tree beach at sunset" dropped — the palm crown read as a single palmate leaf, not a palm.
+  tpl('palm-beach', 'Palm tree beach at sunset', 'beginner', ['beach', 'palm', 'sunset', 'tropical', 'holiday'], palmBeachArt()),
   tpl('fenced-hills', 'Rolling hills with a fence', 'beginner', ['hills', 'fence', 'countryside', 'landscape', 'farm'], fencedHillsArt()),
   tpl('stone-bridge', 'Stone arch bridge', 'beginner', ['bridge', 'stone', 'river', 'arch', 'landscape'], stoneBridgeArt()),
   tpl('observatory', 'Mountain observatory dome', 'beginner', ['mountain', 'observatory', 'telescope', 'stars', 'night'], observatoryArt()),

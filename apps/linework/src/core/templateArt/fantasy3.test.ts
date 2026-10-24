@@ -7,8 +7,8 @@ import { samplePath } from './occlude.ts';
 import { TEMPLATES, templatesIn } from '../templates.ts';
 import { categoryProblems } from '../templateSubjects.ts';
 
-test('fantasy3: at least 17 templates, all in the Fantasy & gothic category and registered', () => {
-  assert.ok(fantasy3.length >= 17 /* merge-art review dropped one */, `${fantasy3.length} templates`);
+test('fantasy3: at least 18 templates, all in the Fantasy & gothic category and registered', () => {
+  assert.ok(fantasy3.length >= 18, `${fantasy3.length} templates`);
   const shelf = templatesIn('fantasy').map((t) => t.id);
   for (const t of fantasy3) {
     assert.equal(t.category, 'fantasy', t.id);

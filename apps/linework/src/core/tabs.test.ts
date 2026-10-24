@@ -10,14 +10,14 @@ import { CATALOGS } from '../i18n/catalogs.ts';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
 
-test('four tabs in order: Trace (Home), Templates, My drawings, Settings', () => {
+test('five tabs in order: Trace (Home), Templates, Workshop, My drawings, Settings', () => {
   assert.deepEqual(
     TABS.map((t) => t.route),
-    ['index', 'templates', 'drawings', 'settings'],
+    ['index', 'templates', 'workshop', 'drawings', 'settings'],
   );
   assert.deepEqual(
     TABS.map((t) => t.icon),
-    ['edit-3', 'grid', 'image', 'settings'],
+    ['edit-3', 'grid', 'tool', 'image', 'settings'],
   );
   assert.equal(tabFor('templates')?.label, 'common.nav.templates');
   assert.equal(tabFor('trace'), undefined);

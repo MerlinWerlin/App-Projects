@@ -300,6 +300,37 @@ function hauntedHouseArt(): Art {
   ]);
 }
 
+function griffinArt(): Art {
+  const talons = (x: number) => `M ${x - 4} 326 Q ${x - 16} 330 ${x - 18} 340 L ${x + 20} 340 Q ${x + 18} 330 ${x + 8} 326 Z`;
+  const toes = (x: number) => `M ${x - 6} 340 L ${x - 6} 332 M ${x + 2} 340 L ${x + 2} 330 M ${x + 10} 340 L ${x + 10} 332`;
+  const legNear = [R(156, 240, 18, 90), talons(164)];
+  const legFar = [R(190, 240, 18, 90), talons(198)];
+  const beak = 'M 130 114 Q 94 110 86 144 Q 102 132 120 140 Q 128 134 134 128 Z';
+  const head = smooth([[128, 112], [150, 90], [176, 92], [190, 112], [194, 140], [206, 190], [214, 236], [176, 250], [150, 236], [146, 196], [140, 156], [130, 138]]);
+  const tufts = [petal(178, 96, 40, 30, 6, 0.6), petal(184, 102, 64, 28, 5, 0.6)];
+  const wing = smooth([[210, 220], [216, 150], [248, 96], [300, 56], [346, 40], [336, 76], [352, 92], [330, 118], [344, 140], [316, 160], [326, 186], [292, 200], [266, 226]]);
+  const haunch = ellipse(270, 298, 46, 40);
+  const body = smooth([[160, 214], [214, 210], [262, 240], [304, 280], [298, 334], [196, 334], [158, 290]]);
+  const paw = ellipse(258, 336, 30, 8);
+  const tail = tube([[310, 320], [346, 304], [360, 264], [350, 230]], (t) => 5 - 2 * t);
+  const tuft = petal(348, 236, -20, 40, 10, 0.5);
+  const ruff: string[] = [];
+  for (let k = 0; k < 5; k++) ruff.push(`M ${f(150 + k * 7)} ${f(170 + k * 13)} Q ${f(162 + k * 7)} ${f(182 + k * 13)} ${f(176 + k * 7)} ${f(172 + k * 13)}`);
+  return layered([
+    { sil: legNear, d: [toes(164)] },
+    { sil: beak, d: ['M 100 136 Q 112 128 128 132'] },
+    { sil: head, d: [circle(154, 118, 5), 'M 142 106 Q 156 100 168 108', ...ruff] },
+    { sil: tufts },
+    { sil: legFar, d: [toes(198)] },
+    { sil: wing, d: ['M 226 190 Q 262 140 330 60', 'M 240 202 Q 282 160 340 100', 'M 256 216 Q 290 188 334 146', 'M 270 226 Q 296 208 318 190'] },
+    { sil: paw, d: ['M 236 340 L 236 334 M 246 342 L 246 334'] },
+    { sil: haunch, d: ['M 240 318 Q 250 300 270 298'] },
+    { sil: tuft },
+    { sil: tail },
+    { sil: body },
+    { sil: '', p: ['M 40 340 L 360 340'], d: ['M 60 352 L 120 352', 'M 260 352 L 330 352'] },
+  ]);
+}
 
 function alchemyTableArt(): Art {
   const top = R(36, 276, 328, 14);
@@ -575,7 +606,7 @@ export const fantasy3: Template[] = [
   tpl('mushroom-ring', 'Fairy ring of mushrooms', 'beginner', ['mushroom', 'ring', 'woodland', 'magic', 'moon'], mushroomRingArt()),
 
   tpl('haunted-house', 'Haunted gothic house', 'intermediate', ['gothic', 'haunted', 'house', 'halloween', 'moon', 'spooky'], hauntedHouseArt()),
-  // merge-art review (24 Oct 2026): "Seated griffin guardian" dropped — stilt legs and a legless lion body read as broken.
+  tpl('griffin', 'Seated griffin guardian', 'intermediate', ['griffin', 'magic', 'wings', 'mythical', 'creature'], griffinArt()),
   tpl('alchemy-table', 'Alchemist’s potion table', 'intermediate', ['potion', 'alchemy', 'flask', 'magic', 'vintage'], alchemyTableArt()),
   tpl('stone-circle', 'Moonlit rune stone circle', 'intermediate', ['rune', 'stones', 'moon', 'mystic', 'magic'], stoneCircleArt()),
   tpl('spell-scroll', 'Spell scroll with a wax seal', 'intermediate', ['spell', 'scroll', 'seal', 'quill', 'magic'], spellScrollArt()),

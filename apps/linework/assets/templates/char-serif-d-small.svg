@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Classic serif small d</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M213 239V171Q213 158 208 148Q202 139 192 139Q182 139 178 153Q174 166 174 201V217Q174 250 177 261Q181 271 190 271Q199 271 206 263Q213 255 213 239Z"/>
+    <path d="M217 282 213 260Q203 285 170 285Q143 285 129 266Q114 246 114 208Q114 130 176 130Q203 130 212 145V53H193V47H271V276H286V282Z"/>
+  </g>
+</svg>

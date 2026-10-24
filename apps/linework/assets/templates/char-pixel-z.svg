@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Pixel Z</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M360 360V314H177V269H223V223H269V177H314V131H360V40H40V86H223V131H177V177H131V223H86V269H40V360Z"/>
+  </g>
+</svg>
