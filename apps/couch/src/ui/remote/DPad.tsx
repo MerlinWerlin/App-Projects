@@ -98,7 +98,7 @@ export function DPad({ onKey }: { onKey: KeyPress }) {
       style={[styles.btn, rect(g.arrows[side])]}
     >
       {({ pressed }) => (
-        <RemoteIcon name={side} size={g.arrowIcon.size} color={pressed ? t.ringLit : t.muted} />
+        <RemoteIcon name={side} size={g.arrowIcon.size} color={pressed ? t.ringLit : (t.ringInk ?? t.muted)} />
       )}
     </Pressable>
   );

@@ -597,6 +597,7 @@ export const ptBR: Catalogue = {
   'app.tvs.settings': 'Configurações',
 
   // owner-1017: remote theme names and store screenshot headlines
+  'ui.themes.name.charcoal': "Carvão e dourado",
   'ui.themes.name.midnight': 'Meia-noite',
   'ui.themes.name.daylight': 'Luz do dia',
   'ui.themes.name.oled': 'Preto OLED',

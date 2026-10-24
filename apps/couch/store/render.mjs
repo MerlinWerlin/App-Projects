@@ -82,7 +82,7 @@ export const SIZES = [
  * colour token that tints that shot (background glow, frame glow, seal); every other colour is the theme's neutrals.
  */
 export const SHOTS = [
-  { n: '01', name: 'every-tv', key: 'ui.store.headline.everyTv', theme: 'midnight', accent: 'accent' },
+  { n: '01', name: 'every-tv', key: 'ui.store.headline.everyTv', theme: 'charcoal', accent: 'accent' },
   { n: '02', name: 'free', key: 'ui.store.headline.priceFree', theme: 'daylight', accent: 'accent', seal: 'ui.store.headline.sealFree' },
   { n: '03', name: 'find-tv', key: 'ui.store.headline.findTv', theme: 'retro', accent: 'glow', view: 'add' },
   { n: '04', name: 'search', key: 'ui.store.headline.search', theme: 'aurora', accent: 'accent', view: 'keyboard' },

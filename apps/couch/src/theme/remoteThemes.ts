@@ -8,12 +8,14 @@
  * (that is src/core/dpadGeometry.ts, shared by every theme).
  *
  * Textures are generated (gradients / SVG noise / stripes), never photos or anyone else's artwork.
- * Free: Midnight (default), Daylight, OLED Black. The rest are Couch Plus (one-time purchase), each
+ * Free: Charcoal & Gold (default since 24 Oct 2026: matches the app icon and opening animation), Midnight,
+ * Daylight, OLED Black. The rest are Couch Plus (one-time purchase), each
  * with a "Try it" preview that works without buying. Every TV control stays free in every theme.
  */
 import type { Palette } from './tokens';
 
 export const REMOTE_THEME_IDS = [
+  'charcoal',
   'midnight',
   'daylight',
   'oled',
@@ -28,8 +30,8 @@ export const REMOTE_THEME_IDS = [
 ] as const;
 export type RemoteThemeId = (typeof REMOTE_THEME_IDS)[number];
 
-export const DEFAULT_REMOTE_THEME: RemoteThemeId = 'midnight';
-export const FREE_REMOTE_THEMES: readonly RemoteThemeId[] = ['midnight', 'daylight', 'oled'];
+export const DEFAULT_REMOTE_THEME: RemoteThemeId = 'charcoal';
+export const FREE_REMOTE_THEMES: readonly RemoteThemeId[] = ['charcoal', 'midnight', 'daylight', 'oled'];
 
 /** How a key press feels: haptic weight and how far the key dips. */
 export type PressStyle = 'soft' | 'firm' | 'click';
@@ -61,6 +63,8 @@ export interface RemoteTheme extends Palette {
   /** D-pad pad face and lit inner-ring arc. */
   ring: string;
   ringLit: string;
+  /** Arrows on the d-pad face when it differs from `muted` (a light metal pad needs dark arrows). */
+  ringInk?: string;
   /** Cinema glow colour behind the remote, or null for none. */
   glow: string | null;
   press: PressStyle;
@@ -75,6 +79,17 @@ const base = { ok: '#23633F', warn: '#7A520A' };
 const darkStatus = { ok: '#6CC796', warn: '#E5B35A' };
 
 export const REMOTE_THEMES: Record<RemoteThemeId, RemoteTheme> = {
+  charcoal: {
+    // owner 24 Oct 2026: "the main theme needs to match the start-up animation and the logo remote".
+    // Matte charcoal body and keys, brushed-gold d-pad face and OK key with dark arrows, the intro's
+    // background (#0E0E0F, src/core/introRemote.ts INTRO_BG) so the opening animation fades straight in.
+    id: 'charcoal', nameKey: 'ui.themes.name.charcoal', tier: 'free', scheme: 'dark',
+    bg: '#0E0E0F', stage: '#080809', body: '#1C1C1D', key: '#2B2B2C', keyEdge: '#060606',
+    ink: '#F4EEE3', muted: '#BDB5A8', accent: '#D2AB72', accentSoft: '#5C4626', accentInk: '#1A1208',
+    power: '#FF9C8F', ring: '#C9A26C', ringLit: '#2A1A08', ringInk: '#2A1D0C', glow: '#C9A26C',
+    press: 'firm', radius: 14, ...darkStatus,
+    texture: { kind: 'brushed', colors: ['#2A2A2B', '#1C1C1D'], opacity: 0.35 },
+  },
   midnight: {
     id: 'midnight', nameKey: 'ui.themes.name.midnight', tier: 'free', scheme: 'dark',
     bg: '#0B1020', stage: '#070A14', body: '#141B2E', key: '#1E2740', keyEdge: '#05070D',
@@ -216,7 +231,7 @@ export function labelPairs(t: RemoteTheme): { what: string; fg: string; bg: stri
     { what: 'secondary label / arrows on key', fg: t.muted, bg: t.key, min: 4.5 },
     { what: 'power on key', fg: t.power, bg: t.key, min: 4.5 },
     { what: 'OK label on accent', fg: t.accentInk, bg: t.accent, min: 4.5 },
-    { what: 'arrows on d-pad face', fg: t.muted, bg: t.ring, min: 4.5 },
+    { what: 'arrows on d-pad face', fg: t.ringInk ?? t.muted, bg: t.ring, min: 4.5 },
     { what: 'lit arc on d-pad face (non-text)', fg: t.ringLit, bg: t.ring, min: 3 },
     { what: 'text on remote body', fg: t.ink, bg: t.body, min: 4.5 },
     { what: 'muted text on remote body', fg: t.muted, bg: t.body, min: 4.5 },

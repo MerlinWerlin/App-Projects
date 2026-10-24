@@ -149,7 +149,7 @@ describe('Themes screen (app/themes.tsx)', () => {
 
   it('lists every theme id, with a name in the catalogue', () => {
     expect(src).toContain('REMOTE_THEME_IDS.map(');
-    expect(REMOTE_THEME_IDS.length).toBe(11);
+    expect(REMOTE_THEME_IDS.length).toBe(12);
     for (const id of REMOTE_THEME_IDS) expect(typeof catalogue[REMOTE_THEMES[id].nameKey]).toBe('string');
   });
 
@@ -186,10 +186,10 @@ describe('Themes screen (app/themes.tsx)', () => {
     expect(pickTheme('daylight', { plus: false })).toEqual({ kind: 'apply', id: 'daylight' });
     expect(pickTheme('cinema', { plus: false })).toEqual({ kind: 'try', id: 'cinema' });
     expect(pickTheme('cinema', { plus: true })).toEqual({ kind: 'apply', id: 'cinema' });
-    expect(previewThemeId('neon', { plus: false, trying: null })).toBe('midnight');
+    expect(previewThemeId('neon', { plus: false, trying: null })).toBe('charcoal');
     expect(previewThemeId('neon', { plus: false, trying: 'forest' })).toBe('forest');
     expect(previewThemeId('oled', { plus: false, trying: null })).toBe('oled');
-    expect(REMOTE_THEME_IDS.filter((id) => themeBadge(id) === 'free')).toEqual(['midnight', 'daylight', 'oled']);
+    expect(REMOTE_THEME_IDS.filter((id) => themeBadge(id) === 'free')).toEqual(['charcoal', 'midnight', 'daylight', 'oled']);
   });
 });
 

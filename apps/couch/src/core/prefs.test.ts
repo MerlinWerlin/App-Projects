@@ -29,12 +29,12 @@ describe('parsePrefs', () => {
   });
 
   it('defaults match the prototype (haptics on, simple off)', () => {
-    expect(DEFAULT_PREFS).toEqual({ language: 'system', haptics: true, theme: 'system', simple: false, oneHanded: 'off', glow: 'theme', remoteTheme: 'midnight' });
+    expect(DEFAULT_PREFS).toEqual({ language: 'system', haptics: true, theme: 'system', simple: false, oneHanded: 'off', glow: 'theme', remoteTheme: 'charcoal' });
   });
 
   it('keeps valid fields and drops invalid ones', () => {
     const p = parsePrefs(JSON.stringify({ haptics: false, theme: 'neon', simple: 'yes', oneHanded: 'left', extra: 1 }));
-    expect(p).toEqual({ language: 'system', haptics: false, theme: 'system', simple: false, oneHanded: 'left', glow: 'theme', remoteTheme: 'midnight' });
+    expect(p).toEqual({ language: 'system', haptics: false, theme: 'system', simple: false, oneHanded: 'left', glow: 'theme', remoteTheme: 'charcoal' });
   });
 
   it('round-trips a full value', () => {
@@ -97,15 +97,26 @@ describe('glow pref', () => {
 });
 
 describe('remote theme pref (owner-1017 T56)', () => {
-  it('defaults to Midnight; old stored prefs without it get the default', () => {
-    expect(DEFAULT_PREFS.remoteTheme).toBe('midnight');
-    expect(parsePrefs(JSON.stringify({ haptics: false })).remoteTheme).toBe('midnight');
+  it('an old saved Midnight (the pre-24-Oct default) becomes Charcoal & Gold; a picked Midnight stays', async () => {
+    expect(parsePrefs(JSON.stringify({ remoteTheme: 'midnight', simple: true })).remoteTheme).toBe('charcoal');
+    expect(parsePrefs(JSON.stringify({ remoteTheme: 'aurora' })).remoteTheme).toBe('aurora');
+    const kv = new MemoryKV();
+    const a = new PrefsStore(kv);
+    await a.set({ remoteTheme: 'midnight' });
+    const b = new PrefsStore(kv);
+    await b.load();
+    expect(b.get().remoteTheme).toBe('midnight');
+  });
+
+  it('defaults to Charcoal & Gold; old stored prefs without it get the default', () => {
+    expect(DEFAULT_PREFS.remoteTheme).toBe('charcoal');
+    expect(parsePrefs(JSON.stringify({ haptics: false })).remoteTheme).toBe('charcoal');
   });
 
   it('parses every theme id and rejects others', () => {
-    for (const id of REMOTE_THEME_IDS) expect(parsePrefs(JSON.stringify({ remoteTheme: id })).remoteTheme).toBe(id);
-    expect(parsePrefs(JSON.stringify({ remoteTheme: 'vaporwave' })).remoteTheme).toBe('midnight');
-    expect(parsePrefs(JSON.stringify({ remoteTheme: 7 })).remoteTheme).toBe('midnight');
+    for (const id of REMOTE_THEME_IDS) expect(parsePrefs(JSON.stringify({ remoteTheme: id, themeV: 2 })).remoteTheme).toBe(id);
+    expect(parsePrefs(JSON.stringify({ remoteTheme: 'vaporwave' })).remoteTheme).toBe('charcoal');
+    expect(parsePrefs(JSON.stringify({ remoteTheme: 7 })).remoteTheme).toBe('charcoal');
     expect(sanitizePatch({ remoteTheme: 'pink' as never })).toEqual({});
     expect(sanitizePatch({ remoteTheme: 'aurora' })).toEqual({ remoteTheme: 'aurora' });
   });
@@ -199,7 +210,7 @@ describe('PrefsStore', () => {
     await a.set({ simple: true, oneHanded: 'left' });
     const b = new PrefsStore(kv);
     await b.load();
-    expect(b.get()).toEqual({ language: 'system', haptics: true, theme: 'system', simple: true, oneHanded: 'left', glow: 'theme', remoteTheme: 'midnight' });
+    expect(b.get()).toEqual({ language: 'system', haptics: true, theme: 'system', simple: true, oneHanded: 'left', glow: 'theme', remoteTheme: 'charcoal' });
   });
 
   it('survives storage errors', async () => {

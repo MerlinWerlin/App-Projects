@@ -599,6 +599,7 @@ export const fr: Catalogue = {
   'app.tvs.settings': 'Réglages',
 
   // owner-1017: remote theme names and store screenshot headlines
+  'ui.themes.name.charcoal': "Anthracite et or",
   'ui.themes.name.midnight': 'Minuit',
   'ui.themes.name.daylight': 'Plein jour',
   'ui.themes.name.oled': 'Noir OLED',

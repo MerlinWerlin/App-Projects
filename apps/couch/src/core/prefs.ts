@@ -27,7 +27,7 @@ export interface Prefs {
   simple: boolean;
   oneHanded: OneHanded;
   glow: GlowPref;
-  /** Remote theme (owner-1017). A Plus theme without Plus shows Midnight (effectiveRemoteTheme). */
+  /** Remote theme (owner-1017). A Plus theme without Plus shows the default (effectiveRemoteTheme). */
   remoteTheme: RemoteThemeId;
 }
 
@@ -48,6 +48,12 @@ export const GLOW_PREFS: readonly GlowPref[] = ['theme', 'amber', 'blue', 'viole
 export const LANGUAGE_PREFS: readonly LanguagePref[] = ['system', 'en', 'es', 'fr', 'de', 'it', 'pt-BR', 'ja', 'ko', 'zh-Hans', 'hi', 'ar'];
 
 export const PREFS_KEY = 'couch.prefs.v1';
+/**
+ * Stored-theme version. Before 24 Oct 2026 every save wrote remoteTheme 'midnight' (the old default)
+ * even when nobody picked it, so an old saved 'midnight' means "the default" and becomes Charcoal & Gold.
+ * Saves now carry themeV 2, after which 'midnight' is a real choice and is kept.
+ */
+export const THEME_PREF_VERSION = 2;
 
 /** AsyncStorage-shaped store. */
 export interface KeyValueStore {
@@ -97,7 +103,9 @@ export function parsePrefs(raw: string | null | undefined): Prefs {
   if (typeof o.simple === 'boolean') out.simple = o.simple;
   if (isOneHanded(o.oneHanded)) out.oneHanded = o.oneHanded;
   if (isGlowPref(o.glow)) out.glow = o.glow;
-  if (isRemoteThemeId(o.remoteTheme)) out.remoteTheme = o.remoteTheme;
+  if (isRemoteThemeId(o.remoteTheme) && (o.remoteTheme !== 'midnight' || o.themeV === THEME_PREF_VERSION)) {
+    out.remoteTheme = o.remoteTheme;
+  }
   return out;
 }
 
@@ -212,7 +220,7 @@ export class PrefsStore {
     this.dirty = true;
     this.prefs = next;
     this.changed();
-    const json = JSON.stringify(next);
+    const json = JSON.stringify({ ...next, themeV: THEME_PREF_VERSION });
     // Serialise writes so the last change always wins on disk.
     this.writing = this.writing.then(() => this.kv.setItem(this.key, json)).catch(() => {});
     return this.writing;

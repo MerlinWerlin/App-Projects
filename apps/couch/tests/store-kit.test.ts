@@ -32,7 +32,7 @@ describe('store screenshot kit (T59)', () => {
 
   it('one theme per shot, from the shared theme ids', () => {
     const themes = [...render.matchAll(/name: '[\w-]+', key: '[\w.]+',(?: vars: \{[^}]*\},)? theme: '(\w+)'/g)].map((m) => m[1]);
-    expect(themes).toEqual(['midnight', 'daylight', 'retro', 'aurora', 'cinema', 'neon', 'forest']);
+    expect(themes).toEqual(['charcoal', 'daylight', 'retro', 'aurora', 'cinema', 'neon', 'forest']);
   });
 
   it('names no TV maker, platform or streaming service in its output strings or contact sheet', () => {

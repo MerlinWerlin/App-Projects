@@ -568,6 +568,7 @@ export const zhHans: Catalogue = {
   'app.tvs.settings': '设置',
 
   // owner-1017: remote theme names and store screenshot headlines
+  'ui.themes.name.charcoal': "炭黑与金",
   'ui.themes.name.midnight': '午夜',
   'ui.themes.name.daylight': '日光',
   'ui.themes.name.oled': 'OLED 纯黑',
