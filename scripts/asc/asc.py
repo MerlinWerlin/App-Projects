@@ -42,23 +42,42 @@ def key_pem():
 KEY_KIND = os.environ.get("ASC_KEY_KIND", "team")
 
 
+def _clean(v):
+    import re
+    return re.sub(r"[^A-Za-z0-9-]", "", v or "")
+
+
+def KID():
+    return _clean(os.environ["ASC_KEY_ID"]).upper()
+
+
+def ISS():
+    return _clean(os.environ["ASC_ISSUER_ID"]).lower()
+
+
 def token():
     now = int(time.time())
     claims = {"iat": now, "exp": now + 1100, "aud": "appstoreconnect-v1"}
     if KEY_KIND == "team":
-        claims["iss"] = os.environ["ASC_ISSUER_ID"].strip()
+        claims["iss"] = ISS()
     else:
         claims["sub"] = "user"
-    return jwt.encode(claims, key_pem(), algorithm="ES256", headers={"kid": os.environ["ASC_KEY_ID"].strip(), "typ": "JWT"})
+    return jwt.encode(claims, key_pem(), algorithm="ES256", headers={"kid": KID(), "typ": "JWT"})
 
 
 def diagnose():
     """Shapes only, never values."""
     import re
     from cryptography.hazmat.primitives.serialization import load_pem_private_key
-    kid, iss = os.environ["ASC_KEY_ID"].strip(), os.environ["ASC_ISSUER_ID"].strip()
+    rk, ri = os.environ["ASC_KEY_ID"], os.environ["ASC_ISSUER_ID"]
+    def shape(v):
+        return (f"{len(v)} chars: " + ", ".join(n for n, f in (("upper", str.isupper), ("lower", str.islower), ("digits", str.isdigit),
+                ("dashes", lambda c: c == "-"), ("spaces/newlines", str.isspace), ("other", lambda c: not (c.isalnum() or c in "- \n\r\t")))
+                if any(f(c) for c in v)))
+    say(f"- Key ID secret: {shape(rk)}; Issuer ID secret: {shape(ri)}")
+    kid, iss = KID(), ISS()
     say(f"- Key ID: {len(kid)} chars, {'looks right' if re.fullmatch(r'[A-Z0-9]{10}', kid) else 'NOT the 10-character form'}")
-    say(f"- Issuer ID: {'UUID form' if re.fullmatch(r'[0-9a-f-]{36}', iss) else 'NOT a UUID'}")
+    say(f"- Issuer ID: {'UUID form' if re.fullmatch(r'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}', iss) else 'NOT a UUID'}")
     try:
         k = load_pem_private_key(key_pem().encode(), None)
         say(f"- .p8 key: loads, curve {k.curve.name}")
