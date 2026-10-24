@@ -1,5 +1,6 @@
 {
-  "mode": "update",
-  "note": "Glaze: Save to Photos works again (media library legacy API on SDK 57); sheet backdrop and phone-frame rim render again",
-  "ascAppId": "6826415074"
+  "mode": "build",
+  "note": "Glaze: first TestFlight build with native parts on: Home/Lock Screen widgets, Live Lock Screen, Live Photo",
+  "ascAppId": "6826415074",
+  "profile": "production-native"
 }
