@@ -1,0 +1,90 @@
+# Upgrades one app to a new Expo SDK (Expo Go on iPhone only opens the latest SDK).
+# Runs `expo install expo@^<sdk>` + `expo install --fix`, then typecheck, tests and bundle,
+# and pushes the result to branch sdk<sdk>/<app> with a commit comment summarising each step.
+# It never touches main or RELEASE.json: merging the branch is a separate step.
+name: sdk-upgrade
+
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: 'App folder (cue, couch, glaze, linework, ...)'
+        required: true
+        type: string
+      sdk:
+        description: 'Target Expo SDK major (e.g. 58)'
+        required: true
+        type: string
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      APP: ${{ inputs.app }}
+      SDK: ${{ inputs.sdk }}
+      BRANCH: sdk${{ inputs.sdk }}/${{ inputs.app }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Branch
+        run: git checkout -B "$BRANCH"
+
+      - name: Upgrade Expo
+        working-directory: apps/${{ inputs.app }}
+        run: |
+          set -o pipefail
+          {
+            npm install --no-audit --no-fund --legacy-peer-deps
+            npx --yes expo install "expo@^${SDK}.0.0" -- --legacy-peer-deps
+            npx expo install --fix -- --legacy-peer-deps
+            rm -rf node_modules package-lock.json
+            npm install --no-audit --no-fund
+            npx expo install --check
+          } 2>&1 | tee /tmp/step-upgrade.log
+
+      - name: Typecheck
+        continue-on-error: true
+        working-directory: apps/${{ inputs.app }}
+        run: set -o pipefail; npx tsc --noEmit 2>&1 | tee /tmp/step-typecheck.log
+
+      - name: Tests
+        continue-on-error: true
+        working-directory: apps/${{ inputs.app }}
+        run: set -o pipefail; npx jest --ci 2>&1 | tee /tmp/step-tests.log
+
+      - name: Bundle
+        continue-on-error: true
+        working-directory: apps/${{ inputs.app }}
+        run: set -o pipefail; npx expo export --platform ios --platform android --output-dir /tmp/export 2>&1 | tee /tmp/step-bundle.log
+
+      - name: Commit and push the branch
+        id: push
+        if: always()
+        run: |
+          git config user.name "app-factory-bot"
+          git config user.email "app-factory-bot@users.noreply.github.com"
+          git add "apps/$APP/package.json" "apps/$APP/package-lock.json"
+          git commit -m "$APP: upgrade to Expo SDK $SDK [sdk-upgrade]" || echo "nothing to commit"
+          git push -f origin "$BRANCH"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Post the result as a commit comment
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "### sdk-upgrade ${APP} -> SDK ${SDK}: ${{ job.status }}"
+            for f in upgrade typecheck tests bundle; do
+              [ -f /tmp/step-$f.log ] || continue
+              echo; echo "<details><summary>$f</summary>"; echo; echo '```'
+              grep -v '^\s*$' /tmp/step-$f.log | grep -v '^npm warn' | tail -n 60 | cut -c1-300
+              echo '```'; echo "</details>"
+            done
+          } > /tmp/comment.md
+          gh api repos/${{ github.repository }}/commits/${{ steps.push.outputs.sha || github.sha }}/comments -F body=@/tmp/comment.md >/dev/null
