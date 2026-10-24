@@ -136,10 +136,12 @@ export const Prompter = forwardRef<PrompterHandle, Props>(function Prompter(p, r
     offset.value = p.reduceMotion ? y : withTiming(y, { duration: 450 });
   }, [p.followWord, p.running, wordToY, offset, maxOffset, p.reduceMotion]);
 
+  // Only shared values are captured by the worklet (never the props object, which Reanimated would copy and freeze).
+  const gate = p.gate;
   useFrameCallback((f) => {
     if (!running.value || dragging.value || ended.value) return;
     const dt = Math.min(0.1, (f.timeSincePreviousFrame ?? 16) / 1000);
-    const next = offset.value + pps.value * p.gate.value * dt;
+    const next = offset.value + pps.value * gate.value * dt;
     if (next >= maxOffset.value) {
       offset.value = maxOffset.value;
       ended.value = true;
