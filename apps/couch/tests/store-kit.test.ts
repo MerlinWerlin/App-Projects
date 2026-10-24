@@ -27,7 +27,8 @@ describe('store screenshot kit (T59)', () => {
     expect(keys.length).toBeGreaterThanOrEqual(7);
     for (const k of keys) expect(typeof uiEn[k]).toBe('string');
     expect(uiEn['ui.store.headline.themes']).toContain('{count}');
-    expect(render).toContain('vars: { count: 10 }');
+    // the count follows the real theme list (12 since Walnut & Brass and Charcoal & Gold), never a hard-coded number
+    expect(render).toContain('vars: { count: Object.keys(REMOTE_THEMES).length }');
   });
 
   it('one theme per shot, from the shared theme ids', () => {
