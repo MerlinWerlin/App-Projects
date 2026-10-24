@@ -341,6 +341,22 @@ def apply(app):
         step("Availability: all countries and regions", lambda: ensure_availability(app_id))
     for iap in lst.get("inAppPurchases", []):
         step(f"In-app purchase {iap['productId']}", lambda iap=iap: ensure_iap(app_id, iap, locale))
+    # dropLocales: delete stray localizations (never the app's primary locale).
+    for drop in lst.get("dropLocales", []):
+        def dl(drop=drop):
+            prim = attrs(get(f"/v1/apps/{app_id}")["data"]).get("primaryLocale")
+            if drop == prim:
+                raise RuntimeError(f"{drop} is the primary locale; not deleting")
+            n = 0
+            for l in get(f"/v1/appInfos/{info['id']}/appInfoLocalizations")["data"]:
+                if attrs(l)["locale"] == drop:
+                    call("DELETE", f"/v1/appInfoLocalizations/{l['id']}"); n += 1
+            if ver:
+                for l in get(f"/v1/appStoreVersions/{ver['id']}/appStoreVersionLocalizations")["data"]:
+                    if attrs(l)["locale"] == drop:
+                        call("DELETE", f"/v1/appStoreVersionLocalizations/{l['id']}"); n += 1
+            say(f"  - primary locale {prim}; removed {n} {drop} localizations")
+        step(f"Drop locale {drop}", dl)
     # alsoLocales: copy the same listing into other locales (e.g. an en-US primary locale left from app creation).
     for extra in lst.get("alsoLocales", []):
         say(f"### Also locale {extra}")
