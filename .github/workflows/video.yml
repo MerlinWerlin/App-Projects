@@ -1,0 +1,46 @@
+# Render marketing videos: every new or changed marketing/<app>/media/**/<id>.storyboard.json becomes <id>.mp4 + <id>.jpg
+# next to it (marketing/video/render.py, ffmpeg). No AI cost. The rendered files are committed back to the same branch.
+name: video
+
+on:
+  push:
+    paths: ['marketing/*/media/**/*.storyboard.json', 'marketing/*/media/**/img/**']
+  workflow_dispatch:
+
+concurrency:
+  group: video-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Tools
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-inter fonts-dejavu-core > /dev/null
+          pip install --quiet pillow
+      - name: Render storyboards that have no up-to-date video
+        run: |
+          set -e
+          n=0
+          for sb in $(find marketing -path '*/media/*' -name '*.storyboard.json' | sort); do
+            dir=$(dirname "$sb"); id=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['id'])" "$sb")
+            mp4="$dir/$id.mp4"
+            if [ ! -f "$mp4" ] || git diff --name-only HEAD~1 HEAD | grep -q "^$dir/"; then
+              python3 marketing/video/render.py "$sb" "$mp4" && n=$((n+1))
+            fi
+          done
+          echo "rendered=$n" >> "$GITHUB_ENV"
+      - name: Commit the videos
+        if: env.rendered != '0'
+        run: |
+          git config user.name "video-render"
+          git config user.email "video-render@users.noreply.github.com"
+          git add 'marketing/*/media/**/*.mp4' 'marketing/*/media/**/*.jpg'
+          git diff --cached --quiet || git commit -m "Render ${{ env.rendered }} marketing video(s)"
+          git push

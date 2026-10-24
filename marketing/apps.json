@@ -222,7 +222,7 @@
       "name": "Cue",
       "storeName": "Cue: Teleprompter",
       "tagline": "A teleprompter that waits for you",
-      "stage": "building",
+      "stage": "prelaunch",
       "nameLocked": false,
       "ascAppId": "",
       "appStoreUrl": "",
@@ -256,6 +256,49 @@
         }
       ]
     },
-    {"slug": "backspin", "name": "Backspin", "storeName": "", "tagline": "Reverse singing, with a real score", "stage": "building", "nameLocked": false, "ascAppId": "", "appStoreUrl": "", "testflightUrl": "", "playUrl": "", "pinSource": {"kind": "screenshots"}, "boards": ["Party Games for Friends", "Funny Family Games", "Tongue Twisters"], "reddit": {"queries": ["reverse singing app", "reverse audio challenge", "sing backwards app", "reverse singing challenge", "backwards song game", "party game app no ads"], "subs": ["iphone", "partygames", "AppHookup", "apps"]}, "avoid": ["only app that scores", "any competitor or franchise name", "song names under copyright", "plain 'free' without saying Plus is optional"], "note": "Docs in apps/backspin/docs (PLAN.md, MARKET.md); store draft apps/backspin/store/listing.draft.json. Turn on by setting stage to prelaunch."}
+    {
+      "slug": "backspin",
+      "name": "Backspin",
+      "storeName": "",
+      "tagline": "Reverse singing, with a real score",
+      "stage": "prelaunch",
+      "nameLocked": false,
+      "ascAppId": "",
+      "appStoreUrl": "",
+      "testflightUrl": "",
+      "playUrl": "",
+      "pinSource": {
+        "kind": "screenshots"
+      },
+      "boards": [
+        "Party Games for Friends",
+        "Funny Family Games",
+        "Tongue Twisters"
+      ],
+      "reddit": {
+        "queries": [
+          "reverse singing app",
+          "reverse audio challenge",
+          "sing backwards app",
+          "reverse singing challenge",
+          "backwards song game",
+          "party game app no ads"
+        ],
+        "subs": [
+          "iphone",
+          "partygames",
+          "AppHookup",
+          "apps"
+        ]
+      },
+      "avoid": [
+        "only app that scores",
+        "any competitor or franchise name",
+        "song names under copyright",
+        "plain 'free' without saying Plus is optional"
+      ],
+      "note": "Docs in apps/backspin/docs (PLAN.md, MARKET.md); store draft apps/backspin/store/listing.draft.json. Turn on by setting stage to prelaunch.",
+      "accent": "#FF5A4E"
+    }
   ]
 }
