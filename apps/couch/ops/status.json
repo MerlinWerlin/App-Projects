@@ -1,12 +1,12 @@
 {
   "stage": "owner-tested",
   "trial_kit": true,
-  "oversight_seen": 129,
-  "tests": "1605 pass (bun, Jest-compatible)",
+  "oversight_seen": 130,
+  "tests": "1614 pass (bun, Jest-compatible)",
   "typecheck": "core clean; app/ and src/ui clean against offline stubs (new, D75-1); full app tsc with real types needs PC verification",
-  "last_run": "2026-10-24 11:56 Sydney",
-  "headline": "Couch has its App Store Connect id; waiting for the next TestFlight ship",
-  "next_for_owner": "1) Open Couch on your iPhone (Expo Go > Recently opened, or TestFlight once the build is out) and answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (24 Oct, 23 Oct, 22 Oct and 18–19 Oct) in a comment here. The remote screen's new look waits for your answers. 2) Decide the Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (Market research below). 3) Couch's App Store Connect id (6826135134) is in place; the next auto-ship should reach the iOS build step, and Claude fixes any compile errors it reports. 4) Real TV discovery on TestFlight still needs Apple's multicast entitlement (docs/RELEASING.md section d).",
+  "last_run": "2026-10-24 13:55 Sydney",
+  "headline": "TestFlight build: passed (you tested the first build on 24 Oct); new work ships as over-the-air updates",
+  "next_for_owner": "1) Open Couch on your iPhone (TestFlight, or Expo Go > Recently opened) and answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (24 Oct, 23 Oct, 22 Oct and 18–19 Oct) in a comment here. The remote screen's new look waits for your answers. 2) Decide the Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (Market research below). 3) Multicast entitlement: requested 24 Oct; nothing to do until Apple's email arrives, then say so in a comment and the build switches real TV discovery on.",
   "screenshots": {
     "dir": "store/screenshots/publish",
     "size": "1320x2868",
@@ -19,7 +19,7 @@
       "06-themes",
       "07-multi-tv"
     ],
-    "note": "Seven App Store 6.9\" shots (1320x2868, JPEG q85), refreshed 19 Oct (shot 05 tidied in run 46) with the market playbook: outcome, price promise, then one feature per shot. Other sizes (6.5\" 1242x2688, Play 1080x1920) are reproducible with node store/render.mjs."
+    "note": "Seven App Store 6.9\" shots (1320x2868, JPEG q85), refreshed 19 Oct; shot 01 re-rendered 24 Oct in the new default Charcoal & Gold theme with the market playbook: outcome, price promise, then one feature per shot. Other sizes (6.5\" 1242x2688, Play 1080x1920) are reproducible with node store/render.mjs."
   },
   "market": {
     "intro": "Researched 18 Oct 2026: 13 popular iOS universal remote apps (US + AU App Store listings) plus the official TV-maker apps. Full report with prices, features and complaints in docs/MARKET.md (competitor names stay in that file only). Their store images could not be viewed from the cloud.",

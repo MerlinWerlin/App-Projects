@@ -6,6 +6,8 @@ Please answer the yes/no questions first (copy them into a comment on the Couch 
 
 ## New since your last test (24 Oct)
 1. Settings > "Send feedback or request a feature": the page opens, and sending starts an email to you with your message filled in. yes / no
+2. The remote now opens in the new Charcoal & Gold theme (gold d-pad with dark arrows) and the opening animation fades straight into it, matching the icon. yes / no
+3. With a glow colour on (Settings > Remote theme), a soft halo now shows around the edge of the remote. yes / no
 
 ## New since your last test (23 Oct)
 1. When Couch opens, does the remote-press animation play smoothly and hand over to the remote within about 3 seconds? yes / no
