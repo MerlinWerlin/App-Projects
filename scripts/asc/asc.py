@@ -450,6 +450,36 @@ def ensure_iap(app_id, iap, locale):
         say(f"  - price set: {terr} {amount}")
 
 
+def make_profile(app):
+    """Create (or reuse) an App Store provisioning profile for the app's bundle id with the team's distribution
+    certificate, and print it base64 so it can be uploaded to Expo credentials (new apps can't get one from a
+    non-interactive EAS build). Profiles are not secret (public certificate + entitlements)."""
+    e = json.loads((ROOT / "apps" / app / "app.json").read_text())["expo"]
+    bid = e["ios"]["bundleIdentifier"]
+    b = [x for x in get("/v1/bundleIds", **{"filter[identifier]": bid, "limit": 5})["data"] if attrs(x)["identifier"] == bid]
+    if not b:
+        raise RuntimeError(f"bundle id {bid} is not registered")
+    name = f"{e.get('name', app)} App Store (CI)"
+    have = [x for x in get("/v1/profiles", **{"filter[name]": name, "limit": 5})["data"] if attrs(x)["profileState"] == "ACTIVE"]
+    if have:
+        prof = have[0]
+        say(f"- reusing profile `{name}`")
+    else:
+        certs = [c for c in get("/v1/certificates", limit=50)["data"]
+                 if attrs(c)["certificateType"] in ("IOS_DISTRIBUTION", "DISTRIBUTION")]
+        if not certs:
+            raise RuntimeError("no distribution certificate on the team")
+        certs.sort(key=lambda c: attrs(c).get("expirationDate") or "", reverse=True)
+        prof = call("POST", "/v1/profiles", {"data": {"type": "profiles",
+                    "attributes": {"name": name, "profileType": "IOS_APP_STORE"},
+                    "relationships": {"bundleId": {"data": {"type": "bundleIds", "id": b[0]["id"]}},
+                                      "certificates": {"data": [{"type": "certificates", "id": certs[0]["id"]}]}}}})["data"]
+        say(f"- created profile `{name}` with certificate serial {attrs(certs[0]).get('serialNumber')}")
+    say(f"- bundle id {bid}, expires {attrs(prof).get('expirationDate')}")
+    say("")
+    say(f"<details><summary>{app}.mobileprovision (base64)</summary>\n\n```\n{attrs(prof)['profileContent']}\n```\n</details>")
+
+
 if __name__ == "__main__":
     mode, app = sys.argv[1], sys.argv[2]
     say(f"# App Store Connect {mode}: {app} ({time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime())})")
@@ -467,7 +497,10 @@ if __name__ == "__main__":
                 say("**Apple rejected the API key (401) as both a Team and an Individual key.**")
                 diagnose()
                 raise
-        (status if mode == "status" else apply)(app)
+        if mode == "profile":
+            make_profile(app)
+        else:
+            (status if mode == "status" else apply)(app)
         if mode == "apply":
             say("")
             status(app)
