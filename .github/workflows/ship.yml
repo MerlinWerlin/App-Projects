@@ -93,6 +93,19 @@ jobs:
       - name: Install packages
         run: npm install --no-audit --no-fund
 
+      - name: Native-only tools for the chosen build profile
+        if: steps.rel.outputs.mode == 'build'
+        env:
+          PROFILE: ${{ steps.rel.outputs.profile }}
+        run: |
+          # Apps keep native-only build tools out of package.json (Expo Go safety) and add them in an
+          # eas-build-post-install script. eas build reads the app config here first, so run that script
+          # now too, with the profile's env (e.g. GLAZE_NATIVE=1), or config loading fails.
+          if jq -e '.scripts["eas-build-post-install"]' package.json > /dev/null; then
+            while IFS='=' read -r k v; do [ -n "$k" ] && export "$k=$v"; done < <(jq -r --arg p "$PROFILE" '.build[$p].env // {} | to_entries[] | "\(.key)=\(.value)"' eas.json)
+            npm run eas-build-post-install
+          fi
+
       - name: Link the Expo project (first time only)
         run: |
           if [ "$(jq -r '.expo.extra.eas.projectId // empty' app.json)" = "" ]; then
