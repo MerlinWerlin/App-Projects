@@ -341,6 +341,9 @@ def apply(app):
         step("Availability: all countries and regions", lambda: ensure_availability(app_id))
     for iap in lst.get("inAppPurchases", []):
         step(f"In-app purchase {iap['productId']}", lambda iap=iap: ensure_iap(app_id, iap, locale))
+    if lst.get("primaryLocale"):
+        step(f"Primary locale {lst['primaryLocale']}", lambda: call("PATCH", f"/v1/apps/{app_id}", {"data": {"type": "apps", "id": app_id,
+             "attributes": {"primaryLocale": lst["primaryLocale"]}}}))
     # dropLocales: delete stray localizations (never the app's primary locale).
     for drop in lst.get("dropLocales", []):
         def dl(drop=drop):

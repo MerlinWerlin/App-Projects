@@ -24,5 +24,6 @@
   "reviewNotes": "No account or login. Couch is a Wi-Fi TV remote. To review without a TV: open the TVs tab and turn on Demo mode; demo TVs work with every control and nothing is sent to a real TV. With a real TV, the phone and TV must be on the same Wi-Fi; Couch asks for Local Network access to find it, and some TVs show an Allow prompt or a code on the TV. Every remote control is free and there are no in-app purchases in this version. Platform names in the description are used only to describe compatibility; Couch is not affiliated with those companies. App icons on the Apps tab come from the TV itself or from the public iTunes Search API. No data is collected.",
   "dropLocales": [
     "en-US"
-  ]
+  ],
+  "primaryLocale": "en-AU"
 }
