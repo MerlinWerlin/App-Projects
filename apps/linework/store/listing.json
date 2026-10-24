@@ -10,9 +10,9 @@
   "primaryCategory": "GRAPHICS_AND_DESIGN",
   "secondaryCategory": "EDUCATION",
   "copyright": "2026 Jared Bradley",
-  "privacyPolicyUrl": null,
-  "supportUrl": null,
-  "marketingUrl": null,
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/linework/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/linework/support.html",
+  "marketingUrl": "https://merlinwerlin.github.io/App-Projects/linework/",
   "inAppPurchases": [
     {
       "productId": "com.jared797.linework.plus",
@@ -25,6 +25,22 @@
         "territory": "AUS",
         "amount": "2.99"
       }
+    },
+    {
+      "productId": "com.jared797.linework.trial14",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "14-day Trial",
+      "displayName": "14-day Trial",
+      "description": "Try every template and outline mode free for 14 days",
+      "reviewNote": "Free non-consumable that starts the 14-day trial of Linework Plus (guideline 3.1.1). Tap Start free trial on the Plus screen.",
+      "price": {
+        "territory": "AUS",
+        "amount": "0"
+      }
     }
-  ]
+  ],
+  "ageRating": "none",
+  "screenshots": {
+    "APP_IPHONE_67": "apps/linework/store/jpg/a"
+  }
 }

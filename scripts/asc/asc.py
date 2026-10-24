@@ -179,7 +179,7 @@ def status(app):
     try:
         ar = get(f"/v1/appInfos/{info['id']}/ageRatingDeclaration")["data"]
         filled = sum(1 for v in attrs(ar).values() if v not in (None, ""))
-        say(f"- Age rating questions answered: {filled}/{len(attrs(ar))}")
+        say(f"- Age rating questions answered: {filled}/{len(attrs(ar))}; unanswered: " + ", ".join(k for k, v in attrs(ar).items() if v is None))
     except Exception as e:
         say(f"- Age rating: unknown ({e})")
     try:
@@ -218,6 +218,10 @@ def upsert_ver_loc(ver_id, locale, fields):
              "relationships": {"appStoreVersion": {"data": {"type": "appStoreVersions", "id": ver_id}}}}})
 
 
+BOOL_AGE = {"gambling", "unrestrictedWebAccess", "seventeenPlus", "lootBox", "messagingAndChat", "userGeneratedContent",
+            "advertising", "ageAssurance", "healthOrWellnessTopics", "parentalControls", "gunsOrOtherWeapons"}
+
+
 def step(name, fn):
     try:
         fn()
@@ -248,9 +252,39 @@ def apply(app):
     if lst.get("ageRating"):
         def age():
             ar = get(f"/v1/appInfos/{info['id']}/ageRatingDeclaration")["data"]
-            call("PATCH", f"/v1/ageRatingDeclarations/{ar['id']}",
-                 {"data": {"type": "ageRatingDeclarations", "id": ar["id"], "attributes": lst["ageRating"]}})
-        step("Age rating answers", age)
+            want = {}
+            if lst["ageRating"] == "none":
+                for k, v in attrs(ar).items():
+                    if v is not None or k in ("kidsAgeBand",) or "Url" in k or "url" in k:
+                        continue
+                    if k.endswith("Override") or k.endswith("OverrideV2"):
+                        want[k] = "NONE"
+                    elif k in BOOL_AGE:
+                        want[k] = False
+                    else:
+                        want[k] = "NONE"
+            else:
+                want = lst["ageRating"]
+            want.update(lst.get("ageRatingExtra", {}))
+            bad = []
+            try:
+                call("PATCH", f"/v1/ageRatingDeclarations/{ar['id']}",
+                     {"data": {"type": "ageRatingDeclarations", "id": ar["id"], "attributes": want}})
+            except RuntimeError:
+                for k, v in want.items():
+                    try:
+                        call("PATCH", f"/v1/ageRatingDeclarations/{ar['id']}",
+                             {"data": {"type": "ageRatingDeclarations", "id": ar["id"], "attributes": {k: v}}})
+                    except RuntimeError as e:
+                        try:
+                            alt = (not v) if isinstance(v, bool) else False
+                            call("PATCH", f"/v1/ageRatingDeclarations/{ar['id']}",
+                                 {"data": {"type": "ageRatingDeclarations", "id": ar["id"], "attributes": {k: False if not isinstance(v, bool) else alt}}})
+                        except RuntimeError:
+                            bad.append(k)
+            if bad:
+                raise RuntimeError("could not set: " + ", ".join(bad))
+        step("Age rating answers (all None/No)", age)
     ver, _ = editable_version(app_id)
     if not ver:
         def mk():
@@ -269,8 +303,43 @@ def apply(app):
         if lst.get("copyright"):
             step("Copyright", lambda: call("PATCH", f"/v1/appStoreVersions/{ver['id']}",
                  {"data": {"type": "appStoreVersions", "id": ver["id"], "attributes": {"copyright": lst["copyright"]}}}))
+        for disp, folder in (lst.get("screenshots") or {}).items():
+            step(f"Screenshots {disp}", lambda disp=disp, folder=folder: upload_shots(ver["id"], locale, disp, folder))
     for iap in lst.get("inAppPurchases", []):
         step(f"In-app purchase {iap['productId']}", lambda iap=iap: ensure_iap(app_id, iap, locale))
+
+
+def upload_shots(ver_id, locale, disp, folder):
+    import hashlib
+    files = sorted((ROOT / folder).glob("*.jpg")) + sorted((ROOT / folder).glob("*.png"))
+    if not files:
+        raise RuntimeError(f"no images in {folder}")
+    loc = next(l for l in get(f"/v1/appStoreVersions/{ver_id}/appStoreVersionLocalizations")["data"] if attrs(l)["locale"] == locale)
+    sets = get(f"/v1/appStoreVersionLocalizations/{loc['id']}/appScreenshotSets")["data"]
+    st = next((x for x in sets if attrs(x)["screenshotDisplayType"] == disp), None)
+    if st:
+        old = get(f"/v1/appScreenshotSets/{st['id']}/appScreenshots")["data"]
+        if [attrs(o).get("fileName") for o in old] == [f.name for f in files] and all(
+                (attrs(o).get("assetDeliveryState") or {}).get("state") == "COMPLETE" for o in old):
+            say(f"  - {disp}: already uploaded ({len(old)})")
+            return
+        for o in old:
+            call("DELETE", f"/v1/appScreenshots/{o['id']}")
+    else:
+        st = call("POST", "/v1/appScreenshotSets", {"data": {"type": "appScreenshotSets", "attributes": {"screenshotDisplayType": disp},
+                  "relationships": {"appStoreVersionLocalization": {"data": {"type": "appStoreVersionLocalizations", "id": loc["id"]}}}}})["data"]
+    for f in files:
+        data = f.read_bytes()
+        shot = call("POST", "/v1/appScreenshots", {"data": {"type": "appScreenshots", "attributes": {"fileName": f.name, "fileSize": len(data)},
+                    "relationships": {"appScreenshotSet": {"data": {"type": "appScreenshotSets", "id": st["id"]}}}}})["data"]
+        for op in attrs(shot)["uploadOperations"]:
+            hdr = {h["name"]: h["value"] for h in op.get("requestHeaders", [])}
+            r = requests.request(op["method"], op["url"], headers=hdr, data=data[op["offset"]:op["offset"] + op["length"]], timeout=120)
+            if r.status_code >= 300:
+                raise RuntimeError(f"upload {f.name} -> {r.status_code}")
+        call("PATCH", f"/v1/appScreenshots/{shot['id']}", {"data": {"type": "appScreenshots", "id": shot["id"],
+             "attributes": {"uploaded": True, "sourceFileChecksum": hashlib.md5(data).hexdigest()}}})
+    say(f"  - {disp}: uploaded {len(files)}")
 
 
 def ensure_iap(app_id, iap, locale):
@@ -299,7 +368,7 @@ def ensure_iap(app_id, iap, locale):
         pts = get(f"/v2/inAppPurchases/{cur['id']}/pricePoints", **{"filter[territory]": terr, "limit": 200})
         match = None
         while True:
-            match = next((p for p in pts["data"] if attrs(p)["customerPrice"] in (amount, amount + "0", f"{float(amount):.2f}")), None)
+            match = next((p for p in pts["data"] if abs(float(attrs(p)["customerPrice"]) - float(amount)) < 0.001), None)
             nxt = pts.get("links", {}).get("next")
             if match or not nxt:
                 break
