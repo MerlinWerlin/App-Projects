@@ -1,7 +1,7 @@
 // Template catalogue: counts, ids, path sanity, bounds, SVG export and asset files.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
@@ -133,14 +133,17 @@ test('toSvgString escapes attribute and title text', () => {
   assert.ok(svg.includes('stroke="&quot;red&quot;"'));
 });
 
-test('assets/templates/<id>.svg exists for every template and matches toSvgString', () => {
-  for (const t of TEMPLATES) {
-    const file = join(ASSETS, `${t.id}.svg`);
-    assert.ok(existsSync(file), `missing ${t.id}.svg — run node scripts/export-templates.ts`);
-    assert.equal(readFileSync(file, 'utf8'), toSvgString(t), `${t.id}.svg is stale — re-export`);
-  }
+// Review SVGs are exported on demand and gitignored (T128), so a fresh clone may hold only some of them:
+// every SVG that is present must belong to a template and match toSvgString; missing ones are fine.
+test('assets/templates/<id>.svg files match toSvgString and belong to a template', () => {
+  const byId = new Map(TEMPLATES.map((t) => [t.id, t]));
   const files = readdirSync(ASSETS).filter((f) => f.endsWith('.svg'));
-  assert.equal(files.length, TEMPLATES.length, 'no stray SVG files');
+  assert.ok(files.length > 0, 'expected the tracked review SVGs');
+  for (const f of files) {
+    const t = byId.get(f.slice(0, -4));
+    assert.ok(t, `stray SVG ${f}`);
+    assert.equal(readFileSync(join(ASSETS, f), 'utf8'), toSvgString(t), `${f} is stale — run node scripts/export-templates.ts`);
+  }
 });
 
 // docs/TEMPLATE_BUDGET.md (fb-1022b): base app targets ~600 templates; 6 MB of SVG ≈ 900 at today's average.

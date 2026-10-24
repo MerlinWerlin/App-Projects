@@ -1,7 +1,7 @@
 {
   "app": "tracing",
   "title": "Linework (AR tracing, working title)",
-  "updated": "2026-10-22",
+  "updated": "2026-10-24",
   "milestones": {
     "TRIAL": [
       "T01",
@@ -1592,17 +1592,18 @@
     },
     {
       "id": "T128",
-      "status": "todo",
+      "status": "in_progress",
       "deps": [],
       "tags": [
         "fb-1022b"
       ],
       "title": "Repo bundle headroom (8.7 MB at run 79; WORKFLOW says < 10 MB, and the artifact host caps a text file at 16 MB = ~12 MB of bundle after base64): (1) stop committing the generated review SVGs in assets/templates (export on demand; templates.test compares toSvgString against generated output) — halves per-batch growth; (2) since history keeps old blobs, add a split restore to WORKFLOW: a frozen base bundle file plus an incremental bundle (git bundle create out.bundle <base>..main), restore = clone base then fetch the incremental",
-      "accept": "per-batch bundle growth halved; split restore documented and tested on a scratch clone"
+      "accept": "per-batch bundle growth halved; split restore documented and tested on a scratch clone",
+      "note": "23 Oct run 90: part 1 done (new review SVGs git-ignored, test accepts missing files); split restore still open. Bundle 9.5 MB raw / ~12.7 MB base64 at 816 templates (host cap 16 MB text)."
     },
     {
       "id": "T129",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T128"
       ],
@@ -1611,7 +1612,9 @@
         "owner"
       ],
       "title": "Batches toward 600 (TEMPLATE_BUDGET target): Birds & insects 14, Lettering 11, Mandalas 11, Kids 25 are now the thin shelves; plus a polish pass on pieces the workers flagged (wolf ruff, panda arms, sloth limbs, sleeping dragon, cauldron flames, hill village, Tidewave collar, paisley sprigs)",
-      "accept": "catalogue >= 600; guards green"
+      "accept": "catalogue >= 600; guards green",
+      "commit": "fb-1023b",
+      "note": "superseded by fb-1023b C3: 816 templates (polish-pass items remain for a later round)"
     },
     {
       "id": "T130",
@@ -1636,6 +1639,192 @@
       "title": "D112-2: TESTFLIGHT_PRECHECK.cmd runs install, npx tsc --noEmit and npx expo export --platform ios into testflight-precheck.txt (stops at first failure) before TESTFLIGHT_LINEWORK.cmd",
       "accept": "scaffold test D112-2; checklist runs the pre-check first",
       "commit": "5996b6d"
+    },
+    {
+      "id": "T132",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "fb-1023b",
+        "owner"
+      ],
+      "title": "fb-1023b foundation: Trade & workshop category (paid only: never a starter, open in trial/Plus), 1.0 starters pinned, New bubble = trade, \"Angles exact, not to scale\" note in the detail sheet (11 locales), tradeKit label font + exact angle rays, app.json version 1.0.0, review SVGs no longer committed (T128 part 1)",
+      "accept": "access tests; shelf tests; no native changes",
+      "commit": "b0c493e",
+      "note": "trade category/lock/note/version came from the live session f1062a3; run 90 kept its starter pin test and isPaidOnly."
+    },
+    {
+      "id": "T133",
+      "status": "done",
+      "deps": [
+        "T132"
+      ],
+      "tags": [
+        "fb-1023b",
+        "owner"
+      ],
+      "title": "fb-1023b C1 trade pack A (trade.ts): angle guides 15–135° labelled, mitre/bevel, protractor + set squares, 3-4-5, centre finding, circle division 4/6/8/12, hex/octagon, bolt circles 4/6/8",
+      "accept": ">= 32 templates; every labelled angle within 0.1° of the path endpoints",
+      "commit": "f1062a3",
+      "note": "superseded: the live session shipped the Trade & workshop pack (69, f1062a3) over the air during run 90; run 90's duplicate trade sets (903389c, d6e6120) were dropped on merge."
+    },
+    {
+      "id": "T134",
+      "status": "done",
+      "deps": [
+        "T132"
+      ],
+      "tags": [
+        "fb-1023b",
+        "owner"
+      ],
+      "title": "fb-1023b C1 trade pack B (trade2.ts): dovetail 1:6/1:8 + finger joints, stair stringer, roof pitches, weld bevel symbols (schematic), pipe-end cuts 30/45/60°, arcs + radius gauges, chevron/herringbone, square/isometric/dot grids",
+      "accept": ">= 30 templates; angle test as T133",
+      "commit": "f1062a3",
+      "note": "superseded: the live session shipped the Trade & workshop pack (69, f1062a3) over the air during run 90; run 90's duplicate trade sets (903389c, d6e6120) were dropped on merge."
+    },
+    {
+      "id": "T135",
+      "status": "done",
+      "deps": [
+        "T132"
+      ],
+      "tags": [
+        "fb-1023b",
+        "owner"
+      ],
+      "title": "fb-1023b C3 batch 1: Birds & insects 20 + Flowers 16 (wild2.ts, flowers2.ts)",
+      "accept": "36 original templates, baked, names in 11 locales, guards green",
+      "commit": "7e70b7e"
+    },
+    {
+      "id": "T136",
+      "status": "done",
+      "deps": [
+        "T132"
+      ],
+      "tags": [
+        "fb-1023b",
+        "owner"
+      ],
+      "title": "fb-1023b C3 batch 2: Lettering 18 + Mandalas & geometric 18 (lettering2.ts, mandalas2.ts)",
+      "accept": "36 original templates, baked, names in 11 locales, guards green",
+      "commit": "9216bc7"
+    },
+    {
+      "id": "T137",
+      "status": "done",
+      "deps": [
+        "T132"
+      ],
+      "tags": [
+        "fb-1023b",
+        "owner"
+      ],
+      "title": "fb-1023b C3 batch 3: Kids 20 + Simple shapes 16 (kids2.ts, shapes3.ts)",
+      "accept": "36 original templates, baked, names in 11 locales, guards green",
+      "commit": "b38c874"
+    },
+    {
+      "id": "T138",
+      "status": "done",
+      "deps": [
+        "T132"
+      ],
+      "tags": [
+        "fb-1023b",
+        "owner"
+      ],
+      "title": "fb-1023b C3 batch 4: Frames & patterns 18 + Still life 18 (patterns2.ts, stilllife3.ts)",
+      "accept": "36 original templates, baked, names in 11 locales, guards green",
+      "commit": "52ec1f2"
+    },
+    {
+      "id": "T139",
+      "status": "done",
+      "deps": [
+        "T132"
+      ],
+      "tags": [
+        "fb-1023b",
+        "owner"
+      ],
+      "title": "fb-1023b C3 batch 5: Animals 18 + Faces & figures 18 (animals3.ts, figures2.ts)",
+      "accept": "36 original templates, baked, names in 11 locales, guards green",
+      "commit": "a9f3dfc"
+    },
+    {
+      "id": "T140",
+      "status": "done",
+      "deps": [
+        "T132"
+      ],
+      "tags": [
+        "fb-1023b",
+        "owner"
+      ],
+      "title": "fb-1023b C3 batch 6: Buildings & landscapes 18 + Fantasy 18 (places3.ts, fantasy3.ts)",
+      "accept": "36 original templates, baked, names in 11 locales, guards green",
+      "commit": "2edeafd"
+    },
+    {
+      "id": "T141",
+      "status": "done",
+      "deps": [
+        "T133",
+        "T134"
+      ],
+      "tags": [
+        "fb-1023b",
+        "owner"
+      ],
+      "title": "fb-1023b C4: trade-pack shot idea + caption in docs/STORE.md; template counts in store copy (11 locales)",
+      "accept": "storeListing tests green",
+      "commit": "8c71ac9"
+    },
+    {
+      "id": "T142",
+      "status": "todo",
+      "deps": [
+        "T141"
+      ],
+      "tags": [
+        "fb-1023b",
+        "owner"
+      ],
+      "title": "Owner: push the fb-1023b over-the-air update (PUSH_UPDATE.cmd) and check Trade & workshop on the TestFlight build",
+      "accept": "owner"
+    },
+    {
+      "id": "T143",
+      "status": "done",
+      "deps": [
+        "T135",
+        "T136",
+        "T137",
+        "T138",
+        "T139",
+        "T140"
+      ],
+      "tags": [
+        "merge-art",
+        "templates"
+      ],
+      "title": "Merge run 90's C3 batches (art/main) into the shipped line (fb-1023c batches, trade2, night-1023, trial-iap): clashing sets renamed flowers3/mandalas3/patterns3/stilllife4, 13 names + 4 locale names made unique, bake-time slimming (baked/slim.ts) keeps art under 6 MB, griffin and palm-beach dropped on review, banksia leaves redrawn; 1 208 templates",
+      "accept": "790 node tests green, bake --check, ui-check, typecheck:ui, core tsc"
+    },
+    {
+      "id": "T144",
+      "status": "todo",
+      "deps": [
+        "T143"
+      ],
+      "tags": [
+        "owner",
+        "trial-iap"
+      ],
+      "title": "Owner: in App Store Connect add the free '14-day Trial' Non-Consumable (com.jared797.linework.trial14) next to Linework Plus (docs/OWNER_1024.md)",
+      "accept": "owner"
     }
   ],
   "priority_note": "RELEASE (owner 22 Oct night, docs/OWNER_1022D.md): the owner is taking Linework to the App Store. Freeze features: only fix what blocks release (T60 sandbox purchase, owner reports). Do not change pricing, the trial, the locks, names or store copy without an owner comment. fb-1022b (owner 22 Oct evening, docs/OWNER_1022B.md) outranks everything except trial blockers: T114 finish, T117 bake, then T115 batches, then T116 owner retest. Pick order: trial blockers → open owner-comment tasks → D75-2 done (T91, T92, T77 in run 56) → T94 compare/finish glass → fb-1017 → rest; T93 after the owner picks a screenshot style. T60 waits for the dev build; T27/T71 content after release assets."
