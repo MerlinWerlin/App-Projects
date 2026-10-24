@@ -1,0 +1,16 @@
+node_modules/
+.expo/
+dist/
+web-build/
+# generated native projects only (local Expo modules under modules/ keep their ios/ android/ sources)
+/ios/
+/android/
+*.log
+.env*
+coverage/
+.claude/
+# store screenshot kit output (store/render.mjs), regenerated on demand, never committed
+store/screenshots/
+.verify/
+verify-report.txt
+.verify-step.txt

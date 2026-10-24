@@ -18,37 +18,136 @@
       "paper": "#F7F3EE",
       "icon": "apps/linework/assets/icon.png",
       "screenshots": "apps/linework/store/jpg/a",
-      "pinSource": {"kind": "svg-templates", "dir": "apps/linework/assets/templates", "stroke": "#22201C"},
-      "boards": ["Kawaii Drawings to Trace", "Tattoo Flash to Trace", "Animal Drawings for Beginners", "Sea Life Drawings", "Fantasy & Fairy Tale Sketches", "Things to Draw When Bored", "Mandalas & Patterns", "Easy Drawings for Kids", "Lettering & Fonts to Trace", "Workshop Templates & Layouts"],
+      "pinSource": {
+        "kind": "svg-templates",
+        "dir": "apps/linework/assets/templates",
+        "stroke": "#22201C"
+      },
+      "boards": [
+        "Kawaii Drawings to Trace",
+        "Tattoo Flash to Trace",
+        "Animal Drawings for Beginners",
+        "Sea Life Drawings",
+        "Fantasy & Fairy Tale Sketches",
+        "Things to Draw When Bored",
+        "Mandalas & Patterns",
+        "Easy Drawings for Kids",
+        "Lettering & Fonts to Trace",
+        "Workshop Templates & Layouts"
+      ],
       "lead": [
-        {"title": "No subscription, no ads", "body": "Tracing your own photos stays free with every tool. Linework Plus is one A$2.99 payment for the full library and photo-to-outline. Most tracing apps charge US$6-10 a week."},
-        {"title": "It stays on the paper", "body": "Lock the picture, rest your hand on the screen and keep focus while you draw, so the image doesn't slide or blur as your hand moves in."},
-        {"title": "1,900+ original templates", "body": "Kawaii and chibi, tattoo flash, animals, fairy tales, letters in 16 styles, and a Workshop of exact angles and joints for trades. Plus photo to sketch on the phone."}
+        {
+          "title": "No subscription, no ads",
+          "body": "Tracing your own photos stays free with every tool. Linework Plus is one A$2.99 payment for the full library and photo-to-outline. Most tracing apps charge US$6-10 a week."
+        },
+        {
+          "title": "It stays on the paper",
+          "body": "Lock the picture, rest your hand on the screen and keep focus while you draw, so the image doesn't slide or blur as your hand moves in."
+        },
+        {
+          "title": "1,900+ original templates",
+          "body": "Kawaii and chibi, tattoo flash, animals, fairy tales, letters in 16 styles, and a Workshop of exact angles and joints for trades. Plus photo to sketch on the phone."
+        }
       ],
       "compare": {
         "rows": [
-          ["Price", "Free to trace your photos; A$2.99 once for everything", "Usually US$6-10 a week or US$30-70 a year"],
-          ["Ads", "None", "Common, sometimes mid-drawing"],
-          ["Trace your own photo", "Free", "Often behind the subscription"],
-          ["Keeping the image still", "Picture lock, touch lock, focus lock", "Drift and refocusing are frequent complaints"],
-          ["Timelapse", "Up to 10 minutes, no watermark, guide never recorded", "Often watermarked"],
-          ["Account or data", "No account, Data Not Collected", "Varies"]
+          [
+            "Price",
+            "Free to trace your photos; A$2.99 once for everything",
+            "Usually US$6-10 a week or US$30-70 a year"
+          ],
+          [
+            "Ads",
+            "None",
+            "Common, sometimes mid-drawing"
+          ],
+          [
+            "Trace your own photo",
+            "Free",
+            "Often behind the subscription"
+          ],
+          [
+            "Keeping the image still",
+            "Picture lock, touch lock, focus lock",
+            "Drift and refocusing are frequent complaints"
+          ],
+          [
+            "Timelapse",
+            "Up to 10 minutes, no watermark, guide never recorded",
+            "Often watermarked"
+          ],
+          [
+            "Account or data",
+            "No account, Data Not Collected",
+            "Varies"
+          ]
         ],
         "them": "Typical tracing app"
       },
       "faq": [
-        ["Is tracing cheating?", "No. Artists have traced with projectors, lightboxes and grids for centuries. Tracing helps you learn proportions and line confidence; Linework's Sketch steps reveal a picture from big shapes to fine lines so you build it the way artists do."],
-        ["How do I trace a picture from my phone without it moving?", "Stand the phone on a glass, a stack of books or a stand above the paper, then tap Lock. Touch lock lets your hand rest on the screen, and focus stays put while locked, so the picture holds still."],
-        ["Is there a free AR drawing app without a subscription?", "Linework is free for 14 days with everything on. After that, tracing your own photos with every tool and 24 starter templates stays free, with no ads. The full library is a one-time A$2.99."],
-        ["Can I turn a photo into a sketch to trace?", "Yes. Photo to sketch makes clean line art on the phone in four styles, with detail and line-thickness controls. Nothing is uploaded."],
-        ["Does it work without the camera?", "Yes. Lightbox mode shows the picture full-bright on a white screen so you can trace through thin paper laid over the phone or tablet."]
+        [
+          "Is tracing cheating?",
+          "No. Artists have traced with projectors, lightboxes and grids for centuries. Tracing helps you learn proportions and line confidence; Linework's Sketch steps reveal a picture from big shapes to fine lines so you build it the way artists do."
+        ],
+        [
+          "How do I trace a picture from my phone without it moving?",
+          "Stand the phone on a glass, a stack of books or a stand above the paper, then tap Lock. Touch lock lets your hand rest on the screen, and focus stays put while locked, so the picture holds still."
+        ],
+        [
+          "Is there a free AR drawing app without a subscription?",
+          "Linework is free for 14 days with everything on. After that, tracing your own photos with every tool and 24 starter templates stays free, with no ads. The full library is a one-time A$2.99."
+        ],
+        [
+          "Can I turn a photo into a sketch to trace?",
+          "Yes. Photo to sketch makes clean line art on the phone in four styles, with detail and line-thickness controls. Nothing is uploaded."
+        ],
+        [
+          "Does it work without the camera?",
+          "Yes. Lightbox mode shows the picture full-bright on a white screen so you can trace through thin paper laid over the phone or tablet."
+        ]
       ],
-      "keywords": ["ar drawing app no subscription", "free tracing app", "app to trace pictures on paper", "trace a picture from phone to paper", "photo to sketch", "drawings to trace", "kawaii drawings", "tattoo flash ideas", "things to draw when bored", "is tracing cheating"],
+      "keywords": [
+        "ar drawing app no subscription",
+        "free tracing app",
+        "app to trace pictures on paper",
+        "trace a picture from phone to paper",
+        "photo to sketch",
+        "drawings to trace",
+        "kawaii drawings",
+        "tattoo flash ideas",
+        "things to draw when bored",
+        "is tracing cheating"
+      ],
       "reddit": {
-        "queries": ["tracing app", "ar drawing app", "trace on paper app", "drawing app no subscription", "da vinci eye alternative", "is tracing cheating", "photo to sketch app"],
-        "subs": ["learntodraw", "drawing", "ArtistLounge", "sketchbooks", "iphone", "ipad", "Calligraphy", "handlettering", "woodworking"]
+        "queries": [
+          "tracing app",
+          "ar drawing app",
+          "trace on paper app",
+          "drawing app no subscription",
+          "da vinci eye alternative",
+          "is tracing cheating",
+          "photo to sketch app"
+        ],
+        "subs": [
+          "learntodraw",
+          "drawing",
+          "ArtistLounge",
+          "sketchbooks",
+          "iphone",
+          "ipad",
+          "Calligraphy",
+          "handlettering",
+          "woodworking"
+        ]
       },
-      "avoid": ["only free tracing app", "only app without a subscription", "never drifts", "teaches you to draw", "plain 'free' without the trial wording", "any competitor or franchise name"]
+      "avoid": [
+        "only free tracing app",
+        "only app without a subscription",
+        "never drifts",
+        "teaches you to draw",
+        "plain 'free' without the trial wording",
+        "any competitor or franchise name"
+      ]
     },
     {
       "slug": "couch",
@@ -58,9 +157,29 @@
       "stage": "building",
       "nameLocked": false,
       "ascAppId": "6826135134",
-      "appStoreUrl": "", "testflightUrl": "", "playUrl": "",
-      "pinSource": {"kind": "screenshots"},
-      "reddit": {"queries": ["tv remote app", "universal remote app", "remote app no ads", "roku remote app", "samsung tv remote app"], "subs": ["iphone", "Roku", "AndroidTV", "googletv", "appletv", "PleX"]},
+      "appStoreUrl": "",
+      "testflightUrl": "",
+      "playUrl": "",
+      "pinSource": {
+        "kind": "screenshots"
+      },
+      "reddit": {
+        "queries": [
+          "tv remote app",
+          "universal remote app",
+          "remote app no ads",
+          "roku remote app",
+          "samsung tv remote app"
+        ],
+        "subs": [
+          "iphone",
+          "Roku",
+          "AndroidTV",
+          "googletv",
+          "appletv",
+          "PleX"
+        ]
+      },
       "note": "Docs in apps/couch/docs (STORE.md, MARKET.md). Turn on by setting stage to prelaunch."
     },
     {
@@ -71,11 +190,71 @@
       "stage": "building",
       "nameLocked": false,
       "ascAppId": "6826415074",
-      "appStoreUrl": "", "testflightUrl": "", "playUrl": "",
-      "pinSource": {"kind": "screenshots"},
-      "boards": ["Aesthetic Lock Screens", "iPhone Home Screen Ideas", "Space Wallpapers"],
-      "reddit": {"queries": ["lock screen app", "widget app", "app icon themes", "home screen customization app"], "subs": ["iOSsetups", "iphone", "widgetsmith", "iOSthemes"]},
+      "appStoreUrl": "",
+      "testflightUrl": "",
+      "playUrl": "",
+      "pinSource": {
+        "kind": "screenshots"
+      },
+      "boards": [
+        "Aesthetic Lock Screens",
+        "iPhone Home Screen Ideas",
+        "Space Wallpapers"
+      ],
+      "reddit": {
+        "queries": [
+          "lock screen app",
+          "widget app",
+          "app icon themes",
+          "home screen customization app"
+        ],
+        "subs": [
+          "iOSsetups",
+          "iphone",
+          "widgetsmith",
+          "iOSthemes"
+        ]
+      },
       "note": "Docs in apps/glaze/docs (STORE.md, MARKET.md). Strong Pinterest fit (lock screen and home screen ideas). Turn on by setting stage to prelaunch."
+    },
+    {
+      "slug": "cue",
+      "name": "Cue",
+      "storeName": "Cue: Teleprompter",
+      "tagline": "A teleprompter that waits for you",
+      "stage": "building",
+      "nameLocked": false,
+      "ascAppId": "",
+      "appStoreUrl": "",
+      "testflightUrl": "",
+      "playUrl": "",
+      "price": "Free teleprompter and recording with no watermark; Cue Plus is one payment for Voice Pace, captions and extras",
+      "accent": "#E8552B",
+      "paper": "#0F0F11",
+      "icon": "apps/cue/assets/brand/icon.png",
+      "screenshots": "",
+      "pinSource": {
+        "kind": "none"
+      },
+      "boards": [
+        "Content Creator Tips",
+        "Public Speaking Tips",
+        "YouTube Tips for Beginners"
+      ],
+      "lead": [
+        {
+          "title": "It waits for you",
+          "body": "Voice Pace moves the words only while you talk and stops when you pause, so you never chase the text."
+        },
+        {
+          "title": "No watermark, no subscription",
+          "body": "Record with the script by the lens and save every take to Photos. Plus is one payment, not a yearly bill."
+        },
+        {
+          "title": "Retake one section",
+          "body": "Record your script section by section and redo just the part you fluffed."
+        }
+      ]
     }
   ]
 }
