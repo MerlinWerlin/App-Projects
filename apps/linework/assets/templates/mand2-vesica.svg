@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Vesica piscis sacred geometry</title>
+  <g fill="none" stroke="#22201C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 68 200 A 88 88 0 1 0 244 200 A 88 88 0 1 0 68 200 Z"/>
+    <path d="M 156 200 A 88 88 0 1 0 332 200 A 88 88 0 1 0 156 200 Z"/>
+    <path d="M 200 123.8 L 244 200 L 200 276.2 L 156 200 Z"/>
+    <path d="M 200 30 L 200 370 M 30 200 L 370 200"/>
+    <path d="M 30 200 A 170 170 0 1 0 370 200 A 170 170 0 1 0 30 200 Z"/>
+  </g>
+</svg>

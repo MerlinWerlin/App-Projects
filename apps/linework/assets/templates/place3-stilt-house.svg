@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Raised house on stilts</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 286 262 L 300 262 L 364 340 L 346 340 Z"/>
+    <path d="M 78 176 L 132 112 L 268 112 L 322 176 Z"/>
+    <path d="M 290.6 268 L 96 268 L 96 176 L 304 176 L 304 266.9"/>
+    <path d="M 118 196 L 164 196 L 164 238 L 118 238 Z"/>
+    <path d="M 184 196 L 230 196 L 230 238 L 184 238 Z"/>
+    <path d="M 286 262 L 286 268 L 252 268 L 252 196 L 286 196 L 286 262"/>
+    <path d="M 99 268 L 109 268 L 109 340 L 99 340 Z M 163 268 L 173 268 L 173 340 L 163 340 Z M 227 268 L 237 268 L 237 340 L 227 340 Z M 297 276.3 L 297 340 L 287 340 L 287 268 L 290.6 268"/>
+    <path d="M 24 340 L 376 340"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 296 275 L 310.7 275"/>
+    <path d="M 306 288 L 321.3 288"/>
+    <path d="M 316 301 L 332 301"/>
+    <path d="M 326 314 L 342.7 314"/>
+    <path d="M 336 327 L 353.3 327"/>
+    <path d="M 140 114 L 167 174"/>
+    <path d="M 156 114 L 175.8 174"/>
+    <path d="M 172 114 L 184.6 174"/>
+    <path d="M 188 114 L 193.4 174"/>
+    <path d="M 204 114 L 202.2 174"/>
+    <path d="M 220 114 L 211 174"/>
+    <path d="M 236 114 L 219.8 174"/>
+    <path d="M 252 114 L 228.6 174"/>
+    <path d="M 141 196 L 141 238 M 118 217 L 164 217"/>
+    <path d="M 207 196 L 207 238 M 184 217 L 230 217"/>
+    <path d="M 277.5 234 A 2.5 2.5 0 1 0 282.5 234 A 2.5 2.5 0 1 0 277.5 234 Z"/>
+    <path d="M 96 254 L 252 254"/>
+    <path d="M 109 300 L 163 300"/>
+    <path d="M 173 300 L 227 300"/>
+    <path d="M 237 300 L 287 300"/>
+    <path d="M 40 352 Q 50 346 60 352"/>
+    <path d="M 200 360 Q 210 354 220 360"/>
+  </g>
+</svg>

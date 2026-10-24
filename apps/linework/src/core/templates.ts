@@ -35,6 +35,18 @@ import { wildlife3 } from './templateArt/baked/wildlife3.ts';
 import { kidsfantasy } from './templateArt/baked/kidsfantasy.ts';
 import { mandalas2 } from './templateArt/baked/mandalas2.ts';
 import { patterns2 } from './templateArt/baked/patterns2.ts';
+import { wild2 } from './templateArt/baked/wild2.ts';
+import { flowers3 } from './templateArt/baked/flowers3.ts';
+import { lettering2 } from './templateArt/baked/lettering2.ts';
+import { mandalas3 } from './templateArt/baked/mandalas3.ts';
+import { kids2 } from './templateArt/baked/kids2.ts';
+import { shapes3 } from './templateArt/baked/shapes3.ts';
+import { patterns3 } from './templateArt/baked/patterns3.ts';
+import { stilllife4 } from './templateArt/baked/stilllife4.ts';
+import { animals3 } from './templateArt/baked/animals3.ts';
+import { figures2 } from './templateArt/baked/figures2.ts';
+import { places3 } from './templateArt/baked/places3.ts';
+import { fantasy3 } from './templateArt/baked/fantasy3.ts';
 import { trade } from './templateArt/trade.ts';
 import { trade2 } from './templateArt/trade2.ts';
 
@@ -154,6 +166,18 @@ export const TEMPLATES: readonly Template[] = [
   ...trade,
   ...kidsfantasy,
   ...trade2,
+  ...wild2,
+  ...flowers3,
+  ...lettering2,
+  ...mandalas3,
+  ...kids2,
+  ...shapes3,
+  ...patterns3,
+  ...stilllife4,
+  ...animals3,
+  ...figures2,
+  ...places3,
+  ...fantasy3,
 ];
 
 export function templateLevel(t: Template): TemplateLevel {

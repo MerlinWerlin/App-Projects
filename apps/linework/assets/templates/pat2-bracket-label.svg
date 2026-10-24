@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Bracket label with diamonds</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 72 124 L 328 124 A 26 26 0 0 0 354 150 L 354 174 A 26 26 0 0 1 354 226 L 354 250 A 26 26 0 0 0 328 276 L 72 276 A 26 26 0 0 0 46 250 L 46 226 A 26 26 0 0 1 46 174 L 46 150 A 26 26 0 0 0 72 124 Z"/>
+    <path d="M 80 140 L 320 140 A 18 18 0 0 0 338 158 L 338 182 A 18 18 0 0 1 338 218 L 338 242 A 18 18 0 0 0 320 260 L 80 260 A 18 18 0 0 0 62 242 L 62 218 A 18 18 0 0 1 62 182 L 62 158 A 18 18 0 0 0 80 140 Z"/>
+    <path d="M 200 97 L 212 106 L 200 115 L 188 106 Z"/>
+    <path d="M 200 285 L 212 294 L 200 303 L 188 294 Z"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 112 176 L 288 176"/>
+    <path d="M 112 224 L 288 224"/>
+    <path d="M 98 170 L 104 176 L 98 182 L 92 176 Z"/>
+    <path d="M 302 170 L 308 176 L 302 182 L 296 176 Z"/>
+    <path d="M 98 218 L 104 224 L 98 230 L 92 224 Z"/>
+    <path d="M 302 218 L 308 224 L 302 230 L 296 224 Z"/>
+    <path d="M 150 106 L 184 106"/>
+    <path d="M 216 106 L 250 106"/>
+    <path d="M 150 294 L 184 294"/>
+    <path d="M 216 294 L 250 294"/>
+  </g>
+</svg>
