@@ -60,7 +60,7 @@ svg.ic .f{fill:currentColor;stroke:none}
    24% band between the key and the ring edge. Label bold ~21pt at 260 (.081), line-height 1. Raised bevel (OkBevel):
    white light fading out by 36%, keyEdge shade from 64%, soft keyEdge drop shadow. */
 .pad{--pad:min(260px,72vw);position:relative;width:var(--pad);height:var(--pad);margin:0 auto;border-radius:50%;background:var(--ring,var(--key));box-shadow:var(--shadow)}
-.pad button{position:absolute;border:0;background:none;display:grid;place-items:center;color:var(--muted)}
+.pad button{position:absolute;border:0;background:none;display:grid;place-items:center;color:var(--ring-ink,var(--muted))}
 .pad button svg{width:calc(var(--pad)*.1);height:calc(var(--pad)*.1)}
 .pad .u,.pad .d{left:calc(var(--pad)*.24);width:calc(var(--pad)*.52);height:calc(var(--pad)*.24)}.pad .u{top:0}.pad .d{bottom:0}
 .pad .l,.pad .r{top:calc(var(--pad)*.24);height:calc(var(--pad)*.52);width:calc(var(--pad)*.24)}.pad .l{left:0}.pad .r{right:0}
@@ -205,7 +205,7 @@ html[data-shot] *{animation-play-state:paused!important}
 
 <script type="application/json" id="remote-themes">
 {
- "charcoal":{"bg":"#0E0E0F","stage":"#080809","body":"#1C1C1D","key":"#2B2B2C","keyEdge":"#060606","ink":"#F4EEE3","muted":"#BDB5A8","accent":"#D2AB72","accentSoft":"#5C4626","accentInk":"#1A1208","power":"#FF9C8F","ring":"#C9A26C","ringLit":"#2A1A08","glow":"#C9A26C","radius":14,"texture":{"kind":"brushed","colors":["#2A2A2B","#1C1C1D"],"opacity":0.35}},
+ "charcoal":{"bg":"#0E0E0F","stage":"#080809","body":"#1C1C1D","key":"#2B2B2C","keyEdge":"#060606","ink":"#F4EEE3","muted":"#BDB5A8","accent":"#D2AB72","accentSoft":"#5C4626","accentInk":"#1A1208","power":"#FF9C8F","ring":"#C9A26C","ringLit":"#2A1A08","ringInk":"#2A1D0C","glow":"#C9A26C","radius":14,"texture":{"kind":"brushed","colors":["#2A2A2B","#1C1C1D"],"opacity":0.35}},
  "midnight":{"bg":"#0B1020","stage":"#070A14","body":"#141B2E","key":"#1E2740","keyEdge":"#05070D","ink":"#E8EDF7","muted":"#A3AECB","accent":"#4062E8","accentSoft":"#26346A","accentInk":"#FFFFFF","power":"#FF8A80","ring":"#1E2740","ringLit":"#8FA6FF","glow":"#4D6BFF","radius":14,"texture":{"kind":"glass","colors":["#2A3760","#141B2E"],"opacity":0.35}},
  "daylight":{"bg":"#ECE8E1","stage":"#E2DDD4","body":"#F8F5EF","key":"#FFFFFF","keyEdge":"#D3CCC0","ink":"#1F232A","muted":"#5C6470","accent":"#2F5BD3","accentSoft":"#DCE5FB","accentInk":"#FFFFFF","power":"#B83232","ring":"#FFFFFF","ringLit":"#2F5BD3","glow":null,"radius":14,"texture":{"kind":"paper","colors":["#F8F5EF","#EFEAE0"],"opacity":0.5}},
  "oled":{"bg":"#000000","stage":"#000000","body":"#000000","key":"#121212","keyEdge":"#000000","ink":"#F2F2F2","muted":"#A6A6A6","accent":"#2A63E0","accentSoft":"#0F2148","accentInk":"#FFFFFF","power":"#FF6B6B","ring":"#121212","ringLit":"#6E9BFF","glow":null,"radius":12,"texture":{"kind":"none","colors":[],"opacity":0}},
@@ -282,7 +282,7 @@ var FREE_THEMES=['charcoal','midnight','daylight','oled'];
 var Q=new URLSearchParams(location.search),SHOT=Q.get('shot')==='1';
 if(SHOT)document.documentElement.setAttribute('data-shot','');
 function lum(h){var n=parseInt(h.slice(1),16),c=[(n>>16)&255,(n>>8)&255,n&255].map(function(v){v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]}
-var TVARS=['--bg','--stage','--body','--key','--key-edge','--ink','--muted','--accent','--accent-soft','--accent-ink','--power','--ring','--ring-lit','--glow','--radius','--tex-op','--t1','--t2','--t3','--shadow','color-scheme','--kf-top','--kf-bot','--kf-gloss','--kf-shade'];
+var TVARS=['--bg','--stage','--body','--key','--key-edge','--ink','--muted','--accent','--accent-soft','--accent-ink','--power','--ring','--ring-lit','--ring-ink','--glow','--radius','--tex-op','--t1','--t2','--t3','--shadow','color-scheme','--kf-top','--kf-bot','--kf-gloss','--kf-shade'];
 /* keyFaceColors() from src/ui/icons/keyFaceColors.ts: mix toward white / keyEdge, gloss and shade by key lightness */
 function mixHex(a,b,t){var x=parseInt(a.slice(1),16),y=parseInt(b.slice(1),16);return '#'+[16,8,0].map(function(sh){var p=(x>>sh)&255,q=(y>>sh)&255;return ('0'+Math.round(p+(q-p)*t).toString(16)).slice(-2)}).join('').toUpperCase()}
 function keyFace(t){var dark=lum(t.key)<.4;return {'--kf-top':mixHex(t.key,'#FFFFFF',.07),'--kf-bot':mixHex(t.key,t.keyEdge,.05),'--kf-gloss':'rgba(255,255,255,'+(dark?.14:.6)+')','--kf-shade':'color-mix(in srgb,'+t.keyEdge+' '+(dark?35:18)+'%,transparent)'}}
@@ -291,7 +291,7 @@ function applyTheme(id){
  TVARS.forEach(function(v){st.removeProperty(v)});
  if(!t){r.removeAttribute('data-rtheme');r.removeAttribute('data-tex');return ''}
  var dark=lum(t.bg)<.18,c=t.texture.colors;
- var set={'--bg':t.bg,'--stage':t.stage,'--body':t.body,'--key':t.key,'--key-edge':t.keyEdge,'--ink':t.ink,'--muted':t.muted,'--accent':t.accent,'--accent-soft':t.accentSoft,'--accent-ink':t.accentInk,'--power':t.power,'--ring':t.ring,'--ring-lit':t.ringLit,'--glow':t.glow||'transparent','--radius':t.radius+'px','--tex-op':String(t.texture.opacity),'--t1':c[0]||t.body,'--t2':c[1]||c[0]||t.body,'--t3':c[2]||c[0]||t.body,
+ var set={'--bg':t.bg,'--stage':t.stage,'--body':t.body,'--key':t.key,'--key-edge':t.keyEdge,'--ink':t.ink,'--muted':t.muted,'--accent':t.accent,'--accent-soft':t.accentSoft,'--accent-ink':t.accentInk,'--power':t.power,'--ring':t.ring,'--ring-lit':t.ringLit,'--ring-ink':t.ringInk||t.muted,'--glow':t.glow||'transparent','--radius':t.radius+'px','--tex-op':String(t.texture.opacity),'--t1':c[0]||t.body,'--t2':c[1]||c[0]||t.body,'--t3':c[2]||c[0]||t.body,
   '--shadow':dark?'0 1px 0 var(--key-edge), 0 2px 8px rgba(0,0,0,.4)':'0 1px 0 var(--key-edge), 0 2px 6px rgba(30,40,55,.10)','color-scheme':dark?'dark':'light'};
  var kf=keyFace(t);Object.keys(kf).forEach(function(k){set[k]=kf[k]});
  Object.keys(set).forEach(function(k){st.setProperty(k,set[k])});

@@ -1,7 +1,7 @@
 {
   "app": "tvremote",
   "title": "Couch (universal TV remote, working title)",
-  "updated": "2026-10-22",
+  "updated": "2026-10-24",
   "tasks": [
     {
       "id": "T01",
@@ -1135,6 +1135,16 @@
       ],
       "done": "2026-10-23 night pass (branch night-feedback)",
       "note": "src/ui/useAnnounce.ts (iOS only, 1.5 s dedupe so remote + Apps don't double up); app/(tabs)/remote.tsx, app/(tabs)/apps.tsx; guard tests/night-1023.test.ts"
+    },
+    {
+      "id": "T88",
+      "title": "owner-1024 follow-up: prototype mirrors the optional ringInk token so the Charcoal & Gold d-pad shows dark arrows in the prototype and store shot 01; store shot 06 headline counts the real themes (12, was hard-coded 10)",
+      "status": "done",
+      "tags": [
+        "owner-1024"
+      ],
+      "commit": "b6a1915",
+      "note": "run 66; store shots re-rendered and republished"
     }
   ],
   "codex_delegable": [
