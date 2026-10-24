@@ -176,11 +176,11 @@ Two styles to A/B test (Apple product page optimisation or Play store listing ex
 | 1 | **Trace anything onto paper** | Your phone over the page, your pencil on the lines | Outcome: phone on a glass over paper, a real hand with a pencil tracing, the finished drawing half done underneath |
 | 2 | **Every tool free** | No ads. No subscription. No account. | The differentiator: the full control row with every label visible |
 | 3 | **Any photo to a sketch** | Three line styles, made on your phone | Photo-to-sketch Before → After |
-| 4 | **1,900+ templates to trace** | Heroes, fairy tales, game world, kids and more | Templates grid with category bubbles |
+| 4 | **1,900+ templates to trace** | Letters, heroes, fairy tales, kids and more | Templates grid with category bubbles |
 | 5 | **Lock it. Draw steady.** | Lock, touch lock and focus that stays put | Lock and touch lock on the trace screen |
-| 6 | **Draw it step by step** | Big shapes first, fine lines last | Sketch steps |
-| 7 | **Fade it just right** | Slide the opacity until you see your pencil | Opacity slider blown up |
-| 8 | **Speaks 11 languages** | English, 日本語, Español, العربية and more | Languages |
+| 6 | **Letters in 16 styles** | Bubble, retro, calligraphy, pixel and more | Letters bubble with style tiles; one-letter cards spelling HAPPY (24 Oct) |
+| 7 | **Exact angles for the workshop** | Angles, joints and layouts to trace | Workshop tab in blueprint style (24 Oct) |
+| 8 | **Pay once. Keep it all.** | One unlock for every template. No subscription. | Linework Plus one-time unlock, no price figure (24 Oct) |
 
 ### Art direction per shot
 
