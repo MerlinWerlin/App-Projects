@@ -6,14 +6,16 @@ Eight shots at 1320×2868 (6.9-inch iPhone portrait), each in two styles for the
 
 | # | Shot | Shows |
 |---|---|---|
-| 01 | Trace anything onto paper | Hand with a pencil tracing on paper under the phone, ripple at the pencil tip |
-| 02 | Every tool free | All the labelled tool pills: Lock, Torch, Grid, Mirror, Steps, Lightbox, Record, Photo |
-| 03 | Any photo to a sketch | Before → After: the photo and its outline, and the three line styles |
-| 04 | 1,900+ templates to trace | Templates grid with category bubbles (Letters among them) |
-| 05 | Lock it. Draw steady. | Lock button blown up with tap ripples, touch-lock banner |
-| 06 | Letters in 16 styles | Letters bubble with style tiles, letter cards spelling HAPPY (24 Oct 2026) |
-| 07 | Exact angles for the workshop | The blueprint Workshop tab with trade template cards (24 Oct 2026) |
-| 08 | Pay once. Keep it all. | Linework Plus one-time unlock (no price figure: prices vary by country), No ads / No subscription / No account chips (24 Oct 2026) |
+| 01 | Trace anything onto paper | Trace screen, half traced |
+| 02 | Made for… | Uses list (10 uses, 11 locales in captions.json `items`) over the trace screen; subtitle "Every tool free, no ads" |
+| 03 | Exact angles for the workshop | The blueprint Workshop tab |
+| 04 | Any photo to a sketch | Prepare screen on Outline |
+| 05 | 1,900+ templates to trace | Templates grid with category bubbles |
+| 06 | Letters in 16 styles | Letters bubble with style tiles |
+| 07 | Lock it. Draw steady. | Image locked, touch lock banner |
+| 08 | Pay once. Keep it all. | Linework Plus one-time unlock (no price figure) |
+
+**v2 (owner 24 Oct 2026):** one pastel style (a) only; style (b) was dropped. No hands, fingers or body parts anywhere. Every shot is an upright iPhone-style phone (Dynamic Island, no punch-hole camera) as large as the frame allows, caption above. Renders: `jpg/a/` at 1320×2868 and `jpg/a-6.5/` at 1284×2778.
 
 ## Styles
 

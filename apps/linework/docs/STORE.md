@@ -40,20 +40,24 @@ Linework: Trace & Sketch
 Trace photos onto real paper
 ```
 
-### Promotional text (≤170) [151]
+### Promotional text (≤170) [158]
 ```text
-Try everything free for 14 days, then unlock the full library once for A$2.99. Tracing your own photos stays free: no ads, no subscription, no account.
+New: Workshop, exact angles, joints and layouts for trades, plus letters in 16 styles. Free for 14 days, then unlock once for A$2.99. No ads, no subscription.
 ```
 
-### Keywords (≤100) [98]
+### Keywords (≤100) [97]
 Comma separated, no spaces after commas, no word that is already in the name or subtitle (Apple indexes those anyway), no other app's name.
 ```text
-tracing,ar,camera,outline,stencil,lightbox,template,anime,chibi,cute,art,projector,kids,learn,line
+tracing,stencil,template,workshop,angle,carpentry,lettering,calligraphy,font,scrapbook,mural,kids
 ```
 
-### Description (≤4000) [3137]
+### Description (≤4000) [3436]
 ```text
 Trace anything onto real paper. Stand your phone over a sheet of paper, pick a photo or a template, and Linework shows it on top of the live camera view so you can draw along the lines with your own pencil.
+
+Made for scrapbooking, journaling, cards, crafts, signs and lettering, wall art and murals, woodwork and trades, kids' colouring and cake decorating.
+
+New: the Workshop. Exact angles, joints and layouts for carpenters, welders, tilers and every trade, plus letters in 16 styles for hand lettering.
 
 Every tracing tool is free. No ads, no trial, no weekly subscription, no account.
 
@@ -173,14 +177,16 @@ Two styles to A/B test (Apple product page optimisation or Play store listing ex
 
 | # | Headline | Subline | What it shows |
 |---|---|---|---|
-| 1 | **Trace anything onto paper** | Your phone over the page, your pencil on the lines | Outcome: phone on a glass over paper, a real hand with a pencil tracing, the finished drawing half done underneath |
-| 2 | **Every tool free** | No ads. No subscription. No account. | The differentiator: the full control row with every label visible |
-| 3 | **Any photo to a sketch** | Three line styles, made on your phone | Photo-to-sketch Before → After |
-| 4 | **1,900+ templates to trace** | Letters, heroes, fairy tales, kids and more | Templates grid with category bubbles |
-| 5 | **Lock it. Draw steady.** | Lock, touch lock and focus that stays put | Lock and touch lock on the trace screen |
-| 6 | **Letters in 16 styles** | Bubble, retro, calligraphy, pixel and more | Letters bubble with style tiles; one-letter cards spelling HAPPY (24 Oct) |
-| 7 | **Exact angles for the workshop** | Angles, joints and layouts to trace | Workshop tab in blueprint style (24 Oct) |
-| 8 | **Pay once. Keep it all.** | One unlock for every template. No subscription. | Linework Plus one-time unlock, no price figure (24 Oct) |
+| 1 | **Trace anything onto paper** | Your phone over the page, your pencil on the lines | Trace screen: camera view of paper with the overlay, half traced |
+| 2 | **Made for…** | Every tool free, no ads | Uses list over the trace screen: scrapbooking, journaling, cards, crafts, signs & lettering, wall art & murals, tattoo practice, woodwork & trades, kids' colouring, cake decorating |
+| 3 | **Exact angles for the workshop** | Angles, joints and layouts to trace | Blueprint Workshop tab (early so tradespeople see it) |
+| 4 | **Any photo to a sketch** | Three line styles, made on your phone | Prepare screen on Outline |
+| 5 | **1,900+ templates to trace** | Letters, heroes, fairy tales, kids and more | Templates grid with category bubbles |
+| 6 | **Letters in 16 styles** | Bubble, retro, calligraphy, pixel and more | Letters bubble with style tiles |
+| 7 | **Lock it. Draw steady.** | Lock, touch lock and focus that stays put | Image locked + touch lock banner |
+| 8 | **Pay once. Keep it all.** | One unlock for every template. No subscription. | Linework Plus one-time unlock (no price figure) |
+
+v2 (owner 24 Oct 2026): one pastel style only; no hands, fingers or body parts anywhere (family-friendly); an upright iPhone-style phone (Dynamic Island) as large as the frame allows with the caption above. Rendered at 1320×2868 (6.9") and 1284×2778 (6.5").
 
 ### Art direction per shot
 

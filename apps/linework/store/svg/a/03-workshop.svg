@@ -14,14 +14,14 @@
   <linearGradient id="inkBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A50BA"/><stop offset="1" stop-color="#2346A8"/></linearGradient>
 </defs>
 <linearGradient id="bg1" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#E7EEF6"/><stop offset="0.55" stop-color="#D3DFEC"/><stop offset="1" stop-color="#C2D2E4"/></linearGradient><rect width="1320" height="2868" fill="url(#bg1)"/>
-  <circle cx="1180" cy="760" r="420" fill="#FFFFFF" opacity="0.28"/><circle cx="120" cy="2300" r="520" fill="#FFFFFF" opacity="0.22"/><g transform="rotate(6 640 1960)">
-  <clipPath id="scr2"><rect x="289.24" y="1177.08" width="701.52" height="1565.8400000000001" rx="91.76"/></clipPath>
-  <rect x="265" y="1478.704" width="10" height="112.30240000000002" rx="5" fill="#2A2925"/>
-  <rect x="265" y="1639.136" width="10" height="112.30240000000002" rx="5" fill="#2A2925"/>
-  <rect x="1005" y="1574.9632" width="10" height="160.43200000000002" rx="5" fill="#2A2925"/>
-  <rect x="270" y="1157.84" width="740" height="1604.3200000000002" rx="111" fill="url(#bodyG)" filter="url(#shPhone)"/>
-  <rect x="273" y="1160.84" width="734" height="1598.3200000000002" rx="108" fill="none" stroke="#5A5750" stroke-width="3"/>
-  <g clip-path="url(#scr2)"><svg x="289.24" y="1177.08" width="701.52" height="1565.8400000000001" viewBox="0 0 600 1300" preserveAspectRatio="xMidYMid slice"><g data-dark="1"><rect width="600" height="1300" fill="#0F2236"/><path d="M0 0V1300M30 0V1300M60 0V1300M90 0V1300M120 0V1300M150 0V1300M180 0V1300M210 0V1300M240 0V1300M270 0V1300M300 0V1300M330 0V1300M360 0V1300M390 0V1300M420 0V1300M450 0V1300M480 0V1300M510 0V1300M540 0V1300M570 0V1300M600 0V1300M0 0H600M0 30H600M0 60H600M0 90H600M0 120H600M0 150H600M0 180H600M0 210H600M0 240H600M0 270H600M0 300H600M0 330H600M0 360H600M0 390H600M0 420H600M0 450H600M0 480H600M0 510H600M0 540H600M0 570H600M0 600H600M0 630H600M0 660H600M0 690H600M0 720H600M0 750H600M0 780H600M0 810H600M0 840H600M0 870H600M0 900H600M0 930H600M0 960H600M0 990H600M0 1020H600M0 1050H600M0 1080H600M0 1110H600M0 1140H600M0 1170H600M0 1200H600M0 1230H600M0 1260H600M0 1290H600" stroke="#1D3A57" stroke-width="1" fill="none"/><text x="58" y="44" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="22" fill="#FFFFFF">12:00</text>
+  <circle cx="1180" cy="760" r="420" fill="#FFFFFF" opacity="0.28"/><circle cx="120" cy="2300" r="520" fill="#FFFFFF" opacity="0.22"/><g transform="rotate(0 660 1684)">
+  <clipPath id="scr2"><rect x="186" y="626" width="948" height="2116" rx="124"/></clipPath>
+  <rect x="155" y="1033.6" width="10" height="151.76000000000002" rx="5" fill="#2A2925"/>
+  <rect x="155" y="1250.4" width="10" height="151.76000000000002" rx="5" fill="#2A2925"/>
+  <rect x="1155" y="1163.68" width="10" height="216.8" rx="5" fill="#2A2925"/>
+  <rect x="160" y="600" width="1000" height="2168" rx="150" fill="url(#bodyG)" filter="url(#shPhone)"/>
+  <rect x="163" y="603" width="994" height="2162" rx="147" fill="none" stroke="#5A5750" stroke-width="3"/>
+  <g clip-path="url(#scr2)"><svg x="186" y="626" width="948" height="2116" viewBox="0 0 600 1300" preserveAspectRatio="xMidYMid slice"><g data-dark="1"><rect width="600" height="1300" fill="#0F2236"/><path d="M0 0V1300M30 0V1300M60 0V1300M90 0V1300M120 0V1300M150 0V1300M180 0V1300M210 0V1300M240 0V1300M270 0V1300M300 0V1300M330 0V1300M360 0V1300M390 0V1300M420 0V1300M450 0V1300M480 0V1300M510 0V1300M540 0V1300M570 0V1300M600 0V1300M0 0H600M0 30H600M0 60H600M0 90H600M0 120H600M0 150H600M0 180H600M0 210H600M0 240H600M0 270H600M0 300H600M0 330H600M0 360H600M0 390H600M0 420H600M0 450H600M0 480H600M0 510H600M0 540H600M0 570H600M0 600H600M0 630H600M0 660H600M0 690H600M0 720H600M0 750H600M0 780H600M0 810H600M0 840H600M0 870H600M0 900H600M0 930H600M0 960H600M0 990H600M0 1020H600M0 1050H600M0 1080H600M0 1110H600M0 1140H600M0 1170H600M0 1200H600M0 1230H600M0 1260H600M0 1290H600" stroke="#1D3A57" stroke-width="1" fill="none"/><text x="58" y="44" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="22" fill="#FFFFFF">12:00</text>
   <g fill="#FFFFFF"><rect x="476" y="32" width="5" height="10" rx="1.5"/><rect x="485" y="28" width="5" height="14" rx="1.5"/><rect x="494" y="24" width="5" height="18" rx="1.5"/>
   <rect x="510" y="26" width="34" height="17" rx="4.5" fill="none" stroke="#FFFFFF" stroke-width="2"/><rect x="513" y="29" width="24" height="11" rx="2.5"/></g>
   <text x="40" y="150" font-family="'SF Mono', Menlo, 'DejaVu Sans Mono', monospace" font-weight="700" font-size="50" fill="#E6F4FB">Workshop</text>
@@ -93,41 +93,10 @@
     <path d="M 112 200 A 88 88 0 1 0 288 200 A 88 88 0 1 0 112 200 Z"/>
   </g>
 </svg><text x="324" y="1100" font-family="'SF Mono', Menlo, 'DejaVu Sans Mono', monospace" font-weight="600" font-size="19" fill="#7FD6F2">CIRCLE ÷ 8</text><rect x="0" y="1186" width="600" height="114" fill="#0E1B2E"/><rect x="0" y="1186" width="600" height="2" fill="#24405F"/><g transform="translate(45 1207) scale(1.25)" fill="none" stroke="#8EA3BC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></g><text x="60" y="1262" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="15" fill="#8EA3BC">Trace</text><g transform="translate(165 1207) scale(1.25)" fill="none" stroke="#8EA3BC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></g><text x="180" y="1262" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="15" fill="#8EA3BC">Templates</text><g transform="translate(285 1207) scale(1.25)" fill="none" stroke="#7FD6F2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L4 16.8V20h3.2l5.3-5.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></g><text x="300" y="1262" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="15" fill="#7FD6F2">Workshop</text><g transform="translate(405 1207) scale(1.25)" fill="none" stroke="#8EA3BC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 16l9-9 3 3-9 9H6z"/></g><text x="420" y="1262" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="15" fill="#8EA3BC">My drawings</text><g transform="translate(525 1207) scale(1.25)" fill="none" stroke="#8EA3BC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></g><text x="540" y="1262" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="15" fill="#8EA3BC">Settings</text></g>
-    <circle cx="300" cy="34" r="13" fill="#0E0E0C"/><circle cx="300" cy="34" r="5" fill="#25303F"/>
+    <rect x="236" y="18" width="128" height="38" rx="19" fill="#0E0E0C"/><circle cx="338" cy="37" r="7" fill="#1B2533"/>
     <rect x="200" y="1272" width="200" height="8" rx="4" fill="#FFFFFF" opacity="0.55"/>
   </svg></g>
-  <rect x="289.24" y="1177.08" width="701.52" height="1565.8400000000001" rx="91.76" fill="url(#glassG)" opacity="0.6"/>
-</g><g transform="rotate(-9 210 1100)"><rect x="40" y="900" width="340" height="400" rx="8" fill="#132B44" filter="url(#shCard)"/><rect x="40" y="900" width="340" height="400" rx="8" fill="none" stroke="#7FD6F2" stroke-width="3"/><svg x="60" y="916" width="300" height="300" viewBox="0 0 400 400" overflow="visible" opacity="1">
-  
-  <g fill="none" stroke="#E6F4FB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 80 300 L 340 300"/>
-    <path d="M 80 300 L 263.8 116.2"/>
-    <path d="M 198.4 261.8 L 198.4 241.8 L 189.4 255.8 L 201.4 255.8"/>
-    <path d="M 217.4 241.8 L 206.4 241.8 L 205.4 250.8 L 214.4 249.8 L 217.4 252.8 L 217.4 258.8 L 215.4 261.8 L 207.4 261.8 L 205.4 259.8"/>
-    <path d="M 223.4 241.8 L 227.4 241.8 L 229.4 243.8 L 229.4 247.8 L 227.4 249.8 L 223.4 249.8 L 221.4 247.8 L 221.4 243.8 L 223.4 241.8"/>
-  </g>
-  <g fill="none" stroke="#E6F4FB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 170 300 A 90 90 0 0 0 143.6 236.4"/>
-  </g>
-</svg><text x="62" y="1278" font-family="'SF Mono', Menlo, 'DejaVu Sans Mono', monospace" font-weight="700" font-size="30" fill="#7FD6F2">ANGLE 45°</text></g><g transform="rotate(8 1100 1320)"><rect x="930" y="1120" width="340" height="400" rx="8" fill="#132B44" filter="url(#shCard)"/><rect x="930" y="1120" width="340" height="400" rx="8" fill="none" stroke="#7FD6F2" stroke-width="3"/><svg x="950" y="1136" width="300" height="300" viewBox="0 0 400 400" overflow="visible" opacity="1">
-  
-  <g fill="none" stroke="#E6F4FB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 50 250 L 72 250 L 48.7 110 L 151.3 110 L 128 250 L 172 250 L 148.7 110 L 251.3 110 L 228 250 L 272 250 L 248.7 110 L 351.3 110 L 328 250 L 350 250"/>
-    <path d="M 50 250 L 50 330"/>
-    <path d="M 350 250 L 350 330"/>
-    <path d="M 50 330 L 350 330"/>
-    <path d="M 185 54 L 189 50 L 189 70"/>
-    <path d="M 185 70 L 193 70"/>
-    <path d="M 201.6 53.2 L 206.4 53.2 L 206.4 57.6 L 201.6 57.6 L 201.6 53.2"/>
-    <path d="M 201.6 55.4 L 206.4 55.4"/>
-    <path d="M 201.6 65.6 L 206.4 65.6 L 206.4 70 L 201.6 70 L 201.6 65.6"/>
-    <path d="M 201.6 67.8 L 206.4 67.8"/>
-    <path d="M 217 50 L 210 50 L 206 56 L 206 68 L 208 70 L 216 70 L 218 68 L 218 62 L 216 60 L 208 60 L 206 62"/>
-  </g>
-  <g fill="none" stroke="#E6F4FB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 50 110 L 350 110"/>
-    <path d="M 72 210 A 40 40 0 0 0 65.4 210.5"/>
-  </g>
-</svg><text x="952" y="1498" font-family="'SF Mono', Menlo, 'DejaVu Sans Mono', monospace" font-weight="700" font-size="30" fill="#7FD6F2">DOVETAIL</text></g><path transform="translate(1200 880) rotate(0)" opacity="1" fill="#FFFFFF" d="M0 -34 C 7.48 -7.48 7.48 -7.48 34 0 C 7.48 7.48 7.48 7.48 0 34 C -7.48 7.48 -7.48 7.48 -34 0 C -7.48 -7.48 -7.48 -7.48 0 -34 Z"/><path transform="translate(140 2450) rotate(0)" opacity="1" fill="#FFFFFF" d="M0 -40 C 8.8 -8.8 8.8 -8.8 40 0 C 8.8 8.8 8.8 8.8 0 40 C -8.8 8.8 -8.8 8.8 -40 0 C -8.8 -8.8 -8.8 -8.8 0 -40 Z"/><path transform="translate(1230 2400) rotate(0)" opacity="1" fill="#2346A8" d="M0 -24 C 5.28 -5.28 5.28 -5.28 24 0 C 5.28 5.28 5.28 5.28 0 24 C -5.28 5.28 -5.28 5.28 -24 0 C -5.28 -5.28 -5.28 -5.28 0 -24 Z"/><text text-anchor="middle" font-family="Fraunces, Lora, Georgia, 'Times New Roman', serif" font-weight="600" font-size="132" letter-spacing="-2" fill="#22201C"><tspan x="660" y="330">Exact angles</tspan><tspan x="660" y="478">for the workshop</tspan></text>
-  <text x="660" y="632" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="500" font-size="50" fill="#6E675D">Angles, joints and layouts to trace</text>
+  <rect x="186" y="626" width="948" height="2116" rx="124" fill="url(#glassG)" opacity="0.6"/>
+</g><path transform="translate(90 700) rotate(0)" opacity="1" fill="#FFFFFF" d="M0 -30 C 6.6 -6.6 6.6 -6.6 30 0 C 6.6 6.6 6.6 6.6 0 30 C -6.6 6.6 -6.6 6.6 -30 0 C -6.6 -6.6 -6.6 -6.6 0 -30 Z"/><path transform="translate(1236 760) rotate(0)" opacity="1" fill="#2346A8" d="M0 -24 C 5.28 -5.28 5.28 -5.28 24 0 C 5.28 5.28 5.28 5.28 0 24 C -5.28 5.28 -5.28 5.28 -24 0 C -5.28 -5.28 -5.28 -5.28 0 -24 Z"/><text text-anchor="middle" font-family="Fraunces, Lora, Georgia, 'Times New Roman', serif" font-weight="600" font-size="124" letter-spacing="-2" fill="#22201C"><tspan x="660" y="236">Exact angles</tspan><tspan x="660" y="374">for the workshop</tspan></text>
+  <text x="660" y="460" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="500" font-size="50" fill="#6E675D">Angles, joints and layouts to trace</text>
 </svg>

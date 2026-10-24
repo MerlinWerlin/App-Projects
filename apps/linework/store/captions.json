@@ -91,36 +91,199 @@
    }
   },
   {
-   "id": "02-free",
+   "id": "02-made-for",
    "headline": {
-    "en": "Every tool free",
-    "ar": "كل الأدوات مجانية",
-    "de": "Jedes Werkzeug kostenlos",
-    "es": "Todas las herramientas, gratis",
-    "fr": "Tous les outils gratuits",
-    "hi": "हर टूल मुफ़्त",
-    "it": "Ogni strumento è gratis",
-    "ja": "すべてのツールが無料",
-    "ko": "모든 도구 무료",
-    "pt-BR": "Todas as ferramentas grátis",
-    "zh-Hans": "所有工具免费"
+    "en": "Made for…",
+    "ar": "مصمَّم لـ…",
+    "de": "Gemacht für…",
+    "es": "Hecho para…",
+    "fr": "Conçu pour…",
+    "hi": "इनके लिए बना…",
+    "it": "Fatto per…",
+    "ja": "こんな用途に",
+    "ko": "이런 작업에 딱",
+    "pt-BR": "Feito para…",
+    "zh-Hans": "适用于…"
    },
    "subtitle": {
-    "en": "No ads. No subscription. No account.",
-    "ar": "بلا إعلانات. بلا اشتراك. بلا حساب.",
-    "de": "Keine Werbung. Kein Abo. Kein Konto.",
-    "es": "Sin anuncios. Sin suscripción. Sin cuenta.",
-    "fr": "Sans pub. Sans abonnement. Sans compte.",
-    "hi": "कोई विज्ञापन नहीं। कोई सदस्यता नहीं। कोई खाता नहीं।",
-    "it": "Niente pubblicità. Niente abbonamento. Niente account.",
-    "ja": "広告なし。サブスクなし。アカウント不要。",
-    "ko": "광고 없음. 구독 없음. 계정 없음.",
-    "pt-BR": "Sem anúncios. Sem assinatura. Sem conta.",
-    "zh-Hans": "无广告。无订阅。无需账号。"
+    "en": "Every tool free, no ads",
+    "ar": "كل الأدوات مجانية، بلا إعلانات",
+    "de": "Alle Werkzeuge gratis, ohne Werbung",
+    "es": "Todas las herramientas gratis, sin anuncios",
+    "fr": "Tous les outils gratuits, sans pub",
+    "hi": "हर टूल मुफ़्त, कोई विज्ञापन नहीं",
+    "it": "Tutti gli strumenti gratis, senza pubblicità",
+    "ja": "すべてのツールが無料・広告なし",
+    "ko": "모든 도구 무료, 광고 없음",
+    "pt-BR": "Todas as ferramentas grátis, sem anúncios",
+    "zh-Hans": "所有工具免费，无广告"
+   },
+   "items": {
+    "en": [
+     "Scrapbooking",
+     "Journaling",
+     "Cards",
+     "Crafts",
+     "Signs & lettering",
+     "Wall art & murals",
+     "Tattoo practice",
+     "Woodwork & trades",
+     "Kids' colouring",
+     "Cake decorating"
+    ],
+    "ar": [
+     "سكرابوكينغ",
+     "تدوين اليوميات",
+     "البطاقات",
+     "الحِرف اليدوية",
+     "اللافتات والخطوط",
+     "فن الجدران والجداريات",
+     "التدرّب على الوشم",
+     "النجارة والحِرف",
+     "تلوين للأطفال",
+     "تزيين الكيك"
+    ],
+    "de": [
+     "Scrapbooking",
+     "Journaling",
+     "Karten",
+     "Basteln",
+     "Schilder & Lettering",
+     "Wandkunst & Wandbilder",
+     "Tattoo-Übung",
+     "Holz & Handwerk",
+     "Ausmalen für Kinder",
+     "Tortendeko"
+    ],
+    "es": [
+     "Scrapbooking",
+     "Diarios",
+     "Tarjetas",
+     "Manualidades",
+     "Carteles y lettering",
+     "Arte mural",
+     "Práctica de tatuaje",
+     "Carpintería y oficios",
+     "Colorear para niños",
+     "Decoración de tartas"
+    ],
+    "fr": [
+     "Scrapbooking",
+     "Journaling",
+     "Cartes",
+     "Loisirs créatifs",
+     "Enseignes et lettrage",
+     "Art mural et fresques",
+     "Entraînement tatouage",
+     "Bois et métiers",
+     "Coloriage enfants",
+     "Décor de gâteaux"
+    ],
+    "hi": [
+     "स्क्रैपबुकिंग",
+     "जर्नलिंग",
+     "कार्ड",
+     "क्राफ़्ट",
+     "साइन और लेटरिंग",
+     "दीवार कला और म्यूरल",
+     "टैटू अभ्यास",
+     "लकड़ी का काम और कारीगरी",
+     "बच्चों की रंगाई",
+     "केक सजावट"
+    ],
+    "it": [
+     "Scrapbooking",
+     "Journaling",
+     "Biglietti",
+     "Lavori creativi",
+     "Insegne e lettering",
+     "Arte murale",
+     "Pratica di tatuaggio",
+     "Legno e mestieri",
+     "Colorare per bambini",
+     "Decorazione torte"
+    ],
+    "ja": [
+     "スクラップブッキング",
+     "ジャーナリング",
+     "カード",
+     "クラフト",
+     "看板・レタリング",
+     "ウォールアート・壁画",
+     "タトゥー練習",
+     "木工・職人仕事",
+     "子どもの塗り絵",
+     "ケーキデコレーション"
+    ],
+    "ko": [
+     "스크랩북",
+     "다이어리 꾸미기",
+     "카드",
+     "공예",
+     "간판·레터링",
+     "벽화·월아트",
+     "타투 연습",
+     "목공·기술 작업",
+     "아이 색칠놀이",
+     "케이크 데코"
+    ],
+    "pt-BR": [
+     "Scrapbooking",
+     "Journaling",
+     "Cartões",
+     "Artesanato",
+     "Placas e lettering",
+     "Arte mural",
+     "Prática de tatuagem",
+     "Marcenaria e ofícios",
+     "Colorir para crianças",
+     "Decoração de bolos"
+    ],
+    "zh-Hans": [
+     "剪贴簿",
+     "手账",
+     "贺卡",
+     "手工",
+     "招牌与字体",
+     "墙绘与壁画",
+     "纹身练习",
+     "木工与手艺",
+     "儿童涂色",
+     "蛋糕装饰"
+    ]
    }
   },
   {
-   "id": "03-photo-sketch",
+   "id": "03-workshop",
+   "headline": {
+    "en": "Exact angles for the workshop",
+    "ar": "زوايا دقيقة للورشة",
+    "de": "Exakte Winkel für die Werkstatt",
+    "es": "Ángulos exactos para el taller",
+    "fr": "Des angles exacts pour l'atelier",
+    "hi": "वर्कशॉप के लिए सटीक कोण",
+    "it": "Angoli esatti per l'officina",
+    "ja": "工房のための正確な角度",
+    "ko": "작업장을 위한 정확한 각도",
+    "pt-BR": "Ângulos exatos para a oficina",
+    "zh-Hans": "工坊用的精确角度"
+   },
+   "subtitle": {
+    "en": "Angles, joints and layouts to trace",
+    "ar": "زوايا ووصلات ومخططات للتتبّع",
+    "de": "Winkel, Verbindungen und Anrisse zum Nachzeichnen",
+    "es": "Ángulos, uniones y trazados para calcar",
+    "fr": "Angles, assemblages et tracés à calquer",
+    "hi": "ट्रेस करने के लिए कोण, जोड़ और लेआउट",
+    "it": "Angoli, giunzioni e tracciati da ricalcare",
+    "ja": "角度・継ぎ手・レイアウトをトレース",
+    "ko": "따라 그리는 각도, 이음, 배치",
+    "pt-BR": "Ângulos, encaixes e traçados para decalcar",
+    "zh-Hans": "可描摹的角度、接合与放样"
+   }
+  },
+  {
+   "id": "04-photo-sketch",
    "headline": {
     "en": "Any photo to a sketch",
     "ar": "أي صورة إلى رسم",
@@ -149,7 +312,7 @@
    }
   },
   {
-   "id": "04-templates",
+   "id": "05-templates",
    "headline": {
     "en": "1,900+ templates to trace",
     "ar": "أكثر من 1900 قالب للتتبّع",
@@ -175,35 +338,6 @@
     "ko": "글자, 히어로, 동화, 키즈 등",
     "pt-BR": "Letras, heróis, contos de fadas, crianças e mais",
     "zh-Hans": "字母、英雄、童话、儿童等"
-   }
-  },
-  {
-   "id": "05-lock",
-   "headline": {
-    "en": "Lock it. Draw steady.",
-    "ar": "ثبّتها. ارسم بثبات.",
-    "de": "Fixieren. Ruhig zeichnen.",
-    "es": "Fíjala. Dibuja firme.",
-    "fr": "Verrouillez. Dessinez stable.",
-    "hi": "लॉक करें। स्थिर बनाएँ।",
-    "it": "Bloccala. Disegna stabile.",
-    "ja": "固定して、ぶれずに描く",
-    "ko": "고정하고 흔들림 없이",
-    "pt-BR": "Trave. Desenhe firme.",
-    "zh-Hans": "锁定画面，稳稳地画"
-   },
-   "subtitle": {
-    "en": "Lock, touch lock and focus that stays put",
-    "ar": "القفل وقفل اللمس وتركيز لا يتحرك",
-    "de": "Sperre, Touch-Sperre und Fokus, der bleibt",
-    "es": "Bloqueo, bloqueo táctil y un enfoque que no se mueve",
-    "fr": "Verrou, verrou tactile et mise au point qui tient",
-    "hi": "लॉक, टच लॉक और टिका रहने वाला फ़ोकस",
-    "it": "Blocco, blocco tocco e messa a fuoco che resta ferma",
-    "ja": "ロック、タッチロック、動かないピント",
-    "ko": "잠금, 터치 잠금, 그대로 유지되는 초점",
-    "pt-BR": "Trava, trava de toque e foco que não sai do lugar",
-    "zh-Hans": "锁定、触控锁定，对焦不跑偏"
    }
   },
   {
@@ -236,32 +370,32 @@
    }
   },
   {
-   "id": "07-workshop",
+   "id": "07-lock",
    "headline": {
-    "en": "Exact angles for the workshop",
-    "ar": "زوايا دقيقة للورشة",
-    "de": "Exakte Winkel für die Werkstatt",
-    "es": "Ángulos exactos para el taller",
-    "fr": "Des angles exacts pour l'atelier",
-    "hi": "वर्कशॉप के लिए सटीक कोण",
-    "it": "Angoli esatti per l'officina",
-    "ja": "工房のための正確な角度",
-    "ko": "작업장을 위한 정확한 각도",
-    "pt-BR": "Ângulos exatos para a oficina",
-    "zh-Hans": "工坊用的精确角度"
+    "en": "Lock it. Draw steady.",
+    "ar": "ثبّتها. ارسم بثبات.",
+    "de": "Fixieren. Ruhig zeichnen.",
+    "es": "Fíjala. Dibuja firme.",
+    "fr": "Verrouillez. Dessinez stable.",
+    "hi": "लॉक करें। स्थिर बनाएँ।",
+    "it": "Bloccala. Disegna stabile.",
+    "ja": "固定して、ぶれずに描く",
+    "ko": "고정하고 흔들림 없이",
+    "pt-BR": "Trave. Desenhe firme.",
+    "zh-Hans": "锁定画面，稳稳地画"
    },
    "subtitle": {
-    "en": "Angles, joints and layouts to trace",
-    "ar": "زوايا ووصلات ومخططات للتتبّع",
-    "de": "Winkel, Verbindungen und Anrisse zum Nachzeichnen",
-    "es": "Ángulos, uniones y trazados para calcar",
-    "fr": "Angles, assemblages et tracés à calquer",
-    "hi": "ट्रेस करने के लिए कोण, जोड़ और लेआउट",
-    "it": "Angoli, giunzioni e tracciati da ricalcare",
-    "ja": "角度・継ぎ手・レイアウトをトレース",
-    "ko": "따라 그리는 각도, 이음, 배치",
-    "pt-BR": "Ângulos, encaixes e traçados para decalcar",
-    "zh-Hans": "可描摹的角度、接合与放样"
+    "en": "Lock, touch lock and focus that stays put",
+    "ar": "القفل وقفل اللمس وتركيز لا يتحرك",
+    "de": "Sperre, Touch-Sperre und Fokus, der bleibt",
+    "es": "Bloqueo, bloqueo táctil y un enfoque que no se mueve",
+    "fr": "Verrou, verrou tactile et mise au point qui tient",
+    "hi": "लॉक, टच लॉक और टिका रहने वाला फ़ोकस",
+    "it": "Blocco, blocco tocco e messa a fuoco che resta ferma",
+    "ja": "ロック、タッチロック、動かないピント",
+    "ko": "잠금, 터치 잠금, 그대로 유지되는 초점",
+    "pt-BR": "Trava, trava de toque e foco que não sai do lugar",
+    "zh-Hans": "锁定、触控锁定，对焦不跑偏"
    }
   },
   {
