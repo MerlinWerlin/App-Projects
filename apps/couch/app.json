@@ -3,7 +3,7 @@
     "name": "Couch",
     "slug": "couch-remote",
     "scheme": "couch",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "ios": {
@@ -51,7 +51,15 @@
           }
         }
       ],
-      "expo-status-bar"
+      "expo-status-bar",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Couch shows the photos and videos you pick on your TV.",
+          "cameraPermission": false,
+          "microphonePermission": false
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

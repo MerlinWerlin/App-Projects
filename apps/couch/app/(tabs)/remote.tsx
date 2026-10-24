@@ -7,6 +7,8 @@ import { minKeyHeight, remoteContentWidth, rowOrStack } from '../../src/core/tex
 import { useT } from '../../src/i18n/react';
 import { usePrefs } from '../../src/state/prefs';
 import { useSession } from '../../src/state/session';
+import { useCastRouting } from '../../src/state/cast';
+import { RemoteCastPill } from '../../src/ui/cast/CastPill';
 import { fonts, radius } from '../../src/theme/tokens';
 import { useRemoteTheme } from '../../src/theme/useRemoteTheme';
 import { DemoNote, FreePromise, Screen } from '../../src/ui/Screen';
@@ -88,6 +90,8 @@ export default function RemoteScreen() {
   const [last, setLast] = useState<string | null>(null);
   const [note, setNote] = useState<string | null>(null);
   const tv = session.activeTv();
+  // cast-1024: while a cast is on the TV, Play/Pause controls the cast (src/state/cast.tsx).
+  const { handlesKey: castHandles, togglePlay: castTogglePlay } = useCastRouting();
   // Cinema glow colour (null = none). 'theme' (default) uses the remote theme's glow; Match TV uses
   // the active saved TV; demo gets amber. The stage behind the remote comes from the theme.
   const glow = glowColor(prefs.glow, snap.demo ? null : (tv?.id ?? null), theme.glow);
@@ -101,6 +105,12 @@ export default function RemoteScreen() {
       else emitFx({ type: 'press', dir: keyDir(key) });
       const step = volumeStep(key);
       if (step) emitFx({ type: 'volume', step });
+      // cast-1024: Play/Pause goes to the cast while one is on.
+      if (castHandles(key)) {
+        setLast(label);
+        castTogglePlay();
+        return;
+      }
       // Source opens the source picker (prototype v2); the sheet sends the input change itself.
       if (opensSourceSheet(key)) {
         setSrcOpen(true);
@@ -110,7 +120,7 @@ export default function RemoteScreen() {
       setNote(null);
       void session.sendKey(key);
     },
-    [session],
+    [session, castHandles, castTogglePlay],
   );
 
   const onAction = (a: ActionId) => {
@@ -133,6 +143,7 @@ export default function RemoteScreen() {
       {/* The theme's stage behind everything (near-black while a glow is on), incl. the status-bar strip. */}
       <Screen bg={stage.bg}>
         <TvHeader tv={tv} state={snap.state} lastMs={snap.lastMs} onPress={() => router.navigate('/tvs')} />
+        <RemoteCastPill />
 
         {snap.lastError ? (
           <Pressable

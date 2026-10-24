@@ -9,6 +9,8 @@ import { loadPersistentKv } from '../src/native/kv';
 import { hasStoreReview, loadStoreReview } from '../src/native/storeReview';
 import { hasMediaServer, loadMediaServer } from '../src/native/mediaServer';
 import { hasWidgetBridge, loadWidgetBridge } from '../src/native/widgetBridge';
+import { hasRoutePicker, showRoutePicker } from '../src/native/routePicker';
+import { hasMediaPicker } from '../src/native/mediaPicker';
 
 const nativeDir = join(__dirname, '..', 'src', 'native');
 const NATIVE = [
@@ -21,6 +23,8 @@ const NATIVE = [
   'expo-store-review', // T75 (run 42)
   '../../modules/media-server', // T76 (casting; needs a dev build)
   '../../modules/widget-bridge', // T77 (Home Screen widget; needs a dev build)
+  '../../modules/route-picker', // T92 (AirPlay route picker; iOS dev build only)
+  'expo-image-picker', // cast-1024 T91 (Cast tab picker)
 ];
 const sources = readdirSync(nativeDir)
   .filter((f) => f.endsWith('.ts'))
@@ -28,7 +32,7 @@ const sources = readdirSync(nativeDir)
 
 describe('native module guard', () => {
   it('scans src/native', () => {
-    expect(sources.map((s) => s.f).sort()).toEqual(expect.arrayContaining(['index.ts', 'kv.ts', 'mediaServer.ts', 'udp.ts', 'widgetBridge.ts', 'zeroconf.ts']));
+    expect(sources.map((s) => s.f).sort()).toEqual(expect.arrayContaining(['index.ts', 'kv.ts', 'mediaServer.ts', 'routePicker.ts', 'udp.ts', 'widgetBridge.ts', 'zeroconf.ts']));
   });
 
   it('has no static import of optional native modules', () => {
@@ -65,7 +69,7 @@ describe('native module guard', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('returns null / false when the modules are not installed', () => {
+  it('returns null / false when the modules are not installed', async () => {
     expect(nativeCapabilities()).toEqual({ udp: false, zeroconf: false });
     expect(loadUdpFactory()).toBeNull();
     expect(loadZeroconf()).toBeNull();
@@ -76,8 +80,13 @@ describe('native module guard', () => {
     // T76: casting's local file server
     expect(loadMediaServer().available).toBe(false);
     expect(hasMediaServer()).toBe(false);
+    // cast-1024 T91: photo / video picker
+    expect(hasMediaPicker()).toBe(false);
     // T77: Home Screen widget bridge
     expect(loadWidgetBridge().available).toBe(false);
     expect(hasWidgetBridge()).toBe(false);
+    // T92: AirPlay route picker
+    expect(hasRoutePicker()).toBe(false);
+    await expect(showRoutePicker()).resolves.toBe(false);
   });
 });

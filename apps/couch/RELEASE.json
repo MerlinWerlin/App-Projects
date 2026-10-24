@@ -1,5 +1,5 @@
 {
-  "mode": "update",
-  "note": "Couch: feedback screen polish and records",
+  "mode": "build",
+  "note": "Couch 1.0.1: new Cast tab sends your photos and videos to the TV (DLNA and Roku), with an AirPlay / Screen Mirroring shortcut",
   "ascAppId": "6826135134"
 }
