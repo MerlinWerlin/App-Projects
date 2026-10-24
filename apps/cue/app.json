@@ -8,7 +8,6 @@
     "userInterfaceStyle": "automatic",
     "icon": "./assets/brand/icon.png",
     "backgroundColor": "#0F0F11",
-    "newArchEnabled": true,
     "owner": "jared797",
     "ios": {
       "supportsTablet": true,
