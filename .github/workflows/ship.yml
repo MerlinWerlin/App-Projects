@@ -92,6 +92,9 @@ jobs:
           # Optional: skip EAS capability sync when capabilities were set by hand in the Apple developer site
           # (Apple's API can't assign App Groups).
           echo "skipCapSync=$(jq -r 'if .skipCapabilitySync then "1" else "" end' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          # Optional: let EAS create/repair signing (certificate check, provisioning profile) with the App Store
+          # Connect API key instead of an interactive Apple login. Needed for an app's first build from CI.
+          echo "ascKeyAuth=$(jq -r 'if .ascKeyAuth then "1" else "" end' RELEASE.json)" >> "$GITHUB_OUTPUT"
 
       - name: Install packages
         run: npm install --no-audit --no-fund
@@ -133,8 +136,34 @@ jobs:
         env:
           EAS_BUILD_NO_EXPO_GO_WARNING: 'true'
           EXPO_NO_CAPABILITY_SYNC: ${{ steps.rel.outputs.skipCapSync == '1' && '1' || '0' }}
+          ASC_KEY_AUTH: ${{ steps.rel.outputs.ascKeyAuth }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         run: |
           set -o pipefail
+          if [ "$ASC_KEY_AUTH" = "1" ]; then
+            # Only for apps whose RELEASE.json asks for it (first CI build of a new app).
+            k="$RUNNER_TEMP/AuthKey.p8"
+            # Same tolerant .p8 parsing as the store sync (literal \n, one line, base64 of the file ...).
+            python3 - > "$k" <<'PY'
+          import base64, os, re
+          raw = os.environ["ASC_KEY_P8"].strip().strip('"').replace("\\n", "\n")
+          if "BEGIN" not in raw:
+              try:
+                  dec = base64.b64decode(raw).decode()
+                  raw = dec if "BEGIN" in dec else raw
+              except Exception:
+                  pass
+          body = re.sub(r"[^A-Za-z0-9+/=]", "", re.sub(r"-----(BEGIN|END)[^-]*-----", "", raw))
+          print("-----BEGIN PRIVATE KEY-----\n" + "\n".join(body[i:i + 64] for i in range(0, len(body), 64)) + "\n-----END PRIVATE KEY-----")
+          PY
+            grep -q 'BEGIN PRIVATE KEY' "$k" || { echo "::error::ASC_KEY_P8 is not a PEM private key"; exit 1; }
+            export EXPO_ASC_API_KEY_PATH="$k" EXPO_ASC_KEY_ID="$(echo "$ASC_KEY_ID" | tr -d '[:space:]')" \
+                   EXPO_ASC_ISSUER_ID="$(echo "$ASC_ISSUER_ID" | tr -d '[:space:]')" EXPO_APPLE_TEAM_ID="$(echo "$APPLE_TEAM_ID" | tr -d '[:space:]')" \
+                   EXPO_APPLE_TEAM_TYPE=INDIVIDUAL
+          fi
           eas build --platform ios --profile "${{ steps.rel.outputs.profile }}" --non-interactive --auto-submit-with-profile production --no-wait --message "${{ steps.rel.outputs.note }}" 2>&1 | tee "$RUNNER_TEMP/ship.log"
 
       - name: Publish an over-the-air update
