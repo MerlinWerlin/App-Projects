@@ -5,6 +5,7 @@
  */
 import { Ionicons } from '@expo/vector-icons';
 import { useKeepAwake } from 'expo-keep-awake';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { StatusBar } from 'expo-status-bar';
@@ -20,8 +21,8 @@ import { getLocale, t } from '../../src/i18n';
 import { success, tap, thud } from '../../src/native/haptics';
 import { loadSpeech, type SpeechSession } from '../../src/native/speech';
 import { useApp } from '../../src/state/AppState';
-import { PROMPTER } from '../../src/theme/theme';
-import { IconBtn } from '../../src/ui/kit';
+import { Glass, IconBtn } from '../../src/ui/kit';
+import { FONT, PROMPTER, RADIUS } from '../../src/theme/theme';
 import { Prompter, type PrompterHandle } from '../../src/ui/Prompter';
 import { useVoiceGate } from '../../src/ui/useVoiceGate';
 
@@ -247,72 +248,99 @@ export default function PromptScreen() {
 
       {count !== null ? (
         <View pointerEvents="none" style={st.center}>
-          <Text style={[st.count, { color: palette.ink }]} accessibilityLiveRegion="assertive">
+          <Text style={[st.count, { color: palette.cue }]} accessibilityLiveRegion="assertive">
             {count}
           </Text>
         </View>
       ) : null}
 
       {!running && count === null ? (
-        <View pointerEvents="none" style={[st.center, { top: undefined, bottom: insets.bottom + 120 }]}>
-          <Text style={[st.hint, { color: palette.dim }]}>
-            {done !== null ? t('prompt.finished', { time: formatDuration(done) }) : elapsed > 0 ? t('prompt.paused') : t('prompt.tapToStart')}
-          </Text>
+        <View pointerEvents="none" style={[st.center, { top: undefined, bottom: insets.bottom + 168 }]}>
+          <Glass tint="dark" style={st.hintChip}>
+            <Text style={st.hint}>
+              {done !== null ? t('prompt.finished', { time: formatDuration(done) }) : elapsed > 0 ? t('prompt.paused') : t('prompt.tapToStart')}
+            </Text>
+          </Glass>
         </View>
       ) : null}
 
       {chrome ? (
-        <Animated.View entering={app.reduceMotion ? undefined : FadeIn.duration(180)} exiting={app.reduceMotion ? undefined : FadeOut.duration(250)} style={[st.top, { paddingTop: insets.top + 6 }]} pointerEvents="box-none">
-          <IconBtn icon="close" label={t('prompt.close')} onPress={close} color={palette.ink} bg="rgba(0,0,0,0.35)" />
+        <Animated.View entering={app.reduceMotion ? undefined : FadeIn.duration(200)} exiting={app.reduceMotion ? undefined : FadeOut.duration(260)} style={[st.top, { paddingTop: insets.top + 8 }]} pointerEvents="box-none">
+          <Glass tint="dark" style={st.round}>
+            <IconBtn icon="close" label={t('prompt.close')} onPress={close} color="#F1EEE6" />
+          </Glass>
           <View style={{ flex: 1 }} />
-          {prefs.showTimer ? <Text style={[st.timer, { color: palette.ink }]}>{formatDuration(elapsed)}</Text> : null}
-          <Pressable onPress={chooseMode} accessibilityRole="button" accessibilityLabel={t(`prompt.mode.${mode}`)} style={st.modeChip}>
-            <Ionicons name={mode === 'steady' ? 'speedometer-outline' : 'mic-outline'} size={16} color="#fff" />
-            <Text style={st.modeText}>{t(`prompt.mode.${mode}`)}</Text>
+          {prefs.showTimer ? (
+            <Glass tint="dark" style={st.chip}>
+              <Text style={st.timer}>{formatDuration(elapsed)}</Text>
+            </Glass>
+          ) : null}
+          <Pressable onPress={chooseMode} accessibilityRole="button" accessibilityLabel={t(`prompt.mode.${mode}`)}>
+            <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
+              <Ionicons name={mode === 'steady' ? 'speedometer-outline' : 'mic-outline'} size={15} color={BRASS} />
+              <Text style={st.chipText}>{t(`prompt.mode.${mode}`)}</Text>
+            </Glass>
           </Pressable>
         </Animated.View>
       ) : null}
 
       {listening ? (
-        <View pointerEvents="none" style={[st.listen, { top: insets.top + 60 }]}>
-          <View style={[st.dot, { backgroundColor: speaking ? '#3DDC84' : '#888' }]} />
-          <Text style={st.listenText}>{speaking ? t('prompt.listening') : t('prompt.waiting')}</Text>
+        <View pointerEvents="none" style={[st.listen, { top: insets.top + 64 }]}>
+          <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 7 }]}>
+            <View style={[st.dot, { backgroundColor: speaking ? BRASS : '#6E7486' }]} />
+            <Text style={st.chipText}>{speaking ? t('prompt.listening') : t('prompt.waiting')}</Text>
+          </Glass>
         </View>
       ) : null}
 
       {chrome ? (
-        <Animated.View entering={app.reduceMotion ? undefined : FadeIn.duration(180)} exiting={app.reduceMotion ? undefined : FadeOut.duration(250)} style={[st.bottom, { paddingBottom: insets.bottom + 10 }]} pointerEvents="box-none">
-          <View style={st.pill}>
-            <IconBtn icon="play-skip-back" label={t('prompt.restart')} onPress={restart} color="#fff" />
-            <IconBtn icon="list" label={t('prompt.sections')} onPress={sections} color="#fff" />
-            <IconBtn icon="remove" label="Slower" onPress={() => setSpeed((s) => nudgeSpeed(s, -1))} color="#fff" />
-            <Text style={st.speed} accessibilityLabel={t('prompt.speed', { pct: Math.round(speed * 100) })}>
-              {Math.round(speed * 100)}%
-            </Text>
-            <IconBtn icon="add" label="Faster" onPress={() => setSpeed((s) => nudgeSpeed(s, 1))} color="#fff" />
-            <IconBtn icon="swap-horizontal" label={t('prompt.mirror')} active={prefs.mirrorH} onPress={() => app.setPrefs({ mirrorH: !prefs.mirrorH })} color="#fff" />
-            <IconBtn icon="swap-vertical" label={t('prompt.flip')} active={prefs.mirrorV} onPress={() => app.setPrefs({ mirrorV: !prefs.mirrorV })} color="#fff" />
-            <IconBtn icon={running ? 'pause' : 'play'} label={running ? 'Pause' : 'Play'} onPress={toggle} color="#fff" active />
-          </View>
+        <Animated.View entering={app.reduceMotion ? undefined : FadeIn.duration(200)} exiting={app.reduceMotion ? undefined : FadeOut.duration(260)} style={[st.bottom, { paddingBottom: insets.bottom + 12 }]} pointerEvents="box-none">
+          <Glass tint="dark" style={st.dock}>
+            <View style={st.dockRow}>
+              <IconBtn icon="play-skip-back-outline" label={t('prompt.restart')} onPress={restart} color="#C9CCD6" />
+              <IconBtn icon="list-outline" label={t('prompt.sections')} onPress={sections} color="#C9CCD6" />
+              <View style={{ flex: 1 }} />
+              <IconBtn icon="swap-horizontal" label={t('prompt.mirror')} active={prefs.mirrorH} onPress={() => app.setPrefs({ mirrorH: !prefs.mirrorH })} color="#C9CCD6" />
+              <IconBtn icon="swap-vertical" label={t('prompt.flip')} active={prefs.mirrorV} onPress={() => app.setPrefs({ mirrorV: !prefs.mirrorV })} color="#C9CCD6" />
+            </View>
+            <View style={st.dockMain}>
+              <IconBtn icon="remove" label="Slower" onPress={() => setSpeed((s) => nudgeSpeed(s, -1))} color="#F1EEE6" />
+              <Text style={st.speed} accessibilityLabel={t('prompt.speed', { pct: Math.round(speed * 100) })}>
+                {Math.round(speed * 100)}%
+              </Text>
+              <Pressable onPress={toggle} accessibilityRole="button" accessibilityLabel={running ? 'Pause' : 'Play'} style={({ pressed }) => [st.play, { transform: [{ scale: pressed ? 0.94 : 1 }] }]}>
+                <LinearGradient colors={['#DDB063', '#C9973F', '#B4832F']} style={StyleSheet.absoluteFill} />
+                <Ionicons name={running ? 'pause' : 'play'} size={28} color="#1A1408" style={running ? undefined : { marginLeft: 3 }} />
+              </Pressable>
+              <IconBtn icon="add" label="Faster" onPress={() => setSpeed((s) => nudgeSpeed(s, 1))} color="#F1EEE6" />
+              <View style={{ width: 44 }} />
+            </View>
+          </Glass>
         </Animated.View>
       ) : null}
     </View>
   );
 }
 
+const BRASS = '#D9AD5E';
+
 const st = StyleSheet.create({
   fill: { flex: 1 },
   center: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, alignItems: 'center', justifyContent: 'center' },
-  count: { fontSize: 140, fontWeight: '900', opacity: 0.9 },
-  hint: { fontSize: 16, fontWeight: '600' },
-  top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, gap: 10 },
-  timer: { fontSize: 16, fontWeight: '700', fontVariant: ['tabular-nums'], opacity: 0.8 },
-  modeChip: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: 'rgba(0,0,0,0.45)', borderRadius: 18, paddingHorizontal: 12, minHeight: 36 },
-  modeText: { color: '#fff', fontWeight: '700', fontSize: 13 },
-  listen: { position: 'absolute', right: 16, flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: 'rgba(0,0,0,0.45)', borderRadius: 14, paddingHorizontal: 10, paddingVertical: 5 },
+  count: { fontFamily: FONT.display, fontSize: 168, lineHeight: 180, fontVariant: ['tabular-nums'] },
+  hintChip: { borderRadius: RADIUS.pill, paddingHorizontal: 16, paddingVertical: 9 },
+  hint: { fontFamily: FONT.bodyBold, fontSize: 15, color: '#F1EEE6' },
+  top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, gap: 8 },
+  round: { borderRadius: 22 },
+  chip: { borderRadius: RADIUS.pill, paddingHorizontal: 14, minHeight: 38, alignItems: 'center', justifyContent: 'center' },
+  chipText: { fontFamily: FONT.bodyBold, fontSize: 13.5, color: '#F1EEE6' },
+  timer: { fontFamily: FONT.display, fontSize: 16, color: '#F1EEE6', fontVariant: ['tabular-nums'] },
+  listen: { position: 'absolute', right: 14 },
   dot: { width: 8, height: 8, borderRadius: 4 },
-  listenText: { color: '#fff', fontSize: 12, fontWeight: '600' },
-  bottom: { position: 'absolute', bottom: 0, left: 0, right: 0, alignItems: 'center' },
-  pill: { flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(20,20,22,0.8)', borderRadius: 28, paddingHorizontal: 6, paddingVertical: 4, flexWrap: 'wrap', justifyContent: 'center', marginHorizontal: 8 },
-  speed: { color: '#fff', fontWeight: '700', minWidth: 44, textAlign: 'center', fontVariant: ['tabular-nums'] },
+  bottom: { position: 'absolute', bottom: 0, left: 0, right: 0, alignItems: 'center', paddingHorizontal: 12 },
+  dock: { borderRadius: 30, paddingHorizontal: 10, paddingVertical: 8, width: '100%', maxWidth: 460 },
+  dockRow: { flexDirection: 'row', alignItems: 'center' },
+  dockMain: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, paddingTop: 2, paddingBottom: 4 },
+  play: { width: 68, height: 68, borderRadius: 34, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', marginHorizontal: 10 },
+  speed: { fontFamily: FONT.display, fontSize: 17, color: '#F1EEE6', minWidth: 52, textAlign: 'center', fontVariant: ['tabular-nums'] },
 });
