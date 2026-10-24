@@ -51,7 +51,7 @@ Comma separated, no spaces after commas, no word that is already in the name or 
 tracing,stencil,template,workshop,angle,carpentry,lettering,calligraphy,font,scrapbook,mural,kids
 ```
 
-### Description (≤4000) [3436]
+### Description (≤4000) [3426]
 ```text
 Trace anything onto real paper. Stand your phone over a sheet of paper, pick a photo or a template, and Linework shows it on top of the live camera view so you can draw along the lines with your own pencil.
 
@@ -59,7 +59,7 @@ Made for scrapbooking, journaling, cards, crafts, signs and lettering, wall art 
 
 New: the Workshop. Exact angles, joints and layouts for carpenters, welders, tilers and every trade, plus letters in 16 styles for hand lettering.
 
-Every tracing tool is free. No ads, no trial, no weekly subscription, no account.
+Every tracing tool is free. No ads, no weekly subscription, no account.
 
 PHOTO TO SKETCH
 • Turn any photo into clean line art right on your phone. Nothing is uploaded.

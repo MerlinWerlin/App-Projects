@@ -22,10 +22,27 @@ def say(s=""):
     print(s)
 
 
+def key_pem():
+    """Accept the .p8 however it was pasted: real newlines, literal \\n, one long line, missing header, base64 of the file."""
+    import base64, re
+    raw = os.environ["ASC_KEY_P8"].strip().strip('"').replace("\\n", "\n")
+    if "BEGIN" not in raw:
+        try:
+            dec = base64.b64decode(raw).decode()
+            if "BEGIN" in dec:
+                raw = dec
+        except Exception:
+            pass
+    body = re.sub(r"-----(BEGIN|END)[^-]*-----", "", raw)
+    body = re.sub(r"[^A-Za-z0-9+/=]", "", body)
+    lines = "\n".join(body[i:i + 64] for i in range(0, len(body), 64))
+    return f"-----BEGIN PRIVATE KEY-----\n{lines}\n-----END PRIVATE KEY-----\n"
+
+
 def token():
     now = int(time.time())
-    return jwt.encode({"iss": os.environ["ASC_ISSUER_ID"], "iat": now, "exp": now + 1100, "aud": "appstoreconnect-v1"},
-                      os.environ["ASC_KEY_P8"], algorithm="ES256", headers={"kid": os.environ["ASC_KEY_ID"]})
+    return jwt.encode({"iss": os.environ["ASC_ISSUER_ID"].strip(), "iat": now, "exp": now + 1100, "aud": "appstoreconnect-v1"},
+                      key_pem(), algorithm="ES256", headers={"kid": os.environ["ASC_KEY_ID"].strip()})
 
 
 S = requests.Session()
