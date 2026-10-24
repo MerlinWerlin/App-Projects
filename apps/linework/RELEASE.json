@@ -1,5 +1,5 @@
 {
-  "mode": "update",
-  "note": "Linework: merged catalogue, 1,208 templates (214 more from the build run batches)",
+  "mode": "build",
+  "note": "Linework 1.0 release candidate: current code with in-app purchases (Plus A$2.99, free 14-day Trial); iPhone only for 1.0",
   "ascAppId": "6826041969"
 }
