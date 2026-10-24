@@ -351,7 +351,7 @@ function YarnTool() {
         <Label>{t('tool.yarn.stitch')}</Label>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
           {(['sc', 'hdc', 'dc', 'granny', 'textured', 'mesh'] as const).map((s) => (
-            <Chip key={s} label={['sc', 'hdc', 'dc'].includes(s) ? show(s) : t(`tool.yarn.st.${s}`)} on={st === s} onPress={() => setSt(s)} />
+            <Chip key={s} label={s === 'sc' || s === 'hdc' || s === 'dc' ? show(s) : t(`tool.yarn.st.${s}`)} on={st === s} onPress={() => setSt(s)} />
           ))}
         </View>
       </View>

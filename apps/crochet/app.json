@@ -4,7 +4,9 @@
     "slug": "rowlight",
     "scheme": "rowlight",
     "version": "0.1.0",
-    "runtimeVersion": { "policy": "appVersion" },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/brand/icon.png",
@@ -17,7 +19,9 @@
         "NSPhotoLibraryUsageDescription": "Rowlight lets you add progress photos and pattern screenshots. They stay on your phone.",
         "CFBundleAllowMixedLocalizations": true
       },
-      "config": { "usesNonExemptEncryption": false }
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.jared797.rowlight",
@@ -28,7 +32,9 @@
         "backgroundColor": "#B5476A"
       },
       "edgeToEdgeEnabled": true,
-      "blockedPermissions": ["android.permission.RECORD_AUDIO"]
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "plugins": [
       "expo-router",
@@ -41,7 +47,12 @@
           "microphonePermission": false
         }
       ],
-      ["expo-localization", { "supportsRTL": false }],
+      [
+        "expo-localization",
+        {
+          "supportsRTL": false
+        }
+      ],
       [
         "expo-splash-screen",
         {
@@ -49,12 +60,26 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#FBF6EF",
-          "dark": { "image": "./assets/brand/splash-icon.png", "backgroundColor": "#191412" }
+          "dark": {
+            "image": "./assets/brand/splash-icon.png",
+            "backgroundColor": "#191412"
+          }
         }
       ]
     ],
-    "experiments": { "typedRoutes": false },
+    "experiments": {
+      "typedRoutes": false
+    },
     "owner": "jared797",
-    "extra": {}
+    "extra": {
+      "eas": {
+        "projectId": "a0d0b33c-6067-459f-9004-2966d23fa85a"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/a0d0b33c-6067-459f-9004-2966d23fa85a",
+      "fallbackToCacheTimeout": 0,
+      "checkAutomatically": "ON_LOAD"
+    }
   }
 }

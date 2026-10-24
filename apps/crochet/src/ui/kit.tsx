@@ -425,7 +425,7 @@ export function Chip({ label, on, onPress, icon }: { label: string; on?: boolean
   );
 }
 
-export function Field({ label, style, multiline, ...rest }: TextInputProps & { label: string; style?: StyleProp<ViewStyle> }) {
+export function Field({ label, style, multiline, ...rest }: Omit<TextInputProps, 'style'> & { label: string; style?: StyleProp<ViewStyle> }) {
   const { c } = useColors();
   return (
     <View style={[{ gap: 6 }, style]}>
