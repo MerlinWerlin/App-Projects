@@ -9,6 +9,7 @@ import { font, radius, space, useColors } from '../../src/theme/tokens';
 import { FadeIn, type IconName, Label, PressableScale, ScreenScroll, Title } from '../../src/ui/kit';
 
 const TOOLS: ReadonlyArray<{ key: string; icon: IconName; group: 'make' | 'ref'; plus?: boolean }> = [
+  { key: 'patterns', icon: 'gift', group: 'make' },
   { key: 'ball', icon: 'circle', group: 'make' },
   { key: 'evenly', icon: 'shuffle', group: 'make' },
   { key: 'convert', icon: 'repeat', group: 'make' },

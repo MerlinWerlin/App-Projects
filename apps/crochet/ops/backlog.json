@@ -1,23 +1,99 @@
 {
   "app": "rowlight",
   "tasks": [
-    { "id": "R01", "title": "Core: counters, repeat counters, reminders, timer, data model + tests", "status": "done" },
-    { "id": "R02", "title": "Core: pattern parser, step labels, stitch-count checker + tests", "status": "done" },
-    { "id": "R03", "title": "Core: US/UK conversion + glossary, calculators (ball, evenly, gauge, yarn) + tests", "status": "done" },
-    { "id": "R04", "title": "UI: projects list, project screen, step mode, paste, edit, file viewer with ruler", "status": "done" },
-    { "id": "R05", "title": "UI: tools, stash (Plus), settings, backup, Plus paywall (mock)", "status": "done" },
-    { "id": "R06", "title": "Expo Go preview pipeline (.github/workflows/preview.yml)", "status": "done" },
-    { "id": "R07", "title": "First owner/partner test round: fix feedback (docs/OWNER_*.md)", "status": "todo" },
-    { "id": "R08", "title": "Final name, icon and art from the GPT image lane", "status": "todo", "owner": "openai" },
-    { "id": "R09", "title": "Translations: es, fr, de, pt-BR, it, nl from en.ts", "status": "todo", "owner": "openai" },
-    { "id": "R10", "title": "Glossary to 80+ stitches with plain how-tos; 5 more original sample patterns", "status": "todo", "owner": "openai" },
-    { "id": "R11", "title": "Stats and streaks (Plus): rows per day, time per project, year in review card", "status": "todo" },
-    { "id": "R12", "title": "Android in-app PDF via pdf.js in WebView (local file, no network)", "status": "todo" },
-    { "id": "R13", "title": "Size-only highlight in pasted patterns: pick your size, others dim (Plus)", "status": "todo" },
-    { "id": "R14", "title": "Themes / accent colours (Plus)", "status": "todo" },
-    { "id": "R15", "title": "Pinch-zoom for image patterns on Android", "status": "todo" },
-    { "id": "R16", "title": "Store build: StoreKit/Play Billing for Plus, release kit (privacy, support pages, screenshots)", "status": "todo" },
-    { "id": "R17", "title": "Home-screen widget + Live Activity counter (dev build)", "status": "todo" },
-    { "id": "R18", "title": "Weekly marketing run: TikTok/Pinterest/Reddit drafts (partner reviews)", "status": "todo", "owner": "openai" }
+    {
+      "id": "R01",
+      "title": "Core: counters, repeat counters, reminders, timer, data model + tests",
+      "status": "done"
+    },
+    {
+      "id": "R02",
+      "title": "Core: pattern parser, step labels, stitch-count checker + tests",
+      "status": "done"
+    },
+    {
+      "id": "R03",
+      "title": "Core: US/UK conversion + glossary, calculators (ball, evenly, gauge, yarn) + tests",
+      "status": "done"
+    },
+    {
+      "id": "R04",
+      "title": "UI: projects list, project screen, step mode, paste, edit, file viewer with ruler",
+      "status": "done"
+    },
+    {
+      "id": "R05",
+      "title": "UI: tools, stash (Plus), settings, backup, Plus paywall (mock)",
+      "status": "done"
+    },
+    {
+      "id": "R06",
+      "title": "Expo Go preview pipeline (.github/workflows/preview.yml)",
+      "status": "done"
+    },
+    {
+      "id": "R07",
+      "title": "First owner/partner test round: fix feedback (docs/OWNER_*.md)",
+      "status": "todo"
+    },
+    {
+      "id": "R08",
+      "title": "Final name, icon and art from the GPT image lane",
+      "status": "todo",
+      "owner": "openai"
+    },
+    {
+      "id": "R09",
+      "title": "Translations: es, fr, de, pt, it, nl (StarNet Luna, validated)",
+      "status": "done",
+      "owner": "openai"
+    },
+    {
+      "id": "R10",
+      "title": "Glossary +50 entries (85 total) and 5 original amigurumi patterns, every round verified (StarNet Luna)",
+      "status": "done",
+      "owner": "openai"
+    },
+    {
+      "id": "R11",
+      "title": "Stats and streaks (Plus): rows per day, time per project, year in review card",
+      "status": "todo"
+    },
+    {
+      "id": "R12",
+      "title": "Android in-app PDF via pdf.js in WebView (local file, no network)",
+      "status": "todo"
+    },
+    {
+      "id": "R13",
+      "title": "Size-only highlight in pasted patterns: pick your size, others dim (Plus)",
+      "status": "todo"
+    },
+    {
+      "id": "R14",
+      "title": "Themes / accent colours (Plus)",
+      "status": "todo"
+    },
+    {
+      "id": "R15",
+      "title": "Pinch-zoom for image patterns on Android",
+      "status": "todo"
+    },
+    {
+      "id": "R16",
+      "title": "Store build: StoreKit/Play Billing for Plus, release kit (privacy, support pages, screenshots)",
+      "status": "todo"
+    },
+    {
+      "id": "R17",
+      "title": "Home-screen widget + Live Activity counter (dev build)",
+      "status": "todo"
+    },
+    {
+      "id": "R18",
+      "title": "Weekly marketing run: TikTok/Pinterest/Reddit drafts (partner reviews)",
+      "status": "todo",
+      "owner": "openai"
+    }
   ]
 }

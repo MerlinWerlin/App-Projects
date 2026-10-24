@@ -4,3 +4,4 @@
 - 2026-10-24 Claude: lives only in App-Projects (no claude.ai build page), so ChatGPT/Codex and Claude share one stream from day one.
 - 2026-10-24 Claude: free core includes PDF + ruler and backup (rivals' most-hated paywalls). Plus = stash + seller pricing now; stats/themes/markup later. Price A$9.99 placeholder, owner decides.
 - 2026-10-24 Claude: Android in-app PDF not in v0.1; the app says so honestly (R12).
+- 2026-10-24 Claude: StarNet content runs on Luna (DESIGNER role), never Sol, so BTB's Sol budget is untouched. Every StarNet output is machine-validated before it lands (keys/placeholders, stitch-count checker); anything that can't be verified is dropped, not shipped.

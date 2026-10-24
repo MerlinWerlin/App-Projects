@@ -2,12 +2,18 @@
 // English is the source catalogue (en.ts); other languages are added as files with the same keys
 // (OpenAI lane: ops/OPENAI_LANES.md) and registered in CATALOGUES.
 import * as Localization from 'expo-localization';
+import { de } from './de';
 import { en, type MessageKey } from './en';
+import { es } from './es';
+import { fr } from './fr';
+import { it } from './it';
+import { nl } from './nl';
+import { pt } from './pt';
 
 export type { MessageKey };
 type Catalogue = Partial<Record<MessageKey, string>>;
 
-const CATALOGUES: Record<string, Catalogue> = { en };
+const CATALOGUES: Record<string, Catalogue> = { en, es, fr, de, pt, it, nl };
 
 function pickLocale(): string {
   try {

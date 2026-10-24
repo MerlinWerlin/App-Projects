@@ -4,6 +4,8 @@ Split (app starter standard): **OpenAI does the content grind, Claude writes the
 GitHub `MerlinWerlin/App-Projects` (branch from `main`, PR titled `Rowlight: ...`), never in PC copies.
 Each lane below is self-contained; output files go exactly where stated so the app picks them up.
 
+**Status 24 Oct:** L1-L4 done through the StarNet bridge (`Desktop\Apps\_starnet_jobs\rowlight`, `run.py submit|collect`). L5 images still needs ChatGPT image generation (issue #51). Re-run a lane by editing `jobs.json` there and running `run.py submit <job>`.
+
 | Lane | Model | Output | Rules |
 |---|---|---|---|
 | L1 Translations | Luna (bulk) | `apps/crochet/src/i18n/<lang>.ts` (same keys as `en.ts`, `export const <lang>: Partial<Record<MessageKey,string>>`) then register in `src/i18n/index.ts` CATALOGUES | Keep `{params}` and `one|other`; crochet terms per country (UK terms for en-GB/AU audiences are handled by Settings, not strings) |

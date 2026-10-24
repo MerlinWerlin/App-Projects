@@ -22,6 +22,9 @@ import {
 import { STITCHES, convertTerms, searchStitches, stitchAbbrev, stitchName, type Terms } from '../../src/core/terms';
 import { formatNumber, t, type MessageKey } from '../../src/i18n';
 import { usePlus } from '../../src/plus/entitlement';
+import { SAMPLE_BALL } from '../../src/content/samples';
+import { SAMPLES_EXTRA } from '../../src/content/samplesExtra';
+import { parsePattern } from '../../src/core/pattern';
 import { addProject } from '../../src/store/data';
 import { useSettings } from '../../src/store/settings';
 import { font, radius, space, useColors } from '../../src/theme/tokens';
@@ -34,6 +37,9 @@ export default function ToolScreen() {
   const title = t(`tool.${tool}.title` as MessageKey);
   let body: ReactNode;
   switch (tool) {
+    case 'patterns':
+      body = <PatternsTool />;
+      break;
     case 'ball':
       body = <BallTool />;
       break;
@@ -92,6 +98,48 @@ function Big({ children }: { children: ReactNode }) {
 function useTermsView() {
   const s = useSettings();
   return (us: string) => convertTerms(us, 'US', s.terms);
+}
+
+// ------------------------------------------------------------------ free patterns
+
+function PatternsTool() {
+  const show = useTermsView();
+  const all = [{ name: SAMPLE_BALL.name, text: SAMPLE_BALL.text }, ...SAMPLES_EXTRA];
+  const [open, setOpen] = useState<string | null>(null);
+  return (
+    <View style={{ gap: space.m }}>
+      <Body muted>{t('tool.patterns.help')}</Body>
+      {all.map((s) => {
+        const p = parsePattern(s.text);
+        const desc = s.text.split('\n')[0].split(',').slice(1).join(',').trim();
+        return (
+          <Card key={s.name} style={{ gap: 6 }}>
+            <H2>{s.name}</H2>
+            {desc ? <Body small muted>{desc}</Body> : null}
+            <Body small>{t('tool.patterns.meta', { count: p.steps.length, parts: p.sections.length || 1 })}</Body>
+            {open === s.name ? (
+              <Body small selectable>
+                {show(s.text)}
+              </Body>
+            ) : null}
+            <View style={{ flexDirection: 'row', gap: space.s, flexWrap: 'wrap' }}>
+              <Button
+                small
+                title={t('tool.patterns.start')}
+                icon="plus"
+                onPress={() => {
+                  const proj = addProject(s.name, { pattern: { text: s.text, terms: 'US', step: 0, done: [] }, tags: ['amigurumi'], designer: t('tool.patterns.by') });
+                  haptic('success');
+                  router.push(`/project/${proj.id}`);
+                }}
+              />
+              <Button small kind="secondary" title={open === s.name ? t('tool.patterns.hide') : t('tool.patterns.read')} onPress={() => setOpen(open === s.name ? null : s.name)} />
+            </View>
+          </Card>
+        );
+      })}
+    </View>
+  );
 }
 
 // ------------------------------------------------------------------ amigurumi ball

@@ -234,3 +234,38 @@ test('the bundled sample pattern parses cleanly with correct counts', async () =
   assert.equal(p.steps.filter((s) => s.section === 'Body').length, 14);
   assert.deepEqual(findCountIssues(p.steps), []);
 });
+
+test('every bundled free pattern verifies on every round', async () => {
+  const { SAMPLES_EXTRA } = await import('../content/samplesExtra.ts');
+  assert.ok(SAMPLES_EXTRA.length >= 5);
+  for (const s of SAMPLES_EXTRA) {
+    const p = parsePattern(s.text);
+    assert.deepEqual(findCountIssues(p.steps), [], s.name);
+    let prev: number | undefined;
+    let sec = '';
+    for (const st of p.steps) {
+      if (st.section !== sec) {
+        prev = undefined;
+        sec = st.section;
+      }
+      const c = checkCount(st.text, prev);
+      assert.ok(c, `${s.name}: uncountable "${st.text}"`);
+      prev = c!.made;
+    }
+  }
+});
+
+test('translations keep placeholders and plural bars', async () => {
+  const { en } = await import('../i18n/en.ts');
+  for (const code of ['es', 'fr', 'de', 'pt', 'it', 'nl']) {
+    const mod = (await import(`../i18n/${code}.ts`)) as Record<string, Record<string, string>>;
+    const cat = mod[code];
+    assert.ok(Object.keys(cat).length > 300, code);
+    for (const [k, v] of Object.entries(cat)) {
+      const src = (en as Record<string, string>)[k];
+      assert.ok(src, `${code}: unknown key ${k}`);
+      const ph = (s: string) => (s.match(/\{\w+\}/g) || []).sort().join(',');
+      assert.equal(ph(v), ph(src), `${code} ${k}`);
+    }
+  }
+});

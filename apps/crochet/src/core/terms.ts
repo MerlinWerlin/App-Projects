@@ -4,6 +4,8 @@
 // treble's shorter cousin), so conversion is done in ONE pass with a combined regex: every match is looked up
 // in the table for the source system, never re-converted.
 
+import { GLOSSARY_EXTRA } from '../content/glossaryExtra.ts';
+
 export type Terms = 'US' | 'UK';
 
 /** [US, UK] pairs. Longest phrases first so "half double crochet" wins over "double crochet". */
@@ -129,7 +131,7 @@ export interface StitchEntry {
 }
 
 /** Built-in stitch glossary. Plain-words instructions written for this app. */
-export const STITCHES: ReadonlyArray<StitchEntry> = [
+const BASE_STITCHES: ReadonlyArray<StitchEntry> = [
   { us: 'ch', uk: 'ch', usName: 'Chain', ukName: 'Chain', level: 'basic', how: 'Yarn over and pull through the loop on your hook.' },
   { us: 'sl st', uk: 'ss', usName: 'Slip stitch', ukName: 'Slip stitch', level: 'basic', how: 'Insert hook, yarn over, pull through the stitch and the loop on your hook in one go.' },
   { us: 'sc', uk: 'dc', usName: 'Single crochet', ukName: 'Double crochet', level: 'basic', turningCh: 1, how: 'Insert hook, yarn over, pull up a loop (2 loops), yarn over, pull through both.' },
@@ -165,6 +167,8 @@ export const STITCHES: ReadonlyArray<StitchEntry> = [
   { us: 'tch', uk: 'tch', usName: 'Turning chain', ukName: 'Turning chain', level: 'basic', how: 'Chains made at the start of a row to reach the height of the stitches.' },
   { us: 'rep', uk: 'rep', usName: 'Repeat', ukName: 'Repeat', level: 'basic', how: 'Work the instructions again as shown.' },
 ];
+
+export const STITCHES: ReadonlyArray<StitchEntry> = [...BASE_STITCHES, ...GLOSSARY_EXTRA];
 
 export function stitchName(e: StitchEntry, terms: Terms): string {
   return terms === 'US' ? e.usName : e.ukName;
