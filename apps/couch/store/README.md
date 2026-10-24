@@ -8,6 +8,14 @@ node store/render.mjs --locale de        # headlines from src/i18n/catalog/de.ts
 node store/render.mjs --size 1320x2868   # one size only
 ```
 
+## App Store set (`--ios`)
+
+```sh
+node store/render.mjs --ios              # -> store/jpg/ios/ (committed; store/listing.json points at it)
+```
+
+Six 1320x2868 JPEGs (APP_IPHONE_67, no alpha) for App Store Connect: the same headlines and order minus the themes fan, using only the four free themes (Couch Plus is not on sale yet), an iPhone-style frame with a Dynamic Island, and no infrared rows (iPhones have no IR blaster).
+
 It needs Playwright and sharp to be installed already (globally is fine) and uses the preinstalled Chromium (`PLAYWRIGHT_BROWSERS_PATH`). It never downloads a browser or installs packages. Web fonts are blocked during rendering, so it falls back to local fonts (Inter where installed).
 
 ## Output

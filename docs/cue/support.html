@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Cue Support</title>
+<link rel="icon" href="img/icon.png">
+<style>
+:root{--paper:#F6F4EF;--card:#FFFFFF;--line:#E3E0D8;--text:#1A1A1C;--muted:#6B6A70;--ink:#B5401C;--ink-soft:#FBE6DD}
+@media (prefers-color-scheme: dark){:root{--paper:#0F0F11;--card:#1B1B1F;--line:#2C2C31;--text:#F3F2EE;--muted:#9C9AA3;--ink:#FF8A63;--ink-soft:#3A1E14}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:720px;margin:0 auto;padding:32px 16px 64px}
+h1{font:800 2rem/1.15 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:1.15rem;margin:32px 0 8px}
+p,li{overflow-wrap:anywhere}
+.meta{color:var(--muted);margin:0 0 24px}
+.badge{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;gap:16px;align-items:flex-start}
+.badge .tick{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink-soft);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:22px}
+.badge strong{display:block;font-size:1.25rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 20px;margin-top:16px}
+ul,ol{padding-left:1.2em}a{color:var(--ink)}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+nav a{background:var(--ink-soft);color:var(--ink);text-decoration:none;border-radius:999px;padding:6px 14px;font-size:.95rem;font-weight:600}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0}
+summary{cursor:pointer;padding:14px 18px;font-weight:600}
+details>div{padding:0 18px 14px}details[open] summary{border-bottom:1px solid var(--line);margin-bottom:10px}
+header{display:flex;gap:18px;align-items:center;margin:8px 0 18px}header img{width:84px;height:84px;border-radius:19px;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+.sub{color:var(--muted);font-size:1.15rem;margin:2px 0 0}
+.cta{display:inline-block;background:var(--line);color:var(--muted);font-weight:700;border-radius:12px;padding:12px 20px;margin:6px 0 4px}
+.shots{display:flex;gap:12px;overflow-x:auto;padding:18px 0;scroll-snap-type:x mandatory}
+.shots img{height:min(520px,68vh);width:auto;border-radius:16px;scroll-snap-align:start;box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.lead{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.lead div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.lead h3{margin:0 0 4px;font-size:1.05rem}.lead p{margin:0;color:var(--muted)}
+footer{color:var(--muted);font-size:.9rem;margin-top:40px;display:flex;flex-wrap:wrap;gap:6px 18px}
+</style>
+</head>
+<body>
+<main>
+<h1>Cue Support</h1>
+<p class="meta">Help for Cue, the teleprompter that waits for you. The teleprompter, recording and unlimited scripts are free: no ads, no account, no subscription.</p>
+<nav aria-label="Topics"><a href="#scripts">Scripts</a><a href="#prompter">Prompter and Voice Pace</a><a href="#record">Recording</a><a href="#permissions">Permissions</a><a href="#plus">Cue Plus</a><a href="#contact">Contact</a></nav>
+<h2 id="scripts">Scripts</h2><details><summary>How do I write or import a script?</summary><div><p>Tap <em>New script</em> and type or paste. To bring in a file, tap the import button at the top of the Scripts screen and pick a .txt or .md file (free) or a Word .docx file (Cue Plus).</p></div></details><details><summary>What do the little marks do?</summary><div><ul><li><code># Section</code> starts a section you can jump to and record on its own.</li><li><code>*word*</code> makes a word stand out.</li><li><code>[pause]</code> or any word in square brackets shows a cue.</li><li><code>[[note]]</code> is a private note, never read out.</li><li><code>---</code> adds a break.</li></ul></div></details><details><summary>How does Fit to time work?</summary><div><p>In the editor, tap <em>Fit to time</em> and choose 30 s, 60 s, 90 s, 2 m or 3 m. Cue sets the reading speed so the whole script takes that long. The read time and words per minute show at the bottom.</p></div></details><h2 id="prompter">Prompter and Voice Pace</h2><details><summary>How do I control the prompter?</summary><div><p>Tap to pause or carry on, drag to scroll back, pinch to change the text size. The bar at the bottom has start again, sections, slower and faster, mirror, flip and play/pause.</p></div></details><details><summary>What is Voice Pace?</summary><div><p>Voice Pace listens to the sound level from the microphone. While you talk the words move; when you stop they wait. It never records or uploads anything. You get 3 full Voice Pace reads free; Cue Plus makes it unlimited. Steady scroll is always free.</p></div></details><details><summary>Can I use a beam-splitter rig?</summary><div><p>Yes. Turn on <em>Mirror</em> (left to right) and, if your rig needs it, <em>Flip</em> (upside down). Landscape works too.</p></div></details><h2 id="record">Recording</h2><details><summary>Where do my videos go?</summary><div><p>Each take is saved to your Photos the moment you stop. There is never a watermark.</p></div></details><details><summary>How do I re-record one section?</summary><div><p>On the Record screen, tap the section button left of the shutter and choose a section. Cue records just that part and stops at its end.</p></div></details><details><summary>Voice Pace stopped while recording.</summary><div><p>While the camera records sound, Voice Pace pauses and the script uses steady scroll, so the two don't fight over the microphone.</p></div></details><h2 id="permissions">Permissions</h2><details><summary>I said Don&#x27;t Allow to the camera, microphone or Photos.</summary><div><p>Open the Settings app → scroll down to <em>Cue</em> → turn on Camera, Microphone, or set Photos to <em>Add Photos Only</em>. Cue only uses them on your device. See the <a href="privacy.html">Privacy Policy</a>.</p></div></details><h2 id="plus">Cue Plus</h2><details><summary>What is Cue Plus?</summary><div><p>An optional one-time purchase, not a subscription. It adds unlimited Voice Pace, caption files (.srt and .vtt timed to your pace), prompter colours, Word import and rehearsal stats. The teleprompter, recording and every script stay free.</p></div></details><details><summary>How do I restore my purchase?</summary><div><p>Sign in with the same Apple ID, then open <em>Settings → Restore purchase</em> (or the Cue Plus screen).</p></div></details><details><summary>How do I get a refund?</summary><div><p>Purchases are handled by Apple, so refunds go through Apple at reportaproblem.apple.com.</p></div></details>
+<h2 id="contact">Contact</h2>
+<p>Something not working, or an idea? Email <a href="mailto:jaredbradley272@gmail.com">jaredbradley272@gmail.com</a>, or use <em>Settings → Send feedback</em> in the app. Please include your phone model and what you were doing. Cue collects no data, so we only see what you tell us.</p>
+<footer>Cue · Support · Updated 25 October 2026 · <a href="privacy.html">Privacy Policy</a></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "locale": "en-AU",
+  "version": "1.0",
+  "name": "Backspin: Reverse Singing",
+  "subtitle": "Backwards voice party game",
+  "promotionalText": "Say a line, hear it backwards, copy it and see how close you get. Your first 10 goes are free with everything on, then one lifetime unlock. No ads.",
+  "keywords": "sing,audio,challenge,friends,family,tongue,twister,rewind,funny,flip,copy,record,group,kids,score",
+  "description": "Your voice, with a twist.\n\nRecord a short line, hear it played backwards, then try to copy that strange new sound. Backspin flips your attempt forwards again. The result? A wonderfully wobbly version of what you started with, and a real score for how close you got.\n\nHOW TO PLAY\n• Say a line, or pick one of 950+ challenge lines\n• Listen to it backwards (loop it or slow it down)\n• Copy the backwards sound\n• Backspin flips your copy and scores it out of 100 for sound, rhythm and length\n\nBRING EVERYONE IN\n• Party mode for 2 to 8 players on one phone, with rounds and a scoreboard\n• Copy it: highest closeness wins. Guess it: decode the backwards line\n• Challenge a friend: they record, you copy\n• A daily challenge with streaks and a score to share\n• Save takes and share a four-part clip: original, backwards, your copy and flipped\n\n7 PACKS OF ORIGINAL LINES\nWarm-ups, party lines, animals and sound effects, family and kids, tongue twisters, public-domain song lines and Aussie phrases. Plus voice effects: chipmunk, giant, robot, echo and alien.\n\nFREE TO TRY, THEN YOURS FOR LIFE\nYour first 10 goes are free with every pack, effect and party size switched on. After that, Backspin Plus is one small payment that unlocks unlimited goes for life. No subscription, no ads, ever. Saved takes always play and share.\n\nPRIVATE\nNo account. No tracking. Backspin records only while you hold the button, and your recordings stay on your phone unless you share them.",
+  "whatsNew": "Welcome to Backspin! Record a line, copy it backwards, flip your try and see your score. Party mode, daily challenges and 950+ lines.",
+  "primaryCategory": "ENTERTAINMENT",
+  "secondaryCategory": "MUSIC",
+  "copyright": "2026 Jared Bradley",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/backspin/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/backspin/support.html",
+  "marketingUrl": "https://merlinwerlin.github.io/App-Projects/backspin/",
+  "inAppPurchases": [
+    {
+      "productId": "com.jared797.backspin.plus",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "Backspin Plus",
+      "displayName": "Backspin Plus",
+      "description": "Unlimited goes and every pack, for life",
+      "reviewNote": "Non-consumable lifetime unlock. The first 10 scored rounds are free with everything on (the Play tab shows the goes left); after that a new round shows this unlock screen. Test: Play tab > free goes badge (or Settings > Backspin Plus) > Unlock; Restore purchase is on the same screen.",
+      "price": {
+        "territory": "AUS",
+        "amount": "1.99"
+      },
+      "reviewScreenshot": "apps/backspin/store/jpg/ios/08-plus.jpg"
+    }
+  ],
+  "ageRating": "none",
+  "screenshots": {
+    "APP_IPHONE_67": "apps/backspin/store/jpg/ios"
+  },
+  "availability": "all",
+  "attachBuild": "latest",
+  "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+  "reviewNotes": "No account or login. Backspin is a reverse-singing game: Play tab > Quick play, hold the red button and say the line, listen to it backwards, hold the button again to copy the backwards sound, and Backspin flips the copy and scores it. The microphone records only while the button is held; all processing is on the device and nothing is uploaded. Pricing: the first 10 scored rounds ('goes') are free with every feature on, stated on the Play tab and the unlock screen; after that new rounds need 'Backspin Plus' (non-consumable, one-time lifetime unlock), with Restore purchase on the same screen. Saved takes still play without it. All challenge lines are original or public domain; no copyrighted lyrics. No data is collected."
+}
