@@ -1,6 +1,5 @@
 {
   "mode": "build",
-  "note": "Cue: first TestFlight build (Voice Pace prompter)",
-  "ascAppId": "6826554677",
-  "ascKeyAuth": true
+  "note": "Cue: first TestFlight build (Voice Pace prompter) (signing set up on Expo)",
+  "ascAppId": "6826554677"
 }

@@ -1,6 +1,5 @@
 {
   "mode": "build",
-  "note": "Backspin: first TestFlight build (Look skins, 10 free goes then lifetime unlock)",
-  "ascAppId": "6826553963",
-  "ascKeyAuth": true
+  "note": "Backspin: first TestFlight build (Look skins, 10 free goes then lifetime unlock) (signing set up on Expo)",
+  "ascAppId": "6826553963"
 }
