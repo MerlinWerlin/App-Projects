@@ -1,0 +1,9 @@
+node_modules/
+.expo/
+dist/
+*.log
+run-log.txt
+sdk57-log.txt
+tsc-report.txt
+auto-install-log.txt
+auto-check-console.txt

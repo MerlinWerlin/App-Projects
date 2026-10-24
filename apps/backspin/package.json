@@ -1,0 +1,42 @@
+{
+  "name": "backspin",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "tunnel": "expo start --go --tunnel",
+    "test": "node --test \"src/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "expo": "~57.0.31",
+    "expo-audio": "~57.0.0",
+    "expo-constants": "~57.0.21",
+    "expo-file-system": "~57.0.7",
+    "expo-haptics": "~57.0.3",
+    "expo-iap": "*",
+    "expo-keep-awake": "~57.0.2",
+    "expo-linear-gradient": "~57.0.0",
+    "expo-linking": "~57.0.13",
+    "expo-localization": "~57.0.2",
+    "expo-router": "~57.0.29",
+    "expo-sharing": "~57.0.24",
+    "expo-splash-screen": "~57.0.10",
+    "expo-status-bar": "~57.0.1",
+    "expo-store-review": "~57.0.0",
+    "expo-updates": "~57.0.26",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "~4.26.0",
+    "react-native-svg": "15.15.4"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.0",
+    "@types/node": "^22.0.0",
+    "typescript": "~6.0.3"
+  }
+}
