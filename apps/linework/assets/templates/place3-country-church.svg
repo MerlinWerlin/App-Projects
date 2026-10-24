@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Country church with a steeple</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 124 62 L 124 34"/>
+    <path d="M 114 44 L 134 44"/>
+    <path d="M 86 172 L 124 62 L 162 172 Z"/>
+    <path d="M 92 172 L 156 172 L 156 330 L 92 330 Z"/>
+    <path d="M 108 330 L 108 288 A 16 16 0 0 1 140 288 L 140 330 Z"/>
+    <path d="M 112 224 L 112 202 A 12 12 0 0 1 136 202 L 136 224 Z"/>
+    <path d="M 156 221.7 L 176 186 L 330 186 L 346 236 L 156 236"/>
+    <path d="M 156 236 L 334 236 L 334 330 L 156 330 Z"/>
+    <path d="M 182 304 L 182 265 A 11 11 0 0 1 204 265 L 204 304 Z"/>
+    <path d="M 232 304 L 232 265 A 11 11 0 0 1 254 265 L 254 304 Z"/>
+    <path d="M 282 304 L 282 265 A 11 11 0 0 1 304 265 L 304 304 Z"/>
+    <path d="M 24 330 L 376 330"/>
+    <path d="M 124 330 Q 118 350 110 372"/>
+  </g>
+  <g fill="none" stroke="#22201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 124 70 L 106 172"/>
+    <path d="M 124 70 L 142 172"/>
+    <path d="M 124 272 L 124 330"/>
+    <path d="M 112 206 L 136 206"/>
+    <path d="M 92 246 L 156 246"/>
+    <path d="M 160 211 L 338 211"/>
+    <path d="M 193 254 L 193 304"/>
+    <path d="M 243 254 L 243 304"/>
+    <path d="M 293 254 L 293 304"/>
+  </g>
+</svg>
