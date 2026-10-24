@@ -11,7 +11,8 @@
     "test": "node --test \"src/core/**/*.test.ts\"",
     "typecheck": "tsc --noEmit",
     "typecheck:ui": "tsc -p scripts/tsconfig.ui.json",
-    "typecheck:core": "tsc --noEmit --strict --skipLibCheck --target es2022 --module nodenext --moduleResolution nodenext --allowImportingTsExtensions src/core/*.ts"
+    "typecheck:core": "tsc --noEmit --strict --skipLibCheck --target es2022 --module nodenext --moduleResolution nodenext --allowImportingTsExtensions src/core/*.ts",
+    "eas-build-post-install": "node scripts/eas-native-deps.js"
   },
   "dependencies": {
     "@expo-google-fonts/manrope": "^0.4.1",
