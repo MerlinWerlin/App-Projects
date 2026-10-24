@@ -219,7 +219,8 @@ def upsert_ver_loc(ver_id, locale, fields):
 
 
 BOOL_AGE = {"gambling", "unrestrictedWebAccess", "seventeenPlus", "lootBox", "messagingAndChat", "userGeneratedContent",
-            "advertising", "ageAssurance", "healthOrWellnessTopics", "parentalControls", "gunsOrOtherWeapons"}
+            "advertising", "ageAssurance", "healthOrWellnessTopics", "parentalControls", "socialMedia", "socialMediaAgeRestricted"}
+AGE_SKIP = {"kidsAgeBand", "gracRatingClassificationNumber", "developerAgeRatingInfoUrl", "socialMedia", "socialMediaAgeRestricted"}
 
 
 def step(name, fn):
@@ -255,7 +256,7 @@ def apply(app):
             want = {}
             if lst["ageRating"] == "none":
                 for k, v in attrs(ar).items():
-                    if v is not None or k in ("kidsAgeBand",) or "Url" in k or "url" in k:
+                    if v is not None or k in AGE_SKIP or "Url" in k or "url" in k:
                         continue
                     if k.endswith("Override") or k.endswith("OverrideV2"):
                         want[k] = "NONE"
@@ -266,24 +267,8 @@ def apply(app):
             else:
                 want = lst["ageRating"]
             want.update(lst.get("ageRatingExtra", {}))
-            bad = []
-            try:
-                call("PATCH", f"/v1/ageRatingDeclarations/{ar['id']}",
-                     {"data": {"type": "ageRatingDeclarations", "id": ar["id"], "attributes": want}})
-            except RuntimeError:
-                for k, v in want.items():
-                    try:
-                        call("PATCH", f"/v1/ageRatingDeclarations/{ar['id']}",
-                             {"data": {"type": "ageRatingDeclarations", "id": ar["id"], "attributes": {k: v}}})
-                    except RuntimeError as e:
-                        try:
-                            alt = (not v) if isinstance(v, bool) else False
-                            call("PATCH", f"/v1/ageRatingDeclarations/{ar['id']}",
-                                 {"data": {"type": "ageRatingDeclarations", "id": ar["id"], "attributes": {k: False if not isinstance(v, bool) else alt}}})
-                        except RuntimeError:
-                            bad.append(k)
-            if bad:
-                raise RuntimeError("could not set: " + ", ".join(bad))
+            call("PATCH", f"/v1/ageRatingDeclarations/{ar['id']}",
+                 {"data": {"type": "ageRatingDeclarations", "id": ar["id"], "attributes": want}})
         step("Age rating answers (all None/No)", age)
     ver, _ = editable_version(app_id)
     if not ver:
@@ -305,6 +290,8 @@ def apply(app):
                  {"data": {"type": "appStoreVersions", "id": ver["id"], "attributes": {"copyright": lst["copyright"]}}}))
         for disp, folder in (lst.get("screenshots") or {}).items():
             step(f"Screenshots {disp}", lambda disp=disp, folder=folder: upload_shots(ver["id"], locale, disp, folder))
+    if lst.get("availability") == "all":
+        step("Availability: all countries and regions", lambda: ensure_availability(app_id))
     for iap in lst.get("inAppPurchases", []):
         step(f"In-app purchase {iap['productId']}", lambda iap=iap: ensure_iap(app_id, iap, locale))
 
@@ -342,6 +329,42 @@ def upload_shots(ver_id, locale, disp, folder):
     say(f"  - {disp}: uploaded {len(files)}")
 
 
+def ensure_availability(app_id):
+    try:
+        get(f"/v1/apps/{app_id}/appAvailabilityV2")
+        say("  - already set")
+        return
+    except RuntimeError:
+        pass
+    terrs, nxt = [], f"{API}/v1/territories?limit=200"
+    while nxt:
+        S.headers["Authorization"] = "Bearer " + token()
+        r = S.get(nxt, timeout=60).json()
+        terrs += [t["id"] for t in r["data"]]
+        nxt = r.get("links", {}).get("next")
+    inc = [{"type": "territoryAvailabilities", "id": f"${{t{n}}}", "attributes": {"available": True},
+            "relationships": {"territory": {"data": {"type": "territories", "id": t}}}} for n, t in enumerate(terrs)]
+    call("POST", "/v2/appAvailabilities", {"data": {"type": "appAvailabilities", "attributes": {"availableInNewTerritories": True},
+         "relationships": {"app": {"data": {"type": "apps", "id": app_id}},
+                           "territoryAvailabilities": {"data": [{"type": "territoryAvailabilities", "id": x["id"]} for x in inc]}}},
+         "included": inc})
+    say(f"  - {len(terrs)} countries and regions")
+
+
+def upload_asset(create_path, rel_name, rel_type, rel_id, path, typ):
+    import hashlib
+    data = path.read_bytes()
+    obj = call("POST", create_path, {"data": {"type": typ, "attributes": {"fileName": path.name, "fileSize": len(data)},
+               "relationships": {rel_name: {"data": {"type": rel_type, "id": rel_id}}}}})["data"]
+    for op in attrs(obj)["uploadOperations"]:
+        hdr = {h["name"]: h["value"] for h in op.get("requestHeaders", [])}
+        r = requests.request(op["method"], op["url"], headers=hdr, data=data[op["offset"]:op["offset"] + op["length"]], timeout=120)
+        if r.status_code >= 300:
+            raise RuntimeError(f"upload {path.name} -> {r.status_code}")
+    call("PATCH", f"{create_path}/{obj['id']}", {"data": {"type": typ, "id": obj["id"],
+         "attributes": {"uploaded": True, "sourceFileChecksum": hashlib.md5(data).hexdigest()}}})
+
+
 def ensure_iap(app_id, iap, locale):
     iaps = get(f"/v1/apps/{app_id}/inAppPurchasesV2", limit=50)["data"]
     cur = next((i for i in iaps if attrs(i)["productId"] == iap["productId"]), None)
@@ -357,6 +380,15 @@ def ensure_iap(app_id, iap, locale):
              "attributes": {"locale": locale, "name": iap["displayName"], "description": iap["description"]},
              "relationships": {"inAppPurchaseV2": {"data": {"type": "inAppPurchases", "id": cur["id"]}}}}})
         say("  - added display name and description")
+    if iap.get("reviewScreenshot"):
+        try:
+            have = get(f"/v2/inAppPurchases/{cur['id']}/appStoreReviewScreenshot")["data"]
+        except RuntimeError:
+            have = None
+        if not have:
+            upload_asset("/v1/inAppPurchaseAppStoreReviewScreenshots", "inAppPurchaseV2", "inAppPurchases", cur["id"],
+                         ROOT / iap["reviewScreenshot"], "inAppPurchaseAppStoreReviewScreenshots")
+            say("  - review screenshot uploaded")
     # price: find the base territory price point matching the customer price
     try:
         get(f"/v2/inAppPurchases/{cur['id']}/iapPriceSchedule")

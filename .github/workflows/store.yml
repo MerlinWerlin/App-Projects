@@ -7,7 +7,12 @@ name: store
 
 on:
   push:
+    branches: [main, store-run]
     paths: ['apps/*/store/ASC_REQUEST.json']
+
+concurrency:
+  group: store-sync
+  cancel-in-progress: false
 
 jobs:
   sync:

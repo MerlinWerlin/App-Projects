@@ -24,7 +24,8 @@
       "price": {
         "territory": "AUS",
         "amount": "2.99"
-      }
+      },
+      "reviewScreenshot": "apps/linework/store/jpg/a/08-plus.jpg"
     },
     {
       "productId": "com.jared797.linework.trial14",
@@ -36,11 +37,13 @@
       "price": {
         "territory": "AUS",
         "amount": "0"
-      }
+      },
+      "reviewScreenshot": "apps/linework/store/jpg/a/08-plus.jpg"
     }
   ],
   "ageRating": "none",
   "screenshots": {
     "APP_IPHONE_67": "apps/linework/store/jpg/a"
-  }
+  },
+  "availability": "all"
 }
