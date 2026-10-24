@@ -132,7 +132,7 @@ jobs:
         if: steps.rel.outputs.mode == 'build'
         env:
           EAS_BUILD_NO_EXPO_GO_WARNING: 'true'
-          EXPO_NO_CAPABILITY_SYNC: ${{ steps.rel.outputs.skipCapSync == 'true' && '1' || '0' }}
+          EXPO_NO_CAPABILITY_SYNC: ${{ steps.rel.outputs.skipCapSync == '1' && '1' || '0' }}
         run: |
           set -o pipefail
           eas build --platform ios --profile "${{ steps.rel.outputs.profile }}" --non-interactive --auto-submit-with-profile production --no-wait --message "${{ steps.rel.outputs.note }}" 2>&1 | tee "$RUNNER_TEMP/ship.log"
