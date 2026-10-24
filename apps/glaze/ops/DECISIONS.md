@@ -138,3 +138,4 @@
 - 2026-10-25 · oversight D135-1 · accepted · native files held steady until the queued production-native build ships; JS-only work allowed (none needed this run).
 - 2026-10-25 · oversight v136 D135-1 · followed · native files still held; PR #74 not yet merged.
 - 2026-10-25 · oversight v137 D135-1 · followed · native files still held; PR #74 not yet merged; no new directives.
+- 2026-10-25 · oversight v138 D135-1 · followed · native files still held; PR #74 not yet merged; no new directives.
