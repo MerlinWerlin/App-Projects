@@ -450,6 +450,71 @@ def ensure_iap(app_id, iap, locale):
         say(f"  - price set: {terr} {amount}")
 
 
+def review_contact(ver_id, contact):
+    """App Review contact (name, phone, email) from listing.json reviewContact; keeps the notes."""
+    try:
+        d = get(f"/v1/appStoreVersions/{ver_id}/appStoreReviewDetail")["data"]
+    except RuntimeError:
+        d = None
+    body = {"contactFirstName": contact["firstName"], "contactLastName": contact["lastName"],
+            "contactPhone": contact["phone"], "contactEmail": contact["email"], "demoAccountRequired": False}
+    if d:
+        call("PATCH", f"/v1/appStoreReviewDetails/{d['id']}", {"data": {"type": "appStoreReviewDetails", "id": d["id"], "attributes": body}})
+    else:
+        call("POST", "/v1/appStoreReviewDetails", {"data": {"type": "appStoreReviewDetails", "attributes": body,
+             "relationships": {"appStoreVersion": {"data": {"type": "appStoreVersions", "id": ver_id}}}}})
+
+
+def submit(app, req):
+    """Submit the editable version (with its first in-app purchases) for App Review.
+    Only runs when ASC_REQUEST.json says {"mode": "submit"} AND names the build number to submit
+    ("build": "14") and the owner's go-ahead ("owner_ok": "<date + words>"), so it never fires by accident."""
+    rel, lst = app_cfg(app)
+    app_id = rel["ascAppId"]
+    want_build = str(req.get("build") or "")
+    if not want_build or not req.get("owner_ok"):
+        raise RuntimeError("submit needs \"build\" and \"owner_ok\" in ASC_REQUEST.json")
+    ver, _ = editable_version(app_id)
+    if not ver:
+        raise RuntimeError("no version in Prepare for Submission")
+    say(f"## Submitting {attrs(ver)['versionString']} for App Review (owner: {req['owner_ok']})")
+    if lst.get("reviewContact"):
+        step("App Review contact", lambda: review_contact(ver["id"], lst["reviewContact"]))
+    b = get(f"/v1/appStoreVersions/{ver['id']}/build")["data"]
+    if not b or str(attrs(b)["version"]) != want_build:
+        bs = get("/v1/builds", **{"filter[app]": app_id, "filter[version]": want_build, "filter[processingState]": "VALID", "limit": 1})["data"]
+        if not bs:
+            raise RuntimeError(f"build {want_build} is not processed (VALID) yet")
+        call("PATCH", f"/v1/appStoreVersions/{ver['id']}/relationships/build", {"data": {"type": "builds", "id": bs[0]["id"]}})
+        say(f"  - build {want_build} attached")
+    else:
+        say(f"  - build {want_build} already attached")
+    # first in-app purchases go to review with this version
+    for i in get(f"/v1/apps/{app_id}/inAppPurchasesV2", limit=50)["data"]:
+        if attrs(i)["state"] == "READY_TO_SUBMIT":
+            def sub_iap(i=i):
+                call("POST", "/v1/inAppPurchaseSubmissions", {"data": {"type": "inAppPurchaseSubmissions",
+                     "relationships": {"inAppPurchaseV2": {"data": {"type": "inAppPurchases", "id": i["id"]}}}}})
+            step(f"Queue in-app purchase {attrs(i)['productId']} with the version", sub_iap)
+    subs = get("/v1/reviewSubmissions", **{"filter[app]": app_id, "filter[platform]": "IOS",
+               "filter[state]": "READY_FOR_REVIEW", "limit": 5})["data"]
+    if subs:
+        rs = subs[0]
+        say(f"  - reusing open review submission {rs['id']}")
+    else:
+        rs = call("POST", "/v1/reviewSubmissions", {"data": {"type": "reviewSubmissions", "attributes": {"platform": "IOS"},
+                  "relationships": {"app": {"data": {"type": "apps", "id": app_id}}}}})["data"]
+    items = get(f"/v1/reviewSubmissions/{rs['id']}/items")["data"]
+    if not items:
+        step("Add version to the review submission", lambda: call("POST", "/v1/reviewSubmissionItems", {"data": {
+             "type": "reviewSubmissionItems", "relationships": {
+                 "reviewSubmission": {"data": {"type": "reviewSubmissions", "id": rs["id"]}},
+                 "appStoreVersion": {"data": {"type": "appStoreVersions", "id": ver["id"]}}}}}))
+    call("PATCH", f"/v1/reviewSubmissions/{rs['id']}", {"data": {"type": "reviewSubmissions", "id": rs["id"],
+         "attributes": {"submitted": True}}})
+    say("**Submitted for App Review.**")
+
+
 if __name__ == "__main__":
     mode, app = sys.argv[1], sys.argv[2]
     say(f"# App Store Connect {mode}: {app} ({time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime())})")
@@ -467,8 +532,12 @@ if __name__ == "__main__":
                 say("**Apple rejected the API key (401) as both a Team and an Individual key.**")
                 diagnose()
                 raise
-        (status if mode == "status" else apply)(app)
-        if mode == "apply":
+        if mode == "submit":
+            req = json.loads((ROOT / "apps" / app / "store" / "ASC_REQUEST.json").read_text())
+            submit(app, req)
+        else:
+            (status if mode == "status" else apply)(app)
+        if mode in ("apply", "submit"):
             say("")
             status(app)
     except Exception as e:

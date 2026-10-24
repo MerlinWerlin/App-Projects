@@ -2,7 +2,7 @@
 # Trigger: a commit that changes apps/<app>/store/ASC_REQUEST.json ({"mode": "status" | "apply"}).
 #   status -> read-only report of the app's App Store Connect record
 #   apply  -> pushes apps/<app>/store/listing.json (name, subtitle, text, URLs, category, age rating, in-app purchase)
-# Never submits for review. The report is posted as a comment on the triggering commit.
+# Submits for review only with {"mode":"submit","build":"N","owner_ok":"…"} (owner's explicit go-ahead). The report is posted as a comment on the triggering commit.
 name: store
 
 on:
