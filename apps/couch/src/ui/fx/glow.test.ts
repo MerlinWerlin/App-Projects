@@ -17,6 +17,7 @@ import {
   contrast,
   falloffStops,
   glowColor,
+  haloStyle,
   hashId,
   hexToRgb,
   hsl,
@@ -143,6 +144,18 @@ describe('contrast helper', () => {
     expect(contrast(dark.ink, dark.key)).toBeGreaterThanOrEqual(4.5);
     expect(contrast(light.muted, light.body)).toBeGreaterThanOrEqual(4.5);
     expect(contrast(dark.muted, dark.body)).toBeGreaterThanOrEqual(4.5);
+  });
+});
+
+describe('backlight halo (owner 24 Oct 2026)', () => {
+  it('hugs the remote card in the glow colour, and is gone with the glow off', () => {
+    expect(haloStyle(null)).toBeNull();
+    const h = haloStyle('#C9A26C')!;
+    expect(h.shadowColor).toBe('#C9A26C');
+    expect(h.shadowOffset).toEqual({ width: 0, height: 0 });
+    expect(h.shadowOpacity).toBeGreaterThan(0.3);
+    expect(h.shadowOpacity).toBeLessThanOrEqual(0.7);
+    expect(h.shadowRadius).toBeLessThanOrEqual(24);
   });
 });
 

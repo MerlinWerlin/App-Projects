@@ -14,7 +14,7 @@ import { NeverMirror } from '../../src/ui/NeverMirror';
 import { Text } from '../../src/ui/Text';
 import { emitFx } from '../../src/ui/fx/bus';
 import { CinemaGlow } from '../../src/ui/fx/CinemaGlow';
-import { glowColor, remoteStage } from '../../src/ui/fx/glow';
+import { glowColor, haloStyle, remoteStage } from '../../src/ui/fx/glow';
 import { keyDir, volumeStep } from '../../src/ui/fx/keyDir';
 import { Marquee } from '../../src/ui/fx/Marquee';
 import { VolumeHud } from '../../src/ui/fx/VolumeHud';
@@ -155,7 +155,7 @@ export default function RemoteScreen() {
             {prefs.simple ? (
               <SimpleRemote onKey={onKey} width={avail} />
             ) : (
-              <View style={[styles.remote, { backgroundColor: theme.body }]}>
+              <View style={[styles.remote, { backgroundColor: theme.body }, haloStyle(glow)]}>
                 {/* Generated texture (gradient / stripes / edge light), decoration only, behind the keys. */}
                 <RemoteTexture texture={theme.texture} radius={radius.remote} />
                 <View style={topLayout === 'row' ? styles.row : styles.stack}>
