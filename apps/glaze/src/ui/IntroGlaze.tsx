@@ -6,6 +6,7 @@
 // tweens in src/core/introGlaze.ts; the fade is the app's `slow` token, eased in-out. No springs, overshoot or bounce.
 // Reduce Motion (system or the Glaze setting): the finished logo shows at once and simply fades when the app is ready.
 import { useEffect, useMemo, useRef } from 'react';
+import { whenFirstScreen } from '../core/startupHandoff';
 import { AccessibilityInfo, Animated, Easing, StyleSheet, useWindowDimensions, View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import Svg, { Circle, ClipPath, Defs, Ellipse, G, LinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
@@ -98,9 +99,13 @@ export function IntroGlaze({
     if (finishing.current || !canFade(poured.current, readyRef.current)) return;
     finishing.current = true;
     setTimeout(() => {
+      // Mount the app under the (still opaque) intro, then fade only once its first screen has laid out, so no route
+      // name, header or blank frame ever shows between the two (fb-1024 A). Capped so it can never hang.
       onRevealRef.current?.();
-      Animated.timing(fade, { toValue: 0, duration: INTRO_MS.fadeOut, easing: calmInOut, useNativeDriver: true }).start(() => {
-        onDoneRef.current();
+      whenFirstScreen(() => {
+        Animated.timing(fade, { toValue: 0, duration: INTRO_MS.fadeOut, easing: calmInOut, useNativeDriver: true }).start(() => {
+          onDoneRef.current();
+        });
       });
     }, INTRO_MS.settle);
   };

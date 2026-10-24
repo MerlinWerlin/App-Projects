@@ -3,6 +3,7 @@
 // at the reading end of the card's name row) as a sibling of the card so screen readers reach it
 // as its own button. Likes are device-local (src/store/favourites.ts). It never shows a count.
 import { Ionicons } from '@expo/vector-icons';
+import { memo } from 'react';
 import { Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useT } from '../i18n';
 import { sizeV2 } from '../theme/tokensV2';
@@ -29,7 +30,8 @@ export type HeartButtonProps = {
   style?: StyleProp<ViewStyle>;
 };
 
-export function HeartButton({ id, name, liked, onToggle, kind = 'theme', onArt = false, style }: HeartButtonProps) {
+/** T118: memoised; callers pass a stable `onToggle` and a StyleSheet `style`. */
+export const HeartButton = memo(function HeartButton({ id, name, liked, onToggle, kind = 'theme', onArt = false, style }: HeartButtonProps) {
   const { c } = useColorsV2();
   const { t } = useT();
   let label: string;
@@ -59,7 +61,7 @@ export function HeartButton({ id, name, liked, onToggle, kind = 'theme', onArt =
       </View>
     </Pressable>
   );
-}
+});
 
 const styles = StyleSheet.create({
   heart: {

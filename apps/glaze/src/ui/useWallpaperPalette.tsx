@@ -5,10 +5,13 @@
 // bounds). Results are cached per photo for the session. On any failure `sampled` stays null and
 // widgets treat the wallpaper as unknown (panes bounded over black and white). Nothing leaves the
 // phone.
+// T118 (fb-1024 B): a focus reload that finds the same background keeps the old state object, so
+// coming back to the Widgets tab no longer re-renders the screen for nothing.
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { View } from 'react-native';
 import { defaultBackground, usesPhoto, type ThemeBackground } from '../core/background';
+import { keepIfSame, sameJson } from '../core/perfCache';
 import { DEFAULT_TRANSFORM } from '../core/photoCrop';
 import type { Theme } from '../core/themes';
 import { PHOTO_SAMPLE_SIZE, photoPaletteFromPixels } from '../core/wallpaperPalette';
@@ -43,7 +46,7 @@ export function useWallpaperPalette(theme: Theme): WallpaperPalette {
       let alive = true;
       loadBackground(theme.id)
         .then((b) => {
-          if (alive) setBg(b);
+          if (alive) setBg((prev) => keepIfSame(prev, b, sameJson));
         })
         .catch(() => undefined);
       return () => {

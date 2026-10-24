@@ -272,7 +272,7 @@ export function profileStepCards(profileCount: number = 1): StepCardData[] {
     {
       id: 'install',
       title: 'Install in Settings',
-      body: 'Open Settings and tap "Profile Downloaded" near the top (or General > VPN & Device Management). Tap Install, enter your passcode, tap Install again, then Done.',
+      body: 'Open Settings and tap "Profile Downloaded" near the top (or General > VPN & Device Management). Tap Install, enter your passcode, tap Install again, then Done. Not there? Fully close Settings, open it again and go to General > VPN & Device Management > Downloaded Profile. iOS deletes a downloaded profile after about 8 minutes, so if it is gone, tap the file in Files again and go straight to Settings.',
       illustration: 'install-button',
     },
     {

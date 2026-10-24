@@ -8,13 +8,17 @@
 // pack themes can be liked too and show up in the Themes tab's Liked sub-tab.
 // Design v2 (T84): a large squircle card on `surface` with the `card` shadow on the outer view and
 // the content clipped by an inner view; system headline/footnote type, tint "New" pill.
+// T118 (fb-1024 B): `baseY` (a shared value) carries the grid's position for the parallax, so a
+// layout change above the grid moves the cards on the UI thread without re-rendering them; icon
+// specs come from a module cache; a card that never pops draws a still Home Screen (no per-icon
+// animation hooks).
 
-import { memo, useCallback, useEffect, useMemo, useRef, type ReactNode } from 'react';
+import { memo, useCallback, useEffect, useRef, type ReactNode } from 'react';
 import { Platform, StyleSheet, Text, View, type LayoutChangeEvent, type TextStyle } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, type SharedValue } from 'react-native-reanimated';
 import type { DisplayFont } from '../core/artwork';
 import { artworkTransform, cardProgress } from '../core/galleryMotion';
-import { previewSpecs, type Theme } from '../core/themes';
+import type { Theme } from '../core/themes';
 import { useT } from '../i18n';
 import { WallpaperView } from '../render/WallpaperView';
 import { staggerIn, useMotionReduced } from '../theme/motion';
@@ -24,6 +28,7 @@ import { HeartButton } from './HeartButton';
 import { HomeMock } from './HomeMock';
 import { PressableScale } from './PressableScale';
 import { noMirror, textStyleFor } from './i18nLayout';
+import { cachedPreviewSpecs } from './previewCache';
 
 /** Portrait phone aspect (height / width) used for preview backgrounds. */
 export const PHONE_ASPECT = 874 / 402;
@@ -45,6 +50,11 @@ type Props = {
   viewportH?: SharedValue<number>;
   /** Y of the card's parent grid inside the scroll content, in points. */
   offsetY?: number;
+  /**
+   * T118: Y of the card's parent grid as a shared value (added to `offsetY` on the UI thread).
+   * Preferred in long lists: the grid moving never re-renders the card.
+   */
+  baseY?: SharedValue<number>;
   /** Reports the card centre in scroll-content coordinates (for "which card settled"). */
   onCentre?: (id: string, centreY: number) => void;
   /** Change (> 0) to pop the mini Home Screen icons in staggered. 0 = still. */
@@ -87,6 +97,7 @@ export const ThemeCard = memo(function ThemeCard({
   scrollY,
   viewportH,
   offsetY = 0,
+  baseY,
   onCentre,
   popKey = 0,
   staggerIndex,
@@ -100,7 +111,7 @@ export const ThemeCard = memo(function ThemeCard({
   const reduced = useMotionReduced();
   const inner = Math.max(80, width - spaceV2.sm * 2);
   const artH = inner * PHONE_ASPECT;
-  const specs = useMemo(() => previewSpecs(theme, 8), [theme]);
+  const specs = cachedPreviewSpecs(theme, 8);
   const dots = [theme.palette.bg, theme.palette.surface, theme.palette.accent, theme.palette.glyph];
 
   // The entering animation is decided once, at mount (the gallery passes an index on its first mount only).
@@ -132,10 +143,10 @@ export const ThemeCard = memo(function ThemeCard({
     if (!parallax || !scrollY || !viewportH || !Number.isFinite(centre.value)) {
       return { transform: [{ translateY: 0 }, { scale: 1 }] };
     }
-    const p = cardProgress(centre.value, scrollY.value, viewportH.value);
+    const p = cardProgress(centre.value + (baseY ? baseY.value : 0), scrollY.value, viewportH.value);
     const t = artworkTransform(p, artH, maxShift, 0.04);
     return { transform: [{ translateY: t.translateY }, { scale: t.scale }] };
-  }, [parallax, artH, maxShift]);
+  }, [parallax, artH, maxShift, baseY]);
 
   const handlePress = () => {
     if (onOpen) onOpen(theme.id);
@@ -182,6 +193,7 @@ export const ThemeCard = memo(function ThemeCard({
               backgroundColour={theme.palette.bg}
               animateIcons={popKey > 0 && !reduced ? 'pop' : false}
               animateKey={popKey}
+              still={popKey === 0}
               background={
                 <Animated.View style={[{ width: inner, height: artH }, artStyle]}>
                   <WallpaperView params={theme.wallpaper} width={inner} height={artH} maxGrain={120} />

@@ -6,9 +6,16 @@
 import { forwardRef, memo, useId, useMemo } from 'react';
 import { View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Defs, G, LinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
-import { compositionLayout } from '../core/artwork';
-import { layoutWallpaper, type WallpaperParams } from '../core/wallpaper';
+import { compositionLayout, type ArtPath } from '../core/artwork';
+import { weakKeyedCache } from '../core/perfCache';
+import { layoutWallpaper, type WallpaperLayout, type WallpaperParams } from '../core/wallpaper';
 import { ArtPaths } from './ArtPaths';
+
+// T118 (fb-1024 B): the layout and the artwork paths are cached per params object and size, so a
+// gallery card that mounts again (page swap, tab revisit) reuses them instead of laying out again.
+const LAYOUTS = weakKeyedCache<WallpaperParams, WallpaperLayout>();
+const ARTS = weakKeyedCache<WallpaperParams, ArtPath[]>();
+const NO_ART: ArtPath[] = [];
 
 export type WallpaperViewProps = {
   params: WallpaperParams;
@@ -44,10 +51,13 @@ const WallpaperSvg = memo(function WallpaperSvg({
   showArt: boolean;
   id: string;
 }) {
-  const layout = useMemo(() => layoutWallpaper(params, width, height), [params, width, height]);
+  const layout = useMemo(
+    () => LAYOUTS.get(params, `${width}x${height}`, () => layoutWallpaper(params, width, height)),
+    [params, width, height],
+  );
   const art = useMemo(
-    () => (showArt ? compositionLayout(params.art, width, height, params.seed) : []),
-    [showArt, params.art, params.seed, width, height],
+    () => (showArt ? ARTS.get(params, `${width}x${height}`, () => compositionLayout(params.art, width, height, params.seed)) : NO_ART),
+    [showArt, params, width, height],
   );
   const grain = maxGrain < layout.grain.length ? layout.grain.slice(0, Math.max(0, maxGrain)) : layout.grain;
   const g = layout.gradient;

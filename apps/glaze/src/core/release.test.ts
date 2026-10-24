@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const root = process.cwd();
 const read = (rel: string): string => readFileSync(join(root, rel), 'utf8');
@@ -45,6 +46,40 @@ test('first TestFlight build links none of Glaze\'s own native modules (modules-
   const pkg = JSON.parse(read('package.json')) as { expo?: { autolinking?: { nativeModulesDir?: string } } };
   assert.equal(pkg.expo?.autolinking?.nativeModulesDir, './modules-off');
   assert.ok(read('modules-off/README.md').includes('production-native'));
+});
+
+// D128-2 / T120: native linking follows the EAS profile's GLAZE_NATIVE, not a hand edit.
+test('native linking follows the profile: native profiles link ./modules, production links none', async () => {
+  const link = (await import(pathToFileURL(join(root, 'scripts', 'native-link.mjs')).href)) as {
+    nativeModulesDirFor: (flag: unknown) => string;
+    linkPackageJson: (text: string, flag: unknown) => string;
+  };
+  const pkgText = read('package.json');
+  const pkg = JSON.parse(pkgText) as { scripts: Record<string, string> };
+  assert.equal(pkg.scripts['eas-build-pre-install'], 'node scripts/native-link.mjs', 'EAS runs the link step before install');
+
+  const eas = JSON.parse(read('eas.json')) as { build: Record<string, { env?: Record<string, string>; extends?: string }> };
+  const envOf = (name: string): string | undefined => {
+    const p = eas.build[name];
+    return p.env?.GLAZE_NATIVE ?? (p.extends ? envOf(p.extends) : undefined);
+  };
+  const expected: Record<string, string> = {
+    development: './modules',
+    preview: './modules',
+    'production-native': './modules',
+    production: './modules-off',
+  };
+  for (const [name, dir] of Object.entries(expected)) {
+    const out = JSON.parse(link.linkPackageJson(pkgText, envOf(name))) as {
+      expo: { autolinking: { nativeModulesDir: string } };
+      dependencies: Record<string, string>;
+    };
+    assert.equal(out.expo.autolinking.nativeModulesDir, dir, `${name} profile links ${dir}`);
+    assert.deepEqual(out.dependencies, (JSON.parse(pkgText) as { dependencies: Record<string, string> }).dependencies);
+  }
+  assert.equal(link.nativeModulesDirFor(undefined), './modules-off', 'unset flag is the safe default');
+  assert.equal(link.nativeModulesDirFor(' 1 '), './modules');
+  assert.equal(link.linkPackageJson(pkgText, '0'), pkgText, 'the committed package.json is already the production form');
 });
 
 test('App Group is the owner group everywhere it is declared', () => {

@@ -2,7 +2,9 @@
 // layered shadow. Pressable cards ease to 0.97 (PressableScale); `selected` eases the card to
 // 1.04 and draws a tint ring. Reduce Motion: no size change, the ring still shows.
 // fb-1022c: timing with an ease-out curve, never a spring, so nothing overshoots.
-import { useEffect, type ReactNode } from 'react';
+// T118 (fb-1024 B): a card that mounts unselected starts no animation (it used to run a 1 -> 1
+// timing per card on mount, e.g. 24 at once when a grid mounts).
+import { useEffect, useRef, type ReactNode } from 'react';
 import { StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { durations, easeOutCurve, useMotionReduced } from '../theme/motion';
@@ -53,8 +55,13 @@ export function SquircleCard({
   const { c, scheme } = useColorsV2();
   const reduced = useMotionReduced();
   const pop = useSharedValue(1);
+  const mounted = useRef(false);
   useEffect(() => {
     const target = selected && !reduced ? pressV2.selectedPop : 1;
+    const first = !mounted.current;
+    mounted.current = true;
+    // Already at rest on mount: nothing to animate.
+    if (first && target === 1) return;
     pop.value = withTiming(target, { duration: reduced ? durations.fast : durations.base, easing: easeOutCurve });
   }, [selected, reduced, pop]);
   const popStyle = useAnimatedStyle(() => ({ transform: [{ scale: pop.value }] }));

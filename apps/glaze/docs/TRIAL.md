@@ -6,7 +6,15 @@ The app runs inside **Expo Go**, a free app that loads development builds from y
 2. **PC (automatic since 23 Oct):** your PC's auto-start (`Desktop\Apps\_auto`) installs each new build, runs the type check by itself and restarts Expo. You don't download kits or run any .cmd files.
 3. **iPhone:** open Glaze from **Expo Go > Recently opened**, about 10 minutes after a new build.
 
-## New since your last test (23 Oct evening, run 90): fb-1023
+## New since your last test (24 Oct, run 97): fb-1024
+Open Glaze (Expo Go > Recently opened, or the TestFlight app once the new build lands) and answer yes / no in a page comment.
+
+- **A. Opening:** close Glaze fully and open it. After the glaze-pour animation, does Themes appear straight away, with no "index" (or any other word) flashing at the top and no white or blank flash in between? yes / no
+- **B. Moving around:** switch between all five tabs a few times and scroll Themes, Wallpapers and Widgets. Does it feel smooth now (no hitch when a tab opens or while scrolling)? yes / no. If one spot still stutters, say which.
+- **C. Save to Photos:** open any theme, tap Apply this look › Wallpaper › **Save wallpaper to Photos**. Does it say Saved, and is the wallpaper in Photos? yes / no. If it still fails, what does the message under the button say (there's now a plain reason, a Try again button, and Open Settings when it's a permission problem)?
+- Still open from last time: **icon or mascot** (keep the glaze-drip icon, or mascot 1, 2 or 3) and the Glaze Plus price.
+
+## Earlier: fb-1023 (23 Oct evening, run 90)
 Open Glaze from Expo Go > Recently opened (about 10 minutes after this build) and answer yes / no in a page comment.
 
 - **A. Calm chip fade:** on Themes, tap the search chips (Games / Movie night / Storybook), switch sub-tabs and open a collection. Do the results just fade in softly (no slide, no zoom, no bounce), and does it feel calm? yes / no. Same on Wallpapers when you switch the sub-tab or All / New / Picks / Liked? yes / no

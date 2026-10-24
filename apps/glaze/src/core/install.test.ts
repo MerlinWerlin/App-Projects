@@ -156,6 +156,9 @@ test('profile step cards cover open, install, Not Verified, hide and remove', ()
   const byId = Object.fromEntries(cards.map((c) => [c.id, c]));
   assert.match(byId.open.body, /Profile Downloaded/);
   assert.match(byId.install.body, /VPN & Device Management/);
+  // Owner 24 Oct: "couldn't find it in Settings" -> the card says where else to look and that iOS drops it after ~8 min.
+  assert.match(byId.install.body, /Downloaded Profile/);
+  assert.match(byId.install.body, /8 minutes/);
   assert.match(byId['not-verified'].body, /not signed/);
   assert.match(byId['not-verified'].body, /cannot read/);
   assert.match(byId['hide-old'].body, /Remove from Home Screen/);

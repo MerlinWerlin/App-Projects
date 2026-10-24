@@ -12,13 +12,20 @@
 // fb-1022c (owner 22 Oct evening: "some very generic, chill transition"): a page change is a plain
 // cross-fade of the whole grid (opacity only, GRID_FADE_MS ease-out on the UI thread): no slide,
 // no spring, no stagger, no zoom, no layout animation, and the grid does not follow the finger.
+// T118 (fb-1024 B, owner 24 Oct: "a little laggy moving around the UI"): the grid is memoised (the
+// screen re-rendering for its own state no longer walks the cards); the first mount is progressive
+// too (it used to mount every card of the page in the tab's first frame); cards already mounted
+// before a swap or a search keystroke stay mounted (core/perfReveal keptAcrossSwap) instead of
+// turning back into placeholders; the previews are still Home Screens (no per-icon animation
+// hooks) with icon specs from a module cache.
 import { memo, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { pageTransition, showcaseCardWidth, showcaseColumns, swipeStep } from '../core/categoryPaging';
-import { REVEAL_FIRST, isRevealed, nextReveal } from '../core/categorySwitch';
-import { previewSpecs, type Theme } from '../core/themes';
+import { REVEAL_FIRST, nextReveal } from '../core/categorySwitch';
+import { isMounted, keptAcrossSwap } from '../core/perfReveal';
+import type { Theme } from '../core/themes';
 import { useT } from '../i18n';
 import { WallpaperView } from '../render/WallpaperView';
 import { easeOutCurve } from '../theme/motion';
@@ -29,6 +36,7 @@ import { HOME_ASPECT, HomeMock } from './HomeMock';
 import { HeartButton } from './HeartButton';
 import { SquircleCard } from './SquircleCard';
 import { noMirror, textStyleFor } from './i18nLayout';
+import { cachedPreviewSpecs } from './previewCache';
 
 type GridProps = {
   themes: readonly Theme[];
@@ -57,7 +65,10 @@ type GridProps = {
   fadeKey?: string;
 };
 
-export function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusBadge, plusNote, freeIds, freeBadge, freeNote, newIds, empty, likedIds, onToggleLike, fadeKey = '' }: GridProps) {
+const NO_KEPT: ReadonlySet<string> = new Set<string>();
+const idsOf = (xs: readonly Theme[]): string[] => xs.map((x) => x.id);
+
+export const ShowcaseGrid = memo(function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusBadge, plusNote, freeIds, freeBadge, freeNote, newIds, empty, likedIds, onToggleLike, fadeKey = '' }: GridProps) {
   const { isRTL } = useT();
   const { width } = useWindowDimensions();
   const columns = showcaseColumns(width);
@@ -94,11 +105,14 @@ export function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusB
     [width, isRTL, onStep],
   );
 
-  // Progressive mount after a swap: first rows now, the rest a few cards per frame.
-  const [revealed, setRevealed] = useState(() => themes.length);
+  // Progressive mount (first mount and after a swap): first rows now, the rest a few cards per
+  // frame. T118: cards mounted before the swap stay mounted (`kept`).
+  const [revealed, setRevealed] = useState(() => Math.min(themes.length, REVEAL_FIRST));
+  const [kept, setKept] = useState<ReadonlySet<string>>(NO_KEPT);
   const [shownThemes, setShownThemes] = useState(themes);
   if (shownThemes !== themes) {
     // Render-phase reset (React's "adjust state when a prop changes" pattern), no extra commit.
+    setKept(keptAcrossSwap(idsOf(shownThemes), revealed, kept, idsOf(themes)));
     setShownThemes(themes);
     setRevealed(Math.min(themes.length, REVEAL_FIRST));
   }
@@ -117,7 +131,7 @@ export function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusB
         ) : (
           <View style={[styles.grid, { gap }]}>
             {themes.map((theme, i) => {
-              if (!isRevealed(i, revealed)) {
+              if (!isMounted(i, revealed, kept, theme.id)) {
                 return <CardPlaceholder key={theme.id} width={cardWidth} height={h} colour={theme.palette.bg} />;
               }
               return (
@@ -140,7 +154,7 @@ export function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusB
       </Animated.View>
     </GestureDetector>
   );
-}
+});
 
 /** Same footprint as a card (preview + name row), drawn in the theme's base colour. */
 const CardPlaceholder = memo(function CardPlaceholder({ width, height, colour }: { width: number; height: number; colour: string }) {
@@ -171,7 +185,7 @@ type CardProps = {
 const ShowcaseCard = memo(function ShowcaseCard({ theme, width, onOpen, isNew, badge, note, liked, onToggleLike }: CardProps) {
   const { c } = useColorsV2();
   const { t, script } = useT();
-  const specs = useMemo(() => previewSpecs(theme, 20), [theme]);
+  const specs = cachedPreviewSpecs(theme, 20);
   const h = Math.round(Math.max(120, width) * HOME_ASPECT);
   const label = [t('themeUi.card.a11y', { name: theme.name, tagline: theme.tagline }), isNew ? t('themes.badge.newA11y') : null, note ?? null]
     .filter(Boolean)
@@ -199,6 +213,7 @@ const ShowcaseCard = memo(function ShowcaseCard({ theme, width, onOpen, isNew, b
             maxIcons={20}
             dockCount={4}
             backgroundColour={theme.palette.bg}
+            still
             background={<WallpaperView params={theme.wallpaper} width={width} height={h} maxGrain={96} />}
           />
           {badge ? <View style={styles.badge}>{badge}</View> : null}

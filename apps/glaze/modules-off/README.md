@@ -7,5 +7,8 @@ They have never been compiled, so the first TestFlight build links none of them:
 `src/native/` use `requireOptionalNativeModule`, so the app behaves exactly like the Expo Go build the
 owner tested.
 
-To turn the native milestone on (first dev build, T17): set `nativeModulesDir` back to `./modules`,
-install `@bacons/apple-targets`, and build with the `production-native` (or `development`) profile.
+Native linking now follows the build profile (D128-2, T120): `scripts/native-link.mjs` runs as the
+`eas-build-pre-install` hook and sets `nativeModulesDir` from the profile's `GLAZE_NATIVE`
+(`development`, `preview` and `production-native` link `./modules`; `production` links none). No hand
+edit is needed. For a local prebuild: `npm run native:on`, then `npx expo prebuild`, then `npm run native:off`
+before committing. Still to do for the native milestone (T17): install `@bacons/apple-targets`.

@@ -142,7 +142,7 @@ export const de: NonNullable<LocaleMessages['install']> = {
     },
     install: {
       title: 'In Einstellungen installieren',
-      body: 'Öffne Einstellungen und tippe oben auf „Profil geladen“ (oder Allgemein > VPN und Geräteverwaltung). Tippe auf „Installieren“, gib deinen Code ein, tippe erneut auf „Installieren“ und dann auf „Fertig“.',
+      body: 'Öffne Einstellungen und tippe oben auf „Profil geladen“ (oder Allgemein > VPN und Geräteverwaltung). Tippe auf „Installieren“, gib deinen Code ein, tippe erneut auf „Installieren“ und dann auf „Fertig“. Nicht da? Schließe Einstellungen ganz, öffne sie erneut und geh zu Allgemein > VPN und Geräteverwaltung > Geladenes Profil. iOS löscht ein geladenes Profil nach etwa 8 Minuten. Ist es weg, tippe in Dateien erneut auf die Datei und geh direkt zu Einstellungen.',
     },
     notVerified: {
       title: 'Warum „Nicht überprüft“?',

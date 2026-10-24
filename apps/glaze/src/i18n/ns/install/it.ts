@@ -142,7 +142,7 @@ export const it: NonNullable<LocaleMessages['install']> = {
     },
     install: {
       title: 'Installa in Impostazioni',
-      body: 'Apri Impostazioni e tocca «Profilo scaricato» in alto (o Generali > VPN e gestione dispositivi). Tocca Installa, inserisci il codice, tocca di nuovo Installa, poi Fine.',
+      body: 'Apri Impostazioni e tocca «Profilo scaricato» in alto (o Generali > VPN e gestione dispositivi). Tocca Installa, inserisci il codice, tocca di nuovo Installa, poi Fine. Non c’è? Chiudi del tutto Impostazioni, riaprilo e vai in Generali > VPN e gestione dispositivi > Profilo scaricato. iOS elimina un profilo scaricato dopo circa 8 minuti: se non c’è più, tocca di nuovo il file in File e vai subito in Impostazioni.',
     },
     notVerified: {
       title: 'Perché «Non verificato»?',

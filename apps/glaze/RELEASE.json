@@ -1,5 +1,5 @@
 {
-  "mode": "build",
-  "note": "Glaze: app icon, opening animation, calm fades and 2x2 tabs, icon/mascot question; TestFlight-safe native settings (24 Oct)",
+  "mode": "update",
+  "note": "Glaze: no 'index' flash at startup, smoother scrolling and tab switches, Save to Photos fixed with a plain-words reason if it fails, profile-install hint",
   "ascAppId": "6826415074"
 }

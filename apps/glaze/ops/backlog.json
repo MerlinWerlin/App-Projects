@@ -1600,11 +1600,105 @@
       "title": "Plus sheet Unlock and Restore purchases never fail silently: warning haptic on the error path too, and the result is spoken on every tap (even when the line below doesn't change)",
       "accept": "src/core/night1023.test.ts N3",
       "done": "2026-10-23 night pass (branch night-feedback)"
+    },
+    {
+      "id": "T117",
+      "status": "done",
+      "tags": [
+        "fb-1024",
+        "owner"
+      ],
+      "priority": "critical",
+      "source": "owner test 24 Oct morning A",
+      "title": "Startup flash: the route name 'index' shows between the opening animation and the first screen. No header/route name ever during startup; intro stays up until the first screen has laid out; no blank frame.",
+      "accept": "src/core/routeTitles.test.ts + src/core/startupHandoff.test.ts",
+      "done": "2026-10-24 run 97 (13930bb); not device-tested"
+    },
+    {
+      "id": "T118",
+      "status": "done",
+      "tags": [
+        "fb-1024",
+        "owner"
+      ],
+      "priority": "critical",
+      "source": "owner test 24 Oct morning B",
+      "title": "Lag moving around the UI: profile tab switches and Themes/Wallpapers/Widgets; memoise heavy cards, window offscreen grids, avoid whole-screen re-render on focus, defer non-visible work; calm motion kept.",
+      "accept": "perf guard test + before/after notes in docs/OWNER_1024.md",
+      "done": "2026-10-24 run 97 (8caa617); not device-tested"
+    },
+    {
+      "id": "T119",
+      "status": "done",
+      "tags": [
+        "fb-1024",
+        "owner"
+      ],
+      "priority": "critical",
+      "source": "owner test 24 Oct morning C",
+      "title": "Save to Photos fails when trialling a theme wallpaper: fix the permission (add-only), file URI/extension, render-finished save path; plain-words reason + Try again / Open Settings if it still fails.",
+      "accept": "src/core/photoSave.test.ts",
+      "done": "2026-10-24 run 97 (d0c505b); not device-tested"
+    },
+    {
+      "id": "T120",
+      "status": "done",
+      "tags": [
+        "oversight",
+        "D128-2"
+      ],
+      "priority": "low",
+      "source": "oversight v128 D128-2",
+      "title": "Native linking follows the profile: nativeModulesDir from GLAZE_NATIVE so development/production-native link ./modules and production links none; release.test.ts checks both.",
+      "accept": "release.test.ts",
+      "commit": "d1be8df",
+      "note": "run 98: scripts/native-link.mjs as eas-build-pre-install; npm run native:on/off for local prebuild; committed default stays ./modules-off"
+    },
+    {
+      "id": "T121",
+      "status": "done",
+      "tags": [
+        "fb-1024b"
+      ],
+      "priority": "high",
+      "source": "owner chat 24 Oct midday",
+      "title": "Bulk install: 'Profile Downloaded' but not found in Settings. Install card now says where else to look (General > VPN & Device Management > Downloaded Profile), to fully close and reopen Settings, and that iOS deletes it after ~8 minutes (11 languages).",
+      "accept": "install.test.ts"
+    },
+    {
+      "id": "T122",
+      "status": "todo",
+      "tags": [
+        "fb-1024b"
+      ],
+      "priority": "high",
+      "source": "owner chat 24 Oct midday",
+      "title": "Owner retest of 'index' flash and lag once the run 97 fixes (T117/T118) reach his phone: the build he tested (ship base 9203c69) predates them. If either remains, dig further (index: drop the / redirect route; lag: profile on device).",
+      "deps": [
+        "T117",
+        "T118"
+      ]
+    },
+    {
+      "id": "T123",
+      "status": "todo",
+      "tags": [
+        "fb-1024b"
+      ],
+      "priority": "high",
+      "source": "owner chat 24 Oct midday",
+      "title": "Home Screen widgets on the phone: needs a production-native TestFlight build (GLAZE_NATIVE=1, @bacons/apple-targets, first compile of the WidgetKit target; T17). Waiting on the owner's go-ahead.",
+      "deps": [
+        "T120"
+      ]
     }
   ],
   "priority_order": {
     "note": "run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
     "order": [
+      "T117",
+      "T118",
+      "T119",
       "T79",
       "T74",
       "T93",

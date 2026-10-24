@@ -6,10 +6,17 @@
 // T77 (shots-1018 L6): a second row, All / New / Our picks / Liked (the Themes tab's labels and
 // picks, core/discovery.ts), narrows Still and Pairs; Live lists the person's own loops and hides
 // it. Hearts on theme and pair tiles like a wallpaper on this device only. No counts or ranks.
+// T118 (fb-1024 B, owner 24 Oct: "a little laggy moving around the UI"): coming back to the tab
+// reloads the saved loops but keeps the old list when nothing changed (no whole-screen re-render on
+// focus); tiles keep their identity when unchanged (memoised tiles skip); the grid is its own
+// memoised component; after a change the first two rows mount at once and the rest a row per frame
+// behind same-sized placeholders, with tiles already on screen kept mounted (core/perfReveal).
 import { useFocusEffect, useRouter } from 'expo-router';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming, type SharedValue } from 'react-native-reanimated';
 import { pageTransition } from '../../src/core/categoryPaging';
+import { keepIfSame, reuseEqual, sameJson } from '../../src/core/perfCache';
+import { TILE_REVEAL_BATCH, TILE_REVEAL_FIRST, isMounted, keptAcrossSwap, revealStep } from '../../src/core/perfReveal';
 import { easeOutCurve } from '../../src/theme/motion';
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { DISCOVERY_TABS, discoveryTabKey, type DiscoveryTab } from '../../src/core/discovery';
@@ -30,7 +37,7 @@ import {
 import { useT } from '../../src/i18n';
 import { useWallpaperFavourites } from '../../src/store/favourites';
 import { loadLoops } from '../../src/store/loops';
-import { spaceV2, textV2 } from '../../src/theme/tokensV2';
+import { radiusV2, spaceV2, textV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { textStyleFor } from '../../src/ui/i18nLayout';
 import { Segmented, type SegmentedOption } from '../../src/ui/Segmented';
@@ -39,6 +46,73 @@ import { LargeTitleScrollView, PillButton } from '../../src/ui/v2';
 
 const GAP = spaceV2.md;
 const THEME_BY_ID: ReadonlyMap<string, Theme> = new Map(ALL_THEMES.map((th) => [th.id, th]));
+const NO_KEPT: ReadonlySet<string> = new Set<string>();
+const tileKey = (x: WallpaperTile): string => x.id;
+const sameTile = (a: WallpaperTile, b: WallpaperTile): boolean =>
+  a.kind === b.kind && a.themeId === b.themeId && a.loopId === b.loopId && a.live === b.live && a.plus === b.plus && a.href === b.href;
+
+type TileGridProps = {
+  /** The tiles on show (already cut to the visible count). */
+  tiles: readonly WallpaperTile[];
+  tileWidth: number;
+  tileHeight: number;
+  loopById: ReadonlyMap<string, LoopProject>;
+  likedIds: ReadonlySet<string>;
+  onToggleLike: (id: string) => void;
+  onOpen: (href: string) => void;
+  fade: SharedValue<number>;
+};
+
+/** T118: the tile grid, memoised, mounting new tiles progressively (placeholders hold their place). */
+const TileGrid = memo(function TileGrid({ tiles, tileWidth, tileHeight, loopById, likedIds, onToggleLike, onOpen, fade }: TileGridProps) {
+  const { c } = useColorsV2();
+  const gridFade = useAnimatedStyle(() => ({ opacity: fade.value }));
+  const ids = useMemo(() => tiles.map(tileKey), [tiles]);
+  const idsKey = ids.join('|');
+  const [revealed, setRevealed] = useState(() => Math.min(tiles.length, TILE_REVEAL_FIRST));
+  const [kept, setKept] = useState<ReadonlySet<string>>(NO_KEPT);
+  const [shown, setShown] = useState<{ key: string; ids: readonly string[] }>({ key: idsKey, ids });
+  if (shown.key !== idsKey) {
+    // Render-phase reset: tiles mounted before stay mounted, new ones are revealed per frame.
+    setKept(keptAcrossSwap(shown.ids, revealed, kept, ids));
+    setShown({ key: idsKey, ids });
+    setRevealed(Math.min(tiles.length, TILE_REVEAL_FIRST));
+  }
+  useEffect(() => {
+    if (revealed >= tiles.length) return;
+    const raf = requestAnimationFrame(() => setRevealed((n) => revealStep(n, tiles.length, TILE_REVEAL_BATCH)));
+    return () => cancelAnimationFrame(raf);
+  }, [revealed, tiles.length]);
+  const index = useMemo(() => new Map(ids.map((id, i) => [id, i])), [ids]);
+  const rows = useMemo(() => tileRows(tiles), [tiles]);
+  const placeholder = [styles.placeholder, { width: tileWidth, height: tileHeight, backgroundColor: c.fill }];
+
+  return (
+    <Animated.View style={[styles.grid, gridFade]}>
+      {rows.map((row) => (
+        <View key={row.map((r) => r.id).join('|')} style={styles.row}>
+          {row.map((tile) =>
+            isMounted(index.get(tile.id) ?? 0, revealed, kept, tile.id) ? (
+              <WallpaperTileView
+                key={tile.id}
+                tile={tile}
+                theme={tile.themeId ? THEME_BY_ID.get(tile.themeId) : undefined}
+                loopName={tile.loopId ? loopById.get(tile.loopId)?.name : undefined}
+                width={tileWidth}
+                height={tileHeight}
+                onOpen={onOpen}
+                liked={tile.themeId ? likedIds.has(tile.themeId) : false}
+                onToggleLike={onToggleLike}
+              />
+            ) : (
+              <View key={tile.id} style={placeholder} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" />
+            ),
+          )}
+        </View>
+      ))}
+    </Animated.View>
+  );
+});
 
 export default function WallpapersTab() {
   const { c } = useColorsV2();
@@ -58,7 +132,8 @@ export default function WallpapersTab() {
     useCallback(() => {
       let alive = true;
       loadLoops().then((s) => {
-        if (alive) setLoops(s.projects);
+        // T118: nothing new since the last visit keeps the same list (no re-render on focus).
+        if (alive) setLoops((prev) => keepIfSame(prev, s.projects, sameJson));
       });
       return () => {
         alive = false;
@@ -67,25 +142,35 @@ export default function WallpapersTab() {
   );
 
   const loopById = useMemo(() => new Map(loops.map((l) => [l.id, l])), [loops]);
-  const tiles = useMemo(
-    () => discoverWallpaperTiles(tab, discovery, { themes: ALL_THEMES, loops, today, liked }),
-    [tab, discovery, loops, today, liked],
-  );
+  // T118: a tile equal to the one before keeps its object, so its memoised view skips the render.
+  const lastTiles = useRef<readonly WallpaperTile[]>([]);
+  const tiles = useMemo(() => {
+    const next = reuseEqual(lastTiles.current, discoverWallpaperTiles(tab, discovery, { themes: ALL_THEMES, loops, today, liked }), tileKey, sameTile);
+    lastTiles.current = next;
+    return next;
+  }, [tab, discovery, loops, today, liked]);
   const shown = visibleTileCount(tiles.length, pages);
-  const rows = useMemo(() => tileRows(tiles.slice(0, shown)), [tiles, shown]);
+  const visible = useMemo(() => tiles.slice(0, shown), [tiles, shown]);
   const { tileWidth, tileHeight } = gridTileSize(width - spaceV2.lg * 2, GAP);
 
-  const options: SegmentedOption<WallpaperSubTab>[] = WALLPAPER_SUB_TABS.map((id) => ({ value: id, label: t(wallpaperSubTabKey(id)) }));
+  const options: SegmentedOption<WallpaperSubTab>[] = useMemo(
+    () => WALLPAPER_SUB_TABS.map((id) => ({ value: id, label: t(wallpaperSubTabKey(id)) })),
+    [t],
+  );
   const onTab = useCallback((next: WallpaperSubTab) => {
     setTab(next);
     setPages(0);
   }, []);
-  const discoveryOptions: SegmentedOption<DiscoveryTab>[] = DISCOVERY_TABS.map((id) => ({ value: id, label: t(discoveryTabKey(id)) }));
+  const discoveryOptions: SegmentedOption<DiscoveryTab>[] = useMemo(
+    () => DISCOVERY_TABS.map((id) => ({ value: id, label: t(discoveryTabKey(id)) })),
+    [t],
+  );
   const onDiscovery = useCallback((next: DiscoveryTab) => {
     setDiscovery(next);
     setPages(0);
   }, []);
   const onOpen = useCallback((href: string) => router.push(href), [router]);
+  const showMore = useCallback(() => setPages((p) => p + 1), []);
 
   // fb-1023: switching sub-tab or All/New/Picks/Liked fades the tiles in (opacity only, the calm fb-1022c rule).
   const fade = useSharedValue(1);
@@ -99,7 +184,6 @@ export default function WallpapersTab() {
     fade.value = tr.fromOpacity;
     fade.value = withTiming(1, { duration: tr.durationMs, easing: easeOutCurve });
   }, [tab, discovery, fade]);
-  const gridFade = useAnimatedStyle(() => ({ opacity: fade.value }));
 
   const liveEmpty = tab === 'live' && loops.length === 0;
   const discovering = discoveryApplies(tab);
@@ -141,27 +225,18 @@ export default function WallpapersTab() {
             {t('tabs.wallpapersTab.liveEmpty')}
           </Text>
         ) : null}
-        <Animated.View style={[styles.grid, gridFade]}>
-          {rows.map((row) => (
-            <View key={row.map((r) => r.id).join('|')} style={styles.row}>
-              {row.map((tile) => (
-                <WallpaperTileView
-                  key={tile.id}
-                  tile={tile}
-                  theme={tile.themeId ? THEME_BY_ID.get(tile.themeId) : undefined}
-                  loopName={tile.loopId ? loopById.get(tile.loopId)?.name : undefined}
-                  width={tileWidth}
-                  height={tileHeight}
-                  onOpen={onOpen}
-                  liked={tile.themeId ? likedIds.has(tile.themeId) : false}
-                  onToggleLike={toggleLike}
-                />
-              ))}
-            </View>
-          ))}
-        </Animated.View>
+        <TileGrid
+          tiles={visible}
+          tileWidth={tileWidth}
+          tileHeight={tileHeight}
+          loopById={loopById}
+          likedIds={likedIds}
+          onToggleLike={toggleLike}
+          onOpen={onOpen}
+          fade={fade}
+        />
         {shown < tiles.length ? (
-          <PillButton label={t('tabs.wallpapersTab.showMore')} variant="tinted" icon="chevron-down" onPress={() => setPages((p) => p + 1)} />
+          <PillButton label={t('tabs.wallpapersTab.showMore')} variant="tinted" icon="chevron-down" onPress={showMore} />
         ) : null}
       </View>
     </LargeTitleScrollView>
@@ -172,4 +247,6 @@ const styles = StyleSheet.create({
   body: { paddingHorizontal: spaceV2.lg, gap: spaceV2.lg, paddingBottom: spaceV2.xl },
   grid: { gap: GAP },
   row: { flexDirection: 'row', gap: GAP },
+  /** Same footprint and fill as a tile while it mounts. */
+  placeholder: { borderRadius: radiusV2.card, borderCurve: 'continuous' },
 });

@@ -4,7 +4,9 @@
 import { Feather } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
+import { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { markFirstScreen } from '../../src/core/startupHandoff';
 import { useT } from '../../src/i18n';
 import { useMotionReduced } from '../../src/theme/motion';
 import { radiusV2, sizeV2 } from '../../src/theme/tokensV2';
@@ -38,10 +40,18 @@ export default function TabsLayout() {
       <TabIcon icon={icon} color={color} size={size} focused={focused} bubble={c.tintSoft} />
     ),
   });
+  // fb-1024 A: the opening animation fades only once the first tab has laid out (one more frame so it has painted).
+  const onFirstLayout = useCallback(() => {
+    requestAnimationFrame(() => markFirstScreen());
+  }, []);
   return (
+    <View style={[styles.root, { backgroundColor: c.bg }]} onLayout={onFirstLayout}>
     <Tabs
       screenOptions={{
         headerShown: false,
+        // fb-1024 B: tabs mount on first visit only, and a hidden tab does not re-render when shared stores change.
+        lazy: true,
+        freezeOnBlur: true,
         tabBarActiveTintColor: c.tint,
         tabBarInactiveTintColor: c.inkSecondary,
         // The glass draws the colour; the navigator still adds the home-indicator inset itself.
@@ -65,10 +75,12 @@ export default function TabsLayout() {
       {/* Reached from the gear on Themes; href null hides the button but keeps /settings working. */}
       <Tabs.Screen name="settings" options={{ title: t('tabs.settings'), href: null }} />
     </Tabs>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  root: { flex: 1 },
   bar: { backgroundColor: 'transparent', borderTopWidth: 0, elevation: 0 },
   label: { fontSize: 11, fontWeight: '500' },
   bubble: {
