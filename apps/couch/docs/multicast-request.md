@@ -1,5 +1,7 @@
 # Apple Multicast Networking Entitlement — request text
 
+**Status: REQUESTED 24 Oct 2026** (owner sent the form at developer.apple.com, Apple ID of app 6826135134, category Utilities). Waiting for Apple's email. Do not ask the owner to request it again. When approved: enable Multicast Networking on identifier com.jared797.couch and ship a build with COUCH_MULTICAST_ENTITLEMENT=1 (docs/RELEASING.md section d).
+
 **Owner action.** Signed in at developer.apple.com, open the request form at
 https://developer.apple.com/contact/request/networking-multicast (if Apple has moved it, search for
 "multicast networking entitlement request"), enter the app name and bundle ID below and paste the
