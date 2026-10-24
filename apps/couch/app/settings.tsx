@@ -145,6 +145,14 @@ export default function SettingsScreen() {
             accessibilityHint={t('app.settings.diagnosticsHint')}
             onPress={() => router.push('/diagnostics')}
           />
+          <Row
+            title={t('app.feedback.row')}
+            subtitle={t('app.feedback.rowHint')}
+            accessory={{ type: 'chevron' }}
+            accessibilityLabel={t('app.feedback.row')}
+            accessibilityHint={t('app.feedback.rowHint')}
+            onPress={() => router.push('/feedback')}
+          />
         </InsetGroupedList>
       </LargeTitleHeader>
     </>
