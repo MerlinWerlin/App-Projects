@@ -204,5 +204,6 @@
 "common.locked": "Zablokowane",
 "home.freeLeft": "Pozostało darmowych rund: {n}",
 "home.freeDone": "Darmowe rundy się skończyły. Odblokuj Backspin na zawsze.",
-"round.outOfGoes": "To już wszystkie 10 darmowych rund! Odblokuj Backspin na zawsze i graj dalej."
+"round.outOfGoes": "To już wszystkie 10 darmowych rund! Odblokuj Backspin na zawsze i graj dalej.",
+"settings.look": "Styl"
 }

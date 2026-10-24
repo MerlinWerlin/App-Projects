@@ -204,5 +204,6 @@
 "common.locked": "Terkunci",
 "home.freeLeft": "Sisa {n} ronde gratis",
 "home.freeDone": "Ronde gratis sudah habis. Buka Backspin selamanya.",
-"round.outOfGoes": "10 ronde gratis kamu sudah habis! Buka Backspin selamanya untuk terus bermain."
+"round.outOfGoes": "10 ronde gratis kamu sudah habis! Buka Backspin selamanya untuk terus bermain.",
+"settings.look": "Gaya"
 }

@@ -204,5 +204,6 @@
 "common.locked": "Bloccato",
 "home.freeLeft": "Ti restano {n} partite gratis",
 "home.freeDone": "Hai esaurito le partite gratis. Sblocca Backspin per sempre.",
-"round.outOfGoes": "Hai usato tutte e 10 le partite gratis! Sblocca Backspin per sempre e continua a giocare."
+"round.outOfGoes": "Hai usato tutte e 10 le partite gratis! Sblocca Backspin per sempre e continua a giocare.",
+"settings.look": "Stile"
 }

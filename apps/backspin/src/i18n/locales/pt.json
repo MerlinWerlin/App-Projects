@@ -204,5 +204,6 @@
 "common.locked": "Bloqueado",
 "home.freeLeft": "Restam {n} rodadas grátis",
 "home.freeDone": "Você usou suas rodadas grátis. Libere o Backspin para sempre.",
-"round.outOfGoes": "Você usou suas 10 rodadas grátis! Libere o Backspin para sempre e continue jogando."
+"round.outOfGoes": "Você usou suas 10 rodadas grátis! Libere o Backspin para sempre e continue jogando.",
+"settings.look": "Visual"
 }

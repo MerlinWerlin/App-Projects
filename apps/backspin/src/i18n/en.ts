@@ -160,6 +160,7 @@ export const en = {
   'settings.autoplay': 'Play backwards automatically',
   'settings.motion': 'Calm motion',
   'settings.motionSub': 'Fewer animations (also follows Reduce Motion)',
+  'settings.look': 'Look',
   'settings.theme': 'Appearance',
   'settings.themeSystem': 'System',
   'settings.themeLight': 'Light',

@@ -204,5 +204,6 @@
 "common.locked": "잠김",
 "home.freeLeft": "무료 라운드 {n}회 남음",
 "home.freeDone": "무료 라운드를 모두 사용했어요. Backspin을 평생 이용해 보세요.",
-"round.outOfGoes": "무료 10라운드를 모두 사용했어요! Backspin을 평생 이용하고 계속 플레이하세요."
+"round.outOfGoes": "무료 10라운드를 모두 사용했어요! Backspin을 평생 이용하고 계속 플레이하세요.",
+"settings.look": "스타일"
 }

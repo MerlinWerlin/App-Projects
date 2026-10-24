@@ -204,5 +204,6 @@
 "common.locked": "Kilitli",
 "home.freeLeft": "{n} ücretsiz turun kaldı",
 "home.freeDone": "Ücretsiz turların bitti. Backspin'i sonsuza kadar aç.",
-"round.outOfGoes": "10 ücretsiz turun da bitti! Backspin'i sonsuza kadar aç ve oynamaya devam et."
+"round.outOfGoes": "10 ücretsiz turun da bitti! Backspin'i sonsuza kadar aç ve oynamaya devam et.",
+"settings.look": "Stil"
 }

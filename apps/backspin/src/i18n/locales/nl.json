@@ -204,5 +204,6 @@
 "common.locked": "Vergrendeld",
 "home.freeLeft": "Je hebt nog {n} gratis rondes",
 "home.freeDone": "Je gratis rondes zijn op. Ontgrendel Backspin voor altijd.",
-"round.outOfGoes": "Dat waren je 10 gratis rondes! Ontgrendel Backspin voor altijd en speel verder."
+"round.outOfGoes": "Dat waren je 10 gratis rondes! Ontgrendel Backspin voor altijd en speel verder.",
+"settings.look": "Stijl"
 }
