@@ -24,8 +24,9 @@ function walk(dir: string): string[] {
 }
 const svgs = (style: string) => readdirSync(join(STORE, 'svg', style)).filter((f) => f.endsWith('.svg')).sort();
 
-test('each style has at least 6 shots at 1320x2868', () => {
-  for (const style of ['a', 'b']) {
+// v2 (owner 24 Oct 2026): one pastel style (a); renders for the 6.9" and 6.5" iPhone slots; no hands anywhere.
+test('style a has 8 shots at 1320x2868', () => {
+  for (const style of ['a']) {
     const files = svgs(style);
     assert.ok(files.length >= 6, `style ${style} has ${files.length} shots`);
     for (const f of files) {
@@ -35,7 +36,8 @@ test('each style has at least 6 shots at 1320x2868', () => {
       assert.match(head, /viewBox="0 0 1320 2868"/, `${style}/${f} viewBox`);
     }
   }
-  assert.deepEqual(svgs('a'), svgs('b'), 'both styles cover the same shots');
+  assert.equal(svgs('a').length, 8);
+  assert.ok(!existsSync(join(STORE, 'svg', 'b')), 'style b was dropped');
 });
 
 test('captions cover every shot in all 11 locales', () => {
@@ -57,7 +59,8 @@ test('captions cover every shot in all 11 locales', () => {
 
 test('renders, when present, are exactly 1320x2868 and the set stays small', () => {
   let total = 0;
-  for (const style of ['a', 'b']) {
+  const SIZES: Record<string, [number, number]> = { a: [1320, 2868], 'a-6.5': [1284, 2778] };
+  for (const style of Object.keys(SIZES)) {
     const dir = join(STORE, 'jpg', style);
     if (!existsSync(dir)) continue;
     for (const f of readdirSync(dir)) {
@@ -72,12 +75,12 @@ test('renders, when present, are exactly 1320x2868 and the set stays small', () 
         if (marker === 0xc0 || marker === 0xc2) { size = [buf.readUInt16BE(i + 7), buf.readUInt16BE(i + 5)]; break; }
         i += 2 + len;
       }
-      assert.deepEqual(size, [1320, 2868], `${style}/${f} size`);
+      assert.deepEqual(size, SIZES[style], `${style}/${f} size`);
     }
   }
   const sheet = join(STORE, 'contact-sheet.png');
   if (existsSync(sheet)) assert.ok(statSync(sheet).size <= 600 * 1024, 'contact sheet <= 600 KB');
-  assert.ok(total < 6 * 1024 * 1024, `renders total ${total} bytes`);
+  assert.ok(total < 8 * 1024 * 1024, `renders total ${total} bytes`);
 });
 
 test('no other apps, ranking claims or store badges in store/', () => {
@@ -95,8 +98,25 @@ test('no other apps, ranking claims or store badges in store/', () => {
   }
 });
 
+test('shots draw no hands, fingers or pencil-holding hands (owner 24 Oct 2026)', () => {
+  const build = readFileSync(join(STORE, 'src', 'build.mjs'), 'utf8');
+  assert.ok(!/pencilHand|finger\(|function finger/.test(build), 'hand drawing helpers are gone');
+  for (const f of svgs('a')) {
+    const svg = readFileSync(join(STORE, 'svg', 'a', f), 'utf8');
+    for (const c of ['#EDBE9C', '#D79F7B', '#B97F5C', '#F6D7C6']) assert.ok(!svg.includes(c), `${f} uses skin colour ${c}`);
+  }
+});
+
+test('the phone is an iPhone-style frame (Dynamic Island, no punch-hole camera)', () => {
+  for (const f of svgs('a')) {
+    const svg = readFileSync(join(STORE, 'svg', 'a', f), 'utf8');
+    assert.ok(svg.includes('width="128" height="38" rx="19"'), `${f} has the island`);
+    assert.ok(!svg.includes('cx="300" cy="34" r="13"'), `${f} has no punch-hole`);
+  }
+});
+
 test('every SVG says it is an illustrative mockup', () => {
-  for (const style of ['a', 'b']) for (const f of svgs(style)) {
+  for (const style of ['a']) for (const f of svgs(style)) {
     assert.match(readFileSync(join(STORE, 'svg', style, f), 'utf8'), /Illustrative mockup, not a real-device capture/);
   }
 });

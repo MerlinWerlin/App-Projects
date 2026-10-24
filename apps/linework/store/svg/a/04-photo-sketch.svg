@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1320" height="2868" viewBox="0 0 1320 2868">
-<title>Any photo to a sketch (style b)</title>
+<title>Any photo to a sketch (style a)</title>
 <desc>Linework store screenshot. Illustrative mockup, not a real-device capture. Original art.</desc>
 <defs>
   <filter id="shPhone" x="-30%" y="-20%" width="160%" height="140%"><feDropShadow dx="0" dy="40" stdDeviation="46" flood-color="#22201C" flood-opacity="0.28"/></filter>
@@ -13,14 +13,15 @@
   <linearGradient id="pencilG" x1="0" y1="-1" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#F8CB66"/><stop offset="0.5" stop-color="#F2B33D"/><stop offset="1" stop-color="#D9932A"/></linearGradient>
   <linearGradient id="inkBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A50BA"/><stop offset="1" stop-color="#2346A8"/></linearGradient>
 </defs>
-<rect width="1320" height="2868" fill="url(#inkBg)"/><circle cx="660" cy="1760" r="760" fill="#FFFFFF" opacity="0.05"/><g transform="rotate(0 660 1700)">
-  <clipPath id="scr1"><rect x="290.28" y="874.7599999999999" width="739.44" height="1650.4800000000002" rx="96.72"/></clipPath>
-  <rect x="265" y="1192.688" width="10" height="118.37280000000003" rx="5" fill="#2A2925"/>
-  <rect x="265" y="1361.792" width="10" height="118.37280000000003" rx="5" fill="#2A2925"/>
-  <rect x="1045" y="1294.1504" width="10" height="169.10400000000004" rx="5" fill="#2A2925"/>
-  <rect x="270" y="854.4799999999999" width="780" height="1691.0400000000002" rx="117" fill="url(#bodyG)" filter="url(#shDeep)"/>
-  <rect x="273" y="857.4799999999999" width="774" height="1685.0400000000002" rx="114" fill="none" stroke="#5A5750" stroke-width="3"/>
-  <g clip-path="url(#scr1)"><svg x="290.28" y="874.7599999999999" width="739.44" height="1650.4800000000002" viewBox="0 0 600 1300" preserveAspectRatio="xMidYMid slice"><rect width="600" height="1300" fill="#F5F1EA"/><text x="58" y="44" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="22" fill="#22201C">12:00</text>
+<linearGradient id="bg1" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#FFE9DC"/><stop offset="0.55" stop-color="#FFF3E6"/><stop offset="1" stop-color="#FBEFD9"/></linearGradient><rect width="1320" height="2868" fill="url(#bg1)"/>
+  <circle cx="1180" cy="760" r="420" fill="#FFFFFF" opacity="0.28"/><circle cx="120" cy="2300" r="520" fill="#FFFFFF" opacity="0.22"/><g transform="rotate(0 660 1684)">
+  <clipPath id="scr2"><rect x="186" y="626" width="948" height="2116" rx="124"/></clipPath>
+  <rect x="155" y="1033.6" width="10" height="151.76000000000002" rx="5" fill="#2A2925"/>
+  <rect x="155" y="1250.4" width="10" height="151.76000000000002" rx="5" fill="#2A2925"/>
+  <rect x="1155" y="1163.68" width="10" height="216.8" rx="5" fill="#2A2925"/>
+  <rect x="160" y="600" width="1000" height="2168" rx="150" fill="url(#bodyG)" filter="url(#shPhone)"/>
+  <rect x="163" y="603" width="994" height="2162" rx="147" fill="none" stroke="#5A5750" stroke-width="3"/>
+  <g clip-path="url(#scr2)"><svg x="186" y="626" width="948" height="2116" viewBox="0 0 600 1300" preserveAspectRatio="xMidYMid slice"><rect width="600" height="1300" fill="#F5F1EA"/><text x="58" y="44" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="22" fill="#22201C">12:00</text>
   <g fill="#22201C"><rect x="476" y="32" width="5" height="10" rx="1.5"/><rect x="485" y="28" width="5" height="14" rx="1.5"/><rect x="494" y="24" width="5" height="18" rx="1.5"/>
   <rect x="510" y="26" width="34" height="17" rx="4.5" fill="none" stroke="#22201C" stroke-width="2"/><rect x="513" y="29" width="24" height="11" rx="2.5"/></g>
   <g transform="translate(37 101) scale(1.25)" fill="none" stroke="#22201C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></g><text x="300" y="128" text-anchor="middle" font-family="Fraunces, Lora, Georgia, 'Times New Roman', serif" font-weight="600" font-size="36" fill="#22201C">Prepare</text>
@@ -38,10 +39,10 @@
   <text x="48" y="946" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="22" fill="#6E675D">LINE STYLE</text>
   <rect x="48" y="966" width="160" height="66" rx="33" fill="#FFFFFF" stroke="#DDD5C8" stroke-width="2.5"/><text x="128" y="1008" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="23" fill="#22201C">Sketch</text><rect x="220" y="966" width="160" height="66" rx="33" fill="#E3E8F7" stroke="#2346A8" stroke-width="2.5"/><text x="300" y="1008" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="23" fill="#2346A8">Line art</text><rect x="392" y="966" width="160" height="66" rx="33" fill="#FFFFFF" stroke="#DDD5C8" stroke-width="2.5"/><text x="472" y="1008" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="23" fill="#22201C">Bold lines</text>
   <rect x="48" y="1100" width="504" height="100" rx="50" fill="#2346A8"/><text x="300" y="1162" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="700" font-size="30" fill="#FFFFFF">Start tracing</text>
-    <circle cx="300" cy="34" r="13" fill="#0E0E0C"/><circle cx="300" cy="34" r="5" fill="#25303F"/>
+    <rect x="236" y="18" width="128" height="38" rx="19" fill="#0E0E0C"/><circle cx="338" cy="37" r="7" fill="#1B2533"/>
     <rect x="200" y="1272" width="200" height="8" rx="4" fill="#22201C" opacity="0.55"/>
   </svg></g>
-  <rect x="290.28" y="874.7599999999999" width="739.44" height="1650.4800000000002" rx="96.72" fill="url(#glassG)" opacity="0.6"/>
-</g><g transform="translate(220 2700) rotate(0)"><rect x="-126.50000000000001" y="-60" width="253.00000000000003" height="120" rx="60" fill="rgba(255,255,255,0.16)" filter="url(#shDeep)"/><text x="0" y="18" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="50" fill="#FFFFFF">Sketch</text></g><g transform="translate(660 2700) rotate(0)"><rect x="-193.25" y="-60" width="386.5" height="120" rx="60" fill="#FFFFFF" filter="url(#shDeep)"/><g transform="translate(-150.75 -27.5) scale(2.2916666666666665)" fill="none" stroke="#2346A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></g><text x="-73.25" y="18"  font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="50" fill="#2346A8">Line art</text></g><g transform="translate(1100 2700) rotate(0)"><rect x="-182.5" y="-60" width="365" height="120" rx="60" fill="rgba(255,255,255,0.16)" filter="url(#shDeep)"/><text x="0" y="18" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="50" fill="#FFFFFF">Bold lines</text></g><text text-anchor="middle" font-family="'SF Pro Rounded', 'Arial Rounded MT Bold', Nunito, Inter, Arial, sans-serif" font-weight="800" font-size="128" letter-spacing="-1" fill="#FFFFFF"><tspan x="660" y="320">Any photo</tspan><tspan x="660" y="462">to a sketch</tspan></text>
-  <text x="660" y="608" text-anchor="middle" font-family="'SF Pro Rounded', 'Arial Rounded MT Bold', Nunito, Inter, Arial, sans-serif" font-weight="600" font-size="50" fill="#FFFFFF" fill-opacity="0.86">Three line styles, made on your phone</text>
+  <rect x="186" y="626" width="948" height="2116" rx="124" fill="url(#glassG)" opacity="0.6"/>
+</g><path transform="translate(90 700) rotate(0)" opacity="1" fill="#FFFFFF" d="M0 -30 C 6.6 -6.6 6.6 -6.6 30 0 C 6.6 6.6 6.6 6.6 0 30 C -6.6 6.6 -6.6 6.6 -30 0 C -6.6 -6.6 -6.6 -6.6 0 -30 Z"/><path transform="translate(1236 760) rotate(0)" opacity="1" fill="#2346A8" d="M0 -24 C 5.28 -5.28 5.28 -5.28 24 0 C 5.28 5.28 5.28 5.28 0 24 C -5.28 5.28 -5.28 5.28 -24 0 C -5.28 -5.28 -5.28 -5.28 0 -24 Z"/><text text-anchor="middle" font-family="Fraunces, Lora, Georgia, 'Times New Roman', serif" font-weight="600" font-size="124" letter-spacing="-2" fill="#22201C"><tspan x="660" y="236">Any photo</tspan><tspan x="660" y="374">to a sketch</tspan></text>
+  <text x="660" y="460" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="500" font-size="50" fill="#6E675D">Three line styles, made on your phone</text>
 </svg>

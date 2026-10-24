@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1320" height="2868" viewBox="0 0 1320 2868">
-<title>Lock it. Draw steady. (style b)</title>
+<title>Lock it. Draw steady. (style a)</title>
 <desc>Linework store screenshot. Illustrative mockup, not a real-device capture. Original art.</desc>
 <defs>
   <filter id="shPhone" x="-30%" y="-20%" width="160%" height="140%"><feDropShadow dx="0" dy="40" stdDeviation="46" flood-color="#22201C" flood-opacity="0.28"/></filter>
@@ -13,18 +13,19 @@
   <linearGradient id="pencilG" x1="0" y1="-1" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#F8CB66"/><stop offset="0.5" stop-color="#F2B33D"/><stop offset="1" stop-color="#D9932A"/></linearGradient>
   <linearGradient id="inkBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A50BA"/><stop offset="1" stop-color="#2346A8"/></linearGradient>
 </defs>
-<rect width="1320" height="2868" fill="url(#inkBg)"/><circle cx="660" cy="1760" r="760" fill="#FFFFFF" opacity="0.05"/><g transform="rotate(0 660 1770)">
-  <clipPath id="scr2"><rect x="271.32" y="902.4399999999999" width="777.36" height="1735.1200000000001" rx="101.68"/></clipPath>
-  <rect x="245" y="1236.672" width="10" height="124.44320000000003" rx="5" fill="#2A2925"/>
-  <rect x="245" y="1414.4479999999999" width="10" height="124.44320000000003" rx="5" fill="#2A2925"/>
-  <rect x="1065" y="1343.3375999999998" width="10" height="177.77600000000004" rx="5" fill="#2A2925"/>
-  <rect x="250" y="881.1199999999999" width="820" height="1777.7600000000002" rx="123" fill="url(#bodyG)" filter="url(#shDeep)"/>
-  <rect x="253" y="884.1199999999999" width="814" height="1771.7600000000002" rx="120" fill="none" stroke="#5A5750" stroke-width="3"/>
-  <g clip-path="url(#scr2)"><svg x="271.32" y="902.4399999999999" width="777.36" height="1735.1200000000001" viewBox="0 0 600 1300" preserveAspectRatio="xMidYMid slice"><g data-dark="1"><rect width="600" height="1300" fill="url(#camLight)"/>
+<linearGradient id="bg1" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#E3F1FF"/><stop offset="0.55" stop-color="#CFE5FB"/><stop offset="1" stop-color="#BFDAF6"/></linearGradient><rect width="1320" height="2868" fill="url(#bg1)"/>
+  <circle cx="1180" cy="760" r="420" fill="#FFFFFF" opacity="0.28"/><circle cx="120" cy="2300" r="520" fill="#FFFFFF" opacity="0.22"/><g transform="rotate(0 660 1684)">
+  <clipPath id="scr3"><rect x="186" y="626" width="948" height="2116" rx="124"/></clipPath>
+  <rect x="155" y="1033.6" width="10" height="151.76000000000002" rx="5" fill="#2A2925"/>
+  <rect x="155" y="1250.4" width="10" height="151.76000000000002" rx="5" fill="#2A2925"/>
+  <rect x="1155" y="1163.68" width="10" height="216.8" rx="5" fill="#2A2925"/>
+  <rect x="160" y="600" width="1000" height="2168" rx="150" fill="url(#bodyG)" filter="url(#shPhone)"/>
+  <rect x="163" y="603" width="994" height="2162" rx="147" fill="none" stroke="#5A5750" stroke-width="3"/>
+  <g clip-path="url(#scr3)"><svg x="186" y="626" width="948" height="2116" viewBox="0 0 600 1300" preserveAspectRatio="xMidYMid slice"><g data-dark="1"><rect width="600" height="1300" fill="url(#camLight)"/>
   <path d="M -20 1020 L 640 960 L 640 1320 L -20 1320 Z" fill="#B99A78" opacity="0.55"/>
   <rect x="40" y="250" width="520" height="760" fill="#FBF8F1" opacity="0.6" transform="rotate(-2 300 630)"/>
-  <clipPath id="half1"><rect x="0" y="590" width="600" height="520"/></clipPath>
-  <g clip-path="url(#half1)"><svg x="44" y="334" width="520" height="520" viewBox="0 0 400 400" overflow="visible" opacity="1">
+  <clipPath id="half2"><rect x="0" y="590" width="600" height="520"/></clipPath>
+  <g clip-path="url(#half2)"><svg x="44" y="334" width="520" height="520" viewBox="0 0 400 400" overflow="visible" opacity="1">
   
   <g fill="none" stroke="#2F2C27" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
     <path d="M 230 184 C 227.3 180.3 219.3 167.3 214 162 C 208.7 156.7 203.7 153.3 198 152 C 192.3 150.7 185 151.3 180 154 C 175 156.7 169.7 163 168 168 C 166.3 173 167.7 179.3 170 184 C 172.3 188.7 177.3 192.7 182 196 C 186.7 199.3 195.3 202.7 198 204"/>
@@ -97,19 +98,11 @@
   <circle cx="549" cy="592.8" r="20" fill="#FFFFFF" stroke="#2346A8" stroke-width="4"/>
   <text x="549" y="404" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="700" font-size="20" fill="#FFFFFF">60%</text>
   <rect x="30" y="1130" width="100" height="104" rx="50" fill="rgba(35,70,168,0.88)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/><g transform="translate(63 1151) scale(1.4166666666666667)" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="16" r="1.2" fill="#FFFFFF"/></g><text x="80" y="1216" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="17" fill="#FFFFFF">Lock</text><rect x="140" y="1130" width="100" height="104" rx="50" fill="rgba(20,19,15,0.55)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/><g transform="translate(173 1151) scale(1.4166666666666667)" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 5 14h6l-1 8 8-12h-6z"/></g><text x="190" y="1216" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="17" fill="#FFFFFF">Torch</text><rect x="250" y="1130" width="100" height="104" rx="50" fill="rgba(20,19,15,0.55)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/><g transform="translate(283 1151) scale(1.4166666666666667)" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M9.2 3.5v17M14.8 3.5v17M3.5 9.2h17M3.5 14.8h17"/></g><text x="300" y="1216" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="17" fill="#FFFFFF">Grid</text><rect x="360" y="1130" width="100" height="104" rx="50" fill="rgba(20,19,15,0.55)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/><g transform="translate(393 1151) scale(1.4166666666666667)" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18" stroke-dasharray="2 2.4"/><path d="M9 6 3 18h6zM15 6l6 12h-6z"/></g><text x="410" y="1216" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="17" fill="#FFFFFF">Mirror</text><rect x="470" y="1130" width="100" height="104" rx="50" fill="rgba(20,19,15,0.55)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/><g transform="translate(503 1151) scale(1.4166666666666667)" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4v-4h4v-4h4V8h4"/><path d="M4 20V4"/></g><text x="520" y="1216" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="17" fill="#FFFFFF">Steps</text>
-  </g><rect x="70" y="480" width="460" height="70" rx="35" fill="rgba(20,19,15,0.55)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/><text x="300" y="524" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="22" fill="#FFFFFF">Touch lock on · press and hold to exit</text>
-    <circle cx="300" cy="34" r="13" fill="#0E0E0C"/><circle cx="300" cy="34" r="5" fill="#25303F"/>
+  </g><rect x="70" y="1040" width="460" height="64" rx="32" fill="rgba(20,19,15,0.55)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/><text x="300" y="1081" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="600" font-size="21" fill="#FFFFFF">Touch lock on · press and hold to exit</text>
+    <rect x="236" y="18" width="128" height="38" rx="19" fill="#0E0E0C"/><circle cx="338" cy="37" r="7" fill="#1B2533"/>
     <rect x="200" y="1272" width="200" height="8" rx="4" fill="#FFFFFF" opacity="0.55"/>
   </svg></g>
-  <rect x="271.32" y="902.4399999999999" width="777.36" height="1735.1200000000001" rx="101.68" fill="url(#glassG)" opacity="0.6"/>
-</g><circle cx="1110" cy="940" r="140" fill="#FFFFFF" filter="url(#shDeep)"/><g transform="translate(1045 865) scale(5.416666666666667)" fill="none" stroke="#2346A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="16" r="1.2" fill="#2346A8"/></g><g transform="translate(470 2000) rotate(18) scale(1.15)">
-  <path d="M -230 560 C -250 420 -180 330 -90 300 L 90 300 C 190 330 250 430 240 560 Z" fill="#EDBE9C"/>
-  <path d="M -260 700 L 270 700 L 250 540 L -240 540 Z" fill="#FFFFFF"/>
-  <path d="M -66 50 C -66 -14 66 -14 66 50 L 86 330 L -86 330 Z" fill="#EDBE9C"/>
-  <path d="M 66 50 L 86 330 L 50 330 L 36 60 Z" fill="#D79F7B" opacity="0.6"/>
-  <path d="M -42 46 C -42 6 42 6 42 46 L 38 112 C 14 122 -14 122 -38 112 Z" fill="#F6D7C6"/>
-  <path d="M -40 190 C -14 202 14 202 40 190 M -34 214 C -10 222 10 222 34 214" fill="none" stroke="#B97F5C" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
-  <path d="M 90 300 C 150 270 210 290 220 340" fill="none" stroke="#B97F5C" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
-</g><circle cx="470" cy="2000" r="50" fill="none" stroke="#FFFFFF" stroke-width="10" opacity="0.80"/><circle cx="470" cy="2000" r="92.5" fill="none" stroke="#FFFFFF" stroke-width="7.5" opacity="0.58"/><circle cx="470" cy="2000" r="135" fill="none" stroke="#FFFFFF" stroke-width="5" opacity="0.35"/><circle cx="470" cy="2000" r="27.500000000000004" fill="#FFFFFF" opacity="0.27999999999999997"/><text text-anchor="middle" font-family="'SF Pro Rounded', 'Arial Rounded MT Bold', Nunito, Inter, Arial, sans-serif" font-weight="800" font-size="128" letter-spacing="-1" fill="#FFFFFF"><tspan x="660" y="320">Lock it.</tspan><tspan x="660" y="462">Draw steady.</tspan></text>
-  <text x="660" y="608" text-anchor="middle" font-family="'SF Pro Rounded', 'Arial Rounded MT Bold', Nunito, Inter, Arial, sans-serif" font-weight="600" font-size="50" fill="#FFFFFF" fill-opacity="0.86">Lock, touch lock and focus that stays put</text>
+  <rect x="186" y="626" width="948" height="2116" rx="124" fill="url(#glassG)" opacity="0.6"/>
+</g><path transform="translate(90 700) rotate(0)" opacity="1" fill="#FFFFFF" d="M0 -30 C 6.6 -6.6 6.6 -6.6 30 0 C 6.6 6.6 6.6 6.6 0 30 C -6.6 6.6 -6.6 6.6 -30 0 C -6.6 -6.6 -6.6 -6.6 0 -30 Z"/><path transform="translate(1236 760) rotate(0)" opacity="1" fill="#2346A8" d="M0 -24 C 5.28 -5.28 5.28 -5.28 24 0 C 5.28 5.28 5.28 5.28 0 24 C -5.28 5.28 -5.28 5.28 -24 0 C -5.28 -5.28 -5.28 -5.28 0 -24 Z"/><text text-anchor="middle" font-family="Fraunces, Lora, Georgia, 'Times New Roman', serif" font-weight="600" font-size="124" letter-spacing="-2" fill="#22201C"><tspan x="660" y="236">Lock it.</tspan><tspan x="660" y="374">Draw steady.</tspan></text>
+  <text x="660" y="460" text-anchor="middle" font-family="Inter, 'SF Pro Text', Arial, sans-serif" font-weight="500" font-size="50" fill="#6E675D">Lock, touch lock and focus that stays put</text>
 </svg>

@@ -119,45 +119,6 @@ function chip(x, y, label, ic, { rot = 0, fill = C.card, color = C.graphite, ico
 }
 
 // ---------- hand with pencil (tip at 0,0, pencil runs along +x before rotation) ----------
-function pencilHand(x, y, rot, scale = 1, sleeve = C.ink) {
-  return `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${scale})">
-  <path d="M 900 -300 L 1240 -330 L 1300 420 L 990 360 Z" fill="${sleeve}"/>
-  <path d="M 905 -296 L 990 360" stroke="#000" stroke-opacity="0.12" stroke-width="18"/>
-  <path d="M 400 -110 C 520 -240 770 -280 920 -200 L 1000 280 C 830 350 600 320 470 200 C 420 150 384 70 384 10 Z" fill="${C.skin}"/>
-  <path d="M 470 200 C 600 320 830 350 1000 280 L 994 236 C 840 300 640 276 520 180 Z" fill="${C.skinShade}" opacity="0.7"/>
-  <path d="M 440 36 C 370 92 286 116 232 106 C 198 100 196 70 222 60 L 420 14 Z" fill="${C.skinShade}"/>
-  <path d="M 0 0 L 30 -8 L 30 8 Z" fill="${C.lead}"/>
-  <path d="M 30 -8 L 96 -24 L 96 24 L 30 8 Z" fill="${C.wood}"/>
-  <path d="M 30 -8 L 96 -24 L 96 -8 Z" fill="#F3DDBE"/>
-  <path d="M 96 -24 Q 104 -30 112 -24 Q 120 -30 128 -24 L 128 24 Q 120 30 112 24 Q 104 30 96 24 Z" fill="${C.pencil}"/>
-  <rect x="112" y="-24" width="660" height="48" fill="url(#pencilG)"/>
-  <rect x="112" y="-9" width="660" height="6" fill="#FFFFFF" opacity="0.35"/>
-  <rect x="772" y="-26" width="54" height="52" rx="4" fill="#B9B4AA"/>
-  <path d="M 784 -26 V 26 M 800 -26 V 26 M 814 -26 V 26" stroke="#8E897F" stroke-width="4"/>
-  <path d="M 826 -24 H 860 Q 884 -24 884 0 Q 884 24 860 24 H 826 Z" fill="#E98C8C"/>
-  <path d="M 430 -124 C 330 -106 244 -96 192 -86 C 150 -78 140 -44 160 -28 C 176 -16 214 -22 254 -26 L 440 -30 Z" fill="${C.skin}"/>
-  <path d="M 162 -60 C 162 -80 184 -86 206 -84 L 236 -82 C 244 -70 244 -48 236 -38 L 196 -34 C 174 -32 162 -42 162 -60 Z" fill="${C.nail}"/>
-  <path d="M 300 -94 C 310 -80 312 -56 304 -36 M 330 -100 C 344 -80 344 -54 336 -32" fill="none" stroke="${C.skinLine}" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
-  <path d="M 476 46 C 384 66 296 70 232 62 C 196 58 186 30 212 20 C 244 10 304 22 364 22 L 470 10 Z" fill="${C.skin}"/>
-  <path d="M 216 26 C 210 34 214 48 228 52" fill="none" stroke="${C.skinLine}" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
-  <path d="M 440 -30 C 420 -10 420 10 470 10" fill="none" stroke="${C.skinLine}" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
-</g>`;
-}
-// Pointing fingertip (tip at 0,0 pointing up before rotation).
-function finger(x, y, rot, scale = 1, sleeve = C.ink) {
-  return `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${scale})">
-  <path d="M -230 560 C -250 420 -180 330 -90 300 L 90 300 C 190 330 250 430 240 560 Z" fill="${C.skin}"/>
-  <path d="M -260 700 L 270 700 L 250 540 L -240 540 Z" fill="${sleeve}"/>
-  <path d="M -66 50 C -66 -14 66 -14 66 50 L 86 330 L -86 330 Z" fill="${C.skin}"/>
-  <path d="M 66 50 L 86 330 L 50 330 L 36 60 Z" fill="${C.skinShade}" opacity="0.6"/>
-  <path d="M -42 46 C -42 6 42 6 42 46 L 38 112 C 14 122 -14 122 -38 112 Z" fill="${C.nail}"/>
-  <path d="M -40 190 C -14 202 14 202 40 190 M -34 214 C -10 222 10 222 34 214" fill="none" stroke="${C.skinLine}" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
-  <path d="M 90 300 C 150 270 210 290 220 340" fill="none" stroke="${C.skinLine}" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
-</g>`;
-}
-
-// ---------- phone frame (generic device, no brand marks) ----------
-// Screen content is authored in a 600x1300 space.
 function phone(cx, cy, w, rot, screen, { shadow = 'shPhone' } = {}) {
   const h = w * 2.168, x = cx - w / 2, y = cy - h / 2;
   const b = w * 0.026, r = w * 0.15, sr = r - b;
@@ -170,7 +131,7 @@ function phone(cx, cy, w, rot, screen, { shadow = 'shPhone' } = {}) {
   <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="url(#bodyG)" filter="url(#${shadow})"/>
   <rect x="${x + 3}" y="${y + 3}" width="${w - 6}" height="${h - 6}" rx="${r - 3}" fill="none" stroke="#5A5750" stroke-width="3"/>
   <g clip-path="url(#${clip})"><svg x="${x + b}" y="${y + b}" width="${w - 2 * b}" height="${h - 2 * b}" viewBox="0 0 600 1300" preserveAspectRatio="xMidYMid slice">${screen}
-    <circle cx="300" cy="34" r="13" fill="#0E0E0C"/><circle cx="300" cy="34" r="5" fill="#25303F"/>
+    <rect x="236" y="18" width="128" height="38" rx="19" fill="#0E0E0C"/><circle cx="338" cy="37" r="7" fill="#1B2533"/>
     <rect x="200" y="1272" width="200" height="8" rx="4" fill="${screen.includes('data-dark') ? '#FFFFFF' : C.graphite}" opacity="0.55"/>
   </svg></g>
   <rect x="${x + b}" y="${y + b}" width="${w - 2 * b}" height="${h - 2 * b}" rx="${sr}" fill="url(#glassG)" opacity="0.6"/>
@@ -390,10 +351,10 @@ function homeScreen(lang = 'en') {
 
 // ---------- headline blocks ----------
 function headlineA(lines, sub, color = C.graphite, subColor = C.muted) {
-  const fs = 132, lh = 148, top = 330;
+  const fs = 124, lh = 138, top = 236;
   const t = lines.map((l, i) => `<tspan x="660" y="${top + i * lh}">${esc(l)}</tspan>`).join('');
   return `<text text-anchor="middle" font-family="${SERIF}" font-weight="600" font-size="${fs}" letter-spacing="-2" fill="${color}">${t}</text>
-  <text x="660" y="${top + lines.length * lh + 6}" text-anchor="middle" font-family="${SANS}" font-weight="500" font-size="50" fill="${subColor}">${esc(sub)}</text>`;
+  <text x="660" y="${top + (lines.length - 1) * lh + 86}" text-anchor="middle" font-family="${SANS}" font-weight="500" font-size="50" fill="${subColor}">${esc(sub)}</text>`;
 }
 function headlineB(lines, sub) {
   const fs = 128, lh = 142, top = 320;
@@ -433,137 +394,51 @@ function bigSlider(x, y, h, pct, { track = C.inkSoft, fill = C.ink, bubble = C.i
 }
 
 // ---------- shots ----------
+// v2 (owner 24 Oct 2026): one pastel style, no hands or body parts, an upright iPhone-style phone as large as the
+// frame allows, caption above. Workshop moves to shot 3 so tradespeople see it before they flick past.
+const PW = 1000; // phone width; height = PW * 2.168
+const PCY = 600 + (PW * 2.168) / 2; // phone top at y = 600, under the caption
 const SHOTS = [
-  {
-    id: '01-trace', lines: ['Trace anything', 'onto paper'], sub: 'Your phone over the page, your pencil on the lines',
-    a() {
-      return bgA('#FFF4E4', '#FFE1CC', '#F9CDB8') +
-        `<g transform="rotate(-4 660 2400)"><rect x="90" y="1880" width="1140" height="1300" rx="10" fill="#FFFFFF" filter="url(#shCard)"/>
-         <rect x="90" y="1880" width="1140" height="1300" rx="10" fill="none" stroke="${C.line}" stroke-width="3"/>
-         <clipPath id="paperHalf"><rect x="0" y="2250" width="1320" height="700"/></clipPath>
-         ${art('rose-bloom', 300, 2010, 700, { color: '#E2DBCF', width: 3 })}<g clip-path="url(#paperHalf)">${art('rose-bloom', 300, 2010, 700, { color: '#3A3630', width: 3.4 })}</g></g>` +
-        phone(560, 1480, 620, -8, traceScreen({ subject: 'rose-bloom', opacity: 55, drawn: 0.45 })) +
-        card(910, 1050, 340, 400, 9, `<rect x="20" y="20" width="300" height="300" rx="22" fill="${C.paper}"/>${art('rose-bloom', 30, 30, 280, { width: 5 })}`, { label: 'Half done' }) +
-        arrow('M 1000 1500 C 1150 1640 1140 1880 1010 2000', [1010, 2000], 125, C.graphite) +
-        pencilHand(677, 2249, 38, 1.0, '#E58C6B') + ripple(677, 2249, C.ink, 34, 3, 0.5) +
-        sparkle(1262, 990, 40, '#FFFFFF', 0) + sparkle(1240, 1620, 28, C.ink, 12) + sparkle(140, 1040, 34, '#FFFFFF') + sparkle(220, 1600, 22, '#E58C6B');
-    },
-    b() {
-      return bgB() + phone(660, 1770, 820, 0, traceScreen({ subject: 'rose-bloom', opacity: 55, drawn: 0.45 }), { shadow: 'shDeep' }) +
-        ripple(720, 1910, '#FFFFFF', 40, 3, 0.85) + pencilHand(720, 1910, 40, 1.15, '#FFFFFF');
-    },
-  },
-  {
-    id: '02-free', lines: ['Every tool free'], sub: 'No ads. No subscription. No account.',
-    a() {
-      const fan = TOOLS.slice(0, 7).map(([ic, l], i) => {
-        const ang = -64 + i * 21, rad = ang * Math.PI / 180;
-        return chip(660 + Math.sin(rad) * 560, 1500 - Math.cos(rad) * 420 + Math.abs(i - 3) * 30, l, ic, { rot: ang * 0.25, size: 1.2 });
+  { id: '01-trace', lines: ['Trace anything', 'onto paper'], sub: 'Your phone over the page, your pencil on the lines',
+    bg: ['#FFF4E4', '#FFE1CC', '#F9CDB8'], screen: () => traceScreen({ subject: 'rose-bloom', opacity: 55, drawn: 0.45 }) },
+  // owner 24 Oct 2026: what people use Linework for, in the first images; the uses come from captions.json (11 locales).
+  { id: '02-made-for', lines: ['Made for…'], sub: 'Every tool free, no ads',
+    bg: ['#F3EEFF', '#E4DAFB', '#D7CCF4'], screen: () => traceScreen({ subject: 'cute-chibi-painter', opacity: 60, tools: TOOLS.slice(0, 5), active: ['grid'] }),
+    over: () => {
+      const uses = JSON.parse(readFileSync(join(STORE, 'captions.json'), 'utf8')).shots.find((x) => x.id === '02-made-for').items.en;
+      const x0 = 160, y0 = 860, cw = 1000, rowH = 118;
+      const pills = uses.map((u, i) => {
+        const x = x0 + 30 + (i % 2) * 480, y = y0 + 48 + Math.floor(i / 2) * rowH;
+        const fs = u.length > 15 ? 34 : 38;
+        return `<rect x="${x}" y="${y}" width="460" height="96" rx="48" fill="#FFFFFF" stroke="${C.line}" stroke-width="3"/>${icon('check', x + 50, y + 48, 38, C.ink, 3)}<text x="${x + 84}" y="${y + 61}" font-family="${SANS}" font-weight="700" font-size="${fs}" fill="${C.graphite}">${esc(u)}</text>`;
       }).join('');
-      return bgA('#F3EEFF', '#E4DAFB', '#D7CCF4') + phone(660, 1900, 780, 6, traceScreen({ subject: 'cute-chibi-painter', opacity: 60, tools: TOOLS.slice(0, 5), active: ['grid'] })) + fan +
-        sparkle(150, 900, 40, '#FFFFFF') + sparkle(1180, 860, 30, C.ink, 10) + sparkle(1210, 2500, 44, '#FFFFFF') + sparkle(110, 2400, 26, C.ink);
-    },
-    b() {
-      const pills = TOOLS.map(([ic, l], i) => {
-        const x = 118 + (i % 4) * 272, y = 820 + Math.floor(i / 4) * 210;
-        return `<rect x="${x - 118}" y="${y}" width="236" height="180" rx="44" fill="#FFFFFF" fill-opacity="0.14" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="3"/>${icon(ic, x, y + 70, 64, '#FFFFFF', 2)}<text x="${x}" y="${y + 148}" text-anchor="middle" font-family="${ROUNDED}" font-weight="700" font-size="40" fill="#FFFFFF">${l}</text>`;
-      }).join('');
-      return bgB() + `<g transform="translate(42 0)">${pills}</g>` + phone(660, 2160, 700, 0, traceScreen({ subject: 'cute-chibi-painter', opacity: 60, active: ['grid'] }), { shadow: 'shDeep' });
-    },
-  },
-  {
-    id: '03-photo-sketch', lines: ['Any photo', 'to a sketch'], sub: 'Three line styles, made on your phone',
-    a() {
-      const before = `<clipPath id="cb"><rect x="24" y="24" width="532" height="620" rx="24"/></clipPath><g clip-path="url(#cb)">${catPhoto(24, 24, 532)}</g>`;
-      const after = `<clipPath id="ca"><rect x="24" y="24" width="532" height="620" rx="24"/></clipPath><g clip-path="url(#ca)">${catOutline(24, 24, 532)}</g>`;
-      return bgA('#FFE9DC', '#FFF3E6', '#FBEFD9') + phone(800, 2080, 640, 8, prepareScreen('outline')) +
-        card(80, 880, 580, 760, -8, before, { label: 'Before' }) +
-        card(600, 1180, 580, 760, 7, after, { label: 'After' }) +
-        arrow('M 420 1700 C 420 1930 560 2010 660 1960', [660, 1960], -20, C.graphite) +
-        sparkle(1180, 1100, 44, '#FFFFFF') + sparkle(140, 1760, 32, '#E58C6B') + sparkle(1220, 2000, 26, C.ink);
-    },
-    b() {
-      const chips = ['Sketch', 'Line art', 'Bold lines'].map((s, i) => chip(220 + i * 440, 2700, s, i === 1 ? 'check' : null, { fill: i === 1 ? '#FFFFFF' : 'rgba(255,255,255,0.16)', color: i === 1 ? C.ink : '#FFFFFF', size: 1.25, filter: 'shDeep' })).join('');
-      return bgB() + phone(660, 1700, 780, 0, prepareScreen('outline'), { shadow: 'shDeep' }) + chips;
-    },
-  },
-  {
-    id: '04-templates', lines: ['1,900+ templates', 'to trace'], sub: 'Letters, heroes, fairy tales, kids and more',
-    a() {
-      const tc = (x, y, rot, a, l) => card(x, y, 360, 420, rot, `<rect x="20" y="20" width="320" height="300" rx="24" fill="${C.paper}"/>${art(a, 40, 30, 280, { width: 5 })}`, { label: l });
-      return bgA('#E6F7EF', '#D3F0E3', '#C4E8D9') + phone(660, 1920, 760, -6, templatesScreen('All')) +
-        tc(40, 900, -12, 'hero-flying', 'Flying hero') + tc(920, 1060, 10, 'fairy-unicorn-elegant', 'Unicorn') + tc(880, 2260, -6, 'game-pixel-knight', 'Pixel knight') +
-        sparkle(560, 870, 40, '#FFFFFF') + sparkle(1220, 960, 28, C.ink) + sparkle(120, 2300, 40, '#FFFFFF') + sparkle(240, 1440, 24, C.ink);
-    },
-    b() {
-      return bgB() + phone(600, 1840, 780, 0, templatesScreen('Heroes'), { shadow: 'shDeep' }) +
-        chip(1010, 1080, 'Heroes', null, { size: 1.6, color: C.ink, filter: 'shDeep' }) + ripple(1050, 1080, '#FFFFFF', 60, 2, 0.5);
-    },
-  },
-  {
-    id: '05-lock', lines: ['Lock it.', 'Draw steady.'], sub: 'Lock, touch lock and focus that stays put',
-    a() {
-      const btn = `<circle cx="210" cy="210" r="210" fill="${C.ink}"/>${icon('lock', 210, 186, 170, '#FFFFFF', 2)}<text x="210" y="336" text-anchor="middle" font-family="${SANS}" font-weight="700" font-size="46" fill="#FFFFFF">Locked</text>`;
-      return bgA('#E3F1FF', '#CFE5FB', '#BFDAF6') + phone(560, 1880, 760, -7, traceScreen({ subject: 'wild-hummingbird', opacity: 60, locked: true, active: ['lock'] })) +
-        `<g transform="translate(800 1000)"><g filter="url(#shCard)">${btn}</g></g>` + ripple(1010, 1210, '#FFFFFF', 70, 3, 0.85) + finger(1060, 1300, -28, 0.9, '#E58C6B') +
-        arrow('M 860 1420 C 760 1560 700 1580 600 1560', [600, 1560], 175, C.graphite) +
-        sparkle(220, 920, 40, '#FFFFFF') + sparkle(1230, 940, 26, C.ink) + sparkle(1200, 2500, 40, '#FFFFFF');
-    },
-    b() {
-      const banner = `${glassPill(70, 480, 460, 70)}<text x="300" y="524" text-anchor="middle" font-family="${SANS}" font-weight="600" font-size="22" fill="#FFFFFF">Touch lock on · press and hold to exit</text>`;
-      return bgB() + phone(660, 1770, 820, 0, traceScreen({ subject: 'wild-hummingbird', opacity: 60, locked: true, active: ['lock'] }) + banner, { shadow: 'shDeep' }) +
-        `<circle cx="1110" cy="940" r="140" fill="#FFFFFF" filter="url(#shDeep)"/>${icon('lock', 1110, 930, 130, C.ink, 2.2)}` +
-        finger(470, 2000, 18, 1.15, '#FFFFFF') + ripple(470, 2000, '#FFFFFF', 50, 3, 0.8);
-    },
-  },
-  {
-    id: '06-letters', lines: ['Letters in', '16 styles'], sub: 'Bubble, retro, calligraphy, pixel and more',
-    a() {
-      const word = [['char-bubble-h', -10], ['char-calligraphy-a', 6], ['char-pixel-p', -6], ['char-retro-p', 8], ['char-western-y', -5]];
-      const cards = word.map(([a, r], i) => card(70 + i * 240, 860 + (i % 2) * 110, 220, 270, r, `<rect x="14" y="14" width="192" height="192" rx="20" fill="${C.paper}"/>${art(a, 20, 20, 180, { width: 7 })}`)).join('');
-      return bgA('#FFE8EE', '#FCD5DF', '#F6C3D2') + phone(660, 2020, 720, -5, lettersScreen('calligraphy')) + cards +
-        sparkle(130, 820, 36, '#FFFFFF') + sparkle(1220, 1340, 30, C.ink) + sparkle(1200, 2500, 40, '#FFFFFF') + sparkle(120, 2450, 26, C.ink);
-    },
-    b() {
-      return bgB() + phone(600, 1840, 780, 0, lettersScreen('calligraphy'), { shadow: 'shDeep' }) +
-        popup(930, 960, 320, 320, `${art('char-calligraphy-a', 30, 18, 260, { width: 7 })}`, { filter: 'shDeep', r: 40 }) +
-        chip(1090, 1360, 'Calligraphy', null, { size: 1.3, color: C.ink, filter: 'shDeep' });
-    },
-  },
-  {
-    id: '07-workshop', lines: ['Exact angles', 'for the workshop'], sub: 'Angles, joints and layouts to trace',
-    a() {
-      const tc = (x, y, rot, a, l) => `<g transform="rotate(${rot} ${x + 170} ${y + 200})"><rect x="${x}" y="${y}" width="340" height="400" rx="8" fill="#132B44" filter="url(#shCard)"/><rect x="${x}" y="${y}" width="340" height="400" rx="8" fill="none" stroke="#7FD6F2" stroke-width="3"/>${art(a, x + 20, y + 16, 300, { color: '#E6F4FB', width: 4 })}<text x="${x + 22}" y="${y + 378}" font-family="'SF Mono', Menlo, 'DejaVu Sans Mono', monospace" font-weight="700" font-size="30" fill="#7FD6F2">${l}</text></g>`;
-      return bgA('#E7EEF6', '#D3DFEC', '#C2D2E4') + phone(640, 1960, 740, 6, workshopScreen('Angles')) +
-        tc(40, 900, -9, 'trade-angle-45', 'ANGLE 45°') + tc(930, 1120, 8, 'trade-dovetail-1-6-3', 'DOVETAIL') +
-        sparkle(1200, 880, 34, '#FFFFFF') + sparkle(140, 2450, 40, '#FFFFFF') + sparkle(1230, 2400, 24, C.ink);
-    },
-    b() {
-      return bgB() + phone(600, 1840, 780, 0, workshopScreen('Angles'), { shadow: 'shDeep' }) +
-        chip(1080, 1000, 'Angles', 'tool', { size: 1.4, color: C.ink, filter: 'shDeep' });
-    },
-  },
-  {
-    id: '08-plus', lines: ['Pay once.', 'Keep it all.'], sub: 'One unlock for every template. No subscription.',
-    a() {
-      const chips = [['No ads', 'check', 290, 1000, -8], ['No subscription', 'check', 900, 1080, 7], ['No account', 'check', 330, 2600, 6]]
-        .map(([l, ic, x, y, r]) => chip(x, y, l, ic, { rot: r, size: 1.3 })).join('');
-      return bgA('#FFF8DB', '#FFEFB8', '#FBE29A') + phone(660, 1900, 740, -5, plusScreen()) + chips +
-        sparkle(1220, 900, 36, '#FFFFFF') + sparkle(100, 1700, 28, C.ink) + sparkle(1210, 2450, 40, '#FFFFFF');
-    },
-    b() {
-      return bgB() + phone(660, 1820, 800, 0, plusScreen(), { shadow: 'shDeep' }) +
-        ['No ads', 'No subscription', 'No account'].map((l, i) => chip([270, 660, 1050][i], 2680, l, 'check', { color: C.ink, size: 1.05, filter: 'shDeep' })).join('');
-    },
-  },
+      return `<rect x="${x0}" y="${y0}" width="${cw}" height="${48 * 2 + rowH * 5 - 22}" rx="56" fill="#F7F3FF" fill-opacity="0.96" filter="url(#shCard)"/>${pills}`;
+    } },
+  { id: '03-workshop', lines: ['Exact angles', 'for the workshop'], sub: 'Angles, joints and layouts to trace',
+    bg: ['#E7EEF6', '#D3DFEC', '#C2D2E4'], screen: () => workshopScreen('Angles') },
+  { id: '04-photo-sketch', lines: ['Any photo', 'to a sketch'], sub: 'Three line styles, made on your phone',
+    bg: ['#FFE9DC', '#FFF3E6', '#FBEFD9'], screen: () => prepareScreen('outline') },
+  { id: '05-templates', lines: ['1,900+ templates', 'to trace'], sub: 'Letters, heroes, fairy tales, kids and more',
+    bg: ['#E6F7EF', '#D3F0E3', '#C4E8D9'], screen: () => templatesScreen('All') },
+  { id: '06-letters', lines: ['Letters in', '16 styles'], sub: 'Bubble, retro, calligraphy, pixel and more',
+    bg: ['#FFE8EE', '#FCD5DF', '#F6C3D2'], screen: () => lettersScreen('calligraphy') },
+  { id: '07-lock', lines: ['Lock it.', 'Draw steady.'], sub: 'Lock, touch lock and focus that stays put',
+    bg: ['#E3F1FF', '#CFE5FB', '#BFDAF6'],
+    screen: () => traceScreen({ subject: 'wild-hummingbird', opacity: 60, locked: true, active: ['lock'] }) +
+      `${glassPill(70, 1040, 460, 64)}<text x="300" y="1081" text-anchor="middle" font-family="${SANS}" font-weight="600" font-size="21" fill="#FFFFFF">Touch lock on · press and hold to exit</text>` },
+  { id: '08-plus', lines: ['Pay once.', 'Keep it all.'], sub: 'One unlock for every template. No subscription.',
+    bg: ['#FFF8DB', '#FFEFB8', '#FBE29A'], screen: () => plusScreen() },
 ];
+for (const s of SHOTS) {
+  s.a = () => bgA(...s.bg) + phone(660, PCY, PW, 0, s.screen()) + (s.over ? s.over() : '') + sparkle(90, 700, 30, '#FFFFFF') + sparkle(1236, 760, 24, C.ink);
+}
 
 // ---------- write ----------
-for (const style of ['a', 'b']) mkdirSync(join(STORE, 'svg', style), { recursive: true });
+for (const style of ['a']) mkdirSync(join(STORE, 'svg', style), { recursive: true });
 const written = [];
 for (const s of SHOTS) {
-  for (const style of ['a', 'b']) {
-    const head = style === 'a' ? headlineA(s.lines, s.sub) : headlineB(s.lines, s.sub);
+  for (const style of ['a']) {
+    const head = headlineA(s.lines, s.sub);
     const scene = s[style]();
     // Headline goes last so cut-outs never cover it.
     const svg = wrap(`${s.lines.join(' ')} (style ${style})`, scene + head);
