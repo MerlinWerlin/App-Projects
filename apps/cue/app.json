@@ -1,0 +1,88 @@
+{
+  "expo": {
+    "name": "Cue",
+    "slug": "cue-teleprompter",
+    "scheme": "cue",
+    "version": "1.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/brand/icon.png",
+    "backgroundColor": "#0F0F11",
+    "newArchEnabled": true,
+    "owner": "jared797",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jared797.cue",
+      "icon": "./assets/brand/icon.png",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Cue shows your script over the camera so you can read and record at the same time. Videos stay on your phone.",
+        "NSMicrophoneUsageDescription": "Cue records sound with your videos, and Voice Pace listens for when you are talking so the words wait for you. Nothing is uploaded.",
+        "NSPhotoLibraryAddUsageDescription": "Cue saves each take to your Photos. It can't see your other photos.",
+        "CFBundleAllowMixedLocalizations": true
+      },
+      "config": {
+        "usesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.jared797.cue",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/brand/adaptive-icon.png",
+        "backgroundColor": "#0F0F11"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Cue shows your script over the camera so you can read and record at the same time. Videos stay on your phone.",
+          "microphonePermission": "Cue records sound with your videos, and Voice Pace listens for when you are talking so the words wait for you. Nothing is uploaded.",
+          "recordAudioAndroid": true
+        }
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Cue records sound with your videos, and Voice Pace listens for when you are talking so the words wait for you. Nothing is uploaded."
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "savePhotosPermission": "Cue saves each take to your Photos. It can't see your other photos.",
+          "isAccessMediaLocationEnabled": false
+        }
+      ],
+      "expo-screen-orientation",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/brand/splash-icon.png",
+          "imageWidth": 180,
+          "resizeMode": "contain",
+          "backgroundColor": "#0F0F11"
+        }
+      ],
+      "expo-status-bar"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    },
+    "extra": {
+      "supportsRTL": true
+    }
+  }
+}

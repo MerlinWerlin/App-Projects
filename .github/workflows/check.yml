@@ -1,0 +1,70 @@
+# Checks an app on every push to a non-main branch that touches it (and on demand):
+# install -> align Expo SDK versions -> typecheck -> tests -> bundle for iOS and Android (what Expo Go loads).
+# If version alignment changed package.json / the lockfile, the fix is committed back to the branch.
+# Claude reads the result with `gh run view`; nothing here ships anything.
+name: check
+
+on:
+  push:
+    branches-ignore: [main]
+    paths: ['apps/cue/**', '.github/workflows/check.yml']
+  workflow_dispatch:
+    inputs:
+      app:
+        description: 'App folder (cue, couch, glaze, linework)'
+        required: true
+        type: string
+
+concurrency:
+  group: check-${{ github.ref }}-${{ inputs.app || 'cue' }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      APP: ${{ inputs.app || 'cue' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install
+        working-directory: apps/${{ env.APP }}
+        run: |
+          if [ -f package-lock.json ]; then npm ci --no-audit --no-fund || npm install --no-audit --no-fund; else npm install --no-audit --no-fund; fi
+
+      - name: Align Expo SDK versions
+        working-directory: apps/${{ env.APP }}
+        run: npx expo install --fix
+
+      - name: Typecheck
+        working-directory: apps/${{ env.APP }}
+        run: npx tsc --noEmit
+
+      - name: Tests
+        working-directory: apps/${{ env.APP }}
+        run: npx jest --ci
+
+      - name: Bundle (iOS + Android, as Expo Go loads it)
+        working-directory: apps/${{ env.APP }}
+        run: npx expo export --platform ios --platform android --output-dir /tmp/export
+
+      - name: Expo doctor (advisory)
+        working-directory: apps/${{ env.APP }}
+        continue-on-error: true
+        run: npx expo-doctor
+
+      - name: Commit version alignment
+        if: always() && github.event_name == 'push'
+        run: |
+          git config user.name "app-factory-bot"
+          git config user.email "app-factory-bot@users.noreply.github.com"
+          git add apps/${APP}/package.json apps/${APP}/package-lock.json
+          if ! git diff --cached --quiet; then
+            git commit -m "${APP}: align package versions with the Expo SDK [check]"
+            git push
+          fi
