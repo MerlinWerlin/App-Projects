@@ -1,0 +1,140 @@
+# Expo Go preview: every push to main that changes an app with an EXPO_GO_PREVIEW marker file
+#  1. installs, aligns package versions to the app's Expo SDK, runs the tests and the typecheck,
+#  2. publishes the JS to EAS Update branch "preview" with the Expo SDK as runtime version (what Expo Go opens),
+#  3. commits any version fixes / new Expo project id back, writes ops/PREVIEW.md and comments the links.
+# Owner only opens Expo Go (signed in as jared797) -> project -> preview, or the link in ops/PREVIEW.md.
+name: preview
+
+on:
+  push:
+    branches: [main]
+    paths: ['apps/**']
+  workflow_dispatch:
+    inputs:
+      app:
+        description: 'App folder (e.g. crochet)'
+        required: true
+        type: string
+
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.pick.outputs.apps }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - id: pick
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "apps=[\"${{ inputs.app }}\"]" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          # Skip our own bot commits (version fixes, PREVIEW.md).
+          if git log -1 --pretty=%s | grep -q '\[preview-bot\]'; then echo 'apps=[]' >> "$GITHUB_OUTPUT"; exit 0; fi
+          apps=$(git diff --name-only HEAD~1 HEAD | grep -E '^apps/[^/]+/' | cut -d/ -f2 | sort -u | while read a; do [ -f "apps/$a/EXPO_GO_PREVIEW" ] && echo "$a"; done || true)
+          if [ -z "$apps" ]; then echo 'apps=[]' >> "$GITHUB_OUTPUT"; else echo "apps=$(printf '%s\n' $apps | jq -R . | jq -s -c .)" >> "$GITHUB_OUTPUT"; fi
+
+  preview:
+    needs: detect
+    if: needs.detect.outputs.apps != '[]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJson(needs.detect.outputs.apps) }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: apps/${{ matrix.app }}
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install
+        run: npm install --no-audit --no-fund 2>&1 | tail -20
+
+      - name: Align packages to the Expo SDK
+        run: |
+          npx expo install --fix 2>&1 | tail -30 || true
+          npx expo install --check 2>&1 | tail -30 || true
+
+      - name: Tests
+        run: npm test 2>&1 | tail -60
+
+      - name: Typecheck (reported, does not block the preview)
+        id: tsc
+        continue-on-error: true
+        run: |
+          printf '/// <reference types="expo/types" />\n' > expo-env.d.ts
+          npx tsc --noEmit 2>&1 | tee "$RUNNER_TEMP/tsc.txt" | tail -80
+
+      - name: Link the Expo project (first time only)
+        run: |
+          if [ "$(jq -r '.expo.extra.eas.projectId // empty' app.json)" = "" ]; then
+            eas init --non-interactive --force
+          fi
+          if [ "$(jq -r '.expo.updates.url // empty' app.json)" = "" ]; then
+            eas update:configure --non-interactive || true
+          fi
+          jq '.expo.runtimeVersion = {"policy": "appVersion"}' app.json > app.tmp.json && mv app.tmp.json app.json
+
+      - name: Publish the Expo Go preview
+        id: pub
+        env:
+          EXPO_GO_PREVIEW: '1'
+        run: |
+          set -o pipefail
+          msg="$(git log -1 --pretty=%s | cut -c1-120)"
+          eas update --branch preview --message "$msg" --non-interactive --json 2> "$RUNNER_TEMP/upd.err" | tee "$RUNNER_TEMP/upd.json" || { tail -50 "$RUNNER_TEMP/upd.err"; exit 1; }
+          pid=$(jq -r '.expo.extra.eas.projectId' app.json)
+          group=$(jq -r '.[0].group // empty' "$RUNNER_TEMP/upd.json")
+          owner=$(jq -r '.expo.owner' app.json); slug=$(jq -r '.expo.slug' app.json)
+          echo "pid=$pid" >> "$GITHUB_OUTPUT"; echo "group=$group" >> "$GITHUB_OUTPUT"
+          {
+            echo "# Expo Go preview"
+            echo
+            echo "Latest: $(date -u '+%Y-%m-%d %H:%M UTC') from commit ${GITHUB_SHA::7} ($msg)"
+            echo
+            echo "- **Easiest:** open Expo Go on your phone (signed in as $owner) → Projects → **$slug** → branch **preview**."
+            echo "- Direct link (tap on the phone): exp://u.expo.dev/$pid/group/$group"
+            echo "- Page with QR code: https://expo.dev/accounts/$owner/projects/$slug/updates/$group"
+            echo "- Always-latest link: exp://u.expo.dev/$pid?channel-name=preview&runtime-version=exposdk:$(jq -r '.dependencies.expo' package.json | sed 's/[^0-9.]//g' | cut -d. -f1).0.0"
+          } > ops/PREVIEW.md
+          cat ops/PREVIEW.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit version fixes and preview links
+        if: always()
+        working-directory: .
+        run: |
+          rm -f apps/${{ matrix.app }}/expo-env.d.ts
+          git config user.name "preview-bot"; git config user.email "preview-bot@users.noreply.github.com"
+          git add apps/${{ matrix.app }}/package.json apps/${{ matrix.app }}/package-lock.json apps/${{ matrix.app }}/app.json apps/${{ matrix.app }}/ops/PREVIEW.md 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "${{ matrix.app }}: preview links and package versions [preview-bot]"
+            for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
+          fi
+
+      - name: Comment the result on the commit
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then body="**${{ matrix.app }} preview is live in Expo Go.** $(sed -n '5,7p' ops/PREVIEW.md | tr '\n' ' ')"
+            if [ "${{ steps.tsc.outcome }}" = "failure" ]; then body="$body"$'\n\n'"Typecheck errors:"$'\n```\n'"$(grep -E 'error TS' "$RUNNER_TEMP/tsc.txt" | head -40)"$'\n```'; fi
+          else body=$(printf '**${{ matrix.app }} preview failed.**\n\n```\n%s\n```\n' "$( (tail -40 "$RUNNER_TEMP/tsc.txt"; tail -30 "$RUNNER_TEMP/upd.err") 2>/dev/null | awk 'length($0) < 400' | tail -60)"); fi
+          gh api "repos/${{ github.repository }}/commits/${{ github.sha }}/comments" -f body="$body" > /dev/null || true
