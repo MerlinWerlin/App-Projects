@@ -9,7 +9,8 @@ Writes a markdown report to $REPORT (default asc-report.md). Secrets: ASC_KEY_ID
 What the API cannot do (owner-only in App Store Connect): agreements/bank/tax, the App Privacy label,
 pressing Submit for Review.
 """
-import json, os, sys, time, pathlib
+import json
+import time, os, sys, time, pathlib
 import jwt, requests
 
 API = "https://api.appstoreconnect.apple.com"
@@ -100,8 +101,21 @@ S = requests.Session()
 
 
 def call(method, path, body=None, params=None, ok=(200, 201, 204)):
-    S.headers["Authorization"] = "Bearer " + token()
-    r = S.request(method, API + path, json=body, params=params, timeout=60)
+    # Apple's API sometimes times out; retry a few times (an upload/PATCH repeated is harmless here:
+    # every step looks up current state first or sets absolute values).
+    for attempt in range(4):
+        S.headers["Authorization"] = "Bearer " + token()
+        try:
+            r = S.request(method, API + path, json=body, params=params, timeout=90)
+        except requests.exceptions.RequestException:
+            if attempt == 3:
+                raise
+            time.sleep(5 * (attempt + 1))
+            continue
+        if r.status_code in (500, 502, 503, 504) and attempt < 3:
+            time.sleep(5 * (attempt + 1))
+            continue
+        break
     if r.status_code not in ok:
         detail = ""
         try:
@@ -327,6 +341,14 @@ def apply(app):
         step("Availability: all countries and regions", lambda: ensure_availability(app_id))
     for iap in lst.get("inAppPurchases", []):
         step(f"In-app purchase {iap['productId']}", lambda iap=iap: ensure_iap(app_id, iap, locale))
+    # alsoLocales: copy the same listing into other locales (e.g. an en-US primary locale left from app creation).
+    for extra in lst.get("alsoLocales", []):
+        say(f"### Also locale {extra}")
+        step(f"[{extra}] Name, subtitle, privacy URL", lambda extra=extra: upsert_info_loc(info["id"], extra, info_fields))
+        if ver:
+            step(f"[{extra}] Description, keywords, promo text, URLs", lambda extra=extra: upsert_ver_loc(ver["id"], extra, vf))
+            for disp, folder in (lst.get("screenshots") or {}).items():
+                step(f"[{extra}] Screenshots {disp}", lambda disp=disp, folder=folder, extra=extra: upload_shots(ver["id"], extra, disp, folder))
 
 
 def upload_shots(ver_id, locale, disp, folder):
