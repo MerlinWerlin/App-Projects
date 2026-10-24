@@ -1,6 +1,7 @@
 {
   "mode": "build",
-  "note": "Glaze: first TestFlight build with native parts on: Home/Lock Screen widgets, Live Lock Screen, Live Photo (retry)",
+  "note": "Glaze: first TestFlight build with native parts on: Home/Lock Screen widgets, Live Lock Screen, Live Photo",
   "ascAppId": "6826415074",
-  "profile": "production-native"
+  "profile": "production-native",
+  "skipCapabilitySync": true
 }
