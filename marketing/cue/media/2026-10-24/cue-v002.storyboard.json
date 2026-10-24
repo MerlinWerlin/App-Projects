@@ -1,0 +1,48 @@
+{
+ "id": "cue-v002",
+ "app": "cue",
+ "title": "Three reasons: a simpler recording setup",
+ "shots": [
+  {
+   "image": "img/cue-v002-01.png",
+   "caption": "Three reasons to ditch paper",
+   "seconds": 3,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v002-02.png",
+   "caption": "1. Script by the lens",
+   "sub": "Less looking away",
+   "seconds": 3,
+   "motion": "right"
+  },
+  {
+   "image": "img/cue-v002-03.png",
+   "caption": "2. No watermark",
+   "sub": "Free recording, clean exports",
+   "seconds": 3,
+   "motion": "out"
+  },
+  {
+   "image": "img/cue-v002-04.png",
+   "caption": "3. No subscription",
+   "sub": "Plus extras: one payment",
+   "seconds": 3,
+   "motion": "left"
+  },
+  {
+   "image": "img/cue-v002-05.png",
+   "caption": "Record. Save. Get on with it.",
+   "sub": "Takes save straight to Photos",
+   "seconds": 3,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Free recording. No watermark."
+ },
+ "accent": "#E8552B",
+ "branded": false
+}

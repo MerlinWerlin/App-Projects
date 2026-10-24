@@ -1,0 +1,67 @@
+{
+ "videos": {
+  "cue-v001": {
+   "caption": "A teleprompter that moves with your voice—and waits when you pause. Coming soon to iPhone.",
+   "hashtags": [
+    "#teleprompter",
+    "#contentcreator",
+    "#publicspeaking",
+    "#creatortips"
+   ]
+  },
+  "cue-v002": {
+   "caption": "Keep your script near the lens, record without a watermark, and skip the subscription. Coming soon to iPhone.",
+   "hashtags": [
+    "#smallbusiness",
+    "#videotips",
+    "#teleprompter",
+    "#contentcreation"
+   ]
+  },
+  "cue-v003": {
+   "caption": "Fluffed a section? Record it again without starting the whole script over. Coming soon to iPhone.",
+   "hashtags": [
+    "#creatortips",
+    "#teleprompter",
+    "#videocreation",
+    "#publicspeaking"
+   ]
+  }
+ },
+ "pins": [
+  {
+   "title": "A teleprompter that waits for you",
+   "description": "Voice Pace moves the words while you talk and pauses when you do. Coming soon to iPhone."
+  },
+  {
+   "title": "Keep your eyes near the lens",
+   "description": "Read your script by the camera while recording, for a more natural on-camera delivery."
+  },
+  {
+   "title": "Record without a watermark",
+   "description": "Record and save takes to Photos with no watermark. Coming soon to iPhone."
+  },
+  {
+   "title": "Retake one section",
+   "description": "Break your script into sections, then redo the part that needs another take."
+  },
+  {
+   "title": "A simpler way to record",
+   "description": "Free teleprompter and recording, with no subscription. Plus extras are a one-time purchase."
+  }
+ ],
+ "reddit": [
+  {
+   "question": "What’s a good teleprompter app for recording videos on iPhone?",
+   "reply": "Look for one that keeps the script close to the lens and lets you control the scroll. If you pause often, voice-paced scrolling can help. I’m working on one with those features; it’s not launched yet."
+  },
+  {
+   "question": "Any teleprompter apps that don’t put a watermark on recordings?",
+   "reply": "Check the free recording terms before you commit—some apps watermark exports or reserve recording for a paid plan. I’m building one with watermark-free recording, coming soon to iPhone."
+  },
+  {
+   "question": "What’s a simple way to redo one part of a presentation video?",
+   "reply": "If your recording setup supports separate section takes, you can redo a flubbed part without restarting the whole script. I’m working on a teleprompter with that workflow; it’s pre-launch."
+  }
+ ]
+}

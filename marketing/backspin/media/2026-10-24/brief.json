@@ -1,0 +1,36 @@
+{
+ "app": "backspin",
+ "date": "2026-10-24",
+ "videos_wanted": 3,
+ "ids": [
+  "bs-v001",
+  "bs-v002",
+  "bs-v003"
+ ],
+ "branded": false,
+ "angles": "**Backspin** (reverse-singing party game, pre-launch, name not locked): the viral reverse-singing challenge with a real score; friends/couples/family laughing at mangled results; \"10 free goes, then one small unlock\"; party mode for up to 8; daily challenge and streaks. Use the app's own original or public-domain challenge lines (`apps/backspin/src/content`), never real song lyrics.",
+ "apps_json": {
+  "name": "Backspin",
+  "storeName": "",
+  "tagline": "Reverse singing, with a real score",
+  "nameLocked": false,
+  "accent": "#FF5A4E",
+  "avoid": [
+   "only app that scores",
+   "any competitor or franchise name",
+   "song names under copyright",
+   "plain 'free' without saying Plus is optional"
+  ],
+  "boards": [
+   "Party Games for Friends",
+   "Funny Family Games",
+   "Tongue Twisters"
+  ]
+ },
+ "feedback": [],
+ "lanes": {
+  "M1+M2": "Sol (SOL_DESIGNER)",
+  "M4": "Luna (DESIGNER)",
+  "M5": "Astra (ASTRA_SIDE)"
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "id": "bs-v002",
+ "app": "backspin",
+ "title": "Three reasons to pass the phone",
+ "shots": [
+  {
+   "image": "img/bs-v002-01.png",
+   "caption": "Three reasons to pass the phone",
+   "sub": "Pre-launch game concept",
+   "seconds": 2.5,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v002-02.png",
+   "caption": "1. A real closeness score",
+   "seconds": 2.5,
+   "motion": "up"
+  },
+  {
+   "image": "img/bs-v002-03.png",
+   "caption": "2. Party mode, up to eight",
+   "seconds": 2.5,
+   "motion": "right"
+  },
+  {
+   "image": "img/bs-v002-04.png",
+   "caption": "3. Daily challenges and streaks",
+   "seconds": 2.5,
+   "motion": "left"
+  },
+  {
+   "image": "img/bs-v002-05.png",
+   "caption": "Who's taking the next turn?",
+   "seconds": 2.5,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Bring your competitive friends"
+ },
+ "accent": "#FF5A4E",
+ "branded": false
+}

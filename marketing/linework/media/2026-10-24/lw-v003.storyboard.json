@@ -1,0 +1,47 @@
+{
+ "id": "lw-v003",
+ "app": "linework",
+ "title": "Three reasons to try Linework",
+ "shots": [
+  {
+   "image": "img/lw-v003-01.png",
+   "caption": "Three reasons to try Linework",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v003-02.png",
+   "caption": "1. Photo-to-sketch stays on your phone",
+   "sub": "Nothing is uploaded",
+   "seconds": 2.6,
+   "motion": "left"
+  },
+  {
+   "image": "img/lw-v003-03.png",
+   "caption": "2. Letters meet Workshop",
+   "sub": "16 lettering styles. Angles and joints.",
+   "seconds": 2.6,
+   "motion": "down"
+  },
+  {
+   "image": "img/lw-v003-04.png",
+   "caption": "3. No subscription. No ads.",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v003-05.png",
+   "caption": "Linework Plus: A$2.99 once",
+   "sub": "Full library and photo-to-sketch",
+   "seconds": 2.6,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "Linework",
+  "line": "Free for 14 days",
+  "sub": "Then tracing your own photos stays free"
+ },
+ "accent": "#2346A8",
+ "branded": true
+}

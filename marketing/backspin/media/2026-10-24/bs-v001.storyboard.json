@@ -1,0 +1,51 @@
+{
+ "id": "bs-v001",
+ "app": "backspin",
+ "title": "Challenge tutorial: can you sing backwards?",
+ "shots": [
+  {
+   "image": "img/bs-v001-01.png",
+   "caption": "Can you sing this backwards?",
+   "sub": "Pre-launch game concept",
+   "seconds": 2.1,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v001-02.png",
+   "caption": "Say: “Boing, my toast!”",
+   "seconds": 2.1,
+   "motion": "right"
+  },
+  {
+   "image": "img/bs-v001-03.png",
+   "caption": "Hear it backwards",
+   "seconds": 2.1,
+   "motion": "left"
+  },
+  {
+   "image": "img/bs-v001-04.png",
+   "caption": "Copy the backwards sound",
+   "seconds": 2.1,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v001-05.png",
+   "caption": "Flip your copy forwards",
+   "seconds": 2.1,
+   "motion": "out"
+  },
+  {
+   "image": "img/bs-v001-06.png",
+   "caption": "How close? Get a score.",
+   "seconds": 2.1,
+   "motion": "up"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Your next party challenge"
+ },
+ "accent": "#FF5A4E",
+ "branded": false
+}

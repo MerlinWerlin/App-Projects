@@ -1,0 +1,45 @@
+{
+ "id": "lw-v002",
+ "app": "linework",
+ "title": "Stop nudging the guide — hook, problem, fix",
+ "shots": [
+  {
+   "image": "img/lw-v002-01.png",
+   "caption": "Accidentally nudged your tracing guide?",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v002-02.png",
+   "caption": "Drawing shouldn't mean dodging the screen",
+   "seconds": 2.6,
+   "motion": "left"
+  },
+  {
+   "image": "img/lw-v002-03.png",
+   "caption": "Stand your phone. Tap Lock.",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v002-04.png",
+   "caption": "Touch locked. Focus stays put.",
+   "sub": "Rest your hand on the screen",
+   "seconds": 2.6,
+   "motion": "right"
+  },
+  {
+   "image": "img/lw-v002-05.png",
+   "caption": "Keep your attention on the pencil",
+   "seconds": 2.6,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "Linework",
+  "line": "Trace photos onto real paper",
+  "sub": "No ads. No subscription."
+ },
+ "accent": "#2346A8",
+ "branded": true
+}

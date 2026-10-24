@@ -1,0 +1,53 @@
+{
+ "id": "bs-v003",
+ "app": "backspin",
+ "title": "Hook problem fix: refresh game night",
+ "shots": [
+  {
+   "image": "img/bs-v003-01.png",
+   "caption": "Game night feeling repetitive?",
+   "sub": "Pre-launch game concept",
+   "seconds": 2,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v003-02.png",
+   "caption": "Same games. Same reactions.",
+   "seconds": 2,
+   "motion": "left"
+  },
+  {
+   "image": "img/bs-v003-03.png",
+   "caption": "Try the reverse-singing challenge",
+   "seconds": 2,
+   "motion": "right"
+  },
+  {
+   "image": "img/bs-v003-04.png",
+   "caption": "Laugh at the mangled results",
+   "seconds": 2,
+   "motion": "out"
+  },
+  {
+   "image": "img/bs-v003-05.png",
+   "caption": "10 free goes; Plus is optional",
+   "sub": "New rounds then need Plus",
+   "seconds": 3,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v003-06.png",
+   "caption": "A$1.99. One lifetime unlock.",
+   "sub": "Saved takes still play without Plus",
+   "seconds": 3,
+   "motion": "up"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "No ads. No subscription."
+ },
+ "accent": "#FF5A4E",
+ "branded": false
+}

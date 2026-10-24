@@ -36,3 +36,10 @@ ffmpeg, no AI cost).
 ## Feedback loop
 Jared approves or rejects videos in the hub (Videos tab) with an optional note. The coordinator copies those notes into
 the next night's `brief.json` under `feedback`, and M1 must follow them.
+
+## Image route
+Which M3 route the nightly run used (first that worked: a Codex `$imagegen` job, b ChatGPT in the desktop app's
+browser, c none / colour cards).
+- 2026-10-24: **c (none)**. (a) no Codex image runner on the PC and the StarNet bridge has `tools_allowed: false`;
+  (b) chatgpt.com in the built-in browser redirects to its login page (signed out; the run never signs in).
+  `prompts.json` is in each batch, so images can be made later and dropped into `img/` (the workflow re-renders).

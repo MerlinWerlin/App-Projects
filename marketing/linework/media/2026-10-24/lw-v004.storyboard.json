@@ -1,0 +1,45 @@
+{
+ "id": "lw-v004",
+ "app": "linework",
+ "title": "Photo to paper — miniature tracing tutorial",
+ "shots": [
+  {
+   "image": "img/lw-v004-01.png",
+   "caption": "Turn your photo into pencil lines",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v004-02.png",
+   "caption": "1. Make an outline",
+   "sub": "Adjust detail and line thickness",
+   "seconds": 2.6,
+   "motion": "right"
+  },
+  {
+   "image": "img/lw-v004-03.png",
+   "caption": "2. Stand your phone above paper",
+   "seconds": 2.6,
+   "motion": "out"
+  },
+  {
+   "image": "img/lw-v004-04.png",
+   "caption": "3. Tap Lock. Start tracing.",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v004-05.png",
+   "caption": "Your photo. Your pencil. Real paper.",
+   "seconds": 2.6,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "Linework",
+  "line": "Trace photos onto real paper",
+  "sub": "Photo-to-sketch included in Linework Plus"
+ },
+ "accent": "#2346A8",
+ "branded": true
+}

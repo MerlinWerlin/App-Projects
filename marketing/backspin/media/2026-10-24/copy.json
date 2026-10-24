@@ -1,0 +1,64 @@
+{
+ "videos": {
+  "bs-v001": {
+   "caption": "Say it, hear it backwards, copy the sound, then see how close you got. Try “Boing, my toast!”",
+   "hashtags": [
+    "#ReverseSinging",
+    "#PartyGame",
+    "#GameNight"
+   ]
+  },
+  "bs-v002": {
+   "caption": "Pass the phone around: chase a real score, play with up to 8, and come back for a daily challenge.",
+   "hashtags": [
+    "#PartyGames",
+    "#FriendsNight",
+    "#DailyChallenge"
+   ]
+  },
+  "bs-v003": {
+   "caption": "Need a fresh game-night laugh? Try a reverse-singing challenge. 10 free goes; Plus is an optional one-time unlock.",
+   "hashtags": [
+    "#GameNight",
+    "#FamilyGames",
+    "#ReverseSinging"
+   ]
+  }
+ },
+ "pins": [
+  {
+   "title": "Can you sing a line backwards?",
+   "description": "Say an original challenge line, hear it backwards, copy the sound, then see how close your copy gets. A reverse-singing party game concept coming soon to iPhone."
+  },
+  {
+   "title": "A party game for up to 8",
+   "description": "Pass the phone around and take turns with a reverse-singing challenge. Party mode supports up to eight players. Coming soon to iPhone."
+  },
+  {
+   "title": "Make game night delightfully weird",
+   "description": "Try original challenge lines like “Boing, my toast!” Hear each one backwards, copy the sound, and laugh at the result."
+  },
+  {
+   "title": "Daily reverse-singing challenge",
+   "description": "Take on a daily challenge and build a streak. A playful new party-game concept in the works for iPhone."
+  },
+  {
+   "title": "10 free goes, then an optional unlock",
+   "description": "Try 10 scored rounds before deciding whether to unlock more. Plus is a one-time purchase; no ads or subscription. Coming soon to iPhone."
+  }
+ ],
+ "reddit": [
+  {
+   "question": "What’s a fun app for a small group game night?",
+   "reply": "A reverse-singing party game could be fun: players copy a line played backwards, then compare their attempts. One in development supports up to eight players."
+  },
+  {
+   "question": "Any family-friendly games that get everyone laughing?",
+   "reply": "Try a word or sound challenge that’s easy to take turns with. There’s a reverse-singing game in development using original lines like “Boing, my toast!”"
+  },
+  {
+   "question": "Is there a reverse-singing game with scoring?",
+   "reply": "One upcoming iPhone game idea scores how closely your copy matches the original, with a party mode and daily challenges. It’s still pre-launch."
+  }
+ ]
+}

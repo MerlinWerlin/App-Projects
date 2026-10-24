@@ -1,0 +1,45 @@
+{
+ "id": "cue-v003",
+ "app": "cue",
+ "title": "Tutorial: retake the section, not everything",
+ "shots": [
+  {
+   "image": "img/cue-v003-01.png",
+   "caption": "Fluffed one line? Keep the rest.",
+   "seconds": 3,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v003-02.png",
+   "caption": "Split your script into sections",
+   "seconds": 3,
+   "motion": "down"
+  },
+  {
+   "image": "img/cue-v003-03.png",
+   "caption": "Record one section at a time",
+   "seconds": 3,
+   "motion": "right"
+  },
+  {
+   "image": "img/cue-v003-04.png",
+   "caption": "Redo just the fluffed section",
+   "seconds": 3,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v003-05.png",
+   "caption": "Each take saves to Photos",
+   "sub": "Separate takes. No full restart.",
+   "seconds": 3,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Retake one section."
+ },
+ "accent": "#E8552B",
+ "branded": false
+}

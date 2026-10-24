@@ -1,0 +1,45 @@
+{
+ "id": "cue-v001",
+ "app": "cue",
+ "title": "Hook-problem-fix: stop chasing the script",
+ "shots": [
+  {
+   "image": "img/cue-v001-01.png",
+   "caption": "Stop chasing your script",
+   "seconds": 3,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v001-02.png",
+   "caption": "Lost your place again?",
+   "seconds": 3,
+   "motion": "left"
+  },
+  {
+   "image": "img/cue-v001-03.png",
+   "caption": "Talk. The words move.",
+   "seconds": 3,
+   "motion": "up"
+  },
+  {
+   "image": "img/cue-v001-04.png",
+   "caption": "Pause. They wait.",
+   "seconds": 3,
+   "motion": "none"
+  },
+  {
+   "image": "img/cue-v001-05.png",
+   "caption": "Your pace sets the rhythm",
+   "sub": "Voice Pace: one-time Plus upgrade",
+   "seconds": 3,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Voice Pace: one-time Plus upgrade"
+ },
+ "accent": "#E8552B",
+ "branded": false
+}

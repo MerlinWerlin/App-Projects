@@ -1,11 +1,76 @@
 {
+ "videos": {
   "lw-v001": {
-    "caption": "Can't draw? Trace any photo onto real paper with your phone. No ads, no subscription.",
-    "hashtags": [
-      "#tracing",
-      "#drawingideas",
-      "#kawaiiart",
-      "#artforbeginners"
-    ]
+   "caption": "Can't draw? Trace any photo onto real paper with your phone. No ads, no subscription.",
+   "hashtags": [
+    "#tracing",
+    "#drawingideas",
+    "#kawaiiart",
+    "#artforbeginners"
+   ]
+  },
+  "lw-v002": {
+   "caption": "Lock the guide, rest your hand and keep your focus on drawing. Meet Linework.",
+   "hashtags": [
+    "#tracing",
+    "#drawing",
+    "#arttips",
+    "#Linework"
+   ]
+  },
+  "lw-v003": {
+   "caption": "Photo-to-sketch on your phone, letters and Workshop templates, with no ads or subscription. Linework is free for 14 days.",
+   "hashtags": [
+    "#sketching",
+    "#lettering",
+    "#drawing",
+    "#Linework"
+   ]
+  },
+  "lw-v004": {
+   "caption": "Turn a photo into pencil lines, stand your phone above paper and tap Lock to trace with Linework.",
+   "hashtags": [
+    "#phototosketch",
+    "#tracing",
+    "#drawingtutorial",
+    "#Linework"
+   ]
   }
+ },
+ "pins": [
+  {
+   "title": "Trace Photos onto Real Paper",
+   "description": "Stand your phone above paper, choose a photo and trace its lines. Linework keeps tracing your own photos free after the 14-day trial, with no ads."
+  },
+  {
+   "title": "Photo to Sketch on Your Phone",
+   "description": "Make clean line art from a photo on your phone, with controls for detail and line thickness. Photo-to-sketch is included with Linework Plus."
+  },
+  {
+   "title": "Lock Your Tracing Guide in Place",
+   "description": "Tap Lock to keep the picture steady while you draw. Touch lock lets your hand rest on the screen, and focus stays put while locked."
+  },
+  {
+   "title": "Lettering Styles and Workshop Templates",
+   "description": "Explore letters in 16 styles and Workshop templates with exact angles, joints and layouts for trades. Linework Plus unlocks the full library once for A$2.99."
+  },
+  {
+   "title": "A Simple Phone-to-Paper Tracing Setup",
+   "description": "Stand your phone over paper, pick a photo, adjust the outline and tap Lock to start tracing. Linework is free for 14 days; tracing your own photos stays free afterward."
+  }
+ ],
+ "reddit": [
+  {
+   "question": "What app can I use to trace a photo onto paper with my iPhone?",
+   "reply": "Linework lets you place a photo over the camera view and trace it onto paper. You can lock the picture in place, and tracing your own photos stays free after the 14-day trial."
+  },
+  {
+   "question": "Is there an iPhone app that turns a photo into a sketch for tracing?",
+   "reply": "Linework can make line art from a photo on your phone, with detail and line-thickness controls. Photo-to-sketch is part of Linework Plus, a one-time A$2.99 unlock."
+  },
+  {
+   "question": "Any drawing app with lettering templates and guides for trades?",
+   "reply": "Linework has letters in 16 styles and Workshop templates for angles, joints and layouts. The full library unlocks with a one-time A$2.99 Linework Plus purchase."
+  }
+ ]
 }
