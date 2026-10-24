@@ -7,7 +7,7 @@
 // "Set on Lock Screen" and "Save as Live Photo" buttons stay as they are.
 import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage, type ImageProps } from 'expo-image';
-import * as MediaLibrary from 'expo-media-library';
+import * as MediaLibrary from 'expo-media-library/legacy';
 import type { VideoPlayer } from 'expo-video';
 import { forwardRef, useEffect, useMemo, useState } from 'react';
 import { Dimensions, StyleSheet, Text, View, type TextStyle } from 'react-native';

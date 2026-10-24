@@ -450,6 +450,45 @@ declare module 'expo-media-library' {
   export function addAssetsToAlbumAsync(assets: Asset[] | Asset | string[] | string, album: Album | string, copy?: boolean): Promise<boolean>;
   export function isAvailableAsync(): Promise<boolean>;
 }
+declare module 'expo-media-library/legacy' {
+  export type PermissionStatus = 'granted' | 'denied' | 'undetermined';
+  export type GranularPermission = 'audio' | 'photo' | 'video';
+  export interface PermissionResponse {
+    status: PermissionStatus;
+    expires: 'never' | number;
+    granted: boolean;
+    canAskAgain: boolean;
+    accessPrivileges?: 'all' | 'limited' | 'none';
+  }
+  export type MediaTypeValue = 'audio' | 'photo' | 'video' | 'unknown' | 'pairedVideo';
+  export interface Asset {
+    id: string;
+    filename: string;
+    uri: string;
+    mediaType: MediaTypeValue;
+    mediaSubtypes?: string[];
+    width: number;
+    height: number;
+    creationTime: number;
+    modificationTime: number;
+    duration: number;
+    albumId?: string;
+  }
+  export interface Album {
+    id: string;
+    title: string;
+    assetCount: number;
+    type?: string;
+  }
+  export function requestPermissionsAsync(writeOnly?: boolean, granularPermissions?: GranularPermission[]): Promise<PermissionResponse>;
+  export function getPermissionsAsync(writeOnly?: boolean, granularPermissions?: GranularPermission[]): Promise<PermissionResponse>;
+  export function saveToLibraryAsync(localUri: string): Promise<void>;
+  export function createAssetAsync(localUri: string, album?: Album | string): Promise<Asset>;
+  export function getAlbumAsync(title: string): Promise<Album | null>;
+  export function createAlbumAsync(albumName: string, asset?: Asset | string, copyAsset?: boolean, initialAssetLocalUri?: string): Promise<Album>;
+  export function addAssetsToAlbumAsync(assets: Asset[] | Asset | string[] | string, album: Album | string, copy?: boolean): Promise<boolean>;
+  export function isAvailableAsync(): Promise<boolean>;
+}
 
 declare module 'expo-sharing' {
   export interface SharingOptions {

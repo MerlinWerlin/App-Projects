@@ -219,7 +219,7 @@ function Reflection({ width, height }: { width: number; height: number }) {
 const styles = StyleSheet.create({
   outer: { alignSelf: 'center', backgroundColor: '#141114' },
   screen: { overflow: 'hidden' },
-  rim: { ...StyleSheet.absoluteFillObject, borderWidth: 1, borderColor: 'rgba(255,255,255,0.12)' },
+  rim: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderWidth: 1, borderColor: 'rgba(255,255,255,0.12)' },
   island: { position: 'absolute', backgroundColor: '#000000' },
   band: { position: 'absolute', left: '8%', right: '8%', alignItems: 'center', justifyContent: 'center' }, // rtl-ok (mock never mirrors)
   guide: { borderWidth: 1, borderStyle: 'dashed', borderColor: 'rgba(255,255,255,0.55)', borderRadius: 6 },
