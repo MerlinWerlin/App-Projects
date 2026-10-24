@@ -204,5 +204,6 @@
 "common.locked": "ロック中",
 "home.freeLeft": "無料で遊べるラウンドはあと{n}回",
 "home.freeDone": "無料ラウンドを使い切りました。Backspinをずっと楽しもう。",
-"round.outOfGoes": "無料の10ラウンドを遊び終えました！Backspinをずっと楽しんで、続きを遊ぼう。"
+"round.outOfGoes": "無料の10ラウンドを遊び終えました！Backspinをずっと楽しんで、続きを遊ぼう。",
+"settings.look": "スタイル"
 }

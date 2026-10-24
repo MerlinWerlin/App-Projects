@@ -204,5 +204,6 @@
 "common.locked": "已锁定",
 "home.freeLeft": "还剩 {n} 轮免费游戏",
 "home.freeDone": "免费轮次已用完。永久解锁 Backspin 吧。",
-"round.outOfGoes": "你的 10 轮免费游戏已用完！永久解锁 Backspin，继续畅玩吧。"
+"round.outOfGoes": "你的 10 轮免费游戏已用完！永久解锁 Backspin，继续畅玩吧。",
+"settings.look": "风格"
 }

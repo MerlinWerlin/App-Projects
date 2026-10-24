@@ -204,5 +204,6 @@
 "common.locked": "Gesperrt",
 "home.freeLeft": "Noch {n} kostenlose Runden",
 "home.freeDone": "Deine kostenlosen Runden sind aufgebraucht. Schalte Backspin für immer frei.",
-"round.outOfGoes": "Das waren deine 10 kostenlosen Runden! Schalte Backspin für immer frei und spiel weiter."
+"round.outOfGoes": "Das waren deine 10 kostenlosen Runden! Schalte Backspin für immer frei und spiel weiter.",
+"settings.look": "Look"
 }

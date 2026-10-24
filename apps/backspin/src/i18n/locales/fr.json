@@ -204,5 +204,6 @@
 "common.locked": "Verrouillé",
 "home.freeLeft": "Il te reste {n} manches gratuites",
 "home.freeDone": "Tu as utilisé tes manches gratuites. Débloque Backspin pour toujours.",
-"round.outOfGoes": "Tu as utilisé tes 10 manches gratuites ! Débloque Backspin pour toujours et continue à jouer."
+"round.outOfGoes": "Tu as utilisé tes 10 manches gratuites ! Débloque Backspin pour toujours et continue à jouer.",
+"settings.look": "Style"
 }

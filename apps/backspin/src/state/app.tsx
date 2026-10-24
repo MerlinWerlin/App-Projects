@@ -8,7 +8,7 @@ import { CATALOGS } from '../i18n/catalogs.ts';
 import { deleteTakeFiles } from '../native/files.ts';
 import { loadJson, loadList, phoneLanguages, saveJson, setHapticsEnabled, storage } from '../native/device.ts';
 import { createStore, type BuyResult, type PlusStore } from '../plus/store.ts';
-import { DARK, LIGHT, type Theme } from '../ui/theme.ts';
+import { makeTheme, type Theme } from '../ui/theme.ts';
 
 export type Prefs = {
   haptics: boolean;
@@ -19,9 +19,10 @@ export type Prefs = {
   theme: 'system' | 'light' | 'dark';
   lang: Lang | 'system';
   introSeen: boolean;
+  skin: string;
 };
 const DEFAULT_PREFS: Prefs = {
-  haptics: true, countdown: true, holdToRecord: true, autoplay: true, calm: false, theme: 'system', lang: 'system', introSeen: false,
+  haptics: true, countdown: true, holdToRecord: true, autoplay: true, calm: false, theme: 'system', lang: 'system', introSeen: false, skin: 'booth',
 };
 
 export type Stats = { rounds: number; best: number; streak: Streak; daily: Record<string, number> };
@@ -167,7 +168,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const lang: Lang = prefs.lang === 'system' ? matchLang(phoneLanguages()) : prefs.lang;
   const t = useMemo(() => makeT((CATALOGS[lang] as Catalog | undefined) ?? null), [lang]);
   const dark = prefs.theme === 'system' ? scheme !== 'light' : prefs.theme === 'dark';
-  const theme = dark ? DARK : LIGHT;
+  const theme = useMemo(() => makeTheme(prefs.skin ?? 'booth', dark), [prefs.skin, dark]);
 
   const value: Ctx = {
     ready, prefs, setPref, stats, recordRound, takes, addTake, removeTake,

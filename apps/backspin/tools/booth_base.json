@@ -1,0 +1,68 @@
+{
+ "dark": {
+  "bg": "#14111F",
+  "card": "#1F1B2E",
+  "cardHi": "#2A2540",
+  "ink": "#F6F1FF",
+  "sub": "#B8AFD0",
+  "faint": "#7D7499",
+  "line": "#352F4D",
+  "rec": "#D63A2F",
+  "recInk": "#FFFFFF",
+  "rew": "#2FD6C2",
+  "rewInk": "#06201D",
+  "gold": "#FFC94A",
+  "good": "#5BE38B",
+  "bad": "#FF8A80",
+  "overlay": "rgba(8,6,14,0.72)",
+  "bgGradient": [
+   "#14111F",
+   "#14111F"
+  ],
+  "recGradient": [
+   "#E5483C",
+   "#C8321F"
+  ],
+  "glow": "#FF5A4E",
+  "cardBorder": "#352F4D",
+  "shadow": "#000000",
+  "discBody": "#0B0912",
+  "discGroove": "#26213A",
+  "labelForward": "#FF5A4E",
+  "labelBack": "#2FD6C2",
+  "score": "#FFC94A"
+ },
+ "light": {
+  "bg": "#FBF7F2",
+  "card": "#FFFFFF",
+  "cardHi": "#F2ECF8",
+  "ink": "#1A1726",
+  "sub": "#5A5370",
+  "faint": "#8C85A0",
+  "line": "#E6DFEE",
+  "rec": "#CC3A2A",
+  "recInk": "#FFFFFF",
+  "rew": "#0B7A6F",
+  "rewInk": "#FFFFFF",
+  "gold": "#B07A00",
+  "good": "#1E8E4E",
+  "bad": "#C62828",
+  "overlay": "rgba(20,17,31,0.45)",
+  "bgGradient": [
+   "#FBF7F2",
+   "#FBF7F2"
+  ],
+  "recGradient": [
+   "#D63A2F",
+   "#BA2F1E"
+  ],
+  "glow": "#E8402F",
+  "cardBorder": "#E6DFEE",
+  "shadow": "#1A1726",
+  "discBody": "#211C30",
+  "discGroove": "#3A3350",
+  "labelForward": "#E8402F",
+  "labelBack": "#0E8C7F",
+  "score": "#B07A00"
+ }
+}

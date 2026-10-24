@@ -1,0 +1,117 @@
+"""Turn StarNet skin designs (ops/luna/skins_*.txt) into src/ui/skins.ts.
+
+Usage: python3 tools/import_skins.py <dir with skins_*.txt> [ids to keep, comma separated]
+Fills missing fields from Booth, normalises fonts to iOS families, and nudges any colour that fails the
+contrast rules in skins.test.ts (darken/lighten in small steps) instead of dropping the skin.
+"""
+import json, re, sys, glob, colorsys
+
+FONTS = {'System', 'Avenir Next', 'Avenir', 'Futura', 'Gill Sans', 'Helvetica Neue', 'Georgia', 'Didot', 'Baskerville', 'Optima',
+         'Palatino', 'Menlo', 'Courier New', 'American Typewriter', 'Rockwell', 'Copperplate', 'Bodoni 72', 'Charter', 'Kefa',
+         'Marker Felt', 'Noteworthy'}
+KEYS = ['bg', 'card', 'cardHi', 'ink', 'sub', 'faint', 'line', 'rec', 'recInk', 'rew', 'rewInk', 'gold', 'good', 'bad', 'overlay',
+        'bgGradient', 'recGradient', 'glow', 'cardBorder', 'shadow', 'discBody', 'discGroove', 'labelForward', 'labelBack', 'score']
+HEX = re.compile(r'^#[0-9a-fA-F]{6}$')
+
+
+def lum(h):
+    n = int(h[1:], 16)
+    out = 0
+    for s, w in ((16, .2126), (8, .7152), (0, .0722)):
+        c = ((n >> s) & 255) / 255
+        out += w * (c / 12.92 if c <= .03928 else ((c + .055) / 1.055) ** 2.4)
+    return out
+
+
+def cr(a, b):
+    x, y = sorted((lum(a), lum(b)), reverse=True)
+    return (x + .05) / (y + .05)
+
+
+def shift(h, dl):
+    r, g, b = (int(h[i:i + 2], 16) / 255 for i in (1, 3, 5))
+    hh, l, s = colorsys.rgb_to_hls(r, g, b)
+    l = min(1, max(0, l + dl))
+    r, g, b = colorsys.hls_to_rgb(hh, l, s)
+    return '#%02X%02X%02X' % (round(r * 255), round(g * 255), round(b * 255))
+
+
+def fix(fg, bg, need, move='fg'):
+    """Move fg (or bg) lighter/darker until contrast >= need."""
+    for _ in range(60):
+        if cr(fg, bg) >= need:
+            return fg, bg
+        if move == 'fg':
+            fg = shift(fg, .02 if lum(fg) > lum(bg) else -.02)
+        else:
+            bg = shift(bg, -.02 if lum(fg) > lum(bg) else .02)
+    return fg, bg
+
+
+def norm_palette(p, base):
+    q = dict(base)
+    for k in KEYS:
+        v = p.get(k)
+        if k in ('bgGradient', 'recGradient'):
+            if isinstance(v, list) and len(v) >= 2 and all(isinstance(x, str) and HEX.match(x) for x in v):
+                q[k] = [x.upper() for x in v[:3]]
+        elif k == 'overlay':
+            if isinstance(v, str) and v.startswith('rgba'):
+                q[k] = v
+        elif k == 'cardBorder':
+            if isinstance(v, str) and (HEX.match(v) or v.startswith('rgba')):
+                q[k] = v
+        elif isinstance(v, str) and HEX.match(v):
+            q[k] = v.upper()
+    q['ink'], _ = fix(q['ink'], q['bg'], 7)
+    q['ink'], _ = fix(q['ink'], q['card'], 7)
+    q['sub'], _ = fix(q['sub'], q['card'], 4.6)
+    _, q['rec'] = fix(q['recInk'], q['rec'], 4.6, 'bg')
+    _, q['rew'] = fix(q['rewInk'], q['rew'], 4.6, 'bg')
+    q['score'], _ = fix(q['score'], q['cardHi'], 3.2)
+    return q
+
+
+def main():
+    sys.path.insert(0, '.')
+    base = json.load(open('tools/booth_base.json'))
+    keep = set(sys.argv[2].split(',')) if len(sys.argv) > 2 else None
+    skins, seen = [], set()
+    for f in sorted(glob.glob(sys.argv[1] + '/skins_*.txt')):
+        t = open(f, encoding='utf-8').read()
+        try:
+            j = json.loads(t[t.find('{'):t.rfind('}') + 1])
+        except Exception as e:
+            print('skip', f, e)
+            continue
+        for s in j.get('skins', []):
+            sid = re.sub(r'[^a-z0-9]', '', str(s.get('id', '')).lower())[:16]
+            if not sid or sid in seen or sid == 'booth' or (keep and sid not in keep):
+                continue
+            seen.add(sid)
+            fnt = s.get('font', {})
+            pick = lambda x: x if x in FONTS else 'System'
+            out = {
+                'id': sid, 'name': str(s.get('name', sid))[:18], 'vibe': str(s.get('vibe', ''))[:110],
+                'font': {'heading': pick(fnt.get('heading')), 'body': pick(fnt.get('body')), 'number': pick(fnt.get('number')),
+                         'headingWeight': fnt.get('headingWeight') if fnt.get('headingWeight') in ('600', '700', '800', '900') else '800',
+                         'headingTracking': max(-1, min(1, float(fnt.get('headingTracking', -0.3) or 0)))},
+                'radius': {k: max(4, min(34, int((s.get('radius') or {}).get(k, d)))) for k, d in (('s', 10), ('m', 16), ('l', 24))},
+                'card': {'borderWidth': float((s.get('card') or {}).get('borderWidth', 0.5)),
+                         'shadowOpacity': max(0, min(.5, float((s.get('card') or {}).get('shadowOpacity', 0)))),
+                         'shadowRadius': max(0, min(30, float((s.get('card') or {}).get('shadowRadius', 0))))},
+                'dark': norm_palette(s.get('dark', {}), base['dark']),
+                'light': norm_palette(s.get('light', {}), base['light']),
+            }
+            skins.append(out)
+            print('skin', sid, out['name'], '|', out['font']['heading'], '|', out['vibe'][:60])
+    src = ("// Generated by tools/import_skins.py from the StarNet skin designs (ops/luna/skins_*.txt).\n"
+           "// Colours were nudged where needed to pass the contrast rules in skins.test.ts.\n"
+           "import type { Skin } from './theme.ts';\n\n"
+           "export const GENERATED_SKINS: Skin[] = " + json.dumps(skins, indent=1, ensure_ascii=False) + ";\n")
+    open('src/ui/skins.ts', 'w', encoding='utf-8').write(src)
+    print(len(skins), 'skins written')
+
+
+if __name__ == '__main__':
+    main()

@@ -2,6 +2,7 @@
 // Used by quick play, packs, freestyle, the daily, challenge-a-friend and party "copy" turns.
 // All sound work is pure JS (src/core): read the WAV, trim, normalise, reverse, score. iOS only in Expo Go.
 import { useKeepAwake } from 'expo-keep-awake';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Animated, Easing, Platform, View } from 'react-native';
 import { applyEffect, buildShareClip, cleanTake, EFFECTS, FREE_EFFECTS, isSilent, reverse, waveformPeaks, type Effect } from '../core/dsp.ts';
@@ -377,7 +378,8 @@ function RecordArea({ phase, count, seconds, levels, busy, hold, onStart, onStop
         onPressOut={hold ? onStop : undefined}
         onPress={hold ? undefined : () => (phase === 'idle' ? onStart() : onStop())}
       >
-        <Animated.View style={{ width: 132, height: 132, borderRadius: 66, backgroundColor: theme.rec, alignItems: 'center', justifyContent: 'center', transform: [{ scale }], shadowColor: theme.rec, shadowOpacity: 0.45, shadowRadius: live ? 24 : 12, shadowOffset: { width: 0, height: 6 } }}>
+        <Animated.View style={{ width: 132, height: 132, borderRadius: 66, backgroundColor: theme.rec, alignItems: 'center', justifyContent: 'center', transform: [{ scale }], shadowColor: theme.glow, shadowOpacity: live ? 0.7 : 0.45, shadowRadius: live ? 28 : 14, shadowOffset: { width: 0, height: 6 } }}>
+          <LinearGradient colors={(theme.recGradient?.length >= 2 ? theme.recGradient : [theme.rec, theme.rec]) as [string, string]} start={{ x: 0.2, y: 0 }} end={{ x: 0.8, y: 1 }} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: 66 }} />
           {phase === 'countdown' ? (
             <T style={[TYPE.num, { fontSize: 56 }]} color={theme.recInk}>{count}</T>
           ) : (
@@ -408,7 +410,7 @@ function ScoreCard({ score, quip, calm, line }: { score: ScoreBreakdown; quip: s
       <T kind="small" color={theme.sub}>
         {t('round.score')}
       </T>
-      <T style={TYPE.num} color={theme.gold} center>
+      <T kind="num" color={theme.score} center>
         {shown}
       </T>
       <View accessible accessibilityLabel={`${stars} / 5`} style={{ flexDirection: 'row' }}>
