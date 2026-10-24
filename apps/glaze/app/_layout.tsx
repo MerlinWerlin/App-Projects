@@ -127,6 +127,8 @@ function RootStack() {
     <Stack
       screenOptions={{
         // Design v2 (T83): grouped bg header, berry tint, system navTitle (covers every script).
+        // fb-1024 A: a route without its own title shows nothing, never its file name ("index").
+        title: '',
         headerStyle: { backgroundColor: c.bg },
         headerTintColor: c.tint,
         headerTitleStyle: { fontSize: textV2.navTitle.fontSize, fontWeight: '600', color: c.ink },
@@ -137,7 +139,9 @@ function RootStack() {
         gestureEnabled: true,
       }}
     >
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      {/* The redirect to Themes: no header and no transition, so nothing flashes between the intro and Themes. */}
+      <Stack.Screen name="index" options={{ headerShown: false, animation: 'none' }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false, animation: 'none' }} />
       <Stack.Screen name="theme/[id]" options={{ title: t('theme.title') }} />
       <Stack.Screen name="install" options={{ title: t('install.title') }} />
       <Stack.Screen name="wallpaper" options={{ title: t('wallpaper.title') }} />
@@ -147,6 +151,7 @@ function RootStack() {
       <Stack.Screen name="add-app" options={{ title: t('addApp.title') }} />
       <Stack.Screen name="tips" options={{ title: t('tips.title') }} />
       <Stack.Screen name="habit-goals" options={{ title: t('tabs.widgetsTab.goals.title') }} />
+      <Stack.Screen name="widget-studio" options={{ title: t('themeUi.widgetStudio.title') }} />
     </Stack>
   );
 }

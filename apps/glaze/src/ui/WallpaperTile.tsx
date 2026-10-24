@@ -9,11 +9,15 @@
 // core/wallpaperTiles.ts). The Plus badge only when the theme is Plus.
 // T77: with `onToggleLike`, theme and pair tiles get a heart (src/ui/HeartButton.tsx) at the
 // bottom reading end that likes the wallpaper on this device only. No counts or ranks.
+// T118 (fb-1024 B): the pair's Home version is computed once per wallpaper (module cache), the
+// pair art and the Lock Screen mock are memoised, and the tile's press handler is stable.
 import { Feather } from '@expo/vector-icons';
-import { memo, useMemo, type ReactNode } from 'react';
+import { memo, useCallback, type ReactNode } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import type { Theme } from '../core/themes';
-import { designedColours, homeVersionFor } from '../core/wallpaperPair';
+import { weakMemo } from '../core/perfCache';
+import type { WallpaperParams } from '../core/wallpaper';
+import { designedColours, homeVersionFor, type HomeVersion } from '../core/wallpaperPair';
 import { pairHalfSize, tileFavouriteId, type WallpaperTile } from '../core/wallpaperTiles';
 import { useT } from '../i18n';
 import { PlusBadge } from '../plus/PlusBadge';
@@ -32,6 +36,12 @@ const PAIR_SIZE = { width: 1179, height: 2556 };
 const PAIR_GAP = spaceV2.xs;
 /** Grain dots per small preview (the full count is for exports). */
 const TILE_GRAIN = 60;
+
+/** The softened Home version of a designed wallpaper, once per wallpaper. */
+const homeFor = weakMemo((wallpaper: WallpaperParams): HomeVersion => homeVersionFor({ colours: designedColours(wallpaper), size: PAIR_SIZE }));
+
+/** LockMock never changes for a given size: memoised so a tile re-render skips it. */
+const LockMockM = memo(LockMock);
 
 export type WallpaperTileViewProps = {
   tile: WallpaperTile;
@@ -59,10 +69,10 @@ function LiveBadge({ label }: { label: string }) {
   );
 }
 
-function PairArt({ theme, width, lockLabel, homeLabel }: { theme: Theme; width: number; lockLabel: string; homeLabel: string }) {
+const PairArt = memo(function PairArt({ theme, width, lockLabel, homeLabel }: { theme: Theme; width: number; lockLabel: string; homeLabel: string }) {
   const { c } = useColorsV2();
   const half = pairHalfSize(width - spaceV2.sm * 2, PAIR_GAP);
-  const home = useMemo(() => homeVersionFor({ colours: designedColours(theme.wallpaper), size: PAIR_SIZE }), [theme]);
+  const home = homeFor(theme.wallpaper);
   const showArt = !theme.packId;
   return (
     <View style={[styles.pairRow, noMirror]}>
@@ -79,7 +89,7 @@ function PairArt({ theme, width, lockLabel, homeLabel }: { theme: Theme; width: 
       ))}
     </View>
   );
-}
+});
 
 function WallpaperTileViewInner({ tile, theme, loopName, width, height, onOpen, liked = false, onToggleLike }: WallpaperTileViewProps) {
   const { c } = useColorsV2();
@@ -87,6 +97,8 @@ function WallpaperTileViewInner({ tile, theme, loopName, width, height, onOpen, 
   const name = theme?.name ?? loopName ?? '';
   const favId = onToggleLike ? tileFavouriteId(tile) : undefined;
   const withHeart = favId !== undefined;
+  const href = tile.href;
+  const open = useCallback(() => onOpen(href), [onOpen, href]);
 
   let label: string;
   let hint: string;
@@ -114,7 +126,7 @@ function WallpaperTileViewInner({ tile, theme, loopName, width, height, onOpen, 
       <>
         <View style={[StyleSheet.absoluteFill, noMirror]}>
           <WallpaperView params={theme.wallpaper} width={width} height={height} maxGrain={TILE_GRAIN} showArt={!theme.packId} />
-          <LockMock width={width} height={height} showGuides={false} />
+          <LockMockM width={width} height={height} showGuides={false} />
         </View>
         <View style={[styles.scrim, withHeart ? styles.withHeart : null]}>
           <Text style={[caption, styles.onArt]} numberOfLines={1}>
@@ -165,7 +177,7 @@ function WallpaperTileViewInner({ tile, theme, loopName, width, height, onOpen, 
         accessibilityRole="button"
         accessibilityLabel={label}
         accessibilityHint={hint}
-        onPress={() => onOpen(tile.href)}
+        onPress={open}
         style={[styles.tile, { width, height, backgroundColor: c.fill }]}
       >
         {body}

@@ -65,6 +65,7 @@ import {
   PhotoWallpaperView,
   type PhotoWallpaperData,
 } from '../../src/render/PhotoWallpaperView';
+import { offersOpenSettings, saveFailureKey, type SaveFailure } from '../../src/core/photoSave';
 import { openAppSettings, useOffscreenCapture, useWallpaperSaver } from '../../src/render/saveWallpaper';
 import { OffscreenWallpaper, WallpaperView } from '../../src/render/WallpaperView';
 import { usePackTheme } from '../../src/render/usePackTheme';
@@ -203,6 +204,8 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
   const [widgetsMode, setWidgetsMode] = useState<WidgetsStepMode>('preview');
   const [celebrateKey, setCelebrateKey] = useState(0);
   const [saveState, setSaveState] = useState<SaveState>('idle');
+  /** fb-1024 C: the real reason a save failed, in plain words, plus the technical detail. */
+  const [saveWhy, setSaveWhy] = useState<{ why: SaveFailure; detail?: string } | null>(null);
   const [styleBusy, setStyleBusy] = useState(false);
   const [styleError, setStyleError] = useState(false);
   const locked = useLocked(theme.plus);
@@ -432,17 +435,20 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
 
   const onSaveWallpaper = async () => {
     const from = wallSource;
-    const res: { ok: boolean; reason?: string } = photo
+    const res: { ok: boolean; reason?: string; why?: SaveFailure; message?: string } = photo
       ? await photoSaver.save(photo, size)
       : from === 'space-photo' && spacePhoto.uri
         ? await saveSpacePhoto(spacePhoto.uri)
         : await saver.save(theme.wallpaper, size);
     if (res.ok) {
       setSavedFrom(from);
+      setSaveWhy(null);
       setSaveState('saved');
       tick('wallpaper');
     } else {
-      setSaveState(res.reason === 'denied' ? 'denied' : 'error');
+      const why: SaveFailure = res.why ?? (res.reason === 'denied' ? 'denied' : res.reason === 'unreadable' ? 'unreadable' : 'unknown');
+      setSaveWhy({ why, detail: res.message });
+      setSaveState(why === 'denied' ? 'denied' : 'error');
       haptic('warning');
     }
   };
@@ -743,7 +749,37 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
                             </View>
                           ) : null}
                           {saveState === 'error' ? (
-                            <Text style={[...ts('body'), { color: c.warn }]}>{t('theme.save.error')}</Text>
+                            <View style={styles.gap} accessibilityLiveRegion="polite">
+                              <Text style={[...ts('body'), { color: c.warn }]}>
+                                {saveWhy && saveFailureKey(saveWhy.why) ? t(`theme.save.why.${saveWhy.why}`) : t('theme.save.error')}
+                              </Text>
+                              {saveWhy?.detail ? (
+                                <Text style={[...ts('footnote'), { color: c.inkSecondary }]} selectable>
+                                  {saveWhy.detail}
+                                </Text>
+                              ) : null}
+                              <View style={styles.navRow}>
+                                <PillButton
+                                  label={t('theme.save.tryAgain')}
+                                  icon="refresh-cw"
+                                  variant="tinted"
+                                  size="small"
+                                  busy={saver.saving || photoSaver.saving}
+                                  onPress={onSaveWallpaper}
+                                  style={styles.flex}
+                                />
+                                {saveWhy && offersOpenSettings(saveWhy.why) ? (
+                                  <PillButton
+                                    label={t('theme.save.openSettings')}
+                                    icon="settings"
+                                    variant="plain"
+                                    size="small"
+                                    onPress={openAppSettings}
+                                    style={styles.flex}
+                                  />
+                                ) : null}
+                              </View>
+                            </View>
                           ) : null}
                           <PillButton
                             label={

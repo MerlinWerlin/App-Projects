@@ -142,7 +142,7 @@ export const es: NonNullable<LocaleMessages['install']> = {
     },
     install: {
       title: 'Instalar en Ajustes',
-      body: 'Abre Ajustes y toca «Perfil descargado» arriba (o General > VPN y gestión de dispositivos). Toca Instalar, introduce tu código, toca Instalar otra vez y luego OK.',
+      body: 'Abre Ajustes y toca «Perfil descargado» arriba (o General > VPN y gestión de dispositivos). Toca Instalar, introduce tu código, toca Instalar otra vez y luego OK. ¿No aparece? Cierra Ajustes del todo, ábrelo de nuevo y ve a General > VPN y gestión de dispositivos > Perfil descargado. iOS borra un perfil descargado tras unos 8 minutos; si ya no está, toca el archivo en Archivos otra vez y ve directo a Ajustes.',
     },
     notVerified: {
       title: '¿Por qué «No verificado»?',

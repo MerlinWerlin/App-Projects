@@ -142,7 +142,7 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
     },
     install: {
       title: 'Instalar nos Ajustes',
-      body: 'Abra Ajustes e toque em “Perfil Transferido” no topo (ou Geral > VPN e Gerenciamento de Dispositivos). Toque em Instalar, digite seu código, toque em Instalar de novo e depois em OK.',
+      body: 'Abra Ajustes e toque em “Perfil Transferido” no topo (ou Geral > VPN e Gerenciamento de Dispositivos). Toque em Instalar, digite seu código, toque em Instalar de novo e depois em OK. Não aparece? Feche Ajustes por completo, abra de novo e vá em Geral > VPN e Gerenciamento de Dispositivos > Perfil Transferido. O iOS apaga um perfil transferido após cerca de 8 minutos; se sumiu, toque no arquivo em Arquivos de novo e vá direto para Ajustes.',
     },
     notVerified: {
       title: 'Por que “Não Verificado”?',

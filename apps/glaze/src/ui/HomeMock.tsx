@@ -3,6 +3,9 @@
 // T107 (fb-1022-perf): the apply ripple / pop no longer re-mounts every icon on each replay (keys
 // carried the replay counter, so 24 SVG icon tiles were torn down and rebuilt at once). Icons
 // keep stable keys; each cell runs its own UI-thread spring (transform scale + opacity only).
+// T118 (fb-1024 B): gallery cards pass `still`: the icons are plain views (no per-icon shared value
+// or animated style, no shape-morph effect), and the monogram pass over the specs is cached per
+// specs array. A gallery card used to register ~24 animated styles just to sit still.
 
 import { Feather } from '@expo/vector-icons';
 import { memo, useEffect, useId, useMemo, type ReactNode } from 'react';
@@ -11,6 +14,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSpring } fro
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { fitDelays, rippleDelays, staggerDelay } from '../core/motion';
 import { withMonogram, type IconSpec } from '../core/iconspec';
+import { weakMemo } from '../core/perfCache';
 import { IconTile } from '../render/IconTile';
 import { durations, springConfig, useMotionReduced } from '../theme/motion';
 import { fonts, light, tabular } from '../theme/tokens';
@@ -45,7 +49,15 @@ export type HomeMockProps = {
   animateKey?: string | number;
   /** Called once the ripple/pop has finished (or straight away when reduced/off). */
   onIconsSettled?: () => void;
+  /**
+   * T118: the icons never animate (gallery cards): plain views, no per-icon Reanimated hooks and
+   * no shape morph. `animateIcons` is ignored. Keep it constant for a mounted preview.
+   */
+  still?: boolean;
 };
+
+/** T82 monograms for a specs array, computed once per array (gallery specs are cached arrays). */
+const monogramSpecs = weakMemo((xs: IconSpec[]): IconSpec[] => xs.map((s) => withMonogram(s)));
 
 /** Total ripple budget so even a full Home Screen settles quickly. */
 export const RIPPLE_BUDGET_MS = 700;
@@ -74,12 +86,14 @@ export function HomeMock({
   animateIcons = false,
   animateKey = 0,
   onIconsSettled,
+  still = false,
 }: HomeMockProps) {
   const { t } = useT();
   // T82: monograms agree with the glyph exactly as on the iOS install path (previewMonogram).
-  const specs = useMemo(() => rawSpecs.map((s) => withMonogram(s)), [rawSpecs]);
+  const specs = useMemo(() => monogramSpecs(rawSpecs), [rawSpecs]);
   const reduced = useMotionReduced();
-  const animate = animateIcons && !reduced ? animateIcons : false;
+  const animate = animateIcons && !reduced && !still ? animateIcons : false;
+  const Cell = still ? StillCell : PopCell;
   const rawId = useId();
   const gid = `home${rawId.replace(/[^A-Za-z0-9_-]/g, '')}`;
   const w = Math.max(120, width);
@@ -167,7 +181,7 @@ export function HomeMock({
         {chunk(grid, COLS).map((row, r) => (
           <View key={`r${r}`} style={[styles.row, { height: rowH }]}>
             {row.map((s, i) => (
-              <PopCell
+              <Cell
                 key={`${s.appId}-${r}-${i}`}
                 animate={animate !== false}
                 delay={delays[r * COLS + i] ?? 0}
@@ -182,13 +196,14 @@ export function HomeMock({
                   maxFontSizeMultiplier={1.6}
                   iosMask={iosMask}
                   backdrop={iosMask ? iconBackdrop : undefined}
+                  morph={!still}
                 />
                 {customisedIds?.has(s.appId) ? (
                   <View pointerEvents="none" style={{ position: 'absolute', top: 0, width: icon, height: icon }}>
                     <CustomisedBadge size={Math.max(6, Math.round(icon * 0.22))} />
                   </View>
                 ) : null}
-              </PopCell>
+              </Cell>
             ))}
           </View>
         ))}
@@ -215,7 +230,7 @@ export function HomeMock({
         ]}
       >
         {dock.map((s, i) => (
-          <PopCell
+          <Cell
             key={`d-${s.appId}-${i}`}
             animate={animate !== false}
             delay={delays[grid.length + i] ?? 0}
@@ -228,9 +243,10 @@ export function HomeMock({
               showLabel={false}
               iosMask={iosMask}
               backdrop={iosMask ? iconBackdrop : undefined}
+              morph={!still}
             />
             {customisedIds?.has(s.appId) ? <CustomisedBadge size={Math.max(6, Math.round(icon * 0.22))} /> : null}
-          </PopCell>
+          </Cell>
         ))}
       </View>
     </View>
@@ -263,6 +279,11 @@ const PopCell = memo(function PopCell({ children, style, animate, delay, playKey
     transform: [{ scale: 0.3 + 0.7 * p.value }],
   }));
   return <Animated.View style={[style, anim]}>{children}</Animated.View>;
+});
+
+/** T118: one icon cell that never animates (same props as PopCell; plain view, no hooks). */
+const StillCell = memo(function StillCell({ children, style }: PopCellProps) {
+  return <View style={style}>{children}</View>;
 });
 
 const styles = StyleSheet.create({

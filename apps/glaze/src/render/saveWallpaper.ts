@@ -19,14 +19,16 @@ import * as MediaLibrary from 'expo-media-library';
 import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { Linking, PixelRatio, Platform, type View } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
+import { runPhotoSave, type CaptureAttempt, type PhotoAccess, type SaveFailure } from '../core/photoSave';
 import { exportPlan, type WallpaperParams } from '../core/wallpaper';
+import { copyAsync } from '../native/fs';
 import { nextFrames } from './capture';
 
 export type WallpaperSaveSize = { width: number; height: number };
 
 export type SaveWallpaperResult =
   | { ok: true; width: number; height: number; uri: string }
-  | { ok: false; reason: 'denied' | 'error'; message?: string };
+  | { ok: false; reason: 'denied' | 'error'; message?: string; why?: SaveFailure };
 
 export type WallpaperJob = {
   params: WallpaperParams;
@@ -38,14 +40,23 @@ export type WallpaperJob = {
 
 const MOUNT_TIMEOUT_MS = 3000;
 
+/**
+ * Ask for add-only Photos access ("Add Photos Only" on iOS; writeOnly = true never asks to read the library, which
+ * Expo Go and the store build both allow with NSPhotoLibraryAddUsageDescription). Throws only if the module fails.
+ */
+export async function photosWriteAccess(): Promise<PhotoAccess> {
+  const current = await MediaLibrary.getPermissionsAsync(true);
+  if (current.granted) return 'granted';
+  if (!current.canAskAgain) return 'blocked';
+  const res = await MediaLibrary.requestPermissionsAsync(true);
+  if (res.granted) return 'granted';
+  return res.canAskAgain ? 'denied' : 'blocked';
+}
+
 /** Ask for add-only Photos access. True when granted (or limited). */
 export async function ensurePhotosWriteAccess(): Promise<boolean> {
   try {
-    const current = await MediaLibrary.getPermissionsAsync(true);
-    if (current.granted) return true;
-    if (!current.canAskAgain) return false;
-    const res = await MediaLibrary.requestPermissionsAsync(true);
-    return res.granted;
+    return (await photosWriteAccess()) === 'granted';
   } catch {
     return false;
   }
@@ -60,8 +71,16 @@ function asFileUri(uri: string): string {
   return /^[a-z][a-z0-9+.-]*:/i.test(uri) ? uri : `file://${uri}`;
 }
 
-/** Capture a mounted wallpaper view to a PNG temp file at the job's pixel size. */
-export async function captureWallpaper(ref: { current: View | null }, job: Pick<WallpaperJob, 'capture'>): Promise<string> {
+/**
+ * Capture a mounted wallpaper view to a PNG temp file at the job's pixel size. The view is parked off screen, so on
+ * iOS the first attempt uses renderInContext (the default drawViewHierarchyInRect fails for views outside the window,
+ * fb-1024 C); see captureAttempts in core/photoSave.
+ */
+export async function captureWallpaper(
+  ref: { current: View | null },
+  job: Pick<WallpaperJob, 'capture'>,
+  attempt: CaptureAttempt = { useRenderInContext: Platform.OS === 'ios' },
+): Promise<string> {
   if (!ref.current) throw new Error('Wallpaper view is not mounted');
   const uri = await captureRef(ref, {
     format: 'png',
@@ -69,6 +88,7 @@ export async function captureWallpaper(ref: { current: View | null }, job: Pick<
     result: 'tmpfile',
     width: job.capture.width,
     height: job.capture.height,
+    useRenderInContext: attempt.useRenderInContext,
   });
   return asFileUri(uri);
 }
@@ -92,9 +112,7 @@ export type OffscreenCaptureOptions = {
 
 export type SaveCaptureResult =
   | { ok: true; width: number; height: number; uri: string }
-  | { ok: false; reason: 'denied' | 'error' | 'unreadable'; message?: string };
-
-class UnreadableError extends Error {}
+  | { ok: false; reason: 'denied' | 'error' | 'unreadable'; message?: string; why?: SaveFailure };
 
 /**
  * Generic hook: mounts `data` off screen at full size (render it from the returned `job`),
@@ -127,48 +145,56 @@ export function useOffscreenCapture<T>(options: OffscreenCaptureOptions = {}) {
 
   const save = useCallback(
     async (data: T, size: WallpaperSaveSize): Promise<SaveCaptureResult> => {
-      if (busy.current) return { ok: false, reason: 'error', message: 'Already saving' };
+      if (busy.current) return { ok: false, reason: 'error', message: 'Already saving', why: 'busy' };
       busy.current = true;
       setSaving(true);
       try {
-        if (!(await ensurePhotosWriteAccess())) return { ok: false, reason: 'denied' };
         const plan = exportPlan(size, PixelRatio.get(), Platform.OS);
         counter.current += 1;
         const next: CaptureJob<T> = { data, ...plan, key: counter.current };
-        // Armed before mounting so an onLoad that fires immediately is not missed.
-        const ready = waitForReady
-          ? new Promise<void>((resolve, reject) => {
+        const out = await runPhotoSave({
+          platform: Platform.OS,
+          access: photosWriteAccess,
+          render: async () => {
+            // Armed before mounting so an onLoad that fires immediately is not missed.
+            const ready = waitForReady
+              ? new Promise<void>((resolve, reject) => {
+                  const timer = setTimeout(() => {
+                    onReady.current = null;
+                    reject(new Error('Image did not load in time'));
+                  }, readyTimeoutMs);
+                  onReady.current = (ok) => {
+                    clearTimeout(timer);
+                    if (ok) resolve();
+                    else reject(new Error('Image could not be read'));
+                  };
+                })
+              : Promise.resolve();
+            ready.catch(() => undefined); // handled below; avoids an unhandled rejection if mounting fails first
+            await new Promise<void>((resolve, reject) => {
               const timer = setTimeout(() => {
-                onReady.current = null;
-                reject(new Error('Image did not load in time'));
-              }, readyTimeoutMs);
-              onReady.current = (ok) => {
+                onMounted.current = null;
+                reject(new Error('Wallpaper did not render in time'));
+              }, MOUNT_TIMEOUT_MS);
+              onMounted.current = () => {
                 clearTimeout(timer);
-                if (ok) resolve();
-                else reject(new UnreadableError('Image could not be read'));
+                resolve();
               };
-            })
-          : Promise.resolve();
-        ready.catch(() => undefined); // handled below; avoids an unhandled rejection if mounting fails first
-        await new Promise<void>((resolve, reject) => {
-          const timer = setTimeout(() => {
-            onMounted.current = null;
-            reject(new Error('Wallpaper did not render in time'));
-          }, MOUNT_TIMEOUT_MS);
-          onMounted.current = () => {
-            clearTimeout(timer);
-            resolve();
-          };
-          setJob(next);
+              setJob(next);
+            });
+            await ready;
+            // The render has finished painting before the capture.
+            await nextFrames(3);
+          },
+          capture: (attempt) => captureWallpaper(ref, next, attempt),
+          rename: (from, to) => copyAsync({ from, to }),
+          save: (uri) => MediaLibrary.saveToLibraryAsync(uri),
         });
-        await ready;
-        await nextFrames(3);
-        const uri = await captureWallpaper(ref, next);
-        await MediaLibrary.saveToLibraryAsync(uri);
-        return { ok: true, width: plan.pixels.width, height: plan.pixels.height, uri };
+        if (out.ok) return { ok: true, width: plan.pixels.width, height: plan.pixels.height, uri: out.uri };
+        const reason = out.reason === 'denied' ? 'denied' : out.reason === 'unreadable' ? 'unreadable' : 'error';
+        return { ok: false, reason, message: out.detail, why: out.reason };
       } catch (e) {
-        if (e instanceof UnreadableError) return { ok: false, reason: 'unreadable', message: e.message };
-        return { ok: false, reason: 'error', message: e instanceof Error ? e.message : String(e) };
+        return { ok: false, reason: 'error', message: e instanceof Error ? e.message : String(e), why: 'unknown' };
       } finally {
         onReady.current = null;
         setJob(null);
@@ -199,7 +225,7 @@ export function useWallpaperSaver() {
     async (params: WallpaperParams, size: WallpaperSaveSize): Promise<SaveWallpaperResult> => {
       const res = await saveData(params, size);
       if (res.ok) return res;
-      return { ok: false, reason: res.reason === 'denied' ? 'denied' : 'error', message: res.message };
+      return { ok: false, reason: res.reason === 'denied' ? 'denied' : 'error', message: res.message, why: res.why };
     },
     [saveData],
   );

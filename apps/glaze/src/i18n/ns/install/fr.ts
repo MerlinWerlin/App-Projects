@@ -142,7 +142,7 @@ export const fr: NonNullable<LocaleMessages['install']> = {
     },
     install: {
       title: 'Installer dans Réglages',
-      body: 'Ouvrez Réglages et touchez « Profil téléchargé » en haut (ou Général > VPN et gestion de l’appareil). Touchez Installer, saisissez votre code, touchez à nouveau Installer, puis OK.',
+      body: 'Ouvrez Réglages et touchez « Profil téléchargé » en haut (ou Général > VPN et gestion de l’appareil). Touchez Installer, saisissez votre code, touchez à nouveau Installer, puis OK. Introuvable ? Fermez complètement Réglages, rouvrez-le et allez dans Général > VPN et gestion de l’appareil > Profil téléchargé. iOS supprime un profil téléchargé après environ 8 minutes : s’il a disparu, touchez à nouveau le fichier dans Fichiers et allez directement dans Réglages.',
     },
     notVerified: {
       title: 'Pourquoi « Non vérifié » ?',
