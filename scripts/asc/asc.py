@@ -39,10 +39,31 @@ def key_pem():
     return f"-----BEGIN PRIVATE KEY-----\n{lines}\n-----END PRIVATE KEY-----\n"
 
 
+KEY_KIND = os.environ.get("ASC_KEY_KIND", "team")
+
+
 def token():
     now = int(time.time())
-    return jwt.encode({"iss": os.environ["ASC_ISSUER_ID"].strip(), "iat": now, "exp": now + 1100, "aud": "appstoreconnect-v1"},
-                      key_pem(), algorithm="ES256", headers={"kid": os.environ["ASC_KEY_ID"].strip()})
+    claims = {"iat": now, "exp": now + 1100, "aud": "appstoreconnect-v1"}
+    if KEY_KIND == "team":
+        claims["iss"] = os.environ["ASC_ISSUER_ID"].strip()
+    else:
+        claims["sub"] = "user"
+    return jwt.encode(claims, key_pem(), algorithm="ES256", headers={"kid": os.environ["ASC_KEY_ID"].strip(), "typ": "JWT"})
+
+
+def diagnose():
+    """Shapes only, never values."""
+    import re
+    from cryptography.hazmat.primitives.serialization import load_pem_private_key
+    kid, iss = os.environ["ASC_KEY_ID"].strip(), os.environ["ASC_ISSUER_ID"].strip()
+    say(f"- Key ID: {len(kid)} chars, {'looks right' if re.fullmatch(r'[A-Z0-9]{10}', kid) else 'NOT the 10-character form'}")
+    say(f"- Issuer ID: {'UUID form' if re.fullmatch(r'[0-9a-f-]{36}', iss) else 'NOT a UUID'}")
+    try:
+        k = load_pem_private_key(key_pem().encode(), None)
+        say(f"- .p8 key: loads, curve {k.curve.name}")
+    except Exception as e:
+        say(f"- .p8 key: does not load ({e})")
 
 
 S = requests.Session()
@@ -269,6 +290,19 @@ if __name__ == "__main__":
     mode, app = sys.argv[1], sys.argv[2]
     say(f"# App Store Connect {mode}: {app} ({time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime())})")
     try:
+        try:
+            get("/v1/apps", limit=1)
+        except RuntimeError as e:
+            if "401" not in str(e):
+                raise
+            KEY_KIND = "individual"
+            try:
+                get("/v1/apps", limit=1)
+                say("- (signed in with an Individual API key)")
+            except RuntimeError:
+                say("**Apple rejected the API key (401) as both a Team and an Individual key.**")
+                diagnose()
+                raise
         (status if mode == "status" else apply)(app)
         if mode == "apply":
             say("")
