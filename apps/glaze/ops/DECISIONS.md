@@ -136,3 +136,5 @@
 - 2026-10-24 · oversight v133 D133-2 · done · one checkpoint carries A, B and C (run 104).
 
 - 2026-10-25 · oversight D135-1 · accepted · native files held steady until the queued production-native build ships; JS-only work allowed (none needed this run).
+- 2026-10-25 · oversight v136 D135-1 · followed · native files still held; PR #74 not yet merged.
+- 2026-10-25 · oversight v137 D135-1 · followed · native files still held; PR #74 not yet merged; no new directives.
