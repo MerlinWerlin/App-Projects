@@ -1,5 +1,5 @@
 {
   "mode": "update",
-  "note": "Glaze: no 'index' flash at startup, smoother scrolling and tab switches, Save to Photos fixed with a plain-words reason if it fails, profile-install hint",
+  "note": "Glaze: Save to Photos works again (media library legacy API on SDK 57); sheet backdrop and phone-frame rim render again",
   "ascAppId": "6826415074"
 }

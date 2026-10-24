@@ -15,7 +15,7 @@
 // pixels / PixelRatio points; view-shot's width/height are points on iOS (× screen scale) and
 // pixels on Android, so exportPlan() picks the right numbers for each (unit-tested in core).
 
-import * as MediaLibrary from 'expo-media-library';
+import * as MediaLibrary from 'expo-media-library/legacy';
 import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { Linking, PixelRatio, Platform, type View } from 'react-native';
 import { captureRef } from 'react-native-view-shot';

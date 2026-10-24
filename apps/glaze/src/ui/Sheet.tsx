@@ -92,7 +92,7 @@ export function Sheet({ visible, onClose, title, children, closeLabel }: Props) 
 
 const styles = StyleSheet.create({
   root: { flex: 1, justifyContent: 'flex-end' },
-  backdrop: { ...StyleSheet.absoluteFillObject },
+  backdrop: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
   shell: {
     maxHeight: '88%',
     borderTopStartRadius: radiusV2.sheet,
