@@ -157,6 +157,8 @@ function RootStack() {
             headerTintColor: theme.ink,
           }}
         />
+        {/* Owner 24 Oct 2026: Send feedback / request a feature (from Settings; draws its own large title). */}
+        <Stack.Screen name="feedback" />
         <Stack.Screen name="choose-apps" options={{ headerShown: true, title: t('app.chooseApps.title'), headerStyle: { backgroundColor: theme.body }, headerTintColor: theme.ink }} />
         <Stack.Screen name="themes" options={{ headerShown: true, title: t('app.themes.title'), headerStyle: { backgroundColor: theme.body }, headerTintColor: theme.ink }} />
         <Stack.Screen name="plus" options={{ headerShown: true, title: t('app.plus.title'), headerStyle: { backgroundColor: theme.body }, headerTintColor: theme.ink }} />
