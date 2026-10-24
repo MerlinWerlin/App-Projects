@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Block F</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M174 325H114Q100 325 100 311V60Q100 46 114 46H286Q300 46 300 60V106Q300 120 286 120H188V160H255Q269 160 269 174V221Q269 235 255 235H188V311Q188 325 174 325Z"/>
+  </g>
+</svg>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Linework Privacy Policy</title>
+<style>
+  :root {
+    --paper: #F5F1EA; --card: #FFFFFF; --line: #DDD5C8; --text: #22201C; --muted: #6E675D;
+    --ink: #2346A8; --ink-soft: #E3E8F7; --ok: #2C7A54; --warn: #A2620F; --warn-soft: #FBEFD9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14130F; --card: #1D1B17; --line: #34302A; --text: #EEE8DE; --muted: #A39B8F;
+      --ink: #8FA8FF; --ink-soft: #1E2846; --ok: #6CC79A; --warn: #E7B464; --warn-soft: #3A2C14;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--paper); color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font: 700 2rem/1.2 Georgia, "Times New Roman", serif; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 32px 0 8px; }
+  p, li { overflow-wrap: anywhere; }
+  .meta { color: var(--muted); margin: 0 0 24px; }
+  .badge {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .badge .tick {
+    flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--ink-soft); color: var(--ok);
+    display: grid; place-items: center; font-weight: 700; font-size: 22px;
+  }
+  .badge strong { display: block; font-size: 1.25rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 4px 20px; margin-top: 16px; }
+  ul { padding-left: 1.2em; }
+  a { color: var(--ink); }
+  .todo { background: var(--warn-soft); color: var(--warn); border-radius: 6px; padding: 1px 6px; font-weight: 600; }
+  footer { color: var(--muted); font-size: 0.9rem; margin-top: 40px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Linework Privacy Policy</h1>
+  <p class="meta">Effective date: 18 October 2026 · App: Linework (iOS and Android, <code>com.jared797.linework</code>)</p>
+
+  <div class="badge" role="note">
+    <div class="tick" aria-hidden="true">✓</div>
+    <div>
+      <strong>Data Not Collected</strong>
+      Linework does not collect, store on a server, sell or share any data about you. There are no accounts, no analytics,
+      no ads and no tracking. Your pictures and drawings stay on your device.
+    </div>
+  </div>
+
+  <h2>What Linework does not do</h2>
+  <div class="card">
+    <ul>
+      <li>No analytics, crash-reporting or advertising tools, and no tracking of any kind across apps or websites.</li>
+      <li>No sign-up, login or account. We never ask for your name, email or any other personal details.</li>
+      <li>No uploads. Photos you pick, photos you take, the outlines Linework makes from them and snapshots of your paper never leave your device.</li>
+      <li>No network calls of its own. Linework works fully offline. The only time it goes online is the standard app-update check described below.</li>
+    </ul>
+  </div>
+
+  <h2>Camera</h2>
+  <p>Linework uses the camera to show the live view of your paper behind the picture you are tracing. The camera picture is shown on screen
+  and processed only on your device. Linework records video only when you tap <em>Record</em> to make a timelapse, and the recording stays on your
+  device. Linework does not use the microphone; timelapse clips have no sound. If you would rather not allow the camera,
+  Lightbox mode lets you trace over the screen without it.</p>
+
+  <h2>Photos</h2>
+  <p>When you choose <em>Trace a photo</em>, you pick a picture with the system photo picker. Linework reads only the picture you choose,
+  turns it into an outline on your device if you ask it to, and keeps a copy in its own private storage so it can show your recent pictures.
+  It never uploads it.</p>
+  <p>Linework saves a timelapse to your Photos library only when you tap <em>Save to Photos</em>. That is the only time it writes to your library.</p>
+
+  <h2>What is stored, and where</h2>
+  <p>Everything Linework keeps is stored locally on your device, inside the app:</p>
+  <ul>
+    <li>your settings (language, starting opacity, grid, haptics, keep-awake, focus lock),</li>
+    <li>your recent pictures and favourite templates,</li>
+    <li>drawings you save to <em>My drawings</em>, and your local drawing stats and streak,</li>
+    <li>whether you own Linework Plus, and when your free trial started.</li>
+  </ul>
+  <p>None of this is sent anywhere. Deleting the app deletes all of it. You can also remove single recent pictures or drawings in the app.</p>
+
+  <h2>Free trial and the Linework Plus purchase</h2>
+  <p>Linework is free to try for 14 days; the start date of the trial is kept only on your device. After that, tracing your own photos stays free, and Linework Plus is an optional one-time purchase that unlocks the full template library and outline mode.
+  Purchases are handled entirely by Apple (App Store) or Google (Google Play) under their own privacy policies. Linework never sees your
+  payment details, name or account; it only learns from the store whether the purchase went through, so it can unlock Plus on your device
+  and offer <em>Restore purchases</em>.</p>
+
+  <h2>App updates</h2>
+  <p>Store builds of Linework check for small app updates (new wording, fixes, templates) when they open, using the Expo EAS Update service.
+  That request contains only technical information needed to deliver the right update, such as the app version, the platform and the update channel,
+  plus a random identifier the update library creates on the device. It contains nothing about you, and none of your pictures, drawings or settings.
+  We do not use it to identify or track you.</p>
+
+  <h2>Children's privacy</h2>
+  <p>Linework is suitable for all ages. Because it collects no personal information from anyone, it collects none from children under 13 (or the
+  equivalent age where you live). There are no ads, no chat, no social features and no links that let a child share anything. Purchases go through
+  the App Store or Google Play, where parents can use the store's own parental controls such as Ask to Buy.</p>
+
+  <h2>Your rights</h2>
+  <p>Because we hold no data about you, there is nothing for us to access, correct, export or delete on a server. All your Linework data is on your
+  device and under your control.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy ever changes, we will update this page and its effective date before the change takes effect. We will never start collecting data
+  without saying so here and in the store listing first.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about privacy: <a href="mailto:jaredbradley272@gmail.com">jaredbradley272@gmail.com</a></p>
+
+  <footer>Linework · Privacy Policy · Effective 18 October 2026 · See also the <a href="support.html">Support page</a>.</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Pixel B</title>
+  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M269 223V314H131V223Z"/>
+    <path d="M131 177V86H269V177Z"/>
+    <path d="M314 360V314H360V223H314V177H360V86H314V40H40V360Z"/>
+  </g>
+</svg>
