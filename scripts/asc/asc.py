@@ -371,6 +371,40 @@ def apply(app):
                 step(f"[{extra}] Screenshots {disp}", lambda disp=disp, folder=folder, extra=extra: upload_shots(ver["id"], extra, disp, folder))
 
 
+def testflight(app):
+    """Make the newest processed build installable for the team: an internal TestFlight group with access to
+    all builds, containing every App Store Connect user on the team (internal testers only, no Beta Review)."""
+    rel, _ = app_cfg(app)
+    app_id = rel["ascAppId"]
+    say(f"# TestFlight: {app}")
+    groups = get(f"/v1/apps/{app_id}/betaGroups", limit=50)["data"]
+    g = next((x for x in groups if attrs(x).get("isInternalGroup")), None)
+    if g:
+        say(f"- internal group: {attrs(g)['name']}")
+    else:
+        g = call("POST", "/v1/betaGroups", {"data": {"type": "betaGroups",
+                 "attributes": {"name": "Team", "isInternalGroup": True, "hasAccessToAllBuilds": True},
+                 "relationships": {"app": {"data": {"type": "apps", "id": app_id}}}}})["data"]
+        say("- internal group: created Team (access to all builds)")
+    have = {(attrs(t).get("email") or "").lower() for t in get(f"/v1/betaGroups/{g['id']}/betaTesters", limit=200)["data"]}
+    for u in get("/v1/users", limit=50)["data"]:
+        email = attrs(u)["username"]
+        tag = email.split("@")[0][:3] + "…"
+        if email.lower() in have:
+            say("- tester already in group: " + tag)
+            continue
+        try:
+            call("POST", "/v1/betaTesters", {"data": {"type": "betaTesters",
+                 "attributes": {"email": email, "firstName": attrs(u).get("firstName") or "", "lastName": attrs(u).get("lastName") or ""},
+                 "relationships": {"betaGroups": {"data": [{"type": "betaGroups", "id": g["id"]}]}}}})
+            say("- added internal tester " + tag)
+        except RuntimeError as e:
+            say(f"- add tester: **failed** ({str(e)[:300]})")
+    for b in get("/v1/builds", **{"filter[app]": app_id, "sort": "-uploadedDate", "limit": 3})["data"]:
+        a = attrs(b)
+        say(f"- build {a['version']}: {a.get('processingState')}, expired {a.get('expired')}")
+
+
 def upload_shots(ver_id, locale, disp, folder):
     import hashlib
     files = sorted((ROOT / folder).glob("*.jpg")) + sorted((ROOT / folder).glob("*.png"))
@@ -541,6 +575,8 @@ if __name__ == "__main__":
                 raise
         if mode == "profile":
             make_profile(app)
+        elif mode == "testflight":
+            testflight(app)
         else:
             (status if mode == "status" else apply)(app)
         if mode == "apply":
