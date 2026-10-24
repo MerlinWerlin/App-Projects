@@ -74,12 +74,12 @@ export const en = {
       body: 'iOS does not let any app change another app’s icon. Glaze adds a themed shortcut that opens the real app; move the originals to the App Library.',
     },
     'bulk-install': {
-      title: 'Install every icon at once',
-      body: 'Glaze puts your whole set in one profile, so you install once in Settings instead of making a shortcut per app.',
+      title: 'Bulk install (optional beta)',
+      body: 'Optional beta: one profile installs your whole set at once in Settings. The guided Shortcuts method is the default and always works.',
     },
     'live-lock': {
-      title: 'Make your Lock Screen move',
-      body: 'Loop your own video or GIF on the Lock Screen from the Live Lock tab.',
+      title: 'Make a Live Photo wallpaper',
+      body: 'Turn a video into a Live Photo on the Live tab. Set it from Photos › Share › Use as Wallpaper; it moves when you wake your iPhone.',
     },
     'theme-pick': {
       title: 'Start from a theme',
@@ -110,8 +110,8 @@ export const en = {
       body: 'The profile is made on your phone and isn’t signed, so Settings shows Not Verified. It only adds Home Screen icons.',
     },
     'live-loop': {
-      title: 'Where loops really move',
-      body: 'On iOS 26 the full Glaze build loops on the Lock Screen; on older iOS a Live Photo plays when you long-press. Expo Go shows a preview only.',
+      title: 'How Live Photos move',
+      body: 'A Live Photo wallpaper moves when you wake or press the Lock Screen; it isn’t a constant loop. Expo Go shows a preview only.',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

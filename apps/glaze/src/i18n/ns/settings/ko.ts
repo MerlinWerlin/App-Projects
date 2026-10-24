@@ -55,7 +55,7 @@ export const ko: NonNullable<LocaleMessages['settings']> = {
     feedbackHint: '내 메일 앱으로 Glaze 팀에 연락합니다',
   },
   plus: {
-    body: '한 번만 결제. 구독은 절대 없습니다. 나만의 아이콘 만들기, 두 가지 설치 방법, 내 동영상으로 만드는 Live Lock은 계속 무료입니다.',
+    body: '한 번만 결제. 구독은 절대 없습니다. 나만의 아이콘 만들기, 두 가지 설치 방법, 내 동영상으로 만드는 Live Photo 메이커는 계속 무료입니다.',
     more: 'Glaze Plus 포함 내용',
     moreHint: '한 번 결제로 잠금 해제되는 내용을 설명합니다',
   },
@@ -82,7 +82,7 @@ export const ko: NonNullable<LocaleMessages['settings']> = {
     addedTitle: '아이콘은 교체가 아니라 추가됩니다',
     addedBody: 'iOS에서는 어떤 앱도 다른 앱의 아이콘을 바꿀 수 없습니다. 대신 Glaze는 새로운 디자인의 단축어를 홈 화면에 추가합니다. 탭하면 실제 앱이 열립니다.',
     waysTitle: '추가하는 두 가지 방법',
-    waysBody: '일괄: 프로필 하나로 모든 아이콘을 한 번에 추가합니다(권장). 단축어: 프로필을 설치하고 싶지 않다면 단축어 앱으로 하나씩 추가합니다.',
+    waysBody: '단축어(권장): Glaze가 안내하는 대로 단축어 앱으로 아이콘을 하나씩 추가합니다. 일괄(선택형 베타): 프로필 하나로 모든 아이콘을 한 번에 추가합니다.',
     originalsTitle: '원래 아이콘은 어디로 가나요',
     originalsBody: '원래 아이콘을 길게 누르고 앱 제거, 홈 화면에서 제거를 탭하세요. 앱은 설치된 채로 앱 보관함으로 이동합니다(마지막 페이지에서 왼쪽으로 스와이프).',
     removeTitle: 'Glaze 아이콘 제거',

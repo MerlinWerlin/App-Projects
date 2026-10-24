@@ -144,4 +144,30 @@ export const zhHans: NonNullable<LocaleMessages['install']> = {
     preview: '固定图标功能将随完整版 Android Glaze 推出。在此预览版中，请将图标存入“照片”，并使用启动器的图标设置。',
     pin: '将图标固定到主屏幕',
   },
+  // T126: profile served to Safari from this iPhone, and the guided Shortcuts path.
+  safari: {
+    intro: 'Glaze 会绘制你的图标，在这台 iPhone 上生成一个描述文件，并直接从 iPhone 在 Safari 中打开。不会上传任何内容。',
+    generateHint: '绘制图标、生成描述文件并在 Safari 中打开',
+    opening: '正在打开 Safari',
+    openAgain: '再次在 Safari 中打开',
+    openAgainA11y: '再次在 Safari 中打开 {file}',
+    shareInstead: '改为共享文件',
+    hurry: 'Glaze 打开后约一分钟内，Safari 可以获取描述文件。如果 Safari 提示无法连接，请回到这里再次轻点“再次在 Safari 中打开”。',
+    oneAtATime: '你的图标分成了 {files} 个描述文件。iOS 一次只保留一个已下载的描述文件：先在“设置”中安装第 1 部分，回到这里，再打开下一部分。',
+    failed: 'Glaze 无法在 Safari 中打开描述文件。请轻点“改为共享文件”，通过邮件或隔空投送发给自己，或使用快捷指令。',
+    fallbackNote: '此版本无法在 Safari 中打开描述文件，只能通过共享面板，而 iOS 经常不会安装存到“文件”中的描述文件。请使用快捷指令（此处推荐），或通过邮件或隔空投送把文件发给自己。',
+    page: { title: 'Glaze 图标', body: '轻点“安装”。Safari 会询问是否允许下载配置描述文件：轻点“允许”，再轻点“关闭”，然后在“设置”中完成。', button: '安装' },
+    cards: {
+      safari: { title: '在 Safari 中安装', body: '在 Safari 中轻点“安装”。' },
+      allow: { title: '允许下载', body: 'Safari 会询问是否允许下载配置描述文件：轻点“允许”，再轻点“关闭”。' },
+      settings: { title: '在“设置”中安装', body: '打开“设置”：轻点顶部的“已下载描述文件”（或“通用”>“VPN与设备管理”），轻点“安装”，输入密码，再轻点“安装”。' },
+      home: { title: '图标出现', body: '你的图标会出现在主屏幕上。' },
+    },
+  },
+  guided: {
+    next: '下一个：{app}',
+    showNext: '显示步骤',
+    allDone: '所有图标已完成。你可以把原来的图标移到 App 资源库。',
+    oneAtATime: '一次一个图标：按步骤完成下一个 App 并勾选，Glaze 会打开再下一个的步骤。',
+  },
 };

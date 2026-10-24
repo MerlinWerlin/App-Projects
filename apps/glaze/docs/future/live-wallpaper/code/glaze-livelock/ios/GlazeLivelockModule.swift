@@ -67,6 +67,11 @@ public class GlazeLivelockModule: Module {
 
   private static func support() -> [String: Any] {
     if #available(iOS 26.0, *) {
+      // T135: without the audio background mode (native-plugins/livelock.json removed, e.g. after an
+      // App Review rejection) the app is suspended on lock and the loop can't stay on the Lock
+      // Screen, so report "not-built" and the app shows the Live Photo path only.
+      let modes = Bundle.main.object(forInfoDictionaryKey: "UIBackgroundModes") as? [String] ?? []
+      guard modes.contains("audio") else { return ["supported": false, "reason": "not-built"] }
       if livelockSDKHasAnimatedArtwork {
         return ["supported": true, "reason": NSNull()]
       }

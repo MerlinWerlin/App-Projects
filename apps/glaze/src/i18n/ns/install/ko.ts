@@ -146,4 +146,30 @@ export const ko: NonNullable<LocaleMessages['install']> = {
     preview: '아이콘 고정은 Android용 Glaze 정식 버전에서 제공됩니다. 이 미리보기에서는 아이콘을 사진에 저장하고 런처의 아이콘 설정을 사용하세요.',
     pin: '아이콘을 홈 화면에 고정',
   },
+  // T126: profile served to Safari from this iPhone, and the guided Shortcuts path.
+  safari: {
+    intro: 'Glaze가 아이콘을 그리고 이 iPhone에서 프로파일 하나를 만든 다음, iPhone에서 바로 Safari로 엽니다. 아무것도 업로드되지 않습니다.',
+    generateHint: '아이콘을 그리고 프로파일을 만든 뒤 Safari에서 엽니다',
+    opening: 'Safari 여는 중',
+    openAgain: 'Safari에서 다시 열기',
+    openAgainA11y: '{file} Safari에서 다시 열기',
+    shareInstead: '대신 파일 공유',
+    hurry: 'Glaze가 연 뒤 약 1분 동안 Safari가 프로파일을 받을 수 있습니다. Safari가 연결할 수 없다고 하면 여기로 돌아와 Safari에서 다시 열기를 탭하세요.',
+    oneAtATime: '아이콘이 {files}개의 프로파일로 나뉘었습니다. iOS는 다운로드된 프로파일을 한 번에 하나만 보관합니다. 설정에서 1부를 설치하고 여기로 돌아와 다음 부분을 여세요.',
+    failed: 'Glaze가 Safari에서 프로파일을 열지 못했습니다. 대신 파일 공유를 탭해 Mail이나 AirDrop으로 자신에게 보내거나 단축어를 사용하세요.',
+    fallbackNote: '이 빌드는 프로파일을 Safari에서 열 수 없어 공유 시트를 거치며, 파일 앱에 저장한 프로파일은 iOS가 설치하지 않는 경우가 많습니다. 단축어(여기서는 권장)를 사용하거나 Mail이나 AirDrop으로 자신에게 파일을 보내세요.',
+    page: { title: 'Glaze 아이콘', body: '설치를 탭하세요. Safari가 구성 프로파일 다운로드를 허용할지 물으면 허용, 닫기를 차례로 탭하고 설정에서 마무리하세요.', button: '설치' },
+    cards: {
+      safari: { title: 'Safari에서 설치', body: 'Safari에서 설치를 탭합니다.' },
+      allow: { title: '다운로드 허용', body: 'Safari가 구성 프로파일 다운로드를 허용할지 묻습니다. 허용을 탭한 다음 닫기를 탭합니다.' },
+      settings: { title: '설정에서 설치', body: '설정을 열고 상단의 ‘프로파일이 다운로드됨’(또는 일반 > VPN 및 기기 관리)을 탭한 뒤 설치를 탭하고 암호를 입력한 다음 설치를 탭합니다.' },
+      home: { title: '아이콘이 나타납니다', body: '홈 화면에 아이콘이 나타납니다.' },
+    },
+  },
+  guided: {
+    next: '다음: {app}',
+    showNext: '단계 보기',
+    allDone: '모든 아이콘을 완료했습니다. 원래 아이콘은 앱 보관함으로 옮길 수 있습니다.',
+    oneAtATime: '한 번에 아이콘 하나씩: 다음 앱의 단계를 따라 하고 체크하면 Glaze가 그다음 앱의 단계를 엽니다.',
+  },
 };

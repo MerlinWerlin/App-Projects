@@ -1,5 +1,7 @@
 // /install: add the Icon Studio set to the Home Screen.
-// Bulk: render icons -> one web clip .mobileconfig -> share sheet (Save to Files) -> step cards.
+// Bulk: render icons -> one web clip .mobileconfig -> served to Safari from 127.0.0.1 on this
+// iPhone (T126, src/native/profileServer.ts) -> Allow -> Settings. Builds without the native
+// server (Expo Go, old builds) fall back to the share sheet and recommend Shortcuts.
 // Shortcuts: save icons to a "Glaze icons" Photos album -> per-app checklist with copyable URL.
 // Delivery path chosen in docs/SPIKE_PROFILE.md. Free feature: nothing here reads Plus.
 // Design v2 (docs/DESIGN_V2.md §9, T55): method choice as two squircle cards (the recommended one
@@ -43,11 +45,15 @@ import {
 } from '../src/core/install';
 import {
   SHORTCUT_UNDO_STEPS,
+  availableMethods,
   bulkSelectable,
   effectiveChoice,
   installSummary,
+  recommendedMethod,
   showMethodPicker,
 } from '../src/core/installMethods';
+import { profileRoute } from '../src/core/profileServer';
+import { profileServer } from '../src/native/profileServer';
 import { PROFILE_INSTALL_ENABLED } from '../src/config/install';
 import { getTheme } from '../src/core/themes';
 import { t as tStatic, useT, type Script } from '../src/i18n';
@@ -96,6 +102,11 @@ const CARD_KEYS = {
   'not-verified': { titleKey: 'install.cards.notVerified.title', bodyKey: 'install.cards.notVerified.body' },
   'hide-old': { titleKey: 'install.cards.hideOld.title', bodyKey: 'install.cards.hideOld.body' },
   remove: { titleKey: 'install.cards.remove.title', bodyKey: 'install.cards.remove.body' },
+  // T126: Safari route.
+  safari: { titleKey: 'install.safari.cards.safari.title', bodyKey: 'install.safari.cards.safari.body' },
+  allow: { titleKey: 'install.safari.cards.allow.title', bodyKey: 'install.safari.cards.allow.body' },
+  settings: { titleKey: 'install.safari.cards.settings.title', bodyKey: 'install.safari.cards.settings.body' },
+  home: { titleKey: 'install.safari.cards.home.title', bodyKey: 'install.safari.cards.home.body' },
 } as const;
 type CardId = keyof typeof CARD_KEYS;
 const isCardId = (id: string): id is CardId => Object.prototype.hasOwnProperty.call(CARD_KEYS, id);
@@ -147,9 +158,12 @@ async function addToAlbum(assets: MediaLibrary.Asset[]): Promise<boolean> {
 
 export default function InstallScreen() {
   const { c } = useColorsV2();
-  const { t, script, isRTL, formatNumber } = useT();
+  const { t, script, isRTL, formatNumber, locale } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
   const router = useRouter();
+  // T126: can this build serve the profile to Safari? (false in Expo Go, on Android, old builds)
+  const [serverAvailable] = useState<boolean>(() => profileServer.status().available);
+  const route = profileRoute(serverAvailable);
   const [studio, setStudio] = useState<StudioState | null>(null);  const [missing, setMissing] = useState<ReadonlySet<string>>(() => new Set<string>());  const [loadError, setLoadError] = useState<string | null>(null);  const install = useInstallState();
   const renderer = useIconBatchRenderer();
   const alive = useRef(true);
@@ -195,6 +209,7 @@ export default function InstallScreen() {
       alive.current = false;
       if (cancelToken.current) cancelToken.current.cancelled = true;
       if (copiedTimer.current) clearTimeout(copiedTimer.current);
+      profileServer.stop();
     };
   }, [load]);
 
@@ -207,11 +222,16 @@ export default function InstallScreen() {
   const themeName = profileThemeName(getTheme(studio?.themeId)?.name ?? null);
   const backdrop = studio?.wallpaperColour ?? '#000000';
   // T60: the profile method can be switched off in src/config/install.ts (App Review risk).
-  const methodOpts = { profileEnabled: PROFILE_INSTALL_ENABLED, profileCount: plan.profile.length };
-  const choice: InstallChoice = effectiveChoice(install.state.choice, methodOpts);
+  const methodOpts = {
+    profileEnabled: PROFILE_INSTALL_ENABLED,
+    profileCount: plan.profile.length,
+    profileServer: serverAvailable,
+  };
+  // Until the person taps a card, the recommended method is used (Shortcuts without the server).
+  const choice: InstallChoice = effectiveChoice(install.state.choice, methodOpts, install.state.choiceExplicit === true);
   const items: ShortcutItem[] = useMemo(() => shortcutItems(specs, choice), [specs, choice]);
   const profileKey = `profile:${themeName}`;
-  const cards = useMemo(() => profileStepCards(Math.max(1, profiles.length)), [profiles.length]);
+  const cards = useMemo(() => profileStepCards(Math.max(1, profiles.length), route), [profiles.length, route]);
 
   const bulkBusy = phase !== 'idle' && phase !== 'done';
   const photosBusy = photoStatus === 'saving';
@@ -226,6 +246,26 @@ export default function InstallScreen() {
     });
   }, [t]);
 
+  /**
+   * T126: serve one saved profile to Safari and open it there. Returns false when this build has
+   * no server after all (the caller then uses the share sheet). Never throws.
+   */
+  const openInSafari = useCallback(
+    async (p: SavedProfile): Promise<boolean> => {
+      const outcome = await profileServer.serveAndOpen(p.uri, {
+        lang: String(locale),
+        dir: isRTL ? 'rtl' : 'ltr',
+        title: t('install.safari.page.title'),
+        body: t('install.safari.page.body'),
+        button: t('install.safari.page.button'),
+      });
+      if (outcome.kind === 'unavailable') return false;
+      if (outcome.kind === 'failed' && alive.current) setBulkError(`${t('install.safari.failed')} (${outcome.message})`);
+      return true;
+    },
+    [isRTL, locale, t],
+  );
+
   const generate = useCallback(async () => {
     if (busy || plan.profile.length === 0) return;
     tapLight();
@@ -233,7 +273,7 @@ export default function InstallScreen() {
     setProfiles([]);
     setRenderTiming(null);
     try {
-      if (!(await Sharing.isAvailableAsync())) {
+      if (route === 'share' && !(await Sharing.isAvailableAsync())) {
         throw new Error(t('install.errors.noSharing'));
       }
       const total = plan.profile.length;
@@ -268,6 +308,12 @@ export default function InstallScreen() {
       setProfiles(saved);
       haptic('success');
       setPhase('sharing');
+      // Safari route: open part 1 now; iOS holds one downloaded profile at a time, so later parts
+      // are opened from their rows after part 1 is installed.
+      if (route === 'safari' && (await openInSafari(saved[0]))) {
+        if (alive.current) setPhase('done');
+        return;
+      }
       for (let i = 0; i < saved.length; i++) {
         setStep({ done: i, total: saved.length });
         await shareProfile(saved[i]);
@@ -286,21 +332,22 @@ export default function InstallScreen() {
     }
     // timingText only formats with the current t.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [busy, plan.profile, renderer, themeName, shareProfile, t]);
+  }, [busy, plan.profile, renderer, themeName, shareProfile, openInSafari, route, t]);
 
   const shareAgain = useCallback(
-    async (p: SavedProfile) => {
+    async (p: SavedProfile, via: 'safari' | 'share' = 'share') => {
       tapLight();
       setBulkError(null);
       try {
         const info = await FileSystem.getInfoAsync(p.uri);
         if (!info.exists) throw new Error(t('install.errors.cleared'));
+        if (via === 'safari' && (await openInSafari(p))) return;
         await shareProfile(p);
       } catch (e) {
         if (alive.current) setBulkError(errText(e));
       }
     },
-    [shareProfile, t],
+    [openInSafari, shareProfile, t],
   );
 
   // ---- shortcuts ----
@@ -413,6 +460,7 @@ export default function InstallScreen() {
           ? t('install.phase.savingOf', { current: Math.min(done + 1, total), total })
           : t('install.phase.saving');
       case 'sharing':
+        if (route === 'safari') return t('install.safari.opening');
         return total !== 0 && total !== 1
           ? t('install.phase.sharingOf', { current: Math.min(done + 1, total), total })
           : t('install.phase.sharing');
@@ -476,7 +524,19 @@ export default function InstallScreen() {
 
   const pickChoice = (next: InstallChoice) => {
     if (next === choice || busy) return;
-    install.update((s) => ({ ...s, choice: next }));
+    install.update((s) => ({ ...s, choice: next, choiceExplicit: true }));
+  };
+  const recommended = recommendedMethod(methodOpts);
+  // Guided Shortcuts (T126): one icon at a time, the first app not ticked off yet is "next".
+  const nextItem = items.find((i) => !install.state.shortcutsDone.includes(i.spec.appId)) ?? null;
+  const toggleShortcut = (appId: string) => {
+    const wasDone = install.state.shortcutsDone.includes(appId);
+    install.update((s) => toggleShortcutDone(s, appId));
+    // Ticking an app off opens the steps for the next one still to do.
+    if (!wasDone) {
+      const next = items.find((i) => i.spec.appId !== appId && !install.state.shortcutsDone.includes(i.spec.appId));
+      setExpanded(next ? next.spec.appId : null);
+    }
   };
 
   const bulkProgress =
@@ -531,27 +591,35 @@ export default function InstallScreen() {
           <Text style={[...ts('body'), styles.sideText, { color: c.ink }]}>{t('install.method.shortcutsOnly')}</Text>
         ) : (
         <View accessibilityRole="radiogroup" accessibilityLabel={t('install.method.groupLabel')} style={[styles.methods, styles.side]}>
-          <MethodCard
-            selected={choice === 'bulk'}
-            disabled={!bulkSelectable(methodOpts) || busy}
-            icon="layers"
-            title={t('install.method.bulk')}
-            badge={t('install.method.recommended')}
-            body={
-              plan.profile.length === 0
-                ? t('install.method.bulkNone')
-                : t('install.method.bulkBody', { count: plan.profile.length })
-            }
-            onPress={() => pickChoice('bulk')}
-          />
-          <MethodCard
-            selected={choice === 'shortcuts'}
-            disabled={busy}
-            icon="command"
-            title={t('install.method.shortcuts')}
-            body={t('install.method.shortcutsBody')}
-            onPress={() => pickChoice('shortcuts')}
-          />
+          {availableMethods(methodOpts).map((m) =>
+            m === 'bulk' ? (
+              <MethodCard
+                key="bulk"
+                selected={choice === 'bulk'}
+                disabled={!bulkSelectable(methodOpts) || busy}
+                icon="layers"
+                title={t('install.method.bulk')}
+                badge={recommended === 'bulk' ? t('install.method.recommended') : undefined}
+                body={
+                  plan.profile.length === 0
+                    ? t('install.method.bulkNone')
+                    : t('install.method.bulkBody', { count: plan.profile.length })
+                }
+                onPress={() => pickChoice('bulk')}
+              />
+            ) : (
+              <MethodCard
+                key="shortcuts"
+                selected={choice === 'shortcuts'}
+                disabled={busy}
+                icon="command"
+                title={t('install.method.shortcuts')}
+                badge={recommended === 'shortcuts' ? t('install.method.recommended') : undefined}
+                body={t('install.method.shortcutsBody')}
+                onPress={() => pickChoice('shortcuts')}
+              />
+            ),
+          )}
         </View>
         )}
 
@@ -562,7 +630,14 @@ export default function InstallScreen() {
             </Text>
             <SquircleCard style={styles.side}>
               <View style={styles.stack}>
-                <Text style={[...ts('body'), { color: c.ink }]}>{t('install.bulk.intro')}</Text>
+                <Text style={[...ts('body'), { color: c.ink }]}>
+                  {route === 'safari' ? t('install.safari.intro') : t('install.bulk.intro')}
+                </Text>
+                {route === 'share' ? (
+                  <Notice tone="warn" icon="alert-triangle">
+                    <Text style={[...ts('footnote'), { color: c.ink }]}>{t('install.safari.fallbackNote')}</Text>
+                  </Notice>
+                ) : null}
                 {bulkBusy ? (
                   <ProgressBar progress={bulkProgress} label={phaseText(phase, step.done, step.total)} />
                 ) : null}
@@ -590,7 +665,7 @@ export default function InstallScreen() {
                   disabled={busy}
                   busy={bulkBusy}
                   onPress={generate}
-                  accessibilityHint={t('install.bulk.generateHint')}
+                  accessibilityHint={route === 'safari' ? t('install.safari.generateHint') : t('install.bulk.generateHint')}
                 />
                 {profiles.map((p) => {
                   const done = isProfileStepDone(install.state, p.filename, 'installed');
@@ -600,6 +675,19 @@ export default function InstallScreen() {
                       <Text style={[...ts('footnote'), styles.flex, { color: c.ink }]} numberOfLines={2}>
                         {p.filename}
                       </Text>
+                      {route === 'safari' ? (
+                        <PressableScale
+                          onPress={() => shareAgain(p, 'safari')}
+                          disabled={busy}
+                          pressedScale={0.9}
+                          accessibilityRole="button"
+                          accessibilityLabel={t('install.safari.openAgainA11y', { file: p.filename })}
+                          accessibilityState={{ disabled: busy }}
+                          style={[styles.smallBtn, busy ? styles.dim : null]}
+                        >
+                          <Feather name="compass" size={18} color={c.tint} />
+                        </PressableScale>
+                      ) : null}
                       <PressableScale
                         onPress={() => shareAgain(p)}
                         disabled={busy}
@@ -621,7 +709,34 @@ export default function InstallScreen() {
                     </View>
                   );
                 })}
-                <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.bulk.noSaveToFiles')}</Text>
+                {route === 'safari' && profiles.length > 0 ? (
+                  <PillButton
+                    label={t('install.safari.openAgain')}
+                    icon="compass"
+                    variant="tinted"
+                    block
+                    disabled={busy}
+                    onPress={() => shareAgain(profiles[0], 'safari')}
+                  />
+                ) : null}
+                {route === 'safari' && profiles.length > 1 ? (
+                  <Text style={[...ts('footnote'), { color: c.ink }]}>
+                    {t('install.safari.oneAtATime', { files: profiles.length })}
+                  </Text>
+                ) : null}
+                <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>
+                  {route === 'safari' ? t('install.safari.hurry') : t('install.bulk.noSaveToFiles')}
+                </Text>
+                {route === 'safari' && profiles.length > 0 ? (
+                  <PillButton
+                    label={t('install.safari.shareInstead')}
+                    icon="share"
+                    variant="plain"
+                    size="small"
+                    disabled={busy}
+                    onPress={() => shareAgain(profiles[0])}
+                  />
+                ) : null}
               </View>
             </SquircleCard>
 
@@ -729,9 +844,34 @@ export default function InstallScreen() {
                   block
                   onPress={openShortcuts}
                 />
-                <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>
-                  {t('install.shortcuts.progress', { done: tick.done, total: tick.total })}
-                </Text>
+                {tick.total > 0 ? (
+                  <ProgressBar
+                    progress={batchFraction(tick.done, tick.total)}
+                    label={t('install.shortcuts.progress', { done: tick.done, total: tick.total })}
+                  />
+                ) : null}
+                {nextItem ? (
+                  <View style={styles.okRow}>
+                    <Feather name="arrow-right-circle" size={18} color={c.tint} />
+                    <Text style={[...ts('headline'), styles.flex, { color: c.ink }]}>
+                      {t('install.guided.next', { app: nextItem.spec.label })}
+                    </Text>
+                    {expanded !== nextItem.spec.appId ? (
+                      <PillButton
+                        label={t('install.guided.showNext')}
+                        variant="tinted"
+                        size="small"
+                        onPress={() => setExpanded(nextItem.spec.appId)}
+                      />
+                    ) : null}
+                  </View>
+                ) : tick.total > 0 ? (
+                  <View style={styles.okRow}>
+                    <Feather name="check-circle" size={18} color={c.ok} />
+                    <Text style={[...ts('footnote'), styles.flex, { color: c.ink }]}>{t('install.guided.allDone')}</Text>
+                  </View>
+                ) : null}
+                <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.guided.oneAtATime')}</Text>
               </View>
             </SquircleCard>
 
@@ -746,9 +886,7 @@ export default function InstallScreen() {
                   onToggleOpen={() => {
                     setExpanded((cur) => (cur === item.spec.appId ? null : item.spec.appId));
                   }}
-                  onToggleDone={() => {
-                    install.update((s) => toggleShortcutDone(s, item.spec.appId));
-                  }}
+                  onToggleDone={() => toggleShortcut(item.spec.appId)}
                   onCopy={(url) => copyUrl(item.spec.appId, url)}
                 />
               ))}

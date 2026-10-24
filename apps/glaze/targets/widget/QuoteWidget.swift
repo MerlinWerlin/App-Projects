@@ -50,7 +50,7 @@ struct QuoteWidgetView: View {
         .font(.system(size: 14, weight: .bold))
         .foregroundStyle(t.accentColor)
       Text(GlazeLines.line(for: entry.date))
-        .font(t.typeface(size: family == .systemMedium ? 20 : 16, weight: .semibold))
+        .font(t.typeface(size: family == .systemLarge ? 28 : (family == .systemMedium ? 20 : 16), weight: .semibold))
         .foregroundStyle(t.inkColor)
         .minimumScaleFactor(0.6)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -68,6 +68,6 @@ struct QuoteWidget: Widget {
     }
     .configurationDisplayName("Little Line")
     .description("A short, gentle line that changes every hour.")
-    .supportedFamilies([.systemSmall, .systemMedium])
+    .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
   }
 }

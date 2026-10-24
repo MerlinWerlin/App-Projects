@@ -55,7 +55,7 @@ export const fr: NonNullable<LocaleMessages['settings']> = {
     feedbackHint: 'Écrivez à l’équipe Glaze depuis votre app Mail',
   },
   plus: {
-    body: 'Paiement unique. Jamais d’abonnement. Créer vos propres icônes, les deux méthodes d’installation et Live Lock avec votre propre vidéo restent gratuits.',
+    body: 'Paiement unique. Jamais d’abonnement. Créer vos propres icônes, les deux méthodes d’installation et le créateur de Live Photo avec votre propre vidéo restent gratuits.',
     more: 'Le contenu de Glaze Plus',
     moreHint: 'Explique le déblocage unique et ce qu’il comprend',
   },
@@ -82,7 +82,7 @@ export const fr: NonNullable<LocaleMessages['settings']> = {
     addedTitle: 'Les icônes sont ajoutées, pas remplacées',
     addedBody: 'iOS ne permet à aucune app de changer l’icône d’une autre. Glaze ajoute donc des raccourcis à l’écran d’accueil avec votre nouveau style. En touchant l’un d’eux, la vraie app s’ouvre.',
     waysTitle: 'Deux façons de les ajouter',
-    waysBody: 'En bloc : un profil ajoute toutes les icônes d’un coup (recommandé). Raccourcis : ajoutez les icônes une par une avec l’app Raccourcis si vous préférez ne pas installer de profil.',
+    waysBody: 'Raccourcis (recommandé) : Glaze vous guide pour ajouter chaque icône avec l’app Raccourcis. En bloc (bêta facultative) : un profil ajoute toutes les icônes d’un coup.',
     originalsTitle: 'Où vont les icônes d’origine',
     originalsBody: 'Maintenez une icône d’origine, touchez Supprimer l’app, puis Retirer de l’écran d’accueil. L’app reste installée et passe dans la bibliothèque d’apps (balayez vers la gauche après votre dernière page).',
     removeTitle: 'Supprimer les icônes Glaze',

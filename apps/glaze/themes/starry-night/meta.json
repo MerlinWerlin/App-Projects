@@ -1,0 +1,19 @@
+{
+  "name": "Starry Night",
+  "mood": "A quiet sky full of stars, with moons and a ringed planet floating in it.",
+  "tags": [
+    "dark",
+    "space",
+    "stars",
+    "night",
+    "moon",
+    "planet",
+    "sky",
+    "calm"
+  ],
+  "credits": "Glaze (original procedural art)",
+  "licence": "original",
+  "generator": "procedural",
+  "prompt": "",
+  "addedAt": "2026-10-24"
+}

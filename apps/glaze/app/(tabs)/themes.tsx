@@ -47,6 +47,7 @@ import { PACK_REVEAL_BATCH, revealStep, sectionLimit } from '../../src/core/perf
 import { DISCOVERY_TABS, discoveryTabKey, discoveryThemes, type DiscoveryTab } from '../../src/core/discovery';
 import { ALL_THEMES, PLUS_PACKS } from '../../src/core/plusThemes';
 import { SPACE_THEMES } from '../../src/core/spacePack';
+import { ART_PACK_THEMES } from '../../src/core/artPackThemes';
 import { FREE_MARKED_IDS, STORY_GROUPS, inStoryGroup, isFreeMarked, storyChipKey } from '../../src/core/freeMarks';
 import type { StoryPlayGroup } from '../../src/core/themesStoryPlay';
 import { activeCollections, collectionThemes, type CollectionId } from '../../src/core/seasons';
@@ -192,6 +193,8 @@ type PackSectionsProps = {
   /** On the "All" page; otherwise the sections stay mounted but hidden (T107). */
   visible: boolean;
   filteringAll: boolean;
+  /** T130: the free art-pack themes (themes/<id>/), a section above Space. */
+  art: readonly Theme[];
   space: readonly Theme[];
   packs: readonly PackInfo[];
   shared: GridShared;
@@ -207,11 +210,11 @@ const nextSlot = (_n: number): number | undefined => undefined;
  * mount after the tab has painted, PACK_REVEAL_BATCH cards per frame, and their positions are
  * shared values, so nothing here re-renders the screen.
  */
-const PackSections = memo(function PackSections({ visible, filteringAll, space, packs, shared, innerY }: PackSectionsProps) {
+const PackSections = memo(function PackSections({ visible, filteringAll, art, space, packs, shared, innerY }: PackSectionsProps) {
   const { c } = useColorsV2();
   const { t, script } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
-  const total = space.length + packs.reduce((n, p) => n + p.themes.length, 0);
+  const total = art.length + space.length + packs.reduce((n, p) => n + p.themes.length, 0);
   // Wait for the tab's first paint (two frames), then mount a few cards per frame.
   const [started, setStarted] = useState(false);
   const [revealed, setRevealed] = useState(0);
@@ -230,8 +233,10 @@ const PackSections = memo(function PackSections({ visible, filteringAll, space, 
   // Section positions on the UI thread (for the card parallax).
   const wrapY = useSharedValue(0);
   const spaceY = useSharedValue(0);
+  const artY = useSharedValue(0);
   const wrapBase = useDerivedValue(() => innerY.value + wrapY.value);
   const spaceBase = useDerivedValue(() => wrapBase.value + spaceY.value);
+  const artBase = useDerivedValue(() => wrapBase.value + artY.value);
   const onWrapLayout = useCallback(
     (e: LayoutChangeEvent) => {
       if (visible) wrapY.value = e.nativeEvent.layout.y;
@@ -244,10 +249,34 @@ const PackSections = memo(function PackSections({ visible, filteringAll, space, 
     },
     [spaceY],
   );
+  const onArtLayout = useCallback(
+    (e: LayoutChangeEvent) => {
+      artY.value = e.nativeEvent.layout.y;
+    },
+    [artY],
+  );
 
-  let offset = space.length;
+  let offset = art.length + space.length;
   return (
     <View style={visible ? styles.packsWrap : styles.hidden} onLayout={onWrapLayout}>
+      {art.length > 0 ? (
+        <View style={styles.pack} onLayout={onArtLayout}>
+          <View style={styles.packTitle}>
+            <Text accessibilityRole="header" style={[...ts('title2'), { color: c.ink }]}>
+              {t('themes.art.title')}
+            </Text>
+            <Text style={[...ts('subhead'), { color: c.inkSecondary }]}>{t('themes.art.body')}</Text>
+          </View>
+          <ThemeGrid
+            {...shared}
+            themes={art}
+            parentY={artBase}
+            staggerFrom={nextSlot(art.length)}
+            emptyTitle={t('themes.art.title')}
+            limit={sectionLimit(0, art.length, revealed)}
+          />
+        </View>
+      ) : null}
       {space.length > 0 ? (
         <View style={styles.pack} onLayout={onSpaceLayout}>
           <View style={styles.packTitle}>
@@ -262,7 +291,7 @@ const PackSections = memo(function PackSections({ visible, filteringAll, space, 
             parentY={spaceBase}
             staggerFrom={nextSlot(space.length)}
             emptyTitle={t('themes.space.title')}
-            limit={sectionLimit(0, space.length, revealed)}
+            limit={sectionLimit(art.length, space.length, revealed)}
           />
         </View>
       ) : null}
@@ -696,6 +725,8 @@ export default function ThemesScreen() {
   const starters = useMemo(() => filterList(THEMES), [filterList]);
   // T103: the free Space (Webb) photo themes, a section of their own above the Plus packs.
   const space = useMemo(() => filterAll(SPACE_THEMES), [filterAll]);
+  // T130: the free art-pack themes, a section of their own above Space.
+  const art = useMemo(() => filterAll(ART_PACK_THEMES), [filterAll]);
   const packs = useMemo(
     () =>
       PLUS_PACKS.map((p) => ({ ...p, themes: filterAll(p.themes) })).filter((p) => !filteringAll || p.themes.length > 0),
@@ -835,7 +866,7 @@ export default function ThemesScreen() {
           {/* T107: kept mounted (hidden) on plain category pages so going back to "All" mounts nothing. */}
           {/* T118: its own memoised component; mounts progressively after the tab has painted. */}
           {packsAlive ? (
-            <PackSections visible={showPacks} filteringAll={filteringAll} space={space} packs={packs} shared={gridShared} innerY={innerY} />
+            <PackSections visible={showPacks} filteringAll={filteringAll} art={art} space={space} packs={packs} shared={gridShared} innerY={innerY} />
           ) : null}
 
           {/* T23: small feedback entry, opens /feedback with "Theme request" preselected. */}

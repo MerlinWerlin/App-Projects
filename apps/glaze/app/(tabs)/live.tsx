@@ -7,24 +7,18 @@ import { Alert, Image, Linking, Pressable, StyleSheet, Text, View, type TextStyl
 import Animated from 'react-native-reanimated';
 import Svg, { Circle, Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import {
-  addToPlaylist,
   formatSeconds,
   loopDurationMs,
-  movePlaylistItem,
   newProject,
   nextLoopName,
-  playlistDurationMs,
-  removeFromPlaylist,
   type LoopProject,
   type LoopsState,
 } from '../../src/core/loop';
-import type { LivelockReason } from '../../src/native/livelock';
 import {
   deleteProject,
   keepSourceCopy,
   loadLoops,
   removeSourceCopy,
-  setPlaylist,
   upsertProject,
 } from '../../src/store/loops';
 import { useT } from '../../src/i18n';
@@ -32,8 +26,7 @@ import { listLayout, staggerIn, useMotionReduced } from '../../src/theme/motion'
 import { continuous, iconTileRadius, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import type { FeatherName } from '../../src/ui/featherName';
-import { LiveStepsCard } from '../../src/ui/LiveStepsCard';
-import { LiveUnavailableSheet, setOnLockScreen } from '../../src/ui/LiveUnavailableSheet';
+import { LivePhotoGuide } from '../../src/ui/LivePhotoGuide';
 import { PhoneFrame, phoneScreenSize } from '../../src/ui/PhoneFrame';
 import { PressableScale } from '../../src/ui/PressableScale';
 import { ContextTip } from '../../src/ui/ContextTip';
@@ -49,8 +42,9 @@ function isGifAsset(a: ImagePicker.ImagePickerAsset): boolean {
   return a.mimeType === 'image/gif' || /\.gif$/i.test(a.fileName ?? '') || /\.gif(?:[?#].*)?$/i.test(a.uri);
 }
 
-// Live tab (design v2, docs/DESIGN_V2.md, T56): collapsing large title, loops and the playlist as
-// inset-style surface groups with footnote headers, pill actions, v2 palette in the sheets.
+// Live tab (design v2, docs/DESIGN_V2.md, T56): collapsing large title, loops as an inset-style
+// surface group with a footnote header, pill actions, v2 palette in the sheets. T127: the playlist
+// and "Set playlist on Lock Screen" (Now Playing) are gone; the Live Photo guide explains the path.
 export default function LiveScreen() {
   const { c } = useColorsV2();
   const { t, script } = useT();
@@ -63,10 +57,6 @@ export default function LiveScreen() {
   const [loaded, setLoaded] = useState(false);
   const [busy, setBusy] = useState(false);
   const [permSheet, setPermSheet] = useState(false);
-  const [unavailable, setUnavailable] = useState<{ visible: boolean; reason: LivelockReason }>({
-    visible: false,
-    reason: null,
-  });
   // Rows stagger in on the first loaded render only; later adds/removes use the layout transition.
   const reduced = useMotionReduced();
   const staggered = useRef(false);
@@ -165,15 +155,6 @@ export default function LiveScreen() {
     ]);
   };
 
-  const updatePlaylist = async (ids: string[]) => {
-    haptic('select');
-    setState((s) => ({ ...s, playlist: ids }));
-    setState(await setPlaylist(ids));
-  };
-
-  const byId = new Map(state.projects.map((p) => [p.id, p]));
-  const playlistProjects = state.playlist.map((id) => byId.get(id)).filter((p): p is LoopProject => !!p);
-  const showUnavailable = (reason: LivelockReason) => setUnavailable({ visible: true, reason });
 
   const sectionHeader = [...ts('footnote'), styles.sectionHeader, { color: c.inkSecondary }];
   const card = [styles.card, continuous, { backgroundColor: c.surface }];
@@ -191,8 +172,9 @@ export default function LiveScreen() {
         accessibilityHint={t('live.tab.pickHint')}
         style={styles.side}
       />
+      {/* T127: how a loop gets onto the Lock Screen: saved as a Live Photo, set by the user in Photos. */}
       <View style={styles.side}>
-        <LiveStepsCard />
+        <LivePhotoGuide />
       </View>
 
       <View style={styles.section}>
@@ -221,7 +203,6 @@ export default function LiveScreen() {
         ) : (
           <View style={card}>
             {state.projects.map((p, i) => {
-              const inList = state.playlist.includes(p.id);
               const meta =
                 p.kind === 'gif'
                   ? t('live.tab.metaGif', { speed: `⁦${p.speed}×⁩` })
@@ -256,13 +237,6 @@ export default function LiveScreen() {
                       <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{meta}</Text>
                     </View>
                   </Pressable>
-                  <RowIconButton
-                    icon={inList ? 'check-circle' : 'plus-circle'}
-                    accessibilityLabel={inList ? t('live.tab.removeA11y', { name: p.name }) : t('live.tab.addA11y', { name: p.name })}
-                    onPress={() =>
-                      updatePlaylist(inList ? removeFromPlaylist(state.playlist, p.id) : addToPlaylist(state.playlist, p.id))
-                    }
-                  />
                   <RowIconButton icon="trash-2" tone="secondary" accessibilityLabel={t('live.tab.deleteA11y', { name: p.name })} onPress={() => onDelete(p)} />
                 </Animated.View>
               );
@@ -270,73 +244,6 @@ export default function LiveScreen() {
           </View>
         )}
       </View>
-
-      {loaded && state.projects.length > 0 ? (
-        <>
-          <View style={styles.section}>
-            <Text accessibilityRole="header" style={sectionHeader}>
-              {t('live.tab.playlist')}
-            </Text>
-            <View style={card}>
-              {playlistProjects.length === 0 ? (
-                <Text style={[...ts('body'), styles.pad, { color: c.inkSecondary }]}>
-                  {t('live.tab.playlistEmpty')}
-                </Text>
-              ) : (
-                <>
-                  {playlistProjects.map((p, i) => (
-                    <Animated.View
-                      key={p.id}
-                      layout={listLayout(reduced)}
-                      style={[styles.row, i > 0 && hairline]}
-                    >
-                      <Text style={[...ts('headline'), styles.index, { color: c.inkSecondary }]}>{i + 1}</Text>
-                      <Text style={[...ts('body'), styles.rowText, { color: c.ink }]} numberOfLines={2}>
-                        {p.name}
-                      </Text>
-                      <RowIconButton
-                        icon="arrow-up"
-                        accessibilityLabel={t('live.tab.moveUpA11y', { name: p.name })}
-                        disabled={i === 0}
-                        onPress={() => updatePlaylist(movePlaylistItem(state.playlist, state.playlist.indexOf(p.id), state.playlist.indexOf(p.id) - 1))}
-                      />
-                      <RowIconButton
-                        icon="arrow-down"
-                        accessibilityLabel={t('live.tab.moveDownA11y', { name: p.name })}
-                        disabled={i === playlistProjects.length - 1}
-                        onPress={() => updatePlaylist(movePlaylistItem(state.playlist, state.playlist.indexOf(p.id), state.playlist.indexOf(p.id) + 1))}
-                      />
-                      <RowIconButton
-                        icon="x"
-                        tone="secondary"
-                        accessibilityLabel={t('live.tab.removeA11y', { name: p.name })}
-                        onPress={() => updatePlaylist(removeFromPlaylist(state.playlist, p.id))}
-                      />
-                    </Animated.View>
-                  ))}
-                  <Text style={[...ts('footnote'), styles.pad, hairline, { color: c.inkSecondary }]}>
-                    {t('live.tab.playlistSummary', {
-                      count: playlistProjects.length,
-                      duration: `⁦${secs(playlistDurationMs(state.projects, state.playlist))}⁩`,
-                    })}
-                  </Text>
-                </>
-              )}
-            </View>
-          </View>
-          <PillButton
-            label={t('live.tab.setPlaylist')}
-            icon="smartphone"
-            block
-            disabled={playlistProjects.length === 0}
-            onPress={() => {
-              tap();
-              void setOnLockScreen(playlistProjects, showUnavailable);
-            }}
-            style={styles.side}
-          />
-        </>
-      ) : null}
 
       <Sheet visible={permSheet} onClose={() => setPermSheet(false)} title={t('live.tab.permTitle')}>
         <Text style={[...ts('body'), { color: c.ink }]}>
@@ -357,11 +264,6 @@ export default function LiveScreen() {
         <PillButton label={t('liveUi.notNow')} variant="plain" block onPress={() => setPermSheet(false)} />
       </Sheet>
 
-      <LiveUnavailableSheet
-        visible={unavailable.visible}
-        reason={unavailable.reason}
-        onClose={() => setUnavailable((u) => ({ ...u, visible: false }))}
-      />
     </LargeTitleScrollView>
   );
 }
@@ -441,8 +343,6 @@ const styles = StyleSheet.create({
   rowText: { flex: 1, gap: spaceV2.xxs },
   thumb: { width: THUMB, height: THUMB, borderRadius: iconTileRadius(THUMB), alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
   thumbImg: { width: THUMB, height: THUMB },
-  index: { width: 32, textAlign: 'center', marginStart: spaceV2.sm },
-  pad: { padding: spaceV2.lg },
   iconBtn: { width: sizeV2.touch, height: sizeV2.touch, alignItems: 'center', justifyContent: 'center' },
   iconBtnDisabled: { opacity: 0.35 },
 });

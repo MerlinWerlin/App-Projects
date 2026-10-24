@@ -2,15 +2,21 @@ import AVFoundation
 import MediaPlayer
 import UIKit
 
-/// Live Lock Screen session: a muted, user-started Now Playing item whose artwork is the
-/// exported loop.
+/// Live Lock Screen session (T135 continuous loop): a muted, user-started Now Playing item whose
+/// artwork is the exported 3:4 loop, which the iOS 26 Lock Screen shows full screen.
 ///
 /// - AVAudioSession `.playback` (no mixWithOthers, so Glaze is the Now Playing app) with an
 ///   AVAudioPlayer looping a silent WAV generated at runtime (no bundled audio asset).
-/// - MPNowPlayingInfoCenter: title = loop name, artist = "Glaze", still artwork, and on
-///   iOS 26+ animated artwork from the exported video (see makeAnimatedArtwork).
-/// - MPRemoteCommandCenter: play / pause / toggle, next (and previous) track for playlists.
-/// - Interruptions, route changes, media-services resets and Low Power Mode are handled.
+/// - MPNowPlayingInfoCenter: title = loop name (or "Live Lock Screen"), artist = "Glaze", a 3:4
+///   still artwork (the loop's first frame), and on iOS 26+ the 3:4 animated artwork
+///   (MPNowPlayingInfoProperty3x4AnimatedArtwork) from the exported video (see makeAnimatedArtwork).
+/// - MPRemoteCommandCenter: play / pause / toggle (the playback rate is updated so the Lock Screen
+///   button flips), next (and previous) track for playlists.
+/// - Interruptions (another app's audio, calls: we pause), route changes, media-services resets and
+///   Low Power Mode (we stop, and refuse to start) are handled.
+/// - The snapshot's `artwork` says what the Lock Screen got: "animated-3x4" or "static" (the key
+///   isn't in supportedAnimatedArtworkKeys, the SDK has no animated artwork, or the preview isn't 3:4).
+///   "animated-1x1" is reserved: a square export would need a second encode, so it isn't made.
 ///
 /// Main-thread confined: every method is called on the main queue (the module runs its
 /// functions on .main and the export task hops back with DispatchQueue.main.async).
@@ -31,6 +37,8 @@ final class NowPlayingController: @unchecked Sendable {
   private var generation = 0
   private var observers: [NSObjectProtocol] = []
   private var commandTargets: [(MPRemoteCommand, Any)] = []
+  /// What the current Now Playing item carries: "animated-3x4" | "animated-1x1" | "static".
+  private var artworkMode = "static"
 
   // MARK: - Public (main thread)
 
@@ -38,6 +46,12 @@ final class NowPlayingController: @unchecked Sendable {
     tearDown()
     generation += 1
     let gen = generation
+    // Battery guard: Low Power Mode shows only a still anyway, and we stop when it turns on.
+    if ProcessInfo.processInfo.isLowPowerModeEnabled {
+      setState(.error, reason: "low-power")
+      completion(LivelockError.lowPower)
+      return
+    }
     progress = (0, payload.projects.count)
     setState(.preparing)
 
@@ -61,6 +75,8 @@ final class NowPlayingController: @unchecked Sendable {
           guard gen == self.generation else { return completion(nil) } // stopped while preparing
           do {
             try self.begin(ready)
+            // Prune only after the new item replaced the old one: a URL in nowPlayingInfo must
+            // stay valid while the artwork is shown.
             exporter.prune(keeping: ready.map { $0.videoURL })
             completion(nil)
           } catch {
@@ -110,7 +126,10 @@ final class NowPlayingController: @unchecked Sendable {
       "total": progress.total,
     ]
     if let reason { body["reason"] = reason }
-    if index < loops.count { body["projectId"] = loops[index].projectID }
+    if index < loops.count {
+      body["projectId"] = loops[index].projectID
+      body["artwork"] = artworkMode
+    }
     return body
   }
 
@@ -154,7 +173,7 @@ final class NowPlayingController: @unchecked Sendable {
       return false
     }
     guard player.play() else { return false }
-    updateNowPlaying()
+    updatePlaybackRate()
     setState(.playing)
     return true
   }
@@ -162,7 +181,7 @@ final class NowPlayingController: @unchecked Sendable {
   private func pause(reason: String? = nil) {
     guard let player else { return }
     player.pause()
-    updateNowPlaying()
+    updatePlaybackRate()
     setState(.paused, reason: reason)
   }
 
@@ -176,6 +195,7 @@ final class NowPlayingController: @unchecked Sendable {
     loops = []
     index = 0
     progress = (0, 0)
+    artworkMode = "static"
   }
 
   // MARK: - Now Playing
@@ -188,8 +208,9 @@ final class NowPlayingController: @unchecked Sendable {
     let loop = loops[index]
     let preview = loop.preview
     let playing = player?.isPlaying ?? false
+    let title = loop.name.trimmingCharacters(in: .whitespacesAndNewlines)
     var info: [String: Any] = [
-      MPMediaItemPropertyTitle: loop.name,
+      MPMediaItemPropertyTitle: title.isEmpty ? "Live Lock Screen" : title,
       MPMediaItemPropertyArtist: "Glaze",
       // An endless loop: present it as live so there is no scrubber to fake.
       MPNowPlayingInfoPropertyIsLiveStream: true,
@@ -197,17 +218,34 @@ final class NowPlayingController: @unchecked Sendable {
       MPNowPlayingInfoPropertyDefaultPlaybackRate: 1.0,
       MPNowPlayingInfoPropertyPlaybackQueueIndex: index,
       MPNowPlayingInfoPropertyPlaybackQueueCount: loops.count,
+      // Static artwork: the same 3:4 first frame (shown when the system won't animate).
       MPMediaItemPropertyArtwork: MPMediaItemArtwork(boundsSize: preview.size) { _ in preview },
     ]
+    artworkMode = "static"
     if #available(iOS 26.0, *),
        let animated = makeAnimatedArtwork(
+         // Unique per export: the file name carries the hash of every export input.
          artworkID: loop.videoURL.lastPathComponent,
          videoURL: loop.videoURL,
          preview: preview
        ) {
       info[animated.key] = animated.artwork
+      artworkMode = animated.mode
     }
     MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+  }
+
+  /// Play/pause only changes the rate: keep the rest of the item (and its artwork) as it is, so
+  /// the Lock Screen's play/pause button flips without reloading the artwork.
+  private func updatePlaybackRate() {
+    let center = MPNowPlayingInfoCenter.default()
+    guard var info = center.nowPlayingInfo, !info.isEmpty else {
+      updateNowPlaying()
+      return
+    }
+    let playing = player?.isPlaying ?? false
+    info[MPNowPlayingInfoPropertyPlaybackRate] = playing ? 1.0 : 0.0
+    center.nowPlayingInfo = info
   }
 
   // MARK: - Remote commands
@@ -300,8 +338,9 @@ final class NowPlayingController: @unchecked Sendable {
           let type = AVAudioSession.InterruptionType(rawValue: raw) else { return }
     switch type {
     case .began:
-      // The system already paused our player (a call, another app's audio, Siri...).
-      updateNowPlaying()
+      // The system already paused our player (a call, another app's audio, Siri...). The other
+      // app becomes the Now Playing app, so the loop leaves the Lock Screen until play is tapped.
+      updatePlaybackRate()
       setState(.paused, reason: "interrupted")
     case .ended:
       let optRaw = note.userInfo?[AVAudioSessionInterruptionOptionKey] as? UInt ?? 0
@@ -351,23 +390,35 @@ final class NowPlayingController: @unchecked Sendable {
 
 // MARK: - Animated artwork (iOS 26)
 
-// VERIFY against Apple docs (iOS 26 SDK): "Providing animated artwork for media items".
-// Written offline from best knowledge; the PC verification should check and fix ONLY this
-// function. Assumed symbols:
-//   - class MPMediaItemAnimatedArtwork (MediaPlayer, iOS 26.0+)
-//   - init(artworkID: String,
-//          previewImageRequestHandler: @escaping @Sendable (CGSize) async -> UIImage?,
-//          videoAssetFileURLRequestHandler: @escaping @Sendable (CGSize) async -> URL?)
-//   - nowPlayingInfo keys MPNowPlayingInfoProperty3x4AnimatedArtwork (tall, Lock Screen) and
-//     MPNowPlayingInfoProperty1x1AnimatedArtwork (square)
-//   - MPNowPlayingInfoCenter.supportedAnimatedArtworkKeys (keys this device will display)
-// Also check: whether the 3x4 artwork wants a 3:4 video (we export at the screen aspect;
-// if the system expects 3:4, export at that aspect instead) and any limits on file size,
-// duration or codec. `#if compiler(>=6.2)` keeps the file building with pre-iOS 26 SDKs
-// (Xcode 26 ships Swift 6.2); there the feature reports "not-built".
+// VERIFIED against Apple's "Providing animated artwork for media items" (MediaPlayer, fetched
+// 24 Oct 2026; the init/key/supportedAnimatedArtworkKeys calls below compiled on EAS with the
+// iOS 26 SDK before T135):
+//   - class MPMediaItemAnimatedArtwork (iOS 26.0+),
+//     init(artworkID:previewImageRequestHandler:videoAssetFileURLRequestHandler:); Apple's sample
+//     passes `{ _ in image }` and `{ _ in url }` (async closures receiving a CGSize).
+//   - keys MPNowPlayingInfoProperty3x4AnimatedArtwork (tall 3:4) and
+//     MPNowPlayingInfoProperty1x1AnimatedArtwork (square); MPNowPlayingInfoCenter
+//     .supportedAnimatedArtworkKeys lists the keys this platform uses, others are ignored.
+//   - "If you return a preview image with an incorrect aspect ratio ... the system will ignore your
+//     animated artwork and display your static artwork." The video must match the key's aspect too.
+//     ROOT CAUSE of the owner's "small player" (pre-T135): the loop was exported at the screen
+//     aspect (~9:19.5), so iOS dropped the animated artwork. Now the export is 1080x1440 and the
+//     preview is that file's first frame; we also refuse to register a non-3:4 preview.
+//   - The preview should match the video's first frame and be returned quickly (we return a
+//     UIImage already in memory). The video: a local file URL, playable by AVPlayerLayer, <= 60 fps,
+//     a short seamless loop; the URL stays valid while the item is shown (pruned only after a new
+//     start replaced it); artworkID identifies the artwork (the export file name, which hashes
+//     every input, so it changes whenever the loop changes).
+//   - The system shows only the preview in Low Power Mode, Low Data Mode, high thermal state, with
+//     Reduce Motion on, or with Auto-Play Animated Images off.
+// `#if compiler(>=6.2)` keeps the file building with pre-iOS 26 SDKs (Xcode 26 ships Swift 6.2);
+// there the feature reports "not-built".
 @available(iOS 26.0, *)
-func makeAnimatedArtwork(artworkID: String, videoURL: URL, preview: UIImage) -> (key: String, artwork: Any)? {
+func makeAnimatedArtwork(artworkID: String, videoURL: URL, preview: UIImage) -> (key: String, artwork: Any, mode: String)? {
   #if compiler(>=6.2)
+  // A wrong-aspect preview makes the system ignore the animated artwork: report "static" instead.
+  let size = preview.size
+  guard size.width > 0, size.height > 0, abs(size.width / size.height - 0.75) < 0.01 else { return nil }
   let key = MPNowPlayingInfoProperty3x4AnimatedArtwork
   guard MPNowPlayingInfoCenter.supportedAnimatedArtworkKeys.contains(key) else { return nil }
   let artwork = MPMediaItemAnimatedArtwork(
@@ -375,7 +426,7 @@ func makeAnimatedArtwork(artworkID: String, videoURL: URL, preview: UIImage) -> 
     previewImageRequestHandler: { _ in preview },
     videoAssetFileURLRequestHandler: { _ in videoURL }
   )
-  return (key, artwork)
+  return (key, artwork, "animated-3x4")
   #else
   return nil
   #endif

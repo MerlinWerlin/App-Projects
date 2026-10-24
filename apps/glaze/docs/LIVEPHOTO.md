@@ -2,7 +2,7 @@
 
 **Status: code-complete, not yet tested on a device.** Written without Xcode; spots we could not check are marked `// VERIFY` in `modules/glaze-livephoto/ios/GlazeLivePhotoModule.swift`.
 
-"Save as Live Photo" in the Live editor turns a loop into a Live Photo in the user's library. It works on every supported iOS version, so it is the stopgap before iOS 26 (Live Lock Screen) and an alternative after it.
+"Save as Live Photo" in the Live editor turns a loop into a Live Photo in the user's library. T127 (24 Oct): this is now **the** Live Lock Screen. The Now Playing mode was taken out of the UI. The editor's primary button is "Save as Live Photo", and `src/ui/LivePhotoGuide.tsx` shows the three illustrated steps: Photos > Share > Use as Wallpaper > Live Photo on. Apple's facts and sources are in docs/OWNER_1024E.md (part C).
 
 ## Pieces
 
@@ -33,7 +33,7 @@ A Live Photo is two files Photos pairs by a shared **content identifier** (a UUI
 |---|---|---|
 | JPEG | `kCGImagePropertyMakerAppleDictionary` → key `"17"` | content identifier (UUID string) |
 | MOV, top-level (`mdta` key space) | `com.apple.quicktime.content.identifier` | same UUID (UTF-8) |
-| MOV, timed metadata track | `com.apple.quicktime.still-image-time` (identifier `mdta/com.apple.quicktime.still-image-time`, data type `com.apple.metadata.datatype.int8`) | int8 `0xFF` (-1), at the still time, one frame long |
+| MOV, timed metadata track | `com.apple.quicktime.still-image-time` (identifier `mdta/com.apple.quicktime.still-image-time`, data type `com.apple.metadata.datatype.int8`) | int8 `0` (T127; was -1), at the still time, one frame long |
 
 ## Limits
 
@@ -48,6 +48,6 @@ A Live Photo is two files Photos pairs by a shared **content identifier** (a UUI
 1. `GLAZE_NATIVE=1 npx expo prebuild --platform ios --clean` (the PC check: config + autolinking; needs no Xcode), then `eas build --profile development` and install.
 2. Live tab → open a video loop → **Save as Live Photo**. Allow "Add Photos Only".
 3. Photos: the newest item shows the LIVE badge; touch and hold to play ~3 s; the key photo is the middle frame.
-4. Settings > Wallpaper > Add New Wallpaper > Photos → pick it → tap the Live Photo button → Add. Lock and wake: it should play briefly.
+4. Photos → the item → Share → Use as Wallpaper (or Settings > Wallpaper > Add New Wallpaper > Photos > Live Photo) → make sure the Live Photo button is on → Add. Lock and wake: it should play briefly (iOS 17+). If iOS says "Motion not available", see the unverified list in docs/OWNER_1024E.md (part C).
 5. Edge cases: deny permission (sheet offers Open Settings), a GIF loop (explains), speed 0.5× and 1.5×, a heavily zoomed crop, a landscape source.
 6. If Photos saves it as a still only, the pairing failed: check the three metadata keys above (e.g. `exiftool -MakerNotes:all` on the JPEG, `exiftool -QuickTime:all` on the MOV) and the `// VERIFY` spots.

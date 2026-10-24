@@ -54,7 +54,7 @@ export const en = {
     feedbackHint: 'Write to the Glaze team from your own Mail app',
   },
   plus: {
-    body: 'One-time price. No subscription, ever. Making your own icons, both install methods and Live Lock with your own video stay free.',
+    body: 'One-time price. No subscription, ever. Making your own icons, both install methods and the Live Photo maker with your own video stay free.',
     more: 'What’s in Glaze Plus',
     moreHint: 'Explains the one-time unlock and what it includes',
   },
@@ -81,7 +81,7 @@ export const en = {
     addedTitle: 'Icons are added, not replaced',
     addedBody: 'iOS doesn’t let any app change another app’s icon. Instead, Glaze adds Home Screen shortcuts with your new look. Tapping one opens the real app.',
     waysTitle: 'Two ways to add them',
-    waysBody: 'Bulk: one profile adds every icon at once (recommended). Shortcuts: add icons one by one with the Shortcuts app, if you’d rather not install a profile.',
+    waysBody: 'Shortcuts (recommended): Glaze guides you through adding each icon with the Shortcuts app. Bulk (optional beta): one profile adds every icon at once.',
     originalsTitle: 'Where the original icons go',
     originalsBody: 'Long-press an original icon, tap Remove App, then Remove from Home Screen. The app stays installed and moves to the App Library (swipe left past your last Home Screen page).',
     removeTitle: 'Removing Glaze icons',

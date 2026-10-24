@@ -1,4 +1,4 @@
-# Glaze — live lock screens + icon themes (working title)
+# Glaze — icon themes, matching widgets and wallpaper packs (working title)
 
 App Factory app id: `glaze` · PC mirror `Desktop\Apps\glaze` · added 12 Oct 2026 at the owner's request (not a scout pick; he wanted the combined app and to undercut the incumbents).
 "Glaze" is a working title only; check App Store / trademark availability before launch. Never use a competitor's name (Themify, Icon Themer, MyScreen, ScreenKit, Widgetsmith, intoLive, Loopy, Lockio) anywhere.
@@ -13,11 +13,11 @@ App Factory app id: `glaze` · PC mirror `Desktop\Apps\glaze` · added 12 Oct 20
 ## 2. Positioning
 1. **One price, no weekly anything.** Free: make-your-own icons (unlimited), one-tap bulk install, starter themes, matching wallpapers, Live Lock Screen with your own videos/GIFs. **Glaze Plus — one-time (~A$7.99 / US$4.99)**, below every competitor's lifetime price: all theme packs, widget styles, extra icon glyph sets, themes for Live Lock Screen playlists. Tip jar. No ads, no tracking, privacy label "Data Not Collected".
 2. **Bulk install instead of 60 shortcuts.** Generate one configuration profile (web clips) containing every themed icon, install once, done. Shortcuts method kept as a fallback with a clean guided flow.
-3. **Moving Lock Screen in the same app** (iOS 26+): trim/crop a video or GIF, loop or playlist, start/stop from a widget. Live Photo export for older iOS.
+3. **Live Photo maker as an extra** (changed 24 Oct, see §10): turn a clip into a Live Photo wallpaper that moves on wake. The iOS 26 continuous loop is parked. Android keeps a true looping live wallpaper.
 4. **A theme is the whole look:** wallpaper + icon style + widget style + optional loop, applied in one guided flow.
 5. **Original art only.** Icons are generic glyphs (camera, chat, music…) on themed shapes; no brand logos (trademark + App Review). Users may use their own images for any icon.
 
-Screenshot 1 hook: "Themes, icons and live lock screens. One price. No weekly subscription."
+Screenshot 1 hook: "Themes, icons and widgets that match. One price. No weekly subscription." (changed 24 Oct, §10)
 
 ## 3. Platform facts the build must respect (verify each with a spike before relying on it)
 - **Icons can't be replaced, only added.** Every app in the category adds a web clip or Shortcut that opens the real app; the original icon goes in the App Library. Say so plainly in onboarding.
@@ -93,3 +93,6 @@ assets/glyphs/*.svg     in-house generic glyphs; no brand logos
 - Live Lock Screen depends on a new iOS 26 API and background audio: App Review and battery risk; ship it clearly labelled, with an off switch.
 - Trademark: no brand logos or names on icons by default; catalogue uses app names only as labels the user chooses.
 - Expo Go only supports the latest SDK: the trial kit runs `npx expo install --fix`.
+
+## 10. Parked: true live Lock Screen wallpaper (owner decision 24 Oct 2026 21:03)
+Glaze ships around themes, matching icons, themed widgets and wallpaper packs; on iPhone the Live tab makes a Live Photo (moves on wake, not a constant loop). The continuous loop via iOS 26 Now Playing animated artwork (T135) is removed from the app and the native build (no background audio). Plan, triggers and parked code: [docs/future/live-wallpaper/README.md](future/live-wallpaper/README.md) — hammer it hard if Apple opens a real API.

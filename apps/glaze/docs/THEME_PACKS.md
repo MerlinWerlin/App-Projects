@@ -207,3 +207,79 @@ For each one also check:
 4. Size roughly as listed (under 5 MB), and the credit in the theme detail matches its release page.
 
 Then, from a PC that can reach the files, add each file's `sha256` to `src/core/spacePack.ts`, rerun `node ops/build-photo-pack.ts`, and close T105. Any URL that fails: tell the build (that theme gets a different release or is dropped).
+
+## Art packs (themes-1024)
+
+T130 + T132, owner brief "themes-1024": themes as creative as a hand-made Home Screen (a starry-night wallpaper, white line glyphs on dark rounded tiles, large widgets whose planets float in the sky because their background is the wallpaper itself). Theme art can be made anywhere (AI image tools, a drawing app, code) and arrives as **folders**. **The format below is the contract**: a folder that passes the validator becomes a free theme in the app with no code changes.
+
+### Format: `themes/<id>/`
+
+| File | Rule |
+|---|---|
+| `wallpaper.png` | **Exactly 1290 x 2796** px (iPhone 15 Pro Max class screen). 8-bit, not interlaced, opaque (an alpha channel is a warning). |
+| `widget-small.png` | Transparent hero art for the small widget. Reference **510 x 510** px. |
+| `widget-medium.png` | Transparent hero art for the medium widget. Reference **1092 x 510** px. |
+| `widget-large.png` | Transparent hero art for the large widget. Reference **1092 x 1146** px. |
+| `palette.json` | `{ "bg", "tile", "glyph", "accent", "text" }`, each `#RRGGBB`. |
+| `meta.json` | `{ "name", "mood", "tags": [], "credits", "licence", "generator", "prompt" }`, optional `"addedAt": "YYYY-MM-DD"`. |
+
+- `<id>` is the folder name and the theme id: lower case `a-z`, `0-9` and single hyphens, 3–40 characters, not the id of a built-in theme.
+- **Hero sizes** are 3x the point sizes of the iPhone 15 Pro Max widgets (small 170 x 170 pt, medium 364 x 170 pt, large 364 x 382 pt). Any other size is accepted when it has the same aspect ratio (±1 %) and is at least half the reference size (e.g. 255 x 255 for small); art over twice the reference size gets a warning.
+- **Hero art is the subject only** (a moon, a planet, a jellyfish) on a **transparent** background: PNG colour type 4 or 6, or a palette/colour-key PNG with a `tRNS` chunk, **and** at least 1 % of its pixels actually transparent (alpha ≤ 8). The seamless widget draws it over the matching crop of the wallpaper, so it floats in the scene.
+- `palette.json`: `tile` is the icon background (a solid squircle), `glyph` the icon line colour, `bg` the theme background, `text` text on `bg`, `accent` highlights and widget accents. Icons are **never** per-app images: they stay the icon studio's vector glyphs drawn in `glyph` on `tile`. No brand logos, ever.
+- `meta.json`: `name` (≤ 40 characters), `mood` (one line, ≤ 120, shown as the tagline), lower-case `tags` (a tag that is a category id such as `dark`, `nature`, `pastel` also files the theme there), `credits`, `licence`, `generator` (`procedural`, `openai-image`, `photo`, `hand-drawn`; others are a warning) and `prompt` (the AI prompt, `""` for non-AI art).
+
+### Validator rules (`src/core/artPack.ts` `validateArtPack(id, files)` → `{ ok, errors, warnings, pack }`)
+
+Pure TypeScript (no React Native), Node-tested in `src/core/artPack.test.ts`. It reads the PNG chunks itself (`IHDR` size, bit depth, colour type, interlace; `PLTE`, `tRNS`), inflates `IDAT` with the repo's `src/core/inflate.ts` and unfilters every scanline to count transparent pixels. Errors:
+
+- a missing file; a bad pack id; a file that isn't a PNG, is truncated or corrupt;
+- 16-bit or other non-8-bit PNGs, and interlaced PNGs ("save as 8-bit", "save without interlacing");
+- a wallpaper that isn't exactly 1290 x 2796; hero art with the wrong aspect or under half size; hero art with no alpha or no transparent pixels;
+- palette colours that aren't `#RRGGBB`; **glyph on tile** or **text on bg** contrast under **4.5:1** (WCAG AA, `src/core/colour.ts` `contrastRatio`);
+- missing `name`, `mood`, `tags`, `credits`, `licence`, `generator` or `prompt`; upper-case tags; a bad `addedAt`;
+- a `licence` outside the allowlist: `original`, `CC0-1.0`, `public-domain`, `CC-BY-4.0`, `openai-output-owned`;
+- **credits**: required (the attribution line) for `CC-BY-4.0`; and whenever NASA, ESA, JPL, Webb/JWST or Hubble is mentioned anywhere (name, mood, tags, credits, prompt) the credits must name the agency (NASA, ESA, JPL, CSA or STScI);
+- a brand, franchise or competitor name anywhere in the meta (`ART_BANNED_NAMES`);
+- files over the hard limits (wallpaper 8 MB, hero 3 MB).
+
+Warnings (the pack still imports): extra files (ignored, never copied), unknown palette/meta keys, an unknown generator, AI art without its prompt, `openai-output-owned` on non-AI art, a low accent/bg contrast, a wallpaper with alpha, hero art over twice its reference size, and files over the **bundle budget: wallpaper ≤ 450 KB, each hero ≤ 150 KB** (the app bundle has a size cap; quantise to 256 colours, e.g. `pngquant 256`, before importing).
+
+### Import
+
+```
+node scripts/import-theme-packs.mjs <folder-of-packs> [--dry-run] [--replace]
+node scripts/import-theme-packs.mjs --regenerate
+```
+
+Each sub-folder of `<folder-of-packs>` is one pack. The script validates every pack, prints a report (`OK` / `FAILED` with each error and warning), copies the valid ones into `themes/<id>/` (only the six format files), refuses an id that already exists in `themes/` unless `--replace`, and refuses the id of a built-in theme. It then regenerates, from everything in `themes/`:
+
+- `src/ui/artPackAssets.ts`: a static `require()` map of every `themes/<id>/*.png` (Metro needs literal paths);
+- `src/core/artPackLibrary.ts`: palette, meta, pixel sizes and byte sizes per pack (data only, no image bytes).
+
+`--dry-run` validates and reports without writing anything; `--regenerate` only rebuilds the two generated files. Exit code 1 when any pack failed. Node 22.18+ runs the TypeScript core directly. `src/core/artPack.test.ts` fails when the generated files are out of step with `themes/` (fix: `--regenerate`), and checks that every shipped pack validates with no errors or warnings and that all packs together stay under 1.8 MB.
+
+### In the app
+
+- `src/core/artPack.ts` `artPackTheme(pack)` maps a pack to a normal `Theme`: palette (`tile` → `surface` and the solid icon background, `glyph` → glyph colour, `text` → `ink`), vector-glyph icon style (feather set, squircle, no stickers or textures), widget style from the palette (glass on dark tiles), categories from the tags (and `dark` for a dark `bg`), a drawn gradient `wallpaper` from `bg`/`accent` for places that can't show an image, and `artPack: { id, wallpaperImage: true, heroes, credits, licence, generator }`.
+- `src/core/artPackThemes.ts`: `ART_PACK_THEMES`, `artPackThemeById`, `artPackOf`. `getAnyTheme` resolves them (detail, studio, apply) and they carry the "Free" pill.
+- Gallery: an **Art** section above Space on the Themes tab (`themes.art.*`). `ThemeCard` and the theme detail preview draw the wallpaper image (`src/ui/ThemeWallpaper.tsx`; React Native `Image` with a `require()`'d PNG, so it works in Expo Go).
+- Theme detail: the credit card (`src/ui/ArtPackCredit.tsx`: the credit exactly as in `meta.json`, how it was made, the licence). Apply › Wallpaper › **Save to Photos** saves the pack's PNG cropped to the phone's screen through the same off-screen photo saver as a downloaded Space photo; the person's own photo still wins.
+- `src/ui/artPackSources.ts`: `artPackWallpaper(id)`, `artPackWallpaperUri(id)` and **`artPackHero(id, 'small' | 'medium' | 'large')`**, the hero image source for the seamless widget component (null when the theme isn't an art pack).
+
+### Starter packs (T132)
+
+Three original packs drawn in code by `scripts/brand/make-starter-packs.py` (Python 3, Pillow, numpy, scipy; fixed seeds, no network, no photos): gradients, value noise, analytic spheres and discs, quantised to 256-colour palette PNGs (heroes keep their alpha through `tRNS`).
+
+| Pack | Wallpaper | Hero art (large / medium / small) |
+|---|---|---|
+| `starry-night` | deep blue-black night sky, a dense star field with a faint milky band, dark hills | full moon with craters and maria / ringed gas giant / blood moon |
+| `sunset-dunes` | violet-to-gold dusk sky, wispy lit clouds, four layers of dunes | setting sun with drifting wisps / lit cumulus bank / crescent moon with the evening star |
+| `deep-sea` | sunbeams fading from teal to deep navy, marine snow, bubbles, kelp | glowing jellyfish / two jellyfish / bubble cluster |
+
+All three: `licence: "original"`, `generator: "procedural"`, `credits: "Glaze (original procedural art)"`, ~1.2 MB together. To rebuild them:
+
+```
+python3 scripts/brand/make-starter-packs.py /tmp/starter-packs
+node scripts/import-theme-packs.mjs /tmp/starter-packs --replace
+```

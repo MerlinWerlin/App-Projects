@@ -23,6 +23,7 @@
     "**/*.test.tsx",
     "ops",
     "scripts",
-    "app.config.ts"
+    "app.config.ts",
+    "docs"
   ]
 }

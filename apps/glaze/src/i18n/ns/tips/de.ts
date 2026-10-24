@@ -23,7 +23,7 @@ export const de: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'Fotos und Hintergründe',
     icons: 'Symbole, Formen und Anpassungen',
     install: 'Symbole installieren',
-    live: 'Live-Sperrbildschirm',
+    live: 'Live Photos',
   },
   places: {
     firstRun: 'Tab „Themes“',
@@ -31,7 +31,7 @@ export const de: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'Hintergrund-Editor',
     icons: 'Tab „Symbole“',
     install: 'Symbole installieren',
-    live: 'Tab „Live Lock“',
+    live: 'Tab „Live“',
     shapes: 'Einstellungen zur Symbolform',
     override: 'Tab „Symbole“',
     addApp: 'Tab „Symbole“',
@@ -42,12 +42,12 @@ export const de: NonNullable<LocaleMessages['tips']> = {
       body: 'iOS lässt keine App das Symbol einer anderen ändern. Glaze fügt einen gestalteten Kurzbefehl hinzu, der die echte App öffnet; verschiebe die Originale in die App-Mediathek.',
     },
     bulkInstall: {
-      title: 'Alle Symbole auf einmal installieren',
-      body: 'Glaze packt dein ganzes Set in ein Profil, sodass du es einmal in den Einstellungen installierst, statt für jede App einen Kurzbefehl zu erstellen.',
+      title: 'Sammelinstallation (optionale Beta)',
+      body: 'Optionale Beta: Ein Profil installiert dein ganzes Set auf einmal in den Einstellungen. Die geführte Kurzbefehle-Methode ist Standard und klappt immer.',
     },
     liveLock: {
-      title: 'Bring Bewegung auf den Sperrbildschirm',
-      body: 'Spiele dein eigenes Video oder GIF im Tab „Live Lock“ als Schleife auf dem Sperrbildschirm ab.',
+      title: 'Live-Photo-Hintergrund erstellen',
+      body: 'Mach im Tab „Live“ aus einem Video ein Live Photo. Lege es über Fotos › Teilen › Als Hintergrundbild fest; es bewegt sich, wenn du dein iPhone aufweckst.',
     },
     themePick: {
       title: 'Starte mit einem Theme',
@@ -78,8 +78,8 @@ export const de: NonNullable<LocaleMessages['tips']> = {
       body: 'Das Profil wird auf deinem Telefon erstellt und ist nicht signiert, daher zeigen die Einstellungen „Nicht überprüft“. Es fügt nur Home-Bildschirm-Symbole hinzu.',
     },
     liveLoop: {
-      title: 'Wo sich Schleifen wirklich bewegen',
-      body: 'Unter iOS 26 läuft die Schleife in der vollen Glaze-Version auf dem Sperrbildschirm; unter älteren iOS-Versionen spielt ein Live Photo bei langem Drücken. Expo Go zeigt nur eine Vorschau.',
+      title: 'So bewegen sich Live Photos',
+      body: 'Ein Live-Photo-Hintergrund bewegt sich, wenn du den Sperrbildschirm aufweckst oder drückst; er läuft nicht dauerhaft im Loop. Expo Go zeigt nur eine Vorschau.',
     },
   },
 };

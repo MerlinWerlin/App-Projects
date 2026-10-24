@@ -24,7 +24,7 @@ export const fr: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'Photos et fonds d’écran',
     icons: 'Icônes, formes et remplacements',
     install: 'Installer les icônes',
-    live: 'Écran verrouillé animé',
+    live: 'Live Photos',
   },
   places: {
     firstRun: 'Onglet Thèmes',
@@ -32,7 +32,7 @@ export const fr: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'Créateur de fonds d’écran',
     icons: 'Onglet Icônes',
     install: 'Installer les icônes',
-    live: 'Onglet Live Lock',
+    live: 'Onglet Live',
     shapes: 'Réglages de forme d’icône',
     override: 'Onglet Icônes',
     addApp: 'Onglet Icônes',
@@ -43,12 +43,12 @@ export const fr: NonNullable<LocaleMessages['tips']> = {
       body: 'iOS ne permet à aucune app de changer l’icône d’une autre. Glaze ajoute un raccourci à thème qui ouvre la vraie app ; rangez les originales dans la bibliothèque d’apps.',
     },
     bulkInstall: {
-      title: 'Installez toutes les icônes d’un coup',
-      body: 'Glaze met tout votre ensemble dans un profil : vous l’installez une fois dans Réglages au lieu de créer un raccourci par app.',
+      title: 'Installation groupée (bêta facultative)',
+      body: 'Bêta facultative : un seul profil installe tout votre ensemble d’un coup dans Réglages. La méthode guidée avec Raccourcis est celle par défaut et marche toujours.',
     },
     liveLock: {
-      title: 'Animez votre écran verrouillé',
-      body: 'Faites tourner en boucle votre vidéo ou GIF sur l’écran verrouillé depuis l’onglet Live Lock.',
+      title: 'Créer un fond d’écran Live Photo',
+      body: 'Transformez une vidéo en Live Photo dans l’onglet Live. Définissez-la via Photos › Partager › Utiliser en fond d’écran ; elle s’anime quand vous réveillez l’iPhone.',
     },
     themePick: {
       title: 'Partez d’un thème',
@@ -79,8 +79,8 @@ export const fr: NonNullable<LocaleMessages['tips']> = {
       body: 'Le profil est créé sur votre téléphone et n’est pas signé, donc Réglages indique Non vérifié. Il ajoute seulement des icônes à l’écran d’accueil.',
     },
     liveLoop: {
-      title: 'Où les boucles bougent vraiment',
-      body: 'Sous iOS 26, la version complète de Glaze joue la boucle sur l’écran verrouillé ; sur les iOS plus anciens, une Live Photo se lit par appui long. Expo Go n’affiche qu’un aperçu.',
+      title: 'Comment s’animent les Live Photos',
+      body: 'Un fond d’écran Live Photo s’anime quand vous réveillez ou touchez l’écran verrouillé ; ce n’est pas une boucle continue. Expo Go n’affiche qu’un aperçu.',
     },
   },
 };

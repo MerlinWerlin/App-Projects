@@ -3,7 +3,7 @@ import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ko: NonNullable<LocaleMessages['live']> = {
   tab: {
-    subtitle: '내 비디오나 GIF로 만드는 움직이는 잠금 화면.',
+    subtitle: '내 비디오를 Live Photo 배경화면으로 만드세요.',
     newLoop: '비디오 또는 GIF로 새 루프 만들기',
     opening: '여는 중…',
     pickHint: '사진 보관함을 열어 비디오나 GIF를 선택합니다',

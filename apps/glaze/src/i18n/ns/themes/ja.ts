@@ -17,6 +17,8 @@ export const ja: NonNullable<LocaleMessages['themes']> = {
   plusPacks: 'Plus パック',
   plusPacksBody: 'どれでもプレビューできます。Glaze Plus は買い切りで、サブスクではありません。',
   space: { title: '宇宙 · ウェッブの本物の写真', body: '無料。ジェイムズ・ウェッブ宇宙望遠鏡の本物の画像です。写真はテーマでダウンロードをタップしたときだけ取得されます。' },
+  // T130: the free art-pack themes (themes/<id>/).
+  art: { title: 'アート · オリジナル壁紙', body: '無料。オリジナルのアート壁紙に、合わせたアイコンと浮かぶウィジェットアート付き。ダウンロード不要です。' },
   plusPacksEmpty: 'Plus パックはまだありません',
   packEmpty: '{name} は制作中です',
   plusNote: 'Glaze Plus。',

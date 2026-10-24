@@ -51,7 +51,6 @@ import { canApplyFromDetail, packDetailView, showsPackCard, wantsPackArtwork, ty
 import { getAnyTheme, packOf } from '../../src/core/plusThemes';
 import { previewSpecs, type Theme } from '../../src/core/themes';
 import { averageColour, sizeForScreen } from '../../src/core/wallpaper';
-import { widgetThemeFrom } from '../../src/core/widgetTheme';
 import { generateWidgetSet, widgetKindKey, widgetSizeKey, widgetSpecOf } from '../../src/core/widgetSets';
 import { studioKinds, studioSizes } from '../../src/core/widgetStudio';
 import { useT, type Script, type TFunction } from '../../src/i18n';
@@ -70,6 +69,7 @@ import { openAppSettings, useOffscreenCapture, useWallpaperSaver } from '../../s
 import { OffscreenWallpaper, WallpaperView } from '../../src/render/WallpaperView';
 import { usePackTheme } from '../../src/render/usePackTheme';
 import { loadChecklist, saveChecklist } from '../../src/store/applyChecklist';
+import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { loadBackground } from '../../src/store/background';
 import { setThemeShape, themeShapeFor } from '../../src/core/studio';
 import { setStudioStyle, useStudio } from '../../src/store/studio';
@@ -88,6 +88,14 @@ import { ThemeOverrideRow } from '../../src/ui/ThemeOverrideRow';
 import { ContextTip } from '../../src/ui/ContextTip';
 import { PhotoCredit, PhotoDownloadControl } from '../../src/ui/PhotoCredit';
 import { usePhotoTheme } from '../../src/ui/usePhotoTheme';
+import { ArtPackCredit } from '../../src/ui/ArtPackCredit';
+import { artPackHero, artPackWallpaper, artPackWallpaperUri } from '../../src/ui/artPackSources';
+import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES } from '../../src/core/artPack';
+import { seamlessCrop, type Nudge, type SeamlessSize, type SeamlessSlot } from '../../src/core/seamlessWidget';
+import { SeamlessWidgetPreview } from '../../src/ui/SeamlessWidgetPreview';
+import { SeamlessWidgetControls, type SeamlessControlsStrings } from '../../src/ui/SeamlessWidgetControls';
+import { localAssetUri, seamlessDeviceHere } from '../../src/ui/seamlessSetup';
+import { artPackOf } from '../../src/core/artPackThemes';
 import { FIRST_RUN_TIP_IDS, type TipId as AnyTipId } from '../../src/core/tips';
 import { tipsForInstallMode } from '../../src/core/installMethods';
 import { PROFILE_INSTALL_ENABLED } from '../../src/config/install';
@@ -284,6 +292,8 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
     setChecklistOpen(true);
     setOpenRow(defaultOpenRow(checklistRef.current));
     playApply();
+    // T125: starting to apply a theme points the widgets at it straight away.
+    void applyWidgetTheme(theme);
   };
 
   // T61: load this theme's checklist (a different theme starts fresh) and learn whether widgets
@@ -379,10 +389,19 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
   const wallSource: WallpaperSource = wallpaperSourceFor({ ownPhoto: !!photo, isSpace: !!spacePhoto.photo, spaceReady: !!spacePhoto.uri });
   const spaceCredit = spacePhoto.photo ? photoCreditParams(spacePhoto.photo.photo) : null;
   const [savedFrom, setSavedFrom] = useState<WallpaperSource | null>(null);
+  // T130: an art-pack theme shows (and saves) its bundled wallpaper image; the own photo still wins.
+  const artPack = artPackOf(theme);
+  const artImage = artPack ? artPackWallpaper(artPack.artPack.id) : null;
+  const artBackground =
+    artImage != null ? (
+      <Image source={artImage} resizeMode="cover" style={{ width: screenW, height: screenH }} accessibilityIgnoresInvertColors /> // i18n-ignore (code after a JSX element)
+    ) : null;
   const previewBackground = photo ? (
     <PhotoWallpaperView photo={photo} width={screenW} height={screenH} maxGrain={300} /> // i18n-ignore (code after a JSX element)
   ) : spaceBackground ? (
     spaceBackground
+  ) : artBackground ? (
+    artBackground
   ) : (
     <WallpaperView params={theme.wallpaper} width={screenW} height={screenH} maxGrain={300} />
   );
@@ -435,16 +454,21 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
 
   const onSaveWallpaper = async () => {
     const from = wallSource;
+    const artPackUri = artPack ? artPackWallpaperUri(artPack.artPack.id) : null;
     const res: { ok: boolean; reason?: string; why?: SaveFailure; message?: string } = photo
       ? await photoSaver.save(photo, size)
       : from === 'space-photo' && spacePhoto.uri
         ? await saveSpacePhoto(spacePhoto.uri)
-        : await saver.save(theme.wallpaper, size);
+        : artPackUri
+          ? await saveSpacePhoto(artPackUri) // T130: the art pack's own wallpaper image, cropped to the screen
+          : await saver.save(theme.wallpaper, size);
     if (res.ok) {
       setSavedFrom(from);
       setSaveWhy(null);
       setSaveState('saved');
       tick('wallpaper');
+      // T125: saving a theme's wallpaper applies it, so the widgets follow it too.
+      void applyWidgetTheme(theme); // no-op in Expo Go; never throws
     } else {
       const why: SaveFailure = res.why ?? (res.reason === 'denied' ? 'denied' : res.reason === 'unreadable' ? 'unreadable' : 'unknown');
       setSaveWhy({ why, detail: res.message });
@@ -461,7 +485,7 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
       // The store applies the user's chosen shape for this theme, so it is baked into the exports.
       await setStudioStyle(theme.iconStyle, theme.id, averageColour(theme.wallpaper));
       await studio.reload();
-      void widgets.setTheme(widgetThemeFrom(theme)); // no-op in Expo Go; never throws
+      void applyWidgetTheme(theme); // T125: also remembered for the launch re-write; never throws
       tick('iconStyle');
       // navigate, not push: push would stack a second copy of the tab navigator.
       router.navigate('/icons');
@@ -477,6 +501,8 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
     const next = openRow === row ? null : row;
     setOpenRow(next);
     if (next === 'icons') playApply();
+    // T125: opening the widgets step points the widgets at this theme.
+    if (next === 'widgets') void applyWidgetTheme(theme);
   };
   // T81: opening the studio doesn't tick the widgets step; the studio ticks it when it saves.
   const openWidgetStudio = () => {
@@ -629,6 +655,10 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
 
         {/* T103 (fb-1022 G5a): credit + licence for a Webb photo, with Download / Remove (on a tap only). */}
         {spacePhoto.photo ? <PhotoCredit theme={theme} style={styles.side} /> : null}
+        {/* T130: credit + licence for an art-pack theme (from its meta.json). */}
+        {artPack ? <ArtPackCredit theme={artPack} style={styles.side} /> : null}
+        {/* T133: the Seamless widget (wallpaper crop + floating art) for art-pack themes only. */}
+        {artPack ? <SeamlessCard artPackId={artPack.artPack.id} /> : null}
 
         {/* T61 (L2): the 3-in-1 apply checklist. Wallpaper > Icons > Widgets with ticks and a
             progress indicator, Loop as an optional fourth row, a success moment at the end. */}
@@ -1196,6 +1226,185 @@ function WidgetPreviews({ theme }: { theme: Theme }) {
 
 const WIDGET_PREVIEW_W = 112;
 
+type SeamlessStatus = 'idle' | 'busy' | 'saved' | 'unavailable' | 'failed';
+
+/**
+ * T133: the Seamless widget card on an art-pack theme. A mock Home Screen shows the widget cut from
+ * the wallpaper with the art floating on top; size / spot / nudge pick where it sits, and "Use for
+ * my Glaze widget" writes the image through the widget bridge. Expo Go: the button explains that
+ * the TestFlight app is needed; nothing throws.
+ */
+function SeamlessCard({ artPackId }: { artPackId: string }) {
+  const { c } = useColorsV2();
+  const { t, script } = useT();
+  const window = useWindowDimensions();
+  const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
+  const [size, setSize] = useState<SeamlessSize>('small');
+  const [slot, setSlot] = useState<SeamlessSlot>('top-left');
+  const [nudge, setNudge] = useState<Nudge>({ dx: 0, dy: 0 });
+  const [status, setStatus] = useState<SeamlessStatus>('idle');
+  const wallpaper = artPackWallpaper(artPackId);
+  const hero = artPackHero(artPackId, size);
+  const heroRef = HERO_REFERENCE_SIZES[size];
+  const previewW = Math.max(160, Math.min(240, Math.round(window.width * 0.6)));
+
+  const strings = useMemo<SeamlessControlsStrings>(() => {
+    const moved = (axis: 'x' | 'y', v: number): string | null => {
+      if (v === 0) return null;
+      const n = Math.abs(v);
+      if (axis === 'x') return v > 0 ? t('ui.seamless.moved.right', { n }) : t('ui.seamless.moved.left', { n });
+      return v > 0 ? t('ui.seamless.moved.down', { n }) : t('ui.seamless.moved.up', { n });
+    };
+    return {
+      sizeGroup: t('ui.seamless.sizeGroup'),
+      sizes: { small: t('ui.seamless.sizes.small'), medium: t('ui.seamless.sizes.medium'), large: t('ui.seamless.sizes.large') },
+      slotGroup: t('ui.seamless.slotGroup'),
+      slots: {
+        'top-left': t('ui.seamless.slots.top-left'),
+        'top-right': t('ui.seamless.slots.top-right'),
+        'middle-left': t('ui.seamless.slots.middle-left'),
+        'middle-right': t('ui.seamless.slots.middle-right'),
+        'bottom-left': t('ui.seamless.slots.bottom-left'),
+        'bottom-right': t('ui.seamless.slots.bottom-right'),
+        top: t('ui.seamless.slots.top'),
+        middle: t('ui.seamless.slots.middle'),
+        bottom: t('ui.seamless.slots.bottom'),
+      },
+      stepGroup: t('ui.seamless.stepGroup'),
+      step1: t('ui.seamless.step1'),
+      step5: t('ui.seamless.step5'),
+      nudgeA11y: (dir, step) =>
+        dir === 'up'
+          ? t('ui.seamless.nudge.up', { n: step })
+          : dir === 'down'
+            ? t('ui.seamless.nudge.down', { n: step })
+            : dir === 'left'
+              ? t('ui.seamless.nudge.left', { n: step })
+              : t('ui.seamless.nudge.right', { n: step }),
+      reset: t('ui.seamless.reset'),
+      readout: (n) => {
+        const parts = [moved('x', n.dx), moved('y', n.dy)].filter((p): p is string => p !== null);
+        if (parts.length === 0) return t('ui.seamless.readoutNone');
+        if (parts.length === 1) return t('ui.seamless.readoutOne', { a: parts[0] });
+        return t('ui.seamless.readoutTwo', { a: parts[0], b: parts[1] });
+      },
+    };
+  }, [t]);
+
+  if (wallpaper == null) return null;
+
+  /** Resolve local files for the wallpaper and hero, crop for this phone, hand them to the bridge. */
+  const onUse = async () => {
+    if (status === 'busy') return;
+    setStatus('busy');
+    haptic('select');
+    let next: SeamlessStatus = 'failed';
+    try {
+      const avail = await widgets.isAvailable();
+      if (!avail.available) {
+        next = 'unavailable';
+      } else {
+        const wallpaperUri = await localAssetUri(wallpaper, `${artPackId}-wallpaper.png`);
+        const heroUri = await localAssetUri(hero, `${artPackId}-${size}.png`);
+        if (wallpaperUri) {
+          const crop = seamlessCrop({
+            device: seamlessDeviceHere(),
+            wallpaper: { w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height },
+            size,
+            slot,
+            nudge,
+          });
+          const res = await widgets.setSeamless({ wallpaperUri, cropPx: crop.cropPx, heroUri, size });
+          next = !res.available ? 'unavailable' : res.ok ? 'saved' : 'failed';
+        }
+      }
+    } catch {
+      next = 'failed';
+    }
+    setStatus(next);
+    haptic(next === 'saved' ? 'success' : 'warning');
+    const line =
+      next === 'saved' ? t('ui.seamless.saved') : next === 'unavailable' ? t('ui.seamless.notAvailable') : t('ui.seamless.failed');
+    AccessibilityInfo.announceForAccessibility(line);
+  };
+
+  const statusLine =
+    status === 'saved'
+      ? t('ui.seamless.saved')
+      : status === 'unavailable'
+        ? t('ui.seamless.notAvailable')
+        : status === 'failed'
+          ? t('ui.seamless.failed')
+          : null;
+  const how = [t('ui.seamless.how1'), t('ui.seamless.how2'), t('ui.seamless.how3')];
+
+  return (
+    <SquircleCard style={styles.side}>
+      <View style={styles.stack}>
+        <Text accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
+          {t('ui.seamless.title')}
+        </Text>
+        <Text style={[...ts('callout'), { color: c.inkSecondary }]}>{t('ui.seamless.body')}</Text>
+        <SeamlessWidgetPreview
+          wallpaper={wallpaper}
+          wallpaperPx={{ w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height }}
+          hero={hero}
+          heroPx={{ w: heroRef.width, h: heroRef.height }}
+          size={size}
+          slot={slot}
+          nudge={nudge}
+          width={previewW}
+          outline
+          accessibilityLabel={t('ui.seamless.previewA11y', { size: strings.sizes[size], slot: strings.slots[slot] })}
+          style={styles.seamlessPreview}
+        />
+        <SeamlessWidgetControls
+          size={size}
+          slot={slot}
+          nudge={nudge}
+          onSizeChange={(s) => {
+            setSize(s);
+            setStatus('idle');
+          }}
+          onSlotChange={(s) => {
+            setSlot(s);
+            setStatus('idle');
+          }}
+          onNudgeChange={(n) => {
+            setNudge(n);
+            setStatus('idle');
+          }}
+          strings={strings}
+        />
+        <PillButton
+          label={status === 'busy' ? t('ui.seamless.saving') : t('ui.seamless.use')}
+          icon="layers"
+          block
+          busy={status === 'busy'}
+          onPress={onUse}
+          accessibilityHint={t('ui.seamless.useHint')}
+        />
+        {statusLine ? (
+          <Text accessibilityLiveRegion="polite" style={[...ts('footnote'), { color: status === 'saved' ? c.ok : status === 'failed' ? c.warn : c.inkSecondary }]}>
+            {statusLine}
+          </Text>
+        ) : null}
+        <Text accessibilityRole="header" style={[...ts('headline'), { color: c.ink }]}>
+          {t('ui.seamless.howTitle')}
+        </Text>
+        <View style={styles.gap}>
+          {how.map((line, i) => (
+            <View key={i} style={styles.howRow}>
+              <Text style={[...ts('footnote'), styles.howNum, { color: c.inkSecondary }]}>{i + 1}.</Text>
+              <Text style={[...ts('footnote'), styles.flex, { color: c.inkSecondary }]}>{line}</Text>
+            </View>
+          ))}
+        </View>
+      </View>
+    </SquircleCard>
+  );
+}
+
 /** T47: the pack card on a pack theme's detail (Download, progress, error + Try again, downloaded). */
 function PackCard({ view, packName, onDownload }: { view: PackDetailView; packName: string; onDownload: () => void }) {
   const { c } = useColorsV2();
@@ -1304,6 +1513,9 @@ const styles = StyleSheet.create({
   packHead: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
   widgetRow: { gap: spaceV2.md, paddingVertical: spaceV2.xs },
   widgetItem: { width: WIDGET_PREVIEW_W, gap: spaceV2.xs, minHeight: sizeV2.touch },
+  seamlessPreview: { alignSelf: 'center' },
+  howRow: { flexDirection: 'row', gap: spaceV2.sm },
+  howNum: { minWidth: 16 },
   bar: { position: 'absolute', start: 0, end: 0, bottom: 0 },
   barInner: { paddingHorizontal: spaceV2.inset, paddingTop: spaceV2.md, gap: spaceV2.xs },
   barNote: { textAlign: 'center' },

@@ -63,12 +63,12 @@ export const zhHans: NonNullable<LocaleMessages['themeUi']> = {
       body: 'iOS 不允许任何 App 更改其他 App 的图标。Glaze 会添加打开真实 App 的主题快捷方式；把原图标移到 App 资源库即可。',
     },
     'bulk-install': {
-      title: '一次安装所有图标',
-      body: 'Glaze 把整套图标放进一个描述文件，你只需在“设置”中安装一次，无需为每个 App 制作快捷指令。',
+      title: '批量安装（可选测试版）',
+      body: '可选测试版：一个描述文件在“设置”中一次安装整套图标。引导式“快捷指令”方式是默认方式，始终可用。',
     },
     'live-lock': {
-      title: '让锁定屏幕动起来',
-      body: '在“Live Lock”标签页中，把你自己的视频或 GIF 循环播放在锁定屏幕上。',
+      title: '制作实况照片墙纸',
+      body: '在 Live 标签页把视频转换成实况照片。在“照片 › 共享 › 用作墙纸”中设置，唤醒 iPhone 时它会动起来。',
     },
     'theme-pick': {
       title: '从主题开始',
@@ -99,8 +99,8 @@ export const zhHans: NonNullable<LocaleMessages['themeUi']> = {
       body: '描述文件在你的手机上生成且未签名，所以“设置”会显示“未验证”。它只会添加主屏幕图标。',
     },
     'live-loop': {
-      title: '循环真正动起来的地方',
-      body: '在 iOS 26 上，完整版 Glaze 会在锁定屏幕循环播放；在较早的 iOS 上，长按即可播放实况照片。Expo Go 只显示预览。',
+      title: '实况照片如何动起来',
+      body: '实况照片墙纸会在你唤醒或按压锁定屏幕时动起来，并不会一直循环。Expo Go 只显示预览。',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

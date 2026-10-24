@@ -85,13 +85,13 @@ import {
   type StudioState,
   type StudioSwatch,
 } from '../src/core/widgetStudio';
-import { widgetThemeFrom } from '../src/core/widgetTheme';
 import { useT } from '../src/i18n';
 import { widgets } from '../src/native/widgets';
 import { PlusLockSheet } from '../src/plus/PlusLockSheet';
 import { useLocked } from '../src/plus/useLocked';
 import { openAppSettings } from '../src/render/saveWallpaper';
 import { tickStoredChecklist } from '../src/store/applyChecklist';
+import { applyWidgetTheme } from '../src/store/widgetTheme';
 import { useWidgetHabits, widgetHabitGoal, widgetHabitValue } from '../src/store/widgetHabits';
 import { loadStudio, saveStudio } from '../src/store/widgetStudio';
 import { continuous, radiusV2, sizeV2, spaceV2, textV2 } from '../src/theme/tokensV2';
@@ -334,7 +334,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
         if (!photoOk) {
           next = 'photoFailed';
         } else {
-          await widgets.setTheme(widgetThemeFrom(theme));
+          await applyWidgetTheme(theme); // T125: remembered for the launch re-write too
           // The set plus the catalogue block, so a set-widget add never drops catalogue edits.
           const r = await widgets.setWidgetSet(studioCataloguePayload(lookSet, cat, state, { translate: (k) => tl(k) }));
           next = r.ok ? 'saved' : r.available ? 'failed' : 'preview';

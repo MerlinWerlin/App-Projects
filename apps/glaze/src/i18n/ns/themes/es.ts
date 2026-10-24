@@ -17,6 +17,8 @@ export const es: NonNullable<LocaleMessages['themes']> = {
   plusPacks: 'Packs Plus',
   plusPacksBody: 'Prueba cualquiera. Glaze Plus es un pago único, nunca una suscripción.',
   space: { title: 'Espacio · fotos reales del Webb', body: 'Gratis. Imágenes reales del telescopio espacial James Webb; cada foto se descarga solo cuando tocas Descargar en el tema.' },
+  // T130: the free art-pack themes (themes/<id>/).
+  art: { title: 'Arte · fondos originales', body: 'Gratis. Fondos de arte originales con iconos a juego y arte flotante para widgets. Nada que descargar.' },
   plusPacksEmpty: 'Aún no hay packs Plus',
   packEmpty: '{name} aún se está dibujando',
   plusNote: 'Glaze Plus.',

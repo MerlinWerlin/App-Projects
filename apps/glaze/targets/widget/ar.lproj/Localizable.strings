@@ -50,3 +50,8 @@
 "Choose a photo in Glaze" = "اختر صورة في Glaze";
 "Little Line" = "سطر قصير";
 "A short, gentle line that changes every hour." = "سطر قصير ولطيف يتغيّر كل ساعة.";
+
+/* Seamless widget (SeamlessWidget.swift, T131/T133) */
+"Seamless" = "سلسة";
+"Art that floats on your wallpaper. Set it up in Glaze." = "رسم يطفو فوق خلفية الشاشة. اضبطه في Glaze.";
+"Set up in Glaze" = "اضبطه في Glaze";

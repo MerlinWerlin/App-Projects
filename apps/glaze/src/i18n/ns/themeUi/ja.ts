@@ -64,12 +64,12 @@ export const ja: NonNullable<LocaleMessages['themeUi']> = {
       body: 'iOS ではアプリが他のアプリのアイコンを変更できません。Glaze は本物のアプリを開くテーマ付きショートカットを追加します。元のアイコンは App ライブラリへ移しましょう。',
     },
     'bulk-install': {
-      title: 'すべてのアイコンを一度にインストール',
-      body: 'Glaze はセット全体を 1 つのプロファイルにまとめるので、アプリごとにショートカットを作らず、設定で 1 回インストールするだけです。',
+      title: '一括インストール（任意のベータ）',
+      body: '任意のベータ版：1 つのプロファイルでセット全体を設定から一度にインストールします。ガイド付きのショートカット方式が標準で、いつでも使えます。',
     },
     'live-lock': {
-      title: 'ロック画面に動きを',
-      body: '「Live Lock」タブから、自分の動画や GIF をロック画面でループ再生できます。',
+      title: 'Live Photos の壁紙を作る',
+      body: 'Live タブでビデオを Live Photos に変換します。写真 › 共有 › 壁紙に設定 から設定すると、iPhone のスリープ解除時に動きます。',
     },
     'theme-pick': {
       title: 'テーマから始めよう',
@@ -100,8 +100,8 @@ export const ja: NonNullable<LocaleMessages['themeUi']> = {
       body: 'プロファイルはお使いの iPhone 上で作られ署名されていないため、設定には「未検証」と表示されます。追加されるのはホーム画面のアイコンだけです。',
     },
     'live-loop': {
-      title: 'ループが本当に動く場所',
-      body: 'iOS 26 では Glaze のフルビルドがロック画面でループ再生します。それ以前の iOS では長押しで Live Photo が再生されます。Expo Go ではプレビューのみです。',
+      title: 'Live Photos の動き方',
+      body: 'Live Photos の壁紙は、ロック画面をスリープ解除したり押したりしたときに動きます。ずっとループするわけではありません。Expo Go はプレビューのみです。',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

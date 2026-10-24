@@ -12,6 +12,7 @@
 // layout change above the grid moves the cards on the UI thread without re-rendering them; icon
 // specs come from a module cache; a card that never pops draws a still Home Screen (no per-icon
 // animation hooks).
+// T130: an art-pack theme shows its bundled wallpaper image (src/ui/ThemeWallpaper.tsx).
 
 import { memo, useCallback, useEffect, useRef, type ReactNode } from 'react';
 import { Platform, StyleSheet, Text, View, type LayoutChangeEvent, type TextStyle } from 'react-native';
@@ -20,7 +21,6 @@ import type { DisplayFont } from '../core/artwork';
 import { artworkTransform, cardProgress } from '../core/galleryMotion';
 import type { Theme } from '../core/themes';
 import { useT } from '../i18n';
-import { WallpaperView } from '../render/WallpaperView';
 import { staggerIn, useMotionReduced } from '../theme/motion';
 import { continuous, pressV2, radiusV2, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
@@ -29,6 +29,7 @@ import { HomeMock } from './HomeMock';
 import { PressableScale } from './PressableScale';
 import { noMirror, textStyleFor } from './i18nLayout';
 import { cachedPreviewSpecs } from './previewCache';
+import { ThemeWallpaper } from './ThemeWallpaper';
 
 /** Portrait phone aspect (height / width) used for preview backgrounds. */
 export const PHONE_ASPECT = 874 / 402;
@@ -196,7 +197,7 @@ export const ThemeCard = memo(function ThemeCard({
               still={popKey === 0}
               background={
                 <Animated.View style={[{ width: inner, height: artH }, artStyle]}>
-                  <WallpaperView params={theme.wallpaper} width={inner} height={artH} maxGrain={120} />
+                  <ThemeWallpaper theme={theme} width={inner} height={artH} maxGrain={120} />
                 </Animated.View>
               }
             />

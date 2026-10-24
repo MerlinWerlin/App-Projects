@@ -13,6 +13,7 @@ import { durations } from '../src/theme/motion';
 import { INTRO_MS, startupReady } from '../src/core/introGlaze';
 import { I18nProvider, loadLocaleOverride, useT } from '../src/i18n';
 import { restoreDownloadedPacks } from '../src/native/packs';
+import { syncWidgetThemeAtLaunch } from '../src/store/widgetTheme';
 import { textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import { ErrorFallback } from '../src/ui/ErrorBoundary';
@@ -68,6 +69,15 @@ export default function RootLayout() {
     loadLocaleOverride()
       .catch(() => null)
       .finally(() => setI18nReady(true));
+  }, []);
+
+  // T125: once per launch, re-write the active widget theme to the App Group (no-op in Expo Go), so a theme picked
+  // before this build, or a write the extension missed, still reaches the widgets. Delayed to stay off startup.
+  useEffect(() => {
+    const id = setTimeout(() => {
+      syncWidgetThemeAtLaunch().catch(() => false);
+    }, 1500);
+    return () => clearTimeout(id);
   }, []);
 
   // Never an endless splash: go ahead after INTRO_MS.maxWait even if fonts or languages are still loading.

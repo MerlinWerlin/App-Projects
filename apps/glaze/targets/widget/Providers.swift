@@ -1,6 +1,8 @@
 // Timeline providers shared by the Glaze widgets. Every entry carries the theme read from the
 // App Group at timeline time; the app calls WidgetCenter.reloadAllTimelines() after each write
 // (modules/glaze-widget-bridge), so a newly applied theme shows up straight away.
+// T125: placeholder() and getSnapshot() (the add-widget gallery, context.isPreview) read the theme
+// too, so the gallery previews in the chosen theme instead of the built-in default.
 import Foundation
 import WidgetKit
 
@@ -12,7 +14,7 @@ private func startOfMinute(_ date: Date) -> Date {
 /// One entry per minute for the next hour, then WidgetKit asks again.
 struct MinuteProvider: TimelineProvider {
   func placeholder(in context: Context) -> GlazeEntry {
-    GlazeEntry(date: Date(), theme: .fallback)
+    GlazeEntry(date: Date(), theme: ThemeStore.load())
   }
 
   func getSnapshot(in context: Context, completion: @escaping (GlazeEntry) -> Void) {
@@ -33,7 +35,7 @@ struct MinuteProvider: TimelineProvider {
 /// One entry now, refreshed just after midnight (for date-only widgets).
 struct DayProvider: TimelineProvider {
   func placeholder(in context: Context) -> GlazeEntry {
-    GlazeEntry(date: Date(), theme: .fallback)
+    GlazeEntry(date: Date(), theme: ThemeStore.load())
   }
 
   func getSnapshot(in context: Context, completion: @escaping (GlazeEntry) -> Void) {
@@ -52,7 +54,7 @@ struct DayProvider: TimelineProvider {
 /// One entry per hour for the next 24 hours (the Quote widget rotates hourly).
 struct HourProvider: TimelineProvider {
   func placeholder(in context: Context) -> GlazeEntry {
-    GlazeEntry(date: Date(), theme: .fallback)
+    GlazeEntry(date: Date(), theme: ThemeStore.load())
   }
 
   func getSnapshot(in context: Context, completion: @escaping (GlazeEntry) -> Void) {
@@ -75,7 +77,7 @@ struct HourProvider: TimelineProvider {
 /// Static content (the Photo widget): only changes when the app reloads timelines.
 struct StaticProvider: TimelineProvider {
   func placeholder(in context: Context) -> GlazeEntry {
-    GlazeEntry(date: Date(), theme: .fallback)
+    GlazeEntry(date: Date(), theme: ThemeStore.load())
   }
 
   func getSnapshot(in context: Context, completion: @escaping (GlazeEntry) -> Void) {
