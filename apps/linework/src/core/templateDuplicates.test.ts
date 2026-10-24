@@ -6,9 +6,7 @@ import { fingerprint, nearDuplicates, similarity } from './templateDuplicates.ts
 import { shift } from './templateArt/draw.ts';
 
 test('no two templates are near-duplicates', () => {
-  // Letters (owner 24 Oct 2026) are exempt: the same character in two typefaces, or O and 0 in one, are meant to
-  // look alike; src/core/letterStyles.test.ts guards that set instead (unique ids, full alphabets, names).
-  assert.deepEqual(nearDuplicates(TEMPLATES.filter((t) => !t.id.startsWith('char-'))), []);
+  assert.deepEqual(nearDuplicates(TEMPLATES), []);
 });
 
 test('the guard catches a nudged copy and a re-named copy', () => {

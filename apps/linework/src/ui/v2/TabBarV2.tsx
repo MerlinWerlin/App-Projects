@@ -1,5 +1,5 @@
 // Bottom tab bar (T81, DESIGN_V2 §4 materials, MARKET "Design reference 18 Oct" §2): a frosted GlassBar with a
-// hairline on top, five tabs (Trace / Templates / Workshop / My drawings / Settings, src/core/tabs.ts) as Feather icons with a
+// hairline on top, four tabs (Trace / Templates / My drawings / Settings, src/core/tabs.ts) as Feather icons with a
 // catalogue label under each. The active tab sits in a rounded inkSoft pill and pops; presses scale with the spring
 // and tick a selection haptic (Haptics setting respected). Each tab is a ≥ 44 pt target with role "tab" and its
 // selected state. The row uses flexDirection 'row' only, so it mirrors by itself for right-to-left languages.
@@ -142,11 +142,7 @@ function TabItem({ spec, label, focused, onPress, onLongPress }: TabItemProps) {
       </Animated.View>
       <Text
         maxFontSizeMultiplier={LABEL_MAX_SCALE}
-        // Five tabs since 24 Oct 2026 (Workshop): long labels shrink to one line instead of wrapping.
-        numberOfLines={1}
-        adjustsFontSizeToFit
-        minimumFontScale={0.75}
-        style={[text('caption'), { color, textAlign: 'center', marginTop: 2, paddingHorizontal: 2, fontWeight: focused ? '600' : '500' }]}
+        style={[text('caption'), { color, textAlign: 'center', marginTop: 2, fontWeight: focused ? '600' : '500' }]}
       >
         {label}
       </Text>

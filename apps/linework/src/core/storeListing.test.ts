@@ -55,14 +55,13 @@ test('T58: keywords are comma separated with no spaces and no words from the nam
   }
 });
 
-// Owner 24 Oct 2026 asked for the 2-word "Made for…" headline on shot 2, so 2 words is allowed.
-test('T58: screenshot headlines are 2–5 words, 6–8 shots', () => {
+test('T58: screenshot headlines are 3–5 words, 6–8 shots', () => {
   const md = readFileSync(docs('STORE.md'), 'utf8');
   const rows = [...md.matchAll(/^\| (\d) \| \*\*(.+?)\*\* \|/gm)].map((m) => m[2]);
   assert.ok(rows.length >= 6 && rows.length <= 8, `${rows.length} shots`);
   for (const h of rows) {
     const words = h.split(/\s+/).filter(Boolean).length;
-    assert.ok(words >= 2 && words <= 5, `"${h}" has ${words} words`);
+    assert.ok(words >= 3 && words <= 5, `"${h}" has ${words} words`);
   }
 });
 

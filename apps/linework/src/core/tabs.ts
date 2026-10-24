@@ -4,25 +4,23 @@
 
 export type TabSpec = {
   /** Route name inside app/(tabs)/ (file name without .tsx). URL is unchanged: groups don't add a path segment. */
-  route: 'index' | 'templates' | 'workshop' | 'drawings' | 'settings';
+  route: 'index' | 'templates' | 'drawings' | 'settings';
   /** Feather icon name. */
-  icon: 'edit-3' | 'grid' | 'tool' | 'image' | 'settings';
+  icon: 'edit-3' | 'grid' | 'image' | 'settings';
   /** Catalogue key for the visible label (also the spoken name). */
-  label: 'common.nav.trace' | 'common.nav.templates' | 'common.nav.workshop' | 'common.nav.drawings' | 'common.nav.settings';
+  label: 'common.nav.trace' | 'common.nav.templates' | 'common.nav.drawings' | 'common.nav.settings';
 };
 
 /** Tabs in reading order (start → end); a row layout mirrors them automatically for right-to-left languages. */
 export const TABS: readonly TabSpec[] = [
   { route: 'index', icon: 'edit-3', label: 'common.nav.trace' },
   { route: 'templates', icon: 'grid', label: 'common.nav.templates' },
-  // Owner 24 Oct 2026: Trade & workshop gets its own tab (blueprint style, quick sub-category tiles).
-  { route: 'workshop', icon: 'tool', label: 'common.nav.workshop' },
   { route: 'drawings', icon: 'image', label: 'common.nav.drawings' },
   { route: 'settings', icon: 'settings', label: 'common.nav.settings' },
 ];
 
 /** Full-screen stack routes that cover the tab bar (registered on the root Stack in app/_layout.tsx). */
-export const STACK_ROUTES: readonly string[] = ['prepare', 'trace', 'lightbox', 'plus', 'feedback'];
+export const STACK_ROUTES: readonly string[] = ['prepare', 'trace', 'lightbox', 'plus'];
 
 /**
  * Minimum content height of the bar above the bottom safe-area inset (pt): pill + label + padding, so every tab

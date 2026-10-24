@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
-  <title>Stencil L</title>
-  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M205 277Q206 277 207 277Q208 277 210 277Q249 277 263 247Q266 239 269 232Q272 224 274 217Q277 211 282 207H294V294H205Z"/>
-    <path d="M189 294H106V281Q111 279 116 278Q120 277 124 275Q131 271 131 261V80Q131 69 124 65Q120 63 116 62Q111 61 106 59V46H215V59Q210 61 205 62Q201 63 197 65Q189 69 189 80Z"/>
-  </g>
-</svg>

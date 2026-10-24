@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, relative, sep } from 'node:path';
+import { plus as enPlus } from '../i18n/en/plus.ts';
+import { TRIAL_DAYS } from './access.ts';
 import {
   FREE_FOREVER,
   PACKS,
@@ -115,8 +117,7 @@ test('price label and packs', () => {
 test('only the Plus, Settings, Templates, Home and Prepare screens and src/plus import src/plus', () => {
   const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
   // Templates, Home and Prepare read `access` for the post-trial locks (owner decision 22 Oct 2026); Trace never does.
-  // Workshop (24 Oct 2026) shows the Trade & workshop templates with the same lock as Templates.
-  const allowed = new Set(['app/plus.tsx', 'app/(tabs)/settings.tsx', 'app/(tabs)/templates.tsx', 'app/(tabs)/index.tsx', 'app/prepare.tsx', 'app/(tabs)/workshop.tsx']);
+  const allowed = new Set(['app/plus.tsx', 'app/(tabs)/settings.tsx', 'app/(tabs)/templates.tsx', 'app/(tabs)/index.tsx', 'app/prepare.tsx']);
   const files: string[] = [];
   for (const top of ['app', 'src']) {
     for (const f of readdirSync(join(root, top), { recursive: true }) as string[]) {
@@ -137,4 +138,26 @@ test('only the Plus, Settings, Templates, Home and Prepare screens and src/plus 
     }
   }
   assert.deepEqual(offenders, []);
+});
+
+// CONVENTIONS: the Trace screen never reads the entitlement (tracing tools are free for everyone).
+test('Trace never reads the entitlement or the trial', () => {
+  const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+  const traceFiles = (readdirSync(join(root, 'app'), { recursive: true }) as string[]).filter((f) => /(^|\/)trace[^/]*\.tsx?$/.test(f));
+  assert.ok(traceFiles.length >= 1);
+  for (const f of traceFiles) {
+    const text = readFileSync(join(root, 'app', f), 'utf8');
+    assert.ok(!/['"][^'"]*\/plus(\/[^'"]*)?['"]/.test(text), `app/${f} imports src/plus`);
+    assert.ok(!/\b(usePlus|templateLocked|outlineLocked|accessFor|TRIAL_KEY)\b/.test(text.replace(/'[^'\n]*'/g, "''")), `app/${f} reads Plus access`);
+  }
+});
+
+// Guideline 3.1.1: before the trial starts the offer states its length, what stays free, what locks and the price.
+test('trial offer copy discloses duration, free tier, what locks and the one-time price', () => {
+  const title = enPlus['plus.offer.title'].replace('{days}', String(TRIAL_DAYS));
+  assert.equal(title, 'Try everything free for 14 days');
+  assert.match(enPlus['plus.offer.free'], /own photos.*every tool.*\{count\} starter templates/);
+  assert.match(enPlus['plus.offer.locks'], /trial ends.*template library.*outline mode/);
+  assert.match(enPlus['plus.offer.price'], /Linework Plus, \{price\} one-time\. No subscription\. Nothing is charged automatically\./);
+  assert.equal(enPlus['plus.startTrial'], 'Start free trial');
 });

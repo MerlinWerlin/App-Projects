@@ -1,7 +1,8 @@
 // Home (PLAN §3 /, DESIGN_V2 §7): large title, two big BubbleCards (Trace a photo / Templates), category bubbles,
 // recent templates and favourites on a soft pastel panel, recent photos, progress as StatPills and My drawings as
 // an InsetRow. Every flow from v1 stays: photo / camera pick with friendly errors, recents (long press to remove),
-// template quick links, first-run setup guide.
+// template quick links, first-run setup guide. After the setup guide, a one-time, dismissable free-trial offer card
+// (guideline 3.1.1, docs/OWNER_1024.md) for someone who hasn't started the trial; it never blocks tracing.
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Alert, AppState, Image, Linking, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
@@ -59,8 +60,10 @@ import { pressScaleV2 } from '../../src/theme/motion';
 import { useT } from '../../src/i18n';
 import { loadDrawings } from '../../src/native/drawings';
 import { usePlus } from '../../src/plus/usePlus';
-import { starterIds, templateLocked } from '../../src/plus/access';
-import { STARTER_TEMPLATE_COUNT } from '../../src/plus/entitlement';
+import { TRIAL_DAYS, canStartTrial, starterIds, templateLocked } from '../../src/plus/access';
+import { PLUS_PRICE, STARTER_TEMPLATE_COUNT } from '../../src/plus/entitlement';
+import { TrialOfferText } from '../../src/plus/TrialOffer';
+import { startTrialWithAlerts } from '../../src/plus/trialFlow';
 
 const HOME_STARTERS = starterIds(TEMPLATES, STARTER_TEMPLATE_COUNT);
 
@@ -104,6 +107,8 @@ export default function HomeScreen() {
   const [recentTemplates, setRecentTemplates] = useState<Template[]>([]);
   const [favoriteTemplates, setFavoriteTemplates] = useState<Template[]>([]);
   const [showTips, setShowTips] = useState(false);
+  // The trial offer card waits until the first-run setup guide is known to be done (no flash under it).
+  const [tipsChecked, setTipsChecked] = useState(false);
   const [progress, setProgress] = useState<ProgressSummary | null>(null);
   const [drawingCount, setDrawingCount] = useState(0);
   const [cameraDenied, setCameraDenied] = useState(false);
@@ -149,9 +154,14 @@ export default function HomeScreen() {
 
   useEffect(() => {
     let alive = true;
-    isFirstRun().then((first) => {
-      if (alive && first) setShowTips(true);
-    });
+    isFirstRun()
+      .then((first) => {
+        if (alive && first) setShowTips(true);
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (alive) setTipsChecked(true);
+      });
     return () => {
       alive = false;
     };
@@ -269,7 +279,8 @@ export default function HomeScreen() {
 
   // Template thumbnails open trace directly; the use is recorded first so it moves to the front of the row.
   // (The thumbnail's BubbleCard fires the selection haptic.)
-  const { access } = usePlus();
+  const plus = usePlus();
+  const { access } = plus;
   const openTemplate = useCallback(
     (tpl: Template) => {
       if (templateLocked(access, HOME_STARTERS, tpl.id)) {
@@ -364,6 +375,33 @@ export default function HomeScreen() {
                 Linking.openSettings().catch(() => {});
               }}
               style={{ marginTop: spaceV2.x1, paddingHorizontal: 0 }}
+            />
+          </BubbleCard>
+        ) : null}
+
+        {/* One-time free-trial offer (3.1.1 disclosure before it starts); "Not now" hides it for good. */}
+        {tipsChecked && !showTips && plus.offerSeen === false && canStartTrial(access) ? (
+          <BubbleCard fill={c.pastels[4]} padding={spaceV2.x5} style={{ marginTop: spaceV2.x4 }}>
+            <TrialOfferText price={plus.price ?? PLUS_PRICE} />
+            <PillButton
+              title={t('plus.startTrial')}
+              icon="clock"
+              haptic="none"
+              disabled={plus.busy}
+              accessibilityHint={t('plus.startTrialHint', { days: TRIAL_DAYS })}
+              onPress={() => {
+                startTrialWithAlerts(plus).catch(() => {});
+              }}
+              style={{ marginTop: spaceV2.x4 }}
+            />
+            <PillButton
+              title={t('plus.offer.notNow')}
+              variant="plain"
+              block
+              onPress={() => {
+                plus.dismissOffer().catch(() => {});
+              }}
+              style={{ marginTop: spaceV2.x1 }}
             />
           </BubbleCard>
         ) : null}

@@ -82,7 +82,6 @@ import {
 import { PillSegmented, type PillSegment } from '../../src/ui/v2/PillSegmented';
 import { usePlus } from '../../src/plus/usePlus';
 import { TRADE_SUBS, inTradeSub, tradeSubCounts, type TradeSub } from '../../src/core/tradeSubs';
-import { LETTER_STYLES, inLetterStyle, letterStyleCounts, letterStyleSample, type LetterStyle } from '../../src/core/letterStyles';
 import { starterIds, templateLocked } from '../../src/plus/access';
 import { STARTER_TEMPLATE_COUNT } from '../../src/plus/entitlement';
 
@@ -96,8 +95,6 @@ const PANEL = spaceV2.x3;
 /** Height of the panel's rounded top / bottom caps (equals their corner radius). */
 const CAP = radiusV2.md;
 const GLYPH = 44;
-const STYLE_GLYPH = 40;
-const STYLE_GAP = 8;
 const EMPTY: ReadonlySet<string> = new Set();
 
 type LevelChoice = 'all' | TemplateLevel;
@@ -196,19 +193,9 @@ export default function TemplatesScreen() {
   useEffect(() => {
     if (shelf !== 'trade') setTradeSub(null);
   }, [shelf]);
-  // owner 24 Oct 2026: Letters has its own style tiles (Bubble, Retro, Calligraphy, Pixel, ...), like Workshop's.
-  const [letterStyle, setLetterStyle] = useState<LetterStyle | null>(null);
-  useEffect(() => {
-    if (shelf !== 'lettering') setLetterStyle(null);
-  }, [shelf]);
   const shelfAll = useMemo(() => shelfPool(TEMPLATES, shelf), [shelf]);
   const subCounts = useMemo(() => tradeSubCounts(shelfAll), [shelfAll]);
-  const styleCounts = useMemo(() => letterStyleCounts(shelfAll), [shelfAll]);
-  const pool = useMemo(
-    () =>
-      shelf === 'trade' ? inTradeSub(shelfAll, tradeSub) : shelf === 'lettering' ? inLetterStyle(shelfAll, letterStyle) : shelfAll,
-    [shelf, shelfAll, tradeSub, letterStyle],
-  );
+  const pool = useMemo(() => (shelf === 'trade' ? inTradeSub(shelfAll, tradeSub) : shelfAll), [shelf, shelfAll, tradeSub]);
   const filters = useMemo<TemplateFilters>(
     () => ({ query: deferredQuery, category, level, collection, favoritesOnly }),
     [deferredQuery, category, level, collection, favoritesOnly],
@@ -234,9 +221,6 @@ export default function TemplatesScreen() {
   }, [filters, shelf]);
 
   const cardWidth = Math.floor((width - gutter * 2 - PANEL * 2 - GAP) / 2);
-  // Letters style tiles: 3 per row (4 on wide screens).
-  const styleCols = width >= 600 ? 4 : 3;
-  const styleTileWidth = Math.floor((width - gutter * 2 - STYLE_GAP * (styleCols - 1)) / styleCols);
 
   // Results change (rows added/removed): ease the grid into its new layout. Skipped under Reduce Motion.
   // Search typing is not animated (the grid follows a deferred query, so the next layout pass is the keystroke's).
@@ -417,49 +401,6 @@ export default function TemplatesScreen() {
             />
           ))}
         </ScrollView>
-      ) : null}
-
-      {shelf === 'lettering' ? (
-        <View
-          accessibilityLabel={t('templates.letterStyle.groupLabel')}
-          style={{ marginTop: spaceV2.x3, flexDirection: 'row', flexWrap: 'wrap', gap: STYLE_GAP }}
-        >
-          <LetterStyleTile
-            width={styleTileWidth}
-            label={t('templates.letterStyle.all')}
-            count={shelfAll.length}
-            active={letterStyle === null}
-            accessibilityLabel={t('templates.categoryChipLabel', { name: t('templates.letterStyle.all'), count: shelfAll.length })}
-            glyph={<Feather name="grid" size={26} color={c.ink} />}
-            onPress={() => {
-              animateResults();
-              setLetterStyle(null);
-            }}
-          />
-          {LETTER_STYLES.filter((st) => styleCounts[st] > 0).map((st) => {
-            const sample = letterStyleSample(shelfAll, st);
-            const name = tDynamic(`templates.letterStyle.${st}`, st);
-            return (
-              <LetterStyleTile
-                key={st}
-                width={styleTileWidth}
-                label={name}
-                count={styleCounts[st]}
-                active={letterStyle === st}
-                accessibilityLabel={t('templates.categoryChipLabel', { name, count: styleCounts[st] })}
-                glyph={
-                  sample ? (
-                    <TemplateSvg template={sample} size={STYLE_GLYPH} color={c.graphite} strokeWidth={(sample.strokeWidth ?? DEFAULT_STROKE_WIDTH) * 2.5} />
-                  ) : null
-                }
-                onPress={() => {
-                  animateResults();
-                  setLetterStyle(letterStyle === st ? null : st);
-                }}
-              />
-            );
-          })}
-        </View>
       ) : null}
 
       {/* Level */}
@@ -778,66 +719,5 @@ function SearchField({ value, onChange }: { value: string; onChange: (v: string)
         </Pressable>
       ) : null}
     </View>
-  );
-}
-
-// Letters style tile (owner 24 Oct 2026): a sample capital A in that style, the style name and how many templates
-// it has, on the Templates pastel card style; the chosen tile is outlined in ink. Calm press (no spring).
-function LetterStyleTile({
-  width,
-  label,
-  count,
-  active,
-  glyph,
-  accessibilityLabel,
-  onPress,
-}: {
-  width: number;
-  label: string;
-  count: number;
-  active: boolean;
-  glyph: ReactNode;
-  accessibilityLabel: string;
-  onPress: () => void;
-}) {
-  const { c, text } = useThemeV2();
-  return (
-    <Pressable
-      onPress={() => {
-        select();
-        onPress();
-      }}
-      accessibilityRole="button"
-      accessibilityState={{ selected: active }}
-      accessibilityLabel={accessibilityLabel}
-      style={({ pressed }) => [
-        squircle,
-        {
-          width,
-          minHeight: sizeV2.touch + 52,
-          borderRadius: radiusV2.md,
-          backgroundColor: active ? c.card : c.pastels[1],
-          borderWidth: active ? 2 : 1,
-          borderColor: active ? c.ink : c.line,
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingVertical: spaceV2.x2,
-          paddingHorizontal: spaceV2.x1,
-          opacity: pressed ? 0.75 : 1,
-        },
-      ]}
-    >
-      <View style={{ height: STYLE_GLYPH, justifyContent: 'center' }}>{glyph}</View>
-      <Text
-        numberOfLines={1}
-        maxFontSizeMultiplier={maxFontScaleV2}
-        style={[text('footnote'), { color: c.ink, fontWeight: active ? '700' : '600', marginTop: spaceV2.x1 }]}
-      >
-        {label}
-      </Text>
-      <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('caption'), { color: c.muted }]}>
-        {count}
-      </Text>
-    </Pressable>
   );
 }

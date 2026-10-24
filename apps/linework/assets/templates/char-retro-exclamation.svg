@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
-  <title>Retro exclamation mark</title>
-  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M225 40Q243 40 253 48Q263 56 263 70Q263 85 253 103L201 196Q197 204 193 207Q189 210 183 210Q170 210 170 195L175 89Q177 40 225 40Z"/>
-    <path d="M205 250Q205 259 200 268Q196 277 187 282Q179 288 168 288Q155 288 146 279Q137 270 137 257Q137 248 141 239Q146 231 155 225Q163 220 174 220Q187 220 196 229Q205 238 205 250Z"/>
-  </g>
-</svg>

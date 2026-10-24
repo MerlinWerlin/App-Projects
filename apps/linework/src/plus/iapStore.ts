@@ -1,19 +1,39 @@
-// Real App Store / Play purchase of Linework Plus through expo-iap (owner decision 22 Oct 2026). Works only in a
-// store build (TestFlight / App Store); in Expo Go the native module is missing, this returns null and the app falls
-// back to the local mock store. Loaded with a guarded require so Expo Go never crashes.
-// Written defensively against the expo-iap API (function names changed between major versions); only a TestFlight
-// sandbox purchase proves it end to end (docs/RELEASE_CHECKLIST.md).
-import { NOT_OWNED, PLUS_STORAGE_KEY, type PlusState, type PlusStorage, type PlusStore } from './entitlement';
+// Real App Store / Play purchases through expo-iap (owner decision 22 Oct 2026): Linework Plus (A$2.99) and the free
+// "14-day Trial" (App Store Review Guideline 3.1.1, docs/OWNER_1024.md). Works only in a store build (TestFlight /
+// App Store); in Expo Go the native module is missing, this returns null and the app falls back to the local mock
+// store. Loaded with a guarded require so Expo Go never crashes.
+// Written defensively against the expo-iap API (function names and purchase fields changed between major versions);
+// only a TestFlight sandbox purchase proves it end to end (docs/RELEASE_CHECKLIST.md). Imports carry `.ts` so Node
+// tests can run it with a fake store module (src/plus/iapStore.test.ts).
+import { NOT_OWNED, PLUS_STORAGE_KEY, type PlusState, type PlusStorage, type PlusStore } from './entitlement.ts';
+import { TRIAL_KEY, trialStartFromPurchase } from './access.ts';
 
 /** Product id to create in App Store Connect (non-consumable, A$2.99). */
 export const PLUS_SKU = 'com.jared797.linework.plus';
+/** The free trial (non-consumable, price Free, reference and display name "14-day Trial"; guideline 3.1.1). */
+export const TRIAL_SKU = 'com.jared797.linework.trial14';
+const SKUS = [PLUS_SKU, TRIAL_SKU];
 
 declare const require: (id: string) => unknown;
 
-type Purchase = { productId?: string; id?: string; transactionId?: string };
+type Purchase = { productId?: string; id?: string; transactionId?: string } & Record<string, unknown>;
 type Product = { id?: string; productId?: string; displayPrice?: string; localizedPrice?: string };
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Iap = Record<string, any>;
+
+/**
+ * 'started': the free trial transaction went through now. 'restored': the store already had one (reinstall or an
+ * earlier start), so `start` is its original date and may be long past. 'cancelled': the person closed the sheet.
+ * 'unavailable': no store connection or the product isn't on sale. 'failed': the store answered with an error.
+ */
+export type TrialStatus = 'started' | 'restored' | 'cancelled' | 'unavailable' | 'failed';
+export type TrialResult = { status: TrialStatus; start: number | null };
+
+export type IapStore = PlusStore & {
+  price(): Promise<string | null>;
+  /** Buys (free) the "14-day Trial" item, or finds the one already owned; saves the start to TRIAL_KEY. */
+  startTrial(): Promise<TrialResult>;
+};
 
 function loadIap(): Iap | null {
   try {
@@ -24,11 +44,16 @@ function loadIap(): Iap | null {
   }
 }
 
-const isPlus = (p: Purchase | null | undefined) => !!p && (p.productId === PLUS_SKU || p.id === PLUS_SKU);
+const isSku = (sku: string) => (p: Purchase | null | undefined) => !!p && (p.productId === sku || p.id === sku);
+const isPlus = isSku(PLUS_SKU);
+const isTrial = isSku(TRIAL_SKU);
 const cancelled = (e: unknown) => /cancel/i.test(String((e as { code?: string; message?: string })?.code ?? '') + String((e as Error)?.message ?? ''));
 
-export function createIapStore(storage: PlusStorage, now: () => number = () => Date.now()): (PlusStore & { price(): Promise<string | null> }) | null {
-  const iap = loadIap();
+type Bought = { status: 'bought'; purchase: Purchase } | { status: 'cancelled' | 'failed' };
+
+/** `module` is for tests (a fake expo-iap); the app passes nothing and gets the guarded require. */
+export function createIapStore(storage: PlusStorage, now: () => number = () => Date.now(), module?: Iap | null): IapStore | null {
+  const iap = module === undefined ? loadIap() : module;
   if (!iap) return null;
   let connected: Promise<boolean> | null = null;
   const connect = () => {
@@ -50,6 +75,15 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
     }
     return s;
   };
+  const saveTrial = async (p: Purchase): Promise<number> => {
+    const start = trialStartFromPurchase(p, now());
+    try {
+      await storage.set(TRIAL_KEY, String(start));
+    } catch {
+      // the store brings it back on the next restore
+    }
+    return start;
+  };
   const readSaved = async (): Promise<PlusState> => {
     try {
       const raw = await storage.get(PLUS_STORAGE_KEY);
@@ -61,9 +95,9 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
   };
   const products = async (): Promise<Product[]> => {
     const tries: (() => Promise<unknown>)[] = [];
-    if (typeof iap.fetchProducts === 'function') tries.push(() => iap.fetchProducts({ skus: [PLUS_SKU], type: 'in-app' }));
-    if (typeof iap.requestProducts === 'function') tries.push(() => iap.requestProducts({ skus: [PLUS_SKU], type: 'inapp' }));
-    if (typeof iap.getProducts === 'function') tries.push(() => iap.getProducts([PLUS_SKU]));
+    if (typeof iap.fetchProducts === 'function') tries.push(() => iap.fetchProducts({ skus: SKUS, type: 'in-app' }));
+    if (typeof iap.requestProducts === 'function') tries.push(() => iap.requestProducts({ skus: SKUS, type: 'inapp' }));
+    if (typeof iap.getProducts === 'function') tries.push(() => iap.getProducts(SKUS));
     for (const f of tries) {
       try {
         const r = await f();
@@ -74,13 +108,80 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
     }
     return [];
   };
-  const restore = async (): Promise<PlusState> => {
-    if (!(await connect())) return readSaved();
+  const owned = async (): Promise<Purchase[] | null> => {
     try {
       const list = (await iap.getAvailablePurchases()) as Purchase[] | null;
-      if (Array.isArray(list) && list.some(isPlus)) return saveOwned();
+      return Array.isArray(list) ? list : null;
     } catch {
-      // fall back to what this phone remembers
+      return null;
+    }
+  };
+  /** The trial transaction among `list`, earliest first if the store lists it more than once. */
+  const trialIn = (list: Purchase[]): Purchase | null => {
+    const all = list.filter(isTrial);
+    if (all.length === 0) return null;
+    const t = now();
+    return all.reduce((a, b) => (trialStartFromPurchase(b, t) < trialStartFromPurchase(a, t) ? b : a));
+  };
+
+  /** One non-consumable purchase (Plus or the free trial). Resolves once; never hangs the button. */
+  const buy = async (sku: string, matches: (p: Purchase | null | undefined) => boolean): Promise<Bought> => {
+    await products(); // StoreKit needs the product loaded first
+    return new Promise<Bought>((resolve) => {
+      let done = false;
+      const subs: { remove?: () => void }[] = [];
+      let timer: ReturnType<typeof setTimeout> | null = null;
+      const finish = (r: Bought) => {
+        if (done) return;
+        done = true;
+        for (const sub of subs) sub?.remove?.();
+        if (timer) clearTimeout(timer);
+        resolve(r);
+      };
+      const onPurchase = async (p: Purchase) => {
+        if (!matches(p) || done) return;
+        try {
+          await iap.finishTransaction({ purchase: p, isConsumable: false });
+        } catch {
+          // Apple re-delivers unfinished transactions; the purchase still counts
+        }
+        finish({ status: 'bought', purchase: p });
+      };
+      try {
+        if (typeof iap.purchaseUpdatedListener === 'function') subs.push(iap.purchaseUpdatedListener((p: Purchase) => void onPurchase(p)));
+        if (typeof iap.purchaseErrorListener === 'function')
+          subs.push(iap.purchaseErrorListener((e: unknown) => finish({ status: cancelled(e) ? 'cancelled' : 'failed' })));
+      } catch {
+        // listeners optional
+      }
+      const shapes = [
+        () => iap.requestPurchase({ request: { ios: { sku }, android: { skus: [sku] } }, type: 'in-app' }),
+        () => iap.requestPurchase({ request: { sku, skus: [sku] }, type: 'inapp' }),
+      ];
+      const attempt = async (i: number): Promise<void> => {
+        try {
+          const r = (await shapes[i]!()) as Purchase | Purchase[] | null | undefined;
+          const got = Array.isArray(r) ? r.find(matches) : r;
+          if (got && matches(got)) await onPurchase(got);
+        } catch (e) {
+          if (cancelled(e)) return finish({ status: 'cancelled' });
+          if (i + 1 < shapes.length) return attempt(i + 1);
+          finish({ status: 'failed' });
+        }
+      };
+      void attempt(0);
+      // Never hang the button: give up waiting after 3 minutes (a late purchase is found by Restore).
+      timer = setTimeout(() => finish({ status: 'failed' }), 180_000);
+    });
+  };
+
+  const restore = async (): Promise<PlusState> => {
+    if (!(await connect())) return readSaved();
+    const list = await owned();
+    if (list) {
+      const trial = trialIn(list);
+      if (trial) await saveTrial(trial);
+      if (list.some(isPlus)) return saveOwned();
     }
     return readSaved();
   };
@@ -97,50 +198,21 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
       const saved = await readSaved();
       if (saved.owned) return saved;
       if (!(await connect())) return saved;
-      await products(); // StoreKit needs the product loaded first
-      return new Promise<PlusState>((resolve) => {
-        let done = false;
-        const subs: { remove?: () => void }[] = [];
-        const finish = (s: PlusState) => {
-          if (done) return;
-          done = true;
-          for (const sub of subs) sub?.remove?.();
-          resolve(s);
-        };
-        const onPurchase = async (p: Purchase) => {
-          if (!isPlus(p)) return;
-          try {
-            await iap.finishTransaction({ purchase: p, isConsumable: false });
-          } catch {
-            // Apple re-delivers unfinished transactions; ownership still counts
-          }
-          finish(await saveOwned());
-        };
-        try {
-          if (typeof iap.purchaseUpdatedListener === 'function') subs.push(iap.purchaseUpdatedListener((p: Purchase) => void onPurchase(p)));
-          if (typeof iap.purchaseErrorListener === 'function') subs.push(iap.purchaseErrorListener(() => finish(saved)));
-        } catch {
-          // listeners optional
-        }
-        const shapes = [
-          () => iap.requestPurchase({ request: { ios: { sku: PLUS_SKU }, android: { skus: [PLUS_SKU] } }, type: 'in-app' }),
-          () => iap.requestPurchase({ request: { sku: PLUS_SKU, skus: [PLUS_SKU] }, type: 'inapp' }),
-        ];
-        const attempt = async (i: number): Promise<void> => {
-          try {
-            const r = (await shapes[i]!()) as Purchase | Purchase[] | null | undefined;
-            const got = Array.isArray(r) ? r.find(isPlus) : r;
-            if (got && isPlus(got)) await onPurchase(got);
-          } catch (e) {
-            if (cancelled(e)) return finish(saved);
-            if (i + 1 < shapes.length) return attempt(i + 1);
-            finish(saved);
-          }
-        };
-        void attempt(0);
-        // Never hang the button: give up waiting after 3 minutes (a late purchase is found by Restore).
-        setTimeout(() => finish(saved), 180_000);
-      });
+      const r = await buy(PLUS_SKU, isPlus);
+      return r.status === 'bought' ? saveOwned() : saved;
+    },
+    async startTrial() {
+      if (!(await connect())) return { status: 'unavailable', start: null };
+      // Already owned (reinstall, second phone on the same Apple ID): keep the original date, never restart.
+      const list = await owned();
+      const existing = list ? trialIn(list) : null;
+      if (existing) return { status: 'restored', start: await saveTrial(existing) };
+      const r = await buy(TRIAL_SKU, isTrial);
+      if (r.status === 'bought') return { status: 'started', start: await saveTrial(r.purchase) };
+      if (r.status === 'cancelled') return { status: 'cancelled', start: null };
+      // Tell "the store doesn't offer the trial" apart from a one-off error, for the alert text.
+      const offered = (await products()).some((x) => x.id === TRIAL_SKU || x.productId === TRIAL_SKU);
+      return { status: offered ? 'failed' : 'unavailable', start: null };
     },
     async tip() {
       return { ok: false };

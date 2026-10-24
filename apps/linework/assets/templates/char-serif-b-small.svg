@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
-  <title>Classic serif small b</title>
-  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M188 185V244Q188 257 194 266Q199 276 209 276Q219 276 223 262Q227 248 227 214V198Q227 165 224 154Q221 143 212 143Q203 143 195 154Q188 166 188 185Z"/>
-    <path d="M188 47V157Q200 130 229 130Q287 130 287 208Q287 247 271 266Q255 285 223 285Q207 285 198 280Q189 275 186 263L184 282H113V276H130V53H113V47Z"/>
-  </g>
-</svg>

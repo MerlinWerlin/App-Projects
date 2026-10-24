@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
-  <title>Block question mark</title>
-  <g fill="none" stroke="#22201C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M250 219 145 234Q137 234 134 232Q131 229 129 222L121 170Q119 156 134 154L211 144Q222 142 222 132Q222 121 211 121H104Q90 121 90 107V60Q90 46 104 46H229Q267 46 289 63Q310 81 310 114V155Q310 187 293 201Q277 215 250 219Z"/>
-    <path d="M206 325H135Q121 325 121 311V260Q121 253 125 249Q128 246 135 246H206Q220 246 220 260V311Q220 325 206 325Z"/>
-  </g>
-</svg>
