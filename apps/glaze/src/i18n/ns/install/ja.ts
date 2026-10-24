@@ -146,4 +146,30 @@ export const ja: NonNullable<LocaleMessages['install']> = {
     preview: 'アイコンの固定はAndroid版Glazeの正式版で対応します。このプレビューでは、アイコンを写真に保存し、ランチャーのアイコン設定を使ってください。',
     pin: 'アイコンをホーム画面に固定',
   },
+  // T126: profile served to Safari from this iPhone, and the guided Shortcuts path.
+  safari: {
+    intro: 'Glazeがアイコンを描き、このiPhone上でプロファイルを1つ作成して、iPhoneから直接Safariで開きます。何もアップロードされません。',
+    generateHint: 'アイコンを描き、プロファイルを作成してSafariで開きます',
+    opening: 'Safariを開いています',
+    openAgain: 'もう一度Safariで開く',
+    openAgainA11y: '{file}をもう一度Safariで開く',
+    shareInstead: '代わりにファイルを共有',
+    hurry: 'Glazeが開いてから約1分間、Safariはプロファイルを取得できます。Safariが接続できないと表示したら、ここに戻って「もう一度Safariで開く」をタップしてください。',
+    oneAtATime: 'アイコンは{files}個のプロファイルに分かれています。iOSがダウンロード済みとして保持できるプロファイルは一度に1つです。設定でパート1をインストールし、ここに戻ってから次のパートを開いてください。',
+    failed: 'GlazeはプロファイルをSafariで開けませんでした。「代わりにファイルを共有」をタップしてメールかAirDropで自分に送るか、ショートカットを使ってください。',
+    fallbackNote: 'このビルドではプロファイルをSafariで開けないため共有シートを使います。「ファイル」に保存したプロファイルはiOSがインストールしないことがよくあります。ショートカット（ここではおすすめ）を使うか、メールかAirDropで自分にファイルを送ってください。',
+    page: { title: 'Glazeアイコン', body: '「インストール」をタップします。Safariが構成プロファイルのダウンロードを許可するか尋ねたら「許可」、次に「閉じる」をタップし、設定で完了します。', button: 'インストール' },
+    cards: {
+      safari: { title: 'Safariでインストール', body: 'Safariで「インストール」をタップします。' },
+      allow: { title: 'ダウンロードを許可', body: 'Safariが構成プロファイルのダウンロードを許可するか尋ねます。「許可」、次に「閉じる」をタップします。' },
+      settings: { title: '設定でインストール', body: '設定を開き、上部の「プロファイルがダウンロードされました」（または「一般」>「VPNとデバイス管理」）をタップし、「インストール」をタップしてパスコードを入力し、「インストール」をタップします。' },
+      home: { title: 'アイコンが表示されます', body: 'ホーム画面にアイコンが表示されます。' },
+    },
+  },
+  guided: {
+    next: '次：{app}',
+    showNext: '手順を表示',
+    allDone: 'すべてのアイコンが完了しました。元のアイコンはAppライブラリに移動できます。',
+    oneAtATime: '1つずつ進めます。次のAppの手順に従ってチェックを付けると、Glazeがその次の手順を開きます。',
+  },
 };

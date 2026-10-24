@@ -22,7 +22,6 @@ import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming, typ
 import {
   DEFAULT_CROP,
   SPEEDS,
-  addToPlaylist,
   applyPan,
   clampCrop,
   clampTrim,
@@ -32,20 +31,16 @@ import {
   lockAspect,
   loopDurationMs,
   maxTrimMs,
-  removeFromPlaylist,
   xAtMs,
   type Crop,
   type LoopProject,
   type LoopSpeed,
   type Trim,
 } from '../../src/core/loop';
-import type { LivelockReason } from '../../src/native/livelock';
 import { androidNative } from '../../src/native/android';
 import {
   getProject,
   largeSourceIssue,
-  loadLoops,
-  setPlaylist,
   sourceFileBytes,
   upsertProject,
 } from '../../src/store/loops';
@@ -55,15 +50,9 @@ import type { Script } from '../../src/core/i18n';
 import { continuous, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import type { FeatherName } from '../../src/ui/featherName';
-import {
-  LiveUnavailableSheet,
-  LivelockRunningCard,
-  setOnLockScreen,
-  useLivelockState,
-} from '../../src/ui/LiveUnavailableSheet';
 import { SaveAsLivePhotoButton } from '../../src/ui/LivePhotoSheet';
 import { LiveSaveToPhotos } from '../../src/ui/LiveSaveToPhotos';
-import { LiveStepsCard } from '../../src/ui/LiveStepsCard';
+import { LivePhotoGuide } from '../../src/ui/LivePhotoGuide';
 import { PhoneFrame, phoneScreenSize } from '../../src/ui/PhoneFrame';
 import { PillButton } from '../../src/ui/PillButton';
 import { PressableScale } from '../../src/ui/PressableScale';
@@ -155,14 +144,7 @@ function Editor({ initial }: EditorProps) {
   const type = typeFor(script);
   const win = useWindowDimensions();
   const [project, setProject] = useState<LoopProject>(initial);
-  const [inPlaylist, setInPlaylist] = useState(false);
   const [scrollEnabled, setScrollEnabled] = useState(true);
-  const [unavailable, setUnavailable] = useState<{ visible: boolean; reason: LivelockReason }>({
-    visible: false,
-    reason: null,
-  });
-  // Live Lock Screen state (always idle in Expo Go, so nothing below changes there).
-  const live = useLivelockState();
   // The preview's player, for grabbing a still frame (T30).
   const playerRef = useRef<VideoPlayer | null>(null);
 
@@ -200,16 +182,6 @@ function Editor({ initial }: EditorProps) {
     },
     [],
   );
-
-  useEffect(() => {
-    let alive = true;
-    loadLoops().then((s) => {
-      if (alive) setInPlaylist(s.playlist.includes(initial.id));
-    });
-    return () => {
-      alive = false;
-    };
-  }, [initial.id]);
 
   // Size check reads file metadata only (never the bytes).
   const [sourceBytes, setSourceBytes] = useState<number | null>(null);
@@ -291,16 +263,6 @@ function Editor({ initial }: EditorProps) {
   const setSpeed = (speed: LoopSpeed) => {
     tick();
     setProject((p) => ({ ...p, speed, trim: clampTrim(p.trim, p.sourceDurationMs, { speed }) }));
-  };
-
-  const togglePlaylist = async () => {
-    tick();
-    const s = await loadLoops();
-    const next = inPlaylist ? removeFromPlaylist(s.playlist, project.id) : addToPlaylist(s.playlist, project.id);
-    await upsertProject(latest.current);
-    dirty.current = false;
-    const saved = await setPlaylist(next);
-    setInPlaylist(saved.playlist.includes(project.id));
   };
 
   const hasTrim = project.kind === 'video' && project.sourceDurationMs > 0; // i18n-ignore (generic/comparison, not text)
@@ -438,34 +400,21 @@ function Editor({ initial }: EditorProps) {
         <Text style={[...type.small, { color: c.inkSecondary }]}>{t('live.editor.gifSpeedNote')}</Text>
       ) : null}
 
-      <PillButton
-        label={inPlaylist ? t('live.editor.inPlaylist') : t('live.editor.addToPlaylist')}
-        variant="tinted"
-        block
-        icon={inPlaylist ? 'check' : 'plus'}
-        accessibilityLabel={inPlaylist ? t('live.editor.inPlaylistA11y') : t('live.editor.addToPlaylist')}
-        onPress={() => void togglePlaylist()}
-      />
-      <PillButton
-        label={t('live.editor.setOnLock')}
-        icon="smartphone"
-        block
-        disabled={live.state === 'preparing'}
-        onPress={() => {
-          haptic('select');
+      {/* T127: Live Lock Screen = a Live Photo the user sets as the wallpaper themselves. iOS lets
+          no app set a wallpaper, so the main action saves the Live Photo and the guide shows the
+          three steps (Photos › Share › Use as Wallpaper › Live Photo on). The old Now Playing mode
+          is no longer offered anywhere in the UI (docs/OWNER_1024E.md (part C)). */}
+      <SaveAsLivePhotoButton
+        getProject={() => latest.current}
+        onBeforeSave={() => {
           upsertProject(latest.current).catch(() => {});
           dirty.current = false;
-          void setOnLockScreen([latest.current], (reason) => setUnavailable({ visible: true, reason }));
         }}
       />
-      <LivelockRunningCard state={live} />
-
-      {/* T11: Live Photo export (all iOS versions; the stopgap before iOS 26). */}
-      <SaveAsLivePhotoButton getProject={() => latest.current} />
+      <LivePhotoGuide kind={project.kind} />
 
       {/* T30: what Expo Go (and every build) can save: a still-frame wallpaper and the clip. */}
       <LiveSaveToPhotos getProject={() => latest.current} getPlayer={() => playerRef.current} />
-      <LiveStepsCard kind={project.kind} />
 
       {androidNative.isAndroid ? (
         <PillButton
@@ -483,11 +432,6 @@ function Editor({ initial }: EditorProps) {
         />
       ) : null}
 
-      <LiveUnavailableSheet
-        visible={unavailable.visible}
-        reason={unavailable.reason}
-        onClose={() => setUnavailable((u) => ({ ...u, visible: false }))}
-      />
     </ScrollView>
   );
 }

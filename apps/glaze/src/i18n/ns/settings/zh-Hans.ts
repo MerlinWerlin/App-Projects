@@ -55,7 +55,7 @@ export const zhHans: NonNullable<LocaleMessages['settings']> = {
     feedbackHint: '用你自己的邮件应用联系 Glaze 团队',
   },
   plus: {
-    body: '一次性付费。永不订阅。自制图标、两种安装方式以及使用你自己视频的 Live Lock 始终免费。',
+    body: '一次性付费。永不订阅。自制图标、两种安装方式以及用你自己的视频制作实况照片始终免费。',
     more: 'Glaze Plus 包含什么',
     moreHint: '说明一次性解锁及其包含的内容',
   },
@@ -82,7 +82,7 @@ export const zhHans: NonNullable<LocaleMessages['settings']> = {
     addedTitle: '图标是添加的，而不是替换',
     addedBody: 'iOS 不允许任何应用更改其他应用的图标。因此 Glaze 会在主屏幕上添加带有新外观的快捷方式。轻点即可打开真正的应用。',
     waysTitle: '两种添加方式',
-    waysBody: '批量：一个描述文件一次添加所有图标（推荐）。快捷指令：如果不想安装描述文件，可以用“快捷指令”应用逐个添加。',
+    waysBody: '快捷指令（推荐）：Glaze 会引导你用“快捷指令”应用逐个添加图标。批量（可选测试版）：一个描述文件一次添加所有图标。',
     originalsTitle: '原来的图标去哪了',
     originalsBody: '长按原图标，轻点“移除 App”，再轻点“从主屏幕移除”。应用仍然安装着，并会移到 App 资源库（在最后一页继续向左滑动）。',
     removeTitle: '移除 Glaze 图标',

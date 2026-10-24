@@ -2,13 +2,15 @@
 
 T67 (M5, oversight D75-2). Source and renderer: `assets/store/` (see its README). All copy and art here is Glaze's own: no competitor wording, names or artwork, no brand logos, no famous characters, no ratings, ranks, download counts or laurel badges. The theme counts on the shots come from the code; widget contents are sample data.
 
+**Positioning (owner decision 24 Oct 2026):** themes, matching icons, themed widgets and wallpaper packs are the pitch. The Live Photo maker is an extra; never promise a constantly looping Lock Screen on iPhone (parked: `docs/future/live-wallpaper/README.md`).
+
 ## Title and subtitle (draft, owner decides)
 
 App Store limits: title 30 characters, subtitle 30.
 
 | Field | Draft | Chars | Alternatives |
 |---|---|---|---|
-| Title | Glaze: Themes & Live Lock | 25 | Glaze: Icon Themes & Widgets (28) |
+| Title | Glaze: Icon Themes & Widgets | 28 | Glaze: Themes & Widgets (23) |
 | Subtitle | Widgets, icons and wallpapers | 29 | Cute themes. One price. (23) · Matching widgets and icons (26) |
 
 The subtitle follows the playbook (lead with outcome nouns). The title keeps "Glaze" first; check the name is free in the store and trademark search before submission.
@@ -19,13 +21,13 @@ Files: `assets/store/01.png` … `08.png` (style A, chosen). Headlines and subca
 
 | # | Shows | Headline | Subcaption |
 |---|---|---|---|
-| 1 | Hook: Cherry Blossom Home Screen with matching clock, calendar and photo widgets; floating quote widget and icons | Themes, icons and live lock screens. *One price. No weekly subscription.* | Glaze Plus is a one-time purchase. Start free. |
+| 1 | Hook: Cherry Blossom Home Screen with matching clock, calendar and photo widgets; floating quote widget and icons | Themes, icons and widgets that match. *One price. No weekly subscription.* | Glaze Plus is a one-time purchase. Start free. |
 | 2 | Themes tab: category bubbles, "50 themes · 18 free" chip, theme cards with Free / Plus badges | 50 original themes | 18 free to start. Cute, cosy, neon, seasonal and more, all drawn by us. |
 | 3 | Celestial Night Home Screen with clock, calendar, battery and quote widgets in the theme's colours | Every theme has matching widgets | Clock, calendar, photo, quote and battery, in small, medium and large. |
 | 4 | Widget Studio: live preview, background chips, colour swatches, font chips drawn in their own font, size slider, Add widget | Make every widget yours | Choose a photo, colours, fonts and size, then add it to your Home Screen. |
 | 5 | Cloud Nine Home Screen with water, sleep and mood habit widgets and their buttons | Tap to log water, sleep and mood | Interactive habit widgets that work right on your Home Screen. |
 | 6 | Wallpapers tab (Still / Live / Pairs) with LIVE badges; floating Lock + Home pair | Wallpapers that move | Still and live wallpapers, plus matching Lock and Home Screen pairs. |
-| 7 | Live Lock Screen: a Lock Screen over an illustrated beach clip, Live pill, floating trim strip and play button | Your own video on your Lock Screen | Live Lock Screen for iOS 26, made from your own clips. Free in Glaze. |
+| 7 | Live Photo maker (an extra): a Lock Screen over an illustrated beach clip, Live pill, floating trim strip and play button | Turn a clip into a Live Photo | A Live Photo wallpaper that moves when you wake your iPhone. Free in Glaze. |
 | 8 | Seasonal collections: Halloween (Now), Diwali (Soon), Christmas, with real collection themes | A fresh look for every season | Halloween, Diwali, Christmas, Lunar New Year and more, ready when the day comes. |
 
 Shots 2 to 8 also carry a small "No ads · No weekly subscription" chip, which repeats the price promise from shot 1 (the playbook's "one price" shot is folded into the hook and these chips, so the set stays at 8).

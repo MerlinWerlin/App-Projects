@@ -17,6 +17,8 @@ export const ko: NonNullable<LocaleMessages['themes']> = {
   plusPacks: 'Plus 팩',
   plusPacksBody: '무엇이든 미리 볼 수 있어요. Glaze Plus는 한 번만 구매하며 구독이 아닙니다.',
   space: { title: '우주 · 실제 웹 망원경 사진', body: '무료. 제임스 웹 우주 망원경의 실제 이미지이며, 테마에서 다운로드를 탭할 때만 사진을 받습니다.' },
+  // T130: the free art-pack themes (themes/<id>/).
+  art: { title: '아트 · 오리지널 배경화면', body: '무료. 어울리는 아이콘과 떠 있는 위젯 아트가 함께하는 오리지널 아트 배경화면입니다. 다운로드할 필요가 없습니다.' },
   plusPacksEmpty: '아직 Plus 팩이 없습니다',
   packEmpty: '{name}은(는) 아직 제작 중입니다',
   plusNote: 'Glaze Plus.',

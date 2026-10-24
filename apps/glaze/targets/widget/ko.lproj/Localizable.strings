@@ -50,3 +50,8 @@
 "Choose a photo in Glaze" = "Glaze에서 사진을 고르세요";
 "Little Line" = "한 줄";
 "A short, gentle line that changes every hour." = "매시간 바뀌는 짧고 다정한 한 줄.";
+
+/* Seamless widget (SeamlessWidget.swift, T131/T133) */
+"Seamless" = "심리스";
+"Art that floats on your wallpaper. Set it up in Glaze." = "배경화면 위에 떠 있는 아트. Glaze에서 설정하세요.";
+"Set up in Glaze" = "Glaze에서 설정";

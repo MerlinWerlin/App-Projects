@@ -17,6 +17,8 @@ export const zhHans: NonNullable<LocaleMessages['themes']> = {
   plusPacks: 'Plus 主题包',
   plusPacksBody: '任何一个都可以预览。Glaze Plus 一次性解锁，绝不订阅。',
   space: { title: '太空 · 韦布真实照片', body: '免费。詹姆斯·韦布空间望远镜的真实图像；只有在主题中轻点“下载”时才会下载照片。' },
+  // T130: the free art-pack themes (themes/<id>/).
+  art: { title: '艺术 · 原创壁纸', body: '免费。原创艺术壁纸，配有相称的图标和悬浮的小组件插画。无需下载。' },
   plusPacksEmpty: '暂无 Plus 主题包',
   packEmpty: '{name} 仍在绘制中',
   plusNote: 'Glaze Plus。',

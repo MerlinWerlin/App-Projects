@@ -235,7 +235,7 @@ export function buildProfiles(opts: BuildProfileOptions & { maxBytes?: number })
 
 export function installGuide(profileCount = 1): string[] {
   const steps = [
-    'Save the profile to Files, then open it from Files (or open it in Safari). iOS shows "Profile Downloaded".',
+    'Open the profile in Safari (Glaze opens it for you in builds that can), tap Allow, then Close. Mail or AirDrop to yourself also works. A copy saved to Files often does not install. iOS shows "Profile Downloaded".',
     'Open Settings. Tap "Profile Downloaded" near the top (or go to General > VPN & Device Management) and pick the Glaze icons profile.',
     'Tap Install and enter your passcode. iOS marks the profile "Not Verified" because it is not signed by a company certificate. That is expected: it only adds Home Screen shortcuts that open your apps, and it can be removed any time.',
     'Tap Install again, then Done. Your new icons appear on the Home Screen.',

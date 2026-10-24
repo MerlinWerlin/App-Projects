@@ -17,6 +17,8 @@ export const hi: NonNullable<LocaleMessages['themes']> = {
   plusPacks: 'Plus पैक',
   plusPacksBody: 'किसी का भी प्रीव्यू देखें। Glaze Plus एक बार की खरीद है, कभी सब्सक्रिप्शन नहीं।',
   space: { title: 'अंतरिक्ष · वेब की असली तस्वीरें', body: 'मुफ़्त। जेम्स वेब स्पेस टेलीस्कोप की असली तस्वीरें; हर फ़ोटो तभी डाउनलोड होती है जब आप थीम में डाउनलोड पर टैप करते हैं।' },
+  // T130: the free art-pack themes (themes/<id>/).
+  art: { title: 'आर्ट · मौलिक वॉलपेपर', body: 'मुफ़्त। मौलिक आर्ट वॉलपेपर, मेल खाते आइकन और तैरती विजेट आर्ट के साथ। कुछ डाउनलोड नहीं करना।' },
   plusPacksEmpty: 'अभी कोई Plus पैक नहीं',
   packEmpty: '{name} अभी बनाया जा रहा है',
   plusNote: 'Glaze Plus।',

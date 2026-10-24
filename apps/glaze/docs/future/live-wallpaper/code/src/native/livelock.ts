@@ -10,6 +10,7 @@ import { Dimensions, Platform } from 'react-native';
 import { requireOptionalNativeModule } from 'expo';
 import { deviceForScreen, type LoopProject } from '../core/loop';
 import { buildLivelockPayload } from '../core/livelockPayload';
+import type { LoopArtwork } from '../core/liveLockView';
 
 export type LivelockReason = 'expo-go' | 'android' | 'ios-version' | 'not-built' | null;
 export type LivelockAvailability = { available: boolean; reason: LivelockReason };
@@ -23,6 +24,11 @@ export type LivelockState = {
   total: number;
   projectId?: string;
   reason?: string;
+  /**
+   * T135: what the Lock Screen gets while running: 3:4 animated artwork, square animated artwork,
+   * or only the still ("static": this iOS/SDK doesn't list the 3x4 key). Undefined from older builds.
+   */
+  artwork?: LoopArtwork;
 };
 
 export const IDLE_STATE: LivelockState = { state: 'idle', index: 0, count: 0, prepared: 0, total: 0 };
@@ -107,6 +113,7 @@ function toState(v: unknown): LivelockState {
     total: num(o.total),
     projectId: typeof o.projectId === 'string' ? o.projectId : undefined,
     reason: typeof o.reason === 'string' ? o.reason : undefined,
+    artwork: o.artwork === 'animated-3x4' || o.artwork === 'animated-1x1' || o.artwork === 'static' ? o.artwork : undefined,
   };
 }
 
@@ -139,6 +146,7 @@ export const livelock: LivelockAdapter = {
   async start(projects) {
     const mod = await availableNative();
     if (!mod) return false; // Unavailable: callers check isAvailable() and show the explainer sheet.
+    // The device only sets the aspect of the user's crop; the export is the 3:4 artwork (T135).
     const screen = Dimensions.get('screen');
     const built = buildLivelockPayload(projects, deviceForScreen(screen.width, screen.height));
     if (!built.ok) throw new Error(`livelock: ${built.error}`);

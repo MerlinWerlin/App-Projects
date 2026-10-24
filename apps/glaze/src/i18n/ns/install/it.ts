@@ -163,4 +163,30 @@ export const it: NonNullable<LocaleMessages['install']> = {
     preview: 'Il fissaggio delle icone arriverà con la versione completa di Glaze per Android. In questa anteprima, salva le icone in Foto e usa le impostazioni icone del tuo launcher.',
     pin: 'Fissa le icone nella schermata Home',
   },
+  // T126: profile served to Safari from this iPhone, and the guided Shortcuts path.
+  safari: {
+    intro: 'Glaze disegna le tue icone, crea un profilo su questo iPhone e lo apre in Safari direttamente dall’iPhone. Non viene caricato nulla.',
+    generateHint: 'Disegna le icone, crea il profilo e lo apre in Safari',
+    opening: 'Apertura di Safari',
+    openAgain: 'Apri di nuovo in Safari',
+    openAgainA11y: 'Apri di nuovo {file} in Safari',
+    shareInstead: 'Condividi il file',
+    hurry: 'Safari può scaricare il profilo per circa un minuto dopo che Glaze lo ha aperto. Se Safari dice che non riesce a connettersi, torna qui e tocca Apri di nuovo in Safari.',
+    oneAtATime: 'Le tue icone sono divise in {files} profili. iOS tiene un solo profilo scaricato alla volta: installa la parte 1 in Impostazioni, torna qui e poi apri la parte successiva.',
+    failed: 'Glaze non è riuscito ad aprire il profilo in Safari. Tocca Condividi il file e invialo a te stesso con Mail o AirDrop, oppure usa Comandi Rapidi.',
+    fallbackNote: 'Questa versione non può aprire il profilo in Safari, quindi passa dal menu di condivisione, e spesso iOS non installa un profilo salvato in File. Usa Comandi Rapidi (consigliato qui) o invia il file a te stesso con Mail o AirDrop.',
+    page: { title: 'Icone Glaze', body: 'Tocca Installa. Safari chiede di consentire il download di un profilo di configurazione: tocca Consenti, poi Chiudi, e completa in Impostazioni.', button: 'Installa' },
+    cards: {
+      safari: { title: 'Installa in Safari', body: 'Tocca Installa in Safari.' },
+      allow: { title: 'Consenti il download', body: 'Safari chiede di consentire il download di un profilo di configurazione: tocca Consenti, poi Chiudi.' },
+      settings: { title: 'Installa in Impostazioni', body: 'Apri Impostazioni: tocca “Profilo scaricato” in alto (o Generali > VPN e gestione dispositivi), tocca Installa, inserisci il codice, Installa.' },
+      home: { title: 'Compaiono le tue icone', body: 'Le tue icone compaiono nella schermata Home.' },
+    },
+  },
+  guided: {
+    next: 'Prossima: {app}',
+    showNext: 'Mostra i passaggi',
+    allDone: 'Tutte le icone fatte. Puoi spostare le icone originali nella Libreria app.',
+    oneAtATime: 'Un’icona alla volta: segui i passaggi per l’app successiva, spuntala e Glaze apre i passaggi per la prossima.',
+  },
 };

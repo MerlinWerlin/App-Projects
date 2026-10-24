@@ -4,7 +4,7 @@
 //    crop and captured at the device's Lock Screen pixels through useOffscreenCapture.
 //  - Save the clip: a copy of the source video / GIF, so it can be used with the full build.
 // Expo Go safe: expo-video, expo-image, expo-media-library and view-shot only. The native
-// "Set on Lock Screen" and "Save as Live Photo" buttons stay as they are.
+// "Save as Live Photo" button (the Live Lock Screen path, T127) stays separate.
 import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage, type ImageProps } from 'expo-image';
 import * as MediaLibrary from 'expo-media-library/legacy';
@@ -71,8 +71,8 @@ export function LiveSaveToPhotos({ getProject, getPlayer }: Props) {
   const [busy, setBusy] = useState<'still' | 'clip' | null>(null);
   const saver = useOffscreenCapture<FrameData>({ waitForReady: true, readyTimeoutMs: 8000 });
   const kind = getProject().kind;
-  const options = localizedSaveOptions(t, ctx.build, kind, ctx.iosMajor || undefined);
-  const others = options.filter((o) => o.id === 'live-photo' || o.id === 'lock-loop');
+  const options = localizedSaveOptions(t, ctx.build, kind);
+  const others = options.filter((o) => o.id === 'live-photo');
   const still = options.find((o) => o.id === 'still-frame') as SaveOption;
   const clip = options.find((o) => o.id === 'clip') as SaveOption;
 

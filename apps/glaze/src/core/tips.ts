@@ -56,16 +56,16 @@ export const TIPS: readonly Tip[] = Object.freeze([
   },
   {
     id: 'bulk-install',
-    title: 'Install every icon at once',
-    body: 'Glaze puts your whole set in one profile, so you install once in Settings instead of making a shortcut per app.',
+    title: 'Bulk install (optional beta)',
+    body: 'Optional beta: one profile installs your whole set at once in Settings. The guided Shortcuts method is the default and always works.',
     placement: 'first-run',
     order: 2,
     icon: 'layers',
   },
   {
     id: 'live-lock',
-    title: 'Make your Lock Screen move',
-    body: 'Loop your own video or GIF on the Lock Screen from the Live Lock tab.',
+    title: 'Make a Live Photo wallpaper',
+    body: 'Turn a video into a Live Photo on the Live tab. Set it from Photos › Share › Use as Wallpaper; it moves when you wake your iPhone.',
     placement: 'first-run',
     order: 3,
     icon: 'film',
@@ -128,8 +128,8 @@ export const TIPS: readonly Tip[] = Object.freeze([
   },
   {
     id: 'live-loop',
-    title: 'Where loops really move',
-    body: 'On iOS 26 the full Glaze build loops on the Lock Screen; on older iOS a Live Photo plays when you long-press. Expo Go shows a preview only.',
+    title: 'How Live Photos move',
+    body: 'A Live Photo wallpaper moves when you wake or press the Lock Screen; it isn’t a constant loop. Expo Go shows a preview only.',
     placement: 'live',
     order: 60,
     icon: 'film',
@@ -210,7 +210,7 @@ export const PLACEMENT_LABELS: Readonly<Record<TipPlacement, string>> = Object.f
   wallpaper: 'Wallpaper maker',
   icons: 'Icons tab',
   install: 'Install icons',
-  live: 'Live Lock tab',
+  live: 'Live tab',
   shapes: 'Icon shape settings',
   override: 'Icons tab',
   'add-app': 'Icons tab',
@@ -224,7 +224,7 @@ const GROUPS: readonly { key: string; title: string; placements: readonly TipPla
   { key: 'wallpaper', title: 'Photos and wallpapers', placements: ['wallpaper'] },
   { key: 'icons', title: 'Icons, shapes and overrides', placements: ['icons', 'shapes', 'override', 'add-app'] },
   { key: 'install', title: 'Installing icons', placements: ['install'] },
-  { key: 'live', title: 'Live Lock Screen', placements: ['live'] },
+  { key: 'live', title: 'Live Photos', placements: ['live'] },
 ];
 
 /** Every tip, grouped by feature for the Tips library. Each tip appears exactly once. */

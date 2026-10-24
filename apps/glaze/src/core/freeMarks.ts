@@ -1,14 +1,16 @@
 // T106 (fb-1022 follow-up): clear "Free" marking and a games / movie night / storybook way in.
 // The owner asked that free themes in the new collections are marked clearly: every Space (Webb)
 // photo theme and the six free Story & Play themes carry a small "Free" pill. Plus themes never do.
+// T130: the free art-pack themes (themes/<id>/) carry it too.
 // Pure TS (Node-tested).
 
+import { ART_PACK_THEMES } from './artPackThemes.ts';
 import { SPACE_THEMES } from './spacePack.ts';
 import type { Theme } from './themes.ts';
 import { STORYPLAY_FREE_THEMES, storyPlayGroup, type StoryPlayGroup } from './themesStoryPlay.ts';
 
 /** Ids of the free themes in the new collections that show the "Free" pill. */
-export const FREE_MARKED_IDS: ReadonlySet<string> = new Set([...SPACE_THEMES, ...STORYPLAY_FREE_THEMES].map((t) => t.id));
+export const FREE_MARKED_IDS: ReadonlySet<string> = new Set([...SPACE_THEMES, ...STORYPLAY_FREE_THEMES, ...ART_PACK_THEMES].map((t) => t.id));
 
 export function isFreeMarked(id: string): boolean {
   return FREE_MARKED_IDS.has(id);

@@ -11,7 +11,7 @@
   const SHOTS = [
     {
       id: 'hook',
-      head: 'Themes, icons and live lock screens.',
+      head: 'Themes, icons and widgets that match.',
       head2: 'One price. No weekly subscription.',
       sub: 'Glaze Plus is a one-time purchase. Start free.',
       t: 'cherry-blossom',
@@ -94,8 +94,8 @@
     },
     {
       id: 'livelock',
-      head: 'Your own video on your Lock Screen',
-      sub: 'Live Lock Screen for iOS 26, made from your own clips. Free in Glaze.',
+      head: 'Turn a clip into a Live Photo',
+      sub: 'A Live Photo wallpaper that moves when you wake your iPhone. Free in Glaze.',
       t: 'night-drive',
       screen: (t) => A.lock(t, { video: true, live: true }),
       grad: ['#FFDCCB', '#FFD3EA', '#E3D9FF'],

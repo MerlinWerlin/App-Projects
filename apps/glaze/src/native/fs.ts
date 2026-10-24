@@ -38,6 +38,12 @@ export function moveAsync(options: { from: string; to: string }): Promise<void> 
   return Legacy.moveAsync(options);
 }
 
+/** Download a URL to a local file (T133: a dev-server asset becomes a file the widget bridge can read). */
+export async function downloadAsync(uri: string, fileUri: string): Promise<{ uri: string; status: number }> {
+  const res = await Legacy.downloadAsync(uri, fileUri);
+  return { uri: res.uri, status: res.status };
+}
+
 export function deleteAsync(uri: string, options?: { idempotent?: boolean }): Promise<void> {
   return Legacy.deleteAsync(uri, options);
 }

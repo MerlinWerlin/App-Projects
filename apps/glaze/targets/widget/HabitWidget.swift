@@ -39,7 +39,7 @@ struct HabitProvider: TimelineProvider {
 
   func placeholder(in context: Context) -> HabitEntry {
     let def = HabitDef.of(habit)
-    return HabitEntry(date: Date(), theme: .fallback, habit: habit, value: 0, goal: def.goal, step: def.step)
+    return HabitEntry(date: Date(), theme: ThemeStore.load(), habit: habit, value: 0, goal: def.goal, step: def.step)
   }
 
   func getSnapshot(in context: Context, completion: @escaping (HabitEntry) -> Void) {

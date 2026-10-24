@@ -109,7 +109,7 @@ ul.log,ol.log{{margin:0;padding-left:18px;display:flex;flex-direction:column;gap
 a{{color:var(--accent)}}
 </style>
 <div class="wrap">
-<header><div class="eyebrow">App Factory · Glaze · lock screen loops + icon themes</div>
+<header><div class="eyebrow">App Factory · Glaze · icon themes, widgets + wallpapers</div>
 <h1>{e(status["headline"])}</h1>
 <ol class="stages" aria-label="Progress to your iPhone">{''.join(stage_li(i, l) for i, (_, l) in enumerate(STAGES))}</ol>
 <div class="bar" role="img" aria-label="{done} of {len(tasks)} tasks done"><i></i></div>

@@ -55,7 +55,7 @@ export const ptBR: NonNullable<LocaleMessages['settings']> = {
     feedbackHint: 'Escreva para a equipe do Glaze pelo seu app Mail',
   },
   plus: {
-    body: 'Pagamento único. Sem assinatura, nunca. Criar seus próprios ícones, os dois métodos de instalação e o Live Lock com seu próprio vídeo continuam grátis.',
+    body: 'Pagamento único. Sem assinatura, nunca. Criar seus próprios ícones, os dois métodos de instalação e o criador de Live Photo com seu próprio vídeo continuam grátis.',
     more: 'O que vem no Glaze Plus',
     moreHint: 'Explica o desbloqueio único e o que ele inclui',
   },
@@ -82,7 +82,7 @@ export const ptBR: NonNullable<LocaleMessages['settings']> = {
     addedTitle: 'Os ícones são adicionados, não substituídos',
     addedBody: 'O iOS não deixa nenhum app mudar o ícone de outro. Em vez disso, o Glaze adiciona atalhos na Tela de Início com o seu novo visual. Tocar em um abre o app de verdade.',
     waysTitle: 'Duas formas de adicionar',
-    waysBody: 'Em lote: um perfil adiciona todos os ícones de uma vez (recomendado). Atalhos: adicione ícones um a um com o app Atalhos, se preferir não instalar um perfil.',
+    waysBody: 'Atalhos (recomendado): o Glaze guia você para adicionar cada ícone com o app Atalhos. Em lote (beta opcional): um perfil adiciona todos os ícones de uma vez.',
     originalsTitle: 'Para onde vão os ícones originais',
     originalsBody: 'Mantenha um ícone original pressionado, toque em Remover App e depois em Remover da Tela de Início. O app continua instalado e vai para a Biblioteca de Apps (deslize para a esquerda após a última página).',
     removeTitle: 'Remover os ícones do Glaze',

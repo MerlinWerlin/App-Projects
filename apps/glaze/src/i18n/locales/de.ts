@@ -29,7 +29,7 @@ const base: LocaleMessages = {
     error: 'Etwas ist schiefgelaufen',
     itemCount: { zero: 'Keine Elemente', one: '{count} Element', other: '{count} Elemente' },
   },
-  tabs: { themes: 'Themen', icons: 'Symbole', live: 'Live-Sperre', settings: 'Einstellungen' },
+  tabs: { themes: 'Themen', icons: 'Symbole', live: 'Live', settings: 'Einstellungen' },
   settings: {
     language: {
       title: 'Sprache',

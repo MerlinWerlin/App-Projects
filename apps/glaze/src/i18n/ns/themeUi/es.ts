@@ -64,12 +64,12 @@ export const es: NonNullable<LocaleMessages['themeUi']> = {
       body: 'iOS no deja que una app cambie el icono de otra. Glaze añade un atajo con el tema que abre la app real; mueve las originales a la Biblioteca de apps.',
     },
     'bulk-install': {
-      title: 'Instala todos los iconos de una vez',
-      body: 'Glaze pone todo tu set en un perfil, así instalas una sola vez en Ajustes en lugar de crear un atajo por app.',
+      title: 'Instalación en bloque (beta opcional)',
+      body: 'Beta opcional: un solo perfil instala todo tu set de una vez en Ajustes. El método guiado con Atajos es el predeterminado y siempre funciona.',
     },
     'live-lock': {
-      title: 'Dale movimiento a tu pantalla bloqueada',
-      body: 'Pon en bucle tu propio vídeo o GIF en la pantalla bloqueada desde la pestaña Live Lock.',
+      title: 'Crea un fondo Live Photo',
+      body: 'Convierte un vídeo en Live Photo en la pestaña Live. Ponlo desde Fotos › Compartir › Usar como fondo; se mueve al activar el iPhone.',
     },
     'theme-pick': {
       title: 'Empieza con un tema',
@@ -100,8 +100,8 @@ export const es: NonNullable<LocaleMessages['themeUi']> = {
       body: 'El perfil se crea en tu teléfono y no está firmado, por eso Ajustes muestra No verificado. Solo añade iconos a la pantalla de inicio.',
     },
     'live-loop': {
-      title: 'Dónde se mueven de verdad los bucles',
-      body: 'En iOS 26 la versión completa de Glaze reproduce el bucle en la pantalla bloqueada; en iOS anteriores una Live Photo se reproduce al mantener pulsado. Expo Go solo muestra una vista previa.',
+      title: 'Cómo se mueven las Live Photos',
+      body: 'Un fondo Live Photo se mueve al activar o pulsar la pantalla bloqueada; no es un bucle continuo. Expo Go solo muestra una vista previa.',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

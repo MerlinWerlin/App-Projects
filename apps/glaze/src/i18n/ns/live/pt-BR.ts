@@ -3,7 +3,7 @@ import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ptBR: NonNullable<LocaleMessages['live']> = {
   tab: {
-    subtitle: 'Uma Tela Bloqueada animada com seu próprio vídeo ou GIF.',
+    subtitle: 'Transforme seu próprio vídeo em um papel de parede Live Photo.',
     newLoop: 'Novo loop de vídeo ou GIF',
     opening: 'Abrindo…',
     pickHint: 'Abre sua fototeca para escolher um vídeo ou GIF',

@@ -6,7 +6,18 @@ The app runs inside **Expo Go**, a free app that loads development builds from y
 2. **PC (automatic since 23 Oct):** your PC's auto-start (`Desktop\Apps\_auto`) installs each new build, runs the type check by itself and restarts Expo. You don't download kits or run any .cmd files.
 3. **iPhone:** open Glaze from **Expo Go > Recently opened**, about 10 minutes after a new build.
 
-## New since your last test (24 Oct, run 97): fb-1024
+## New since your last test (24 Oct night, run 104): fb-1024e, "good enough to ship"
+These need the **next TestFlight build** (auto-ship sends it). When it shows in TestFlight, install it, open Glaze once, then answer yes / no in a page comment.
+
+- **A. Widgets in your theme:** open any theme and tap Apply this look (or save its wallpaper). Then long-press the Home Screen › + › Glaze. Do **all** the Glaze widgets in the gallery (Clock, Date, Little Line, Photo, habits) show that theme's colours, not white? yes / no. Add one to the Home Screen: same colours there? yes / no. Is the theme name gone from above the time? yes / no
+- **B. Icons, Shortcuts way (now the default):** Icons › Install. Is **Shortcuts** first and marked Recommended? yes / no. Follow the steps for two apps: does the "Next: <app>" line and progress bar guide you, and do both icons end up on the Home Screen? yes / no. Optional: try **Bulk install (beta)** — does Safari open and does **Profile Downloaded** appear in Settings? yes / no
+- **C. Live tab = Make a Live Photo:** open a clip on Live, tap **Save as Live Photo**, then in Photos › Share › **Use as Wallpaper** (Live Photo button on) › Add. Does it move when you wake or press the Lock Screen? yes / no. If iOS says "Motion not available", tell me. Is there no "Start on Lock Screen" / player anywhere any more? yes / no
+- **D. Art themes and seamless widget (themes-1024):** Art row with Starry night, Sunset dunes and Deep sea: creative enough? Starry night › Seamless widget: do the edges line up on your Home Screen? yes / no
+- Still open: **icon or mascot** (keep the glaze-drip icon, or mascot 1, 2 or 3) and the Glaze Plus price.
+
+**What changed, in plain words:** Glaze is now about themes, matching icons, themed widgets and wallpaper packs. The always-looping Lock Screen is gone: iPhone has no way to do it without a music player on your Lock Screen, so it's parked until Apple opens a real live-wallpaper API (the plan is ready in `docs/future/live-wallpaper/`). The Live tab makes Live Photos instead, which move when you wake the phone. Icons install the Shortcuts way by default because the profile never showed up in Settings on your phone; the profile way is still there as a beta to try.
+
+## Earlier: fb-1024 (24 Oct, run 97)
 Open Glaze (Expo Go > Recently opened, or the TestFlight app once the new build lands) and answer yes / no in a page comment.
 
 - **A. Opening:** close Glaze fully and open it. After the glaze-pour animation, does Themes appear straight away, with no "index" (or any other word) flashing at the top and no white or blank flash in between? yes / no

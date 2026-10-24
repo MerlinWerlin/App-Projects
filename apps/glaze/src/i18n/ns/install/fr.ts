@@ -163,4 +163,30 @@ export const fr: NonNullable<LocaleMessages['install']> = {
     preview: 'L’épinglage des icônes arrivera avec la version complète de Glaze pour Android. Dans cet aperçu, enregistrez les icônes dans Photos et utilisez les réglages d’icônes de votre lanceur.',
     pin: 'Épingler les icônes à l’écran d’accueil',
   },
+  // T126: profile served to Safari from this iPhone, and the guided Shortcuts path.
+  safari: {
+    intro: 'Glaze dessine vos icônes, crée un profil sur cet iPhone et l’ouvre dans Safari directement depuis l’iPhone. Rien n’est envoyé en ligne.',
+    generateHint: 'Dessine les icônes, crée le profil et l’ouvre dans Safari',
+    opening: 'Ouverture de Safari',
+    openAgain: 'Rouvrir dans Safari',
+    openAgainA11y: 'Rouvrir {file} dans Safari',
+    shareInstead: 'Partager le fichier à la place',
+    hurry: 'Safari peut récupérer le profil pendant environ une minute après son ouverture par Glaze. Si Safari indique qu’il ne peut pas se connecter, revenez ici et touchez Rouvrir dans Safari.',
+    oneAtATime: 'Vos icônes sont réparties en {files} profils. iOS ne garde qu’un profil téléchargé à la fois : installez la partie 1 dans Réglages, revenez ici, puis ouvrez la partie suivante.',
+    failed: 'Glaze n’a pas pu ouvrir le profil dans Safari. Touchez Partager le fichier à la place et envoyez-le-vous par Mail ou AirDrop, ou utilisez Raccourcis.',
+    fallbackNote: 'Cette version ne peut pas ouvrir le profil dans Safari : il passe par la feuille de partage, et iOS n’installe souvent pas un profil enregistré dans Fichiers. Utilisez Raccourcis (recommandé ici) ou envoyez-vous le fichier par Mail ou AirDrop.',
+    page: { title: 'Icônes Glaze', body: 'Touchez Installer. Safari demande d’autoriser le téléchargement d’un profil de configuration : touchez Autoriser, puis Fermer, et terminez dans Réglages.', button: 'Installer' },
+    cards: {
+      safari: { title: 'Installer dans Safari', body: 'Touchez Installer dans Safari.' },
+      allow: { title: 'Autoriser le téléchargement', body: 'Safari demande d’autoriser le téléchargement d’un profil de configuration : touchez Autoriser, puis Fermer.' },
+      settings: { title: 'Installer dans Réglages', body: 'Ouvrez Réglages : touchez « Profil téléchargé » en haut (ou Général > VPN et gestion de l’appareil), touchez Installer, saisissez votre code, Installer.' },
+      home: { title: 'Vos icônes apparaissent', body: 'Vos icônes apparaissent sur l’écran d’accueil.' },
+    },
+  },
+  guided: {
+    next: 'Suivante : {app}',
+    showNext: 'Voir les étapes',
+    allDone: 'Toutes les icônes sont faites. Vous pouvez déplacer les icônes d’origine dans la bibliothèque d’apps.',
+    oneAtATime: 'Une icône à la fois : suivez les étapes pour l’app suivante, cochez-la, et Glaze ouvre les étapes de la prochaine.',
+  },
 };

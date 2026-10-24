@@ -3,7 +3,7 @@ import type { LocaleMessages } from '../../catalogue.ts';
 
 export const hi: NonNullable<LocaleMessages['live']> = {
   tab: {
-    subtitle: 'अपने वीडियो या GIF से चलती हुई लॉक स्क्रीन।',
+    subtitle: 'अपने वीडियो को Live Photo वॉलपेपर में बदलें।',
     newLoop: 'वीडियो या GIF से नया लूप',
     opening: 'खुल रहा है…',
     pickHint: 'वीडियो या GIF चुनने के लिए आपकी फ़ोटो लाइब्रेरी खोलता है',

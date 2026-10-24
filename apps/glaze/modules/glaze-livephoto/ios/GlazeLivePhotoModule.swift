@@ -4,6 +4,15 @@
 // NOT YET TESTED ON A DEVICE. Symbols or behaviour we could not check without Xcode are
 // marked `// VERIFY`.
 //
+// Pairing checklist (T127, guarded by src/core/livephoto.test.ts):
+//  - still JPEG: Apple MakerNote (kCGImagePropertyMakerAppleDictionary) key "17" = identifier
+//  - video .mov (H.264, no audio, portrait output size): top-level QuickTime metadata
+//    mdta/com.apple.quicktime.content.identifier = the same identifier
+//  - video: a timed metadata track mdta/com.apple.quicktime.still-image-time (int8 value 0)
+//    over one frame at the still's time
+//  - saved with one PHAssetCreationRequest: .photo + .pairedVideo resources
+//  - output at most 3 s (JS clamps to LIVE_PHOTO_MAX_MS; maxDuration below is the safety net)
+//
 // JS side: src/native/livephoto.ts (adapter) -> NativeModule "GlazeLivePhoto".save(json).
 // Payload is built and validated by src/core/livephoto.ts:
 //   { sourceUri, trim: {startMs, endMs}, crop: {x, y, width, height}, source: {width, height},
@@ -108,7 +117,9 @@ final class LivePhotoExporter {
     // 4. Build the trimmed, sped-up, cropped composition.
     let built = try await Self.composition(url: url, payload: p)
 
-    // Still frame: middle of the output clip.
+    // Still frame (the Live Photo's key photo): middle of the output clip, like a camera Live
+    // Photo. The JPEG is grabbed at exactly this time and the video's still-image-time metadata
+    // points at it, so the key photo and the paused frame match.
     let half = CMTimeMultiplyByFloat64(built.composition.duration, multiplier: 0.5)
     var stillTime = half
     if let ms = p.stillTimeMs, ms >= 0 {
@@ -335,8 +346,9 @@ final class LivePhotoExporter {
     let stillItem = AVMutableMetadataItem()
     stillItem.keySpace = .quickTimeMetadata
     stillItem.key = "com.apple.quicktime.still-image-time" as NSString
-    // VERIFY: int8 0xFF (-1) is what the widely documented samples write; some write 0.
-    stillItem.value = NSNumber(value: Int8(-1))
+    // T127: value 0 (int8), as written by the camera-style Live Photo samples; the time range
+    // starts at the still frame (the same `stillTime` the JPEG was grabbed at) and lasts one frame.
+    stillItem.value = NSNumber(value: Int8(0))
     stillItem.dataType = kCMMetadataBaseDataType_SInt8 as String
     let frame = CMTime(value: 1, timescale: Int32(max(1, min(60, p.fps ?? 30))))
     let group = AVTimedMetadataGroup(items: [stillItem], timeRange: CMTimeRange(start: stillTime, duration: frame))

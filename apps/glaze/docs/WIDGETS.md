@@ -12,10 +12,11 @@ theme (background, accent, ink, glass/solid/outline surface, display/body font).
 
 | Widget | Kind | Families | Updates |
 | --- | --- | --- | --- |
-| Clock | `GlazeClock` | small, medium | one entry per minute for the next hour |
+| Clock | `GlazeClock` | small, medium, large | one entry per minute for the next hour |
 | Date | `GlazeDate` | small, medium (adds a week strip) | at midnight |
-| Little Line | `GlazeQuote` | small, medium | hourly; 24 original short lines bundled in Swift |
-| Photo | `GlazePhoto` | small, medium | when the app saves a new photo; gradient placeholder otherwise |
+| Little Line | `GlazeQuote` | small, medium, large | hourly; 24 original short lines bundled in Swift |
+| Photo | `GlazePhoto` | small, medium, large | when the app saves a new photo; gradient placeholder otherwise |
+| Seamless (T131) | `GlazeSeamless` | small, medium, large | when the app writes a new crop (`setSeamless`); theme background otherwise |
 | Glaze Lock | `GlazeLockAccessory` | Lock Screen rectangular, circular, inline | per minute (time, date, theme glyph) |
 | Water / Sleep / Steps / Mood (T73) | `GlazeHabitWater`, `GlazeHabitSleep`, `GlazeHabitSteps`, `GlazeHabitMood` | small, medium | on every button tap, and just after midnight (back to 0) |
 
@@ -65,7 +66,7 @@ type WidgetTheme = {
 ```
 
 `parseWidgetTheme` (TS) and `WidgetTheme.init(from:)` (Swift) are tolerant: invalid colours, unknown
-style/font or missing fields fall back to the Porcelain defaults; an unknown `v` is rejected.
+style/font or missing fields fall back to the Glaze default theme (plum to coral, T125); an unknown `v` is rejected.
 Bump `v` and the key (`glaze.theme.v2`) for any breaking change.
 
 Fonts: Unbounded/Manrope aren't bundled in the extension yet, so `display` maps to the system
@@ -485,6 +486,49 @@ privacy change.
 - Open-Meteo pricing (paid plans, attribution still required): https://open-meteo.com/en/pricing
 - Android background location (widgets/WorkManager count, `ACCESS_BACKGROUND_LOCATION`, Play policy): https://developer.android.com/training/location/background
 
+## Seamless widget (T131, owner brief themes-1024)
+
+A Home Screen widget whose background is the exact piece of the wallpaper under it, with
+transparent hero art (a planet, a moon) on top, so the art seems to float on the wallpaper.
+
+- **Maths** (`src/core/seamlessWidget.ts`, tested): a device table keyed by native screen pixels
+  (11 rows, 750×1334 to 1320×2868; generic names such as "6.7-inch 2796") with the widget sizes,
+  the two column x positions and the three row y positions in native px. These are the
+  community-measured figures transparent-widget tools use, **not** an Apple API: verify on device;
+  the nudge fine-tunes. The 2622 and 2868 rows are scaled from their neighbours (`estimated: true`).
+  Slots: small = top/middle/bottom × left/right; medium = top/middle/bottom; large = top or bottom
+  (bottom starts at the middle row). `lookupDevice` matches Dimensions points × PixelRatio (the
+  5.4-inch screen reports the 5.8-inch points, so it needs the native pixel size), else the nearest
+  row. `seamlessCrop` maps the wallpaper aspect-filled and centred on the screen
+  (scale = max(sw/W, sh/H)) and returns the crop in **wallpaper** pixels, whole and clamped inside
+  the image; the nudge (±40 pt, 1 or 5 pt steps) moves it by points × scale. `heroRect` fits the
+  hero inside the widget with 6 % padding.
+- **Preview** (Expo Go): `src/ui/SeamlessWidgetPreview.tsx` draws a mock Home Screen with the
+  wallpaper and one widget box that holds the same wallpaper at the negative crop offset plus the
+  hero, with rounded corners, so it visibly blends in. `src/ui/SeamlessWidgetControls.tsx`: size,
+  slot, step, four 48 pt arrows and reset; all text comes in through a `strings` prop.
+- **Native**: `widgets.setSeamless({ wallpaperUri, cropPx, heroUri, size })`
+  (`src/native/widgets.ts`; `{ available: false }` in Expo Go, on Android and with an older
+  bridge) → bridge `setSeamless(wallpaperUri, x, y, w, h, heroUri, family)`: loads the wallpaper
+  upright, `CGImage.cropping(to:)`, draws the hero centred-fit on top with
+  `UIGraphicsImageRenderer`, caps the long edge at 1200 px, writes `seamless-<family>.png` into the
+  App Group and reloads kind `GlazeSeamless`. The extension's `SeamlessWidget.swift` (small, medium,
+  large; `.contentMarginsDisabled()`) fills `containerBackground` with that file, or shows the theme
+  background and "Set up in Glaze" when it is missing.
+- **iOS caveats** (say so in the setup copy):
+  - The wallpaper must be set at the same crop: no Perspective Zoom, no pinch/move in the
+    wallpaper editor, the same image file (the maths assumes aspect-fill, centred).
+  - iOS may dim the Home Screen wallpaper (Dark appearance dimming, "Legibility" blur) or shift
+    a wallpaper with depth effect; the widget does not dim with it, so the seam can show.
+  - Tinted and clear Home Screen icon modes tint widgets too; the effect only holds in the default
+    mode.
+  - Lock Screen widgets are not supported (they cannot draw a full-colour image background).
+  - Each size keeps one image, so two widgets of the same size share it.
+  - The table is measured, not official: use the nudge until the edges disappear.
+- **Not wired yet**: no screen uses the preview, controls or `setSeamless`; the lead connects them
+  to the theme art packs (wallpaper 1290×2796 + transparent widget-small/medium/large.png). The
+  widget's three strings have no Localizable.strings entries yet.
+
 ## Testing on a dev build
 
 1. On the PC: `npm install`, then `npx expo install @bacons/apple-targets` (kept out of package.json
@@ -505,6 +549,10 @@ privacy change.
    midnight: widgets read 0 and yesterday's taps stay on yesterday.
 
 ## VERIFY list
+
+T136 compile audit of every Swift file (what was checked and fixed, what is still a VERIFY risk):
+`docs/NATIVE_AUDIT_1024.md`. Switching the extension or the bridge off for one build:
+`docs/RELEASING.md` section 7.
 
 - T73 habit widgets: `Button(intent:)` taps update the value without opening the app; two widgets
   of the same tracker both refresh; small-size layout fits (value, goal, bar, two 36 pt buttons);

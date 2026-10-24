@@ -64,12 +64,12 @@ export const ptBR: NonNullable<LocaleMessages['themeUi']> = {
       body: 'O iOS não deixa um app mudar o ícone de outro. O Glaze adiciona um atalho temático que abre o app real; mova os originais para a Biblioteca de Apps.',
     },
     'bulk-install': {
-      title: 'Instale todos os ícones de uma vez',
-      body: 'O Glaze coloca todo o conjunto em um perfil, então você instala uma vez em Ajustes em vez de criar um atalho por app.',
+      title: 'Instalação em lote (beta opcional)',
+      body: 'Beta opcional: um único perfil instala todo o seu conjunto de uma vez em Ajustes. O método guiado com Atalhos é o padrão e sempre funciona.',
     },
     'live-lock': {
-      title: 'Dê movimento à Tela Bloqueada',
-      body: 'Coloque seu próprio vídeo ou GIF em loop na Tela Bloqueada pela aba Live Lock.',
+      title: 'Crie um papel de parede Live Photo',
+      body: 'Transforme um vídeo em Live Photo na aba Live. Defina pelo Fotos › Compartilhar › Usar como Papel de Parede; ela se move quando você desperta o iPhone.',
     },
     'theme-pick': {
       title: 'Comece com um tema',
@@ -100,8 +100,8 @@ export const ptBR: NonNullable<LocaleMessages['themeUi']> = {
       body: 'O perfil é criado no seu telefone e não é assinado, por isso Ajustes mostra Não Verificado. Ele só adiciona ícones à Tela de Início.',
     },
     'live-loop': {
-      title: 'Onde os loops se movem de verdade',
-      body: 'No iOS 26 a versão completa do Glaze faz o loop na Tela Bloqueada; em iOS mais antigos, uma Live Photo toca ao manter pressionado. O Expo Go mostra só uma prévia.',
+      title: 'Como as Live Photos se movem',
+      body: 'Um papel de parede Live Photo se move quando você desperta ou pressiona a Tela Bloqueada; não é um loop contínuo. O Expo Go mostra só uma prévia.',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

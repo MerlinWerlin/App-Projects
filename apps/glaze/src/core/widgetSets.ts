@@ -308,7 +308,7 @@ export function tokensFromWidgetTheme(t: WidgetTheme): WidgetTokens {
   });
 }
 
-/** Validate tokens from any source; bad or missing fields fall back to the Porcelain defaults. */
+/** Validate tokens from any source; bad or missing fields fall back to the Glaze default theme (plum to coral, T125). */
 export function normaliseTokens(raw: unknown): WidgetTokens {
   const o = raw && typeof raw === 'object' && !Array.isArray(raw) ? (raw as Record<string, unknown>) : {};
   const d = DEFAULT_TOKENS;

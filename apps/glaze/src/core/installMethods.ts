@@ -10,11 +10,34 @@ export type MethodOptions = {
   profileEnabled: boolean;
   /** How many apps could go in a profile (planInstall(...).profile.length). */
   profileCount: number;
+  /**
+   * T126: whether this build can serve the profile to Safari (src/native/profileServer.ts).
+   * Omitted = true (the original behaviour). False (Expo Go, old builds): the profile can only go
+   * through the share sheet, which iOS often won't install from, so Shortcuts leads.
+   */
+  profileServer?: boolean;
 };
 
-/** Methods to offer, in display order. Shortcuts is always available. */
+const serverOk = (opts: MethodOptions) => opts.profileServer !== false;
+
+/**
+ * Methods to offer, in display order (the recommended one first). Shortcuts is always available
+ * and always first (T138, owner 24 Oct: the profile never reached Settings on his iPhone, so the
+ * guided Shortcuts path is the default; Bulk stays a second, optional "try it" card while
+ * PROFILE_INSTALL_ENABLED is on).
+ */
 export function availableMethods(opts: MethodOptions): InstallChoice[] {
-  return opts.profileEnabled ? ['bulk', 'shortcuts'] : ['shortcuts'];
+  if (!opts.profileEnabled) return ['shortcuts'];
+  return ['shortcuts', 'bulk'];
+}
+
+/**
+ * The method to badge "Recommended": always the guided Shortcuts method (T138). Kept as a function
+ * (with the server flag) so a device-verified profile route can be promoted again in one place.
+ */
+export function recommendedMethod(opts: MethodOptions): InstallChoice {
+  void serverOk(opts);
+  return 'shortcuts';
 }
 
 /** True when the method picker is worth showing (more than one method). */
@@ -30,8 +53,11 @@ export function bulkSelectable(opts: MethodOptions): boolean {
 /**
  * The method actually in use: the saved choice when it is still possible, else Shortcuts.
  * A saved 'bulk' falls back to 'shortcuts' when the switch is off or no app has a link.
+ * `explicit` is false while the saved choice is only the default (nobody tapped a card yet): then
+ * the recommended method wins, so builds without the Safari server open on Shortcuts (T126).
  */
-export function effectiveChoice(saved: InstallChoice, opts: MethodOptions): InstallChoice {
+export function effectiveChoice(saved: InstallChoice, opts: MethodOptions, explicit: boolean = true): InstallChoice {
+  if (!explicit) return recommendedMethod(opts);
   if (saved === 'bulk' && bulkSelectable(opts)) return 'bulk';
   return 'shortcuts';
 }

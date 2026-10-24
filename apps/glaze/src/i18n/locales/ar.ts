@@ -29,7 +29,7 @@ const base: LocaleMessages = {
     error: 'حدث خطأ ما',
     itemCount: { zero: 'لا توجد عناصر', one: 'عنصر واحد', two: 'عنصران', few: '{count} عناصر', many: '{count} عنصرًا', other: '{count} عنصر' },
   },
-  tabs: { themes: 'السمات', icons: 'الأيقونات', live: 'القفل الحي', settings: 'الإعدادات' },
+  tabs: { themes: 'السمات', icons: 'الأيقونات', live: 'حية', settings: 'الإعدادات' },
   settings: {
     language: {
       title: 'اللغة',

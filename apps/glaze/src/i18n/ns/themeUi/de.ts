@@ -64,12 +64,12 @@ export const de: NonNullable<LocaleMessages['themeUi']> = {
       body: 'iOS erlaubt keiner App, das Symbol einer anderen zu ändern. Glaze fügt eine gestaltete Verknüpfung hinzu, die die echte App öffnet; verschiebe die Originale in die App-Mediathek.',
     },
     'bulk-install': {
-      title: 'Alle Symbole auf einmal installieren',
-      body: 'Glaze packt dein ganzes Set in ein Profil, sodass du es einmal in den Einstellungen installierst, statt für jede App einen Kurzbefehl anzulegen.',
+      title: 'Sammelinstallation (optionale Beta)',
+      body: 'Optionale Beta: Ein Profil installiert dein ganzes Set auf einmal in den Einstellungen. Die geführte Kurzbefehle-Methode ist Standard und klappt immer.',
     },
     'live-lock': {
-      title: 'Bring Bewegung auf den Sperrbildschirm',
-      body: 'Lass dein eigenes Video oder GIF im Tab Live Lock auf dem Sperrbildschirm loopen.',
+      title: 'Live-Photo-Hintergrund erstellen',
+      body: 'Mach im Tab „Live“ aus einem Video ein Live Photo. Lege es über Fotos › Teilen › Als Hintergrundbild fest; es bewegt sich, wenn du dein iPhone aufweckst.',
     },
     'theme-pick': {
       title: 'Starte mit einem Theme',
@@ -100,8 +100,8 @@ export const de: NonNullable<LocaleMessages['themeUi']> = {
       body: 'Das Profil entsteht auf deinem Telefon und ist nicht signiert, daher zeigt Einstellungen „Nicht verifiziert“. Es fügt nur Symbole zum Home-Bildschirm hinzu.',
     },
     'live-loop': {
-      title: 'Wo Loops sich wirklich bewegen',
-      body: 'Unter iOS 26 loopt die volle Glaze-Version auf dem Sperrbildschirm; unter älterem iOS spielt ein Live Photo bei langem Drücken. Expo Go zeigt nur eine Vorschau.',
+      title: 'So bewegen sich Live Photos',
+      body: 'Ein Live-Photo-Hintergrund bewegt sich, wenn du den Sperrbildschirm aufweckst oder drückst; er läuft nicht dauerhaft im Loop. Expo Go zeigt nur eine Vorschau.',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

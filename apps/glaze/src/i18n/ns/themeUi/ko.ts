@@ -64,12 +64,12 @@ export const ko: NonNullable<LocaleMessages['themeUi']> = {
       body: 'iOS에서는 앱이 다른 앱의 아이콘을 바꿀 수 없습니다. Glaze는 실제 앱을 여는 테마 단축어를 추가하니, 원래 아이콘은 앱 보관함으로 옮기세요.',
     },
     'bulk-install': {
-      title: '모든 아이콘을 한 번에 설치',
-      body: 'Glaze는 세트 전체를 프로필 하나에 담아, 앱마다 단축어를 만들 필요 없이 설정에서 한 번만 설치하면 됩니다.',
+      title: '일괄 설치(선택형 베타)',
+      body: '선택형 베타: 프로필 하나로 세트 전체를 설정에서 한 번에 설치합니다. 안내형 단축어 방식이 기본이며 언제나 작동합니다.',
     },
     'live-lock': {
-      title: '잠금 화면에 움직임을',
-      body: 'Live Lock 탭에서 내 동영상이나 GIF를 잠금 화면에 반복 재생하세요.',
+      title: 'Live Photo 배경화면 만들기',
+      body: 'Live 탭에서 비디오를 Live Photo로 바꾸세요. 사진 › 공유 › 배경화면으로 사용에서 설정하면 iPhone을 깨울 때 움직입니다.',
     },
     'theme-pick': {
       title: '테마로 시작하기',
@@ -100,8 +100,8 @@ export const ko: NonNullable<LocaleMessages['themeUi']> = {
       body: '프로필은 내 iPhone에서 만들어지고 서명되지 않아 설정에 확인되지 않음으로 표시됩니다. 홈 화면 아이콘만 추가합니다.',
     },
     'live-loop': {
-      title: '루프가 실제로 움직이는 곳',
-      body: 'iOS 26에서는 Glaze 정식 빌드가 잠금 화면에서 루프를 재생합니다. 이전 iOS에서는 길게 누르면 Live Photo가 재생됩니다. Expo Go는 미리보기만 보여 줍니다.',
+      title: 'Live Photo가 움직이는 방식',
+      body: 'Live Photo 배경화면은 잠금 화면을 깨우거나 누를 때 움직이며, 계속 반복되지는 않습니다. Expo Go에서는 미리보기만 볼 수 있습니다.',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

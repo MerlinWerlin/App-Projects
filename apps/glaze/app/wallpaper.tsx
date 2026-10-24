@@ -35,6 +35,7 @@ import { OffscreenWallpaper, WallpaperView } from '../src/render/WallpaperView';
 import { useLocked } from '../src/plus/useLocked';
 import { tickStoredChecklist } from '../src/store/applyChecklist';
 import { loadBackground, photoCopyExists, saveBackground } from '../src/store/background';
+import { applyWidgetTheme } from '../src/store/widgetTheme';
 import { useT } from '../src/i18n';
 import { continuous, radiusV2, sizeV2, spaceV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
@@ -414,6 +415,8 @@ export default function WallpaperScreen() {
     const res = photoMode && photoData ? await photoSaver.save(photoData, size) : await saver.save(params, size);
     if (res.ok) {
       haptic('success');
+      // T125: saving a theme's wallpaper applies that theme, so the widgets follow it too.
+      if (anyTheme && !plusLocked) void applyWidgetTheme(anyTheme);
       setStatus({ kind: 'saved', text: t('wallpaper.status.saved', { width: px(res.width), height: px(res.height) }) });
     } else {
       showSaveFailure(res.reason);
@@ -451,6 +454,8 @@ export default function WallpaperScreen() {
     const tickPair = (outcome: PairSaveOutcome) => {
       // T81: a saved pair ticks the wallpaper step of the theme this maker was opened for.
       if (anyTheme && !plusLocked && pairSaveTicksWallpaper(outcome)) void tickStoredChecklist(anyTheme.id, 'wallpaper');
+      // T125: and the widgets follow the theme whose wallpaper was saved.
+      if (anyTheme && !plusLocked) void applyWidgetTheme(anyTheme);
     };
     const homeData: HomeWallpaperData = {
       uri: lock.uri,

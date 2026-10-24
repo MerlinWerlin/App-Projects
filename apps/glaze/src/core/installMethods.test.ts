@@ -21,8 +21,8 @@ test('switch is a boolean exported from src/config/install.ts', () => {
   assert.equal(typeof PROFILE_INSTALL_ENABLED, 'boolean');
 });
 
-test('profile on: both methods, bulk first; off: Shortcuts only, no picker', () => {
-  assert.deepEqual(availableMethods({ profileEnabled: true, profileCount: 3 }), ['bulk', 'shortcuts']);
+test('profile on: both methods, Shortcuts first (T138); off: Shortcuts only, no picker', () => {
+  assert.deepEqual(availableMethods({ profileEnabled: true, profileCount: 3 }), ['shortcuts', 'bulk']);
   assert.equal(showMethodPicker({ profileEnabled: true, profileCount: 3 }), true);
   assert.deepEqual(availableMethods({ profileEnabled: false, profileCount: 3 }), ['shortcuts']);
   assert.equal(showMethodPicker({ profileEnabled: false, profileCount: 3 }), false);

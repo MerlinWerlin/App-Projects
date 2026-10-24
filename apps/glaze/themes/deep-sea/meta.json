@@ -1,0 +1,19 @@
+{
+  "name": "Deep Sea",
+  "mood": "Sunbeams fading into blue, glowing jellyfish and drifting bubbles.",
+  "tags": [
+    "dark",
+    "nature",
+    "ocean",
+    "sea",
+    "jellyfish",
+    "underwater",
+    "blue",
+    "calm"
+  ],
+  "credits": "Glaze (original procedural art)",
+  "licence": "original",
+  "generator": "procedural",
+  "prompt": "",
+  "addedAt": "2026-10-24"
+}

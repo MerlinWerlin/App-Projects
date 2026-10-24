@@ -60,3 +60,8 @@
 "Choose a photo in Glaze" = "Choose a photo in Glaze";
 "Little Line" = "Little Line";
 "A short, gentle line that changes every hour." = "A short, gentle line that changes every hour.";
+
+/* Seamless widget (SeamlessWidget.swift, T131/T133) */
+"Seamless" = "Seamless";
+"Art that floats on your wallpaper. Set it up in Glaze." = "Art that floats on your wallpaper. Set it up in Glaze.";
+"Set up in Glaze" = "Set up in Glaze";

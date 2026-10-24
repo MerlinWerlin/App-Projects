@@ -18,6 +18,8 @@ export const en = {
   plusPacks: 'Plus packs',
   plusPacksBody: 'Preview any of them. Glaze Plus is a one-time unlock, never a subscription.',
   space: { title: 'Space · real Webb photos', body: 'Free. Real James Webb Space Telescope images; each photo downloads only when you tap Download in the theme.' },
+  // T130: the free art-pack themes (themes/<id>/).
+  art: { title: 'Art · original wallpapers', body: 'Free. Original art wallpapers with matching icons and floating widget art. Nothing to download.' },
   plusPacksEmpty: 'No Plus packs yet',
   packEmpty: '{name} is still being drawn',
   plusNote: 'Glaze Plus.',

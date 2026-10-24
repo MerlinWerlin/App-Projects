@@ -137,6 +137,51 @@ function Art({ kind, c }: { kind: Illustration; c: PaletteV2 }) {
         </Phone>
       );
     }
+    case 'safari-page': {
+      // T126: Safari address bar over a page with one big Install button.
+      return (
+        <Phone c={c}>
+          <Rect x={8} y={22} width={W - 16} height={14} rx={7} fill={c.surface} stroke={c.separator} />
+          <Rect x={18} y={27} width={36} height={4} rx={2} fill={c.separator} />
+          <Rect x={16} y={56} width={W - 32} height={8} rx={4} fill={c.ink} />
+          <Rect x={22} y={70} width={W - 44} height={6} rx={3} fill={c.separator} />
+          <Rect x={14} y={96} width={W - 28} height={22} rx={11} fill={c.tint} />
+          <Circle cx={W / 2} cy={107} r={13} fill="none" stroke={c.tint} strokeWidth={2} />
+        </Phone>
+      );
+    }
+    case 'allow-dialog': {
+      // T126: the "allow download" alert with Allow highlighted.
+      return (
+        <Phone c={c}>
+          <Rect x={10} y={46} width={W - 20} height={62} rx={10} fill={c.surface} stroke={c.separator} />
+          <Rect x={18} y={56} width={W - 36} height={6} rx={3} fill={c.ink} />
+          <Rect x={18} y={68} width={W - 48} height={5} rx={2.5} fill={c.separator} />
+          <Rect x={16} y={86} width={(W - 40) / 2} height={14} rx={6} fill={c.separator} />
+          <Rect x={24 + (W - 40) / 2} y={86} width={(W - 40) / 2} height={14} rx={6} fill={c.tint} />
+        </Phone>
+      );
+    }
+    case 'home-icons': {
+      // T126: a Home Screen grid with the new icons in the theme tint.
+      return (
+        <Phone c={c}>
+          {[0, 1, 2, 3].map((r) =>
+            [0, 1, 2].map((k) => (
+              <Rect
+                key={`${r}-${k}`}
+                x={12 + k * 22}
+                y={26 + r * 26}
+                width={16}
+                height={16}
+                rx={4}
+                fill={r < 2 ? c.tint : c.separator}
+              />
+            )),
+          )}
+        </Phone>
+      );
+    }
     case 'remove-profile': {
       return (
         <Phone c={c}>

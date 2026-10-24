@@ -55,7 +55,7 @@ export const it: NonNullable<LocaleMessages['settings']> = {
     feedbackHint: 'Scrivi al team di Glaze dalla tua app Mail',
   },
   plus: {
-    body: 'Prezzo unico. Nessun abbonamento, mai. Creare le tue icone, entrambi i metodi di installazione e Live Lock con il tuo video restano gratis.',
+    body: 'Prezzo unico. Nessun abbonamento, mai. Creare le tue icone, entrambi i metodi di installazione e il creatore di Live Photo con il tuo video restano gratis.',
     more: 'Cosa include Glaze Plus',
     moreHint: 'Spiega lo sblocco unico e cosa comprende',
   },
@@ -82,7 +82,7 @@ export const it: NonNullable<LocaleMessages['settings']> = {
     addedTitle: 'Le icone si aggiungono, non si sostituiscono',
     addedBody: 'iOS non permette a nessuna app di cambiare l’icona di un’altra. Glaze aggiunge invece collegamenti alla schermata Home con il tuo nuovo stile. Toccandone uno si apre l’app vera.',
     waysTitle: 'Due modi per aggiungerle',
-    waysBody: 'In blocco: un profilo aggiunge tutte le icone insieme (consigliato). Comandi: aggiungi le icone una alla volta con l’app Comandi, se preferisci non installare un profilo.',
+    waysBody: 'Comandi Rapidi (consigliato): Glaze ti guida nell’aggiungere ogni icona con l’app Comandi Rapidi. In blocco (beta facoltativa): un profilo aggiunge tutte le icone insieme.',
     originalsTitle: 'Dove finiscono le icone originali',
     originalsBody: 'Tieni premuta un’icona originale, tocca Rimuovi app, poi Rimuovi dalla schermata Home. L’app resta installata e passa alla Libreria app (scorri a sinistra oltre l’ultima pagina).',
     removeTitle: 'Rimuovere le icone di Glaze',
