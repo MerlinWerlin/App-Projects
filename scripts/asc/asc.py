@@ -112,7 +112,7 @@ def call(method, path, body=None, params=None, ok=(200, 201, 204)):
                 raise
             time.sleep(5 * (attempt + 1))
             continue
-        if r.status_code in (500, 502, 503, 504) and attempt < 3:
+        if r.status_code in (401, 500, 502, 503, 504) and attempt < 3:
             time.sleep(5 * (attempt + 1))
             continue
         break
@@ -344,7 +344,8 @@ def apply(app):
     # alsoLocales: copy the same listing into other locales (e.g. an en-US primary locale left from app creation).
     for extra in lst.get("alsoLocales", []):
         say(f"### Also locale {extra}")
-        step(f"[{extra}] Name, subtitle, privacy URL", lambda extra=extra: upsert_info_loc(info["id"], extra, info_fields))
+        xf = {**info_fields, **(lst.get("localeOverrides", {}).get(extra, {}))}
+        step(f"[{extra}] Name, subtitle, privacy URL", lambda extra=extra, xf=xf: upsert_info_loc(info["id"], extra, xf))
         if ver:
             step(f"[{extra}] Description, keywords, promo text, URLs", lambda extra=extra: upsert_ver_loc(ver["id"], extra, vf))
             for disp, folder in (lst.get("screenshots") or {}).items():
