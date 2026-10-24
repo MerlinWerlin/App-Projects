@@ -17,7 +17,7 @@
       "url": "https://u.expo.dev/febfc445-71b5-42f1-b8a6-1a88dac92ec1"
     },
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.jared797.linework",
       "config": {
         "usesNonExemptEncryption": false
