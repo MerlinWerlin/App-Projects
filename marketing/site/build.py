@@ -121,7 +121,7 @@ def page(a):
 <h2>Why people switch to {E(a['name'])}</h2><div class=lead>{lead}</div>
 {compare}
 <h2>Questions</h2>{faq}
-<footer><span>{E(title)}</span><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="../">More apps</a></footer>
+<footer><span>{E(title)}</span><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="ideas/">Free drawings to trace</a><a href="../">More apps</a></footer>
 </main></body></html>"""
     (out / "index.html").write_text(doc)
     return slug
