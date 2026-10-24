@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Backspin",
+    "slug": "backspin",
+    "scheme": "backspin",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
+    "backgroundColor": "#14111F",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jared797.backspin",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Backspin records your voice only while you hold the record button, so it can play it backwards. Recordings stay on your phone.",
+        "CFBundleAllowMixedLocalizations": true
+      },
+      "config": { "usesNonExemptEncryption": false }
+    },
+    "android": {
+      "package": "com.jared797.backspin",
+      "adaptiveIcon": { "foregroundImage": "./assets/adaptive-icon.png", "backgroundColor": "#14111F" },
+      "permissions": ["android.permission.RECORD_AUDIO"]
+    },
+    "plugins": [
+      "expo-router",
+      "expo-localization",
+      ["expo-audio", { "microphonePermission": "Backspin records your voice only while you hold the record button, so it can play it backwards. Recordings stay on your phone." }],
+      ["expo-splash-screen", { "image": "./assets/splash-icon.png", "imageWidth": 180, "resizeMode": "contain", "backgroundColor": "#14111F", "dark": { "image": "./assets/splash-icon.png", "backgroundColor": "#14111F" } }],
+      "expo-status-bar"
+    ],
+    "experiments": { "typedRoutes": false },
+    "runtimeVersion": { "policy": "appVersion" },
+    "updates": { "enabled": true, "checkAutomatically": "ON_LOAD", "fallbackToCacheTimeout": 0 },
+    "owner": "jared797",
+    "newArchEnabled": true
+  }
+}

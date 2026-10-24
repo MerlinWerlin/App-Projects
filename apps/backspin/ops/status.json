@@ -1,0 +1,7 @@
+{
+  "app": "backspin",
+  "stage": "build",
+  "headline": "First build ready for Expo Go on the iPhone (iOS only until the native Android recorder).",
+  "next_for_owner": ["Open Backspin in Expo Go and answer docs/TRIAL.md", "Decide the Backspin Plus price (proposed A$3.99) and the store name", "Create the App Store Connect app when you want TestFlight (Claude adds RELEASE.json)"],
+  "updated": "2026-10-24"
+}
