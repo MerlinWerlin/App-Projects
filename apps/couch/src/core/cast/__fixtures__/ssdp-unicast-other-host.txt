@@ -1,0 +1,7 @@
+HTTP/1.1 200 OK
+CACHE-CONTROL: max-age=1800
+EXT:
+LOCATION: http://192.168.1.99:7676/rd.xml
+ST: urn:schemas-upnp-org:device:MediaRenderer:1
+USN: uuid:0a0b0c0d-9999-4999-8999-999999999999::urn:schemas-upnp-org:device:MediaRenderer:1
+

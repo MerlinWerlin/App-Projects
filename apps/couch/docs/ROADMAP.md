@@ -41,7 +41,7 @@ Source: owner request 18 Oct (`docs/OWNER_1018.md`), research in `docs/MARKET.md
 These need native code, so they can't run in Expo Go; each sits behind an adapter that never crashes it.
 - T29 on-device speech-to-text for voice search.
 - T31 Google TV native pairing; T34 Vizio, Philips and Fire TV in the add-TV flow; T33 webOS pairing signature check.
-- T76 cast photos and videos to the TV (DLNA/UPnP) — the most common feature rivals have that we don't. Core done (run 43); native part T80 needs a dev build.
+- **Remote + cast (owner brief cast-1024, 24 Oct; docs/OWNER_1024_CAST.md).** Cast tab: photos and videos from the phone to the TV over Wi-Fi (DLNA/UPnP, Roku media player, demo mode in Expo Go), queue, slideshow, play/pause from the remote; AirPlay / Screen Mirroring shortcut. Built in run 70 (T89–T92), free, needs the next TestFlight build for the native file server and route picker; not tried on a real TV yet. Phase C full mirroring to non-AirPlay TVs (T93) is a design note for a later round.
 - Couch Plus: T77 Home Screen widget (core done run 44; native part T82 needs a dev build), then Lock Screen/Control Center controls, Live Activity volume, Apple Watch, macros ("Movie night").
 - Real blur materials (`expo-blur`) for the new design.
 

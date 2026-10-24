@@ -6,7 +6,8 @@ Draft only; R4 finalises copy and screenshot captions. "Couch" is a working titl
 
 - **Name (30):** Couch: TV Remote
 - **Subtitle (30):** Every button free. No ads.
-- **Promotional text:** Every button free. No weekly subscription. Ever.
+- **Promotional text:** Remote and cast, free. No weekly subscription. Ever.
+  (cast-1024 marketing rule: say fair-priced and free of weekly subscriptions; never claim no other app does both — several remote apps bundle casting.)
 - **Keywords (100):** tv remote,universal remote,smart tv,remote control,tv control,streaming,wifi remote,keyboard
 
 **Description:**
@@ -19,6 +20,7 @@ Couch is a universal remote for the TVs and streaming players in your home. Ever
 - Simple mode: big power, volume, channel and home buttons for kids and grandparents.
 - Built for accessibility: large targets, haptics, VoiceOver and TalkBack labels.
 - Big, clear buttons that grow with your text size, all the way to the largest accessibility sizes.
+- Cast photos and videos from your phone to the TV, with a slideshow, free. AirPlay / Screen Mirroring is one tap away on TVs that support it.
 - Private: no account, no analytics, nothing leaves your home network.
 
 Couch Plus (optional, one-time purchase): Home and Lock Screen widgets, volume in the Dynamic Island, Apple Watch and Wear OS remote, themes and one-tap macros. Nothing on the remote ever needs it.

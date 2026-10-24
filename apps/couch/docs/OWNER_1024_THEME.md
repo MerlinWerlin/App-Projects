@@ -10,7 +10,7 @@ Done in the shipping repo (App-Projects, apps/couch):
 - Old saved prefs that say `midnight` were the old default written on every save, so they now read as the new
   default; saves carry `themeV: 2`, after which a picked Midnight is kept (`src/core/prefs.ts`).
 - Midnight stays free. Store screenshot 01 now uses Charcoal & Gold. Name translated in all 11 languages.
-- Prototype mirror updated (arrow colour on the gold pad not mirrored there; `ringInk` is app-only).
+- Prototype mirror updated (run 66: the gold pad's dark arrows, `ringInk`, now mirrored there too, so store shot 01 shows them).
 
 ## Follow-up, 24 Oct 12:12: glow
 

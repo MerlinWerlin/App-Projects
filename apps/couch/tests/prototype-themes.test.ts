@@ -32,7 +32,13 @@ describe('prototype remote themes (T58)', () => {
     const t = REMOTE_THEMES[id];
     const want: Record<string, unknown> = {};
     for (const f of FIELDS) want[f] = JSON.parse(JSON.stringify(t[f]));
+    if (t.ringInk !== undefined) want.ringInk = t.ringInk; // optional token (Charcoal & Gold arrows), mirrored when set
     expect(json[id]).toStrictEqual(want);
+  });
+
+  it('d-pad arrows use the optional ringInk token, falling back to muted (24 Oct)', () => {
+    expect(proto).toContain('color:var(--ring-ink,var(--muted))');
+    expect(proto).toContain("'--ring-ink':t.ringInk||t.muted");
   });
 
   it('has a theme switcher, ?theme= and ?shot= support', () => {

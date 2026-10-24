@@ -190,3 +190,7 @@ id1670649189, id1401880138, id6467252904, id1631564230, id6746162794, id64440975
 id6738310918, id6466823406, Roku id482066631; mac.eltima.com roundups (published by TVRem's maker);
 airdroid.com; splitmetrics.com; kimola.com review analysis; nextpit.com (Samsung widget);
 mwm.ai (LG ThinQ); forum.network-inventory-advisor.com.
+
+## Remote + cast (owner brief 24 Oct 2026, cast-1024)
+
+Paid cast and mirror apps charge about US$6.99/week (one is rated 2.1 stars, with false-advertising complaints). Couch now pairs the free remote with free photo and video casting and an AirPlay shortcut. Positioning: **"Remote + cast, free"**: fair-priced, no weekly subscriptions. Do not claim that no other app does both: several remote apps bundle casting (see the comparison table). Full screen mirroring to non-AirPlay TVs is a later phase (docs/OWNER_1024_CAST.md, phase C).

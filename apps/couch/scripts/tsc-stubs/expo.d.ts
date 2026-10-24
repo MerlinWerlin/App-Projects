@@ -164,3 +164,60 @@ declare module 'expo-constants' {
   };
   export default Constants;
 }
+
+// cast-1024 (T91): the slice of expo-image-picker the Cast tab uses. src/native/mediaPicker.ts loads
+// the module through a guarded require and types it locally; this stub mirrors the real API.
+declare module 'expo-image-picker' {
+  export type MediaType = 'images' | 'videos' | 'livePhotos';
+  export enum UIImagePickerPreferredAssetRepresentationMode {
+    Automatic = 'automatic',
+    Compatible = 'compatible',
+    Current = 'current',
+  }
+  export enum VideoExportPreset {
+    Passthrough = 0,
+    LowQuality = 1,
+    MediumQuality = 2,
+    HighestQuality = 3,
+    H264_640x480 = 4,
+    H264_960x540 = 5,
+    H264_1280x720 = 6,
+    H264_1920x1080 = 7,
+    H264_3840x2160 = 8,
+    HEVC_1920x1080 = 9,
+    HEVC_3840x2160 = 10,
+  }
+  export interface ImagePickerAsset {
+    uri: string;
+    assetId?: string | null;
+    width: number;
+    height: number;
+    type?: 'image' | 'video' | 'livePhoto' | 'pairedVideo';
+    fileName?: string | null;
+    fileSize?: number;
+    mimeType?: string;
+    /** Milliseconds. */
+    duration?: number | null;
+  }
+  export type ImagePickerResult = { canceled: true; assets: null } | { canceled: false; assets: ImagePickerAsset[] };
+  export interface ImagePickerOptions {
+    mediaTypes?: MediaType | MediaType[];
+    allowsMultipleSelection?: boolean;
+    selectionLimit?: number;
+    orderedSelection?: boolean;
+    quality?: number;
+    exif?: boolean;
+    base64?: boolean;
+    preferredAssetRepresentationMode?: UIImagePickerPreferredAssetRepresentationMode;
+    videoExportPreset?: VideoExportPreset;
+  }
+  export interface MediaLibraryPermissionResponse {
+    status: 'granted' | 'denied' | 'undetermined';
+    granted: boolean;
+    canAskAgain: boolean;
+    expires: 'never' | number;
+    accessPrivileges?: 'all' | 'limited' | 'none';
+  }
+  export function requestMediaLibraryPermissionsAsync(writeOnly?: boolean): Promise<MediaLibraryPermissionResponse>;
+  export function launchImageLibraryAsync(options?: ImagePickerOptions): Promise<ImagePickerResult>;
+}

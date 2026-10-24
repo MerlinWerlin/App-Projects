@@ -136,6 +136,13 @@ export const ICON_PATHS: Readonly<Record<IconName, readonly IconPart[]>> = {
     { d: 'M12 13.5V9.5' },
     { d: 'M18.2 7.3l1.5-1.5' },
   ],
+  // Screen with signal waves rising to it from a dot below (AirPlay / Screen Mirroring shortcut, T92).
+  screenMirror: [
+    { d: roundRectPath(3.5, 2.5, 17, 10.5, 2) },
+    { d: 'M7.71 16.9A5.6 5.6 0 0 1 16.29 16.9' },
+    { d: 'M9.55 18.44A3.2 3.2 0 0 1 14.45 18.44' },
+    { d: circlePath(12, 20.5, 1.1), fill: true },
+  ],
 };
 
 /** Every id with its parts, in ICON_NAMES order (handy for galleries / the prototype). */

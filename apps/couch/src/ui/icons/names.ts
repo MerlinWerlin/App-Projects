@@ -10,7 +10,7 @@ export const ICON_NAMES = [
   'mic', 'keyboard', 'numpad', 'apps', 'tv', 'search',
   'up', 'down', 'left', 'right',
   'close', 'backspace', 'enter', 'check', 'plus', 'minus', 'speaker',
-  'timer',
+  'timer', 'screenMirror',
 ] as const;
 export type IconName = (typeof ICON_NAMES)[number];
 export function isIconName(v: unknown): v is IconName {

@@ -92,7 +92,7 @@ export const SHOTS = [
   { n: '03', name: 'find-tv', key: 'ui.store.headline.findTv', theme: 'retro', accent: 'glow', view: 'add' },
   { n: '04', name: 'search', key: 'ui.store.headline.search', theme: 'aurora', accent: 'accent', view: 'keyboard' },
   { n: '05', name: 'apps', key: 'ui.store.headline.apps', theme: 'cinema', accent: 'accent', view: 'apps' },
-  { n: '06', name: 'themes', key: 'ui.store.headline.themes', vars: { count: 10 }, theme: 'neon', accent: 'accent', fan: ['aluminium', 'cinema', 'neon', 'candy', 'aurora'] },
+  { n: '06', name: 'themes', key: 'ui.store.headline.themes', vars: { count: Object.keys(REMOTE_THEMES).length }, theme: 'neon', accent: 'accent', fan: ['aluminium', 'cinema', 'neon', 'candy', 'aurora'] },
   { n: '07', name: 'multi-tv', key: 'ui.store.headline.multiTv', theme: 'forest', accent: 'accent', view: 'switch' },
 ];
 
