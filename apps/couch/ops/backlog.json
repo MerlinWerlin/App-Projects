@@ -1252,6 +1252,30 @@
       ],
       "priority": 1,
       "note": "TRIAL.md leads with TestFlight (run 73); two ship checks done, skip reason recorded in status.native_build_1_0_1 (run 74)."
+    },
+    {
+      "id": "T97",
+      "title": "D138-1: correct status headline + TRIAL.md (1.0.1 waits on App-Projects PR #75 merge, not the native-build cap); check each run whether #75 merged; no new native changes until then",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "cast-1024"
+      ],
+      "priority": 1,
+      "note": "run 76"
+    },
+    {
+      "id": "T98",
+      "title": "D140-1: PR #75 merged - headline and TRIAL.md say 1.0.1 (Cast) is on its way to TestFlight; then D133-1 on that ship run (T95)",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "cast-1024"
+      ],
+      "priority": 1,
+      "note": "Records updated run 78; ship-run triage continues as T95."
     }
   ],
   "codex_delegable": [

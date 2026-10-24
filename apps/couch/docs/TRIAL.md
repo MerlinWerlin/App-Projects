@@ -5,7 +5,7 @@ Open Couch from **TestFlight** (it has the gold d-pad icon). It starts in demo m
 Please answer the yes/no questions first (copy them into a comment on the Couch build page); how to open Couch is below them.
 
 ## New since your last test (24 Oct, evening): Cast
-The current TestFlight build (1.0.0) and Expo Go run the Cast tab in demo mode. Casting to a real TV needs the TestFlight 1.0.1 build, which has not been built yet.
+The current TestFlight build (1.0.0) and Expo Go run the Cast tab in demo mode. Casting to a real TV needs the TestFlight 1.0.1 build, which is on its way: the owner merged App-Projects PR #75 at 22:18Z 24 Oct (09:18 Sydney 25 Oct), so it should appear in TestFlight about 30-40 minutes later if the ship run passes. Update Couch from TestFlight when it shows 1.0.1.
 1. There is a new Cast tab next to Remote. "Choose photos and videos" opens your photo library, and the picked items show as a queue. yes / no
 2. Cast tab (demo TV): play/pause, next/previous, -10 s / +10 s on a video, and the slideshow with its interval chips all respond. yes / no
 3. While something is casting, the Remote tab shows a small "Casting" pill, and Play/Pause on the remote pauses the cast. yes / no
