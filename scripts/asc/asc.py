@@ -48,10 +48,21 @@ def _clean(v):
 
 
 def KID():
+    """The 10-character key id, from whichever of the two id secrets holds one (they have been seen swapped)."""
+    import re
+    for name in ("ASC_KEY_ID", "ASC_ISSUER_ID"):
+        v = (os.environ.get(name) or "").strip()
+        if re.fullmatch(r"[A-Z0-9]{10}", v):
+            return v
     return _clean(os.environ["ASC_KEY_ID"]).upper()
 
 
 def ISS():
+    import re
+    for name in ("ASC_ISSUER_ID", "ASC_KEY_ID"):
+        v = (os.environ.get(name) or "").strip().lower()
+        if re.fullmatch(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", v):
+            return v
     return _clean(os.environ["ASC_ISSUER_ID"]).lower()
 
 
