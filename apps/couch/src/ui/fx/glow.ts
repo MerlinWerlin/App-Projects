@@ -122,7 +122,7 @@ export interface GlowLobe {
 
 /** Three lobes: a wide one behind the whole remote and two strips spilling out top and bottom. */
 export const GLOW_LOBES: readonly GlowLobe[] = [
-  { id: 'wide', cx: 0.5, cy: 0.5, rx: 0.62, ry: 0.56, peak: 0.14 },
+  { id: 'wide', cx: 0.5, cy: 0.5, rx: 0.62, ry: 0.56, peak: 0.16 },
   { id: 'top', cx: 0.5, cy: 0.16, rx: 0.58, ry: 0.24, peak: 0.1 },
   { id: 'bottom', cx: 0.5, cy: 0.86, rx: 0.58, ry: 0.22, peak: 0.08 },
 ];
@@ -153,6 +153,26 @@ export const DRIFT = { px: 4, period: 14000 } as const;
 export const PULSE = { in: 40, out: 150, reduceOpacity: 0.3 } as const;
 /** Power key: one slow warm swell (~1.2 s). */
 export const SWELL = { in: 480, out: 720, scaleFrom: 0.96, scaleTo: 1.04, reduceOpacity: 0.35 } as const;
+/**
+ * Backlight halo (owner 24 Oct 2026: "the glow behind it didn't really work"). The remote card fills
+ * almost the whole width, so the stage lobes mostly sit behind it and barely show. The halo is a soft
+ * shadow in the glow colour hugging the card's edge, like an LED strip behind a TV. It sits on the card
+ * outline, not under stage text, so the stage AA proof above is unchanged. iOS draws coloured shadows;
+ * Android falls back to the stage lobes.
+ */
+export const HALO = { opacity: 0.6, radius: 18 } as const;
+
+/** Card style for the halo in `color` (none when the glow is off). */
+export function haloStyle(color: string | null): {
+  shadowColor: string;
+  shadowOpacity: number;
+  shadowRadius: number;
+  shadowOffset: { width: number; height: number };
+} | null {
+  if (!color) return null;
+  return { shadowColor: color, shadowOpacity: HALO.opacity, shadowRadius: HALO.radius, shadowOffset: { width: 0, height: 0 } };
+}
+
 /** Marquee dots: count, resting opacity, ripple stagger per dot. */
 export const MARQUEE = { dots: 15, rest: 0.22, peak: 0.85, stagger: 45, up: 140, down: 420 } as const;
 

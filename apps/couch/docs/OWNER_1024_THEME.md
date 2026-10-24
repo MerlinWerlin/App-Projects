@@ -11,3 +11,10 @@ Done in the shipping repo (App-Projects, apps/couch):
   default; saves carry `themeV: 2`, after which a picked Midnight is kept (`src/core/prefs.ts`).
 - Midnight stays free. Store screenshot 01 now uses Charcoal & Gold. Name translated in all 11 languages.
 - Prototype mirror updated (arrow colour on the gold pad not mirrored there; `ringInk` is app-only).
+
+## Follow-up, 24 Oct 12:12: glow
+
+Owner: "the glow option behind it didn't really work". The remote card fills almost the full width, so the
+stage glow (~10% opacity) sat behind it and barely showed. Added a backlight halo: a soft shadow in the glow colour
+hugging the card edge (`HALO`, `haloStyle` in src/ui/fx/glow.ts), and the wide lobe peak 0.14 -> 0.16. Stage text AA
+still holds for every theme and glow colour (worst: Neon cyan 4.57:1). iOS draws it; Android keeps the stage lobes.
