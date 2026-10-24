@@ -542,5 +542,275 @@ export const GENERATED_SKINS: Skin[] = [
    "labelBack": "#08656D",
    "score": "#536875"
   }
+ },
+ {
+  "id": "walnut",
+  "name": "Walnut Room",
+  "vibe": "Warm walnut tones, restrained brass and creamy typography evoke beautifully engineered analog audio equipment.",
+  "font": {
+   "heading": "Optima",
+   "body": "Avenir",
+   "number": "Avenir Next",
+   "headingWeight": "700",
+   "headingTracking": 0.1
+  },
+  "radius": {
+   "s": 6,
+   "m": 12,
+   "l": 20
+  },
+  "card": {
+   "borderWidth": 0.5,
+   "shadowOpacity": 0.16,
+   "shadowRadius": 16.0
+  },
+  "dark": {
+   "bg": "#171410",
+   "card": "#241E18",
+   "cardHi": "#30281F",
+   "ink": "#F5EBD9",
+   "sub": "#C5B69F",
+   "faint": "#A39177",
+   "line": "#514333",
+   "rec": "#A7442D",
+   "recInk": "#FFF7E9",
+   "rew": "#D5BA7A",
+   "rewInk": "#241B12",
+   "gold": "#DCC18A",
+   "good": "#A9C98A",
+   "bad": "#F0A08B",
+   "overlay": "rgba(15,12,8,0.78)",
+   "bgGradient": [
+    "#30251B",
+    "#1D1812",
+    "#14110E"
+   ],
+   "recGradient": [
+    "#AB4931",
+    "#853422"
+   ],
+   "glow": "#C58C4A",
+   "cardBorder": "#5A4935",
+   "shadow": "#0F0C08",
+   "discBody": "#15120F",
+   "discGroove": "#44392B",
+   "labelForward": "#B65B3C",
+   "labelBack": "#D5BA7A",
+   "score": "#E8CC92"
+  },
+  "light": {
+   "bg": "#F4EBDD",
+   "card": "#FFF9EF",
+   "cardHi": "#EDE1CE",
+   "ink": "#292117",
+   "sub": "#65533E",
+   "faint": "#6E5C47",
+   "line": "#CDBDA4",
+   "rec": "#973D2B",
+   "recInk": "#FFF7E9",
+   "rew": "#46583A",
+   "rewInk": "#FFF7E9",
+   "gold": "#775716",
+   "good": "#386044",
+   "bad": "#A23D30",
+   "overlay": "rgba(35,26,17,0.48)",
+   "bgGradient": [
+    "#FFFAF0",
+    "#F4EBDD",
+    "#EBDFCB"
+   ],
+   "recGradient": [
+    "#A7442D",
+    "#853422"
+   ],
+   "glow": "#BD8E45",
+   "cardBorder": "#D4C3A9",
+   "shadow": "#493322",
+   "discBody": "#29231C",
+   "discGroove": "#61513D",
+   "labelForward": "#A7442D",
+   "labelBack": "#D5BA7A",
+   "score": "#775716"
+  }
+ },
+ {
+  "id": "glass",
+  "name": "Night Glass",
+  "vibe": "Inky blue depth, luminous frosted edges and cool silver-blue controls give the same layout a precision studio-",
+  "font": {
+   "heading": "System",
+   "body": "System",
+   "number": "Helvetica Neue",
+   "headingWeight": "600",
+   "headingTracking": -0.6
+  },
+  "radius": {
+   "s": 8,
+   "m": 18,
+   "l": 28
+  },
+  "card": {
+   "borderWidth": 1.0,
+   "shadowOpacity": 0.26,
+   "shadowRadius": 24.0
+  },
+  "dark": {
+   "bg": "#080F1C",
+   "card": "#111E30",
+   "cardHi": "#1A2B43",
+   "ink": "#F0F6FF",
+   "sub": "#AEC1DA",
+   "faint": "#8EA4BF",
+   "line": "#344B68",
+   "rec": "#A9C7FF",
+   "recInk": "#10203C",
+   "rew": "#8DDCCF",
+   "rewInk": "#0B2B2A",
+   "gold": "#DCC69A",
+   "good": "#87DBB2",
+   "bad": "#FF9CA8",
+   "overlay": "rgba(3,8,17,0.80)",
+   "bgGradient": [
+    "#14263D",
+    "#0D1829",
+    "#080F1C"
+   ],
+   "recGradient": [
+    "#C3D9FF",
+    "#8CACEC"
+   ],
+   "glow": "#7AAEFF",
+   "cardBorder": "rgba(182,211,255,0.24)",
+   "shadow": "#000815",
+   "discBody": "#080E19",
+   "discGroove": "#2C415D",
+   "labelForward": "#A9C7FF",
+   "labelBack": "#8DDCCF",
+   "score": "#C8DAFF"
+  },
+  "light": {
+   "bg": "#EFF3FA",
+   "card": "#FFFFFF",
+   "cardHi": "#E3EBF5",
+   "ink": "#111E33",
+   "sub": "#465B77",
+   "faint": "#53657E",
+   "line": "#BACADD",
+   "rec": "#244B9B",
+   "recInk": "#FFFFFF",
+   "rew": "#15685E",
+   "rewInk": "#FFFFFF",
+   "gold": "#7B5C23",
+   "good": "#216342",
+   "bad": "#B5324B",
+   "overlay": "rgba(10,24,46,0.46)",
+   "bgGradient": [
+    "#FFFFFF",
+    "#F1F5FC",
+    "#E8EFF8"
+   ],
+   "recGradient": [
+    "#315EB5",
+    "#203D80"
+   ],
+   "glow": "#779FE4",
+   "cardBorder": "#C6D5E8",
+   "shadow": "#213C67",
+   "discBody": "#142137",
+   "discGroove": "#405878",
+   "labelForward": "#A9C7FF",
+   "labelBack": "#8DDCCF",
+   "score": "#244B9B"
+  }
+ },
+ {
+  "id": "sorbet",
+  "name": "Electric Sorbet",
+  "vibe": "Sculptural geometric type, raspberry lacquer and sharp citron accents bring playful energy with a polished bou",
+  "font": {
+   "heading": "Futura",
+   "body": "Avenir Next",
+   "number": "Futura",
+   "headingWeight": "700",
+   "headingTracking": -0.5
+  },
+  "radius": {
+   "s": 10,
+   "m": 20,
+   "l": 28
+  },
+  "card": {
+   "borderWidth": 1.0,
+   "shadowOpacity": 0.14,
+   "shadowRadius": 16.0
+  },
+  "dark": {
+   "bg": "#211225",
+   "card": "#321C38",
+   "cardHi": "#43264A",
+   "ink": "#FFF5EC",
+   "sub": "#D7BBD8",
+   "faint": "#B798B8",
+   "line": "#68436E",
+   "rec": "#C63068",
+   "recInk": "#FFFFFF",
+   "rew": "#DCF35F",
+   "rewInk": "#31162F",
+   "gold": "#FFB365",
+   "good": "#C1E98C",
+   "bad": "#FFA0B5",
+   "overlay": "rgba(22,7,28,0.78)",
+   "bgGradient": [
+    "#3C1B42",
+    "#29152F",
+    "#1D1023"
+   ],
+   "recGradient": [
+    "#CB356D",
+    "#A81F58"
+   ],
+   "glow": "#F06B9A",
+   "cardBorder": "#765079",
+   "shadow": "#16071C",
+   "discBody": "#201126",
+   "discGroove": "#62416A",
+   "labelForward": "#EB6692",
+   "labelBack": "#DCF35F",
+   "score": "#FFB365"
+  },
+  "light": {
+   "bg": "#FFF4E9",
+   "card": "#FFFCF5",
+   "cardHi": "#F4E6F2",
+   "ink": "#321A38",
+   "sub": "#6C4C70",
+   "faint": "#77577B",
+   "line": "#D5B8CF",
+   "rec": "#C63068",
+   "recInk": "#FFFFFF",
+   "rew": "#DCF35F",
+   "rewInk": "#31162F",
+   "gold": "#97501A",
+   "good": "#3C6327",
+   "bad": "#AC2854",
+   "overlay": "rgba(49,22,47,0.46)",
+   "bgGradient": [
+    "#FFFAF0",
+    "#FFF0ED",
+    "#F4E5F3"
+   ],
+   "recGradient": [
+    "#CB356D",
+    "#A81F58"
+   ],
+   "glow": "#E984AA",
+   "cardBorder": "#DCBDD1",
+   "shadow": "#6A284F",
+   "discBody": "#321A38",
+   "discGroove": "#78527D",
+   "labelForward": "#EB6692",
+   "labelBack": "#DCF35F",
+   "score": "#97501A"
+  }
  }
 ];
