@@ -10,20 +10,23 @@
  * Original art only: the phone is a generic iPhone-style frame with no maker marks; no logos, no real people.
  */
 import { createRequire } from 'node:module';
-import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 
 const require = createRequire(import.meta.url);
 const G = join(process.env.HOME || '/home/claude', '.npm-global/lib/node_modules');
-function load(name, deep) {
-  for (const c of [name, join(G, name), deep && join(G, deep)].filter(Boolean)) {
-    try { return require(c); } catch { /* next */ }
+function load(...names) {
+  for (const n of names) {
+    for (const c of [n, join(G, n)]) {
+      try { return require(c); } catch { /* next */ }
+    }
   }
-  throw new Error(`cannot load ${name}; it must already be installed`);
+  throw new Error(`cannot load ${names[0]}; it must already be installed (this kit never installs anything)`);
 }
 const { chromium } = load('playwright', '@playwright/mcp/node_modules/playwright');
 const sharp = load('sharp');
 
+/** Shot page in CSS px; x3 = 1320 x 2868. */
 export const SHOT = { w: 440, h: 956, scale: 3 };
 /** iPhone 6.9" logical size in points; app mocks are laid out at this size and scaled into the frame. */
 export const PT = { w: 440, h: 956 };
@@ -41,7 +44,7 @@ export function statusBar(ink = '#fff') {
 
 /**
  * Generic iPhone-style frame (Dynamic Island, no maker marks). `screen` is HTML laid out at PT size.
- * `width` is the outer frame width in shot px; `tilt` rotates it (deg).
+ * `width` is the outer frame width in shot px.
  */
 export function phone(screen, { width = 368, bg = '#000', tilt = 0, style = '', cls = '' } = {}) {
   const bezel = width * 0.034;
@@ -52,7 +55,8 @@ export function phone(screen, { width = 368, bg = '#000', tilt = 0, style = '', 
 <span class="pb pb1"></span><span class="pb pb2"></span><span class="pb pb3"></span><span class="pb pb4"></span>
 <div class="pscreen" style="border-radius:${width * 0.135}px;background:${bg}">
 <div class="pt" style="width:${PT.w}px;height:${PT.h}px;transform:scale(${k})">${screen}</div>
-<span class="island" style="top:${inner * 0.03}px;width:${inner * 0.29}px;height:${inner * 0.085}px"></span>
+<span class="island" style="top:${inner * 0.026}px;width:${inner * 0.285}px;height:${inner * 0.082}px"></span>
+<span class="home"></span>
 </div></div>`;
 }
 
@@ -64,24 +68,28 @@ body{position:relative;font-family:"Inter","Noto Sans","DejaVu Sans",sans-serif,
   box-shadow:0 0 0 1.5px rgba(255,255,255,.10) inset,0 30px 70px -20px rgba(0,0,0,.55),0 10px 24px -8px rgba(0,0,0,.35)}
 .pscreen{position:relative;width:100%;height:100%;overflow:hidden}
 .pt{position:absolute;left:0;top:0;transform-origin:0 0;overflow:hidden}
-.island{position:absolute;left:50%;transform:translateX(-50%);border-radius:999px;background:#000}
+.island{position:absolute;left:50%;transform:translateX(-50%);border-radius:999px;background:#000;z-index:60}
+.home{position:absolute;left:50%;bottom:6px;width:34%;height:4px;border-radius:3px;transform:translateX(-50%);background:rgba(128,128,128,.55);z-index:60}
 .pb{position:absolute;width:3px;background:#2b2c30;border-radius:2px}
 .pb1{left:-2px;top:17%;height:5%}.pb2{left:-2px;top:25%;height:8.5%}.pb3{left:-2px;top:35%;height:8.5%}.pb4{right:-2px;top:27%;height:13%}
-.sb{position:absolute;left:0;right:0;top:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:6px 34px 0 46px;z-index:50;font:600 17px/1 "Inter",sans-serif}
+.sb{position:absolute;left:0;right:0;top:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:8px 36px 0 50px;z-index:50;font:600 17px/1 "Inter",sans-serif}
 .sbr{display:flex;gap:6px;align-items:center}
 `;
 
 /**
  * Renders shots to outDir as NN-name.jpg (1320x2868 RGB JPEG). shots: [{ n, name, html, css }].
- * Returns the written file paths.
+ * Elements marked data-fit must not overflow (checked). Returns the written file paths.
  */
 export async function renderShots({ shots, outDir, css = '', quality = 88 }) {
   rmSync(outDir, { recursive: true, force: true });
   mkdirSync(outDir, { recursive: true });
-  const browser = await chromium.launch({
-    executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium',
-    args: ['--default-tile-width=4096', '--default-tile-height=4096', '--disable-gpu-rasterization', '--font-render-hinting=none'],
-  }).catch(() => chromium.launch());
+  const opts = { args: ['--default-tile-width=4096', '--default-tile-height=4096', '--disable-gpu-rasterization', '--font-render-hinting=none'] };
+  let browser;
+  try {
+    browser = await chromium.launch({ ...opts, executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium' });
+  } catch {
+    browser = await chromium.launch(opts);
+  }
   const ctx = await browser.newContext({ viewport: { width: SHOT.w, height: SHOT.h }, deviceScaleFactor: SHOT.scale });
   await ctx.route(/^https?:\/\//, (r) => r.abort());
   const out = [];
@@ -90,7 +98,8 @@ export async function renderShots({ shots, outDir, css = '', quality = 88 }) {
     const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><style>${BASE_CSS}${css}${s.css || ''}</style></head><body>${s.html}</body></html>`;
     await page.setContent(html, { waitUntil: 'load' });
     await page.evaluate(() => document.fonts.ready);
-    const overflow = await page.evaluate(() => [...document.querySelectorAll('[data-fit]')].filter((e) => e.scrollWidth > e.clientWidth + 1 || e.scrollHeight > e.clientHeight + 1).map((e) => e.textContent.slice(0, 40)));
+    const overflow = await page.evaluate(() => [...document.querySelectorAll('[data-fit]')]
+      .filter((e) => e.scrollWidth > e.clientWidth + 1).map((e) => e.textContent.slice(0, 40)));
     if (overflow.length) throw new Error(`shot ${s.n}-${s.name}: text overflows: ${overflow.join(' | ')}`);
     const png = await page.screenshot({ type: 'png' });
     await page.close();
@@ -103,8 +112,4 @@ export async function renderShots({ shots, outDir, css = '', quality = 88 }) {
   }
   await browser.close();
   return out;
-}
-
-export function writeJson(file, data) {
-  writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
 }

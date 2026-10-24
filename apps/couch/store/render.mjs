@@ -12,6 +12,10 @@
  * 4. Writes store/screenshots/publish/: every 1320x2868 shot as JPEG (quality 85) plus a small contact sheet
  *    (index.html) that shows them by relative path. That folder holds only publishable files.
  *
+ * --ios renders the App Store set into store/jpg/ios/ (committed; store/listing.json points at it): only the free
+ * remote themes (Couch Plus has no store product yet), an iPhone-style frame with a Dynamic Island, no theme-fan
+ * shot, and no infrared rows (iPhones have no IR blaster). 1320x2868 JPEG q85, no alpha.
+ *
  * Screens use generic demo TVs only; every screen's visible text is checked against store/brand-guard.mjs.
  */
 import { createRequire } from 'node:module';
@@ -44,7 +48,8 @@ function arg(name, def) {
   return i >= 0 && argv[i + 1] ? argv[i + 1] : def;
 }
 const locale = arg('locale', 'en');
-const onlySize = arg('size', null);
+const IOS = argv.includes('--ios');
+const onlySize = IOS ? '1320x2868' : arg('size', null);
 
 // ---- data -----------------------------------------------------------------------------------------
 const { REMOTE_THEMES } = await import(pathToFileURL(join(root, 'src/theme/remoteThemes.ts')).href);
@@ -91,13 +96,26 @@ export const SHOTS = [
   { n: '07', name: 'multi-tv', key: 'ui.store.headline.multiTv', theme: 'forest', accent: 'accent', view: 'switch' },
 ];
 
+/**
+ * App Store (iOS) set: free themes only, one feature per shot, nothing an iPhone can't do (no infrared).
+ * Same headlines and order as SHOTS minus the themes fan (8 of the 12 themes are Couch Plus, which is not on sale yet).
+ */
+export const SHOTS_IOS = [
+  { n: '01', name: 'every-tv', key: 'ui.store.headline.everyTv', theme: 'charcoal', accent: 'accent' },
+  { n: '02', name: 'free', key: 'ui.store.headline.priceFree', theme: 'daylight', accent: 'accent', seal: 'ui.store.headline.sealFree' },
+  { n: '03', name: 'find-tv', key: 'ui.store.headline.findTv', theme: 'midnight', accent: 'accent', view: 'add' },
+  { n: '04', name: 'search', key: 'ui.store.headline.search', theme: 'oled', accent: 'accent', view: 'keyboard' },
+  { n: '05', name: 'apps', key: 'ui.store.headline.apps', theme: 'charcoal', accent: 'accent', view: 'apps' },
+  { n: '06', name: 'multi-tv', key: 'ui.store.headline.multiTv', theme: 'midnight', accent: 'accent', view: 'switch' },
+];
+
 /** Playbook rule 5: the rendered headline box is at least this fraction of the shot height, in at most 2 lines. */
 export const HEADLINE_MIN_FRACTION = 0.07;
 export const HEADLINE_MAX_LINES = 2;
 const HEADLINE_LINE_HEIGHT = 1.1;
 
 const PHONE = { w: 430, h: 932, scale: 3 };
-const outRoot = arg('out', locale === 'en' ? join(here, 'screenshots') : join(here, 'screenshots', locale));
+const outRoot = IOS ? join(here, 'screenshots', 'ios') : arg('out', locale === 'en' ? join(here, 'screenshots') : join(here, 'screenshots', locale));
 
 // ---- step 1: prototype screens --------------------------------------------------------------------
 // one raster tile per shot: with the default 256 px tiles, soft gradients show faint seams at tile edges
@@ -118,6 +136,12 @@ async function screen(theme, view) {
   const url = `${pathToFileURL(join(root, 'prototype/index.html')).href}?shot=1&theme=${theme}${view ? `&view=${view}` : ''}`;
   await page.goto(url, { waitUntil: 'load', timeout: 10000 });
   await page.waitForTimeout(250);
+  if (IOS) {
+    // iPhones have no infrared blaster: drop the IR entry in Add a TV and any infrared TV in the switcher
+    await page.evaluate(() => {
+      document.querySelectorAll('.tv').forEach((el) => { if (/infrared/i.test(el.textContent || '')) el.remove(); });
+    });
+  }
   assertNoBrands(await page.evaluate(() => document.body.innerText), `prototype screen ${id}`);
   const png = await page.screenshot({ type: 'png' });
   await page.close();
@@ -137,7 +161,7 @@ function lum(hex) {
 
 function phone(src, cls = '', style = '') {
   return `<div class="phone ${cls}" style="${style}"><span class="btn b1"></span><span class="btn b2"></span><span class="btn b3"></span>` +
-    `<div class="screen"><img src="${src}" alt=""><span class="cam"></span></div></div>`;
+    `<div class="screen"><img src="${src}" alt=""><span class="${IOS ? 'island' : 'cam'}"></span></div></div>`;
 }
 
 /**
@@ -220,6 +244,7 @@ h1{font-size:${fs}px;line-height:${HEADLINE_LINE_HEIGHT};font-weight:800;letter-
 .screen{position:relative;width:100%;height:100%;border-radius:${phoneW * 0.12}px;overflow:hidden;background:${th.stage}}
 .screen img{position:absolute;left:0;top:${phoneW * 0.085}px;display:block;width:100%;height:auto}
 .cam{position:absolute;top:${phoneW * 0.025}px;left:50%;width:${phoneW * 0.035}px;height:${phoneW * 0.035}px;transform:translateX(-50%);border-radius:50%;background:#050506;box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+.island{position:absolute;top:${phoneW * 0.017}px;left:50%;width:${phoneW * 0.27}px;height:${phoneW * 0.058}px;transform:translateX(-50%);border-radius:999px;background:#050506}
 .btn{position:absolute;width:${phoneW * 0.012}px;background:#2a2c31;border-radius:2px}
 .b1{left:-${phoneW * 0.008}px;top:18%;height:6%}.b2{left:-${phoneW * 0.008}px;top:27%;height:9%}.b3{right:-${phoneW * 0.008}px;top:24%;height:12%}
 .fan{position:relative;width:${phoneW}px;height:100%}
@@ -297,7 +322,7 @@ mkdirSync(join(outRoot, 'previews'), { recursive: true });
 const made = [];
 const composer = await browser.newContext({ deviceScaleFactor: 3, viewport: { width: 400, height: 800 } });
 
-for (const shot of SHOTS) {
+for (const shot of IOS ? SHOTS_IOS : SHOTS) {
   const imgs = shot.fan ? await Promise.all(shot.fan.map((id) => screen(id))) : [await screen(shot.theme, shot.view)];
   for (const size of sizes) {
     const page = await composer.newPage();
@@ -394,5 +419,13 @@ if (pub.length) {
   const total = pub.reduce((n, m) => n + statSync(m.publish).size, statSync(join(publishDir, 'index.html')).size);
   console.log(`${relative(root, publishDir)}/  ${pub.length} JPEG + index.html, ${(total / 1048576).toFixed(2)} MB`);
   if (total > PUBLISH.maxBytes) throw new Error(`publish folder is ${(total / 1048576).toFixed(2)} MB, keep it under ${PUBLISH.maxBytes / 1048576} MB`);
+}
+if (IOS) {
+  const { copyFileSync } = await import('node:fs');
+  const jpgDir = join(here, 'jpg', 'ios');
+  rmSync(jpgDir, { recursive: true, force: true });
+  mkdirSync(jpgDir, { recursive: true });
+  for (const m of pub) copyFileSync(m.publish, join(jpgDir, `${m.shot.n}-${m.shot.name}.jpg`));
+  console.log(`${relative(root, jpgDir)}/  ${pub.length} JPEG for App Store Connect (APP_IPHONE_67)`);
 }
 console.log(`${made.length} screenshots + ${relative(root, join(outRoot, 'index.html'))}`);

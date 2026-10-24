@@ -1,0 +1,36 @@
+{
+  "locale": "en-AU",
+  "version": "1.0",
+  "name": "Cue: Voice-Paced Prompter",
+  "subtitle": "Script reader & video recorder",
+  "promotionalText": "No subscription, no watermark. Voice Pace scrolls while you talk and stops when you pause, so you never chase the words.",
+  "keywords": "prompter,autocue,voice,speech,vlog,presentation,captions,reels,speaking,camera,mirror,pace,talk",
+  "description": "Cue is a teleprompter that keeps up with you instead of racing ahead.\n\nWrite or paste your script, tap Prompt and read. Turn on Voice Pace and the words move only while you're talking, then wait when you stop. No more chasing the text or scrolling back.\n\nREAD NATURALLY\n• Voice Pace: the words move while you talk and wait when you pause. It listens to the sound level only, on your phone.\n• Steady scroll with speed nudges, a countdown and a timer.\n• Big, clear text with a reading line. Pinch to resize, drag to scroll back, tap to pause.\n• Mirror and flip for beam-splitter rigs. Landscape works too.\n\nRECORD AT THE LENS\n• Record with your script right under the camera, so your eyes stay near the lens.\n• Every take goes straight to Photos. No watermark, ever.\n• Record one section at a time and retake just the bit you fluffed.\n\nWRITE FASTER\n• Sections you can jump to, pause cues and private notes that are never read out.\n• Fit any script to 30 seconds, a minute, 90 seconds or longer: Cue sets the pace for you.\n• See the read time and words per minute as you write, with a live preview of the prompter.\n• Import .txt and Markdown files. Search, pin, duplicate and share your scripts.\n\nFREE, THEN ONE SMALL PAYMENT IF YOU WANT MORE\nThe teleprompter, steady scroll, recording and unlimited scripts are free. You get 3 full Voice Pace reads free to try it. Cue Plus is a single payment, not a subscription: unlimited Voice Pace, caption files (.srt and .vtt timed to your pace), prompter colours, Word import and rehearsal stats.\n\nPRIVATE BY DESIGN\nNo account. No ads. No tracking. Your scripts and videos stay on your phone.",
+  "whatsNew": "Welcome to Cue! A teleprompter that waits for you: Voice Pace, recording at the lens with no watermark, section retakes and fit-to-time.",
+  "primaryCategory": "PRODUCTIVITY",
+  "secondaryCategory": "PHOTO_AND_VIDEO",
+  "copyright": "2026 Jared Bradley",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/cue/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/cue/support.html",
+  "marketingUrl": "https://merlinwerlin.github.io/App-Projects/cue/",
+  "inAppPurchases": [
+    {
+      "productId": "com.jared797.cue.plus",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "Cue Plus",
+      "displayName": "Cue Plus",
+      "description": "Unlimited Voice Pace, captions and more",
+      "reviewNote": "Non-consumable one-time unlock: unlimited Voice Pace (3 reads are free), caption export, prompter colours, Word import and rehearsal stats. The teleprompter and recording are never locked. Test: Scripts > Settings > Cue Plus > Get Plus; Restore purchase is on the same screen.",
+      "reviewScreenshot": "apps/cue/store/jpg/ios/08-plus.jpg"
+    }
+  ],
+  "_ownerToDo": "Set the Cue Plus price (no price in the code or docs yet; add \"price\": {\"territory\": \"AUS\", \"amount\": \"...\"} to the purchase above). The app's purchase provider is still the stub (src/plus/purchases.ts) and must be wired to StoreKit before review.",
+  "ageRating": "none",
+  "screenshots": {
+    "APP_IPHONE_67": "apps/cue/store/jpg/ios"
+  },
+  "availability": "all",
+  "attachBuild": "latest",
+  "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+  "reviewNotes": "No account or login. Cue is a teleprompter: open a script (a Welcome script is included) and tap Prompt to scroll it, or Record to film with the script over the camera; takes are saved to Photos with no watermark. Voice Pace (the mic chip on the prompter) measures the microphone sound level on the device so the text moves while the user talks; nothing is recognised, recorded or uploaded. The camera is used only on the Record screen and Photos access is add-only. In-app purchase: 'Cue Plus' (non-consumable, one-time) on Settings > Cue Plus, with Restore purchase on the same screen; the first 3 Voice Pace reads are free. No data is collected."
+}
