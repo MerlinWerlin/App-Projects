@@ -1,9 +1,9 @@
 {
   "tests": 804,
   "typecheck": "core only (registry unreachable) + offline strict UI typecheck (stubs) clean",
-  "last_run": "2026-10-24 19:45 Sydney",
+  "last_run": "2026-10-25 03:35 Sydney (run 106)",
   "stage": "release-prep",
-  "oversight_seen": "1792824632-59c8",
+  "oversight_seen": "1792853424-358f",
   "headline": "Waiting on your App Store Connect steps; over-the-air updates ship automatically.",
   "next_for_owner": [
     "App Store Connect: sign the Paid Apps agreement and add bank + tax details (Business).",
