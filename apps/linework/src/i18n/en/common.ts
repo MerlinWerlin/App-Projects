@@ -25,6 +25,8 @@ export const common = {
   // T81: bottom tab bar labels (src/ui/v2/TabBarV2.tsx); Templates and Settings reuse the nav keys above
   'common.nav.trace': 'Trace',
   'common.nav.drawings': 'My drawings',
+  // owner 24 Oct: Workshop tab (Trade & workshop in a blueprint style)
+  'common.nav.workshop': 'Workshop',
   'common.toast.dismissHint': 'Tap to dismiss',
   'common.chip.withCount': '{label}, {count}',
   // T48: friendly image load / processing errors (src/ui/ImageErrorBoundary.tsx)

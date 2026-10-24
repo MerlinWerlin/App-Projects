@@ -115,7 +115,8 @@ test('price label and packs', () => {
 test('only the Plus, Settings, Templates, Home and Prepare screens and src/plus import src/plus', () => {
   const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
   // Templates, Home and Prepare read `access` for the post-trial locks (owner decision 22 Oct 2026); Trace never does.
-  const allowed = new Set(['app/plus.tsx', 'app/(tabs)/settings.tsx', 'app/(tabs)/templates.tsx', 'app/(tabs)/index.tsx', 'app/prepare.tsx']);
+  // Workshop (24 Oct 2026) shows the Trade & workshop templates with the same lock as Templates.
+  const allowed = new Set(['app/plus.tsx', 'app/(tabs)/settings.tsx', 'app/(tabs)/templates.tsx', 'app/(tabs)/index.tsx', 'app/prepare.tsx', 'app/(tabs)/workshop.tsx']);
   const files: string[] = [];
   for (const top of ['app', 'src']) {
     for (const f of readdirSync(join(root, top), { recursive: true }) as string[]) {

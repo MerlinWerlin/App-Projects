@@ -45,6 +45,12 @@ export const SHELF_ORDER: readonly TemplateCategory[] = [
   'shapes',
 ];
 
+/**
+ * Categories that live in their own bottom tab instead of the Templates bubble row (owner 24 Oct 2026: Trade &
+ * workshop is the Workshop tab). They stay searchable on Templates and a deep link to them still shows the bubble.
+ */
+export const TAB_SHELVES: readonly TemplateCategory[] = ['trade'];
+
 export function isNewTemplate(t: Template, sets: readonly TemplateCategory[] = NEW_SETS): boolean {
   return sets.includes(t.category) || NEW_ID_PREFIXES.some((p) => t.id.startsWith(p));
 }
@@ -86,7 +92,10 @@ export function shelfBubbles(
   const order = [...SHELF_ORDER, ...CATEGORIES.map((c) => c.id).filter((id) => !SHELF_ORDER.includes(id))];
   const out: Shelf[] = ['all'];
   if (templates.some((t) => isNewTemplate(t, sets)) || current === 'new') out.push('new');
-  for (const id of order) if (have.has(id) || id === current) out.push(id);
+  for (const id of order) {
+    if (TAB_SHELVES.includes(id) && id !== current) continue;
+    if (have.has(id) || id === current) out.push(id);
+  }
   return out;
 }
 
