@@ -584,6 +584,7 @@ export const ja: Catalogue = {
   'app.tvs.settings': '設定',
 
   // owner-1017: remote theme names and store screenshot headlines
+  'ui.themes.name.charcoal': "チャコール＆ゴールド",
   'ui.themes.name.midnight': 'ミッドナイト',
   'ui.themes.name.daylight': 'デイライト',
   'ui.themes.name.oled': 'OLEDブラック',

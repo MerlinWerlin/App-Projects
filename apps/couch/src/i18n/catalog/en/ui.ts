@@ -113,6 +113,7 @@ export const uiEn = {
 
   'ui.tvs.timedOut': 'Timed out after {ms} ms',
   // owner-1017: remote theme names and store screenshot headlines (store/render.mjs)
+  'ui.themes.name.charcoal': "Charcoal & Gold",
   'ui.themes.name.midnight': 'Midnight',
   'ui.themes.name.daylight': 'Daylight',
   'ui.themes.name.oled': 'OLED Black',

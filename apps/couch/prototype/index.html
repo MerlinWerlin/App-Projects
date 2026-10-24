@@ -205,6 +205,7 @@ html[data-shot] *{animation-play-state:paused!important}
 
 <script type="application/json" id="remote-themes">
 {
+ "charcoal":{"bg":"#0E0E0F","stage":"#080809","body":"#1C1C1D","key":"#2B2B2C","keyEdge":"#060606","ink":"#F4EEE3","muted":"#BDB5A8","accent":"#D2AB72","accentSoft":"#5C4626","accentInk":"#1A1208","power":"#FF9C8F","ring":"#C9A26C","ringLit":"#2A1A08","glow":"#C9A26C","radius":14,"texture":{"kind":"brushed","colors":["#2A2A2B","#1C1C1D"],"opacity":0.35}},
  "midnight":{"bg":"#0B1020","stage":"#070A14","body":"#141B2E","key":"#1E2740","keyEdge":"#05070D","ink":"#E8EDF7","muted":"#A3AECB","accent":"#4062E8","accentSoft":"#26346A","accentInk":"#FFFFFF","power":"#FF8A80","ring":"#1E2740","ringLit":"#8FA6FF","glow":"#4D6BFF","radius":14,"texture":{"kind":"glass","colors":["#2A3760","#141B2E"],"opacity":0.35}},
  "daylight":{"bg":"#ECE8E1","stage":"#E2DDD4","body":"#F8F5EF","key":"#FFFFFF","keyEdge":"#D3CCC0","ink":"#1F232A","muted":"#5C6470","accent":"#2F5BD3","accentSoft":"#DCE5FB","accentInk":"#FFFFFF","power":"#B83232","ring":"#FFFFFF","ringLit":"#2F5BD3","glow":null,"radius":14,"texture":{"kind":"paper","colors":["#F8F5EF","#EFEAE0"],"opacity":0.5}},
  "oled":{"bg":"#000000","stage":"#000000","body":"#000000","key":"#121212","keyEdge":"#000000","ink":"#F2F2F2","muted":"#A6A6A6","accent":"#2A63E0","accentSoft":"#0F2148","accentInk":"#FFFFFF","power":"#FF6B6B","ring":"#121212","ringLit":"#6E9BFF","glow":null,"radius":12,"texture":{"kind":"none","colors":[],"opacity":0}},
@@ -276,8 +277,8 @@ html[data-shot] *{animation-play-state:paused!important}
    src/theme/remoteThemes.ts; tests/prototype-themes.test.ts keeps them identical). ?theme=<id> picks one,
    ?shot=1 hides demo chrome and uses generic demo TVs for store/render.mjs, ?view=add|numpad|voice|tvs|apps|keyboard|switch opens that state. */
 var THEMES=JSON.parse(document.getElementById('remote-themes').textContent);
-var THEME_NAMES={midnight:'Midnight',daylight:'Daylight',oled:'OLED Black',cinema:'Cinema Red',aluminium:'Brushed Aluminium',retro:'Retro Wood',walnut:'Walnut & Brass',neon:'Neon Arcade',candy:'Pastel Candy',forest:'Forest',aurora:'Aurora'};
-var FREE_THEMES=['midnight','daylight','oled'];
+var THEME_NAMES={charcoal:'Charcoal & Gold',midnight:'Midnight',daylight:'Daylight',oled:'OLED Black',cinema:'Cinema Red',aluminium:'Brushed Aluminium',retro:'Retro Wood',walnut:'Walnut & Brass',neon:'Neon Arcade',candy:'Pastel Candy',forest:'Forest',aurora:'Aurora'};
+var FREE_THEMES=['charcoal','midnight','daylight','oled'];
 var Q=new URLSearchParams(location.search),SHOT=Q.get('shot')==='1';
 if(SHOT)document.documentElement.setAttribute('data-shot','');
 function lum(h){var n=parseInt(h.slice(1),16),c=[(n>>16)&255,(n>>8)&255,n&255].map(function(v){v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]}
