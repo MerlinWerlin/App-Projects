@@ -159,8 +159,6 @@ export const fr: Catalogue = {
   'core.plus.feature.liveActivity.hint': "Volume et lecture/pause sur l'écran verrouillé pendant que vous regardez",
   'core.plus.feature.controls.title': 'Écran verrouillé et Centre de contrôle',
   'core.plus.feature.controls.hint': "Commandes en un geste sans ouvrir l'app",
-  'core.plus.feature.themes.title': 'Thèmes',
-  'core.plus.feature.themes.hint': 'Thèmes de couleur supplémentaires pour la télécommande',
   'core.plus.feature.macros.title': 'Macros de boutons',
   'core.plus.feature.macros.hint': 'Un appui pour une séquence, comme « Soirée film »',
   'core.plus.tipJar': 'Les pourboires sont facultatifs et ne débloquent rien. Couch reste gratuit dans tous les cas.',
@@ -845,6 +843,6 @@ export const fr: Catalogue = {
   "ui.languageHint.changeLabel": "Changer de langue",
   "ui.languageHint.changeHint": "Ouvre le réglage de la langue",
   "app.plus.later": "Disponible dans une prochaine mise à jour. Rien n’est en vente dans cette version.",
-  "app.themes.plusNoteLater": "Trois thèmes sont gratuits. Essayez les autres sur votre télécommande pendant cette session.",
+  "app.themes.plusNoteLater": "Tous les thèmes sont gratuits. Choisissez-en un, il reste sur votre télécommande.",
   "app.themes.tryingSession": "Il reste sur votre télécommande pendant cette session.",
 };

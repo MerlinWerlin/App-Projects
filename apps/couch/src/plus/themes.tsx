@@ -1,34 +1,20 @@
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { usePrefs } from '../state/prefs';
+import { useCallback, useMemo, useState, type ReactNode } from 'react';
 import { isFreeRemoteTheme, type RemoteThemeId } from '../theme/remoteThemes';
 import { RemoteThemeAccessContext, type RemoteThemeAccess } from '../theme/RemoteThemeContext';
-import { tierCanUse } from './entitlement';
-import { usePlus } from './state';
 
 /**
- * Supplies remote-theme access (owner-1017 T56): whether Couch Plus unlocks themes, and the Plus
- * theme being tried this session ("Try it", in memory only). The only place that reads the
- * entitlement for themes; the remote reads the result through useRemoteTheme().
- * Buying Plus while trying keeps the tried theme. Every TV control stays free in every theme.
+ * Supplies remote-theme access (owner-1017 T56). Since 25 Oct 2026 every theme is free (owner decision,
+ * Workboard couch-themes-free): themes are not a Couch Plus feature, so this never reads the entitlement
+ * and `plus` is always false. Picking any theme applies and keeps it (themePicker.pickTheme); "Try it"
+ * only exists for a theme that is not free, and there are none. Every TV control stays free in every theme.
  */
 export function PlusThemeProvider({ children }: { children: ReactNode }) {
-  const { tier } = usePlus();
-  const plus = tierCanUse(tier, 'themes');
-  const { set } = usePrefs();
   const [trying, setTrying] = useState<RemoteThemeId | null>(null);
-
-  // Bought Plus while trying a theme: keep it.
-  useEffect(() => {
-    if (plus && trying) {
-      set({ remoteTheme: trying });
-      setTrying(null);
-    }
-  }, [plus, trying, set]);
 
   const tryTheme = useCallback((id: RemoteThemeId | null) => {
     setTrying(id && !isFreeRemoteTheme(id) ? id : null);
   }, []);
 
-  const value = useMemo<RemoteThemeAccess>(() => ({ plus, trying: plus ? null : trying, tryTheme }), [plus, trying, tryTheme]);
+  const value = useMemo<RemoteThemeAccess>(() => ({ plus: false, trying, tryTheme }), [trying, tryTheme]);
   return <RemoteThemeAccessContext.Provider value={value}>{children}</RemoteThemeAccessContext.Provider>;
 }

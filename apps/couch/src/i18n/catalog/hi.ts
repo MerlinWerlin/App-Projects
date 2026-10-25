@@ -170,8 +170,6 @@ export const hi: Catalogue = {
   'core.plus.feature.liveActivity.hint': 'देखते समय लॉक स्क्रीन पर आवाज़ और चलाएँ/रोकें',
   'core.plus.feature.controls.title': 'लॉक स्क्रीन और कंट्रोल सेंटर',
   'core.plus.feature.controls.hint': 'ऐप खोले बिना एक टैप में कंट्रोल',
-  'core.plus.feature.themes.title': 'थीम',
-  'core.plus.feature.themes.hint': 'रिमोट के लिए अतिरिक्त रंग थीम',
   'core.plus.feature.macros.title': 'बटन मैक्रो',
   'core.plus.feature.macros.hint': 'एक टैप में कई बटन, जैसे "मूवी नाइट"',
   'core.plus.tipJar': 'टिप देना ज़रूरी नहीं और इससे कुछ अनलॉक नहीं होता। Couch हर हाल में मुफ़्त रहता है।',
@@ -830,6 +828,6 @@ export const hi: Catalogue = {
   "ui.languageHint.changeLabel": "भाषा बदलें",
   "ui.languageHint.changeHint": "भाषा की सेटिंग खोलता है",
   "app.plus.later": "यह आगे के किसी अपडेट में आएगा। इस संस्करण में कुछ भी बिक्री के लिए नहीं है।",
-  "app.themes.plusNoteLater": "तीन थीम मुफ़्त हैं। बाकी थीम इस सत्र में अपने रिमोट पर आज़माकर देखें।",
+  "app.themes.plusNoteLater": "सभी थीम मुफ़्त हैं। एक चुनें और वह आपके रिमोट पर बनी रहेगी।",
   "app.themes.tryingSession": "यह इस सत्र में आपके रिमोट पर बनी रहेगी।",
 };

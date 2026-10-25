@@ -161,8 +161,6 @@ export const de: Catalogue = {
   'core.plus.feature.liveActivity.hint': 'Lautstärke und Wiedergabe/Pause auf dem Sperrbildschirm beim Fernsehen',
   'core.plus.feature.controls.title': 'Sperrbildschirm und Kontrollzentrum',
   'core.plus.feature.controls.hint': 'Steuerung mit einem Tippen, ohne die App zu öffnen',
-  'core.plus.feature.themes.title': 'Designs',
-  'core.plus.feature.themes.hint': 'Zusätzliche Farbdesigns für die Fernbedienung',
   'core.plus.feature.macros.title': 'Tasten-Makros',
   'core.plus.feature.macros.hint': 'Ein Tippen für eine Abfolge, etwa „Filmabend“',
   'core.plus.tipJar': 'Trinkgeld ist freiwillig und schaltet nichts frei. Couch bleibt so oder so kostenlos.',
@@ -847,6 +845,6 @@ export const de: Catalogue = {
   "ui.languageHint.changeLabel": "Sprache ändern",
   "ui.languageHint.changeHint": "Öffnet die Spracheinstellung",
   "app.plus.later": "Kommt in einem späteren Update. In dieser Version wird nichts verkauft.",
-  "app.themes.plusNoteLater": "Drei Designs sind kostenlos. Probiere die anderen in dieser Sitzung auf deiner Fernbedienung aus.",
+  "app.themes.plusNoteLater": "Alle Designs sind kostenlos. Wähle eins aus, und es bleibt auf deiner Fernbedienung.",
   "app.themes.tryingSession": "Es bleibt in dieser Sitzung auf deiner Fernbedienung.",
 };

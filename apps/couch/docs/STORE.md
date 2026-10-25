@@ -23,7 +23,7 @@ Couch is a universal remote for the TVs and streaming players in your home. Ever
 - Cast photos and videos from your phone to the TV, with a slideshow, free. AirPlay / Screen Mirroring is one tap away on TVs that support it.
 - Private: no account, no analytics, nothing leaves your home network.
 
-(Later version only, not in the 1.0 listing: release standard 2, the paywall and listing promise only what the build has.) Couch Plus (optional, one-time purchase): Home and Lock Screen widgets, volume in the Dynamic Island, Apple Watch and Wear OS remote, themes and one-tap macros. Nothing on the remote ever needs it.
+(Later version only, not in the 1.0 listing: release standard 2, the paywall and listing promise only what the build has.) Couch Plus (optional, one-time purchase): Home and Lock Screen widgets, volume in the Dynamic Island, Apple Watch and Wear OS remote and one-tap macros (themes are free for everyone, owner 25 Oct 2026). Nothing on the remote ever needs it.
 
 **Non-affiliation line (required, end of description):**
 Couch is an independent app and is not affiliated with, endorsed by or sponsored by Roku, Samsung, LG, Google, Amazon, Vizio, Sony or Philips. All trademarks belong to their owners.

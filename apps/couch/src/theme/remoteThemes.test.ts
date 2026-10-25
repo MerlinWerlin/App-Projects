@@ -12,14 +12,14 @@ import {
 import { en } from '../i18n/catalog/en';
 
 describe('remote themes (owner-1017)', () => {
-  it('ships at least 10 themes, Charcoal & Gold default, exactly Charcoal/Midnight/Daylight/OLED free', () => {
+  it('ships at least 10 themes, Charcoal & Gold default, every theme free (owner 25 Oct 2026)', () => {
     expect(REMOTE_THEME_IDS.length).toBeGreaterThanOrEqual(10);
     expect(DEFAULT_REMOTE_THEME).toBe('charcoal');
-    expect([...FREE_REMOTE_THEMES].sort()).toEqual(['charcoal', 'daylight', 'midnight', 'oled']);
+    expect([...FREE_REMOTE_THEMES]).toEqual([...REMOTE_THEME_IDS]);
     for (const id of REMOTE_THEME_IDS) {
       const t = REMOTE_THEMES[id];
       expect(t.id).toBe(id);
-      expect(t.tier).toBe(FREE_REMOTE_THEMES.includes(id) ? 'free' : 'plus');
+      expect(t.tier).toBe('free');
       expect(en[t.nameKey]).toBeTruthy();
     }
   });
@@ -41,8 +41,8 @@ describe('remote themes (owner-1017)', () => {
     for (const t of Object.values(REMOTE_THEMES)) for (const k of Object.keys(t)) expect(allowed.has(k)).toBe(true);
   });
 
-  it('a Plus theme falls back to the default without Plus, shows with Plus or while trying', () => {
-    expect(effectiveRemoteTheme('retro', { plus: false }).id).toBe('charcoal');
+  it('every chosen theme shows without Plus (themes are free); bad ids fall back to the default', () => {
+    for (const id of REMOTE_THEME_IDS) expect(effectiveRemoteTheme(id, { plus: false }).id).toBe(id);
     expect(effectiveRemoteTheme('retro', { plus: true }).id).toBe('retro');
     expect(effectiveRemoteTheme('midnight', { plus: false, trying: 'neon' }).id).toBe('neon');
     expect(effectiveRemoteTheme('daylight', { plus: false }).id).toBe('daylight');

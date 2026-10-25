@@ -8,9 +8,11 @@
  * (that is src/core/dpadGeometry.ts, shared by every theme).
  *
  * Textures are generated (gradients / SVG noise / stripes), never photos or anyone else's artwork.
- * Free: Charcoal & Gold (default since 24 Oct 2026: matches the app icon and opening animation), Midnight,
- * Daylight, OLED Black. The rest are Couch Plus (one-time purchase), each
- * with a "Try it" preview that works without buying. Every TV control stays free in every theme.
+ * Every theme is free and stays chosen (owner decision 25 Oct 2026, Workboard couch-themes-free; before
+ * that only four were free and the rest were Couch Plus with a session-only "Try it"). Charcoal & Gold is
+ * the default (since 24 Oct 2026: matches the app icon and opening animation). The `tier` field and the
+ * plus/trying options below are kept so the shape stays stable; nothing is 'plus' today.
+ * Every TV control stays free in every theme.
  */
 import type { Palette } from './tokens';
 
@@ -31,7 +33,8 @@ export const REMOTE_THEME_IDS = [
 export type RemoteThemeId = (typeof REMOTE_THEME_IDS)[number];
 
 export const DEFAULT_REMOTE_THEME: RemoteThemeId = 'charcoal';
-export const FREE_REMOTE_THEMES: readonly RemoteThemeId[] = ['charcoal', 'midnight', 'daylight', 'oled'];
+/** Every theme is free (owner decision 25 Oct 2026, Workboard couch-themes-free): themes are not a Couch Plus feature. */
+export const FREE_REMOTE_THEMES: readonly RemoteThemeId[] = REMOTE_THEME_IDS;
 
 /** How a key press feels: haptic weight and how far the key dips. */
 export type PressStyle = 'soft' | 'firm' | 'click';
@@ -115,7 +118,7 @@ export const REMOTE_THEMES: Record<RemoteThemeId, RemoteTheme> = {
     texture: { kind: 'none', colors: [], opacity: 0 },
   },
   cinema: {
-    id: 'cinema', nameKey: 'ui.themes.name.cinema', tier: 'plus', scheme: 'dark',
+    id: 'cinema', nameKey: 'ui.themes.name.cinema', tier: 'free', scheme: 'dark',
     bg: '#16070A', stage: '#0E0406', body: '#2A0D13', key: '#3B121B', keyEdge: '#0C0305',
     ink: '#FBEDEA', muted: '#E0B3AE', accent: '#E8B04A', accentSoft: '#5A3A12', accentInk: '#2A1606',
     power: '#FF9C8F', ring: '#3B121B', ringLit: '#F2C46A', glow: '#FF8A3D',
@@ -123,7 +126,7 @@ export const REMOTE_THEMES: Record<RemoteThemeId, RemoteTheme> = {
     texture: { kind: 'velvet', colors: ['#4A1621', '#2A0D13'], opacity: 0.6 },
   },
   aluminium: {
-    id: 'aluminium', nameKey: 'ui.themes.name.aluminium', tier: 'plus', scheme: 'light',
+    id: 'aluminium', nameKey: 'ui.themes.name.aluminium', tier: 'free', scheme: 'light',
     bg: '#C9CDD2', stage: '#B8BDC3', body: '#DCDFE3', key: '#EEF0F2', keyEdge: '#9AA1A9',
     ink: '#1B1F24', muted: '#4A525B', accent: '#1F6FB2', accentSoft: '#CFE0EF', accentInk: '#FFFFFF',
     power: '#A82828', ring: '#E6E9EC', ringLit: '#1F6FB2', glow: null,
@@ -131,7 +134,7 @@ export const REMOTE_THEMES: Record<RemoteThemeId, RemoteTheme> = {
     texture: { kind: 'brushed', colors: ['#E4E7EA', '#CDD1D6'], opacity: 0.55 },
   },
   retro: {
-    id: 'retro', nameKey: 'ui.themes.name.retro', tier: 'plus', scheme: 'dark',
+    id: 'retro', nameKey: 'ui.themes.name.retro', tier: 'free', scheme: 'dark',
     bg: '#2B1A10', stage: '#1E120B', body: '#D9BC92', key: '#F4EBD8', keyEdge: '#6B4428',
     ink: '#2A1C10', muted: '#55402C', accent: '#A8401A', accentSoft: '#E9C7A8', accentInk: '#FFFFFF',
     power: '#A3271B', ring: '#F4EBD8', ringLit: '#A8401A', glow: '#FFB25E',
@@ -140,7 +143,7 @@ export const REMOTE_THEMES: Record<RemoteThemeId, RemoteTheme> = {
   },
   walnut: {
     // owner-1022: a rich natural-wood remote. Dark walnut body and keys, cream labels, brass OK key.
-    id: 'walnut', nameKey: 'ui.themes.name.walnut', tier: 'plus', scheme: 'dark',
+    id: 'walnut', nameKey: 'ui.themes.name.walnut', tier: 'free', scheme: 'dark',
     bg: '#1C110A', stage: '#130B06', body: '#4B2E1B', key: '#5E3B24', keyEdge: '#24140A',
     ink: '#FBF1E1', muted: '#E6CFAE', accent: '#D4A85A', accentSoft: '#7A5232', accentInk: '#2A1906',
     power: '#FFB4A0', ring: '#5E3B24', ringLit: '#F0C878', glow: '#E8A657',
@@ -148,7 +151,7 @@ export const REMOTE_THEMES: Record<RemoteThemeId, RemoteTheme> = {
     texture: { kind: 'woodgrain', colors: ['#4B2E1B', '#3B2213', '#5C3A22'], opacity: 0.7 },
   },
   neon: {
-    id: 'neon', nameKey: 'ui.themes.name.neon', tier: 'plus', scheme: 'dark',
+    id: 'neon', nameKey: 'ui.themes.name.neon', tier: 'free', scheme: 'dark',
     bg: '#07040F', stage: '#040209', body: '#120A24', key: '#1B1033', keyEdge: '#FF3EA5',
     ink: '#F4EEFF', muted: '#B9A8E0', accent: '#FF3EA5', accentSoft: '#4A1240', accentInk: '#14060F',
     power: '#FF7AB8', ring: '#1B1033', ringLit: '#3EF2FF', glow: '#3EF2FF',
@@ -156,7 +159,7 @@ export const REMOTE_THEMES: Record<RemoteThemeId, RemoteTheme> = {
     texture: { kind: 'neon', colors: ['#FF3EA5', '#3EF2FF'], opacity: 0.35 },
   },
   candy: {
-    id: 'candy', nameKey: 'ui.themes.name.candy', tier: 'plus', scheme: 'light',
+    id: 'candy', nameKey: 'ui.themes.name.candy', tier: 'free', scheme: 'light',
     bg: '#FBE7F0', stage: '#F6DCE8', body: '#FFF4F8', key: '#FFFFFF', keyEdge: '#F0C4D7',
     ink: '#3A2340', muted: '#6E5378', accent: '#8A4FD8', accentSoft: '#EADCFB', accentInk: '#FFFFFF',
     power: '#C2336A', ring: '#FFFFFF', ringLit: '#8A4FD8', glow: null,
@@ -164,7 +167,7 @@ export const REMOTE_THEMES: Record<RemoteThemeId, RemoteTheme> = {
     texture: { kind: 'candy', colors: ['#FFE3EE', '#E3F4FF', '#FFF6D9'], opacity: 0.6 },
   },
   forest: {
-    id: 'forest', nameKey: 'ui.themes.name.forest', tier: 'plus', scheme: 'dark',
+    id: 'forest', nameKey: 'ui.themes.name.forest', tier: 'free', scheme: 'dark',
     bg: '#0B1A12', stage: '#06110B', body: '#13291D', key: '#1C3828', keyEdge: '#040C07',
     ink: '#EEF3E6', muted: '#B5C7A8', accent: '#C9A15A', accentSoft: '#4A3A1A', accentInk: '#1C1405',
     power: '#FF9B85', ring: '#1C3828', ringLit: '#D9B46E', glow: '#8FBF5A',
@@ -172,7 +175,7 @@ export const REMOTE_THEMES: Record<RemoteThemeId, RemoteTheme> = {
     texture: { kind: 'brass', colors: ['#24432F', '#13291D'], opacity: 0.4 },
   },
   aurora: {
-    id: 'aurora', nameKey: 'ui.themes.name.aurora', tier: 'plus', scheme: 'dark',
+    id: 'aurora', nameKey: 'ui.themes.name.aurora', tier: 'free', scheme: 'dark',
     bg: '#060B18', stage: '#03060F', body: '#0E1628', key: '#18233B', keyEdge: '#02040A',
     ink: '#EAF6F4', muted: '#A2BFC4', accent: '#3FD6A8', accentSoft: '#12463C', accentInk: '#04201A',
     power: '#FF8F9E', ring: '#18233B', ringLit: '#7CF0D0', glow: '#7A5CFF',

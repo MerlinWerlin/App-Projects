@@ -158,8 +158,6 @@ export const es: Catalogue = {
   'core.plus.feature.liveActivity.hint': 'Volumen y reproducir/pausa en la pantalla de bloqueo mientras ves la tele',
   'core.plus.feature.controls.title': 'Pantalla de bloqueo y Centro de control',
   'core.plus.feature.controls.hint': 'Controles de un toque sin abrir la app',
-  'core.plus.feature.themes.title': 'Temas',
-  'core.plus.feature.themes.hint': 'Temas de color extra para el mando',
   'core.plus.feature.macros.title': 'Macros de botones',
   'core.plus.feature.macros.hint': 'Un toque para una secuencia, como «Noche de cine»',
   'core.plus.tipJar': 'Las propinas son opcionales y no desbloquean nada. Couch sigue siendo gratis igualmente.',
@@ -831,6 +829,6 @@ export const es: Catalogue = {
   "ui.languageHint.changeLabel": "Cambiar idioma",
   "ui.languageHint.changeHint": "Abre el ajuste de idioma",
   "app.plus.later": "Llegará en una actualización futura. En esta versión no se vende nada.",
-  "app.themes.plusNoteLater": "Tres temas son gratis. Prueba cualquiera de los demás en tu mando durante esta sesión.",
+  "app.themes.plusNoteLater": "Todos los temas son gratis. Elige uno y se quedará en tu mando.",
   "app.themes.tryingSession": "Se queda en tu mando durante esta sesión.",
 };

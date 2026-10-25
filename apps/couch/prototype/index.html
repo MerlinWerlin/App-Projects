@@ -278,7 +278,7 @@ html[data-shot] *{animation-play-state:paused!important}
    ?shot=1 hides demo chrome and uses generic demo TVs for store/render.mjs, ?view=add|numpad|voice|tvs|apps|keyboard|switch opens that state. */
 var THEMES=JSON.parse(document.getElementById('remote-themes').textContent);
 var THEME_NAMES={charcoal:'Charcoal & Gold',midnight:'Midnight',daylight:'Daylight',oled:'OLED Black',cinema:'Cinema Red',aluminium:'Brushed Aluminium',retro:'Retro Wood',walnut:'Walnut & Brass',neon:'Neon Arcade',candy:'Pastel Candy',forest:'Forest',aurora:'Aurora'};
-var FREE_THEMES=['charcoal','midnight','daylight','oled'];
+var FREE_THEMES=Object.keys(THEMES); /* every theme free, owner 25 Oct 2026 */
 var Q=new URLSearchParams(location.search),SHOT=Q.get('shot')==='1';
 if(SHOT)document.documentElement.setAttribute('data-shot','');
 function lum(h){var n=parseInt(h.slice(1),16),c=[(n>>16)&255,(n>>8)&255,n&255].map(function(v){v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]}
@@ -485,7 +485,7 @@ function bindVoice(){
  function up(){if(!v.classList.contains('on'))return;v.classList.remove('on');v.querySelector('span').textContent='Hold to talk';send('VOICE','voice: "find cooking shows"');toast('Sent to the TV assistant: "find cooking shows"')}
  v.addEventListener('pointerup',up);v.addEventListener('pointerleave',up);
 }
-function plusSheet(){openSheet(hd('Couch Plus')+'<p>One payment of <b>A$7.99</b>. No subscription, no renewals.</p><ul class="note" style="margin:0;padding-left:18px"><li>Home and Lock Screen widgets</li><li>Live volume on the Lock Screen</li><li>A remote on your watch</li><li>Themes and one-tap macros like "Movie night"</li></ul><p class="note">Power, keyboard, touchpad, apps and every TV stay free whether you buy this or not.</p><button class="btn" data-act="close">Not now</button>','Couch Plus')}
+function plusSheet(){openSheet(hd('Couch Plus')+'<p>One payment of <b>A$7.99</b>. No subscription, no renewals.</p><ul class="note" style="margin:0;padding-left:18px"><li>Home and Lock Screen widgets</li><li>Live volume on the Lock Screen</li><li>A remote on your watch</li><li>One-tap macros like "Movie night"</li></ul><p class="note">Power, keyboard, touchpad, apps and every TV stay free whether you buy this or not.</p><button class="btn" data-act="close">Not now</button>','Couch Plus')}
 
 document.addEventListener('click',function(e){
  var b=e.target.closest('button');if(!b)return;

@@ -302,8 +302,6 @@ export const coreEn = {
   'core.plus.feature.liveActivity.hint': 'Volume and play/pause on the Lock Screen while you watch',
   'core.plus.feature.controls.title': 'Lock Screen and Control Center',
   'core.plus.feature.controls.hint': 'One-tap controls without opening the app',
-  'core.plus.feature.themes.title': 'Themes',
-  'core.plus.feature.themes.hint': 'Extra colour themes for the remote',
   'core.plus.feature.macros.title': 'Button macros',
   'core.plus.feature.macros.hint': 'One tap for a sequence, like "Movie night"',
   'core.plus.tipJar': 'Tips are optional and unlock nothing. Couch stays free either way.',
