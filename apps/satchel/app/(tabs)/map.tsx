@@ -196,6 +196,9 @@ export default function MapScreen() {
   };
 
   const toggle = (id: string) => setOn((o) => ({ ...o, [id]: !o[id] }));
+  // Release standard §1: a filtered list that comes out empty says why and offers a one-tap "Show all".
+  const anyCatOn = Object.values(on).some(Boolean);
+  const showAllCats = () => setOn((o) => Object.fromEntries(Object.keys(o).map((k) => [k, true])));
 
   const focusOn = (p: LatLon) => setFocus({ region: { latitude: p.lat, longitude: p.lon, latitudeDelta: 0.01, longitudeDelta: 0.01 }, key: Date.now() });
 
@@ -290,7 +293,7 @@ export default function MapScreen() {
         <View style={{ gap: space.s }}>
           <Label>{t('places.trip')}</Label>
           <Body muted>{t('places.chooseTrip')}</Body>
-          <View accessibilityRole="radiogroup" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
+          <View accessibilityRole="radiogroup" accessibilityLabel={t('places.trip')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
             {targets.map((trip) => (
               <Chip key={trip.id} label={trip.name} selected={form.tripId === trip.id} onPress={() => setForm({ ...form, tripId: trip.id, errors: [] })} />
             ))}
@@ -438,7 +441,7 @@ export default function MapScreen() {
       {SETS.length > 1 ? (
         <View style={{ gap: space.s }}>
           <Label>{t('map.city')}</Label>
-          <View accessibilityRole="radiogroup" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
+          <View accessibilityRole="radiogroup" accessibilityLabel={t('map.city')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
             {SETS.map((s, i) => (
               <Chip key={s.city} label={s.city} selected={i === cityIdx} onPress={() => chooseCity(i)} />
             ))}
@@ -513,7 +516,14 @@ export default function MapScreen() {
         data={nearby}
         keyExtractor={(p) => p.id}
         ListHeaderComponent={header}
-        ListEmptyComponent={set ? <Body muted>{t('map.noneOn')}</Body> : null}
+        ListEmptyComponent={
+          set && origin ? (
+            <View style={{ gap: space.xs }}>
+              <Body muted>{t(anyCatOn ? 'map.noneInCats' : 'map.noneOn')}</Body>
+              <Button label={t('map.catsShowAll')} hint={t('map.catsShowAllHint')} kind="quiet" onPress={showAllCats} />
+            </View>
+          ) : undefined
+        }
         contentContainerStyle={{ gap: space.xs, paddingBottom: space.xl }}
         renderItem={({ item }) => {
           const d = dist(item.meters, fromYou ? 'map.fromHere' : 'map.away');

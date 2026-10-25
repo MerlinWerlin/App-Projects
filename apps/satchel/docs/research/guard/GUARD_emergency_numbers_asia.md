@@ -1,21 +1,13 @@
 | iso2 | field | given | what I believe is right | why |
-|---|---|---:|---|---|
-| LB | fire | 175 | 125 | Lebanon’s Civil Defence is commonly reached on 125; 175 appears doubtful. |
-| PK | fire | 1122 | 16 (often listed) | 1122 is Rescue 1122 and may handle fires where available; 16 is commonly listed as the fire brigade number. |
-| PG | police | 112 | Unclear; verify locally | 112 is listed as a general emergency number in some sources, but its reachability and service routing are uncertain. |
-| SB | ambulance | null | Unclear; verify locally | Leaving it blank is prudent, but the row’s general 999 entry could imply broader coverage than is confirmed. |
-| SB | fire | null | Unclear; verify locally | Fire-service access is uncertain; do not infer it from the police number. |
-| VU | general | 112 | Unclear; verify locally | 112 is reported, but the table’s high-level claim that it serves every emergency service is not well established. |
-| VU | police | 112 | Unclear; verify locally | Police numbers and service routing should be verified; 112 may not cover all services. |
-| VU | ambulance | 112 | Unclear; verify locally | Ambulance coverage via 112 is uncertain. |
-| VU | fire | 112 | Unclear; verify locally | Fire coverage via 112 is uncertain. |
+|---|---|---|---|---|
+| ID | ambulance | 118 | 119 is commonly listed; verify locally | 118 may be outdated or differ by area; emergency-number listings are inconsistent. |
+| PK | fire | 1122 | Doubtful as a nationwide number | Rescue 1122 operates in some regions; fire-service access varies by province. |
+| KI | police | 192 | Doubtful | Kiribati emergency numbers are difficult to verify; confirm with local authorities before publishing. |
+| SB | ambulance | 911 | Doubtful | Emergency-number listings for Solomon Islands vary; verify with local authorities. |
+| SB | fire | 988 | Doubtful | I can’t confidently verify this number; check an official local source. |
+| CK | ambulance | 998 | Doubtful | Cook Islands numbers are inconsistently reported; verify with local authorities. |
+| CK | fire | 996 | Doubtful | Cook Islands numbers are inconsistently reported; verify with local authorities. |
 
-| source_url |
-|---|
-| None appear invented; all are null. |
+No `source_url` values are present, so none look invented. Countries missing: unclear without a stated geographic scope; if this is intended as a global list, most countries are absent.
 
-| Missing country |
-|---|
-| None obvious within the Asia–Pacific scope represented; the intended geographic scope is not stated. |
-
-Verdict: Most entries look plausible, but several numbers and service-specific claims need authoritative, current verification.
+Verdict: Several entries need authoritative local verification before use in an emergency.

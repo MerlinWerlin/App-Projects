@@ -1,10 +1,12 @@
 // Ticket view: full screen at full brightness (restored on every exit), the saved QR crop big, the ticket image
 // fitted (tap for fill), booking ref / seat / times big, and a one-handed Close at the bottom.
 // PDFs can't render inline in Expo Go, so a PDF ticket shows its details plus Open PDF (system share sheet).
+// T41: Copy booking reference (ACCESSIBILITY "Ticket view") where the clipboard module is present; the result is
+// shown and announced.
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Image, ScrollView, Text, useWindowDimensions, View } from 'react-native';
+import { AccessibilityInfo, Image, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { formatDay, formatTime, zoneCity } from '../../src/core/format.ts';
 import type { Stamp } from '../../src/core/model.ts';
@@ -12,6 +14,7 @@ import { isTransport } from '../../src/core/model.ts';
 import { attachmentKind, ticketToShow } from '../../src/core/tickets.ts';
 import type { Key } from '../../src/i18n/en.ts';
 import { restoreBrightness, useFullBrightness } from '../../src/native/brightness.ts';
+import { clipboardAvailable, copyText } from '../../src/native/clipboard.ts';
 import { fileExists } from '../../src/native/files.ts';
 import { appPath } from '../../src/native/files.ts';
 import { openInSystem } from '../../src/native/pickers.ts';
@@ -42,6 +45,12 @@ export default function TicketScreen() {
   const [cropBroken, setCropBroken] = useState(false);
   const [fill, setFill] = useState(false);
   const [openFailed, setOpenFailed] = useState(false);
+  const [refCopy, setRefCopy] = useState<'copied' | 'failed' | null>(null);
+  const copyRef = async (ref: string) => {
+    const ok = await copyText(ref);
+    setRefCopy(ok ? 'copied' : 'failed');
+    AccessibilityInfo.announceForAccessibility(t(ok ? 'spec41.ticket.refCopied' : 'spec41.ticket.refCopyFailed'));
+  };
 
   useEffect(() => {
     let alive = true;
@@ -123,6 +132,14 @@ export default function TicketScreen() {
             <View style={{ gap: 2 }}>
               <Label>{t('item.ref')}</Label>
               {big(item.ref, 36)}
+              {clipboardAvailable() ? (
+                <Button label={t('spec41.ticket.copyRef')} hint={t('spec41.ticket.copyRefHint')} kind="quiet" onPress={() => item.ref && copyRef(item.ref)} />
+              ) : null}
+              {refCopy ? (
+                <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: refCopy === 'copied' ? theme.ok : theme.ink }}>
+                  {t(refCopy === 'copied' ? 'spec41.ticket.refCopied' : 'spec41.ticket.refCopyFailed')}
+                </Text>
+              ) : null}
             </View>
           ) : null}
           {item.seat ? (

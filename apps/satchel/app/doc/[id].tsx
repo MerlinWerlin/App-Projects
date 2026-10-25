@@ -132,7 +132,7 @@ export default function DocScreen() {
         {doc.attachments.length ? doc.attachments.map(copy) : <Body muted>{t('doc.noCopies')}</Body>}
         {openFailed ? <Warning text={t('doc.openFailed')} /> : null}
       </Card>
-      <Button label={t('doc.edit')} onPress={() => router.push({ pathname: '/doc-edit', params: { id: doc.id } })} />
+      <Button label={t('doc.edit')} hint={t('spec41.doc.editHint')} onPress={() => router.push({ pathname: '/doc-edit', params: { id: doc.id } })} />
       <Button label={t('doc.delete')} hint={t('doc.deleteHint')} kind="quiet" onPress={confirmDelete} />
     </Screen>
   );

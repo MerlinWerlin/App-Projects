@@ -11,5 +11,5 @@ declare module 'expo-router' {
     canGoBack: () => boolean;
     isFocused: () => boolean;
   };
-  export function useNavigation(): NavigationProp;
+  export function useNavigation<T = NavigationProp>(): T;
 }

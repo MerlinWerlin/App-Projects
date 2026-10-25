@@ -11,6 +11,10 @@ Satchel runs in **Expo Go** (SDK 58) until the native offline map needs a develo
 Nothing here is confirmed on a real phone until you say so.
 
 ## New since your last test
+- 26 Oct (run 24): timeline items that clash in time now say "Overlaps with …" on the row and on the item's page (nothing is moved), a finished trip opens with a "Past" note, the ticket view has a Copy booking reference button, the hotel address card has an Edit action, more emergency numbers carry a "Number doubted — check locally" line (a second model run disagreed), and the battery prompt now triggers at exactly your threshold (e.g. at 20%, not just below).
+  - Give two demo items overlapping times: do both rows say "Overlaps with …"? (yes/no)
+  - Open a ticket that has a booking reference: does Copy booking reference copy it and say so? (yes/no)
+  - Open a hotel's address card: does Edit hotel address open the hotel's form? (yes/no)
 - 25 Oct (run 14): a quiet "Language: English · Change" line under the Trips heading on first launch (it shows for that one session and goes as soon as you tap Change), and Settings now starts with a Language section (Phone default or English; more languages arrive later).
   - On the first open after updating, is there a "Language: English · Change" line on Trips that you can ignore without anything popping up? (yes/no)
   - Tap Change: does it open Settings with Language at the top, and is the line gone when you go back? (yes/no)

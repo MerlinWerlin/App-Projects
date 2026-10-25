@@ -104,7 +104,8 @@
           "cameraPermission": "Satchel only uses the camera if you choose to photograph a ticket or booking. The photo is copied into Satchel and stays on your phone.",
           "microphonePermission": false
         }
-      ]
+      ],
+      "@react-native-community/datetimepicker"
     ],
     "experiments": {
       "typedRoutes": false

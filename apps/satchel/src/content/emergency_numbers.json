@@ -54,7 +54,15 @@
    "notes": "911 is the main emergency number.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "general/police/ambulance/fire",
+     "given": "911",
+     "second_opinion": "999",
+     "why": "Antigua and Barbuda is generally listed as using 999."
+    }
+   ]
   },
   {
    "iso2": "AI",
@@ -67,7 +75,15 @@
    "notes": "911 is the main emergency number.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "general/police/ambulance/fire",
+     "given": "911",
+     "second_opinion": "999",
+     "why": "Anguilla’s published emergency number is generally listed as 999; verify whether 911 also connects."
+    }
+   ]
   },
   {
    "iso2": "AL",
@@ -178,6 +194,12 @@
      "given": "911",
      "second_opinion": "911 is doubtful; verify locally",
      "why": "Aruba’s commonly listed emergency numbers are service-specific; 911 may not be a general number."
+    },
+    {
+     "field": "police",
+     "given": "100",
+     "second_opinion": "911",
+     "why": "Aruba’s emergency number is 911; 100 is commonly listed for fire."
     }
    ]
   },
@@ -231,7 +253,15 @@
    "notes": "Separate numbers are used for police, ambulance and fire.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "general",
+     "given": "null",
+     "second_opinion": "211 (police), 511 (ambulance), 311 (fire)",
+     "why": "These are listed service numbers, but omitting a general number may mislead; 911 may also be available."
+    }
+   ]
   },
   {
    "iso2": "BD",
@@ -434,7 +464,15 @@
    "notes": "Separate numbers are used for police, ambulance and fire.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "high"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "general",
+     "given": "null",
+     "second_opinion": "190, or 112 where applicable",
+     "why": "Brazil’s police number is also commonly used as a general emergency contact; the null is potentially misleading."
+    }
+   ]
   },
   {
    "iso2": "BS",
@@ -460,6 +498,12 @@
      "given": "919",
      "second_opinion": "911",
      "why": "Same concern: 919 is not the standard listed emergency number."
+    },
+    {
+     "field": "police/ambulance/fire",
+     "given": "919",
+     "second_opinion": "police 919; ambulance 919 or 911; fire 919 or 911",
+     "why": "Service assignments and whether 911 is accepted are unclear; the row’s blanket claim is doubtful."
     }
    ]
   },
@@ -578,7 +622,15 @@
    "notes": "Ambulance number could not be confirmed.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "low"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "police",
+     "given": "117",
+     "second_opinion": "Unverified",
+     "why": "This number is doubtful; do not publish without a reliable local source."
+    }
+   ]
   },
   {
    "iso2": "CH",
@@ -651,7 +703,15 @@
    "notes": "Ambulance number could not be confirmed.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "low"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "police",
+     "given": "117",
+     "second_opinion": "112 is commonly listed",
+     "why": "Cameroon’s 112 is widely cited for emergencies; 117/118 may be outdated or unreliable."
+    }
+   ]
   },
   {
    "iso2": "CN",
@@ -703,7 +763,15 @@
    "notes": "Separate numbers are used for police, ambulance and fire.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "police/ambulance/fire",
+     "given": "106/104/105",
+     "second_opinion": "106/104/105, but verify",
+     "why": "Numbers are plausible, but Cuba’s emergency access and coverage are inconsistent; presenting them confidently is doubtful."
+    }
+   ]
   },
   {
    "iso2": "CV",
@@ -729,7 +797,15 @@
    "notes": "Emergency numbers may differ by service.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "low"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "general/police/fire",
+     "given": "911",
+     "second_opinion": "911 or 911/911/911",
+     "why": "Curaçao’s emergency number is commonly 911; the separate ambulance 912 claim is doubtful."
+    }
+   ]
   },
   {
    "iso2": "CX",
@@ -820,7 +896,15 @@
    "notes": "999 is the main emergency number.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "general/police/ambulance/fire",
+     "given": "999",
+     "second_opinion": "911 or 999; verify",
+     "why": "Dominica is commonly reported as using 999, but 911 is also listed in some references; single-number certainty is doubtful."
+    }
+   ]
   },
   {
    "iso2": "DO",
@@ -1161,7 +1245,15 @@
    "notes": "Separate numbers are used for police, ambulance and fire.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "low"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "ambulance",
+     "given": "116",
+     "second_opinion": "Unverified",
+     "why": "The ambulance number is doubtful; commonly available listings do not consistently confirm it."
+    }
+   ]
   },
   {
    "iso2": "GN",
@@ -1174,7 +1266,15 @@
    "notes": "Ambulance number could not be confirmed.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "low"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "fire",
+     "given": "18",
+     "second_opinion": "a second lane run (26 Oct) gave 118; verify locally",
+     "why": "Two unsourced model runs disagree on this number."
+    }
+   ]
   },
   {
    "iso2": "GP",
@@ -1247,7 +1347,15 @@
    "notes": "Use service-specific numbers for emergencies.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "ambulance",
+     "given": "123",
+     "second_opinion": "a second lane run (26 Oct) gave 122; verify locally",
+     "why": "Two unsourced model runs disagree on this number."
+    }
+   ]
   },
   {
    "iso2": "GU",
@@ -1398,7 +1506,15 @@
    "notes": "112 availability may vary by area.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "ambulance",
+     "given": "118",
+     "second_opinion": "119 is commonly listed; verify locally",
+     "why": "118 may be outdated or differ by area; emergency-number listings are inconsistent."
+    }
+   ]
   },
   {
    "iso2": "IE",
@@ -1581,7 +1697,15 @@
    "notes": "999 is a national emergency number; other services may have separate lines.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "police",
+     "given": "999",
+     "second_opinion": "999 or 112",
+     "why": "The row lists 112 as general but omits it from police; both are commonly listed emergency numbers."
+    }
+   ]
   },
   {
    "iso2": "KG",
@@ -1646,7 +1770,15 @@
    "notes": "911 is the main emergency number.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "general/police/ambulance/fire",
+     "given": "911",
+     "second_opinion": "911 or 999; verify",
+     "why": "Saint Kitts and Nevis is often listed as using 911 and/or 999; the single-number assertion is doubtful."
+    }
+   ]
   },
   {
    "iso2": "KP",
@@ -1928,7 +2060,15 @@
    "notes": "112 is the general emergency number; direct service numbers are also listed.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "ambulance",
+     "given": "15",
+     "second_opinion": "a second lane run (26 Oct) gave 18; verify locally",
+     "why": "Two unsourced model runs disagree on this number."
+    }
+   ]
   },
   {
    "iso2": "MD",
@@ -1980,7 +2120,15 @@
    "notes": "Separate numbers are used for police, ambulance and fire.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "police",
+     "given": "117",
+     "second_opinion": "117 or 1177",
+     "why": "Listings vary; the police number should be checked against an official Malagasy source."
+    }
+   ]
   },
   {
    "iso2": "MH",
@@ -2151,6 +2299,12 @@
      "given": "114",
      "second_opinion": "114 is doubtful; commonly listed ambulance line is 114 or 999 via emergency services",
      "why": "Sources vary; confirm the intended service and current number."
+    },
+    {
+     "field": "fire",
+     "given": "115",
+     "second_opinion": "a second lane run (26 Oct) gave 995; verify locally",
+     "why": "Two unsourced model runs disagree on this number."
     }
    ]
   },
@@ -2331,7 +2485,15 @@
    "notes": "Numbers and availability can vary by service.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "low"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "fire",
+     "given": "118",
+     "second_opinion": "a second lane run (26 Oct) gave 115; verify locally",
+     "why": "Two unsourced model runs disagree on this number."
+    }
+   ]
   },
   {
    "iso2": "NL",
@@ -2629,7 +2791,15 @@
    "notes": "Numbers differ by service.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "police",
+     "given": "100",
+     "second_opinion": "100 (West Bank); Gaza may differ",
+     "why": "Availability and numbers differ by area; present the regional limitation explicitly."
+    }
+   ]
   },
   {
    "iso2": "PT",
@@ -2675,6 +2845,12 @@
      "given": "141",
      "second_opinion": "141 is not a general ambulance number",
      "why": "141 is commonly associated with a specific service; ambulance access may vary. Verify the intended nationwide number."
+    },
+    {
+     "field": "police",
+     "given": "911",
+     "second_opinion": "911 or 911/131",
+     "why": "Paraguay’s police number is commonly 911, but service-specific references also list 131 for ambulance; the general null is questionable."
     }
    ]
   },
@@ -2783,7 +2959,15 @@
    "notes": "911 is also used in some regions; service numbers vary by area.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "police",
+     "given": "999",
+     "second_opinion": "999 or 911",
+     "why": "999 is used, but the note says 911 is available only in some regions; coverage needs clearer qualification."
+    }
+   ]
   },
   {
    "iso2": "SB",
@@ -2823,7 +3007,15 @@
    "notes": "999 is commonly listed for police; other service lines could not be confirmed.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "low"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "police",
+     "given": "999",
+     "second_opinion": "133 is commonly listed",
+     "why": "Seychelles police emergency number is commonly listed as 133; verify current use."
+    }
+   ]
   },
   {
    "iso2": "SD",
@@ -3172,7 +3364,21 @@
    "notes": "Numbers differ by service.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "medium"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "ambulance",
+     "given": "103",
+     "second_opinion": "a second lane run (26 Oct) gave 03; verify locally",
+     "why": "Two unsourced model runs disagree on this number."
+    },
+    {
+     "field": "fire",
+     "given": "101",
+     "second_opinion": "a second lane run (26 Oct) gave 01; verify locally",
+     "why": "Two unsourced model runs disagree on this number."
+    }
+   ]
   },
   {
    "iso2": "TK",
@@ -3270,6 +3476,12 @@
      "given": "811",
      "second_opinion": "811 is not a dependable ambulance emergency number",
      "why": "Trinidad and Tobago’s emergency medical service number is commonly listed as 811, but this should be verified against an official current source."
+    },
+    {
+     "field": "police/ambulance/fire",
+     "given": "999/811/990",
+     "second_opinion": "999/811/990, but qualify",
+     "why": "The numbers are plausible, but ambulance access and coverage have been reported as unreliable; note limitations."
     }
    ]
   },
@@ -3369,6 +3581,12 @@
      "given": "105",
      "second_opinion": "105 is doubtful",
      "why": "Uruguay’s emergency medical access is not consistently represented by a single nationwide number; verify the intended service."
+    },
+    {
+     "field": "ambulance/fire",
+     "given": "105/104",
+     "second_opinion": "105/104",
+     "why": "The numbers are plausible, but emergency medical assistance may also be reached via 911; the general null is doubtful."
     }
    ]
   },
@@ -3430,7 +3648,15 @@
    "notes": "911 is the general emergency number.",
    "source_url": null,
    "source_checked": null,
-   "confidence": "low"
+   "confidence": "low",
+   "guard_flags": [
+    {
+     "field": "general/police/ambulance/fire",
+     "given": "911",
+     "second_opinion": "911 or 171/171/171; verify",
+     "why": "911 availability is inconsistent; 171 is also reported for police, ambulance and fire."
+    }
+   ]
   },
   {
    "iso2": "VG",
@@ -3651,5 +3877,5 @@
    ]
   }
  ],
- "guard": "Second-model review 2026-10-24 (StarNet GUARD lane): rows with guard_flags had a field doubted; numbers left as given, confidence set to low; resolve in T25 with official sources."
+ "guard": "Second-model review 2026-10-24 (StarNet GUARD lane): rows with guard_flags had a field doubted; numbers left as given, confidence set to low; resolve in T25 with official sources. Second pass 2026-10-26 (build run 24): rows where the 26 Oct lane re-run disagreed with the shown number, or where the 26 Oct GUARD review doubted the shown number, also got guard_flags; numbers unchanged."
 }

@@ -169,9 +169,9 @@ test('doubted numbers: line flagged, number unchanged; blank services and the no
   assert.deepEqual([clean.doubted, clean.doubtedElsewhere, clean.notesDoubted, clean.lines[0].doubted], [[], [], false, false]);
 });
 
-test('whole table: the 39 GUARD-flagged rows show doubts on exactly their flagged fields, numbers untouched', () => {
+test('whole table: the 62 GUARD-flagged rows show doubts on exactly their flagged fields, numbers untouched', () => {
   const flagged = table.countries.filter((r) => Array.isArray(r.guard_flags) && r.guard_flags.length > 0);
-  assert.equal(flagged.length, 39);
+  assert.equal(flagged.length, 62);
   for (const r of table.countries) {
     const d = displayRow(r);
     const fields = doubtedFields(r);

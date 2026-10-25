@@ -4,63 +4,69 @@
 
 | Edge case | Expected behaviour |
 |---|---|
-| Time zones and daylight saving time | Store each item’s IANA time zone and show its local time; ask the user to resolve ambiguous or nonexistent times at a DST change. |
-| Item crosses midnight or the date line | Calculate duration using absolute times and show the item on each affected local day without changing its stored time zone. |
-| Overlapping items | Keep both items and visibly flag the overlap without blocking the user from saving. |
-| Missing end time | Treat the item as having a start time only and exclude it from duration and overlap calculations that require an end time. |
-| Empty trip | Show a clear empty timeline with an option to add the first item. |
-| Past trip | Keep it available in the trip list and timeline without presenting it as upcoming. |
-| Very long trip, day or item names | Preserve the full text and wrap or truncate it in the layout without obscuring controls. |
-| RTL text | Support right-to-left text and direction-aware layout while keeping times, dates and ticket codes legible. |
+| Time zones and DST | Show each item in its own IANA time zone; apply the applicable DST offset without changing the item’s saved instant. |
+| Items crossing midnight or the date line | Show the item on the relevant local day or days without shifting its saved time or date. |
+| Overlapping items | Show both items and indicate the overlap; do not move or delete either item automatically. |
+| Missing end time | Show the start time and no end time; do not infer a duration. |
+| Very long trip or item names | Wrap or truncate text without clipping controls or making the row unusable. |
+| RTL text | Respect text direction and keep times, dates, and controls legible and usable. |
+| Empty trips | Show a calm empty state with a clear way to add the first item. |
+| Past trips | Keep past trips and their items available; do not present past items as upcoming. |
 
-## Tickets and attachments
-
-| Edge case | Expected behaviour |
-|---|---|
-| Huge PDF | Import without loading the whole file into memory, show progress where available, and let the user cancel. |
-| Corrupt or unreadable image | Keep the rest of the trip usable, show an attachment error placeholder and offer removal or replacement. |
-| Storage full during import or save | Stop the operation safely, explain that there is not enough device storage, and preserve the last successfully saved data. |
-| Ticket has no end time | Show the available ticket details without inventing an end time. |
-
-## Document vault and emergency card
+## Attachments and documents
 
 | Edge case | Expected behaviour |
 |---|---|
-| Face ID unavailable | Keep the vault locked and explain the available authentication options; do not expose documents. |
-| Face ID denied or cancelled | Keep the vault locked and allow another authentication attempt or direct the user to device settings where appropriate. |
-| Emergency card has missing details | Show the available information and clearly mark fields the user has not filled in. |
-| Emergency numbers are unavailable for a country | Do not guess; show that no verified local number is available and display the source and verification date for listed numbers. |
+| Huge PDFs | Keep the app responsive; if the file cannot be stored or opened, show a clear error and leave existing data unchanged. |
+| Corrupt images | Show an attachment error or placeholder; keep the rest of the trip usable. |
+| Storage full | Show a clear save or import error; do not report success or leave a partial attachment or edit. |
+| Very long document names | Wrap or truncate the displayed name without hiding actions or changing the stored filename. |
 
-## Map and location
+## Document vault and permissions
 
 | Edge case | Expected behaviour |
-| Location denied | Keep the map and saved places usable without a location dot, and explain how to enable location in settings. |
-| Flight mode or no connection | Keep locally stored trips, tickets and downloaded map data available; indicate when a map or feature needs data that is not stored on the device. |
-| Map city has not been downloaded | Show saved trip information and explain that the offline map is not available for that city. |
-| Location check fails or is unavailable | Show that the current location could not be determined without retrying continuously. |
+|---|---|
+| Face ID unavailable | Explain that the vault cannot use Face ID and offer the available device-authentication fallback, if supported; otherwise keep vault contents locked. |
+| Face ID denied or cancelled | Keep vault contents locked and offer retry or the available device-authentication fallback; never reveal contents behind the prompt. |
+| Location denied | Explain why location is needed, offer Open Settings, and keep the map and saved places usable without the blue dot. |
+| Photos or file access denied | Explain the permission state and offer the available Settings or alternate-import path without discarding the current edit. |
+| Contacts access denied | Keep emergency contacts editable by other available means and do not block the emergency card. |
+
+## Map and connectivity
+
+| Edge case | Expected behaviour |
+|---|---|
+| Offline or flight mode | Keep locally stored tickets, trip details, and available offline map data usable; show an offline notice where relevant. |
+| Map data unavailable offline | Show that the map is unavailable and retain access to saved trip details and places. |
+| Location check has no fix | Say that the location is unavailable and leave the map usable without a location marker. |
+| Location permission denied | Do not request location repeatedly; show the permission notice and keep non-location map features usable. |
 
 ## Low-battery essentials mode
 
 | Edge case | Expected behaviour |
 |---|---|
-| Battery drops below 20% while the app is open | Offer or enter essentials mode with the next ticket, hotel address and emergency card, without animation or map. |
-| Battery rises above 20% | End automatic essentials mode without changing the user’s manual mode preference. |
-| User manually enables essentials mode | Show the essentials screen regardless of battery level until the user turns it off. |
-| Battery status is unavailable | Keep manual essentials mode available and do not infer a battery level. |
+| Battery crosses the configured threshold | Offer essentials mode when the level is at or below the configured threshold; do not repeatedly interrupt after dismissal. |
+| Battery rises above the threshold | Stop offering automatic entry based on the threshold; keep manual entry available. |
+| Manual essentials switch is on | Allow entry regardless of battery level and honour the setting until the user changes it. |
+| Essentials mode has incomplete trip details | Show the available ticket, address, and emergency information without inventing missing details. |
 
-## App state and editing
-
-| Edge case | Expected behaviour |
-|---|---|
-| App is killed mid-edit | Restore the last committed version and discard any incomplete edit. |
-| App is killed during attachment import | Keep existing data intact and report the incomplete import on next launch if needed. |
-| Storage is full during an edit | Do not replace the last committed version with a partial save; explain that storage must be freed before saving. |
-
-## Trip file import and export
+## Editing and app state
 
 | Edge case | Expected behaviour |
 |---|---|
-| Invalid or malformed `.satchel` file | Reject the file with a plain-language error and leave existing trips unchanged. |
-| Unsupported `.satchel` version | Explain that the file version is unsupported and do not import partial data. |
-| Missing or corrupt attachment in a `.satchel` file | Import valid trip data where safe, mark the affected attachment unavailable and report it to the user. |
-| Duplicate trip imported | Ask whether to keep both or cancel; do not silently overwrite an existing trip. |
+| App is killed mid-edit | Keep the last successfully saved data; do not present an unsaved edit as saved when the app reopens. |
+| Save fails | Keep the form open with entered values and show a clear error so the user can retry. |
+| User dismisses an edit with unsaved changes | Ask for confirmation before discarding the changes. |
+| Very long names or notes | Preserve the entered text and keep form actions and navigation accessible. |
+| RTL text in forms | Accept and display RTL input correctly without reversing dates, times, or control order unexpectedly. |
+
+## Trip export and import
+
+| Edge case | Expected behaviour |
+|---|---|
+| Invalid or corrupt `.satchel` file | Reject the file with a clear error and leave existing trips and attachments unchanged. |
+| Unsupported `.satchel` version | Explain that the file version is unsupported; do not partially import it. |
+| Missing or mismatched attachment in an import | Import only if the file passes validation; otherwise reject it without partial changes and explain the issue. |
+| Very long imported names or notes | Preserve valid text and display it safely without breaking the trip layout. |
+| Imported RTL text | Preserve and display text direction correctly. |
+| Import runs out of storage | Cancel the import, report the storage problem, and leave existing data unchanged. |

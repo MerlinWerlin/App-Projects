@@ -1,149 +1,166 @@
-## A. App-icon concepts
+## (A) App-icon concepts
 
-### A01 — Folded-map satchel
-- **Size:** 1024 × 1024 px
-- **Prompt:** Original flat vector-style app icon on a full-bleed paper #F4F1EA background. Centre a bold ink/navy #14213D satchel silhouette with a broad handle and softly squared body. Its flap contains one simple folded-map shape in card #FFFFFF, divided by a single accent orange #E07A2F crease. Use large solid shapes, generous negative space and crisp edges. Keep all meaningful detail within the central 76% of the canvas. Readable at 60 px; no text, gradients, shadows or applied outer corner mask.
-- **Negative prompt:** Letters, numbers, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, photorealism, texture, hairline strokes, tiny hardware, detailed streets, mockup, border, outer rounded-square container.
-- **File name:** `a01-icon-folded-map-satchel.png`
-- **Rationale:** Combines a travel wallet and a map in one clear silhouette.
+### A01 — Folded satchel
+- **id:** `icon_folded_satchel`
+- **size:** `1024x1024`
+- **prompt:** Original flat vector-style app icon: a compact navy #14213D satchel on a solid paper #F4F1EA background. Build the bag from one broad body, a short handle and a folded envelope-like flap, with a single orange #E07A2F clasp. The flap subtly suggests a folded map without internal detail. Centre the silhouette with generous margins; use bold geometry and clear negative space, readable at 60px. Square full-bleed canvas, no outer icon mask, no lettering.
+- **negative prompt:** Text, letters, numbers, logos, brands, recognisable branded designs, famous characters, landmarks, watermarks, photorealism, gradients, shadows, texture, thin strokes, tiny stitching, extra objects, rounded outer tile.
+- **file name:** `satchel_icon_01_folded_satchel.png`
+- **rationale:** A simple bag silhouette makes the travel-wallet idea clear at a glance.
 
-### A02 — Ticket flap
-- **Size:** 1024 × 1024 px
-- **Prompt:** Original flat app icon on full-bleed ink/navy #14213D. Show a large card #FFFFFF satchel body with a short, thick handle. Form the satchel flap from a single accent orange #E07A2F boarding-pass shape, with one broad notch on each short side and no printed markings. Keep the composition symmetrical, compact and bold, with ample outer breathing room. Use solid fills only and shapes that remain distinct at 60 px; do not apply rounded corners to the canvas.
-- **Negative prompt:** Text, letters, numbers, barcodes, QR codes, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, gradients, shadows, realistic leather, stitching, tiny buckles, outer frame.
-- **File name:** `a02-icon-ticket-flap.png`
-- **Rationale:** Makes saved tickets the most immediate part of the travel-wallet idea.
+### A02 — Pass pocket
+- **id:** `icon_pass_pocket`
+- **size:** `1024x1024`
+- **prompt:** Original flat vector-style app icon: one white #FFFFFF blank boarding-pass shape tucked into a navy #14213D satchel pocket against paper #F4F1EA. Give the pass two large side notches and one broad orange #E07A2F end panel, with no printed marks. Use only three overlapping shapes, centred with generous margins and strong contrast. Keep the pocket broad and the pass visibly protruding, so both remain distinct at 60px. Square full-bleed canvas, no outer icon mask.
+- **negative prompt:** Text, letters, numbers, barcodes, QR codes, logos, brands, airline designs, famous characters, landmarks, watermarks, fine perforations, decorative lines, realistic leather, gradients, shadows, rounded outer tile.
+- **file name:** `satchel_icon_02_pass_pocket.png`
+- **rationale:** A pass held safely in a pocket connects travel with easy access.
 
-### A03 — Map in a pocket
-- **Size:** 1024 × 1024 px
-- **Prompt:** Original flat vector-style app icon on full-bleed paper #F4F1EA. Centre a deep sea #2A6F97 travel-wallet pocket, shaped as one broad block with gently curved lower corners. A card #FFFFFF three-panel folded map rises above its lip, outlined with thick ink/navy #14213D geometry. One large accent orange #E07A2F circle sits on the middle map panel, without any label or route detail. Use strong overlap, minimal shapes and generous margins, readable at 60 px.
-- **Negative prompt:** Text, labels, numbers, logos, brands, airline insignia, real city layouts, recognisable landmarks, famous characters, watermarks, fine map lines, small pins, gradients, shadows, photographic materials, applied canvas corner mask.
-- **File name:** `a03-icon-map-pocket.png`
-- **Rationale:** Suggests carrying a whole place in a small, dependable pocket.
+### A03 — Three-fold map
+- **id:** `icon_three_fold_map`
+- **size:** `1024x1024`
+- **prompt:** Original flat vector-style app icon: a single upright three-panel folded map on paper #F4F1EA, its outer silhouette shaped like a compact travel pouch. Use navy #14213D for the left panel, white #FFFFFF for the middle and sea #2A6F97 for the right, with one bold orange #E07A2F circle on the middle panel. Use solid fills and large clean folds, without roads or labels. Centre the symbol with generous margins and ensure a clear silhouette at 60px. Square full-bleed canvas, no outer icon mask.
+- **negative prompt:** Text, letters, numbers, logos, brands, actual maps, identifiable geography, landmarks, famous characters, watermarks, tiny roads, location trails, thin outlines, gradients, shadows, rounded outer tile.
+- **file name:** `satchel_icon_03_three_fold_map.png`
+- **rationale:** Broad map folds make offline navigation the clearest part of the symbol.
 
-### A04 — Journey crease
-- **Size:** 1024 × 1024 px
-- **Prompt:** Original geometric app icon on full-bleed card #FFFFFF. Build a compact three-panel folded map from broad ink/navy #14213D and sea #2A6F97 shapes. Across its centre, use a thick accent orange #E07A2F folded strip that also reads as a simple satchel flap, with one broad downward point. Keep the silhouette unified rather than a collection of small symbols. Flat fills, crisp edges, central 76% safe area and clear readability at 60 px.
-- **Negative prompt:** Text, initials, numbers, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, detailed routes, arrows, tiny creases, gradients, shadows, 3D extrusion, icon grid, outer border.
-- **File name:** `a04-icon-journey-crease.png`
-- **Rationale:** Uses one fold to connect the map and wallet motifs.
+### A04 — Handle and pass
+- **id:** `icon_handle_pass`
+- **size:** `1024x1024`
+- **prompt:** Original flat vector-style app icon on navy #14213D: a large paper #F4F1EA boarding-pass silhouette with two oversized side notches, topped by a short paper-coloured satchel handle. Add a single orange #E07A2F rectangular clasp at its centre. Merge the pass and bag into one bold, balanced symbol rather than separate objects. Use crisp flat fills, generous margins and no internal linework; the form must remain readable at 60px. Square full-bleed canvas, no outer icon mask.
+- **negative prompt:** Text, initials, numbers, barcodes, QR codes, logos, brands, recognisable ticket layouts, famous characters, landmarks, watermarks, gradients, shadows, bevels, fine perforations, rounded outer tile.
+- **file name:** `satchel_icon_04_handle_pass.png`
+- **rationale:** One combined shape brings the wallet and boarding-pass motifs together.
 
-### A05 — Ticket window
-- **Size:** 1024 × 1024 px
-- **Prompt:** Original flat app icon on full-bleed accent orange #E07A2F. Centre a large ink/navy #14213D satchel silhouette with a thick handle and a simple uninterrupted body. Cut one broad card #FFFFFF boarding-pass-shaped window into the centre, using large side notches and no other internal markings. Use only these three colours, generous negative space and balanced proportions. The silhouette and ticket window must remain unmistakable at 60 px; square canvas without an applied corner mask.
-- **Negative prompt:** Text, letters, numbers, barcodes, QR codes, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, stitching, buckles, thin outlines, gradients, shadows, glossy surfaces, outer container.
-- **File name:** `a05-icon-ticket-window.png`
-- **Rationale:** A bright field and a simple cut-out make the icon easy to find.
+### A05 — Sheltered map
+- **id:** `icon_sheltered_map`
+- **size:** `1024x1024`
+- **prompt:** Original flat vector-style app icon: a broad navy #14213D satchel pocket cradles the lower half of a white #FFFFFF folded map against paper #F4F1EA. Show only two oversized map folds, with one sea #2A6F97 panel and a small but bold orange #E07A2F tab. Use a low, stable composition and large uninterrupted shapes. Leave generous space around the symbol and simplify it for immediate recognition at 60px. Square full-bleed canvas, no outer icon mask.
+- **negative prompt:** Text, letters, numbers, logos, brands, real map geography, landmarks, famous characters, watermarks, roads, micro-details, stitching, gradients, shadows, realistic materials, rounded outer tile.
+- **file name:** `satchel_icon_05_sheltered_map.png`
+- **rationale:** A map tucked into a pocket suggests everything needed is already with you.
 
-### A06 — Open and ready
-- **Size:** 1024 × 1024 px
-- **Prompt:** Original flat vector-style app icon on full-bleed paper #F4F1EA. Show a front-facing open travel wallet in ink/navy #14213D, its lifted flap forming a broad simple shape behind the pocket. Two oversized items peek out: a card #FFFFFF blank boarding pass and a sea #2A6F97 folded map, with one accent orange #E07A2F map panel. Reduce every object to bold geometric blocks; no small details. Keep the composition centred, spacious and readable at 60 px.
-- **Negative prompt:** Text, numbers, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, barcodes, QR codes, more than two inserts, fine streets, realistic perspective, gradients, shadows, tiny fasteners, canvas corner mask.
-- **File name:** `a06-icon-open-ready.png`
-- **Rationale:** Shows the essentials gathered together and ready to reach.
+### A06 — Orange flap
+- **id:** `icon_orange_flap`
+- **size:** `1024x1024`
+- **prompt:** Original flat vector-style app icon on solid orange #E07A2F: a centred navy #14213D satchel body and short handle, with one large paper #F4F1EA folded flap. Shape the flap as two adjoining geometric panels that gently suggest an opened map. Use no clasp, seams or extra symbols. Keep the silhouette broad, calm and distinctive, with generous margins and enough simplicity to read at 60px. Square full-bleed canvas, no outer icon mask.
+- **negative prompt:** Text, letters, numbers, logos, brands, recognisable branded bags, famous characters, landmarks, watermarks, tiny details, thin outlines, gradients, shadows, glossy effects, rounded outer tile.
+- **file name:** `satchel_icon_06_orange_flap.png`
+- **rationale:** An orange field offers a warmer, more visible home-screen option.
 
-### A07 — Quiet night wallet
-- **Size:** 1024 × 1024 px
-- **Prompt:** Original flat dark-palette app icon on full-bleed #0E1320. Centre a large paper #F4F1EA travel-wallet silhouette with a broad folded flap and no handle. A thick ink/navy #14213D seam divides the flap from the body. Place one bold accent orange #E07A2F folded-map tab above the upper-right edge, integrated into the silhouette. Use strong contrast, generous margins and solid fills only. Keep the design clearly readable at 60 px without an outer rounded-square container.
-- **Negative prompt:** Text, letters, numbers, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, stars, moon symbols, glow, gradients, shadows, thin seams, realistic leather, tiny details, outer border.
-- **File name:** `a07-icon-quiet-night-wallet.png`
-- **Rationale:** Offers a calm dark option without losing a clear travel cue.
+### A07 — Night pocket
+- **id:** `icon_night_pocket`
+- **size:** `1024x1024`
+- **prompt:** Original flat vector-style app icon on dark #0E1320: a large paper #F4F1EA travel-wallet pocket with a dark #161C2C inset and a single sea #2A6F97 folded-map corner rising above it. Add one orange #E07A2F clasp to the lower centre. Keep the outer silhouette simple and the pale pocket thick enough to remain clear at 60px. Use solid fills, restrained geometry and generous margins. Square full-bleed canvas, no outer icon mask.
+- **negative prompt:** Text, letters, numbers, logos, brands, famous characters, landmarks, watermarks, low-contrast outer silhouette, fine lines, gradients, neon, glow, shadows, photorealism, rounded outer tile.
+- **file name:** `satchel_icon_07_night_pocket.png`
+- **rationale:** A pale pocket keeps the core motif clear in a dark palette.
 
-### A08 — Map handle
-- **Size:** 1024 × 1024 px
-- **Prompt:** Original flat geometric app icon on full-bleed sea #2A6F97. Create a card #FFFFFF three-panel folded map whose outer silhouette also forms a satchel body. Above it, add one broad card #FFFFFF arch as a handle, separated from the body by a generous sea-coloured opening. Use two thick sea-coloured fold gaps and one large accent orange #E07A2F panel. No outlines or decorative detail. Keep the combined symbol compact, centred and legible at 60 px.
-- **Negative prompt:** Text, initials, numbers, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, road networks, tiny pins, thin handle, gradients, shadows, 3D rendering, mockup, applied canvas corner mask.
-- **File name:** `a08-icon-map-handle.png`
-- **Rationale:** Turns the map itself into something you can carry.
+### A08 — Folded handle
+- **id:** `icon_folded_handle`
+- **size:** `1024x1024`
+- **prompt:** Original flat vector-style app icon on paper #F4F1EA: one continuous navy #14213D folded band forms the outer body and handle of a small satchel, leaving a large clean central opening. Inside that opening, place one orange #E07A2F blank boarding-pass rectangle with two broad side notches. Use bold, carefully balanced geometry with no narrow gaps or extra detail. Centre the symbol with generous margins and optimise for readability at 60px. Square full-bleed canvas, no outer icon mask.
+- **negative prompt:** Text, letters, monograms, numbers, barcodes, QR codes, logos, brands, famous characters, landmarks, watermarks, intricate knots, thin strokes, gradients, shadows, rounded outer tile.
+- **file name:** `satchel_icon_08_folded_handle.png`
+- **rationale:** An open, enclosing shape gives the pass a clear sense of place.
 
-## B. Onboarding illustrations
+## (B) Onboarding illustrations
 
 ### B01 — Tickets offline
-- **Size:** 1290 × 1200 px
-- **Prompt:** Original calm editorial illustration with flat shapes and very soft paper-like shading, using paper #F4F1EA, card #FFFFFF, ink/navy #14213D, accent orange #E07A2F and sea #2A6F97. In the lower half, show an open navy travel satchel holding two large blank boarding-pass shapes, their notched edges clearly visible. One pass sits slightly forward, ready to take out; a folded map rests beside the bag. Make the arrangement feel settled and self-contained, without network imagery. Keep the top 40% plain paper and empty for a later headline, with generous side margins. No text in the artwork.
-- **Negative prompt:** Text, letters, numbers, logos, brands, airline insignia, barcodes, QR codes, recognisable landmarks, famous characters, watermarks, Wi-Fi symbols, cloud services, busy airport scenes, realistic ticket layouts, hard shadows, clutter, objects in the headline area.
-- **File name:** `b01-onboarding-tickets-offline.png`
+- **id:** `onboarding_tickets_offline`
+- **size:** `1290x1200`
+- **prompt:** Original calm editorial illustration in simple cut-paper shapes on paper #F4F1EA. In the lower two-thirds, show an open navy #14213D satchel with two blank white #FFFFFF boarding passes neatly nested inside; one has a broad orange #E07A2F end panel, the other a sea #2A6F97 tab. Use large ticket notches, gentle overlap and very soft contact shadows to suggest tickets already packed and ready to hand. Keep the composition compact, warm and unhurried. Leave the top 32% completely empty for a later headline, with generous side margins. No text or interface elements.
+- **negative prompt:** Text, letters, numbers, barcodes, QR codes, logos, brands, airline designs, famous characters, landmarks, watermarks, phones, interface mock-ups, clouds, wireless symbols, loading indicators, clutter, harsh shadows, content in the top headline space.
+- **file name:** `satchel_onboarding_01_tickets_offline.png`
 
-### B02 — Flight mode map
-- **Size:** 1290 × 1200 px
-- **Prompt:** Original calm editorial illustration on paper #F4F1EA, with a large unfolded map occupying the lower 55% of the canvas. Use card #FFFFFF map panels, broad sea #2A6F97 waterways, a few thick ink/navy #14213D street lines and one accent orange #E07A2F destination dot. The map depicts an entirely invented neighbourhood. Place a small blank boarding pass with a simple generic aircraft silhouette beside the map as a quiet flight-mode cue. Keep the map static, without a live-position marker or tracking trail. Soft restrained shading, rounded geometry and ample breathing room; top 40% empty for a later headline.
-- **Negative prompt:** Text, map labels, numbers, logos, brands, airline insignia, real map layouts, recognisable landmarks, famous characters, watermarks, aircraft liveries, radar rings, tracking trails, multiple location markers, Wi-Fi symbols, cloud imagery, dense streets, objects in the headline area.
-- **File name:** `b02-onboarding-flight-mode-map.png`
+### B02 — Map in flight mode
+- **id:** `onboarding_flight_mode_map`
+- **size:** `1290x1200`
+- **prompt:** Original calm editorial illustration in simple cut-paper shapes on paper #F4F1EA. Place a broad unfolded map across the lower two-thirds, with white #FFFFFF panels, a sea #2A6F97 water shape and a few wide navy #14213D abstract streets. Rest a small unmarked orange #E07A2F aeroplane silhouette beside the map and tuck one map corner into a navy satchel pocket. The map is invented geography, quietly suggesting it remains useful in flight mode. Use gentle folds, minimal detail and soft contact shadows. Leave the top 32% completely empty for a later headline. No text or interface elements.
+- **negative prompt:** Text, letters, numbers, street labels, logos, brands, airline liveries, famous characters, real geography, recognisable landmarks, watermarks, tracking trails, radar rings, repeated location markers, wireless signals, clouds, interface mock-ups, content in the top headline space.
+- **file name:** `satchel_onboarding_02_flight_mode_map.png`
 
 ### B03 — Emergency card
-- **Size:** 1290 × 1200 px
-- **Prompt:** Original gentle editorial illustration using paper #F4F1EA, card #FFFFFF, ink/navy #14213D, sea #2A6F97 and a small accent orange #E07A2F highlight. In the lower half, place one oversized blank emergency card partly lifted from the front pocket of a simple navy satchel. A large sea-coloured heart symbol identifies the card; a broad orange edge tab makes it easy to spot. Keep the card otherwise completely unmarked. Use reassuring rounded shapes, a stable composition and soft minimal shading. Leave the top 40% and upper corners empty for a later headline.
-- **Negative prompt:** Text, names, numbers, contact details, logos, brands, airline insignia, medical cross emblems, recognisable landmarks, famous characters, watermarks, ECG traces, emergency vehicles, injury, distress, alarm effects, busy card layouts, objects in the headline area.
-- **File name:** `b03-onboarding-emergency-card.png`
+- **id:** `onboarding_emergency_card`
+- **size:** `1290x1200`
+- **prompt:** Original calm editorial illustration in simple cut-paper shapes on paper #F4F1EA. In the lower two-thirds, show one large white #FFFFFF emergency-information card partly withdrawn from a navy #14213D travel-wallet pocket. Give it a broad orange #E07A2F pull tab and one small sea #2A6F97 generic handset pictogram, leaving the rest of the card blank. A folded-map corner rests quietly behind the pocket. Make the card easy to reach visually, with orderly spacing, rounded paper corners and soft contact shadows. Leave the top 32% completely empty for a later headline. No text or interface elements.
+- **negative prompt:** Text, letters, numbers, personal details, contact data, medical crosses, official seals, logos, brands, famous characters, landmarks, watermarks, ambulance imagery, sirens, distress, dramatic red lighting, interface mock-ups, content in the top headline space.
+- **file name:** `satchel_onboarding_03_emergency_card.png`
 
 ### B04 — Documents locked
-- **Size:** 1290 × 1200 px
-- **Prompt:** Original calm editorial illustration on paper #F4F1EA. In the lower half, show a closed ink/navy #14213D document wallet with two oversized blank card #FFFFFF sheets tucked neatly inside. A single broad sea #2A6F97 clasp carries a simple closed padlock shape, with a small accent orange #E07A2F centre. Make the lock a quiet practical detail rather than a heroic security emblem. Use flat rounded geometry and restrained soft shading, with no screens or printed document details. Keep the top 40% completely empty for a later headline.
-- **Negative prompt:** Text, signatures, numbers, logos, brands, airline insignia, passport emblems, official seals, recognisable landmarks, famous characters, watermarks, barcodes, QR codes, shields, force fields, chains, surveillance eyes, cloud imagery, dramatic lighting, objects in the headline area.
-- **File name:** `b04-onboarding-documents-locked.png`
+- **id:** `onboarding_documents_locked`
+- **size:** `1290x1200`
+- **prompt:** Original calm editorial illustration in simple cut-paper shapes on paper #F4F1EA. In the lower two-thirds, arrange a neat stack of blank white #FFFFFF document sheets inside a broad navy #14213D satchel-style folder. Set a single simple navy padlock with a large orange #E07A2F keyhole shape against the folder flap; add a narrow sea #2A6F97 divider behind the sheets. Keep the lock friendly and proportionate, not fortress-like. Use soft contact shadows, wide clear shapes and a quiet, balanced composition. Leave the top 32% completely empty for a later headline. No text or interface elements.
+- **negative prompt:** Text, letters, numbers, signatures, identity details, passport covers, national emblems, official seals, logos, brands, famous characters, landmarks, watermarks, encryption strings, shields, certification badges, chains, vault doors, interface mock-ups, content in the top headline space.
+- **file name:** `satchel_onboarding_04_documents_locked.png`
 
 ### B05 — Low-battery essentials
-- **Size:** 1290 × 1200 px
-- **Prompt:** Original quiet editorial illustration on dark #0E1320, with a broad soft #161C2C surface in the lower half. Arrange only three travel essentials on it: one blank paper #F4F1EA boarding pass, a small folded map with sea #2A6F97 panels and a blank card with a simple heart symbol. Beside them, place a modest battery outline containing one small accent orange #E07A2F segment, without a number or glow. Use flat shapes and minimal tonal shading to suggest a stripped-back essentials view, not extra battery capacity. Leave the top 40% plain dark and empty for a later headline.
-- **Negative prompt:** Text, percentages, runtime figures, numbers, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, charging bolts, plugs, full batteries, energy beams, performance charts, glowing screens, alarm effects, dense detail, objects in the headline area.
-- **File name:** `b05-onboarding-low-battery-essentials.png`
+- **id:** `onboarding_low_battery_essentials`
+- **size:** `1290x1200`
+- **prompt:** Original calm editorial illustration in simple cut-paper shapes on dark #0E1320. In the lower two-thirds, show a dark #161C2C open satchel tray holding only three clear paper #F4F1EA essentials: a blank notched boarding pass, a compact folded map with one sea #2A6F97 panel, and a plain emergency card with an orange #E07A2F tab. Beside the tray, include a simple paper-coloured battery outline with a short orange segment, without numbers. Use pale object edges for clarity, restrained soft shadows and ample space; the mood is composed, not urgent. Leave the top 32% completely empty for a later headline. No text or interface elements.
+- **negative prompt:** Text, letters, numbers, battery percentages, time estimates, endurance claims, logos, brands, famous characters, landmarks, watermarks, charging bolts, cables, warning triangles, red alarms, glow, clutter, interface mock-ups, content in the top headline space.
+- **file name:** `satchel_onboarding_05_low_battery_essentials.png`
 
 ### B06 — Packing
-- **Size:** 1290 × 1200 px
-- **Prompt:** Original calm editorial illustration on paper #F4F1EA, using card #FFFFFF, ink/navy #14213D, sea #2A6F97 and small accent orange #E07A2F details. In the lower half, show an open simple travel satchel with a folded shirt, rolled socks and an unbranded plain bottle arranged neatly beside it. Add a small blank card with three large empty square checkboxes and no writing. Keep the objects few, evenly spaced and easy to recognise, with flat rounded forms and soft restrained shading. Leave the top 40% completely empty for a later headline.
-- **Negative prompt:** Text, letters, numbers, logos, brands, airline insignia, clothing graphics, product labels, recognisable landmarks, famous characters, watermarks, crowded luggage, many tiny objects, photorealism, harsh shadows, objects in the headline area.
-- **File name:** `b06-onboarding-packing.png`
+- **id:** `onboarding_packing`
+- **size:** `1290x1200`
+- **prompt:** Original calm editorial illustration in simple cut-paper shapes on paper #F4F1EA. In the lower two-thirds, arrange an open navy #14213D satchel alongside four neatly spaced essentials: a folded white #FFFFFF shirt, sea #2A6F97 socks, a plain orange #E07A2F toiletry pouch and a small folded map. Use one blank white packing card with three large navy check marks and no writing, resting partly inside the bag. Keep the objects simple, softly rounded and clearly separated, with gentle contact shadows and an unrushed sense of readiness. Leave the top 32% completely empty for a later headline. No text or interface elements.
+- **negative prompt:** Text, letters, numbers, printed labels, logos, brands, recognisable product designs, famous characters, landmarks, watermarks, excessive luggage, messy piles, intricate fabric texture, glossy 3D rendering, interface mock-ups, content in the top headline space.
+- **file name:** `satchel_onboarding_06_packing.png`
 
-## C. Store-screenshot backgrounds
+## (C) Store-screenshot backgrounds
 
 ### C01 — Paper folds
-- **Size:** 1290 × 2796 px
-- **Prompt:** Original soft editorial background for a portrait app-store screenshot, predominantly paper #F4F1EA. Place broad abstract folded-map planes in card #FFFFFF and very pale tints of sea #2A6F97 along the far left edge and bottom corners. Add one small muted accent orange #E07A2F fold near the bottom-left edge. Use low contrast and diffuse shading. Reserve the top caption band from y=0 to y=560 as plain paper. Reserve a centred rectangular phone-placement area from x=185 to x=1105 and y=700 to y=2630 as plain paper, with no visible boundary. Keep all decorative shapes outside both reserved areas. Do not render a phone, frame, screen or text.
-- **Negative prompt:** Text, letters, numbers, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, devices, phone frames, UI, visible placeholder boxes, outlines around reserved areas, high contrast, hard shadows, detailed maps, decoration inside reserved areas.
-- **File name:** `c01-store-background-paper-folds.png`
+- **id:** `store_background_paper_folds`
+- **size:** `1290x2796`
+- **prompt:** Original soft portrait background for a travel-app screenshot, using a paper #F4F1EA base. Add large, quiet folded-map planes in white #FFFFFF along the lower-left and lower-right edges, with a small muted sea #2A6F97 fold at the bottom and one restrained orange #E07A2F tab near the bottom-right edge. Use delicate paper grain and broad, very soft shadows only outside the reserved areas. Keep the top 22% entirely blank as a caption band. Keep the centred rectangle from 13% to 87% of canvas width and 27% to 93% of canvas height completely uninterrupted paper colour for later phone-frame placement. Decorative shapes stay at the outer edges and bottom. Render background only.
+- **negative prompt:** Text, letters, numbers, captions, logos, brands, famous characters, landmarks, watermarks, phones, devices, phone frames, screens, UI, placeholder outlines, visible safe-area guides, high contrast, busy texture, decoration inside either reserved area.
+- **file name:** `satchel_store_01_paper_folds.png`
 
-### C02 — Ticket edges
-- **Size:** 1290 × 2796 px
-- **Prompt:** Original soft portrait screenshot background on paper #F4F1EA. Use oversized blank boarding-pass shapes cropped almost entirely off the outer edges, revealing only gentle notches and broad card #FFFFFF surfaces at the lower left and middle right. Include one subdued sea #2A6F97 edge and a small accent orange #E07A2F tab near the bottom. Keep shadows broad and faint. Leave y=0 to y=560 completely plain for a later caption, and keep x=185 to x=1105, y=700 to y=2630 completely plain for a centred phone to be added later. Decorations stay outside those areas; do not show their boundaries or render a phone or text.
-- **Negative prompt:** Text, letters, numbers, barcodes, QR codes, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, phones, frames, screens, UI, placeholder outlines, dense perforations, sharp shadows, busy composition, decoration inside reserved areas.
-- **File name:** `c02-store-background-ticket-edges.png`
+### C02 — Quiet coast
+- **id:** `store_background_quiet_coast`
+- **size:** `1290x2796`
+- **prompt:** Original soft portrait background with an invented folded-map coastline, using paper #F4F1EA as the main field. Place pale sea #2A6F97 coastal curves along the far lower-left edge and bottom, with broad white #FFFFFF map folds near the lower-right edge and a tiny orange #E07A2F circular accent near the bottom-left margin. Keep the treatment abstract, low-contrast and spacious, with subtle grain and no mapped detail. Leave the top 22% entirely blank as a caption band. Preserve an uninterrupted paper-coloured rectangle from 13% to 87% width and 27% to 93% height for later centred phone-frame placement. Render background only.
+- **negative prompt:** Text, letters, numbers, map labels, real geography, identifiable landmarks, logos, brands, famous characters, watermarks, phones, devices, phone frames, screens, UI, placeholder outlines, safe-area guides, roads, pins, tracking trails, decoration inside either reserved area.
+- **file name:** `satchel_store_02_quiet_coast.png`
 
-### C03 — Quiet coastline
-- **Size:** 1290 × 2796 px
-- **Prompt:** Original abstract map-inspired portrait background, not based on any real place. Start with paper #F4F1EA and introduce soft, low-contrast sea #2A6F97 coastal curves confined to the far side margins and bottom 166 pixels. Use a few broad card #FFFFFF land shapes and one small muted accent orange #E07A2F destination dot near the lower-right outer edge. No streets or labels. Keep the top caption band y=0 to y=560 plain paper, and the centred phone-placement area x=185 to x=1105, y=700 to y=2630 plain paper with no visible boundary. No phone, frame, screen or text.
-- **Negative prompt:** Text, map labels, numbers, real coastlines, recognisable landmarks, logos, brands, airline insignia, famous characters, watermarks, GPS trails, radar rings, intricate roads, phones, phone frames, UI, placeholder rectangles, saturated busy patterns, decoration inside reserved areas.
-- **File name:** `c03-store-background-quiet-coastline.png`
+### C03 — Ticket edges
+- **id:** `store_background_ticket_edges`
+- **size:** `1290x2796`
+- **prompt:** Original soft portrait background on paper #F4F1EA. Suggest a tidy stack of blank travel passes through oversized white #FFFFFF paper corners and broad semicircular ticket notches cropped by the lower outer edges. Add one muted orange #E07A2F end panel at the bottom-right and a narrow sea #2A6F97 paper edge near the bottom-left. Use low-contrast layered shapes and faint contact shadows, with no printed details. Leave the top 22% completely blank as a caption band. Keep the centred rectangle from 13% to 87% width and 27% to 93% height completely clear and uniformly paper-coloured for a phone frame to be added later. Render background only.
+- **negative prompt:** Text, letters, numbers, barcodes, QR codes, perforation dots, ticket layouts, airline designs, logos, brands, famous characters, landmarks, watermarks, phones, devices, phone frames, screens, UI, placeholder outlines, safe-area guides, decoration inside either reserved area.
+- **file name:** `satchel_store_03_ticket_edges.png`
 
-### C04 — Satchel curves
-- **Size:** 1290 × 2796 px
-- **Prompt:** Original soft portrait screenshot background built from abstract satchel-inspired geometry. On paper #F4F1EA, let a broad muted sea #2A6F97 handle arc enter and leave through the far-left margin below y=800. Place a low-contrast card #FFFFFF flap curve at the far-right edge and a small accent orange #E07A2F clasp-like block below y=2650. Use rounded forms and faint diffuse shading, never a complete bag. Keep y=0 to y=560 entirely plain for a caption; keep x=185 to x=1105, y=700 to y=2630 entirely plain for a centred phone, without drawing either reserved area's boundary. Render no device or text.
-- **Negative prompt:** Text, letters, numbers, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, leather texture, stitching, detailed buckles, complete central bag, phones, frames, UI, visible layout guides, hard shadows, decoration inside reserved areas.
-- **File name:** `c04-store-background-satchel-curves.png`
+### C04 — Pocket curve
+- **id:** `store_background_pocket_curve`
+- **size:** `1290x2796`
+- **prompt:** Original soft portrait background on paper #F4F1EA, inspired by the curved opening of a satchel pocket. Confine a broad, gently curved pale sea #2A6F97 paper layer to the bottom 7% of the canvas, with a thinner white #FFFFFF layer above it and a small orange #E07A2F clasp-like rectangle near the bottom-right corner. Add only faint paper grain and soft shadows around these lower layers. Leave the top 22% entirely blank as a caption band. Preserve the centred rectangle from 13% to 87% width and 27% to 93% height as uninterrupted paper colour for later phone-frame placement. No actual bag or device; render background only.
+- **negative prompt:** Text, letters, numbers, logos, brands, recognisable branded bag details, famous characters, landmarks, watermarks, leather texture, stitching, phones, devices, phone frames, screens, UI, placeholder outlines, safe-area guides, heavy shadows, decoration inside either reserved area.
+- **file name:** `satchel_store_04_pocket_curve.png`
 
-### C05 — Night essentials
-- **Size:** 1290 × 2796 px
-- **Prompt:** Original quiet dark portrait screenshot background with a uniform #0E1320 base. Add broad #161C2C folded-map facets along the outer side margins and bottom edge, with very restrained sea #2A6F97 shading and a single small muted accent orange #E07A2F corner tab near the lower left. Keep the scene low contrast, soft and uncluttered, without luminous effects. Reserve y=0 to y=560 as plain #0E1320 for a later caption. Reserve x=185 to x=1105, y=700 to y=2630 as plain #0E1320 for a centred phone; no visible boundary. No phone, screen, frame or text.
-- **Negative prompt:** Text, numbers, battery percentages, runtime claims, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, stars, neon, glow, charging symbols, phones, frames, UI, visible placeholder boxes, high-contrast geometry, decoration inside reserved areas.
-- **File name:** `c05-store-background-night-essentials.png`
+### C05 — Night folds
+- **id:** `store_background_night_folds`
+- **size:** `1290x2796`
+- **prompt:** Original soft dark portrait background using a uniform #0E1320 base. Suggest a folded map through large #161C2C planes cropped at the far left and right edges below the caption band, with a restrained sea #2A6F97 fold and a small muted orange #E07A2F tab confined to the bottom 7%. Keep the geometry quiet, the texture almost imperceptible and the shadows soft. Leave the top 22% entirely blank in #0E1320 for a later caption. Keep the centred rectangle from 13% to 87% width and 27% to 93% height completely uninterrupted #0E1320 for later phone-frame placement. Render background only.
+- **negative prompt:** Text, letters, numbers, logos, brands, famous characters, landmarks, watermarks, stars, neon, glow, bright flares, dramatic gradients, phones, devices, phone frames, screens, UI, placeholder outlines, safe-area guides, decoration inside either reserved area.
+- **file name:** `satchel_store_05_night_folds.png`
 
 ### C06 — Ready to go
-- **Size:** 1290 × 2796 px
-- **Prompt:** Original soft portrait screenshot background on paper #F4F1EA. Suggest neatly packed travel essentials through a few oversized, heavily cropped shapes: a sea #2A6F97 folded-fabric curve at the far lower-left edge, a card #FFFFFF blank ticket corner at the far-right edge and a muted accent orange #E07A2F map fold along the bottom. Use flat editorial geometry, pale tints and faint diffuse shading. Keep the top caption band y=0 to y=560 entirely plain, and the centred phone-placement area x=185 to x=1105, y=700 to y=2630 entirely plain with no visible boundary. Decorations remain outside those areas. Do not render a phone or text.
-- **Negative prompt:** Text, letters, numbers, clothing graphics, labels, barcodes, QR codes, logos, brands, airline insignia, recognisable landmarks, famous characters, watermarks, many small objects, phones, frames, screens, UI, layout guides, hard shadows, decoration inside reserved areas.
-- **File name:** `c06-store-background-ready-to-go.png`
+- **id:** `store_background_ready_to_go`
+- **size:** `1290x2796`
+- **prompt:** Original soft portrait background on paper #F4F1EA, with a few oversized cropped cut-paper travel shapes arranged only along the outer lower edges: a white #FFFFFF blank boarding-pass corner at the far left, a pale sea #2A6F97 folded-map edge at the far right, and a muted orange #E07A2F satchel tab near the bottom. Make the arrangement feel orderly and lightly tactile, using broad forms, delicate grain and soft contact shadows. Leave the top 22% entirely blank as a caption band. Keep the centred rectangle from 13% to 87% width and 27% to 93% height completely clear and uniformly paper-coloured for later phone-frame placement. Render background only.
+- **negative prompt:** Text, letters, numbers, barcodes, QR codes, logos, brands, famous characters, landmarks, watermarks, recognisable products, phones, devices, phone frames, screens, UI, placeholder outlines, safe-area guides, clutter, small scattered objects, decoration inside either reserved area.
+- **file name:** `satchel_store_06_ready_to_go.png`
 
-## `meta.json` template
+## meta.json template
 
 ```json
 {
-  "id": "<image id>",
-  "prompt": "<full prompt paragraph>",
+  "id": "<image_id>",
+  "prompt": "<full image prompt>",
   "negative": "<full negative prompt>",
-  "size": {
-    "width": 1024,
-    "height": 1024
-  },
-  "model": "<generation model and version>",
+  "size": "<width>x<height>",
+  "model": "<generation model identifier and version>",
   "created": "<ISO 8601 UTC timestamp>",
   "licence": "original, generated for Satchel"
 }

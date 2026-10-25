@@ -211,7 +211,7 @@ function AddTemplatePanel({ trip, list, update, onClose }: { trip: Trip; list: P
         </Text>
       ) : null}
       {picked.length ? <Button label={t('packing.addTemplateConfirm')} hint={t('packing.addTemplateConfirmHint')} onPress={add} /> : null}
-      <Button label={t('common.cancel')} kind="quiet" onPress={onClose} />
+      <Button label={t('common.cancel')} hint={t('spec41.packing.templateCancelHint')} kind="quiet" onPress={onClose} />
     </Card>
   );
 }

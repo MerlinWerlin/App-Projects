@@ -1,9 +1,10 @@
 // Add / edit a vault document: type (radio chips), name, expiry typed as YYYY-MM-DD (no date-picker module needed
 // in Expo Go), copies from Photos or Files (copied into the app, never uploaded). Behind the vault lock.
+// T41: a failed check is announced; Save and Cancel say what they do (ACCESSIBILITY "Add and edit vault document").
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
-import { Text, View } from 'react-native';
+import { AccessibilityInfo, Text, View } from 'react-native';
 import { newId, type Attachment } from '../src/core/model.ts';
 import type { PermissionState } from '../src/core/permissions.ts';
 import {
@@ -105,6 +106,7 @@ export default function DocEditScreen() {
   const save = () => {
     const e = validateDoc(d);
     setErrors(e);
+    if (e.length) AccessibilityInfo.announceForAccessibility(t('spec.form.checkFields'));
     if (e.length || busy) return;
     const doc = docFromDraft(d, prev?.id ?? newId('doc'));
     setDocs((old) => upsertDoc(old, doc));
@@ -198,8 +200,8 @@ export default function DocEditScreen() {
       </View>
 
       <Body muted>{t('vault.privacy')}</Body>
-      <Button label={t('doc.save')} onPress={save} />
-      <Button label={t('common.cancel')} kind="quiet" onPress={() => router.back()} />
+      <Button label={t('doc.save')} hint={t('spec41.docEdit.saveHint')} onPress={save} />
+      <Button label={t('common.cancel')} hint={t('spec41.form.cancelHint')} kind="quiet" onPress={() => router.back()} />
     </Screen>
   );
 }

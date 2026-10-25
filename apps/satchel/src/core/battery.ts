@@ -40,7 +40,9 @@ export const UNKNOWN_READING: BatteryReading = { level: null, charging: null, lo
  */
 export function normaliseLevel(raw: unknown): number | null {
   if (typeof raw !== 'number' || !Number.isFinite(raw) || raw < 0 || raw > 1) return null;
-  return raw;
+  // Phones report a 32-bit float (20% arrives as 0.20000000298...), which would miss the "at or below" check at
+  // exactly the threshold while the banner shows 20%. Four decimals keeps sub-percent detail and drops the noise.
+  return Math.round(raw * 10_000) / 10_000;
 }
 
 /** A threshold kept to a sensible range (5% to 50%); anything unusable falls back to the default. */

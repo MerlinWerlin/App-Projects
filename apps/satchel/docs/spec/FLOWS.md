@@ -1,611 +1,468 @@
 # FLOWS.md
 
-## TRIAL scope and shared behaviour
+TRIAL milestone screen flows for Satchel. The app stores travel information on the device; there are no accounts or backend. The map uses the system map in Expo Go and may need an internet connection. Location is checked only when the traveller asks.
 
-- All trip, item, attachment, document, emergency-card and packing-list data is stored on the device. No account or network connection is required for those flows.
-- The demo trip is available on first launch. The user can edit or delete it like any other trip.
-- Use the device’s current light or dark appearance unless the user chooses a fixed appearance in Settings.
-- Keep tap targets at least 48 pt. Use plain language, readable contrast and clear confirmation before destructive actions.
-- Device permission prompts appear only when the user starts a feature that needs them. Explain why before requesting permission. Location is a single foreground check on request; it is never tracked in the background.
-- System pickers and authentication prompts are platform interfaces. On cancellation, return to the screen that opened them without losing entered data.
-- Each screen’s exits include system back navigation unless otherwise noted.
-
-## 1. First launch and demo trip
+## 1. First launch
 
 ### 1.1 Welcome
 
-**Purpose:** Explain what the app does and make the demo immediately available.
+**Purpose:** Introduce Satchel and offer a ready-to-try demo trip without requiring setup.
 
-**Entry points:** First app launch with no local setup completed.
-
-**Elements, top to bottom:**
-1. Satchel wordmark and short description: “A travel wallet that works in flight mode.”
-2. Brief explanation that trips and saved files stay on this device.
-3. “Try the demo trip” primary button.
-4. “Start with my own trip” secondary button.
-5. Privacy note: no account required; location is checked only when requested.
-
-**Primary action — Try the demo trip:**
-- Create or open the local Sydney → Tokyo → Kyoto demo trip, including sample timeline items, a hotel address, sample map places and a packing list.
-- Mark the first-launch setup complete.
-- Open the demo trip timeline.
-
-**Secondary action — Start with my own trip:**
-- Mark the first-launch setup complete.
-- Open the new-trip form.
-
-**Exits:** App close; either button leads into the app.
-
-### 1.2 Demo trip introduction
-
-**Purpose:** Help the user recognise sample content and start exploring.
-
-**Entry points:** First opening of the demo trip.
+**Entry points:** First launch, when no trips exist and onboarding has not been completed.
 
 **Elements, top to bottom:**
-1. Demo label explaining that the trip contains sample information.
-2. Trip route: Sydney → Tokyo → Kyoto.
-3. Short note to replace sample details before relying on them.
-4. “Open trip” primary button.
-5. “Remove demo trip” secondary button.
+1. Satchel mark and welcome heading.
+2. Short explanation: “Your travel details, ready when you need them.”
+3. Privacy line: “Stored on this device. No account needed.”
+4. Language-in-use line with a link to Settings > Language.
+5. Demo-trip preview: Sydney → Tokyo → Kyoto.
+6. Primary and secondary buttons.
 
-**Primary action — Open trip:** Open the trip timeline.
+**Primary action — Try the demo trip:** Create the demo trip and its sample content locally, mark onboarding complete, and open the demo intro.
 
-**Secondary action — Remove demo trip:** Show a confirmation. On confirmation, remove the demo trip and open the trips list with an empty-state prompt to create a trip. On cancellation, stay here.
+**Secondary action — Start with my own trip:** Mark onboarding complete, open the Trips list, and show its empty state.
 
-**Exits:** “Open trip”, “Remove demo trip”, or back to the trips list.
+**Other taps:** Language link opens Settings > Language.
 
-## 2. Trips list
+**Exits:** Continue to the demo intro or Trips list. The welcome screen does not request permissions.
 
-### 2.1 Trips
+### 1.2 Demo intro
 
-**Purpose:** Show saved trips and provide access to the emergency card and other app areas.
+**Purpose:** Show what is included in the demo and help the traveller find key features.
 
-**Entry points:** App launch after setup; Trips tab; successful trip creation or import.
+**Entry points:** After choosing “Try the demo trip” on Welcome.
 
 **Elements, top to bottom:**
-1. Screen title, “Trips”.
-2. Emergency-card shortcut.
-3. Upcoming and past trip groups, each showing trip name, dates and route.
-4. Empty-state message and “Create a trip” button when there are no trips.
-5. Floating or bottom “New trip” action.
-6. Tab navigation: Trips, Map, Wallet, Emergency.
+1. Trip title and route summary.
+2. Short note that the sample trip includes example travel details.
+3. Quick links or prompts for the timeline, ticket, emergency card, document vault, packing list and map.
+4. “Open trip” button.
+
+**Primary action — Open trip:** Open the demo trip timeline.
+
+**Secondary action — Not now:** Open the Trips list.
+
+**Other taps:** A feature prompt opens the relevant demo screen where sample data is available. For the map, open the demo trip map.
+
+**Exits:** Trip timeline, Trips list, or selected feature.
+
+## 2. Trips
+
+### 2.1 Trips list
+
+**Purpose:** Find, open and create trips; provide one-tap access to the emergency card.
+
+**Entry points:** Trips tab; after onboarding; after closing a trip or settings screen.
+
+**Elements, top to bottom:**
+1. Screen title.
+2. Low-battery essentials banner, if essentials mode is being offered.
+3. Emergency-card shortcut.
+4. Trips list, ordered by upcoming travel, with trip name and dates.
+5. Empty state and “Create a trip” action, when there are no trips.
+6. Add-trip button.
 
 **Primary actions:**
 - **Tap a trip:** Open its timeline.
-- **Tap New trip / Create a trip:** Open the new-trip form.
-- **Tap Emergency:** Open the emergency card.
-- **Tap Map:** Open Map v0.
-- **Tap Wallet:** Open the document vault.
-- **Tap and hold or use a trip’s menu:** Show Edit, Export and Delete actions.
+- **Create a trip / Add trip:** Open the new-trip form.
+- **Emergency card:** Open the emergency card.
 
 **Secondary actions:**
-- **Edit:** Open the trip form with existing values.
-- **Export:** Create a trip export file and open the system share sheet. If export fails, show an error and keep the trip unchanged.
-- **Delete:** Ask for confirmation; on confirmation delete the trip and its locally stored trip content. On cancellation, return to the list.
+- **Low-battery banner:** Open essentials mode.
+- **Trip menu:** Offer edit or delete. Edit opens the trip form. Delete asks for confirmation, then removes the trip, its packing list and associated attachment files.
 
-**Exits:** Open a trip, create or edit a trip, open Emergency, Map, Wallet or Settings. Settings is available from the app navigation/menu.
+**Other taps:** Map, Wallet and Emergency tabs open their respective screens. Settings is reached from its available navigation entry.
 
-### 2.2 New or edit trip
+**Exits:** Trip timeline, trip form, emergency card, essentials, or another tab.
 
-**Purpose:** Add or update the trip’s basic details.
+### 2.2 New or edit trip form
 
-**Entry points:** New trip action; trip menu → Edit.
+**Purpose:** Create or update the trip’s basic details.
+
+**Entry points:** Trips list > Create a trip / Add trip; trip menu > Edit.
 
 **Elements, top to bottom:**
-1. Title: “New trip” or “Edit trip”.
-2. Trip name field.
-3. Start and end date fields.
-4. Optional route or destination summary field.
+1. Form title.
+2. Trip name.
+3. Start and end dates.
+4. Trip type, where used for packing-list templates.
 5. Save button.
-6. Cancel or back action.
+6. Cancel action.
 
-**Primary action — Save:**
-- Validate required fields and date order.
-- Save locally.
-- For a new trip, create its timeline and one packing list; offer to add the first item.
-- For an edit, return to the trip timeline with updated details.
-- If validation fails, keep the form open and identify the field to correct.
+**Primary action — Save:** Validate and save locally. On success, close the form and open the trip timeline for a new trip, or return to the prior screen after an edit.
 
-**Secondary action — Cancel:** Discard unsaved changes after confirmation if any fields have changed.
+**Secondary action — Cancel:** Close without saving. If there are unsaved changes, ask whether to discard them.
 
-**Exits:** Save to the trip timeline or cancel to the previous screen.
+**Other taps:** Date fields open native date pickers.
+
+**Exits:** Trip timeline or the screen from which editing began. If saving fails, show an error, keep the form open and preserve entered values.
 
 ## 3. Trip timeline
 
 ### 3.1 Timeline
 
-**Purpose:** Show the trip’s days, bookings and notes in local time, with the next relevant item easy to find.
+**Purpose:** See a trip’s schedule by local day, find what is next, and manage its items and saved places.
 
-**Entry points:** Tap a trip; save a trip; back from an item or trip tool.
+**Entry points:** Tap a trip in Trips; save a new trip.
 
 **Elements, top to bottom:**
-1. Trip name, date range and overflow menu.
-2. “Next up” card when an upcoming item exists. Show its local date/time, kind and summary.
-3. Day selector or day headings, grouped by each item’s local calendar day.
-4. Items in time order. Show the item’s time zone where useful and indicate overlaps without silently changing times.
-5. Per-day or floating “Add item” action.
-6. Shortcuts to Map and Packing list.
-7. Empty-day or empty-trip prompt when appropriate.
+1. Trip title and date range.
+2. “Next up” card, when an upcoming item exists.
+3. Trip actions: add item, packing list and Trip map.
+4. Day sections in the trip’s local time, with items ordered by time.
+5. Saved places for the trip, when present.
+6. Add-item action or an empty state if the trip has no items.
 
 **Primary actions:**
-- **Tap Next up or a timeline item:** Open item details.
-- **Tap Add item:** Open the item-kind chooser.
-- **Tap Map:** Open Map v0 centred on the trip’s demo city or saved places where available.
-- **Tap Packing list:** Open the trip’s packing list.
-- **Tap trip header or menu → Edit trip:** Open the trip form.
+- **Tap an item:** Open its detail screen.
+- **Add item:** Open the kind selector.
+- **Packing list:** Open the trip’s packing list.
+- **Trip map:** Open the map scoped to this trip.
+- **Tap a saved place:** Open its place details or map location.
 
 **Secondary actions:**
-- **Item menu → Edit:** Open the relevant item form populated with current values.
-- **Item menu → Delete:** Confirm; on confirmation delete the item and its local attachments. On cancellation, stay on the timeline.
-- **Item menu → Move to another day:** Choose a day and save; retain the item’s own time zone and local time.
-- **Tap a hotel address shortcut, if present:** Open the hotel address card.
+- **Next up card:** Open the upcoming item.
+- **Trip menu:** Edit trip or delete trip. Delete asks for confirmation and removes the trip, packing list and attachment files.
+- **Add saved place:** Open map place selection, then save the selected place to this trip.
 
-**Time handling:** Display and group an item using its own IANA time zone. If the zone is unavailable or invalid, ask the user to choose a valid time zone before saving. Do not convert an entered local time into a different displayed local time without making the zone clear.
+**Other taps:** Use item actions to edit or delete an item. Deleting an item asks for confirmation and removes its attachment files.
 
-**Exits:** Open item detail, add or edit an item, Map, Packing list, trip settings, or Trips list.
+**Exits:** Item detail, item form, packing list, trip map, trip form, or Trips list.
 
-### 3.2 Add-item kind chooser
+### 3.2 Item kind selector
 
-**Purpose:** Start manual entry for one of the supported item kinds.
+**Purpose:** Choose the type of timeline item to add.
 
-**Entry points:** Timeline → Add item.
+**Entry points:** Timeline > Add item.
 
 **Elements, top to bottom:**
-1. Title, “Add to trip”.
-2. Kind choices: Flight, Train, Ferry, Bus, Hotel, Car hire, Activity, Note.
+1. Sheet title.
+2. Kind choices: flight, train, ferry, bus, hotel, car hire, activity and note.
 3. Cancel action.
 
-**Primary action — choose a kind:** Open that kind’s add form.
+**Primary action — Choose a kind:** Open the new-item form for that kind.
 
-**Secondary action — Cancel:** Return to the timeline without creating an item.
+**Secondary action — Cancel:** Close the selector and return to the timeline.
 
-**Exits:** Selected item form or timeline.
+**Exits:** New-item form or timeline.
 
-## 4. Add and edit items
+## 4. Add and edit timeline items
 
-### Shared item-form behaviour
+### 4.1 Shared item-form behaviour
 
-Each form has a title identifying its kind, a Save action, and a Cancel/back action. Preserve entered values if the user opens an attachment picker and returns. Save items locally. For edits, prefill existing values and keep existing attachments unless the user removes them. Validate required fields and show errors beside the relevant fields. Offer an attachment action on supported forms. The time-zone field is per item and uses an IANA time-zone selection; show the selected zone beside local date/time.
+**Purpose:** Enter or update travel details for one item kind.
 
-### 4.1 Flight
-
-**Purpose:** Save flight details for the trip.
-
-**Entry points:** Add-item kind chooser → Flight; edit a flight item.
+**Entry points:** Item kind selector; item detail > Edit.
 
 **Elements, top to bottom:**
-1. Airline or service name field (free text).
-2. Flight number field (optional).
-3. From and to fields.
-4. Departure date and local time.
-5. Arrival date and local time.
-6. Time-zone selection for the item; allow the user to specify the relevant zone for each endpoint if needed.
-7. Booking reference field (optional).
-8. Notes field (optional).
-9. Add attachment action.
-10. Save.
+1. Form title and item kind.
+2. Kind-specific fields.
+3. Start date and time; end date and time when relevant.
+4. Time-zone selector/search list for the item’s IANA time zone.
+5. Notes or other kind-specific details.
+6. Attachments section, with attached files and add/remove actions.
+7. Save and Cancel actions.
 
-**Primary action — Save:** Validate and save; return to timeline. On a new flight, open item details if a ticket attachment or QR crop needs setting up.
+**Primary action — Save:** Validate and save locally. On success, close the form and show the item detail or updated timeline. Time and date display and grouping use the item’s selected time zone, including offline time-zone calculations.
 
-**Secondary actions:** Attach a file or image using the attachment flow; Cancel to return without saving.
+**Secondary action — Cancel:** Close without saving. If there are unsaved changes, ask whether to discard them.
 
-**Exits:** Timeline after save or cancel; attachment picker and back to the form.
+**Other taps:**
+- **Date or time field:** Open the native picker.
+- **Time-zone field:** Open the searchable time-zone list; selecting a zone returns to the form.
+- **Add attachment:** Open the attachment source choices.
+- **Remove attachment:** Remove it from the item and delete its local file, with confirmation where needed.
 
-### 4.2 Train
+**Exits:** Item detail, timeline, attachment-source chooser, date/time picker or time-zone list. If saving fails, show an error, keep the form open and preserve entered values.
 
-**Elements, top to bottom:**
-1. Operator or service name field (free text).
-2. Train number field (optional).
-3. From and to fields.
-4. Departure and arrival dates and local times.
-5. Time-zone selection.
-6. Booking reference (optional).
-7. Notes (optional).
-8. Add attachment.
-9. Save.
+### 4.2 Kind-specific fields
 
-**Actions and exits:** Save validates and returns to the timeline; attachment opens the attachment flow; Cancel returns without saving.
+Fields below are additional to the shared fields. Each kind also has an item title/name, date/time and time zone where applicable.
 
-### 4.3 Ferry
+- **Flight:** Airline or carrier text, flight number, departure airport, arrival airport, booking reference.
+- **Train:** Operator text, train number or service, departure station, arrival station, booking reference.
+- **Ferry:** Operator text, departure port, arrival port, booking reference.
+- **Bus:** Operator text, departure stop, arrival stop, booking reference.
+- **Hotel:** Property name, address, local-language address, phone, check-in and check-out dates/times, booking reference.
+- **Car hire:** Provider text, pick-up and return locations, pick-up and return dates/times, booking reference.
+- **Activity:** Activity name, location and start/end date or time.
+- **Note:** Title, note text and optional date/time.
 
-**Elements, top to bottom:**
-1. Operator or service name field (free text).
-2. From and to ports.
-3. Departure and arrival dates and local times.
-4. Time-zone selection.
-5. Booking reference (optional).
-6. Notes (optional).
-7. Add attachment.
-8. Save.
+**Tap behaviour:** Enter text in fields; use date/time and time-zone controls as described above. Save and Cancel behave as in Shared item-form behaviour.
 
-**Actions and exits:** Save validates and returns to the timeline; attachment opens the attachment flow; Cancel returns without saving.
+## 5. Attachments and tickets
 
-### 4.4 Bus
+### 5.1 Attachment source chooser
+
+**Purpose:** Add a ticket, confirmation or other file to an item.
+
+**Entry points:** Item form > Add attachment.
 
 **Elements, top to bottom:**
-1. Operator or service name field (free text).
-2. From and to fields.
-3. Departure and arrival dates and local times.
-4. Time-zone selection.
-5. Booking reference (optional).
-6. Notes (optional).
-7. Add attachment.
-8. Save.
+1. Sheet title.
+2. Choose from Files.
+3. Choose from Photos.
+4. Cancel.
 
-**Actions and exits:** Save validates and returns to the timeline; attachment opens the attachment flow; Cancel returns without saving.
+**Primary actions:**
+- **Choose from Files:** Open the system document picker. After selection, copy the file into Satchel’s local documents directory and attach it to the item.
+- **Choose from Photos:** Request photo access when needed, then open the photo picker. After selection, copy the image into Satchel’s local documents directory and attach it.
 
-### 4.5 Hotel
+**Secondary action — Cancel:** Close the chooser.
 
-**Purpose:** Save accommodation details and make its address easy to show to a driver.
+**Other taps / states:** If access is denied, show a PermissionNotice with the reason, an Open Settings action and an available fallback. If the picker is cancelled, return to the form without changing it.
 
-**Elements, top to bottom:**
-1. Hotel or accommodation name.
-2. Check-in and check-out dates and times.
-3. Time-zone selection.
-4. Street address.
-5. Local-language address field.
-6. Phone number (optional).
-7. Booking reference and notes (optional).
-8. Add attachment.
-9. Save.
+**Exits:** Return to the item form, with the attachment listed if added.
 
-**Primary action — Save:** Save locally and return to the timeline. The item becomes available from the hotel address card.
+### 5.2 Item detail
 
-**Secondary actions:** Attach a file or image; Cancel without saving.
+**Purpose:** Read an item’s travel details and open its attachments as tickets or documents.
 
-**Exits:** Timeline after save or cancel; attachment flow.
-
-### 4.6 Car hire
+**Entry points:** Tap an item on the timeline or in Wallet.
 
 **Elements, top to bottom:**
-1. Company or provider field (free text).
-2. Pick-up location and date/time.
-3. Return location and date/time.
-4. Time-zone selection.
-5. Booking reference (optional).
-6. Notes (optional).
-7. Add attachment.
-8. Save.
+1. Item kind and title.
+2. Date and time in the item’s local time zone.
+3. Kind-specific travel details.
+4. Attachments.
+5. Edit and delete actions.
 
-**Actions and exits:** Save validates and returns to the timeline; attachment opens the attachment flow; Cancel returns without saving.
+**Primary actions:**
+- **Tap an attachment:** Open its viewer.
+- **Edit:** Open the item form with existing values.
+- **Delete:** Ask for confirmation; on confirmation remove the item and its attachment files.
 
-### 4.7 Activity
+**Secondary actions:** Close/back returns to the previous screen.
 
-**Elements, top to bottom:**
-1. Activity name.
-2. Location.
-3. Start and optional end date/time.
-4. Time-zone selection.
-5. Booking reference (optional).
-6. Notes (optional).
-7. Add attachment.
-8. Save.
+**Exits:** Attachment viewer, item form or previous screen.
 
-**Actions and exits:** Save validates and returns to the timeline; attachment opens the attachment flow; Cancel returns without saving.
+### 5.3 Ticket / attachment viewer
 
-### 4.8 Note
+**Purpose:** Make an attached ticket easy to read and scan, including in flight mode.
+
+**Entry points:** Tap a ticket attachment from item detail or Wallet.
 
 **Elements, top to bottom:**
-1. Note title.
-2. Note body.
-3. Optional date/time and time-zone.
-4. Add attachment (optional).
-5. Save.
+1. Close/back control.
+2. One-handed ticket actions, including show QR where a saved QR crop exists.
+3. Ticket image or PDF content.
+4. Attachment name and related item context.
 
-**Actions and exits:** Save returns to the timeline; attachment opens the attachment flow; Cancel returns without saving.
+**Primary actions:**
+- **Show QR:** Show the saved QR crop large enough to scan.
+- **Tap a PDF or image:** View its content using the available Expo Go viewer.
 
-## 5. Attachments and ticket view
+**Secondary actions:**
+- **Close/back:** Restore the previous screen and restore the prior screen brightness.
+- **Brightness handling:** On entry, request full brightness for the ticket view; on every exit, restore the previous brightness. If brightness is unavailable, leave the ticket view usable at current brightness.
 
-### 5.1 Add attachment
+**Exits:** Return to the item detail or Wallet. The ticket and saved QR crop are local and remain available in flight mode.
 
-**Purpose:** Keep a ticket, booking document or image with its item.
+### 5.4 Wallet
 
-**Entry points:** Add/edit item → Add attachment; item details → Add attachment.
+**Purpose:** Find trip tickets in time order.
 
-**Elements, top to bottom:**
-1. “Add attachment” title.
-2. “Choose from Files” action.
-3. “Choose photo” action.
-4. Existing attachments, when editing, with remove controls.
-5. Cancel action.
-
-**Actions:**
-- **Choose from Files:** Open the system document picker. Allow supported PDFs and images. On selection, copy the file into local app storage and return to the item. If the file cannot be copied, show an error and keep the item unchanged.
-- **Choose photo:** Request Photos access only if needed, then open the system photo picker. On selection, save a local copy and return. If access is declined or the picker is cancelled, return without adding anything.
-- **Tap an existing attachment:** Open its preview or ticket view, depending on type.
-- **Remove:** Ask for confirmation, then remove the local attachment from the item.
-- **Cancel:** Return to the form or item details.
-
-**Exits:** Return to the originating form or item details.
-
-### 5.2 Attachment preview
-
-**Purpose:** Read a saved PDF or image.
-
-**Entry points:** Tap an attachment on an item.
+**Entry points:** Wallet tab.
 
 **Elements, top to bottom:**
-1. Back action and file name.
-2. Full-page document or image preview.
-3. “Show as ticket” action when the attachment is an image or PDF page suitable for ticket display.
-4. Overflow actions: remove attachment; share/export a copy through the system share sheet.
+1. Screen title.
+2. Tickets grouped or ordered by their travel time.
+3. Empty state if no tickets are attached.
 
-**Actions:** Show as ticket opens the ticket setup or ticket view. Remove confirms before deleting the local copy. Share opens the system share sheet with the selected file. If a file is unavailable, explain that it cannot be opened and offer removal.
+**Primary action — Tap a ticket:** Open its item detail or ticket viewer.
 
-**Exits:** Back to item details; ticket view; system share sheet.
+**Secondary actions:** Use tab navigation to open Trips, Map or Emergency.
 
-### 5.3 Ticket setup and QR crop
-
-**Purpose:** Prepare a saved ticket image for quick, one-handed viewing.
-
-**Entry points:** Attachment preview → Show as ticket; item details → Set up ticket.
-
-**Elements, top to bottom:**
-1. Ticket image or selected PDF page.
-2. Crop frame and adjustment handles.
-3. Preview of the saved crop.
-4. “Save QR crop” action.
-5. “Skip” and Cancel actions.
-
-**Actions:**
-- **Adjust crop:** Move or resize the frame around the QR code or barcode.
-- **Save QR crop:** Store the crop locally with that ticket attachment and open Ticket view.
-- **Skip:** Open Ticket view without a crop.
-- **Cancel:** Return to the attachment preview without changing the saved crop.
-
-**Exits:** Ticket view, attachment preview or item details.
-
-### 5.4 Ticket view
-
-**Purpose:** Show a ticket clearly at full screen and full brightness for scanning.
-
-**Entry points:** Tap a ticket attachment or “Open ticket” from item details; save a QR crop.
-
-**Elements, top to bottom:**
-1. Close/back control and ticket name.
-2. Saved QR crop, if present, large and unobstructed.
-3. Ticket image or PDF page, fitted to screen.
-4. Essential item details in a compact strip.
-5. Optional brightness status or control.
-
-**Actions:**
-- **On open:** Request full brightness for the view; save the previous screen brightness where supported.
-- **Tap the ticket image:** Toggle fit/fill or zoom.
-- **Close/back:** Restore the previous brightness setting and return to the previous screen.
-- **If the app backgrounds or the view closes:** Restore the previous brightness as soon as the app can do so.
-- **If brightness adjustment is unavailable:** Keep the ticket usable and show no blocking error.
-
-**Exits:** Close to item details or the attachment preview. Brightness must be restored on every exit.
+**Exits:** Ticket detail/viewer or another tab.
 
 ## 6. Emergency card
 
 ### 6.1 Emergency card
 
-**Purpose:** Put locally stored emergency information within one tap of the main app.
+**Purpose:** Put key emergency and insurance information in one place, available locally.
 
-**Entry points:** Trips screen Emergency shortcut; Emergency tab; Essentials mode.
+**Entry points:** Emergency tab; emergency shortcut on Trips home; emergency card in essentials mode.
 
 **Elements, top to bottom:**
-1. “Emergency” title and selected country/region.
-2. Local emergency numbers, each labelled with its purpose.
-3. Source and date for the bundled numbers table; “Verify locally” reminder.
-4. Insurance policy name/number and insurer phone, if entered.
-5. Emergency contacts and phone numbers, if entered.
-6. Private medical notes, if entered, clearly marked as stored on this device.
-7. Edit action.
+1. Screen title and country/region context.
+2. Local emergency numbers from the bundled sourced-and-dated table.
+3. Source and checked date, with “verify locally”.
+4. Confidence or “number doubted, check locally” notice where applicable.
+5. Insurance policy details and insurer phone.
+6. Emergency contacts.
+7. Private medical notes.
+8. Edit action.
 
 **Primary actions:**
-- **Tap a number or phone field:** Offer the system phone action where available; do not place a call without a further system confirmation.
-- **Tap Edit:** Open the emergency-card form.
-- **Tap a contact:** Offer the phone action for that contact.
+- **Tap a phone number:** Offer the phone action if available; otherwise allow the number to be read or copied.
+- **Edit:** Open the emergency-card form.
+- **Tap a contact:** Show its saved emergency contact details.
 
-**Secondary actions:** Copy a number or detail; return to the previous screen. Do not imply that the bundled numbers are guaranteed current.
+**Secondary actions:** Back returns to the previous screen. Emergency details are stored locally.
 
-**Exits:** Back to the previous screen; Edit opens the form.
+**Exits:** Emergency-card form or previous screen.
 
-### 6.2 Edit emergency card
+### 6.2 Emergency-card form
 
-**Purpose:** Add or update private emergency information.
+**Purpose:** Add or update emergency information.
 
-**Entry points:** Emergency card → Edit.
+**Entry points:** Emergency card > Edit.
 
 **Elements, top to bottom:**
-1. Country/region selector.
-2. Emergency-number reference with source/date and “Verify locally”.
+1. Form title.
+2. Country/region selection and emergency-number information.
 3. Insurance policy and phone fields.
-4. Emergency contacts: name and phone fields; add/remove contact actions.
-5. Private medical notes field.
-6. Save and Cancel.
+4. Emergency contacts.
+5. Private medical notes.
+6. Save and Cancel actions.
 
-**Actions:**
-- **Change country/region:** Update the displayed bundled reference; retain user-entered details.
-- **Add/remove contact:** Add a blank contact or confirm removal.
-- **Save:** Store locally and return to Emergency card.
-- **Cancel:** Discard unsaved changes after confirmation if changed.
+**Primary action — Save:** Save locally and return to the card. If saving fails, show an error and keep the form open.
 
-**Exits:** Emergency card or previous screen.
+**Secondary actions:**
+- **Add contact:** Request Contacts permission when needed, then choose a contact. If denied or unavailable, show a PermissionNotice and any available manual-entry fallback.
+- **Cancel/back:** Return to the card. If there are unsaved changes, ask whether to discard them.
+
+**Exits:** Emergency card or contact picker.
 
 ## 7. Hotel address card
 
-### 7.1 Hotel address card
+### 7.1 Address card
 
-**Purpose:** Show an accommodation address clearly to a taxi driver, including its local-language version.
+**Purpose:** Show a hotel address clearly to share with a driver, including its local-language form.
 
-**Entry points:** Hotel item → “Show address”; timeline hotel shortcut; Essentials mode.
-
-**Elements, top to bottom:**
-1. Hotel name.
-2. Address in large, high-contrast text.
-3. Local-language address in large text when provided.
-4. Optional phone number.
-5. “Copy address” action.
-6. Edit hotel details action.
-
-**Actions:**
-- **Tap Copy address:** Copy the displayed address and show a brief confirmation.
-- **Tap Edit:** Open the hotel item form.
-- **Tap phone number:** Offer the system phone action where available.
-
-**Exits:** Back to the hotel item or previous screen; Edit opens the hotel form.
-
-## 8. Document vault and Face ID
-
-### 8.1 Wallet / document vault lock
-
-**Purpose:** Protect passport, visa and licence copies behind device authentication.
-
-**Entry points:** Wallet tab; Essentials mode shortcut only if included by the user’s configured essentials.
+**Entry points:** Open a hotel item; hotel address shortcut in essentials mode.
 
 **Elements, top to bottom:**
-1. “Document vault” title and brief local-storage privacy note.
-2. Lock status.
-3. “Unlock with Face ID” or the platform’s available authentication label.
-4. “Use device passcode” fallback where the platform provides it.
-5. Cancel/back action.
+1. Hotel/property name.
+2. Address in large, legible text.
+3. Local-language address in large, legible text when provided.
+4. Phone and other relevant hotel details.
+5. Copy address action.
+6. Edit action, where available.
 
-**Actions:**
-- **Unlock:** Request local device authentication. On success, open the vault. On failure, allow retry or device passcode fallback where available. Do not reveal document details while locked.
-- **Cancel:** Return to the previous screen.
+**Primary action — Copy address:** Copy the displayed address to the clipboard and confirm it has been copied.
 
-**Exits:** Vault after authentication; previous screen after cancellation.
+**Secondary actions:**
+- **Edit:** Open the hotel item form.
+- **Back:** Return to the hotel item or essentials mode.
 
-### 8.2 Document vault
+**Exits:** Hotel item form or previous screen.
 
-**Purpose:** View and manage locally stored identity documents and expiry dates.
+## 8. Document vault
 
-**Entry points:** Successful authentication.
+### 8.1 Vault
 
-**Elements, top to bottom:**
-1. “Document vault” title and lock action.
-2. Expiry warnings for documents nearing or past expiry.
-3. Saved documents grouped by type: Passport, Visa, Licence.
-4. “Add document” action.
-5. Note that documents stay on this device unless the user later enables iCloud sync.
+**Purpose:** Keep passport, visa and licence copies with expiry warnings behind a local authentication lock.
 
-**Actions:**
-- **Tap a document:** Open its details and saved image/PDF.
-- **Tap Add document:** Open the add-document form.
-- **Tap Lock:** Immediately return to the locked screen and hide document contents.
-
-**Exits:** Document details, add-document form, or locked screen.
-
-### 8.3 Add or edit document
-
-**Purpose:** Save a document copy and expiry reminder.
-
-**Entry points:** Vault → Add document; document details → Edit.
+**Entry points:** Wallet or other available vault entry.
 
 **Elements, top to bottom:**
-1. Document type selector: Passport, Visa, Licence.
-2. Document label and optional issuing country.
-3. Expiry date.
-4. Add or replace image/PDF action.
-5. Save and Cancel.
+1. Vault title and lock status.
+2. Authentication prompt when locked.
+3. Document list with type, expiry date and warning where applicable.
+4. Add document action.
+5. Lock/close action.
 
-**Actions:**
-- **Choose image/PDF:** Use the Files or Photos picker; copy the selected file to local storage.
-- **Save:** Validate and store locally; return to the vault and show any expiry warning.
-- **Cancel:** Discard unsaved changes after confirmation if changed.
+**Primary actions:**
+- **Unlock:** Request Face ID or device passcode through local authentication. On success, show the vault. If authentication fails or is cancelled, keep the vault locked.
+- **Tap a document:** Open its local attachment.
+- **Add document:** Open the document form.
 
-**Exits:** Vault, document details or picker return.
+**Secondary actions:**
+- **Lock/close:** Lock the vault and return to the previous screen.
+- **Authentication unavailable:** Show a plain explanation and available device-authentication fallback; do not expose documents without successful authentication.
 
-### 8.4 Document details
+**Exits:** Document detail, document form or previous screen. Document files and details remain on device.
 
-**Purpose:** Read or update a saved document.
+### 8.2 Add or edit document form
 
-**Entry points:** Tap a document in the vault.
+**Purpose:** Record a travel document and its expiry date, and attach a local copy.
+
+**Entry points:** Vault > Add document; document detail > Edit.
 
 **Elements, top to bottom:**
-1. Document type, label and expiry date.
-2. Saved image or PDF preview.
-3. Edit action.
-4. Remove action.
+1. Form title.
+2. Document type: passport, visa or licence.
+3. Name/identifier fields as needed.
+4. Expiry date.
+5. Attachment section.
+6. Save and Cancel actions.
 
-**Actions:** Edit opens the document form. Remove asks for confirmation, then deletes the local record and file. Back returns to the vault.
+**Primary action — Save:** Save locally and return to the vault. Show expiry warnings on the document list when relevant.
 
-**Exits:** Vault, edit form or preview.
+**Secondary actions:**
+- **Add attachment:** Use the attachment source chooser.
+- **Cancel/back:** Return to the vault. If there are unsaved changes, ask whether to discard them.
+
+**Exits:** Vault, attachment chooser or date picker.
 
 ## 9. Low-battery essentials mode
 
-### 9.1 Essentials mode entry
+### 9.1 Essentials
 
-**Purpose:** Offer a plain, dark, low-distraction screen with the next ticket, hotel address and emergency card.
+**Purpose:** Provide a plain, fast-access screen for the next ticket, hotel address and emergency card.
 
-**Entry points:** Manual Essentials switch in the app; automatic offer when device battery falls below 20%.
-
-**Elements, top to bottom:**
-1. Automatic-entry prompt when battery is below the threshold, with “Open essentials” and “Not now”.
-2. Manual switch in Settings or the app menu.
-3. Brief note: no animation or map in this mode.
-
-**Actions:**
-- **Open essentials:** Open the essentials screen.
-- **Not now:** Dismiss the prompt; normal app use continues.
-- **Manual switch on:** Open essentials immediately.
-- **Manual switch off:** Return to the screen from which it was enabled.
-
-**Exits:** Essentials screen, dismiss to previous screen, or return to normal app.
-
-### 9.2 Essentials screen
-
-**Purpose:** Make a few critical trip details quick to reach.
-
-**Entry points:** Automatic prompt accepted; manual mode enabled.
+**Entry points:** Low-battery banner; manual essentials switch in Settings; other available essentials shortcut.
 
 **Elements, top to bottom:**
-1. Pure black background with white text; no animation and no map.
-2. “Next ticket” card, if an upcoming ticket exists.
-3. Hotel address card, if a hotel is saved.
+1. Black background and high-contrast white text; no animation.
+2. Next ticket card, when available.
+3. Hotel address card, when available.
 4. Emergency card.
-5. “Exit essentials” action.
+5. Exit control.
 
-**Actions:**
-- **Tap Next ticket:** Open Ticket view, including brightness handling. Closing the ticket returns to Essentials.
-- **Tap Hotel address:** Open the hotel address card.
-- **Tap Emergency:** Open the emergency card.
-- **Exit essentials:** Return to the originating screen and normal appearance.
-- **If a section has no saved information:** Show a short prompt linking to the relevant setup screen; never invent details.
+**Primary actions:**
+- **Next ticket:** Open the ticket viewer.
+- **Hotel address:** Open the address card.
+- **Emergency card:** Open the emergency card.
 
-**Exits:** Ticket view, hotel address card, emergency card, relevant setup screen, or originating screen.
+**Secondary action — Exit:** Return to the prior screen. The screen does not show a map or run location checks.
 
-## 10. Packing lists
+**Behaviour:** Satchel offers this mode when the device battery is below the configured threshold (20% by default), or when the traveller enables it manually. The traveller can dismiss the offer. The configured threshold can be changed in Settings.
+
+**Exits:** Ticket viewer, address card, emergency card or prior screen.
+
+## 10. Packing list
 
 ### 10.1 Trip packing list
 
-**Purpose:** Track items to pack for one trip and start from a suitable template.
+**Purpose:** Track what is packed for a trip using a trip-type template or a custom list.
 
-**Entry points:** Trip timeline → Packing list; first packing-list shortcut for a trip.
-
-**Elements, top to bottom:**
-1. Trip name and “Packing list”.
-2. Progress count.
-3. Template selector when no list has been created, with trip-type choices.
-4. Checklist rows with item name and checkbox.
-5. Add item action.
-6. Clear or reset completed items action, if available.
-
-**Actions:**
-- **Choose template:** Add template items to the trip’s list; allow edits afterwards.
-- **Tap checkbox:** Mark item packed/unpacked and update progress locally.
-- **Tap item text or its menu:** Edit or remove the item.
-- **Add item:** Open a short add-item form.
-- **Reset completed items:** Confirm, then uncheck completed rows without deleting them.
-
-**Exits:** Back to the trip timeline; add/edit form; template selection.
-
-### 10.2 Add or edit packing item
-
-**Purpose:** Add or rename a checklist entry.
-
-**Entry points:** Packing list → Add item; item menu → Edit.
+**Entry points:** Trip timeline > Packing list.
 
 **Elements, top to bottom:**
-1. Item name field.
-2. Save action.
-3. Cancel action.
+1. Trip name and packing-list title.
+2. Completion summary.
+3. Items grouped by category.
+4. Add item action.
+5. Add template action.
 
-**Actions:** Save adds or updates the row and returns to the list. Cancel returns without saving.
+**Primary actions:**
+- **Tap an item/check control:** Toggle its packed state and save locally.
+- **Add item:** Add a custom packing item.
+- **Add template:** Choose a template and add its items to this trip’s list.
+
+**Secondary actions:**
+- **Edit item:** Change its name or category.
+- **Delete item:** Remove it from the list after confirmation.
+- **Back:** Return to the trip timeline.
+
+**Exits:** Item editor, template chooser or timeline.
+
+### 10.2 Add-template chooser
+
+**Purpose:** Add suggested packing items for a trip type.
+
+**Entry points:** Packing list > Add template.
+
+**Elements, top to bottom:**
+1. Sheet title.
+2. Available trip-type templates.
+3. Add and Cancel actions.
+
+**Primary action — Choose template:** Add its items to the current packing list without replacing existing items.
+
+**Secondary action — Cancel:** Close the chooser.
 
 **Exits:** Packing list.
 
@@ -613,79 +470,78 @@ Each form has a title identifying its kind, a Save action, and a Cancel/back act
 
 ### 11.1 Map
 
-**Purpose:** Preview the map experience, saved places and demo-city points of interest. The TRIAL map uses the system map and is online in Expo Go; it is not the later offline map.
+**Purpose:** Explore the system map, view trip places and demo-city points of interest, and request one location check.
 
-**Entry points:** Map tab; trip timeline → Map.
+**Entry points:** Map tab; Trip timeline > Trip map; a saved place or booking location.
 
 **Elements, top to bottom:**
-1. Map area with saved places, trip bookings and bundled demo-city points where available.
-2. Map controls and “Where am I?” button.
-3. Category toggles: Toilets, Drinking water, Fuel, Food, Pharmacy, ATM, Hospital.
-4. “Save place” action for the selected map location or pin.
-5. Selected-place card, shown after tapping a pin.
-6. Map/data availability note where needed.
+1. Map header and trip scope, when applicable.
+2. Category toggles for toilets, drinking water, fuel, food, pharmacy, ATM and hospital.
+3. Map with pins for bookings, saved places and bundled demo-city points of interest.
+4. “Where am I?” button.
+5. Map attribution, including OpenStreetMap attribution for bundled POIs.
+6. Save/remove place actions when a place is selected.
 
 **Primary actions:**
-- **Tap Where am I?:** Explain that location is checked once while the map is open, then request foreground location permission if needed. If granted, make one location request and centre the map on the returned position. Do not continue watching location. If declined, stay on the map and explain that the user can enable permission in device settings.
-- **Tap a category toggle:** Show or hide that category’s pins.
-- **Tap a pin:** Open its selected-place card with its name, category and available address/details.
-- **Tap Save place:** Save the selected place locally to the current trip; if no trip is selected, ask the user to choose one.
-- **Tap a booking pin:** Open the related item details.
+- **Tap a pin:** Show its name and details.
+- **Where am I?:** Request foreground location permission if needed, then make a single location check and show the result on the map. Do not track continuously.
+- **Tap a category toggle:** Show or hide that POI category.
+- **Save place:** Save the selected place to the trip.
+- **Remove saved place:** Remove it from the trip.
 
 **Secondary actions:**
-- **Tap a saved place:** Open its details and provide a remove-from-trip action.
-- **Tap a map location:** Select that location where supported.
-- **Location unavailable:** Show a brief message and leave the map usable.
-- **Map tiles unavailable:** Show the system map’s available state; do not suggest that the TRIAL map works offline.
+- **Tap map:** Select a location for saving as a trip place.
+- **Trip scope control:** Show places for the selected trip.
+- **Permission denied or unavailable:** Show a PermissionNotice with the reason, an Open Settings action and a manual map fallback.
+- **Network unavailable:** The system map may not load; retain saved trip details and show an appropriate offline or unavailable state. Do not imply that the TRIAL map is an offline map.
 
-**Exits:** Trips tab, trip item details, selected place details or location permission prompt.
-
-### 11.2 Save or remove place
-
-**Purpose:** Keep a useful map location with a trip.
-
-**Entry points:** Map selected-place card → Save place; saved-place details → Remove.
-
-**Elements, top to bottom:**
-1. Place name and category.
-2. Trip selector when no trip is active.
-3. Optional editable place name.
-4. Save or Remove action.
-5. Cancel/back action.
-
-**Actions:** Save stores the place on the selected trip. Remove confirms before deletion. Cancel returns to the map.
-
-**Exits:** Map.
+**Exits:** Selected place details, trip timeline or another tab. A location check ends after returning one fix; no background location is used.
 
 ## 12. Settings
 
 ### 12.1 Settings
 
-**Purpose:** Control local display and feedback preferences and access essentials mode.
+**Purpose:** Control appearance, haptics, essentials behaviour and language; explain local data handling.
 
-**Entry points:** Settings from app navigation/menu.
+**Entry points:** Settings navigation entry.
 
 **Elements, top to bottom:**
-1. “Settings” title.
-2. Appearance: System, Light, Dark.
-3. Haptics on/off switch.
-4. Low-battery essentials mode switch and current automatic threshold explanation (“below 20%”).
-5. Privacy and on-device storage note.
-6. App information and emergency-number source/date reference, where available.
+1. Settings title.
+2. Appearance: System, Light or Dark.
+3. Haptics switch.
+4. Essentials mode manual switch.
+5. Essentials battery threshold control.
+6. Language picker, showing phone default and shipped languages.
+7. Privacy section, including “Data Not Collected”.
+8. About/support information where available.
 
-**Actions:**
-- **Choose System / Light / Dark:** Apply the appearance immediately and save the preference locally.
-- **Toggle haptics:** Enable or disable supported tactile feedback and save locally. When off, do not produce app-triggered haptics.
-- **Toggle manual essentials mode:** On opens Essentials; off returns to the previous screen.
-- **Tap privacy note:** Open a short explanation that there are no accounts or backend and that saved content stays on the device.
-- **Tap emergency-number reference:** Show the bundled source and date with the reminder to verify locally.
+**Primary actions:**
+- **Appearance:** Choose System, Light or Dark. Apply the preference in the app.
+- **Haptics:** Turn haptic feedback on or off.
+- **Manual essentials switch:** Enable or disable essentials mode; when enabled, open essentials mode.
+- **Battery threshold:** Choose a threshold from 5% to 50%; save the setting.
+- **Language:** Open the language picker.
 
-**Exits:** Back to the previous screen; Essentials when enabled.
+**Secondary actions:**
+- **Privacy information:** Read the local-data and privacy explanation.
+- **Back:** Return to the previous screen.
 
-## 13. Navigation and interruption handling
+**Exits:** Language picker, essentials mode or previous screen. Settings are stored locally.
 
-- Back navigation returns to the screen that opened the current flow wherever possible.
-- If the user leaves a form with unsaved changes, ask whether to discard them. Choosing to stay keeps the form and entered values.
-- If a picker, authentication prompt or permission request is cancelled, return to the initiating screen without creating incomplete data.
-- If the device is offline, trips, saved items, attachments, emergency details, vault content and packing lists remain available locally. The TRIAL system map may not load without connectivity.
-- Do not request background location permission. “Where am I?” performs one foreground location check per user request.
+### 12.2 Language picker
+
+**Purpose:** Set the app language.
+
+**Entry points:** Settings > Language; Welcome language line.
+
+**Elements, top to bottom:**
+1. Current language.
+2. Phone-default option.
+3. Shipped language options.
+4. Back action.
+
+**Primary action — Choose a language:** Apply the selected language and return to Settings.
+
+**Secondary action — Back:** Return without changing the language.
+
+**Exits:** Settings.

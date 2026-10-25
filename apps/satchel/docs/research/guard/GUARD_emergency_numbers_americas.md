@@ -1,47 +1,36 @@
 | iso2 | field | given | what I believe is right | why |
 |---|---|---:|---|---|
-| AW | general | 911 | 911 is doubtful; verify locally | Aruba’s commonly listed emergency numbers are service-specific; 911 may not be a general number. |
-| BS | police | 919 | 911 | 919 is doubtful; 911 is the widely listed Bahamas emergency number. |
-| BS | ambulance | 919 | 911 | Same concern: 919 is not the standard listed emergency number. |
-| BO | ambulance | 118 | 165 | Bolivia’s ambulance number is commonly listed as 165; 118 is doubtful. |
-| BQ | general | 911 | 112 | Caribbean Netherlands emergency services commonly use 112; 911 may not apply across all three islands. |
-| BQ | police | 911 | 112 | Same concern. |
-| BQ | ambulance | 911 | 112 | Same concern. |
-| BQ | fire | 911 | 112 | Same concern. |
-| SV | fire | 913 | 132 | El Salvador’s fire service is commonly reached on 132; 913 appears incorrect. |
-| PF | police | 17 | 16 | French Polynesia uses local service numbers; 16 is commonly listed for police, not metropolitan France’s 17. |
-| PF | ambulance | 15 | 15 or local medical service | The number may not connect to the mainland SAMU service; verify locally. |
-| GL | general | 112 | 112, but service coverage needs qualification | 112 is used, but Greenland’s remote geography and local dispatch arrangements make the blanket service claims doubtful. |
-| GY | police | 911 | 911 or 225-2222 | 911 availability is uncertain; the widely listed direct police number is 225-2222. |
-| GY | ambulance | 913 | 913 is doubtful; verify locally | A reliable nationwide ambulance emergency number is unclear. |
-| GY | fire | 912 | 912 is doubtful; verify locally | A reliable nationwide fire emergency number is unclear. |
-| HT | police | 114 | 114 is doubtful; verify locally | Haiti’s commonly listed police emergency number is 114, but current availability is uncertain. |
-| HT | fire | 115 | 115 is doubtful; verify locally | Number and service availability are not reliably established. |
-| JM | ambulance | 110 | 110 is not a dependable ambulance number | Jamaica’s ambulance access is commonly listed as 110 in some directories, but availability and service routing are uncertain; confirm with an official source. |
-| JM | fire | 110 | 110 is doubtful | 110 is not consistently listed as Jamaica’s fire-service number; verify locally. |
-| PA | police | 104 | 104 | This appears to be police, but 911 is also used; mark the direct-number status clearly rather than implying 104 replaces general emergency access. |
-| PY | ambulance | 141 | 141 is not a general ambulance number | 141 is commonly associated with a specific service; ambulance access may vary. Verify the intended nationwide number. |
-| PM | general | 112 | 112, with local-number caveat | Saint Pierre and Miquelon is not in the EU; 112 may work, but describing it as the “European emergency number” is misleading. |
-| PM | police | 17 | 17, with local-number caveat | The number may apply, but the “European emergency number” note is misleading for this territory. |
-| PM | ambulance | 15 | 15, with local-number caveat | Same note issue; verify local routing. |
-| PM | fire | 18 | 18, with local-number caveat | Same note issue; verify local routing. |
-| LC | general | 999 | 911 | Saint Lucia commonly lists 911 as the emergency number; 999 is doubtful. |
-| LC | police | 999 | 911 | Same concern. |
-| LC | ambulance | 999 | 911 | Same concern. |
-| LC | fire | 999 | 911 | Same concern. |
-| SX | ambulance | 912 | 912 is doubtful; verify locally | Sint Maarten’s commonly listed emergency number is 911; service-specific alternatives need reliable confirmation. |
-| SX | fire | 919 | 919 is doubtful; verify locally | Same concern. |
-| SR | police | 115 | 115 is doubtful; verify locally | Suriname’s commonly listed police number is 112 or 115 depending on source; confirm current official number. |
-| SR | ambulance | 113 | 113 is doubtful; verify locally | Number is inconsistently reported; verify current official ambulance access. |
-| SR | fire | 110 | 110 is doubtful; verify locally | Number is inconsistently reported; verify current official fire-service access. |
-| TT | ambulance | 811 | 811 is not a dependable ambulance emergency number | Trinidad and Tobago’s emergency medical service number is commonly listed as 811, but this should be verified against an official current source. |
-| UY | ambulance | 105 | 105 is doubtful | Uruguay’s emergency medical access is not consistently represented by a single nationwide number; verify the intended service. |
-| GS | country | South Georgia and the South Sandwich Islands | Keep only with a clear “no public emergency number” warning | No resident population or normal public emergency service; blank service fields are safer than implying a usable local system. |
+| AI | general/police/ambulance/fire | 911 | 999 | Anguilla’s published emergency number is generally listed as 999; verify whether 911 also connects. |
+| AG | general/police/ambulance/fire | 911 | 999 | Antigua and Barbuda is generally listed as using 999. |
+| AW | police | 100 | 911 | Aruba’s emergency number is 911; 100 is commonly listed for fire. |
+| BS | police/ambulance/fire | 919 | police 919; ambulance 919 or 911; fire 919 or 911 | Service assignments and whether 911 is accepted are unclear; the row’s blanket claim is doubtful. |
+| BB | general | null | 211 (police), 511 (ambulance), 311 (fire) | These are listed service numbers, but omitting a general number may mislead; 911 may also be available. |
+| BO | ambulance | 118 | 118 or 165 | 118 is reported for ambulance, but 165 is also widely listed; needs a qualified entry. |
+| BR | general | null | 190, or 112 where applicable | Brazil’s police number is also commonly used as a general emergency contact; the null is potentially misleading. |
+| CO | tourist_police | 165 | 123 / verify | 165 is commonly listed for anti-kidnapping, not tourist police. |
+| CU | police/ambulance/fire | 106/104/105 | 106/104/105, but verify | Numbers are plausible, but Cuba’s emergency access and coverage are inconsistent; presenting them confidently is doubtful. |
+| CW | general/police/fire | 911 | 911 or 911/911/911 | Curaçao’s emergency number is commonly 911; the separate ambulance 912 claim is doubtful. |
+| DM | general/police/ambulance/fire | 999 | 911 or 999; verify | Dominica is commonly reported as using 999, but 911 is also listed in some references; single-number certainty is doubtful. |
+| GF | source_url | https://digital-strategy.ec.europa.eu/en/policies/112 | A French Guiana-specific source | EU 112 guidance does not establish French Guiana’s service-specific numbers. |
+| GL | source_url | https://digital-strategy.ec.europa.eu/en/policies/112 | A Greenland-specific source | EU 112 guidance is not a suitable source for Greenland. |
+| GP | source_url | https://digital-strategy.ec.europa.eu/en/policies/112 | A Guadeloupe-specific source | EU 112 guidance does not establish Guadeloupe’s service-specific numbers. |
+| HT | police/ambulance | 114/116 | 114/116 may be outdated; verify locally | Haiti’s emergency numbers and service availability are especially uncertain; these entries need reliable current confirmation. |
+| JM | ambulance/fire | 110/110 | ambulance 110; fire 110 or 119; verify | 110 is commonly listed for fire and ambulance, but the fire assignment is uncertain and should not be stated without qualification. |
+| MQ | source_url | https://digital-strategy.ec.europa.eu/en/policies/112 | A Martinique-specific source | EU 112 guidance does not establish Martinique’s service-specific numbers. |
+| PA | police | 104 | 104 or 911 | 104 is commonly listed for police, but the row should clarify that 911 is the general emergency number rather than imply police only uses 104. |
+| PY | police | 911 | 911 or 911/131 | Paraguay’s police number is commonly 911, but service-specific references also list 131 for ambulance; the general null is questionable. |
+| BL | source_url | https://digital-strategy.ec.europa.eu/en/policies/112 | A Saint Barthélemy-specific source | EU 112 guidance does not establish Saint Barthélemy’s service-specific numbers. |
+| KN | general/police/ambulance/fire | 911 | 911 or 999; verify | Saint Kitts and Nevis is often listed as using 911 and/or 999; the single-number assertion is doubtful. |
+| MF | source_url | https://digital-strategy.ec.europa.eu/en/policies/112 | A Saint Martin-specific source | EU 112 guidance does not establish Saint Martin’s service-specific numbers. |
+| PM | source_url | https://digital-strategy.ec.europa.eu/en/policies/112 | A Saint Pierre and Miquelon-specific source | EU 112 guidance does not establish Saint Pierre and Miquelon’s service-specific numbers. |
+| SX | ambulance/fire | 912/919 | 912/919 may be right; verify | The numbers are reported, but the low-confidence entry needs local confirmation before being presented as definitive. |
+| SR | police/ambulance/fire | 115/113/110 | 115/113/110, but verify | These figures are reported inconsistently; current authoritative confirmation is needed. |
+| TT | police/ambulance/fire | 999/811/990 | 999/811/990, but qualify | The numbers are plausible, but ambulance access and coverage have been reported as unreliable; note limitations. |
+| UY | ambulance/fire | 105/104 | 105/104 | The numbers are plausible, but emergency medical assistance may also be reached via 911; the general null is doubtful. |
+| VE | general/police/ambulance/fire | 911 | 911 or 171/171/171; verify | 911 availability is inconsistent; 171 is also reported for police, ambulance and fire. |
 
-| Source URL |
-|---|
-| None supplied; no invented URLs to flag. |
+**Invented-looking source URLs:** None appear fabricated, but the EU 112 page is not an appropriate country-specific source for the listed overseas territories.
 
-**Countries missing:** None apparent for a Latin America and Caribbean list, though the scope is not stated.
+**Countries missing:** Antigua and Barbuda and all other independent Caribbean and South American states appear present; obvious sovereign-country omissions from the represented region: none. The table does omit many Caribbean territories and dependencies, so completeness depends on whether those are in scope.
 
-Verdict: Several entries are wrong or insufficiently verified; publish only after checking current official local sources.
+Verdict: Several entries need current local verification, and the table should not be treated as a reliable emergency reference without sourced checks.
