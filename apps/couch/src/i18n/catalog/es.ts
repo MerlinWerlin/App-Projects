@@ -825,4 +825,12 @@ export const es: Catalogue = {
   "ui.cast.mayNotPlay": "Puede que no se vea en todas las teles",
   "ui.cast.pill": "Enviando: {title}",
   "ui.cast.pillHint": "Reproducir/Pausa del mando controla el envío",
+  // First-launch language line (src/ui/LanguageHint.tsx) and no-purchase copy (release standard 1-2, 25 Oct 2026)
+  "ui.languageHint.current": "Idioma: {language}",
+  "ui.languageHint.change": "Cambiar",
+  "ui.languageHint.changeLabel": "Cambiar idioma",
+  "ui.languageHint.changeHint": "Abre el ajuste de idioma",
+  "app.plus.later": "Llegará en una actualización futura. En esta versión no se vende nada.",
+  "app.themes.plusNoteLater": "Tres temas son gratis. Prueba cualquiera de los demás en tu mando durante esta sesión.",
+  "app.themes.tryingSession": "Se queda en tu mando durante esta sesión.",
 };

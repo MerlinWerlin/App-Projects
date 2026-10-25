@@ -824,4 +824,12 @@ export const hi: Catalogue = {
   "ui.cast.mayNotPlay": "हर टीवी पर शायद न चले",
   "ui.cast.pill": "कास्ट हो रहा है: {title}",
   "ui.cast.pillHint": "रिमोट का चलाएँ/रोकें कास्ट को नियंत्रित करता है",
+  // First-launch language line (src/ui/LanguageHint.tsx) and no-purchase copy (release standard 1-2, 25 Oct 2026)
+  "ui.languageHint.current": "भाषा: {language}",
+  "ui.languageHint.change": "बदलें",
+  "ui.languageHint.changeLabel": "भाषा बदलें",
+  "ui.languageHint.changeHint": "भाषा की सेटिंग खोलता है",
+  "app.plus.later": "यह आगे के किसी अपडेट में आएगा। इस संस्करण में कुछ भी बिक्री के लिए नहीं है।",
+  "app.themes.plusNoteLater": "तीन थीम मुफ़्त हैं। बाकी थीम इस सत्र में अपने रिमोट पर आज़माकर देखें।",
+  "app.themes.tryingSession": "यह इस सत्र में आपके रिमोट पर बनी रहेगी।",
 };

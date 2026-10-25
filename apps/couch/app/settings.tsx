@@ -1,8 +1,9 @@
-import { Stack, useRouter } from 'expo-router';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useState, type ReactElement } from 'react';
 import { StyleSheet } from 'react-native';
 import { GLOW_OPTIONS, ONE_HANDED_OPTIONS, SETTING_COPY, THEME_OPTIONS, type SettingCopy } from '../src/core/prefs';
 import { useT } from '../src/i18n/react';
+import { plusForSale } from '../src/core/forSale';
 import { REMOTE_THEMES } from '../src/theme/remoteThemes';
 import { usePrefs } from '../src/state/prefs';
 import { list, space, textStyle } from '../src/theme/design';
@@ -37,7 +38,9 @@ export default function SettingsScreen() {
   const reduce = useReducedMotion();
   const { prefs, set } = usePrefs();
   const language = useLanguageChoice();
-  const [open, setOpen] = useState<Picker | null>(null);
+  // The first-launch language line (src/ui/LanguageHint.tsx) opens Settings with the language picker open.
+  const params = useLocalSearchParams<{ open?: string }>();
+  const [open, setOpen] = useState<Picker | null>(params.open === 'language' ? 'language' : null);
   const themeName = t(REMOTE_THEMES[prefs.remoteTheme].nameKey);
 
   const toggle = (which: Picker) => {
@@ -93,6 +96,13 @@ export default function SettingsScreen() {
         title={t('app.settings.title')}
         leading={<PillButton variant="plain" label={t('app.common.back')} onPress={() => router.back()} />}
       >
+        {/* Release standard 1: language stays at the top of Settings. */}
+        <InsetGroupedList>
+          {picker('language', SETTING_COPY.language, language.value, language.choose, language.options)}
+        </InsetGroupedList>
+
+        {/* Release standard 2: no purchases in this version (stub provider), so no Couch Plus entry point. */}
+        {plusForSale() ? (
         <Card
           style={styles.plus}
           onPress={() => router.push('/plus')}
@@ -103,6 +113,7 @@ export default function SettingsScreen() {
           <Text style={[textStyle('headline'), { color: p.label }]}>{t('app.settings.plus')}</Text>
           <Text style={[textStyle('subheadline'), { color: p.secondaryLabel }]}>{t('app.settings.plusHint')}</Text>
         </Card>
+        ) : null}
 
         <InsetGroupedList header={t('app.settings.groupRemote')}>
           <Row
@@ -132,7 +143,6 @@ export default function SettingsScreen() {
         </InsetGroupedList>
 
         <InsetGroupedList header={t('app.settings.groupGeneral')}>
-          {picker('language', SETTING_COPY.language, language.value, language.choose, language.options)}
           {picker('theme', SETTING_COPY.theme, prefs.theme, (v) => set({ theme: v }), THEME_OPTIONS)}
         </InsetGroupedList>
 

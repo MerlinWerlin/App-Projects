@@ -10,7 +10,7 @@ import type { TvApp } from '../../src/core/types';
 import { useT } from '../../src/i18n/react';
 import { useFavourites } from '../../src/state/favourites';
 import { useAppVisibility } from '../../src/state/appVisibility';
-import { hiddenCount, setFavouritesOnly, visibleSections } from '../../src/core/appVisibility';
+import { hiddenCount, setFavouritesOnly, showAll, visibleSections } from '../../src/core/appVisibility';
 import { useSession } from '../../src/state/session';
 import { AppTile } from '../../src/ui/apps/AppTile';
 import { FavouriteControls } from '../../src/ui/apps/FavouriteControls';
@@ -388,6 +388,19 @@ export default function AppsScreen() {
           <Text style={[textStyle('footnote'), styles.note, { color: p.secondaryLabel }]}>
             {t('app.apps.vis.hiddenNote', { count: hiddenN })}
           </Text>
+        ) : null}
+        {/* Release standard 1: a filter that leaves nothing on screen offers a one-tap "Show all apps". */}
+        {!editing && favourites.length === 0 && others.length === 0 && (favOnly || hiddenN > 0) ? (
+          <PillButton
+            variant="tinted"
+            label={t('app.chooseApps.showAll')}
+            onPress={() => {
+              animateNextLayout(reduce);
+              updateVisibility((v) => setFavouritesOnly(showAll(v), false));
+              say(t('app.apps.vis.favsOnlyOff'));
+            }}
+            style={styles.emptyPill}
+          />
         ) : null}
       </View>
     );

@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { useT } from '../src/i18n/react';
 import { PLUS_FEATURES, PLUS_FEATURE_COPY, plusPromise } from '../src/plus/entitlement';
 import { applyPurchase, type PurchaseResult } from '../src/plus/purchases';
+import { plusForSale } from '../src/core/forSale';
 import { plusStore, purchaseProvider, usePlus } from '../src/plus/state';
 import { TIP_TIERS, tipJarCopy } from '../src/plus/tipJar';
 import { list, space, textStyle } from '../src/theme/design';
@@ -40,6 +41,8 @@ export default function PlusScreen() {
   const { tier } = usePlus();
   const [buyNote, setBuyNote] = useState<string | null>(null);
   const [tipNote, setTipNote] = useState<string | null>(null);
+  // Release standard 2: no store in this version, so no Buy / Restore / tips (and no "test build" text).
+  const forSale = plusForSale();
 
   const buy = useCallback((action: 'buy' | 'restore') => {
     applyPurchase(plusStore(), purchaseProvider(), action)
@@ -77,7 +80,7 @@ export default function PlusScreen() {
       >
         <Card elevation="mid" style={styles.card}>
           <Text style={[textStyle('headline'), { color: p.label }]}>{plusPromise()}</Text>
-          <Text style={[textStyle('subheadline'), { color: p.secondaryLabel }]}>{t('app.plus.oneTime')}</Text>
+          <Text style={[textStyle('subheadline'), { color: p.secondaryLabel }]}>{t(forSale ? 'app.plus.oneTime' : 'app.plus.later')}</Text>
           <View style={styles.features}>
             {PLUS_FEATURES.map((f) => (
               <View
@@ -93,6 +96,7 @@ export default function PlusScreen() {
           </View>
         </Card>
 
+        {forSale ? (
         <View style={styles.actions}>
           {tier === 'plus' ? (
             <Text style={[textStyle('headline'), { color: p.success }]}>{t('app.plus.thanksPlus')}</Text>
@@ -121,7 +125,9 @@ export default function PlusScreen() {
             </Text>
           ) : null}
         </View>
+        ) : null}
 
+        {forSale ? (
         <InsetGroupedList header={t('app.plus.tipJar')} footer={tipJarCopy()}>
           {TIP_TIERS.map((tt) => (
             <Row
@@ -134,6 +140,7 @@ export default function PlusScreen() {
             />
           ))}
         </InsetGroupedList>
+        ) : null}
 
         <View style={styles.bottom}>
           {tipNote ? (

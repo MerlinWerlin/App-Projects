@@ -824,4 +824,12 @@ export const ko: Catalogue = {
   "ui.cast.mayNotPlay": "일부 TV에서는 재생되지 않을 수 있습니다",
   "ui.cast.pill": "전송 중: {title}",
   "ui.cast.pillHint": "리모컨의 재생/일시 정지로 전송을 제어합니다",
+  // First-launch language line (src/ui/LanguageHint.tsx) and no-purchase copy (release standard 1-2, 25 Oct 2026)
+  "ui.languageHint.current": "언어: {language}",
+  "ui.languageHint.change": "변경",
+  "ui.languageHint.changeLabel": "언어 변경",
+  "ui.languageHint.changeHint": "언어 설정을 엽니다",
+  "app.plus.later": "이후 업데이트에서 제공될 예정입니다. 이 버전에서는 판매하는 항목이 없습니다.",
+  "app.themes.plusNoteLater": "테마 3개는 무료입니다. 나머지 테마도 이번 세션 동안 리모컨에서 사용해 볼 수 있어요.",
+  "app.themes.tryingSession": "이번 세션 동안 리모컨에 적용됩니다.",
 };

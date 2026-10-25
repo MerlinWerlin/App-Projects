@@ -309,4 +309,8 @@ export const appEn = {
   "app.cast.clear": "Clear all",
   "app.cast.clearHint": "Stops casting and empties the queue",
   "app.cast.localOnly": "Files go straight from this phone to the TV on your Wi-Fi, only while casting.",
+  // No-purchase copy (release standard 1-2, 25 Oct 2026)
+  "app.plus.later": "Coming in a later update. Nothing is for sale in this version.",
+  "app.themes.plusNoteLater": "Three themes are free. Try any of the others on your remote for this session.",
+  "app.themes.tryingSession": "It stays on your remote for this session.",
 } as const satisfies Record<string, Msg>;
