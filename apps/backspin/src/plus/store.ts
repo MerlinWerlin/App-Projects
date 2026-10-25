@@ -32,6 +32,12 @@ function loadIap(): Iap | null {
 
 const isPlus = (p: Purchase | null | undefined) => !!p && (p.productId === PLUS_SKU || p.id === PLUS_SKU);
 const isCancel = (e: unknown) => /cancel/i.test(String((e as { code?: string })?.code ?? '') + String((e as Error)?.message ?? ''));
+/** Store error code first (release standard §2: the failure alert shows the code), then the message. */
+const errDetail = (e: unknown) => {
+  const code = (e as { code?: unknown })?.code;
+  const msg = e instanceof Error ? e.message : String(e);
+  return code != null && code !== '' && !msg.includes(String(code)) ? `${String(code)}: ${msg}` : msg;
+};
 
 async function remember(storage: Storage, on: boolean) {
   try {
@@ -111,7 +117,7 @@ export function createStore(storage: Storage, module?: Iap | null): PlusStore {
         return { status: 'owned' };
       } catch (e) {
         if (isCancel(e)) return { status: 'cancelled' };
-        return { status: 'failed', detail: e instanceof Error ? e.message : String(e) };
+        return { status: 'failed', detail: errDetail(e) };
       }
     },
     async restore() {

@@ -8,6 +8,8 @@ export const en = {
 
   'home.hello': 'Ready to spin?',
   'home.rank': 'Rank: {title}',
+  'home.language': 'Language: {lang}',
+  'home.languageChange': 'Change',
   'home.daily': "Today's challenge",
   'home.dailyDone': 'Done today · {score}/100',
   'home.dailyPlay': 'Play the daily',
@@ -96,6 +98,7 @@ export const en = {
   'packs.medium': 'Medium',
   'packs.hard': 'Hard',
   'packs.all': 'All',
+  'packs.emptyLevel': 'No lines at this level in this pack.',
   'pack.warmup': 'Warm-up',
   'pack.warmup.sub': 'Single words and easy wins',
   'pack.party': 'Party lines',
@@ -190,9 +193,9 @@ export const en = {
   'plus.restore': 'Restore purchase',
   'plus.note': 'One-time purchase. No subscription, no ads, ever.',
   'plus.expoGo': 'Test mode (Expo Go): this unlock is pretend and only on this phone.',
-  'plus.failed': "The purchase didn't go through: {detail}",
+  'plus.failed': "The purchase didn't go through, and nothing was charged. ({detail})",
   'plus.cancelled': 'Purchase cancelled.',
-  'plus.unavailable': "The App Store isn't reachable right now. Try again later.",
+  'plus.unavailable': "The App Store isn't reachable right now, so nothing was charged. Try again later.",
 
   'intro.1.title': 'Say it',
   'intro.1.body': 'Record a short line, normally.',
@@ -220,6 +223,7 @@ export const en = {
   'common.back': 'Back',
   'common.close': 'Close',
   'common.locked': 'Locked',
+  'common.showAll': 'Show all',
 } as const;
 
 export type Key = keyof typeof en;
