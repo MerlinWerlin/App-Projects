@@ -54,7 +54,7 @@ export default function PackScreen() {
               </T>
               <Button kind="ghost" small title={t('common.showAll')} onPress={() => setD(0)} />
             </View>
-          ) : null
+          ) : undefined
         }
         renderItem={({ item }) => (
           <Press label={item.l.t} onPress={() => go(item.l.id, item.ok)} style={{ height: ROW - SP(2), marginBottom: SP(2), backgroundColor: theme.card, borderRadius: R.m, paddingHorizontal: SP(4), flexDirection: 'row', alignItems: 'center', gap: SP(3) }}>
