@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       app:
-        description: 'App folder (cue, couch, glaze, linework)'
+        description: 'App folder (cue, backspin, crochet, couch, glaze, linework)'
         required: true
         type: string
 
@@ -48,7 +48,7 @@ jobs:
 
       - name: Tests
         working-directory: apps/${{ env.APP }}
-        run: set -o pipefail; npx jest --ci 2>&1 | tee /tmp/step-tests.log
+        run: set -o pipefail; npm test 2>&1 | tee /tmp/step-tests.log
 
       - name: Bundle (iOS + Android, as Expo Go loads it)
         working-directory: apps/${{ env.APP }}
