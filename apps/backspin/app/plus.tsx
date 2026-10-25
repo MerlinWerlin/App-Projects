@@ -23,7 +23,7 @@ export default function Plus() {
       setMsg(t('plus.owned'));
     } else if (r.status === 'cancelled') setMsg(t('plus.cancelled'));
     else if (r.status === 'unavailable') setMsg(t('plus.unavailable'));
-    else setMsg(t('plus.failed', { detail: r.detail ?? '' }));
+    else setMsg(t('plus.failed', { detail: r.detail || 'E_UNKNOWN' }));
   };
 
   return (

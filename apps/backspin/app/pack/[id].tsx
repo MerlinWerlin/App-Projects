@@ -45,6 +45,17 @@ export default function PackScreen() {
             </View>
           </View>
         }
+        ListEmptyComponent={
+          // Release standard §1: a filtered list that comes out empty says why and offers "Show all".
+          d ? (
+            <View style={{ alignItems: 'center', paddingVertical: SP(6), gap: SP(3) }}>
+              <T color={theme.sub} center>
+                {t('packs.emptyLevel')}
+              </T>
+              <Button kind="ghost" small title={t('common.showAll')} onPress={() => setD(0)} />
+            </View>
+          ) : undefined
+        }
         renderItem={({ item }) => (
           <Press label={item.l.t} onPress={() => go(item.l.id, item.ok)} style={{ height: ROW - SP(2), marginBottom: SP(2), backgroundColor: theme.card, borderRadius: R.m, paddingHorizontal: SP(4), flexDirection: 'row', alignItems: 'center', gap: SP(3) }}>
             <View style={{ flex: 1 }}>

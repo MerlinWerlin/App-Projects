@@ -2,12 +2,13 @@ import { useRouter } from 'expo-router';
 import { View } from 'react-native';
 import { dailyLine, dayKey, liveStreak, titleFor } from '../../src/core/game.ts';
 import { PACKS, QUIPS } from '../../src/content/index.ts';
+import { LANG_NAMES } from '../../src/i18n/core.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { Card, Disc, Emoji, Press, Screen, T } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 
 export default function Home() {
-  const { t, theme, stats, freeLeft } = useApp();
+  const { t, theme, stats, freeLeft, lang, langHint, hideLangHint } = useApp();
   const router = useRouter();
   const today = dayKey(new Date());
   const daily = dailyLine(PACKS, today);
@@ -27,6 +28,29 @@ export default function Home() {
           <T>⚙︎</T>
         </Press>
       </View>
+
+      {/* First session only (release standard §1): which language we picked, with a way to change it. */}
+      {langHint ? (
+        <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', marginTop: SP(2) }}>
+          <T kind="small" color={theme.sub}>
+            {t('home.language', { lang: LANG_NAMES[lang] })}
+            {' · '}
+          </T>
+          <Press
+            label={t('home.languageChange')}
+            hint={t('settings.language')}
+            onPress={() => {
+              hideLangHint();
+              router.push('/settings');
+            }}
+            style={{ minHeight: 44, justifyContent: 'center', paddingHorizontal: SP(1) }}
+          >
+            <T kind="small" color={theme.rec} style={{ fontWeight: '800' }}>
+              {t('home.languageChange')}
+            </T>
+          </Press>
+        </View>
+      ) : null}
 
       {freeLeft != null ? (
         <Press label={freeLeft > 0 ? t('home.freeLeft', { n: freeLeft }) : t('home.freeDone')} onPress={() => router.push('/plus')} style={{ marginTop: SP(4), alignSelf: 'flex-start', backgroundColor: freeLeft > 0 ? theme.cardHi : theme.rec, borderRadius: R.pill, paddingHorizontal: SP(4), paddingVertical: SP(2) }}>

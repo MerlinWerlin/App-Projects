@@ -7,6 +7,9 @@ import { makeT, matchLang, type Catalog, type Lang } from '../i18n/core.ts';
 import { CATALOGS } from '../i18n/catalogs.ts';
 import { deleteTakeFiles } from '../native/files.ts';
 import { loadJson, loadList, phoneLanguages, saveJson, setHapticsEnabled, storage } from '../native/device.ts';
+import Constants, { ExecutionEnvironment } from 'expo-constants';
+import { claimLangHint, dismissLangHint } from '../core/langHint.ts';
+import { guardTestStore } from '../plus/guard.ts';
 import { createStore, type BuyResult, type PlusStore } from '../plus/store.ts';
 import { makeTheme, type Theme } from '../ui/theme.ts';
 
@@ -60,11 +63,23 @@ type Ctx = {
   restorePlus: () => Promise<boolean>;
   t: ReturnType<typeof makeT>;
   lang: Lang;
+  /** First session only: show "Language: … · Change" on Home (release standard §1). */
+  langHint: boolean;
+  hideLangHint: () => void;
   theme: Theme;
   calm: boolean;
 };
 
 const AppCtx = createContext<Ctx | null>(null);
+
+/** Expo Go is the only place the labelled test unlock may appear. */
+function isExpoGo(): boolean {
+  try {
+    return Constants.executionEnvironment === ExecutionEnvironment.StoreClient;
+  } catch {
+    return false;
+  }
+}
 
 export function useApp(): Ctx {
   const c = useContext(AppCtx);
@@ -80,7 +95,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [plus, setPlus] = useState(false);
   const [plusPrice, setPlusPrice] = useState<string | null>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
-  const store = useRef<PlusStore>(createStore(storage)).current;
+  const [langHint, setLangHint] = useState(false);
+  const store = useRef<PlusStore>(guardTestStore(createStore(storage), storage, isExpoGo())).current;
   const scheme = useColorScheme();
 
   useEffect(() => {
@@ -92,7 +108,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
         loadList<Take>('backspin.takes.v1'),
         store.owned().catch(() => false),
       ]);
+      const hint = await claimLangHint(storage, !p.introSeen && s.rounds === 0);
       if (!alive) return;
+      setLangHint(hint);
       setPrefs(p);
       setHapticsEnabled(p.haptics);
       setStats(s);
@@ -165,6 +183,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return ok;
   }, [store]);
 
+  const hideLangHint = useCallback(() => {
+    setLangHint(false);
+    dismissLangHint(storage);
+  }, []);
+
   const lang: Lang = prefs.lang === 'system' ? matchLang(phoneLanguages()) : prefs.lang;
   const t = useMemo(() => makeT((CATALOGS[lang] as Catalog | undefined) ?? null), [lang]);
   const dark = prefs.theme === 'system' ? scheme !== 'light' : prefs.theme === 'dark';
@@ -173,7 +196,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const value: Ctx = {
     ready, prefs, setPref, stats, recordRound, takes, addTake, removeTake,
     plus: hasAccess(plus, stats.rounds), owned: plus, freeLeft: freeGoesLeft(plus, stats.rounds), plusKind: store.kind, plusPrice, buyPlus, restorePlus,
-    t, lang, theme, calm: prefs.calm || reduceMotion,
+    t, lang, langHint, hideLangHint, theme, calm: prefs.calm || reduceMotion,
   };
   return <AppCtx.Provider value={value}>{children}</AppCtx.Provider>;
 }

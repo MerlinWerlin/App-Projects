@@ -40,3 +40,16 @@ test('store purchase, cancel and restore', async () => {
   assert.equal(await fresh.restore(), true);
   assert.equal((await testStore(mem()).restore()), false);
 });
+
+test('a failed purchase reports the store error code', async () => {
+  const s = createStore(mem(), {
+    initConnection: async () => true,
+    getAvailablePurchases: async () => [],
+    requestPurchase: async () => {
+      throw Object.assign(new Error('Item unavailable'), { code: 'E_ITEM_UNAVAILABLE' });
+    },
+  });
+  const r = await s.buy();
+  assert.equal(r.status, 'failed');
+  assert.equal(r.status === 'failed' && r.detail, 'E_ITEM_UNAVAILABLE: Item unavailable');
+});

@@ -1,5 +1,5 @@
 {
   "mode": "update",
-  "note": "Backspin: Unlock waits up to 10 s for the store to list a late purchase instead of saying it failed",
+  "note": "Backspin: first-launch language line, Language at the top of Settings, empty level filter offers Show all, purchase errors say nothing was charged with the store code",
   "ascAppId": "6826553963"
 }

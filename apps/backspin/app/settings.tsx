@@ -15,6 +15,15 @@ export default function Settings() {
   const version = Constants.expoConfig?.version ?? '1.0.0';
   return (
     <Screen>
+      {/* Language stays at the top of Settings (release standard §1); Home's first-launch line opens here. */}
+      <SectionTitle>{t('settings.language')}</SectionTitle>
+      <View style={{ flexDirection: 'row', gap: SP(2), flexWrap: 'wrap', marginBottom: SP(4) }}>
+        <Chip label={`${t('settings.languageSystem')} (${LANG_NAMES[lang]})`} on={prefs.lang === 'system'} onPress={() => setPref('lang', 'system')} />
+        {SUPPORTED.map((l: Lang) => (
+          <Chip key={l} label={LANG_NAMES[l]} on={prefs.lang === l} onPress={() => setPref('lang', l)} />
+        ))}
+      </View>
+
       <Card>
         <ToggleRow title={t('settings.haptics')} sub={t('settings.hapticsSub')} value={prefs.haptics} onChange={(v) => setPref('haptics', v)} />
         <Divider />
@@ -57,14 +66,6 @@ export default function Settings() {
       <View style={{ flexDirection: 'row', gap: SP(2) }}>
         {(['system', 'light', 'dark'] as const).map((m) => (
           <Chip key={m} label={t(m === 'system' ? 'settings.themeSystem' : m === 'light' ? 'settings.themeLight' : 'settings.themeDark')} on={prefs.theme === m} onPress={() => setPref('theme', m)} />
-        ))}
-      </View>
-
-      <SectionTitle>{t('settings.language')}</SectionTitle>
-      <View style={{ flexDirection: 'row', gap: SP(2), flexWrap: 'wrap' }}>
-        <Chip label={`${t('settings.languageSystem')} (${LANG_NAMES[lang]})`} on={prefs.lang === 'system'} onPress={() => setPref('lang', 'system')} />
-        {SUPPORTED.map((l: Lang) => (
-          <Chip key={l} label={LANG_NAMES[l]} on={prefs.lang === l} onPress={() => setPref('lang', l)} />
         ))}
       </View>
 
