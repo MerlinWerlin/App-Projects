@@ -28,6 +28,7 @@ import { usePlus } from '../src/plus/usePlus';
 import { TRIAL_DAYS, canStartTrial } from '../src/plus/access';
 import { TrialOfferText } from '../src/plus/TrialOffer';
 import { startTrialWithAlerts } from '../src/plus/trialFlow';
+import { lastPurchaseError } from '../src/plus/iapStore';
 import { useT } from '../src/i18n';
 import type { MessageKey } from '../src/i18n/en';
 
@@ -83,7 +84,9 @@ export default function PlusScreen() {
       return;
     }
     // Never fail silently (fb-1023): say whether the store answered at all.
-    Alert.alert(t('plus.buyFailedTitle'), plus.price ? t('plus.buyFailed') : t('plus.storeNotReady'));
+    const code = lastPurchaseError();
+    // i18n-ignore
+    Alert.alert(t('plus.buyFailedTitle'), (plus.price ? t('plus.buyFailed') : t('plus.storeNotReady')) + (code ? `\n\n(${code})` : ''));
   };
 
   const goBack = () => {

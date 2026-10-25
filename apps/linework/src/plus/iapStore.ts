@@ -51,6 +51,16 @@ const cancelled = (e: unknown) => /cancel/i.test(String((e as { code?: string; m
 
 type Bought = { status: 'bought'; purchase: Purchase } | { status: 'cancelled' | 'failed' };
 
+let lastError: string | null = null;
+/** The store's code/message from the last failed purchase (shown in the failure alert so a sandbox problem is readable). */
+export function lastPurchaseError(): string | null {
+  return lastError;
+}
+const describe = (e: unknown): string => {
+  const o = e as { code?: unknown; message?: unknown } | null;
+  return [o?.code, o?.message].filter((x) => x !== undefined && x !== null && String(x) !== '').map(String).join(': ').slice(0, 160) || String(e).slice(0, 160);
+};
+
 /** `module` is for tests (a fake expo-iap); the app passes nothing and gets the guarded require. */
 export function createIapStore(storage: PlusStorage, now: () => number = () => Date.now(), module?: Iap | null): IapStore | null {
   const iap = module === undefined ? loadIap() : module;
@@ -127,8 +137,13 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
   /** One non-consumable purchase (Plus or the free trial). Resolves once; never hangs the button. */
   const buy = async (sku: string, matches: (p: Purchase | null | undefined) => boolean): Promise<Bought> => {
     await products(); // StoreKit needs the product loaded first
+    lastError = null;
     return new Promise<Bought>((resolve) => {
       let done = false;
+      // While a request shape is still being tried, a listener error must not end the purchase before the next shape
+      // gets its turn (the same error is also thrown by requestPurchase and handled there).
+      let pending = true;
+      let late: ReturnType<typeof setTimeout> | null = null;
       const subs: { remove?: () => void }[] = [];
       let timer: ReturnType<typeof setTimeout> | null = null;
       const finish = (r: Bought) => {
@@ -136,6 +151,7 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
         done = true;
         for (const sub of subs) sub?.remove?.();
         if (timer) clearTimeout(timer);
+        if (late) clearTimeout(late);
         resolve(r);
       };
       const onPurchase = async (p: Purchase) => {
@@ -150,7 +166,14 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
       try {
         if (typeof iap.purchaseUpdatedListener === 'function') subs.push(iap.purchaseUpdatedListener((p: Purchase) => void onPurchase(p)));
         if (typeof iap.purchaseErrorListener === 'function')
-          subs.push(iap.purchaseErrorListener((e: unknown) => finish({ status: cancelled(e) ? 'cancelled' : 'failed' })));
+          subs.push(
+            iap.purchaseErrorListener((e: unknown) => {
+              if (cancelled(e)) return finish({ status: 'cancelled' });
+              lastError = describe(e);
+              if (!pending) return finish({ status: 'failed' });
+              late ??= setTimeout(() => finish({ status: 'failed' }), 4_000);
+            }),
+          );
       } catch {
         // listeners optional
       }
@@ -161,11 +184,19 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
       const attempt = async (i: number): Promise<void> => {
         try {
           const r = (await shapes[i]!()) as Purchase | Purchase[] | null | undefined;
+          pending = false;
           const got = Array.isArray(r) ? r.find(matches) : r;
           if (got && matches(got)) await onPurchase(got);
+          else if (lastError) finish({ status: 'failed' });
         } catch (e) {
           if (cancelled(e)) return finish({ status: 'cancelled' });
+          lastError = describe(e);
+          if (late) {
+            clearTimeout(late);
+            late = null;
+          }
           if (i + 1 < shapes.length) return attempt(i + 1);
+          pending = false;
           finish({ status: 'failed' });
         }
       };
@@ -199,7 +230,13 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
       if (saved.owned) return saved;
       if (!(await connect())) return saved;
       const r = await buy(PLUS_SKU, isPlus);
-      return r.status === 'bought' ? saveOwned() : saved;
+      if (r.status === 'bought') return saveOwned();
+      // A failed request can still mean it's owned already (bought before, or delivered late): check the store.
+      if (r.status === 'failed') {
+        const list = await owned();
+        if (list?.some(isPlus)) return saveOwned();
+      }
+      return saved;
     },
     async startTrial() {
       if (!(await connect())) return { status: 'unavailable', start: null };

@@ -2,7 +2,7 @@
 // free "14-day Trial" non-consumable is bought (free) or restored, and its transaction date is the trial start.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { PLUS_SKU, TRIAL_SKU, createIapStore } from './iapStore.ts';
+import { PLUS_SKU, TRIAL_SKU, createIapStore, lastPurchaseError } from './iapStore.ts';
 import { PLUS_STORAGE_KEY, type PlusStorage } from './entitlement.ts';
 import { TRIAL_KEY, accessFor, parseTrialStart } from './access.ts';
 
@@ -137,4 +137,51 @@ test('buying Plus still works and ignores a trial transaction', async () => {
   // A failed Plus request leaves Plus not owned.
   const wrong = createIapStore(memoryStorage(), () => NOW, fakeIap({ buy: () => Promise.reject(new Error('x')) }))!;
   assert.equal((await wrong.purchase()).owned, false);
+});
+
+test('Plus: a failed request that the store lists as owned still unlocks; the error code is kept for the alert', async () => {
+  const iap = fakeIap({
+    owned: [{ productId: PLUS_SKU, id: 'old' }],
+    buy: () => {
+      throw Object.assign(new Error('Item already owned'), { code: 'already-owned' });
+    },
+  });
+  const store = createIapStore(memoryStorage(), () => NOW, iap)!;
+  assert.equal((await store.purchase()).owned, true);
+  assert.equal(lastPurchaseError(), 'already-owned: Item already owned');
+});
+
+test('Plus: an error from the listener does not stop the second request shape from being tried', async () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let onErr: ((e: any) => void) | null = null;
+  let n = 0;
+  const iap = {
+    ...fakeIap(),
+    purchaseErrorListener: (f: (e: unknown) => void) => {
+      onErr = f;
+      return { remove: () => {} };
+    },
+    requestPurchase: async () => {
+      n += 1;
+      if (n === 1) {
+        onErr?.({ code: 'unknown', message: 'first shape rejected' });
+        throw new Error('first shape rejected');
+      }
+      return { productId: PLUS_SKU, id: 'tx2' };
+    },
+  };
+  const store = createIapStore(memoryStorage(), () => NOW, iap)!;
+  assert.equal((await store.purchase()).owned, true);
+  assert.equal(n, 2);
+});
+
+test('Plus: a real failure reports the store error code', async () => {
+  const iap = fakeIap({
+    buy: () => {
+      throw Object.assign(new Error('Unable to purchase'), { code: 'purchase-error' });
+    },
+  });
+  const store = createIapStore(memoryStorage(), () => NOW, iap)!;
+  assert.equal((await store.purchase()).owned, false);
+  assert.equal(lastPurchaseError(), 'purchase-error: Unable to purchase');
 });
