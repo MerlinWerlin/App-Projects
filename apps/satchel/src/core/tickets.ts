@@ -2,7 +2,7 @@
 // No React Native or Expo imports; the native side (pickers, file copy, brightness) lives in src/native.
 import type { Attachment, Item, ItemKind, Trip } from './model.ts';
 import { isTransport } from './model.ts';
-import { span } from './timeline.ts';
+import { span, zonesReadable } from './timeline.ts';
 
 export type AttachmentKind = 'image' | 'pdf' | 'other';
 
@@ -120,13 +120,15 @@ export type WalletEntry = {
   end: number;
 };
 
-/** Every booking with a ticket, across all trips, in real time order (UTC start, then end, then id). */
+/** Every booking with a ticket and readable zones, across all trips, in real time order (UTC start, then end, then id). */
 export function walletEntries(trips: Trip[]): WalletEntry[] {
   const out: WalletEntry[] = [];
   for (const trip of trips) {
     for (const item of trip.items) {
       const ticket = primaryTicket(item);
-      if (!ticket) continue;
+      // T43: a booking with an unreadable zone has no real time to sort by; its ticket stays on the item (opened
+      // from its timeline row, which says the zone needs fixing) and comes back here once the zone is edited.
+      if (!ticket || !zonesReadable(item)) continue;
       const s = span(item);
       out.push({ key: item.id, item, tripId: trip.id, tripName: trip.name, ticket, start: s.start, end: s.end });
     }
@@ -221,4 +223,21 @@ export function itemFiles(item: Item): string[] {
 /** Every file a trip's bookings hold (attachments and separate QR crops), without repeats. */
 export function tripFiles(trip: Trip): string[] {
   return [...new Set((trip.items ?? []).flatMap(itemFiles))];
+}
+
+// ---- T44: the item form's Attachments section (FLOWS §4.1) edits a draft list; files follow Save or Cancel ----
+
+/**
+ * Files that go unused when a booking's attachment list changes from `before` to `after` (a file or crop still
+ * listed in `after` is kept). The item form deletes these after a successful Save (removed attachments) and, when
+ * the form is left without saving, for the files it added (`before` = added this session, `after` = saved list).
+ */
+export function droppedFiles(before: readonly Attachment[], after: readonly Attachment[]): string[] {
+  const keep = new Set(after.flatMap(filesOf));
+  return [...new Set(before.flatMap(filesOf))].filter((u) => !keep.has(u));
+}
+
+/** True when two attachment lists hold the same files in the same order (the form's "unsaved changes" test). */
+export function sameAttachments(a: readonly Attachment[], b: readonly Attachment[]): boolean {
+  return a.length === b.length && a.every((x, i) => x.id === b[i].id && x.uri === b[i].uri && x.qrCropUri === b[i].qrCropUri);
 }

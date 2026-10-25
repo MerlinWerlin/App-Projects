@@ -7,6 +7,7 @@ import { formatDay, formatDuration, formatTime, zoneCity } from '../../src/core/
 import type { Stamp } from '../../src/core/model.ts';
 import { isTransport } from '../../src/core/model.ts';
 import { dayShift, minutesBetween } from '../../src/core/tz.ts';
+import { zonesReadable } from '../../src/core/timeline.ts';
 import type { Key } from '../../src/i18n/en.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { findItem, useTrips } from '../../src/state/trips.tsx';
@@ -50,6 +51,8 @@ export default function ItemScreen() {
     </View>
   );
   const shift = item.end ? dayShift(item.start, item.end) : 0;
+  // T43: a saved zone this phone can't read gives no real duration; say so instead of throwing (Edit fixes it).
+  const readable = zonesReadable(item);
   const clashTitles = overlapTitles(overlapPartners(trip.items), item.id);
   const row = (k: Key, v?: string) =>
     v ? (
@@ -94,10 +97,11 @@ export default function ItemScreen() {
           <>
             <Label>{t(endLabel)}</Label>
             {when(item.end, shift ? `  ${t('item.dayShift', { n: shift > 0 ? `+${shift}` : String(shift) })}` : '')}
-            {item.kind !== 'hotel' ? <Body muted>{t('item.duration', { d: formatDuration(minutesBetween(item.start, item.end)) })}</Body> : null}
+            {item.kind !== 'hotel' && readable ? <Body muted>{t('item.duration', { d: formatDuration(minutesBetween(item.start, item.end)) })}</Body> : null}
           </>
         ) : null}
       </Card>
+      {readable ? null : <Warning text={t('t43.item.zoneUnreadable')} />}
       {clashTitles ? <Warning text={t('spec41.item.overlaps', { titles: clashTitles })} /> : null}
       <ItemTicketSlot trip={trip} item={item} />
       <ItemAddressSlot trip={trip} item={item} />

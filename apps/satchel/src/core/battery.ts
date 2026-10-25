@@ -9,7 +9,7 @@
 import type { Item, Trip } from './model.ts';
 import { isTransport } from './model.ts';
 import { primaryTicket } from './tickets.ts';
-import { span } from './timeline.ts';
+import { span, zonesReadable } from './timeline.ts';
 
 /** Default threshold as a fraction of a full battery (PLAN §3: below 20%). T10 adds a setting for it. */
 export const DEFAULT_THRESHOLD = 0.2;
@@ -124,6 +124,7 @@ export function nextTicket(trips: Trip[], now: number): TicketPick | null {
       if (!TICKET_KINDS(item.kind)) continue;
       const hasTicket = primaryTicket(item) !== null;
       if (!hasTicket && !isTransport(item.kind)) continue;
+      if (!zonesReadable(item)) continue; // T43: no real time, so it can't be "now" or "next"
       const s = span(item);
       if (s.end < now || (s.end === s.start && s.start < now)) continue;
       cands.push({ item, tripId: trip.id, start: s.start, end: s.end, hasTicket });
@@ -148,7 +149,7 @@ export function currentHotel(trips: Trip[], now: number): HotelPick | null {
   let nextStart = Infinity;
   for (const trip of trips) {
     for (const item of trip.items) {
-      if (item.kind !== 'hotel') continue;
+      if (item.kind !== 'hotel' || !zonesReadable(item)) continue; // T43: an unreadable zone has no real stay times
       const s = span(item);
       const hasAddress = !!(item.place?.address?.trim() || item.place?.localAddress?.trim());
       if (s.start <= now && s.end > now) {

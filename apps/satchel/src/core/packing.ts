@@ -1,6 +1,7 @@
 // Packing lists: one per trip, started from one or more templates (src/content/packing_templates.json) or empty.
 // Pure and immutable: every edit returns a new list. The UI owns persistence (key 'satchel.packing.v1').
 import type { PackingItem, PackingList, Trip } from './model.ts';
+import { zonesReadable } from './timeline.ts';
 import { daysBetween, minutesBetween } from './tz.ts';
 
 // ---------------------------------------------------------------- templates (shape of the bundled JSON)
@@ -228,7 +229,7 @@ export function sortByCategory(items: PackItem[]): PackItem[] {
  */
 export function suggestTemplate(trip: Pick<Trip, 'startDate' | 'endDate' | 'items'>, templates: Template[]): string | null {
   const has = (id: string) => templates.some((t) => t.id === id);
-  const longFlight = trip.items.some((i) => i.kind === 'flight' && i.end && minutesBetween(i.start, i.end) > 8 * 60);
+  const longFlight = trip.items.some((i) => i.kind === 'flight' && i.end && zonesReadable(i) && minutesBetween(i.start, i.end) > 8 * 60);
   let id = 'city_break';
   if (longFlight || tripNights(trip) >= 14) id = 'longhaul_carryon';
   else if (trip.items.some((i) => i.kind === 'car')) id = 'road_trip';

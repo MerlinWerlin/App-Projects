@@ -3,14 +3,15 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { clampThreshold, isLow, normaliseLevel, normalisePrefs, percent, stepEpisode, NO_EPISODE, type BatteryReading } from './battery.ts';
+import { clampThreshold, currentHotel, isLow, nextTicket, normaliseLevel, normalisePrefs, percent, stepEpisode, NO_EPISODE, type BatteryReading } from './battery.ts';
 import { demoTrip } from './demo.ts';
 import { countryForZone, displayRow, findCountry, guessCountry, type EmergencyTable } from './emergency.ts';
 import { todayIn } from './format.ts';
 import { ITEM_KINDS, type Item, type Trip } from './model.ts';
-import { buildList, dropList, listFor, parseTemplates, putList, toggleItem, type PackStore } from './packing.ts';
+import { buildList, dropList, listFor, parseTemplates, putList, suggestTemplate, toggleItem, type PackStore } from './packing.ts';
 import { stepThreshold } from './settings.ts';
-import { groupByDay, nextUp, overlaps, sortItems } from './timeline.ts';
+import { groupByDay, nextUp, overlaps, sortItems, zonesReadable } from './timeline.ts';
+import { walletEntries } from './tickets.ts';
 import { itemFromDraft, newItemDraft, parseStoredTrips, removeTrip, tripFromDraft, upsertTrip, validateItem } from './trips.ts';
 import { checkWallTime, fromUtc, minutesBetween, offsetMinutes, toUtc } from './tz.ts';
 
@@ -155,6 +156,55 @@ test('TR-021: an unknown zone is refused by the form and never turned into an in
   const d = { ...newItemDraft('activity', '2026-11-05', 'Mars/Olympus_Mons'), title: 'x' };
   assert.deepEqual(validateItem(d), ['startTz']);
   assert.throws(() => toUtc(at('2026-11-05T09:00', 'Mars/Olympus_Mons')), RangeError);
+});
+
+// T43: TR-021 load case. A saved item whose zone this phone can't read is kept, listed, and skipped where a real time is needed.
+const badZoneTrip = (): Trip => {
+  const good = item({ id: 'z-good', kind: 'flight', start: at('2026-11-05T09:00', 'Asia/Tokyo'), end: at('2026-11-05T12:00', 'Asia/Tokyo') });
+  const clash = item({ id: 'z-clash', kind: 'activity', start: at('2026-11-05T10:00', 'Asia/Tokyo'), end: at('2026-11-05T11:00', 'Asia/Tokyo') });
+  const bad = item({ id: 'z-bad', kind: 'train', start: at('2026-11-05T08:00', 'Mars/Olympus_Mons'), end: at('2026-11-06T10:00', 'Asia/Tokyo') });
+  const badEnd = item({ id: 'z-badend', kind: 'flight', start: at('2026-11-04T09:00', 'Asia/Tokyo'), end: at('2026-11-04T23:00', 'Asia/Kathmandoo') });
+  return { ...trip, startDate: '2026-11-04', endDate: '2026-11-06', items: [bad, good, badEnd, clash] };
+};
+
+test('TR-021 (load, T43): an item with an unreadable saved zone is kept on load, unchanged', () => {
+  const t = badZoneTrip();
+  const back = parseStoredTrips(JSON.stringify([t]));
+  assert.ok(back);
+  assert.deepEqual(back[0].items.map((i) => i.id), ['z-bad', 'z-good', 'z-badend', 'z-clash']);
+  assert.deepEqual(back[0].items[0].start, at('2026-11-05T08:00', 'Mars/Olympus_Mons'));
+  assert.deepEqual(back[0].items[2].end, at('2026-11-04T23:00', 'Asia/Kathmandoo'));
+  assert.equal(zonesReadable(back[0].items[0]), false);
+  assert.equal(zonesReadable(back[0].items[2]), false, 'a bad end zone counts too');
+  assert.equal(zonesReadable(back[0].items[1]), true);
+});
+
+test('TR-021 (load, T43): the timeline lists it on its stored date after the timed items, and nothing throws', () => {
+  const t = badZoneTrip();
+  const days = groupByDay(t);
+  assert.deepEqual(days.map((d) => [d.date, d.items.map((i) => i.id), d.continuing.map((i) => i.id)]), [
+    ['2026-11-04', ['z-badend'], []],
+    ['2026-11-05', ['z-good', 'z-clash', 'z-bad'], []],
+    ['2026-11-06', [], ['z-bad']],
+  ]);
+  assert.deepEqual(sortItems(t.items).map((i) => i.id), ['z-good', 'z-clash', 'z-badend', 'z-bad']);
+  assert.deepEqual(overlaps(t.items).map(([a, b]) => [a.id, b.id]), [['z-good', 'z-clash']]);
+});
+
+test('TR-021 (load, T43): Next up, tickets, hotel card and packing skip it instead of throwing', () => {
+  const t = badZoneTrip();
+  const n = nextUp(t.items, utc('2026-11-03T00:00:00Z'));
+  assert.equal(n?.item.id, 'z-good', 'the bad items start earlier on the wall clock but have no real time');
+  assert.equal(nextUp([t.items[0], t.items[2]], utc('2026-11-03T00:00:00Z')), null);
+  const withTicket = (i: Item): Item => ({ ...i, attachments: [{ id: `a-${i.id}`, role: 'ticket', uri: 'file:///x.png', mime: 'image/png', name: 'x.png' }] });
+  const tt = { ...t, items: t.items.map(withTicket) };
+  assert.doesNotThrow(() => walletEntries([tt]));
+  assert.deepEqual(walletEntries([tt]).map((e) => e.key).sort(), ['z-clash', 'z-good']);
+  assert.doesNotThrow(() => nextTicket([tt], utc('2026-11-03T00:00:00Z')));
+  const hotel = item({ id: 'z-hotel', kind: 'hotel', start: at('2026-11-05T15:00', 'Nowhere/Town'), end: at('2026-11-06T11:00', 'Nowhere/Town') });
+  assert.equal(currentHotel([{ ...t, items: [hotel] }], utc('2026-11-03T00:00:00Z')), null);
+  assert.doesNotThrow(() => suggestTemplate(t, []));
+  assert.doesNotThrow(() => guessCountry([t], utc('2026-11-05T00:00:00Z'), '2026-11-05'));
 });
 
 // ---------------------------------------------------------------- emergency lookup

@@ -173,6 +173,28 @@ const base = {
   'route.doc': 'Document',
   'route.docEdit': 'Document',
   'route.packing': 'Packing list',
+
+  // ---- t43 (T43, TR-021 load case): an item whose saved time zone this phone can't read. Kept, not dropped. ----
+  't43.row.zoneUnreadable': 'Time zone not recognised — edit to fix',
+  't43.item.zoneUnreadable': 'Time zone not recognised — edit to fix. This booking is kept as saved, but it can’t show in Next up, clashes or the time until it starts until you choose its time zone again.',
+  // ---- t44 (spec pass 2 leftovers): emergency -> hotel address shortcut, adjustable battery threshold,
+  // item-form Attachments section (FLOWS §4.1, §5.1, §6.1, §12.1; ACCESSIBILITY.md). Keep this block last. ----
+  'emergency.hotelShortcut': 'Hotel address',
+  'emergency.hotelShortcutHint': 'Opens the address card for {name}.',
+  'emergency.hotelShortcutNow': 'Where you’re staying: {name}',
+  'emergency.hotelShortcutNext': 'Next stay: {name}',
+  'settings.thresholdAdjustLabel': 'Essentials battery threshold',
+  'settings.thresholdAdjustHint': 'Adjusts when Satchel suggests essentials mode.',
+  'itemEdit.attachments': 'Attachments',
+  'itemEdit.attachmentsEmpty': 'No files attached yet. Add a ticket or confirmation from Files or Photos.',
+  'itemEdit.attachmentsNote': 'File changes are kept when you save this booking.',
+  'itemEdit.attachmentRow': 'Attachment, {name}',
+  'itemEdit.attachmentRemove': 'Remove {name}',
+  'itemEdit.attachmentRemoveHint': 'Removes this file from the item.',
+  'itemEdit.attachmentAdd': 'Add attachment',
+  'itemEdit.attachmentAddHint': 'Choose a file or photo to attach.',
+  'itemEdit.attachmentFromFiles': 'Choose from Files',
+  'itemEdit.attachmentFromPhotos': 'Choose from Photos',
 } as const;
 
 export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41 } as const;
