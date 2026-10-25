@@ -1,11 +1,12 @@
 {
-  "tests": 217,
+  "tests": 221,
   "typecheck": "core only (registry unreachable); typecheck:ui clean against stubs",
-  "last_run": "2026-10-25 21:05 Sydney",
+  "last_run": "2026-10-25 23:05 Sydney",
   "stage": "trial",
-  "oversight_seen": 145,
+  "oversight_seen": 146,
   "headline": "Ready to try on your iPhone",
   "next_for_owner": [
+    "To get Satchel onto TestFlight: create the app in App Store Connect (bundle id com.jared797.satchel, SKU satchel) and send Claude its Apple ID number. Everything else is prepared; see docs/TESTFLIGHT.md.",
     "Install Expo Go from the App Store on your iPhone (Satchel now targets SDK 58, the version Expo Go runs).",
     "On your PC, download the trial kit from this page, unzip it and double-click START_TRIAL.cmd (it installs, runs npx expo install --fix, checks the code, then starts Satchel). If anything is red, paste trial-log.txt into a comment here. The Desktop\\Apps\\satchel copy is an older build until a run refreshes it.",
     "When the QR code appears, scan it with the iPhone Camera app and open it in Expo Go.",

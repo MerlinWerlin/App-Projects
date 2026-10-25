@@ -1,0 +1,9 @@
+{
+  "_note": "Draft entry for App-Projects marketing/apps.json, to add at onboarding. Stage stays pre-launch until Jared ships.",
+  "id": "satchel",
+  "name": "Satchel",
+  "stage": "pre-launch",
+  "pitch": "Your trip in flight mode: tickets, emergency card, documents and the plan, all offline on your phone.",
+  "keywords": ["offline travel wallet", "trip planner offline", "boarding pass wallet", "travel documents", "emergency card", "flight mode itinerary"],
+  "claims_to_avoid": ["battery life numbers", "offline maps (not built yet)", "works without testing on a real phone", "competitor names", "official emergency numbers without 'verify locally'"]
+}

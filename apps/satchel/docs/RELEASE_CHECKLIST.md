@@ -1,6 +1,6 @@
 # Release checklist (draft)
 
-The owner's steps to put Satchel in the App Store and Google Play. Plain and in order; tick each one. Steps marked **(build run)** are done by the build runs or auto-ship, not by you. Not ready to submit until Satchel Plus (T16) is built and the trial questions in docs/TRIAL.md are answered "yes".
+For the first TestFlight build alone, see docs/TESTFLIGHT.md (only the App Store Connect record is left). The owner's steps to put Satchel in the App Store and Google Play. Plain and in order; tick each one. Steps marked **(build run)** are done by the build runs or auto-ship, not by you. Not ready to submit until Satchel Plus (T16) is built and the trial questions in docs/TRIAL.md are answered "yes".
 
 Fixed values:
 - Bundle id / package: `com.jared797.satchel`
