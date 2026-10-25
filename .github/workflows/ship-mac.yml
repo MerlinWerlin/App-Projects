@@ -1,14 +1,15 @@
-# Free TestFlight builds: build the iOS app on GitHub's own Mac runner (free for this public repo) with
-# `eas build --local`, then upload it with `eas submit`. Signing credentials still come from Expo's servers, so
-# nothing extra is set up. Used when Expo's cloud build quota is spent (ship.yml dispatches this automatically),
-# or by hand: Actions -> ship-mac -> Run workflow -> app.
+# Build an app's iOS binary on a GitHub macOS runner (free for this public repo) instead of Expo's cloud,
+# then upload it to TestFlight with `eas submit`. Use when Expo's monthly free iOS builds are used up
+# ("This account has used its iOS builds from the Free plan this month"). Same signing as ship.yml:
+# the certificate, provisioning profile and App Store Connect key all come from Expo's credentials service.
+# Started by hand (or by Claude through the API) with the app folder; reads that app's RELEASE.json.
 name: ship-mac
 
 on:
   workflow_dispatch:
     inputs:
       app:
-        description: 'App folder (e.g. backspin, cue, couch, glaze, linework)'
+        description: 'App folder (cue, backspin, couch, glaze, linework)'
         required: true
         type: string
 
@@ -19,21 +20,31 @@ concurrency:
 jobs:
   build:
     runs-on: macos-latest
-    timeout-minutes: 120
+    timeout-minutes: 150
     permissions:
       contents: read
     defaults:
       run:
-        shell: bash
         working-directory: apps/${{ inputs.app }}
     env:
       EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
       EAS_BUILD_NO_EXPO_GO_WARNING: 'true'
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Use the newest Xcode on the runner
+        run: |
+          ls -d /Applications/Xcode*.app
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          xcodebuild -version | tee "$RUNNER_TEMP/ship.log"
+          pod --version || sudo gem install cocoapods
+          fastlane --version | tail -1 || brew install fastlane
+
       - uses: expo/expo-github-action@v8
         with:
           eas-version: latest
@@ -42,11 +53,9 @@ jobs:
       - name: Read RELEASE.json
         id: rel
         run: |
-          echo "note=$(jq -r '.note // "TestFlight build"' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          echo "note=$(jq -r '.note // "Owner-approved release"' RELEASE.json)" >> "$GITHUB_OUTPUT"
           echo "ascAppId=$(jq -r '.ascAppId // empty' RELEASE.json)" >> "$GITHUB_OUTPUT"
           echo "profile=$(jq -r '.profile // "production"' RELEASE.json)" >> "$GITHUB_OUTPUT"
-          echo "skipCapSync=$(jq -r 'if .skipCapabilitySync then "1" else "" end' RELEASE.json)" >> "$GITHUB_OUTPUT"
-          xcodebuild -version
 
       - name: Install packages
         run: npm install --no-audit --no-fund
@@ -60,47 +69,31 @@ jobs:
             npm run eas-build-post-install
           fi
 
-      - name: Link the Expo project and the App Store Connect app
+      - name: Submit profile (App Store Connect app id)
         env:
           ASC_APP_ID: ${{ steps.rel.outputs.ascAppId }}
         run: |
-          if [ "$(jq -r '.expo.extra.eas.projectId // empty' app.json)" = "" ]; then
-            eas init --non-interactive --force
-            eas update:configure --non-interactive || true
-          fi
           if [ -n "$ASC_APP_ID" ]; then
-            jq --arg a "$ASC_APP_ID" '.submit.production.ios = ((.submit.production.ios // {}) + {ascAppId: $a})' eas.json > eas.tmp.json && mv eas.tmp.json eas.json
+            jq --arg a "$ASC_APP_ID" '.submit.production.ios = ((.submit.production.ios // {}) + {ascAppId: $a})' eas.json > eas.tmp.json
+            mv eas.tmp.json eas.json
           fi
 
-      - name: Build the iOS app on this Mac
-        env:
-          EXPO_NO_CAPABILITY_SYNC: ${{ steps.rel.outputs.skipCapSync == '1' && '1' || '0' }}
+      - name: Build on this Mac
         run: |
           set -o pipefail
-          eas build --local --platform ios --profile "${{ steps.rel.outputs.profile }}" --non-interactive \
-            --output "$RUNNER_TEMP/app.ipa" 2>&1 | tee "$RUNNER_TEMP/build.log" | grep -vE '^\s*$' | tail -400
-          ls -la "$RUNNER_TEMP/app.ipa"
+          eas build --platform ios --profile "${{ steps.rel.outputs.profile }}" --local --non-interactive \
+            --output "$RUNNER_TEMP/app.ipa" 2>&1 | tee -a "$RUNNER_TEMP/ship.log" | grep -v -E '^\s*$' | tail -c 2000000
 
       - name: Upload to TestFlight
         run: |
           set -o pipefail
-          eas submit --platform ios --profile production --path "$RUNNER_TEMP/app.ipa" --non-interactive --wait 2>&1 | tee "$RUNNER_TEMP/submit.log" | tail -60
+          eas submit --platform ios --profile production --path "$RUNNER_TEMP/app.ipa" --non-interactive --wait 2>&1 | tee -a "$RUNNER_TEMP/ship.log"
 
-      - name: Keep the .ipa for a few days
+      - name: Report the result on the commit (readable without the Actions page)
         if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ inputs.app }}-ipa
-          path: ${{ runner.temp }}/app.ipa
-          retention-days: 5
-          if-no-files-found: ignore
-
-      - name: Report on the commit
-        if: always()
-        working-directory: .
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if [ "${{ job.status }}" = "success" ]; then body="**ship-mac (${{ inputs.app }}): built on GitHub's Mac and uploaded to TestFlight.** Apple emails when processing finishes (about 10-30 min)."
-          else body=$(printf '**ship-mac (${{ inputs.app }}) failed.**\n\n```\n%s\n```\n' "$( (cat "$RUNNER_TEMP/build.log" "$RUNNER_TEMP/submit.log" 2>/dev/null | grep -iE 'error|fail|❌|warning: ' | awk 'length($0) < 300' | tail -40) || echo 'no log')"); fi
-          gh api "repos/${{ github.repository }}/commits/${{ github.sha }}/comments" -f body="$body" > /dev/null || true
+          status="${{ job.status }}"
+          body=$(printf '**ship-mac (%s): %s.** %s\n\nLast lines:\n\n```\n%s\n```\n' "${{ inputs.app }}" "$status" "${{ steps.rel.outputs.note }}" "$( (grep -v -E '^\s*$' "$RUNNER_TEMP/ship.log" | awk 'length($0) < 400' | tail -n 60) 2>/dev/null || echo 'no log')")
+          gh api "repos/${{ github.repository }}/commits/${{ github.sha }}/comments" -f body="$body" > /dev/null
