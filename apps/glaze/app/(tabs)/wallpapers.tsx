@@ -209,6 +209,8 @@ export default function WallpapersTab() {
             {discoveryEmpty}
           </Text>
         ) : null}
+        {/* Release standard §1: an empty filtered list offers a one-tap way back to everything. */}
+        {discoveryEmpty ? <PillButton label={t('common.showAll')} variant="plain" onPress={() => onDiscovery('all')} /> : null}
         {tab === 'still' ? (
           // T76: the photo-collage maker (2..6 of the person's photos on one Lock Screen).
           <PillButton

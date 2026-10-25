@@ -2,6 +2,7 @@
 // listing "System default", every language in its own name and, in development, the pseudo-locale.
 // Switching between LTR and RTL asks to restart, because I18nManager only applies on reload.
 // Design v2 (T56): an InsetGroup with one chevron row; the sheet lists choices as an inset list.
+// LanguagePickerSheet is exported for the first-launch line on Themes (src/ui/LanguageHintLine.tsx).
 import { Feather } from '@expo/vector-icons';
 import { useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
@@ -50,13 +51,69 @@ function confirmRestart(locale: Locale): void {
   ]);
 }
 
-export function LanguageSection() {
+/** The language list sheet: Settings › Language and the first-launch line on Themes both open it. */
+export function LanguagePickerSheet({ visible, onClose }: { visible: boolean; onClose: () => void }) {
   const { c } = useColorsV2();
   const { t, override, script } = useT();
-  const [open, setOpen] = useState(false);
+  const choices = useLanguageChoices();
 
+  const choose = async (next: Locale | null) => {
+    onClose();
+    if (next === override) return;
+    haptic('select');
+    const { locale, needsRestart } = await setLocaleOverride(next);
+    if (needsRestart) confirmRestart(locale);
+  };
+
+  return (
+    <Sheet visible={visible} onClose={onClose} title={t('settings.language.sheetTitle')}>
+      <View
+        accessibilityRole="radiogroup"
+        accessibilityLabel={t('settings.language.sheetTitle')}
+        style={[styles.list, continuous, { backgroundColor: c.surface }]}
+      >
+        {choices.map((ch, i) => {
+          const selected = ch.value === override;
+          const own = ch.lang ? textStyleFor(scriptOf(ch.lang), textV2.body) : textStyleFor(script, textV2.body);
+          return (
+            <PressableScale
+              key={ch.value ?? 'system'}
+              onPress={() => {
+                choose(ch.value).catch(() => {});
+              }}
+              pressedScale={0.98}
+              accessibilityRole="radio"
+              accessibilityLabel={ch.detail ? t('settings.languageChoiceA11y', { language: ch.label, detail: ch.detail }) : ch.label}
+              accessibilityLanguage={ch.lang}
+              accessibilityState={{ selected, checked: selected }}
+              style={[
+                styles.option,
+                i > 0 ? { borderTopColor: c.separator, borderTopWidth: StyleSheet.hairlineWidth } : null,
+                selected ? { backgroundColor: c.tintSoft } : null,
+              ]}
+            >
+              <View style={styles.flex}>
+                <Text style={[textV2.body, own, { color: selected ? c.onTintSoft : c.ink }]}>{ch.label}</Text>
+                {ch.detail ? (
+                  <Text style={[textV2.footnote, textStyleFor(script, textV2.footnote), { color: selected ? c.onTintSoft : c.inkSecondary }]}>
+                    {ch.detail}
+                  </Text>
+                ) : null}
+              </View>
+              {selected ? <Feather name="check" size={20} color={c.onTintSoft} /> : null}
+            </PressableScale>
+          );
+        })}
+      </View>
+    </Sheet>
+  );
+}
+
+/** "System default", every shipping language in its own name and, in development, the pseudo-locale. */
+function useLanguageChoices(): Choice[] {
+  const { t } = useT();
   const systemLocale = resolveLocale(deviceLocaleTags(), null);
-  const choices: Choice[] = [
+  return [
     {
       value: null,
       label: t('settings.language.systemDefault'),
@@ -65,15 +122,13 @@ export function LanguageSection() {
     ...SHIPPING_LOCALES.map((l): Choice => ({ value: l, label: LOCALE_NAMES[l], lang: l })),
     ...(__DEV__ ? [{ value: PSEUDO_LOCALE, label: t('settings.language.pseudo') } as Choice] : []),
   ];
-  const currentLabel = choices.find((ch) => ch.value === override)?.label ?? t('settings.language.systemDefault');
+}
 
-  const choose = async (next: Locale | null) => {
-    setOpen(false);
-    if (next === override) return;
-    haptic('select');
-    const { locale, needsRestart } = await setLocaleOverride(next);
-    if (needsRestart) confirmRestart(locale);
-  };
+export function LanguageSection() {
+  const { t, override } = useT();
+  const [open, setOpen] = useState(false);
+  const choices = useLanguageChoices();
+  const currentLabel = choices.find((ch) => ch.value === override)?.label ?? t('settings.language.systemDefault');
 
   return (
     <>
@@ -89,46 +144,7 @@ export function LanguageSection() {
         />
       </InsetGroup>
 
-      <Sheet visible={open} onClose={() => setOpen(false)} title={t('settings.language.sheetTitle')}>
-        <View
-          accessibilityRole="radiogroup"
-          accessibilityLabel={t('settings.language.sheetTitle')}
-          style={[styles.list, continuous, { backgroundColor: c.surface }]}
-        >
-          {choices.map((ch, i) => {
-            const selected = ch.value === override;
-            const own = ch.lang ? textStyleFor(scriptOf(ch.lang), textV2.body) : textStyleFor(script, textV2.body);
-            return (
-              <PressableScale
-                key={ch.value ?? 'system'}
-                onPress={() => {
-                  choose(ch.value).catch(() => {});
-                }}
-                pressedScale={0.98}
-                accessibilityRole="radio"
-                accessibilityLabel={ch.detail ? t('settings.languageChoiceA11y', { language: ch.label, detail: ch.detail }) : ch.label}
-                accessibilityLanguage={ch.lang}
-                accessibilityState={{ selected, checked: selected }}
-                style={[
-                  styles.option,
-                  i > 0 ? { borderTopColor: c.separator, borderTopWidth: StyleSheet.hairlineWidth } : null,
-                  selected ? { backgroundColor: c.tintSoft } : null,
-                ]}
-              >
-                <View style={styles.flex}>
-                  <Text style={[textV2.body, own, { color: selected ? c.onTintSoft : c.ink }]}>{ch.label}</Text>
-                  {ch.detail ? (
-                    <Text style={[textV2.footnote, textStyleFor(script, textV2.footnote), { color: selected ? c.onTintSoft : c.inkSecondary }]}>
-                      {ch.detail}
-                    </Text>
-                  ) : null}
-                </View>
-                {selected ? <Feather name="check" size={20} color={c.onTintSoft} /> : null}
-              </PressableScale>
-            );
-          })}
-        </View>
-      </Sheet>
+      <LanguagePickerSheet visible={open} onClose={() => setOpen(false)} />
     </>
   );
 }
