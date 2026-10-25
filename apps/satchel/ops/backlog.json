@@ -464,6 +464,30 @@
    ],
    "title": "Full release-standard pass: read App-Projects docs/RELEASE_STANDARD.md (at onboarding or when a run can read it), compare every line with Satchel, update docs/RELEASE_CHECKLIST.md 'Release standard check' and add tasks for each gap",
    "accept": "every standard line marked met / gap with a task"
+  },
+  {
+   "id": "T37",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner",
+    "release"
+   ],
+   "title": "TestFlight readiness (owner brief 25 Oct: straight to TestFlight): camera purpose string + image-picker plugin, iOS privacy manifest, eas submit iOS slot, App-Projects onboarding drafts (RELEASE.draft.json, marketing entry), docs/TESTFLIGHT.md with the remaining steps, release config tests",
+   "accept": "tests guard the release config; only the App Store Connect id is missing"
+  },
+  {
+   "id": "T38",
+   "status": "todo",
+   "deps": [
+    "T37"
+   ],
+   "tags": [
+    "owner",
+    "release"
+   ],
+   "title": "When Jared sends the App Store Connect Apple ID: put it in eas.json submit.production.ios.ascAppId and ops/onboarding/RELEASE.draft.json, update docs/TESTFLIGHT.md and status, so auto-ship can onboard and ship",
+   "accept": "ascAppId set in both files, tests green"
   }
  ],
  "priority_note": "Owner: 'let's trial that for now'. Reach TRIAL fast; nothing native before the owner has tried the trial."

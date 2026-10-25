@@ -1,0 +1,14 @@
+{
+  "_note": "Draft for App Factory auto-ship. Satchel has no App Store Connect record yet. Auto-ship copies this into App-Projects apps/<folder>/RELEASE.json in the format the other apps use, adds the ascAppId Jared sends, and only then ships. Never ship with ascAppId null.",
+  "app": "satchel",
+  "folder_candidates": ["apps/travel", "apps/satchel"],
+  "name": "Satchel",
+  "bundleId": "com.jared797.satchel",
+  "ascAppId": null,
+  "platform": "ios",
+  "profile": "production",
+  "version": "0.1.0",
+  "channel": "production",
+  "expoSdk": 58,
+  "expoGoPort": 8098
+}
