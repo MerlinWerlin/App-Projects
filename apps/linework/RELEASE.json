@@ -1,5 +1,5 @@
 {
   "mode": "update",
-  "note": "Linework: Unlock Plus shows the store's error code if a purchase fails, retries the second request shape, and unlocks if the store already has Plus",
+  "note": "Linework: Plus purchase also tries the newer apple/google request shape; failure alert lists every store error",
   "ascAppId": "6826041969"
 }

@@ -185,3 +185,19 @@ test('Plus: a real failure reports the store error code', async () => {
   assert.equal((await store.purchase()).owned, false);
   assert.equal(lastPurchaseError(), 'purchase-error: Unable to purchase');
 });
+
+test('Plus: when the ios request shape is rejected, the apple/google shape (newer expo-iap) buys it', async () => {
+  const seen: string[] = [];
+  const iap = {
+    ...fakeIap(),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    requestPurchase: async (a: any) => {
+      seen.push(Object.keys(a.request).join(','));
+      if (a.request.apple?.sku) return { productId: a.request.apple.sku, id: 'tx3' };
+      throw Object.assign(new Error('sku is required'), { code: 'developer-error' });
+    },
+  };
+  const store = createIapStore(memoryStorage(), () => NOW, iap)!;
+  assert.equal((await store.purchase()).owned, true);
+  assert.deepEqual(seen, ['ios,android', 'apple,google']);
+});
