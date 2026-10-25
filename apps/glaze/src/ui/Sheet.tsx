@@ -1,14 +1,14 @@
 // Bottom sheet, design v2 (docs/DESIGN_V2.md §8–9, T56): `thick` glass material, 32 pt continuous
 // top corners, a grabber, a `title2` header and the `overlay` shadow. Built on RN Modal (Expo Go
-// safe). The backdrop fades in and the sheet springs up (POLISH rule 2); with reduced motion it
-// only fades. Tap the backdrop or the close button to close; the system back gesture closes too.
+// safe). The backdrop fades in and the sheet slides up on a timed ease-out, never a spring
+// (owner 25 Oct: no bounce); with reduced motion it only fades. Tap the backdrop or the close button to close; the system back gesture closes too.
 import { Feather } from '@expo/vector-icons';
 import type { ReactNode } from 'react';
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn, SlideInDown } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useT } from '../i18n';
-import { durations, springConfig, useMotionReduced } from '../theme/motion';
+import { durations, easeOutCurve, useMotionReduced } from '../theme/motion';
 import { continuous, radiusV2, scrimColour, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { GlassBar } from './GlassBar';
@@ -33,9 +33,10 @@ export function Sheet({ visible, onClose, title, children, closeLabel }: Props) 
   const insets = useSafeAreaInsets();
   const reduced = useMotionReduced();
   const { t, script } = useT();
+  // Owner 25 Oct (glaze-retest C, glaze-test-latest): no bounce. A timed ease-out slide, no spring.
   const entering = reduced
     ? FadeIn.duration(durations.fast)
-    : SlideInDown.springify().damping(springConfig.damping).stiffness(springConfig.stiffness);
+    : SlideInDown.duration(durations.base).easing(easeOutCurve);
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
       <View style={styles.root}>

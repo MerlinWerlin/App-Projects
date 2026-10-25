@@ -50,6 +50,7 @@ import {
   effectiveChoice,
   installSummary,
   recommendedMethod,
+  showBulkCard,
   showMethodPicker,
 } from '../src/core/installMethods';
 import { profileRoute } from '../src/core/profileServer';
@@ -227,7 +228,7 @@ export default function InstallScreen() {
     profileCount: plan.profile.length,
     profileServer: serverAvailable,
   };
-  // Until the person taps a card, the recommended method is used (Shortcuts without the server).
+  // Owner 25 Oct: Bulk whenever it can be used; Shortcuts only as the fallback (src/core/installMethods.ts).
   const choice: InstallChoice = effectiveChoice(install.state.choice, methodOpts, install.state.choiceExplicit === true);
   const items: ShortcutItem[] = useMemo(() => shortcutItems(specs, choice), [specs, choice]);
   const profileKey = `profile:${themeName}`;
@@ -583,11 +584,12 @@ export default function InstallScreen() {
           </View>
         </SquircleCard>
 
-        {/* Method picker (hidden when only the Shortcuts method is offered) */}
+        {/* Method: the Bulk card when Bulk can be used (owner 25 Oct: the only method), else the
+            Shortcuts-only fallback text. showMethodPicker stays for a future second method. */}
         <Text accessibilityRole="header" style={[...ts('title2'), styles.sideText, { color: c.ink }]}>
           {t('install.method.heading')}
         </Text>
-        {!showMethodPicker(methodOpts) ? (
+        {!showMethodPicker(methodOpts) && !showBulkCard(methodOpts) ? (
           <Text style={[...ts('body'), styles.sideText, { color: c.ink }]}>{t('install.method.shortcutsOnly')}</Text>
         ) : (
         <View accessibilityRole="radiogroup" accessibilityLabel={t('install.method.groupLabel')} style={[styles.methods, styles.side]}>

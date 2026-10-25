@@ -70,3 +70,35 @@ test('fb-1022c: the Themes screen has no stagger and no centred-card pop', () =>
   // T107's deferred grid swap stays.
   assert.match(src, /startTransition\(\(\) => \{\s*setCategory/);
 });
+
+// Owner 25 Oct (glaze-retest C + glaze-test-latest): "the bounce transitions in this part need to
+// go". The shared sheet (Live Photo guide, Save to Photos, Plus) and the Live Photo screens use
+// timed ease-out or plain fades only.
+test('owner 25 Oct: the sheet and the Live Photo screens never spring or bounce', () => {
+  const files = [
+    ['src', 'ui', 'Sheet.tsx'],
+    ['src', 'ui', 'LivePhotoSheet.tsx'],
+    ['src', 'ui', 'LiveSaveToPhotos.tsx'],
+    ['src', 'ui', 'LivePhotoGuide.tsx'],
+    ['app', '(tabs)', 'live.tsx'],
+    ['app', 'live', '[id].tsx'],
+  ];
+  for (const f of files) {
+    // `layout={layout}` in the Live editor is the crop rectangle prop, not a layout animation.
+    const src = strip(read(...f)).replace(/layout=\{layout\}/g, '');
+    assert.doesNotMatch(src, SPRINGY, f.join('/'));
+    assert.doesNotMatch(src, /springConfig|FadeInDown|staggerIn\(/, f.join('/'));
+  }
+  assert.match(strip(read('src', 'ui', 'Sheet.tsx')), /SlideInDown\.duration\(durations\.base\)\.easing\(easeOutCurve\)/);
+});
+
+// Owner 25 Oct (glaze-retest A): picking a theme on the Widgets tab also re-themes the Home Screen
+// widgets (it used to change the in-app previews only).
+test('owner 25 Oct: the Widgets tab theme pick writes the theme to the Home Screen widgets', () => {
+  const src = strip(read('app', '(tabs)', 'widgets.tsx'));
+  assert.match(src, /import \{ applyWidgetTheme \} from '\.\.\/\.\.\/src\/store\/widgetTheme'/);
+  const pick = /const pickTheme = \(id: string\) => \{([\s\S]*?)\n  \};/.exec(src);
+  assert.ok(pick, 'pickTheme found');
+  assert.match(pick[1], /setPicked\(id\)/);
+  assert.match(pick[1], /applyWidgetTheme\(next\)/);
+});

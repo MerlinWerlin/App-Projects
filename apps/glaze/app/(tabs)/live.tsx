@@ -4,7 +4,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Alert, Image, Linking, Pressable, StyleSheet, Text, View, type TextStyle } from 'react-native';
-import Animated from 'react-native-reanimated';
+import Animated, { FadeIn } from 'react-native-reanimated';
 import Svg, { Circle, Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import {
   formatSeconds,
@@ -22,7 +22,8 @@ import {
   upsertProject,
 } from '../../src/store/loops';
 import { useT } from '../../src/i18n';
-import { listLayout, staggerIn, useMotionReduced } from '../../src/theme/motion';
+// Owner 25 Oct (glaze-retest C): no bounce or slide in the Live Photo part, a plain fade only.
+import { durations, useMotionReduced } from '../../src/theme/motion';
 import { continuous, iconTileRadius, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import type { FeatherName } from '../../src/ui/featherName';
@@ -184,7 +185,7 @@ export default function LiveScreen() {
         {!loaded ? (
           <Skeleton width="100%" height={72} radius={radiusV2.group} /> // i18n-ignore (generic/comparison, not text)
         ) : state.projects.length === 0 ? (
-          <Animated.View entering={staggerIn(0, reduced)} style={[...card, styles.empty]}>
+          <Animated.View entering={FadeIn.duration(reduced ? durations.fast : durations.base)} style={[...card, styles.empty]}>
             <EmptyPhone glazeA={c.glaze[0]} glazeB={c.glaze[1]} />
             <Text style={[...ts('headline'), styles.center, { color: c.ink }]}>{t('live.tab.emptyTitle')}</Text>
             <Text style={[...ts('body'), styles.center, { color: c.inkSecondary }]}>
@@ -210,8 +211,7 @@ export default function LiveScreen() {
               return (
                 <Animated.View
                   key={p.id}
-                  entering={animateIn ? staggerIn(i, reduced) : undefined}
-                  layout={listLayout(reduced)}
+                  entering={animateIn ? FadeIn.duration(reduced ? durations.fast : durations.base) : undefined}
                   style={[styles.row, i > 0 && hairline]}
                 >
                   <Pressable

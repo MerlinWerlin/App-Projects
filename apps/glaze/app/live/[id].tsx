@@ -18,7 +18,7 @@ import {
   type LayoutChangeEvent,
 } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming, type SharedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming, type SharedValue } from 'react-native-reanimated';
 import {
   DEFAULT_CROP,
   SPEEDS,
@@ -45,7 +45,7 @@ import {
   upsertProject,
 } from '../../src/store/loops';
 import { useT } from '../../src/i18n';
-import { durations, springConfig, useMotionReduced } from '../../src/theme/motion';
+import { durations, timing, useMotionReduced } from '../../src/theme/motion';
 import type { Script } from '../../src/core/i18n';
 import { continuous, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
@@ -569,7 +569,7 @@ function TrimBar({ durationMs, trim, speed, onChange, onGestureActive }: TrimBar
   const setPressed = (sv: SharedValue<number>, on: boolean) => {
     sv.value = reducedRef.current
       ? withTiming(on ? 1 : 0, { duration: durations.fast })
-      : withSpring(on ? 1 : 0, springConfig);
+      : withTiming(on ? 1 : 0, timing.fast); // owner 25 Oct: no spring/bounce in the Live Photo part
   };
 
   // Selection haptic each time a handle crosses a whole-second step.

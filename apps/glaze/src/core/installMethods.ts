@@ -21,28 +21,35 @@ export type MethodOptions = {
 const serverOk = (opts: MethodOptions) => opts.profileServer !== false;
 
 /**
- * Methods to offer, in display order (the recommended one first). Shortcuts is always available
- * and always first (T138, owner 24 Oct: the profile never reached Settings on his iPhone, so the
- * guided Shortcuts path is the default; Bulk stays a second, optional "try it" card while
- * PROFILE_INSTALL_ENABLED is on).
+ * Methods to offer (owner 25 Oct, glaze-retest B: "this can't be the main method, no one will do
+ * it, I don't even think we should make it an option"). When Bulk can be used it is the ONLY
+ * method offered; the guided Shortcuts path is no longer a choice. Shortcuts only remains as the
+ * fallback when Bulk can't work at all: the switch is off (App Review) or no picked app has a link
+ * a profile can open. Apps without a link inside a Bulk plan are still listed on the screen (the
+ * profile can't carry them), but Shortcuts is not offered as a method next to Bulk.
  */
 export function availableMethods(opts: MethodOptions): InstallChoice[] {
-  if (!opts.profileEnabled) return ['shortcuts'];
-  return ['shortcuts', 'bulk'];
+  return bulkSelectable(opts) ? ['bulk'] : ['shortcuts'];
 }
 
 /**
- * The method to badge "Recommended": always the guided Shortcuts method (T138). Kept as a function
- * (with the server flag) so a device-verified profile route can be promoted again in one place.
+ * The method to badge "Recommended": Bulk whenever it can be used (also without the Safari server:
+ * the share-sheet route stays, with its warning). Kept as a function so the server flag can matter
+ * again in one place.
  */
 export function recommendedMethod(opts: MethodOptions): InstallChoice {
   void serverOk(opts);
-  return 'shortcuts';
+  return bulkSelectable(opts) ? 'bulk' : 'shortcuts';
 }
 
 /** True when the method picker is worth showing (more than one method). */
 export function showMethodPicker(opts: MethodOptions): boolean {
   return availableMethods(opts).length > 1;
+}
+
+/** True when the screen shows the Bulk card (the one method), false for the Shortcuts-only text. */
+export function showBulkCard(opts: MethodOptions): boolean {
+  return availableMethods(opts).includes('bulk');
 }
 
 /** Whether the Bulk card can be picked (offered and at least one app has a link). */
@@ -51,15 +58,14 @@ export function bulkSelectable(opts: MethodOptions): boolean {
 }
 
 /**
- * The method actually in use: the saved choice when it is still possible, else Shortcuts.
- * A saved 'bulk' falls back to 'shortcuts' when the switch is off or no app has a link.
- * `explicit` is false while the saved choice is only the default (nobody tapped a card yet): then
- * the recommended method wins, so builds without the Safari server open on Shortcuts (T126).
+ * The method actually in use: Bulk whenever it can be used, whatever was saved before (an old
+ * saved 'shortcuts' choice no longer keeps people on Shortcuts), else the Shortcuts fallback.
+ * `saved` and `explicit` are kept for the callers' signature.
  */
 export function effectiveChoice(saved: InstallChoice, opts: MethodOptions, explicit: boolean = true): InstallChoice {
-  if (!explicit) return recommendedMethod(opts);
-  if (saved === 'bulk' && bulkSelectable(opts)) return 'bulk';
-  return 'shortcuts';
+  void saved;
+  void explicit;
+  return bulkSelectable(opts) ? 'bulk' : 'shortcuts';
 }
 
 export type SummaryKind = 'none' | 'viaShortcuts' | 'viaProfile' | 'mixed';
