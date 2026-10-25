@@ -5,6 +5,7 @@ import { Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'r
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FONT_MAX, FONT_MIN, type PrompterColors } from '../src/core/prefs';
 import { t } from '../src/i18n';
+import { trialLabel } from '../src/plus/trial';
 import { useApp } from '../src/state/AppState';
 import { PROMPTER, FONT } from '../src/theme/theme';
 import { Row, Section, Segmented, Stepper, SwitchRow } from '../src/ui/kit';
@@ -16,10 +17,11 @@ export default function Settings() {
   const insets = useSafeAreaInsets();
   const colorsLocked = !app.can('colors');
   const version = Constants.expoConfig?.version ?? '1.0.0';
+  const trial = app.tier === 'plus' ? null : trialLabel(app.trial);
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }} contentContainerStyle={{ paddingBottom: insets.bottom + 40, paddingTop: 4 }}>
-      <Section title={t('settings.plus')}>
+      <Section title={t('settings.plus')} footer={trial ? t(trial.key, { n: trial.n }) : undefined}>
         <Row icon="sparkles-outline" label={t('settings.plus')} value={app.tier === 'plus' ? '✓' : undefined} onPress={() => router.push('/plus')} />
         <Row
           label={t('settings.restore')}

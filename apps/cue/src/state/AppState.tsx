@@ -3,23 +3,24 @@
  * until `loaded`, so there is no empty-list or "index" flash), then writes through to storage.
  */
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { AccessibilityInfo, useColorScheme } from 'react-native';
+import { AccessibilityInfo, AppState as RNAppState, useColorScheme } from 'react-native';
 import { LIBRARY_KEY, WELCOME_BODY, makeScript, parseLibrary, serializeLibrary, sortScripts, upsert, type Script } from '../core/library';
 import { DEFAULT_PREFS, PREFS_KEY, parsePrefs, type Prefs } from '../core/prefs';
-import { ENTITLEMENT_KEY, VOICE_FREE_READS, canUse, parseEntitlement, type PlusFeature, type Tier } from '../plus/entitlement';
+import { ENTITLEMENT_KEY, canUse, parseEntitlement, type PlusFeature, type Tier } from '../plus/entitlement';
 import { StubPurchaseProvider, type PurchaseProvider, type PurchaseResult } from '../plus/purchases';
 import { t } from '../i18n';
+import { resolveFirstLaunch, trialState, type TrialState } from '../plus/trial';
 import { loadKv } from '../native/kv';
+import { loadSecureStore } from '../native/secureStore';
 import { DARK, LIGHT, type Theme } from '../theme/theme';
-
-const VOICE_USED_KEY = 'cue.voiceReads.v1';
 
 interface AppState {
   loaded: boolean;
   scripts: Script[];
   prefs: Prefs;
   tier: Tier;
-  voiceReadsLeft: number;
+  /** 7-day Plus trial from the first launch (survives reinstall via the Keychain). */
+  trial: TrialState;
   theme: Theme;
   reduceMotion: boolean;
   purchases: PurchaseProvider;
@@ -29,8 +30,6 @@ interface AppState {
   deleteScript(id: string): void;
   setPrefs(patch: Partial<Prefs>): void;
   can(f: PlusFeature): boolean;
-  /** Counts one Voice Pace read against the free allowance; false when none are left. */
-  consumeVoiceRead(): boolean;
   buyPlus(): Promise<PurchaseResult>;
   restorePlus(): Promise<PurchaseResult>;
 }
@@ -44,18 +43,20 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const [scripts, setScripts] = useState<Script[]>([]);
   const [prefs, setPrefsState] = useState<Prefs>(DEFAULT_PREFS);
   const [tier, setTier] = useState<Tier>('free');
-  const [voiceUsed, setVoiceUsed] = useState(0);
+  const [firstLaunch, setFirstLaunch] = useState(() => Date.now());
+  // Bumped when the app comes back to the foreground so the trial's days-left stays current.
+  const [clockTick, setClockTick] = useState(0);
   const [sysReduce, setSysReduce] = useState(false);
   const scheme = useColorScheme();
 
   useEffect(() => {
     let alive = true;
     (async () => {
-      const [lib, p, ent, used] = await Promise.all([
+      const [lib, p, ent, first] = await Promise.all([
         kv.getItem(LIBRARY_KEY).catch(() => null),
         kv.getItem(PREFS_KEY).catch(() => null),
         kv.getItem(ENTITLEMENT_KEY).catch(() => null),
-        kv.getItem(VOICE_USED_KEY).catch(() => null),
+        resolveFirstLaunch(kv, loadSecureStore(), Date.now()).catch(() => Date.now()),
       ]);
       if (!alive) return;
       let list = parseLibrary(lib);
@@ -69,16 +70,20 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       setScripts(sortScripts(list));
       setPrefsState(pr);
       setTier(parseEntitlement(ent).tier);
-      setVoiceUsed(Math.max(0, Number(used) || 0));
+      setFirstLaunch(first);
       setLoaded(true);
     })();
     AccessibilityInfo.isReduceMotionEnabled()
       .then((v) => alive && setSysReduce(v))
       .catch(() => undefined);
     const sub = AccessibilityInfo.addEventListener('reduceMotionChanged', setSysReduce);
+    const appSub = RNAppState.addEventListener('change', (s) => {
+      if (s === 'active') setClockTick((n) => n + 1);
+    });
     return () => {
       alive = false;
       sub.remove();
+      appSub.remove();
     };
   }, [kv]);
 
@@ -130,15 +135,16 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const value = useMemo<AppState>(() => {
     const dark = prefs.theme === 'dark' || (prefs.theme === 'system' && scheme === 'dark');
     const reduceMotion = prefs.reduceMotion === 'on' || (prefs.reduceMotion === 'system' && sysReduce);
-    // Until real purchases are switched on (stub provider), test builds get every Plus feature:
-    // there is no way to buy Plus yet, so nothing should be locked behind it.
-    const unlocked = tier === 'plus' || !purchases.available;
+    const trial = trialState(firstLaunch, Date.now());
+    // Plus features are open while the 7-day trial runs. Until real purchases are switched on (stub
+    // provider), test builds also get every Plus feature: there is no way to buy Plus yet.
+    const unlocked = tier === 'plus' || trial.active || !purchases.available;
     return {
       loaded,
       scripts,
       prefs,
       tier,
-      voiceReadsLeft: unlocked ? Infinity : Math.max(0, VOICE_FREE_READS - voiceUsed),
+      trial,
       theme: dark ? DARK : LIGHT,
       reduceMotion,
       purchases,
@@ -148,14 +154,6 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       deleteScript,
       setPrefs,
       can: (f) => unlocked || canUse(tier, f),
-      consumeVoiceRead: () => {
-        if (unlocked) return true;
-        if (voiceUsed >= VOICE_FREE_READS) return false;
-        const n = voiceUsed + 1;
-        setVoiceUsed(n);
-        void kv.setItem(VOICE_USED_KEY, String(n)).catch(() => undefined);
-        return true;
-      },
       buyPlus: async () => {
         const r = await purchases.buy().catch((): PurchaseResult => ({ ok: false, reason: 'failed', message: t('error.unknown') }));
         if (r.ok) await grant('purchase');
@@ -167,7 +165,9 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
         return r;
       },
     };
-  }, [loaded, scripts, prefs, tier, voiceUsed, scheme, sysReduce, purchases, saveScript, createScript, deleteScript, setPrefs, grant, kv]);
+    // clockTick only forces a re-read of Date.now() for the trial.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loaded, scripts, prefs, tier, firstLaunch, clockTick, scheme, sysReduce, purchases, saveScript, createScript, deleteScript, setPrefs, grant]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

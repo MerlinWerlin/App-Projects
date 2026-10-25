@@ -7,6 +7,8 @@ import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { t, type MessageKey } from '../src/i18n';
 import { success } from '../src/native/haptics';
+import { PLUS_FALLBACK_PRICE } from '../src/plus/entitlement';
+import { trialLabel } from '../src/plus/trial';
 import { useApp } from '../src/state/AppState';
 import { RADIUS } from '../src/theme/theme';
 import { Btn, Txt, type IconName } from '../src/ui/kit';
@@ -26,6 +28,7 @@ export default function Plus() {
   const insets = useSafeAreaInsets();
   const [price, setPrice] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const trial = app.tier === 'plus' ? null : trialLabel(app.trial);
 
   useEffect(() => {
     app.purchases.price().then(setPrice).catch(() => setPrice(null));
@@ -55,6 +58,19 @@ export default function Plus() {
         <Txt tone="sub" style={{ textAlign: 'center', maxWidth: 320 }}>
           {t('plus.lead')}
         </Txt>
+        {trial ? (
+          <View style={[st.trial, { backgroundColor: theme.accentWash }]} accessibilityRole="text">
+            <Ionicons name="hourglass-outline" size={14} color={theme.accentText} />
+            <Txt v="callout" tone="accent">
+              {t(trial.key, { n: trial.n })}
+            </Txt>
+          </View>
+        ) : null}
+        {trial ? (
+          <Txt v="caption" tone="sub" style={{ textAlign: 'center', maxWidth: 320 }}>
+            {t('plus.trial.body')}
+          </Txt>
+        ) : null}
       </View>
 
       <View style={[st.card, { backgroundColor: theme.card, borderColor: theme.line }, theme.shadow]}>
@@ -89,7 +105,7 @@ export default function Plus() {
         </Txt>
       ) : (
         <View style={{ marginTop: 22, gap: 10 }}>
-          <Btn label={price ? t('plus.buy', { price }) : t('plus.buyNoPrice')} icon="sparkles" onPress={() => void act('buy')} disabled={busy} />
+          <Btn label={t('plus.buy', { price: price ?? PLUS_FALLBACK_PRICE })} icon="sparkles" onPress={() => void act('buy')} disabled={busy} />
           <Txt v="caption" tone="faint" style={{ textAlign: 'center' }}>
             {t('plus.once')}
           </Txt>
@@ -107,6 +123,7 @@ export default function Plus() {
 
 const st = StyleSheet.create({
   hero: { alignItems: 'center', gap: 10, paddingTop: 12, paddingBottom: 24 },
+  trial: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, marginTop: 4 },
   mark: { width: 76, height: 76, borderRadius: 26, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', marginBottom: 6 },
   card: { borderRadius: RADIUS.card, borderWidth: StyleSheet.hairlineWidth },
   feat: { flexDirection: 'row', gap: 14, alignItems: 'center', paddingHorizontal: 16, paddingVertical: 14 },
