@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Satchel app icon (original vector, no text, no logos). A navy satchel whose flap is an orange boarding pass:
+     two side notches cut right through the bag, a perforation runs between them, and a paper clasp sits at the flap tip.
+     Source of truth for assets/icon.png, adaptive-icon.png and splash-icon*.png: run `node scripts/render-icons.mjs`.
+     Colours are CSS variables so the render script can recolour it (fallbacks = light palette, docs/PLAN.md §5).
+     Geometry is mirrored in src/ui/StartupMark.tsx; keep the two in step. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <mask id="notches" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+      <rect width="1024" height="1024" fill="#fff"/>
+      <circle cx="212" cy="492" r="40" fill="#000"/>
+      <circle cx="812" cy="492" r="40" fill="#000"/>
+    </mask>
+  </defs>
+  <rect id="bg" x="-512" y="-512" width="2048" height="2048" style="fill: var(--bg, #F4F1EA)"/>
+  <g id="glyph">
+    <path id="handle" d="M362 392 V350 A150 104 0 0 1 662 350 V392" fill="none" stroke-width="64" stroke-linecap="round" style="stroke: var(--body, #14213D)"/>
+    <g mask="url(#notches)">
+      <rect id="body" x="212" y="372" width="600" height="470" rx="88" style="fill: var(--body, #14213D)"/>
+      <path id="flap" d="M212 460 A88 88 0 0 1 300 372 H724 A88 88 0 0 1 812 460 V592 L512 652 L212 592 Z" style="fill: var(--flap, #E07A2F)"/>
+    </g>
+    <line id="perforation" x1="289" y1="492" x2="735" y2="492" stroke-width="14" stroke-dasharray="30 22" style="stroke: var(--detail, #F4F1EA)"/>
+    <rect id="clasp" x="468" y="620" width="88" height="64" rx="18" style="fill: var(--detail, #F4F1EA)"/>
+  </g>
+</svg>

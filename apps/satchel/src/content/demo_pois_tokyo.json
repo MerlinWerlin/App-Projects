@@ -1,0 +1,152 @@
+{
+ "version": 1,
+ "city": "Tokyo",
+ "sample": true,
+ "source": "sample data for the demo trip, not real OpenStreetMap data",
+ "note": "Illustrative points placed near the demo hotel so the map has something to show. Names and positions are invented; do not navigate by them. Real OpenStreetMap extracts replace this file in the NATIVE milestone.",
+ "center": {
+  "lat": 35.7148,
+  "lon": 139.7967
+ },
+ "pois": [
+  {
+   "id": "tyo-01",
+   "name": "Sample public toilets",
+   "lat": 35.7169,
+   "lon": 139.7955,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "id": "tyo-02",
+   "name": "Sample public toilets (park)",
+   "lat": 35.7114,
+   "lon": 139.8008,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "id": "tyo-03",
+   "name": "Sample drinking water tap",
+   "lat": 35.7157,
+   "lon": 139.7994,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "id": "tyo-04",
+   "name": "Sample drinking fountain",
+   "lat": 35.713,
+   "lon": 139.7937,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "id": "tyo-05",
+   "name": "Sample fuel station",
+   "lat": 35.721,
+   "lon": 139.7896,
+   "tags": {
+    "amenity": "fuel"
+   }
+  },
+  {
+   "id": "tyo-06",
+   "name": "Sample noodle restaurant",
+   "lat": 35.7161,
+   "lon": 139.7975,
+   "tags": {
+    "amenity": "restaurant",
+    "cuisine": "ramen"
+   }
+  },
+  {
+   "id": "tyo-07",
+   "name": "Sample cafe",
+   "lat": 35.7141,
+   "lon": 139.7952,
+   "tags": {
+    "amenity": "cafe"
+   }
+  },
+  {
+   "id": "tyo-08",
+   "name": "Sample fast food",
+   "lat": 35.7179,
+   "lon": 139.7986,
+   "tags": {
+    "amenity": "fast_food"
+   }
+  },
+  {
+   "id": "tyo-09",
+   "name": "Sample pharmacy",
+   "lat": 35.7124,
+   "lon": 139.7978,
+   "tags": {
+    "amenity": "pharmacy",
+    "healthcare": "pharmacy"
+   }
+  },
+  {
+   "id": "tyo-10",
+   "name": "Sample ATM",
+   "lat": 35.7164,
+   "lon": 139.7931,
+   "tags": {
+    "amenity": "atm"
+   }
+  },
+  {
+   "id": "tyo-11",
+   "name": "Sample bank",
+   "lat": 35.7107,
+   "lon": 139.7959,
+   "tags": {
+    "amenity": "bank"
+   }
+  },
+  {
+   "id": "tyo-12",
+   "name": "Sample hospital",
+   "lat": 35.7226,
+   "lon": 139.8021,
+   "tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital"
+   }
+  },
+  {
+   "id": "tyo-13",
+   "name": "Sample clinic",
+   "lat": 35.7096,
+   "lon": 139.803,
+   "tags": {
+    "amenity": "clinic"
+   }
+  },
+  {
+   "id": "tyo-14",
+   "name": "Sample train station",
+   "lat": 35.7083,
+   "lon": 139.7875,
+   "tags": {
+    "railway": "station",
+    "public_transport": "station"
+   }
+  },
+  {
+   "id": "tyo-15",
+   "name": "Sample bus station",
+   "lat": 35.7195,
+   "lon": 139.7946,
+   "tags": {
+    "amenity": "bus_station"
+   }
+  }
+ ]
+}

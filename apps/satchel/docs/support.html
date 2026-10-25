@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Satchel Support</title>
+<!-- OWNER: replace every SUPPORT_EMAIL marker below with the real support address before publishing. -->
+<style>
+  :root {
+    --paper: #F4F1EA; --card: #FFFFFF; --line: #DED8CC; --ink: #14213D; --muted: #6B7280;
+    --accent: #E07A2F; --accent-soft: #FBE7D6; --sea: #2A6F97; --warn: #A2620F;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0E1320; --card: #161C2C; --line: #2A3247; --ink: #EEF1F7; --muted: #A3ABBD;
+      --accent: #F29A5C; --accent-soft: #3A2516; --sea: #7DB7DA; --warn: #F0B45C;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 680px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; }
+  h2 { font-size: 20px; margin: 32px 0 8px; }
+  p { margin: 0 0 12px; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 0 18px; margin: 10px 0; }
+  summary { cursor: pointer; font-weight: 600; padding: 14px 0; min-height: 48px; list-style-position: outside; }
+  details[open] summary { border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+  details p:last-child { padding-bottom: 6px; }
+  .warn { border-left: 4px solid var(--warn); padding-left: 12px; }
+  a { color: var(--sea); }
+  .todo { background: var(--accent-soft); border: 1px dashed var(--accent); border-radius: 6px; padding: 0 6px; }
+  footer { color: var(--muted); font-size: 14px; margin-top: 40px; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Satchel Support</h1>
+  <p>Satchel keeps your trip, tickets, documents and emergency card on your phone, ready for flight mode. Answers to common questions are below.</p>
+
+  <h2>Questions</h2>
+
+  <details>
+    <summary>Does Satchel work offline or in flight mode?</summary>
+    <p>Yes for everything you have saved: trips, timelines, tickets and QR crops, the hotel address card, the document vault, packing lists, the emergency card and low-battery essentials mode are all stored on your phone and need no signal.</p>
+    <p>The map in this version uses your phone's built-in map service, so the map background needs a signal. Offline city maps you can download before you travel are planned and not available yet.</p>
+  </details>
+
+  <details>
+    <summary>Can I trust the emergency numbers?</summary>
+    <p class="warn">Treat them as a starting point and <strong>always verify them locally</strong> (for example with your hotel, airline, embassy or official government advice) before you rely on them. The list comes with the app so it works offline, but numbers change and some entries have not yet been checked against an official source.</p>
+    <p>In a real emergency, call the number you know works where you are.</p>
+  </details>
+
+  <details>
+    <summary>Where is my data stored? Is it backed up?</summary>
+    <p>On your phone only. Satchel has no account and no server. Your data is included in your phone's own backup if you use one. See the <a href="privacy.html">privacy policy</a>.</p>
+  </details>
+
+  <details>
+    <summary>How do I restore my purchase on a new phone?</summary>
+    <p>Satchel Plus is a one-time purchase linked to your Apple ID (or Google account). When the upgrade is available in the app, open <strong>Settings</strong> and tap <strong>Restore purchases</strong> while signed in with the same account you bought it with. You will not be charged again.</p>
+  </details>
+
+  <details>
+    <summary>Can I move a trip to another phone or share it?</summary>
+    <p>Not yet. Exporting a trip as a file that you can AirDrop or message to someone is coming in a future update.</p>
+  </details>
+
+  <details>
+    <summary>Face ID does not open my document vault</summary>
+    <p>Check that Face ID or a passcode is set up on your phone and that Satchel is allowed to use Face ID (Settings &gt; Satchel on iPhone). If your phone has no Face ID or passcode, the vault cannot be locked and Satchel tells you so.</p>
+  </details>
+
+  <details>
+    <summary>"Where am I?" does not show my location</summary>
+    <p>Satchel asks for location only when you tap <em>Where am I?</em>. If you said no earlier, turn location back on for Satchel in your phone's Settings. GPS can take longer to find you indoors or straight after turning on flight mode.</p>
+  </details>
+
+  <details>
+    <summary>Why are the map points labelled "sample data"?</summary>
+    <p>The demo trip shows invented sample points so you can try the map. They are not real places; do not navigate by them.</p>
+  </details>
+
+  <h2>Contact</h2>
+  <p>Email <span class="todo">SUPPORT_EMAIL</span>. Please include your phone model, iOS or Android version, and the Satchel version from Settings &gt; About. We usually reply within a few days.</p>
+
+  <footer>Satchel is a working title. <a href="privacy.html">Privacy policy</a>. This page contains no scripts, trackers or external resources.</footer>
+</main>
+</body>
+</html>
