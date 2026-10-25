@@ -4,8 +4,14 @@ Open Couch from **TestFlight** (it has the gold d-pad icon). It starts in demo m
 
 Please answer the yes/no questions first (copy them into a comment on the Couch build page); how to open Couch is below them.
 
+## New since your last test (25 Oct, over the air)
+Your own 25 Oct update (#92) went out over the air. It reaches the TestFlight 1.0.1 build by itself (restart Couch twice); a phone still on 1.0.0 gets it once 1.0.1 arrives.
+1. On a fresh install (or after deleting and reinstalling Couch), the Remote screen shows a small "Language: English · Change" line, and Change opens Settings with the language list open. yes / no
+2. Settings starts with Language, and there is no Couch Plus row, Buy button or "test build" text anywhere. yes / no
+3. Apps tab: turn on "Favourites only" with no favourites; it says why and "Show all apps" brings everything back in one tap. yes / no
+
 ## New since your last test (24 Oct, evening): Cast
-The current TestFlight build (1.0.0) and Expo Go run the Cast tab in demo mode. Casting to a real TV needs the TestFlight 1.0.1 build, which is on its way: the owner merged App-Projects PR #75 at 22:18Z 24 Oct (09:18 Sydney 25 Oct), so it should appear in TestFlight about 30-40 minutes later if the ship run passes. Update Couch from TestFlight when it shows 1.0.1.
+The current TestFlight build (1.0.0) and Expo Go run the Cast tab in demo mode. Casting to a real TV needs the TestFlight 1.0.1 build, which is on its way: the owner merged App-Projects PR #75 at 22:18Z 24 Oct (09:18 Sydney 25 Oct), so it should have appeared in TestFlight about 30-40 minutes later if the ship run passed. Expo's free plan ran out of iOS builds until 1 Nov (seen 25 Oct), so if TestFlight still shows 1.0.0, 1.0.1 arrives after 1 Nov. Update Couch from TestFlight when it shows 1.0.1.
 1. There is a new Cast tab next to Remote. "Choose photos and videos" opens your photo library, and the picked items show as a queue. yes / no
 2. Cast tab (demo TV): play/pause, next/previous, -10 s / +10 s on a video, and the slideshow with its interval chips all respond. yes / no
 3. While something is casting, the Remote tab shows a small "Casting" pill, and Play/Pause on the remote pauses the cast. yes / no
@@ -34,7 +40,7 @@ The current TestFlight build (1.0.0) and Expo Go run the Cast tab in demo mode. 
 Open Couch as described under "How to open Couch" below. Then copy these into a comment and answer each one. The Remote tab itself looks the same as last time on purpose. It changes only after your answers come back.
 1. Settings, TVs and Diagnostics have the new iPhone-style look (grouped rounded lists). Do they look right, with nothing cut off? yes / no
 2. Settings > Themes: tap a theme and the remote changes at once. "Try it" on a Plus theme works without buying. yes / no
-3. Settings > Couch Plus: the page reads clearly and nothing asks you to pay for a TV button. yes / no
+3. (Retired 25 Oct: Couch 1.0 sells nothing, so the Couch Plus row is hidden.) Nothing anywhere asks you to pay for a TV button. yes / no
 4. TVs > Add a TV: the scan sheet scrolls, and "Lost your remote?" opens a help page. yes / no
 5. Apps tab > Edit: you can pin apps and drag to reorder them, and the order stays after you close the app. yes / no
 6. iPhone Settings > Accessibility > Display & Text Size > Larger Text, turned up high: the remote and sheets still fit, with text wrapping and nothing cut off. yes / no

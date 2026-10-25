@@ -1,7 +1,7 @@
 {
   "app": "tvremote",
   "title": "Couch (universal TV remote, working title)",
-  "updated": "2026-10-24",
+  "updated": "2026-10-25",
   "tasks": [
     {
       "id": "T01",
@@ -1239,7 +1239,7 @@
         "cast-1024"
       ],
       "priority": 1,
-      "note": "run 71: waiting, no 1.0.1 ship run yet (App-Projects main SHIP_BASE cfdfa5c, app.json 1.0.0; no new ship/couch-* branch since 20261024-1420)"
+      "note": "run 79: still waiting - ship result not readable; Expo free-plan iOS builds used up until 1 Nov (App-Projects 65b0733), so a refused 1.0.1 build would retry after 1 Nov. run 71: waiting, no 1.0.1 ship run yet"
     },
     {
       "id": "T96",
@@ -1276,6 +1276,31 @@
       ],
       "priority": 1,
       "note": "Records updated run 78; ship-run triage continues as T95."
+    },
+    {
+      "id": "T99",
+      "title": "D142-2: docs/RELEASE_CHECKLIST.md against App-Projects docs/RELEASE_STANDARD.md; tests/release-standard.test.ts tripwires (filters off, language line, no purchase/test-build copy while PLUS_FOR_SALE is false, exact expo-iap pin when selling)",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "release-standard"
+      ],
+      "priority": 1,
+      "note": "Run 80. Section 1 met by owner #92 + existing defaults; section 2 n/a in 1.0 (nothing sold); owner-only ASC items listed."
+    },
+    {
+      "id": "T100",
+      "title": "Release standard 2 for the version that sells Couch Plus: add expo-iap pinned exactly, real provider (both request key shapes, returned value + purchaseUpdatedListener, re-check getAvailablePurchases ~10 s, failure alert says nothing was charged + store codes, Restore beside Unlock, finishTransaction non-consumable), store-ready copy for app.plus.buyHint / core.plus.unavailable, inAppPurchases in store/listing.json, then PLUS_FOR_SALE = true",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "release-standard",
+        "plus"
+      ],
+      "priority": 3,
+      "hold": "G-price-1018",
+      "note": "Needs the owner's Couch Plus price and a native build (Expo iOS quota resets 1 Nov; D142-2: bundle the expo-iap pin with the next native build, after 1.0.1 lands per D133-1)."
     }
   ],
   "codex_delegable": [

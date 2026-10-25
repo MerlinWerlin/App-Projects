@@ -139,3 +139,7 @@
 - 2026-10-25 · oversight v136 D135-1 · followed · native files still held; PR #74 not yet merged.
 - 2026-10-25 · oversight v137 D135-1 · followed · native files still held; PR #74 not yet merged; no new directives.
 - 2026-10-25 · oversight v138 D135-1 · followed · native files still held; PR #74 not yet merged; no new directives.
+- 2026-10-25 · oversight v141 D141-1 · accepted · PR #74 merged (SHIP_BASE 724314e), D135-1 hold done; status headline + TRIAL.md say the native build is on its way. Ship run result not readable from the cloud (GitHub API not enabled for this session); no ship-failure report in the repo, so nothing to fix. Native files kept steady per D130-2 until the owner retests.
+- 2026-10-25 · oversight D142-1 · accepted · owner commit f0f1a71 (#91) 3-way applied cleanly ("sync from App-Projects f0f1a71"); 1159 core tests green.
+- 2026-10-25 · oversight D142-2 · accepted · GitHub API not reachable from this session (403), so the #74 build result can't be confirmed; TRIAL.md + status now say it may wait for the Mac-runner build or Expo's 1 Nov reset instead of "30-40 minutes".
+- 2026-10-25 · oversight D142-3 · accepted · docs/RELEASE_CHECKLIST.md written against RELEASE_STANDARD.md; JS-only gaps: §1 already met by #91, paywall already honest; REVIEW_NOTES gained the App Review information block (T141). Real expo-iap purchase (pinned) is T140, held for the next native build per D130-2.

@@ -1,12 +1,12 @@
 {
   "stage": "owner-tested",
   "trial_kit": true,
-  "oversight_seen": 140,
-  "tests": "1747 pass (bun, Jest-compatible)",
+  "oversight_seen": 142,
+  "tests": "1760 pass (bun, Jest-compatible)",
   "typecheck": "core clean; app/ and src/ui clean against offline stubs (new, D75-1); full app tsc with real types needs PC verification",
-  "last_run": "2026-10-25 09:51 Sydney (run 78)",
-  "headline": "TestFlight 1.0.1 (Cast) is on its way: PR #75 was merged 22:18Z 24 Oct (09:18 Sydney 25 Oct) and should reach TestFlight about 30-40 minutes later if the ship run passes.",
-  "next_for_owner": "1) Open Couch from TestFlight on your iPhone (Expo Go only works once the PC copy is on SDK 58) and answer the yes/no questions under 'New since your last test' in docs/TRIAL.md, starting with the new Cast questions (24 Oct evening), in a comment here. 2) When the next TestFlight build arrives, try casting a photo and a video to one of your TVs and say which TV it was; casting is not tested on a real TV yet. 3) Decide the Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (Market research below). Casting stays free either way. 4) Multicast entitlement: requested 24 Oct; when Apple's email arrives, say so in a comment.",
+  "last_run": "2026-10-25 13:51 Sydney (run 80)",
+  "headline": "Release checklist written: Couch meets the new App Factory release standard for 1.0 (your #92 language line and no-purchase fixes synced; nothing is sold in 1.0). The TestFlight 1.0.1 (Cast) native build may still be waiting on Expo's iOS build quota (resets 1 Nov); over-the-air updates such as #92 reach 1.0.1 builds only, so a phone still on 1.0.0 sees them once 1.0.1 arrives.",
+  "next_for_owner": "1) Open Couch from TestFlight and answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (new: 25 Oct language line / Show all, then the Cast questions) in a comment here. 2) For App Review: answer App Privacy ('Data Not Collected'), add the App Review contact, and record a short screen recording on your iPhone (launch and the main remote flow) - see docs/RELEASE_CHECKLIST.md. 3) Decide the Couch Plus price (proposal US$4.99 / A$7.99 one-time); Plus stays off sale in 1.0 until then. 4) Multicast entitlement: when Apple's email arrives, say so in a comment. Full install/typecheck needs PC verification (npm registry unreachable from the cloud this run).",
   "screenshots": {
     "dir": "store/screenshots/publish",
     "size": "1320x2868",
@@ -83,11 +83,11 @@
   },
   "ship": "native build needed: new native code (modules/media-server, modules/route-picker, expo-image-picker dependency + plugin), app.json version 1.0.0 -> 1.0.1 per docs/RELEASING.md (c). An OTA update alone reaches 1.0.0 phones with the Cast tab in demo-only mode (guarded, no crash).",
   "native_build_1_0_1": {
-    "state": "merged, ship run result not readable yet",
-    "checked": "2026-10-24 run 78 (22:51Z)",
+    "state": "merged; ship result unknown; Expo free-plan iOS build quota used up until 1 Nov",
+    "checked": "2026-10-25 run 80 (02:51Z): App-Projects SHIP_BASE 0f0b86c, RELEASE.json mode update (owner OTA #92); native result still not readable",
     "media-server": "not built yet",
     "route-picker": "not built yet",
     "expo-image-picker": "not built yet",
-    "note": "Oversight D140-1: App-Projects PR #75 'Ship Couch: 1.0.1 Cast tab' merged 22:18Z 24 Oct (main 99d31d4; apps/couch SHIP_BASE 447304e, app.json 1.0.1, RELEASE.json mode build). Run 78 (33 min after the merge) could not read the ship run's result: the gh API is not enabled for this repo in the session and the public Actions page served a stale list (newest ship #14, 23 Oct). D133-1/T95 triage waits for that result. Native files stay steady until the owner reports on 1.0.1. Guards verified by tests/cast-native-guard.test.ts (D133-2)."
+    "note": "Oversight D140-1: App-Projects PR #75 'Ship Couch: 1.0.1 Cast tab' merged 22:18Z 24 Oct (main 99d31d4; apps/couch SHIP_BASE 447304e, app.json 1.0.1, RELEASE.json mode build). Run 78 (33 min after the merge) could not read the ship run's result: the gh API is not enabled for this repo in the session and the public Actions page served a stale list (newest ship #14, 23 Oct). D133-1/T95 triage waits for that result. Native files stay steady until the owner reports on 1.0.1. Guards verified by tests/cast-native-guard.test.ts (D133-2). Run 79: App-Projects 65b0733 (Backspin, 00:49Z 25 Oct) says 'Expo free plan out of iOS builds until 1 Nov'; auto-ship advanced Couch SHIP_BASE to 0f0b86c at 23:25Z (records only). Whether the 1.0.1 build used one of the last builds or was refused is not visible here (gh API not enabled, public Actions page stale at 23 Oct). If it was refused, the 1.0.1 native build waits until the quota resets 1 Nov; no paid plan (hard rule)."
   }
 }

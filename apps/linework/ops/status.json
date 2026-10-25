@@ -1,18 +1,22 @@
 {
-  "tests": 629,
+  "tests": 804,
   "typecheck": "core only (registry unreachable) + offline strict UI typecheck (stubs) clean",
-  "last_run": "2026-10-23 11:35 Sydney",
+  "last_run": "2026-10-25 13:30 Sydney",
   "stage": "release-prep",
-  "oversight_seen": "1792709370-a644",
-  "headline": "Release set-up: 14-day free trial, then Linework Plus A$2.99 once — and the library is now 529 original templates with an instant-opening Templates screen. Your App Store Connect steps are below.",
+  "oversight_seen": "1792889450-02c6",
+  "headline": "In App Review — waiting on Apple; over-the-air updates ship automatically.",
   "next_for_owner": [
-    "Retest in Expo Go (docs/TRIAL.md 'New 22 Oct late'): Templates opens instantly; browse Animals 41, Faces 30, Still life 24, Places 28, Fantasy 24, Shapes 20, tattoo flash, Heroes 26 (new hero team), Game world 31; pick a mascot from docs/CAST.md.",
-    "App Store Connect: sign the Paid Apps agreement and add bank + tax details (Business).",
-    "Create the in-app purchase: Non-Consumable, Product ID com.jared797.linework.plus, A$2.99.",
-    "Put docs/privacy.html and docs/support.html online (GitHub Pages) and add the URLs.",
-    "Run TESTFLIGHT_PRECHECK.cmd first; if it fails, paste testflight-precheck.txt into a comment on this page. If it passes, run TESTFLIGHT_LINEWORK.cmd, then test a sandbox purchase in TestFlight.",
-    "Paste the listing from docs/STORE.md, add style (a) screenshots, submit for review."
+    "Linework is with App Review: watch App Store Connect for Apple's decision. If it is rejected for app behaviour, paste the rejection into a page comment.",
+    "Next App-Projects sync: bring apps/linework/store/listing.json review notes (#77/#79) to the build page so a later ship never reverts them.",
+    "Full install + tsc + expo export needs PC verification."
   ],
   "trial_kit": true,
-  "next_stage": "testflight"
+  "next_stage": "testflight",
+  "ship_base": "be6f0f8",
+  "ship_base_map": {
+    "2c99bfa": "e0bd1de",
+    "be6f0f8": "a05dff3"
+  },
+  "ship_base_note": "Build-page history was replaced by snapshots: e0bd1de (=App-Projects 0733a71, after SHIP_BASE 2c99bfa) and now a05dff3 (=App-Projects main be6f0f8, owner chat 24 Oct 18:30, #38). a05dff3 is the shipped tree; use it as auto-ship's merge base.",
+  "app_review": "in review (owner answered the information request in App-Projects #77/#79)"
 }

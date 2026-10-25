@@ -7,7 +7,7 @@ The app runs inside **Expo Go**, a free app that loads development builds from y
 3. **iPhone:** open Glaze from **Expo Go > Recently opened**, about 10 minutes after a new build.
 
 ## New since your last test (24 Oct night, run 104): fb-1024e, "good enough to ship"
-These need the **next TestFlight build** (auto-ship sends it). When it shows in TestFlight, install it, open Glaze once, then answer yes / no in a page comment.
+These need the **new TestFlight build** (you merged PR #74 on 25 Oct). The cloud can't see whether that build finished: App-Projects records that Expo's free iOS builds ran out on 25 Oct (they reset on 1 Nov), so if it isn't in TestFlight yet it is waiting for the GitHub Mac-runner build or the 1 Nov reset. Your #91 language-line fix rides along with it. When it shows in TestFlight, install it, open Glaze once, then answer yes / no in a page comment.
 
 - **A. Widgets in your theme:** open any theme and tap Apply this look (or save its wallpaper). Then long-press the Home Screen › + › Glaze. Do **all** the Glaze widgets in the gallery (Clock, Date, Little Line, Photo, habits) show that theme's colours, not white? yes / no. Add one to the Home Screen: same colours there? yes / no. Is the theme name gone from above the time? yes / no
 - **B. Icons, Shortcuts way (now the default):** Icons › Install. Is **Shortcuts** first and marked Recommended? yes / no. Follow the steps for two apps: does the "Next: <app>" line and progress bar guide you, and do both icons end up on the Home Screen? yes / no. Optional: try **Bulk install (beta)** — does Safari open and does **Profile Downloaded** appear in Settings? yes / no

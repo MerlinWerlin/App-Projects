@@ -4,6 +4,17 @@ Text to paste into App Store Connect > App Review Information > Notes, one secti
 Keep each section true to the build being submitted. Background and sources are in `docs/MARKET.md`
 ("Risk found").
 
+## App Review information (Apple's new-developer questions)
+
+Paste after the feature sections (release standard §3; same pattern as the other App Factory apps).
+
+1. Screen recording: supplied with the reply (physical iPhone, latest iOS): launch, pick a theme, make and install an icon with Shortcuts, add a Glaze widget, save a wallpaper, Plus Unlock and Restore.
+2. Purpose and audience: a home-screen customisation app for anyone who wants a matching look. It offers original themes with matching icons, themed widgets and wallpaper packs, plus a Live Photo maker from the user's own clip.
+3. Setup: no account, login or sample files needed; every theme is bundled. Icons are installed one app at a time with Apple's Shortcuts app, guided step by step in Glaze.
+4. External services: none for core functionality. Only Apple In-App Purchase (StoreKit) for the one-time Glaze Plus unlock. No server, accounts, analytics, ads or AI; photos and videos never leave the device.
+5. Regional differences: none; works the same in all regions (only the purchase price is localised).
+6. Regulated industry / third-party material: not applicable. All icons, themes and art are original or licensed (licences in the app's records); no brand logos or third-party characters.
+
 ## Icon install
 
 Since T138 (24 Oct) the guided Shortcuts method is the default and Recommended in every build; Bulk install (profile served to Safari) is an optional second card labelled beta, shown only while `PROFILE_INSTALL_ENABLED` is true. The owner's device test found the profile never reached Settings (Files route); the Safari route is unverified on a device. Advice for the first App Store submission: set the switch to false (Guideline 5.5).
