@@ -18,6 +18,7 @@ export const zhHans: NonNullable<LocaleMessages['plus']> = {
     unlock: '解锁（即将推出）',
     unlockHint: 'Glaze Plus 尚未开售',
     unavailable: 'Glaze Plus 将随商店版本推出。',
+    failed: '购买未完成，未扣任何费用。商店代码：{code}。',
     close: "关闭",
     restore: "恢复购买",
     restoreHint: "查找之前的 Glaze Plus 购买并重新解锁",

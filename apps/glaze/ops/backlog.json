@@ -1920,7 +1920,8 @@
       "priority": "high",
       "source": "oversight D142-3; release standard §2 (was R2)",
       "title": "Real Glaze Plus purchase with expo-iap pinned exactly: both request key styles (ios/android/apple/google), type in-app, wait on return value + purchaseUpdatedListener, re-check getAvailablePurchases ~10 s after failure, failure alert says nothing charged + store error codes, finishTransaction isConsumable false, Restore on the same sheet, no 'arrives with the store release' text in a store build. Behind an adapter so Expo Go keeps the mock. Also reword NSPhotoLibraryUsageDescription ('lock screen loops' -> 'Live Photos'). HELD until the #74 native build is on TestFlight (D130-2: one native change per build).",
-      "deps": []
+      "deps": [],
+      "note": "Run 113 (D143-1): TS prep done — src/core/iapFlow.ts (both request key styles, type in-app, returned value + purchaseUpdatedListener, ~10 s getAvailablePurchases re-check, store code in 'failed', finishTransaction isConsumable false, restore) with 10 mock tests; src/plus/iapStore.ts PlusStore adapter (not wired); PlusLockSheet shows plus.lock.failed (nothing charged + code, 11 languages). Remaining when the #74 build is on TestFlight: add pinned expo-iap, wire plusStore, drop 'coming soon' copy in store builds, reword NSPhotoLibraryUsageDescription."
     },
     {
       "id": "T141",

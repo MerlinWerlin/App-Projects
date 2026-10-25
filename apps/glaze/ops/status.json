@@ -1,11 +1,11 @@
 {
-  "tests": 1159,
-  "typecheck": "core only (registry unreachable): core typecheck 0; full install + tsc + expo export needs PC verification",
-  "last_run": "2026-10-25 14:10 Sydney",
+  "tests": 1169,
+  "typecheck": "core only (registry unreachable): core typecheck 0, UI stub typecheck 0; full install + tsc + expo export needs PC verification",
+  "last_run": "2026-10-25 18:12 Sydney",
   "stage": "owner-tested",
-  "oversight_seen": "v142 (1792896659-4563): D142-1 (synced #91), D142-2 (honest build status), D142-3 (RELEASE_CHECKLIST + T140/T141) handled; no patches",
+  "oversight_seen": "v144 (1792911032-a846): D144-1 (records-only runs until the #74 TestFlight build lands) followed; no patches",
   "headline": "Waiting for the next TestFlight build (themed widgets, Shortcuts icon install, Live Photo maker): Expo's free iOS builds ran out on 25 Oct, so it comes via the Mac-runner build or after 1 Nov",
   "next_for_owner": "1) The new Glaze TestFlight build (PR #74) may be held by Expo's free build limit until 1 Nov or the Mac-runner build; when it shows in TestFlight, install it and answer A-D in docs/TRIAL.md 'New since your last test': A) all Glaze widgets in your theme's colours, no theme name? B) Icons > Install: Shortcuts first and guiding you app by app (Bulk install is now an optional beta)? C) Live > Save as Live Photo > Photos > Share > Use as Wallpaper: does it move when you wake the phone, and is the old player gone? D) Art themes and the seamless widget. 2) Keep the glaze-drip icon, or mascot 1, 2 or 3? 3) Glaze Plus price: proposal US$4.99 / A$7.99 one-time. (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud.)",
   "trial_kit": true,
-  "trial_kit_commit": "a511f83 (run 112 tree)"
+  "trial_kit_commit": "a757a20 (run 113 tree)"
 }

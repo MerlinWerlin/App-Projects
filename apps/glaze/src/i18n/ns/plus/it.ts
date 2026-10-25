@@ -18,6 +18,7 @@ export const it: NonNullable<LocaleMessages['plus']> = {
     unlock: 'Sblocca (in arrivo)',
     unlockHint: 'Glaze Plus non è ancora in vendita',
     unavailable: 'Glaze Plus arriva con la versione dello store.',
+    failed: 'L’acquisto non è andato a buon fine e non è stato addebitato nulla. Codice store: {code}.',
     close: "Chiudi",
     restore: "Ripristina acquisti",
     restoreHint: "Cerca un acquisto precedente di Glaze Plus e lo sblocca di nuovo",

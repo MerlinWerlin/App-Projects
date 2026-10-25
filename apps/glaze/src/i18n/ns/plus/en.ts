@@ -17,6 +17,7 @@ export const en = {
     unlock: 'Unlock (coming soon)',
     unlockHint: 'Glaze Plus is not on sale yet',
     unavailable: 'Glaze Plus arrives with the store release.',
+    failed: 'The purchase didn’t go through and nothing was charged. Store code: {code}.',
     close: "Close",
     restore: "Restore purchases",
     restoreHint: "Checks for an earlier Glaze Plus purchase and unlocks it again",

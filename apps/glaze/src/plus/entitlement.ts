@@ -4,12 +4,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCallback, useEffect, useState } from 'react';
 
-export type PurchaseResult = 'purchased' | 'cancelled' | 'unavailable';
+export type PurchaseResult = 'purchased' | 'cancelled' | 'unavailable' | 'failed';
 
 export interface PlusStore {
   isPlus(): Promise<boolean>;
   purchase(): Promise<PurchaseResult>;
   restore(): Promise<boolean>;
+  /** Real store only (src/plus/iapStore.ts): store error code of the last 'failed' purchase. */
+  lastFailureCode?(): string | null;
 }
 
 export const PLUS_MOCK_KEY = 'glaze.plus.mock.v1';

@@ -18,6 +18,7 @@ export const ja: NonNullable<LocaleMessages['plus']> = {
     unlock: 'ロック解除（近日公開）',
     unlockHint: 'Glaze Plus はまだ販売されていません',
     unavailable: 'Glaze Plus はストア版で提供されます。',
+    failed: '購入は完了せず、料金は請求されていません。ストアコード: {code}。',
     close: "閉じる",
     restore: "購入を復元",
     restoreHint: "以前の Glaze Plus の購入を確認して、もう一度ロックを解除します",

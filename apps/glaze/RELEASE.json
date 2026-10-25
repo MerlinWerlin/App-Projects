@@ -1,6 +1,6 @@
 {
-  "mode": "build",
-  "note": "Glaze: theme art packs with seamless widgets, guided Shortcuts icon install by default, honest Live Photo copy; continuous Lock Screen loop parked",
+  "mode": "update",
+  "note": "Glaze: purchase flow prepared behind the mock (failed purchase says nothing was charged and shows the store code)",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

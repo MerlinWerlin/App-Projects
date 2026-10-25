@@ -18,6 +18,7 @@ export const hi: NonNullable<LocaleMessages['plus']> = {
     unlock: 'अनलॉक करें (जल्द आ रहा है)',
     unlockHint: 'Glaze Plus अभी बिक्री पर नहीं है',
     unavailable: 'Glaze Plus स्टोर रिलीज़ के साथ आएगा।',
+    failed: 'खरीदारी पूरी नहीं हुई और कोई शुल्क नहीं लिया गया। स्टोर कोड: {code}।',
     close: "बंद करें",
     restore: "खरीदारी वापस लाएँ",
     restoreHint: "पहले की Glaze Plus खरीदारी ढूँढकर उसे फिर से अनलॉक करता है",

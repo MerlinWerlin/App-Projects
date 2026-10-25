@@ -18,6 +18,7 @@ export const ar: NonNullable<LocaleMessages['plus']> = {
     unlock: 'فتح (قريبًا)',
     unlockHint: 'Glaze Plus غير معروض للبيع بعد',
     unavailable: 'يصل Glaze Plus مع إصدار المتجر.',
+    failed: 'لم تكتمل عملية الشراء ولم يتم خصم أي مبلغ. رمز المتجر: {code}.',
     close: "إغلاق",
     restore: "استعادة المشتريات",
     restoreHint: "يبحث عن شراء سابق لـ Glaze Plus ويفتحه مرة أخرى",

@@ -12,7 +12,7 @@ import { haptic } from '../ui/haptics';
 import { textStyleFor } from '../ui/i18nLayout';
 import { PillButton } from '../ui/PillButton';
 import { Sheet } from '../ui/Sheet';
-import { PLUS_PRICE, usePlus } from './entitlement';
+import { PLUS_PRICE, plusStore, usePlus } from './entitlement';
 import { RestorePurchases } from './RestorePurchases';
 
 type Props = {
@@ -67,6 +67,12 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
         setMessage(null);
         onUnlocked?.();
         onClose();
+      } else if (res === 'failed') {
+        // T140 prep: real store failure says nothing was charged and shows the store code.
+        const code = plusStore.lastFailureCode?.() ?? 'unknown';
+        haptic('warning');
+        setMessage(t('plus.lock.failed', { code }));
+        announce(t('plus.lock.failed', { code }));
       } else if (res === 'unavailable') {
         // Never silent (night 23 Oct, from Linework fb-1023 "Unlock Plus did nothing"): felt, shown and spoken on every tap.
         haptic('warning');
