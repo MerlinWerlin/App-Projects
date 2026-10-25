@@ -6,3 +6,4 @@
 - 2026-10-24 Claude: money model changed per Jared: 10 free goes with everything, then a lifetime unlock at A$1.99 (OutOfGoes screen, home counter, Plus copy); paywall strings re-translated by Luna.
 - 2026-10-24 Claude: premium 'Look' skins (same layout): skin system (fonts, radii, card finish, gradients, glow, disc colours), 6 skins designed by StarNet Luna, contrast-checked by skins.test.ts; picker in Settings > Look. Booth's coral darkened for AA contrast.
 - 2026-10-24 Claude: added 3 skins designed by gpt-6.1-sol (Walnut Room, Night Glass, Electric Sorbet); 10 looks in total.
+- 2026-10-25 Claude: fixed clipped emojis everywhere (owner feedback: Packs, Party mic, Takes disc). T now gives oversized text a matching line height; icon emojis use the new Emoji component. Check workflow passes (typecheck, 21 tests, iOS+Android bundle). Shipped as a new TestFlight build (the first build has no OTA update URL).
