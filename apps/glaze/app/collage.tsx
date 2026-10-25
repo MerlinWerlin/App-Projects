@@ -197,7 +197,7 @@ export default function CollageScreen() {
   const card = [styles.card, { backgroundColor: c.surface, borderColor: c.separator }];
 
   return (
-    <ScrollView contentContainerStyle={styles.content} style={{ backgroundColor: c.bg }}>
+    <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.content} style={{ backgroundColor: c.bg }}>
       <Text style={[tt.body, { color: c.inkSecondary }]}>{t('wallpaper.collage.intro')}</Text>
 
       <View style={styles.previewWrap}>
@@ -241,7 +241,7 @@ export default function CollageScreen() {
           <Text accessibilityRole="header" style={[tt.heading, { color: c.ink }]}>
             {t('wallpaper.collage.layout')}
           </Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips} accessibilityRole="radiogroup" accessibilityLabel={t('wallpaper.collage.layout')}>
+          <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips} accessibilityRole="radiogroup" accessibilityLabel={t('wallpaper.collage.layout')}>
             {layouts.map((l) => (
               <LayoutChip
                 key={l.id}

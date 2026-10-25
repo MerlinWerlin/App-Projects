@@ -3,7 +3,7 @@ import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ja: NonNullable<LocaleMessages['live']> = {
   tab: {
-    subtitle: '自分のビデオを Live Photos の壁紙に。',
+    subtitle: '自分のビデオを Live Photos に。',
     newLoop: 'ビデオまたはGIFから新しいループ',
     opening: '開いています…',
     pickHint: '写真ライブラリを開いてビデオまたはGIFを選びます',

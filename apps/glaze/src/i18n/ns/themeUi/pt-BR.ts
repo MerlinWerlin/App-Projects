@@ -68,8 +68,8 @@ export const ptBR: NonNullable<LocaleMessages['themeUi']> = {
       body: 'Beta opcional: um único perfil instala todo o seu conjunto de uma vez em Ajustes. O método guiado com Atalhos é o padrão e sempre funciona.',
     },
     'live-lock': {
-      title: 'Crie um papel de parede Live Photo',
-      body: 'Transforme um vídeo em Live Photo na aba Live. Defina pelo Fotos › Compartilhar › Usar como Papel de Parede; ela se move quando você desperta o iPhone.',
+      title: 'Crie uma Live Photo',
+      body: 'Transforme um vídeo em Live Photo na aba Live. Ela se move no Fotos; como papel de parede, o iPhone muitas vezes a deixa parada.',
     },
     'theme-pick': {
       title: 'Comece com um tema',
@@ -101,7 +101,7 @@ export const ptBR: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-loop': {
       title: 'Como as Live Photos se movem',
-      body: 'Um papel de parede Live Photo se move quando você desperta ou pressiona a Tela Bloqueada; não é um loop contínuo. O Expo Go mostra só uma prévia.',
+      body: 'Uma Live Photo se move quando você a pressiona no Fotos; não é um loop contínuo. Como papel de parede, o iPhone pode dizer que o movimento não está disponível.',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

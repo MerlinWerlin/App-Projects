@@ -45,8 +45,8 @@ export const en = {
       body: 'Optional beta: one profile installs your whole set at once in Settings. The guided Shortcuts method is the default and always works.',
     },
     liveLock: {
-      title: 'Make a Live Photo wallpaper',
-      body: 'Turn a video into a Live Photo on the Live tab. Set it from Photos › Share › Use as Wallpaper; it moves when you wake your iPhone.',
+      title: 'Make a Live Photo',
+      body: 'Turn a video into a Live Photo on the Live tab. It moves in Photos; as a wallpaper, iPhone often keeps app-made Live Photos still.',
     },
     themePick: {
       title: 'Start from a theme',
@@ -78,7 +78,7 @@ export const en = {
     },
     liveLoop: {
       title: 'How Live Photos move',
-      body: 'A Live Photo wallpaper moves when you wake or press the Lock Screen; it isn’t a constant loop. Expo Go shows a preview only.',
+      body: 'A Live Photo moves when you press it in Photos; it isn’t a constant loop. As a wallpaper, iPhone may say Motion not available.',
     },
   },
 } as const;

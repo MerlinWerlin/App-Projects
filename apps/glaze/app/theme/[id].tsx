@@ -19,7 +19,7 @@ import {
   type LayoutChangeEvent,
   type TextStyle,
 } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import {
@@ -73,7 +73,7 @@ import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { loadBackground } from '../../src/store/background';
 import { setThemeShape, themeShapeFor } from '../../src/core/studio';
 import { setStudioStyle, useStudio } from '../../src/store/studio';
-import { durations, easeOutCurve, springConfig, useMotionReduced } from '../../src/theme/motion';
+import { durations, easeOutCurve, useMotionReduced } from '../../src/theme/motion';
 import { continuous, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { HOME_ASPECT, HomeMock } from '../../src/ui/HomeMock';
@@ -551,7 +551,7 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
   return (
     <View style={[styles.root, { backgroundColor: c.bg }]}>
       <Stack.Screen options={{ title: theme.name, headerTintColor: c.tint }} />
-      <ScrollView
+      <ScrollView bounces={false} overScrollMode="never"
         ref={scrollRef}
         onLayout={(e: LayoutChangeEvent) => {
           viewportH.current = e.nativeEvent.layout.height;
@@ -1127,7 +1127,7 @@ type SuccessBloomProps = { playKey: number; reduced: boolean; title: string; bod
 
 /**
  * T61: the success moment once all three steps are ticked. A check blooms out of a soft ring
- * (spring scale + fading halo); with Reduce Motion it simply fades in. The haptic and the VoiceOver
+ * (timed fade + fading halo, no spring); with Reduce Motion it simply fades in. The haptic and the VoiceOver
  * announcement fire from the screen when the moment is due. playKey 0 = shown without animation.
  */
 function SuccessBloom({ playKey, reduced, title, body }: SuccessBloomProps) {
@@ -1145,8 +1145,8 @@ function SuccessBloom({ playKey, reduced, title, body }: SuccessBloomProps) {
       halo.value = 0;
       return;
     }
-    scale.value = 0.4;
-    scale.value = withSpring(1, springConfig);
+    scale.value = 0.85;
+    scale.value = withTiming(1, { duration: durations.base, easing: easeOutCurve });
     halo.value = 1;
     halo.value = withTiming(0, { duration: durations.slow, easing: easeOutCurve });
   }, [playKey, reduced, shown, scale, halo]);
@@ -1201,7 +1201,7 @@ function WidgetPreviews({ theme }: { theme: Theme }) {
           {t('theme.widgetPreviews.title')}
         </Text>
         <Text style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{t('theme.widgetPreviews.body')}</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.widgetRow}>
+        <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.widgetRow}>
           {items.map((spec) => (
             <Pressable
               key={spec.id}

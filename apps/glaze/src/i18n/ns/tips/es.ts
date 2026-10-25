@@ -47,8 +47,8 @@ export const es: NonNullable<LocaleMessages['tips']> = {
       body: 'Beta opcional: un solo perfil instala todo tu set de una vez en Ajustes. El método guiado con Atajos es el predeterminado y siempre funciona.',
     },
     liveLock: {
-      title: 'Crea un fondo Live Photo',
-      body: 'Convierte un vídeo en Live Photo en la pestaña Live. Ponlo desde Fotos › Compartir › Usar como fondo; se mueve al activar el iPhone.',
+      title: 'Crea una Live Photo',
+      body: 'Convierte un vídeo en Live Photo en la pestaña Live. Se mueve en Fotos; como fondo, el iPhone suele dejar fijas las creadas por apps.',
     },
     themePick: {
       title: 'Empieza con un tema',
@@ -80,7 +80,7 @@ export const es: NonNullable<LocaleMessages['tips']> = {
     },
     liveLoop: {
       title: 'Cómo se mueven las Live Photos',
-      body: 'Un fondo Live Photo se mueve al activar o pulsar la pantalla bloqueada; no es un bucle continuo. Expo Go solo muestra una vista previa.',
+      body: 'Una Live Photo se mueve al pulsarla en Fotos; no es un bucle continuo. Como fondo, el iPhone puede decir que el movimiento no está disponible.',
     },
   },
 };

@@ -12,7 +12,7 @@ import { haptic } from '../ui/haptics';
 import { textStyleFor } from '../ui/i18nLayout';
 import { PillButton } from '../ui/PillButton';
 import { Sheet } from '../ui/Sheet';
-import { PLUS_PRICE, plusStore, usePlus } from './entitlement';
+import { PLUS_PURCHASABLE, plusStore, usePlus, usePlusPrice } from './entitlement';
 import { RestorePurchases } from './RestorePurchases';
 
 type Props = {
@@ -20,7 +20,7 @@ type Props = {
   onClose: () => void;
   /** What the person tried to open, already translated, e.g. "the Tenmoku theme". */
   subject?: string;
-  /** Called after a successful (dev) unlock. */
+  /** Called after a successful unlock (App Store purchase, or the dev mock). */
   onUnlocked?: () => void;
 };
 
@@ -51,6 +51,14 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
   const mint = c.pastels.mint;
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  // T152: the App Store's localised price once loaded (fallback A$2.99).
+  const price = usePlusPrice();
+
+  const showFailed = (code: string) => {
+    haptic('warning');
+    setMessage(t('plus.lock.failed', { code }));
+    announce(t('plus.lock.failed', { code }));
+  };
 
   const close = () => {
     setMessage(null);
@@ -68,11 +76,12 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
         onUnlocked?.();
         onClose();
       } else if (res === 'failed') {
-        // T140 prep: real store failure says nothing was charged and shows the store code.
-        const code = plusStore.lastFailureCode?.() ?? 'unknown';
-        haptic('warning');
-        setMessage(t('plus.lock.failed', { code }));
-        announce(t('plus.lock.failed', { code }));
+        // Real store failure says nothing was charged and shows the store code.
+        showFailed(plusStore.lastFailureCode?.() ?? 'unknown');
+      } else if (res === 'pending') {
+        // Ask to Buy / bank check: Plus unlocks by itself when StoreKit finishes it.
+        setMessage(t('plus.lock.pending'));
+        announce(t('plus.lock.pending'));
       } else if (res === 'unavailable') {
         // Never silent (night 23 Oct, from Linework fb-1023 "Unlock Plus did nothing"): felt, shown and spoken on every tap.
         haptic('warning');
@@ -81,8 +90,13 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
       }
     } catch {
       haptic('warning');
-      setMessage(t('plus.lock.unavailable'));
-      announce(t('plus.lock.unavailable'));
+      if (PLUS_PURCHASABLE) {
+        // A native build with the store never shows the test-version line (T152).
+        showFailed('unknown');
+      } else {
+        setMessage(t('plus.lock.unavailable'));
+        announce(t('plus.lock.unavailable'));
+      }
     } finally {
       setBusy(false);
     }
@@ -92,7 +106,7 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
     <Sheet visible={visible} onClose={close} title={BRAND} closeLabel={t('plus.lock.close')}>
       <Text style={[...tt.body, { color: c.ink }]}>
         {subject ? `${t('plus.lock.subjectIntro', { subject })} ` : ''}
-        {t('plus.lock.price', { price: PLUS_PRICE })}
+        {t('plus.lock.price', { price })}
       </Text>
 
       <View style={styles.list}>
@@ -138,11 +152,11 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
       <View style={styles.actions}>
         <PillButton label={t('plus.lock.notNow')} variant="plain" onPress={close} style={styles.flex} />
         <PillButton
-          label={busy ? t('plus.lock.oneMoment') : t('plus.lock.unlock')}
+          label={busy ? t('plus.lock.oneMoment') : PLUS_PURCHASABLE ? t('plus.lock.unlockBuy', { price }) : t('plus.lock.unlock')}
           icon="star"
           busy={busy}
           onPress={() => void onUnlock()}
-          accessibilityHint={t('plus.lock.unlockHint')}
+          accessibilityHint={PLUS_PURCHASABLE ? t('plus.lock.buyHint') : t('plus.lock.unlockHint')}
           style={styles.flex}
         />
       </View>

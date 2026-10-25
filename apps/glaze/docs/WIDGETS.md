@@ -45,6 +45,32 @@ No UI calls `setPhoto` yet (a picker in Settings or the theme flow is a follow-u
 The App Group `group.com.jared797.glaze` is added to the app by `native-plugins/widgets.json` and to the
 extension by `targets/widget/expo-target.config.js`.
 
+## Link check (T146, fb-1025 A)
+
+`setTheme` returns true even without the App Group entitlement (`UserDefaults(suiteName:)` is never
+nil), so a phone could not tell whether the app and the widgets actually share data. Now:
+
+- **Extension** (`ThemeStore.load()`, every timeline / snapshot / placeholder): writes
+  `{"at": ISO time, "themeId": …, "source": "defaults" | "file" | "fallback"}` as a JSON string to
+  App Group UserDefaults key `glaze.widget.lastRead.v1`. If the extension lacks the App Group, the
+  write lands in its private defaults and the app never sees it.
+- **Bridge** `linkStatus()` (read-only): `containerOk` (the app can open the App Group container),
+  `themeStored` (`glaze.theme.v1` present), `lastRead` (the string above or `""`) and `storedTheme`.
+- **Adapter** `widgets.linkStatus()` (`src/native/widgets.ts`): `{ available: false }` in Expo Go,
+  on Android and without the module; `{ available: true, supported: false }` for a build whose
+  bridge predates T146 (unknown). Never throws.
+- **Verdict** `widgetLinkVerdict(status, expectedThemeId, now)` (`src/core/widgetLink.ts`, tested):
+  `expoGo` / `unknown` (nothing shown) → `noAppGroup` (no container, or the widgets drew the
+  fallback after the app stored a theme) → `notReadYet` (no widget read visible yet) → `stale`
+  (last read before the latest apply's `updatedAt`) → `wrongTheme` → `ok`.
+- **Widgets tab**: one footnote line under the theme chips, native iOS builds only, checked on
+  focus and 3 s after each theme pick (`src/store/widgetLink.ts`).
+
+Reading a retest: "Home Screen widgets linked" means the widgets drew the app's theme. "App Group
+missing" means the entitlement or provisioning profile is wrong on the app or the extension
+(check both in the build's Signing & Capabilities). "Add a Glaze widget…" that stays after a widget
+is on the Home Screen also points at the extension's App Group. Not yet confirmed on a device.
+
 ## Theme JSON schema (v1)
 
 Stored as a JSON string. Source of truth: `src/core/widgetTheme.ts`; mirrored by `WidgetTheme` in

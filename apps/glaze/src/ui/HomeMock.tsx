@@ -2,7 +2,7 @@
 // page dots and a dock). Purely visual: one accessible image for screen readers.
 // T107 (fb-1022-perf): the apply ripple / pop no longer re-mounts every icon on each replay (keys
 // carried the replay counter, so 24 SVG icon tiles were torn down and rebuilt at once). Icons
-// keep stable keys; each cell runs its own UI-thread spring (transform scale + opacity only).
+// keep stable keys; each cell runs its own UI-thread timed fade (opacity only, no spring).
 // T118 (fb-1024 B): gallery cards pass `still`: the icons are plain views (no per-icon shared value
 // or animated style, no shape-morph effect), and the monogram pass over the specs is cached per
 // specs array. A gallery card used to register ~24 animated styles just to sit still.
@@ -10,13 +10,13 @@
 import { Feather } from '@expo/vector-icons';
 import { memo, useEffect, useId, useMemo, type ReactNode } from 'react';
 import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSpring } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { fitDelays, rippleDelays, staggerDelay } from '../core/motion';
 import { withMonogram, type IconSpec } from '../core/iconspec';
 import { weakMemo } from '../core/perfCache';
 import { IconTile } from '../render/IconTile';
-import { durations, springConfig, useMotionReduced } from '../theme/motion';
+import { durations, timing, useMotionReduced } from '../theme/motion';
 import { fonts, light, tabular } from '../theme/tokens';
 import { CustomisedBadge } from './CustomisedBadge';
 import { useT } from '../i18n';
@@ -256,10 +256,10 @@ export function HomeMock({
 type PopCellProps = {
   children: ReactNode;
   style: StyleProp<ViewStyle>;
-  /** Spring in (pop / ripple); false = simply shown. */
+  /** Calm timed fade-in (ripple); false = simply shown. No spring (D145-1). */
   animate: boolean;
   delay: number;
-  /** Changing it replays the spring without re-mounting the icon. */
+  /** Changing it replays the fade without re-mounting the icon. */
   playKey: string | number;
 };
 
@@ -272,11 +272,11 @@ const PopCell = memo(function PopCell({ children, style, animate, delay, playKey
       return;
     }
     p.value = 0;
-    p.value = withDelay(delay, withSpring(1, springConfig));
+    p.value = withDelay(delay, withTiming(1, timing.base));
   }, [animate, delay, playKey, p]);
   const anim = useAnimatedStyle(() => ({
     opacity: Math.min(1, p.value * 1.5),
-    transform: [{ scale: 0.3 + 0.7 * p.value }],
+    transform: [{ scale: 0.92 + 0.08 * p.value }],
   }));
   return <Animated.View style={[style, anim]}>{children}</Animated.View>;
 });

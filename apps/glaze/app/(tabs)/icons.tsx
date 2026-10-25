@@ -211,7 +211,7 @@ export default function IconsScreen() {
 
   return (
     <View style={[styles.root, { backgroundColor: c.bg }]}>
-      <Animated.ScrollView
+      <Animated.ScrollView bounces={false} overScrollMode="never"
         onScroll={onScroll}
         scrollEventThrottle={16}
         contentInsetAdjustmentBehavior="never"
@@ -336,7 +336,7 @@ export default function IconsScreen() {
           />
           {query ? <SmallIconButton icon="x-circle" accessibilityLabel={t('icons.clearSearch')} onPress={() => setQuery('')} /> : null}
         </View>
-        <ScrollView
+        <ScrollView bounces={false} overScrollMode="never"
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.catRow}

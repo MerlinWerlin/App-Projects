@@ -440,7 +440,7 @@ const SeasonalBanner = memo(function SeasonalBanner({
           </Text>
           <Text style={[...typeFor(script, 'footnote'), { color: c.pastels.peach.ink }]}>{t('themes.season.subtitle')}</Text>
         </View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.seasonRow}>
+        <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.seasonRow}>
           {collections.map(({ id, themes }) => {
             const on = selected === id;
             const label = t(`themes.season.${id}`);
@@ -501,7 +501,7 @@ const StoryChips = memo(function StoryChips({
   const { c } = useColorsV2();
   const { t, script } = useT();
   return (
-    <ScrollView
+    <ScrollView bounces={false} overScrollMode="never"
       horizontal
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={styles.chipRow}
@@ -784,7 +784,7 @@ export default function ThemesScreen() {
 
   return (
     <View style={[styles.root, { backgroundColor: c.bg }]}>
-      <Animated.ScrollView
+      <Animated.ScrollView bounces={false} overScrollMode="never"
         contentContainerStyle={[styles.scroll, { paddingTop: insets.top + sizeV2.navBar }]}
         contentInsetAdjustmentBehavior="never"
         onLayout={onViewportLayout}

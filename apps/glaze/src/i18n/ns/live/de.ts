@@ -3,7 +3,7 @@ import type { LocaleMessages } from '../../catalogue.ts';
 
 export const de: NonNullable<LocaleMessages['live']> = {
   tab: {
-    subtitle: 'Mach aus deinem eigenen Video einen Live-Photo-Hintergrund.',
+    subtitle: 'Mach aus deinem eigenen Video ein Live Photo.',
     newLoop: 'Neuer Loop aus Video oder GIF',
     opening: 'Wird geöffnet…',
     pickHint: 'Öffnet deine Mediathek, um ein Video oder GIF auszuwählen',

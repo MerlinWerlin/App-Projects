@@ -12,21 +12,22 @@ device from the cloud.
 - [x] Filters start off: Themes and Wallpapers open on "All"; empty Liked/New lists say why and offer "Show all" (#91).
 
 ## 2. Purchases
-Glaze has **no real purchase code yet**: Plus is an on-device mock (`src/plus/entitlement.ts`) — non-dev builds answer
-"Glaze Plus arrives with the store release". Real purchases are task **T140** (was release task R2), held for the
-next native build because adding expo-iap is a package.json/native change (D130-2: one native change per TestFlight
-build). T140 must cover every line below.
-- [ ] expo-iap pinned to an exact version — T140
-- [ ] Request sends both key styles (`ios/android/apple/google`), `type: 'in-app'` — T140
-- [ ] Waits on the returned value and `purchaseUpdatedListener`; a listener error never ends a still-running attempt — T140
-- [ ] After a failure/empty result, re-checks `getAvailablePurchases()` for up to ~10 s — T140
-- [ ] Failure alert says nothing was charged and shows the store error code(s) — T140 (the mock already never fails silently)
-- [x] Restore purchases on the same sheet as Unlock (`PlusLockSheet`, `RestorePurchases`)
-- [ ] `finishTransaction({ isConsumable: false })` — T140
+T152 (owner, 25 Oct; supersedes T140): Glaze Plus is a real **StoreKit 2** purchase through Glaze's own local module
+`modules/glaze-store` (no npm package; expo-iap is not used). Product id `com.jared797.glaze.plus`, non-consumable,
+A$2.99 one-time. It is linked only in native builds (`production-native`, `development`, `preview`); Expo Go, Android and
+the plain `production` profile keep the honest mock. App Store Connect steps: `docs/IAP_SANDBOX.md`. Not yet compiled.
+- [x] No npm package added; local Expo module, adapter `src/native/store.ts` never throws (`requireOptionalNativeModule`)
+- [x] `Product.products(for:)` + `product.purchase()`; verified transactions `finish()`ed; `Transaction.updates` listener
+- [x] After a failure, re-checks `Transaction.currentEntitlements` before showing the failure (`buyPlus`, src/core/plusStoreKit.ts)
+- [x] Failure line says nothing was charged and shows the store code; cancel is silent; Ask to Buy says it is waiting
+- [x] Restore purchases on the same sheet as Unlock (`AppStore.sync()` then entitlements)
+- [x] Shows the App Store's localised price once loaded (fallback A$2.99)
 - [n/a] Free trial — Glaze is a one-time unlock with a generous free tier; no trial planned
 - [x] Paywall promises only built features (#91 removed "Theme clips for Live Photos"); tip jar hidden outside dev builds (#91)
-- [ ] No "arrives with the store release" text in a store build — T140 replaces the mock before submission
-- [ ] Owner: on TestFlight, buy Plus (sandbox) and Restore on a real iPhone
+- [x] No "can't buy in this test version" text in a native build with the store module (only the mock path says it)
+- [ ] Owner: create the In-App Purchase in App Store Connect (`docs/IAP_SANDBOX.md`)
+- [ ] Owner: on TestFlight (`production-native` build), buy Plus (sandbox) and Restore on a real iPhone
+- [ ] Android: Google Play Billing not built (Android keeps the mock)
 
 ## 3. App Store Connect
 - [x] Store copy drafted in `docs/STORE.md` (no competitor names, no live-wallpaper promise); privacy page `docs/privacy.html`

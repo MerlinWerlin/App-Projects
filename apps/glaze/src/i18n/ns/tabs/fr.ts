@@ -25,6 +25,15 @@ export const fr: NonNullable<LocaleMessages['tabs']> = {
     soon: 'Bientôt',
     soonA11y: '{kind}, {size}. Bientôt disponible.',
     lockNote: 'Les widgets de l’écran verrouillé ne sont pas encore prêts. Ceux-ci arrivent bientôt.',
+    // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
+    link: {
+      ok: 'Widgets de l’écran d’accueil connectés',
+      noAppGroup: 'Vos widgets ne voient pas Glaze dans cette version (App Group manquant). Dites-le-nous dans les commentaires TestFlight.',
+      notReadYet: 'Ajoutez un widget Glaze à votre écran d’accueil, puis revenez ici.',
+      stale: 'Vos widgets n’ont pas encore pris le dernier thème. Si cela persiste, dites-le-nous dans les commentaires TestFlight.',
+      wrongTheme: 'Vos widgets affichent un autre thème. Choisissez à nouveau le thème ; si cela persiste, dites-le-nous dans les commentaires TestFlight.',
+      a11y: 'Vérification des widgets : {status}',
+    },
     // T86: Habit goals screen (app/habit-goals.tsx) and the goal chip under habit cards.
     goals: {
       title: 'Objectifs du jour',
@@ -56,7 +65,7 @@ export const fr: NonNullable<LocaleMessages['tabs']> = {
     },
   },
   wallpapersTab: {
-    subtitle: 'Fonds d’écran fixes et animés pour l’écran verrouillé et l’écran d’accueil.',
+    subtitle: 'Fonds d’écran et Live Photos pour l’écran verrouillé et l’écran d’accueil.',
     subTabs: 'Type de fond d’écran',
     sub: { still: 'Fixes', live: 'Animés', pairs: 'Paires' },
     liveBadge: 'LIVE',

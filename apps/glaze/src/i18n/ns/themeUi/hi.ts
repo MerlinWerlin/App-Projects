@@ -68,8 +68,8 @@ export const hi: NonNullable<LocaleMessages['themeUi']> = {
       body: 'वैकल्पिक बीटा: एक प्रोफ़ाइल सेटिंग्स में आपका पूरा सेट एक बार में इंस्टॉल करती है। गाइड वाला शॉर्टकट्स तरीका डिफ़ॉल्ट है और हमेशा काम करता है।',
     },
     'live-lock': {
-      title: 'Live Photo वॉलपेपर बनाएँ',
-      body: 'Live टैब में किसी वीडियो को Live Photo में बदलें। इसे Photos › शेयर › वॉलपेपर के रूप में उपयोग करें से सेट करें; iPhone जगाने पर यह चलता है।',
+      title: 'Live Photo बनाएँ',
+      body: 'Live टैब में किसी वीडियो को Live Photo में बदलें। यह Photos में चलती है; वॉलपेपर के रूप में iPhone अक्सर इसे स्थिर रखता है।',
     },
     'theme-pick': {
       title: 'किसी थीम से शुरू करें',
@@ -101,7 +101,7 @@ export const hi: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-loop': {
       title: 'Live Photos कैसे चलती हैं',
-      body: 'Live Photo वॉलपेपर लॉक स्क्रीन जगाने या दबाने पर चलता है; यह लगातार लूप नहीं होता। Expo Go केवल प्रीव्यू दिखाता है।',
+      body: 'Live Photo, Photos में दबाने पर चलती है; यह लगातार लूप नहीं होती। वॉलपेपर के रूप में iPhone कह सकता है कि मोशन उपलब्ध नहीं है।',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

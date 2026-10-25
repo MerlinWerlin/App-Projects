@@ -1,11 +1,11 @@
 {
-  "tests": 1169,
-  "typecheck": "core only (registry unreachable): core typecheck 0, UI stub typecheck 0; full install + tsc + expo export needs PC verification",
-  "last_run": "2026-10-25 18:12 Sydney",
+  "tests": "1226/1226 core tests green",
+  "typecheck": "core only (registry unreachable); UI stub typecheck 0",
+  "last_run": "2026-10-26 06:15 Sydney (run 124)",
   "stage": "owner-tested",
-  "oversight_seen": "v144 (1792911032-a846): D144-1 (records-only runs until the #74 TestFlight build lands) followed; no patches",
-  "headline": "Waiting for the next TestFlight build (themed widgets, Shortcuts icon install, Live Photo maker): Expo's free iOS builds ran out on 25 Oct, so it comes via the Mac-runner build or after 1 Nov",
-  "next_for_owner": "1) The new Glaze TestFlight build (PR #74) may be held by Expo's free build limit until 1 Nov or the Mac-runner build; when it shows in TestFlight, install it and answer A-D in docs/TRIAL.md 'New since your last test': A) all Glaze widgets in your theme's colours, no theme name? B) Icons > Install: Shortcuts first and guiding you app by app (Bulk install is now an optional beta)? C) Live > Save as Live Photo > Photos > Share > Use as Wallpaper: does it move when you wake the phone, and is the old player gone? D) Art themes and the seamless widget. 2) Keep the glaze-drip icon, or mascot 1, 2 or 3? 3) Glaze Plus price: proposal US$4.99 / A$7.99 one-time. (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud.)",
+  "oversight_seen": "v150 (1792954143-2667): no new directives; D147-1 hold continues; no patches",
+  "headline": "You merged PR #96 (widgets follow the Widgets-tab theme, Bulk only, no bounce). Next: merge the ship PR auto-ship opens with the rest (real Plus purchase, bulk fix, Live Photo wallpaper format), then retest on TestFlight.",
+  "next_for_owner": "1) Merge the next Glaze ship PR auto-ship opens in App-Projects (it carries the Plus purchase, bulk-install fix and Live Photo format; #96 is already merged); auto-ship then builds TestFlight. 2) In App Store Connect create the in-app purchase com.jared797.glaze.plus at A$2.99 (docs/IAP_SANDBOX.md). 3) Answer the yes/no questions at the top of docs/TRIAL.md; bulk install verdict in docs/BULK_INSTALL_VERDICT.md. (Full install + expo export needs PC verification: npm registry unreachable from the cloud.)",
   "trial_kit": true,
-  "trial_kit_commit": "a757a20 (run 113 tree)"
+  "trial_kit_commit": "e5a7652"
 }

@@ -55,12 +55,12 @@ export const en = {
   method: {
     heading: 'How to install',
     groupLabel: 'Install method',
-    bulk: 'Bulk install (beta)',
+    bulk: 'Install all at once',
     recommended: 'Recommended',
     bulkNone: 'None of these apps has a link a profile can open. Use Shortcuts.',
     bulkBody: {
-      one: 'One profile adds {count} icon at once, through Safari. Beta: it may not reach Settings on every iPhone. Shortcuts always works.',
-      other: 'One profile adds {count} icons at once, through Safari. Beta: it may not reach Settings on every iPhone. Shortcuts always works.',
+      one: 'One profile adds {count} icon at once, through Safari, then Settings. If it doesn\'t show in Settings, use Shortcuts below.',
+      other: 'One profile adds {count} icons at once, through Safari, then Settings. If it doesn\'t show in Settings, use Shortcuts below.',
     },
     shortcuts: 'Shortcuts',
     shortcutsBody: 'One shortcut per app with the Shortcuts app. Works for every app, about a minute each.',

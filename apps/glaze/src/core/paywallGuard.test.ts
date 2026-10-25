@@ -75,7 +75,7 @@ test('the social-proof patterns catch invented claims and leave honest copy alon
   ];
   for (const s of bad) assert.ok(proofHits(s).length > 0, `should reject: ${s}`);
   const ok = [
-    'One-time A$7.99 / US$4.99. No subscription, ever.', '32 more themes in 4 packs', 'Make-your-own icons, unlimited',
+    'One-time A$2.99. No subscription, ever.', '32 more themes in 4 packs', 'Make-your-own icons, unlimited',
     'trending-up', 'Rate Glaze', 'Star', '8 icons', 'Top of the screen', 'Award', 'Your 3 loops',
   ];
   for (const s of ok) assert.deepEqual(proofHits(s), [], `should allow: ${s}`);

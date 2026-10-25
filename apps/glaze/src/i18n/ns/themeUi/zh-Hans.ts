@@ -67,8 +67,8 @@ export const zhHans: NonNullable<LocaleMessages['themeUi']> = {
       body: '可选测试版：一个描述文件在“设置”中一次安装整套图标。引导式“快捷指令”方式是默认方式，始终可用。',
     },
     'live-lock': {
-      title: '制作实况照片墙纸',
-      body: '在 Live 标签页把视频转换成实况照片。在“照片 › 共享 › 用作墙纸”中设置，唤醒 iPhone 时它会动起来。',
+      title: '制作实况照片',
+      body: '在 Live 标签页把视频转换成实况照片。它在“照片”中会动；设为墙纸时，iPhone 常常让它保持静止。',
     },
     'theme-pick': {
       title: '从主题开始',
@@ -100,7 +100,7 @@ export const zhHans: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-loop': {
       title: '实况照片如何动起来',
-      body: '实况照片墙纸会在你唤醒或按压锁定屏幕时动起来，并不会一直循环。Expo Go 只显示预览。',
+      body: '实况照片在“照片”中按住时会动，并不会一直循环。设为墙纸时，iPhone 可能提示动态效果不可用。',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

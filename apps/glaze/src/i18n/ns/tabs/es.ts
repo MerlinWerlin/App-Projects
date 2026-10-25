@@ -25,6 +25,15 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
     soon: 'Próximamente',
     soonA11y: '{kind}, {size}. Próximamente.',
     lockNote: 'Los widgets de la pantalla bloqueada aún no están listos. Estos llegarán pronto.',
+    // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
+    link: {
+      ok: 'Widgets de la pantalla de inicio conectados',
+      noAppGroup: 'Tus widgets no pueden ver Glaze en esta versión (falta el App Group). Avísanos en los comentarios de TestFlight.',
+      notReadYet: 'Añade un widget de Glaze a tu pantalla de inicio y vuelve aquí.',
+      stale: 'Tus widgets aún no han cargado el tema más reciente. Si sigue así, avísanos en los comentarios de TestFlight.',
+      wrongTheme: 'Tus widgets muestran otro tema. Vuelve a elegir el tema; si sigue así, avísanos en los comentarios de TestFlight.',
+      a11y: 'Comprobación de widgets: {status}',
+    },
     // T86: Habit goals screen (app/habit-goals.tsx) and the goal chip under habit cards.
     goals: {
       title: 'Metas diarias',
@@ -56,7 +65,7 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
     },
   },
   wallpapersTab: {
-    subtitle: 'Fondos fijos y animados para tu pantalla de bloqueo y tu pantalla de inicio.',
+    subtitle: 'Fondos y Live Photos para tu pantalla de bloqueo y tu pantalla de inicio.',
     subTabs: 'Tipo de fondo',
     sub: { still: 'Fijos', live: 'Animados', pairs: 'Pares' },
     liveBadge: 'LIVE',

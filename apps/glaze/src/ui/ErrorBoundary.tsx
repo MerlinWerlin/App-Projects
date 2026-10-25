@@ -34,7 +34,7 @@ export function ErrorFallback({ error, onRetry }: { error: unknown; onRetry: () 
   const [reportNote, setReportNote] = useState(null as 'opening' | 'failed' | null);
   return (
     <SafeAreaView style={[styles.root, { backgroundColor: c.bg }]}>
-      <ScrollView contentContainerStyle={styles.body}>
+      <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.body}>
         <View style={[styles.badge, { backgroundColor: c.pastels.peach.fill }]}>
           <Feather name="alert-circle" size={28} color={c.pastels.peach.ink} />
         </View>

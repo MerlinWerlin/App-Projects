@@ -2,12 +2,11 @@
 // Numbers and maths live in src/core/motion.ts (tested in Node); this file adds reanimated configs.
 import { Easing, FadeIn, FadeInDown, FadeOut, LinearTransition, useReducedMotion } from 'react-native-reanimated';
 import { useReduceMotion } from '../ui/useReduceMotion';
-import { durations, easeOut, spring as springPreset, staggerDelay } from '../core/motion';
+import { durations, easeOut, staggerDelay } from '../core/motion';
 
 export { durations, MAX_MS, PRESS_SCALE, STAGGER_MS, STAGGER_MAX, staggerDelay } from '../core/motion';
 
-/** The one spring (withSpring config). */
-export const springConfig = { damping: springPreset.damping, stiffness: springPreset.stiffness, mass: springPreset.mass };
+// No spring anywhere (owner 22 Oct rule, D145-1): every movement is a timed ease-out or a fade.
 
 /** Ease-out curve for withTiming. */
 export const easeOutCurve = Easing.bezier(easeOut[0], easeOut[1], easeOut[2], easeOut[3]);

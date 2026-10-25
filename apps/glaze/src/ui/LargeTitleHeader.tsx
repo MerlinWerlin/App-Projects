@@ -176,7 +176,7 @@ export function LargeTitleScrollView({ title, subtitle, leading, trailing, child
   const { scrollY, onScroll } = useLargeTitleScroll();
   return (
     <View style={[styles.root, { backgroundColor: c.bg }]}>
-      <Animated.ScrollView
+      <Animated.ScrollView bounces={false} overScrollMode="never"
         onScroll={onScroll}
         scrollEventThrottle={16}
         contentInsetAdjustmentBehavior="never"

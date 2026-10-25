@@ -166,7 +166,7 @@ export default function FeedbackScreen() {
 
   return (
     <SafeAreaView edges={['left', 'right', 'bottom']} style={[styles.root, { backgroundColor: c.bg }]}>
-      <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
+      <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
         <View style={[styles.privacy, continuous, { backgroundColor: c.pastels.mint.fill }]}>
           <Feather name="shield" size={18} color={c.pastels.mint.ink} />
           <Text style={[...tt.small, styles.flex, { color: c.pastels.mint.ink }]}>{t('feedback.privacy')}</Text>

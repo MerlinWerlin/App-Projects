@@ -57,15 +57,13 @@ MASCOTS = [("1", "Tessel", "a porcelain tile with a pink glaze drip; the drip sl
            ("2", "Latchling", "a frosted-glass padlock with a glowing keyhole; the glow breathes and it blinks"),
            ("3", "Vitri", "a stained-glass sun-catcher; it sways gently and sparkles now and then")]
 def mascot_block():
-    figs = []
-    for n, name, line in MASCOTS:
-        f = root / f"docs/mascot/mascot-{n}.svg"
-        if not f.exists():
-            return ""
-        uri = "data:image/svg+xml;base64," + base64.b64encode(f.read_bytes()).decode()
-        figs.append(f'<figure style="margin:0;flex:1 1 150px;max-width:220px"><img src="{uri}" alt="Mascot {n}, {e(name)}: {e(line)}" style="width:100%;height:auto;border-radius:22px"><figcaption class="small"><b>{n}. {e(name)}</b> - {e(line)}</figcaption></figure>')
-    return ('<section><h2>Mascot idea: which one (1, 2, 3 or none)?</h2><p class="small">Three original concepts for a small calm companion (mascot, maybe the app icon, and an animated widget). Details in docs/MASCOT.md. Nothing in the app changes until you pick.</p>'
-            f'<div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:10px">{"".join(figs)}</div></section>')
+    # fb-1025 G (25 Oct): the owner picked the Prism concept; the mascot vote is closed.
+    f = root / "docs/mascot/prism-icon.svg"
+    if not f.exists():
+        return ""
+    uri = "data:image/svg+xml;base64," + base64.b64encode(f.read_bytes()).decode()
+    return ('<section><h2>New app icon: Prism</h2><p class="small">Your 25 Oct pick. Redrawn from the concept name (your picture was not in the build files), so say if it doesn\'t match. Details in docs/MASCOT.md.</p>'
+            f'<figure style="margin:10px 0 0;max-width:180px"><img src="{uri}" alt="Prism app icon: a faceted crystal splitting light into a colour fan" style="width:100%;height:auto;border-radius:40px"></figure></section>')
 
 page = f"""<title>Glaze Build</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -25,6 +25,15 @@ export const it: NonNullable<LocaleMessages['tabs']> = {
     soon: 'In arrivo',
     soonA11y: '{kind}, {size}. In arrivo.',
     lockNote: 'I widget della schermata di blocco non sono ancora pronti. Questi arriveranno presto.',
+    // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
+    link: {
+      ok: 'Widget della schermata Home collegati',
+      noAppGroup: 'I tuoi widget non vedono Glaze in questa build (manca l’App Group). Faccelo sapere nel feedback di TestFlight.',
+      notReadYet: 'Aggiungi un widget di Glaze alla schermata Home, poi torna qui.',
+      stale: 'I tuoi widget non hanno ancora preso il tema più recente. Se resta così, faccelo sapere nel feedback di TestFlight.',
+      wrongTheme: 'I tuoi widget mostrano un altro tema. Scegli di nuovo il tema; se resta così, faccelo sapere nel feedback di TestFlight.',
+      a11y: 'Controllo widget: {status}',
+    },
     // T86: Habit goals screen (app/habit-goals.tsx) and the goal chip under habit cards.
     goals: {
       title: 'Obiettivi giornalieri',
@@ -56,7 +65,7 @@ export const it: NonNullable<LocaleMessages['tabs']> = {
     },
   },
   wallpapersTab: {
-    subtitle: 'Sfondi fissi e animati per la schermata di blocco e la schermata Home.',
+    subtitle: 'Sfondi e Live Photo per la schermata di blocco e la schermata Home.',
     subTabs: 'Tipo di sfondo',
     sub: { still: 'Fissi', live: 'Animati', pairs: 'Coppie' },
     liveBadge: 'LIVE',

@@ -47,8 +47,8 @@ export const fr: NonNullable<LocaleMessages['tips']> = {
       body: 'Bêta facultative : un seul profil installe tout votre ensemble d’un coup dans Réglages. La méthode guidée avec Raccourcis est celle par défaut et marche toujours.',
     },
     liveLock: {
-      title: 'Créer un fond d’écran Live Photo',
-      body: 'Transformez une vidéo en Live Photo dans l’onglet Live. Définissez-la via Photos › Partager › Utiliser en fond d’écran ; elle s’anime quand vous réveillez l’iPhone.',
+      title: 'Créer une Live Photo',
+      body: 'Transformez une vidéo en Live Photo dans l’onglet Live. Elle s’anime dans Photos ; en fond d’écran, l’iPhone la garde souvent fixe.',
     },
     themePick: {
       title: 'Partez d’un thème',
@@ -80,7 +80,7 @@ export const fr: NonNullable<LocaleMessages['tips']> = {
     },
     liveLoop: {
       title: 'Comment s’animent les Live Photos',
-      body: 'Un fond d’écran Live Photo s’anime quand vous réveillez ou touchez l’écran verrouillé ; ce n’est pas une boucle continue. Expo Go n’affiche qu’un aperçu.',
+      body: 'Une Live Photo s’anime quand vous appuyez dessus dans Photos ; ce n’est pas une boucle continue. En fond d’écran, l’iPhone peut indiquer que le mouvement n’est pas disponible.',
     },
   },
 };

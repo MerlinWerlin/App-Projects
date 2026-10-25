@@ -268,7 +268,7 @@ function Editor({ initial }: EditorProps) {
   const hasTrim = project.kind === 'video' && project.sourceDurationMs > 0; // i18n-ignore (generic/comparison, not text)
 
   return (
-    <ScrollView
+    <ScrollView bounces={false} overScrollMode="never"
       scrollEnabled={scrollEnabled}
       keyboardShouldPersistTaps="handled"
       style={{ backgroundColor: c.bg }}
@@ -400,10 +400,11 @@ function Editor({ initial }: EditorProps) {
         <Text style={[...type.small, { color: c.inkSecondary }]}>{t('live.editor.gifSpeedNote')}</Text>
       ) : null}
 
-      {/* T127: Live Lock Screen = a Live Photo the user sets as the wallpaper themselves. iOS lets
-          no app set a wallpaper, so the main action saves the Live Photo and the guide shows the
-          three steps (Photos › Share › Use as Wallpaper › Live Photo on). The old Now Playing mode
-          is no longer offered anywhere in the UI (docs/OWNER_1024E.md (part C)). */}
+      {/* T127: the main action saves the Live Photo (it moves when pressed in Photos). The guide
+          shows how to try it as a wallpaper (Photos › Share › Use as Wallpaper › Live Photo on);
+          T147 (fb-1025 C): iPhone often keeps app-made Live Photos still there, and the copy says
+          so instead of promising motion. The old Now Playing mode is no longer offered anywhere
+          in the UI (docs/OWNER_1024E.md (part C)). */}
       <SaveAsLivePhotoButton
         getProject={() => latest.current}
         onBeforeSave={() => {

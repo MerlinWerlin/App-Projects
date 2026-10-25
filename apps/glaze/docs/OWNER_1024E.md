@@ -348,3 +348,8 @@ each item at the source level.
 ## D. Trial questions (T128, rewritten run 104)
 
 docs/TRIAL.md "New since your last test" asks yes/no for A-C (C = Make a Live Photo) and has the plain-words note on what iOS allows.
+
+## Follow-up 25 Oct (run 115, oversight D145-1/D145-2)
+- A: the App Group entitlement is now applied to the app on every native build (native-plugins/appgroup.json), and a native build stops with a clear error if the widget tool can't be installed, instead of shipping without widgets. The theme fix (T125) is still waiting for a new TestFlight build (Expo free iOS builds reset 1 Nov).
+- B: with the Safari profile server (native builds), "Install all at once" now leads and is Recommended; Shortcuts is the second option.
+- Also: no bounce anywhere in the app, Glaze Plus shows A$2.99, and Unlock in the test build says plainly it can't be bought yet.

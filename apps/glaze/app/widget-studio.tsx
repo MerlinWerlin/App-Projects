@@ -365,7 +365,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
   return (
     <View style={[styles.flex, { backgroundColor: c.bg }]}>
       <Stack.Screen options={{ title: t('themeUi.widgetStudio.title') }} />
-      <ScrollView stickyHeaderIndices={[0]} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView bounces={false} overScrollMode="never" stickyHeaderIndices={[0]} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         {/* Live preview, pinned on top. */}
         <View style={[styles.previewWrap, { backgroundColor: c.bg }]}>
           <SquircleCard size="large" elevation="raised" tone="raised" style={styles.previewCard}>

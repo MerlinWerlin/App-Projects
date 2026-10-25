@@ -28,7 +28,7 @@ export default function HabitGoalsScreen() {
 
   return (
     <SafeAreaView edges={['left', 'right', 'bottom']} style={[styles.root, { backgroundColor: c.bg }]}>
-      <ScrollView contentContainerStyle={styles.body}>
+      <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.body}>
         <Text style={[textV2.callout, textStyleFor(script, textV2.callout), styles.intro, { color: c.inkSecondary }]}>
           {t('tabs.widgetsTab.goals.intro')}
         </Text>

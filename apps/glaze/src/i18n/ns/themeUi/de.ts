@@ -68,8 +68,8 @@ export const de: NonNullable<LocaleMessages['themeUi']> = {
       body: 'Optionale Beta: Ein Profil installiert dein ganzes Set auf einmal in den Einstellungen. Die geführte Kurzbefehle-Methode ist Standard und klappt immer.',
     },
     'live-lock': {
-      title: 'Live-Photo-Hintergrund erstellen',
-      body: 'Mach im Tab „Live“ aus einem Video ein Live Photo. Lege es über Fotos › Teilen › Als Hintergrundbild fest; es bewegt sich, wenn du dein iPhone aufweckst.',
+      title: 'Live Photo erstellen',
+      body: 'Mach im Tab „Live“ aus einem Video ein Live Photo. In Fotos bewegt es sich; als Hintergrund lässt das iPhone es oft unbewegt.',
     },
     'theme-pick': {
       title: 'Starte mit einem Theme',
@@ -101,7 +101,7 @@ export const de: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-loop': {
       title: 'So bewegen sich Live Photos',
-      body: 'Ein Live-Photo-Hintergrund bewegt sich, wenn du den Sperrbildschirm aufweckst oder drückst; er läuft nicht dauerhaft im Loop. Expo Go zeigt nur eine Vorschau.',
+      body: 'Ein Live Photo bewegt sich, wenn du es in Fotos drückst; es läuft nicht im Dauer-Loop. Als Hintergrund meldet das iPhone eventuell „Bewegung nicht verfügbar“.',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

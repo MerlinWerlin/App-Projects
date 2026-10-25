@@ -1,7 +1,7 @@
 {
   "app": "glaze",
   "title": "Glaze (icon themes, matching widgets and wallpaper packs, working title)",
-  "updated": "2026-10-24",
+  "updated": "2026-10-25",
   "milestones": {
     "TRIAL": [
       "T01",
@@ -1553,7 +1553,7 @@
     },
     {
       "id": "T116",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T115"
       ],
@@ -1563,7 +1563,8 @@
       "priority": "medium",
       "source": "fb-1023 D follow-up",
       "title": "Mascot follow-up once the owner picks (1, 2 or 3): calm animated widget kind behind the widget adapters (Expo Go preview), optional alternate app icon. HELD until the owner answers 'Which mascot?'; 'none' closes it.",
-      "accept": "owner answer recorded; nothing changes before it"
+      "accept": "owner answer recorded; nothing changes before it",
+      "note": "superseded 25 Oct: owner picked the Prism icon (fb-1025 G, T148); mascot concepts not used"
     },
     {
       "id": "NF1023-1",
@@ -1763,7 +1764,7 @@
     },
     {
       "id": "T129",
-      "status": "todo",
+      "status": "done",
       "tags": [
         "fb-1024e"
       ],
@@ -1776,7 +1777,8 @@
         "T127",
         "T137",
         "T138"
-      ]
+      ],
+      "note": "superseded by T149 (fb-1025 retest answers received 25 Oct)"
     },
     {
       "id": "T130",
@@ -1913,7 +1915,7 @@
     },
     {
       "id": "T140",
-      "status": "todo",
+      "status": "done",
       "tags": [
         "release-standard"
       ],
@@ -1921,7 +1923,7 @@
       "source": "oversight D142-3; release standard §2 (was R2)",
       "title": "Real Glaze Plus purchase with expo-iap pinned exactly: both request key styles (ios/android/apple/google), type in-app, wait on return value + purchaseUpdatedListener, re-check getAvailablePurchases ~10 s after failure, failure alert says nothing charged + store error codes, finishTransaction isConsumable false, Restore on the same sheet, no 'arrives with the store release' text in a store build. Behind an adapter so Expo Go keeps the mock. Also reword NSPhotoLibraryUsageDescription ('lock screen loops' -> 'Live Photos'). HELD until the #74 native build is on TestFlight (D130-2: one native change per build).",
       "deps": [],
-      "note": "Run 113 (D143-1): TS prep done — src/core/iapFlow.ts (both request key styles, type in-app, returned value + purchaseUpdatedListener, ~10 s getAvailablePurchases re-check, store code in 'failed', finishTransaction isConsumable false, restore) with 10 mock tests; src/plus/iapStore.ts PlusStore adapter (not wired); PlusLockSheet shows plus.lock.failed (nothing charged + code, 11 languages). Remaining when the #74 build is on TestFlight: add pinned expo-iap, wire plusStore, drop 'coming soon' copy in store builds, reword NSPhotoLibraryUsageDescription."
+      "note": "Run 113 (D143-1): TS prep done — src/core/iapFlow.ts (both request key styles, type in-app, returned value + purchaseUpdatedListener, ~10 s getAvailablePurchases re-check, store code in 'failed', finishTransaction isConsumable false, restore) with 10 mock tests; src/plus/iapStore.ts PlusStore adapter (not wired); PlusLockSheet shows plus.lock.failed (nothing charged + code, 11 languages). Remaining when the #74 build is on TestFlight: add pinned expo-iap, wire plusStore, drop 'coming soon' copy in store builds, reword NSPhotoLibraryUsageDescription. Superseded by T152 (StoreKit 2 local module, no npm)."
     },
     {
       "id": "T141",
@@ -1933,10 +1935,213 @@
       "source": "oversight D142-3; release standard §3",
       "title": "docs/RELEASE_CHECKLIST.md against the App Factory release standard + REVIEW_NOTES 'App Review information' answering Apple's new-developer questions.",
       "deps": []
+    },
+    {
+      "id": "T142",
+      "status": "done",
+      "tags": [
+        "owner-1025",
+        "D145-1"
+      ],
+      "priority": "high",
+      "source": "oversight D145-1 (owner rejected run 113)",
+      "title": "No bounce anywhere: Sheet slide, HomeMock ripple, PhotoCropEditor snap-back, ShapePicker, theme apply check, Live trim handles and Toast use timed ease-out/fade; springConfig removed; calmMotion test covers every app/ and src/ui file. Plus price A$2.99; test-build Unlock says it cannot be bought yet and nothing was charged (11 languages).",
+      "deps": [],
+      "commit": "2dcd32e"
+    },
+    {
+      "id": "T143",
+      "status": "done",
+      "tags": [
+        "owner-1025",
+        "D145-2"
+      ],
+      "priority": "high",
+      "source": "oversight D145-2 (themed widgets go/no-go)",
+      "title": "App Group entitlement always applied in native builds (native-plugins/appgroup.json); eas-build-post-install fails the build loudly if @bacons/apple-targets cannot be installed/resolved; app.config.ts reports a skipped piece as an error; d145.test.ts checks App Group in app + widget extension + Swift + bridge key. Install: with the Safari server, Install all at once leads and is recommended, Shortcuts second. Pinning @bacons/apple-targets in package.json rejected (hard rule). No new themes.",
+      "deps": [],
+      "commit": "2dcd32e"
+    },
+    {
+      "id": "T144",
+      "status": "done",
+      "tags": [
+        "owner-1025"
+      ],
+      "priority": "high",
+      "source": "D145-1/D145-2",
+      "title": "Owner retest on the next TestFlight build: no bounce, A$2.99, themed widgets in every kind, Install all at once reaches Settings.",
+      "deps": [
+        "T142",
+        "T143"
+      ],
+      "blocked_on": "owner + next native build (Expo free iOS quota resets 1 Nov)",
+      "note": "superseded by T149 (fb-1025 retest answers received 25 Oct)"
+    },
+    {
+      "id": "T145",
+      "status": "done",
+      "tags": [
+        "fb-1025"
+      ],
+      "priority": "owner",
+      "source": "owner brief fb-1025 (25 Oct, Workboard review room)",
+      "title": "Sync App-Projects PR #96 (fb3ac20, not yet merged): Widgets-tab theme pick writes to the widgets, Bulk the only install method (Shortcuts only as fallback), no bounce in the Live Photo part",
+      "deps": [],
+      "blocked_on": null,
+      "commit": "1232698"
+    },
+    {
+      "id": "T146",
+      "status": "done",
+      "tags": [
+        "fb-1025"
+      ],
+      "priority": "owner",
+      "source": "owner brief fb-1025 (25 Oct, Workboard review room)",
+      "title": "Widget link check (fb-1025 A): extension records each theme read in glaze.widget.lastRead.v1, bridge linkStatus, core widgetLinkVerdict, Widgets-tab status line (native iOS only)",
+      "deps": [],
+      "blocked_on": null,
+      "commit": "19a4825"
+    },
+    {
+      "id": "T147",
+      "status": "done",
+      "tags": [
+        "fb-1025"
+      ],
+      "priority": "owner",
+      "source": "owner brief fb-1025 (25 Oct, Workboard review room)",
+      "title": "Honest Live Photo wallpaper copy (fb-1025 C): Live Photo maker kept, no moving-Lock-Screen promise on iPhone (DTS: app-made Live Photos have undocumented wallpaper requirements); docs + future plan",
+      "deps": [],
+      "blocked_on": null,
+      "commit": "bc6f716"
+    },
+    {
+      "id": "T148",
+      "status": "done",
+      "tags": [
+        "fb-1025"
+      ],
+      "priority": "owner",
+      "source": "owner brief fb-1025 (25 Oct, Workboard review room)",
+      "title": "Prism app icon (fb-1025 G): brand SVG/PNGs, splash, Android adaptive, intro animation; previous glaze-drip kept for reference",
+      "deps": [],
+      "blocked_on": null,
+      "commit": "1d9a9d7"
+    },
+    {
+      "id": "T149",
+      "status": "todo",
+      "tags": [
+        "fb-1025"
+      ],
+      "priority": "owner",
+      "source": "owner brief fb-1025 (25 Oct, Workboard review room)",
+      "title": "Owner retest of fb-1025 A-G on the next TestFlight build (TRIAL.md 'New since your last test (25 Oct evening, fb-1025)'); A answer includes the link-check line text",
+      "deps": [
+        "T145",
+        "T146",
+        "T147",
+        "T148"
+      ],
+      "blocked_on": null
+    },
+    {
+      "id": "T150",
+      "status": "parked",
+      "tags": [
+        "ops"
+      ],
+      "priority": "normal",
+      "source": "run 117",
+      "title": "Repo bundle is 10.6 MB (base64 14.4 MB; WORKFLOW asks < 10 MB, artifact hard cap 16 MB per file): shrink it, e.g. palette-quantise the brand/splash PNGs and store shots, or keep large rendered previews out of git and regenerate them",
+      "deps": [],
+      "blocked_on": null,
+      "note": "run 118: repack -adf --window=250 saves nothing; 3 refs only; the size is history (old store-shot/icon PNG versions), and re-compressing current PNGs would ADD new blobs. Only a history squash shrinks it, which would drop the only canonical history: not done. 10.6 MB bundle / 14.1 MB base64 is under the 16 MB artifact cap; keep new large binaries out (regenerate store shots at render time) and revisit if base64 passes 15 MB."
+    },
+    {
+      "id": "T151",
+      "status": "done",
+      "tags": [
+        "fb-1025b"
+      ],
+      "priority": "owner",
+      "source": "owner brief 25 Oct 21:29 (manual fire, fb-1025b)",
+      "title": "No bounce anywhere: every ScrollView/FlatList bounces={false} overScrollMode=never; spring preset removed from core/motion; stale spring comments fixed; guard t151NoBounce.test.ts",
+      "deps": [],
+      "commit": "0caf0b6"
+    },
+    {
+      "id": "T152",
+      "status": "done",
+      "tags": [
+        "fb-1025b"
+      ],
+      "priority": "owner",
+      "source": "owner brief 25 Oct 21:29 (manual fire, fb-1025b)",
+      "title": "Glaze Plus purchasable A$2.99 one-time in TestFlight sandbox: modules/glaze-store (StoreKit 2), src/native/store.ts adapter, PlusLockSheet shows App Store price, Restore; mock stays in Expo Go/production; docs/IAP_SANDBOX.md",
+      "deps": [],
+      "commit": "30e790d",
+      "note": "Swift not compiled. Needs owner: IAP product com.jared797.glaze.plus in App Store Connect + Paid Apps Agreement active."
+    },
+    {
+      "id": "T153",
+      "status": "done",
+      "tags": [
+        "fb-1025b"
+      ],
+      "priority": "owner",
+      "source": "owner brief 25 Oct 21:29 (manual fire, fb-1025b)",
+      "title": "Live Photo wallpaper recipe: 1080x1920 HEVC 30 fps 1-3 s, HEIC still at a real frame, still-image-time -1 @600 timescale, still-image-transform; fallbacks to old recipe; docs/LIVEPHOTO.md 'Wallpaper recipe (run 120)'",
+      "deps": [],
+      "commit": "b06c722",
+      "note": "live-photo-info track (camera-only data) not reproduced; device check needed."
+    },
+    {
+      "id": "T154",
+      "status": "done",
+      "tags": [
+        "fb-1025b"
+      ],
+      "priority": "owner",
+      "source": "owner brief 25 Oct 21:29 (manual fire, fb-1025b)",
+      "title": "Bulk install verdict (docs/BULK_INSTALL_VERDICT.md: POSSIBLE WITH LIMITS) + Safari landing page auto-requests the profile so the in-app server is still alive",
+      "deps": [],
+      "commit": "34c6db1"
+    },
+    {
+      "id": "T155",
+      "status": "todo",
+      "tags": [
+        "fb-1025b"
+      ],
+      "priority": "owner",
+      "source": "owner brief 25 Oct 21:29 (manual fire, fb-1025b)",
+      "title": "Owner retest of the 25 Oct night must-haves 1-4 (TRIAL.md) on the next TestFlight build; if Profile Downloaded never appears, park bulk install or the app (his call)",
+      "deps": [
+        "T151",
+        "T152",
+        "T153",
+        "T154"
+      ]
+    },
+    {
+      "id": "T156",
+      "status": "todo",
+      "tags": [
+        "fb-1025b"
+      ],
+      "priority": "normal",
+      "source": "T154 follow-up",
+      "title": "Install screen + Safari page copy: Safari may ask to download before you tap Install (auto-request); update step text in all languages",
+      "deps": [
+        "T154"
+      ]
     }
   ],
   "priority_order": {
-    "note": "run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
+    "note": "run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
     "order": [
       "T136",
       "T130",

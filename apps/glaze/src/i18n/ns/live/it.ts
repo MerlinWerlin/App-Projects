@@ -3,7 +3,7 @@ import type { LocaleMessages } from '../../catalogue.ts';
 
 export const it: NonNullable<LocaleMessages['live']> = {
   tab: {
-    subtitle: 'Trasforma il tuo video in uno sfondo Live Photo.',
+    subtitle: 'Trasforma il tuo video in una Live Photo.',
     newLoop: 'Nuovo loop da video o GIF',
     opening: 'Apertura…',
     pickHint: 'Apre la libreria foto per scegliere un video o una GIF',

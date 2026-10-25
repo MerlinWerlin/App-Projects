@@ -4,6 +4,8 @@
 // field falls back to the Glaze defaults below (plum to coral, light ink), matching
 // DEFAULT_WIDGET_THEME in TS. T125: a backup copy of the same JSON is read from `theme.json` in the
 // App Group container when the UserDefaults key is missing. The theme name is never rendered.
+// T146: each load writes what it rendered to `glaze.widget.lastRead.v1` (read back by the bridge's
+// linkStatus for the Widgets tab link check). No visible text.
 import Foundation
 import SwiftUI
 import UIKit
@@ -14,6 +16,8 @@ enum GlazeShared {
   static let themeKey = "glaze.theme.v1"
   static let photoFile = "widget-photo.jpg"
   static let themeFile = "theme.json"
+  /// T146: what the extension last rendered (src/core/widgetLink.ts WIDGET_LAST_READ_KEY).
+  static let lastReadKey = "glaze.widget.lastRead.v1"
 }
 
 enum WidgetSurfaceStyle: String {
@@ -115,23 +119,53 @@ struct WidgetTheme: Decodable {
 enum ThemeStore {
   /// Reads and decodes the theme; never fails. UserDefaults first, then the theme.json copy in the
   /// App Group container, then the Glaze default.
+  /// T146: every load (timeline, snapshot, placeholder) also records what it rendered, so the app's
+  /// Widgets tab can tell whether the widgets see its App Group (widget link check).
   static func load() -> WidgetTheme {
+    let found = loadWithSource()
+    recordRead(themeId: found.theme.themeId, source: found.source)
+    return found.theme
+  }
+
+  /// The theme plus where it came from: "defaults", "file" or "fallback".
+  private static func loadWithSource() -> (theme: WidgetTheme, source: String) {
     if
       let defaults = UserDefaults(suiteName: GlazeShared.appGroup),
       let json = defaults.string(forKey: GlazeShared.themeKey),
       let data = json.data(using: .utf8),
       let theme = decode(data)
     {
-      return theme
+      return (theme, "defaults")
     }
     if
       let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GlazeShared.appGroup),
       let data = try? Data(contentsOf: container.appendingPathComponent(GlazeShared.themeFile)),
       let theme = decode(data)
     {
-      return theme
+      return (theme, "file")
     }
-    return .fallback
+    return (.fallback, "fallback")
+  }
+
+  /// T146: writes {at, themeId, source} as a JSON string to `glaze.widget.lastRead.v1` in the App
+  /// Group UserDefaults. Cheap and silent: any failure just skips the write. Without the App Group
+  /// entitlement the suite is private to the extension, so the app never sees the record (which is
+  /// itself the answer the link check needs).
+  private static func recordRead(themeId: String, source: String) {
+    guard let defaults = UserDefaults(suiteName: GlazeShared.appGroup) else { return }
+    let formatter = ISO8601DateFormatter()
+    formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+    let payload: [String: String] = [
+      "at": formatter.string(from: Date()),
+      "themeId": themeId,
+      "source": source,
+    ]
+    guard
+      JSONSerialization.isValidJSONObject(payload),
+      let data = try? JSONSerialization.data(withJSONObject: payload, options: []),
+      let json = String(data: data, encoding: .utf8)
+    else { return }
+    defaults.set(json, forKey: GlazeShared.lastReadKey)
   }
 
   private static func decode(_ data: Data) -> WidgetTheme? {

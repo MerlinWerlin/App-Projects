@@ -3,7 +3,7 @@
 // selected bubble fades its tint (~150 ms ease-out), the grid cross-fades (opacity only), the row
 // scrolls the bubble into view. Source guards, since the cloud can't mount React Native.
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
 import { BUBBLE_FADE_MS, GRID_FADE_MS, bubbleLook, pageTransition } from './categoryPaging.ts';
@@ -69,6 +69,31 @@ test('fb-1022c: the Themes screen has no stagger and no centred-card pop', () =>
   assert.match(src, /const nextSlot = \(_n: number\): number \| undefined => undefined;/);
   // T107's deferred grid swap stays.
   assert.match(src, /startTransition\(\(\) => \{\s*setCategory/);
+});
+
+// D145-1 (owner rejection of run 113: "bouncing animations need to go"): no spring anywhere in the
+// app. Sheet entrances are a timed slide, the icon ripple is a short fade, crop snap-back and the
+// shape picker ease out.
+test('D145-1: no spring in any screen or UI file', () => {
+  const walk = (d: string): string[] =>
+    readdirSync(join(root, d)).flatMap((n) => {
+      const rel = join(d, n);
+      return statSync(join(root, rel)).isDirectory() ? walk(rel) : /\.tsx?$/.test(n) && !/\.test\./.test(n) ? [rel] : [];
+    });
+  const files = [...walk('app'), ...walk(join('src', 'ui')), ...walk(join('src', 'plus')), join('src', 'theme', 'motion.ts')];
+  assert.ok(files.length > 20);
+  for (const f of files) {
+    const src = strip(read(f));
+    assert.doesNotMatch(src, /\bwithSpring\b|\.springify\(|\bspringConfig\b|Animated\.spring\b|\bBounceIn\b|Easing\.(bounce|elastic|back)\b/, f);
+  }
+});
+
+test('D145-1: the Plus sheet slides in on a timed ease-out; the home mock ripple is a fade', () => {
+  const sheet = strip(read('src', 'ui', 'Sheet.tsx'));
+  assert.match(sheet, /SlideInDown\.duration\(durations\.base\)\.easing\(easeOutCurve\)/);
+  const home = strip(read('src', 'ui', 'HomeMock.tsx'));
+  assert.match(home, /withDelay\(delay, withTiming\(1, timing\.base\)\)/);
+  assert.doesNotMatch(read('src', 'ui', 'PillButton.tsx'), /springs/);
 });
 
 // Owner 25 Oct (glaze-retest C + glaze-test-latest): "the bounce transitions in this part need to

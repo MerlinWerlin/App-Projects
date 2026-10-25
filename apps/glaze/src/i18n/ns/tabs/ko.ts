@@ -25,6 +25,15 @@ export const ko: NonNullable<LocaleMessages['tabs']> = {
     soon: '곧 출시',
     soonA11y: '{kind}, {size}. 곧 출시.',
     lockNote: '잠금 화면 위젯은 아직 준비 중이에요. 다음 위젯이 곧 나옵니다.',
+    // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
+    link: {
+      ok: '홈 화면 위젯이 연결됐어요',
+      noAppGroup: '이 빌드에서는 위젯이 Glaze를 볼 수 없어요(App Group 없음). TestFlight 피드백으로 알려 주세요.',
+      notReadYet: '홈 화면에 Glaze 위젯을 추가한 다음 다시 돌아오세요.',
+      stale: '위젯에 아직 최신 테마가 적용되지 않았어요. 계속 이러면 TestFlight 피드백으로 알려 주세요.',
+      wrongTheme: '위젯에 다른 테마가 보이고 있어요. 테마를 다시 골라 주세요. 계속 이러면 TestFlight 피드백으로 알려 주세요.',
+      a11y: '위젯 연결 확인: {status}',
+    },
     // T86: Habit goals screen (app/habit-goals.tsx) and the goal chip under habit cards.
     goals: {
       title: '하루 목표',
@@ -56,7 +65,7 @@ export const ko: NonNullable<LocaleMessages['tabs']> = {
     },
   },
   wallpapersTab: {
-    subtitle: '잠금 화면과 홈 화면을 위한 정지 및 라이브 배경화면.',
+    subtitle: '잠금 화면과 홈 화면을 위한 배경화면과 Live Photo.',
     subTabs: '배경화면 종류',
     sub: { still: '정지', live: '라이브', pairs: '페어' },
     liveBadge: '라이브',

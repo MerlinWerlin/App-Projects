@@ -480,7 +480,7 @@ export default function WallpaperScreen() {
   const busySaving = saver.saving || photoSaver.saving || homeSaver.saving;
 
   return (
-    <ScrollView
+    <ScrollView bounces={false} overScrollMode="never"
       scrollEnabled={scrollEnabled}
       style={{ backgroundColor: c.bg }}
       contentContainerStyle={styles.content}

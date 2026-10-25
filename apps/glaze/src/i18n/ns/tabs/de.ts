@@ -25,6 +25,15 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
     soon: 'Bald verfügbar',
     soonA11y: '{kind}, {size}. Bald verfügbar.',
     lockNote: 'Sperrbildschirm-Widgets sind noch nicht fertig. Diese kommen bald.',
+    // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
+    link: {
+      ok: 'Home-Bildschirm-Widgets verbunden',
+      noAppGroup: 'Deine Widgets sehen Glaze in diesem Build nicht (App Group fehlt). Sag uns bitte im TestFlight-Feedback Bescheid.',
+      notReadYet: 'Füge ein Glaze-Widget zu deinem Home-Bildschirm hinzu und komm dann zurück.',
+      stale: 'Deine Widgets haben das neueste Thema noch nicht übernommen. Wenn das so bleibt, sag uns im TestFlight-Feedback Bescheid.',
+      wrongTheme: 'Deine Widgets zeigen ein anderes Thema. Wähle das Thema noch einmal; wenn es so bleibt, sag uns im TestFlight-Feedback Bescheid.',
+      a11y: 'Widget-Verbindung: {status}',
+    },
     // T86: Habit goals screen (app/habit-goals.tsx) and the goal chip under habit cards.
     goals: {
       title: 'Tagesziele',
@@ -56,7 +65,7 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
     },
   },
   wallpapersTab: {
-    subtitle: 'Feste und Live-Hintergründe für Sperr- und Home-Bildschirm.',
+    subtitle: 'Hintergründe und Live Photos für Sperr- und Home-Bildschirm.',
     subTabs: 'Hintergrundart',
     sub: { still: 'Fest', live: 'Live', pairs: 'Paare' },
     liveBadge: 'LIVE',

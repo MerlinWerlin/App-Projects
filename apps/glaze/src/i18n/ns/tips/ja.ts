@@ -45,8 +45,8 @@ export const ja: NonNullable<LocaleMessages['tips']> = {
       body: '任意のベータ版：1 つのプロファイルでセット全体を設定から一度にインストールします。ガイド付きのショートカット方式が標準で、いつでも使えます。',
     },
     liveLock: {
-      title: 'Live Photos の壁紙を作る',
-      body: 'Live タブでビデオを Live Photos に変換します。写真 › 共有 › 壁紙に設定 から設定すると、iPhone のスリープ解除時に動きます。',
+      title: 'Live Photos を作る',
+      body: 'Live タブでビデオを Live Photos に変換します。写真アプリでは動きますが、壁紙にすると iPhone では静止したままになることがよくあります。',
     },
     themePick: {
       title: 'テーマから始めよう',
@@ -78,7 +78,7 @@ export const ja: NonNullable<LocaleMessages['tips']> = {
     },
     liveLoop: {
       title: 'Live Photos の動き方',
-      body: 'Live Photos の壁紙は、ロック画面をスリープ解除したり押したりしたときに動きます。ずっとループするわけではありません。Expo Go はプレビューのみです。',
+      body: 'Live Photos は写真アプリで押すと動きます。ずっとループするわけではありません。壁紙では「モーションは利用できません」と表示されることがあります。',
     },
   },
 };

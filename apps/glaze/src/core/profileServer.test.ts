@@ -65,6 +65,18 @@ test('native module binds loopback only, keeps background time and stops itself'
   assert.ok(PROFILE_SERVER_TIMEOUT_S >= 30 && PROFILE_SERVER_TIMEOUT_S <= 600);
 });
 
+test('T154: landing page asks Safari for the profile at once, keeps the Install button', () => {
+  const swift = read('modules/glaze-profile-server/ios/GlazeProfileServerModule.swift');
+  const page = /static func landingPage[\s\S]*?"""([\s\S]*?)"""/.exec(swift)?.[1] ?? '';
+  assert.ok(page.length > 0, 'landing page template found');
+  // Safari must fetch the profile in the first second, while Glaze is surely still running;
+  // waiting for a tap races iOS ending Glaze's background time.
+  assert.match(page, /<meta http-equiv="refresh" content="0;url=\\\(profilePath\)">/);
+  assert.ok(page.indexOf('http-equiv="refresh"') < page.indexOf('</head>'), 'refresh sits in <head>');
+  assert.match(page, /<a class="btn" href="\\\(profilePath\)">/, 'manual Install button stays');
+  assert.ok(!/http-equiv="refresh" content="0;url=http/.test(page), 'relative URL: stays on 127.0.0.1');
+});
+
 test('module layout matches the other Glaze modules (apple only, podspec, wrapper)', () => {
   const dir = 'modules/glaze-profile-server';
   const cfg = JSON.parse(read(`${dir}/expo-module.config.json`)) as { platforms: string[]; apple: { modules: string[] } };

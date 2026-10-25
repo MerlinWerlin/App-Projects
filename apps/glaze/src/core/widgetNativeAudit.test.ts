@@ -116,7 +116,8 @@ test('every widget view sets containerBackground(for: .widget); placeholders rea
   const providers = code(read(`${WIDGET_DIR}/Providers.swift`)) + code(read(`${WIDGET_DIR}/HabitWidget.swift`));
   assert.doesNotMatch(providers, /theme: \.fallback/, 'no provider pins the built-in default');
   const store = read(`${WIDGET_DIR}/ThemeStore.swift`);
-  assert.match(store, /return \.fallback/, 'fallback only after UserDefaults and theme.json');
+  // T146: load() now returns (theme, source); the fallback is still the last branch.
+  assert.match(store, /return \(?\.fallback/, 'fallback only after UserDefaults and theme.json');
   assert.doesNotMatch(store, /var bg: \[String\] = \["#F/i, 'fallback background is not near-white');
 });
 

@@ -5,9 +5,6 @@
 export const durations = { fast: 120, base: 200, slow: 320 } as const;
 export const MAX_MS = 350;
 
-/** The one spring preset every spring uses. */
-export const spring = { damping: 18, stiffness: 220, mass: 1 } as const;
-
 /** Ease-out cubic-bezier control points (used for timing animations). */
 export const easeOut = [0.22, 1, 0.36, 1] as const;
 

@@ -64,7 +64,9 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   for (const piece of nativePieces()) {
     const missing = pluginPackages(piece).filter((name) => !installed(name));
     if (missing.length > 0) {
-      console.warn(`[glaze] native piece skipped, not installed: ${missing.join(', ')}`);
+      // D145-2: loud, not quiet. On Expo's build servers the post-install hook has already stopped the
+      // build if the widget tool is missing; here (PC / CI config reads) it is only reported.
+      console.error(`[glaze] WARNING native piece skipped, not installed: ${missing.join(', ')} (widgets will be missing from this build)`);
       continue;
     }
     plugins.push(...(piece.plugins ?? []));

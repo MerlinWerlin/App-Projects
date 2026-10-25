@@ -1,28 +1,28 @@
-// Glaze brand mark + opening animation (owner, 23 Oct night). Geometry, timings and source guards (the cloud can't
-// mount React Native).
+// Glaze brand mark + opening animation (owner, 23 Oct night; mark = Prism since fb-1025 G, 25 Oct). Geometry, timings
+// and source guards (the cloud can't mount React Native).
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
 import {
+  ADAPTIVE_BG,
+  ADAPTIVE_SCALE,
+  BRAND,
   CALM_EASINGS,
-  DRIPS,
-  FINAL_STATE,
-  GLAZE_PROUD,
+  FACETS,
+  FAN,
+  GEM,
   INTRO_MS,
-  LONGEST,
-  TILE_TOP,
-  UNDER_DY,
+  SPECTRUM,
+  TILE,
   adaptiveForegroundSvg,
   allTweens,
-  beadCircle,
   canFade,
   ease,
   frameAt,
-  glazeKeyframes,
-  glazePath,
   iconSvg,
   monochromeSvg,
+  rayPath,
   splashSvg,
   startupReady,
   trackKeyframes,
@@ -32,8 +32,6 @@ import { durations } from './motion.ts';
 const root = process.cwd();
 const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
 const strip = (src: string) => src.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
-const numbers = (d: string) => d.match(/-?\d+(?:\.\d+)?/g) ?? [];
-const commands = (d: string) => d.replace(/[^A-Za-z]/g, '');
 
 /** PNG header: width, height, bit depth, colour type (2 = RGB, 6 = RGBA). */
 function ihdr(file: string): { w: number; h: number; depth: number; type: number; chunks: string[] } {
@@ -49,70 +47,96 @@ function ihdr(file: string): { w: number; h: number; depth: number; type: number
   return { w: b.readUInt32BE(16), h: b.readUInt32BE(20), depth: b[24]!, type: b[25]!, chunks };
 }
 
+/** Relative luminance of a #RRGGBB colour (sRGB). */
+function lum(hex: string): number {
+  const ch = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * ch[0]! + 0.7152 * ch[1]! + 0.0722 * ch[2]!;
+}
+
 // ---------------------------------------------------------------- the mark
 
-test('brand: the glaze shape keeps one command structure for every frame (Animated interpolates it)', () => {
-  const kf = glazeKeyframes(32);
-  assert.equal(kf.d.length, 32);
-  const cmd = commands(kf.d[0]!);
-  const n = numbers(kf.d[0]!).length;
-  for (const d of kf.d) {
-    assert.equal(commands(d), cmd);
-    assert.equal(numbers(d).length, n);
-    assert.doesNotMatch(d, /NaN|Infinity|e[+-]?\d/, 'plain decimals only');
-  }
-  assert.equal(kf.d[kf.d.length - 1], glazePath(FINAL_STATE), 'the pour ends on the logo');
-  for (let i = 1; i < kf.t.length; i++) assert.ok(kf.t[i]! > kf.t[i - 1]!, 'keyframe times increase');
-  assert.ok(kf.t[kf.t.length - 1]! <= 1);
+test('brand (fb-1025 G): the mark is the Prism, a faceted crystal pointing down with a six-colour spectrum fan', () => {
+  // Gem cut seen slightly from above: table above the girdle, front vertex nearest (lowest), point below everything.
+  assert.ok(GEM.l[1] < GEM.L[1] && GEM.r[1] < GEM.R[1], 'table sits above the girdle');
+  assert.ok(GEM.F[1] > GEM.L[1] && GEM.F[1] > GEM.R[1], 'front vertex is nearest the viewer');
+  assert.ok(GEM.T[1] > GEM.F[1], 'the point is lowest');
+  assert.equal(GEM.T[0], 512, 'centred');
+  assert.ok(FACETS.length >= 6, 'faceted');
+  assert.equal(new Set(FACETS.map((f) => f.id)).size, FACETS.length);
+  // Spectrum: six distinct colours, not pink-dominant (at most one pink/rose band).
+  assert.equal(SPECTRUM.length, 6);
+  assert.equal(new Set(SPECTRUM).size, 6);
+  const pinkish = SPECTRUM.filter((c) => {
+    const [r, g, b] = [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
+    return r! > 220 && b! > 150 && g! < 180;
+  });
+  assert.ok(pinkish.length <= 1, `pink bands: ${pinkish.join(', ')}`);
+  // The fan opens downward (both edges below the horizon) and is not a horizontal band.
+  assert.ok(FAN.from < 180 && FAN.to > 0 && FAN.from > FAN.to);
+  assert.ok(FAN.from - FAN.to >= 45, 'a fan, not a beam');
+  for (let i = 0; i < SPECTRUM.length; i++) assert.match(rayPath(i), /^M[\d. L-]+Z$/);
+  // Deep ground: the icon background is dark in both schemes so the spectrum glows.
+  for (const s of ['light', 'dark'] as const) for (const c of BRAND[s].iconBg) assert.ok(lum(c) < 0.05, `${s} ${c} is deep`);
+  assert.ok(lum(ADAPTIVE_BG) < 0.05);
 });
 
-test('brand: three uneven drips; the middle one is longest and grows the bead', () => {
-  assert.equal(DRIPS.length, 3);
-  assert.equal(new Set(DRIPS.map((d) => d.len)).size, 3, 'uneven');
-  const longest = DRIPS.reduce((m, d, i) => (d.len > DRIPS[m]!.len ? i : m), 0);
-  assert.equal(longest, LONGEST);
-  assert.equal(beadCircle(0).r, 0);
-  assert.ok(beadCircle(1).r > 0);
-  // The longest drip runs slower than the others.
-  const durs = INTRO_MS.drips.map((tw) => tw.duration);
-  assert.equal(Math.max(...durs), durs[LONGEST]);
-});
-
-test('brand: before the pour nothing of the glaze shows (the first frame equals the native splash)', () => {
-  const d0 = glazePath(frameAt(0));
-  const ys = numbers(d0).filter((_, i) => i % 2 === 1).map(Number);
-  // Everything sits above the clip's top edge, even with the under-edge offset.
-  assert.ok(Math.max(...ys) < TILE_TOP - GLAZE_PROUD - UNDER_DY, `max y ${Math.max(...ys)}`);
-});
-
-test('brand: icon.svg is generated from introGlaze.ts and holds the final glaze; the splash has none', () => {
+test('brand: icon.svg is generated from introGlaze.ts, carries the prism marker; the splash is the unlit crystal', () => {
   assert.equal(read('assets', 'brand', 'icon.svg'), iconSvg('light'), 'regenerate: node scripts/brand/build-brand.mjs');
   assert.equal(read('assets', 'brand', 'icon-dark.svg'), iconSvg('dark'));
   assert.equal(read('assets', 'brand', 'splash-icon.svg'), splashSvg('light'));
   assert.equal(read('assets', 'brand', 'splash-icon-dark.svg'), splashSvg('dark'));
   assert.equal(read('assets', 'brand', 'adaptive-foreground.svg'), adaptiveForegroundSvg());
   assert.equal(read('assets', 'brand', 'adaptive-monochrome.svg'), monochromeSvg());
-  assert.ok(read('assets', 'brand', 'icon.svg').includes(glazePath(FINAL_STATE)));
-  for (const s of ['light', 'dark'] as const) assert.ok(!splashSvg(s).includes(glazePath(FINAL_STATE)), 'the app pours the glaze');
-  // Original art: plain shapes and gradients, no text, no external images.
-  for (const f of ['icon.svg', 'splash-icon.svg', 'adaptive-foreground.svg']) {
+  for (const f of ['icon.svg', 'icon-dark.svg', 'splash-icon.svg', 'splash-icon-dark.svg', 'adaptive-foreground.svg', 'adaptive-monochrome.svg']) {
     const svg = read('assets', 'brand', f);
-    assert.doesNotMatch(svg, /<text|<image|href=/);
+    assert.match(svg, /id="prism"/, `${f} carries the prism marker`);
+    assert.match(svg, /^<svg [^>]*viewBox="0 0 1024 1024"/);
+    // Original art: plain shapes and gradients, no text, no external images.
+    assert.doesNotMatch(svg, /<text|<image|href=|<script|<foreignObject/);
+    assert.ok(statSync(join(root, 'assets', 'brand', f)).size < 24 * 1024, `${f} stays small`);
+  }
+  // Every spectrum colour is in the icon; the splash has no spectrum and no beam (the intro lights it).
+  for (const c of SPECTRUM) assert.ok(iconSvg('light').includes(`fill="${c}"`), c);
+  for (const s of ['light', 'dark'] as const) {
+    const svg = splashSvg(s);
+    for (const c of SPECTRUM) assert.ok(!svg.includes(`fill="${c}"`), `splash has no ${c} ray`);
+    for (const fc of FACETS) assert.ok(svg.includes(`dim-${fc.id}`) && !svg.includes(`lit-${fc.id}`), `${fc.id} unlit`);
+  }
+  // The splash tile sits inside the canvas with room for its shadow.
+  assert.ok(TILE.cy - TILE.b >= 40 && TILE.cy + TILE.b + 30 + 34 <= 1024);
+});
+
+test('brand: the Android foreground keeps the mark inside the 66/108 safe zone', () => {
+  assert.ok(ADAPTIVE_SCALE <= 66 / 108 + 0.06);
+  const svg = adaptiveForegroundSvg();
+  const m = svg.match(/translate\(([\d.]+) ([\d.]+)\) scale\(([\d.]+)\)/);
+  assert.ok(m, 'one transform');
+  const [tx, ty, s] = [Number(m![1]), Number(m![2]), Number(m![3])];
+  // The crystal (girdle corners and point) maps inside the safe circle (radius 512 × 66/108 ≈ 313).
+  for (const [x, y] of [GEM.L, GEM.R, GEM.T, GEM.l, GEM.r]) {
+    const px = tx + x * s;
+    const py = ty + y * s;
+    assert.ok(Math.hypot(px - 512, py - 512) <= 512 * (66 / 108) + 2, `(${x}, ${y}) → ${px.toFixed(0)}, ${py.toFixed(0)}`);
   }
 });
 
 test('brand: icon.png is 1024 × 1024 RGB with no alpha (App Store); Android foreground and splash keep transparency', () => {
-  const icon = ihdr('assets/brand/icon.png');
-  assert.equal(icon.w, 1024);
-  assert.equal(icon.h, 1024);
-  assert.equal(icon.depth, 8);
-  assert.equal(icon.type, 2, 'colour type 2 = RGB, no alpha');
-  assert.ok(!icon.chunks.includes('tRNS'), 'no transparency chunk');
+  for (const f of ['icon.png', 'icon-dark.png']) {
+    const icon = ihdr(`assets/brand/${f}`);
+    assert.equal(icon.w, 1024, f);
+    assert.equal(icon.h, 1024, f);
+    assert.equal(icon.depth, 8);
+    assert.equal(icon.type, 2, `${f}: colour type 2 = RGB, no alpha`);
+    assert.ok(!icon.chunks.includes('tRNS'), 'no transparency chunk');
+  }
   for (const f of ['adaptive-foreground.png', 'adaptive-monochrome.png', 'splash-icon.png', 'splash-icon-dark.png']) {
     const p = ihdr(`assets/brand/${f}`);
     assert.equal(p.w, 1024, f);
     assert.equal(p.h, 1024, f);
     assert.equal(p.type, 6, `${f} keeps alpha`);
+  }
+  for (const f of ['icon.png', 'icon-dark.png', 'adaptive-foreground.png', 'adaptive-monochrome.png', 'splash-icon.png', 'splash-icon-dark.png']) {
+    assert.ok(statSync(join(root, 'assets', 'brand', f)).size < 1024 * 1024, `${f} under 1 MB`);
   }
 });
 
@@ -122,14 +146,14 @@ test('brand: app.json wires the icon, adaptive icon and both splash images; spla
   const ai = expo.android.adaptiveIcon;
   assert.equal(ai.foregroundImage, './assets/brand/adaptive-foreground.png');
   assert.equal(ai.monochromeImage, './assets/brand/adaptive-monochrome.png');
-  assert.match(ai.backgroundColor, /^#[0-9A-F]{6}$/i);
+  assert.equal(ai.backgroundColor, ADAPTIVE_BG, 'adaptive background = the Prism ground');
   const splash = expo.plugins.find((p: unknown) => Array.isArray(p) && p[0] === 'expo-splash-screen')?.[1];
   assert.ok(splash, 'expo-splash-screen plugin configured');
   assert.equal(splash.image, './assets/brand/splash-icon.png');
   assert.equal(splash.dark.image, './assets/brand/splash-icon-dark.png');
   // Splash background = the intro background = the app background (designV2 bg), so the hand-over is seamless.
-  assert.equal(splash.backgroundColor, '#F4F1F7');
-  assert.equal(splash.dark.backgroundColor, '#0F0D12');
+  assert.equal(splash.backgroundColor, BRAND.light.bg);
+  assert.equal(splash.dark.backgroundColor, BRAND.dark.bg);
   const ui = read('src', 'ui', 'IntroGlaze.tsx');
   assert.match(ui, new RegExp(`export const INTRO_SIZE = ${splash.imageWidth};`));
   for (const f of [expo.icon, ai.foregroundImage, ai.monochromeImage, splash.image, splash.dark.image]) {
@@ -137,23 +161,49 @@ test('brand: app.json wires the icon, adaptive icon and both splash images; spla
   }
 });
 
+test('brand: the previous glaze-drip icon is kept for reference and the Prism preview exists', () => {
+  for (const f of ['icon.svg', 'icon-dark.svg', 'splash-icon.svg', 'splash-icon-dark.svg', 'adaptive-foreground.svg', 'adaptive-monochrome.svg']) {
+    assert.ok(existsSync(join(root, 'docs', 'mascot', 'previous-glaze-drip', f)), f);
+  }
+  assert.equal(read('docs', 'mascot', 'prism-icon.svg'), iconSvg('light'));
+  const prev = ihdr('docs/mascot/prism-icon.png');
+  assert.ok(prev.w >= 256 && prev.w === prev.h);
+});
+
 // ---------------------------------------------------------------- timings (calm)
 
-test('intro: every tween is calm (ease-in-out or linear) and the whole pour fits well under the cap', () => {
+test('intro: every tween is calm (ease-in-out or linear) and the whole animation fits well under the cap', () => {
   for (const tw of allTweens()) {
     assert.ok((CALM_EASINGS as readonly string[]).includes(tw.easing), tw.easing);
     assert.ok(tw.duration > 0 && tw.start >= 0);
     assert.ok(tw.start + tw.duration <= INTRO_MS.total, 'inside the timeline');
   }
   assert.equal(Math.max(...allTweens().map((tw) => tw.start + tw.duration)), INTRO_MS.total);
-  assert.ok(INTRO_MS.total >= 1600 && INTRO_MS.total <= 2000, `pour ${INTRO_MS.total} ms`);
+  assert.ok(INTRO_MS.total >= 1600 && INTRO_MS.total <= 2000, `intro ${INTRO_MS.total} ms`);
   assert.equal(INTRO_MS.fadeOut, durations.slow, 'fade reuses the motion token');
   assert.ok(INTRO_MS.maxWait <= 3000, 'cap is at most 3 s');
   assert.ok(INTRO_MS.total + INTRO_MS.settle + INTRO_MS.fadeOut <= 3000, 'a ready app is showing within 3 s');
-  // The bead forms only once the longest drip has (almost) arrived, and the gloss sweeps once the glaze is still.
-  const longestEnd = INTRO_MS.drips[LONGEST]!.start + INTRO_MS.drips[LONGEST]!.duration;
-  assert.ok(INTRO_MS.bead.start >= longestEnd - 60);
-  assert.ok(INTRO_MS.gloss.start >= INTRO_MS.bead.start + INTRO_MS.bead.duration / 2);
+  // Order: the beam arrives before the crystal is fully lit; the rays fan out left to right after the light reaches
+  // the point; the gloss sweeps once every ray is out.
+  assert.ok(INTRO_MS.beam.start <= INTRO_MS.lit.start);
+  assert.equal(INTRO_MS.rays.length, SPECTRUM.length);
+  for (let i = 1; i < INTRO_MS.rays.length; i++) assert.ok(INTRO_MS.rays[i]!.start > INTRO_MS.rays[i - 1]!.start, 'left to right');
+  assert.ok(INTRO_MS.rays[0]!.start >= INTRO_MS.lit.start + INTRO_MS.lit.duration / 2);
+  const raysEnd = Math.max(...INTRO_MS.rays.map((tw) => tw.start + tw.duration));
+  assert.ok(INTRO_MS.gloss.start >= raysEnd - 120);
+});
+
+test('intro: the first frame is the native splash (nothing lit) and the last frame is the icon (everything lit)', () => {
+  const f0 = frameAt(0);
+  assert.equal(f0.beam, 0);
+  assert.equal(f0.lit, 0);
+  assert.equal(f0.sparkle, 0);
+  assert.ok(f0.rays.every((v) => v === 0));
+  const f1 = frameAt(INTRO_MS.total);
+  assert.equal(f1.beam, 1);
+  assert.equal(f1.lit, 1);
+  assert.equal(f1.sparkle, 1);
+  assert.ok(f1.rays.every((v) => v === 1));
 });
 
 test('intro: easing never overshoots and every track is monotonic where it should be', () => {
@@ -166,24 +216,22 @@ test('intro: easing never overshoots and every track is monotonic where it shoul
       prev = v;
     }
   }
-  for (const track of ['bead', 'glossX', 'streak'] as const) {
-    const { v } = trackKeyframes(track);
-    for (let i = 1; i < v.length; i++) assert.ok(v[i]! >= v[i - 1]!, `${track} never goes back`);
+  for (const track of ['beam', 'lit', 'glossX', 'sparkle', ...SPECTRUM.map((_, i) => `ray${i}` as const)] as const) {
+    const { t, v } = trackKeyframes(track);
+    for (let i = 1; i < v.length; i++) {
+      assert.ok(v[i]! >= v[i - 1]!, `${track} never goes back`);
+      assert.ok(t[i]! > t[i - 1]!, `${track} keyframe times increase`);
+    }
+    assert.ok(t[t.length - 1]! <= 1);
   }
   const op = trackKeyframes('glossOpacity').v;
   assert.equal(op[0], 0);
   assert.equal(op[op.length - 1], 0);
   assert.ok(Math.max(...op) <= 0.9);
-  // Drips only ever lengthen.
-  let last = frameAt(0).drips;
-  for (let ms = 0; ms <= INTRO_MS.total; ms += 50) {
-    const f = frameAt(ms);
-    f.drips.forEach((p, i) => assert.ok(p >= last[i]!));
-    last = f.drips;
-  }
+  assert.throws(() => trackKeyframes('ray9'));
 });
 
-test('intro: startup goes ahead when fonts + languages are ready, or by the cap; fade waits for the pour too', () => {
+test('intro: startup goes ahead when fonts + languages are ready, or by the cap; fade waits for the animation too', () => {
   assert.equal(startupReady(true, true, 0), true);
   assert.equal(startupReady(false, true, 0), false);
   assert.equal(startupReady(true, false, INTRO_MS.maxWait - 1), false);
@@ -212,6 +260,9 @@ test('intro: IntroGlaze is calm, untouchable, hidden from VoiceOver and Expo Go-
   assert.match(src, /isReduceMotionEnabled\(\)/);
   assert.match(src, /shouldReduceMotion\(/);
   assert.match(src, /clock\.setValue\(1\)/);
+  // Draws the Prism from the shared geometry (no leftover glaze-drip mark).
+  for (const name of ['FACETS', 'GEM_OUTLINE', 'rayPath', 'SPECTRUM', 'BEAM_D', 'sparklePath']) assert.ok(src.includes(name), name);
+  assert.doesNotMatch(src, /glazePath|beadCircle|DRIPS/);
   // Expo Go-safe imports only.
   const imports = [...src.matchAll(/from '([^']+)'/g)].map((m) => m[1]!);
   for (const i of imports) assert.ok(/^(react|react-native|react-native-svg|expo-splash-screen|\.\.\/.+)$/.test(i), i);

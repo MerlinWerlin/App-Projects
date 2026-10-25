@@ -4,10 +4,15 @@
 // The honest facts (docs/OWNER_1024E.md (part C), Apple support article 120734):
 // - No app can set a wallpaper, and no app can make the Lock Screen play a video or a GIF.
 // - What Glaze can do: save the loop as a Live Photo (TestFlight / full build, videos only,
-//   modules/glaze-livephoto). The user sets it themselves: Photos › Share › Use as Wallpaper,
-//   with the Live Photo button on. On iOS 17 or later it plays briefly when the iPhone wakes,
-//   then rests on the still frame. It never loops forever. iOS 16 shows Live Photo wallpapers
-//   as stills.
+//   modules/glaze-livephoto). It moves when you touch and hold it in Photos. It never loops
+//   forever.
+// - T147 (fb-1025 C, 25 Oct 2026): the owner tried it as the Lock Screen wallpaper on the
+//   TestFlight build and it did not move. Apple's DTS engineer says Live Photos made by apps
+//   (not the Camera) have undocumented requirements to work as Live Wallpapers
+//   (developer.apple.com/forums/thread/798044), and others report "Motion not available" since
+//   iOS 16/17 (thread/768984). So the copy no longer promises a moving wallpaper: you can try
+//   Photos › Share › Use as Wallpaper, but iPhone often keeps it still. The still wallpaper
+//   packs are the reliable wallpaper. iOS 16 shows every Live Photo wallpaper as a still.
 // - T127: the old Now Playing "Live Lock Screen" (modules/glaze-livelock) is no longer part of
 //   any flow: the owner found a media player over the normal wallpaper confusing, and tapping
 //   it did nothing. The native module stays in the repo, unused by the UI.
@@ -45,26 +50,30 @@ export type GuideNotice = 'needs-full' | 'needs-build' | 'gif' | null;
 
 /** English source of the guide; liveUi.guide.* in every catalogue carries the same text. */
 export const GUIDE_TEXT = {
-  title: 'Put it on your Lock Screen',
+  title: 'Your Live Photo',
   honest:
-    'iOS doesn’t let any app set your wallpaper or play a video on the Lock Screen. Glaze saves your loop as a Live Photo, and you set it yourself in three quick steps.',
+    'Glaze saves your loop to Photos as a Live Photo that moves when you press it. You can try it as a wallpaper, but iPhone often keeps Live Photos made by apps still.',
   needsFull: 'Saving a Live Photo needs the Glaze TestFlight app. In this preview, use Save to Photos to keep a still frame or the clip.',
   needsBuild:
     'This build of Glaze can’t save Live Photos. Install the latest Glaze TestFlight build; meanwhile, Save to Photos keeps a still frame or the clip.',
-  moves: 'It moves for a moment when you wake your iPhone, then rests on the still frame. It doesn’t loop forever.',
+  moves: 'It moves when you touch and hold it in Photos. It doesn’t loop forever.',
   needs:
-    'Live Photo wallpapers move on iOS 17 or later. Low Power Mode or Reduce Motion keeps it still, and if iOS says Motion not available, it stays a still picture.',
-  oldIos: 'On iOS {version}, Live Photo wallpapers stay still. Update to iOS 17 or later to see it move.',
+    'On the Lock Screen, iPhone often shows Live Photos made by apps as a still or says Motion not available. That’s an Apple limit, not your phone. For a wallpaper that always works, pick a still one in Wallpapers.',
+  oldIos: 'On iOS {version}, Live Photo wallpapers always stay still. Your Live Photo still moves in Photos.',
   altPath: 'You can also start from {path} › Live Photo.',
 } as const;
 
 export const GUIDE_STEPS: readonly GuideStep[] = [
-  { id: 'photos', title: 'Open it in Photos', body: 'Open the Photos app and tap the Live Photo Glaze saved. It’s the newest item in Recents.' },
-  { id: 'share', title: 'Share › Use as Wallpaper', body: 'Tap the Share button, scroll down and tap Use as Wallpaper.' },
+  {
+    id: 'photos',
+    title: 'Open it in Photos',
+    body: 'Open the Photos app and find the Live Photo Glaze saved (the newest in Recents). Touch and hold it to see it move.',
+  },
+  { id: 'share', title: 'Share › Use as Wallpaper', body: 'To try it as a wallpaper, tap the Share button, scroll down and tap Use as Wallpaper.' },
   {
     id: 'lock',
     title: 'Turn on Live Photo, then Add',
-    body: 'Check the Live Photo button at the bottom is on (not crossed out), then tap Add and Set as Wallpaper Pair.',
+    body: 'If the Live Photo button is offered, turn it on, then tap Add. If it’s crossed out or says Motion not available, the wallpaper stays still.',
   },
 ];
 
@@ -92,7 +101,9 @@ export function livePhotoGuide(input: GuideInput): LivePhotoGuide {
   const ios = parseIosMajor(input.iosMajor);
   const notice: GuideNotice =
     input.build === 'expo-go' ? 'needs-full' : input.moduleReady === false ? 'needs-build' : input.kind === 'gif' ? 'gif' : null;
-  const notes: GuideNoteId[] = ['moves', ios > 0 && ios < LIVE_PHOTO_WALLPAPER_MIN_IOS ? 'old-ios' : 'needs', 'alt-path'];
+  // T147: the "Motion not available" note shows on every iOS version (app-made Live Photos often
+  // stay still as a wallpaper even on iOS 17+); iOS 16 and older add the "always still" note.
+  const notes: GuideNoteId[] = ios > 0 && ios < LIVE_PHOTO_WALLPAPER_MIN_IOS ? ['moves', 'old-ios', 'needs', 'alt-path'] : ['moves', 'needs', 'alt-path'];
   return { canSave: notice === null, notice, steps: GUIDE_STEPS.map((s) => ({ ...s })), notes };
 }
 
@@ -137,7 +148,7 @@ export function saveOptions(build: LiveBuild, kind: LiveKind): SaveOption[] {
     {
       id: 'live-photo',
       label: 'Live Photo',
-      detail: 'The first 3 seconds as a Live Photo wallpaper that moves briefly.',
+      detail: 'The first 3 seconds as a Live Photo that moves when you press it in Photos.',
       available: livePhotoOk,
       unavailableReason: livePhotoOk
         ? undefined
@@ -190,7 +201,7 @@ export function heroSubline(build: LiveBuild, iosMajor: number): string {
     return 'Frame and preview it here, then save a still wallpaper and the clip. The full Glaze build saves it as a Live Photo.';
   }
   if (ios > 0 && ios < LIVE_PHOTO_WALLPAPER_MIN_IOS) {
-    return `On iOS ${ios} a Live Photo wallpaper stays still. It moves on iOS 17 or later.`;
+    return `Saved to Photos as a Live Photo that moves when you press it. On iOS ${ios}, wallpapers show it still.`;
   }
-  return 'Saved as a Live Photo you set as your wallpaper. It moves when you wake your iPhone.';
+  return 'Saved to Photos as a Live Photo. It moves when you press it in Photos.';
 }

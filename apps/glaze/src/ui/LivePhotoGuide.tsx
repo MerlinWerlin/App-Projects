@@ -1,6 +1,8 @@
-// Live Lock Screen guide (T127): the honest path to a moving Lock Screen on iPhone.
-// iOS lets no app set a wallpaper, so Glaze saves the loop as a Live Photo and these three
-// illustrated steps show how to set it: Photos › Share › Use as Wallpaper › Live Photo on.
+// Live Photo guide (T127, reworded T147 / fb-1025 C): Glaze saves the loop as a Live Photo that
+// moves when you press it in Photos. These three illustrated steps show how to TRY it as a
+// wallpaper (Photos › Share › Use as Wallpaper › Live Photo on), and the notes say plainly that
+// iPhone often keeps app-made Live Photos still there ("Motion not available"), so the still
+// wallpaper packs are the reliable wallpaper. No promise of a moving Lock Screen.
 // Copy comes from src/core/liveSteps.ts (livePhotoGuide) via liveContext.localizedGuide.
 // The pictures are original, simple shapes drawn with react-native-svg (no logos, no
 // screenshots). Expo Go safe: the only native call is the livephoto adapter's isAvailable(),

@@ -47,8 +47,8 @@ export const it: NonNullable<LocaleMessages['tips']> = {
       body: 'Beta facoltativa: un solo profilo installa tutto il set in una volta in Impostazioni. Il metodo guidato con Comandi Rapidi è quello predefinito e funziona sempre.',
     },
     liveLock: {
-      title: 'Crea uno sfondo Live Photo',
-      body: 'Trasforma un video in Live Photo nella scheda Live. Impostalo da Foto › Condividi › Usa come sfondo; si muove quando riattivi l’iPhone.',
+      title: 'Crea una Live Photo',
+      body: 'Trasforma un video in Live Photo nella scheda Live. Si muove in Foto; come sfondo, l’iPhone spesso la lascia ferma.',
     },
     themePick: {
       title: 'Parti da un tema',
@@ -80,7 +80,7 @@ export const it: NonNullable<LocaleMessages['tips']> = {
     },
     liveLoop: {
       title: 'Come si muovono le Live Photo',
-      body: 'Uno sfondo Live Photo si muove quando riattivi o premi la schermata di blocco; non è un loop continuo. Expo Go mostra solo un’anteprima.',
+      body: 'Una Live Photo si muove quando la premi in Foto; non è un loop continuo. Come sfondo, l’iPhone può dire che il movimento non è disponibile.',
     },
   },
 };

@@ -68,8 +68,8 @@ export const ko: NonNullable<LocaleMessages['themeUi']> = {
       body: '선택형 베타: 프로필 하나로 세트 전체를 설정에서 한 번에 설치합니다. 안내형 단축어 방식이 기본이며 언제나 작동합니다.',
     },
     'live-lock': {
-      title: 'Live Photo 배경화면 만들기',
-      body: 'Live 탭에서 비디오를 Live Photo로 바꾸세요. 사진 › 공유 › 배경화면으로 사용에서 설정하면 iPhone을 깨울 때 움직입니다.',
+      title: 'Live Photo 만들기',
+      body: 'Live 탭에서 비디오를 Live Photo로 바꾸세요. 사진 앱에서는 움직이지만, 배경화면으로는 iPhone이 멈춘 채로 두는 경우가 많습니다.',
     },
     'theme-pick': {
       title: '테마로 시작하기',
@@ -101,7 +101,7 @@ export const ko: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-loop': {
       title: 'Live Photo가 움직이는 방식',
-      body: 'Live Photo 배경화면은 잠금 화면을 깨우거나 누를 때 움직이며, 계속 반복되지는 않습니다. Expo Go에서는 미리보기만 볼 수 있습니다.',
+      body: 'Live Photo는 사진 앱에서 누르면 움직이며, 계속 반복되지는 않습니다. 배경화면에서는 모션을 사용할 수 없다고 나올 수 있습니다.',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

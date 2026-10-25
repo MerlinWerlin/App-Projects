@@ -29,6 +29,9 @@
 // - the theme and look the grid draws are deferred values: the chip highlight answers at once and
 //   the previews follow in a background render;
 // - the minute clock only ticks while the tab is in focus.
+// T146 (fb-1025 A): one calm "widget link check" line under the theme chips, in native iOS builds
+// only (src/store/widgetLink.ts; nothing is drawn in Expo Go or on Android). Checked on focus and
+// a few seconds after each theme pick. No motion.
 import { Feather } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
@@ -58,6 +61,8 @@ import { WIDGET_ROWS_BATCH, WIDGET_ROWS_FIRST, keptAcrossSwap, revealStep } from
 import { useT } from '../../src/i18n';
 import { useStudio } from '../../src/store/studio';
 import { applyWidgetTheme } from '../../src/store/widgetTheme';
+import { useWidgetLink } from '../../src/store/widgetLink';
+import { widgetLinkVisible, type WidgetLinkVerdict } from '../../src/core/widgetLink';
 import { logWidgetHabit, undoWidgetHabit, useWidgetHabits, widgetHabitGoal, widgetHabitValue, type WidgetHabits } from '../../src/store/widgetHabits';
 import { continuous, radiusV2, sizeV2, spaceV2, textV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
@@ -86,6 +91,15 @@ const CATALOGUE_GLYPHS: Record<CatalogueKind, FeatherName> = {
   habitSleep: 'moon',
   habitSteps: 'activity',
 };
+
+/** T146: the message for each verdict the link line draws. */
+const LINK_KEYS = {
+  ok: 'tabs.widgetsTab.link.ok',
+  noAppGroup: 'tabs.widgetsTab.link.noAppGroup',
+  notReadYet: 'tabs.widgetsTab.link.notReadYet',
+  stale: 'tabs.widgetsTab.link.stale',
+  wrongTheme: 'tabs.widgetsTab.link.wrongTheme',
+} as const satisfies Record<Exclude<WidgetLinkVerdict, 'expoGo' | 'unknown'>, string>;
 
 const GUTTER = spaceV2.lg;
 const GAP = spaceV2.md;
@@ -423,6 +437,9 @@ export default function WidgetsTab() {
   const [picked, setPicked] = useState<string | null>(null);
   const theme: Theme = themes.find((x) => x.id === picked) ?? applied ?? THEMES[0];
   const [size, setSize] = useState<WidgetTabSize>('small');
+  // T146: link check; re-checked a few seconds after each pick (pickNonce) and on focus.
+  const [pickNonce, setPickNonce] = useState(0);
+  const linkVerdict = useWidgetLink(picked, pickNonce);
 
   const [look, setLook] = useState<WidgetLook>('theme');
 
@@ -499,6 +516,7 @@ export default function WidgetsTab() {
     setPicked(id);
     const next = themes.find((x) => x.id === id);
     if (next) void applyWidgetTheme(next);
+    setPickNonce((n) => n + 1);
   };
   const pickLook = (l: WidgetLook) => {
     if (l === look) return;
@@ -534,7 +552,7 @@ export default function WidgetsTab() {
       <Text accessibilityRole="header" style={[...label('footnote'), styles.section, { color: c.inkSecondary }]}>
         {t('tabs.widgetsTab.themes')}
       </Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
+      <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
         {themes.map((x) => {
           const on = x.id === theme.id;
           return (
@@ -559,10 +577,23 @@ export default function WidgetsTab() {
         })}
       </ScrollView>
 
+      {/* T146: hidden unless a native iOS build answered the link check (never in Expo Go). */}
+      {widgetLinkVisible(linkVerdict) ? (
+        <View
+          accessible
+          accessibilityRole="text"
+          accessibilityLabel={t('tabs.widgetsTab.link.a11y', { status: t(LINK_KEYS[linkVerdict]) })}
+          style={styles.link}
+        >
+          <Feather name={linkVerdict === 'ok' ? 'check-circle' : 'info'} size={14} color={linkVerdict === 'ok' ? c.ok : c.warn} style={styles.linkIcon} />
+          <Text style={[...label('footnote'), styles.linkText, { color: c.inkSecondary }]}>{t(LINK_KEYS[linkVerdict])}</Text>
+        </View>
+      ) : null}
+
       <Text accessibilityRole="header" style={[...label('footnote'), styles.section, { color: c.inkSecondary }]}>
         {t('tabs.widgetsTab.looks')}
       </Text>
-      <ScrollView
+      <ScrollView bounces={false} overScrollMode="never"
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.chips}
@@ -645,6 +676,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: spaceV2.sm,
   },
+  // T146: link check line (icon + one or two lines of footnote text).
+  link: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spaceV2.xs,
+    paddingHorizontal: GUTTER,
+    marginTop: -spaceV2.xs,
+    marginBottom: spaceV2.sm,
+  },
+  linkIcon: { marginTop: 2 },
+  linkText: { flex: 1 },
   bold: { fontWeight: '600' },
   centre: { textAlign: 'center' },
   sizes: {
