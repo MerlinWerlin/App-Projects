@@ -1,0 +1,170 @@
+// New / edit booking form, fields per kind (FLOWS §4). Times are as printed on the ticket, in that place's own time
+// zone, shown back beside the date and time; a time that a daylight-saving change skips or repeats is pointed out.
+// Leaving with unsaved changes asks first; errors sit beside their fields and are announced.
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { useMemo, useState } from 'react';
+import { AccessibilityInfo, View } from 'react-native';
+import { deviceZone, formatDay, formatTime, zoneCity } from '../src/core/format.ts';
+import { ITEM_KINDS, isTransport, type ItemKind } from '../src/core/model.ts';
+import {
+  draftChanged,
+  draftFromItem,
+  hasCarrier,
+  hasEnd,
+  hasNumber,
+  hasPlace,
+  hasRef,
+  itemFromDraft,
+  newItemDraft,
+  validateItem,
+  type ItemDraft,
+  type ItemError,
+} from '../src/core/trips.ts';
+import { checkWallTime, isLocalDateTime, isValidZone } from '../src/core/tz.ts';
+import { useApp } from '../src/state/app.tsx';
+import { findItem, useTrips } from '../src/state/trips.tsx';
+import { space } from '../src/theme/tokens.ts';
+import { useDiscardConfirm } from '../src/ui/discardConfirm.ts';
+import { ErrorNotice } from '../src/ui/ErrorNotice.tsx';
+import { KindIcon, carrierKey, formTitleKey, kindKey, numberKey, titleKey } from '../src/ui/kinds.tsx';
+import { DateField, TimeField } from '../src/ui/DateTimeField.tsx';
+import { Body, Button, Chip, EmptyState, Label, Screen, TextField, Warning } from '../src/ui/kit.tsx';
+import { ZoneField } from '../src/ui/ZonePicker.tsx';
+
+export default function ItemEditScreen() {
+  const params = useLocalSearchParams<{ tripId: string; id?: string; kind?: string; date?: string }>();
+  const { t, theme, lang } = useApp();
+  const { trips, saveItem } = useTrips();
+  const router = useRouter();
+  const trip = trips.find((x) => x.id === params.tripId);
+  const prev = params.id ? findItem(trips, params.id)?.item : undefined;
+  const lastTz = trip?.items.length ? trip.items[trip.items.length - 1].end?.tz ?? trip.items[trip.items.length - 1].start.tz : undefined;
+  const [initial] = useState<ItemDraft>(() => {
+    if (prev) return draftFromItem(prev);
+    const kind = (ITEM_KINDS as readonly string[]).includes(params.kind ?? '') ? (params.kind as ItemKind) : 'activity';
+    return newItemDraft(kind, params.date ?? trip?.startDate ?? '', lastTz ?? deviceZone());
+  });
+  const [d, setD] = useState<ItemDraft>(initial);
+  const [errors, setErrors] = useState<ItemError[]>([]);
+  const [saving, setSaving] = useState(false);
+  const [saveFailed, setSaveFailed] = useState(false);
+  const { leaving, gestureEnabled } = useDiscardConfirm(draftChanged(initial, d));
+  const set = (k: keyof ItemDraft) => (v: string) => setD((o) => ({ ...o, [k]: v }));
+  const err = (e: ItemError) => (errors.includes(e) ? t(`itemEdit.err.${e}`) : undefined);
+  // Zones already used on this trip, plus the phone's: one tap to fill a zone field.
+  const zones = useMemo(() => {
+    const s = new Set<string>([deviceZone()]);
+    for (const it of trip?.items ?? []) {
+      s.add(it.start.tz);
+      if (it.end) s.add(it.end.tz);
+    }
+    return [...s].slice(0, 6);
+  }, [trip]);
+
+  if (!trip) {
+    return (
+      <Screen>
+        <EmptyState title={t('item.title')} body={t('trip.notFound')} />
+      </Screen>
+    );
+  }
+
+  const save = async () => {
+    const e = validateItem(d);
+    setErrors(e);
+    if (e.length) {
+      AccessibilityInfo.announceForAccessibility(t('spec.form.checkFields'));
+      return;
+    }
+    // Leave only once it is stored; otherwise stay open with what was typed (STATES_COPY error.item.save).
+    if (saving) return;
+    setSaving(true);
+    setSaveFailed(false);
+    const ok = await saveItem(itemFromDraft(d, trip.id, prev));
+    setSaving(false);
+    if (!ok) {
+      setSaveFailed(true);
+      AccessibilityInfo.announceForAccessibility(t('error.item.save.title'));
+      return;
+    }
+    leaving();
+    router.back();
+  };
+
+  const zoneChip = (city: string) => t('itemEdit.useZone', { city });
+
+  /** "Tue, Nov 3 · 09:30 Tokyo time" beside the fields, plus a note if daylight saving skips or repeats that time. */
+  const whenNote = (date: string, time: string, tz: string) => {
+    const local = `${date}T${time}`;
+    if (!/^\d{2}:\d{2}$/.test(time) || !isLocalDateTime(local) || !isValidZone(tz)) return null;
+    const city = zoneCity(tz);
+    const check = checkWallTime({ local, tz });
+    return (
+      <>
+        <Body muted>{`${formatDay(date, lang)} · ${t('item.zone', { time, city })}`}</Body>
+        {check.kind === 'skipped' ? <Warning text={t('spec.itemEdit.dstSkipped', { time, city, used: formatTime(check.usedLocal) })} /> : null}
+        {check.kind === 'repeated' ? <Warning text={t('spec.itemEdit.dstRepeated', { time, city })} /> : null}
+      </>
+    );
+  };
+
+  return (
+    <Screen>
+      <Stack.Screen options={{ title: t(formTitleKey(d.kind, !!prev)), gestureEnabled }} />
+      <Label>{t('itemEdit.kind')}</Label>
+      <View accessibilityRole="radiogroup" accessibilityLabel={t('itemEdit.kind')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
+        {ITEM_KINDS.map((k) => (
+          <Chip key={k} label={t(kindKey(k))} selected={d.kind === k} icon={<KindIcon kind={k} color={theme.accent} size={18} />} onPress={() => set('kind')(k)} />
+        ))}
+      </View>
+      <TextField
+        label={t(titleKey(d.kind))}
+        value={d.title}
+        onChange={set('title')}
+        placeholder={isTransport(d.kind) ? t('itemEdit.namePlaceholder') : undefined}
+        error={err('title')}
+      />
+      {isTransport(d.kind) ? (
+        <>
+          <TextField label={t('item.from')} value={d.fromName} onChange={set('fromName')} />
+          <TextField label={t('item.to')} value={d.toName} onChange={set('toName')} />
+        </>
+      ) : null}
+      <Body muted>{t('itemEdit.tzHint')}</Body>
+      <DateField label={t('pickers.item.startDate')} typedLabel={t('itemEdit.startDate')} value={d.startDate} onChange={set('startDate')} hint={t('pickers.hint.startDate')} fallbackDay={trip.startDate} error={err('start')} />
+      <TimeField label={t('pickers.item.startTime')} typedLabel={t('itemEdit.startTime')} value={d.startTime} onChange={set('startTime')} hint={t('pickers.hint.startTime')} zone={d.startTz} />
+      <ZoneField label={t('itemEdit.startTz')} value={d.startTz} onChange={set('startTz')} hint={t('pickers.hint.itemZone')} error={err('startTz')} suggestions={zones} chipLabel={zoneChip} />
+      {whenNote(d.startDate, d.startTime, d.startTz)}
+      {hasEnd(d.kind) ? (
+        <>
+          <DateField label={t('pickers.item.endDate')} typedLabel={t('itemEdit.endDate')} value={d.endDate} onChange={set('endDate')} hint={t('pickers.hint.endDate')} fallbackDay={d.startDate || trip.startDate} error={err('end') ?? err('endRequired') ?? err('endBeforeStart')} />
+          <TimeField label={t('pickers.item.endTime')} typedLabel={t('itemEdit.endTime')} value={d.endTime} onChange={set('endTime')} hint={t('pickers.hint.endTime')} zone={d.endTz} />
+          <ZoneField label={t('itemEdit.endTz')} value={d.endTz} onChange={set('endTz')} hint={t('pickers.hint.itemZone')} error={err('endTz')} suggestions={zones} chipLabel={zoneChip} />
+          {whenNote(d.endDate, d.endTime, d.endTz)}
+        </>
+      ) : null}
+      {hasPlace(d.kind) ? (
+        <>
+          <TextField label={t('item.place')} value={d.placeName} onChange={set('placeName')} />
+          <TextField label={t('item.address')} value={d.address} onChange={set('address')} multiline />
+          <TextField label={t('item.localAddress')} value={d.localAddress} onChange={set('localAddress')} multiline />
+          <TextField label={t('itemEdit.placePhone')} value={d.placePhone} onChange={set('placePhone')} placeholder={t('itemEdit.placePhonePlaceholder')} inputMode="tel" />
+        </>
+      ) : null}
+      {hasCarrier(d.kind) ? <TextField label={t(carrierKey(d.kind))} value={d.carrier} onChange={set('carrier')} /> : null}
+      {hasNumber(d.kind) ? (
+        <>
+          <TextField label={t(numberKey(d.kind))} value={d.number} onChange={set('number')} />
+          <TextField label={t('item.seat')} value={d.seat} onChange={set('seat')} autoCapitalize="none" />
+        </>
+      ) : null}
+      {hasRef(d.kind) ? <TextField label={t('item.ref')} value={d.ref} onChange={set('ref')} autoCapitalize="none" /> : null}
+      <TextField label={t('item.notes')} value={d.notes} onChange={set('notes')} multiline />
+      {saveFailed ? (
+        <ErrorNotice title={t('error.item.save.title')} body={t('error.item.save.body')} action={t('common.tryAgain')} actionHint={t('error.saveRetryHint')} onAction={save} />
+      ) : null}
+      <Button label={t('itemEdit.save')} hint={t('spec.itemEdit.saveHint')} onPress={save} />
+      <Button label={t('common.cancel')} hint={t('spec.itemEdit.cancelHint')} kind="quiet" onPress={() => router.back()} />
+    </Screen>
+  );
+}

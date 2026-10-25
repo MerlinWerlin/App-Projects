@@ -1,0 +1,470 @@
+{
+ "app": "satchel",
+ "title": "Satchel",
+ "updated": "2026-10-25",
+ "milestones": {
+  "TRIAL": [
+   "T00",
+   "T01",
+   "T02",
+   "T03",
+   "T04",
+   "T05",
+   "T06",
+   "T07",
+   "T08",
+   "T09",
+   "T10",
+   "T30"
+  ]
+ },
+ "tasks": [
+  {
+   "id": "T00",
+   "status": "done",
+   "deps": [],
+   "title": "Starter standard: read docs/STARTER_STANDARD.md and add tasks tagged 'starter' for every item not covered below; fold startup-flash guard, splash hold, strings catalogue and motion file into T01",
+   "accept": "backlog covers the whole standard",
+   "note": "2026-10-24: added T18-T23 (starter); folded flash guard, splash hold, strings, motion, haptics setting, expo-updates, eas profiles into T01. Covered elsewhere: paywall close button + entitlement test (T16), widgets follow theme (T17), windowed lists (CONVENTIONS), Save to Photos (not needed: Satchel saves nothing to Photos).",
+   "commit": "6b4a0d3"
+  },
+  {
+   "id": "T01",
+   "status": "done",
+   "deps": [
+    "T00"
+   ],
+   "title": "Repo scaffold: Expo SDK 57 + TS strict + Expo Router tabs (trips, map, wallet, emergency) + stack (trip/[id], item/[id], essentials, settings), app.json (name Satchel, slug satchel, iOS usage strings for location-when-in-use, photos, Face ID, contacts), tokens light/dark from PLAN §5, fonts, scripts (test/typecheck/typecheck:core/typecheck:ui/check:ui), adapt START_TRIAL.cmd/start-trial.sh, write docs/TRIAL.md, extend tsc-stubs; folded from the starter standard: startup-flash guard (every route headerShown:false or a real title + a test), splash held with preventAutoHideAsync until ready, strings catalogue (src/i18n/en.ts + core + test), motion file (120/200/320 ms, Reduce Motion), PressableScale + haptics with a setting, expo-updates (runtimeVersion appVersion, channel production), eas.json production + production-native, placeholder original icon/splash",
+   "accept": "Expo Go-only deps; offline checks green",
+   "commit": "b90441a"
+  },
+  {
+   "id": "T02",
+   "status": "done",
+   "deps": [
+    "T01"
+   ],
+   "title": "Core model + time: model.ts, tz.ts (IANA zones via Intl, DST-safe), timeline.ts (group by local day, overlaps, gaps, next-up) with tests incl. cross-dateline flights",
+   "accept": "tests green",
+   "commit": "c730c88",
+   "note": "also src/core/demo.ts (demo trip fixture used by T03)"
+  },
+  {
+   "id": "T03",
+   "status": "done",
+   "deps": [
+    "T02"
+   ],
+   "title": "Trips list + trip timeline UI + add/edit item sheets per kind; Next up card; local storage (AsyncStorage + files); demo trip Sydney→Tokyo→Kyoto seeded on first run",
+   "accept": "every control labelled; ui-check clean",
+   "commit": "42c18cc",
+   "note": "trip-edit + item-edit modals; typed dates/times (no date-picker module); core trips.ts + format.ts with tests"
+  },
+  {
+   "id": "T04",
+   "status": "done",
+   "deps": [
+    "T03"
+   ],
+   "title": "Attachments + ticket view: attach PDF/image from Files/Photos into documents dir, full-screen viewer at full brightness (restore on exit), saved QR crop per ticket, Wallet tab listing tickets by time",
+   "accept": "pure parts tested",
+   "spec": "FLOWS §5, STATES_COPY, ACCESSIBILITY \"Item details and ticket view\"/\"Attachments\", EDGE_CASES \"Tickets and attachments\"",
+   "commit": "f932ca2"
+  },
+  {
+   "id": "T05",
+   "status": "done",
+   "deps": [
+    "T03"
+   ],
+   "title": "Emergency card + hotel address card: bundled sourced/dated emergency numbers table (core emergency.ts with tests), insurance, contacts picker, private medical notes; big-text address card with local-language field; one tap from Home",
+   "accept": "table has source + date per country",
+   "spec": "FLOWS §6-7; content: src/content/emergency_numbers.json (always \"verify locally\"; rows without a dated source show \"source pending\")",
+   "commit": "204f94c"
+  },
+  {
+   "id": "T06",
+   "status": "done",
+   "deps": [
+    "T03"
+   ],
+   "title": "Document vault: passport/visa/licence copies, expiry warnings (core rules + tests), Face ID / passcode lock via expo-local-authentication",
+   "accept": "lock never crashes Expo Go",
+   "spec": "FLOWS §8, EDGE_CASES \"Document vault and emergency card\"",
+   "commit": "0c8e7a6"
+  },
+  {
+   "id": "T07",
+   "status": "done",
+   "deps": [
+    "T04",
+    "T05"
+   ],
+   "title": "Low-battery essentials mode: core battery.ts rules (threshold 20%, manual switch, dismiss) with tests; /essentials pure-black screen with next ticket, address card, emergency card; offer it from a banner when battery is low (expo-battery)",
+   "accept": "tests green",
+   "spec": "FLOWS §9, EDGE_CASES \"Low-battery essentials mode\"",
+   "commit": "9ef0205"
+  },
+  {
+   "id": "T08",
+   "status": "done",
+   "deps": [
+    "T03"
+   ],
+   "title": "Packing lists per trip with templates by trip type (core packing.ts + tests)",
+   "accept": "tests green",
+   "spec": "FLOWS §10; content: src/content/packing_templates.json (11 templates)",
+   "commit": "debe52d"
+  },
+  {
+   "id": "T09",
+   "status": "done",
+   "deps": [
+    "T03"
+   ],
+   "title": "Map v0 (online in Expo Go): react-native-maps, pins for bookings/saved places + bundled demo-city POIs (core poi.ts OSM tag mapping + category toggles + distance sort, tests), single 'Where am I?' location check, OSM attribution",
+   "accept": "no continuous location",
+   "spec": "FLOWS §11; content: src/content/osm_poi_tags.json",
+   "commit": "ba85afc"
+  },
+  {
+   "id": "T10",
+   "status": "done",
+   "deps": [
+    "T04",
+    "T05",
+    "T06",
+    "T07",
+    "T08",
+    "T09"
+   ],
+   "title": "Trial polish: offline banner (expo-network), empty states, settings (haptics, essentials threshold, privacy 'Data Not Collected'), accessibility pass; docs/TRIAL.md 'What to try' yes/no questions incl. 'turn on flight mode and open your ticket' ; essentials threshold (battery.clampThreshold 5-50%) + manual switch in Settings writing ESSENTIALS_KEY",
+   "accept": "TRIAL complete; stage -> trial",
+   "spec": "FLOWS §12-13, ACCESSIBILITY app-wide, docs/spec/TEST_CASES.md for the TRIAL.md yes/no questions",
+   "commit": "c311ef0"
+  },
+  {
+   "id": "T11",
+   "status": "todo",
+   "deps": [
+    "T10"
+   ],
+   "title": "Offline map spike + design (no account sign-ups): verify Protomaps PMTiles licence/terms, OSM ODbL obligations, Cloudflare R2 free tier + terms, MapLibre React Native + PMTiles support in an Expo dev build; produce docs/OFFLINE_MAP.md with city-file pipeline (extract bbox, sizes for 5 sample cities), hosting plan for the owner to approve, and the adapter interface",
+   "accept": "owner-approvable design; no spending",
+   "spec": "start from docs/research/MAP_SPIKE.md (OpenAI draft, unverified: R2 prices came from a third-party site; re-check on cloudflare.com, no sign-ups)"
+  },
+  {
+   "id": "T12",
+   "status": "todo",
+   "deps": [
+    "T11"
+   ],
+   "title": "Offline map (native, behind adapter): MapLibre with downloaded city PMTiles, dark style, GPS dot in flight mode (single fix / watch only while open), download manager with sizes, pre-flight reminder to download destination",
+   "accept": "Expo Go shows v0 map without crashing"
+  },
+  {
+   "id": "T13",
+   "status": "todo",
+   "deps": [
+    "T12"
+   ],
+   "title": "Offline POI layers: per-city OSM extracts shipped with the map download; toggles; attribution",
+   "accept": "tests for POI file parsing"
+  },
+  {
+   "id": "T14",
+   "status": "todo",
+   "deps": [
+    "T10"
+   ],
+   "title": "Share extension 'Save to Satchel' (dev build) + core share.ts suggestion of trip/day; Expo Go fallback via document picker",
+   "accept": "tests green"
+  },
+  {
+   "id": "T15",
+   "status": "todo",
+   "deps": [
+    "T10"
+   ],
+   "title": "Trip export/import .satchel file (core tripfile.ts versioned JSON + attachments, tests); AirDrop/Messages share; import on open",
+   "accept": "round-trip test",
+   "spec": "Export/import must include trip.places (saved places, T29/T31)."
+  },
+  {
+   "id": "T16",
+   "status": "todo",
+   "deps": [
+    "T10"
+   ],
+   "title": "Satchel Plus: guarded expo-iap adapter (Linework pattern), one-time com.jared797.satchel.plus; gates only extra cities/regions, POI layers beyond the first city, iCloud sync, widgets, themes; entitlement test",
+   "accept": "core never reads entitlement; release-std purchase rules: Restore purchases in Settings, never gates tickets/emergency card/documents/first offline city, every Plus feature unlocked while purchases are stubbed, price shown from the store, no countdowns, nags or repeated upsell prompts",
+   "tags": [
+    "release-std"
+   ]
+  },
+  {
+   "id": "T17",
+   "status": "todo",
+   "deps": [
+    "T16"
+   ],
+   "title": "iCloud (CloudKit private DB) sync design + adapter; Apple Wallet .pkpass pass-through; Lock Screen/Home widget for next item (production-native)",
+   "accept": "design + adapters"
+  },
+  {
+   "id": "T18",
+   "status": "done",
+   "deps": [
+    "T03"
+   ],
+   "title": "Original app icon, splash and startup animation (satchel / boarding-pass motif from vector glyphs, tokens; no white frame between splash and first screen; Reduce Motion respected)",
+   "accept": "see title",
+   "tags": [
+    "starter"
+   ],
+   "spec": "prompt pack docs/art/ART_PROMPTS.md (8 icon concepts, 6 onboarding, store backgrounds); icons from vector glyphs, GPT images only for illustrations/backgrounds",
+   "commit": "e0ad72f"
+  },
+  {
+   "id": "T19",
+   "status": "done",
+   "deps": [
+    "T03"
+   ],
+   "title": "Permission states: one PermissionNotice (plain reason + Open Settings + fallback path) used by location, photos, Face ID, contacts and files; core permission-state mapping with tests",
+   "accept": "see title",
+   "tags": [
+    "starter"
+   ],
+   "commit": "45569fa"
+  },
+  {
+   "id": "T20",
+   "status": "done",
+   "deps": [
+    "T10"
+   ],
+   "title": "Release kit: docs/privacy.html + docs/support.html ('Data Not Collected'), docs/STORE.md (from the OpenAI STORE.md drop, no competitor names), screenshot kit, docs/THIRD_PARTY.md (OSM/ODbL, fonts), draft docs/RELEASE_CHECKLIST.md (ASC steps, Paid Apps agreement, IAP id)",
+   "accept": "see title",
+   "tags": [
+    "starter"
+   ],
+   "spec": "store copy draft: docs/spec/STORE.md",
+   "commit": "6bc92c4"
+  },
+  {
+   "id": "T21",
+   "status": "todo",
+   "deps": [
+    "T10"
+   ],
+   "title": "Translations: import es/fr/de/ja from the OpenAI spec lane (_spec/i18n) into src/i18n/locales with key + placeholder tests; RTL-safe layout check",
+   "accept": "see title",
+   "tags": [
+    "starter"
+   ],
+   "spec": "the lane's docs/spec/i18n/{es,fr,de,ja}.json translate docs/spec/STRINGS.json keys, not the app catalogue; translate docs/spec/EN_CATALOGUE.json (export of src/i18n/en.ts, 465 keys) instead, then import with key + placeholder tests"
+  },
+  {
+   "id": "T22",
+   "status": "todo",
+   "deps": [
+    "T10"
+   ],
+   "title": "docs/MARKET.md: competitor flows worth copying (never their look, words or art), from the OpenAI lane where available; pricing check against the one-time Plus",
+   "accept": "see title",
+   "tags": [
+    "starter"
+   ]
+  },
+  {
+   "id": "T23",
+   "status": "done",
+   "deps": [
+    "T10"
+   ],
+   "title": "Trial onboarding hand-off: note for the overseer to add Satchel to App-Projects auto-ship + PC refresh (ascAppId) and marketing/apps.json (unnamed until the name is locked); PC Expo Go auto-start on port 8098",
+   "accept": "see title",
+   "tags": [
+    "starter"
+   ],
+   "commit": "bcfff0f"
+  },
+  {
+   "id": "T24",
+   "status": "done",
+   "deps": [
+    "T10"
+   ],
+   "title": "Date and time pickers instead of typed YYYY-MM-DD / HH:MM fields (@react-native-community/datetimepicker is in Expo Go; add to PLAN §6 list) + time-zone search list",
+   "accept": "forms work one-handed; tests for zone search",
+   "tags": [
+    "follow-up"
+   ],
+   "commit": "4a1a4b0"
+  },
+  {
+   "id": "T25",
+   "status": "done",
+   "deps": [
+    "T05"
+   ],
+   "title": "Emergency numbers sources: re-run the OpenAI lane for an official source URL + checked date per country (national police/ambulance/fire, not only the EU 112 page); import, keep 'verify locally'; test that sourced rows carry a date; until then show a 'number doubted, check locally' line on fields listed in guard_flags (39 countries flagged by the GUARD review) and use confidence in the card",
+   "accept": "see title",
+   "tags": [
+    "spec"
+   ],
+   "commit": "4af880c",
+   "note": "in-repo part done (source/date validation, doubted-number lines, confidence line, lane brief docs/research/EMERGENCY_SOURCES_REQUEST.md); official sources import moved to T32"
+  },
+  {
+   "id": "T26",
+   "status": "done",
+   "deps": [
+    "T03"
+   ],
+   "title": "Spec pass on built screens (docs/spec FLOWS §1-4, STATES_COPY, ACCESSIBILITY trips/timeline/forms): first-launch welcome + demo intro, empty/error copy into en.ts, form behaviours from 'Shared item-form behaviour', EDGE_CASES 'Trips and timeline' + 'App state and editing' as core tests",
+   "accept": "see title",
+   "tags": [
+    "spec"
+   ],
+   "commit": "5d8d09d"
+  },
+  {
+   "id": "T27",
+   "status": "done",
+   "deps": [
+    "T04",
+    "T05",
+    "T06",
+    "T08"
+   ],
+   "tags": [
+    "follow-up"
+   ],
+   "accept": "tests for path rebasing; ui-check clean",
+   "title": "Run-2 follow-ups: store attachment/vault paths relative to the documents dir (or rebase via tickets.rebaseUri everywhere incl. vault); emergency shortcut on Trips home (FLOWS §6.1); TextField inputMode 'tel' for phone fields; discard-confirm on swipe-down of edit modals (beforeRemove); deleting a trip also drops its packing list (packing.dropList) and attachment files; attach section in item-edit; 'Add template' to an existing packing list; expo-clipboard 'Copy address' (in Expo Go; add to PLAN §6)",
+   "commit": "1cc2745"
+  },
+  {
+   "id": "T28",
+   "status": "todo",
+   "deps": [
+    "T10"
+   ],
+   "tags": [
+    "follow-up",
+    "native"
+   ],
+   "accept": "see title",
+   "title": "Native polish after trial: in-app QR crop screen (expo-image-manipulator) for files attached from Files, inline PDF viewer, app-switcher privacy cover for the vault"
+  },
+  {
+   "id": "T29",
+   "status": "done",
+   "deps": [
+    "T07",
+    "T09",
+    "T18",
+    "T19"
+   ],
+   "tags": [
+    "follow-up"
+   ],
+   "accept": "tests green; ui-check clean",
+   "title": "Run-3 follow-ups: map save/remove place + tap-to-select (FLOWS §11.1-11.2, saved places on the trip); lat/lon for demo stations/airports in demo.ts so transport pins show; map PermissionNotice gets state from permissionState(); PressableScale animate={false} inside essentials (cards still scale); drop now-unused keys (essentials.close, map.soon*, doc.err.pickDenied, ticket.err.photosDenied, emergency.contacts.perm*/unavailable*); app.json expo-location plugin text before the first dev build; app.json top-level backgroundColor -> paper",
+   "commit": "31a26ad"
+  },
+  {
+   "id": "T30",
+   "status": "done",
+   "deps": [
+    "T10"
+   ],
+   "tags": [
+    "trial",
+    "oversight"
+   ],
+   "title": "Expo SDK for the Expo Go trial: move to SDK 58 (oversight D134-1: owner's Expo Go is SDK 58) once the owner confirms or a registry-reachable/PC run can verify pins (expo ^58.0.19 as in App-Projects backspin/cue, then `npx expo install --fix`; re-check react-native-maps, expo-location, expo-battery); update docs/TRIAL.md, PLAN §6, CONVENTIONS, trial scripts",
+   "accept": "package.json on the SDK the owner's Expo Go runs; versions verified by expo install --fix on the PC",
+   "commit": "a39f0cf"
+  },
+  {
+   "id": "T31",
+   "status": "done",
+   "deps": [
+    "T26",
+    "T27",
+    "T29"
+   ],
+   "tags": [
+    "follow-up"
+   ],
+   "accept": "tests green; ui-check clean",
+   "title": "Run-4 follow-ups: Appearance setting System/Light/Dark (FLOWS §12, theme pref in state/app.tsx); store save functions return success so forms show STATES_COPY error.item.save / error.trips.save and stay open; Trips home shows error.trips.load when satchel.trips.v1.unreadable exists; discard-confirm on emergency-edit, doc-edit and packing forms (src/ui/discardConfirm.ts); confirm swipe-down discard on device (usePreventRemove if @react-navigation/native becomes a direct dep); deleting a single booking removes its attachment files (removeAppFiles); place phone field in item-edit uses inputMode tel; merge pickers.appUri into files.appPath; saved places on the trip timeline + trip-scoped 'Trip map'; remove unused keys (settings.privacyBody, maybe emergency.contacts.addManually, map.denied); tripfile.ts (T15) must include places; drop unused addDays import in core/vault.ts",
+   "commit": "bbe14ac"
+  },
+  {
+   "id": "T32",
+   "status": "todo",
+   "deps": [
+    "T25"
+   ],
+   "tags": [
+    "spec"
+   ],
+   "accept": "sourced rows carry https URL + ISO checked date (test in emergency.test.ts); numbers stay 'verify locally'",
+   "title": "Import official emergency-number sources from the OpenAI lane per docs/research/EMERGENCY_SOURCES_REQUEST.md (39 guard-flagged countries first); resolve guard_flags only with an official national source; record per-country decisions in ops/DECISIONS.md"
+  },
+  {
+   "id": "T33",
+   "status": "done",
+   "deps": [
+    "T24",
+    "T31"
+   ],
+   "tags": [
+    "follow-up"
+   ],
+   "accept": "tests green; ui-check clean",
+   "title": "Run-5 follow-ups: scrim token for the iPhone date/time sheet; confirm router.setParams clears map scope in expo-router 57 (else explicit scope reset param); Appearance Light/Dark also for system alerts/keyboard (Appearance.setColorScheme) if it behaves in Expo Go; demo trip gains sample ticket, vault doc and emergency details for the screenshot kit (docs/SCREENSHOTS.md); add the iPad screenshot decision (supportsTablet) to docs/RELEASE_CHECKLIST.md; Android Google Maps key/terms note before any Play build",
+   "commit": "c2728b6"
+  },
+  {
+   "id": "T34",
+   "status": "todo",
+   "deps": [
+    "T30"
+   ],
+   "tags": [
+    "follow-up"
+   ],
+   "accept": "lockfile committed; expo install --fix clean; tests + tsc green on the PC",
+   "title": "SDK 58 install follow-up: take the lockfile and versions from the first PC install (npx expo install --fix aligns react, react-native, react-native-maps, datetimepicker, safe-area, screens, svg, async-storage to SDK 58); fix any tsc/test/export errors the PC report shows; update tsc-stub header comments to SDK 58; drop .npmrc legacy-peer-deps if the install has no peer conflicts without it"
+  },
+  {
+   "id": "T35",
+   "status": "done",
+   "deps": [
+    "T10"
+   ],
+   "tags": [
+    "release-std"
+   ],
+   "title": "First-launch language line (release standard): one quiet line on first launch naming the language in use with a link to Settings > Language; Settings gains a language picker (phone default + shipped locales); strings in en.ts; no blocking prompt",
+   "accept": "line shows once, never blocks, picker persists choice; tests for the choice in core",
+   "commit": "5bbbf96"
+  },
+  {
+   "id": "T36",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "release-std"
+   ],
+   "title": "Full release-standard pass: read App-Projects docs/RELEASE_STANDARD.md (at onboarding or when a run can read it), compare every line with Satchel, update docs/RELEASE_CHECKLIST.md 'Release standard check' and add tasks for each gap",
+   "accept": "every standard line marked met / gap with a task"
+  }
+ ],
+ "priority_note": "Owner: 'let's trial that for now'. Reach TRIAL fast; nothing native before the owner has tried the trial."
+}

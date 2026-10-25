@@ -1,0 +1,116 @@
+// Booking detail: times as printed with each place's zone, duration, day shift, references, addresses, notes.
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { Alert, Text, View } from 'react-native';
+import { formatDay, formatDuration, formatTime, zoneCity } from '../../src/core/format.ts';
+import type { Stamp } from '../../src/core/model.ts';
+import { isTransport } from '../../src/core/model.ts';
+import { dayShift, minutesBetween } from '../../src/core/tz.ts';
+import type { Key } from '../../src/i18n/en.ts';
+import { useApp } from '../../src/state/app.tsx';
+import { findItem, useTrips } from '../../src/state/trips.tsx';
+import { fonts, space } from '../../src/theme/tokens.ts';
+import { KindIcon, carrierKey, kindKey, numberKey } from '../../src/ui/kinds.tsx';
+import { Body, Button, Card, EmptyState, Label, Screen } from '../../src/ui/kit.tsx';
+import { ItemAddressSlot } from '../../src/ui/slots/ItemAddressSlot.tsx';
+import { ItemTicketSlot } from '../../src/ui/slots/ItemTicketSlot.tsx';
+
+export default function ItemScreen() {
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const { t, theme, lang } = useApp();
+  const { trips, deleteItem } = useTrips();
+  const router = useRouter();
+  const found = findItem(trips, id);
+  if (!found) {
+    return (
+      <Screen>
+        <EmptyState title={t('item.title')} body={t('item.notFound')} />
+      </Screen>
+    );
+  }
+  const { trip, item } = found;
+  const [startLabel, endLabel]: [Key, Key] = isTransport(item.kind)
+    ? ['item.departs', 'item.arrives']
+    : item.kind === 'hotel'
+      ? ['item.checkIn', 'item.checkOut']
+      : item.kind === 'car'
+        ? ['spec.item.pickUp', 'spec.item.dropOff']
+        : ['item.starts', 'item.ends'];
+
+  const when = (s: Stamp, extra = '') => (
+    <View style={{ gap: 2 }}>
+      <Text style={{ fontFamily: fonts.display, fontSize: 28, color: theme.ink, fontVariant: ['tabular-nums'] }}>
+        {formatTime(s.local)}
+        {extra}
+      </Text>
+      <Body muted>
+        {formatDay(s.local.slice(0, 10), lang)} · {t('item.zone', { time: formatTime(s.local), city: zoneCity(s.tz) })}
+      </Body>
+    </View>
+  );
+  const shift = item.end ? dayShift(item.start, item.end) : 0;
+  const row = (k: Key, v?: string) =>
+    v ? (
+      <View key={k} style={{ gap: 2 }}>
+        <Label>{t(k)}</Label>
+        <Text selectable style={{ fontFamily: fonts.bodyBold, fontSize: 18, color: theme.ink }}>
+          {v}
+        </Text>
+      </View>
+    ) : null;
+
+  const confirmDelete = () =>
+    Alert.alert(t('item.deleteConfirm', { title: item.title }), undefined, [
+      { text: t('common.cancel'), style: 'cancel' },
+      {
+        text: t('common.delete'),
+        style: 'destructive',
+        onPress: async () => {
+          // Its attachment files are removed by the store once the deletion is saved.
+          if (!(await deleteItem(trip.id, item.id))) {
+            Alert.alert(t('error.item.save.title'), t('error.item.save.body'));
+            return;
+          }
+          router.back();
+        },
+      },
+    ]);
+
+  return (
+    <Screen>
+      <Stack.Screen options={{ title: t(kindKey(item.kind)) }} />
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
+        <KindIcon kind={item.kind} color={theme.accent} size={26} />
+        <Text accessibilityRole="header" style={{ flex: 1, fontFamily: fonts.display, fontSize: 24, color: theme.ink }}>
+          {item.title}
+        </Text>
+      </View>
+      <Card>
+        <Label>{t(startLabel)}</Label>
+        {when(item.start)}
+        {item.end ? (
+          <>
+            <Label>{t(endLabel)}</Label>
+            {when(item.end, shift ? `  ${t('item.dayShift', { n: shift > 0 ? `+${shift}` : String(shift) })}` : '')}
+            {item.kind !== 'hotel' ? <Body muted>{t('item.duration', { d: formatDuration(minutesBetween(item.start, item.end)) })}</Body> : null}
+          </>
+        ) : null}
+      </Card>
+      <ItemTicketSlot trip={trip} item={item} />
+      <ItemAddressSlot trip={trip} item={item} />
+      <Card>
+        {row('item.from', item.from?.name)}
+        {row('item.to', item.to?.name)}
+        {row('item.place', item.place?.name !== item.title ? item.place?.name : undefined)}
+        {row('item.address', item.place?.address)}
+        {row('item.localAddress', item.place?.localAddress)}
+        {row('item.ref', item.ref)}
+        {row(carrierKey(item.kind), item.carrier)}
+        {row(numberKey(item.kind), item.number)}
+        {row('item.seat', item.seat)}
+        {row('item.notes', item.notes)}
+      </Card>
+      <Button label={t('item.edit')} hint={t('spec.item.editHint')} onPress={() => router.push({ pathname: '/item-edit', params: { tripId: trip.id, id: item.id } })} />
+      <Button label={t('item.delete')} hint={t('spec.item.deleteHint')} kind="quiet" onPress={confirmDelete} />
+    </Screen>
+  );
+}

@@ -1,0 +1,17 @@
+{
+  "tests": 217,
+  "typecheck": "core only (registry unreachable); typecheck:ui clean against stubs",
+  "last_run": "2026-10-25 19:10 Sydney",
+  "stage": "trial",
+  "oversight_seen": 144,
+  "headline": "Ready to try on your iPhone",
+  "next_for_owner": [
+    "Install Expo Go from the App Store on your iPhone (Satchel now targets SDK 58, the version Expo Go runs).",
+    "On your PC, download the trial kit from this page, unzip it and double-click START_TRIAL.cmd (it installs, runs npx expo install --fix, checks the code, then starts Satchel). If anything is red, paste trial-log.txt into a comment here. The Desktop\\Apps\\satchel copy is an older build until a run refreshes it.",
+    "When the QR code appears, scan it with the iPhone Camera app and open it in Expo Go.",
+    "Try the demo trip, then turn on flight mode and try again. Comment on this page with anything that looks wrong (docs/TRIAL.md has yes/no questions).",
+    "Full install + tsc + expo export needs PC verification (T34): connect Desktop\\Apps to a build run, or run START_TRIAL.cmd and paste trial-log.txt here."
+  ],
+  "trial_kit": true,
+  "next_stage": "owner-tested"
+}
