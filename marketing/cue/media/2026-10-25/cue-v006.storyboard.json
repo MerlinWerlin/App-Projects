@@ -1,0 +1,50 @@
+{
+ "id": "cue-v006",
+ "app": "cue",
+ "title": "Quick-fire FAQ: what costs money?",
+ "shots": [
+  {
+   "image": "img/cue-v006-01.png",
+   "caption": "What's the recording catch?",
+   "seconds": 2.4,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v006-02.png",
+   "caption": "Recording is free.",
+   "seconds": 2.4,
+   "motion": "right"
+  },
+  {
+   "image": "img/cue-v006-03.png",
+   "caption": "Watermark on the export?",
+   "seconds": 2.4,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v006-04.png",
+   "caption": "No watermark. Saved to Photos.",
+   "seconds": 2.4,
+   "motion": "out"
+  },
+  {
+   "image": "img/cue-v006-05.png",
+   "caption": "What about a subscription?",
+   "seconds": 2.4,
+   "motion": "left"
+  },
+  {
+   "image": "img/cue-v006-06.png",
+   "caption": "No subscription. Plus costs once.",
+   "sub": "Voice Pace and extras.",
+   "seconds": 2.4,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "line": "Coming soon to iPhone",
+  "sub": "Free recording. Optional paid extras."
+ },
+ "accent": "#E8552B",
+ "branded": false
+}

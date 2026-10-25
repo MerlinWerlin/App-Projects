@@ -1,0 +1,67 @@
+{
+ "videos": {
+  "lw-v005": {
+   "caption": "Plan a corner with Workshop templates for angles, joints and layouts, then trace the guide onto paper. Linework is free for 14 days.",
+   "hashtags": [
+    "#Linework",
+    "#Woodworking",
+    "#DIYProjects",
+    "#Tracing"
+   ]
+  },
+  "lw-v006": {
+   "caption": "A camera-free tracing challenge: use Linework Lightbox mode, lay thin paper over your screen and follow the lines.",
+   "hashtags": [
+    "#Linework",
+    "#Lightbox",
+    "#Sketching",
+    "#CreativeProjects"
+   ]
+  },
+  "lw-v007": {
+   "caption": "With Linework, tracing your own photos stays free after the 14-day trial. Plus unlocks the full library once for A$2.99.",
+   "hashtags": [
+    "#Linework",
+    "#NoSubscription",
+    "#DrawingApp",
+    "#TraceAndSketch"
+   ]
+  }
+ },
+ "pins": [
+  {
+   "title": "Workshop Templates for Angles & Joints",
+   "description": "Explore Linework Workshop layouts for trades, including exact angles and joints. Trace a guide onto real paper with your own pencil. Free for 14 days; Plus is a one-time A$2.99."
+  },
+  {
+   "title": "Try Lightbox Tracing Without a Camera",
+   "description": "Linework Lightbox displays an image full-bright on screen so you can lay thin paper over it and trace. A camera-free way to work from a photo or template."
+  },
+  {
+   "title": "Trace Your Own Photos onto Paper",
+   "description": "Choose a photo, position your phone above paper and trace the lines. After the 14-day trial, tracing your own photos with every tracing tool stays free."
+  },
+  {
+   "title": "Letters in 16 Styles to Trace",
+   "description": "Browse lettering templates in 16 styles, from bubble and script to stencil and retro. Set up your phone above paper and trace at your own pace."
+  },
+  {
+   "title": "Linework Pricing: One-Time Plus Unlock",
+   "description": "Linework is free for 14 days. After that, tracing your own photos with every tracing tool stays free; Plus unlocks the full library once for A$2.99. No ads or subscription."
+  }
+ ],
+ "reddit": [
+  {
+   "question": "What app can I use to trace a photo onto paper with my phone?",
+   "reply": "Linework lets you place a photo over the live camera view and trace it onto paper. You can lock the picture in place; your own-photo tracing stays free after the 14-day trial."
+  },
+  {
+   "question": "Any drawing app with a lightbox mode that doesn't need the camera?",
+   "reply": "Linework has a Lightbox mode that shows an image full-bright on the screen so you can lay thin paper over it. It also has camera tracing if you want to work that way."
+  },
+  {
+   "question": "Is there an app for tracing lettering or workshop layouts onto paper?",
+   "reply": "Linework has letter templates in 16 styles plus Workshop layouts for angles and joints. You can trace a template onto paper; the full library unlock is a one-time A$2.99 after the 14-day trial."
+  }
+ ]
+}

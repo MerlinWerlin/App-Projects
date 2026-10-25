@@ -1,0 +1,45 @@
+{
+ "id": "lw-v006",
+ "app": "linework",
+ "title": "The paper test — camera-free lightbox challenge",
+ "shots": [
+  {
+   "image": "img/lw-v006-01.png",
+   "caption": "Can you trace without the camera?",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v006-02.png",
+   "caption": "Try Linework's Lightbox mode",
+   "sub": "Lay thin paper over your screen",
+   "seconds": 2.8,
+   "motion": "down"
+  },
+  {
+   "image": "img/lw-v006-03.png",
+   "caption": "Follow the lines showing through",
+   "seconds": 2.8,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v006-04.png",
+   "caption": "Lift the paper",
+   "seconds": 2.6,
+   "motion": "up"
+  },
+  {
+   "image": "img/lw-v006-05.png",
+   "caption": "Your pencil. Your paper. No camera.",
+   "seconds": 2.7,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "Linework",
+  "line": "Try tracing a different way",
+  "sub": "No ads. No subscription."
+ },
+ "accent": "#2346A8",
+ "branded": true
+}

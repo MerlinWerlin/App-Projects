@@ -1,0 +1,64 @@
+{
+ "videos": {
+  "cue-v004": {
+   "caption": "Less looking down at notes, more talking to the lens. Keep your script close to the camera. Coming soon to iPhone.",
+   "hashtags": [
+    "#CreatorTips",
+    "#VideoTips",
+    "#Teleprompter"
+   ]
+  },
+  "cue-v005": {
+   "caption": "Try the silent-beat challenge: talk, pause, then speak again. Voice Pace waits while you pause. Coming soon to iPhone.",
+   "hashtags": [
+    "#CreatorTips",
+    "#SpeakingTips",
+    "#Teleprompter"
+   ]
+  },
+  "cue-v006": {
+   "caption": "Quick teleprompter FAQ: recording is free, exports have no watermark, and optional extras are a one-time purchase.",
+   "hashtags": [
+    "#CreatorTools",
+    "#VideoRecording",
+    "#Teleprompter"
+   ]
+  }
+ },
+ "pins": [
+  {
+   "title": "Keep Your Eyes Near the Camera Lens",
+   "description": "A script positioned by the lens can help you stay connected while recording. A teleprompter for iPhone is coming soon."
+  },
+  {
+   "title": "A Teleprompter That Waits When You Pause",
+   "description": "Voice Pace scrolls while you talk and stops when you pause. It’s an optional extra with a one-time purchase."
+  },
+  {
+   "title": "Retake One Section of Your Script",
+   "description": "Record a script in sections and redo the bit that needs another take, rather than starting from the beginning."
+  },
+  {
+   "title": "Free Teleprompter Recording, No Watermark",
+   "description": "Record with your script in view and save your take to Photos. Recording is free, with no watermark."
+  },
+  {
+   "title": "Simple Teleprompter Setup for Presentations",
+   "description": "Keep your words close to the camera while presenting or recording. Coming soon to iPhone."
+  }
+ ],
+ "reddit": [
+  {
+   "question": "What’s a good iPhone teleprompter setup for recording videos?",
+   "reply": "Try placing the script close to the camera lens so your gaze stays near the audience. A simple phone teleprompter can make that easier; look for one with a pace that suits how you speak."
+  },
+  {
+   "question": "Any tips for presenting without losing my place in a script?",
+   "reply": "Break the script into short sections, add pause cues where you need a beat, and rehearse with the text near eye level. That can make it easier to pick up again if you lose your place."
+  },
+  {
+   "question": "Is there a teleprompter app that pauses when I stop talking?",
+   "reply": "Some teleprompters offer voice-paced scrolling, which pauses when you stop and resumes when you speak. Check whether that feature is included or an optional paid extra."
+  }
+ ]
+}

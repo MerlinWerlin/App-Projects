@@ -1,0 +1,49 @@
+{
+ "id": "bs-v004",
+ "app": "backspin",
+ "title": "Before/after: laundry-room vocal confidence",
+ "shots": [
+  {
+   "image": "img/bs-v004-01.png",
+   "caption": "Before: absolutely convinced you'll nail it",
+   "sub": "A reverse-singing confidence check",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v004-02.png",
+   "caption": "My socks squeak.",
+   "sub": "Hear it backwards. Copy it.",
+   "seconds": 2.6,
+   "motion": "right"
+  },
+  {
+   "image": "img/bs-v004-03.png",
+   "caption": "After: whatever that noise was",
+   "sub": "Hear your copy flipped forwards",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v004-04.png",
+   "caption": "The laundry can wait",
+   "sub": "The laughing apparently cannot",
+   "seconds": 2.6,
+   "motion": "out"
+  },
+  {
+   "image": "img/bs-v004-05.png",
+   "caption": "Confidence isn't the score",
+   "sub": "Closeness to the original is",
+   "seconds": 2.6,
+   "motion": "up"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Concept preview • In development"
+ },
+ "accent": "#FF5A4E",
+ "branded": false
+}

@@ -1,0 +1,50 @@
+{
+ "id": "cue-v005",
+ "app": "cue",
+ "title": "Silent-beat challenge: pause the bakery pitch",
+ "shots": [
+  {
+   "image": "img/cue-v005-01.png",
+   "caption": "Try the silent-beat challenge.",
+   "seconds": 2.4,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v005-02.png",
+   "caption": "Talk. The words move.",
+   "seconds": 2.4,
+   "motion": "up"
+  },
+  {
+   "image": "img/cue-v005-03.png",
+   "caption": "Now pause for a beat.",
+   "seconds": 2.4,
+   "motion": "none"
+  },
+  {
+   "image": "img/cue-v005-04.png",
+   "caption": "Voice Pace pauses with you.",
+   "sub": "Voice Pace is a Plus extra.",
+   "seconds": 2.4,
+   "motion": "none"
+  },
+  {
+   "image": "img/cue-v005-05.png",
+   "caption": "Speak again. Scrolling resumes.",
+   "seconds": 2.4,
+   "motion": "up"
+  },
+  {
+   "image": "img/cue-v005-06.png",
+   "caption": "Your pace sets the rhythm.",
+   "seconds": 2.4,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "line": "Coming soon to iPhone",
+  "sub": "Voice Pace: one-time Plus upgrade."
+ },
+ "accent": "#E8552B",
+ "branded": false
+}

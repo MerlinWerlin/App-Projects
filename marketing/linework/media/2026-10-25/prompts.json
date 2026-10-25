@@ -1,0 +1,77 @@
+[
+ {
+  "file": "img/lw-v005-01.png",
+  "prompt": "Vertical 2:3, 1024x1536. Handcrafted miniature studio illustration with realistic paper textures, not documentary photography. Overhead view of a small woodworking planning desk: warm cream paper holds a rough graphite drawing of two rectangular timber pieces meeting at a corner, with several tentative overlapping construction lines. No measurements or annotations. A short unbranded graphite pencil, two pale timber offcuts and an ink-blue #2346A8 carpenter-style square sit nearby. Calm warm directional light, cream #F5F1EA, graphite #22201C, restrained ink-blue accents. Keep the drawing and objects in the central crop-safe area with generous quiet space above and below for renderer captions. No text, letters, numerals, logos, watermarks, people, characters, device interfaces or app UI.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v005-02.png",
+  "prompt": "Vertical 2:3, 1024x1536. Handcrafted miniature studio illustration, matching the warm woodworking desk, cream paper, graphite and ink-blue #2346A8 palette of the preceding image. Three small unlabelled paper studies show simple geometric angle construction, a rectangular timber corner joint, and a rectangular layout grid; line drawings only, no dimensions. An unbranded phone is secured horizontally in a stable blue overhead stand above a fresh sheet of paper, its camera directed downward and its screen facing away from the viewer. Phone screen content is completely hidden. Pencil and pale timber offcuts nearby. These are physical paper studies, not floating UI cards. Central crop-safe composition, quiet caption space. No text, letters, numerals, logos, watermarks, people or visible app UI.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v005-03.png",
+  "prompt": "Vertical 2:3, 1024x1536. Close oblique view of the same handcrafted miniature woodworking planning desk. A phone remains securely mounted above paper in an ink-blue #2346A8 stand; the camera faces the paper and the screen is turned fully away from the viewer. On the cream paper is a partially completed graphite drawing of two rectangular timber pieces forming a simple corner joint. An unbranded pencil rests with its point at the unfinished line. Show only actual pencil marks on the paper: no projected image, no glowing guide, no floating overlay. Warm paper texture, graphite, pale timber, soft studio shadows. Main action central with generous caption-safe space. No text, letters, numerals, measurements, logos, watermarks, people or visible app interface.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v005-04.png",
+  "prompt": "Vertical 2:3, 1024x1536. Handcrafted miniature studio illustration continuing the same woodworking desk. Close overhead view of a finished pencil planning sketch of two rectangular timber pieces meeting at a corner, clear construction lines with slight natural hand-drawn variation, no measurements and no implication of certified engineering accuracy. The pencil lies diagonally beside the sheet, pale timber offcuts sit at the edge, and a small part of the ink-blue #2346A8 phone stand is visible outside the paper. Warm cream #F5F1EA, graphite #22201C, soft natural shadows. Central crop-safe subject and open space for captions. No text, letters, numerals, logos, watermarks, people or app UI.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v005-05.png",
+  "prompt": "Vertical 2:3, 1024x1536. Before-and-after still life in a handcrafted miniature woodworking studio. Two cream paper sheets lie side by side in the central crop-safe region, depicting the same simple rectangular timber corner joint at the same scale. Left sheet has tentative overlapping graphite lines; right sheet has a clearer pencil layout with subtle human-like irregularity, not a digitally perfect technical specification. An unbranded graphite pencil bridges the space below them, with pale timber offcuts and a restrained ink-blue #2346A8 square nearby. No labels identifying before or after; captions will be added separately. Warm paper, graphite, calm directional light, generous empty upper and lower areas. No text, letters, numerals, measurements, logos, watermarks, people or app UI.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v006-01.png",
+  "prompt": "Vertical 2:3, 1024x1536. Playful handcrafted miniature studio illustration of a camera-free tracing setup on a warm cream desk. An unbranded phone in an ink-blue #2346A8 case lies flat, screen facing upward, with a very thin translucent paper sheet resting directly on the screen. Through the sheet, a faint simple original line drawing of a scallop shell is visible from the illuminated screen beneath. A short graphite pencil lies beside it. No phone stand, camera setup or projected light beam. Close three-quarter angle clearly establishes paper touching the screen. Warm cream #F5F1EA, graphite #22201C, blue accent, softly glowing paper. Central crop-safe arrangement, generous caption space. No text, letters, numerals, logos, watermarks, people, characters or visible app controls.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v006-02.png",
+  "prompt": "Vertical 2:3, 1024x1536. Same handcrafted miniature desk and ink-blue #2346A8 cased phone as preceding shot. Tight overhead view showing thin translucent paper laid flush across the upward-facing phone screen; all screen edges are covered except a narrow dark bezel and blue case. A faint original scallop-shell outline shines through the paper, with simple radiating ribs and a curved fan shape. No interface is visible, just the drawing through paper. Pencil poised beside the sheet without any person or hand. Warm cream paper, soft graphite outline, calm studio lighting, central crop-safe composition and quiet space for captions. No text, letters, numerals, logos, watermarks, people, camera projection or app UI.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v006-03.png",
+  "prompt": "Vertical 2:3, 1024x1536. Macro handcrafted miniature studio illustration of the same thin paper resting directly on a flat phone in an ink-blue #2346A8 case. The original scallop-shell outline is faintly visible through the paper; part of its curved outer edge and several ribs have now been traced in darker graphite. An unbranded pencil rests with its tip touching the end of one newly drawn line. Make the distinction between faint transmitted guide and darker physical graphite clear. No hands or people. Warm cream texture, gentle screen illumination beneath the paper, restrained blue accents. Keep shell central and readable, with empty caption space. No text, letters, numerals, logos, watermarks, floating overlays, projected beams or visible app interface.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v006-04.png",
+  "prompt": "Vertical 2:3, 1024x1536. Handcrafted miniature studio illustration continuing the same lightbox tracing scene. A thin paper sheet bearing a completed graphite scallop-shell drawing has been lifted and propped diagonally against a plain cream block beside the phone, clearly no longer lying on the screen. The phone rests flat in its ink-blue #2346A8 case and is viewed at a low enough angle that its screen content cannot be seen. Pencil lies nearby. The shell drawing is original, simple and gently imperfect, with no written annotations. Warm cream paper, graphite, soft shadows, central crop-safe composition with generous caption space. No text, letters, numerals, logos, watermarks, people or app UI.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v006-05.png",
+  "prompt": "Vertical 2:3, 1024x1536. Satisfying final still life in the same handcrafted miniature studio. A small sheet of cream paper with the completed original graphite scallop-shell drawing lies centered on the desk, a short unbranded pencil placed neatly below. The ink-blue #2346A8 cased phone lies face down off to one side, clearly separate from the finished paper. A real-shaped pale shell prop echoes the drawn fan silhouette without obscuring the artwork. Warm cream #F5F1EA, graphite #22201C, quiet blue accent, soft tactile shadows. Generous clean upper and lower caption-safe space, main objects central. No text, letters, numerals, logos, watermarks, people or visible interface.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v007-01.png",
+  "prompt": "Vertical 2:3, 1024x1536. Editorial handcrafted miniature still life, a visual metaphor for recurring drawing-app payments rather than a literal billing screen. On a warm cream desk, a small circular track holds several identical blank paper slips and unmarked metal discs repeating around the loop. Beside the loop sits a neglected graphite pencil and a small unfinished botanical sketch. No currency symbols, calendar dates, numbers or readable receipts. Ink-blue #2346A8 track, cream #F5F1EA paper, graphite #22201C, soft studio light. Keep objects central with generous blank caption space. No text, letters, numerals, logos, watermarks, people, characters or app UI.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v007-02.png",
+  "prompt": "Vertical 2:3, 1024x1536. Handcrafted miniature tabletop comparison illustration in warm cream, graphite and ink-blue #2346A8. A central overhead composition contrasts a circular track containing repeated blank paper slips on the left with an uncluttered drawing workspace on the right: cream sketch paper, an unbranded graphite pencil and a phone lying face down in a blue case. An open strip of cream desk separates the arrangements; no arrows, labels or typography. This is a conceptual comparison, not a representation of any named product or an app interface. Soft directional lighting, tactile paper, central crop-safe objects, empty upper and lower caption space. No text, letters, numerals, currency symbols, logos, watermarks or people.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v007-03.png",
+  "prompt": "Vertical 2:3, 1024x1536. Editorial handcrafted miniature still life representing a limited trial period without depicting automatic billing. A small clear hourglass with cream sand stands beside an open shallow ink-blue #2346A8 tray containing several original line-art paper cards: a leaf, a simple bird, a geometric pattern and a shell. An unbranded phone lies face down and a graphite pencil rests on warm cream paper. No calendar, dates, numerals, price tags or payment symbols. Calm studio light, cream #F5F1EA, graphite #22201C, restrained blue, tactile miniature materials. All important objects centrally framed, with quiet caption-safe space above and below. No text, letters, logos, watermarks, people or app UI.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v007-04.png",
+  "prompt": "Vertical 2:3, 1024x1536. Handcrafted miniature editorial still life showing personal-photo tracing as a physical paper outcome. A small unlabelled photographic print of an original plain ceramic jug with a single leaf sprig sits next to a cream sheet containing a simple graphite contour drawing of that same jug and sprig. This is a hand-drawn contour study, not an automatically converted outline preview. A phone is secured above the paper on a stable ink-blue #2346A8 stand, camera directed downward and screen completely turned away from the viewer. Pencil rests beside the drawing. No image projected onto the paper. Warm cream, graphite, blue, soft studio shadows, central crop-safe arrangement and empty caption space. No text, letters, numerals, logos, watermarks, people or visible interface.",
+  "size": "1024x1536"
+ },
+ {
+  "file": "img/lw-v007-05.png",
+  "prompt": "Vertical 2:3, 1024x1536. Editorial handcrafted miniature still life symbolizing one optional purchase, not a literal app screen or payment flow. One single unmarked metal disc rests in a shallow ink-blue #2346A8 dish beside an open box of original line-art cards showing a shell, leaf, bird, abstract geometric pattern and simple timber corner joint. Nearby, a small unlabelled photographic print of a ceramic jug is paired with a clean line-art rendering of the same jug, representing photo-to-outline. No repeated payment tokens and no pile suggesting an exact template count. Warm cream #F5F1EA desk, graphite #22201C lines, calm blue accents, soft studio light, tactile materials. Central crop-safe arrangement and generous caption space. No text, letters, numerals, currency marks, logos, watermarks, people or app UI.",
+  "size": "1024x1536"
+ }
+]

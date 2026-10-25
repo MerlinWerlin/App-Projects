@@ -1,0 +1,46 @@
+{
+ "id": "lw-v005",
+ "app": "linework",
+ "title": "A corner worth keeping — Workshop before/after",
+ "shots": [
+  {
+   "image": "img/lw-v005-01.png",
+   "caption": "That corner needs a clearer plan",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v005-02.png",
+   "caption": "Meet Linework's Workshop",
+   "sub": "Angles, joints and layouts",
+   "seconds": 2.6,
+   "motion": "right"
+  },
+  {
+   "image": "img/lw-v005-03.png",
+   "caption": "Trace the guide onto paper",
+   "seconds": 2.8,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v005-04.png",
+   "caption": "A clearer layout, in pencil",
+   "seconds": 2.6,
+   "motion": "up"
+  },
+  {
+   "image": "img/lw-v005-05.png",
+   "caption": "Same idea. Different starting point.",
+   "sub": "Workshop library with Linework Plus",
+   "seconds": 2.9,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "Linework",
+  "line": "Free for 14 days",
+  "sub": "Plus: A$2.99 once. No subscription."
+ },
+ "accent": "#2346A8",
+ "branded": true
+}

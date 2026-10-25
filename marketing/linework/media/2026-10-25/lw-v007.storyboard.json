@@ -1,0 +1,46 @@
+{
+ "id": "lw-v007",
+ "app": "linework",
+ "title": "Weekly loop, one unlock — tabletop pricing comparison",
+ "shots": [
+  {
+   "image": "img/lw-v007-01.png",
+   "caption": "A drawing app. A weekly bill?",
+   "seconds": 2.6,
+   "motion": "left"
+  },
+  {
+   "image": "img/lw-v007-02.png",
+   "caption": "Linework has no subscription",
+   "seconds": 2.6,
+   "motion": "right"
+  },
+  {
+   "image": "img/lw-v007-03.png",
+   "caption": "Everything: free for 14 days",
+   "seconds": 2.8,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v007-04.png",
+   "caption": "Then trace your photos free",
+   "sub": "With every tracing tool",
+   "seconds": 3,
+   "motion": "down"
+  },
+  {
+   "image": "img/lw-v007-05.png",
+   "caption": "Plus: A$2.99 once",
+   "sub": "Full library and photo-to-outline",
+   "seconds": 3,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "Linework",
+  "line": "Trace photos onto real paper",
+  "sub": "No ads. No subscription."
+ },
+ "accent": "#2346A8",
+ "branded": true
+}

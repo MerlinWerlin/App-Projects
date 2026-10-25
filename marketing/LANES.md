@@ -43,3 +43,5 @@ browser, c none / colour cards).
 - 2026-10-24: **c (none)**. (a) no Codex image runner on the PC and the StarNet bridge has `tools_allowed: false`;
   (b) chatgpt.com in the built-in browser redirects to its login page (signed out; the run never signs in).
   `prompts.json` is in each batch, so images can be made later and dropped into `img/` (the workflow re-renders).
+- 2026-10-25: **c (none)**. (a) bridge still `tools_allowed: false`, no Codex image runner; (b) chatgpt.com in the
+  built-in browser redirects to its login page (signed out).

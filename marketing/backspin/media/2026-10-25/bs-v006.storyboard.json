@@ -1,0 +1,48 @@
+{
+ "id": "bs-v006",
+ "app": "backspin",
+ "title": "Hook-problem-fix: a stranger morning ritual",
+ "shots": [
+  {
+   "image": "img/bs-v006-01.png",
+   "caption": "Another morning lost to scrolling?",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v006-02.png",
+   "caption": "Give that thumb a break",
+   "sub": "Give your voice something stranger",
+   "seconds": 2.6,
+   "motion": "down"
+  },
+  {
+   "image": "img/bs-v006-03.png",
+   "caption": "Try today's reverse-singing challenge",
+   "sub": "A little less scrolling",
+   "seconds": 2.6,
+   "motion": "right"
+  },
+  {
+   "image": "img/bs-v006-04.png",
+   "caption": "Copy backwards. Hear it flipped.",
+   "sub": "A little more laughing",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v006-05.png",
+   "caption": "Return daily. Build your streak.",
+   "sub": "Make room for something silly",
+   "seconds": 2.6,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Concept preview • In development"
+ },
+ "accent": "#FF5A4E",
+ "branded": false
+}

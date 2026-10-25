@@ -1,0 +1,49 @@
+{
+ "id": "bs-v005",
+ "app": "backspin",
+ "title": "Prediction challenge: parent versus teen",
+ "shots": [
+  {
+   "image": "img/bs-v005-01.png",
+   "caption": "Who wins: parent or teen?",
+   "sub": "Pick before the backwards attempt",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v005-02.png",
+   "caption": "Same line: Big blue bug",
+   "sub": "Different levels of confidence",
+   "seconds": 2.6,
+   "motion": "left"
+  },
+  {
+   "image": "img/bs-v005-03.png",
+   "caption": "Both copy the backwards sound",
+   "sub": "Confidence meets gibberish",
+   "seconds": 2.6,
+   "motion": "right"
+  },
+  {
+   "image": "img/bs-v005-04.png",
+   "caption": "Hear each copy flipped forwards",
+   "sub": "Keep your prediction?",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v005-05.png",
+   "caption": "Let the closeness score decide",
+   "sub": "Party mode • 2–8 players",
+   "seconds": 2.6,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Concept preview • In development"
+ },
+ "accent": "#FF5A4E",
+ "branded": false
+}

@@ -1,0 +1,49 @@
+{
+ "id": "cue-v004",
+ "app": "cue",
+ "title": "Before/after: where your eyes go",
+ "shots": [
+  {
+   "image": "img/cue-v004-01.png",
+   "caption": "Reading, or talking to us?",
+   "seconds": 2.4,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v004-02.png",
+   "caption": "Before: notes beside the laptop.",
+   "seconds": 2.4,
+   "motion": "left"
+  },
+  {
+   "image": "img/cue-v004-03.png",
+   "caption": "Bring the script near the lens.",
+   "seconds": 2.4,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v004-04.png",
+   "caption": "After: fewer sideways glances.",
+   "seconds": 2.4,
+   "motion": "none"
+  },
+  {
+   "image": "img/cue-v004-05.png",
+   "caption": "Record with your script in view.",
+   "seconds": 2.4,
+   "motion": "right"
+  },
+  {
+   "image": "img/cue-v004-06.png",
+   "caption": "Talk to the audience ahead.",
+   "seconds": 2.4,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "line": "Coming soon to iPhone",
+  "sub": "Your script, near the lens."
+ },
+ "accent": "#E8552B",
+ "branded": false
+}
