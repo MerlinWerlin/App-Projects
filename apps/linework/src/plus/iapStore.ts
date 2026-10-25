@@ -51,11 +51,15 @@ const cancelled = (e: unknown) => /cancel/i.test(String((e as { code?: string; m
 
 type Bought = { status: 'bought'; purchase: Purchase } | { status: 'cancelled' | 'failed' };
 
-let lastError: string | null = null;
-/** The store's code/message from the last failed purchase (shown in the failure alert so a sandbox problem is readable). */
+let errors: string[] = [];
+/** The store's codes/messages from the last failed purchase, first attempt first (shown in the failure alert). */
 export function lastPurchaseError(): string | null {
-  return lastError;
+  return errors.length ? errors.join(' / ') : null;
 }
+const note = (e: unknown) => {
+  const d = describe(e);
+  if (!errors.includes(d)) errors.push(d);
+};
 const describe = (e: unknown): string => {
   const o = e as { code?: unknown; message?: unknown } | null;
   return [o?.code, o?.message].filter((x) => x !== undefined && x !== null && String(x) !== '').map(String).join(': ').slice(0, 160) || String(e).slice(0, 160);
@@ -137,7 +141,7 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
   /** One non-consumable purchase (Plus or the free trial). Resolves once; never hangs the button. */
   const buy = async (sku: string, matches: (p: Purchase | null | undefined) => boolean): Promise<Bought> => {
     await products(); // StoreKit needs the product loaded first
-    lastError = null;
+    errors = [];
     return new Promise<Bought>((resolve) => {
       let done = false;
       // While a request shape is still being tried, a listener error must not end the purchase before the next shape
@@ -169,7 +173,7 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
           subs.push(
             iap.purchaseErrorListener((e: unknown) => {
               if (cancelled(e)) return finish({ status: 'cancelled' });
-              lastError = describe(e);
+              note(e);
               if (!pending) return finish({ status: 'failed' });
               late ??= setTimeout(() => finish({ status: 'failed' }), 4_000);
             }),
@@ -179,6 +183,8 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
       }
       const shapes = [
         () => iap.requestPurchase({ request: { ios: { sku }, android: { skus: [sku] } }, type: 'in-app' }),
+        // Newer expo-iap (OpenIAP): platform keys renamed ios -> apple, android -> google.
+        () => iap.requestPurchase({ request: { apple: { sku }, google: { skus: [sku] } }, type: 'in-app' }),
         () => iap.requestPurchase({ request: { sku, skus: [sku] }, type: 'inapp' }),
       ];
       const attempt = async (i: number): Promise<void> => {
@@ -187,10 +193,10 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
           pending = false;
           const got = Array.isArray(r) ? r.find(matches) : r;
           if (got && matches(got)) await onPurchase(got);
-          else if (lastError) finish({ status: 'failed' });
+          else if (errors.length) finish({ status: 'failed' });
         } catch (e) {
           if (cancelled(e)) return finish({ status: 'cancelled' });
-          lastError = describe(e);
+          note(e);
           if (late) {
             clearTimeout(late);
             late = null;
