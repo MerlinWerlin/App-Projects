@@ -1,0 +1,106 @@
+# Free TestFlight builds: build the iOS app on GitHub's own Mac runner (free for this public repo) with
+# `eas build --local`, then upload it with `eas submit`. Signing credentials still come from Expo's servers, so
+# nothing extra is set up. Used when Expo's cloud build quota is spent (ship.yml dispatches this automatically),
+# or by hand: Actions -> ship-mac -> Run workflow -> app.
+name: ship-mac
+
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: 'App folder (e.g. backspin, cue, couch, glaze, linework)'
+        required: true
+        type: string
+
+concurrency:
+  group: ship-mac-${{ inputs.app }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    defaults:
+      run:
+        shell: bash
+        working-directory: apps/${{ inputs.app }}
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      EAS_BUILD_NO_EXPO_GO_WARNING: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Read RELEASE.json
+        id: rel
+        run: |
+          echo "note=$(jq -r '.note // "TestFlight build"' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          echo "ascAppId=$(jq -r '.ascAppId // empty' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          echo "profile=$(jq -r '.profile // "production"' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          echo "skipCapSync=$(jq -r 'if .skipCapabilitySync then "1" else "" end' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          xcodebuild -version
+
+      - name: Install packages
+        run: npm install --no-audit --no-fund
+
+      - name: Native-only tools for the build profile
+        env:
+          PROFILE: ${{ steps.rel.outputs.profile }}
+        run: |
+          if jq -e '.scripts["eas-build-post-install"]' package.json > /dev/null; then
+            while IFS='=' read -r k v; do [ -n "$k" ] && export "$k=$v"; done < <(jq -r --arg p "$PROFILE" '.build[$p].env // {} | to_entries[] | "\(.key)=\(.value)"' eas.json)
+            npm run eas-build-post-install
+          fi
+
+      - name: Link the Expo project and the App Store Connect app
+        env:
+          ASC_APP_ID: ${{ steps.rel.outputs.ascAppId }}
+        run: |
+          if [ "$(jq -r '.expo.extra.eas.projectId // empty' app.json)" = "" ]; then
+            eas init --non-interactive --force
+            eas update:configure --non-interactive || true
+          fi
+          if [ -n "$ASC_APP_ID" ]; then
+            jq --arg a "$ASC_APP_ID" '.submit.production.ios = ((.submit.production.ios // {}) + {ascAppId: $a})' eas.json > eas.tmp.json && mv eas.tmp.json eas.json
+          fi
+
+      - name: Build the iOS app on this Mac
+        env:
+          EXPO_NO_CAPABILITY_SYNC: ${{ steps.rel.outputs.skipCapSync == '1' && '1' || '0' }}
+        run: |
+          set -o pipefail
+          eas build --local --platform ios --profile "${{ steps.rel.outputs.profile }}" --non-interactive \
+            --output "$RUNNER_TEMP/app.ipa" 2>&1 | tee "$RUNNER_TEMP/build.log" | grep -vE '^\s*$' | tail -400
+          ls -la "$RUNNER_TEMP/app.ipa"
+
+      - name: Upload to TestFlight
+        run: |
+          set -o pipefail
+          eas submit --platform ios --profile production --path "$RUNNER_TEMP/app.ipa" --non-interactive --wait 2>&1 | tee "$RUNNER_TEMP/submit.log" | tail -60
+
+      - name: Keep the .ipa for a few days
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.app }}-ipa
+          path: ${{ runner.temp }}/app.ipa
+          retention-days: 5
+          if-no-files-found: ignore
+
+      - name: Report on the commit
+        if: always()
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then body="**ship-mac (${{ inputs.app }}): built on GitHub's Mac and uploaded to TestFlight.** Apple emails when processing finishes (about 10-30 min)."
+          else body=$(printf '**ship-mac (${{ inputs.app }}) failed.**\n\n```\n%s\n```\n' "$( (cat "$RUNNER_TEMP/build.log" "$RUNNER_TEMP/submit.log" 2>/dev/null | grep -iE 'error|fail|❌|warning: ' | awk 'length($0) < 300' | tail -40) || echo 'no log')"); fi
+          gh api "repos/${{ github.repository }}/commits/${{ github.sha }}/comments" -f body="$body" > /dev/null || true

@@ -43,6 +43,7 @@ jobs:
     needs: detect
     permissions:
       contents: write
+      actions: write
     if: needs.detect.outputs.apps != '[]'
     runs-on: ubuntu-latest
     strategy:
@@ -165,6 +166,16 @@ jobs:
                    EXPO_APPLE_TEAM_TYPE=INDIVIDUAL
           fi
           eas build --platform ios --profile "${{ steps.rel.outputs.profile }}" --non-interactive --auto-submit-with-profile production --no-wait --message "${{ steps.rel.outputs.note }}" 2>&1 | tee "$RUNNER_TEMP/ship.log"
+
+      - name: Expo build quota spent? Build free on GitHub's Mac instead
+        if: failure() && steps.rel.outputs.mode == 'build'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if grep -qiE "used its iOS builds|build credits|upgrade your plan" "$RUNNER_TEMP/ship.log" 2>/dev/null; then
+            gh api -X POST "repos/${{ github.repository }}/actions/workflows/ship-mac.yml/dispatches" -f ref=main -f "inputs[app]=${{ matrix.app }}"
+            echo "Dispatched ship-mac for ${{ matrix.app }}" >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Publish an over-the-air update
         if: steps.rel.outputs.mode == 'update'
