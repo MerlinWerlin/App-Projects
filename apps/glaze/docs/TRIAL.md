@@ -6,15 +6,30 @@ The app runs inside **Expo Go**, a free app that loads development builds from y
 2. **PC (automatic since 23 Oct):** your PC's auto-start (`Desktop\Apps\_auto`) installs each new build, runs the type check by itself and restarts Expo. You don't download kits or run any .cmd files.
 3. **iPhone:** open Glaze from **Expo Go > Recently opened**, about 10 minutes after a new build.
 
-## New since your last test (25 Oct, glaze-retest fixes, App-Projects PR): core fixes before themes
-Your 25 Oct retest said widgets keep one colour scheme, Shortcuts shouldn't be an option, and the Live Photo part bounces. These changes are JavaScript only, so they reach your current TestFlight build as an over-the-air update once the PR is merged (fully close and reopen Glaze twice).
+## New since your last test (25 Oct night, owner brief 21:29): your three must-haves
+These ride in the **next TestFlight build** together with the fb-1025 fixes below. Your phone still has the older build: none of the 25 Oct fixes reach it until the newest Glaze ship PR in App-Projects is merged and auto-ship builds it. Answer yes / no on the Workboard.
 
-- **A. Widgets follow the theme you pick on the Widgets tab:** Widgets tab › tap a different theme chip (for example Sunset dunes). Then long-press the Home Screen › + › Glaze: do the widgets show that theme's colours? yes / no. Do widgets already on the Home Screen change within a few seconds? yes / no
-- **B. Bulk install is the only method:** Icons › Install. Is **Bulk install** the only method shown (no Shortcuts card)? yes / no. Tap it: does Safari open and does **Profile Downloaded** appear in Settings › General › VPN & Device Management, and do the icons land on the Home Screen? yes / no. If not, say where it stopped. This is the go/no-go you set for Glaze.
-- **C. No bounce in the Live Photo part:** the Live tab list, the trim handles and the Save as Live Photo / guide sheets now slide or fade with no spring. Any bounce left? yes / no
-- New themes are held until A and B work (your 25 Oct call).
+- **1. Bounce:** scroll any list past its end, open the Plus sheet, apply a theme, crop a photo. Anything still bounce or spring back? yes / no
+- **2. Buy Glaze Plus:** first do the App Store Connect steps in `docs/IAP_SANDBOX.md` (Workboard item glaze-iap-product). Then Plus sheet › **Unlock for A$2.99**: does Apple's sheet appear marked as a test purchase (nothing charged), and does Plus unlock? yes / no. Delete and reinstall, then **Restore purchases**: does Plus come back? yes / no
+- **3. Bulk install:** Icons › Install › Bulk install. Safari should now ask to download the profile straight away (no extra tap). Does **Profile Downloaded** appear in Settings? yes / no. After installing it, are all the icons on your Home Screen? yes / no. Tap three of them: does the right app open, and is there a Safari flash first? yes / no. The honest verdict is in `docs/BULK_INSTALL_VERDICT.md`: possible on iOS, with limits.
+- **4. Live Photo wallpaper:** Live › Save as Live Photo, then Photos › Share › Use as Wallpaper. Is the Live Photo button available (not "Motion not available"), and does it move when you wake the phone? yes / no
 
-## New since your last test (24 Oct night, run 104): fb-1024e, "good enough to ship"
+**What changed, in plain words:** no list or sheet bounces any more. Glaze Plus can now really be bought in TestFlight (Apple's sandbox, free) once the product exists in App Store Connect. Bulk install asks Safari for the profile instantly, so iPhone no longer closes Glaze's mini server before the download. Live Photos are now made in the wallpaper format other developers found iPhone accepts (1080x1920, HEVC, HEIC photo); one camera-only piece can't be copied, so it may still say Motion not available.
+
+## Earlier: 25 Oct evening, fb-1025 (still in the next build): your retest answers A-G
+Everything below is in the **next TestFlight build**. It does not have to wait for 1 Nov: once you merge App-Projects PR #96 (Workboard item appfactory-merge-94-96), auto-ship builds it, using GitHub's Mac when Expo's free iOS builds are spent. Install it, open Glaze once, then answer yes / no on the Workboard or in a page comment.
+
+- **A. Widgets follow your theme:** Widgets tab › tap a different theme chip. Under the chips there is now a small **link check** line. What does it say: "Home Screen widgets linked", "App Group missing", or "Add a Glaze widget to your Home Screen"? (This tells us exactly where the fault is.) Then long-press the Home Screen › + › Glaze: do the widgets show that theme's colours? yes / no. Do widgets already on the Home Screen change within a few seconds? yes / no
+- **B. Bulk install is the only method:** Icons › Install. Is **Bulk install** the only method (no Shortcuts card)? yes / no. Tap it: does Safari open, does **Profile Downloaded** appear in Settings › General › VPN & Device Management, and do the icons land on the Home Screen? yes / no. If not, say where it stopped.
+- **C. Live Photo, honest copy:** the Live tab now says plainly that it saves a Live Photo that moves when you press it in Photos, and that iPhone often keeps app-made Live Photos still as a wallpaper ("Motion not available" is an Apple limit). Is that clear and fine to ship as an extra? yes / no
+- **E. No bounce anywhere:** Plus sheet, theme apply, photo crop, shapes, toasts, the Live tab list and trim handles. Any bounce or overshoot left? yes / no
+- **F. Price:** does the Plus sheet say **One-time A$2.99**? yes / no
+- **G. Prism icon:** the app icon, splash and opening animation are now the Prism (a faceted crystal splitting light into a colour fan). Your Prism picture wasn't in the build files, so it was redrawn from the name: does it match what you picked, or close enough? yes / no
+- New themes stay held until A and B work (your 25 Oct call).
+
+**What changed, in plain words:** widgets now re-theme when you pick a theme on the Widgets tab, and the app shows whether the widgets can actually see Glaze. Bulk install is the only install method. The Live Photo part no longer promises a moving Lock Screen. No bounce animations remain. Plus shows A$2.99. The app icon is now Prism.
+
+## Earlier: fb-1024e (24 Oct night, run 104): fb-1024e, "good enough to ship"
 These need the **new TestFlight build** (you merged PR #74 on 25 Oct). The cloud can't see whether that build finished: App-Projects records that Expo's free iOS builds ran out on 25 Oct (they reset on 1 Nov), so if it isn't in TestFlight yet it is waiting for the GitHub Mac-runner build or the 1 Nov reset. Your #91 language-line fix rides along with it. When it shows in TestFlight, install it, open Glaze once, then answer yes / no in a page comment.
 
 - **A. Widgets in your theme:** open any theme and tap Apply this look (or save its wallpaper). Then long-press the Home Screen › + › Glaze. Do **all** the Glaze widgets in the gallery (Clock, Date, Little Line, Photo, habits) show that theme's colours, not white? yes / no. Add one to the Home Screen: same colours there? yes / no. Is the theme name gone from above the time? yes / no

@@ -21,6 +21,9 @@ private let themeFile = "theme.json"
 private let habitsKey = "glaze.habits.v1"
 private let habitLogKey = "glaze.habitLog.v1"
 private let habitWidgetKinds = ["GlazeHabitWater", "GlazeHabitMood", "GlazeHabitSleep", "GlazeHabitSteps"]
+/// T146: written by the widget extension on every theme load (targets/widget/ThemeStore.swift,
+/// src/core/widgetLink.ts WIDGET_LAST_READ_KEY); the app only reads it.
+private let lastReadKey = "glaze.widget.lastRead.v1"
 
 public class GlazeWidgetBridgeModule: Module {
   public func definition() -> ModuleDefinition {
@@ -151,6 +154,24 @@ public class GlazeWidgetBridgeModule: Module {
         WidgetCenter.shared.reloadTimelines(ofKind: "GlazeSeamless")
       }
       return true
+    }
+
+    /// T146 widget link check (fb-1025 A). Read-only: never writes or reloads anything.
+    /// - containerOk: the app can open the App Group container (entitlement present on the app).
+    /// - themeStored: the App Group UserDefaults holds glaze.theme.v1.
+    /// - lastRead: what the extension last rendered (JSON string) or "" when the app can't see it.
+    /// - storedTheme: the stored theme JSON or "" (JS compares its updatedAt with lastRead.at).
+    AsyncFunction("linkStatus") { () -> [String: Any] in
+      let containerOk = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) != nil
+      let defaults = UserDefaults(suiteName: appGroup)
+      let stored = defaults?.string(forKey: themeKey) ?? ""
+      let lastRead = defaults?.string(forKey: lastReadKey) ?? ""
+      return [
+        "containerOk": containerOk,
+        "themeStored": !stored.isEmpty,
+        "lastRead": lastRead,
+        "storedTheme": stored,
+      ]
     }
 
     /// Removes the widget photo (the widget falls back to its gradient placeholder).

@@ -25,6 +25,15 @@ export const hi: NonNullable<LocaleMessages['tabs']> = {
     soon: 'जल्द आ रहा है',
     soonA11y: '{kind}, {size}। जल्द आ रहा है।',
     lockNote: 'लॉक स्क्रीन विजेट अभी तैयार नहीं हैं। ये जल्द आ रहे हैं।',
+    // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
+    link: {
+      ok: 'होम स्क्रीन विजेट जुड़े हुए हैं',
+      noAppGroup: 'इस बिल्ड में आपके विजेट Glaze को नहीं देख पा रहे (App Group मौजूद नहीं है)। कृपया TestFlight फ़ीडबैक में हमें बताएँ।',
+      notReadYet: 'अपनी होम स्क्रीन पर Glaze विजेट जोड़ें, फिर यहाँ वापस आएँ।',
+      stale: 'आपके विजेट ने अभी तक नई थीम नहीं ली है। अगर ऐसा ही रहे, तो TestFlight फ़ीडबैक में हमें बताएँ।',
+      wrongTheme: 'आपके विजेट कोई दूसरी थीम दिखा रहे हैं। थीम फिर से चुनें; अगर ऐसा ही रहे, तो TestFlight फ़ीडबैक में हमें बताएँ।',
+      a11y: 'विजेट कनेक्शन जाँच: {status}',
+    },
     // T86: Habit goals screen (app/habit-goals.tsx) and the goal chip under habit cards.
     goals: {
       title: 'रोज़ के लक्ष्य',
@@ -56,7 +65,7 @@ export const hi: NonNullable<LocaleMessages['tabs']> = {
     },
   },
   wallpapersTab: {
-    subtitle: 'लॉक स्क्रीन और होम स्क्रीन के लिए स्थिर और लाइव वॉलपेपर।',
+    subtitle: 'लॉक स्क्रीन और होम स्क्रीन के लिए वॉलपेपर और Live Photo।',
     subTabs: 'वॉलपेपर का प्रकार',
     sub: { still: 'स्थिर', live: 'लाइव', pairs: 'जोड़ी' },
     liveBadge: 'लाइव',

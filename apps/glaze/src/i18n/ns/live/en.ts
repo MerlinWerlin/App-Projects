@@ -3,7 +3,7 @@
 // `live.editTitle` (the stack title) lives in src/i18n/locales/en.ts.
 export const en = {
   tab: {
-    subtitle: 'Turn your own video into a Live Photo wallpaper.',
+    subtitle: 'Turn your own video into a Live Photo.',
     newLoop: 'New loop from video or GIF',
     opening: 'Opening…',
     pickHint: 'Opens your photo library to pick a video or GIF',

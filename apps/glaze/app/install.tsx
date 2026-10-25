@@ -548,7 +548,7 @@ export default function InstallScreen() {
   return (
     <SafeAreaView edges={['left', 'right']} style={[styles.root, { backgroundColor: c.bg }]}>
       <OffscreenIconRenderer ref={renderer.ref} backdrop={backdrop} />
-      <ScrollView contentContainerStyle={styles.scroll}>
+      <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.scroll}>
         {PROFILE_INSTALL_ENABLED ? (
           <View style={styles.side}>
             <ContextTip id="install-not-verified" />

@@ -16,6 +16,8 @@ ever requested. Users may fill any icon with their own photo; that image never l
 | Theme artwork motifs (strawberry, cream swirl, daisy, tulip, leaf sprig, leaf, mushroom, acorn, crescent moon, moon phases, star, sparkle, ringed planet, cloud, heart, bow, lace doily, scallop shell, starfish, cherry blossom, petal, pumpkin, wrapped sweet, lollipop, teacup, cherries, ice cream cone, butterfly, droplet, sun), icon frames (scalloped, lace, stitched, ribbon, double ring), textures (gingham, polka, paper speckle, linen, starfield, watercolour wash, stripes) and wallpaper compositions | Theme icons, stickers and wallpapers | Original in-house vector art drawn for Glaze as SVG path data, `src/core/artwork.ts`; generic subjects only, no characters, franchises, brands or traced artwork | Glaze, all rights reserved |
 | Lora, Poppins, Inter | Store screenshot headlines and captions only (rendered into `assets/store/*.png`, not bundled in the app) | Google Fonts, installed system fonts on the render machine | SIL Open Font License 1.1 |
 | Store screenshot art (phone frames, floating widgets, sparkles, bubbles, gradients) | `assets/store/` | Original SVG/CSS drawn for Glaze in `assets/store/src/`, reusing in-house glyphs from `src/render/inhouse.ts` | Glaze, all rights reserved |
+| App icon, splash and intro mark "Prism" (fb-1025 G) | `assets/brand/*`, `docs/mascot/prism-icon.*`, generated from `src/core/introGlaze.ts` | Original generated SVG geometry drawn for Glaze (faceted crystal, light beam, spectrum fan); no traced or reference artwork, not based on any logo or album art | Original, owned by the Glaze project, all rights reserved |
+| Previous app icon (glaze-drip tile, 23 to 25 Oct 2026, reference only, not bundled) | `docs/mascot/previous-glaze-drip/` | Original generated SVG drawn for Glaze | Original, owned by the Glaze project, all rights reserved |
 | Mascot concepts (Tessel, Latchling, Vitri; fb-1023 D, concept only, not bundled) | `docs/mascot/*.svg`, `docs/mascot/*.png`, `docs/MASCOT.md` | Original hand-written SVG drawn for Glaze; no traced or reference artwork, no existing characters or brands | Original, owned by the Glaze project, all rights reserved |
 | App icon, splash tile and opening animation art (faceless glaze-pour tile) | `assets/brand/*`, drawn at runtime by `src/ui/IntroGlaze.tsx` | Original geometry generated from `src/core/introGlaze.ts` by `scripts/brand/build-brand.mjs`; plain shapes and gradients, no text, no traced or reference artwork, no existing brands | Original, owned by the Glaze project, all rights reserved |
 
@@ -41,6 +43,13 @@ endorsement by ESA/Webb, NASA or CSA is implied.
 
 The Space themes' icons, widget styles and fallback wallpaper art are Glaze's own (see the theme
 artwork row above).
+
+## Technical references (no code copied)
+
+| Project | Licence | Used for |
+|---|---|---|
+| LivePaper, <https://github.com/Yuyang16Z/LivePaper> (docs/FINDINGS.md) | MIT | Facts about the Live Photo wallpaper format (T153, docs/LIVEPHOTO.md "Wallpaper recipe (run 120)"). No code or data copied, so no notice is needed in the app. |
+| open-wallpaper-engine-mac PR #288, <https://github.com/deepratna-awale/open-wallpaper-engine-mac/pull/288> | not stated on the page | Same: facts from the PR description only. |
 
 ## Notes
 

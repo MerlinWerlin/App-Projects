@@ -69,7 +69,8 @@ test('T127: the guide has exactly 3 steps: Photos, Share › Use as Wallpaper, L
           const g = livePhotoGuide({ iosMajor: ios, build, kind, moduleReady });
           assert.equal(g.steps.length, 3);
           assert.ok(g.notes.includes('moves'));
-          assert.ok(g.notes.includes(ios > 0 && ios < LIVE_PHOTO_WALLPAPER_MIN_IOS ? 'old-ios' : 'needs'));
+          assert.ok(g.notes.includes('needs'), 'T147: the Motion not available note shows on every iOS');
+          assert.equal(g.notes.includes('old-ios'), ios > 0 && ios < LIVE_PHOTO_WALLPAPER_MIN_IOS);
           assert.equal(g.canSave, g.notice === null);
           if (build === 'expo-go') assert.equal(g.notice, 'needs-full');
           else if (moduleReady === false) assert.equal(g.notice, 'needs-build');
@@ -82,10 +83,12 @@ test('T127: the guide has exactly 3 steps: Photos, Share › Use as Wallpaper, L
 });
 
 test('T127: the guide copy is honest and matches the English catalogue', () => {
-  assert.match(GUIDE_TEXT.honest, /doesn’t let any app set your wallpaper/);
-  assert.match(GUIDE_TEXT.honest, /you set it yourself/);
+  // T147 (fb-1025 C): Glaze saves a Live Photo that moves in Photos; trying it as a wallpaper
+  // is optional and the copy says iPhone often keeps app-made Live Photos still.
+  assert.match(GUIDE_TEXT.honest, /Live Photo that moves when you press it/);
+  assert.match(GUIDE_TEXT.honest, /try it as a wallpaper/);
   assert.match(GUIDE_TEXT.moves, /doesn’t loop forever/);
-  assert.match(GUIDE_TEXT.needs, /iOS 17/);
+  assert.match(GUIDE_TEXT.needs, /Motion not available/);
   assert.match(GUIDE_TEXT.needsFull, /TestFlight/);
   const g = (en as unknown as { liveUi: { guide: Record<string, string> } }).liveUi.guide;
   for (const [k, v] of Object.entries(GUIDE_TEXT)) assert.equal(g[k], v, `liveUi.guide.${k}`);
@@ -113,15 +116,19 @@ test('T127: Live Photo export pairs the still and the video', () => {
   assert.match(swift, /"com\.apple\.quicktime\.content\.identifier"/);
   assert.match(swift, /idItem\.value = identifier/);
   assert.match(swift, /writer\.metadata = \[idItem\]/);
-  // Timed metadata track: still-image-time, int8 value 0, one-frame range at the still time.
+  // Timed metadata track: still-image-time, int8, one-frame range at the still time.
+  // T153: the value is -1 in the wallpaper recipe and 0 in the T127 fallback (t153LiveWallpaper.test.ts).
   assert.match(swift, /"mdta\/com\.apple\.quicktime\.still-image-time"/);
   assert.match(swift, /kCMMetadataBaseDataType_SInt8/);
-  assert.match(swift, /NSNumber\(value: Int8\(0\)\)/);
+  assert.match(swift, /stillValue: 0,/);
+  assert.match(swift, /NSNumber\(value: recipe\.stillValue\)/);
   assert.match(swift, /AVAssetWriterInputMetadataAdaptor/);
-  assert.match(swift, /AVTimedMetadataGroup\(items: \[stillItem\], timeRange: CMTimeRange\(start: stillTime/);
-  // The JPEG is grabbed at the same stillTime the metadata points at.
+  assert.match(swift, /var items: \[AVMetadataItem\] = \[stillItem\]/);
+  assert.match(swift, /AVTimedMetadataGroup\(items: items, timeRange: CMTimeRange\(start: start/);
+  assert.match(swift, /let start = CMTimeConvertScale\(stillTime,/);
+  // The still is grabbed at the same stillTime the metadata points at.
   assert.match(swift, /stillImage\(built: built, at: stillTime\)/);
-  // .mov, H.264, saved as one asset with .photo + .pairedVideo.
+  // .mov (HEVC since T153, H.264 kept as the fallback), saved as one asset with .photo + .pairedVideo.
   assert.match(swift, /fileType: \.mov/);
   assert.match(swift, /AVVideoCodecType\.h264/);
   assert.match(swift, /PHAssetCreationRequest\.forAsset\(\)/);

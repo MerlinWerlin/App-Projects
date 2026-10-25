@@ -64,8 +64,8 @@ export const TIPS: readonly Tip[] = Object.freeze([
   },
   {
     id: 'live-lock',
-    title: 'Make a Live Photo wallpaper',
-    body: 'Turn a video into a Live Photo on the Live tab. Set it from Photos › Share › Use as Wallpaper; it moves when you wake your iPhone.',
+    title: 'Make a Live Photo',
+    body: 'Turn a video into a Live Photo on the Live tab. It moves in Photos; as a wallpaper, iPhone often keeps app-made Live Photos still.',
     placement: 'first-run',
     order: 3,
     icon: 'film',
@@ -129,7 +129,7 @@ export const TIPS: readonly Tip[] = Object.freeze([
   {
     id: 'live-loop',
     title: 'How Live Photos move',
-    body: 'A Live Photo wallpaper moves when you wake or press the Lock Screen; it isn’t a constant loop. Expo Go shows a preview only.',
+    body: 'A Live Photo moves when you press it in Photos; it isn’t a constant loop. As a wallpaper, iPhone may say Motion not available.',
     placement: 'live',
     order: 60,
     icon: 'film',

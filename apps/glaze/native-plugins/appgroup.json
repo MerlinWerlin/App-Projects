@@ -1,0 +1,5 @@
+{
+  "entitlements": {
+    "com.apple.security.application-groups": ["group.com.jared797.glaze"]
+  }
+}

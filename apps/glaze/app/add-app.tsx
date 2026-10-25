@@ -228,7 +228,7 @@ export default function AddAppScreen() {
 
   return (
     <View style={[styles.root, { backgroundColor: c.bg }]}>
-      <ScrollView
+      <ScrollView bounces={false} overScrollMode="never"
         contentContainerStyle={[styles.scroll, { paddingBottom: insets.bottom + spaceV2.xxl }]}
         keyboardShouldPersistTaps="handled"
       >
@@ -375,7 +375,7 @@ export default function AddAppScreen() {
             {step >= 2 ? (
               <>
                 <Text style={[...ts('footnote'), styles.groupLabel, { color: c.inkSecondary }]}>{t('addApp.themeToMatch')}</Text>
-                <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
+                <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
                   {themeChoices.map((th) => {
                     const on = th.id === theme.id;
                     return (

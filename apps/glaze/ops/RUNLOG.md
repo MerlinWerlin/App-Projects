@@ -125,3 +125,48 @@
 - Records-only run per oversight D144-1. App-Projects: no new owner commits on apps/glaze since f0f1a71 (already synced). No page comments. fb-1024e A-D already done (T125-T128, T137-T139); T129 retest waits on the TestFlight build.
 - 1169/1169 core tests green (registry unreachable path); no code change, trial kit unchanged (a757a20).
 - 2026-10-25 Claude (Workboard job job_acd66bfac1cf4c3a999e2fd4509afd69, glaze-retest): owner retest of build 1.0.0 said A widgets keep one colour scheme, B Shortcuts must not be an option, C bounce in the Live Photo part must go, D hold themes until it works. Branch glaze/core-fixes-20261025: Widgets tab theme pick now calls applyWidgetTheme (Home Screen widgets used to keep the last applied theme); install offers Bulk as the only method whenever a profile can carry an app (Shortcuts only as fallback: switch off or no linked app; saved Shortcuts choice no longer wins); Sheet slides on a timed ease-out (no springify); Live tab plain fade, trim knobs withTiming; guards in calmMotion.test.ts, method tests updated; TRIAL.md section added. JS only, no native/package/RELEASE.json change. Core tests 1153/1170 on the Windows checkout, same 17 pre-existing failures as main; UI stub typecheck 0; core typecheck 0. Nothing device-tested.
+
+## 2026-10-25 run 115 (09:11Z, artifact 1792912479-daa0; oversight v145)
+- App-Projects: only #93 (our run-113 ship) since f0f1a71; nothing to sync. No page comments, no patches.
+- D145-1 done (T142, 2dcd32e): every spring removed (Sheet, HomeMock, PhotoCropEditor, ShapePicker, theme apply check, Live trim handles, Toast); springConfig gone; calmMotion test walks all app/ + src/ui + src/plus. Plus price A$2.99; test-build Unlock copy plain in 11 languages.
+- D145-2 partial (T143, 2dcd32e): package.json pin rejected (hard rule); App Group always applied (native-plugins/appgroup.json); EAS post-install hook fails loudly without the widget tool; d145.test.ts. Install all at once leads when the Safari server exists, Shortcuts second. T144 owner retest queued.
+- 1176/1176 core tests green, core typecheck 0, UI stub typecheck 0; npm registry unreachable, full install + tsc + expo export needs PC verification. Swift unchanged. Nothing device-tested.
+
+## 2026-10-25 run 116 (10:28Z, artifact 1792920170-3c40; oversight v145 already handled)
+- No-op run. App-Projects: nothing new for apps/glaze since #93 (our run-113 ship). No new oversight directives or patches; no page comments. fb-1024e A-D already done; T129/T144 owner retests wait on the next TestFlight build (Expo free iOS builds reset 1 Nov).
+- 1176/1176 core tests green; npm registry unreachable (npm ping timed out), full install + tsc + expo export needs PC verification. Kit unchanged (aebd995). Nothing device-tested.
+
+## 2026-10-25 run 117 (manual fire with owner brief fb-1025; artifact 1792924241-2701; oversight v145 unchanged)
+- Imported fb-1025 (docs/OWNER_1025.md, T145-T149; T116 mascot, T129, T144 superseded). Synced App-Projects PR #96 (fb3ac20, unmerged) 3-way, owner side on conflicts (1232698).
+- T146 widget link check (19a4825), T147 honest Live Photo wallpaper copy in 11 languages (bc6f716), T148 Prism app icon + splash + intro (1d9a9d7); 3 parallel worktree workers, clean merges. E/F re-verified (done run 115).
+- 1206/1206 core tests green; npm registry unreachable, full install + tsc + expo export needs PC verification. Swift (bridge linkStatus, extension lastRead) not compiled. Store shots 06/07 need re-render (node assets/store/render.mjs). Non-English strings are machine translations. Kit rebuilt. Nothing device-tested.
+- Bundle 10.6 MB after the Prism PNGs (over the 10 MB guideline, under the 16 MB artifact cap): T150 added.
+
+## 2026-10-25 run 118 (11:12Z, artifact 1792925854-1a26; oversight v146)
+- App-Projects: nothing new for apps/glaze since #93 (our ship); PR #96 (synced run 117) still unmerged. No page comments, no patches. fb-1024e A-D already done (runs 101-104).
+- D146-1 done: status + TRIAL.md say the build follows the owner's #96 merge (Mac fallback), not 1 Nov. T150 parked with reasons (history, not current files).
+- 1206/1206 core tests green; npm registry unreachable (npm ping timed out), full install + tsc + expo export needs PC verification. Kit unchanged (414d051). Nothing device-tested.
+
+## 2026-10-25 run 119 (12:09Z, artifact 1792926917-2062; oversight v146 unchanged)
+- No-op run. App-Projects: nothing new for apps/glaze since #93; PR #96 still unmerged. No page comments, no new directives or patches. fb-1024e A-D already done (runs 101-104); fb-1025 held for the owner's retest (T149) and go/no-go. No code change; kit unchanged (414d051). Nothing device-tested.
+
+## 2026-10-25 run 120 (manual fire, owner brief 21:29 Sydney; artifact 1792930215-fc20; oversight v146 unchanged)
+- Imported fb-1025b (docs/OWNER_1025B.md, T151-T156). App-Projects: nothing new for apps/glaze; ship PR #96 still unmerged. No page comments.
+- T151 no bounce (0caf0b6, me); T152 StoreKit 2 Plus purchase (30e790d), T153 Live Photo wallpaper recipe (b06c722), T154 bulk verdict + Safari auto-request (34c6db1): 3 parallel worktree workers, clean merges.
+- 1226/1226 core tests green; core typecheck + UI stub typecheck (scripts/tsconfig.ui.json) clean; npm registry unreachable, full install + expo export needs PC verification. Swift (glaze-store, livephoto, profile server) not compiled. Nothing device-tested. Kit rebuilt.
+
+## 2026-10-25 run 121 (13:12Z, artifact 1792931885-3a46; oversight v147)
+- No-op run per D147-1 (hold native/Swift and new themes until the next native TestFlight build reports). App-Projects: nothing new for apps/glaze since #93; ship PR #96 + run 120 work still waiting on the owner's merge. No page comments, no patches.
+- 1226/1226 core tests green; npm registry unreachable (npm ping timed out), full install + expo export needs PC verification. Kit unchanged (e5a7652). Nothing device-tested.
+
+## 2026-10-25 run 122 (15:12Z, artifact 1792934117-efc0; oversight v148)
+- No-op run per D147-1 (hold until the next native TestFlight build reports). App-Projects: nothing new for apps/glaze since #93; ship PR #96 still unmerged. No page comments, no patches. fb-1024e A-D already done (runs 101-104).
+- 1226/1226 core tests green; npm registry unreachable (npm ping timed out), full install + expo export needs PC verification. Kit unchanged (e5a7652). Nothing device-tested.
+
+## 2026-10-25 run 123 (17:11Z, artifact 1792941301-3c1c; oversight v149)
+- No-op run per D147-1 (hold until the next native TestFlight build reports). App-Projects: nothing new for apps/glaze since #93; ship PR #96 still unmerged. No page comments, no patches. fb-1024e A-D already done (runs 101-104).
+- 1226/1226 core tests green; registry not needed (no code change). Kit unchanged (e5a7652). Nothing device-tested.
+
+## 2026-10-25 run 124 (19:11Z, artifact 1792948671-f192; oversight v150)
+- No-op run per D147-1. App-Projects: owner merged ship PR #96 (1ee1f73, 19:10Z); its Glaze changes are already here (synced run 117, extended run 120), 3-way check confirmed nothing new. Run 120 work (Plus purchase, bulk fix, Live Photo format) still needs the next auto-ship PR. No page comments, no patches.
+- 1226/1226 core tests green; registry not needed (no code change). Kit unchanged (e5a7652). Nothing device-tested.

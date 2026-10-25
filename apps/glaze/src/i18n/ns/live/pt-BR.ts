@@ -3,7 +3,7 @@ import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ptBR: NonNullable<LocaleMessages['live']> = {
   tab: {
-    subtitle: 'Transforme seu próprio vídeo em um papel de parede Live Photo.',
+    subtitle: 'Transforme seu próprio vídeo em uma Live Photo.',
     newLoop: 'Novo loop de vídeo ou GIF',
     opening: 'Abrindo…',
     pickHint: 'Abre sua fototeca para escolher um vídeo ou GIF',

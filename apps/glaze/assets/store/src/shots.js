@@ -81,8 +81,8 @@
     },
     {
       id: 'live',
-      head: 'Wallpapers that move',
-      sub: 'Still and live wallpapers, plus matching Lock and Home Screen pairs.',
+      head: 'Wallpapers for every look',
+      sub: 'Still wallpapers and Live Photos, plus matching Lock and Home Screen pairs.',
       t: 'night-drive',
       screen: () => A.wallScreen(),
       grad: ['#E3D9FF', '#FFD3EA', '#FFDCCB'],
@@ -95,7 +95,7 @@
     {
       id: 'livelock',
       head: 'Turn a clip into a Live Photo',
-      sub: 'A Live Photo wallpaper that moves when you wake your iPhone. Free in Glaze.',
+      sub: 'Your own clip as a Live Photo that moves when you press it in Photos. Free in Glaze.',
       t: 'night-drive',
       screen: (t) => A.lock(t, { video: true, live: true }),
       grad: ['#FFDCCB', '#FFD3EA', '#E3D9FF'],

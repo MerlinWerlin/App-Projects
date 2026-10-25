@@ -25,6 +25,15 @@ export const en = {
     soon: 'Coming soon',
     soonA11y: '{kind}, {size}. Coming soon.',
     lockNote: 'Lock Screen widgets aren’t ready yet. These are on the way.',
+    // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
+    link: {
+      ok: 'Home Screen widgets linked',
+      noAppGroup: 'Your widgets can’t see Glaze on this build (App Group missing). Tell us in TestFlight feedback.',
+      notReadYet: 'Add a Glaze widget to your Home Screen, then come back.',
+      stale: 'Your widgets haven’t picked up the latest theme yet. If this stays, tell us in TestFlight feedback.',
+      wrongTheme: 'Your widgets are showing a different theme. Pick the theme again; if it stays, tell us in TestFlight feedback.',
+      a11y: 'Widget link check: {status}',
+    },
     // T86: Habit goals screen (app/habit-goals.tsx) and the goal chip under habit cards.
     goals: {
       title: 'Daily goals',
@@ -56,7 +65,7 @@ export const en = {
     },
   },
   wallpapersTab: {
-    subtitle: 'Still and live wallpapers for your Lock Screen and Home Screen.',
+    subtitle: 'Wallpapers and Live Photos for your Lock Screen and Home Screen.',
     subTabs: 'Wallpaper type',
     sub: { still: 'Still', live: 'Live', pairs: 'Pairs' },
     liveBadge: 'LIVE',

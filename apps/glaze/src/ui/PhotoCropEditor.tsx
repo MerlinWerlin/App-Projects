@@ -21,7 +21,7 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withDecay,
-  withSpring,
+  withTiming,
 } from 'react-native-reanimated';
 import type { IconSpec } from '../core/iconspec';
 import {
@@ -42,7 +42,7 @@ import {
 } from '../core/photoCrop';
 import { Overlay as ThemeOverlay, type PhotoWallpaperData } from '../render/PhotoWallpaperView';
 import { useT } from '../i18n';
-import { springConfig, useMotionReduced } from '../theme/motion';
+import { timing, useMotionReduced } from '../theme/motion';
 import { radiusV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { HomeMock } from './HomeMock';
 import { noMirror, textStyleFor } from './i18nLayout';
@@ -148,9 +148,9 @@ export function PhotoCropEditor({
       x.value = v.x;
       y.value = v.y;
     } else {
-      z.value = withSpring(v.zoom, springConfig);
-      x.value = withSpring(v.x, springConfig);
-      y.value = withSpring(v.y, springConfig);
+      z.value = withTiming(v.zoom, timing.base);
+      x.value = withTiming(v.x, timing.base);
+      y.value = withTiming(v.y, timing.base);
     }
     // Shared values are stable refs.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -190,19 +190,19 @@ export function PhotoCropEditor({
       const b = cropBounds(base, frame, t.zoom);
       const springBack = !cropInBounds(d, base, frame);
       pending.value = 3;
-      if (Math.abs(t.zoom - d.zoom) > 1e-4) z.value = withSpring(t.zoom, springConfig, settled);
+      if (Math.abs(t.zoom - d.zoom) > 1e-4) z.value = withTiming(t.zoom, timing.base, settled);
       else {
         z.value = t.zoom;
         settled(true);
       }
       if (springBack || b.maxX - b.minX < MIN_TRAVEL) {
-        if (Math.abs(t.x - d.x) > 0.01) x.value = withSpring(t.x, springConfig, settled);
+        if (Math.abs(t.x - d.x) > 0.01) x.value = withTiming(t.x, timing.base, settled);
         else settled(true);
       } else {
         x.value = withDecay({ velocity: vx.value, deceleration: DECELERATION, clamp: [b.minX, b.maxX] }, settled);
       }
       if (springBack || b.maxY - b.minY < MIN_TRAVEL) {
-        if (Math.abs(t.y - d.y) > 0.01) y.value = withSpring(t.y, springConfig, settled);
+        if (Math.abs(t.y - d.y) > 0.01) y.value = withTiming(t.y, timing.base, settled);
         else settled(true);
       } else {
         y.value = withDecay({ velocity: vy.value, deceleration: DECELERATION, clamp: [b.minY, b.maxY] }, settled);

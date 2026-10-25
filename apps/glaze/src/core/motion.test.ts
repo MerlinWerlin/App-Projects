@@ -10,15 +10,12 @@ import {
   rippleDelays,
   rubberBand,
   rubberClamp,
-  spring,
   staggerDelay,
 } from './motion.ts';
 
 test('durations match the polish brief and stay under the cap', () => {
   assert.deepEqual({ ...durations }, { fast: 120, base: 200, slow: 320 });
   for (const v of Object.values(durations)) assert.ok(v <= MAX_MS);
-  assert.equal(spring.damping, 18);
-  assert.equal(spring.stiffness, 220);
 });
 
 test('staggerDelay is 30 ms per item and caps at 8 items', () => {

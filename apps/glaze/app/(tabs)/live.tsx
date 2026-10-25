@@ -173,7 +173,8 @@ export default function LiveScreen() {
         accessibilityHint={t('live.tab.pickHint')}
         style={styles.side}
       />
-      {/* T127: how a loop gets onto the Lock Screen: saved as a Live Photo, set by the user in Photos. */}
+      {/* T127/T147: saved as a Live Photo that moves in Photos; trying it as a wallpaper is optional
+          and iPhone often keeps app-made Live Photos still (the guide says so). */}
       <View style={styles.side}>
         <LivePhotoGuide />
       </View>

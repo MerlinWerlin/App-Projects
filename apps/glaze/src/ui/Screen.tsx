@@ -36,7 +36,7 @@ export function Screen({ title, subtitle, children, scroll = true, action }: Pro
   const rootStyle = [styles.root, { backgroundColor: c.bg }];
   return (
     <SafeAreaView edges={['top', 'left', 'right']} style={rootStyle}>
-      {scroll ? <ScrollView contentContainerStyle={styles.scroll}>{body}</ScrollView> : body}
+      {scroll ? <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.scroll}>{body}</ScrollView> : body}
     </SafeAreaView>
   );
 }

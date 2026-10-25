@@ -25,6 +25,15 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
     soon: '近日公開',
     soonA11y: '{kind}、{size}。近日公開。',
     lockNote: 'ロック画面ウィジェットはまだ準備中です。以下を予定しています。',
+    // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
+    link: {
+      ok: 'ホーム画面のウィジェットと連携済み',
+      noAppGroup: 'このビルドではウィジェットが Glaze を認識できません（App Group がありません）。TestFlight のフィードバックでお知らせください。',
+      notReadYet: 'ホーム画面に Glaze のウィジェットを追加してから、ここに戻ってください。',
+      stale: 'ウィジェットにまだ最新のテーマが反映されていません。このままの場合は、TestFlight のフィードバックでお知らせください。',
+      wrongTheme: 'ウィジェットに別のテーマが表示されています。テーマをもう一度選んでください。変わらない場合は、TestFlight のフィードバックでお知らせください。',
+      a11y: 'ウィジェットの連携確認：{status}',
+    },
     // T86: Habit goals screen (app/habit-goals.tsx) and the goal chip under habit cards.
     goals: {
       title: '1日の目標',
@@ -56,7 +65,7 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
     },
   },
   wallpapersTab: {
-    subtitle: 'ロック画面とホーム画面のための静止画とライブの壁紙。',
+    subtitle: 'ロック画面とホーム画面のための壁紙とLive Photos。',
     subTabs: '壁紙の種類',
     sub: { still: '静止画', live: 'ライブ', pairs: 'ペア' },
     liveBadge: 'ライブ',

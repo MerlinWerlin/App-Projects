@@ -4,6 +4,8 @@ T67 (M5, oversight D75-2). Source and renderer: `assets/store/` (see its README)
 
 **Positioning (owner decision 24 Oct 2026):** themes, matching icons, themed widgets and wallpaper packs are the pitch. The Live Photo maker is an extra; never promise a constantly looping Lock Screen on iPhone (parked: `docs/future/live-wallpaper/README.md`).
 
+**Live Photo maker on iOS (T147, fb-1025 C, 25 Oct 2026):** no wallpaper-motion promise at all. The owner's TestFlight test saved the Live Photo fine, but it did not move as his Lock Screen wallpaper, and Apple's DTS engineer says app-made Live Photos have undocumented requirements to work as Live Wallpapers (see `docs/REVIEW_NOTES.md`). Listing copy may say: it saves your clip to Photos as a Live Photo that moves when you press it in Photos. It must not say it moves on the Lock Screen, when you wake your iPhone, or that it is a "live wallpaper" on iPhone. Android's looping live wallpaper is real and may be described on Google Play.
+
 ## Title and subtitle (draft, owner decides)
 
 App Store limits: title 30 characters, subtitle 30.
@@ -26,8 +28,8 @@ Files: `assets/store/01.png` … `08.png` (style A, chosen). Headlines and subca
 | 3 | Celestial Night Home Screen with clock, calendar, battery and quote widgets in the theme's colours | Every theme has matching widgets | Clock, calendar, photo, quote and battery, in small, medium and large. |
 | 4 | Widget Studio: live preview, background chips, colour swatches, font chips drawn in their own font, size slider, Add widget | Make every widget yours | Choose a photo, colours, fonts and size, then add it to your Home Screen. |
 | 5 | Cloud Nine Home Screen with water, sleep and mood habit widgets and their buttons | Tap to log water, sleep and mood | Interactive habit widgets that work right on your Home Screen. |
-| 6 | Wallpapers tab (Still / Live / Pairs) with LIVE badges; floating Lock + Home pair | Wallpapers that move | Still and live wallpapers, plus matching Lock and Home Screen pairs. |
-| 7 | Live Photo maker (an extra): a Lock Screen over an illustrated beach clip, Live pill, floating trim strip and play button | Turn a clip into a Live Photo | A Live Photo wallpaper that moves when you wake your iPhone. Free in Glaze. |
+| 6 | Wallpapers tab (Still / Live / Pairs) with LIVE badges; floating Lock + Home pair | Wallpapers for every look | Still wallpapers and Live Photos, plus matching Lock and Home Screen pairs. |
+| 7 | Live Photo maker (an extra): a Lock Screen over an illustrated beach clip, Live pill, floating trim strip and play button | Turn a clip into a Live Photo | Your own clip as a Live Photo that moves when you press it in Photos. Free in Glaze. |
 | 8 | Seasonal collections: Halloween (Now), Diwali (Soon), Christmas, with real collection themes | A fresh look for every season | Halloween, Diwali, Christmas, Lunar New Year and more, ready when the day comes. |
 
 Shots 2 to 8 also carry a small "No ads · No weekly subscription" chip, which repeats the price promise from shot 1 (the playbook's "one price" shot is folded into the hook and these chips, so the set stays at 8).
@@ -43,8 +45,9 @@ Shots 2 to 8 also carry a small "No ads · No weekly subscription" chip, which r
 ### Before uploading (honesty checks)
 
 - **Shot 5 (interactive widgets):** T73 is now code-complete (App Intents buttons in the WidgetKit target, docs/WIDGETS.md "Interactive habit widgets"), but it has **not** been compiled or tested on a device. Shot 5 can be used once a device test of the submitted build confirms the widget buttons log taps on iOS 17+ (WIDGETS.md "Testing on a dev build", step 7); until then use shots 1–4 and 6–8 (7 shots). Shot 5 was re-rendered in run 54 so its water widget matches the real one (1,500 / 2,000 ml, a "+ 150 ml" button; sleep "+ 1 hr").
-- **Shot 7 (Live Lock Screen)** is a marketing mock-up of the feature, drawn by hand. It does not claim, and nothing in the listing should claim, that it was tested on a device. Make sure the submitted build's Live Lock Screen works on iOS 26 before using it.
-- **Shot 6** shows the Wallpapers tab's Live sub-tab (T71); keep the listing description to what live wallpapers do in the submitted build on iOS.
+- **Shots 6 and 7 need a re-render (T147):** the captions in `assets/store/src/shots.js` and the table above were changed on 25 Oct 2026 to drop the wallpaper-motion promise, but `06.png` and `07.png` still carry the old captions ("Wallpapers that move", "…moves when you wake your iPhone"). Run `node assets/store/render.mjs` before uploading; do not upload the old files.
+- **Shot 7 (Live Photo maker)** is a hand-drawn marketing mock-up. Its art frames the clip on a Lock Screen; since the Live Photo often stays still as an iPhone wallpaper, prefer redrawing it as the Photos view (or drop the shot) before submission. It does not claim, and nothing in the listing should claim, that it was tested on a device.
+- **Shot 6** shows the Wallpapers tab's Live sub-tab (T71); on iOS those are Live Photo clips, not moving wallpapers. Keep the listing description to that.
 - App Store Connect asks for flattened RGB images. The committed PNGs are 256-colour palette files to keep the repo small; convert on export with `python3 assets/store/export_rgb.py` (writes RGB copies to `assets/store/out/upload/`).
 
 ## Style choice (L7)

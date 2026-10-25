@@ -69,7 +69,10 @@ test('copy is honest about iOS limits', () => {
   assert.match(getTip('install-not-verified').body, /Not Verified/);
   assert.match(getTip('live-loop').body, /isn’t a constant loop/);
   assert.doesNotMatch(TIPS.map((t) => t.body).join(' '), /Live Lock|Loop your own/);
-  assert.match(getTip('live-loop').body, /Expo Go/);
+  // T147 (fb-1025 C): honest about app-made Live Photos as wallpapers, no "moves when you wake".
+  assert.match(getTip('live-loop').body, /Motion not available/);
+  assert.match(getTip('live-lock').body, /still/);
+  assert.doesNotMatch(`${getTip('live-lock').body} ${getTip('live-loop').body}`, /when you wake|Use as Wallpaper/);
   assert.match(getTip('icon-override').body, /keeps your image/);
   const all = TIPS.map((t) => `${t.title} ${t.body}`).join(' ');
   for (const name of ['Themify', 'Icon Themer', 'MyScreen', 'ScreenKit', 'Widgetsmith', 'intoLive', 'Loopy', 'Lockio']) {

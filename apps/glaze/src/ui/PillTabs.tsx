@@ -24,7 +24,7 @@ export function PillTabs<T extends string>({ label, options, value, onChange, st
   const { c } = useColorsV2();
   const { t, script } = useT();
   return (
-    <ScrollView
+    <ScrollView bounces={false} overScrollMode="never"
       horizontal
       showsHorizontalScrollIndicator={false}
       accessibilityRole="tablist"

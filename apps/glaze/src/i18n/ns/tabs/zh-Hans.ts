@@ -25,6 +25,15 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
     soon: '即将推出',
     soonA11y: '{kind}，{size}。即将推出。',
     lockNote: '锁定屏幕小组件尚未就绪。以下小组件即将推出。',
+    // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
+    link: {
+      ok: '主屏幕小组件已连接',
+      noAppGroup: '在此版本中，小组件无法读取 Glaze（缺少 App Group）。请通过 TestFlight 反馈告诉我们。',
+      notReadYet: '请先在主屏幕上添加一个 Glaze 小组件，然后回到这里。',
+      stale: '小组件还没有换成最新的主题。如果一直这样，请通过 TestFlight 反馈告诉我们。',
+      wrongTheme: '小组件显示的是另一个主题。请再选一次主题；如果仍然这样，请通过 TestFlight 反馈告诉我们。',
+      a11y: '小组件连接检查：{status}',
+    },
     // T86: Habit goals screen (app/habit-goals.tsx) and the goal chip under habit cards.
     goals: {
       title: '每日目标',
@@ -56,7 +65,7 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
     },
   },
   wallpapersTab: {
-    subtitle: '适用于锁屏和主屏幕的静态与动态壁纸。',
+    subtitle: '适用于锁屏和主屏幕的壁纸与实况照片。',
     subTabs: '壁纸类型',
     sub: { still: '静态', live: '动态', pairs: '配对' },
     liveBadge: '动态',

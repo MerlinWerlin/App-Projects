@@ -88,7 +88,7 @@ export const CategoryBubbleRow = memo(function CategoryBubbleRow({ pages, store,
   const grow = spaceV2.sm;
 
   return (
-    <ScrollView
+    <ScrollView bounces={false} overScrollMode="never"
       ref={scroller}
       horizontal
       onLayout={onLayout}

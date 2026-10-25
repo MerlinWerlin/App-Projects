@@ -3,7 +3,7 @@ import type { LocaleMessages } from '../../catalogue.ts';
 
 export const zhHans: NonNullable<LocaleMessages['live']> = {
   tab: {
-    subtitle: '把你自己的视频变成实况照片墙纸。',
+    subtitle: '把你自己的视频变成实况照片。',
     newLoop: '从视频或 GIF 新建循环',
     opening: '正在打开…',
     pickHint: '打开照片图库选择视频或 GIF',

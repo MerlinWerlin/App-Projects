@@ -1,5 +1,32 @@
 # Glaze mascot concepts (fb-1023 D, concept only)
 
+## Decision (fb-1025 G, 25 Oct 2026): the app icon is Prism
+
+![Prism](mascot/prism-icon.png)
+
+Owner, 25 Oct: *"I like both, but males won't go for the first one, so go Prism; I like it more than the current
+Glaze icon."* So:
+
+- **The app icon, splash and opening animation are now "Prism"**: a gem-cut triangular crystal seen slightly from
+  above, point down, on a deep indigo-to-ink ground. A thin beam of light falls into its top from the upper left and
+  leaves the point as a soft fan of six glaze colours (violet, sky, mint, butter, peach, rose) spreading downward.
+  Clean facets, glossy edge light, one sparkle. Gender-neutral, not pink-led, not cute. Art:
+  [mascot/prism-icon.svg](mascot/prism-icon.svg); the shipped files are `assets/brand/*` (same names and sizes, so
+  `app.json` only changed the Android adaptive background to the Prism ground `#1C1442`).
+- **Opening animation:** the splash shows the tile with the crystal unlit; the beam fades in, the crystal lights up,
+  the spectrum fans out ray by ray, a gloss sweeps across and the sparkle settles (2 s, calm easing only, Reduce Motion
+  shows the finished mark).
+- **Mascots 1 to 3 (Tessel, Latchling, Vitri) are not used.** They stay below as a record.
+- **The previous glaze-drip icon** is kept for reference in `docs/mascot/previous-glaze-drip/`.
+- **Please check:** the Prism image you picked from was not in the repo, so this Prism was redrawn from the concept
+  name. If it doesn't match what you chose (shape, colours, mood), say what's different and it gets redrawn.
+- Single source of truth: `src/core/introGlaze.ts` (geometry, colours, timings). Rebuild with
+  `node scripts/brand/build-brand.mjs && python3 scripts/brand/flatten.py`.
+
+The rest of this page is the original mascot concept note (23 Oct), kept unchanged for the record.
+
+---
+
 Owner idea fb-1023 D ("maybe"): Glaze could have a small, calm, animated companion character,
 used as the mascot, possibly as the app icon and as an animated widget, with a few character
 options. **This document is concept only.** Nothing in the app, `app.json`, `assets/` or the app
@@ -8,6 +35,7 @@ icon has changed. Nothing changes until the owner picks (see the question at the
 > **Update (23 Oct night):** the app now has its own icon and opening animation: a *faceless* porcelain tile with
 > the glaze poured over it (`assets/brand/`, geometry in `src/core/introGlaze.ts`). It borrows Tessel's tile-and-drip
 > idea but is not a mascot (no face, no character); the mascot question below is still open and unchanged.
+> (Superseded 25 Oct: the icon is now Prism, see the decision at the top.)
 
 All three are drawn from Glaze's own identity: the glaze-drip gradient (`glaze` token
 `#F7A8D8 → #FFC9A3`, dark `#B8488F → #E07D55`), porcelain neutrals, the plum tint (`#A2337F`,

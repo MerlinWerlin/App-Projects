@@ -3,7 +3,8 @@
 //
 // How: a tiny HTTP/1.1 server on the loopback interface only (127.0.0.1, random high port), built
 // on Apple's Network framework (NWListener). The app opens http://127.0.0.1:<port>/ in Safari;
-// that landing page has one Install link to /glaze.mobileconfig, served with
+// that landing page requests /glaze.mobileconfig straight away (meta refresh, T154) and also has
+// an Install link to it, served with
 // Content-Type application/x-apple-aspen-config. Nothing leaves the iPhone: loopback is not the
 // local network, so no Local Network prompt and no ATS exception are needed (Safari makes the
 // request, not the app).
@@ -452,6 +453,12 @@ final class GlazeLoopbackServer {
     return out
   }
 
+  /// T154: the page asks Safari for the profile AT ONCE (meta refresh, the same auto-refresh
+  /// pattern older in-app installers used), so Safari fetches it in the first second, while
+  /// Glaze is certainly still running. Before T154 Safari only fetched when the user tapped
+  /// Install; if they read the page for longer than iOS kept Glaze alive in the background
+  /// (often about 30 s, never guaranteed), the server was gone and Safari could not connect.
+  /// The Install button stays as the manual fallback (e.g. after tapping Ignore).
   static func landingPage(json: String) -> Data {
     let text = (try? JSONDecoder().decode(PageText.self, from: Data(json.utf8)))
     let lang = escape(text?.lang ?? "en")
@@ -466,6 +473,7 @@ final class GlazeLoopbackServer {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
+    <meta http-equiv="refresh" content="0;url=\(profilePath)">
     <title>\(title)</title>
     <style>
     body{margin:0;font:17px -apple-system,system-ui,sans-serif;background:#f6f4fb;color:#1c1b22}

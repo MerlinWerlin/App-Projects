@@ -1,5 +1,5 @@
-// Capsule button (docs/DESIGN_V2.md "PillButton"): continuous-corner pill, ≥ 48 pt tall, springs
-// to 0.96 on press (PressableScale + motion tokens; Reduce Motion dims instead) with a haptic that
+// Capsule button (docs/DESIGN_V2.md "PillButton"): continuous-corner pill, ≥ 48 pt tall, eases
+// to 0.97 on press with no bounce (PressableScale + motion tokens; Reduce Motion dims instead) with a haptic that
 // follows the Haptics setting. Labels wrap rather than truncate (long German/French strings).
 import { Feather } from '@expo/vector-icons';
 import { ActivityIndicator, StyleSheet, Text, type StyleProp, type ViewStyle } from 'react-native';

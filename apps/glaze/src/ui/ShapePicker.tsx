@@ -11,13 +11,13 @@
 import { Feather } from '@expo/vector-icons';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { Pressable, StyleSheet, Text, View, type LayoutChangeEvent } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import type { IconShape } from '../core/iconspec';
 import { SHAPES } from '../core/shapes';
 import { previewSpecs, type Theme } from '../core/themes';
 import { useT } from '../i18n';
 import { IconCanvas } from '../render/IconCanvas';
-import { springConfig, useMotionReduced } from '../theme/motion';
+import { timing, useMotionReduced } from '../theme/motion';
 import { continuous, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { haptic } from './haptics';
@@ -66,10 +66,10 @@ export function ShapePicker({ theme, value, onChange, iosMask, onIosMaskChange, 
       const b = boxes.current[valueRef.current];
       if (!b) return;
       if (animate && placed.current && !reduced) {
-        ix.value = withSpring(b.x, springConfig);
-        iw.value = withSpring(b.width, springConfig);
-        iy.value = withSpring(b.y, springConfig);
-        ih.value = withSpring(b.height, springConfig);
+        ix.value = withTiming(b.x, timing.base);
+        iw.value = withTiming(b.width, timing.base);
+        iy.value = withTiming(b.y, timing.base);
+        ih.value = withTiming(b.height, timing.base);
       } else {
         ix.value = b.x;
         iw.value = b.width;

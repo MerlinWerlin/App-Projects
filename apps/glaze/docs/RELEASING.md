@@ -147,6 +147,7 @@ Audit of every Swift file: `docs/NATIVE_AUDIT_1024.md`.
 | Widget extension (GlazeWidgets, A) | `targets/widget/`, registered by `native-plugins/widgets.json` | Rename `native-plugins/widgets.json` to `widgets.json.off` (app.config.ts only reads `*.json`). That also drops the App Group entitlement from the app. | No Glaze widgets in the gallery; the bridge calls still succeed or no-op. |
 | Widget bridge module (A) | `modules/glaze-widget-bridge` | Move the folder out of `modules/` (for example to `modules-parked/glaze-widget-bridge`; nothing links that folder). | `widgets.*` returns `{ available: false }`; widgets keep showing the Glaze default theme. |
 | Profile server module (B) | `modules/glaze-profile-server` | Move the folder out of `modules/` (for example to `modules-parked/glaze-profile-server`). | `profileServer.status()` is "not-built": Shortcuts is the default method, Bulk uses the share sheet. |
+| App Store purchases (T152) | `modules/glaze-store` | Move the folder out of `modules/` (for example to `modules-parked/glaze-store`). | `glazeStore.available()` is false: Glaze Plus falls back to the mock ("can't buy in this test version"). See `docs/IAP_SANDBOX.md`. |
 | Live Photo / Live Lock (C) | `modules/glaze-livephoto`, `modules/glaze-livelock` | Same: move the folder out of `modules/`. | The adapters report unavailable. |
 
 Notes:

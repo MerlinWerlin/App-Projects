@@ -11,7 +11,7 @@ Paste after the feature sections (release standard §3; same pattern as the othe
 1. Screen recording: supplied with the reply (physical iPhone, latest iOS): launch, pick a theme, make and install an icon with Shortcuts, add a Glaze widget, save a wallpaper, Plus Unlock and Restore.
 2. Purpose and audience: a home-screen customisation app for anyone who wants a matching look. It offers original themes with matching icons, themed widgets and wallpaper packs, plus a Live Photo maker from the user's own clip.
 3. Setup: no account, login or sample files needed; every theme is bundled. Icons are installed one app at a time with Apple's Shortcuts app, guided step by step in Glaze.
-4. External services: none for core functionality. Only Apple In-App Purchase (StoreKit) for the one-time Glaze Plus unlock. No server, accounts, analytics, ads or AI; photos and videos never leave the device.
+4. External services: none for core functionality. Only Apple In-App Purchase (StoreKit) for the one-time Glaze Plus unlock (non-consumable `com.jared797.glaze.plus`; Restore purchases is on the Plus sheet and in Settings). No server, accounts, analytics, ads or AI; photos and videos never leave the device.
 5. Regional differences: none; works the same in all regions (only the purchase price is localised).
 6. Regulated industry / third-party material: not applicable. All icons, themes and art are original or licensed (licences in the app's records); no brand logos or third-party characters.
 
@@ -65,13 +65,26 @@ Note to paste:
 
 > Glaze can turn a short clip the user picks (their own video or a bundled loop) into a Live Photo and
 > save it to their photo library (add-only Photos permission; Glaze never reads the library). Glaze
-> doesn't set the wallpaper itself. The app shows the steps (Photos > Share > Use as Wallpaper, with the
-> Live Photo button on) and says that the photo moves when the iPhone wakes or the Lock Screen is
-> pressed, and that it is not a constant loop. This build has no background audio and doesn't declare
-> `UIBackgroundModes`. Everything stays on the device. This feature is free.
+> doesn't set the wallpaper itself and doesn't promise a moving wallpaper. The app says the Live Photo
+> moves when it is pressed in Photos. It shows how the user can try it as a wallpaper (Photos > Share >
+> Use as Wallpaper) and says plainly that iPhone often shows Live Photos made by apps as a still or
+> says "Motion not available", and that the still wallpapers are the reliable choice. This build has
+> no background audio and doesn't declare `UIBackgroundModes`. Everything stays on the device. This
+> feature is free.
+
+Decision 25 Oct 2026 (T147, owner feedback fb-1025 C): the owner's TestFlight test saved the Live Photo,
+but it did not move as his Lock Screen wallpaper. Apple's DTS engineer says Live Photos created by apps
+(not the Camera) have "undocumented requirements" to be usable as Live Wallpapers and recommends against
+reverse-engineering them (<https://developer.apple.com/forums/thread/798044>); other developers report
+"Motion not available" for app-made Live Photos since iOS 16/17
+(<https://developer.apple.com/forums/thread/768984>). Our export already does the standard pairing
+(MakerApple key 17, QuickTime content identifier, still-image-time track, one `PHAssetCreationRequest`).
+Owner direction: good enough to ship; the maker stays as an extra, and no screen, tip or store text may
+promise that it moves as an iPhone wallpaper (`src/core/fb1025Live.test.ts`).
 
 Facts behind the note (check before each submission):
 - Live Photo export: `modules/glaze-livephoto/ios/GlazeLivePhotoModule.swift`. Adapter: `src/native/livephoto.ts`.
+- Copy: `src/core/liveSteps.ts` (English source) and `liveUi.*` in `src/i18n/ns/liveUi/`.
 - Android: a real looping live wallpaper (`modules/glaze-android`, `GlazeVideoWallpaperService`); Play has
   no equivalent of 2.5.4 for this.
 - This text describes the code, not a device test.

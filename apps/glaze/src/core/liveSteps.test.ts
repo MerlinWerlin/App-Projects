@@ -76,5 +76,10 @@ test('heroSubline is honest per build and iOS version (T127: Live Photo, never a
     assert.doesNotMatch(heroSubline('full', ios), /Loops|Now Playing/);
   }
   assert.match(heroSubline('full', 16), /iOS 16/);
-  assert.match(heroSubline('full', 16), /stays still/);
+  assert.match(heroSubline('full', 16), /show it still/);
+  // T147 (fb-1025 C): no moving-wallpaper promise; it moves when pressed in Photos.
+  for (const ios of [0, 16, 17, 18, 26]) {
+    assert.match(heroSubline('full', ios), /press it/);
+    assert.doesNotMatch(heroSubline('full', ios), /wake|set as your wallpaper|moves on iOS/i);
+  }
 });

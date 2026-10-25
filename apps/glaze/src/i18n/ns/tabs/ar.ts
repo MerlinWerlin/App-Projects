@@ -25,6 +25,15 @@ export const ar: NonNullable<LocaleMessages['tabs']> = {
     soon: 'قريبًا',
     soonA11y: '{kind}، {size}. قريبًا.',
     lockNote: 'أدوات شاشة القفل ليست جاهزة بعد. هذه الأدوات قادمة قريبًا.',
+    // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
+    link: {
+      ok: 'أدوات الشاشة الرئيسية متصلة',
+      noAppGroup: 'لا تستطيع أدواتك رؤية Glaze في هذا الإصدار (App Group مفقودة). أخبرنا في ملاحظات TestFlight.',
+      notReadYet: 'أضف أداة Glaze إلى شاشتك الرئيسية، ثم عد إلى هنا.',
+      stale: 'لم تأخذ أدواتك أحدث سمة بعد. إذا استمر ذلك، أخبرنا في ملاحظات TestFlight.',
+      wrongTheme: 'تعرض أدواتك سمة مختلفة. اختر السمة مرة أخرى؛ إذا استمر ذلك، أخبرنا في ملاحظات TestFlight.',
+      a11y: 'فحص اتصال الأدوات: {status}',
+    },
     // T86: Habit goals screen (app/habit-goals.tsx) and the goal chip under habit cards.
     goals: {
       title: 'الأهداف اليومية',
@@ -56,7 +65,7 @@ export const ar: NonNullable<LocaleMessages['tabs']> = {
     },
   },
   wallpapersTab: {
-    subtitle: 'خلفيات ثابتة وحية لشاشة القفل والشاشة الرئيسية.',
+    subtitle: 'خلفيات وصور حية لشاشة القفل والشاشة الرئيسية.',
     subTabs: 'نوع الخلفية',
     sub: { still: 'ثابتة', live: 'حية', pairs: 'أزواج' },
     liveBadge: 'حية',

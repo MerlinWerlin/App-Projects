@@ -83,7 +83,7 @@ export function Sheet({ visible, onClose, title, children, closeLabel }: Props) 
                 </PressableScale>
               )}
             </View>
-            <ScrollView contentContainerStyle={styles.body}>{children}</ScrollView>
+            <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.body}>{children}</ScrollView>
           </GlassBar>
         </Animated.View>
       </View>

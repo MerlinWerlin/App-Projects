@@ -19,7 +19,7 @@
       "buildNumber": "1",
       "bundleIdentifier": "com.jared797.glaze",
       "infoPlist": {
-        "NSPhotoLibraryUsageDescription": "Glaze uses your photos and videos to make icons, wallpapers and lock screen loops. They never leave your phone.",
+        "NSPhotoLibraryUsageDescription": "Glaze uses your photos and videos to make icons, wallpapers and Live Photos. They never leave your phone.",
         "NSPhotoLibraryAddUsageDescription": "Glaze saves the icons and wallpapers you make to your photo library.",
         "CFBundleLocalizations": [
           "en",
@@ -46,7 +46,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/brand/adaptive-foreground.png",
         "monochromeImage": "./assets/brand/adaptive-monochrome.png",
-        "backgroundColor": "#E9E0FB"
+        "backgroundColor": "#1C1442"
       },
       "edgeToEdgeEnabled": true
     },
@@ -57,13 +57,13 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "Glaze uses your photos and videos to make icons, wallpapers and lock screen loops. They never leave your phone."
+          "photosPermission": "Glaze uses your photos and videos to make icons, wallpapers and Live Photos. They never leave your phone."
         }
       ],
       [
         "expo-media-library",
         {
-          "photosPermission": "Glaze uses your photos and videos to make icons, wallpapers and lock screen loops. They never leave your phone.",
+          "photosPermission": "Glaze uses your photos and videos to make icons, wallpapers and Live Photos. They never leave your phone.",
           "savePhotosPermission": "Glaze saves the icons and wallpapers you make to your photo library.",
           "isAccessMediaLocationEnabled": false
         }

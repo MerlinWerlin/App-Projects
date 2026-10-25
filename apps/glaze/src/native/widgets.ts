@@ -11,6 +11,7 @@ import { syncHabitStoreWithGoals, type HabitGoals } from '../core/habitGoals';
 import type { HabitKind, HabitState } from '../core/habits';
 import { logHabitTapInStore, logHabitUndoInStore } from '../core/habitTap';
 import { migrateLocalHabitsInStore } from '../core/habitMigrate';
+import { NO_WIDGET_LINK, normaliseWidgetLinkStatus, type WidgetLinkStatus } from '../core/widgetLink';
 
 export type WidgetsReason = 'expo-go' | 'android' | 'not-built' | 'failed' | null;
 export type WidgetsResult = { available: boolean; ok: boolean; reason: WidgetsReason };
@@ -63,7 +64,18 @@ export interface WidgetsAdapter {
    * Expo Go / Android / a build whose bridge predates T131: { available: false } and nothing runs.
    */
   setSeamless(input: SeamlessInput): Promise<WidgetsResult>;
+  /**
+   * T146 widget link check (fb-1025 A): App Group container, stored theme and what the widget
+   * extension last rendered (src/core/widgetLink.ts widgetLinkVerdict turns it into an answer).
+   * Read-only. Expo Go / Android / missing module: { available: false }. A build whose bridge
+   * predates T146: { available: true, supported: false } (link unknown). Never throws.
+   */
+  linkStatus(): Promise<WidgetLinkResult>;
 }
+
+/** T146: linkStatus result (normalised status + why it is unavailable). */
+export type WidgetLinkResult = WidgetLinkStatus & { reason: WidgetsReason };
+export type { WidgetLinkStatus };
 
 /** T131: inputs for widgets.setSeamless (local file:// URIs; never uploaded anywhere). */
 export type SeamlessInput = {
@@ -104,6 +116,8 @@ type NativeBridge = {
     heroUri: string,
     family: string,
   ): Promise<boolean>;
+  /** T146: { containerOk, themeStored, lastRead, storedTheme } (read-only). */
+  linkStatus?(): Promise<unknown>;
 };
 
 function isExpoGo(): boolean {
@@ -211,7 +225,24 @@ export const widgets: WidgetsAdapter = {
   logHabit,
   migrateLocalHabits,
   setSeamless,
+  linkStatus,
 };
+
+async function linkStatus(): Promise<WidgetLinkResult> {
+  const none = (reason: WidgetsReason, available = false): WidgetLinkResult => ({ ...NO_WIDGET_LINK, available, reason });
+  try {
+    const status = await isAvailable();
+    const mod = status.available ? loadNative() : null;
+    if (!mod) return none(status.reason);
+    // Older bridge (built before T146): the link can't be checked, which is not the same as broken.
+    if (typeof mod.linkStatus !== 'function') return none('not-built', true);
+    const raw = await mod.linkStatus();
+    return { ...normaliseWidgetLinkStatus(raw), reason: null };
+  } catch {
+    // Unknown, not broken: supported stays false so nothing is shown.
+    return none('failed', true);
+  }
+}
 
 async function setSeamless(input: SeamlessInput): Promise<WidgetsResult> {
   try {

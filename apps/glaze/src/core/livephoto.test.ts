@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { DEFAULT_DEVICE, DEVICES, exportSettings, newProject } from './loop.ts';
+import { DEFAULT_DEVICE, DEVICES, exportBitrate, newProject } from './loop.ts';
 import type { LoopProject } from './loop.ts';
 import {
   LIVE_PHOTO_MAX_MS,
@@ -56,15 +56,17 @@ test('short trims keep their length; still time is half the output length', () =
   assert.equal(q.stillTimeMs, 600);
 });
 
-test('sizes come from exportSettings, rounded to even', () => {
+test('T153: every device gets a 1080 x 1920 HEVC-sized payload, 9:16 crop inside the source', () => {
   for (const d of DEVICES) {
     const r = buildLivePhotoPayload(project(), d);
     assert.ok(r.ok);
     if (!r.ok) continue;
-    const s = exportSettings(d, { codec: 'h264' });
-    assert.ok(s.width - r.payload.width <= 1 && r.payload.width % 2 === 0, d.id);
-    assert.ok(s.height - r.payload.height <= 1 && r.payload.height % 2 === 0, d.id);
-    assert.equal(r.payload.bitrate, s.bitrate);
+    assert.equal(r.payload.width, 1080, d.id);
+    assert.equal(r.payload.height, 1920, d.id);
+    assert.equal(r.payload.fps, 30, d.id);
+    assert.equal(r.payload.bitrate, exportBitrate(1080, 1920, 'hevc'), d.id);
+    const c = r.payload.crop;
+    assert.ok(Math.abs(c.width / c.height - 1080 / 1920) < 0.01, `${d.id} crop is 9:16`);
     assert.deepEqual(validateLivePhotoPayload(r.payload), [], d.id);
   }
 });

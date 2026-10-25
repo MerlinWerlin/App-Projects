@@ -68,8 +68,8 @@ export const es: NonNullable<LocaleMessages['themeUi']> = {
       body: 'Beta opcional: un solo perfil instala todo tu set de una vez en Ajustes. El método guiado con Atajos es el predeterminado y siempre funciona.',
     },
     'live-lock': {
-      title: 'Crea un fondo Live Photo',
-      body: 'Convierte un vídeo en Live Photo en la pestaña Live. Ponlo desde Fotos › Compartir › Usar como fondo; se mueve al activar el iPhone.',
+      title: 'Crea una Live Photo',
+      body: 'Convierte un vídeo en Live Photo en la pestaña Live. Se mueve en Fotos; como fondo, el iPhone suele dejar fijas las creadas por apps.',
     },
     'theme-pick': {
       title: 'Empieza con un tema',
@@ -101,7 +101,7 @@ export const es: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-loop': {
       title: 'Cómo se mueven las Live Photos',
-      body: 'Un fondo Live Photo se mueve al activar o pulsar la pantalla bloqueada; no es un bucle continuo. Expo Go solo muestra una vista previa.',
+      body: 'Una Live Photo se mueve al pulsarla en Fotos; no es un bucle continuo. Como fondo, el iPhone puede decir que el movimiento no está disponible.',
     },
   },
   // T59: Widget Studio (app/widget-studio.tsx).

@@ -3,6 +3,8 @@
 // T127: this is THE Live Lock Screen action now (primary pill). The "saved" sheet shows the same
 // three illustrated steps as the editor's guide; Expo Go / builds without the module explain
 // that Live Photo saving needs the TestFlight app and point to Save to Photos.
+// T147 (fb-1025 C): the saved sheet no longer promises a moving wallpaper. It says the Live Photo
+// moves in Photos and adds the honest "Motion not available" note (liveUi.guide.needs).
 import { useState } from 'react';
 import { Dimensions, Linking, StyleSheet, Text, View, type TextStyle } from 'react-native';
 import { deviceForScreen, type LoopProject } from '../core/loop';
@@ -168,6 +170,7 @@ export function LivePhotoSheet({ state, onClose }: LivePhotoSheetProps) {
         <>
           <LivePhotoGuideSteps steps={guideSteps(t)} />
           <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('liveUi.guide.moves')}</Text>
+          <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('liveUi.guide.needs')}</Text>
         </>
       ) : null}
       {s.kind === 'denied' ? (

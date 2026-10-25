@@ -1,14 +1,14 @@
 // Small confirmation toasts: <ToastProvider> once at the root, then useToast().show('Saved').
-// Built on react-native Animated: fades and springs up from below with the shared spring
+// Built on react-native Animated: fades and slides up from below on a timed ease-out (no spring)
 // (POLISH rule 5); reduced motion keeps the fade only. Announced to screen readers.
 // Design v2 (T83): floating pill on surfaceRaised with the `floating` layered shadow.
 import { Feather } from '@expo/vector-icons';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { AccessibilityInfo, Animated, Platform, StyleSheet, Text, View } from 'react-native';
+import { AccessibilityInfo, Animated, Easing, Platform, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { shouldReduceMotion } from '../core/settings';
 import { getSettings } from '../store/settings';
-import { durations, spring as springPreset } from '../core/motion';
+import { durations } from '../core/motion';
 import { continuous, radiusV2, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { useT } from '../i18n';
@@ -93,11 +93,10 @@ export function ToastProvider({ children }: { children?: ReactNode }) {
         Animated.timing(opacity, { toValue: 1, duration: FADE_MS, useNativeDriver: true }),
         reduce
           ? Animated.timing(lift, { toValue: 0, duration: 0, useNativeDriver: true })
-          : Animated.spring(lift, {
+          : Animated.timing(lift, {
               toValue: 0,
-              damping: springPreset.damping,
-              stiffness: springPreset.stiffness,
-              mass: springPreset.mass,
+              duration: durations.base,
+              easing: Easing.out(Easing.cubic),
               useNativeDriver: true,
             }),
       ]).start();
