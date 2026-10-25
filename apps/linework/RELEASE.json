@@ -1,5 +1,5 @@
 {
-  "mode": "build",
-  "note": "Linework 1.0 release candidate 2: Workshop tab, Letters, 1,940 templates, Plus A$2.99 + free 14-day Trial (3.1.1); iPhone only",
+  "mode": "update",
+  "note": "Linework: Unlock Plus shows the store's error code if a purchase fails, retries the second request shape, and unlocks if the store already has Plus",
   "ascAppId": "6826041969"
 }
