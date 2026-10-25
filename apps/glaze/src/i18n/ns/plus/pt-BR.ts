@@ -18,6 +18,7 @@ export const ptBR: NonNullable<LocaleMessages['plus']> = {
     unlock: 'Desbloquear (em breve)',
     unlockHint: 'O Glaze Plus ainda não está à venda',
     unavailable: 'O Glaze Plus chega com a versão da loja.',
+    failed: 'A compra não foi concluída e nada foi cobrado. Código da loja: {code}.',
     close: "Fechar",
     restore: "Restaurar compras",
     restoreHint: "Procura uma compra anterior do Glaze Plus e desbloqueia de novo",

@@ -18,6 +18,7 @@ export const ko: NonNullable<LocaleMessages['plus']> = {
     unlock: '잠금 해제(곧 제공)',
     unlockHint: 'Glaze Plus는 아직 판매하지 않습니다',
     unavailable: 'Glaze Plus는 스토어 출시와 함께 제공됩니다.',
+    failed: '구매가 완료되지 않았으며 요금이 청구되지 않았습니다. 스토어 코드: {code}.',
     close: "닫기",
     restore: "구매 복원",
     restoreHint: "이전 Glaze Plus 구매를 확인하고 다시 잠금 해제합니다",
