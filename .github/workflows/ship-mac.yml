@@ -82,7 +82,7 @@ jobs:
         run: |
           set -o pipefail
           eas build --platform ios --profile "${{ steps.rel.outputs.profile }}" --local --non-interactive \
-            --output "$RUNNER_TEMP/app.ipa" 2>&1 | tee -a "$RUNNER_TEMP/ship.log" | grep -v -E '^\s*$' | tail -c 2000000
+            --output "$RUNNER_TEMP/app.ipa" 2>&1 | tee -a "$RUNNER_TEMP/ship.log"
 
       - name: Upload to TestFlight
         run: |
