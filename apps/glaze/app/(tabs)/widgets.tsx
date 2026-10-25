@@ -57,6 +57,7 @@ import { weakKeyedCache, weakMemo } from '../../src/core/perfCache';
 import { WIDGET_ROWS_BATCH, WIDGET_ROWS_FIRST, keptAcrossSwap, revealStep } from '../../src/core/perfReveal';
 import { useT } from '../../src/i18n';
 import { useStudio } from '../../src/store/studio';
+import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { logWidgetHabit, undoWidgetHabit, useWidgetHabits, widgetHabitGoal, widgetHabitValue, type WidgetHabits } from '../../src/store/widgetHabits';
 import { continuous, radiusV2, sizeV2, spaceV2, textV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
@@ -488,10 +489,16 @@ export default function WidgetsTab() {
   const cardWidth = Math.max(120, Math.floor((width - GUTTER * 2 - GAP) / 2));
   const innerWidth = cardWidth - CARD_PAD * 2;
 
+  // Owner 25 Oct (glaze-retest A: "just shows the same line of widgets with the same colour scheme
+  // every time"): picking a theme here used to change the in-app previews only, so the Home Screen
+  // widgets (and the iOS widget gallery) kept the old theme. Picking a theme now also writes it to
+  // the widgets through the App Group (no-op in Expo Go).
   const pickTheme = (id: string) => {
     if (id === theme.id) return;
     haptic('select');
     setPicked(id);
+    const next = themes.find((x) => x.id === id);
+    if (next) void applyWidgetTheme(next);
   };
   const pickLook = (l: WidgetLook) => {
     if (l === look) return;

@@ -7,6 +7,7 @@ import {
   bulkSelectable,
   effectiveChoice,
   installSummary,
+  showBulkCard,
   showMethodPicker,
   tipsForInstallMode,
 } from './installMethods.ts';
@@ -21,9 +22,12 @@ test('switch is a boolean exported from src/config/install.ts', () => {
   assert.equal(typeof PROFILE_INSTALL_ENABLED, 'boolean');
 });
 
-test('profile on: both methods, Shortcuts first (T138); off: Shortcuts only, no picker', () => {
-  assert.deepEqual(availableMethods({ profileEnabled: true, profileCount: 3 }), ['shortcuts', 'bulk']);
-  assert.equal(showMethodPicker({ profileEnabled: true, profileCount: 3 }), true);
+test('owner 25 Oct: profile on: Bulk is the only method; off or no link: Shortcuts fallback, no picker', () => {
+  assert.deepEqual(availableMethods({ profileEnabled: true, profileCount: 3 }), ['bulk']);
+  assert.equal(showMethodPicker({ profileEnabled: true, profileCount: 3 }), false);
+  assert.equal(showBulkCard({ profileEnabled: true, profileCount: 3 }), true);
+  assert.deepEqual(availableMethods({ profileEnabled: true, profileCount: 0 }), ['shortcuts']);
+  assert.equal(showBulkCard({ profileEnabled: false, profileCount: 3 }), false);
   assert.deepEqual(availableMethods({ profileEnabled: false, profileCount: 3 }), ['shortcuts']);
   assert.equal(showMethodPicker({ profileEnabled: false, profileCount: 3 }), false);
 });
@@ -38,7 +42,8 @@ test('effectiveChoice ignores a saved bulk choice when the switch is off', () =>
   assert.equal(effectiveChoice('bulk', { profileEnabled: true, profileCount: 2 }), 'bulk');
   assert.equal(effectiveChoice('bulk', { profileEnabled: false, profileCount: 2 }), 'shortcuts');
   assert.equal(effectiveChoice('bulk', { profileEnabled: true, profileCount: 0 }), 'shortcuts');
-  assert.equal(effectiveChoice('shortcuts', { profileEnabled: true, profileCount: 2 }), 'shortcuts');
+  // Owner 25 Oct: an old saved Shortcuts choice no longer keeps people off Bulk.
+  assert.equal(effectiveChoice('shortcuts', { profileEnabled: true, profileCount: 2 }), 'bulk');
 });
 
 test('summary counts every app as Shortcuts when the switch is off', () => {

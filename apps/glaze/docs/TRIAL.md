@@ -6,6 +6,14 @@ The app runs inside **Expo Go**, a free app that loads development builds from y
 2. **PC (automatic since 23 Oct):** your PC's auto-start (`Desktop\Apps\_auto`) installs each new build, runs the type check by itself and restarts Expo. You don't download kits or run any .cmd files.
 3. **iPhone:** open Glaze from **Expo Go > Recently opened**, about 10 minutes after a new build.
 
+## New since your last test (25 Oct, glaze-retest fixes, App-Projects PR): core fixes before themes
+Your 25 Oct retest said widgets keep one colour scheme, Shortcuts shouldn't be an option, and the Live Photo part bounces. These changes are JavaScript only, so they reach your current TestFlight build as an over-the-air update once the PR is merged (fully close and reopen Glaze twice).
+
+- **A. Widgets follow the theme you pick on the Widgets tab:** Widgets tab › tap a different theme chip (for example Sunset dunes). Then long-press the Home Screen › + › Glaze: do the widgets show that theme's colours? yes / no. Do widgets already on the Home Screen change within a few seconds? yes / no
+- **B. Bulk install is the only method:** Icons › Install. Is **Bulk install** the only method shown (no Shortcuts card)? yes / no. Tap it: does Safari open and does **Profile Downloaded** appear in Settings › General › VPN & Device Management, and do the icons land on the Home Screen? yes / no. If not, say where it stopped. This is the go/no-go you set for Glaze.
+- **C. No bounce in the Live Photo part:** the Live tab list, the trim handles and the Save as Live Photo / guide sheets now slide or fade with no spring. Any bounce left? yes / no
+- New themes are held until A and B work (your 25 Oct call).
+
 ## New since your last test (24 Oct night, run 104): fb-1024e, "good enough to ship"
 These need the **new TestFlight build** (you merged PR #74 on 25 Oct). The cloud can't see whether that build finished: App-Projects records that Expo's free iOS builds ran out on 25 Oct (they reset on 1 Nov), so if it isn't in TestFlight yet it is waiting for the GitHub Mac-runner build or the 1 Nov reset. Your #91 language-line fix rides along with it. When it shows in TestFlight, install it, open Glaze once, then answer yes / no in a page comment.
 
