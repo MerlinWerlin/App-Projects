@@ -3,16 +3,17 @@ import { Feather } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { ActionSheetIOS, Alert, FlatList, Platform, Text, View } from 'react-native';
+import { ActionSheetIOS, Alert, FlatList, Platform, Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { SAMPLE_BALL } from '../../src/content/samples';
 import { formatDuration, mainCounter, sortProjects, stats, timeWorked, type Project, type ProjectStatus } from '../../src/core/model';
 import { t } from '../../src/i18n';
 import { addProject, deleteProject, duplicateProject, restoreProject, updateProject, useData } from '../../src/store/data';
-import { useSettings } from '../../src/store/settings';
+import { dismissLanguageHint, useLanguageHint, useSettings } from '../../src/store/settings';
 import { font, radius, space, useColors, yarnColour } from '../../src/theme/tokens';
 import { haptic } from '../../src/ui/haptics';
 import { Body, Button, Chip, EmptyState, FadeIn, IconButton, PressableScale, Title } from '../../src/ui/kit';
+import { LanguageSheet, currentLanguageLabel } from '../../src/ui/LanguageSheet';
 import { useToast } from '../../src/ui/Toast';
 
 type Filter = 'active' | 'planned' | 'finished' | 'all';
@@ -22,8 +23,11 @@ export default function ProjectsScreen() {
   const insets = useSafeAreaInsets();
   const data = useData();
   const toast = useToast();
-  const { terms } = useSettings();
-  const [filter, setFilter] = useState<Filter>('active');
+  const { terms, language } = useSettings();
+  // Filters start off (release standard): every project shows until the person picks a filter.
+  const [filter, setFilter] = useState<Filter>('all');
+  const langHint = useLanguageHint();
+  const [langOpen, setLangOpen] = useState(false);
 
   const list = useMemo(() => {
     const all = sortProjects(data.projects);
@@ -93,6 +97,25 @@ export default function ProjectsScreen() {
         <Title>{t('projects.title')}</Title>
         <IconButton icon="plus" tone="accent" label={t('project.new')} onPress={() => router.push('/project/new')} />
       </View>
+      {langHint ? (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={`${t('language.line', { name: currentLanguageLabel(language) })}. ${t('language.change')}`}
+          onPress={() => {
+            dismissLanguageHint();
+            setLangOpen(true);
+          }}
+          hitSlop={8}
+          style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: -space.s }}
+        >
+          <Feather name="globe" size={14} color={c.ink2} />
+          <Text maxFontSizeMultiplier={1.3} style={{ fontFamily: font.bodySemi, fontSize: 13, color: c.ink2 }}>
+            {t('language.line', { name: currentLanguageLabel(language) })}
+            {'  ·  '}
+            <Text style={{ fontFamily: font.bodyBold, color: c.accent }}>{t('language.change')}</Text>
+          </Text>
+        </Pressable>
+      ) : null}
       {data.projects.length > 0 ? (
         <View style={{ flexDirection: 'row', gap: space.s }}>
           <Stat value={String(s.active)} label={t('projects.statActive')} />
@@ -139,12 +162,16 @@ export default function ProjectsScreen() {
               }
             />
           ) : (
-            <Body muted style={{ textAlign: 'center', marginTop: space.xl }}>
-              {t('projects.noneInFilter')}
-            </Body>
+            <View style={{ alignItems: 'center', gap: space.m, marginTop: space.xl }}>
+              <Body muted style={{ textAlign: 'center' }}>
+                {t('projects.noneInFilterWhy', { filter: t(`projects.filter.${filter}`) })}
+              </Body>
+              <Button title={t('projects.showAll')} kind="secondary" small onPress={() => setFilter('all')} />
+            </View>
           )
         }
       />
+      <LanguageSheet visible={langOpen} onClose={() => setLangOpen(false)} />
     </View>
   );
 }

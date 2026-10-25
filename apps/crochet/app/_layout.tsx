@@ -12,7 +12,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { t } from '../src/i18n';
 import { loadPlus } from '../src/plus/entitlement';
 import { loadData } from '../src/store/data';
-import { loadSettings } from '../src/store/settings';
+import { loadSettings, useSettings } from '../src/store/settings';
 import { font, useColors } from '../src/theme/tokens';
 import { ToastProvider } from '../src/ui/Toast';
 
@@ -47,6 +47,7 @@ export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
 
 export default function RootLayout() {
   const { c, dark } = useColors();
+  const { language } = useSettings();
   const [fontsLoaded, fontError] = useFonts({
     Fraunces_600SemiBold,
     Fraunces_700Bold,
@@ -78,7 +79,8 @@ export default function RootLayout() {
   if (!ready) return <View style={{ flex: 1, backgroundColor: c.bg }} />;
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: c.bg }}>
+    // Keyed on the language so every screen re-renders its strings after a change in the picker.
+    <GestureHandlerRootView key={language} style={{ flex: 1, backgroundColor: c.bg }}>
       <SafeAreaProvider>
         <StatusBar style={dark ? 'light' : 'dark'} />
         <ToastProvider>

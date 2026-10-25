@@ -1,6 +1,7 @@
 // Settings: terms, counting, look, backup, Plus, about.
 import Constants from 'expo-constants';
 import { router } from 'expo-router';
+import { useState } from 'react';
 import { Alert, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { fromBackup, toBackup } from '../../src/core/model';
@@ -11,6 +12,7 @@ import { pickBackupText, shareText } from '../../src/store/files';
 import { setSettings, useSettings } from '../../src/store/settings';
 import { space } from '../../src/theme/tokens';
 import { Body, Group, Row, ScreenScroll, Section, Segmented, SwitchRow, Title } from '../../src/ui/kit';
+import { LanguageSheet, currentLanguageLabel } from '../../src/ui/LanguageSheet';
 import { useToast } from '../../src/ui/Toast';
 
 export default function SettingsScreen() {
@@ -18,6 +20,7 @@ export default function SettingsScreen() {
   const plus = usePlus();
   const toast = useToast();
   const insets = useSafeAreaInsets();
+  const [langOpen, setLangOpen] = useState(false);
 
   const exportBackup = async () => {
     await flush();
@@ -61,6 +64,12 @@ export default function SettingsScreen() {
     <View style={{ flex: 1, paddingTop: insets.top + space.s }}>
       <ScreenScroll>
         <Title>{t('settings.title')}</Title>
+
+        <Section title={t('settings.language')}>
+          <Group>
+            <Row icon="globe" title={t('settings.language')} subtitle={currentLanguageLabel(s.language)} onPress={() => setLangOpen(true)} last />
+          </Group>
+        </Section>
 
         <Section title={t('settings.terms')}>
           <Segmented
@@ -138,6 +147,7 @@ export default function SettingsScreen() {
           </Group>
         </Section>
       </ScreenScroll>
+      <LanguageSheet visible={langOpen} onClose={() => setLangOpen(false)} />
     </View>
   );
 }

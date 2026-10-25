@@ -12,7 +12,8 @@ import { useToast } from '../src/ui/Toast';
 const PERKS: ReadonlyArray<{ icon: React.ComponentProps<typeof Feather>['name']; key: string }> = [
   { icon: 'archive', key: 'stash' },
   { icon: 'tag', key: 'price' },
-  { icon: 'heart', key: 'support' },
+  // 'support' ("Everything we add next: stats, themes...") stays out until those features ship: the paywall
+  // promises only what is in this build (release standard section 2).
 ];
 
 const FREE = ['projects', 'counters', 'patterns', 'pdf', 'tools', 'backup'] as const;

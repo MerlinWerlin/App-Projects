@@ -33,6 +33,26 @@ export function getLocale(): string {
   return locale;
 }
 
+/** Languages the app ships, each by its own name (never translated). */
+export const LANGUAGES: ReadonlyArray<{ code: string; name: string }> = [
+  { code: 'en', name: 'English' },
+  { code: 'de', name: 'Deutsch' },
+  { code: 'es', name: 'Español' },
+  { code: 'fr', name: 'Français' },
+  { code: 'it', name: 'Italiano' },
+  { code: 'nl', name: 'Nederlands' },
+  { code: 'pt', name: 'Português' },
+]; // i18n-ignore
+
+export function languageName(code: string): string {
+  return LANGUAGES.find((l) => l.code === code)?.name ?? code;
+}
+
+/** Apply the saved language preference: a shipped locale code, or anything else (e.g. 'system') = follow the phone. */
+export function applyLanguage(pref: string | null | undefined): void {
+  locale = pref && CATALOGUES[pref] ? pref : pickLocale();
+}
+
 export type Params = Record<string, string | number>;
 
 /** Look up a string and fill {name} params. `{count}` also picks "one|other" plural forms written as "a|b". */
