@@ -866,4 +866,12 @@ export const ar: Catalogue = {
   "ui.cast.mayNotPlay": "قد لا يعمل على كل تلفزيون",
   "ui.cast.pill": "جارٍ البث: {title}",
   "ui.cast.pillHint": "زر التشغيل/الإيقاف المؤقت في جهاز التحكم يتحكم في البث",
+  // First-launch language line (src/ui/LanguageHint.tsx) and no-purchase copy (release standard 1-2, 25 Oct 2026)
+  "ui.languageHint.current": "اللغة: {language}",
+  "ui.languageHint.change": "تغيير",
+  "ui.languageHint.changeLabel": "تغيير اللغة",
+  "ui.languageHint.changeHint": "يفتح إعداد اللغة",
+  "app.plus.later": "سيأتي في تحديث لاحق. لا يُباع شيء في هذا الإصدار.",
+  "app.themes.plusNoteLater": "ثلاث سمات مجانية. جرّب أيًّا من السمات الأخرى على جهاز التحكم خلال هذه الجلسة.",
+  "app.themes.tryingSession": "تبقى على جهاز التحكم خلال هذه الجلسة.",
 };

@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 import { dpadGeometry } from '../src/core/dpadGeometry';
 import { useT } from '../src/i18n/react';
+import { plusForSale } from '../src/core/forSale';
 import { usePrefs } from '../src/state/prefs';
 import { continuous, list, radii, space, textStyle } from '../src/theme/design';
 import { duration } from '../src/theme/motion';
@@ -109,15 +110,18 @@ export default function ThemesScreen() {
           <Card style={styles.card}>
             <View accessibilityLiveRegion="polite" style={styles.banner}>
               <Text style={[textStyle('headline'), { color: p.label }]}>{t('app.themes.trying', { name: t(REMOTE_THEMES[trying].nameKey) })}</Text>
-              <Text style={[textStyle('subheadline'), { color: p.secondaryLabel }]}>{t('app.themes.keepHint')}</Text>
+              <Text style={[textStyle('subheadline'), { color: p.secondaryLabel }]}>{t(plusForSale() ? 'app.themes.keepHint' : 'app.themes.tryingSession')}</Text>
             </View>
-            <PillButton
-              stretch
-              label={t('app.themes.keep')}
-              accessibilityLabel={t('app.themes.keep')}
-              accessibilityHint={t('app.themes.keepHint')}
-              onPress={() => router.navigate('/plus')}
-            />
+            {/* Release standard 2: nothing is for sale in this version, so no "Get Couch Plus" button. */}
+            {plusForSale() ? (
+              <PillButton
+                stretch
+                label={t('app.themes.keep')}
+                accessibilityLabel={t('app.themes.keep')}
+                accessibilityHint={t('app.themes.keepHint')}
+                onPress={() => router.navigate('/plus')}
+              />
+            ) : null}
             <PillButton
               stretch
               variant="tinted"
@@ -128,7 +132,7 @@ export default function ThemesScreen() {
           </Card>
         ) : null}
 
-        <InsetGroupedList header={t('app.themes.all')} footer={t('app.themes.plusNote')}>
+        <InsetGroupedList header={t('app.themes.all')} footer={t(plusForSale() ? 'app.themes.plusNote' : 'app.themes.plusNoteLater')}>
           {REMOTE_THEME_IDS.map((id) => {
             const th = REMOTE_THEMES[id];
             const on = id === shownId;

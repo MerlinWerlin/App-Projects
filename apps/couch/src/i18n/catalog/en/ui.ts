@@ -207,4 +207,9 @@ export const uiEn = {
   "ui.cast.intervalOption": "{n} s",
   "ui.cast.intervalLabel": "{n} seconds per photo",
   "ui.cast.intervalLabelOn": "{n} seconds per photo, selected",
+  // First-launch language line (src/ui/LanguageHint.tsx, release standard 1, 25 Oct 2026)
+  "ui.languageHint.current": "Language: {language}",
+  "ui.languageHint.change": "Change",
+  "ui.languageHint.changeLabel": "Change language",
+  "ui.languageHint.changeHint": "Opens the language setting",
 } as const satisfies Record<string, Msg>;

@@ -808,4 +808,12 @@ export const zhHans: Catalogue = {
   "ui.cast.mayNotPlay": "部分电视可能无法播放",
   "ui.cast.pill": "正在投放：{title}",
   "ui.cast.pillHint": "遥控器上的播放/暂停可控制投放",
+  // First-launch language line (src/ui/LanguageHint.tsx) and no-purchase copy (release standard 1-2, 25 Oct 2026)
+  "ui.languageHint.current": "语言：{language}",
+  "ui.languageHint.change": "更改",
+  "ui.languageHint.changeLabel": "更改语言",
+  "ui.languageHint.changeHint": "打开语言设置",
+  "app.plus.later": "将在以后的更新中推出。此版本不出售任何内容。",
+  "app.themes.plusNoteLater": "有三个主题免费。其他主题可以在本次使用期间在遥控器上试用。",
+  "app.themes.tryingSession": "在本次使用期间会一直显示在遥控器上。",
 };

@@ -839,4 +839,12 @@ export const fr: Catalogue = {
   "ui.cast.mayNotPlay": "Peut ne pas marcher sur toutes les télés",
   "ui.cast.pill": "Cast en cours : {title}",
   "ui.cast.pillHint": "Lecture/Pause de la télécommande contrôle le cast",
+  // First-launch language line (src/ui/LanguageHint.tsx) and no-purchase copy (release standard 1-2, 25 Oct 2026)
+  "ui.languageHint.current": "Langue : {language}",
+  "ui.languageHint.change": "Modifier",
+  "ui.languageHint.changeLabel": "Changer de langue",
+  "ui.languageHint.changeHint": "Ouvre le réglage de la langue",
+  "app.plus.later": "Disponible dans une prochaine mise à jour. Rien n’est en vente dans cette version.",
+  "app.themes.plusNoteLater": "Trois thèmes sont gratuits. Essayez les autres sur votre télécommande pendant cette session.",
+  "app.themes.tryingSession": "Il reste sur votre télécommande pendant cette session.",
 };

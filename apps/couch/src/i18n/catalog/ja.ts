@@ -824,4 +824,12 @@ export const ja: Catalogue = {
   "ui.cast.mayNotPlay": "テレビによっては再生できない場合があります",
   "ui.cast.pill": "キャスト中:{title}",
   "ui.cast.pillHint": "リモコンの再生/一時停止でキャストを操作します",
+  // First-launch language line (src/ui/LanguageHint.tsx) and no-purchase copy (release standard 1-2, 25 Oct 2026)
+  "ui.languageHint.current": "言語：{language}",
+  "ui.languageHint.change": "変更",
+  "ui.languageHint.changeLabel": "言語を変更",
+  "ui.languageHint.changeHint": "言語の設定を開きます",
+  "app.plus.later": "今後のアップデートで提供予定です。このバージョンでは販売しているものはありません。",
+  "app.themes.plusNoteLater": "3つのテーマは無料です。ほかのテーマもこのセッション中はリモコンで試せます。",
+  "app.themes.tryingSession": "このセッション中はリモコンに適用されたままです。",
 };

@@ -12,6 +12,7 @@ import { RemoteCastPill } from '../../src/ui/cast/CastPill';
 import { fonts, radius } from '../../src/theme/tokens';
 import { useRemoteTheme } from '../../src/theme/useRemoteTheme';
 import { DemoNote, FreePromise, Screen } from '../../src/ui/Screen';
+import { LanguageHint } from '../../src/ui/LanguageHint';
 import { NeverMirror } from '../../src/ui/NeverMirror';
 import { Text } from '../../src/ui/Text';
 import { emitFx } from '../../src/ui/fx/bus';
@@ -144,6 +145,8 @@ export default function RemoteScreen() {
       <Screen bg={stage.bg}>
         <TvHeader tv={tv} state={snap.state} lastMs={snap.lastMs} onPress={() => router.navigate('/tvs')} />
         <RemoteCastPill />
+        {/* Release standard 1: "Language: English · Change", first session only, in the flow above the remote. */}
+        <LanguageHint ink={stage.ink} />
 
         {snap.lastError ? (
           <Pressable

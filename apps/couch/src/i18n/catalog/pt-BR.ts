@@ -837,4 +837,12 @@ export const ptBR: Catalogue = {
   "ui.cast.mayNotPlay": "Pode não abrir em todas as TVs",
   "ui.cast.pill": "Transmitindo: {title}",
   "ui.cast.pillHint": "Reproduzir/Pausar no controle controla a transmissão",
+  // First-launch language line (src/ui/LanguageHint.tsx) and no-purchase copy (release standard 1-2, 25 Oct 2026)
+  "ui.languageHint.current": "Idioma: {language}",
+  "ui.languageHint.change": "Alterar",
+  "ui.languageHint.changeLabel": "Alterar idioma",
+  "ui.languageHint.changeHint": "Abre a configuração de idioma",
+  "app.plus.later": "Chega em uma atualização futura. Nada está à venda nesta versão.",
+  "app.themes.plusNoteLater": "Três temas são grátis. Experimente os outros no seu controle durante esta sessão.",
+  "app.themes.tryingSession": "Ele fica no seu controle durante esta sessão.",
 };

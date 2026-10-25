@@ -833,4 +833,12 @@ export const it: Catalogue = {
   "ui.cast.mayNotPlay": "Potrebbe non funzionare su ogni TV",
   "ui.cast.pill": "In trasmissione: {title}",
   "ui.cast.pillHint": "Riproduci/Pausa sul telecomando controlla la trasmissione",
+  // First-launch language line (src/ui/LanguageHint.tsx) and no-purchase copy (release standard 1-2, 25 Oct 2026)
+  "ui.languageHint.current": "Lingua: {language}",
+  "ui.languageHint.change": "Cambia",
+  "ui.languageHint.changeLabel": "Cambia lingua",
+  "ui.languageHint.changeHint": "Apre l’impostazione della lingua",
+  "app.plus.later": "Arriverà in un aggiornamento futuro. In questa versione non si vende nulla.",
+  "app.themes.plusNoteLater": "Tre temi sono gratuiti. Prova gli altri sul telecomando per questa sessione.",
+  "app.themes.tryingSession": "Resta sul telecomando per questa sessione.",
 };

@@ -1,5 +1,5 @@
 {
-  "mode": "build",
-  "note": "Couch 1.0.1: new Cast tab sends your photos and videos to the TV (DLNA and Roku), with an AirPlay / Screen Mirroring shortcut",
+  "mode": "update",
+  "note": "Couch: first-launch language line, Language at the top of Settings, Show all apps when filters leave nothing, no purchase text in 1.0 (Plus coming later)",
   "ascAppId": "6826135134"
 }

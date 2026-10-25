@@ -841,4 +841,12 @@ export const de: Catalogue = {
   "ui.cast.mayNotPlay": "Läuft vielleicht nicht auf jedem Fernseher",
   "ui.cast.pill": "Streamt: {title}",
   "ui.cast.pillHint": "Abspielen/Pause auf der Fernbedienung steuert das Streamen",
+  // First-launch language line (src/ui/LanguageHint.tsx) and no-purchase copy (release standard 1-2, 25 Oct 2026)
+  "ui.languageHint.current": "Sprache: {language}",
+  "ui.languageHint.change": "Ändern",
+  "ui.languageHint.changeLabel": "Sprache ändern",
+  "ui.languageHint.changeHint": "Öffnet die Spracheinstellung",
+  "app.plus.later": "Kommt in einem späteren Update. In dieser Version wird nichts verkauft.",
+  "app.themes.plusNoteLater": "Drei Designs sind kostenlos. Probiere die anderen in dieser Sitzung auf deiner Fernbedienung aus.",
+  "app.themes.tryingSession": "Es bleibt in dieser Sitzung auf deiner Fernbedienung.",
 };
