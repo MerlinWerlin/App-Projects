@@ -15,6 +15,10 @@ export interface AppSettings {
   units: 'cm' | 'in';
   /** Shown the welcome cards. */
   onboarded: boolean;
+  /** App language: a locale code (en, de, ...) or 'system' to follow the phone. */
+  language: string;
+  /** The first-launch "Language: ... · Change" line has had its one session. */
+  languageHintSeen: boolean;
 }
 
 export const SETTINGS_KEY = 'crochet.settings.v1';
@@ -30,6 +34,8 @@ export function defaultSettings(): AppSettings {
     leftHanded: false,
     units: 'cm',
     onboarded: false,
+    language: 'system',
+    languageHintSeen: false,
   };
 }
 
@@ -48,6 +54,8 @@ export function parseSettings(raw: string | null | undefined): AppSettings {
       leftHanded: typeof x.leftHanded === 'boolean' ? x.leftHanded : d.leftHanded,
       units: x.units === 'in' ? 'in' : 'cm',
       onboarded: x.onboarded === true,
+      language: typeof x.language === 'string' && /^[a-z]{2,3}$/.test(x.language) ? x.language : 'system',
+      languageHintSeen: x.languageHintSeen === true,
     };
   } catch {
     return d;
