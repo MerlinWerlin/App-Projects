@@ -49,7 +49,6 @@ export default function PromptScreen() {
   const startedAt = useRef<number | null>(null);
   const accumulated = useRef(0);
   const fromTop = useRef(true);
-  const voiceCounted = useRef(false);
   const speech = useRef<SpeechSession | null>(null);
 
   const voiceOn = mode === 'voice' && running;
@@ -182,15 +181,13 @@ export default function PromptScreen() {
   }, [script, app, parsed.words.length]);
 
   const start = () => {
-    if ((mode === 'voice' || mode === 'follow') && !voiceCounted.current) {
-      if (!app.consumeVoiceRead()) {
-        Alert.alert(t('plus.voiceTrialDone'), undefined, [
-          { text: t('prompt.mode.steady'), onPress: () => setMode('steady') },
-          { text: t('plus.buyNoPrice'), onPress: () => router.push('/plus') },
-        ]);
-        return;
-      }
-      voiceCounted.current = true;
+    // Shown only when someone picks a voice mode after the 7-day trial: a choice, not a popup.
+    if ((mode === 'voice' || mode === 'follow') && !app.can('voice')) {
+      Alert.alert(t('plus.trial.voiceLocked'), undefined, [
+        { text: t('prompt.mode.steady'), onPress: () => setMode('steady') },
+        { text: t('plus.buyNoPrice'), onPress: () => router.push('/plus') },
+      ]);
+      return;
     }
     setDone(null);
     if (prefs.countdown > 0 && elapsed === 0) setCount(prefs.countdown);
@@ -239,7 +236,7 @@ export default function PromptScreen() {
     Alert.alert(t('prompt.modeTitle'), undefined, [
       { text: t('prompt.mode.steady'), onPress: () => setMode('steady') },
       {
-        text: `${t('prompt.mode.voice')}${Number.isFinite(app.voiceReadsLeft) ? ` (${t('plus.voiceTrial', { n: app.voiceReadsLeft })})` : ''}`,
+        text: t('prompt.mode.voice'),
         onPress: () => setMode('voice'),
       },
       {

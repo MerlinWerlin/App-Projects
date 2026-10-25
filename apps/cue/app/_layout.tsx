@@ -7,11 +7,13 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useReducedMotion } from 'react-native-reanimated';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { t } from '../src/i18n';
 import { AppStateProvider, useApp } from '../src/state/AppState';
 import { useQuietUpdate } from '../src/state/useQuietUpdate';
 import { FONT } from '../src/theme/theme';
+import { LaunchIntro } from '../src/ui/LaunchIntro';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 try {
@@ -44,8 +46,12 @@ export default function RootLayout() {
  * nothing renders behind it until then (2.5 s safety net: never an endless splash; system fonts until loaded).
  */
 function Shell({ fontsReady }: { fontsReady: boolean }) {
-  const { loaded, theme, reduceMotion } = useApp();
+  const { loaded, theme, reduceMotion, prefs } = useApp();
   const [timedOut, setTimedOut] = useState(false);
+  const [introDone, setIntroDone] = useState(false);
+  // Read synchronously at startup, so the intro never flashes before the async Reduce Motion check lands.
+  const sysReducedNow = useReducedMotion();
+  const skipIntro = reduceMotion || (prefs.reduceMotion === 'system' && sysReducedNow);
   const ready = loaded && (fontsReady || timedOut);
   useEffect(() => {
     if (ready) SplashScreen.hideAsync().catch(() => undefined);
@@ -88,6 +94,7 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
         <Stack.Screen name="plus" options={{ ...header, presentation: 'modal', title: '' }} />
       </Stack>
+      {!introDone && !skipIntro ? <LaunchIntro onDone={() => setIntroDone(true)} /> : null}
     </>
   );
 }

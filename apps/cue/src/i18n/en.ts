@@ -139,7 +139,7 @@ export const en = {
   'plus.free.body': 'Unlimited scripts, the prompter, mirror and flip, countdown, and recording with no watermark.',
   'plus.lead': 'One payment. Yours for good. No subscription.',
   'plus.promise': 'The teleprompter, recording and every script stay free. Plus adds extras and never takes anything away.',
-  'plus.f.voice': 'Voice Pace and Voice Follow, unlimited',
+  'plus.f.voice': 'Voice Pace and Voice Follow',
   'plus.f.voice.body': 'The words move when you talk and wait when you stop.',
   'plus.f.captions': 'Caption files',
   'plus.f.captions.body': 'Export .srt and .vtt timed to your reading speed.',
@@ -154,9 +154,13 @@ export const en = {
   'plus.restore': 'Restore purchase',
   'plus.unavailable': 'Purchases aren’t switched on in this test build yet, so every Plus feature is unlocked for testing.',
   'plus.thanks': 'Thanks! Plus is on.',
-  'plus.voiceTrial': '{n} free Voice Pace reads left',
-  'plus.voiceTrialDone': 'Your free Voice Pace reads are used. Get Plus to keep it.',
+  'plus.trial.left': 'Plus trial: {n} days left',
+  'plus.trial.leftOne': 'Plus trial: 1 day left',
+  'plus.trial.body': 'Every Plus feature is free for 7 days from the first time you open Cue. After that they lock unless you get Plus. Nothing is charged automatically.',
+  'plus.trial.voiceLocked': 'Your 7-day Plus trial has ended, so Voice Pace and Voice Follow are part of Cue Plus now. Steady scroll is always free.',
   'plus.locked': 'Part of Cue Plus',
+
+  'intro.skipHint': 'Tap to skip',
 
   'voice.followNeedsBuild': 'Voice Follow needs the TestFlight or App Store version of Cue (Expo Go can’t run speech recognition). Voice Pace works here.',
 } as const;

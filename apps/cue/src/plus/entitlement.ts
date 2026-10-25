@@ -34,7 +34,8 @@ export function canUse(tier: Tier, f: PlusFeature): boolean {
 }
 
 /**
- * Free trial of Voice Pace/Follow: 3 full reads so people feel it before paying (no time pressure,
- * no nagging; the paywall only appears when they choose it).
+ * Cue Plus price, decided by the owner 2026-10-25: A$2.99, one-time. The real, localised price always
+ * comes from StoreKit (the tier is set in App Store Connect); this is only the fallback label shown
+ * when the store hasn't returned a price.
  */
-export const VOICE_FREE_READS = 3;
+export const PLUS_FALLBACK_PRICE = 'A$2.99';
