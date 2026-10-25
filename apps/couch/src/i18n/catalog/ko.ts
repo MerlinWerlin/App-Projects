@@ -289,8 +289,6 @@ export const ko: Catalogue = {
   'core.plus.feature.liveActivity.hint': '시청 중 잠금 화면에서 볼륨과 재생/일시정지',
   'core.plus.feature.controls.title': '잠금 화면 및 제어 센터',
   'core.plus.feature.controls.hint': '앱을 열지 않고 한 번에 조작',
-  'core.plus.feature.themes.title': '테마',
-  'core.plus.feature.themes.hint': '리모컨용 추가 색상 테마',
   'core.plus.feature.macros.title': '버튼 매크로',
   'core.plus.feature.macros.hint': '"영화의 밤"처럼 여러 동작을 한 번에',
   'core.plus.tipJar': '팁은 선택 사항이며 잠금 해제되는 기능은 없어요. Couch는 어느 쪽이든 무료예요.',
@@ -830,6 +828,6 @@ export const ko: Catalogue = {
   "ui.languageHint.changeLabel": "언어 변경",
   "ui.languageHint.changeHint": "언어 설정을 엽니다",
   "app.plus.later": "이후 업데이트에서 제공될 예정입니다. 이 버전에서는 판매하는 항목이 없습니다.",
-  "app.themes.plusNoteLater": "테마 3개는 무료입니다. 나머지 테마도 이번 세션 동안 리모컨에서 사용해 볼 수 있어요.",
+  "app.themes.plusNoteLater": "모든 테마가 무료입니다. 하나를 고르면 리모컨에 계속 적용됩니다.",
   "app.themes.tryingSession": "이번 세션 동안 리모컨에 적용됩니다.",
 };

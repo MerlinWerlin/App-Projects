@@ -289,8 +289,6 @@ export const ja: Catalogue = {
   'core.plus.feature.liveActivity.hint': '視聴中にロック画面で音量と再生/一時停止',
   'core.plus.feature.controls.title': 'ロック画面とコントロールセンター',
   'core.plus.feature.controls.hint': 'アプリを開かずにワンタップで操作',
-  'core.plus.feature.themes.title': 'テーマ',
-  'core.plus.feature.themes.hint': 'リモコン用の追加カラーテーマ',
   'core.plus.feature.macros.title': 'ボタンマクロ',
   'core.plus.feature.macros.hint': '「映画の夜」のような一連の操作をワンタップで',
   'core.plus.tipJar': 'チップは任意で、何もロック解除されません。どちらでもCouchは無料です。',
@@ -830,6 +828,6 @@ export const ja: Catalogue = {
   "ui.languageHint.changeLabel": "言語を変更",
   "ui.languageHint.changeHint": "言語の設定を開きます",
   "app.plus.later": "今後のアップデートで提供予定です。このバージョンでは販売しているものはありません。",
-  "app.themes.plusNoteLater": "3つのテーマは無料です。ほかのテーマもこのセッション中はリモコンで試せます。",
+  "app.themes.plusNoteLater": "すべてのテーマが無料です。選んだテーマはリモコンにそのまま残ります。",
   "app.themes.tryingSession": "このセッション中はリモコンに適用されたままです。",
 };

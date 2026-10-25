@@ -2,7 +2,7 @@
  * Couch Plus entitlement (PLAN section 5). Pure TypeScript, persisted through the injected KvStore.
  *
  * HARD RULE: every TV control is free forever. Plus may only gate the extras listed in PLUS_FEATURES
- * (widgets, Watch/Wear, Live Activity, Lock Screen / Control Center controls, themes, macros).
+ * (widgets, Watch/Wear, Live Activity, Lock Screen / Control Center controls, macros). Themes are free for everyone (owner 25 Oct 2026).
  * Only src/plus/ may read the entitlement; tests/plus-guard.test.ts enforces that no control path
  * (src/core, src/ui/remote, app/(tabs), src/state/session.tsx) imports this folder.
  */
@@ -13,7 +13,7 @@ import { withCopy } from '../i18n/lazyCopy';
 export type Tier = 'free' | 'plus';
 
 /** The only things Couch Plus can ever unlock. TV controls are deliberately absent. */
-export const PLUS_FEATURES = ['widgets', 'watch', 'liveActivity', 'controls', 'themes', 'macros'] as const;
+export const PLUS_FEATURES = ['widgets', 'watch', 'liveActivity', 'controls', 'macros'] as const;
 export type PlusFeature = (typeof PLUS_FEATURES)[number];
 
 export function isPlusFeature(v: unknown): v is PlusFeature {
@@ -26,7 +26,6 @@ export const PLUS_FEATURE_COPY: Record<PlusFeature, { title: string; hint: strin
   watch: withCopy({ title: '', hint: '' }, { title: 'core.plus.feature.watch.title', hint: 'core.plus.feature.watch.hint' }),
   liveActivity: withCopy({ title: '', hint: '' }, { title: 'core.plus.feature.liveActivity.title', hint: 'core.plus.feature.liveActivity.hint' }),
   controls: withCopy({ title: '', hint: '' }, { title: 'core.plus.feature.controls.title', hint: 'core.plus.feature.controls.hint' }),
-  themes: withCopy({ title: '', hint: '' }, { title: 'core.plus.feature.themes.title', hint: 'core.plus.feature.themes.hint' }),
   macros: withCopy({ title: '', hint: '' }, { title: 'core.plus.feature.macros.title', hint: 'core.plus.feature.macros.hint' }),
 };
 

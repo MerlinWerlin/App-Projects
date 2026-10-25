@@ -300,8 +300,6 @@ export const ptBR: Catalogue = {
   'core.plus.feature.liveActivity.hint': 'Volume e reproduzir/pausar na tela bloqueada enquanto você assiste',
   'core.plus.feature.controls.title': 'Tela bloqueada e Central de Controle',
   'core.plus.feature.controls.hint': 'Controles com um toque sem abrir o app',
-  'core.plus.feature.themes.title': 'Temas',
-  'core.plus.feature.themes.hint': 'Temas de cores extras para o controle',
   'core.plus.feature.macros.title': 'Macros de botões',
   'core.plus.feature.macros.hint': 'Um toque para uma sequência, como "Noite de filme"',
   'core.plus.tipJar': 'Gorjetas são opcionais e não desbloqueiam nada. O Couch continua grátis de qualquer jeito.',
@@ -843,6 +841,6 @@ export const ptBR: Catalogue = {
   "ui.languageHint.changeLabel": "Alterar idioma",
   "ui.languageHint.changeHint": "Abre a configuração de idioma",
   "app.plus.later": "Chega em uma atualização futura. Nada está à venda nesta versão.",
-  "app.themes.plusNoteLater": "Três temas são grátis. Experimente os outros no seu controle durante esta sessão.",
+  "app.themes.plusNoteLater": "Todos os temas são grátis. Escolha um e ele fica no seu controle.",
   "app.themes.tryingSession": "Ele fica no seu controle durante esta sessão.",
 };

@@ -311,6 +311,6 @@ export const appEn = {
   "app.cast.localOnly": "Files go straight from this phone to the TV on your Wi-Fi, only while casting.",
   // No-purchase copy (release standard 1-2, 25 Oct 2026)
   "app.plus.later": "Coming in a later update. Nothing is for sale in this version.",
-  "app.themes.plusNoteLater": "Three themes are free. Try any of the others on your remote for this session.",
+  "app.themes.plusNoteLater": "Every theme is free. Pick one and it stays on your remote.",
   "app.themes.tryingSession": "It stays on your remote for this session.",
 } as const satisfies Record<string, Msg>;

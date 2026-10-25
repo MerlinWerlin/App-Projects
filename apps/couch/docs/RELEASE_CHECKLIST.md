@@ -15,7 +15,7 @@ Measured against App-Projects `docs/RELEASE_STANDARD.md` (owner, 25 Oct 2026) in
 
 ## 2. Purchases (expo-iap)
 Couch 1.0 sells nothing: `PLUS_FOR_SALE = false` (src/core/forSale.ts), the purchase provider is a stub, expo-iap is not a
-dependency and store/listing.json lists no in-app purchase. Settings hides the Plus card, Themes hides "Get Couch Plus",
+dependency and store/listing.json lists no in-app purchase. Settings hides the Plus card, all 12 themes are free and stay chosen (owner 25 Oct 2026, Workboard couch-themes-free; no session-only "Try it"),
 the Plus screen says "coming in a later update" with no Buy / Restore / tips.
 
 | Item | Status |

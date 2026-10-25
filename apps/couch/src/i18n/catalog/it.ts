@@ -158,8 +158,6 @@ export const it: Catalogue = {
   'core.plus.feature.liveActivity.hint': 'Volume e play/pausa sulla schermata di blocco mentre guardi',
   'core.plus.feature.controls.title': 'Schermata di blocco e Centro di controllo',
   'core.plus.feature.controls.hint': "Comandi con un tocco senza aprire l'app",
-  'core.plus.feature.themes.title': 'Temi',
-  'core.plus.feature.themes.hint': 'Temi di colore extra per il telecomando',
   'core.plus.feature.macros.title': 'Macro dei tasti',
   'core.plus.feature.macros.hint': 'Un tocco per una sequenza, come «Serata film»',
   'core.plus.tipJar': 'Le mance sono facoltative e non sbloccano nulla. Couch resta gratis in ogni caso.',
@@ -839,6 +837,6 @@ export const it: Catalogue = {
   "ui.languageHint.changeLabel": "Cambia lingua",
   "ui.languageHint.changeHint": "Apre l’impostazione della lingua",
   "app.plus.later": "Arriverà in un aggiornamento futuro. In questa versione non si vende nulla.",
-  "app.themes.plusNoteLater": "Tre temi sono gratuiti. Prova gli altri sul telecomando per questa sessione.",
+  "app.themes.plusNoteLater": "Tutti i temi sono gratuiti. Scegline uno e resta sul telecomando.",
   "app.themes.tryingSession": "Resta sul telecomando per questa sessione.",
 };

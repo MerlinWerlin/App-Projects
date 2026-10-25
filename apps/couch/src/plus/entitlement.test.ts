@@ -22,7 +22,7 @@ import { TIP_TIERS, tipJarCopy, tipTier } from './tipJar';
 
 describe('PlusFeature', () => {
   it('is exactly the extras Plus may gate', () => {
-    expect([...PLUS_FEATURES]).toEqual(['widgets', 'watch', 'liveActivity', 'controls', 'themes', 'macros']);
+    expect([...PLUS_FEATURES]).toEqual(['widgets', 'watch', 'liveActivity', 'controls', 'macros']);
     for (const f of PLUS_FEATURES) expect(PLUS_FEATURE_COPY[f].title.length).toBeGreaterThan(0);
   });
 

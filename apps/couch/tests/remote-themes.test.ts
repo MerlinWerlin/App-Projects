@@ -115,25 +115,24 @@ describe('Couch Plus gating stays in src/plus', () => {
 
   it('src/plus/themes.tsx supplies access at the root', () => {
     const p = read('src/plus/themes.tsx');
-    expect(p).toContain("tierCanUse(tier, 'themes')");
+    // Themes are free (owner 25 Oct 2026): the provider never reads the entitlement.
+    expect(code(p)).not.toMatch(/usePlus|tierCanUse|canUse\(/);
+    expect(p).toContain('plus: false');
     expect(p).toContain('RemoteThemeAccessContext.Provider');
     const layout = read('app/_layout.tsx');
     expect(layout).toContain('<PlusThemeProvider>');
     expect(layout.indexOf('<PrefsProvider>')).toBeLessThan(layout.indexOf('<PlusThemeProvider>'));
   });
 
-  it('themes is a Plus feature with copy; TV controls are not', () => {
-    expect(PLUS_FEATURES).toContain('themes');
-    expect(PLUS_FEATURE_COPY.themes.title.length).toBeGreaterThan(0);
-    expect(PLUS_FEATURE_COPY.themes.hint.length).toBeGreaterThan(0);
+  it('themes are not a Plus feature (owner 25 Oct 2026); neither are TV controls', () => {
+    expect(PLUS_FEATURES as readonly string[]).not.toContain('themes');
+    expect(Object.keys(PLUS_FEATURE_COPY)).not.toContain('themes');
     for (const f of PLUS_FEATURES) expect(f).not.toMatch(/key|button|control.?pad|dpad|volume|channel|power/i);
   });
 
-  it('effective theme: Plus or trying shows it; without Plus a chosen Plus theme shows Midnight', () => {
-    expect(effectiveRemoteTheme('neon', { plus: false }).id).toBe(DEFAULT_REMOTE_THEME);
-    expect(effectiveRemoteTheme('neon', { plus: true }).id).toBe('neon');
-    expect(effectiveRemoteTheme('daylight', { plus: false, trying: 'aurora' }).id).toBe('aurora');
-    expect(effectiveRemoteTheme('oled', { plus: false }).id).toBe('oled');
+  it('effective theme: every chosen theme shows and is kept without Plus', () => {
+    for (const id of REMOTE_THEME_IDS) expect(effectiveRemoteTheme(id, { plus: false }).id).toBe(id);
+    expect(effectiveRemoteTheme('nope' as never, { plus: false }).id).toBe(DEFAULT_REMOTE_THEME);
   });
 });
 
@@ -182,14 +181,12 @@ describe('Themes screen (app/themes.tsx)', () => {
     expect(String(catalogue['app.themes.keepHint'])).toMatch(/One-time purchase/);
   });
 
-  it('pickTheme: free or with Plus applies, otherwise tries', () => {
-    expect(pickTheme('daylight', { plus: false })).toEqual({ kind: 'apply', id: 'daylight' });
-    expect(pickTheme('cinema', { plus: false })).toEqual({ kind: 'try', id: 'cinema' });
-    expect(pickTheme('cinema', { plus: true })).toEqual({ kind: 'apply', id: 'cinema' });
-    expect(previewThemeId('neon', { plus: false, trying: null })).toBe('charcoal');
-    expect(previewThemeId('neon', { plus: false, trying: 'forest' })).toBe('forest');
-    expect(previewThemeId('oled', { plus: false, trying: null })).toBe('oled');
-    expect(REMOTE_THEME_IDS.filter((id) => themeBadge(id) === 'free')).toEqual(['charcoal', 'midnight', 'daylight', 'oled']);
+  it('pickTheme: every theme applies (and is kept) without Plus; every badge says Free', () => {
+    for (const id of REMOTE_THEME_IDS) {
+      expect(pickTheme(id, { plus: false })).toEqual({ kind: 'apply', id });
+      expect(previewThemeId(id, { plus: false, trying: null })).toBe(id);
+      expect(themeBadge(id)).toBe('free');
+    }
   });
 });
 

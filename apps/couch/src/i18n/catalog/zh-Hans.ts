@@ -162,8 +162,6 @@ export const zhHans: Catalogue = {
   'core.plus.feature.liveActivity.hint': '观看时在锁定屏幕上调节音量和播放/暂停',
   'core.plus.feature.controls.title': '锁定屏幕和控制中心',
   'core.plus.feature.controls.hint': '无需打开应用，一键控制',
-  'core.plus.feature.themes.title': '主题',
-  'core.plus.feature.themes.hint': '为遥控器提供更多配色主题',
   'core.plus.feature.macros.title': '按键宏',
   'core.plus.feature.macros.hint': '一键执行一系列操作，比如“电影之夜”',
   'core.plus.tipJar': '打赏完全自愿，不会解锁任何功能。Couch 始终免费。',
@@ -814,6 +812,6 @@ export const zhHans: Catalogue = {
   "ui.languageHint.changeLabel": "更改语言",
   "ui.languageHint.changeHint": "打开语言设置",
   "app.plus.later": "将在以后的更新中推出。此版本不出售任何内容。",
-  "app.themes.plusNoteLater": "有三个主题免费。其他主题可以在本次使用期间在遥控器上试用。",
+  "app.themes.plusNoteLater": "所有主题均免费。选好的主题会一直保留在遥控器上。",
   "app.themes.tryingSession": "在本次使用期间会一直显示在遥控器上。",
 };

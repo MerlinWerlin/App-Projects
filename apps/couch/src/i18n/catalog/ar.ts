@@ -193,8 +193,6 @@ export const ar: Catalogue = {
   'core.plus.feature.liveActivity.hint': 'الصوت والتشغيل/الإيقاف المؤقت على شاشة القفل أثناء المشاهدة',
   'core.plus.feature.controls.title': 'شاشة القفل ومركز التحكم',
   'core.plus.feature.controls.hint': 'تحكم بنقرة واحدة دون فتح التطبيق',
-  'core.plus.feature.themes.title': 'المظاهر',
-  'core.plus.feature.themes.hint': 'مظاهر ألوان إضافية لجهاز التحكم',
   'core.plus.feature.macros.title': 'تسلسلات الأزرار',
   'core.plus.feature.macros.hint': 'نقرة واحدة لسلسلة أزرار، مثل "ليلة فيلم"',
   'core.plus.tipJar': 'الإكراميات اختيارية ولا تفتح أي شيء. يبقى Couch مجانيًا في كل الأحوال.',
@@ -872,6 +870,6 @@ export const ar: Catalogue = {
   "ui.languageHint.changeLabel": "تغيير اللغة",
   "ui.languageHint.changeHint": "يفتح إعداد اللغة",
   "app.plus.later": "سيأتي في تحديث لاحق. لا يُباع شيء في هذا الإصدار.",
-  "app.themes.plusNoteLater": "ثلاث سمات مجانية. جرّب أيًّا من السمات الأخرى على جهاز التحكم خلال هذه الجلسة.",
+  "app.themes.plusNoteLater": "كل السمات مجانية. اختر واحدة وستبقى على جهاز التحكم.",
   "app.themes.tryingSession": "تبقى على جهاز التحكم خلال هذه الجلسة.",
 };
