@@ -15,9 +15,10 @@
       "icon": "./assets/brand/icon.png",
       "infoPlist": {
         "NSCameraUsageDescription": "Cue shows your script over the camera so you can read and record at the same time. Videos stay on your phone.",
-        "NSMicrophoneUsageDescription": "Cue records sound with your videos, and Voice Pace listens for when you are talking so the words wait for you. Nothing is uploaded.",
+        "NSMicrophoneUsageDescription": "Cue records sound with your videos, and listens while you read so the words can follow your voice. Nothing is uploaded.",
         "NSPhotoLibraryAddUsageDescription": "Cue saves each take to your Photos. It can't see your other photos.",
-        "CFBundleAllowMixedLocalizations": true
+        "CFBundleAllowMixedLocalizations": true,
+        "NSSpeechRecognitionUsageDescription": "Voice Follow uses on-device speech recognition to keep your place in the script as you talk. Audio never leaves your phone."
       },
       "config": {
         "usesNonExemptEncryption": false
@@ -40,14 +41,14 @@
         "expo-camera",
         {
           "cameraPermission": "Cue shows your script over the camera so you can read and record at the same time. Videos stay on your phone.",
-          "microphonePermission": "Cue records sound with your videos, and Voice Pace listens for when you are talking so the words wait for you. Nothing is uploaded.",
+          "microphonePermission": "Cue records sound with your videos, and listens while you read so the words can follow your voice. Nothing is uploaded.",
           "recordAudioAndroid": true
         }
       ],
       [
         "expo-audio",
         {
-          "microphonePermission": "Cue records sound with your videos, and Voice Pace listens for when you are talking so the words wait for you. Nothing is uploaded."
+          "microphonePermission": "Cue records sound with your videos, and listens while you read so the words can follow your voice. Nothing is uploaded."
         }
       ],
       [
@@ -67,7 +68,17 @@
           "backgroundColor": "#10131C"
         }
       ],
-      "expo-status-bar"
+      "expo-status-bar",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Cue records sound with your videos, and listens while you read so the words can follow your voice. Nothing is uploaded.",
+          "speechRecognitionPermission": "Voice Follow uses on-device speech recognition to keep your place in the script as you talk. Audio never leaves your phone.",
+          "androidSpeechServicePackages": [
+            "com.google.android.googlequicksearchbox"
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

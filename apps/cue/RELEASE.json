@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Cue: first TestFlight build (Voice Pace prompter) (signing set up on Expo)",
+  "note": "Cue: Voice Follow works (on-device speech recognition); Plus unlocked while purchases are off",
   "ascAppId": "6826554677"
 }

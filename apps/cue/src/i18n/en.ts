@@ -152,13 +152,13 @@ export const en = {
   'plus.buy': 'Get Plus {price}',
   'plus.buyNoPrice': 'Get Plus',
   'plus.restore': 'Restore purchase',
-  'plus.unavailable': 'Purchases aren’t switched on in this test build yet. Everything else works.',
+  'plus.unavailable': 'Purchases aren’t switched on in this test build yet, so every Plus feature is unlocked for testing.',
   'plus.thanks': 'Thanks! Plus is on.',
   'plus.voiceTrial': '{n} free Voice Pace reads left',
   'plus.voiceTrialDone': 'Your free Voice Pace reads are used. Get Plus to keep it.',
   'plus.locked': 'Part of Cue Plus',
 
-  'voice.followNeedsBuild': 'Voice Follow arrives with the App Store build. Voice Pace works now.',
+  'voice.followNeedsBuild': 'Voice Follow needs the TestFlight or App Store version of Cue (Expo Go can’t run speech recognition). Voice Pace works here.',
 } as const;
 
 export type MessageKey = keyof typeof en;

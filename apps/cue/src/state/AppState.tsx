@@ -130,12 +130,15 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const value = useMemo<AppState>(() => {
     const dark = prefs.theme === 'dark' || (prefs.theme === 'system' && scheme === 'dark');
     const reduceMotion = prefs.reduceMotion === 'on' || (prefs.reduceMotion === 'system' && sysReduce);
+    // Until real purchases are switched on (stub provider), test builds get every Plus feature:
+    // there is no way to buy Plus yet, so nothing should be locked behind it.
+    const unlocked = tier === 'plus' || !purchases.available;
     return {
       loaded,
       scripts,
       prefs,
       tier,
-      voiceReadsLeft: tier === 'plus' ? Infinity : Math.max(0, VOICE_FREE_READS - voiceUsed),
+      voiceReadsLeft: unlocked ? Infinity : Math.max(0, VOICE_FREE_READS - voiceUsed),
       theme: dark ? DARK : LIGHT,
       reduceMotion,
       purchases,
@@ -144,9 +147,9 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       createScript,
       deleteScript,
       setPrefs,
-      can: (f) => canUse(tier, f),
+      can: (f) => unlocked || canUse(tier, f),
       consumeVoiceRead: () => {
-        if (tier === 'plus') return true;
+        if (unlocked) return true;
         if (voiceUsed >= VOICE_FREE_READS) return false;
         const n = voiceUsed + 1;
         setVoiceUsed(n);

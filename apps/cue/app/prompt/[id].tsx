@@ -115,11 +115,16 @@ export default function PromptScreen() {
     return () => clearTimeout(id2);
   }, [count, prefs.haptics]);
 
-  // Voice Follow (dev/store build only).
+  // Voice Follow (TestFlight / store builds): on-device speech recognition moves the reading line word by word.
+  // The prompter never auto-scrolls in this mode: followWord is set before anything is heard, so it waits for you.
+  const follower = useRef<Follower | null>(null);
+  const [followLive, setFollowLive] = useState(false);
   useEffect(() => {
     if (mode !== 'follow' || !running) {
       speech.current?.stop();
       speech.current = null;
+      follower.current = null;
+      setFollowLive(false);
       setFollowWord(null);
       return;
     }
@@ -127,20 +132,48 @@ export default function PromptScreen() {
     if (!engine) return;
     const f = new Follower(parsed.words);
     f.jumpTo(ref.current?.currentWord() ?? 0);
+    follower.current = f;
+    setFollowWord(f.position);
+    // Long, unusual words from the script help the recogniser hear names and jargon correctly.
+    const hints = [...new Set(parsed.words.filter((w) => w.length > 6))].slice(0, 100);
     let alive = true;
     engine
-      .start(getLocale(), (text) => alive && setFollowWord(f.hear(text)), (msg) => Alert.alert(msg))
-      .then((s) => {
-        if (alive) speech.current = s;
-        else s.stop();
+      .start(
+        getLocale(),
+        (text) => {
+          if (!alive || !follower.current) return;
+          setFollowWord(follower.current.hear(text));
+        },
+        (msg) => alive && Alert.alert(msg),
+        hints,
+      )
+      .then((sess) => {
+        if (alive) {
+          speech.current = sess;
+          setFollowLive(true);
+        } else sess.stop();
       })
-      .catch(() => setMode('steady'));
+      .catch((e: unknown) => {
+        if (!alive) return;
+        setRunning(false);
+        setMode('voice');
+        Alert.alert(e instanceof Error ? e.message : t('error.unknown'));
+      });
     return () => {
       alive = false;
       speech.current?.stop();
       speech.current = null;
+      setFollowLive(false);
     };
   }, [mode, running, parsed.words]);
+
+  // In Voice Follow the script ends when the last words are heard.
+  useEffect(() => {
+    if (mode === 'follow' && running && followWord !== null && followWord >= parsed.words.length) {
+      const id2 = setTimeout(() => onEndRef.current(), 600);
+      return () => clearTimeout(id2);
+    }
+  }, [mode, running, followWord, parsed.words.length]);
 
   const saveProgress = useCallback(() => {
     if (!script) return;
@@ -149,7 +182,7 @@ export default function PromptScreen() {
   }, [script, app, parsed.words.length]);
 
   const start = () => {
-    if (mode === 'voice' && !voiceCounted.current) {
+    if ((mode === 'voice' || mode === 'follow') && !voiceCounted.current) {
       if (!app.consumeVoiceRead()) {
         Alert.alert(t('plus.voiceTrialDone'), undefined, [
           { text: t('prompt.mode.steady'), onPress: () => setMode('steady') },
@@ -184,6 +217,8 @@ export default function PromptScreen() {
     success(prefs.haptics);
     if (script) app.saveScript({ ...(fromTop.current && secs > 5 ? recordTake(script, secs) : script), lastWord: 0 });
   }, [prefs.haptics, script, app]);
+  const onEndRef = useRef(onEnd);
+  onEndRef.current = onEnd;
 
   const restart = () => {
     setRunning(false);
@@ -204,12 +239,12 @@ export default function PromptScreen() {
     Alert.alert(t('prompt.modeTitle'), undefined, [
       { text: t('prompt.mode.steady'), onPress: () => setMode('steady') },
       {
-        text: `${t('prompt.mode.voice')}${app.tier === 'plus' ? '' : ` (${t('plus.voiceTrial', { n: app.voiceReadsLeft })})`}`,
+        text: `${t('prompt.mode.voice')}${Number.isFinite(app.voiceReadsLeft) ? ` (${t('plus.voiceTrial', { n: app.voiceReadsLeft })})` : ''}`,
         onPress: () => setMode('voice'),
       },
       {
         text: t('prompt.mode.follow'),
-        onPress: () => (follow ? (app.can('voice') ? setMode('follow') : router.push('/plus')) : Alert.alert(t('voice.followNeedsBuild'))),
+        onPress: () => (follow ? setMode('follow') : Alert.alert(t('voice.followNeedsBuild'))),
       },
       { text: t('common.cancel'), style: 'cancel' },
     ]);
@@ -218,13 +253,23 @@ export default function PromptScreen() {
   const sections = () => {
     if (!parsed.sections.length) return;
     Alert.alert(t('prompt.sections'), undefined, [
-      ...parsed.sections.map((s) => ({ text: s.title, onPress: () => ref.current?.jumpToWord(s.firstWord) })),
+      ...parsed.sections.map((s) => ({
+        text: s.title,
+        onPress: () => {
+          ref.current?.jumpToWord(s.firstWord);
+          if (follower.current) {
+            follower.current.jumpTo(s.firstWord);
+            setFollowWord(s.firstWord);
+          }
+        },
+      })),
       { text: t('common.cancel'), style: 'cancel' as const },
     ]);
   };
 
   if (!script) return null;
-  const listening = mode === 'voice' && running && status === 'listening';
+  const listening = running && ((mode === 'voice' && status === 'listening') || (mode === 'follow' && followLive));
+  const hearing = mode === 'follow' ? true : speaking;
 
   return (
     <View style={[st.fill, { backgroundColor: palette.bg }]}>
@@ -287,8 +332,8 @@ export default function PromptScreen() {
       {listening ? (
         <View pointerEvents="none" style={[st.listen, { top: insets.top + 64 }]}>
           <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 7 }]}>
-            <View style={[st.dot, { backgroundColor: speaking ? BRASS : '#6E7486' }]} />
-            <Text style={st.chipText}>{speaking ? t('prompt.listening') : t('prompt.waiting')}</Text>
+            <View style={[st.dot, { backgroundColor: hearing ? BRASS : '#6E7486' }]} />
+            <Text style={st.chipText}>{hearing ? t('prompt.listening') : t('prompt.waiting')}</Text>
           </Glass>
         </View>
       ) : null}
