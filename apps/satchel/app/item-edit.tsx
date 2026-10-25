@@ -1,11 +1,15 @@
 // New / edit booking form, fields per kind (FLOWS §4). Times are as printed on the ticket, in that place's own time
 // zone, shown back beside the date and time; a time that a daylight-saving change skips or repeats is pointed out.
 // Leaving with unsaved changes asks first; errors sit beside their fields and are announced.
+// T44 (FLOWS §4.1 item 6): an Attachments section edits a draft list that is saved with the booking. After a
+// successful Save the copies of removed files are deleted; leaving without saving deletes only the copies added in
+// this form, so the saved booking and its files are untouched by Cancel or Discard.
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo, View } from 'react-native';
 import { deviceZone, formatDay, formatTime, zoneCity } from '../src/core/format.ts';
-import { ITEM_KINDS, isTransport, type ItemKind } from '../src/core/model.ts';
+import { ITEM_KINDS, isTransport, type Attachment, type ItemKind } from '../src/core/model.ts';
+import { droppedFiles, sameAttachments } from '../src/core/tickets.ts';
 import {
   draftChanged,
   draftFromItem,
@@ -21,9 +25,11 @@ import {
   type ItemError,
 } from '../src/core/trips.ts';
 import { checkWallTime, isLocalDateTime, isValidZone } from '../src/core/tz.ts';
+import { removeAppFiles } from '../src/native/files.ts';
 import { useApp } from '../src/state/app.tsx';
 import { findItem, useTrips } from '../src/state/trips.tsx';
 import { space } from '../src/theme/tokens.ts';
+import { AttachmentsField } from '../src/ui/AttachmentsField.tsx';
 import { useDiscardConfirm } from '../src/ui/discardConfirm.ts';
 import { ErrorNotice } from '../src/ui/ErrorNotice.tsx';
 import { KindIcon, carrierKey, formTitleKey, kindKey, numberKey, titleKey } from '../src/ui/kinds.tsx';
@@ -48,7 +54,19 @@ export default function ItemEditScreen() {
   const [errors, setErrors] = useState<ItemError[]>([]);
   const [saving, setSaving] = useState(false);
   const [saveFailed, setSaveFailed] = useState(false);
-  const { leaving, gestureEnabled } = useDiscardConfirm(draftChanged(initial, d));
+  const [initialFiles] = useState<Attachment[]>(() => prev?.attachments ?? []);
+  const [files, setFiles] = useState<Attachment[]>(initialFiles);
+  const savedIds = useMemo(() => new Set(initialFiles.map((a) => a.id)), [initialFiles]);
+  // Every file copied in by this form, and whether the booking was saved: on leaving unsaved, those copies go.
+  const addedFiles = useRef<Attachment[]>([]);
+  const committed = useRef(false);
+  useEffect(
+    () => () => {
+      if (!committed.current) removeAppFiles(droppedFiles(addedFiles.current, initialFiles));
+    },
+    [initialFiles],
+  );
+  const { leaving, gestureEnabled } = useDiscardConfirm(draftChanged(initial, d) || !sameAttachments(initialFiles, files));
   const set = (k: keyof ItemDraft) => (v: string) => setD((o) => ({ ...o, [k]: v }));
   const err = (e: ItemError) => (errors.includes(e) ? t(`itemEdit.err.${e}`) : undefined);
   // Zones already used on this trip, plus the phone's: one tap to fill a zone field.
@@ -80,13 +98,16 @@ export default function ItemEditScreen() {
     if (saving) return;
     setSaving(true);
     setSaveFailed(false);
-    const ok = await saveItem(itemFromDraft(d, trip.id, prev));
+    const ok = await saveItem({ ...itemFromDraft(d, trip.id, prev), attachments: files });
     setSaving(false);
     if (!ok) {
       setSaveFailed(true);
       AccessibilityInfo.announceForAccessibility(t('error.item.save.title'));
       return;
     }
+    // Saved: copies no longer listed (removed saved files, or ones added then removed here) go; the rest belong to the item.
+    committed.current = true;
+    removeAppFiles(droppedFiles([...initialFiles, ...addedFiles.current], files));
     leaving();
     router.back();
   };
@@ -160,6 +181,16 @@ export default function ItemEditScreen() {
       ) : null}
       {hasRef(d.kind) ? <TextField label={t('item.ref')} value={d.ref} onChange={set('ref')} autoCapitalize="none" /> : null}
       <TextField label={t('item.notes')} value={d.notes} onChange={set('notes')} multiline />
+      <AttachmentsField
+        attachments={files}
+        kind={d.kind}
+        savedIds={savedIds}
+        onAdd={(a) => {
+          addedFiles.current = [...addedFiles.current, a];
+          setFiles((o) => [...o, a]);
+        }}
+        onRemove={(a) => setFiles((o) => o.filter((x) => x.id !== a.id))}
+      />
       {saveFailed ? (
         <ErrorNotice title={t('error.item.save.title')} body={t('error.item.save.body')} action={t('common.tryAgain')} actionHint={t('error.saveRetryHint')} onAction={save} />
       ) : null}

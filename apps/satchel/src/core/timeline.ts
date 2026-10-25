@@ -1,7 +1,7 @@
 // Trip timeline: sort, group by local day, overlaps, nights without a bed, and the "Next up" card.
 import type { Item, LocalDate, Trip } from './model.ts';
 import { isTransport } from './model.ts';
-import { dateRange, localDate, toUtc } from './tz.ts';
+import { dateRange, isValidZone, localDate, toUtc } from './tz.ts';
 
 export type Span = { start: number; end: number };
 
@@ -12,13 +12,33 @@ export function span(item: Item): Span {
   return { start, end };
 }
 
-/** Sorted by real (UTC) start, then end, then id, so the order is stable. */
+/**
+ * T43 (TR-021 load case): false when a saved zone on the item (start, or end if it has one) is not one this phone
+ * can read, e.g. a zone renamed or removed in a later system update, or saved data edited by hand. Such an item is
+ * never dropped or given an invented time: it stays on the trip, its row says "Time zone not recognised — edit to
+ * fix", and everything that needs its real instant (span, sorting by time, clashes, Next up, tickets, hotel card)
+ * skips it, so nothing throws. Only `span` needs a readable zone; its callers check this first.
+ */
+export function zonesReadable(item: Item): boolean {
+  return isValidZone(item.start.tz) && (!item.end || isValidZone(item.end.tz));
+}
+
+const byId = (a: Item, b: Item) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+
+/**
+ * Sorted by real (UTC) start, then end, then id, so the order is stable. Items with an unreadable zone (T43) have
+ * no real instant, so they go after the others, in the order of their stored wall-clock start, then id.
+ */
 export function sortItems(items: Item[]): Item[] {
-  return [...items].sort((a, b) => {
+  const timed = items.filter(zonesReadable);
+  const unreadable = items.filter((i) => !zonesReadable(i));
+  timed.sort((a, b) => {
     const sa = span(a);
     const sb = span(b);
-    return sa.start - sb.start || sa.end - sb.end || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+    return sa.start - sb.start || sa.end - sb.end || byId(a, b);
   });
+  unreadable.sort((a, b) => (a.start.local < b.start.local ? -1 : a.start.local > b.start.local ? 1 : byId(a, b)));
+  return [...timed, ...unreadable];
 }
 
 /** `continuing`: journeys that started on an earlier local day and arrive on (or run through) this one. */
@@ -43,7 +63,9 @@ export function extraDays(item: Item): LocalDate[] {
 /**
  * Days of the trip, each with the items that start on that local date (in the item's own zone, which is what the
  * ticket says) and the journeys still under way. Every date from the trip's start to end appears, empty or not;
- * items outside the range add days. Stored times and zones are never changed.
+ * items outside the range add days. Stored times and zones are never changed. An item with an unreadable zone (T43)
+ * is still listed, on its stored local date (the date part of its saved wall clock needs no zone), after that day's
+ * timed items.
  */
 export function groupByDay(trip: Trip): Day[] {
   const sorted = sortItems(trip.items);
@@ -59,9 +81,12 @@ export function groupByDay(trip: Trip): Day[] {
   }));
 }
 
-/** Items whose times clash. Hotel stays and notes overlap everything by nature, so only hotel-vs-hotel counts for them. */
+/**
+ * Items whose times clash. Hotel stays and notes overlap everything by nature, so only hotel-vs-hotel counts for them.
+ * Items with an unreadable zone (T43) have no real times, so they never count as clashing.
+ */
 export function overlaps(items: Item[]): [Item, Item][] {
-  const timed = sortItems(items).filter((i) => i.kind !== 'note' && i.end);
+  const timed = sortItems(items).filter((i) => i.kind !== 'note' && i.end && zonesReadable(i));
   const out: [Item, Item][] = [];
   for (let i = 0; i < timed.length; i++) {
     for (let j = i + 1; j < timed.length; j++) {
@@ -103,10 +128,11 @@ export type NextUp = { item: Item; state: 'now' | 'next'; minutes: number } | nu
 /**
  * The "Next up" card: an item happening now (started, not ended; a hotel stay never counts as "now", so it never
  * hides your flight) or else the next item to start.
- * `minutes` is minutes until start for "next", minutes until end for "now".
+ * `minutes` is minutes until start for "next", minutes until end for "now". Items with an unreadable zone (T43) are
+ * skipped: Satchel can't tell when they happen.
  */
 export function nextUp(items: Item[], now: number): NextUp {
-  const sorted = sortItems(items).filter((i) => i.kind !== 'note');
+  const sorted = sortItems(items).filter((i) => i.kind !== 'note' && zonesReadable(i));
   const upcoming = sorted.find((i) => span(i).start > now);
   const current = sorted.filter((i) => i.kind !== 'hotel' && span(i).start <= now && span(i).end > now);
   if (current.length) {

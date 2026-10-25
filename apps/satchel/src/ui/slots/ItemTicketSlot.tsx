@@ -19,9 +19,10 @@ import { Body, Button, Card, Label, PressableScale, Warning } from '../kit.tsx';
 import { PermissionNotice } from '../PermissionNotice.tsx';
 
 /** A plain error, or Photos access refused (shown with PermissionNotice and the Files fallback). */
-type Problem = { key: Key } | { photos: Exclude<PermissionState, 'granted'> } | null;
+export type Problem = { key: Key } | { photos: Exclude<PermissionState, 'granted'> } | null;
 
-const failureKey = (reason: PickFailure, qr: boolean, permission?: PermissionState): Problem => {
+/** Shared with the item form's Attachments section (src/ui/AttachmentsField.tsx, T44). */
+export const failureKey = (reason: PickFailure, qr: boolean, permission?: PermissionState): Problem => {
   switch (reason) {
     case 'canceled':
       return null;

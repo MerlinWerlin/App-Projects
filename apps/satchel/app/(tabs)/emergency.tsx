@@ -1,16 +1,21 @@
 // Emergency tab: the chosen (or guessed) country's numbers with big call buttons, "verify locally", the source
 // state, insurance, contacts and private medical notes behind a tap. Free forever, works offline, no location.
+// T44 (ACCESSIBILITY "Emergency card" reading order): a Hotel address shortcut after the medical notes opens the
+// address card for the stay you're in now, else the next one (battery.currentHotel, as essentials uses). Hidden
+// when that stay has no saved address, so it never leads to an empty card.
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 import table from '../../src/content/emergency_numbers.json';
+import { currentHotel } from '../../src/core/battery.ts';
 import { cardStatus, COUNTRY_KEY, displayRow, EMERGENCY_KEY, EMPTY_CARD, findCountry, guessCountry, normaliseCard, searchCountries, type EmergencyTable } from '../../src/core/emergency.ts';
 import { deviceZone, todayIn, zoneCity } from '../../src/core/format.ts';
 import type { EmergencyCard } from '../../src/core/model.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
-import { fonts, radius, space } from '../../src/theme/tokens.ts';
+import { fonts, radius, space, TOUCH } from '../../src/theme/tokens.ts';
 import { callAndExplain, EmergencyCardView } from '../../src/ui/EmergencyCardView.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen, TextField, Title } from '../../src/ui/kit.tsx';
 
@@ -37,6 +42,9 @@ export default function EmergencyScreen() {
   const row = pickedRow ?? findCountry(TABLE, guess?.iso2);
   const display = row ? displayRow(row) : null;
   const results = useMemo(() => searchCountries(TABLE, query), [query]);
+  // Not memoised: a cheap scan, and the tab stays mounted, so each render uses the current time.
+  const hotel = currentHotel(trips, Date.now());
+  const hotelName = hotel ? hotel.item.place?.name?.trim() || hotel.item.title : '';
 
   const origin = pickedRow
     ? t('emergency.countryPicked')
@@ -141,6 +149,36 @@ export default function EmergencyScreen() {
         medicalShown={medicalShown}
         onToggleMedical={() => setMedicalShown(!medicalShown)}
       />
+
+      {hotel?.hasAddress ? (
+        <PressableScale
+          accessibilityRole="button"
+          accessibilityLabel={t('emergency.hotelShortcut')}
+          accessibilityHint={t('emergency.hotelShortcutHint', { name: hotelName })}
+          onPress={() => router.push({ pathname: '/address/[id]', params: { id: hotel.item.id } })}
+          style={{
+            minHeight: TOUCH,
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: space.m,
+            paddingHorizontal: space.l,
+            paddingVertical: space.s,
+            borderRadius: radius.m,
+            borderWidth: 1,
+            borderColor: theme.line,
+            backgroundColor: theme.card,
+          }}
+        >
+          <Ionicons name="bed-outline" size={24} color={theme.accent} />
+          <View style={{ flex: 1, gap: 2 }}>
+            <Text style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}>{t('emergency.hotelShortcut')}</Text>
+            <Text numberOfLines={2} style={{ fontFamily: fonts.body, fontSize: 15, color: theme.muted }}>
+              {t(hotel.state === 'now' ? 'emergency.hotelShortcutNow' : 'emergency.hotelShortcutNext', { name: hotelName })}
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={20} color={theme.muted} />
+        </PressableScale>
+      ) : null}
 
       <Button label={t('emergency.editCard')} hint={t('emergency.editCardHint')} onPress={() => router.push('/emergency-edit')} />
       <Body muted>{t('emergency.freeForever')}</Body>

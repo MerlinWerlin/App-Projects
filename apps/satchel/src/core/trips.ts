@@ -213,7 +213,9 @@ const isStamp = (x: unknown) => isObj(x) && typeof x.local === 'string' && isLoc
 /**
  * The saved trips list, read back from storage. `null` means the saved data can't be read at all (cut short or
  * damaged): the caller must keep those bytes and never save over them as if there were no trips. Trips or items
- * with missing essentials are dropped one by one, so one bad entry can't take down the trips list.
+ * with missing essentials are dropped one by one, so one bad entry can't take down the trips list. An item whose
+ * saved zone this phone can't read (TR-021 load case, T43) is kept as it is: dropping it would delete it for good on
+ * the next save. The timeline shows it with "Time zone not recognised — edit to fix" (timeline.ts zonesReadable).
  */
 export function parseStoredTrips(raw: string | null): Trip[] | null {
   if (raw == null || raw === '') return [];

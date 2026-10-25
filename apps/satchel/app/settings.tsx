@@ -1,13 +1,16 @@
 // Settings (FLOWS §12, ACCESSIBILITY "Settings"): appearance (System / Light / Dark, applied at once), haptics, the low-battery essentials switch and threshold, the
 // "Data Not Collected" privacy summary, then app information. Essentials prefs share ESSENTIALS_KEY with the
 // Trips banner and the essentials screen, so a change here shows there at once.
+// T44 (ACCESSIBILITY "Settings": the threshold is one adjustable control): the threshold row is a single
+// accessibilityRole="adjustable" element with increment / decrement actions and a spoken value; the visible - / +
+// buttons stay for touch but are hidden from screen readers so VoiceOver and TalkBack meet one control, not three.
 import { Ionicons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
 import type { ReactNode } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, type AccessibilityActionEvent } from 'react-native';
 import table from '../src/content/emergency_numbers.json';
-import { DEFAULT_ESSENTIALS, ESSENTIALS_KEY, normalisePrefs, type EssentialsPrefs } from '../src/core/battery.ts';
+import { DEFAULT_ESSENTIALS, ESSENTIALS_KEY, MAX_THRESHOLD, MIN_THRESHOLD, normalisePrefs, type EssentialsPrefs } from '../src/core/battery.ts';
 import { languageName, languageOptions } from '../src/core/languageHint.ts';
 import { APPEARANCES, formatPercent, stepThreshold, thresholdLimits } from '../src/core/settings.ts';
 import { useApp } from '../src/state/app.tsx';
@@ -28,6 +31,7 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
   );
 }
 
+/** A visible - / + button. Screen readers skip it: the surrounding adjustable row carries the same actions. */
 function StepButton({ icon, label, hint, enabled, onPress }: { icon: 'add' | 'remove'; label: string; hint: string; enabled: boolean; onPress: () => void }) {
   const { theme } = useApp();
   return (
@@ -36,6 +40,8 @@ function StepButton({ icon, label, hint, enabled, onPress }: { icon: 'add' | 're
       accessibilityLabel={label}
       accessibilityHint={hint}
       accessibilityState={{ disabled: !enabled }}
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
       disabled={!enabled}
       onPress={onPress}
       style={{
@@ -72,6 +78,11 @@ export default function SettingsScreen() {
       const p = normalisePrefs(old);
       return { ...p, threshold: stepThreshold(p.threshold, dir) };
     });
+  // VoiceOver swipe up / down (TalkBack volume keys) on the adjustable row.
+  const onThresholdAction = (e: AccessibilityActionEvent) => {
+    if (e.nativeEvent.actionName === 'increment' && canRaise) step(1);
+    else if (e.nativeEvent.actionName === 'decrement' && canLower) step(-1);
+  };
 
   return (
     <Screen>
@@ -107,13 +118,22 @@ export default function SettingsScreen() {
         <ToggleRow label={t('settings.essentialsManual')} hint={t('settings.essentialsManualHint')} value={essentials.manual} onChange={setManual} />
         <Body muted>{t('settings.essentialsBody')}</Body>
         <View style={{ height: 1, backgroundColor: theme.line, marginVertical: space.s }} />
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
+        <View
+          accessible
+          accessibilityRole="adjustable"
+          accessibilityLabel={t('settings.thresholdAdjustLabel')}
+          accessibilityHint={t('settings.thresholdAdjustHint')}
+          accessibilityValue={{ min: Math.round(MIN_THRESHOLD * 100), max: Math.round(MAX_THRESHOLD * 100), now: Math.round(essentials.threshold * 100), text: percent }}
+          accessibilityActions={[
+            { name: 'increment', label: t('settings.thresholdRaise') },
+            { name: 'decrement', label: t('settings.thresholdLower') },
+          ]}
+          onAccessibilityAction={onThresholdAction}
+          accessibilityLiveRegion="polite"
+          style={{ minHeight: TOUCH, flexDirection: 'row', alignItems: 'center', gap: space.m }}
+        >
           <StepButton icon="remove" label={t('settings.thresholdLower')} hint={t('settings.thresholdLowerHint')} enabled={canLower} onPress={() => step(-1)} />
-          <Text
-            accessibilityLabel={t('settings.thresholdA11y', { percent })}
-            accessibilityLiveRegion="polite"
-            style={{ flex: 1, textAlign: 'center', fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}
-          >
+          <Text style={{ flex: 1, textAlign: 'center', fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}>
             {t('settings.threshold', { percent })}
           </Text>
           <StepButton icon="add" label={t('settings.thresholdRaise')} hint={t('settings.thresholdRaiseHint')} enabled={canRaise} onPress={() => step(1)} />

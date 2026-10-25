@@ -2,12 +2,15 @@
 // full (never cut off). `continuingOn` marks a journey that started on an earlier day: it shows when it arrives.
 // `overlapsWith` (titles of clashing items, T41 / EDGE_CASES "Overlapping items") adds a worded marker under the
 // row and to its spoken label, so the overlap is never shown by colour alone.
+// T43: an item whose saved time zone can't be read (timeline.ts zonesReadable) shows "Time zone not recognised —
+// edit to fix" under the row, in words and in its spoken label; its times show exactly as saved.
 import { Ionicons } from '@expo/vector-icons';
 import { memo } from 'react';
 import { Text, View } from 'react-native';
 import { formatDay, formatTime, zoneCity } from '../core/format.ts';
 import type { Item, LocalDate } from '../core/model.ts';
 import { isTransport } from '../core/model.ts';
+import { zonesReadable } from '../core/timeline.ts';
 import { dayShift } from '../core/tz.ts';
 import { useApp } from '../state/app.tsx';
 import { fonts, radius, space } from '../theme/tokens.ts';
@@ -42,7 +45,8 @@ export const ItemRow = memo(function ItemRow({
     time = `${range} · ${zoneCity(item.start.tz)}`;
   }
   const overlapText = overlapsWith ? t('spec41.row.overlaps', { titles: overlapsWith }) : '';
-  const label = `${t(kindKey(item.kind))}, ${item.title}, ${time}${route ? `, ${route}` : ''}${overlapText ? `. ${overlapText}` : ''}`;
+  const zoneText = zonesReadable(item) ? '' : t('t43.row.zoneUnreadable');
+  const label = `${t(kindKey(item.kind))}, ${item.title}, ${time}${route ? `, ${route}` : ''}${overlapText ? `. ${overlapText}` : ''}${zoneText ? `. ${zoneText}` : ''}`;
   const faded = !!continuingOn || item.kind === 'note';
   return (
     <PressableScale
@@ -67,6 +71,14 @@ export const ItemRow = memo(function ItemRow({
               <Ionicons name="alert-circle-outline" size={16} color={theme.warn} />
             </View>
             <Text style={{ flex: 1, fontFamily: fonts.bodyBold, fontSize: 14, color: theme.ink }}>{overlapText}</Text>
+          </View>
+        ) : null}
+        {zoneText ? (
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
+            <View importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
+              <Ionicons name="alert-circle-outline" size={16} color={theme.warn} />
+            </View>
+            <Text style={{ flex: 1, fontFamily: fonts.bodyBold, fontSize: 14, color: theme.ink }}>{zoneText}</Text>
           </View>
         ) : null}
       </View>

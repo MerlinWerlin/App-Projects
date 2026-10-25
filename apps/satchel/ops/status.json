@@ -1,9 +1,9 @@
 {
-  "tests": 245,
-  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable this run); full tsc on the PC queue pending for this commit",
-  "last_run": "2026-10-26 07:16 Sydney",
+  "tests": 254,
+  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); PC queue: full tsc clean, 245/245 tests and iOS export OK on 90c0dac; this commit pending the PC queue's next TSC_REPORT",
+  "last_run": "2026-10-26 09:20 Sydney",
   "stage": "trial",
-  "oversight_seen": 150,
+  "oversight_seen": 151,
   "headline": "Ready to try on your iPhone",
   "next_for_owner": [
     "To get Satchel onto TestFlight: create the app in App Store Connect (bundle id com.jared797.satchel, SKU satchel) and send Claude its Apple ID number. Everything else is prepared; see docs/TESTFLIGHT.md.",

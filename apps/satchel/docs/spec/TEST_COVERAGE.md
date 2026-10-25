@@ -8,7 +8,7 @@ Test names are quoted as they appear in `npm test`; the file is given as `file: 
 
 Core bugs found and fixed by the added tests:
 - `battery.ts normaliseLevel`: phones report a 32-bit float (20% = 0.20000000298), so "at or below the threshold" missed exactly 20% while the banner said 20%. Levels are now rounded to 4 decimals (TR-067).
-- `trips.ts parseStoredTrips` (TR-021 load case): proposed fix (drop items with an unreadable zone) was rejected at integration because it silently deletes a user's item on the next save; tracked as T43 (keep the item, show the zone problem, skip it in sums).
+- `trips.ts parseStoredTrips` (TR-021 load case): proposed fix (drop items with an unreadable zone) was rejected at integration because it silently deletes a user's item on the next save; done in T43: the item is kept, its row says "Time zone not recognised — edit to fix", and timeline sorting, clashes, Next up, tickets, hotel card and packing skip it (`timeline.ts zonesReadable`).
 - `emergency.ts countryForZone`: old zone names in `tzzones.ts LEGACY_ZONES` (Asia/Katmandu, Asia/Rangoon, Asia/Ulan_Bator) gave no country guess. They now map like their current names (TR-055 lookup).
 
 | id | area | status | test(s) / reason |
@@ -33,7 +33,7 @@ Core bugs found and fixed by the added tests:
 | TR-018 | Time zones | added | 'TR-018: zones without daylight saving keep one offset all year' |
 | TR-019 | Time zones | added | 'TR-019 (midnight): 00:00 starts its own day and 23:59 stays on the day before'; 'TR-019: "today" either side of the date line can differ by two calendar dates'; 'TR-019: a zone that jumped across the date line (Samoa skipped 30 Dec 2011) …'. Already covered: tz: 'cross-dateline: arrive "before" you leave, and a +1 / -1 day shift'; edgecases: 'crossing the date line backwards …', 'an overnight journey shows on its arrival day too …'; trips: 'item validation: arrival before departure is fine across the dateline, not otherwise' |
 | TR-020 | Time zones | added | Core part: 'TR-015 / TR-020: …' (times are stored as wall clock + IANA zone and read the same under any phone zone). Changing the zone on a real phone stays a device check. |
-| TR-021 | Time zones | added | 'TR-021: an unknown zone is refused by the form and never turned into an invented time'; load case open as T43 (drop-on-load fix rejected: data loss). Already covered: tz: 'dates' (isValidZone); trips: 'trip validation' (homeTz) |
+| TR-021 | Time zones | added | 'TR-021: an unknown zone is refused by the form and never turned into an invented time'; load case (T43): 'TR-021 (load, T43): …' (3 tests: kept on load; listed on its stored date after timed items; Next up / tickets / hotel / packing skip it). Already covered: tz: 'dates' (isValidZone); trips: 'trip validation' (homeTz) |
 | TR-022 | Flight mode | UI-only | Device check; all data is local by design. |
 | TR-023 | Flight mode | UI-only | Device check. |
 | TR-024 | Flight mode | UI-only | Map v0 copy; device check. |

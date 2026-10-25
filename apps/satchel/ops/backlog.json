@@ -543,7 +543,7 @@
     },
     {
       "id": "T43",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T42"
       ],
@@ -551,11 +551,12 @@
         "follow-up"
       ],
       "title": "Unreadable saved time zone (TR-021 load case): keep the item (never drop user data), show 'Time zone not recognised — edit to fix' on its row, and skip it in timeline sums / Next up so nothing throws; tests",
-      "accept": "parseStoredTrips keeps the item; groupByDay/nextUp do not throw; test green"
+      "accept": "parseStoredTrips keeps the item; groupByDay/nextUp do not throw; test green",
+      "commit": "d47f2bc"
     },
     {
       "id": "T44",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T41"
       ],
@@ -564,7 +565,8 @@
         "spec"
       ],
       "title": "Spec pass 2 leftovers: emergency card shortcut to the hotel address card; battery threshold as one adjustable control (accessibilityActions + stub); attachments section in the item form (FLOWS 4.1)",
-      "accept": "tests + typecheck:ui + ui-check green"
+      "accept": "tests + typecheck:ui + ui-check green",
+      "commit": "537ff46"
     }
   ],
   "priority_note": "Owner: 'let's trial that for now'. Reach TRIAL fast; nothing native before the owner has tried the trial."
