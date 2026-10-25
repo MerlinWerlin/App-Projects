@@ -95,7 +95,12 @@ export function createStore(storage: Storage, module?: Iap | null): PlusStore {
           type: 'in-app',
         });
         const list: Purchase[] = Array.isArray(r) ? r : r ? [r] : [];
-        const got = list.find(isPlus) ?? (await ownedList()).find(isPlus);
+        let got = list.find(isPlus) ?? (await ownedList()).find(isPlus);
+        // Some expo-iap versions resolve before the transaction is listed: check again for up to ~10 s.
+        for (let i = 0; !got && i < 10; i++) {
+          await new Promise((res) => setTimeout(res, 1000));
+          got = (await ownedList()).find(isPlus);
+        }
         if (!got) return { status: 'failed', detail: 'no transaction' };
         try {
           await iap.finishTransaction?.({ purchase: got, isConsumable: false });
