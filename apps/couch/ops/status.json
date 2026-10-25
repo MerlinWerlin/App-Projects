@@ -1,11 +1,11 @@
 {
   "stage": "owner-tested",
   "trial_kit": true,
-  "oversight_seen": 142,
+  "oversight_seen": 143,
   "tests": "1760 pass (bun, Jest-compatible)",
   "typecheck": "core clean; app/ and src/ui clean against offline stubs (new, D75-1); full app tsc with real types needs PC verification",
-  "last_run": "2026-10-25 13:51 Sydney (run 80)",
-  "headline": "Release checklist written: Couch meets the new App Factory release standard for 1.0 (your #92 language line and no-purchase fixes synced; nothing is sold in 1.0). The TestFlight 1.0.1 (Cast) native build may still be waiting on Expo's iOS build quota (resets 1 Nov); over-the-air updates such as #92 reach 1.0.1 builds only, so a phone still on 1.0.0 sees them once 1.0.1 arrives.",
+  "last_run": "2026-10-25 15:52 Sydney (run 81)",
+  "headline": "On hold for your two decisions on the Workboard: make all themes free for 1.0, and the Couch Plus price. Nothing changed in the app this run. The TestFlight 1.0.1 (Cast) native build may still be waiting on Expo's iOS build quota (resets 1 Nov).",
   "next_for_owner": "1) Open Couch from TestFlight and answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (new: 25 Oct language line / Show all, then the Cast questions) in a comment here. 2) For App Review: answer App Privacy ('Data Not Collected'), add the App Review contact, and record a short screen recording on your iPhone (launch and the main remote flow) - see docs/RELEASE_CHECKLIST.md. 3) Decide the Couch Plus price (proposal US$4.99 / A$7.99 one-time); Plus stays off sale in 1.0 until then. 4) Multicast entitlement: when Apple's email arrives, say so in a comment. Full install/typecheck needs PC verification (npm registry unreachable from the cloud this run).",
   "screenshots": {
     "dir": "store/screenshots/publish",

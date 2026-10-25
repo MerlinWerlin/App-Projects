@@ -1,22 +1,23 @@
 {
-  "tests": 804,
+  "tests": 808,
   "typecheck": "core only (registry unreachable) + offline strict UI typecheck (stubs) clean",
-  "last_run": "2026-10-25 13:30 Sydney",
+  "last_run": "2026-10-25 15:35 Sydney",
   "stage": "release-prep",
-  "oversight_seen": "1792889450-02c6",
-  "headline": "In App Review — waiting on Apple; over-the-air updates ship automatically.",
+  "oversight_seen": "1792896659-4563",
+  "headline": "In App Review — owner purchase fixes (#80, #85) now on the build page.",
   "next_for_owner": [
     "Linework is with App Review: watch App Store Connect for Apple's decision. If it is rejected for app behaviour, paste the rejection into a page comment.",
-    "Next App-Projects sync: bring apps/linework/store/listing.json review notes (#77/#79) to the build page so a later ship never reverts them.",
+    "T60: on TestFlight, buy Plus (sandbox), start the trial and Restore on a real iPhone with the #85 fix.",
     "Full install + tsc + expo export needs PC verification."
   ],
   "trial_kit": true,
   "next_stage": "testflight",
-  "ship_base": "be6f0f8",
+  "ship_base": "738868f",
   "ship_base_map": {
     "2c99bfa": "e0bd1de",
-    "be6f0f8": "a05dff3"
+    "be6f0f8": "a05dff3",
+    "738868f": "b4a6c91"
   },
-  "ship_base_note": "Build-page history was replaced by snapshots: e0bd1de (=App-Projects 0733a71, after SHIP_BASE 2c99bfa) and now a05dff3 (=App-Projects main be6f0f8, owner chat 24 Oct 18:30, #38). a05dff3 is the shipped tree; use it as auto-ship's merge base.",
+  "ship_base_note": "Build-page history was replaced by snapshots: e0bd1de (=App-Projects 0733a71, after SHIP_BASE 2c99bfa) and now a05dff3 (=App-Projects main be6f0f8, owner chat 24 Oct 18:30, #38). a05dff3 is the shipped tree; use it as auto-ship's merge base. Run 112 synced App-Projects 531b571, 4be28f1, c1a8d5f, 738868f (owner versions of store/listing.json, store/ASC_REQUEST.json, app/plus.tsx, src/plus/iapStore.ts + test; RELEASE.json skipped); ship_base now 738868f.",
   "app_review": "in review (owner answered the information request in App-Projects #77/#79)"
 }

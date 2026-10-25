@@ -73,3 +73,30 @@ Decided: store name **Linework: Trace & Sketch** (home screen shows "Linework"),
 | Privacy | No network, analytics, ads or accounts (dependency guard test) | — (only EAS Update's own launch check talks to the network) |
 | Plus never gates tracing | Tests under `src/core` and `src/plus` | Real purchase / restore (T60, needs App Store Connect + dev build) |
 | Native extras | — | T53 subject cut-out, T60 in-app purchases: only possible in a development build |
+
+---
+
+## App Factory release standard (App-Projects docs/RELEASE_STANDARD.md, owner 25 Oct #88) — Linework 1.0
+
+Static review of the build-page tree after syncing the owner's #77, #79, #80, #85 (run 112). Not tested on a device. Per §4 Linework is in App Review, so gaps are **1.0.1 tasks**, not review-time changes.
+
+**§1 First launch**
+- [ ] Language line on Home ("Language: … · Change") — not present; language picker is in Settings. Gap → 1.0.1 (T145).
+- [x] No blocking prompts before the app works (no sign-up, no paywall first).
+- [x] Filters start off: Templates "favourites only" is off unless opened from the Favourites collection; empty favourites says why.
+
+**§2 Purchases (expo-iap)**
+- [ ] expo-iap pinned to an exact version — package.json still has `"*"`. Gap → 1.0.1 (T146), needs the PC to pick the version the shipped build uses.
+- [~] Both key styles: tried as successive shapes (ios/android, then apple/google, then legacy) rather than in one request (#85). Works per the standard's intent; 1.0.1 may merge them (T146).
+- [x] Result from returned value and `purchaseUpdatedListener`; a listener error no longer ends the purchase while another shape is pending (#80).
+- [~] After a failure, `getAvailablePurchases()` is re-checked once (#80), not polled for ~10 s. Gap → 1.0.1 (T146).
+- [x] Failure alert says nothing was charged and shows the store error code(s) in brackets (#80, #85).
+- [x] Restore purchases on the Plus screen with Unlock.
+- [x] `finishTransaction({ isConsumable: false })`.
+- [x] Trial is started by the person (no automatic first-launch trial; older automatic starts are honoured).
+- [ ] **Owner:** TestFlight sandbox buy, start trial, Restore on a real iPhone (T60).
+- [x] Paywall promises only features in this build; no test-build text in store builds.
+
+**§3 App Store Connect** — owner-run (scripts/asc). Listing, review notes (#77, #79), App Privacy, review contact, recording, agreements: done by the owner per App-Projects; not verifiable from the cloud.
+
+**§4 In review** — freeze in force: only reviewer-needed fixes ship.
