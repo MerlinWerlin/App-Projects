@@ -245,9 +245,13 @@ export default function SettingsScreen() {
           <RestorePurchases />
         </View>
       </SquircleCard>
-      <View style={styles.side}>
-        <TipJar />
-      </View>
+      {/* Release standard §2: the tip jar only says "Coming with the store release" until tips are on sale, so
+          release builds leave it out (development keeps it for layout work). Show it again once tips are live. */}
+      {__DEV__ ? (
+        <View style={styles.side}>
+          <TipJar />
+        </View>
+      ) : null}
 
       <InsetGroup header={t('settings.privacy.title')}>
         <InsetRow icon="shield" iconTone="mint" title={t('settings.privacy.heading')} subtitle={t('settings.privacy.body')} />

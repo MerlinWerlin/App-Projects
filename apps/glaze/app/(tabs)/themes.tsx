@@ -60,6 +60,7 @@ import { useFavourites } from '../../src/store/favourites';
 import { continuous, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { CategoryBubbleRow, type BubblePage } from '../../src/ui/CategoryBubbleRow';
+import { LanguageHintLine } from '../../src/ui/LanguageHintLine';
 import { LiveHeroCard } from '../../src/ui/LiveHeroCard';
 import { PHONE_ASPECT, ThemeCard } from '../../src/ui/ThemeCard';
 import { YourLookPanel } from '../../src/ui/YourLookPanel';
@@ -473,15 +474,17 @@ const SeasonalBanner = memo(function SeasonalBanner({
 });
 
 /** T77: a sub-tab with nothing in it yet (no liked themes, nothing new right now). */
-function DiscoveryEmpty({ icon, title, body }: { icon: FeatherName; title: string; body?: string }) {
+function DiscoveryEmpty({ icon, title, body, onShowAll }: { icon: FeatherName; title: string; body?: string; onShowAll?: () => void }) {
   const { c } = useColorsV2();
-  const { script } = useT();
+  const { t, script } = useT();
   return (
     <SquircleCard accessibilityLabel={body ? `${title} ${body}` : title}>
       <View style={styles.empty}>
         <EmptyIcon icon={icon} />
         <Text style={[...typeFor(script, 'headline'), styles.center, { color: c.ink }]}>{title}</Text>
         {body ? <Text style={[...typeFor(script, 'footnote'), styles.center, { color: c.inkSecondary }]}>{body}</Text> : null}
+        {/* Release standard §1: an empty filtered list offers a one-tap way back to everything. */}
+        {onShowAll ? <PillButton label={t('common.showAll')} variant="plain" onPress={onShowAll} style={styles.selfCenter} /> : null}
       </View>
     </SquircleCard>
   );
@@ -764,9 +767,16 @@ export default function ThemesScreen() {
   // T118: memoised, so the memoised showcase grid keeps the same `empty` element.
   const showcaseEmpty: ReactNode = useMemo(() => {
     if (tab === 'liked') {
-      return <DiscoveryEmpty icon="heart" title={t('themes.discover.likedEmpty')} body={t('themes.discover.likedEmptyBody')} />;
+      return (
+        <DiscoveryEmpty
+          icon="heart"
+          title={t('themes.discover.likedEmpty')}
+          body={t('themes.discover.likedEmptyBody')}
+          onShowAll={() => setTab('all')}
+        />
+      );
     }
-    if (tab === 'new') return <DiscoveryEmpty icon="star" title={t('themes.discover.newEmpty')} />; // i18n-ignore (code after a JSX element)
+    if (tab === 'new') return <DiscoveryEmpty icon="star" title={t('themes.discover.newEmpty')} onShowAll={() => setTab('all')} />; // i18n-ignore (code after a JSX element)
     return <GalleryEmpty title={t('themes.startersEmpty')} />;
   }, [tab, t]);
   const plusNote = t('themes.plusNote');
@@ -785,6 +795,8 @@ export default function ThemesScreen() {
       >
         <LargeTitle title={title} subtitle={t('themes.subtitle')} scrollY={scrollY} />
         <View style={styles.inner} onLayout={onInnerLayout}>
+          {/* Release standard §1: "Language: English · Change", first session only, until tapped. */}
+          <LanguageHintLine />
           {/* fb-1022 G3: category bubbles first, directly under the large title. */}
           <CategoryBubbleRow pages={bubblePages} store={selection} onSelect={pickPage} />
           {/* fb-1022 G4: All / New / Our picks / Liked as content-sized pills (never clipped). */}

@@ -27,10 +27,11 @@ type Props = {
 const BRAND = 'Glaze Plus'; // i18n-ignore (product name)
 
 // Counts come from the catalogues so the copy never goes stale (32 themes in four packs today).
-const INCLUDED: readonly { icon: FeatherName; key: 'plus.lock.widgets' | 'plus.lock.symbols' | 'plus.lock.loops' }[] = [
+// Release standard §2: only what this build has. "Theme clips for Live Photos" (plus.lock.loops) is off the list
+// until theme clips exist (the Live tab only makes Live Photos from the person's own video, which stays free).
+const INCLUDED: readonly { icon: FeatherName; key: 'plus.lock.widgets' | 'plus.lock.symbols' }[] = [
   { icon: 'grid', key: 'plus.lock.widgets' },
   { icon: 'feather', key: 'plus.lock.symbols' },
-  { icon: 'film', key: 'plus.lock.loops' },
 ];
 
 const FREE = ['plus.lock.freeIcons', 'plus.lock.freeInstall', 'plus.lock.freeLive'] as const;
