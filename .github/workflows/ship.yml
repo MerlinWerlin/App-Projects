@@ -170,7 +170,7 @@ jobs:
         if: steps.rel.outputs.mode == 'update'
         run: |
           set -o pipefail
-          eas update --channel production --non-interactive --message "${{ steps.rel.outputs.note }}" 2>&1 | tee "$RUNNER_TEMP/ship.log"
+          eas update --channel production --platform ios --non-interactive --message "${{ steps.rel.outputs.note }}" 2>&1 | tee "$RUNNER_TEMP/ship.log"
 
       - name: Report a failure on the commit (readable without the Actions page)
         if: failure()
