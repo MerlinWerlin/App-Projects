@@ -1,9 +1,9 @@
 {
   "tests": 217,
   "typecheck": "core only (registry unreachable); typecheck:ui clean against stubs",
-  "last_run": "2026-10-25 19:10 Sydney",
+  "last_run": "2026-10-25 21:05 Sydney",
   "stage": "trial",
-  "oversight_seen": 144,
+  "oversight_seen": 145,
   "headline": "Ready to try on your iPhone",
   "next_for_owner": [
     "Install Expo Go from the App Store on your iPhone (Satchel now targets SDK 58, the version Expo Go runs).",
