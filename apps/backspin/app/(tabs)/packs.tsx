@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { PACKS } from '../../src/content/index.ts';
 import type { Key } from '../../src/i18n/en.ts';
 import { useApp } from '../../src/state/app.tsx';
-import { Card, Screen, T } from '../../src/ui/kit.tsx';
+import { Card, Emoji, Screen, T } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 
 export default function Packs() {
@@ -19,7 +19,7 @@ export default function Packs() {
           return (
             <Card key={p.id} label={t(`pack.${p.id}` as Key)} onPress={() => router.push({ pathname: '/pack/[id]', params: { id: p.id } })} style={{ flexDirection: 'row', alignItems: 'center', gap: SP(4) }}>
               <View style={{ width: 56, height: 56, borderRadius: R.m, backgroundColor: theme.cardHi, alignItems: 'center', justifyContent: 'center' }}>
-                <T style={{ fontSize: 30 }}>{p.emoji}</T>
+                <Emoji size={30}>{p.emoji}</Emoji>
               </View>
               <View style={{ flex: 1 }}>
                 <T kind="bodyB">{t(`pack.${p.id}` as Key)}</T>

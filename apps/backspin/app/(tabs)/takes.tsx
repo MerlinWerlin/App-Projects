@@ -7,7 +7,7 @@ import { play, stop } from '../../src/native/audio.ts';
 import { shareFile } from '../../src/native/device.ts';
 import { readPcm, writeScratch, writeShareFile } from '../../src/native/files.ts';
 import { useApp, type Take } from '../../src/state/app.tsx';
-import { Chip, Press, Screen, T, Toastish } from '../../src/ui/kit.tsx';
+import { Chip, Emoji, Press, Screen, T, Toastish } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -23,7 +23,7 @@ export default function Takes() {
       <Screen>
         <T kind="hero">{t('takes.title')}</T>
         <View style={{ alignItems: 'center', marginTop: SP(16) }}>
-          <T style={{ fontSize: 56 }}>💿</T>
+          <Emoji size={56}>💿</Emoji>
           <T kind="title" center style={{ marginTop: SP(4) }}>
             {t('takes.empty')}
           </T>

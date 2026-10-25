@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { micPermission, requestMic } from '../src/native/audio.ts';
 import { openSettings } from '../src/native/device.ts';
 import { useApp } from '../src/state/app.tsx';
-import { Button, Disc, Screen, T } from '../src/ui/kit.tsx';
+import { Button, Disc, Emoji, Screen, T } from '../src/ui/kit.tsx';
 import { SP } from '../src/ui/theme.ts';
 
 export default function Intro() {
@@ -34,9 +34,7 @@ export default function Intro() {
     return (
       <Screen scroll={false}>
         <View style={{ flex: 1, justifyContent: 'center' }}>
-          <T style={{ fontSize: 64 }} center>
-            🎙
-          </T>
+          <Emoji size={64}>🎙</Emoji>
           <T kind="title" center style={{ marginTop: SP(4) }}>
             {t('mic.title')}
           </T>

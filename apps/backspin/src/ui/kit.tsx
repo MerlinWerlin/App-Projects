@@ -51,8 +51,28 @@ export function T({ children, style, kind = 'body', color, center, lines }: {
   children: ReactNode; style?: StyleProp<TextStyle>; kind?: keyof typeof TYPE; color?: string; center?: boolean; lines?: number;
 }) {
   const { theme } = useApp();
+  // A size override (e.g. a 56 pt emoji) must not inherit the kind's smaller lineHeight, or iOS clips the top of
+  // the glyph (owner feedback 25 Oct: emojis cut off in Packs, Party, Takes). Give it room unless the caller set one.
+  const flat = StyleSheet.flatten(style) as TextStyle | undefined;
+  const size = flat?.fontSize ?? TYPE[kind].fontSize;
+  const lh = flat?.lineHeight ?? (TYPE[kind] as TextStyle).lineHeight;
+  const roomy = lh != null && lh < size * 1.2 ? { lineHeight: Math.ceil(size * 1.25) } : null;
   return (
-    <Text numberOfLines={lines} style={[TYPE[kind], fontFor(theme, kind), { color: color ?? theme.ink, textAlign: center ? 'center' : undefined }, style]}>
+    <Text numberOfLines={lines} style={[TYPE[kind], fontFor(theme, kind), { color: color ?? theme.ink, textAlign: center ? 'center' : undefined }, style, roomy]}>
+      {children}
+    </Text>
+  );
+}
+
+/** An emoji used as an icon: sized box, never clipped, hidden from screen readers (the label carries meaning). */
+export function Emoji({ children, size = 28, style }: { children: string; size?: number; style?: StyleProp<TextStyle> }) {
+  return (
+    <Text
+      accessible={false}
+      importantForAccessibility="no"
+      allowFontScaling={false}
+      style={[{ fontSize: size, lineHeight: Math.ceil(size * 1.25), textAlign: 'center', includeFontPadding: false }, style]}
+    >
       {children}
     </Text>
   );
@@ -138,7 +158,7 @@ export function Button({ title, onPress, kind = 'primary', icon, disabled, busy,
       {kind === 'primary' && theme.recGradient?.length >= 2 ? (
         <LinearGradient colors={theme.recGradient as [string, string, ...string[]]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[StyleSheet.absoluteFill, { borderRadius: R.pill }]} />
       ) : null}
-      {busy ? <ActivityIndicator color={fg} /> : icon ? <Text style={{ fontSize: small ? 16 : 18 }}>{icon}</Text> : null}
+      {busy ? <ActivityIndicator color={fg} /> : icon ? <Emoji size={small ? 16 : 18}>{icon}</Emoji> : null}
       <Text style={[small ? TYPE.small : TYPE.bodyB, fontFor(theme, 'bodyB'), { color: fg, fontWeight: '700' }]}>{title}</Text>
     </Press>
   );

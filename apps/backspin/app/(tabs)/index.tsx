@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { dailyLine, dayKey, liveStreak, titleFor } from '../../src/core/game.ts';
 import { PACKS, QUIPS } from '../../src/content/index.ts';
 import { useApp } from '../../src/state/app.tsx';
-import { Card, Disc, Press, Screen, T } from '../../src/ui/kit.tsx';
+import { Card, Disc, Emoji, Press, Screen, T } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 
 export default function Home() {
@@ -76,7 +76,7 @@ export default function Home() {
 
       <View style={{ flexDirection: 'row', gap: SP(3), marginTop: SP(3) }}>
         <Card style={{ flex: 1, padding: SP(4) }} label={t('home.free')} onPress={() => router.push({ pathname: '/round', params: { mode: 'free' } })}>
-          <T style={{ fontSize: 28 }}>🗣</T>
+          <Emoji size={28}>🗣</Emoji>
           <T kind="bodyB" style={{ marginTop: SP(2) }}>
             {t('home.free')}
           </T>
@@ -85,7 +85,7 @@ export default function Home() {
           </T>
         </Card>
         <Card style={{ flex: 1, padding: SP(4) }} label={t('home.friend')} onPress={() => router.push({ pathname: '/round', params: { mode: 'friend', seed: String(Date.now()) } })}>
-          <T style={{ fontSize: 28 }}>🤝</T>
+          <Emoji size={28}>🤝</Emoji>
           <T kind="bodyB" style={{ marginTop: SP(2) }}>
             {t('home.friend')}
           </T>

@@ -2,7 +2,9 @@ import { Tabs } from 'expo-router';
 import { Text } from 'react-native';
 import { useApp } from '../../src/state/app.tsx';
 
-const icon = (e: string) => ({ focused }: { focused: boolean }) => <Text style={{ fontSize: 22, opacity: focused ? 1 : 0.55 }}>{e}</Text>;
+const icon = (e: string) => ({ focused }: { focused: boolean }) => (
+  <Text allowFontScaling={false} style={{ fontSize: 22, lineHeight: 28, includeFontPadding: false, opacity: focused ? 1 : 0.55 }}>{e}</Text>
+);
 
 export default function TabsLayout() {
   const { t, theme } = useApp();

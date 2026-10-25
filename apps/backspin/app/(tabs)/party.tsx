@@ -4,7 +4,7 @@ import { TextInput, View } from 'react-native';
 import { MAX_FREE_PLAYERS, MAX_PLAYERS, newParty, type PartyMode } from '../../src/core/game.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { partyStore } from '../../src/state/party.ts';
-import { Button, Card, Chip, Press, Screen, SectionTitle, T, Toastish } from '../../src/ui/kit.tsx';
+import { Button, Card, Chip, Emoji, Press, Screen, SectionTitle, T, Toastish } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 
 export default function PartySetup() {
@@ -36,7 +36,7 @@ export default function PartySetup() {
       <View style={{ flexDirection: 'row', gap: SP(3), marginTop: SP(5) }}>
         {(['copy', 'guess'] as const).map((m) => (
           <Card key={m} hi={mode === m} label={t(m === 'copy' ? 'party.copy' : 'party.guess')} onPress={() => setMode(m)} style={{ flex: 1, borderColor: mode === m ? theme.rec : theme.line, borderWidth: 2 }}>
-            <T style={{ fontSize: 26 }}>{m === 'copy' ? '🎙' : '🕵️'}</T>
+            <Emoji size={26}>{m === 'copy' ? '🎙' : '🕵️'}</Emoji>
             <T kind="bodyB" style={{ marginTop: SP(2) }}>
               {t(m === 'copy' ? 'party.copy' : 'party.guess')}
             </T>
