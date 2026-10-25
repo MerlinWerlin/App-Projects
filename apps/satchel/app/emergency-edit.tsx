@@ -1,8 +1,9 @@
 // Edit emergency card: insurer, policy, insurer phone, emergency contacts (typed, or one picked with the system
 // contact picker), private medical notes. Saved only on this phone. Leaving with unsaved changes asks first.
+// T41: a failed check is announced; Save, Cancel and Remove contact say what they do (ACCESSIBILITY "Edit emergency card").
 import { Stack, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { AccessibilityInfo, Alert, Text, View } from 'react-native';
 import { cleanCard, EMERGENCY_KEY, EMPTY_CARD, hasErrors, normaliseCard, sameCard, validateCard, type CardErrors } from '../src/core/emergency.ts';
 import { newId, type EmergencyCard, type EmergencyContact } from '../src/core/model.ts';
 import type { PermissionState } from '../src/core/permissions.ts';
@@ -82,6 +83,7 @@ export default function EmergencyEditScreen() {
     const e = validateCard(draft);
     if (hasErrors(e)) {
       setErrors(e);
+      AccessibilityInfo.announceForAccessibility(t('emergency.edit.errSummary'));
       return;
     }
     setStored(cleanCard(draft));
@@ -139,6 +141,7 @@ export default function EmergencyEditScreen() {
             <Button
               kind="quiet"
               label={t('emergency.edit.removeContactA11y', { name: c.name.trim() || t('emergency.edit.unnamed') })}
+              hint={t('spec41.emergencyEdit.removeHint')}
               onPress={() => removeContact(c)}
             />
           </View>
@@ -158,8 +161,8 @@ export default function EmergencyEditScreen() {
         <TextField label={t('emergency.medicalHeading')} value={draft.medicalNotes ?? ''} onChange={(v) => update({ medicalNotes: v })} placeholder={t('emergency.edit.medicalPlaceholder')} multiline />
       </Card>
 
-      <Button label={t('emergency.edit.save')} onPress={save} />
-      <Button kind="quiet" label={t('common.cancel')} onPress={() => router.back()} />
+      <Button label={t('emergency.edit.save')} hint={t('spec41.emergencyEdit.saveHint')} onPress={save} />
+      <Button kind="quiet" label={t('common.cancel')} hint={t('spec41.form.cancelHint')} onPress={() => router.back()} />
     </Screen>
   );
 }

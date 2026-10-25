@@ -4,104 +4,104 @@
 
 1. Flight Mode Travel Wallet
 2. Offline Trip Wallet
-3. Travel Wallet & Offline Map
+3. Trip Wallet & Offline Map
 
 ## Subtitle options
 
-- Your trip, ready offline
-- Tickets, maps, essentials
-- A calmer way to travel
+1. Tickets, trips and offline maps
+2. Travel essentials, kept offline
+3. Your trip, ready without signal
+4. Tickets and maps for the day
+5. A calmer way to travel offline
 
 ## Promotional text
 
-Keep your itinerary, tickets, documents and a city map together. Save what you need before you travel, then use it in flight mode.
+Keep tickets, trip details and travel essentials together. Open saved information and downloaded city maps in flight mode, without an account.
 
 ## Full description
 
-Travel can get complicated when you’re offline. Keep the details you need for the day in one calm, easy-to-use place.
+Travel days can mean patchy signal, roaming worries and important details scattered across apps and files. Keep the essentials for your trip together, ready to open when you need them.
 
-**Plan the trip**
-- Organise trips with a day-by-day timeline.
-- Add flights, trains, ferries, buses, stays, car hire, activities and notes.
-- Add details yourself or attach PDFs and images.
-- See what’s next at a glance.
+**Your trip, in one place**
+• Organise trips with a timeline for flights, trains, ferries, buses, stays, car hire, activities and notes.
+• Add details yourself or attach PDFs and images from your device.
+• Keep tickets easy to find, with a focused ticket view.
+• Save hotel addresses, including a local-language version.
+• Make a packing list for each trip.
 
-**Keep essentials close**
-- Save tickets and their QR codes for quick access.
-- Keep hotel addresses handy, including a local-language address.
-- Store passport, visa and licence copies in a document vault with a biometric lock.
-- Make packing lists with trip-type templates.
-- Put emergency numbers, contacts, insurance details and private medical notes on an emergency card. Numbers include a source and date; verify them locally before travel.
+**Useful when you’re offline**
+• Download a city map to use without mobile data.
+• See your location on the downloaded map with a location check when you ask. Location is not tracked in the background.
+• Keep trip details and saved attachments on your device.
+• Open your saved tickets and essentials in flight mode.
 
-**Find your way offline**
-- Download one city map per trip for offline use.
-- See your location with a one-time check when you ask. Location is not tracked in the background.
-- Use saved places and map points such as pharmacies, food, toilets and transport stops.
+**Travel essentials**
+• Keep emergency contacts, insurance details and private medical notes in your emergency card.
+• Check local emergency numbers in the app, and verify them locally.
+• Store passport, visa and licence copies in the document vault, with expiry reminders and an optional device lock.
+• Switch to a simple essentials screen with your next ticket, hotel address and emergency card.
 
-**Keep it simple on the day**
-- Switch to a dark essentials screen with your next ticket, hotel address and emergency card.
-- Export or import a trip as a file.
-- Use the app in flight mode.
+**Free to use**
+The free version includes trips, timelines, tickets, the emergency card, document vault, packing lists, essentials mode and one offline city per trip. You can also export and import trips as a file.
 
-The free app includes trips, timelines, tickets, the emergency card, document vault, packing lists, essentials mode and one offline city per trip.
+**Optional one-time upgrade**
+Satchel Plus adds unlimited offline cities and regions, offline points of interest beyond the free city, iCloud sync, shared trips, widgets and themes. It is a one-time purchase, not a subscription. iCloud sync is optional.
 
-An optional one-time purchase adds unlimited offline cities and regions, offline points of interest, sync across your own devices, shared trips, widgets and themes. No subscription.
-
-No account is required. There is no app backend, advertising or tracking. Your trip information is stored on your device unless you choose to enable cloud sync.
+No accounts, backend, ads or tracking. Trip information and documents stay on your device unless you choose to use iCloud sync. Features can vary by device and operating system.
 
 ## Keyword field
 
-offline,travel,wallet,map,itinerary,tickets,trip,packing,documents,flight
+offline,travel,trip,tickets,map,flight,packing,documents,itinerary,emergency
 
-## Extra keyword ideas (ranked)
+## Extra keyword ideas, ranked
 
-1. offline travel app
-2. travel wallet
+1. flight mode travel
+2. offline travel wallet
 3. offline city map
-4. flight mode travel
-5. trip organiser
-6. travel itinerary
-7. digital travel wallet
-8. offline itinerary
-9. travel tickets
-10. trip timeline
-11. travel documents
-12. packing list
-13. emergency card
-14. hotel address
-15. saved travel documents
-16. QR ticket wallet
-17. travel checklist
-18. city points of interest
-19. offline places map
-20. trip file sharing
-21. travel essentials
-22. journey planner
-23. holiday organiser
-24. travel day planner
-25. offline trip planner
-26. travel information storage
-27. travel map and tickets
-28. medical details card
-29. travel contact card
-30. flight mode map
+4. travel itinerary
+5. trip timeline
+6. travel tickets
+7. saved travel documents
+8. travel organiser
+9. offline trip planner
+10. hotel address card
+11. emergency card
+12. travel packing list
+13. offline city guide
+14. journey organiser
+15. travel day essentials
+16. trip document vault
+17. flight ticket storage
+18. train ticket storage
+19. travel checklist
+20. holiday organiser
+21. travel notes
+22. offline points of interest
+23. city map download
+24. local emergency numbers
+25. travel insurance details
+26. passport expiry reminder
+27. offline travel information
+28. trip file export
+29. shared trip
+30. travel widgets
 
 ## Screenshot captions
 
-1. **Your trip, all in one place**  
+1. **Your trip, clearly laid out**  
    Shows a trip timeline with upcoming travel items.
 
-2. **Tickets ready when you need them**  
-   Shows a saved ticket and its QR code.
+2. **Tickets, ready when you are**  
+   Shows a saved ticket in the focused ticket view.
 
 3. **A city map that works offline**  
-   Shows an offline map with saved places and points of interest.
+   Shows a downloaded city map with saved places and the location check.
 
-4. **Keep important details close**  
-   Shows the emergency card and hotel address.
+4. **Keep essentials close**  
+   Shows the emergency card with contacts and insurance details.
 
-5. **Documents, kept together**  
-   Shows the document vault and expiry reminders.
+5. **Your hotel address, easy to show**  
+   Shows a large address card with a local-language address.
 
-6. **Pack with a clear checklist**  
+6. **Pack with a little less guesswork**  
    Shows a trip packing list with items to tick off.

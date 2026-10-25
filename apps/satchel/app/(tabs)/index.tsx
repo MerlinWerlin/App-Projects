@@ -1,4 +1,5 @@
-// Trips (home): a 'Trips didn’t load' notice if the saved list couldn't be read, Next up card, then trips (active and upcoming first). Windowed list with stable keys.
+// Trips (home). T41: each row's spoken label says its state (Coming up / On now / Past) and dates.
+// A 'Trips didn’t load' notice if the saved list couldn't be read, Next up card, then trips (active and upcoming first). Windowed list with stable keys.
 import { useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { AccessibilityInfo, FlatList, Text, View } from 'react-native';
@@ -40,7 +41,12 @@ export default function TripsScreen() {
       const phase = tripPhase(trip, today);
       const range = t('trips.dates', { range: formatRange(trip.startDate, trip.endDate, lang), n: daysBetween(trip.startDate, trip.endDate) + 1 });
       return (
-        <PressableScale accessibilityRole="button" accessibilityLabel={t('trips.open', { name: trip.name })} accessibilityHint={range} onPress={() => router.push(`/trip/${trip.id}`)}>
+        <PressableScale
+          accessibilityRole="button"
+          accessibilityLabel={t('spec41.trips.rowA11y', { name: trip.name, phase: t(`trips.phase.${phase}`), range })}
+          accessibilityHint={t('spec41.trips.rowHint')}
+          onPress={() => router.push(`/trip/${trip.id}`)}
+        >
           <Card style={{ opacity: phase === 'past' ? 0.7 : 1 }}>
             <Label>
               {t(`trips.phase.${phase}`)}
@@ -88,7 +94,7 @@ export default function TripsScreen() {
       ListEmptyComponent={<EmptyState title={t('trips.empty')} body={t('trips.emptyBody')} action={<Button label={t('trips.addDemo')} kind="quiet" onPress={addDemo} />} />}
       ListFooterComponent={
         <View style={{ gap: space.s, marginTop: space.s }}>
-          <Button label={t('trips.add')} onPress={() => router.push('/trip-edit')} />
+          <Button label={t('trips.add')} hint={t('spec41.trips.addHint')} onPress={() => router.push('/trip-edit')} />
           <Button label={t('essentials.title')} hint={t('essentials.body')} kind="quiet" onPress={() => router.push('/essentials')} />
           <Button label={t('trips.settings')} hint={t('trips.settingsHint')} kind="quiet" onPress={() => router.push('/settings')} />
         </View>

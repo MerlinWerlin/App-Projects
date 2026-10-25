@@ -1,6 +1,8 @@
 // Booking detail: times as printed with each place's zone, duration, day shift, references, addresses, notes.
+// T41: says which other items on the trip it overlaps (EDGE_CASES "Overlapping items"; nothing is moved).
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { Alert, Text, View } from 'react-native';
+import { overlapPartners, overlapTitles } from '../../src/core/clashes.ts';
 import { formatDay, formatDuration, formatTime, zoneCity } from '../../src/core/format.ts';
 import type { Stamp } from '../../src/core/model.ts';
 import { isTransport } from '../../src/core/model.ts';
@@ -10,7 +12,7 @@ import { useApp } from '../../src/state/app.tsx';
 import { findItem, useTrips } from '../../src/state/trips.tsx';
 import { fonts, space } from '../../src/theme/tokens.ts';
 import { KindIcon, carrierKey, kindKey, numberKey } from '../../src/ui/kinds.tsx';
-import { Body, Button, Card, EmptyState, Label, Screen } from '../../src/ui/kit.tsx';
+import { Body, Button, Card, EmptyState, Label, Screen, Warning } from '../../src/ui/kit.tsx';
 import { ItemAddressSlot } from '../../src/ui/slots/ItemAddressSlot.tsx';
 import { ItemTicketSlot } from '../../src/ui/slots/ItemTicketSlot.tsx';
 
@@ -48,6 +50,7 @@ export default function ItemScreen() {
     </View>
   );
   const shift = item.end ? dayShift(item.start, item.end) : 0;
+  const clashTitles = overlapTitles(overlapPartners(trip.items), item.id);
   const row = (k: Key, v?: string) =>
     v ? (
       <View key={k} style={{ gap: 2 }}>
@@ -95,6 +98,7 @@ export default function ItemScreen() {
           </>
         ) : null}
       </Card>
+      {clashTitles ? <Warning text={t('spec41.item.overlaps', { titles: clashTitles })} /> : null}
       <ItemTicketSlot trip={trip} item={item} />
       <ItemAddressSlot trip={trip} item={item} />
       <Card>

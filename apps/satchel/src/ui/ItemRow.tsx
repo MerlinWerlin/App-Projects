@@ -1,5 +1,8 @@
 // One booking in a list: kind icon, time (as printed, with the zone's city), title, and from → to. Titles wrap in
 // full (never cut off). `continuingOn` marks a journey that started on an earlier day: it shows when it arrives.
+// `overlapsWith` (titles of clashing items, T41 / EDGE_CASES "Overlapping items") adds a worded marker under the
+// row and to its spoken label, so the overlap is never shown by colour alone.
+import { Ionicons } from '@expo/vector-icons';
 import { memo } from 'react';
 import { Text, View } from 'react-native';
 import { formatDay, formatTime, zoneCity } from '../core/format.ts';
@@ -11,7 +14,17 @@ import { fonts, radius, space } from '../theme/tokens.ts';
 import { KindIcon, kindKey } from './kinds.tsx';
 import { PressableScale } from './kit.tsx';
 
-export const ItemRow = memo(function ItemRow({ item, onPress, continuingOn }: { item: Item; onPress: () => void; continuingOn?: LocalDate }) {
+export const ItemRow = memo(function ItemRow({
+  item,
+  onPress,
+  continuingOn,
+  overlapsWith,
+}: {
+  item: Item;
+  onPress: () => void;
+  continuingOn?: LocalDate;
+  overlapsWith?: string;
+}) {
   const { theme, t, lang } = useApp();
   const shift = item.end ? dayShift(item.start, item.end) : 0;
   const route = item.from || item.to ? `${item.from?.name ?? ''} → ${item.to?.name ?? ''}` : item.place?.name && item.place.name !== item.title ? item.place.name : '';
@@ -28,7 +41,8 @@ export const ItemRow = memo(function ItemRow({ item, onPress, continuingOn }: { 
     const range = `${formatTime(item.start.local)}${item.end && item.kind !== 'hotel' ? ` → ${formatTime(item.end.local)}${shift ? ` (${shift > 0 ? '+' : ''}${shift})` : ''}` : ''}`;
     time = `${range} · ${zoneCity(item.start.tz)}`;
   }
-  const label = `${t(kindKey(item.kind))}, ${item.title}, ${time}${route ? `, ${route}` : ''}`;
+  const overlapText = overlapsWith ? t('spec41.row.overlaps', { titles: overlapsWith }) : '';
+  const label = `${t(kindKey(item.kind))}, ${item.title}, ${time}${route ? `, ${route}` : ''}${overlapText ? `. ${overlapText}` : ''}`;
   const faded = !!continuingOn || item.kind === 'note';
   return (
     <PressableScale
@@ -47,6 +61,14 @@ export const ItemRow = memo(function ItemRow({ item, onPress, continuingOn }: { 
           {time}
           {route ? ` · ${route}` : ''}
         </Text>
+        {overlapText ? (
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
+            <View importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
+              <Ionicons name="alert-circle-outline" size={16} color={theme.warn} />
+            </View>
+            <Text style={{ flex: 1, fontFamily: fonts.bodyBold, fontSize: 14, color: theme.ink }}>{overlapText}</Text>
+          </View>
+        ) : null}
       </View>
     </PressableScale>
   );

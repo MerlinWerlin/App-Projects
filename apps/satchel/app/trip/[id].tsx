@@ -1,14 +1,17 @@
 // Trip timeline: demo intro (first opening of the demo trip), warnings (nights without a bed, clashes), then each
 // day with its bookings and any journey still under way from an earlier day; add a booking by kind.
+// T41: rows that clash carry a worded overlap marker; a trip that has ended says so at the top (EDGE_CASES "Past
+// trips": kept and available, never presented as coming up).
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { formatDay, formatRange } from '../../src/core/format.ts';
+import { overlapPartners, overlapTitles } from '../../src/core/clashes.ts';
+import { deviceZone, formatDay, formatRange, todayIn } from '../../src/core/format.ts';
 import { ITEM_KINDS, type ItemKind, type Trip } from '../../src/core/model.ts';
 import { placesByName } from '../../src/core/places.ts';
 import { isMapCategory } from '../../src/core/poi.ts';
-import { groupByDay, nightsWithoutBed, overlaps, type Day } from '../../src/core/timeline.ts';
+import { groupByDay, nightsWithoutBed, overlaps, tripPhase, type Day } from '../../src/core/timeline.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
@@ -97,6 +100,7 @@ export default function TripScreen() {
   const insets = useSafeAreaInsets();
   const [adding, setAdding] = useState<string | null>(null);
   const trip = trips.find((x) => x.id === id);
+  const partners = useMemo(() => overlapPartners(trip?.items ?? []), [trip]);
 
   const add = (kind: ItemKind, date: string) => {
     setAdding(null);
@@ -125,7 +129,7 @@ export default function TripScreen() {
           <ItemRow key={`c-${it.id}`} item={it} continuingOn={day.date} onPress={() => router.push(`/item/${it.id}`)} />
         ))}
         {day.items.map((it) => (
-          <ItemRow key={it.id} item={it} onPress={() => router.push(`/item/${it.id}`)} />
+          <ItemRow key={it.id} item={it} overlapsWith={overlapTitles(partners, it.id) || undefined} onPress={() => router.push(`/item/${it.id}`)} />
         ))}
         {!day.items.length && !day.continuing.length ? <Body muted>{t('trip.dayEmpty')}</Body> : null}
         {adding === day.date ? (
@@ -136,7 +140,7 @@ export default function TripScreen() {
       </Card>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [adding, lang, t, theme, router],
+    [adding, lang, t, theme, router, partners],
   );
 
   if (!trip) {
@@ -150,6 +154,7 @@ export default function TripScreen() {
   const nights = nightsWithoutBed(trip);
   const clashes = overlaps(trip.items);
   const empty = trip.items.length === 0;
+  const past = tripPhase(trip, todayIn(deviceZone())) === 'past';
   return (
     <>
       <Stack.Screen options={{ title: trip.name }} />
@@ -163,6 +168,12 @@ export default function TripScreen() {
         ListHeaderComponent={
           <View style={{ gap: space.s, marginBottom: space.s }}>
             <Text style={{ fontFamily: fonts.body, fontSize: 16, color: theme.muted }}>{formatRange(trip.startDate, trip.endDate, lang)}</Text>
+            {past ? (
+              <Card>
+                <Label>{t('trips.phase.past')}</Label>
+                <Body>{t('spec41.trip.pastNotice')}</Body>
+              </Card>
+            ) : null}
             <DemoIntro trip={trip} />
             {empty ? (
               <EmptyState

@@ -13,12 +13,19 @@ import { useEffect, useRef } from 'react';
 import { Alert } from 'react-native';
 import { useApp } from '../state/app.tsx';
 
+// Only the members used here. expo-router 58 types useNavigation() against an empty root param list, which hides
+// 'beforeRemove'; the generic narrows it to what this hook needs.
+type LeaveNavigation = {
+  addListener: (type: 'beforeRemove', callback: (e: { preventDefault: () => void; data: { action: { type: string } } }) => void) => () => void;
+  dispatch: (action: { type: string }) => void;
+};
+
 /**
  * `dirty`: the form differs from where it started. Returns `leaving()`: call it just before navigating away on
  * purpose (after Save or Delete) so the question is skipped.
  */
 export function useDiscardConfirm(dirty: boolean): { leaving: () => void; gestureEnabled: boolean } {
-  const navigation = useNavigation();
+  const navigation = useNavigation<LeaveNavigation>();
   const { t } = useApp();
   const skip = useRef(false);
 

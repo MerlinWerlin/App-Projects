@@ -26,16 +26,53 @@ B. **Android map key and terms, before any Play build.** On iPhone the map is Ap
    - **No Play build (step 26) until you decide:** (1) create a key restricted to the package `com.jared797.satchel` and its signing certificate, which a build run then adds to app.json (`android.config.googleMaps.apiKey`) and records in docs/THIRD_PARTY.md; or (2) ship Android without the online map until the offline OpenStreetMap map (T12) replaces it.
    - Either way, re-check the Play **Data safety** answers (step 27) against what the Google Maps SDK declares, and do not cache Google map tiles for offline use.
 
-## Release standard check (oversight D142-1, 25 Oct 2026)
+## Release standard check (T36, 26 Oct 2026)
 
-The owner added an App Factory release standard on 25 Oct (App-Projects `docs/RELEASE_STANDARD.md`, #88). Satchel is not in App-Projects yet and build runs cannot read that repo, so this check covers the four points the overseer named; a full line-by-line pass is task T36. Each gap is a backlog task tagged `release-std`.
+Line-by-line pass against App-Projects `docs/RELEASE_STANDARD.md` (25 Oct 2026, from the Linework 1.0 launch). Each gap has a backlog task tagged `release-std`. Starred items are yours.
 
-| Point | Satchel today | Gap / task |
+### 1. First launch
+| Standard line | Satchel | Status |
 |---|---|---|
-| First-launch language line | The app follows the phone's language (`src/i18n/core.ts`) and has no language line on first launch; only English ships until T21. | **T35**: one line on first launch naming the language in use, with a link to Settings to change it. |
-| No blocking prompts | No sign-up, no rating or tracking prompt, no permission prompt at launch. Location is asked only when you tap the "where am I" button on the map; the vault asks for device authentication only when you open it. Confirmations appear only for destructive actions (discard, delete). | None found; re-check in T36. |
-| Filters off by default | The map shows every category on first open (category toggles all on, i.e. nothing filtered out); trips and documents lists have no filters. | None found, assuming "filters off" means nothing hidden at first open; confirm in T36. |
-| Purchase rules for the one-time Plus | Plus is not built yet (T16). Plan: one non-consumable `com.jared797.satchel.plus`, no subscription, tickets, emergency card, documents and the first offline city stay free, Restore purchases in Settings. | **T16** acceptance now includes the purchase rules (restore, no gating of the free core, everything unlocked while purchases are stubbed, honest price from the store, no countdowns or nags). |
+| Follows the phone's language; non-blocking "Language: <current> · Change" line on first launch, gone once tapped or after the first session | `LanguageHintSlot` on the Trips tab; hides when tapped and after one session (T35, 5bbbf96) | met (English only ships until T21) |
+| Language stays at the top of Settings | Language is the first section of Settings | met |
+| No blocking prompts before the app is seen working | No sign-up, paywall, rating or tracking prompt; location only on "where am I"; vault asks for Face ID only when opened; demo trip on first launch | met |
+| Filters start off | Map: all 8 offered categories are on at first open; trips and documents have no filters | met. T13 must keep every offered category on at first open (the content file marks embassy, tourist info, supermarket, luggage storage and Wi-Fi `default_on: false`) |
+| An empty filtered list says why and offers a one-tap "Show all" | Map "Nearby" list: says all categories are hidden (or none in the ones that are on) and now has a "Show all categories" button | met (T39, this run) |
+
+### 2. Purchases (expo-iap)
+Satchel Plus is not built yet (T16), so none of these can be met today; T16's acceptance now lists every line.
+| Standard line | Status |
+|---|---|
+| expo-iap pinned to an exact version | gap → T16 |
+| Request sends both key styles (`ios`/`android`/`apple`/`google`), `type: 'in-app'` | gap → T16 |
+| Result taken from both the return value and `purchaseUpdatedListener`; a listener error does not end the purchase while another shape is tried | gap → T16 |
+| After a failure or empty result, re-check `getAvailablePurchases()` for up to ~10 s | gap → T16 |
+| Failure alert says nothing was charged and shows the store's error code(s) in brackets | gap → T16 |
+| Restore purchases on the same screen as Unlock | gap → T16 (Unlock and Restore both in Settings > Satchel Plus) |
+| `finishTransaction({ isConsumable: false })` | gap → T16 |
+| Free trial = a free non-consumable "XX-day Trial" the person starts | not applicable: no trial planned (the free core is the trial) |
+| \* On TestFlight buy, (trial,) Restore on a real iPhone before submitting | yours, step 19 below |
+| Paywall promises only features in this build; no "test build" / "purchases aren't available" text in a store build | gap → T16 |
+
+### 3. App Store Connect
+| Standard line | Status |
+|---|---|
+| Primary locale en-AU | step 9 now says English (Australia), matching docs/TESTFLIGHT.md |
+| Unique name | open: "Satchel" is a working title (Before anything, step 1) |
+| Subtitle, description, keywords, promo text | met: docs/STORE.md |
+| Support / marketing / privacy URLs on GitHub Pages under docs/<app>/ | docs/privacy.html and docs/support.html exist; URLs confirmed when auto-ship onboards Satchel to App-Projects (steps 3-5) |
+| Category, age rating, copyright, content rights, availability | steps 13-14; copyright and content rights: answer at submission (no third-party content except OpenStreetMap data once T12 ships) |
+| Screenshots (iPhone 6.9"), purchase review screenshot | docs/SCREENSHOTS.md; purchase screenshot needs T16 |
+| Review notes answer purpose/audience, setup/login, external services, regional differences, regulated or third-party material | met: step 21 below |
+| \* App Privacy answered and published | yours, step 12 |
+| \* App Review contact | yours, step 21 |
+| \* Screen recording on a physical iPhone: launch, main flow, paid flow | yours, after T16 (step 19) |
+| \* Paid Apps Agreement, bank and tax Active | done for the account 23 Oct 2026 (step 7) |
+
+### 4. While in review
+| Standard line | Status |
+|---|---|
+| During review, ship over-the-air only the fixes the reviewer needs | rule for build runs: no OTA update to the production channel while a version is in review except a reviewer-needed fix |
 
 ## Privacy and support pages (GitHub Pages)
 
@@ -50,7 +87,7 @@ The owner added an App Factory release standard on 25 Oct (App-Projects `docs/RE
 6. Apple Developer Program membership is active (developer.apple.com > Account). Renew if needed.
 7. App Store Connect > Business: sign the **Paid Apps agreement**, then add banking and tax forms. In-app purchases cannot go on sale until this shows "Active".
 8. Certificates, Identifiers & Profiles: confirm the App ID `com.jared797.satchel` exists with **In-App Purchase** enabled. (EAS normally creates it on the first build.)
-9. App Store Connect > Apps > "+" New App: platform iOS, name, primary language English, bundle id `com.jared797.satchel`, SKU `satchel`.
+9. App Store Connect > Apps > "+" New App: platform iOS, name, primary language English (Australia), bundle id `com.jared797.satchel`, SKU `satchel`.
 10. Copy the app's **Apple ID** number (App Information > General, the "ascAppId"). Send it to the build run: auto-ship and the PC refresh need it to ship Satchel (docs/STARTER_STANDARD.md §1, task T23).
 11. App Store Connect > the app > Monetization > In-App Purchases > "+":
     - Type **Non-Consumable**, reference name "Satchel Plus", product id `com.jared797.satchel.plus`.
@@ -67,7 +104,13 @@ The owner added an App Factory release standard on 25 Oct (App-Projects `docs/RE
 18. **(build run)** `eas build -p ios --profile production` (or `production-native` once native modules land), then `eas submit -p ios`. Auto-ship does this once it has the ascAppId.
 19. TestFlight > Internal Testing: add yourself, install, and check the Plus purchase in the sandbox (buy, delete app, reinstall, Restore purchases).
 20. Try the build with flight mode on, using the trial questions in docs/TRIAL.md.
-21. App Review information: contact details; notes such as "No account needed. A demo trip appears on first launch. Satchel Plus is a one-time non-consumable; Restore purchases is in Settings." No demo login needed.
+21. App Review information: your contact details (name, phone, email), no demo login. Review notes (release standard §3), paste and adjust:
+    - Purpose and audience: an offline travel wallet for adult travellers: bookings, tickets, documents, an emergency card and a map of the trip, all usable in flight mode.
+    - Setup and login: none. No account. A demo trip (Sydney, Tokyo, Kyoto) appears on first launch.
+    - External services: Apple Maps for the map; no server of ours, no analytics, no ads. Data stays on the phone.
+    - Regional differences: none. Emergency numbers are shown with "verify locally" and a source.
+    - Regulated or third-party material: none; map data is Apple's (OpenStreetMap once offline maps ship, with attribution).
+    - Purchases: Satchel Plus is a one-time non-consumable; Unlock and Restore purchases are in Settings.
 22. Version page: select the build, add the `com.jared797.satchel.plus` purchase, choose manual or automatic release, **Submit for Review**.
 
 ## Google Play

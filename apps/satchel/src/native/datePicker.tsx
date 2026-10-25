@@ -4,7 +4,10 @@
 // crashing. Wall-clock conversion lives in src/core/wallpicker.ts; never pass timeZoneName here, the booking's own
 // zone is handled by showing its wall-clock fields as phone-local fields.
 import { Component, type ReactNode } from 'react';
-import type { DateTimePickerEvent, DateTimePickerProps } from '@react-native-community/datetimepicker';
+import type { DateTimePickerEvent, IOSNativeProps } from '@react-native-community/datetimepicker';
+
+// v9 dropped the DateTimePickerProps export; Satchel only passes iOS-style props (Android ignores the iOS-only ones).
+type DateTimePickerProps = IOSNativeProps & { is24Hour?: boolean };
 
 type PickerModule = typeof import('@react-native-community/datetimepicker');
 export type { DateTimePickerEvent };

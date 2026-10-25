@@ -1,102 +1,102 @@
 | # | id | area | steps | expected result | automatable | priority |
 |---:|---|---|---|---|---|---|
-| 1 | TR-001 | Launch | Install and open the app on a fresh device. | App opens without an account or sign-in prompt. | yes | P1 |
-| 2 | TR-002 | Demo trip | Open the trips list on first launch. | The Sydney → Tokyo → Kyoto demo trip is available to explore. | yes | P1 |
-| 3 | TR-003 | Trips | Create a trip with a name and dates, then save. | The trip appears in the trips list with the entered details. | yes | P1 |
-| 4 | TR-004 | Trips | Open a trip, edit its name or dates, and save. | The updated details appear wherever the trip is shown. | yes | P1 |
-| 5 | TR-005 | Trips | Delete a trip and confirm the action. | The trip and its associated items are removed; other trips remain. | yes | P1 |
-| 6 | TR-006 | Trips | Start deleting a trip, then cancel confirmation. | The trip and its data remain unchanged. | yes | P2 |
-| 7 | TR-007 | Timeline | Open a trip with items on multiple days. | Items are grouped under the correct trip days. | yes | P1 |
-| 8 | TR-008 | Timeline | Add a note to a trip day and reopen the trip. | The note is saved and shown on the selected day. | yes | P2 |
-| 9 | TR-009 | Timeline | Open a trip with a future item and an earlier item. | “Next up” shows the nearest upcoming item, not a past item. | yes | P1 |
-| 10 | TR-010 | Timeline | Open a trip with no upcoming items. | “Next up” shows a clear empty state rather than an unrelated item. | yes | P2 |
-| 11 | TR-011 | Items | Add one item of each supported kind: flight, train, ferry, bus, hotel, car hire, activity and note. | Each item saves with its selected kind and appears on the timeline. | yes | P1 |
-| 12 | TR-012 | Items | Add an item with a title and start time; leave optional fields blank. | The item saves, and missing optional details do not cause an error. | yes | P1 |
-| 13 | TR-013 | Items | Edit an item, save, then reopen it. | The changed fields persist and the item remains on the correct trip. | yes | P1 |
-| 14 | TR-014 | Items | Delete an item and confirm. | The item disappears from the timeline and “Next up” if applicable. | yes | P2 |
-| 15 | TR-015 | Time zones | Create an item with an IANA time zone different from the device zone. | The item displays its local time in the item’s selected zone. | yes | P1 |
-| 16 | TR-016 | Time zones | Create two items at the same instant in different IANA zones. | Each item shows the correct local time for its own zone. | yes | P1 |
-| 17 | TR-017 | Time zones | Enter a time near midnight in the item’s zone. | The item is grouped under the correct local calendar day. | yes | P1 |
-| 18 | TR-018 | Time zones | Add an item across a daylight-saving clock change in a zone that observes it. | The displayed local time and offset follow that zone’s rules. | yes | P1 |
-| 19 | TR-019 | Time zones | Change the device time zone, then reopen an item with a saved IANA zone. | The item remains correct for its saved zone; it is not silently reassigned to the device zone. | yes | P1 |
-| 20 | TR-020 | Time zones | Set an item’s zone to a valid IANA zone and restart the app. | The zone and correct local time persist offline. | yes | P1 |
-| 21 | TR-021 | Time zones | Try to save an item with a missing or invalid time zone. | The app prevents an invalid save or provides a clear correction; it does not crash. | yes | P2 |
-| 22 | TR-022 | Flight mode | Save a trip and ticket, enable flight mode, then open both. | Saved trip and ticket details remain accessible without a network connection. | no | P1 |
-| 23 | TR-023 | Flight mode | In flight mode, add a note and edit an existing item. | Changes save locally and remain after closing and reopening the app. | no | P1 |
-| 24 | TR-024 | Flight mode | In flight mode, open the map tab. | The app handles unavailable map data clearly; it does not imply that the Trial map is offline. | no | P1 |
-| 25 | TR-025 | Flight mode | In flight mode, open the emergency card and hotel address card. | Previously saved local details are visible without a network connection. | no | P1 |
-| 26 | TR-026 | Flight mode | In flight mode, attempt an action that requires online map tiles. | The app shows a useful unavailable state and does not freeze or crash. | no | P2 |
-| 27 | TR-027 | Storage | Save trip data, force-close the app, then relaunch. | Locally saved data is still present. | no | P1 |
-| 28 | TR-028 | Attachments | Attach a PDF from Files to a trip item. | The PDF is attached and can be opened from the item. | no | P1 |
-| 29 | TR-029 | Attachments | Attach an image from Photos to a trip item. | The image is attached and can be viewed from the item. | no | P1 |
-| 30 | TR-030 | Attachments | Try to attach a file type the app cannot preview. | The app handles the file safely and explains if it cannot display it. | no | P2 |
-| 31 | TR-031 | Attachments | Remove an attachment from an item and reopen the item. | The removed attachment is no longer listed or accessible from that item. | no | P2 |
-| 32 | TR-032 | Ticket | Open a saved ticket. | Ticket details are readable in a focused, full-screen view. | no | P1 |
-| 33 | TR-033 | Ticket | Open a ticket with a saved QR crop. | The saved QR crop appears clearly and is not obscured by controls. | no | P1 |
-| 34 | TR-034 | Ticket | Open a ticket and check screen brightness; close the ticket. | Brightness increases for the ticket view and returns to its prior level on exit. | no | P1 |
-| 35 | TR-035 | Ticket | Use the ticket screen with one hand on a supported device. | Main ticket actions are reachable and usable without awkward two-handed interaction. | no | P2 |
-| 36 | TR-036 | Ticket | Open a ticket with no QR crop. | The ticket remains usable and the missing QR is not shown as a broken image. | yes | P2 |
-| 37 | TR-037 | Emergency card | Open Emergency from Home. | The emergency card is reachable in one tap from Home. | no | P1 |
-| 38 | TR-038 | Emergency card | Open the card for a country with a bundled emergency number entry. | The number, source and date are shown with a “verify locally” reminder. | yes | P1 |
-| 39 | TR-039 | Emergency card | Open the card for a country without a bundled entry. | The app does not invent a number and clearly indicates that local details need checking. | yes | P1 |
-| 40 | TR-040 | Emergency card | Enter an insurance policy number and phone number; save and reopen. | The details persist locally and display correctly. | no | P1 |
-| 41 | TR-041 | Emergency card | Add an emergency contact manually and reopen the card. | The contact appears with the entered details. | no | P2 |
-| 42 | TR-042 | Emergency card | Add private medical notes, save, and reopen the card. | Notes persist locally and are not exposed on unrelated screens. | no | P1 |
-| 43 | TR-043 | Hotel card | Add a hotel address and local-language address to an item. | Both address fields save and display on the hotel address card. | yes | P1 |
-| 44 | TR-044 | Hotel card | Open the hotel address card and view it at arm’s length. | The main address is large and legible for sharing with a driver. | no | P1 |
-| 45 | TR-045 | Document vault | Add passport details with an expiry date. | The document entry saves and shows the correct expiry information. | no | P1 |
-| 46 | TR-046 | Document vault | Add visa and licence entries with expiry dates. | Each entry saves with its correct document type and expiry date. | no | P2 |
-| 47 | TR-047 | Document vault | Open the locked vault and authenticate successfully. | The vault opens and its contents are visible. | no | P1 |
-| 48 | TR-048 | Document vault | Attempt to open the locked vault and fail or cancel authentication. | The vault contents remain hidden and the app stays usable. | no | P1 |
-| 49 | TR-049 | Document vault | Open the vault on a device where local authentication is unavailable or not set up. | The app handles the condition safely and does not expose protected content without an appropriate fallback. | no | P1 |
-| 50 | TR-050 | Document vault | Open a document with an expiry date in the past. | The app identifies the document as expired. | yes | P2 |
-| 51 | TR-051 | Document vault | Open a document nearing its expiry date. | The app shows an expiry warning according to the configured warning rule. | yes | P2 |
-| 52 | TR-052 | Low-battery mode | Set device battery below 20% and open Satchel. | Essentials mode is offered or activated according to the product’s threshold behaviour. | no | P1 |
-| 53 | TR-053 | Low-battery mode | Set battery to exactly 20% and open Satchel. | Threshold behaviour is consistent and matches the defined rule; no ambiguous repeated prompting occurs. | no | P2 |
-| 54 | TR-054 | Low-battery mode | Set battery above 20%, then turn on the manual essentials switch. | Essentials mode activates even when battery is above the threshold. | no | P1 |
-| 55 | TR-055 | Low-battery mode | Turn on manual essentials mode, close and reopen the app. | The manual setting behaves consistently with the chosen persistence rule. | no | P2 |
-| 56 | TR-056 | Low-battery mode | View essentials mode with a saved next ticket, hotel and emergency details. | The plain dark screen provides the next ticket, hotel address and emergency card. | no | P1 |
-| 57 | TR-057 | Low-battery mode | View essentials mode and inspect movement or map controls. | No animation or map is shown in essentials mode. | no | P1 |
-| 58 | TR-058 | Low-battery mode | View essentials mode with one or more details missing. | Available essentials remain usable and missing details do not cause a crash or misleading content. | no | P1 |
-| 59 | TR-059 | Low-battery mode | Exit essentials mode using its available control. | The app returns to its normal interface without losing saved data. | no | P2 |
-| 60 | TR-060 | Packing lists | Create a packing list for a trip. | A list is created and associated with the selected trip. | yes | P1 |
-| 61 | TR-061 | Packing lists | Choose a trip-type template when creating a packing list. | The list includes the items from the selected template. | yes | P2 |
-| 62 | TR-062 | Packing lists | Add a custom packing item and mark it packed. | The item is saved and its packed state is visible. | yes | P1 |
-| 63 | TR-063 | Packing lists | Reopen a trip’s packing list after app restart. | Items and packed states persist. | no | P1 |
-| 64 | TR-064 | Map | Open the map tab with a working connection. | The Trial map loads using available system map data. | no | P1 |
-| 65 | TR-065 | Map | Open the demo city map and inspect bundled demo points. | Demo points appear at their expected positions. | no | P1 |
-| 66 | TR-066 | Map | Add a saved place and return to the map. | The saved place appears as a map pin. | no | P1 |
-| 67 | TR-067 | Map | Open a map pin for a booking or saved place. | The pin shows the correct associated place or booking details. | no | P2 |
-| 68 | TR-068 | Map | Toggle each available POI category on and off. | Pins for the selected category appear or disappear as expected. | no | P1 |
-| 69 | TR-069 | Map | Open the map with location permission allowed and tap “Where am I?”. | A single location check is made and the current position is shown when available. | no | P1 |
-| 70 | TR-070 | Map | Tap “Where am I?” with location services disabled. | The app explains that location is unavailable and remains usable. | no | P1 |
-| 71 | TR-071 | Permissions | Deny location permission when prompted, then tap “Where am I?”. | The app does not crash, does not show a fabricated position and explains the limitation. | no | P1 |
-| 72 | TR-072 | Permissions | Deny location permission, then open trips, tickets and emergency card. | These features remain usable without location permission. | no | P1 |
-| 73 | TR-073 | Permissions | Deny photo access and try to attach an image. | The app explains that access is needed and offers a safe way to continue or change permission. | no | P1 |
-| 74 | TR-074 | Permissions | Deny file access or cancel the file picker. | The attachment flow closes safely and existing trip data remains unchanged. | no | P2 |
-| 75 | TR-075 | Permissions | Deny contact access when adding an emergency contact. | The app allows manual entry or clearly explains the permission limitation. | no | P2 |
-| 76 | TR-076 | Permissions | Deny local authentication when opening the vault. | Protected documents remain locked; denial does not crash the app. | no | P1 |
-| 77 | TR-077 | Dark mode | Enable system dark appearance and open Home, trips and timeline. | Screens use the dark palette with readable text and controls. | no | P1 |
-| 78 | TR-078 | Dark mode | In dark appearance, open ticket, emergency card and hotel address card. | Important information remains legible and has sufficient contrast. | no | P1 |
-| 79 | TR-079 | Dark mode | Switch from light to dark appearance while the app is open. | The interface updates without requiring data loss or an app restart. | no | P2 |
-| 80 | TR-080 | Large text | Increase system text size and open trips and timeline. | Text grows where supported; key content remains readable and is not clipped. | no | P1 |
-| 81 | TR-081 | Large text | At the largest supported text size, open item details and edit an item. | Labels and controls remain available; content can scroll where needed. | no | P1 |
-| 82 | TR-082 | Large text | Increase text size and open the ticket view. | Ticket details remain legible and essential ticket content is not hidden. | no | P1 |
-| 83 | TR-083 | VoiceOver | Enable VoiceOver and navigate Home, tabs and trips list. | Screen elements have useful accessible names and a logical reading order. | no | P1 |
-| 84 | TR-084 | VoiceOver | Navigate the timeline and open an item. | Item type, title, date and time can be identified with VoiceOver. | no | P1 |
-| 85 | TR-085 | VoiceOver | Navigate map controls and POI category toggles. | Controls announce their purpose and selected state; map information is not conveyed by colour alone. | no | P1 |
-| 86 | TR-086 | VoiceOver | Navigate ticket and emergency card screens. | Ticket details and emergency information can be read; actionable controls have accessible labels. | no | P1 |
-| 87 | TR-087 | Accessibility | Inspect interactive controls across Home, trips and settings. | Touch targets are at least 48 pt where applicable and are not unnecessarily crowded. | no | P2 |
-| 88 | TR-088 | Accessibility | Use the app with reduced motion enabled. | Essential content remains available and the interface does not rely on animation. | no | P2 |
-| 89 | TR-089 | Export | Export a trip with items and attachments as a `.satchel` file. | A versioned trip file is created and includes the trip data and attachment manifest. | no | P1 |
-| 90 | TR-090 | Import | Import a valid `.satchel` file. | Trip details and supported attachments are restored to the app. | no | P1 |
-| 91 | TR-091 | Import | Import a malformed or unsupported `.satchel` file. | The app rejects it safely, explains the problem and does not corrupt existing trips. | yes | P1 |
-| 92 | TR-092 | Import | Import the same trip file twice. | The app handles the duplicate predictably and does not silently overwrite unrelated trip data. | no | P2 |
-| 93 | TR-093 | Privacy | Use the app with the device offline and inspect its main flows. | Core trip and wallet actions do not require an account or server connection. | no | P1 |
-| 94 | TR-094 | Privacy | Inspect the app’s permission prompts and settings. | Permissions are requested only for relevant features and explain their purpose. | no | P1 |
-| 95 | TR-095 | Privacy | Deny location permission and use the app for a session. | Location is not accessed without permission or an explicit request. | no | P1 |
-| 96 | TR-096 | Data safety | Add private medical notes and document details, then inspect unrelated screens. | Sensitive details are not unintentionally exposed outside their intended screens. | no | P1 |
-| 97 | TR-097 | Errors | Close a picker or dismiss a system prompt during an action. | The app returns to a stable screen and retains previously saved data. | no | P2 |
-| 98 | TR-098 | Navigation | Move between trips, wallet, map and emergency tabs, then reopen a trip. | Navigation remains consistent and saved trip context is available. | no | P2 |
-| 99 | TR-099 | Robustness | Rapidly open and close item details and switch tabs several times. | The app remains responsive without duplicate screens, lost data or crashes. | no | P2 |
-| 100 | TR-100 | Core logic | Run unit tests for time-zone conversion, timeline grouping, next-up selection and low-battery rules. | Pure logic tests pass for representative valid, boundary and invalid inputs. | yes | P1 |
+| 1 | TR-001 | First launch | Install fresh; open Satchel. | Welcome and demo trip appear; no account or network sign-in is requested. | yes | P1 |
+| 2 | TR-002 | Demo trip | Open the demo trip. | Sydney, Tokyo and Kyoto appear in the timeline with sample items. | yes | P1 |
+| 3 | TR-003 | Trips | Create a trip with a name and dates; save and reopen it. | Trip details persist locally and appear in the trips list. | yes | P1 |
+| 4 | TR-004 | Trips | Create two trips; edit one name; delete the other. | The edit persists; only the selected trip and its associated packing list are removed. | yes | P1 |
+| 5 | TR-005 | Timeline | Add one item of each supported kind: flight, train, ferry, bus, hotel, car hire, activity and note. | Each item saves and appears with the correct kind and details. | yes | P1 |
+| 6 | TR-006 | Timeline | Add an item with a start and end time; reopen it. | Saved date and time match the values entered. | yes | P1 |
+| 7 | TR-007 | Timeline | Add an item with no optional details. | Item saves without blank or misleading placeholder details. | yes | P2 |
+| 8 | TR-008 | Timeline | Edit an item, then cancel without saving. | Original item remains unchanged. | yes | P2 |
+| 9 | TR-009 | Timeline | Start editing an item; dismiss the form with unsaved changes. | A discard confirmation appears; choosing to keep editing preserves the form. | no | P1 |
+| 10 | TR-010 | Timeline | Start editing an item; dismiss and confirm discard. | Unsaved changes are discarded; saved item remains unchanged. | no | P1 |
+| 11 | TR-011 | Timeline | Add two items that overlap in time. | Overlap is handled consistently and does not hide or corrupt either item. | yes | P2 |
+| 12 | TR-012 | Timeline | Add items with a gap between them on the same local day. | Timeline groups both items under the correct day and preserves the gap. | yes | P2 |
+| 13 | TR-013 | Next up | Add past, current and future items; open the trip. | Next up selects the appropriate upcoming item and does not select a past item. | yes | P1 |
+| 14 | TR-014 | Next up | Create a trip with no upcoming items. | Next up shows an appropriate empty state rather than stale content. | yes | P2 |
+| 15 | TR-015 | Time zones | Add an item in Tokyo time while the device uses Sydney time. | Item displays the correct Tokyo local time and date. | yes | P1 |
+| 16 | TR-016 | Time zones | Add an item in a zone with a different UTC offset; compare with a trusted test fixture. | Local-time conversion is correct without a network connection. | yes | P1 |
+| 17 | TR-017 | Time zones | Add an item near a daylight-saving transition in a zone that observes it. | The selected local time resolves correctly for that date and zone. | yes | P1 |
+| 18 | TR-018 | Time zones | Add an item in a zone that does not observe daylight saving. | No daylight-saving adjustment is applied incorrectly. | yes | P1 |
+| 19 | TR-019 | Time zones | Add a flight crossing the international date line; inspect departure and arrival. | Each endpoint shows the correct local date and time in its own zone. | yes | P1 |
+| 20 | TR-020 | Time zones | Change the device time zone after saving an item. | Item retains its intended IANA zone and displays the correct local time. | no | P1 |
+| 21 | TR-021 | Time zones | Enter an invalid or unavailable time-zone identifier in a core test. | Core validation handles it safely; app does not crash or silently invent a time. | yes | P2 |
+| 22 | TR-022 | Flight mode | Save a trip and ticket; enable flight mode; open the trip and ticket. | Saved trip details and ticket remain available without a connection. | no | P1 |
+| 23 | TR-023 | Flight mode | With flight mode on, navigate between Trips, Wallet and Emergency. | Local screens remain usable; no network-required blocking screen appears. | no | P1 |
+| 24 | TR-024 | Flight mode | With flight mode on, open the map. | Map v0 communicates that its system map may need a connection; Satchel does not claim map tiles are available offline. | no | P1 |
+| 25 | TR-025 | Flight mode | With flight mode on, open saved ticket attachments and emergency details. | Locally stored content remains accessible. | no | P1 |
+| 26 | TR-026 | Flight mode | Enable flight mode while Satchel is open. | Offline banner updates to reflect the device’s offline state. | no | P1 |
+| 27 | TR-027 | Flight mode | Disable flight mode while Satchel is open. | Offline banner updates when connectivity returns; local content remains intact. | no | P2 |
+| 28 | TR-028 | Flight mode | Save a place and booking pin; inspect the trip map with a connection. | Saved place and booking pins appear in the correct trip map scope. | no | P2 |
+| 29 | TR-029 | Map | Toggle each bundled demo POI category on and off. | Pins match the selected categories; changing filters does not alter saved data. | yes | P2 |
+| 30 | TR-030 | Map | Use a core test to map supported OSM tags to POI categories. | Supported tags map to the intended category; unknown tags are safely ignored. | yes | P2 |
+| 31 | TR-031 | Map | Tap “Where am I?” with location access granted. | Satchel requests one location fix and shows the result; it does not start background tracking. | no | P1 |
+| 32 | TR-032 | Map | Tap “Where am I?” again after the first check completes. | A new check occurs only after the user requests it. | no | P2 |
+| 33 | TR-033 | Map | Leave the map screen after requesting a location fix. | Location is not watched or updated in the background. | no | P1 |
+| 34 | TR-034 | Map | Open map with location access denied. | Map remains usable without the user’s location and offers the permission notice and fallback. | no | P1 |
+| 35 | TR-035 | Map | Open map with no saved places or demo pins available. | A clear empty state appears; map controls remain usable. | yes | P2 |
+| 36 | TR-036 | Map | Toggle a POI category that has no results in the visible area. | No-results state is clear; app remains responsive. | yes | P3 |
+| 37 | TR-037 | Permissions: location | On a fresh install, tap “Where am I?” and deny location access. | Satchel explains why access is requested and shows a useful fallback. | no | P1 |
+| 38 | TR-038 | Permissions: location | Deny location access, then request location again. | Satchel does not repeatedly prompt when the OS will not show the prompt; it offers Open Settings where appropriate. | no | P1 |
+| 39 | TR-039 | Permissions: location | Open Settings from the location permission notice; return without granting access. | Satchel remains usable and does not show a false granted state. | no | P1 |
+| 40 | TR-040 | Permissions: Photos | Deny Photos access when attaching an image. | A plain permission notice and available fallback are shown; app does not crash. | no | P1 |
+| 41 | TR-041 | Permissions: Files | Cancel the Files picker without selecting a file. | Attachment form remains safe; no empty or broken attachment is created. | no | P1 |
+| 42 | TR-042 | Permissions: Face ID | Deny or fail local authentication when opening the vault. | Vault remains locked; the app explains the result and offers the supported passcode fallback if available. | no | P1 |
+| 43 | TR-043 | Permissions: contacts | Deny contacts access when adding an emergency contact. | Manual entry remains available; no contact details are added without consent. | no | P1 |
+| 44 | TR-044 | Permissions: recovery | Grant a previously denied permission in iOS Settings; return to Satchel and retry. | Satchel recognises the updated permission state and the feature works. | no | P2 |
+| 45 | TR-045 | Attachments | Attach a PDF from Files to a trip item. | File is stored locally and can be reopened from the item. | no | P1 |
+| 46 | TR-046 | Attachments | Attach an image from Photos to a trip item. | Image is stored locally and can be reopened from the item. | no | P1 |
+| 47 | TR-047 | Attachments | Select an unsupported or unreadable file. | Satchel shows a useful error; item and existing files remain intact. | no | P2 |
+| 48 | TR-048 | Attachments | Delete an item that has an attachment; inspect the item and local storage through a test seam. | Item is removed and its associated attachment file is cleaned up. | yes | P2 |
+| 49 | TR-049 | Ticket | Open a saved ticket. | Ticket opens full screen with its saved details and QR crop. | no | P1 |
+| 50 | TR-050 | Ticket | Open ticket, note screen brightness, then exit. | Brightness is raised for the ticket view and restored on exit. | no | P1 |
+| 51 | TR-051 | Ticket | Open a ticket and use the main controls with one hand. | Important ticket actions are reachable without awkward two-handed interaction. | no | P2 |
+| 52 | TR-052 | Ticket | Open ticket with no QR crop saved. | Ticket remains readable and does not show a broken image. | no | P2 |
+| 53 | TR-053 | Ticket | Open a ticket while the phone is in flight mode. | Ticket content remains available; no connection is required. | no | P1 |
+| 54 | TR-054 | Emergency | Open Emergency from Home. | Emergency card is reachable in one tap. | no | P1 |
+| 55 | TR-055 | Emergency | Open a country card with sourced emergency numbers. | Numbers show their source and checked date, with “verify locally” guidance. | yes | P1 |
+| 56 | TR-056 | Emergency | Open a card for a number marked as needing verification. | Uncertain number is clearly flagged with “check locally” guidance; it is not presented as confirmed. | yes | P1 |
+| 57 | TR-057 | Emergency | Add insurance details, a contact and private medical notes; save and reopen. | Details persist locally and display in the correct fields. | no | P1 |
+| 58 | TR-058 | Emergency | Edit emergency details, then cancel changes. | Saved details remain unchanged. | no | P2 |
+| 59 | TR-059 | Hotel address | Add a hotel address and local-language address; open the address card. | Both address fields display clearly; the main address is prominent. | no | P1 |
+| 60 | TR-060 | Hotel address | Tap “Copy address”; paste into a local text field. | The intended address is copied and pasted correctly. | no | P2 |
+| 61 | TR-061 | Document vault | Add a passport document and expiry date; reopen the vault. | Document details persist locally and expiry warning state is correct. | no | P1 |
+| 62 | TR-062 | Document vault | Open a locked vault and authenticate successfully. | Vault contents appear only after successful authentication. | no | P1 |
+| 63 | TR-063 | Document vault | Fail or cancel authentication when opening the vault. | Vault contents remain hidden and the app remains usable. | no | P1 |
+| 64 | TR-064 | Document vault | Add documents with expired, soon-to-expire and distant expiry dates in core tests. | Expiry rules assign the correct warning state for each date. | yes | P1 |
+| 65 | TR-065 | Document vault | Deny authentication permission or make authentication unavailable. | Satchel communicates the lock state and fallback behaviour without exposing documents. | no | P1 |
+| 66 | TR-066 | Low battery | Set device battery below 20% with essentials mode off. | Satchel offers essentials mode without claiming a battery-life amount. | no | P1 |
+| 67 | TR-067 | Low battery | Set battery to exactly 20%. | Threshold behaviour matches the documented rule and does not trigger below-20% logic incorrectly. | yes | P2 |
+| 68 | TR-068 | Low battery | Set battery below 20%; enter essentials mode. | Plain dark screen shows the next ticket, hotel address and emergency card when available. | no | P1 |
+| 69 | TR-069 | Low battery | Enter essentials mode with no next ticket or hotel address. | Available emergency information remains accessible; missing sections do not show broken content. | no | P1 |
+| 70 | TR-070 | Low battery | Enter essentials mode and inspect animation and map access. | Screen has no animation and no map; essential actions remain available. | no | P1 |
+| 71 | TR-071 | Low battery | Turn essentials mode on manually in Settings. | Essentials mode opens or becomes active regardless of current battery level. | no | P1 |
+| 72 | TR-072 | Low battery | Turn manual essentials mode off in Settings. | Manual override is cleared and the selected preference persists after relaunch. | yes | P2 |
+| 73 | TR-073 | Low battery | Set threshold below 5, then above 50 in core tests; test the endpoints. | Threshold is clamped to 5–50%, inclusive. | yes | P2 |
+| 74 | TR-074 | Low battery | Dismiss the low-battery offer; change battery state and reopen the app. | Dismissal follows the documented behaviour; manual entry remains available. | no | P2 |
+| 75 | TR-075 | Packing | Create a packing list from a trip-type template; mark and unmark items. | Template items appear; checked state updates and persists. | yes | P2 |
+| 76 | TR-076 | Packing | Add a template to an existing packing list. | New template items are added without deleting existing entries. | yes | P2 |
+| 77 | TR-077 | Appearance | Set Appearance to Light; inspect Trips, map, forms and system-facing controls. | Light palette is legible and consistent across supported screens. | no | P2 |
+| 78 | TR-078 | Appearance | Set Appearance to Dark; inspect Trips, map, forms and system-facing controls. | Dark palette is legible and text and controls retain sufficient contrast. | no | P1 |
+| 79 | TR-079 | Appearance | Set Appearance to System; change the iOS appearance and return to Satchel. | Satchel follows the system appearance. | no | P2 |
+| 80 | TR-080 | Appearance | Change appearance while a form is open. | Form remains readable and entered data is preserved. | no | P2 |
+| 81 | TR-081 | Large text | Enable a large iOS text size; inspect Trips list and trip timeline. | Text scales without clipping key details or hiding actions. | no | P1 |
+| 82 | TR-082 | Large text | Enable a large text size; inspect item forms and validation errors. | Labels, fields and errors remain readable and reachable. | no | P1 |
+| 83 | TR-083 | Large text | Enable a large text size; inspect ticket and hotel address card. | Essential details remain visible; content can scroll where needed. | no | P1 |
+| 84 | TR-084 | Large text | Enable a large text size; inspect Emergency and essentials screens. | Important information remains legible and actions remain accessible. | no | P1 |
+| 85 | TR-085 | VoiceOver | Turn on VoiceOver; navigate Trips, Wallet, Map and Emergency tabs. | Each tab has a clear, meaningful accessible label and selected state. | no | P1 |
+| 86 | TR-086 | VoiceOver | Navigate a trip timeline and focus Next up and an item. | VoiceOver announces useful item details and a sensible reading order. | no | P1 |
+| 87 | TR-087 | VoiceOver | Navigate item forms, controls and validation messages. | Fields and buttons have labels; errors are announced and linked to the relevant field. | no | P1 |
+| 88 | TR-088 | VoiceOver | Navigate the map controls and “Where am I?” action. | Controls have clear labels and state; the location action can be reached and activated. | no | P1 |
+| 89 | TR-089 | VoiceOver | Navigate ticket, Emergency and hotel address screens. | Key details and actions are announced in a useful order; QR content has an appropriate description or fallback. | no | P1 |
+| 90 | TR-090 | VoiceOver | Navigate essentials mode and dismiss or open a card. | Essential content and controls are accessible without relying on animation or colour alone. | no | P1 |
+| 91 | TR-091 | Accessibility | Inspect interactive controls with an accessibility-size test or device audit. | Primary touch targets are at least 48 pt where practical and have clear labels. | yes | P2 |
+| 92 | TR-092 | Accessibility | Enable Reduce Motion; navigate screens and open essentials mode. | Non-essential motion is reduced or removed; content and actions still work. | no | P2 |
+| 93 | TR-093 | Persistence | Save trip, emergency and packing data; force-quit and relaunch. | Local data persists and the app returns without requiring a connection. | no | P1 |
+| 94 | TR-094 | Persistence | Simulate unreadable saved trip data through a test seam; open Trips. | A clear trips-load error appears; the app does not crash. | yes | P1 |
+| 95 | TR-095 | Save errors | Simulate a local save failure while saving a trip or item. | A clear save error appears and the form stays open with entered data intact. | yes | P1 |
+| 96 | TR-096 | Empty states | Open a fresh trip with no items, places or packing entries. | Each empty state explains the next useful action without implying missing network data. | yes | P2 |
+| 97 | TR-097 | Privacy | Open privacy information in Settings. | “Data Not Collected” is shown accurately; no account, tracking or ad controls are implied. | no | P2 |
+| 98 | TR-098 | Settings | Change haptics preference; activate a supported control. | Haptics follow the selected setting and do not affect control functionality. | no | P3 |
+| 99 | TR-099 | Settings | Change language using the available language picker; reopen a core screen. | Selected language is applied; missing or invalid selection falls back safely. | no | P2 |
+| 100 | TR-100 | Startup | Cold-launch the app with a slow device start; observe the splash-to-screen transition. | No blank or white flash appears; first screen is shown when app state is ready. | no | P2 |

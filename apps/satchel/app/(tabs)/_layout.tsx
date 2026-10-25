@@ -1,12 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
+import type { ColorValue } from 'react-native';
 import { useApp } from '../../src/state/app.tsx';
 import { fonts } from '../../src/theme/tokens.ts';
 
 type IconName = 'airplane-outline' | 'map-outline' | 'wallet-outline' | 'medkit-outline';
 const icon =
   (name: IconName) =>
-  ({ color, size }: { color: string; size: number }) => <Ionicons name={name} size={size} color={color} />;
+  ({ color, size }: { focused: boolean; color: ColorValue; size: number }) => <Ionicons name={name} size={size} color={typeof color === 'string' ? color : undefined} />;
 
 export default function TabsLayout() {
   const { t, theme } = useApp();

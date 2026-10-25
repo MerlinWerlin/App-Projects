@@ -1,174 +1,319 @@
 # Accessibility
 
-These notes apply to every Satchel screen and control. Use native accessible controls where possible. Accessibility labels and hints must describe the action and its result, not its appearance. Do not rely on colour, position, sound or haptics alone to communicate information.
+Accessibility is part of each screen, not a final polish pass. Keep controls understandable and usable with VoiceOver, Switch Control, larger text, reduced motion and one hand. Use the same plain wording in visible text and accessibility labels.
 
 ## App-wide requirements
 
-- **VoiceOver:** Give every interactive element a concise, specific label and an action hint. Include relevant state in the label, such as “Packed” or “Off”. Use native button, switch, tab, heading and text-field semantics. Group related static text when that makes it easier to understand; do not group controls that need to be operated separately.
-- **Reading order:** Follow the visual order, from screen title to main content to actions. Keep focus predictable after navigation, adding or deleting an item, opening a modal, or changing a filter. Return focus to the control that opened a modal when it closes. Announce meaningful status changes, errors and save confirmations.
-- **Dynamic Type:** Support text resizing through the largest system accessibility sizes. Allow labels and values to wrap; do not truncate essential travel details. Reflow rows and cards vertically when needed. At large sizes, let screens scroll and keep actions available without overlapping content. Text inside maps may be less prominent, but map controls and a usable alternative list must remain accessible.
-- **Touch:** Make every interactive target at least **48 × 48 pt**, including icon buttons, checkboxes, map controls and close buttons. Keep adequate spacing between neighbouring targets.
-- **Contrast:** Check text, icons, control states, borders and focus indicators in both light and dark appearances. Do not use the orange accent alone for small text on paper or white; use ink for readable text and reserve orange for accents or sufficiently large, high-contrast elements. Do not communicate status by colour alone. Verify the complete palette against WCAG contrast guidance.
-- **Motion:** Respect Reduce Motion. Avoid unnecessary movement, parallax and animated transitions; use a simple state change or fade where practical. Do not animate essential information into view.
-- **Haptics:** Haptics are optional feedback, never the only feedback. Provide a setting to turn them off. Respect the device’s reduced-haptics setting where available.
-- **Focus and appearance:** Maintain a visible keyboard and switch-control focus state. Support sufficient contrast and clear selected, disabled, error and pressed states. Do not convey information through font or colour alone.
-- **Permissions:** Explain why a permission is needed before requesting it. Location is checked only when requested; do not imply background tracking.
+### VoiceOver and control semantics
 
-## Trips tab
+- Give every interactive control an explicit, localised accessibility label and an action-focused hint. Do not rely on an icon, placeholder, colour or position alone.
+- Use native button, link, text-field, switch, checkbox and adjustable-control semantics. Expose selected, disabled, expanded, checked and loading states where relevant.
+- Include meaningful values in labels or values: for example, “Appearance, Dark” or “Battery threshold, 20 per cent”. Update the value after a change.
+- Hints describe the result of an action, not how to operate VoiceOver. Keep them short; omit a hint when the label and role already make the action clear.
+- Mark decorative icons and illustrations as hidden from accessibility. Do not hide meaningful status or error text.
+- Announce validation errors and save results. Move accessibility focus to an error summary or the first invalid field when appropriate.
+- Preserve logical reading and focus order. Focus should not jump unexpectedly after navigation, dialogs, loading or content updates.
+- Dialogs and sheets must have an accessible title, announce their appearance, contain focus while open and return focus to the control that opened them when dismissed.
+- Ensure swipe-to-dismiss has an accessible, visible alternative, with a discard confirmation when edits would be lost.
 
-**Reading order:** Screen title, trip list, primary action, tab bar.
+### Text size and layout
 
-- Each trip card is one focusable control if it opens the trip. Label: “{Trip name}, {date range}, {destination summary}”. Hint: “Opens trip timeline.”
-- If a card contains separate actions, expose each as a separate control with its own label and hint; do not make the card and its child actions ambiguous.
-- **Add trip** button. Label: “Add trip”. Hint: “Creates a trip.”
-- Empty state: announce that there are no trips and provide a labelled **Add trip** button.
-- Tab bar: label tabs “Trips”, “Map”, “Wallet” and “Emergency”; hint each as “Shows {section}”. Announce the selected tab.
+- Support Dynamic Type through the largest accessibility sizes on every screen, including sheets, ticket details, map controls, error messages and buttons.
+- Allow text to wrap. Let content grow vertically and scroll rather than clipping, truncating important text or overlapping controls. Avoid fixed-height text containers.
+- At the largest sizes, stack horizontal layouts, move secondary actions below primary content and keep labels beside their values. Do not require horizontal scrolling for essential content.
+- Use scalable text styles and test with the largest accessibility text size on supported iPhones. Keep important dates, times, addresses, ticket details and emergency information readable.
+- Do not communicate information through font weight, colour or position alone.
 
-## Trip timeline
+### Touch, colour and motion
 
-**Reading order:** Trip title and dates, “Next up” summary, day headings and items in chronological order, then screen actions.
+- Make every tappable target at least **48 × 48 pt**, including icon buttons, map category toggles, close buttons and small row actions. Keep adequate spacing between targets.
+- Meet WCAG AA contrast for text and controls: at least **4.5:1** for normal text and **3:1** for large text and meaningful non-text controls. Verify actual rendered colour pairs in both light and dark appearance.
+- The navy ink (`#14213D`) on paper (`#F4F1EA`) is the preferred light-theme text pairing. Do not use muted text (`#6B7280`) for essential information without checking contrast at its actual size and background.
+- Treat orange as an accent, not a default text colour. Do not place small white text on the light orange accent (`#E07A2F`) or use colour alone to indicate ticket status, warnings or selection. Pair colour with a word, icon or shape.
+- Check all dark-theme pairings too. Do not assume a colour that works in light appearance remains legible on dark cards.
+- Respect Reduce Motion. Replace non-essential movement with an immediate state change or a brief fade; do not use parallax, repeated movement or animated transitions to communicate essential information.
+- Haptics are optional. Respect the in-app haptics setting and do not make vibration the only confirmation or warning.
 
-- Trip title and day headings are headings. Include the day and date in each day heading.
-- **Next up** card: label includes item type, title and local start time with time zone where useful. Hint: “Opens item details.”
-- Each timeline item: label includes item type, title, local date and time, and location if present. Hint: “Opens item details.”
-- **Add item** button. Label: “Add item”. Hint: “Adds an item to this trip.”
-- **Packing list** button. Label: “Packing list”. Hint: “Opens this trip’s packing list.”
-- **Map** button. Label: “Trip map”. Hint: “Shows saved places and the offline map.”
-- **Trip options** button. Label: “Trip options”. Hint: “Opens trip actions.”
-- If reordering or deleting items is available, expose labelled actions such as “Move {item}” and “Delete {item}”; confirm destructive actions and announce the result.
+## Screen notes
 
-## Add or edit trip
+Labels and hints below describe the minimum accessible meaning for controls. Substitute live values, selected states and localised strings as needed. Reusable controls should keep the same label and hint wherever they appear.
 
-**Reading order:** Title, fields in form order, validation messages, save and cancel actions.
+### Trips home
 
-- Label each text field by its purpose, for example “Trip name”, “Start date” and “End date”. Provide a concise hint when the expected format or purpose is not obvious. Use the correct keyboard type.
-- Date controls: label with the field name and current value. Hint: “Choose {start/end} date.”
-- **Save** button. Hint: “Saves trip details.”
-- **Cancel** button. Hint: “Discards changes and returns to trips.” Confirm if unsaved changes would be lost.
-- Associate validation errors with the relevant field and announce them to VoiceOver.
+**Reading order:** screen title; welcome or demo-trip introduction when shown; low-battery notice; trip list and each trip’s summary; emergency shortcut; add-trip action; tab bar.
 
-## Add or edit item
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Trip row | “Trip to {destination}, {date range}” | “Opens the trip timeline.” |
+| Add trip | “Add trip” | “Creates a trip.” |
+| Emergency shortcut | “Emergency card” | “Opens your emergency information.” |
+| Low-battery offer | “Low-battery essentials available” | “Opens your next ticket, hotel address and emergency card.” |
+| Dismiss low-battery offer | “Dismiss essentials suggestion” | “Hides this suggestion.” |
+| Retry loading | “Try loading trips again” | “Loads your saved trips again.” |
+| Tab: Trips | “Trips” | “Shows your trips.” |
+| Tab: Map | “Map” | “Opens the map.” |
+| Tab: Wallet | “Wallet” | “Shows your tickets.” |
+| Tab: Emergency | “Emergency” | “Opens your emergency card.” |
 
-**Reading order:** Title, item type, fields in form order, attachment controls, save and cancel actions.
+Announce empty and error states as text. Keep the emergency shortcut available without requiring a long scroll.
 
-- Item-type selector: label “Item type, {selected type}”. Hint: “Choose a type of trip item.” Expose each option’s selected state.
-- Label every field, including title, date, start and end time, time zone, location, notes and any type-specific fields. Add hints for formats where needed.
-- Time-zone selector: label includes the selected time zone. Hint: “Choose the time zone used for this item.”
-- **Add attachment** button. Hint: “Choose a file or image to attach.”
-- Attached-file row: label includes filename and file type. Provide separate, labelled **Open** and **Remove** controls if available.
-- **Save** button. Hint: “Saves this item to the trip.”
-- **Cancel** button. Hint: “Discards changes and returns to the trip.”
+### First launch and welcome
 
-## Item details and ticket view
+**Reading order:** welcome heading and explanation; language-in-use line and Settings link; demo-trip explanation; available actions.
 
-**Reading order:** Item title and type, date and time, location, attachment or ticket content, then actions. Keep essential information near the top.
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Language settings link | “Language: {language}. Change in Settings” | “Opens language settings.” |
+| Try demo trip | “Open demo trip” | “Shows a sample trip and its features.” |
+| Continue or dismiss | Use the visible action, for example “Continue” | State the next screen or result. |
 
-- **Edit** button. Hint: “Edits this item.”
-- **Show ticket** button. Hint: “Opens the ticket for viewing.”
-- **Open attachment** button. Hint: “Opens {filename}.”
-- **Share or export** button, where available. Hint: “Shares a copy of this item.” State clearly what will be shared.
-- **Delete** button, where available. Hint: “Deletes this item.” Confirm before deletion.
-- Ticket and QR content must have a useful accessible description. Do not describe a QR code as a substitute for its contents; expose the associated ticket details as text. Ensure a QR code is not clipped or obscured at large text sizes.
-- **Ticket view:** Keep the most important ticket details and QR code visible without requiring precise gestures. Place a large, labelled close or back control within easy reach. Label it “Close ticket”; hint: “Returns to item details.” Do not require a swipe gesture to reveal essential information. Brightness changes must not be required to read or use the ticket, and must not prevent access to system controls.
+Do not require a blocking welcome flow to reach saved travel information.
 
-## Attachments and file selection
+### Trip timeline
 
-- Label source actions clearly, such as **Choose file** (“Selects a document from Files”) and **Choose photo** (“Selects an image from Photos”).
-- Give each selected attachment a filename label and a separate remove action if provided.
-- Loading, unsupported-file and failure messages must be readable and announced. Do not communicate upload or processing state by animation alone.
-- When returning from a picker, restore focus to the attachment control or selected file.
+**Reading order:** trip title and dates; Next up card; trip-level actions; day headings in chronological order; items within each day; packing list and trip map links; add-item action.
 
-## Hotel address card
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Next up card | “Next: {item type}, {title}, {local time zone and time}” | “Opens this item.” |
+| Day heading | “{day and local date}” | No hint unless it is interactive. |
+| Timeline item | “{item type}, {title}, {local start time}, {location if present}” | “Opens item details.” |
+| Add item | “Add trip item” | “Choose an item type to add.” |
+| Trip map | “Map for this trip” | “Shows this trip’s places and map.” |
+| Packing list | “Packing list” | “Opens this trip’s packing list.” |
+| Edit trip | “Edit trip” | “Changes the trip details.” |
+| Delete trip | “Delete trip” | “Deletes this trip and its saved items and packing list.” |
 
-**Reading order:** Hotel name, local-language address, address in the user’s language, other useful details, actions.
+Read times with their relevant local date and time zone when ambiguity is possible. Do not convey day grouping by colour alone.
 
-- Present addresses as selectable, readable text; do not make the only address available inside an image.
-- **Copy address** button. Hint: “Copies the address to the clipboard.”
-- If there are separate address fields, label them “Local-language address” and “Address in {language}”.
-- Any phone or navigation action must state what it does, such as “Call hotel” or “Open directions”. Do not imply directions work offline if they require another app or a connection.
+### Add and edit trip
 
-## Map tab
+**Reading order:** sheet title; fields in visual order; validation messages beside their fields; save and cancel actions.
 
-**Reading order:** Screen title and flight-mode status, map controls, map content or accessible place list, selected place details, tab bar.
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Trip name | “Trip name” | “Enter a name for this trip.” |
+| Destination | “Destination” | “Enter the main destination.” |
+| Start date / end date | “Start date” / “End date” | “Choose the {start/end} date.” |
+| Save | “Save trip” | “Saves your changes.” |
+| Cancel | “Cancel editing trip” | “Discards unsaved changes after confirmation.” |
 
-- Provide an accessible list of saved places and visible points of interest; the map must not be the only way to find or understand this information.
-- **Where am I?** button. Hint: “Checks your location once while the app is open.” On activation, explain the location permission request if needed. Do not start continuous or background location.
-- Location result: announce that the location was checked and provide a readable place or coordinate description where available. Provide a clear error or permission-denied message.
-- Map zoom controls: label “Zoom in” and “Zoom out”; hint: “Changes map scale.” Provide alternatives to pinch gestures.
-- Category filters: use labelled switches or checkboxes, for example “Show toilets” or “Show pharmacies”. Include on/off state and announce filter changes.
-- Place markers: label with place name and category. Hint: “Shows place details.” Provide equivalent access in the place list.
-- Selected place card: expose name, category, address or distance as text, followed by separately labelled actions.
-- **Download map** or **Manage maps** controls must state the city and the action. Announce download progress, completion, errors and available storage information as text.
-- Map attribution must remain visible and accessible.
-- When offline, state “Flight mode: map and tickets still work” only when accurate. Do not rely on a banner’s colour or icon to communicate offline status.
+Expose field values and required status. Do not rely on placeholder text as the only label.
 
-## Emergency tab and emergency card
+### Add and edit item
 
-**Reading order:** Screen title, local emergency information and its source/date, insurance details, emergency contacts, medical notes, actions.
+**Reading order:** sheet title and item type; common fields; type-specific fields; attachments; validation messages; save and cancel actions.
 
-- Display the source and date for local emergency numbers. Include “Verify locally” as readable text.
-- Label each number with its service and country or region. Make calling an explicit, separate action, for example “Call emergency services, {number}”; do not trigger a call by selecting the number text.
-- Contact cards: label with contact name and relationship, if provided. Give separate, explicit actions such as “Call {name}”.
-- Medical notes must be readable as text and labelled as private, local-only information. Do not expose their contents in a generic control label.
-- **Edit emergency card** button. Hint: “Edits emergency and contact details.”
-- Any call or external-app action must make its effect clear before activation where appropriate.
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Item type | “Item type, {type}” | “Choose a different type of trip item.” |
+| Title | “Title” | “Enter a name for this item.” |
+| Start date and time | “Start date and time” | “Choose when this item starts.” |
+| End date and time | “End date and time” | “Choose when this item ends.” |
+| Time zone | “Time zone, {zone}” | “Choose the time zone used for this item.” |
+| Location or address | “Location” or “Address” | “Enter the place for this item.” |
+| Booking reference | “Booking reference” | “Enter the reference if you want to save it.” |
+| Phone | “Phone number” | “Enter a phone number.” |
+| Notes | “Notes” | “Enter additional details.” |
+| Add attachment | “Add attachment” | “Choose a file or photo to attach.” |
+| Attachment row | “Attachment, {file name}” | “Opens the attachment.” |
+| Remove attachment | “Remove {file name}” | “Removes this file from the item.” |
+| Save | “Save item” | “Saves your changes.” |
+| Delete | “Delete item” | “Deletes this item and its attached files.” |
+| Cancel | “Cancel editing item” | “Discards unsaved changes after confirmation.” |
 
-## Document vault and document detail
+Date and time pickers must expose their selected value and work with system accessibility settings. Identify time-zone search results by city and IANA zone; do not announce a bare offset as the only identifier.
 
-**Reading order:** Vault title and lock state, document list, add action. For a document: document name and type, expiry information, preview or details, actions.
+### Ticket view
 
-- Locked vault: label the unlock control “Unlock document vault”. Hint: “Uses device authentication to open your saved documents.” Clearly state when authentication is unavailable and offer an accessible alternative if supported.
-- Document row: label with document type, name and expiry status/date. Hint: “Opens document details.”
-- **Add document** button. Hint: “Adds a document stored on this device.”
-- Document fields and expiry dates must be exposed as text, not only in a scanned image.
-- **Delete document** button. Hint: “Deletes this saved document.” Confirm before deletion.
-- Explain clearly if enabling iCloud sync changes where documents or private notes are stored. Do not imply local-only storage when sync is enabled.
+**Reading order:** ticket title and essential travel details; QR code or barcode; reference and attachment actions; close action. Keep the most important ticket information near the bottom of the screen for one-handed reach where practical.
 
-## Packing list
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Close ticket | “Close ticket” | “Returns to the previous screen.” |
+| Ticket details | “{item type}, {title}, {date}, {local time}, {location}” | No hint unless opening more details. |
+| QR code | “Ticket code for {title}” | “Show this code to the attendant.” |
+| Copy booking reference | “Copy booking reference” | “Copies the reference to the clipboard.” |
+| Open attachment | “Open ticket attachment, {file name}” | “Opens the saved ticket file.” |
+| Brightness control, if shown | “Screen brightness” | State the current setting and what changing it does. |
 
-**Reading order:** List title, progress summary, items in list order, add and list actions.
+Do not require a pinch gesture or precise positioning to present a code. Keep the code large, high contrast and visible without obscuring essential details. VoiceOver should announce a useful code description, not attempt to read image pixels. Preserve full-screen brightness behaviour only while the ticket is open and restore the previous setting on exit. Provide a clear, reachable close action. Do not make full brightness the only way to use the ticket.
 
-- Each item is a labelled checkbox or switch with its name and state, for example “Travel adaptor, packed”. Hint: “Marks this item as packed” or “Marks this item as not packed.”
-- Do not use colour or a tick alone to indicate packed state.
-- **Add item** button. Hint: “Adds an item to this packing list.”
-- **Add template** button, if available. Hint: “Adds suggested items for this trip type.”
-- **Delete item** and **Clear list** actions must be labelled and confirmed where destructive.
+### Wallet
 
-## Low-battery essentials mode
+**Reading order:** screen title; tickets grouped by date; each ticket’s type, title and local time; empty state.
 
-**Reading order:** Screen title and status, next ticket, hotel address, emergency card, exit action.
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Ticket row | “{item type}, {title}, {local date and time}” | “Opens the ticket.” |
+| Empty-state action, if present | Name the action, such as “Add a trip item” | “Opens the form to add a ticket.” |
 
-- Use a **pure black background with white text and controls**. Do not use grey text, colour-only status, decorative graphics or animation in this mode. Keep text and essential controls high contrast and readable.
-- Show essential ticket, address and emergency information as selectable text where practical. Provide the same clear labels and hints as their full-screen versions.
-- **Open ticket**, **Hotel address** and **Emergency card** controls must say what they open.
-- **Exit essentials mode** button. Hint: “Returns to the previous screen.”
-- Support Dynamic Type and scrolling; do not shrink text to fit. Keep controls at least 48 × 48 pt.
-- Mode changes must be announced. The mode must remain usable without haptics, motion, sound or a map.
+Group headings should be announced as headings. Do not rely on colour or a ticket-shaped decoration to identify ticket rows.
 
-## Settings
+### Emergency card
 
-**Reading order:** Screen title, settings grouped by topic, then app information and legal or data information.
+**Reading order:** screen title; relevant emergency numbers and source/date note; insurance details; emergency contacts; medical notes; hotel address shortcut; edit actions.
 
-- Use labelled switches with their current state and a concise effect. Examples:
-  - “Haptics, on/off”. Hint: “Turns optional vibration feedback on or off.”
-  - “Reduce motion, on/off”, if an in-app option is provided. Hint: “Reduces non-essential movement in Satchel.”
-  - “Low-battery essentials mode, on/off”. Hint: “Manually turns essentials mode on or off.”
-  - “iCloud sync, on/off”, if available. Hint: “Syncs supported data across your devices.”
-- Explain the storage and privacy effect of sync before enabling it. Keep the user’s choice clear.
-- **Theme** selector, if available: label the selected theme and expose each option’s name and selected state.
-- **Export trip** and **Import trip** actions must identify what will be exported or imported and whether attachments are included.
-- Links and disclosure controls need descriptive labels; avoid generic labels such as “More” when the destination can be named.
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Emergency number | “{service}, {number}” | “Calls {number}” only if a call action is actually available. |
+| Source and checked date | “Source: {source}. Checked {date}. Verify locally.” | No hint. |
+| Number caution | Read the warning with the number; do not use a colour-only alert. | No hint. |
+| Insurance details | “Insurance: {provider or policy details}” | No hint unless it opens more information. |
+| Emergency contact row | “{contact name}, {phone number}” | State the available action, such as “Opens contact details.” |
+| Medical notes | “Private medical notes” | State whether this opens or edits the notes. |
+| Edit card | “Edit emergency card” | “Changes your saved emergency information.” |
+| Hotel address shortcut | “Hotel address” | “Opens the address card.” |
 
-## Export and import
+Make numbers easy to select, copy or use with an available phone action. Keep source, checked date and “verify locally” text readable. Never imply emergency numbers are guaranteed current.
 
-- Export action label includes the trip name. Hint: “Creates a Satchel trip file to share or save.” State which trip data and attachments are included.
-- Import action label: “Import trip file”. Hint: “Selects a Satchel file to review before importing.”
-- Present the trip name and import summary before confirmation. Label **Import trip** and **Cancel** actions distinctly.
-- Announce success or failure in text. Do not replace a confirmation or error message with colour or a transient animation alone.
+### Edit emergency card
 
-## Modals, alerts and errors
+**Reading order:** sheet title; country and service-number fields; source and confidence warnings; insurance fields; contact controls; medical notes; save and cancel.
 
-- Move VoiceOver focus into a modal or alert when it opens and return focus to its triggering control when it closes.
-- Give every modal a clear title and labelled close or cancel control.
-- Name the consequences of destructive actions. Provide distinct confirmation and cancellation controls.
-- Associate validation and error messages with the affected control. Keep messages visible long enough to read and announce them when they appear.
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Country | “Country” | “Choose the country for these emergency numbers.” |
+| Emergency service number | “{service} number” | “Enter the local number for {service}.” |
+| Insurance fields | Use the visible field name, such as “Insurance phone number” | State what information to enter. |
+| Add contact | “Add emergency contact” | “Choose a contact or enter details.” |
+| Contact picker | “Choose a contact” | “Select a person to add as an emergency contact.” |
+| Remove contact | “Remove {contact name}” | “Removes this emergency contact from your card.” |
+| Medical notes | “Private medical notes” | “Enter information stored on this device.” |
+| Save | “Save emergency card” | “Saves your emergency information.” |
+| Cancel | “Cancel editing emergency card” | “Discards unsaved changes after confirmation.” |
+
+Explain the contacts permission before requesting it and provide a usable manual-entry fallback.
+
+### Hotel address card
+
+**Reading order:** hotel name; local-language address; other address details; copy and close actions.
+
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Copy address | “Copy hotel address” | “Copies the address to the clipboard.” |
+| Close | “Close address card” | “Returns to the previous screen.” |
+| Edit address, if shown | “Edit hotel address” | “Changes the saved hotel address.” |
+
+Use large, wrapping text for the address. Keep the local-language address intact and selectable; do not transliterate or truncate it. Ensure the card is legible when shown to another person.
+
+### Document vault
+
+**Reading order:** vault lock status; document list and expiry warnings; add-document action; settings or lock action.
+
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Unlock vault | “Unlock document vault” | “Authenticates to show saved documents.” |
+| Document row | “{document type}, expires {date}” | “Opens the saved document.” |
+| Expiry warning | “Expiry warning: {document type}, expires {date}” | No hint. |
+| Add document | “Add document” | “Choose a document type and file.” |
+| Lock vault | “Lock document vault” | “Hides saved documents.” |
+| Delete document | “Delete {document type}” | “Deletes this saved document from the device.” |
+
+Never expose document contents in a label, hint or notification. Make authentication success and failure understandable and provide the device passcode fallback when available.
+
+### Add and edit vault document
+
+**Reading order:** sheet title; document type; document details and expiry; attached file; save and cancel.
+
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Document type | “Document type, {type}” | “Choose the type of document.” |
+| Document name | “Document name” | “Enter a name to recognise this document.” |
+| Expiry date | “Expiry date” | “Choose the document expiry date.” |
+| Add or replace file | “Add document file” or “Replace document file” | “Choose a file or photo stored on this device.” |
+| Save | “Save document” | “Saves this document in the vault.” |
+| Cancel | “Cancel editing document” | “Discards unsaved changes after confirmation.” |
+
+Explain the purpose before requesting file or photo access. Make permission denial and the file-picker fallback accessible.
+
+### Packing list
+
+**Reading order:** trip and list title; completion summary; items in list order; template action; add-item action.
+
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Packing item | “{item}, {checked/unchecked}” | “Marks this item {packed/not packed}.” |
+| Add item | “Add packing item” | “Adds an item to this list.” |
+| Add template | “Add template” | “Adds suggested items to this packing list.” |
+| Delete item | “Delete {item}” | “Removes this item from the list.” |
+
+Expose the checked state semantically. Do not depend on a tick colour alone.
+
+### Add packing item or template
+
+**Reading order:** sheet title; item or template choices; any name field; add, save and cancel actions.
+
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Template choice | “{template name}” | “Adds suggested items for this trip type.” |
+| Item name | “Packing item” | “Enter an item to pack.” |
+| Add | “Add to packing list” | “Adds the selected items.” |
+| Cancel | “Cancel” | “Closes without adding items.” |
+
+### Map
+
+**Reading order:** map title and offline/flight-mode status; map content or map availability notice; category filters; saved places and booking results; location action; save-place action; map attribution.
+
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Category filter | “Show {category}, {on/off}” | “Shows or hides {category} places on the map.” |
+| Map point | “{place name or category}, {distance if available}” | “Opens place details.” |
+| Saved place | “{place name}, saved” | “Opens this saved place.” |
+| Where am I? | “Where am I?” | “Checks your location once while using the map.” |
+| Save place | “Save this place” | “Adds this place to the trip.” |
+| Remove saved place | “Remove {place name} from trip” | “Removes this saved place from the trip.” |
+| Trip map scope | “Map for {trip name}” | “Shows places for this trip.” |
+| Permission action | “Open Settings” | “Opens device settings to change location access.” |
+
+Do not make selecting a pin the only way to access a place. Provide an accessible list or equivalent result view. Explain location use before asking permission. Location is a single check on request; do not describe or imply background tracking. Keep map attribution readable and accessible. Announce when the map is unavailable or has no saved places, with an alternative action where possible.
+
+### Essentials mode
+
+**Reading order:** “Low-battery essentials” heading; next ticket; hotel address; emergency card; close action. Keep this screen still and direct.
+
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Next ticket card | “Next ticket: {title}, {local date and time}” | “Opens the ticket.” |
+| Hotel address card | “Hotel address” | “Shows the saved address in large text.” |
+| Emergency card | “Emergency card” | “Shows your emergency information.” |
+| Close | “Close essentials” | “Returns to the previous screen.” |
+
+Use a **pure black background and white text**. Keep text and controls high contrast and readable at all supported sizes. No animation or map is shown. Do not scale controls down: retain targets of at least 48 × 48 pt. Ensure this screen remains usable with VoiceOver and does not rely on a battery warning sound or haptic.
+
+### Settings
+
+**Reading order:** screen title; appearance and language; haptics; essentials threshold and manual switch; privacy information; other settings and support actions.
+
+| Control | VoiceOver label | Hint |
+|---|---|---|
+| Appearance | “Appearance, {System/Light/Dark}” | “Choose how Satchel looks.” |
+| Language | “Language, {language}” | “Choose the language used in Satchel.” |
+| Haptics | “Haptics, {on/off}” | “Turns optional vibration feedback on or off.” |
+| Essentials threshold | “Essentials battery threshold, {value} per cent” | “Adjusts when Satchel suggests essentials mode.” |
+| Manual essentials switch | “Offer essentials mode, {on/off}” | “Turns the low-battery essentials offer on or off.” |
+| Privacy information | “Data Not Collected” | “Explains how Satchel handles your data.” |
+| Open device settings | “Open Settings” | “Opens device settings for this permission.” |
+
+Switches must announce their state. The threshold must be keyboard and assistive-technology operable, expose its value and allow precise adjustment without dragging alone. Haptics must never be required for feedback.
+
+### Tabs, navigation and system sheets
+
+- Give each tab its name and selected state. Keep the tab bar reachable at larger text sizes.
+- Give navigation back, close, edit, delete and overflow controls explicit labels. If an icon is decorative, hide it from VoiceOver.
+- File and photo pickers, authentication prompts, date pickers and contact pickers must have a clear spoken context before opening and a clear result or error afterwards.
+- Permission notices must explain why access is requested, offer an accessible “Open Settings” action where available, and retain a usable alternative when permission is declined.
+
+## Verification checklist
+
+Test on device with VoiceOver and the largest Dynamic Type sizes, in both light and dark appearance:
+
+- Every control has a clear label, suitable role, current value or state, and a useful hint where needed.
+- Reading and focus order match the screen’s visual and task order.
+- Text wraps and content scrolls without hiding actions or important details.
+- All touch targets are at least 48 × 48 pt.
+- Text, controls, selected states, errors and warnings meet contrast requirements; meaning is not colour-only.
+- Reduce Motion removes non-essential animation without removing feedback or context.
+- Ticket details and essentials mode can be used one-handed; essentials mode is static, pure black and white.
+- Haptics can be disabled without loss of information.
+- Permission denial, empty, loading, save-error and offline states remain accessible.

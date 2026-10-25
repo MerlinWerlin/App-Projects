@@ -2,6 +2,8 @@
 // your driver", and a one-handed Close at the bottom. With no address saved, explains and offers Edit booking.
 // Copy address puts one address on the clipboard (expo-clipboard behind src/native/clipboard.ts; press and hold
 // still works where the clipboard module is missing).
+// T41 (FLOWS §7.1, ACCESSIBILITY "Hotel address card"): an Edit hotel address action under a saved address, and a
+// hint on Close.
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { AccessibilityInfo, ScrollView, Text, View } from 'react-native';
@@ -54,6 +56,12 @@ export default function AddressScreen() {
               </Text>
             ) : null}
             {!canCopy ? <Body muted>{t('address.copyTip')}</Body> : null}
+            <Button
+              kind="quiet"
+              label={t('spec41.address.edit')}
+              hint={t('spec41.address.editHint')}
+              onPress={() => router.push({ pathname: '/item-edit', params: { tripId: found.trip.id, id: found.item.id } })}
+            />
           </>
         ) : (
           <EmptyState
@@ -70,7 +78,7 @@ export default function AddressScreen() {
         )}
       </ScrollView>
       <View style={{ paddingHorizontal: space.l, paddingTop: space.s, paddingBottom: insets.bottom + space.l, borderTopWidth: 1, borderTopColor: theme.line, backgroundColor: theme.paper }}>
-        <Button label={t('address.close')} onPress={close} />
+        <Button label={t('address.close')} hint={t('spec41.common.closeHint')} onPress={close} />
       </View>
     </View>
   );

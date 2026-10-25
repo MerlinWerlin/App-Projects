@@ -40,6 +40,8 @@ declare module '@react-native-community/datetimepicker' {
     style?: StyleProp<ViewStyle>;
   };
 
+  /** v9 name for the iOS prop set (DateTimePickerProps is no longer exported by the real package). */
+  export type IOSNativeProps = DateTimePickerProps;
   const RNDateTimePicker: React.FC<DateTimePickerProps>;
   export default RNDateTimePicker;
 

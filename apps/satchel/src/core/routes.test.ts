@@ -3,9 +3,10 @@
 import assert from 'node:assert/strict';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
 
-const app = new URL('../../app/', import.meta.url).pathname;
+const app = fileURLToPath(new URL('../../app/', import.meta.url)); // not .pathname: that breaks on Windows (C:\C:\...)
 const read = (p: string) => readFileSync(join(app, p), 'utf8');
 
 function routes(dir: string, prefix = ''): string[] {

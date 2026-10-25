@@ -3,6 +3,7 @@
 // Pure TypeScript. The table JSON is passed in by the caller (the UI imports it; tests read it from disk).
 import type { EmergencyCard, EmergencyContact, Item, LocalDate, Trip } from './model.ts';
 import { nextUp, tripPhase } from './timeline.ts';
+import { LEGACY_ZONES } from './tzzones.ts';
 
 // ------------------------------------------------------------------ table
 
@@ -399,7 +400,9 @@ export const ZONE_COUNTRY: Readonly<Record<string, string>> = {
   'America/Caracas': 'VE',
 };
 
-export const countryForZone = (tz: string | null | undefined): string | null => (tz ? (ZONE_COUNTRY[tz] ?? null) : null);
+/** Country for a zone; an old zone name some phones still report ("Asia/Katmandu") maps like its current name. */
+export const countryForZone = (tz: string | null | undefined): string | null =>
+  tz ? (ZONE_COUNTRY[tz] ?? (LEGACY_ZONES[tz] ? ZONE_COUNTRY[LEGACY_ZONES[tz]] : undefined) ?? null) : null;
 
 /**
  * The zone you are most likely in for an item from nextUp: mid-journey → where you are heading; otherwise the

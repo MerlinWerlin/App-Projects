@@ -2,6 +2,7 @@
 // state allows (src/core/permissions.ts): Open Settings, Try again, and a fallback path where one exists.
 // Contract other tasks rely on: kind, reason, onRetry?, fallbackLabel?, onFallback? (state defaults to 'blocked').
 import { Ionicons } from '@expo/vector-icons';
+import type { ComponentProps } from 'react';
 import { Text, View } from 'react-native';
 import { fallbackKey, permissionActions, reasonKey, titleKey, type PermissionAction, type PermissionKind, type PermissionState } from '../core/permissions.ts';
 import type { Key } from '../i18n/en.ts';
@@ -28,7 +29,7 @@ export type PermissionNoticeProps = {
   onFallback?: () => void;
 };
 
-const ICON: Record<PermissionKind, string> = {
+const ICON: Record<PermissionKind, ComponentProps<typeof Ionicons>['name']> = {
   location: 'location-outline',
   photos: 'images-outline',
   faceid: 'scan-outline',
