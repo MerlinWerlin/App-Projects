@@ -69,6 +69,14 @@ jobs:
             npm run eas-build-post-install
           fi
 
+      - name: Link the Expo project (as ship.yml does)
+        run: |
+          if [ "$(jq -r '.expo.extra.eas.projectId // empty' app.json)" = "" ]; then
+            eas init --non-interactive --force 2>&1 | tee -a "$RUNNER_TEMP/ship.log"
+            eas update:configure --non-interactive || true
+          fi
+          jq -r '.expo.extra.eas.projectId // "no project id"' app.json
+
       - name: Submit profile (App Store Connect app id)
         env:
           ASC_APP_ID: ${{ steps.rel.outputs.ascAppId }}
