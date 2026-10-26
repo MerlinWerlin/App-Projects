@@ -1,11 +1,9 @@
 # Backspin store kit
 
-- `listing.json`: the App Store Connect listing (same fields as Linework's; pushed by `scripts/asc/asc.py apply backspin` when `ASC_REQUEST.json` changes; this app has no `ASC_REQUEST.json` or `RELEASE.json` yet).
-- `jpg/ios/`: 8 screenshots, 1320x2868 JPEG (APP_IPHONE_67, 6.9"), no alpha.
-- `src/render.mjs`: renders them with `scripts/store/shotkit.mjs` (preinstalled Chromium, global Playwright and sharp; installs nothing):
+This kit serves the APPS A2 release work. Codex and the Backspin build owner maintain it in GitHub App-Projects; GitHub main is authoritative. `listing.json` is the editable App Store listing and review-note source. The existing store workflow reads `ASC_REQUEST.json` and posts its actual results as a commit comment; a green workflow alone does not mean every Apple operation succeeded.
 
-```sh
-node apps/backspin/store/src/render.mjs
-```
+App Store Connect app: 6826553963. Bundle: com.jared797.backspin. App version: 1.0 / native 1.0.0. First 10 scored rounds are free; Plus is the existing A$1.99 non-consumable lifetime product com.jared797.backspin.plus. Price remains unchanged.
 
-Each shot is a headline over a faithful mock of a real screen, built from the app's own theme tokens and English strings. These are illustrative mockups, not device captures. Original art only: a generic iPhone-style frame with no maker marks, no logos, no real people. Shot 08 is the unlock screen with the 10 free goes stated, so the pricing is clear before purchase (guideline 3.1.1).
+Eight 1320x2868 iPhone marketing screenshots live in `jpg/ios`, generated from the app layout by `src/render.mjs`. These are designed screenshots, not evidence of a real-device test. `docs/RELEASE_CHECKLIST.md` records verified checks and remaining submission requirements. Never describe a physical-iPhone video as supplied until its actual upload is verified.
+
+The new mascot requires a native build (`RELEASE.json` mode build); an OTA update cannot replace the installed Home Screen icon. The existing ship workflow uploads to TestFlight, falling back to GitHub's Mac build when Expo build quota is exhausted. First App Review submission stays with Jared.

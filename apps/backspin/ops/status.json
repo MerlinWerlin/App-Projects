@@ -1,7 +1,10 @@
 {
   "app": "backspin",
-  "stage": "build",
-  "headline": "First build ready for Expo Go on the iPhone (iOS only until the native Android recorder).",
-  "next_for_owner": ["Open Backspin in Expo Go and answer docs/TRIAL.md", "Pick the store name (price decided: A$1.99 lifetime after 10 free goes)", "Create the App Store Connect app when you want TestFlight (Claude adds RELEASE.json)"],
-  "updated": "2026-10-24"
+  "stage": "release-preparation",
+  "headline": "Purple mascot release candidate: 33 tests, TypeScript and iOS/Android exports passed; TestFlight upload and fresh Apple status pending.",
+  "next_for_owner": [
+    "Real iPhone: record/play/share a round, buy Plus in TestFlight sandbox and Restore; capture the review video.",
+    "App Store Connect: verify published App Privacy and complete review contact before first submission."
+  ],
+  "updated": "2026-10-26"
 }

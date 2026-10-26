@@ -95,30 +95,80 @@ export function createStore(storage: Storage, module?: Iap | null): PlusStore {
     },
     async buy() {
       if (!(await connect())) return { status: 'unavailable' };
-      try {
-        const r = await iap.requestPurchase({
-          request: { ios: { sku: PLUS_SKU }, android: { skus: [PLUS_SKU] }, apple: { sku: PLUS_SKU }, google: { skus: [PLUS_SKU] } },
-          type: 'in-app',
-        });
-        const list: Purchase[] = Array.isArray(r) ? r : r ? [r] : [];
-        let got = list.find(isPlus) ?? (await ownedList()).find(isPlus);
-        // Some expo-iap versions resolve before the transaction is listed: check again for up to ~10 s.
-        for (let i = 0; !got && i < 10; i++) {
-          await new Promise((res) => setTimeout(res, 1000));
-          got = (await ownedList()).find(isPlus);
-        }
-        if (!got) return { status: 'failed', detail: 'no transaction' };
+      const result = await new Promise<BuyResult>((resolve) => {
+        let done = false;
+        let pending = true;
+        let polling = false;
+        let checks = 0;
+        let failureChecks = 0;
+        let error: string | undefined;
+        let listens = false;
+        const subs: { remove?: () => void }[] = [];
+        const finish = (r: BuyResult) => {
+          if (done) return;
+          done = true;
+          clearTimeout(timeout);
+          clearInterval(poll);
+          for (const sub of subs) {
+            try { sub?.remove?.(); } catch { /* cleanup cannot hide a purchase */ }
+          }
+          resolve(r);
+        };
+        const accept = (purchase: Purchase | undefined) => {
+          if (done || !isPlus(purchase)) return;
+          // Ownership does not depend on acknowledgement succeeding; StoreKit redelivers it if needed.
+          void Promise.resolve().then(() => iap.finishTransaction?.({ purchase, isConsumable: false })).catch(() => {});
+          finish({ status: 'owned' });
+        };
+        const onError = (e: unknown) => {
+          if (isCancel(e)) return finish({ status: 'cancelled' });
+          error = errDetail(e);
+          // A listener error can precede the request's successful return. Reconcile before failing.
+        };
+        const reconcile = async () => {
+          if (done || pending || polling) return;
+          polling = true;
+          const got = (await ownedList()).find(isPlus);
+          polling = false;
+          if (done) return;
+          if (got) return accept(got);
+          checks++;
+          if (error) failureChecks++;
+          if (failureChecks >= 10 || (!listens && checks >= 10)) {
+            finish({ status: 'failed', detail: error ?? 'E_NO_TRANSACTION: no transaction' });
+          }
+        };
+        // A native purchase sheet may stay open while someone authenticates. A void request result is
+        // not a failed purchase: keep the transaction listener alive, with a bounded wait and Restore.
+        const timeout = setTimeout(() => finish({ status: 'failed', detail: error ?? 'E_PURCHASE_TIMEOUT' }), 180_000);
+        const poll = setInterval(() => void reconcile(), 1000);
         try {
-          await iap.finishTransaction?.({ purchase: got, isConsumable: false });
-        } catch {
-          // the store will offer it again; ownership is already known
-        }
-        await remember(storage, true);
-        return { status: 'owned' };
-      } catch (e) {
-        if (isCancel(e)) return { status: 'cancelled' };
-        return { status: 'failed', detail: errDetail(e) };
-      }
+          if (typeof iap.purchaseUpdatedListener === 'function') {
+            subs.push(iap.purchaseUpdatedListener(accept));
+            listens = true;
+          }
+          if (typeof iap.purchaseErrorListener === 'function') subs.push(iap.purchaseErrorListener(onError));
+        } catch { /* older modules can still return the transaction or expose it through Restore */ }
+        void (async () => {
+          try {
+            // Load the StoreKit product even when the user taps Unlock before the price finishes loading.
+            try { await iap.fetchProducts?.({ skus: [PLUS_SKU], type: 'in-app' }); } catch { /* request reports the error */ }
+            if (done) return;
+            const r = await iap.requestPurchase({
+              request: { ios: { sku: PLUS_SKU }, android: { skus: [PLUS_SKU] }, apple: { sku: PLUS_SKU }, google: { skus: [PLUS_SKU] } },
+              type: 'in-app',
+            });
+            accept((Array.isArray(r) ? r : r ? [r] : []).find(isPlus));
+          } catch (e) {
+            onError(e);
+          } finally {
+            pending = false;
+            void reconcile();
+          }
+        })();
+      });
+      if (result.status === 'owned') await remember(storage, true);
+      return result;
     },
     async restore() {
       if (!(await connect())) return false;

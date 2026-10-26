@@ -1,5 +1,5 @@
 {
-  "mode": "update",
-  "note": "Backspin: first-launch language line, Language at the top of Settings, empty level filter offers Show all, purchase errors say nothing was charged with the store code",
+  "mode": "build",
+  "note": "Backspin: new purple mascot icon and launch screen; pinned purchases with transaction listener handling; release metadata cleanup",
   "ascAppId": "6826553963"
 }
