@@ -1,0 +1,14 @@
+{
+  "status": "draft_not_uploaded",
+  "locale": "en-US",
+  "title": "Satchel: Travel Wallet",
+  "shortDescription": "Keep trip details, ticket files and packing lists close at hand.",
+  "fullDescription": "Organise trip details, keep copies of ticket files and prepare a packing list. Save useful information before you leave and keep your trip details available on your phone. Export or import a trip file when you choose.\n\nCheck that every file you need is downloaded before travelling.",
+  "releaseBlockers": [
+    "Offline map/native module readiness",
+    "Android file viewer, vault and biometric QA",
+    "Play Billing and non-iCloud Android feature scope"
+  ],
+  "assets": "Android device screenshots, 512px store icon and 1024x500 feature graphic still require verification",
+  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
+}

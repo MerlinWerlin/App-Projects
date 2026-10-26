@@ -1,0 +1,42 @@
+name: Play variant checks
+on:
+  pull_request:
+    paths:
+      - 'apps/**/app.config.*'
+      - 'apps/**/ops/play-variant.cjs'
+      - 'apps/**/eas.json'
+      - 'apps/**/store/play-listing.json'
+      - 'apps/glaze/scripts/eas-native-deps.js'
+      - 'scripts/play/**'
+      - '.github/workflows/play-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  variants:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node --test scripts/play/variants.test.cjs
+  rowlight-android:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/crochet
+    env:
+      PLAY_VARIANT: preview
+      CI: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: apps/crochet/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run typecheck
+      - run: npx expo export --platform android --output-dir /tmp/rowlight-play-export

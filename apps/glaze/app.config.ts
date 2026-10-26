@@ -54,6 +54,8 @@ function mergeUnique(a: unknown, b: unknown): unknown {
 
 export default ({ config }: ConfigContext): ExpoConfig => {
   const base = config as ExpoConfig;
+  // Android modules merge their own manifests. Apple targets/entitlements must not enter this path.
+  if (process.env.PLAY_VARIANT) return require('./ops/play-variant.cjs')(base);
   if (process.env.GLAZE_NATIVE !== '1') return base;
 
   const plugins = [...(base.plugins ?? [])];

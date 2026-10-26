@@ -170,3 +170,5 @@
 ## 2026-10-25 run 124 (19:11Z, artifact 1792948671-f192; oversight v150)
 - No-op run per D147-1. App-Projects: owner merged ship PR #96 (1ee1f73, 19:10Z); its Glaze changes are already here (synced run 117, extended run 120), 3-way check confirmed nothing new. Run 120 work (Plus purchase, bulk fix, Live Photo format) still needs the next auto-ship PR. No page comments, no patches.
 - 1226/1226 core tests green; registry not needed (no code change). Kit unchanged (e5a7652). Nothing device-tested.
+
+- 2026-10-26 Codex: Google Play preparation on codex/google-play-prep. Separate test APK/store AAB profiles and draft Android listing; no RELEASE.json change, native release or store upload. See docs/GOOGLE_PLAY.md in App-Projects; platform-specific blockers remain.

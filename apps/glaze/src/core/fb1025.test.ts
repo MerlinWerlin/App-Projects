@@ -106,7 +106,7 @@ test('core: expoGo and unknown verdicts draw nothing', async () => {
 
 test('i18n: every link message exists in all 11 locales with the {status} placeholder', () => {
   const keys = ['ok', 'noAppGroup', 'notReadYet', 'stale', 'wrongTheme', 'a11y'] as const;
-  const all: Record<string, unknown> = { en, ...tabs };
+  const all: Record<string, unknown> = { ...tabs };
   assert.equal(Object.keys(all).length, 11);
   for (const [loc, msgs] of Object.entries(all)) {
     const link = (msgs as { widgetsTab?: { link?: Record<string, string> } }).widgetsTab?.link;

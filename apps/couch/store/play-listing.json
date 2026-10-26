@@ -1,0 +1,14 @@
+{
+  "status": "draft_not_uploaded",
+  "locale": "en-US",
+  "title": "Couch: TV Remote",
+  "shortDescription": "Keep everyday TV controls together on your home Wi-Fi.",
+  "fullDescription": "Find supported TVs on your local network and keep everyday remote controls together. Save your TVs, switch between them and use a clear control layout. Every TV control and theme is free.\n\nCompatibility varies by TV and connection. Your phone and TV must be reachable on the same network. Infrared requires a phone with a compatible emitter.",
+  "releaseBlockers": [
+    "Native LAN/WSS/media modules compile and TV QA",
+    "Android Cast routing must be verified separately from Apple route picker",
+    "Plus purchase and Android feature availability audit"
+  ],
+  "assets": "Android device screenshots, 512px store icon and 1024x500 feature graphic still require verification",
+  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
+}
