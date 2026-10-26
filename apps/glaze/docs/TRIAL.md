@@ -1,5 +1,14 @@
 # Try Glaze on your iPhone (no Apple developer account needed)
 
+## Native TestFlight 1.0.1 (11) — 26 October 2026
+
+The latest owner-authorized native build adds Island pets and the widget/theme/icon repairs from PR107. Bulk icon installation is already confirmed by Jared; do not ask for that verdict again. The older Expo Go instructions below remain historical trial guidance.
+
+In the new native build, open **Widgets > Island pets**, select Mochi, Pip or Clover, and start a session. Cuddle/Play/Nap change its pose; Switch replaces the active pet; Stop removes it. Check the Lock Screen and, on a supported iPhone, the compact and expanded Dynamic Island. Tap the activity to return to Glaze. iOS controls visibility and the maximum eight-hour session; it is not a continuous animated overlay. Glaze restores the native status after reopening, including when an activity was dismissed or ended by iOS.
+
+Device checks still outstanding: month progress dots in the Add Widget gallery; a saved custom gradient reaching the installed widget; theme icon selection and small/blob icon backgrounds; pet start/switch/moods/stop, dismissal, deep link and VoiceOver. Compiler and upload results do not count as these device observations. All existing saved designs and selections are retained.
+
+
 The app runs inside **Expo Go**, a free app that loads development builds from your PC.
 
 1. **iPhone:** install **Expo Go** from the App Store (once).

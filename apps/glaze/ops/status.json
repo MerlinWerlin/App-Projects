@@ -1,11 +1,20 @@
 {
   "tests": "1233 core tests: 1214 pass after fixing the new screen overscroll guard; 19 pre-existing SDK/source/path/asset guard failures match the earlier unchanged-main baseline. Pet contract, localization and overscroll checks pass.",
-  "typecheck": "Real SDK app and Node TypeScript pass. iOS Expo export passes. Apple SDK widget and ActivityKit controller typechecks plus real TS-to-Swift payload decoder pass runs 40310744314 and 40310737544. Full signed build pending.",
-  "last_run": "2026-10-26 Codex pets and TestFlight delivery",
-  "stage": "building",
+  "typecheck": "Real SDK app and Node TypeScript pass; Expo iOS export passes; final Apple SDK checks40311146960/40311155383 pass; full signed production-native archive and TestFlight upload40311511263 pass. GlazeIslandPets pod and GlazeWidgets extension included in build evidence.",
+  "last_run": "2026-10-26 11:20 UTC Codex native TestFlight delivery",
+  "stage": "testflight",
   "oversight_seen": "v150 (1792954143-2667): no new directives; D147-1 hold continues; no patches",
-  "headline": "Owner authorized Island pets and shipping all Glaze fixes to TestFlight. Three original ActivityKit companions, widget/theme/icon repairs, version 1.0.1; native validation in progress.",
-  "next_for_owner": "No action needed to start the build. Device rendering remains unverified until the new native TestFlight build is installed; bulk install already confirmed.",
+  "headline": "Glaze 1.0.1 build 11 signed and uploaded to Apple: Island pets plus widget/theme/icon repairs. PR107 merged as1f90aa7; ship-mac40311511263 succeeded. Apple processing/readiness checked separately by the status-only store request.",
+  "next_for_owner": "After Apple makes build11 available, Island pets is in Widgets. The native trial notes cover new pet controls, month dots and edited gradients; bulk install already confirmed. Actual iPhone rendering and lifecycle checks remain outstanding.",
   "trial_kit": true,
-  "trial_kit_commit": "e5a7652"
+  "trial_kit_commit": "e5a7652",
+  "testflight": {
+    "version": "1.0.1",
+    "build": "11",
+    "sourceCommit": "1f90aa78f6a3bda66b2bc6a9f902559091ef1b98",
+    "buildRun": "https://github.com/MerlinWerlin/App-Projects/actions/runs/40311511263",
+    "submission": "762dfc4d-adf5-4d3c-b703-8ff4d2923834",
+    "uploadedAt": "2026-10-26T11:20:20Z",
+    "appleReadback": "Existing store workflow; mode=status; report on receipt-check merge commit. Upload alone does not prove availability."
+  }
 }
