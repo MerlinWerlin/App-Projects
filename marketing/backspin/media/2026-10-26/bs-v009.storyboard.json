@@ -1,0 +1,48 @@
+{
+ "id": "bs-v009",
+ "app": "backspin",
+ "title": "Banana becomes a sound creature",
+ "shots": [
+  {
+   "image": "img/bs-v009-01.png",
+   "caption": "This word is about to unravel",
+   "sub": "Before: banana",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v009-02.png",
+   "caption": "Hear backwards. Copy the sound.",
+   "seconds": 2.6,
+   "motion": "left"
+  },
+  {
+   "image": "img/bs-v009-03.png",
+   "caption": "After: what WAS that?",
+   "sub": "Your copy, flipped forwards.",
+   "seconds": 2.6,
+   "motion": "out"
+  },
+  {
+   "image": "img/bs-v009-04.png",
+   "caption": "Get a real closeness score",
+   "sub": "Not a singing talent test.",
+   "seconds": 2.6,
+   "motion": "up"
+  },
+  {
+   "image": "img/bs-v009-05.png",
+   "caption": "One more banana?",
+   "sub": "Try the reverse-singing challenge.",
+   "seconds": 2.6,
+   "motion": "in"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Ordinary words. Extraordinary noises."
+ },
+ "accent": "#FF5A4E",
+ "branded": false
+}

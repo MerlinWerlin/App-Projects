@@ -1,0 +1,50 @@
+{
+ "id": "lw-v010",
+ "app": "linework",
+ "title": "One tiny manta — beginner tracing tutorial",
+ "shots": [
+  {
+   "image": "img/lw-v010-01.png",
+   "caption": "Blank page? Try this.",
+   "seconds": 2.3,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v010-02.png",
+   "caption": "Pick a simple template",
+   "seconds": 2.3,
+   "motion": "left"
+  },
+  {
+   "image": "img/lw-v010-03.png",
+   "caption": "Stand your phone above paper",
+   "seconds": 2.3,
+   "motion": "out"
+  },
+  {
+   "image": "img/lw-v010-04.png",
+   "caption": "Fade the guide, then lock",
+   "seconds": 2.3,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v010-05.png",
+   "caption": "Follow the lines with pencil",
+   "seconds": 2.3,
+   "motion": "right"
+  },
+  {
+   "image": "img/lw-v010-06.png",
+   "caption": "Lift the phone. Keep the drawing.",
+   "seconds": 2.3,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "Linework",
+  "line": "1,900+ original templates",
+  "sub": "Full library with Linework Plus."
+ },
+ "accent": "#2346A8",
+ "branded": true
+}

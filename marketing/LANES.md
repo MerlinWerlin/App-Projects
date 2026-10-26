@@ -45,3 +45,5 @@ browser, c none / colour cards).
   `prompts.json` is in each batch, so images can be made later and dropped into `img/` (the workflow re-renders).
 - 2026-10-25: **c (none)**. (a) bridge still `tools_allowed: false`, no Codex image runner; (b) chatgpt.com in the
   built-in browser redirects to its login page (signed out).
+- 2026-10-26: **c (none)**. (a) bridge CONTRACT still `tools_allowed: false`, no Codex image runner; (b) chatgpt.com
+  in the built-in browser redirects to its login page (signed out).

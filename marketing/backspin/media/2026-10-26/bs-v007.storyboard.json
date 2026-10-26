@@ -1,0 +1,52 @@
+{
+ "id": "bs-v007",
+ "app": "backspin",
+ "title": "Pass-the-phone reverse-singing tutorial",
+ "shots": [
+  {
+   "image": "img/bs-v007-01.png",
+   "caption": "Can your friends copy this backwards?",
+   "seconds": 2.2,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v007-02.png",
+   "caption": "First, record this line",
+   "sub": "My socks squeak.",
+   "seconds": 2.2,
+   "motion": "left"
+  },
+  {
+   "image": "img/bs-v007-03.png",
+   "caption": "Listen to it backwards",
+   "seconds": 2.2,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v007-04.png",
+   "caption": "Now copy that strange sound",
+   "seconds": 2.2,
+   "motion": "right"
+  },
+  {
+   "image": "img/bs-v007-05.png",
+   "caption": "Flip your copy forwards",
+   "seconds": 2.2,
+   "motion": "out"
+  },
+  {
+   "image": "img/bs-v007-06.png",
+   "caption": "Get a real closeness score",
+   "sub": "Then pass the phone.",
+   "seconds": 2.2,
+   "motion": "up"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Reverse singing. Real scores."
+ },
+ "accent": "#FF5A4E",
+ "branded": false
+}

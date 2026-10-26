@@ -1,0 +1,54 @@
+{
+ "app": "cue",
+ "date": "2026-10-26",
+ "videos_wanted": 3,
+ "ids": [
+  "cue-v007",
+  "cue-v008",
+  "cue-v009"
+ ],
+ "branded": false,
+ "angles": "**Cue** (teleprompter, pre-launch, draft name \"Cue: Teleprompter\"): \"it waits for you\" (Voice Pace scrolls only while you talk); eyes on the lens; retake one section; no watermark, no subscription. Audience: creators, small businesses, students presenting, public speaking.",
+ "apps_json": {
+  "name": "Cue",
+  "storeName": "Cue: Teleprompter",
+  "tagline": "A teleprompter that waits for you",
+  "nameLocked": false,
+  "price": "Free teleprompter and recording with no watermark; Cue Plus is one payment for Voice Pace, captions and extras",
+  "accent": "#E8552B",
+  "lead": [
+   {
+    "title": "It waits for you",
+    "body": "Voice Pace moves the words only while you talk and stops when you pause, so you never chase the text."
+   },
+   {
+    "title": "No watermark, no subscription",
+    "body": "Record with the script by the lens and save every take to Photos. Plus is one payment, not a yearly bill."
+   },
+   {
+    "title": "Retake one section",
+    "body": "Record your script section by section and redo just the part you fluffed."
+   }
+  ],
+  "boards": [
+   "Content Creator Tips",
+   "Public Speaking Tips",
+   "YouTube Tips for Beginners"
+  ]
+ },
+ "feedback": [],
+ "lanes": {
+  "M1+M2": "Sol (SOL_DESIGNER)",
+  "M4": "Luna (DESIGNER)",
+  "M5": "Astra (ASTRA_SIDE)"
+ },
+ "previous_batch": {
+  "date": "2026-10-25",
+  "titles": [
+   "Before/after: where your eyes go",
+   "Silent-beat challenge: pause the bakery pitch",
+   "Quick-fire FAQ: what costs money?"
+  ],
+  "rule": "make tonight's 3 clearly different from these (new hooks, formats and scenes)"
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "id": "cue-v009",
+ "app": "cue",
+ "title": "Let your delivery lead — Voice Pace tutorial",
+ "shots": [
+  {
+   "image": "img/cue-v009-01.png",
+   "caption": "Your delivery sets the pace",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v009-02.png",
+   "caption": "1. Choose Voice Pace",
+   "sub": "One-time Plus upgrade",
+   "seconds": 2.6,
+   "motion": "down"
+  },
+  {
+   "image": "img/cue-v009-03.png",
+   "caption": "2. Speak. The words scroll.",
+   "seconds": 2.6,
+   "motion": "right"
+  },
+  {
+   "image": "img/cue-v009-04.png",
+   "caption": "3. Pause. The words wait.",
+   "seconds": 2.6,
+   "motion": "none"
+  },
+  {
+   "image": "img/cue-v009-05.png",
+   "caption": "Continue when you're ready",
+   "sub": "No chasing the script",
+   "seconds": 2.6,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "No subscription."
+ },
+ "accent": "#E8552B",
+ "branded": false
+}

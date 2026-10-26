@@ -1,0 +1,50 @@
+{
+ "id": "lw-v008",
+ "app": "linework",
+ "title": "Hands happen — hook, problem, fix",
+ "shots": [
+  {
+   "image": "img/lw-v008-01.png",
+   "caption": "Your hand belongs in the drawing",
+   "seconds": 2.3,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v008-02.png",
+   "caption": "Not moving the guide",
+   "seconds": 2.3,
+   "motion": "left"
+  },
+  {
+   "image": "img/lw-v008-03.png",
+   "caption": "Stand your phone. Lock the picture.",
+   "seconds": 2.3,
+   "motion": "out"
+  },
+  {
+   "image": "img/lw-v008-04.png",
+   "caption": "Touch lock ignores stray taps",
+   "seconds": 2.3,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v008-05.png",
+   "caption": "Focus stays put while locked",
+   "seconds": 2.3,
+   "motion": "right"
+  },
+  {
+   "image": "img/lw-v008-06.png",
+   "caption": "Keep going, line by line",
+   "seconds": 2.3,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "Linework",
+  "line": "Trace photos onto real paper",
+  "sub": "No ads. No subscription."
+ },
+ "accent": "#2346A8",
+ "branded": true
+}

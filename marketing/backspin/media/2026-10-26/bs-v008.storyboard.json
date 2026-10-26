@@ -1,0 +1,55 @@
+{
+ "id": "bs-v008",
+ "app": "backspin",
+ "title": "Three reasons for the game-night group",
+ "shots": [
+  {
+   "image": "img/bs-v008-01.png",
+   "caption": "Three reasons to gather your friends",
+   "sub": "A reverse-singing party game.",
+   "seconds": 2.2,
+   "motion": "out"
+  },
+  {
+   "image": "img/bs-v008-02.png",
+   "caption": "1. Up to eight players",
+   "sub": "Pass the phone around.",
+   "seconds": 2.2,
+   "motion": "left"
+  },
+  {
+   "image": "img/bs-v008-03.png",
+   "caption": "2. A daily challenge",
+   "sub": "Keep your streak going.",
+   "seconds": 2.2,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v008-04.png",
+   "caption": "3. No ads. No subscription.",
+   "sub": "One-time Plus after ten goes.",
+   "seconds": 2.2,
+   "motion": "right"
+  },
+  {
+   "image": "img/bs-v008-05.png",
+   "caption": "Copy backwards. Hear the flip.",
+   "sub": "The serious faces never last.",
+   "seconds": 2.2,
+   "motion": "in"
+  },
+  {
+   "image": "img/bs-v008-06.png",
+   "caption": "Your next game-night experiment",
+   "seconds": 2.2,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Make room for strange sounds."
+ },
+ "accent": "#FF5A4E",
+ "branded": false
+}

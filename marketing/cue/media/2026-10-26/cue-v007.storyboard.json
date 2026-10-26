@@ -1,0 +1,46 @@
+{
+ "id": "cue-v007",
+ "app": "cue",
+ "title": "One stumble, one section — hook-problem-fix",
+ "shots": [
+  {
+   "image": "img/cue-v007-01.png",
+   "caption": "One stumble isn't a restart",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v007-02.png",
+   "caption": "The intro was already good",
+   "sub": "The middle? Not so much.",
+   "seconds": 2.6,
+   "motion": "left"
+  },
+  {
+   "image": "img/cue-v007-03.png",
+   "caption": "Record your script in sections",
+   "seconds": 2.6,
+   "motion": "down"
+  },
+  {
+   "image": "img/cue-v007-04.png",
+   "caption": "Redo the section you fluffed",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v007-05.png",
+   "caption": "Keep the takes you like",
+   "sub": "Each section saves separately",
+   "seconds": 2.6,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Retake a section, not everything."
+ },
+ "accent": "#E8552B",
+ "branded": false
+}

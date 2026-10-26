@@ -1,0 +1,67 @@
+{
+ "videos": {
+  "cue-v007": {
+   "caption": "Fluffed one section? Re-record that part and keep the takes you like. Coming soon to iPhone.",
+   "hashtags": [
+    "#CreatorTips",
+    "#VideoTips",
+    "#Teleprompter",
+    "#ContentCreation"
+   ]
+  },
+  "cue-v008": {
+   "caption": "Presenting tomorrow? Keep your notes near the lens, rehearse to a target time, and save recordings to Photos.",
+   "hashtags": [
+    "#PublicSpeaking",
+    "#PresentationTips",
+    "#StudentTips",
+    "#Teleprompter"
+   ]
+  },
+  "cue-v009": {
+   "caption": "Speak, and Voice Pace scrolls. Pause, and it waits. A calmer way to read to camera—coming soon to iPhone.",
+   "hashtags": [
+    "#CreatorTips",
+    "#Teleprompter",
+    "#VideoCreation",
+    "#SpeakingTips"
+   ]
+  }
+ },
+ "pins": [
+  {
+   "title": "Retake One Section, Not Your Whole Video",
+   "description": "Record a script section by section and redo the part you fluffed. Keep the takes you like, with each section saved separately."
+  },
+  {
+   "title": "A Teleprompter That Waits When You Pause",
+   "description": "Voice Pace moves the words while you talk and stops when you pause, so you can deliver your script at a natural pace."
+  },
+  {
+   "title": "Keep Your Notes Near the Camera Lens",
+   "description": "Read your script beneath the camera while recording, helping you keep your eyes on the lens and stay connected with your audience."
+  },
+  {
+   "title": "Rehearse Your Presentation to a Target Time",
+   "description": "Use fit-to-time to adjust the scroll for a presentation or video length, then rehearse until the pacing feels right."
+  },
+  {
+   "title": "Free Recording With No Watermark",
+   "description": "Record with the script by the lens and save takes to Photos without a watermark. Cue Plus is planned as a one-time payment, not a subscription."
+  }
+ ],
+ "reddit": [
+  {
+   "question": "What’s a good teleprompter app for recording short videos?",
+   "reply": "Look for one that keeps the script close to the lens and saves recordings without a watermark. A new iPhone teleprompter is in the works with free recording and section-by-section retakes."
+  },
+  {
+   "question": "Any teleprompter apps that pause when I stop speaking?",
+   "reply": "Voice-paced scrolling can help: the text moves while you talk and waits when you pause. One upcoming iPhone option is built around that, with Voice Pace planned as a one-time Plus upgrade."
+  },
+  {
+   "question": "What should I use to rehearse a presentation to a specific length?",
+   "reply": "A teleprompter with fit-to-time can adjust the scroll for your target duration. There’s an upcoming iPhone app with that feature, plus recording without a watermark."
+  }
+ ]
+}

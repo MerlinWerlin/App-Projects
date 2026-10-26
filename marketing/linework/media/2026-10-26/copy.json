@@ -1,0 +1,67 @@
+{
+ "videos": {
+  "lw-v008": {
+   "caption": "Rest your hand on the screen while you draw. Lock the picture and keep tracing. #Linework #Drawing #Sketching #ArtTools",
+   "hashtags": [
+    "#Linework",
+    "#Drawing",
+    "#Sketching",
+    "#ArtTools"
+   ]
+  },
+  "lw-v009": {
+   "caption": "Turn a photo into line art on your phone, then trace it onto paper. Free for 14 days; own-photo tracing stays free. #Linework #PhotoToSketch #Drawing",
+   "hashtags": [
+    "#Linework",
+    "#PhotoToSketch",
+    "#Drawing",
+    "#Sketching"
+   ]
+  },
+  "lw-v010": {
+   "caption": "A simple template, a steady guide, and a pencil on paper. Try a manta ray trace with Linework. #Linework #EasyDrawing #SeaLife #Sketching",
+   "hashtags": [
+    "#Linework",
+    "#EasyDrawing",
+    "#SeaLife",
+    "#Sketching"
+   ]
+  }
+ },
+ "pins": [
+  {
+   "title": "Trace Photos Onto Real Paper",
+   "description": "Set your phone above paper, choose a photo, fade the guide and trace with your own pencil. Lock the picture to help keep it steady."
+  },
+  {
+   "title": "Turn a Photo Into Line Art",
+   "description": "Make a clean sketch from a photo on your phone, with controls for style, detail and line thickness. Nothing is uploaded."
+  },
+  {
+   "title": "Lettering Templates to Trace",
+   "description": "Explore letters in 16 styles, from script and calligraphy to stencil and retro. Pick a template and trace it onto paper."
+  },
+  {
+   "title": "Workshop Templates & Layouts",
+   "description": "Find exact angles, joints and layouts in Linework’s Workshop templates, designed for tracing onto paper."
+  },
+  {
+   "title": "A Simple Sea Life Drawing",
+   "description": "Start with a manta ray template: position your phone above paper, fade and lock the guide, then follow the lines with a pencil."
+  }
+ ],
+ "reddit": [
+  {
+   "question": "What’s a straightforward iPhone app for tracing my own photo onto paper?",
+   "reply": "Linework lets you trace your own photos with its tracing tools. Stand your phone above the paper, position the guide and lock it before drawing. After the 14-day trial, tracing your own photos stays free."
+  },
+  {
+   "question": "Can I make line art from a photo on my iPhone without uploading it?",
+   "reply": "Linework’s photo-to-sketch feature processes images on your phone, with four styles plus detail and line-thickness controls. The full library and photo-to-outline are included in Linework Plus, a one-time A$2.99 purchase."
+  },
+  {
+   "question": "Any drawing app with lettering templates I can trace onto paper?",
+   "reply": "Linework has letter templates in 16 styles, including script, calligraphy and stencil. You can browse the library and trace a chosen design onto paper."
+  }
+ ]
+}

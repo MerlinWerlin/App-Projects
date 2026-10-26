@@ -1,0 +1,52 @@
+{
+ "id": "lw-v009",
+ "app": "linework",
+ "title": "Three reasons to sketch your photo — editorial feature countdown",
+ "shots": [
+  {
+   "image": "img/lw-v009-01.png",
+   "caption": "Three reasons to sketch your photo",
+   "seconds": 2.3,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v009-02.png",
+   "caption": "One: four sketch styles",
+   "seconds": 2.3,
+   "motion": "left"
+  },
+  {
+   "image": "img/lw-v009-03.png",
+   "caption": "Two: detail and thickness controls",
+   "seconds": 2.3,
+   "motion": "in"
+  },
+  {
+   "image": "img/lw-v009-04.png",
+   "caption": "Three: processed on your phone",
+   "sub": "Nothing uploaded",
+   "seconds": 2.3,
+   "motion": "out"
+  },
+  {
+   "image": "img/lw-v009-05.png",
+   "caption": "Then trace onto real paper",
+   "seconds": 2.3,
+   "motion": "right"
+  },
+  {
+   "image": "img/lw-v009-06.png",
+   "caption": "Everything free for 14 days",
+   "sub": "Then own-photo tracing stays free",
+   "seconds": 2.3,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "Linework",
+  "line": "Linework Plus: A$2.99 once",
+  "sub": "Full library + photo-to-outline. No subscription."
+ },
+ "accent": "#2346A8",
+ "branded": true
+}

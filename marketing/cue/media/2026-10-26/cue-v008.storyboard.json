@@ -1,0 +1,45 @@
+{
+ "id": "cue-v008",
+ "app": "cue",
+ "title": "Tomorrow's presentation — three reasons",
+ "shots": [
+  {
+   "image": "img/cue-v008-01.png",
+   "caption": "Presenting tomorrow? Start here.",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v008-02.png",
+   "caption": "1. Keep notes near the lens",
+   "seconds": 2.6,
+   "motion": "right"
+  },
+  {
+   "image": "img/cue-v008-03.png",
+   "caption": "2. Rehearse to a target time",
+   "sub": "Fit-to-time adjusts the scroll",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "image": "img/cue-v008-04.png",
+   "caption": "3. Save takes straight to Photos",
+   "seconds": 2.6,
+   "motion": "down"
+  },
+  {
+   "image": "img/cue-v008-05.png",
+   "caption": "Less juggling. More rehearsal.",
+   "seconds": 2.6,
+   "motion": "out"
+  }
+ ],
+ "end": {
+  "title": "",
+  "line": "Coming soon to iPhone",
+  "sub": "Free recording. No watermark."
+ },
+ "accent": "#E8552B",
+ "branded": false
+}
