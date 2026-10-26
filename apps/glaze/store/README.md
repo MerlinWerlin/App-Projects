@@ -1,0 +1,1 @@
+Glaze App Store Connect readback requests for APPS A2 TestFlight delivery. The existing repository store workflow reads ASC_REQUEST.json and, in status mode, reports Apple processing and internal tester availability without changing the listing or submitting for review. Codex maintains the request as part of release verification; signing secrets stay in GitHub Actions.
