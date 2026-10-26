@@ -54,7 +54,7 @@ jobs:
         run: |
           xcodebuild -workspace ios/Backspin.xcworkspace -scheme Backspin -configuration Release \
             -sdk iphonesimulator -destination "id=$IPAD_UDID" -derivedDataPath "$RUNNER_TEMP/backspin-derived" \
-            CODE_SIGNING_ALLOWED=NO COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/backspin-simulator.log" 2>&1 \
+            CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/backspin-simulator.log" 2>&1 \
             || { tail -180 "$RUNNER_TEMP/backspin-simulator.log"; exit 1; }
       - name: Capture first launch and app routes
         run: |

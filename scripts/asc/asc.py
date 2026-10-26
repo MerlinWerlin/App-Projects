@@ -181,6 +181,12 @@ def status(app):
                 f"support `{la.get('supportUrl')}`, marketing `{la.get('marketingUrl')}`")
             sets = get(f"/v1/appStoreVersionLocalizations/{loc['id']}/appScreenshotSets")["data"]
             say("  - Screenshot sets: " + (", ".join(f"{attrs(s)['screenshotDisplayType']}" for s in sets) or "none"))
+            for screenshot_set in sets:
+                shots = get(f"/v1/appScreenshotSets/{screenshot_set['id']}/appScreenshots")["data"]
+                say("    - " + attrs(screenshot_set)["screenshotDisplayType"] + ": " + ", ".join(
+                    f"{attrs(shot).get('fileName')}: {(attrs(shot).get('assetDeliveryState') or {}).get('state', 'unknown')}"
+                    for shot in shots))
+        say(f"  - Release setting: {attrs(ver).get('releaseType', 'unknown')}")
         try:
             d = get(f"/v1/appStoreVersions/{ver['id']}/appStoreReviewDetail")["data"]
             da = attrs(d) if d else {}
@@ -194,6 +200,15 @@ def status(app):
             say(f"  - Build attached: unknown ({e})")
     builds = get("/v1/builds", **{"filter[app]": app_id, "sort": "-uploadedDate", "limit": 3})["data"]
     say("- Latest builds: " + (", ".join(f"{attrs(b)['version']} {attrs(b)['processingState']} {attrs(b)['uploadedDate'][:10]}" for b in builds) or "none"))
+    if builds:
+        try:
+            detail = attrs(get(f"/v1/builds/{builds[0]['id']}/buildBetaDetail")["data"] or {})
+            say(f"- Latest build internal TestFlight state: {detail.get('internalBuildState', 'unknown')}")
+            groups = get(f"/v1/apps/{app_id}/betaGroups", limit=50)["data"]
+            all_builds = sum(1 for g in groups if attrs(g).get("isInternalGroup") and attrs(g).get("hasAccessToAllBuilds"))
+            say(f"- Internal TestFlight groups with automatic build access: {all_builds}")
+        except RuntimeError as e:
+            say(f"- Internal TestFlight access: unverified ({str(e)[:150]})")
     iaps = get(f"/v1/apps/{app_id}/inAppPurchasesV2", limit=50)["data"]
     say("- In-app purchases: " + (", ".join(f"`{attrs(i)['productId']}` {attrs(i)['inAppPurchaseType']} {attrs(i)['state']}" for i in iaps) or "none"))
     for iap in iaps:
@@ -374,6 +389,9 @@ def apply(app):
         if lst.get("copyright"):
             step("Copyright", lambda: call("PATCH", f"/v1/appStoreVersions/{ver['id']}",
                  {"data": {"type": "appStoreVersions", "id": ver["id"], "attributes": {"copyright": lst["copyright"]}}}))
+        if lst.get("releaseType") == "AFTER_APPROVAL":
+            step("Automatic release after approval", lambda: call("PATCH", f"/v1/appStoreVersions/{ver['id']}",
+                 {"data": {"type": "appStoreVersions", "id": ver["id"], "attributes": {"releaseType": "AFTER_APPROVAL"}}}))
         if lst.get("attachBuild") == "latest":
             def attach():
                 v = attrs(ver)["versionString"]
