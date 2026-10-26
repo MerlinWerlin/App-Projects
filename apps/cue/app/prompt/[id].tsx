@@ -17,7 +17,7 @@ import { Follower } from '../../src/core/follow';
 import { recordTake } from '../../src/core/library';
 import { nudgeSpeed, type PaceMode } from '../../src/core/pace';
 import { formatDuration, parseScript } from '../../src/core/script';
-import { getLocale, t } from '../../src/i18n';
+import { t } from '../../src/i18n';
 import { success, tap, thud } from '../../src/native/haptics';
 import { loadSpeech, type SpeechSession } from '../../src/native/speech';
 import { useApp } from '../../src/state/AppState';
@@ -136,35 +136,45 @@ export default function PromptScreen() {
     // Long, unusual words from the script help the recogniser hear names and jargon correctly.
     const hints = [...new Set(parsed.words.filter((w) => w.length > 6))].slice(0, 100);
     let alive = true;
+    const controller = new AbortController();
+    const fail = (msg: string) => {
+      if (!alive) return;
+      alive = false;
+      controller.abort();
+      setFollowLive(false);
+      setRunning(false);
+      setMode('voice');
+      setChrome(true);
+      Alert.alert(t('voice.followStopped'), msg);
+    };
     engine
       .start(
-        getLocale(),
+        prefs.locale,
         (text) => {
           if (!alive || !follower.current) return;
           setFollowWord(follower.current.hear(text));
         },
-        (msg) => alive && Alert.alert(msg),
+        fail,
         hints,
+        () => { if (alive) setFollowLive(true); },
+        controller.signal,
       )
       .then((sess) => {
         if (alive) {
           speech.current = sess;
-          setFollowLive(true);
         } else sess.stop();
       })
       .catch((e: unknown) => {
-        if (!alive) return;
-        setRunning(false);
-        setMode('voice');
-        Alert.alert(e instanceof Error ? e.message : t('error.unknown'));
+        fail(e instanceof Error ? e.message : t('error.unknown'));
       });
     return () => {
       alive = false;
+      controller.abort();
       speech.current?.stop();
       speech.current = null;
       setFollowLive(false);
     };
-  }, [mode, running, parsed.words]);
+  }, [mode, running, parsed.words, prefs.locale]);
 
   // In Voice Follow the script ends when the last words are heard.
   useEffect(() => {

@@ -163,6 +163,11 @@ export const en = {
   'intro.skipHint': 'Tap to skip',
 
   'voice.followNeedsBuild': 'Voice Follow needs the TestFlight or App Store version of Cue (Expo Go can’t run speech recognition). Voice Pace works here.',
+  'voice.followStopped': 'Voice Follow paused',
+  'voice.permissionOff': 'Microphone or speech recognition permission is off. Turn it on in Settings, then try again.',
+  'voice.languageUnavailable': 'Voice Follow is unavailable for this language on your phone. Voice Pace is selected; press Play to continue.',
+  'voice.onDeviceUnavailable': 'On-device speech recognition is unavailable. Voice Pace is selected; press Play to continue.',
+  'voice.stopped': 'Speech recognition stopped. Voice Pace is selected; press Play to continue.',
 } as const;
 
 export type MessageKey = keyof typeof en;
