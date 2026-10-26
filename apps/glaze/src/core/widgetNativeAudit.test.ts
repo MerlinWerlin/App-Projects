@@ -81,7 +81,7 @@ test('no duplicate top-level type names across the extension target', () => {
 test('extension imports only system frameworks (never ExpoModulesCore or a Glaze pod)', () => {
   for (const f of widgetSwift()) {
     for (const m of read(`${WIDGET_DIR}/${f}`).matchAll(/^import\s+(\w+)/gm)) {
-      assert.ok(['SwiftUI', 'WidgetKit', 'Foundation', 'UIKit', 'AppIntents'].includes(m[1]), `${f} imports ${m[1]}`);
+      assert.ok(['SwiftUI', 'WidgetKit', 'Foundation', 'UIKit', 'AppIntents', 'ActivityKit'].includes(m[1]), `${f} imports ${m[1]}`);
     }
   }
 });
@@ -137,6 +137,7 @@ test('each Glaze module is its own pod and links on its own', () => {
   for (const [dir, mod, pod] of [
     ['modules/glaze-widget-bridge', 'GlazeWidgetBridgeModule', 'GlazeWidgetBridge'],
     ['modules/glaze-profile-server', 'GlazeProfileServerModule', 'GlazeProfileServer'],
+    ['modules/glaze-island-pets', 'GlazeIslandPetsModule', 'GlazeIslandPets'],
   ] as const) {
     const cfg = JSON.parse(read(`${dir}/expo-module.config.json`)) as { platforms: string[]; apple: { modules: string[] } };
     assert.deepEqual(cfg.apple.modules, [mod]);

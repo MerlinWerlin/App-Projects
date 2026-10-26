@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { decodePetStatus, PETS } from './islandPets.ts';
 
-test('native session restores exact pet and mood after reopening the app', () => {
+test('native status decoder preserves session identity, pet and mood', () => {
   assert.deepEqual(decodePetStatus({ enabled: true, active: true, id: 'native-id', pet: 'fox', mood: 'sleepy', startedAt: 1793000000000 }),
     { enabled: true, session: { id: 'native-id', pet: 'fox', mood: 'sleepy', startedAt: 1793000000000 } });
   assert.deepEqual(decodePetStatus({ enabled: false, active: false }), { enabled: false, session: null });

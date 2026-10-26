@@ -54,7 +54,7 @@ export default function PetsScreen() {
 
   return (
     <SafeAreaView edges={['left', 'right', 'bottom']} style={[styles.root, { backgroundColor: c.bg }]}>
-      <ScrollView contentContainerStyle={styles.body}>
+      <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.body}>
         <Text style={[...label('body'), { color: c.inkSecondary }]}>{t('pets.intro')}</Text>
         <View style={[styles.preview, continuous, { backgroundColor: c.fill }]}>
           <Text style={[...label('footnote'), { color: c.inkSecondary }]}>{t('pets.preview')}</Text>

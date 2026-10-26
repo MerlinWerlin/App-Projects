@@ -1,6 +1,6 @@
 {
-  "tests": "1230 core tests: 1211 pass, 19 fail; same 19 failures reproduced on unchanged main 5a6185f9 (1226 tests, 1207 pass). No new test failures.",
-  "typecheck": "npm run typecheck passes (real SDK app + Node tests). Expo iOS export passes. Apple iOS WidgetKit compiler and TS-to-Swift payload check passed run 40290905453. Offline UI stubs conflict with installed SDK declarations.",
+  "tests": "1233 core tests: 1214 pass after fixing the new screen overscroll guard; 19 pre-existing SDK/source/path/asset guard failures match the earlier unchanged-main baseline. Pet contract, localization and overscroll checks pass.",
+  "typecheck": "Real SDK app and Node TypeScript pass. iOS Expo export passes. Apple SDK widget and ActivityKit controller typechecks plus real TS-to-Swift payload decoder pass runs 40310744314 and 40310737544. Full signed build pending.",
   "last_run": "2026-10-26 Codex pets and TestFlight delivery",
   "stage": "building",
   "oversight_seen": "v150 (1792954143-2667): no new directives; D147-1 hold continues; no patches",

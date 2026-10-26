@@ -178,3 +178,5 @@
 ## 2026-10-26: Island pets and TestFlight delivery
 
 Owner authorized the feature and release. Added original cat/fox/bunny ActivityKit companions, Start/Switch/Stop, mood controls, session restoration and eleven-language copy. Generated sprite/attribute/localization parity and three core tests pass; real SDK app + Node typechecks pass. Merged current main into the existing PR107 branch. Version 1.0.1 isolates the changed native runtime. Apple compilation, full export and upload are being verified; no device result claimed.
+
+Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full WidgetKit extension and pet lifecycle controller and decode the actual editor payload. Expo iOS export passes. Full suite found the new pet screen missing the established no-bounce setting; corrected and reran that guard. The remaining 19 failures are the previously reproduced unchanged-main SDK/source/path/asset guards. Updated the native-framework allowlist for Apple ActivityKit and included the pet pod in module-independence checks.
