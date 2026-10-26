@@ -194,6 +194,15 @@ def status(app):
             say(f"  - Build attached: unknown ({e})")
     builds = get("/v1/builds", **{"filter[app]": app_id, "sort": "-uploadedDate", "limit": 3})["data"]
     say("- Latest builds: " + (", ".join(f"{attrs(b)['version']} {attrs(b)['processingState']} {attrs(b)['uploadedDate'][:10]}" for b in builds) or "none"))
+    if builds:
+        try:
+            detail = attrs(get(f"/v1/builds/{builds[0]['id']}/buildBetaDetail")["data"] or {})
+            say(f"- Latest build internal TestFlight state: {detail.get('internalBuildState', 'unknown')}")
+            groups = get(f"/v1/apps/{app_id}/betaGroups", limit=50)["data"]
+            all_builds = sum(1 for g in groups if attrs(g).get("isInternalGroup") and attrs(g).get("hasAccessToAllBuilds"))
+            say(f"- Internal TestFlight groups with automatic build access: {all_builds}")
+        except RuntimeError as e:
+            say(f"- Internal TestFlight access: unverified ({str(e)[:150]})")
     iaps = get(f"/v1/apps/{app_id}/inAppPurchasesV2", limit=50)["data"]
     say("- In-app purchases: " + (", ".join(f"`{attrs(i)['productId']}` {attrs(i)['inAppPurchaseType']} {attrs(i)['state']}" for i in iaps) or "none"))
     for iap in iaps:

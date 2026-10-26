@@ -1,20 +1,35 @@
 # Backspin release evidence — 26 October 2026
 
-This records verification against the shared `docs/RELEASE_STANDARD.md`; the master roadmap remains the plan.
+## Current release
 
-- New owner-supplied mascot is packaged as opaque app icon, padded adaptive foreground, launch image and public-site icon. Source artwork retained; runtime files are in the repository.
-- Native release requested, version 1.0.0 with remote build-number increment. Existing ASC app 6826553963, bundle and A$1.99 lifetime price retained.
-- Microphone explanation covers both hold and tap recording. Review notes no longer claim an unverified video was supplied and disclose EAS Update.
-- Purchase library pinned to 6.2.0. Purchase adapter handles transaction events and direct results, reconciles a failed/empty request with owned transactions, cleans subscriptions, bounds the wait and preserves Restore.
-- Existing test-store guard prevents the Expo Go fake unlock in a native store build. First-language hint and Settings language picker already exist. Pack level filter starts off and the empty state offers Show all.
-- First 10 rounds are a usage-limited free tier, not an automatically started time-based trial; no trial product is added.
+Native **build 7**, version 1.0.0 (Apple listing 1.0), is VALID and attached to the editable App Store release. The app remains PREPARE_FOR_SUBMISSION. No App Review submission or public App Store release was performed.
 
-Local verification: 33/33 Node tests passed (including four new transaction-event/recovery regressions), TypeScript passed, iOS and Android release exports passed. PNG audit: opaque RGB 1254x1254 main icon; transparent 1254x1254 launch/adaptive images with the visible mascot centered inside the safe area; all eight store JPEGs are 1320x2868. PR108 merged as 26bab64 after GitHub check40292738007 passed. Expo quota refused the cloud build; existing GitHub Mac fallback40293135600 is building. Apple sync40292972610 accepted listing text and attached previous build5; the new build is not yet uploaded. No physical-device success or Apple approval is claimed.
+- Mascot and native purchase fixes: [PR108](https://github.com/MerlinWerlin/App-Projects/pull/108), merged source `26bab64`.
+- Apple setup: [PR109](https://github.com/MerlinWerlin/App-Projects/pull/109), merged `7743a6e`.
+- [Apple readback at 09:04 UTC](https://github.com/MerlinWerlin/App-Projects/commit/7743a6ecae3e19648df37a9ec6f3511f994c2ed8#commitcomment-206653861): build 7 VALID and attached; review contact complete; notes saved; Plus READY_TO_SUBMIT; eight iPhone screenshots present.
+- Existing price retained: first 10 scored rounds free, then A$1.99 non-consumable lifetime Plus (`com.jared797.backspin.plus`). Missing purchase availability was initialized for 175 territories; existing selections and price schedules are preserved on repeat runs.
 
-Remaining first-submission evidence: real iPhone gameplay/recording/sharing, sandbox Plus purchase and Restore, physical-device screen recording; published App Privacy; complete App Review contact; processed intended build attached; Plus metadata ready; iPad screenshots if the enabled tablet support requires them. First Submit for Review remains Jared's action. Existing account-level paid agreement/bank/tax completion is recorded by the factory; recheck any new warning in Apple.
+## Verified checks
 
-Implementation reference: [OpenIAP purchase lifecycle](https://www.openiap.dev/docs/features/purchase), checked 26 October 2026; request completion alone is not the purchase result.
+- 33/33 Node tests, TypeScript, and iOS + Android release exports passed locally. [GitHub check 40292738007](https://github.com/MerlinWerlin/App-Projects/actions/runs/40292738007) also passed.
+- Four purchase regression cases cover event-only transactions, competing error/success, recovery after a rejected request, and cancellation cleanup. `expo-iap` is pinned to 6.2.0; native builds keep the existing guard against Expo Go's fake unlock.
+- Seven offline Apple-setup tests cover contact preservation, complete/partial source contact, missing/existing purchase availability, authentication failure and incomplete territory results. Contact values remain in Apple API requests and are never logged or committed.
+- Opaque RGB 1254x1254 icon; transparent padded launch/adaptive assets. [ART_BRIEF.md](ART_BRIEF.md) records exact built-in ImageGen prompts and actual output dimensions. Expo produces platform icon sizes during the native build.
+- Expo's monthly cloud quota refused build 6. The existing [Mac fallback 40293135600](https://github.com/MerlinWerlin/App-Projects/actions/runs/40293135600) signed a 20.5 MB IPA and successfully uploaded build 7 at 08:58 UTC. [Upload receipt](https://github.com/MerlinWerlin/App-Projects/commit/26bab64ca0e2b9a0ae4141e826260b2504740b14#commitcomment-206653171).
+- Public marketing, privacy and support pages return HTTP 200. The public icon's SHA256 matches the committed mascot asset.
+- Microphone wording covers hold and tap mode. Review notes disclose EAS Update and do not claim an unverified video has been supplied. First-launch language hint, Settings language picker and empty-filter Show all behavior are already implemented.
 
-Apple follow-up: current Plus state is MISSING_METADATA and review contact is incomplete. Store setup can fill only missing review contact fields from a complete Linework contact (values remain private in Apple requests), and opt in to initialize missing Plus availability without changing an existing territory selection. Seven offline tests cover preservation, partial data, creation and failure boundaries.
+## Tablet captures
 
-Tablet evidence: native supportsTablet remains enabled, so 13-inch iPad screenshots are required ([Apple specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/)). The dedicated manual capture workflow builds this commit on an iPad simulator with OTA disabled, then saves actual first-launch and route screenshots for inspection. It does not claim a physical-device test.
+The app keeps native iPad support. Actual simulator screenshots from [capture 40293901740](https://github.com/MerlinWerlin/App-Projects/actions/runs/40293901740) are pending inspection/upload. This build disables OTA only in the capture environment so the screenshots represent its exact source commit. No physical-iPad success is claimed.
+
+## Remaining owner actions
+
+1. On the new TestFlight build, complete a record/reverse/copy/score round, play and share all four parts, save/reopen a take, and verify both hold and tap recording. Buy Plus through the Apple sandbox sheet and test Restore. See [TRIAL.md](TRIAL.md).
+2. Capture the physical-iPhone review video (launch, main flow, Apple purchase sheet and Restore). No verified video has been attached yet.
+3. Verify that App Privacy is published in App Store Connect. The public policy is live; the published Apple questionnaire state was not available through this API workflow.
+4. After device checks pass, complete the first App Review submission with Plus. Existing paid agreement/bank/tax completion is recorded in the factory guide; review any new account warning Apple displays.
+
+The 10-go free tier is usage-limited, not an automatically started time-based trial. Android export success does not establish Android production readiness; native Android work stays in PR106.
+
+References: [factory release standard](../../../docs/RELEASE_STANDARD.md), [OpenIAP transaction lifecycle](https://www.openiap.dev/docs/features/purchase), [Apple screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/).

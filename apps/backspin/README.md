@@ -1,0 +1,3 @@
+# Backspin
+
+Backspin is the App Factory reverse-singing game: record a line, hear it backwards, imitate it, then flip and score the copy. The Backspin build owner and Codex maintain this source in GitHub App-Projects; main is the release authority and Desktop copies are test installations. This serves APPS A2 in C:/BTB/_ATLAS/MASTER_ROADMAP.md. Start with docs/RELEASE_CHECKLIST.md for release evidence, ops/status.json for the current state, store/README.md for Apple metadata, and ops/CONVENTIONS.md before editing. A local export does not establish a successful TestFlight upload or physical-device test.

@@ -1,6 +1,8 @@
 node_modules/
 .expo/
 dist/
+/apps/backspin/dist-release/
+/scripts/asc/__pycache__/
 web-build/
 # generated native projects only; local Expo modules under apps/*/modules keep their ios/ and android/ sources
 /apps/*/ios/

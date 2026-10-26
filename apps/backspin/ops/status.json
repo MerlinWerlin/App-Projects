@@ -1,10 +1,10 @@
 {
   "app": "backspin",
-  "stage": "release-preparation",
-  "headline": "Purple mascot release candidate: 33 tests, TypeScript and iOS/Android exports passed; TestFlight upload and fresh Apple status pending.",
+  "stage": "testflight",
+  "headline": "Build7 VALID and attached to Apple release draft; new purple mascot, purchase fixes, review contact and Plus metadata ready. iPad captures pending.",
   "next_for_owner": [
-    "Real iPhone: record/play/share a round, buy Plus in TestFlight sandbox and Restore; capture the review video.",
-    "App Store Connect: verify published App Privacy and complete review contact before first submission."
+    "After the new TestFlight build arrives: record/play/share a round, buy Plus in sandbox and Restore; capture the physical-iPhone review video.",
+    "Verify App Privacy is published, then complete the first App Review submission after device checks."
   ],
   "updated": "2026-10-26"
 }
