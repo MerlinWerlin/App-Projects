@@ -28,11 +28,14 @@ adb install "$apk" | tee "$output/install.txt"
 adb logcat -c
 adb shell am start -W -n "$package/.MainActivity" | tee "$output/launch.txt"
 sleep 20
-adb shell pidof "$package" > "$output/process.txt"
+# Preserve crash evidence even when the process already exited.
 adb logcat -d > "$output/logcat.txt"
 adb exec-out screencap -p > "$output/launch.png"
-adb shell uiautomator dump /sdcard/window.xml
-adb pull /sdcard/window.xml "$output/window.xml"
+adb shell pidof "$package" > "$output/process.txt"
+# Some apps keep animating, so UIAutomator cannot reach idle. A screenshot and
+# live process still establish launch; XML is supplementary except in Rowlight's functional test.
+adb shell uiautomator dump /sdcard/window.xml > "$output/ui-dump.txt" 2>&1 || true
+adb pull /sdcard/window.xml "$output/window.xml" >> "$output/ui-dump.txt" 2>&1 || true
 if grep -E 'FATAL EXCEPTION|Fatal signal|ReactNativeJS:.*(Error:|Exception)' "$output/logcat.txt"; then
   exit 1
 fi
