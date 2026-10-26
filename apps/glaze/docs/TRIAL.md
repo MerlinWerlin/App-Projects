@@ -1,6 +1,6 @@
 # Try Glaze on your iPhone (no Apple developer account needed)
 
-## Native TestFlight 1.0.1 — 26 October 2026
+## Native TestFlight 1.0.1 (11) — 26 October 2026
 
 The latest owner-authorized native build adds Island pets and the widget/theme/icon repairs from PR107. Bulk icon installation is already confirmed by Jared; do not ask for that verdict again. The older Expo Go instructions below remain historical trial guidance.
 
