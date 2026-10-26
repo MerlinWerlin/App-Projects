@@ -1,0 +1,14 @@
+{
+  "status": "draft_not_uploaded",
+  "locale": "en-US",
+  "title": "Rowlight: Crochet Companion",
+  "shortDescription": "Keep your row, follow patterns and organise crochet projects offline.",
+  "fullDescription": "Keep your place while you crochet. Count rows and repeats, save project notes, follow pasted pattern steps and use photos with a movable reading guide. Explore gauge, yarn and amigurumi tools, then export a backup of your work.\n\nYour projects are stored on your device. Android PDFs currently open in another app; use page images for the in-app reading guide.",
+  "releaseBlockers": [
+    "Native Android PDF reader/ruler unavailable",
+    "Plus purchasing is a dev-only mock; Play Billing required",
+    "Android file export/import and persistence device QA"
+  ],
+  "assets": "Android device screenshots, 512px store icon and 1024x500 feature graphic still require verification",
+  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
+}

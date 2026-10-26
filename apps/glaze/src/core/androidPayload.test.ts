@@ -14,6 +14,7 @@ import {
   wallpaperPayload,
 } from './androidPayload.ts';
 import { newProject, type LoopProject } from './loop.ts';
+import { androidShortcutTarget } from './androidShortcut.ts';
 
 test('shortcutId: prefixed, sanitised, ≤ 64 chars, stable', () => {
   assert.equal(shortcutId('spotify'), 'glaze-spotify');
@@ -41,19 +42,30 @@ test('labels: short ≤ 10, long ≤ 25, ellipsis when cut', () => {
 });
 
 test('pinShortcutPayload: needs a url and an icon', () => {
-  const spec = { appId: 'maps', label: 'Maps', urlScheme: ' geo: ' };
+  const spec = { appId: 'website', label: 'Website', urlScheme: ' https://example.com/ ' };
   assert.deepEqual(pinShortcutPayload(spec, 'iVBO R w0'), {
-    id: 'glaze-maps',
-    label: 'Maps',
-    longLabel: 'Maps',
-    url: 'geo:',
+    id: 'glaze-website',
+    label: 'Website',
+    longLabel: 'Website',
+    url: 'https://example.com/',
     pngBase64: 'iVBORw0',
   });
   assert.equal(pinShortcutPayload({ ...spec, urlScheme: null }, 'abc'), null);
   assert.equal(pinShortcutPayload(spec, ''), null);
   const json = pinShortcutJson(spec, 'abc');
-  assert.equal(JSON.parse(json ?? '{}').id, 'glaze-maps');
+  assert.equal(JSON.parse(json ?? '{}').id, 'glaze-website');
   assert.equal(pinShortcutJson({ ...spec, urlScheme: '' }, 'abc'), null);
+});
+
+test('Android shortcuts replace Apple destinations and reject unsupported or unsafe schemes', () => {
+  assert.deepEqual(androidShortcutTarget({ appId: 'maps', urlScheme: 'maps://' }), { url: 'geo:0,0' });
+  assert.deepEqual(androidShortcutTarget({ appId: 'mail', urlScheme: 'message://' }), { url: 'mailto:' });
+  assert.deepEqual(androidShortcutTarget({ appId: 'spotify', urlScheme: 'spotify://' }), { packageName: 'com.spotify.music' });
+  for (const url of ['App-prefs:', 'photos-redirect://', 'shortcuts://', 'javascript:alert(1)', 'intent://settings', 'file:///private', 'https://']) {
+    assert.equal(androidShortcutTarget({ appId: 'unsupported', urlScheme: url }), null, url);
+  }
+  assert.equal(pinShortcutPayload({ appId: 'photos', label: 'Photos', urlScheme: 'photos-redirect://' }, 'abc'), null);
+  assert.equal(androidShortcutTarget({ appId: '__proto__', urlScheme: null }), null);
 });
 
 function project(over: Partial<LoopProject> = {}): LoopProject {

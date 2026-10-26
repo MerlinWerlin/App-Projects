@@ -1,6 +1,6 @@
 # Android: video live wallpaper + pinned shortcuts (T13)
 
-**Status: code-complete, not yet tested on a device.** Nothing here has run on an Android phone or emulator yet. The PC check is `GLAZE_NATIVE=1 npx expo prebuild -p android`; device behaviour is unverified. Spots marked `// VERIFY` in the code need a real device.
+**26 October Android preparation:** the native module now compiles in the standalone `.playtest` APK (GitHub run 40281924740). Signature, embedded JS and 16 KB native/ZIP alignment checks pass. Launcher and wallpaper behavior still need device checks; compilation is not feature verification. See the repository's `docs/GOOGLE_PLAY.md` for the current install/launch evidence. Spots marked `// VERIFY` still need a real device.
 
 ## Pieces
 
@@ -38,7 +38,11 @@ The service (`WallpaperService` + `Engine`):
 - **Pin icons to Home Screen** on `/install` (Android builds only) renders each icon to a 360 px PNG with the existing offscreen renderer, then pins them one at a time: Glaze asks "Pin <name>?" (Pin / Skip / Stop), then the launcher shows its own confirmation.
 - `pinShortcut(json)` uses `android.content.pm.ShortcutManager` directly (API 26+, no androidx dependency): `ShortcutInfo` with `id` (`glaze-<appId>`, ≤ 64 chars), short label ≤ 10 chars, long label ≤ 25, `Icon.createWithBitmap(png)` and `Intent(ACTION_VIEW, Uri.parse(url))`, then `requestPinShortcut`.
 - Icons carry the Glaze theme's shape and colours in the bitmap itself. Android 13 "themed icons" (monochrome) apply to app icons, not shortcut bitmaps (VERIFY on a Pixel).
-- Apps without a link are skipped. Many catalogue links are iPhone URL schemes; on Android a link with no handler shows the launcher's "App isn't installed" message (VERIFY; follow-up: Android package/intent catalogue).
+- Android destinations are now separate from the iPhone catalogue (`src/core/androidShortcut.ts`). Phone, Messages, Mail and Maps use standard Android intents; Spotify, YouTube, Instagram, WhatsApp, Chrome and Gmail use their launchable packages. HTTP(S) links may open a browser or verified app link. Unsupported entries are skipped. Native code checks that a destination resolves before requesting the pin and explains missing apps. The manifest declares only these targeted package/intent queries, without an installed-app inventory permission. Broader catalogue support remains work to validate.
+
+## Android screen and permissions
+
+Android's install screen shows the launcher flow without Safari, configuration profiles or Apple Shortcuts instructions. Image/video selection uses the system picker without requesting broad library access first. Saving owned images on Android 10+ avoids a library permission prompt; older versions keep the write-only permission path. The compiled Play APK contains no READ_MEDIA_IMAGES/VIDEO/AUDIO, microphone or overlay permission. Legacy storage, camera and wake-lock entries still need the final release audit. Picker/save flows and wallpaper pause/reboot behavior remain device QA gates.
 
 ## Fallbacks (adapter)
 

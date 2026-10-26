@@ -11,6 +11,7 @@ import {
   type RecordingOptions,
 } from 'expo-audio';
 import { Platform } from 'react-native';
+import { hasAndroidPcm } from './pcm.ts';
 
 export const RECORDING: RecordingOptions = {
   extension: '.wav',
@@ -19,7 +20,7 @@ export const RECORDING: RecordingOptions = {
   bitRate: 705600,
   isMeteringEnabled: true,
   android: {
-    // Android's recorder can't write WAV; the store build adds a native PCM path (docs/PLAN.md, Android).
+    // The native PCM adapter decodes this AAC recording before the hook resolves a take.
     extension: '.m4a',
     outputFormat: 'mpeg4',
     audioEncoder: 'aac',
@@ -70,8 +71,8 @@ export async function modeForPlayback(): Promise<void> {
   mode = 'play';
 }
 
-/** iOS writes real WAV; elsewhere we can't reverse in JS yet. */
-export const canReverseHere = Platform.OS === 'ios';
+/** Only enable Android play when the native decoder is actually linked. */
+export const canReverseHere = Platform.OS === 'ios' || (Platform.OS === 'android' && hasAndroidPcm);
 
 /**
  * One shared player for the whole app (only one sound plays at a time). `play` resolves when the sound ends,

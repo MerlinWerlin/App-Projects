@@ -5,6 +5,7 @@
 //  - Live wallpaper: { uri, trim, speed } read by GlazeVideoWallpaperService from SharedPreferences.
 
 import type { LoopProject, LoopSpeed } from './loop.ts';
+import { androidShortcutTarget, type AndroidShortcutTarget } from './androidShortcut.ts';
 
 export const SHORTCUT_ID_MAX = 64;
 export const SHORT_LABEL_MAX = 10;
@@ -34,11 +35,10 @@ export function fitLabel(label: string, max: number): string {
 export const shortLabel = (label: string): string => fitLabel(label, SHORT_LABEL_MAX);
 export const longLabel = (label: string): string => fitLabel(label, LONG_LABEL_MAX);
 
-export type PinShortcutPayload = {
+export type PinShortcutPayload = AndroidShortcutTarget & {
   id: string;
   label: string;
   longLabel: string;
-  url: string;
   pngBase64: string;
 };
 
@@ -47,14 +47,14 @@ export function pinShortcutPayload(
   spec: { appId: string; label: string; urlScheme: string | null },
   pngBase64: string,
 ): PinShortcutPayload | null {
-  const url = spec.urlScheme ? spec.urlScheme.trim() : '';
+  const target = androidShortcutTarget(spec);
   const png = String(pngBase64 ?? '').replace(/\s+/g, '');
-  if (!url || !png) return null;
+  if (!target || !png) return null;
   return {
     id: shortcutId(spec.appId),
     label: shortLabel(spec.label),
     longLabel: longLabel(spec.label),
-    url,
+    ...target,
     pngBase64: png,
   };
 }

@@ -6,6 +6,7 @@ import Constants from 'expo-constants';
 import { Alert, Platform } from 'react-native';
 import { requireOptionalNativeModule } from 'expo';
 import { pinShortcutJson, wallpaperJson } from '../core/androidPayload';
+import { androidShortcutTarget } from '../core/androidShortcut';
 import { withMonogram, type IconSpec } from '../core/iconspec';
 import type { LoopProject } from '../core/loop';
 
@@ -67,7 +68,7 @@ export function androidStatus(): AndroidAvailability {
 
 function asResult(v: unknown): AndroidResult {
   const s = typeof v === 'string' ? v : '';
-  if (s === 'requested' || s === 'unsupported') return s;
+  if (s === 'requested' || s === 'unsupported' || s === 'no-link') return s;
   return s.startsWith('error:') ? (s as AndroidResult) : 'error:unknown';
 }
 
@@ -169,9 +170,9 @@ async function pinAllWithFeedback(
     return 0;
   }
   // T82: the pinned PNGs letter monogram apps exactly as the iOS install path does.
-  const linkable = specs.filter((s) => !!s.urlScheme && s.urlScheme.trim()).map((s) => withMonogram(s));
+  const linkable = specs.filter((s) => androidShortcutTarget(s) !== null).map((s) => withMonogram(s));
   if (linkable.length === 0) {
-    Alert.alert('Nothing to pin', 'None of these apps has a link that opens it.');
+    Alert.alert('Nothing to pin', 'These icons do not have supported Android destinations yet. Try Phone, Messages, Mail, Maps, Spotify, YouTube, Instagram, WhatsApp, Chrome or Gmail.');
     return 0;
   }
   let rendered: { appId: string; pngBase64: string }[];
@@ -193,7 +194,10 @@ async function pinAllWithFeedback(
     );
     if (go === 'stop') break;
     if (go === 'skip') continue;
-    if ((await pinShortcut(spec, png)) === 'requested') pinned += 1;
+    const result = await pinShortcut(spec, png);
+    if (result === 'requested') pinned += 1;
+    else if (result === 'no-link') Alert.alert(`Cannot open ${spec.label}`, 'Install the matching app first, then try pinning this icon again.');
+    else Alert.alert('Could not request this icon', 'The launcher could not accept this shortcut. Try again.');
   }
   return pinned;
 }

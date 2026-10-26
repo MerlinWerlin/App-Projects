@@ -3,7 +3,7 @@ import * as Crypto from 'expo-crypto';
 import * as ImagePicker from 'expo-image-picker';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Alert, Image, Linking, Pressable, StyleSheet, Text, View, type TextStyle } from 'react-native';
+import { Alert, Image, Linking, Platform, Pressable, StyleSheet, Text, View, type TextStyle } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import Svg, { Circle, Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import {
@@ -87,8 +87,9 @@ export default function LiveScreen() {
     tap();
     setBusy(true);
     try {
-      const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (!perm.granted) {
+      // Android's system picker grants access only to the chosen file.
+      const perm = Platform.OS === 'android' ? null : await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (perm && !perm.granted) {
         setPermSheet(true);
         return;
       }

@@ -5,6 +5,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   PROFILE_MIME,
   PROFILE_SERVER_MODULE,
@@ -36,7 +37,7 @@ import { PROFILE_INSTALL_ENABLED } from '../config/install.ts';
 import { en } from '../i18n/locales/en.ts';
 import type { IconSpec } from './iconspec.ts';
 
-const root = new URL('../../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../../', import.meta.url));
 const read = (rel: string) => readFileSync(join(root, rel), 'utf8');
 
 // ---- constants shared with Swift ----

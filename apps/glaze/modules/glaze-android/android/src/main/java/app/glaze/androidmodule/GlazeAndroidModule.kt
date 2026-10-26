@@ -136,16 +136,22 @@ class GlazeAndroidModule : Module() {
       val label = o.optString("label", "")
       val longLabel = o.optString("longLabel", label)
       val url = o.optString("url", "")
+      val packageName = o.optString("packageName", "")
       val png = o.optString("pngBase64", "")
-      if (id.isEmpty() || label.isEmpty() || url.isEmpty() || png.isEmpty()) return "error:bad-payload"
+      if (id.isEmpty() || label.isEmpty() || (url.isEmpty() && packageName.isEmpty()) || png.isEmpty()) return "error:bad-payload"
 
       val bytes = Base64.decode(png, Base64.DEFAULT)
       val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size) ?: return "error:bad-png"
 
-      // The URL scheme of the target app. VERIFY: many catalogue schemes are iOS-only; when no
-      // Android activity handles it the launcher shows "App isn't installed" on tap.
-      val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+      val intent = if (packageName.isNotEmpty()) {
+        ctx.packageManager.getLaunchIntentForPackage(packageName) ?: return "no-link"
+      } else {
+        val uri = Uri.parse(url)
+        if (uri.scheme !in listOf("https", "http", "tel", "sms", "mailto", "geo")) return "no-link"
+        Intent(Intent.ACTION_VIEW, uri)
+      }
+      if (intent.resolveActivity(ctx.packageManager) == null) return "no-link"
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
       // Our PNG already carries the Glaze theme's shape and colours, so it is used as-is.
       // VERIFY: Android 13+ "themed icons" (monochrome) apply to app icons, not shortcut bitmaps.

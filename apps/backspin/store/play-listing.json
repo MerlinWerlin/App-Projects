@@ -1,0 +1,14 @@
+{
+  "status": "draft_not_uploaded",
+  "locale": "en-US",
+  "title": "Backspin: Reverse Your Voice",
+  "shortDescription": "Record a line, hear it backwards, copy it and reveal the result.",
+  "fullDescription": "Say a line, listen to it backwards, try copying that sound, then flip your attempt to hear what comes out. Play alone or pass the phone between friends.",
+  "releaseBlockers": [
+    "Validate new native AAC-to-PCM conversion in the compiled APK and complete a recorded gameplay round",
+    "Audio interruptions, route changes, playback and recording device QA",
+    "Play Billing and entitlement restore verification"
+  ],
+  "assets": "Android device screenshots, 512px store icon and 1024x500 feature graphic still require verification",
+  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
+}

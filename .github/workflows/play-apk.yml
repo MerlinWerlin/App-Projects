@@ -1,0 +1,117 @@
+name: Android test APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: App folder to compile (test package only)
+        type: choice
+        default: crochet
+        options: [crochet, glaze, linework, couch, cue, backspin, satchel]
+      smoke:
+        description: Install and launch on an Android emulator
+        type: boolean
+        default: true
+      artifactRun:
+        description: Optional existing run ID; reuse its verified APK for emulator testing
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      APP: ${{ inputs.app || 'crochet' }}
+      PLAY_VARIANT: preview
+      EAS_BUILD_PLATFORM: android
+      GLAZE_NATIVE: '1'
+      CI: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Build the PR's actual head, not GitHub's synthetic merge commit.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Install and generate the isolated Android project
+        if: inputs.artifactRun == '' || inputs.app == 'backspin'
+        shell: bash
+        run: |
+          case "$APP" in crochet|glaze|linework|couch|cue|backspin|satchel) ;; *) exit 2;; esac
+          cd "apps/$APP"
+          npm ci --no-audit --no-fund
+          if [ "$APP" = glaze ]; then node scripts/native-link.mjs; fi
+          if [ "$APP" = backspin ]; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq ffmpeg
+            mkdir -p modules/backspin-pcm/android/src/androidTest/assets
+            ffmpeg -hide_banner -loglevel error -f lavfi -i 'sine=frequency=440:duration=0.25:sample_rate=44100' -ac 1 -c:a aac modules/backspin-pcm/android/src/androidTest/assets/tone.m4a
+          fi
+          npx expo prebuild --platform android --no-install
+          npx expo config --type public --json > /tmp/play-config.json
+          node -e 'const c=require("/tmp/play-config.json"); if(!c.android.package.endsWith(".playtest") || c.updates.enabled!==false) throw Error("Not an offline test variant")'
+      - name: Compile standalone APK with the generated test key
+        if: inputs.artifactRun == ''
+        working-directory: apps/${{ env.APP }}/android
+        run: ./gradlew :app:assembleRelease --no-daemon --max-workers=2 -PreactNativeArchitectures=arm64-v8a,x86_64 -Dorg.gradle.jvmargs=-Xmx4g
+      - name: Verify signature, manifest, embedded bundle and native alignment
+        if: inputs.artifactRun == ''
+        shell: bash
+        run: |
+          mkdir -p apk-output
+          cp "apps/$APP/android/app/build/outputs/apk/release/app-release.apk" "apk-output/$APP-play-test.apk"
+          cp /tmp/play-config.json apk-output/config.json
+          git rev-parse HEAD > apk-output/source-commit.txt
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "apk-output/$APP-play-test.apk" > apk-output/signature.txt
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "apk-output/$APP-play-test.apk" > apk-output/badging.txt
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump xmltree "apk-output/$APP-play-test.apk" AndroidManifest.xml > apk-output/manifest.txt
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 "apk-output/$APP-play-test.apk" > apk-output/zipalign.txt
+          python scripts/play/verify_apk.py "apk-output/$APP-play-test.apk" apk-output
+      - uses: actions/upload-artifact@v4
+        if: inputs.artifactRun == ''
+        with:
+          name: ${{ env.APP }}-play-test-apk
+          path: apk-output/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Reuse an already verified test APK
+        if: inputs.artifactRun != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_RUN: ${{ inputs.artifactRun }}
+        run: |
+          [[ "$ARTIFACT_RUN" =~ ^[0-9]+$ ]]
+          case "$APP" in crochet|glaze|linework|couch|cue|backspin|satchel) ;; *) exit 2;; esac
+          gh run download "$ARTIFACT_RUN" -n "$APP-play-test-apk" -D apk-output
+          python scripts/play/verify_apk.py "apk-output/$APP-play-test.apk" apk-output
+      - uses: android-actions/setup-android@v4
+        if: inputs.smoke
+        with:
+          packages: 'platform-tools emulator'
+          log-accepted-android-sdk-licenses: false
+      - name: Emulator install and launch
+        if: inputs.smoke
+        shell: bash
+        run: bash scripts/play/smoke-apk.sh "apk-output/$APP-play-test.apk" apk-output
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ env.APP }}-android-evidence
+          path: |
+            apk-output/*.txt
+            apk-output/*.json
+            apk-output/*.png
+            apk-output/*.xml
+          if-no-files-found: ignore
+          retention-days: 30

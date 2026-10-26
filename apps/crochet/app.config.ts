@@ -4,6 +4,7 @@ import type { ConfigContext, ExpoConfig } from 'expo/config';
 
 export default ({ config }: ConfigContext): ExpoConfig => {
   const base = config as ExpoConfig;
+  if (process.env.PLAY_VARIANT) return require('./ops/play-variant.cjs')(base);
   if (process.env.EXPO_GO_PREVIEW === '1') {
     return { ...base, runtimeVersion: { policy: 'sdkVersion' } };
   }

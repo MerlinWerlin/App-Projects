@@ -31,6 +31,31 @@
       "env": {
         "GLAZE_NATIVE": "1"
       }
+    },
+    "play-preview": {
+      "distribution": "internal",
+      "channel": "play-preview",
+      "environment": "preview",
+      "env": {
+        "PLAY_VARIANT": "preview",
+        "GLAZE_NATIVE": "1"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "play-production": {
+      "distribution": "store",
+      "channel": "play-production",
+      "environment": "production",
+      "autoIncrement": true,
+      "env": {
+        "PLAY_VARIANT": "production",
+        "GLAZE_NATIVE": "1"
+      },
+      "android": {
+        "buildType": "app-bundle"
+      }
     }
   },
   "submit": {

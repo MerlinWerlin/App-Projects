@@ -549,6 +549,7 @@ export default function InstallScreen() {
     <SafeAreaView edges={['left', 'right']} style={[styles.root, { backgroundColor: c.bg }]}>
       <OffscreenIconRenderer ref={renderer.ref} backdrop={backdrop} />
       <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.scroll}>
+        {!androidNative.isAndroid ? <>
         {PROFILE_INSTALL_ENABLED ? (
           <View style={styles.side}>
             <ContextTip id="install-not-verified" />
@@ -903,6 +904,7 @@ export default function InstallScreen() {
           </View>
         ) : null}
 
+        </> : null}
         {androidNative.isAndroid ? (
           <SquircleCard style={styles.side}>
             <View style={styles.stack}>

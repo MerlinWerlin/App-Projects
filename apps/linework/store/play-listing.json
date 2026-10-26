@@ -1,0 +1,14 @@
+{
+  "status": "draft_not_uploaded",
+  "locale": "en-US",
+  "title": "Linework: Trace & Draw",
+  "shortDescription": "Use a camera overlay or lightbox to practise drawing from your own images.",
+  "fullDescription": "Choose an image, place your phone securely and follow the overlay on paper. Adjust position and visibility, lock the image in place, or use the lightbox view.\n\nUse a stable stand for camera tracing. This is an overlay drawing aid; it does not project an image onto your paper.",
+  "releaseBlockers": [
+    "Adapt Apple-specific trial product flow for Play",
+    "Real Play Billing and restore QA",
+    "Android camera/outline/timelapse/permission QA"
+  ],
+  "assets": "Android device screenshots, 512px store icon and 1024x500 feature graphic still require verification",
+  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
+}

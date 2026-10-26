@@ -9,6 +9,11 @@
 // The App Group entitlement no longer depends on it (native-plugins/appgroup.json is always applied).
 const { execSync } = require('node:child_process');
 
+if (process.env.EAS_BUILD_PLATFORM === 'android' || process.env.PLAY_VARIANT) {
+  console.log('[glaze] Android build: Apple widget tooling is not required.');
+  process.exit(0);
+}
+
 if (process.env.GLAZE_NATIVE !== '1') {
   console.log('[glaze] GLAZE_NATIVE is not 1: widget tool not needed for this build.');
   process.exit(0);
