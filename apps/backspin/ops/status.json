@@ -1,10 +1,9 @@
 {
   "app": "backspin",
   "stage": "testflight",
-  "headline": "Build7 VALID and attached to Apple release draft; new purple mascot, purchase fixes, review contact and Plus metadata ready. iPad captures pending.",
+  "headline": "Build 7 VALID; iPhone playback/sharing/Plus purchase/Restore passed per Jared. Release authorized; inspected iPad screenshot and automatic release setting queued for sync.",
   "next_for_owner": [
-    "After the new TestFlight build arrives: record/play/share a round, buy Plus in sandbox and Restore; capture the physical-iPhone review video.",
-    "Verify App Privacy is published, then complete the first App Review submission after device checks."
+    "Sign in to App Store Connect in the opened browser; Codex will verify App Privacy and submit version 1.0/build 7 with Plus."
   ],
   "updated": "2026-10-26"
 }

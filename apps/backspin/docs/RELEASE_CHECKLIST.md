@@ -2,7 +2,7 @@
 
 ## Current release
 
-Native **build 7**, version 1.0.0 (Apple listing 1.0), is VALID and attached to the editable App Store release. The app remains PREPARE_FOR_SUBMISSION. No App Review submission or public App Store release was performed.
+Native **build 7**, version 1.0.0 (Apple listing 1.0), is VALID and attached to the editable App Store release. The app remains PREPARE_FOR_SUBMISSION. Jared explicitly authorized App Store submission/release and confirmed build 7 recording/playback/sharing and Plus purchase/Restore passed on his iPhone on 26 October. App Review submission is pending the signed-in website session; no public release is claimed.
 
 - Mascot and native purchase fixes: [PR108](https://github.com/MerlinWerlin/App-Projects/pull/108), merged source `26bab64`.
 - Apple setup: [PR109](https://github.com/MerlinWerlin/App-Projects/pull/109), merged `7743a6e`.
@@ -21,14 +21,17 @@ Native **build 7**, version 1.0.0 (Apple listing 1.0), is VALID and attached to 
 
 ## Tablet captures
 
-The app keeps native iPad support. Actual simulator screenshots from [capture 40293901740](https://github.com/MerlinWerlin/App-Projects/actions/runs/40293901740) are pending inspection/upload. This build disables OTA only in the capture environment so the screenshots represent its exact source commit. No physical-iPad success is claimed.
+The app keeps native iPad support. [Capture 40293901740](https://github.com/MerlinWerlin/App-Projects/actions/runs/40293901740) succeeded. One actual 2064x2752 native first-launch screenshot was inspected and selected for the 13-inch iPad set; three route shots showing the system Open confirmation were excluded. See [store/ipad/README.md](../store/ipad/README.md). OTA was disabled only in the capture environment. No physical-iPad success is claimed. Apple upload/readback is pending this metadata sync.
 
-## Remaining owner actions
+## Release authorization and remaining requirements
 
-1. On the new TestFlight build, complete a record/reverse/copy/score round, play and share all four parts, save/reopen a take, and verify both hold and tap recording. Buy Plus through the Apple sandbox sheet and test Restore. See [TRIAL.md](TRIAL.md).
-2. Capture the physical-iPhone review video (launch, main flow, Apple purchase sheet and Restore). No verified video has been attached yet.
-3. Verify that App Privacy is published in App Store Connect. The public policy is live; the published Apple questionnaire state was not available through this API workflow.
-4. After device checks pass, complete the first App Review submission with Plus. Existing paid agreement/bank/tax completion is recorded in the factory guide; review any new account warning Apple displays.
+- **Device checks passed (owner confirmation):** on 26 October Jared answered “Yes, all passed” for TestFlight build 7 recording/playback/sharing and Plus purchase + Restore. Do not ask for these checks again.
+- **Release authorized:** “looks good, can you release it?” authorizes submission with Plus and automatic release after Apple approval. The listing requests `AFTER_APPROVAL`; verify Apple readback before reporting this setting saved.
+- **Signed-in Apple website required:** Apple's current API documentation requires the first In-App Purchase to be submitted with the app through App Store Connect. The API setup remains useful for metadata, screenshots and release settings. The in-app browser is at sign-in; desktop Chrome inspection failed twice with `GetCursorPos: Access is denied (0x80070005)`.
+- Verify the published App Privacy questionnaire in the signed-in website, include Plus with version 1.0/build 7, and submit. Account paid agreement/bank/tax completion was recorded in the factory guide; handle any new account warning shown by Apple.
+- A physical-iPhone review video has not been supplied. The release standard says to attach it when Apple asks; owner-confirmed testing is not a claim that video exists.
+
+References for first-purchase routing: [Apple managing In-App Purchases](https://developer.apple.com/documentation/appstoreconnectapi/managing-in-app-purchases), [submit an In-App Purchase](https://developer.apple.com/help/app-store-connect/manage-submissions-to-app-review/submit-an-in-app-purchase/).
 
 The 10-go free tier is usage-limited, not an automatically started time-based trial. Android export success does not establish Android production readiness; native Android work stays in PR106.
 

@@ -1,6 +1,6 @@
 # Backspin: release test on your iPhone
 
-For the 26 October mascot release, use the new TestFlight build when its upload is confirmed in `RELEASE_CHECKLIST.md`. Expo Go's pretend purchase is not evidence that the paid flow works.
+For the 26 October mascot release, build 7 is uploaded and Apple VALID. Jared confirmed on 26 October that recording/playback/sharing and Plus purchase + Restore all passed on his physical iPhone. The steps below remain a regression reference; do not request the same verdict again. No review video is claimed as supplied.
 
 1. Install the new build in TestFlight. Check the purple mascot on the Home Screen and at launch, and that your saved takes/settings still load.
 2. Complete Quick play: record a line, hear it backwards through the loudspeaker, copy it, and play all four parts. Try both hold and tap recording in Settings.
