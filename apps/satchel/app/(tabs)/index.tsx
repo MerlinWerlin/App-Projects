@@ -15,6 +15,7 @@ import { fonts, space } from '../../src/theme/tokens.ts';
 import { Body, Button, Card, EmptyState, Label, PressableScale, Title } from '../../src/ui/kit.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
 import { NextUpCard } from '../../src/ui/NextUpCard.tsx';
+import { TripImport } from '../../src/ui/TripImport.tsx';
 import { BatteryBannerSlot } from '../../src/ui/slots/BatteryBannerSlot.tsx';
 import { EmergencyShortcutSlot } from '../../src/ui/slots/EmergencyShortcutSlot.tsx';
 import { OfflineBannerSlot } from '../../src/ui/slots/OfflineBannerSlot.tsx';
@@ -95,6 +96,7 @@ export default function TripsScreen() {
       ListFooterComponent={
         <View style={{ gap: space.s, marginTop: space.s }}>
           <Button label={t('trips.add')} hint={t('spec41.trips.addHint')} onPress={() => router.push('/trip-edit')} />
+          <TripImport />
           <Button label={t('essentials.title')} hint={t('essentials.body')} kind="quiet" onPress={() => router.push('/essentials')} />
           <Button label={t('trips.settings')} hint={t('trips.settingsHint')} kind="quiet" onPress={() => router.push('/settings')} />
         </View>

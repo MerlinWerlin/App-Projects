@@ -88,7 +88,7 @@ def row(t):
 pct = round(100 * done / len(tasks)) if tasks else 0
 kit = bool(status.get("trial_kit"))
 kit_block = ("""<button id="kit" class="btn" type="button">Download trial kit (.zip)</button>
-<p class="small" id="kitmsg" aria-live="polite">Unzip it on your PC and double-click START_TRIAL.cmd. Once the App Factory overseer can reach your PC it also keeps a copy in Desktop\\Apps\\satchel.</p>"""
+<p class="small" id="kitmsg" aria-live="polite">Fallback only: your PC auto-start already serves Satchel (Expo Go > Recently opened). The kit holds the same code; a copy is also kept in Desktop\\Apps\\satchel.</p>"""
              if kit else '<p class="small">The trial kit download appears here after the next build run publishes it.</p>')
 
 # The artifact host does not serve .zip files, so the kit is published as base64 text
@@ -107,7 +107,7 @@ KIT_SCRIPT = r"""<script>
       var bytes = new Uint8Array(bin.length);
       for (var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
       await dl.save({filename:'satchel-trial-kit.zip', data: bytes});
-      m.textContent='Saved. Unzip it on your PC and double-click START_TRIAL.cmd.';
+      m.textContent='Saved. The kit holds the same code your PC already serves.';
     } catch(err) {
       var c = err && err.code;
       if (c==='declined') m.textContent='Download cancelled. Tap the button again whenever you are ready.';

@@ -5,7 +5,7 @@ The Satchel build run only writes the Satchel Build artifact, `Desktop\Apps\satc
 ## 1. PC Expo Go auto-start (needed for the trial)
 - Add `satchel` to `C:\Users\jared\Desktop\Apps\_auto\auto_start.ps1` the same way as Backspin: folder `Desktop\Apps\satchel`, **port 8098**, restart when `BUILD_VERSION.txt`'s commit changes, run the install + `npx expo install --fix` + `tsc --noEmit` + `npm test` + iOS export report (`tsc-report.txt`).
 - Satchel is on **Expo SDK 58** (moved 25 Oct, run 6). The first PC install is the first real `npm install` this code has had: the cloud runs could only type-check against stubs. Report any errors back through an oversight directive.
-- Until the auto-start serves it, the owner can double-click `START_TRIAL.cmd` in that folder.
+- The PC auto-start serves it on port 8098 (Expo Go > Recently opened); owners are never asked to run .cmd files.
 
 ## 2. Auto-ship and PC refresh (after the owner's first try)
 - Satchel lives as a git bundle on its build artifact, not in GitHub App-Projects. Onboarding means: copy `main` into `apps/satchel` in App-Projects, then add Satchel to the "App Factory auto-ship" and "PC refresh" scheduled-task prompts.

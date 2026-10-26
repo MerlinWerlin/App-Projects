@@ -138,7 +138,8 @@ export function TripsProvider({ children }: { children: ReactNode }) {
         const gone = latest.current.find((x) => x.id === id);
         const ok = await commit((l) => removeTrip(l, id));
         if (ok) cleanUpTrip(id, gone);
-        if (ok && gone?.demo) removeDemoExtras().catch(() => {});
+        // An imported copy of the demo is also marked demo: the sample extras go only when no demo trip is left.
+        if (ok && gone?.demo && !latest.current.some((x) => x.demo)) removeDemoExtras().catch(() => {});
         return ok;
       },
       saveItem: (i) => commit((l) => upsertItem(l, i)),
