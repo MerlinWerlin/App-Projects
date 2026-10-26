@@ -1,4 +1,16 @@
-# Backspin: what to test (Expo Go on your iPhone)
+# Backspin: release test on your iPhone
+
+For the 26 October mascot release, build 7 is uploaded and Apple VALID. Jared confirmed on 26 October that recording/playback/sharing and Plus purchase + Restore all passed on his physical iPhone. The steps below remain a regression reference; do not request the same verdict again. No review video is claimed as supplied.
+
+1. Install the new build in TestFlight. Check the purple mascot on the Home Screen and at launch, and that your saved takes/settings still load.
+2. Complete Quick play: record a line, hear it backwards through the loudspeaker, copy it, and play all four parts. Try both hold and tap recording in Settings.
+3. Save the take and share its four-part audio clip. Reopen Backspin and play the saved take.
+4. Open Plus. Check the local price, complete the Apple sandbox purchase, and use Restore purchase. TestFlight purchases are sandbox transactions; the Apple purchase sheet must appear. Existing owners can check Restore without deleting their saved takes.
+5. Capture a physical-iPhone screen recording of launch, the complete round, Unlock with the Apple sheet, and Restore for the first App Review. Record any failure and its displayed error code; do not claim the video is supplied until it is actually attached.
+
+If testing a fresh install, verify each completed round consumes one of the ten free goes and the next round offers Plus after the tenth. Existing installations do not need their data erased to test the new icon.
+
+## Earlier Expo Go notes (historical)
 
 Open Expo Go, then **Backspin** under Recently opened (or scan the QR in `Desktop\Apps\backspin\EXPO_QR.png`). The PC installs and starts it by itself; the first install takes about 10 minutes.
 

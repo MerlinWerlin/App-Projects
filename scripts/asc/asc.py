@@ -181,6 +181,12 @@ def status(app):
                 f"support `{la.get('supportUrl')}`, marketing `{la.get('marketingUrl')}`")
             sets = get(f"/v1/appStoreVersionLocalizations/{loc['id']}/appScreenshotSets")["data"]
             say("  - Screenshot sets: " + (", ".join(f"{attrs(s)['screenshotDisplayType']}" for s in sets) or "none"))
+            for screenshot_set in sets:
+                shots = get(f"/v1/appScreenshotSets/{screenshot_set['id']}/appScreenshots")["data"]
+                say("    - " + attrs(screenshot_set)["screenshotDisplayType"] + ": " + ", ".join(
+                    f"{attrs(shot).get('fileName')}: {(attrs(shot).get('assetDeliveryState') or {}).get('state', 'unknown')}"
+                    for shot in shots))
+        say(f"  - Release setting: {attrs(ver).get('releaseType', 'unknown')}")
         try:
             d = get(f"/v1/appStoreVersions/{ver['id']}/appStoreReviewDetail")["data"]
             da = attrs(d) if d else {}
@@ -194,8 +200,32 @@ def status(app):
             say(f"  - Build attached: unknown ({e})")
     builds = get("/v1/builds", **{"filter[app]": app_id, "sort": "-uploadedDate", "limit": 3})["data"]
     say("- Latest builds: " + (", ".join(f"{attrs(b)['version']} {attrs(b)['processingState']} {attrs(b)['uploadedDate'][:10]}" for b in builds) or "none"))
+    if builds:
+        try:
+            detail = attrs(get(f"/v1/builds/{builds[0]['id']}/buildBetaDetail")["data"] or {})
+            say(f"- Latest build internal TestFlight state: {detail.get('internalBuildState', 'unknown')}")
+            groups = get(f"/v1/apps/{app_id}/betaGroups", limit=50)["data"]
+            all_builds = sum(1 for g in groups if attrs(g).get("isInternalGroup") and attrs(g).get("hasAccessToAllBuilds"))
+            say(f"- Internal TestFlight groups with automatic build access: {all_builds}")
+        except RuntimeError as e:
+            say(f"- Internal TestFlight access: unverified ({str(e)[:150]})")
     iaps = get(f"/v1/apps/{app_id}/inAppPurchasesV2", limit=50)["data"]
     say("- In-app purchases: " + (", ".join(f"`{attrs(i)['productId']}` {attrs(i)['inAppPurchaseType']} {attrs(i)['state']}" for i in iaps) or "none"))
+    for iap in iaps:
+        if attrs(iap).get("state") != "MISSING_METADATA":
+            continue
+        for label, endpoint in (("localizations", "inAppPurchaseLocalizations"),
+                                ("review screenshot", "appStoreReviewScreenshot"),
+                                ("price schedule", "iapPriceSchedule"),
+                                ("territory availability", "inAppPurchaseAvailability")):
+            try:
+                data = get(f"/v2/inAppPurchases/{iap['id']}/{endpoint}").get("data")
+                detail = f"{len(data)} present" if isinstance(data, list) else "present" if data else "missing"
+                if endpoint == "appStoreReviewScreenshot" and data:
+                    detail += "; delivery " + str((attrs(data).get("assetDeliveryState") or {}).get("state", "unknown"))
+                say(f"  - {attrs(iap)['productId']} {label}: {detail}")
+            except RuntimeError as e:
+                say(f"  - {attrs(iap)['productId']} {label}: unavailable ({str(e)[:150]})")
     try:
         ar = get(f"/v1/appInfos/{info['id']}/ageRatingDeclaration")["data"]
         filled = sum(1 for v in attrs(ar).values() if v not in (None, ""))
@@ -250,6 +280,56 @@ def step(name, fn):
         say(f"- {name}: done")
     except Exception as e:
         say(f"- {name}: **failed** ({str(e)[:400]})")
+
+
+CONTACT_FIELDS = ("contactFirstName", "contactLastName", "contactPhone", "contactEmail")
+
+
+def review_contact(existing, source_app=None):
+    """Preserve the target contact; optionally fill gaps from an explicitly named app on this team.
+
+    Values stay between Apple API requests: never print or persist personal contact details in the repo/report.
+    """
+    contact = {k: existing[k] for k in CONTACT_FIELDS if existing.get(k)}
+    if len(contact) == len(CONTACT_FIELDS) or not source_app:
+        return contact
+    source_rel, _ = app_cfg(source_app)
+    versions = get(f"/v1/apps/{source_rel['ascAppId']}/appStoreVersions")["data"]
+    for version in versions:
+        try:
+            source = attrs(get(f"/v1/appStoreVersions/{version['id']}/appStoreReviewDetail")["data"] or {})
+        except RuntimeError:
+            continue
+        if all(source.get(k) for k in CONTACT_FIELDS):
+            for k in CONTACT_FIELDS:
+                contact.setdefault(k, source[k])
+            say(f"  - missing review contact fields reused from {source_app} (values not logged)")
+            break
+    return contact
+
+
+def ensure_iap_availability(iap_id):
+    """Opt-in setup for an unconfigured product; preserve any existing territory selection."""
+    try:
+        current = get(f"/v2/inAppPurchases/{iap_id}/inAppPurchaseAvailability").get("data")
+    except RuntimeError as e:
+        if "-> 404" not in str(e):
+            raise
+        current = None
+    if current:
+        say("  - purchase availability already configured; preserved")
+        return
+    territories = get("/v1/territories", limit=200)
+    if territories.get("links", {}).get("next"):
+        raise RuntimeError("territory list needs pagination; no availability changes made")
+    items = [{"type": "territories", "id": t["id"]} for t in territories["data"]]
+    if not items:
+        raise RuntimeError("Apple returned no territories; no availability changes made")
+    call("POST", "/v1/inAppPurchaseAvailabilities", {"data": {
+        "type": "inAppPurchaseAvailabilities", "attributes": {"availableInNewTerritories": True},
+        "relationships": {"inAppPurchase": {"data": {"type": "inAppPurchases", "id": iap_id}},
+                          "availableTerritories": {"data": items}}}})
+    say(f"  - purchase availability created for {len(items)} territories")
 
 
 def apply(app):
@@ -309,6 +389,9 @@ def apply(app):
         if lst.get("copyright"):
             step("Copyright", lambda: call("PATCH", f"/v1/appStoreVersions/{ver['id']}",
                  {"data": {"type": "appStoreVersions", "id": ver["id"], "attributes": {"copyright": lst["copyright"]}}}))
+        if lst.get("releaseType") == "AFTER_APPROVAL":
+            step("Automatic release after approval", lambda: call("PATCH", f"/v1/appStoreVersions/{ver['id']}",
+                 {"data": {"type": "appStoreVersions", "id": ver["id"], "attributes": {"releaseType": "AFTER_APPROVAL"}}}))
         if lst.get("attachBuild") == "latest":
             def attach():
                 v = attrs(ver)["versionString"]
@@ -325,7 +408,11 @@ def apply(app):
                     d = get(f"/v1/appStoreVersions/{ver['id']}/appStoreReviewDetail")["data"]
                 except RuntimeError:
                     d = None
-                body = {"notes": lst["reviewNotes"], "demoAccountRequired": False}
+                contact = review_contact(attrs(d or {}), lst.get("reviewContactFromApp"))
+                missing = [k for k in CONTACT_FIELDS if not contact.get(k)]
+                if missing:
+                    raise RuntimeError("App Review contact still needs: " + ", ".join(missing) + "; notes were not changed")
+                body = {"notes": lst["reviewNotes"], "demoAccountRequired": False, **contact}
                 if d:
                     call("PATCH", f"/v1/appStoreReviewDetails/{d['id']}", {"data": {"type": "appStoreReviewDetails", "id": d["id"], "attributes": body}})
                 else:
@@ -483,6 +570,8 @@ def ensure_iap(app_id, iap, locale):
             "reviewNote": iap.get("reviewNote", ""), "familySharable": iap.get("familySharable", False)},
             "relationships": {"app": {"data": {"type": "apps", "id": app_id}}}}})["data"]
         say(f"  - created {iap['productId']}")
+    if iap.get("availability") == "all":
+        ensure_iap_availability(cur["id"])
     locs = get(f"/v2/inAppPurchases/{cur['id']}/inAppPurchaseLocalizations")["data"]
     if not any(attrs(l)["locale"] == locale for l in locs):
         call("POST", "/v1/inAppPurchaseLocalizations", {"data": {"type": "inAppPurchaseLocalizations",
