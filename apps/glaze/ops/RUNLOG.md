@@ -172,3 +172,5 @@
 - 1226/1226 core tests green; registry not needed (no code change). Kit unchanged (e5a7652). Nothing device-tested.
 
 - 2026-10-26 Codex: Google Play preparation on codex/google-play-prep. Separate test APK/store AAB profiles and draft Android listing; no RELEASE.json change, native release or store upload. See docs/GOOGLE_PLAY.md in App-Projects; platform-specific blockers remain.
+
+- 2026-10-26 Codex Android APK follow-through (no agents): Android native APK compiled (40281924740) and installed/launched (40285042679). Removed broad modern media/mic/overlay permissions in actual APK; Android picker and pin UI/destination fixes;55 focused tests and app/Node typechecks pass. An earlier process check failed without a crash log and did not reproduce. Wallpaper/launcher physical-device QA and billing remain. Test-key artifacts and evidence: repository docs/GOOGLE_PLAY.md and ignored apk-output/. No store upload or RELEASE.json edit.
