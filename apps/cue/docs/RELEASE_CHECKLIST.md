@@ -13,10 +13,11 @@ The replacement logo is a brass C with an ivory reading cue, in the existing nav
 ## Verification
 
 - 62 tests pass, including 21 new locale/session regressions. The native boundary test reproduces the emailed bare-`en` rejection and verifies `en-AU` is sent instead.
-- TypeScript and final iOS + Android Hermes release exports pass. The new locale/session files pass focused ESLint. GitHub CI readback is pending.
+- TypeScript and final iOS + Android Hermes release exports pass. The new locale/session files pass focused ESLint. [GitHub check 40383482435](https://github.com/MerlinWerlin/App-Projects/actions/runs/40383482435) passed on source `a17c89d`; [PR115](https://github.com/MerlinWerlin/App-Projects/pull/115) merged as `18d2301`.
 - New locale/session files have no lint errors. Full-app lint has 28 existing errors (React hook/Reanimated rules); the modified prompter has the same four rule findings as its unmodified Git version. These are not reported as a clean lint run.
 - Actual phone recognition, interruption recovery and new Home Screen appearance still need an owner retest after the native build reaches TestFlight. A Node regression test is not a physical-iPhone claim.
-- Native build/upload pending. The existing release workflow falls back to the free GitHub Mac runner when Expo's monthly cloud build quota is exhausted.
+- The public website icon returns HTTP 200 and its SHA256 matches the new committed native icon.
+- Expo cloud attempt [40383791637](https://github.com/MerlinWerlin/App-Projects/actions/runs/40383791637) was refused by the existing monthly free-build quota after reserving build 8. The existing workflow automatically dispatched [Mac build 40384042420](https://github.com/MerlinWerlin/App-Projects/actions/runs/40384042420) from the same merged source. Native compilation succeeded at 19:30 UTC on 26 October; TestFlight submission is running. No paid plan or duplicate build was requested. `store/ASC_REQUEST.json` now requests a read-only Apple build-status receipt, posted on its triggering commit; workflow success alone does not establish TestFlight availability.
 
 ## Scope
 
