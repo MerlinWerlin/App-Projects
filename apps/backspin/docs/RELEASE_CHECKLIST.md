@@ -2,7 +2,7 @@
 
 ## Current release
 
-Native **build 7**, version 1.0.0 (Apple listing 1.0), is VALID and attached to the editable App Store release. The app remains PREPARE_FOR_SUBMISSION. Jared explicitly authorized App Store submission/release and confirmed build 7 recording/playback/sharing and Plus purchase/Restore passed on his iPhone on 26 October. App Review submission is pending the signed-in website session; no public release is claimed.
+Native **build 7**, version 1.0.0 (Apple listing 1.0), and **Backspin Plus** were submitted together on 26 October 2026 at 21:48 Sydney (10:48 UTC). App Store Connect confirmed **2 Items Submitted**, and both items show **Waiting for Review** in [submission 22938d32-20f4-400f-ae3a-0271fb08027b](https://appstoreconnect.apple.com/apps/6826553963/distribution/reviewsubmissions/details/22938d32-20f4-400f-ae3a-0271fb08027b). Automatic release after approval is selected. Jared authorized submission/release and confirmed build 7 recording/playback/sharing and Plus purchase/Restore passed on his iPhone. Apple approval and public availability remain pending; no owner action is currently required.
 
 - Mascot and native purchase fixes: [PR108](https://github.com/MerlinWerlin/App-Projects/pull/108), merged source `26bab64`.
 - Final listing assets/settings: [PR110](https://github.com/MerlinWerlin/App-Projects/pull/110), merged `0f731a8`; [store sync 40300235155](https://github.com/MerlinWerlin/App-Projects/actions/runs/40300235155) succeeded with all steps verified in its Apple readback.
@@ -24,12 +24,13 @@ Native **build 7**, version 1.0.0 (Apple listing 1.0), is VALID and attached to 
 
 The app keeps native iPad support. [Capture 40293901740](https://github.com/MerlinWerlin/App-Projects/actions/runs/40293901740) succeeded. One actual 2064x2752 native first-launch screenshot was inspected and selected for the 13-inch iPad set; three route shots showing the system Open confirmation were excluded. See [store/ipad/README.md](../store/ipad/README.md). OTA was disabled only in the capture environment. No physical-iPad success is claimed. [Apple readback at 09:31 UTC](https://github.com/MerlinWerlin/App-Projects/commit/0f731a8520f2d4d2b29f08af9a296e62170ea835#commitcomment-206656898) confirms this iPad image and all eight iPhone images are COMPLETE.
 
-## Release authorization and remaining requirements
+## Release authorization and review status
 
 - **Device checks passed (owner confirmation):** on 26 October Jared answered “Yes, all passed” for TestFlight build 7 recording/playback/sharing and Plus purchase + Restore. Do not ask for these checks again.
-- **Release authorized:** “looks good, can you release it?” authorizes submission with Plus and automatic release after Apple approval. Apple readback at 09:31 UTC confirms `AFTER_APPROVAL` is saved. Build 7 remains attached, VALID and IN_BETA_TESTING; one internal group has automatic build access. Plus remains READY_TO_SUBMIT.
-- **Signed-in Apple website required:** Apple's current API documentation requires the first In-App Purchase to be submitted with the app through App Store Connect. The API setup remains useful for metadata, screenshots and release settings. The in-app browser is at sign-in; desktop Chrome inspection failed twice with `GetCursorPos: Access is denied (0x80070005)`.
-- Verify the published App Privacy questionnaire in the signed-in website, include Plus with version 1.0/build 7, and submit. Account paid agreement/bank/tax completion was recorded in the factory guide; handle any new account warning shown by Apple.
+- **Release authorized and submitted:** “looks good, can you release it?” authorizes submission with Plus and automatic release after Apple approval. Jared then signed in and asked to verify the app picture and send it through. The selected build icon is the purple mascot. The signed-in website confirmed `AFTER_APPROVAL` before submission.
+- **First In-App Purchase included:** the website draft contained iOS App 1.0 / 1.0.0 (7) and Backspin Plus before Submit for Review. The final review receipt lists both as Waiting for Review, with no draft items remaining.
+- **Price and privacy gates resolved:** the main app's free price tier was explicitly saved for all 175 regions (Australia base A$0.00); Plus stays A$1.99. App Privacy is published as Device ID and Crash Data, used for App Functionality only, not linked to identity and not used for tracking.
+- **Next:** Apple review. Respond to any actual reviewer request; do not resubmit, create another binary, or run metadata `apply` while review is pending without a reason. The store request is now read-only `status`.
 - A physical-iPhone review video has not been supplied. The release standard says to attach it when Apple asks; owner-confirmed testing is not a claim that video exists.
 
 References for first-purchase routing: [Apple managing In-App Purchases](https://developer.apple.com/documentation/appstoreconnectapi/managing-in-app-purchases), [submit an In-App Purchase](https://developer.apple.com/help/app-store-connect/manage-submissions-to-app-review/submit-an-in-app-purchase/).
@@ -42,6 +43,8 @@ References: [factory release standard](../../../docs/RELEASE_STANDARD.md), [Open
 
 On 26 October, App Store Connect's Included Assets > App Icon for attached build 7 displays the new purple mascot at full size. The global navigation still displays the old record icon; it is not the selected build asset. No duplicate build is needed.
 
-The App Privacy page was still at Get Started. The questionnaire is being completed with Device ID and Crash Data, for App Functionality only, not linked to identity and not used for tracking. This corrects the earlier blanket no-data statement: installed `expo-updates` sends `EAS-Client-ID` and `Expo-Recent-Failed-Update-IDs`. The public policy/support text and review notes now disclose these technical update-service details while preserving the accurate on-device recording claim.
+The App Privacy page was initially at Get Started. The questionnaire was completed and published with Device ID and Crash Data, for App Functionality only, not linked to identity and not used for tracking. This corrects the earlier blanket no-data statement: installed `expo-updates` sends `EAS-Client-ID` and `Expo-Recent-Failed-Update-IDs`. [PR112](https://github.com/MerlinWerlin/App-Projects/pull/112) corrected the public policy/support text and review notes; [store sync 40309411260](https://github.com/MerlinWerlin/App-Projects/actions/runs/40309411260) succeeded and the public policy was verified live. The accurate on-device recording claim is preserved.
+
+Local browser proof is retained in the release checkout under `apps/backspin/.expo/apple-release-icon.png`, `apple-privacy-published.png`, and `apple-review-submitted.png`. The submission screenshot displays the purple mascot next to both submitted items; the global navigation still shows the old record icon. No public App Store availability is inferred from submission.
 
 Sources: [Expo submission guidance](https://docs.expo.dev/distribution/app-stores/), [Expo installation identifier](https://docs.expo.dev/eas/observe/reference/client-id/), [Apple data-collection definition](https://developer.apple.com/app-store/app-privacy-details/). This is a disclosure correction for existing build behavior; no runtime code or binary changes.
