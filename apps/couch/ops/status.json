@@ -1,12 +1,12 @@
 {
   "stage": "owner-tested",
   "trial_kit": true,
-  "oversight_seen": 143,
-  "tests": "1760 pass (bun, Jest-compatible)",
+  "oversight_seen": 152,
+  "tests": "1851 pass (bun, Jest-compatible)",
   "typecheck": "core clean; app/ and src/ui clean against offline stubs (new, D75-1); full app tsc with real types needs PC verification",
-  "last_run": "2026-10-25 15:52 Sydney (run 81)",
-  "headline": "On hold for your two decisions on the Workboard: make all themes free for 1.0, and the Couch Plus price. Nothing changed in the app this run. The TestFlight 1.0.1 (Cast) native build may still be waiting on Expo's iOS build quota (resets 1 Nov).",
-  "next_for_owner": "1) Open Couch from TestFlight and answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (new: 25 Oct language line / Show all, then the Cast questions) in a comment here. 2) For App Review: answer App Privacy ('Data Not Collected'), add the App Review contact, and record a short screen recording on your iPhone (launch and the main remote flow) - see docs/RELEASE_CHECKLIST.md. 3) Decide the Couch Plus price (proposal US$4.99 / A$7.99 one-time); Plus stays off sale in 1.0 until then. 4) Multicast entitlement: when Apple's email arrives, say so in a comment. Full install/typecheck needs PC verification (npm registry unreachable from the cloud this run).",
+  "last_run": "2026-10-26 09:51 Sydney (run 94)",
+  "headline": "Run 93: your free-themes change (PR #94) is in. TestFlight 1.0.2 (Google Cast route for your TCL) ships once the old PR #22 is closed.",
+  "next_for_owner": "1) Restart Couch twice and answer docs/TRIAL.md \"25 Oct late\" questions 1-3 with your TCL; questions 4-6 once TestFlight 1.0.2 arrives (PR #94 is merged; it follows once you close the old App-Projects PR #22). 2) For App Review: App Privacy ('Data Not Collected'), review contact, screen recording (docs/RELEASE_CHECKLIST.md). Full install/typecheck needs PC verification (npm registry unreachable from the cloud).",
   "screenshots": {
     "dir": "store/screenshots/publish",
     "size": "1320x2868",
@@ -63,7 +63,7 @@
       [
         "Couch (us)",
         "–",
-        "every control free; Plus one-time US$4.99 / A$7.99 (proposed)",
+        "every control and every theme free; Plus one-time A$3.99",
         "none, no data"
       ]
     ],
@@ -81,13 +81,14 @@
     ],
     "logos": "Real app logos: Couch's Apps tab shows each app's real icon as soon as a TV is connected, because the TV itself supplies the image (Roku, LG, Samsung, Sony; see docs/APP_ICONS.md). Demo mode shows original placeholder tiles. Couch never bundles or draws streaming logos (App Review and trademark risk)."
   },
-  "ship": "native build needed: new native code (modules/media-server, modules/route-picker, expo-image-picker dependency + plugin), app.json version 1.0.0 -> 1.0.1 per docs/RELEASING.md (c). An OTA update alone reaches 1.0.0 phones with the Cast tab in demo-only mode (guarded, no crash).",
+  "ship": "build (native): version 1.0.2 - lan-wss gains a TLS socket for Google Cast (T106); plus JS: honest cast status (T105), tip jar removed (T107). JS parts also reach 1.0.1 over the air (the Google Cast route stays off there and says it needs the update).",
   "native_build_1_0_1": {
-    "state": "merged; ship result unknown; Expo free-plan iOS build quota used up until 1 Nov",
-    "checked": "2026-10-25 run 80 (02:51Z): App-Projects SHIP_BASE 0f0b86c, RELEASE.json mode update (owner OTA #92); native result still not readable",
-    "media-server": "not built yet",
-    "route-picker": "not built yet",
-    "expo-image-picker": "not built yet",
+    "state": "built and on TestFlight: the owner tested 1.0.1 on 25 Oct (Workboard review): photo picker + queue, demo controls, Casting pill, AirPlay list pass; real-TV cast failed (media never appeared)",
+    "checked": "2026-10-25 run 83 (08:51Z): from the owner's TestFlight 1.0.1 test on the Workboard",
+    "media-server": "compiled (in TestFlight 1.0.1); real-TV path unverified",
+    "route-picker": "compiled (in TestFlight 1.0.1); real-TV path unverified",
+    "expo-image-picker": "compiled (in TestFlight 1.0.1); real-TV path unverified",
     "note": "Oversight D140-1: App-Projects PR #75 'Ship Couch: 1.0.1 Cast tab' merged 22:18Z 24 Oct (main 99d31d4; apps/couch SHIP_BASE 447304e, app.json 1.0.1, RELEASE.json mode build). Run 78 (33 min after the merge) could not read the ship run's result: the gh API is not enabled for this repo in the session and the public Actions page served a stale list (newest ship #14, 23 Oct). D133-1/T95 triage waits for that result. Native files stay steady until the owner reports on 1.0.1. Guards verified by tests/cast-native-guard.test.ts (D133-2). Run 79: App-Projects 65b0733 (Backspin, 00:49Z 25 Oct) says 'Expo free plan out of iOS builds until 1 Nov'; auto-ship advanced Couch SHIP_BASE to 0f0b86c at 23:25Z (records only). Whether the 1.0.1 build used one of the last builds or was refused is not visible here (gh API not enabled, public Actions page stale at 23 Oct). If it was refused, the 1.0.1 native build waits until the quota resets 1 Nov; no paid plan (hard rule)."
-  }
+  },
+  "next_native_build": "TestFlight 1.0.2 (app.json bumped in run 88): carries the lan-wss TLS socket (T106) and, if ready, T104. Per oversight D146-2 PR #94 was merged 25 Oct 19:10Z; it now follows the owner closing stale App-Projects PR #22 (auto-ship skips Couch while #22 is open); auto-ship falls back to GitHub's Mac runner when Expo's free iOS builds are spent. Swift/Kotlin never compiled in the cloud: if the build fails in LanTls.swift or LanWssModule.kt, guard the TLS part out (D133-1 style) so the rest ships. Google Cast switch (D147-1): if the 1.0.2 build fails only in LanTls.swift / Google Cast, set GOOGLE_CAST_ON = false in src/core/cast/googleCast/switch.ts and ship again (iOS then compiles a stub; Cast uses DLNA/AirPlay/demo)."
 }

@@ -1,14 +1,17 @@
 /**
- * CastDriver contract (T89), run against all three drivers: DLNA (fake renderer answering with SOAP
- * fixtures), Roku (fake ECP fetch) and MockCast. Fake timer only.
+ * CastDriver contract (T89), run against every driver: DLNA (fake renderer answering with SOAP
+ * fixtures), Roku (fake ECP fetch), Google Cast (T106, scripted fake receiver) and MockCast. Fake
+ * timer only.
  */
 import { setLocale, t } from '../../i18n/core';
 import { DriverError } from '../types';
+import { FakeCastDevice } from './__tests__/fakeCastDevice';
 import { FakeRenderer, FakeTimer, fx, recordingFetch } from './__tests__/fakes';
 import { parseDeviceDescription } from './description';
 import type { CastMedia } from './didl';
 import type { CastDriver, CastTarget } from './driver';
 import { createDlnaDriver } from './dlnaDriver';
+import { createGoogleCast } from './googleCast/googleCastDriver';
 import { MOCK_CAST_TARGET, createMockCast } from './mockCast';
 import { createRokuCast } from './rokuCast';
 
@@ -38,7 +41,7 @@ interface Harness {
 
 const RENDERER = parseDeviceDescription(fx('description-urlbase.xml'), 'http://192.168.1.40:49152/description.xml');
 
-function make(kind: 'dlna' | 'roku' | 'mock', accepts = { photo: true, video: true }): Harness {
+function make(kind: 'dlna' | 'roku' | 'googlecast' | 'mock', accepts = { photo: true, video: true }): Harness {
   const timer = new FakeTimer();
   if (kind === 'dlna') {
     const target: CastTarget = { id: 'dlna:x', name: 'Screen', kind: 'dlna', host: '192.168.1.40', accepts };
@@ -50,10 +53,15 @@ function make(kind: 'dlna' | 'roku' | 'mock', accepts = { photo: true, video: tr
     const { fetch } = recordingFetch(() => ({ status: 200 }));
     return { driver: createRokuCast(target, fetch, timer), timer, settle: () => timer.advance(0), seeks: false };
   }
+  if (kind === 'googlecast') {
+    const target: CastTarget = { id: 'gcast:192.168.1.60', name: 'Living room', kind: 'googlecast', host: '192.168.1.60', accepts };
+    const dev = new FakeCastDevice();
+    return { driver: createGoogleCast(target, dev.tcp, timer), timer, settle: () => timer.advance(1000), seeks: true };
+  }
   return { driver: createMockCast({ ...MOCK_CAST_TARGET, accepts }, timer), timer, settle: () => timer.advance(500), seeks: true };
 }
 
-describe.each(['dlna', 'roku', 'mock'] as const)('CastDriver contract: %s', (kind) => {
+describe.each(['dlna', 'roku', 'googlecast', 'mock'] as const)('CastDriver contract: %s', (kind) => {
   it('starts idle', () => {
     const { driver } = make(kind);
     expect(driver.snapshot().state).toBe('idle');

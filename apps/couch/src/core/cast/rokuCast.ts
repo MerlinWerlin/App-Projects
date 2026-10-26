@@ -59,6 +59,17 @@ export function rokuPlayPath(media: CastMedia): string {
   );
 }
 
+/** `<player error="false" state="play">` from ECP /query/media-player, or null when unreadable. */
+export function parseRokuMediaPlayer(xml: string): { state: string; error: boolean } | null {
+  const tag = /<player\b([^>]*)>/i.exec(xml);
+  if (!tag) return null;
+  const attr = (name: string): string | null => {
+    const m = new RegExp(`\\b${name}\\s*=\\s*"([^"]*)"`, 'i').exec(tag[1]!);
+    return m ? m[1]! : null;
+  };
+  return { state: (attr('state') ?? '').toLowerCase(), error: (attr('error') ?? '').toLowerCase() === 'true' };
+}
+
 function isTimeoutError(e: unknown): boolean {
   if (!(e instanceof Error)) return false;
   return e.name === 'AbortError' || e.name === 'TimeoutError' || /time(d)?\s?out/i.test(e.message);
@@ -69,6 +80,8 @@ export function createRokuCast(target: CastTarget, fetch: FetchLike, timer: Cast
   let snap: CastSnapshot = IDLE;
   const subs = new Set<(s: CastSnapshot) => void>();
   let ticker: unknown = null;
+  let confirmPoll: unknown = null;
+  let confirmTries = 0;
   let posBase = 0;
   let playStartedAt = 0;
   let gen = 0;
@@ -98,6 +111,47 @@ export function createRokuCast(target: CastTarget, fetch: FetchLike, timer: Cast
     } else {
       set({ positionSec: Math.floor(dur !== null ? Math.min(pos, dur) : pos) });
     }
+  };
+  const stopConfirm = (): void => {
+    if (confirmPoll !== null) {
+      timer.clearInterval(confirmPoll);
+      confirmPoll = null;
+    }
+  };
+  /**
+   * Owner brief 25 Oct 2026: ask the Roku media player whether it is really showing the item
+   * (ECP GET /query/media-player, from Roku's ECP reference; unverified on hardware). play/pause
+   * confirms it; error="true" ends it with an honest error. Gives up quietly after 30 tries; the
+   * Cast tab's own deadline then says the TV never showed it.
+   */
+  const pollConfirm = async (g: number): Promise<void> => {
+    if (g !== gen || disposed) return stopConfirm();
+    confirmTries += 1;
+    if (confirmTries > 30) return stopConfirm();
+    try {
+      const res = await fetch(`${base}/query/media-player`, { method: 'GET', timeoutMs: 3000 });
+      if (g !== gen || !res.ok) return;
+      const info = parseRokuMediaPlayer(await res.text());
+      if (g !== gen || !info) return;
+      if (info.error) {
+        stopConfirm();
+        stopTicker();
+        const e = driverError('network', 'core.driver.cast.notShown', { name: target.name });
+        set({ state: 'error', error: e.message, errorCode: e.code, confirmed: false });
+      } else if (info.state === 'play' || info.state === 'pause') {
+        stopConfirm();
+        set({ confirmed: true });
+      }
+    } catch {
+      // keep trying until the limit; the Cast tab deadline covers a Roku that never answers
+    }
+  };
+  const startConfirm = (g: number): void => {
+    stopConfirm();
+    confirmTries = 0;
+    confirmPoll = timer.setInterval(() => {
+      void pollConfirm(g);
+    }, 1500);
   };
   const startTicker = (): void => {
     stopTicker();
@@ -141,8 +195,9 @@ export function createRokuCast(target: CastTarget, fetch: FetchLike, timer: Cast
     if (g !== gen) return;
     posBase = 0;
     playStartedAt = timer.now();
-    set({ state: 'playing', positionSec: media.kind === 'video' ? 0 : null });
+    set({ state: 'playing', positionSec: media.kind === 'video' ? 0 : null, confirmed: false });
     if (media.kind === 'video') startTicker();
+    startConfirm(g);
   };
 
   return {
@@ -180,6 +235,7 @@ export function createRokuCast(target: CastTarget, fetch: FetchLike, timer: Cast
       if (snap.state === 'idle' || snap.state === 'stopped') return;
       gen += 1;
       stopTicker();
+      stopConfirm();
       try {
         await post('/keypress/Back');
       } finally {
@@ -197,6 +253,7 @@ export function createRokuCast(target: CastTarget, fetch: FetchLike, timer: Cast
       disposed = true;
       gen += 1;
       stopTicker();
+      stopConfirm();
       subs.clear();
     },
   };

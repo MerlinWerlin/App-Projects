@@ -15,7 +15,6 @@ import { en } from '../src/i18n/catalog';
 import { coreEn } from '../src/i18n/catalog/en/core';
 import { setLocale } from '../src/i18n/core';
 import { PLUS_FEATURE_COPY, plusPromise } from '../src/plus/entitlement';
-import { TIP_TIERS, tipJarCopy } from '../src/plus/tipJar';
 
 const root = join(__dirname, '..');
 
@@ -48,8 +47,6 @@ function pseudoCopy(): string[] {
     formatLogEntry({ at: 0, from: null, to: 'connected', attempt: 2 }),
     plusPromise(),
     PLUS_FEATURE_COPY.widgets.title,
-    TIP_TIERS[0]!.label,
-    tipJarCopy(),
   ];
 }
 

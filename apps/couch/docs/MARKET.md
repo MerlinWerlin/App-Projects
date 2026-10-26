@@ -147,12 +147,11 @@ General rules that work in this category, applied with our own words and art:
    - streaming logos
    - fake star ratings or review quotes
 
-## Pricing proposal (owner decides)
+## Pricing (owner decided 25 Oct 2026: Couch Plus A$3.99 one-time; every theme free)
 
 - **Every TV control free forever:** power, d-pad, touchpad, keyboard, voice, volume, channels,
   app launcher, multi-TV, IR. No ads, no tracking, no trials, no account.
-- **Couch Plus, one-time US$4.99 / A$7.99,** with Family Sharing on. It covers:
-  - themes
+- **Couch Plus, one-time A$3.99 (owner, 25 Oct 2026; was proposed at US$4.99 / A$7.99),** non-consumable, Australia as base storefront. It covers:
   - Home/Lock Screen widgets
   - Live Activity volume
   - Apple Watch
@@ -163,8 +162,8 @@ General rules that work in this category, applied with our own words and art:
   - Typical weekly plans: about $260/year at $4.99/week.
   - Cheapest competitor one-time option: a lifetime unlock of $14.99/A$22.99.
   - Plus costs less than one week of the most common weekly plan.
-- **Optional tip jar** (A$2.99 / A$5.99) for people who want to give more. No subscriptions of any kind.
-- **Alternative to consider:** US$2.99 / A$4.99 launch price for the first month, to drive early reviews.
+- ~~Optional tip jar~~ (removed by the owner on 25 Oct 2026). No subscriptions of any kind.
+- ~~Alternative to consider: a US$2.99 / A$4.99 launch price for the first month~~ (no longer needed: the owner set A$3.99 one-time on 25 Oct 2026). Owner 25 Oct 2026 (21:29 Sydney): Family Sharing ON for Couch Plus; tip jar removed.
 
 ## Top 10 takeaways
 

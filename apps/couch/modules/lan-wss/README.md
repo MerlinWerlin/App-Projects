@@ -11,6 +11,11 @@ The same module also has a one-shot HTTP(S) `fetch` (T32) for TVs whose REST API
 self-signed certificate (Vizio SmartCast, Philips JointSpace). It follows the same rule, with
 `https://` in place of `wss://`.
 
+T106 adds a raw TCP + TLS socket for Google Cast (CASTV2 on port 8009, TVs with Chromecast built
+in). It is stricter still: it **only connects** to literal RFC 1918 IPv4 hosts (anything else is
+rejected before a connection is attempted), and for those hosts it accepts the device's
+self-signed certificate (Cast devices present one that no public CA signs).
+
 Hostnames (including `.local`), public IPs, loopback, link-local and IPv6 always get normal
 certificate validation. The rule matches `src/core/lanHost.ts` (`isRfc1918Host`), and the JS
 adapter `src/native/lanWss.ts` applies it too before calling native code.
@@ -34,6 +39,13 @@ cover them (`tests/lan-wss-sources.test.ts`). Treat it as unverified until a dev
   `WWW-Authenticate` header for Philips Digest), header names lower-cased and repeats joined with
   `", "`; rejects with `ERR_LAN_FETCH` (network/TLS) or `ERR_LAN_FETCH_TIMEOUT`. The JS adapter
   is `src/native/lanFetch.ts` (`loadLanFetch(): FetchLike | null`).
+  Plus (T106) `tlsConnect(id, host, port, timeoutMs): Promise<void>` (RFC 1918 IPv4 host only,
+  else `ERR_LAN_TLS_HOST`; resolves after the TLS handshake; rejects with `ERR_LAN_TLS_CONNECT` or
+  `ERR_LAN_TLS_TIMEOUT`), `tlsWrite(id, base64): boolean`, `tlsClose(id)`, events
+  `onTlsData {id, base64}` and `onTlsClose {id, message}` (message empty for a clean close). The
+  JS adapter is `src/native/lanTls.ts` (`loadLanTls(): TcpFactory | null`, TLS only, refuses
+  non-RFC 1918 hosts itself too; null when the module or `tlsConnect` is missing, e.g. a build
+  made before T106).
 - `ios/LanWssModule.swift`, `ios/LanWss.podspec` — one `URLSessionWebSocketTask` per id on a
   shared `URLSession`. The **task-level** auth delegate (the session-level one is deliberately not
   implemented, so URLSession routes server-trust challenges per task) returns
@@ -44,6 +56,11 @@ cover them (`tests/lan-wss-sources.test.ts`). Treat it as unverified until a dev
 - `ios/LanFetch.swift` — `fetch` on a separate ephemeral `URLSession` (no credential storage,
   cache or cookies, so a Digest 401 is returned to JS rather than answered by the system). Same
   task-level trust delegate rule, for `https://`; relaxed-trust tasks refuse redirects.
+- `ios/LanTls.swift` (T106) — the TLS socket: `NWConnection` with `NWParameters(tls:tcp:)`; the
+  `sec_protocol_options_set_verify_block` returns true only when the host is RFC 1918
+  (`lanWssIsRfc1918Host`, checked before connecting and again in the block). `.waiting` before
+  ready (refused / unreachable) fails the connect instead of waiting; a timer on the socket's queue
+  enforces `timeoutMs`. Reads with `receive(minimumIncompleteLength: 1, maximumLength: 65536)`.
 - `android/build.gradle`, `android/src/main/java/expo/modules/lanwss/LanWssModule.kt` — OkHttp.
   For an allowed RFC 1918 `wss://` URL it builds a per-connection client whose trust manager
   accepts the presented chain, with a `HostnameVerifier` that passes only that exact host and
@@ -52,6 +69,11 @@ cover them (`tests/lan-wss-sources.test.ts`). Treat it as unverified until a dev
   client, plus `callTimeout`/`readTimeout` = timeoutMs; OkHttp's default authenticator does not
   answer 401s). `connect` resolves in `onOpen`, rejects in
   `onFailure`/`onClosed` before open; after open a failure emits `onError` then `onClose` (1006).
+  T106 TLS socket: a plain `Socket` connected with `timeoutMs` to `InetSocketAddress(ip, port)`
+  (literal IP, no DNS), wrapped by an `SSLSocket` from `lanTlsSocketFactory(host)`, an
+  `SSLContext` whose trust manager accepts the presented chain, built only for RFC 1918 hosts.
+  The handshake is bounded by `soTimeout = timeoutMs`; reads run on a background thread, writes
+  on a per-socket single-thread executor.
 
 ## Not wired in yet (on purpose)
 
@@ -64,6 +86,12 @@ cover them (`tests/lan-wss-sources.test.ts`). Treat it as unverified until a dev
   cannot connect (the UI should say a dev build is needed for Samsung).
 
 ## Things to check on the first build
+
+- T106 TLS socket: `AsyncFunction` with an `Int` port argument on both platforms; iOS
+  `sec_protocol_options_set_verify_block` closure shape and that `NWConnection` reaches `.ready`
+  against a Cast device's self-signed certificate (port 8009); Android `SSLSocketFactory
+  .createSocket(socket, host, port, true)` handshake against the same; that `onTlsData` arrives in
+  order; and that the Google Cast route actually shows a photo on a Google TV (never tried).
 
 - Gradle: the `expo-module-gradle-plugin` plugin id (template for recent SDKs) and the OkHttp
   version resolve against React Native's own OkHttp.

@@ -7,10 +7,14 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
   CastController,
+  castUnconfirmed,
+  urlHostPort,
   demoUrl,
   formatClock,
   isCastActive,
   playAction,
+  probedRendererPorts,
+  realCastTvs,
   seekTarget,
   toCastMedia,
   videoEnded,
@@ -24,6 +28,7 @@ import type { CastSnapshot } from '../src/core/cast/session';
 import { DriverError } from '../src/core/types';
 import type { Tv } from '../src/core/types';
 import { en } from '../src/i18n/catalog';
+import { castDeliveryText, castNoticeText } from '../src/ui/cast/castNotice';
 import {
   _setImagePickerLoader,
   assetsToQueueItems,
@@ -586,5 +591,154 @@ describe('Cast tab wiring (static)', () => {
     expect(remote).toMatch(/if \(castHandles\(key\)\) \{[\s\S]*?castTogglePlay\(\);[\s\S]*?return;/);
     const state = read('src/state/cast.tsx');
     expect(state).toContain("key === 'PLAY_PAUSE'");
+  });
+});
+
+/* ---------------- D145-2: say why casting does not reach a real TV ---------------- */
+
+describe('Cast notices (oversight D145-2)', () => {
+  const ROKU_TV: Tv = { id: 'tv2', name: 'Bedroom', model: 'R', platform: 'roku', host: '192.168.1.30' };
+  const IR_TV: Tv = { id: 'tv3', name: 'Kitchen', model: 'I', platform: 'ir', host: 'ir' };
+  const fakeT = (key: string, params?: Record<string, string | number>) =>
+    key + (params ? ' ' + JSON.stringify(params) : '');
+
+  it('real TV connected but no receiver found: noReceiver names the TV and the probed ports', async () => {
+    const { c } = setup({ targets: [] });
+    await c.setContext({ demo: false, tvs: [TV] });
+    const s = c.getSnapshot();
+    expect(s.demo).toBe(false);
+    expect(s.targetId).toBeNull();
+    expect(s.notice).toEqual({ kind: 'noReceiver', tvNames: ['Living room'], ports: [9197, 52323], searched: false });
+  });
+
+  it('noReceiver says whether the network search ran', async () => {
+    const drivers: CastDriver[] = [];
+    const c = new CastController({
+      findTargets: async () => [],
+      createDriver: (t) => {
+        throw new Error('unused ' + t.id + drivers.length);
+      },
+      mockTarget: MOCK,
+      createMock: (t) => {
+        throw new Error('unused ' + t.id);
+      },
+      server: { available: true } as unknown as MediaServer,
+      createQueue: () => ({ snapshot: () => ({ items: [], index: -1, slideshow: false, intervalSec: 5, loop: false }), subscribe: () => () => undefined }) as unknown as CastQueueLike,
+      canSearch: true,
+    });
+    await c.setContext({ demo: false, tvs: [TV] });
+    expect(c.getSnapshot().notice).toMatchObject({ kind: 'noReceiver', searched: true });
+  });
+
+  it('a receiver found clears the notice', async () => {
+    const { c } = setup();
+    await c.setContext({ demo: false, tvs: [TV] });
+    expect(c.getSnapshot().notice).toBeNull();
+  });
+
+  it('real TV connected but no phone media server: says so instead of using the demo TV silently', async () => {
+    const { c } = setup({ available: false });
+    await c.setContext({ demo: false, tvs: [IR_TV, ROKU_TV, TV] });
+    const s = c.getSnapshot();
+    expect(s.demo).toBe(true);
+    expect(s.notice).toEqual({ kind: 'serverUnavailable', tvName: 'Bedroom' });
+  });
+
+  it('no real TV and no media server (Expo Go): the Expo Go note; remote in demo mode: the demo note', async () => {
+    const a = setup({ available: false });
+    await a.c.setContext({ demo: false, tvs: [IR_TV] });
+    expect(a.c.getSnapshot().notice).toEqual({ kind: 'expoGo' });
+    const b = setup({ available: true });
+    await b.c.setContext({ demo: true, tvs: [TV] });
+    expect(b.c.getSnapshot().notice).toEqual({ kind: 'demo' });
+  });
+
+  it('infrared TVs never count as cast TVs', () => {
+    expect(realCastTvs([TV, ROKU_TV, IR_TV]).map((t) => t.id)).toEqual(['tv1', 'tv2']);
+    expect(probedRendererPorts()).toEqual([9197, 52323]);
+  });
+
+  it('notice text uses catalogue keys with the TV name and ports', () => {
+    expect(castNoticeText({ kind: 'serverUnavailable', tvName: 'Bedroom' }, fakeT as never)).toBe('ui.cast.serverUnavailable {"name":"Bedroom"}');
+    expect(castNoticeText({ kind: 'noReceiver', tvNames: ['A', 'B'], ports: [9197, 52323], searched: false }, fakeT as never)).toBe(
+      'ui.cast.noReceiver {"name":"A, B","ports":"9197, 52323"} ui.cast.noReceiverNoSearch',
+    );
+    expect(castNoticeText({ kind: 'noReceiver', tvNames: ['A'], ports: [9197], searched: true }, fakeT as never)).toContain('ui.cast.noReceiverSearched');
+    expect(castNoticeText({ kind: 'demo' }, fakeT as never)).toBeNull();
+    expect(en['ui.cast.noReceiver']).toContain('{ports}');
+    expect(en['ui.cast.serverUnavailable']).toContain('{name}');
+  });
+
+  it('the screen renders every notice kind', () => {
+    const screen = read('app/(tabs)/cast.tsx');
+    expect(screen).toContain("snap.notice?.kind === 'demo'");
+    expect(screen).toContain("snap.notice?.kind === 'expoGo'");
+    expect(screen).toContain('castNoticeText(snap.notice, t)');
+    expect(read('src/state/cast.tsx')).toContain('canSearch: !!udp');
+  });
+});
+
+/* ---------------- owner brief 25 Oct 2026: real TV accepted the cast, nothing appeared ---------------- */
+
+describe('Cast delivery state (owner TestFlight 1.0.1 cast test)', () => {
+  const fakeT = (key: string, params?: Record<string, string | number>) =>
+    key + (params ? ' ' + JSON.stringify(params) : '');
+
+  it('a send to a real TV records where it went and stays unconfirmed until the TV says it is showing it', async () => {
+    const { c, last } = setup();
+    await c.setContext({ demo: false, tvs: [TV] });
+    await c.addItems([photo('a')]);
+    const s = c.getSnapshot();
+    expect(s.delivery).toEqual({ tvName: 'Living room', via: 'dlna', tvHost: '192.168.1.20', fileHost: '192.168.1.5:8080' });
+    expect(castUnconfirmed(s)).toBe(true);
+    last().emit({ confirmed: true });
+    expect(castUnconfirmed(c.getSnapshot())).toBe(false);
+  });
+
+  it('a failed send keeps the delivery so the error says where it went; stop clears it', async () => {
+    const { c, last } = setup();
+    await c.setContext({ demo: false, tvs: [TV] });
+    last().failLoad = new DriverError('network', 'boom');
+    await c.addItems([photo('a')]);
+    expect(c.getSnapshot().error).toBe('boom');
+    expect(c.getSnapshot().delivery).toMatchObject({ tvHost: '192.168.1.20' });
+    await c.stop();
+    expect(c.getSnapshot().delivery).toBeNull();
+  });
+
+  it('demo casting never claims a delivery and is never unconfirmed', async () => {
+    const { c } = setup({ available: false });
+    await c.setContext({ demo: false, tvs: [] });
+    await c.addItems([photo('a')]);
+    const s = c.getSnapshot();
+    expect(s.delivery).toBeNull();
+    expect(castUnconfirmed(s)).toBe(false);
+  });
+
+  it('a Roku target is reported as the Roku media player', async () => {
+    const ROKU: CastTarget = { id: 'roku:192.168.1.30', name: 'Bedroom', kind: 'roku', host: '192.168.1.30', accepts: { photo: true, video: true } };
+    const { c } = setup({ targets: [ROKU] });
+    await c.setContext({ demo: false, tvs: [TV] });
+    await c.addItems([video('v')]);
+    expect(c.getSnapshot().delivery).toMatchObject({ via: 'roku', tvHost: '192.168.1.30' });
+  });
+
+  it('delivery text names the TV address and the phone address', () => {
+    expect(castDeliveryText({ tvName: 'A', via: 'dlna', tvHost: '192.168.1.20', fileHost: '192.168.1.5:8080' }, fakeT as never)).toBe(
+      'ui.cast.deliveryDlna {"tvHost":"192.168.1.20","fileHost":"192.168.1.5:8080"}',
+    );
+    expect(castDeliveryText({ tvName: 'A', via: 'roku', tvHost: 'h', fileHost: '' }, fakeT as never)).toContain('ui.cast.deliveryRoku');
+    expect(urlHostPort('http://192.168.1.5:8080/abc.jpg')).toBe('192.168.1.5:8080');
+    expect(urlHostPort('nope')).toBe('');
+    expect(en['ui.cast.deliveryDlna']).toContain('{fileHost}');
+    expect(en['ui.cast.sent']).toContain('{title}');
+  });
+
+  it('the screen shows sent / help / delivery lines', () => {
+    const screen = read('app/(tabs)/cast.tsx');
+    expect(screen).toContain('castUnconfirmed(snap)');
+    expect(screen).toContain("t('ui.cast.sent'");
+    expect(screen).toContain("t('ui.cast.unconfirmedHelp')");
+    expect(screen).toContain('castDeliveryText(snap.delivery, t)');
   });
 });

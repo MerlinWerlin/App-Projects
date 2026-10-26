@@ -15,3 +15,4 @@ export * from './probe';
 export * from './queue';
 export * from './rokuCast';
 export * from './targets';
+export * from './googleCast';

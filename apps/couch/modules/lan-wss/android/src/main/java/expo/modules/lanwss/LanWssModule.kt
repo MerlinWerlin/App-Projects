@@ -1,5 +1,6 @@
 package expo.modules.lanwss
 
+import android.util.Base64
 import expo.modules.kotlin.Promise
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
@@ -17,15 +18,23 @@ import okio.ByteString
 import org.json.JSONObject
 import java.io.IOException
 import java.io.InterruptedIOException
+import java.net.InetSocketAddress
+import java.net.Socket
+import java.net.SocketTimeoutException
 import java.nio.ByteBuffer
 import java.nio.charset.CodingErrorAction
 import java.security.SecureRandom
 import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
 import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+import java.util.concurrent.RejectedExecutionException
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.net.ssl.SSLContext
+import javax.net.ssl.SSLSocket
+import javax.net.ssl.SSLSocketFactory
 import javax.net.ssl.X509TrustManager
 
 /**
@@ -38,6 +47,11 @@ import javax.net.ssl.X509TrustManager
  * default client (normal certificate validation). The RFC 1918 rule mirrors src/core/lanHost.ts
  * (isRfc1918Host); keep them in sync.
  *
+ * T106: also a raw TCP + TLS socket (tlsConnect / tlsWrite / tlsClose) for Google Cast (CASTV2 on
+ * port 8009). It connects ONLY to literal RFC 1918 IPv4 hosts and, for those hosts only, accepts the
+ * device's self-signed certificate (lanTlsSocketFactory). Reads run on a background thread; bytes
+ * cross to JS as base64 (onTlsData { id, base64 }, onTlsClose { id, message }).
+ *
  * UNVERIFIED: written without a build machine. Not compiled, not tested against a TV.
  */
 class LanWssModule : Module() {
@@ -47,7 +61,17 @@ class LanWssModule : Module() {
     val finished = AtomicBoolean(false)
   }
 
+  private class TlsConn(val id: String) {
+    @Volatile var raw: Socket? = null
+    @Volatile var socket: SSLSocket? = null
+    @Volatile var opened = false
+    @Volatile var pending: Promise? = null
+    val finished = AtomicBoolean(false)
+    val writer: ExecutorService = Executors.newSingleThreadExecutor()
+  }
+
   private val sockets = ConcurrentHashMap<String, Conn>()
+  private val tlsSockets = ConcurrentHashMap<String, TlsConn>()
   private val calls = ConcurrentHashMap<Call, Boolean>()
 
   private val defaultClient: OkHttpClient by lazy {
@@ -60,7 +84,7 @@ class LanWssModule : Module() {
   override fun definition() = ModuleDefinition {
     Name("LanWss")
 
-    Events("onMessage", "onClose", "onError")
+    Events("onMessage", "onClose", "onError", "onTlsData", "onTlsClose")
 
     AsyncFunction("connect") { id: String, url: String, allowSelfSignedLan: Boolean, promise: Promise ->
       connect(id, url, allowSelfSignedLan, promise)
@@ -82,7 +106,24 @@ class LanWssModule : Module() {
       fetch(url, method, headersJson, body, timeoutMs, allowSelfSignedLan, promise)
     }
 
+    // Raw TLS socket for Google Cast (T106); RFC 1918 IPv4 hosts only.
+    AsyncFunction("tlsConnect") { id: String, host: String, port: Int, timeoutMs: Double, promise: Promise ->
+      tlsConnect(id, host, port, timeoutMs, promise)
+    }
+
+    Function("tlsWrite") { id: String, base64: String ->
+      tlsWrite(id, base64)
+    }
+
+    Function("tlsClose") { id: String ->
+      val conn = tlsSockets[id]
+      if (conn != null) tlsFinish(conn, "", "ERR_LAN_TLS_CONNECT")
+      Unit
+    }
+
     OnDestroy {
+      for (conn in tlsSockets.values) tlsFinish(conn, "", "ERR_LAN_TLS_CONNECT")
+      tlsSockets.clear()
       for (call in calls.keys) call.cancel()
       calls.clear()
       for (conn in sockets.values) conn.ws?.cancel()
@@ -270,6 +311,151 @@ class LanWssModule : Module() {
       .followRedirects(false)
       .followSslRedirects(false)
       .build()
+  }
+
+  private fun tlsConnect(id: String, host: String, port: Int, timeoutMs: Double, promise: Promise) {
+    // Only literal RFC 1918 IPv4 hosts: the relaxed certificate rule depends on it.
+    if (!isRfc1918Host(host)) {
+      promise.reject("ERR_LAN_TLS_HOST", "Only local network IPv4 addresses are allowed.", null)
+      return
+    }
+    if (port < 1 || port > 65535) {
+      promise.reject("ERR_LAN_TLS_PORT", "Invalid port.", null)
+      return
+    }
+    val conn = TlsConn(id)
+    conn.pending = promise
+    if (tlsSockets.putIfAbsent(id, conn) != null) {
+      promise.reject("ERR_LAN_TLS_ID", "A socket with this id already exists.", null)
+      return
+    }
+    val ms = if (timeoutMs > 0) timeoutMs.toInt() else 8000
+    Thread {
+      try {
+        val raw = Socket()
+        conn.raw = raw
+        raw.connect(InetSocketAddress(host, port), ms)
+        raw.soTimeout = ms // also bounds the TLS handshake
+        val ssl = lanTlsSocketFactory(host).createSocket(raw, host, port, true) as SSLSocket
+        conn.socket = ssl
+        ssl.startHandshake()
+        ssl.soTimeout = 0
+        val ok = synchronized(conn) {
+          if (conn.finished.get()) {
+            false
+          } else {
+            conn.opened = true
+            true
+          }
+        }
+        if (ok) {
+          val p = conn.pending
+          conn.pending = null
+          p?.resolve(null)
+          tlsReadLoop(conn, ssl)
+        } else {
+          try {
+            ssl.close()
+          } catch (e: Exception) {
+            // ignore
+          }
+        }
+      } catch (e: Exception) {
+        val code = if (e is SocketTimeoutException) "ERR_LAN_TLS_TIMEOUT" else "ERR_LAN_TLS_CONNECT"
+        tlsFinish(conn, e.message ?: "TLS connection failed.", code)
+      }
+    }.start()
+  }
+
+  private fun tlsReadLoop(conn: TlsConn, ssl: SSLSocket) {
+    val buf = ByteArray(16 * 1024)
+    var message = ""
+    try {
+      val input = ssl.inputStream
+      while (true) {
+        val n = input.read(buf)
+        if (n < 0) break
+        if (n > 0) {
+          sendEvent("onTlsData", mapOf("id" to conn.id, "base64" to Base64.encodeToString(buf, 0, n, Base64.NO_WRAP)))
+        }
+      }
+    } catch (e: Exception) {
+      message = e.message ?: "TLS connection failed."
+    }
+    tlsFinish(conn, message, "ERR_LAN_TLS_CONNECT")
+  }
+
+  private fun tlsWrite(id: String, base64: String): Boolean {
+    val conn = tlsSockets[id] ?: return false
+    val ssl = conn.socket
+    if (ssl == null || !conn.opened || conn.finished.get()) return false
+    val bytes = try {
+      Base64.decode(base64, Base64.DEFAULT)
+    } catch (e: IllegalArgumentException) {
+      return false
+    }
+    return try {
+      conn.writer.execute {
+        try {
+          val out = ssl.outputStream
+          out.write(bytes)
+          out.flush()
+        } catch (e: Exception) {
+          tlsFinish(conn, e.message ?: "TLS write failed.", "ERR_LAN_TLS_CONNECT")
+        }
+      }
+      true
+    } catch (e: RejectedExecutionException) {
+      false
+    }
+  }
+
+  /** Closes once: rejects a pending tlsConnect, or emits onTlsClose for an open socket. */
+  private fun tlsFinish(conn: TlsConn, message: String, code: String) {
+    val wasOpen = synchronized(conn) {
+      if (!conn.finished.compareAndSet(false, true)) null else conn.opened
+    } ?: return
+    tlsSockets.remove(conn.id, conn)
+    try {
+      conn.socket?.close()
+    } catch (e: Exception) {
+      // ignore
+    }
+    try {
+      conn.raw?.close()
+    } catch (e: Exception) {
+      // ignore
+    }
+    conn.writer.shutdownNow()
+    if (!wasOpen) {
+      val p = conn.pending
+      conn.pending = null
+      p?.reject(code, if (message.isEmpty()) "The connection closed before it opened." else message, null)
+      return
+    }
+    sendEvent("onTlsClose", mapOf("id" to conn.id, "message" to message))
+  }
+
+  /**
+   * TLS sockets for ONE RFC 1918 host (Google Cast devices present a self-signed certificate):
+   * accepts the presented chain. Refuses to build for any other host.
+   */
+  private fun lanTlsSocketFactory(host: String): SSLSocketFactory {
+    if (!isRfc1918Host(host)) throw CertificateException("Relaxed TLS is only for local network IPv4 addresses.")
+    val trustPresentedChain = object : X509TrustManager {
+      override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) {
+        throw CertificateException("Client certificates are not supported.")
+      }
+
+      override fun checkServerTrusted(chain: Array<out X509Certificate>?, authType: String?) {
+        if (chain == null || chain.isEmpty()) throw CertificateException("Empty certificate chain.")
+      }
+
+      override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
+    }
+    val ssl = SSLContext.getInstance("TLS")
+    ssl.init(null, arrayOf(trustPresentedChain), SecureRandom())
+    return ssl.socketFactory
   }
 
   companion object {

@@ -9,6 +9,7 @@ import { join } from 'node:path';
 const dir = join(__dirname, '..', 'modules', 'lan-wss');
 const SWIFT = join(dir, 'ios', 'LanWssModule.swift');
 const SWIFT_FETCH = join(dir, 'ios', 'LanFetch.swift');
+const SWIFT_TLS = join(dir, 'ios', 'LanTls.swift');
 const PODSPEC = join(dir, 'ios', 'LanWss.podspec');
 const GRADLE = join(dir, 'android', 'build.gradle');
 const KOTLIN = join(dir, 'android', 'src', 'main', 'java', 'expo', 'modules', 'lanwss', 'LanWssModule.kt');
@@ -17,7 +18,7 @@ const read = (p: string) => readFileSync(p, 'utf8');
 
 describe('lan-wss native sources', () => {
   it('all native files exist', () => {
-    for (const p of [SWIFT, SWIFT_FETCH, PODSPEC, GRADLE, KOTLIN]) {
+    for (const p of [SWIFT, SWIFT_FETCH, SWIFT_TLS, PODSPEC, GRADLE, KOTLIN]) {
       expect({ p, exists: existsSync(p) }).toEqual({ p, exists: true });
     }
   });
@@ -39,7 +40,7 @@ describe('lan-wss native sources', () => {
   it('both platforms expose the JS contract (name, events, functions)', () => {
     for (const src of [read(SWIFT), read(KOTLIN)]) {
       expect(src).toContain('Name("LanWss")');
-      expect(src).toContain('Events("onMessage", "onClose", "onError")');
+      expect(src).toContain('Events("onMessage", "onClose", "onError", "onTlsData", "onTlsClose")');
       expect(src).toContain('AsyncFunction("connect")');
       expect(src).toContain('Function("send")');
       expect(src).toContain('Function("close")');
@@ -79,7 +80,58 @@ describe('lan-wss native sources', () => {
     expect(start).toBeGreaterThan(0);
     expect(src.indexOf('X509TrustManager {')).toBeGreaterThan(start);
     expect(src.split('relaxedClient(').length - 1).toBe(3); // definition + gated calls in connect and fetch
-    expect(src.split('X509TrustManager {').length - 1).toBe(1);
+    // Two permissive trust managers: relaxedClient (wss/https) and lanTlsSocketFactory (T106 TLS socket).
+    expect(src.split('X509TrustManager {').length - 1).toBe(2);
+    const tls = src.indexOf('private fun lanTlsSocketFactory(');
+    expect(tls).toBeGreaterThan(start);
+    expect(src.indexOf('X509TrustManager {', src.indexOf('X509TrustManager {') + 1)).toBeGreaterThan(tls);
+  });
+
+  it('both platforms expose the T106 TLS socket (tlsConnect / tlsWrite / tlsClose)', () => {
+    const swift = read(SWIFT);
+    expect(swift).toMatch(
+      /AsyncFunction\("tlsConnect"\) \{ \(id: String, host: String, port: Int, timeoutMs: Double, promise: Promise\) in/,
+    );
+    expect(swift).toContain('Function("tlsWrite") { (id: String, base64: String) -> Bool in');
+    expect(swift).toContain('Function("tlsClose") { (id: String) in');
+    expect(swift).toContain('self.tlsClient.closeAll()');
+    const kt = read(KOTLIN);
+    expect(kt).toMatch(/AsyncFunction\("tlsConnect"\) \{ id: String, host: String, port: Int, timeoutMs: Double, promise: Promise ->/);
+    expect(kt).toContain('Function("tlsWrite") { id: String, base64: String ->');
+    expect(kt).toContain('Function("tlsClose") { id: String ->');
+    for (const src of [read(SWIFT_TLS), kt]) {
+      expect(src).toContain('"onTlsData"');
+      expect(src).toContain('"onTlsClose"');
+      expect(src).toContain('"base64"');
+      expect(src).toContain('ERR_LAN_TLS_HOST');
+      expect(src).toContain('ERR_LAN_TLS_TIMEOUT');
+    }
+  });
+
+  it('Swift TLS socket connects only to RFC 1918 hosts and trusts the certificate only for them', () => {
+    const src = read(SWIFT_TLS);
+    expect(src).toContain('import Network');
+    // Host refused before any connection is made.
+    const guard = src.indexOf('guard lanWssIsRfc1918Host(host) else {');
+    expect(guard).toBeGreaterThan(0);
+    expect(guard).toBeLessThan(src.indexOf('NWConnection(host:'));
+    expect(src).toContain('sec_protocol_options_set_verify_block(tlsOptions.securityProtocolOptions');
+    expect(src).toContain('complete(lanWssIsRfc1918Host(allowedHost))');
+    // The verify block never answers a bare true.
+    expect(src).not.toMatch(/complete\(true\)/);
+    expect(src).toContain('NWParameters(tls: tlsOptions, tcp: tcpOptions)');
+  });
+
+  it('Kotlin TLS socket connects only to RFC 1918 hosts; the relaxed factory refuses others', () => {
+    const src = read(KOTLIN);
+    const fn = src.slice(src.indexOf('private fun tlsConnect('), src.indexOf('private fun tlsReadLoop('));
+    expect(fn).toContain('if (!isRfc1918Host(host)) {');
+    expect(fn.indexOf('if (!isRfc1918Host(host)) {')).toBeLessThan(fn.indexOf('Socket()'));
+    expect(fn).toContain('lanTlsSocketFactory(host).createSocket(raw, host, port, true) as SSLSocket');
+    const factory = src.slice(src.indexOf('private fun lanTlsSocketFactory('));
+    expect(factory).toMatch(/^private fun lanTlsSocketFactory\(host: String\): SSLSocketFactory \{\s*if \(!isRfc1918Host\(host\)\) throw/);
+    expect(src.split('lanTlsSocketFactory(').length - 1).toBe(2); // definition + the gated call in tlsConnect
+    expect(src).toContain('import android.util.Base64');
   });
 
   it('both platforms expose fetch(url, method, headersJson, body, timeoutMs, allowSelfSignedLan)', () => {

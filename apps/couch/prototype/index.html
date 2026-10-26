@@ -407,7 +407,7 @@ function viewTvs(){
  '<div class="setting"><span>Simple mode<small>Big power, volume, channel and home buttons only</small></span><button class="switch" role="switch" data-sw="simple" aria-checked="'+S.simple+'" aria-label="Simple mode"></button></div>'+
  '<div class="setting"><span>Haptics<small>A small tap on every key press</small></span><button class="switch" role="switch" data-sw="haptics" aria-checked="'+S.haptics+'" aria-label="Haptics"></button></div>'+
  themeChips()+
- '<div class="plus"><b>Couch Plus · one-time A$7.99</b><span class="note">Home and Lock Screen widgets, live volume on the Lock Screen, a remote on your watch, themes and one-tap macros. Pay once, keep it. Nothing on the remote ever needs it.</span><button class="btn ghost" data-act="plus">See Couch Plus</button></div>'+
+ '<div class="plus"><b>Couch Plus · one-time A$3.99</b><span class="note">Home and Lock Screen widgets, live volume on the Lock Screen, a remote on your watch and one-tap macros. Pay once, keep it. Nothing on the remote ever needs it.</span><button class="btn ghost" data-act="plus">See Couch Plus</button></div>'+
  '</div>';
 }
 function render(){
@@ -485,7 +485,7 @@ function bindVoice(){
  function up(){if(!v.classList.contains('on'))return;v.classList.remove('on');v.querySelector('span').textContent='Hold to talk';send('VOICE','voice: "find cooking shows"');toast('Sent to the TV assistant: "find cooking shows"')}
  v.addEventListener('pointerup',up);v.addEventListener('pointerleave',up);
 }
-function plusSheet(){openSheet(hd('Couch Plus')+'<p>One payment of <b>A$7.99</b>. No subscription, no renewals.</p><ul class="note" style="margin:0;padding-left:18px"><li>Home and Lock Screen widgets</li><li>Live volume on the Lock Screen</li><li>A remote on your watch</li><li>One-tap macros like "Movie night"</li></ul><p class="note">Power, keyboard, touchpad, apps and every TV stay free whether you buy this or not.</p><button class="btn" data-act="close">Not now</button>','Couch Plus')}
+function plusSheet(){openSheet(hd('Couch Plus')+'<p>One payment of <b>A$3.99</b>. No subscription, no renewals.</p><ul class="note" style="margin:0;padding-left:18px"><li>Home and Lock Screen widgets</li><li>Live volume on the Lock Screen</li><li>A remote on your watch</li><li>One-tap macros like "Movie night"</li></ul><p class="note">Power, keyboard, touchpad, apps and every TV stay free whether you buy this or not.</p><button class="btn" data-act="close">Not now</button>','Couch Plus')}
 
 document.addEventListener('click',function(e){
  var b=e.target.closest('button');if(!b)return;

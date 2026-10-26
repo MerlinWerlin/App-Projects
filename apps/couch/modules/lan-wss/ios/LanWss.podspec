@@ -1,3 +1,10 @@
+# Google Cast switch (oversight D147-1): the single source is src/core/cast/googleCast/switch.ts.
+# When it says GOOGLE_CAST_ON = false, LanTls.swift compiles only its stub (COUCH_NO_GOOGLE_CAST),
+# so a Google Cast compile error can be removed from the iOS build by flipping that one line.
+google_cast_switch = File.join(__dir__, '..', '..', '..', 'src', 'core', 'cast', 'googleCast', 'switch.ts')
+google_cast_on = !(File.exist?(google_cast_switch) &&
+                   File.read(google_cast_switch) =~ /^export const GOOGLE_CAST_ON\s*=\s*false\s*;/m)
+
 Pod::Spec.new do |s|
   s.name           = 'LanWss'
   s.version        = '0.1.0'
@@ -13,10 +20,12 @@ Pod::Spec.new do |s|
 
   s.dependency 'ExpoModulesCore'
 
-  s.pod_target_xcconfig = {
+  xcconfig = {
     'DEFINES_MODULE' => 'YES',
     'SWIFT_COMPILATION_MODE' => 'wholemodule'
   }
+  xcconfig['SWIFT_ACTIVE_COMPILATION_CONDITIONS'] = '$(inherited) COUCH_NO_GOOGLE_CAST' unless google_cast_on
+  s.pod_target_xcconfig = xcconfig
 
   s.source_files = '**/*.{h,m,swift}'
 end

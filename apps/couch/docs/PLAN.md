@@ -17,7 +17,7 @@ The category charts high (Toggle 4.8★/82K, Kraftwerk 9 4.6★/93K, Evolly #5 U
 Official apps are free but single-brand and buried inside content apps (Google TV, Fire TV needs an Amazon login, SmartThings is a smart-home app). Only one small indie (Adam Foot's TV Remote, 630 ratings) does widgets / Live Activity / Watch well, and it paywalls power.
 
 ## 2. Positioning (the five differentiators)
-1. **Every button free forever** — power, d-pad, touchpad, keyboard, volume, app launcher, multi-TV. No ads, no trials, no weekly anything, privacy label "Data Not Collected". One-time **Couch Plus** (~A$7.99 / US$4.99) for widgets, Watch/Wear, Live Activity, themes, macros. Tip jar.
+1. **Every button free forever** — power, d-pad, touchpad, keyboard, volume, app launcher, multi-TV. No ads, no trials, no weekly anything, privacy label "Data Not Collected". One-time **Couch Plus** (A$3.99, owner 25 Oct 2026; other storefronts follow Apple's price tiers) for widgets, Watch/Wear, Live Activity, macros. Themes are free for everyone (owner 25 Oct 2026). Family Sharing on. No tip jar (owner 25 Oct 2026).
 2. **Fast and reliable** — persistent socket, auto-reconnect on foreground, saved TVs with last IP + MAC, Wake-on-LAN, latency shown in a diagnostics screen. Target <150 ms key-to-TV on LAN.
 3. **System-level control** — interactive Home/Lock Screen widgets, Live Activity volume, Control Center control, Siri/App Shortcuts, Watch + Wear OS (Plus).
 4. **Six platforms in one app + IR** — Samsung, Roku, Google/Android TV, LG, Fire TV (beta), then Vizio/Sony/Philips; IR blaster fallback on Android phones that have one.
@@ -70,7 +70,7 @@ App Review: one universal app (guideline 4.3), demo mode + video for reviewers (
 ## 5. Monetisation
 - Free: everything that controls the TV, unlimited TVs.
 - Couch Plus, one-time: widgets, Lock Screen + Control Center controls, Live Activity, Watch/Wear, themes, button macros ("Movie night": power, input HDMI2, volume 15).
-- Tip jar. No subscription. RevenueCat or StoreKit 2 / Play Billing directly.
+- No tip jar (owner 25 Oct 2026). Family Sharing on for Couch Plus. No subscription. RevenueCat or StoreKit 2 / Play Billing directly.
 - Marketing hook in screenshot 1: "Every button free. No weekly subscription. Ever."
 
 ## 6. Milestones

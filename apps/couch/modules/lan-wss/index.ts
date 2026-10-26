@@ -7,12 +7,18 @@
  * It also offers `fetch`: one HTTP(S) request under the same rule (https:// + allowSelfSignedLan +
  * literal RFC 1918 host), returning the status, all response headers and the body as text.
  *
+ * And (T106) a raw TLS socket: `tlsConnect` / `tlsWrite` / `tlsClose`, for Google Cast (CASTV2 on
+ * port 8009). It only connects to literal RFC 1918 IPv4 hosts and accepts their self-signed
+ * certificate (Cast devices present one); every other host is refused.
+ *
  * UNVERIFIED: not compiled yet (needs a dev build). See README.md.
  *
  * Events (all carry the caller-chosen socket id):
- *   onMessage { id, data }   text frame from the server
- *   onClose   { id, code, reason }
- *   onError   { id, message }   followed by onClose
+ *   onMessage  { id, data }   text frame from the server
+ *   onClose    { id, code, reason }
+ *   onError    { id, message }   followed by onClose
+ *   onTlsData  { id, base64 }   bytes received on a TLS socket
+ *   onTlsClose { id, message }  TLS socket closed (by either side; message empty for a clean close)
  */
 import { requireOptionalNativeModule } from 'expo-modules-core';
 
@@ -37,6 +43,16 @@ export interface LanFetchResult {
   headersJson: string;
   /** Response body decoded as UTF-8. */
   body: string;
+}
+
+export interface LanTlsDataEvent {
+  id: string;
+  /** Received bytes, base64-encoded (standard alphabet, padded). */
+  base64: string;
+}
+export interface LanTlsCloseEvent {
+  id: string;
+  message: string;
 }
 
 export interface LanWssSubscription {
@@ -66,9 +82,23 @@ export interface LanWssNativeModule {
     timeoutMs: number,
     allowSelfSignedLan: boolean,
   ): Promise<LanFetchResult>;
+  /**
+   * Opens a raw TCP + TLS socket under the caller-chosen `id` (T106). `host` must be a literal
+   * RFC 1918 IPv4 address, otherwise it rejects with ERR_LAN_TLS_HOST without connecting; the
+   * device's self-signed certificate is accepted only for such hosts. Resolves after the TLS
+   * handshake; rejects with ERR_LAN_TLS_CONNECT (refused, TLS failure) or ERR_LAN_TLS_TIMEOUT.
+   * Optional: builds made before T106 lack it (src/native/lanTls.ts checks).
+   */
+  tlsConnect?(id: string, host: string, port: number, timeoutMs: number): Promise<void>;
+  /** Queues base64-encoded bytes for sending; false when the socket is unknown or closed. */
+  tlsWrite?(id: string, base64: string): boolean;
+  /** Closes the socket; onTlsClose follows. */
+  tlsClose?(id: string): void;
   addListener(event: 'onMessage', cb: (e: LanWssMessageEvent) => void): LanWssSubscription;
   addListener(event: 'onClose', cb: (e: LanWssCloseEvent) => void): LanWssSubscription;
   addListener(event: 'onError', cb: (e: LanWssErrorEvent) => void): LanWssSubscription;
+  addListener(event: 'onTlsData', cb: (e: LanTlsDataEvent) => void): LanWssSubscription;
+  addListener(event: 'onTlsClose', cb: (e: LanTlsCloseEvent) => void): LanWssSubscription;
 }
 
 /** The native module, or null in Expo Go / web / tests where it is not compiled in. */

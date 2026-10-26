@@ -13,7 +13,7 @@
   "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/couch/privacy.html",
   "supportUrl": "https://merlinwerlin.github.io/App-Projects/couch/support.html",
   "marketingUrl": "https://merlinwerlin.github.io/App-Projects/couch/",
-  "_ownerToDo": "Couch Plus price is still an open owner decision (docs/ROADMAP.md; proposal A$7.99 one-time) and the purchase provider is a stub, so no in-app purchase is listed. Add inAppPurchases here once the price is set and StoreKit is wired.",
+  "_ownerToDo": "Couch Plus price set by the owner 25 Oct 2026: A$3.99 one-time (non-consumable), Australia as the base storefront, other countries from Apple's price tiers. The purchase provider is still a stub, so no in-app purchase is listed in 1.0. Add inAppPurchases here when StoreKit is wired (T100).",
   "ageRating": "none",
   "screenshots": {
     "APP_IPHONE_67": "apps/couch/store/jpg/ios"

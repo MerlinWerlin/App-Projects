@@ -30,7 +30,7 @@ Source: owner request 18 Oct (`docs/OWNER_1018.md`), research in `docs/MARKET.md
 | ☐ | Owner retest in Expo Go (OK button, icons, sleep timer, reconnect after lock/unlock) | Owner |
 | ☐ | T18 PC verification: double-click `VERIFY.cmd`, paste `verify-report.txt` as a page comment | Owner, then build fixes |
 | ☐ | T19 RTL render tests (after T18 installs the UI test stack) | Build |
-| ☐ | Decide Couch Plus price (proposal US$4.99 / A$7.99 one-time, Family Sharing) | **Owner** |
+| ☑ | Couch Plus price: A$3.99 one-time, non-consumable (owner 25 Oct 2026); all themes free | **Owner** |
 | ☐ | Request Apple's multicast networking entitlement (steps in `docs/RELEASING.md` §d) | **Owner** |
 | ☐ | Pick the final app name ("Couch" is a working title; check App Store + trademark) | **Owner** |
 | ☐ | R1 app icon + splash (original art) · R2 demo mode for App Review · R3 privacy + support pages · R4 store listing copy · R5 end-to-end pass | Build |

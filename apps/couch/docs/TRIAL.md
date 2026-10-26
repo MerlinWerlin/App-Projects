@@ -2,16 +2,41 @@
 
 Open Couch from **TestFlight** (it has the gold d-pad icon). It starts in demo mode with three pretend TVs when no TV is found. Expo Go is only a fallback now: your Expo Go is on SDK 58, so Couch shows under "Recently opened" only once the PC copy runs on SDK 58 too.
 
+Next TestFlight build: it no longer waits for 1 Nov. You merged PR #94 (all themes free), thanks. It now follows once the old App-Projects PR #22 is closed (Workboard: appfactory-ship-stale-prs); until then everything below reaches TestFlight 1.0.1 over the air.
+
 Please answer the yes/no questions first (copy them into a comment on the Couch build page); how to open Couch is below them.
 
-## New since your last test (25 Oct, over the air)
+## New since your last test (25 Oct late): your TCL Google TV
+Thanks for the TV model. Two fixes. The first is over the air. The second needs the next TestFlight build (1.0.2), which follows once old PR #22 is closed.
+Over the air (restart Couch twice), Cast tab with your TV connected:
+1. Cast a photo to the TCL. Do the queue row and the remote's pill say "Sent…, waiting for the TV" (not "On the TV now" / "Casting")? yes / no
+2. Wait about half a minute. If nothing appeared on the TV, does a red line say "Not on <your TV>: the TV took the request but never started showing it…", and does the slideshow stop? yes / no
+3. Still on 1.0.1: does a line say "Casting to <your TV> needs the next Couch update…"? yes / no
+
+On TestFlight 1.0.2 (once it arrives):
+4. Cast tab: is your TCL listed as a cast target, and does a photo appear on the TV within a few seconds? yes / no
+5. Cast a video (MP4 from your camera roll). Does it play on the TV, and do pause / -10 s / +10 s work? yes / no
+6. If either did not show, screenshot the "Sent with Cast to 192.168.x.x … from this phone at …" line and the error. Did you see an error instead of "sharing"? yes / no
+
+## New since your last test (25 Oct night, over the air): your real-TV cast
+Your test found that the remote connected to your TV but the photos and videos never showed. Until now Couch said "On <TV>" as soon as the TV accepted a photo, even if the TV then couldn't fetch it from your phone. Now it only says that when the TV confirms it, and otherwise tells you where it sent the item. Restart Couch twice to get the update, then on the Cast tab with your real TV connected:
+1. Cast a photo. The line above the play controls says "Sent to <your TV>: ... Waiting for the TV to show it" (not "On <your TV>"). Did the photo appear on the TV? yes / no
+2. If it didn't appear, there's a small line under it: "Sent as DLNA to 192.168.x.x ... from this phone at 192.168.y.y:port" (or "Roku media player"). Please screenshot that line, or copy it into your comment. Do the first three numbers of the two addresses match? yes / no
+3. Cast a video. Within about 20 seconds, does the line change to "On <your TV>: ...", or does an error show (write it down)? yes / no
+
+## New since your last test (25 Oct evening, over the air)
+Your two decisions are in: every theme is free, and Couch Plus will be A$3.99 one-time (nothing is sold in 1.0). Your real-TV cast test (photos never reached the TV) is next: Couch now says on the Cast tab why it can't cast. Restart Couch twice to get the update.
+1. Settings > Remote theme: every theme can be picked and stays chosen after you close and reopen Couch, with no Plus badge or "Try it" step. yes / no
+2. Cast tab with your real TV connected: a line under the TV list now says why casting isn't reaching it ("No cast receiver found on ..." or "Cast is using the demo TV ..."), or nothing if a receiver was found. Which line did you see? yes / no (and the line)
+3. What make and model is the TV you tried to cast to (for example LG, Samsung, Sony, Roku, Google TV, Hisense, TCL)? Write it in your comment.
+
 Your own 25 Oct update (#92) went out over the air. It reaches the TestFlight 1.0.1 build by itself (restart Couch twice); a phone still on 1.0.0 gets it once 1.0.1 arrives.
 1. On a fresh install (or after deleting and reinstalling Couch), the Remote screen shows a small "Language: English · Change" line, and Change opens Settings with the language list open. yes / no
 2. Settings starts with Language, and there is no Couch Plus row, Buy button or "test build" text anywhere. yes / no
 3. Apps tab: turn on "Favourites only" with no favourites; it says why and "Show all apps" brings everything back in one tap. yes / no
 
 ## New since your last test (24 Oct, evening): Cast
-The current TestFlight build (1.0.0) and Expo Go run the Cast tab in demo mode. Casting to a real TV needs the TestFlight 1.0.1 build, which is on its way: the owner merged App-Projects PR #75 at 22:18Z 24 Oct (09:18 Sydney 25 Oct), so it should have appeared in TestFlight about 30-40 minutes later if the ship run passed. Expo's free plan ran out of iOS builds until 1 Nov (seen 25 Oct), so if TestFlight still shows 1.0.0, 1.0.1 arrives after 1 Nov. Update Couch from TestFlight when it shows 1.0.1.
+The current TestFlight build (1.0.0) and Expo Go run the Cast tab in demo mode. Casting to a real TV needs the TestFlight 1.0.1 build, which is on its way: the owner merged App-Projects PR #75 at 22:18Z 24 Oct (09:18 Sydney 25 Oct), so it should have appeared in TestFlight about 30-40 minutes later if the ship run passed. (1.0.1 is now on TestFlight; the owner tested it 25 Oct.)
 1. There is a new Cast tab next to Remote. "Choose photos and videos" opens your photo library, and the picked items show as a queue. yes / no
 2. Cast tab (demo TV): play/pause, next/previous, -10 s / +10 s on a video, and the slideshow with its interval chips all respond. yes / no
 3. While something is casting, the Remote tab shows a small "Casting" pill, and Play/Pause on the remote pauses the cast. yes / no

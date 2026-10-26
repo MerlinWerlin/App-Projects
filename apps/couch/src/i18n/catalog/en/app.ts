@@ -46,14 +46,12 @@ export const appEn = {
   // Couch Plus (app/plus.tsx)
   'app.plus.title': 'Couch Plus',
   'app.plus.thanksPlus': 'Couch Plus is on. Thank you!',
-  'app.plus.thanksTip': 'Thank you for the tip!',
   'app.plus.failed': 'Something went wrong. Nothing was charged.',
   'app.plus.oneTime': 'One-time purchase. No subscription.',
   'app.plus.featureLabel': '{title}. {hint}',
   'app.plus.buy': 'Buy Couch Plus',
   'app.plus.buyHint': 'One-time purchase. Purchases are not available in this test build.',
   'app.plus.restore': 'Restore purchase',
-  'app.plus.tipJar': 'Tip jar',
 
   // Diagnostics (app/diagnostics.tsx)
   'app.diagnostics.title': 'Diagnostics',

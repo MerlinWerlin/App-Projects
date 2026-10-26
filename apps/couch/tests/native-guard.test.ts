@@ -11,6 +11,7 @@ import { hasMediaServer, loadMediaServer } from '../src/native/mediaServer';
 import { hasWidgetBridge, loadWidgetBridge } from '../src/native/widgetBridge';
 import { hasRoutePicker, showRoutePicker } from '../src/native/routePicker';
 import { hasMediaPicker } from '../src/native/mediaPicker';
+import { hasLanTls, loadLanTls } from '../src/native/lanTls';
 
 const nativeDir = join(__dirname, '..', 'src', 'native');
 const NATIVE = [
@@ -88,5 +89,8 @@ describe('native module guard', () => {
     // T92: AirPlay route picker
     expect(hasRoutePicker()).toBe(false);
     await expect(showRoutePicker()).resolves.toBe(false);
+    // T106: lan-wss TLS socket (Google Cast)
+    expect(loadLanTls()).toBeNull();
+    expect(hasLanTls()).toBe(false);
   });
 });

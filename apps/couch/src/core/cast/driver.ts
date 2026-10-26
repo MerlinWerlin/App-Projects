@@ -1,7 +1,8 @@
 /**
  * CastDriver (cast-1024, T89 contract): one way of putting a phone photo or video on one TV.
  * Same idea as TvDriver for the remote: the screen only talks to this interface, and each
- * transport (DLNA/UPnP MediaRenderer, Roku media player, MockCast for demo mode) implements it.
+ * transport (DLNA/UPnP MediaRenderer, Roku media player, Google Cast (T106), MockCast for demo mode)
+ * implements it.
  *
  * The media is already being served by the phone (MediaServer) when load() is called: `media.url`
  * is an http://<phone-lan-ip>:<port>/<token> URL. Drivers never serve files themselves.
@@ -12,11 +13,11 @@
 import type { CastMedia } from './didl';
 import type { CastSnapshot } from './session';
 
-export type CastTransportKind = 'dlna' | 'roku' | 'mock';
+export type CastTransportKind = 'dlna' | 'roku' | 'googlecast' | 'mock';
 
 /** A cast target found on the network (or the demo TV). */
 export interface CastTarget {
-  /** Stable id: `dlna:<udn or location>`, `roku:<host>`, `mock:demo`. */
+  /** Stable id: `dlna:<udn or location>`, `roku:<host>`, `gcast:<host>`, `mock:demo`. */
   id: string;
   /** Name to show (friendlyName, TV name). */
   name: string;

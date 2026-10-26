@@ -1,7 +1,8 @@
 import type { Tv } from '../types';
 import { FakeTimer, FakeUdp, flush, fx, recordingFetch, type FakeReply, type FetchCall } from './__tests__/fakes';
+import { FakeCastDevice } from './__tests__/fakeCastDevice';
 import { MOCK_CAST_TARGET } from './mockCast';
-import { clearCastRenderers, createCastDriver, findCastTargets, rendererFor } from './targets';
+import { clearCastRenderers, createCastDriver, findCastTargets, googleCastCandidates, rendererFor } from './targets';
 
 const tv = (id: string, platform: Tv['platform'], host: string, name = id): Tv => ({ id, name, model: 'x', platform, host });
 
@@ -79,6 +80,31 @@ describe('findCastTargets', () => {
     ]);
   });
 
+  it('adds a Google Cast target for LAN Android TVs when a TLS socket is available, before its DLNA renderer', async () => {
+    const http = lan({ 'http://192.168.1.60:9197/dmr': 'description-probe-9197.xml' });
+    const dev = new FakeCastDevice();
+    const tvs = [tv('gtv', 'androidtv', '192.168.1.60', 'Living room'), tv('far', 'androidtv', '8.8.8.8'), tv('sam', 'samsung', '192.168.1.50')];
+    const targets = await findCastTargets({ fetch: http.fetch, timer: new FakeTimer(), tcp: dev.tcp }, tvs);
+    expect(targets.map((t) => [t.id, t.kind, t.name, t.tvId])).toEqual([
+      ['gcast:192.168.1.60', 'googlecast', 'Living room', 'gtv'],
+      ['dlna:uuid:0a0b0c0d-1111-4222-8333-444455556666', 'dlna', 'Living room', 'gtv'],
+    ]);
+    expect(targets[0]!.accepts).toEqual({ photo: true, video: true });
+    expect(targets[0]!.host).toBe('192.168.1.60');
+    // No network at search time.
+    expect(dev.connects).toEqual([]);
+  });
+
+  it('adds no Google Cast target without a TLS socket', async () => {
+    const targets = await findCastTargets({ fetch: lan({}).fetch, timer: new FakeTimer(), tcp: null }, [tv('gtv', 'androidtv', '192.168.1.60')]);
+    expect(targets).toEqual([]);
+  });
+
+  it('googleCastCandidates lists LAN Android TVs only', () => {
+    const tvs = [tv('a', 'androidtv', '192.168.1.60'), tv('b', 'androidtv', 'tv.local'), tv('c', 'roku', '192.168.1.30'), tv('d', 'androidtv', '10.1.2.3')];
+    expect(googleCastCandidates(tvs).map((t) => t.id)).toEqual(['a', 'd']);
+  });
+
   it('works with no TVs and no UDP', async () => {
     expect(await findCastTargets({ fetch: lan({}).fetch }, [])).toEqual([]);
   });
@@ -95,6 +121,15 @@ describe('createCastDriver', () => {
     d.dispose();
     const r = createCastDriver({ id: 'roku:192.168.1.30', name: 'R', kind: 'roku', host: '192.168.1.30', accepts: { photo: true, video: true } }, env);
     expect(r.target.kind).toBe('roku');
+  });
+
+  it('builds the Google Cast driver only with a TLS socket', () => {
+    const target = { id: 'gcast:192.168.1.60', name: 'G', kind: 'googlecast' as const, host: '192.168.1.60', accepts: { photo: true, video: true } };
+    const d = createCastDriver(target, { fetch: lan({}).fetch, tcp: new FakeCastDevice().tcp });
+    expect(d.target).toBe(target);
+    d.dispose();
+    expect(() => createCastDriver(target, { fetch: lan({}).fetch })).toThrow();
+    expect(() => createCastDriver(target, { fetch: lan({}).fetch, tcp: null })).toThrow();
   });
 
   it('refuses a DLNA target whose renderer is unknown', () => {

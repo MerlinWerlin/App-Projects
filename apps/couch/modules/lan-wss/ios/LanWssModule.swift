@@ -14,11 +14,12 @@ import Foundation
 public class LanWssModule: Module {
   private lazy var client = LanWssClient(module: self)
   private lazy var fetchClient = LanFetchClient()
+  private lazy var tlsClient = LanTlsClient(module: self)
 
   public func definition() -> ModuleDefinition {
     Name("LanWss")
 
-    Events("onMessage", "onClose", "onError")
+    Events("onMessage", "onClose", "onError", "onTlsData", "onTlsClose")
 
     AsyncFunction("connect") { (id: String, url: String, allowSelfSignedLan: Bool, promise: Promise) in
       self.client.connect(id: id, urlString: url, allowSelfSignedLan: allowSelfSignedLan, promise: promise)
@@ -45,13 +46,27 @@ public class LanWssModule: Module {
       )
     }
 
+    // Raw TLS socket for Google Cast (T106); RFC 1918 IPv4 hosts only (see LanTls.swift).
+    AsyncFunction("tlsConnect") { (id: String, host: String, port: Int, timeoutMs: Double, promise: Promise) in
+      self.tlsClient.connect(id: id, host: host, port: port, timeoutMs: timeoutMs, promise: promise)
+    }
+
+    Function("tlsWrite") { (id: String, base64: String) -> Bool in
+      return self.tlsClient.write(id: id, base64: base64)
+    }
+
+    Function("tlsClose") { (id: String) in
+      self.tlsClient.close(id: id)
+    }
+
     OnDestroy {
       self.client.closeAll()
       self.fetchClient.cancelAll()
+      self.tlsClient.closeAll()
     }
   }
 
-  fileprivate func emit(_ name: String, _ body: [String: Any]) {
+  func emit(_ name: String, _ body: [String: Any]) {
     sendEvent(name, body)
   }
 }

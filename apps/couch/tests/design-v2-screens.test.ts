@@ -91,9 +91,9 @@ describe('Diagnostics on design v2 (T68 step 3)', () => {
 describe('Plus on design v2 (T68 step 4)', () => {
   const src = read('app/plus.tsx');
 
-  it('uses the v2 scaffold: benefit card, large filled stretch pill, plain restore, tip jar rows', () => {
+  it('uses the v2 scaffold: benefit card, large filled stretch pill, plain restore, no tip jar', () => {
     expect(src).toContain('<LargeTitleHeader');
-    expect(src).toContain('<InsetGroupedList');
+    expect(src).not.toContain('<InsetGroupedList');
     expect(src).toContain('<Card');
     expect(src).toContain("from '../src/ui/v2'");
     expect(src).toMatch(/<Stack\.Screen options=\{\{ headerShown: false \}\} \/>/);
@@ -103,17 +103,16 @@ describe('Plus on design v2 (T68 step 4)', () => {
     expect(src).toContain('<FreePromise');
   });
 
-  it('keeps one-time purchase, restore, tips and the v1 accessibility labels', () => {
+  it('keeps one-time purchase, restore and the v1 accessibility labels (tip jar removed 25 Oct 2026)', () => {
     expect(src).toContain('applyPurchase(plusStore(), purchaseProvider(), action)');
     expect(src).toContain("buy('buy')");
     expect(src).toContain("buy('restore')");
-    expect(src).toContain('.tip(id)');
+    expect(src).not.toContain('.tip(id)');
     expect(src).toContain('PLUS_FEATURES.map(');
-    expect(src).toContain('TIP_TIERS.map(');
+    expect(src).not.toContain('TIP_TIERS');
     expect(src).toContain("t('app.plus.featureLabel'");
     expect(src).toContain("accessibilityHint={t('app.plus.buyHint')}");
     expect(src).toContain("accessibilityLabel={t('app.plus.restore')}");
-    expect(src).toContain('accessibilityHint={tt.note}');
     expect(src).toContain('accessibilityLiveRegion="polite"');
     expect(src).not.toMatch(/subscri|per month|monthly/i);
   });

@@ -25,12 +25,18 @@ export function QueueList({
   onShow,
   onMove,
   onRemove,
+  confirmed = true,
+  failed = false,
 }: {
   items: readonly QueueItem[];
   index: number;
   onShow: (index: number) => void;
   onMove: (from: number, to: number) => void;
   onRemove: (id: string) => void;
+  /** False while the TV has not confirmed the current item: its row says "Sent, waiting" instead of "On the TV now". */
+  confirmed?: boolean;
+  /** The current item failed on the TV: its row shows no "on the TV" claim at all. */
+  failed?: boolean;
 }) {
   const p = useDesign();
   const t = useT();
@@ -43,7 +49,7 @@ export function QueueList({
         const meta =
           item.kind === 'video' && item.durationSec ? t('ui.cast.videoLength', { time: formatClock(item.durationSec) }) : kind;
         const flagged = !isWidelySupported(item.mime);
-        const label = t(current ? 'ui.cast.itemLabelCurrent' : 'ui.cast.itemLabel', { title: item.title, n: i + 1, total });
+        const label = t(current && confirmed && !failed ? 'ui.cast.itemLabelCurrent' : 'ui.cast.itemLabel', { title: item.title, n: i + 1, total });
         const actions: { name: string; label: string }[] = [];
         if (i > 0) actions.push({ name: ACTION_EARLIER, label: t('ui.cast.moveUp', { title: item.title }) });
         if (i < total - 1) actions.push({ name: ACTION_LATER, label: t('ui.cast.moveDown', { title: item.title }) });
@@ -81,7 +87,7 @@ export function QueueList({
                   {item.title}
                 </Text>
                 <Text style={[textStyle('caption1'), { color: current ? p.tintedLabel : p.secondaryLabel }]}>
-                  {current ? t('ui.cast.onTv', { meta }) : meta}
+                  {current && !failed ? t(confirmed ? 'ui.cast.onTv' : 'ui.cast.sentWaiting', { meta }) : meta}
                 </Text>
                 {flagged ? (
                   <Text style={[textStyle('caption1'), { color: p.warning }]}>{t('ui.cast.mayNotPlay')}</Text>

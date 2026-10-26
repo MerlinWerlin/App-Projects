@@ -3,7 +3,7 @@
     "name": "Couch",
     "slug": "couch-remote",
     "scheme": "couch",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "ios": {
