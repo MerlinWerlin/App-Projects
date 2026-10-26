@@ -188,6 +188,8 @@ export const ko: NonNullable<LocaleMessages['themeUi']> = {
       hint: '이 디자인을 Glaze 홈 화면 위젯용으로 저장합니다.',
     },
     result: {
+      unsupported: "미리보기 전용: 이 위젯 또는 크기는 아직 iPhone에서 사용할 수 없습니다. 디자인은 여기에 저장되었습니다.",
+      updateRequired: "디자인은 여기에 저장되었습니다. 편집한 위젯 디자인을 적용하려면 TestFlight에서 다음 Glaze 빌드를 설치하세요.",
       savedTitle: '위젯용으로 저장됨',
       savedBody: '홈 화면을 길게 누르고 편집, 위젯 추가를 차례로 탭한 다음 Glaze를 선택하세요.',
       previewTitle: '이 버전에서는 미리보기만 가능',

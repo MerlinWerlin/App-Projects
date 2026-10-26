@@ -55,3 +55,9 @@
 "Seamless" = "无缝";
 "Art that floats on your wallpaper. Set it up in Glaze." = "浮在壁纸上的艺术图。在 Glaze 中设置。";
 "Set up in Glaze" = "在 Glaze 中设置";
+
+/* Island pets: generated from src/i18n/pets.ts */
+"pet.open" = "轻点探望宠物";
+"pet.happy" = "开心";
+"pet.playful" = "活泼";
+"pet.sleepy" = "困了";

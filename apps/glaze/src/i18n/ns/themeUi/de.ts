@@ -188,6 +188,8 @@ export const de: NonNullable<LocaleMessages['themeUi']> = {
       hint: 'Speichert dieses Design für die Glaze-Widgets auf dem Home-Bildschirm.',
     },
     result: {
+      unsupported: "Nur Vorschau: Dieses Widget oder diese Größe ist auf dem iPhone noch nicht verfügbar. Dein Design ist hier gespeichert.",
+      updateRequired: "Dein Design ist hier gespeichert. Installiere den nächsten Glaze-TestFlight-Build, um bearbeitete Widget-Designs anzuwenden.",
       savedTitle: 'Für deine Widgets gespeichert',
       savedBody: 'Halte den Home-Bildschirm gedrückt, tippe auf Bearbeiten, dann auf Widget hinzufügen und wähle Glaze.',
       previewTitle: 'In dieser Version nur Vorschau',

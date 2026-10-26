@@ -188,6 +188,8 @@ export const ptBR: NonNullable<LocaleMessages['themeUi']> = {
       hint: 'Salva este design para os widgets do Glaze na Tela de Início.',
     },
     result: {
+      unsupported: "Somente prévia: este widget ou tamanho ainda não está disponível no iPhone. Seu design está salvo aqui.",
+      updateRequired: "Seu design está salvo aqui. Instale a próxima versão do Glaze no TestFlight para aplicar os designs de widgets editados.",
       savedTitle: 'Salvo para seus widgets',
       savedBody: 'Toque e segure a Tela de Início, toque em Editar, depois em Adicionar Widget e escolha Glaze.',
       previewTitle: 'Só prévia nesta versão',

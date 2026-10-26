@@ -225,7 +225,7 @@ export function pairSaveTicksWallpaper(outcome: PairSaveOutcome): boolean {
 }
 
 /** How "Add widget" in Widget Studio ended (the studio's result card). */
-export type StudioSaveOutcome = 'saved' | 'preview' | 'failed' | 'photoFailed';
+export type StudioSaveOutcome = 'saved' | 'preview' | 'failed' | 'photoFailed' | 'unsupported' | 'updateRequired';
 
 /**
  * The widgets step ticks only when the studio saves: 'saved' (added in a full build) or 'preview'

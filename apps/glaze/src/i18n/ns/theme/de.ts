@@ -137,7 +137,7 @@ export const de: NonNullable<LocaleMessages['theme']> = {
   style: {
     body: 'Lade diesen Symbolstil ins Symbol-Studio und wähle dann die Apps, die du gestalten willst.',
     error: 'Stil konnte nicht geladen werden. Bitte versuche es erneut.',
-    cta: 'Diesen Symbolstil verwenden',
+    cta: "Symbole auswählen",
     hint: 'Öffnet das Symbol-Studio zur App-Auswahl',
   },
   install: {

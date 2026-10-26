@@ -195,6 +195,8 @@ export const ar: NonNullable<LocaleMessages['themeUi']> = {
       hint: 'يحفظ هذا التصميم لأدوات Glaze على الشاشة الرئيسية.',
     },
     result: {
+      unsupported: "معاينة فقط: هذه الأداة أو هذا الحجم غير متاح على iPhone بعد. تم حفظ تصميمك هنا.",
+      updateRequired: "تم حفظ تصميمك هنا. ثبّت إصدار Glaze التالي من TestFlight لتطبيق تصاميم الأدوات المعدّلة.",
       savedTitle: 'حُفظ لأدواتك',
       savedBody: 'اضغط مطولًا على الشاشة الرئيسية، ثم اضغط تعديل، ثم إضافة أداة، واختر Glaze.',
       previewTitle: 'معاينة فقط في هذا الإصدار',

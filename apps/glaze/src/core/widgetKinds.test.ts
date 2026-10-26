@@ -336,3 +336,15 @@ test('tampered catalogue blocks are rebuilt, never unreadable', () => {
   raw.catalogue = { v: 9 };
   assert.deepEqual(parseWidgetCatalogue(JSON.stringify(raw))!.catalogue, generateWidgetCatalogue(t));
 });
+
+// Owner regression: quote/countdown and glass styles discarded explicit backgrounds.
+test('explicit gradients survive every Home Screen design and remain readable', () => {
+  for (const set of CATS) {
+    for (const original of set.specs) {
+      if ('family' in original && original.family !== 'home') continue;
+      const { spec } = applyCatalogueEdits(original, { colours: { background: ['#112233', '#445566'] } });
+      assert.deepEqual(spec.background, { kind: 'gradient', from: '#112233', to: '#445566', angle: 180 }, original.id);
+      assertReadable(spec);
+    }
+  }
+});

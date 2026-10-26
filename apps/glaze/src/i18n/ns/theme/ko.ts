@@ -137,7 +137,7 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
   style: {
     body: '이 아이콘 스타일을 아이콘 스튜디오에 불러온 뒤 테마를 적용할 앱을 고르세요.',
     error: '스타일을 불러오지 못했습니다. 다시 시도해 주세요.',
-    cta: '이 아이콘 스타일 사용',
+    cta: "아이콘 선택",
     hint: '앱을 고를 수 있게 아이콘 스튜디오를 엽니다',
   },
   install: {

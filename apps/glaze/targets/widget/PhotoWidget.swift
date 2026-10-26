@@ -48,7 +48,7 @@ struct PhotoWidget: Widget {
 
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: StaticProvider()) { entry in
-      PhotoWidgetView(entry: entry)
+      GlazeDesignedWidget(kind: "photo", entry: entry) { PhotoWidgetView(entry: entry) }
     }
     .configurationDisplayName("Photo")
     .description("A photo you pick in Glaze.")

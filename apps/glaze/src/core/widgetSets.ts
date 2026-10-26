@@ -475,7 +475,9 @@ function layout(kind: WidgetKind, size: WidgetSize): RegionTemplate[] {
 const round3 = (n: number): number => Math.round(n * 1000) / 1000;
 
 function fillSamples(fill: WidgetFill, opacity: number): string[] {
-  const base = fill.kind === 'solid' ? [fill.colour] : gradientStops([fill.from, fill.to], 5);
+  // Custom gradients can dip in luminance between their stops. Include the intermediate
+  // eighths as well as endpoints before choosing text, not just the theme's five samples.
+  const base = fill.kind === 'solid' ? [fill.colour] : gradientStops([fill.from, fill.to], 17);
   if (opacity >= 1) return dedupe(base);
   // Translucent (glass, photo scrim): what shows through is unknown (wallpaper, photo), so bound
   // it by compositing over black and over white and check text against both.
@@ -552,7 +554,9 @@ function build(tokens0: WidgetTokens, kind: WidgetKind, size: WidgetSize, edits:
   // wallpaper), then falls back to the theme's own ladder.
   const designed: { fill: WidgetFill; opacity: number } = glow
     ? { fill: { kind: 'gradient', from: t.bg[0], to: t.bg[1], angle: 180 }, opacity: 1 }
-    : baseFill(t, kind);
+    : edits.colours.background
+      ? { fill: t.bg.length > 1 ? { kind: 'gradient', from: t.bg[0], to: t.bg[1], angle: 180 } : { kind: 'solid', colour: t.bg[0] }, opacity: 1 }
+      : baseFill(t, kind);
   const flatColour = designed.fill.kind === 'solid' ? designed.fill.colour : designed.fill.from;
   const bgCandidates: { fill: WidgetFill; opacity: number; pane?: boolean }[] = look === 'clear' || look === 'tinted'
     ? glassCandidates(look, paneTint).map((c) => ({ fill: { kind: 'solid', colour: c.tint } as WidgetFill, opacity: c.opacity, pane: true }))

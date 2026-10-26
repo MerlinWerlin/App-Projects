@@ -158,7 +158,7 @@ test('the app writes the theme on every apply path and once at launch', () => {
   const detail = read('app/theme/[id].tsx');
   const save = /const onSaveWallpaper = async \(\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
   assert.match(save, /applyWidgetTheme\(theme\)/, 'wallpaper save must apply the widget theme');
-  const useStyle = /const onUseStyle = async \(\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
+  const useStyle = /const onUseStyle = async \([^)]*\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
   assert.match(useStyle, /applyWidgetTheme\(theme\)/);
   const toggle = /const toggleRow = [^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
   assert.match(toggle, /next === 'widgets'\) void applyWidgetTheme\(theme\)/);

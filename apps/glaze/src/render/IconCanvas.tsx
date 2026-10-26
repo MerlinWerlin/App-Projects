@@ -30,6 +30,7 @@ import { glyphBox, gradientVector, hairline, IOS_MASK_RADIUS, iosMaskPath, shape
 import { resolveGlyph } from '../core/glyphnames';
 import { useMotionReduced } from '../theme/motion';
 import { ArtPaths } from './ArtPaths';
+import { iconBackdrop } from '../core/iconBackdrop';
 import { FeatherGlyphOverlay, InhouseSvgGlyph } from './glyphs';
 
 /** The fields IconCanvas needs; a full IconSpec satisfies it. */
@@ -53,7 +54,7 @@ export type IconCanvasProps = {
   backdrop?: string;
   /**
    * Preview only: show the icon as iOS does, clipped to iOS's own rounded-square web-clip mask
-   * with the backdrop (black if none, as exported) filling around circle/blob shapes. Never
+   * with the backdrop (the icon background colour if unset) filling around circle/blob shapes. Never
    * used for captures: the exported PNG is the full square and iOS applies the mask itself.
    */
   iosMask?: boolean;
@@ -228,7 +229,7 @@ export const IconCanvas = forwardRef<View, IconCanvasProps>(function IconCanvas(
           <BackgroundDefs bg={spec.background} id={id} />
         </Defs>
         {maskD ? (
-          <Path d={maskD} fill={backdrop ?? '#000000'} />
+          <Path d={maskD} fill={iconBackdrop(spec.background, backdrop)} />
         ) : backdrop ? (
           <Rect x={0} y={0} width={s} height={s} fill={backdrop} />
         ) : null}

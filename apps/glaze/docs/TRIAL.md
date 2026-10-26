@@ -6,7 +6,15 @@ The app runs inside **Expo Go**, a free app that loads development builds from y
 2. **PC (automatic since 23 Oct):** your PC's auto-start (`Desktop\Apps\_auto`) installs each new build, runs the type check by itself and restarts Expo. You don't download kits or run any .cmd files.
 3. **iPhone:** open Glaze from **Expo Go > Recently opened**, about 10 minutes after a new build.
 
-## New since your last test (25 Oct night, owner brief 21:29): your three must-haves
+## 26 October owner feedback: widgets and icon selection
+
+Jared confirmed **bulk install worked**. Do not ask him to repeat the old install verdict or suggest parking Glaze for it. He reported that colour/gradient edits never reached widgets, month progress dots were missing from Add Widget, theme icon selection was hard to find, and blob/small-symbol exports had black surrounds. Audit covers the whole catalogue, not only month progress.
+
+The repair branch connects saved editor designs to WidgetKit, registers month/year progress, analog clock, month calendar and countdown, and makes unsupported widget/size combinations explicit. Themes now has **Choose icons**; Install first loads the theme being viewed. Old icon sets without a backdrop use an opaque colour from the icon style. iOS still applies its rounded-square outer mask: blob/circle are artwork inside it, not transparent replacement shapes.
+
+**A new native TestFlight build is required.** An OTA cannot add WidgetKit registrations or the v2 bridge reader. Once that build is available, a short device check is month dots in Add Widget, one edited gradient on the Home Screen, and Themes > Choose icons > bulk install. No successful phone retest of this repair is claimed. Battery, photo album and habit accessory sizes remain preview-only; drafts are retained.
+
+## Earlier checklist: 25 Oct night (bulk install now confirmed)
 These ride in the **next TestFlight build** together with the fb-1025 fixes below. Your phone still has the older build: none of the 25 Oct fixes reach it until the newest Glaze ship PR in App-Projects is merged and auto-ship builds it. Answer yes / no on the Workboard.
 
 - **1. Bounce:** scroll any list past its end, open the Plus sheet, apply a theme, crop a photo. Anything still bounce or spring back? yes / no

@@ -198,6 +198,8 @@ export const en = {
       hint: 'Saves this design for Glaze’s Home Screen widgets.',
     },
     result: {
+      unsupported: 'Preview only: this widget or size is not available on the iPhone yet. Your design is saved here.',
+      updateRequired: 'Your design is saved here. Install the next Glaze TestFlight build to apply edited widget designs.',
       savedTitle: 'Saved for your widgets',
       savedBody: 'Long-press your Home Screen, tap Edit, then Add Widget, and choose Glaze.',
       previewTitle: 'Preview only in this version',

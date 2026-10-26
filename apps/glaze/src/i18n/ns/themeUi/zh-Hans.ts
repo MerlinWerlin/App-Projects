@@ -187,6 +187,8 @@ export const zhHans: NonNullable<LocaleMessages['themeUi']> = {
       hint: '为 Glaze 主屏幕小组件保存此设计。',
     },
     result: {
+      unsupported: "仅供预览：此小组件或尺寸尚未在 iPhone 上提供。你的设计已保存在这里。",
+      updateRequired: "你的设计已保存在这里。请安装 TestFlight 中的下一版 Glaze，以应用编辑后的小组件设计。",
       savedTitle: '已为小组件保存',
       savedBody: '长按主屏幕，轻点“编辑”，再轻点“添加小组件”，然后选择 Glaze。',
       previewTitle: '此版本仅支持预览',

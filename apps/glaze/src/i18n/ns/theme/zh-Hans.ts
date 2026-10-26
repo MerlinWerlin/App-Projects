@@ -136,7 +136,7 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
   style: {
     body: '将此图标样式载入图标工作室，然后选择要美化的 App。',
     error: '无法载入样式，请重试。',
-    cta: '使用此图标样式',
+    cta: "选择图标",
     hint: '打开图标工作室以选择 App',
   },
   install: {

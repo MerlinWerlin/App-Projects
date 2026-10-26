@@ -47,10 +47,11 @@ struct ClockWidget: Widget {
 
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: MinuteProvider()) { entry in
-      ClockWidgetView(entry: entry)
+      GlazeDesignedWidget(kind: "clock", entry: entry) { ClockWidgetView(entry: entry) }
     }
     .configurationDisplayName("Clock")
     .description("The time, in your Glaze theme.")
+    .contentMarginsDisabled()
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
   }
 }

@@ -170,3 +170,13 @@
 ## 2026-10-25 run 124 (19:11Z, artifact 1792948671-f192; oversight v150)
 - No-op run per D147-1. App-Projects: owner merged ship PR #96 (1ee1f73, 19:10Z); its Glaze changes are already here (synced run 117, extended run 120), 3-way check confirmed nothing new. Run 120 work (Plus purchase, bulk fix, Live Photo format) still needs the next auto-ship PR. No page comments, no patches.
 - 1226/1226 core tests green; registry not needed (no code change). Kit unchanged (e5a7652). Nothing device-tested.
+
+## 2026-10-26 Codex — T155 widget/theme/icon retest repair
+- Bulk install confirmed by owner. Fixed ignored v2 designs, missing month/year dots, analog clock, month calendar and countdown registrations; custom gradients override theme defaults; shared atomic files take precedence over cached defaults. Theme Choose icons is direct and Install applies the viewed theme first. Old icon sets receive opaque style-colour surrounds, preserving saved choices.
+- Native WidgetKit iOS typecheck and real editor-payload Swift decoder passed GitHub run 40290905453. Full Node suite 1211/1230 versus baseline 1207/1226; identical 19 failures. Full npm run typecheck (SDK app + Node tests) and Expo iOS export passed; offline stub UI check conflicts with installed dependency types. Phone rendering, refresh timing and TestFlight delivery not yet verified. RELEASE.json unchanged.
+
+## 2026-10-26: Island pets and TestFlight delivery
+
+Owner authorized the feature and release. Added original cat/fox/bunny ActivityKit companions, Start/Switch/Stop, mood controls, session restoration and eleven-language copy. Generated sprite/attribute/localization parity and three core tests pass; real SDK app + Node typechecks pass. Merged current main into the existing PR107 branch. Version 1.0.1 isolates the changed native runtime. Apple compilation, full export and upload are being verified; no device result claimed.
+
+Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full WidgetKit extension and pet lifecycle controller and decode the actual editor payload. Expo iOS export passes. Full suite found the new pet screen missing the established no-bounce setting; corrected and reran that guard. The remaining 19 failures are the previously reproduced unchanged-main SDK/source/path/asset guards. Updated the native-framework allowlist for Apple ActivityKit and included the pet pod in module-independence checks.

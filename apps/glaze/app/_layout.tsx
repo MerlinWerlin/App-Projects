@@ -162,6 +162,7 @@ function RootStack() {
       <Stack.Screen name="tips" options={{ title: t('tips.title') }} />
       <Stack.Screen name="habit-goals" options={{ title: t('tabs.widgetsTab.goals.title') }} />
       <Stack.Screen name="widget-studio" options={{ title: t('themeUi.widgetStudio.title') }} />
+      <Stack.Screen name="pets" options={{ title: t('pets.title') }} />
     </Stack>
   );
 }

@@ -188,6 +188,8 @@ export const ja: NonNullable<LocaleMessages['themeUi']> = {
       hint: 'このデザインをGlazeのホーム画面ウィジェット用に保存します。',
     },
     result: {
+      unsupported: "プレビューのみ：このウィジェットまたはサイズは、まだiPhoneでは利用できません。デザインはここに保存されています。",
+      updateRequired: "デザインはここに保存されています。編集したウィジェットを適用するには、TestFlightで次のGlazeビルドをインストールしてください。",
       savedTitle: 'ウィジェット用に保存しました',
       savedBody: 'ホーム画面を長押しして「編集」、「ウィジェットを追加」の順にタップし、Glazeを選んでください。',
       previewTitle: 'このバージョンではプレビューのみ',

@@ -65,3 +65,9 @@
 "Seamless" = "Seamless";
 "Art that floats on your wallpaper. Set it up in Glaze." = "Art that floats on your wallpaper. Set it up in Glaze.";
 "Set up in Glaze" = "Set up in Glaze";
+
+/* Island pets: generated from src/i18n/pets.ts */
+"pet.open" = "Tap to visit your pet";
+"pet.happy" = "Happy";
+"pet.playful" = "Playful";
+"pet.sleepy" = "Sleepy";

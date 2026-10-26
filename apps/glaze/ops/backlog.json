@@ -1068,7 +1068,7 @@
       ],
       "source": "run 51 follow-up",
       "title": "WidgetKit extension reads glaze.widgets.v2 (+ catalogue block): v2-aware Swift reader, per-kind widgets incl. battery-style, StandBy and accessory families (merge with T74)",
-      "notes": "T59/T78 follow-up: the extension still renders from glaze.theme.v1 + one photo. VERIFY on device. Run 54: also read T65 look/glow/backgroundOpacity (iOS 26 accented mode replaces the pane with system glass) and the T73 habit widgets should take Studio edits. Run 55: also read catalogue look/glow (T85) like the theme set; habit goals already flow via glaze.habits.v1 goal (T86)."
+      "notes": "26 Oct repair: v2 reader, five catalogue WidgetKit types, saved gradients/text/font sizes, file-first App Group writes and old-binary handshake implemented and compiler/decoder checked. Existing habits consume saved colours and preserve actions. Battery, album and habit accessories still incomplete; no phone-rendering success claimed. See docs/WIDGETS.md."
     },
     {
       "id": "T80",
@@ -2124,7 +2124,8 @@
         "T152",
         "T153",
         "T154"
-      ]
+      ],
+      "notes": "26 Oct: Jared confirmed bulk install works. Remaining feedback: edited widget gradients/colours absent, missing month dots and other widget types, theme icon selection unclear, black surrounds. Repair on codex/glaze-theme-retest-20261026; native TestFlight verification still pending. Do not repeat answered bulk verdict."
     },
     {
       "id": "T156",
@@ -2138,10 +2139,19 @@
       "deps": [
         "T154"
       ]
+    },
+    {
+      "id": "T158",
+      "status": "done",
+      "priority": "owner",
+      "source": "Jared, 26 October: add the pets and push it all to TestFlight",
+      "title": "Original Island pets with ActivityKit Start/Switch/Stop and three moods",
+      "deps": [],
+      "notes": "Local-only cat, fox and bunny; Lock Screen and Dynamic Island. Native session restore and duplicate-action guard. System-limited visibility/lifetime; no continuous animation. Build and device verification tracked separately."
     }
   ],
   "priority_order": {
-    "note": "run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
+    "note": "26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
     "order": [
       "T136",
       "T130",

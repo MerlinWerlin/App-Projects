@@ -188,6 +188,8 @@ export const it: NonNullable<LocaleMessages['themeUi']> = {
       hint: 'Salva questo design per i widget di Glaze nella schermata Home.',
     },
     result: {
+      unsupported: "Solo anteprima: questo widget o formato non è ancora disponibile su iPhone. Il tuo design è salvato qui.",
+      updateRequired: "Il tuo design è salvato qui. Installa la prossima versione di Glaze su TestFlight per applicare i widget modificati.",
       savedTitle: 'Salvato per i tuoi widget',
       savedBody: 'Tieni premuto sulla schermata Home, tocca Modifica, poi Aggiungi widget e scegli Glaze.',
       previewTitle: 'Solo anteprima in questa versione',

@@ -390,3 +390,15 @@ test('tampered or junk payloads are rebuilt or rejected, never unreadable', () =
   const bare = parseWidgetSetPayload({ v: 2 })!;
   assert.equal(bare.set.specs.length, 15);
 });
+
+// Owner regression: quote/countdown and glass styles discarded explicit backgrounds.
+test('explicit gradients survive every Home Screen design and remain readable', () => {
+  for (const set of SETS) {
+    for (const original of set.specs) {
+      if ('family' in original && original.family !== 'home') continue;
+      const { spec } = applyWidgetEdits(original, { colours: { background: ['#112233', '#445566'] } });
+      assert.deepEqual(spec.background, { kind: 'gradient', from: '#112233', to: '#445566', angle: 180 }, original.id);
+      assertReadable(spec);
+    }
+  }
+});

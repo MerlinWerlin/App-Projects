@@ -137,7 +137,7 @@ export const fr: NonNullable<LocaleMessages['theme']> = {
   style: {
     body: 'Chargez ce style d’icônes dans l’Atelier d’icônes, puis choisissez les apps à personnaliser.',
     error: 'Impossible de charger le style. Veuillez réessayer.',
-    cta: 'Utiliser ce style d’icônes',
+    cta: "Choisir les icônes",
     hint: 'Ouvre l’Atelier d’icônes pour choisir les apps',
   },
   install: {

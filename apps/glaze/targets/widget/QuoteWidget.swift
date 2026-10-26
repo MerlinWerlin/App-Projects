@@ -64,10 +64,11 @@ struct QuoteWidget: Widget {
 
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: HourProvider()) { entry in
-      QuoteWidgetView(entry: entry)
+      GlazeDesignedWidget(kind: "quote", entry: entry) { QuoteWidgetView(entry: entry) }
     }
     .configurationDisplayName("Little Line")
     .description("A short, gentle line that changes every hour.")
+    .contentMarginsDisabled()
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
   }
 }
