@@ -1,7 +1,7 @@
 {
   "app": "backspin",
   "stage": "testflight",
-  "headline": "Build 7 VALID; iPhone playback/sharing/Plus purchase/Restore passed per Jared. Release authorized; inspected iPad screenshot and automatic release setting queued for sync.",
+  "headline": "Release authorized and build7 iPhone checks passed. Apple confirms 9 screenshots COMPLETE, build7 attached/VALID, Plus READY_TO_SUBMIT and AFTER_APPROVAL saved. First submission awaits signed-in Apple website.",
   "next_for_owner": [
     "Sign in to App Store Connect in the opened browser; Codex will verify App Privacy and submit version 1.0/build 7 with Plus."
   ],
