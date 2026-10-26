@@ -22,6 +22,7 @@ jobs:
           swiftc targets/widget/SavedWidgetDesign.swift scripts/widget-design-check.swift -o "$RUNNER_TEMP/widget-check"
           "$RUNNER_TEMP/widget-check" "$RUNNER_TEMP/widget-design.json"
       - name: Typecheck the whole WidgetKit extension against iOS
+        if: always()
         working-directory: apps/glaze
         run: |
           SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)

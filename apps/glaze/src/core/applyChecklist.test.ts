@@ -205,6 +205,8 @@ test('the widgets step ticks only when the studio saves (added or preview saved)
   assert.equal(studioSaveTicksWidgets('preview'), true);
   assert.equal(studioSaveTicksWidgets('failed'), false);
   assert.equal(studioSaveTicksWidgets('photoFailed'), false);
+  assert.equal(studioSaveTicksWidgets('unsupported'), false);
+  assert.equal(studioSaveTicksWidgets('updateRequired'), false);
   assert.equal(studioSaveTicksWidgets(null), false);
 });
 

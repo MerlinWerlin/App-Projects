@@ -684,7 +684,10 @@ function build(tokens0: WidgetTokens, kind: CatalogueKind, size: CatalogueSize, 
   } else {
     // Glow: the dark base gradient (StandBy keeps its black). Glass: panes first, faintest first.
     const designed: { fill: WidgetFill; opacity: number } =
-      glow && family === 'home' ? { fill: { kind: 'gradient', from: t.bg[0], to: t.bg[1], angle: 180 }, opacity: 1 } : baseFill(t, kind, family);
+      glow && family === 'home' ? { fill: { kind: 'gradient', from: t.bg[0], to: t.bg[1], angle: 180 }, opacity: 1 }
+        : edits.colours.background && family === 'home'
+          ? { fill: t.bg.length > 1 ? { kind: 'gradient', from: t.bg[0], to: t.bg[1], angle: 180 } : { kind: 'solid', colour: t.bg[0] }, opacity: 1 }
+          : baseFill(t, kind, family);
     const candidates: { fill: WidgetFill; opacity: number; pane?: boolean }[] = glass
       ? glassCandidates(look as 'clear' | 'tinted', paneTint).map((c) => ({ fill: { kind: 'solid', colour: c.tint } as WidgetFill, opacity: c.opacity, pane: true }))
       : [];

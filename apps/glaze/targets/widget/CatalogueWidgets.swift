@@ -95,12 +95,3 @@ struct CountdownWidget: Widget {
       .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular, .accessoryInline]).contentMarginsDisabled()
   }
 }
-struct GlazeCatalogueWidgetsBundle: WidgetBundle {
-  var body: some Widget {
-    MonthProgressWidget()
-    YearProgressWidget()
-    AnalogClockWidget()
-    MonthCalendarWidget()
-    CountdownWidget()
-  }
-}

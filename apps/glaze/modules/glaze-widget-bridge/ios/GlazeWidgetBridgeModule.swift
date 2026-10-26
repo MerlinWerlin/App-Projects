@@ -39,7 +39,7 @@ public class GlazeWidgetBridgeModule: Module {
             payload["v"] as? Int == 1 else { return false }
       do { try data.write(to: container.appendingPathComponent(themeFile), options: .atomic) }
       catch { return false }
-      UserDefaults(suiteName: appGroup)?.set(json, forKey: themeKey)
+      if let defaults = UserDefaults(suiteName: appGroup) { defaults.set(json, forKey: themeKey) }
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }

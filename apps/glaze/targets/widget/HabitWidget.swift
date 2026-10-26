@@ -65,7 +65,7 @@ struct HabitWidgetView: View {
   private var stepText: String { HabitStore.format(entry.step, decimals: def.decimals) }
 
   var body: some View {
-    let t = savedHabitTheme(entry.theme, kind: "habit" + entry.habit.rawValue.prefix(1).uppercased() + entry.habit.rawValue.dropFirst(), family: family)
+    let t = savedHabitTheme(entry.theme, kind: entry.habit.designKind, family: family)
     Group {
       if entry.habit == .mood {
         MoodBody(entry: entry, medium: family == .systemMedium)
@@ -74,7 +74,11 @@ struct HabitWidgetView: View {
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-    .containerBackground(for: .widget) { GlazeBackground(theme: t) }
+    .containerBackground(for: .widget) {
+      if let design = ThemeStore.savedDesign(kind: entry.habit.designKind, family: family, theme: entry.theme) {
+        SavedWidgetFill(fill: design.background)
+      } else { GlazeBackground(theme: t) }
+    }
   }
 
   private func countBody(_ t: WidgetTheme) -> some View {
@@ -129,7 +133,7 @@ private struct MoodBody: View {
   let medium: Bool
 
   var body: some View {
-    let t = savedHabitTheme(entry.theme, kind: "habit" + entry.habit.rawValue.prefix(1).uppercased() + entry.habit.rawValue.dropFirst(), family: family)
+    let t = savedHabitTheme(entry.theme, kind: entry.habit.designKind, family: family)
     let level = Int(entry.value)
     VStack(alignment: .leading, spacing: 6) {
       Text(HabitText.name(.mood).uppercased(with: .current))

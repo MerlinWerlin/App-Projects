@@ -5,7 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
 import { useCallback } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, type ColorValue } from 'react-native';
 import { markFirstScreen } from '../../src/core/startupHandoff';
 import { useT } from '../../src/i18n';
 import { useMotionReduced } from '../../src/theme/motion';
@@ -14,7 +14,7 @@ import { useColorsV2 } from '../../src/theme/useTokens';
 import { GlassBar } from '../../src/ui/v2';
 
 type FeatherName = ComponentProps<typeof Feather>['name'];
-type TabIconProps = { color: string; size: number; focused: boolean };
+type TabIconProps = { color: ColorValue; size: number; focused: boolean };
 
 /** Selected tab icons sit on a soft tinted capsule ("bubbly" look); Feather has no filled glyphs. */
 function TabIcon({ icon, color, size, focused, bubble }: TabIconProps & { icon: FeatherName; bubble: string }) {

@@ -41,3 +41,13 @@ struct GlazeHabitWidgetsBundle: WidgetBundle {
     HabitMoodWidget()
   }
 }
+
+struct GlazeCatalogueWidgetsBundle: WidgetBundle {
+  var body: some Widget {
+    MonthProgressWidget()
+    YearProgressWidget()
+    AnalogClockWidget()
+    MonthCalendarWidget()
+    CountdownWidget()
+  }
+}

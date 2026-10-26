@@ -19,6 +19,7 @@ extension ThemeStore {
     let defaultsData = UserDefaults(suiteName: GlazeShared.appGroup)?.string(forKey: "glaze.widgets.v2")?.data(using: .utf8)
     guard let data = fileData ?? defaultsData, let payload = SavedWidgetPayload(data: data) else { return nil }
     return payload.design(kind: kind, size: size, activeThemeID: theme.themeId)
+      ?? (size == "small" ? payload.design(kind: kind, size: "standby", activeThemeID: theme.themeId) : nil)
   }
 }
 
@@ -58,6 +59,13 @@ struct SavedWidgetView: View {
             .offset(x: number(frame, "x") * geo.size.width, y: number(frame, "y") * geo.size.height)
         }
       }
+      .overlay {
+        let border = object(design.raw, "border")
+        if !border.isEmpty {
+          ContainerRelativeShape().inset(by: number(border, "width", 1) / 2)
+            .strokeBorder(Color(hex: string(border, "colour", design.accent)), lineWidth: number(border, "width", 1))
+        }
+      }
     }
     .containerBackground(for: .widget) {
       // WidgetKit cannot blur arbitrary Home Screen wallpaper. Use the saved, contrast-checked fill.
@@ -73,6 +81,19 @@ private struct SavedWidgetRegion: View {
   let scale: Double
   private var colour: Color { Color(hex: string(region, "colour", design.accent)) }
   private var period: WidgetPeriod { WidgetPeriod.at(date, year: design.kind == "yearProgress") }
+  private func textFont(_ text: [String: Any]) -> Font {
+    let size = max(6, number(text, "sizePt", 16) * scale)
+    let weight: Font.Weight = string(text, "weight") == "bold" ? .bold : string(text, "weight") == "medium" ? .medium : .regular
+    guard string(text, "font") == "display" else { return .system(size: size, weight: weight) }
+    // Match the iOS system families used by ThemeCard.displayFontStyle in the app.
+    switch string(design.raw, "typeface") {
+    case "serif": return .custom("Georgia", size: size).weight(weight)
+    case "script": return .custom("Snell Roundhand", size: size).weight(weight)
+    case "mono": return .custom("Menlo", size: size).weight(weight)
+    case "rounded": return .custom("Avenir Next", size: size).weight(weight)
+    default: return .system(size: size, weight: weight, design: .rounded)
+    }
+  }
 
   @ViewBuilder var body: some View {
     switch string(region, "role") {
@@ -83,18 +104,17 @@ private struct SavedWidgetRegion: View {
       } else {
         let align = string(text, "align")
         Text(textValue(text))
-          .font(.system(size: max(6, number(text, "sizePt", 16) * scale),
-                        weight: string(text, "weight") == "bold" ? .bold : string(text, "weight") == "medium" ? .medium : .regular,
-                        design: string(text, "font") == "display" ? .rounded : .default))
+          .font(textFont(text))
           .minimumScaleFactor(0.5)
           .multilineTextAlignment(align == "center" ? .center : align == "end" ? .trailing : .leading)
           .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: align == "center" ? .center : align == "end" ? .trailing : .leading)
           .foregroundStyle(colour)
+          .shadow(color: Color(hex: string(object(design.raw, "glow"), "colour", design.accent)).opacity(number(object(design.raw, "glow"), "opacity")), radius: number(object(design.raw, "glow"), "radius") * scale)
       }
     case "band", "scrim":
       SavedWidgetFill(fill: object(region, "fill")).opacity(number(region, "fillOpacity", 1))
     case "photo":
-      if let image = ThemeStore.loadPhoto() {
+      if string(design.raw, "photoRef") == GlazeShared.photoFile, let image = ThemeStore.loadPhoto() {
         Image(uiImage: image).resizable().scaledToFill()
       } else {
         ZStack { SavedWidgetFill(fill: object(region, "fill")); Image(systemName: "photo").foregroundStyle(colour) }
@@ -111,7 +131,7 @@ private struct SavedWidgetRegion: View {
             .frame(width: side, height: side)
             .position(x: (Double(i % columns) + 0.5) * geo.size.width / Double(columns), y: (Double(i / columns) + 0.5) * geo.size.height / Double(rows))
         }
-      }.accessibilityLabel("\(p.completed) of \(p.total) days complete")
+      }.accessibilityLabel(p.fraction.formatted(.percent.precision(.fractionLength(0))))
     case "meter":
       let meter = object(region, "meter")
       if string(meter, "shape") == "ring" {
@@ -156,7 +176,7 @@ private struct SavedWidgetRegion: View {
     case "date": return date.formatted(.dateTime.day().month(.wide))
     case "month": return date.formatted(.dateTime.month(.wide))
     case "dayNumber": return date.formatted(.dateTime.day())
-    case "week": return date.formatted(.dateTime.weekday(.wide))
+    case "week": return cal.component(.weekOfYear, from: date).formatted()
     case "monthProgress", "yearProgress": return "\(period.day)/\(period.total)"
     case "progressPercent": return (floor(period.fraction * 100) / 100).formatted(.percent.precision(.fractionLength(0)))
     case "countdown":
@@ -185,6 +205,10 @@ private struct SavedWidgetRegion: View {
       }
     }
   }
+}
+
+extension HabitKindID {
+  var designKind: String { "habit" + rawValue.prefix(1).uppercased() + rawValue.dropFirst() }
 }
 
 /// Keeps all existing interactive habit actions while applying the saved colours/gradient per size.

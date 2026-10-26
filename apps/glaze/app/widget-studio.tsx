@@ -361,7 +361,11 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
           ? t('themeUi.widgetStudio.result.previewTitle')
           : next === 'photoFailed'
             ? t('themeUi.widgetStudio.result.photoFailed')
-            : t('themeUi.widgetStudio.result.failed');
+            : next === 'unsupported'
+              ? t('themeUi.widgetStudio.result.unsupported')
+              : next === 'updateRequired'
+                ? t('themeUi.widgetStudio.result.updateRequired')
+                : t('themeUi.widgetStudio.result.failed');
     AccessibilityInfo.announceForAccessibility(announce);
   };
 
