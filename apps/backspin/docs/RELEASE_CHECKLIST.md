@@ -37,3 +37,11 @@ References for first-purchase routing: [Apple managing In-App Purchases](https:/
 The 10-go free tier is usage-limited, not an automatically started time-based trial. Android export success does not establish Android production readiness; native Android work stays in PR106.
 
 References: [factory release standard](../../../docs/RELEASE_STANDARD.md), [OpenIAP transaction lifecycle](https://www.openiap.dev/docs/features/purchase), [Apple screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/).
+
+## Signed-in submission checks
+
+On 26 October, App Store Connect's Included Assets > App Icon for attached build 7 displays the new purple mascot at full size. The global navigation still displays the old record icon; it is not the selected build asset. No duplicate build is needed.
+
+The App Privacy page was still at Get Started. The questionnaire is being completed with Device ID and Crash Data, for App Functionality only, not linked to identity and not used for tracking. This corrects the earlier blanket no-data statement: installed `expo-updates` sends `EAS-Client-ID` and `Expo-Recent-Failed-Update-IDs`. The public policy/support text and review notes now disclose these technical update-service details while preserving the accurate on-device recording claim.
+
+Sources: [Expo submission guidance](https://docs.expo.dev/distribution/app-stores/), [Expo installation identifier](https://docs.expo.dev/eas/observe/reference/client-id/), [Apple data-collection definition](https://developer.apple.com/app-store/app-privacy-details/). This is a disclosure correction for existing build behavior; no runtime code or binary changes.
