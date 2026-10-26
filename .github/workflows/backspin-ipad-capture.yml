@@ -1,0 +1,84 @@
+name: Backspin iPad release captures
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backspin-ipad-capture
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: macos-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: apps/backspin
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Select Xcode
+        run: |
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          xcodebuild -version
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare isolated simulator build
+        run: |
+          # Capture this commit's embedded app, without fetching a different OTA during screenshots.
+          node -e 'const fs=require("fs"); const p=JSON.parse(fs.readFileSync("app.json")); p.expo.updates.enabled=false; fs.writeFileSync("app.json",JSON.stringify(p,null,2));'
+          npx expo prebuild --platform ios --no-install
+          cd ios
+          pod install > "$RUNNER_TEMP/backspin-pods.log" 2>&1 || { tail -100 "$RUNNER_TEMP/backspin-pods.log"; exit 1; }
+      - name: Boot a 13-inch iPad
+        run: |
+          xcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"
+          python3 - <<'PY'
+          import json,os
+          devices=json.load(open(os.environ['RUNNER_TEMP']+'/devices.json'))['devices']
+          candidates=[d for runtime,ds in devices.items() if 'iOS' in runtime for d in ds if 'iPad Pro 13' in d['name'] or 'iPad Pro (12.9-inch)' in d['name']]
+          if not candidates: raise SystemExit('No 13-inch or 12.9-inch iPad simulator installed')
+          d=candidates[0]
+          with open(os.environ['GITHUB_ENV'],'a') as f:f.write('IPAD_UDID='+d['udid']+'\n')
+          print('Capture device:',d['name'])
+          PY
+          DEVICE=$(python3 -c 'import os; print([x.split("=",1)[1].strip() for x in open(os.environ["GITHUB_ENV"]) if x.startswith("IPAD_UDID=")][-1])')
+          xcrun simctl boot "$DEVICE"
+          xcrun simctl bootstatus "$DEVICE" -b
+      - name: Build the actual iPad app
+        run: |
+          xcodebuild -workspace ios/Backspin.xcworkspace -scheme Backspin -configuration Release \
+            -sdk iphonesimulator -destination "id=$IPAD_UDID" -derivedDataPath "$RUNNER_TEMP/backspin-derived" \
+            CODE_SIGNING_ALLOWED=NO COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/backspin-simulator.log" 2>&1 \
+            || { tail -180 "$RUNNER_TEMP/backspin-simulator.log"; exit 1; }
+      - name: Capture first launch and app routes
+        run: |
+          mkdir -p "$RUNNER_TEMP/backspin-ipad"
+          APP="$RUNNER_TEMP/backspin-derived/Build/Products/Release-iphonesimulator/Backspin.app"
+          xcrun simctl install "$IPAD_UDID" "$APP"
+          xcrun simctl ui "$IPAD_UDID" appearance dark
+          xcrun simctl status_bar "$IPAD_UDID" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+          xcrun simctl privacy "$IPAD_UDID" grant microphone com.jared797.backspin
+          xcrun simctl launch "$IPAD_UDID" com.jared797.backspin
+          sleep 20
+          xcrun simctl io "$IPAD_UDID" screenshot "$RUNNER_TEMP/backspin-ipad/01-first-launch.png"
+          for ROUTE in packs party settings; do
+            xcrun simctl openurl "$IPAD_UDID" "backspin://$ROUTE"
+            sleep 5
+            xcrun simctl io "$IPAD_UDID" screenshot "$RUNNER_TEMP/backspin-ipad/$ROUTE.png"
+          done
+          printf 'Source: %s\nDevice: %s\nActual simulator captures, not physical-device QA. OTA disabled only in this capture build. Inspect every image before using in the listing.\n' "$GITHUB_SHA" "$IPAD_UDID" > "$RUNNER_TEMP/backspin-ipad/README.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backspin-ipad-captures
+          path: |
+            ${{ runner.temp }}/backspin-ipad
+            ${{ runner.temp }}/backspin-simulator.log
+            ${{ runner.temp }}/backspin-pods.log
+          retention-days: 30
