@@ -3,6 +3,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
   <!-- Optional, so devices without live wallpapers can still install Glaze. -->
   <uses-feature android:name="android.software.live_wallpaper" android:required="false" />
+  <!-- Only destinations explicitly supported by Glaze; no installed-app inventory permission. -->
+  <queries>
+    <package android:name="com.spotify.music" />
+    <package android:name="com.google.android.youtube" />
+    <package android:name="com.instagram.android" />
+    <package android:name="com.whatsapp" />
+    <package android:name="com.android.chrome" />
+    <package android:name="com.google.android.gm" />
+    <intent><action android:name="android.intent.action.VIEW" /><data android:scheme="https" /></intent>
+    <intent><action android:name="android.intent.action.VIEW" /><data android:scheme="http" /></intent>
+    <intent><action android:name="android.intent.action.VIEW" /><data android:scheme="tel" /></intent>
+    <intent><action android:name="android.intent.action.VIEW" /><data android:scheme="sms" /></intent>
+    <intent><action android:name="android.intent.action.VIEW" /><data android:scheme="mailto" /></intent>
+    <intent><action android:name="android.intent.action.VIEW" /><data android:scheme="geo" /></intent>
+  </queries>
 
   <application>
     <service

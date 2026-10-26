@@ -55,7 +55,20 @@ function mergeUnique(a: unknown, b: unknown): unknown {
 export default ({ config }: ConfigContext): ExpoConfig => {
   const base = config as ExpoConfig;
   // Android modules merge their own manifests. Apple targets/entitlements must not enter this path.
-  if (process.env.PLAY_VARIANT) return require('./ops/play-variant.cjs')(base);
+  if (process.env.PLAY_VARIANT) {
+    const play = require('./ops/play-variant.cjs')(base);
+    play.android.blockedPermissions = [...new Set([
+      ...(play.android.blockedPermissions ?? []),
+      'android.permission.RECORD_AUDIO',
+      'android.permission.SYSTEM_ALERT_WINDOW',
+      'android.permission.READ_MEDIA_AUDIO',
+      'android.permission.READ_MEDIA_IMAGES',
+      'android.permission.READ_MEDIA_VIDEO',
+      'android.permission.READ_MEDIA_VISUAL_USER_SELECTED',
+      'android.permission.READ_EXTERNAL_STORAGE',
+    ])];
+    return play;
+  }
   if (process.env.GLAZE_NATIVE !== '1') return base;
 
   const plugins = [...(base.plugins ?? [])];

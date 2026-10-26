@@ -45,6 +45,8 @@ const MOUNT_TIMEOUT_MS = 3000;
  * Expo Go and the store build both allow with NSPhotoLibraryAddUsageDescription). Throws only if the module fails.
  */
 export async function photosWriteAccess(): Promise<PhotoAccess> {
+  // Android 10+ lets an app add its own media without reading anyone else's library.
+  if (Platform.OS === 'android' && Number(Platform.Version) >= 29) return 'granted';
   const current = await MediaLibrary.getPermissionsAsync(true);
   if (current.granted) return 'granted';
   if (!current.canAskAgain) return 'blocked';

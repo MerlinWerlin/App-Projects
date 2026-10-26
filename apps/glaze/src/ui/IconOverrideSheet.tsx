@@ -7,7 +7,7 @@
 import { Feather } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { useEffect, useMemo, useState } from 'react';
-import { Alert, Image, Linking, Pressable, StyleSheet, Text, TextInput, View, type TextStyle } from 'react-native';
+import { Alert, Image, Linking, Platform, Pressable, StyleSheet, Text, TextInput, View, type TextStyle } from 'react-native';
 import { allGlyphNames } from '../core/glyphnames';
 import {
   MIN_GLYPH_CONTRAST,
@@ -262,8 +262,8 @@ export function IconOverrideSheet({
     setBusy(true);
     setError(null);
     try {
-      const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (!perm.granted) {
+      const perm = Platform.OS === 'android' ? null : await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (perm && !perm.granted) {
         setDenied(true);
         return;
       }
