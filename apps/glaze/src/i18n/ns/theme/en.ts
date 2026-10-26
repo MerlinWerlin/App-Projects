@@ -137,7 +137,7 @@ export const en = {
   style: {
     body: 'Load this icon style into Icon Studio, then pick the apps you want themed.',
     error: 'Could not load the style. Please try again.',
-    cta: 'Use this icon style',
+    cta: "Choose icons",
     hint: 'Opens Icon Studio to pick apps',
   },
   install: {

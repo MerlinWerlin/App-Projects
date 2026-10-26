@@ -137,7 +137,7 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
   style: {
     body: 'このアイコンスタイルをアイコンスタジオに読み込み、テーマを適用するアプリを選びます。',
     error: 'スタイルを読み込めませんでした。もう一度お試しください。',
-    cta: 'このアイコンスタイルを使う',
+    cta: "アイコンを選ぶ",
     hint: 'アイコンスタジオを開いてアプリを選びます',
   },
   install: {

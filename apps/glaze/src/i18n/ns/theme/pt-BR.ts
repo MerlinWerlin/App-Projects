@@ -137,7 +137,7 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
   style: {
     body: 'Carregue este estilo no Estúdio de ícones e escolha os apps que quer personalizar.',
     error: 'Não foi possível carregar o estilo. Tente novamente.',
-    cta: 'Usar este estilo de ícones',
+    cta: "Escolher ícones",
     hint: 'Abre o Estúdio de ícones para escolher apps',
   },
   install: {

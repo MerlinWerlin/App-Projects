@@ -1,14 +1,8 @@
 # Bulk icon install on iOS: verdict (T154, 25 Oct 2026)
 
-**Verdict: POSSIBLE WITH LIMITS.** iOS does let one configuration profile add all the icons (80 or more) in
-a single Settings install, without Shortcuts. It is not one tap: Safari, then Allow, then Settings, then
-passcode. Three things are still unproven and could stop it: (1) whether Safari on the owner's iPhone
-accepts the profile from Glaze's built-in server, (2) whether tapping an icon opens the app cleanly, and
-(3) whether App Review accepts it (Guideline 5.5). One device retest answers (1) and (2), and the steps
-are at the end. If that retest still shows no "Profile Downloaded", treat bulk install as **not workable
-for Glaze** and decide whether to park the app.
+**Owner update, 26 October 2026: bulk install worked on Jared’s iPhone.** The previous uncertainty about whether his phone accepts the profile is resolved. He did not separately confirm every app destination, lack of Safari flash or App Review acceptance. Those are not inferred from the bulk-install report.
 
-Nothing below was tested on a device. Everything comes from public sources and from reading the code.
+The remaining owner-reported issues are widget gradients/colours, missing widget types, finding theme icon selection, and black surrounds on shaped icons. See the latest section of TRIAL.md. The research below is historical evidence, not a request to repeat the completed bulk-install verdict.
 
 ---
 

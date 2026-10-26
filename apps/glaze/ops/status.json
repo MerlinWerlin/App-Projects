@@ -1,11 +1,11 @@
 {
-  "tests": "1226/1226 core tests green",
-  "typecheck": "core only (registry unreachable); UI stub typecheck 0",
-  "last_run": "2026-10-26 06:15 Sydney (run 124)",
+  "tests": "1230 core tests: 1211 pass, 19 fail; same 19 failures reproduced on unchanged main 5a6185f9 (1226 tests, 1207 pass). No new test failures.",
+  "typecheck": "npm run typecheck passes (real SDK app + Node tests). Expo iOS export passes. Apple iOS WidgetKit compiler and TS-to-Swift payload check passed run 40290905453. Offline UI stubs conflict with installed SDK declarations.",
+  "last_run": "2026-10-26 Codex owner retest repair",
   "stage": "owner-tested",
   "oversight_seen": "v150 (1792954143-2667): no new directives; D147-1 hold continues; no patches",
-  "headline": "You merged PR #96 (widgets follow the Widgets-tab theme, Bulk only, no bounce). Next: merge the ship PR auto-ship opens with the rest (real Plus purchase, bulk fix, Live Photo wallpaper format), then retest on TestFlight.",
-  "next_for_owner": "1) Merge the next Glaze ship PR auto-ship opens in App-Projects (it carries the Plus purchase, bulk-install fix and Live Photo format; #96 is already merged); auto-ship then builds TestFlight. 2) In App Store Connect create the in-app purchase com.jared797.glaze.plus at A$2.99 (docs/IAP_SANDBOX.md). 3) Answer the yes/no questions at the top of docs/TRIAL.md; bulk install verdict in docs/BULK_INSTALL_VERDICT.md. (Full install + expo export needs PC verification: npm registry unreachable from the cloud.)",
+  "headline": "Bulk install confirmed by Jared. Widget design bridge and five missing widget types repaired in codex/glaze-theme-retest-20261026; native compiler and real editor-payload decoder pass. New TestFlight binary still required.",
+  "next_for_owner": "No repeat bulk-install verdict needed. After the repaired native build reaches TestFlight, check month dots and one edited gradient, then Themes > Choose icons. Existing Plus product setup is separate; see docs/IAP_SANDBOX.md.",
   "trial_kit": true,
   "trial_kit_commit": "e5a7652"
 }

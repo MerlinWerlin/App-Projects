@@ -1,8 +1,7 @@
 # Widgets (T12)
 
-> **Status: code-complete, not yet tested on a device.** Nothing here has been built in Xcode or
-> run on an iPhone. Spots that need checking against a real build are marked `// VERIFY` in the
-> Swift/JS sources.
+> **26 October repair: compiler-checked, awaiting a new native TestFlight build and phone rendering verification.**
+> Existing widgets were tested by Jared and did not re-theme correctly. The repair and remaining limits are recorded below.
 
 ## What ships
 
@@ -13,12 +12,18 @@ theme (background, accent, ink, glass/solid/outline surface, display/body font).
 | Widget | Kind | Families | Updates |
 | --- | --- | --- | --- |
 | Clock | `GlazeClock` | small, medium, large | one entry per minute for the next hour |
-| Date | `GlazeDate` | small, medium (adds a week strip) | at midnight |
+| Date | `GlazeDate` | small, medium, large | at midnight |
 | Little Line | `GlazeQuote` | small, medium, large | hourly; 24 original short lines bundled in Swift |
 | Photo | `GlazePhoto` | small, medium, large | when the app saves a new photo; gradient placeholder otherwise |
 | Seamless (T131) | `GlazeSeamless` | small, medium, large | when the app writes a new crop (`setSeamless`); theme background otherwise |
 | Glaze Lock | `GlazeLockAccessory` | Lock Screen rectangular, circular, inline | per minute (time, date, theme glyph) |
 | Water / Sleep / Steps / Mood (T73) | `GlazeHabitWater`, `GlazeHabitSleep`, `GlazeHabitSteps`, `GlazeHabitMood` | small, medium | on every button tap, and just after midnight (back to 0) |
+
+| Month progress | `GlazeMonthProgress` | small, medium, circular, inline | at midnight |
+| Year progress | `GlazeYearProgress` | small, medium, circular, rectangular, inline | at midnight |
+| Analog clock | `GlazeAnalogClock` | small, large, circular; small supports StandBy | per minute |
+| Month calendar | `GlazeMonthCalendar` | small (StandBy design), medium, large | at midnight |
+| Countdown | `GlazeCountdown` | small, medium, circular, rectangular, inline | at midnight |
 
 No battery widget (needs device APIs we don't want in v1).
 
@@ -40,7 +45,7 @@ app/theme/[id].tsx  "Use this style"
 
 Photo widget: `widgets.setPhoto(fileUri)` makes the bridge re-encode the image as JPEG (long edge
 ≤ 1200 px) into the App Group container as `widget-photo.jpg`; `widgets.clearPhoto()` removes it.
-No UI calls `setPhoto` yet (a picker in Settings or the theme flow is a follow-up).
+Widget Studio calls `setPhoto` before saving a photo design; a cleared photoRef displays the placeholder instead of reusing an old photo.
 
 The App Group `group.com.jared797.glaze` is added to the app by `native-plugins/widgets.json` and to the
 extension by `targets/widget/expo-target.config.js`.
@@ -594,3 +599,14 @@ T136 compile audit of every Swift file (what was checked and fixed, what is stil
   container background.
 - `LockAccessoryWidget.swift`: inline family ignores custom fonts.
 - `GlazeWidgetBridgeModule.swift`: 1200 px photo cap vs the extension memory limit.
+
+
+## 26 October native delivery audit (T155 / T79)
+
+The editor previously wrote `glaze.widgets.v2`, but the extension did not read it. The new Foundation decoder reads the exact serialized editor payload, including the catalogue block, translated text, colours and per-size typography. An atomic `widgets.json` file takes precedence over cached UserDefaults. Theme writes now require an actual shared-container write; private UserDefaults alone cannot report success. A version handshake prevents an old binary from reporting edited designs applied. Saved drafts are retained before any delivery attempt.
+
+Native widget types now include clock, date, photo, quote, analog clock, month calendar, countdown, month progress, year progress, water, sleep, steps and mood. Existing Lock Screen accessory and seamless widgets keep their identities. The five added types are registered in a nested bundle; existing installed widgets keep their kind identifiers. Month/year dots use the current calendar and refresh after midnight. Countdown uses the saved target date. Habit widgets retain their AppIntent actions and now consume saved background/accent/text colours.
+
+Remaining limits: battery and photo-album designs, and habit accessory sizes, remain preview-only and are labelled before save. iOS controls accessory/tinted appearance; arbitrary Home Screen wallpaper blur is unavailable. System fonts stand in for the unbundled display font. The per-size shared design is common to all installed instances of that kind and size. A native build, not OTA alone, is needed. Compiler/decoder checks do not establish actual phone rendering or WidgetKit refresh timing.
+
+Validation: `.github/workflows/glaze-widgets-check.yml` compiles the actual widget extension against the iOS simulator SDK and runs the Swift decoder against the real TypeScript editor payload. Run 40290905453 passed both. Existing colour/readability tests plus explicit gradient preservation across all bundled Home Screen designs pass. Full Windows suite has the same 19 failures on the base commit and repair; those unrelated SDK/source/path/asset guards are not hidden or claimed green.

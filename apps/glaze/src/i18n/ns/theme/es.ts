@@ -137,7 +137,7 @@ export const es: NonNullable<LocaleMessages['theme']> = {
   style: {
     body: 'Carga este estilo de iconos en el Estudio de iconos y elige las apps que quieras personalizar.',
     error: 'No se pudo cargar el estilo. Inténtalo de nuevo.',
-    cta: 'Usar este estilo de iconos',
+    cta: "Elegir iconos",
     hint: 'Abre el Estudio de iconos para elegir apps',
   },
   install: {

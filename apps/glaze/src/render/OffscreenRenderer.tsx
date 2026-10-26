@@ -39,7 +39,7 @@ export type OffscreenIconRendererHandle = {
 };
 
 export type OffscreenIconRendererProps = {
-  /** Colour behind the shape in every capture (fills transparent corners). Default: transparent. */
+  /** Colour behind the shape in every capture (fills transparent corners). Defaults to the icon background colour for an opaque iOS export. */
   backdrop?: string;
 };
 

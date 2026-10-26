@@ -54,7 +54,7 @@ export type IconCanvasProps = {
   backdrop?: string;
   /**
    * Preview only: show the icon as iOS does, clipped to iOS's own rounded-square web-clip mask
-   * with the backdrop (black if none, as exported) filling around circle/blob shapes. Never
+   * with the backdrop (the icon background colour if unset) filling around circle/blob shapes. Never
    * used for captures: the exported PNG is the full square and iOS applies the mask itself.
    */
   iosMask?: boolean;

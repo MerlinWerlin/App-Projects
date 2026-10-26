@@ -170,3 +170,7 @@
 ## 2026-10-25 run 124 (19:11Z, artifact 1792948671-f192; oversight v150)
 - No-op run per D147-1. App-Projects: owner merged ship PR #96 (1ee1f73, 19:10Z); its Glaze changes are already here (synced run 117, extended run 120), 3-way check confirmed nothing new. Run 120 work (Plus purchase, bulk fix, Live Photo format) still needs the next auto-ship PR. No page comments, no patches.
 - 1226/1226 core tests green; registry not needed (no code change). Kit unchanged (e5a7652). Nothing device-tested.
+
+## 2026-10-26 Codex — T155 widget/theme/icon retest repair
+- Bulk install confirmed by owner. Fixed ignored v2 designs, missing month/year dots, analog clock, month calendar and countdown registrations; custom gradients override theme defaults; shared atomic files take precedence over cached defaults. Theme Choose icons is direct and Install applies the viewed theme first. Old icon sets receive opaque style-colour surrounds, preserving saved choices.
+- Native WidgetKit iOS typecheck and real editor-payload Swift decoder passed GitHub run 40290905453. Full Node suite 1211/1230 versus baseline 1207/1226; identical 19 failures. Full npm run typecheck (SDK app + Node tests) and Expo iOS export passed; offline stub UI check conflicts with installed dependency types. Phone rendering, refresh timing and TestFlight delivery not yet verified. RELEASE.json unchanged.

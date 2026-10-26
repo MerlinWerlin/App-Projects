@@ -1,5 +1,7 @@
 name: Glaze widget contract
 on:
+  pull_request:
+    paths: ['apps/glaze/targets/widget/**', 'apps/glaze/src/core/widget*.ts', 'apps/glaze/scripts/widget-design-*', '.github/workflows/glaze-widgets-check.yml']
   push:
     branches: ['codex/glaze-theme-retest-20261026']
     paths: ['apps/glaze/**', '.github/workflows/glaze-widgets-check.yml']
