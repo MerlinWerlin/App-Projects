@@ -8,4 +8,8 @@ web-build/
 *.log
 .env*
 *.p8
+*.jks
+*.keystore
+credentials.json
+/apk-output/
 .DS_Store

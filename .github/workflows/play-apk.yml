@@ -1,0 +1,89 @@
+name: Android test APK
+
+on:
+  pull_request:
+    paths: ['.github/workflows/play-apk.yml', 'scripts/play/verify_apk.py', 'scripts/play/smoke-apk.sh']
+  workflow_dispatch:
+    inputs:
+      app:
+        description: App folder to compile (test package only)
+        type: choice
+        default: crochet
+        options: [crochet, glaze, linework, couch, cue, backspin, satchel]
+      smoke:
+        description: Install and launch on an Android emulator
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      APP: ${{ inputs.app || 'crochet' }}
+      PLAY_VARIANT: preview
+      EAS_BUILD_PLATFORM: android
+      GLAZE_NATIVE: '1'
+      CI: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Build the PR's actual head, not GitHub's synthetic merge commit.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Install and generate the isolated Android project
+        shell: bash
+        run: |
+          case "$APP" in crochet|glaze|linework|couch|cue|backspin|satchel) ;; *) exit 2;; esac
+          cd "apps/$APP"
+          npm ci --no-audit --no-fund
+          if [ "$APP" = glaze ]; then node scripts/native-link.mjs; fi
+          npx expo prebuild --platform android --no-install
+          npx expo config --type public --json > /tmp/play-config.json
+          node -e 'const c=require("/tmp/play-config.json"); if(!c.android.package.endsWith(".playtest") || c.updates.enabled!==false) throw Error("Not an offline test variant")'
+      - name: Compile standalone APK with the generated test key
+        working-directory: apps/${{ env.APP }}/android
+        run: ./gradlew :app:assembleRelease --no-daemon --max-workers=2 -PreactNativeArchitectures=arm64-v8a,x86_64 -Dorg.gradle.jvmargs=-Xmx4g
+      - name: Verify signature, manifest, embedded bundle and native alignment
+        shell: bash
+        run: |
+          mkdir -p apk-output
+          cp "apps/$APP/android/app/build/outputs/apk/release/app-release.apk" "apk-output/$APP-play-test.apk"
+          cp /tmp/play-config.json apk-output/config.json
+          git rev-parse HEAD > apk-output/source-commit.txt
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "apk-output/$APP-play-test.apk" > apk-output/signature.txt
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "apk-output/$APP-play-test.apk" > apk-output/badging.txt
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump xmltree "apk-output/$APP-play-test.apk" AndroidManifest.xml > apk-output/manifest.txt
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 "apk-output/$APP-play-test.apk" > apk-output/zipalign.txt
+          python scripts/play/verify_apk.py "apk-output/$APP-play-test.apk" apk-output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.APP }}-play-test-apk
+          path: apk-output/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Emulator install and launch
+        if: github.event_name == 'pull_request' || inputs.smoke
+        shell: bash
+        run: bash scripts/play/smoke-apk.sh "apk-output/$APP-play-test.apk" apk-output
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ env.APP }}-android-evidence
+          path: |
+            apk-output/*.txt
+            apk-output/*.json
+            apk-output/*.png
+            apk-output/*.xml
+          if-no-files-found: ignore
+          retention-days: 30
