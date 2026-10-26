@@ -12,9 +12,14 @@ on:
         description: Install and launch on an Android emulator
         type: boolean
         default: true
+      artifactRun:
+        description: Optional existing run ID; reuse its verified APK for emulator testing
+        type: string
+        default: ''
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   apk:
@@ -40,6 +45,7 @@ jobs:
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v4
       - name: Install and generate the isolated Android project
+        if: inputs.artifactRun == '' || inputs.app == 'backspin'
         shell: bash
         run: |
           case "$APP" in crochet|glaze|linework|couch|cue|backspin|satchel) ;; *) exit 2;; esac
@@ -56,9 +62,11 @@ jobs:
           npx expo config --type public --json > /tmp/play-config.json
           node -e 'const c=require("/tmp/play-config.json"); if(!c.android.package.endsWith(".playtest") || c.updates.enabled!==false) throw Error("Not an offline test variant")'
       - name: Compile standalone APK with the generated test key
+        if: inputs.artifactRun == ''
         working-directory: apps/${{ env.APP }}/android
         run: ./gradlew :app:assembleRelease --no-daemon --max-workers=2 -PreactNativeArchitectures=arm64-v8a,x86_64 -Dorg.gradle.jvmargs=-Xmx4g
       - name: Verify signature, manifest, embedded bundle and native alignment
+        if: inputs.artifactRun == ''
         shell: bash
         run: |
           mkdir -p apk-output
@@ -71,11 +79,24 @@ jobs:
           "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 "apk-output/$APP-play-test.apk" > apk-output/zipalign.txt
           python scripts/play/verify_apk.py "apk-output/$APP-play-test.apk" apk-output
       - uses: actions/upload-artifact@v4
+        if: inputs.artifactRun == ''
         with:
           name: ${{ env.APP }}-play-test-apk
           path: apk-output/
           if-no-files-found: error
           retention-days: 30
+      - name: Reuse an already verified test APK
+        if: inputs.artifactRun != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_RUN: ${{ inputs.artifactRun }}
+        run: |
+          [[ "$ARTIFACT_RUN" =~ ^[0-9]+$ ]]
+          case "$APP" in crochet|glaze|linework|couch|cue|backspin|satchel) ;; *) exit 2;; esac
+          gh run download "$ARTIFACT_RUN" -n "$APP-play-test-apk" -D apk-output
+          python scripts/play/verify_apk.py "apk-output/$APP-play-test.apk" apk-output
+      - uses: android-actions/setup-android@v3
+        if: inputs.smoke
       - name: Emulator install and launch
         if: inputs.smoke
         shell: bash

@@ -50,7 +50,10 @@ export function sceneBottomPad(insetBottom: number, inTabs: boolean, extra: numb
  * (the navigator's tabBarHideOnKeyboard only applies to its default bar). iOS announces the keyboard before it
  * animates in ("will"); Android only reports after the fact ("did").
  */
-export function keyboardEvents(os: string): { show: string; hide: string } {
+export function keyboardEvents(os: string): {
+  show: 'keyboardWillShow' | 'keyboardDidShow';
+  hide: 'keyboardWillHide' | 'keyboardDidHide';
+} {
   return os === 'ios'
     ? { show: 'keyboardWillShow', hide: 'keyboardWillHide' }
     : { show: 'keyboardDidShow', hide: 'keyboardDidHide' };

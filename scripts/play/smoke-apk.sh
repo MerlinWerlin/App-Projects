@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # CI-only Android install/launch evidence. No store or production credentials.
 set -euo pipefail
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
 apk=$(realpath "$1")
 output=$(realpath "$2")
 package=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["android"]["package"])' "$output/config.json")
