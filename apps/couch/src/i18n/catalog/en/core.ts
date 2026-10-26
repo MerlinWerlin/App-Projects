@@ -239,6 +239,12 @@ export const coreEn = {
   'core.driver.cast.loadTimeout': 'The TV did not start playing in time.',
   'core.driver.cast.needsFullApp': 'Casting needs the full app.',
   'core.driver.cast.serveFailed': "Couldn't share the file with the TV.",
+  // T106: Google Cast route (TVs with Chromecast built in)
+  'core.driver.cast.gcast.connectFailed': "Couldn't open a cast connection to the TV.",
+  'core.driver.cast.gcast.launchFailed': "The TV didn't open its media player.",
+  'core.driver.cast.gcast.loadFailed': "The TV couldn't play this file. It may not be able to fetch it from this phone.",
+  'core.driver.cast.gcast.lost': 'Lost the cast connection to the TV.',
+  'core.driver.cast.notShown': "Not on {name}: the TV took the request but never started showing it. Check the phone and TV are on the same Wi-Fi (not a guest network), then tap the item again.",
 
   'core.reconnect.gaveUp': {
     one: "Couldn't reach the TV after {count} try. Check it's on and on the same Wi-Fi, then tap Reconnect now.",
@@ -304,13 +310,6 @@ export const coreEn = {
   'core.plus.feature.controls.hint': 'One-tap controls without opening the app',
   'core.plus.feature.macros.title': 'Button macros',
   'core.plus.feature.macros.hint': 'One tap for a sequence, like "Movie night"',
-  'core.plus.tipJar': 'Tips are optional and unlock nothing. Couch stays free either way.',
-  'core.plus.tip.small.label': 'Small tip',
-  'core.plus.tip.small.note': 'A thank-you',
-  'core.plus.tip.medium.label': 'Medium tip',
-  'core.plus.tip.medium.note': 'Helps pay for test TVs',
-  'core.plus.tip.large.label': 'Large tip',
-  'core.plus.tip.large.note': 'Keeps Couch free and ad-free',
   'core.plus.unavailable': "Purchases aren't available in this test build.",
   'core.plus.failed': 'Something went wrong. Nothing was charged.',
 

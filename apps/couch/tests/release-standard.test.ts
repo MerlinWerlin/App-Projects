@@ -38,10 +38,10 @@ describe('release standard 2: purchases', () => {
   it('while nothing is for sale, purchase and test-build copy is only reachable behind plusForSale()', () => {
     if (PLUS_FOR_SALE) return;
     const plus = read('app/plus.tsx');
-    // Every Buy / Restore / tip path in the Plus screen sits inside a `forSale ? (...)` branch.
+    // Every Buy / Restore path in the Plus screen sits inside a `forSale ? (...)` branch.
     expect(plus).toMatch(/const forSale = plusForSale\(\)/);
     const gated = (plus.match(/\{forSale \? \(/g) ?? []).length;
-    expect(gated).toBeGreaterThanOrEqual(2);
+    expect(gated).toBeGreaterThanOrEqual(1);
     for (const screen of ['app/settings.tsx', 'app/themes.tsx']) {
       expect(read(screen)).toMatch(/plusForSale\(\)/);
     }

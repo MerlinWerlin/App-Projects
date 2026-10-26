@@ -29,6 +29,13 @@ export interface CastSnapshot {
   /** Translated message of the error that put the session in 'error'. */
   error: string | null;
   errorCode: DriverError['code'] | null;
+  /**
+   * True once the TV itself reported that it is showing the media (renderer state PLAYING or
+   * PAUSED_PLAYBACK). A successful SetAVTransportURI + Play only means the TV accepted the URL; it
+   * may still fail to fetch the file from the phone (owner TestFlight 1.0.1 test, 25 Oct 2026), so
+   * the Cast tab says "sent, waiting for the TV" until this is true. Absent = unknown (demo, Roku).
+   */
+  confirmed?: boolean;
 }
 
 export interface CastTimer {
@@ -110,6 +117,7 @@ export class CastSession {
       durationSec: media.kind === 'video' && media.durationSec !== undefined ? media.durationSec : null,
       error: null,
       errorCode: null,
+      confirmed: false,
     });
     try {
       await this.transport.setUri(media);
@@ -121,11 +129,12 @@ export class CastSession {
       return this.snap;
     }
     if (media.kind === 'photo') {
+      // Photos have no timeline: show them as on the TV, but keep polling (up to loadTimeoutMs) for
+      // the renderer to confirm it is showing the picture. STOPPED / NO_MEDIA_PRESENT never end a photo.
       this.seenPlayback = true;
       this.set({ state: 'playing' });
-    } else {
-      this.startPolling();
     }
+    this.startPolling();
     return this.snap;
   }
 
@@ -181,11 +190,21 @@ export class CastSession {
       const info = await this.transport.getTransportInfo();
       if (gen !== this.gen) return;
       const state = info.state.toUpperCase();
+      if (this.snap.media?.kind === 'photo') {
+        if (state === 'PLAYING' || state === 'PAUSED_PLAYBACK') {
+          this.stopPolling();
+          this.set({ confirmed: true });
+        } else if (this.timer.now() - this.loadStartedAt >= this.loadTimeoutMs) {
+          this.stopPolling(); // stays unconfirmed; the Cast tab explains what to check
+        }
+        this.failures = 0;
+        return;
+      }
       if (state === 'PLAYING' || state === 'PAUSED_PLAYBACK') {
         this.seenPlayback = true;
         const pos = await this.transport.getPositionInfo();
         if (gen !== this.gen) return;
-        const patch: Partial<CastSnapshot> = { state: state === 'PLAYING' ? 'playing' : 'paused' };
+        const patch: Partial<CastSnapshot> = { state: state === 'PLAYING' ? 'playing' : 'paused', confirmed: true };
         if (pos.positionSec !== null) patch.positionSec = pos.positionSec;
         if (pos.durationSec !== null && pos.durationSec > 0) patch.durationSec = pos.durationSec;
         this.set(patch);
@@ -199,7 +218,10 @@ export class CastSession {
     } catch (e) {
       if (gen !== this.gen) return;
       this.failures += 1;
-      if (this.failures >= this.maxPollFailures) this.fail(asDriverError(e));
+      if (this.failures >= this.maxPollFailures) {
+        if (this.snap.media?.kind === 'photo') this.stopPolling();
+        else this.fail(asDriverError(e));
+      }
     } finally {
       this.polling = false;
     }

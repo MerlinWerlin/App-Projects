@@ -122,17 +122,55 @@ describe('CastSession', () => {
     expect(timer.intervals.size).toBe(0);
   });
 
-  it('a photo goes straight to playing and is not polled', async () => {
+  it('a photo goes straight to playing, unconfirmed, and is polled only to confirm it', async () => {
     const { avt, timer, s } = setup();
     await s.load(PHOTO);
     expect(s.snapshot.state).toBe('playing');
+    expect(s.snapshot.confirmed).toBe(false);
     expect(s.snapshot.durationSec).toBeNull();
-    expect(timer.intervals.size).toBe(0);
+    expect(timer.intervals.size).toBe(1);
     await expect(s.pause()).rejects.toMatchObject({ code: 'unsupported' });
     await expect(s.seek(5)).rejects.toMatchObject({ code: 'unsupported' });
     await s.stop();
     expect(avt.calls).toEqual(['setUri', 'play', 'stop']);
     expect(s.snapshot.state).toBe('stopped');
+    expect(timer.intervals.size).toBe(0);
+  });
+
+  it('a photo is confirmed when the TV reports PLAYING, then polling stops', async () => {
+    const { avt, timer, s } = setup();
+    await s.load(PHOTO);
+    avt.state = 'PLAYING';
+    await timer.tick();
+    expect(s.snapshot).toMatchObject({ state: 'playing', confirmed: true });
+    expect(timer.intervals.size).toBe(0);
+  });
+
+  it('a photo the TV never confirms stays on screen, unconfirmed, and polling stops after the load timeout', async () => {
+    const { avt, timer, s } = setup();
+    await s.load(PHOTO);
+    avt.state = 'NO_MEDIA_PRESENT';
+    for (let i = 0; i < 6; i++) await timer.tick();
+    expect(s.snapshot).toMatchObject({ state: 'playing', confirmed: false, error: null });
+    expect(timer.intervals.size).toBe(0);
+  });
+
+  it('failed polls never turn a photo into an error', async () => {
+    const { avt, timer, s } = setup();
+    await s.load(PHOTO);
+    avt.fail.info = driverError('network', 'core.driver.common.unreachable');
+    for (let i = 0; i < 4; i++) await timer.tick();
+    expect(s.snapshot).toMatchObject({ state: 'playing', confirmed: false });
+    expect(timer.intervals.size).toBe(0);
+  });
+
+  it('a video is confirmed once the TV reports PLAYING', async () => {
+    const { avt, timer, s } = setup();
+    await s.load(VIDEO);
+    expect(s.snapshot.confirmed).toBe(false);
+    avt.state = 'PLAYING';
+    await timer.tick();
+    expect(s.snapshot).toMatchObject({ state: 'playing', confirmed: true });
   });
 
   it('a failed load lands in error with the translated message', async () => {
@@ -221,8 +259,8 @@ describe('CastSession', () => {
     const { avt, timer, s } = setup();
     await s.load(VIDEO);
     await s.load(PHOTO);
-    expect(s.snapshot).toMatchObject({ state: 'playing', media: PHOTO });
-    expect(timer.intervals.size).toBe(0);
+    expect(s.snapshot).toMatchObject({ state: 'playing', media: PHOTO, confirmed: false });
+    expect(timer.intervals.size).toBe(1);
     expect(avt.calls).toEqual(['setUri', 'play', 'setUri', 'play']);
   });
 

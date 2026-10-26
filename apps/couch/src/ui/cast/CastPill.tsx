@@ -12,14 +12,16 @@ import { IconButton } from './IconButton';
  * "Casting: <title>" with a stop button, shown on the remote while a cast is on (cast-1024). The
  * remote's Play/Pause controls the cast meanwhile (useCastRouting in src/state/cast.tsx).
  */
-export function CastPill({ title, onStop }: { title: string; onStop: () => void }) {
+export function CastPill({ title, onStop, confirmed = true }: { title: string; onStop: () => void; confirmed?: boolean }) {
   const p = useDesign();
   const t = useT();
+  // Owner brief 25 Oct 2026: never say "Casting" before the TV confirms it is showing the item.
+  const text = confirmed ? t('ui.cast.pill', { title }) : t('ui.cast.pillSent', { title });
   return (
     <View style={[styles.pill, continuous, { backgroundColor: p.tintedFill }]} accessibilityLiveRegion="polite">
-      <View style={styles.copy} accessible accessibilityLabel={t('ui.cast.pill', { title })} accessibilityHint={t('ui.cast.pillHint')}>
+      <View style={styles.copy} accessible accessibilityLabel={text} accessibilityHint={t('ui.cast.pillHint')}>
         <Text scaleRole="label" style={[textStyle('subheadline'), { color: p.tintedLabel }]}>
-          {t('ui.cast.pill', { title })}
+          {text}
         </Text>
       </View>
       <IconButton
@@ -39,7 +41,7 @@ export function RemoteCastPill() {
   if (!routing.active || routing.title === null) return null;
   return (
     <RemoteDesignProvider theme={theme}>
-      <CastPill title={routing.title} onStop={routing.stop} />
+      <CastPill title={routing.title} onStop={routing.stop} confirmed={routing.confirmed} />
     </RemoteDesignProvider>
   );
 }

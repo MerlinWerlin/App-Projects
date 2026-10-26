@@ -1,12 +1,13 @@
 import { useCallback, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
-import { isCastActive, playAction } from '../../src/core/cast/castController';
+import { castUnconfirmed, isCastActive, playAction } from '../../src/core/cast/castController';
 import { useT } from '../../src/i18n/react';
 import { pickMediaDetailed } from '../../src/native/mediaPicker';
 import { useCast } from '../../src/state/cast';
 import { list, space, textStyle } from '../../src/theme/design';
 import AirPlayButton from '../../src/ui/cast/AirPlayButton';
+import { castDeliveryText, castNoticeText } from '../../src/ui/cast/castNotice';
 import { QueueList } from '../../src/ui/cast/QueueList';
 import { SlideshowControls } from '../../src/ui/cast/SlideshowControls';
 import { TargetPicker, useTargetName } from '../../src/ui/cast/TargetPicker';
@@ -22,7 +23,10 @@ import { Card, LargeTitleHeader, PillButton, useDesign } from '../../src/ui/v2';
  * Cast tab (cast-1024, T91): pick photos and videos on the phone and show them on the TV. Target
  * chips, the picker, the queue, transport (previous / play-pause / next, -10 s / +10 s for videos,
  * stop), slideshow + loop, and the AirPlay / Screen Mirroring shortcut (T92). Every part is free.
- * In Expo Go there is no file server, so the tab runs in demo mode with the demo TV and says so.
+ * In Expo Go there is no file server, so the tab runs in demo mode with the demo TV and says so. With a
+ * real TV connected it always says why nothing reaches the TV (D145-2: no receiver found, or no file server).
+ * After a send to a real TV it says "sent, waiting for the TV" until the TV confirms it is showing the
+ * item, with what to check and where the request went (owner brief 25 Oct 2026, TestFlight 1.0.1).
  * Not tested on a real TV.
  */
 export default function CastScreen() {
@@ -42,6 +46,8 @@ export default function CastScreen() {
   const last = queue.items.length - 1;
 
   const error = snap.error ?? (snap.cast.state === 'error' ? snap.cast.error : null);
+  const unconfirmed = !error && castUnconfirmed(snap);
+  const delivery = snap.delivery && (unconfirmed || error) ? castDeliveryText(snap.delivery, t) : null;
   useAnnounce(error);
   useAnnounce(notice);
 
@@ -71,6 +77,7 @@ export default function CastScreen() {
 
   let status: string | null = null;
   if (error) status = error;
+  else if (unconfirmed && current) status = t('ui.cast.sent', { name: targetName ?? '', title: current.title });
   else if (snap.cast.state === 'loading') status = t('app.cast.status.loading');
   else if (active && snap.cast.state === 'playing') status = t('app.cast.status.playing', { title: current?.title ?? '', name: targetName ?? '' });
   else if (active && snap.cast.state === 'paused') status = t('app.cast.status.paused', { title: current?.title ?? '' });
@@ -91,12 +98,17 @@ export default function CastScreen() {
           onSearch={() => void cast.refresh()}
         />
 
-        {!snap.serverAvailable ? (
-          <Text style={[textStyle('footnote'), styles.note, { color: p.secondaryLabel }]}>{t('app.cast.expoGoNote')}</Text>
-        ) : snap.demo ? (
+        {/* D145-2: say why casting is not reaching a real TV; never fall back to the demo TV silently. */}
+        {snap.notice?.kind === 'demo' ? (
           <View style={styles.note}>
             <DemoNote color={p.secondaryLabel} />
           </View>
+        ) : snap.notice?.kind === 'expoGo' || (!snap.serverAvailable && !snap.notice) ? (
+          <Text style={[textStyle('footnote'), styles.note, { color: p.secondaryLabel }]}>{t('app.cast.expoGoNote')}</Text>
+        ) : snap.notice ? (
+          <Text style={[textStyle('footnote'), styles.note, { color: p.label }]} accessibilityLiveRegion="polite">
+            {castNoticeText(snap.notice, t)}
+          </Text>
         ) : null}
 
         <PillButton
@@ -126,6 +138,14 @@ export default function CastScreen() {
                 accessibilityLiveRegion="polite"
               >
                 {status}
+              </Text>
+            ) : null}
+            {unconfirmed ? (
+              <Text style={[textStyle('footnote'), styles.note, { color: p.secondaryLabel }]}>{t('ui.cast.unconfirmedHelp')}</Text>
+            ) : null}
+            {delivery ? (
+              <Text style={[textStyle('caption1'), styles.note, { color: p.secondaryLabel }]} selectable>
+                {delivery}
               </Text>
             ) : null}
             <Card>
@@ -165,6 +185,8 @@ export default function CastScreen() {
                 onShow={(i) => void cast.start(i)}
                 onMove={(from, to) => cast.move(from, to)}
                 onRemove={(id) => cast.remove(id)}
+                confirmed={!unconfirmed}
+                failed={!!error}
               />
             </View>
             <SlideshowControls

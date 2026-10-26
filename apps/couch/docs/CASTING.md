@@ -102,3 +102,46 @@ Status: **UI and wiring only, tested with fakes. Not tested on a real TV or phon
 - Remote screen: while a cast is on, Play/Pause controls the cast (`useCastRouting`) and a
   "Casting: <title>" pill with a stop button shows under the TV header.
 - Free: nothing here imports `src/plus` (test-enforced in tests/cast-tab.test.ts).
+
+## Google Cast (T106)
+
+Status: **pure TypeScript route, tested against reconstructed fixtures only. NEVER tested on a real
+TV. The native TLS socket it needs is uncompiled and only arrives with the next native build.**
+
+Why: the owner's TV (a TCL C7K, Google TV) has Chromecast built in but no DLNA renderer the probe
+finds, and it is not a Roku, so nothing he cast reached it. Google TV / Android TV sets with
+Chromecast built in accept casts over the Cast protocol (CASTV2), so every saved TV with platform
+`androidtv` on a literal RFC 1918 address now also becomes a cast target.
+
+| File | What it does |
+| --- | --- |
+| `googleCast/framing.ts` | Hand-written protobuf for `CastMessage` (protocol_version, source_id, destination_id, namespace, payload_type STRING, payload_utf8; unknown fields and binary payloads skipped), 4-byte big-endian length prefix, and a stream decoder that handles split and coalesced chunks and refuses frames over 64 KiB. |
+| `googleCast/channel.ts` | `CastChannel.open(tcp, host, timer)`: `TcpFactory(host, 8009, { tls: true })` with a connect timeout, CONNECT sender-0 -> receiver-0, PING every 5 s and PONG to the device's PING, gives up after 15 s of silence, requestId-matched requests and generic waits with timeouts, close handling. RFC 1918 hosts only. |
+| `googleCast/googleCastDriver.ts` | `createGoogleCast(target, tcp, timer?)`, a CastDriver: receiver LAUNCH of the Default Media Receiver (`CC1AD845`), wait for a RECEIVER_STATUS listing its transportId + sessionId, CONNECT to it, media LOAD (`contentId` = the phone's file URL, `contentType`, `streamType: BUFFERED`, metadata type 0 generic or 4 photo, title, autoplay). MEDIA_STATUS PLAYING / PAUSED -> playing / paused with `confirmed: true` (the Cast tab only says it is on the TV then); BUFFERING before that -> loading, unconfirmed; IDLE + FINISHED -> stopped; IDLE + ERROR, LOAD_FAILED, LOAD_CANCELLED, INVALID_REQUEST -> error. Play / pause / seek by mediaSessionId; stop = media STOP, receiver STOP of the session, then the connection closes. GET_STATUS every second while a video loads or plays. The receiver app closing (or another app taking over) stops the cast; a dropped connection is an error. |
+| `targets.ts` | `CastTransportKind` gains `'googlecast'`, `CastEnv` gains `tcp?: TcpFactory \| null`. With `env.tcp`, each LAN `androidtv` TV gets `gcast:<host>` (name = TV name, photo + video, tvId), listed before that TV's DLNA renderer when it has one (both are kept). No network at search time. `createCastDriver` builds it, and throws `core.driver.cast.needsFullApp` without `env.tcp`. `googleCastCandidates(tvs)` lists the TVs that could use it, so the screen can explain that casting to them needs the next build when `tcp` is null. |
+| `src/native/lanTls.ts` | `loadLanTls(): TcpFactory \| null` over the lan-wss module's new TLS socket, guarded like `lanFetch.ts` (null when the module or its `tlsConnect` is missing: Expo Go, web, tests, builds made before T106). TLS only, refuses non-RFC 1918 hosts before any native call, bytes as base64 (`src/core/crypto/bytes.ts`). `src/state/cast.tsx` passes it as `env.tcp`. |
+| `modules/lan-wss` | `tlsConnect(id, host, port, timeoutMs)`, `tlsWrite(id, base64)`, `tlsClose(id)`, events `onTlsData` / `onTlsClose`. iOS: `NWConnection` with TLS whose verify block accepts the device's self-signed certificate only when the host is RFC 1918 (`ios/LanTls.swift`). Android: `SSLSocket` from an `SSLContext` with an accept-the-presented-chain trust manager built only for RFC 1918 hosts, read loop on a background thread. See `modules/lan-wss/README.md`. |
+
+New catalogue keys (all 11 languages, machine translation awaiting review):
+`core.driver.cast.gcast.connectFailed`, `.launchFailed`, `.loadFailed`, `.lost`. User-facing text
+says "the TV", never a brand.
+
+Tests: `src/core/cast/googleCast/*.test.ts` (framing, channel, driver flows against the scripted
+receiver in `src/core/cast/__tests__/fakeCastDevice.ts`), the Google Cast case in
+`driverContract.test.ts` and `targets.test.ts`, `tests/lan-tls.test.ts`, and text checks of the
+native sources in `tests/lan-wss-sources.test.ts`. No real network, fake timers only.
+
+What this is not:
+
+- No Google Cast SDK and no new npm dependency: the protocol is spoken directly.
+- Not verified on hardware. The message shapes come from public descriptions of CASTV2 and the
+  Default Media Receiver, rebuilt as fixtures. Expect adjustments after the first test on the
+  owner's TV (for example: whether the TV fetches the phone's `http://` file URL, whether photos
+  report PLAYING, buffering behaviour, the device's TLS settings).
+- Needs the next native build: the TLS socket in `modules/lan-wss` has not been compiled for iOS
+  or Android. Until then `env.tcp` is null and no Google Cast target appears.
+- Device authentication (the `deviceauth` namespace some senders use) is not implemented; public
+  descriptions say the Default Media Receiver does not require it, which is unverified.
+
+## Google Cast switch (oversight D147-1)
+`src/core/cast/googleCast/switch.ts` holds one line, `export const GOOGLE_CAST_ON = true;`. Set it to `false` when the Google Cast native code (modules/lan-wss/ios/LanTls.swift, the TLS part of LanWssModule.kt) blocks a build or misbehaves: the app stops loading the TLS socket, so Cast uses DLNA / AirPlay / demo only, and on iOS LanWss.podspec reads the same line and compiles a stub `LanTlsClient` instead (`COUCH_NO_GOOGLE_CAST`). Android only gets the runtime gate. tests/google-cast-switch.test.ts keeps the line's exact form and the gating in place.

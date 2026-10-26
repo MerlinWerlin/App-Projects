@@ -12,16 +12,16 @@ const code = (p: string) => read(p).replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/
 
 describe('night-1023: Plus actions never fail silently', () => {
   const src = code('app/plus.tsx');
-  it('every Buy / Restore / tip result also shows as a toast', () => {
+  it('every Buy / Restore result also shows as a toast', () => {
     expect(src).toContain("import { showToast } from '../src/ui/Toast';");
     expect(src).toContain("showToast(note, ok ? 'success' : 'warning')");
-    // Buy/restore and tip: success path and the catch path both report.
-    expect(src.match(/report\(note, r\.ok\)/g)?.length).toBe(2);
-    expect(src.match(/report\(t\('app\.plus\.failed'\), false\)/g)?.length).toBe(2);
+    // Buy/restore: success path and the catch path both report (the tip jar was removed 25 Oct 2026).
+    expect(src.match(/report\(note, r\.ok\)/g)?.length).toBe(1);
+    expect(src.match(/report\(t\('app\.plus\.failed'\), false\)/g)?.length).toBe(1);
   });
   it('keeps the inline lines too', () => {
     expect(src).toContain('setBuyNote(note)');
-    expect(src).toContain('setTipNote(note)');
+    expect(src).not.toContain('setTipNote');
   });
 });
 

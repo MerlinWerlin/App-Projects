@@ -18,7 +18,6 @@ import {
   type PurchaseProvider,
   type PurchaseResult,
 } from './purchases';
-import { TIP_TIERS, tipJarCopy, tipTier } from './tipJar';
 
 describe('PlusFeature', () => {
   it('is exactly the extras Plus may gate', () => {
@@ -98,7 +97,7 @@ describe('StubPurchaseProvider', () => {
     const p = new StubPurchaseProvider();
     expect(p.available).toBe(false);
     expect(await p.plusPrice()).toBeNull();
-    for (const r of [await p.buyPlus(), await p.restore(), await p.tip('tip.small')]) {
+    for (const r of [await p.buyPlus(), await p.restore()]) {
       expect(r).toEqual({ ok: false, reason: UNAVAILABLE_REASON, message: unavailableMessage() });
     }
     expect(UNAVAILABLE_REASON).toBe('not available in this build');
@@ -119,7 +118,6 @@ describe('StubPurchaseProvider', () => {
       plusPrice: async () => '$4.99',
       buyPlus: async () => ok,
       restore: async () => ok,
-      tip: async () => ({ ok: true, kind: 'tip' }),
     };
     const s = new EntitlementStore(new MemoryKv());
     await applyPurchase(s, fake, 'restore');
@@ -133,13 +131,9 @@ describe('StubPurchaseProvider', () => {
   });
 });
 
-describe('tip jar', () => {
-  it('is data only with unique ids and positive prices', () => {
-    expect(TIP_TIERS.length).toBeGreaterThan(0);
-    expect(new Set(TIP_TIERS.map((t) => t.id)).size).toBe(TIP_TIERS.length);
-    for (const t of TIP_TIERS) expect(t.usd).toBeGreaterThan(0);
-    expect(tipTier('tip.small')?.label).toBe('Small tip');
-    expect(tipTier('nope')).toBeUndefined();
-    expect(tipJarCopy()).toContain('unlock nothing');
+describe('tip jar (removed by the owner, 25 Oct 2026)', () => {
+  it('no longer exists: no tip() on the purchase seam and no tip copy', () => {
+    const p = new StubPurchaseProvider() as unknown as Record<string, unknown>;
+    expect(p.tip).toBeUndefined();
   });
 });

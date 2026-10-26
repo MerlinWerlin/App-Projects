@@ -225,7 +225,7 @@
       "title": "Phone Wi-Fi IP via expo-network getIpAddressAsync for the subnet probe; Wake button using sendWol when UDP + MAC available",
       "accept": "probe runs automatically when IP known; tests with fakes",
       "commit": "4c37e4c",
-      "note": "expo-network phone IP (guarded) → automatic subnet probe; Wake button when MAC + UDP (dev build)."
+      "note": "expo-network phone IP (guarded) \u2192 automatic subnet probe; Wake button when MAC + UDP (dev build)."
     },
     {
       "id": "T22",
@@ -388,7 +388,7 @@
         "T16",
         "T32"
       ],
-      "title": "Wire Vizio, Philips and Fire TV (beta) into add-TV: PIN pair steps calling startPairing/finishPairing, driverFor via transport.lanFetch (null → coming soon), tokens saved",
+      "title": "Wire Vizio, Philips and Fire TV (beta) into add-TV: PIN pair steps calling startPairing/finishPairing, driverFor via transport.lanFetch (null \u2192 coming soon), tokens saved",
       "accept": "addTv + factory tests with fake lanFetch",
       "note": "Freeze D6-1 lifted in run 35: the owner tested in Expo Go on 17 Oct (fb-1017b).  Held again by oversight D65-2 (run 36): no breadth until the owner retests H1-H3.",
       "hold": "D65-2"
@@ -908,7 +908,7 @@
         "M2"
       ],
       "priority": 1,
-      "note": "MARKET.md 'What users hate' #5: drops when the phone sleeps/switches apps — top functional complaint; cheap (reconnect.ts exists).",
+      "note": "MARKET.md 'What users hate' #5: drops when the phone sleeps/switches apps \u2014 top functional complaint; cheap (reconnect.ts exists).",
       "commit": "f1b619e"
     },
     {
@@ -1112,7 +1112,7 @@
     },
     {
       "id": "T87",
-      "title": "fb-1022e: Stan icon vanished — store icon lookups queued one at a time (Apple ~20/min limit), favourites first, kept on the phone 30 days, not subject to the 8 s TV-icon timeout; TESTFLIGHT_COUCH.cmd",
+      "title": "fb-1022e: Stan icon vanished \u2014 store icon lookups queued one at a time (Apple ~20/min limit), favourites first, kept on the phone 30 days, not subject to the 8 s TV-icon timeout; TESTFLIGHT_COUCH.cmd",
       "status": "done",
       "done": "2026-10-22 live session"
     },
@@ -1232,14 +1232,14 @@
     {
       "id": "T95",
       "title": "D133-1 native 1.0.1 build triage: when App-Projects shows the Couch 1.0.1 ship result, attribute each error to media-server / route-picker / expo-image-picker / other, fix the smallest piece or guard a failing module out of the native build",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "oversight",
         "cast-1024"
       ],
       "priority": 1,
-      "note": "run 79: still waiting - ship result not readable; Expo free-plan iOS builds used up until 1 Nov (App-Projects 65b0733), so a refused 1.0.1 build would retry after 1 Nov. run 71: waiting, no 1.0.1 ship run yet"
+      "note": "run 79: still waiting - ship result not readable; Expo free-plan iOS builds used up until 1 Nov (App-Projects 65b0733), so a refused 1.0.1 build would retry after 1 Nov. run 71: waiting, no 1.0.1 ship run yet Run 83: 1.0.1 reached TestFlight (owner tested it 25 Oct), so every native piece compiled; nothing to guard out. Real-TV cast failure handled by T102 (D145-2)."
     },
     {
       "id": "T96",
@@ -1299,8 +1299,115 @@
         "plus"
       ],
       "priority": 3,
-      "hold": "G-price-1018",
-      "note": "Needs the owner's Couch Plus price and a native build (Expo iOS quota resets 1 Nov; D142-2: bundle the expo-iap pin with the next native build, after 1.0.1 lands per D133-1)."
+      "hold": "native-build",
+      "note": "Price set by the owner 25 Oct 2026: A$3.99 one-time non-consumable (G-price-1018 cleared, D145-1). Still needs a native build with StoreKit/expo-iap (Expo iOS quota resets 1 Nov; bundle the expo-iap pin with the next native build, after 1.0.1 lands per D133-1). Owner 25 Oct: Family Sharing ON for the Couch Plus IAP; no tip jar."
+    },
+    {
+      "id": "T101",
+      "title": "D145-1: every 1.0 theme free to pick and keep (sync App-Projects PR #94, owner) and Couch Plus price A$3.99 one-time in docs, listing and prototype copy",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "D145-1"
+      ],
+      "priority": 1,
+      "note": "Synced owner PR #94 (0810826) via git apply -3, no second version written; price copy in PLAN, MARKET, ROADMAP, RELEASE_CHECKLIST, store/listing.json, prototype. JS-only, ships as an update."
+    },
+    {
+      "id": "T102",
+      "title": "D145-2: Cast tab says why it cannot cast to a connected real TV (no cast receiver found, with the probed ports and whether the network search ran; or phone media server unavailable, using the demo TV); never falls back to the demo TV silently",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight",
+        "D145-2",
+        "cast-1024"
+      ],
+      "priority": 1,
+      "note": "CastController.notice (src/core/cast/castController.ts), src/ui/cast/castNotice.ts, 4 ui.cast.* keys in 11 catalogues, 8 tests in tests/cast-tab.test.ts. Not tried on a real TV. Real fix depends on the owner's TV make (TRIAL.md) and the multicast entitlement."
+    },
+    {
+      "id": "T103",
+      "title": "owner-1025 brief item 3: cast queue says 'sent, waiting for the TV' until a real TV confirms it is showing the item (photos are now polled for confirmation), with what to check and where the request went (TV address + phone file address); TRIAL.md questions",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1025",
+        "cast-1024"
+      ],
+      "priority": 1,
+      "note": "Investigation: a DLNA photo went straight to 'playing' after SetAVTransportURI + Play and was never polled, and Roku has no playback query, so the Cast tab and the Casting pill said 'On <TV>' even when the TV never fetched the file from the phone - matching the owner's TestFlight 1.0.1 result. CastSnapshot.confirmed (session.ts), CastController.delivery + castUnconfirmed + urlHostPort, castDeliveryText, 4 ui.cast keys in 11 catalogues, 11 new/updated tests. JS-only, ships over the air. Not tried on a real TV."
+    },
+    {
+      "id": "T104",
+      "title": "owner-1025 follow-up (next native build): media-server reports whether the TV fetched each served file (request count per id, optional native function guarded in JS) so the Cast tab can say 'the TV never asked this phone for the file' vs 'the TV fetched it but didn't show it'",
+      "status": "todo",
+      "deps": [
+        "T103"
+      ],
+      "tags": [
+        "owner-1025",
+        "cast-1024",
+        "native-build"
+      ],
+      "hold": "native-build",
+      "priority": 2,
+      "note": "Native change (modules/media-server iOS + Android) with runtimeVersion appVersion: bundle it with the next native build (Expo free iOS builds reset 1 Nov) and keep the JS side optional so OTA updates to 1.0.1 never call a missing function."
+    },
+    {
+      "id": "T105",
+      "title": "owner-1025b: honest cast status - a real TV gets 25 s to confirm it shows the item, else 'Not on <TV>' error, slideshow stops; queue row/pill say 'Sent, waiting' until confirmed; Roku confirms via ECP /query/media-player",
+      "status": "done",
+      "commit": "0f5af33",
+      "deps": [
+        "T103"
+      ],
+      "tags": [
+        "owner-1025b",
+        "cast-1024"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "T106",
+      "title": "owner-1025b: Google Cast route for Google TVs (pure-TS CASTV2 to the saved TV's :8009, Default Media Receiver; lan-wss native TLS socket; androidtv TVs get a gcast target first; 'needs the next update' notice without the socket)",
+      "status": "done",
+      "commit": "239bb32",
+      "deps": [
+        "T89"
+      ],
+      "tags": [
+        "owner-1025b",
+        "cast-1024",
+        "native-build"
+      ],
+      "priority": 1,
+      "note": "Native part ships in TestFlight 1.0.2 (app.json bumped). Never tried on a real TV; Swift/Kotlin uncompiled - check sec_protocol_options_set_verify_block closure, AsyncFunction Int arg, NWConnection .waiting handling, Android SSLSocket handshake at the next native build."
+    },
+    {
+      "id": "T107",
+      "title": "owner-1025b: remove the tip jar (Plus screen, src/plus/tipJar.ts, tip() on the purchase seam, copy in 11 catalogues, PLAN/MARKET)",
+      "status": "done",
+      "commit": "0f5af33",
+      "deps": [],
+      "tags": [
+        "owner-1025b"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "T108",
+      "title": "D147-1: Google Cast behind one switch (src/core/cast/googleCast/switch.ts gates loadLanTls; LanWss.podspec reads it and compiles a LanTls.swift stub when off) + tests/google-cast-switch.test.ts",
+      "status": "done",
+      "commit": "f4c3f4b",
+      "deps": [
+        "T106"
+      ],
+      "tags": [
+        "oversight-d147"
+      ],
+      "priority": 1
     }
   ],
   "codex_delegable": [
@@ -1315,7 +1422,7 @@
     "Final name",
     {
       "id": "G-price-1018",
-      "text": "Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (docs/MARKET.md Pricing proposal) — owner decides"
+      "text": "Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (docs/MARKET.md Pricing proposal) \u2014 owner decides"
     }
   ]
 }

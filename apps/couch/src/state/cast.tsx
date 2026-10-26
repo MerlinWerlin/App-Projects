@@ -1,9 +1,11 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, useSyncExternalStore, type ReactNode } from 'react';
-import { CastController, isCastActive, type CastControllerSnapshot } from '../core/cast/castController';
+import { CastController, castUnconfirmed, isCastActive, type CastControllerSnapshot } from '../core/cast/castController';
 import { createMockCast, MOCK_CAST_TARGET } from '../core/cast/mockCast';
 import { CastQueue } from '../core/cast/queue';
 import { SYSTEM_TIMER } from '../core/cast/session';
 import { createCastDriver, findCastTargets, type CastEnv } from '../core/cast/targets';
+import { GOOGLE_CAST_ON } from '../core/cast/googleCast/switch';
+import { loadLanTls } from '../native/lanTls';
 import { loadMediaServer } from '../native/mediaServer';
 import { loadUdpFactory } from '../native/udp';
 import { useSession } from './session';
@@ -19,7 +21,11 @@ import { fetchAdapter } from './tvs';
 const Ctx = createContext<CastController | null>(null);
 
 function createController(): CastController {
-  const env: CastEnv = { fetch: fetchAdapter, udp: loadUdpFactory(), timer: SYSTEM_TIMER };
+  const udp = loadUdpFactory();
+  // tcp: the lan-wss TLS socket for Google Cast (T106); null in Expo Go, builds without it and when
+  // the Google Cast switch is off (src/core/cast/googleCast/switch.ts, oversight D147-1).
+  const tcp = GOOGLE_CAST_ON ? loadLanTls() : null;
+  const env: CastEnv = { fetch: fetchAdapter, udp, tcp, timer: SYSTEM_TIMER };
   return new CastController({
     findTargets: (tvs) => findCastTargets(env, tvs),
     createDriver: (target) => createCastDriver(target, env),
@@ -27,6 +33,9 @@ function createController(): CastController {
     createMock: (target) => createMockCast(target, SYSTEM_TIMER),
     server: loadMediaServer(),
     createQueue: (play) => new CastQueue({ play, timer: SYSTEM_TIMER }),
+    canSearch: !!udp,
+    canGoogleCast: !!tcp,
+    timer: SYSTEM_TIMER,
   });
 }
 
@@ -63,6 +72,8 @@ export function useCast(): { cast: CastController; snap: CastControllerSnapshot 
 export function useCastRouting(): {
   active: boolean;
   title: string | null;
+  /** False while a real TV has not confirmed it is showing the item (the pill then says "Sent"). */
+  confirmed: boolean;
   handlesKey: (key: string) => boolean;
   togglePlay: () => void;
   stop: () => void;
@@ -77,5 +88,6 @@ export function useCastRouting(): {
   const stop = useCallback(() => {
     void cast.stop();
   }, [cast]);
-  return { active, title, handlesKey, togglePlay, stop };
+  const confirmed = !castUnconfirmed(snap);
+  return { active, title, confirmed, handlesKey, togglePlay, stop };
 }

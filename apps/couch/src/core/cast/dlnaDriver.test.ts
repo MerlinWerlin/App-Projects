@@ -71,12 +71,16 @@ describe('createDlnaDriver', () => {
     d.dispose();
   });
 
-  it('a photo is not polled', async () => {
+  it('a photo is polled only until the TV confirms it', async () => {
     const { tv, timer, d } = setup();
+    tv.state = 'PLAYING';
     await d.load(PHOTO);
+    expect(d.snapshot()).toMatchObject({ state: 'playing', confirmed: false });
     await timer.advance(5000);
-    expect(tv.actions).toEqual(['SetAVTransportURI', 'Play']);
-    expect(d.snapshot().state).toBe('playing');
+    expect(tv.actions.slice(0, 3)).toEqual(['SetAVTransportURI', 'Play', 'GetTransportInfo']);
+    expect(tv.actions.filter((a) => a === 'GetTransportInfo').length).toBe(1);
+    expect(d.snapshot()).toMatchObject({ state: 'playing', confirmed: true });
+    expect(timer.active).toBe(0);
     d.dispose();
   });
 

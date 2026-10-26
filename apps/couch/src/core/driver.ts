@@ -29,6 +29,8 @@ export interface TcpLike {
   write(data: Uint8Array): void;
   close(): void;
   onData(cb: (data: Uint8Array) => void): void;
+  /** Called once when the socket closes (by either side). Optional: adapters without it never report. */
+  onClose?(cb: (err?: Error) => void): void;
 }
 export type TcpFactory = (host: string, port: number, opts?: { tls?: boolean }) => Promise<TcpLike>;
 

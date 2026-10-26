@@ -1,5 +1,5 @@
 /**
- * Purchase seam for Couch Plus and the tip jar. This build ships only StubPurchaseProvider: it never
+ * Purchase seam for Couch Plus (no tip jar: the owner removed it on 25 Oct 2026). This build ships only StubPurchaseProvider: it never
  * charges, never talks to a store and always reports that purchases are unavailable. A real provider
  * (StoreKit 2 / Play Billing, or RevenueCat) is an owner decision; no store package is installed.
  */
@@ -13,7 +13,7 @@ export function unavailableMessage(): string {
 }
 
 export type PurchaseResult =
-  | { ok: true; kind: 'plus' | 'tip' }
+  | { ok: true; kind: 'plus' }
   | { ok: false; reason: string; message: string };
 
 export interface PurchaseProvider {
@@ -23,7 +23,6 @@ export interface PurchaseProvider {
   plusPrice(): Promise<string | null>;
   buyPlus(): Promise<PurchaseResult>;
   restore(): Promise<PurchaseResult>;
-  tip(tierId: string): Promise<PurchaseResult>;
 }
 
 /** Never charges. Every call resolves to "not available in this build". */
@@ -39,9 +38,6 @@ export class StubPurchaseProvider implements PurchaseProvider {
     return this.unavailable();
   }
   async restore(): Promise<PurchaseResult> {
-    return this.unavailable();
-  }
-  async tip(_tierId: string): Promise<PurchaseResult> {
     return this.unavailable();
   }
   private unavailable(): PurchaseResult {

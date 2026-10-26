@@ -6,8 +6,12 @@
  * wherever a probe or the search finds one. createCastDriver() builds the driver for a target; DLNA
  * renderers found by findCastTargets are remembered by target id so the screen only needs the
  * target.
+ *
+ * Google Cast (T106): every saved Android TV / Google TV on the LAN also gets a `gcast:<host>`
+ * target, listed before its DLNA renderer, when a TLS TcpFactory is available (`env.tcp`, from the
+ * lan-wss native module; absent in Expo Go and older builds). No network probe at search time.
  */
-import type { FetchLike, UdpLike } from '../driver';
+import type { FetchLike, TcpFactory, UdpLike } from '../driver';
 import { driverError } from '../drivers/errors';
 import { isRfc1918Host } from '../lanHost';
 import type { Tv } from '../types';
@@ -15,6 +19,7 @@ import type { CastRenderer } from './description';
 import { discoverRenderers } from './discover';
 import type { CastDriver, CastTarget } from './driver';
 import { createDlnaDriver } from './dlnaDriver';
+import { createGoogleCast } from './googleCast/googleCastDriver';
 import { MOCK_CAST_TARGET, createMockCast } from './mockCast';
 import { probeRenderer, timerSleep } from './probe';
 import { createRokuCast } from './rokuCast';
@@ -24,6 +29,8 @@ export interface CastEnv {
   fetch: FetchLike;
   udp?: (() => Promise<UdpLike>) | null;
   timer?: CastTimer;
+  /** TLS-capable TCP sockets (Google Cast, T106). null / absent: no Google Cast targets. */
+  tcp?: TcpFactory | null;
 }
 
 const renderers = new Map<string, CastRenderer>();
@@ -61,6 +68,26 @@ export function rokuTarget(tv: Tv): CastTarget {
   };
 }
 
+/**
+ * Saved TVs that could take a Google Cast (Chromecast built-in) cast: Android TV / Google TV on a
+ * literal RFC 1918 address. Lets the screen explain that casting to them needs the next app build
+ * when `env.tcp` is missing.
+ */
+export function googleCastCandidates(tvs: readonly Tv[]): Tv[] {
+  return tvs.filter((tv) => tv.platform === 'androidtv' && isRfc1918Host(tv.host));
+}
+
+export function googleCastTarget(tv: Tv): CastTarget {
+  return {
+    id: `gcast:${tv.host}`,
+    name: tv.name,
+    kind: 'googlecast',
+    host: tv.host,
+    accepts: { photo: true, video: true },
+    tvId: tv.id,
+  };
+}
+
 export async function findCastTargets(env: CastEnv, tvs: readonly Tv[]): Promise<CastTarget[]> {
   const timer = env.timer ?? SYSTEM_TIMER;
   const out: CastTarget[] = [];
@@ -90,6 +117,7 @@ export async function findCastTargets(env: CastEnv, tvs: readonly Tv[]): Promise
     if (!tvByHost.has(tv.host)) tvByHost.set(tv.host, tv);
     else continue;
     if (tv.platform === 'roku') out.push(rokuTarget(tv));
+    if (tv.platform === 'androidtv' && env.tcp) out.push(googleCastTarget(tv));
     probes.push(probeRenderer(tv.host, { fetch: env.fetch, udp: env.udp ?? null, timer }).then((r) => ({ tv, r })));
   }
 
@@ -109,7 +137,8 @@ export async function findCastTargets(env: CastEnv, tvs: readonly Tv[]): Promise
 
 /**
  * The driver for `target`. A DLNA target needs its renderer: pass it, or let findCastTargets have
- * found it. Throws a translated DriverError ('unsupported') when a DLNA renderer is unknown.
+ * found it. Throws a translated DriverError ('unsupported') when a DLNA renderer is unknown, or
+ * for a Google Cast target when there is no TLS TcpFactory (`env.tcp`).
  */
 export function createCastDriver(target: CastTarget, env: CastEnv, renderer?: CastRenderer): CastDriver {
   switch (target.kind) {
@@ -117,6 +146,9 @@ export function createCastDriver(target: CastTarget, env: CastEnv, renderer?: Ca
       return createMockCast(target, env.timer);
     case 'roku':
       return createRokuCast(target, env.fetch, env.timer);
+    case 'googlecast':
+      if (!env.tcp) throw driverError('unsupported', 'core.driver.cast.needsFullApp');
+      return createGoogleCast(target, env.tcp, env.timer);
     case 'dlna': {
       const r = renderer ?? renderers.get(target.id);
       if (!r) throw driverError('unsupported', 'core.driver.cast.noRenderer');

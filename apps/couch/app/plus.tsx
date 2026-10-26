@@ -6,23 +6,22 @@ import { PLUS_FEATURES, PLUS_FEATURE_COPY, plusPromise } from '../src/plus/entit
 import { applyPurchase, type PurchaseResult } from '../src/plus/purchases';
 import { plusForSale } from '../src/core/forSale';
 import { plusStore, purchaseProvider, usePlus } from '../src/plus/state';
-import { TIP_TIERS, tipJarCopy } from '../src/plus/tipJar';
 import { list, space, textStyle } from '../src/theme/design';
 import { FreePromise } from '../src/ui/Screen';
 import { Text } from '../src/ui/Text';
 import { showToast } from '../src/ui/Toast';
-import { Card, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } from '../src/ui/v2';
+import { Card, LargeTitleHeader, PillButton, useDesign } from '../src/ui/v2';
 
 function noteFor(r: PurchaseResult, t: ReturnType<typeof useT>): string {
-  if (r.ok) return r.kind === 'plus' ? t('app.plus.thanksPlus') : t('app.plus.thanksTip');
+  if (r.ok) return t('app.plus.thanksPlus');
   return r.message;
 }
 
 /**
  * Never fail silently (night 23 Oct, from Linework fb-1023 "tapping Unlock Plus did nothing"): besides the
- * line under the buttons, every Buy / Restore / tip result also shows as a toast. The toast is felt (haptic),
+ * line under the buttons, every Buy / Restore result also shows as a toast. The toast is felt (haptic),
  * spoken by VoiceOver (the inline line's live region is Android-only), visible wherever the page is scrolled
- * (the tip line sits below the list), and shows again on a repeat tap even when the inline line can't change.
+ * and shows again on a repeat tap even when the inline line can't change.
  */
 function report(note: string, ok: boolean): void {
   showToast(note, ok ? 'success' : 'warning');
@@ -31,7 +30,7 @@ function report(note: string, ok: boolean): void {
 /**
  * Couch Plus (PLAN section 5), design v2 (market-1018 M3, docs/DESIGN_V2.md): "Couch Plus" large
  * title, a benefit Card listing the one-time extras, the purchase as a large filled stretch pill with
- * Restore as a plain pill, then the tip jar as inset-grouped rows. Purchases are stubbed; nothing is
+ * Restore as a plain pill. No tip jar (owner, 25 Oct 2026: removed). Purchases are stubbed; nothing is
  * blocked, and every TV control stays free (the footer says so). No paywall, timer or trial trap.
  */
 export default function PlusScreen() {
@@ -40,8 +39,7 @@ export default function PlusScreen() {
   const router = useRouter();
   const { tier } = usePlus();
   const [buyNote, setBuyNote] = useState<string | null>(null);
-  const [tipNote, setTipNote] = useState<string | null>(null);
-  // Release standard 2: no store in this version, so no Buy / Restore / tips (and no "test build" text).
+  // Release standard 2: no store in this version, so no Buy / Restore (and no "test build" text).
   const forSale = plusForSale();
 
   const buy = useCallback((action: 'buy' | 'restore') => {
@@ -57,19 +55,6 @@ export default function PlusScreen() {
       });
   }, [t]);
 
-  const tip = useCallback((id: string) => {
-    purchaseProvider()
-      .tip(id)
-      .then((r) => {
-        const note = noteFor(r, t);
-        setTipNote(note);
-        report(note, r.ok);
-      })
-      .catch(() => {
-        setTipNote(t('app.plus.failed'));
-        report(t('app.plus.failed'), false);
-      });
-  }, [t]);
 
   return (
     <>
@@ -127,27 +112,8 @@ export default function PlusScreen() {
         </View>
         ) : null}
 
-        {forSale ? (
-        <InsetGroupedList header={t('app.plus.tipJar')} footer={tipJarCopy()}>
-          {TIP_TIERS.map((tt) => (
-            <Row
-              key={tt.id}
-              title={tt.label}
-              subtitle={tt.note}
-              accessibilityLabel={tt.label}
-              accessibilityHint={tt.note}
-              onPress={() => tip(tt.id)}
-            />
-          ))}
-        </InsetGroupedList>
-        ) : null}
 
         <View style={styles.bottom}>
-          {tipNote ? (
-            <Text style={[textStyle('footnote'), { color: p.warning }]} accessibilityLiveRegion="polite">
-              {tipNote}
-            </Text>
-          ) : null}
           <FreePromise color={p.secondaryLabel} />
         </View>
       </LargeTitleHeader>

@@ -22,7 +22,7 @@ the Plus screen says "coming in a later update" with no Buy / Restore / tips.
 |---|---|
 | No "test build" / "purchases aren't available" text reachable in a store build | done (all such strings sit behind `plusForSale()`) |
 | Paywall promises only features in this build | done for 1.0 (no paywall; the Plus screen frames its list as a later update) |
-| Pin expo-iap exactly; both request key shapes; listener + returned value; re-check getAvailablePurchases ~10 s; failure alert says nothing was charged + store codes; Restore beside Unlock; finishTransaction non-consumable; trial as a person-started non-consumable; sandbox-buy on TestFlight | n/a in 1.0, **gap T100** for the version that sells Couch Plus (held on the owner's price decision G-price-1018 and a native build; the test fails if PLUS_FOR_SALE turns true without an exact expo-iap pin) |
+| Pin expo-iap exactly; both request key shapes; listener + returned value; re-check getAvailablePurchases ~10 s; failure alert says nothing was charged + store codes; Restore beside Unlock; finishTransaction non-consumable; trial as a person-started non-consumable; sandbox-buy on TestFlight | n/a in 1.0, **gap T100** for the version that sells Couch Plus (price set: A$3.99 one-time, owner 25 Oct 2026; still held on a native build with StoreKit; the test fails if PLUS_FOR_SALE turns true without an exact expo-iap pin) |
 
 ## 3. App Store Connect
 | Item | Status |
@@ -38,3 +38,6 @@ the Plus screen says "coming in a later update" with no Buy / Restore / tips.
 ## 4. While in review
 Over-the-air updates reach the reviewer's copy: during review the build runs ship only fixes the reviewer needs.
 Recorded as a standing rule in ops/DECISIONS.md (run 80).
+
+## Couch Plus purchase settings (owner, 25 Oct 2026)
+- Non-consumable, A$3.99 (AU base storefront), **Family Sharing ON** (App Store Connect > In-App Purchases > Couch Plus > Family Sharing: Turn On; it can't be turned off again once on). No tip jar.
