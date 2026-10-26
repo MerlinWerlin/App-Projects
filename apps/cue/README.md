@@ -1,8 +1,8 @@
 # Cue: teleprompter that waits for you
 
-App Factory app #5 (Expo SDK 57, Expo Router, TypeScript). Built from the App Factory starter standard.
+App Factory app #5 (Expo SDK 58, Expo Router, TypeScript). Built from the App Factory starter standard.
 
-**Status (2026-10-24):** first build. Runs in Expo Go. Not yet on TestFlight (no `RELEASE.json` until the owner has tried it in Expo Go).
+**Status (2026-10-27):** TestFlight app. The emailed Voice Follow failure (`Locale en is not supported`) is fixed by selecting a supported regional speech locale separately from UI translations. Recognition failures now pause cleanly, and the app has a new brass C icon. See [release evidence](docs/RELEASE_CHECKLIST.md) for tests and native delivery status.
 
 ## Try it on the phone
 On the PC: double-click `START_TRIAL.cmd` (first time) or `RUN.cmd` (port 8094), then scan the QR code with Expo Go.

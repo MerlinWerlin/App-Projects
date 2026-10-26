@@ -8,6 +8,9 @@
  * Privacy: recognition is requested on-device only, so no audio leaves the phone. iOS stops a continuous
  * session after about a minute, so the session restarts itself until stop() is called.
  */
+import { selectSpeechLocale } from '../core/speechLocale';
+import { t } from '../i18n';
+
 export interface SpeechSession {
   stop(): void;
 }
@@ -18,6 +21,8 @@ export interface SpeechEngine {
     onTranscript: (text: string) => void,
     onError: (msg: string) => void,
     hints?: string[],
+    onListening?: () => void,
+    signal?: AbortSignal,
   ): Promise<SpeechSession>;
 }
 
@@ -35,6 +40,7 @@ interface ErrorEvent {
 interface SpeechModule {
   requestPermissionsAsync(): Promise<{ granted: boolean }>;
   supportsOnDeviceRecognition?(): boolean;
+  getSupportedLocales?(opts: Record<string, never>): Promise<{ locales: string[]; installedLocales: string[] }>;
   isRecognitionAvailable?(): boolean;
   start(opts: Record<string, unknown>): void;
   stop(): void;
@@ -42,6 +48,7 @@ interface SpeechModule {
   addListener(event: 'result', cb: (e: ResultEvent) => void): Sub;
   addListener(event: 'error', cb: (e: ErrorEvent) => void): Sub;
   addListener(event: 'end', cb: () => void): Sub;
+  addListener(event: 'start', cb: () => void): Sub;
 }
 
 declare const require: (id: string) => unknown;
@@ -51,7 +58,6 @@ let cached: SpeechModule | null | undefined;
 function loadModule(): SpeechModule | null {
   if (cached !== undefined) return cached;
   try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const mod = require('expo-speech-recognition') as { ExpoSpeechRecognitionModule?: SpeechModule };
     const m = mod?.ExpoSpeechRecognitionModule;
     cached = m && typeof m.start === 'function' && typeof m.addListener === 'function' ? m : null;
@@ -73,9 +79,21 @@ export function loadSpeech(): SpeechEngine | null {
     return null;
   }
   return {
-    async start(lang, onTranscript, onError, hints) {
+    async start(lang, onTranscript, onError, hints, onListening, signal) {
+      const checkCancelled = () => {
+        if (signal?.aborted) throw new Error('Speech start cancelled');
+      };
+      checkCancelled();
       const perm = await m.requestPermissionsAsync();
-      if (!perm.granted) throw new Error('Microphone and speech recognition permission is off. You can turn it on in Settings.');
+      checkCancelled();
+      if (!perm.granted) throw new Error(t('voice.permissionOff'));
+      let device = 'en-US';
+      try { device = Intl.DateTimeFormat().resolvedOptions().locale; } catch { /* English fallback */ }
+      let supported: string[] | undefined;
+      try { supported = (await m.getSupportedLocales?.({}))?.locales; } catch { /* Older Android service */ }
+      checkCancelled();
+      const speechLocale = selectSpeechLocale(lang, device, supported);
+      if (!speechLocale) throw new Error(t('voice.languageUnavailable'));
       const onDevice = (() => {
         try {
           return m.supportsOnDeviceRecognition ? m.supportsOnDeviceRecognition() : true;
@@ -83,15 +101,30 @@ export function loadSpeech(): SpeechEngine | null {
           return true;
         }
       })();
-      if (!onDevice) throw new Error('This phone can’t recognise speech on-device for this language. Voice Pace still works.');
+      if (!onDevice) throw new Error(t('voice.onDeviceUnavailable'));
 
       let active = true;
       // Each recogniser session starts its transcript from empty; keep the previous sessions' words so the
       // follower still sees a phrase across a restart.
       let carried = '';
       let current = '';
+      let restart: ReturnType<typeof setTimeout> | undefined;
+      const subs: Sub[] = [];
+      const stop = () => {
+        if (!active) return;
+        active = false;
+        clearTimeout(restart);
+        for (const sub of subs) sub.remove();
+        signal?.removeEventListener('abort', stop);
+        try { if (m.abort) m.abort(); else m.stop(); } catch { /* Already stopped */ }
+      };
+      const fail = (msg: string) => {
+        if (!active) return;
+        stop();
+        onError(msg);
+      };
       const opts = {
-        lang,
+        lang: speechLocale,
         interimResults: true,
         continuous: true,
         requiresOnDeviceRecognition: true,
@@ -99,7 +132,8 @@ export function loadSpeech(): SpeechEngine | null {
         contextualStrings: (hints ?? []).slice(0, 100),
         iosTaskHint: 'dictation',
       };
-      const subs: Sub[] = [
+      subs.push(
+        m.addListener('start', () => { if (active) onListening?.(); }),
         m.addListener('result', (e) => {
           if (!active) return;
           const text = e.results?.[0]?.transcript ?? '';
@@ -112,31 +146,26 @@ export function loadSpeech(): SpeechEngine | null {
         }),
         m.addListener('error', (e) => {
           if (!active || QUIET_ERRORS.has(e.error ?? '')) return;
-          onError(e.message || e.error || 'Speech recognition stopped');
+          fail(e.error === 'language-not-supported' || e.error === 'language-unavailable'
+            ? t('voice.languageUnavailable')
+            : e.message || e.error || t('voice.stopped'));
         }),
         m.addListener('end', () => {
           if (!active) return;
           carried = `${carried} ${current}`.trim().split(/\s+/).slice(-12).join(' ');
           current = '';
-          try {
-            m.start(opts);
-          } catch {
-            /* will surface through 'error' */
-          }
+          clearTimeout(restart);
+          restart = setTimeout(() => {
+            if (!active) return;
+            try { m.start(opts); } catch (e) {
+              fail(e instanceof Error ? e.message : t('voice.stopped'));
+            }
+          }, 250);
         }),
-      ];
-      m.start(opts);
-      return {
-        stop() {
-          active = false;
-          for (const s of subs) s.remove();
-          try {
-            m.stop();
-          } catch {
-            /* already stopped */
-          }
-        },
-      };
+      );
+      signal?.addEventListener('abort', stop);
+      try { m.start(opts); } catch (e) { stop(); throw e; }
+      return { stop };
     },
   };
 }
