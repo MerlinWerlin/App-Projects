@@ -55,3 +55,9 @@
 "Seamless" = "सीमलेस";
 "Art that floats on your wallpaper. Set it up in Glaze." = "आपके वॉलपेपर पर तैरती कला। इसे Glaze में सेट करें।";
 "Set up in Glaze" = "Glaze में सेट करें";
+
+/* Island pets: generated from src/i18n/pets.ts */
+"pet.open" = "पेट से मिलने के लिए टैप करें";
+"pet.happy" = "खुश";
+"pet.playful" = "चंचल";
+"pet.sleepy" = "नींद में";

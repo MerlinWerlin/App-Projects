@@ -57,3 +57,7 @@ artwork row above).
   software. Show both in Settings → About → Licences.
 - The OFL allows bundling the fonts in the app; the fonts may not be sold on their own.
 - When a new glyph set or font is added, record it here in the same change.
+
+## Island pets
+
+Mochi, Pip and Clover are original 16×16 pixel grids authored for Glaze on 26 October 2026, stored in `src/core/islandPets.ts`. No third-party pet art was copied. Native decorative symbols use Apple SF Symbols through SwiftUI.

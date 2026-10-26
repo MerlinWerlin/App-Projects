@@ -2139,6 +2139,15 @@
       "deps": [
         "T154"
       ]
+    },
+    {
+      "id": "T158",
+      "status": "done",
+      "priority": "owner",
+      "source": "Jared, 26 October: add the pets and push it all to TestFlight",
+      "title": "Original Island pets with ActivityKit Start/Switch/Stop and three moods",
+      "deps": [],
+      "notes": "Local-only cat, fox and bunny; Lock Screen and Dynamic Island. Native session restore and duplicate-action guard. System-limited visibility/lifetime; no continuous animation. Build and device verification tracked separately."
     }
   ],
   "priority_order": {

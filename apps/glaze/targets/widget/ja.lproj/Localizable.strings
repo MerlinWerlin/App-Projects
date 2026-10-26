@@ -55,3 +55,9 @@
 "Seamless" = "シームレス";
 "Art that floats on your wallpaper. Set it up in Glaze." = "壁紙の上に浮かぶアート。Glaze で設定します。";
 "Set up in Glaze" = "Glaze で設定";
+
+/* Island pets: generated from src/i18n/pets.ts */
+"pet.open" = "タップしてペットに会う";
+"pet.happy" = "ごきげん";
+"pet.playful" = "遊びたい";
+"pet.sleepy" = "ねむい";

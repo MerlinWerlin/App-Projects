@@ -1,7 +1,7 @@
 name: Glaze widget contract
 on:
   pull_request:
-    paths: ['apps/glaze/targets/widget/**', 'apps/glaze/src/core/widget*.ts', 'apps/glaze/scripts/widget-design-*', '.github/workflows/glaze-widgets-check.yml']
+    paths: ['apps/glaze/targets/widget/**', 'apps/glaze/modules/glaze-island-pets/**', 'apps/glaze/src/core/islandPets*', 'apps/glaze/scripts/island-pets-*', 'apps/glaze/src/core/widget*.ts', 'apps/glaze/scripts/widget-design-*', '.github/workflows/glaze-widgets-check.yml']
   push:
     branches: ['codex/glaze-theme-retest-20261026']
     paths: ['apps/glaze/**', '.github/workflows/glaze-widgets-check.yml']
@@ -29,3 +29,11 @@ jobs:
         run: |
           SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
           xcrun swiftc -typecheck -parse-as-library -sdk "$SDK" -target arm64-apple-ios17.0-simulator targets/widget/*.swift
+      - name: Verify pet data contract and ActivityKit lifecycle
+        if: always()
+        working-directory: apps/glaze
+        run: |
+          node scripts/island-pets-contract.mjs
+          node --test src/core/islandPets.test.ts
+          SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
+          xcrun swiftc -typecheck -parse-as-library -sdk "$SDK" -target arm64-apple-ios17.0-simulator modules/glaze-island-pets/ios/GlazePetAttributes.swift modules/glaze-island-pets/ios/GlazePetSession.swift

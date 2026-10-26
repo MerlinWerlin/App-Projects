@@ -33,6 +33,7 @@
 // only (src/store/widgetLink.ts; nothing is drawn in Expo Go or on Android). Checked on focus and
 // a few seconds after each theme pick. No motion.
 import { Feather } from '@expo/vector-icons';
+import { IslandPetArt } from '../../src/ui/IslandPetArt';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions, type AccessibilityActionEvent, type StyleProp, type ViewStyle } from 'react-native';
@@ -549,6 +550,15 @@ export default function WidgetsTab() {
 
   return (
     <LargeTitleScrollView title={t('tabs.widgets')} subtitle={t('tabs.widgetsTab.subtitle')}>
+      <Pressable onPress={() => router.push('/pets')} accessibilityRole="button" accessibilityLabel={t('pets.title')}
+        style={[continuous, { margin: 16, padding: 16, backgroundColor: c.fill, borderRadius: 24, flexDirection: 'row', alignItems: 'center', gap: 14 }]}>
+        <IslandPetArt pet="cat" mood="happy" size={48} />
+        <View style={{ flex: 1, gap: 4 }}>
+          <Text style={[...label('headline'), { color: c.ink }]}>{t('pets.title')}</Text>
+          <Text style={[...label('footnote'), { color: c.inkSecondary }]}>{t('pets.intro')}</Text>
+        </View>
+        <Feather name="chevron-right" size={20} color={c.inkSecondary} />
+      </Pressable>
       <Text accessibilityRole="header" style={[...label('footnote'), styles.section, { color: c.inkSecondary }]}>
         {t('tabs.widgetsTab.themes')}
       </Text>

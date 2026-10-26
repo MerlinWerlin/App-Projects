@@ -1,11 +1,11 @@
 {
   "tests": "1230 core tests: 1211 pass, 19 fail; same 19 failures reproduced on unchanged main 5a6185f9 (1226 tests, 1207 pass). No new test failures.",
   "typecheck": "npm run typecheck passes (real SDK app + Node tests). Expo iOS export passes. Apple iOS WidgetKit compiler and TS-to-Swift payload check passed run 40290905453. Offline UI stubs conflict with installed SDK declarations.",
-  "last_run": "2026-10-26 Codex owner retest repair",
-  "stage": "owner-tested",
+  "last_run": "2026-10-26 Codex pets and TestFlight delivery",
+  "stage": "building",
   "oversight_seen": "v150 (1792954143-2667): no new directives; D147-1 hold continues; no patches",
-  "headline": "Bulk install confirmed by Jared. Widget design bridge and five missing widget types repaired in codex/glaze-theme-retest-20261026; native compiler and real editor-payload decoder pass. New TestFlight binary still required.",
-  "next_for_owner": "No repeat bulk-install verdict needed. After the repaired native build reaches TestFlight, check month dots and one edited gradient, then Themes > Choose icons. Existing Plus product setup is separate; see docs/IAP_SANDBOX.md.",
+  "headline": "Owner authorized Island pets and shipping all Glaze fixes to TestFlight. Three original ActivityKit companions, widget/theme/icon repairs, version 1.0.1; native validation in progress.",
+  "next_for_owner": "No action needed to start the build. Device rendering remains unverified until the new native TestFlight build is installed; bulk install already confirmed.",
   "trial_kit": true,
   "trial_kit_commit": "e5a7652"
 }

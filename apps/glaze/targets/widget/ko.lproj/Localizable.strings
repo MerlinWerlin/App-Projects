@@ -55,3 +55,9 @@
 "Seamless" = "심리스";
 "Art that floats on your wallpaper. Set it up in Glaze." = "배경화면 위에 떠 있는 아트. Glaze에서 설정하세요.";
 "Set up in Glaze" = "Glaze에서 설정";
+
+/* Island pets: generated from src/i18n/pets.ts */
+"pet.open" = "탭하여 펫 만나기";
+"pet.happy" = "행복해요";
+"pet.playful" = "놀고 싶어요";
+"pet.sleepy" = "졸려요";

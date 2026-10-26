@@ -4,6 +4,7 @@
 // selected by `params.count`. Never use a plural category name (zero/one/two/few/many/other) as a
 // namespace or key name. See docs/I18N.md.
 
+import { PET_COPY } from '../pets.ts';
 import { en as commonNs } from '../ns/common/en.ts';
 import { en as tabsNs } from '../ns/tabs/en.ts';
 import { en as settingsNs } from '../ns/settings/en.ts';
@@ -24,6 +25,7 @@ import { en as plusNs } from '../ns/plus/en.ts';
 import { en as widgetsNs } from '../ns/widgets/en.ts';
 
 export const en = {
+  pets: PET_COPY.en,
   common: { ...commonNs,
     ok: 'OK',
     cancel: 'Cancel',
