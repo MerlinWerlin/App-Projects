@@ -182,13 +182,15 @@
     },
     {
       "id": "T15",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T10"
       ],
       "title": "Trip export/import .satchel file (core tripfile.ts versioned JSON + attachments, tests); AirDrop/Messages share; import on open",
       "accept": "round-trip test",
-      "spec": "Export/import must include trip.places (saved places, T29/T31)."
+      "spec": "Export/import must include trip.places (saved places, T29/T31).",
+      "commit": "e881f23",
+      "note": "Import on open (document type/UTI) waits for the dev build: T45."
     },
     {
       "id": "T16",
@@ -567,6 +569,18 @@
       "title": "Spec pass 2 leftovers: emergency card shortcut to the hotel address card; battery threshold as one adjustable control (accessibilityActions + stub); attachments section in the item form (FLOWS 4.1)",
       "accept": "tests + typecheck:ui + ui-check green",
       "commit": "537ff46"
+    },
+    {
+      "id": "T45",
+      "status": "todo",
+      "deps": [
+        "T15"
+      ],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Trip file follow-ups: import on open (.satchel document type + UTI + URL handler, dev build, per docs/TRIPFILE.md); packing-list save reports failure so a failed import rolls back fully; '(copy)' suffix when an imported trip name matches an existing trip",
+      "accept": "tests green; Expo Go keeps the Import a trip picker path"
     }
   ],
   "priority_note": "Owner: 'let's trial that for now'. Reach TRIAL fast; nothing native before the owner has tried the trial."

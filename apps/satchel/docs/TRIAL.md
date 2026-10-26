@@ -4,13 +4,19 @@ Satchel runs in **Expo Go** (SDK 58) until the native offline map needs a develo
 
 ## The 4 steps
 1. Install **Expo Go** from the App Store on your iPhone.
-2. On your PC, open the Satchel Build page, tap **Download trial kit**, unzip it and double-click `START_TRIAL.cmd` inside. It installs the packages, runs `npx expo install --fix` to match Expo Go's versions, checks the code and then starts Satchel; if anything is red, paste `trial-log.txt` into a comment on the Satchel Build page. (The copy in `Desktop\Apps\satchel` is an older build until a build run refreshes it there.)
-3. When the QR code appears, scan it with the iPhone Camera app and open it in Expo Go (port 8098).
-4. Try the demo trip, then turn on **flight mode** and try again. Comment on the Satchel Build page with anything that looks wrong.
+2. Your PC's auto-start installs, checks and serves Satchel on port 8098 (`Desktop\Apps\_auto\STATUS.txt` shows "satchel ... ready"). On your iPhone open **Expo Go > Recently opened > Satchel**, or scan the QR code from the Satchel window in `Desktop\Apps\satchel`.
+3. Try the demo trip, then turn on **flight mode** and try again.
+4. Comment on the Satchel Build page with anything that looks wrong (the yes/no questions below help).
+
+Fallback only, if the PC auto-start is not serving Satchel: the Satchel Build page also has a **Download trial kit** button with the same code.
 
 Nothing here is confirmed on a real phone until you say so.
 
 ## New since your last test
+- 26 Oct (run 26): you can send a trip to someone (or to yourself) as a `.satchel` file, and bring one in. Trip screen > **Export trip** opens the share sheet (AirDrop, Messages, Files); Trips > **Import a trip** picks the file and opens it as a new, separate trip. Documents, the emergency card and medical notes are never put in the file. Opening a `.satchel` straight from Messages or Files comes later with the full app build; for now use Import a trip.
+  - On a trip with an attached ticket, does Export trip open the share sheet with a file named after the trip, ending in .satchel? (yes/no)
+  - Import that file: does a second, separate copy of the trip open with its bookings, ticket image, saved places and packing list? (yes/no)
+  - Pick a file that isn't a trip (e.g. a PDF): does it say "Trip couldn't be imported" and leave your trips unchanged? (yes/no)
 - 26 Oct (run 24): timeline items that clash in time now say "Overlaps with …" on the row and on the item's page (nothing is moved), a finished trip opens with a "Past" note, the ticket view has a Copy booking reference button, the hotel address card has an Edit action, more emergency numbers carry a "Number doubted — check locally" line (a second model run disagreed), and the battery prompt now triggers at exactly your threshold (e.g. at 20%, not just below).
   - Give two demo items overlapping times: do both rows say "Overlaps with …"? (yes/no)
   - Open a ticket that has a booking reference: does Copy booking reference copy it and say so? (yes/no)
