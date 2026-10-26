@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 # CI-only Android install/launch evidence. No store or production credentials.
 set -euo pipefail
-export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+# setup-android selects current command-line tools; do not shadow them with a runner's older 'latest' directory.
+export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+export ANDROID_USER_HOME="$RUNNER_TEMP/play-android-user"
+export ANDROID_EMULATOR_HOME="$ANDROID_USER_HOME"
+export ANDROID_AVD_HOME="$RUNNER_TEMP/play-avd"
+mkdir -p "$ANDROID_USER_HOME" "$ANDROID_AVD_HOME"
 apk=$(realpath "$1")
 output=$(realpath "$2")
 package=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["android"]["package"])' "$output/config.json")
 [[ "$package" == *.playtest ]]
 sdkmanager 'system-images;android-35;google_apis;x86_64' > "$output/emulator-setup.txt" 2>&1
-echo no | avdmanager create avd --name play-smoke --package 'system-images;android-35;google_apis;x86_64' --force >> "$output/emulator-setup.txt" 2>&1
+echo no | avdmanager create avd --name play-smoke --path "$ANDROID_AVD_HOME/play-smoke.avd" --package 'system-images;android-35;google_apis;x86_64' --force >> "$output/emulator-setup.txt" 2>&1
+"$ANDROID_HOME/emulator/emulator" -list-avds | tee "$output/avds.txt" | grep -qx play-smoke
 sudo chmod 666 /dev/kvm
 "$ANDROID_HOME/emulator/emulator" -avd play-smoke -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory 2048 > "$output/emulator.txt" 2>&1 &
 trap 'adb emu kill || true' EXIT
