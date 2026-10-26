@@ -5,7 +5,7 @@
   "shortDescription": "Record a line, hear it backwards, copy it and reveal the result.",
   "fullDescription": "Say a line, listen to it backwards, try copying that sound, then flip your attempt to hear what comes out. Play alone or pass the phone between friends.",
   "releaseBlockers": [
-    "BLOCKER: Android AAC recording cannot feed current PCM WAV reverse engine",
+    "Validate new native AAC-to-PCM conversion in the compiled APK and complete a recorded gameplay round",
     "Audio interruptions, route changes, playback and recording device QA",
     "Play Billing and entitlement restore verification"
   ],

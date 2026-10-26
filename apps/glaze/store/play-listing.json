@@ -6,9 +6,9 @@
   "fullDescription": "Create a personal look with wallpapers and themed shortcut icons. Android builds include a native video-wallpaper path and launcher-confirmed shortcut pinning.\n\nYour launcher controls shortcut support and confirmation. Shortcuts are added to your home screen; they do not replace the installed app icons. Wallpaper availability varies by device.",
   "releaseBlockers": [
     "Native wallpaper and pin modules not device-verified",
-    "Replace or handle iOS-only icon target schemes",
+    "Validate supported Android shortcut destinations and expand the catalogue; unsupported iOS links are skipped",
     "Android widgets and Play Billing are not StoreKit/WidgetKit ports",
-    "Generated Android manifest still requests broad media, microphone and overlay permissions; audit and reduce before release"
+    "Broad media, microphone and overlay permissions removed from compiled APK; validate picker/save denial recovery on devices"
   ],
   "assets": "Android device screenshots, 512px store icon and 1024x500 feature graphic still require verification",
   "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
