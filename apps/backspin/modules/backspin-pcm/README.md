@@ -1,0 +1,3 @@
+# Android recording conversion
+
+`BackspinPcm.decodeToWav` uses Android MediaExtractor/MediaCodec to decode an app-cache recording into a bounded 16-bit PCM WAV in the existing `round/` scratch directory. The recorder hook converts the file before resolving a take, so parsing, reversing, saving and sharing all receive a real WAV. The adapter requires the native module before enabling Android play. Inputs outside the app cache are rejected, codec/file resources are always released, and partial output is removed on failure. This code belongs to the App-Projects Android branch; the master roadmap tracks release readiness.

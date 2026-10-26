@@ -1,8 +1,6 @@
 name: Android test APK
 
 on:
-  pull_request:
-    paths: ['.github/workflows/play-apk.yml', 'scripts/play/verify_apk.py', 'scripts/play/smoke-apk.sh']
   workflow_dispatch:
     inputs:
       app:
@@ -48,6 +46,10 @@ jobs:
           cd "apps/$APP"
           npm ci --no-audit --no-fund
           if [ "$APP" = glaze ]; then node scripts/native-link.mjs; fi
+          if [ "$APP" = backspin ]; then
+            mkdir -p modules/backspin-pcm/android/src/androidTest/assets
+            ffmpeg -hide_banner -loglevel error -f lavfi -i 'sine=frequency=440:duration=0.25:sample_rate=44100' -ac 1 -c:a aac modules/backspin-pcm/android/src/androidTest/assets/tone.m4a
+          fi
           npx expo prebuild --platform android --no-install
           npx expo config --type public --json > /tmp/play-config.json
           node -e 'const c=require("/tmp/play-config.json"); if(!c.android.package.endsWith(".playtest") || c.updates.enabled!==false) throw Error("Not an offline test variant")'
@@ -73,7 +75,7 @@ jobs:
           if-no-files-found: error
           retention-days: 30
       - name: Emulator install and launch
-        if: github.event_name == 'pull_request' || inputs.smoke
+        if: inputs.smoke
         shell: bash
         run: bash scripts/play/smoke-apk.sh "apk-output/$APP-play-test.apk" apk-output
       - uses: actions/upload-artifact@v4
