@@ -95,8 +95,11 @@ jobs:
           case "$APP" in crochet|glaze|linework|couch|cue|backspin|satchel) ;; *) exit 2;; esac
           gh run download "$ARTIFACT_RUN" -n "$APP-play-test-apk" -D apk-output
           python scripts/play/verify_apk.py "apk-output/$APP-play-test.apk" apk-output
-      - uses: android-actions/setup-android@v3
+      - uses: android-actions/setup-android@v4
         if: inputs.smoke
+        with:
+          packages: 'platform-tools emulator'
+          log-accepted-android-sdk-licenses: false
       - name: Emulator install and launch
         if: inputs.smoke
         shell: bash
