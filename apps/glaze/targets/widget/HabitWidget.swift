@@ -65,7 +65,7 @@ struct HabitWidgetView: View {
   private var stepText: String { HabitStore.format(entry.step, decimals: def.decimals) }
 
   var body: some View {
-    let t = entry.theme
+    let t = savedHabitTheme(entry.theme, kind: "habit" + entry.habit.rawValue.prefix(1).uppercased() + entry.habit.rawValue.dropFirst(), family: family)
     Group {
       if entry.habit == .mood {
         MoodBody(entry: entry, medium: family == .systemMedium)
@@ -124,11 +124,12 @@ struct HabitWidgetView: View {
 
 @available(iOS 17.0, *)
 private struct MoodBody: View {
+  @Environment(\.widgetFamily) private var family
   let entry: HabitEntry
   let medium: Bool
 
   var body: some View {
-    let t = entry.theme
+    let t = savedHabitTheme(entry.theme, kind: "habit" + entry.habit.rawValue.prefix(1).uppercased() + entry.habit.rawValue.dropFirst(), family: family)
     let level = Int(entry.value)
     VStack(alignment: .leading, spacing: 6) {
       Text(HabitText.name(.mood).uppercased(with: .current))

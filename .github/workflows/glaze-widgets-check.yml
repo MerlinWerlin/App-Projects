@@ -1,0 +1,28 @@
+name: Glaze widget contract
+on:
+  push:
+    branches: ['codex/glaze-theme-retest-20261026']
+    paths: ['apps/glaze/**', '.github/workflows/glaze-widgets-check.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  widget:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Decode the real editor payload in Swift
+        working-directory: apps/glaze
+        run: |
+          node scripts/widget-design-fixture.mjs "$RUNNER_TEMP/widget-design.json"
+          swiftc targets/widget/SavedWidgetDesign.swift scripts/widget-design-check.swift -o "$RUNNER_TEMP/widget-check"
+          "$RUNNER_TEMP/widget-check" "$RUNNER_TEMP/widget-design.json"
+      - name: Typecheck the whole WidgetKit extension against iOS
+        working-directory: apps/glaze
+        run: |
+          SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
+          xcrun swiftc -typecheck -parse-as-library -sdk "$SDK" -target arm64-apple-ios17.0-simulator targets/widget/*.swift

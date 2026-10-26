@@ -477,7 +477,7 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
     }
   };
 
-  const onUseStyle = async () => {
+  const onUseStyle = async (destination: '/icons' | '/install' = '/icons') => {
     if (styleBusy) return;
     setStyleBusy(true);
     setStyleError(false);
@@ -488,7 +488,7 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
       void applyWidgetTheme(theme); // T125: also remembered for the launch re-write; never throws
       tick('iconStyle');
       // navigate, not push: push would stack a second copy of the tab navigator.
-      router.navigate('/icons');
+      router.navigate(destination);
     } catch {
       setStyleError(true);
     } finally {
@@ -863,7 +863,7 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
                             variant={checklist.ticks.iconStyle ? 'tinted' : 'filled'}
                             block
                             busy={styleBusy}
-                            onPress={onUseStyle}
+                            onPress={() => void onUseStyle()}
                             accessibilityHint={t('theme.style.hint')}
                           />
                           <Text style={[...ts('headline'), { color: c.ink }]}>
@@ -876,8 +876,7 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
                             icon="upload"
                             sheenKey={sheenKey}
                             onPress={() => {
-                              tick('iconInstall');
-                              router.push('/install');
+                              void onUseStyle('/install');
                             }}
                           />
                         </View>
@@ -1052,6 +1051,8 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
               onPress={start}
               accessibilityHint={locked ? t('theme.applyHintLocked') : t('theme.applyHint')}
             />
+            {!locked ? <PillButton label={t('theme.style.cta')} icon="grid" variant="tinted" block busy={styleBusy} onPress={() => void onUseStyle()} /> : null}
+            {styleError ? <Text style={{ color: c.warn }}>{t('theme.style.error')}</Text> : null}
             <Text style={[...ts('footnote'), styles.barNote, { color: c.inkSecondary }]}>{t('theme.applyBundle')}</Text>
           </View>
         </GlassBar>

@@ -30,6 +30,7 @@ import { glyphBox, gradientVector, hairline, IOS_MASK_RADIUS, iosMaskPath, shape
 import { resolveGlyph } from '../core/glyphnames';
 import { useMotionReduced } from '../theme/motion';
 import { ArtPaths } from './ArtPaths';
+import { iconBackdrop } from '../core/iconBackdrop';
 import { FeatherGlyphOverlay, InhouseSvgGlyph } from './glyphs';
 
 /** The fields IconCanvas needs; a full IconSpec satisfies it. */
@@ -228,7 +229,7 @@ export const IconCanvas = forwardRef<View, IconCanvasProps>(function IconCanvas(
           <BackgroundDefs bg={spec.background} id={id} />
         </Defs>
         {maskD ? (
-          <Path d={maskD} fill={backdrop ?? '#000000'} />
+          <Path d={maskD} fill={iconBackdrop(spec.background, backdrop)} />
         ) : backdrop ? (
           <Rect x={0} y={0} width={s} height={s} fill={backdrop} />
         ) : null}

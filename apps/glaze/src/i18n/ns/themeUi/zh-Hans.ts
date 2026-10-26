@@ -187,6 +187,8 @@ export const zhHans: NonNullable<LocaleMessages['themeUi']> = {
       hint: '为 Glaze 主屏幕小组件保存此设计。',
     },
     result: {
+      unsupported: 'Preview only: this widget or size is not available on the iPhone yet. Your design is saved here.',
+      updateRequired: 'Your design is saved here. Install the next Glaze TestFlight build to apply edited widget designs.',
       savedTitle: '已为小组件保存',
       savedBody: '长按主屏幕，轻点“编辑”，再轻点“添加小组件”，然后选择 Glaze。',
       previewTitle: '此版本仅支持预览',

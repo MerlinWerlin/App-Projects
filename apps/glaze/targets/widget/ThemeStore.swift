@@ -130,19 +130,19 @@ enum ThemeStore {
   /// The theme plus where it came from: "defaults", "file" or "fallback".
   private static func loadWithSource() -> (theme: WidgetTheme, source: String) {
     if
+      let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GlazeShared.appGroup),
+      let data = try? Data(contentsOf: container.appendingPathComponent(GlazeShared.themeFile)),
+      let theme = decode(data)
+    {
+      return (theme, "file")
+    }
+    if
       let defaults = UserDefaults(suiteName: GlazeShared.appGroup),
       let json = defaults.string(forKey: GlazeShared.themeKey),
       let data = json.data(using: .utf8),
       let theme = decode(data)
     {
       return (theme, "defaults")
-    }
-    if
-      let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GlazeShared.appGroup),
-      let data = try? Data(contentsOf: container.appendingPathComponent(GlazeShared.themeFile)),
-      let theme = decode(data)
-    {
-      return (theme, "file")
     }
     return (.fallback, "fallback")
   }

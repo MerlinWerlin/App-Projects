@@ -27,6 +27,7 @@ export interface WidgetsAdapter {
   isAvailable(): Promise<{ available: boolean; reason: WidgetsReason }>;
   /** Write the active theme to the App Group and reload widget timelines. */
   setTheme(theme: WidgetTheme): Promise<WidgetsResult>;
+  designVersion(): Promise<number>;
   /** Copy a local image (file:// URI) into the App Group for the Photo widget. */
   setPhoto(uri: string): Promise<WidgetsResult>;
   clearPhoto(): Promise<WidgetsResult>;
@@ -101,6 +102,7 @@ export function validSeamlessInput(input: SeamlessInput | null | undefined): boo
 /** Shape exposed by modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift. */
 type NativeBridge = {
   setTheme(json: string): Promise<boolean>;
+  widgetDesignVersion?(): Promise<number>;
   setPhoto(uri: string): Promise<boolean>;
   clearPhoto?(): Promise<boolean>;
   setWidgetSet?(json: string): Promise<boolean>;
@@ -213,6 +215,9 @@ function migrateLocalHabits(localRaw: string | null, now: Date = new Date(), goa
 
 export const widgets: WidgetsAdapter = {
   isAvailable,
+  designVersion: async () => {
+    try { return (await loadNative()?.widgetDesignVersion?.()) ?? 0; } catch { return 0; }
+  },
   setTheme: (theme) => run((mod) => mod.setTheme(serializeWidgetTheme(theme))),
   setPhoto: (uri) => run((mod) => mod.setPhoto(uri)),
   clearPhoto: () => run((mod) => mod.clearPhoto?.()),

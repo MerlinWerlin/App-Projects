@@ -6,6 +6,7 @@ import { forwardRef, useCallback, useImperativeHandle, useLayoutEffect, useRef, 
 import { View } from 'react-native';
 import { captureIcon, nextFrames, pointsForPixels, type CaptureSize } from './capture';
 import { IconCanvas, type IconDrawSpec } from './IconCanvas';
+import { iconBackdrop } from '../core/iconBackdrop';
 
 export type BatchSpec = IconDrawSpec & { appId: string };
 export type RenderedIcon = { appId: string; pngBase64: string };
@@ -134,7 +135,7 @@ export const OffscreenIconRenderer = forwardRef<OffscreenIconRendererHandle, Off
         importantForAccessibility="no-hide-descendants"
         style={{ position: 'absolute', left: -10000, top: 0, width: pts, height: pts }}
       >
-        <IconCanvas key={job.key} ref={viewRef} spec={job.spec} size={pts} backdrop={backdrop} />
+        <IconCanvas key={job.key} ref={viewRef} spec={job.spec} size={pts} backdrop={iconBackdrop(job.spec.background, backdrop)} />
       </View>
     );
   },

@@ -221,7 +221,7 @@ export default function InstallScreen() {
   const specs: IconSpec[] = resolved.specs;
   const plan = useMemo(() => planInstall(specs), [specs]);
   const themeName = profileThemeName(getTheme(studio?.themeId)?.name ?? null);
-  const backdrop = studio?.wallpaperColour ?? '#000000';
+  const backdrop = studio?.wallpaperColour ?? undefined;
   // T60: the profile method can be switched off in src/config/install.ts (App Review risk).
   const methodOpts = {
     profileEnabled: PROFILE_INSTALL_ENABLED,

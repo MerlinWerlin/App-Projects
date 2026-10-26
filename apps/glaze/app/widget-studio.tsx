@@ -1,3 +1,4 @@
+import { nativeWidgetSupported } from '../src/core/widgetDelivery';
 // Widget Studio (T59, M4b-ui; docs/WIDGETS.md "Widget Studio"). Edit one widget of a theme's
 // matching set: type and size, background (photo, colour, gradient or the theme's art), accent and
 // text colours, text, font and text size. The live preview stays pinned on top.
@@ -110,7 +111,7 @@ import { useWallpaperPalette } from '../src/ui/useWallpaperPalette';
 /** Untyped lookup for catalogue keys carried in data (kind/size/issue keys). */
 type LooseT = (key: string, params?: Record<string, string | number>) => string;
 
-type AddResult = 'saved' | 'preview' | 'failed' | 'photoFailed' | null;
+type AddResult = 'saved' | 'preview' | 'failed' | 'photoFailed' | 'unsupported' | 'updateRequired' | null;
 type PhotoProblem = 'denied' | 'error' | null;
 
 const BG_ICONS: Record<StudioBackgroundKind, FeatherName> = {
@@ -328,13 +329,17 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
       const status = await widgets.isAvailable();
       if (!status.available) {
         next = 'preview';
+      } else if (!nativeWidgetSupported(catSpec?.kind ?? spec.kind, catSpec?.size ?? spec.size)) {
+        next = 'unsupported';
+      } else if (await widgets.designVersion() < 2) {
+        next = 'updateRequired';
       } else {
         const photo = state.catalogue ? null : needsPhotoCopy(set, state);
         const photoOk = photo ? (await widgets.setPhoto(photo)).ok : true;
         if (!photoOk) {
           next = 'photoFailed';
         } else {
-          await applyWidgetTheme(theme); // T125: remembered for the launch re-write too
+          if (!(await applyWidgetTheme(theme))) throw new Error('Widget theme could not reach the shared container');
           // The set plus the catalogue block, so a set-widget add never drops catalogue edits.
           const r = await widgets.setWidgetSet(studioCataloguePayload(lookSet, cat, state, { translate: (k) => tl(k) }));
           next = r.ok ? 'saved' : r.available ? 'failed' : 'preview';
@@ -635,6 +640,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
 
         {result ? <ResultCard result={result} /> : null}
 
+        {!nativeWidgetSupported(catSpec?.kind ?? spec.kind, catSpec?.size ?? spec.size) ? <Text style={{ color: c.inkSecondary }}>{t('themeUi.widgetStudio.result.unsupported')}</Text> : null}
         <View style={styles.actions}>
           <PillButton
             label={busy ? t('themeUi.widgetStudio.add.busy') : t('themeUi.widgetStudio.add.cta')}
@@ -682,7 +688,11 @@ function ResultCard({ result }: { result: Exclude<AddResult, null> }) {
       ? t('themeUi.widgetStudio.result.savedBody')
       : result === 'preview'
         ? t('themeUi.widgetStudio.result.previewBody')
-        : result === 'photoFailed'
+        : result === 'unsupported'
+        ? t('themeUi.widgetStudio.result.unsupported')
+        : result === 'updateRequired'
+          ? t('themeUi.widgetStudio.result.updateRequired')
+      : result === 'photoFailed'
           ? t('themeUi.widgetStudio.result.photoFailed')
           : t('themeUi.widgetStudio.result.failed');
   const tone = result === 'saved' ? c.pastels.mint : result === 'preview' ? c.pastels.sky : c.pastels.peach;

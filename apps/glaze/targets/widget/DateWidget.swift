@@ -65,10 +65,11 @@ struct DateWidget: Widget {
 
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: DayProvider()) { entry in
-      DateWidgetView(entry: entry)
+      GlazeDesignedWidget(kind: "date", entry: entry) { DateWidgetView(entry: entry) }
     }
     .configurationDisplayName("Date")
     .description("Today's date, in your Glaze theme.")
-    .supportedFamilies([.systemSmall, .systemMedium])
+    .contentMarginsDisabled()
+    .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
   }
 }

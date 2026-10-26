@@ -29,38 +29,29 @@ public class GlazeWidgetBridgeModule: Module {
   public func definition() -> ModuleDefinition {
     Name("GlazeWidgetBridge")
 
-    /// Stores the widget theme JSON (built in JS by serializeWidgetTheme) and reloads widgets.
-    /// T125: also writes theme.json into the App Group container; either write is enough.
+    // Version handshake: old installed binaries must not claim that v2 designs were applied.
+    AsyncFunction("widgetDesignVersion") { () -> Int in 2 }
+
     AsyncFunction("setTheme") { (json: String) -> Bool in
-      var wrote = false
-      if let defaults = UserDefaults(suiteName: appGroup) {
-        defaults.set(json, forKey: themeKey)
-        wrote = true
-      }
-      if
-        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
-        let data = json.data(using: .utf8)
-      {
-        do {
-          try data.write(to: container.appendingPathComponent(themeFile), options: .atomic)
-          wrote = true
-        } catch {
-          // UserDefaults alone is still enough for the extension.
-        }
-      }
-      guard wrote else { return false }
+      guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
+            let data = json.data(using: .utf8), data.count < 512 * 1024,
+            let payload = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+            payload["v"] as? Int == 1 else { return false }
+      do { try data.write(to: container.appendingPathComponent(themeFile), options: .atomic) }
+      catch { return false }
+      UserDefaults(suiteName: appGroup)?.set(json, forKey: themeKey)
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }
 
-    /// T59: stores the widget-set JSON (built in JS by studioPayload / serialiseWidgetSet) and
-    /// reloads widgets. VERIFY: the extension does not read this key yet; it keeps rendering from
-    /// glaze.theme.v1 until a v2-aware ThemeStore lands.
     AsyncFunction("setWidgetSet") { (json: String) -> Bool in
-      guard let defaults = UserDefaults(suiteName: appGroup) else { return false }
-      // Payloads are a few tens of KB; refuse anything absurd so UserDefaults stays small.
-      guard json.utf8.count < 512 * 1024 else { return false }
-      defaults.set(json, forKey: widgetSetKey)
+      guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
+            let data = json.data(using: .utf8), data.count < 512 * 1024,
+            let payload = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+            payload["v"] as? Int == 2, payload["specs"] is [[String: Any]] else { return false }
+      do { try data.write(to: container.appendingPathComponent("widgets.json"), options: .atomic) }
+      catch { return false }
+      UserDefaults(suiteName: appGroup)?.set(json, forKey: widgetSetKey)
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }

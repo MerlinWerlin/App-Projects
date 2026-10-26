@@ -188,6 +188,8 @@ export const hi: NonNullable<LocaleMessages['themeUi']> = {
       hint: 'यह डिज़ाइन Glaze के होम स्क्रीन विजेट के लिए सेव करता है।',
     },
     result: {
+      unsupported: 'Preview only: this widget or size is not available on the iPhone yet. Your design is saved here.',
+      updateRequired: 'Your design is saved here. Install the next Glaze TestFlight build to apply edited widget designs.',
       savedTitle: 'आपके विजेट के लिए सेव हुआ',
       savedBody: 'होम स्क्रीन को दबाकर रखें, एडिट पर टैप करें, फिर विजेट जोड़ें और Glaze चुनें।',
       previewTitle: 'इस वर्ज़न में सिर्फ़ प्रीव्यू',

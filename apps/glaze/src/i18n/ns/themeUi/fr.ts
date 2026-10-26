@@ -188,6 +188,8 @@ export const fr: NonNullable<LocaleMessages['themeUi']> = {
       hint: 'Enregistre ce design pour les widgets Glaze de l’écran d’accueil.',
     },
     result: {
+      unsupported: 'Preview only: this widget or size is not available on the iPhone yet. Your design is saved here.',
+      updateRequired: 'Your design is saved here. Install the next Glaze TestFlight build to apply edited widget designs.',
       savedTitle: 'Enregistré pour vos widgets',
       savedBody: 'Appuyez longuement sur l’écran d’accueil, touchez Modifier, puis Ajouter un widget, et choisissez Glaze.',
       previewTitle: 'Aperçu seulement dans cette version',
