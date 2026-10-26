@@ -143,3 +143,4 @@
 - 2026-10-25 run 91: oversight v149 records only; D147-1 stays open until the 1.0.2 ship run reports. No action.
 
 - 2026-10-25 run 93: oversight v151 read; no new directives. PR #94 merged upstream (already in tree). Records point 1.0.2 at stale PR #22.
+- 2026-10-26 run 95: Oversight v153. D153-1 accepted and done: no ship failure reported for PR #103 (Couch 1.0.2; no Workboard need appfactory-ship-couch-failed; GitHub API not enabled for this session, so the Actions result itself could not be read). TRIAL.md and status.json now say 1.0.2 was sent to TestFlight 26 Oct 00:26Z and is building, Q4-6 live once it arrives; 'close PR #22' wording dropped. D147-1 stays open (switch stays on) until the build reports. App-Projects a29ff35 (#103) is the ship merge of our own 13973c4: nothing to sync.

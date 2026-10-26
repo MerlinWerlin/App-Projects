@@ -1,12 +1,12 @@
 {
   "stage": "owner-tested",
   "trial_kit": true,
-  "oversight_seen": 152,
+  "oversight_seen": 153,
   "tests": "1851 pass (bun, Jest-compatible)",
   "typecheck": "core clean; app/ and src/ui clean against offline stubs (new, D75-1); full app tsc with real types needs PC verification",
-  "last_run": "2026-10-26 09:51 Sydney (run 94)",
-  "headline": "Run 93: your free-themes change (PR #94) is in. TestFlight 1.0.2 (Google Cast route for your TCL) ships once the old PR #22 is closed.",
-  "next_for_owner": "1) Restart Couch twice and answer docs/TRIAL.md \"25 Oct late\" questions 1-3 with your TCL; questions 4-6 once TestFlight 1.0.2 arrives (PR #94 is merged; it follows once you close the old App-Projects PR #22). 2) For App Review: App Privacy ('Data Not Collected'), review contact, screen recording (docs/RELEASE_CHECKLIST.md). Full install/typecheck needs PC verification (npm registry unreachable from the cloud).",
+  "last_run": "2026-10-26 11:51 Sydney (run 95)",
+  "headline": "TestFlight build: waiting. Couch 1.0.2 (Google Cast route for your TCL, honest cast status, tip jar removed) was sent to TestFlight at 11:26 Sydney (PR #103) and is building on GitHub's Mac; no failure reported yet.",
+  "next_for_owner": "1) When TestFlight 1.0.2 shows up, install it and answer docs/TRIAL.md \"25 Oct late\" questions 4-6 with your TCL (1-3 work over the air now). 2) For App Review: App Privacy ('Data Not Collected'), review contact, screen recording (docs/RELEASE_CHECKLIST.md). Full install/typecheck needs PC verification (npm registry unreachable from the cloud).",
   "screenshots": {
     "dir": "store/screenshots/publish",
     "size": "1320x2868",
@@ -90,5 +90,5 @@
     "expo-image-picker": "compiled (in TestFlight 1.0.1); real-TV path unverified",
     "note": "Oversight D140-1: App-Projects PR #75 'Ship Couch: 1.0.1 Cast tab' merged 22:18Z 24 Oct (main 99d31d4; apps/couch SHIP_BASE 447304e, app.json 1.0.1, RELEASE.json mode build). Run 78 (33 min after the merge) could not read the ship run's result: the gh API is not enabled for this repo in the session and the public Actions page served a stale list (newest ship #14, 23 Oct). D133-1/T95 triage waits for that result. Native files stay steady until the owner reports on 1.0.1. Guards verified by tests/cast-native-guard.test.ts (D133-2). Run 79: App-Projects 65b0733 (Backspin, 00:49Z 25 Oct) says 'Expo free plan out of iOS builds until 1 Nov'; auto-ship advanced Couch SHIP_BASE to 0f0b86c at 23:25Z (records only). Whether the 1.0.1 build used one of the last builds or was refused is not visible here (gh API not enabled, public Actions page stale at 23 Oct). If it was refused, the 1.0.1 native build waits until the quota resets 1 Nov; no paid plan (hard rule)."
   },
-  "next_native_build": "TestFlight 1.0.2 (app.json bumped in run 88): carries the lan-wss TLS socket (T106) and, if ready, T104. Per oversight D146-2 PR #94 was merged 25 Oct 19:10Z; it now follows the owner closing stale App-Projects PR #22 (auto-ship skips Couch while #22 is open); auto-ship falls back to GitHub's Mac runner when Expo's free iOS builds are spent. Swift/Kotlin never compiled in the cloud: if the build fails in LanTls.swift or LanWssModule.kt, guard the TLS part out (D133-1 style) so the rest ships. Google Cast switch (D147-1): if the 1.0.2 build fails only in LanTls.swift / Google Cast, set GOOGLE_CAST_ON = false in src/core/cast/googleCast/switch.ts and ship again (iOS then compiles a stub; Cast uses DLNA/AirPlay/demo)."
+  "next_native_build": "TestFlight 1.0.2 (app.json bumped in run 88): carries the lan-wss TLS socket (T106) and, if ready, T104. Per oversight D146-2 PR #94 was merged 25 Oct 19:10Z; the owner closed stale PR #22 and auto-ship sent 1.0.2 as App-Projects PR #103 (merged 26 Oct 00:26Z), building on GitHub's Mac; auto-ship falls back to GitHub's Mac runner when Expo's free iOS builds are spent. Swift/Kotlin never compiled in the cloud: if the build fails in LanTls.swift or LanWssModule.kt, guard the TLS part out (D133-1 style) so the rest ships. Google Cast switch (D147-1): if the 1.0.2 build fails only in LanTls.swift / Google Cast, set GOOGLE_CAST_ON = false in src/core/cast/googleCast/switch.ts and ship again (iOS then compiles a stub; Cast uses DLNA/AirPlay/demo)."
 }

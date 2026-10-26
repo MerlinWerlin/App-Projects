@@ -2,18 +2,18 @@
 
 Open Couch from **TestFlight** (it has the gold d-pad icon). It starts in demo mode with three pretend TVs when no TV is found. Expo Go is only a fallback now: your Expo Go is on SDK 58, so Couch shows under "Recently opened" only once the PC copy runs on SDK 58 too.
 
-Next TestFlight build: it no longer waits for 1 Nov. You merged PR #94 (all themes free), thanks. It now follows once the old App-Projects PR #22 is closed (Workboard: appfactory-ship-stale-prs); until then everything below reaches TestFlight 1.0.1 over the air.
+Next TestFlight build: 1.0.2 (Google Cast for your TCL, honest cast status, no tip jar) was sent to TestFlight at 00:26Z 26 Oct (11:26 Sydney, App-Projects PR #103) and is building on GitHub's Mac; it should show in TestFlight within about an hour if the build passes.
 
 Please answer the yes/no questions first (copy them into a comment on the Couch build page); how to open Couch is below them.
 
 ## New since your last test (25 Oct late): your TCL Google TV
-Thanks for the TV model. Two fixes. The first is over the air. The second needs the next TestFlight build (1.0.2), which follows once old PR #22 is closed.
+Thanks for the TV model. Two fixes. The first is over the air. The second needs TestFlight 1.0.2, which is building now (sent 26 Oct 11:26 Sydney).
 Over the air (restart Couch twice), Cast tab with your TV connected:
 1. Cast a photo to the TCL. Do the queue row and the remote's pill say "Sent…, waiting for the TV" (not "On the TV now" / "Casting")? yes / no
 2. Wait about half a minute. If nothing appeared on the TV, does a red line say "Not on <your TV>: the TV took the request but never started showing it…", and does the slideshow stop? yes / no
 3. Still on 1.0.1: does a line say "Casting to <your TV> needs the next Couch update…"? yes / no
 
-On TestFlight 1.0.2 (once it arrives):
+On TestFlight 1.0.2 (building now; answer these once it shows in TestFlight):
 4. Cast tab: is your TCL listed as a cast target, and does a photo appear on the TV within a few seconds? yes / no
 5. Cast a video (MP4 from your camera roll). Does it play on the TV, and do pause / -10 s / +10 s work? yes / no
 6. If either did not show, screenshot the "Sent with Cast to 192.168.x.x … from this phone at …" line and the error. Did you see an error instead of "sharing"? yes / no
