@@ -1,9 +1,9 @@
 {
   "app": "backspin",
-  "stage": "testflight",
-  "headline": "Release authorized and build7 iPhone checks passed. Apple confirms 9 screenshots COMPLETE, build7 attached/VALID, Plus READY_TO_SUBMIT and AFTER_APPROVAL saved. First submission awaits signed-in Apple website.",
-  "next_for_owner": [
-    "Sign in to App Store Connect in the opened browser; Codex will verify App Privacy and submit version 1.0/build 7 with Plus."
-  ],
+  "stage": "waiting_for_review",
+  "headline": "Backspin 1.0/build7 and Plus submitted together on 26 October at 21:48 Sydney; both Waiting for Review. Purple mascot verified, App Privacy published, free download configured, automatic release after approval selected. Apple approval/public availability pending.",
+  "next_for_owner": [],
+  "review_submission_id": "22938d32-20f4-400f-ae3a-0271fb08027b",
+  "review_url": "https://appstoreconnect.apple.com/apps/6826553963/distribution/reviewsubmissions/details/22938d32-20f4-400f-ae3a-0271fb08027b",
   "updated": "2026-10-26"
 }
