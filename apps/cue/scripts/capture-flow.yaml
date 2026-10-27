@@ -12,11 +12,16 @@ appId: com.jared797.cue
 - tapOn: Prompt
 - assertVisible: Steady
 - takeScreenshot: 03-prompter
-- openLink: cue://plus
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- tapOn: Settings
 - tapOn:
-    text: Open
-    optional: true
-- assertVisible: Cue Plus
+    text: Cue Plus
+    index: 1
+- assertVisible: One payment. Yours for good. No subscription.
 - takeScreenshot: 04-plus
 - scrollUntilVisible:
     element:

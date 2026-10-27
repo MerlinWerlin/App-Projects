@@ -59,6 +59,7 @@ jobs:
                   f.write(name+' '+d['udid']+'\n')
                   print(name,d['name'],d['udid'])
           PY
+          RESULT=0
           while read -r KIND DEVICE; do
             mkdir -p "$RUNNER_TEMP/cue-captures/$KIND"
             xcrun simctl boot "$DEVICE"
@@ -66,10 +67,23 @@ jobs:
             xcrun simctl install "$DEVICE" "$RUNNER_TEMP/cue-derived/Build/Products/Release-iphonesimulator/Cue.app"
             xcrun simctl ui "$DEVICE" appearance dark
             xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
-            MAESTRO_CLI_NO_ANALYTICS=1 maestro --device "$DEVICE" test --test-output-dir "$RUNNER_TEMP/cue-captures/$KIND" --debug-output "$RUNNER_TEMP/cue-captures/$KIND" scripts/capture-flow.yaml
+            MAESTRO_CLI_NO_ANALYTICS=1 maestro --device "$DEVICE" test --test-output-dir "$RUNNER_TEMP/cue-captures/$KIND" --debug-output "$RUNNER_TEMP/cue-captures/$KIND" scripts/capture-flow.yaml || RESULT=1
             xcrun simctl shutdown "$DEVICE"
           done < "$RUNNER_TEMP/cue-targets.txt"
           printf 'Source: %s\nActual simulator captures; OTA disabled only for reproducible captures. No physical-device or sandbox-purchase claim. Inspect every image before store use.\n' "$GITHUB_SHA" > "$RUNNER_TEMP/cue-captures/README.txt"
+          exit "$RESULT"
+      - name: Preserve simulator app for capture recovery
+        if: always()
+        run: |
+          if [ -d "$RUNNER_TEMP/cue-derived/Build/Products/Release-iphonesimulator/Cue.app" ]; then
+            ditto -c -k --sequesterRsrc --keepParent "$RUNNER_TEMP/cue-derived/Build/Products/Release-iphonesimulator/Cue.app" "$RUNNER_TEMP/cue-simulator-app.zip"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cue-simulator-app
+          path: ${{ runner.temp }}/cue-simulator-app.zip
+          retention-days: 14
       - uses: actions/upload-artifact@v4
         if: always()
         with:

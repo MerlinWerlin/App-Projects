@@ -1,11 +1,7 @@
 # Cue store kit
 
-- `listing.json`: the App Store Connect listing (same fields as Linework's; pushed by `scripts/asc/asc.py apply cue` when `ASC_REQUEST.json` changes; this app has no `ASC_REQUEST.json` or `RELEASE.json` yet).
-- `jpg/ios/`: 8 screenshots, 1320x2868 JPEG (APP_IPHONE_67, 6.9"), no alpha.
-- `src/render.mjs`: renders them with `scripts/store/shotkit.mjs` (preinstalled Chromium, global Playwright and sharp; installs nothing):
+This is the APPS A2 release metadata and screenshot source for Cue. Codex maintains it alongside the release code; GitHub main is authoritative. `listing.json` is applied by `scripts/asc/asc.py` when `ASC_REQUEST.json` changes to apply mode. The workflow never submits App Review. Use status mode for read-only checks after preparation.
 
-```sh
-node apps/cue/store/src/render.mjs
-```
+Plus is the non-consumable `com.jared797.cue.plus`, Australia A$2.99. The user-started free non-consumable `com.jared797.cue.trial7` is named exactly `7-day Trial`. Keep the Australia price and `src/plus/entitlement.ts` synchronized if changing it. Other stores use their localized prices.
 
-Each shot is a headline over a faithful mock of a real screen, built from the app's own theme tokens and English strings. These are illustrative mockups, not device captures. Original art only: a generic iPhone-style frame with no maker marks, no logos, no real people. Voice Follow is not shown (it needs the store build's speech module). The Plus shot lists "Voice Pace, unlimited" instead of the app's current "Voice Pace and Voice Follow, unlimited" string, which should change before review.
+The older `jpg/ios/` and `src/render.mjs` assets are retained historical illustrative mockups. Their old orange palette and trial wording are superseded and must not be reused for this release. The release checklist records the actual native capture workflow and source revision; visually inspect every replacement before uploading.
