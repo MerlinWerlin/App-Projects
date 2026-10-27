@@ -141,7 +141,7 @@ export default function Edit() {
 
       {mode === 'write' ? (
         <>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={st.tools} keyboardShouldPersistTaps="always">
+          <ScrollView horizontal style={{ flexGrow: 0, flexShrink: 0 }} showsHorizontalScrollIndicator={false} contentContainerStyle={st.tools} keyboardShouldPersistTaps="always">
             {(
               [
                 ['edit.tool.heading', 'bookmark-outline', () => insert('\n# ', '\n', 'Section')],
