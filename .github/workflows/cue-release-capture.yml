@@ -1,8 +1,14 @@
 name: Cue release captures
 on:
   workflow_dispatch:
+    inputs:
+      simulator_run_id:
+        description: Reuse the simulator app artifact from an earlier capture run (optional)
+        type: string
+        required: false
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: cue-release-capture
   cancel-in-progress: false
@@ -31,20 +37,45 @@ jobs:
           (cd "$RUNNER_TEMP" && grep 'maestro.zip' checksums_sha256.txt | shasum -a 256 -c -)
           unzip -q "$RUNNER_TEMP/maestro.zip" -d "$RUNNER_TEMP/cue-maestro"
           echo "$RUNNER_TEMP/cue-maestro/maestro/bin" >> "$GITHUB_PATH"
+      - uses: actions/download-artifact@v4
+        if: inputs.simulator_run_id != ''
+        with:
+          name: cue-simulator-app
+          run-id: ${{ inputs.simulator_run_id }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/cue-reused-app
+      - name: Restore the compiled simulator app
+        if: inputs.simulator_run_id != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REUSE_RUN: ${{ inputs.simulator_run_id }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/cue-derived/Build/Products/Release-iphonesimulator"
+          ditto -x -k "$RUNNER_TEMP/cue-reused-app/cue-simulator-app.zip" "$RUNNER_TEMP/cue-derived/Build/Products/Release-iphonesimulator"
+          if [ -f "$RUNNER_TEMP/cue-reused-app/cue-app-source.txt" ]; then
+            cp "$RUNNER_TEMP/cue-reused-app/cue-app-source.txt" "$RUNNER_TEMP/cue-app-source.txt"
+          else
+            gh api "repos/$GITHUB_REPOSITORY/actions/runs/$REUSE_RUN" --jq .head_sha > "$RUNNER_TEMP/cue-app-source.txt"
+          fi
       - run: npm ci --no-audit --no-fund
+        if: inputs.simulator_run_id == ''
       - name: Prepare simulator build
+        if: inputs.simulator_run_id == ''
         run: |
           node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("app.json"));p.expo.updates.enabled=false;fs.writeFileSync("app.json",JSON.stringify(p,null,2));'
           npx expo prebuild --platform ios --no-install
           cd ios
           pod install > "$RUNNER_TEMP/cue-pods.log" 2>&1 || { tail -100 "$RUNNER_TEMP/cue-pods.log"; exit 1; }
       - name: Build the actual app
+        if: inputs.simulator_run_id == ''
         run: |
+          echo "$GITHUB_SHA" > "$RUNNER_TEMP/cue-app-source.txt"
           xcodebuild -workspace ios/Cue.xcworkspace -scheme Cue -configuration Release \
             -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/cue-derived" \
             CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/cue-simulator.log" 2>&1 \
             || { tail -180 "$RUNNER_TEMP/cue-simulator.log"; exit 1; }
       - name: Capture iPhone and iPad screens
+        timeout-minutes: 35
         run: |
           mkdir -p "$RUNNER_TEMP/cue-captures"
           xcrun simctl list devices available --json > "$RUNNER_TEMP/cue-devices.json"
@@ -63,14 +94,28 @@ jobs:
           while read -r KIND DEVICE; do
             mkdir -p "$RUNNER_TEMP/cue-captures/$KIND"
             xcrun simctl boot "$DEVICE"
-            xcrun simctl bootstatus "$DEVICE" -b
+            python3 -c 'import subprocess,sys; subprocess.run(["xcrun","simctl","bootstatus",sys.argv[1],"-b"],check=True,timeout=480)' "$DEVICE" || { RESULT=1; xcrun simctl shutdown "$DEVICE" || true; continue; }
             xcrun simctl install "$DEVICE" "$RUNNER_TEMP/cue-derived/Build/Products/Release-iphonesimulator/Cue.app"
             xcrun simctl ui "$DEVICE" appearance dark
             xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
-            MAESTRO_CLI_NO_ANALYTICS=1 maestro --device "$DEVICE" test --test-output-dir "$RUNNER_TEMP/cue-captures/$KIND" --debug-output "$RUNNER_TEMP/cue-captures/$KIND" scripts/capture-flow.yaml || RESULT=1
+            MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=240000 python3 - "$DEVICE" "$RUNNER_TEMP/cue-captures/$KIND" <<'PY' || RESULT=1
+          import os,signal,subprocess,sys
+          command=['maestro','--device',sys.argv[1],'test','--test-output-dir',sys.argv[2],'--debug-output',sys.argv[2],'scripts/capture-flow.yaml']
+          process=subprocess.Popen(command,start_new_session=True)
+          try:
+              result=process.wait(timeout=420)
+          except subprocess.TimeoutExpired:
+              os.killpg(process.pid,signal.SIGTERM)
+              try:
+                  process.wait(timeout=10)
+              except subprocess.TimeoutExpired:
+                  os.killpg(process.pid,signal.SIGKILL)
+              raise SystemExit('Capture timed out after 7 minutes; partial evidence preserved.')
+          raise SystemExit(result)
+          PY
             xcrun simctl shutdown "$DEVICE"
           done < "$RUNNER_TEMP/cue-targets.txt"
-          printf 'Source: %s\nActual simulator captures; OTA disabled only for reproducible captures. No physical-device or sandbox-purchase claim. Inspect every image before store use.\n' "$GITHUB_SHA" > "$RUNNER_TEMP/cue-captures/README.txt"
+          printf 'App source: %s\nCapture workflow: %s\nActual simulator captures; OTA disabled only for reproducible captures. No physical-device or sandbox-purchase claim. Inspect every image before store use.\n' "$(cat "$RUNNER_TEMP/cue-app-source.txt")" "$GITHUB_SHA" > "$RUNNER_TEMP/cue-captures/README.txt"
           exit "$RESULT"
       - name: Preserve simulator app for capture recovery
         if: always()
@@ -82,7 +127,9 @@ jobs:
         if: always()
         with:
           name: cue-simulator-app
-          path: ${{ runner.temp }}/cue-simulator-app.zip
+          path: |
+            ${{ runner.temp }}/cue-simulator-app.zip
+            ${{ runner.temp }}/cue-app-source.txt
           retention-days: 14
       - uses: actions/upload-artifact@v4
         if: always()

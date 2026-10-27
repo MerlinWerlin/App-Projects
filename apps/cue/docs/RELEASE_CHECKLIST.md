@@ -1,6 +1,16 @@
 # Cue release preparation — 27 October 2026
 
-The purchase-enabled candidate is being delivered for Jared’s physical iPhone trial, Plus, cancellation and Restore checks. It has not been submitted to App Review. Current implementation and store receipts follow the historical build9 evidence below.
+Jared confirmed Plus purchasing, the free seven-day Trial and Restore passed on TestFlight build 11. Final build 13 embeds the Australian A$2.99 display correction and compact editor toolbar; its signed upload completed on 27 October at 08:34 UTC. Store screenshot replacement and the complete review draft are being verified. Cue has not been submitted to App Review. The evidence below preserves the earlier delivery stages and their then-outstanding checks.
+
+## Final binary delivery — build 13
+
+[Native run 40472421364](https://github.com/MerlinWerlin/App-Projects/actions/runs/40472421364) succeeded from source `d73a8696fdce4b680946315d3c01e0418e67b141`. Apple accepted submission `c170f8b5-8e06-4e19-9477-ffcd5e118e76` at 08:34:04 UTC on 27 October. The binary embeds update `62b7d033-5d1f-453d-bd2c-e402caa3671e`, runtime 1.0.0, production channel. [Signed upload receipt](https://github.com/MerlinWerlin/App-Projects/commit/d73a8696fdce4b680946315d3c01e0418e67b141#commitcomment-206834651). Apple processing and draft attachment are verified separately; an upload receipt alone is not an App Review submission.
+
+Apple subsequently processed build 13 (`73c4afb4-ab75-4b4e-a1c9-745765deb06e`) as Ready to Submit in TestFlight. It replaced build 12 in the App Store version 1.0 draft; save and page reload confirmed the selection. The release option remains automatic release after approval. No final Submit for Review action was taken.
+
+Capture run 40472424782 compiled the final source but the hosted iOS test runner failed to start (Mach error -308); both simulators also spent several minutes on first-boot data migration. The job was cancelled and preserved its compiled app and logs. It produced no usable screenshots, so it is not visual evidence. Recovery run 40476615975 reuses that exact compiled app on a fresh runner, with bounded startup/capture time and separate app/workflow provenance. The driver-start allowance follows [Maestro's documented CI setting](https://docs.maestro.dev/maestro-cli/environment-variables).
+
+[Recovery capture 40476615975](https://github.com/MerlinWerlin/App-Projects/actions/runs/40476615975) succeeded on both iPhone and iPad. All ten captures were inspected. Selected public images: iPhone prompter, editor and library (1320 x 2868); iPad prompter and editor (2064 x 2752). The compact toolbar is correct on both. The iPad library image caught the brief launch animation and was excluded; the flow now waits for animation completion for future captures. The full iPad paywall shows both purchase buttons and Restore and is used only as the purchase review image. The simulator received US StoreKit metadata and clearly labels USD $1.99; the independently read Australian price remains A$2.99. These images do not claim a completed simulator transaction. Files and provenance are in `store/native/`; the website uses the same three iPhone images. Store upload results are recorded after independent readback.
 
 ## Earlier voice/logo delivery — build9
 
@@ -82,3 +92,18 @@ Production OTA [40469499588](https://github.com/MerlinWerlin/App-Projects/action
 
 
 Visual QA of actual iPhone captures from40469502815 exposed an existing editor layout defect: the horizontal formatting toolbar expanded into half the editor height. Its ScrollView now opts out of vertical flex expansion/shrink; the text editor keeps the remaining space. Capture run40471982167 was cancelled before completing to capture the corrected app instead. Build12 uploaded and was temporarily attached, but the final embedded candidate will include this layout correction. This does not change purchase logic or invalidate the owner purchase tests.
+
+
+Build12 [native run40469506739](https://github.com/MerlinWerlin/App-Projects/actions/runs/40469506739) uploaded successfully at08:10:19UTC (submission8203757b-fd0e-4a09-a495-20ed3c64b35a). Apple processed it and allowed selection in the1.0draft; build ID4f3ba3f6-c32f-4d2d-9865-27d25dd55691. Its included brass C icon was visually verified. It is a temporary draft attachment pending the final toolbar-corrected binary.
+
+Capture recovery [PR122](https://github.com/MerlinWerlin/App-Projects/pull/122), merge2235a6a, switches Plus capture to the actual Settings route, preserves the simulator app and continues both device captures even if one fails. Its CI40471908068 passed. A mistaken queued dispatch40471934676 against the earlier source was promptly cancelled; it is not capture evidence. The replacement40471982167 was cancelled after the visual toolbar defect was found, to avoid publishing obsolete screens.
+
+Toolbar fix [PR123](https://github.com/MerlinWerlin/App-Projects/pull/123), merged asd73a869, passed local TypeScript. Final native40472421364 and captures40472424782 use this source; production OTA40472418608 carries the same display/layout fixes. Purchase behavior and native dependencies are unchanged from the tested candidate.
+
+
+Account readiness was independently read in App Store Connect on27October: Free Apps and Paid Apps agreements Active; bank account Active; Australian registration and US tax forms Active. No account details or private contact fields are copied into this repository. EU Digital Services Act compliance remains InReview at Apple (last updated23October); this is an account verification state, separate from Cue App Review.
+
+[PR123 CI40472334313](https://github.com/MerlinWerlin/App-Projects/actions/runs/40472334313) passed all78checks, TypeScript and both mobile exports. [Production OTA40472418608](https://github.com/MerlinWerlin/App-Projects/actions/runs/40472418608) published at08:18:44UTC. Update group5577f501-ea23-4839-8aeb-b554cc226461, iOS01a17c70-b6b0-7568-856b-e23c2012c202, runtime1.0.0. Independent Expo channel readback at08:22UTC confirms active production routing and this exact update/message.
+
+
+Cue App Information was read directly:4+ global age rating with regional equivalents, and “This developer has identified itself as a trader for this app.” The account’s pending DSA verification is already submitted to Apple; no new owner form was displayed. Production code does not use non-exempt encryption (the build’s Info.plist declaration remains false).

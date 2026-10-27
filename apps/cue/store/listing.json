@@ -25,7 +25,9 @@
         "territory": "AUS",
         "amount": "2.99"
       },
-      "availability": "all"
+      "availability": "all",
+      "reviewScreenshot": "apps/cue/store/native/review/d73a869-plus-purchases.png",
+      "replaceReviewScreenshot": true
     },
     {
       "productId": "com.jared797.cue.trial7",
@@ -38,7 +40,9 @@
         "territory": "AUS",
         "amount": "0.00"
       },
-      "availability": "all"
+      "availability": "all",
+      "reviewScreenshot": "apps/cue/store/native/review/d73a869-plus-purchases.png",
+      "replaceReviewScreenshot": true
     }
   ],
   "ageRating": "none",
@@ -49,5 +53,9 @@
   "ageRatingExtra": {
     "socialMedia": false,
     "socialMediaAgeRestricted": false
+  },
+  "screenshots": {
+    "APP_IPHONE_67": "apps/cue/store/native/iphone",
+    "APP_IPAD_PRO_3GEN_129": "apps/cue/store/native/ipad"
   }
 }

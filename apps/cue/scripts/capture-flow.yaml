@@ -5,6 +5,8 @@ appId: com.jared797.cue
 - extendedWaitUntil:
     visible: Scripts
     timeout: 60000
+- waitForAnimationToEnd:
+    timeout: 5000
 - takeScreenshot: 01-library
 - tapOn: 'Welcome to Cue.*'
 - assertVisible: Prompt
