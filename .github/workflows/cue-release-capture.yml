@@ -75,7 +75,7 @@ jobs:
             CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/cue-simulator.log" 2>&1 \
             || { tail -180 "$RUNNER_TEMP/cue-simulator.log"; exit 1; }
       - name: Capture iPhone and iPad screens
-        timeout-minutes: 25
+        timeout-minutes: 35
         run: |
           mkdir -p "$RUNNER_TEMP/cue-captures"
           xcrun simctl list devices available --json > "$RUNNER_TEMP/cue-devices.json"
@@ -94,11 +94,11 @@ jobs:
           while read -r KIND DEVICE; do
             mkdir -p "$RUNNER_TEMP/cue-captures/$KIND"
             xcrun simctl boot "$DEVICE"
-            python3 -c 'import subprocess,sys; subprocess.run(["xcrun","simctl","bootstatus",sys.argv[1],"-b"],check=True,timeout=300)' "$DEVICE" || { RESULT=1; continue; }
+            python3 -c 'import subprocess,sys; subprocess.run(["xcrun","simctl","bootstatus",sys.argv[1],"-b"],check=True,timeout=480)' "$DEVICE" || { RESULT=1; xcrun simctl shutdown "$DEVICE" || true; continue; }
             xcrun simctl install "$DEVICE" "$RUNNER_TEMP/cue-derived/Build/Products/Release-iphonesimulator/Cue.app"
             xcrun simctl ui "$DEVICE" appearance dark
             xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
-            MAESTRO_CLI_NO_ANALYTICS=1 python3 - "$DEVICE" "$RUNNER_TEMP/cue-captures/$KIND" <<'PY' || RESULT=1
+            MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=240000 python3 - "$DEVICE" "$RUNNER_TEMP/cue-captures/$KIND" <<'PY' || RESULT=1
           import os,signal,subprocess,sys
           command=['maestro','--device',sys.argv[1],'test','--test-output-dir',sys.argv[2],'--debug-output',sys.argv[2],'scripts/capture-flow.yaml']
           process=subprocess.Popen(command,start_new_session=True)
