@@ -23,7 +23,7 @@ class ReleaseSetupTests(unittest.TestCase):
 
     def test_existing_iap_copy_is_updated_without_recreating_product_or_price(self):
         item, product, loc = self.iap_fixture()
-        with patch.object(asc, "get", side_effect=[{"data": [product]}, {"data": [loc]}, {"data": {"id": "price"}}]), patch.object(asc, "call") as call:
+        with patch.object(asc, "get", side_effect=[{"data": [product]}, {"data": [loc]}, {"data": [{"id": "price"}]}]), patch.object(asc, "call") as call:
             asc.ensure_iap("cue", item, "en-AU")
         self.assertEqual([(x.args[0], x.args[1]) for x in call.call_args_list], [("PATCH", "/v2/inAppPurchases/p"), ("PATCH", "/v1/inAppPurchaseLocalizations/l")])
         self.assertEqual(call.call_args_list[0].args[2]["data"]["attributes"], {"reviewNote": "Manual trial"})
@@ -36,7 +36,7 @@ class ReleaseSetupTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); (root / "shot.png").write_bytes(b"image")
             screenshot = {"id": "shot", "attributes": {"sourceFileChecksum": hashlib.md5(b"image").hexdigest()}}
-            with patch.object(asc, "ROOT", root), patch.object(asc, "get", side_effect=[{"data": [product]}, {"data": [loc]}, {"data": screenshot}, {"data": {"id": "price"}}]), patch.object(asc, "call") as call, patch.object(asc, "upload_asset") as upload:
+            with patch.object(asc, "ROOT", root), patch.object(asc, "get", side_effect=[{"data": [product]}, {"data": [loc]}, {"data": screenshot}, {"data": [{"id": "price"}]}]), patch.object(asc, "call") as call, patch.object(asc, "upload_asset") as upload:
                 asc.ensure_iap("cue", item, "en-AU")
             call.assert_not_called(); upload.assert_not_called()
 
@@ -46,22 +46,30 @@ class ReleaseSetupTests(unittest.TestCase):
             item.update(reviewScreenshot="shot.png", replaceReviewScreenshot=replace)
             with tempfile.TemporaryDirectory() as directory:
                 root = Path(directory); (root / "shot.png").write_bytes(b"new")
-                with patch.object(asc, "ROOT", root), patch.object(asc, "get", side_effect=[{"data": [product]}, {"data": [loc]}, {"data": {"id": "shot", "attributes": {"sourceFileChecksum": "old"}}}, {"data": {"id": "price"}}]), patch.object(asc, "call") as call, patch.object(asc, "upload_asset") as upload:
+                with patch.object(asc, "ROOT", root), patch.object(asc, "get", side_effect=[{"data": [product]}, {"data": [loc]}, {"data": {"id": "shot", "attributes": {"sourceFileChecksum": "old"}}}, {"data": [{"id": "price"}]}]), patch.object(asc, "call") as call, patch.object(asc, "upload_asset") as upload:
                     asc.ensure_iap("cue", item, "en-AU")
                 deletes = [x for x in call.call_args_list if x.args[0] == "DELETE"]
                 self.assertEqual(len(deletes), int(replace)); self.assertEqual(upload.call_count, int(replace))
 
-    def test_null_price_schedule_creates_requested_free_trial_price(self):
+    def test_empty_manual_prices_creates_requested_free_trial_price(self):
         item, product, loc = self.iap_fixture(); item["price"] = {"territory": "AUS", "amount": "0.00"}
-        with patch.object(asc, "get", side_effect=[{"data": [product]}, {"data": [loc]}, {"data": None}, {"data": [{"id": "free", "attributes": {"customerPrice": "0.0"}}]}]), patch.object(asc, "call") as call:
+        with patch.object(asc, "get", side_effect=[{"data": [product]}, {"data": [loc]}, {"data": []}, {"data": [{"id": "free", "attributes": {"customerPrice": "0.0"}}]}]), patch.object(asc, "call") as call:
             asc.ensure_iap("cue", item, "en-AU")
         self.assertEqual(call.call_args.args[:2], ("POST", "/v1/inAppPurchasePriceSchedules"))
         self.assertEqual(call.call_args.args[2]["included"][0]["relationships"]["inAppPurchasePricePoint"]["data"]["id"], "free")
+        self.assertEqual(call.call_args.args[2]["included"][0]["relationships"]["inAppPurchaseV2"]["data"]["id"], "p")
 
     def test_price_auth_error_does_not_create_price(self):
         item, product, loc = self.iap_fixture()
         with patch.object(asc, "get", side_effect=[{"data": [product]}, {"data": [loc]}, RuntimeError("GET -> 401")]), patch.object(asc, "call") as call:
             with self.assertRaisesRegex(RuntimeError, "401"):
+                asc.ensure_iap("cue", item, "en-AU")
+        self.assertFalse(any(x.args[0] == "POST" for x in call.call_args_list))
+
+    def test_unexpected_price_response_does_not_write_a_schedule(self):
+        item, product, loc = self.iap_fixture()
+        with patch.object(asc, "get", side_effect=[{"data": [product]}, {"data": [loc]}, {"data": {"id": "placeholder"}}]), patch.object(asc, "call") as call:
+            with self.assertRaisesRegex(RuntimeError, "Unexpected manual price response"):
                 asc.ensure_iap("cue", item, "en-AU")
         self.assertFalse(any(x.args[0] == "POST" for x in call.call_args_list))
 

@@ -45,5 +45,9 @@
   "availability": "all",
   "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
   "reviewNotes": "Purpose and audience: Cue is a teleprompter for creators, presenters, teachers and anyone rehearsing or recording a talk.\n\nSetup: No account or login. A Welcome script is included. Open it and tap Prompt for the prompter, or Record for video with the script at the lens. Scripts, steady scroll, mirror/flip and recording without a watermark are free.\n\nPurchases: Settings > Cue Plus has Get Plus (one-time non-consumable), Start free 7-day trial (a separate free non-consumable named 7-day Trial), and Restore purchase. Trial access begins only after Apple confirms the free item, uses the original transaction date, and never charges automatically. After seven days, Voice Pace, Voice Follow, caption files, colours, Word import and rehearsal stats require Plus. Restore does not restart an expired trial. Please test both products with the submitted app.\n\nVoice and privacy: Voice Pace measures sound levels using temporary local audio buffers deleted when stopped. Voice Follow matches words using on-device speech recognition and refuses unsupported on-device locales before recording. Camera access is for recording and Photos access is add-only. Scripts, voice and videos are not uploaded. Expo EAS Update delivers fixes and receives a random installation identifier and failed-update launch diagnostics for app functionality, with no identity linkage or tracking. Apple handles purchases. No ads, account service or behavioural analytics.\n\nRegional differences: Store prices are localised; Voice Follow depends on the device supporting on-device recognition for its selected language. Voice Pace and Steady are alternatives. Regulated services and third-party content: not applicable. A physical-device screen recording can be provided if requested; no recording is claimed as attached.",
-  "reviewContactFromApp": "backspin"
+  "reviewContactFromApp": "backspin",
+  "ageRatingExtra": {
+    "socialMedia": false,
+    "socialMediaAgeRestricted": false
+  }
 }

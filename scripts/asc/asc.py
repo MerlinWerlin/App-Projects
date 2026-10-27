@@ -212,6 +212,19 @@ def status(app):
     iaps = get(f"/v1/apps/{app_id}/inAppPurchasesV2", limit=50)["data"]
     say("- In-app purchases: " + (", ".join(f"`{attrs(i)['productId']}` {attrs(i)['inAppPurchaseType']} {attrs(i)['state']}" for i in iaps) or "none"))
     for iap in iaps:
+        try:
+            prices = get(f"/v1/inAppPurchasePriceSchedules/{iap['id']}/manualPrices", limit=200,
+                         include="inAppPurchasePricePoint,territory")
+            points = {x["id"]: attrs(x) for x in prices.get("included", []) if x["type"] == "inAppPurchasePricePoints"}
+            labels = []
+            for price in prices["data"]:
+                rel = price.get("relationships", {})
+                point = points.get((rel.get("inAppPurchasePricePoint", {}).get("data") or {}).get("id"), {})
+                territory = (rel.get("territory", {}).get("data") or {}).get("id", "?")
+                labels.append(f"{territory} {point.get('customerPrice', '?')} ({attrs(price).get('startDate') or 'current'} to {attrs(price).get('endDate') or 'open'})")
+            say(f"  - {attrs(iap)['productId']} actual manual prices: " + (", ".join(labels) or "NONE"))
+        except RuntimeError as e:
+            say(f"  - {attrs(iap)['productId']} actual prices: unverified ({str(e)[:150]})")
         if attrs(iap).get("state") != "MISSING_METADATA":
             continue
         for label, endpoint in (("localizations", "inAppPurchaseLocalizations"),
@@ -614,7 +627,11 @@ def ensure_iap(app_id, iap, locale):
             say("  - review screenshot uploaded")
     # price: find the base territory price point matching the customer price
     try:
-        has_price = bool(get(f"/v2/inAppPurchases/{cur['id']}/iapPriceSchedule").get("data"))
+        # Apple returns a schedule shell even when no price has been selected.
+        prices = get(f"/v1/inAppPurchasePriceSchedules/{cur['id']}/manualPrices", limit=1).get("data")
+        if not isinstance(prices, list):
+            raise RuntimeError("Unexpected manual price response; refusing to change pricing")
+        has_price = bool(prices)
     except RuntimeError as e:
         if "404" not in str(e):
             raise
@@ -637,7 +654,8 @@ def ensure_iap(app_id, iap, locale):
                                "baseTerritory": {"data": {"type": "territories", "id": terr}},
                                "manualPrices": {"data": [{"type": "inAppPurchasePrices", "id": "${p1}"}]}}},
              "included": [{"type": "inAppPurchasePrices", "id": "${p1}", "attributes": {"startDate": None},
-                           "relationships": {"inAppPurchasePricePoint": {"data": {"type": "inAppPurchasePricePoints", "id": match["id"]}}}}]})
+                           "relationships": {"inAppPurchaseV2": {"data": {"type": "inAppPurchases", "id": cur["id"]}},
+                                             "inAppPurchasePricePoint": {"data": {"type": "inAppPurchasePricePoints", "id": match["id"]}}}}]})
         say(f"  - price set: {terr} {amount}")
 
 
