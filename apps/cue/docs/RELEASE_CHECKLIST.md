@@ -1,6 +1,8 @@
 # Cue release preparation — 27 October 2026
 
-**Prepared, not submitted.** Jared confirmed Plus purchasing, the free seven-day Trial and Restore passed on TestFlight build 11. Final build 13 embeds the Australian A$2.99 display correction and compact editor toolbar. Apple has all current screenshots and one saved three-item draft, Ready for Review with Submit for Review enabled. The evidence below preserves the earlier delivery stages and their then-outstanding checks.
+**Submitted to Apple — Waiting for Review.** On 27 October 2026 Jared explicitly instructed “please submit”. At 8:24 PM Sydney time, Apple accepted submission `ef316e13-b37c-4341-98cc-e739c0cbe72a` containing iOS version 1.0 / native build 1.0.0 (13), Cue Plus and the free 7-day Trial. The submission detail page independently shows all three items Waiting for Review. Automatic release after approval remains selected; public availability is pending Apple approval.
+
+[Apple submission receipt](https://appstoreconnect.apple.com/apps/6826554677/distribution/reviewsubmissions/details/ef316e13-b37c-4341-98cc-e739c0cbe72a). Australian Plus remains A$2.99; Trial and the app download are free. Store automation remains read-only status. Earlier preparation notes below are historical, including statements that submission had not yet been authorized. EU trader verification was pending with Apple at the last account check.
 
 ## Final review draft — verified 27 October at 09:10 UTC
 

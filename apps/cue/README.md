@@ -2,7 +2,7 @@
 
 App Factory app #5 (Expo SDK 58, Expo Router, TypeScript). Built from the App Factory starter standard.
 
-**Status (2026-10-27):** Prepared for submission. Apple has build 13, Cue Plus and the free seven-day Trial together in one Ready for Review draft with Submit for Review enabled. It has not been sent to Apple review. Jared confirmed Plus, Trial and Restore passed on build 11. The Australian A$2.99 display correction is published, current iPhone/iPad screenshots are complete, and the final binary's brass C icon is verified. See [release evidence](docs/RELEASE_CHECKLIST.md) for receipts and the separate pending EU trader verification.
+**Status (2026-10-27):** Submitted to Apple at 8:24 PM Sydney time. Build 13, Cue Plus and the free seven-day Trial are all Waiting for Review in one submission. Automatic release after approval is selected. Australian Plus is A$2.99; owner Plus, Trial and Restore checks passed. See [release evidence](docs/RELEASE_CHECKLIST.md) for the submission receipt and separate EU trader verification state.
 
 ## Try it on the phone
 Use TestFlight on your iPhone. The release candidate includes real Apple sandbox purchases: Settings > Cue Plus > Start free 7-day trial, Get Plus, and Restore purchase. TestFlight transactions do not charge you. See docs/RELEASE_CHECKLIST.md for the build receipt and passed phone checks.
