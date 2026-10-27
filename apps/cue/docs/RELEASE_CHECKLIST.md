@@ -17,11 +17,17 @@ The replacement logo is a brass C with an ivory reading cue, in the existing nav
 ## Verification
 
 - 62 tests pass, including 21 new locale/session regressions. The native boundary test reproduces the emailed bare-`en` rejection and verifies `en-AU` is sent instead.
+
 - TypeScript and final iOS + Android Hermes release exports pass. The new locale/session files pass focused ESLint. [GitHub check 40383482435](https://github.com/MerlinWerlin/App-Projects/actions/runs/40383482435) passed on source `a17c89d`; [PR115](https://github.com/MerlinWerlin/App-Projects/pull/115) merged as `18d2301`.
+
 - New locale/session files have no lint errors. Full-app lint has 28 existing errors (React hook/Reanimated rules); the modified prompter has the same four rule findings as its unmodified Git version. These are not reported as a clean lint run.
+
 - Actual phone recognition, interruption recovery and new Home Screen appearance still need an owner retest on TestFlight build 9. A Node regression test is not a physical-iPhone claim.
+
 - The public website icon returns HTTP 200 and its SHA256 matches the new committed native icon.
+
 - Expo cloud attempt [40383791637](https://github.com/MerlinWerlin/App-Projects/actions/runs/40383791637) was refused by the existing monthly free-build quota after reserving build 8. The existing workflow automatically dispatched [Mac build 40384042420](https://github.com/MerlinWerlin/App-Projects/actions/runs/40384042420) from the same merged source. It signed build 9, compiled successfully and [uploaded to Apple](https://github.com/MerlinWerlin/App-Projects/commit/18d2301de0024cd61e26b0c627d474bd055314dc#commitcomment-206754547). Expo submission `090c74dd-0b6c-4ff9-91eb-3ef4d086eb43` finished at 07:09 Sydney on 27 October. No paid plan or duplicate build was requested.
+
 - [Independent Apple receipt](https://github.com/MerlinWerlin/App-Projects/commit/2d7ca51f761a84e9646b58d9414b47891bb78385#commitcomment-206782060) at 10:32 Sydney on 27 October confirms latest build **9 VALID**, **IN_BETA_TESTING**, with one internal TestFlight group having automatic build access. `store/ASC_REQUEST.json` stays in read-only status mode. Open TestFlight, select Cue, update to 1.0.0 (9), and retry Voice Follow.
 
 ## Historical build9 scope
@@ -29,7 +35,6 @@ The replacement logo is a brass C with an ivory reading cue, in the existing nav
 That repair changed no purchase/trial logic, recording mode, permissions, prices or Backspin release state changed. Cue's broader App Review gates remain separate (including its existing purchase stub/automatic trial and account metadata); this repair does not establish store-release readiness.
 
 Reference: [expo-speech-recognition API](https://github.com/jamsch/expo-speech-recognition#getSupportedLocales).
-
 
 ## Purchase-enabled release candidate — 27 October 2026
 
@@ -39,7 +44,7 @@ Purchase handling waits for returned or event-delivered transactions, acknowledg
 
 The selected iOS speech recognizer now must support on-device recognition before audio setup. The prior dependency only conditionally set Apple's request flag; Apple's documentation says that flag is honored only when the selected recognizer supports it. A pinned, idempotent postinstall guard fails the build on unexpected dependency changes. Three Node checks cover guard insertion, ordering, idempotence and failure on changed source; native compilation remains required.
 
-Local validation: 72 Jest tests plus 3 native-guard tests pass; TypeScript, focused ESLint (purchase/trial/provider/paywall/settings), and both Hermes mobile exports pass. Remote CI and signed TestFlight delivery remain pending. Physical iPhone purchase, cancellation, trial and Restore tests remain pending on the new candidate. Build 9's earlier confirmation is not purchase validation.
+Initial purchase validation: 72 Jest tests plus 3 native-guard tests, TypeScript, focused ESLint and both Hermes exports passed. CI40463537079 and signed native run40463910097 passed; build11 uploaded to Apple on27October at07:12UTC and appeared in Team (Expo) internal TestFlight. Jared subsequently confirmed Plus purchasing worked; trial/Restore confirmation is recorded separately below.
 
 Remaining release preparation: configure and verify Plus/trial price and availability, update listing/review notes and privacy disclosure, replace stale screenshots with current captures, publish App Privacy, attach the final candidate, and obtain the owner's device purchase/Restore results before App Review. No submission is authorized by this preparation request alone.
 
@@ -51,17 +56,26 @@ Store setup [PR119](https://github.com/MerlinWerlin/App-Projects/pull/119) merge
 
 The price and age correction [PR120](https://github.com/MerlinWerlin/App-Projects/pull/120) merged as `3511ee0`. [Apple readback at07:08UTC](https://github.com/MerlinWerlin/App-Projects/commit/3511ee0cb51dffd26d904e66b3d51f4b007f48fd#commitcomment-206825884) confirms actual current manual prices: Plus AUS2.99, trial AUS0.00, and successful age answers. Plus is READY_TO_SUBMIT. Trial is missing only its new review screenshot. Public policy and support URLs return200 and show27October copy; the policy layout was inspected.
 
-## Owner purchase practice — after the new TestFlight build arrives
+## Owner purchase checks — passed on build11,27October
 
 1. Open Settings > Cue Plus. Tap Get Plus, then cancel Apple’s sheet. Plus should remain locked.
+
 2. Start the free seven-day trial and confirm Apple’s free item. Check the trial message, Voice Pace and Voice Follow.
+
 3. Tap Get Plus and complete the sandbox purchase. TestFlight purchases do not charge real money.
+
 4. Tap Restore purchase, close and reopen Cue, and confirm Plus is still owned. Keep saved scripts; no reinstall is needed for this check.
-5. Report any error text or confirm all steps passed. App Review submission waits for these results. If Apple later requests a physical-device recording, include launch, the main flow and the purchase/Restore flow.
 
+5. Jared confirmed Plus, free trial and Restore passed on27October. If Apple requests a physical-device recording, include launch, the main flow and the purchase/Restore flow.
 
-## Price correction and final preparation � 27 October 2026
+## Price correction and final preparation — 27 October 2026
 
-Apple's configured Australian Plus price remains A$2.99, confirmed by the owner�s real TestFlight purchase sheet. There is no hard-coded 1.99 in current source. StoreKit's bare displayPrice can hide currency differences in TestFlight. The paywall now labels AUD as A$, labels other currencies explicitly, refreshes on foreground and before purchase, and requires another tap if the fetched price changed. Only a confirmed Australian storefront with conflicting foreign-currency product metadata uses the verified A$2.99 base price; foreign/unknown storefronts retain their own currency and amount. A missing product never produces a fabricated price. The Australian override must change alongside store/listing.json if the base price changes.
+Apple's configured Australian Plus price remains A$2.99, confirmed by the owner’s real TestFlight purchase sheet. There is no hard-coded 1.99 in current source. StoreKit's bare displayPrice can hide currency differences in TestFlight. The paywall now labels AUD as A$, labels other currencies explicitly, refreshes on foreground and before purchase, and requires another tap if the fetched price changed. Only a confirmed Australian storefront with conflicting foreign-currency product metadata uses the verified A$2.99 base price; foreign/unknown storefronts retain their own currency and amount. A missing product never produces a fabricated price. The Australian override must change alongside store/listing.json if the base price changes.
 
 The original native screenshot job failed after successful native compilation and launch because Maestro 2.12 confines takeScreenshot paths to its configured output folder. The flow now uses relative names and --test-output-dir. Current capture delivery and final build attachment are pending verification; no App Review submission has occurred.
+
+Price correction [PR121](https://github.com/MerlinWerlin/App-Projects/pull/121) merged as `91cbaa3`. [CI40469270896](https://github.com/MerlinWerlin/App-Projects/actions/runs/40469270896) passed 75 Jest and3 native checks, TypeScript and both mobile exports. The production OTA is run40469499588. Final native run40469506739 uses the free Mac workflow directly because the existing Expo free cloud quota is exhausted; capture run40469502815 uses the same source. These runs are not delivery claims until their results and Apple state are verified.
+
+Owner confirmation,27October: Jared answered “Yes, both passed” for the free7-dayTrial and Restore, following his explicit Plus purchase success. These device purchase gates are satisfied on build11. App Store Connect's current pricing table was inspected directly: Australia(AUD)$2.99 and United States(USD)$1.99. This supports, but does not independently prove on-device, the TestFlight currency-mismatch diagnosis. No foreign price was increased. The final release build embeds only the tested display/refresh correction on top of build11’s native modules.
+
+Production OTA [40469499588](https://github.com/MerlinWerlin/App-Projects/actions/runs/40469499588) published successfully at27Oct07:51:56UTC, runtime1.0.0, production branch, update group `033d8820-b6b8-416c-84fa-ef947ea16e29` (iOS update `01a17c58-2d06-78cd-9b03-73ea6580c6f3`). This confirms publication, not that a particular phone downloaded it. App Privacy was independently reread as published with DeviceID and CrashData for AppFunctionality, not linked to identity.

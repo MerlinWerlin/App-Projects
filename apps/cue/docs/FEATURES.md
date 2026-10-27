@@ -13,7 +13,7 @@ Apps checked: PromptSmart, Teleprompter Pro / Video Teleprompter, Teleprompter.c
 | Cue points unreliable, no per-section control | Sections with jump-to, `[pause]` cues, private notes |
 | Crashes / takes not saved | Takes saved to Photos the moment you stop; errors shown in plain words |
 
-## Built (Expo Go)
+## Built in the iOS release candidate
 Steady scroll, Voice Pace, countdown, speed, mirror/flip, reading line, sections, resume, timer, landscape, keep awake, library, search, pin, duplicate, share, import txt/md/docx, fit-to-time, read time, record with overlay, per-section takes, captions export, prompter colours, rehearsal stats, dark mode, haptics, reduce motion.
 
 ## Plus and trial (owner decisions 2026-10-25)
@@ -21,12 +21,12 @@ Steady scroll, Voice Pace, countdown, speed, mirror/flip, reading line, sections
 - Trial: optional free `7-day Trial` non-consumable starts only after Apple confirmation. The original transaction date is cached in local storage and iOS Keychain, and Restore never resets it. Plus features lock when the seven days expire unless the separate one-time Plus purchase is owned. Scripts, Steady and recording remain free; no automatic charge (`src/plus/trial.ts`, regression tested).
 - Launch intro: ~1.3 s, "Cue" rolls up onto a reading line with a light sweep; tap to skip, skipped with Reduce Motion (`src/ui/LaunchIntro.tsx`).
 
-## Next (needs a dev/TestFlight build)
-1. Voice Follow: `expo-speech-recognition`, on-device, multilingual (engine already done).
-2. Bluetooth page-turner / pedal and keyboard arrows (hardware key events).
-3. Real StoreKit/Play purchase provider for Plus (A$2.99 one-time, decided 2026-10-25).
-4. Remote control from a second phone or Apple Watch.
-5. Share-sheet "Open in Cue" for scripts.
+Voice Follow uses native on-device speech recognition in supported device languages. Apple Plus, manual trial and Restore are implemented and owner-tested through TestFlight.
+
+## Future features (outside v1)
+- Bluetooth page-turner / pedal and keyboard arrows (hardware key events).
+- Remote control from a second phone or Apple Watch.
+- Share-sheet "Open in Cue" for scripts.
 
 ## Not doing (v1)
 AI rewriting (server cost vs one-time price), background removal, AirPlay/external display.
