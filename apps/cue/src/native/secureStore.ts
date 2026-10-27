@@ -1,6 +1,6 @@
 /**
  * iOS Keychain / Android Keystore as a tiny KvStore via expo-secure-store. Used for the Plus trial's
- * first-launch stamp because Keychain items survive deleting the app on iOS (see src/plus/trial.ts).
+ * verified transaction date because Keychain items survive deleting the app on iOS (see src/plus/trial.ts).
  * Guarded require like the other adapters: if the module is missing (old Expo Go, web) or throws,
  * this returns null and the caller falls back to the normal kv store. Never crashes.
  */

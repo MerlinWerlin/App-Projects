@@ -5,7 +5,7 @@ App Factory app #5 (Expo SDK 58, Expo Router, TypeScript). Built from the App Fa
 **Status (2026-10-27):** TestFlight app. The emailed Voice Follow failure (`Locale en is not supported`) is fixed by selecting a supported regional speech locale separately from UI translations. Recognition failures now pause cleanly, and the app has a new brass C icon. See [release evidence](docs/RELEASE_CHECKLIST.md) for tests and native delivery status.
 
 ## Try it on the phone
-On the PC: double-click `START_TRIAL.cmd` (first time) or `RUN.cmd` (port 8094), then scan the QR code with Expo Go.
+Use TestFlight on your iPhone. The release candidate includes real Apple sandbox purchases: Settings > Cue Plus > Start free 7-day trial, Get Plus, and Restore purchase. TestFlight transactions do not charge you. See docs/RELEASE_CHECKLIST.md for the build receipt and remaining phone checks.
 
 ## What's in it
 - Script library: search, pin, duplicate, share, import .txt/.md (free) and .docx (Plus). Welcome script teaches the markup.
@@ -14,7 +14,7 @@ On the PC: double-click `START_TRIAL.cmd` (first time) or `RUN.cmd` (port 8094),
 - **Voice Pace** (works in Expo Go): words move only while you talk, wait when you stop (mic level, nothing recorded or uploaded). Part of Plus (free during the 7-day trial).
 - **Voice Follow** (word tracking): alignment engine written and tested (`src/core/follow.ts`); needs the dev/TestFlight build with `expo-speech-recognition` (see `src/native/speech.ts`).
 - Record: script over the camera near the lens, each take saved to Photos, no watermark, **record one section at a time** (stops at the section end).
-- Plus (one-time, A$2.99): Voice Pace/Follow, caption export (.srt/.vtt timed to your WPM), prompter colours, Word import, rehearsal stats. **7-day free trial of every Plus feature** from first launch; the start date is also kept in the iOS Keychain (`expo-secure-store`) so delete-and-reinstall doesn't reset it (`src/plus/trial.ts`).
+- Plus (one-time, A$2.99): Voice Pace/Follow, caption export (.srt/.vtt timed to your WPM), prompter colours, Word import, rehearsal stats. **7-day free trial of every Plus feature**, started explicitly through Apple's free `7-day Trial` non-consumable. Its original transaction date is restored across reinstalls; the earlier automatic testing preview does not grant store access (`src/plus/trial.ts`).
 - Launch intro: "Cue" rolls up like prompter text with a light sweep (~1.3 s, tap to skip, off with Reduce Motion).
 - Standard kit: no index flash, haptics setting, reduce motion, dark mode, accessibility labels, all text in `src/i18n/en.ts`, plain-words permission screen, real error messages, no ads/tracking/account.
 

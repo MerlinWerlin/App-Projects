@@ -25,3 +25,18 @@ The replacement logo is a brass C with an ivory reading cue, in the existing nav
 No purchase/trial logic, recording mode, permissions, prices or Backspin release state changed. Cue's broader App Review gates remain separate (including its existing purchase stub/automatic trial and account metadata); this repair does not establish store-release readiness.
 
 Reference: [expo-speech-recognition API](https://github.com/jamsch/expo-speech-recognition#getSupportedLocales).
+
+
+## Purchase-enabled release candidate — 27 October 2026
+
+Jared reports build 9 looks good and requests real purchase practice through TestFlight before release. This candidate replaces the always-unlocked stub with pinned expo-iap 6.2.0, the existing A$2.99 one-time Cue Plus product, explicit free 7-day Trial purchase, Restore, and read-only entitlement refresh. Free scripts, steady scrolling and recording remain available. The old first-launch preview stamp is preserved on disk but is not treated as an Apple trial transaction.
+
+Purchase handling waits for returned or event-delivered transactions, acknowledges non-consumables once, handles cancellation and pending approval, reconciles late transactions, and bounds unresponsive store calls. Verified ownership is cached for offline access; successful store refresh reconciles revoked ownership. Restore preserves the original trial date. The paywall has a localized store price, a retry for price loading, and Restore even when Plus is owned. A failed/ambiguous response says it could not confirm the purchase and directs the user to Restore; it does not falsely promise that Apple could not have charged a late transaction. This is a deliberate accuracy correction to the release standard's blanket failure wording.
+
+The selected iOS speech recognizer now must support on-device recognition before audio setup. The prior dependency only conditionally set Apple's request flag; Apple's documentation says that flag is honored only when the selected recognizer supports it. A pinned, idempotent postinstall guard fails the build on unexpected dependency changes. Three Node checks cover guard insertion, ordering, idempotence and failure on changed source; native compilation remains required.
+
+Local validation: 72 Jest tests plus 3 native-guard tests pass; TypeScript, focused ESLint (purchase/trial/provider/paywall/settings), and both Hermes mobile exports pass. Remote CI and signed TestFlight delivery remain pending. Physical iPhone purchase, cancellation, trial and Restore tests remain pending on the new candidate. Build 9's earlier confirmation is not purchase validation.
+
+Remaining release preparation: configure and verify Plus/trial price and availability, update listing/review notes and privacy disclosure, replace stale screenshots with current captures, publish App Privacy, attach the final candidate, and obtain the owner's device purchase/Restore results before App Review. No submission is authorized by this preparation request alone.
+
+Sources: [Apple non-subscription trial rule](https://developer.apple.com/app-store/review/guidelines/#in-app-purchase), [Apple on-device speech flag](https://developer.apple.com/documentation/speech/sfspeechrecognitionrequest/requiresondevicerecognition).

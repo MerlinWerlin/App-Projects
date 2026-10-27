@@ -7,8 +7,7 @@ import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { t, type MessageKey } from '../src/i18n';
 import { success } from '../src/native/haptics';
-import { PLUS_FALLBACK_PRICE } from '../src/plus/entitlement';
-import { trialLabel } from '../src/plus/trial';
+import { trialLabel, trialState } from '../src/plus/trial';
 import { useApp } from '../src/state/AppState';
 import { RADIUS } from '../src/theme/theme';
 import { Btn, Txt, type IconName } from '../src/ui/kit';
@@ -31,17 +30,20 @@ export default function Plus() {
   const trial = app.tier === 'plus' ? null : trialLabel(app.trial);
 
   useEffect(() => {
-    app.purchases.price().then(setPrice).catch(() => setPrice(null));
+    let alive = true;
+    app.purchases.price().then(value => { if (alive) setPrice(value); }).catch(() => undefined);
+    return () => { alive = false; };
   }, [app.purchases]);
 
-  const act = async (kind: 'buy' | 'restore') => {
+  const act = async (kind: 'buy' | 'restore' | 'trial') => {
+    if (busy) return;
     setBusy(true);
-    const r = kind === 'buy' ? await app.buyPlus() : await app.restorePlus();
+    const r = kind === 'buy' ? await app.buyPlus() : kind === 'trial' ? await app.startTrial() : await app.restorePlus();
     setBusy(false);
     if (r.ok) {
       success(app.prefs.haptics);
-      Alert.alert(t('plus.thanks'));
-      router.back();
+      Alert.alert(t(r.access.plus ? 'plus.thanks' : trialState(r.access.trialStart, Date.now()).active ? 'plus.trial.started' : 'plus.trial.expired'));
+      if (router.canGoBack()) router.back();
     } else if (r.reason !== 'cancelled') Alert.alert(r.message);
   };
 
@@ -66,7 +68,7 @@ export default function Plus() {
             </Txt>
           </View>
         ) : null}
-        {trial ? (
+        {app.tier !== 'plus' ? (
           <Txt v="caption" tone="sub" style={{ textAlign: 'center', maxWidth: 320 }}>
             {t('plus.trial.body')}
           </Txt>
@@ -105,18 +107,18 @@ export default function Plus() {
         </Txt>
       ) : (
         <View style={{ marginTop: 22, gap: 10 }}>
-          <Btn label={t('plus.buy', { price: price ?? PLUS_FALLBACK_PRICE })} icon="sparkles" onPress={() => void act('buy')} disabled={busy} />
+          {!app.trial.started ? <Btn label={t('plus.trial.start')} icon="hourglass-outline" kind="secondary" onPress={() => void act('trial')} disabled={busy || price === null} /> : null}
+          <Btn label={price ? t('plus.buy', { price }) : t('plus.buyNoPrice')} icon="sparkles" onPress={() => void act('buy')} disabled={busy} />
+          {price === null ? <Btn label={t('plus.reloadPrice')} kind="secondary" onPress={() => void app.purchases.price().then(setPrice)} disabled={busy} /> : null}
           <Txt v="caption" tone="faint" style={{ textAlign: 'center' }}>
             {t('plus.once')}
           </Txt>
-          <Btn label={t('plus.restore')} kind="secondary" onPress={() => void act('restore')} disabled={busy} />
-          {!app.purchases.available ? (
-            <Txt v="caption" tone="sub" style={{ textAlign: 'center', marginTop: 4 }}>
-              {t('plus.unavailable')}
-            </Txt>
-          ) : null}
+
         </View>
       )}
+      <View style={{ marginTop: 12 }}>
+        <Btn label={t('plus.restore')} kind="secondary" onPress={() => void act('restore')} disabled={busy} />
+      </View>
     </ScrollView>
   );
 }

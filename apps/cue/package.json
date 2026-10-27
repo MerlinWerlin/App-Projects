@@ -7,9 +7,10 @@
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "test": "jest",
+    "test": "jest && node --test scripts/patch-speech.test.cjs",
     "typecheck": "tsc --noEmit",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "postinstall": "node scripts/patch-speech.cjs"
   },
   "dependencies": {
     "@expo-google-fonts/atkinson-hyperlegible": "^0.4.0",
@@ -26,6 +27,7 @@
     "expo-file-system": "~58.0.11",
     "expo-font": "~58.0.10",
     "expo-haptics": "~58.0.7",
+    "expo-iap": "6.2.0",
     "expo-keep-awake": "~58.0.3",
     "expo-linear-gradient": "~58.0.0",
     "expo-linking": "~58.0.14",
@@ -34,7 +36,7 @@
     "expo-screen-orientation": "~58.0.0",
     "expo-secure-store": "~58.0.0",
     "expo-sharing": "~58.0.0",
-    "expo-speech-recognition": "~58.0.0",
+    "expo-speech-recognition": "58.0.0",
     "expo-splash-screen": "~58.0.11",
     "expo-status-bar": "~58.0.4",
     "expo-updates": "~58.0.18",
@@ -49,13 +51,13 @@
     "react-native-worklets": "0.13.0"
   },
   "devDependencies": {
+    "@expo/ngrok": "^4.1.0",
     "@types/jest": "30.0.0",
     "@types/react": "~19.3.0",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~58.0.4",
     "jest": "~30.5.2",
     "jest-expo": "~58.0.12",
-    "typescript": "~6.0.3",
-    "@expo/ngrok": "^4.1.0"
+    "typescript": "~6.0.3"
   }
 }
