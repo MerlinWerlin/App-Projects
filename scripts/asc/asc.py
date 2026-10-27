@@ -562,6 +562,7 @@ def upload_asset(create_path, rel_name, rel_type, rel_id, path, typ):
 
 
 def ensure_iap(app_id, iap, locale):
+    import hashlib
     iaps = get(f"/v1/apps/{app_id}/inAppPurchasesV2", limit=50)["data"]
     cur = next((i for i in iaps if attrs(i)["productId"] == iap["productId"]), None)
     if not cur:
@@ -570,28 +571,53 @@ def ensure_iap(app_id, iap, locale):
             "reviewNote": iap.get("reviewNote", ""), "familySharable": iap.get("familySharable", False)},
             "relationships": {"app": {"data": {"type": "apps", "id": app_id}}}}})["data"]
         say(f"  - created {iap['productId']}")
+    else:
+        desired = {"name": iap["referenceName"]}
+        if "reviewNote" in iap:
+            desired["reviewNote"] = iap["reviewNote"]
+        changes = {k: v for k, v in desired.items() if attrs(cur).get(k) != v}
+        if changes:
+            call("PATCH", f"/v2/inAppPurchases/{cur['id']}", {"data": {
+                "type": "inAppPurchases", "id": cur["id"], "attributes": changes}})
+            say("  - updated purchase reference name/review notes")
     if iap.get("availability") == "all":
         ensure_iap_availability(cur["id"])
     locs = get(f"/v2/inAppPurchases/{cur['id']}/inAppPurchaseLocalizations")["data"]
-    if not any(attrs(l)["locale"] == locale for l in locs):
+    loc = next((l for l in locs if attrs(l)["locale"] == locale), None)
+    if not loc:
         call("POST", "/v1/inAppPurchaseLocalizations", {"data": {"type": "inAppPurchaseLocalizations",
              "attributes": {"locale": locale, "name": iap["displayName"], "description": iap["description"]},
              "relationships": {"inAppPurchaseV2": {"data": {"type": "inAppPurchases", "id": cur["id"]}}}}})
         say("  - added display name and description")
+    else:
+        changes = {k: v for k, v in {"name": iap["displayName"], "description": iap["description"]}.items()
+                   if attrs(loc).get(k) != v}
+        if changes:
+            call("PATCH", f"/v1/inAppPurchaseLocalizations/{loc['id']}", {"data": {
+                "type": "inAppPurchaseLocalizations", "id": loc["id"], "attributes": changes}})
+            say("  - updated display name and description")
     if iap.get("reviewScreenshot"):
         try:
             have = get(f"/v2/inAppPurchases/{cur['id']}/appStoreReviewScreenshot")["data"]
-        except RuntimeError:
+        except RuntimeError as e:
+            if "404" not in str(e):
+                raise
             have = None
+        if have and iap.get("replaceReviewScreenshot"):
+            local_hash = hashlib.md5((ROOT / iap["reviewScreenshot"]).read_bytes()).hexdigest()
+            if attrs(have).get("sourceFileChecksum") != local_hash:
+                call("DELETE", f"/v1/inAppPurchaseAppStoreReviewScreenshots/{have['id']}")
+                have = None
         if not have:
             upload_asset("/v1/inAppPurchaseAppStoreReviewScreenshots", "inAppPurchaseV2", "inAppPurchases", cur["id"],
                          ROOT / iap["reviewScreenshot"], "inAppPurchaseAppStoreReviewScreenshots")
             say("  - review screenshot uploaded")
     # price: find the base territory price point matching the customer price
     try:
-        get(f"/v2/inAppPurchases/{cur['id']}/iapPriceSchedule")
-        has_price = True
-    except Exception:
+        has_price = bool(get(f"/v2/inAppPurchases/{cur['id']}/iapPriceSchedule").get("data"))
+    except RuntimeError as e:
+        if "404" not in str(e):
+            raise
         has_price = False
     if not has_price and iap.get("price"):
         terr, amount = iap["price"]["territory"], str(iap["price"]["amount"])
