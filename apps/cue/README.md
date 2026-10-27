@@ -2,7 +2,7 @@
 
 App Factory app #5 (Expo SDK 58, Expo Router, TypeScript). Built from the App Factory starter standard.
 
-**Status (2026-10-27):** Release preparation. Jared confirmed Plus, the user-started free seven-day trial and Restore passed on TestFlight build11. The Australian A$2.99 display correction is published; a final native build and actual store screenshots are being verified. Voice Follow uses supported regional locales and on-device recognition; the brass C icon is included. See [release evidence](docs/RELEASE_CHECKLIST.md) for current delivery and App Store status.
+**Status (2026-10-27):** Prepared for submission. Apple has build 13, Cue Plus and the free seven-day Trial together in one Ready for Review draft with Submit for Review enabled. It has not been sent to Apple review. Jared confirmed Plus, Trial and Restore passed on build 11. The Australian A$2.99 display correction is published, current iPhone/iPad screenshots are complete, and the final binary's brass C icon is verified. See [release evidence](docs/RELEASE_CHECKLIST.md) for receipts and the separate pending EU trader verification.
 
 ## Try it on the phone
 Use TestFlight on your iPhone. The release candidate includes real Apple sandbox purchases: Settings > Cue Plus > Start free 7-day trial, Get Plus, and Restore purchase. TestFlight transactions do not charge you. See docs/RELEASE_CHECKLIST.md for the build receipt and passed phone checks.
