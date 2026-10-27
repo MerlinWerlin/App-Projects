@@ -57,6 +57,7 @@ class ReleaseSetupTests(unittest.TestCase):
             asc.ensure_iap("cue", item, "en-AU")
         self.assertEqual(call.call_args.args[:2], ("POST", "/v1/inAppPurchasePriceSchedules"))
         self.assertEqual(call.call_args.args[2]["included"][0]["relationships"]["inAppPurchasePricePoint"]["data"]["id"], "free")
+        self.assertEqual(call.call_args.args[2]["included"][0]["relationships"]["inAppPurchaseV2"]["data"]["id"], "p")
 
     def test_price_auth_error_does_not_create_price(self):
         item, product, loc = self.iap_fixture()

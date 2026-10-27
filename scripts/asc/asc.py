@@ -654,7 +654,8 @@ def ensure_iap(app_id, iap, locale):
                                "baseTerritory": {"data": {"type": "territories", "id": terr}},
                                "manualPrices": {"data": [{"type": "inAppPurchasePrices", "id": "${p1}"}]}}},
              "included": [{"type": "inAppPurchasePrices", "id": "${p1}", "attributes": {"startDate": None},
-                           "relationships": {"inAppPurchasePricePoint": {"data": {"type": "inAppPurchasePricePoints", "id": match["id"]}}}}]})
+                           "relationships": {"inAppPurchaseV2": {"data": {"type": "inAppPurchases", "id": cur["id"]}},
+                                             "inAppPurchasePricePoint": {"data": {"type": "inAppPurchasePricePoints", "id": match["id"]}}}}]})
         say(f"  - price set: {terr} {amount}")
 
 
