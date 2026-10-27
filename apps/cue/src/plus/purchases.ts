@@ -1,14 +1,15 @@
 /** Real non-consumable purchases. A missing store never grants access. */
 import { t } from '../i18n';
-import { PLUS_PRODUCT_ID } from './entitlement';
+import { PLUS_AUSTRALIA_PRICE, PLUS_PRODUCT_ID } from './entitlement';
 import { TRIAL_PRODUCT_ID, trialStartFromPurchase } from './trial';
 export type StoreAccess = { plus: boolean; trialStart: number | null };
 export type PurchaseResult = { ok: true; access: StoreAccess } | { ok: false; reason: 'unavailable' | 'cancelled' | 'failed' | 'empty' | 'pending'; message: string };
 export type StorePurchase = { productId?: string; purchaseState?: string } & Record<string, unknown>;
-type StoreProduct = { id?: string; productId?: string; displayPrice?: string };
+type StoreProduct = { id?: string; productId?: string; displayPrice?: string; currency?: string };
 type Subscription = { remove(): void };
 export interface IapApi {
   initConnection(): Promise<boolean>;
+  getStorefront?(): Promise<string>;
   fetchProducts(args: { skus: string[]; type: 'in-app' }): Promise<StoreProduct[]>;
   requestPurchase(args: { request: { ios: { sku: string }; apple: { sku: string }; android: { skus: string[] }; google: { skus: string[] } }; type: 'in-app' }): Promise<StorePurchase | StorePurchase[] | null | undefined | void>;
   getAvailablePurchases(): Promise<StorePurchase[]>;
@@ -132,8 +133,18 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
     async price() {
       if (!(await connect()) || !iap) return null;
       try {
-        const product = (await bounded(iap.fetchProducts({ skus: SKUS, type: 'in-app' }), 15_000)).find(p => p.id === PLUS_PRODUCT_ID || p.productId === PLUS_PRODUCT_ID);
-        return product?.displayPrice ?? null;
+        const [products, storefront] = await Promise.all([
+          bounded(iap.fetchProducts({ skus: SKUS, type: 'in-app' }), 15_000),
+          iap.getStorefront ? bounded(iap.getStorefront(), 5000).catch(() => null) : null,
+        ]);
+        const product = products.find(p => p.id === PLUS_PRODUCT_ID || p.productId === PLUS_PRODUCT_ID);
+        if (!product?.displayPrice?.trim()) return null;
+        const currency = product.currency?.toUpperCase();
+        // TestFlight may return USD metadata while its purchase sheet uses the Australian store.
+        // Never infer the purchase country from the phone's language or convert a foreign price.
+        if (['AU', 'AUS'].includes(storefront?.trim().toUpperCase() ?? '') && currency && currency !== 'AUD') return PLUS_AUSTRALIA_PRICE;
+        if (currency === 'AUD') return product.displayPrice.replace(/^\$/, 'A$');
+        return currency && !product.displayPrice.includes(currency) ? `${currency} ${product.displayPrice}` : product.displayPrice;
       } catch { return null; }
     },
     buy: () => exclusive(() => buy(PLUS_PRODUCT_ID)),

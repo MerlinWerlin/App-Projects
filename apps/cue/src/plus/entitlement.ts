@@ -34,8 +34,8 @@ export function canUse(tier: Tier, f: PlusFeature): boolean {
 }
 
 /**
- * Cue Plus price, decided by the owner 2026-10-25: A$2.99, one-time. The real, localised price always
- * comes from StoreKit (the tier is set in App Store Connect); this is only the fallback label shown
- * when the store hasn't returned a price.
+ * Australia base price, confirmed in App Store Connect and by Jared's purchase on 27 October.
+ * Used only when the store confirms Australia but returns product metadata in another currency.
+ * Keep this aligned with store/listing.json when changing the Australian price.
  */
-export const PLUS_FALLBACK_PRICE = 'A$2.99';
+export const PLUS_AUSTRALIA_PRICE = 'A$2.99';

@@ -17,8 +17,8 @@ Apps checked: PromptSmart, Teleprompter Pro / Video Teleprompter, Teleprompter.c
 Steady scroll, Voice Pace, countdown, speed, mirror/flip, reading line, sections, resume, timer, landscape, keep awake, library, search, pin, duplicate, share, import txt/md/docx, fit-to-time, read time, record with overlay, per-section takes, captions export, prompter colours, rehearsal stats, dark mode, haptics, reduce motion.
 
 ## Plus and trial (owner decisions 2026-10-25)
-- Cue Plus: A$2.99 one-time. The real price comes from StoreKit; `PLUS_FALLBACK_PRICE` in `src/plus/entitlement.ts` is only the label when the store returns none.
-- Trial: every Plus feature free for 7 days from the first launch, then locked unless bought (replaces the old 3 free Voice Pace reads). The first-launch stamp is stored in kv and in the iOS Keychain (`expo-secure-store`, survives delete-and-reinstall); the earliest wins (`src/plus/trial.ts`, tested). Calm "Plus trial: N days left" line in Settings and on the Plus screen, no popups.
+- Cue Plus: A$2.99 one-time. StoreKit supplies localized prices. A confirmed Australian storefront with conflicting foreign-currency metadata uses the verified A$2.99 base price; missing products never receive a fallback price.
+- Trial: optional free `7-day Trial` non-consumable starts only after Apple confirmation. The original transaction date is cached in local storage and iOS Keychain, and Restore never resets it. Plus features lock when the seven days expire unless the separate one-time Plus purchase is owned. Scripts, Steady and recording remain free; no automatic charge (`src/plus/trial.ts`, regression tested).
 - Launch intro: ~1.3 s, "Cue" rolls up onto a reading line with a light sweep; tap to skip, skipped with Reduce Motion (`src/ui/LaunchIntro.tsx`).
 
 ## Next (needs a dev/TestFlight build)

@@ -84,3 +84,33 @@ test('unresponsive store preparation is bounded and never grants access', async(
 test('pending transaction returned by Apple waits for approval without granting Plus',async()=>{
   const f=fake();f.api.requestPurchase=async()=>({productId:PLUS,purchaseState:'pending'});expect(await createPurchaseProvider(f.api).buy()).toMatchObject({ok:false,reason:'pending'});expect(f.api.finishTransaction).not.toHaveBeenCalled();
 });
+
+
+test('Australian storefront never labels USD 1.99 metadata as the Australian purchase price', async () => {
+  const f = fake();
+  f.api.getStorefront = async () => 'AUS';
+  f.api.fetchProducts = async () => [{id: PLUS, displayPrice: '$1.99', currency: 'USD'}];
+  expect(await createPurchaseProvider(f.api).price()).toBe('A$2.99');
+  f.api.fetchProducts = async () => [{id: PLUS, displayPrice: '$2.99', currency: 'AUD'}];
+  expect(await createPurchaseProvider(f.api).price()).toBe('A$2.99');
+});
+
+test('foreign stores keep their own price and currency; missing products never get an invented price', async () => {
+  const f = fake();
+  f.api.getStorefront = async () => 'USA';
+  f.api.fetchProducts = async () => [{id: PLUS, displayPrice: '$1.99', currency: 'USD'}];
+  expect(await createPurchaseProvider(f.api).price()).toBe('USD $1.99');
+  f.api.getStorefront = async () => 'AUS';
+  f.api.fetchProducts = async () => [];
+  expect(await createPurchaseProvider(f.api).price()).toBeNull();
+});
+
+test('every price read refreshes products; a failed country lookup does not assume Australia', async () => {
+  const f = fake();
+  f.api.getStorefront = async () => { throw Error('unavailable'); };
+  f.api.fetchProducts = jest.fn(async () => [{id: PLUS, displayPrice: '$1.99', currency: 'USD'}]);
+  const store = createPurchaseProvider(f.api);
+  expect(await store.price()).toBe('USD $1.99');
+  f.api.fetchProducts = jest.fn(async () => [{id: PLUS, displayPrice: '$2.99', currency: 'AUD'}]);
+  expect(await store.price()).toBe('A$2.99');
+});
