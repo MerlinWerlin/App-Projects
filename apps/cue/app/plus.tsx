@@ -2,8 +2,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Alert, AppState, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { t, type MessageKey } from '../src/i18n';
 import { success } from '../src/native/haptics';
@@ -27,19 +27,41 @@ export default function Plus() {
   const insets = useSafeAreaInsets();
   const [price, setPrice] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const working = useRef(false);
+  const priceRequest = useRef(0);
   const trial = app.tier === 'plus' ? null : trialLabel(app.trial);
-
-  useEffect(() => {
-    let alive = true;
-    app.purchases.price().then(value => { if (alive) setPrice(value); }).catch(() => undefined);
-    return () => { alive = false; };
+  const reloadPrice = useCallback(async () => {
+    const request = ++priceRequest.current;
+    const value = await app.purchases.price().catch(() => null);
+    if (request === priceRequest.current) setPrice(value);
+    return value;
   }, [app.purchases]);
 
+  useEffect(() => {
+    void reloadPrice();
+    const listener = AppState.addEventListener('change', state => {
+      if (state === 'active' && !working.current) void reloadPrice();
+    });
+    return () => { ++priceRequest.current; listener.remove(); };
+  }, [reloadPrice]);
+
   const act = async (kind: 'buy' | 'restore' | 'trial') => {
-    if (busy) return;
+    if (working.current) return;
+    working.current = true;
     setBusy(true);
+    if (kind === 'buy') {
+      const currentPrice = await reloadPrice();
+      if (currentPrice === null || currentPrice !== price) {
+        working.current = false;
+        setBusy(false);
+        Alert.alert(currentPrice ? t('plus.priceChanged', { price: currentPrice }) : t('plus.unavailable'));
+        return;
+      }
+    }
     const r = kind === 'buy' ? await app.buyPlus() : kind === 'trial' ? await app.startTrial() : await app.restorePlus();
+    working.current = false;
     setBusy(false);
+    void reloadPrice();
     if (r.ok) {
       success(app.prefs.haptics);
       Alert.alert(t(r.access.plus ? 'plus.thanks' : trialState(r.access.trialStart, Date.now()).active ? 'plus.trial.started' : 'plus.trial.expired'));
@@ -109,7 +131,7 @@ export default function Plus() {
         <View style={{ marginTop: 22, gap: 10 }}>
           {!app.trial.started ? <Btn label={t('plus.trial.start')} icon="hourglass-outline" kind="secondary" onPress={() => void act('trial')} disabled={busy || price === null} /> : null}
           <Btn label={price ? t('plus.buy', { price }) : t('plus.buyNoPrice')} icon="sparkles" onPress={() => void act('buy')} disabled={busy} />
-          {price === null ? <Btn label={t('plus.reloadPrice')} kind="secondary" onPress={() => void app.purchases.price().then(setPrice)} disabled={busy} /> : null}
+          {price === null ? <Btn label={t('plus.reloadPrice')} kind="secondary" onPress={() => void reloadPrice()} disabled={busy} /> : null}
           <Txt v="caption" tone="faint" style={{ textAlign: 'center' }}>
             {t('plus.once')}
           </Txt>

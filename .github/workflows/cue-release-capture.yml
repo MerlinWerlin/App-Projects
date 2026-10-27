@@ -66,7 +66,7 @@ jobs:
             xcrun simctl install "$DEVICE" "$RUNNER_TEMP/cue-derived/Build/Products/Release-iphonesimulator/Cue.app"
             xcrun simctl ui "$DEVICE" appearance dark
             xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
-            maestro --device "$DEVICE" test -e CUE_CAPTURE_DIR="$RUNNER_TEMP/cue-captures/$KIND" --debug-output "$RUNNER_TEMP/cue-captures/$KIND/debug" scripts/capture-flow.yaml
+            MAESTRO_CLI_NO_ANALYTICS=1 maestro --device "$DEVICE" test --test-output-dir "$RUNNER_TEMP/cue-captures/$KIND" --debug-output "$RUNNER_TEMP/cue-captures/$KIND" scripts/capture-flow.yaml
             xcrun simctl shutdown "$DEVICE"
           done < "$RUNNER_TEMP/cue-targets.txt"
           printf 'Source: %s\nActual simulator captures; OTA disabled only for reproducible captures. No physical-device or sandbox-purchase claim. Inspect every image before store use.\n' "$GITHUB_SHA" > "$RUNNER_TEMP/cue-captures/README.txt"

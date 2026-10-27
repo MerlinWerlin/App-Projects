@@ -1,4 +1,8 @@
-# Cue voice and logo repair — 27 October 2026
+# Cue release preparation — 27 October 2026
+
+The purchase-enabled candidate is being delivered for Jared’s physical iPhone trial, Plus, cancellation and Restore checks. It has not been submitted to App Review. Current implementation and store receipts follow the historical build9 evidence below.
+
+## Earlier voice/logo delivery — build9
 
 GitHub App-Projects main is the release source. This repair reuses the chat's isolated checkout at `Apps/backspin-icon`; source PR115 and verification PR116 are merged. Jared requested a new Cue logo, a fix for the Voice Follow failure emailed to himself, and delivery through TestFlight rather than Expo Go. Cue 1.0.0 build 9 is available for internal testing. The earlier Backspin submission remains separate.
 
@@ -20,9 +24,9 @@ The replacement logo is a brass C with an ivory reading cue, in the existing nav
 - Expo cloud attempt [40383791637](https://github.com/MerlinWerlin/App-Projects/actions/runs/40383791637) was refused by the existing monthly free-build quota after reserving build 8. The existing workflow automatically dispatched [Mac build 40384042420](https://github.com/MerlinWerlin/App-Projects/actions/runs/40384042420) from the same merged source. It signed build 9, compiled successfully and [uploaded to Apple](https://github.com/MerlinWerlin/App-Projects/commit/18d2301de0024cd61e26b0c627d474bd055314dc#commitcomment-206754547). Expo submission `090c74dd-0b6c-4ff9-91eb-3ef4d086eb43` finished at 07:09 Sydney on 27 October. No paid plan or duplicate build was requested.
 - [Independent Apple receipt](https://github.com/MerlinWerlin/App-Projects/commit/2d7ca51f761a84e9646b58d9414b47891bb78385#commitcomment-206782060) at 10:32 Sydney on 27 October confirms latest build **9 VALID**, **IN_BETA_TESTING**, with one internal TestFlight group having automatic build access. `store/ASC_REQUEST.json` stays in read-only status mode. Open TestFlight, select Cue, update to 1.0.0 (9), and retry Voice Follow.
 
-## Scope
+## Historical build9 scope
 
-No purchase/trial logic, recording mode, permissions, prices or Backspin release state changed. Cue's broader App Review gates remain separate (including its existing purchase stub/automatic trial and account metadata); this repair does not establish store-release readiness.
+That repair changed no purchase/trial logic, recording mode, permissions, prices or Backspin release state changed. Cue's broader App Review gates remain separate (including its existing purchase stub/automatic trial and account metadata); this repair does not establish store-release readiness.
 
 Reference: [expo-speech-recognition API](https://github.com/jamsch/expo-speech-recognition#getSupportedLocales).
 
@@ -43,4 +47,21 @@ Sources: [Apple non-subscription trial rule](https://developer.apple.com/app-sto
 
 Purchase source [PR118](https://github.com/MerlinWerlin/App-Projects/pull/118) merged as `962d8b8` after [CI40463537079](https://github.com/MerlinWerlin/App-Projects/actions/runs/40463537079) passed. Existing cloud-to-free-Mac fallback started native run40463910097. Simulator capture run40463753042 is separate and does not establish physical-device or purchase success. Store setup now updates existing IAP notes/localizations, preserves existing prices and only replaces a review screenshot when explicitly requested and its checksum differs;12 offline ASC tests pass. New screenshots and the final build attachment follow their actual delivery.
 
-Store setup [PR119](https://github.com/MerlinWerlin/App-Projects/pull/119) merged as `1a9d088` after CI40464275427 passed. [Apple readback](https://github.com/MerlinWerlin/App-Projects/commit/1a9d088f5dab733a9c4d736c2cda975eba59396a#commitcomment-206825120) confirms both products, availability for175territories, current listing and complete review contact. It also exposed two remaining setup defects: Apple returns an empty price-schedule shell, and newly required social-media age answers were omitted. The helper now checks actual manual-price records (preserving any configured schedule), and Cue explicitly answers no social-media functionality.13 ASC checks pass. App Privacy was published in the signed-in UI at27Oct07:00UTC: Device ID and Crash Data, App Functionality, not linked to identity and not for tracking. Main app download pricing was separately saved as A$0.00, mapped to175regions; there were no prior prices. New screenshots and final build attachment remain pending.
+Store setup [PR119](https://github.com/MerlinWerlin/App-Projects/pull/119) merged as `1a9d088` after CI40464275427 passed. [Apple readback](https://github.com/MerlinWerlin/App-Projects/commit/1a9d088f5dab733a9c4d736c2cda975eba59396a#commitcomment-206825120) confirms both products, availability for175territories, current listing and complete review contact. It also exposed two remaining setup defects: Apple returns an empty price-schedule shell, and newly required social-media age answers were omitted. The helper now checks actual manual-price records (preserving any configured schedule), and Cue explicitly answers no social-media functionality.13 ASC checks pass. App Privacy was published in the signed-in UI (read back27Oct07:00UTC): Device ID and Crash Data, App Functionality, not linked to identity and not for tracking. Main app download pricing was separately saved as A$0.00, mapped to175regions; there were no prior prices. New screenshots and final build attachment remain pending.
+
+The price and age correction [PR120](https://github.com/MerlinWerlin/App-Projects/pull/120) merged as `3511ee0`. [Apple readback at07:08UTC](https://github.com/MerlinWerlin/App-Projects/commit/3511ee0cb51dffd26d904e66b3d51f4b007f48fd#commitcomment-206825884) confirms actual current manual prices: Plus AUS2.99, trial AUS0.00, and successful age answers. Plus is READY_TO_SUBMIT. Trial is missing only its new review screenshot. Public policy and support URLs return200 and show27October copy; the policy layout was inspected.
+
+## Owner purchase practice — after the new TestFlight build arrives
+
+1. Open Settings > Cue Plus. Tap Get Plus, then cancel Apple’s sheet. Plus should remain locked.
+2. Start the free seven-day trial and confirm Apple’s free item. Check the trial message, Voice Pace and Voice Follow.
+3. Tap Get Plus and complete the sandbox purchase. TestFlight purchases do not charge real money.
+4. Tap Restore purchase, close and reopen Cue, and confirm Plus is still owned. Keep saved scripts; no reinstall is needed for this check.
+5. Report any error text or confirm all steps passed. App Review submission waits for these results. If Apple later requests a physical-device recording, include launch, the main flow and the purchase/Restore flow.
+
+
+## Price correction and final preparation � 27 October 2026
+
+Apple's configured Australian Plus price remains A$2.99, confirmed by the owner�s real TestFlight purchase sheet. There is no hard-coded 1.99 in current source. StoreKit's bare displayPrice can hide currency differences in TestFlight. The paywall now labels AUD as A$, labels other currencies explicitly, refreshes on foreground and before purchase, and requires another tap if the fetched price changed. Only a confirmed Australian storefront with conflicting foreign-currency product metadata uses the verified A$2.99 base price; foreign/unknown storefronts retain their own currency and amount. A missing product never produces a fabricated price. The Australian override must change alongside store/listing.json if the base price changes.
+
+The original native screenshot job failed after successful native compilation and launch because Maestro 2.12 confines takeScreenshot paths to its configured output folder. The flow now uses relative names and --test-output-dir. Current capture delivery and final build attachment are pending verification; no App Review submission has occurred.

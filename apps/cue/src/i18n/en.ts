@@ -153,6 +153,7 @@ export const en = {
   'plus.buy': 'Get Plus {price}',
   'plus.buyNoPrice': 'Get Plus',
   'plus.reloadPrice': 'Load App Store price',
+  'plus.priceChanged': 'The current price is {price}. Tap Get Plus again to continue.',
   'plus.restore': 'Restore purchase',
   'plus.unavailable': 'The App Store is unavailable right now. Nothing was charged. Please try again when connected. [E_STORE_UNAVAILABLE]',
   'plus.failed': 'The purchase could not be confirmed. Use Restore purchase to check before trying again. [{code}]',
