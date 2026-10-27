@@ -1,107 +1,44 @@
-import { MemoryKv, type KvStore } from '../core/library';
-import { DAY_MS, FIRST_LAUNCH_KEY, TRIAL_DAYS, earliestStamp, parseStamp, resolveFirstLaunch, trialLabel, trialState } from './trial';
-
-const T0 = Date.UTC(2026, 9, 25, 9, 0, 0);
-
-class BrokenKv implements KvStore {
-  async getItem(): Promise<string | null> {
-    throw new Error('keychain unavailable');
-  }
-  async setItem(): Promise<void> {
-    throw new Error('keychain unavailable');
-  }
-}
-
-describe('trialState', () => {
-  it('is a full 7 days at first launch', () => {
-    expect(TRIAL_DAYS).toBe(7);
-    expect(trialState(T0, T0)).toEqual({ active: true, daysLeft: 7, endsAt: T0 + 7 * DAY_MS });
-  });
-
-  it('counts whole days left, rounding up', () => {
-    expect(trialState(T0, T0 + 1).daysLeft).toBe(7);
-    expect(trialState(T0, T0 + DAY_MS).daysLeft).toBe(6);
-    expect(trialState(T0, T0 + 6 * DAY_MS + 1).daysLeft).toBe(1);
-    expect(trialState(T0, T0 + 7 * DAY_MS - 1)).toMatchObject({ active: true, daysLeft: 1 });
-  });
-
-  it('ends exactly 7 days after the first launch', () => {
-    expect(trialState(T0, T0 + 7 * DAY_MS)).toMatchObject({ active: false, daysLeft: 0 });
-    expect(trialState(T0, T0 + 400 * DAY_MS)).toMatchObject({ active: false, daysLeft: 0 });
-  });
-
-  it('tolerates small clock jitter but not rolling the clock back to before the first launch', () => {
-    expect(trialState(T0, T0 - 60_000)).toMatchObject({ active: true, daysLeft: 7 });
-    expect(trialState(T0, T0 - 3 * DAY_MS)).toMatchObject({ active: false, daysLeft: 0 });
-  });
+import { MemoryKv } from '../core/library';
+import { DAY_MS, TRIAL_DAYS, TRIAL_KEY, parseStamp, readStoredTrial, saveStoredTrial, trialLabel, trialStartFromPurchase, trialState } from './trial';
+const NOW = Date.UTC(2026, 9, 27, 0);
+test('fresh install never starts or persists a trial', async () => {
+  const kv = new MemoryKv(); const secure = new MemoryKv();
+  expect(await readStoredTrial(kv, secure)).toBeNull();
+  expect(trialState(null, NOW)).toEqual({active:false,started:false,daysLeft:0,endsAt:0});
+  expect(kv.data.size).toBe(0); expect(secure.data.size).toBe(0);
 });
-
-describe('stamps', () => {
-  it('parses only positive numbers', () => {
-    expect(parseStamp(String(T0))).toBe(T0);
-    expect(parseStamp(null)).toBeNull();
-    expect(parseStamp('')).toBeNull();
-    expect(parseStamp('nope')).toBeNull();
-    expect(parseStamp('-5')).toBeNull();
-    expect(parseStamp('0')).toBeNull();
-  });
-
-  it('picks the earliest valid stamp, or now when there is none', () => {
-    expect(earliestStamp([T0 + 5, null, T0], T0 + 99)).toBe(T0);
-    expect(earliestStamp([null, undefined], T0 + 99)).toBe(T0 + 99);
-  });
+test('old automatic preview is not a store trial', async () => {
+  const kv = new MemoryKv(); await kv.setItem('cue.firstLaunch.v1', String(NOW));
+  expect(await readStoredTrial(kv, null)).toBeNull();
 });
-
-describe('resolveFirstLaunch', () => {
-  it('first launch: stamps now into both stores', async () => {
-    const kv = new MemoryKv();
-    const secure = new MemoryKv();
-    expect(await resolveFirstLaunch(kv, secure, T0)).toBe(T0);
-    expect(kv.data.get(FIRST_LAUNCH_KEY)).toBe(String(T0));
-    expect(secure.data.get(FIRST_LAUNCH_KEY)).toBe(String(T0));
-  });
-
-  it('reinstall: kv is empty but the Keychain still has the old stamp, so the trial does not restart', async () => {
-    const kv = new MemoryKv();
-    const secure = new MemoryKv();
-    await secure.setItem(FIRST_LAUNCH_KEY, String(T0));
-    const first = await resolveFirstLaunch(kv, secure, T0 + 10 * DAY_MS);
-    expect(first).toBe(T0);
-    expect(kv.data.get(FIRST_LAUNCH_KEY)).toBe(String(T0));
-    expect(trialState(first, T0 + 10 * DAY_MS).active).toBe(false);
-  });
-
-  it('uses the earliest of the two and repairs the later one', async () => {
-    const kv = new MemoryKv();
-    const secure = new MemoryKv();
-    await kv.setItem(FIRST_LAUNCH_KEY, String(T0 - DAY_MS));
-    await secure.setItem(FIRST_LAUNCH_KEY, String(T0));
-    expect(await resolveFirstLaunch(kv, secure, T0 + DAY_MS)).toBe(T0 - DAY_MS);
-    expect(secure.data.get(FIRST_LAUNCH_KEY)).toBe(String(T0 - DAY_MS));
-  });
-
-  it('falls back to kv only when there is no secure store (Expo Go) or it throws', async () => {
-    const kv = new MemoryKv();
-    await kv.setItem(FIRST_LAUNCH_KEY, String(T0));
-    expect(await resolveFirstLaunch(kv, null, T0 + DAY_MS)).toBe(T0);
-    expect(await resolveFirstLaunch(kv, new BrokenKv(), T0 + DAY_MS)).toBe(T0);
-    const fresh = new MemoryKv();
-    expect(await resolveFirstLaunch(fresh, new BrokenKv(), T0)).toBe(T0);
-    expect(fresh.data.get(FIRST_LAUNCH_KEY)).toBe(String(T0));
-  });
-
-  it('ignores a corrupt stored value', async () => {
-    const kv = new MemoryKv();
-    await kv.setItem(FIRST_LAUNCH_KEY, 'garbage');
-    expect(await resolveFirstLaunch(kv, null, T0)).toBe(T0);
-    expect(kv.data.get(FIRST_LAUNCH_KEY)).toBe(String(T0));
-  });
+test('seven days exactly, rounded days left and expired endpoint', () => {
+  expect(TRIAL_DAYS).toBe(7);
+  expect(trialState(NOW, NOW).daysLeft).toBe(7);
+  expect(trialState(NOW, NOW + 6.5*DAY_MS)).toMatchObject({active:true,daysLeft:1});
+  expect(trialState(NOW, NOW+7*DAY_MS)).toMatchObject({active:false,started:true,daysLeft:0});
+  expect(trialState(NOW, NOW-3*DAY_MS).active).toBe(false);
 });
-
-describe('trialLabel', () => {
-  it('says how many days are left, singular on the last day, nothing after', () => {
-    expect(trialLabel(trialState(T0, T0))).toEqual({ key: 'plus.trial.left', n: 7 });
-    expect(trialLabel(trialState(T0, T0 + 6.5 * DAY_MS))).toEqual({ key: 'plus.trial.leftOne', n: 1 });
-    expect(trialLabel(trialState(T0, T0 + 8 * DAY_MS))).toBeNull();
-  });
+test('restore uses original transaction date, supports seconds and ISO, never invents missing dates', () => {
+  expect(trialStartFromPurchase({originalTransactionDateIOS:NOW-10*DAY_MS,transactionDate:NOW},NOW)).toBe(NOW-10*DAY_MS);
+  expect(trialStartFromPurchase({transactionDate:NOW/1000},NOW)).toBe(NOW);
+  expect(trialStartFromPurchase({purchaseDate:new Date(NOW).toISOString()},NOW)).toBe(NOW);
+  expect(trialStartFromPurchase({},NOW)).toBeNull();
+  expect(trialStartFromPurchase({transactionDate:NOW+9*DAY_MS},NOW)).toBeNull();
+});
+test('reinstall keeps the earliest stored transaction, a confirmed store reset clears both caches', async () => {
+  const kv = new MemoryKv(); const secure = new MemoryKv();
+  await saveStoredTrial(kv,secure,NOW-9*DAY_MS); kv.data.clear();
+  expect(await readStoredTrial(kv,secure)).toBe(NOW-9*DAY_MS);
+  expect(trialState(await readStoredTrial(kv,secure),NOW).active).toBe(false);
+  await saveStoredTrial(kv,secure,null); expect(await readStoredTrial(kv,secure)).toBeNull();
+});
+test('corrupt or inaccessible cache grants no access', async () => {
+  const kv = new MemoryKv(); await kv.setItem(TRIAL_KEY, 'broken');
+  expect(await readStoredTrial(kv,{getItem:async()=>{throw Error('locked');},setItem:async()=>{throw Error('locked');}})).toBeNull();
+  for(const raw of [null,'','NaN','-1','0']) expect(parseStamp(raw)).toBeNull();
+});
+test('trial labels show active time only', () => {
+  expect(trialLabel(trialState(null,NOW))).toBeNull();
+  expect(trialLabel(trialState(NOW,NOW))).toEqual({key:'plus.trial.left',n:7});
+  expect(trialLabel(trialState(NOW,NOW+6.5*DAY_MS))).toEqual({key:'plus.trial.leftOne',n:1});
 });

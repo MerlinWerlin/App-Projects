@@ -38,7 +38,9 @@ export default function PromptScreen() {
   const palette = app.can('colors') ? PROMPTER[prefs.colors] : PROMPTER.classic;
   const ref = useRef<PrompterHandle>(null);
 
-  const [mode, setMode] = useState<PaceMode>(prefs.pace === 'follow' && !loadSpeech() ? 'voice' : prefs.pace);
+  const [selectedMode, setMode] = useState<PaceMode>(prefs.pace === 'follow' && !loadSpeech() ? 'voice' : prefs.pace);
+  const voiceAllowed = app.can('voice');
+  const mode = voiceAllowed ? selectedMode : 'steady';
   const [running, setRunning] = useState(false);
   const [count, setCount] = useState<number | null>(null);
   const [speed, setSpeed] = useState(1);
@@ -247,11 +249,11 @@ export default function PromptScreen() {
       { text: t('prompt.mode.steady'), onPress: () => setMode('steady') },
       {
         text: t('prompt.mode.voice'),
-        onPress: () => setMode('voice'),
+        onPress: () => voiceAllowed ? setMode('voice') : router.push('/plus'),
       },
       {
         text: t('prompt.mode.follow'),
-        onPress: () => (follow ? setMode('follow') : Alert.alert(t('voice.followNeedsBuild'))),
+        onPress: () => !voiceAllowed ? router.push('/plus') : follow ? setMode('follow') : Alert.alert(t('voice.followNeedsBuild')),
       },
       { text: t('common.cancel'), style: 'cancel' },
     ]);

@@ -5,7 +5,7 @@ import { Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'r
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FONT_MAX, FONT_MIN, type PrompterColors } from '../src/core/prefs';
 import { t } from '../src/i18n';
-import { trialLabel } from '../src/plus/trial';
+import { trialLabel, trialState } from '../src/plus/trial';
 import { useApp } from '../src/state/AppState';
 import { PROMPTER, FONT } from '../src/theme/theme';
 import { Row, Section, Segmented, Stepper, SwitchRow } from '../src/ui/kit';
@@ -29,7 +29,8 @@ export default function Settings() {
           last
           onPress={async () => {
             const r = await app.restorePlus();
-            Alert.alert(r.ok ? t('plus.thanks') : r.message);
+            if (r.ok) Alert.alert(t(r.access.plus ? 'plus.thanks' : trialState(r.access.trialStart, Date.now()).active ? 'plus.trial.started' : 'plus.trial.expired'));
+            else if (r.reason !== 'cancelled') Alert.alert(r.message);
           }}
         />
       </Section>
@@ -104,6 +105,7 @@ export default function Settings() {
 
       <Section title={t('settings.about')} footer={t('settings.privacy')}>
         <Row icon="mail-outline" label={t('settings.feedback')} onPress={() => Linking.openURL('mailto:jaredbradley272+cue@gmail.com?subject=Cue%20feedback').catch(() => Alert.alert(t('error.unknown')))} />
+        <Row icon="shield-checkmark-outline" label={t('settings.privacyPolicy')} onPress={() => Linking.openURL('https://merlinwerlin.github.io/App-Projects/cue/privacy.html').catch(() => Alert.alert(t('error.unknown')))} />
         <Row icon="information-circle-outline" label={t('settings.version', { v: version })} last />
       </Section>
     </ScrollView>

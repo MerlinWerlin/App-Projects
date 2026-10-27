@@ -7,9 +7,9 @@ import { AccessibilityInfo, AppState as RNAppState, useColorScheme } from 'react
 import { LIBRARY_KEY, WELCOME_BODY, makeScript, parseLibrary, serializeLibrary, sortScripts, upsert, type Script } from '../core/library';
 import { DEFAULT_PREFS, PREFS_KEY, parsePrefs, type Prefs } from '../core/prefs';
 import { ENTITLEMENT_KEY, canUse, parseEntitlement, type PlusFeature, type Tier } from '../plus/entitlement';
-import { StubPurchaseProvider, type PurchaseProvider, type PurchaseResult } from '../plus/purchases';
+import { createPurchaseProvider, type PurchaseProvider, type PurchaseResult, type StoreAccess } from '../plus/purchases';
 import { t } from '../i18n';
-import { resolveFirstLaunch, trialState, type TrialState } from '../plus/trial';
+import { readStoredTrial, saveStoredTrial, trialState, type TrialState } from '../plus/trial';
 import { loadKv } from '../native/kv';
 import { loadSecureStore } from '../native/secureStore';
 import { DARK, LIGHT, type Theme } from '../theme/theme';
@@ -19,7 +19,7 @@ interface AppState {
   scripts: Script[];
   prefs: Prefs;
   tier: Tier;
-  /** 7-day Plus trial from the first launch (survives reinstall via the Keychain). */
+  /** Seven days from the user-started free App Store trial transaction. */
   trial: TrialState;
   theme: Theme;
   reduceMotion: boolean;
@@ -31,21 +31,24 @@ interface AppState {
   setPrefs(patch: Partial<Prefs>): void;
   can(f: PlusFeature): boolean;
   buyPlus(): Promise<PurchaseResult>;
+  startTrial(): Promise<PurchaseResult>;
   restorePlus(): Promise<PurchaseResult>;
 }
 
 const Ctx = createContext<AppState | null>(null);
 
 export function AppStateProvider({ children }: { children: ReactNode }) {
-  const kv = useRef(loadKv()).current;
-  const purchases = useRef<PurchaseProvider>(new StubPurchaseProvider(() => t('plus.unavailable'))).current;
+  const [kv] = useState(() => loadKv());
+  const [purchases] = useState<PurchaseProvider>(() => createPurchaseProvider());
+  const [secure] = useState(() => loadSecureStore());
+  const accessRevision = useRef(0);
   const [loaded, setLoaded] = useState(false);
   const [scripts, setScripts] = useState<Script[]>([]);
   const [prefs, setPrefsState] = useState<Prefs>(DEFAULT_PREFS);
   const [tier, setTier] = useState<Tier>('free');
-  const [firstLaunch, setFirstLaunch] = useState(() => Date.now());
+  const [trialStart, setTrialStart] = useState<number | null>(null);
   // Bumped when the app comes back to the foreground so the trial's days-left stays current.
-  const [clockTick, setClockTick] = useState(0);
+  const [clockTick, setClockTick] = useState(() => Date.now());
   const [sysReduce, setSysReduce] = useState(false);
   const scheme = useColorScheme();
 
@@ -56,7 +59,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
         kv.getItem(LIBRARY_KEY).catch(() => null),
         kv.getItem(PREFS_KEY).catch(() => null),
         kv.getItem(ENTITLEMENT_KEY).catch(() => null),
-        resolveFirstLaunch(kv, loadSecureStore(), Date.now()).catch(() => Date.now()),
+        readStoredTrial(kv, secure),
       ]);
       if (!alive) return;
       let list = parseLibrary(lib);
@@ -70,7 +73,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       setScripts(sortScripts(list));
       setPrefsState(pr);
       setTier(parseEntitlement(ent).tier);
-      setFirstLaunch(first);
+      setTrialStart(first);
       setLoaded(true);
     })();
     AccessibilityInfo.isReduceMotionEnabled()
@@ -78,14 +81,14 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       .catch(() => undefined);
     const sub = AccessibilityInfo.addEventListener('reduceMotionChanged', setSysReduce);
     const appSub = RNAppState.addEventListener('change', (s) => {
-      if (s === 'active') setClockTick((n) => n + 1);
+      if (s === 'active') setClockTick(Date.now());
     });
     return () => {
       alive = false;
       sub.remove();
       appSub.remove();
     };
-  }, [kv]);
+  }, [kv, secure]);
 
   const persistScripts = useCallback(
     (next: Script[]) => {
@@ -124,21 +127,43 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     [kv],
   );
 
-  const grant = useCallback(
-    async (source: 'purchase' | 'restore') => {
-      setTier('plus');
-      await kv.setItem(ENTITLEMENT_KEY, JSON.stringify({ version: 1, tier: 'plus', source, updatedAt: Date.now() }));
-    },
-    [kv],
-  );
+  const applyAccess = useCallback(async (access: StoreAccess, source: 'purchase' | 'restore') => {
+    setTier(access.plus ? 'plus' : 'free');
+    setTrialStart(access.trialStart);
+    await Promise.all([
+      kv.setItem(ENTITLEMENT_KEY, JSON.stringify({ version: 1, tier: access.plus ? 'plus' : 'free', source: access.plus ? source : 'none', updatedAt: Date.now() })).catch(() => undefined),
+      saveStoredTrial(kv, secure, access.trialStart),
+    ]);
+  }, [kv, secure]);
+
+  const transact = useCallback(async (action: 'buy' | 'startTrial' | 'restore'): Promise<PurchaseResult> => {
+    ++accessRevision.current;
+    const result = await purchases[action]().catch((): PurchaseResult => ({ ok: false, reason: 'failed', message: t('plus.failed', { code: 'E_STORE' }) }));
+    ++accessRevision.current;
+    if (result.ok) await applyAccess(result.access, action === 'restore' ? 'restore' : 'purchase');
+    return result;
+  }, [purchases, applyAccess]);
+
+  useEffect(() => {
+    if (!loaded) return;
+    const revision = ++accessRevision.current;
+    let alive = true;
+    void purchases.refresh().then(access => {
+      if (alive && access && revision === accessRevision.current) void applyAccess(access, 'restore');
+    }).catch(() => undefined);
+    return () => { alive = false; };
+  }, [loaded, clockTick, purchases, applyAccess]);
+
+  useEffect(() => {
+    const timer = setInterval(() => setClockTick(Date.now()), 60_000);
+    return () => clearInterval(timer);
+  }, []);
 
   const value = useMemo<AppState>(() => {
     const dark = prefs.theme === 'dark' || (prefs.theme === 'system' && scheme === 'dark');
     const reduceMotion = prefs.reduceMotion === 'on' || (prefs.reduceMotion === 'system' && sysReduce);
-    const trial = trialState(firstLaunch, Date.now());
-    // Plus features are open while the 7-day trial runs. Until real purchases are switched on (stub
-    // provider), test builds also get every Plus feature: there is no way to buy Plus yet.
-    const unlocked = tier === 'plus' || trial.active || !purchases.available;
+    const trial = trialState(trialStart, clockTick);
+    const unlocked = tier === 'plus' || trial.active;
     return {
       loaded,
       scripts,
@@ -154,20 +179,11 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       deleteScript,
       setPrefs,
       can: (f) => unlocked || canUse(tier, f),
-      buyPlus: async () => {
-        const r = await purchases.buy().catch((): PurchaseResult => ({ ok: false, reason: 'failed', message: t('error.unknown') }));
-        if (r.ok) await grant('purchase');
-        return r;
-      },
-      restorePlus: async () => {
-        const r = await purchases.restore().catch((): PurchaseResult => ({ ok: false, reason: 'failed', message: t('error.unknown') }));
-        if (r.ok) await grant('restore');
-        return r;
-      },
+      buyPlus: () => transact('buy'),
+      startTrial: () => transact('startTrial'),
+      restorePlus: () => transact('restore'),
     };
-    // clockTick only forces a re-read of Date.now() for the trial.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loaded, scripts, prefs, tier, firstLaunch, clockTick, scheme, sysReduce, purchases, saveScript, createScript, deleteScript, setPrefs, grant]);
+  }, [loaded, scripts, prefs, tier, trialStart, clockTick, scheme, sysReduce, purchases, saveScript, createScript, deleteScript, setPrefs, transact]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

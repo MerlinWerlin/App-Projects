@@ -1,0 +1,26 @@
+appId: com.jared797.cue
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- takeScreenshot: ${CUE_CAPTURE_DIR}/01-library
+- tapOn: 'Welcome to Cue.*'
+- assertVisible: Prompt
+- takeScreenshot: ${CUE_CAPTURE_DIR}/02-editor
+- tapOn: Prompt
+- assertVisible: Steady
+- takeScreenshot: ${CUE_CAPTURE_DIR}/03-prompter
+- openLink: cue://plus
+- tapOn:
+    text: Open
+    optional: true
+- assertVisible: Cue Plus
+- takeScreenshot: ${CUE_CAPTURE_DIR}/04-plus
+- scrollUntilVisible:
+    element:
+      text: Restore purchase
+    direction: DOWN
+    timeout: 20000
+- takeScreenshot: ${CUE_CAPTURE_DIR}/05-purchase-actions

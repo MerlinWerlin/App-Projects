@@ -1,0 +1,81 @@
+name: Cue release captures
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cue-release-capture
+  cancel-in-progress: false
+jobs:
+  capture:
+    runs-on: macos-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: apps/cue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Select Xcode and install capture tools
+        run: |
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          curl -fLsS https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.12.0/maestro.zip -o "$RUNNER_TEMP/maestro.zip"
+          curl -fLsS https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.12.0/checksums_sha256.txt -o "$RUNNER_TEMP/checksums_sha256.txt"
+          (cd "$RUNNER_TEMP" && grep 'maestro.zip' checksums_sha256.txt | shasum -a 256 -c -)
+          unzip -q "$RUNNER_TEMP/maestro.zip" -d "$RUNNER_TEMP/cue-maestro"
+          echo "$RUNNER_TEMP/cue-maestro/maestro/bin" >> "$GITHUB_PATH"
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare simulator build
+        run: |
+          node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("app.json"));p.expo.updates.enabled=false;fs.writeFileSync("app.json",JSON.stringify(p,null,2));'
+          npx expo prebuild --platform ios --no-install
+          cd ios
+          pod install > "$RUNNER_TEMP/cue-pods.log" 2>&1 || { tail -100 "$RUNNER_TEMP/cue-pods.log"; exit 1; }
+      - name: Build the actual app
+        run: |
+          xcodebuild -workspace ios/Cue.xcworkspace -scheme Cue -configuration Release \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/cue-derived" \
+            CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/cue-simulator.log" 2>&1 \
+            || { tail -180 "$RUNNER_TEMP/cue-simulator.log"; exit 1; }
+      - name: Capture iPhone and iPad screens
+        run: |
+          mkdir -p "$RUNNER_TEMP/cue-captures"
+          xcrun simctl list devices available --json > "$RUNNER_TEMP/cue-devices.json"
+          python3 - <<'PY'
+          import json,os
+          devices=json.load(open(os.environ['RUNNER_TEMP']+'/cue-devices.json'))['devices']
+          all_devices=[d for runtime,ds in sorted(devices.items(),reverse=True) if 'iOS' in runtime for d in ds]
+          phone=next((d for d in all_devices if d['name']=='iPhone 16 Pro Max'),None) or next(d for d in all_devices if 'Pro Max' in d['name'])
+          tablet=next(d for d in all_devices if 'iPad Pro 13' in d['name'] or 'iPad Pro (12.9-inch)' in d['name'])
+          with open(os.environ['RUNNER_TEMP']+'/cue-targets.txt','w') as f:
+              for name,d in [('iphone',phone),('ipad',tablet)]:
+                  f.write(name+' '+d['udid']+'\n')
+                  print(name,d['name'],d['udid'])
+          PY
+          while read -r KIND DEVICE; do
+            mkdir -p "$RUNNER_TEMP/cue-captures/$KIND"
+            xcrun simctl boot "$DEVICE"
+            xcrun simctl bootstatus "$DEVICE" -b
+            xcrun simctl install "$DEVICE" "$RUNNER_TEMP/cue-derived/Build/Products/Release-iphonesimulator/Cue.app"
+            xcrun simctl ui "$DEVICE" appearance dark
+            xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+            maestro --device "$DEVICE" test -e CUE_CAPTURE_DIR="$RUNNER_TEMP/cue-captures/$KIND" --debug-output "$RUNNER_TEMP/cue-captures/$KIND/debug" scripts/capture-flow.yaml
+            xcrun simctl shutdown "$DEVICE"
+          done < "$RUNNER_TEMP/cue-targets.txt"
+          printf 'Source: %s\nActual simulator captures; OTA disabled only for reproducible captures. No physical-device or sandbox-purchase claim. Inspect every image before store use.\n' "$GITHUB_SHA" > "$RUNNER_TEMP/cue-captures/README.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cue-release-captures
+          path: |
+            ${{ runner.temp }}/cue-captures
+            ${{ runner.temp }}/cue-simulator.log
+            ${{ runner.temp }}/cue-pods.log
+          retention-days: 14
