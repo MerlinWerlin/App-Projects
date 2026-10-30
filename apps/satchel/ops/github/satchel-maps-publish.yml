@@ -1,0 +1,72 @@
+# Satchel offline city map packs -> GitHub release assets on this repo (free, no accounts, no secrets).
+# INSTALL: copy this file to .github/workflows/satchel-maps-publish.yml in MerlinWerlin/App-Projects (the Satchel
+# build task can't write App-Projects), then run it from the Actions tab (workflow_dispatch, defaults are fine).
+# It builds every city in apps/satchel/tools/maps/cities.json, uploads <city>.tar files first and catalog.json LAST
+# (the app only lists cities that are in catalog.json), then checks the catalog downloads.
+# Data: © OpenStreetMap contributors (ODbL) via the Protomaps daily build and the Overpass API; style: Protomaps
+# basemaps (BSD-3). See apps/satchel/docs/THIRD_PARTY.md.
+name: satchel-maps-publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (must match MAPS_RELEASE in apps/satchel/src/core/citymaps.ts)'
+        required: true
+        default: 'satchel-maps-v1'
+        type: string
+      ratio:
+        description: 'Pixel ratio of the rendered tiles (2 = sharp on iPhone)'
+        required: true
+        default: '2'
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      R: ${{ github.repository }}
+      TAG: ${{ inputs.tag }}
+    defaults:
+      run:
+        working-directory: apps/satchel/tools/maps
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: System libraries for MapLibre Native (headless GL under xvfb)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb libcurl4 libglfw3 libuv1 libpng16-16 libicu74 libjpeg-turbo8 libwebp7 libopengl0 libegl1 libgles2 mesa-utils
+      - name: pmtiles CLI (go-pmtiles, latest release)
+        run: |
+          gh release download -R protomaps/go-pmtiles --pattern '*Linux_x86_64.tar.gz' -D /tmp/pmt
+          tar -xzf /tmp/pmt/*.tar.gz -C /tmp/pmt
+          sudo install /tmp/pmt/pmtiles /usr/local/bin/pmtiles
+          pmtiles version || true
+      - name: Install build deps
+        run: npm install --no-audit --no-fund
+      - name: Build city packs
+        run: xvfb-run -a -s "-screen 0 1024x768x24" node build.mjs --ratio "${{ inputs.ratio }}" --out out
+      - name: Create the release if missing
+        run: |
+          gh release view "$TAG" -R "$R" >/dev/null 2>&1 || \
+            gh release create "$TAG" -R "$R" --title "Satchel offline city maps ($TAG)" --latest=false \
+              --notes "Offline city map packs for the Satchel app. Map data © OpenStreetMap contributors, available under the Open Database Licence (ODbL), via Protomaps. Style: Protomaps basemaps (BSD-3)."
+      - name: Upload packs, then catalog.json last
+        run: |
+          cd out
+          xargs -a upload-1-packs.txt -d '\n' -n 10 gh release upload "$TAG" -R "$R" --clobber
+          gh release upload "$TAG" -R "$R" --clobber catalog.json
+      - name: Verify
+        run: |
+          want=$(sha256sum out/catalog.json | cut -d' ' -f1)
+          got=$(curl -fsSL "https://github.com/$R/releases/download/$TAG/catalog.json" | sha256sum | cut -d' ' -f1)
+          echo "catalog sha256 want $want got $got" | tee -a "$GITHUB_STEP_SUMMARY"
+          jq -r '.cities[] | "\(.id): \(.tiles) tiles, \(.pois) POIs, \(.bytes) bytes"' out/catalog.json | tee -a "$GITHUB_STEP_SUMMARY"
+          [ "$want" = "$got" ]

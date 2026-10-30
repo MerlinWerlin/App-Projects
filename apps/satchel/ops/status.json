@@ -1,16 +1,16 @@
 {
-  "tests": 268,
-  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); last PC queue report (e9516a4) clean",
-  "last_run": "2026-10-30 23:25 Sydney",
-  "stage": "trial",
-  "oversight_seen": 205,
-  "headline": "Ready to try on your iPhone",
+  "tests": 314,
+  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
+  "last_run": "2026-10-31 09:30 Sydney",
+  "stage": "owner-tested",
+  "oversight_seen": 210,
+  "headline": "Your TestFlight feedback is built: real maps, toilets, full emergency numbers, new look",
   "next_for_owner": [
-    "PR 105 is merged; Satchel's first TestFlight build stopped because iOS signing isn't set up yet. On your PC, in the satchel folder, run: npx eas-cli credentials -p ios (production profile; let it create or reuse the distribution certificate and provisioning profile for com.jared797.satchel), then tell Claude in the App Factory chat to re-run the ship.",
-    "When the build arrives, open TestFlight on your iPhone > Satchel.",
-    "Try the demo trip, then turn on flight mode and try again; export and import a trip.",
-    "Comment on this page with anything that looks wrong (docs/TRIAL.md has yes/no questions; they apply the same in TestFlight)."
+    "The changes reach TestFlight's Satchel as an over-the-air update (no new native code): open Satchel, close it fully and open it again (twice if needed).",
+    "Map tab > Offline city maps: download Kyoto, turn on flight mode, tap Show on map. (The city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.)",
+    "Try the new Toilets tab (Find toilets near me, Open in Apple Maps) and the Emergency tab for Afghanistan and Angola.",
+    "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md by commenting on this page."
   ],
   "trial_kit": true,
-  "next_stage": "owner-tested"
+  "next_stage": "release-prep"
 }

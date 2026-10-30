@@ -1,12 +1,15 @@
 // Shared building blocks: Screen, Title, Body, Card, PressableScale, Button, EmptyState, ToggleRow.
 // Every control names itself to screen readers; touch targets are at least 48 pt; colours come from tokens.
-import { useRef, type ReactNode } from 'react';
+// T50: richer look (elevated cards with soft shadows, pill chips, display type scale, warm primary buttons with an
+// optional icon). Props are unchanged; new props are optional.
+import { Ionicons } from '@expo/vector-icons';
+import { useRef, type ComponentProps, type ReactNode } from 'react';
 import { Animated, Pressable, ScrollView, Text, TextInput, View, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { haptic } from '../native/device.ts';
 import { useApp } from '../state/app.tsx';
 import { duration, pressScale } from '../theme/motion.ts';
-import { fonts, radius, space, TOUCH } from '../theme/tokens.ts';
+import { fonts, radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
 
 export function Screen({ children, scroll = true }: { children: ReactNode; scroll?: boolean }) {
   const { theme } = useApp();
@@ -23,7 +26,7 @@ export function Screen({ children, scroll = true }: { children: ReactNode; scrol
 export function Title({ children }: { children: ReactNode }) {
   const { theme } = useApp();
   return (
-    <Text accessibilityRole="header" style={{ fontFamily: fonts.display, fontSize: 30, color: theme.ink }}>
+    <Text accessibilityRole="header" style={[typeScale.displayL, { color: theme.ink }]}>
       {children}
     </Text>
   );
@@ -37,7 +40,20 @@ export function Body({ children, muted }: { children: ReactNode; muted?: boolean
 export function Card({ children, style }: { children: ReactNode; style?: StyleProp<ViewStyle> }) {
   const { theme } = useApp();
   return (
-    <View style={[{ backgroundColor: theme.card, borderRadius: radius.m, borderWidth: 1, borderColor: theme.line, padding: space.l, gap: space.s }, style]}>
+    <View
+      style={[
+        {
+          backgroundColor: theme.cardRaised,
+          borderRadius: radius.l,
+          borderWidth: 1,
+          borderColor: theme.dark ? theme.line : theme.paper,
+          padding: space.l,
+          gap: space.s,
+        },
+        shadowOf(theme, 'low'),
+        style,
+      ]}
+    >
       {children}
     </View>
   );
@@ -69,34 +85,74 @@ export function PressableScale(props: PressableProps & { children: ReactNode; an
   );
 }
 
-export function Button({ label, onPress, hint, kind = 'primary' }: { label: string; onPress: () => void; hint?: string; kind?: 'primary' | 'quiet' }) {
+type IconName = ComponentProps<typeof Ionicons>['name'];
+
+/**
+ * primary: warm filled (accentStrong, AA with onAccent) with a soft shadow. secondary: sea tint. quiet: outlined card.
+ * `icon` puts an Ionicons glyph before the label.
+ */
+export function Button({
+  label,
+  onPress,
+  hint,
+  kind = 'primary',
+  icon,
+}: {
+  label: string;
+  onPress: () => void;
+  hint?: string;
+  kind?: 'primary' | 'secondary' | 'quiet';
+  icon?: IconName;
+}) {
   const { theme } = useApp();
   const primary = kind === 'primary';
+  const secondary = kind === 'secondary';
+  const fg = primary ? theme.onAccent : secondary ? theme.sea : theme.ink;
   return (
     <PressableScale
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityHint={hint}
       onPress={onPress}
-      style={{
-        backgroundColor: primary ? theme.accent : 'transparent',
-        borderRadius: radius.m,
-        paddingHorizontal: space.l,
-        borderWidth: primary ? 0 : 1,
-        borderColor: theme.line,
-        alignItems: 'center',
-      }}
+      style={[
+        {
+          flexDirection: 'row',
+          gap: space.s,
+          backgroundColor: primary ? theme.accentStrong : secondary ? theme.seaSoft : theme.card,
+          borderRadius: radius.pill,
+          paddingHorizontal: space.xl,
+          borderWidth: primary || secondary ? 0 : 1,
+          borderColor: theme.line,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        primary ? shadowOf(theme, 'low') : null,
+      ]}
     >
-      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: primary ? theme.onAccent : theme.ink }}>{label}</Text>
+      {icon ? (
+        <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+          <Ionicons name={icon} size={18} color={fg} />
+        </View>
+      ) : null}
+      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, letterSpacing: 0.2, color: fg }}>{label}</Text>
     </PressableScale>
   );
 }
 
-export function EmptyState({ title, body, action }: { title: string; body: string; action?: ReactNode }) {
+export function EmptyState({ title, body, action, icon }: { title: string; body: string; action?: ReactNode; icon?: IconName }) {
   const { theme } = useApp();
   return (
     <Card style={{ alignItems: 'flex-start', gap: space.m }}>
-      <Text accessibilityRole="header" style={{ fontFamily: fonts.displayMedium, fontSize: 20, color: theme.ink }}>
+      {icon ? (
+        <View
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+          style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: theme.seaSoft, alignItems: 'center', justifyContent: 'center' }}
+        >
+          <Ionicons name={icon} size={26} color={theme.sea} />
+        </View>
+      ) : null}
+      <Text accessibilityRole="header" style={[typeScale.title, { color: theme.ink }]}>
         {title}
       </Text>
       <Body muted>{body}</Body>
@@ -165,7 +221,7 @@ export function TextField({
           minHeight: multiline ? 96 : TOUCH,
           borderWidth: 1,
           borderColor: error ? theme.danger : theme.line,
-          borderRadius: radius.s,
+          borderRadius: radius.m,
           paddingHorizontal: space.m,
           paddingVertical: space.s,
           backgroundColor: theme.card,
@@ -197,15 +253,15 @@ export function Chip({ label, selected, onPress, icon }: { label: string; select
         flexDirection: 'row',
         alignItems: 'center',
         gap: space.xs,
-        paddingHorizontal: space.m,
-        borderRadius: radius.l,
-        borderWidth: 1,
+        paddingHorizontal: space.l,
+        borderRadius: radius.pill,
+        borderWidth: selected ? 1.5 : 1,
         borderColor: selected ? theme.accent : theme.line,
-        backgroundColor: selected ? theme.accentSoft : theme.card,
+        backgroundColor: selected ? theme.accentSoft : theme.cardRaised,
       }}
     >
       {icon}
-      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.ink }}>{label}</Text>
+      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: selected ? theme.accentInk : theme.ink }}>{label}</Text>
     </PressableScale>
   );
 }
@@ -213,13 +269,19 @@ export function Chip({ label, selected, onPress, icon }: { label: string; select
 export function Warning({ text }: { text: string }) {
   const { theme } = useApp();
   return (
-    <View accessibilityRole="alert" style={{ backgroundColor: theme.accentSoft, borderRadius: radius.s, padding: space.m }}>
-      <Text style={{ fontFamily: fonts.body, fontSize: 15, color: theme.ink }}>{text}</Text>
+    <View
+      accessibilityRole="alert"
+      style={{ flexDirection: 'row', gap: space.s, backgroundColor: theme.warnSoft, borderRadius: radius.m, borderLeftWidth: 4, borderLeftColor: theme.warn, padding: space.m }}
+    >
+      <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+        <Ionicons name="alert-circle" size={20} color={theme.warn} />
+      </View>
+      <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 15, lineHeight: 21, color: theme.ink }}>{text}</Text>
     </View>
   );
 }
 
 export function Label({ children }: { children: ReactNode }) {
   const { theme } = useApp();
-  return <Text style={{ fontFamily: fonts.bodyBold, fontSize: 13, letterSpacing: 0.6, textTransform: 'uppercase', color: theme.muted }}>{children}</Text>;
+  return <Text style={[typeScale.caption, { fontSize: 13, color: theme.muted }]}>{children}</Text>;
 }

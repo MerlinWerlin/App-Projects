@@ -15,9 +15,10 @@ import type { EmergencyCard } from '../../src/core/model.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
-import { fonts, radius, space, TOUCH } from '../../src/theme/tokens.ts';
+import { fonts, radius, shadowOf, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
 import { callAndExplain, EmergencyCardView } from '../../src/ui/EmergencyCardView.tsx';
-import { Body, Button, EmptyState, PressableScale, Screen, TextField, Title } from '../../src/ui/kit.tsx';
+import { FadeInView, HeroHeader, IconBadge } from '../../src/ui/hero.tsx';
+import { Body, Button, EmptyState, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
 
 const TABLE = table as EmergencyTable;
 const NO_PICK: string | null = null;
@@ -63,8 +64,7 @@ export default function EmergencyScreen() {
   if (!loaded) {
     return (
       <Screen>
-        <Title>{t('emergency.title')}</Title>
-        <Body muted>{t('emergency.loading')}</Body>
+        <HeroHeader tone="emergency" illustration="cross" title={t('emergency.title')} subtitle={t('emergency.loading')} />
       </Screen>
     );
   }
@@ -73,17 +73,18 @@ export default function EmergencyScreen() {
 
   return (
     <Screen>
-      <View style={{ gap: space.xs }}>
-        <Title>{t('emergency.title')}</Title>
-        {display ? (
-          <>
-            <Text accessibilityRole="header" style={{ fontFamily: fonts.displayMedium, fontSize: 22, color: theme.ink }}>
-              {t('emergency.numbersFor', { country: display.country })}
-            </Text>
-            {origin ? <Body muted>{origin}</Body> : null}
-          </>
-        ) : null}
-      </View>
+      <FadeInView>
+        <HeroHeader tone="emergency" illustration="cross" title={t('emergency.title')}>
+          {display ? (
+            <View style={{ gap: space.xs }}>
+              <Text accessibilityRole="header" style={[typeScale.title, { color: theme.heroInk, maxWidth: '82%' }]}>
+                {t('emergency.numbersFor', { country: display.country })}
+              </Text>
+              {origin ? <Text style={[typeScale.small, { color: theme.heroMuted, maxWidth: '82%' }]}>{origin}</Text> : null}
+            </View>
+          ) : null}
+        </HeroHeader>
+      </FadeInView>
 
       {display ? (
         <Button
@@ -118,10 +119,10 @@ export default function EmergencyScreen() {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   paddingHorizontal: space.l,
-                  borderRadius: radius.s,
+                  borderRadius: radius.m,
                   borderWidth: 1,
                   borderColor: selected ? theme.accent : theme.line,
-                  backgroundColor: selected ? theme.accentSoft : theme.card,
+                  backgroundColor: selected ? theme.accentSoft : theme.cardRaised,
                 }}
               >
                 <Text style={{ flex: 1, fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink }}>{r.country}</Text>
@@ -163,13 +164,14 @@ export default function EmergencyScreen() {
             gap: space.m,
             paddingHorizontal: space.l,
             paddingVertical: space.s,
-            borderRadius: radius.m,
-            borderWidth: 1,
+            borderRadius: radius.l,
+            borderWidth: theme.dark ? 1 : 0,
             borderColor: theme.line,
-            backgroundColor: theme.card,
+            backgroundColor: theme.cardRaised,
+            ...shadowOf(theme, 'low'),
           }}
         >
-          <Ionicons name="bed-outline" size={24} color={theme.accent} />
+          <IconBadge name="bed-outline" tone="accent" />
           <View style={{ flex: 1, gap: 2 }}>
             <Text style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}>{t('emergency.hotelShortcut')}</Text>
             <Text numberOfLines={2} style={{ fontFamily: fonts.body, fontSize: 15, color: theme.muted }}>

@@ -212,7 +212,7 @@ export default function TicketScreen() {
           accessibilityLabel={t('ticket.close')}
           accessibilityHint={t('ticket.closeHint')}
           onPress={close}
-          style={{ minHeight: TOUCH + 12, borderRadius: radius.m, backgroundColor: theme.accent, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: space.s }}
+          style={{ minHeight: TOUCH + 12, borderRadius: radius.m, backgroundColor: theme.accentStrong, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: space.s }}
         >
           <Ionicons name="close" size={24} color={theme.onAccent} />
           <Text style={{ fontFamily: fonts.bodyBold, fontSize: 18, color: theme.onAccent }}>{t('ticket.close')}</Text>

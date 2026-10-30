@@ -1,16 +1,20 @@
-// Map tab (Map v0, FLOWS §11): the system map (online in Expo Go) with pins for bookings that have a position,
+// Map tab (Map v0, FLOWS §11): the phone's own map (loads while connected) with pins for bookings that have a position,
 // places saved on a trip and the bundled sample points for the demo cities, category toggles, a nearest-first
 // list, and "Where am I?" as one location check on tap (never continuous). Tap a pin or a spot on the map to select
 // it; Save place keeps it with a trip (§11.2) and a saved place offers Remove (with a confirm). OSM attribution
 // shows whenever points of interest are on screen; sample points and places saved from them stay labelled sample.
 // Opened from a trip's "Trip map" (?tripId, optionally ?placeId) it shows only that trip until "Show all trips"
 // (which sets ?tripId=all).
+// Offline city maps (T47): a list of the city packs in the satchel-maps-v1 release (saved so it shows offline) with
+// Download / progress / Cancel / Delete. When the map is over a downloaded city its raster tiles are drawn from the
+// phone, so that city works in flight mode, and an "Offline map: <city>" chip says so.
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
 import kyotoData from '../../src/content/demo_pois_kyoto.json';
 import tagData from '../../src/content/osm_poi_tags.json';
 import tokyoData from '../../src/content/demo_pois_tokyo.json';
+import { formatSize, overallProgress, pickCityFor, regionForCity, type CityCatalog, type CityMap } from '../../src/core/citymaps.ts';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
 import type { PermissionState } from '../../src/core/permissions.ts';
 import { activeTrip, addPlace, ALL_TRIPS, removePlace, SAME_SPOT_M, scopeParam, savedPins, saveTargets, scopeTrips, type PlaceError, type SavedPin } from '../../src/core/places.ts';
@@ -34,13 +38,16 @@ import {
   type Region,
 } from '../../src/core/poi.ts';
 import type { Key } from '../../src/i18n/en.ts';
+import { deleteCity, downloadCity, fetchCatalog, listInstalled, offlineTilesFor, type CatalogFailure, type DownloadJob, type DownloadPhase } from '../../src/native/cityMaps.ts';
 import { locateOnce, type Coords } from '../../src/native/location.ts';
 import { mapAvailable, SatchelMap, type MapFocus, type MapPin } from '../../src/native/maps.tsx';
+import { useNetworkStatus } from '../../src/native/network.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
-import { fonts, radius, space } from '../../src/theme/tokens.ts';
+import { fonts, radius, space, typeScale } from '../../src/theme/tokens.ts';
+import { FadeInView, HeroHeader, IconBadge, ProgressBar, SectionCard } from '../../src/ui/hero.tsx';
 import { kindKey } from '../../src/ui/kinds.tsx';
-import { Body, Button, Card, Chip, Label, PressableScale, Screen, TextField, Title } from '../../src/ui/kit.tsx';
+import { Body, Button, Card, Chip, Label, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
 import { PermissionNotice } from '../../src/ui/PermissionNotice.tsx';
 
@@ -68,6 +75,177 @@ type SaveForm = { name: string; tripId: string | null; errors: (PlaceError | 'tr
 const catKey = (id: MapCategory): Key => `map.cat.${id}`;
 const coordKey = (p: LatLon) => `${p.lat.toFixed(5)},${p.lon.toFixed(5)}`;
 
+// ---- Offline city maps (T47) ----
+
+type CatalogState = { s: 'loading' } | { s: 'ok'; catalog: CityCatalog; stale?: CatalogFailure } | { s: 'failed'; reason: CatalogFailure };
+type Job = { id: string; phase: DownloadPhase; pct: number };
+
+function OfflineMaps({ installed, refreshInstalled, onShow }: { installed: CityMap[]; refreshInstalled: () => Promise<void>; onShow: (city: CityMap) => void }) {
+  const { t, theme } = useApp();
+  const net = useNetworkStatus();
+  const [cat, setCat] = useState<CatalogState>({ s: 'loading' });
+  const [job, setJob] = useState<Job | null>(null);
+  const [msg, setMsg] = useState<{ text: string; ok: boolean } | null>(null);
+  const jobRef = useRef<DownloadJob | null>(null);
+  const mounted = useRef(true);
+
+  const load = useCallback(async () => {
+    setCat((c) => (c.s === 'ok' ? c : { s: 'loading' }));
+    const r = await fetchCatalog();
+    if (!mounted.current) return;
+    setCat(r.ok ? { s: 'ok', catalog: r.catalog, stale: r.stale } : { s: 'failed', reason: r.reason });
+  }, []);
+
+  useEffect(() => {
+    mounted.current = true;
+    load();
+    return () => {
+      mounted.current = false;
+      jobRef.current?.cancel();
+    };
+  }, [load]);
+
+  // Coming back online: look again if the list failed or is only the saved copy.
+  const needsRefresh = cat.s === 'failed' || (cat.s === 'ok' && !!cat.stale);
+  useEffect(() => {
+    if (net === 'online' && needsRefresh) load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [net]);
+
+  const size = (c: CityMap) => formatSize(c.bytes);
+
+  const start = async (city: CityMap) => {
+    if (jobRef.current) return;
+    setMsg(null);
+    setJob({ id: city.id, phase: 'download', pct: 0 });
+    const j = downloadCity(city, (phase, f) => {
+      const pct = Math.floor(overallProgress(phase, f) * 100);
+      setJob((cur) => (cur && cur.id === city.id && (cur.pct !== pct || cur.phase !== phase) ? { id: city.id, phase, pct } : cur));
+    });
+    jobRef.current = j;
+    const r = await j.promise;
+    jobRef.current = null;
+    if (!mounted.current) return;
+    setJob(null);
+    await refreshInstalled();
+    if (r.ok) setMsg({ text: t('citymaps.done', { city: city.name }), ok: true });
+    else setMsg({ text: t(`citymaps.fail.${r.reason}`, { city: city.name, size: formatSize(city.bytes * 2) }), ok: r.reason === 'cancelled' });
+  };
+
+  const confirmDelete = (city: CityMap) =>
+    Alert.alert(t('citymaps.deleteConfirm', { city: city.name }), t('citymaps.deleteBody', { size: size(city) }), [
+      { text: t('common.cancel'), style: 'cancel' },
+      {
+        text: t('citymaps.deleteAction'),
+        style: 'destructive',
+        onPress: async () => {
+          const r = await deleteCity(city.id);
+          await refreshInstalled();
+          setMsg(r.ok ? { text: t('citymaps.deleted', { city: city.name }), ok: true } : { text: t('citymaps.deleteFailed', { city: city.name }), ok: false });
+        },
+      },
+    ]);
+
+  // Catalog cities plus any downloaded city the list no longer has (it still works and can be deleted).
+  const installedIds = new Set(installed.map((c) => c.id));
+  const listed = cat.s === 'ok' ? cat.catalog.cities : [];
+  const rows: CityMap[] = [...listed.map((c) => installed.find((i) => i.id === c.id) ?? c), ...installed.filter((i) => !listed.some((c) => c.id === i.id))];
+
+  let status: string | null = null;
+  if (cat.s === 'loading' && rows.length === 0) status = t('citymaps.loading');
+  else if (cat.s === 'failed') status = t(cat.reason === 'not-published' ? 'citymaps.notPublished' : cat.reason === 'bad-data' ? 'citymaps.badData' : 'citymaps.unreachable');
+  else if (cat.s === 'ok' && cat.stale) status = t(cat.stale === 'not-published' ? 'citymaps.notPublished' : 'citymaps.stale');
+  else if (cat.s === 'ok' && rows.length === 0) status = t('citymaps.none');
+
+  return (
+    <SectionCard title={t('citymaps.heading')} subtitle={t('citymaps.intro')} icon="cloud-download-outline" tone="sea">
+      {status ? (
+        <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 15, color: theme.ink }}>
+          {status}
+        </Text>
+      ) : null}
+      {cat.s === 'failed' || (cat.s === 'ok' && (cat.stale || rows.length === 0)) ? (
+        <Button label={t('citymaps.retry')} hint={t('citymaps.retryHint')} kind="quiet" onPress={load} />
+      ) : null}
+
+      {rows.map((city) => {
+        const isInstalled = installedIds.has(city.id);
+        const mine = job?.id === city.id ? job : null;
+        return (
+          <View key={city.id} style={{ gap: space.s, paddingTop: space.m, borderTopWidth: 1, borderTopColor: theme.line }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
+              <IconBadge name={isInstalled ? 'checkmark-circle' : 'map-outline'} tone={isInstalled ? 'ok' : 'sea'} size="s" />
+              <View style={{ flex: 1 }}>
+                <Text style={[typeScale.bodyStrong, { color: theme.ink }]}>{city.name}</Text>
+                <Text style={[typeScale.small, { color: theme.muted }]}>{t('citymaps.meta', { country: city.country, size: size(city) })}</Text>
+              </View>
+            </View>
+            {mine ? (
+              <>
+                <ProgressBar progress={mine.pct / 100} tone="sea" label={t('citymaps.progressA11y', { city: city.name })} />
+                <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted, fontVariant: ['tabular-nums'] }}>
+                  {t(mine.phase === 'download' ? 'citymaps.downloading' : 'citymaps.unpacking', { pct: mine.pct })}
+                </Text>
+                <Button
+                  label={t('citymaps.cancel')}
+                  hint={t('citymaps.cancelHint')}
+                  kind="quiet"
+                  onPress={() => jobRef.current?.cancel()}
+                />
+              </>
+            ) : isInstalled ? (
+              <>
+                <View style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: space.xs, backgroundColor: theme.okSoft, borderRadius: radius.pill, paddingHorizontal: space.m, paddingVertical: space.xs }}>
+                  <Text style={{ fontFamily: fonts.bodyBold, fontSize: 14, color: theme.ok }}>{t('citymaps.installed')}</Text>
+                </View>
+                <View style={{ flexDirection: 'row', gap: space.s, flexWrap: 'wrap' }}>
+                  <PressableScale
+                    accessibilityRole="button"
+                    accessibilityLabel={t('citymaps.showA11y', { city: city.name })}
+                    accessibilityHint={t('citymaps.showHint')}
+                    onPress={() => onShow(city)}
+                    style={{ paddingHorizontal: space.l, borderRadius: radius.pill, backgroundColor: theme.seaSoft }}
+                  >
+                    <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.sea }}>{t('citymaps.show')}</Text>
+                  </PressableScale>
+                  <PressableScale
+                    accessibilityRole="button"
+                    accessibilityLabel={t('citymaps.deleteA11y', { city: city.name })}
+                    accessibilityHint={t('citymaps.deleteHint')}
+                    onPress={() => confirmDelete(city)}
+                    style={{ paddingHorizontal: space.l, borderRadius: radius.pill, backgroundColor: theme.dangerSoft }}
+                  >
+                    <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.danger }}>{t('citymaps.delete')}</Text>
+                  </PressableScale>
+                </View>
+              </>
+            ) : job ? (
+              <Body muted>{t('citymaps.oneAtATime')}</Body>
+            ) : (
+              <PressableScale
+                accessibilityRole="button"
+                accessibilityLabel={t('citymaps.downloadA11y', { city: city.name, size: size(city) })}
+                accessibilityHint={t('citymaps.downloadHint')}
+                onPress={() => start(city)}
+                style={{ paddingHorizontal: space.l, borderRadius: radius.pill, backgroundColor: theme.accentStrong, alignSelf: 'flex-start' }}
+              >
+                <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.onAccent }}>{t('citymaps.download')}</Text>
+              </PressableScale>
+            )}
+          </View>
+        );
+      })}
+
+      {msg ? (
+        <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: msg.ok ? theme.ok : theme.danger }}>
+          {msg.text}
+        </Text>
+      ) : null}
+      {rows.length > 0 ? <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{cat.s === 'ok' ? cat.catalog.attribution : t('citymaps.osm')}</Text> : null}
+    </SectionCard>
+  );
+}
+
 export default function MapScreen() {
   const { t, theme } = useApp();
   const router = useRouter();
@@ -80,6 +258,12 @@ export default function MapScreen() {
   const [saveFailed, setSaveFailed] = useState(false);
   const [loc, setLoc] = useState<Loc>({ s: 'idle' });
   const [focus, setFocus] = useState<MapFocus | null>(null);
+  const net = useNetworkStatus();
+  const [installed, setInstalled] = useState<CityMap[]>([]);
+  const refreshInstalled = useCallback(async () => setInstalled(await listInstalled()), []);
+  useEffect(() => {
+    refreshInstalled();
+  }, [refreshInstalled]);
 
   const set = SETS[cityIdx] ?? null;
   const catLabel = useCallback((id: string) => (isMapCategory(id) ? t(catKey(id)) : id), [t]);
@@ -141,6 +325,14 @@ export default function MapScreen() {
 
   // The map only reads its first region; later moves go through `focus`.
   const [initialRegion] = useState<Region>(() => (set ? regionFor([set.center, ...set.pois]) : regionFor(bookings)) ?? FALLBACK_REGION);
+  // Where the map is looking: picks the downloaded city whose tiles to draw.
+  const [view, setView] = useState<LatLon>(() => ({ lat: initialRegion.latitude, lon: initialRegion.longitude }));
+  useEffect(() => {
+    if (focus) setView({ lat: focus.region.latitude, lon: focus.region.longitude });
+  }, [focus]);
+  const offlineCity = useMemo(() => pickCityFor(view.lat, view.lon, installed), [view, installed]);
+  const offlineTiles = useMemo(() => (offlineCity ? offlineTilesFor(offlineCity) : null), [offlineCity]);
+  const showCity = useCallback((city: CityMap) => setFocus({ region: regionForCity(city), key: Date.now() }), []);
 
   const select = useCallback((s: Selected) => {
     setSelected(s);
@@ -368,6 +560,7 @@ export default function MapScreen() {
         </Card>
       ) : null}
       <Body muted>{t('map.online')}</Body>
+      <OfflineMaps installed={installed} refreshInstalled={refreshInstalled} onShow={showCity} />
 
       <View style={{ gap: space.s }}>
         <Button label={t('map.whereAmI')} hint={t('map.whereHint')} onPress={whereAmI} />
@@ -416,8 +609,7 @@ export default function MapScreen() {
         </Card>
       ) : null}
 
-      <View style={{ gap: space.s }}>
-        {heading(t('places.heading'))}
+      <SectionCard title={t('places.heading')} icon="bookmark-outline" tone="warn">
         {saved.length === 0 ? <Body muted>{t('places.none')}</Body> : null}
         {saved.map((s) => (
           <PressableScale
@@ -430,13 +622,16 @@ export default function MapScreen() {
               select({ type: 'saved', id: s.id });
               focusOn(s);
             }}
-            style={{ paddingVertical: space.xs, borderBottomWidth: 1, borderBottomColor: theme.line }}
+            style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.xs, borderTopWidth: 1, borderTopColor: theme.line }}
           >
-            <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink }}>{s.name}</Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted }}>{t('places.savedTo', { trip: s.tripName })}</Text>
+            <IconBadge name="bookmark" tone="warn" size="s" />
+            <View style={{ flex: 1 }}>
+              <Text style={[typeScale.bodyStrong, { color: theme.ink }]}>{s.name}</Text>
+              <Text style={[typeScale.small, { color: theme.muted }]}>{t('places.savedTo', { trip: s.tripName })}</Text>
+            </View>
           </PressableScale>
         ))}
-      </View>
+      </SectionCard>
 
       {SETS.length > 1 ? (
         <View style={{ gap: space.s }}>
@@ -469,13 +664,13 @@ export default function MapScreen() {
                 onPress={() => toggle(id)}
                 style={{
                   paddingHorizontal: space.m,
-                  borderRadius: radius.l,
+                  borderRadius: radius.pill,
                   borderWidth: 1,
                   borderColor: isOn ? theme.sea : theme.line,
-                  backgroundColor: isOn ? theme.card : theme.paper,
+                  backgroundColor: isOn ? theme.seaSoft : theme.paper,
                 }}
               >
-                <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: isOn ? theme.ink : theme.muted }}>{t(catKey(id))}</Text>
+                <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: isOn ? theme.sea : theme.muted }}>{t(catKey(id))}</Text>
               </PressableScale>
             );
           }}
@@ -490,7 +685,9 @@ export default function MapScreen() {
 
   return (
     <Screen scroll={false}>
-      <Title>{t('map.title')}</Title>
+      <FadeInView>
+        <HeroHeader compact tone="map" illustration="map" title={t('map.title')} />
+      </FadeInView>
       <View style={{ gap: space.xs }}>
         <SatchelMap
           pins={pins}
@@ -502,7 +699,23 @@ export default function MapScreen() {
           label={t('map.a11yMap')}
           fallbackTitle={t('map.noMapTitle')}
           fallbackBody={t('map.noMapBody')}
+          offlineTiles={offlineTiles}
+          limitZoom={net === 'offline'}
+          onRegionChange={(r) => setView({ lat: r.latitude, lon: r.longitude })}
         />
+        {offlineCity && offlineTiles ? (
+          <View
+            accessible
+            accessibilityLabel={t('citymaps.chipA11y', { city: offlineCity.name })}
+            style={{ alignSelf: 'flex-start', paddingHorizontal: space.m, paddingVertical: space.xs, borderRadius: radius.pill, backgroundColor: theme.okSoft }}
+          >
+            <Text style={{ fontFamily: fonts.bodyBold, fontSize: 13, color: theme.ok }}>{t('citymaps.chip', { city: offlineCity.name })}</Text>
+          </View>
+        ) : net === 'offline' ? (
+          <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>
+            {t('citymaps.offlineNoCity')}
+          </Text>
+        ) : null}
         {mapAvailable() ? <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('places.tapHint')}</Text> : null}
         {shownPois.length > 0 ? (
           <>
@@ -540,6 +753,7 @@ export default function MapScreen() {
               }}
               style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.xs, borderBottomWidth: 1, borderBottomColor: theme.line }}
             >
+              <IconBadge name="location-outline" tone="sea" size="s" />
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink }}>{item.name}</Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted }}>{cat}</Text>

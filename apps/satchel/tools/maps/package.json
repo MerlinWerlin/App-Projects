@@ -1,0 +1,12 @@
+{
+  "name": "satchel-map-packs",
+  "private": true,
+  "type": "module",
+  "description": "Builds Satchel's offline city map packs (raster tiles + OSM POIs) in GitHub Actions. Not part of the app bundle.",
+  "dependencies": {
+    "@maplibre/maplibre-gl-native": "^6.0.0",
+    "@protomaps/basemaps": "^5.0.0",
+    "pmtiles": "^4.0.0",
+    "sharp": "^0.34.0"
+  }
+}

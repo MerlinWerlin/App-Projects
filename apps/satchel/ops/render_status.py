@@ -88,7 +88,7 @@ def row(t):
 pct = round(100 * done / len(tasks)) if tasks else 0
 kit = bool(status.get("trial_kit"))
 kit_block = ("""<button id="kit" class="btn" type="button">Download trial kit (.zip)</button>
-<p class="small" id="kitmsg" aria-live="polite">Fallback only: your PC auto-start already serves Satchel (Expo Go > Recently opened). The kit holds the same code; a copy is also kept in Desktop\\Apps\\satchel.</p>"""
+<p class="small" id="kitmsg" aria-live="polite">Source code only, for reference: you test Satchel in TestFlight. The kit holds the same code; a copy is also kept in Desktop\\Apps\\satchel.</p>"""
              if kit else '<p class="small">The trial kit download appears here after the next build run publishes it.</p>')
 
 # The artifact host does not serve .zip files, so the kit is published as base64 text

@@ -15,9 +15,19 @@ Fallback only, if the PC auto-start is not serving Satchel: the Satchel Build pa
 Nothing here is confirmed on a real phone until you say so.
 
 ## New since your last test
+- 31 Oct (run 83, your TestFlight feedback): real offline city maps, every country's emergency numbers filled, a new Toilets tab, and a full design pass. Install the newest Satchel build from TestFlight (it may arrive as an update inside the app: close and reopen Satchel twice).
+  - **A. Map.** Map tab > Offline city maps: does it list cities (Kyoto, Tokyo, Sydney) with a size and a Download button? If it says the city maps are still being published, that part isn't live yet (yes/no)
+  - Download Kyoto, then turn on flight mode and tap Show on map: does the Kyoto map still draw streets and labels, with "© OpenStreetMap contributors" on it? (yes/no)
+  - With Wi-Fi or mobile data on, does the normal map show everywhere else? Is the "comes with the full build" message gone everywhere? (yes/no)
+  - **B. Emergency numbers.** Emergency tab: pick Afghanistan, then Angola: does each show police, ambulance and fire numbers with a source, a date and "verify locally"? Can you find any country with no number at all? (yes/no)
+  - **C. Toilets.** Toilets tab > Find toilets near me: does it list nearby toilets with distance, a walking direction and details like Free, Wheelchair or Changing table where known? (yes/no)
+  - Does "Open in Apple Maps" open walking directions to that toilet? (yes/no)
+  - In flight mode inside a downloaded city (e.g. Kyoto, use Near my hotel on the demo trip): does it still find toilets "from your offline Kyoto map"? (yes/no)
+  - **D. Look.** Do Trips, Map, Wallet, Emergency and Toilets now have coloured hero headers and richer cards (boarding-pass trip cards, countdown, local time, quick actions in Wallet), in both light and dark mode? Does anything still feel flat or grey? (yes/no)
+  - Do screens and cards fade in smoothly, with no bounce? (yes/no)
 - 26 Oct (run 27): an imported trip with the same name as one you already have is now called "<name> (copy)", so the two are easy to tell apart.
   - Import a trip you already have: is the new one named "<name> (copy)"? (yes/no)
-- 26 Oct (run 26): you can send a trip to someone (or to yourself) as a `.satchel` file, and bring one in. Trip screen > **Export trip** opens the share sheet (AirDrop, Messages, Files); Trips > **Import a trip** picks the file and opens it as a new, separate trip. Documents, the emergency card and medical notes are never put in the file. Opening a `.satchel` straight from Messages or Files comes later with the full app build; for now use Import a trip.
+- 26 Oct (run 26): you can send a trip to someone (or to yourself) as a `.satchel` file, and bring one in. Trip screen > **Export trip** opens the share sheet (AirDrop, Messages, Files); Trips > **Import a trip** picks the file and opens it as a new, separate trip. Documents, the emergency card and medical notes are never put in the file. Opening a `.satchel` straight from Messages or Files isn't wired up yet; use Import a trip.
   - On a trip with an attached ticket, does Export trip open the share sheet with a file named after the trip, ending in .satchel? (yes/no)
   - Import that file: does a second, separate copy of the trip open with its bookings, ticket image, saved places and packing list? (yes/no)
   - Pick a file that isn't a trip (e.g. a PDF): does it say "Trip couldn't be imported" and leave your trips unchanged? (yes/no)

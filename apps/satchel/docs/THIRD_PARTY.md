@@ -4,7 +4,7 @@ What Satchel ships that it did not write, the licence, and what the licence asks
 
 ## 1. OpenStreetMap data (ODbL 1.0)
 
-**Status today (TRIAL):** the app ships no OpenStreetMap data. The map uses the phone's system map, and the demo points in `src/content/demo_pois_*.json` are invented sample points (ops/DECISIONS.md, T09). The POI categories follow OpenStreetMap tag names (`src/content/osm_poi_tags.json`); tag names are a public convention, not database content. The map already shows "Categories follow OpenStreetMap tagging. © OpenStreetMap contributors" (`map.attribution`).
+**Status (31 Oct 2026, T47/T49):** the app downloads offline city map packs (raster tiles rendered from Protomaps' OpenStreetMap build plus an OSM POI extract) from App-Projects release assets, and the Toilets tab queries the public Overpass API when online. "© OpenStreetMap contributors" shows on the map whenever offline tiles are drawn, in the offline maps section and in the Toilets tab. Build and licence details: docs/MAP_PACKS.md. The bundled demo points in `src/content/demo_pois_*.json` are still invented sample points (T09).
 
 **From the NATIVE milestone (T12 offline map, T13 offline POIs)**, Satchel will ship city map extracts cut from Protomaps' OpenStreetMap builds and per-city POI extracts. Obligations (OSMF attribution guideline and the ODbL; see docs/research/MAP_SPIKE.md §3):
 

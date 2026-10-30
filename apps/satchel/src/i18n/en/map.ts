@@ -1,8 +1,8 @@
 // T09 strings (owned by T09). Keys prefixed 'map.' so they never clash with other features.
 export const map = {
   'map.a11yMap': 'Map of your bookings and nearby places',
-  'map.online': 'Map needs a connection in this test build. It uses the phone’s own map, which loads online. The offline map comes in a later build.',
-  'map.noMapTitle': 'The map can’t load in this build',
+  'map.online': 'While you’re connected, the phone’s own map loads. With no connection, a city map you’ve downloaded below still works.',
+  'map.noMapTitle': 'The map couldn’t load',
   'map.noMapBody': 'Your pins are listed here instead.',
 
   'map.city': 'Sample places near',
