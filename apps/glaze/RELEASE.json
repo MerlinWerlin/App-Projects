@@ -1,6 +1,6 @@
 {
-  "mode": "build",
-  "note": "Glaze: Scan my Home Screen (on-device text recognition), theme-designed monograms, 565-app catalogue, premium Themes browse",
+  "mode": "update",
+  "note": "Glaze: premium theme detail and Widgets tab, faster image loading, privacy notes for GitHub pack downloads",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
