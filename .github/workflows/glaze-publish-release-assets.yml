@@ -1,0 +1,50 @@
+# Publish already-built Glaze theme-pack assets (flat names, from scripts/packs/release_assets.mjs)
+# that sit on a branch, to a GitHub release, in the safe order: pack files, manifests, catalog.json LAST.
+# Uses only the built-in GITHUB_TOKEN (no accounts, no secrets). Then checks catalog.json downloads.
+name: glaze-publish-release-assets
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch holding assets/ and upload-*.txt'
+        required: true
+        default: 'glaze-packs-v1-assets'
+        type: string
+      tag:
+        description: 'Release tag'
+        required: true
+        default: 'glaze-packs-v1'
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      R: ${{ github.repository }}
+      TAG: ${{ inputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+      - name: Create the release if missing
+        run: |
+          gh release view "$TAG" -R "$R" >/dev/null 2>&1 || \
+            gh release create "$TAG" -R "$R" --title "Glaze theme packs ($TAG)" --notes "Theme art packs for the Glaze app." --latest=false
+      - name: Upload (files, manifests, catalog last)
+        run: |
+          cd assets
+          for list in upload-1-files.txt upload-2-manifests.txt upload-3-catalog.txt; do
+            if [ -s "../$list" ]; then xargs -a "../$list" -d '\n' -n 40 gh release upload "$TAG" -R "$R" --clobber; fi
+          done
+      - name: Verify
+        run: |
+          n=$(gh release view "$TAG" -R "$R" --json assets -q '.assets | length')
+          echo "assets on release: $n" | tee -a "$GITHUB_STEP_SUMMARY"
+          want=$(jq -r '.[] | select(.name=="catalog.json") | .sha256' plan.json 2>/dev/null || jq -r '.assets[]? | select(.name=="catalog.json") | .sha256' plan.json)
+          got=$(curl -fsSL "https://github.com/$R/releases/download/$TAG/catalog.json" | sha256sum | cut -d' ' -f1)
+          echo "catalog sha256 want $want got $got" | tee -a "$GITHUB_STEP_SUMMARY"
+          [ -z "$want" ] || [ "$want" = "$got" ]

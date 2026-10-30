@@ -1,0 +1,42 @@
+{
+  "alpine-starlight": {
+    "packVersion": 1,
+    "contentHash": "616b5a0cdc451dbf2eb82599f718f487e0e57a75800f4f239992f41214210b67"
+  },
+  "cloud-atelier": {
+    "packVersion": 1,
+    "contentHash": "0b5484ca88ddecb99a68c661bda00bca5cc46cd8019ceaf8a47d274d7b34f2c7"
+  },
+  "desert-afterglow": {
+    "packVersion": 1,
+    "contentHash": "c3017ea342afbafd477bb4bc47f6f5c023ca2fc2ce162d57730ceae462042670"
+  },
+  "firefly-grove": {
+    "packVersion": 1,
+    "contentHash": "2374f22141fc91b322a784434dc3e72a7a469f3171e16b660562539164c719a6"
+  },
+  "indigo-current": {
+    "packVersion": 1,
+    "contentHash": "fbd4cf5566e5de72903b25cff38c5335c64780f681fd7ad58de9bd3ba42da760"
+  },
+  "meadowglow": {
+    "packVersion": 1,
+    "contentHash": "e94b5645d6471ef7cbd906e2490b38a734b7734ecafa857b5dbd688d774a543d"
+  },
+  "moonpatch": {
+    "packVersion": 1,
+    "contentHash": "574cf13c036e1746607daf024a4826e0f3e48001caf9dbe3a0db3c24daab56ef"
+  },
+  "opal-abyss": {
+    "packVersion": 1,
+    "contentHash": "1a8027977ba72094729bceea6342be4365e1bfdc7f620309026033eca5f97fc0"
+  },
+  "rainlight": {
+    "packVersion": 1,
+    "contentHash": "aa8ff034faa680fb25b3cabb6218ee6727bc9584d6384b416aaf8e4b82a0639c"
+  },
+  "rosewater-reverie": {
+    "packVersion": 1,
+    "contentHash": "36e83858172ee151ba95dbf13a40f8afc52bc2f57ef73a4df00cc7931a028a88"
+  }
+}
