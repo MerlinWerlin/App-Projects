@@ -500,9 +500,18 @@ def testflight(app):
             say("- added internal tester " + tag)
         except RuntimeError as e:
             say(f"- add tester: **failed** ({str(e)[:300]})")
-    for b in get("/v1/builds", **{"filter[app]": app_id, "sort": "-uploadedDate", "limit": 3})["data"]:
+    say(f"- group has access to all builds: {attrs(g).get('hasAccessToAllBuilds')}")
+    builds = get("/v1/builds", **{"filter[app]": app_id, "sort": "-uploadedDate", "limit": 3})["data"]
+    for b in builds:
         a = attrs(b)
         say(f"- build {a['version']}: {a.get('processingState')}, expired {a.get('expired')}")
+    valid = [b for b in builds if attrs(b).get("processingState") == "VALID" and not attrs(b).get("expired")]
+    if valid and not attrs(g).get("hasAccessToAllBuilds"):
+        try:
+            call("POST", f"/v1/betaGroups/{g['id']}/relationships/builds", {"data": [{"type": "builds", "id": valid[0]["id"]}]})
+            say(f"- added build {attrs(valid[0])['version']} to the group")
+        except RuntimeError as e:
+            say(f"- add build to group: {str(e)[:200]}")
 
 
 def upload_shots(ver_id, locale, disp, folder):
