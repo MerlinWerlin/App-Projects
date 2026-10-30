@@ -66,7 +66,8 @@ test('fb-1022c: the Themes screen has no stagger and no centred-card pop', () =>
   assert.doesNotMatch(src, SPRINGY);
   assert.doesNotMatch(src, /setPopKeys|onMomentumScrollEnd|firstMount/);
   assert.match(src, /popKeys: NO_POPS/);
-  assert.match(src, /const nextSlot = \(_n: number\): number \| undefined => undefined;/);
+  // T162: pack cards are list rows that never get a stagger slot.
+  assert.doesNotMatch(src, /staggerIndex=/);
   // T107's deferred grid swap stays.
   assert.match(src, /startTransition\(\(\) => \{\s*setCategory/);
 });

@@ -17,7 +17,7 @@ import { withMonogram, type IconSpec } from '../core/iconspec';
 import { weakMemo } from '../core/perfCache';
 import { IconTile } from '../render/IconTile';
 import { durations, timing, useMotionReduced } from '../theme/motion';
-import { fonts, light, tabular } from '../theme/tokens';
+import { artFontsV2 as fonts, brandGlazeV2, tabularV2 as tabular } from '../theme/tokensV2';
 import { CustomisedBadge } from './CustomisedBadge';
 import { useT } from '../i18n';
 import { noMirror, noMirrorText } from './i18nLayout';
@@ -73,7 +73,8 @@ function chunk<T>(xs: T[], n: number): T[][] {
   return out;
 }
 
-export function HomeMock({
+// T162: memoised (props are plain values and stable callbacks), so a parent re-render skips it.
+export const HomeMock = memo(function HomeMock({
   specs: rawSpecs,
   width,
   background,
@@ -148,15 +149,15 @@ export function HomeMock({
       ]
         .filter(Boolean)
         .join(t('liveUi.homeMock.listSeparator'))}
-      style={[styles.phone, noMirror, { width: w, height: h, borderRadius: corner, backgroundColor: backgroundColour ?? light.glazeA }]}
+      style={[styles.phone, noMirror, { width: w, height: h, borderRadius: corner, backgroundColor: backgroundColour ?? brandGlazeV2.from }]}
     >
       <View style={StyleSheet.absoluteFill} pointerEvents="none">
         {background ?? (backgroundColour ? null : (
           <Svg width={w} height={h}>
             <Defs>
               <LinearGradient id={gid} x1="0%" y1="0%" x2="100%" y2="100%">
-                <Stop offset="0" stopColor={light.glazeA} stopOpacity={1} />
-                <Stop offset="1" stopColor={light.glazeB} stopOpacity={1} />
+                <Stop offset="0" stopColor={brandGlazeV2.from} stopOpacity={1} />
+                <Stop offset="1" stopColor={brandGlazeV2.to} stopOpacity={1} />
               </LinearGradient>
             </Defs>
             <Rect x={0} y={0} width={w} height={h} fill={`url(#${gid})`} />
@@ -251,7 +252,7 @@ export function HomeMock({
       </View>
     </View>
   );
-}
+});
 
 type PopCellProps = {
   children: ReactNode;

@@ -23,7 +23,8 @@ test('fb-1023: chips, sub-tabs and collections re-run the grid fade on Themes', 
 test('fb-1023: the Wallpapers tiles fade (opacity only) when the sub-tab or discovery tab changes', () => {
   const wp = strip(read('app', '(tabs)', 'wallpapers.tsx'));
   assert.match(wp, /useAnimatedStyle\(\(\) => \(\{ opacity: fade\.value \}\)\)/);
-  assert.match(wp, /<Animated\.View style=\{\[styles\.grid, gridFade\]\}>/);
+  // T162: the grid is a virtualised list; each memoised row fades with the same shared value.
+  assert.match(wp, /<Animated\.View style=\{\[styles\.row, rowFade\]\}>/);
   assert.doesNotMatch(wp, SPRINGY);
 });
 

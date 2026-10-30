@@ -3,7 +3,8 @@ import * as Crypto from 'expo-crypto';
 import * as ImagePicker from 'expo-image-picker';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Alert, Image, Linking, Pressable, StyleSheet, Text, View, type TextStyle } from 'react-native';
+import { Image as ExpoImage } from 'expo-image';
+import { Alert, Linking, Pressable, StyleSheet, Text, View, type TextStyle } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import Svg, { Circle, Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import {
@@ -226,7 +227,7 @@ export default function LiveScreen() {
                   >
                     <View style={[styles.thumb, continuous, { backgroundColor: c.tintSoft }]}>
                       {p.kind === 'gif' ? (
-                        <Image source={{ uri: p.sourceUri }} style={styles.thumbImg} resizeMode="cover" />
+                        <ExpoImage source={p.sourceUri} style={styles.thumbImg} contentFit="cover" cachePolicy="memory-disk" transition={0} recyclingKey={p.id} />
                       ) : (
                         <Feather name="film" size={20} color={c.tint} />
                       )}

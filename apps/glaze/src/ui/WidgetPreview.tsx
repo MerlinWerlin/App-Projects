@@ -10,14 +10,14 @@
 // instead (the core checked contrast against colours sampled from it, wallpaperPalette.ts).
 import { Feather } from '@expo/vector-icons';
 import { memo, useMemo, type ReactNode } from 'react';
-import { Image, StyleSheet, Text, View, type TextStyle } from 'react-native';
+import { Image as ExpoImage } from 'expo-image';
+import { StyleSheet, Text, View, type TextStyle } from 'react-native';
 import Svg, { Circle, Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import type { DisplayFont } from '../core/artwork';
 import type { WidgetFill, WidgetKind, WidgetRegion, WidgetSpec } from '../core/widgetSets';
 import { daysUntil } from '../core/widgetStudio';
 import { useT } from '../i18n';
-import { fonts } from '../theme/tokens';
-import { continuous } from '../theme/tokensV2';
+import { artFontsV2 as fonts, continuous } from '../theme/tokensV2';
 import type { FeatherName } from './featherName';
 import { displayFontStyle } from './ThemeCard';
 
@@ -255,7 +255,7 @@ export const WidgetPreview = memo(function WidgetPreview({ spec, width, photoUri
 
   // Behind a see-through pane: the user's photo when it is their wallpaper, else the theme wallpaper.
   let wallLayer: ReactNode = null;
-  if (pane && wallpaperUri) wallLayer = <Image source={{ uri: wallpaperUri }} style={StyleSheet.absoluteFill} resizeMode="cover" />; // i18n-ignore (JSX, no copy)
+  if (pane && wallpaperUri) wallLayer = <ExpoImage source={wallpaperUri} style={StyleSheet.absoluteFill} contentFit="cover" cachePolicy="memory-disk" transition={0} recyclingKey={wallpaperUri} />; // i18n-ignore (JSX, no copy)
   else if (pane && spec.tokens.wallpaper.length) wallLayer = <WallpaperLayer colours={spec.tokens.wallpaper} id={`${ids}wall`} />; // i18n-ignore (JSX, no copy)
 
   return (
@@ -288,7 +288,7 @@ export const WidgetPreview = memo(function WidgetPreview({ spec, width, photoUri
           body = (
             <>
               {r.fill ? <FillLayer fill={r.fill} opacity={r.fillOpacity} id={`${ids}${r.id}`} /> : null}
-              {photoUri && spec.photoRef ? <Image source={{ uri: photoUri }} style={StyleSheet.absoluteFill} resizeMode="cover" /> : null}
+              {photoUri && spec.photoRef ? <ExpoImage source={photoUri} style={StyleSheet.absoluteFill} contentFit="cover" cachePolicy="memory-disk" transition={0} recyclingKey={photoUri} /> : null}
             </>
           );
         } else if ((r.role === 'band' || r.role === 'scrim') && r.fill) {

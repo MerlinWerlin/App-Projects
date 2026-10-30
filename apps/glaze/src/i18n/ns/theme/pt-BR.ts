@@ -162,6 +162,7 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
     retryHint: 'Retoma o download de onde parou',
     ready: 'Baixado neste iPhone. Você pode removê-lo quando quiser em Armazenamento, nos Ajustes.',
     readyA11y: 'O pacote {pack} foi baixado',
+    size: 'Tamanho: {size}',
   },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {

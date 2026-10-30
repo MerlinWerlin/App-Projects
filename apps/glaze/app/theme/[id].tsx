@@ -96,6 +96,10 @@ import { SeamlessWidgetPreview } from '../../src/ui/SeamlessWidgetPreview';
 import { SeamlessWidgetControls, type SeamlessControlsStrings } from '../../src/ui/SeamlessWidgetControls';
 import { localAssetUri, seamlessDeviceHere } from '../../src/ui/seamlessSetup';
 import { artPackOf } from '../../src/core/artPackThemes';
+import { isRemoteArtTheme, remoteArtDetailView } from '../../src/core/remoteCatalog';
+import { formatBytes } from '../../src/core/themePack';
+import { useRemoteArtTheme } from '../../src/native/useRemoteCatalog';
+import { RemoteArtImage } from '../../src/ui/RemoteArtImage';
 import { FIRST_RUN_TIP_IDS, type TipId as AnyTipId } from '../../src/core/tips';
 import { tipsForInstallMode } from '../../src/core/installMethods';
 import { PROFILE_INSTALL_ENABLED } from '../../src/config/install';
@@ -160,7 +164,9 @@ type SaveState = 'idle' | 'saved' | 'denied' | 'error';
 
 export default function ThemeDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const theme = getAnyTheme(typeof id === 'string' ? id : undefined);
+  // T160: a remote art pack from the R2 catalogue resolves too (bundled themes win).
+  const remote = useRemoteArtTheme(typeof id === 'string' ? id : undefined);
+  const theme = getAnyTheme(typeof id === 'string' ? id : undefined) ?? remote.theme;
   const { c } = useColorsV2();
   const router = useRouter();
   const { t, script } = useT();
@@ -174,10 +180,10 @@ export default function ThemeDetailScreen() {
       </View>
     );
   }
-  return <ThemeDetail theme={theme} />;
+  return <ThemeDetail theme={theme} remoteWallpaperUri={remote.theme === theme ? remote.wallpaperUri : null} />;
 }
 
-function ThemeDetail({ theme: base }: { theme: Theme }) {
+function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remoteWallpaperUri: string | null }) {
   const { c, scheme } = useColorsV2();
   const router = useRouter();
   const { t, script } = useT();
@@ -187,10 +193,12 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
   // T47: pack themes download their artwork. The detail shows Download / progress / error / ready,
   // and uses the downloaded copy (with any pack-only motifs) once it is on the phone.
   const pack = usePackAccess(base);
-  const packView = packDetailView(base, pack);
+  // T160: a remote art pack always downloads first (free packs without Plus).
+  const remoteArt = isRemoteArtTheme(base) ? base : null;
+  const packView = remoteArt ? remoteArtDetailView(pack) : packDetailView(base, pack);
   const theme = usePackTheme(base, wantsPackArtwork(packView));
   const canApply = canApplyFromDetail(packView);
-  const packName = base.packId ? (packOf(base.id)?.name ?? base.packId) : '';
+  const packName = remoteArt ? remoteArt.name : base.packId ? (packOf(base.id)?.name ?? base.packId) : '';
   const saver = useWallpaperSaver();
   // T26: the user's chosen icon shape for this theme (kept per theme, used when applying).
   const studio = useStudio();
@@ -395,6 +403,8 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
   const artBackground =
     artImage != null ? (
       <Image source={artImage} resizeMode="cover" style={{ width: screenW, height: screenH }} accessibilityIgnoresInvertColors /> // i18n-ignore (code after a JSX element)
+    ) : remoteArt ? (
+      <RemoteArtImage theme={remoteArt} localUri={remoteWallpaperUri} width={screenW} height={screenH} /> // i18n-ignore (code after a JSX element)
     ) : null;
   const previewBackground = photo ? (
     <PhotoWallpaperView photo={photo} width={screenW} height={screenH} maxGrain={300} /> // i18n-ignore (code after a JSX element)
@@ -454,7 +464,8 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
 
   const onSaveWallpaper = async () => {
     const from = wallSource;
-    const artPackUri = artPack ? artPackWallpaperUri(artPack.artPack.id) : null;
+    // T160: a downloaded remote art pack saves its local wallpaper file.
+    const artPackUri = artPack ? (artPackWallpaperUri(artPack.artPack.id) ?? remoteWallpaperUri) : null;
     const res: { ok: boolean; reason?: string; why?: SaveFailure; message?: string } = photo
       ? await photoSaver.save(photo, size)
       : from === 'space-photo' && spacePhoto.uri
@@ -588,7 +599,7 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
             first action (opening a theme), one line at a time, never stacked; "?" brings them back. */}
         <ContextTip ids={DETAIL_TIPS} />
 
-        {showsPackCard(packView) ? <PackCard view={packView} packName={packName} onDownload={onDownloadPack} /> : null}
+        {showsPackCard(packView) ? <PackCard view={packView} packName={packName} onDownload={onDownloadPack} bytes={remoteArt?.remoteArt.bytes} /> : null}
 
         {/* L2: one large phone-shaped preview with a Home / Lock toggle. */}
         <SquircleCard size="large" elevation="raised" style={styles.side}>
@@ -656,7 +667,7 @@ function ThemeDetail({ theme: base }: { theme: Theme }) {
         {/* T103 (fb-1022 G5a): credit + licence for a Webb photo, with Download / Remove (on a tap only). */}
         {spacePhoto.photo ? <PhotoCredit theme={theme} style={styles.side} /> : null}
         {/* T130: credit + licence for an art-pack theme (from its meta.json). */}
-        {artPack ? <ArtPackCredit theme={artPack} style={styles.side} /> : null}
+        {artPack && artPack.artPack.credits ? <ArtPackCredit theme={artPack} style={styles.side} /> : null}
         {/* T133: the Seamless widget (wallpaper crop + floating art) for art-pack themes only. */}
         {artPack ? <SeamlessCard artPackId={artPack.artPack.id} /> : null}
 
@@ -1407,9 +1418,9 @@ function SeamlessCard({ artPackId }: { artPackId: string }) {
 }
 
 /** T47: the pack card on a pack theme's detail (Download, progress, error + Try again, downloaded). */
-function PackCard({ view, packName, onDownload }: { view: PackDetailView; packName: string; onDownload: () => void }) {
+function PackCard({ view, packName, onDownload, bytes }: { view: PackDetailView; packName: string; onDownload: () => void; bytes?: number }) {
   const { c } = useColorsV2();
-  const { t, script } = useT();
+  const { t, script, locale } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
   const icon =
     view.kind === 'ready'
@@ -1437,6 +1448,7 @@ function PackCard({ view, packName, onDownload }: { view: PackDetailView; packNa
         {view.kind === 'download' ? (
           <>
             <Text style={[...ts('callout'), { color: c.ink }]}>{t('theme.pack.download', params)}</Text>
+            {bytes ? <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.pack.size', { size: formatBytes(bytes, locale) })}</Text> : null}
             <PillButton
               label={t('theme.pack.downloadCta')}
               icon="download"

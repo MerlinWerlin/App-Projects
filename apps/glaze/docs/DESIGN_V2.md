@@ -13,7 +13,7 @@ Where things live:
 | `useColorsV2()` hook (palette + scheme) | `src/theme/useTokens.ts` | — |
 | Shared components | `src/ui/LargeTitleHeader.tsx`, `InsetGroup.tsx`, `PillButton.tsx`, `SquircleCard.tsx`, `GlassBar.tsx`, barrel `src/ui/v2.ts` | i18n/RTL guards |
 
-Every screen and component is on v2 (T56/T83/T84). The v1 tokens (`src/theme/tokens.ts`) remain only for the phone mocks (HomeMock, LockMock, PhoneFrame, WidgetPreview, CatalogueWidgetPreview), which keep the brand fonts for their artwork; `useColors()` and the legacy Button are gone (guard tests in src/core/guard.test.ts).
+Every screen and component is on v2 (T56/T83/T84). Since T163 (30 Oct) `src/theme/tokensV2.ts` is the only token set: the v1 `tokens.ts` is deleted and the phone mocks take their brand fonts from `artFontsV2`; `useColors()` and the legacy Button are gone (guard tests in src/core/guard.test.ts and src/core/designGuard.test.ts).
 
 ## 1. Principles
 
@@ -79,7 +79,7 @@ System font (SF Pro on iOS, Roboto on Android) with weights, so it feels native 
 | `caption1` / `caption2` | 12 / 16, 11 / 13 | 400 / 500 | 0 / 0.06 | Icon labels, badges |
 | `button` / `navTitle` | 17 / 22 | 600 | -0.41 | Pill labels, collapsed bar title |
 
-Numbers that change keep tabular figures (`tabular` in tokens.ts).
+Numbers that change keep tabular figures (`tabularV2` in tokensV2.ts).
 
 ## 4. Shape, space, size
 
@@ -166,6 +166,14 @@ All strings come in through props, so the components themselves add no catalogue
 | Feedback `feedback` | Form fields, 6 buttons, fallback address block | Fields in an InsetGroup (rows with inline inputs); Send as a filled block pill; fallback actions as tinted pills |
 | Tips `tips` | Grouped list of tips with Show again / Hide buttons | InsetGroups per feature; each tip an InsetRow with status value and a small tinted pill |
 | Sheets (`Sheet`, LivePhotoSheet, IconOverrideSheet...) | Card with title row, close icon, spring up over dimmed backdrop | `thick` material, 32 pt top corners, grabber, `title2` header, `overlay` shadow; same spring, fade with Reduce Motion |
+
+## 30 Oct consolidation (T163, owner-1030 B)
+
+- **One token set.** `src/theme/tokens.ts` is deleted. What the five phone mocks used from it moved into `src/core/designV2.ts` (re-exported by tokensV2) with the same values: `artFontsV2` (Unbounded/Manrope, artwork only), `brandGlazeV2` (`#7A2E6B → #E0794F`, HomeMock's no-wallpaper gradient), and v1 `tabular` = `tabularV2`. Nothing looks different.
+- **The system in tokensV2:** type scale `typeV2`/`textV2` (named steps); spacing `spaceV2` (4-pt grid, `xxs` 2 is the only half step); chrome radii `chromeRadiusV2` = exactly **card 24 / control 14 / pill 999** (`radiusV2.group` 22, `cardLarge` 28 and `sheet` 32 stay as legacy names with their own values; folding them into `card` is a visual decision for the critique round); shape radii kept apart: `iconTileRadius(size)` and the new `circleRadius(size)` (half the side) for dots, discs and number badges; one elevation style `shadowV2(level, scheme)` (`elevationV2` levels; v1 `elevation` is gone with tokens.ts); `onArtV2` (`ink #FFFFFF`, `black #000000`) for ink over photos and artwork, the same in both schemes.
+- **Guard ratchet** `src/core/designGuard.test.ts`: counts raw hex / `rgb(a)(` colours, numeric `fontSize` and numeric `border*Radius` literals in `app/**/*.tsx` and `src/ui/**/*.tsx`. `BASELINE` holds per-file counts; a file going up, or a new file adding any, fails. Artwork files (phone mocks, widget previews, intro art, pet pixel art, widget option art, swatch ink picker) are in `ART_ALLOWLIST` with a reason and not counted. Lower a file's baseline when you clean it.
+- **Mechanical cleanup (exact values only):** chrome colours 90 → 79, font sizes 3 → 2, radii 40 → 25 across the scanned files (allowlisted art included in these totals). Circles now use `circleRadius(n)`, the pill button `radiusV2.pill`, the pets preview `radiusV2.card`, WallpaperTile's live badge `typeV2.caption2.fontSize`, white/black over art `onArtV2`.
+- **Left for later:** `app/(tabs)/*.tsx` and `app/theme/[id].tsx` were not touched (parallel workers); their counts are recorded. Remaining non-art literals are scrims over art (`rgba(0,0,0,0.3…0.6)`, several distinct alphas), the Skeleton shimmer gradient, LivePhotoGuide's illustration, the tab-bar label size 11 and a few non-circle radii (6, 20, 36, 9, 3 grabber) that match no token.
 
 ## 10. Rules that carry over
 

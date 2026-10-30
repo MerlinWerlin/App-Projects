@@ -9,6 +9,7 @@ ever requested. Users may fill any icon with their own photo; that image never l
 | --- | --- | --- | --- |
 | Feather icons (v4.29) | App icon glyphs (primary set), UI icons | https://github.com/feathericons/feather, bundled as a font by `@expo/vector-icons` | MIT, Copyright (c) 2013-2017 Cole Bemis |
 | @expo/vector-icons | Font loader / component for Feather | https://github.com/expo/vector-icons | MIT, Copyright (c) 2015 Joel Arvidsson, (c) 2016-present 650 Industries |
+| ThumbHash encoder (algorithm and reference code by Evan Wallace) | Build-time placeholder hashes for remote art packs, `scripts/packs/thumbhash.mjs` (not shipped in the app) | https://github.com/evanw/thumbhash | MIT, Copyright (c) 2023 Evan Wallace |
 | Unbounded | Display / headings | Google Fonts via `@expo-google-fonts/unbounded` | SIL Open Font License 1.1 |
 | Manrope | Body text | Google Fonts via `@expo-google-fonts/manrope` | SIL Open Font License 1.1 |
 | In-house glyphs (`bank`, `pizza`, `game-controller`, `pill`, `ticket`, `dumbbell`, `paw`, `baby`, `car`, `plane`, `leaf`, `utensils`) | App icon glyphs for categories Feather lacks | Original artwork, `src/render/inhouse.ts` | Glaze, all rights reserved |

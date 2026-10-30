@@ -16,7 +16,7 @@ import { cropDisplayLayout, deviceForScreen, lockAspect, type Crop, type LoopPro
 import { ensurePhotosWriteAccess, openAppSettings, useOffscreenCapture } from '../render/saveWallpaper';
 import type { Script } from '../core/i18n';
 import { useT } from '../i18n';
-import { radiusV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
+import { onArtV2, radiusV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { PillButton } from './PillButton';
 import { Sheet } from './Sheet';
@@ -348,7 +348,7 @@ const OffscreenFrame = forwardRef<
       importantForAccessibility="no-hide-descendants"
       style={{ position: 'absolute', left: -10000, top: 0, width: layout.width, height: layout.height }}
     >
-      <View ref={ref} collapsable={false} style={{ width: layout.width, height: layout.height, overflow: 'hidden', backgroundColor: '#000' }}>
+      <View ref={ref} collapsable={false} style={{ width: layout.width, height: layout.height, overflow: 'hidden', backgroundColor: onArtV2.black }}>
         <ExpoImage
           source={data.source}
           contentFit={data.fit}

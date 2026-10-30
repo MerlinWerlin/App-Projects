@@ -2,13 +2,31 @@
 // expo-file-system (through the src/native/fs.ts adapter) plus a tiny observable store with the
 // cache index, download progress and errors. Files live under documentDirectory/packs/<id>/,
 // the index in documentDirectory/packs/index.json. Works in Expo Go (no native module).
-// No request is ever made while PACK_BASE_URL is empty (src/config/packs.ts).
+// No request is ever made while the pack base URL is empty (src/config/packs.ts).
 // Entitlement is NOT checked here: src/plus/usePackAccess.ts gates downloads on Glaze Plus.
+// T160 (owner-1030 A): also the remote catalogue (catalog.json cached in documentDirectory/packs/
+// catalog.json, re-fetched at most every 6 h or on pull, last good copy kept offline) and remote
+// art pack downloads into documentDirectory/packs/<id>/ (src/core/remoteCatalog.ts decides).
 import Constants from 'expo-constants';
-import { PACK_BASE_URL } from '../config/packs';
+import { Dimensions, PixelRatio } from 'react-native';
+import { packBaseUrl, packEnvFrom } from '../config/packs';
 import { base64Decode, base64Encode, concatBytes } from '../core/bytes';
 import { isMotifId } from '../core/artwork';
-import { PackError, downloadPack, loadPackContent, packsEnabled, removePack, type Transport } from '../core/packDownloader';
+import {
+  PackError,
+  downloadPack,
+  downloadRemoteArtPack,
+  fetchCatalogText,
+  loadPackContent,
+  loadRemoteArt,
+  packsEnabled,
+  remoteArtCacheEntry,
+  removePack,
+  resolvePackBaseUrl,
+  type Transport,
+} from '../core/packDownloader';
+import type { Catalog, RemoteArtManifest } from '../core/packCatalog';
+import { CATALOG_CACHE_FILE, catalogNeedsFetch, decideCatalog, parseCatalogCache, serializeCatalogCache, type CatalogCache, type CatalogFetch } from '../core/remoteCatalog';
 import { registerPackMotifs, unregisterPackMotifs } from '../core/packMotifs';
 import { restorePackMotifs } from '../core/packRestore';
 import { cacheEntryFor, cacheIndexAdd, cacheIndexRemove, parseCacheIndex, type PackCacheIndex, type PackContent } from '../core/themePack';
@@ -81,9 +99,15 @@ export type PackStoreState = {
   /** Progress 0..1 per pack id while downloading. */
   busy: Record<string, number>;
   errors: Record<string, string>;
+  /** T160: the remote catalogue to list (last good copy), or null. */
+  catalog: Catalog | null;
+  /** True while catalog.json is being fetched. */
+  catalogRefreshing: boolean;
+  /** Verified, downloaded remote art packs by id (read on demand by remoteArtOnDevice). */
+  remoteArt: Record<string, RemoteArtManifest>;
 };
 
-let state: PackStoreState = { index: { version: 1, packs: [] }, loaded: false, busy: {}, errors: {} };
+let state: PackStoreState = { index: { version: 1, packs: [] }, loaded: false, busy: {}, errors: {}, catalog: null, catalogRefreshing: false, remoteArt: {} };
 const listeners = new Set<() => void>();
 
 function set(patch: Partial<PackStoreState>) {
@@ -103,7 +127,29 @@ export function getPackState(): PackStoreState {
 }
 
 /** Packs download only once the owner configures hosting. */
-export const PACKS_ENABLED = packsEnabled(PACK_BASE_URL);
+/** Expo extra `packEnv` ('staging' | 'production', default production) picks the base URL. */
+function configuredBaseUrl(): string {
+  try {
+    const extra = Constants.expoConfig?.extra as Record<string, unknown> | undefined;
+    return packBaseUrl(packEnvFrom(extra?.packEnv));
+  } catch {
+    return '';
+  }
+}
+
+/** The pack base URL for this build ('' = packs disabled, no request is ever made). */
+export const PACK_BASE: string = configuredBaseUrl();
+
+/** Normalised base URL, or null when disabled or malformed. */
+export const PACK_BASE_RESOLVED: string | null = (() => {
+  try {
+    return resolvePackBaseUrl(PACK_BASE);
+  } catch {
+    return null;
+  }
+})();
+
+export const PACKS_ENABLED = packsEnabled(PACK_BASE);
 
 export async function loadPackIndex(): Promise<void> {
   if (state.loaded || !INDEX) return;
@@ -146,12 +192,15 @@ function messageFor(e: unknown): string {
  * Returns null on success or a user-facing error message.
  */
 export async function downloadPackToDevice(packId: string): Promise<string | null> {
+  // T160: a remote art pack (Settings › Storage re-download goes through here too).
+  if (PACKS_ENABLED && !state.catalog) await refreshCatalog();
+  if (catalogPack(packId)) return downloadRemoteArtToDevice(packId);
   await loadPackIndex();
   if (packId in state.busy) return null;
   set({ busy: { ...state.busy, [packId]: 0 }, errors: { ...state.errors, [packId]: '' } });
   try {
     const r = await downloadPack({
-      baseUrl: PACK_BASE_URL,
+      baseUrl: PACK_BASE,
       packId,
       transport: deviceTransport,
       appVersion: appVersion(),
@@ -174,6 +223,11 @@ export async function downloadPackToDevice(packId: string): Promise<string | nul
 export async function removePackFromDevice(packId: string): Promise<void> {
   await loadPackIndex();
   contentCache.delete(packId);
+  remoteCache.delete(packId);
+  if (packId in state.remoteArt) {
+    const { [packId]: _gone, ...rest } = state.remoteArt;
+    set({ remoteArt: rest });
+  }
   unregisterPackMotifs(packId);
   try {
     await removePack(deviceTransport, packId);
@@ -231,4 +285,154 @@ export function restoreDownloadedPacks(): Promise<void> {
     })();
   }
   return restoring;
+}
+
+// ------------------------------------------------------------ T160: remote catalogue + art packs
+
+const CATALOG_URI = ROOT ? `${ROOT}${CATALOG_CACHE_FILE}` : null;
+/** Don't hit the network again within a minute in one session (a pull still waits for this). */
+const MIN_ATTEMPT_GAP_MS = 60_000;
+let catalogCache: CatalogCache | null = null;
+let catalogCacheRead = false;
+let lastAttempt = 0;
+let catalogRun: Promise<void> | null = null;
+
+/** The catalogue entry for an id, if the remote catalogue lists it. */
+export function catalogPack(id: string) {
+  return state.catalog?.packs.find((p) => p.id === id) ?? null;
+}
+
+async function readCatalogCache(): Promise<CatalogCache | null> {
+  if (catalogCacheRead || !CATALOG_URI) return catalogCache;
+  catalogCacheRead = true;
+  try {
+    const info = await fs.getInfoAsync(CATALOG_URI);
+    catalogCache = info.exists ? parseCatalogCache(await fs.readAsStringAsync(CATALOG_URI)) : null;
+  } catch {
+    catalogCache = null;
+  }
+  return catalogCache;
+}
+
+/**
+ * Load the cached catalogue and, when it is stale (6 h) or `force` (pull to refresh), fetch a new
+ * one. Offline or a bad file keeps the last good copy. Does nothing at all (no file read, no
+ * request) while packs are disabled. Never rejects.
+ */
+export function refreshCatalog(force = false): Promise<void> {
+  if (!PACKS_ENABLED || !PACK_BASE_RESOLVED) return Promise.resolve();
+  if (catalogRun) return catalogRun;
+  catalogRun = (async () => {
+    try {
+      const cached = await readCatalogCache();
+      const now = Date.now();
+      // Show the cached copy at once; a fetch (if due) replaces it when it arrives.
+      if (!state.catalog && cached) set({ catalog: decideCatalog(cached, null, now).catalog });
+      let fetched: CatalogFetch = null;
+      if (catalogNeedsFetch(cached, now, force) && now - lastAttempt >= MIN_ATTEMPT_GAP_MS) {
+        lastAttempt = now;
+        set({ catalogRefreshing: true });
+        try {
+          fetched = { ok: true, text: await fetchCatalogText(deviceTransport, PACK_BASE) };
+        } catch (e) {
+          fetched = { ok: false, error: e instanceof Error ? e.message : String(e) };
+        }
+      }
+      const d = decideCatalog(cached, fetched, now);
+      if (d.save && d.cache && CATALOG_URI && ROOT) {
+        catalogCache = d.cache;
+        try {
+          await fs.makeDirectoryAsync(ROOT, { intermediates: true }).catch(() => undefined);
+          await fs.writeAsStringAsync(CATALOG_URI, serializeCatalogCache(d.cache));
+        } catch {
+          // Still listed for this session; cached next time.
+        }
+      }
+      set({ catalog: d.catalog, catalogRefreshing: false });
+    } catch {
+      set({ catalogRefreshing: false });
+    } finally {
+      catalogRun = null;
+    }
+  })();
+  return catalogRun;
+}
+
+/** The phone's screen long edge in pixels (picks the wallpaper size class to download). */
+function screenLongEdgePx(): number {
+  try {
+    const s = Dimensions.get('screen');
+    return Math.round(Math.max(s.width, s.height) * PixelRatio.get());
+  } catch {
+    return 2796;
+  }
+}
+
+/** file:// URI of a file in a downloaded remote art pack. */
+export function remoteArtFileUri(id: string, path: string | null | undefined): string | null {
+  return ROOT && path ? `${ROOT}${id}/${path}` : null;
+}
+
+/** Read-once cache of verified downloaded remote art packs. */
+const remoteCache = new Map<string, Promise<RemoteArtManifest | null>>();
+
+/**
+ * A downloaded remote art pack, verified again on first read. A pack that fails verification is
+ * dropped from the index so the theme offers the download again. Never rejects.
+ */
+export function remoteArtOnDevice(id: string): Promise<RemoteArtManifest | null> {
+  const cached = remoteCache.get(id);
+  if (cached) return cached;
+  const p = (async () => {
+    try {
+      await loadPackIndex();
+      const m = await loadRemoteArt(deviceTransport, id);
+      if (m) set({ remoteArt: { ...state.remoteArt, [id]: m } });
+      else {
+        remoteCache.delete(id);
+        if (state.index.packs.some((x) => x.id === id)) await saveIndex(cacheIndexRemove(state.index, id));
+      }
+      return m;
+    } catch {
+      remoteCache.delete(id);
+      return null;
+    }
+  })();
+  remoteCache.set(id, p);
+  return p;
+}
+
+/**
+ * Download (or resume) a remote art pack listed in the catalogue. Call only through src/plus
+ * (a Plus pack's entitlement is checked there; free packs need none). Returns null on success or
+ * a user-facing error message.
+ */
+export async function downloadRemoteArtToDevice(id: string): Promise<string | null> {
+  await loadPackIndex();
+  if (id in state.busy) return null;
+  const entry = catalogPack(id);
+  if (!entry) return t('plus.packErrors.generic');
+  set({ busy: { ...state.busy, [id]: 0 }, errors: { ...state.errors, [id]: '' } });
+  try {
+    const r = await downloadRemoteArtPack({
+      baseUrl: PACK_BASE,
+      id,
+      packVersion: entry.packVersion,
+      transport: deviceTransport,
+      appVersion: appVersion(),
+      screenLongEdgePx: screenLongEdgePx(),
+      onProgress: (p) => set({ busy: { ...state.busy, [id]: p.totalBytes ? p.doneBytes / p.totalBytes : 0 } }),
+    });
+    remoteCache.set(id, Promise.resolve(r.manifest));
+    set({ remoteArt: { ...state.remoteArt, [id]: r.manifest } });
+    await saveIndex(cacheIndexAdd(state.index, remoteArtCacheEntry(r.manifest, new Date())));
+    return null;
+  } catch (e) {
+    const msg = messageFor(e);
+    set({ errors: { ...state.errors, [id]: msg } });
+    return msg;
+  } finally {
+    const { [id]: _done, ...rest } = state.busy;
+    set({ busy: rest });
+  }
 }

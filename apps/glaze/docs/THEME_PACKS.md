@@ -283,3 +283,42 @@ All three: `licence: "original"`, `generator: "procedural"`, `credits: "Glaze (o
 python3 scripts/brand/make-starter-packs.py /tmp/starter-packs
 node scripts/import-theme-packs.mjs /tmp/starter-packs --replace
 ```
+
+## Remote art packs (R2)
+
+T159 (owner-1030 A2-A3). Theme folders (`themes/<id>/`, the art-pack format above) become downloadable packs hosted on Cloudflare R2. The contract is `src/core/packCatalog.ts` (`parseCatalog`, `parseRemoteArtManifest`); the builder checks its own output with both.
+
+**Layout** under `PACK_BASE_URL` (and `dist/packs/`, which is gitignored):
+
+```
+catalog.json                                          every pack: id, name, packVersion, plus, bytes, manifest, thumb, thumbhash, palette, tags, mood, addedAt
+art/<id>/v<packVersion>/manifest.json                 assets with role, size, bytes, sha256, mime; written LAST in the folder
+art/<id>/v<packVersion>/wallpaper-2796.<sha8>.webp    1290x2796   (also -2556: 1179x2556, -1334: 750x1334, centre-cropped)
+art/<id>/v<packVersion>/widget-small|medium|large.<sha8>.webp   hero art with alpha, source size capped at the reference size
+art/<id>/v<packVersion>/thumb.<sha8>.webp             240x520 gallery thumbnail
+```
+
+**Commands** (Node 22, no dependencies):
+
+```
+npm run packs:build   -- [--themes themes] [--out dist/packs] [--only id,id] [--plus id,id | --plus-file scripts/packs/tiers.json] [--encoder auto|sharp|pillow|png] [--min-app 1.0.0]
+npm run packs:publish -- [--dir dist/packs] [--dry-run]
+node --test "scripts/packs/*.test.mjs"
+```
+
+- **Images**: `sharp` if installed (WebP q82, effort 4), else `python3` + Pillow (WebP q82, method 4), else a warning and the original PNGs (one wallpaper class) plus a PNG thumb. ThumbHash of the wallpaper is computed in JS (`scripts/packs/thumbhash.mjs`, MIT, see LICENSES.md).
+- **Plus**: ids listed in `scripts/packs/tiers.json` (`{ "plus": [...] }`) or `--plus` are marked `plus: true`; everything else is free.
+- **Versions**: `scripts/packs/versions.json` keeps `{ id: { packVersion, contentHash } }`; `contentHash` is the sha256 of the manifest without `packVersion` (so every file hash, palette, meta, plus flag and minAppVersion). Same hash keeps the version, any change gives `v+1` in a new folder. Commit `versions.json` after publishing. Old version folders stay on R2 (phones mid-download keep working); dist only holds the current one. `--only` rebuilds some packs and keeps the rest of the existing `catalog.json`.
+- **Publish**: env `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` (or `.env` in the app folder, gitignored). S3 API at `https://<account>.r2.cloudflarestorage.com`, region `auto`, path-style, SigV4 signed in `scripts/packs/sigv4.mjs` (tested against AWS's published vectors). Upload order: pack files, then manifests, then `catalog.json` last. Objects whose HEAD shows the same size, MD5 ETag and Cache-Control are skipped; a versioned manifest already on R2 with different bytes stops the run (bump the version instead of overwriting). Every object is HEAD-verified afterwards (size, content type). `--dry-run` needs no env and makes no network calls. Secrets are never printed.
+- **Cache headers**: everything under `art/` is `public, max-age=31536000, immutable` (file names carry the hash, manifests live in versioned folders); `catalog.json` is `public, max-age=300`. Content-Type from the extension (`image/webp`, `image/png`, `application/json`).
+- **CI**: `scripts/packs/publish-packs.yml` is a manual-dispatch GitHub Actions workflow (written, not run); auto-ship moves it to `.github/workflows/` once the four repo secrets exist.
+
+## App side (remote catalogue)
+
+T160 (owner-1030 A). How the app uses the R2 layout in `src/core/packCatalog.ts`:
+
+- **Base URL.** `src/config/packs.ts` has `PACK_BASE_URLS = { staging, production }` (both empty today). Expo extra `packEnv: "staging"` picks staging; anything else is production. Put the bucket's public `https://pub-<hash>.r2.dev` URL there first, a custom domain later. While the chosen URL is empty nothing changes: no catalogue, no remote themes, **no request at all** (tests assert it).
+- **Catalogue.** `src/native/packs.ts` keeps `catalog.json` in `documentDirectory/packs/catalog.json` with the time it was fetched. On the Themes tab the cached copy is listed at once and re-fetched at most every 6 h (`refreshRemoteCatalog()` forces it, for pull to refresh). Offline, an HTTP error or a bad file keeps the last good catalogue (`src/core/remoteCatalog.ts` `decideCatalog`, never throws).
+- **Gallery.** Each catalogue pack becomes an art-pack theme (`remoteArtTheme`: palette → icon style, drawn fallback wallpaper, categories from tags) with a `remoteArt` ref (pack version, Plus flag, size, thumbnail URL, ThumbHash). They join the art section after the bundled art packs; a bundled theme with the same id wins. Cards show the thumbnail with expo-image (`cachePolicy="memory-disk"`, ThumbHash placeholder; `src/ui/RemoteArtImage.tsx`).
+- **Download.** The theme detail's pack card offers Download for every remote pack. Free packs need no Plus; Plus packs show the Plus sheet (`src/plus/usePackAccess.ts`, the only place that reads the entitlement). `downloadRemoteArtPack` (`src/core/packDownloader.ts`) fetches `art/<id>/v<n>/manifest.json`, then only the files this phone needs (`assetsForDevice`, by screen long edge in px) with the same Range resume, size + SHA-256 checks and one retry as theme packs, and writes the manifest (cut down to those files) last into `documentDirectory/packs/<id>/`. A different version on the phone is removed first. It appears in Settings › Storage like any pack (remove / re-download).
+- **After download.** The files are verified again on first read; the detail previews and saves the local wallpaper (`file://`), and the credit comes from the downloaded `meta`. A damaged file drops the pack from the index so Download shows again. The Seamless widget card stays for bundled art packs only for now.

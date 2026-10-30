@@ -47,7 +47,7 @@ import {
 import { useT } from '../../src/i18n';
 import { durations, timing, useMotionReduced } from '../../src/theme/motion';
 import type { Script } from '../../src/core/i18n';
-import { continuous, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
+import { circleRadius, continuous, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import type { FeatherName } from '../../src/ui/featherName';
 import { SaveAsLivePhotoButton } from '../../src/ui/LivePhotoSheet';
@@ -721,8 +721,8 @@ const styles = StyleSheet.create({
   },
   trim: { height: sizeV2.touch + spaceV2.sm, justifyContent: 'center' },
   trimMid: { flexShrink: 1, textAlign: 'center' },
-  trackBg: { position: 'absolute', height: 6, borderRadius: 3 },
-  trackSel: { position: 'absolute', height: 6, borderRadius: 3 },
+  trackBg: { position: 'absolute', height: 6, borderRadius: circleRadius(6) },
+  trackSel: { position: 'absolute', height: 6, borderRadius: circleRadius(6) },
   handle: { position: 'absolute', top: spaceV2.xs, width: HANDLE, height: sizeV2.touch, justifyContent: 'center' },
   knob: { width: 20, height: 40, borderRadius: 6, alignItems: 'center', justifyContent: 'center' },
   trimLabels: {

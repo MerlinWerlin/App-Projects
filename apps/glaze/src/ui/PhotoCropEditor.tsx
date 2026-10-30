@@ -43,7 +43,7 @@ import {
 import { Overlay as ThemeOverlay, type PhotoWallpaperData } from '../render/PhotoWallpaperView';
 import { useT } from '../i18n';
 import { timing, useMotionReduced } from '../theme/motion';
-import { radiusV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { onArtV2, radiusV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { HomeMock } from './HomeMock';
 import { noMirror, textStyleFor } from './i18nLayout';
 import { LockMock } from './LockMock';
@@ -377,7 +377,7 @@ export function PhotoCropEditor({
           hitSlop={12}
           style={styles.toggle}
         >
-          <Feather name={showHome ? 'lock' : 'grid'} size={12} color="#FFFFFF" />
+          <Feather name={showHome ? 'lock' : 'grid'} size={12} color={onArtV2.ink} />
           <Text maxFontSizeMultiplier={1.4} style={[styles.toggleText, textStyleFor(script, textV2.caption2)]}>
             {showHome ? t('wallpaper.crop.lock') : t('wallpaper.crop.home')}
           </Text>
@@ -401,5 +401,5 @@ const styles = StyleSheet.create({
     gap: spaceV2.xs,
     backgroundColor: 'rgba(20,16,28,0.62)',
   },
-  toggleText: { ...textV2.caption2, color: '#FFFFFF', fontWeight: '600' },
+  toggleText: { ...textV2.caption2, color: onArtV2.ink, fontWeight: '600' },
 });

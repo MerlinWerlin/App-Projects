@@ -13,10 +13,10 @@
 // behind same-sized placeholders, with tiles already on screen kept mounted (core/perfReveal).
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { ListRenderItem } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming, type SharedValue } from 'react-native-reanimated';
 import { pageTransition } from '../../src/core/categoryPaging';
 import { keepIfSame, reuseEqual, sameJson } from '../../src/core/perfCache';
-import { TILE_REVEAL_BATCH, TILE_REVEAL_FIRST, isMounted, keptAcrossSwap, revealStep } from '../../src/core/perfReveal';
 import { easeOutCurve } from '../../src/theme/motion';
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { DISCOVERY_TABS, discoveryTabKey, type DiscoveryTab } from '../../src/core/discovery';
@@ -42,18 +42,17 @@ import { useColorsV2 } from '../../src/theme/useTokens';
 import { textStyleFor } from '../../src/ui/i18nLayout';
 import { Segmented, type SegmentedOption } from '../../src/ui/Segmented';
 import { WallpaperTileView } from '../../src/ui/WallpaperTile';
-import { LargeTitleScrollView, PillButton } from '../../src/ui/v2';
+import { LargeTitleFlatList, PillButton } from '../../src/ui/v2';
 
 const GAP = spaceV2.md;
 const THEME_BY_ID: ReadonlyMap<string, Theme> = new Map(ALL_THEMES.map((th) => [th.id, th]));
-const NO_KEPT: ReadonlySet<string> = new Set<string>();
 const tileKey = (x: WallpaperTile): string => x.id;
 const sameTile = (a: WallpaperTile, b: WallpaperTile): boolean =>
   a.kind === b.kind && a.themeId === b.themeId && a.loopId === b.loopId && a.live === b.live && a.plus === b.plus && a.href === b.href;
 
-type TileGridProps = {
-  /** The tiles on show (already cut to the visible count). */
-  tiles: readonly WallpaperTile[];
+type TileRowProps = {
+  /** One grid row (two tiles). */
+  row: readonly WallpaperTile[];
   tileWidth: number;
   tileHeight: number;
   loopById: ReadonlyMap<string, LoopProject>;
@@ -63,56 +62,32 @@ type TileGridProps = {
   fade: SharedValue<number>;
 };
 
-/** T118: the tile grid, memoised, mounting new tiles progressively (placeholders hold their place). */
-const TileGrid = memo(function TileGrid({ tiles, tileWidth, tileHeight, loopById, likedIds, onToggleLike, onOpen, fade }: TileGridProps) {
-  const { c } = useColorsV2();
-  const gridFade = useAnimatedStyle(() => ({ opacity: fade.value }));
-  const ids = useMemo(() => tiles.map(tileKey), [tiles]);
-  const idsKey = ids.join('|');
-  const [revealed, setRevealed] = useState(() => Math.min(tiles.length, TILE_REVEAL_FIRST));
-  const [kept, setKept] = useState<ReadonlySet<string>>(NO_KEPT);
-  const [shown, setShown] = useState<{ key: string; ids: readonly string[] }>({ key: idsKey, ids });
-  if (shown.key !== idsKey) {
-    // Render-phase reset: tiles mounted before stay mounted, new ones are revealed per frame.
-    setKept(keptAcrossSwap(shown.ids, revealed, kept, ids));
-    setShown({ key: idsKey, ids });
-    setRevealed(Math.min(tiles.length, TILE_REVEAL_FIRST));
-  }
-  useEffect(() => {
-    if (revealed >= tiles.length) return;
-    const raf = requestAnimationFrame(() => setRevealed((n) => revealStep(n, tiles.length, TILE_REVEAL_BATCH)));
-    return () => cancelAnimationFrame(raf);
-  }, [revealed, tiles.length]);
-  const index = useMemo(() => new Map(ids.map((id, i) => [id, i])), [ids]);
-  const rows = useMemo(() => tileRows(tiles), [tiles]);
-  const placeholder = [styles.placeholder, { width: tileWidth, height: tileHeight, backgroundColor: c.fill }];
-
+/**
+ * T162 (owner 30 Oct C): one row of the virtualised tile grid (memoised). The list mounts rows as
+ * they scroll in, which replaces T118's per-frame reveal; the fb-1023 fade is per row, UI thread.
+ */
+const TileRow = memo(function TileRow({ row, tileWidth, tileHeight, loopById, likedIds, onToggleLike, onOpen, fade }: TileRowProps) {
+  const rowFade = useAnimatedStyle(() => ({ opacity: fade.value }));
   return (
-    <Animated.View style={[styles.grid, gridFade]}>
-      {rows.map((row) => (
-        <View key={row.map((r) => r.id).join('|')} style={styles.row}>
-          {row.map((tile) =>
-            isMounted(index.get(tile.id) ?? 0, revealed, kept, tile.id) ? (
-              <WallpaperTileView
-                key={tile.id}
-                tile={tile}
-                theme={tile.themeId ? THEME_BY_ID.get(tile.themeId) : undefined}
-                loopName={tile.loopId ? loopById.get(tile.loopId)?.name : undefined}
-                width={tileWidth}
-                height={tileHeight}
-                onOpen={onOpen}
-                liked={tile.themeId ? likedIds.has(tile.themeId) : false}
-                onToggleLike={onToggleLike}
-              />
-            ) : (
-              <View key={tile.id} style={placeholder} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" />
-            ),
-          )}
-        </View>
+    <Animated.View style={[styles.row, rowFade]}>
+      {row.map((tile) => (
+        <WallpaperTileView
+          key={tile.id}
+          tile={tile}
+          theme={tile.themeId ? THEME_BY_ID.get(tile.themeId) : undefined}
+          loopName={tile.loopId ? loopById.get(tile.loopId)?.name : undefined}
+          width={tileWidth}
+          height={tileHeight}
+          onOpen={onOpen}
+          liked={tile.themeId ? likedIds.has(tile.themeId) : false}
+          onToggleLike={onToggleLike}
+        />
       ))}
     </Animated.View>
   );
 });
+
+const rowKey = (row: readonly WallpaperTile[]): string => row.map(tileKey).join('|');
 
 export default function WallpapersTab() {
   const { c } = useColorsV2();
@@ -196,59 +171,73 @@ export default function WallpapersTab() {
     discoveryEmpty = t('tabs.wallpapersTab.discover.newEmpty');
   }
 
-  return (
-    <LargeTitleScrollView title={t('tabs.wallpapers')} subtitle={t('tabs.wallpapersTab.subtitle')}>
-      <View style={styles.body}>
-        <Segmented label={t('tabs.wallpapersTab.subTabs')} options={options} value={tab} onChange={onTab} />
-        {discovering ? (
-          <Segmented grid label={t('tabs.wallpapersTab.discover.label')} options={discoveryOptions} value={discovery} onChange={onDiscovery} />
-        ) : null}
-        {discovering && discovery === 'picks' ? <Text style={footnote}>{t('themes.discover.picksNote')}</Text> : null}
-        {discoveryEmpty ? (
-          <Text style={footnote} accessibilityLiveRegion="polite">
-            {discoveryEmpty}
-          </Text>
-        ) : null}
-        {/* Release standard §1: an empty filtered list offers a one-tap way back to everything. */}
-        {discoveryEmpty ? <PillButton label={t('common.showAll')} variant="plain" onPress={() => onDiscovery('all')} /> : null}
-        {tab === 'still' ? (
-          // T76: the photo-collage maker (2..6 of the person's photos on one Lock Screen).
-          <PillButton
-            label={t('wallpaper.collage.entry')}
-            variant="tinted"
-            icon="grid"
-            block
-            accessibilityHint={t('wallpaper.collage.entryHint')}
-            onPress={() => router.push('/collage')}
-          />
-        ) : null}
-        {liveEmpty ? (
-          <Text style={[textV2.footnote, textStyleFor(script, textV2.footnote), { color: c.inkSecondary }]}>
-            {t('tabs.wallpapersTab.liveEmpty')}
-          </Text>
-        ) : null}
-        <TileGrid
-          tiles={visible}
-          tileWidth={tileWidth}
-          tileHeight={tileHeight}
-          loopById={loopById}
-          likedIds={likedIds}
-          onToggleLike={toggleLike}
-          onOpen={onOpen}
-          fade={fade}
+  // T162: the tiles are a virtualised list of rows; the controls above them are the list header.
+  const rows = useMemo(() => tileRows(visible), [visible]);
+  const renderRow: ListRenderItem<readonly WallpaperTile[]> = useCallback(
+    ({ item }) => (
+      <TileRow
+        row={item}
+        tileWidth={tileWidth}
+        tileHeight={tileHeight}
+        loopById={loopById}
+        likedIds={likedIds}
+        onToggleLike={toggleLike}
+        onOpen={onOpen}
+        fade={fade}
+      />), // i18n-ignore (code after a JSX element)
+    [tileWidth, tileHeight, loopById, likedIds, toggleLike, onOpen, fade],
+  );
+  const onShowAll = useCallback(() => onDiscovery('all'), [onDiscovery]);
+
+  const header = (
+    <View style={styles.body}>
+      <Segmented label={t('tabs.wallpapersTab.subTabs')} options={options} value={tab} onChange={onTab} />
+      {discovering ? (
+        <Segmented grid label={t('tabs.wallpapersTab.discover.label')} options={discoveryOptions} value={discovery} onChange={onDiscovery} />
+      ) : null}
+      {discovering && discovery === 'picks' ? <Text style={footnote}>{t('themes.discover.picksNote')}</Text> : null}
+      {discoveryEmpty ? (
+        <Text style={footnote} accessibilityLiveRegion="polite">
+          {discoveryEmpty}
+        </Text>
+      ) : null}
+      {/* Release standard §1: an empty filtered list offers a one-tap way back to everything. */}
+      {discoveryEmpty ? <PillButton label={t('common.showAll')} variant="plain" onPress={onShowAll} /> : null}
+      {tab === 'still' ? (
+        // T76: the photo-collage maker (2..6 of the person's photos on one Lock Screen).
+        <PillButton
+          label={t('wallpaper.collage.entry')}
+          variant="tinted"
+          icon="grid"
+          block
+          accessibilityHint={t('wallpaper.collage.entryHint')}
+          onPress={() => router.push('/collage')}
         />
-        {shown < tiles.length ? (
-          <PillButton label={t('tabs.wallpapersTab.showMore')} variant="tinted" icon="chevron-down" onPress={showMore} />
-        ) : null}
-      </View>
-    </LargeTitleScrollView>
+      ) : null}
+      {liveEmpty ? <Text style={footnote}>{t('tabs.wallpapersTab.liveEmpty')}</Text> : null}
+    </View>); // i18n-ignore (code after a JSX element)
+  const footer =
+    shown < tiles.length ? (
+      <View style={styles.footer}>
+        <PillButton label={t('tabs.wallpapersTab.showMore')} variant="tinted" icon="chevron-down" onPress={showMore} />
+      </View>) : null; // i18n-ignore (code after a JSX element)
+
+  return (
+    <LargeTitleFlatList
+      title={t('tabs.wallpapers')}
+      subtitle={t('tabs.wallpapersTab.subtitle')}
+      header={header}
+      data={rows}
+      renderItem={renderRow}
+      keyExtractor={rowKey}
+      footer={footer}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  body: { paddingHorizontal: spaceV2.lg, gap: spaceV2.lg, paddingBottom: spaceV2.xl },
-  grid: { gap: GAP },
-  row: { flexDirection: 'row', gap: GAP },
-  /** Same footprint and fill as a tile while it mounts. */
-  placeholder: { borderRadius: radiusV2.card, borderCurve: 'continuous' },
+  body: { paddingHorizontal: spaceV2.lg, gap: spaceV2.lg },
+  // T162: each row is a list item, so it carries the side gutter and the gap below it.
+  row: { flexDirection: 'row', gap: GAP, paddingHorizontal: spaceV2.lg, marginBottom: GAP },
+  footer: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.sm, paddingBottom: spaceV2.xl },
 });

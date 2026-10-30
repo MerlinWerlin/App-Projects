@@ -150,8 +150,9 @@ test('themes screen: store-driven selection, deferred grid swap, memoised panels
   assert.match(src, /<LiveHeroCardM \/>/);
   assert.match(src, /<YourLookPanelM \/>/);
   assert.match(src, /const SeasonalBanner = memo\(/);
-  // Pack sections stay mounted (hidden) on plain category pages.
-  assert.match(src, /styles\.hidden/);
+  // T162: pack sections are virtualised list rows, only on the "All" page (a category page has none
+  // to keep mounted; going back mounts just the rows on screen).
+  assert.match(src, /if \(!showPacks\) return NO_ROWS;/);
 });
 
 test('showcase grid: no per-card layout/exit/entering animation on a page change', () => {

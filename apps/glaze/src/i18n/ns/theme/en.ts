@@ -162,6 +162,7 @@ export const en = {
     retryHint: 'Resumes the download where it stopped',
     ready: 'Downloaded to this iPhone. You can remove it any time under Storage in Settings.',
     readyA11y: 'The {pack} pack is downloaded',
+    size: 'Size: {size}',
   },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {

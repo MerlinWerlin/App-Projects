@@ -38,6 +38,24 @@ the plain `production` profile keep the honest mock. App Store Connect steps: `d
 - [ ] Owner: App Privacy ("Data Not Collected"), review contact, screen recording on a physical iPhone (launch → theme → icons → widget → Plus Unlock/Restore)
 - [x] Paid Apps Agreement, bank and tax active (account, 23 Oct)
 
+## 3b. Theme packs on Cloudflare R2 (owner-1030 A, 30 Oct)
+- [x] Pack build + upload scripts written and tested offline (`scripts/packs/`, T159); app lists and downloads hosted packs (T160)
+- [ ] Owner: Cloudflare account, bucket `glaze-packs`, public r2.dev link, upload key as 4 GitHub secrets (`docs/R2_SETUP.md`)
+- [ ] First publish (overseer, dry-run first), then set the r2.dev address in `src/config/packs.ts` (staging, then production)
+- [ ] Owner: on TestFlight, download a free pack and a Plus pack, then turn on Airplane mode and check the themes still show
+- [ ] Privacy page + App Privacy: pack downloads come from Cloudflare (it sees the phone's IP address like any website, and Glaze sends no personal data). "Data Not Collected" still holds; add one sentence to `docs/privacy.html`
+- [ ] Decide the theme tiers (`scripts/packs/tiers.json`, plan in `docs/R2_SETUP.md`); app download stays under ~40 MB
+
+## 3c. Look and feel (owner-1030 B/C, 30 Oct)
+- [x] Smoother lists (virtualised Themes/Widgets/Wallpapers, cached downscaled images) and one design token set (T162, T163)
+- [ ] Owner: TestFlight check in `docs/TRIAL.md` "New since your last test (30 Oct, owner-1030)"
+- [ ] Design critique screenshots + agreed points (`docs/design_review_1030/README.md`, `docs/DESIGN_CRITIQUE_1030.md`)
+- [ ] Store screenshots retaken after the critique changes
+
+## 3d. SDK 57 pins (D203-1, 30 Oct)
+- [x] `expo-image` ships as `~57.0.5` on SDK 57 (App-Projects `apps/glaze`), never the cloud's `~3.0.0`; full table in `docs/SDK57_PINS.md`
+- [ ] PC: full `npm install` + `tsc` + `expo export` on the SDK 57 copy after run 179 (T162 virtualised lists, expo-image) before the next TestFlight build
+
 ## 4. While in review
 - Ship only reviewer-needed fixes over the air; everything else waits for the next version.
 

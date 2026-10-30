@@ -124,7 +124,6 @@
 ## 2026-10-25 run 114 (07:11Z, artifact 1792905524-1f88)
 - Records-only run per oversight D144-1. App-Projects: no new owner commits on apps/glaze since f0f1a71 (already synced). No page comments. fb-1024e A-D already done (T125-T128, T137-T139); T129 retest waits on the TestFlight build.
 - 1169/1169 core tests green (registry unreachable path); no code change, trial kit unchanged (a757a20).
-- 2026-10-25 Claude (Workboard job job_acd66bfac1cf4c3a999e2fd4509afd69, glaze-retest): owner retest of build 1.0.0 said A widgets keep one colour scheme, B Shortcuts must not be an option, C bounce in the Live Photo part must go, D hold themes until it works. Branch glaze/core-fixes-20261025: Widgets tab theme pick now calls applyWidgetTheme (Home Screen widgets used to keep the last applied theme); install offers Bulk as the only method whenever a profile can carry an app (Shortcuts only as fallback: switch off or no linked app; saved Shortcuts choice no longer wins); Sheet slides on a timed ease-out (no springify); Live tab plain fade, trim knobs withTiming; guards in calmMotion.test.ts, method tests updated; TRIAL.md section added. JS only, no native/package/RELEASE.json change. Core tests 1153/1170 on the Windows checkout, same 17 pre-existing failures as main; UI stub typecheck 0; core typecheck 0. Nothing device-tested.
 
 ## 2026-10-25 run 115 (09:11Z, artifact 1792912479-daa0; oversight v145)
 - App-Projects: only #93 (our run-113 ship) since f0f1a71; nothing to sync. No page comments, no patches.
@@ -171,6 +170,36 @@
 - No-op run per D147-1. App-Projects: owner merged ship PR #96 (1ee1f73, 19:10Z); its Glaze changes are already here (synced run 117, extended run 120), 3-way check confirmed nothing new. Run 120 work (Plus purchase, bulk fix, Live Photo format) still needs the next auto-ship PR. No page comments, no patches.
 - 1226/1226 core tests green; registry not needed (no code change). Kit unchanged (e5a7652). Nothing device-tested.
 
+## 2026-10-25 run 125 (21:11Z, artifact 1792955620-4045; oversight v151)
+- No-op run per D147-1. App-Projects: owner merged ship PR #99 (c3907fb, 20:39Z) carrying the run-120 work; file compare shows apps/glaze identical to this repo apart from build-page records, nothing to sync. The PR #99 native build result is not visible from the cloud (GitHub API not enabled for this session); D147-1 hold continues until it reports. No page comments, no patches.
+- 1226/1226 core tests green at e5a7652; no code change. Kit unchanged (e5a7652). Nothing device-tested.
+
+## 2026-10-25 run 126 (23:12Z, artifact 1792962755-904a; oversight v152)
+- No-op run per D147-1. App-Projects: nothing new for apps/glaze since #99 (already identical); only the auto-ship SHIP_BASE commit. PR #99 native build result not visible from the cloud (GitHub API not enabled). No page comments, no patches.
+- 1226/1226 core tests green at e5a7652; no code change. Kit unchanged (e5a7652). Nothing device-tested.
+
+## 2026-10-26 run 127 (01:12Z, artifact 1792970000-651a; oversight v153)
+- No-op run. Oversight v153 D153-2: no 'appfactory-ship-glaze-failed' need on the Workboard and 'glaze-test-latest' is open, so the PR #99 build is treated as delivered to TestFlight; D147-1 hold continues until TRIAL.md answers or page comments. App-Projects: only an auto-ship SHIP_BASE commit since #99, nothing to sync. No page comments, no patches.
+- 1226/1226 core tests green; no code change. Kit unchanged (e5a7652). Nothing device-tested.
+
+## 2026-10-26 run 128 (03:12Z, artifact 1792977266-5262; oversight v154)
+- No-op run. Oversight v154: no new directives; D153-2 applied (no Glaze ship-failure need on the Workboard, glaze-test-latest open), D147-1 hold continues until TRIAL.md answers or page comments. App-Projects: nothing new for apps/glaze since #99. No page comments, no patches.
+- 1226/1226 core tests green; no code change. Kit unchanged (e5a7652). Nothing device-tested.
+
+## 2026-10-26 run 129 (05:12Z, artifact 1792984435-f5e2; oversight v155)
+- No-op run. Oversight v155: no new directives; D153-2 applied (no Glaze ship-failure need on the Workboard, glaze-test-latest open), D147-1 hold continues until TRIAL.md answers or page comments. App-Projects: nothing new for apps/glaze since #99 (only SHIP_BASE/DECISIONS records). No page comments, no patches. npm registry still unreachable.
+- 1226/1226 core tests green; no code change. Kit unchanged (e5a7652). Nothing device-tested.
+
+## 2026-10-26 run 130 (07:17Z, artifact 1792991679-a354; oversight v156)
+- No-op run. Oversight v156: no new directives; D153-2 applied (no Glaze ship-failure need on the Workboard, glaze-test-latest open), D147-1 hold continues until TRIAL.md answers or page comments. App-Projects: nothing new for apps/glaze since #99 (only SHIP_BASE records). No page comments, no patches.
+- 1226/1226 core tests green; no code change. Kit unchanged (e5a7652). Nothing device-tested.
+
+## 2026-10-26 run 131 (09:11Z, artifact 1792999229-8677; oversight v157)
+- Oversight v157: no new directives; D153-2 applied, D147-1 hold continues. No page comments, no patches. App-Projects main: nothing new for apps/glaze since #99.
+- New owner signal via Workboard: bulk icon install worked on his phone (26 Oct); new feedback (widget options incl. month % dots, gradients not reaching widgets, theme icon selection, black surrounds on small/blob icons) is being fixed by Codex in open PR 107 (3 commits, 61 files incl. Swift widget views). Not duplicated here to avoid conflicts: tracked as T157 (blocked), sync on merge.
+- 1226/1226 core tests green; no code change. Kit unchanged. Nothing device-tested.
+
+## (synced from App-Projects 1f90aa7, PR 107 — Codex entries)
 ## 2026-10-26 Codex — T155 widget/theme/icon retest repair
 - Bulk install confirmed by owner. Fixed ignored v2 designs, missing month/year dots, analog clock, month calendar and countdown registrations; custom gradients override theme defaults; shared atomic files take precedence over cached defaults. Theme Choose icons is direct and Install applies the viewed theme first. Old icon sets receive opaque style-colour surrounds, preserving saved choices.
 - Native WidgetKit iOS typecheck and real editor-payload Swift decoder passed GitHub run 40290905453. Full Node suite 1211/1230 versus baseline 1207/1226; identical 19 failures. Full npm run typecheck (SDK app + Node tests) and Expo iOS export passed; offline stub UI check conflicts with installed dependency types. Phone rendering, refresh timing and TestFlight delivery not yet verified. RELEASE.json unchanged.
@@ -181,6 +210,204 @@ Owner authorized the feature and release. Added original cat/fox/bunny ActivityK
 
 Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full WidgetKit extension and pet lifecycle controller and decode the actual editor payload. Expo iOS export passes. Full suite found the new pet screen missing the established no-bounce setting; corrected and reran that guard. The remaining 19 failures are the previously reproduced unchanged-main SDK/source/path/asset guards. Updated the native-framework allowlist for Apple ActivityKit and included the pet pod in module-independence checks.
 
-## 2026-10-26 11:20 UTC: native TestFlight upload verified
+## 2026-10-26 run 132 (11:16Z, artifact 1793006036-5bc2; oversight v158)
+- Owner merged PR 107 (1f90aa7: T155 widget/theme/icon repairs + T158 Island pets, v1.0.1). 3-way synced its apps/glaze diff (RELEASE.json skipped; ops files merged by hand). T157 kept blocked per D158-1 until the owner retests on the new TestFlight build. D147-1 hold: no new native work. No page comments, no patches.
+- 1233/1233 core tests green; core typecheck clean; registry unreachable. Nothing device-tested.
 
-PR107 merged as `1f90aa78f6a3bda66b2bc6a9f902559091ef1b98`. EAS free cloud quota was exhausted; existing automatic fallback dispatched ship-mac40311511263, which succeeded. Signed app version1.0.1/build11 includes GlazeIslandPets0.1.0 and GlazeWidgets extension; archive29.8MB. EAS submission `762dfc4d-adf5-4d3c-b703-8ff4d2923834` explicitly confirms Apple upload at11:20:20UTC. Apple processing and internal tester availability are a separate read-only `store` report requested in PR114. No public App Review submission, new purchase, account or credential change. Actual device observations remain outstanding.
+## 2026-10-26 run 133 (13:13Z, artifact 1793013643-d1c9; oversight v159)
+- Synced App-Projects 0afce81 (#114: TRIAL.md native 1.0.1 notes, store/ASC_REQUEST.json readback request; its RUNLOG/status.json records not applied, PC-side). D159-1 applied: build 11 (widget target + Island pets) compiled and is on TestFlight, recorded in status.json; not device-tested. T157 open until the owner retests; no new native work. No page comments, no patches.
+- 1233/1233 core tests green; registry unreachable (full install + tsc + expo export needs PC verification). Kit rebuilt from the sync commit.
+
+## 2026-10-26 run 134 (15:22Z, artifact 1793020604-91dc; oversight v160)
+- No-op run. Oversight v160: no new directives (D159-1 hold on new native work until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81 (#114, already synced). No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-26 run 135 (17:16Z, artifact 1793028223-8a49; oversight v161)
+- No-op run. Oversight v161: no new directives (D159-1 hold until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-26 run 136 (19:13Z, artifact 1793035046-99d1; oversight v162)
+- No-op run. Oversight v162: no new directives (D159-1 hold until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-26 run 137 (21:12Z, artifact 1793042112-3063; oversight v163)
+- No-op run. Oversight v163: no new directives (D159-1 hold until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-26 run 138 (23:12Z, artifact 1793049205-e34e; oversight v164)
+- No-op run. Oversight v164: no new directives (D159-1 hold until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 139 (01:12Z, artifact 1793056426-9af8; oversight v164)
+- No-op run. Oversight v164 unchanged (D159-1 hold until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 140 (03:11Z, artifact 1793063680-bee0; oversight v166)
+- No-op run. Oversight v166: no new directives (D159-1 hold until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 141 (05:10Z, artifact 1793070782-2376; oversight v167)
+- No-op run. Oversight v167: no new directives (D159-1 hold until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 142 (07:16Z, artifact 1793078045-36e5; oversight v168)
+- No-op run. Oversight v168: no new directives (D159-1 hold until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 143 (09:14Z, artifact 1793085569-f740; oversight v169)
+- No-op run. Oversight v169: no new directives (D159-1 hold until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 144 (11:15Z, artifact 1793092530-c93f; oversight v170)
+- No-op run. Oversight v170: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 145 (13:21Z, artifact 1793099831-d42f; oversight v171)
+- No-op run. Oversight v171: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 146 (15:27Z, artifact 1793107407-8bdd; oversight v172)
+- No-op run. Oversight v172: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 147 (17:18Z, artifact 1793114961-ac48; oversight v173)
+- No-op run. Oversight v173: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 148 (19:12Z, artifact 1793121537-3bff; oversight v174)
+- No-op run. Oversight v174: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green (registry unreachable); no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 149 (21:13Z, artifact 1793128470-926f; oversight v175)
+- No-op run. Oversight v175: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green (registry unreachable); no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-27 run 150 (23:12Z, artifact 1793135751-3bf8; oversight v176)
+- No-op run. Oversight v176: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 151 (01:12Z, artifact 1793142806-175e; oversight v177)
+- No-op run. Oversight v177: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 152 (03:12Z, artifact 1793150022-2a1f; oversight v178)
+- No-op run. Oversight v178: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 153 (05:12Z, artifact 1793157232-93ed; oversight v179)
+- No-op run. Oversight v179: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 154 (07:14Z, artifact 1793164459-928d; oversight v180)
+- No-op run. Oversight v180: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green (npm test glob); no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 155 (09:14Z, artifact 1793171866-333e; oversight v181)
+- No-op run. Oversight v181: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green (npm test glob); no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 156 (11:12Z, artifact 1793178963-2291; oversight v181)
+- No-op run. Oversight v181: no new directives (holds continue until the owner retests 1.0.1). App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green (npm test glob); no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 157 (13:28Z, artifact 1793186021-c4ed; oversight v182)
+- No-op run. Oversight v182: no new directives. App-Projects: nothing new for apps/glaze since 0afce81. No page comments, no patches. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green (npm test glob); no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 158 (15:21Z, artifact 1793194240-1a29; oversight v183)
+- No-op run. Oversight v183: no new directives (holds continue; no patches). App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green (npm test glob); no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 159 (17:12Z, artifact 1793200995-0ece; oversight v184)
+- No-op run. Oversight v184: no new directives (holds continue; no patches). App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 160 (19:11Z, artifact 1793207714-2f3c; oversight v185)
+- No-op run. Oversight v185: no new directives. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 161 (21:13Z, artifact 1793214796-42dd; oversight v186)
+- No-op run. Oversight v186: no new directives. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-28 run 162 (23:11Z, artifact 1793222231-d496; oversight v187)
+- No-op run. Oversight v187: no new directives. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 163 (01:12Z, artifact 1793229196-2b3b; oversight v188)
+- No-op run. Oversight v188: no new directives. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 164 (03:11Z, artifact 1793236454-b3d6; oversight v189)
+- No-op run. Oversight v189: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 165 (05:11Z, artifact 1793243592-bb6e; oversight v190)
+- No-op run. Oversight v190: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 166 (07:17Z, artifact 1793250849-1332; oversight v191)
+- No-op run. Oversight v191: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 167 (09:15Z, artifact 1793258341-0bbb; oversight v192)
+- No-op run. Oversight v192: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 168 (11:23Z, artifact 1793265375-2e6f; oversight v193)
+- No-op run. Oversight v193: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard. npm registry unreachable (ping timed out).
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 169 (13:33Z, artifact 1793273225-3135; oversight v194)
+- No-op run. Oversight v194: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 170 (15:16Z, artifact 1793280857-84f2; oversight v195)
+- No-op run. Oversight v195: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 171 (16:15Z, artifact 1793287141-08c5; oversight v196)
+- No-op run. Oversight v196: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 172 (19:16Z, artifact 1793294029-7e08; oversight v197)
+- No-op run. Oversight v197: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 173 (21:14Z, artifact 1793301501-1c00; oversight v198)
+- No-op run. Oversight v198: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-29 run 174 (23:11Z, artifact 1793308559-a7d9; oversight v199)
+- No-op run. Oversight v199: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-30 run 175 (01:11Z, artifact 1793315635-0ddc; oversight v200)
+- No-op run. Oversight v200: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-30 run 176 (03:11Z, artifact 1793322842-8ac0; oversight v201)
+- No-op run. Oversight v201: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. glaze-test-latest and glaze-iap-product remain open on the Workboard. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+
+## 2026-10-30 run 177 (05:10Z, artifact 1793330014-6849; oversight v202)
+- No-op run. Oversight v202: no new directives, no patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. Workboard: glaze-test-latest and glaze-iap-product still open; new need glaze-brief-1030-go (added by the BTB chat) waits on the owner's "go" — brief not imported. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+## 2026-10-30 run 178 (05:33Z, artifact 1793337155-09d7; oversight v202)
+- No-op run. Oversight v202 unchanged: no new directives, no patches; holds continue. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. Workboard: glaze-test-latest, glaze-iap-product and glaze-brief-1030-go still open (brief not imported until the owner says go). npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1233/1233 core tests green; no code change. Kit unchanged (2e293f2). Nothing device-tested.
+## 2026-10-30 run 179 (05:45Z, manual fire with owner brief owner-1030; artifact 1793338471-fc5f; oversight v202)
+- Owner brief (manual-fire payload) imported as docs/OWNER_1030.md, T159-T165; contract src/core/packCatalog.ts written first (31d6669). 4 parallel workers + 1 read-only reviewer.
+- T159 (10b99ac): scripts/packs/ build_packs (WebP via sharp > Pillow > PNG fallback, 3 wallpaper classes, sha256, ThumbHash, manifest last, catalog.json) + publish_r2 (own SigV4, cache headers, HEAD verify, --dry-run, no overwrite of published versions) + publish-packs.yml (written, not run). 12 script tests (`node --test "scripts/packs/*.test.mjs"`).
+- T160 (6c892be): PACK_BASE_URLS staging/production (empty = no network); remoteCatalog.ts (cache, offline-safe, merge), remote art pack downloads (device-sized files, resume, verify); Themes list + theme detail Download; free packs ungated, Plus packs gated in src/plus.
+- T162 (9d26a86): Themes/Widgets/Wallpapers on virtualised lists (LargeTitleFlatList), expo-image for gallery art, memo mocks, perfBudget guard, TRIAL.md 30 Oct checks. Left as T166.
+- T163 (ce41bdf): tokens.ts removed, tokensV2 the one set, designGuard ratchet (colours 90→79, radii 40→25).
+- T161/T165: docs/R2_SETUP.md (+ 87-theme tier plan), RELEASE_CHECKLIST R2 + look-and-feel sections. T164 blocked on PC-side screenshots (docs/design_review_1030/README.md).
+- Review caught a hook after an early return in ThemeWallpaper (fixed). 1260/1260 core tests green; core only (registry unreachable); full install + tsc + expo export needs PC verification. Nothing device-tested.
+## 2026-10-30 run 180 (07:18Z, artifact 1793340704-c8bd; oversight v203)
+- Oversight v203: D203-1 done (expo-image SDK 57 pin ~57.0.5 recorded in docs/SDK57_PINS.md + RELEASE_CHECKLIST 3d), D203-2 followed (fixes only, no new screens, R2 off). No patches. App-Projects: nothing new for apps/glaze since 0afce81. No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- 1260/1260 core tests green; docs only, no app code change. Kit unchanged (eafd86d). Nothing device-tested.
+## 2026-10-30 run 181 (09:12Z, artifact 1793344871-f436; oversight v204)
+- Oversight v204: no new directives, no patches; D203-2 still open (fixes only, small). App-Projects: nothing new for apps/glaze since 0afce81. No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- T166 (small part): Widgets tab regained the ~16 pt gap above the first grid row lost in T162 (spacer at the end of the list header, spaceV2.lg); TRIAL.md 30 Oct question 6. Rest of T166 still todo.
+- 1260/1260 core tests green; core only typecheck. Kit rebuilt from this checkpoint. Nothing device-tested.

@@ -6,14 +6,14 @@ import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View, type LayoutChangeEvent, type TextStyle } from 'react-native';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
-import { continuous, iconTileRadius, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
+import { continuous, iconTileRadius, onArtV2, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { useT } from '../i18n';
 import { haptic } from './haptics';
 import { textStyleFor } from './i18nLayout';
 import { liveContext, localizedHeroSubline } from './liveContext';
 
-const WHITE = '#FFFFFF';
+const WHITE = onArtV2.ink;
 
 const BADGE = 44;
 
@@ -59,7 +59,7 @@ export function LiveHeroCard() {
           <Rect x={0} y={0} width={size.width} height={size.height} fill="url(#liveHero)" />
           {/* Dark scheme: a light scrim keeps white text readable over the orange end of the gradient. */}
           {scheme === 'dark' ? (
-            <Rect x={0} y={0} width={size.width} height={size.height} fill="#000000" fillOpacity={0.14} />
+            <Rect x={0} y={0} width={size.width} height={size.height} fill={onArtV2.black} fillOpacity={0.14} />
           ) : null}
         </Svg>
       ) : null}

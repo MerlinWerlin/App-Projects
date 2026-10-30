@@ -9,9 +9,10 @@
 //     <InsetGroup>...</InsetGroup>
 //   </LargeTitleScrollView>
 //
-// For a FlatList, use useLargeTitleScroll() + <LargeTitleHeader> + <LargeTitle> directly.
-import { useEffect, type ReactNode } from 'react';
-import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+// For a long list or grid, use <LargeTitleFlatList> (T162): the same chrome over a virtualised
+// Animated.FlatList, with everything above the list passed as `header`.
+import { useEffect, type ReactElement, type ReactNode } from 'react';
+import { Platform, StyleSheet, Text, View, type FlatListProps, type ListRenderItem, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, {
   Extrapolation,
   interpolate,
@@ -194,8 +195,86 @@ export function LargeTitleScrollView({ title, subtitle, leading, trailing, child
   );
 }
 
+/**
+ * T162 (owner 30 Oct C, "smooth and light"): the window settings every tab list shares. A few rows
+ * mount at first, a few per batch, and about two screens either side stay mounted. Android drops
+ * clipped subviews; iOS keeps them (it can blank rows during a fast fling there).
+ */
+export const LIST_WINDOW = {
+  initialNumToRender: 6,
+  maxToRenderPerBatch: 6,
+  windowSize: 5,
+  updateCellsBatchingPeriod: 32,
+  removeClippedSubviews: Platform.OS === 'android',
+} as const;
+
+type FlatProps<T> = Omit<ScrollProps, 'children'> & {
+  /** Everything above the list (chips, tabs, notes); drawn under the large title. */
+  header?: ReactNode;
+  /** Drawn after the last row. */
+  footer?: ReactElement | null;
+  data: readonly T[];
+  renderItem: ListRenderItem<T>;
+  keyExtractor: (item: T, index: number) => string;
+  /** Only when every row has a known height (offsets start after the header). */
+  getItemLayout?: FlatListProps<T>['getItemLayout'];
+  /** Shown instead of rows when `data` is empty. */
+  empty?: ReactElement | null;
+};
+
+/** T162: LargeTitleScrollView's chrome over a virtualised list (rows mount as they scroll in). */
+export function LargeTitleFlatList<T>({
+  title,
+  subtitle,
+  leading,
+  trailing,
+  header,
+  footer,
+  data,
+  renderItem,
+  keyExtractor,
+  getItemLayout,
+  empty,
+  contentContainerStyle,
+}: FlatProps<T>) {
+  const { c } = useColorsV2();
+  const insets = useSafeAreaInsets();
+  const { scrollY, onScroll } = useLargeTitleScroll();
+  const listHeader = (
+    <View style={styles.listHeader}>
+      <LargeTitle title={title} subtitle={subtitle} scrollY={scrollY} />
+      {header}
+    </View>); // i18n-ignore (code after a JSX element)
+  return (
+    <View style={[styles.root, { backgroundColor: c.bg }]}>
+      <Animated.FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        getItemLayout={getItemLayout}
+        ListHeaderComponent={listHeader}
+        ListFooterComponent={footer ?? null}
+        ListEmptyComponent={empty ?? null}
+        bounces={false}
+        overScrollMode="never"
+        onScroll={onScroll}
+        scrollEventThrottle={16}
+        contentInsetAdjustmentBehavior="never"
+        keyboardShouldPersistTaps="handled"
+        {...LIST_WINDOW}
+        contentContainerStyle={[
+          { paddingTop: insets.top + sizeV2.navBar, paddingBottom: insets.bottom + spaceV2.xxxl },
+          contentContainerStyle,
+        ]}
+      />
+      <LargeTitleHeader title={title} scrollY={scrollY} leading={leading} trailing={trailing} />
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   root: { flex: 1 },
+  listHeader: { gap: spaceV2.xl, paddingBottom: spaceV2.xl },
   content: { gap: spaceV2.xl },
   bar: { position: 'absolute', top: 0, start: 0, end: 0 },
   barRow: { flex: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: spaceV2.sm },

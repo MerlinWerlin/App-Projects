@@ -2,7 +2,7 @@
 // 1. src/core stays pure: no React Native / Expo imports, relative imports end in .ts.
 // 2. Free paths never read the Plus entitlement: nothing under src/core, src/native, src/render,
 //    app/install* or app/(tabs)/icons* imports src/plus, and only src/plus imports the entitlement.
-// 3. expo-file-system only through src/native/fs.ts. 4. Only the phone mocks use v1 tokens (T84).
+// 3. expo-file-system only through src/native/fs.ts. 4. One token set: v1 tokens.ts is gone (T163).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
@@ -90,21 +90,17 @@ test('only src/native/fs.ts imports expo-file-system', () => {
   assert.ok(importsOf(adapter).some((s) => s.startsWith('expo-file-system')), 'adapter should wrap expo-file-system');
 });
 
-// 4. Design v2 migration (T84): the v1 tokens (src/theme/tokens.ts) are imported only by the phone
-//    mocks, which keep the brand fonts for their artwork; everything else is on tokensV2. The
-//    legacy Button is gone (PillButton / SheenButton replace it).
-const V1_TOKEN_MOCKS = ['HomeMock.tsx', 'LockMock.tsx', 'PhoneFrame.tsx', 'WidgetPreview.tsx', 'CatalogueWidgetPreview.tsx'].map((n) =>
-  join(root, 'src', 'ui', n),
-);
-
-test('only the phone mocks import the v1 theme tokens', () => {
+// 4. One token set (T84, T163): the v1 tokens (src/theme/tokens.ts) are retired; the phone mocks
+//    take their brand fonts from tokensV2 `artFontsV2`. The legacy Button is gone (PillButton /
+//    SheenButton replace it).
+test('the v1 theme tokens are gone and nothing imports them', () => {
   const themeDir = join(root, 'src', 'theme');
-  const files = [...walk(join(root, 'app')), ...walk(join(root, 'src'))].filter((f) => !/\.test\.tsx?$/.test(f));
+  assert.ok(!existsSync(join(themeDir, 'tokens.ts')), 'src/theme/tokens.ts should be gone; use src/theme/tokensV2');
+  const files = [...walk(join(root, 'app')), ...walk(join(root, 'src'))];
   assert.ok(files.length > 0, 'expected app and src files');
   for (const f of files) {
-    if (f === join(themeDir, 'tokens.ts')) continue;
     const v1 = importsOf(f).some((s) => /(^|\/)theme\/tokens(\.ts)?$/.test(s) || (f.startsWith(themeDir) && /^\.\/tokens(\.ts)?$/.test(s)));
-    if (v1) assert.ok(V1_TOKEN_MOCKS.includes(f), `${f} imports the v1 tokens; use src/theme/tokensV2`);
+    assert.ok(!v1, `${f} imports the v1 tokens; use src/theme/tokensV2`);
   }
 });
 

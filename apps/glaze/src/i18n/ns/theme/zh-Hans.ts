@@ -161,6 +161,7 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
     retryHint: '从中断处继续下载',
     ready: '已下载到这台 iPhone。你可以随时在设置的“存储空间”中将其移除。',
     readyA11y: '{pack} 主题包已下载',
+    size: '大小：{size}',
   },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {

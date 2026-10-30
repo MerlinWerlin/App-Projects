@@ -16,7 +16,9 @@
     "eas-build-pre-install": "node scripts/native-link.mjs",
     "native:on": "node scripts/native-link.mjs 1",
     "native:off": "node scripts/native-link.mjs 0",
-    "eas-build-post-install": "node scripts/eas-native-deps.js"
+    "eas-build-post-install": "node scripts/eas-native-deps.js",
+    "packs:build": "node scripts/packs/build_packs.mjs",
+    "packs:publish": "node scripts/packs/publish_r2.mjs"
   },
   "dependencies": {
     "@expo-google-fonts/manrope": "^0.4.1",

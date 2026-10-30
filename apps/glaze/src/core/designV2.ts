@@ -162,6 +162,24 @@ export function iconTileRadius(size: number): number {
   return Math.round(size * ICON_TILE_RATIO * 2) / 2;
 }
 
+/**
+ * The three chrome radii (T163, owner-1030 B). New UI chrome uses only these names: `card` for
+ * cards and panels, `control` for chips, badges and fields, `pill` for every button and capsule.
+ * `radiusV2.group` / `cardLarge` / `sheet` stay as legacy aliases with their own values (folding
+ * them into `card` would change how screens look; that is a design decision, not a refactor).
+ */
+export const chromeRadiusV2 = { card: radiusV2.card, control: radiusV2.control, pill: radiusV2.pill } as const;
+
+/**
+ * Shape radii, kept apart from chrome: `iconTileRadius(size)` for superellipse icon tiles and
+ * `circleRadius(size)` for round dots, discs and badges (half the side, so the shape is a circle
+ * or, on a wider box, a capsule).
+ */
+export function circleRadius(size: number): number {
+  if (!Number.isFinite(size) || size <= 0) return 0;
+  return size / 2;
+}
+
 /** 4-pt spacing grid; `inset` is the side margin of inset-grouped lists. */
 export const spaceV2 = { xxs: 2, xs: 4, sm: 8, md: 12, lg: 16, inset: 20, xl: 24, xxl: 32, xxxl: 44 } as const;
 
@@ -176,6 +194,30 @@ export const sizeV2 = {
   largeTitleBlock: 52,
   tabBar: 56,
 } as const;
+
+// ---------------------------------------------------------------- artwork (not chrome)
+
+/**
+ * Brand fonts for artwork only: the phone mocks (HomeMock, LockMock, PhoneFrame, WidgetPreview,
+ * CatalogueWidgetPreview) and store art. UI chrome uses the system font through `typeV2`.
+ * Moved unchanged from the retired v1 tokens.ts `fonts` (T163).
+ */
+export const artFontsV2 = {
+  display: 'Unbounded_700Bold',
+  displayMedium: 'Unbounded_500Medium',
+  body: 'Manrope_400Regular',
+  bodyMedium: 'Manrope_600SemiBold',
+  bodyBold: 'Manrope_700Bold',
+} as const;
+
+/** The v1 brand glaze gradient the home mock paints when a theme has no wallpaper (v1 light.glazeA/B). */
+export const brandGlazeV2 = { from: '#7A2E6B', to: '#E0794F' } as const;
+
+/**
+ * Ink drawn over photos, wallpapers and artwork: the same in light and dark mode, because the
+ * backdrop is the art (always behind a scrim), not the app surface.
+ */
+export const onArtV2 = { ink: '#FFFFFF', black: '#000000' } as const;
 
 // ---------------------------------------------------------------- elevation
 

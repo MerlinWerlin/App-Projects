@@ -8,7 +8,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle, G, Rect } from 'react-native-svg';
 import type { Illustration } from '../core/install';
 import { useT } from '../i18n';
-import { continuous, radiusV2, sizeV2, spaceV2, textV2, type PaletteV2 } from '../theme/tokensV2';
+import { circleRadius, continuous, radiusV2, sizeV2, spaceV2, textV2, type PaletteV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { noMirror, textStyleFor } from './i18nLayout';
 
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
   top: { flexDirection: 'row', gap: spaceV2.md, padding: spaceV2.md },
   text: { flex: 1, gap: spaceV2.xs },
   titleRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
-  badge: { minWidth: 24, minHeight: 24, borderRadius: 12, paddingHorizontal: 3, alignItems: 'center', justifyContent: 'center' },
+  badge: { minWidth: 24, minHeight: 24, borderRadius: circleRadius(24), paddingHorizontal: 3, alignItems: 'center', justifyContent: 'center' },
   badgeText: { fontWeight: '700' },
   flex: { flex: 1 },
   doneRow: {

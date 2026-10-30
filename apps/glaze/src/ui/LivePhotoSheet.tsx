@@ -13,7 +13,7 @@ import { GUIDE_STEPS } from '../core/liveSteps';
 import { LivePhotoGuideSteps } from './LivePhotoGuide';
 import { localizedStep } from './liveContext';
 import { useT, type TFunction } from '../i18n';
-import { continuous, radiusV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
+import { circleRadius, continuous, radiusV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { PillButton } from './PillButton';
 import { Sheet } from './Sheet';
@@ -192,6 +192,6 @@ export function LivePhotoSheet({ state, onClose }: LivePhotoSheetProps) {
 const styles = StyleSheet.create({
   note: { borderRadius: radiusV2.card, padding: spaceV2.lg },
   step: { flexDirection: 'row', gap: spaceV2.md, alignItems: 'flex-start' },
-  num: { minWidth: 28, minHeight: 28, borderRadius: 14, paddingHorizontal: spaceV2.xs, alignItems: 'center', justifyContent: 'center' },
+  num: { minWidth: 28, minHeight: 28, borderRadius: circleRadius(28), paddingHorizontal: spaceV2.xs, alignItems: 'center', justifyContent: 'center' },
   stepText: { flex: 1 },
 });

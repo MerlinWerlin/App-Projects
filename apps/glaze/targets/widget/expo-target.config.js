@@ -8,7 +8,7 @@
 // resources. VERIFY after prebuild: the Xcode project lists the 11 regions under the GlazeWidgets
 // target's Copy Bundle Resources, and the gallery shows a widget name in a non-English language.
 //
-// Colours mirror src/theme/tokens.ts (light/dark porcelain + plum). They're only the fallback
+// Colours mirror the retired v1 tokens (light/dark porcelain + plum; see git history of src/theme/tokens.ts). They're only the fallback
 // look: at runtime every widget reads the active theme JSON from the App Group (ThemeStore.swift).
 
 const APP_GROUP = 'group.com.jared797.glaze';

@@ -1,5 +1,16 @@
 # Try Glaze on your iPhone (no Apple developer account needed)
 
+## New since your last test (30 Oct, owner-1030)
+
+**Smooth and light (T162).** The Themes, Widgets and Wallpapers tabs now only keep the cards near the screen in memory, and theme art is drawn at card size. Answer yes or no on your iPhone:
+
+1. **Themes:** scroll fast from the top to the very bottom (past the art, Space and Plus packs). Smooth all the way, no jumps or blank cards? (yes / no)
+2. **Themes:** open any theme, then go back. Does the gallery come back at once, at the same place? (yes / no)
+3. **Widgets:** scroll the widget grid from top to bottom and back, then pick another theme and another size. Smooth, and the log buttons still line up in each row? (yes / no)
+4. **Wallpapers:** scroll the tiles, tap **Show more**, switch Still / Live / Pairs. Smooth, and the tiles still fade in calmly (no bounce)? (yes / no)
+5. **Icons:** scroll the Icons tab top to bottom. Smooth? (yes / no)
+6. **Widgets:** is there a comfortable gap (about a finger-width) between the size tabs and the first row of widgets, not cramped? (yes / no)
+
 ## Native TestFlight 1.0.1 (11) — 26 October 2026
 
 The latest owner-authorized native build adds Island pets and the widget/theme/icon repairs from PR107. Bulk icon installation is already confirmed by Jared; do not ask for that verdict again. The older Expo Go instructions below remain historical trial guidance.

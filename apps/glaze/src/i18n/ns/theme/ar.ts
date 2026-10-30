@@ -162,6 +162,7 @@ export const ar: NonNullable<LocaleMessages['theme']> = {
     retryHint: 'يستأنف التنزيل من حيث توقف',
     ready: 'تم التنزيل على هذا الـ iPhone. يمكنك إزالتها في أي وقت من التخزين في الإعدادات.',
     readyA11y: 'تم تنزيل حزمة {pack}',
+    size: 'الحجم: {size}',
   },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {
