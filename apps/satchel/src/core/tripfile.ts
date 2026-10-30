@@ -280,3 +280,20 @@ export function withFiles(trip: Trip, written: Record<string, { uri: string; cro
     })),
   };
 }
+
+// ---- names on import (T45) ----
+
+/**
+ * The name for an imported trip: unchanged when no trip on the phone has it (compared trimmed, ignoring case),
+ * otherwise the first free '<name> (copy)', '<name> (copy 2)', ... from `copyName` (the UI passes catalogue strings).
+ */
+export function uniqueTripName(name: string, existing: readonly string[], copyName: (name: string, n: number) => string): string {
+  const key = (s: string) => s.trim().toLocaleLowerCase();
+  const taken = new Set(existing.map(key));
+  if (!taken.has(key(name))) return name;
+  for (let n = 1; n < 10000; n++) {
+    const candidate = copyName(name, n);
+    if (!taken.has(key(candidate))) return candidate;
+  }
+  return copyName(name, Date.now());
+}

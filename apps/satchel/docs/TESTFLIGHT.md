@@ -8,11 +8,14 @@ Owner brief, 25 Oct 2026: ship Satchel straight to TestFlight instead of testing
 - Purpose strings for every iOS permission the linked modules can touch: location (when in use only, never background), photo library, camera (added this run: expo-image-picker links camera code, and an upload without a camera purpose string is rejected by App Store Connect), Face ID, contacts.
 - Privacy manifest (`ios.privacyManifests`): no tracking, no collected data, and the standard required-reason API entries React Native apps need (user defaults, file timestamps, boot time, disk space).
 - `eas.json`: `production` (store build, build number auto-increments on EAS) and `production-native`; `submit.production.ios` is in place and only needs the App Store Connect id.
-- `ops/onboarding/RELEASE.draft.json`: the values auto-ship needs for App-Projects (`ascAppId` is `null` until step 1 is done). `ops/onboarding/marketing-entry.draft.json`: the `marketing/apps.json` entry.
+- `ops/onboarding/RELEASE.draft.json`: the values auto-ship needs for App-Projects (`ascAppId` 6826958413 since 26 Oct). `ops/onboarding/marketing-entry.draft.json`: the `marketing/apps.json` entry.
 - Tests (`src/release.test.ts`) fail if any of the above goes missing.
 - Not needed for TestFlight but needed before App Store submission: Satchel Plus purchase (T16), screenshots, iPad decision, final name (docs/RELEASE_CHECKLIST.md).
 
 ## Your one step (only you can do this)
+
+**Done 26 Oct 2026:** Jared created the app (Apple ID 6826958413). Step 2 is done (T38) and auto-ship opened App-Projects PR #105 with RELEASE.json; merging it starts the first TestFlight build. What's left for you: say "merge PR 105" in the App Factory chat.
+
 
 1. **Create the app in App Store Connect** (no cost beyond the Apple Developer membership you already have):
    - developer.apple.com > Certificates, Identifiers & Profiles > Identifiers: check `com.jared797.satchel` is listed; if not, "+" > App IDs > App, description Satchel, explicit bundle id `com.jared797.satchel`, tick In-App Purchase.

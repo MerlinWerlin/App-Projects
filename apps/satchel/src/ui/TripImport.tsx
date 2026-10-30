@@ -15,14 +15,15 @@ type State = { kind: 'idle' } | { kind: 'busy' } | { kind: 'error'; reason: Impo
 
 export function TripImport() {
   const { t } = useApp();
-  const { saveTrip } = useTrips();
+  const { trips, saveTrip, deleteTrip } = useTrips();
   const router = useRouter();
   const [state, setState] = useState<State>({ kind: 'idle' });
 
   const run = async () => {
     if (state.kind === 'busy') return;
     setState({ kind: 'idle' });
-    const r = await importTrip(saveTrip, () => {
+    const copyName = (name: string, n: number) => (n === 1 ? t('tripfile.copyName', { name }) : t('tripfile.copyNameN', { name, n }));
+    const r = await importTrip({ saveTrip, deleteTrip, existingNames: trips.map((x) => x.name), copyName }, () => {
       setState({ kind: 'busy' });
       AccessibilityInfo.announceForAccessibility(t('loading.import.title'));
     });

@@ -8,6 +8,8 @@ export const tripfile = {
   'tripfile.import': 'Import a trip',
   'tripfile.importHint': 'Choose a .satchel file from Files to add it as a new trip.',
   'tripfile.imported': 'Trip added',
+  'tripfile.copyName': '{name} (copy)',
+  'tripfile.copyNameN': '{name} (copy {n})',
   'tripfile.unavailable.title': 'Sharing isn’t available',
   'tripfile.unavailable.body': 'This phone can’t open the share sheet here. The trip file couldn’t be shared.',
   'tripfile.pickerUnavailable.body': 'Files can’t be opened here, so a trip can’t be imported right now.',

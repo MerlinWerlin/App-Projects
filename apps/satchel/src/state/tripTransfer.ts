@@ -5,10 +5,10 @@
 import type { Trip } from '../core/model.ts';
 import { newId } from '../core/model.ts';
 import { EMPTY_STORE, listFor, PACKING_KEY, putList, type PackStore } from '../core/packing.ts';
-import { buildTripFile, importTripFile, parseTripFileText, tripFileName, withFiles, type Payloads, type TripFileError } from '../core/tripfile.ts';
+import { buildTripFile, importTripFile, parseTripFileText, tripFileName, uniqueTripName, withFiles, type Payloads, type TripFileError } from '../core/tripfile.ts';
 import { removeAppFiles } from '../native/files.ts';
 import { pickTripFile, readBase64, saveImportedFile, shareTripFile, writeTripFile } from '../native/tripFile.ts';
-import { readPersisted, setPersisted } from './persisted.ts';
+import { readPersisted, setPersistedChecked } from './persisted.ts';
 
 /** 'write': the file couldn't be prepared; 'share' / 'unavailable': ready but the share sheet failed / isn't there. */
 export type ExportResult = { ok: true; skipped: number } | { ok: false; reason: 'write' | 'share' | 'unavailable'; uri?: string };
@@ -51,8 +51,21 @@ export type ImportResult = { ok: true; tripId: string } | { ok: false; reason: I
 
 const failureFor = (e: TripFileError): ImportFailure => (e === 'version' ? 'version' : 'file');
 
-/** Picks a .satchel file and adds it as a new trip. `saveTrip` is the trips store's (true once stored). */
-export async function importTrip(saveTrip: (t: Trip) => Promise<boolean>, onReading?: () => void): Promise<ImportResult> {
+/** What import needs from the trips store and the catalogue. */
+export type ImportDeps = {
+  /** The trips store's save (true once stored). */
+  saveTrip: (t: Trip) => Promise<boolean>;
+  /** The trips store's delete, used to undo the trip when its packing list can't be saved. */
+  deleteTrip: (id: string) => Promise<boolean>;
+  /** Names of the trips already on the phone; a matching imported name gets a '(copy)' suffix. */
+  existingNames: readonly string[];
+  /** Catalogue name for copy number n (1 = '<name> (copy)'). */
+  copyName: (name: string, n: number) => string;
+};
+
+/** Picks a .satchel file and adds it as a new trip (all-or-nothing, packing list included). */
+export async function importTrip(deps: ImportDeps, onReading?: () => void): Promise<ImportResult> {
+  const { saveTrip, deleteTrip, existingNames, copyName } = deps;
   const picked = await pickTripFile();
   if (!picked.ok) {
     if (picked.reason === 'cancelled') return { ok: false, reason: 'cancelled' };
@@ -78,12 +91,17 @@ export async function importTrip(saveTrip: (t: Trip) => Promise<boolean>, onRead
       }
       written[f.attachmentId] = { uri, cropUri };
     }
-    const trip = withFiles(imp.trip, written);
+    const named = { ...imp.trip, name: uniqueTripName(imp.trip.name, existingNames, copyName) };
+    const trip = withFiles(named, written);
     if (!(await saveTrip(trip))) throw new Error('save');
     if (imp.packing) {
       const list = imp.packing;
-      await readPersisted<PackStore>(PACKING_KEY, EMPTY_STORE);
-      setPersisted<PackStore>(PACKING_KEY, (s) => putList(s && typeof s === 'object' && !Array.isArray(s) ? s : {}, list), EMPTY_STORE);
+      const stored = await setPersistedChecked<PackStore>(PACKING_KEY, (s) => putList(s && typeof s === 'object' && !Array.isArray(s) ? s : {}, list), EMPTY_STORE);
+      if (!stored) {
+        // Undo the trip too, so a failed import leaves the phone as it was (deleteTrip also removes its files).
+        await deleteTrip(trip.id).catch(() => false);
+        throw new Error('save');
+      }
     }
     return { ok: true, tripId: trip.id };
   } catch {
