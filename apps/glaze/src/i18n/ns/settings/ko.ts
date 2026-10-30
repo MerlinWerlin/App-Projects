@@ -62,7 +62,7 @@ export const ko: NonNullable<LocaleMessages['settings']> = {
   privacy: {
     title: '개인정보',
     heading: '수집하는 데이터 없음',
-    body: '계정, 분석, 광고, 추적이 없습니다. 사진과 동영상은 휴대폰 밖으로 나가지 않습니다.',
+    body: '계정, 분석, 광고, 추적이 없습니다. 사진과 동영상은 휴대폰 밖으로 나가지 않습니다. 테마 팩은 GitHub에서 일반 파일로 내려받으며, Glaze는 개인 데이터, 계정, 식별자를 보내지 않습니다.',
   },
   about: {
     title: '정보',

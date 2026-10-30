@@ -61,7 +61,7 @@ export const en = {
   privacy: {
     title: 'Privacy',
     heading: 'Data Not Collected',
-    body: 'No accounts, analytics, ads or tracking. Your photos and videos never leave your phone.',
+    body: 'No accounts, analytics, ads or tracking. Your photos and videos never leave your phone. Theme packs download from GitHub as plain files; Glaze sends no personal data, account or identifier.',
   },
   about: {
     title: 'About',

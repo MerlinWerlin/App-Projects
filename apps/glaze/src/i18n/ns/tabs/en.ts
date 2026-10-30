@@ -18,6 +18,13 @@ export const en = {
       habitButtons: 'On iOS 17 or later, tap the buttons on your Home Screen widget to log. Glaze picks up what you logged when you open it.',
     },
     subtitle: 'Widgets that match your theme. Tap one to make it yours.',
+    /** T173: editorial section headers per widget family, and the Widget Studio preview eyebrow. */
+    families: {
+      theme: { eyebrow: 'Your theme', title: 'Theme set', body: 'Clock, date, photo, quote and battery in your theme’s colours.' },
+      everyday: { eyebrow: 'Everyday', title: 'Clocks, calendars and photos', body: 'Time, dates, countdowns and your own photos.' },
+      habits: { eyebrow: 'Habits', title: 'Habit trackers', body: 'Log water, mood, sleep and steps at a glance.' },
+    },
+    studioPreview: 'Live preview',
     themes: 'Theme',
     sizes: 'Widget size',
     lock: 'Lock Screen',

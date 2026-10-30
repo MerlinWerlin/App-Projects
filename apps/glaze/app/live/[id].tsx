@@ -1,11 +1,11 @@
 import { Feather } from '@expo/vector-icons';
+import { Image as ExpoImage } from 'expo-image';
 import { useLocalSearchParams } from 'expo-router';
 import { useVideoPlayer, VideoView, type VideoPlayer } from 'expo-video';
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import {
   ActivityIndicator,
   Dimensions,
-  Image,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -327,7 +327,14 @@ function Editor({ initial }: EditorProps) {
                 }
               />
             ) : (
-              <Image source={{ uri: project.sourceUri }} style={[styles.media, layout]} resizeMode="stretch" />
+              <ExpoImage
+                source={{ uri: project.sourceUri }}
+                style={[styles.media, layout]}
+                contentFit="fill"
+                cachePolicy="memory-disk"
+                transition={0}
+                accessibilityIgnoresInvertColors
+              />
             )}
           </PhoneFrame>
         </View>

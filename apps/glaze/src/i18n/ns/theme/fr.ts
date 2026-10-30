@@ -172,4 +172,11 @@ export const fr: NonNullable<LocaleMessages['theme']> = {
     hint: 'Ouvre le Studio de widgets',
     open: 'Ouvrir le Studio de widgets',
   },
+  section: {
+    inside: { eyebrow: 'Contenu', title: 'Palette et style' },
+    icons: { eyebrow: 'Icônes', title: 'Forme et vos apps' },
+    widgets: { eyebrow: 'Widgets' },
+    wallpaper: { eyebrow: 'Fond d’écran' },
+    credits: { eyebrow: 'Crédits', title: 'À propos de l’image' },
+  },
 };

@@ -10,8 +10,8 @@ Paste after the feature sections (release standard §3; same pattern as the othe
 
 1. Screen recording: supplied with the reply (physical iPhone, latest iOS): launch, pick a theme, make and install an icon with Shortcuts, add a Glaze widget, save a wallpaper, Plus Unlock and Restore.
 2. Purpose and audience: a home-screen customisation app for anyone who wants a matching look. It offers original themes with matching icons, themed widgets and wallpaper packs, plus a Live Photo maker from the user's own clip.
-3. Setup: no account, login or sample files needed; every theme is bundled. Icons are installed one app at a time with Apple's Shortcuts app, guided step by step in Glaze.
-4. External services: none for core functionality. Only Apple In-App Purchase (StoreKit) for the one-time Glaze Plus unlock (non-consumable `com.jared797.glaze.plus`; Restore purchases is on the Plus sheet and in Settings). No server, accounts, analytics, ads or AI; photos and videos never leave the device.
+3. Setup: no account, login or sample files needed; the starter themes are bundled and further theme packs download on demand (item 4). Icons are installed one app at a time with Apple's Shortcuts app, guided step by step in Glaze.
+4. External services: none for core functionality. Only Apple In-App Purchase (StoreKit) for the one-time Glaze Plus unlock (non-consumable `com.jared797.glaze.plus`; Restore purchases is on the Plus sheet and in Settings). No server, accounts, analytics, ads or AI; photos and videos never leave the device. The theme-pack catalogue and art packs are downloaded from GitHub (public GitHub Releases on `MerlinWerlin/App-Projects`) as plain files over HTTPS; no personal data, account or identifier is sent with these requests, each file is checked against the SHA-256 in its pack manifest, and without a connection the app keeps working with its bundled and already downloaded themes.
 5. Regional differences: none; works the same in all regions (only the purchase price is localised).
 6. Regulated industry / third-party material: not applicable. All icons, themes and art are original or licensed (licences in the app's records); no brand logos or third-party characters.
 
@@ -28,8 +28,8 @@ Pick the version that matches `PROFILE_INSTALL_ENABLED` in `src/config/install.t
 > action and picks the Glaze image from Photos as the shortcut's icon. Glaze saves the images to a
 > "Glaze icons" album, shows the steps for each app and offers a link to copy. It doesn't install
 > anything, change system settings or use device management. The install screen also explains how to
-> remove the shortcuts and bring back the original icons. There are no accounts and no network calls,
-> and photos stay on the device.
+> remove the shortcuts and bring back the original icons. There are no accounts, the icon flow makes no network
+> calls, and photos stay on the device.
 
 **Switch ON (TestFlight, or if the owner chooses to submit with it):**
 

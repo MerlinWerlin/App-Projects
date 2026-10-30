@@ -6,8 +6,9 @@
 // native bridge will write. The nudge moves the widget box and its crop together (it models
 // "the real widget sits a few points off the table"), so the preview always stays seamless.
 // Never mirrored (a picture of an iPhone screen): `noMirror`.
+import { Image as ExpoImage } from 'expo-image';
 import { useMemo } from 'react';
-import { Image, PixelRatio, StyleSheet, Text, View, useWindowDimensions, type ImageSourcePropType, type StyleProp, type ViewStyle } from 'react-native';
+import { PixelRatio, StyleSheet, Text, View, useWindowDimensions, type ImageSourcePropType, type StyleProp, type ViewStyle } from 'react-native';
 import {
   heroRect,
   lookupDevice,
@@ -108,7 +109,7 @@ export function SeamlessWidgetPreview({
       accessibilityLabel={accessibilityLabel}
       style={[styles.phone, noMirror, { width: w, height: h, borderRadius: w * 0.12 }, style]}
     >
-      <Image source={wallpaper} style={[styles.abs, layout.wall]} resizeMode="stretch" />
+      <ExpoImage source={wallpaper} style={[styles.abs, layout.wall]} contentFit="fill" cachePolicy="memory-disk" transition={0} />
 
       <View pointerEvents="none" style={[styles.status, { height: h * 0.06, paddingHorizontal: w * 0.09 }]}>
         <Text maxFontSizeMultiplier={1.4} style={[styles.statusText, tabularV2, noMirrorText, { fontSize: statusFont }]}>
@@ -126,8 +127,10 @@ export function SeamlessWidgetPreview({
           outline ? styles.outline : null,
         ]}
       >
-        <Image source={wallpaper} style={[styles.abs, layout.inner]} resizeMode="stretch" />
-        {hero ? <Image source={hero} style={[styles.abs, layout.hero]} resizeMode="contain" /> : null}
+        <ExpoImage source={wallpaper} style={[styles.abs, layout.inner]} contentFit="fill" cachePolicy="memory-disk" transition={0} />
+        {hero ? (
+          <ExpoImage source={hero} style={[styles.abs, layout.hero]} contentFit="contain" cachePolicy="memory-disk" transition={0} />
+        ) : null}
       </View>
 
       {/* Dock band, as on the Home Screen (sits over the wallpaper only). */}

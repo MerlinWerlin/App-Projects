@@ -3,7 +3,12 @@
 // bar at the bottom. A theme is one bundle (wallpaper + icons + matching widgets); the button
 // starts the existing apply steps in place. Everything else (photo, wallpaper editing, shape,
 // palette, matching widgets) sits below as quieter cards and inset rows.
+// T173 premium slice (docs/PREMIUM_UI.md §3.3): the hero phone sits large and centred on a soft
+// surface with a quiet Home / Lock pill under it; the rest reads as editorial blocks (eyebrow +
+// title via SectionHeader: What's inside, Icons, Widgets, Wallpaper, Credits); the glass bar holds
+// one primary pill; every Text has a Dynamic Type cap; motion stays timed ease-out (no spring).
 import { Feather } from '@expo/vector-icons';
+import { Image as ExpoImage } from 'expo-image';
 import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
@@ -74,7 +79,17 @@ import { loadBackground } from '../../src/store/background';
 import { setThemeShape, themeShapeFor } from '../../src/core/studio';
 import { setStudioStyle, useStudio } from '../../src/store/studio';
 import { durations, easeOutCurve, useMotionReduced } from '../../src/theme/motion';
-import { continuous, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
+import {
+  circleRadius,
+  continuous,
+  editorialV2,
+  fontScaleCap,
+  radiusV2,
+  sizeV2,
+  spaceV2,
+  textV2,
+  type TypeRoleV2,
+} from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { HOME_ASPECT, HomeMock } from '../../src/ui/HomeMock';
 import { LockMock } from '../../src/ui/LockMock';
@@ -105,12 +120,17 @@ import { tipsForInstallMode } from '../../src/core/installMethods';
 import { PROFILE_INSTALL_ENABLED } from '../../src/config/install';
 import { haptic } from '../../src/ui/haptics';
 import { noMirror, textStyleFor } from '../../src/ui/i18nLayout';
-import { GlassBar, InsetGroup, InsetRow, PillButton, SquircleCard } from '../../src/ui/v2';
+import { GlassBar, InsetGroup, InsetRow, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
 
 /** Outer width of the phone preview for a window width: large, but leaves the toggle and bar room. */
 function previewWidthFor(windowW: number): number {
   return Math.max(200, Math.min(280, Math.round(windowW * 0.64)));
+}
+
+/** T173: the quiet Home / Lock pill under the hero phone: a little narrower than the phone, never cramped. */
+function modePillWidthFor(phoneW: number): number {
+  return Math.max(200, Math.round(phoneW * 0.9));
 }
 
 /** A v2 type role plus the script's line-height adjustment. */
@@ -175,7 +195,9 @@ export default function ThemeDetailScreen() {
     return (
       <View style={[styles.missing, { backgroundColor: c.bg }]}>
         <Stack.Screen options={{ title: t('theme.title') }} />
-        <Text style={[...typeFor(script, 'title2'), { color: c.ink }]}>{t('theme.notFound')}</Text>
+        <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title2')} style={[...typeFor(script, 'title2'), { color: c.ink }]}>
+          {t('theme.notFound')}
+        </Text>
         <PillButton label={t('theme.backToThemes')} onPress={() => router.back()} />
       </View>
     );
@@ -278,7 +300,8 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
   const onIconsSettled = () => {
     if (!pendingSettle.current) return;
     pendingSettle.current = false;
-    haptic('success');
+    // T173 (PREMIUM_UI §1.7): `success` is kept for the one end-of-flow moment (all steps done).
+    haptic('light');
     setSheenKey((k) => k + 1);
   };
 
@@ -348,7 +371,7 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
     const before = checklistRef.current;
     const next = tickTask(before, task, Date.now());
     if (next === before) return;
-    haptic('success');
+    haptic('light');
     commitChecklist(next);
   };
   // The success moment: once, when the third step is ticked with the checklist on screen.
@@ -390,7 +413,7 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
   // T103: a Space (Webb) theme uses its downloaded photo; the person's own photo still wins.
   const spacePhoto = usePhotoTheme(theme);
   const spaceBackground = spacePhoto.uri ? (
-    <Image source={{ uri: spacePhoto.uri }} resizeMode="cover" style={{ width: screenW, height: screenH }} accessibilityIgnoresInvertColors /> // i18n-ignore (code after a JSX element)
+    <ExpoImage source={{ uri: spacePhoto.uri }} contentFit="cover" cachePolicy="memory-disk" style={{ width: screenW, height: screenH }} accessibilityIgnoresInvertColors /> // i18n-ignore (code after a JSX element)
   ) : null;
   // T105: what Apply's Wallpaper step saves (own photo > downloaded Webb photo > drawn wallpaper);
   // a Space theme whose photo isn't on the phone yet offers the download first.
@@ -400,9 +423,11 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
   // T130: an art-pack theme shows (and saves) its bundled wallpaper image; the own photo still wins.
   const artPack = artPackOf(theme);
   const artImage = artPack ? artPackWallpaper(artPack.artPack.id) : null;
+  /** T173: the Credits block shows only when there is a photo or art credit to show. */
+  const hasCredits = !!spacePhoto.photo || !!(artPack && artPack.artPack.credits);
   const artBackground =
     artImage != null ? (
-      <Image source={artImage} resizeMode="cover" style={{ width: screenW, height: screenH }} accessibilityIgnoresInvertColors /> // i18n-ignore (code after a JSX element)
+      <ExpoImage source={artImage} contentFit="cover" cachePolicy="memory-disk" style={{ width: screenW, height: screenH }} accessibilityIgnoresInvertColors /> // i18n-ignore (code after a JSX element)
     ) : remoteArt ? (
       <RemoteArtImage theme={remoteArt} localUri={remoteWallpaperUri} width={screenW} height={screenH} /> // i18n-ignore (code after a JSX element)
     ) : null;
@@ -588,10 +613,12 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
             </Svg>
           </Animated.View>
           <View style={styles.head}>
-            <Text accessibilityRole="header" style={[...ts('title1'), { color: c.ink }]}>
+            <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title1')} style={[...ts('title1'), { color: c.ink }]}>
               {theme.name}
             </Text>
-            <Text style={[...ts('callout'), { color: c.inkSecondary }]}>{theme.tagline}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>
+              {theme.tagline}
+            </Text>
             {theme.plus ? <PlusBadge /> : null}
           </View>
         </View>
@@ -601,16 +628,10 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
 
         {showsPackCard(packView) ? <PackCard view={packView} packName={packName} onDownload={onDownloadPack} bytes={remoteArt?.remoteArt.bytes} /> : null}
 
-        {/* L2: one large phone-shaped preview with a Home / Lock toggle. */}
-        <SquircleCard size="large" elevation="raised" style={styles.side}>
+        {/* L2 + T173 hero: one large phone-shaped preview, centred on a soft surface (layered
+            shadow, no border), with a quiet Home / Lock pill under it. */}
+        <SquircleCard size="large" elevation="card" padding={spaceV2.xl} style={styles.side}>
           <View style={styles.previewCol}>
-            <Segmented<PreviewMode>
-              label={t('theme.mode.label')}
-              options={previewModes(t)}
-              value={mode}
-              onChange={setMode}
-              style={styles.modeToggle}
-            />
             <View
               style={[
                 styles.phone,
@@ -660,16 +681,16 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
                 </Animated.View>
               </View>
             </View>
+            <Segmented<PreviewMode>
+              label={t('theme.mode.label')}
+              options={previewModes(t)}
+              value={mode}
+              onChange={setMode}
+              style={[styles.modeToggle, { width: modePillWidthFor(phoneW) }]}
+            />
             {mode === 'home' ? <PreviewModeLabel iosMask={iosMask} /> : null}
           </View>
         </SquircleCard>
-
-        {/* T103 (fb-1022 G5a): credit + licence for a Webb photo, with Download / Remove (on a tap only). */}
-        {spacePhoto.photo ? <PhotoCredit theme={theme} style={styles.side} /> : null}
-        {/* T130: credit + licence for an art-pack theme (from its meta.json). */}
-        {artPack && artPack.artPack.credits ? <ArtPackCredit theme={artPack} style={styles.side} /> : null}
-        {/* T133: the Seamless widget (wallpaper crop + floating art) for art-pack themes only. */}
-        {artPack ? <SeamlessCard artPackId={artPack.artPack.id} /> : null}
 
         {/* T61 (L2): the 3-in-1 apply checklist. Wallpaper > Icons > Widgets with ticks and a
             progress indicator, Loop as an optional fourth row, a success moment at the end. */}
@@ -677,7 +698,7 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
           <View onLayout={onStepsLayout} style={styles.side}>
             <SquircleCard size="large" elevation="raised">
               <View style={styles.stack}>
-                <Text accessibilityRole="header" style={[...ts('title2'), { color: c.ink }]}>
+                <Text maxFontSizeMultiplier={fontScaleCap('title2')} accessibilityRole="header" style={[...ts('title2'), { color: c.ink }]}>
                   {t('theme.checklist.title')}
                 </Text>
                 <View
@@ -704,7 +725,7 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
                       );
                     })}
                   </View>
-                  <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>
+                  <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
                     {t('theme.checklist.progress', { done: progress.done, total: progress.total })}
                   </Text>
                 </View>
@@ -750,7 +771,7 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
 
                       {expanded && row === 'wallpaper' ? (
                         <View style={styles.rowBody}>
-                          <Text style={[...ts('body'), { color: c.ink }]}>
+                          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
                             {photo
                               ? t('theme.save.bodyPhoto', sizeParams)
                               : wallSource === 'space-photo'
@@ -760,27 +781,27 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
                           {/* T105: a Space theme offers its Webb photo download first (Retry on failure, T108). */}
                           {wallSource === 'space-offer-download' ? (
                             <View style={styles.gap}>
-                              <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('ui.photoCredit.applyOffer')}</Text>
+                              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('ui.photoCredit.applyOffer')}</Text>
                               <PhotoDownloadControl p={spacePhoto} allowRemove={false} />
                             </View>
                           ) : null}
                           {/* The credit stays with the Webb photo wherever it is saved (T108). */}
                           {wallSource === 'space-photo' && spaceCredit ? (
-                            <Text style={[...ts('footnote'), { color: c.inkSecondary }]} selectable>
+                            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]} selectable>
                               {t('ui.photoCredit.creditLine', spaceCredit)}
                             </Text>
                           ) : null}
                           {saveState === 'saved' ? (
                             <View style={[styles.note, continuous, { backgroundColor: c.pastels.mint.fill }]}>
                               <Feather name="check" size={18} color={c.pastels.mint.ink} />
-                              <Text style={[...ts('body'), styles.flex, { color: c.pastels.mint.ink }]} selectable={savedFrom === 'space-photo'}>
+                              <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.flex, { color: c.pastels.mint.ink }]} selectable={savedFrom === 'space-photo'}>
                                 {savedFrom === 'space-photo' && spaceCredit ? t('ui.photoCredit.savedCredit', spaceCredit) : t('theme.save.saved')}
                               </Text>
                             </View>
                           ) : null}
                           {saveState === 'denied' ? (
                             <View style={styles.gap}>
-                              <Text style={[...ts('body'), { color: c.warn }]}>{t('theme.save.denied')}</Text>
+                              <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.warn }]}>{t('theme.save.denied')}</Text>
                               <PillButton
                                 label={t('theme.save.openSettings')}
                                 icon="settings"
@@ -791,11 +812,11 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
                           ) : null}
                           {saveState === 'error' ? (
                             <View style={styles.gap} accessibilityLiveRegion="polite">
-                              <Text style={[...ts('body'), { color: c.warn }]}>
+                              <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.warn }]}>
                                 {saveWhy && saveFailureKey(saveWhy.why) ? t(`theme.save.why.${saveWhy.why}`) : t('theme.save.error')}
                               </Text>
                               {saveWhy?.detail ? (
-                                <Text style={[...ts('footnote'), { color: c.inkSecondary }]} selectable>
+                                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]} selectable>
                                   {saveWhy.detail}
                                 </Text>
                               ) : null}
@@ -836,7 +857,7 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
                             busy={saver.saving || photoSaver.saving}
                             onPress={onSaveWallpaper}
                           />
-                          <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.checklist.wallpaper.pairBody')}</Text>
+                          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.checklist.wallpaper.pairBody')}</Text>
                           <View style={styles.navRow}>
                             <PillButton
                               label={t('theme.checklist.wallpaper.pairCta')}
@@ -862,12 +883,12 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
 
                       {expanded && row === 'icons' ? (
                         <View style={styles.rowBody}>
-                          <Text style={[...ts('headline'), { color: c.ink }]}>
+                          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
                             {checklist.ticks.iconStyle ? '✓ ' : ''}
                             {t('theme.checklist.icons.style')}
                           </Text>
-                          <Text style={[...ts('body'), { color: c.ink }]}>{t('theme.style.body')}</Text>
-                          {styleError ? <Text style={[...ts('body'), { color: c.warn }]}>{t('theme.style.error')}</Text> : null}
+                          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('theme.style.body')}</Text>
+                          {styleError ? <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.warn }]}>{t('theme.style.error')}</Text> : null}
                           <PillButton
                             label={styleBusy ? t('common.loading') : t('theme.style.cta')}
                             icon="grid"
@@ -877,11 +898,11 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
                             onPress={() => void onUseStyle()}
                             accessibilityHint={t('theme.style.hint')}
                           />
-                          <Text style={[...ts('headline'), { color: c.ink }]}>
+                          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
                             {checklist.ticks.iconInstall ? '✓ ' : ''}
                             {t('theme.checklist.icons.install')}
                           </Text>
-                          <Text style={[...ts('body'), { color: c.ink }]}>{t('theme.install.body')}</Text>
+                          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('theme.install.body')}</Text>
                           <SheenButton
                             label={t('theme.install.cta')}
                             icon="upload"
@@ -895,7 +916,7 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
 
                       {expanded && row === 'widgets' ? (
                         <View style={styles.rowBody}>
-                          <Text style={[...ts('body'), { color: c.ink }]}>
+                          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
                             {widgetsMode === 'add' ? t('theme.checklist.widgets.bodyAdd') : t('theme.checklist.widgets.bodyPreview')}
                           </Text>
                           <PillButton
@@ -911,7 +932,7 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
 
                       {expanded && row === 'loop' ? (
                         <View style={styles.rowBody}>
-                          <Text style={[...ts('body'), { color: c.ink }]}>{t('theme.loop.body')}</Text>
+                          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('theme.loop.body')}</Text>
                           <PillButton
                             label={t('theme.loop.cta')}
                             icon="film"
@@ -958,102 +979,135 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
           </View>
         ) : null}
 
-        {/* Make it yours: quiet rows, so "Apply" stays the one primary action. */}
-        <InsetGroup
-          header={t('theme.customise')}
-          footer={photo ? t('theme.photo.yours', { name: theme.name }) : t('theme.photo.prompt')}
-        >
-          <InsetRow
-            title={photoLabel}
-            icon="image"
-            iconTone="sky"
-            onPress={openPhotoEditor}
-            accessibilityLabel={photoLabel}
-            accessibilityHint={t('theme.photo.hint')}
-          />
-          {locked || !canApply ? null : (
-            <InsetRow
-              title={t('theme.editWallpaper')}
-              icon="sliders"
-              iconTone="lilac"
-              onPress={() => router.push({ pathname: '/wallpaper', params: { theme: theme.id } })}
-              accessibilityLabel={t('theme.editWallpaper')}
-            />
-          )}
-        </InsetGroup>
+        {/* T173 (PREMIUM_UI §3.3): editorial blocks, each one eyebrow + title (SectionHeader reads
+            them as one heading), quiet cards and inset rows under it, so "Apply" stays the one
+            primary action. Order: What's inside, Icons, Widgets, Wallpaper, Credits. */}
+        <View style={styles.block}>
+          <SectionHeader eyebrow={t('theme.section.inside.eyebrow')} title={t('theme.section.inside.title')} style={styles.sectionHead} />
+          <SquircleCard style={styles.side}>
+            <View style={styles.stack}>
+              <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
+                {t('theme.palette.title')}
+              </Text>
+              <View style={styles.dots}>
+                {palette.map(([name, hex]) => (
+                  <View key={name} style={styles.dotItem} accessible accessibilityLabel={t('theme.a11y.swatch', { name, hex })}>
+                    <View style={[styles.dot, { backgroundColor: hex, borderColor: c.separator }]} />
+                    <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...ts('caption1'), styles.dotLabel, { color: c.inkSecondary }]}>
+                      {name}
+                    </Text>
+                  </View>
+                ))}
+              </View>
+              <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
+                {t('theme.iconStyle')}
+              </Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>
+                {styleSummary(t, { ...theme.iconStyle, shape })}
+              </Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
+                {t('theme.widgets.line', {
+                  style: t(`theme.widgets.${theme.widget.style}`),
+                  font: t(theme.widget.font === 'display' ? 'theme.widgets.display' : 'theme.widgets.body'),
+                })}
+              </Text>
+            </View>
+          </SquircleCard>
+        </View>
 
         {/* T26 + fb-1022 G2: the icon shape picker sits behind one collapsed "Shape" row here (the only
             place it appears), with the "How it looks on iPhone" switch inside. */}
-        <InsetGroup>
-          <InsetRow
-            title={t('theme.shapeRow.title')}
-            value={t(`themeUi.shape.names.${shape}`)}
-            icon="square"
-            iconTone="mint"
-            accessory="none"
-            trailing={<Feather name={shapeOpen ? 'chevron-up' : 'chevron-down'} size={18} color={c.inkTertiary} />}
-            onPress={() => setShapeOpen((o) => !o)}
-            accessibilityLabel={t('theme.shapeRow.a11y', { shape: t(`themeUi.shape.names.${shape}`) })}
-            accessibilityHint={shapeOpen ? t('theme.shapeRow.hideHint') : t('theme.shapeRow.showHint')}
-          />
-        </InsetGroup>
-        {shapeOpen ? (
-          <SquircleCard style={styles.side}>
-            <ShapePicker
-              theme={theme}
-              value={shape}
-              onChange={(next) => studio.update((s) => setThemeShape(s, shapeKey, next))}
-              iosMask={iosMask}
-              onIosMaskChange={setIosMask}
-              backdrop={iconBackdrop}
+        <View style={styles.block}>
+          <SectionHeader eyebrow={t('theme.section.icons.eyebrow')} title={t('theme.section.icons.title')} style={styles.sectionHead} />
+          <InsetGroup>
+            <InsetRow
+              title={t('theme.shapeRow.title')}
+              value={t(`themeUi.shape.names.${shape}`)}
+              icon="square"
+              iconTone="mint"
+              accessory="none"
+              trailing={<Feather name={shapeOpen ? 'chevron-up' : 'chevron-down'} size={18} color={c.inkTertiary} />}
+              onPress={() => setShapeOpen((o) => !o)}
+              accessibilityLabel={t('theme.shapeRow.a11y', { shape: t(`themeUi.shape.names.${shape}`) })}
+              accessibilityHint={shapeOpen ? t('theme.shapeRow.hideHint') : t('theme.shapeRow.showHint')}
             />
-          </SquircleCard>
-        ) : null}
-
-        <SquircleCard style={styles.side}>
-          <View style={styles.stack}>
-            <Text accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
-              {t('theme.palette.title')}
-            </Text>
-            <View style={styles.dots}>
-              {palette.map(([name, hex]) => (
-                <View key={name} style={styles.dotItem} accessible accessibilityLabel={t('theme.a11y.swatch', { name, hex })}>
-                  <View style={[styles.dot, { backgroundColor: hex, borderColor: c.separator }]} />
-                  <Text style={[...ts('caption1'), styles.dotLabel, { color: c.inkSecondary }]}>{name}</Text>
-                </View>
-              ))}
+          </InsetGroup>
+          {shapeOpen ? (
+            <SquircleCard style={styles.side}>
+              <ShapePicker
+                theme={theme}
+                value={shape}
+                onChange={(next) => studio.update((s) => setThemeShape(s, shapeKey, next))}
+                iosMask={iosMask}
+                onIosMaskChange={setIosMask}
+                backdrop={iconBackdrop}
+              />
+            </SquircleCard>
+          ) : null}
+          {locked || !canApply ? null : (
+            <View style={styles.side}>
+              <ThemeOverrideRow theme={theme} />
             </View>
-            <Text accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
-              {t('theme.iconStyle')}
-            </Text>
-            <Text style={[...ts('callout'), { color: c.inkSecondary }]}>{styleSummary(t, { ...theme.iconStyle, shape })}</Text>
-            <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>
-              {t('theme.widgets.line', {
-                style: t(`theme.widgets.${theme.widget.style}`),
-                font: t(theme.widget.font === 'display' ? 'theme.widgets.display' : 'theme.widgets.body'),
-              })}
-            </Text>
-          </View>
-        </SquircleCard>
+          )}
+        </View>
 
-        <WidgetPreviews theme={theme} />
+        <View style={styles.block}>
+          <SectionHeader
+            eyebrow={t('theme.section.widgets.eyebrow')}
+            title={t('theme.widgetPreviews.title')}
+            body={t('theme.widgetPreviews.body')}
+            style={styles.sectionHead}
+          />
+          <WidgetPreviews theme={theme} />
+          {/* T133: the Seamless widget (wallpaper crop + floating art) for art-pack themes only. */}
+          {artPack ? <SeamlessCard artPackId={artPack.artPack.id} /> : null}
+        </View>
 
-        {locked || !canApply ? null : (
-          <View style={styles.side}>
-            <ThemeOverrideRow theme={theme} />
+        {/* Make it yours: quiet rows for the photo and the wallpaper editor. */}
+        <View style={styles.block}>
+          <SectionHeader eyebrow={t('theme.section.wallpaper.eyebrow')} title={t('theme.customise')} style={styles.sectionHead} />
+          <InsetGroup footer={photo ? t('theme.photo.yours', { name: theme.name }) : t('theme.photo.prompt')}>
+            <InsetRow
+              title={photoLabel}
+              icon="image"
+              iconTone="sky"
+              onPress={openPhotoEditor}
+              accessibilityLabel={photoLabel}
+              accessibilityHint={t('theme.photo.hint')}
+            />
+            {locked || !canApply ? null : (
+              <InsetRow
+                title={t('theme.editWallpaper')}
+                icon="sliders"
+                iconTone="lilac"
+                onPress={() => router.push({ pathname: '/wallpaper', params: { theme: theme.id } })}
+                accessibilityLabel={t('theme.editWallpaper')}
+              />
+            )}
+          </InsetGroup>
+        </View>
+
+        {hasCredits ? (
+          <View style={styles.block}>
+            <SectionHeader eyebrow={t('theme.section.credits.eyebrow')} title={t('theme.section.credits.title')} style={styles.sectionHead} />
+            {/* T103 (fb-1022 G5a): credit + licence for a Webb photo, with Download / Remove (on a tap only). */}
+            {spacePhoto.photo ? <PhotoCredit theme={theme} style={styles.side} /> : null}
+            {/* T130: credit + licence for an art-pack theme (from its meta.json). */}
+            {artPack && artPack.artPack.credits ? <ArtPackCredit theme={artPack} style={styles.side} /> : null}
           </View>
-        )}
+        ) : null}
 
         <OffscreenWallpaper ref={saver.ref} job={saver.job} />
         <OffscreenPhotoWallpaper ref={photoSaver.ref} job={photoSaver.job} onReady={photoSaver.markReady} />
       </ScrollView>
 
-      {/* The one primary action, sticky over the content on chrome glass: wallpaper + icons + widgets. */}
+      {/* The one primary action, sticky over the content on chrome glass: wallpaper + icons + widgets.
+          T173: one filled pill; "Choose icons" stays reachable as a quiet plain link under it. */}
       {showBar ? (
         <GlassBar material="chrome" hairline="top" style={styles.bar}>
           <View
             onLayout={(e: LayoutChangeEvent) => setBarH(e.nativeEvent.layout.height)}
-            style={[styles.barInner, { paddingBottom: insets.bottom + spaceV2.md }]}
+            style={[styles.barInner, { paddingBottom: insets.bottom + spaceV2.sm }]}
           >
             <PillButton
               label={t('theme.apply')}
@@ -1062,9 +1116,26 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
               onPress={start}
               accessibilityHint={locked ? t('theme.applyHintLocked') : t('theme.applyHint')}
             />
-            {!locked ? <PillButton label={t('theme.style.cta')} icon="grid" variant="tinted" block busy={styleBusy} onPress={() => void onUseStyle()} /> : null}
-            {styleError ? <Text style={{ color: c.warn }}>{t('theme.style.error')}</Text> : null}
-            <Text style={[...ts('footnote'), styles.barNote, { color: c.inkSecondary }]}>{t('theme.applyBundle')}</Text>
+            {!locked ? (
+              <PillButton
+                label={t('theme.style.cta')}
+                icon="grid"
+                variant="plain"
+                size="small"
+                busy={styleBusy}
+                onPress={() => void onUseStyle()}
+                accessibilityHint={t('theme.style.hint')}
+                style={styles.barLink}
+              />
+            ) : null}
+            {styleError ? (
+              <Text accessibilityLiveRegion="polite" maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.barNote, { color: c.warn }]}>
+                {t('theme.style.error')}
+              </Text>
+            ) : null}
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.barNote, { color: c.inkSecondary }]}>
+              {t('theme.applyBundle')}
+            </Text>
           </View>
         </GlassBar>
       ) : null}
@@ -1117,14 +1188,14 @@ function ChecklistRowHeader({ index, title, subtitle, state, done, partial, opti
         {done ? (
           <Feather name="check" size={18} color={c.onTint} />
         ) : (
-          <Text style={[...typeFor(script, 'footnote'), { color: partial ? c.onTintSoft : c.inkSecondary }]}>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: partial ? c.onTintSoft : c.inkSecondary }]}>
             {optional ? '+' : String(index)}
           </Text>
         )}
       </View>
       <View style={styles.flex}>
-        <Text style={[...typeFor(script, 'headline'), { color: c.ink }]}>{title}</Text>
-        <Text style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), { color: c.ink }]}>{title}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>
           {subtitle}
           {' · '}
           {state}
@@ -1178,8 +1249,8 @@ function SuccessBloom({ playKey, reduced, title, body }: SuccessBloomProps) {
         </Animated.View>
       </View>
       <View style={styles.flex}>
-        <Text style={[...typeFor(script, 'headline'), { color: c.pastels.mint.ink }]}>{title}</Text>
-        <Text style={[...typeFor(script, 'footnote'), { color: c.pastels.mint.ink }]}>{body}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), { color: c.pastels.mint.ink }]}>{title}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.pastels.mint.ink }]}>{body}</Text>
       </View>
     </Animated.View>
   );
@@ -1209,10 +1280,7 @@ function WidgetPreviews({ theme }: { theme: Theme }) {
   return (
     <SquircleCard style={styles.side}>
       <View style={styles.stack}>
-        <Text accessibilityRole="header" style={[...typeFor(script, 'title3'), { color: c.ink }]}>
-          {t('theme.widgetPreviews.title')}
-        </Text>
-        <Text style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{t('theme.widgetPreviews.body')}</Text>
+        {/* T173: the title and body moved into the Widgets block's SectionHeader. */}
         <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.widgetRow}>
           {items.map((spec) => (
             <Pressable
@@ -1224,7 +1292,7 @@ function WidgetPreviews({ theme }: { theme: Theme }) {
               style={({ pressed }) => [styles.widgetItem, { opacity: pressed ? 0.75 : 1 }]}
             >
               <WidgetPreview spec={spec} width={WIDGET_PREVIEW_W} />
-              <Text style={[...typeFor(script, 'caption1'), { color: c.ink }]} numberOfLines={2}>
+              <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...typeFor(script, 'caption1'), { color: c.ink }]} numberOfLines={2}>
                 {tl(widgetKindKey(spec.kind))}
               </Text>
             </Pressable>
@@ -1353,10 +1421,10 @@ function SeamlessCard({ artPackId }: { artPackId: string }) {
   return (
     <SquircleCard style={styles.side}>
       <View style={styles.stack}>
-        <Text accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap('title3')} accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
           {t('ui.seamless.title')}
         </Text>
-        <Text style={[...ts('callout'), { color: c.inkSecondary }]}>{t('ui.seamless.body')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>{t('ui.seamless.body')}</Text>
         <SeamlessWidgetPreview
           wallpaper={wallpaper}
           wallpaperPx={{ w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height }}
@@ -1397,18 +1465,18 @@ function SeamlessCard({ artPackId }: { artPackId: string }) {
           accessibilityHint={t('ui.seamless.useHint')}
         />
         {statusLine ? (
-          <Text accessibilityLiveRegion="polite" style={[...ts('footnote'), { color: status === 'saved' ? c.ok : status === 'failed' ? c.warn : c.inkSecondary }]}>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} accessibilityLiveRegion="polite" style={[...ts('footnote'), { color: status === 'saved' ? c.ok : status === 'failed' ? c.warn : c.inkSecondary }]}>
             {statusLine}
           </Text>
         ) : null}
-        <Text accessibilityRole="header" style={[...ts('headline'), { color: c.ink }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap('headline')} accessibilityRole="header" style={[...ts('headline'), { color: c.ink }]}>
           {t('ui.seamless.howTitle')}
         </Text>
         <View style={styles.gap}>
           {how.map((line, i) => (
             <View key={i} style={styles.howRow}>
-              <Text style={[...ts('footnote'), styles.howNum, { color: c.inkSecondary }]}>{i + 1}.</Text>
-              <Text style={[...ts('footnote'), styles.flex, { color: c.inkSecondary }]}>{line}</Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.howNum, { color: c.inkSecondary }]}>{i + 1}.</Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.flex, { color: c.inkSecondary }]}>{line}</Text>
             </View>
           ))}
         </View>
@@ -1439,16 +1507,16 @@ function PackCard({ view, packName, onDownload, bytes }: { view: PackDetailView;
       <View style={styles.stack}>
         <View style={styles.packHead}>
           <Feather name={icon} size={20} color={iconColour} />
-          <Text accessibilityRole="header" style={[...ts('headline'), styles.flex, { color: c.ink }]}>
+          <Text maxFontSizeMultiplier={fontScaleCap('headline')} accessibilityRole="header" style={[...ts('headline'), styles.flex, { color: c.ink }]}>
             {t('theme.pack.title', params)}
           </Text>
         </View>
-        {view.kind === 'locked' ? <Text style={[...ts('callout'), { color: c.inkSecondary }]}>{t('theme.pack.locked')}</Text> : null}
-        {view.kind === 'bundled' ? <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.pack.bundled')}</Text> : null}
+        {view.kind === 'locked' ? <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>{t('theme.pack.locked')}</Text> : null}
+        {view.kind === 'bundled' ? <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.pack.bundled')}</Text> : null}
         {view.kind === 'download' ? (
           <>
-            <Text style={[...ts('callout'), { color: c.ink }]}>{t('theme.pack.download', params)}</Text>
-            {bytes ? <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.pack.size', { size: formatBytes(bytes, locale) })}</Text> : null}
+            <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.ink }]}>{t('theme.pack.download', params)}</Text>
+            {bytes ? <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.pack.size', { size: formatBytes(bytes, locale) })}</Text> : null}
             <PillButton
               label={t('theme.pack.downloadCta')}
               icon="download"
@@ -1462,12 +1530,12 @@ function PackCard({ view, packName, onDownload, bytes }: { view: PackDetailView;
           <>
             {/* percent is capped at 99 until the files are verified */}
             <ProgressBar progress={view.percent / 100} label={t('theme.pack.downloading', params)} />
-            <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.pack.downloadingNote')}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.pack.downloadingNote')}</Text>
           </>
         ) : null}
         {view.kind === 'error' ? (
           <>
-            <Text accessibilityLiveRegion="polite" style={[...ts('callout'), { color: c.warn }]}>
+            <Text maxFontSizeMultiplier={fontScaleCap('callout')} accessibilityLiveRegion="polite" style={[...ts('callout'), { color: c.warn }]}>
               {view.message ?? t('theme.pack.error')}
             </Text>
             <PillButton
@@ -1479,7 +1547,7 @@ function PackCard({ view, packName, onDownload, bytes }: { view: PackDetailView;
             />
           </>
         ) : null}
-        {view.kind === 'ready' ? <Text style={[...ts('callout'), { color: c.inkSecondary }]}>{t('theme.pack.ready')}</Text> : null}
+        {view.kind === 'ready' ? <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>{t('theme.pack.ready')}</Text> : null}
       </View>
     </SquircleCard>
   );
@@ -1498,28 +1566,32 @@ const styles = StyleSheet.create({
   },
   head: { gap: spaceV2.xs },
   stack: { gap: spaceV2.md },
-  modeToggle: { alignSelf: 'stretch' },
-  previewCol: { alignItems: 'center', gap: spaceV2.md },
+  // T173 editorial blocks: 32 pt above each section (the content gap supplies 16 of it), 12 pt
+  // between the header and its cards and between cards in a block.
+  block: { gap: editorialV2.sectionBottom },
+  sectionHead: { marginHorizontal: spaceV2.lg, paddingTop: editorialV2.sectionTop - spaceV2.lg, paddingBottom: 0 },
+  modeToggle: { alignSelf: 'center' },
+  previewCol: { alignItems: 'center', gap: spaceV2.lg },
   phone: { alignSelf: 'center' },
   frame: { position: 'relative' },
   layer: { position: 'absolute', top: 0, start: 0, end: 0, alignItems: 'center' },
   screen: { overflow: 'hidden' },
   dots: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.md },
   dotItem: { alignItems: 'center', gap: spaceV2.xs, minWidth: sizeV2.touch },
-  dot: { width: 40, height: 40, borderRadius: 20, borderWidth: StyleSheet.hairlineWidth },
+  dot: { width: 40, height: 40, borderRadius: circleRadius(40), borderWidth: StyleSheet.hairlineWidth },
   dotLabel: { textAlign: 'center' },
   progressRow: { flexDirection: 'row', gap: spaceV2.xs },
-  progressSeg: { flex: 1, height: 6, borderRadius: 3 },
+  progressSeg: { flex: 1, height: 6, borderRadius: circleRadius(6) },
   note: { flexDirection: 'row', gap: spaceV2.sm, padding: spaceV2.md, borderRadius: radiusV2.control, alignItems: 'flex-start' },
   checkItem: { gap: spaceV2.md, paddingTop: spaceV2.sm, borderTopWidth: StyleSheet.hairlineWidth },
   noBorder: { borderTopWidth: 0, paddingTop: 0 },
   checkHead: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch },
-  tick: { width: 32, height: 32, borderRadius: 16, borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
+  tick: { width: 32, height: 32, borderRadius: circleRadius(32), borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
   rowBody: { gap: spaceV2.md, paddingBottom: spaceV2.sm },
   success: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, padding: spaceV2.md, borderRadius: radiusV2.control },
   bloomWrap: { width: 48, height: 48, alignItems: 'center', justifyContent: 'center' },
-  bloomHalo: { position: 'absolute', width: 48, height: 48, borderRadius: 24 },
-  bloomCheck: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
+  bloomHalo: { position: 'absolute', width: 48, height: 48, borderRadius: circleRadius(48) },
+  bloomCheck: { width: 44, height: 44, borderRadius: circleRadius(44), alignItems: 'center', justifyContent: 'center' },
   navRow: { flexDirection: 'row', gap: spaceV2.sm, minHeight: sizeV2.touch },
   flex: { flex: 1 },
   gap: { gap: spaceV2.sm },
@@ -1532,4 +1604,5 @@ const styles = StyleSheet.create({
   bar: { position: 'absolute', start: 0, end: 0, bottom: 0 },
   barInner: { paddingHorizontal: spaceV2.inset, paddingTop: spaceV2.md, gap: spaceV2.xs },
   barNote: { textAlign: 'center' },
+  barLink: { alignSelf: 'center' },
 });

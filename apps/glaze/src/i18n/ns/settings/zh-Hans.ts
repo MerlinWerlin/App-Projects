@@ -62,7 +62,7 @@ export const zhHans: NonNullable<LocaleMessages['settings']> = {
   privacy: {
     title: '隐私',
     heading: '不收集数据',
-    body: '没有账户、分析、广告或跟踪。你的照片和视频绝不会离开你的手机。',
+    body: '没有账户、分析、广告或跟踪。你的照片和视频绝不会离开你的手机。主题包以普通文件的形式从 GitHub 下载，Glaze 不会发送任何个人数据、账户或标识符。',
   },
   about: {
     title: '关于',

@@ -7,10 +7,11 @@
 // Design v2 (T83): grouped bg, mint privacy card, pill type chips, inputs on surface, pills.
 import { Feather } from '@expo/vector-icons';
 import * as Clipboard from 'expo-clipboard';
+import { Image as ExpoImage } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FEEDBACK_ADDRESS } from '../src/config/feedback';
 import {
@@ -248,9 +249,12 @@ export default function FeedbackScreen() {
           <Text style={[...tt.label, { color: c.ink }]}>{t('feedback.screenshotLabel')}</Text>
           {shot ? (
             <View style={[styles.shotRow, continuous, { backgroundColor: c.surface }]}>
-              <Image
+              <ExpoImage
                 source={{ uri: shot }}
                 style={styles.thumb}
+                contentFit="cover"
+                cachePolicy="memory-disk"
+                transition={0}
                 accessibilityLabel={t('feedback.screenshotA11y')}
                 accessibilityIgnoresInvertColors
               />

@@ -47,14 +47,21 @@ Large art-led cards, theme preview on a phone mock (HomeMock), editorial section
 - [ ] Seasonal banner and Live hero restyled to the same surface + eyebrow language.
 
 ### 3.3 Theme detail
-- [ ] Hero preview: the phone mock large and centred on a soft surface, Home / Lock toggle as a quiet segmented pill under it.
-- [ ] Editorial blocks below (eyebrow + title): What's inside, Icons, Widgets, Wallpaper, Credits.
-- [ ] Apply flow: one primary pill pinned at the bottom on glass; progress as a skeleton of the result, `success` haptic once at the end.
-- [ ] Remaining raw radii (5) to tokens; RN `Image` to expo-image where layout allows.
+- [x] Hero preview: the phone mock large and centred on a soft surface, Home / Lock toggle as a quiet segmented pill under it (run 183).
+- [x] Editorial blocks below (eyebrow + title): What's inside, Icons, Widgets, Wallpaper, Credits; Credits only when the theme has a photo or art credit (run 183).
+- [x] Apply flow: one primary pill pinned at the bottom on glass ("Choose icons" kept as a quiet plain link under it); `success` haptic once at the end (step ticks and the icon ripple are `light`) (run 183).
+- [ ] Apply flow: progress as a skeleton of the result (today the waits are in-pill busy states and the pack download keeps its determinate bar).
+- [x] Remaining raw radii (5) to tokens, plus ShapePicker's last one (design guard 0 for both); the preview's wallpaper art draws with expo-image (RN `Image` stays only for `Image.getSize` in the save path) (run 183).
+- [x] Dynamic Type caps on every Text in the screen, ShapePicker, ThemeOverrideRow, Segmented and PillButton (run 183).
+- [ ] Check on device: hero and pill at the largest text size, dark mode surface, VoiceOver reads each block as one heading.
 
 ### 3.4 Widgets
-- [ ] Art-led widget cards on the same 16 pt rhythm; editorial section headers per family.
-- [ ] Widget Studio preview on a soft raised surface, controls as inset groups.
+- [x] Art-led widget cards on the same 16 pt rhythm; editorial section headers per family (run 183: `SectionHeader` for Your theme / Everyday / Habits from `src/core/widgetFamilies.ts`, rows split per family, cards on `editorialV2.cardGap`; dark mode lifts by `surfaceRaised` with no hairline via `SquircleCard outline={false}`).
+- [x] Widget Studio preview on a soft raised surface, controls as inset groups (run 183: no dark hairline, "Live preview" eyebrow read as one heading with the widget's name and size; controls were already `InsetGroup`s).
+- [x] Previews wait as skeletons in their final shape while a photo wallpaper is sampled; no spinners on the tab or in the Studio (run 183).
+- [x] Dynamic Type caps on every `Text` / `TextInput` in the tab and the Studio; raw radius in the tab gone (design guard entry removed) (run 183).
+- [x] Still one virtualised list of memoised rows; the ~16 pt spacer above the first section stays (T166).
+- [ ] Check on device: at the largest accessibility text size the Studio's pinned preview (eyebrow line wraps) still leaves room to scroll the controls.
 
 ### 3.5 Install flow
 - [ ] Step cards as a calm numbered sequence (one step visible as "current"), timed fades between steps.
@@ -91,8 +98,8 @@ A screen is **done** when all of these hold:
 |---|---|---|
 | Onboarding (intro → first screen) | Started: Dynamic Type caps on large title, subtitle, language line | 182 |
 | Themes browse | First slice shipped: editorial headers, 16 pt rhythm, layered dark cards, skeleton placeholders, Dynamic Type caps | 182 |
-| Theme detail | Not started | - |
-| Widgets | Not started | - |
+| Theme detail | Slice shipped: hero on a soft surface with the Home / Lock pill under it, editorial blocks, one primary pill in the glass bar, radii to tokens, expo-image art, Dynamic Type caps (skeleton apply progress still open) | 183 |
+| Widgets | Slice shipped: family section headers, 16 pt rhythm, lifted cards without hairlines, skeleton previews, Studio preview on a raised surface with an eyebrow, Dynamic Type caps, tokens only | 183 |
 | Install flow | Not started | - |
 | Plus sheet | Not started | - |
 | Settings | Not started | - |
@@ -103,5 +110,8 @@ A screen is **done** when all of these hold:
 - `fontScaleCapV2` / `fontScaleCap(role)`: `maxFontSizeMultiplier` per type role.
 - `editorialV2`: `sectionTop` 32, `sectionBottom` 12, `cardGap` 16.
 - Component: `src/ui/SectionHeader.tsx`; `src/ui/Skeleton.tsx` now a calm opacity pulse (no sweep, no raw colours, optional `colour`).
+- `SquircleCard` `outline` prop (default true): premium screens pass `outline={false}` with `tone="raised"` in dark mode so cards lift by surface, not a hairline (run 183).
+- `src/core/widgetFamilies.ts`: Widgets tab families (theme / everyday / habits) and per-family rows (run 183); guarded by `src/core/premiumWidgets.test.ts`.
 
 Guards: `src/core/premiumUi.test.ts` (tokens, skeleton motion, no spinners, editorial headers, Dynamic Type caps on the Themes browse path, this doc's table).
+`src/core/premiumThemeDetail.test.ts` (§3.3: block order and strings in all locales, hero layout and timed cross-fade, one primary pill, expo-image art, Dynamic Type caps on the theme detail path).

@@ -18,6 +18,12 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
       habitButtons: '在 iOS 17 或更高版本上，轻点主屏幕小组件上的按钮即可记录。打开 Glaze 时会同步你记录的内容。',
     },
     subtitle: '与主题相配的小组件。轻点一个即可按你的喜好调整。',
+    families: {
+      theme: { eyebrow: '你的主题', title: '主题套装', body: '时钟、日期、照片、语录和电量，使用主题配色。' },
+      everyday: { eyebrow: '日常', title: '时钟、日历和照片', body: '时间、日期、倒数日和你自己的照片。' },
+      habits: { eyebrow: '习惯', title: '习惯追踪', body: '喝水、心情、睡眠和步数，一目了然。' },
+    },
+    studioPreview: '实时预览',
     themes: '主题',
     sizes: '小组件尺寸',
     lock: '锁定屏幕',

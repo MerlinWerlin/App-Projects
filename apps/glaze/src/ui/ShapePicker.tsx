@@ -18,7 +18,7 @@ import { previewSpecs, type Theme } from '../core/themes';
 import { useT } from '../i18n';
 import { IconCanvas } from '../render/IconCanvas';
 import { timing, useMotionReduced } from '../theme/motion';
-import { continuous, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { circleRadius, continuous, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { haptic } from './haptics';
 import { textStyleFor } from './i18nLayout';
@@ -101,7 +101,7 @@ export function ShapePicker({ theme, value, onChange, iosMask, onIosMaskChange, 
 
   return (
     <View style={styles.wrap}>
-      <Text accessibilityRole="header" style={[...label, { color: c.ink }]}>
+      <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('headline')} style={[...label, { color: c.ink }]}>
         {t('themeUi.shape.title')}
       </Text>
       {/* fb-1017 (owner, 17 Oct): a vertical full-width list so shape names never truncate or wrap
@@ -151,6 +151,7 @@ export function ShapePicker({ theme, value, onChange, iosMask, onIosMaskChange, 
               </View>
               <View style={styles.tileTextCol}>
                 <Text
+                  maxFontSizeMultiplier={fontScaleCap('headline')}
                   style={[
                     ...label,
                     { color: selected ? c.onTintSoft : c.ink, fontWeight: selected ? '700' : '600' },
@@ -158,7 +159,7 @@ export function ShapePicker({ theme, value, onChange, iosMask, onIosMaskChange, 
                 >
                   {t(`themeUi.shape.names.${shape}`)}
                 </Text>
-                <Text style={[...note, { color: selected ? c.onTintSoft : c.inkSecondary }]}>{t(`themeUi.shape.notes.${shape}`)}</Text>
+                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...note, { color: selected ? c.onTintSoft : c.inkSecondary }]}>{t(`themeUi.shape.notes.${shape}`)}</Text>
               </View>
             </Pressable>
           );
@@ -185,7 +186,7 @@ export function PreviewModeLabel({ iosMask }: { iosMask: boolean }) {
   return (
     <View style={styles.modeRow}>
       <Feather name={iosMask ? 'smartphone' : 'eye'} size={14} color={c.inkSecondary} />
-      <Text style={[textV2.footnote, textStyleFor(script, textV2.footnote), styles.flexShrink, { color: c.inkSecondary }]}>
+      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[textV2.footnote, textStyleFor(script, textV2.footnote), styles.flexShrink, { color: c.inkSecondary }]}>
         {iosMask ? t('themeUi.shape.iosMask') : t('themeUi.shape.glazePreview')}
       </Text>
     </View>
@@ -220,7 +221,7 @@ const styles = StyleSheet.create({
     right: 4,
     width: 18,
     height: 18,
-    borderRadius: 9,
+    borderRadius: circleRadius(18),
     alignItems: 'center',
     justifyContent: 'center',
   },

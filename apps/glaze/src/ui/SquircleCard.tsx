@@ -4,6 +4,9 @@
 // fb-1022c: timing with an ease-out curve, never a spring, so nothing overshoots.
 // T118 (fb-1024 B): a card that mounts unselected starts no animation (it used to run a 1 -> 1
 // timing per card on mount, e.g. 24 at once when a grid mounts).
+// T173 (docs/PREMIUM_UI.md "depth from layered surfaces, not lines"): `outline={false}` drops the
+// dark-mode hairline; pair it with tone="raised" so the card lifts by surface instead. Default
+// unchanged for screens the premium pass has not reached yet.
 import { useEffect, useRef, type ReactNode } from 'react';
 import { StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
@@ -32,6 +35,8 @@ type Props = {
   /** Inner padding (default 16). Use 0 for edge-to-edge artwork; content is clipped to the corners. */
   padding?: number;
   selected?: boolean;
+  /** Dark-mode hairline border when not selected (default true). T173 premium screens pass false. */
+  outline?: boolean;
   haptic?: HapticKind | false;
   accessibilityLabel?: string;
   accessibilityHint?: string;
@@ -47,6 +52,7 @@ export function SquircleCard({
   elevation = 'card',
   padding = spaceV2.lg,
   selected = false,
+  outline = true,
   haptic = 'light',
   accessibilityLabel,
   accessibilityHint,
@@ -74,7 +80,7 @@ export function SquircleCard({
     styles.inner,
     continuous,
     { borderRadius: radius, backgroundColor: bg, padding },
-    selected ? { borderColor: c.tint, borderWidth: 2 } : scheme === 'dark' ? { borderColor: c.separator, borderWidth: StyleSheet.hairlineWidth } : null,
+    selected ? { borderColor: c.tint, borderWidth: 2 } : scheme === 'dark' && outline ? { borderColor: c.separator, borderWidth: StyleSheet.hairlineWidth } : null,
   ];
 
   return (

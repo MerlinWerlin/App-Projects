@@ -4,7 +4,7 @@
 import { Feather } from '@expo/vector-icons';
 import { ActivityIndicator, StyleSheet, Text, type StyleProp, type ViewStyle } from 'react-native';
 import { useT } from '../i18n';
-import { continuous, materialFill, pressV2, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { continuous, fontScaleCap, materialFill, pressV2, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import type { FeatherName } from './featherName';
 import type { HapticKind } from './haptics';
@@ -96,6 +96,7 @@ export function PillButton({
     >
       {iconAfter ? null : <Glyph busy={busy} icon={icon} size={iconSize} color={fg} />}
       <Text
+        maxFontSizeMultiplier={fontScaleCap(size === 'small' ? 'subhead' : 'button')}
         style={[
           textStyle,
           textStyleFor(script, textStyle),

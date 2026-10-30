@@ -5,9 +5,10 @@
 // The override model and the image library are pure functions in src/core/studio.ts.
 
 import { Feather } from '@expo/vector-icons';
+import { Image as ExpoImage } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
 import { useEffect, useMemo, useState } from 'react';
-import { Alert, Image, Linking, Pressable, StyleSheet, Text, TextInput, View, type TextStyle } from 'react-native';
+import { Alert, Linking, Pressable, StyleSheet, Text, TextInput, View, type TextStyle } from 'react-native';
 import { allGlyphNames } from '../core/glyphnames';
 import {
   MIN_GLYPH_CONTRAST,
@@ -427,7 +428,14 @@ export function IconOverrideSheet({
                       { borderColor: inUse ? c.tint : c.separator, opacity: pressed ? 0.6 : 1 },
                     ]}
                   >
-                    <Image source={{ uri: img.uri }} style={styles.libImage} resizeMode="cover" />
+                    <ExpoImage
+                      source={{ uri: img.uri }}
+                      style={styles.libImage}
+                      contentFit="cover"
+                      cachePolicy="memory-disk"
+                      transition={0}
+                      accessibilityIgnoresInvertColors
+                    />
                   </Pressable>
                   <PressableScale
                     haptic="select"

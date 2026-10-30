@@ -172,4 +172,11 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
     hint: '위젯 스튜디오를 엽니다',
     open: '위젯 스튜디오 열기',
   },
+  section: {
+    inside: { eyebrow: '구성', title: '팔레트와 스타일' },
+    icons: { eyebrow: '아이콘', title: '모양과 내 앱' },
+    widgets: { eyebrow: '위젯' },
+    wallpaper: { eyebrow: '배경화면' },
+    credits: { eyebrow: '크레딧', title: '아트워크 정보' },
+  },
 };

@@ -32,6 +32,12 @@
 // T146 (fb-1025 A): one calm "widget link check" line under the theme chips, in native iOS builds
 // only (src/store/widgetLink.ts; nothing is drawn in Expo Go or on Android). Checked on focus and
 // a few seconds after each theme pick. No motion.
+// T173 (premium UI, docs/PREMIUM_UI.md §3.4): the grid reads as editorial sections, one per widget
+// family (src/core/widgetFamilies.ts: theme set / everyday / habits), each opened by a SectionHeader
+// (eyebrow + title + body) and split into its own rows; cards on the 16-pt rhythm (editorialV2), lifted
+// by surface in dark mode (no hairline); previews wait as calm skeletons in their final shape while a
+// photo wallpaper is being sampled; Dynamic Type caps (fontScaleCap) on every Text; only tokens. Still
+// one virtualised list of memoised rows, with the ~16 pt spacer above the first section (T166).
 import { Feather } from '@expo/vector-icons';
 import { IslandPetArt } from '../../src/ui/IslandPetArt';
 import { useFocusEffect, useRouter } from 'expo-router';
@@ -56,7 +62,8 @@ import {
 import { HABIT_DEFS, habitNameKey, moodLevelKey, type HabitKind } from '../../src/core/habits';
 import { isGoalHabitKind } from '../../src/core/habitGoals';
 import { canTapHabit, canUndoHabitTap, habitTapStep, nextHabitTapValue } from '../../src/core/habitTap';
-import { WIDGET_GRID_COLUMNS, gridRows, rowExtras, slotFor, type GridCardExtras, type GridSlot } from '../../src/core/widgetGrid';
+import { WIDGET_GRID_COLUMNS, rowExtras, slotFor, type GridCardExtras, type GridSlot } from '../../src/core/widgetGrid';
+import { familyRows, widgetFamilyKeys, type FamilyRow, type WidgetFamily } from '../../src/core/widgetFamilies';
 import { weakKeyedCache, weakMemo } from '../../src/core/perfCache';
 import { useT } from '../../src/i18n';
 import { useStudio } from '../../src/store/studio';
@@ -64,12 +71,12 @@ import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { useWidgetLink } from '../../src/store/widgetLink';
 import { widgetLinkVisible, type WidgetLinkVerdict } from '../../src/core/widgetLink';
 import { logWidgetHabit, undoWidgetHabit, useWidgetHabits, widgetHabitGoal, widgetHabitValue, type WidgetHabits } from '../../src/store/widgetHabits';
-import { continuous, radiusV2, sizeV2, spaceV2, textV2 } from '../../src/theme/tokensV2';
+import { chromeRadiusV2, continuous, editorialV2, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import type { FeatherName } from '../../src/ui/featherName';
 import { haptic } from '../../src/ui/haptics';
 import { textStyleFor } from '../../src/ui/i18nLayout';
-import { LargeTitleFlatList, PillButton, SquircleCard } from '../../src/ui/v2';
+import { LargeTitleFlatList, PillButton, SectionHeader, Skeleton, SquircleCard } from '../../src/ui/v2';
 import { CatalogueWidgetPreview } from '../../src/ui/CatalogueWidgetPreview';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
@@ -102,7 +109,8 @@ const LINK_KEYS = {
 } as const satisfies Record<Exclude<WidgetLinkVerdict, 'expoGo' | 'unknown'>, string>;
 
 const GUTTER = spaceV2.lg;
-const GAP = spaceV2.md;
+/** T173: the editorial 16-pt card rhythm (between cards in a row and between rows). */
+const GAP = editorialV2.cardGap;
 const CARD_PAD = spaceV2.md;
 
 // T118: per-object caches (themes, palettes and specs are stable objects), so switching back to a
@@ -142,6 +150,8 @@ type CellProps = {
   innerWidth: number;
   now: Date;
   wallpaperUri: string | null;
+  /** T173: the photo wallpaper is still being sampled; previews show a skeleton in their shape. */
+  sampling: boolean;
   /** Logged values and goals: passed to tracker cards only, so a log re-renders just those. */
   habits: WidgetHabits | undefined;
   onOpen: (href: string) => void;
@@ -159,16 +169,17 @@ const WidgetCell = memo(function WidgetCell({
   innerWidth,
   now,
   wallpaperUri,
+  sampling,
   habits,
   onOpen,
   logHabit,
   undoHabit,
   onGoals,
 }: CellProps) {
-  const { c } = useColorsV2();
+  const { c, scheme } = useColorsV2();
   const { t, script, formatNumber } = useT();
   const tl = t as unknown as LooseT;
-  const label = (role: keyof typeof textV2) => [textV2[role], textStyleFor(script, textV2[role])];
+  const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
   const { card, href, spec, catSpec, previewOnly } = model;
   // T162: one width style object per card width (no new inline object on every render).
   const widthStyle = useMemo(() => ({ width: cardWidth }), [cardWidth]);
@@ -224,17 +235,24 @@ const WidgetCell = memo(function WidgetCell({
   const sizeName = card.source === 'catalogue' ? tl(catalogueSizeKey(card.size)) : tl(card.sizeKey);
   const caption = (
     <View style={styles.caption}>
-      <Text style={[...label('subhead'), styles.bold, { color: c.ink }]} numberOfLines={2}>
+      <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label('subhead'), styles.bold, { color: c.ink }]} numberOfLines={2}>
         {kind}
       </Text>
-      <Text style={[...label('caption1'), { color: c.inkSecondary }]} numberOfLines={1}>
+      <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...label('caption1'), { color: c.inkSecondary }]} numberOfLines={1}>
         {sizeName}
       </Text>
     </View>
   );
   const habitKind = model.habit;
+  // The preview's own aspect (widget points), for the skeleton and the honest placeholder.
+  const pts = CATALOGUE_SIZE_POINTS[card.size];
+  const artHeight = Math.max(36, Math.round((innerWidth * pts.height) / pts.width));
   let art: ReactNode;
-  if (spec) {
+  if (sampling && (spec || catSpec)) {
+    // T173: the photo wallpaper is being sampled (up to a few seconds): a calm skeleton in the
+    // preview's shape instead of a preview that redraws in other colours a moment later.
+    art = <Skeleton width={innerWidth} height={artHeight} radius={chromeRadiusV2.control} />;
+  } else if (spec) {
     art = <WidgetPreview spec={spec} width={innerWidth} now={now} wallpaperUri={wallpaperUri} />;
   } else if (catSpec) {
     art = (
@@ -248,13 +266,12 @@ const WidgetCell = memo(function WidgetCell({
       />
     );
   } else {
-    // Honest placeholder: the catalogue kind's shape and glyph, no fake content.
-    const pts = CATALOGUE_SIZE_POINTS[card.size];
-    const h = Math.max(36, Math.round((innerWidth * pts.height) / pts.width));
+    // Honest placeholder: the catalogue kind's shape and glyph, no fake content. T173: a soft fill,
+    // no hairline (depth from surfaces, not lines).
     const glyph = card.source === 'catalogue' ? CATALOGUE_GLYPHS[card.kind] : 'square';
     art = (
-      <View style={[styles.placeholder, continuous, { height: h, backgroundColor: c.fill, borderColor: c.separator }]}>
-        <Feather name={glyph} size={Math.min(28, h * 0.5)} color={c.inkSecondary} />
+      <View style={[styles.placeholder, continuous, { height: artHeight, backgroundColor: c.fill }]}>
+        <Feather name={glyph} size={Math.min(28, artHeight * 0.5)} color={c.inkSecondary} />
       </View>
     );
   }
@@ -276,6 +293,8 @@ const WidgetCell = memo(function WidgetCell({
   const tile = (
     <SquircleCard
       padding={CARD_PAD}
+      tone={scheme === 'dark' ? 'raised' : 'surface'}
+      outline={false}
       onPress={href ? open : undefined}
       haptic={href ? 'light' : false}
       accessibilityLabel={
@@ -297,14 +316,14 @@ const WidgetCell = memo(function WidgetCell({
         {caption}
         {previewOnly ? (
           <View style={[styles.badge, { backgroundColor: c.fill }]}>
-            <Text style={[...label('caption2'), { color: c.inkSecondary }]} numberOfLines={1}>
+            <Text maxFontSizeMultiplier={fontScaleCap('caption2')} style={[...label('caption2'), { color: c.inkSecondary }]} numberOfLines={1}>
               {t('tabs.widgetsTab.previewBadge')}
             </Text>
           </View>
         ) : null}
         {href ? null : (
           <View style={[styles.badge, { backgroundColor: c.tintSoft }]}>
-            <Text style={[...label('caption2'), { color: c.onTintSoft }]} numberOfLines={1}>
+            <Text maxFontSizeMultiplier={fontScaleCap('caption2')} style={[...label('caption2'), { color: c.onTintSoft }]} numberOfLines={1}>
               {t('tabs.widgetsTab.soon')}
             </Text>
           </View>
@@ -336,8 +355,14 @@ const WidgetCell = memo(function WidgetCell({
 });
 
 type RowProps = {
-  /** One grid row (WIDGET_GRID_COLUMNS cards). */
+  /** One grid row (up to WIDGET_GRID_COLUMNS cards of one family). */
   row: readonly WidgetTabCard[];
+  /** T173: the row's widget family, and whether it opens the family's section (draws the header). */
+  family: WidgetFamily;
+  first: boolean;
+  /** The first section sits under the T166 spacer, so it needs no extra space above. */
+  firstSection: boolean;
+  sampling: boolean;
   models: ReadonlyMap<string, CardModel>;
   cardWidth: number;
   innerWidth: number;
@@ -354,10 +379,29 @@ type RowProps = {
  * T162 (owner 30 Oct C): one row of the virtualised grid (memoised). The FlatList mounts rows as
  * they scroll in and unmounts the far ones, which replaces T118's progressive reveal.
  */
-const WidgetRow = memo(function WidgetRow({ row, models, cardWidth, innerWidth, now, wallpaperUri, habits, onOpen, logHabit, undoHabit, onGoals }: RowProps) {
+const WidgetRow = memo(function WidgetRow({
+  row,
+  family,
+  first,
+  firstSection,
+  sampling,
+  models,
+  cardWidth,
+  innerWidth,
+  now,
+  wallpaperUri,
+  habits,
+  onOpen,
+  logHabit,
+  undoHabit,
+  onGoals,
+}: RowProps) {
+  const { t } = useT();
+  const tl = t as unknown as LooseT;
   const rowModels = row.map((card) => models.get(card.id)).filter((m): m is CardModel => m !== undefined);
   const extras = rowExtras(rowModels.map((m) => m.extras));
-  return (
+  const keys = widgetFamilyKeys(family);
+  const cells = (
     <View style={styles.row}>
       {rowModels.map((m) => (
         <WidgetCell
@@ -369,6 +413,7 @@ const WidgetRow = memo(function WidgetRow({ row, models, cardWidth, innerWidth, 
           innerWidth={innerWidth}
           now={now}
           wallpaperUri={wallpaperUri}
+          sampling={sampling}
           habits={m.habit ? habits : undefined}
           onOpen={onOpen}
           logHabit={logHabit}
@@ -376,11 +421,24 @@ const WidgetRow = memo(function WidgetRow({ row, models, cardWidth, innerWidth, 
           onGoals={onGoals}
         />
       ))}
+    </View>); // i18n-ignore (code after a JSX element)
+  if (!first) return cells;
+  // T173: the family's editorial header (one accessibility heading) above its first row.
+  return (
+    <View>
+      <SectionHeader
+        eyebrow={tl(keys.eyebrow)}
+        title={tl(keys.title)}
+        body={tl(keys.body)}
+        flushTop={firstSection}
+        style={firstSection ? styles.sectionHeader : [styles.sectionHeader, styles.sectionAfterRow]}
+      />
+      {cells}
     </View>
   );
 });
 
-const rowKey = (row: readonly WidgetTabCard[]): string => row.map((x) => x.id).join('|');
+const rowKey = (row: FamilyRow<WidgetTabCard>): string => row.key;
 
 export default function WidgetsTab() {
   const { c } = useColorsV2();
@@ -493,7 +551,7 @@ export default function WidgetsTab() {
     setSize(s);
   };
 
-  const label = (role: keyof typeof textV2) => [textV2[role], textStyleFor(script, textV2[role])];
+  const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
 
   // Stable handlers for the memoised cards (they read the latest habits through a ref).
   const habitsRef = useRef(widgetHabits);
@@ -512,12 +570,20 @@ export default function WidgetsTab() {
   const onGoals = useCallback(() => router.push('/habit-goals'), [router]);
 
   // T162 (owner 30 Oct C): the grid is a virtualised list of rows; everything above it is the header.
-  const rows = useMemo(() => gridRows(cards, WIDGET_GRID_COLUMNS), [cards]);
+  // T173: rows per widget family (a row never mixes families); a family's first row draws its header.
+  const rows = useMemo(() => familyRows(cards, WIDGET_GRID_COLUMNS), [cards]);
+  const firstFamily: WidgetFamily | null = rows.length ? rows[0].family : null;
   const wallpaperUri = wallpaper.photoUri;
-  const renderRow: ListRenderItem<readonly WidgetTabCard[]> = useCallback(
+  // useWallpaperPalette renders its probe only while it samples the user's photo.
+  const sampling = wallpaper.probe !== null;
+  const renderRow: ListRenderItem<FamilyRow<WidgetTabCard>> = useCallback(
     ({ item }) => (
       <WidgetRow
-        row={item}
+        row={item.cards}
+        family={item.family}
+        first={item.first}
+        firstSection={item.family === firstFamily}
+        sampling={sampling}
         models={models}
         cardWidth={cardWidth}
         innerWidth={innerWidth}
@@ -529,7 +595,7 @@ export default function WidgetsTab() {
         undoHabit={undoHabit}
         onGoals={onGoals}
       />), // i18n-ignore (code after a JSX element)
-    [models, cardWidth, innerWidth, now, wallpaperUri, widgetHabits, onOpen, logHabit, undoHabit, onGoals],
+    [models, cardWidth, innerWidth, now, wallpaperUri, sampling, firstFamily, widgetHabits, onOpen, logHabit, undoHabit, onGoals],
   );
 
   const header = (
@@ -538,16 +604,21 @@ export default function WidgetsTab() {
         onPress={() => router.push('/pets')}
         accessibilityRole="button"
         accessibilityLabel={t('pets.title')}
+        accessibilityHint={t('pets.intro')}
         style={[styles.pets, continuous, { backgroundColor: c.fill }]}
       >
         <IslandPetArt pet="cat" mood="happy" size={48} />
         <View style={styles.petsText}>
-          <Text style={[...label('headline'), { color: c.ink }]}>{t('pets.title')}</Text>
-          <Text style={[...label('footnote'), { color: c.inkSecondary }]}>{t('pets.intro')}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...label('headline'), { color: c.ink }]}>
+            {t('pets.title')}
+          </Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+            {t('pets.intro')}
+          </Text>
         </View>
         <Feather name="chevron-right" size={20} color={c.inkSecondary} />
       </Pressable>
-      <Text accessibilityRole="header" style={[...label('footnote'), styles.section, { color: c.inkSecondary }]}>
+      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} accessibilityRole="header" style={[...label('footnote'), styles.section, { color: c.inkSecondary }]}>
         {t('tabs.widgetsTab.themes')}
       </Text>
       <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
@@ -567,7 +638,7 @@ export default function WidgetsTab() {
               ]}
             >
               <SwatchArt swatch={themeSwatch(x.palette)} ring={on ? c.onTint : c.separator} />
-              <Text style={[...label('subhead'), styles.bold, { color: on ? c.onTint : c.ink }]} numberOfLines={1}>
+              <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label('subhead'), styles.bold, { color: on ? c.onTint : c.ink }]} numberOfLines={1}>
                 {x.name}
               </Text>
             </Pressable>
@@ -584,11 +655,13 @@ export default function WidgetsTab() {
           style={styles.link}
         >
           <Feather name={linkVerdict === 'ok' ? 'check-circle' : 'info'} size={14} color={linkVerdict === 'ok' ? c.ok : c.warn} style={styles.linkIcon} />
-          <Text style={[...label('footnote'), styles.linkText, { color: c.inkSecondary }]}>{t(LINK_KEYS[linkVerdict])}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), styles.linkText, { color: c.inkSecondary }]}>
+            {t(LINK_KEYS[linkVerdict])}
+          </Text>
         </View>
       ) : null}
 
-      <Text accessibilityRole="header" style={[...label('footnote'), styles.section, { color: c.inkSecondary }]}>
+      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} accessibilityRole="header" style={[...label('footnote'), styles.section, { color: c.inkSecondary }]}>
         {t('tabs.widgetsTab.looks')}
       </Text>
       <ScrollView bounces={false} overScrollMode="never"
@@ -611,7 +684,7 @@ export default function WidgetsTab() {
               style={({ pressed }) => [styles.chip, continuous, { backgroundColor: on ? c.tint : c.fill, opacity: pressed ? 0.7 : 1 }]}
             >
               <SwatchArt swatch={swatch} ring={on ? c.onTint : c.separator} />
-              <Text style={[...label('subhead'), styles.bold, { color: on ? c.onTint : c.ink }]} numberOfLines={1}>
+              <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label('subhead'), styles.bold, { color: on ? c.onTint : c.ink }]} numberOfLines={1}>
                 {name}
               </Text>
             </Pressable>
@@ -633,7 +706,11 @@ export default function WidgetsTab() {
               style={[styles.sizeTab, continuous, on ? { backgroundColor: c.surface } : null]}
             >
               <SizeArt size={s} stroke={on ? c.tint : c.inkSecondary} fill={on ? c.tintSoft : 'transparent'} />
-              <Text style={[...label('footnote'), styles.bold, styles.centre, { color: on ? c.ink : c.inkSecondary }]} numberOfLines={2}>
+              <Text
+                maxFontSizeMultiplier={fontScaleCap('footnote')}
+                style={[...label('footnote'), styles.bold, styles.centre, { color: on ? c.ink : c.inkSecondary }]}
+                numberOfLines={2}
+              >
                 {name}
               </Text>
             </Pressable>
@@ -642,10 +719,13 @@ export default function WidgetsTab() {
       </View>
 
       {size === 'lock' ? (
-        <Text style={[...label('footnote'), styles.note, { color: c.inkSecondary }]}>{t('tabs.widgetsTab.lockNote')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), styles.note, { color: c.inkSecondary }]}>
+          {t('tabs.widgetsTab.lockNote')}
+        </Text>
       ) : null}
 
-      {/* T166: the grid's top padding from before T162 (rows are list items now). */}
+      {/* T166: the grid's top padding from before T162 (rows are list items now). T173: the first
+          family's section header sits right under it (flushTop), so the gap stays ~16 pt. */}
       <View style={styles.gridTop} />
     </>); // i18n-ignore (code after a JSX element)
 
@@ -668,7 +748,7 @@ const styles = StyleSheet.create({
   chip: {
     minHeight: sizeV2.touch,
     paddingHorizontal: spaceV2.lg,
-    borderRadius: radiusV2.pill,
+    borderRadius: chromeRadiusV2.pill,
     flexDirection: 'row',
     alignItems: 'center',
     gap: spaceV2.sm,
@@ -682,21 +762,21 @@ const styles = StyleSheet.create({
     marginTop: -spaceV2.xs,
     marginBottom: spaceV2.sm,
   },
-  linkIcon: { marginTop: 2 },
+  linkIcon: { marginTop: spaceV2.xxs },
   linkText: { flex: 1 },
   bold: { fontWeight: '600' },
   centre: { textAlign: 'center' },
   sizes: {
     marginHorizontal: GUTTER,
     padding: spaceV2.xs,
-    borderRadius: radiusV2.pill,
+    borderRadius: chromeRadiusV2.pill,
     flexDirection: 'row',
     gap: spaceV2.xs,
   },
   sizeTab: {
     flex: 1,
     minHeight: sizeV2.touch,
-    borderRadius: radiusV2.pill,
+    borderRadius: chromeRadiusV2.pill,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: spaceV2.xs,
@@ -705,14 +785,18 @@ const styles = StyleSheet.create({
     gap: spaceV2.xxs,
   },
   note: { paddingHorizontal: GUTTER, marginTop: spaceV2.md },
-  // Pets entry card (T162: was an inline style object).
-  pets: { margin: 16, padding: 16, borderRadius: 24, flexDirection: 'row', alignItems: 'center', gap: 14 },
-  petsText: { flex: 1, gap: 4 },
+  // Pets entry card (T162: was an inline style object). T173: tokens only (spacing grid, card radius).
+  pets: { margin: GUTTER, padding: spaceV2.lg, borderRadius: chromeRadiusV2.card, flexDirection: 'row', alignItems: 'center', gap: spaceV2.md },
+  petsText: { flex: 1, gap: spaceV2.xs },
   // T91: one row of the grid; cells stretch to the tallest one. T162: rows are list items, so each
   // row carries the grid's side gutter and the gap below it.
   row: { flexDirection: 'row', alignItems: 'stretch', gap: GAP, paddingHorizontal: GUTTER, marginBottom: GAP },
   // T166: restores the ~16 pt gap above the first row that the pre-T162 grid had (paddingTop lg).
   gridTop: { height: spaceV2.lg },
+  // T173: family section headers carry the grid's side gutter. After a row (which already leaves the
+  // 16-pt card gap below it), the header adds the rest of the 32-pt editorial space above a section.
+  sectionHeader: { paddingHorizontal: GUTTER },
+  sectionAfterRow: { paddingTop: editorialV2.sectionTop - editorialV2.cardGap },
   cell: { gap: spaceV2.sm },
   // Pushes the log / goal rows to the bottom of a stretched cell, so neighbours' buttons line up.
   cellFill: { flexGrow: 1, marginTop: -spaceV2.sm },
@@ -722,14 +806,13 @@ const styles = StyleSheet.create({
   logButton: { minHeight: sizeV2.touch },
   caption: { gap: spaceV2.xxs },
   placeholder: {
-    borderRadius: radiusV2.control,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: chromeRadiusV2.control,
     alignItems: 'center',
     justifyContent: 'center',
   },
   badge: {
     alignSelf: 'flex-start',
-    borderRadius: radiusV2.pill,
+    borderRadius: chromeRadiusV2.pill,
     paddingHorizontal: spaceV2.sm,
     paddingVertical: spaceV2.xxs,
   },

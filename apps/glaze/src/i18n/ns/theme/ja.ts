@@ -172,4 +172,11 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
     hint: 'ウィジェットスタジオを開きます',
     open: 'ウィジェットスタジオを開く',
   },
+  section: {
+    inside: { eyebrow: '内容', title: 'カラーとスタイル' },
+    icons: { eyebrow: 'アイコン', title: '形とアプリ' },
+    widgets: { eyebrow: 'ウィジェット' },
+    wallpaper: { eyebrow: '壁紙' },
+    credits: { eyebrow: 'クレジット', title: 'アートについて' },
+  },
 };

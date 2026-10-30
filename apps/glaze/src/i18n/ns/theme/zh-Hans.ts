@@ -171,4 +171,11 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
     hint: '打开小组件工作室',
     open: '打开小组件工作室',
   },
+  section: {
+    inside: { eyebrow: '包含内容', title: '配色与风格' },
+    icons: { eyebrow: '图标', title: '形状与你的应用' },
+    widgets: { eyebrow: '小组件' },
+    wallpaper: { eyebrow: '壁纸' },
+    credits: { eyebrow: '致谢', title: '关于这幅作品' },
+  },
 };

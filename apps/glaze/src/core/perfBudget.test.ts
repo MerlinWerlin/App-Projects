@@ -75,7 +75,8 @@ test('list rows are memoised with stable keys and render callbacks', () => {
   assert.match(themes, /keyExtractor=\{packRowKey\}/);
   const widgets = strip(read('app/(tabs)/widgets.tsx'));
   assert.match(widgets, /const WidgetRow = memo\(/);
-  assert.match(widgets, /const renderRow: ListRenderItem<readonly WidgetTabCard\[\]> = useCallback\(/);
+  // T173: items are per-family rows (FamilyRow, src/core/widgetFamilies.ts) with a precomputed key.
+  assert.match(widgets, /const renderRow: ListRenderItem<FamilyRow<WidgetTabCard>> = useCallback\(/);
   assert.match(widgets, /keyExtractor=\{rowKey\}/);
   const walls = strip(read('app/(tabs)/wallpapers.tsx'));
   assert.match(walls, /const TileRow = memo\(/);
@@ -102,11 +103,8 @@ const RN_IMAGE_OK: Record<string, string> = {
   'src/render/CollageView.tsx': 'captured by react-native-view-shot for Save; sync layout matters, not in a list',
   'src/render/PhotoWallpaperView.tsx': 'captured by react-native-view-shot for Save; not in a list',
   'src/render/HomeWallpaperView.tsx': 'captured by react-native-view-shot for Save; not in a list',
-  'src/ui/SeamlessWidgetPreview.tsx': 'seamless widget crop maths sized against RN Image; one preview per screen (T162 follow-up)',
   'app/theme/[id].tsx': 'theme detail uses Image.getSize as well; one screen, not a list (T162 follow-up)',
-  'app/live/[id].tsx': 'Live editor single preview, not a list (T162 follow-up)',
-  'app/feedback.tsx': 'one screenshot attachment preview, not a list (T162 follow-up)',
-  'src/ui/IconOverrideSheet.tsx': 'one picked-photo preview in a sheet, not a list (T162 follow-up)',
+  // T166: SeamlessWidgetPreview, app/live/[id].tsx, app/feedback.tsx and IconOverrideSheet moved to expo-image.
 };
 
 function sources(dir: string): string[] {

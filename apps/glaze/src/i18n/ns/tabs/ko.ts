@@ -18,6 +18,12 @@ export const ko: NonNullable<LocaleMessages['tabs']> = {
       habitButtons: 'iOS 17 이상에서는 홈 화면 위젯의 버튼을 눌러 바로 기록할 수 있어요. 기록한 내용은 Glaze를 열 때 반영돼요.',
     },
     subtitle: '테마와 어울리는 위젯이에요. 탭해서 내 스타일로 바꿔 보세요.',
+    families: {
+      theme: { eyebrow: '내 테마', title: '테마 세트', body: '시계, 날짜, 사진, 명언, 배터리를 테마 색으로.' },
+      everyday: { eyebrow: '매일', title: '시계, 캘린더, 사진', body: '시간, 날짜, 카운트다운과 내 사진.' },
+      habits: { eyebrow: '습관', title: '습관 트래커', body: '물, 기분, 수면, 걸음을 한눈에.' },
+    },
+    studioPreview: '실시간 미리보기',
     themes: '테마',
     sizes: '위젯 크기',
     lock: '잠금 화면',

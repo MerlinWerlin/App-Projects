@@ -172,4 +172,11 @@ export const de: NonNullable<LocaleMessages['theme']> = {
     hint: 'Öffnet das Widget-Studio',
     open: 'Widget-Studio öffnen',
   },
+  section: {
+    inside: { eyebrow: 'Was drin ist', title: 'Farben und Stil' },
+    icons: { eyebrow: 'Symbole', title: 'Form und deine Apps' },
+    widgets: { eyebrow: 'Widgets' },
+    wallpaper: { eyebrow: 'Hintergrund' },
+    credits: { eyebrow: 'Nachweise', title: 'Über das Bild' },
+  },
 };

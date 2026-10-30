@@ -18,6 +18,12 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
       habitButtons: 'Ab iOS 17 tippst du auf dem Home-Bildschirm direkt auf die Tasten im Widget. Glaze übernimmt die Einträge, wenn du die App öffnest.',
     },
     subtitle: 'Widgets passend zu deinem Thema. Tippe auf eins, um es anzupassen.',
+    families: {
+      theme: { eyebrow: 'Dein Thema', title: 'Themen-Set', body: 'Uhr, Datum, Foto, Zitat und Batterie in den Farben deines Themas.' },
+      everyday: { eyebrow: 'Alltag', title: 'Uhren, Kalender und Fotos', body: 'Uhrzeit, Daten, Countdowns und deine eigenen Fotos.' },
+      habits: { eyebrow: 'Gewohnheiten', title: 'Gewohnheits-Tracker', body: 'Wasser, Stimmung, Schlaf und Schritte auf einen Blick.' },
+    },
+    studioPreview: 'Live-Vorschau',
     themes: 'Thema',
     sizes: 'Widget-Größe',
     lock: 'Sperrbildschirm',
