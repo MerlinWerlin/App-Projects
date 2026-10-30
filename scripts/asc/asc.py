@@ -504,7 +504,17 @@ def testflight(app):
     builds = get("/v1/builds", **{"filter[app]": app_id, "sort": "-uploadedDate", "limit": 3})["data"]
     for b in builds:
         a = attrs(b)
-        say(f"- build {a['version']}: {a.get('processingState')}, expired {a.get('expired')}")
+        say(f"- build {a['version']}: {a.get('processingState')}, expired {a.get('expired')}, uploaded {a.get('uploadedDate')}, "
+            f"min iOS {a.get('minOsVersion')}, encryption flag {a.get('usesNonExemptEncryption')}")
+        try:
+            d = get(f"/v1/builds/{b['id']}/buildBetaDetail")["data"]
+            say(f"  - internal state {attrs(d).get('internalBuildState')}, external {attrs(d).get('externalBuildState')}, auto-notify {attrs(d).get('autoNotifyEnabled')}")
+            pv = get(f"/v1/builds/{b['id']}/preReleaseVersion")["data"]
+            say(f"  - app version {attrs(pv).get('version')}")
+            gs = get(f"/v1/builds/{b['id']}/betaGroups")["data"]
+            say(f"  - in groups: {[attrs(x).get('name') for x in gs]}")
+        except RuntimeError as e:
+            say(f"  - detail: {str(e)[:200]}")
     valid = [b for b in builds if attrs(b).get("processingState") == "VALID" and not attrs(b).get("expired")]
     if valid and not attrs(g).get("hasAccessToAllBuilds"):
         try:
