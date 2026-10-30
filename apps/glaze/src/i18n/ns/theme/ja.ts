@@ -162,6 +162,7 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
     retryHint: '止まったところからダウンロードを再開します',
     ready: 'この iPhone にダウンロード済みです。設定の「ストレージ」からいつでも削除できます。',
     readyA11y: '{pack} パックはダウンロード済みです',
+    size: 'サイズ: {size}',
   },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {

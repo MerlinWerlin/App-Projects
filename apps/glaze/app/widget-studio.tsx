@@ -95,7 +95,7 @@ import { tickStoredChecklist } from '../src/store/applyChecklist';
 import { applyWidgetTheme } from '../src/store/widgetTheme';
 import { useWidgetHabits, widgetHabitGoal, widgetHabitValue } from '../src/store/widgetHabits';
 import { loadStudio, saveStudio } from '../src/store/widgetStudio';
-import { continuous, radiusV2, sizeV2, spaceV2, textV2 } from '../src/theme/tokensV2';
+import { circleRadius, continuous, radiusV2, sizeV2, spaceV2, textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import type { FeatherName } from '../src/ui/featherName';
 import { haptic } from '../src/ui/haptics';
@@ -829,7 +829,7 @@ const styles = StyleSheet.create({
   sliderRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm, flexWrap: 'wrap' },
   track: { flex: 1, minWidth: 120, minHeight: sizeV2.touch, justifyContent: 'center' },
   trackLine: { height: 6, borderRadius: radiusV2.pill, flexDirection: 'row', overflow: 'hidden' },
-  thumb: { position: 'absolute', width: 24, height: 24, borderRadius: 12, borderWidth: 2 },
+  thumb: { position: 'absolute', width: 24, height: 24, borderRadius: circleRadius(24), borderWidth: 2 },
   sliderValue: { minWidth: 56, textAlign: 'center' },
   catNote: { marginTop: spaceV2.xs },
 });

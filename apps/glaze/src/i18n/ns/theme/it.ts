@@ -162,6 +162,7 @@ export const it: NonNullable<LocaleMessages['theme']> = {
     retryHint: 'Riprende il download da dove si era fermato',
     ready: 'Scaricato su questo iPhone. Puoi rimuoverlo quando vuoi da Spazio nelle Impostazioni.',
     readyA11y: 'Il pacchetto {pack} è stato scaricato',
+    size: 'Dimensione: {size}',
   },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {

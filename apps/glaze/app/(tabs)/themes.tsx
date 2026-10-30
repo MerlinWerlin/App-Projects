@@ -24,6 +24,11 @@
 // cascade (innerY / packsY / spaceY / packY, each re-rendering the whole screen) is gone. The
 // showcase grid, its empty state and the sub-tab options are memoised; cards draw still Home
 // Screens with cached icon specs and cached wallpaper geometry.
+// T162 (owner 30 Oct C, "smooth and light"): the screen is one virtualised list. Everything down to
+// the panels is the list header; the art / Space / Plus pack sections are list rows (a title row,
+// then rows of `columns` cards), so a fast scroll only keeps about two screens of cards mounted
+// (LIST_WINDOW) instead of every pack card. This replaces T118's per-frame pack reveal and the
+// per-card parallax in the packs (the showcase above is unchanged). No bounce, no new motion.
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { memo, startTransition, useCallback, useEffect, useMemo, useRef, useState, type ComponentProps, type ReactNode } from 'react';
@@ -35,19 +40,20 @@ import {
   TextInput,
   useWindowDimensions,
   View,
-  type LayoutChangeEvent,
+  type ListRenderItem,
   type TextStyle,
 } from 'react-native';
-import Animated, { useAnimatedScrollHandler, useDerivedValue, useSharedValue, type SharedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { categoryCounts, isNew, searchThemes, themesInCategory } from '../../src/core/categories';
 import { browsePages, pageAfterStep, pageCategory, pageIndex, pageKey, type BrowseKey } from '../../src/core/categoryPaging';
 import { buildThemeIndex, createCategorySwitch, createSelectionStore, themesForPage } from '../../src/core/categorySwitch';
-import { PACK_REVEAL_BATCH, revealStep, sectionLimit } from '../../src/core/perfReveal';
 import { DISCOVERY_TABS, discoveryTabKey, discoveryThemes, type DiscoveryTab } from '../../src/core/discovery';
 import { ALL_THEMES, PLUS_PACKS } from '../../src/core/plusThemes';
 import { SPACE_THEMES } from '../../src/core/spacePack';
 import { ART_PACK_THEMES } from '../../src/core/artPackThemes';
+import { mergeRemoteThemes } from '../../src/core/remoteCatalog';
+import { useRemoteArtThemes } from '../../src/native/useRemoteCatalog';
 import { FREE_MARKED_IDS, STORY_GROUPS, inStoryGroup, isFreeMarked, storyChipKey } from '../../src/core/freeMarks';
 import type { StoryPlayGroup } from '../../src/core/themesStoryPlay';
 import { activeCollections, collectionThemes, type CollectionId } from '../../src/core/seasons';
@@ -62,14 +68,14 @@ import { useColorsV2 } from '../../src/theme/useTokens';
 import { CategoryBubbleRow, type BubblePage } from '../../src/ui/CategoryBubbleRow';
 import { LanguageHintLine } from '../../src/ui/LanguageHintLine';
 import { LiveHeroCard } from '../../src/ui/LiveHeroCard';
-import { PHONE_ASPECT, ThemeCard } from '../../src/ui/ThemeCard';
+import { ThemeCard } from '../../src/ui/ThemeCard';
 import { YourLookPanel } from '../../src/ui/YourLookPanel';
 import { PressableScale } from '../../src/ui/PressableScale';
 import { PillTabs, type PillTabOption } from '../../src/ui/PillTabs';
 import { ShowcaseGrid } from '../../src/ui/ShowcaseGrid';
 import { haptic } from '../../src/ui/haptics';
 import { textStyleFor } from '../../src/ui/i18nLayout';
-import { BarIconButton, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, PillButton, SquircleCard } from '../../src/ui/v2';
+import { BarIconButton, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SquircleCard } from '../../src/ui/v2';
 
 type FeatherName = ComponentProps<typeof Feather>['name'];
 /** Stable badge element so memoised cards don't re-render for it. */
@@ -98,252 +104,65 @@ function HeaderActions({ children }: { children?: ReactNode }) {
   return <View style={styles.headerActions}>{children}</View>;
 }
 
-type GridProps = {
-  themes: readonly Theme[];
-  /** Y of this grid's parent inside the scroll content (UI thread; T118: never a re-render). */
-  parentY: SharedValue<number>;
+/** The props every pack card row shares (one memoised object from the screen). */
+type GridShared = {
   cardWidth: number;
-  gap: number;
-  plus?: boolean;
-  scrollY: SharedValue<number>;  viewportH: SharedValue<number>;  popKeys: Record<string, number>;
+  popKeys: Record<string, number>;
   onOpen: (id: string) => void;
-  /** First stagger slot for this grid, or undefined after the gallery's first mount. */
-  staggerFrom: number | undefined;
-  emptyTitle: string;
   /** Today's date for the "New" badge. */
   today: Date;
   /** T77: liked theme ids (device-local) and the heart toggle, so pack themes can be liked too. */
   likedIds: ReadonlySet<string>;
   onToggleLike: (id: string) => void;
-  /** T118: how many cards are mounted yet; the rest are same-sized spacers (default: all). */
-  limit?: number;
 };
-
-/** T118: approximate ThemeCard height (preview + name, tagline and dots), for the spacers. */
-function themeCardHeight(cardWidth: number): number {
-  const inner = Math.max(80, cardWidth - spaceV2.sm * 2);
-  return Math.round(Math.max(120, inner) * PHONE_ASPECT) + 108;
-}
-
-const ThemeGrid = memo(function ThemeGrid({
-  themes,
-  parentY,
-  cardWidth,
-  gap,
-  plus,
-  scrollY,
-  viewportH,
-  popKeys,
-  onOpen,
-  staggerFrom,
-  emptyTitle,
-  today,
-  likedIds,
-  onToggleLike,
-  limit,
-}: GridProps) {
-  const { t: tr } = useT();
-  const plusNote = tr('themes.plusNote');
-  const freeNote = tr('themes.badge.freeA11y');
-  // T118: the grid's own Y lives on the UI thread; the cards add it for their parallax.
-  const gridY = useSharedValue(0);
-  const baseY = useDerivedValue(() => parentY.value + gridY.value);
-  const onLayout = useCallback(
-    (e: LayoutChangeEvent) => {
-      gridY.value = e.nativeEvent.layout.y;
-    },
-    [gridY],
-  );
-  if (themes.length === 0) return <GalleryEmpty title={emptyTitle} />; // i18n-ignore (code after a JSX element)
-  const mounted = limit ?? themes.length;
-  const spacer = { width: cardWidth, height: themeCardHeight(cardWidth) };
-  return (
-    <View onLayout={onLayout} style={[styles.grid, { gap }]}>
-      {themes.map((t, i) =>
-        i < mounted ? (
-          <ThemeCard
-            key={t.id}
-            theme={t}
-            width={cardWidth}
-            badge={plus || t.plus ? PLUS_BADGE : isFreeMarked(t.id) ? FREE_BADGE : undefined}
-            accessibilityNote={plus || t.plus ? plusNote : isFreeMarked(t.id) ? freeNote : undefined}
-            onOpen={onOpen}
-            scrollY={scrollY}
-            viewportH={viewportH}
-            baseY={baseY}
-            popKey={popKeys[t.id] ?? 0}
-            staggerIndex={staggerFrom === undefined ? undefined : staggerFrom + i}
-            isNew={isNew(t, today)}
-            liked={likedIds.has(t.id)}
-            onToggleLike={onToggleLike}
-          />
-        ) : (
-          <View key={t.id} style={spacer} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" />
-        ),
-      )}
-    </View>
-  );
-});
-
-/** The props every pack grid shares (one memoised object from the screen). */
-type GridShared = Pick<GridProps, 'cardWidth' | 'gap' | 'scrollY' | 'viewportH' | 'popKeys' | 'onOpen' | 'today' | 'likedIds' | 'onToggleLike'>;
 
 type PackInfo = { id: string; name: string; tagline: string; themes: readonly Theme[] };
 
-type PackSectionsProps = {
-  /** On the "All" page; otherwise the sections stay mounted but hidden (T107). */
-  visible: boolean;
-  filteringAll: boolean;
-  /** T130: the free art-pack themes (themes/<id>/), a section above Space. */
-  art: readonly Theme[];
-  space: readonly Theme[];
-  packs: readonly PackInfo[];
-  shared: GridShared;
-  /** Y of the content column inside the scroll content. */
-  innerY: SharedValue<number>;
-};
+/** T162: one row of the list below the header (a section title, a row of cards, or an empty pack). */
+type PackRow =
+  | { kind: 'head'; key: string; title: string; body: string; pack: boolean }
+  | { kind: 'cards'; key: string; themes: readonly Theme[]; plus: boolean }
+  | { kind: 'empty'; key: string; title: string };
 
-/** fb-1022c: no stagger slots (cards never stagger in). */
-const nextSlot = (_n: number): number | undefined => undefined;
+const NO_ROWS: readonly PackRow[] = [];
+const packRowKey = (row: PackRow): string => row.key;
 
-/**
- * T118: the Space and Plus pack sections (below the fold). Memoised with their own state: they
- * mount after the tab has painted, PACK_REVEAL_BATCH cards per frame, and their positions are
- * shared values, so nothing here re-renders the screen.
- */
-const PackSections = memo(function PackSections({ visible, filteringAll, art, space, packs, shared, innerY }: PackSectionsProps) {
+/** T162: a pack section's title and tagline (memoised list row). */
+const PackHead = memo(function PackHead({ title, body, pack }: { title: string; body: string; pack: boolean }) {
   const { c } = useColorsV2();
-  const { t, script } = useT();
-  const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
-  const total = art.length + space.length + packs.reduce((n, p) => n + p.themes.length, 0);
-  // Wait for the tab's first paint (two frames), then mount a few cards per frame.
-  const [started, setStarted] = useState(false);
-  const [revealed, setRevealed] = useState(0);
-  useEffect(() => {
-    let raf = requestAnimationFrame(() => {
-      raf = requestAnimationFrame(() => setStarted(true));
-    });
-    return () => cancelAnimationFrame(raf);
-  }, []);
-  useEffect(() => {
-    if (!started || revealed >= total) return;
-    const raf = requestAnimationFrame(() => setRevealed((n) => revealStep(n, total, PACK_REVEAL_BATCH)));
-    return () => cancelAnimationFrame(raf);
-  }, [started, revealed, total]);
-
-  // Section positions on the UI thread (for the card parallax).
-  const wrapY = useSharedValue(0);
-  const spaceY = useSharedValue(0);
-  const artY = useSharedValue(0);
-  const wrapBase = useDerivedValue(() => innerY.value + wrapY.value);
-  const spaceBase = useDerivedValue(() => wrapBase.value + spaceY.value);
-  const artBase = useDerivedValue(() => wrapBase.value + artY.value);
-  const onWrapLayout = useCallback(
-    (e: LayoutChangeEvent) => {
-      if (visible) wrapY.value = e.nativeEvent.layout.y;
-    },
-    [visible, wrapY],
-  );
-  const onSpaceLayout = useCallback(
-    (e: LayoutChangeEvent) => {
-      spaceY.value = e.nativeEvent.layout.y;
-    },
-    [spaceY],
-  );
-  const onArtLayout = useCallback(
-    (e: LayoutChangeEvent) => {
-      artY.value = e.nativeEvent.layout.y;
-    },
-    [artY],
-  );
-
-  let offset = art.length + space.length;
+  const { script } = useT();
   return (
-    <View style={visible ? styles.packsWrap : styles.hidden} onLayout={onWrapLayout}>
-      {art.length > 0 ? (
-        <View style={styles.pack} onLayout={onArtLayout}>
-          <View style={styles.packTitle}>
-            <Text accessibilityRole="header" style={[...ts('title2'), { color: c.ink }]}>
-              {t('themes.art.title')}
-            </Text>
-            <Text style={[...ts('subhead'), { color: c.inkSecondary }]}>{t('themes.art.body')}</Text>
-          </View>
-          <ThemeGrid
-            {...shared}
-            themes={art}
-            parentY={artBase}
-            staggerFrom={nextSlot(art.length)}
-            emptyTitle={t('themes.art.title')}
-            limit={sectionLimit(0, art.length, revealed)}
-          />
-        </View>
-      ) : null}
-      {space.length > 0 ? (
-        <View style={styles.pack} onLayout={onSpaceLayout}>
-          <View style={styles.packTitle}>
-            <Text accessibilityRole="header" style={[...ts('title2'), { color: c.ink }]}>
-              {t('themes.space.title')}
-            </Text>
-            <Text style={[...ts('subhead'), { color: c.inkSecondary }]}>{t('themes.space.body')}</Text>
-          </View>
-          <ThemeGrid
-            {...shared}
-            themes={space}
-            parentY={spaceBase}
-            staggerFrom={nextSlot(space.length)}
-            emptyTitle={t('themes.space.title')}
-            limit={sectionLimit(art.length, space.length, revealed)}
-          />
-        </View>
-      ) : null}
-
-      {!filteringAll || packs.length > 0 ? (
-        <View style={styles.packsHead}>
-          <Text accessibilityRole="header" style={[...ts('title2'), { color: c.ink }]}>
-            {t('themes.plusPacks')}
-          </Text>
-          <Text style={[...ts('subhead'), { color: c.inkSecondary }]}>{t('themes.plusPacksBody')}</Text>
-        </View>
-      ) : null}
-      {PLUS_PACKS.length === 0 ? <GalleryEmpty title={t('themes.plusPacksEmpty')} /> : null}
-      {packs.map((pack) => {
-        const from = offset;
-        offset += pack.themes.length;
-        return <PackSection key={pack.id} pack={pack} parentY={wrapBase} shared={shared} limit={sectionLimit(from, pack.themes.length, revealed)} />;
-      })}
+    <View style={pack ? styles.packHead : styles.sectionHeadRow}>
+      <Text accessibilityRole="header" style={[...typeFor(script, pack ? 'title3' : 'title2'), { color: c.ink }]}>
+        {title}
+      </Text>
+      <Text style={[...typeFor(script, pack ? 'footnote' : 'subhead'), { color: c.inkSecondary }]}>{body}</Text>
     </View>
   );
 });
 
-/** One Plus pack: title, tagline and its grid (memoised; its Y is a shared value). */
-const PackSection = memo(function PackSection({ pack, parentY, shared, limit }: { pack: PackInfo; parentY: SharedValue<number>; shared: GridShared; limit: number }) {
-  const { c } = useColorsV2();
-  const { t, script } = useT();
-  const packY = useSharedValue(0);
-  const base = useDerivedValue(() => parentY.value + packY.value);
-  const onLayout = useCallback(
-    (e: LayoutChangeEvent) => {
-      packY.value = e.nativeEvent.layout.y;
-    },
-    [packY],
-  );
+/** T162: one row of pack cards (memoised list row; stable shared props, no per-card parallax). */
+const PackCardRow = memo(function PackCardRow({ themes, plus, shared }: { themes: readonly Theme[]; plus: boolean; shared: GridShared }) {
+  const { t: tr } = useT();
+  const plusNote = tr('themes.plusNote');
+  const freeNote = tr('themes.badge.freeA11y');
+  const { cardWidth, popKeys, onOpen, today, likedIds, onToggleLike } = shared;
   return (
-    <View style={styles.pack} onLayout={onLayout}>
-      <View style={styles.packTitle}>
-        <Text accessibilityRole="header" style={[...typeFor(script, 'title3'), { color: c.ink }]}>
-          {pack.name}
-        </Text>
-        <Text style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{pack.tagline}</Text>
-      </View>
-      <ThemeGrid
-        {...shared}
-        themes={pack.themes}
-        parentY={base}
-        plus
-        staggerFrom={nextSlot(pack.themes.length)}
-        emptyTitle={t('themes.packEmpty', { name: pack.name })}
-        limit={limit}
-      />
+    <View style={styles.packRow}>
+      {themes.map((t) => (
+        <ThemeCard
+          key={t.id}
+          theme={t}
+          width={cardWidth}
+          badge={plus || t.plus ? PLUS_BADGE : isFreeMarked(t.id) ? FREE_BADGE : undefined}
+          accessibilityNote={plus || t.plus ? plusNote : isFreeMarked(t.id) ? freeNote : undefined}
+          onOpen={onOpen}
+          popKey={popKeys[t.id] ?? 0}
+          isNew={isNew(t, today)}
+          liked={likedIds.has(t.id)}
+          onToggleLike={onToggleLike}
+        />
+      ))}
     </View>
   );
 });
@@ -689,7 +508,6 @@ export default function ThemesScreen() {
   // T34 (G1): scroll position lives in shared values written on the UI thread; cards read it for
   // the parallax, and the large title / glass bar read the same value to collapse (T55).
   const scrollY = useSharedValue(0);
-  const viewportH = useSharedValue(0);
   const onScroll = useAnimatedScrollHandler({
     onScroll: (e) => {
       scrollY.value = e.contentOffset.y;
@@ -697,23 +515,7 @@ export default function ThemesScreen() {
   });
 
   // fb-1022c (owner 22 Oct evening: no bounce): no first-mount stagger and no "pop" of the centred
-  // card when scrolling stops; cards just appear. T118: nothing read the tracked card centres any
-  // more, so cards no longer report them (one JS call per card layout).
-  /** Y of the content column inside the scroll content (UI thread; it sits below the large title). */
-  const innerY = useSharedValue(0);
-
-  const onViewportLayout = useCallback(
-    (e: LayoutChangeEvent) => {
-      viewportH.value = e.nativeEvent.layout.height;
-    },
-    [viewportH],
-  );
-  const onInnerLayout = useCallback(
-    (e: LayoutChangeEvent) => {
-      innerY.value = e.nativeEvent.layout.y;
-    },
-    [innerY],
-  );
+  // card when scrolling stops; cards just appear.
 
   const onOpen = useCallback(
     (id: string) => {
@@ -724,12 +526,13 @@ export default function ThemesScreen() {
 
   // Filtered sections: packs with no matches are hidden while filtering; a sub-tab hides them too.
   const showPacks = category === null && !discovering;
-  const packsAlive = !discovering && (category === null || (query.trim().length === 0 && collection === null && group === null));
   const starters = useMemo(() => filterList(THEMES), [filterList]);
   // T103: the free Space (Webb) photo themes, a section of their own above the Plus packs.
   const space = useMemo(() => filterAll(SPACE_THEMES), [filterAll]);
   // T130: the free art-pack themes, a section of their own above Space.
-  const art = useMemo(() => filterAll(ART_PACK_THEMES), [filterAll]);
+  // T160: plus the remote art packs from the R2 catalogue (cached; nothing while packs are disabled).
+  const remoteArt = useRemoteArtThemes();
+  const art = useMemo(() => filterAll(mergeRemoteThemes(ART_PACK_THEMES, remoteArt)), [filterAll, remoteArt]);
   const packs = useMemo(
     () =>
       PLUS_PACKS.map((p) => ({ ...p, themes: filterAll(p.themes) })).filter((p) => !filteringAll || p.themes.length > 0),
@@ -758,8 +561,45 @@ export default function ThemesScreen() {
 
   // T118: one stable object for the pack grids (memoised sections skip a screen re-render).
   const gridShared: GridShared = useMemo(
-    () => ({ cardWidth, gap, scrollY, viewportH, popKeys: NO_POPS, onOpen, today, likedIds, onToggleLike: toggleLike }),
-    [cardWidth, gap, scrollY, viewportH, onOpen, today, likedIds, toggleLike],
+    () => ({ cardWidth, popKeys: NO_POPS, onOpen, today, likedIds, onToggleLike: toggleLike }),
+    [cardWidth, onOpen, today, likedIds, toggleLike],
+  );
+
+  // T162: the art, Space and Plus pack sections as list rows (All page only; empty elsewhere).
+  const packRows: readonly PackRow[] = useMemo(() => {
+    if (!showPacks) return NO_ROWS;
+    const rows: PackRow[] = [];
+    const cards = (list: readonly Theme[], section: string, plus: boolean) => {
+      for (let i = 0; i < list.length; i += columns) {
+        rows.push({ kind: 'cards', key: `${section}:${list[i].id}`, themes: list.slice(i, i + columns), plus });
+      }
+    };
+    if (art.length > 0) {
+      rows.push({ kind: 'head', key: 'head:art', title: t('themes.art.title'), body: t('themes.art.body'), pack: false });
+      cards(art, 'art', false);
+    }
+    if (space.length > 0) {
+      rows.push({ kind: 'head', key: 'head:space', title: t('themes.space.title'), body: t('themes.space.body'), pack: false });
+      cards(space, 'space', false);
+    }
+    if (!filteringAll || packs.length > 0) {
+      rows.push({ kind: 'head', key: 'head:plus', title: t('themes.plusPacks'), body: t('themes.plusPacksBody'), pack: false });
+    }
+    if (PLUS_PACKS.length === 0) rows.push({ kind: 'empty', key: 'empty:plus', title: t('themes.plusPacksEmpty') });
+    for (const pack of packs) {
+      rows.push({ kind: 'head', key: `head:${pack.id}`, title: pack.name, body: pack.tagline, pack: true });
+      if (pack.themes.length === 0) rows.push({ kind: 'empty', key: `empty:${pack.id}`, title: t('themes.packEmpty', { name: pack.name }) });
+      cards(pack.themes, pack.id, true);
+    }
+    return rows;
+  }, [showPacks, art, space, packs, filteringAll, columns, t]);
+  const renderPackRow: ListRenderItem<PackRow> = useCallback(
+    ({ item }) => {
+      if (item.kind === 'head') return <PackHead title={item.title} body={item.body} pack={item.pack} />; // i18n-ignore (code after a JSX element)
+      if (item.kind === 'empty') return <View style={styles.packEmpty}><GalleryEmpty title={item.title} /></View>; // i18n-ignore (code after a JSX element)
+      return <PackCardRow themes={item.themes} plus={item.plus} shared={gridShared} />; // i18n-ignore (code after a JSX element)
+    },
+    [gridShared],
   );
 
   const title = t('tabs.themes');
@@ -784,17 +624,35 @@ export default function ThemesScreen() {
 
   return (
     <View style={[styles.root, { backgroundColor: c.bg }]}>
-      <Animated.ScrollView bounces={false} overScrollMode="never"
+      <Animated.FlatList
+        data={packRows}
+        renderItem={renderPackRow}
+        keyExtractor={packRowKey}
+        {...LIST_WINDOW}
+        bounces={false}
+        overScrollMode="never"
         contentContainerStyle={[styles.scroll, { paddingTop: insets.top + sizeV2.navBar }]}
         contentInsetAdjustmentBehavior="never"
-        onLayout={onViewportLayout}
         onScroll={onScroll}
         scrollEventThrottle={16}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
-      >
+        ListFooterComponent={
+          <View style={styles.footer}>
+            {/* T23: small feedback entry, opens /feedback with "Theme request" preselected. */}
+            <PillButton
+              label={t('themes.feedback')}
+              icon="mail"
+              variant="plain"
+              onPress={() => router.push('/feedback?type=theme')}
+              accessibilityHint={t('themes.feedbackHint')}
+            />
+          </View>
+        }
+        ListHeaderComponent={
+      <>
         <LargeTitle title={title} subtitle={t('themes.subtitle')} scrollY={scrollY} />
-        <View style={styles.inner} onLayout={onInnerLayout}>
+        <View style={styles.inner}>
           {/* Release standard §1: "Language: English · Change", first session only, until tapped. */}
           <LanguageHintLine />
           {/* fb-1022 G3: category bubbles first, directly under the large title. */}
@@ -875,22 +733,11 @@ export default function ThemesScreen() {
             </>
           )}
 
-          {/* T107: kept mounted (hidden) on plain category pages so going back to "All" mounts nothing. */}
-          {/* T118: its own memoised component; mounts progressively after the tab has painted. */}
-          {packsAlive ? (
-            <PackSections visible={showPacks} filteringAll={filteringAll} art={art} space={space} packs={packs} shared={gridShared} innerY={innerY} />
-          ) : null}
-
-          {/* T23: small feedback entry, opens /feedback with "Theme request" preselected. */}
-          <PillButton
-            label={t('themes.feedback')}
-            icon="mail"
-            variant="plain"
-            onPress={() => router.push('/feedback?type=theme')}
-            accessibilityHint={t('themes.feedbackHint')}
-          />
+          {/* T162: the art / Space / Plus pack sections follow as list rows (packRows). */}
         </View>
-      </Animated.ScrollView>
+      </>
+        }
+      />
       {/* Header-right slot: more bar actions go inside HeaderActions next to the Tips "?". */}
       <LargeTitleHeader
         title={title}
@@ -911,13 +758,18 @@ const styles = StyleSheet.create({
   root: { flex: 1 },
   scroll: { paddingBottom: spaceV2.xxxl },
   inner: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.md, gap: spaceV2.lg },
+  // T162: list rows below the header carry the side gutter themselves.
+  sectionHeadRow: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.xl, paddingBottom: spaceV2.sm, gap: spaceV2.xxs },
+  packHead: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.lg, paddingBottom: spaceV2.sm, gap: spaceV2.xxs },
+  packRow: { flexDirection: 'row', gap: spaceV2.md, paddingHorizontal: spaceV2.lg, marginBottom: spaceV2.md },
+  packEmpty: { paddingHorizontal: spaceV2.lg },
+  footer: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.lg },
   headerActions: { flexDirection: 'row', alignItems: 'center' },
   barIcon: { width: sizeV2.touch, height: sizeV2.touch, alignItems: 'center', justifyContent: 'center' },
   center: { textAlign: 'center' },
   selfCenter: { alignSelf: 'center' },
   flush: { marginHorizontal: 0 },
   sectionHead: { gap: spaceV2.xxs },
-  grid: { flexDirection: 'row', flexWrap: 'wrap' },
   search: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -941,9 +793,6 @@ const styles = StyleSheet.create({
   seasonRow: { gap: spaceV2.sm },
   seasonDots: { flexDirection: 'row', gap: spaceV2.xs, marginBottom: spaceV2.xxs },
   seasonDot: { width: 12, height: 12, borderRadius: 6, borderWidth: StyleSheet.hairlineWidth },
-  packsHead: { marginTop: spaceV2.md, gap: spaceV2.xxs },
-  pack: { gap: spaceV2.sm },
-  packsWrap: { gap: spaceV2.lg },
   chipRow: { gap: spaceV2.sm },
   chip: {
     minHeight: sizeV2.touch,
@@ -951,7 +800,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: spaceV2.lg,
     borderRadius: radiusV2.pill,
   },
-  hidden: { display: 'none' },
   packTitle: { gap: spaceV2.xxs },
   empty: { alignItems: 'center', gap: spaceV2.sm },
   emptyIcon: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },

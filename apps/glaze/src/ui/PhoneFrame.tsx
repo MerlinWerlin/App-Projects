@@ -9,8 +9,7 @@ import { AppState, StyleSheet, Text, View, type StyleProp, type ViewStyle } from
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { LOCK_SAFE_AREAS } from '../core/loop';
 // Brand fonts stay for the mock clock (artwork, docs/DESIGN_V2.md §3); chrome is v2 (T83).
-import { fonts } from '../theme/tokens';
-import { shadowV2, tabularV2 } from '../theme/tokensV2';
+import { artFontsV2 as fonts, shadowV2, tabularV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { useT } from '../i18n';
 import { noMirror, noMirrorText, textStyleFor } from './i18nLayout';

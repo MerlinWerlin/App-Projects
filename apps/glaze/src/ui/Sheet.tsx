@@ -9,7 +9,7 @@ import Animated, { FadeIn, SlideInDown } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useT } from '../i18n';
 import { durations, easeOutCurve, useMotionReduced } from '../theme/motion';
-import { continuous, radiusV2, scrimColour, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { circleRadius, continuous, radiusV2, scrimColour, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { GlassBar } from './GlassBar';
 import { textStyleFor } from './i18nLayout';
@@ -117,6 +117,6 @@ const styles = StyleSheet.create({
   },
   title: { flex: 1 },
   closeHit: { width: sizeV2.touch, height: sizeV2.touch, alignItems: 'center', justifyContent: 'center' },
-  closeDot: { width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center' },
+  closeDot: { width: 30, height: 30, borderRadius: circleRadius(30), alignItems: 'center', justifyContent: 'center' },
   body: { paddingHorizontal: spaceV2.inset, paddingTop: spaceV2.sm, paddingBottom: spaceV2.lg, gap: spaceV2.md },
 });

@@ -4,9 +4,12 @@
 import { useCallback, useEffect, useSyncExternalStore } from 'react';
 import { isPackDownloaded, totalCacheBytes, type PackCacheEntry } from '../core/themePack';
 import type { Theme } from '../core/themes';
+import type { RemoteArtRef } from '../core/remoteCatalog';
 import {
   PACKS_ENABLED,
+  catalogPack,
   downloadPackToDevice,
+  downloadRemoteArtToDevice,
   getPackState,
   loadPackIndex,
   removePackFromDevice,
@@ -45,14 +48,27 @@ function usePackStore(): PackStoreState {
   return s;
 }
 
-export function usePackAccess(theme: Pick<Theme, 'plus' | 'packId'> | null | undefined): PackAccess {
+/**
+ * T160: a remote art pack (catalogue theme with `remoteArt`) always needs its download, free or
+ * Plus: free packs download without Plus; Plus packs are 'locked' without it (show PlusLockSheet).
+ */
+export function usePackAccess(theme: (Pick<Theme, 'plus' | 'packId'> & { remoteArt?: RemoteArtRef }) | null | undefined): PackAccess {
   const { plus } = usePlus();
   const store = usePackStore();
-  const packId = theme?.packId;
+  const remote = theme?.remoteArt ?? null;
+  const packId = remote ? remote.packId : theme?.packId;
   const entitled = plus === true;
+  const needsPlus = remote ? remote.plus : !!theme?.plus;
 
   let state: PackAccessState;
-  if (!theme || !theme.plus) state = 'free';
+  if (remote) {
+    if (needsPlus && !entitled) state = 'locked';
+    else if (isPackDownloaded(store.index, remote.packId)) state = 'ready';
+    else if (!PACKS_ENABLED) state = 'disabled';
+    else if (remote.packId in store.busy) state = 'downloading';
+    else if (store.errors[remote.packId]) state = 'error';
+    else state = 'not-downloaded';
+  } else if (!theme || !theme.plus) state = 'free';
   else if (!entitled) state = 'locked';
   else if (!packId || isPackDownloaded(store.index, packId)) state = 'ready';
   else if (!PACKS_ENABLED) state = 'disabled';
@@ -60,16 +76,18 @@ export function usePackAccess(theme: Pick<Theme, 'plus' | 'packId'> | null | und
   else if (store.errors[packId]) state = 'error';
   else state = 'not-downloaded';
 
+  const remoteId = remote?.packId ?? null;
   const download = useCallback(async () => {
-    if (!entitled) return 'locked' as const;
+    if (needsPlus && !entitled) return 'locked' as const;
     if (!packId) return 'ok' as const;
     if (!PACKS_ENABLED) return 'disabled' as const;
-    return (await downloadPackToDevice(packId)) === null ? ('ok' as const) : ('error' as const);
-  }, [entitled, packId]);
+    const err = remoteId ? await downloadRemoteArtToDevice(remoteId) : await downloadPackToDevice(packId);
+    return err === null ? ('ok' as const) : ('error' as const);
+  }, [needsPlus, entitled, packId, remoteId]);
 
   return {
     state,
-    usable: state === 'free' || state === 'ready' || state === 'disabled',
+    usable: remote ? state === 'ready' : state === 'free' || state === 'ready' || state === 'disabled',
     progress: packId ? (store.busy[packId] ?? 0) : 0,
     error: packId ? store.errors[packId] || null : null,
     download,
@@ -98,7 +116,9 @@ export function usePackStorage(): PackStorage {
   const remove = useCallback((id: string) => removePackFromDevice(id), []);
   const redownload = useCallback(
     async (id: string) => {
-      if (plus !== true) return 'locked' as const;
+      // T160: a free remote art pack re-downloads without Plus.
+      const remote = catalogPack(id);
+      if (plus !== true && !(remote && !remote.plus)) return 'locked' as const;
       if (!PACKS_ENABLED) return 'disabled' as const;
       await removePackFromDevice(id);
       return (await downloadPackToDevice(id)) === null ? ('ok' as const) : ('error' as const);

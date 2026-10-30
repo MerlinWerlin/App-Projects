@@ -4,7 +4,7 @@
 import { Feather } from '@expo/vector-icons';
 import { ActivityIndicator, StyleSheet, Text, type StyleProp, type ViewStyle } from 'react-native';
 import { useT } from '../i18n';
-import { continuous, materialFill, pressV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { continuous, materialFill, pressV2, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import type { FeatherName } from './featherName';
 import type { HapticKind } from './haptics';
@@ -120,7 +120,7 @@ function Glyph({ busy, icon, size, color }: { busy: boolean; icon?: FeatherName;
 
 const styles = StyleSheet.create({
   base: {
-    borderRadius: 999,
+    borderRadius: radiusV2.pill,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

@@ -13,7 +13,7 @@ import Svg, { Circle, Defs, LinearGradient, Path, Rect, Stop } from 'react-nativ
 import type { GuideStepId, LiveKind } from '../core/liveSteps';
 import { livephoto } from '../native/livephoto';
 import { useT } from '../i18n';
-import { continuous, radiusV2, spaceV2, textV2, type PaletteV2, type TypeRoleV2 } from '../theme/tokensV2';
+import { circleRadius, continuous, radiusV2, spaceV2, textV2, type PaletteV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { textStyleFor } from './i18nLayout';
 import { liveContext, localizedGuide, type LocalizedGuideStep } from './liveContext';
@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
   step: { flexDirection: 'row', alignItems: 'flex-start', gap: spaceV2.md },
   stepText: { flex: 1, gap: spaceV2.xxs },
   stepHead: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
-  num: { minWidth: 24, minHeight: 24, borderRadius: 12, paddingHorizontal: spaceV2.xs, alignItems: 'center', justifyContent: 'center' },
+  num: { minWidth: 24, minHeight: 24, borderRadius: circleRadius(24), paddingHorizontal: spaceV2.xs, alignItems: 'center', justifyContent: 'center' },
   numText: { fontWeight: '600' },
   art: { width: ART_W, height: ART_H, borderRadius: radiusV2.control, overflow: 'hidden' },
   artInner: { width: ART_W, height: ART_H },

@@ -138,12 +138,14 @@ test('heavy cards and previews are memoised', () => {
   assert.match(TILE, /export const WallpaperTileView = memo\(/);
   assert.match(TILE, /const PairArt = memo\(/);
   assert.match(HEART, /export const HeartButton = memo\(/);
-  assert.match(THEMES_TAB, /const ThemeGrid = memo\(/);
-  assert.match(THEMES_TAB, /const PackSections = memo\(/);
-  assert.match(THEMES_TAB, /const PackSection = memo\(/);
-  assert.match(WALLPAPERS_TAB, /const TileGrid = memo\(/);
+  // T162: the pack sections are memoised list rows (replaces ThemeGrid / PackSections / PackSection).
+  assert.match(THEMES_TAB, /const PackHead = memo\(/);
+  assert.match(THEMES_TAB, /const PackCardRow = memo\(/);
+  // T162: memoised rows of a virtualised list (replaces T118's TileGrid).
+  assert.match(WALLPAPERS_TAB, /const TileRow = memo\(/);
   assert.match(WIDGETS_TAB, /const WidgetCell = memo\(/);
-  assert.match(WIDGETS_TAB, /const WidgetGrid = memo\(/);
+  // T162: the grid is a virtualised list of memoised rows (replaces T118's WidgetGrid).
+  assert.match(WIDGETS_TAB, /const WidgetRow = memo\(/);
 });
 
 test('gallery previews are still Home Screens with cached specs and cached wallpaper geometry', () => {
@@ -168,16 +170,12 @@ test('Themes tab: progressive showcase, deferred pack sections, no layout setSta
   assert.match(SHOWCASE, /useState\(\(\) => Math\.min\(themes\.length, REVEAL_FIRST\)\)/);
   assert.match(SHOWCASE, /keptAcrossSwap\(/);
   assert.match(SHOWCASE, /isMounted\(i, revealed, kept, theme\.id\)/);
-  // Pack sections: start after the first paint and mount PACK_REVEAL_BATCH cards per frame.
-  assert.match(THEMES_TAB, /setStarted\(true\)/);
-  assert.match(THEMES_TAB, /revealStep\(n, total, PACK_REVEAL_BATCH\)/);
-  assert.match(THEMES_TAB, /limit=\{sectionLimit\(/);
-  assert.match(THEMES_TAB, /<PackSections visible=\{showPacks\}/);
-  // Positions are shared values: a layout change never re-renders the screen or the cards.
+  // T162: pack sections are rows of one virtualised list (only the rows near the screen mount).
+  assert.match(THEMES_TAB, /<Animated\.FlatList\b/);
+  assert.match(THEMES_TAB, /data=\{packRows\}/);
+  assert.match(THEMES_TAB, /\{\.\.\.LIST_WINDOW\}/);
+  // No layout setState cascade.
   assert.doesNotMatch(THEMES_TAB, /setInnerY|setPacksY|setSpaceY|setPackY|onCentre/);
-  assert.match(THEMES_TAB, /const innerY = useSharedValue\(0\)/);
-  assert.match(THEMES_TAB, /useDerivedValue\(\(\) => parentY\.value \+ gridY\.value\)/);
-  assert.match(THEMES_TAB, /baseY=\{baseY\}/);
   assert.match(THEME_CARD, /centre\.value \+ \(baseY \? baseY\.value : 0\)/);
   // Stable props for the memoised children.
   assert.match(THEMES_TAB, /const gridShared: GridShared = useMemo\(/);
@@ -193,9 +191,9 @@ test('Themes tab: progressive showcase, deferred pack sections, no layout setSta
 test('Wallpapers tab: no re-render on focus, stable tiles, progressive grid', () => {
   assert.match(WALLPAPERS_TAB, /setLoops\(\(prev\) => keepIfSame\(prev, s\.projects, sameJson\)\)/);
   assert.match(WALLPAPERS_TAB, /reuseEqual\(lastTiles\.current/);
-  assert.match(WALLPAPERS_TAB, /revealStep\(n, tiles\.length, TILE_REVEAL_BATCH\)/);
-  assert.match(WALLPAPERS_TAB, /keptAcrossSwap\(/);
-  assert.match(WALLPAPERS_TAB, /<TileGrid\b/);
+  // T162: rows mount as they scroll in (LargeTitleFlatList) instead of a per-frame reveal.
+  assert.match(WALLPAPERS_TAB, /<LargeTitleFlatList\b/);
+  assert.match(WALLPAPERS_TAB, /<TileRow\b/);
   assert.match(WALLPAPERS_TAB, /onPress=\{showMore\}/);
   assert.match(TILE, /onPress=\{open\}/);
 });
@@ -210,7 +208,8 @@ test('Widgets tab: specs solved once per change, memoised cells, deferred previe
   assert.match(WIDGETS_TAB, /useDeferredValue\(theme\)/);
   assert.match(WIDGETS_TAB, /useDeferredValue\(look\)/);
   assert.match(WIDGETS_TAB, /habits=\{m\.habit \? habits : undefined\}/);
-  assert.match(WIDGETS_TAB, /revealStep\(n, rowIds\.length, WIDGET_ROWS_BATCH\)/);
+  // T162: rows mount as they scroll in (LargeTitleFlatList) instead of a progressive reveal.
+  assert.match(WIDGETS_TAB, /<LargeTitleFlatList\b/);
   // The minute clock runs only while the tab is focused and never sets an unchanged minute.
   assert.match(WIDGETS_TAB, /useFocusEffect\(\s*useCallback\(\(\) => \{\s*const tick/);
   assert.doesNotMatch(WIDGETS_TAB, /useEffect\(\(\) => \{\s*const id = setInterval/);

@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { PETS, petById, type PetId, type PetMood, type PetStatus } from '../src/core/islandPets';
 import { useT } from '../src/i18n';
 import { changePetMood, petsSupported, readPetStatus, startPet, stopPet } from '../src/native/islandPets';
-import { continuous, textV2 } from '../src/theme/tokensV2';
+import { continuous, onArtV2, radiusV2, textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import { IslandPetArt } from '../src/ui/IslandPetArt';
 import { PillButton } from '../src/ui/PillButton';
@@ -61,7 +61,7 @@ export default function PetsScreen() {
           <View style={styles.island} accessible accessibilityLabel={petById(selected).name}>
             <IslandPetArt pet={selected} mood={pose} size={80} />
             <View style={styles.previewText}>
-              <Text style={[...label('headline'), { color: '#FFFFFF' }]}>{petById(selected).name}</Text>
+              <Text style={[...label('headline'), { color: onArtV2.ink }]}>{petById(selected).name}</Text>
               <Text style={[...label('footnote'), { color: '#E9DDF5' }]}>{t(`pets.${pose}`)}</Text>
             </View>
           </View>
@@ -104,7 +104,7 @@ export default function PetsScreen() {
 }
 const styles = StyleSheet.create({
   root: { flex: 1 }, body: { padding: 20, gap: 18, paddingBottom: 36 },
-  preview: { padding: 20, borderRadius: 24, alignItems: 'center', gap: 14 },
+  preview: { padding: 20, borderRadius: radiusV2.card, alignItems: 'center', gap: 14 },
   island: { backgroundColor: '#19131F', borderRadius: 36, paddingHorizontal: 20, paddingVertical: 12, flexDirection: 'row', alignItems: 'center', gap: 16, maxWidth: '100%' },
   previewText: { flexShrink: 1, gap: 4 },
   choices: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },

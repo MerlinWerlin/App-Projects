@@ -2141,6 +2141,18 @@
       ]
     },
     {
+      "id": "T157",
+      "status": "blocked",
+      "tags": [
+        "fb-1026"
+      ],
+      "priority": "high",
+      "source": "Workboard 26 Oct (owner feedback in Codex chat)",
+      "title": "Owner feedback 26 Oct: missing widget options (incl. month percentage with dots), gradients/colours not reaching widgets, theme icon selection, black surrounds on small/blob icons. Being fixed upstream by Codex in App-Projects PR 107 (open). Do not duplicate; 3-way sync apps/glaze once PR 107 is merged to main, then retest via TestFlight. Bulk install confirmed working on owner's phone (26 Oct).",
+      "deps": [],
+      "notes": "Run 132: PR 107 merged upstream (1f90aa7) and 3-way synced here. Kept open per D158-1 until the owner retests on the new TestFlight build (Workboard glaze-test-latest)."
+    },
+    {
       "id": "T158",
       "status": "done",
       "priority": "owner",
@@ -2148,11 +2160,140 @@
       "title": "Original Island pets with ActivityKit Start/Switch/Stop and three moods",
       "deps": [],
       "notes": "Local-only cat, fox and bunny; Lock Screen and Dynamic Island. Native session restore and duplicate-action guard. System-limited visibility/lifetime; no continuous animation. Build and device verification tracked separately."
+    },
+    {
+      "id": "T159",
+      "status": "done",
+      "tags": [
+        "owner-1030"
+      ],
+      "priority": "high",
+      "source": "Owner brief 30 Oct (manual fire), docs/OWNER_1030.md",
+      "title": "owner-1030 A1-A3: scripts/packs/build_packs.mjs (theme folders -> versioned remote art packs, WebP per device class, sha256, thumbs + thumbhash, catalog.json) + scripts/packs/publish_r2.mjs (S3 API SigV4, env secrets, cache headers, HEAD verify, --dry-run) + publish-packs.yml (manual dispatch, written not run)",
+      "deps": [],
+      "commit": "10b99ac"
+    },
+    {
+      "id": "T160",
+      "status": "done",
+      "tags": [
+        "owner-1030"
+      ],
+      "priority": "high",
+      "source": "Owner brief 30 Oct (manual fire), docs/OWNER_1030.md",
+      "title": "owner-1030 A1+A4: PACK_BASE_URL staging/production; app lists remote packs from catalog.json (cached, offline-safe); Download on theme detail via usePackAccess; free packs need no Plus, Plus packs gated",
+      "deps": [],
+      "commit": "6c892be"
+    },
+    {
+      "id": "T161",
+      "status": "done",
+      "tags": [
+        "owner-1030"
+      ],
+      "priority": "high",
+      "source": "Owner brief 30 Oct (manual fire), docs/OWNER_1030.md",
+      "title": "owner-1030 A5+A6: docs/R2_SETUP.md phone steps + Workboard need glaze-r2-account; plan for the ~87 themes (bundled vs free download vs Plus, app < 40 MB)",
+      "deps": [],
+      "commit": "run 179"
+    },
+    {
+      "id": "T162",
+      "status": "done",
+      "tags": [
+        "owner-1030"
+      ],
+      "priority": "high",
+      "source": "Owner brief 30 Oct (manual fire), docs/OWNER_1030.md",
+      "title": "owner-1030 C: smooth and light: virtualised grids, expo-image everywhere with cache + placeholders, thumbnails not stacked gradients in cells, StyleSheet, memo previews, UI-thread animation, lazy screens, perf-budget test, TRIAL.md checks",
+      "deps": [],
+      "commit": "9d26a86"
+    },
+    {
+      "id": "T163",
+      "status": "done",
+      "tags": [
+        "owner-1030"
+      ],
+      "priority": "high",
+      "source": "Owner brief 30 Oct (manual fire), docs/OWNER_1030.md",
+      "title": "owner-1030 B: one token set (tokensV2), old tokens.ts imports removed, guard test against raw hex / font sizes / radii in screens; type scale, 4-pt grid, 3 radii, one elevation",
+      "deps": [],
+      "commit": "ce41bdf"
+    },
+    {
+      "id": "T164",
+      "status": "blocked",
+      "tags": [
+        "owner-1030"
+      ],
+      "priority": "high",
+      "source": "Owner brief 30 Oct (manual fire), docs/OWNER_1030.md",
+      "title": "owner-1030 B: ChatGPT/Codex design critique: screenshots of 7 main screens in docs/design_review_1030/ + brief, Workboard need glaze-design-critique; adopt agreed points (docs/DESIGN_CRITIQUE_1030.md)",
+      "deps": [],
+      "notes": "run 179: brief + prompt in docs/design_review_1030/README.md; screenshots need the PC side (no node_modules in the cloud). Workboard need glaze-design-critique."
+    },
+    {
+      "id": "T165",
+      "status": "done",
+      "tags": [
+        "owner-1030"
+      ],
+      "priority": "high",
+      "source": "Owner brief 30 Oct (manual fire), docs/OWNER_1030.md",
+      "title": "owner-1030 D: RELEASE_CHECKLIST.md current in plain words; mark glaze-brief-1030-go done",
+      "deps": [],
+      "commit": "run 179"
+    },
+    {
+      "id": "T166",
+      "status": "todo",
+      "tags": [
+        "owner-1030"
+      ],
+      "priority": "high",
+      "source": "run 179 follow-up",
+      "title": "owner-1030 C follow-ups: Icons tab to a virtualised list; remaining RN Image files (theme/[id], live/[id], feedback, IconOverrideSheet, SeamlessWidgetPreview) to expo-image; stacked-gradient audit in list cells; useNativeDriver/reduce-motion audit; Widgets grid lost ~16pt top padding",
+      "deps": [],
+      "note": "D203-2 (30 Oct): keep small, no new screens, until a full tsc + expo export passes.",
+      "notes": "run 181: Widgets grid top padding restored (spaceV2.lg spacer at the end of the list header); rest still todo under D203-2."
+    },
+    {
+      "id": "T167",
+      "status": "blocked",
+      "tags": [
+        "owner-1030"
+      ],
+      "priority": "high",
+      "source": "run 179 follow-up",
+      "title": "owner-1030 A: once Jared posts the r2.dev URL (docs/R2_SETUP.md), set PACK_BASE_URLS.staging (then production), first publish via publish-packs.yml (overseer, dry-run first), commit scripts/packs/versions.json, add privacy sentence",
+      "deps": []
+    },
+    {
+      "id": "T168",
+      "status": "todo",
+      "tags": [
+        "owner-1030"
+      ],
+      "priority": "normal",
+      "source": "run 179 follow-up",
+      "title": "Seamless widget card for remote art packs (needs file:// hero art instead of bundled require())",
+      "deps": []
     }
   ],
   "priority_order": {
-    "note": "26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
+    "note": "run 179: owner-1030 brief (manual fire, docs/OWNER_1030.md) outranks the backlog: A (T159-T161) and C (T162) first, then B (T163-T164), D (T165). run 132: PR 107 (T155 widget/theme/icon repairs + T158 Island pets, v1.0.1) synced from App-Projects 1f90aa7; T157 done. 26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
     "order": [
+      "T166",
+      "T164",
+      "T167",
+      "T168",
+      "T159",
+      "T160",
+      "T161",
+      "T162",
+      "T163",
+      "T165",
       "T136",
       "T130",
       "T131",

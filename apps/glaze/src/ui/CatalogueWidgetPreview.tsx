@@ -24,7 +24,8 @@
 // (the dial and the dot grid don't mirror, matching the system).
 import { Feather } from '@expo/vector-icons';
 import { memo, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { Image, StyleSheet, Text, View, type TextStyle } from 'react-native';
+import { Image as ExpoImage } from 'expo-image';
+import { StyleSheet, Text, View, type TextStyle } from 'react-native';
 import Svg, { Circle, Defs, Line, LinearGradient, Rect, Stop, Text as SvgText } from 'react-native-svg';
 import type { DisplayFont } from '../core/artwork';
 import { dotGrid, handAngles, monthProgress, yearProgress } from '../core/calendarMaths';
@@ -32,8 +33,7 @@ import { catalogueWidgetModel, type CatalogueRegionDraw, type CatalogueRegionMod
 import type { CatalogueSpec } from '../core/widgetKinds';
 import type { WidgetFill } from '../core/widgetSets';
 import { useT } from '../i18n';
-import { fonts } from '../theme/tokens';
-import { continuous } from '../theme/tokensV2';
+import { artFontsV2 as fonts, continuous } from '../theme/tokensV2';
 import type { FeatherName } from './featherName';
 import { displayFontStyle } from './ThemeCard';
 
@@ -405,7 +405,7 @@ export const CatalogueWidgetPreview = memo(function CatalogueWidgetPreview({ spe
 
   // Behind a see-through pane: the user's photo when it is their wallpaper, else the theme wallpaper.
   let wallLayer: ReactNode = null;
-  if (model.wallpaper?.kind === 'photo') wallLayer = <Image source={{ uri: model.wallpaper.uri }} style={StyleSheet.absoluteFill} resizeMode="cover" />; // i18n-ignore (JSX, no copy)
+  if (model.wallpaper?.kind === 'photo') wallLayer = <ExpoImage source={model.wallpaper.uri} style={StyleSheet.absoluteFill} contentFit="cover" cachePolicy="memory-disk" transition={0} recyclingKey={model.wallpaper.uri} />; // i18n-ignore (JSX, no copy)
   else if (model.wallpaper?.kind === 'colours') wallLayer = <WallpaperLayer colours={model.wallpaper.colours} id={`${ids}wall`} />; // i18n-ignore (JSX, no copy)
 
   if (mono && model.stage) {

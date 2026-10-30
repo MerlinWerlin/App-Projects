@@ -1,8 +1,8 @@
 import { Feather } from '@expo/vector-icons';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { LOCK_SAFE_AREAS } from '../core/loop';
-import { fonts } from '../theme/tokens';
+import { artFontsV2 as fonts } from '../theme/tokensV2';
 import { useT } from '../i18n';
 import { noMirror, noMirrorText, textStyleFor } from './i18nLayout';
 
@@ -27,7 +27,8 @@ function useNow(): Date {
  * date, clock and the two bottom controls, so people keep faces and text clear of them.
  * Purely decorative; it ignores touches and is hidden from screen readers.
  */
-export function LockMock({ width, height, showGuides = true }: Props) {
+// T162: memoised, so a parent re-render (a list scroll, a store change) skips it.
+export const LockMock = memo(function LockMock({ width, height, showGuides = true }: Props) {
   const now = useNow();
   const { formatClock, formatDate, script } = useT();
   const { date, clock, controls } = LOCK_SAFE_AREAS;
@@ -73,7 +74,7 @@ export function LockMock({ width, height, showGuides = true }: Props) {
       </View>
     </View>
   );
-}
+});
 
 const styles = StyleSheet.create({
   band: { position: 'absolute', left: '8%', right: '8%', alignItems: 'center', justifyContent: 'center' }, // rtl-ok (mock never mirrors)

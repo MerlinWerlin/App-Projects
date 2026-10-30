@@ -162,6 +162,7 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
     retryHint: '멈춘 곳부터 다운로드를 이어갑니다',
     ready: '이 iPhone에 다운로드되었습니다. 설정의 저장 공간에서 언제든지 삭제할 수 있습니다.',
     readyA11y: '{pack} 팩이 다운로드되었습니다',
+    size: '크기: {size}',
   },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {

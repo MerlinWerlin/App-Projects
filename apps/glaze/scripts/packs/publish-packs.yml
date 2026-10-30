@@ -1,0 +1,69 @@
+# Glaze: build theme art packs and publish them to Cloudflare R2 (T159, owner-1030 A3).
+# Written, not run; auto-ship places it in .github/workflows when secrets exist.
+# Needs repo secrets R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET (docs/R2_SETUP.md).
+# Manual dispatch only. Commit the updated scripts/packs/versions.json (uploaded as an artifact) after a run.
+name: Publish Glaze theme packs
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Comma-separated pack ids to rebuild (empty = all)'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Plan only, no upload'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: glaze-publish-packs
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/glaze
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install sharp (optional; Pillow or PNG fallback otherwise)
+        run: npm i --no-save --no-package-lock sharp
+        continue-on-error: true
+      - name: Test pack scripts
+        run: node --test "scripts/packs/*.test.mjs"
+      - name: Build packs
+        env:
+          ONLY: ${{ inputs.only }}
+        run: |
+          if [ -n "$ONLY" ]; then
+            node scripts/packs/build_packs.mjs --plus-file scripts/packs/tiers.json --only "$ONLY"
+          else
+            node scripts/packs/build_packs.mjs --plus-file scripts/packs/tiers.json
+          fi
+      - name: Publish to R2
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            node scripts/packs/publish_r2.mjs --dry-run
+          else
+            node scripts/packs/publish_r2.mjs
+          fi
+      - name: Keep the version lock
+        uses: actions/upload-artifact@v4
+        with:
+          name: pack-versions
+          path: apps/glaze/scripts/packs/versions.json
+          if-no-files-found: ignore

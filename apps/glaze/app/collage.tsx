@@ -37,7 +37,7 @@ import { CollageView, OffscreenCollage, type CollageData, type CollagePhoto } fr
 import { openAppSettings, useOffscreenCapture } from '../src/render/saveWallpaper';
 import { keepCollageCopies, loadCollageDraft, pruneCollageCopies, saveCollageDraft } from '../src/store/collage';
 import { useStudio } from '../src/store/studio';
-import { continuous, radiusV2, sizeV2, spaceV2 } from '../src/theme/tokensV2';
+import { circleRadius, continuous, radiusV2, sizeV2, spaceV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import { haptic } from '../src/ui/haptics';
 import { useAnnounce } from '../src/ui/announce';
@@ -382,7 +382,7 @@ const styles = StyleSheet.create({
   content: { padding: spaceV2.lg, gap: spaceV2.md, paddingBottom: spaceV2.xxl },
   previewWrap: { alignItems: 'center', gap: spaceV2.xs },
   empty: { alignItems: 'center', justifyContent: 'center' },
-  emptyIcon: { width: 64, height: 64, borderRadius: 32, alignItems: 'center', justifyContent: 'center' },
+  emptyIcon: { width: 64, height: 64, borderRadius: circleRadius(64), alignItems: 'center', justifyContent: 'center' },
   card: { ...continuous, borderRadius: radiusV2.card, borderWidth: StyleSheet.hairlineWidth, padding: spaceV2.lg, gap: spaceV2.md },
   chips: { gap: spaceV2.sm, paddingVertical: spaceV2.xxs },
   chip: {

@@ -6,12 +6,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { memo } from 'react';
 import { Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useT } from '../i18n';
-import { sizeV2 } from '../theme/tokensV2';
+import { circleRadius, onArtV2, sizeV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { haptic } from './haptics';
 
 /** Glyph colour over wallpaper art (on the dark disc). */
-const ON_ART = '#FFFFFF';
+const ON_ART = onArtV2.ink;
 
 export type HeartKind = 'theme' | 'wallpaper';
 
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   disc: {
     width: 34,
     height: 34,
-    borderRadius: 17,
+    borderRadius: circleRadius(34),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(0,0,0,0.45)',

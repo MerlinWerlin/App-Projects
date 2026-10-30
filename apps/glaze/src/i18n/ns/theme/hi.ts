@@ -162,6 +162,7 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
     retryHint: 'डाउनलोड वहीं से फिर शुरू करता है जहाँ वह रुका था',
     ready: 'इस iPhone पर डाउनलोड हो गया। आप इसे कभी भी सेटिंग्स में स्टोरेज से हटा सकते हैं।',
     readyA11y: '{pack} पैक डाउनलोड हो गया है',
+    size: 'आकार: {size}',
   },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {

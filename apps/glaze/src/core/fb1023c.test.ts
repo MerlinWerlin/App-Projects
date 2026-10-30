@@ -13,7 +13,8 @@ const art = read('src', 'ui', 'WidgetOptionArt.tsx');
 const core = read('src', 'core', 'widgetOptionArt.ts');
 
 /** The JSX the tab renders. */
-const rendered = tab.slice(tab.indexOf('<LargeTitleScrollView'));
+// T162: the controls are the list header (`const header = (`); the grid rows are a FlatList below it.
+const rendered = tab.slice(tab.indexOf('const header = ('));
 
 test('size sub-tabs draw a SizeArt picture above the label, keeping role, label and touch size', () => {
   const sizes = rendered.slice(rendered.indexOf('WIDGET_TAB_SIZES.map'), rendered.indexOf('lockNote'));

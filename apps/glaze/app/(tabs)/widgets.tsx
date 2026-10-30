@@ -35,8 +35,8 @@
 import { Feather } from '@expo/vector-icons';
 import { IslandPetArt } from '../../src/ui/IslandPetArt';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions, type AccessibilityActionEvent, type StyleProp, type ViewStyle } from 'react-native';
+import { memo, useCallback, useDeferredValue, useMemo, useRef, useState, type ReactNode } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions, type AccessibilityActionEvent, type ListRenderItem, type StyleProp, type ViewStyle } from 'react-native';
 import { WIDGET_TAB_SIZES, widgetStudioHref, widgetTabCards, widgetTabSizeKey, type WidgetTabCard, type WidgetTabSize } from '../../src/core/tabNav';
 import { getAnyTheme } from '../../src/core/plusThemes';
 import { THEMES, type Theme } from '../../src/core/themes';
@@ -58,7 +58,6 @@ import { isGoalHabitKind } from '../../src/core/habitGoals';
 import { canTapHabit, canUndoHabitTap, habitTapStep, nextHabitTapValue } from '../../src/core/habitTap';
 import { WIDGET_GRID_COLUMNS, gridRows, rowExtras, slotFor, type GridCardExtras, type GridSlot } from '../../src/core/widgetGrid';
 import { weakKeyedCache, weakMemo } from '../../src/core/perfCache';
-import { WIDGET_ROWS_BATCH, WIDGET_ROWS_FIRST, keptAcrossSwap, revealStep } from '../../src/core/perfReveal';
 import { useT } from '../../src/i18n';
 import { useStudio } from '../../src/store/studio';
 import { applyWidgetTheme } from '../../src/store/widgetTheme';
@@ -70,7 +69,7 @@ import { useColorsV2 } from '../../src/theme/useTokens';
 import type { FeatherName } from '../../src/ui/featherName';
 import { haptic } from '../../src/ui/haptics';
 import { textStyleFor } from '../../src/ui/i18nLayout';
-import { LargeTitleScrollView, PillButton, SquircleCard } from '../../src/ui/v2';
+import { LargeTitleFlatList, PillButton, SquircleCard } from '../../src/ui/v2';
 import { CatalogueWidgetPreview } from '../../src/ui/CatalogueWidgetPreview';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
@@ -134,22 +133,6 @@ type CardModel = {
   extras: GridCardExtras;
 };
 
-/** Approximate height of a card's caption block (name up to 2 lines + size line), for spacers. */
-const CAPTION_EST = 64;
-
-/** Estimated height of one grid row while it mounts (preview + caption + any button rows). */
-function rowHeightEstimate(models: readonly CardModel[], innerWidth: number): number {
-  let h = 0;
-  let extras = 0;
-  for (const m of models) {
-    const pts = CATALOGUE_SIZE_POINTS[m.card.size as keyof typeof CATALOGUE_SIZE_POINTS] ?? CATALOGUE_SIZE_POINTS.small;
-    const art = Math.max(36, Math.round((innerWidth * pts.height) / pts.width));
-    h = Math.max(h, CARD_PAD * 2 + art + spaceV2.sm + CAPTION_EST);
-    extras = Math.max(extras, (m.extras.log ? 1 : 0) + (m.extras.goal ? 1 : 0));
-  }
-  return h + extras * (sizeV2.touch + spaceV2.sm);
-}
-
 type CellProps = {
   model: CardModel;
   /** T91: extra rows the whole row shows or reserves. */
@@ -187,6 +170,9 @@ const WidgetCell = memo(function WidgetCell({
   const tl = t as unknown as LooseT;
   const label = (role: keyof typeof textV2) => [textV2[role], textStyleFor(script, textV2[role])];
   const { card, href, spec, catSpec, previewOnly } = model;
+  // T162: one width style object per card width (no new inline object on every render).
+  const widthStyle = useMemo(() => ({ width: cardWidth }), [cardWidth]);
+  const cellStyle: StyleProp<ViewStyle> = useMemo(() => [styles.cell, widthStyle], [widthStyle]);
 
   /** "650 ml", "7.5 hours", "Good" / "Not logged" for a tracker value. */
   const habitAmount = (k: HabitKind, v: number): string =>
@@ -297,7 +283,7 @@ const WidgetCell = memo(function WidgetCell({
           ? `${tl('tabs.widgetsTab.open', { kind, size: sizeName })}${previewOnly ? ` ${t('tabs.widgetsTab.buttonsNote')}` : ''}`
           : undefined
       }
-      style={{ width: cardWidth }}
+      style={widthStyle}
     >
       {/* Pressable cards are read by their button label; "coming soon" cards are one static element. */}
       <View
@@ -324,9 +310,7 @@ const WidgetCell = memo(function WidgetCell({
           </View>
         )}
       </View>
-    </SquircleCard>
-  );
-  const cellStyle: StyleProp<ViewStyle> = [styles.cell, { width: cardWidth }];
+    </SquircleCard>); // i18n-ignore (code after a JSX element)
   return (
     <View style={cellStyle}>
       {tile}
@@ -351,8 +335,9 @@ const WidgetCell = memo(function WidgetCell({
   );
 });
 
-type GridProps = {
-  cards: readonly WidgetTabCard[];
+type RowProps = {
+  /** One grid row (WIDGET_GRID_COLUMNS cards). */
+  row: readonly WidgetTabCard[];
   models: ReadonlyMap<string, CardModel>;
   cardWidth: number;
   innerWidth: number;
@@ -365,59 +350,37 @@ type GridProps = {
   onGoals: () => void;
 };
 
-const NO_KEPT: ReadonlySet<string> = new Set<string>();
-
-/** T118: the card grid (memoised): new rows mount progressively, rows already up stay mounted. */
-const WidgetGrid = memo(function WidgetGrid({ cards, models, cardWidth, innerWidth, now, wallpaperUri, habits, onOpen, logHabit, undoHabit, onGoals }: GridProps) {
-  const rowIds = useMemo(() => gridRows(cards, WIDGET_GRID_COLUMNS).map((row) => row.map((x) => x.id).join('|')), [cards]);
-  const rowsKey = rowIds.join('/');
-  const [revealed, setRevealed] = useState(() => Math.min(rowIds.length, WIDGET_ROWS_FIRST));
-  const [kept, setKept] = useState<ReadonlySet<string>>(NO_KEPT);
-  const [shown, setShown] = useState<{ key: string; ids: readonly string[] }>({ key: rowsKey, ids: rowIds });
-  if (shown.key !== rowsKey) {
-    // Render-phase reset: rows already mounted stay, new rows mount a row per frame.
-    setKept(keptAcrossSwap(shown.ids, revealed, kept, rowIds));
-    setShown({ key: rowsKey, ids: rowIds });
-    setRevealed(Math.min(rowIds.length, WIDGET_ROWS_FIRST));
-  }
-  useEffect(() => {
-    if (revealed >= rowIds.length) return;
-    const raf = requestAnimationFrame(() => setRevealed((n) => revealStep(n, rowIds.length, WIDGET_ROWS_BATCH)));
-    return () => cancelAnimationFrame(raf);
-  }, [revealed, rowIds.length]);
-
-  const renderRow = (row: WidgetTabCard[], i: number) => {
-    const key = row.map((x) => x.id).join('|');
-    const rowModels = row.map((card) => models.get(card.id)).filter((m): m is CardModel => m !== undefined);
-    if (i >= revealed && !kept.has(key)) {
-      return <View key={key} style={{ height: rowHeightEstimate(rowModels, innerWidth) }} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" />;
-    }
-    const extras = rowExtras(rowModels.map((m) => m.extras));
-    return (
-      <View key={key} style={styles.row}>
-        {rowModels.map((m) => (
-          <WidgetCell
-            key={m.card.id}
-            model={m}
-            rowLog={extras.log}
-            rowGoal={extras.goal}
-            cardWidth={cardWidth}
-            innerWidth={innerWidth}
-            now={now}
-            wallpaperUri={wallpaperUri}
-            habits={m.habit ? habits : undefined}
-            onOpen={onOpen}
-            logHabit={logHabit}
-            undoHabit={undoHabit}
-            onGoals={onGoals}
-          />
-        ))}
-      </View>
-    );
-  };
-
-  return <View style={styles.grid}>{gridRows(cards, WIDGET_GRID_COLUMNS).map(renderRow)}</View>;
+/**
+ * T162 (owner 30 Oct C): one row of the virtualised grid (memoised). The FlatList mounts rows as
+ * they scroll in and unmounts the far ones, which replaces T118's progressive reveal.
+ */
+const WidgetRow = memo(function WidgetRow({ row, models, cardWidth, innerWidth, now, wallpaperUri, habits, onOpen, logHabit, undoHabit, onGoals }: RowProps) {
+  const rowModels = row.map((card) => models.get(card.id)).filter((m): m is CardModel => m !== undefined);
+  const extras = rowExtras(rowModels.map((m) => m.extras));
+  return (
+    <View style={styles.row}>
+      {rowModels.map((m) => (
+        <WidgetCell
+          key={m.card.id}
+          model={m}
+          rowLog={extras.log}
+          rowGoal={extras.goal}
+          cardWidth={cardWidth}
+          innerWidth={innerWidth}
+          now={now}
+          wallpaperUri={wallpaperUri}
+          habits={m.habit ? habits : undefined}
+          onOpen={onOpen}
+          logHabit={logHabit}
+          undoHabit={undoHabit}
+          onGoals={onGoals}
+        />
+      ))}
+    </View>
+  );
 });
+
+const rowKey = (row: readonly WidgetTabCard[]): string => row.map((x) => x.id).join('|');
 
 export default function WidgetsTab() {
   const { c } = useColorsV2();
@@ -548,12 +511,37 @@ export default function WidgetsTab() {
   const onOpen = useCallback((href: string) => router.push(href), [router]);
   const onGoals = useCallback(() => router.push('/habit-goals'), [router]);
 
-  return (
-    <LargeTitleScrollView title={t('tabs.widgets')} subtitle={t('tabs.widgetsTab.subtitle')}>
-      <Pressable onPress={() => router.push('/pets')} accessibilityRole="button" accessibilityLabel={t('pets.title')}
-        style={[continuous, { margin: 16, padding: 16, backgroundColor: c.fill, borderRadius: 24, flexDirection: 'row', alignItems: 'center', gap: 14 }]}>
+  // T162 (owner 30 Oct C): the grid is a virtualised list of rows; everything above it is the header.
+  const rows = useMemo(() => gridRows(cards, WIDGET_GRID_COLUMNS), [cards]);
+  const wallpaperUri = wallpaper.photoUri;
+  const renderRow: ListRenderItem<readonly WidgetTabCard[]> = useCallback(
+    ({ item }) => (
+      <WidgetRow
+        row={item}
+        models={models}
+        cardWidth={cardWidth}
+        innerWidth={innerWidth}
+        now={now}
+        wallpaperUri={wallpaperUri}
+        habits={widgetHabits}
+        onOpen={onOpen}
+        logHabit={logHabit}
+        undoHabit={undoHabit}
+        onGoals={onGoals}
+      />), // i18n-ignore (code after a JSX element)
+    [models, cardWidth, innerWidth, now, wallpaperUri, widgetHabits, onOpen, logHabit, undoHabit, onGoals],
+  );
+
+  const header = (
+    <>
+      <Pressable
+        onPress={() => router.push('/pets')}
+        accessibilityRole="button"
+        accessibilityLabel={t('pets.title')}
+        style={[styles.pets, continuous, { backgroundColor: c.fill }]}
+      >
         <IslandPetArt pet="cat" mood="happy" size={48} />
-        <View style={{ flex: 1, gap: 4 }}>
+        <View style={styles.petsText}>
           <Text style={[...label('headline'), { color: c.ink }]}>{t('pets.title')}</Text>
           <Text style={[...label('footnote'), { color: c.inkSecondary }]}>{t('pets.intro')}</Text>
         </View>
@@ -657,21 +645,20 @@ export default function WidgetsTab() {
         <Text style={[...label('footnote'), styles.note, { color: c.inkSecondary }]}>{t('tabs.widgetsTab.lockNote')}</Text>
       ) : null}
 
-      <WidgetGrid
-        cards={cards}
-        models={models}
-        cardWidth={cardWidth}
-        innerWidth={innerWidth}
-        now={now}
-        wallpaperUri={wallpaper.photoUri}
-        habits={widgetHabits}
-        onOpen={onOpen}
-        logHabit={logHabit}
-        undoHabit={undoHabit}
-        onGoals={onGoals}
-      />
-      {wallpaper.probe}
-    </LargeTitleScrollView>
+      {/* T166: the grid's top padding from before T162 (rows are list items now). */}
+      <View style={styles.gridTop} />
+    </>); // i18n-ignore (code after a JSX element)
+
+  return (
+    <LargeTitleFlatList
+      title={t('tabs.widgets')}
+      subtitle={t('tabs.widgetsTab.subtitle')}
+      header={header}
+      data={rows}
+      renderItem={renderRow}
+      keyExtractor={rowKey}
+      footer={wallpaper.probe ? <>{wallpaper.probe}</> : null}
+    />
   );
 }
 
@@ -718,13 +705,14 @@ const styles = StyleSheet.create({
     gap: spaceV2.xxs,
   },
   note: { paddingHorizontal: GUTTER, marginTop: spaceV2.md },
-  grid: {
-    paddingHorizontal: GUTTER,
-    paddingTop: spaceV2.lg,
-    gap: GAP,
-  },
-  // T91: one row of the grid; cells stretch to the tallest one.
-  row: { flexDirection: 'row', alignItems: 'stretch', gap: GAP },
+  // Pets entry card (T162: was an inline style object).
+  pets: { margin: 16, padding: 16, borderRadius: 24, flexDirection: 'row', alignItems: 'center', gap: 14 },
+  petsText: { flex: 1, gap: 4 },
+  // T91: one row of the grid; cells stretch to the tallest one. T162: rows are list items, so each
+  // row carries the grid's side gutter and the gap below it.
+  row: { flexDirection: 'row', alignItems: 'stretch', gap: GAP, paddingHorizontal: GUTTER, marginBottom: GAP },
+  // T166: restores the ~16 pt gap above the first row that the pre-T162 grid had (paddingTop lg).
+  gridTop: { height: spaceV2.lg },
   cell: { gap: spaceV2.sm },
   // Pushes the log / goal rows to the bottom of a stretched cell, so neighbours' buttons line up.
   cellFill: { flexGrow: 1, marginTop: -spaceV2.sm },

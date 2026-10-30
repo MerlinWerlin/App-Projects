@@ -16,7 +16,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { durations, useMotionReduced } from '../theme/motion';
-import { radiusV2 } from '../theme/tokensV2';
+import { onArtV2, radiusV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { PillButton } from './PillButton';
 
@@ -109,5 +109,5 @@ const styles = StyleSheet.create({
   wrap: { position: 'relative' },
   clip: { borderRadius: radiusV2.pill, overflow: 'hidden' },
   band: { position: 'absolute', top: 0, left: 0 },
-  flash: { backgroundColor: '#FFFFFF' },
+  flash: { backgroundColor: onArtV2.ink },
 });

@@ -23,7 +23,7 @@ import { useT } from '../i18n';
 import { PlusBadge } from '../plus/PlusBadge';
 import { HomeTint } from '../render/HomeWallpaperView';
 import { WallpaperView } from '../render/WallpaperView';
-import { radiusV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { circleRadius, onArtV2, radiusV2, spaceV2, textV2, typeV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import type { FeatherName } from './featherName';
 import { HeartButton } from './HeartButton';
@@ -209,14 +209,14 @@ const styles = StyleSheet.create({
   tile: { borderRadius: radiusV2.card, borderCurve: 'continuous', overflow: 'hidden', minHeight: 48, minWidth: 48 },
   fill: { flex: 1 },
   scrim: { position: 'absolute', start: 0, end: 0, bottom: 0, paddingHorizontal: spaceV2.md, paddingVertical: spaceV2.sm, backgroundColor: 'rgba(0,0,0,0.35)' },
-  onArt: { color: '#FFFFFF' },
+  onArt: { color: onArtV2.ink },
   /** Room for the heart at the reading end of the name row. */
   withHeart: { paddingEnd: 48 },
   /** Placement only; HeartButton is the ≥ 48 pt target. */
   heart: { position: 'absolute', bottom: 0, end: 0 },
   entry: { alignItems: 'center', justifyContent: 'center', gap: spaceV2.md, padding: spaceV2.md },
   dashed: { borderWidth: 2, borderStyle: 'dashed', borderRadius: radiusV2.card },
-  glyph: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
+  glyph: { width: 48, height: 48, borderRadius: circleRadius(48), alignItems: 'center', justifyContent: 'center' },
   center: { textAlign: 'center' },
   pairBody: { padding: spaceV2.sm, gap: spaceV2.sm, justifyContent: 'center' },
   pairRow: { flexDirection: 'row', gap: PAIR_GAP, justifyContent: 'center' },
@@ -234,6 +234,6 @@ const styles = StyleSheet.create({
     borderRadius: radiusV2.pill,
     backgroundColor: 'rgba(0,0,0,0.6)',
   },
-  liveDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: '#FF4D6D' },
-  liveText: { color: '#FFFFFF', fontSize: 11, fontWeight: '700', letterSpacing: 0.5 },
+  liveDot: { width: 6, height: 6, borderRadius: circleRadius(6), backgroundColor: '#FF4D6D' },
+  liveText: { color: onArtV2.ink, fontSize: typeV2.caption2.fontSize, fontWeight: '700', letterSpacing: 0.5 },
 });

@@ -153,9 +153,18 @@
 - 2026-10-25 · run 118 T150 · parked · bundle size is git history (old PNG versions); repack gains nothing and re-compressing adds blobs; history squash rejected (loses the only canonical history). 14.1 MB base64 < 16 MB cap; revisit past 15 MB.
 - 2026-10-25 · run 120 · owner brief fb-1025b (manual fire 21:29 Sydney) · accepted · T151 no bounce (scroll overscroll off everywhere + guard); T152 real Plus purchase via own StoreKit 2 module (npm unreachable and package.json must stay native-free, so no expo-iap; T140 superseded); T153 Live Photo wallpaper recipe from community findings (LivePaper FINDINGS, MIT, facts only); T154 bulk verdict POSSIBLE WITH LIMITS + Safari auto-request fix. Workboard needs glaze-bulk-install-verdict and glaze-iap-product added.
 - 2026-10-26 · oversight v153 D153-2 · accepted · Workboard shows no Glaze ship failure, PR #99 treated as delivered; hold kept
+- 2026-10-26 · oversight v155 · followed · no new directives; D147-1 hold + D153-2 standing; no page comments.
+- 2026-10-26 · oversight v156 · followed · no new directives; D147-1 hold + D153-2 standing; no page comments.
+2026-10-26 · Workboard (owner via Codex) · accepted (tracked) · feedback handled upstream in App-Projects PR 107; T157 blocked until merge, then sync
 
 - 2026-10-26 · T155 owner feedback · accepted · Bulk install worked; do not repeat that verdict. Repair widget delivery and missing catalogue types, make theme icon selection direct, remove implicit black export backdrops. If shape/size cannot be made reliable Jared accepts one choice. Dynamic Island pets were a feasibility question, not approved new scope. Branch codex/glaze-theme-retest-20261026; native build required. No saved studio drafts, selections or custom images deleted.
 
 ## 2026-10-26: owner pets and TestFlight authorization
 
 Jared explicitly requested: “add the pets and also - push it all to test flight”. This approves Island pets and release of the combined PR107 widget/theme/icon fixes to TestFlight; public App Review is not included. Use normal ActivityKit sessions with clear controls and system limits. Existing prices, saved replies/designs, bulk-install success and held work remain unchanged.
+- 2026-10-26 · run 132 · oversight v158 D158-1 · accepted · PR 107 synced (1f90aa7); T157 stays open until owner retest; no parallel rebuild
+
+- 2026-10-26 · oversight v159 D159-1 · accepted · recorded 1.0.1 (11) on TestFlight in status.json; T157 stays open until retest; battery/photo-album/habit widgets wait for one later native build
+- 2026-10-30 · owner brief owner-1030 (manual fire payload) · accepted · imported as T159-T165; no hard rule broken (scripts written, no account, no upload, no spending); R2 account is the owner's step (docs/R2_SETUP.md)
+- 2026-10-30 · run 180 · oversight v203 D203-1 · accepted · App-Projects apps/glaze already pins expo-image ~57.0.5 (SDK 57); recorded in docs/SDK57_PINS.md (full SDK 57 dependency table) and RELEASE_CHECKLIST 3d. Cloud package.json keeps the SDK 54 line; the sync keeps skipping pins as PC-only.
+- 2026-10-30 · run 180 · oversight v203 D203-2 · accepted · no new screens; T166 kept small until a full tsc + expo export passes; PACK_BASE_URLS stays empty until the owner comments the r2.dev link.

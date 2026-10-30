@@ -1,6 +1,13 @@
-// Design v2 tokens (docs/DESIGN_V2.md) for React Native. Numbers and colours live in
-// src/core/designV2.ts (tested in Node); this file shapes them into RN styles. The v1 tokens in
-// tokens.ts stay exported unchanged until T55/T56 migrate every screen.
+// Design v2 tokens (docs/DESIGN_V2.md) for React Native: the app's ONE token set (T163; the v1
+// tokens.ts is retired). Numbers and colours live in src/core/designV2.ts (tested in Node); this
+// file shapes them into RN styles.
+//   type scale  typeV2 / textV2 (named steps: largeTitle ... caption2, button, navTitle)
+//   spacing     spaceV2 (4-pt grid; xxs 2 is the only half step)
+//   radii       chromeRadiusV2 card / control / pill (radiusV2 keeps legacy group/cardLarge/sheet);
+//               shapes: iconTileRadius(size), circleRadius(size)
+//   elevation   shadowV2(level, scheme) (one layered style; elevationV2 levels)
+//   artwork     artFontsV2, brandGlazeV2, onArtV2 (mocks and ink over photos, not chrome)
+// Raw colours / font sizes / radii in app/ and src/ui are ratcheted by src/core/designGuard.test.ts.
 import { Platform, type TextStyle, type ViewStyle } from 'react-native';
 import {
   androidElevationV2,
@@ -19,12 +26,18 @@ import {
 export {
   ICON_TILE_RATIO,
   PASTEL_NAMES,
+  artFontsV2,
+  brandGlazeV2,
+  chromeRadiusV2,
+  circleRadius,
   darkV2,
+  elevationV2,
   iconTileRadius,
   largeTitleRanges,
   largeTitleSnapAt,
   lightV2,
   materialsV2,
+  onArtV2,
   pressV2,
   radiusV2,
   scrimColour,

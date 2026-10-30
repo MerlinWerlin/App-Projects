@@ -1,20 +1,12 @@
 {
-  "tests": "1233 core tests: 1214 pass after fixing the new screen overscroll guard; 19 pre-existing SDK/source/path/asset guard failures match the earlier unchanged-main baseline. Pet contract, localization and overscroll checks pass.",
-  "typecheck": "Real SDK app and Node TypeScript pass; Expo iOS export passes; final Apple SDK checks40311146960/40311155383 pass; full signed production-native archive and TestFlight upload40311511263 pass. GlazeIslandPets pod and GlazeWidgets extension included in build evidence.",
-  "last_run": "2026-10-26 11:20 UTC Codex native TestFlight delivery",
-  "stage": "testflight",
-  "oversight_seen": "v150 (1792954143-2667): no new directives; D147-1 hold continues; no patches",
-  "headline": "Glaze 1.0.1 build 11 signed and uploaded to Apple: Island pets plus widget/theme/icon repairs. PR107 merged as1f90aa7; ship-mac40311511263 succeeded. Apple processing/readiness checked separately by the status-only store request.",
-  "next_for_owner": "After Apple makes build11 available, Island pets is in Widgets. The native trial notes cover new pet controls, month dots and edited gradients; bulk install already confirmed. Actual iPhone rendering and lifecycle checks remain outstanding.",
+  "tests": "1260/1260 core tests green (+12 pack script tests)",
+  "typecheck": "core only (registry unreachable)",
+  "last_run": "2026-10-30 20:15 Sydney (run 181)",
+  "stage": "owner-tested",
+  "oversight_seen": "v204 (1793350228-ac05): no new directives, D203-2 still open (fixes only, R2 off); no patches",
+  "headline": "Release prep started: theme hosting on Cloudflare R2 is built (waiting on your Cloudflare setup), smoother theme lists and one design system. Next: your R2 setup and a TestFlight retest.",
+  "next_for_owner": "1) Set up Cloudflare R2 (docs/R2_SETUP.md, about 15 minutes on your phone) and paste the r2.dev link as a comment here. 2) On the next TestFlight build, answer docs/TRIAL.md \"New since your last test (30 Oct)\" (smooth scrolling). 3) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + expo export needs PC verification: npm registry unreachable from the cloud.)",
   "trial_kit": true,
-  "trial_kit_commit": "e5a7652",
-  "testflight": {
-    "version": "1.0.1",
-    "build": "11",
-    "sourceCommit": "1f90aa78f6a3bda66b2bc6a9f902559091ef1b98",
-    "buildRun": "https://github.com/MerlinWerlin/App-Projects/actions/runs/40311511263",
-    "submission": "762dfc4d-adf5-4d3c-b703-8ff4d2923834",
-    "uploadedAt": "2026-10-26T11:20:20Z",
-    "appleReadback": "Existing store workflow; mode=status; report on receipt-check merge commit. Upload alone does not prove availability."
-  }
+  "trial_kit_commit": "58f8ad9",
+  "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested"
 }

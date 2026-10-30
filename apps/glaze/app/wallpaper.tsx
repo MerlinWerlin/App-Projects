@@ -37,7 +37,7 @@ import { tickStoredChecklist } from '../src/store/applyChecklist';
 import { loadBackground, photoCopyExists, saveBackground } from '../src/store/background';
 import { applyWidgetTheme } from '../src/store/widgetTheme';
 import { useT } from '../src/i18n';
-import { continuous, radiusV2, sizeV2, spaceV2 } from '../src/theme/tokensV2';
+import { circleRadius, continuous, onArtV2, radiusV2, sizeV2, spaceV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import type { FeatherName } from '../src/ui/featherName';
 import { PillButton } from '../src/ui/PillButton';
@@ -462,7 +462,7 @@ export default function WallpaperScreen() {
       imageW: lock.width,
       imageH: lock.height,
       home,
-      background: '#000000',
+      background: onArtV2.black,
     };
     const res = await homeSaver.save(homeData, size);
     tickPair(res.ok ? 'saved' : 'homeFailed');
@@ -818,7 +818,7 @@ const styles = StyleSheet.create({
   gapSm: { gap: spaceV2.xs },
   emptyPhoto: { alignItems: 'center', justifyContent: 'center', gap: spaceV2.sm, padding: spaceV2.md },
   zoomRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spaceV2.sm },
-  tintSwatch: { width: 24, height: 24, borderRadius: 12, borderWidth: StyleSheet.hairlineWidth, marginEnd: spaceV2.sm },
+  tintSwatch: { width: 24, height: 24, borderRadius: circleRadius(24), borderWidth: StyleSheet.hairlineWidth, marginEnd: spaceV2.sm },
   phone: { ...continuous, borderRadius: radiusV2.card, overflow: 'hidden', borderWidth: StyleSheet.hairlineWidth },
   card: { ...continuous, borderRadius: radiusV2.card, borderWidth: StyleSheet.hairlineWidth, padding: spaceV2.lg, gap: spaceV2.md },
   segment: { flexDirection: 'row', borderRadius: radiusV2.pill, padding: 3 },

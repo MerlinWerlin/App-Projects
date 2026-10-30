@@ -22,7 +22,7 @@ import { artworkTransform, cardProgress } from '../core/galleryMotion';
 import type { Theme } from '../core/themes';
 import { useT } from '../i18n';
 import { staggerIn, useMotionReduced } from '../theme/motion';
-import { continuous, pressV2, radiusV2, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { circleRadius, continuous, pressV2, radiusV2, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { HeartButton } from './HeartButton';
 import { HomeMock } from './HomeMock';
@@ -259,5 +259,5 @@ const styles = StyleSheet.create({
   /** Placement only; HeartButton is the ≥ 48 pt target. */
   heart: { position: 'absolute', bottom: 0, end: 0 },
   dots: { flexDirection: 'row', gap: 6, marginTop: spaceV2.xs },
-  dot: { width: 14, height: 14, borderRadius: 7, borderWidth: StyleSheet.hairlineWidth },
+  dot: { width: 14, height: 14, borderRadius: circleRadius(14), borderWidth: StyleSheet.hairlineWidth },
 });
