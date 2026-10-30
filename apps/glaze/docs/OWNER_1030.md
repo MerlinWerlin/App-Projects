@@ -20,3 +20,11 @@ iOS doesn't let any app see which apps are installed, so a real scan isn't possi
 
 ## D. TestFlight only
 Glaze is tested via TestFlight now. Don't point Jared to Expo Go for Glaze in TRIAL.md, Workboard needs or finish messages.
+
+## E. Premium interface upgrade (Jared 30 Oct 21:04: "looking for the interface to be upgraded - this will be our premium app")
+Glaze is the App Factory's flagship, premium-feel app. Treat the UI as the top priority after A–D, every run, until it feels like a top-10 paid design app:
+- Write docs/PREMIUM_UI.md first: the design direction (calm, rich, editorial; generous spacing; refined type scale; depth via soft layered surfaces/blur, not borders; subtle haptics; smooth timed transitions with NO bounce/springs — Jared's standing rule), the screen-by-screen plan, and what "done" looks like. Build on docs/DESIGN_V2.md, don't restart.
+- Upgrade in order of what people see first: onboarding, Themes browse (large art-led cards, theme preview on a phone mock), theme detail (hero preview, apply flow), Widgets, Install flow, Plus sheet, Settings.
+- Consistency pass: one token set (colour, radius, spacing, type), one icon style, real empty/loading states (skeletons, not spinners), accessible contrast and Dynamic Type.
+- Use the design-critique loop already planned (need glaze-design-critique): render key screens, get a Sol/Astra critique, apply the agreed points, record them in docs/DESIGN_CRITIQUE_1030.md.
+- Each run: ship visible UI improvements, and list them in TRIAL.md "New since your last test" with yes/no questions so Jared can judge them on TestFlight.
