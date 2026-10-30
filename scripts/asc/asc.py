@@ -667,8 +667,13 @@ def make_profile(app):
     bid = e["ios"]["bundleIdentifier"]
     b = [x for x in get("/v1/bundleIds", **{"filter[identifier]": bid, "limit": 5})["data"] if attrs(x)["identifier"] == bid]
     if not b:
-        raise RuntimeError(f"bundle id {bid} is not registered")
+        # New app: register the bundle id with Apple (same as a first `eas build` would).
+        b = [call("POST", "/v1/bundleIds", {"data": {"type": "bundleIds", "attributes": {
+            "identifier": bid, "name": f"{e.get('name', app)}", "platform": "IOS"}}})["data"]]
+        say(f"- registered bundle id {bid}")
     name = f"{e.get('name', app)} App Store (CI)"
+    if os.environ.get("CERT_SERIAL"):
+        name = f"{e.get('name', app)} App Store (CI {os.environ['CERT_SERIAL'].strip()[-6:]})"
     have = [x for x in get("/v1/profiles", **{"filter[name]": name, "limit": 5})["data"] if attrs(x)["profileState"] == "ACTIVE"]
     if have:
         prof = have[0]
@@ -679,6 +684,12 @@ def make_profile(app):
         if not certs:
             raise RuntimeError("no distribution certificate on the team")
         certs.sort(key=lambda c: attrs(c).get("expirationDate") or "", reverse=True)
+        want = os.environ.get("CERT_SERIAL", "").strip().upper()
+        if want:
+            # Use the certificate Expo already holds (its private key is on Expo), so the profile matches it.
+            certs = [c for c in certs if (attrs(c).get("serialNumber") or "").upper() == want] or certs[:0]
+            if not certs:
+                raise RuntimeError(f"no distribution certificate with serial {want} on the team")
         prof = call("POST", "/v1/profiles", {"data": {"type": "profiles",
                     "attributes": {"name": name, "profileType": "IOS_APP_STORE"},
                     "relationships": {"bundleId": {"data": {"type": "bundleIds", "id": b[0]["id"]}},
@@ -686,6 +697,8 @@ def make_profile(app):
         say(f"- created profile `{name}` with certificate serial {attrs(certs[0]).get('serialNumber')}")
     say(f"- bundle id {bid}, expires {attrs(prof).get('expirationDate')}")
     say("")
+    if os.environ.get("PROFILE_OUT"):
+        pathlib.Path(os.environ["PROFILE_OUT"]).write_text(attrs(prof)["profileContent"])
     say(f"<details><summary>{app}.mobileprovision (base64)</summary>\n\n```\n{attrs(prof)['profileContent']}\n```\n</details>")
 
 
