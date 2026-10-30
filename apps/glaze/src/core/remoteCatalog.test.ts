@@ -2,7 +2,7 @@
 // remote detail card) and the pack base URL config. Pure; no network.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { PACK_BASE_URL, PACK_BASE_URLS, packBaseUrl, packEnvFrom } from '../config/packs.ts';
+import { PACK_BASE_URL, PACK_BASE_URLS, PACK_RELEASE_TAGS, packBaseUrl, packEnvFrom, packHostKind } from '../config/packs.ts';
 import { ART_PACK_THEMES } from './artPackThemes.ts';
 import { isArtPackTheme } from './artPack.ts';
 import { manifestPath, type RemoteArtManifest } from './packCatalog.ts';
@@ -40,9 +40,18 @@ const entry = (id: string, plus = false) => ({
 const catalogText = (...packs: object[]) => JSON.stringify({ format: 'glaze-catalog', version: 1, generatedAt: '2026-10-30T00:00:00Z', packs });
 const BASE = 'https://pub-0123.r2.dev';
 
-test('config: both environments empty, production by default, staging only when asked', () => {
-  assert.equal(PACK_BASE_URL, '');
-  assert.deepEqual({ ...PACK_BASE_URLS }, { staging: '', production: '' });
+test('config: GitHub release bases (T169), production by default, staging only when asked', () => {
+  assert.equal(PACK_BASE_URL, 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1');
+  assert.deepEqual(
+    { ...PACK_BASE_URLS },
+    {
+      staging: 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-staging',
+      production: 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1',
+    },
+  );
+  assert.equal(packHostKind(PACK_BASE_URLS.production), 'github-release');
+  assert.equal(packHostKind(PACK_BASE_URLS.staging), 'github-release');
+  assert.equal(PACK_RELEASE_TAGS.production, 'glaze-packs-v1');
   assert.equal(packEnvFrom(undefined), 'production');
   assert.equal(packEnvFrom('Staging '), 'staging');
   assert.equal(packEnvFrom('stage'), 'production');

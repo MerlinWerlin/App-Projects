@@ -32,6 +32,7 @@ import {
   type RemoteArtAsset,
   type RemoteArtManifest,
 } from './packCatalog.ts';
+import { packObjectUrl } from './packHost.ts';
 
 /** Result of a (possibly ranged) GET. `offset` is where the body starts: `start` for a 206, 0 when the server ignored Range. */
 export type RangeResponse = { offset: number; chunks: AsyncIterable<Uint8Array> };
@@ -351,7 +352,7 @@ export async function fetchText(transport: Transport, url: string, limit: number
 export async function fetchCatalogText(transport: Transport, baseUrl: string): Promise<string> {
   const base = resolvePackBaseUrl(baseUrl);
   if (base === null) throw new PackError('disabled', 'theme packs are not available yet');
-  return fetchText(transport, `${base}/${CATALOG_FILE}`, CATALOG_MAX_BYTES, 'network');
+  return fetchText(transport, packObjectUrl(base, CATALOG_FILE), CATALOG_MAX_BYTES, 'network');
 }
 
 function parseManifestText(text: string, id: string): RemoteArtManifest | null {
@@ -367,7 +368,7 @@ function parseManifestText(text: string, id: string): RemoteArtManifest | null {
 
 /** Fetch and validate a remote art pack's manifest (art/<id>/v<n>/manifest.json). `baseUrl` is already resolved. */
 export async function fetchRemoteArtManifest(transport: Transport, baseUrl: string, id: string, packVersion: number): Promise<RemoteArtManifest> {
-  const text = await fetchText(transport, `${baseUrl}/${manifestPath(id, packVersion)}`, MAX_MANIFEST_BYTES);
+  const text = await fetchText(transport, packObjectUrl(baseUrl, manifestPath(id, packVersion)), MAX_MANIFEST_BYTES);
   let raw: unknown;
   try {
     raw = JSON.parse(text);
@@ -434,7 +435,7 @@ export async function downloadRemoteArtPack(opts: RemoteArtDownloadOptions): Pro
     transport: t,
     localDir: id,
     assets,
-    urlFor: (path) => `${base}/${folder}/${path}`,
+    urlFor: (path) => packObjectUrl(base, `${folder}/${path}`),
     retries: Math.max(0, opts.retries ?? 1),
     isCancelled: opts.isCancelled,
     onProgress: opts.onProgress,

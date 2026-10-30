@@ -9,21 +9,23 @@
 // then snaps to the exact shapePath. Off by default, so captures always draw the final shape.
 
 import { forwardRef, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { View, type StyleProp, type ViewStyle } from 'react-native';
+import { Platform, View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, {
+  Circle,
   ClipPath,
   Defs,
   G,
   Image as SvgImage,
   LinearGradient,
   Path,
+  RadialGradient,
   Rect,
   Stop,
   Text as SvgText,
 } from 'react-native-svg';
-import { iconArtLayout, type IconArt } from '../core/artwork';
+import { iconArtLayout, type DisplayFont, type IconArt } from '../core/artwork';
 import type { IconBackground, IconShape, IconSpec } from '../core/iconspec';
-import type { Monogram } from '../core/monogram';
+import type { Monogram, MonogramLook } from '../core/monogram';
 import { lerpPoints, morphProgress, pointsToPath, sampleShape } from '../core/shapeMorph';
 import type { Point } from '../core/shapes';
 import { glyphBox, gradientVector, hairline, IOS_MASK_RADIUS, iosMaskPath, shapePath } from '../core/shapes';
@@ -115,20 +117,86 @@ function BackgroundLayer({ bg, d, size, id }: BgProps) {
   );
 }
 
-/** Monogram lettering centred in the icon (T66). The baseline sits ~0.35 em below the centre. */
-function MonogramText({ monogram, size }: { monogram: Monogram; size: number }) {
-  const fontSize = Math.max(1, size * monogram.fontScale);
+/**
+ * T170: font family for a theme's display-type token (same families as ThemeCard's
+ * displayFontStyle). undefined = the system face ('display', and any script the face lacks).
+ */
+function monogramFontFamily(font: DisplayFont | undefined): string | undefined {
+  switch (font) {
+    case 'serif':
+      return Platform.select({ ios: 'Georgia', default: 'serif' });
+    case 'script':
+      return Platform.select({ ios: 'Snell Roundhand', default: 'serif' });
+    case 'mono':
+      return Platform.select({ ios: 'Menlo', default: 'monospace' });
+    case 'rounded':
+      return Platform.select({ ios: 'Avenir Next', default: 'sans-serif-medium' });
+    default:
+      return undefined;
+  }
+}
+
+/** Gradient / glow definitions for a themed monogram plate (T170). */
+function MonogramDefs({ look, size, id }: { look: MonogramLook; size: number; id: string }) {
+  if (look.treatment === 'gradient') {
+    return (
+      <LinearGradient id={`${id}-mono`} x1="15%" y1="10%" x2="85%" y2="90%">
+        <Stop offset="0" stopColor={look.plate} stopOpacity={1} />
+        <Stop offset="1" stopColor={look.plateTo} stopOpacity={1} />
+      </LinearGradient>
+    );
+  }
+  if (look.treatment === 'glow') {
+    const r = size * look.radius;
+    return (
+      <RadialGradient id={`${id}-mono`} cx={size / 2} cy={size / 2} r={r} fx={size / 2} fy={size / 2} gradientUnits="userSpaceOnUse">
+        <Stop offset={0} stopColor={look.plate} stopOpacity={look.glowOpacity} />
+        <Stop offset={0.55} stopColor={look.plate} stopOpacity={look.glowOpacity * 0.5} />
+        <Stop offset={1} stopColor={look.plate} stopOpacity={0} />
+      </RadialGradient>
+    );
+  }
+  return null;
+}
+
+/** The plate under a themed monogram (T170): disc, two-tone disc with a hairline, ring, or glow. */
+function MonogramPlate({ look, size, id }: { look: MonogramLook; size: number; id: string }) {
+  const c = size / 2;
+  const r = size * look.radius;
+  const sw = Math.max(1, size * look.stroke);
+  if (look.treatment === 'ring') {
+    return <Circle cx={c} cy={c} r={r} fill="none" stroke={look.plate} strokeWidth={sw} />;
+  }
+  if (look.treatment === 'glow') {
+    return <Circle cx={c} cy={c} r={r} fill={`url(#${id}-mono)`} />;
+  }
   return (
-    <SvgText
-      x={size / 2}
-      y={size / 2 + fontSize * 0.35}
-      textAnchor="middle"
-      fontSize={fontSize}
-      fontWeight="700"
-      fill={monogram.colour}
-    >
-      {monogram.text}
-    </SvgText>
+    <G>
+      <Circle cx={c} cy={c} r={r} fill={look.treatment === 'gradient' ? `url(#${id}-mono)` : look.plate} />
+      <Circle cx={c} cy={c} r={Math.max(1, r - sw * 2.5)} fill="none" stroke={look.accent} strokeOpacity={0.6} strokeWidth={sw} />
+    </G>
+  );
+}
+
+/** Monogram lettering centred in the icon (T66). The baseline sits ~0.35 em below the centre. */
+function MonogramText({ monogram, size, id }: { monogram: Monogram; size: number; id: string }) {
+  const fontSize = Math.max(1, size * monogram.fontScale);
+  const look = monogram.look;
+  return (
+    <G>
+      {look ? <MonogramPlate look={look} size={size} id={id} /> : null}
+      <SvgText
+        x={size / 2}
+        y={size / 2 + fontSize * 0.35}
+        textAnchor="middle"
+        fontSize={fontSize}
+        fontWeight={look ? look.weight : '700'}
+        fontFamily={look ? monogramFontFamily(look.font) : undefined}
+        fill={monogram.colour}
+      >
+        {monogram.text}
+      </SvgText>
+    </G>
   );
 }
 
@@ -227,6 +295,7 @@ export const IconCanvas = forwardRef<View, IconCanvasProps>(function IconCanvas(
             <Path d={d} />
           </ClipPath>
           <BackgroundDefs bg={spec.background} id={id} />
+          {monogram?.look ? <MonogramDefs look={monogram.look} size={s} id={id} /> : null}
         </Defs>
         {maskD ? (
           <Path d={maskD} fill={iconBackdrop(spec.background, backdrop)} />
@@ -247,7 +316,7 @@ export const IconCanvas = forwardRef<View, IconCanvasProps>(function IconCanvas(
               clipPath={clip}
             />
           ) : monogram ? (
-            <MonogramText monogram={monogram} size={s} />
+            <MonogramText monogram={monogram} size={s} id={id} />
           ) : glyph.source === 'inhouse' ? (
             <InhouseSvgGlyph name={glyph.name} box={box} colour={spec.glyphColour} />
           ) : null}

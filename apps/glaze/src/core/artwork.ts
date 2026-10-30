@@ -147,6 +147,8 @@ export type IconArt = {
   texture: TextureKind;
   textureRole: FillRole;
   stickers: Sticker[];
+  /** T170: the theme's display type, so monograms letter in the theme's face. Absent = system face. */
+  displayFont?: DisplayFont;
 };
 
 /** Artwork carried by wallpaper params: a composition of motifs over the generated base. */
@@ -1629,7 +1631,12 @@ export function iconArtOf(a: ThemeArt): IconArt {
     texture: a.texture,
     textureRole: a.textureRole,
     stickers: a.stickers.map((s) => ({ ...s })),
+    ...(isDisplayFont(a.displayFont) ? { displayFont: a.displayFont } : {}),
   };
+}
+
+function isDisplayFont(v: unknown): v is DisplayFont {
+  return typeof v === 'string' && (DISPLAY_FONTS as readonly string[]).includes(v);
 }
 
 export function wallpaperArtOf(a: ThemeArt): WallpaperArt {
@@ -1685,6 +1692,7 @@ export function sanitizeIconArt(raw: unknown, extraMotifs?: ReadonlySet<string>)
       typeof raw.texture === 'string' && (TEXTURE_KINDS as readonly string[]).includes(raw.texture) ? (raw.texture as TextureKind) : 'none',
     textureRole: isRole(raw.textureRole) ? raw.textureRole : 'light',
     stickers,
+    ...(isDisplayFont(raw.displayFont) ? { displayFont: raw.displayFont } : {}),
   };
 }
 

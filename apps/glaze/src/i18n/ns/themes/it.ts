@@ -12,6 +12,7 @@ export const it: NonNullable<LocaleMessages['themes']> = {
     body: 'Sfumature, mesh, grana e motivi alla misura del tuo iPhone.',
     hint: 'Apre il creatore di sfondi',
   },
+  eyebrow: { starters: 'Inizia da qui', art: 'Arte gratuita', space: 'Gratis · foto reali', plus: 'Glaze Plus' },
   starters: 'Temi di base',
   startersEmpty: 'Ancora nessun tema di base',
   plusPacks: 'Pacchetti Plus',

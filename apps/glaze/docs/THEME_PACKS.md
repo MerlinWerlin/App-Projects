@@ -2,7 +2,7 @@
 
 Free themes stay bundled. Glaze Plus themes can ship as **downloadable theme packs**: a small manifest plus compressed artwork, fetched when needed, cached on the phone, removable from Settings › Storage with a size readout, and downloadable again. Glaze Plus is a one-time unlock; there is no subscription.
 
-**The app makes no network call until the owner sets `PACK_BASE_URL`** in `src/config/packs.ts`. It is an empty string today, so packs are switched off and Settings › Storage says "Theme packs arrive with the store release". No hosting is configured anywhere in the repo.
+**Hosting: GitHub Release assets on `MerlinWerlin/App-Projects`** (T169, owner instruction 30 Oct 2026; how to publish: `docs/PACK_HOSTING.md`). `PACK_BASE_URLS` in `src/config/packs.ts` points production at the `glaze-packs-v1` release and staging at `glaze-packs-staging`. Until the release exists, `catalog.json` returns 404, which the app handles exactly like being offline: no remote themes, no error, no crash. An empty base URL still switches packs off completely (no request at all; Settings › Storage says "Theme packs arrive with the store release").
 
 ## Files
 
@@ -12,7 +12,8 @@ Free themes stay bundled. Glaze Plus themes can ship as **downloadable theme pac
 | `src/core/bytes.ts` | Pure-TS SHA-256, UTF-8 and base64 (same code in Node and Hermes) |
 | `src/core/inflate.ts` | Pure-TS gunzip/inflate (React Native has no zlib) |
 | `src/core/packDownloader.ts` | Download orchestration over an injected `Transport` |
-| `src/config/packs.ts` | `PACK_BASE_URL` (empty = disabled) and the disabled message |
+| `src/config/packs.ts` | `PACK_BASE_URLS` staging/production (GitHub release bases; empty = disabled) and the disabled message |
+| `src/core/packHost.ts` | Host kinds (`folder` / `github-release`) and `packObjectUrl`, which turns a relative pack path into the URL (flat `__` names on a release) |
 | `src/native/packs.ts` | Phone `Transport` over expo-file-system (via `src/native/fs.ts`), the cache index file and a small store |
 | `src/plus/usePackAccess.ts` | The Plus gate: `usePackAccess(theme)` and `usePackStorage()` |
 | `src/ui/PackStorageSection.tsx` | Settings › Storage |
@@ -89,11 +90,11 @@ Not wired yet: a Download button on the theme detail screen (`app/theme/[id].tsx
 1. Add the themes (`plus: true`, `packId: '<pack id>'`, `categories`, `tags`, `addedAt`) in `src/core/`, like `NEW_PLUS_THEMES` in `src/core/themesNew.ts`.
 2. Build: `node ops/build-pack.ts --out dist/packs` (with no `--out` it rewrites the test fixture). Pass `--min-app 1.2.0` if the pack needs a newer app. The script prints the pack size.
 3. Run `npm test`. The fixture test fails if the fixture is stale.
-4. Upload the `dist/packs/<pack id>/` folder as-is to the host so that `<PACK_BASE_URL>/<pack id>/manifest.json` resolves. Serve it over HTTPS with `Accept-Ranges: bytes`. Most static hosts do this.
-5. Set `PACK_BASE_URL` in `src/config/packs.ts` and ship the change (an OTA update is enough, since it's JS only).
+4. Upload the `dist/packs/<pack id>/` folder's files to the host so that `packFileUrl(PACK_BASE_URL, '<pack id>', 'manifest.json')` resolves. On a folder host that is `<base>/<pack id>/manifest.json`. On the GitHub release (today's host) every `/` becomes `__`, giving `<base>/<pack id>__manifest.json` (see `docs/PACK_HOSTING.md`). Serve over HTTPS with `Accept-Ranges: bytes`.
+5. `PACK_BASE_URLS` in `src/config/packs.ts` already points at the release; a host change is a JS-only change (an OTA update is enough).
 6. To update a pack, rebuild and re-upload. Changed files get new hashes, so phones re-fetch only what changed the next time they download it.
 
-## Owner decision needed: hosting
+## Hosting options (decided: GitHub Releases, T169)
 
 Packs are static files, so any free static host works. The limits below are **as published at the time of writing; check them before choosing**:
 
@@ -106,7 +107,7 @@ Packs are static files, so any free static host works. The limits below are **as
 | Firebase Hosting (Spark plan) | 10 GB storage; 360 MB/day transfer | The daily transfer cap could be hit quickly once many people download. |
 | Netlify (free) | 100 GB/month bandwidth | Static folder deploys. |
 
-Recommendation for launch: **GitHub Pages** or **Cloudflare Pages**. Both are free, need no card and serve HTTPS static files with Range support. Move to R2 if packs grow large. Whichever host is chosen, the only code change is `PACK_BASE_URL`.
+Decision (30 Oct 2026, Jared): **GitHub Release assets** on the public repo `MerlinWerlin/App-Projects`, tag `glaze-packs-v1` (staging `glaze-packs-staging`). It needs no account, card or secret, and the workflow uses the built-in `GITHUB_TOKEN`. The release redirect to `objects.githubusercontent.com` serves Range requests, and if one ever didn't, the downloader starts the file again from byte 0. A first Cloudflare R2 plan (`docs/R2_SETUP.md`) is kept as reference only. Changing host later only changes `PACK_BASE_URLS`.
 
 ## The 12 new themes (all original art)
 
@@ -284,11 +285,11 @@ python3 scripts/brand/make-starter-packs.py /tmp/starter-packs
 node scripts/import-theme-packs.mjs /tmp/starter-packs --replace
 ```
 
-## Remote art packs (R2)
+## Remote art packs
 
-T159 (owner-1030 A2-A3). Theme folders (`themes/<id>/`, the art-pack format above) become downloadable packs hosted on Cloudflare R2. The contract is `src/core/packCatalog.ts` (`parseCatalog`, `parseRemoteArtManifest`); the builder checks its own output with both.
+T159 (owner-1030 A2-A3), T169. Theme folders (`themes/<id>/`, the art-pack format above) become downloadable packs hosted as GitHub Release assets (`docs/PACK_HOSTING.md`; first planned on Cloudflare R2). The contract is `src/core/packCatalog.ts` (`parseCatalog`, `parseRemoteArtManifest`); the builder checks its own output with both.
 
-**Layout** under `PACK_BASE_URL` (and `dist/packs/`, which is gitignored):
+**Layout** (logical paths; `dist/packs/` is gitignored). On the GitHub release each path is one flat asset with `/` replaced by `__` (`art__<id>__v<n>__<file>`; `scripts/packs/release_assets.mjs` writes them to `dist/release/assets/`):
 
 ```
 catalog.json                                          every pack: id, name, packVersion, plus, bytes, manifest, thumb, thumbhash, palette, tags, mood, addedAt
@@ -302,22 +303,24 @@ art/<id>/v<packVersion>/thumb.<sha8>.webp             240x520 gallery thumbnail
 
 ```
 npm run packs:build   -- [--themes themes] [--out dist/packs] [--only id,id] [--plus id,id | --plus-file scripts/packs/tiers.json] [--encoder auto|sharp|pillow|png] [--min-app 1.0.0]
-npm run packs:publish -- [--dir dist/packs] [--dry-run]
+node scripts/packs/release_assets.mjs [--dir dist/packs] [--out dist/release] [--existing assets.json]   # flat release assets (T169)
+npm run packs:publish -- [--dir dist/packs] [--dry-run]                                                # R2/S3 uploader, reference only
 node --test "scripts/packs/*.test.mjs"
 ```
 
 - **Images**: `sharp` if installed (WebP q82, effort 4), else `python3` + Pillow (WebP q82, method 4), else a warning and the original PNGs (one wallpaper class) plus a PNG thumb. ThumbHash of the wallpaper is computed in JS (`scripts/packs/thumbhash.mjs`, MIT, see LICENSES.md).
 - **Plus**: ids listed in `scripts/packs/tiers.json` (`{ "plus": [...] }`) or `--plus` are marked `plus: true`; everything else is free.
-- **Versions**: `scripts/packs/versions.json` keeps `{ id: { packVersion, contentHash } }`; `contentHash` is the sha256 of the manifest without `packVersion` (so every file hash, palette, meta, plus flag and minAppVersion). Same hash keeps the version, any change gives `v+1` in a new folder. Commit `versions.json` after publishing. Old version folders stay on R2 (phones mid-download keep working); dist only holds the current one. `--only` rebuilds some packs and keeps the rest of the existing `catalog.json`.
-- **Publish**: env `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` (or `.env` in the app folder, gitignored). S3 API at `https://<account>.r2.cloudflarestorage.com`, region `auto`, path-style, SigV4 signed in `scripts/packs/sigv4.mjs` (tested against AWS's published vectors). Upload order: pack files, then manifests, then `catalog.json` last. Objects whose HEAD shows the same size, MD5 ETag and Cache-Control are skipped; a versioned manifest already on R2 with different bytes stops the run (bump the version instead of overwriting). Every object is HEAD-verified afterwards (size, content type). `--dry-run` needs no env and makes no network calls. Secrets are never printed.
-- **Cache headers**: everything under `art/` is `public, max-age=31536000, immutable` (file names carry the hash, manifests live in versioned folders); `catalog.json` is `public, max-age=300`. Content-Type from the extension (`image/webp`, `image/png`, `application/json`).
-- **CI**: `scripts/packs/publish-packs.yml` is a manual-dispatch GitHub Actions workflow (written, not run); auto-ship moves it to `.github/workflows/` once the four repo secrets exist.
+- **Versions**: `scripts/packs/versions.json` keeps `{ id: { packVersion, contentHash } }`; `contentHash` is the sha256 of the manifest without `packVersion` (so every file hash, palette, meta, plus flag and minAppVersion). Same hash keeps the version, any change gives `v+1` in a new folder. Commit `versions.json` after publishing. Old versions stay on the host (phones mid-download keep working); dist only holds the current one. `--only` rebuilds some packs and keeps the rest of the existing `catalog.json`.
+- **Publish (GitHub release, current)**: the workflow or the manual `gh` sequence in `docs/PACK_HOSTING.md`. Uploads go in three batches (pack files, manifests, `catalog.json` last). Files already on the release are skipped, and a versioned manifest already there with a different size stops the run. Every uploaded asset is downloaded again from its public URL and its SHA-256 compared. GitHub allows 1000 assets per release (the script refuses more and warns past 800).
+- **Publish (R2/S3, reference only)**: env `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` (or `.env` in the app folder, gitignored). S3 API at `https://<account>.r2.cloudflarestorage.com`, region `auto`, path-style, SigV4 signed in `scripts/packs/sigv4.mjs` (tested against AWS's published vectors). Upload order: pack files, then manifests, then `catalog.json` last. Objects whose HEAD shows the same size, MD5 ETag and Cache-Control are skipped; a versioned manifest already on R2 with different bytes stops the run (bump the version instead of overwriting). Every object is HEAD-verified afterwards (size, content type). `--dry-run` needs no env and makes no network calls. Secrets are never printed.
+- **Cache headers** (R2/S3 uploader only; GitHub sets its own and the hashed names make that safe): everything under `art/` is `public, max-age=31536000, immutable` (file names carry the hash, manifests live in versioned folders); `catalog.json` is `public, max-age=300`. Content-Type from the extension (`image/webp`, `image/png`, `application/json`).
+- **CI**: `scripts/packs/publish-packs.yml` is a manual-dispatch GitHub Actions workflow (written, not run) that builds the packs and creates/updates the release with `gh` and the built-in `GITHUB_TOKEN`. It needs no secrets. It goes to `.github/workflows/glaze-publish-packs.yml` in App-Projects (`docs/PACK_HOSTING.md`).
 
 ## App side (remote catalogue)
 
-T160 (owner-1030 A). How the app uses the R2 layout in `src/core/packCatalog.ts`:
+T160 (owner-1030 A). How the app uses the pack layout in `src/core/packCatalog.ts`:
 
-- **Base URL.** `src/config/packs.ts` has `PACK_BASE_URLS = { staging, production }` (both empty today). Expo extra `packEnv: "staging"` picks staging; anything else is production. Put the bucket's public `https://pub-<hash>.r2.dev` URL there first, a custom domain later. While the chosen URL is empty nothing changes: no catalogue, no remote themes, **no request at all** (tests assert it).
+- **Base URL.** `src/config/packs.ts` has `PACK_BASE_URLS = { staging, production }`: the GitHub release download bases for `glaze-packs-staging` and `glaze-packs-v1` (T169). Expo extra `packEnv: "staging"` picks staging; anything else is production. Every URL goes through `packObjectUrl` (`src/core/packHost.ts`), which uses flat `__` names on a release and folders on any other host. A 404 (release not created yet) or any other fetch failure is handled like offline. An empty URL means no catalogue, no remote themes and **no request at all** (tests assert it).
 - **Catalogue.** `src/native/packs.ts` keeps `catalog.json` in `documentDirectory/packs/catalog.json` with the time it was fetched. On the Themes tab the cached copy is listed at once and re-fetched at most every 6 h (`refreshRemoteCatalog()` forces it, for pull to refresh). Offline, an HTTP error or a bad file keeps the last good catalogue (`src/core/remoteCatalog.ts` `decideCatalog`, never throws).
 - **Gallery.** Each catalogue pack becomes an art-pack theme (`remoteArtTheme`: palette → icon style, drawn fallback wallpaper, categories from tags) with a `remoteArt` ref (pack version, Plus flag, size, thumbnail URL, ThumbHash). They join the art section after the bundled art packs; a bundled theme with the same id wins. Cards show the thumbnail with expo-image (`cachePolicy="memory-disk"`, ThumbHash placeholder; `src/ui/RemoteArtImage.tsx`).
 - **Download.** The theme detail's pack card offers Download for every remote pack. Free packs need no Plus; Plus packs show the Plus sheet (`src/plus/usePackAccess.ts`, the only place that reads the entitlement). `downloadRemoteArtPack` (`src/core/packDownloader.ts`) fetches `art/<id>/v<n>/manifest.json`, then only the files this phone needs (`assetsForDevice`, by screen long edge in px) with the same Range resume, size + SHA-256 checks and one retry as theme packs, and writes the manifest (cut down to those files) last into `documentDirectory/packs/<id>/`. A different version on the phone is removed first. It appears in Settings › Storage like any pack (remove / re-download).

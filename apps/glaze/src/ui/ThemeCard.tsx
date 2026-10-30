@@ -13,6 +13,9 @@
 // specs come from a module cache; a card that never pops draws a still Home Screen (no per-icon
 // animation hooks).
 // T130: an art-pack theme shows its bundled wallpaper image (src/ui/ThemeWallpaper.tsx).
+// T173 (premium UI, docs/PREMIUM_UI.md): depth from soft layered surfaces, not lines: in dark mode
+// the card sits on `surfaceRaised` (one step lighter than the screen) instead of a hairline border;
+// a roomier name row; Dynamic Type caps on the name, tagline and "New" pill.
 
 import { memo, useCallback, useEffect, useRef, type ReactNode } from 'react';
 import { Platform, StyleSheet, Text, View, type LayoutChangeEvent, type TextStyle } from 'react-native';
@@ -22,7 +25,7 @@ import { artworkTransform, cardProgress } from '../core/galleryMotion';
 import type { Theme } from '../core/themes';
 import { useT } from '../i18n';
 import { staggerIn, useMotionReduced } from '../theme/motion';
-import { circleRadius, continuous, pressV2, radiusV2, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { circleRadius, continuous, fontScaleCap, pressV2, radiusV2, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { HeartButton } from './HeartButton';
 import { HomeMock } from './HomeMock';
@@ -173,12 +176,7 @@ export const ThemeCard = memo(function ThemeCard({
       >
         {/* The shadow sits on the pressable; this view clips the artwork to the continuous corners. */}
         <View
-          style={[
-            styles.cardInner,
-            continuous,
-            { backgroundColor: c.surface },
-            scheme === 'dark' ? { borderColor: c.separator, borderWidth: StyleSheet.hairlineWidth } : null,
-          ]}
+          style={[styles.cardInner, continuous, { backgroundColor: scheme === 'dark' ? c.surfaceRaised : c.surface }]}
         >
           <View
             style={[styles.preview, continuous, noMirror, { width: inner }]}
@@ -204,7 +202,10 @@ export const ThemeCard = memo(function ThemeCard({
             {badge ? <View style={styles.badge}>{badge}</View> : null}
             {isNew ? (
               <View style={[styles.newPill, { backgroundColor: c.tint }]}>
-                <Text style={[textV2.caption1, textStyleFor(script, textV2.caption1), styles.newText, { color: c.onTint }]}>
+                <Text
+                  maxFontSizeMultiplier={fontScaleCap('caption1')}
+                  style={[textV2.caption1, textStyleFor(script, textV2.caption1), styles.newText, { color: c.onTint }]}
+                >
                   {t('themes.badge.new')}
                 </Text>
               </View>
@@ -212,12 +213,13 @@ export const ThemeCard = memo(function ThemeCard({
           </View>
           <View style={[styles.text, onToggleLike ? styles.textWithHeart : null]}>
             <Text
+              maxFontSizeMultiplier={fontScaleCap('headline')}
               style={[textV2.headline, textStyleFor(script, textV2.headline), displayFontStyle(theme.art?.displayFont), { color: c.ink }]}
               numberOfLines={2}
             >
               {theme.name}
             </Text>
-            <Text style={[...small, { color: c.inkSecondary }]} numberOfLines={2}>
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...small, { color: c.inkSecondary }]} numberOfLines={2}>
               {theme.tagline}
             </Text>
             <View style={styles.dots}>
@@ -253,7 +255,7 @@ const styles = StyleSheet.create({
     borderRadius: radiusV2.pill,
   },
   newText: { fontWeight: '600' },
-  text: { gap: spaceV2.xxs, paddingHorizontal: spaceV2.xs, paddingBottom: spaceV2.xs },
+  text: { gap: spaceV2.xs, paddingHorizontal: spaceV2.sm, paddingTop: spaceV2.xs, paddingBottom: spaceV2.sm },
   /** Room for the heart at the reading end of the text block. */
   textWithHeart: { paddingEnd: sizeV2.touch },
   /** Placement only; HeartButton is the ≥ 48 pt target. */

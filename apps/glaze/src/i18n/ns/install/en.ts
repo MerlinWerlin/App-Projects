@@ -196,4 +196,14 @@ export const en = {
     allDone: 'All icons done. You can move the original icons to the App Library.',
     oneAtATime: 'One icon at a time: follow the steps for the next app, tick it off, and Glaze opens the steps for the one after.',
   },
+  coverage: {
+    heading: 'Your apps',
+    counts: '{themed} themed · {monogram} monogram',
+    countsWithPhotos: '{themed} themed · {monogram} monogram · {photo} your photo',
+    monogramHint: 'Apps without theme art get a monogram designed in this theme’s style. Tap one to choose a symbol or your own photo instead.',
+    allThemed: 'Every app in your set has theme art.',
+    tag: 'Monogram',
+    rowA11y: '{app}, monogram',
+    rowHint: 'Opens the symbol and photo picker',
+  },
 } as const;

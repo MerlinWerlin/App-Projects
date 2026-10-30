@@ -23,7 +23,7 @@ import { usePlus } from './entitlement';
  * - free: not Plus content.
  * - locked: Plus content and the person doesn't have Glaze Plus → show PlusLockSheet.
  * - ready: usable (bundled Plus theme, or its pack is downloaded).
- * - disabled: Plus owned but packs aren't hosted yet (PACK_BASE_URL empty). The pack themes' data is
+ * - disabled: Plus owned but packs are switched off (PACK_BASE_URL empty). The pack themes' data is
  *   also bundled today, so the theme still works; Settings shows plus.packErrors.disabled (same words as PACKS_DISABLED_MESSAGE).
  * - not-downloaded / downloading / error: Plus owned, pack hosted, not on the phone yet.
  */

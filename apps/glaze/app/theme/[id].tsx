@@ -164,7 +164,7 @@ type SaveState = 'idle' | 'saved' | 'denied' | 'error';
 
 export default function ThemeDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  // T160: a remote art pack from the R2 catalogue resolves too (bundled themes win).
+  // T160: a remote art pack from the remote catalogue resolves too (bundled themes win).
   const remote = useRemoteArtTheme(typeof id === 'string' ? id : undefined);
   const theme = getAnyTheme(typeof id === 'string' ? id : undefined) ?? remote.theme;
   const { c } = useColorsV2();

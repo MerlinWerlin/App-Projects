@@ -12,6 +12,7 @@ export const ar: NonNullable<LocaleMessages['themes']> = {
     body: 'تدرجات وشبكات وحبيبات وأنماط بمقاس iPhone الخاص بك.',
     hint: 'يفتح صانع الخلفيات',
   },
+  eyebrow: { starters: 'ابدأ من هنا', art: 'فن مجاني', space: 'مجاني · صور حقيقية', plus: 'Glaze Plus' },
   starters: 'سمات أساسية',
   startersEmpty: 'لا توجد سمات أساسية بعد',
   plusPacks: 'حزم Plus',

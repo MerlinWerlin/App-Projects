@@ -12,6 +12,7 @@ export const zhHans: NonNullable<LocaleMessages['themes']> = {
     body: '渐变、网格、颗粒和图案，按你的 iPhone 尺寸生成。',
     hint: '打开壁纸制作器',
   },
+  eyebrow: { starters: '从这里开始', art: '免费艺术', space: '免费 · 真实照片', plus: 'Glaze Plus' },
   starters: '入门主题',
   startersEmpty: '暂无入门主题',
   plusPacks: 'Plus 主题包',

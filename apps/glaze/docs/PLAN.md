@@ -96,3 +96,5 @@ assets/glyphs/*.svg     in-house generic glyphs; no brand logos
 
 ## 10. Parked: true live Lock Screen wallpaper (owner decision 24 Oct 2026 21:03)
 Glaze ships around themes, matching icons, themed widgets and wallpaper packs; on iPhone the Live tab makes a Live Photo (moves on wake, not a constant loop). The continuous loop via iOS 26 Now Playing animated artwork (T135) is removed from the app and the native build (no background audio). Plan, triggers and parked code: [docs/future/live-wallpaper/README.md](future/live-wallpaper/README.md) — hammer it hard if Apple opens a real API.
+
+**30 Oct evening (owner-1030b):** Glaze is the App Factory's premium flagship. Interface direction and per-screen plan: [docs/PREMIUM_UI.md](PREMIUM_UI.md). Theme packs are hosted as GitHub Release assets: [docs/PACK_HOSTING.md](PACK_HOSTING.md). Status: [docs/OWNER_1030.md](OWNER_1030.md).

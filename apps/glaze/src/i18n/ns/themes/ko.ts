@@ -12,6 +12,7 @@ export const ko: NonNullable<LocaleMessages['themes']> = {
     body: '그라데이션, 메시, 그레인, 패턴을 iPhone 크기에 맞게.',
     hint: '배경화면 메이커를 엽니다',
   },
+  eyebrow: { starters: '여기서 시작', art: '무료 아트', space: '무료 · 실제 사진', plus: 'Glaze Plus' },
   starters: '기본 테마',
   startersEmpty: '아직 기본 테마가 없습니다',
   plusPacks: 'Plus 팩',

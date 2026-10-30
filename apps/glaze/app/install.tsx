@@ -68,8 +68,10 @@ import {
 import { openAppSettings } from '../src/render/saveWallpaper';
 import { androidNative } from '../src/native/android';
 import { useInstallState } from '../src/store/install';
-import { overrideImageUris } from '../src/core/studio';
-import { loadStudio, studioSpecs, type StudioState } from '../src/store/studio';
+import { activeThemeKey, findApp, overrideImageUris } from '../src/core/studio';
+import { coverageRows, coverageSummary } from '../src/core/iconCoverage';
+import { loadStudio, studioSpecs, useStudio, type StudioState } from '../src/store/studio';
+import { IconOverrideSheet } from '../src/ui/IconOverrideSheet';
 import {
   continuous,
   iconTileRadius,
@@ -165,7 +167,20 @@ export default function InstallScreen() {
   // T126: can this build serve the profile to Safari? (false in Expo Go, on Android, old builds)
   const [serverAvailable] = useState<boolean>(() => profileServer.status().available);
   const route = profileRoute(serverAvailable);
-  const [studio, setStudio] = useState<StudioState | null>(null);  const [missing, setMissing] = useState<ReadonlySet<string>>(() => new Set<string>());  const [loadError, setLoadError] = useState<string | null>(null);  const install = useInstallState();
+  const [studio, setStudio] = useState<StudioState | null>(null);
+  // T170: tap a monogram app to open the glyph / photo picker. Edits go through the shared studio
+  // store (persisted, other screens told) and the same pure change is applied to this screen's copy.
+  const live = useStudio();
+  const liveUpdate = live.update;
+  const [editId, setEditId] = useState<string | null>(null);
+  const updateStudio = useCallback(
+    (fn: (s: StudioState) => StudioState) => {
+      liveUpdate(fn);
+      setStudio((s) => (s ? fn(s) : s));
+    },
+    [liveUpdate],
+  );
+  const [missing, setMissing] = useState<ReadonlySet<string>>(() => new Set<string>());  const [loadError, setLoadError] = useState<string | null>(null);  const install = useInstallState();
   const renderer = useIconBatchRenderer();
   const alive = useRef(true);
   // Cancel token for the current icon batch: set on Cancel or when leaving the screen.
@@ -220,6 +235,9 @@ export default function InstallScreen() {
   );
   const specs: IconSpec[] = resolved.specs;
   const plan = useMemo(() => planInstall(specs), [specs]);
+  // T170: which apps get theme art and which fall back to a (theme-designed) monogram.
+  const coverage = useMemo(() => coverageSummary(specs), [specs]);
+  const monogramRows = useMemo(() => coverageRows(specs).filter((r) => r.coverage === 'monogram'), [specs]);
   const themeName = profileThemeName(getTheme(studio?.themeId)?.name ?? null);
   const backdrop = studio?.wallpaperColour ?? undefined;
   // T60: the profile method can be switched off in src/config/install.ts (App Review risk).
@@ -520,6 +538,8 @@ export default function InstallScreen() {
         : sum.kind === 'viaProfile'
           ? t('install.summary.viaProfile', { count: sum.profile })
           : t('install.summary.mixed', { count: sum.profile, shortcuts: sum.shortcuts });
+  const editApp = editId ? findApp(live.state ?? studio, editId) : null;
+  const editSpec = editId ? specs.find((s) => s.appId === editId) ?? null : null;
   const shortcutIds = items.map((i) => i.spec.appId);
   const tick = checklistCount(shortcutIds, install.state.shortcutsDone);
 
@@ -583,6 +603,43 @@ export default function InstallScreen() {
             <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.summary.cantReplace')}</Text>
           </View>
         </SquircleCard>
+
+        {/* T170: themed vs monogram. Monogram apps are listed, one tap from the glyph / photo picker. */}
+        <View style={styles.section}>
+          <Text accessibilityRole="header" style={[...ts('title2'), styles.sideText, { color: c.ink }]}>
+            {t('install.coverage.heading')}
+          </Text>
+          <Text style={[...ts('subhead'), styles.sideText, { color: c.ink }]}>
+            {coverage.photo > 0
+              ? t('install.coverage.countsWithPhotos', {
+                  themed: formatNumber(coverage.themed),
+                  monogram: formatNumber(coverage.monogram),
+                  photo: formatNumber(coverage.photo),
+                })
+              : t('install.coverage.counts', { themed: formatNumber(coverage.themed), monogram: formatNumber(coverage.monogram) })}
+          </Text>
+          <Text style={[...ts('footnote'), styles.sideText, { color: c.inkSecondary }]}>
+            {coverage.monogram > 0 ? t('install.coverage.monogramHint') : t('install.coverage.allThemed')}
+          </Text>
+          {monogramRows.length > 0 ? (
+            <SquircleCard style={styles.side}>
+              <View>
+                {monogramRows.map(({ spec }, i) => (
+                  <CoverageRow
+                    key={spec.appId}
+                    spec={spec}
+                    first={i === 0}
+                    tag={t('install.coverage.tag')}
+                    disabled={busy || !live.state}
+                    accessibilityLabel={t('install.coverage.rowA11y', { app: spec.label })}
+                    accessibilityHint={t('install.coverage.rowHint')}
+                    onPress={() => setEditId(spec.appId)}
+                  />
+                ))}
+              </View>
+            </SquircleCard>
+          ) : null}
+        </View>
 
         {/* Method: the Bulk card when Bulk can be used (owner 25 Oct: the only method), else the
             Shortcuts-only fallback text. showMethodPicker stays for a future second method. */}
@@ -931,11 +988,74 @@ export default function InstallScreen() {
           </SquircleCard>
         ) : null}
       </ScrollView>
+      {live.state ? (
+        <IconOverrideSheet
+          visible={editId !== null && editApp !== null}
+          onClose={() => setEditId(null)}
+          app={editApp}
+          spec={editSpec}
+          state={live.state}
+          update={updateStudio}
+          themeKey={activeThemeKey(studio)}
+          themeName={getTheme(studio.themeId)?.name ?? t('icons.ownStyle')}
+          wallpaperColour={studio.wallpaperColour}
+        />
+      ) : null}
     </SafeAreaView>
   );
 }
 
 // ---------------------------------------------------------------- pieces
+
+/**
+ * T170: one monogram app in the install screen's "Your apps" card: its icon as it will install,
+ * its name, a small "Monogram" tag and a chevron. Tapping opens the glyph / photo picker.
+ */
+function CoverageRow({
+  spec,
+  first,
+  tag,
+  disabled,
+  accessibilityLabel,
+  accessibilityHint,
+  onPress,
+}: {
+  spec: IconSpec;
+  first: boolean;
+  tag: string;
+  disabled: boolean;
+  accessibilityLabel: string;
+  accessibilityHint: string;
+  onPress: () => void;
+}) {
+  const { c } = useColorsV2();
+  const { script, isRTL } = useT();
+  return (
+    <PressableScale
+      onPress={onPress}
+      disabled={disabled}
+      haptic="select"
+      pressedScale={0.98}
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
+      accessibilityState={{ disabled }}
+      style={[styles.coverageRow, first ? null : { borderTopColor: c.separator, borderTopWidth: StyleSheet.hairlineWidth }, disabled ? styles.dim : null]}
+    >
+      <IconCanvas spec={spec} size={COVERAGE_ICON} />
+      <Text style={[...typeFor(script, 'body'), styles.flex, { color: c.ink }]} numberOfLines={1}>
+        {spec.label}
+      </Text>
+      <View style={[styles.badge, continuous, { backgroundColor: c.pastels.butter.fill }]}>
+        <Text style={[...typeFor(script, 'caption1'), styles.badgeText, { color: c.pastels.butter.ink }]}>{tag}</Text>
+      </View>
+      <Feather name={Chevron.forward(isRTL)} size={18} color={c.inkTertiary} />
+    </PressableScale>
+  );
+}
+
+/** Icon edge in the coverage rows (points). */
+const COVERAGE_ICON = 36;
 
 /** 48 pt checkbox: tint check when done, tertiary empty box otherwise. Selection haptic. */
 function CheckBox({ checked, label, onPress, size = 22 }: { checked: boolean; label: string; onPress: () => void; size?: number }) {
@@ -1238,6 +1358,7 @@ const styles = StyleSheet.create({
   methodTile: { width: sizeV2.rowIcon, height: sizeV2.rowIcon, alignItems: 'center', justifyContent: 'center' },
   badge: { borderRadius: radiusV2.pill, paddingHorizontal: spaceV2.sm, paddingVertical: spaceV2.xxs },
   badgeText: { fontWeight: '700' },
+  coverageRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm },
   flex: { flex: 1 },
   shrink: { flexShrink: 1 },
   dim: { opacity: 0.45 },

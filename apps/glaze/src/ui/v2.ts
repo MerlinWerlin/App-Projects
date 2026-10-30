@@ -6,3 +6,5 @@ export { PillButton, type PillVariant } from './PillButton';
 export { SquircleCard } from './SquircleCard';
 export { BarIconButton, type BarIconButtonProps } from './BarIconButton';
 export { SwitchInsetRow, type SwitchInsetRowProps } from './SwitchInsetRow';
+export { SectionHeader } from './SectionHeader';
+export { Skeleton } from './Skeleton';

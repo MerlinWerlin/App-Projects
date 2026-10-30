@@ -470,6 +470,243 @@ const ROWS: Row[] = [
   ['flipboard', 'Flipboard', 'News & Reading', null, false, 'book-open', ['magazine']],
   ['substack', 'Substack', 'News & Reading', null, false, 'file-text', ['newsletters']],
   ['webtoon', 'WEBTOON', 'News & Reading', null, false, 'book-open', ['comics', 'manhwa']],
+
+  // ---- T170: wider catalogue (owner: "what happens to icons that don't have themes?"). Every app
+  // here gets an original generic glyph, so it draws theme art instead of falling back to a
+  // monogram. Schemes only where publicly known; otherwise null and the Shortcuts method applies.
+  // Social
+  ['weibo', 'Weibo', 'Social', 'sinaweibo://', false, 'eye', ['sina weibo', 'microblog']],
+  ['locket', 'Locket Widget', 'Social', null, false, 'image', ['locket', 'photo widget']],
+  ['grindr', 'Grindr', 'Social', null, false, 'heart', ['dating']],
+  ['patreon', 'Patreon', 'Social', null, false, 'award', ['creators', 'membership']],
+  ['yik-yak', 'Yik Yak', 'Social', null, false, 'message-square', ['anonymous', 'campus']],
+  ['flickr', 'Flickr', 'Social', null, false, 'aperture', ['photo sharing']],
+  ['vk', 'VK', 'Social', null, false, 'users', ['vkontakte']],
+  // Messaging
+  ['whatsapp-business', 'WhatsApp Business', 'Messaging', null, false, 'briefcase', ['wa business']],
+  ['kik', 'Kik', 'Messaging', null, false, 'message-circle', ['kik messenger']],
+  ['element', 'Element', 'Messaging', null, false, 'hash', ['matrix']],
+  ['session', 'Session', 'Messaging', null, false, 'lock', ['private messenger']],
+  ['wire', 'Wire', 'Messaging', null, false, 'shield', ['secure chat']],
+  ['google-voice', 'Google Voice', 'Messaging', null, false, 'voicemail', ['gvoice']],
+  ['textnow', 'TextNow', 'Messaging', null, false, 'phone-call', ['free calls', 'texting']],
+  ['zalo', 'Zalo', 'Messaging', null, false, 'message-circle', []],
+  ['marco-polo', 'Marco Polo', 'Messaging', null, false, 'video', ['video messages']],
+  // Photo & Design
+  ['facetune', 'Facetune', 'Photo & Design', null, false, 'smile', ['retouch', 'selfie editor']],
+  ['unfold', 'Unfold', 'Photo & Design', null, false, 'layout', ['story templates']],
+  ['darkroom', 'Darkroom', 'Photo & Design', null, false, 'aperture', ['photo editor']],
+  ['halide', 'Halide', 'Photo & Design', null, false, 'camera', ['pro camera', 'raw']],
+  ['remini', 'Remini', 'Photo & Design', null, false, 'zap', ['photo enhancer']],
+  ['photoroom', 'Photoroom', 'Photo & Design', null, false, 'scissors', ['background remover']],
+  ['b612', 'B612', 'Photo & Design', null, false, 'camera', ['beauty camera']],
+  ['unsplash', 'Unsplash', 'Photo & Design', null, false, 'image', ['free photos', 'wallpapers']],
+  ['behance', 'Behance', 'Photo & Design', null, false, 'grid', ['portfolio']],
+  ['vn-video-editor', 'VN Video Editor', 'Photo & Design', null, false, 'film', ['vn', 'video editing']],
+  ['adobe-photoshop', 'Adobe Photoshop', 'Photo & Design', null, false, 'crop', ['photoshop', 'ps']],
+  ['figma', 'Figma', 'Photo & Design', null, false, 'pen-tool', ['design', 'prototype']],
+  // Music & Audio
+  ['qobuz', 'Qobuz', 'Music & Audio', null, false, 'disc', ['hi-res', 'lossless']],
+  ['musixmatch', 'Musixmatch', 'Music & Audio', null, false, 'file-text', ['lyrics']],
+  ['genius', 'Genius', 'Music & Audio', null, false, 'star', ['lyrics', 'annotations']],
+  ['smule', 'Smule', 'Music & Audio', null, false, 'mic', ['karaoke', 'sing']],
+  ['anghami', 'Anghami', 'Music & Audio', null, false, 'music', []],
+  ['jiosaavn', 'JioSaavn', 'Music & Audio', null, false, 'music', ['saavn']],
+  ['audiomack', 'Audiomack', 'Music & Audio', null, false, 'headphones', []],
+  ['castbox', 'Castbox', 'Music & Audio', null, false, 'radio', ['podcasts']],
+  ['guitartuna', 'GuitarTuna', 'Music & Audio', null, false, 'sliders', ['tuner', 'guitar']],
+  ['yousician', 'Yousician', 'Music & Audio', null, false, 'music', ['learn guitar', 'learn piano']],
+  ['moises', 'Moises', 'Music & Audio', null, false, 'sliders', ['stems', 'practice']],
+  // Video & TV
+  ['vlc', 'VLC', 'Video & TV', 'vlc://', false, 'play', ['vlc media player', 'video player']],
+  ['infuse', 'Infuse', 'Video & TV', 'infuse://', false, 'play-circle', ['video player']],
+  ['rumble', 'Rumble', 'Video & TV', null, false, 'play-circle', []],
+  ['kick', 'Kick', 'Video & TV', null, false, 'cast', ['live streams']],
+  ['mubi', 'MUBI', 'Video & TV', null, false, 'film', ['arthouse', 'cinema']],
+  ['fubo', 'Fubo', 'Video & TV', null, false, 'tv', ['fubotv', 'live sport']],
+  ['sling-tv', 'Sling TV', 'Video & TV', null, false, 'tv', ['sling']],
+  ['discovery-plus', 'discovery+', 'Video & TV', null, false, 'tv', ['discovery plus']],
+  ['youtube-tv', 'YouTube TV', 'Video & TV', null, false, 'tv', ['yt tv', 'live tv']],
+  ['dazn', 'DAZN', 'Video & TV', null, false, 'award', ['boxing', 'sport streaming']],
+  ['viki', 'Viki', 'Video & TV', null, false, 'film', ['k-drama', 'kdrama']],
+  // Productivity
+  ['ulysses', 'Ulysses', 'Productivity', 'ulysses://', false, 'feather', ['writing']],
+  ['due', 'Due', 'Productivity', 'due://', false, 'bell', ['reminders', 'timers']],
+  ['day-one', 'Day One', 'Productivity', 'dayone://', false, 'book', ['journal', 'diary']],
+  ['omnifocus', 'OmniFocus', 'Productivity', 'omnifocus://', false, 'check-square', ['gtd', 'tasks']],
+  ['spark-mail', 'Spark Mail', 'Productivity', 'readdle-spark://', false, 'send', ['spark', 'email']],
+  ['yahoo-mail', 'Yahoo Mail', 'Productivity', 'ymail://', false, 'inbox', ['yahoo', 'email']],
+  ['proton-mail', 'Proton Mail', 'Productivity', null, false, 'lock', ['protonmail', 'encrypted email']],
+  ['monday', 'monday.com', 'Productivity', null, false, 'columns', ['monday', 'work management']],
+  ['clickup', 'ClickUp', 'Productivity', null, false, 'check-circle', ['tasks', 'projects']],
+  ['jira', 'Jira', 'Productivity', null, false, 'layout', ['issues', 'tickets']],
+  ['confluence', 'Confluence', 'Productivity', null, false, 'book-open', ['wiki']],
+  ['miro', 'Miro', 'Productivity', null, false, 'edit-3', ['whiteboard', 'brainstorm']],
+  ['airtable', 'Airtable', 'Productivity', null, false, 'table', ['database', 'spreadsheet']],
+  ['craft', 'Craft', 'Productivity', null, false, 'file-text', ['docs', 'notes']],
+  ['calendly', 'Calendly', 'Productivity', null, false, 'calendar', ['scheduling', 'meetings']],
+  ['docusign', 'Docusign', 'Productivity', null, false, 'edit-2', ['e-signature', 'sign documents']],
+  ['box', 'Box', 'Productivity', null, false, 'box', ['cloud storage']],
+  ['notability', 'Notability', 'Productivity', null, false, 'edit-3', ['handwritten notes']],
+  ['grammarly', 'Grammarly', 'Productivity', null, false, 'type', ['grammar', 'keyboard']],
+  ['deepl', 'DeepL', 'Productivity', null, false, 'globe', ['translator', 'deepl translate']],
+  ['otter', 'Otter', 'Productivity', null, false, 'mic', ['otter.ai', 'transcription']],
+  ['deepseek', 'DeepSeek', 'Productivity', null, false, 'search', ['ai chat']],
+  ['grok', 'Grok', 'Productivity', null, false, 'message-square', ['ai chat']],
+  ['adobe-scan', 'Adobe Scan', 'Productivity', null, false, 'file', ['scanner', 'pdf scan']],
+  // Finance
+  ['zelle', 'Zelle', 'Finance', null, false, 'send', ['send money']],
+  ['capital-one', 'Capital One', 'Finance', null, false, 'credit-card', ['capitalone']],
+  ['citi', 'Citi Mobile', 'Finance', null, false, 'bank', ['citibank', 'citi']],
+  ['american-express', 'American Express', 'Finance', null, false, 'credit-card', ['amex']],
+  ['sofi', 'SoFi', 'Finance', null, false, 'bank', ['loans', 'investing']],
+  ['chime', 'Chime', 'Finance', null, false, 'bank', ['mobile banking']],
+  ['credit-karma', 'Credit Karma', 'Finance', null, false, 'trending-up', ['credit score']],
+  ['fidelity', 'Fidelity', 'Finance', null, false, 'bar-chart-2', ['investing', 'retirement']],
+  ['charles-schwab', 'Charles Schwab', 'Finance', null, false, 'bar-chart', ['schwab', 'brokerage']],
+  ['vanguard', 'Vanguard', 'Finance', null, false, 'pie-chart', ['index funds', 'super']],
+  ['webull', 'Webull', 'Finance', null, false, 'trending-up', ['stocks', 'trading']],
+  ['binance', 'Binance', 'Finance', null, false, 'hexagon', ['crypto', 'bitcoin']],
+  ['n26', 'N26', 'Finance', null, false, 'bank', ['mobile bank']],
+  ['lloyds', 'Lloyds Bank', 'Finance', null, false, 'bank', ['lloyds']],
+  ['natwest', 'NatWest', 'Finance', null, false, 'bank', ['nat west']],
+  ['macquarie', 'Macquarie', 'Finance', null, false, 'bank', ['macquarie bank']],
+  ['commsec', 'CommSec', 'Finance', null, false, 'trending-up', ['shares', 'asx']],
+  ['ynab', 'YNAB', 'Finance', null, false, 'pie-chart', ['you need a budget', 'budget']],
+  ['rocket-money', 'Rocket Money', 'Finance', null, false, 'dollar-sign', ['budget', 'subscriptions']],
+  ['google-wallet', 'Google Wallet', 'Finance', null, false, 'credit-card', ['google pay', 'gpay']],
+  // Shopping
+  ['best-buy', 'Best Buy', 'Shopping', null, false, 'monitor', ['electronics']],
+  ['costco', 'Costco', 'Shopping', null, false, 'shopping-cart', ['wholesale']],
+  ['home-depot', 'The Home Depot', 'Shopping', null, false, 'tool', ['home depot', 'hardware']],
+  ['lowes', 'Lowe’s', 'Shopping', null, false, 'tool', ['lowes', 'hardware']],
+  ['wayfair', 'Wayfair', 'Shopping', null, false, 'home', ['furniture']],
+  ['sephora', 'Sephora', 'Shopping', null, false, 'droplet', ['makeup', 'beauty']],
+  ['nike', 'Nike', 'Shopping', null, false, 'shopping-bag', ['sneakers', 'snkrs']],
+  ['zara', 'Zara', 'Shopping', null, false, 'shopping-bag', ['fashion']],
+  ['h-and-m', 'H&M', 'Shopping', null, false, 'shopping-bag', ['hm', 'h and m']],
+  ['uniqlo', 'UNIQLO', 'Shopping', null, false, 'shopping-bag', ['clothes']],
+  ['argos', 'Argos', 'Shopping', null, false, 'package', []],
+  ['offerup', 'OfferUp', 'Shopping', null, false, 'tag', ['second hand', 'marketplace']],
+  ['mercari', 'Mercari', 'Shopping', null, false, 'tag', ['resale']],
+  ['poshmark', 'Poshmark', 'Shopping', null, false, 'tag', ['resale', 'fashion']],
+  ['stockx', 'StockX', 'Shopping', null, false, 'trending-up', ['sneakers', 'resale']],
+  ['aldi', 'ALDI', 'Shopping', null, false, 'shopping-cart', ['groceries', 'supermarket']],
+  ['flipkart', 'Flipkart', 'Shopping', null, false, 'shopping-bag', []],
+  ['shopee', 'Shopee', 'Shopping', null, false, 'shopping-bag', []],
+  ['rakuten', 'Rakuten', 'Shopping', null, false, 'gift', ['cash back']],
+  ['big-w', 'BIG W', 'Shopping', null, false, 'shopping-cart', ['bigw']],
+  ['the-iconic', 'THE ICONIC', 'Shopping', null, false, 'shopping-bag', ['iconic', 'fashion']],
+  // Food & Drink
+  ['subway-restaurants', 'Subway', 'Food & Drink', null, false, 'utensils', ['sandwiches']],
+  ['chipotle', 'Chipotle', 'Food & Drink', null, false, 'utensils', ['burrito']],
+  ['burger-king', 'Burger King', 'Food & Drink', null, false, 'utensils', ['bk', 'hungry jacks']],
+  ['pizza-hut', 'Pizza Hut', 'Food & Drink', null, false, 'pizza', []],
+  ['dunkin', 'Dunkin’', 'Food & Drink', null, false, 'coffee', ['dunkin donuts']],
+  ['tim-hortons', 'Tim Hortons', 'Food & Drink', null, false, 'coffee', ['tims']],
+  ['chick-fil-a', 'Chick-fil-A', 'Food & Drink', null, false, 'utensils', ['chicken']],
+  ['hellofresh', 'HelloFresh', 'Food & Drink', null, false, 'package', ['meal kits', 'recipes']],
+  ['opentable', 'OpenTable', 'Food & Drink', null, false, 'calendar', ['restaurant booking']],
+  ['nyt-cooking', 'NYT Cooking', 'Food & Drink', null, false, 'book-open', ['recipes']],
+  ['allrecipes', 'Allrecipes', 'Food & Drink', null, false, 'book-open', ['recipes']],
+  ['zomato', 'Zomato', 'Food & Drink', null, false, 'utensils', ['food delivery']],
+  ['swiggy', 'Swiggy', 'Food & Drink', null, false, 'truck', ['food delivery']],
+  ['wolt', 'Wolt', 'Food & Drink', null, false, 'truck', ['food delivery']],
+  // Travel & Transport
+  ['hopper', 'Hopper', 'Travel & Transport', null, false, 'plane', ['cheap flights']],
+  ['kayak', 'KAYAK', 'Travel & Transport', null, false, 'plane', ['flights', 'hotels']],
+  ['united', 'United Airlines', 'Travel & Transport', null, false, 'plane', ['united']],
+  ['delta', 'Fly Delta', 'Travel & Transport', null, false, 'plane', ['delta', 'delta air lines']],
+  ['american-airlines', 'American Airlines', 'Travel & Transport', null, false, 'plane', ['aa']],
+  ['southwest', 'Southwest Airlines', 'Travel & Transport', null, false, 'plane', ['southwest']],
+  ['british-airways', 'British Airways', 'Travel & Transport', null, false, 'plane', ['ba']],
+  ['virgin-australia', 'Virgin Australia', 'Travel & Transport', null, false, 'plane', ['virgin']],
+  ['emirates', 'Emirates', 'Travel & Transport', null, false, 'plane', ['airline']],
+  ['ryanair', 'Ryanair', 'Travel & Transport', null, false, 'plane', ['airline']],
+  ['hotels-com', 'Hotels.com', 'Travel & Transport', null, false, 'home', ['hotels']],
+  ['vrbo', 'Vrbo', 'Travel & Transport', null, false, 'home', ['holiday homes', 'vacation rentals']],
+  ['agoda', 'Agoda', 'Travel & Transport', null, false, 'map-pin', ['hotels']],
+  ['trip-com', 'Trip.com', 'Travel & Transport', null, false, 'globe', ['ctrip']],
+  ['flightradar24', 'Flightradar24', 'Travel & Transport', null, false, 'navigation-2', ['flight tracker']],
+  ['flighty', 'Flighty', 'Travel & Transport', null, false, 'navigation', ['flight tracker']],
+  ['tripit', 'TripIt', 'Travel & Transport', null, false, 'briefcase', ['itinerary']],
+  ['moovit', 'Moovit', 'Travel & Transport', null, false, 'map', ['public transport']],
+  ['grab', 'Grab', 'Travel & Transport', null, false, 'car', ['ride hailing']],
+  ['lime', 'Lime', 'Travel & Transport', null, false, 'zap', ['e-scooter', 'e-bike']],
+  ['gasbuddy', 'GasBuddy', 'Travel & Transport', null, false, 'droplet', ['fuel prices', 'petrol']],
+  ['amtrak', 'Amtrak', 'Travel & Transport', null, false, 'map', ['trains']],
+  // Health & Fitness
+  ['noom', 'Noom', 'Health & Fitness', null, false, 'activity', ['weight loss']],
+  ['ww', 'WW (WeightWatchers)', 'Health & Fitness', null, false, 'target', ['weight watchers']],
+  ['lose-it', 'Lose It!', 'Health & Fitness', null, false, 'target', ['calorie counter']],
+  ['cronometer', 'Cronometer', 'Health & Fitness', null, false, 'pie-chart', ['nutrition tracker']],
+  ['zero-fasting', 'Zero Fasting', 'Health & Fitness', null, false, 'clock', ['fasting', 'zero']],
+  ['sweat', 'Sweat', 'Health & Fitness', null, false, 'dumbbell', ['workouts']],
+  ['fitbod', 'Fitbod', 'Health & Fitness', null, false, 'dumbbell', ['gym', 'strength']],
+  ['hevy', 'Hevy', 'Health & Fitness', null, false, 'dumbbell', ['workout log', 'gym']],
+  ['whoop', 'WHOOP', 'Health & Fitness', null, false, 'activity', ['recovery', 'strain']],
+  ['insight-timer', 'Insight Timer', 'Health & Fitness', null, false, 'sun', ['meditation']],
+  ['medisafe', 'Medisafe', 'Health & Fitness', null, false, 'pill', ['pill reminder', 'medication']],
+  ['runkeeper', 'Runkeeper', 'Health & Fitness', null, false, 'navigation', ['running']],
+  ['zwift', 'Zwift', 'Health & Fitness', null, false, 'activity', ['indoor cycling']],
+  ['komoot', 'komoot', 'Health & Fitness', null, false, 'map', ['hiking', 'cycling routes']],
+  ['mychart', 'MyChart', 'Health & Fitness', null, false, 'clipboard', ['patient portal']],
+  // News & Reading
+  ['google-news', 'Google News', 'News & Reading', null, false, 'rss', ['headlines']],
+  ['cnn', 'CNN', 'News & Reading', null, false, 'tv', ['cnn news']],
+  ['fox-news', 'Fox News', 'News & Reading', null, false, 'tv', ['fox']],
+  ['reuters', 'Reuters', 'News & Reading', null, false, 'globe', ['world news']],
+  ['ap-news', 'AP News', 'News & Reading', null, false, 'globe', ['associated press']],
+  ['wsj', 'The Wall Street Journal', 'News & Reading', null, false, 'file-text', ['wsj', 'wall street journal']],
+  ['washington-post', 'The Washington Post', 'News & Reading', null, false, 'file-text', ['wapo']],
+  ['the-economist', 'The Economist', 'News & Reading', null, false, 'bar-chart', ['economist']],
+  ['financial-times', 'Financial Times', 'News & Reading', null, false, 'trending-up', ['ft']],
+  ['sydney-morning-herald', 'The Sydney Morning Herald', 'News & Reading', null, false, 'file-text', ['smh']],
+  ['daily-mail', 'Daily Mail', 'News & Reading', null, false, 'file-text', ['mail online']],
+  ['sky-news', 'Sky News', 'News & Reading', null, false, 'tv', []],
+  ['ground-news', 'Ground News', 'News & Reading', null, false, 'layers', ['news bias']],
+  ['wattpad', 'Wattpad', 'News & Reading', null, false, 'book-open', ['stories', 'fan fiction']],
+  // Education
+  ['wikipedia', 'Wikipedia', 'Education', 'wikipedia://', false, 'book', ['wiki', 'encyclopedia']],
+  ['brilliant', 'Brilliant', 'Education', null, false, 'zap', ['maths', 'science']],
+  ['memrise', 'Memrise', 'Education', null, false, 'globe', ['languages']],
+  ['busuu', 'Busuu', 'Education', null, false, 'message-circle', ['languages']],
+  ['rosetta-stone', 'Rosetta Stone', 'Education', null, false, 'globe', ['languages']],
+  ['elevate', 'Elevate', 'Education', null, false, 'trending-up', ['brain training']],
+  ['lumosity', 'Lumosity', 'Education', null, false, 'cpu', ['brain games']],
+  ['udemy', 'Udemy', 'Education', null, false, 'play-circle', ['courses']],
+  ['ted', 'TED', 'Education', null, false, 'mic', ['ted talks']],
+  ['ankimobile', 'AnkiMobile', 'Education', null, false, 'copy', ['anki', 'flashcards']],
+  // Games
+  ['fortnite', 'Fortnite', 'Games', null, false, 'game-controller', ['battle royale']],
+  ['pokemon-unite', 'Pokémon UNITE', 'Games', null, false, 'game-controller', ['moba']],
+  ['two-dots', 'Two Dots', 'Games', null, false, 'circle', ['puzzle']],
+  ['altos-odyssey', 'Alto’s Odyssey', 'Games', null, false, 'wind', ['altos adventure', 'snowboard']],
+  ['asphalt-legends', 'Asphalt Legends', 'Games', null, false, 'car', ['asphalt 9', 'racing']],
+  ['real-racing-3', 'Real Racing 3', 'Games', null, false, 'car', ['racing']],
+  ['vampire-survivors', 'Vampire Survivors', 'Games', null, false, 'moon', ['roguelike']],
+  ['balatro', 'Balatro', 'Games', null, false, 'grid', ['poker', 'roguelike', 'cards']],
+  ['wild-rift', 'League of Legends: Wild Rift', 'Games', null, false, 'award', ['lol', 'wild rift', 'moba']],
+  ['efootball', 'eFootball', 'Games', null, false, 'target', ['pes', 'soccer', 'football']],
+  // Utilities
+  ['expressvpn', 'ExpressVPN', 'Utilities', null, false, 'shield', ['vpn']],
+  ['proton-vpn', 'Proton VPN', 'Utilities', null, false, 'shield', ['vpn', 'protonvpn']],
+  ['surfshark', 'Surfshark', 'Utilities', null, false, 'shield', ['vpn']],
+  ['bitwarden', 'Bitwarden', 'Utilities', null, false, 'lock', ['password manager']],
+  ['lastpass', 'LastPass', 'Utilities', null, false, 'lock', ['password manager']],
+  ['dashlane', 'Dashlane', 'Utilities', null, false, 'key', ['password manager']],
+  ['google-lens', 'Google Lens', 'Utilities', null, false, 'eye', ['visual search', 'lens']],
+  ['scriptable', 'Scriptable', 'Utilities', 'scriptable://', false, 'code', ['javascript', 'automation']],
+  ['working-copy', 'Working Copy', 'Utilities', 'working-copy://', false, 'git-branch', ['git']],
+  ['the-weather-channel', 'The Weather Channel', 'Utilities', null, false, 'cloud-rain', ['weather channel', 'twc']],
+  ['carrot-weather', 'CARROT Weather', 'Utilities', null, false, 'cloud-lightning', ['carrot']],
+  ['arlo', 'Arlo', 'Utilities', null, false, 'video', ['security camera']],
+  ['smartthings', 'SmartThings', 'Utilities', null, false, 'home', ['smart home']],
+  ['philips-hue', 'Philips Hue', 'Utilities', null, false, 'sun', ['hue', 'smart lights']],
+  ['tesla', 'Tesla', 'Utilities', null, false, 'car', ['ev', 'car app']],
+  ['fing', 'Fing', 'Utilities', null, false, 'wifi', ['network scanner']],
+  ['tailscale', 'Tailscale', 'Utilities', null, false, 'link', ['vpn', 'network']],
+  ['termius', 'Termius', 'Utilities', null, false, 'terminal', ['ssh']],
 ];
 
 /** How an app can be installed. */
@@ -661,4 +898,36 @@ export function search(query: string, limit?: number): CatalogueEntry[] {
   }
   hits.sort((a, b) => a.tier - b.tier || a.sub - b.sub || a.len - b.len || byName(a.e, b.e));
   return hits.slice(0, max).map((h) => h.e);
+}
+
+// ---------------------------------------------------------------- exact lookup by name (T170)
+
+const NAME_INDEX = new Map<string, CatalogueEntry>();
+const ALIAS_INDEX = new Map<string, CatalogueEntry>();
+for (const e of CATALOGUE) {
+  for (const k of [normalize(e.name), compact(e.name)]) if (k && !NAME_INDEX.has(k)) NAME_INDEX.set(k, e);
+}
+for (const e of CATALOGUE) {
+  for (const a of e.aliases) {
+    for (const k of [normalize(a), compact(a)]) if (k && !NAME_INDEX.has(k) && !ALIAS_INDEX.has(k)) ALIAS_INDEX.set(k, e);
+  }
+}
+
+/**
+ * T170: the catalogue entry for an app's display name (the label under a Home Screen icon), or
+ * undefined. Exact match only (no fuzzy guesses), case-, accent-, space- and punctuation-insensitive:
+ * a catalogue name first ("YouTube Music", "youtube music", "YOUTUBEMUSIC"), then an alias
+ * ("Twitter" -> X). Use search() for type-ahead; use this to map a list of installed app names.
+ */
+export function findByName(name: string | null | undefined): CatalogueEntry | undefined {
+  if (typeof name !== 'string') return undefined;
+  const n = normalize(name);
+  if (!n) return undefined;
+  const c = compact(name);
+  return NAME_INDEX.get(n) ?? (c ? NAME_INDEX.get(c) : undefined) ?? ALIAS_INDEX.get(n) ?? (c ? ALIAS_INDEX.get(c) : undefined);
+}
+
+/** T170: findByName for many names at once; names with no entry map to undefined (order kept). */
+export function findAllByName(names: readonly string[]): (CatalogueEntry | undefined)[] {
+  return names.map((n) => findByName(n));
 }

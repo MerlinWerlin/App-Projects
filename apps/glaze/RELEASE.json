@@ -1,6 +1,6 @@
 {
-  "mode": "update",
-  "note": "Glaze: smoother Themes, Widgets and Wallpapers tabs (virtualised lists, cached art), widget grid spacing fixed, one design token set, hosted theme-pack groundwork",
+  "mode": "build",
+  "note": "Glaze: Scan my Home Screen (on-device text recognition), theme-designed monograms, 565-app catalogue, premium Themes browse",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

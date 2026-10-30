@@ -12,6 +12,7 @@ export const es: NonNullable<LocaleMessages['themes']> = {
     body: 'Degradados, malla, grano y patrones al tamaño de tu iPhone.',
     hint: 'Abre el creador de fondos',
   },
+  eyebrow: { starters: 'Empieza aquí', art: 'Arte gratis', space: 'Gratis · fotos reales', plus: 'Glaze Plus' },
   starters: 'Temas básicos',
   startersEmpty: 'Aún no hay temas básicos',
   plusPacks: 'Packs Plus',

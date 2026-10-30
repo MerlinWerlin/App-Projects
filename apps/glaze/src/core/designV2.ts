@@ -131,9 +131,66 @@ export const typeV2 = {
   button: { fontSize: 17, lineHeight: 22, fontWeight: '600', letterSpacing: -0.41 },
   /** Inline (collapsed) navigation bar title. */
   navTitle: { fontSize: 17, lineHeight: 22, fontWeight: '600', letterSpacing: -0.41 },
+  /**
+   * T173 (docs/PREMIUM_UI.md): the small label above an editorial section title ("START HERE").
+   * Footnote size, semibold, opened-up tracking; Latin scripts draw it upper-case (see
+   * eyebrowCaseFor), other scripts keep their own case and no extra tracking.
+   */
+  eyebrow: { fontSize: 13, lineHeight: 18, fontWeight: '600', letterSpacing: 0.8 },
 } as const satisfies Record<string, TypeStyleV2>;
 
 export type TypeRoleV2 = keyof typeof typeV2;
+
+/**
+ * T173 Dynamic Type: the largest text-size multiplier each role honours (RN `maxFontSizeMultiplier`).
+ * Reading text (body ... caption) grows the most; titles grow less because they are already large
+ * and sit in fixed-height chrome (the large-title block, card name rows). Never below 1.2, so
+ * every role still responds to the user's text size; never above 2, past which layouts break.
+ */
+export const fontScaleCapV2: { readonly [K in TypeRoleV2]: number } = {
+  largeTitle: 1.25,
+  title1: 1.3,
+  title2: 1.4,
+  title3: 1.5,
+  headline: 1.8,
+  body: 2,
+  callout: 2,
+  subhead: 2,
+  footnote: 2,
+  caption1: 2,
+  caption2: 2,
+  button: 1.6,
+  navTitle: 1.3,
+  eyebrow: 1.6,
+};
+
+/** The `maxFontSizeMultiplier` for a type role. */
+export function fontScaleCap(role: TypeRoleV2): number {
+  return fontScaleCapV2[role];
+}
+
+/**
+ * Eyebrow lettering per script: Latin labels are upper-cased with the role's tracking; scripts
+ * without case, or where tracking breaks joins (Arabic, Devanagari) or reads oddly (CJK), keep
+ * their own case and no extra tracking.
+ */
+export function eyebrowCaseFor(script: string): { upper: boolean; letterSpacing: number } {
+  return script === 'latin' ? { upper: true, letterSpacing: typeV2.eyebrow.letterSpacing } : { upper: false, letterSpacing: 0 };
+}
+
+/**
+ * T173 editorial rhythm (docs/PREMIUM_UI.md): the vertical space above a section title on browse
+ * screens, between a section title and its first row, and between rows of art cards. All on the
+ * 4-pt grid and taken from spaceV2 steps.
+ */
+export const editorialV2 = {
+  /** Space above an editorial section header (eyebrow + title + body). */
+  sectionTop: 32,
+  /** Space between the header and the first row of cards. */
+  sectionBottom: 12,
+  /** Gap between card rows and between cards in a row. */
+  cardGap: 16,
+} as const;
 
 // ---------------------------------------------------------------- shape + space
 

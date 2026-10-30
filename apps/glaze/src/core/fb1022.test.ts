@@ -58,7 +58,8 @@ test('G4: discovery sub-tabs are content-sized one-line pills that scroll, never
   const pill = pills.match(/pill: \{[^}]*\}/)?.[0] ?? '';
   assert.doesNotMatch(pill, /flex: 1|width:/, 'pills size to their label');
   assert.match(pill, /minHeight: sizeV2\.touch/);
-  assert.match(themes, /<View style=\{styles\.sectionHead\}>[\s\S]*themes\.discover\.picksNote/);
+  // T173: the section head is the editorial SectionHeader; the picks note is its body.
+  assert.match(themes, /<SectionHeader\b[\s\S]*?body=\{tab === 'picks' \? t\('themes\.discover\.picksNote'\)/);
 });
 
 test('G2 Shape row copy is in every locale', () => {

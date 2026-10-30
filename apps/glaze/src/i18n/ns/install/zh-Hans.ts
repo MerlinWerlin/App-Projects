@@ -170,4 +170,14 @@ export const zhHans: NonNullable<LocaleMessages['install']> = {
     allDone: '所有图标已完成。你可以把原来的图标移到 App 资源库。',
     oneAtATime: '一次一个图标：按步骤完成下一个 App 并勾选，Glaze 会打开再下一个的步骤。',
   },
+  coverage: {
+    heading: '你的应用',
+    counts: '主题 {themed} · 字母标 {monogram}',
+    countsWithPhotos: '主题 {themed} · 字母标 {monogram} · 你的照片 {photo}',
+    monogramHint: '没有主题图案的应用会得到按主题风格设计的字母标。轻点一个即可改选符号或你自己的照片。',
+    allThemed: '你的图标集中每个应用都有主题图案。',
+    tag: '字母标',
+    rowA11y: '{app}，字母标',
+    rowHint: '打开符号和照片选择器',
+  },
 };

@@ -1,4 +1,4 @@
-// T160: the picture of a remote art-pack theme (catalogue pack from Cloudflare R2): the downloaded
+// T160: the picture of a remote art-pack theme (catalogue pack from the pack host, GitHub Releases): the downloaded
 // file (file:// URI) when there is one, otherwise the small remote thumbnail, with the pack's
 // ThumbHash as an instant blurred placeholder and expo-image's memory + disk cache (so a seen
 // thumbnail still shows offline). Expo Go safe (expo-image is in Expo Go). Never throws: a failed

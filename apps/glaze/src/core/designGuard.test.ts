@@ -52,7 +52,6 @@ const BASELINE: Record<string, Counts> = {
   'src/ui/ShapePicker.tsx': { radius: 1 },
   'src/ui/SheenButton.tsx': { colour: 1 },
   'src/ui/Sheet.tsx': { radius: 1 },
-  'src/ui/Skeleton.tsx': { colour: 3 },
   'src/ui/WallpaperTile.tsx': { colour: 3 },
 };
 

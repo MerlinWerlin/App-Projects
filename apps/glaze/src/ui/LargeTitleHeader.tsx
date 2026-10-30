@@ -27,7 +27,7 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useT } from '../i18n';
 import { durations, useMotionReduced } from '../theme/motion';
-import { largeTitleRanges, largeTitleSnapAt, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { fontScaleCap, largeTitleRanges, largeTitleSnapAt, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { GlassBar } from './GlassBar';
 import { textStyleFor } from './i18nLayout';
@@ -149,13 +149,16 @@ export function LargeTitle({ title, subtitle, scrollY }: TitleProps) {
           numberOfLines={2}
           adjustsFontSizeToFit
           minimumFontScale={0.7}
+          maxFontSizeMultiplier={fontScaleCap('largeTitle')}
           style={[textV2.largeTitle, textStyleFor(script, textV2.largeTitle), { color: c.ink }]}
         >
           {title}
         </Text>
       </Animated.View>
       {subtitle ? (
-        <Text style={[textV2.subhead, textStyleFor(script, textV2.subhead), { color: c.inkSecondary }]}>{subtitle}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[textV2.subhead, textStyleFor(script, textV2.subhead), { color: c.inkSecondary }]}>
+          {subtitle}
+        </Text>
       ) : null}
     </View>
   );

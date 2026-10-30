@@ -3,7 +3,7 @@
 
 import type { IconArt } from './artwork.ts';
 import { isKnownGlyph } from './glyphnames.ts';
-import { MONOGRAM_GLYPH, buildMonogram, type Monogram } from './monogram.ts';
+import { MONOGRAM_GLYPH, buildMonogram, monogramSurfaces, type Monogram } from './monogram.ts';
 
 export type IconShape = 'squircle' | 'circle' | 'rounded' | 'square' | 'blob';
 
@@ -83,11 +83,11 @@ export function wantsMonogram(glyph: string | null | undefined): boolean {
 export function previewMonogram(
   name: string,
   glyph: string,
-  style: Pick<IconStyle, 'background' | 'glyphColour' | 'glyphScale'>,
+  style: Pick<IconStyle, 'background' | 'glyphColour' | 'glyphScale' | 'art'>,
   custom?: string | null,
 ): Monogram | undefined {
   if (!wantsMonogram(glyph)) return undefined;
-  return buildMonogram(name, style.glyphColour, backgroundColours(style.background), style.glyphScale, custom) ?? undefined;
+  return buildMonogram(name, style.glyphColour, backgroundColours(style.background), style.glyphScale, custom, style.art) ?? undefined;
 }
 
 /** The fields withMonogram reads; IconSpec and lighter preview specs both fit. */
@@ -97,6 +97,8 @@ export type MonogramDrawable = {
   glyphColour: string;
   glyphScale: number;
   background: IconBackground;
+  /** T170: theme artwork, which designs the monogram (font, plate, ring, glow). */
+  art?: IconArt;
   monogram?: Monogram;
 };
 
@@ -149,7 +151,14 @@ export function resolveSpec(app: IconApp, style: IconStyle, override?: IconOverr
   if (nonEmpty(o.overrideImage)) spec.overrideImage = o.overrideImage;
   if (style.art) spec.art = style.art;
   if (wantsMonogram(spec.glyph)) {
-    const m = buildMonogram(spec.label, spec.glyphColour, backgroundColours(spec.background), spec.glyphScale, o.monogramText);
+    const m = buildMonogram(
+      spec.label,
+      spec.glyphColour,
+      backgroundColours(spec.background),
+      spec.glyphScale,
+      o.monogramText,
+      style.art,
+    );
     if (m) spec.monogram = m;
   }
   return spec;
@@ -207,8 +216,11 @@ function backgroundColours(bg: IconBackground): string[] {
 export function specContrast(spec: IconSpec): number | null {
   let min: number | null = null;
   // T82: a monogram is drawn in its own (contrast-corrected) colour, so measure that.
-  const fg = !spec.overrideImage && spec.monogram ? spec.monogram.colour : spec.glyphColour;
-  for (const c of backgroundColours(spec.background)) {
+  const lettered = !spec.overrideImage && spec.monogram ? spec.monogram : null;
+  const fg = lettered ? lettered.colour : spec.glyphColour;
+  // T170: a themed monogram's letters sit on its plate (or glow), so measure against that.
+  const under = lettered?.look ? monogramSurfaces(lettered, backgroundColours(spec.background)) : backgroundColours(spec.background);
+  for (const c of under) {
     const r = contrastRatio(fg, c);
     if (r === null) return null;
     min = min === null ? r : Math.min(min, r);

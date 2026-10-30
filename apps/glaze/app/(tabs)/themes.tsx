@@ -29,6 +29,10 @@
 // then rows of `columns` cards), so a fast scroll only keeps about two screens of cards mounted
 // (LIST_WINDOW) instead of every pack card. This replaces T118's per-frame pack reveal and the
 // per-card parallax in the packs (the showcase above is unchanged). No bounce, no new motion.
+// T173 (premium UI, docs/PREMIUM_UI.md): editorial section headers (eyebrow + title + body, via
+// SectionHeader) with more room above each section, a 16-pt card rhythm (editorialV2), and Dynamic
+// Type caps (fontScaleCap) on every text. Still one virtualised list; rows are variable-height, so
+// there is no getItemLayout to keep in step.
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { memo, startTransition, useCallback, useEffect, useMemo, useRef, useState, type ComponentProps, type ReactNode } from 'react';
@@ -63,7 +67,7 @@ import { deviceRegionCode } from '../../src/native/region';
 import { PlusBadge } from '../../src/plus/PlusBadge';
 import { FreePill } from '../../src/ui/FreePill';
 import { useFavourites } from '../../src/store/favourites';
-import { continuous, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
+import { continuous, editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { CategoryBubbleRow, type BubblePage } from '../../src/ui/CategoryBubbleRow';
 import { LanguageHintLine } from '../../src/ui/LanguageHintLine';
@@ -75,7 +79,7 @@ import { PillTabs, type PillTabOption } from '../../src/ui/PillTabs';
 import { ShowcaseGrid } from '../../src/ui/ShowcaseGrid';
 import { haptic } from '../../src/ui/haptics';
 import { textStyleFor } from '../../src/ui/i18nLayout';
-import { BarIconButton, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SquircleCard } from '../../src/ui/v2';
+import { BarIconButton, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
 
 type FeatherName = ComponentProps<typeof Feather>['name'];
 /** Stable badge element so memoised cards don't re-render for it. */
@@ -120,25 +124,19 @@ type PackInfo = { id: string; name: string; tagline: string; themes: readonly Th
 
 /** T162: one row of the list below the header (a section title, a row of cards, or an empty pack). */
 type PackRow =
-  | { kind: 'head'; key: string; title: string; body: string; pack: boolean }
+  | { kind: 'head'; key: string; title: string; body: string; pack: boolean; eyebrow?: string }
   | { kind: 'cards'; key: string; themes: readonly Theme[]; plus: boolean }
   | { kind: 'empty'; key: string; title: string };
 
 const NO_ROWS: readonly PackRow[] = [];
 const packRowKey = (row: PackRow): string => row.key;
 
-/** T162: a pack section's title and tagline (memoised list row). */
-const PackHead = memo(function PackHead({ title, body, pack }: { title: string; body: string; pack: boolean }) {
-  const { c } = useColorsV2();
-  const { script } = useT();
-  return (
-    <View style={pack ? styles.packHead : styles.sectionHeadRow}>
-      <Text accessibilityRole="header" style={[...typeFor(script, pack ? 'title3' : 'title2'), { color: c.ink }]}>
-        {title}
-      </Text>
-      <Text style={[...typeFor(script, pack ? 'footnote' : 'subhead'), { color: c.inkSecondary }]}>{body}</Text>
-    </View>
-  );
+/**
+ * T162: a pack section's title and tagline (memoised list row). T173: an editorial SectionHeader
+ * (eyebrow + title + body) for the art / Space / Plus sections, a quieter group header per pack.
+ */
+const PackHead = memo(function PackHead({ title, body, pack, eyebrow }: { title: string; body: string; pack: boolean; eyebrow?: string }) {
+  return <SectionHeader eyebrow={eyebrow} title={title} body={body} level={pack ? 'group' : 'section'} style={styles.headRow} />;
 });
 
 /** T162: one row of pack cards (memoised list row; stable shared props, no per-card parallax). */
@@ -186,8 +184,8 @@ function GalleryEmpty({ title }: { title: string }) {
     <SquircleCard accessibilityLabel={t('themes.empty.a11y', { title })}>
       <View style={styles.empty}>
         <EmptyIcon icon="droplet" />
-        <Text style={[...typeFor(script, 'headline'), styles.center, { color: c.ink }]}>{title}</Text>
-        <Text style={[...typeFor(script, 'footnote'), styles.center, { color: c.inkSecondary }]}>{t('themes.empty.body')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), styles.center, { color: c.ink }]}>{title}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), styles.center, { color: c.inkSecondary }]}>{t('themes.empty.body')}</Text>
         <PillButton
           label={t('themes.empty.cta')}
           icon="grid"
@@ -220,6 +218,7 @@ function SearchField({ value, onChange }: { value: string; onChange: (q: string)
         autoCapitalize="none"
         clearButtonMode="never"
         selectionColor={c.tint}
+        maxFontSizeMultiplier={fontScaleCap('body')}
         style={[...typeFor(script, 'body'), styles.searchInput, { color: c.ink }]}
       />
       {value.length > 0 ? (
@@ -254,10 +253,10 @@ const SeasonalBanner = memo(function SeasonalBanner({
     <SquircleCard tone="peach" size="large">
       <View style={styles.season}>
         <View style={styles.packTitle}>
-          <Text accessibilityRole="header" style={[...typeFor(script, 'title3'), { color: c.pastels.peach.ink }]}>
+          <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title3')} style={[...typeFor(script, 'title3'), { color: c.pastels.peach.ink }]}>
             {t('themes.season.title')}
           </Text>
-          <Text style={[...typeFor(script, 'footnote'), { color: c.pastels.peach.ink }]}>{t('themes.season.subtitle')}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.pastels.peach.ink }]}>{t('themes.season.subtitle')}</Text>
         </View>
         <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.seasonRow}>
           {collections.map(({ id, themes }) => {
@@ -281,8 +280,8 @@ const SeasonalBanner = memo(function SeasonalBanner({
                     <View key={t.id} style={[styles.seasonDot, { backgroundColor: t.palette.accent, borderColor: c.separator }]} />
                   ))}
                 </View>
-                <Text style={[...typeFor(script, 'headline'), { color: c.ink }]}>{label}</Text>
-                <Text style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{formatNumber(themes.length)}</Text>
+                <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), { color: c.ink }]}>{label}</Text>
+                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{formatNumber(themes.length)}</Text>
               </PressableScale>
             );
           })}
@@ -300,8 +299,8 @@ function DiscoveryEmpty({ icon, title, body, onShowAll }: { icon: FeatherName; t
     <SquircleCard accessibilityLabel={body ? `${title} ${body}` : title}>
       <View style={styles.empty}>
         <EmptyIcon icon={icon} />
-        <Text style={[...typeFor(script, 'headline'), styles.center, { color: c.ink }]}>{title}</Text>
-        {body ? <Text style={[...typeFor(script, 'footnote'), styles.center, { color: c.inkSecondary }]}>{body}</Text> : null}
+        <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), styles.center, { color: c.ink }]}>{title}</Text>
+        {body ? <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), styles.center, { color: c.inkSecondary }]}>{body}</Text> : null}
         {/* Release standard §1: an empty filtered list offers a one-tap way back to everything. */}
         {onShowAll ? <PillButton label={t('common.showAll')} variant="plain" onPress={onShowAll} style={styles.selfCenter} /> : null}
       </View>
@@ -340,7 +339,7 @@ const StoryChips = memo(function StoryChips({
             accessibilityLabel={t('themes.storyChips.a11y', { label })}
             style={[styles.chip, continuous, { backgroundColor: on ? c.tint : c.fill }]}
           >
-            <Text style={[...typeFor(script, 'subhead'), { color: on ? c.onTint : c.ink }]}>{label}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...typeFor(script, 'subhead'), { color: on ? c.onTint : c.ink }]}>{label}</Text>
           </PressableScale>
         );
       })}
@@ -356,8 +355,8 @@ function NoMatches({ onReset }: { onReset: () => void }) {
     <SquircleCard>
       <View style={styles.empty}>
         <EmptyIcon icon="search" />
-        <Text style={[...typeFor(script, 'headline'), styles.center, { color: c.ink }]}>{t('themes.search.empty.title')}</Text>
-        <Text style={[...typeFor(script, 'footnote'), styles.center, { color: c.inkSecondary }]}>{t('themes.search.empty.body')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), styles.center, { color: c.ink }]}>{t('themes.search.empty.title')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), styles.center, { color: c.inkSecondary }]}>{t('themes.search.empty.body')}</Text>
         <PillButton label={t('themes.search.empty.reset')} variant="plain" onPress={onReset} style={styles.selfCenter} />
       </View>
     </SquircleCard>
@@ -530,7 +529,7 @@ export default function ThemesScreen() {
   // T103: the free Space (Webb) photo themes, a section of their own above the Plus packs.
   const space = useMemo(() => filterAll(SPACE_THEMES), [filterAll]);
   // T130: the free art-pack themes, a section of their own above Space.
-  // T160: plus the remote art packs from the R2 catalogue (cached; nothing while packs are disabled).
+  // T160: plus the remote art packs from the remote catalogue (cached; nothing while packs are disabled).
   const remoteArt = useRemoteArtThemes();
   const art = useMemo(() => filterAll(mergeRemoteThemes(ART_PACK_THEMES, remoteArt)), [filterAll, remoteArt]);
   const packs = useMemo(
@@ -556,7 +555,7 @@ export default function ThemesScreen() {
   const matchCount = showPacks ? starters.length + packs.reduce((n, p) => n + p.themes.length, 0) : showcase.length;
 
   const columns = width >= 340 ? 2 : 1;
-  const gap = spaceV2.md;
+  const gap = editorialV2.cardGap;
   const cardWidth = Math.floor((width - spaceV2.lg * 2 - gap * (columns - 1)) / columns);
 
   // T118: one stable object for the pack grids (memoised sections skip a screen re-render).
@@ -575,15 +574,15 @@ export default function ThemesScreen() {
       }
     };
     if (art.length > 0) {
-      rows.push({ kind: 'head', key: 'head:art', title: t('themes.art.title'), body: t('themes.art.body'), pack: false });
+      rows.push({ kind: 'head', key: 'head:art', title: t('themes.art.title'), body: t('themes.art.body'), pack: false, eyebrow: t('themes.eyebrow.art') });
       cards(art, 'art', false);
     }
     if (space.length > 0) {
-      rows.push({ kind: 'head', key: 'head:space', title: t('themes.space.title'), body: t('themes.space.body'), pack: false });
+      rows.push({ kind: 'head', key: 'head:space', title: t('themes.space.title'), body: t('themes.space.body'), pack: false, eyebrow: t('themes.eyebrow.space') });
       cards(space, 'space', false);
     }
     if (!filteringAll || packs.length > 0) {
-      rows.push({ kind: 'head', key: 'head:plus', title: t('themes.plusPacks'), body: t('themes.plusPacksBody'), pack: false });
+      rows.push({ kind: 'head', key: 'head:plus', title: t('themes.plusPacks'), body: t('themes.plusPacksBody'), pack: false, eyebrow: t('themes.eyebrow.plus') });
     }
     if (PLUS_PACKS.length === 0) rows.push({ kind: 'empty', key: 'empty:plus', title: t('themes.plusPacksEmpty') });
     for (const pack of packs) {
@@ -595,7 +594,7 @@ export default function ThemesScreen() {
   }, [showPacks, art, space, packs, filteringAll, columns, t]);
   const renderPackRow: ListRenderItem<PackRow> = useCallback(
     ({ item }) => {
-      if (item.kind === 'head') return <PackHead title={item.title} body={item.body} pack={item.pack} />; // i18n-ignore (code after a JSX element)
+      if (item.kind === 'head') return <PackHead title={item.title} body={item.body} pack={item.pack} eyebrow={item.eyebrow} />; // i18n-ignore (code after a JSX element)
       if (item.kind === 'empty') return <View style={styles.packEmpty}><GalleryEmpty title={item.title} /></View>; // i18n-ignore (code after a JSX element)
       return <PackCardRow themes={item.themes} plus={item.plus} shared={gridShared} />; // i18n-ignore (code after a JSX element)
     },
@@ -664,12 +663,12 @@ export default function ThemesScreen() {
           {/* T106: a way in to the games, movie-night and storybook themes. */}
           <StoryChips selected={group} onSelect={pickGroup} />
           {collection ? (
-            <Text style={[...ts('footnote'), { color: c.inkSecondary }]} accessibilityLiveRegion="polite">
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]} accessibilityLiveRegion="polite">
               {t('themes.season.showing', { label: t(`themes.season.${collection}`) })}
             </Text>
           ) : null}
           {filtering ? (
-            <Text style={[...ts('footnote'), { color: c.inkSecondary }]} accessibilityLiveRegion="polite">
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]} accessibilityLiveRegion="polite">
               {t('themes.search.results', { count: matchCount })}
             </Text>
           ) : null}
@@ -677,18 +676,19 @@ export default function ThemesScreen() {
 
           {!filtering || showcase.length > 0 ? (
             <>
-              <View style={styles.sectionHead}>
-                <Text accessibilityRole="header" style={[...ts('title2'), { color: c.ink }]}>
-                  {category !== null
+              {/* T173: editorial header; the eyebrow only on the plain "All" page (a filter names itself). */}
+              <SectionHeader
+                eyebrow={category === null && !discovering ? t('themes.eyebrow.starters') : undefined}
+                title={
+                  category !== null
                     ? t(`themes.category.${category}`)
                     : discovering
                       ? t(discoveryTabKey(tab))
-                      : t('themes.starters')}
-                </Text>
-                {tab === 'picks' ? (
-                  <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('themes.discover.picksNote')}</Text>
-                ) : null}
-              </View>
+                      : t('themes.starters')
+                }
+                body={tab === 'picks' ? t('themes.discover.picksNote') : undefined}
+                style={styles.showcaseHead}
+              />
               <ShowcaseGrid
                 themes={showcase}
                 pageIndex={pageAt}
@@ -759,9 +759,9 @@ const styles = StyleSheet.create({
   scroll: { paddingBottom: spaceV2.xxxl },
   inner: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.md, gap: spaceV2.lg },
   // T162: list rows below the header carry the side gutter themselves.
-  sectionHeadRow: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.xl, paddingBottom: spaceV2.sm, gap: spaceV2.xxs },
-  packHead: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.lg, paddingBottom: spaceV2.sm, gap: spaceV2.xxs },
-  packRow: { flexDirection: 'row', gap: spaceV2.md, paddingHorizontal: spaceV2.lg, marginBottom: spaceV2.md },
+  // T173: SectionHeader brings the editorial space above; rows keep the 16-pt card rhythm.
+  headRow: { paddingHorizontal: spaceV2.lg },
+  packRow: { flexDirection: 'row', gap: editorialV2.cardGap, paddingHorizontal: spaceV2.lg, marginBottom: editorialV2.cardGap },
   packEmpty: { paddingHorizontal: spaceV2.lg },
   footer: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.lg },
   headerActions: { flexDirection: 'row', alignItems: 'center' },
@@ -769,7 +769,8 @@ const styles = StyleSheet.create({
   center: { textAlign: 'center' },
   selfCenter: { alignSelf: 'center' },
   flush: { marginHorizontal: 0 },
-  sectionHead: { gap: spaceV2.xxs },
+  /** The `inner` gap already spaces it from the controls above; together they make the editorial 32. */
+  showcaseHead: { paddingTop: editorialV2.sectionTop - spaceV2.lg, paddingBottom: 0 },
   search: {
     flexDirection: 'row',
     alignItems: 'center',

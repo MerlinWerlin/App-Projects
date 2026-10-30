@@ -172,4 +172,14 @@ export const ja: NonNullable<LocaleMessages['install']> = {
     allDone: 'すべてのアイコンが完了しました。元のアイコンはAppライブラリに移動できます。',
     oneAtATime: '1つずつ進めます。次のAppの手順に従ってチェックを付けると、Glazeがその次の手順を開きます。',
   },
+  coverage: {
+    heading: 'あなたのアプリ',
+    counts: 'テーマ {themed} · モノグラム {monogram}',
+    countsWithPhotos: 'テーマ {themed} · モノグラム {monogram} · 写真 {photo}',
+    monogramHint: 'テーマのアートがないアプリには、テーマのスタイルでデザインしたモノグラムが付きます。タップすると記号や自分の写真を選べます。',
+    allThemed: 'セット内のすべてのアプリにテーマのアートがあります。',
+    tag: 'モノグラム',
+    rowA11y: '{app}、モノグラム',
+    rowHint: '記号と写真の選択を開きます',
+  },
 };

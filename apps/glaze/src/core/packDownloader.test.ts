@@ -276,12 +276,13 @@ test('bad manifests and old app versions are refused before any asset is fetched
   rmSync(dir, { recursive: true, force: true });
 });
 
-test('base URL config: empty by default (packs disabled, no request); https or loopback only', async () => {
-  assert.equal(PACK_BASE_URL, '', 'no hosting is configured until the owner decides');
+test('base URL config: GitHub release in production (T169); empty = disabled, no request; https or loopback only', async () => {
+  assert.equal(PACK_BASE_URL, 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1');
   assert.equal(PACKS_DISABLED_MESSAGE, 'Theme packs arrive with the store release');
-  assert.equal(packsEnabled(PACK_BASE_URL), false);
+  assert.equal(packsEnabled(PACK_BASE_URL), true);
+  assert.equal(packsEnabled(''), false);
   const t = nodeTransport(tempStore());
-  await rejectsWith(downloadPack(opts(t, { baseUrl: PACK_BASE_URL })), 'disabled');
+  await rejectsWith(downloadPack(opts(t, { baseUrl: '' })), 'disabled');
   await rejectsWith(downloadPack(opts(t, { baseUrl: '   ' })), 'disabled');
   assert.equal(t.calls, 0, 'disabled packs make no network call');
 

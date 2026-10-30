@@ -1,23 +1,34 @@
-# Glaze: build theme art packs and publish them to Cloudflare R2 (T159, owner-1030 A3).
-# Written, not run; auto-ship places it in .github/workflows when secrets exist.
-# Needs repo secrets R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET (docs/R2_SETUP.md).
-# Manual dispatch only. Commit the updated scripts/packs/versions.json (uploaded as an artifact) after a run.
+# Glaze: build theme art packs and publish them as GitHub Release assets (T169, docs/PACK_HOSTING.md).
+# Copy to MerlinWerlin/App-Projects at .github/workflows/glaze-publish-packs.yml (the app lives in
+# apps/glaze). Manual dispatch only. Uses the built-in GITHUB_TOKEN: no secrets to add, no tokens in
+# the repo. Written, not run yet.
+#
+# Production: release tag glaze-packs-v1  -> https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1/<asset>
+# Staging:    release tag glaze-packs-staging (a pre-release; app builds with extra.packEnv = "staging")
+# Asset names are flat (art/<id>/v<n>/<file> -> art__<id>__v<n>__<file>; src/core/packHost.ts).
+# Upload order: pack files, then manifests, then catalog.json last. Files already on the release are
+# skipped (content-hashed names); catalog.json is replaced (--clobber). Older pack versions stay.
 name: Publish Glaze theme packs
 
 on:
   workflow_dispatch:
     inputs:
+      target:
+        description: 'Which release to publish to'
+        type: choice
+        options: [staging, production]
+        default: staging
       only:
         description: 'Comma-separated pack ids to rebuild (empty = all)'
         required: false
         default: ''
       dry_run:
-        description: 'Plan only, no upload'
+        description: 'Build and plan only, no release changes'
         type: boolean
         default: false
 
 permissions:
-  contents: read
+  contents: write # create the release and upload its assets with GITHUB_TOKEN
 
 concurrency:
   group: glaze-publish-packs
@@ -29,6 +40,10 @@ jobs:
     defaults:
       run:
         working-directory: apps/glaze
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ inputs.target == 'production' && 'glaze-packs-v1' || 'glaze-packs-staging' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -48,22 +63,63 @@ jobs:
           else
             node scripts/packs/build_packs.mjs --plus-file scripts/packs/tiers.json
           fi
-      - name: Publish to R2
-        env:
-          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
-          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          R2_BUCKET: ${{ secrets.R2_BUCKET }}
-          DRY_RUN: ${{ inputs.dry_run }}
+      - name: Read the release (if it exists)
         run: |
-          if [ "$DRY_RUN" = "true" ]; then
-            node scripts/packs/publish_r2.mjs --dry-run
+          if gh release view "$TAG" --json assets > /tmp/existing.json 2>/dev/null; then
+            echo "release $TAG exists"
           else
-            node scripts/packs/publish_r2.mjs
+            echo '{"assets":[]}' > /tmp/existing.json
+            echo "release $TAG does not exist yet"
           fi
-      - name: Keep the version lock
+      - name: Flatten into release assets
+        run: node scripts/packs/release_assets.mjs --dir dist/packs --out dist/release --existing /tmp/existing.json
+      - name: Create the release if missing
+        if: ${{ !inputs.dry_run }}
+        run: |
+          if ! gh release view "$TAG" > /dev/null 2>&1; then
+            PRE=""
+            if [ "$TAG" = "glaze-packs-staging" ]; then PRE="--prerelease"; fi
+            gh release create "$TAG" --target "$GITHUB_SHA" --title "Glaze theme packs ($TAG)" \
+              --notes "Theme art packs for the Glaze app. Assets are uploaded by the 'Publish Glaze theme packs' workflow; do not edit by hand." \
+              --latest=false $PRE
+          fi
+      - name: Upload (files, then manifests, then catalog.json last)
+        if: ${{ !inputs.dry_run }}
+        working-directory: apps/glaze/dist/release/assets
+        run: |
+          for list in upload-1-files.txt upload-2-manifests.txt upload-3-catalog.txt; do
+            n=$(grep -c . "../$list" || true)
+            echo "$list: $n asset(s)"
+            if [ "$n" -gt 0 ]; then
+              # Batches of 50 per gh call; --clobber replaces catalog.json (and any same-name file).
+              xargs -a "../$list" -d '\n' -n 50 gh release upload "$TAG" --clobber
+            fi
+          done
+      - name: Verify the public URLs
+        if: ${{ !inputs.dry_run }}
+        working-directory: apps/glaze/dist/release
+        run: |
+          BASE="https://github.com/${GH_REPO}/releases/download/${TAG}"
+          fail=0
+          # Every uploaded asset must download with the exact bytes built (sha256 from plan.json).
+          node -e 'const p=require("./plan.json");for(const a of p.assets) if(a.upload) console.log(a.name+" "+a.sha256)' > /tmp/check.txt
+          while read -r name want; do
+            got=""
+            # A replaced catalog.json can take a moment to be served fresh: up to 5 tries.
+            for i in 1 2 3 4 5; do
+              got=$(curl -fsSL --retry 3 --retry-delay 5 "$BASE/$name" | sha256sum | cut -d" " -f1) || got="(download failed)"
+              [ "$got" = "$want" ] && break
+              sleep 10
+            done
+            if [ "$got" != "$want" ]; then echo "MISMATCH $name: $got"; fail=1; fi
+          done < /tmp/check.txt
+          echo "checked $(wc -l < /tmp/check.txt) asset(s) at $BASE"
+          exit $fail
+      - name: Keep the version lock and the plan
         uses: actions/upload-artifact@v4
         with:
-          name: pack-versions
-          path: apps/glaze/scripts/packs/versions.json
+          name: pack-versions-${{ inputs.target }}
+          path: |
+            apps/glaze/scripts/packs/versions.json
+            apps/glaze/dist/release/plan.json
           if-no-files-found: ignore

@@ -1,6 +1,29 @@
-# Try Glaze on your iPhone (no Apple developer account needed)
+# Try Glaze on your iPhone (TestFlight)
 
-## New since your last test (30 Oct, owner-1030)
+Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
+
+## New since your last test (30 Oct evening, owner-1030b)
+
+**Apps without a themed icon (T170).**
+1. Icons › Install: is there a "Your apps" list with a count like "12 themed · 3 monogram", and does each letter-icon app carry a small **Monogram** tag? (yes / no)
+2. Tap one Monogram app: does the symbol / photo picker open, and does your pick show straight away? (yes / no)
+3. Do the letter icons now look designed for the theme (its font and colours, a badge, ring or glow), not plain letters? (yes / no)
+4. Add a few less common apps you use (Icons › Missing an app?): are most of them found by name now? (yes / no)
+
+**Scan my Home Screen (T171, new, only in the TestFlight build).**
+5. Take a screenshot of each Home Screen page. Icons › Missing an app? › **Scan my Home Screen** › pick the screenshots. Does it list the apps it found, with ticks? (yes / no)
+6. Are at least most of the names right, and do the unknown ones come in as letter icons after **Add selected apps**? (yes / no)
+
+**Premium look, first step (T173).**
+7. Themes tab: do the sections (START HERE, FREE ART, GLAZE PLUS) feel more like a magazine than a list, with comfortable spacing? (yes / no)
+8. Dark mode: do theme cards stand out softly from the background, with no thin outline? (yes / no)
+9. Settings › Display & Brightness › Text Size at the largest: do the Themes titles, theme names and search box still fit? (yes / no)
+10. Switch Themes categories quickly: do grey placeholder cards fade gently, with no spinner or flashing? (yes / no)
+
+**Theme packs hosting (T169):** downloadable theme packs will come from GitHub (free, nothing for you to set up). The Cloudflare R2 setup is no longer needed. Until the first pack set is published, theme detail shows no download and nothing breaks offline.
+
+
+## Earlier: 30 Oct afternoon (owner-1030)
 
 **Smooth and light (T162).** The Themes, Widgets and Wallpapers tabs now only keep the cards near the screen in memory, and theme art is drawn at card size. Answer yes or no on your iPhone:
 
@@ -20,11 +43,7 @@ In the new native build, open **Widgets > Island pets**, select Mochi, Pip or Cl
 Device checks still outstanding: month progress dots in the Add Widget gallery; a saved custom gradient reaching the installed widget; theme icon selection and small/blob icon backgrounds; pet start/switch/moods/stop, dismissal, deep link and VoiceOver. Compiler and upload results do not count as these device observations. All existing saved designs and selections are retained.
 
 
-The app runs inside **Expo Go**, a free app that loads development builds from your PC.
-
-1. **iPhone:** install **Expo Go** from the App Store (once).
-2. **PC (automatic since 23 Oct):** your PC's auto-start (`Desktop\Apps\_auto`) installs each new build, runs the type check by itself and restarts Expo. You don't download kits or run any .cmd files.
-3. **iPhone:** open Glaze from **Expo Go > Recently opened**, about 10 minutes after a new build.
+(History below this line is kept for the record. Any Expo Go steps in it are retired: Glaze is tested in TestFlight only since 30 Oct.)
 
 ## 26 October owner feedback: widgets and icon selection
 
