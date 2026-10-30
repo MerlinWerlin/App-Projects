@@ -24,6 +24,7 @@ export const ko: NonNullable<LocaleMessages['ui']> = {
     redownload: '다시 다운로드',
     redownloadA11y: '{name} 다시 다운로드',
     total: '합계',
+    measuring: '다운로드한 팩의 크기를 계산하는 중…',
     totalA11y: '테마 팩이 총 {size}를 사용합니다',
     removed: '{name} 제거됨',
     redownloaded: '{name} 다시 다운로드됨',

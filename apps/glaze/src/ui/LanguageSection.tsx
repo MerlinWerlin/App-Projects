@@ -18,7 +18,7 @@ import {
   useT,
   type Locale,
 } from '../i18n';
-import { continuous, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { continuous, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { haptic } from './haptics';
 import { textStyleFor } from './i18nLayout';
@@ -93,9 +93,9 @@ export function LanguagePickerSheet({ visible, onClose }: { visible: boolean; on
               ]}
             >
               <View style={styles.flex}>
-                <Text style={[textV2.body, own, { color: selected ? c.onTintSoft : c.ink }]}>{ch.label}</Text>
+                <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[textV2.body, own, { color: selected ? c.onTintSoft : c.ink }]}>{ch.label}</Text>
                 {ch.detail ? (
-                  <Text style={[textV2.footnote, textStyleFor(script, textV2.footnote), { color: selected ? c.onTintSoft : c.inkSecondary }]}>
+                  <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[textV2.footnote, textStyleFor(script, textV2.footnote), { color: selected ? c.onTintSoft : c.inkSecondary }]}>
                     {ch.detail}
                   </Text>
                 ) : null}
@@ -132,7 +132,7 @@ export function LanguageSection() {
 
   return (
     <>
-      <InsetGroup header={t('settings.language.title')} footer={t('settings.language.note')}>
+      <InsetGroup title={t('settings.language.title')} footer={t('settings.language.note')}>
         <InsetRow
           icon="globe"
           iconTone="sky"

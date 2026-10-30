@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { batchFraction } from '../core/install';
 import { useT } from '../i18n';
 import { textStyleFor } from './i18nLayout';
-import { radiusV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { fontScaleCap, radiusV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 
 type Props = {
@@ -30,10 +30,10 @@ export function ProgressBar({ progress, label }: Props) {
         <View style={[styles.fill, { width: `${p * 100}%` as `${number}%`, backgroundColor: c.tint }]} />
       </View>
       <View style={styles.row}>
-        <Text style={[...small, styles.flex, { color: c.inkSecondary }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...small, styles.flex, { color: c.inkSecondary }]}>
           {label ?? ''}
         </Text>
-        <Text style={[...small, { color: c.inkSecondary }]}>{pct}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...small, { color: c.inkSecondary }]}>{pct}</Text>
       </View>
     </View>
   );

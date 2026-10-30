@@ -4,6 +4,7 @@ import type { LocaleMessages } from '../../catalogue.ts';
 export const ko: NonNullable<LocaleMessages['plus']> = {
   lock: {
     subjectIntro: '{subject}은(는) Glaze Plus에 포함됩니다.',
+    eyebrow: '한 번 구매로 잠금 해제',
     price: '{price} 한 번만 결제. 구독은 절대 없습니다.',
     included: '포함 내용',
     widgets: '추가 위젯 스타일',

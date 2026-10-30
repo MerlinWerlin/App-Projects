@@ -24,6 +24,7 @@ export const hi: NonNullable<LocaleMessages['ui']> = {
     redownload: 'फिर से डाउनलोड करें',
     redownloadA11y: '{name} फिर से डाउनलोड करें',
     total: 'कुल',
+    measuring: 'डाउनलोड किए गए पैक मापे जा रहे हैं…',
     totalA11y: 'थीम पैक कुल {size} इस्तेमाल करते हैं',
     removed: '{name} हटाया गया',
     redownloaded: '{name} फिर से डाउनलोड हुआ',

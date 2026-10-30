@@ -175,10 +175,10 @@ export const fr: NonNullable<LocaleMessages['install']> = {
     oneAtATime: 'Vos icônes sont réparties en {files} profils. iOS ne garde qu’un profil téléchargé à la fois : installez la partie 1 dans Réglages, revenez ici, puis ouvrez la partie suivante.',
     failed: 'Glaze n’a pas pu ouvrir le profil dans Safari. Touchez Partager le fichier à la place et envoyez-le-vous par Mail ou AirDrop, ou utilisez Raccourcis.',
     fallbackNote: 'Cette version ne peut pas ouvrir le profil dans Safari : il passe par la feuille de partage, et iOS n’installe souvent pas un profil enregistré dans Fichiers. Utilisez Raccourcis (recommandé ici) ou envoyez-vous le fichier par Mail ou AirDrop.',
-    page: { title: 'Icônes Glaze', body: 'Touchez Installer. Safari demande d’autoriser le téléchargement d’un profil de configuration : touchez Autoriser, puis Fermer, et terminez dans Réglages.', button: 'Installer' },
+    page: { title: 'Icônes Glaze', body: 'Safari peut demander tout de suite d’autoriser le téléchargement d’un profil de configuration, avant même que vous touchiez Installer. Touchez Autoriser, puis Fermer, et terminez dans Réglages. Si Safari ne demande rien, touchez Installer.', button: 'Installer' },
     cards: {
-      safari: { title: 'Installer dans Safari', body: 'Touchez Installer dans Safari.' },
-      allow: { title: 'Autoriser le téléchargement', body: 'Safari demande d’autoriser le téléchargement d’un profil de configuration : touchez Autoriser, puis Fermer.' },
+      safari: { title: 'Installer dans Safari', body: 'Safari ouvre la page Glaze et peut demander tout de suite de télécharger le profil. Sinon, touchez Installer.' },
+      allow: { title: 'Autoriser le téléchargement', body: 'Safari demande d’autoriser le téléchargement d’un profil de configuration, parfois avant que vous touchiez Installer : touchez Autoriser, puis Fermer.' },
       settings: { title: 'Installer dans Réglages', body: 'Ouvrez Réglages : touchez « Profil téléchargé » en haut (ou Général > VPN et gestion de l’appareil), touchez Installer, saisissez votre code, Installer.' },
       home: { title: 'Vos icônes apparaissent', body: 'Vos icônes apparaissent sur l’écran d’accueil.' },
     },
@@ -188,6 +188,19 @@ export const fr: NonNullable<LocaleMessages['install']> = {
     showNext: 'Voir les étapes',
     allDone: 'Toutes les icônes sont faites. Vous pouvez déplacer les icônes d’origine dans la bibliothèque d’apps.',
     oneAtATime: 'Une icône à la fois : suivez les étapes pour l’app suivante, cochez-la, et Glaze ouvre les étapes de la prochaine.',
+  },
+  sequence: {
+    eyebrow: 'Étapes',
+    title: 'Terminer l’installation',
+    current: 'Étape en cours',
+    a11yCurrent: 'Étape {index} sur {total}, étape en cours. {title}. {body}',
+    a11yStep: 'Étape {index} sur {total}. {title}. {body}',
+    allDone: 'Toutes les étapes sont terminées. Vos nouvelles icônes sont sur l’écran d’accueil.',
+  },
+  finished: {
+    title: 'Terminé',
+    safari: 'Votre profil est prêt et ouvert dans Safari. Suivez les étapes ci-dessous pour terminer dans Réglages.',
+    share: 'Votre profil est prêt. Suivez les étapes ci-dessous pour terminer dans Réglages.',
   },
   coverage: {
     heading: 'Vos apps',

@@ -4,6 +4,7 @@ import type { LocaleMessages } from '../../catalogue.ts';
 export const zhHans: NonNullable<LocaleMessages['plus']> = {
   lock: {
     subjectIntro: '{subject}属于 Glaze Plus。',
+    eyebrow: '一次性解锁',
     price: '一次性 {price}。永不订阅。',
     included: '包含内容',
     widgets: '额外的小组件样式',

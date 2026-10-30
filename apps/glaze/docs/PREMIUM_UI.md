@@ -64,17 +64,17 @@ Large art-led cards, theme preview on a phone mock (HomeMock), editorial section
 - [ ] Check on device: at the largest accessibility text size the Studio's pinned preview (eyebrow line wraps) still leaves room to scroll the controls.
 
 ### 3.5 Install flow
-- [ ] Step cards as a calm numbered sequence (one step visible as "current"), timed fades between steps.
-- [ ] Waiting states (rendering icons, saving) as skeletons of the result, no spinners.
-- [ ] Finished state with one `success` haptic and a clear "Done".
+- [x] Step cards as a calm numbered sequence (one step visible as "current"), timed fades between steps.
+- [x] Waiting states (rendering icons, saving) as skeletons of the result, no spinners.
+- [x] Finished state with one `success` haptic and a clear "Done".
 
 ### 3.6 Plus sheet
-- [ ] Thick glass sheet, art collage hero, three benefit rows with line icons, one price, one primary pill, restore as a plain link.
-- [ ] No pressure patterns: no timers, no strike-through prices, "one-time unlock, never a subscription" stays.
+- [x] Thick glass sheet, art collage hero, three benefit rows with line icons, one price, one primary pill, restore as a plain link.
+- [x] No pressure patterns: no timers, no strike-through prices, "one-time unlock, never a subscription" stays.
 
 ### 3.7 Settings
-- [ ] Inset groups only, editorial group titles, row icons in pastel circles, values in `inkSecondary`.
-- [ ] Storage (packs) rows with skeleton sizes while measuring.
+- [x] Inset groups only, editorial group titles, row icons in pastel circles, values in `inkSecondary`.
+- [x] Storage (packs) rows with skeleton sizes while measuring.
 
 ## 4. "Done" checklist (per screen)
 
@@ -100,9 +100,9 @@ A screen is **done** when all of these hold:
 | Themes browse | First slice shipped: editorial headers, 16 pt rhythm, layered dark cards, skeleton placeholders, Dynamic Type caps | 182 |
 | Theme detail | Slice shipped: hero on a soft surface with the Home / Lock pill under it, editorial blocks, one primary pill in the glass bar, radii to tokens, expo-image art, Dynamic Type caps (skeleton apply progress still open) | 183 |
 | Widgets | Slice shipped: family section headers, 16 pt rhythm, lifted cards without hairlines, skeleton previews, Studio preview on a raised surface with an eyebrow, Dynamic Type caps, tokens only | 183 |
-| Install flow | Not started | - |
-| Plus sheet | Not started | - |
-| Settings | Not started | - |
+| Install flow | Slice shipped: numbered step sequence with one current step, timed fades (Reduce Motion shorter), skeleton waits, Done panels, one success haptic, Dynamic Type caps; T156 Safari copy | 184 |
+| Plus sheet | Slice shipped: glass sheet with art-collage hero, three benefit rows, one price, one Unlock pill, Restore as a plain link, no pressure patterns | 184 |
+| Settings | Slice shipped: inset groups with editorial titles, pastel circle row icons, values in inkSecondary, Storage skeletons while measuring | 184 |
 
 ## 6. Tokens added for this pass (in `src/core/designV2.ts`, re-exported by `tokensV2`)
 
@@ -112,6 +112,8 @@ A screen is **done** when all of these hold:
 - Component: `src/ui/SectionHeader.tsx`; `src/ui/Skeleton.tsx` now a calm opacity pulse (no sweep, no raw colours, optional `colour`).
 - `SquircleCard` `outline` prop (default true): premium screens pass `outline={false}` with `tone="raised"` in dark mode so cards lift by surface, not a hairline (run 183).
 - `src/core/widgetFamilies.ts`: Widgets tab families (theme / everyday / habits) and per-family rows (run 183); guarded by `src/core/premiumWidgets.test.ts`.
+
+Run 184 guards: `src/core/premiumInstall.test.ts` (§3.5), `src/core/premiumPlusSettings.test.ts` (§3.6/§3.7). `InsetGroup` gained `title`/`eyebrow` props (SectionHeader); shared row icons are pastel circles.
 
 Guards: `src/core/premiumUi.test.ts` (tokens, skeleton motion, no spinners, editorial headers, Dynamic Type caps on the Themes browse path, this doc's table).
 `src/core/premiumThemeDetail.test.ts` (§3.3: block order and strings in all locales, hero layout and timed cross-fade, one primary pill, expo-image art, Dynamic Type caps on the theme detail path).

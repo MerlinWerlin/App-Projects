@@ -4,6 +4,7 @@ import type { LocaleMessages } from '../../catalogue.ts';
 export const fr: NonNullable<LocaleMessages['plus']> = {
   lock: {
     subjectIntro: '{subject} fait partie de Glaze Plus.',
+    eyebrow: 'Achat unique',
     price: 'Paiement unique de {price}. Jamais d’abonnement.',
     included: 'Ce qui est inclus',
     widgets: 'Styles de widgets supplémentaires',

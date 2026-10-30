@@ -152,7 +152,12 @@ export const PACK_BASE_RESOLVED: string | null = (() => {
 export const PACKS_ENABLED = packsEnabled(PACK_BASE);
 
 export async function loadPackIndex(): Promise<void> {
-  if (state.loaded || !INDEX) return;
+  if (state.loaded) return;
+  // No file system (web): nothing is on the phone, so measuring is done (Settings stops its skeleton).
+  if (!INDEX) {
+    set({ loaded: true });
+    return;
+  }
   try {
     const info = await fs.getInfoAsync(INDEX);
     const raw = info.exists ? await fs.readAsStringAsync(INDEX) : null;

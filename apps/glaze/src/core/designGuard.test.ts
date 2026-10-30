@@ -48,7 +48,6 @@ const BASELINE: Record<string, Counts> = {
   'src/ui/LivePhotoGuide.tsx': { colour: 6, fontSize: 1 },
   'src/ui/PhotoCropEditor.tsx': { colour: 1 },
   'src/ui/SheenButton.tsx': { colour: 1 },
-  'src/ui/Sheet.tsx': { radius: 1 },
   'src/ui/WallpaperTile.tsx': { colour: 3 },
 };
 

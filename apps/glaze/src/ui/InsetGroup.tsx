@@ -1,36 +1,44 @@
 // iOS inset-grouped list (docs/DESIGN_V2.md "InsetGroup / InsetRow"): a rounded section card on the
 // grouped background, an optional small header above and footnote below, hairline separators that
-// start at the row title. Rows spring slightly on press and fire a selection haptic (Haptics
+// start at the row title. T173 (docs/PREMIUM_UI.md §3.7): `title` (+ optional `eyebrow`) draws an
+// editorial SectionHeader above the card instead of the small grey header; row icons sit in pastel
+// circles; every Text carries its Dynamic Type cap. Rows spring slightly on press and fire a selection haptic (Haptics
 // setting); Reduce Motion dims instead (PressableScale). Chevrons point the reading way in RTL.
 import { Feather } from '@expo/vector-icons';
 import { Children, Fragment, isValidElement, type ReactElement, type ReactNode } from 'react';
 import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useT } from '../i18n';
 import { separatorInset } from '../core/designV2';
-import { continuous, iconTileRadius, radiusV2, sizeV2, spaceV2, textV2, type PastelName } from '../theme/tokensV2';
+import { circleRadius, continuous, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, type PastelName } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import type { FeatherName } from './featherName';
 import type { HapticKind } from './haptics';
 import { Chevron, textStyleFor } from './i18nLayout';
 import { PressableScale } from './PressableScale';
+import { SectionHeader } from './SectionHeader';
 
 type GroupProps = {
   children?: ReactNode;
   /** Small section title above the card. */
   header?: string;
+  /** Editorial group title (SectionHeader, title3) above the card; wins over `header`. */
+  title?: string;
+  /** Small label above `title` (read with it as one heading). */
+  eyebrow?: string;
   /** Explanatory footnote below the card. */
   footer?: string;
   style?: StyleProp<ViewStyle>;
 };
 
-export function InsetGroup({ children, header, footer, style }: GroupProps) {
+export function InsetGroup({ children, header, title, eyebrow, footer, style }: GroupProps) {
   const { c } = useColorsV2();
   const { script } = useT();
   const rows = Children.toArray(children).filter(isValidElement) as ReactElement<{ icon?: unknown }>[];
   return (
     <View style={[styles.group, style]}>
-      {header ? (
-        <Text accessibilityRole="header" style={[textV2.footnote, textStyleFor(script, textV2.footnote), styles.header, { color: c.inkSecondary }]}>
+      {title ? <SectionHeader level="group" flushTop eyebrow={eyebrow} title={title} style={styles.editorial} /> : null}
+      {!title && header ? (
+        <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('footnote')} style={[textV2.footnote, textStyleFor(script, textV2.footnote), styles.header, { color: c.inkSecondary }]}>
           {header}
         </Text>
       ) : null}
@@ -47,7 +55,7 @@ export function InsetGroup({ children, header, footer, style }: GroupProps) {
         ))}
       </View>
       {footer ? (
-        <Text style={[textV2.footnote, textStyleFor(script, textV2.footnote), styles.footer, { color: c.inkSecondary }]}>{footer}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[textV2.footnote, textStyleFor(script, textV2.footnote), styles.footer, { color: c.inkSecondary }]}>{footer}</Text>
       ) : null}
     </View>
   );
@@ -60,7 +68,7 @@ type RowProps = {
   subtitle?: string;
   /** Trailing secondary text (current value), e.g. a chosen language. */
   value?: string;
-  /** Leading glyph on a small pastel squircle tile. */
+  /** Leading glyph in a small pastel circle. */
   icon?: FeatherName;
   iconTone?: PastelName;
   /** chevron: opens a screen · check: selected option in a picker list · none. */
@@ -103,20 +111,20 @@ export function InsetRow({
           style={[
             styles.tile,
             continuous,
-            { width: tile, height: tile, borderRadius: iconTileRadius(tile), backgroundColor: c.pastels[iconTone].fill },
+            { width: tile, height: tile, borderRadius: circleRadius(tile), backgroundColor: c.pastels[iconTone].fill },
           ]}
         >
           <Feather name={icon} size={17} color={c.pastels[iconTone].ink} />
         </View>
       ) : null}
       <View style={styles.texts}>
-        <Text style={[textV2.body, textStyleFor(script, textV2.body), { color: destructive ? c.danger : c.ink }]}>{title}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[textV2.body, textStyleFor(script, textV2.body), { color: destructive ? c.danger : c.ink }]}>{title}</Text>
         {subtitle ? (
-          <Text style={[textV2.footnote, textStyleFor(script, textV2.footnote), { color: c.inkSecondary }]}>{subtitle}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[textV2.footnote, textStyleFor(script, textV2.footnote), { color: c.inkSecondary }]}>{subtitle}</Text>
         ) : null}
       </View>
       {value ? (
-        <Text numberOfLines={1} style={[textV2.body, textStyleFor(script, textV2.body), styles.value, { color: c.inkSecondary }]}>
+        <Text numberOfLines={1} maxFontSizeMultiplier={fontScaleCap('body')} style={[textV2.body, textStyleFor(script, textV2.body), styles.value, { color: c.inkSecondary }]}>
           {value}
         </Text>
       ) : null}
@@ -152,6 +160,8 @@ export function InsetRow({
 const styles = StyleSheet.create({
   group: { marginHorizontal: spaceV2.lg, gap: spaceV2.xs + spaceV2.xxs },
   header: { paddingHorizontal: spaceV2.lg, fontWeight: '600' },
+  // The group's own gap (6) plus this makes the editorial 12 pt under the title.
+  editorial: { paddingHorizontal: spaceV2.xs, paddingBottom: spaceV2.xs + spaceV2.xxs },
   footer: { paddingHorizontal: spaceV2.lg },
   card: { borderRadius: radiusV2.group, overflow: 'hidden' },
   row: {

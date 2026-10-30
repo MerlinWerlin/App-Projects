@@ -1,7 +1,9 @@
 // Settings (design v2, docs/DESIGN_V2.md §9, T56): collapsing large title, every section an inset
 // group with pastel icon tiles, switch rows as inset rows with a trailing switch, Plus as a tinted
 // squircle card. T70: no tab button (opened from the gear on Themes), so the bar offers "Done".
-import { Feather } from '@expo/vector-icons';
+// T173 premium pass (docs/PREMIUM_UI.md §3.7): inset groups only (Plus and the tip jar too), editorial
+// group titles (SectionHeader via InsetGroup `title`), row icons in pastel circles, values in
+// inkSecondary, Storage sizes as skeletons while measuring, a Dynamic Type cap on every Text.
 import Constants from 'expo-constants';
 import { router } from 'expo-router';
 import { useState, type ReactNode } from 'react';
@@ -15,7 +17,7 @@ import { TipJar } from '../../src/plus/TipJar';
 import { useSettings } from '../../src/store/settings';
 import { useStudio } from '../../src/store/studio';
 import { resetTips } from '../../src/store/tips';
-import { spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
+import { circleRadius, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { haptic } from '../../src/ui/haptics';
 import { LanguageSection } from '../../src/ui/LanguageSection';
@@ -27,7 +29,7 @@ import { useToast } from '../../src/ui/Toast';
 import type { UpdateCheckOutcome } from '../../src/core/updates';
 import { useT, type MessageKey, type Script } from '../../src/i18n';
 import { textStyleFor } from '../../src/ui/i18nLayout';
-import { BarIconButton, InsetGroup, InsetRow, LargeTitleScrollView, PillButton, SquircleCard, SwitchInsetRow } from '../../src/ui/v2';
+import { BarIconButton, InsetGroup, InsetRow, LargeTitleScrollView, Skeleton, SwitchInsetRow } from '../../src/ui/v2';
 import { checkForUpdate, reloadApp } from '../../src/native/updates';
 
 const PLUS_NAME = 'Glaze Plus'; // i18n-ignore (product name)
@@ -111,10 +113,12 @@ export default function SettingsScreen() {
       // T70: Settings has no tab button any more (opened from the gear on Themes), so it offers a way back.
       trailing={<BarIconButton icon="x" accessibilityLabel={t('common.done')} onPress={() => router.navigate('/themes')} />}
     >
-      <InsetGroup header={t('settings.style.title')} footer={t('settings.style.note')}>
+      <InsetGroup title={t('settings.style.title')} footer={t('settings.style.note')}>
         {state ? (
           <View key="shape" style={styles.block}>
-            <Text style={[...ts('headline'), { color: c.ink }]}>{t('settings.style.shape')}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
+              {t('settings.style.shape')}
+            </Text>
             <ContextTip id="icon-shapes" />
             <Segmented
               vertical
@@ -127,7 +131,9 @@ export default function SettingsScreen() {
         ) : null}
         {state ? (
           <View key="size" style={styles.block}>
-            <Text style={[...ts('headline'), { color: c.ink }]}>{t('settings.style.size')}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
+              {t('settings.style.size')}
+            </Text>
             <Segmented
               label={t('settings.style.size')}
               options={sizeOptions}
@@ -154,11 +160,15 @@ export default function SettingsScreen() {
             }}
           />
         ) : (
-          <InsetRow key="loading" title={t('common.loading')} />
+          // A short wait while the saved style loads: a skeleton in the row's shape, never a spinner.
+          <View key="loading" style={styles.skeletonRow} accessible accessibilityLabel={t('common.loading')}>
+            <Skeleton width={sizeV2.rowIcon} height={sizeV2.rowIcon} radius={circleRadius(sizeV2.rowIcon)} />
+            <Skeleton width="50%" height={textV2.body.lineHeight ?? spaceV2.xl} />
+          </View>
         )}
       </InsetGroup>
 
-      <InsetGroup header={t('settings.feel.title')}>
+      <InsetGroup title={t('settings.feel.title')}>
         <SwitchInsetRow
           icon="smartphone"
           iconTone="mint"
@@ -172,7 +182,9 @@ export default function SettingsScreen() {
           }}
         />
         <View style={styles.block}>
-          <Text style={[...ts('headline'), { color: c.ink }]}>{t('settings.feel.motion')}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
+            {t('settings.feel.motion')}
+          </Text>
           <Segmented
             label={t('settings.feel.motionGroup')}
             options={motionOptions}
@@ -187,7 +199,7 @@ export default function SettingsScreen() {
       {/* T46: Settings › Storage (downloaded theme packs). */}
       <PackStorageSection />
 
-      <InsetGroup header={t('settings.help.title')}>
+      <InsetGroup title={t('settings.help.title')}>
         <InsetRow
           icon="help-circle"
           iconTone="sky"
@@ -224,41 +236,34 @@ export default function SettingsScreen() {
         />
       </InsetGroup>
 
-      <SquircleCard tone="berry" size="large" style={styles.side}>
-        <View style={styles.plus}>
-          <View style={styles.plusHead}>
-            <Feather name="star" size={20} color={c.pastels.berry.ink} />
-            <Text accessibilityRole="header" style={[...ts('title3'), styles.flex, { color: c.pastels.berry.ink }]}>
-              {PLUS_NAME}
-            </Text>
-          </View>
-          <Text style={[...ts('callout'), { color: c.pastels.berry.ink }]}>{t('settings.plus.body')}</Text>
-          <PillButton
-            variant="filled"
-            size="small"
-            icon="info"
-            label={t('settings.plus.more')}
-            accessibilityHint={t('settings.plus.moreHint')}
-            onPress={() => setPlusOpen(true)}
-            haptic="select"
-          />
-          <RestorePurchases />
-        </View>
-      </SquircleCard>
+      {/* Plus as an inset group (T173): one row opens the sheet, Restore purchases is always a row under it. */}
+      <InsetGroup eyebrow={t('plus.lock.eyebrow')} title={PLUS_NAME} footer={t('settings.plus.body')}>
+        <InsetRow
+          icon="star"
+          iconTone="berry"
+          title={t('settings.plus.more')}
+          accessibilityLabel={t('settings.plus.more')}
+          accessibilityHint={t('settings.plus.moreHint')}
+          onPress={() => setPlusOpen(true)}
+        />
+        <RestorePurchases variant="row" icon="refresh-cw" />
+      </InsetGroup>
       {/* Release standard §2: the tip jar only says "Coming with the store release" until tips are on sale, so
           release builds leave it out (development keeps it for layout work). Show it again once tips are live. */}
-      {__DEV__ ? (
-        <View style={styles.side}>
-          <TipJar />
-        </View>
-      ) : null}
+      {__DEV__ ? <TipJar /> : null}
 
-      <InsetGroup header={t('settings.privacy.title')}>
+      <InsetGroup title={t('settings.privacy.title')}>
         <InsetRow icon="shield" iconTone="mint" title={t('settings.privacy.heading')} subtitle={t('settings.privacy.body')} />
       </InsetGroup>
 
-      <InsetGroup header={t('settings.about.title')} footer={t('settings.about.credits')}>
-        <InsetRow icon="tag" iconTone="sky" title={t('settings.about.version', { version })} />
+      <InsetGroup title={t('settings.about.title')} footer={t('settings.about.credits')}>
+        <InsetRow
+          icon="tag"
+          iconTone="sky"
+          title={t('settings.about.versionRow')}
+          value={version}
+          accessibilityLabel={t('settings.about.version', { version })}
+        />
         <UpdateRow />
       </InsetGroup>
 
@@ -268,18 +273,22 @@ export default function SettingsScreen() {
         <Para title={t('settings.explainer.addedTitle')}>{t('settings.explainer.addedBody')}</Para>
         <Para title={t('settings.explainer.waysTitle')}>{t('settings.explainer.waysBody')}</Para>
         <Para title={t('settings.explainer.originalsTitle')}>{t('settings.explainer.originalsBody')}</Para>
-        <Text accessibilityRole="header" style={[...ts('headline'), { color: c.ink }]}>
+        <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
           {t('settings.explainer.removeTitle')}
         </Text>
         {REMOVE_STEPS.map((step, i) => (
           <View key={step} style={styles.step}>
-            <Text style={[...ts('headline'), styles.stepNum, { color: c.tint }]}>
+            <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), styles.stepNum, { color: c.tint }]}>
               {t('settings.explainer.stepNumber', { number: i + 1 })}
             </Text>
-            <Text style={[...ts('body'), styles.flex, { color: c.ink }]}>{t(step)}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.flex, { color: c.ink }]}>
+              {t(step)}
+            </Text>
           </View>
         ))}
-        <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('settings.explainer.shortcutsNote')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
+          {t('settings.explainer.shortcutsNote')}
+        </Text>
       </Sheet>
     </LargeTitleScrollView>
   );
@@ -319,20 +328,20 @@ function Para({ title, children }: { title: string; children?: ReactNode }) {
   const { script } = useT();
   return (
     <View style={styles.para}>
-      <Text accessibilityRole="header" style={[...typeFor(script, 'headline'), { color: c.ink }]}>
+      <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), { color: c.ink }]}>
         {title}
       </Text>
-      <Text style={[...typeFor(script, 'body'), { color: c.inkSecondary }]}>{children}</Text>
+      <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...typeFor(script, 'body'), { color: c.inkSecondary }]}>
+        {children}
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  side: { marginHorizontal: spaceV2.lg },
   block: { paddingHorizontal: spaceV2.lg, paddingVertical: spaceV2.md, gap: spaceV2.sm },
   flex: { flex: 1, flexShrink: 1, gap: spaceV2.xxs },
-  plus: { gap: spaceV2.md },
-  plusHead: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
+  skeletonRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, paddingHorizontal: spaceV2.lg, paddingVertical: spaceV2.md },
   para: { gap: spaceV2.xs },
   step: { flexDirection: 'row', gap: spaceV2.sm },
   stepNum: { minWidth: 20 },

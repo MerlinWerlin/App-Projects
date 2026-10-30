@@ -16,14 +16,8 @@ const LIST_TABS: Record<string, RegExp> = {
   'app/(tabs)/themes.tsx': /<Animated\.FlatList\b/,
   'app/(tabs)/widgets.tsx': /<LargeTitleFlatList\b/,
   'app/(tabs)/wallpapers.tsx': /<LargeTitleFlatList\b/,
-};
-
-/**
- * Tabs still on a vertical ScrollView, with the reason. Icons is the Icon Studio form; its only
- * mapped list is the search results, capped at RESULT_LIMIT (checked below).
- */
-const SCROLLVIEW_OK: Record<string, string> = {
-  'app/(tabs)/icons.tsx': 'Icon Studio form; search results capped at RESULT_LIMIT',
+  // T166: the Icon Studio's search results are the rows of a virtualised list (form = footer).
+  'app/(tabs)/icons.tsx': /<Animated\.FlatList\b/,
 };
 
 /** Opening tags of every ScrollView in a source (plain or Animated). */
@@ -40,13 +34,36 @@ test('gallery tabs scroll a virtualised list; any other ScrollView in them is a 
   }
 });
 
-test('the allowlisted Icons tab maps only a capped results list inside its ScrollView', () => {
+/** Source of every `<ScrollView …>…</ScrollView>` (plain or Animated) in a file. */
+function scrollViewBodies(src: string): string[] {
+  return [...src.matchAll(/<((?:Animated\.)?ScrollView)\b[\s\S]*?<\/\1>/g)].map((m) => m[0]);
+}
+
+test('T166: the Icons tab is a virtualised list of memoised rows, with no large array mapped in a ScrollView', () => {
   const src = strip(read('app/(tabs)/icons.tsx'));
-  assert.ok(SCROLLVIEW_OK['app/(tabs)/icons.tsx']);
-  assert.match(src, /const RESULT_LIMIT = (\d+);/);
+  assert.match(src, /<(?:Animated\.)?(?:FlatList|SectionList)\b/, 'icons.tsx scrolls a FlatList / SectionList');
+  const list = src.slice(src.search(/<(?:Animated\.)?(?:FlatList|SectionList)\b/));
+  assert.match(list, /\{\.\.\.LIST_WINDOW\}/);
+  assert.match(list, /bounces=\{false\}/);
+  assert.match(list, /overScrollMode="never"/);
+  assert.match(list, /keyExtractor=\{resultKey\}/);
+  assert.match(list, /renderItem=\{renderResult\}/);
+  assert.match(list, /ListHeaderComponent=\{listHeader\}/);
+  assert.match(src, /const renderResult: ListRenderItem<ResultItem> = useCallback\(/);
+  for (const row of ['PickRow', 'MissingRow', 'NoMatchRow', 'AppChip']) {
+    assert.match(src, new RegExp(`const ${row} = memo\\(`), `${row} is memoised`);
+  }
+  // Results stay capped (the list renders them lazily, but the cap bounds the work per keystroke).
   const limit = Number(/const RESULT_LIMIT = (\d+);/.exec(src)?.[1]);
-  assert.ok(limit <= 60, `RESULT_LIMIT ${limit} <= 60`);
-  assert.match(src, /results\.slice\(0, RESULT_LIMIT\)\.map\(/);
+  assert.ok(limit > 0 && limit <= 60, `RESULT_LIMIT ${limit} <= 60`);
+  // Any ScrollView left is a horizontal chip row, and the only thing mapped in it is the category chips.
+  for (const body of scrollViewBodies(src)) {
+    const tag = /^<[^>]*>/.exec(body)?.[0] ?? '';
+    assert.match(tag, /\bhorizontal\b/, `vertical ScrollView in icons.tsx: ${tag.slice(0, 60)}`);
+    const maps = [...body.matchAll(/([\w.\]\[ ,]+)\)?\.map\(/g)].map((m) => m[1].trim());
+    for (const m of maps) assert.match(m, /categoryChips\]?$/, `only category chips are mapped in a ScrollView (found ${m})`);
+    assert.doesNotMatch(body, /\b(?:results|specs|items)\b[^\n]*\.map\(/, 'no results / specs mapped inside a ScrollView');
+  }
 });
 
 test('list windows are small and lists never bounce', () => {

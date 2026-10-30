@@ -2,6 +2,14 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (31 Oct)
+
+- **Install steps, premium look (T173):** Icons › Install. Is it clear which step you're on (one step highlighted with a filled number and "Current step", the others greyed out), and does the highlight move smoothly when you tick a step done? (yes / no)
+- **Safari download (T156):** when you tap Generate profile, does Safari ask to allow the download before you tap Install, and does the step text ("Safari may ask … If it doesn't, tap Install") match what you saw? (yes / no)
+- **Glaze Plus sheet (T173):** tap any Plus item. Do the three wallpapers at the top look calm and premium in light and dark mode, with the Unlock button and the plain "Restore" link visible without scrolling? (yes / no)
+- **Settings (T173):** do the group titles and round pastel row icons look tidy, and at the largest Text Size is nothing cut off (Storage shows grey placeholders for a moment before the sizes appear)? (yes / no)
+- **Icons tab speed (T166):** scroll down through "Add apps" and the style controls. Smooth, no blank or flickering rows, and the app list still looks like one rounded card? (yes / no)
+
 ## New since your last test (30 Oct night)
 
 - **Theme page, premium look (T173):** open any theme. Is the phone preview large and centred on a soft card, with a small Home Screen / Lock Screen switch under it, and only one big **Apply this look** button at the bottom ("Choose icons" as a small link under it)? (yes / no)

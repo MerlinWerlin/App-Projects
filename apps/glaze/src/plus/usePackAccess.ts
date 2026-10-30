@@ -95,6 +95,8 @@ export function usePackAccess(theme: (Pick<Theme, 'plus' | 'packId'> & { remoteA
 }
 
 export type PackStorage = {
+  /** True until the on-phone pack index has been read (Settings shows skeleton sizes meanwhile). */
+  measuring: boolean;
   packs: readonly PackCacheEntry[];
   totalBytes: number;
   enabled: boolean;
@@ -126,6 +128,7 @@ export function usePackStorage(): PackStorage {
     [plus],
   );
   return {
+    measuring: !store.loaded,
     packs: store.index.packs,
     totalBytes: totalCacheBytes(store.index),
     enabled: PACKS_ENABLED,

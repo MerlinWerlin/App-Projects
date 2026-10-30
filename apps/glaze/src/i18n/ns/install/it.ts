@@ -175,10 +175,10 @@ export const it: NonNullable<LocaleMessages['install']> = {
     oneAtATime: 'Le tue icone sono divise in {files} profili. iOS tiene un solo profilo scaricato alla volta: installa la parte 1 in Impostazioni, torna qui e poi apri la parte successiva.',
     failed: 'Glaze non è riuscito ad aprire il profilo in Safari. Tocca Condividi il file e invialo a te stesso con Mail o AirDrop, oppure usa Comandi Rapidi.',
     fallbackNote: 'Questa versione non può aprire il profilo in Safari, quindi passa dal menu di condivisione, e spesso iOS non installa un profilo salvato in File. Usa Comandi Rapidi (consigliato qui) o invia il file a te stesso con Mail o AirDrop.',
-    page: { title: 'Icone Glaze', body: 'Tocca Installa. Safari chiede di consentire il download di un profilo di configurazione: tocca Consenti, poi Chiudi, e completa in Impostazioni.', button: 'Installa' },
+    page: { title: 'Icone Glaze', body: 'Safari potrebbe chiedere subito di consentire il download di un profilo di configurazione, prima che tocchi Installa. Tocca Consenti, poi Chiudi, e completa in Impostazioni. Se Safari non lo chiede, tocca Installa.', button: 'Installa' },
     cards: {
-      safari: { title: 'Installa in Safari', body: 'Tocca Installa in Safari.' },
-      allow: { title: 'Consenti il download', body: 'Safari chiede di consentire il download di un profilo di configurazione: tocca Consenti, poi Chiudi.' },
+      safari: { title: 'Installa in Safari', body: 'Safari apre la pagina di Glaze e potrebbe chiedere subito di scaricare il profilo. Altrimenti tocca Installa.' },
+      allow: { title: 'Consenti il download', body: 'Safari chiede di consentire il download di un profilo di configurazione, a volte prima che tocchi Installa: tocca Consenti, poi Chiudi.' },
       settings: { title: 'Installa in Impostazioni', body: 'Apri Impostazioni: tocca “Profilo scaricato” in alto (o Generali > VPN e gestione dispositivi), tocca Installa, inserisci il codice, Installa.' },
       home: { title: 'Compaiono le tue icone', body: 'Le tue icone compaiono nella schermata Home.' },
     },
@@ -188,6 +188,19 @@ export const it: NonNullable<LocaleMessages['install']> = {
     showNext: 'Mostra i passaggi',
     allDone: 'Tutte le icone fatte. Puoi spostare le icone originali nella Libreria app.',
     oneAtATime: 'Un’icona alla volta: segui i passaggi per l’app successiva, spuntala e Glaze apre i passaggi per la prossima.',
+  },
+  sequence: {
+    eyebrow: 'Passi',
+    title: 'Completa l’installazione',
+    current: 'Passo attuale',
+    a11yCurrent: 'Passo {index} di {total}, passo attuale. {title}. {body}',
+    a11yStep: 'Passo {index} di {total}. {title}. {body}',
+    allDone: 'Tutti i passi fatti. Le nuove icone sono nella schermata Home.',
+  },
+  finished: {
+    title: 'Fatto',
+    safari: 'Il profilo è pronto e aperto in Safari. Segui i passi qui sotto per completare in Impostazioni.',
+    share: 'Il profilo è pronto. Segui i passi qui sotto per completare in Impostazioni.',
   },
   coverage: {
     heading: 'Le tue app',

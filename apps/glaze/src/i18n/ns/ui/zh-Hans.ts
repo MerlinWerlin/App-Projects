@@ -24,6 +24,7 @@ export const zhHans: NonNullable<LocaleMessages['ui']> = {
     redownload: '重新下载',
     redownloadA11y: '重新下载 {name}',
     total: '总计',
+    measuring: '正在计算已下载主题包的大小…',
     totalA11y: '主题包共占用 {size}',
     removed: '已移除 {name}',
     redownloaded: '已重新下载 {name}',

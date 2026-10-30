@@ -182,10 +182,11 @@ export const en = {
     oneAtATime: 'Your icons are split into {files} profiles. iOS keeps one downloaded profile at a time: install part 1 in Settings, come back here, then open the next part.',
     failed: 'Glaze could not open the profile in Safari. Tap Share the file instead and send it to yourself with Mail or AirDrop, or use Shortcuts.',
     fallbackNote: 'This build can’t open the profile in Safari, so it goes through the share sheet, and iOS often won’t install a profile saved to Files. Use Shortcuts (recommended here), or send the file to yourself with Mail or AirDrop.',
-    page: { title: 'Glaze icons', body: 'Tap Install. Safari asks to allow a configuration profile download: tap Allow, then Close, and finish in Settings.', button: 'Install' },
+    // T156: the page asks for the profile as soon as it opens, so Safari may ask before Install is tapped.
+    page: { title: 'Glaze icons', body: 'Safari may ask to allow a configuration profile download straight away, before you tap Install. Tap Allow, then Close, and finish in Settings. If Safari doesn’t ask, tap Install.', button: 'Install' },
     cards: {
-      safari: { title: 'Install in Safari', body: 'Tap Install in Safari.' },
-      allow: { title: 'Allow the download', body: 'Safari asks to allow a configuration profile download: tap Allow, then Close.' },
+      safari: { title: 'Install in Safari', body: 'Safari opens the Glaze page and may ask to download the profile straight away. If it doesn’t, tap Install.' },
+      allow: { title: 'Allow the download', body: 'Safari asks to allow a configuration profile download, sometimes before you tap Install: tap Allow, then Close.' },
       settings: { title: 'Install in Settings', body: 'Open Settings: tap “Profile Downloaded” near the top (or General > VPN & Device Management), tap Install, enter your passcode, Install.' },
       home: { title: 'Your icons appear', body: 'Your icons appear on the Home Screen.' },
     },
@@ -195,6 +196,20 @@ export const en = {
     showNext: 'Show the steps',
     allDone: 'All icons done. You can move the original icons to the App Library.',
     oneAtATime: 'One icon at a time: follow the steps for the next app, tick it off, and Glaze opens the steps for the one after.',
+  },
+  // T173 premium: the profile steps as a numbered sequence, and the finished state.
+  sequence: {
+    eyebrow: 'Steps',
+    title: 'Finish installing',
+    current: 'Current step',
+    a11yCurrent: 'Step {index} of {total}, current step. {title}. {body}',
+    a11yStep: 'Step {index} of {total}. {title}. {body}',
+    allDone: 'All steps done. Your new icons are on the Home Screen.',
+  },
+  finished: {
+    title: 'Done',
+    safari: 'Your profile is ready and open in Safari. Follow the steps below to finish in Settings.',
+    share: 'Your profile is ready. Follow the steps below to finish in Settings.',
   },
   coverage: {
     heading: 'Your apps',

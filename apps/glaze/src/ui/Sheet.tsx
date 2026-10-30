@@ -9,7 +9,7 @@ import Animated, { FadeIn, SlideInDown } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useT } from '../i18n';
 import { durations, easeOutCurve, useMotionReduced } from '../theme/motion';
-import { circleRadius, continuous, radiusV2, scrimColour, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { circleRadius, continuous, fontScaleCap, radiusV2, scrimColour, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { GlassBar } from './GlassBar';
 import { textStyleFor } from './i18nLayout';
@@ -63,7 +63,7 @@ export function Sheet({ visible, onClose, title, children, closeLabel }: Props) 
               accessibilityElementsHidden
             />
             <View style={styles.header}>
-              <Text accessibilityRole="header" style={[textV2.title2, textStyleFor(script, textV2.title2), styles.title, { color: c.ink }]}>
+              <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title2')} style={[textV2.title2, textStyleFor(script, textV2.title2), styles.title, { color: c.ink }]}>
                 {title}
               </Text>
               {closeLabel ? (
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     paddingTop: spaceV2.sm,
   },
-  grabber: { alignSelf: 'center', width: 36, height: 5, borderRadius: 3, opacity: 0.5, marginBottom: spaceV2.xs },
+  grabber: { alignSelf: 'center', width: 36, height: 5, borderRadius: circleRadius(5), opacity: 0.5, marginBottom: spaceV2.xs },
   header: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -175,10 +175,10 @@ export const de: NonNullable<LocaleMessages['install']> = {
     oneAtATime: 'Deine Icons sind auf {files} Profile aufgeteilt. iOS hält jeweils nur ein geladenes Profil bereit: Installiere Teil 1 in den Einstellungen, komm zurück und öffne dann den nächsten Teil.',
     failed: 'Glaze konnte das Profil nicht in Safari öffnen. Tippe auf „Datei stattdessen teilen“ und schick sie dir per Mail oder AirDrop, oder nutze Kurzbefehle.',
     fallbackNote: 'Diese Version kann das Profil nicht in Safari öffnen. Es geht über das Teilen-Menü, und iOS installiert ein in „Dateien“ gesichertes Profil oft nicht. Nutze Kurzbefehle (hier empfohlen) oder schick dir die Datei per Mail oder AirDrop.',
-    page: { title: 'Glaze-Icons', body: 'Tippe auf „Installieren“. Safari fragt, ob ein Konfigurationsprofil geladen werden darf: Tippe auf „Erlauben“, dann auf „Schließen“, und schließe in den Einstellungen ab.', button: 'Installieren' },
+    page: { title: 'Glaze-Icons', body: 'Safari fragt eventuell sofort, ob ein Konfigurationsprofil geladen werden darf, noch bevor du auf „Installieren“ tippst. Tippe auf „Erlauben“, dann auf „Schließen“, und schließe in den Einstellungen ab. Fragt Safari nicht, tippe auf „Installieren“.', button: 'Installieren' },
     cards: {
-      safari: { title: 'In Safari installieren', body: 'Tippe in Safari auf „Installieren“.' },
-      allow: { title: 'Laden erlauben', body: 'Safari fragt, ob ein Konfigurationsprofil geladen werden darf: Tippe auf „Erlauben“, dann auf „Schließen“.' },
+      safari: { title: 'In Safari installieren', body: 'Safari öffnet die Glaze-Seite und fragt eventuell sofort, ob das Profil geladen werden darf. Wenn nicht, tippe auf „Installieren“.' },
+      allow: { title: 'Laden erlauben', body: 'Safari fragt, ob ein Konfigurationsprofil geladen werden darf, manchmal schon bevor du auf „Installieren“ tippst: Tippe auf „Erlauben“, dann auf „Schließen“.' },
       settings: { title: 'In den Einstellungen installieren', body: 'Öffne die Einstellungen: Tippe oben auf „Profil geladen“ (oder Allgemein > VPN und Geräteverwaltung), tippe auf „Installieren“, gib deinen Code ein, „Installieren“.' },
       home: { title: 'Deine Icons erscheinen', body: 'Deine Icons erscheinen auf dem Home-Bildschirm.' },
     },
@@ -188,6 +188,19 @@ export const de: NonNullable<LocaleMessages['install']> = {
     showNext: 'Schritte zeigen',
     allDone: 'Alle Icons erledigt. Du kannst die Original-Icons in die App-Mediathek verschieben.',
     oneAtATime: 'Ein Icon nach dem anderen: Folge den Schritten für die nächste App, hake sie ab, und Glaze öffnet die Schritte für die folgende.',
+  },
+  sequence: {
+    eyebrow: 'Schritte',
+    title: 'Installation abschließen',
+    current: 'Aktueller Schritt',
+    a11yCurrent: 'Schritt {index} von {total}, aktueller Schritt. {title}. {body}',
+    a11yStep: 'Schritt {index} von {total}. {title}. {body}',
+    allDone: 'Alle Schritte erledigt. Deine neuen Icons sind auf dem Home-Bildschirm.',
+  },
+  finished: {
+    title: 'Fertig',
+    safari: 'Dein Profil ist bereit und in Safari geöffnet. Folge den Schritten unten, um in den Einstellungen abzuschließen.',
+    share: 'Dein Profil ist bereit. Folge den Schritten unten, um in den Einstellungen abzuschließen.',
   },
   coverage: {
     heading: 'Deine Apps',

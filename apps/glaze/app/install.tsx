@@ -7,6 +7,12 @@
 // Design v2 (docs/DESIGN_V2.md §9, T55): method choice as two squircle cards (the recommended one
 // raised with a "Recommended" pill), steps and the Shortcuts checklist in inset groups with
 // numbered pastel tiles, every button a PillButton.
+// T173 premium (docs/PREMIUM_UI.md §3.5): editorial SectionHeaders as the headings; the profile
+// steps as a calm numbered sequence on one lifted card (no separators) where the first step not
+// done yet is "current" (filled number, soft highlight that fades in, ≤ base duration, ease-out,
+// shorter under Reduce Motion) and the others are muted; waits (drawing icons, saving) show
+// skeletons of the result under the progress bar; a finished "Done" panel after the profile is
+// made (the one `success` haptic of the flow stays in generate()); Dynamic Type caps on every Text.
 
 import { Feather } from '@expo/vector-icons';
 import * as Clipboard from 'expo-clipboard';
@@ -16,6 +22,7 @@ import { useRouter } from 'expo-router';
 import * as Sharing from 'expo-sharing';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Linking, Pressable, ScrollView, StyleSheet, Text, View, type TextStyle } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import type { Illustration } from '../src/core/install';
 import type { IconSpec } from '../src/core/iconspec';
@@ -74,6 +81,8 @@ import { loadStudio, studioSpecs, useStudio, type StudioState } from '../src/sto
 import { IconOverrideSheet } from '../src/ui/IconOverrideSheet';
 import {
   continuous,
+  editorialV2,
+  fontScaleCap,
   iconTileRadius,
   radiusV2,
   shadowV2,
@@ -82,6 +91,7 @@ import {
   textV2,
   type TypeRoleV2,
 } from '../src/theme/tokensV2';
+import { durations, easeOutCurve, useMotionReduced } from '../src/theme/motion';
 import { useColorsV2 } from '../src/theme/useTokens';
 import { ProgressBar } from '../src/ui/ProgressBar';
 import { IconGridSkeleton } from '../src/ui/Skeleton';
@@ -90,7 +100,7 @@ import { ContextTip } from '../src/ui/ContextTip';
 import { haptic } from '../src/ui/haptics';
 import { PressableScale } from '../src/ui/PressableScale';
 import { Chevron, textStyleFor } from '../src/ui/i18nLayout';
-import { InsetGroup, InsetRow, PillButton, SquircleCard } from '../src/ui/v2';
+import { InsetGroup, InsetRow, PillButton, SectionHeader, Skeleton, SquircleCard } from '../src/ui/v2';
 
 /** A v2 type role plus the script's line-height adjustment. */
 function typeFor(script: Script, role: TypeRoleV2): TextStyle[] {
@@ -160,10 +170,11 @@ async function addToAlbum(assets: MediaLibrary.Asset[]): Promise<boolean> {
 }
 
 export default function InstallScreen() {
-  const { c } = useColorsV2();
+  const { c, scheme } = useColorsV2();
   const { t, script, isRTL, formatNumber, locale } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
   const router = useRouter();
+  const reduced = useMotionReduced();
   // T126: can this build serve the profile to Safari? (false in Expo Go, on Android, old builds)
   const [serverAvailable] = useState<boolean>(() => profileServer.status().available);
   const route = profileRoute(serverAvailable);
@@ -494,8 +505,8 @@ export default function InstallScreen() {
     return (
       <SafeAreaView edges={['left', 'right', 'bottom']} style={[styles.root, styles.center, { backgroundColor: c.bg }]}>
         <Feather name="alert-circle" size={28} color={c.warn} />
-        <Text style={[...ts('body'), styles.centerText, { color: c.ink }]}>{t('install.state.loadError')}</Text>
-        <Text style={[...ts('footnote'), styles.centerText, { color: c.inkSecondary }]}>{loadError}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.centerText, { color: c.ink }]}>{t('install.state.loadError')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.centerText, { color: c.inkSecondary }]}>{loadError}</Text>
         <PillButton label={t('common.retry')} icon="refresh-cw" onPress={load} style={styles.selfCenter} />
       </SafeAreaView>
     );
@@ -505,7 +516,7 @@ export default function InstallScreen() {
     return (
       <SafeAreaView edges={['left', 'right', 'bottom']} style={[styles.root, styles.center, { backgroundColor: c.bg }]}>
         <IconGridSkeleton count={8} />
-        <Text style={[...ts('body'), { color: c.inkSecondary }]}>{t('install.state.loading')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.inkSecondary }]}>{t('install.state.loading')}</Text>
       </SafeAreaView>
     );
   }
@@ -514,10 +525,10 @@ export default function InstallScreen() {
     return (
       <SafeAreaView edges={['left', 'right', 'bottom']} style={[styles.root, styles.center, { backgroundColor: c.bg }]}>
         <Feather name="grid" size={32} color={c.tint} />
-        <Text accessibilityRole="header" style={[...ts('title2'), styles.centerText, { color: c.ink }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap('title2')} accessibilityRole="header" style={[...ts('title2'), styles.centerText, { color: c.ink }]}>
           {t('install.state.emptyTitle')}
         </Text>
-        <Text style={[...ts('body'), styles.centerText, { color: c.inkSecondary }]}>{t('install.state.emptyBody')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.centerText, { color: c.inkSecondary }]}>{t('install.state.emptyBody')}</Text>
         <PillButton
           label={t('install.state.chooseApps')}
           icon={Chevron.arrowBack(isRTL)}
@@ -560,6 +571,13 @@ export default function InstallScreen() {
     }
   };
 
+  // T173 step sequence: done flags per card, and the first card not done is the current step.
+  const stepDone = cards.map((card) => isProfileStepDone(install.state, profileKey, card.id));
+  const currentStep = stepDone.indexOf(false);
+  const stepsDone = stepDone.filter(Boolean).length;
+  // The profile is made and handed to Safari / the share sheet without an error: show "Done".
+  const bulkFinished = phase === 'done' && profiles.length !== 0 && !bulkError;
+
   const bulkProgress =
     phase === 'rendering'
       ? overallProgress('rendering', step.done, step.total)
@@ -582,34 +600,32 @@ export default function InstallScreen() {
                 <IconCanvas key={s.appId} spec={s} size={40} />
               ))}
               {specs.length > 6 ? (
-                <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.summary.more', { count: specs.length - 6 })}</Text>
+                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.summary.more', { count: specs.length - 6 })}</Text>
               ) : null}
             </View>
-            <Text accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
+            <Text maxFontSizeMultiplier={fontScaleCap('title3')} accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
               {summary}
             </Text>
             {!PROFILE_INSTALL_ENABLED ? null : noScheme.length > 0 ? (
-              <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
                 {t('install.summary.noScheme', { count: noScheme.length, apps: noScheme.join(', ') })}
               </Text>
             ) : (
-              <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.summary.allProfile')}</Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.summary.allProfile')}</Text>
             )}
             {resolved.fellBack.length > 0 ? (
-              <Text style={[...ts('footnote'), { color: c.warn }]}>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.warn }]}>
                 {t('install.summary.fellBack', { count: resolved.fellBack.length })}
               </Text>
             ) : null}
-            <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.summary.cantReplace')}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.summary.cantReplace')}</Text>
           </View>
         </SquircleCard>
 
         {/* T170: themed vs monogram. Monogram apps are listed, one tap from the glyph / photo picker. */}
         <View style={styles.section}>
-          <Text accessibilityRole="header" style={[...ts('title2'), styles.sideText, { color: c.ink }]}>
-            {t('install.coverage.heading')}
-          </Text>
-          <Text style={[...ts('subhead'), styles.sideText, { color: c.ink }]}>
+          <SectionHeader title={t('install.coverage.heading')} style={[styles.sideText, styles.headerTight]} />
+          <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...ts('subhead'), styles.sideText, { color: c.ink }]}>
             {coverage.photo > 0
               ? t('install.coverage.countsWithPhotos', {
                   themed: formatNumber(coverage.themed),
@@ -618,7 +634,7 @@ export default function InstallScreen() {
                 })
               : t('install.coverage.counts', { themed: formatNumber(coverage.themed), monogram: formatNumber(coverage.monogram) })}
           </Text>
-          <Text style={[...ts('footnote'), styles.sideText, { color: c.inkSecondary }]}>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.sideText, { color: c.inkSecondary }]}>
             {coverage.monogram > 0 ? t('install.coverage.monogramHint') : t('install.coverage.allThemed')}
           </Text>
           {monogramRows.length > 0 ? (
@@ -643,11 +659,9 @@ export default function InstallScreen() {
 
         {/* Method: the Bulk card when Bulk can be used (owner 25 Oct: the only method), else the
             Shortcuts-only fallback text. showMethodPicker stays for a future second method. */}
-        <Text accessibilityRole="header" style={[...ts('title2'), styles.sideText, { color: c.ink }]}>
-          {t('install.method.heading')}
-        </Text>
+        <SectionHeader title={t('install.method.heading')} style={[styles.sideText, styles.headerTight]} />
         {!showMethodPicker(methodOpts) && !showBulkCard(methodOpts) ? (
-          <Text style={[...ts('body'), styles.sideText, { color: c.ink }]}>{t('install.method.shortcutsOnly')}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.sideText, { color: c.ink }]}>{t('install.method.shortcutsOnly')}</Text>
         ) : (
         <View accessibilityRole="radiogroup" accessibilityLabel={t('install.method.groupLabel')} style={[styles.methods, styles.side]}>
           {availableMethods(methodOpts).map((m) =>
@@ -684,24 +698,31 @@ export default function InstallScreen() {
 
         {choice === 'bulk' ? (
           <View style={styles.section}>
-            <Text accessibilityRole="header" style={[...ts('title2'), styles.sideText, { color: c.ink }]}>
-              {t('install.method.bulk')}
-            </Text>
+            <SectionHeader title={t('install.method.bulk')} style={[styles.sideText, styles.headerTight]} />
             <SquircleCard style={styles.side}>
               <View style={styles.stack}>
-                <Text style={[...ts('body'), { color: c.ink }]}>
+                <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
                   {route === 'safari' ? t('install.safari.intro') : t('install.bulk.intro')}
                 </Text>
                 {route === 'share' ? (
                   <Notice tone="warn" icon="alert-triangle">
-                    <Text style={[...ts('footnote'), { color: c.ink }]}>{t('install.safari.fallbackNote')}</Text>
+                    <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.ink }]}>{t('install.safari.fallbackNote')}</Text>
                   </Notice>
                 ) : null}
                 {bulkBusy ? (
                   <ProgressBar progress={bulkProgress} label={phaseText(phase, step.done, step.total)} />
                 ) : null}
+                {/* T173: the wait (drawing icons, building, saving) as a skeleton of the result. */}
+                {bulkBusy ? <ResultSkeleton icons={Math.min(RESULT_ICONS, plan.profile.length)} file /> : null}
+                {bulkFinished ? (
+                  <FinishedPanel
+                    title={t('install.finished.title')}
+                    body={route === 'safari' ? t('install.finished.safari') : t('install.finished.share')}
+                    reduced={reduced}
+                  />
+                ) : null}
                 {renderTiming && !bulkBusy ? (
-                  <Text style={[...ts('footnote'), { color: c.inkSecondary }]} accessibilityLabel={renderTiming}>
+                  <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]} accessibilityLabel={renderTiming}>
                     {renderTiming}
                   </Text>
                 ) : null}
@@ -731,7 +752,7 @@ export default function InstallScreen() {
                   return (
                     <View key={p.filename} style={[styles.fileRow, { borderTopColor: c.separator }]}>
                       <Feather name="file" size={18} color={c.tint} />
-                      <Text style={[...ts('footnote'), styles.flex, { color: c.ink }]} numberOfLines={2}>
+                      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.flex, { color: c.ink }]} numberOfLines={2}>
                         {p.filename}
                       </Text>
                       {route === 'safari' ? (
@@ -779,11 +800,11 @@ export default function InstallScreen() {
                   />
                 ) : null}
                 {route === 'safari' && profiles.length > 1 ? (
-                  <Text style={[...ts('footnote'), { color: c.ink }]}>
+                  <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.ink }]}>
                     {t('install.safari.oneAtATime', { files: profiles.length })}
                   </Text>
                 ) : null}
-                <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>
+                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
                   {route === 'safari' ? t('install.safari.hurry') : t('install.bulk.noSaveToFiles')}
                 </Text>
                 {route === 'safari' && profiles.length > 0 ? (
@@ -799,46 +820,67 @@ export default function InstallScreen() {
               </View>
             </SquircleCard>
 
-            <InsetGroup>
-              {cards.map((card, i) => {
-                const done = isProfileStepDone(install.state, profileKey, card.id);
-                const keys = isCardId(card.id) ? CARD_KEYS[card.id] : null;
-                const cardBody =
-                  card.id === 'save' && profiles.length > 1
-                    ? t('install.cards.save.bodyMany', { files: profiles.length })
-                    : keys
-                      ? t(keys.bodyKey)
-                      : card.body;
-                return (
-                  <StepRow
-                    key={card.id}
-                    index={i + 1}
-                    title={keys ? t(keys.titleKey) : card.title}
-                    body={cardBody}
-                    illustration={card.illustration}
-                    done={done}
-                    onToggleDone={() => install.update((s) => toggleProfileStep(s, profileKey, card.id))}
-                  />
-                );
-              })}
-            </InsetGroup>
+            {/* T173: the steps as one calm numbered sequence; the first step not done is current. */}
+            <SectionHeader
+              eyebrow={t('install.sequence.eyebrow')}
+              title={t('install.sequence.title')}
+              body={t('install.shortcuts.progress', { done: stepsDone, total: cards.length })}
+              style={[styles.sideText, styles.headerTight]}
+            />
+            <SquircleCard
+              tone={scheme === 'dark' ? 'raised' : 'surface'}
+              outline={false}
+              padding={spaceV2.sm}
+              style={styles.side}
+            >
+              <View style={styles.sequence}>
+                {cards.map((card, i) => {
+                  const done = stepDone[i];
+                  const keys = isCardId(card.id) ? CARD_KEYS[card.id] : null;
+                  const cardBody =
+                    card.id === 'save' && profiles.length > 1
+                      ? t('install.cards.save.bodyMany', { files: profiles.length })
+                      : keys
+                        ? t(keys.bodyKey)
+                        : card.body;
+                  return (
+                    <StepRow
+                      key={card.id}
+                      index={i + 1}
+                      total={cards.length}
+                      title={keys ? t(keys.titleKey) : card.title}
+                      body={cardBody}
+                      illustration={card.illustration}
+                      state={done ? 'done' : i === currentStep ? 'current' : 'upcoming'}
+                      reduced={reduced}
+                      onToggleDone={() => install.update((s) => toggleProfileStep(s, profileKey, card.id))}
+                    />
+                  );
+                })}
+                {currentStep < 0 ? (
+                  <FinishedPanel title={t('install.finished.title')} body={t('install.sequence.allDone')} reduced={reduced} />
+                ) : null}
+              </View>
+            </SquircleCard>
           </View>
         ) : null}
 
         {items.length > 0 ? (
           <View style={styles.section}>
-            <Text accessibilityRole="header" style={[...ts('title2'), styles.sideText, { color: c.ink }]}>
-              {choice === 'bulk' ? t('install.shortcuts.headingRest') : t('install.shortcuts.heading')}
-            </Text>
+            <SectionHeader
+              title={choice === 'bulk' ? t('install.shortcuts.headingRest') : t('install.shortcuts.heading')}
+              style={[styles.sideText, styles.headerTight]}
+            />
             <SquircleCard style={styles.side}>
               <View style={styles.stack}>
-                <Text style={[...ts('body'), { color: c.ink }]}>{t('install.shortcuts.intro')}</Text>
+                <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('install.shortcuts.intro')}</Text>
                 {photosBusy ? (
                   <ProgressBar
                     progress={batchFraction(photoStep.done, photoStep.total)}
                     label={t('install.shortcuts.savingProgress', { done: Math.min(photoStep.done, photoStep.total), total: photoStep.total })}
                   />
                 ) : null}
+                {photosBusy ? <ResultSkeleton icons={Math.min(RESULT_ICONS, items.length)} /> : null}
                 {photosBusy && photoStep.done < photoStep.total ? (
                   <PillButton
                     label={t('common.cancel')}
@@ -849,7 +891,7 @@ export default function InstallScreen() {
                 ) : null}
                 {photoStatus === 'denied' ? (
                   <Notice tone="warn" icon="lock">
-                    <Text style={[...ts('footnote'), { color: c.ink }]}>
+                    <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.ink }]}>
                       {t('install.shortcuts.denied', { album: PHOTOS_ALBUM })}
                     </Text>
                     <View style={styles.btnRow}>
@@ -867,7 +909,7 @@ export default function InstallScreen() {
                 {photoNote ? (
                   <View style={styles.okRow}>
                     <Feather name="check-circle" size={18} color={c.ok} />
-                    <Text style={[...ts('footnote'), styles.flex, { color: c.ink }]}>{photoNote}</Text>
+                    <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.flex, { color: c.ink }]}>{photoNote}</Text>
                   </View>
                 ) : null}
                 {shortcutsError ? (
@@ -912,7 +954,7 @@ export default function InstallScreen() {
                 {nextItem ? (
                   <View style={styles.okRow}>
                     <Feather name="arrow-right-circle" size={18} color={c.tint} />
-                    <Text style={[...ts('headline'), styles.flex, { color: c.ink }]}>
+                    <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), styles.flex, { color: c.ink }]}>
                       {t('install.guided.next', { app: nextItem.spec.label })}
                     </Text>
                     {expanded !== nextItem.spec.appId ? (
@@ -927,10 +969,10 @@ export default function InstallScreen() {
                 ) : tick.total > 0 ? (
                   <View style={styles.okRow}>
                     <Feather name="check-circle" size={18} color={c.ok} />
-                    <Text style={[...ts('footnote'), styles.flex, { color: c.ink }]}>{t('install.guided.allDone')}</Text>
+                    <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.flex, { color: c.ink }]}>{t('install.guided.allDone')}</Text>
                   </View>
                 ) : null}
-                <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.guided.oneAtATime')}</Text>
+                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.guided.oneAtATime')}</Text>
               </View>
             </SquircleCard>
 
@@ -963,10 +1005,10 @@ export default function InstallScreen() {
         {androidNative.isAndroid ? (
           <SquircleCard style={styles.side}>
             <View style={styles.stack}>
-              <Text accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
+              <Text maxFontSizeMultiplier={fontScaleCap('title3')} accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
                 {t('install.android.heading')}
               </Text>
-              <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
                 {androidNative.status().available
                   ? t('install.android.available')
                   : t('install.android.preview')}
@@ -1043,11 +1085,11 @@ function CoverageRow({
       style={[styles.coverageRow, first ? null : { borderTopColor: c.separator, borderTopWidth: StyleSheet.hairlineWidth }, disabled ? styles.dim : null]}
     >
       <IconCanvas spec={spec} size={COVERAGE_ICON} />
-      <Text style={[...typeFor(script, 'body'), styles.flex, { color: c.ink }]} numberOfLines={1}>
+      <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...typeFor(script, 'body'), styles.flex, { color: c.ink }]} numberOfLines={1}>
         {spec.label}
       </Text>
       <View style={[styles.badge, continuous, { backgroundColor: c.pastels.butter.fill }]}>
-        <Text style={[...typeFor(script, 'caption1'), styles.badgeText, { color: c.pastels.butter.ink }]}>{tag}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...typeFor(script, 'caption1'), styles.badgeText, { color: c.pastels.butter.ink }]}>{tag}</Text>
       </View>
       <Feather name={Chevron.forward(isRTL)} size={18} color={c.inkTertiary} />
     </PressableScale>
@@ -1131,14 +1173,14 @@ function MethodCard({
           >
             <Feather name={icon} size={16} color={c.pastels[icon === 'layers' ? 'lilac' : 'sky'].ink} />
           </View>
-          <Text style={[...typeFor(script, 'headline'), styles.shrink, { color: c.ink }]}>{title}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), styles.shrink, { color: c.ink }]}>{title}</Text>
           {badge ? (
             <View style={[styles.badge, continuous, { backgroundColor: c.tint }]}>
-              <Text style={[...typeFor(script, 'caption1'), styles.badgeText, { color: c.onTint }]}>{badge}</Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...typeFor(script, 'caption1'), styles.badgeText, { color: c.onTint }]}>{badge}</Text>
             </View>
           ) : null}
         </View>
-        <Text style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{body}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{body}</Text>
       </View>
     </PressableScale>
   );
@@ -1171,7 +1213,7 @@ function InlineError({
   const { t, script } = useT();
   return (
     <Notice tone="warn" icon="alert-triangle">
-      <Text style={[...typeFor(script, 'footnote'), { color: c.ink }]}>{message}</Text>
+      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.ink }]}>{message}</Text>
       <View style={styles.btnRow}>
         {onRetry ? <PillButton label={retryLabel} icon="refresh-cw" variant="tinted" size="small" onPress={onRetry} /> : null}
         {onDismiss ? <PillButton label={t('install.shortcuts.dismiss')} variant="plain" size="small" onPress={onDismiss} /> : null}
@@ -1180,49 +1222,144 @@ function InlineError({
   );
 }
 
+/** Icon skeletons shown while a batch is drawn (the result's first icons). */
+const RESULT_ICONS = 6;
+/** Icon edge in the result skeleton and the summary strip (points). */
+const RESULT_ICON = 40;
+
+/** Timed opacity for a step's "current" highlight and the finished panel: ease-out, never a spring. */
+function fadeTiming(reduced: boolean) {
+  return { duration: reduced ? durations.fast : durations.base, easing: easeOutCurve };
+}
+
 /**
- * One profile install step as an inset row: numbered pastel tile (a check once done), title, body,
- * the schematic phone illustration and a "Mark as done" checkbox row.
+ * T173: the wait as a skeleton of the result: a row of icon-shaped blocks (the icons being drawn)
+ * and, for the profile, a file row. Hidden from VoiceOver; the progress bar above announces.
+ */
+function ResultSkeleton({ icons, file = false }: { icons: number; file?: boolean }) {
+  const n = Math.max(1, icons);
+  return (
+    <View style={styles.stack} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+      <View style={styles.strip}>
+        {Array.from({ length: n }, (_, i) => (
+          <Skeleton key={i} width={RESULT_ICON} height={RESULT_ICON} radius={iconTileRadius(RESULT_ICON)} />
+        ))}
+      </View>
+      {file ? (
+        <View style={styles.okRow}>
+          <Skeleton width={sizeV2.rowIcon} height={sizeV2.rowIcon} radius={iconTileRadius(sizeV2.rowIcon)} />
+          <Skeleton width="60%" height={spaceV2.lg} />
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
+/**
+ * T173 finished state: a check, a clear "Done" and one line on what is left. Fades in (timed,
+ * ease-out). No haptic here: the flow's one `success` fires where the work finishes.
+ */
+function FinishedPanel({ title, body, reduced }: { title: string; body: string; reduced: boolean }) {
+  const { c } = useColorsV2();
+  const { t, script } = useT();
+  const shown = useSharedValue(0);
+  useEffect(() => {
+    shown.value = withTiming(1, fadeTiming(reduced));
+  }, [reduced, shown]);
+  const fade = useAnimatedStyle(() => ({ opacity: shown.value }));
+  return (
+    <Animated.View
+      accessible
+      accessibilityLiveRegion="polite"
+      accessibilityLabel={t('install.method.a11yNoBadge', { title, body })}
+      style={[styles.finished, continuous, { backgroundColor: c.pastels.mint.fill }, fade]}
+    >
+      <Feather name="check-circle" size={22} color={c.pastels.mint.ink} />
+      <View style={styles.flex}>
+        <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), { color: c.pastels.mint.ink }]}>
+          {title}
+        </Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.pastels.mint.ink }]}>
+          {body}
+        </Text>
+      </View>
+    </Animated.View>
+  );
+}
+
+type StepState = 'current' | 'upcoming' | 'done';
+
+/**
+ * One profile install step in the numbered sequence. The current step has a filled tint number, a
+ * "Current step" label and a soft highlight that fades in when the sequence moves to it (and out of
+ * the step before); upcoming steps are muted (quiet number, secondary text); done steps show a
+ * check. Schematic phone illustration and a "Mark as done" checkbox row as before.
  */
 function StepRow({
   index,
+  total,
   title,
   body,
   illustration,
-  done,
+  state,
+  reduced,
   onToggleDone,
 }: {
   index: number;
+  total: number;
   title: string;
   body: string;
   illustration: Illustration;
-  done: boolean;
+  state: StepState;
+  reduced: boolean;
   onToggleDone: () => void;
 }) {
   const { c } = useColorsV2();
   const { t, script, formatNumber } = useT();
-  const tile = c.pastels[done ? 'mint' : 'berry'];
+  const done = state === 'done';
+  const current = state === 'current';
+  const on = useSharedValue(current ? 1 : 0);
+  useEffect(() => {
+    on.value = withTiming(current ? 1 : 0, fadeTiming(reduced));
+  }, [current, reduced, on]);
+  const glow = useAnimatedStyle(() => ({ opacity: on.value }));
+  const tileFill = done ? c.pastels.mint.fill : current ? c.tint : c.fill;
+  const tileInk = done ? c.pastels.mint.ink : current ? c.onTint : c.inkSecondary;
+  const label = current
+    ? t('install.sequence.a11yCurrent', { index, total, title, body })
+    : t('install.sequence.a11yStep', { index, total, title, body });
   return (
     <View style={styles.stepRow}>
+      <Animated.View
+        pointerEvents="none"
+        style={[StyleSheet.absoluteFill, styles.stepGlow, continuous, { backgroundColor: c.fill }, glow]}
+      />
       <View style={styles.stepTop}>
         <View
           style={[
             styles.numTile,
             continuous,
-            { borderRadius: iconTileRadius(sizeV2.rowIcon), backgroundColor: tile.fill },
+            { borderRadius: iconTileRadius(sizeV2.rowIcon), backgroundColor: tileFill },
           ]}
         >
           {done ? (
-            <Feather name="check" size={16} color={tile.ink} />
+            <Feather name="check" size={16} color={tileInk} />
           ) : (
-            <Text style={[...typeFor(script, 'subhead'), styles.badgeText, { color: tile.ink }]}>{formatNumber(index)}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...typeFor(script, 'subhead'), styles.badgeText, { color: tileInk }]}>{formatNumber(index)}</Text>
           )}
         </View>
-        <View style={styles.flex}>
-          <Text accessibilityRole="header" style={[...typeFor(script, 'headline'), { color: c.ink }]}>
+        <View style={styles.flex} accessible accessibilityLabel={label}>
+          {current ? (
+            <Animated.View style={glow}>
+              <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...typeFor(script, 'caption1'), styles.badgeText, { color: c.tint }]}>
+                {t('install.sequence.current')}
+              </Text>
+            </Animated.View>
+          ) : null}
+          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), { color: current ? c.ink : c.inkSecondary }]}>
             {title}
           </Text>
-          <Text style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{body}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: current ? c.ink : c.inkSecondary }]}>{body}</Text>
         </View>
         <StepIllustration kind={illustration} />
       </View>
@@ -1237,7 +1374,7 @@ function StepRow({
         style={({ pressed }) => [styles.doneRow, { opacity: pressed ? 0.7 : 1 }]}
       >
         <Feather name={done ? 'check-square' : 'square'} size={20} color={done ? c.ok : c.inkTertiary} />
-        <Text style={[...typeFor(script, 'subhead'), styles.flex, { color: done ? c.ok : c.tint }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...typeFor(script, 'subhead'), styles.flex, { color: done ? c.ok : c.tint }]}>
           {done ? t('install.stepCard.done') : t('install.stepCard.markDone')}
         </Text>
       </Pressable>
@@ -1284,11 +1421,12 @@ function ShortcutRow({
         <IconCanvas spec={spec} size={40} />
         <View style={styles.flex}>
           <Text
+            maxFontSizeMultiplier={fontScaleCap('body')}
             style={[...typeFor(script, 'body'), { color: c.ink, textDecorationLine: done ? 'line-through' : 'none' }]}
           >
             {spec.label}
           </Text>
-          <Text style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]} numberOfLines={url ? 2 : undefined}>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]} numberOfLines={url ? 2 : undefined}>
             {item.reason === 'no-scheme' ? t('install.shortcuts.noLink') : url ?? ''}
           </Text>
         </View>
@@ -1306,7 +1444,7 @@ function ShortcutRow({
       </View>
       {url ? (
         <View style={[styles.urlRow, continuous, { backgroundColor: c.fill }]}>
-          <Text selectable style={[...typeFor(script, 'footnote'), styles.flex, { color: c.ink }]} numberOfLines={1}>
+          <Text selectable maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), styles.flex, { color: c.ink }]} numberOfLines={1}>
             {url}
           </Text>
           <PillButton
@@ -1324,8 +1462,8 @@ function ShortcutRow({
         <View style={styles.steps}>
           {steps.map((s, i) => (
             <View key={i} style={styles.stepLine}>
-              <Text style={[...typeFor(script, 'footnote'), styles.stepNum, { color: c.tint }]}>{formatNumber(i + 1)}.</Text>
-              <Text style={[...typeFor(script, 'footnote'), styles.flex, { color: c.ink }]}>{s}</Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), styles.stepNum, { color: c.tint }]}>{formatNumber(i + 1)}.</Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), styles.flex, { color: c.ink }]}>{s}</Text>
             </View>
           ))}
         </View>
@@ -1374,7 +1512,11 @@ const styles = StyleSheet.create({
   noticeBody: { gap: spaceV2.sm },
   okRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
   btnRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.sm },
-  stepRow: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.md, gap: spaceV2.xs },
+  headerTight: { paddingTop: editorialV2.sectionTop - spaceV2.lg, paddingBottom: 0 },
+  sequence: { gap: spaceV2.xs },
+  finished: { flexDirection: 'row', alignItems: 'flex-start', gap: spaceV2.md, borderRadius: radiusV2.control, padding: spaceV2.md },
+  stepRow: { paddingHorizontal: spaceV2.md, paddingTop: spaceV2.md, gap: spaceV2.xs },
+  stepGlow: { borderRadius: radiusV2.control },
   stepTop: { flexDirection: 'row', alignItems: 'flex-start', gap: spaceV2.md },
   numTile: { width: sizeV2.rowIcon, height: sizeV2.rowIcon, alignItems: 'center', justifyContent: 'center' },
   doneRow: {

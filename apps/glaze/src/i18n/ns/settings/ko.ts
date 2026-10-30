@@ -67,6 +67,7 @@ export const ko: NonNullable<LocaleMessages['settings']> = {
   about: {
     title: '정보',
     version: 'Glaze {version}',
+    versionRow: '버전',
     credits: '오리지널 아트로 제작했습니다. 앱 이름은 각 소유자에게 있습니다.',
   },
   updates: {

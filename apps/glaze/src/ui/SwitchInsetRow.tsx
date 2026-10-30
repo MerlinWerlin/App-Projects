@@ -4,7 +4,7 @@
 import { Feather } from '@expo/vector-icons';
 import { StyleSheet, Switch, Text, View, type TextStyle } from 'react-native';
 import { useT, type Script } from '../i18n';
-import { iconTileRadius, sizeV2, spaceV2, textV2, type PastelName, type TypeRoleV2 } from '../theme/tokensV2';
+import { circleRadius, fontScaleCap, sizeV2, spaceV2, textV2, type PastelName, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import type { FeatherName } from './featherName';
 import { textStyleFor } from './i18nLayout';
@@ -17,7 +17,7 @@ export type SwitchInsetRowProps = {
   accessibilityLabel?: string;
   value: boolean;
   onChange: (value: boolean) => void;
-  /** Optional pastel squircle icon tile at the start. */
+  /** Optional pastel circle icon at the start (T173: row icons in pastel circles). */
   icon?: FeatherName;
   iconTone?: PastelName;
   /** Dimmed and not toggleable (e.g. "Use in all themes" before the icon is customised). */
@@ -57,8 +57,8 @@ export function SwitchInsetRow({
         </View>
       ) : null}
       <View style={styles.flex}>
-        <Text style={[...typeFor(script, 'body'), { color: c.ink }]}>{label}</Text>
-        {description ? <Text style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{description}</Text> : null}
+        <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...typeFor(script, 'body'), { color: c.ink }]}>{label}</Text>
+        {description ? <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{description}</Text> : null}
       </View>
       {/* The row carries the semantics; the switch itself is hidden from screen readers. */}
       <View importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
@@ -81,8 +81,7 @@ const styles = StyleSheet.create({
   tile: {
     width: sizeV2.rowIcon,
     height: sizeV2.rowIcon,
-    borderRadius: iconTileRadius(sizeV2.rowIcon),
-    borderCurve: 'continuous',
+    borderRadius: circleRadius(sizeV2.rowIcon),
     alignItems: 'center',
     justifyContent: 'center',
   },

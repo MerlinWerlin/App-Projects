@@ -67,6 +67,7 @@ export const ar: NonNullable<LocaleMessages['settings']> = {
   about: {
     title: 'حول',
     version: 'Glaze {version}',
+    versionRow: 'الإصدار',
     credits: 'صُمم برسوم أصلية؛ أسماء التطبيقات ملك لأصحابها.',
   },
   updates: {
