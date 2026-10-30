@@ -34,7 +34,8 @@ test('a card next to one with a goal chip reserves the chip row (and the log row
 test('static guard: the Widgets tab draws its grid in rows that stretch, not a wrapping grid', () => {
   const src = readFileSync(new URL('../../app/(tabs)/widgets.tsx', import.meta.url), 'utf8');
   // T162: the rows are the items of a virtualised list (one memoised WidgetRow each).
-  assert.match(src, /const rows = useMemo\(\(\) => gridRows\(cards, WIDGET_GRID_COLUMNS\), \[cards\]\)/);
+  // T173: split per widget family first (familyRows uses gridRows inside each family).
+  assert.match(src, /const rows = useMemo\(\(\) => familyRows\(cards, WIDGET_GRID_COLUMNS\), \[cards\]\)/);
   assert.match(src, /data=\{rows\}\s+renderItem=\{renderRow\}/);
   assert.match(src, /row: \{ flexDirection: 'row', alignItems: 'stretch'/);
   assert.match(src, /rowExtras\(/);

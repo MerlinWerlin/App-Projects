@@ -172,4 +172,11 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
     hint: 'Abre o Estúdio de widgets',
     open: 'Abrir Estúdio de widgets',
   },
+  section: {
+    inside: { eyebrow: 'O que vem junto', title: 'Paleta e estilo' },
+    icons: { eyebrow: 'Ícones', title: 'Formato e seus apps' },
+    widgets: { eyebrow: 'Widgets' },
+    wallpaper: { eyebrow: 'Papel de parede' },
+    credits: { eyebrow: 'Créditos', title: 'Sobre a arte' },
+  },
 };

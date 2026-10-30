@@ -172,4 +172,11 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
     hint: 'विजेट स्टूडियो खोलता है',
     open: 'विजेट स्टूडियो खोलें',
   },
+  section: {
+    inside: { eyebrow: 'इसमें क्या है', title: 'रंग और शैली' },
+    icons: { eyebrow: 'आइकन', title: 'आकार और आपके ऐप' },
+    widgets: { eyebrow: 'विजेट' },
+    wallpaper: { eyebrow: 'वॉलपेपर' },
+    credits: { eyebrow: 'श्रेय', title: 'कलाकृति के बारे में' },
+  },
 };

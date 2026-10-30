@@ -281,7 +281,8 @@ test('adapter: setSeamless is a no-op { available: false } without the bridge', 
 });
 
 test('UI: preview and controls exist and use only Expo Go libraries', () => {
-  const allowed = /^(react|react-native|@expo\/vector-icons|\.{1,2}\/.*)$/;
+  // expo-image ships in Expo Go and is the app's image view (T166, perfBudget.test.ts).
+  const allowed = /^(react|react-native|expo-image|@expo\/vector-icons|\.{1,2}\/.*)$/;
   for (const f of ['src/ui/SeamlessWidgetPreview.tsx', 'src/ui/SeamlessWidgetControls.tsx']) {
     const src = read(f);
     for (const m of src.matchAll(/from '([^']+)'/g)) assert.match(m[1], allowed, `${f} imports ${m[1]}`);

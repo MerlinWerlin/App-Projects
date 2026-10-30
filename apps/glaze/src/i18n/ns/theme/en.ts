@@ -172,4 +172,13 @@ export const en = {
     hint: 'Opens Widget Studio',
     open: 'Open Widget Studio',
   },
+  // T173 (docs/PREMIUM_UI.md §3.3): eyebrow + title of the editorial blocks on theme detail.
+  // Widgets and Wallpaper reuse widgetPreviews.title and customise as their titles.
+  section: {
+    inside: { eyebrow: 'What’s inside', title: 'Palette and style' },
+    icons: { eyebrow: 'Icons', title: 'Shape and your apps' },
+    widgets: { eyebrow: 'Widgets' },
+    wallpaper: { eyebrow: 'Wallpaper' },
+    credits: { eyebrow: 'Credits', title: 'About the artwork' },
+  },
 } as const;

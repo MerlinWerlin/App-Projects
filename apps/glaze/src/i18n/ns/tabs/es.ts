@@ -18,6 +18,12 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
       habitButtons: 'Desde iOS 17, toca los botones del widget en tu pantalla de inicio para registrar. Glaze recoge lo que anotaste al abrirla.',
     },
     subtitle: 'Widgets a juego con tu tema. Toca uno para hacerlo tuyo.',
+    families: {
+      theme: { eyebrow: 'Tu tema', title: 'Set del tema', body: 'Reloj, fecha, foto, cita y batería con los colores de tu tema.' },
+      everyday: { eyebrow: 'Día a día', title: 'Relojes, calendarios y fotos', body: 'Hora, fechas, cuentas atrás y tus propias fotos.' },
+      habits: { eyebrow: 'Hábitos', title: 'Registro de hábitos', body: 'Agua, ánimo, sueño y pasos de un vistazo.' },
+    },
+    studioPreview: 'Vista previa en vivo',
     themes: 'Tema',
     sizes: 'Tamaño del widget',
     lock: 'Pantalla bloqueada',

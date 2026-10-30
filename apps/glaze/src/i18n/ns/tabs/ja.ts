@@ -18,6 +18,12 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
       habitButtons: 'iOS 17 以降では、ホーム画面のウィジェットのボタンをタップして記録できます。記録した内容は Glaze を開いたときに反映されます。',
     },
     subtitle: 'テーマに合うウィジェット。タップして自分好みにできます。',
+    families: {
+      theme: { eyebrow: 'あなたのテーマ', title: 'テーマセット', body: '時計、日付、写真、名言、バッテリーをテーマの色で。' },
+      everyday: { eyebrow: '毎日', title: '時計・カレンダー・写真', body: '時刻、日付、カウントダウン、あなたの写真。' },
+      habits: { eyebrow: '習慣', title: '習慣トラッカー', body: '水分、気分、睡眠、歩数をひと目で。' },
+    },
+    studioPreview: 'ライブプレビュー',
     themes: 'テーマ',
     sizes: 'ウィジェットのサイズ',
     lock: 'ロック画面',

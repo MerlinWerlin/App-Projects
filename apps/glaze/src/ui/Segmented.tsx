@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
-import { continuous, radiusV2, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { continuous, fontScaleCap, radiusV2, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { useT } from '../i18n';
 import { haptic } from './haptics';
@@ -66,6 +66,7 @@ export function Segmented<T extends string>({ label, options, value, onChange, s
             {o.preview ? <View style={styles.preview}>{o.preview}</View> : null}
             {/* Wraps instead of truncating (long German/French labels); the segment grows from minHeight. */}
             <Text
+              maxFontSizeMultiplier={fontScaleCap('subhead')}
               style={[
                 textV2.subhead,
                 styles.text,

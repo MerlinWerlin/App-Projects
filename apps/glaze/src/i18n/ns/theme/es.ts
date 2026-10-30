@@ -172,4 +172,11 @@ export const es: NonNullable<LocaleMessages['theme']> = {
     hint: 'Abre el Estudio de widgets',
     open: 'Abrir Estudio de widgets',
   },
+  section: {
+    inside: { eyebrow: 'Qué incluye', title: 'Paleta y estilo' },
+    icons: { eyebrow: 'Iconos', title: 'Forma y tus apps' },
+    widgets: { eyebrow: 'Widgets' },
+    wallpaper: { eyebrow: 'Fondo' },
+    credits: { eyebrow: 'Créditos', title: 'Sobre la imagen' },
+  },
 };

@@ -2,6 +2,13 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (30 Oct night)
+
+- **Theme page, premium look (T173):** open any theme. Is the phone preview large and centred on a soft card, with a small Home Screen / Lock Screen switch under it, and only one big **Apply this look** button at the bottom ("Choose icons" as a small link under it)? (yes / no)
+- **Theme page sections (T173):** scroll down the same theme. Does it read as calm sections with a small coloured label over each title (WHAT'S INSIDE, ICONS, WIDGETS, WALLPAPER), and at the largest Text Size does nothing get cut off? (yes / no)
+- **Widgets tab, premium look (T173):** is the grid now split into sections with a small label and title (YOUR THEME / EVERYDAY / HABITS), with comfortable even spacing between widget cards? (yes / no)
+- **Widget Studio (T173):** Widgets tab › tap any widget: in Widget Studio, does the preview sit on a soft raised card with a small "LIVE PREVIEW" label and the widget's name, and (in dark mode) no thin outline around the cards? (yes / no)
+
 ## New since your last test (30 Oct evening, owner-1030b)
 
 **Apps without a themed icon (T170).**

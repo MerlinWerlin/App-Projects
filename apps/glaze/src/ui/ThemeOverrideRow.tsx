@@ -15,7 +15,7 @@ import { useT } from '../i18n';
 import { IconCanvas } from '../render/IconCanvas';
 import { iconAccessibilityLabel } from '../render/a11y';
 import { useStudio } from '../store/studio';
-import { continuous, iconTileRadius, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { continuous, fontScaleCap, iconTileRadius, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { PillButton } from './PillButton';
 import { CustomisedBadge, customisedLabel } from './CustomisedBadge';
@@ -63,8 +63,8 @@ export function ThemeOverrideRow({ theme }: { theme: Theme }) {
           <Feather name="edit-3" size={17} color={c.pastels.lilac.ink} />
         </View>
         <View style={styles.flex}>
-          <Text style={[...headline, { color: c.ink }]}>{t('themeUi.override.title')}</Text>
-          <Text style={[...small, { color: c.inkSecondary }]}>
+          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...headline, { color: c.ink }]}>{t('themeUi.override.title')}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...small, { color: c.inkSecondary }]}>
             {nCustom > 0
               ? t('themeUi.override.count', { count: nCustom, name: theme.name })
               : t('themeUi.override.empty')}
@@ -76,7 +76,7 @@ export function ThemeOverrideRow({ theme }: { theme: Theme }) {
       {open ? (
         specs.length === 0 ? (
           <View style={styles.gap}>
-            <Text style={[...small, { color: c.inkSecondary }]}>{t('themeUi.override.pickFirst')}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...small, { color: c.inkSecondary }]}>{t('themeUi.override.pickFirst')}</Text>
             <PillButton
               label={t('themeUi.override.chooseApps')}
               icon="grid"
@@ -104,7 +104,7 @@ export function ThemeOverrideRow({ theme }: { theme: Theme }) {
                   <IconCanvas spec={s} size={40} backdrop={wallpaperColour} />
                   {customised.has(s.appId) ? <CustomisedBadge /> : null}
                 </View>
-                <Text style={[textV2.caption1, textStyleFor(script, textV2.caption1), { color: c.ink }]} numberOfLines={2}>
+                <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[textV2.caption1, textStyleFor(script, textV2.caption1), { color: c.ink }]} numberOfLines={2}>
                   {s.label}
                 </Text>
               </Pressable>

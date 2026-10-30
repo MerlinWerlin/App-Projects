@@ -62,7 +62,7 @@ export const de: NonNullable<LocaleMessages['settings']> = {
   privacy: {
     title: 'Datenschutz',
     heading: 'Keine Daten erfasst',
-    body: 'Keine Konten, Analysen, Werbung oder Tracking. Deine Fotos und Videos verlassen nie dein Telefon.',
+    body: 'Keine Konten, Analysen, Werbung oder Tracking. Deine Fotos und Videos verlassen nie dein Telefon. Themenpakete werden als einfache Dateien von GitHub geladen; Glaze sendet keine persönlichen Daten, kein Konto und keine Kennung.',
   },
   about: {
     title: 'Über',

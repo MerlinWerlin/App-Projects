@@ -62,7 +62,7 @@ export const it: NonNullable<LocaleMessages['settings']> = {
   privacy: {
     title: 'Privacy',
     heading: 'Nessun dato raccolto',
-    body: 'Niente account, statistiche, pubblicità o tracciamento. Foto e video non lasciano mai il tuo telefono.',
+    body: 'Niente account, statistiche, pubblicità o tracciamento. Foto e video non lasciano mai il tuo telefono. I pacchetti di temi si scaricano da GitHub come semplici file; Glaze non invia dati personali, account o identificativi.',
   },
   about: {
     title: 'Informazioni',

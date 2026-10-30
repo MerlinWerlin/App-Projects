@@ -16,6 +16,11 @@ import { nativeWidgetSupported } from '../src/core/widgetDelivery';
 // T73: in a full iOS build the habit widget preview shows today's value read back from the App
 // Group (taps made on the Home Screen widget, src/store/widgetHabits.ts) and says the real widget's
 // buttons log on iOS 17+; the in-app buttons themselves stay a preview everywhere.
+// T173 (premium UI, docs/PREMIUM_UI.md §3.4): the pinned preview sits on a soft raised surface (no
+// dark-mode hairline) with a small "Live preview" eyebrow read as one heading with the widget's name
+// and size; the controls stay inset groups; Dynamic Type caps (fontScaleCap) on every Text and
+// TextInput; chrome radii from chromeRadiusV2. Presentation only: drafts, saving and the bridge are
+// unchanged.
 import { Feather } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -95,7 +100,7 @@ import { tickStoredChecklist } from '../src/store/applyChecklist';
 import { applyWidgetTheme } from '../src/store/widgetTheme';
 import { useWidgetHabits, widgetHabitGoal, widgetHabitValue } from '../src/store/widgetHabits';
 import { loadStudio, saveStudio } from '../src/store/widgetStudio';
-import { circleRadius, continuous, radiusV2, sizeV2, spaceV2, textV2 } from '../src/theme/tokensV2';
+import { chromeRadiusV2, circleRadius, continuous, eyebrowCaseFor, fontScaleCap, sizeV2, spaceV2, textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import type { FeatherName } from '../src/ui/featherName';
 import { haptic } from '../src/ui/haptics';
@@ -149,7 +154,7 @@ export default function WidgetStudioScreen() {
     return (
       <View style={[styles.missing, { backgroundColor: c.bg }]}>
         <Stack.Screen options={{ title: t('themeUi.widgetStudio.title') }} />
-        <Text style={[textV2.title3, textStyleFor(script, textV2.title3), { color: c.ink }]}>{t('theme.notFound')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('title3')} style={[textV2.title3, textStyleFor(script, textV2.title3), { color: c.ink }]}>{t('theme.notFound')}</Text>
         <PillButton label={t('theme.backToThemes')} onPress={() => router.back()} />
       </View>
     );
@@ -370,6 +375,10 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
   };
 
   const body = (k: TextStyle) => [k, textStyleFor(script, k)];
+  const eyebrow = eyebrowCaseFor(script);
+  // T173: the preview's eyebrow line ("LIVE PREVIEW  Clock · Small"), read as one heading.
+  const previewSubject = [kindName, sizeName].join(' · ');
+  const previewHeading = [t('tabs.widgetsTab.studioPreview'), kindName, sizeName].join(', ');
 
   return (
     <View style={[styles.flex, { backgroundColor: c.bg }]}>
@@ -377,7 +386,19 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
       <ScrollView bounces={false} overScrollMode="never" stickyHeaderIndices={[0]} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         {/* Live preview, pinned on top. */}
         <View style={[styles.previewWrap, { backgroundColor: c.bg }]}>
-          <SquircleCard size="large" elevation="raised" tone="raised" style={styles.previewCard}>
+          <SquircleCard size="large" elevation="raised" tone="raised" outline={false} style={styles.previewCard}>
+            {/* T173: a small eyebrow over the stage; VoiceOver hears "Live preview, Clock, Small" once. */}
+            <View accessible accessibilityRole="header" accessibilityLabel={previewHeading} style={styles.previewHead}>
+              <Text
+                maxFontSizeMultiplier={fontScaleCap('eyebrow')}
+                style={[...body(textV2.eyebrow), { letterSpacing: eyebrow.letterSpacing, color: c.tint }, eyebrow.upper ? styles.upper : null]}
+              >
+                {t('tabs.widgetsTab.studioPreview')}
+              </Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...body(textV2.footnote), styles.flex, { color: c.inkSecondary }]}>
+                {previewSubject}
+              </Text>
+            </View>
             <View style={[styles.previewStage, { backgroundColor: c.fill }]}>
               {catSpec ? (
                 <CatalogueWidgetPreview
@@ -398,16 +419,16 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
                 />
               )}
             </View>
-            <Text style={[...body(textV2.footnote), { color: c.inkSecondary }]}>{t('themeUi.widgetStudio.previewNote')}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...body(textV2.footnote), { color: c.inkSecondary }]}>{t('themeUi.widgetStudio.previewNote')}</Text>
             {catNotes.map((line) => (
-              <Text key={line} style={[...body(textV2.footnote), styles.catNote, { color: c.inkSecondary }]}>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} key={line} style={[...body(textV2.footnote), styles.catNote, { color: c.inkSecondary }]}>
                 {line}
               </Text>
             ))}
           </SquircleCard>
         </View>
 
-        <Text style={[...body(textV2.callout), styles.intro, { color: c.inkSecondary }]}>{t('themeUi.widgetStudio.intro')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...body(textV2.callout), styles.intro, { color: c.inkSecondary }]}>{t('themeUi.widgetStudio.intro')}</Text>
 
         <InsetGroup header={t('themeUi.widgetStudio.kindLabel')}>
           <ChipRow
@@ -480,7 +501,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
           ) : null}
           {photoProblem ? (
             <View style={[styles.pad, styles.gap]}>
-              <Text accessibilityLiveRegion="polite" style={[...body(textV2.subhead), { color: c.warn }]}>
+              <Text maxFontSizeMultiplier={fontScaleCap('subhead')} accessibilityLiveRegion="polite" style={[...body(textV2.subhead), { color: c.warn }]}>
                 {photoProblem === 'denied' ? t('themeUi.widgetStudio.photo.denied') : t('themeUi.widgetStudio.photo.error')}
               </Text>
               {photoProblem === 'denied' ? (
@@ -509,7 +530,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
         {showColours ? (
         <InsetGroup header={t('themeUi.widgetStudio.colours.header')}>
           <View style={[styles.pad, styles.gap]}>
-            <Text style={[...body(textV2.subhead), { color: c.ink }]}>{t('themeUi.widgetStudio.colours.accent')}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...body(textV2.subhead), { color: c.ink }]}>{t('themeUi.widgetStudio.colours.accent')}</Text>
             <Swatches
               label={t('themeUi.widgetStudio.colours.accent')}
               swatches={[
@@ -519,7 +540,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
               value={accentNow ?? THEME_VALUE}
               onChange={(v) => patchOpen({ accent: v === THEME_VALUE ? null : v })}
             />
-            <Text style={[...body(textV2.subhead), { color: c.ink }]}>{t('themeUi.widgetStudio.colours.text')}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...body(textV2.subhead), { color: c.ink }]}>{t('themeUi.widgetStudio.colours.text')}</Text>
             <Swatches
               label={t('themeUi.widgetStudio.colours.text')}
               swatches={[
@@ -541,6 +562,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
                 return (
                   <View key={r.id} style={styles.fieldGap}>
                     <TextInput
+                      maxFontSizeMultiplier={fontScaleCap('body')}
                       value={textNow[r.id] ?? ''}
                       onChangeText={(v) => setOpenText(r.id, v)}
                       placeholder={r.key ? tl(r.key) : undefined}
@@ -550,7 +572,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
                       accessibilityHint={t('themeUi.widgetStudio.text.limit', { max: r.maxLength })}
                       style={[...body(textV2.body), styles.input, continuous, { color: c.ink, backgroundColor: c.fill }]}
                     />
-                    <Text style={[...body(textV2.footnote), { color: c.inkSecondary }]}>{t('themeUi.widgetStudio.text.limit', { max: r.maxLength })}</Text>
+                    <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...body(textV2.footnote), { color: c.inkSecondary }]}>{t('themeUi.widgetStudio.text.limit', { max: r.maxLength })}</Text>
                   </View>
                 );
               })}
@@ -565,8 +587,9 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
               ) : null}
               {showCountdown ? (
                 <View style={styles.fieldGap}>
-                  <Text style={[...body(textV2.subhead), { color: c.ink }]}>{t('themeUi.widgetStudio.countdown.header')}</Text>
+                  <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...body(textV2.subhead), { color: c.ink }]}>{t('themeUi.widgetStudio.countdown.header')}</Text>
                   <TextInput
+                    maxFontSizeMultiplier={fontScaleCap('body')}
                     value={countdownText}
                     onChangeText={(v) => {
                       setCountdownText(v);
@@ -581,7 +604,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
                     accessibilityHint={t('themeUi.widgetStudio.countdown.hint')}
                     style={[...body(textV2.body), styles.input, continuous, { color: c.ink, backgroundColor: c.fill }]}
                   />
-                  <Text style={[...body(textV2.footnote), { color: c.inkSecondary }]}>
+                  <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...body(textV2.footnote), { color: c.inkSecondary }]}>
                     {countdownText !== '' && !/^\d{4}-\d{2}-\d{2}$/.test(countdownText)
                       ? t('themeUi.widgetStudio.countdown.invalid')
                       : t('themeUi.widgetStudio.countdown.hint')}
@@ -634,7 +657,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
             <Feather name="info" size={18} color={c.pastels.butter.ink} />
             <View style={[styles.flex, styles.gap]}>
               {issueLines.map((line) => (
-                <Text key={line} style={[...body(textV2.subhead), { color: c.pastels.butter.ink }]}>
+                <Text maxFontSizeMultiplier={fontScaleCap('subhead')} key={line} style={[...body(textV2.subhead), { color: c.pastels.butter.ink }]}>
                   {line}
                 </Text>
               ))}
@@ -644,7 +667,11 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
 
         {result ? <ResultCard result={result} /> : null}
 
-        {!nativeWidgetSupported(catSpec?.kind ?? spec.kind, catSpec?.size ?? spec.size) ? <Text style={{ color: c.inkSecondary }}>{t('themeUi.widgetStudio.result.unsupported')}</Text> : null}
+        {!nativeWidgetSupported(catSpec?.kind ?? spec.kind, catSpec?.size ?? spec.size) ? (
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...body(textV2.footnote), styles.intro, { color: c.inkSecondary }]}>
+            {t('themeUi.widgetStudio.result.unsupported')}
+          </Text>
+        ) : null}
         <View style={styles.actions}>
           <PillButton
             label={busy ? t('themeUi.widgetStudio.add.busy') : t('themeUi.widgetStudio.add.cta')}
@@ -705,8 +732,8 @@ function ResultCard({ result }: { result: Exclude<AddResult, null> }) {
     <View style={[styles.note, continuous, { backgroundColor: tone.fill }]} accessibilityLiveRegion="polite">
       <Feather name={icon} size={20} color={tone.ink} />
       <View style={[styles.flex, styles.gap]}>
-        {title ? <Text style={[textV2.headline, textStyleFor(script, textV2.headline), { color: tone.ink }]}>{title}</Text> : null}
-        <Text style={[textV2.subhead, textStyleFor(script, textV2.subhead), { color: tone.ink }]}>{text}</Text>
+        {title ? <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[textV2.headline, textStyleFor(script, textV2.headline), { color: tone.ink }]}>{title}</Text> : null}
+        <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[textV2.subhead, textStyleFor(script, textV2.subhead), { color: tone.ink }]}>{text}</Text>
       </View>
     </View>
   );
@@ -740,6 +767,7 @@ function ChipRow({ label, options, value, onChange }: { label: string; options: 
           >
             {o.icon ? <Feather name={o.icon} size={16} color={selected ? c.onTint : c.ink} /> : null}
             <Text
+              maxFontSizeMultiplier={fontScaleCap('subhead')}
               style={[
                 textV2.subhead,
                 textStyleFor(script, textV2.subhead),
@@ -792,12 +820,12 @@ function ScaleSlider({ value, onChange }: { value: number; onChange: (v: number)
         style={[styles.track, { direction: 'ltr' }]}
       >
         <View style={[styles.trackLine, { backgroundColor: c.fill }]}>
-          <View style={{ flex: f, backgroundColor: c.tint, borderRadius: radiusV2.pill }} />
+          <View style={{ flex: f, backgroundColor: c.tint, borderRadius: chromeRadiusV2.pill }} />
           <View style={{ flex: 1 - f }} />
         </View>
         <View pointerEvents="none" style={[styles.thumb, { start: Math.max(0, f * trackW - 12), backgroundColor: c.surface, borderColor: c.tint }]} />
       </Pressable>
-      <Text style={[textV2.headline, textStyleFor(script, textV2.headline), styles.sliderValue, { color: c.ink }]}>{label}</Text>
+      <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[textV2.headline, textStyleFor(script, textV2.headline), styles.sliderValue, { color: c.ink }]}>{label}</Text>
       <PillButton label={t('themeUi.widgetStudio.size.larger')} icon="plus" variant="tinted" size="small" onPress={() => set(stepScale(pct, 1))} />
     </View>
   );
@@ -809,7 +837,9 @@ const styles = StyleSheet.create({
   content: { paddingBottom: spaceV2.xxxl, gap: spaceV2.lg },
   previewWrap: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.md, paddingBottom: spaceV2.sm },
   previewCard: { alignSelf: 'stretch' },
-  previewStage: { alignItems: 'center', justifyContent: 'center', borderRadius: radiusV2.card, paddingVertical: spaceV2.lg, marginBottom: spaceV2.sm },
+  previewHead: { flexDirection: 'row', alignItems: 'baseline', gap: spaceV2.sm, marginBottom: spaceV2.sm },
+  upper: { textTransform: 'uppercase' },
+  previewStage: { alignItems: 'center', justifyContent: 'center', borderRadius: chromeRadiusV2.card, paddingVertical: spaceV2.lg, marginBottom: spaceV2.sm },
   intro: { paddingHorizontal: spaceV2.inset },
   pad: { paddingHorizontal: spaceV2.lg, paddingVertical: spaceV2.md },
   gap: { gap: spaceV2.sm },
@@ -821,14 +851,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: spaceV2.xs,
     paddingHorizontal: spaceV2.lg,
-    borderRadius: radiusV2.pill,
+    borderRadius: chromeRadiusV2.pill,
   },
-  input: { minHeight: sizeV2.touch, borderRadius: radiusV2.control, paddingHorizontal: spaceV2.md, paddingVertical: spaceV2.sm },
-  note: { flexDirection: 'row', gap: spaceV2.sm, padding: spaceV2.lg, borderRadius: radiusV2.card, marginHorizontal: spaceV2.lg, alignItems: 'flex-start' },
+  input: { minHeight: sizeV2.touch, borderRadius: chromeRadiusV2.control, paddingHorizontal: spaceV2.md, paddingVertical: spaceV2.sm },
+  note: { flexDirection: 'row', gap: spaceV2.sm, padding: spaceV2.lg, borderRadius: chromeRadiusV2.card, marginHorizontal: spaceV2.lg, alignItems: 'flex-start' },
   actions: { paddingHorizontal: spaceV2.lg, gap: spaceV2.sm },
   sliderRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm, flexWrap: 'wrap' },
   track: { flex: 1, minWidth: 120, minHeight: sizeV2.touch, justifyContent: 'center' },
-  trackLine: { height: 6, borderRadius: radiusV2.pill, flexDirection: 'row', overflow: 'hidden' },
+  trackLine: { height: 6, borderRadius: chromeRadiusV2.pill, flexDirection: 'row', overflow: 'hidden' },
   thumb: { position: 'absolute', width: 24, height: 24, borderRadius: circleRadius(24), borderWidth: 2 },
   sliderValue: { minWidth: 56, textAlign: 'center' },
   catNote: { marginTop: spaceV2.xs },

@@ -172,4 +172,11 @@ export const ar: NonNullable<LocaleMessages['theme']> = {
     hint: 'يفتح استوديو الأدوات',
     open: 'افتح استوديو الأدوات',
   },
+  section: {
+    inside: { eyebrow: 'ما بداخله', title: 'الألوان والنمط' },
+    icons: { eyebrow: 'الأيقونات', title: 'الشكل وتطبيقاتك' },
+    widgets: { eyebrow: 'الأدوات' },
+    wallpaper: { eyebrow: 'الخلفية' },
+    credits: { eyebrow: 'الإسناد', title: 'عن العمل الفني' },
+  },
 };
