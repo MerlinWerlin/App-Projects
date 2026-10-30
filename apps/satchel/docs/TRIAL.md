@@ -1,5 +1,7 @@
 # Trying Satchel on your iPhone (Expo Go)
 
+> 30 Oct 2026: PR 105 is merged and testing moves to **TestFlight** once the one-time iOS signing step is done (`npx eas-cli credentials -p ios` on the PC). The questions below apply the same in TestFlight; ignore the Expo Go-only steps.
+
 Satchel runs in **Expo Go** (SDK 58) until the native offline map needs a development build.
 
 ## The 4 steps
@@ -13,6 +15,8 @@ Fallback only, if the PC auto-start is not serving Satchel: the Satchel Build pa
 Nothing here is confirmed on a real phone until you say so.
 
 ## New since your last test
+- 26 Oct (run 27): an imported trip with the same name as one you already have is now called "<name> (copy)", so the two are easy to tell apart.
+  - Import a trip you already have: is the new one named "<name> (copy)"? (yes/no)
 - 26 Oct (run 26): you can send a trip to someone (or to yourself) as a `.satchel` file, and bring one in. Trip screen > **Export trip** opens the share sheet (AirDrop, Messages, Files); Trips > **Import a trip** picks the file and opens it as a new, separate trip. Documents, the emergency card and medical notes are never put in the file. Opening a `.satchel` straight from Messages or Files comes later with the full app build; for now use Import a trip.
   - On a trip with an attached ticket, does Export trip open the share sheet with a file named after the trip, ending in .satchel? (yes/no)
   - Import that file: does a second, separate copy of the trip open with its bookings, ticket image, saved places and packing list? (yes/no)

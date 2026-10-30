@@ -1,15 +1,15 @@
 {
-  "tests": 266,
-  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); PC queue: full tsc clean, 254/254 tests and iOS export OK on 5fd4295; this commit pending the PC queue's next TSC_REPORT",
-  "last_run": "2026-10-26 11:20 Sydney",
+  "tests": 268,
+  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); last PC queue report (e9516a4) clean",
+  "last_run": "2026-10-30 23:25 Sydney",
   "stage": "trial",
-  "oversight_seen": 152,
+  "oversight_seen": 205,
   "headline": "Ready to try on your iPhone",
   "next_for_owner": [
-    "To get Satchel onto TestFlight: create the app in App Store Connect (bundle id com.jared797.satchel, SKU satchel) and send Claude its Apple ID number. Everything else is prepared; see docs/TESTFLIGHT.md.",
-    "Install Expo Go from the App Store on your iPhone (Satchel targets SDK 58, the version Expo Go runs).",
-    "Your PC's auto-start serves Satchel on port 8098: on your iPhone open Expo Go > Recently opened > Satchel (or scan the QR from the Satchel window in Desktop\\Apps\\satchel).",
-    "Try the demo trip, then turn on flight mode and try again. Comment on this page with anything that looks wrong (docs/TRIAL.md has yes/no questions)."
+    "PR 105 is merged; Satchel's first TestFlight build stopped because iOS signing isn't set up yet. On your PC, in the satchel folder, run: npx eas-cli credentials -p ios (production profile; let it create or reuse the distribution certificate and provisioning profile for com.jared797.satchel), then tell Claude in the App Factory chat to re-run the ship.",
+    "When the build arrives, open TestFlight on your iPhone > Satchel.",
+    "Try the demo trip, then turn on flight mode and try again; export and import a trip.",
+    "Comment on this page with anything that looks wrong (docs/TRIAL.md has yes/no questions; they apply the same in TestFlight)."
   ],
   "trial_kit": true,
   "next_stage": "owner-tested"

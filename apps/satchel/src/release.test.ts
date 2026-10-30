@@ -28,12 +28,13 @@ test('privacy manifest declares no tracking and no collected data', () => {
   assert.ok(m.NSPrivacyAccessedAPITypes.length >= 1);
 });
 
-test('eas has production profiles and an iOS submit slot waiting only for the App Store Connect id', () => {
+test('eas has production profiles and the App Store Connect id in both the submit slot and the onboarding draft (T38)', () => {
   assert.equal(eas.build.production.channel, 'production');
   assert.equal(eas.build.production.autoIncrement, true);
   assert.ok(eas.build['production-native']);
   assert.ok(eas.submit.production.ios);
   const draft = read('ops/onboarding/RELEASE.draft.json');
   assert.equal(draft.bundleId, app.ios.bundleIdentifier);
-  assert.equal(draft.ascAppId, null);
+  assert.match(String(eas.submit.production.ios.ascAppId), /^\d{10}$/);
+  assert.equal(draft.ascAppId, eas.submit.production.ios.ascAppId);
 });

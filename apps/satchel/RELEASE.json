@@ -1,6 +1,6 @@
 {
-  "mode": "build",
-  "note": "Satchel first TestFlight build",
+  "mode": "update",
+  "note": "Satchel: imported trips get '(copy)' names, and a failed packing-list save now rolls the whole import back",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

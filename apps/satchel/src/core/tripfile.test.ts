@@ -7,6 +7,7 @@ import type { PackList } from './packing.ts';
 import {
   buildTripFile,
   importTripFile,
+  uniqueTripName,
   MAX_TRIP_FILE_CHARS,
   parseTripFile,
   parseTripFileText,
@@ -225,4 +226,19 @@ test('file names are safe for Files and AirDrop', () => {
   assert.equal(tripFileName('   '), 'Trip.satchel');
   assert.equal(tripFileName('..hidden'), 'hidden.satchel');
   assert.ok(tripFileName('x'.repeat(200)).length <= 60 + '.satchel'.length);
+});
+
+// ---- T45: '(copy)' names ----
+
+const copyName = (name: string, n: number) => (n === 1 ? `${name} (copy)` : `${name} (copy ${n})`);
+
+test('uniqueTripName keeps a name no trip has', () => {
+  assert.equal(uniqueTripName('Lisbon', ['Tokyo', 'Kyoto'], copyName), 'Lisbon');
+  assert.equal(uniqueTripName('Lisbon', [], copyName), 'Lisbon');
+});
+
+test('uniqueTripName adds (copy), then (copy 2), ignoring case and spaces', () => {
+  assert.equal(uniqueTripName('Tokyo', ['tokyo '], copyName), 'Tokyo (copy)');
+  assert.equal(uniqueTripName('Tokyo', ['Tokyo', 'Tokyo (copy)'], copyName), 'Tokyo (copy 2)');
+  assert.equal(uniqueTripName('Tokyo', ['Tokyo', 'TOKYO (COPY)', 'Tokyo (copy 2)'], copyName), 'Tokyo (copy 3)');
 });

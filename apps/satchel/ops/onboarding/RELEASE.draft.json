@@ -1,10 +1,13 @@
 {
-  "_note": "Draft for App Factory auto-ship. Satchel has no App Store Connect record yet. Auto-ship copies this into App-Projects apps/<folder>/RELEASE.json in the format the other apps use, adds the ascAppId Jared sends, and only then ships. Never ship with ascAppId null.",
+  "_note": "Draft for App Factory auto-ship. Jared created the App Store Connect app on 26 Oct 2026 (Apple ID 6826958413); auto-ship copied it into App-Projects apps/satchel/RELEASE.json (PR #105). Merging that PR is Jared's step.",
   "app": "satchel",
-  "folder_candidates": ["apps/travel", "apps/satchel"],
+  "folder_candidates": [
+    "apps/travel",
+    "apps/satchel"
+  ],
   "name": "Satchel",
   "bundleId": "com.jared797.satchel",
-  "ascAppId": null,
+  "ascAppId": "6826958413",
   "platform": "ios",
   "profile": "production",
   "version": "0.1.0",
