@@ -121,6 +121,10 @@ jobs:
             export EXPO_ASC_API_KEY_PATH="$k" EXPO_ASC_KEY_ID="$(echo "$ASC_KEY_ID" | tr -d '[:space:]')" \
                    EXPO_ASC_ISSUER_ID="$(echo "$ASC_ISSUER_ID" | tr -d '[:space:]')" EXPO_APPLE_TEAM_ID="$(echo "$APPLE_TEAM_ID" | tr -d '[:space:]')" \
                    EXPO_APPLE_TEAM_TYPE=INDIVIDUAL
+            # eas submit reads the key from the submit profile (env vars alone aren't used non-interactively).
+            jq --arg p "$k" --arg i "$(echo "$ASC_KEY_ID" | tr -d '[:space:]')" --arg s "$(echo "$ASC_ISSUER_ID" | tr -d '[:space:]')" \
+              '.submit.production.ios = ((.submit.production.ios // {}) + {ascApiKeyPath: $p, ascApiKeyId: $i, ascApiKeyIssuerId: $s})' eas.json > eas.tmp.json
+            mv eas.tmp.json eas.json
           fi
           eas submit --platform ios --profile production --path "$RUNNER_TEMP/app.ipa" --non-interactive --wait 2>&1 | tee -a "$RUNNER_TEMP/ship.log"
 
