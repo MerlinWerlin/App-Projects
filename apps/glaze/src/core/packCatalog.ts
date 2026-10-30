@@ -1,8 +1,11 @@
-// owner-1030 A (Cloudflare R2 theme hosting): the remote catalogue + remote art-pack contract.
-// THE FORMAT IS THE CONTRACT between scripts/packs/build_packs.mjs (writes it), scripts/packs/publish_r2.mjs
-// (uploads it) and the app (reads it). docs/THEME_PACKS.md "Remote art packs (R2)" describes it in words.
+// owner-1030 A / T169 (theme hosting): the remote catalogue + remote art-pack contract.
+// THE FORMAT IS THE CONTRACT between scripts/packs/build_packs.mjs (writes it),
+// scripts/packs/release_assets.mjs (flattens it into GitHub Release assets; publish_r2.mjs is the
+// older S3/R2 uploader, kept as reference) and the app (reads it). docs/THEME_PACKS.md and
+// docs/PACK_HOSTING.md describe it in words.
 //
-// Layout under PACK_BASE_URL (host-agnostic: R2 public r2.dev URL first, custom domain later):
+// Logical layout under PACK_BASE_URL. On a GitHub release host every "/" becomes "__" in the asset
+// name (src/core/packHost.ts packObjectUrl); on a folder host the paths are used as-is:
 //
 //   catalog.json                                   short cache (Cache-Control max-age=300)
 //   art/<packId>/v<packVersion>/manifest.json      immutable (a new version gets a new folder)

@@ -189,4 +189,14 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
     allDone: 'Todos os ícones prontos. Você pode mover os ícones originais para a Biblioteca de Apps.',
     oneAtATime: 'Um ícone por vez: siga os passos do próximo app, marque como feito e o Glaze abre os passos do seguinte.',
   },
+  coverage: {
+    heading: 'Seus apps',
+    counts: '{themed} com tema · {monogram} monograma',
+    countsWithPhotos: '{themed} com tema · {monogram} monograma · {photo} sua foto',
+    monogramHint: 'Apps sem arte do tema recebem um monograma desenhado no estilo do tema. Toque em um para escolher um símbolo ou sua própria foto.',
+    allThemed: 'Todos os apps do seu conjunto têm arte do tema.',
+    tag: 'Monograma',
+    rowA11y: '{app}, monograma',
+    rowHint: 'Abre o seletor de símbolo e foto',
+  },
 };

@@ -12,6 +12,7 @@ export const fr: NonNullable<LocaleMessages['themes']> = {
     body: 'Dégradés, maillage, grain et motifs à la taille de votre iPhone.',
     hint: 'Ouvre le créateur de fonds d’écran',
   },
+  eyebrow: { starters: 'Pour commencer', art: 'Art gratuit', space: 'Gratuit · vraies photos', plus: 'Glaze Plus' },
   starters: 'Thèmes de base',
   startersEmpty: 'Pas encore de thèmes de base',
   plusPacks: 'Packs Plus',

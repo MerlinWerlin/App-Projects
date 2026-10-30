@@ -88,3 +88,27 @@ Facts behind the note (check before each submission):
 - Android: a real looping live wallpaper (`modules/glaze-android`, `GlazeVideoWallpaperService`); Play has
   no equivalent of 2.5.4 for this.
 - This text describes the code, not a device test.
+
+## Scan my Home Screen (T171, native build only)
+
+iOS gives apps no list of installed apps, so this feature asks the user for screenshots instead. It is
+only in builds made with `GLAZE_NATIVE=1` (`production-native`); the plain `production` build links no
+Glaze native module and shows the manual app list instead.
+
+Note to paste:
+
+> "Scan my Home Screen" helps the user find the apps they want icons for. The user takes screenshots of
+> their own Home Screen pages and picks them with the system photo picker (read-only; Glaze never
+> browses or changes the photo library). Apple's Vision framework reads the app names on the device
+> (`VNRecognizeTextRequest`), Glaze matches the names to its built-in list, and the user confirms the
+> list before anything is added. The screenshots and the text read from them are never uploaded: there
+> is no server, no network call and no analytics. Nothing about other apps is detected or stored beyond
+> the names the user confirms. This feature is free.
+
+Facts behind the note (check before each submission):
+- Native module: `modules/glaze-home-scan/ios/GlazeHomeScanModule.swift` (Vision, `recognitionLevel .accurate`,
+  `usesLanguageCorrection false`; no networking, no Photos framework). Adapter: `src/native/homeScan.ts`.
+- Matching: `src/core/homeScan.ts`, tests in `src/core/homeScan.test.ts`. Screen: `app/home-scan.tsx`.
+- Photo access is the system picker (`expo-image-picker`); `NSPhotoLibraryUsageDescription` is already in
+  `app.json` ("They never leave your phone").
+- This text describes the code, not a device test.

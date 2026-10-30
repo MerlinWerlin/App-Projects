@@ -411,3 +411,7 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - Oversight v204: no new directives, no patches; D203-2 still open (fixes only, small). App-Projects: nothing new for apps/glaze since 0afce81. No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
 - T166 (small part): Widgets tab regained the ~16 pt gap above the first grid row lost in T162 (spacer at the end of the list header, spaceV2.lg); TRIAL.md 30 Oct question 6. Rest of T166 still todo.
 - 1260/1260 core tests green; core only typecheck. Kit rebuilt from this checkpoint. Nothing device-tested.
+## 2026-10-30 run 182 (11:21Z, artifact 1793351984-0ef1; oversight v205)
+- Synced App-Projects 2b133ce (owner brief 30 Oct evening, ea142a9 + 2b133ce) into docs/OWNER_1030.md (earlier brief kept below it). Imported T169-T173 (owner-1030b); T167 superseded. No page comments. npm registry unreachable.
+- 4 parallel workers: T169 GitHub Release pack hosting (36ccaa4), T170 themed monograms + themed/monogram Install view + catalogue 379->565 (9029d96), T171 Scan my Home Screen with on-device Vision OCR (9e79b12, new module glaze-home-scan), T173 PREMIUM_UI.md + Themes browse slice (d74aae1). T172 TRIAL.md TestFlight only. Follow-ups T174.
+- 1320/1320 core tests green, 15/15 pack script tests, core typecheck clean; full install + tsc + expo export needs PC verification. New native module needs the next production-native build to compile. Nothing device-tested.

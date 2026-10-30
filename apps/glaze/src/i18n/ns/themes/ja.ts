@@ -12,6 +12,7 @@ export const ja: NonNullable<LocaleMessages['themes']> = {
     body: 'グラデーション、メッシュ、粒子、パターンを iPhone のサイズで。',
     hint: '壁紙メーカーを開きます',
   },
+  eyebrow: { starters: 'はじめに', art: '無料のアート', space: '無料・実写', plus: 'Glaze Plus' },
   starters: 'スターターテーマ',
   startersEmpty: 'スターターテーマはまだありません',
   plusPacks: 'Plus パック',

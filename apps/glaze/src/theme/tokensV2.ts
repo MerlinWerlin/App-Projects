@@ -1,7 +1,8 @@
 // Design v2 tokens (docs/DESIGN_V2.md) for React Native: the app's ONE token set (T163; the v1
 // tokens.ts is retired). Numbers and colours live in src/core/designV2.ts (tested in Node); this
 // file shapes them into RN styles.
-//   type scale  typeV2 / textV2 (named steps: largeTitle ... caption2, button, navTitle)
+//   type scale  typeV2 / textV2 (named steps: largeTitle ... caption2, button, navTitle, eyebrow);
+//               Dynamic Type caps fontScaleCapV2 / fontScaleCap(role) (T173); editorialV2 rhythm
 //   spacing     spaceV2 (4-pt grid; xxs 2 is the only half step)
 //   radii       chromeRadiusV2 card / control / pill (radiusV2 keeps legacy group/cardLarge/sheet);
 //               shapes: iconTileRadius(size), circleRadius(size)
@@ -31,7 +32,11 @@ export {
   chromeRadiusV2,
   circleRadius,
   darkV2,
+  editorialV2,
   elevationV2,
+  eyebrowCaseFor,
+  fontScaleCap,
+  fontScaleCapV2,
   iconTileRadius,
   largeTitleRanges,
   largeTitleSnapAt,

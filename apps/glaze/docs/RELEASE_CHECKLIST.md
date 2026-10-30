@@ -38,13 +38,13 @@ the plain `production` profile keep the honest mock. App Store Connect steps: `d
 - [ ] Owner: App Privacy ("Data Not Collected"), review contact, screen recording on a physical iPhone (launch → theme → icons → widget → Plus Unlock/Restore)
 - [x] Paid Apps Agreement, bank and tax active (account, 23 Oct)
 
-## 3b. Theme packs on Cloudflare R2 (owner-1030 A, 30 Oct)
-- [x] Pack build + upload scripts written and tested offline (`scripts/packs/`, T159); app lists and downloads hosted packs (T160)
-- [ ] Owner: Cloudflare account, bucket `glaze-packs`, public r2.dev link, upload key as 4 GitHub secrets (`docs/R2_SETUP.md`)
-- [ ] First publish (overseer, dry-run first), then set the r2.dev address in `src/config/packs.ts` (staging, then production)
+## 3b. Theme packs on GitHub Releases (owner-1030 A, T169, 30 Oct)
+- [x] Pack build + flat release-asset scripts written and tested offline (`scripts/packs/`, T159, T169); app lists and downloads hosted packs (T160)
+- [x] App points at the release: production `glaze-packs-v1`, staging `glaze-packs-staging` on `MerlinWerlin/App-Projects` (`src/config/packs.ts`). Until the release exists the app behaves as offline
+- [ ] Place `scripts/packs/publish-packs.yml` as `.github/workflows/glaze-publish-packs.yml` in App-Projects and run it: staging (dry-run, then real), then production (`docs/PACK_HOSTING.md`). No account or secrets needed; nothing for Jared to set up
 - [ ] Owner: on TestFlight, download a free pack and a Plus pack, then turn on Airplane mode and check the themes still show
-- [ ] Privacy page + App Privacy: pack downloads come from Cloudflare (it sees the phone's IP address like any website, and Glaze sends no personal data). "Data Not Collected" still holds; add one sentence to `docs/privacy.html`
-- [ ] Decide the theme tiers (`scripts/packs/tiers.json`, plan in `docs/R2_SETUP.md`); app download stays under ~40 MB
+- [ ] Privacy page + App Privacy: pack downloads come from GitHub (github.com / objects.githubusercontent.com see the phone's IP address like any website, and Glaze sends no personal data). "Data Not Collected" still holds; add one sentence to the privacy page
+- [ ] Decide the theme tiers (`scripts/packs/tiers.json`, plan in `docs/R2_SETUP.md` "Plan for the ~87 themes"); app download stays under ~40 MB
 
 ## 3c. Look and feel (owner-1030 B/C, 30 Oct)
 - [x] Smoother lists (virtualised Themes/Widgets/Wallpapers, cached downscaled images) and one design token set (T162, T163)

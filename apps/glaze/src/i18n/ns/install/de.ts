@@ -189,4 +189,14 @@ export const de: NonNullable<LocaleMessages['install']> = {
     allDone: 'Alle Icons erledigt. Du kannst die Original-Icons in die App-Mediathek verschieben.',
     oneAtATime: 'Ein Icon nach dem anderen: Folge den Schritten für die nächste App, hake sie ab, und Glaze öffnet die Schritte für die folgende.',
   },
+  coverage: {
+    heading: 'Deine Apps',
+    counts: '{themed} mit Theme · {monogram} Monogramm',
+    countsWithPhotos: '{themed} mit Theme · {monogram} Monogramm · {photo} eigenes Foto',
+    monogramHint: 'Apps ohne Theme-Grafik bekommen ein Monogramm im Stil des Themes. Tippe auf eine App, um stattdessen ein Symbol oder dein eigenes Foto zu wählen.',
+    allThemed: 'Jede App in deinem Set hat eine Theme-Grafik.',
+    tag: 'Monogramm',
+    rowA11y: '{app}, Monogramm',
+    rowHint: 'Öffnet die Auswahl für Symbol und Foto',
+  },
 };

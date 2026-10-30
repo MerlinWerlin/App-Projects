@@ -29,12 +29,19 @@ Glaze is the App Factory's flagship, premium-feel app. Treat the UI as the top p
 - Use the design-critique loop already planned (need glaze-design-critique): render key screens, get a Sol/Astra critique, apply the agreed points, record them in docs/DESIGN_CRITIQUE_1030.md.
 - Each run: ship visible UI improvements, and list them in TRIAL.md "New since your last test" with yes/no questions so Jared can judge them on TestFlight.
 
+> Build-run note (run 182): the brief above arrived via App-Projects commits ea142a9 + 2b133ce (Jared's chat, 30 Oct 20:39/21:04 Sydney). Its tasks are tagged `owner-1030b` (T169+). The earlier 16:30 brief of the same day follows below with its status; A above replaces its Cloudflare R2 plan.
+
+## Status of owner-1030b (kept current by the build runs)
+- Run 182 (30 Oct, 22:xx Sydney): all imported (T169-T173) and A-D done in code; E started. Nothing compiled beyond core (npm registry unreachable) and nothing device-tested.
+  - A (T169): packs hosted as GitHub Release assets, tag `glaze-packs-v1` (staging `glaze-packs-staging`); flat asset names (`/` -> `__`), sha256 kept; 404 = offline. `scripts/packs/release_assets.mjs`, workflow `scripts/packs/publish-packs.yml` (GITHUB_TOKEN only, written not run), steps in `docs/PACK_HOSTING.md`. R2_SETUP.md is reference only.
+  - B (T170): theme-designed monograms (theme font, colours, badge/ring/glow), Install shows "N themed · M monogram" with one-tap glyph/photo pick, catalogue 379 -> 565 apps (original glyphs; 12 public URL schemes marked unverified).
+  - C (T171): Scan my Home Screen: screenshots -> on-device Vision text recognition (new module modules/glaze-home-scan, native build only) -> matched list to confirm; unmatched become monogram apps; Expo Go/Android fall back to the manual list.
+  - D (T172): TRIAL.md points to TestFlight only.
+  - E (T173): docs/PREMIUM_UI.md written; first slice on Themes browse + large titles. Continues every run.
 
 ---
 
-<!-- Earlier owner brief of 30 Oct, imported by the build page (the Jared chat brief above supersedes it where they differ, e.g. GitHub Releases instead of Cloudflare R2). -->
-
-# Owner brief 30 Oct 2026 (owner-1030): release prep, theme hosting on Cloudflare R2, professional UI pass
+## Earlier brief, same day (owner-1030, manual fire 16:30 Sydney): release prep, theme hosting on Cloudflare R2, professional UI pass
 
 Arrived as the payload of a manual fire of the Glaze build task (Jared in chat 30 Oct 2026 16:30 Sydney: "find and use scheduled tasks that have access ... get the work done"). Also on Google Drive as GLAZE_RELEASE_BRIEF_1030.md (not read; the payload carried the full text). Backlog tasks are tagged `owner-1030` (T159-T165). Status of each item is kept at the bottom of this file.
 

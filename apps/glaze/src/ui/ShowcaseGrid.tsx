@@ -29,14 +29,14 @@ import type { Theme } from '../core/themes';
 import { useT } from '../i18n';
 import { WallpaperView } from '../render/WallpaperView';
 import { easeOutCurve } from '../theme/motion';
-import { continuous } from '../theme/tokensV2';
-import { radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { HOME_ASPECT, HomeMock } from './HomeMock';
 import { HeartButton } from './HeartButton';
 import { SquircleCard } from './SquircleCard';
 import { noMirror, textStyleFor } from './i18nLayout';
 import { cachedPreviewSpecs } from './previewCache';
+import { Skeleton } from './Skeleton';
 
 type GridProps = {
   themes: readonly Theme[];
@@ -72,7 +72,8 @@ export const ShowcaseGrid = memo(function ShowcaseGrid({ themes, pageIndex, onSt
   const { isRTL } = useT();
   const { width } = useWindowDimensions();
   const columns = showcaseColumns(width);
-  const gap = spaceV2.md;
+  // T173: the same 16-pt card rhythm as the pack rows below (editorialV2.cardGap).
+  const gap = editorialV2.cardGap;
   const cardWidth = showcaseCardWidth(width, columns, spaceV2.lg, gap);
 
   // Page change: the whole grid fades up from GRID_FADE_FROM (opacity only, ease-out).
@@ -156,14 +157,15 @@ export const ShowcaseGrid = memo(function ShowcaseGrid({ themes, pageIndex, onSt
   );
 });
 
-/** Same footprint as a card (preview + name row), drawn in the theme's base colour. */
+/**
+ * Same footprint as a card (preview + name row), drawn in the theme's base colour. T173: a Skeleton,
+ * so a card that takes a moment breathes calmly (opacity pulse; still under Reduce Motion).
+ */
 const CardPlaceholder = memo(function CardPlaceholder({ width, height, colour }: { width: number; height: number; colour: string }) {
   return (
-    <View
-      accessibilityElementsHidden
-      importantForAccessibility="no-hide-descendants"
-      style={[styles.placeholder, continuous, { width, height: height + PLACEHOLDER_NAME_ROW, backgroundColor: colour }]}
-    />
+    <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={styles.placeholder}>
+      <Skeleton width={width} height={height + PLACEHOLDER_NAME_ROW} radius={radiusV2.cardLarge} colour={colour} />
+    </View>
   );
 });
 
@@ -219,12 +221,16 @@ const ShowcaseCard = memo(function ShowcaseCard({ theme, width, onOpen, isNew, b
           {badge ? <View style={styles.badge}>{badge}</View> : null}
           {isNew ? (
             <View style={[styles.newPill, { backgroundColor: c.tint }]}>
-              <Text style={[textV2.caption2, textStyleFor(script, textV2.caption2), { color: c.onTint }]}>{t('themes.badge.new')}</Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('caption2')} style={[textV2.caption2, textStyleFor(script, textV2.caption2), { color: c.onTint }]}>
+                {t('themes.badge.new')}
+              </Text>
             </View>
           ) : null}
         </View>
         <View style={[styles.text, onToggleLike ? styles.textWithHeart : null]}>
-          <Text style={[textV2.headline, textStyleFor(script, textV2.headline), { color: c.ink }]}>{theme.name}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[textV2.headline, textStyleFor(script, textV2.headline), { color: c.ink }]}>
+            {theme.name}
+          </Text>
         </View>
       </SquircleCard>
       {onToggleLike ? <HeartButton id={theme.id} name={theme.name} liked={liked} onToggle={onToggleLike} style={styles.heart} /> : null}
@@ -234,7 +240,7 @@ const ShowcaseCard = memo(function ShowcaseCard({ theme, width, onOpen, isNew, b
 
 const styles = StyleSheet.create({
   wrap: { minHeight: 48 },
-  placeholder: { borderRadius: radiusV2.cardLarge, opacity: 0.5 },
+  placeholder: { opacity: 0.5 },
   grid: { flexDirection: 'row', flexWrap: 'wrap' },
   badge: { position: 'absolute', top: spaceV2.sm, right: spaceV2.sm },
   newPill: {

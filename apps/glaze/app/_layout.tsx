@@ -159,6 +159,7 @@ function RootStack() {
       <Stack.Screen name="live/[id]" options={{ title: t('live.editTitle') }} />
       <Stack.Screen name="feedback" options={{ title: t('feedback.title') }} />
       <Stack.Screen name="add-app" options={{ title: t('addApp.title') }} />
+      <Stack.Screen name="home-scan" options={{ title: t('addApp.scan.title') }} />
       <Stack.Screen name="tips" options={{ title: t('tips.title') }} />
       <Stack.Screen name="habit-goals" options={{ title: t('tabs.widgetsTab.goals.title') }} />
       <Stack.Screen name="widget-studio" options={{ title: t('themeUi.widgetStudio.title') }} />

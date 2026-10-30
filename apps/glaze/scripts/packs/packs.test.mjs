@@ -1,5 +1,5 @@
 // T159: pack build + R2 publish (node:test, offline; the publish test talks to a mock S3 server
-// on 127.0.0.1 only). Run: node --test scripts/packs/
+// on 127.0.0.1 only). Run: node --test "scripts/packs/*.test.mjs"
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';

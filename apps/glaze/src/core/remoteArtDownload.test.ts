@@ -9,7 +9,6 @@ import { appendFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readd
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import type { AddressInfo } from 'node:net';
-import { PACK_BASE_URL } from '../config/packs.ts';
 import {
   PackError,
   downloadRemoteArtPack,
@@ -21,6 +20,7 @@ import {
   type Transport,
 } from './packDownloader.ts';
 import { manifestPath, parseRemoteArtManifest } from './packCatalog.ts';
+import { flatAssetName, packHostKind } from './packHost.ts';
 import { cacheIndexAdd, isPackDownloaded, parseCacheIndex, EMPTY_CACHE_INDEX } from './themePack.ts';
 import { decideCatalog, remoteArtThemes } from './remoteCatalog.ts';
 
@@ -88,14 +88,23 @@ before(async () => {
       res.writeHead(503).end();
       return;
     }
-    let body = bucket.get(rel);
+    // T169: a GitHub release lives at /<owner>/<repo>/releases/download/<tag>/<flat name> and has
+    // no folders: only flat names resolve; tag "no-such-release" is a release that doesn't exist.
+    const gh = /^([^/]+\/[^/]+\/releases\/download\/([^/]+))\/(.*)$/.exec(rel);
+    let key = rel;
+    if (gh) {
+      const name = gh[3];
+      const hit = gh[2] === 'no-such-release' || name.includes('/') ? undefined : [...bucket.keys()].find((k) => flatAssetName(k) === name);
+      key = hit ?? '\u0000missing';
+    }
+    let body = bucket.get(key);
     if (!body) {
       res.writeHead(404).end();
       return;
     }
-    const n = hooks.corrupt.get(rel) ?? 0;
+    const n = hooks.corrupt.get(key) ?? 0;
     if (n > 0) {
-      hooks.corrupt.set(rel, n - 1);
+      hooks.corrupt.set(key, n - 1);
       body = Buffer.from(body);
       body[body.length >> 1] ^= 0xff;
     }
@@ -185,8 +194,8 @@ test('catalogue fetch: good, bad (kept last good), offline (kept), disabled (no 
   assert.equal(d.catalog?.packs[0].id, ID);
 
   const before = t.calls;
-  await rejectsWith(fetchCatalogText(t, PACK_BASE_URL), 'disabled');
-  await rejectsWith(downloadRemoteArtPack(opts(t, { baseUrl: PACK_BASE_URL })), 'disabled');
+  await rejectsWith(fetchCatalogText(t, ''), 'disabled');
+  await rejectsWith(downloadRemoteArtPack(opts(t, { baseUrl: '' })), 'disabled');
   assert.equal(t.calls, before, 'empty base URL: no request at all');
 });
 
@@ -306,4 +315,61 @@ test('remote art pack: a new version replaces the old files', async () => {
   assert.ok(!names.includes(v1[0].path), 'old version files removed');
   assert.ok(names.includes(v2[0].path));
   rmSync(dir, { recursive: true, force: true });
+});
+
+// ------------------------------------------------------------ T169: GitHub Release hosting
+
+test('GitHub release host: catalogue, thumb, manifest and files are fetched by flat asset name, sha256-checked', async () => {
+  reset();
+  bucket.clear();
+  const files = publish(1);
+  const gh = `${base}/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1`;
+  assert.equal(packHostKind(gh), 'github-release');
+  const dir = temp();
+  const t = nodeTransport(dir);
+  const d = decideCatalog(null, { ok: true, text: await fetchCatalogText(t, gh) }, 1000);
+  assert.equal(d.catalog?.packs[0].id, ID);
+  const themes = remoteArtThemes(d.catalog, gh, []);
+  assert.equal(themes[0].remoteArt.thumbUrl, `${gh}/art__${ID}__v1__${files[3].path}`);
+  const r = await downloadRemoteArtPack(opts(t, { baseUrl: `${gh}/` }));
+  assert.equal(r.manifest.assets.length, 3);
+  const paths = requests.map((q) => q.path.slice(q.path.indexOf('glaze-packs-v1/') + 'glaze-packs-v1/'.length));
+  assert.deepEqual(paths.slice(0, 2), ['catalog.json', `art__${ID}__v1__manifest.json`]);
+  assert.ok(paths.every((p) => !p.includes('/')), 'no folder paths on a release host');
+  assert.ok(await loadRemoteArt(t, ID));
+
+  // A corrupted asset on the release is caught by the sha256 check and fetched again.
+  rmSync(dir, { recursive: true, force: true });
+  const t2 = nodeTransport(temp());
+  hooks.corrupt.set(`art/${ID}/v1/${files[0].path}`, 1);
+  const r2 = await downloadRemoteArtPack(opts(t2, { baseUrl: gh }));
+  assert.deepEqual(r2.retried, [files[0].path]);
+  hooks.corrupt.set(`art/${ID}/v1/${files[0].path}`, 5);
+  await rejectsWith(downloadRemoteArtPack(opts(nodeTransport(temp()), { baseUrl: gh })), 'integrity');
+});
+
+test('GitHub release not created yet (404): exactly like offline, cached or empty catalogue, never a crash', async () => {
+  reset();
+  bucket.clear();
+  publish(1);
+  const missing = `${base}/MerlinWerlin/App-Projects/releases/download/no-such-release`;
+  const t = nodeTransport(temp());
+  await rejectsWith(fetchCatalogText(t, missing), 'network');
+  // What src/native/packs.ts refreshCatalog does with the failure: nothing cached -> nothing listed.
+  let fetched: { ok: false; error: string } | null = null;
+  try {
+    await fetchCatalogText(t, missing);
+  } catch (e) {
+    fetched = { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+  let d = decideCatalog(null, fetched, 1000);
+  assert.deepEqual([d.catalog, d.cache, d.save], [null, null, false]);
+  assert.deepEqual(remoteArtThemes(d.catalog, missing, []), []);
+  // With a last good copy, it stays listed.
+  const good = decideCatalog(null, { ok: true, text: await fetchCatalogText(t, `${base}/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1`) }, 1000).cache;
+  d = decideCatalog(good, fetched, 2000);
+  assert.equal(d.catalog?.packs[0].id, ID);
+  assert.equal(d.save, false);
+  // A pack download against the missing release fails cleanly with 'network'.
+  await rejectsWith(downloadRemoteArtPack(opts(nodeTransport(temp()), { baseUrl: missing })), 'network');
 });

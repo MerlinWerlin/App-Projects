@@ -1,4 +1,4 @@
-// owner-1030 A (T160): the app side of the remote catalogue (catalog.json on Cloudflare R2, format in
+// owner-1030 A (T160): the app side of the remote catalogue (catalog.json on the pack host, format in
 // src/core/packCatalog.ts). Fetch-free logic only, so Node tests cover it and src/native/packs.ts
 // just does the I/O:
 //  - what to show, given the cached copy and a fresh fetch: offline-safe, keeps the last good
@@ -11,6 +11,7 @@
 
 import { ART_PACK_DEFAULT_ADDED_AT, ART_WALLPAPER_SIZE, HERO_SIZES, artPackTheme, isArtPackTheme, type ArtPackData, type ArtPackTheme, type HeroSize, type PixelSize } from './artPack.ts';
 import { parseCatalog, type Catalog, type CatalogPack, type RemoteArtManifest, type RemoteArtRole } from './packCatalog.ts';
+import { packObjectUrl } from './packHost.ts';
 import type { PackAccessInput, PackDetailView } from './packDetail.ts';
 
 /** Re-fetch catalog.json at most this often (unless the person pulls to refresh). */
@@ -124,7 +125,6 @@ export function remoteArtTheme(p: CatalogPack, baseUrl: string | null): RemoteAr
     bytes: {},
   };
   const base = artPackTheme(data);
-  const base2 = baseUrl ? baseUrl.replace(/\/+$/, '') : null;
   return {
     ...base,
     plus: p.plus,
@@ -133,7 +133,7 @@ export function remoteArtTheme(p: CatalogPack, baseUrl: string | null): RemoteAr
       packVersion: p.packVersion,
       plus: p.plus,
       bytes: p.bytes,
-      thumbUrl: base2 ? `${base2}/${p.thumb}` : null,
+      thumbUrl: baseUrl && baseUrl.trim() ? packObjectUrl(baseUrl, p.thumb) : null,
       thumbhash: p.thumbhash,
     }),
   };

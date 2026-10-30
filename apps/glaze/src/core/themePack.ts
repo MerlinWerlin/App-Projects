@@ -10,6 +10,7 @@
 //   thumbs/<theme id>.png    optional preview thumbnail
 // See docs/THEME_PACKS.md.
 
+import { packObjectUrl } from './packHost.ts';
 import {
   COMPOSITION_KINDS,
   DISPLAY_FONTS,
@@ -129,9 +130,12 @@ export function supportsApp(manifest: Pick<PackManifest, 'minAppVersion'>, appVe
   return compareVersions(appVersion, manifest.minAppVersion) >= 0;
 }
 
-/** `<base>/<packId>/<path>` with exactly one slash between parts. */
+/**
+ * `<base>/<packId>/<path>` with exactly one slash between parts, or the flat release-asset name
+ * `<base>/<packId>__<path>` on a GitHub release host (T169, src/core/packHost.ts).
+ */
 export function packFileUrl(baseUrl: string, packId: string, path: string): string {
-  return `${baseUrl.replace(/\/+$/, '')}/${encodeURIComponent(packId)}/${path.split('/').map(encodeURIComponent).join('/')}`;
+  return packObjectUrl(baseUrl, `${packId}/${path}`);
 }
 
 // ------------------------------------------------------------ manifest validation

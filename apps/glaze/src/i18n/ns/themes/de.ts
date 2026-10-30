@@ -12,6 +12,7 @@ export const de: NonNullable<LocaleMessages['themes']> = {
     body: 'Verläufe, Mesh, Körnung und Muster in der Größe deines iPhones.',
     hint: 'Öffnet den Hintergrund-Editor',
   },
+  eyebrow: { starters: 'Hier anfangen', art: 'Kostenlose Kunst', space: 'Kostenlos · echte Fotos', plus: 'Glaze Plus' },
   starters: 'Starter-Themes',
   startersEmpty: 'Noch keine Starter-Themes',
   plusPacks: 'Plus-Pakete',

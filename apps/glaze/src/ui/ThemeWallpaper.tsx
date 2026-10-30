@@ -30,7 +30,7 @@ export const ThemeWallpaper = memo(function ThemeWallpaper({ theme, width, heigh
   // Hooks first: list rows recycle this view across themes, so no hook may sit after an early return.
   const bg = theme.palette.bg;
   const style = useMemo(() => ({ width, height, backgroundColor: bg }), [width, height, bg]);
-  // T160: a remote art pack (catalogue on R2) shows its cached thumbnail with a ThumbHash placeholder.
+  // T160: a remote art pack (remote catalogue) shows its cached thumbnail with a ThumbHash placeholder.
   if (isRemoteArtTheme(theme)) return <RemoteArtImage theme={theme} width={width} height={height} />;
   const image = themeWallpaperImage(theme);
   if (image != null) {

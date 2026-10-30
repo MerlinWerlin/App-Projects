@@ -25,8 +25,8 @@ const BRAND_GLYPHS = [
 const rot13 = (s: string) => s.replace(/[a-z]/g, (c) => String.fromCharCode(((c.charCodeAt(0) - 97 + 13) % 26) + 97));
 const COMPETITORS = ['gurzvsl', 'vpba gurzre', 'zlfperra', 'fperraxvg', 'jvqtrgfzvgu', 'vagbyvir', 'ybbcl', 'ybpxvb'].map(rot13);
 
-test('catalogue has ~350 entries with unique ids', () => {
-  assert.ok(CATALOGUE.length >= 340 && CATALOGUE.length <= 420, `${CATALOGUE.length} entries`);
+test('catalogue has ~560 entries with unique ids (T170 widened it from ~380)', () => {
+  assert.ok(CATALOGUE.length >= 460 && CATALOGUE.length <= 700, `${CATALOGUE.length} entries`);
   const ids = CATALOGUE.map((e) => e.id);
   assert.equal(new Set(ids).size, ids.length, 'duplicate ids');
   for (const id of ids) assert.match(id, /^[a-z0-9]+(-[a-z0-9]+)*$/, id);
@@ -216,7 +216,10 @@ test('support(): verified scheme, unverified scheme or Shortcuts only', () => {
 test('apps added in T28 claim no verified schemes (nothing invented)', () => {
   const start = CATALOGUE.findIndex((e) => e.id === 'among-us');
   assert.ok(start > 0);
-  for (const e of CATALOGUE.slice(start)) {
+  // T170 rows (from 'weibo' on) have their own check in catalogueT170.test.ts.
+  const end = CATALOGUE.findIndex((e) => e.id === 'weibo');
+  assert.ok(end > start);
+  for (const e of CATALOGUE.slice(start, end)) {
     assert.equal(e.verified, false, e.id);
     assert.equal(e.urlScheme, null, e.id);
   }

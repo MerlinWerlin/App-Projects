@@ -12,6 +12,7 @@ export const ptBR: NonNullable<LocaleMessages['themes']> = {
     body: 'Degradês, malha, granulado e padrões no tamanho do seu iPhone.',
     hint: 'Abre o criador de papéis de parede',
   },
+  eyebrow: { starters: 'Comece aqui', art: 'Arte grátis', space: 'Grátis · fotos reais', plus: 'Glaze Plus' },
   starters: 'Temas iniciais',
   startersEmpty: 'Ainda não há temas iniciais',
   plusPacks: 'Pacotes Plus',

@@ -12,6 +12,7 @@ export const hi: NonNullable<LocaleMessages['themes']> = {
     body: 'ग्रेडिएंट, मेश, ग्रेन और पैटर्न, आपके iPhone के आकार में।',
     hint: 'वॉलपेपर मेकर खोलता है',
   },
+  eyebrow: { starters: 'यहाँ से शुरू करें', art: 'मुफ़्त आर्ट', space: 'मुफ़्त · असली फ़ोटो', plus: 'Glaze Plus' },
   starters: 'शुरुआती थीम',
   startersEmpty: 'अभी कोई शुरुआती थीम नहीं',
   plusPacks: 'Plus पैक',

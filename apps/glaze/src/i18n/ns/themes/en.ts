@@ -13,6 +13,8 @@ export const en = {
     body: 'Gradients, mesh, grain and patterns at your iPhone’s size.',
     hint: 'Opens the wallpaper maker',
   },
+  /** T173: small labels above the editorial section titles on the Themes tab. */
+  eyebrow: { starters: 'Start here', art: 'Free art', space: 'Free · real photos', plus: 'Glaze Plus' },
   starters: 'Starter themes',
   startersEmpty: 'No starter themes yet',
   plusPacks: 'Plus packs',

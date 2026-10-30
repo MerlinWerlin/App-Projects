@@ -1,21 +1,40 @@
-// Where downloadable theme packs live (T46, docs/THEME_PACKS.md; owner-1030 A, T160).
-// Hosting is Cloudflare R2 (owner decision 30 Oct 2026), but the app stays host-agnostic: a base
-// URL is just the folder that holds catalog.json and art/<id>/v<n>/ (src/core/packCatalog.ts).
-//  - First: the bucket's public r2.dev URL, e.g. 'https://pub-<hash>.r2.dev' (no trailing slash needed).
-//  - Later: a custom domain on the same bucket, e.g. 'https://packs.<domain>'. HTTPS only.
-// While the chosen environment's URL is empty, packs are disabled and the app makes no network
-// call at all; Settings › Storage shows PACKS_DISABLED_MESSAGE.
+// Where downloadable theme packs live (T46, docs/THEME_PACKS.md; owner-1030 A, T160; T169).
+// Hosting is GitHub Release assets on the public repo MerlinWerlin/App-Projects (owner decision
+// 30 Oct 2026, replacing the Cloudflare R2 plan; docs/PACK_HOSTING.md). The app stays
+// host-agnostic: a base URL plus a host kind read from it (src/core/packHost.ts):
+//  - 'github-release': https://github.com/<owner>/<repo>/releases/download/<tag>. Release assets are
+//    flat, so art/<id>/v<n>/<file> is fetched as <base>/art__<id>__v<n>__<file> (packObjectUrl).
+//  - 'folder': any other HTTPS base (a bucket, a CDN, a custom domain): <base>/art/<id>/v<n>/<file>.
+// Integrity never depends on the host: every file is checked against the SHA-256 in its manifest.
+// While a release does not exist yet, catalog.json 404s and the app treats it exactly like being
+// offline (cached or empty catalogue, no error shown). An empty URL disables packs (no network
+// call at all; Settings › Storage shows PACKS_DISABLED_MESSAGE).
 // The environment comes from Expo extra `packEnv` ('staging' | 'production'; set in app.json, or from
 // an env var in an app.config), read in src/native/packs.ts; missing or anything else = production.
-// Pure data: no React Native / Expo imports, so src/core tests can read it too.
+// Pure data + the URL helpers: no React Native / Expo imports, so src/core tests can read it too.
+
+export { flatAssetName, packHostKind, packObjectUrl, type PackHostKind } from '../core/packHost.ts';
 
 export type PackEnv = 'staging' | 'production';
 
+/** The public repo whose releases hold the packs. */
+export const PACK_RELEASE_REPO = 'MerlinWerlin/App-Projects';
+/** Release tags: production packs, and a separate release for testing a pack set before it ships. */
+export const PACK_RELEASE_TAGS: Readonly<Record<PackEnv, string>> = Object.freeze({
+  staging: 'glaze-packs-staging',
+  production: 'glaze-packs-v1',
+});
+
+/** The download base of a release: https://github.com/<repo>/releases/download/<tag>. */
+export function githubReleaseBase(repo: string, tag: string): string {
+  return `https://github.com/${repo}/releases/download/${encodeURIComponent(tag)}`;
+}
+
 export const PACK_BASE_URLS: Readonly<Record<PackEnv, string>> = Object.freeze({
-  /** Test bucket (or a folder of the same bucket) for builds before release. */
-  staging: '',
+  /** Test release (build with app.json extra.packEnv = "staging"). */
+  staging: githubReleaseBase(PACK_RELEASE_REPO, PACK_RELEASE_TAGS.staging),
   /** The store build. */
-  production: '',
+  production: githubReleaseBase(PACK_RELEASE_REPO, PACK_RELEASE_TAGS.production),
 });
 
 /** 'staging' only when asked for exactly; anything else (missing, typo) is production. */

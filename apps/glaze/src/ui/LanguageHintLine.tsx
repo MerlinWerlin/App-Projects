@@ -2,11 +2,12 @@
 // title in the very first session only. Non-blocking; tapping it opens the language sheet and hides it for
 // good (rules in src/core/languageHint.ts, storage in src/store/languageHint.ts). Language also stays in
 // Settings › Language.
+// T173 (premium UI, onboarding slice): Dynamic Type cap on the line (footnote role).
 import { useState } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { LOCALE_NAMES, useT } from '../i18n';
 import { dismissLanguageHint, useLanguageHint } from '../store/languageHint';
-import { sizeV2, textV2 } from '../theme/tokensV2';
+import { fontScaleCap, sizeV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { haptic } from './haptics';
 import { textStyleFor } from './i18nLayout';
@@ -36,7 +37,7 @@ export function LanguageHintLine() {
           accessibilityHint={t('settings.language.pickerHint')}
           style={styles.row}
         >
-          <Text style={[...type, { color: c.inkSecondary }]}>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...type, { color: c.inkSecondary }]}>
             {line}
             {' · '}{/* i18n-ignore */}
             <Text style={[styles.change, { color: c.tint }]}>{t('settings.language.change')}</Text>

@@ -233,6 +233,21 @@ export default function AddAppScreen() {
         keyboardShouldPersistTaps="handled"
       >
         <Text style={[...ts('callout'), styles.sidePad, { color: c.inkSecondary }]}>{t('addApp.intro')}</Text>
+        {/* T171: find several apps at once from Home Screen screenshots (read on the phone). */}
+        {step === 1 && !appId ? (
+          <PillButton
+            label={t('addApp.scan.entry')}
+            icon="maximize"
+            variant="tinted"
+            haptic={false}
+            style={styles.side}
+            accessibilityHint={t('addApp.scan.entryHint')}
+            onPress={() => {
+              haptic('select');
+              router.push('/home-scan');
+            }}
+          />
+        ) : null}
 
         {/* Step 1: find or add the app */}
         {stepTitle(1, app ? t('addApp.stepApp', { name: app.name }) : t('addApp.stepFind'))}

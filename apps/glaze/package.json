@@ -18,6 +18,7 @@
     "native:off": "node scripts/native-link.mjs 0",
     "eas-build-post-install": "node scripts/eas-native-deps.js",
     "packs:build": "node scripts/packs/build_packs.mjs",
+    "packs:release": "node scripts/packs/release_assets.mjs",
     "packs:publish": "node scripts/packs/publish_r2.mjs"
   },
   "dependencies": {

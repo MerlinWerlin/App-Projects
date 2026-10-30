@@ -172,4 +172,14 @@ export const ko: NonNullable<LocaleMessages['install']> = {
     allDone: '모든 아이콘을 완료했습니다. 원래 아이콘은 앱 보관함으로 옮길 수 있습니다.',
     oneAtATime: '한 번에 아이콘 하나씩: 다음 앱의 단계를 따라 하고 체크하면 Glaze가 그다음 앱의 단계를 엽니다.',
   },
+  coverage: {
+    heading: '내 앱',
+    counts: '테마 {themed} · 모노그램 {monogram}',
+    countsWithPhotos: '테마 {themed} · 모노그램 {monogram} · 내 사진 {photo}',
+    monogramHint: '테마 아트가 없는 앱은 테마 스타일로 디자인된 모노그램을 받습니다. 탭하면 기호나 내 사진을 대신 고를 수 있어요.',
+    allThemed: '세트의 모든 앱에 테마 아트가 있어요.',
+    tag: '모노그램',
+    rowA11y: '{app}, 모노그램',
+    rowHint: '기호 및 사진 선택을 엽니다',
+  },
 };

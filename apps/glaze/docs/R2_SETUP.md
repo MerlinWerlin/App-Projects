@@ -1,3 +1,5 @@
+> **Reference only: replaced by GitHub Release hosting (`docs/PACK_HOSTING.md`). Nothing for Jared to do here.** Packs are published as release assets on `MerlinWerlin/App-Projects` (tag `glaze-packs-v1`) by a workflow using the built-in GitHub token, so no Cloudflare account, bucket or secrets are needed. The tier plan at the bottom ("Plan for the ~87 themes") still applies; read "R2" there as "the pack host".
+
 # Theme hosting on Cloudflare R2: your steps (owner-1030 A5)
 
 About 15 minutes, all doable on your phone in Safari. The free tier covers Glaze for a long time (10 GB stored and no charge for downloads). Cloudflare asks for a card to turn R2 on, but nothing is charged inside the free limits.
