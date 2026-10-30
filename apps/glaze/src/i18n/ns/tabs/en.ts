@@ -90,6 +90,13 @@ export const en = {
     pairHome: 'Home',
     liveEmpty: 'No Live Photo clips yet. Make one from a video or GIF.',
     showMore: 'Show more',
+    // T176 (docs/PREMIUM_UI.md §3.9): editorial section headers per wallpaper group (core/wallpaperGroups).
+    groups: {
+      yours: { eyebrow: 'Made by you', title: 'Your own', body: 'Start from your own photos and videos. They stay on this device.' },
+      free: { eyebrow: 'Free', title: 'Glaze originals', body: 'Designed wallpapers from every free theme. Tap one to tune it and save.' },
+      plus: { eyebrow: 'Glaze Plus', title: 'The Plus collection', body: 'Wallpapers from the Plus themes, with a one-time unlock.' },
+    },
+    loading: 'Loading your Live Photo clips',
     discover: {
       label: 'Show wallpapers',
       newEmpty: 'Nothing new right now',

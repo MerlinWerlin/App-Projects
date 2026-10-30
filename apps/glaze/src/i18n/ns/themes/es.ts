@@ -12,8 +12,11 @@ export const es: NonNullable<LocaleMessages['themes']> = {
     body: 'Degradados, malla, grano y patrones al tamaño de tu iPhone.',
     hint: 'Abre el creador de fondos',
   },
-  eyebrow: { starters: 'Empieza aquí', art: 'Arte gratis', space: 'Gratis · fotos reales', plus: 'Glaze Plus' },
+  eyebrow: { starters: 'Empieza aquí', art: 'Arte gratis', space: 'Gratis · fotos reales', plus: 'Glaze Plus', season: 'En esta época', collection: 'Recién llegado' },
   starters: 'Temas básicos',
+  /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
+  collection: { title: 'Nueva colección', body: 'Temas de arte original del estudio Glaze. Descarga gratis; los nuevos aparecen aquí.', loadingA11y: 'Cargando la nueva colección', downloadA11y: 'Descarga gratis.' },
+  startersBody: 'Incluidos en Glaze, listos sin descargar.',
   startersEmpty: 'Aún no hay temas básicos',
   plusPacks: 'Packs Plus',
   plusPacksBody: 'Prueba cualquiera. Glaze Plus es un pago único, nunca una suscripción.',

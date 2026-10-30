@@ -37,14 +37,9 @@ const ART_ALLOWLIST: Record<string, string> = {
 /** Raw-value counts recorded on 30 Oct 2026 after the T163 cleanup. Only ever lower these. */
 const BASELINE: Record<string, Counts> = {
   'app/(tabs)/_layout.tsx': { fontSize: 1 },
-  'app/(tabs)/live.tsx': { colour: 2 },
-  'app/(tabs)/themes.tsx': { radius: 2 },
   'app/collage.tsx': { radius: 2 },
-  'app/live/[id].tsx': { radius: 1 },
   'app/pets.tsx': { colour: 2, radius: 2 },
-  'app/wallpaper.tsx': { radius: 1 },
   'src/ui/HeartButton.tsx': { colour: 1 },
-  'src/ui/LiveHeroCard.tsx': { colour: 1 },
   'src/ui/LivePhotoGuide.tsx': { colour: 6, fontSize: 1 },
   'src/ui/PhotoCropEditor.tsx': { colour: 1 },
   'src/ui/SheenButton.tsx': { colour: 1 },

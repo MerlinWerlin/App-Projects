@@ -12,8 +12,11 @@ export const ar: NonNullable<LocaleMessages['themes']> = {
     body: 'تدرجات وشبكات وحبيبات وأنماط بمقاس iPhone الخاص بك.',
     hint: 'يفتح صانع الخلفيات',
   },
-  eyebrow: { starters: 'ابدأ من هنا', art: 'فن مجاني', space: 'مجاني · صور حقيقية', plus: 'Glaze Plus' },
+  eyebrow: { starters: 'ابدأ من هنا', art: 'فن مجاني', space: 'مجاني · صور حقيقية', plus: 'Glaze Plus', season: 'في هذا الوقت من العام', collection: 'وصل حديثًا' },
   starters: 'سمات أساسية',
+  /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
+  collection: { title: 'المجموعة الجديدة', body: 'سمات فنية أصلية من استوديو Glaze. تنزيلها مجاني، والجديد يظهر هنا.', loadingA11y: 'جارٍ تحميل المجموعة الجديدة', downloadA11y: 'تنزيل مجاني.' },
+  startersBody: 'مضمّنة في Glaze، جاهزة بلا تنزيل.',
   startersEmpty: 'لا توجد سمات أساسية بعد',
   plusPacks: 'حزم Plus',
   plusPacksBody: 'عاين أيًّا منها. ‏Glaze Plus شراء لمرة واحدة، وليس اشتراكًا أبدًا.',

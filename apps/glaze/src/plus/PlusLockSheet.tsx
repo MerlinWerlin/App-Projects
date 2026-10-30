@@ -2,8 +2,6 @@ import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
 import { useState } from 'react';
 import { StyleSheet, Text, View, type TextStyle } from 'react-native';
-import { PLUS_PACKS, PLUS_THEMES } from '../core/plusThemes';
-import { THEMES } from '../core/themes';
 import { useT } from '../i18n';
 import {
   circleRadius,
@@ -39,13 +37,15 @@ type Props = {
 
 const BRAND = 'Glaze Plus'; // i18n-ignore (product name)
 
-// Counts come from the catalogues so the copy never goes stale (32 themes in four packs today).
+// D211-1 (31 Oct): every gallery theme is free now and the old Plus packs left the gallery, so the themes row
+// says more Plus themes are coming (no count) and the free card says every gallery theme is free. Owner decides
+// what Plus adds (Workboard glaze-plus-content); do not mark packs plus:true or change price/paywall copy before then.
 // Release standard §2: only what this build has. "Theme clips for Live Photos" (plus.lock.loops) is off the list
 // until theme clips exist (the Live tab only makes Live Photos from the person's own video, which stays free).
 // T173 §3.6: exactly three benefit rows, each a line icon in a soft tint circle.
 type BenefitKey = 'plus.lock.themes' | 'plus.lock.widgets' | 'plus.lock.symbols';
 const BENEFITS: readonly { icon: FeatherName; key: BenefitKey }[] = [
-  { icon: 'layers', key: 'plus.lock.themes' },
+  { icon: 'clock', key: 'plus.lock.themes' },
   { icon: 'grid', key: 'plus.lock.widgets' },
   { icon: 'feather', key: 'plus.lock.symbols' },
 ];
@@ -71,8 +71,7 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
   const { t, script } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => [textV2[role], textStyleFor(script, textV2[role])];
   const ey = eyebrowCaseFor(script);
-  const benefitText = (key: BenefitKey): string =>
-    key === 'plus.lock.themes' ? t('plus.lock.themes', { count: PLUS_THEMES.length, packs: PLUS_PACKS.length }) : t(key);
+  const benefitText = (key: BenefitKey): string => t(key);
   const mint = c.pastels.mint;
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -175,7 +174,7 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
         <View style={styles.freeRow}>
           <Feather name="check" size={16} color={mint.ink} />
           <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...ts('subhead'), styles.flex, { color: mint.ink }]}>
-            {t('plus.lock.freeThemes', { count: THEMES.length })}
+            {t('plus.lock.freeThemes')}
           </Text>
         </View>
       </View>

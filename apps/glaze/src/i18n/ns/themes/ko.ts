@@ -12,8 +12,11 @@ export const ko: NonNullable<LocaleMessages['themes']> = {
     body: '그라데이션, 메시, 그레인, 패턴을 iPhone 크기에 맞게.',
     hint: '배경화면 메이커를 엽니다',
   },
-  eyebrow: { starters: '여기서 시작', art: '무료 아트', space: '무료 · 실제 사진', plus: 'Glaze Plus' },
+  eyebrow: { starters: '여기서 시작', art: '무료 아트', space: '무료 · 실제 사진', plus: 'Glaze Plus', season: '지금 이 계절', collection: '새로 도착' },
   starters: '기본 테마',
+  /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
+  collection: { title: '새 컬렉션', body: 'Glaze 스튜디오의 오리지널 아트 테마. 무료로 다운로드하고, 새 테마는 여기에 나타나요.', loadingA11y: '새 컬렉션 불러오는 중', downloadA11y: '무료 다운로드.' },
+  startersBody: 'Glaze에 내장되어 다운로드 없이 바로 사용해요.',
   startersEmpty: '아직 기본 테마가 없습니다',
   plusPacks: 'Plus 팩',
   plusPacksBody: '무엇이든 미리 볼 수 있어요. Glaze Plus는 한 번만 구매하며 구독이 아닙니다.',

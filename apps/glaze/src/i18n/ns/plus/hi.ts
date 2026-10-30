@@ -14,7 +14,6 @@ export const hi: NonNullable<LocaleMessages['plus']> = {
     freeIcons: 'अपने आइकन बनाना, असीमित',
     freeInstall: 'गाइड वाला शॉर्टकट्स इंस्टॉल (और एक साथ बीटा)',
     freeLive: 'अपने वीडियो से Live Photo मेकर',
-    notNow: 'अभी नहीं',
     oneMoment: 'एक पल…',
     unlock: 'अनलॉक करें (जल्द आ रहा है)',
     unlockHint: 'Glaze Plus अभी बिक्री पर नहीं है',
@@ -29,14 +28,8 @@ export const hi: NonNullable<LocaleMessages['plus']> = {
     restored: "Glaze Plus वापस आ गया। धन्यवाद!",
     restoreNone: "पहले की कोई Glaze Plus खरीदारी नहीं मिली।",
     restoreFailed: "अभी वापस नहीं ला सके। बाद में फिर कोशिश करें।",
-    themes: {
-      one: '{packs} पैक में {count} और थीम',
-      other: '{packs} पैक में {count} और थीम',
-    },
-    freeThemes: {
-      one: '{count} चित्रित स्टार्टर थीम और वॉलपेपर मेकर',
-      other: '{count} चित्रित स्टार्टर थीम और वॉलपेपर मेकर',
-    },
+    themes: 'और Plus थीम जल्द आ रही हैं',
+    freeThemes: 'गैलरी की सभी थीम और वॉलपेपर मेकर',
   },
   tipJar: {
     title: 'टिप जार',

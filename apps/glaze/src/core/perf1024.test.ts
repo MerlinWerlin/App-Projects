@@ -138,9 +138,10 @@ test('heavy cards and previews are memoised', () => {
   assert.match(TILE, /export const WallpaperTileView = memo\(/);
   assert.match(TILE, /const PairArt = memo\(/);
   assert.match(HEART, /export const HeartButton = memo\(/);
-  // T162: the pack sections are memoised list rows (replaces ThemeGrid / PackSections / PackSection).
-  assert.match(THEMES_TAB, /const PackHead = memo\(/);
-  assert.match(THEMES_TAB, /const PackCardRow = memo\(/);
+  // T177 (owner-1031): the gallery sections are memoised list rows (replace T162's PackHead / PackCardRow).
+  assert.match(THEMES_TAB, /const GalleryHead = memo\(/);
+  assert.match(THEMES_TAB, /const GalleryCardRow = memo\(/);
+  assert.match(THEMES_TAB, /const SkeletonCardRow = memo\(/);
   // T162: memoised rows of a virtualised list (replaces T118's TileGrid).
   assert.match(WALLPAPERS_TAB, /const TileRow = memo\(/);
   assert.match(WIDGETS_TAB, /const WidgetCell = memo\(/);
@@ -165,6 +166,8 @@ test('gallery previews are still Home Screens with cached specs and cached wallp
   assert.match(TILE, /const homeFor = weakMemo\(/);
 });
 
+// T177 (owner-1031): the Themes tab no longer mounts the showcase; the ShowcaseGrid guards stay for
+// the component, the tab guards read the gallery rows (src/core/gallery.ts).
 test('Themes tab: progressive showcase, deferred pack sections, no layout setState cascade', () => {
   // Showcase: progressive from the first mount; cards mounted before a swap stay mounted.
   assert.match(SHOWCASE, /useState\(\(\) => Math\.min\(themes\.length, REVEAL_FIRST\)\)/);
@@ -172,15 +175,15 @@ test('Themes tab: progressive showcase, deferred pack sections, no layout setSta
   assert.match(SHOWCASE, /isMounted\(i, revealed, kept, theme\.id\)/);
   // T162: pack sections are rows of one virtualised list (only the rows near the screen mount).
   assert.match(THEMES_TAB, /<Animated\.FlatList\b/);
-  assert.match(THEMES_TAB, /data=\{packRows\}/);
+  assert.match(THEMES_TAB, /data=\{rows\}/);
   assert.match(THEMES_TAB, /\{\.\.\.LIST_WINDOW\}/);
   // No layout setState cascade.
   assert.doesNotMatch(THEMES_TAB, /setInnerY|setPacksY|setSpaceY|setPackY|onCentre/);
   assert.match(THEME_CARD, /centre\.value \+ \(baseY \? baseY\.value : 0\)/);
   // Stable props for the memoised children.
-  assert.match(THEMES_TAB, /const gridShared: GridShared = useMemo\(/);
-  assert.match(THEMES_TAB, /const showcaseEmpty: ReactNode = useMemo\(/);
-  assert.match(THEMES_TAB, /const tabOptions: PillTabOption<DiscoveryTab>\[\] = useMemo\(/);
+  assert.match(THEMES_TAB, /const shared: CardShared = useMemo\(/);
+  assert.match(THEMES_TAB, /const rows: readonly Row\[\] = useMemo\(/);
+  assert.match(THEMES_TAB, /const filterOptions: PillTabOption<GalleryFilter>\[\] = useMemo\(/);
   // No screen maps the whole theme list straight into cards.
   for (const src of [THEMES_TAB, WALLPAPERS_TAB, WIDGETS_TAB]) {
     assert.doesNotMatch(src, /(ALL_THEMES|SPACE_THEMES|PLUS_PACKS)\.map\(\([^)]*\) => \(?\s*<(ThemeCard|WallpaperTileView|ShowcaseCard)/);

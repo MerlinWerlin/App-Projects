@@ -14,7 +14,6 @@ export const ja: NonNullable<LocaleMessages['plus']> = {
     freeIcons: '自作アイコン、無制限',
     freeInstall: 'ガイド付きショートカットでのインストール（一括はベータ）',
     freeLive: '自分の動画で作る Live Photos メーカー',
-    notNow: '今はしない',
     oneMoment: 'お待ちください…',
     unlock: 'ロック解除（近日公開）',
     unlockHint: 'Glaze Plus はまだ販売されていません',
@@ -29,12 +28,8 @@ export const ja: NonNullable<LocaleMessages['plus']> = {
     restored: "Glaze Plus を復元しました。ありがとうございます！",
     restoreNone: "以前の Glaze Plus の購入は見つかりませんでした。",
     restoreFailed: "今は復元できませんでした。あとでもう一度お試しください。",
-    themes: {
-      other: '{packs} つのパックに入った追加テーマ {count} 種',
-    },
-    freeThemes: {
-      other: 'イラストのスターターテーマ {count} 種と壁紙メーカー',
-    },
+    themes: 'Plus テーマを追加予定',
+    freeThemes: 'ギャラリーのすべてのテーマと壁紙メーカー',
   },
   tipJar: {
     title: 'チップジャー',

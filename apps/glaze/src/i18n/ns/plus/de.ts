@@ -14,7 +14,6 @@ export const de: NonNullable<LocaleMessages['plus']> = {
     freeIcons: 'Eigene Symbole, unbegrenzt',
     freeInstall: 'Geführte Kurzbefehle-Installation (und Sammel-Beta)',
     freeLive: 'Live-Photo-Maker mit deinem eigenen Video',
-    notNow: 'Nicht jetzt',
     oneMoment: 'Einen Moment…',
     unlock: 'Freischalten (bald)',
     unlockHint: 'Glaze Plus ist noch nicht erhältlich',
@@ -29,14 +28,8 @@ export const de: NonNullable<LocaleMessages['plus']> = {
     restored: "Glaze Plus wiederhergestellt. Danke!",
     restoreNone: "Kein früherer Kauf von Glaze Plus gefunden.",
     restoreFailed: "Wiederherstellen gerade nicht möglich. Versuche es später erneut.",
-    themes: {
-      one: '{count} weiteres Theme in {packs} Paketen',
-      other: '{count} weitere Themes in {packs} Paketen',
-    },
-    freeThemes: {
-      one: '{count} illustriertes Start-Theme und der Hintergrund-Editor',
-      other: '{count} illustrierte Start-Themes und der Hintergrund-Editor',
-    },
+    themes: 'Weitere Plus-Themes sind unterwegs',
+    freeThemes: 'Alle Themes in der Galerie und der Hintergrund-Editor',
   },
   tipJar: {
     title: 'Trinkgeldglas',

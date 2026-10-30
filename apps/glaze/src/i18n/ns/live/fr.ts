@@ -8,6 +8,10 @@ export const fr: NonNullable<LocaleMessages['live']> = {
     opening: 'Ouverture…',
     pickHint: 'Ouvre votre photothèque pour choisir une vidéo ou un GIF',
     yourLoops: 'Vos boucles',
+    sections: {
+      make: { eyebrow: 'Créer une Live Photo', title: 'Commencez par un extrait', body: 'Choisissez une vidéo ou un GIF et cadrez-le. Glaze enregistre les 3 premières secondes dans Photos en Live Photo.' },
+      loops: { eyebrow: 'Enregistré dans Glaze' },
+    },
     emptyTitle: 'Aucune boucle pour l’instant',
     emptyBody: 'Choisissez une vidéo ou un GIF, coupez jusqu’à 15 secondes et cadrez-le pour votre écran verrouillé.',
     pick: 'Choisir une vidéo ou un GIF',
@@ -35,6 +39,11 @@ export const fr: NonNullable<LocaleMessages['live']> = {
   },
   editor: {
     loading: 'Chargement de la boucle',
+    sections: {
+      frame: { eyebrow: 'Écran verrouillé', title: 'Cadrer' },
+      clip: { eyebrow: 'Extrait' },
+      finish: { eyebrow: 'Terminer', title: 'Enregistrer', body: 'Tout reste sur ce téléphone. Rien n’est envoyé.' },
+    },
     missing: 'Cette boucle n’existe plus.',
     nameLabel: 'Nom de la boucle',
     cropLabel: 'Cadrage de l’écran verrouillé. Faites glisser pour déplacer, pincez pour zoomer.',

@@ -8,6 +8,10 @@ export const ar: NonNullable<LocaleMessages['live']> = {
     opening: 'جارٍ الفتح…',
     pickHint: 'يفتح مكتبة الصور لاختيار فيديو أو GIF',
     yourLoops: 'حلقاتك',
+    sections: {
+      make: { eyebrow: 'إنشاء صورة حية', title: 'ابدأ بمقطع', body: 'اختر فيديو أو GIF واضبط إطاره. يحفظ Glaze أول 3 ثوانٍ في الصور كصورة حية.' },
+      loops: { eyebrow: 'محفوظة في Glaze' },
+    },
     emptyTitle: 'لا توجد حلقات بعد',
     emptyBody: 'اختر فيديو أو GIF، وقصّه حتى 15 ثانية، وأطّره لشاشة القفل.',
     pick: 'اختر فيديو أو GIF',
@@ -42,6 +46,11 @@ export const ar: NonNullable<LocaleMessages['live']> = {
   },
   editor: {
     loading: 'جارٍ تحميل الحلقة',
+    sections: {
+      frame: { eyebrow: 'شاشة القفل', title: 'اضبط الإطار' },
+      clip: { eyebrow: 'المقطع' },
+      finish: { eyebrow: 'إنهاء', title: 'حفظ', body: 'يبقى كل شيء على هذا الهاتف. لا يُرفع أي شيء.' },
+    },
     missing: 'لم تعد هذه الحلقة موجودة.',
     nameLabel: 'اسم الحلقة',
     cropLabel: 'اقتصاص شاشة القفل. اسحب للتحريك، وقرّب الإصبعين أو باعدهما للتكبير.',

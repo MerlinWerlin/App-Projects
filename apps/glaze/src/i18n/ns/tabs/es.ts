@@ -89,6 +89,13 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
     pairHome: 'Inicio',
     liveEmpty: 'Aún no hay clips de Live Photo. Crea uno a partir de un vídeo o GIF.',
     showMore: 'Ver más',
+    // T176 (docs/PREMIUM_UI.md §3.9): editorial section headers per wallpaper group (core/wallpaperGroups).
+    groups: {
+      yours: { eyebrow: 'Hecho por ti', title: 'Lo tuyo', body: 'Empieza con tus propias fotos y vídeos. Se quedan en este dispositivo.' },
+      free: { eyebrow: 'Gratis', title: 'Originales de Glaze', body: 'Fondos diseñados de cada tema gratuito. Toca uno para ajustarlo y guardarlo.' },
+      plus: { eyebrow: 'Glaze Plus', title: 'La colección Plus', body: 'Fondos de los temas Plus, con un desbloqueo único.' },
+    },
+    loading: 'Cargando tus clips de Live Photo',
     discover: {
       label: 'Mostrar fondos',
       newEmpty: 'Nada nuevo por ahora',

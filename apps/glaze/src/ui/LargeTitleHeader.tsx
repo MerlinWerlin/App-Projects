@@ -117,7 +117,7 @@ export function LargeTitleHeader({ title, scrollY, leading, trailing }: HeaderPr
           accessibilityElementsHidden
           importantForAccessibility="no-hide-descendants"
         >
-          <Text numberOfLines={1} style={[textV2.navTitle, textStyleFor(script, textV2.navTitle), { color: c.ink }]}>
+          <Text numberOfLines={1} maxFontSizeMultiplier={fontScaleCap('navTitle')} style={[textV2.navTitle, textStyleFor(script, textV2.navTitle), { color: c.ink }]}>
             {title}
           </Text>
         </Animated.View>

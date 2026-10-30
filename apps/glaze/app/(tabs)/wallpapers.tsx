@@ -11,6 +11,10 @@
 // focus); tiles keep their identity when unchanged (memoised tiles skip); the grid is its own
 // memoised component; after a change the first two rows mount at once and the rest a row per frame
 // behind same-sized placeholders, with tiles already on screen kept mounted (core/perfReveal).
+// T176 (docs/PREMIUM_UI.md §3.9): the unfiltered views read as editorial sections, one per group
+// (Made by you / Free / Plus, src/core/wallpaperGroups.ts), each opened by a SectionHeader on its
+// first row; tiles sit on the 16-pt editorial rhythm; the Live view waits for the saved loops as
+// tile-shaped skeletons (not a false "no clips yet"); every Text has a Dynamic Type cap.
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ListRenderItem } from 'react-native';
@@ -28,23 +32,25 @@ import {
   discoverWallpaperTiles,
   discoveryApplies,
   gridTileSize,
-  tileRows,
   visibleTileCount,
   wallpaperSubTabKey,
   type WallpaperSubTab,
   type WallpaperTile,
 } from '../../src/core/wallpaperTiles';
 import { useT } from '../../src/i18n';
+import { wallpaperGroupKeys, wallpaperGroupRows, wallpaperViewGrouped, type WallpaperGroup } from '../../src/core/wallpaperGroups';
 import { useWallpaperFavourites } from '../../src/store/favourites';
 import { loadLoops } from '../../src/store/loops';
-import { radiusV2, spaceV2, textV2 } from '../../src/theme/tokensV2';
+import { chromeRadiusV2, editorialV2, fontScaleCap, spaceV2, textV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { textStyleFor } from '../../src/ui/i18nLayout';
 import { Segmented, type SegmentedOption } from '../../src/ui/Segmented';
 import { WallpaperTileView } from '../../src/ui/WallpaperTile';
-import { LargeTitleFlatList, PillButton } from '../../src/ui/v2';
+import { LargeTitleFlatList, PillButton, SectionHeader, Skeleton } from '../../src/ui/v2';
 
-const GAP = spaceV2.md;
+/** T176: the editorial card rhythm, between tiles in a row and between rows. */
+const GAP = editorialV2.cardGap;
+type LooseT = (key: string, params?: Record<string, string | number>) => string;
 const THEME_BY_ID: ReadonlyMap<string, Theme> = new Map(ALL_THEMES.map((th) => [th.id, th]));
 const tileKey = (x: WallpaperTile): string => x.id;
 const sameTile = (a: WallpaperTile, b: WallpaperTile): boolean =>
@@ -60,15 +66,22 @@ type TileRowProps = {
   onToggleLike: (id: string) => void;
   onOpen: (href: string) => void;
   fade: SharedValue<number>;
+  /** T176: the group this row opens (its section header sits above it), if any. */
+  group?: WallpaperGroup;
+  /** The first section of the list: its header sits flush under the controls. */
+  firstSection: boolean;
 };
 
 /**
  * T162 (owner 30 Oct C): one row of the virtualised tile grid (memoised). The list mounts rows as
  * they scroll in, which replaces T118's per-frame reveal; the fb-1023 fade is per row, UI thread.
  */
-const TileRow = memo(function TileRow({ row, tileWidth, tileHeight, loopById, likedIds, onToggleLike, onOpen, fade }: TileRowProps) {
+const TileRow = memo(function TileRow({ row, tileWidth, tileHeight, loopById, likedIds, onToggleLike, onOpen, fade, group, firstSection }: TileRowProps) {
+  const { t } = useT();
+  const tl = t as unknown as LooseT;
   const rowFade = useAnimatedStyle(() => ({ opacity: fade.value }));
-  return (
+  const keys = group ? wallpaperGroupKeys(group) : null;
+  const cells = (
     <Animated.View style={[styles.row, rowFade]}>
       {row.map((tile) => (
         <WallpaperTileView
@@ -83,7 +96,22 @@ const TileRow = memo(function TileRow({ row, tileWidth, tileHeight, loopById, li
           onToggleLike={onToggleLike}
         />
       ))}
-    </Animated.View>
+    </Animated.View>); // i18n-ignore (code after a JSX element)
+  if (!keys) return cells;
+  // T176: the group's editorial header (one accessibility heading) above its first row; it fades with the row.
+  return (
+    <View>
+      <Animated.View style={rowFade}>
+        <SectionHeader
+          eyebrow={tl(keys.eyebrow)}
+          title={tl(keys.title)}
+          body={tl(keys.body)}
+          flushTop={firstSection}
+          style={firstSection ? styles.sectionHeader : [styles.sectionHeader, styles.sectionAfterRow]}
+        />
+      </Animated.View>
+      {cells}
+    </View>
   );
 });
 
@@ -97,6 +125,8 @@ export default function WallpapersTab() {
   const [tab, setTab] = useState<WallpaperSubTab>('still');
   const [pages, setPages] = useState(0);
   const [loops, setLoops] = useState<LoopProject[]>([]);
+  // T176: until the saved loops are read once, the Live view shows tile-shaped skeletons.
+  const [loopsLoaded, setLoopsLoaded] = useState(false);
   const [discovery, setDiscovery] = useState<DiscoveryTab>('all');
   const { liked, toggle: toggleLike } = useWallpaperFavourites();
   const likedIds = useMemo(() => new Set(liked), [liked]);
@@ -108,7 +138,12 @@ export default function WallpapersTab() {
       let alive = true;
       loadLoops().then((s) => {
         // T118: nothing new since the last visit keeps the same list (no re-render on focus).
-        if (alive) setLoops((prev) => keepIfSame(prev, s.projects, sameJson));
+        if (!alive) return;
+        setLoops((prev) => keepIfSame(prev, s.projects, sameJson));
+        setLoopsLoaded(true);
+      }, () => {
+        // A failed read still ends the wait (the list stays as it was), so the skeleton never sticks.
+        if (alive) setLoopsLoaded(true);
       });
       return () => {
         alive = false;
@@ -160,7 +195,8 @@ export default function WallpapersTab() {
     fade.value = withTiming(1, { duration: tr.durationMs, easing: easeOutCurve });
   }, [tab, discovery, fade]);
 
-  const liveEmpty = tab === 'live' && loops.length === 0;
+  const liveLoading = tab === 'live' && !loopsLoaded;
+  const liveEmpty = tab === 'live' && loopsLoaded && loops.length === 0;
   const discovering = discoveryApplies(tab);
   const footnote = [textV2.footnote, textStyleFor(script, textV2.footnote), { color: c.inkSecondary }];
   // T77: what an empty New / Liked list says (Still and Pairs only; All always has tiles).
@@ -172,9 +208,16 @@ export default function WallpapersTab() {
   }
 
   // T162: the tiles are a virtualised list of rows; the controls above them are the list header.
-  const rows = useMemo(() => tileRows(visible), [visible]);
+  // T176: unfiltered views split the rows per group, each group's first row carrying its header.
+  const grouped = wallpaperViewGrouped(tab, discovery);
+  const layout = useMemo(
+    () => (liveLoading ? { rows: [] as WallpaperTile[][], headers: new Map<number, WallpaperGroup>() } : wallpaperGroupRows(visible, grouped)),
+    [visible, grouped, liveLoading],
+  );
+  const rows = layout.rows;
+  const headers = layout.headers;
   const renderRow: ListRenderItem<readonly WallpaperTile[]> = useCallback(
-    ({ item }) => (
+    ({ item, index }) => (
       <TileRow
         row={item}
         tileWidth={tileWidth}
@@ -184,8 +227,10 @@ export default function WallpapersTab() {
         onToggleLike={toggleLike}
         onOpen={onOpen}
         fade={fade}
+        group={headers.get(index)}
+        firstSection={index === 0}
       />), // i18n-ignore (code after a JSX element)
-    [tileWidth, tileHeight, loopById, likedIds, toggleLike, onOpen, fade],
+    [tileWidth, tileHeight, loopById, likedIds, toggleLike, onOpen, fade, headers],
   );
   const onShowAll = useCallback(() => onDiscovery('all'), [onDiscovery]);
 
@@ -195,9 +240,13 @@ export default function WallpapersTab() {
       {discovering ? (
         <Segmented grid label={t('tabs.wallpapersTab.discover.label')} options={discoveryOptions} value={discovery} onChange={onDiscovery} />
       ) : null}
-      {discovering && discovery === 'picks' ? <Text style={footnote}>{t('themes.discover.picksNote')}</Text> : null}
+      {discovering && discovery === 'picks' ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={footnote}>
+          {t('themes.discover.picksNote')}
+        </Text>
+      ) : null}
       {discoveryEmpty ? (
-        <Text style={footnote} accessibilityLiveRegion="polite">
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={footnote} accessibilityLiveRegion="polite">
           {discoveryEmpty}
         </Text>
       ) : null}
@@ -214,7 +263,18 @@ export default function WallpapersTab() {
           onPress={() => router.push('/collage')}
         />
       ) : null}
-      {liveEmpty ? <Text style={footnote}>{t('tabs.wallpapersTab.liveEmpty')}</Text> : null}
+      {liveEmpty ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={footnote}>
+          {t('tabs.wallpapersTab.liveEmpty')}
+        </Text>
+      ) : null}
+      {liveLoading ? (
+        // T176: the saved loops are being read: two tiles in their final shape, no spinner.
+        <View style={styles.skeletonRow} accessible accessibilityRole="progressbar" accessibilityLabel={t('tabs.wallpapersTab.loading')}>
+          <Skeleton width={tileWidth} height={tileHeight} radius={chromeRadiusV2.card} />
+          <Skeleton width={tileWidth} height={tileHeight} radius={chromeRadiusV2.card} />
+        </View>
+      ) : null}
     </View>); // i18n-ignore (code after a JSX element)
   const footer =
     shown < tiles.length ? (
@@ -236,8 +296,15 @@ export default function WallpapersTab() {
 }
 
 const styles = StyleSheet.create({
-  body: { paddingHorizontal: spaceV2.lg, gap: spaceV2.lg },
+  // T176: the 16 pt below the controls is the space above the first section (its header is flush).
+  body: { paddingHorizontal: spaceV2.lg, gap: spaceV2.lg, paddingBottom: spaceV2.lg },
   // T162: each row is a list item, so it carries the side gutter and the gap below it.
   row: { flexDirection: 'row', gap: GAP, paddingHorizontal: spaceV2.lg, marginBottom: GAP },
+  // T176: group headers carry the grid's side gutter. After a row (which already leaves the 16-pt
+  // card gap below it), a header adds the rest of the 32-pt editorial space above a section.
+  sectionHeader: { paddingHorizontal: spaceV2.lg },
+  sectionAfterRow: { paddingTop: editorialV2.sectionTop - editorialV2.cardGap },
+  // Live view skeleton: one grid row inside the controls block (which has the gutter already).
+  skeletonRow: { flexDirection: 'row', gap: GAP },
   footer: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.sm, paddingBottom: spaceV2.xl },
 });

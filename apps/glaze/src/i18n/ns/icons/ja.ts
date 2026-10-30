@@ -11,6 +11,16 @@ export const ja: NonNullable<LocaleMessages['icons']> = {
     other: "{count}個のアイコンのシンボルが見えにくい可能性があります（コントラスト3:1未満）: {names}。別のシンボルか背景色を試してください。",
   },
   yourApps: "あなたのアプリ",
+  // T176 (docs/PREMIUM_UI.md §3.8): editorial section headers on the Icons tab.
+  sections: {
+    previewEyebrow: "ライブプレビュー",
+    appsEyebrow: "あなたのセット",
+    appsBody: "ここにあるアプリすべてに、おそろいのアイコンを作ります。",
+    addEyebrow: "アプリを探す",
+    addBody: "検索するかカテゴリを選んで、使いたいアプリにチェックを入れます。",
+    styleEyebrow: "ひとつのスタイル",
+    styleBody: "形、色、シンボルの大きさをすべてのアイコンにまとめて設定します。",
+  },
   emptyTitle: "アプリがまだありません",
   emptyBody: "新しいアイコンを作りたいアプリを選んでください。人気のアプリから始めるか、下で検索できます。",
   addPopular: "人気のアプリを追加",

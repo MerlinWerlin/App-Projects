@@ -12,8 +12,11 @@ export const hi: NonNullable<LocaleMessages['themes']> = {
     body: 'ग्रेडिएंट, मेश, ग्रेन और पैटर्न, आपके iPhone के आकार में।',
     hint: 'वॉलपेपर मेकर खोलता है',
   },
-  eyebrow: { starters: 'यहाँ से शुरू करें', art: 'मुफ़्त आर्ट', space: 'मुफ़्त · असली फ़ोटो', plus: 'Glaze Plus' },
+  eyebrow: { starters: 'यहाँ से शुरू करें', art: 'मुफ़्त आर्ट', space: 'मुफ़्त · असली फ़ोटो', plus: 'Glaze Plus', season: 'इस मौसम में', collection: 'अभी आया' },
   starters: 'शुरुआती थीम',
+  /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
+  collection: { title: 'नया संग्रह', body: 'Glaze स्टूडियो की मौलिक कला थीम। डाउनलोड मुफ़्त; नई थीम यहीं दिखेंगी।', loadingA11y: 'नया संग्रह लोड हो रहा है', downloadA11y: 'मुफ़्त डाउनलोड।' },
+  startersBody: 'Glaze में शामिल, बिना डाउनलोड तैयार।',
   startersEmpty: 'अभी कोई शुरुआती थीम नहीं',
   plusPacks: 'Plus पैक',
   plusPacksBody: 'किसी का भी प्रीव्यू देखें। Glaze Plus एक बार की खरीद है, कभी सब्सक्रिप्शन नहीं।',

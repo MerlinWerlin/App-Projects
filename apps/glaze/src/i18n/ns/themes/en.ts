@@ -14,8 +14,11 @@ export const en = {
     hint: 'Opens the wallpaper maker',
   },
   /** T173: small labels above the editorial section titles on the Themes tab. */
-  eyebrow: { starters: 'Start here', art: 'Free art', space: 'Free · real photos', plus: 'Glaze Plus' },
+  eyebrow: { starters: 'Start here', art: 'Free art', space: 'Free · real photos', plus: 'Glaze Plus', season: 'This time of year', collection: 'Just in' },
   starters: 'Starter themes',
+  /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
+  collection: { title: 'New collection', body: 'Original art themes from the Glaze studio. Free to download; new ones appear here.', loadingA11y: 'Loading the new collection', downloadA11y: 'Free download.' },
+  startersBody: 'Built into Glaze, ready without a download.',
   startersEmpty: 'No starter themes yet',
   plusPacks: 'Plus packs',
   plusPacksBody: 'Preview any of them. Glaze Plus is a one-time unlock, never a subscription.',

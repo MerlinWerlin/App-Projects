@@ -45,6 +45,7 @@ export const zhHans: NonNullable<LocaleMessages['wallpaper']> = {
     a11y: '墙纸预览，{style}',
     a11yPattern: '墙纸预览，{style} {pattern}',
     sizePx: '{width} × {height} 像素',
+    loadingA11y: '正在载入墙纸',
   },
   design: {
     shuffle: '随机',

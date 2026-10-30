@@ -35,6 +35,7 @@ import {
 } from '../core/introGlaze';
 import { shouldReduceMotion } from '../core/settings';
 import { loadSettings } from '../store/settings';
+import { paletteFor } from '../theme/tokensV2';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 const AnimatedRect = Animated.createAnimatedComponent(Rect);
@@ -63,6 +64,9 @@ export function IntroGlaze({
   const { width, height } = useWindowDimensions();
   const scheme = dark ? 'dark' : 'light';
   const c = BRAND[scheme];
+  // T173 (PREMIUM_UI §3.1): the host reads the same `bg` token as every screen (Themes, the "/" redirect), so the
+  // last frame of the fade and the Themes background are one colour in light and dark.
+  const bg = paletteFor(scheme).bg;
   // Same size and place as the native splash image (app.json imageWidth, centred) so the hand-over is seamless.
   const size = Math.min(INTRO_SIZE, width - 32, height - 32);
 
@@ -160,7 +164,7 @@ export function IntroGlaze({
       accessible={false}
       accessibilityElementsHidden
       importantForAccessibility="no-hide-descendants"
-      style={[StyleSheet.absoluteFill, styles.host, { backgroundColor: c.bg, opacity: fade }]}
+      style={[StyleSheet.absoluteFill, styles.host, { backgroundColor: bg, opacity: fade }]}
     >
       <View style={{ width: size, height: size }}>
         <Svg width={size} height={size} viewBox="0 0 1024 1024">

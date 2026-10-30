@@ -45,6 +45,7 @@ export const fr: NonNullable<LocaleMessages['wallpaper']> = {
     a11y: 'Aperçu du fond, {style}',
     a11yPattern: 'Aperçu du fond, {style} {pattern}',
     sizePx: '{width} × {height} px',
+    loadingA11y: 'Chargement de votre fond d’écran',
   },
   design: {
     shuffle: 'Mélanger',

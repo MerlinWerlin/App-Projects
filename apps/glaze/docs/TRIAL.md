@@ -2,6 +2,32 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (31 Oct, morning: owner-1031)
+
+Fully close Glaze and reopen it twice first, so the update loads.
+
+- **New collection (T177/T178):** when you open Themes, is "New collection" the first section, showing all 10 new themes with their art (Firefly Grove among them), and below it only Deep Sea, Starry Night and Sunset Dunes? None of the old themes left in the gallery? (yes / no)
+- **Pull to refresh (T177):** pull down at the very top of Themes. Does it refresh, with no bounce anywhere else in the list? (yes / no)
+- **Offline (T177/T178):** with Airplane Mode on, does New collection show soft grey placeholder cards (no error message), and do the themes appear after you turn it off and pull down? (yes / no)
+- **Download (T179):** open Firefly Grove. Is there one clear "Download" button with the size, does a bar fill while it downloads, and does it then turn into "Apply this look"? (yes / no)
+- **Apply a new theme (T179):** after downloading, go through Apply. Does the Wallpaper step save the theme's artwork to Photos, does "Add widgets" open Widget Studio (not "Theme not found"), and are the icons drawn in the theme's colours? (yes / no)
+- **Your old look (T177):** if you had a theme applied before this update, do your widgets, Your look and the Icons tab still show it correctly? (yes / no)
+- **Glaze Plus sheet (T182):** open Settings > Glaze Plus. Does it say "More Plus themes are on the way" (no theme count) and, under Always free, "Every theme in the gallery and the wallpaper maker"? (yes / no)
+
+## New since your last test (31 Oct, night)
+
+- **Icons tab (T176):** do the new section headers (small coloured label, title, one line) for Your apps, Add apps and Style read clearly without making the screen feel longer, and when the tab first opens do you see a calm placeholder in the screen's shape instead of a jump? (yes / no)
+- **Wallpapers tab (T176):** on Still and on All, do the "Made by you", "Glaze originals" and "The Plus collection" headers make the grid easier to scan without pushing the first wallpapers too far down? (yes / no)
+- **Wallpaper maker (T176):** in dark mode, do the Style / Colours / Size / Lock + Home pair cards stand out from the background with no thin outlines, and does Save to Photos still land the image in Photos (a small phone-shaped placeholder shows while it renders)? (yes / no)
+- **Live tab (T176):** do your saved loops show as separate cards with space between them (no divider lines), and in the loop editor is the preview still big enough to frame on your phone now that it sits inside a card? (yes / no)
+
+## New since your last test (31 Oct, evening)
+
+- **Opening Glaze (T173):** in both light and dark mode, does the Prism intro fade into the Themes tab with no colour flash, and right under the title do you see the category bubbles and then "Starter themes" (the Games / Movie night / Storybook chips now sit lower, under the gallery)? (yes / no)
+- **Themes tab, seasonal + Live cards (T173):** scroll below the gallery. Do the seasonal collection ("This time of year") and the Live card look like the rest of the page (small coloured label over a title, soft card, no peach box or thin outline)? (yes / no)
+- **Feature card (T173, Plus / Pro Max iPhones only):** on the All page, is the first starter shown as one larger card above the grid, and does it feel calm and worth keeping? (yes / no)
+- **Downloaded packs (T168):** after downloading a theme pack, does its theme page show the Seamless widget card, and does "Use for my Glaze widget" put the art on your Home Screen widget with no visible seam? (yes / no — skip if no downloadable pack shows yet)
+
 ## New since your last test (31 Oct)
 
 - **Install steps, premium look (T173):** Icons › Install. Is it clear which step you're on (one step highlighted with a filled number and "Current step", the others greyed out), and does the highlight move smoothly when you tick a step done? (yes / no)
@@ -9,6 +35,7 @@ Glaze is tested in **TestFlight** only. Open the newest Glaze build from the Tes
 - **Glaze Plus sheet (T173):** tap any Plus item. Do the three wallpapers at the top look calm and premium in light and dark mode, with the Unlock button and the plain "Restore" link visible without scrolling? (yes / no)
 - **Settings (T173):** do the group titles and round pastel row icons look tidy, and at the largest Text Size is nothing cut off (Storage shows grey placeholders for a moment before the sizes appear)? (yes / no)
 - **Icons tab speed (T166):** scroll down through "Add apps" and the style controls. Smooth, no blank or flickering rows, and the app list still looks like one rounded card? (yes / no)
+- **Theme page apply waits (T173):** open a theme › Apply this look. On the Wallpaper step, tap Save: while it saves, does a soft pulsing phone-shaped placeholder appear under the button (no spinner)? On the Icons step, tap Use this style: do four pulsing icon tiles show while it works? (yes / no)
 
 ## New since your last test (30 Oct night)
 

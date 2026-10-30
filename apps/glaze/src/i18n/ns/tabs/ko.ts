@@ -89,6 +89,13 @@ export const ko: NonNullable<LocaleMessages['tabs']> = {
     pairHome: '홈',
     liveEmpty: '아직 Live Photo 클립이 없습니다. 비디오나 GIF로 만들어 보세요.',
     showMore: '더 보기',
+    // T176 (docs/PREMIUM_UI.md §3.9): editorial section headers per wallpaper group (core/wallpaperGroups).
+    groups: {
+      yours: { eyebrow: '직접 만들기', title: '나만의 배경화면', body: '내 사진과 비디오로 시작하세요. 이 기기에만 저장됩니다.' },
+      free: { eyebrow: '무료', title: 'Glaze 오리지널', body: '무료 테마마다 디자인한 배경화면입니다. 탭해서 조정하고 저장하세요.' },
+      plus: { eyebrow: 'Glaze Plus', title: 'Plus 컬렉션', body: 'Plus 테마의 배경화면, 한 번만 구매하면 됩니다.' },
+    },
+    loading: 'Live Photo 클립 불러오는 중',
     discover: {
       label: '배경화면 보기',
       newEmpty: '지금은 새로운 항목이 없어요',

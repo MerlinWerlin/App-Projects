@@ -3,6 +3,8 @@
 // choice and one button that saves both images to Photos. The saving itself lives in
 // the screen (it owns the offscreen capture views); this card is presentational.
 // Design v2 (T83): surface squircle card with the `card` shadow, tinted block pill.
+// T176 (docs/PREMIUM_UI.md §3.9): in dark mode the card lifts by the raised surface and the phone
+// frames drop the hairline (depth, not lines); every Text carries a Dynamic Type cap.
 
 import { StyleSheet, Text, View } from 'react-native';
 import type { IconSpec } from '../core/iconspec';
@@ -12,7 +14,7 @@ import { HomeTint, HomeWallpaperView } from '../render/HomeWallpaperView';
 import { Overlay, PhotoWallpaperView, type PhotoWallpaperData } from '../render/PhotoWallpaperView';
 import { WallpaperView } from '../render/WallpaperView';
 import { useT } from '../i18n';
-import { continuous, radiusV2, shadowV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { continuous, fontScaleCap, radiusV2, shadowV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { PillButton } from './PillButton';
 import { HomeMock } from './HomeMock';
@@ -59,7 +61,8 @@ export function WallpaperPairCard({
     { value: 'soft', label: t('wallpaper.pair.soft') },
     { value: 'strong', label: t('wallpaper.pair.strong') },
   ];
-  const frame = [styles.phone, continuous, noMirror, { width, height, borderColor: c.separator }];
+  const frame = [styles.phone, continuous, noMirror, { width, height }, scheme === 'dark' ? null : [styles.phoneLine, { borderColor: c.separator }]];
+  const cap = fontScaleCap('footnote');
 
   return (
     <View
@@ -67,14 +70,15 @@ export function WallpaperPairCard({
         styles.card,
         continuous,
         shadowV2('card', scheme),
-        { backgroundColor: c.surface },
-        scheme === 'dark' ? { borderColor: c.separator, borderWidth: StyleSheet.hairlineWidth } : null,
+        { backgroundColor: scheme === 'dark' ? c.surfaceRaised : c.surface },
       ]}
     >
-      <Text accessibilityRole="header" style={[...heading, { color: c.ink }]}>
+      <Text maxFontSizeMultiplier={fontScaleCap('headline')} accessibilityRole="header" style={[...heading, { color: c.ink }]}>
         {t('wallpaper.pair.heading')}
       </Text>
-      <Text style={[...small, { color: c.inkSecondary }]}>{t('wallpaper.pair.body')}</Text>
+      <Text maxFontSizeMultiplier={cap} style={[...small, { color: c.inkSecondary }]}>
+        {t('wallpaper.pair.body')}
+      </Text>
       <View style={styles.row} accessible accessibilityRole="image" accessibilityLabel={t('wallpaper.pair.previewA11y')}>
         <View style={styles.half}>
           <View style={frame}>
@@ -85,7 +89,9 @@ export function WallpaperPairCard({
             )}
             <LockMock width={width} height={height} showGuides={false} />
           </View>
-          <Text style={[...small, { color: c.inkSecondary }]}>{t('wallpaper.pair.lock')}</Text>
+          <Text maxFontSizeMultiplier={cap} style={[...small, { color: c.inkSecondary }]}>
+            {t('wallpaper.pair.lock')}
+          </Text>
         </View>
         <View style={styles.half}>
           <View style={frame}>
@@ -117,7 +123,9 @@ export function WallpaperPairCard({
               <HomeMock specs={iconSpecs} width={width} backgroundColour="transparent" maxIcons={16} />
             </View>
           </View>
-          <Text style={[...small, { color: c.inkSecondary }]}>{t('wallpaper.pair.home')}</Text>
+          <Text maxFontSizeMultiplier={cap} style={[...small, { color: c.inkSecondary }]}>
+            {t('wallpaper.pair.home')}
+          </Text>
         </View>
       </View>
       <Segmented label={t('wallpaper.pair.strength')} options={strengths} value={strength} onChange={onStrengthChange} />
@@ -132,7 +140,9 @@ export function WallpaperPairCard({
         onPress={onSave}
         accessibilityHint={t('wallpaper.pair.hint', { width: pixels.width, height: pixels.height })}
       />
-      <Text style={[...small, { color: c.inkSecondary }]}>{t('wallpaper.pair.howTo')}</Text>
+      <Text maxFontSizeMultiplier={cap} style={[...small, { color: c.inkSecondary }]}>
+        {t('wallpaper.pair.howTo')}
+      </Text>
     </View>
   );
 }
@@ -141,5 +151,6 @@ const styles = StyleSheet.create({
   card: { borderRadius: radiusV2.card, padding: spaceV2.lg, gap: spaceV2.md },
   row: { flexDirection: 'row', justifyContent: 'center', gap: spaceV2.md },
   half: { alignItems: 'center', gap: spaceV2.xs },
-  phone: { borderRadius: radiusV2.control, overflow: 'hidden', borderWidth: StyleSheet.hairlineWidth },
+  phone: { borderRadius: radiusV2.control, overflow: 'hidden' },
+  phoneLine: { borderWidth: StyleSheet.hairlineWidth },
 });

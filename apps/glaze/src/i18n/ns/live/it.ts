@@ -8,6 +8,10 @@ export const it: NonNullable<LocaleMessages['live']> = {
     opening: 'Apertura…',
     pickHint: 'Apre la libreria foto per scegliere un video o una GIF',
     yourLoops: 'I tuoi loop',
+    sections: {
+      make: { eyebrow: 'Crea una Live Photo', title: 'Inizia da un clip', body: 'Scegli un video o una GIF e inquadralo. Glaze salva i primi 3 secondi in Foto come Live Photo.' },
+      loops: { eyebrow: 'Salvati in Glaze' },
+    },
     emptyTitle: 'Ancora nessun loop',
     emptyBody: 'Scegli un video o una GIF, taglia fino a 15 secondi e inquadralo per la schermata di blocco.',
     pick: 'Scegli un video o una GIF',
@@ -35,6 +39,11 @@ export const it: NonNullable<LocaleMessages['live']> = {
   },
   editor: {
     loading: 'Caricamento del loop',
+    sections: {
+      frame: { eyebrow: 'Schermata di blocco', title: 'Inquadra' },
+      clip: { eyebrow: 'Clip' },
+      finish: { eyebrow: 'Fine', title: 'Salva', body: 'Tutto resta su questo telefono. Non viene caricato nulla.' },
+    },
     missing: 'Questo loop non esiste più.',
     nameLabel: 'Nome del loop',
     cropLabel: 'Inquadratura della schermata di blocco. Trascina per spostare, pizzica per ingrandire.',

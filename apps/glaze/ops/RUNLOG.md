@@ -423,3 +423,25 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - Oversight v206 unchanged: D206-1 followed — no native/Swift change. PR #128 build result still unreadable (GitHub API not enabled for this session; no result record in App-Projects; run 183 is on ship branch ship/glaze-20261030-1450 as an update). No patches. App-Projects: nothing new for apps/glaze to sync. No page comments. npm registry unreachable.
 - 3 parallel workers: T173 Install flow slice + T156 Safari copy (c7b3262), T173 Plus sheet + Settings slices (94d3705), T166 Icons tab virtualised list + gradient audit (bf235e3). PREMIUM_UI.md §3.5-3.7 ticked; TRIAL.md "31 Oct" Q1-5; follow-up T175.
 - 1350/1350 core tests green, typecheck:ui (stubs) clean; full install + tsc + expo export needs PC verification. Nothing device-tested.
+## 2026-10-30 run 185 (17:12Z, artifact 1793376207-9767; oversight v208)
+- Oversight v208: D207-1 followed (2 small JS-only tasks, no Swift/plugins/deps); D206-1 still open — PR #128 result unreadable (GitHub API not enabled for this session). No patches. App-Projects: fd7c317/5fb4f94/ed79397 are ship PRs of our own commits; tree matches 9bc6fa4 outside PC-only files, nothing to sync. No page comments. npm registry unreachable.
+- Done myself (no workers, D207-1 size): T175 unused plus.lock.notNow removed + guard (665de77); T173 theme-detail apply skeleton slice (a78ba04). TRIAL.md "31 Oct" Q6 added.
+- 1352/1352 core tests green, typecheck:ui (stubs) clean, core typecheck clean; full install + tsc + expo export needs PC verification. Nothing device-tested.
+## 2026-10-30 run 186 (19:11Z, artifact 1793380809-db80; oversight v209)
+- No-op run. Oversight v209: D207-1 still open; review says PR #131 (runs 184-185) is unmerged after auto-ship's 18:16Z refusal — keep runs small and stack nothing more until the owner merges, so no new work this run. D206-1 still open (PR #128 result unreadable from the cloud). No patches. App-Projects: nothing new for apps/glaze since fd7c317 (our own ship PRs). No page comments. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1352/1352 core tests green; no code change. Kit unchanged (2ca8f36). Nothing device-tested.
+## 2026-10-30 run 187 (21:12Z, artifact 1793387615-f0ab; oversight v210)
+- Oversight v210: holds lifted (PR #131 merged); D130-2 kept (no native change). No patches. Synced App-Projects e4203ed (store/ASC_REQUEST.json, TestFlight mode). No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- 3 parallel workers: T173 onboarding (ed3669a), T173 Themes browse (002e952), T168 seamless card for downloaded packs (05cd88d, done). Guard fix after merge (premiumOnboarding test). TRIAL.md "31 Oct, evening" Q1-4.
+- 1375/1375 core tests green, typecheck:ui (stubs) clean. Kit rebuilt. Nothing device-tested.
+## 2026-10-30 run 188 (21:51Z, artifact 1793396007-caf4; oversight v210)
+- Oversight v210 unchanged (already handled; D130-2 kept: JS only). No patches. Synced App-Projects b737621 (scripts/packs/versions.json). No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- T173 closed (all seven planned screens sliced). New T176: 3 parallel workers: Icons tab (cd30869), Wallpapers tab + maker (d9ae27e, new src/core/wallpaperGroups.ts), Live tab + loop editor (5b1f620). PREMIUM_UI.md conflicts resolved by hand. TRIAL.md "31 Oct, night" Q1-4.
+- 1401/1401 core tests green, typecheck:ui (stubs) clean, core typecheck clean. Kit rebuilt. Nothing device-tested.
+## 2026-10-30 run 189 (22:19Z, artifact 1793398681-ccba; oversight v210; manual fire with owner brief owner-1031)
+- Imported owner-1031 (docs/OWNER_1031.md, T177-T181). Verified with curl: glaze-packs-v1 catalog.json 200, 10 free packs, parses; fixtures committed. App-Projects: nothing new since b737621. No page comments. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 3 parallel workers merged cleanly: T178 forced catalogue refresh + sticky-404 fix (ad464d8), T179 remote theme page + remote-id lookups (0e6af11), T177 Themes tab = New collection + 3 starters, old sets out of the gallery, pull to refresh (1ca17b4). T180 TRIAL.md questions.
+- 1432/1432 core tests green, typecheck:ui (stubs) clean, core typecheck clean. Kit rebuilt. JS only. Nothing device-tested.
+## 2026-10-30 run 190 (23:12Z, artifact 1793400126-708b; oversight v211)
+- Oversight v211: D211-1 followed — T182 Plus sheet no longer counts the old Plus packs (left the gallery): 'More Plus themes are on the way' + 'Every theme in the gallery' free row, 12 locales, guard test. No plus:true, no price/paywall change. No patches. App-Projects: nothing new since b737621. No page comments. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1433/1433 core tests green, typecheck:ui (stubs) clean. JS only. Kit rebuilt. Nothing device-tested.

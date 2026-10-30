@@ -8,6 +8,10 @@ export const zhHans: NonNullable<LocaleMessages['live']> = {
     opening: '正在打开…',
     pickHint: '打开照片图库选择视频或 GIF',
     yourLoops: '你的循环',
+    sections: {
+      make: { eyebrow: '制作实况照片', title: '从一段片段开始', body: '选一段视频或 GIF 并调整构图。Glaze 会把前 3 秒作为实况照片存到“照片”。' },
+      loops: { eyebrow: '已存在 Glaze 中' },
+    },
     emptyTitle: '还没有循环',
     emptyBody: '选择视频或 GIF，修剪到最多 15 秒，并为锁定屏幕调整构图。',
     pick: '选择视频或 GIF',
@@ -35,6 +39,11 @@ export const zhHans: NonNullable<LocaleMessages['live']> = {
   },
   editor: {
     loading: '正在载入循环',
+    sections: {
+      frame: { eyebrow: '锁定屏幕', title: '调整构图' },
+      clip: { eyebrow: '片段' },
+      finish: { eyebrow: '完成', title: '存储', body: '所有内容都留在这台手机上，不会上传。' },
+    },
     missing: '此循环已不存在。',
     nameLabel: '循环名称',
     cropLabel: '锁定屏幕裁剪。拖动以移动，双指捏合以缩放。',

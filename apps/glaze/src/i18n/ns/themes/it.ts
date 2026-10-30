@@ -12,8 +12,11 @@ export const it: NonNullable<LocaleMessages['themes']> = {
     body: 'Sfumature, mesh, grana e motivi alla misura del tuo iPhone.',
     hint: 'Apre il creatore di sfondi',
   },
-  eyebrow: { starters: 'Inizia da qui', art: 'Arte gratuita', space: 'Gratis · foto reali', plus: 'Glaze Plus' },
+  eyebrow: { starters: 'Inizia da qui', art: 'Arte gratuita', space: 'Gratis · foto reali', plus: 'Glaze Plus', season: 'In questo periodo', collection: 'Appena arrivati' },
   starters: 'Temi di base',
+  /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
+  collection: { title: 'Nuova collezione', body: 'Temi d’arte originale dallo studio Glaze. Download gratuito; i nuovi compaiono qui.', loadingA11y: 'Caricamento della nuova collezione', downloadA11y: 'Download gratuito.' },
+  startersBody: 'Inclusi in Glaze, pronti senza download.',
   startersEmpty: 'Ancora nessun tema di base',
   plusPacks: 'Pacchetti Plus',
   plusPacksBody: 'Provali tutti in anteprima. Glaze Plus è un acquisto unico, mai un abbonamento.',

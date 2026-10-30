@@ -164,6 +164,21 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
     readyA11y: '{pack} パックはダウンロード済みです',
     size: 'サイズ: {size}',
   },
+  // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
+  remote: {
+    heroPreview: 'アートのプレビューです。ダウンロードするとフルサイズの壁紙になります。',
+    heroDownloaded: 'このiPhoneにダウンロード済み。フルサイズの壁紙です。',
+    download: 'ダウンロード',
+    downloadSize: 'ダウンロード · {size}',
+    downloadA11y: '{name}をダウンロード、{size}',
+    downloadHint: '壁紙とウィジェットのアートをこのiPhoneに保存します',
+    includes: '無料。壁紙、ウィジェットのアート、テーマの色のアイコン。',
+    downloading: '{name}をダウンロード中',
+    offline: 'いまはコレクションに接続できません。オンラインに戻ったらもう一度お試しください。',
+    unlock: 'Glaze Plusでロック解除',
+    iconsNote: 'このテーマには壁紙とウィジェットのアートが含まれます。アイコンはテーマの色のGlazeグリフで描かれます。',
+    loadingA11y: 'テーマを読み込み中',
+  },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {
     title: 'おそろいのウィジェット',

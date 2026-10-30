@@ -28,7 +28,10 @@ test('T151: every ScrollView / FlatList / SectionList turns off overscroll bounc
     const src = readFileSync(join(root, f), 'utf8');
     for (const m of src.matchAll(tag)) {
       count++;
-      assert.match(m[2], /bounces=\{false\}/, `${f}: <${m[1]}> must set bounces={false}`);
+      // T177 (owner-1031 asks for pull to refresh on the Themes gallery): that one list allows the iOS
+      // overscroll only while it rests at the very top (perfBudget.test.ts guards how `atTop` is set).
+      const bounces = f.replace(/\\/g, '/') === 'app/(tabs)/themes.tsx' ? /bounces=\{(false|atTop)\}/ : /bounces=\{false\}/;
+      assert.match(m[2], bounces, `${f}: <${m[1]}> must set bounces={false}`);
       assert.match(m[2], /overScrollMode="never"/, `${f}: <${m[1]}> must set overScrollMode="never"`);
     }
   }

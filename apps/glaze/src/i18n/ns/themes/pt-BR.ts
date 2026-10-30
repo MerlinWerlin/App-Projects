@@ -12,8 +12,11 @@ export const ptBR: NonNullable<LocaleMessages['themes']> = {
     body: 'Degradês, malha, granulado e padrões no tamanho do seu iPhone.',
     hint: 'Abre o criador de papéis de parede',
   },
-  eyebrow: { starters: 'Comece aqui', art: 'Arte grátis', space: 'Grátis · fotos reais', plus: 'Glaze Plus' },
+  eyebrow: { starters: 'Comece aqui', art: 'Arte grátis', space: 'Grátis · fotos reais', plus: 'Glaze Plus', season: 'Nesta época', collection: 'Acabou de chegar' },
   starters: 'Temas iniciais',
+  /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
+  collection: { title: 'Nova coleção', body: 'Temas de arte original do estúdio Glaze. Download grátis; os novos aparecem aqui.', loadingA11y: 'Carregando a nova coleção', downloadA11y: 'Download grátis.' },
+  startersBody: 'Incluídos no Glaze, prontos sem download.',
   startersEmpty: 'Ainda não há temas iniciais',
   plusPacks: 'Pacotes Plus',
   plusPacksBody: 'Veja a prévia de qualquer um. O Glaze Plus é uma compra única, nunca uma assinatura.',

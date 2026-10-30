@@ -188,10 +188,11 @@ test('no launch paywall: the Plus sheet only opens from a tap, never on mount', 
 test('every Plus theme card shows the Plus badge before tapping', () => {
   for (const t of PLUS_THEMES) assert.equal(t.plus, true, t.id);
   const gallery = read('app', '(tabs)', 'themes.tsx');
-  // Per theme, not per grid: a Plus theme in search or a collection still gets the badge.
-  // T106: only non-Plus cards may fall through to the Free pill.
-  assert.match(gallery, /badge=\{plus \|\| t\.plus \? PLUS_BADGE : (undefined|isFreeMarked\(t\.id\) \? FREE_BADGE : undefined)\}/);
-  assert.match(gallery, /accessibilityNote=\{plus \|\| t\.plus \? plusNote : (undefined|isFreeMarked\(t\.id\) \? freeNote : undefined)\}/);
+  // Per theme, not per grid: a catalogue pack marked Plus gets the badge in the gallery card
+  // (T177: the gallery is the New collection + bundled starters, src/core/gallery.ts).
+  assert.match(gallery, /const plus = remote && theme\.plus;/);
+  assert.match(gallery, /badge=\{plus \? PLUS_BADGE : undefined\}/);
+  assert.match(gallery, /accessibilityNote=\{plus \? plusNote : /);
   const detail = read('app', 'theme', '[id].tsx');
   assert.match(detail, /theme\.plus \? <PlusBadge \/> : null/);
 });

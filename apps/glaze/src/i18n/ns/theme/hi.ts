@@ -164,6 +164,21 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
     readyA11y: '{pack} पैक डाउनलोड हो गया है',
     size: 'आकार: {size}',
   },
+  // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
+  remote: {
+    heroPreview: 'आर्टवर्क का पूर्वावलोकन। पूरे आकार का वॉलपेपर पाने के लिए इसे डाउनलोड करें।',
+    heroDownloaded: 'इस iPhone पर डाउनलोड हो गया। यह पूरे आकार का वॉलपेपर है।',
+    download: 'डाउनलोड करें',
+    downloadSize: 'डाउनलोड करें · {size}',
+    downloadA11y: '{name} डाउनलोड करें, {size}',
+    downloadHint: 'वॉलपेपर और विजेट आर्ट को इस iPhone पर सहेजता है',
+    includes: 'मुफ़्त। वॉलपेपर, विजेट आर्ट और इसके रंगों में बने आइकन।',
+    downloading: '{name} डाउनलोड हो रहा है',
+    offline: 'अभी संग्रह तक नहीं पहुँच पा रहे। फिर से ऑनलाइन होने पर दोबारा कोशिश करें।',
+    unlock: 'Glaze Plus से अनलॉक करें',
+    iconsNote: 'यह थीम अपना वॉलपेपर और विजेट आर्ट लाती है। आपके आइकन इसके रंगों में Glaze ग्लिफ़ से बनाए जाते हैं।',
+    loadingA11y: 'थीम लोड हो रही है',
+  },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {
     title: 'मेल खाते विजेट',

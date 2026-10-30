@@ -45,6 +45,7 @@ export const ko: NonNullable<LocaleMessages['wallpaper']> = {
     a11y: '배경화면 미리보기, {style}',
     a11yPattern: '배경화면 미리보기, {style} {pattern}',
     sizePx: '{width} × {height} px',
+    loadingA11y: '배경화면 불러오는 중',
   },
   design: {
     shuffle: '섞기',

@@ -14,7 +14,6 @@ export const fr: NonNullable<LocaleMessages['plus']> = {
     freeIcons: 'Icônes personnalisées, sans limite',
     freeInstall: 'Installation guidée par Raccourcis (et bêta groupée)',
     freeLive: 'Créateur de Live Photo avec votre propre vidéo',
-    notNow: 'Pas maintenant',
     oneMoment: 'Un instant…',
     unlock: 'Débloquer (bientôt)',
     unlockHint: 'Glaze Plus n’est pas encore en vente',
@@ -29,16 +28,8 @@ export const fr: NonNullable<LocaleMessages['plus']> = {
     restored: "Glaze Plus restauré. Merci !",
     restoreNone: "Aucun achat Glaze Plus antérieur n’a été trouvé.",
     restoreFailed: "Restauration impossible pour le moment. Réessayez plus tard.",
-    themes: {
-      one: '{count} thème de plus dans {packs} packs',
-      many: '{count} de thèmes de plus dans {packs} packs',
-      other: '{count} thèmes de plus dans {packs} packs',
-    },
-    freeThemes: {
-      one: '{count} thème illustré de départ et le créateur de fonds d’écran',
-      many: '{count} de thèmes illustrés de départ et le créateur de fonds d’écran',
-      other: '{count} thèmes illustrés de départ et le créateur de fonds d’écran',
-    },
+    themes: 'D’autres thèmes Plus arrivent',
+    freeThemes: 'Tous les thèmes de la galerie et le créateur de fonds d’écran',
   },
   tipJar: {
     title: 'Pourboires',

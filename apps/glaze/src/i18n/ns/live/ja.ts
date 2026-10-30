@@ -8,6 +8,10 @@ export const ja: NonNullable<LocaleMessages['live']> = {
     opening: '開いています…',
     pickHint: '写真ライブラリを開いてビデオまたはGIFを選びます',
     yourLoops: 'あなたのループ',
+    sections: {
+      make: { eyebrow: 'Live Photosを作る', title: 'クリップから始める', body: 'ビデオかGIFを選んで構図を決めます。Glazeは最初の3秒をLive Photosとして写真アプリに保存します。' },
+      loops: { eyebrow: 'Glazeに保存済み' },
+    },
     emptyTitle: 'まだループがありません',
     emptyBody: 'ビデオかGIFを選び、最大15秒にトリミングして、ロック画面に合わせてフレーミングします。',
     pick: 'ビデオまたはGIFを選ぶ',
@@ -35,6 +39,11 @@ export const ja: NonNullable<LocaleMessages['live']> = {
   },
   editor: {
     loading: 'ループを読み込み中',
+    sections: {
+      frame: { eyebrow: 'ロック画面', title: '構図を決める' },
+      clip: { eyebrow: 'クリップ' },
+      finish: { eyebrow: '仕上げ', title: '保存', body: 'すべてこの端末内に残ります。アップロードはされません。' },
+    },
     missing: 'このループはもう存在しません。',
     nameLabel: 'ループ名',
     cropLabel: 'ロック画面の切り抜き。ドラッグで移動、ピンチでズーム。',

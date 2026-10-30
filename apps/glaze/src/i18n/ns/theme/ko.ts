@@ -164,6 +164,21 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
     readyA11y: '{pack} 팩이 다운로드되었습니다',
     size: '크기: {size}',
   },
+  // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
+  remote: {
+    heroPreview: '아트워크 미리보기입니다. 다운로드하면 전체 크기 배경화면을 받을 수 있어요.',
+    heroDownloaded: '이 iPhone에 다운로드했어요. 전체 크기 배경화면이에요.',
+    download: '다운로드',
+    downloadSize: '다운로드 · {size}',
+    downloadA11y: '{name} 다운로드, {size}',
+    downloadHint: '배경화면과 위젯 아트를 이 iPhone에 저장합니다',
+    includes: '무료. 배경화면, 위젯 아트, 테마 색상의 아이콘.',
+    downloading: '{name} 다운로드 중',
+    offline: '지금은 컬렉션에 연결할 수 없어요. 다시 온라인 상태가 되면 다시 시도하세요.',
+    unlock: 'Glaze Plus로 잠금 해제',
+    iconsNote: '이 테마에는 배경화면과 위젯 아트가 들어 있어요. 아이콘은 테마 색상의 Glaze 글리프로 그려져요.',
+    loadingA11y: '테마 불러오는 중',
+  },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {
     title: '어울리는 위젯',

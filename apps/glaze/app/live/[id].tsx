@@ -4,7 +4,6 @@ import { useLocalSearchParams } from 'expo-router';
 import { useVideoPlayer, VideoView, type VideoPlayer } from 'expo-video';
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import {
-  ActivityIndicator,
   Dimensions,
   Pressable,
   ScrollView,
@@ -47,7 +46,18 @@ import {
 import { useT } from '../../src/i18n';
 import { durations, timing, useMotionReduced } from '../../src/theme/motion';
 import type { Script } from '../../src/core/i18n';
-import { circleRadius, continuous, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
+import {
+  chromeRadiusV2,
+  circleRadius,
+  continuous,
+  editorialV2,
+  fontScaleCap,
+  radiusV2,
+  sizeV2,
+  spaceV2,
+  textV2,
+  type TypeRoleV2,
+} from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import type { FeatherName } from '../../src/ui/featherName';
 import { SaveAsLivePhotoButton } from '../../src/ui/LivePhotoSheet';
@@ -56,6 +66,9 @@ import { LivePhotoGuide } from '../../src/ui/LivePhotoGuide';
 import { PhoneFrame, phoneScreenSize } from '../../src/ui/PhoneFrame';
 import { PillButton } from '../../src/ui/PillButton';
 import { PressableScale } from '../../src/ui/PressableScale';
+import { SectionHeader } from '../../src/ui/SectionHeader';
+import { Skeleton } from '../../src/ui/Skeleton';
+import { SquircleCard } from '../../src/ui/SquircleCard';
 import { haptic } from '../../src/ui/haptics';
 import { noMirror, noMirrorText, textStyleFor } from '../../src/ui/i18nLayout';
 
@@ -63,6 +76,7 @@ const tick = () => haptic('select');
 const HANDLE = sizeV2.touch; // trim handle touch width (48 pt)
 const TRIM_STEP_MS = 500;
 const HANDLE_ACTIVE_SCALE = 1.12;
+const KNOB_W = 20;
 
 type EditorType = { body: TextStyle[]; heading: TextStyle[]; label: TextStyle[]; small: TextStyle[] };
 
@@ -89,21 +103,55 @@ export default function EditLoopScreen() {
     };
   }, [id]);
 
-  if (project === undefined) {
-    return (
-      <View style={[styles.center, { backgroundColor: c.bg }]}>
-        <ActivityIndicator color={c.tint} accessibilityLabel={t('live.editor.loading')} />
-      </View>
-    );
-  }
+  if (project === undefined) return <EditorSkeleton />;
   if (project === null) {
     return (
       <View style={[styles.center, { backgroundColor: c.bg }]}>
-        <Text style={[...type.body, { color: c.inkSecondary }]}>{t('live.editor.missing')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...type.body, { color: c.inkSecondary }]}>
+          {t('live.editor.missing')}
+        </Text>
       </View>
     );
   }
   return <Editor initial={project} />;
+}
+
+/**
+ * The preview phone's size for this device: Lock Screen aspect (screen size in points, any
+ * orientation) and the outer frame width (bezel included) inside the preview card, whose padding
+ * sits inside the screen's 16 pt gutters.
+ */
+function useEditorPhone() {
+  const win = useWindowDimensions();
+  const aspect = useMemo(() => {
+    const s = Dimensions.get('screen');
+    return lockAspect(deviceForScreen(s.width, s.height));
+  }, []);
+  const phoneW = Math.max(132, Math.min(win.width - spaceV2.lg * 4, win.height * 0.55 * aspect + 24));
+  const screenSize = phoneScreenSize(phoneW, aspect);
+  return { aspect, phoneW, screenSize, outerH: screenSize.height + screenSize.bezel * 2 };
+}
+
+/** T176: the wait while the loop loads, in the editor's own shape (name field, preview, trim bar). */
+function EditorSkeleton() {
+  const { c } = useColorsV2();
+  const { t } = useT();
+  const { phoneW, outerH } = useEditorPhone();
+  return (
+    <View
+      accessible
+      accessibilityLabel={t('live.editor.loading')}
+      style={[styles.skeletonRoot, styles.content, { backgroundColor: c.bg }]}
+    >
+      <Skeleton width="100%" height={sizeV2.rowMin} radius={chromeRadiusV2.control} />
+      <SquircleCard size="large" elevation="raised" tone="raised" outline={false} haptic={false}>
+        <View style={styles.frame}>
+          <Skeleton width={phoneW} height={outerH} radius={radiusV2.cardLarge} />
+        </View>
+      </SquircleCard>
+      <Skeleton width="100%" height={sizeV2.touch} radius={chromeRadiusV2.pill} />
+    </View>
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -139,23 +187,16 @@ function EditorIconButton({ icon, onPress, accessibilityLabel, disabled = false 
 }
 
 function Editor({ initial }: EditorProps) {
-  const { c } = useColorsV2();
+  const { c, scheme } = useColorsV2();
   const { t, script } = useT();
   const type = typeFor(script);
-  const win = useWindowDimensions();
   const [project, setProject] = useState<LoopProject>(initial);
   const [scrollEnabled, setScrollEnabled] = useState(true);
   // The preview's player, for grabbing a still frame (T30).
   const playerRef = useRef<VideoPlayer | null>(null);
 
-  // Lock Screen aspect for this phone (screen size in points, any orientation).
-  const aspect = useMemo(() => {
-    const s = Dimensions.get('screen');
-    return lockAspect(deviceForScreen(s.width, s.height));
-  }, []);
   // Outer phone frame width (bezel included); the media fills the screen area inside it.
-  const phoneW = Math.max(132, Math.min(win.width - spaceV2.lg * 2, win.height * 0.55 * aspect + 24));
-  const screenSize = phoneScreenSize(phoneW, aspect);
+  const { aspect, phoneW, screenSize } = useEditorPhone();
   const frameW = screenSize.width;
   const source = useMemo(
     () => ({ width: project.sourceWidth, height: project.sourceHeight }),
@@ -275,6 +316,7 @@ function Editor({ initial }: EditorProps) {
       contentContainerStyle={styles.content}
     >
       <TextInput
+        maxFontSizeMultiplier={fontScaleCap('headline')}
         value={project.name}
         onChangeText={(name) => update({ name })}
         onEndEditing={() => {
@@ -288,83 +330,104 @@ function Editor({ initial }: EditorProps) {
         style={[...type.heading, styles.name, continuous, { color: c.ink, backgroundColor: c.surface }]}
       />
 
-      {/* Preview: the whole source, positioned so the frame shows the crop, with the Lock Screen on top. */}
-      <GestureDetector gesture={gesture}>
+      {/* T176: editorial sections (Frame it / Trim / Speed / Save it) on the 16 pt rhythm. */}
+      <SectionHeader
+        flushTop
+        eyebrow={t('live.editor.sections.frame.eyebrow')}
+        title={t('live.editor.sections.frame.title')}
+        style={styles.sectionHead}
+      />
+      {/* Preview on a soft raised surface (no hairline): the whole source, positioned so the frame
+          shows the crop, with the Lock Screen on top; the zoom controls and guide note sit with it. */}
+      <SquircleCard size="large" elevation="raised" tone="raised" outline={false} haptic={false}>
+        <View style={styles.previewStack}>
+          <GestureDetector gesture={gesture}>
+            <View
+              accessible
+              accessibilityRole="adjustable"
+              accessibilityLabel={t('live.editor.cropLabel')}
+              accessibilityValue={{ text: t('live.editor.cropValue', { zoom: project.crop.scale.toFixed(1) }) }}
+              accessibilityActions={[
+                { name: 'increment', label: t('live.editor.zoomIn') },
+                { name: 'decrement', label: t('live.editor.zoomOut') },
+                { name: 'moveLeft', label: t('live.editor.moveLeft') },
+                { name: 'moveRight', label: t('live.editor.moveRight') },
+                { name: 'moveUp', label: t('live.editor.moveUp') },
+                { name: 'moveDown', label: t('live.editor.moveDown') },
+                { name: 'activate', label: t('live.editor.resetCrop') },
+              ]}
+              onAccessibilityAction={onCropA11y}
+              style={styles.frame}
+            >
+              <PhoneFrame width={phoneW} aspect={aspect} showClock showGuides>
+                {project.kind === 'video' ? (
+                  <VideoMedia
+                    uri={project.sourceUri}
+                    trim={project.trim}
+                    speed={project.speed}
+                    durationMs={project.sourceDurationMs}
+                    layout={layout}
+                    onPlayer={(pl) => {
+                      playerRef.current = pl;
+                    }}
+                    onDuration={(ms) =>
+                      setProject((p) =>
+                        p.sourceDurationMs > 0
+                          ? p
+                          : { ...p, sourceDurationMs: ms, trim: clampTrim({ startMs: 0, endMs: ms }, ms, { speed: p.speed }) },
+                      )
+                    }
+                  />
+                ) : (
+                  <ExpoImage
+                    source={{ uri: project.sourceUri }}
+                    style={[styles.media, layout]}
+                    contentFit="fill"
+                    cachePolicy="memory-disk"
+                    transition={0}
+                    accessibilityIgnoresInvertColors
+                  />
+                )}
+              </PhoneFrame>
+            </View>
+          </GestureDetector>
+
+          <View style={styles.row}>
+            <EditorIconButton icon="zoom-out" accessibilityLabel={t('live.editor.zoomOut')} onPress={() => zoom(0.8)} disabled={project.crop.scale <= 1} />
+            <PillButton
+              label={t('live.editor.resetCrop')}
+              variant="plain"
+              onPress={() => {
+                tick();
+                setCrop({ ...DEFAULT_CROP });
+              }}
+            />
+            <EditorIconButton icon="zoom-in" accessibilityLabel={t('live.editor.zoomIn')} onPress={() => zoom(1.25)} disabled={project.crop.scale >= 4} />
+          </View>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...type.small, styles.centerText, { color: c.inkSecondary }]}>
+            {t('live.editor.guides')}
+          </Text>
+        </View>
+      </SquircleCard>
+      {sizeWarning ? (
         <View
           accessible
-          accessibilityRole="adjustable"
-          accessibilityLabel={t('live.editor.cropLabel')}
-          accessibilityValue={{ text: t('live.editor.cropValue', { zoom: project.crop.scale.toFixed(1) }) }}
-          accessibilityActions={[
-            { name: 'increment', label: t('live.editor.zoomIn') },
-            { name: 'decrement', label: t('live.editor.zoomOut') },
-            { name: 'moveLeft', label: t('live.editor.moveLeft') },
-            { name: 'moveRight', label: t('live.editor.moveRight') },
-            { name: 'moveUp', label: t('live.editor.moveUp') },
-            { name: 'moveDown', label: t('live.editor.moveDown') },
-            { name: 'activate', label: t('live.editor.resetCrop') },
-          ]}
-          onAccessibilityAction={onCropA11y}
-          style={styles.frame}
+          accessibilityRole="alert"
+          style={[styles.warnBox, continuous, { backgroundColor: scheme === 'dark' ? c.surfaceRaised : c.surface }]}
         >
-          <PhoneFrame width={phoneW} aspect={aspect} showClock showGuides>
-            {project.kind === 'video' ? (
-              <VideoMedia
-                uri={project.sourceUri}
-                trim={project.trim}
-                speed={project.speed}
-                durationMs={project.sourceDurationMs}
-                layout={layout}
-                onPlayer={(pl) => {
-                  playerRef.current = pl;
-                }}
-                onDuration={(ms) =>
-                  setProject((p) =>
-                    p.sourceDurationMs > 0
-                      ? p
-                      : { ...p, sourceDurationMs: ms, trim: clampTrim({ startMs: 0, endMs: ms }, ms, { speed: p.speed }) },
-                  )
-                }
-              />
-            ) : (
-              <ExpoImage
-                source={{ uri: project.sourceUri }}
-                style={[styles.media, layout]}
-                contentFit="fill"
-                cachePolicy="memory-disk"
-                transition={0}
-                accessibilityIgnoresInvertColors
-              />
-            )}
-          </PhoneFrame>
-        </View>
-      </GestureDetector>
-
-      <View style={styles.row}>
-        <EditorIconButton icon="zoom-out" accessibilityLabel={t('live.editor.zoomOut')} onPress={() => zoom(0.8)} disabled={project.crop.scale <= 1} />
-        <PillButton
-          label={t('live.editor.resetCrop')}
-          variant="plain"
-          onPress={() => {
-            tick();
-            setCrop({ ...DEFAULT_CROP });
-          }}
-        />
-        <EditorIconButton icon="zoom-in" accessibilityLabel={t('live.editor.zoomIn')} onPress={() => zoom(1.25)} disabled={project.crop.scale >= 4} />
-      </View>
-      {sizeWarning ? (
-        <View accessible accessibilityRole="alert" style={[styles.warnBox, continuous, { borderColor: c.warn }]}>
-          <Feather name="alert-triangle" size={16} color={c.warn} />
-          <Text style={[...type.small, styles.flex1, { color: c.ink }]}>{sizeWarning}</Text>
+          <Feather name="alert-triangle" size={18} color={c.warn} />
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...type.small, styles.flex1, { color: c.ink }]}>
+            {sizeWarning}
+          </Text>
         </View>
       ) : null}
-      <Text style={[...type.small, styles.centerText, { color: c.inkSecondary }]}>
-        {t('live.editor.guides')}
-      </Text>
 
-      <Text accessibilityRole="header" style={[...type.heading, { color: c.ink }]}>
-        {t('live.editor.trim')}
-      </Text>
+      <SectionHeader
+        flushTop
+        eyebrow={t('live.editor.sections.clip.eyebrow')}
+        title={t('live.editor.trim')}
+        style={[styles.sectionHead, styles.sectionNext]}
+      />
       {hasTrim ? (
         <TrimBar
           durationMs={project.sourceDurationMs}
@@ -374,14 +437,12 @@ function Editor({ initial }: EditorProps) {
           onGestureActive={(active) => setScrollEnabled(!active)}
         />
       ) : (
-        <Text style={[...type.body, { color: c.inkSecondary }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...type.body, { color: c.inkSecondary }]}>
           {project.kind === 'gif' ? t('live.editor.gifFull') : t('live.editor.readingLength')}
         </Text>
       )}
 
-      <Text accessibilityRole="header" style={[...type.heading, { color: c.ink }]}>
-        {t('live.editor.speed')}
-      </Text>
+      <SectionHeader level="group" flushTop title={t('live.editor.speed')} style={[styles.sectionHead, styles.groupNext]} />
       <View style={styles.segment} accessibilityRole="radiogroup">
         {SPEEDS.map((s) => {
           const on = project.speed === s;
@@ -398,14 +459,26 @@ function Editor({ initial }: EditorProps) {
                 { backgroundColor: on ? c.tint : c.surface },
               ]}
             >
-              <Text style={[...type.label, noMirrorText, { color: on ? c.onTint : c.ink }]}>{`${s}×`}</Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...type.label, noMirrorText, { color: on ? c.onTint : c.ink }]}>
+                {`${s}×`}
+              </Text>
             </Pressable>
           );
         })}
       </View>
       {project.kind === 'gif' && project.speed !== 1 ? (
-        <Text style={[...type.small, { color: c.inkSecondary }]}>{t('live.editor.gifSpeedNote')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...type.small, { color: c.inkSecondary }]}>
+          {t('live.editor.gifSpeedNote')}
+        </Text>
       ) : null}
+
+      <SectionHeader
+        flushTop
+        eyebrow={t('live.editor.sections.finish.eyebrow')}
+        title={t('live.editor.sections.finish.title')}
+        body={t('live.editor.sections.finish.body')}
+        style={[styles.sectionHead, styles.sectionNext]}
+      />
 
       {/* T127: the main action saves the Live Photo (it moves when pressed in Photos). The guide
           shows how to try it as a wallpaper (Photos › Share › Use as Wallpaper › Live Photo on);
@@ -669,14 +742,18 @@ function TrimBar({ durationMs, trim, speed, onChange, onGestureActive }: TrimBar
         </GestureDetector>
       </View>
       <View style={styles.trimLabels}>
-        <Text style={[...type.small, noMirrorText, { color: c.inkSecondary }]}>{secs(trim.startMs)}</Text>
-        <Text style={[...type.label, styles.trimMid, { color: c.ink }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...type.small, noMirrorText, { color: c.inkSecondary }]}>
+          {secs(trim.startMs)}
+        </Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...type.label, styles.trimMid, { color: c.ink }]}>
           {t('live.editor.loopLength', {
             duration: `\u2066${secs(loopDurationMs(trim, speed))}\u2069`,
             max: `\u2066${secs(maxTrimMs(speed) / speed)}\u2069`,
           })}
         </Text>
-        <Text style={[...type.small, noMirrorText, { color: c.inkSecondary }]}>{secs(trim.endMs)}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...type.small, noMirrorText, { color: c.inkSecondary }]}>
+          {secs(trim.endMs)}
+        </Text>
       </View>
     </View>
   );
@@ -701,8 +778,14 @@ function Knob({ press, reduced, color, children }: KnobProps) {
 
 const styles = StyleSheet.create({
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: spaceV2.lg },
-  content: { padding: spaceV2.lg, gap: spaceV2.md, paddingBottom: spaceV2.xxl },
-  name: { minHeight: sizeV2.rowMin, borderRadius: radiusV2.control, paddingHorizontal: spaceV2.lg },
+  // T176: 16 pt rhythm between blocks; section headers keep the editorial 32 pt above, 12 pt below.
+  content: { padding: spaceV2.lg, gap: editorialV2.cardGap, paddingBottom: spaceV2.xxl },
+  skeletonRoot: { flex: 1 },
+  sectionHead: { paddingBottom: 0, marginBottom: editorialV2.sectionBottom - editorialV2.cardGap },
+  sectionNext: { paddingTop: editorialV2.sectionTop - editorialV2.cardGap },
+  groupNext: { paddingTop: spaceV2.sm },
+  previewStack: { gap: spaceV2.md },
+  name: { minHeight: sizeV2.rowMin, borderRadius: chromeRadiusV2.control, paddingHorizontal: spaceV2.lg },
   frame: { alignSelf: 'center' },
   media: { position: 'absolute' },
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spaceV2.sm },
@@ -711,9 +794,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     gap: spaceV2.sm,
-    borderWidth: 1,
-    borderRadius: radiusV2.control,
-    padding: spaceV2.md,
+    borderRadius: chromeRadiusV2.card,
+    padding: spaceV2.lg,
   },
   flex1: { flex: 1 },
   iconBtn: { width: sizeV2.touch, height: sizeV2.touch, alignItems: 'center', justifyContent: 'center' },
@@ -731,7 +813,8 @@ const styles = StyleSheet.create({
   trackBg: { position: 'absolute', height: 6, borderRadius: circleRadius(6) },
   trackSel: { position: 'absolute', height: 6, borderRadius: circleRadius(6) },
   handle: { position: 'absolute', top: spaceV2.xs, width: HANDLE, height: sizeV2.touch, justifyContent: 'center' },
-  knob: { width: 20, height: 40, borderRadius: 6, alignItems: 'center', justifyContent: 'center' },
+  // Capsule knob (shape radius, not chrome): half its width.
+  knob: { width: KNOB_W, height: 40, borderRadius: circleRadius(KNOB_W), alignItems: 'center', justifyContent: 'center' },
   trimLabels: {
     flexDirection: 'row',
     flexWrap: 'wrap',

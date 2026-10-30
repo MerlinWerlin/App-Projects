@@ -45,6 +45,7 @@ export const ar: NonNullable<LocaleMessages['wallpaper']> = {
     a11y: 'معاينة الخلفية، {style}',
     a11yPattern: 'معاينة الخلفية، {style} {pattern}',
     sizePx: '{width} × {height} بكسل',
+    loadingA11y: 'جارٍ تحميل خلفيتك',
   },
   design: {
     shuffle: 'خلط',

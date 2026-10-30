@@ -8,6 +8,10 @@ export const ptBR: NonNullable<LocaleMessages['live']> = {
     opening: 'Abrindo…',
     pickHint: 'Abre sua fototeca para escolher um vídeo ou GIF',
     yourLoops: 'Seus loops',
+    sections: {
+      make: { eyebrow: 'Criar uma Live Photo', title: 'Comece com um clipe', body: 'Escolha um vídeo ou GIF e enquadre. O Glaze salva os 3 primeiros segundos no Fotos como Live Photo.' },
+      loops: { eyebrow: 'Salvos no Glaze' },
+    },
     emptyTitle: 'Nenhum loop ainda',
     emptyBody: 'Escolha um vídeo ou GIF, corte até 15 segundos e enquadre para sua Tela Bloqueada.',
     pick: 'Escolher um vídeo ou GIF',
@@ -35,6 +39,11 @@ export const ptBR: NonNullable<LocaleMessages['live']> = {
   },
   editor: {
     loading: 'Carregando loop',
+    sections: {
+      frame: { eyebrow: 'Tela Bloqueada', title: 'Enquadrar' },
+      clip: { eyebrow: 'Clipe' },
+      finish: { eyebrow: 'Concluir', title: 'Salvar', body: 'Tudo fica neste telefone. Nada é enviado.' },
+    },
     missing: 'Este loop não existe mais.',
     nameLabel: 'Nome do loop',
     cropLabel: 'Enquadramento da Tela Bloqueada. Arraste para mover, faça pinça para ampliar.',

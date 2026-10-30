@@ -89,6 +89,13 @@ export const hi: NonNullable<LocaleMessages['tabs']> = {
     pairHome: 'होम',
     liveEmpty: 'अभी कोई Live Photo क्लिप नहीं है। किसी वीडियो या GIF से एक बनाएँ।',
     showMore: 'और दिखाएँ',
+    // T176 (docs/PREMIUM_UI.md §3.9): editorial section headers per wallpaper group (core/wallpaperGroups).
+    groups: {
+      yours: { eyebrow: 'आपके बनाए', title: 'आपके अपने', body: 'अपनी फ़ोटो और वीडियो से शुरू करें। ये इसी डिवाइस पर रहते हैं।' },
+      free: { eyebrow: 'मुफ़्त', title: 'Glaze ओरिजिनल', body: 'हर मुफ़्त थीम के लिए डिज़ाइन किए गए वॉलपेपर। किसी एक पर टैप करके उसे बदलें और सहेजें।' },
+      plus: { eyebrow: 'Glaze Plus', title: 'Plus कलेक्शन', body: 'Plus थीम के वॉलपेपर, एक बार अनलॉक करें।' },
+    },
+    loading: 'आपकी Live Photo क्लिप लोड हो रही हैं',
     discover: {
       label: 'वॉलपेपर दिखाएँ',
       newEmpty: 'अभी कुछ नया नहीं',

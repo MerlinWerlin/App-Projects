@@ -45,6 +45,7 @@ export const hi: NonNullable<LocaleMessages['wallpaper']> = {
     a11y: 'वॉलपेपर प्रीव्यू, {style}',
     a11yPattern: 'वॉलपेपर प्रीव्यू, {style} {pattern}',
     sizePx: '{width} × {height} px',
+    loadingA11y: 'आपका वॉलपेपर लोड हो रहा है',
   },
   design: {
     shuffle: 'शफ़ल',

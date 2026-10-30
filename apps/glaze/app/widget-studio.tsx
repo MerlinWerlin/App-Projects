@@ -40,7 +40,7 @@ import {
 } from 'react-native';
 import type { DisplayFont } from '../src/core/artwork';
 import { studioSaveTicksWidgets } from '../src/core/applyChecklist';
-import { getAnyTheme } from '../src/core/plusThemes';
+import { useAnyTheme } from '../src/native/useAnyTheme';
 import type { Theme } from '../src/core/themes';
 import { catalogueKindKey, catalogueSizeKey, isCatalogueKind, type CatalogueKind, type CatalogueSize } from '../src/core/widgetKinds';
 import { widgetLookKey, type WidgetLook } from '../src/core/widgetLook';
@@ -146,7 +146,8 @@ function fontLabelKey(f: StudioFont): string {
 
 export default function WidgetStudioScreen() {
   const params = useLocalSearchParams<{ theme?: string; kind?: string; size?: string }>();
-  const theme = getAnyTheme(typeof params.theme === 'string' ? params.theme : undefined);
+  // T179: remote catalogue themes resolve too (bundled ids win), so the Apply widgets step never dead-ends.
+  const theme = useAnyTheme(typeof params.theme === 'string' ? params.theme : undefined);
   const { c } = useColorsV2();
   const { t, script } = useT();
   const router = useRouter();

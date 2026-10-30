@@ -32,8 +32,8 @@ Glaze has no onboarding carousel by design (owner fb-1024 A: the app opens strai
 - [x] Large title and subtitle honour Dynamic Type with caps so the collapsing title block never overflows (run 182).
 - [x] First-session "Language: English · Change" line capped and kept quiet (run 182).
 - [x] No spinner between intro and Themes (entry route is a plain background + redirect).
-- [ ] The intro's last frame and the Themes background match exactly in light and dark (check on device).
-- [ ] First screen above the fold: title, category bubbles, one editorial section start; nothing else competing.
+- [x] The intro's last frame and the Themes background match exactly in light and dark: both read the `bg` token (run 187; check on device).
+- [x] First screen above the fold: title, category bubbles, one editorial section start; story chips moved below the gallery (run 187).
 
 ### 3.2 Themes browse
 Large art-led cards, theme preview on a phone mock (HomeMock), editorial sections.
@@ -43,16 +43,20 @@ Large art-led cards, theme preview on a phone mock (HomeMock), editorial section
 - [x] Showcase placeholders are calm skeletons in the theme's own colour (run 182).
 - [x] Dynamic Type caps on every text and the search field (run 182).
 - [x] Still one virtualised list; rows are variable height (no `getItemLayout` to keep in step).
-- [ ] One-column "feature" card for the first starter on wide phones (art larger than the grid).
-- [ ] Seasonal banner and Live hero restyled to the same surface + eyebrow language.
+- [x] One-column "feature" card for the first starter on wide phones ≥ 414 pt (art larger than the grid) (run 187).
+- [x] Seasonal banner and Live hero restyled to the same surface + eyebrow language (run 187).
+
+**Owner-1031 (run 189, T177): the gallery is rebuilt around the remote catalogue.** The owner's TestFlight note ("all of the old themes which need to go ... none of the new themes from GitHub") outranks the items above. The tab is now two editorial sections composed in `src/core/gallery.ts`: **New collection** (eyebrow "Just in", every theme in the remote catalogue from `useRemoteArtThemes()`, data-driven, so a later batch needs no app change) then **Starters** (only the bundled art packs Deep Sea, Starry Night, Sunset Dunes). Cards are art-led (`src/ui/GalleryArtCard.tsx`): the artwork edge to edge at phone aspect, the catalogue thumbnail through expo-image with its ThumbHash placeholder, then name and mood line on a raised surface, a heart as its own target. Two columns on phones because the catalogue thumbs are 240 x 520 px (a full-width card would upscale them past sharp); three on wide screens. While the catalogue is empty (first launch, offline, a 404) the New collection shows skeleton cards in the final shape, never an error. Removed from the gallery: the starter showcase (and its feature card), themesNew / themesStoryPlay lists, Space, the Plus packs, the seasonal banner, story chips, category bubbles and the New / Our picks sub-tabs; kept: search, All / Liked, the Live hero, Your look, Make a wallpaper. Old theme ids still resolve (`getAnyTheme`). Pull to refresh fetches `catalog.json` now; the list allows the iOS overscroll only while resting at the top (needed for the pull), never elsewhere. Guard: `src/core/premiumGallery.test.ts` (it lists the older guards it retired).
+- [ ] Check on device: New collection cards on first launch (skeletons, then art), pull to refresh, dark mode surfaces, largest text size.
 
 ### 3.3 Theme detail
 - [x] Hero preview: the phone mock large and centred on a soft surface, Home / Lock toggle as a quiet segmented pill under it (run 183).
 - [x] Editorial blocks below (eyebrow + title): What's inside, Icons, Widgets, Wallpaper, Credits; Credits only when the theme has a photo or art credit (run 183).
 - [x] Apply flow: one primary pill pinned at the bottom on glass ("Choose icons" kept as a quiet plain link under it); `success` haptic once at the end (step ticks and the icon ripple are `light`) (run 183).
-- [ ] Apply flow: progress as a skeleton of the result (today the waits are in-pill busy states and the pack download keeps its determinate bar).
+- [x] Apply flow: progress as a skeleton of the result: icon tiles while the icon style renders, a phone-shaped wallpaper in the theme's surface colour while it saves (the pill keeps its busy label; the pack download keeps its determinate bar) (run 185).
 - [x] Remaining raw radii (5) to tokens, plus ShapePicker's last one (design guard 0 for both); the preview's wallpaper art draws with expo-image (RN `Image` stays only for `Image.getSize` in the save path) (run 183).
 - [x] Dynamic Type caps on every Text in the screen, ShapePicker, ThemeOverrideRow, Segmented and PillButton (run 183).
+- [x] Remote catalogue theme (the free Codex art packs, owner-1031 T179): the hero phone shows the catalogue thumb (expo-image, thumbhash placeholder) and switches to the downloaded wallpaper, with a quiet "preview / downloaded" line under it; the glass bar holds one filled "Download · size" pill, then a determinate bar (capped at 99 % until verified), then Apply; offline, a 404 or a damaged file read as one calm line with Try again (never an error code); a Plus pack without Plus offers Unlock (the sheet then downloads). Apply: the Wallpaper step saves the downloaded .webp (read now if the page hadn't resolved it; never the drawn fallback), the widgets step uses the downloaded widget art, the Icons step draws Glaze glyphs in the palette with a short note. Lookups by id fall back to the remote theme (Widget Studio, wallpaper maker, Your look, Icons tab: `src/native/useAnyTheme.ts`); a remote id opened before the cached catalogue is read waits on a skeleton, not "not found". A finished download is a `light` haptic (`success` stays the end of the apply flow). Guard `src/core/remoteThemePage.test.ts` (run 189).
 - [ ] Check on device: hero and pill at the largest text size, dark mode surface, VoiceOver reads each block as one heading.
 
 ### 3.4 Widgets
@@ -76,6 +80,37 @@ Large art-led cards, theme preview on a phone mock (HomeMock), editorial section
 - [x] Inset groups only, editorial group titles, row icons in pastel circles, values in `inkSecondary`.
 - [x] Storage (packs) rows with skeleton sizes while measuring.
 
+### 3.8 Icons tab
+The Icon Studio tab (`app/(tabs)/icons.tsx`): live preview on top, Your apps, Add apps (the virtualised results), the custom-app form and Style. Make-your-own icons stay free: nothing on the tab imports Plus.
+- [x] Editorial `SectionHeader` (eyebrow + title + body) for Your apps, Add apps and Style; the preview card carries a quiet "Live preview" eyebrow read as a heading; the inset groups (custom app, Shape, Background, Symbol colour, Symbol size) use editorial group titles instead of the small grey header (run 188).
+- [x] 16 pt card rhythm in the list header and footer (`editorialV2.cardGap`), 32 pt above a section and 12 pt under its title (run 188).
+- [x] Dark mode depth from `surfaceRaised` with `SquircleCard outline={false}` (preview, empty state, loading) and raised category chips; no hairline cards (run 188).
+- [x] Loading is a skeleton of the screen (title, the preview card's icon grid, a section header), not a centred grid and spinner; no `ActivityIndicator` on the tab (run 188).
+- [x] Empty state icon in a soft circle; tokens only (design guard 0 for the file) (run 188).
+- [x] Dynamic Type caps on every `Text` / `TextInput` in the tab, plus `ContextTip` and the collapsed nav title in `LargeTitleHeader` (run 188).
+- [x] Still one virtualised list of memoised rows (T166); `perfBudget.test.ts` green; guarded by `src/core/premiumIcons.test.ts` (run 188).
+- [ ] Check on device: at the largest accessibility text size the section bodies wrap without clipping and the glass Install pill still leaves the Style controls reachable.
+
+### 3.9 Wallpapers (tab and wallpaper maker)
+- [x] Editorial `SectionHeader` per wallpaper group on the tab: Made by you (your photo, saved loops, "make one") / Free originals / Plus collection, from `src/core/wallpaperGroups.ts`; rows split per group so a row never mixes two. Only the unfiltered views are grouped (Still and Pairs on All, and Live); New / Our picks / Liked keep their own order as one grid without headers (run 188).
+- [x] Art-led tiles on the 16 pt rhythm (`editorialV2.cardGap` between tiles and rows; 32 pt above a section); in dark mode the pair tile lifts by `surfaceRaised` and its phone frames drop the hairline (run 188).
+- [x] Waits as skeletons in the final shape: the Live view shows two tile-shaped skeletons until the saved loops are read (no false "no clips yet"); the maker's preview waits in its phone shape while the saved background loads; a save shows a phone-shaped skeleton of the image beside "Rendering…" (the Save pills keep their busy label; no `ActivityIndicator` outside a pressed `PillButton`) (run 188).
+- [x] Wallpaper maker: cards lift by surface (raised in dark, soft card shadow in light) with no hairline; each card opens with a group `SectionHeader` (one heading); status toast without a border; last raw radius gone (design guard entry removed); segmented controls on the 4-pt grid (run 188).
+- [x] Dynamic Type caps on every `Text` in the tab, the tiles, the maker, the pair card, `SwitchRow` and `ContextTip` (run 188).
+- [x] Still one virtualised list of memoised rows (`perfBudget.test.ts` green); Save to Photos unchanged (same saver hooks, `expo-media-library/legacy`). Guard: `src/core/premiumWallpapers.test.ts` (run 188).
+- [ ] Check on device: the maker at the largest accessibility text size (group titles wrap, Stepper labels), and dark mode tile and card surfaces.
+
+### 3.10 Live (tab + loop editor)
+The Live area is "Make a Live Photo" (owner 24 Oct): the first 3 seconds of a loop saved to Photos, then Photos › Share › Use as Wallpaper. It never promises a constantly looping Lock Screen on iPhone; Android keeps its existing live wallpaper button.
+- [x] Live tab: two editorial sections, "Make a Live Photo / Start with a clip" (new-loop pill + Live Photo guide) and "Saved in Glaze / Your loops"; 16 pt rhythm inside sections (run 188).
+- [x] Each loop is its own lifted card (`SquircleCard outline={false}`, dark mode `surfaceRaised`) on `editorialV2.cardGap`, no hairline separators; the empty state is the same card (run 188).
+- [x] Loading is a skeleton loop card (thumbnail tile, name and meta lines) instead of a plain bar (run 188).
+- [x] Loop editor: skeleton in the editor's shape (name field, phone-shaped preview on its card, trim bar) instead of `ActivityIndicator` (run 188).
+- [x] Editor preview, zoom controls and guide note on one raised surface without a hairline; editorial sections "Lock Screen / Frame it", "Clip / Trim", Speed (group), "Finish / Save it"; the size warning is a surface, not an outline (run 188).
+- [x] Tokens only (design guard entries for both files removed; the empty-state art uses `onArtV2`, the trim knob is a capsule via `circleRadius`); Dynamic Type caps on every Text / TextInput; timed fades only (run 188).
+- [x] Live Photo export flow, the guide and the honest copy unchanged (`src/core/premiumLive.test.ts`).
+- [ ] Check on device: preview phone size inside its card on a small phone (SE) and at the largest text size; dark mode cards.
+
 ## 4. "Done" checklist (per screen)
 
 A screen is **done** when all of these hold:
@@ -98,11 +133,15 @@ A screen is **done** when all of these hold:
 |---|---|---|
 | Onboarding (intro → first screen) | Started: Dynamic Type caps on large title, subtitle, language line | 182 |
 | Themes browse | First slice shipped: editorial headers, 16 pt rhythm, layered dark cards, skeleton placeholders, Dynamic Type caps | 182 |
-| Theme detail | Slice shipped: hero on a soft surface with the Home / Lock pill under it, editorial blocks, one primary pill in the glass bar, radii to tokens, expo-image art, Dynamic Type caps (skeleton apply progress still open) | 183 |
+| Themes gallery (owner-1031) | Rebuilt: New collection (remote catalogue, data-driven, skeletons while empty, no error on 404) then 3 bundled starters; old themes, Space, Plus packs, seasonal banner, chips and bubbles left the gallery (ids still resolve); art-led two-column cards with ThumbHash placeholders; pull to refresh | 189 |
+| Theme detail | Slice shipped: hero on a soft surface with the Home / Lock pill under it, editorial blocks, one primary pill in the glass bar, radii to tokens, expo-image art, Dynamic Type caps; skeleton apply progress (run 185) | 183, 185 |
 | Widgets | Slice shipped: family section headers, 16 pt rhythm, lifted cards without hairlines, skeleton previews, Studio preview on a raised surface with an eyebrow, Dynamic Type caps, tokens only | 183 |
 | Install flow | Slice shipped: numbered step sequence with one current step, timed fades (Reduce Motion shorter), skeleton waits, Done panels, one success haptic, Dynamic Type caps; T156 Safari copy | 184 |
 | Plus sheet | Slice shipped: glass sheet with art-collage hero, three benefit rows, one price, one Unlock pill, Restore as a plain link, no pressure patterns | 184 |
 | Settings | Slice shipped: inset groups with editorial titles, pastel circle row icons, values in inkSecondary, Storage skeletons while measuring | 184 |
+| Icons tab | Slice shipped: editorial section headers (Your apps / Add apps / Style) and group titles, 16 pt rhythm, raised dark cards without hairlines, skeleton loading screen, Dynamic Type caps, still virtualised and free | 188 |
+| Wallpapers | Slice shipped: group section headers (Made by you / Free / Plus) on the unfiltered views, 16 pt rhythm, lifted tiles and maker cards without hairlines, Live and maker skeleton waits, Dynamic Type caps, tokens only; Save to Photos unchanged | 188 |
+| Live | Slice shipped: editorial sections on the tab and in the loop editor, lifted loop cards without hairlines, skeletons in the result's shape (no spinner), preview on a raised surface, tokens only, Dynamic Type caps; Live Photo flow and honest copy unchanged | 188 |
 
 ## 6. Tokens added for this pass (in `src/core/designV2.ts`, re-exported by `tokensV2`)
 
@@ -113,7 +152,13 @@ A screen is **done** when all of these hold:
 - `SquircleCard` `outline` prop (default true): premium screens pass `outline={false}` with `tone="raised"` in dark mode so cards lift by surface, not a hairline (run 183).
 - `src/core/widgetFamilies.ts`: Widgets tab families (theme / everyday / habits) and per-family rows (run 183); guarded by `src/core/premiumWidgets.test.ts`.
 
+Run 188 guard: `src/core/premiumIcons.test.ts` (§3.8, Icons tab).
+
+Run 188 guards: `src/core/premiumLive.test.ts` (§3.10), `src/core/premiumWallpapers.test.ts` (§3.9).
+
 Run 184 guards: `src/core/premiumInstall.test.ts` (§3.5), `src/core/premiumPlusSettings.test.ts` (§3.6/§3.7). `InsetGroup` gained `title`/`eyebrow` props (SectionHeader); shared row icons are pastel circles.
+
+Run 189 guard: `src/core/premiumGallery.test.ts` (§3.2 owner-1031 gallery).
 
 Guards: `src/core/premiumUi.test.ts` (tokens, skeleton motion, no spinners, editorial headers, Dynamic Type caps on the Themes browse path, this doc's table).
 `src/core/premiumThemeDetail.test.ts` (§3.3: block order and strings in all locales, hero layout and timed cross-fade, one primary pill, expo-image art, Dynamic Type caps on the theme detail path).

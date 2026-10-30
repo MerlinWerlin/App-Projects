@@ -12,6 +12,16 @@ export const hi: NonNullable<LocaleMessages['icons']> = {
     other: "{count} आइकन के सिंबल शायद ठीक से न दिखें (कंट्रास्ट 3:1 से कम): {names}। कोई दूसरा सिंबल या बैकग्राउंड रंग आज़माएँ।",
   },
   yourApps: "आपके ऐप",
+  // T176 (docs/PREMIUM_UI.md §3.8): editorial section headers on the Icons tab.
+  sections: {
+    previewEyebrow: "लाइव प्रीव्यू",
+    appsEyebrow: "आपका सेट",
+    appsBody: "यहाँ के हर ऐप को एक मेल खाता आइकन मिलेगा।",
+    addEyebrow: "ऐप खोजें",
+    addBody: "खोजें या कोई श्रेणी चुनें, फिर मनचाहे ऐप पर टिक लगाएँ।",
+    styleEyebrow: "एक ही लुक",
+    styleBody: "सभी आइकन का आकार, रंग और सिंबल साइज़ एक साथ।",
+  },
   emptyTitle: "अभी कोई ऐप नहीं",
   emptyBody: "जिन ऐप के लिए नए आइकन चाहिए, उन्हें चुनें। लोकप्रिय ऐप से शुरू करें या नीचे खोजें।",
   addPopular: "लोकप्रिय ऐप जोड़ें",

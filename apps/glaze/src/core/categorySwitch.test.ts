@@ -139,20 +139,13 @@ test('bubbles: memoised, subscribed to their own key, selection fade is opacity 
   assert.doesNotMatch(src, /\bset[A-Z]\w*\(/, 'no React state setter in the bubble row');
 });
 
-test('themes screen: store-driven selection, deferred grid swap, memoised panels, index lookup', () => {
+// T177 (owner-1031): the category bubbles, the deferred grid swap and the seasonal banner left the
+// Themes tab (src/core/premiumGallery.test.ts guards the new gallery); the memoised panels stay.
+test('themes screen: memoised panels below the gallery', () => {
   const src = strip(read('app', '(tabs)', 'themes.tsx'));
-  assert.match(src, /createSelectionStore<BrowseKey>/);
-  assert.match(src, /requestAnimationFrame\(cb\)/);
-  assert.match(src, /startTransition\(\(\) => \{\s*setCategory/);
-  assert.match(src, /<CategoryBubbleRow pages=\{bubblePages\} store=\{selection\} onSelect=\{pickPage\} \/>/);
-  assert.match(src, /const bubblePages: BubblePage\[\] = useMemo\(/);
-  assert.match(src, /themesForPage\(ALL_INDEX, category\)/);
   assert.match(src, /<LiveHeroCardM \/>/);
   assert.match(src, /<YourLookPanelM \/>/);
-  assert.match(src, /const SeasonalBanner = memo\(/);
-  // T162: pack sections are virtualised list rows, only on the "All" page (a category page has none
-  // to keep mounted; going back mounts just the rows on screen).
-  assert.match(src, /if \(!showPacks\) return NO_ROWS;/);
+  assert.doesNotMatch(src, /<CategoryBubbleRow\b|const SeasonalBanner = memo\(/);
 });
 
 test('showcase grid: no per-card layout/exit/entering animation on a page change', () => {

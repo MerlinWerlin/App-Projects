@@ -89,6 +89,13 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
     pairHome: 'Home',
     liveEmpty: 'Noch keine Live-Photo-Clips. Erstelle einen aus einem Video oder GIF.',
     showMore: 'Mehr anzeigen',
+    // T176 (docs/PREMIUM_UI.md §3.9): editorial section headers per wallpaper group (core/wallpaperGroups).
+    groups: {
+      yours: { eyebrow: 'Von dir', title: 'Deine eigenen', body: 'Starte mit deinen eigenen Fotos und Videos. Sie bleiben auf diesem Gerät.' },
+      free: { eyebrow: 'Gratis', title: 'Glaze-Originale', body: 'Gestaltete Hintergründe aus jedem kostenlosen Thema. Tippe auf einen, um ihn anzupassen und zu sichern.' },
+      plus: { eyebrow: 'Glaze Plus', title: 'Die Plus-Kollektion', body: 'Hintergründe aus den Plus-Themen, mit einmaliger Freischaltung.' },
+    },
+    loading: 'Deine Live-Photo-Clips werden geladen',
     discover: {
       label: 'Hintergründe zeigen',
       newEmpty: 'Gerade nichts Neues',

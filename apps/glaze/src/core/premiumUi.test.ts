@@ -55,7 +55,8 @@ test('onboarding first screen and Themes browse show no spinners', () => {
 test('Themes browse uses editorial section headers with eyebrows from i18n', () => {
   const themes = strip(read('app', '(tabs)', 'themes.tsx'));
   assert.match(themes, /<SectionHeader\b/);
-  for (const k of ['starters', 'art', 'space', 'plus']) assert.match(themes, new RegExp(`t\\('themes\\.eyebrow\\.${k}'\\)`));
+  // T177 (owner-1031): two sections now, New collection then Starters (Free art / Space / Plus retired).
+  for (const k of ['collection', 'starters']) assert.match(themes, new RegExp(`t\\('themes\\.eyebrow\\.${k}'\\)`));
   const header = strip(read('src', 'ui', 'SectionHeader.tsx'));
   assert.match(header, /accessibilityRole="header"/);
   assert.match(header, /eyebrowCaseFor\(script\)/);

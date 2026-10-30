@@ -89,6 +89,13 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
     pairHome: '主屏幕',
     liveEmpty: '还没有实况照片片段。用视频或 GIF 制作一个吧。',
     showMore: '显示更多',
+    // T176 (docs/PREMIUM_UI.md §3.9): editorial section headers per wallpaper group (core/wallpaperGroups).
+    groups: {
+      yours: { eyebrow: '由你制作', title: '你的作品', body: '从你自己的照片和视频开始。它们只保存在这台设备上。' },
+      free: { eyebrow: '免费', title: 'Glaze 原创', body: '为每个免费主题设计的墙纸。轻点一张即可调整并存储。' },
+      plus: { eyebrow: 'Glaze Plus', title: 'Plus 系列', body: 'Plus 主题的墙纸，一次解锁即可使用。' },
+    },
+    loading: '正在载入你的实况照片片段',
     discover: {
       label: '显示壁纸',
       newEmpty: '暂时没有新内容',

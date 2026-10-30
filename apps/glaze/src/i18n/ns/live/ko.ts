@@ -8,6 +8,10 @@ export const ko: NonNullable<LocaleMessages['live']> = {
     opening: '여는 중…',
     pickHint: '사진 보관함을 열어 비디오나 GIF를 선택합니다',
     yourLoops: '내 루프',
+    sections: {
+      make: { eyebrow: 'Live Photo 만들기', title: '클립으로 시작하기', body: '비디오나 GIF를 고르고 구도를 맞추세요. Glaze가 처음 3초를 사진 앱에 Live Photo로 저장합니다.' },
+      loops: { eyebrow: 'Glaze에 저장됨' },
+    },
     emptyTitle: '아직 루프가 없습니다',
     emptyBody: '비디오나 GIF를 선택하고 최대 15초로 다듬은 다음 잠금 화면에 맞게 구도를 잡으세요.',
     pick: '비디오 또는 GIF 선택',
@@ -35,6 +39,11 @@ export const ko: NonNullable<LocaleMessages['live']> = {
   },
   editor: {
     loading: '루프 불러오는 중',
+    sections: {
+      frame: { eyebrow: '잠금 화면', title: '구도 맞추기' },
+      clip: { eyebrow: '클립' },
+      finish: { eyebrow: '마무리', title: '저장', body: '모든 것이 이 기기에 남습니다. 업로드되지 않습니다.' },
+    },
     missing: '이 루프는 더 이상 없습니다.',
     nameLabel: '루프 이름',
     cropLabel: '잠금 화면 자르기. 드래그해서 이동하고 핀치해서 확대/축소하세요.',

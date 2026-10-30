@@ -13,6 +13,7 @@
 // fades to the app. Calm motion only (docs/POLISH.md, fb-1022c): sine ease-in-out or linear, no springs, overshoot,
 // squash or bounce.
 
+import { darkV2, lightV2 } from './designV2.ts';
 import { durations } from './motion.ts';
 
 // ---------------------------------------------------------------- geometry (1024 × 1024 icon space)
@@ -133,15 +134,18 @@ export function squirclePath(grow = 0, steps = 160, cx: number = TILE.cx, cy: nu
 /** Colours (light / dark system appearance). The crystal and spectrum are the same in both; the ground deepens. */
 export const BRAND = {
   light: {
-    /** Screen background behind the splash / intro (= designV2 bg). */
-    bg: '#F4F1F7',
+    /**
+     * Screen background behind the splash / intro. T173 (PREMIUM_UI §3.1): read from the app's `bg` token, never a copy,
+     * so the intro's last frame and the Themes tab background are the same colour in light and dark.
+     */
+    bg: lightV2.bg,
     iconBg: ['#30226A', '#0E0B1E'] as const,
     glow: '#6A4BC4',
     tileRim: '#3E3279',
     shadow: '#2A1B4F',
   },
   dark: {
-    bg: '#0F0D12',
+    bg: darkV2.bg,
     iconBg: ['#1E1646', '#07060D'] as const,
     glow: '#4E36A0',
     tileRim: '#2C2552',

@@ -25,7 +25,18 @@ import {
 import { useT } from '../../src/i18n';
 // Owner 25 Oct (glaze-retest C): no bounce or slide in the Live Photo part, a plain fade only.
 import { durations, useMotionReduced } from '../../src/theme/motion';
-import { continuous, iconTileRadius, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
+import {
+  chromeRadiusV2,
+  continuous,
+  editorialV2,
+  fontScaleCap,
+  iconTileRadius,
+  onArtV2,
+  sizeV2,
+  spaceV2,
+  textV2,
+  type TypeRoleV2,
+} from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import type { FeatherName } from '../../src/ui/featherName';
 import { LivePhotoGuide } from '../../src/ui/LivePhotoGuide';
@@ -36,7 +47,7 @@ import { Sheet } from '../../src/ui/Sheet';
 import { haptic } from '../../src/ui/haptics';
 import { textStyleFor } from '../../src/ui/i18nLayout';
 import { Skeleton } from '../../src/ui/Skeleton';
-import { LargeTitleScrollView, PillButton } from '../../src/ui/v2';
+import { LargeTitleScrollView, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
 
 const tap = () => haptic('select');
 
@@ -44,11 +55,15 @@ function isGifAsset(a: ImagePicker.ImagePickerAsset): boolean {
   return a.mimeType === 'image/gif' || /\.gif$/i.test(a.fileName ?? '') || /\.gif(?:[?#].*)?$/i.test(a.uri);
 }
 
-// Live tab (design v2, docs/DESIGN_V2.md, T56): collapsing large title, loops as an inset-style
-// surface group with a footnote header, pill actions, v2 palette in the sheets. T127: the playlist
-// and "Set playlist on Lock Screen" (Now Playing) are gone; the Live Photo guide explains the path.
+// Live tab (design v2, docs/DESIGN_V2.md, T56): collapsing large title, pill actions, v2 palette in
+// the sheets. T127: the playlist and "Set playlist on Lock Screen" (Now Playing) are gone; the Live
+// Photo guide explains the path. T176 (premium UI, docs/PREMIUM_UI.md §3.10): two editorial sections
+// ("Make a Live Photo" and "Your loops"), each loop its own lifted card on the 16 pt rhythm (dark
+// mode: surfaceRaised, no hairline), a skeleton loop card while loading, Dynamic Type caps on every
+// Text. The copy never promises a constantly looping Lock Screen on iPhone.
 export default function LiveScreen() {
-  const { c } = useColorsV2();
+  const { c, scheme } = useColorsV2();
+  const cardTone = scheme === 'dark' ? 'raised' : 'surface';
   const { t, script } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => [textV2[role], textStyleFor(script, textV2[role])];
   const secs = (ms: number) => formatSeconds(ms, (value) => t('live.seconds', { value }));
@@ -158,88 +173,101 @@ export default function LiveScreen() {
   };
 
 
-  const sectionHeader = [...ts('footnote'), styles.sectionHeader, { color: c.inkSecondary }];
-  const card = [styles.card, continuous, { backgroundColor: c.surface }];
-  const hairline = { borderTopColor: c.separator, borderTopWidth: StyleSheet.hairlineWidth };
-
   return (
     <LargeTitleScrollView title={t('tabs.live')} subtitle={t('live.tab.subtitle')}>
       <ContextTip id="live-loop" style={styles.side} />
-      <PillButton
-        label={busy ? t('live.tab.opening') : t('live.tab.newLoop')}
-        icon="plus"
-        block
-        busy={busy}
-        onPress={() => void onNew()}
-        accessibilityHint={t('live.tab.pickHint')}
-        style={styles.side}
-      />
-      {/* T127/T147: saved as a Live Photo that moves in Photos; trying it as a wallpaper is optional
-          and iPhone often keeps app-made Live Photos still (the guide says so). */}
-      <View style={styles.side}>
+      <View style={styles.section}>
+        <SectionHeader
+          flushTop
+          eyebrow={t('live.tab.sections.make.eyebrow')}
+          title={t('live.tab.sections.make.title')}
+          body={t('live.tab.sections.make.body')}
+          style={styles.sectionHead}
+        />
+        <PillButton
+          label={busy ? t('live.tab.opening') : t('live.tab.newLoop')}
+          icon="plus"
+          block
+          busy={busy}
+          onPress={() => void onNew()}
+          accessibilityHint={t('live.tab.pickHint')}
+        />
+        {/* T127/T147: saved as a Live Photo that moves in Photos; trying it as a wallpaper is optional
+            and iPhone often keeps app-made Live Photos still (the guide says so). */}
         <LivePhotoGuide />
       </View>
 
       <View style={styles.section}>
-        <Text accessibilityRole="header" style={sectionHeader}>
-          {t('live.tab.yourLoops')}
-        </Text>
+        <SectionHeader
+          flushTop
+          eyebrow={t('live.tab.sections.loops.eyebrow')}
+          title={t('live.tab.yourLoops')}
+          style={[styles.sectionHead, styles.sectionNext]}
+        />
         {!loaded ? (
-          <Skeleton width="100%" height={72} radius={radiusV2.group} /> // i18n-ignore (generic/comparison, not text)
+          <LoopCardSkeleton tone={cardTone} /> // i18n-ignore (generic/comparison, not text)
         ) : state.projects.length === 0 ? (
-          <Animated.View entering={FadeIn.duration(reduced ? durations.fast : durations.base)} style={[...card, styles.empty]}>
-            <EmptyPhone glazeA={c.glaze[0]} glazeB={c.glaze[1]} />
-            <Text style={[...ts('headline'), styles.center, { color: c.ink }]}>{t('live.tab.emptyTitle')}</Text>
-            <Text style={[...ts('body'), styles.center, { color: c.inkSecondary }]}>
-              {t('live.tab.emptyBody')}
-            </Text>
-            <PillButton
-              label={t('live.tab.pick')}
-              icon="film"
-              variant="tinted"
-              block
-              onPress={() => void onNew()}
-              disabled={busy}
-              accessibilityHint={t('live.tab.pickHint')}
-            />
+          <Animated.View entering={FadeIn.duration(reduced ? durations.fast : durations.base)}>
+            <SquircleCard tone={cardTone} outline={false} padding={spaceV2.xl} haptic={false}>
+              <View style={styles.empty}>
+                <EmptyPhone glazeA={c.glaze[0]} glazeB={c.glaze[1]} />
+                <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), styles.center, { color: c.ink }]}>
+                  {t('live.tab.emptyTitle')}
+                </Text>
+                <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.center, { color: c.inkSecondary }]}>
+                  {t('live.tab.emptyBody')}
+                </Text>
+                <PillButton
+                  label={t('live.tab.pick')}
+                  icon="film"
+                  variant="tinted"
+                  block
+                  onPress={() => void onNew()}
+                  disabled={busy}
+                  accessibilityHint={t('live.tab.pickHint')}
+                />
+              </View>
+            </SquircleCard>
           </Animated.View>
         ) : (
-          <View style={card}>
-            {state.projects.map((p, i) => {
+          <View style={styles.cards}>
+            {state.projects.map((p) => {
               const meta =
                 p.kind === 'gif'
                   ? t('live.tab.metaGif', { speed: `⁦${p.speed}×⁩` })
                   : t('live.tab.metaVideo', { duration: `⁦${secs(loopDurationMs(p.trim, p.speed))}⁩`, speed: `⁦${p.speed}×⁩` });
               return (
-                <Animated.View
-                  key={p.id}
-                  entering={animateIn ? FadeIn.duration(reduced ? durations.fast : durations.base) : undefined}
-                  style={[styles.row, i > 0 && hairline]}
-                >
-                  <Pressable
-                    onPress={() => {
-                      tap();
-                      open(p.id);
-                    }}
-                    accessibilityRole="button"
-                    accessibilityLabel={t('live.tab.editA11y', { name: p.name, meta })}
-                    style={({ pressed }) => [styles.rowMain, { opacity: pressed ? 0.6 : 1 }]}
-                  >
-                    <View style={[styles.thumb, continuous, { backgroundColor: c.tintSoft }]}>
-                      {p.kind === 'gif' ? (
-                        <ExpoImage source={p.sourceUri} style={styles.thumbImg} contentFit="cover" cachePolicy="memory-disk" transition={0} recyclingKey={p.id} />
-                      ) : (
-                        <Feather name="film" size={20} color={c.tint} />
-                      )}
+                <Animated.View key={p.id} entering={animateIn ? FadeIn.duration(reduced ? durations.fast : durations.base) : undefined}>
+                  <SquircleCard tone={cardTone} outline={false} padding={0} haptic={false}>
+                    <View style={styles.row}>
+                      <Pressable
+                        onPress={() => {
+                          tap();
+                          open(p.id);
+                        }}
+                        accessibilityRole="button"
+                        accessibilityLabel={t('live.tab.editA11y', { name: p.name, meta })}
+                        style={({ pressed }) => [styles.rowMain, { opacity: pressed ? 0.6 : 1 }]}
+                      >
+                        <View style={[styles.thumb, continuous, { backgroundColor: c.tintSoft }]}>
+                          {p.kind === 'gif' ? (
+                            <ExpoImage source={p.sourceUri} style={styles.thumbImg} contentFit="cover" cachePolicy="memory-disk" transition={0} recyclingKey={p.id} />
+                          ) : (
+                            <Feather name="film" size={20} color={c.tint} />
+                          )}
+                        </View>
+                        <View style={styles.rowText}>
+                          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]} numberOfLines={2}>
+                            {p.name}
+                          </Text>
+                          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
+                            {meta}
+                          </Text>
+                        </View>
+                      </Pressable>
+                      <RowIconButton icon="trash-2" tone="secondary" accessibilityLabel={t('live.tab.deleteA11y', { name: p.name })} onPress={() => onDelete(p)} />
                     </View>
-                    <View style={styles.rowText}>
-                      <Text style={[...ts('body'), { color: c.ink }]} numberOfLines={2}>
-                        {p.name}
-                      </Text>
-                      <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{meta}</Text>
-                    </View>
-                  </Pressable>
-                  <RowIconButton icon="trash-2" tone="secondary" accessibilityLabel={t('live.tab.deleteA11y', { name: p.name })} onPress={() => onDelete(p)} />
+                  </SquircleCard>
                 </Animated.View>
               );
             })}
@@ -248,10 +276,10 @@ export default function LiveScreen() {
       </View>
 
       <Sheet visible={permSheet} onClose={() => setPermSheet(false)} title={t('live.tab.permTitle')}>
-        <Text style={[...ts('body'), { color: c.ink }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
           {t('live.tab.permBody')}
         </Text>
-        <Text style={[...ts('body'), { color: c.inkSecondary }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.inkSecondary }]}>
           {t('live.tab.permSteps')}
         </Text>
         <PillButton
@@ -316,10 +344,10 @@ function EmptyPhone({ glazeA, glazeB }: EmptyPhoneProps) {
             </LinearGradient>
           </Defs>
           <Rect x={0} y={0} width={s.width} height={s.height} fill="url(#emptyLoop)" />
-          <Circle cx={s.width / 2} cy={s.height * 0.62} r={s.width * 0.16} fill="rgba(255,255,255,0.22)" />
+          <Circle cx={s.width / 2} cy={s.height * 0.62} r={s.width * 0.16} fill={onArtV2.ink} fillOpacity={0.22} />
         </Svg>
         <View pointerEvents="none" style={[styles.emptyPlay, { top: s.height * 0.62 - 10, left: s.width / 2 - 10 }]}>
-          <Feather name="play" size={20} color="#FFFFFF" />
+          <Feather name="play" size={20} color={onArtV2.ink} />
         </View>
       </PhoneFrame>
     </View>
@@ -331,14 +359,38 @@ type EmptyPhoneProps = {
   glazeB: string;
 };
 
+/** Loading state in the shape of a loop card: thumbnail tile, name line, meta line, delete slot. */
+function LoopCardSkeleton({ tone }: { tone: 'surface' | 'raised' }) {
+  const { t } = useT();
+  return (
+    <View accessible accessibilityLabel={t('live.editor.loading')}>
+      <SquircleCard tone={tone} outline={false} padding={0} haptic={false}>
+        <View style={styles.row}>
+          <View style={styles.rowMain}>
+            <Skeleton width={THUMB} height={THUMB} radius={iconTileRadius(THUMB)} />
+            <View style={styles.rowText}>
+              <Skeleton width="60%" height={spaceV2.lg} radius={chromeRadiusV2.control} />
+              <Skeleton width="35%" height={spaceV2.md} radius={chromeRadiusV2.control} />
+            </View>
+          </View>
+          <View style={styles.iconBtn} />
+        </View>
+      </SquircleCard>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   side: { marginHorizontal: spaceV2.lg },
-  section: { marginHorizontal: spaceV2.lg, gap: spaceV2.xs + spaceV2.xxs },
-  sectionHeader: { paddingHorizontal: spaceV2.lg, fontWeight: '600' },
+  // 16 pt rhythm inside a section; the header keeps the editorial 12 pt below its title.
+  section: { marginHorizontal: spaceV2.lg, gap: editorialV2.cardGap },
+  sectionHead: { paddingBottom: 0, marginBottom: editorialV2.sectionBottom - editorialV2.cardGap },
+  // The screen stacks blocks 24 pt apart; this lifts a later section to the editorial 32 pt.
+  sectionNext: { paddingTop: editorialV2.sectionTop - spaceV2.xl },
+  cards: { gap: editorialV2.cardGap },
   emptyArt: { marginBottom: spaceV2.sm },
   emptyPlay: { position: 'absolute', width: 20, height: 20, alignItems: 'center', justifyContent: 'center', paddingLeft: 2 }, // rtl-ok (play glyph inside the never-mirrored phone mock)
-  card: { borderRadius: radiusV2.group, overflow: 'hidden' },
-  empty: { padding: spaceV2.xl, alignItems: 'center', gap: spaceV2.sm },
+  empty: { alignItems: 'center', gap: spaceV2.sm },
   center: { textAlign: 'center' },
   row: { flexDirection: 'row', alignItems: 'center', minHeight: sizeV2.rowMin + spaceV2.xs, paddingEnd: spaceV2.xs },
   rowMain: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, padding: spaceV2.sm, paddingStart: spaceV2.lg, minHeight: sizeV2.touch },

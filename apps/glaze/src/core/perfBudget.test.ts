@@ -81,15 +81,19 @@ test('list windows are small and lists never bounce', () => {
   const themes = strip(read('app/(tabs)/themes.tsx'));
   const list = themes.slice(themes.indexOf('<Animated.FlatList'));
   assert.match(list, /\{\.\.\.LIST_WINDOW\}/);
-  assert.match(list, /bounces=\{false\}/);
+  // T177 (owner-1031 pull to refresh): the Themes list allows the iOS overscroll only while it rests
+  // at the very top (pulling to refresh needs it); everywhere else it never bounces.
+  assert.match(list, /bounces=\{atTop\}/);
+  assert.match(themes, /const top = e\.contentOffset\.y <= TOP_SLOP \? 1 : 0;/);
   assert.match(list, /overScrollMode="never"/);
 });
 
 test('list rows are memoised with stable keys and render callbacks', () => {
   const themes = strip(read('app/(tabs)/themes.tsx'));
-  assert.match(themes, /const PackCardRow = memo\(/);
-  assert.match(themes, /const renderPackRow: ListRenderItem<PackRow> = useCallback\(/);
-  assert.match(themes, /keyExtractor=\{packRowKey\}/);
+  // T177: gallery rows (src/core/gallery.ts) replace T162's pack rows.
+  assert.match(themes, /const GalleryCardRow = memo\(/);
+  assert.match(themes, /const renderRow: ListRenderItem<Row> = useCallback\(/);
+  assert.match(themes, /keyExtractor=\{rowKey\}/);
   const widgets = strip(read('app/(tabs)/widgets.tsx'));
   assert.match(widgets, /const WidgetRow = memo\(/);
   // T173: items are per-family rows (FamilyRow, src/core/widgetFamilies.ts) with a precomputed key.

@@ -1,5 +1,5 @@
 import { Pressable, Switch, StyleSheet, Text, View } from 'react-native';
-import { sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { fontScaleCap, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { useT } from '../i18n';
 import { textStyleFor } from './i18nLayout';
@@ -29,8 +29,14 @@ export function SwitchRow({ label, value, onChange, description, accessibilityLa
       style={({ pressed }) => [styles.row, { opacity: disabled ? 0.45 : pressed ? 0.75 : 1 }]}
     >
       <View style={styles.text}>
-        <Text style={[textV2.body, textStyleFor(script, textV2.body), { color: c.ink }]}>{label}</Text>
-        {description ? <Text style={[textV2.footnote, textStyleFor(script, textV2.footnote), { color: c.inkSecondary }]}>{description}</Text> : null}
+        <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[textV2.body, textStyleFor(script, textV2.body), { color: c.ink }]}>
+          {label}
+        </Text>
+        {description ? (
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[textV2.footnote, textStyleFor(script, textV2.footnote), { color: c.inkSecondary }]}>
+            {description}
+          </Text>
+        ) : null}
       </View>
       {/* The row carries the semantics; the switch itself is hidden from screen readers. */}
       <View importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>

@@ -13,6 +13,16 @@ export const en = {
     other: '{count} icons have symbols that may be hard to see (contrast under 3:1): {names}. Try another symbol or background colour.',
   },
   yourApps: 'Your apps',
+  // T176 (docs/PREMIUM_UI.md §3.8): editorial section headers on the Icons tab.
+  sections: {
+    previewEyebrow: 'Live preview',
+    appsEyebrow: 'Your set',
+    appsBody: 'Every app here gets a matching icon.',
+    addEyebrow: 'Find apps',
+    addBody: 'Search or pick a category, then tick the apps you want.',
+    styleEyebrow: 'One look',
+    styleBody: 'Shape, colours and symbol size for every icon at once.',
+  },
   emptyTitle: 'No apps yet',
   emptyBody: 'Choose the apps you want new icons for. Start with the popular ones, or search below.',
   addPopular: 'Add popular apps',
