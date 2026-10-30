@@ -67,6 +67,7 @@ export const ptBR: NonNullable<LocaleMessages['settings']> = {
   about: {
     title: 'Sobre',
     version: 'Glaze {version}',
+    versionRow: 'Versão',
     credits: 'Feito com arte original; os nomes dos apps pertencem aos seus donos.',
   },
   updates: {

@@ -67,6 +67,7 @@ export const ja: NonNullable<LocaleMessages['settings']> = {
   about: {
     title: '情報',
     version: 'Glaze {version}',
+    versionRow: 'バージョン',
     credits: 'オリジナルのアートで制作。アプリ名は各所有者に帰属します。',
   },
   updates: {

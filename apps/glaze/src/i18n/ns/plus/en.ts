@@ -3,6 +3,7 @@
 export const en = {
   lock: {
     subjectIntro: '{subject} is part of Glaze Plus.',
+    eyebrow: 'One-time unlock',
     price: 'One-time {price}. No subscription, ever.',
     included: 'What’s included',
     widgets: 'Extra widget styles',

@@ -175,10 +175,10 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
     oneAtATime: 'Seus ícones foram divididos em {files} perfis. O iOS guarda um perfil baixado por vez: instale a parte 1 nos Ajustes, volte aqui e abra a próxima parte.',
     failed: 'O Glaze não conseguiu abrir o perfil no Safari. Toque em Compartilhar o arquivo e envie para você mesmo por Mail ou AirDrop, ou use Atalhos.',
     fallbackNote: 'Esta versão não consegue abrir o perfil no Safari, então ele vai pela folha de compartilhamento, e o iOS muitas vezes não instala um perfil salvo no Arquivos. Use Atalhos (recomendado aqui) ou envie o arquivo para você mesmo por Mail ou AirDrop.',
-    page: { title: 'Ícones do Glaze', body: 'Toque em Instalar. O Safari pede para permitir o download de um perfil de configuração: toque em Permitir, depois em Fechar, e termine nos Ajustes.', button: 'Instalar' },
+    page: { title: 'Ícones do Glaze', body: 'O Safari pode pedir logo para permitir o download de um perfil de configuração, antes de você tocar em Instalar. Toque em Permitir, depois em Fechar, e termine nos Ajustes. Se o Safari não pedir, toque em Instalar.', button: 'Instalar' },
     cards: {
-      safari: { title: 'Instalar no Safari', body: 'Toque em Instalar no Safari.' },
-      allow: { title: 'Permitir o download', body: 'O Safari pede para permitir o download de um perfil de configuração: toque em Permitir, depois em Fechar.' },
+      safari: { title: 'Instalar no Safari', body: 'O Safari abre a página do Glaze e pode pedir logo para baixar o perfil. Se não pedir, toque em Instalar.' },
+      allow: { title: 'Permitir o download', body: 'O Safari pede para permitir o download de um perfil de configuração, às vezes antes de você tocar em Instalar: toque em Permitir, depois em Fechar.' },
       settings: { title: 'Instalar nos Ajustes', body: 'Abra os Ajustes: toque em “Perfil Transferido” no topo (ou Geral > VPN e Gerenciamento de Dispositivos), toque em Instalar, digite seu código, Instalar.' },
       home: { title: 'Seus ícones aparecem', body: 'Seus ícones aparecem na Tela de Início.' },
     },
@@ -188,6 +188,19 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
     showNext: 'Ver os passos',
     allDone: 'Todos os ícones prontos. Você pode mover os ícones originais para a Biblioteca de Apps.',
     oneAtATime: 'Um ícone por vez: siga os passos do próximo app, marque como feito e o Glaze abre os passos do seguinte.',
+  },
+  sequence: {
+    eyebrow: 'Passos',
+    title: 'Conclua a instalação',
+    current: 'Passo atual',
+    a11yCurrent: 'Passo {index} de {total}, passo atual. {title}. {body}',
+    a11yStep: 'Passo {index} de {total}. {title}. {body}',
+    allDone: 'Todos os passos concluídos. Seus novos ícones estão na Tela de Início.',
+  },
+  finished: {
+    title: 'Concluído',
+    safari: 'Seu perfil está pronto e aberto no Safari. Siga os passos abaixo para terminar nos Ajustes.',
+    share: 'Seu perfil está pronto. Siga os passos abaixo para terminar nos Ajustes.',
   },
   coverage: {
     heading: 'Seus apps',

@@ -67,6 +67,7 @@ export const zhHans: NonNullable<LocaleMessages['settings']> = {
   about: {
     title: '关于',
     version: 'Glaze {version}',
+    versionRow: '版本',
     credits: '采用原创美术制作；应用名称归其所有者所有。',
   },
   updates: {

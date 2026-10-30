@@ -225,8 +225,9 @@ test('Safari route shows the four exact steps, in order, then the shared cards',
   const cards = profileStepCards(1, 'safari');
   assert.deepEqual(cards.map((c) => c.id), ['safari', 'allow', 'settings', 'home', 'not-verified', 'hide-old', 'remove']);
   assert.deepEqual(cards.slice(0, 4).map((c) => c.body), [...SAFARI_PROFILE_STEPS]);
-  assert.equal(SAFARI_PROFILE_STEPS[0], 'Tap Install in Safari.');
-  assert.equal(SAFARI_PROFILE_STEPS[1], 'Safari asks to allow a configuration profile download: tap Allow, then Close.');
+  // T156: Safari may ask for the download before Install is tapped (the page auto-requests it).
+  assert.equal(SAFARI_PROFILE_STEPS[0], 'Safari opens the Glaze page and may ask to download the profile straight away. If it doesn’t, tap Install.');
+  assert.equal(SAFARI_PROFILE_STEPS[1], 'Safari asks to allow a configuration profile download, sometimes before you tap Install: tap Allow, then Close.');
   assert.match(SAFARI_PROFILE_STEPS[2], /^Open Settings: tap “Profile Downloaded” near the top \(or General > VPN & Device Management\), tap Install, enter your passcode, Install\.$/);
   assert.equal(SAFARI_PROFILE_STEPS[3], 'Your icons appear on the Home Screen.');
   // The English catalogue the screen renders says the same.

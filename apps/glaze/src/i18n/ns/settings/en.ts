@@ -66,6 +66,7 @@ export const en = {
   about: {
     title: 'About',
     version: 'Glaze {version}',
+    versionRow: 'Version',
     credits: 'Built with original art; app names belong to their owners.',
   },
   updates: {

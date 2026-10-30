@@ -74,19 +74,31 @@ function FillLayer({ fill, opacity, id }: { fill: WidgetFill; opacity: number; i
   );
 }
 
-/** The theme wallpaper behind a clear / tinted pane (a gradient of its colours, top to bottom). */
-function WallpaperLayer({ colours, id }: { colours: readonly string[]; id: string }) {
+/**
+ * The theme wallpaper behind a clear / tinted pane (a gradient of its colours, top to bottom).
+ * T166 (gradient audit): the theme wallpaper and the widget background in ONE Svg (two rects),
+ * instead of two stacked full-size Svg views per see-through cell. Same pixels, one native layer.
+ */
+function BackdropLayer({ colours, fill, opacity, id }: { colours: readonly string[]; fill: WidgetFill; opacity: number; id: string }) {
   const stops: readonly string[] = colours.length === 1 ? [colours[0], colours[0]] : colours;
+  const v = fill.kind === 'solid' ? null : gradientVector(fill.angle);
   return (
     <Svg pointerEvents="none" style={StyleSheet.absoluteFill} width="100%" height="100%">
       <Defs>
-        <LinearGradient id={id} x1={0.5} y1={0} x2={0.5} y2={1}>
+        <LinearGradient id={`${id}wall`} x1={0.5} y1={0} x2={0.5} y2={1}>
           {stops.map((c, i) => (
             <Stop key={`${c}${i}`} offset={String(i / (stops.length - 1))} stopColor={c} stopOpacity={1} />
           ))}
         </LinearGradient>
+        {fill.kind !== 'solid' && v ? (
+          <LinearGradient id={`${id}bg`} x1={v.x1} y1={v.y1} x2={v.x2} y2={v.y2}>
+            <Stop offset="0" stopColor={fill.from} stopOpacity={1} />
+            <Stop offset="1" stopColor={fill.to} stopOpacity={1} />
+          </LinearGradient>
+        ) : null}
       </Defs>
-      <Rect x={0} y={0} width="100%" height="100%" fill={`url(#${id})`} />
+      <Rect x={0} y={0} width="100%" height="100%" fill={`url(#${id}wall)`} />
+      <Rect x={0} y={0} width="100%" height="100%" fill={fill.kind === 'solid' ? fill.colour : `url(#${id}bg)`} opacity={opacity} />
     </Svg>
   );
 }
@@ -256,7 +268,9 @@ export const WidgetPreview = memo(function WidgetPreview({ spec, width, photoUri
   // Behind a see-through pane: the user's photo when it is their wallpaper, else the theme wallpaper.
   let wallLayer: ReactNode = null;
   if (pane && wallpaperUri) wallLayer = <ExpoImage source={wallpaperUri} style={StyleSheet.absoluteFill} contentFit="cover" cachePolicy="memory-disk" transition={0} recyclingKey={wallpaperUri} />; // i18n-ignore (JSX, no copy)
-  else if (pane && spec.tokens.wallpaper.length) wallLayer = <WallpaperLayer colours={spec.tokens.wallpaper} id={`${ids}wall`} />; // i18n-ignore (JSX, no copy)
+  // T166: theme-wallpaper colours and the background share one Svg (BackdropLayer).
+  const backdrop = !wallLayer && pane && spec.tokens.wallpaper.length !== 0;
+  if (backdrop) wallLayer = <BackdropLayer colours={spec.tokens.wallpaper} fill={spec.background} opacity={spec.backgroundOpacity} id={ids} />; // i18n-ignore (JSX, no copy)
 
   return (
     <View
@@ -278,7 +292,7 @@ export const WidgetPreview = memo(function WidgetPreview({ spec, width, photoUri
       ]}
     >
       {wallLayer}
-      <FillLayer fill={spec.background} opacity={spec.backgroundOpacity} id={`${ids}bg`} />
+      {backdrop ? null : <FillLayer fill={spec.background} opacity={spec.backgroundOpacity} id={`${ids}bg`} />}
       {spec.regions.map((r) => {
         const w = r.frame.w * width;
         const h = r.frame.h * height;

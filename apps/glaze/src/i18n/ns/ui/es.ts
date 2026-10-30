@@ -24,6 +24,7 @@ export const es: NonNullable<LocaleMessages['ui']> = {
     redownload: 'Volver a descargar',
     redownloadA11y: 'Descargar {name} otra vez',
     total: 'Total',
+    measuring: 'Midiendo los paquetes descargados…',
     totalA11y: 'Los paquetes de temas ocupan {size} en total',
     removed: '{name} quitado',
     redownloaded: '{name} descargado otra vez',

@@ -6,7 +6,7 @@
 
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import {
   Pressable,
   ScrollView,
@@ -15,14 +15,14 @@ import {
   TextInput,
   View,
   useWindowDimensions,
-  type StyleProp,
+  type ListRenderItem,
   type TextStyle,
-  type ViewStyle,
 } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CATEGORIES, getById, support, type SupportStatus } from '../../src/core/catalogue';
 import { getAnyTheme } from '../../src/core/plusThemes';
+import { separatorInset } from '../../src/core/designV2';
 import { contrastWarnings, installMethodFor, previewMonogram, type IconShape, type IconSpec } from '../../src/core/iconspec';
 import {
   GLYPH_PALETTE,
@@ -62,7 +62,7 @@ import { Segmented, type SegmentedOption } from '../../src/ui/Segmented';
 import { Swatches, type Swatch } from '../../src/ui/Swatches';
 import { haptic } from '../../src/ui/haptics';
 import { Chevron, noMirror, textStyleFor } from '../../src/ui/i18nLayout';
-import { GlassBar, InsetGroup, LargeTitle, LargeTitleHeader, PillButton, SquircleCard, SwitchInsetRow, useLargeTitleScroll } from '../../src/ui/v2';
+import { GlassBar, InsetGroup, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SquircleCard, SwitchInsetRow, useLargeTitleScroll } from '../../src/ui/v2';
 import { useT, type MessageKey, type Script } from '../../src/i18n';
 
 const RESULT_LIMIT = 60;
@@ -96,6 +96,20 @@ function nearestSize(scale: number): SizeKey {
 }
 
 const selection = () => haptic('select');
+
+/** T166: one row of the virtualised "Add apps" list. */
+type ResultItem =
+  | { kind: 'none'; key: string }
+  | { kind: 'app'; key: string; row: PickerRow }
+  | { kind: 'missing'; key: string };
+
+const NONE_ITEM: ResultItem = { kind: 'none', key: ':none' };
+const MISSING_ITEM: ResultItem = { kind: 'missing', key: ':missing' };
+const resultKey = (item: ResultItem): string => item.key;
+
+function sameRow(a: PickerRow, b: PickerRow): boolean {
+  return a.name === b.name && a.category === b.category && a.urlScheme === b.urlScheme && a.glyph === b.glyph && a.custom === b.custom;
+}
 
 /** Install support for a picker row (catalogue entries carry `verified`; user-added apps never do). */
 function rowSupport(r: PickerRow): SupportStatus {
@@ -139,6 +153,79 @@ export default function IconsScreen() {
   );
   const warnings = useMemo(() => contrastWarnings(specs), [specs]);
 
+  // T166 (owner: fast / smooth): the search results are the rows of a virtualised list; everything
+  // above them is the list header and the custom-app form + style controls are its footer. A row
+  // equal to the one before keeps its object, so its memoised view skips the render.
+  const rowCache = useRef(new Map<string, PickerRow>());
+  const items: ResultItem[] = useMemo(() => {
+    const prev = rowCache.current;
+    const next = new Map<string, PickerRow>();
+    const shown = results.slice(0, RESULT_LIMIT).map((r) => {
+      const old = prev.get(r.id);
+      const keep = old && sameRow(old, r) ? old : r;
+      next.set(r.id, keep);
+      return keep;
+    });
+    rowCache.current = next;
+    return [
+      ...(shown.length === 0 ? [NONE_ITEM] : []),
+      ...shown.map((row): ResultItem => ({ kind: 'app', key: row.id, row })),
+      MISSING_ITEM,
+    ];
+  }, [results]);
+  const selectedIds = state?.selected;
+  const selectedSet = useMemo(() => new Set(selectedIds ?? []), [selectedIds]);
+  const look = state?.style;
+  const onToggle = useCallback(
+    (id: string) => {
+      selection();
+      update((st) => toggleApp(st, id));
+    },
+    [update],
+  );
+  const onDelete = useCallback(
+    (id: string) => {
+      haptic('warning');
+      update((st) => deleteCustomApp(st, id));
+    },
+    [update],
+  );
+  const onMissing = useCallback(() => {
+    selection();
+    const q = query.trim();
+    router.push({ pathname: '/add-app', params: q ? { q } : {} });
+  }, [router, query]);
+  const onEditChip = useCallback((id: string) => {
+    selection();
+    setEditId(id);
+  }, []);
+  const onRemoveChip = useCallback(
+    (id: string, long: boolean) => {
+      if (long) haptic('warning');
+      else selection();
+      update((st) => removeApp(st, id));
+    },
+    [update],
+  );
+  const renderResult: ListRenderItem<ResultItem> = useCallback(
+    ({ item, index }) => {
+      if (item.kind === 'none') return <NoMatchRow />; // i18n-ignore (code after a JSX element)
+      if (item.kind === 'missing') return <MissingRow onPress={onMissing} />; // i18n-ignore (code after a JSX element)
+      if (!look) return null;
+      return (
+        <PickRow
+          row={item.row}
+          on={selectedSet.has(item.row.id)}
+          first={index === 0}
+          look={look}
+          onToggle={onToggle}
+          onDelete={onDelete}
+        />
+      );
+    },
+    [look, selectedSet, onToggle, onDelete, onMissing],
+  );
+
   if (!state) {
     return (
       <View style={[styles.root, styles.center, { backgroundColor: c.bg, paddingTop: insets.top }]}>
@@ -152,7 +239,6 @@ export default function IconsScreen() {
   // Screen gutter and the card's own padding on both sides.
   const previewWidth = Math.min(width - spaceV2.lg * 4, 300);
   const count = specs.length;
-  const selectedSet = new Set(state.selected);
   const editApp = editId ? findApp(state, editId) : null;
   const editSpec = editId ? specs.find((s) => s.appId === editId) ?? null : null;
   // Overrides are kept per theme: here they apply to the applied theme (or the user's own style).
@@ -209,258 +295,134 @@ export default function IconsScreen() {
     haptic('success');
   };
 
-  return (
-    <View style={[styles.root, { backgroundColor: c.bg }]}>
-      <Animated.ScrollView bounces={false} overScrollMode="never"
-        onScroll={onScroll}
-        scrollEventThrottle={16}
-        contentInsetAdjustmentBehavior="never"
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={[styles.scroll, { paddingTop: insets.top + sizeV2.navBar }]}
-      >
-        <LargeTitle title={t('icons.title')} subtitle={t('icons.intro')} scrollY={scrollY} />
-        <ContextTip ids={['missing-app', 'icon-override']} style={styles.side} />
+  const listHeader = (
+    <View style={styles.listHeader}>
+      <LargeTitle title={t('icons.title')} subtitle={t('icons.intro')} scrollY={scrollY} />
+      <ContextTip ids={['missing-app', 'icon-override']} style={styles.side} />
 
-        {/* Preview: the live Home Screen stays on top. */}
-        <SquircleCard size="large" elevation="raised" style={styles.side}>
-          <View style={styles.previewWrap}>
-            <HomeMock
-              specs={specs}
-              width={previewWidth}
-              backgroundColour={state.wallpaperColour ?? undefined}
-              customisedIds={customised}
-            />
-            <Text style={[...ts('footnote'), styles.centerText, { color: c.inkSecondary }]}>
-              {state.wallpaperColour ? t('icons.previewWallpaper') : t('icons.previewNoWallpaper')}
+      {/* Preview: the live Home Screen stays on top. */}
+      <SquircleCard size="large" elevation="raised" style={styles.side}>
+        <View style={styles.previewWrap}>
+          <HomeMock
+            specs={specs}
+            width={previewWidth}
+            backgroundColour={state.wallpaperColour ?? undefined}
+            customisedIds={customised}
+          />
+          <Text style={[...ts('footnote'), styles.centerText, { color: c.inkSecondary }]}>
+            {state.wallpaperColour ? t('icons.previewWallpaper') : t('icons.previewNoWallpaper')}
+          </Text>
+        </View>
+      </SquircleCard>
+
+      {warnNames.length > 0 ? (
+        <SquircleCard tone="butter" elevation="flat" style={styles.side}>
+          <View style={styles.warn} accessibilityRole="alert">
+            <Feather name="alert-triangle" size={18} color={c.pastels.butter.ink} />
+            <Text style={[...ts('footnote'), styles.flex, { color: c.pastels.butter.ink }]}>
+              {t('icons.contrastWarning', {
+                count: warnNames.length,
+                names: `${warnNames.slice(0, 5).join(', ')}${warnNames.length > 5 ? '…' : ''}`,
+              })}
             </Text>
           </View>
         </SquircleCard>
+      ) : null}
 
-        {warnNames.length > 0 ? (
-          <SquircleCard tone="butter" elevation="flat" style={styles.side}>
-            <View style={styles.warn} accessibilityRole="alert">
-              <Feather name="alert-triangle" size={18} color={c.pastels.butter.ink} />
-              <Text style={[...ts('footnote'), styles.flex, { color: c.pastels.butter.ink }]}>
-                {t('icons.contrastWarning', {
-                  count: warnNames.length,
-                  names: `${warnNames.slice(0, 5).join(', ')}${warnNames.length > 5 ? '…' : ''}`,
-                })}
-              </Text>
-            </View>
-          </SquircleCard>
-        ) : null}
-
-        {/* Your apps */}
-        <SectionTitle>{t('icons.yourApps')}</SectionTitle>
-        {count === 0 ? (
-          <SquircleCard style={styles.side}>
-            <View style={styles.empty}>
-              <Feather name="grid" size={32} color={c.tint} />
-              <Text style={[...ts('headline'), styles.centerText, { color: c.ink }]}>{t('icons.emptyTitle')}</Text>
-              <Text style={[...ts('callout'), styles.centerText, { color: c.inkSecondary }]}>{t('icons.emptyBody')}</Text>
-              <PillButton
-                label={t('icons.addPopular')}
-                icon="plus"
-                onPress={() => {
-                  selection();
-                  update(addPopularApps);
-                }}
-                accessibilityHint={t('icons.addPopularHint')}
-                style={styles.centerSelf}
+      {/* Your apps */}
+      <SectionTitle>{t('icons.yourApps')}</SectionTitle>
+      {count === 0 ? (
+        <SquircleCard style={styles.side}>
+          <View style={styles.empty}>
+            <Feather name="grid" size={32} color={c.tint} />
+            <Text style={[...ts('headline'), styles.centerText, { color: c.ink }]}>{t('icons.emptyTitle')}</Text>
+            <Text style={[...ts('callout'), styles.centerText, { color: c.inkSecondary }]}>{t('icons.emptyBody')}</Text>
+            <PillButton
+              label={t('icons.addPopular')}
+              icon="plus"
+              onPress={() => {
+                selection();
+                update(addPopularApps);
+              }}
+              accessibilityHint={t('icons.addPopularHint')}
+              style={styles.centerSelf}
+            />
+          </View>
+        </SquircleCard>
+      ) : (
+        <InsetGroup footer={t('icons.editHelp', { theme: themeName })}>
+          <View style={styles.chips}>
+            {specs.map((s, i) => (
+              <AppChip
+                key={s.appId}
+                spec={s}
+                index={i}
+                animateIn={animateIn}
+                reduced={reduced}
+                customised={customised.has(s.appId)}
+                onEdit={onEditChip}
+                onRemove={onRemoveChip}
               />
-            </View>
-          </SquircleCard>
-        ) : (
-          <InsetGroup footer={t('icons.editHelp', { theme: themeName })}>
-            <View style={styles.chips}>
-              {specs.map((s, i) => (
-                <Animated.View
-                  key={s.appId}
-                  entering={animateIn ? staggerIn(i, reduced) : undefined}
-                  layout={listLayout(reduced)}
-                  style={[styles.chip, continuous, { backgroundColor: c.fill }]}
-                >
-                  <Pressable
-                    onPress={() => {
-                      selection();
-                      setEditId(s.appId);
-                    }}
-                    onLongPress={() => {
-                      haptic('warning');
-                      update((st) => removeApp(st, s.appId));
-                    }}
-                    accessibilityRole="button"
-                    accessibilityLabel={t(customised.has(s.appId) ? 'icons.editLabelCustomised' : 'icons.editLabel', {
-                      name: iconAccessibilityLabel(s),
-                    })}
-                    accessibilityHint={t('icons.removeHint')}
-                    style={({ pressed }) => [styles.chipMain, { opacity: pressed ? 0.6 : 1 }]}
-                  >
-                    <View>
-                      <IconCanvas spec={s} size={28} style={noMirror} />
-                      {customised.has(s.appId) ? <CustomisedBadge size={9} /> : null}
-                    </View>
-                    <Text style={[...ts('subhead'), styles.chipLabel, { color: c.ink }]} numberOfLines={1}>
-                      {s.label}
-                    </Text>
-                  </Pressable>
-                  <SmallIconButton
-                    icon="x"
-                    accessibilityLabel={t('icons.removeLabel', { name: s.label })}
-                    onPress={() => {
-                      selection();
-                      update((st) => removeApp(st, s.appId));
-                    }}
-                  />
-                </Animated.View>
-              ))}
-            </View>
-          </InsetGroup>
-        )}
-
-        {/* Add apps */}
-        <SectionTitle>{t('icons.addApps')}</SectionTitle>
-        <View style={[styles.search, styles.side, continuous, { backgroundColor: c.fill }]}>
-          <Feather name="search" size={18} color={c.inkSecondary} />
-          <TextInput
-            value={query}
-            onChangeText={setQuery}
-            placeholder={t('icons.searchPlaceholder')}
-            placeholderTextColor={c.inkSecondary}
-            autoCapitalize="none"
-            autoCorrect={false}
-            returnKeyType="search"
-            selectionColor={c.tint}
-            accessibilityLabel={t('icons.searchPlaceholder')}
-            style={[...ts('body'), styles.searchInput, { color: c.ink }]}
-          />
-          {query ? <SmallIconButton icon="x-circle" accessibilityLabel={t('icons.clearSearch')} onPress={() => setQuery('')} /> : null}
-        </View>
-        <ScrollView bounces={false} overScrollMode="never"
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.catRow}
-          accessibilityLabel={t('icons.categoriesLabel')}
-        >
-          {[null, ...categoryChips].map((cat) => {
-            const active = category === cat;
-            const name = cat ? categoryName(t, cat) : t('icons.categoryAll');
-            return (
-              <PressableScale
-                key={cat ?? '*'}
-                accessibilityRole="button"
-                accessibilityLabel={t('icons.categoryLabel', { name })}
-                accessibilityState={{ selected: active }}
-                pressedScale={0.96}
-                onPress={() => {
-                  selection();
-                  setCategory(cat);
-                }}
-                style={[styles.catChip, continuous, { backgroundColor: active ? c.tint : c.surface }]}
-              >
-                <Text style={[...ts('subhead'), styles.semibold, { color: active ? c.onTint : c.ink }]}>{name}</Text>
-              </PressableScale>
-            );
-          })}
-        </ScrollView>
-
-        <InsetGroup footer={RESULT_LIMIT < results.length ? t('icons.showingFirst', { limit: RESULT_LIMIT }) : undefined}>
-          {results.length === 0 ? (
-            <View key="none" style={styles.emptySearch}>
-              <Feather name="search" size={28} color={c.tint} />
-              <Text style={[...ts('headline'), styles.centerText, { color: c.ink }]}>{t('icons.noMatchTitle')}</Text>
-              <Text style={[...ts('callout'), styles.centerText, { color: c.inkSecondary }]}>{t('icons.noMatchBody')}</Text>
-            </View>
-          ) : null}
-          {results.slice(0, RESULT_LIMIT).map((r) => {
-            const on = selectedSet.has(r.id);
-            const shortcuts = installMethodFor(r) === 'shortcuts';
-            const status = rowSupport(r);
-            return (
-              <TiledRow key={r.id} icon style={styles.pickRow}>
-                <Pressable
-                  accessibilityRole="checkbox"
-                  accessibilityLabel={t('icons.rowLabel', {
-                    name: r.name,
-                    status: supportLabel(t, shortcuts ? 'shortcuts' : status),
-                  })}
-                  accessibilityState={{ checked: on }}
-                  onPress={() => {
-                    selection();
-                    update((st) => toggleApp(st, r.id));
-                  }}
-                  style={({ pressed }) => [styles.pickMain, { opacity: pressed ? 0.6 : 1 }]}
-                >
-                  <IconCanvas
-                    spec={{
-                      appId: r.id,
-                      shape: style.shape,
-                      background: style.background,
-                      glyph: r.glyph,
-                      glyphSet: style.glyphSet,
-                      glyphColour: style.glyphColour,
-                      glyphScale: style.glyphScale,
-                      monogram: previewMonogram(r.name, r.glyph, style),
-                    }}
-                    size={sizeV2.rowIcon}
-                    style={noMirror}
-                  />
-                  <View style={styles.flex}>
-                    <Text style={[...ts('body'), { color: c.ink }]} numberOfLines={1}>
-                      {r.name}
-                    </Text>
-                    <View style={styles.metaRow}>
-                      <Text style={[...ts('footnote'), styles.shrink, { color: c.inkSecondary }]}>
-                        {categoryName(t, r.category)}
-                      </Text>
-                      {status !== 'verified' ? (
-                        <View
-                          style={[styles.supportBadge, continuous, { backgroundColor: shortcuts ? c.tintSoft : c.fill }]}
-                        >
-                          <Text style={[...ts('caption1'), { color: shortcuts ? c.onTintSoft : c.inkSecondary }]}>
-                            {supportLabel(t, status)}
-                          </Text>
-                        </View>
-                      ) : null}
-                    </View>
-                  </View>
-                  <Feather name={on ? 'check-circle' : 'circle'} size={24} color={on ? c.tint : c.inkTertiary} />
-                </Pressable>
-                {r.custom ? (
-                  <SmallIconButton
-                    icon="trash-2"
-                    accessibilityLabel={t('icons.deleteCustomLabel', { name: r.name })}
-                    onPress={() => {
-                      haptic('warning');
-                      update((st) => deleteCustomApp(st, r.id));
-                    }}
-                  />
-                ) : null}
-              </TiledRow>
-            );
-          })}
-          <TiledRow key="missing" icon>
-          <Pressable
-            accessibilityRole="link"
-            accessibilityLabel={t('icons.missingLabel')}
-            onPress={() => {
-              selection();
-              router.push({ pathname: '/add-app', params: query.trim() ? { q: query.trim() } : {} });
-            }}
-            style={({ pressed }) => [styles.missingRow, { opacity: pressed ? 0.6 : 1 }]}
-          >
-            <View style={[styles.tile, continuous, { backgroundColor: c.tintSoft }]}>
-              <Feather name="plus" size={17} color={c.onTintSoft} />
-            </View>
-            <View style={styles.flex}>
-              <Text style={[...ts('body'), { color: c.tint }]}>{t('icons.missingTitle')}</Text>
-              <Text style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('icons.missingBody')}</Text>
-            </View>
-            <Feather name={Chevron.forward(isRTL)} size={18} color={c.inkTertiary} />
-          </Pressable>
-          </TiledRow>
+            ))}
+          </View>
         </InsetGroup>
+      )}
 
+      {/* Add apps */}
+      <SectionTitle>{t('icons.addApps')}</SectionTitle>
+      <View style={[styles.search, styles.side, continuous, { backgroundColor: c.fill }]}>
+        <Feather name="search" size={18} color={c.inkSecondary} />
+        <TextInput
+          value={query}
+          onChangeText={setQuery}
+          placeholder={t('icons.searchPlaceholder')}
+          placeholderTextColor={c.inkSecondary}
+          autoCapitalize="none"
+          autoCorrect={false}
+          returnKeyType="search"
+          selectionColor={c.tint}
+          accessibilityLabel={t('icons.searchPlaceholder')}
+          style={[...ts('body'), styles.searchInput, { color: c.ink }]}
+        />
+        {query ? <SmallIconButton icon="x-circle" accessibilityLabel={t('icons.clearSearch')} onPress={() => setQuery('')} /> : null}
+      </View>
+      <ScrollView bounces={false} overScrollMode="never"
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.catRow}
+        accessibilityLabel={t('icons.categoriesLabel')}
+      >
+        {[null, ...categoryChips].map((cat) => {
+          const active = category === cat;
+          const name = cat ? categoryName(t, cat) : t('icons.categoryAll');
+          return (
+            <PressableScale
+              key={cat ?? '*'}
+              accessibilityRole="button"
+              accessibilityLabel={t('icons.categoryLabel', { name })}
+              accessibilityState={{ selected: active }}
+              pressedScale={0.96}
+              onPress={() => {
+                selection();
+                setCategory(cat);
+              }}
+              style={[styles.catChip, continuous, { backgroundColor: active ? c.tint : c.surface }]}
+            >
+              <Text style={[...ts('subhead'), styles.semibold, { color: active ? c.onTint : c.ink }]}>{name}</Text>
+            </PressableScale>
+          );
+        })}
+      </ScrollView>
+    </View>); // i18n-ignore (code after a JSX element)
+
+  const listFooter = (
+    <View>
+      {RESULT_LIMIT < results.length ? (
+        <Text style={[...ts('footnote'), styles.groupFootnote, { color: c.inkSecondary }]}>
+          {t('icons.showingFirst', { limit: RESULT_LIMIT })}
+        </Text>
+      ) : null}
+      <View style={styles.listFooter}>
         {/* Custom app: fields as inset rows with inline inputs. */}
         <InsetGroup header={t('icons.customTitle')} footer={t('icons.schemeNote')}>
           <View style={styles.fieldRow}>
@@ -593,7 +555,26 @@ export default function IconsScreen() {
             }}
           />
         </InsetGroup>
-      </Animated.ScrollView>
+      </View>
+    </View>); // i18n-ignore (code after a JSX element)
+
+  return (
+    <View style={[styles.root, { backgroundColor: c.bg }]}>
+      <Animated.FlatList
+        data={items}
+        renderItem={renderResult}
+        keyExtractor={resultKey}
+        ListHeaderComponent={listHeader}
+        ListFooterComponent={listFooter}
+        {...LIST_WINDOW}
+        bounces={false}
+        overScrollMode="never"
+        onScroll={onScroll}
+        scrollEventThrottle={16}
+        contentInsetAdjustmentBehavior="never"
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={[styles.scroll, { paddingTop: insets.top + sizeV2.navBar }]}
+      />
 
       <LargeTitleHeader title={t('icons.title')} scrollY={scrollY} />
 
@@ -641,12 +622,175 @@ function SectionTitle({ children }: { children?: ReactNode }) {
 }
 
 /**
- * Plain row container inside an InsetGroup. `icon` is read by InsetGroup (row.props.icon) so the
- * separator starts after the 30 pt tile, like an InsetRow with an icon.
+ * T166: one slice of the "Add apps" inset-grouped card, drawn per list row (the InsetGroup look:
+ * surface card, rounded first / last corners, hairline separator after every row but the last,
+ * starting after the 30 pt tile when the row has one).
  */
-function TiledRow({ children, style }: { icon?: boolean; children?: ReactNode; style?: StyleProp<ViewStyle> }) {
-  return <View style={style}>{children}</View>;
+function GroupSegment({ first, last, icon, children }: { first: boolean; last: boolean; icon: boolean; children?: ReactNode }) {
+  const { c } = useColorsV2();
+  return (
+    <View style={[styles.segment, continuous, first ? styles.segmentFirst : null, last ? styles.segmentLast : null, { backgroundColor: c.surface }]}>
+      {children}
+      {last ? null : <View style={[styles.separator, { marginStart: separatorInset(icon), backgroundColor: c.separator }]} />}
+    </View>
+  );
 }
+
+/** "No apps match" in place of the results (always the first segment when shown). */
+const NoMatchRow = memo(function NoMatchRow() {
+  const { c } = useColorsV2();
+  const { t, script } = useT();
+  return (
+    <GroupSegment first last={false} icon={false}>
+      <View style={styles.emptySearch}>
+        <Feather name="search" size={28} color={c.tint} />
+        <Text style={[...typeFor(script, 'headline'), styles.centerText, { color: c.ink }]}>{t('icons.noMatchTitle')}</Text>
+        <Text style={[...typeFor(script, 'callout'), styles.centerText, { color: c.inkSecondary }]}>{t('icons.noMatchBody')}</Text>
+      </View>
+    </GroupSegment>
+  );
+});
+
+type PickRowProps = {
+  row: PickerRow;
+  on: boolean;
+  first: boolean;
+  look: StudioState['style'];
+  onToggle: (id: string) => void;
+  onDelete: (id: string) => void;
+};
+
+/** One app in the picker (memoised: a toggle re-renders only the row that changed). */
+const PickRow = memo(function PickRow({ row: r, on, first, look, onToggle, onDelete }: PickRowProps) {
+  const { c } = useColorsV2();
+  const { t, script } = useT();
+  const shortcuts = installMethodFor(r) === 'shortcuts';
+  const status = rowSupport(r);
+  return (
+    <GroupSegment first={first} last={false} icon>
+      <View style={styles.pickRow}>
+        <Pressable
+          accessibilityRole="checkbox"
+          accessibilityLabel={t('icons.rowLabel', {
+            name: r.name,
+            status: supportLabel(t, shortcuts ? 'shortcuts' : status),
+          })}
+          accessibilityState={{ checked: on }}
+          onPress={() => onToggle(r.id)}
+          style={({ pressed }) => [styles.pickMain, { opacity: pressed ? 0.6 : 1 }]}
+        >
+          <IconCanvas
+            spec={{
+              appId: r.id,
+              shape: look.shape,
+              background: look.background,
+              glyph: r.glyph,
+              glyphSet: look.glyphSet,
+              glyphColour: look.glyphColour,
+              glyphScale: look.glyphScale,
+              monogram: previewMonogram(r.name, r.glyph, look),
+            }}
+            size={sizeV2.rowIcon}
+            style={noMirror}
+          />
+          <View style={styles.flex}>
+            <Text style={[...typeFor(script, 'body'), { color: c.ink }]} numberOfLines={1}>
+              {r.name}
+            </Text>
+            <View style={styles.metaRow}>
+              <Text style={[...typeFor(script, 'footnote'), styles.shrink, { color: c.inkSecondary }]}>
+                {categoryName(t, r.category)}
+              </Text>
+              {status !== 'verified' ? (
+                <View style={[styles.supportBadge, continuous, { backgroundColor: shortcuts ? c.tintSoft : c.fill }]}>
+                  <Text style={[...typeFor(script, 'caption1'), { color: shortcuts ? c.onTintSoft : c.inkSecondary }]}>
+                    {supportLabel(t, status)}
+                  </Text>
+                </View>
+              ) : null}
+            </View>
+          </View>
+          <Feather name={on ? 'check-circle' : 'circle'} size={24} color={on ? c.tint : c.inkTertiary} />
+        </Pressable>
+        {r.custom ? (
+          <SmallIconButton
+            icon="trash-2"
+            accessibilityLabel={t('icons.deleteCustomLabel', { name: r.name })}
+            onPress={() => onDelete(r.id)}
+          />
+        ) : null}
+      </View>
+    </GroupSegment>
+  );
+});
+
+/** "Missing an app?" link, always the last segment of the card. */
+const MissingRow = memo(function MissingRow({ onPress }: { onPress: () => void }) {
+  const { c } = useColorsV2();
+  const { t, script, isRTL } = useT();
+  return (
+    <GroupSegment first={false} last icon>
+      <Pressable
+        accessibilityRole="link"
+        accessibilityLabel={t('icons.missingLabel')}
+        onPress={onPress}
+        style={({ pressed }) => [styles.missingRow, { opacity: pressed ? 0.6 : 1 }]}
+      >
+        <View style={[styles.tile, continuous, { backgroundColor: c.tintSoft }]}>
+          <Feather name="plus" size={17} color={c.onTintSoft} />
+        </View>
+        <View style={styles.flex}>
+          <Text style={[...typeFor(script, 'body'), { color: c.tint }]}>{t('icons.missingTitle')}</Text>
+          <Text style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{t('icons.missingBody')}</Text>
+        </View>
+        <Feather name={Chevron.forward(isRTL)} size={18} color={c.inkTertiary} />
+      </Pressable>
+    </GroupSegment>
+  );
+});
+
+type AppChipProps = {
+  spec: IconSpec;
+  index: number;
+  animateIn: boolean;
+  reduced: boolean;
+  customised: boolean;
+  onEdit: (id: string) => void;
+  onRemove: (id: string, long: boolean) => void;
+};
+
+/** One chosen app in "Your apps" (memoised; tap edits, long press or the x removes). */
+const AppChip = memo(function AppChip({ spec: s, index, animateIn, reduced, customised, onEdit, onRemove }: AppChipProps) {
+  const { c } = useColorsV2();
+  const { t, script } = useT();
+  return (
+    <Animated.View
+      entering={animateIn ? staggerIn(index, reduced) : undefined}
+      layout={listLayout(reduced)}
+      style={[styles.chip, continuous, { backgroundColor: c.fill }]}
+    >
+      <Pressable
+        onPress={() => onEdit(s.appId)}
+        onLongPress={() => onRemove(s.appId, true)}
+        accessibilityRole="button"
+        accessibilityLabel={t(customised ? 'icons.editLabelCustomised' : 'icons.editLabel', {
+          name: iconAccessibilityLabel(s),
+        })}
+        accessibilityHint={t('icons.removeHint')}
+        style={({ pressed }) => [styles.chipMain, { opacity: pressed ? 0.6 : 1 }]}
+      >
+        <View>
+          <IconCanvas spec={s} size={28} style={noMirror} />
+          {customised ? <CustomisedBadge size={9} /> : null}
+        </View>
+        <Text style={[...typeFor(script, 'subhead'), styles.chipLabel, { color: c.ink }]} numberOfLines={1}>
+          {s.label}
+        </Text>
+      </Pressable>
+      <SmallIconButton icon="x" accessibilityLabel={t('icons.removeLabel', { name: s.label })} onPress={() => onRemove(s.appId, false)} />
+    </Animated.View>
+  );
+});
 
 /** 48 pt icon-only button in the secondary ink (chip remove, clear search, delete). */
 function SmallIconButton({ icon, onPress, accessibilityLabel }: { icon: FeatherName; onPress: () => void; accessibilityLabel: string }) {
@@ -667,7 +811,16 @@ function SmallIconButton({ icon, onPress, accessibilityLabel }: { icon: FeatherN
 const styles = StyleSheet.create({
   root: { flex: 1 },
   center: { alignItems: 'center', justifyContent: 'center', gap: spaceV2.md },
-  scroll: { gap: spaceV2.lg, paddingBottom: spaceV2.xxl },
+  scroll: { paddingBottom: spaceV2.xxl },
+  // T166: the old ScrollView's 16 pt rhythm, now inside the list header / footer.
+  listHeader: { gap: spaceV2.lg, paddingBottom: spaceV2.lg },
+  listFooter: { gap: spaceV2.lg, paddingTop: spaceV2.lg },
+  // InsetGroup's footnote under the results card (group gap, then the footer inset).
+  groupFootnote: { marginTop: spaceV2.xs + spaceV2.xxs, marginHorizontal: spaceV2.lg, paddingHorizontal: spaceV2.lg },
+  segment: { marginHorizontal: spaceV2.lg },
+  segmentFirst: { borderTopStartRadius: radiusV2.group, borderTopEndRadius: radiusV2.group, overflow: 'hidden' },
+  segmentLast: { borderBottomStartRadius: radiusV2.group, borderBottomEndRadius: radiusV2.group, overflow: 'hidden' },
+  separator: { height: StyleSheet.hairlineWidth },
   side: { marginHorizontal: spaceV2.lg },
   sectionTitle: { paddingHorizontal: spaceV2.inset, marginTop: spaceV2.sm },
   centerText: { textAlign: 'center' },

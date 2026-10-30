@@ -67,6 +67,7 @@ export const hi: NonNullable<LocaleMessages['settings']> = {
   about: {
     title: 'परिचय',
     version: 'Glaze {version}',
+    versionRow: 'संस्करण',
     credits: 'मौलिक कला से बनाया गया; ऐप के नाम उनके मालिकों के हैं।',
   },
   updates: {

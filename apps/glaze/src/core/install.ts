@@ -256,8 +256,9 @@ export type StepCardData = { id: string; title: string; body: string; illustrati
 
 /** T126: the exact on-screen steps when the profile is served to Safari from the iPhone. */
 export const SAFARI_PROFILE_STEPS: readonly string[] = Object.freeze([
-  'Tap Install in Safari.',
-  'Safari asks to allow a configuration profile download: tap Allow, then Close.',
+  // T156: the page requests the profile as it opens, so Safari may ask before Install is tapped.
+  'Safari opens the Glaze page and may ask to download the profile straight away. If it doesn’t, tap Install.',
+  'Safari asks to allow a configuration profile download, sometimes before you tap Install: tap Allow, then Close.',
   'Open Settings: tap “Profile Downloaded” near the top (or General > VPN & Device Management), tap Install, enter your passcode, Install.',
   'Your icons appear on the Home Screen.',
 ]);

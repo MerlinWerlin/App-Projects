@@ -156,10 +156,10 @@ export const zhHans: NonNullable<LocaleMessages['install']> = {
     oneAtATime: '你的图标分成了 {files} 个描述文件。iOS 一次只保留一个已下载的描述文件：先在“设置”中安装第 1 部分，回到这里，再打开下一部分。',
     failed: 'Glaze 无法在 Safari 中打开描述文件。请轻点“改为共享文件”，通过邮件或隔空投送发给自己，或使用快捷指令。',
     fallbackNote: '此版本无法在 Safari 中打开描述文件，只能通过共享面板，而 iOS 经常不会安装存到“文件”中的描述文件。请使用快捷指令（此处推荐），或通过邮件或隔空投送把文件发给自己。',
-    page: { title: 'Glaze 图标', body: '轻点“安装”。Safari 会询问是否允许下载配置描述文件：轻点“允许”，再轻点“关闭”，然后在“设置”中完成。', button: '安装' },
+    page: { title: 'Glaze 图标', body: 'Safari 可能会在你轻点“安装”之前就询问是否允许下载配置描述文件。轻点“允许”，再轻点“关闭”，然后在“设置”中完成。如果 Safari 没有询问，请轻点“安装”。', button: '安装' },
     cards: {
-      safari: { title: '在 Safari 中安装', body: '在 Safari 中轻点“安装”。' },
-      allow: { title: '允许下载', body: 'Safari 会询问是否允许下载配置描述文件：轻点“允许”，再轻点“关闭”。' },
+      safari: { title: '在 Safari 中安装', body: 'Safari 会打开 Glaze 页面，并可能立即询问是否下载描述文件。如果没有询问，请轻点“安装”。' },
+      allow: { title: '允许下载', body: 'Safari 会询问是否允许下载配置描述文件（有时在你轻点“安装”之前）：轻点“允许”，再轻点“关闭”。' },
       settings: { title: '在“设置”中安装', body: '打开“设置”：轻点顶部的“已下载描述文件”（或“通用”>“VPN与设备管理”），轻点“安装”，输入密码，再轻点“安装”。' },
       home: { title: '图标出现', body: '你的图标会出现在主屏幕上。' },
     },
@@ -169,6 +169,19 @@ export const zhHans: NonNullable<LocaleMessages['install']> = {
     showNext: '显示步骤',
     allDone: '所有图标已完成。你可以把原来的图标移到 App 资源库。',
     oneAtATime: '一次一个图标：按步骤完成下一个 App 并勾选，Glaze 会打开再下一个的步骤。',
+  },
+  sequence: {
+    eyebrow: '步骤',
+    title: '完成安装',
+    current: '当前步骤',
+    a11yCurrent: '第 {index} 步，共 {total} 步，当前步骤。{title}。{body}',
+    a11yStep: '第 {index} 步，共 {total} 步。{title}。{body}',
+    allDone: '所有步骤已完成。新图标已在主屏幕上。',
+  },
+  finished: {
+    title: '完成',
+    safari: '描述文件已准备好并已在 Safari 中打开。按照下方步骤在“设置”中完成。',
+    share: '描述文件已准备好。按照下方步骤在“设置”中完成。',
   },
   coverage: {
     heading: '你的应用',

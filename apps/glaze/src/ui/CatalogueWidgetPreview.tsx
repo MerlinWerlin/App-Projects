@@ -102,19 +102,33 @@ function FillLayer({ fill, opacity, id }: { fill: WidgetFill; opacity: number; i
   );
 }
 
-/** The theme wallpaper behind a clear / tinted pane (a gradient of its colours, top to bottom). */
-function WallpaperLayer({ colours, id }: { colours: readonly string[]; id: string }) {
+/**
+ * The theme wallpaper behind a clear / tinted pane (a gradient of its colours, top to bottom).
+ * T166 (gradient audit): drawn with the widget background (when there is one) in ONE Svg, instead
+ * of two stacked full-size Svg views per see-through cell. Same pixels, one native layer.
+ */
+function BackdropLayer({ colours, fill, opacity, id }: { colours: readonly string[]; fill: WidgetFill | null; opacity: number; id: string }) {
   const stops: readonly string[] = colours.length === 1 ? [colours[0], colours[0]] : colours;
+  const v = fill && fill.kind !== 'solid' ? gradientVector(fill.angle) : null;
   return (
     <Svg pointerEvents="none" style={StyleSheet.absoluteFill} width="100%" height="100%">
       <Defs>
-        <LinearGradient id={id} x1={0.5} y1={0} x2={0.5} y2={1}>
+        <LinearGradient id={`${id}wall`} x1={0.5} y1={0} x2={0.5} y2={1}>
           {stops.map((c, i) => (
             <Stop key={`${c}${i}`} offset={String(i / (stops.length - 1))} stopColor={c} stopOpacity={1} />
           ))}
         </LinearGradient>
+        {fill && fill.kind !== 'solid' && v ? (
+          <LinearGradient id={`${id}bg`} x1={v.x1} y1={v.y1} x2={v.x2} y2={v.y2}>
+            <Stop offset="0" stopColor={fill.from} stopOpacity={1} />
+            <Stop offset="1" stopColor={fill.to} stopOpacity={1} />
+          </LinearGradient>
+        ) : null}
       </Defs>
-      <Rect x={0} y={0} width="100%" height="100%" fill={`url(#${id})`} />
+      <Rect x={0} y={0} width="100%" height="100%" fill={`url(#${id}wall)`} />
+      {fill ? (
+        <Rect x={0} y={0} width="100%" height="100%" fill={fill.kind === 'solid' ? fill.colour : `url(#${id}bg)`} opacity={opacity} />
+      ) : null}
     </Svg>
   );
 }
@@ -406,7 +420,9 @@ export const CatalogueWidgetPreview = memo(function CatalogueWidgetPreview({ spe
   // Behind a see-through pane: the user's photo when it is their wallpaper, else the theme wallpaper.
   let wallLayer: ReactNode = null;
   if (model.wallpaper?.kind === 'photo') wallLayer = <ExpoImage source={model.wallpaper.uri} style={StyleSheet.absoluteFill} contentFit="cover" cachePolicy="memory-disk" transition={0} recyclingKey={model.wallpaper.uri} />; // i18n-ignore (JSX, no copy)
-  else if (model.wallpaper?.kind === 'colours') wallLayer = <WallpaperLayer colours={model.wallpaper.colours} id={`${ids}wall`} />; // i18n-ignore (JSX, no copy)
+  // T166: theme-wallpaper colours and the background share one Svg (BackdropLayer).
+  const backdrop = model.wallpaper?.kind === 'colours';
+  if (model.wallpaper?.kind === 'colours') wallLayer = <BackdropLayer colours={model.wallpaper.colours} fill={model.background?.fill ?? null} opacity={model.background?.opacity ?? 1} id={ids} />; // i18n-ignore (JSX, no copy)
 
   if (mono && model.stage) {
     // Lock Screen: a dark modelled backdrop around the system-tinted widget.
@@ -444,7 +460,7 @@ export const CatalogueWidgetPreview = memo(function CatalogueWidgetPreview({ spe
       ]}
     >
       {wallLayer}
-      {model.background ? <FillLayer fill={model.background.fill} opacity={model.background.opacity} id={`${ids}bg`} /> : null}
+      {model.background && !backdrop ? <FillLayer fill={model.background.fill} opacity={model.background.opacity} id={`${ids}bg`} /> : null}
       {regions}
     </View>
   );

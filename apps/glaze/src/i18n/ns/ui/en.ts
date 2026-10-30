@@ -23,6 +23,7 @@ export const en = {
     redownload: 'Re-download',
     redownloadA11y: 'Download {name} again',
     total: 'Total',
+    measuring: 'Measuring downloaded packs…',
     totalA11y: 'Theme packs use {size} in total',
     removed: '{name} removed',
     redownloaded: '{name} downloaded again',

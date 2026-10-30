@@ -24,6 +24,7 @@ export const ar: NonNullable<LocaleMessages['ui']> = {
     redownload: 'إعادة التنزيل',
     redownloadA11y: 'تنزيل {name} مجددًا',
     total: 'الإجمالي',
+    measuring: 'جارٍ قياس الحزم التي تم تنزيلها…',
     totalA11y: 'تستخدم حزم السمات {size} إجمالًا',
     removed: 'تمت إزالة {name}',
     redownloaded: 'تم تنزيل {name} مجددًا',

@@ -24,6 +24,7 @@ export const ja: NonNullable<LocaleMessages['ui']> = {
     redownload: '再ダウンロード',
     redownloadA11y: '{name} を再ダウンロード',
     total: '合計',
+    measuring: 'ダウンロード済みパックのサイズを計算中…',
     totalA11y: 'テーマパックの合計使用量は {size} です',
     removed: '{name} を削除しました',
     redownloaded: '{name} を再ダウンロードしました',

@@ -24,6 +24,7 @@ export const ptBR: NonNullable<LocaleMessages['ui']> = {
     redownload: 'Baixar de novo',
     redownloadA11y: 'Baixar {name} de novo',
     total: 'Total',
+    measuring: 'Medindo os pacotes baixados…',
     totalA11y: 'Os pacotes de temas usam {size} no total',
     removed: '{name} removido',
     redownloaded: '{name} baixado de novo',
