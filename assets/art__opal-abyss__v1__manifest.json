@@ -1,0 +1,104 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 1,
+  "id": "opal-abyss",
+  "packVersion": 1,
+  "name": "Opal Abyss",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#000C25",
+    "tile": "#232D42",
+    "glyph": "#FAF8F2",
+    "accent": "#7D8DA3",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Opal Abyss",
+    "mood": "Deep ink-blue water with a pearl nautilus and a lighthouse.",
+    "tags": [
+      "opal",
+      "abyss",
+      "deep",
+      "blue",
+      "water",
+      "with",
+      "pearl",
+      "nautilus",
+      "lighthouse",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Ben Everett (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "DecNAwB4cLl4eYV5WcCBBj0=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.018fbde1.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 178314,
+      "sha256": "018fbde163159e1b1a06b32810430e9e814658d1c72dfcffd82d822f1327aec2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c460a24b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 161688,
+      "sha256": "c460a24bdc86454e07a089e7d0d35d6545ae98409ec6b7594af3abcf66e1d321",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.1cb64ab8.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 82222,
+      "sha256": "1cb64ab8d82eed4c3cf7bb369c7cc3eaae0682b4cefa9632c71ba4d7057086d9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.0069ba04.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 65846,
+      "sha256": "0069ba0482e4ce5979014d6bc4c3042c609f478659c429bda463b94e30b6d043",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.944ff0eb.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 127514,
+      "sha256": "944ff0ebeda7550b9c2e3bcfdf8d5ca4a0080f0c1c595d2c6eb23842e8b285ec",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.3bd25a22.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 259364,
+      "sha256": "3bd25a2270c8b2feaa0cbf8bffc30aa8052b9be0c1b2ab8c273b900c016fa713",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.b14bea31.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14852,
+      "sha256": "b14bea31fc116e425d1de37058fdd62c14d27f3434cb48646da6d820a8e6b8f7",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 889800
+}

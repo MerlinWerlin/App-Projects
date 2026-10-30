@@ -1,0 +1,103 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 1,
+  "id": "indigo-current",
+  "packVersion": 1,
+  "name": "Indigo Current",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#0E1F3D",
+    "tile": "#2F3D56",
+    "glyph": "#FAF8F2",
+    "accent": "#9298A4",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Indigo Current",
+    "mood": "Indigo paper-craft harbour with a silver ink whale.",
+    "tags": [
+      "indigo",
+      "current",
+      "paper",
+      "craft",
+      "harbour",
+      "with",
+      "silver",
+      "whale",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Olga Thelavart (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "zdYFAwB6YLh3ipV5enC3CEc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.46cc170d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 429946,
+      "sha256": "46cc170dd50bbd2e112255b94c74db7f685ec3bcf93679e30046af8515a15e27",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.be26ecf1.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 387336,
+      "sha256": "be26ecf149cbe88e975290b74b2f63ff94362ee22e71e53bed733298c2467a14",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.2e8d9bdd.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 175130,
+      "sha256": "2e8d9bdd01220bd9435e690379cafb07e70e44cec1070c22c969df292ed80331",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.b18b749a.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 69474,
+      "sha256": "b18b749a36724bd4be1dc881372fe6b3c9bc7b292ca18b9aae17dd0147f86657",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.76039636.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 159820,
+      "sha256": "7603963621f4a4c6c016d9c1b767b79eb7255e65c98363643a650281f116668b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.ce4bed92.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 361926,
+      "sha256": "ce4bed927f153cd29b7d1ed4b7633daf085bdbd6667c25e82bdd00d89454ff08",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.ea44ea86.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 16116,
+      "sha256": "ea44ea866f2e3a282d64157f95e4cbaa395720568a29adf5d014c81dfbecd4f5",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1599748
+}

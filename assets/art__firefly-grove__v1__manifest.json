@@ -1,0 +1,104 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 1,
+  "id": "firefly-grove",
+  "packVersion": 1,
+  "name": "Firefly Grove",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#0E1718",
+    "tile": "#2F3737",
+    "glyph": "#FAF8F2",
+    "accent": "#71602C",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Firefly Grove",
+    "mood": "Mossy woodland at blue hour, a lantern, ferns and fireflies.",
+    "tags": [
+      "firefly",
+      "grove",
+      "mossy",
+      "woodland",
+      "blue",
+      "hour",
+      "lantern",
+      "ferns",
+      "fireflies",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Greg Rosenke (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Create one portrait9:19.5 iPhone wallpaper 'Firefly Grove'. Attached real mossy forest photo is botanical texture reference ONLY. Beautiful original woodland photographic/diorama scene at blue-hour twilight: upper60% very dark forest-green haze with soft distant tree silhouettes and sparse tiny warm firefly pinpoints, quiet uncluttered space for icons; lower40% rich velvety moss hummocks, delicate ferns, bark, small mushrooms beside one elegant amber lantern nestled on a mossy root. Warm lantern light creates a small inviting pool across moss and tiny dew droplets; three or four dim fireflies, subtle not glitter. A mysterious narrow woodland path disappears into soft background. Tasteful subtly magical editorial miniature-set realism, not cartoon, no characters, no faces in mushrooms, no giant fantasy buildings. Matte deep evergreen, sage, muted ivory and restrained amber. Keep bright details low and upper area dark for readable ivory glyphs. No text, UI, icons, borders, logos or watermark, no moon. Distinct moody handmade storybook photographic art direction.",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "R/gFEwI0cXd4X5KJhpBnCYg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.1fc8d207.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 249058,
+      "sha256": "1fc8d20745864d9c26540e3aafadce7b392c3c3f3b4792696b76e560ac49f8a7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.fbb6f73d.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 227414,
+      "sha256": "fbb6f73d770881d6ff862b2e13c3faf2c612ead0d8ff136e833dbdbfb95c5fe7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.1c9200f9.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 120068,
+      "sha256": "1c9200f9905ba9b521ef317f6333b372f690fca95247b9c9001ef529747d0423",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.c427fe3d.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 73464,
+      "sha256": "c427fe3d13f8eb1654c388f5cdd24de1f8d424c54adb9a7e5dcc54654e018160",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.b56c212d.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 163998,
+      "sha256": "b56c212dad066755309f13b297ac808287e7a006c5f28812123befd977b7831b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.4fe62c76.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 241818,
+      "sha256": "4fe62c76bdb8d504acaf1f9c1c59ea24134f2ba2ec3bfe741928b29abf69b40a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.4bb67955.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 23282,
+      "sha256": "4bb679552259aca77004711e8b25743b20cd4e8adaeef8aea253edd03ec53463",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1099102
+}

@@ -1,0 +1,103 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 1,
+  "id": "rosewater-reverie",
+  "packVersion": 1,
+  "name": "Rosewater Reverie",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DFC0BD",
+    "tile": "#C4A8A6",
+    "glyph": "#1C1816",
+    "accent": "#AD7973",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Rosewater Reverie",
+    "mood": "Dusty rose satin, a bottled ballet and a satin swan.",
+    "tags": [
+      "rosewater",
+      "reverie",
+      "dusty",
+      "rose",
+      "satin",
+      "bottled",
+      "ballet",
+      "swan",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Tamanna Rumee (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "r0gGCwJXb3iHlWlXhKB4CYk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.bbb0961d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 159894,
+      "sha256": "bbb0961d660a66c9b4a532f7c4c45b327c47c7ece841cbd4598999d14b5c03dd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.db0b4456.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 139944,
+      "sha256": "db0b44560e39be1c0664d3d2d58dc70105a89e44ac9ea2d3f9123d2dfa80695e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.e2b26417.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 50202,
+      "sha256": "e2b2641721fd378d003803e72182bb97a5fc6dee260da485024516f687135f1e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.66b748a9.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 54912,
+      "sha256": "66b748a9a3344c961f74bd8bc1d1dd45a4a28e1ce5624026f0a14b18e41fe215",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.a237e3b0.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 110896,
+      "sha256": "a237e3b0e3baa0d0033c6bc149dc796af3a7a65fd76d2672d7930ea1a1a89ff4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.d794d22e.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 210498,
+      "sha256": "d794d22e57ad339e23f3d41f7007083ae95ca11a1a5f3dd6feb1b017f6989a0c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.203e0eb4.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6568,
+      "sha256": "203e0eb4f7ca9e3051a9b3ac0886b593310fd47ade40dfe8e773317ab87eb530",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 732914
+}

@@ -1,0 +1,105 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 1,
+  "id": "desert-afterglow",
+  "packVersion": 1,
+  "name": "Desert Afterglow",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#553232",
+    "tile": "#6C4E4D",
+    "glyph": "#FAF8F2",
+    "accent": "#E4894D",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Desert Afterglow",
+    "mood": "Terracotta dunes glowing after sunset, warm cocoa and ivory.",
+    "tags": [
+      "desert",
+      "afterglow",
+      "terracotta",
+      "dunes",
+      "glowing",
+      "after",
+      "sunset",
+      "warm",
+      "cocoa",
+      "ivory",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Jacob Castle (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Create photographic portrait 9:19.5 iPhone wallpaper 'Desert Afterglow' using attached Jacob Castle desert photograph as natural reference. A sophisticated warm theme: upper55% calm dark cocoa-plum dusk sky grading softly toward muted apricot near horizon; lower45% sculptural terracotta desert dunes, beautiful fine wind-ripple sand, long deep aubergine shadows, thin copper light along sharp dune crests. Low horizon and elegant sweeping S-curve dune ridge, realistic natural photography with a refined editorial colour grade. Subtle warm glow at horizon but no visible sun disk. Dark enough upper area to blend cocoa icon tiles and ivory lettering, retain natural texture rather than flat solid. No stars, moon, foliage, footprints, people, buildings, UI, text, logos or borders. Fresh restrained cinematic photographic reinterpretation, not illustration.",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "zkgKGwaEewh5hXl6dHhQlwc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2576832c.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 94022,
+      "sha256": "2576832c31003c1ad3729dce3b6293a76903e70fbcbe1ba40579d867be8e5c2e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.5f6e5641.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 83208,
+      "sha256": "5f6e5641a5948cb17520fb80039489370bd72d93c1821139fa7411c602a03116",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.afdeb4ea.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 40718,
+      "sha256": "afdeb4ea1b000c69511bc555ab9080bd2b570390ae2e713576c054072f1fadde",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.d2c31757.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 16680,
+      "sha256": "d2c31757113a3280ad2fc38cef633366ccdbe5c65421741762ebcc6bb2b9b95e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.44fa74e5.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 71154,
+      "sha256": "44fa74e5f15660d1a398664aaa592ff18277119cd698794cfe39bf708526d778",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.2d3cb7bc.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 166854,
+      "sha256": "2d3cb7bc5d3f6c47a352358b4b413a11df905d3019c6c80310812ee3ad833b89",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.2e482e82.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6870,
+      "sha256": "2e482e82e5b8cfa2f9c849326a9c362b0dcbf4110843b1dcb4be7de1f8bb3255",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 479506
+}

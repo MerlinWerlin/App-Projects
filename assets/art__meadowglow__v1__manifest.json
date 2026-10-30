@@ -1,0 +1,102 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 1,
+  "id": "meadowglow",
+  "packVersion": 1,
+  "name": "Meadowglow",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F5EADE",
+    "tile": "#D7CDC2",
+    "glyph": "#1C1816",
+    "accent": "#A18346",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Meadowglow",
+    "mood": "A sunlit daisy meadow in soft morning mist.",
+    "tags": [
+      "meadowglow",
+      "sunlit",
+      "daisy",
+      "meadow",
+      "soft",
+      "morning",
+      "mist",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "bykSIwJ3j0iHiHd4d4BnBxk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.c9ab9ffa.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 150108,
+      "sha256": "c9ab9ffae8d3c67a0822df6364ef0a74b6dca2269a3c6ed26e7807ffb9f3740f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.fc2f5be1.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 136476,
+      "sha256": "fc2f5be103a79b09c0b16acb01f13642706b7b63cddd70716fe59eef31acfed1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.57fa0d4e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 59850,
+      "sha256": "57fa0d4e309ab48a34ca0cce17afa6442b56e86a5d38a4cf4741c3d5c1a3212d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.6e971e17.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 25020,
+      "sha256": "6e971e17ad8ddfb30432c2243733dac48c5479aaaf49348f8510ec7756a2eaa6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.d5d4f22d.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 58330,
+      "sha256": "d5d4f22dc98c24102057b44fd675fd53cd64e836bd9c3dfa05e79827435f64b5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.41469b52.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 150312,
+      "sha256": "41469b5225b6b01af8623f1be27a28d492ad425ef63ab725264ec53cc1cdf43b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.98e8601f.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 16644,
+      "sha256": "98e8601fe784bd15a546a602cf194080d6774b05932c7797bb33955068948ff0",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 596740
+}

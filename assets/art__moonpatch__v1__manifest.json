@@ -1,0 +1,102 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 1,
+  "id": "moonpatch",
+  "packVersion": 1,
+  "name": "Moonpatch",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#101322",
+    "tile": "#31333F",
+    "glyph": "#FAF8F2",
+    "accent": "#C2A993",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Moonpatch",
+    "mood": "A tiny felt astronaut on a cratered wool moon.",
+    "tags": [
+      "moonpatch",
+      "tiny",
+      "felt",
+      "astronaut",
+      "cratered",
+      "wool",
+      "moon",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "ywcKEwJXgMl3hndpV4B8Bdg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.3fb93b60.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 610984,
+      "sha256": "3fb93b607f05b0e9d696264f01ab52aaf24a9d55b91284f1f18c1874c3e3c55b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1a3ad881.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 582510,
+      "sha256": "1a3ad881b1724aeda81b0beebb2a62b7a1c94b93cb4ac8ce3eb68f7fa2bf1fae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.81570331.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 277052,
+      "sha256": "81570331986d513391e24c639e0911841681d4afb0dc9f9b8d0fe83ced61d21a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.fad8004e.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 76640,
+      "sha256": "fad8004e8a8406ebdfc9c99cc1252f88946176000c20c123b58d4bcf7ae04848",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.69901093.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 179586,
+      "sha256": "699010936fa9fb3acc6228a0c5ce2ed488a1c09f5c5de622a5c001af2d645245",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.fbc62e70.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 322676,
+      "sha256": "fbc62e70c39a554615e4bc7d999c5ab364fe8339debc21e8b0caf470f4756923",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.c40a80dd.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 31784,
+      "sha256": "c40a80dd4b0f407d2c1f6d5dbba78d6d6483eec34be10fe93cb9db0a8ff8766d",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2081232
+}

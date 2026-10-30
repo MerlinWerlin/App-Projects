@@ -1,0 +1,104 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 1,
+  "id": "cloud-atelier",
+  "packVersion": 1,
+  "name": "Cloud Atelier",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#FEBEAA",
+    "tile": "#DEA795",
+    "glyph": "#1C1816",
+    "accent": "#FDB8AE",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Cloud Atelier",
+    "mood": "Peach skies, pearl clouds, a cloud whale and paper boats.",
+    "tags": [
+      "cloud",
+      "atelier",
+      "peach",
+      "skies",
+      "pearl",
+      "clouds",
+      "whale",
+      "paper",
+      "boats",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Jei Lee (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Create an exquisite original iPhone wallpaper for the full theme CLOUD ATELIER. Portrait 9:19.5 edge to edge, no text, no UI, no borders. Reference image is only a mood reference for pink sky and soft cloud materials; reinterpret substantially. Dreamlike pale peach upper sky, feathered lilac mist and pearl white voluminous cloud archipelagos in the bottom third. A tiny folded ivory paper sailboat catches a thin ribbon of golden light far down in the lower right clouds, small subtle discovery. Upper two thirds very calm pale apricot gradient for legible app icons. Editorial luxury miniature photography, tactile cotton clouds, physically convincing side lighting, pearlescent soft silver and muted lavender shadows. Sophisticated, airy, restrained, distinctly different from dark space or forest themes. No buildings, no stars, no cartoon faces, no extra objects.",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "MnkGCwJmfxl5e3RpZo+R+Io=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.fffbb309.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 64872,
+      "sha256": "fffbb309676de7ebf3f782df2fdac5f5bfaedd40e58ce26d7512872978e1b9f1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.6053302c.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 56354,
+      "sha256": "6053302cc4df917fb2e14c57ff3abaa2fb0149dffdfa3124a1561c84841678e0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.24baffb5.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 27132,
+      "sha256": "24baffb5b2ce6f9e85a33759e791c28596fff898b6be4eb6c43d7c4a29cdab56",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.ca139b9f.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 40022,
+      "sha256": "ca139b9ffb166fb0bc608d1a4db51100e2b7f573c3fd969dc90107f123630f14",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.fa53c452.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 71788,
+      "sha256": "fa53c452379fa03d8958d555396313a6168f60c373433053cc85fec667d8fb22",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.6610f89d.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 89442,
+      "sha256": "6610f89d9895b93abc9b8bf56eff3112d3d3258d9980f50f41842c65c8a66f7a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.a4d7c735.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6222,
+      "sha256": "a4d7c7350a683e4c5cb8fa8ef56efa87241b9d49161723f9db1f72c376be21c2",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 355832
+}
