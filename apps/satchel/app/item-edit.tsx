@@ -5,6 +5,8 @@
 // successful Save the copies of removed files are deleted; leaving without saving deletes only the copies added in
 // this form, so the saved booking and its files are untouched by Cancel or Discard.
 // T72: each place (hotel / activity / car hire, or a journey's from and to) can be put on the map (PositionField).
+// T77: opened with ?paste=<key> from Paste a booking, the form starts filled from the pasted draft (src/state/
+// pasteDraft.ts) with a note to check every field; nothing is saved until Save, and leaving asks first.
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo, View } from 'react-native';
@@ -27,6 +29,7 @@ import {
 } from '../src/core/trips.ts';
 import { checkWallTime, isLocalDateTime, isValidZone } from '../src/core/tz.ts';
 import { removeAppFiles } from '../src/native/files.ts';
+import { pastedDraft } from '../src/state/pasteDraft.ts';
 import { useApp } from '../src/state/app.tsx';
 import { findItem, useTrips } from '../src/state/trips.tsx';
 import { space } from '../src/theme/tokens.ts';
@@ -41,25 +44,27 @@ import { Body, Button, Chip, EmptyState, Label, Screen, TextField, Warning } fro
 import { ZoneField } from '../src/ui/ZonePicker.tsx';
 
 export default function ItemEditScreen() {
-  const params = useLocalSearchParams<{ tripId: string; id?: string; kind?: string; date?: string }>();
+  const params = useLocalSearchParams<{ tripId: string; id?: string; kind?: string; date?: string; paste?: string }>();
   const { t, theme, lang } = useApp();
   const { trips, saveItem } = useTrips();
   const router = useRouter();
   const trip = trips.find((x) => x.id === params.tripId);
   const prev = params.id ? findItem(trips, params.id)?.item : undefined;
   const lastTz = trip?.items.length ? trip.items[trip.items.length - 1].end?.tz ?? trip.items[trip.items.length - 1].start.tz : undefined;
+  const [pasted] = useState(() => (prev ? undefined : pastedDraft(params.paste)));
   const [initial] = useState<ItemDraft>(() => {
     if (prev) return draftFromItem(prev);
     const kind = (ITEM_KINDS as readonly string[]).includes(params.kind ?? '') ? (params.kind as ItemKind) : 'activity';
     return newItemDraft(kind, params.date ?? trip?.startDate ?? '', lastTz ?? deviceZone());
   });
-  const [d, setD] = useState<ItemDraft>(initial);
+  // A pasted draft counts as unsaved from the start, so leaving without Save always asks.
+  const [d, setD] = useState<ItemDraft>(() => (pasted ? { ...pasted.draft } : initial));
   const [errors, setErrors] = useState<ItemError[]>([]);
   const [saving, setSaving] = useState(false);
   const [saveFailed, setSaveFailed] = useState(false);
   const [initialFiles] = useState<Attachment[]>(() => prev?.attachments ?? []);
   const [files, setFiles] = useState<Attachment[]>(initialFiles);
-  const airport = useAirportForm(prev);
+  const airport = useAirportForm(prev, pasted?.airport);
   const savedIds = useMemo(() => new Set(initialFiles.map((a) => a.id)), [initialFiles]);
   // Every file copied in by this form, and whether the booking was saved: on leaving unsaved, those copies go.
   const addedFiles = useRef<Attachment[]>([]);
@@ -139,6 +144,7 @@ export default function ItemEditScreen() {
   return (
     <Screen>
       <Stack.Screen options={{ title: t(formTitleKey(d.kind, !!prev)), gestureEnabled }} />
+      {pasted ? <Warning text={t('paste.form.banner')} /> : null}
       <Label>{t('itemEdit.kind')}</Label>
       <View accessibilityRole="radiogroup" accessibilityLabel={t('itemEdit.kind')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
         {ITEM_KINDS.map((k) => (

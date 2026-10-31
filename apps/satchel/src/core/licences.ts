@@ -115,9 +115,25 @@ export const LICENCE_SECTIONS: readonly LicenceSection[] = [
   },
 ];
 
+/**
+ * T76: a short plain-words summary of each licence family the list uses (catalogue keys, general guidance and not
+ * legal advice). Licences without one (vendor terms, Satchel's own) show just their name.
+ */
+export const LICENCE_SUMMARIES: Readonly<Record<string, string>> = {
+  MIT: 'f88.licences.summary.mit',
+  'SIL OFL 1.1': 'f88.licences.summary.ofl',
+  'ODbL 1.0': 'f88.licences.summary.odbl',
+  'ODbL 1.0 (data), BSD (code)': 'f88.licences.summary.odblBsd',
+  'CC BY 4.0': 'f88.licences.summary.ccby',
+  'Public domain': 'f88.licences.summary.pd',
+};
+
+/** The summary key for an entry's licence, or null. */
+export const summaryKey = (e: Pick<LicenceEntry, 'licence'>): string | null => LICENCE_SUMMARIES[e.licence] ?? null;
+
 /** Every npm package the list covers. */
 export const coveredPackages = (): string[] => LICENCE_SECTIONS.flatMap((s) => s.entries.flatMap((e) => [...(e.packages ?? [])]));
 
 /** Every catalogue key the list refers to (section titles, what, credit). */
 export const licenceKeys = (): string[] =>
-  LICENCE_SECTIONS.flatMap((s) => [s.title, ...s.entries.flatMap((e) => [e.what, e.credit].filter((k): k is string => !!k))]);
+  LICENCE_SECTIONS.flatMap((s) => [s.title, ...s.entries.flatMap((e) => [e.what, e.credit, summaryKey(e)].filter((k): k is string => !!k))]);

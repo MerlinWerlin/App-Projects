@@ -3,6 +3,8 @@
 // a live leave-by preview and warnings), the Settings defaults section, and the shared prefs hook. Logic in
 // src/core/leaveby.ts. app/item-edit.tsx only needs useAirportForm + <AirportFields>, so the hook into that screen
 // stays a few lines.
+// T76: "Use my default" on the buffer names the Settings value for this flight's type, and a picked flight type can
+// go back to the guess from the time zones.
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { Text, View, type AccessibilityActionEvent } from 'react-native';
@@ -14,6 +16,7 @@ import {
   badClock,
   BUFFER_STEP,
   DEFAULT_AIRPORT_PREFS,
+  defaultBuffer,
   MAX_BUFFER,
   MAX_TRAVEL,
   normaliseAirportPrefs,
@@ -22,6 +25,7 @@ import {
   TRAVEL_STEP,
   withAirport,
   type AirportDraft,
+  type AirportInfo,
   type AirportPrefs,
   type AirportPlan,
   type AirportWarning,
@@ -51,10 +55,10 @@ export type AirportForm = {
   apply: <I extends Item>(item: I) => I;
 };
 
-/** Airport form state for the booking being edited (or a new one). */
-export function useAirportForm(prev?: Item): AirportForm {
+/** Airport form state for the booking being edited (or a new one; `seed` starts a new one filled, e.g. from Paste a booking). */
+export function useAirportForm(prev?: Item, seed?: AirportInfo): AirportForm {
   const [initial] = useState<AirportDraft>(() => airportDraft(prev?.airport));
-  const [draft, setDraft] = useState<AirportDraft>(initial);
+  const [draft, setDraft] = useState<AirportDraft>(() => (prev ? initial : airportDraft(seed)));
   return {
     draft,
     set: (k, v) => setDraft((o) => ({ ...o, [k]: v })),
@@ -217,6 +221,7 @@ export function AirportFields({ form, start, endTz }: { form: AirportForm; start
         ))}
       </View>
       {!d.scope && plan ? <Body muted>{t('airport.scopeGuess', { scope: scopeName(plan.scope) })}</Body> : null}
+      {d.scope ? <Button label={t('f88.airport.scopeAuto')} hint={t('f88.airport.scopeAutoHint')} kind="quiet" icon="refresh" onPress={() => form.set('scope', '')} /> : null}
 
       <Label>{t('airport.buffer')}</Label>
       <MinutesRow
@@ -228,7 +233,13 @@ export function AirportFields({ form, start, endTz }: { form: AirportForm; start
         onChange={(m) => form.set('bufferMin', String(m))}
       />
       {d.bufferMin ? (
-        <Button label={t('airport.useDefault')} hint={t('airport.useDefaultHint')} kind="quiet" onPress={() => form.set('bufferMin', '')} />
+        <Button
+          label={plan ? t('f88.airport.useDefaultBuffer', { min: defaultBuffer(prefs, plan.scope), scope: scopeName(plan.scope).toLocaleLowerCase() }) : t('airport.useDefault')}
+          hint={t('airport.useDefaultHint')}
+          kind="quiet"
+          icon="refresh"
+          onPress={() => form.set('bufferMin', '')}
+        />
       ) : plan ? (
         <Body muted>{t('airport.bufferDefault', { scope: scopeName(plan.scope).toLocaleLowerCase() })}</Body>
       ) : null}

@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "checked": "2026-10-31",
+  "note": "T78 'When things go wrong' guides. Structure only: the words live in src/i18n/en/troubles.ts under trouble.guide.<id>.* and trouble.step.<guide>.<step>.*. General guidance written by the model, not legal advice: no prices, no country-specific law, no named companies. Actions: call:<police|ambulance|general> (Emergency tab country), insurer (emergency card), contact (emergency card contacts), numbers:<group> (My important numbers), vault:<doc kind>, hotel (address card), phrase:<phrase id> (only when phrases.json has it), help (Nearest help).",
+  "guides": [
+    {
+      "id": "passport",
+      "icon": "document-text-outline",
+      "tone": "sea",
+      "steps": [
+        { "id": "search", "actions": [] },
+        { "id": "report", "actions": ["phrase:police"] },
+        { "id": "embassy", "actions": ["numbers:embassy"] },
+        { "id": "copy", "actions": ["vault:passport"] },
+        { "id": "photos", "actions": [] },
+        { "id": "proof", "actions": ["vault:licence"] },
+        { "id": "airline", "actions": ["numbers:airline"] },
+        { "id": "insurer", "actions": ["insurer"] }
+      ]
+    },
+    {
+      "id": "card",
+      "icon": "card-outline",
+      "tone": "warn",
+      "steps": [
+        { "id": "block", "actions": ["numbers:cardBlock"] },
+        { "id": "others", "actions": [] },
+        { "id": "payments", "actions": [] },
+        { "id": "police", "actions": ["phrase:police"] },
+        { "id": "backup", "actions": [] },
+        { "id": "replace", "actions": ["hotel"] },
+        { "id": "passwords", "actions": [] }
+      ]
+    },
+    {
+      "id": "phone",
+      "icon": "phone-portrait-outline",
+      "tone": "teal",
+      "steps": [
+        { "id": "ring", "actions": [] },
+        { "id": "locate", "actions": [] },
+        { "id": "lost", "actions": [] },
+        { "id": "sim", "actions": [] },
+        { "id": "passwords", "actions": [] },
+        { "id": "bank", "actions": ["numbers:cardBlock"] },
+        { "id": "police", "actions": ["phrase:police"] },
+        { "id": "erase", "actions": [] }
+      ]
+    },
+    {
+      "id": "theft",
+      "icon": "shield-outline",
+      "tone": "danger",
+      "steps": [
+        { "id": "safe", "actions": ["call:police"] },
+        { "id": "list", "actions": [] },
+        { "id": "station", "actions": ["hotel"] },
+        { "id": "language", "actions": ["phrase:police"] },
+        { "id": "written", "actions": [] },
+        { "id": "copy", "actions": [] },
+        { "id": "insurer", "actions": ["insurer"] },
+        { "id": "cards", "actions": ["numbers:cardBlock"] }
+      ]
+    },
+    {
+      "id": "flight",
+      "icon": "airplane-outline",
+      "tone": "accent",
+      "steps": [
+        { "id": "airline", "actions": ["numbers:airline"] },
+        { "id": "booking", "actions": [] },
+        { "id": "options", "actions": [] },
+        { "id": "care", "actions": [] },
+        { "id": "receipts", "actions": [] },
+        { "id": "stay", "actions": ["numbers:accommodation"] },
+        { "id": "insurer", "actions": ["insurer"] }
+      ]
+    },
+    {
+      "id": "bag",
+      "icon": "briefcase-outline",
+      "tone": "ok",
+      "steps": [
+        { "id": "desk", "actions": [] },
+        { "id": "reference", "actions": [] },
+        { "id": "describe", "actions": [] },
+        { "id": "address", "actions": ["hotel"] },
+        { "id": "essentials", "actions": [] },
+        { "id": "follow", "actions": ["numbers:airline"] },
+        { "id": "insurer", "actions": ["insurer"] }
+      ]
+    },
+    {
+      "id": "medical",
+      "icon": "medkit-outline",
+      "tone": "danger",
+      "steps": [
+        { "id": "emergency", "actions": ["call:ambulance"] },
+        { "id": "insurer", "actions": ["insurer"] },
+        { "id": "where", "actions": ["help"] },
+        { "id": "explain", "actions": ["phrase:doctor"] },
+        { "id": "details", "actions": [] },
+        { "id": "papers", "actions": [] },
+        { "id": "home", "actions": ["contact"] }
+      ]
+    },
+    {
+      "id": "scam",
+      "icon": "alert-circle-outline",
+      "tone": "warn",
+      "steps": [
+        { "id": "safe", "actions": [] },
+        { "id": "details", "actions": [] },
+        { "id": "receipt", "actions": [] },
+        { "id": "card", "actions": ["numbers:cardBlock"] },
+        { "id": "tickets", "actions": [] },
+        { "id": "report", "actions": ["phrase:police"] },
+        { "id": "hotel", "actions": ["numbers:accommodation"] }
+      ]
+    }
+  ]
+}

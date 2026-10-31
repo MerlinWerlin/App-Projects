@@ -59,6 +59,8 @@ export type PackItem = PackingItem & {
   templateItemId?: string;
   /** T75: the smart-packing suggestion it was added from (src/core/smartpack.ts), so it is never suggested again. */
   suggestionId?: string;
+  /** T76: a quantity the traveller set by hand; it wins over the worked-out one until they go back to the suggestion. */
+  userQty?: number;
 };
 export type PackList = Omit<PackingList, 'items'> & {
   items: PackItem[];
@@ -279,6 +281,35 @@ export function renameItem(list: PackList, id: string, label: string): PackList 
   const clean = label.trim().replace(/\s+/g, ' ');
   if (!normaliseLabel(clean)) return list;
   return mapItem(list, id, (i) => ({ ...i, label: clean }));
+}
+
+/** T76: the largest quantity a row can be given by hand. */
+export const MAX_QTY = 99;
+
+/** A hand-set quantity, or undefined for anything that isn't a whole number from 1 to MAX_QTY (junk from storage). */
+export function cleanQty(v: unknown): number | undefined {
+  if (typeof v !== 'number' || !Number.isFinite(v)) return undefined;
+  const n = Math.floor(v);
+  return n >= 1 && n <= MAX_QTY ? n : undefined;
+}
+
+/**
+ * T76: sets a row's quantity by hand (clamped to 1..MAX_QTY). `null` drops the hand-set quantity, so the row shows
+ * the worked-out one again. Unknown ids and no-op changes return the same list.
+ */
+export function setItemQty(list: PackList, id: string, qty: number | null): PackList {
+  const item = list.items.find((i) => i.id === id);
+  if (!item) return list;
+  if (qty === null || !Number.isFinite(qty)) {
+    if (item.userQty === undefined) return list;
+    return mapItem(list, id, (i) => {
+      const { userQty: _drop, ...rest } = i;
+      return rest;
+    });
+  }
+  const n = Math.min(MAX_QTY, Math.max(1, Math.floor(qty)));
+  if (item.userQty === n) return list;
+  return mapItem(list, id, (i) => ({ ...i, userQty: n }));
 }
 
 /** Unticks every packed item without deleting anything. */

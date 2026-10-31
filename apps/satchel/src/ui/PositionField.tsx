@@ -4,13 +4,18 @@
 // saved places and the positions its other bookings have; "Remove position" clears it. The value is the draft's
 // "lat,lon" text (src/core/position.ts). Sheets fade in (no slide or spring). Nothing is stored until the booking is
 // saved, and no location is read: the user places the pin.
-import { memo, useMemo, useState } from 'react';
+// T76: a downloaded offline city (Map tab) is drawn under the pins as LocalTile tiles, picked by where the map looks.
+import { memo, useEffect, useMemo, useState } from 'react';
 import { FlatList, Modal, Text, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { pickCityFor, type CityMap } from '../core/citymaps.ts';
 import type { Trip } from '../core/model.ts';
 import { type LatLon, type Region } from '../core/poi.ts';
 import { decodePos, encodePos, formatPos, pickerRegion, positionChoices, roundPos, type PositionChoice } from '../core/position.ts';
+import { cityMapsChanged } from '../core/signal.ts';
+import { listInstalled, offlineTilesFor } from '../native/cityMaps.ts';
 import { SatchelMap, type MapPin } from '../native/maps.tsx';
+import { useNetworkStatus } from '../native/network.ts';
 import { useApp } from '../state/app.tsx';
 import { fonts, radius, space, typeScale } from '../theme/tokens.ts';
 import { Body, Button, PressableScale } from './kit.tsx';
@@ -26,6 +31,28 @@ function MapSheet({ field, value, choices, onUse, onClose }: { field: string; va
   const { height } = useWindowDimensions();
   const [chosen, setChosen] = useState<Chosen | null>(value ? { at: value, name: null } : null);
   const [initialRegion] = useState<Region>(() => pickerRegion(value, choices) ?? WORLD);
+  // T76: a downloaded city's tiles are drawn under the pins, as on the Map tab, so the picker works offline there.
+  const net = useNetworkStatus();
+  const [installed, setInstalled] = useState<CityMap[]>([]);
+  useEffect(() => {
+    let live = true;
+    const load = () => {
+      listInstalled()
+        .then((list) => {
+          if (live) setInstalled(list);
+        })
+        .catch(() => {});
+    };
+    load();
+    const off = cityMapsChanged.subscribe(load);
+    return () => {
+      live = false;
+      off();
+    };
+  }, []);
+  const [view, setView] = useState<LatLon>(() => ({ lat: initialRegion.latitude, lon: initialRegion.longitude }));
+  const offlineCity = useMemo(() => pickCityFor(view.lat, view.lon, installed), [view, installed]);
+  const offlineTiles = useMemo(() => (offlineCity ? offlineTilesFor(offlineCity) : null), [offlineCity]);
   const pins = useMemo<MapPin[]>(() => {
     const out: MapPin[] = choices.map((c) => ({
       id: `c:${c.id}`,
@@ -64,7 +91,11 @@ function MapSheet({ field, value, choices, onUse, onClose }: { field: string; va
         label={t('position.mapLabel')}
         fallbackTitle={t('position.mapFallbackTitle')}
         fallbackBody={t('position.mapFallbackBody')}
+        offlineTiles={offlineTiles}
+        limitZoom={net === 'offline'}
+        onRegionChange={(r) => setView({ lat: r.latitude, lon: r.longitude })}
       />
+      {offlineCity && offlineTiles ? <Text style={[typeScale.small, { color: theme.muted }]}>{t('f88.position.offlineCity', { city: offlineCity.name })}</Text> : null}
       <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: chosen ? theme.ink : theme.muted, fontVariant: ['tabular-nums'] }}>
         {status}
       </Text>

@@ -38,6 +38,12 @@ export const AIRPORT_PREFS_KEY = 'satchel.airport.v1';
 export const DEFAULT_AIRPORT_PREFS: AirportPrefs = { travelMin: null, domesticMin: 90, internationalMin: 180 };
 
 export const BUFFER_STEP = 15;
+
+/** T76: the Settings buffer for a flight type ("Use my default" on a flight goes back to it). */
+export const defaultBuffer = (prefs: AirportPrefs, scope: FlightScope): number => {
+  const p = normaliseAirportPrefs(prefs);
+  return scope === 'domestic' ? p.domesticMin : p.internationalMin;
+};
 export const MAX_BUFFER = 360;
 export const TRAVEL_STEP = 5;
 export const MAX_TRAVEL = 300;
@@ -163,7 +169,7 @@ export function airportPlan(item: Pick<Item, 'kind' | 'start' | 'end'> & { airpo
   const departure = moment(toUtc(item.start), tz);
   const endOk = !!item.end && typeof item.end.tz === 'string' && isValidZone(item.end.tz);
   const scope = a.scope ?? guessScope({ start: item.start, end: endOk ? item.end : undefined });
-  const bufferMin = a.bufferMin ?? (scope === 'domestic' ? p.domesticMin : p.internationalMin);
+  const bufferMin = a.bufferMin ?? defaultBuffer(p, scope);
   const travelMin = a.travelMin ?? p.travelMin;
   const warnings: AirportWarning[] = [];
 

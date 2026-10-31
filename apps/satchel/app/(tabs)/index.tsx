@@ -142,6 +142,7 @@ export default function TripsScreen() {
       ListFooterComponent={
         <View style={{ gap: space.s, marginTop: space.s }}>
           <Button label={t('trips.add')} hint={t('spec41.trips.addHint')} icon="add" onPress={() => router.push('/trip-edit')} />
+          {list.length ? <Button label={t('paste.open')} hint={t('paste.openHint')} kind="secondary" icon="clipboard-outline" onPress={() => router.push('/paste-booking')} /> : null}
           <TripImport />
           <Button label={t('essentials.title')} hint={t('essentials.body')} kind="quiet" icon="battery-half-outline" onPress={() => router.push('/essentials')} />
           <Button label={t('trips.settings')} hint={t('trips.settingsHint')} kind="quiet" icon="settings-outline" onPress={() => router.push('/settings')} />

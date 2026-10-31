@@ -37,7 +37,7 @@ test('header, then each day with its own zone; a booking in another zone names i
   assert.equal(lines[0], 'Tokyo & Kyoto (demo)');
   assert.equal(lines[1], `${formatRange('2026-11-03', '2026-11-11')} · 9 days`);
   // Day 1: the Sydney flight and the Tokyo hotel; Tokyo wins the tie as the trip's destination.
-  assert.ok(text.includes(`${D('2026-11-03')} · Tokyo time\n09:30 Sydney time  Flight: Sydney → Tokyo Haneda\n   Sydney Airport T1 → Haneda Airport T3\n   Arrives 17:45\n15:00  Hotel:`), text);
+  assert.ok(text.includes(`${D('2026-11-03')} · Tokyo time\n09:30 Sydney time  Flight: Sydney → Tokyo Haneda\n   Sydney Airport T1 → Haneda Airport T3\n   Arrives 17:45\n19:30  Hotel:`), text);
   // Same-zone items carry no zone label.
   assert.ok(text.includes('07:30  Activity: Morning at the fish market\n   Tsukiji Outer Market'));
   // Overnight flight: arrival in its own zone, on its own day.

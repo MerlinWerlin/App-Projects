@@ -598,6 +598,8 @@ export default function MapScreen() {
       <View style={{ gap: space.s }}>
         <Button label={t('map.whereAmI')} hint={t('map.whereHint')} onPress={whereAmI} />
         <Button kind="secondary" icon="compass-outline" label={t('wayback.open')} hint={t('wayback.openHint')} onPress={() => router.push('/wayback')} />
+        {/* T79: opens the Toilets tab and starts one "near me" search (the nonce makes each tap a new search). */}
+        <Button kind="secondary" icon="male-female-outline" label={t('toiletplus.nearestToilet')} hint={t('toiletplus.nearestToiletHint')} onPress={() => router.navigate({ pathname: '/toilets', params: { find: String(Date.now()) } })} />
         <Body muted>{t('map.whereExplain')}</Body>
         {loc.s === 'checking' ? (
           <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 15, color: theme.muted }}>

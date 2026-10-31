@@ -29,6 +29,14 @@ export const SPEC_SYNC_PREFIXES = [
   'brief.',
   'triproute.',
   'weather.',
+  // T76: the run-88 features (T72 position picker and licences, T73 find my way back, T74 airport day, T75 smart
+  // packing) and the T76 follow-ups.
+  'position.',
+  'licences.',
+  'wayback.',
+  'airport.',
+  'smartpack.',
+  'f88.',
 ] as const;
 
 /** Single keys mirrored as well: map.online, the T48 emergency fallback wording, the Toilets tab, home country. */
