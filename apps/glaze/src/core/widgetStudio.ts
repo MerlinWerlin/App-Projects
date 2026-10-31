@@ -806,3 +806,50 @@ export function catalogueSpecInLook(spec: CatalogueSpec, look: WidgetLook): Cata
   if (look === spec.look || !catalogueLooksFor(spec.family).includes(look)) return spec;
   return applyCatalogueEdits(spec, { look }).spec;
 }
+
+// ---------------------------------------------------------------------------------- photo copies (T80)
+//
+// A photo picked in the studio is a private copy in documents/backgrounds/ (store/background
+// keepPhotoCopy). When a later pick, a reset or another background replaces it, the old copy is
+// no longer referenced by any theme's studio and can be deleted. The widget on the Home Screen
+// keeps working: the native bridge copied the photo into the App Group when it was added.
+
+/** Every studio photo URI one stored theme entry (raw, any theme) still points at. Never throws. */
+export function studioPhotoUris(entry: unknown): string[] {
+  let raw: unknown = entry;
+  if (typeof entry === 'string') {
+    try {
+      raw = JSON.parse(entry);
+    } catch {
+      return [];
+    }
+  }
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return [];
+  const drafts = (raw as Record<string, unknown>).drafts;
+  if (!drafts || typeof drafts !== 'object' || Array.isArray(drafts)) return [];
+  const out = new Set<string>();
+  for (const d of Object.values(drafts as Record<string, unknown>)) {
+    const bg = d && typeof d === 'object' ? parseBackground((d as Record<string, unknown>).background) : null;
+    if (bg && bg.kind === 'photo') out.add(bg.uri);
+  }
+  return [...out];
+}
+
+/**
+ * Studio photo copies `prev` (the whole stored map, themeId → entry) used that neither `next`
+ * nor `keep` (e.g. the wallpaper backgrounds' photos) references any more. Only our own
+ * documents-folder copies (`…/backgrounds/<file>`) are ever returned.
+ */
+export function orphanedStudioPhotos(
+  prev: Record<string, unknown>,
+  next: Record<string, unknown>,
+  keep: Iterable<string> = [],
+): string[] {
+  const used = new Set<string>(keep);
+  for (const e of Object.values(next)) for (const u of studioPhotoUris(e)) used.add(u);
+  const out = new Set<string>();
+  for (const e of Object.values(prev)) {
+    for (const u of studioPhotoUris(e)) if (!used.has(u) && /\/backgrounds\/[^/]+$/.test(u)) out.add(u);
+  }
+  return [...out];
+}
