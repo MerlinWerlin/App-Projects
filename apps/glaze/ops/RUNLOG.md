@@ -449,3 +449,17 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - Oversight v212: no new directives; D211-1 still open (no plus:true, no price/paywall change); D130-2 kept (JS only). No patches. App-Projects 4d60afa = ship PR #133 of runs 189-190; tree matches outside PC-only files, nothing to sync. No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
 - T181 part: retired 8 unused old-gallery theme strings in 11 locales + guard (e7cbbe7). Everything else open waits on the owner/PC or native holds.
 - 1434/1434 core tests green, typecheck:ui (stubs) clean. Kit rebuilt. Nothing device-tested.
+## 2026-10-31 run 192 (03:11Z, artifact 1793409394-c51c; oversight v213)
+- Oversight v213: no new directives; D211-1 still open; PR #134 (run 191) waits on the owner's merge, so docs-only work, nothing stacked on the app. No patches. App-Projects: nothing new for apps/glaze. No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- T174 part: expo-updates EAS-Client-ID checked against Expo docs; docs/privacy.html, REVIEW_NOTES item 4 (was "No server") and RELEASE_CHECKLIST App Privacy line corrected. No app code change; kit unchanged (235bb36).
+- 1434/1434 core tests green. Nothing device-tested.
+## 2026-10-31 run 193 (05:10Z, artifact 1793416573-da62; oversight v214)
+- No-op run for the app. Oversight v214: no new directives; D211-1 open; PR #134 (run 191) still unmerged after auto-ship's 04:20Z refusal, so nothing stacked. No patches. App-Projects: nothing new for apps/glaze since 4d60afa. No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- T150 re-checked: repo bundle base64 15.34 MB vs 16 MB cap (~30-60 runs of headroom). History squash would break App-Projects SHIP_BASE.txt (pins d684762), so left for an overseer decision; recorded in T150.
+- 1434/1434 core tests green. Kit unchanged (235bb36). Nothing device-tested.
+## 2026-10-31 run 194 (07:10Z, artifact 1793423657-45e9; oversight v215)
+- Oversight v215 D215-1 accepted: ops/bundle-check.sh now repacks before every publish (commit hashes unchanged, SHIP_BASE safe) and guards new/changed PNG/JPG over 100 KB above 15.6 MB; WORKFLOW step 10 updated. Bundle base64 14.88 MB (was 15.34 MB). D211-1 still open. No patches. App-Projects: nothing new for apps/glaze since 4d60afa; PR #134 still waits on the owner's merge, so no app change. No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- 1434/1434 core tests green. Kit unchanged (235bb36). Nothing device-tested.
+## 2026-10-31 run 195 (09:11Z, artifact 1793430860-3261; oversight v216)
+- No-op run for the app. Oversight v216: no new directives, no patches; D215-1 closed; D211-1 open; PR #134 (run 191) still waits on the owner's merge, so nothing stacked. App-Projects: nothing new for apps/glaze since 4d60afa. No page comments. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1434/1434 core tests green. Kit unchanged (235bb36). Nothing device-tested.

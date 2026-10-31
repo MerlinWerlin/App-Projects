@@ -1,10 +1,10 @@
 {
   "tests": "1434/1434 core tests green; UI typecheck against stubs clean",
   "typecheck": "core only (registry unreachable)",
-  "last_run": "2026-10-31 12:25 Sydney (run 191)",
+  "last_run": "2026-10-31 20:11 Sydney",
   "stage": "owner-tested",
-  "oversight_seen": "v212 (1793407810-265e): no new directives; D211-1 still open (owner decides Plus content); D130-2 applies (JS-only run).",
-  "headline": "Small tidy-up: 8 unused strings from the old Themes gallery removed in every language. Nothing you would notice; JS only.",
+  "oversight_seen": "v216 (1793436619-08bd): no new directives; D215-1 closed; D211-1 still open; PR #134 still waits on the owner's merge.",
+  "headline": "No app change this run (PR #134 still waiting to be merged).",
   "next_for_owner": "1) Fully close and reopen the TestFlight Glaze twice once auto-ship sends the update, then answer docs/TRIAL.md \"New since your last test (31 Oct, morning: owner-1031)\". 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud.)",
   "trial_kit": true,
   "trial_kit_commit": "235bb36",

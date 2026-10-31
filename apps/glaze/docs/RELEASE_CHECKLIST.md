@@ -35,6 +35,7 @@ the plain `production` profile keep the honest mock. App Store Connect steps: `d
 - [x] Review notes answer Apple's new-developer questions (purpose/audience, no login, no external services, no regional
       differences, no regulated material) — `docs/REVIEW_NOTES.md` "App Review information" (T141)
 - [ ] Listing fields via `scripts/asc/asc.py` in App-Projects (en-AU, unique name check, 6.9" screenshots, IAP review screenshot)
+- [x] EAS Update check (T174, run 192): expo-updates sends a random per-install client ID (Expo docs: "not derived from any hardware or account identifier", pseudonymous) to `u.expo.dev` only to pick the right update; no tracking, no ads, nothing linked to the person. "Data Not Collected" is the intended answer; the cautious alternative, if Apple ever queries it, is Identifiers > Device ID · App Functionality · Not linked · Not tracking. Privacy page and REVIEW_NOTES item 4 now say this
 - [ ] Owner: App Privacy ("Data Not Collected"), review contact, screen recording on a physical iPhone (launch → theme → icons → widget → Plus Unlock/Restore)
 - [x] Paid Apps Agreement, bank and tax active (account, 23 Oct)
 
