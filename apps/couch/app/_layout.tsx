@@ -133,42 +133,20 @@ function RootStack() {
         }}
       >
         <Stack.Screen name="(tabs)" />
-        <Stack.Screen
-          name="settings"
-          options={{
-            headerShown: true,
-            title: t('app.settings.title'),
-            headerStyle: { backgroundColor: theme.body },
-            headerTintColor: theme.ink,
-          }}
-        />
-        <Stack.Screen
-          name="diagnostics"
-          options={{
-            headerShown: true,
-            title: t('app.diagnostics.title'),
-            headerStyle: { backgroundColor: theme.body },
-            headerTintColor: theme.ink,
-          }}
-        />
-        <Stack.Screen
-          name="add-tv"
-          options={{
-            presentation: 'modal',
-            headerShown: true,
-            title: t('app.addTv.title'),
-            headerStyle: { backgroundColor: theme.body },
-            headerTintColor: theme.ink,
-          }}
-        />
+        <Stack.Screen name="settings" options={{ headerShown: false, title: t('app.settings.title') }} />
+        <Stack.Screen name="diagnostics" options={{ headerShown: false, title: t('app.diagnostics.title') }} />
+        {/* Add a TV draws its own large title (LargeTitleHeader). The options live here only: setting them
+            from inside the screen re-applied them on every scan update, and the sheet's top jumped up and
+            down and ate taps while scanning (owner TestFlight feedback 1 Nov 2026). */}
+        <Stack.Screen name="add-tv" options={{ presentation: 'modal', headerShown: false, title: t('app.addTv.title') }} />
         {/* Owner 24 Oct 2026: Send feedback / request a feature (from Settings; draws its own large title). */}
         <Stack.Screen name="feedback" />
         {/* cast-1024 (T92): AirPlay / Screen Mirroring guide, opened from the Cast tab. */}
-        <Stack.Screen name="airplay" options={{ presentation: 'modal' }} />
-        <Stack.Screen name="choose-apps" options={{ headerShown: true, title: t('app.chooseApps.title'), headerStyle: { backgroundColor: theme.body }, headerTintColor: theme.ink }} />
-        <Stack.Screen name="themes" options={{ headerShown: true, title: t('app.themes.title'), headerStyle: { backgroundColor: theme.body }, headerTintColor: theme.ink }} />
-        <Stack.Screen name="plus" options={{ headerShown: true, title: t('app.plus.title'), headerStyle: { backgroundColor: theme.body }, headerTintColor: theme.ink }} />
-        <Stack.Screen name="add-tv-ir" options={{ presentation: 'modal', headerShown: true, title: t('app.addTvIr.title'), headerStyle: { backgroundColor: theme.body }, headerTintColor: theme.ink }} />
+        <Stack.Screen name="airplay" options={{ presentation: 'modal', headerShown: false }} />
+        <Stack.Screen name="choose-apps" options={{ headerShown: false, title: t('app.chooseApps.title') }} />
+        <Stack.Screen name="themes" options={{ headerShown: false, title: t('app.themes.title') }} />
+        <Stack.Screen name="plus" options={{ headerShown: false, title: t('app.plus.title') }} />
+        <Stack.Screen name="add-tv-ir" options={{ presentation: 'modal', headerShown: false, title: t('app.addTvIr.title') }} />
       </Stack>
     </>
   );

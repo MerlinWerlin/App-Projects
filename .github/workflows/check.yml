@@ -46,11 +46,25 @@ jobs:
         working-directory: apps/${{ env.APP }}
         run: set -o pipefail; npx tsc --noEmit 2>&1 | tee /tmp/step-typecheck.log
 
+      # Newer jest-expo needs the React Native Jest preset as a separate package; add it for the run only
+      # (no package.json change) when an app does not list it.
+      - name: Test preset (jest-expo peer)
+        if: success() || failure()
+        working-directory: apps/${{ env.APP }}
+        run: |
+          if [ -d node_modules/jest-expo ] && [ ! -d node_modules/@react-native/jest-preset ]; then
+            rn=$(node -p "require('react-native/package.json').version" 2>/dev/null || echo latest)
+            npm install --no-save --no-audit --no-fund "@react-native/jest-preset@$rn" || npm install --no-save --no-audit --no-fund @react-native/jest-preset || true
+          fi
+
+      # Tests and the bundle still run when the typecheck fails, so one old type error never hides them.
       - name: Tests
+        if: success() || failure()
         working-directory: apps/${{ env.APP }}
         run: set -o pipefail; npm test 2>&1 | tee /tmp/step-tests.log
 
       - name: Bundle (iOS + Android, as Expo Go loads it)
+        if: success() || failure()
         working-directory: apps/${{ env.APP }}
         run: set -o pipefail; npx expo export --platform ios --platform android --output-dir /tmp/export 2>&1 | tee /tmp/step-bundle.log
 

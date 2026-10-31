@@ -1,4 +1,4 @@
-import { Stack, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useT } from '../src/i18n/react';
@@ -58,7 +58,6 @@ export default function PlusScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ headerShown: false }} />
       <LargeTitleHeader
         title={t('app.plus.title')}
         leading={<PillButton variant="plain" label={t('app.common.back')} onPress={() => router.back()} />}

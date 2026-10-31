@@ -779,7 +779,7 @@ export const ar: Catalogue = {
   "app.feedback.thanks": "شكرًا! الرسالة جاهزة في تطبيق البريد، فقط اضغط إرسال هناك.",
   // T92 (cast-1024 phase B): AirPlay / Screen Mirroring button
   "ui.airplay.label": "AirPlay / النسخ المطابق للشاشة",
-  "ui.airplay.hint": "يفتح قائمة أجهزة التلفزيون التي تدعم AirPlay. إذا تعذّر فتحها، يعرض طريقة نسخ الشاشة.",
+  "ui.airplay.hint": "يعرض طريقة عرض شاشة الهاتف على التلفزيون باستخدام AirPlay.",
   // T92 (cast-1024 phase B): Screen Mirroring guide
   "app.airplay.title": "النسخ المطابق للشاشة",
   "app.airplay.intro": "اعرض شاشة هاتفك بالكامل على التلفزيون باستخدام AirPlay.",

@@ -9,6 +9,14 @@ import { join } from 'node:path';
 const root = join(__dirname, '..');
 const read = (f: string) => readFileSync(join(root, f), 'utf8');
 
+// Header options live only in the root stack (owner TestFlight feedback 1 Nov 2026: setting them from
+// inside a screen re-applied them on every render and the Add TV sheet's top jumped while scanning).
+const rootLayout = read('app/_layout.tsx');
+const hidesHeaderInRoot = (name: string, modal = false) => {
+  const opts = modal ? `presentation: 'modal', headerShown: false` : 'headerShown: false';
+  expect(rootLayout).toContain(`<Stack.Screen name="${name}" options={{ ${opts}`);
+};
+
 describe('Settings on design v2 (T68 step 1)', () => {
   const src = read('app/settings.tsx');
 
@@ -16,7 +24,8 @@ describe('Settings on design v2 (T68 step 1)', () => {
     expect(src).toContain('<LargeTitleHeader');
     expect(src).toContain('<InsetGroupedList');
     expect(src).toContain("from '../src/ui/v2'");
-    expect(src).toMatch(/<Stack\.Screen options=\{\{ headerShown: false \}\} \/>/);
+    hidesHeaderInRoot('settings');
+    expect(src).not.toContain('<Stack.Screen');
     expect(src).not.toMatch(/from '\.\.\/src\/theme\/tokens'|from '\.\.\/src\/ui\/Screen'/);
   });
 
@@ -71,7 +80,8 @@ describe('Diagnostics on design v2 (T68 step 3)', () => {
     expect(src).toContain('<LargeTitleHeader');
     expect(src).toContain('<InsetGroupedList');
     expect(src).toContain("from '../src/ui/v2'");
-    expect(src).toMatch(/<Stack\.Screen options=\{\{ headerShown: false \}\} \/>/);
+    hidesHeaderInRoot('diagnostics');
+    expect(src).not.toContain('<Stack.Screen');
     expect(src).not.toMatch(/from '\.\.\/src\/theme\/tokens'|<Screen\b|<Pressable\b/);
     expect(src).toContain('variant="tinted"');
     expect(src).toContain("textStyle('numeric')");
@@ -96,7 +106,8 @@ describe('Plus on design v2 (T68 step 4)', () => {
     expect(src).not.toContain('<InsetGroupedList');
     expect(src).toContain('<Card');
     expect(src).toContain("from '../src/ui/v2'");
-    expect(src).toMatch(/<Stack\.Screen options=\{\{ headerShown: false \}\} \/>/);
+    hidesHeaderInRoot('plus');
+    expect(src).not.toContain('<Stack.Screen');
     expect(src).not.toMatch(/from '\.\.\/src\/theme\/tokens'|<Screen\b|<Pressable\b/);
     expect(src).toMatch(/size="large"\s+stretch/);
     expect(src).toContain('variant="plain"');
@@ -126,7 +137,8 @@ describe('Themes on design v2 (T68 step 5)', () => {
     expect(src).toContain('<InsetGroupedList');
     expect(src).toContain('<Card elevation="mid"');
     expect(src).toContain("from '../src/ui/v2'");
-    expect(src).toMatch(/<Stack\.Screen options=\{\{ headerShown: false \}\} \/>/);
+    hidesHeaderInRoot('themes');
+    expect(src).not.toContain('<Stack.Screen');
     expect(src).not.toMatch(/<Screen\b|<Pressable\b|from '\.\.\/src\/theme\/useTheme'/);
     expect(src).toContain("accessory={{ type: 'check', checked: on }}");
     expect(src).toContain('icon={<Swatch theme={th} />}');
@@ -157,7 +169,8 @@ describe('Add TV on design v2 (T68 step 6)', () => {
     expect(src).toContain('<InsetGroupedList');
     expect(src).toContain('<Card');
     expect(src).toContain("from '../src/ui/v2'");
-    expect(src).toMatch(/<Stack\.Screen options=\{\{ presentation: 'modal', headerShown: false \}\} \/>/);
+    hidesHeaderInRoot('add-tv', true);
+    expect(src).not.toContain('<Stack.Screen');
     expect(src).not.toMatch(/from '\.\.\/src\/theme\/tokens'|<Screen\b|<Pressable\b|function Btn\b/);
     expect(src).toContain("label={t('app.addTv.cancel')}");
   });
@@ -183,7 +196,8 @@ describe('Add TV infrared on design v2 (T68 step 6)', () => {
     expect(src).toContain('<InsetGroupedList');
     expect(src).toContain('<Card');
     expect(src).toContain("from '../src/ui/v2'");
-    expect(src).toMatch(/<Stack\.Screen options=\{\{ presentation: 'modal', headerShown: false \}\} \/>/);
+    hidesHeaderInRoot('add-tv-ir', true);
+    expect(src).not.toContain('<Stack.Screen');
     expect(src).not.toMatch(/from '\.\.\/src\/theme\/tokens'|<Screen\b|<Pressable\b|function Btn\b/);
     // The send-test button draws the volume icon, never a "+" text glyph.
     expect(src).toContain('<RemoteIcon name="volUp"');

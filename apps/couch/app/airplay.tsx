@@ -1,4 +1,4 @@
-import { Stack, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 import { useT } from '../src/i18n/react';
 import { list, space, textStyle } from '../src/theme/design';
@@ -21,7 +21,6 @@ export default function AirPlayGuideScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ headerShown: false }} />
       <LargeTitleHeader
         title={t('app.airplay.title')}
         trailing={<PillButton variant="plain" label={t('app.airplay.done')} onPress={() => router.back()} />}

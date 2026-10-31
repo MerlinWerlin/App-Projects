@@ -143,6 +143,21 @@ export const ICON_PATHS: Readonly<Record<IconName, readonly IconPart[]>> = {
     { d: 'M9.55 18.44A3.2 3.2 0 0 1 14.45 18.44' },
     { d: circlePath(12, 20.5, 1.1), fill: true },
   ],
+  // Tab bar: a handheld remote (body, d-pad ring, two buttons) and "send to TV" (screen with signal
+  // arcs from its bottom-start corner). Original drawings on the same grid and stroke.
+  remote: [
+    { d: roundRectPath(7, 2.5, 10, 19, 3) },
+    { d: circlePath(12, 8.5, 2.4) },
+    { d: circlePath(10, 15, 0.9), fill: true },
+    { d: circlePath(14, 15, 0.9), fill: true },
+    { d: 'M10 18.5h4' },
+  ],
+  cast: [
+    { d: 'M3 8V6.5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-6' },
+    { d: 'M3 12.5a7 7 0 0 1 7 7' },
+    { d: 'M3 16a3.5 3.5 0 0 1 3.5 3.5' },
+    { d: circlePath(3.9, 19.1, 0.9), fill: true },
+  ],
 };
 
 /** Every id with its parts, in ICON_NAMES order (handy for galleries / the prototype). */

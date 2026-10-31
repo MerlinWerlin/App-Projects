@@ -160,7 +160,7 @@ export const uiEn = {
   'ui.apps.fav.hintEditRemove': "Removes from favourites",
   // T92 (cast-1024 phase B): AirPlay / Screen Mirroring button
   "ui.airplay.label": "AirPlay / Screen Mirroring",
-  "ui.airplay.hint": "Opens the list of AirPlay TVs. If it can’t open, shows how to mirror your screen.",
+  "ui.airplay.hint": "Shows how to mirror your phone screen on the TV with AirPlay.",
   // Cast tab components (src/ui/cast; cast-1024 T91)
   "ui.cast.prev": "Previous",
   "ui.cast.prevHint": "Shows the previous item on the TV",

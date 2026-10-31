@@ -1,4 +1,4 @@
-import { Stack, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { useEffect, useRef, useState, type ReactElement } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { IrDriver } from '../src/core/drivers/ir';
@@ -188,7 +188,6 @@ export default function AddTvIrScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ presentation: 'modal', headerShown: false }} />
       <LargeTitleHeader
         title={t('app.addTvIr.title')}
         leading={<PillButton variant="plain" label={t('app.common.back')} onPress={close} />}

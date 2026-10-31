@@ -11,6 +11,8 @@ export const ICON_NAMES = [
   'up', 'down', 'left', 'right',
   'close', 'backspace', 'enter', 'check', 'plus', 'minus', 'speaker',
   'timer', 'screenMirror',
+  // Bottom tab bar (owner TestFlight feedback 1 Nov 2026).
+  'remote', 'cast',
 ] as const;
 export type IconName = (typeof ICON_NAMES)[number];
 export function isIconName(v: unknown): v is IconName {

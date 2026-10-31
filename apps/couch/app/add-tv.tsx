@@ -1,4 +1,4 @@
-import { Stack, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { useEffect, useReducer, useRef, useState, type ReactElement } from 'react';
 import { ActivityIndicator, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import {
@@ -379,7 +379,6 @@ export default function AddTvScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ presentation: 'modal', headerShown: false }} />
       <LargeTitleHeader
         title={t('app.addTv.title')}
         leading={<PillButton variant="plain" label={t('app.addTv.cancel')} onPress={close} />}
