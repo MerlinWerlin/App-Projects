@@ -16,6 +16,7 @@ import { AirportPanel } from '../../src/ui/AirportPanel.tsx';
 import { KindIcon, carrierKey, kindKey, numberKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, EmptyState, Label, Screen, Warning } from '../../src/ui/kit.tsx';
 import { ItemAddressSlot } from '../../src/ui/slots/ItemAddressSlot.tsx';
+import { ItemLoyaltySlot } from '../../src/ui/slots/ItemLoyaltySlot.tsx';
 import { ItemTicketSlot } from '../../src/ui/slots/ItemTicketSlot.tsx';
 
 export default function ItemScreen() {
@@ -106,6 +107,7 @@ export default function ItemScreen() {
       {readable ? null : <Warning text={t('t43.item.zoneUnreadable')} />}
       {clashTitles ? <Warning text={t('spec41.item.overlaps', { titles: clashTitles })} /> : null}
       <ItemTicketSlot trip={trip} item={item} />
+      <ItemLoyaltySlot item={item} />
       <ItemAddressSlot trip={trip} item={item} />
       <Card>
         {row('item.from', item.from?.name)}

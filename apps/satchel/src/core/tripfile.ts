@@ -103,7 +103,9 @@ export function buildTripFile(trip: Trip, payloads: Payloads, opts: BuildOptions
       const hasCrop = !!(a.qrCropUri && a.qrCropUri !== a.uri && p.crop);
       // An attachment whose crop is the same file keeps that link through hasCrop with no extra bytes.
       const cropSame = !!(a.qrCropUri && a.qrCropUri === a.uri);
-      refs.push({ id: a.id, name: a.name, mime: a.mime, role: a.role, ...(hasCrop || cropSame ? { hasCrop: true } : {}) });
+      // T85: every field but the device paths goes in (so one added to Attachment later travels too).
+      const { uri: _uri, qrCropUri: _crop, ...meta } = a;
+      refs.push({ ...meta, ...(hasCrop || cropSame ? { hasCrop: true } : {}) });
       attachments.push({ id: a.id, name: a.name, mime: a.mime, data_base64: p.data, ...(hasCrop ? { crop_base64: p.crop } : {}) });
     }
     const { attachments: _a, ...fields } = item;

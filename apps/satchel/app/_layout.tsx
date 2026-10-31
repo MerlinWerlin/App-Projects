@@ -78,6 +78,7 @@ function Shell() {
           <Stack.Screen name="journal/[tripId]" options={{ ...header, title: t('journal.title') }} />
           <Stack.Screen name="journal-edit" options={{ ...header, presentation: 'modal', title: t('journal.edit.newTitle') }} />
           <Stack.Screen name="ideas/[tripId]" options={{ ...header, title: t('ideas.title') }} />
+          <Stack.Screen name="recap/[tripId]" options={{ ...header, title: t('recap.route') }} />
           <Stack.Screen name="idea-edit" options={{ ...header, presentation: 'modal', title: t('ideas.edit.newTitle') }} />
           <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
           <Stack.Screen name="licences" options={{ ...header, title: t('licences.title') }} />
@@ -92,6 +93,8 @@ function Shell() {
           <Stack.Screen name="trouble/[id]" options={{ ...header, title: t('trouble.route.guide') }} />
           <Stack.Screen name="trouble/numbers" options={{ ...header, title: t('trouble.route.numbers') }} />
           <Stack.Screen name="phrase-card" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
+          <Stack.Screen name="loyalty/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
+          <Stack.Screen name="loyalty-edit" options={{ ...header, presentation: 'modal', title: t('loyalty.edit.newTitle') }} />
           <Stack.Screen name="essentials" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'none' }} />
         </Stack>
       ) : null}

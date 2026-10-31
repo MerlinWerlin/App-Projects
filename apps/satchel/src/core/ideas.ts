@@ -38,6 +38,11 @@ export type Idea = {
   day?: LocalDate;
   /** "Been there". */
   done?: boolean;
+  /**
+   * T84: place within its day (0 first), set when the traveller moves ideas up or down on See on map. Ideas of a
+   * day without one follow the ordered ones, in the order they were added. Cleared when the idea changes day.
+   */
+  rank?: number;
   createdAt: string;
   updatedAt?: string;
 };
@@ -51,7 +56,7 @@ const isDate = (x: unknown): x is LocalDate => isStr(x) && /^\d{4}-\d{2}-\d{2}$/
 /** A stored row as an Idea, or null when it can't be read. Fields this build doesn't know are kept as they are. */
 function readIdea(x: unknown): Idea | null {
   if (!isObj(x) || !isStr(x.id) || !x.id || !isStr(x.name)) return null;
-  const { note, link, lat, lon, spotName, day, done, updatedAt, ...rest } = x;
+  const { note, link, lat, lon, spotName, day, done, updatedAt, rank, ...rest } = x;
   const out = { ...rest, id: x.id, name: x.name.slice(0, MAX_IDEA_NAME), category: isIdeaCategory(x.category) ? x.category : 'other', createdAt: isStr(x.createdAt) ? x.createdAt : '' } as Idea;
   if (isStr(note) && note) out.note = note.slice(0, MAX_IDEA_NOTE);
   if (isStr(link) && link.trim()) out.link = link.trim().slice(0, MAX_IDEA_LINK);
@@ -62,9 +67,12 @@ function readIdea(x: unknown): Idea | null {
   }
   if (isDate(day)) out.day = day;
   if (done === true) out.done = true;
+  if (out.day && isRank(rank)) out.rank = rank;
   if (isStr(updatedAt)) out.updatedAt = updatedAt;
   return out;
 }
+
+const isRank = (x: unknown): x is number => typeof x === 'number' && Number.isInteger(x) && x >= 0 && x < MAX_IDEAS;
 
 /** The trip's ideas, read defensively (absent on older trips; unreadable rows skipped, duplicate ids kept once). */
 export function readIdeas(trip: Pick<Trip, 'ideas'>): Idea[] {
@@ -150,6 +158,8 @@ export function ideaFromDraft(d: IdeaDraft, newId: (prefix: string) => string, p
   }
   if (d.day && isDate(d.day)) out.day = d.day;
   if (d.done) out.done = true;
+  // T84: a day's order only means something on that day.
+  if (out.rank !== undefined && (!out.day || out.day !== prev?.day)) delete out.rank;
   return out;
 }
 
@@ -176,14 +186,23 @@ export function setIdeaDone(trip: Trip, id: string, done: boolean, now = new Dat
 export function planIdea(trip: Trip, id: string, day: LocalDate | null, now = new Date().toISOString()): Trip {
   const prev = findIdea(trip, id);
   if (!prev) return trip;
-  const { day: _d, ...rest } = prev;
-  return upsertIdea(trip, { ...rest, ...(day && isDate(day) ? { day } : {}), updatedAt: now });
+  const { day: _d, rank, ...rest } = prev;
+  const next = day && isDate(day) ? day : undefined;
+  return upsertIdea(trip, { ...rest, ...(next ? { day: next } : {}), ...(next && next === prev.day && rank !== undefined ? { rank } : {}), updatedAt: now });
 }
 
 /** The journal day "Been there" offers: the day it was planned for, else today on the trip (or its first / last day). */
 export const ideaJournalDay = (trip: Trip, idea: Idea, now = Date.now()): LocalDate => idea.day ?? defaultJournalDay(trip, now);
 
 // ---- lists ----
+
+/** T84: the traveller's own order within a day first (ideas without one after them). */
+const byRank = (a: Idea, b: Idea): number => (a.rank ?? MAX_IDEAS) - (b.rank ?? MAX_IDEAS);
+
+const byAdded = (a: Idea, b: Idea): number => (a.createdAt !== b.createdAt ? (a.createdAt < b.createdAt ? -1 : 1) : a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+
+/** A planned day's ideas: the traveller's order, then not yet visited first, then the order they were added. */
+const dayOrder = (a: Idea, b: Idea): number => byRank(a, b) || byOpenThenAdded(a, b);
 
 /** Not yet visited first, then the order they were added. */
 function byOpenThenAdded(a: Idea, b: Idea): number {
@@ -218,12 +237,41 @@ export function groupIdeas(trip: Trip, filter: IdeaFilter = 'all'): IdeaGroup[] 
   }
   const out: IdeaGroup[] = [];
   if (unplanned.length) out.push({ key: 'unplanned', day: null, dayNumber: null, ideas: unplanned });
-  for (const day of [...byDay.keys()].sort()) out.push({ key: day, day, dayNumber: ideaDayNumber(trip, day), ideas: byDay.get(day)!.sort(byOpenThenAdded) });
+  for (const day of [...byDay.keys()].sort()) out.push({ key: day, day, dayNumber: ideaDayNumber(trip, day), ideas: byDay.get(day)!.sort(dayOrder) });
   return out;
 }
 
 /** Ideas planned for a day (the timeline's "Planned" rows). */
-export const ideasOn = (trip: Trip, day: LocalDate): Idea[] => readIdeas(trip).filter((i) => i.day === day).sort(byOpenThenAdded);
+export const ideasOn = (trip: Trip, day: LocalDate): Idea[] => readIdeas(trip).filter((i) => i.day === day).sort(dayOrder);
+
+/**
+ * T84: moves an idea one place up (-1) or down (+1) within its day, past the nearest idea that `among` accepts (See
+ * on map passes "has a map spot", so the move is one the map can show), and stores the day's whole order. The trip
+ * is returned unchanged when the idea is unplanned, unknown, or already first / last.
+ */
+export function moveIdea(trip: Trip, id: string, dir: -1 | 1, among: (i: Idea) => boolean = () => true, now = new Date().toISOString()): Trip {
+  const idea = findIdea(trip, id);
+  if (!idea || !idea.day) return trip;
+  const list = ideasOn(trip, idea.day);
+  const from = list.findIndex((i) => i.id === id);
+  let to = from + dir;
+  while (to >= 0 && to < list.length && !among(list[to]!)) to += dir;
+  if (to < 0 || to >= list.length) return trip;
+  const order = list.slice();
+  const [moved] = order.splice(from, 1);
+  order.splice(to, 0, moved!);
+  const rank = new Map(order.map((i, n) => [i.id, n]));
+  return { ...trip, ideas: readIdeas(trip).map((i) => (rank.has(i.id) ? { ...i, rank: rank.get(i.id)!, ...(i.id === id ? { updatedAt: now } : {}) } : i)) };
+}
+
+/** T84: whether a planned idea can move up / down within its day (among the ideas `among` accepts). */
+export function canMoveIdea(trip: Trip, id: string, among: (i: Idea) => boolean = () => true): { up: boolean; down: boolean } {
+  const idea = findIdea(trip, id);
+  if (!idea || !idea.day) return { up: false, down: false };
+  const list = ideasOn(trip, idea.day).filter((i) => i.id === id || among(i));
+  const at = list.findIndex((i) => i.id === id);
+  return { up: at > 0, down: at >= 0 && at < list.length - 1 };
+}
 
 export function ideaStats(trip: Trip): { total: number; planned: number; done: number } {
   const list = readIdeas(trip);
@@ -249,11 +297,14 @@ export function categoryCounts(trip: Trip): Record<IdeaCategory, number> {
 
 export type PlannedSpot = LatLon & { ideaId: string; name: string; category: IdeaCategory; day: LocalDate; done: boolean };
 
-/** Planned ideas that have a map spot, in the order they were added (triproute appends them to their day). */
+/**
+ * Planned ideas that have a map spot, in the traveller's order within each day (T84), else the order they were
+ * added (triproute appends them to their day, after its bookings).
+ */
 export function plannedSpots(trip: Pick<Trip, 'ideas'>): PlannedSpot[] {
   return readIdeas(trip)
     .filter((i) => i.day && ideaSpot(i))
-    .sort((a, b) => (a.createdAt !== b.createdAt ? (a.createdAt < b.createdAt ? -1 : 1) : a.id < b.id ? -1 : 1))
+    .sort((a, b) => byRank(a, b) || byAdded(a, b))
     .map((i) => ({ ideaId: i.id, name: i.name, category: i.category, day: i.day as LocalDate, lat: i.lat as number, lon: i.lon as number, done: i.done === true }));
 }
 

@@ -167,7 +167,12 @@ export function itemFromDraft(d: ItemDraft, tripId: string, prev?: Item): Item {
   // T72: a journey's from / to keep what the form doesn't show (address, and the position unless it was removed).
   const end = (name: string, pos: string, old: Item['from']) =>
     transport && (name.trim() || pos.trim()) ? withPos({ ...(old ?? {}), id: old?.id ?? newId('pl'), name: name.trim() || d.title.trim() }, pos) : undefined;
+  // T85: start from the previous booking so fields the form doesn't show (and any added to Item later) are kept;
+  // the airport fields belong to flights only (the form sets them with withAirport, src/core/leaveby.ts).
+  const { airport: _airport, ...kept } = prev ?? ({} as Partial<Item>);
   return {
+    ...kept,
+    ...(d.kind === 'flight' && prev?.airport !== undefined ? { airport: prev.airport } : {}),
     id: prev?.id ?? newId('it'),
     tripId,
     kind: d.kind,

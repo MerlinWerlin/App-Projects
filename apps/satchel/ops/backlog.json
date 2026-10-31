@@ -1063,12 +1063,60 @@
   },
   {
    "id": "T84",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "follow-up"
    ],
    "title": "Run-90 follow-ups: seed 3-4 sample ideas on the demo trip; own a11y string for the idea category chips (not journal.); let ideas be ordered within a day on See on map; companion avatar colours stable per companion (not list order); Help line on settle-up after a rate change; tune automatic cover weights (France/Paris without a hotel address shows countryside); add ideas./together./covers. to the spec catalogue sync; still open from T80: share-sheet entry (native, T14), OFL/npm licence text check on the PC, Ionicons glyph check on device",
+   "accept": "tests green",
+   "commit": "d8a38dc"
+  },
+  {
+   "id": "T85",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "oversight",
+    "D218-1",
+    "hardening"
+   ],
+   "title": "Every-field trip round trip (oversight D218-1): a test that builds a trip with every Trip/Item field set (journal pages incl. photos, ideas, companions, expenses with splits, settlements, cover, rates, pasted bookings, airport fields, positions, packing state) and checks it survives Edit trip save (tripFromDraft), .satchel export+import and store save+reload unchanged; a type-level guard so a new Trip field that the tripfile/edit paths ignore fails a test; fix every field that drops",
+   "accept": "tests green; any dropped field fixed with a regression test; DECISIONS lists fields deliberately left out of .satchel files (e.g. important numbers)",
+   "commit": "bdd21d9"
+  },
+  {
+   "id": "T86",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Trip recap (owner-1031 D, less bland, deepen Trips): a Recap screen for a past or ongoing trip with the cover hero, days, cities and countries, distance flown/travelled where coords exist, spending by category in home currency, journal moods and a photo strip, places-to-go ideas visited, a 'Best day' pick from journal moods; share recap as clean text; Recap card on a finished trip and on Your travels",
+   "accept": "tests for the recap maths (pure core module); every string in the catalogue; light + dark tokens; timed fades only, no springs; demo trips work",
+   "commit": "97f152a"
+  },
+  {
+   "id": "T87",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Loyalty and membership cards (owner-1031 D, deepen Wallet): save frequent-flyer, hotel, rail, car-hire and other membership cards (programme name typed by the user, number, tier, optional expiry, colour), shown big with a scannable barcode drawn offline with react-native-svg (pure TS Code 128 and QR encoders in src/core with tests against published vectors), brightness up like tickets; suggest the matching card on a booking whose provider text matches; never prefilled programme names or brand logos",
+   "accept": "encoder tests (Code 128 checksum + known QR codewords/format bits); cards stay on the phone (not in .satchel files unless a later decision); every string in the catalogue; no new npm dependency",
+   "commit": "192f65a"
+  },
+  {
+   "id": "T88",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "title": "Run-91 follow-ups: sample journal pages on the demo trip so Recap shows moods/photos/best day; loyalty card scan check on a device (Code 128 not machine-verified here) and optional card photo; Recap entry on the Trips tab for the latest finished trip; loyalty cards in Low-battery essentials; still open from T84: share-sheet entry (native T14), OFL/npm licence text check on the PC, Ionicons glyph check on device (arrow-up/arrow-down/information-circle-outline)",
    "accept": "tests green"
   }
  ],

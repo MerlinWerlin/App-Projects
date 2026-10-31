@@ -140,6 +140,8 @@ export default function IdeaEditScreen() {
           selected={d.category}
           icon={(c) => IDEA_ICONS[c]}
           label={(c) => t(categoryKey(c))}
+          a11yLabel={(c) => t('f90.ideaCat.a11y', { cat: t(categoryKey(c)) })}
+          a11yHint={(c, on) => (on ? t('f90.ideaCat.hintOn') : t('f90.ideaCat.hint', { cat: t(categoryKey(c)) }))}
           onChange={(c) => setD((o) => ({ ...o, category: c ?? o.category }))}
         />
       </Card>

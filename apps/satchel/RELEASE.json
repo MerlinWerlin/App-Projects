@@ -1,6 +1,6 @@
 {
   "mode": "update",
-  "note": "Satchel: trip covers, travelling together (companions and shared costs), places-to-go ideas list, trip edit no longer loses journal/ideas/companions",
+  "note": "Satchel: trip recap (stats, places, spending, moods, photos, share), loyalty and membership cards in the Wallet, trip edits keep every field",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

@@ -11,6 +11,7 @@ import { radius, space, typeScale } from '../src/theme/tokens.ts';
 import { FadeInView, HeroHeader, IconBadge, SectionCard, StatTile } from '../src/ui/hero.tsx';
 import { Body, Button, Card, EmptyState, ToggleRow } from '../src/ui/kit.tsx';
 import { displayCountryName, formatInt, useTravelStats } from '../src/ui/useTravelStats.ts';
+import { RecapList } from '../src/ui/RecapList.tsx';
 import { WorldTiles } from '../src/ui/WorldTiles.tsx';
 
 export default function TravelsScreen() {
@@ -111,6 +112,9 @@ export default function TravelsScreen() {
               </SectionCard>
             </FadeInView>
           ) : null}
+          <FadeInView delay={280}>
+            <RecapList includeDemo={includeDemo} />
+          </FadeInView>
         </>
       )}
 
