@@ -82,7 +82,7 @@ describe('discoverTvs', () => {
     };
     const res = await discoverTvs({ udp: () => Promise.resolve(fakeUdp([]).sock), fetch: f, localIp: '192.168.1.40', sleep });
     expect(res.methods).toEqual(['ssdp', 'probe']);
-    expect(probed).toBe(253 * 2);
+    expect(probed).toBe(253 * 5); // Roku, Samsung, Sony, Cast and LG per host
     probed = 0;
     await discoverTvs({ udp: () => Promise.resolve(fakeUdp([]).sock), fetch: f, localIp: '192.168.1.40', sleep }, { probeIfEmpty: false });
     expect(probed).toBe(0);

@@ -163,7 +163,7 @@ describe('probeSubnet', () => {
       ['roku', '192.168.1.134'],
     ]);
     expect(found.sort()).toEqual(['192.168.1.134', '192.168.1.52']);
-    expect(peak).toBeLessThanOrEqual(16); // 8 hosts x 2 requests each
+    expect(peak).toBeLessThanOrEqual(40); // 8 hosts x 5 requests each (Roku, Samsung, Sony, Cast, LG)
   });
   it('stops when cancelled', async () => {
     let n = 0;
