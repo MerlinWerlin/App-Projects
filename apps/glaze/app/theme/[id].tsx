@@ -56,8 +56,9 @@ import { canApplyFromDetail, packDetailView, showsPackCard, wantsPackArtwork, ty
 import { getAnyTheme, packOf } from '../../src/core/plusThemes';
 import { previewSpecs, type Theme } from '../../src/core/themes';
 import { averageColour, sizeForScreen } from '../../src/core/wallpaper';
-import { generateWidgetSet, widgetKindKey, widgetSizeKey, widgetSpecOf } from '../../src/core/widgetSets';
-import { studioKinds, studioSizes } from '../../src/core/widgetStudio';
+import { generateWidgetSet, widgetKindKey, widgetSizeKey } from '../../src/core/widgetSets';
+import { studioPreviews, type StudioState } from '../../src/core/widgetStudio';
+import { loadStudio } from '../../src/store/widgetStudio';
 import { useT, type Script, type TFunction } from '../../src/i18n';
 import { widgets } from '../../src/native/widgets';
 import { PlusBadge } from '../../src/plus/PlusBadge';
@@ -1333,12 +1334,23 @@ function WidgetPreviews({ theme }: { theme: Theme }) {
   const { t, script } = useT();
   const tl = t as unknown as (key: string) => string;
   const set = useMemo(() => generateWidgetSet(theme), [theme]);
-  const items = studioKinds(set).flatMap((kind) => {
-    const sizes = studioSizes(set, kind);
-    const size = sizes.includes('small') ? 'small' : sizes[0];
-    const spec = size ? widgetSpecOf(set, kind, size) : undefined;
-    return spec ? [spec] : [];
-  });
+  // T80: show what the person made in Widget Studio (reloaded on every focus, so a save there
+  // shows up when they come back). Until it loads, the plain set is shown.
+  const [saved, setSaved] = useState<StudioState | null>(null);
+  useFocusEffect(
+    useCallback(() => {
+      let alive = true;
+      loadStudio(set)
+        .then((s) => {
+          if (alive) setSaved(s);
+        })
+        .catch(() => undefined);
+      return () => {
+        alive = false;
+      };
+    }, [set]),
+  );
+  const items = useMemo(() => studioPreviews(set, saved), [set, saved]);
   const open = (kind?: string, size?: string) => {
     haptic('select');
     router.push({ pathname: '/widget-studio', params: { theme: theme.id, ...(kind ? { kind } : {}), ...(size ? { size } : {}) } });
@@ -1348,7 +1360,7 @@ function WidgetPreviews({ theme }: { theme: Theme }) {
       <View style={styles.stack}>
         {/* T173: the title and body moved into the Widgets block's SectionHeader. */}
         <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.widgetRow}>
-          {items.map((spec) => (
+          {items.map(({ spec, photoUri }) => (
             <Pressable
               key={spec.id}
               accessibilityRole="button"
@@ -1357,7 +1369,7 @@ function WidgetPreviews({ theme }: { theme: Theme }) {
               onPress={() => open(spec.kind, spec.size)}
               style={({ pressed }) => [styles.widgetItem, { opacity: pressed ? 0.75 : 1 }]}
             >
-              <WidgetPreview spec={spec} width={WIDGET_PREVIEW_W} />
+              <WidgetPreview spec={spec} width={WIDGET_PREVIEW_W} photoUri={photoUri} />
               <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...typeFor(script, 'caption1'), { color: c.ink }]} numberOfLines={2}>
                 {tl(widgetKindKey(spec.kind))}
               </Text>

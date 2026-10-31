@@ -1081,7 +1081,7 @@
    ],
    "source": "run 51 follow-up",
    "title": "Widget photos: multi-photo album bridge (several files in the app group), clean up old studio photo copies, studio edits shown in theme-detail previews, pack theme copy in the studio",
-   "notes": "T59 follow-ups 2,3,5,6."
+   "notes": "T59 follow-ups 2,3,5,6. Run 196: theme-page widget previews now show saved Widget Studio drafts incl. the photo (studioPreviews in src/core/widgetStudio.ts, JS only). Open: multi-photo album bridge + old studio photo cleanup (native/storage), pack theme copy in the studio."
   },
   {
    "id": "T81",
