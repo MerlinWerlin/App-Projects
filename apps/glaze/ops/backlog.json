@@ -1081,7 +1081,7 @@
    ],
    "source": "run 51 follow-up",
    "title": "Widget photos: multi-photo album bridge (several files in the app group), clean up old studio photo copies, studio edits shown in theme-detail previews, pack theme copy in the studio",
-   "notes": "T59 follow-ups 2,3,5,6. Run 196: theme-page widget previews now show saved Widget Studio drafts incl. the photo (studioPreviews in src/core/widgetStudio.ts, JS only). Open: multi-photo album bridge + old studio photo cleanup (native/storage), pack theme copy in the studio."
+   "notes": "T59 follow-ups 2,3,5,6. Run 196: theme-page widget previews now show saved Widget Studio drafts incl. the photo (studioPreviews in src/core/widgetStudio.ts, JS only). Run 197: old studio photo copies are deleted once no theme's studio (and no wallpaper background) uses them, after the new state is written (orphanedStudioPhotos in src/core/widgetStudio.ts + store/widgetStudio.ts, JS only, 4 tests). Open: multi-photo album bridge (native, D130-2 one native change per build), pack theme copy in the studio (original meaning not recorded by run 51; left until a directive or owner note defines it)."
   },
   {
    "id": "T81",

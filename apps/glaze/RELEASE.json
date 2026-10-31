@@ -1,6 +1,6 @@
 {
   "mode": "update",
-  "note": "Glaze: theme-page widget previews now show your saved Widget Studio edits",
+  "note": "Glaze: old Widget Studio photo copies are now cleaned up once no widget uses them (frees phone storage)",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

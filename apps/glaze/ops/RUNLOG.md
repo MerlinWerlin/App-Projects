@@ -468,3 +468,8 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - T80 part (63f6bb0): theme-page "Matching widgets" row draws the saved Widget Studio drafts (edited size, colours, text, font, look, photo), reloaded on focus; core studioPreviews + 5 tests. TRIAL.md "31 Oct, midday" Q1.
 - 1439/1439 core tests green, typecheck:ui (stubs) clean, core typecheck clean. Kit rebuilt. JS only. Nothing device-tested.
 - Bundle base64 14.89 MB (D215-1 guard 15.6 MB); no new images.
+## 2026-10-31 run 197 (13:13Z, artifact 1793445369-ae3c; oversight v218)
+- Oversight v218: no new directives; D211-1 kept; D130-2 kept (JS only). No patches. App-Projects f744a8d = ship PR #137 of run 196; nothing to sync. No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- T80 part (8a17236): Widget Studio deletes its old photo copies (replaced, reset) once no theme's studio and no wallpaper background uses them, after the new state is written; core orphanedStudioPhotos/studioPhotoUris + 4 tests. Nothing for the owner to notice beyond freed storage, so no TRIAL question.
+- 1443/1443 core tests green, typecheck:ui (stubs) clean, core typecheck clean. Kit rebuilt. JS only. Nothing device-tested.
+- Bundle base64 14.89 MB (D215-1 guard 15.6 MB); no new images.

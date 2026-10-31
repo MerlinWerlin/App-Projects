@@ -1,12 +1,12 @@
 {
-  "tests": "1439/1439 core tests green; UI typecheck against stubs clean",
+  "tests": "1443/1443 core tests green; UI typecheck against stubs clean",
   "typecheck": "core only (registry unreachable)",
-  "last_run": "2026-10-31 22:11 Sydney",
+  "last_run": "2026-11-01 00:30 Sydney",
   "stage": "owner-tested",
-  "oversight_seen": "v217 (1793443792-f292): D217-1 resume backlog (followed: T80 part shipped); D211-1 still open; no patches.",
-  "headline": "Theme page: the widget row now shows your Widget Studio edits.",
+  "oversight_seen": "v218 (1793451044-6c9f): no new directives; D211-1 still open; D130-2 kept (JS only); no patches.",
+  "headline": "Widget Studio tidies up old photo copies it no longer uses.",
   "next_for_owner": "1) Fully close and reopen the TestFlight Glaze twice once auto-ship sends the update, then answer docs/TRIAL.md \"New since your last test (31 Oct, midday)\" and \"(31 Oct, morning: owner-1031)\". 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud.)",
   "trial_kit": true,
-  "trial_kit_commit": "63f6bb0",
+  "trial_kit_commit": "8a17236",
   "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested"
 }
