@@ -1,0 +1,166 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "rainlight",
+  "packVersion": 2,
+  "name": "Rainlight",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#07070D",
+    "tile": "#29292D",
+    "glyph": "#FAF8F2",
+    "accent": "#78989E",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Rainlight",
+    "mood": "A rainy night in plum, cyan and lilac, with a quiet koi.",
+    "tags": [
+      "rainlight",
+      "rainy",
+      "night",
+      "plum",
+      "cyan",
+      "lilac",
+      "with",
+      "quiet",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Jahanzeb Ahsan (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Create one portrait9:19.5 photographic iPhone wallpaper named Rainlight. Attached photo is material/mood reference: rain droplets on glass, coloured blurred city lights behind. Original composition: upper60% near-black ink-plum glass with restrained sparse tiny droplets and very subtle blue-violet gradients, calm enough for white glyphs; lower40% beautiful out-of-focus cyan, muted lilac and tiny amber urban lights streaking downward through sharp glass droplets, abstract wet city reflection, soft cinematic depth. Include one defocused red-orange circular traffic light low right, a gentle cyan vertical reflection lower left, no identifiable shops, buildings, people, signs or readable text. Moody contemporary rainy-night photograph, tactile glass, sophisticated controlled colours, no over-saturated cyberpunk, no neon landscape skyline, no stars, no moons, no terrain, no UI/frame. Main interest low in frame, upper field subtly alive but quiet, harmonious wallpaper for seamless smoked-plum icon tiles.",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "xwcGCwSMQGiHnXZ4YNQIZnw=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.fe0b76b6.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 368426,
+      "sha256": "fe0b76b65d01af25785554f5a11afef8d160ad28b3d8ea1f84129f524c1987a5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1b868baf.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 337370,
+      "sha256": "1b868baf07f55f831b51f13b029a9be09510a645aeef520f3e48229e1631a945",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.d414ee77.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 185020,
+      "sha256": "d414ee77739e1d057421029f7a0772d6a731cf69603d4245142f1584f160b814",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.6cc0713f.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 25032,
+      "sha256": "6cc0713fd5a97eda1bbca530032ff8b9442a09d4c3c41b04de713a1a08c89eae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rainlight-date.bed38cc0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 222992,
+      "sha256": "bed38cc001e8782181eb2c18a323359fbc400cff9111b6ed704a594d855887ad",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glass-umbrella.4fc714e5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 243856,
+      "sha256": "4fc714e508cc49edf203f9e7af3ec294e053bb9bc806cc552764901474ce154c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rain-leaf.761fc7df.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 169358,
+      "sha256": "761fc7df8a20a8806bc9d287e3b8986c49cdf8d14ed09765d88b0fbd0cd8d212",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-koi.3736d776.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 227332,
+      "sha256": "3736d776b2888eeae84905ede92fa0d48e896abbdccbb1c4229682287e637fbc",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1779386,
+  "widgets": [
+    {
+      "id": "rainlight-date",
+      "kind": "calendar",
+      "image": "widget-rainlight-date.bed38cc0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rainlight date"
+    },
+    {
+      "id": "glass-umbrella",
+      "kind": "art",
+      "image": "widget-glass-umbrella.4fc714e5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glass umbrella"
+    },
+    {
+      "id": "rain-leaf",
+      "kind": "art",
+      "image": "widget-rain-leaf.761fc7df.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rain leaf"
+    },
+    {
+      "id": "koi",
+      "kind": "art",
+      "image": "widget-koi.3736d776.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Koi"
+    }
+  ]
+}

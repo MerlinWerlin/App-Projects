@@ -1,0 +1,312 @@
+{
+  "format": "glaze-catalog",
+  "version": 1,
+  "generatedAt": "2026-10-31T23:33:32.888Z",
+  "packs": [
+    {
+      "id": "alpine-starlight",
+      "name": "Alpine Starlight",
+      "packVersion": 2,
+      "plus": false,
+      "bytes": 921306,
+      "manifest": "art/alpine-starlight/v2/manifest.json",
+      "thumb": "art/alpine-starlight/v2/thumb.e5731259.webp",
+      "thumbhash": "xvcFCwB3gCh3bYG5loBmCWg=",
+      "palette": {
+        "bg": "#0F1217",
+        "tile": "#303236",
+        "glyph": "#FAF8F2",
+        "accent": "#07090C",
+        "text": "#FAF8F2"
+      },
+      "tags": [
+        "alpine",
+        "starlight",
+        "snowy",
+        "peaks",
+        "under",
+        "full",
+        "stars",
+        "moons",
+        "ringed",
+        "planet",
+        "dark"
+      ],
+      "mood": "Snowy peaks under a sky full of stars, moons and a ringed planet.",
+      "addedAt": "2026-10-31"
+    },
+    {
+      "id": "cloud-atelier",
+      "name": "Cloud Atelier",
+      "packVersion": 2,
+      "plus": false,
+      "bytes": 483284,
+      "manifest": "art/cloud-atelier/v2/manifest.json",
+      "thumb": "art/cloud-atelier/v2/thumb.a4d7c735.webp",
+      "thumbhash": "MnkGCwJmfxl5e3RpZo+R+Io=",
+      "palette": {
+        "bg": "#FEBEAA",
+        "tile": "#DEA795",
+        "glyph": "#1C1816",
+        "accent": "#FDB8AE",
+        "text": "#1C1816"
+      },
+      "tags": [
+        "cloud",
+        "atelier",
+        "peach",
+        "skies",
+        "pearl",
+        "clouds",
+        "whale",
+        "paper",
+        "boats",
+        "light"
+      ],
+      "mood": "Peach skies, pearl clouds, a cloud whale and paper boats.",
+      "addedAt": "2026-10-31"
+    },
+    {
+      "id": "desert-afterglow",
+      "name": "Desert Afterglow",
+      "packVersion": 2,
+      "plus": false,
+      "bytes": 845000,
+      "manifest": "art/desert-afterglow/v2/manifest.json",
+      "thumb": "art/desert-afterglow/v2/thumb.2e482e82.webp",
+      "thumbhash": "zkgKGwaEewh5hXl6dHhQlwc=",
+      "palette": {
+        "bg": "#553232",
+        "tile": "#6C4E4D",
+        "glyph": "#FAF8F2",
+        "accent": "#E4894D",
+        "text": "#FAF8F2"
+      },
+      "tags": [
+        "desert",
+        "afterglow",
+        "terracotta",
+        "dunes",
+        "glowing",
+        "after",
+        "sunset",
+        "warm",
+        "cocoa",
+        "ivory",
+        "dark"
+      ],
+      "mood": "Terracotta dunes glowing after sunset, warm cocoa and ivory.",
+      "addedAt": "2026-10-31"
+    },
+    {
+      "id": "firefly-grove",
+      "name": "Firefly Grove",
+      "packVersion": 2,
+      "plus": false,
+      "bytes": 1429870,
+      "manifest": "art/firefly-grove/v2/manifest.json",
+      "thumb": "art/firefly-grove/v2/thumb.4bb67955.webp",
+      "thumbhash": "R/gFEwI0cXd4X5KJhpBnCYg=",
+      "palette": {
+        "bg": "#0E1718",
+        "tile": "#2F3737",
+        "glyph": "#FAF8F2",
+        "accent": "#71602C",
+        "text": "#FAF8F2"
+      },
+      "tags": [
+        "firefly",
+        "grove",
+        "mossy",
+        "woodland",
+        "blue",
+        "hour",
+        "lantern",
+        "ferns",
+        "fireflies",
+        "dark"
+      ],
+      "mood": "Mossy woodland at blue hour, a lantern, ferns and fireflies.",
+      "addedAt": "2026-10-31"
+    },
+    {
+      "id": "indigo-current",
+      "name": "Indigo Current",
+      "packVersion": 2,
+      "plus": false,
+      "bytes": 2142000,
+      "manifest": "art/indigo-current/v2/manifest.json",
+      "thumb": "art/indigo-current/v2/thumb.ea44ea86.webp",
+      "thumbhash": "zdYFAwB6YLh3ipV5enC3CEc=",
+      "palette": {
+        "bg": "#0E1F3D",
+        "tile": "#2F3D56",
+        "glyph": "#FAF8F2",
+        "accent": "#9298A4",
+        "text": "#FAF8F2"
+      },
+      "tags": [
+        "indigo",
+        "current",
+        "paper",
+        "craft",
+        "harbour",
+        "with",
+        "silver",
+        "whale",
+        "dark"
+      ],
+      "mood": "Indigo paper-craft harbour with a silver ink whale.",
+      "addedAt": "2026-10-31"
+    },
+    {
+      "id": "meadowglow",
+      "name": "Meadowglow",
+      "packVersion": 2,
+      "plus": false,
+      "bytes": 781712,
+      "manifest": "art/meadowglow/v2/manifest.json",
+      "thumb": "art/meadowglow/v2/thumb.98e8601f.webp",
+      "thumbhash": "bykSIwJ3j0iHiHd4d4BnBxk=",
+      "palette": {
+        "bg": "#F5EADE",
+        "tile": "#D7CDC2",
+        "glyph": "#1C1816",
+        "accent": "#A18346",
+        "text": "#1C1816"
+      },
+      "tags": [
+        "meadowglow",
+        "sunlit",
+        "daisy",
+        "meadow",
+        "soft",
+        "morning",
+        "mist",
+        "light"
+      ],
+      "mood": "A sunlit daisy meadow in soft morning mist.",
+      "addedAt": "2026-10-31"
+    },
+    {
+      "id": "moonpatch",
+      "name": "Moonpatch",
+      "packVersion": 2,
+      "plus": false,
+      "bytes": 2954404,
+      "manifest": "art/moonpatch/v2/manifest.json",
+      "thumb": "art/moonpatch/v2/thumb.c40a80dd.webp",
+      "thumbhash": "ywcKEwJXgMl3hndpV4B8Bdg=",
+      "palette": {
+        "bg": "#101322",
+        "tile": "#31333F",
+        "glyph": "#FAF8F2",
+        "accent": "#C2A993",
+        "text": "#FAF8F2"
+      },
+      "tags": [
+        "moonpatch",
+        "tiny",
+        "felt",
+        "astronaut",
+        "cratered",
+        "wool",
+        "moon",
+        "dark"
+      ],
+      "mood": "A tiny felt astronaut on a cratered wool moon.",
+      "addedAt": "2026-10-31"
+    },
+    {
+      "id": "opal-abyss",
+      "name": "Opal Abyss",
+      "packVersion": 2,
+      "plus": false,
+      "bytes": 1275684,
+      "manifest": "art/opal-abyss/v2/manifest.json",
+      "thumb": "art/opal-abyss/v2/thumb.b14bea31.webp",
+      "thumbhash": "DecNAwB4cLl4eYV5WcCBBj0=",
+      "palette": {
+        "bg": "#000C25",
+        "tile": "#232D42",
+        "glyph": "#FAF8F2",
+        "accent": "#7D8DA3",
+        "text": "#FAF8F2"
+      },
+      "tags": [
+        "opal",
+        "abyss",
+        "deep",
+        "blue",
+        "water",
+        "with",
+        "pearl",
+        "nautilus",
+        "lighthouse",
+        "dark"
+      ],
+      "mood": "Deep ink-blue water with a pearl nautilus and a lighthouse.",
+      "addedAt": "2026-10-31"
+    },
+    {
+      "id": "rainlight",
+      "name": "Rainlight",
+      "packVersion": 2,
+      "plus": false,
+      "bytes": 1779386,
+      "manifest": "art/rainlight/v2/manifest.json",
+      "thumb": "art/rainlight/v2/thumb.6cc0713f.webp",
+      "thumbhash": "xwcGCwSMQGiHnXZ4YNQIZnw=",
+      "palette": {
+        "bg": "#07070D",
+        "tile": "#29292D",
+        "glyph": "#FAF8F2",
+        "accent": "#78989E",
+        "text": "#FAF8F2"
+      },
+      "tags": [
+        "rainlight",
+        "rainy",
+        "night",
+        "plum",
+        "cyan",
+        "lilac",
+        "with",
+        "quiet",
+        "dark"
+      ],
+      "mood": "A rainy night in plum, cyan and lilac, with a quiet koi.",
+      "addedAt": "2026-10-31"
+    },
+    {
+      "id": "rosewater-reverie",
+      "name": "Rosewater Reverie",
+      "packVersion": 2,
+      "plus": false,
+      "bytes": 996818,
+      "manifest": "art/rosewater-reverie/v2/manifest.json",
+      "thumb": "art/rosewater-reverie/v2/thumb.203e0eb4.webp",
+      "thumbhash": "r0gGCwJXb3iHlWlXhKB4CYk=",
+      "palette": {
+        "bg": "#DFC0BD",
+        "tile": "#C4A8A6",
+        "glyph": "#1C1816",
+        "accent": "#AD7973",
+        "text": "#1C1816"
+      },
+      "tags": [
+        "rosewater",
+        "reverie",
+        "dusty",
+        "rose",
+        "satin",
+        "bottled",
+        "ballet",
+        "swan",
+        "light"
+      ],
+      "mood": "Dusty rose satin, a bottled ballet and a satin swan.",
+      "addedAt": "2026-10-31"
+    }
+  ]
+}

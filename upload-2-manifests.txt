@@ -1,0 +1,10 @@
+art__alpine-starlight__v2__manifest.json
+art__cloud-atelier__v2__manifest.json
+art__desert-afterglow__v2__manifest.json
+art__firefly-grove__v2__manifest.json
+art__indigo-current__v2__manifest.json
+art__meadowglow__v2__manifest.json
+art__moonpatch__v2__manifest.json
+art__opal-abyss__v2__manifest.json
+art__rainlight__v2__manifest.json
+art__rosewater-reverie__v2__manifest.json

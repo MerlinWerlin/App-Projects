@@ -1,0 +1,911 @@
+{
+  "assets": [
+    {
+      "name": "art__alpine-starlight__v2__thumb.e5731259.webp",
+      "path": "art/alpine-starlight/v2/thumb.e5731259.webp",
+      "size": 10260,
+      "sha256": "e57312592232e39fafabbc8b89d18d46b03c41a2e3ccd44dcb11276cfd31aeb3",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__alpine-starlight__v2__wallpaper-1334.7ddccc93.webp",
+      "path": "art/alpine-starlight/v2/wallpaper-1334.7ddccc93.webp",
+      "size": 64112,
+      "sha256": "7ddccc933305d0fe0f466192d57b0fe2067efd58854784ed29bfa23f1aaa92c6",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__alpine-starlight__v2__wallpaper-2556.919f7026.webp",
+      "path": "art/alpine-starlight/v2/wallpaper-2556.919f7026.webp",
+      "size": 134170,
+      "sha256": "919f7026edfdff8f288e17e74e811224c23d35a296cd5a9dd53bc6382f62dd09",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__alpine-starlight__v2__wallpaper-2796.d5e95932.webp",
+      "path": "art/alpine-starlight/v2/wallpaper-2796.d5e95932.webp",
+      "size": 150412,
+      "sha256": "d5e95932ffd48ca3b648d351303bc350a5092a7ebe16a02ed586b0299dca772f",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__alpine-starlight__v2__widget-constellation-clock.ad484b22.webp",
+      "path": "art/alpine-starlight/v2/widget-constellation-clock.ad484b22.webp",
+      "size": 99406,
+      "sha256": "ad484b220ed82860856023c61a5fa1d901cce40b5bfe2c11c2f366ce52cd3b4c",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__alpine-starlight__v2__widget-copper-eclipse.f9863caf.webp",
+      "path": "art/alpine-starlight/v2/widget-copper-eclipse.f9863caf.webp",
+      "size": 50496,
+      "sha256": "f9863caf52666eccfa24118ba53176f4fdf6aa2719d86801ecf2ea5dd137d7a4",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__alpine-starlight__v2__widget-jupiter-polar.6964ebd9.webp",
+      "path": "art/alpine-starlight/v2/widget-jupiter-polar.6964ebd9.webp",
+      "size": 173700,
+      "sha256": "6964ebd94c071752e7ae17b46e22902c44a006a6e008723b101393edb80dc380",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__alpine-starlight__v2__widget-saturn-rings.bff27786.webp",
+      "path": "art/alpine-starlight/v2/widget-saturn-rings.bff27786.webp",
+      "size": 37294,
+      "sha256": "bff27786725e75077a3ed83f21286b99aa65a3c2a3bbbc228442b798a0cf2fe4",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__alpine-starlight__v2__widget-silver-moon.7fd39f0d.webp",
+      "path": "art/alpine-starlight/v2/widget-silver-moon.7fd39f0d.webp",
+      "size": 101018,
+      "sha256": "7fd39f0d80252c77e9253134f8ab513b0aaf57b0df2d3ec9b5b2ac06807455b5",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__alpine-starlight__v2__widget-spiral-galaxy.60057f70.webp",
+      "path": "art/alpine-starlight/v2/widget-spiral-galaxy.60057f70.webp",
+      "size": 100438,
+      "sha256": "60057f70be1a0f005bd1098f126231354731b1b51d6e07324ee0484c193175aa",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__cloud-atelier__v2__thumb.a4d7c735.webp",
+      "path": "art/cloud-atelier/v2/thumb.a4d7c735.webp",
+      "size": 6222,
+      "sha256": "a4d7c7350a683e4c5cb8fa8ef56efa87241b9d49161723f9db1f72c376be21c2",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__cloud-atelier__v2__wallpaper-1334.24baffb5.webp",
+      "path": "art/cloud-atelier/v2/wallpaper-1334.24baffb5.webp",
+      "size": 27132,
+      "sha256": "24baffb5b2ce6f9e85a33759e791c28596fff898b6be4eb6c43d7c4a29cdab56",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__cloud-atelier__v2__wallpaper-2556.6053302c.webp",
+      "path": "art/cloud-atelier/v2/wallpaper-2556.6053302c.webp",
+      "size": 56354,
+      "sha256": "6053302cc4df917fb2e14c57ff3abaa2fb0149dffdfa3124a1561c84841678e0",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__cloud-atelier__v2__wallpaper-2796.fffbb309.webp",
+      "path": "art/cloud-atelier/v2/wallpaper-2796.fffbb309.webp",
+      "size": 64872,
+      "sha256": "fffbb309676de7ebf3f782df2fdac5f5bfaedd40e58ce26d7512872978e1b9f1",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__cloud-atelier__v2__widget-balloon-skiff.4784ae87.webp",
+      "path": "art/cloud-atelier/v2/widget-balloon-skiff.4784ae87.webp",
+      "size": 44692,
+      "sha256": "4784ae87b8f671208101c6cf44621c3d5784591d5b96bf858acafd059ecb8132",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__cloud-atelier__v2__widget-cloud-date.b8ccf6b3.webp",
+      "path": "art/cloud-atelier/v2/widget-cloud-date.b8ccf6b3.webp",
+      "size": 53242,
+      "sha256": "b8ccf6b3b141dcf13bb65289bb3c662f7003b945cebed5f4ba32509cbfca926c",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__cloud-atelier__v2__widget-cloud-kite.27ce3e95.webp",
+      "path": "art/cloud-atelier/v2/widget-cloud-kite.27ce3e95.webp",
+      "size": 49718,
+      "sha256": "27ce3e95bd59c2a04ea8f040eb8979ef2135e6f6e0820dad4467d92bda68d6f3",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__cloud-atelier__v2__widget-cloud-whale.c9457d7f.webp",
+      "path": "art/cloud-atelier/v2/widget-cloud-whale.c9457d7f.webp",
+      "size": 87710,
+      "sha256": "c9457d7fa7e2c043507bef845acd8ee0824065aaa9b83ca8550f7bb1b9bced1b",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__cloud-atelier__v2__widget-paper-boat.27dcb9cd.webp",
+      "path": "art/cloud-atelier/v2/widget-paper-boat.27dcb9cd.webp",
+      "size": 93342,
+      "sha256": "27dcb9cdfdd6e421ac4652464469c10213a8629be384330a0db85d7ac3ee110d",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__thumb.2e482e82.webp",
+      "path": "art/desert-afterglow/v2/thumb.2e482e82.webp",
+      "size": 6870,
+      "sha256": "2e482e82e5b8cfa2f9c849326a9c362b0dcbf4110843b1dcb4be7de1f8bb3255",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__wallpaper-1334.afdeb4ea.webp",
+      "path": "art/desert-afterglow/v2/wallpaper-1334.afdeb4ea.webp",
+      "size": 40718,
+      "sha256": "afdeb4ea1b000c69511bc555ab9080bd2b570390ae2e713576c054072f1fadde",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__wallpaper-2556.5f6e5641.webp",
+      "path": "art/desert-afterglow/v2/wallpaper-2556.5f6e5641.webp",
+      "size": 83208,
+      "sha256": "5f6e5641a5948cb17520fb80039489370bd72d93c1821139fa7411c602a03116",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__wallpaper-2796.2576832c.webp",
+      "path": "art/desert-afterglow/v2/wallpaper-2796.2576832c.webp",
+      "size": 94022,
+      "sha256": "2576832c31003c1ad3729dce3b6293a76903e70fbcbe1ba40579d867be8e5c2e",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__widget-crescent-moon.bd9ad406.webp",
+      "path": "art/desert-afterglow/v2/widget-crescent-moon.bd9ad406.webp",
+      "size": 42092,
+      "sha256": "bd9ad406e97fc27f8a0bed06f8e5f1be574f85e14e8a970db79b70c1bd6fa856",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__widget-desert-scarab.ce7b90e0.webp",
+      "path": "art/desert-afterglow/v2/widget-desert-scarab.ce7b90e0.webp",
+      "size": 136686,
+      "sha256": "ce7b90e012b8e921dcf1a9395639f3c18dfab94fdee2aeeb9077660bec2fca59",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__widget-dune-countdown.33308c41.webp",
+      "path": "art/desert-afterglow/v2/widget-dune-countdown.33308c41.webp",
+      "size": 51086,
+      "sha256": "33308c41f27defd9752fb2bd6fe60d50d7a6d9d8cbfdd9e085acfed8c48145cf",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__widget-dunes-photo.98606aef.webp",
+      "path": "art/desert-afterglow/v2/widget-dunes-photo.98606aef.webp",
+      "size": 90552,
+      "sha256": "98606aef98bfae5177fcb4e564add3dfd4b92408d4babed9f408cfc6f0fb29e5",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__widget-pyramid.3bd50f14.webp",
+      "path": "art/desert-afterglow/v2/widget-pyramid.3bd50f14.webp",
+      "size": 86894,
+      "sha256": "3bd50f143108145fb18400228e730495f0401c7d42972d02d4f6c76832d65ed0",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__widget-sandstone-arch.60c2e33d.webp",
+      "path": "art/desert-afterglow/v2/widget-sandstone-arch.60c2e33d.webp",
+      "size": 79432,
+      "sha256": "60c2e33d303816ffaf46985087e227243fc80b5fd002b9519f5f8d1a468ed7a2",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__widget-solstice-seal.d86ce31c.webp",
+      "path": "art/desert-afterglow/v2/widget-solstice-seal.d86ce31c.webp",
+      "size": 133440,
+      "sha256": "d86ce31cc437754ef3b7bdc086d35bb26e539d1392b8dae7bbba15b22ecde967",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__firefly-grove__v2__thumb.4bb67955.webp",
+      "path": "art/firefly-grove/v2/thumb.4bb67955.webp",
+      "size": 23282,
+      "sha256": "4bb679552259aca77004711e8b25743b20cd4e8adaeef8aea253edd03ec53463",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__firefly-grove__v2__wallpaper-1334.1c9200f9.webp",
+      "path": "art/firefly-grove/v2/wallpaper-1334.1c9200f9.webp",
+      "size": 120068,
+      "sha256": "1c9200f9905ba9b521ef317f6333b372f690fca95247b9c9001ef529747d0423",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__firefly-grove__v2__wallpaper-2556.fbb6f73d.webp",
+      "path": "art/firefly-grove/v2/wallpaper-2556.fbb6f73d.webp",
+      "size": 227414,
+      "sha256": "fbb6f73d770881d6ff862b2e13c3faf2c612ead0d8ff136e833dbdbfb95c5fe7",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__firefly-grove__v2__wallpaper-2796.1fc8d207.webp",
+      "path": "art/firefly-grove/v2/wallpaper-2796.1fc8d207.webp",
+      "size": 249058,
+      "sha256": "1fc8d20745864d9c26540e3aafadce7b392c3c3f3b4792696b76e560ac49f8a7",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__firefly-grove__v2__widget-acorn-habits.3dc71b47.webp",
+      "path": "art/firefly-grove/v2/widget-acorn-habits.3dc71b47.webp",
+      "size": 121568,
+      "sha256": "3dc71b4777e65b8db05b585ea64eb312d0b55597f78b9c755763790c47428055",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__firefly-grove__v2__widget-firefly-jar.af5adc05.webp",
+      "path": "art/firefly-grove/v2/widget-firefly-jar.af5adc05.webp",
+      "size": 144768,
+      "sha256": "af5adc05f55e924f2338391367ea9a8ab0da41d4783283c841e93f41df261414",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__firefly-grove__v2__widget-mosswood-door.2f87b60d.webp",
+      "path": "art/firefly-grove/v2/widget-mosswood-door.2f87b60d.webp",
+      "size": 199210,
+      "sha256": "2f87b60d78a439bf3e545b0e7b227fa288335094980af46bafa4885378bd053c",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__firefly-grove__v2__widget-mushroom-lantern.7ef593b6.webp",
+      "path": "art/firefly-grove/v2/widget-mushroom-lantern.7ef593b6.webp",
+      "size": 160272,
+      "sha256": "7ef593b6356873e33edc5c9abcc85a39be2724d73d9852295a303e8ccfdb6c27",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__firefly-grove__v2__widget-sleeping-fox.abe6b02a.webp",
+      "path": "art/firefly-grove/v2/widget-sleeping-fox.abe6b02a.webp",
+      "size": 184230,
+      "sha256": "abe6b02a68e5cf573f4c88d8833619515e49004768710889b9def761dc706b61",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__indigo-current__v2__thumb.ea44ea86.webp",
+      "path": "art/indigo-current/v2/thumb.ea44ea86.webp",
+      "size": 16116,
+      "sha256": "ea44ea866f2e3a282d64157f95e4cbaa395720568a29adf5d014c81dfbecd4f5",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__indigo-current__v2__wallpaper-1334.2e8d9bdd.webp",
+      "path": "art/indigo-current/v2/wallpaper-1334.2e8d9bdd.webp",
+      "size": 175130,
+      "sha256": "2e8d9bdd01220bd9435e690379cafb07e70e44cec1070c22c969df292ed80331",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__indigo-current__v2__wallpaper-2556.be26ecf1.webp",
+      "path": "art/indigo-current/v2/wallpaper-2556.be26ecf1.webp",
+      "size": 387336,
+      "sha256": "be26ecf149cbe88e975290b74b2f63ff94362ee22e71e53bed733298c2467a14",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__indigo-current__v2__wallpaper-2796.46cc170d.webp",
+      "path": "art/indigo-current/v2/wallpaper-2796.46cc170d.webp",
+      "size": 429946,
+      "sha256": "46cc170dd50bbd2e112255b94c74db7f685ec3bcf93679e30046af8515a15e27",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__indigo-current__v2__widget-harbour-focus.d8d1b10a.webp",
+      "path": "art/indigo-current/v2/widget-harbour-focus.d8d1b10a.webp",
+      "size": 201010,
+      "sha256": "d8d1b10ae4def31fbce37152a5b1f714942e345cc78ce2ab41746d53910f7b00",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__indigo-current__v2__widget-ink-stingray.52c7ea9c.webp",
+      "path": "art/indigo-current/v2/widget-ink-stingray.52c7ea9c.webp",
+      "size": 223708,
+      "sha256": "52c7ea9c5beebe22715541dda85e827e53d0e7139a74bda0f5f28148d621f8f0",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__indigo-current__v2__widget-ink-whale.f74fd02f.webp",
+      "path": "art/indigo-current/v2/widget-ink-whale.f74fd02f.webp",
+      "size": 245548,
+      "sha256": "f74fd02f7d5a6c7f1f97ec6052f8787ff7404ae8af82646dc249c59bd0f8f53e",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__indigo-current__v2__widget-paper-harbour.0d11a46e.webp",
+      "path": "art/indigo-current/v2/widget-paper-harbour.0d11a46e.webp",
+      "size": 269386,
+      "sha256": "0d11a46e2eb0f8afb27628e7dcd88f94d42694963baab88630ecbd73a2872dc6",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__indigo-current__v2__widget-paper-lighthouse.1881cd47.webp",
+      "path": "art/indigo-current/v2/widget-paper-lighthouse.1881cd47.webp",
+      "size": 193820,
+      "sha256": "1881cd472ee770a60d0cebcbf0811f06b5655f86ce6d89660fe62ef72fded27a",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__meadowglow__v2__thumb.98e8601f.webp",
+      "path": "art/meadowglow/v2/thumb.98e8601f.webp",
+      "size": 16644,
+      "sha256": "98e8601fe784bd15a546a602cf194080d6774b05932c7797bb33955068948ff0",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__meadowglow__v2__wallpaper-1334.57fa0d4e.webp",
+      "path": "art/meadowglow/v2/wallpaper-1334.57fa0d4e.webp",
+      "size": 59850,
+      "sha256": "57fa0d4e309ab48a34ca0cce17afa6442b56e86a5d38a4cf4741c3d5c1a3212d",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__meadowglow__v2__wallpaper-2556.fc2f5be1.webp",
+      "path": "art/meadowglow/v2/wallpaper-2556.fc2f5be1.webp",
+      "size": 136476,
+      "sha256": "fc2f5be103a79b09c0b16acb01f13642706b7b63cddd70716fe59eef31acfed1",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__meadowglow__v2__wallpaper-2796.c9ab9ffa.webp",
+      "path": "art/meadowglow/v2/wallpaper-2796.c9ab9ffa.webp",
+      "size": 150108,
+      "sha256": "c9ab9ffae8d3c67a0822df6364ef0a74b6dca2269a3c6ed26e7807ffb9f3740f",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__meadowglow__v2__widget-dew-daisy.14655691.webp",
+      "path": "art/meadowglow/v2/widget-dew-daisy.14655691.webp",
+      "size": 51932,
+      "sha256": "14655691d524c0ca42e9ca0b88b89df51a2c8f1287e55014d81588c8d68f837f",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__meadowglow__v2__widget-dew-grass-orb.ab598b91.webp",
+      "path": "art/meadowglow/v2/widget-dew-grass-orb.ab598b91.webp",
+      "size": 103612,
+      "sha256": "ab598b9169e5dfb508dd8446fd1aca74ef61d1f7dd8c4a4feb0647f45a265f1c",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__meadowglow__v2__widget-meadow-date.679785f6.webp",
+      "path": "art/meadowglow/v2/widget-meadow-date.679785f6.webp",
+      "size": 74134,
+      "sha256": "679785f679c8dcaabbd8ed069e0185c4ecd18ff20a8c5406b57ae513047be85f",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__meadowglow__v2__widget-morning-grass.aed4e109.webp",
+      "path": "art/meadowglow/v2/widget-morning-grass.aed4e109.webp",
+      "size": 78784,
+      "sha256": "aed4e109fc75ec127b6743414a028b5f5336a3c4dbb8fcbeb099e92c4b06df1a",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__meadowglow__v2__widget-sunlit-dandelion.d099e95f.webp",
+      "path": "art/meadowglow/v2/widget-sunlit-dandelion.d099e95f.webp",
+      "size": 110172,
+      "sha256": "d099e95f864c456f491ac36e54572d10ca8c4b4578401c63f5e15d99da1195f7",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__moonpatch__v2__thumb.c40a80dd.webp",
+      "path": "art/moonpatch/v2/thumb.c40a80dd.webp",
+      "size": 31784,
+      "sha256": "c40a80dd4b0f407d2c1f6d5dbba78d6d6483eec34be10fe93cb9db0a8ff8766d",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__moonpatch__v2__wallpaper-1334.81570331.webp",
+      "path": "art/moonpatch/v2/wallpaper-1334.81570331.webp",
+      "size": 277052,
+      "sha256": "81570331986d513391e24c639e0911841681d4afb0dc9f9b8d0fe83ced61d21a",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__moonpatch__v2__wallpaper-2556.1a3ad881.webp",
+      "path": "art/moonpatch/v2/wallpaper-2556.1a3ad881.webp",
+      "size": 582510,
+      "sha256": "1a3ad881b1724aeda81b0beebb2a62b7a1c94b93cb4ac8ce3eb68f7fa2bf1fae",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__moonpatch__v2__wallpaper-2796.3fb93b60.webp",
+      "path": "art/moonpatch/v2/wallpaper-2796.3fb93b60.webp",
+      "size": 610984,
+      "sha256": "3fb93b607f05b0e9d696264f01ab52aaf24a9d55b91284f1f18c1874c3e3c55b",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__moonpatch__v2__widget-moonpatch-habits.979177ac.webp",
+      "path": "art/moonpatch/v2/widget-moonpatch-habits.979177ac.webp",
+      "size": 265316,
+      "sha256": "979177acbc4997d5400c3404be4b45ecb01f35768db99f53a9b0891239058d0d",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__moonpatch__v2__widget-patchwork-kite.647a4340.webp",
+      "path": "art/moonpatch/v2/widget-patchwork-kite.647a4340.webp",
+      "size": 295618,
+      "sha256": "647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__moonpatch__v2__widget-pocket-rocket.4ba97b5b.webp",
+      "path": "art/moonpatch/v2/widget-pocket-rocket.4ba97b5b.webp",
+      "size": 286872,
+      "sha256": "4ba97b5be97d1eea1851268b833df49b8791234a8511717b87eb00decebcafe6",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__moonpatch__v2__widget-quilted-rocket.bd026b99.webp",
+      "path": "art/moonpatch/v2/widget-quilted-rocket.bd026b99.webp",
+      "size": 293698,
+      "sha256": "bd026b9975abea444c82eaea3959ed674e1e2911c38f98ba56eb282487f8c657",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__moonpatch__v2__widget-star-catcher.b7b5d2a9.webp",
+      "path": "art/moonpatch/v2/widget-star-catcher.b7b5d2a9.webp",
+      "size": 310570,
+      "sha256": "b7b5d2a93e5b7c915b36c1cdc45b4d315d9aec76ca6d34425d314c5dffbb8ae8",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__opal-abyss__v2__thumb.b14bea31.webp",
+      "path": "art/opal-abyss/v2/thumb.b14bea31.webp",
+      "size": 14852,
+      "sha256": "b14bea31fc116e425d1de37058fdd62c14d27f3434cb48646da6d820a8e6b8f7",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__opal-abyss__v2__wallpaper-1334.1cb64ab8.webp",
+      "path": "art/opal-abyss/v2/wallpaper-1334.1cb64ab8.webp",
+      "size": 82222,
+      "sha256": "1cb64ab8d82eed4c3cf7bb369c7cc3eaae0682b4cefa9632c71ba4d7057086d9",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__opal-abyss__v2__wallpaper-2556.c460a24b.webp",
+      "path": "art/opal-abyss/v2/wallpaper-2556.c460a24b.webp",
+      "size": 161688,
+      "sha256": "c460a24bdc86454e07a089e7d0d35d6545ae98409ec6b7594af3abcf66e1d321",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__opal-abyss__v2__wallpaper-2796.018fbde1.webp",
+      "path": "art/opal-abyss/v2/wallpaper-2796.018fbde1.webp",
+      "size": 178314,
+      "sha256": "018fbde163159e1b1a06b32810430e9e814658d1c72dfcffd82d822f1327aec2",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__opal-abyss__v2__widget-abyss-battery.a350cc03.webp",
+      "path": "art/opal-abyss/v2/widget-abyss-battery.a350cc03.webp",
+      "size": 130862,
+      "sha256": "a350cc033a3fddcb37c84481dc887d1016920a23e4989338002d18da17ef3fb8",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__opal-abyss__v2__widget-droplet-lighthouse.0187e107.webp",
+      "path": "art/opal-abyss/v2/widget-droplet-lighthouse.0187e107.webp",
+      "size": 147912,
+      "sha256": "0187e107d3bae1700d013f3ec989d3322e6f2a87e9347c17d940a5e857222380",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__opal-abyss__v2__widget-moon-jelly-window.5717c9c6.webp",
+      "path": "art/opal-abyss/v2/widget-moon-jelly-window.5717c9c6.webp",
+      "size": 178998,
+      "sha256": "5717c9c61a8a9908fa36c4460572fbf7f6f59b09eeabe3504a153f1ffdac8ab3",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__opal-abyss__v2__widget-nautilus.7e22e68c.webp",
+      "path": "art/opal-abyss/v2/widget-nautilus.7e22e68c.webp",
+      "size": 216212,
+      "sha256": "7e22e68cdb0c72c70b3ed186908a87b853a0563a910bc8f75e25e43eead18fa7",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__opal-abyss__v2__widget-pearl-shell.4f3e2b0c.webp",
+      "path": "art/opal-abyss/v2/widget-pearl-shell.4f3e2b0c.webp",
+      "size": 164624,
+      "sha256": "4f3e2b0cb9495248e698a128e70cc91250293736bcdf179edd788627a51f0c48",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rainlight__v2__thumb.6cc0713f.webp",
+      "path": "art/rainlight/v2/thumb.6cc0713f.webp",
+      "size": 25032,
+      "sha256": "6cc0713fd5a97eda1bbca530032ff8b9442a09d4c3c41b04de713a1a08c89eae",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rainlight__v2__wallpaper-1334.d414ee77.webp",
+      "path": "art/rainlight/v2/wallpaper-1334.d414ee77.webp",
+      "size": 185020,
+      "sha256": "d414ee77739e1d057421029f7a0772d6a731cf69603d4245142f1584f160b814",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rainlight__v2__wallpaper-2556.1b868baf.webp",
+      "path": "art/rainlight/v2/wallpaper-2556.1b868baf.webp",
+      "size": 337370,
+      "sha256": "1b868baf07f55f831b51f13b029a9be09510a645aeef520f3e48229e1631a945",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rainlight__v2__wallpaper-2796.fe0b76b6.webp",
+      "path": "art/rainlight/v2/wallpaper-2796.fe0b76b6.webp",
+      "size": 368426,
+      "sha256": "fe0b76b65d01af25785554f5a11afef8d160ad28b3d8ea1f84129f524c1987a5",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rainlight__v2__widget-glass-umbrella.4fc714e5.webp",
+      "path": "art/rainlight/v2/widget-glass-umbrella.4fc714e5.webp",
+      "size": 243856,
+      "sha256": "4fc714e508cc49edf203f9e7af3ec294e053bb9bc806cc552764901474ce154c",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rainlight__v2__widget-koi.3736d776.webp",
+      "path": "art/rainlight/v2/widget-koi.3736d776.webp",
+      "size": 227332,
+      "sha256": "3736d776b2888eeae84905ede92fa0d48e896abbdccbb1c4229682287e637fbc",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rainlight__v2__widget-rain-leaf.761fc7df.webp",
+      "path": "art/rainlight/v2/widget-rain-leaf.761fc7df.webp",
+      "size": 169358,
+      "sha256": "761fc7df8a20a8806bc9d287e3b8986c49cdf8d14ed09765d88b0fbd0cd8d212",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rainlight__v2__widget-rainlight-date.bed38cc0.webp",
+      "path": "art/rainlight/v2/widget-rainlight-date.bed38cc0.webp",
+      "size": 222992,
+      "sha256": "bed38cc001e8782181eb2c18a323359fbc400cff9111b6ed704a594d855887ad",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rosewater-reverie__v2__thumb.203e0eb4.webp",
+      "path": "art/rosewater-reverie/v2/thumb.203e0eb4.webp",
+      "size": 6568,
+      "sha256": "203e0eb4f7ca9e3051a9b3ac0886b593310fd47ade40dfe8e773317ab87eb530",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rosewater-reverie__v2__wallpaper-1334.e2b26417.webp",
+      "path": "art/rosewater-reverie/v2/wallpaper-1334.e2b26417.webp",
+      "size": 50202,
+      "sha256": "e2b2641721fd378d003803e72182bb97a5fc6dee260da485024516f687135f1e",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rosewater-reverie__v2__wallpaper-2556.db0b4456.webp",
+      "path": "art/rosewater-reverie/v2/wallpaper-2556.db0b4456.webp",
+      "size": 139944,
+      "sha256": "db0b44560e39be1c0664d3d2d58dc70105a89e44ac9ea2d3f9123d2dfa80695e",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rosewater-reverie__v2__wallpaper-2796.bbb0961d.webp",
+      "path": "art/rosewater-reverie/v2/wallpaper-2796.bbb0961d.webp",
+      "size": 159894,
+      "sha256": "bbb0961d660a66c9b4a532f7c4c45b327c47c7ece841cbd4598999d14b5c03dd",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rosewater-reverie__v2__widget-bottled-ballet.c47a7c6c.webp",
+      "path": "art/rosewater-reverie/v2/widget-bottled-ballet.c47a7c6c.webp",
+      "size": 154458,
+      "sha256": "c47a7c6ce94eb3bd6fac3631be482ad698a1202bb1d3c1ddbe11372638e58da8",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rosewater-reverie__v2__widget-glass-rose.fff58ab0.webp",
+      "path": "art/rosewater-reverie/v2/widget-glass-rose.fff58ab0.webp",
+      "size": 128356,
+      "sha256": "fff58ab0f179a0a54f05ec5bbf5877539880e468e05ab0c7dd2aff08f059d116",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rosewater-reverie__v2__widget-pearl-ballet-brooch.6dfadda6.webp",
+      "path": "art/rosewater-reverie/v2/widget-pearl-ballet-brooch.6dfadda6.webp",
+      "size": 140600,
+      "sha256": "6dfadda6d978ac65491075b23245d212c02df20ceeb6ff4f7142dc2adcba89c8",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rosewater-reverie__v2__widget-rehearsal-countdown.4eff6fe3.webp",
+      "path": "art/rosewater-reverie/v2/widget-rehearsal-countdown.4eff6fe3.webp",
+      "size": 89896,
+      "sha256": "4eff6fe3350ef0edacfcfe373e7645799f6253d92c466dc4a8cfb41b673b71e2",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__rosewater-reverie__v2__widget-satin-swan.15bca733.webp",
+      "path": "art/rosewater-reverie/v2/widget-satin-swan.15bca733.webp",
+      "size": 126900,
+      "sha256": "15bca7331b9b80525ac751a0db902fb8537c311f523009e2ae35ac5044823299",
+      "kind": "file",
+      "upload": true
+    },
+    {
+      "name": "art__alpine-starlight__v2__manifest.json",
+      "path": "art/alpine-starlight/v2/manifest.json",
+      "size": 5986,
+      "sha256": "96b23060b83605c5cf0c7f24e7d1e081e1616f9fa59c31649622d089ef03b79c",
+      "kind": "manifest",
+      "upload": true
+    },
+    {
+      "name": "art__cloud-atelier__v2__manifest.json",
+      "path": "art/cloud-atelier/v2/manifest.json",
+      "size": 5517,
+      "sha256": "2a6188c8aaae362aca889a126057ffa8fed2cf247f00e119966b790f034cd0e1",
+      "kind": "manifest",
+      "upload": true
+    },
+    {
+      "name": "art__desert-afterglow__v2__manifest.json",
+      "path": "art/desert-afterglow/v2/manifest.json",
+      "size": 6625,
+      "sha256": "251c0a5ddde78829ea1200d2d34c7b59d1c3d508365cc913a3827760dc52fb38",
+      "kind": "manifest",
+      "upload": true
+    },
+    {
+      "name": "art__firefly-grove__v2__manifest.json",
+      "path": "art/firefly-grove/v2/manifest.json",
+      "size": 5757,
+      "sha256": "cdcc30dca653f62c3bce9afcc9006978f9682d7486ba1fd96009805c099349da",
+      "kind": "manifest",
+      "upload": true
+    },
+    {
+      "name": "art__indigo-current__v2__manifest.json",
+      "path": "art/indigo-current/v2/manifest.json",
+      "size": 4651,
+      "sha256": "9d53e289f78fe39b031155f0ce2de25bc77973d1b50f1eac9a6499126d9f052e",
+      "kind": "manifest",
+      "upload": true
+    },
+    {
+      "name": "art__meadowglow__v2__manifest.json",
+      "path": "art/meadowglow/v2/manifest.json",
+      "size": 4553,
+      "sha256": "7fd53ee341311dfb64ed67287a9bb808e39707466cf414f6bc0fe693d89b2953",
+      "kind": "manifest",
+      "upload": true
+    },
+    {
+      "name": "art__moonpatch__v2__manifest.json",
+      "path": "art/moonpatch/v2/manifest.json",
+      "size": 4583,
+      "sha256": "68d30f37b39573d798a77da5c31b98b6fc0d5f52640314992f5eb74f45552adc",
+      "kind": "manifest",
+      "upload": true
+    },
+    {
+      "name": "art__opal-abyss__v2__manifest.json",
+      "path": "art/opal-abyss/v2/manifest.json",
+      "size": 4677,
+      "sha256": "80f79e3577f01eb3e7bf5d1a057d75a43b5b4be4683e7a0b5ad4e8fdda7a9390",
+      "kind": "manifest",
+      "upload": true
+    },
+    {
+      "name": "art__rainlight__v2__manifest.json",
+      "path": "art/rainlight/v2/manifest.json",
+      "size": 5072,
+      "sha256": "1762619e550964b8c95499b2ace408f19f393bcecbec558295888d9a02b1ecc7",
+      "kind": "manifest",
+      "upload": true
+    },
+    {
+      "name": "art__rosewater-reverie__v2__manifest.json",
+      "path": "art/rosewater-reverie/v2/manifest.json",
+      "size": 4701,
+      "sha256": "43fc275004e1479bb1ac04ef461f226d102349eca9639aade2c1a05e0e7e24c5",
+      "kind": "manifest",
+      "upload": true
+    },
+    {
+      "name": "catalog.json",
+      "path": "catalog.json",
+      "size": 7700,
+      "sha256": "d98f7d13245fd3d2aae915922beb1e0953215263ea72047e1930f96979b58421",
+      "kind": "catalog",
+      "upload": true
+    }
+  ],
+  "stale": [
+    "art__alpine-starlight__v1__manifest.json",
+    "art__alpine-starlight__v1__thumb.e5731259.webp",
+    "art__alpine-starlight__v1__wallpaper-1334.7ddccc93.webp",
+    "art__alpine-starlight__v1__wallpaper-2556.919f7026.webp",
+    "art__alpine-starlight__v1__wallpaper-2796.d5e95932.webp",
+    "art__alpine-starlight__v1__widget-large.b110e9cd.webp",
+    "art__alpine-starlight__v1__widget-medium.5a7b8f1e.webp",
+    "art__alpine-starlight__v1__widget-small.b10e2c03.webp",
+    "art__cloud-atelier__v1__manifest.json",
+    "art__cloud-atelier__v1__thumb.a4d7c735.webp",
+    "art__cloud-atelier__v1__wallpaper-1334.24baffb5.webp",
+    "art__cloud-atelier__v1__wallpaper-2556.6053302c.webp",
+    "art__cloud-atelier__v1__wallpaper-2796.fffbb309.webp",
+    "art__cloud-atelier__v1__widget-large.6610f89d.webp",
+    "art__cloud-atelier__v1__widget-medium.fa53c452.webp",
+    "art__cloud-atelier__v1__widget-small.ca139b9f.webp",
+    "art__desert-afterglow__v1__manifest.json",
+    "art__desert-afterglow__v1__thumb.2e482e82.webp",
+    "art__desert-afterglow__v1__wallpaper-1334.afdeb4ea.webp",
+    "art__desert-afterglow__v1__wallpaper-2556.5f6e5641.webp",
+    "art__desert-afterglow__v1__wallpaper-2796.2576832c.webp",
+    "art__desert-afterglow__v1__widget-large.2d3cb7bc.webp",
+    "art__desert-afterglow__v1__widget-medium.44fa74e5.webp",
+    "art__desert-afterglow__v1__widget-small.d2c31757.webp",
+    "art__firefly-grove__v1__manifest.json",
+    "art__firefly-grove__v1__thumb.4bb67955.webp",
+    "art__firefly-grove__v1__wallpaper-1334.1c9200f9.webp",
+    "art__firefly-grove__v1__wallpaper-2556.fbb6f73d.webp",
+    "art__firefly-grove__v1__wallpaper-2796.1fc8d207.webp",
+    "art__firefly-grove__v1__widget-large.4fe62c76.webp",
+    "art__firefly-grove__v1__widget-medium.b56c212d.webp",
+    "art__firefly-grove__v1__widget-small.c427fe3d.webp",
+    "art__indigo-current__v1__manifest.json",
+    "art__indigo-current__v1__thumb.ea44ea86.webp",
+    "art__indigo-current__v1__wallpaper-1334.2e8d9bdd.webp",
+    "art__indigo-current__v1__wallpaper-2556.be26ecf1.webp",
+    "art__indigo-current__v1__wallpaper-2796.46cc170d.webp",
+    "art__indigo-current__v1__widget-large.ce4bed92.webp",
+    "art__indigo-current__v1__widget-medium.76039636.webp",
+    "art__indigo-current__v1__widget-small.b18b749a.webp",
+    "art__meadowglow__v1__manifest.json",
+    "art__meadowglow__v1__thumb.98e8601f.webp",
+    "art__meadowglow__v1__wallpaper-1334.57fa0d4e.webp",
+    "art__meadowglow__v1__wallpaper-2556.fc2f5be1.webp",
+    "art__meadowglow__v1__wallpaper-2796.c9ab9ffa.webp",
+    "art__meadowglow__v1__widget-large.41469b52.webp",
+    "art__meadowglow__v1__widget-medium.d5d4f22d.webp",
+    "art__meadowglow__v1__widget-small.6e971e17.webp",
+    "art__moonpatch__v1__manifest.json",
+    "art__moonpatch__v1__thumb.c40a80dd.webp",
+    "art__moonpatch__v1__wallpaper-1334.81570331.webp",
+    "art__moonpatch__v1__wallpaper-2556.1a3ad881.webp",
+    "art__moonpatch__v1__wallpaper-2796.3fb93b60.webp",
+    "art__moonpatch__v1__widget-large.fbc62e70.webp",
+    "art__moonpatch__v1__widget-medium.69901093.webp",
+    "art__moonpatch__v1__widget-small.fad8004e.webp",
+    "art__opal-abyss__v1__manifest.json",
+    "art__opal-abyss__v1__thumb.b14bea31.webp",
+    "art__opal-abyss__v1__wallpaper-1334.1cb64ab8.webp",
+    "art__opal-abyss__v1__wallpaper-2556.c460a24b.webp",
+    "art__opal-abyss__v1__wallpaper-2796.018fbde1.webp",
+    "art__opal-abyss__v1__widget-large.3bd25a22.webp",
+    "art__opal-abyss__v1__widget-medium.944ff0eb.webp",
+    "art__opal-abyss__v1__widget-small.0069ba04.webp",
+    "art__rainlight__v1__manifest.json",
+    "art__rainlight__v1__thumb.6cc0713f.webp",
+    "art__rainlight__v1__wallpaper-1334.d414ee77.webp",
+    "art__rainlight__v1__wallpaper-2556.1b868baf.webp",
+    "art__rainlight__v1__wallpaper-2796.fe0b76b6.webp",
+    "art__rainlight__v1__widget-large.73cea125.webp",
+    "art__rainlight__v1__widget-medium.ed78c3d6.webp",
+    "art__rainlight__v1__widget-small.837d5c63.webp",
+    "art__rosewater-reverie__v1__manifest.json",
+    "art__rosewater-reverie__v1__thumb.203e0eb4.webp",
+    "art__rosewater-reverie__v1__wallpaper-1334.e2b26417.webp",
+    "art__rosewater-reverie__v1__wallpaper-2556.db0b4456.webp",
+    "art__rosewater-reverie__v1__wallpaper-2796.bbb0961d.webp",
+    "art__rosewater-reverie__v1__widget-large.d794d22e.webp",
+    "art__rosewater-reverie__v1__widget-medium.a237e3b0.webp",
+    "art__rosewater-reverie__v1__widget-small.66b748a9.webp"
+  ],
+  "totalAssets": 183
+}
