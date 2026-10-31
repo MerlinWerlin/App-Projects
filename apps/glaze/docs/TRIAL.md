@@ -13,6 +13,11 @@ This needs the **new TestFlight build** (new app icon, Island pets and widget ar
 6. **Pets alive:** on the Pets tab, does each pet (Mushy, Pip, Clover) show what it is doing and its mood (sleeping at night, eating around meals, wandering or playing in the day), react when you tap it, and do Feed / Play work? With the Island on, does the pet's pose change after you open Glaze at a new time of day? yes / no
 7. **Bigger app list:** in Find apps, do searches like "Steam" or "TestFlight" find the app? (79 new apps this time, each checked against Apple's public data; more to come.) yes / no
 8. **New icon + startup:** is the new Home Screen icon (a lilac crystal creature under a rainbow) the cute prism creature you meant? When Glaze opens, does it wake, float, blink once and fade calmly into the app, with no bounce? yes / no
+9. **Clean up old icons:** Icons tab > **Clean up old icons**. Do the steps match your iPhone (Settings > General > VPN & Device Management > Glaze profile > Remove Profile; touch and hold a bookmark > Remove Bookmark; jiggle mode > minus)? After removing the old Glaze profile, are all its old icons gone at once? yes / no
+10. **Old icons named:** install one theme's icons with Shortcuts, then start another theme's icons. Does the Shortcuts card list the old Glaze icons to remove first, with "How to remove them" and "I removed them"? yes / no
+11. **New profile replaces the old one:** if you use the optional profile install for two themes in a row, does VPN & Device Management show just **one** Glaze icons profile (the second install replaces the first)? Profiles made by older Glaze builds still need removing once by hand. yes / no
+12. **Hide the originals tip:** after finishing an install, do you see the tip to hide the original app icons (touch and hold > Remove App > Remove from Home Screen; they stay in the App Library)? yes / no
+13. **App list, more apps:** 71 more apps in Find apps (749 total), each checked against Apple's public data. Do searches like "Messenger" or "Kanopy" find them? yes / no
 
 ## New since your last test (31 Oct, midday)
 Fully close and reopen the TestFlight Glaze twice to load the update, then answer yes / no:

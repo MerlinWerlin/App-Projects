@@ -2058,7 +2058,7 @@
    "title": "Repo bundle is 10.6 MB (base64 14.4 MB; WORKFLOW asks < 10 MB, artifact hard cap 16 MB per file): shrink it, e.g. palette-quantise the brand/splash PNGs and store shots, or keep large rendered previews out of git and regenerate them",
    "deps": [],
    "blocked_on": null,
-   "note": "run 118: repack -adf --window=250 saves nothing; 3 refs only; the size is history (old store-shot/icon PNG versions), and re-compressing current PNGs would ADD new blobs. Only a history squash shrinks it, which would drop the only canonical history: not done. 10.6 MB bundle / 14.1 MB base64 is under the 16 MB artifact cap; keep new large binaries out (regenerate store shots at render time) and revisit if base64 passes 15 MB. Run 193: base64 is now 15.34 MB (bundle 11.50 MB raw) against the 16 MB artifact cap, ~1.4 MB headroom; recent growth ~16 KB raw / ~22 KB base64 per run, so roughly 30-60 more runs. A history squash is still NOT safe: App-Projects apps/glaze/SHIP_BASE.txt pins our commit d684762, so rewriting hashes would break auto-ship. Needs an overseer decision (e.g. squash + re-pin SHIP_BASE in one coordinated step, or split the bundle into two artifact files with a prompt change) before base64 reaches ~15.9 MB. | run 194: D215-1 adopted: ops/bundle-check.sh repacks before every publish (hashes unchanged) and guards new/changed PNG/JPG > 100 KB above 15.6 MB; size logged in RUNLOG each run. No history rewrite."
+   "note": "run 118: repack -adf --window=250 saves nothing; 3 refs only; the size is history (old store-shot/icon PNG versions), and re-compressing current PNGs would ADD new blobs. Only a history squash shrinks it, which would drop the only canonical history: not done. 10.6 MB bundle / 14.1 MB base64 is under the 16 MB artifact cap; keep new large binaries out (regenerate store shots at render time) and revisit if base64 passes 15 MB. Run 193: base64 is now 15.34 MB (bundle 11.50 MB raw) against the 16 MB artifact cap, ~1.4 MB headroom; recent growth ~16 KB raw / ~22 KB base64 per run, so roughly 30-60 more runs. A history squash is still NOT safe: App-Projects apps/glaze/SHIP_BASE.txt pins our commit d684762, so rewriting hashes would break auto-ship. Needs an overseer decision (e.g. squash + re-pin SHIP_BASE in one coordinated step, or split the bundle into two artifact files with a prompt change) before base64 reaches ~15.9 MB. | run 194: D215-1 adopted: ops/bundle-check.sh repacks before every publish (hashes unchanged) and guards new/changed PNG/JPG > 100 KB above 15.6 MB; size logged in RUNLOG each run. No history rewrite. | run 205: superseded by T195 (owner item 11): archive + slim-bundle swap plan, docs/REPO_SPACE.md."
   },
   {
    "id": "T151",
@@ -2556,14 +2556,16 @@
   },
   {
    "id": "T192",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "owner-1101",
     "follow-up"
    ],
    "source": "run 203 T188",
-   "title": "Island pet: sync the Live Activity whenever Glaze opens (one syncIslandPet call on app foreground), not only from the Pets screen"
+   "title": "Island pet: sync the Live Activity whenever Glaze opens (one syncIslandPet call on app foreground), not only from the Pets screen",
+   "commit": "ac55196",
+   "note": "run 204: syncIslandPetOnOpen in app/_layout (launch +2.5 s and AppState active); syncIslandPet serialised so two callers never start two activities; JS only, no-op in Expo Go."
   },
   {
    "id": "T193",
@@ -2574,12 +2576,60 @@
     "follow-up"
    ],
    "source": "run 203 T186/T183",
-   "title": "Cleanup: remove dead old-wallpaper-gallery code/strings (WallpaperTile, wallpaperTiles, wallpaperGroups, tabs.wallpapersTab gallery strings), unused Open URL/copy-link install strings, \"Live tab\" tip label; full-Live-Photo save adds a My wallpapers entry"
+   "title": "Cleanup: remove dead old-wallpaper-gallery code/strings (WallpaperTile, wallpaperTiles, wallpaperGroups, tabs.wallpapersTab gallery strings), unused Open URL/copy-link install strings, \"Live tab\" tip label; full-Live-Photo save adds a My wallpapers entry",
+   "note": "run 204: left for later: removing the old gallery code means rewriting ~6 source-guard tests with no visible change (owner decision 24 Oct: good enough to ship), and a full-Live-Photo My wallpapers entry needs a still image the native livephoto.save does not return yet (native change, D130-2 caution)."
+  },
+  {
+   "id": "T194",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101"
+   ],
+   "source": "owner addendum 1 Nov item 10",
+   "title": "Clean up old icons: stable per-install profile identifier (new profile replaces old), Shortcuts path lists old icons to remove, Icons > Clean up old icons screen with exact steps, hide-the-originals tip",
+   "commit": "e474cf8"
+  },
+  {
+   "id": "T195",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "owner-1101",
+    "ops"
+   ],
+   "source": "owner addendum 1 Nov item 11",
+   "title": "Repo space: archive full history on the build page, then swap to a slim bundle (ops/slim-bundle.sh) once the overseer re-pins SHIP_BASE; docs/REPO_SPACE.md",
+   "note": "run 205: measured (full 15.6 MB vs slim 7.9 MB base64), full-history archive published as history/repo-full-2026-11-01.bundle.b64.txt, slim script dry-run OK (identical tree). Swap blocked on overseer: D215-1 forbids rewriting history and auto-ship's SHIP_BASE (f658d83) must be re-pinned to the new root in the same step. | run 206 (D223-1, oversight v223): slim candidate prepared with ops/slim-candidate.sh: root = tree of SHIP_BASE f658d83 (new id 301a9f0, stable on every rebuild: fixed dates/identity), then each later first-parent commit replayed with its own tree. Published as history/repo-slim-candidate.bundle.b64.txt (~7.9 MB) + docs/REPO_MAP.json (old->new ids); live repo.bundle.b64.txt untouched. Swap only when App-Projects SHIP_BASE names a NEW id from the map. If auto-ship advances SHIP_BASE first, the next rebuild uses the new SHIP_BASE as root (new map)."
+  },
+  {
+   "id": "T196",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101"
+   ],
+   "source": "owner addendum 1 Nov item 12",
+   "title": "Find apps: +71 verified rows (Apple AU lookup), catalogue 749",
+   "commit": "6062aa5"
+  },
+  {
+   "id": "T197",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "owner-1101",
+    "recurring"
+   ],
+   "source": "owner addendum 1 Nov item 12",
+   "title": "Find apps: next verified batch toward ~1,500 (WebFetch itunes lookup, 1-3 ids per call; retry run 205's possible false negatives one id at a time: Family Link, Lifesum, Xero, NetNewsWire, Genius Scan, FotMob, FlightAware, Hill Climb Racing 2)"
   }
  ],
  "priority_order": {
   "note": "run 191: oversight v212 (D211-1 still open, no new directives); only cloud-safe item T181 string retirement; rest waits on owner/PC or D130-2 holds. run 189: owner-1031 brief (manual fire, docs/OWNER_1031.md) outranks the backlog: T177-T180. run 188: T173 closed (all seven screens sliced); T176 Icons/Wallpapers/Live premium slices done (JS only, D130-2). run 187: oversight v210 lifted D206-1/D207-1 (PR #131 merged); T173 onboarding + Themes browse, T168 done (JS only, D130-2). run 185: D207-1 (≤2 small JS-only tasks): T175 + T173 theme-detail apply skeleton; no native. run 184: T173 Install/Plus/Settings slices + T166 + T156 done; D206-1 still holds native code (PR #128 result unreadable from the cloud). run 183: T173 slices continue every run (next Install flow); D206-1 holds new native code until a build with glaze-home-scan is confirmed green. run 182: owner-1030b brief (Jared's chat 30 Oct evening, synced from App-Projects 2b133ce) outranks the backlog: T169-T172 then T173 premium UI every run. run 179: owner-1030 brief (manual fire, docs/OWNER_1030.md) outranks the backlog: A (T159-T161) and C (T162) first, then B (T163-T164), D (T165). run 132: PR 107 (T155 widget/theme/icon repairs + T158 Island pets, v1.0.1) synced from App-Projects 1f90aa7; T157 done. 26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
   "order": [
+   "T197",
+   "T195",
    "T183",
    "T184",
    "T185",

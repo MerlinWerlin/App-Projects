@@ -1,6 +1,6 @@
 {
-  "mode": "build",
-  "note": "Glaze: new tabs (Themes, Widgets, Icons, Pets, Wallpapers), Use this theme switches everything, Island pets come alive, icons open apps without a Safari hop, Prism mascot and app icon",
+  "mode": "update",
+  "note": "Glaze: Clean up old icons on the Icons tab, a new install profile replaces the old Glaze one, 749 apps in Find apps, Island pet refreshes whenever Glaze opens",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

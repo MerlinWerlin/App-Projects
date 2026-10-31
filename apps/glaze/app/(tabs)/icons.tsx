@@ -81,7 +81,7 @@ import { Segmented, type SegmentedOption } from '../../src/ui/Segmented';
 import { Swatches, type Swatch } from '../../src/ui/Swatches';
 import { haptic } from '../../src/ui/haptics';
 import { Chevron, noMirror, textStyleFor } from '../../src/ui/i18nLayout';
-import { GlassBar, InsetGroup, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SquircleCard, SwitchInsetRow, useLargeTitleScroll } from '../../src/ui/v2';
+import { GlassBar, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SquircleCard, SwitchInsetRow, useLargeTitleScroll } from '../../src/ui/v2';
 import { useT, type MessageKey, type Script } from '../../src/i18n';
 
 const RESULT_LIMIT = 60;
@@ -617,6 +617,18 @@ export default function IconsScreen() {
               selection();
               styleChange((s) => setStyle(s, { showLabel: v }));
             }}
+          />
+        </InsetGroup>
+
+        {/* T194: apps can't delete Home Screen icons; this opens the exact steps. */}
+        <InsetGroup>
+          <InsetRow
+            title={t('install.cleanup.title')}
+            subtitle={t('install.cleanup.rowSubtitle')}
+            icon="trash-2"
+            iconTone="sky"
+            onPress={() => router.push('/icons-cleanup')}
+            accessibilityHint={t('install.cleanup.openHint')}
           />
         </InsetGroup>
       </View>

@@ -10,7 +10,7 @@ const COMPETITORS = ['gurzvsl', 'vpba gurzre', 'zlfperra', 'fperraxvg', 'jvqtrgf
 const BUNDLE_RE = /^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$/;
 
 test('extra rows: unique, well-formed ids and names', () => {
-  assert.ok(EXTRA_ROWS.length >= 70, `${EXTRA_ROWS.length} rows`);
+  assert.ok(EXTRA_ROWS.length >= 152, `${EXTRA_ROWS.length} rows`); // T196: 81 + 71
   const ids = EXTRA_ROWS.map((r) => r[0]);
   assert.equal(new Set(ids).size, ids.length, 'duplicate ids');
   for (const id of ids) assert.match(id, /^[a-z0-9]+(-[a-z0-9]+)*$/, id);
@@ -84,6 +84,11 @@ test('search finds extra apps by name and alias', () => {
   assert.equal(search('1.1.1.1')[0].id, 'cloudflare-warp');
   assert.ok(search('wireguard').some((e) => e.id === 'wireguard'));
   assert.equal(findByName('Super Mario Run')?.id, 'super-mario-run');
+  // T196 batch.
+  assert.equal(search('Home Assistant')[0].id, 'home-assistant');
+  assert.equal(search('le chat')[0].id, 'vibe-mistral');
+  assert.equal(findByName('Dumb Ways to Die')?.id, 'dumb-ways-to-die');
+  assert.equal(bundleIdFor('kanopy'), 'com.kanopy.Kanopy');
   // The hand-written rows still win their own names.
   assert.equal(search('spotify')[0].id, 'spotify');
   assert.equal(findByName('Temple Run 2')?.id, 'temple-run-2');

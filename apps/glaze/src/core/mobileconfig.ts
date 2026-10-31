@@ -16,6 +16,15 @@ export type BuildProfileOptions = {
   identifierPrefix?: string;
   /** Shown as " (1 of 2)" after the display name when a set is split. */
   part?: { index: number; total: number };
+  /**
+   * T194: one random id per Glaze install (src/store/installId.ts, `makeInstallId`). When set,
+   * the profile's PayloadIdentifier is the same for every theme (`<prefix>.<installId>`, plus
+   * `.part<k>` for the 2nd+ file of a split set) and each web clip's PayloadIdentifier /
+   * PayloadUUID is stable per (installId, part, slot), so installing a new theme's profile
+   * REPLACES the previous Glaze profile in iOS instead of adding a second one. Without it the
+   * old behaviour stays (a new random identifier per build).
+   */
+  installId?: string;
 };
 
 export type ProfileFile = { filename: string; xml: string };
@@ -43,6 +52,47 @@ export function uuidV4(bytes: (n: number) => Uint8Array = randomBytes): string {
   b[8] = (b[8] & 0x3f) | 0x80;
   const h = Array.from(b, (x) => x.toString(16).padStart(2, '0')).join('');
   return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20, 32)}`.toUpperCase();
+}
+
+// ---- stable ids (T194) ----
+
+/** Install id format: 6-32 lower-case letters / digits. */
+export function isValidInstallId(id: unknown): id is string {
+  return typeof id === 'string' && /^[a-z0-9]{6,32}$/.test(id);
+}
+
+/** A fresh random install id (16 lower-case hex characters). Created once and stored by src/store. */
+export function makeInstallId(bytes: (n: number) => Uint8Array = randomBytes): string {
+  return Array.from(bytes(8), (x) => x.toString(16).padStart(2, '0')).join('');
+}
+
+/** 32-bit FNV-1a of a string with a seed (pure, deterministic). */
+function fnv1a(s: string, seed: number): number {
+  let h = (0x811c9dc5 ^ seed) >>> 0;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h >>> 0;
+}
+
+/** A UUID-shaped (version 4 bits, RFC 4122 variant) upper-case id derived only from `seed`. */
+export function stableUuid(seed: string): string {
+  const b = new Uint8Array(16);
+  for (let k = 0; k < 4; k++) {
+    const h = fnv1a(`${k}:${seed}`, Math.imul(k + 1, 0x9e3779b1));
+    b[k * 4] = h >>> 24;
+    b[k * 4 + 1] = (h >>> 16) & 0xff;
+    b[k * 4 + 2] = (h >>> 8) & 0xff;
+    b[k * 4 + 3] = h & 0xff;
+  }
+  return uuidV4(() => b);
+}
+
+/** The top-level PayloadIdentifier for an install id ("com.jared797.glaze.icons.<id>", ".part2" …). */
+export function stableProfileIdentifier(installId: string, partIndex = 1, identifierPrefix?: string): string {
+  const prefix = (identifierPrefix ?? DEFAULT_IDENTIFIER_PREFIX).replace(/\.+$/, '');
+  return partIndex > 1 ? `${prefix}.${installId}.part${partIndex}` : `${prefix}.${installId}`;
 }
 
 // ---- XML helpers ----
@@ -105,7 +155,7 @@ const int = (indent: string, key: string, value: number) =>
 const bool = (indent: string, key: string, value: boolean) =>
   `${indent}<key>${escapeXml(key)}</key>\n${indent}<${value ? 'true' : 'false'}/>\n`;
 
-function webClipPayload(icon: WebClipIcon, profileIdentifier: string, uuid: string): string {
+function webClipPayload(icon: WebClipIcon, profileIdentifier: string, uuid: string, idSuffix: string = uuid): string {
   const i = '\t\t\t';
   const label = icon.label.trim() || 'App';
   return (
@@ -116,7 +166,7 @@ function webClipPayload(icon: WebClipIcon, profileIdentifier: string, uuid: stri
     str(i, 'Label', label) +
     str(i, 'PayloadDescription', `Opens ${label}`) +
     str(i, 'PayloadDisplayName', label) +
-    str(i, 'PayloadIdentifier', `${profileIdentifier}.webclip.${uuid}`) +
+    str(i, 'PayloadIdentifier', `${profileIdentifier}.webclip.${idSuffix}`) +
     str(i, 'PayloadType', 'com.apple.webClip.managed') +
     str(i, 'PayloadUUID', uuid) +
     int(i, 'PayloadVersion', 1) +
@@ -135,9 +185,21 @@ export function profileDisplayName(themeName: string, part?: { index: number; to
 export function buildProfile(opts: BuildProfileOptions): string {
   const uuid = opts.uuid ?? (() => uuidV4());
   const prefix = (opts.identifierPrefix ?? DEFAULT_IDENTIFIER_PREFIX).replace(/\.+$/, '');
+  // The top-level PayloadUUID stays random so each theme's file is a new version; iOS replaces an
+  // installed profile by PayloadIdentifier (T194).
   const profileUuid = uuid();
-  const identifier = `${prefix}.${slugify(opts.themeName)}.${profileUuid}`;
-  const payloads = opts.icons.map((icon) => webClipPayload(icon, identifier, uuid())).join('');
+  const installId = isValidInstallId(opts.installId) ? opts.installId : null;
+  const partIndex = opts.part ? Math.max(1, Math.trunc(opts.part.index)) : 1;
+  const identifier = installId
+    ? stableProfileIdentifier(installId, partIndex, prefix)
+    : `${prefix}.${slugify(opts.themeName)}.${profileUuid}`;
+  const payloads = opts.icons
+    .map((icon, slot) =>
+      installId
+        ? webClipPayload(icon, identifier, stableUuid(`${installId}:${partIndex}:${slot}`), `slot${slot + 1}`)
+        : webClipPayload(icon, identifier, uuid()),
+    )
+    .join('');
   const i = '\t';
   return (
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
@@ -227,6 +289,7 @@ export function buildProfiles(opts: BuildProfileOptions & { maxBytes?: number })
       uuid: opts.uuid,
       identifierPrefix: opts.identifierPrefix,
       part: { index: k + 1, total },
+      installId: opts.installId,
     }),
   }));
 }

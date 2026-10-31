@@ -6,13 +6,14 @@ import { Stack, type ErrorBoundaryProps } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState, type ReactNode } from 'react';
-import { View } from 'react-native';
+import { AppState, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { durations } from '../src/theme/motion';
 import { INTRO_MS, startupReady } from '../src/core/introGlaze';
 import { I18nProvider, loadLocaleOverride, useT } from '../src/i18n';
 import { restoreDownloadedPacks } from '../src/native/packs';
+import { syncIslandPetOnOpen } from '../src/store/pets';
 import { syncWidgetThemeAtLaunch } from '../src/store/widgetTheme';
 import { textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
@@ -78,6 +79,14 @@ export default function RootLayout() {
       syncWidgetThemeAtLaunch().catch(() => false);
     }, 1500);
     return () => clearTimeout(id);
+  }, []);
+
+  // T192: the Island pet follows its day (sleep, wake, hungry) whenever Glaze opens or returns to the foreground,
+  // not only from the Pets screen. No-op in Expo Go. Delayed at launch to stay off startup.
+  useEffect(() => {
+    const id = setTimeout(() => { void syncIslandPetOnOpen(); }, 2500);
+    const sub = AppState.addEventListener('change', (state) => { if (state === 'active') void syncIslandPetOnOpen(); });
+    return () => { clearTimeout(id); sub.remove(); };
   }, []);
 
   // Never an endless splash: go ahead after INTRO_MS.maxWait even if fonts or languages are still loading.
@@ -154,6 +163,7 @@ function RootStack() {
       <Stack.Screen name="(tabs)" options={{ headerShown: false, animation: 'none' }} />
       <Stack.Screen name="theme/[id]" options={{ title: t('theme.title') }} />
       <Stack.Screen name="install" options={{ title: t('install.title') }} />
+      <Stack.Screen name="icons-cleanup" options={{ title: t('install.cleanup.title') }} />
       <Stack.Screen name="wallpaper" options={{ title: t('wallpaper.title') }} />
       <Stack.Screen name="collage" options={{ title: t('wallpaper.collage.title') }} />
       {/* T186: the Live Photo maker left the tab bar; it draws its own large title and back button. */}
