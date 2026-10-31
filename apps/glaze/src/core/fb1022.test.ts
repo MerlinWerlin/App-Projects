@@ -35,18 +35,20 @@ test('G2: the shape picker is only in theme detail, behind a collapsed Shape row
   assert.match(detail, /theme\.shapeRow\.title/);
 });
 
-test('G3: category bubbles come first, directly under the large title', () => {
+// T177 (owner-1031): the category bubbles left the Themes tab (about 13 themes in two sections);
+// G3 now reads: nothing loud between the large title and the gallery's own quiet controls.
+test('G3: the gallery controls come first, directly under the large title', () => {
   const at = (s: string) => {
     const i = rendered.indexOf(s);
     assert.ok(i >= 0, `${s} is rendered`);
     return i;
   };
-  const bubbles = at('<CategoryBubbleRow');
-  for (const later of ['<PillTabs', '<SearchField', '<ShowcaseGrid', '<SeasonalBanner', '<LiveHeroCard', '<YourLookPanel', '<InsetGroup']) {
-    assert.ok(bubbles < at(later), `bubbles before ${later}`);
+  const pills = at('<PillTabs');
+  assert.doesNotMatch(themes, /<CategoryBubbleRow\b/);
+  for (const later of ['<SearchField', '<LiveHeroCard', '<YourLookPanel', '<InsetGroup']) {
+    assert.ok(pills < at(later), `filter pills before ${later}`);
   }
-  // Nothing but the inner wrapper between the title and the bubbles.
-  const between = rendered.slice(0, bubbles).replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
+  const between = rendered.slice(0, pills).replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
   assert.doesNotMatch(between, /<(SquircleCard|InsetGroup|SeasonalBanner|LiveHeroCard|YourLookPanel|Text)\b/);
 });
 
@@ -58,8 +60,8 @@ test('G4: discovery sub-tabs are content-sized one-line pills that scroll, never
   const pill = pills.match(/pill: \{[^}]*\}/)?.[0] ?? '';
   assert.doesNotMatch(pill, /flex: 1|width:/, 'pills size to their label');
   assert.match(pill, /minHeight: sizeV2\.touch/);
-  // T173: the section head is the editorial SectionHeader; the picks note is its body.
-  assert.match(themes, /<SectionHeader\b[\s\S]*?body=\{tab === 'picks' \? t\('themes\.discover\.picksNote'\)/);
+  // T177: the gallery's sections are editorial SectionHeaders (New collection, Starters).
+  assert.match(themes, /<SectionHeader\b/);
 });
 
 test('G2 Shape row copy is in every locale', () => {
@@ -71,7 +73,8 @@ test('G2 Shape row copy is in every locale', () => {
   }
 });
 
-test('G5a: Space (Webb) themes are in the gallery, resolve by id, and show their credit in detail', async () => {
+// T177 (owner-1031): Space left the gallery; its themes still resolve by id for anyone who applied one.
+test('G5a: Space (Webb) themes resolve by id and show their credit in detail (no longer in the gallery)', async () => {
   const { getAnyTheme } = await import('./plusThemes.ts');
   const { SPACE_THEMES } = await import('./spacePack.ts');
   assert.ok(SPACE_THEMES.length >= 6);
@@ -79,8 +82,7 @@ test('G5a: Space (Webb) themes are in the gallery, resolve by id, and show their
     assert.equal(getAnyTheme(s.id)?.id, s.id);
     assert.equal(s.plus, false, `${s.id} is free`);
   }
-  assert.match(themes, /filter(List|All)\(SPACE_THEMES\)/);
-  assert.match(themes, /themes\.space\.title/);
+  assert.doesNotMatch(themes, /SPACE_THEMES|themes\.space\.title/);
   assert.match(detail, /<PhotoCredit theme=\{theme\}/);
   assert.match(detail, /usePhotoTheme\(theme\)/);
 });

@@ -12,7 +12,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { defaultBackground, usesPhoto, type ThemeBackground } from '../core/background';
 import type { IconShape } from '../core/iconspec';
 import { DEFAULT_TRANSFORM } from '../core/photoCrop';
-import { getAnyTheme } from '../core/plusThemes';
+import { useAnyTheme } from '../native/useAnyTheme';
 import { customisedAppIds, specsForTheme, themeShapeFor, themeStyleWithShape } from '../core/studio';
 import { previewSpecs, THEMES } from '../core/themes';
 import { averageColour } from '../core/wallpaper';
@@ -38,8 +38,10 @@ export function YourLookPanel() {
   const heading = [textV2.title3, textStyleFor(script, textV2.title3)];
   const small = [textV2.footnote, textStyleFor(script, textV2.footnote)];
   const { state } = useStudio();
-  const theme = getAnyTheme(state?.themeId ?? undefined) ?? THEMES[0];
-  const applied = !!state && state.themeId !== null && getAnyTheme(state.themeId)?.id === theme.id;
+  // T179: an applied remote catalogue theme shows as itself (not the first starter).
+  const appliedTheme = useAnyTheme(state?.themeId ?? undefined);
+  const theme = appliedTheme ?? THEMES[0];
+  const applied = !!state && state.themeId !== null && appliedTheme?.id === theme.id;
   // Studio data (shape choice, overrides) is keyed by the stored theme id, which may be a legacy id.
   const key = applied && state?.themeId ? state.themeId : theme.id;
 

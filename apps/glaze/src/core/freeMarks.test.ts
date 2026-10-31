@@ -45,12 +45,12 @@ test('Free pill and chip strings exist in all 11 locales', () => {
   }
 });
 
-test('UI wiring: Free pill on Space and showcase cards, chips filter the gallery', () => {
+// T177 (owner-1031): Space, the story chips and the showcase left the Themes gallery; the showcase
+// grid keeps its Free pill wiring for reuse.
+test('UI wiring: the showcase grid keeps the Free pill; the Themes gallery has no story chips', () => {
   const read = (...p: string[]) => readFileSync(join(process.cwd(), ...p), 'utf8');
   const themes = read('app', '(tabs)', 'themes.tsx');
-  assert.match(themes, /isFreeMarked\(/);
-  assert.match(themes, /<StoryChips /);
-  assert.match(themes, /inStoryGroup\(/);
+  assert.doesNotMatch(themes, /<StoryChips |inStoryGroup\(/);
   const grid = read('src', 'ui', 'ShowcaseGrid.tsx');
   assert.match(grid, /freeIds/);
 });

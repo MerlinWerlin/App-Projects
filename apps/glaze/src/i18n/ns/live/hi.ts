@@ -8,6 +8,10 @@ export const hi: NonNullable<LocaleMessages['live']> = {
     opening: 'खुल रहा है…',
     pickHint: 'वीडियो या GIF चुनने के लिए आपकी फ़ोटो लाइब्रेरी खोलता है',
     yourLoops: 'आपके लूप',
+    sections: {
+      make: { eyebrow: 'Live Photo बनाएँ', title: 'किसी क्लिप से शुरू करें', body: 'कोई वीडियो या GIF चुनें और उसे फ़्रेम करें। Glaze पहले 3 सेकंड Photos में Live Photo के रूप में सेव करता है।' },
+      loops: { eyebrow: 'Glaze में सेव' },
+    },
     emptyTitle: 'अभी कोई लूप नहीं',
     emptyBody: 'कोई वीडियो या GIF चुनें, उसे 15 सेकंड तक ट्रिम करें और अपनी लॉक स्क्रीन के लिए फ़्रेम करें।',
     pick: 'वीडियो या GIF चुनें',
@@ -35,6 +39,11 @@ export const hi: NonNullable<LocaleMessages['live']> = {
   },
   editor: {
     loading: 'लूप लोड हो रहा है',
+    sections: {
+      frame: { eyebrow: 'लॉक स्क्रीन', title: 'फ़्रेम करें' },
+      clip: { eyebrow: 'क्लिप' },
+      finish: { eyebrow: 'पूरा करें', title: 'सेव करें', body: 'सब कुछ इसी फ़ोन पर रहता है। कुछ भी अपलोड नहीं होता।' },
+    },
     missing: 'यह लूप अब मौजूद नहीं है।',
     nameLabel: 'लूप का नाम',
     cropLabel: 'लॉक स्क्रीन क्रॉप। खिसकाने के लिए खींचें, ज़ूम के लिए पिंच करें।',

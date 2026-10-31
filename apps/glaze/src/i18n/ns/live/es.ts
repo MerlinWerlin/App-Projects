@@ -8,6 +8,10 @@ export const es: NonNullable<LocaleMessages['live']> = {
     opening: 'Abriendo…',
     pickHint: 'Abre tu fototeca para elegir un vídeo o GIF',
     yourLoops: 'Tus bucles',
+    sections: {
+      make: { eyebrow: 'Crear una Live Photo', title: 'Empieza con un clip', body: 'Elige un vídeo o GIF y encuádralo. Glaze guarda los 3 primeros segundos en Fotos como Live Photo.' },
+      loops: { eyebrow: 'Guardado en Glaze' },
+    },
     emptyTitle: 'Aún no hay bucles',
     emptyBody: 'Elige un vídeo o GIF, recórtalo hasta 15 segundos y encuádralo para tu pantalla de bloqueo.',
     pick: 'Elegir un vídeo o GIF',
@@ -35,6 +39,11 @@ export const es: NonNullable<LocaleMessages['live']> = {
   },
   editor: {
     loading: 'Cargando bucle',
+    sections: {
+      frame: { eyebrow: 'Pantalla bloqueada', title: 'Encuádralo' },
+      clip: { eyebrow: 'Clip' },
+      finish: { eyebrow: 'Terminar', title: 'Guardar', body: 'Todo se queda en este teléfono. No se sube nada.' },
+    },
     missing: 'Este bucle ya no existe.',
     nameLabel: 'Nombre del bucle',
     cropLabel: 'Encuadre de la pantalla de bloqueo. Arrastra para mover, pellizca para ampliar.',

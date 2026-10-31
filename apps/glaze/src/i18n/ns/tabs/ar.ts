@@ -89,6 +89,13 @@ export const ar: NonNullable<LocaleMessages['tabs']> = {
     pairHome: 'الرئيسية',
     liveEmpty: 'لا توجد مقاطع صور حية بعد. اصنع واحدًا من فيديو أو GIF.',
     showMore: 'عرض المزيد',
+    // T176 (docs/PREMIUM_UI.md §3.9): editorial section headers per wallpaper group (core/wallpaperGroups).
+    groups: {
+      yours: { eyebrow: 'من صنعك', title: 'خلفياتك', body: 'ابدأ من صورك ومقاطع الفيديو الخاصة بك. تبقى على هذا الجهاز.' },
+      free: { eyebrow: 'مجانًا', title: 'أصليات Glaze', body: 'خلفيات مصممة لكل سمة مجانية. اضغط على واحدة لتعديلها وحفظها.' },
+      plus: { eyebrow: 'Glaze Plus', title: 'مجموعة Plus', body: 'خلفيات سمات Plus، بفتح لمرة واحدة.' },
+    },
+    loading: 'جارٍ تحميل مقاطع صورك الحية',
     discover: {
       label: 'عرض الخلفيات',
       newEmpty: 'لا جديد الآن',

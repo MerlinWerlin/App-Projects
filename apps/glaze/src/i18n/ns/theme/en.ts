@@ -164,6 +164,21 @@ export const en = {
     readyA11y: 'The {pack} pack is downloaded',
     size: 'Size: {size}',
   },
+  // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
+  remote: {
+    heroPreview: 'Preview of the artwork. Download it for the full-size wallpaper.',
+    heroDownloaded: 'Downloaded to this iPhone. This is the full-size wallpaper.',
+    download: 'Download',
+    downloadSize: 'Download · {size}',
+    downloadA11y: 'Download {name}, {size}',
+    downloadHint: 'Saves the wallpaper and widget art to this iPhone',
+    includes: 'Free. Wallpaper, widget art, and icons drawn in its colours.',
+    downloading: 'Downloading {name}',
+    offline: 'Can’t reach the collection just now. When you’re back online, try again.',
+    unlock: 'Unlock with Glaze Plus',
+    iconsNote: 'This theme brings its wallpaper and widget art. Your icons are drawn with Glaze glyphs in its colours.',
+    loadingA11y: 'Loading theme',
+  },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {
     title: 'Matching widgets',

@@ -150,11 +150,12 @@ test('the heart is device-local, labelled, ≥48 pt and never shows a count (sou
     join(root, 'src', 'ui', 'WallpaperTile.tsx'),
   ];
   for (const f of users) assert.match(readFileSync(f, 'utf8'), /<HeartButton\b/, `${f} uses HeartButton`);
+  // T177 (owner-1031): the Themes tab keeps only All / Liked (src/core/gallery.ts); every gallery card
+  // (src/ui/GalleryArtCard.tsx) carries the shared heart, so Liked covers the whole gallery.
   const screen = readFileSync(join(root, 'app', '(tabs)', 'themes.tsx'), 'utf8');
-  assert.match(screen, /discoveryThemes\(/);
-  assert.match(screen, /themes\.discover\.picksNote/);
-  // Pack-section ThemeCards get hearts too, so Liked includes pack themes.
-  assert.match(screen, /<ThemeCard[\s\S]*?onToggleLike=\{onToggleLike\}/);
+  assert.match(screen, /galleryRows<[^>]*>\(\{[^}]*filter[^}]*liked/);
+  assert.match(screen, /<GalleryArtCard[\s\S]*?onToggleLike=\{onToggleLike\}/);
+  assert.match(readFileSync(join(root, 'src', 'ui', 'GalleryArtCard.tsx'), 'utf8'), /<HeartButton\b/);
   const walls = readFileSync(join(root, 'app', '(tabs)', 'wallpapers.tsx'), 'utf8');
   assert.match(walls, /discoverWallpaperTiles\(/);
   assert.match(walls, /useWallpaperFavourites\(/);

@@ -7,8 +7,12 @@
 // T160 (owner-1030 A): also the remote catalogue (catalog.json cached in documentDirectory/packs/
 // catalog.json, re-fetched at most every 6 h or on pull, last good copy kept offline) and remote
 // art pack downloads into documentDirectory/packs/<id>/ (src/core/remoteCatalog.ts decides).
+// T178: the cache is stamped with the app version + build + JS bundle + pack base URL, so the first
+// launch of a new build / OTA refetches at once; an empty catalogue or a failed attempt (404,
+// offline) is retried on the next launch / focus after 2 min instead of sticking for 6 h.
 import Constants from 'expo-constants';
-import { Dimensions, PixelRatio } from 'react-native';
+import { Dimensions, PixelRatio, Platform } from 'react-native';
+import { buildFrom } from '../core/feedback';
 import { packBaseUrl, packEnvFrom } from '../config/packs';
 import { base64Decode, base64Encode, concatBytes } from '../core/bytes';
 import { isMotifId } from '../core/artwork';
@@ -26,7 +30,18 @@ import {
   type Transport,
 } from '../core/packDownloader';
 import type { Catalog, RemoteArtManifest } from '../core/packCatalog';
-import { CATALOG_CACHE_FILE, catalogNeedsFetch, decideCatalog, parseCatalogCache, serializeCatalogCache, type CatalogCache, type CatalogFetch } from '../core/remoteCatalog';
+import {
+  CATALOG_CACHE_FILE,
+  catalogCacheStamp,
+  catalogNeedsFetch,
+  catalogStatus,
+  decideCatalog,
+  parseCatalogCache,
+  serializeCatalogCache,
+  type CatalogCache,
+  type CatalogFetch,
+  type CatalogStatus,
+} from '../core/remoteCatalog';
 import { registerPackMotifs, unregisterPackMotifs } from '../core/packMotifs';
 import { restorePackMotifs } from '../core/packRestore';
 import { cacheEntryFor, cacheIndexAdd, cacheIndexRemove, parseCacheIndex, type PackCacheIndex, type PackContent } from '../core/themePack';
@@ -68,10 +83,21 @@ async function readBytes(u: string): Promise<Uint8Array | null> {
   return base64Decode(await fs.readAsStringAsync(u, { encoding: fs.EncodingType.Base64 }));
 }
 
+/**
+ * T178: fetch follows redirects (a GitHub release download 302s to release-assets.githubusercontent.com).
+ * The final URL must still be HTTPS (or the loopback test server); its host is not pinned, because
+ * every pack file is checked against the SHA-256 in its manifest and GitHub may change the CDN host.
+ */
+function finalUrlOk(requested: string, final: unknown): boolean {
+  if (typeof final !== 'string' || final === '' || final === requested) return true;
+  return /^https:\/\//i.test(final) || /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?(\/|$)/i.test(final);
+}
+
 export const deviceTransport: Transport = {
   async fetchRange(url, start) {
     const res = await fetch(url, start > 0 ? { headers: { Range: `bytes=${start}-` } } : undefined);
     if (res.status !== 200 && res.status !== 206) throw new Error(`HTTP ${res.status}`);
+    if (!finalUrlOk(url, (res as { url?: unknown }).url)) throw new Error('redirected off HTTPS');
     const bytes = new Uint8Array(await res.arrayBuffer());
     return { offset: res.status === 206 ? start : 0, chunks: once(bytes) };
   },
@@ -103,15 +129,34 @@ export type PackStoreState = {
   catalog: Catalog | null;
   /** True while catalog.json is being fetched. */
   catalogRefreshing: boolean;
+  /** T178: true once the first catalogue attempt of this session has finished (fetched or not). */
+  catalogAttempted: boolean;
+  /**
+   * T178: 'loading' (first load: show skeletons) / 'ready' / 'empty' / 'unavailable' (offline or
+   * 404, never shown as an error) / 'disabled'. See catalogStatus in src/core/remoteCatalog.ts.
+   */
+  catalogStatus: CatalogStatus;
   /** Verified, downloaded remote art packs by id (read on demand by remoteArtOnDevice). */
   remoteArt: Record<string, RemoteArtManifest>;
 };
 
-let state: PackStoreState = { index: { version: 1, packs: [] }, loaded: false, busy: {}, errors: {}, catalog: null, catalogRefreshing: false, remoteArt: {} };
+let state: PackStoreState = {
+  index: { version: 1, packs: [] },
+  loaded: false,
+  busy: {},
+  errors: {},
+  catalog: null,
+  catalogRefreshing: false,
+  catalogAttempted: false,
+  catalogStatus: 'loading',
+  remoteArt: {},
+};
 const listeners = new Set<() => void>();
 
 function set(patch: Partial<PackStoreState>) {
-  state = { ...state, ...patch };
+  const next = { ...state, ...patch };
+  next.catalogStatus = catalogStatus({ enabled: PACKS_ENABLED, catalog: next.catalog, refreshing: next.catalogRefreshing, attempted: next.catalogAttempted });
+  state = next;
   for (const l of listeners) l();
 }
 
@@ -150,6 +195,42 @@ export const PACK_BASE_RESOLVED: string | null = (() => {
 })();
 
 export const PACKS_ENABLED = packsEnabled(PACK_BASE);
+if (!PACKS_ENABLED) state = { ...state, catalogStatus: 'disabled' };
+
+/** T178: the running build's JS bundle id (expo-updates), or '' in Expo Go / dev / when unavailable. */
+function runningUpdateId(): string {
+  try {
+    if (String(Constants.executionEnvironment ?? '') === 'storeClient' || __DEV__) return '';
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const u = require('expo-updates') as { updateId?: string | null };
+    return typeof u?.updateId === 'string' ? u.updateId : '';
+  } catch {
+    return '';
+  }
+}
+
+/**
+ * T178: the stamp the cached catalogue is saved under: app version, build number, JS bundle and
+ * pack base URL. A different stamp (first launch of a new build or OTA) refetches at once.
+ * Every part falls back to '' so Expo Go and web never throw here.
+ */
+function computeCatalogStamp(): string {
+  let version = '';
+  let build = '';
+  try {
+    version = Constants.expoConfig?.version ?? '';
+    build = buildFrom(Platform.OS, Constants.expoConfig as Parameters<typeof buildFrom>[1]);
+  } catch {
+    // keep the fallbacks
+  }
+  return catalogCacheStamp({ appVersion: version, build, updateId: runningUpdateId(), baseUrl: PACK_BASE_RESOLVED });
+}
+
+let catalogStampMemo: string | null = null;
+function catalogStamp(): string {
+  if (catalogStampMemo === null) catalogStampMemo = computeCatalogStamp();
+  return catalogStampMemo;
+}
 
 export async function loadPackIndex(): Promise<void> {
   if (state.loaded) return;
@@ -295,12 +376,13 @@ export function restoreDownloadedPacks(): Promise<void> {
 // ------------------------------------------------------------ T160: remote catalogue + art packs
 
 const CATALOG_URI = ROOT ? `${ROOT}${CATALOG_CACHE_FILE}` : null;
-/** Don't hit the network again within a minute in one session (a pull still waits for this). */
-const MIN_ATTEMPT_GAP_MS = 60_000;
 let catalogCache: CatalogCache | null = null;
 let catalogCacheRead = false;
+/** When this session last tried to fetch (catalogNeedsFetch backs off CATALOG_RETRY_MS after it). */
 let lastAttempt = 0;
 let catalogRun: Promise<void> | null = null;
+/** True while the running catalogRun is (or will be) making a request. */
+let catalogRunFetches = false;
 
 /** The catalogue entry for an id, if the remote catalogue lists it. */
 export function catalogPack(id: string) {
@@ -320,21 +402,30 @@ async function readCatalogCache(): Promise<CatalogCache | null> {
 }
 
 /**
- * Load the cached catalogue and, when it is stale (6 h) or `force` (pull to refresh), fetch a new
- * one. Offline or a bad file keeps the last good copy. Does nothing at all (no file read, no
- * request) while packs are disabled. Never rejects.
+ * Load the cached catalogue and fetch a new one when catalogNeedsFetch says so: stale (6 h), saved
+ * under another app build / OTA / host (T178), empty or never fetched (retried after 2 min), or
+ * `force` (pull to refresh: always fetches). Offline, a 404 or a bad file keeps the last good copy
+ * and never surfaces an error. Does nothing at all (no file read, no request) while packs are
+ * disabled. Never rejects.
  */
 export function refreshCatalog(force = false): Promise<void> {
   if (!PACKS_ENABLED || !PACK_BASE_RESOLVED) return Promise.resolve();
-  if (catalogRun) return catalogRun;
+  if (catalogRun) {
+    // A pull during a run that isn't fetching (it only read the cache) fetches right after it.
+    if (force && !catalogRunFetches) return catalogRun.then(() => refreshCatalog(true));
+    return catalogRun;
+  }
+  catalogRunFetches = false;
   catalogRun = (async () => {
     try {
       const cached = await readCatalogCache();
       const now = Date.now();
+      const stamp = catalogStamp();
       // Show the cached copy at once; a fetch (if due) replaces it when it arrives.
       if (!state.catalog && cached) set({ catalog: decideCatalog(cached, null, now).catalog });
       let fetched: CatalogFetch = null;
-      if (catalogNeedsFetch(cached, now, force) && now - lastAttempt >= MIN_ATTEMPT_GAP_MS) {
+      if (catalogNeedsFetch(cached, now, force, { stamp, lastAttemptAt: lastAttempt })) {
+        catalogRunFetches = true;
         lastAttempt = now;
         set({ catalogRefreshing: true });
         try {
@@ -343,21 +434,26 @@ export function refreshCatalog(force = false): Promise<void> {
           fetched = { ok: false, error: e instanceof Error ? e.message : String(e) };
         }
       }
-      const d = decideCatalog(cached, fetched, now);
-      if (d.save && d.cache && CATALOG_URI && ROOT) {
+      const d = decideCatalog(cached, fetched, Date.now(), stamp);
+      if (d.save && d.cache) {
         catalogCache = d.cache;
-        try {
-          await fs.makeDirectoryAsync(ROOT, { intermediates: true }).catch(() => undefined);
-          await fs.writeAsStringAsync(CATALOG_URI, serializeCatalogCache(d.cache));
-        } catch {
-          // Still listed for this session; cached next time.
+        if (CATALOG_URI && ROOT) {
+          try {
+            await fs.makeDirectoryAsync(ROOT, { intermediates: true }).catch(() => undefined);
+            await fs.writeAsStringAsync(CATALOG_URI, serializeCatalogCache(d.cache));
+          } catch {
+            // Still listed for this session; cached next time.
+          }
         }
       }
-      set({ catalog: d.catalog, catalogRefreshing: false });
+      // d.error (offline, 404, bad file) is deliberately not shown: the last good copy stays listed.
+      // Keep the listed object when nothing new was saved, so the gallery doesn't rebuild on every focus.
+      set({ catalog: d.save ? d.catalog : (state.catalog ?? d.catalog), catalogRefreshing: false, catalogAttempted: true });
     } catch {
-      set({ catalogRefreshing: false });
+      set({ catalogRefreshing: false, catalogAttempted: true });
     } finally {
       catalogRun = null;
+      catalogRunFetches = false;
     }
   })();
   return catalogRun;

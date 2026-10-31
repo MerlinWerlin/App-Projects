@@ -11,6 +11,16 @@ export const zhHans: NonNullable<LocaleMessages['icons']> = {
     other: "{count} 个图标的符号可能不易看清（对比度低于 3:1）：{names}。请换一个符号或背景颜色。",
   },
   yourApps: "你的应用",
+  // T176 (docs/PREMIUM_UI.md §3.8): editorial section headers on the Icons tab.
+  sections: {
+    previewEyebrow: "实时预览",
+    appsEyebrow: "你的图标组",
+    appsBody: "这里的每个应用都会得到一枚相配的图标。",
+    addEyebrow: "查找应用",
+    addBody: "搜索或选择类别，然后勾选想要的应用。",
+    styleEyebrow: "统一风格",
+    styleBody: "一次设置所有图标的形状、颜色和符号大小。",
+  },
   emptyTitle: "还没有应用",
   emptyBody: "选择想要新图标的应用。可以先从热门应用开始，或在下方搜索。",
   addPopular: "添加热门应用",

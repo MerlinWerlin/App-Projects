@@ -14,7 +14,6 @@ export const ptBR: NonNullable<LocaleMessages['plus']> = {
     freeIcons: 'Ícones próprios, sem limite',
     freeInstall: 'Instalação guiada por Atalhos (e beta em lote)',
     freeLive: 'Criador de Live Photo com seu próprio vídeo',
-    notNow: 'Agora não',
     oneMoment: 'Só um momento…',
     unlock: 'Desbloquear (em breve)',
     unlockHint: 'O Glaze Plus ainda não está à venda',
@@ -29,16 +28,8 @@ export const ptBR: NonNullable<LocaleMessages['plus']> = {
     restored: "Glaze Plus restaurado. Obrigado!",
     restoreNone: "Nenhuma compra anterior do Glaze Plus foi encontrada.",
     restoreFailed: "Não foi possível restaurar agora. Tente mais tarde.",
-    themes: {
-      one: 'Mais {count} tema em {packs} pacotes',
-      many: 'Mais {count} de temas em {packs} pacotes',
-      other: 'Mais {count} temas em {packs} pacotes',
-    },
-    freeThemes: {
-      one: '{count} tema ilustrado inicial e o criador de papel de parede',
-      many: '{count} de temas ilustrados iniciais e o criador de papel de parede',
-      other: '{count} temas ilustrados iniciais e o criador de papel de parede',
-    },
+    themes: 'Mais temas Plus a caminho',
+    freeThemes: 'Todos os temas da galeria e o criador de papel de parede',
   },
   tipJar: {
     title: 'Caixinha de gorjeta',

@@ -6,7 +6,7 @@ import { Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } fro
 import { nextTip, type TipId } from '../core/tips';
 import { useT } from '../i18n';
 import { useTips } from '../store/tips';
-import { continuous, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { continuous, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { haptic } from './haptics';
 import { textStyleFor } from './i18nLayout';
@@ -38,8 +38,8 @@ export function ContextTip({ id, ids, style }: Props) {
         accessibilityLabel={t('themeUi.tip.a11y', { title, body })}
       >
         <Feather name="info" size={18} color={c.onTintSoft} style={styles.icon} />
-        <Text style={[...body1, styles.flex, { color: c.onTintSoft }]}>
-          <Text style={styles.semibold}>{t('themeUi.tip.lead', { title })}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...body1, styles.flex, { color: c.onTintSoft }]}>
+          <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={styles.semibold}>{t('themeUi.tip.lead', { title })}</Text>
           {body}
         </Text>
       </View>
@@ -54,7 +54,7 @@ export function ContextTip({ id, ids, style }: Props) {
         hitSlop={4}
         style={({ pressed }) => [styles.got, { opacity: pressed ? 0.6 : 1 }]}
       >
-        <Text style={[...label, { color: c.onTintSoft }]}>{t('themeUi.tip.gotIt')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label, { color: c.onTintSoft }]}>{t('themeUi.tip.gotIt')}</Text>
       </Pressable>
     </View>
   );

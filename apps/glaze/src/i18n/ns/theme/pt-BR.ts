@@ -164,6 +164,21 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
     readyA11y: 'O pacote {pack} foi baixado',
     size: 'Tamanho: {size}',
   },
+  // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
+  remote: {
+    heroPreview: 'Prévia da arte. Baixe para ter o papel de parede em tamanho real.',
+    heroDownloaded: 'Baixado neste iPhone. Este é o papel de parede em tamanho real.',
+    download: 'Baixar',
+    downloadSize: 'Baixar · {size}',
+    downloadA11y: 'Baixar {name}, {size}',
+    downloadHint: 'Salva o papel de parede e a arte dos widgets neste iPhone',
+    includes: 'Grátis. Papel de parede, arte dos widgets e ícones nas cores dele.',
+    downloading: 'Baixando {name}',
+    offline: 'Não foi possível acessar a coleção agora. Quando estiver online de novo, tente outra vez.',
+    unlock: 'Desbloquear com o Glaze Plus',
+    iconsNote: 'Este tema traz o papel de parede e a arte dos widgets. Seus ícones são desenhados com glifos do Glaze nas cores dele.',
+    loadingA11y: 'Carregando tema',
+  },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {
     title: 'Widgets combinando',

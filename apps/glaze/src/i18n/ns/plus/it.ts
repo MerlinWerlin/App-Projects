@@ -14,7 +14,6 @@ export const it: NonNullable<LocaleMessages['plus']> = {
     freeIcons: 'Icone tue, senza limiti',
     freeInstall: 'Installazione guidata con Comandi Rapidi (e beta in blocco)',
     freeLive: 'Creatore di Live Photo con il tuo video',
-    notNow: 'Non ora',
     oneMoment: 'Un momento…',
     unlock: 'Sblocca (in arrivo)',
     unlockHint: 'Glaze Plus non è ancora in vendita',
@@ -29,16 +28,8 @@ export const it: NonNullable<LocaleMessages['plus']> = {
     restored: "Glaze Plus ripristinato. Grazie!",
     restoreNone: "Nessun acquisto precedente di Glaze Plus trovato.",
     restoreFailed: "Impossibile ripristinare ora. Riprova più tardi.",
-    themes: {
-      one: '{count} tema in più in {packs} pacchetti',
-      many: '{count} di temi in più in {packs} pacchetti',
-      other: '{count} temi in più in {packs} pacchetti',
-    },
-    freeThemes: {
-      one: '{count} tema illustrato iniziale e il creatore di sfondi',
-      many: '{count} di temi illustrati iniziali e il creatore di sfondi',
-      other: '{count} temi illustrati iniziali e il creatore di sfondi',
-    },
+    themes: 'Altri temi Plus in arrivo',
+    freeThemes: 'Tutti i temi della galleria e il creatore di sfondi',
   },
   tipJar: {
     title: 'Mance',

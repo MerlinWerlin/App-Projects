@@ -45,6 +45,7 @@ export const ptBR: NonNullable<LocaleMessages['wallpaper']> = {
     a11y: 'Prévia do papel de parede, {style}',
     a11yPattern: 'Prévia do papel de parede, {style} {pattern}',
     sizePx: '{width} × {height} px',
+    loadingA11y: 'Carregando seu papel de parede',
   },
   design: {
     shuffle: 'Embaralhar',

@@ -95,6 +95,7 @@ import { HOME_ASPECT, HomeMock } from '../../src/ui/HomeMock';
 import { LockMock } from '../../src/ui/LockMock';
 import { bezelFor } from '../../src/ui/PhoneFrame';
 import { ProgressBar } from '../../src/ui/ProgressBar';
+import { IconGridSkeleton, Skeleton } from '../../src/ui/Skeleton';
 import { PreviewModeLabel, ShapePicker } from '../../src/ui/ShapePicker';
 import { Segmented } from '../../src/ui/Segmented';
 import { SheenButton } from '../../src/ui/SheenButton';
@@ -105,15 +106,19 @@ import { PhotoCredit, PhotoDownloadControl } from '../../src/ui/PhotoCredit';
 import { usePhotoTheme } from '../../src/ui/usePhotoTheme';
 import { ArtPackCredit } from '../../src/ui/ArtPackCredit';
 import { artPackHero, artPackWallpaper, artPackWallpaperUri } from '../../src/ui/artPackSources';
-import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES } from '../../src/core/artPack';
+import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES, type HeroSize } from '../../src/core/artPack';
+import { seamlessCardSources, seamlessImageSource, seamlessSourceKey } from '../../src/core/seamlessSource';
 import { seamlessCrop, type Nudge, type SeamlessSize, type SeamlessSlot } from '../../src/core/seamlessWidget';
 import { SeamlessWidgetPreview } from '../../src/ui/SeamlessWidgetPreview';
 import { SeamlessWidgetControls, type SeamlessControlsStrings } from '../../src/ui/SeamlessWidgetControls';
-import { localAssetUri, seamlessDeviceHere } from '../../src/ui/seamlessSetup';
+import { existingLocalFile, localAssetUri, seamlessDeviceHere } from '../../src/ui/seamlessSetup';
 import { artPackOf } from '../../src/core/artPackThemes';
 import { isRemoteArtTheme, remoteArtDetailView } from '../../src/core/remoteCatalog';
 import { formatBytes } from '../../src/core/themePack';
 import { useRemoteArtTheme } from '../../src/native/useRemoteCatalog';
+import { PACKS_ENABLED } from '../../src/native/packs';
+import { downloadedRemoteWallpaper, useCatalogSettled } from '../../src/native/useAnyTheme';
+import { remoteHeroArt, remotePrimary, themePageState, type RemotePrimary } from '../../src/core/remoteThemePage';
 import { RemoteArtImage } from '../../src/ui/RemoteArtImage';
 import { FIRST_RUN_TIP_IDS, type TipId as AnyTipId } from '../../src/core/tips';
 import { tipsForInstallMode } from '../../src/core/installMethods';
@@ -190,7 +195,11 @@ export default function ThemeDetailScreen() {
   const { c } = useColorsV2();
   const router = useRouter();
   const { t, script } = useT();
+  // T179: a remote id opened before the cached catalogue is read waits on a skeleton, not "not found".
+  const settled = useCatalogSettled();
+  const pageState = themePageState({ found: !!theme, packsEnabled: PACKS_ENABLED, catalogSettled: settled });
 
+  if (pageState === 'wait') return <ThemePageSkeleton />;
   if (!theme) {
     return (
       <View style={[styles.missing, { backgroundColor: c.bg }]}>
@@ -202,10 +211,20 @@ export default function ThemeDetailScreen() {
       </View>
     );
   }
-  return <ThemeDetail theme={theme} remoteWallpaperUri={remote.theme === theme ? remote.wallpaperUri : null} />;
+  const own = remote.theme === theme;
+  return <ThemeDetail theme={theme} remoteWallpaperUri={own ? remote.wallpaperUri : null} remoteHeroUris={own ? remote.heroUris : null} />;
 }
 
-function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remoteWallpaperUri: string | null }) {
+function ThemeDetail({
+  theme: base,
+  remoteWallpaperUri,
+  remoteHeroUris,
+}: {
+  theme: Theme;
+  remoteWallpaperUri: string | null;
+  /** T168: downloaded hero art of a remote art pack (seamless widget card). */
+  remoteHeroUris: Partial<Record<HeroSize, string>> | null;
+}) {
   const { c, scheme } = useColorsV2();
   const router = useRouter();
   const { t, script } = useT();
@@ -220,6 +239,10 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
   const packView = remoteArt ? remoteArtDetailView(pack) : packDetailView(base, pack);
   const theme = usePackTheme(base, wantsPackArtwork(packView));
   const canApply = canApplyFromDetail(packView);
+  // T179: a remote theme's glass bar holds its one primary action: Download (with the size), then a
+  // determinate progress bar, a calm Try again, and Apply once the art is on the phone.
+  const primary: RemotePrimary | null = remoteArt ? remotePrimary(packView, remoteArt.remoteArt.bytes, t('plus.packErrors.appVersion')) : null;
+  const heroArt = remoteArt ? remoteHeroArt({ wallpaperUri: remoteWallpaperUri, thumbUrl: remoteArt.remoteArt.thumbUrl }) : null;
   const packName = remoteArt ? remoteArt.name : base.packId ? (packOf(base.id)?.name ?? base.packId) : '';
   const saver = useWallpaperSaver();
   // T26: the user's chosen icon shape for this theme (kept per theme, used when applying).
@@ -458,7 +481,8 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
       lockFor.current = 'download';
       setLockOpen(true);
     } else if (r === 'ok') {
-      haptic('success');
+      // T179 (PREMIUM_UI §1.7): `success` stays the one end-of-flow moment; a finished download is a step.
+      haptic('light');
       AccessibilityInfo.announceForAccessibility(t('theme.pack.readyA11y', { pack: packName }));
     } else if (r === 'error') {
       haptic('warning');
@@ -489,9 +513,16 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
 
   const onSaveWallpaper = async () => {
     const from = wallSource;
-    // T160: a downloaded remote art pack saves its local wallpaper file.
-    const artPackUri = artPack ? (artPackWallpaperUri(artPack.artPack.id) ?? remoteWallpaperUri) : null;
-    const res: { ok: boolean; reason?: string; why?: SaveFailure; message?: string } = photo
+    // T160: a downloaded remote art pack saves its local wallpaper file. T179: one the page hasn't
+    // resolved yet is read now; a remote pack whose file is gone reports it (never the drawn fallback).
+    // The file is .webp: RN Image.getSize and the offscreen <Image> decode it (iOS 14+, Android), and
+    // view-shot captures the cropped view as PNG, so Photos always gets a PNG.
+    const remoteFile = remoteArt && !photo ? (remoteWallpaperUri ?? (await downloadedRemoteWallpaper(remoteArt.id))) : null;
+    const artPackUri = artPack ? (artPackWallpaperUri(artPack.artPack.id) ?? remoteFile) : null;
+    const remoteMissing = !!remoteArt && !photo && !artPackUri;
+    const res: { ok: boolean; reason?: string; why?: SaveFailure; message?: string } = remoteMissing
+      ? { ok: false, why: 'unreadable' }
+      : photo
       ? await photoSaver.save(photo, size)
       : from === 'space-photo' && spacePhoto.uri
         ? await saveSpacePhoto(spacePhoto.uri)
@@ -575,7 +606,14 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
   const homeA11y = photo
     ? t(iosMask ? 'theme.a11y.homeIosPhoto' : 'theme.a11y.homeGlazePhoto', { name: theme.name })
     : t(iosMask ? 'theme.a11y.homeIos' : 'theme.a11y.homeGlaze', { name: theme.name });
-  const showBar = canApply && !checklistOpen;
+  const showBar = canApply && !checklistOpen && (!primary || primary.kind === 'apply');
+  /** T179: a remote theme not on the phone yet: Download / progress / Try again / Unlock in the bar. */
+  const showDownloadBar = !!primary && primary.kind !== 'apply' && !checklistOpen;
+  const onUnlockRemote = () => {
+    haptic('select');
+    lockFor.current = 'download';
+    setLockOpen(true);
+  };
   const photoLabel = photo ? t('theme.photo.change') : t('theme.photo.use');
   const screenStyle = [
     styles.screen,
@@ -592,7 +630,7 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
         onLayout={(e: LayoutChangeEvent) => {
           viewportH.current = e.nativeEvent.layout.height;
         }}
-        contentContainerStyle={[styles.content, { paddingBottom: (showBar ? barH : insets.bottom) + spaceV2.xxl }]}
+        contentContainerStyle={[styles.content, { paddingBottom: (showBar || showDownloadBar ? barH : insets.bottom) + spaceV2.xxl }]}
       >
         <View style={styles.headWrap}>
           <Animated.View
@@ -626,7 +664,7 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
             first action (opening a theme), one line at a time, never stacked; "?" brings them back. */}
         <ContextTip ids={DETAIL_TIPS} />
 
-        {showsPackCard(packView) ? <PackCard view={packView} packName={packName} onDownload={onDownloadPack} bytes={remoteArt?.remoteArt.bytes} /> : null}
+        {!remoteArt && showsPackCard(packView) ? <PackCard view={packView} packName={packName} onDownload={onDownloadPack} /> : null}
 
         {/* L2 + T173 hero: one large phone-shaped preview, centred on a soft surface (layered
             shadow, no border), with a quiet Home / Lock pill under it. */}
@@ -689,6 +727,12 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
               style={[styles.modeToggle, { width: modePillWidthFor(phoneW) }]}
             />
             {mode === 'home' ? <PreviewModeLabel iosMask={iosMask} /> : null}
+            {/* T179: a remote theme says what the hero shows: the catalogue preview, or the downloaded art. */}
+            {heroArt ? (
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.heroNote, { color: c.inkSecondary }]}>
+                {heroArt.stage === 'downloaded' ? t('theme.remote.heroDownloaded') : t('theme.remote.heroPreview')}
+              </Text>
+            ) : null}
           </View>
         </SquircleCard>
 
@@ -857,6 +901,10 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
                             busy={saver.saving || photoSaver.saving}
                             onPress={onSaveWallpaper}
                           />
+                          {/* T173 §3.3: while the wallpaper saves, a skeleton of the result (a phone-shaped wallpaper in the theme's colour). */}
+                          {saver.saving || photoSaver.saving ? (
+                            <Skeleton width={WALL_SKELETON_W} height={Math.round(WALL_SKELETON_W * PHONE_ASPECT)} radius={radiusV2.control} colour={theme.palette.surface} style={styles.wallSkeleton} />
+                          ) : null}
                           <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.checklist.wallpaper.pairBody')}</Text>
                           <View style={styles.navRow}>
                             <PillButton
@@ -888,6 +936,10 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
                             {t('theme.checklist.icons.style')}
                           </Text>
                           <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('theme.style.body')}</Text>
+                          {/* T179: art packs bring wallpaper + widget art; their icons are Glaze glyphs in the theme's colours. */}
+                          {remoteArt ? (
+                            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.remote.iconsNote')}</Text>
+                          ) : null}
                           {styleError ? <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.warn }]}>{t('theme.style.error')}</Text> : null}
                           <PillButton
                             label={styleBusy ? t('common.loading') : t('theme.style.cta')}
@@ -898,6 +950,8 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
                             onPress={() => void onUseStyle()}
                             accessibilityHint={t('theme.style.hint')}
                           />
+                          {/* T173 §3.3: while the icon style renders, a skeleton of the result (icon tiles), not a spinner. */}
+                          {styleBusy ? <IconGridSkeleton count={4} size={48} /> : null}
                           <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
                             {checklist.ticks.iconInstall ? '✓ ' : ''}
                             {t('theme.checklist.icons.install')}
@@ -1060,7 +1114,7 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
           />
           <WidgetPreviews theme={theme} />
           {/* T133: the Seamless widget (wallpaper crop + floating art) for art-pack themes only. */}
-          {artPack ? <SeamlessCard artPackId={artPack.artPack.id} /> : null}
+          {artPack ? <SeamlessCard artPackId={artPack.artPack.id} theme={theme} wallpaperUri={remoteWallpaperUri} heroUris={remoteHeroUris} /> : null}
         </View>
 
         {/* Make it yours: quiet rows for the photo and the wallpaper editor. */}
@@ -1138,6 +1192,18 @@ function ThemeDetail({ theme: base, remoteWallpaperUri }: { theme: Theme; remote
             </Text>
           </View>
         </GlassBar>
+      ) : null}
+
+      {showDownloadBar && primary && remoteArt ? (
+        <RemoteDownloadBar
+          primary={primary}
+          name={remoteArt.name}
+          free={!remoteArt.remoteArt.plus}
+          bottomInset={insets.bottom}
+          onLayout={(e: LayoutChangeEvent) => setBarH(e.nativeEvent.layout.height)}
+          onDownload={() => void onDownloadPack()}
+          onUnlock={onUnlockRemote}
+        />
       ) : null}
 
       <PlusLockSheet
@@ -1305,16 +1371,30 @@ function WidgetPreviews({ theme }: { theme: Theme }) {
 }
 
 const WIDGET_PREVIEW_W = 112;
+/** T173 §3.3: width of the wallpaper-save skeleton (height follows the phone aspect). */
+const WALL_SKELETON_W = 72;
 
 type SeamlessStatus = 'idle' | 'busy' | 'saved' | 'unavailable' | 'failed';
 
 /**
- * T133: the Seamless widget card on an art-pack theme. A mock Home Screen shows the widget cut from
+ * T133: the Seamless widget card on an art-pack theme. T168: a downloaded remote pack uses its
+ * local files (wallpaperUri / heroUris); a file that is missing or fails to load falls back to the
+ * theme's drawn gradient (wallpaper) or no hero, via src/core/seamlessSource.ts. A mock Home Screen shows the widget cut from
  * the wallpaper with the art floating on top; size / spot / nudge pick where it sits, and "Use for
  * my Glaze widget" writes the image through the widget bridge. Expo Go: the button explains that
  * the TestFlight app is needed; nothing throws.
  */
-function SeamlessCard({ artPackId }: { artPackId: string }) {
+function SeamlessCard({
+  artPackId,
+  theme,
+  wallpaperUri: remoteWallpaper,
+  heroUris,
+}: {
+  artPackId: string;
+  theme: Theme;
+  wallpaperUri: string | null;
+  heroUris: Partial<Record<HeroSize, string>> | null;
+}) {
   const { c } = useColorsV2();
   const { t, script } = useT();
   const window = useWindowDimensions();
@@ -1323,8 +1403,24 @@ function SeamlessCard({ artPackId }: { artPackId: string }) {
   const [slot, setSlot] = useState<SeamlessSlot>('top-left');
   const [nudge, setNudge] = useState<Nudge>({ dx: 0, dy: 0 });
   const [status, setStatus] = useState<SeamlessStatus>('idle');
-  const wallpaper = artPackWallpaper(artPackId);
-  const hero = artPackHero(artPackId, size);
+  // T168: sources that failed to load (or were not on the phone) fall back for this visit.
+  const [failed, setFailed] = useState<readonly string[]>([]);
+  const markFailed = useCallback((key: string) => {
+    setFailed((f) => (f.includes(key) ? f : [...f, key]));
+  }, []);
+  const sources = seamlessCardSources({
+    bundledWallpaper: artPackWallpaper(artPackId),
+    wallpaperUri: remoteWallpaper,
+    bundledHero: artPackHero(artPackId, size),
+    heroUri: heroUris?.[size] ?? null,
+    failed,
+  });
+  const wallpaperSrc = sources.wallpaper;
+  const heroSrc = sources.hero;
+  const fallbackWallpaper = useCallback(
+    (w: number, h: number) => <WallpaperView params={theme.wallpaper} width={w} height={h} maxGrain={120} />,
+    [theme.wallpaper],
+  );
   const heroRef = HERO_REFERENCE_SIZES[size];
   const previewW = Math.max(160, Math.min(240, Math.round(window.width * 0.6)));
 
@@ -1371,7 +1467,7 @@ function SeamlessCard({ artPackId }: { artPackId: string }) {
     };
   }, [t]);
 
-  if (wallpaper == null) return null;
+  if (!sources.show) return null;
 
   /** Resolve local files for the wallpaper and hero, crop for this phone, hand them to the bridge. */
   const onUse = async () => {
@@ -1384,8 +1480,21 @@ function SeamlessCard({ artPackId }: { artPackId: string }) {
       if (!avail.available) {
         next = 'unavailable';
       } else {
-        const wallpaperUri = await localAssetUri(wallpaper, `${artPackId}-wallpaper.png`);
-        const heroUri = await localAssetUri(hero, `${artPackId}-${size}.png`);
+        const wallpaperUri =
+          wallpaperSrc.kind === 'bundled'
+            ? await localAssetUri(wallpaperSrc.module, `${artPackId}-wallpaper.png`)
+            : wallpaperSrc.kind === 'file'
+              ? await existingLocalFile(wallpaperSrc.uri)
+              : null;
+        const heroUri =
+          heroSrc.kind === 'bundled'
+            ? await localAssetUri(heroSrc.module, `${artPackId}-${size}.png`)
+            : heroSrc.kind === 'file'
+              ? await existingLocalFile(heroSrc.uri)
+              : null;
+        // A downloaded file that is gone falls back in the preview too.
+        if (wallpaperSrc.kind === 'file' && !wallpaperUri) markFailed(seamlessSourceKey(wallpaperSrc));
+        if (heroSrc.kind === 'file' && !heroUri) markFailed(seamlessSourceKey(heroSrc));
         if (wallpaperUri) {
           const crop = seamlessCrop({
             device: seamlessDeviceHere(),
@@ -1426,9 +1535,12 @@ function SeamlessCard({ artPackId }: { artPackId: string }) {
         </Text>
         <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>{t('ui.seamless.body')}</Text>
         <SeamlessWidgetPreview
-          wallpaper={wallpaper}
+          wallpaper={seamlessImageSource(wallpaperSrc)}
+          fallbackWallpaper={fallbackWallpaper}
+          onWallpaperError={() => markFailed(seamlessSourceKey(wallpaperSrc))}
+          onHeroError={() => markFailed(seamlessSourceKey(heroSrc))}
           wallpaperPx={{ w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height }}
-          hero={hero}
+          hero={seamlessImageSource(heroSrc)}
           heroPx={{ w: heroRef.width, h: heroRef.height }}
           size={size}
           slot={slot}
@@ -1461,6 +1573,7 @@ function SeamlessCard({ artPackId }: { artPackId: string }) {
           icon="layers"
           block
           busy={status === 'busy'}
+          disabled={!sources.canWrite}
           onPress={onUse}
           accessibilityHint={t('ui.seamless.useHint')}
         />
@@ -1482,6 +1595,111 @@ function SeamlessCard({ artPackId }: { artPackId: string }) {
         </View>
       </View>
     </SquircleCard>
+  );
+}
+
+/**
+ * T179: the glass bar of a remote theme that is not on the phone yet. One primary pill: Download
+ * with the size; while downloading a determinate bar (capped at 99 % until verified); offline, a
+ * 404 or a damaged file all read as one calm line with Try again (never an error code); a Plus pack
+ * without Plus offers Unlock (the Plus sheet then starts the download).
+ */
+function RemoteDownloadBar({
+  primary,
+  name,
+  free,
+  bottomInset,
+  onLayout,
+  onDownload,
+  onUnlock,
+}: {
+  primary: RemotePrimary;
+  name: string;
+  /** Free pack (the "Free. Wallpaper, widget art…" line shows only then). */
+  free: boolean;
+  bottomInset: number;
+  onLayout: (e: LayoutChangeEvent) => void;
+  onDownload: () => void;
+  onUnlock: () => void;
+}) {
+  const { t, locale } = useT();
+  const note = (text: string, live = false) => <BarNote text={text} live={live} />; // i18n-ignore (code after a JSX element)
+  return (
+    <GlassBar material="chrome" hairline="top" style={styles.bar}>
+      <View onLayout={onLayout} style={[styles.barInner, { paddingBottom: bottomInset + spaceV2.sm }]}>
+        {primary.kind === 'download' ? (
+          <>
+            <PillButton
+              label={primary.bytes ? t('theme.remote.downloadSize', { size: formatBytes(primary.bytes, locale) }) : t('theme.remote.download')}
+              icon="download"
+              block
+              onPress={onDownload}
+              accessibilityLabel={
+                primary.bytes ? t('theme.remote.downloadA11y', { name, size: formatBytes(primary.bytes, locale) }) : t('theme.remote.download')
+              }
+              accessibilityHint={t('theme.remote.downloadHint')}
+            />
+            {free ? note(t('theme.remote.includes')) : null}
+          </>
+        ) : null}
+        {primary.kind === 'downloading' ? (
+          <>
+            {/* percent is capped at 99 until the files are verified */}
+            <ProgressBar progress={primary.percent / 100} label={t('theme.remote.downloading', { name })} />
+            {note(t('theme.pack.downloadingNote'))}
+          </>
+        ) : null}
+        {primary.kind === 'retry' ? (
+          <>
+            {note(primary.reason === 'app-version' ? t('plus.packErrors.appVersion') : t('theme.remote.offline'), true)}
+            {primary.reason === 'app-version' ? null : (
+              <PillButton label={t('theme.pack.retry')} icon="refresh-cw" block onPress={onDownload} accessibilityHint={t('theme.pack.retryHint')} />
+            )}
+          </>
+        ) : null}
+        {primary.kind === 'unlock' ? (
+          <>
+            <PillButton label={t('theme.remote.unlock')} icon="lock" block onPress={onUnlock} accessibilityHint={t('theme.applyHintLocked')} />
+            {note(t('theme.pack.locked'))}
+          </>
+        ) : null}
+      </View>
+    </GlassBar>
+  );
+}
+
+/** T179: a quiet centred line in the download bar (polite live region for the Try again line). */
+function BarNote({ text, live }: { text: string; live: boolean }) {
+  const { c } = useColorsV2();
+  const { script } = useT();
+  return (
+    <Text
+      accessibilityLiveRegion={live ? 'polite' : undefined}
+      maxFontSizeMultiplier={fontScaleCap('footnote')}
+      style={[...typeFor(script, 'footnote'), styles.barNote, { color: c.inkSecondary }]}
+    >
+      {text}
+    </Text>
+  );
+}
+
+/** T179: the theme page while the cached catalogue is read: the hero phone and title as skeletons. */
+function ThemePageSkeleton() {
+  const { c } = useColorsV2();
+  const { t } = useT();
+  const window = useWindowDimensions();
+  const phoneW = previewWidthFor(window.width);
+  return (
+    <View
+      style={[styles.root, styles.skeletonPage, { backgroundColor: c.bg }]}
+      accessible
+      accessibilityLabel={t('theme.remote.loadingA11y')}
+    >
+      <Stack.Screen options={{ title: '' }} />
+      <Skeleton width={Math.round(phoneW * 0.7)} height={28} radius={radiusV2.control} />
+      <Skeleton width={Math.round(phoneW * 0.5)} height={16} radius={radiusV2.control} />
+      <Skeleton width={phoneW} height={Math.round(phoneW * PHONE_ASPECT)} radius={radiusV2.cardLarge} style={styles.skeletonHero} />
+    </View>
   );
 }
 
@@ -1605,4 +1823,8 @@ const styles = StyleSheet.create({
   barInner: { paddingHorizontal: spaceV2.inset, paddingTop: spaceV2.md, gap: spaceV2.xs },
   barNote: { textAlign: 'center' },
   barLink: { alignSelf: 'center' },
+  wallSkeleton: { alignSelf: 'center' },
+  heroNote: { textAlign: 'center' },
+  skeletonPage: { padding: spaceV2.inset, gap: spaceV2.md, alignItems: 'center' },
+  skeletonHero: { marginTop: spaceV2.lg },
 });

@@ -14,7 +14,6 @@ export const es: NonNullable<LocaleMessages['plus']> = {
     freeIcons: 'Iconos propios, sin límite',
     freeInstall: 'Instalación guiada con Atajos (y beta en bloque)',
     freeLive: 'Creador de Live Photo con tu propio vídeo',
-    notNow: 'Ahora no',
     oneMoment: 'Un momento…',
     unlock: 'Desbloquear (próximamente)',
     unlockHint: 'Glaze Plus aún no está a la venta',
@@ -29,16 +28,8 @@ export const es: NonNullable<LocaleMessages['plus']> = {
     restored: "Glaze Plus restaurado. ¡Gracias!",
     restoreNone: "No se encontró ninguna compra anterior de Glaze Plus.",
     restoreFailed: "No se pudo restaurar ahora. Inténtalo más tarde.",
-    themes: {
-      one: '{count} tema más en {packs} paquetes',
-      many: '{count} de temas más en {packs} paquetes',
-      other: '{count} temas más en {packs} paquetes',
-    },
-    freeThemes: {
-      one: '{count} tema ilustrado inicial y el creador de fondos',
-      many: '{count} de temas ilustrados iniciales y el creador de fondos',
-      other: '{count} temas ilustrados iniciales y el creador de fondos',
-    },
+    themes: 'Más temas Plus en camino',
+    freeThemes: 'Todos los temas de la galería y el creador de fondos',
   },
   tipJar: {
     title: 'Bote de propinas',

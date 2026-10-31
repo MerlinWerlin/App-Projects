@@ -1,7 +1,7 @@
 {
   "app": "glaze",
   "title": "Glaze (icon themes, matching widgets and wallpaper packs, working title)",
-  "updated": "2026-10-25",
+  "updated": "2026-10-31",
   "milestones": {
     "TRIAL": [
       "T01",
@@ -2274,14 +2274,16 @@
     },
     {
       "id": "T168",
-      "status": "todo",
+      "status": "done",
       "tags": [
         "owner-1030"
       ],
       "priority": "normal",
       "source": "run 179 follow-up",
       "title": "Seamless widget card for remote art packs (needs file:// hero art instead of bundled require())",
-      "deps": []
+      "deps": [],
+      "commit": "05cd88d",
+      "notes": "run 187 05cd88d: pure src/core/seamlessSource.ts picks bundled > downloaded file:// > gradient fallback; card shows for downloaded packs; button disabled without a wallpaper image. Not device-tested (no remote pack published yet)."
     },
     {
       "id": "T169",
@@ -2330,13 +2332,14 @@
     {
       "id": "T173",
       "title": "owner-1030b E: premium interface upgrade: docs/PREMIUM_UI.md (direction, screen-by-screen plan, done criteria; builds on DESIGN_V2.md; no bounce), then visible upgrades each run in order onboarding, Themes browse, theme detail, Widgets, Install, Plus sheet, Settings; skeletons not spinners; contrast + Dynamic Type; TRIAL.md yes/no per change",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1030b"
       ],
       "source": "Owner brief 30 Oct evening (App-Projects ea142a9+2b133ce), docs/OWNER_1030.md",
-      "note": "ongoing every run (owner-1030b E). Run 182 d74aae1: docs/PREMIUM_UI.md + Themes browse/onboarding slice (eyebrow section headers, spacing, dark-mode surfaces, skeleton pulse, Dynamic Type caps). Next: theme detail hero + apply flow, then Widgets. Run 183: theme detail slice (5b97ae9: hero on soft surface, Home/Lock pill, editorial blocks, one primary pill, radii to tokens, expo-image art) and Widgets slice (e1f24f7: family section headers, 16 pt rhythm, raised cards without hairlines, skeleton previews, Studio preview eyebrow). Next: Install flow, then Plus sheet, Settings; theme-detail apply skeleton still open. Run 184: Install flow (c7b3262), Plus sheet + Settings (94d3705); all 7 screens now have a first premium slice. Next: onboarding beyond caps, theme-detail apply skeleton, device check at largest text size; then T173 can close after the owner retest."
+      "note": "ongoing every run (owner-1030b E). Run 182 d74aae1: docs/PREMIUM_UI.md + Themes browse/onboarding slice (eyebrow section headers, spacing, dark-mode surfaces, skeleton pulse, Dynamic Type caps). Next: theme detail hero + apply flow, then Widgets. Run 183: theme detail slice (5b97ae9: hero on soft surface, Home/Lock pill, editorial blocks, one primary pill, radii to tokens, expo-image art) and Widgets slice (e1f24f7: family section headers, 16 pt rhythm, raised cards without hairlines, skeleton previews, Studio preview eyebrow). Next: Install flow, then Plus sheet, Settings; theme-detail apply skeleton still open. Run 184: Install flow (c7b3262), Plus sheet + Settings (94d3705); all 7 screens now have a first premium slice. Next: onboarding beyond caps, theme-detail apply skeleton, device check at largest text size; then T173 can close after the owner retest. Run 185 a78ba04: theme-detail apply skeleton (icon tiles while the style renders, phone-shaped wallpaper while it saves). Next: onboarding beyond caps, device check at largest text size; close after the owner retest. Run 187: onboarding (ed3669a: intro + Themes on the shared bg token, story chips below the gallery) and Themes browse (002e952: seasonal banner + Live hero in surface/eyebrow language, feature card on wide phones). All PREMIUM_UI.md code items done except on-device checks; close after the owner retest. Run 188: all seven planned screens have shipped slices (PREMIUM_UI.md §5); remaining device checks are TestFlight questions for Jared. Extended to the Icons, Wallpapers and Live tabs as T176.",
+      "commit": "735133b"
     },
     {
       "id": "T174",
@@ -2351,19 +2354,109 @@
     },
     {
       "id": "T175",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1030b"
       ],
       "priority": "low",
       "source": "run 184 follow-up",
-      "title": "Remove unused plus.lock.notNow string (11 locales) after the Plus sheet slice; check shared pastel-circle row icons on Widget Studio and other InsetRow users"
+      "title": "Remove unused plus.lock.notNow string (11 locales) after the Plus sheet slice; check shared pastel-circle row icons on Widget Studio and other InsetRow users",
+      "commit": "665de77",
+      "note": "run 185 665de77: plus.lock.notNow removed in 11 locales + guard; InsetRow icon use checked (Settings, Language, Restore, theme detail, Themes browse all use pastel icons per group; Install undo rows stay text-only; Widget Studio has no InsetRow)."
+    },
+    {
+      "id": "T176",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1030b"
+      ],
+      "source": "docs/PREMIUM_UI.md §3.8-3.10 (extends T173)",
+      "title": "Premium interface pass for the remaining tabs: Icons tab, Wallpapers tab + wallpaper editor, Live tab + loop editor (editorial headers, 16 pt rhythm, surfaces not hairlines, skeletons not spinners, Dynamic Type caps, tokens only); JS only",
+      "accept": "design guard counts 0 for these files, Dynamic Type caps on every Text, guard tests per screen, TRIAL yes/no questions",
+      "note": "Run 188: three parallel slices merged (Icons tab, Wallpapers tab + maker with src/core/wallpaperGroups.ts, Live tab + loop editor). Design guard entries for wallpaper.tsx, live.tsx, live/[id].tsx removed. Guards premiumIcons/premiumWallpapers/premiumLive. Non-English strings need a native-speaker check (T174). Device checks are TRIAL.md \"31 Oct, night\".",
+      "commit": "cd30869, d9ae27e, 5b1f620"
+    },
+    {
+      "id": "T177",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031"
+      ],
+      "source": "Owner brief 31 Oct 09:00 Sydney (manual fire payload), docs/OWNER_1031.md",
+      "title": "owner-1031 1-3: Themes tab rebuilt around the remote catalogue: 'New collection' first (every catalogue theme, art-led large cards with thumb/thumbhash), then 3 bundled starters (deep-sea, starry-night, sunset-dunes); old themes (THEMES starters, themesNew, themesStoryPlay, Space, Plus packs, seasonal/story chips) leave the gallery; applied themes keep resolving; pull to refresh; guards updated",
+      "note": "",
+      "commit": "1ca17b4"
+    },
+    {
+      "id": "T178",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031"
+      ],
+      "source": "Owner brief 31 Oct 09:00 Sydney (manual fire payload), docs/OWNER_1031.md",
+      "title": "owner-1031 1: catalogue refresh forced on the first launch of each new app version (not waiting for the 6 h cache) and on pull-to-refresh; 404/offline silent; fixture test with the real glaze-packs-v1 catalog.json",
+      "note": "",
+      "commit": "ad464d8"
+    },
+    {
+      "id": "T179",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031"
+      ],
+      "source": "Owner brief 31 Oct 09:00 Sydney (manual fire payload), docs/OWNER_1031.md",
+      "title": "owner-1031 1+3: theme page for a remote theme: art-led hero from the thumb/thumbhash before download, one clear Download pill with determinate progress, then Apply (wallpaper from the downloaded art, widget art, icons as glyphs/monograms in the palette); offline/404 calm copy",
+      "note": "",
+      "commit": "0e6af11"
+    },
+    {
+      "id": "T180",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031"
+      ],
+      "source": "Owner brief 31 Oct 09:00 Sydney (manual fire payload), docs/OWNER_1031.md",
+      "title": "owner-1031 4: TRIAL.md yes/no questions for T177-T179 (TestFlight wording), OWNER_1031.md kept current",
+      "note": "",
+      "commit": "run 189 records"
+    },
+    {
+      "id": "T181",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "owner-1031"
+      ],
+      "source": "run 189",
+      "title": "owner-1031 follow-ups: Glaze Plus has no gallery themes now (needs plus:true packs in a later Codex batch, Workboard glaze-plus-content); larger card thumbs (~480 px) from the pack builder would allow a full-width feature card; native-speaker check of the new collection/remote strings; retire unused old i18n keys",
+      "note": ""
+    },
+    {
+      "id": "T182",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "oversight-D211-1"
+      ],
+      "source": "run 190 (oversight v211 D211-1)",
+      "title": "Plus sheet honest after owner-1031: themes row says 'More Plus themes are on the way' (no stale 32-in-4-packs count), Always-free row says every gallery theme is free (no stale starter count); 12 locales; guard test",
+      "note": "commit in run 190; no plus:true packs, price and paywall copy otherwise unchanged (D211-1)"
     }
   ],
   "priority_order": {
-    "note": "run 184: T173 Install/Plus/Settings slices + T166 + T156 done; D206-1 still holds native code (PR #128 result unreadable from the cloud). run 183: T173 slices continue every run (next Install flow); D206-1 holds new native code until a build with glaze-home-scan is confirmed green. run 182: owner-1030b brief (Jared's chat 30 Oct evening, synced from App-Projects 2b133ce) outranks the backlog: T169-T172 then T173 premium UI every run. run 179: owner-1030 brief (manual fire, docs/OWNER_1030.md) outranks the backlog: A (T159-T161) and C (T162) first, then B (T163-T164), D (T165). run 132: PR 107 (T155 widget/theme/icon repairs + T158 Island pets, v1.0.1) synced from App-Projects 1f90aa7; T157 done. 26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
+    "note": "run 189: owner-1031 brief (manual fire, docs/OWNER_1031.md) outranks the backlog: T177-T180. run 188: T173 closed (all seven screens sliced); T176 Icons/Wallpapers/Live premium slices done (JS only, D130-2). run 187: oversight v210 lifted D206-1/D207-1 (PR #131 merged); T173 onboarding + Themes browse, T168 done (JS only, D130-2). run 185: D207-1 (≤2 small JS-only tasks): T175 + T173 theme-detail apply skeleton; no native. run 184: T173 Install/Plus/Settings slices + T166 + T156 done; D206-1 still holds native code (PR #128 result unreadable from the cloud). run 183: T173 slices continue every run (next Install flow); D206-1 holds new native code until a build with glaze-home-scan is confirmed green. run 182: owner-1030b brief (Jared's chat 30 Oct evening, synced from App-Projects 2b133ce) outranks the backlog: T169-T172 then T173 premium UI every run. run 179: owner-1030 brief (manual fire, docs/OWNER_1030.md) outranks the backlog: A (T159-T161) and C (T162) first, then B (T163-T164), D (T165). run 132: PR 107 (T155 widget/theme/icon repairs + T158 Island pets, v1.0.1) synced from App-Projects 1f90aa7; T157 done. 26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
     "order": [
+      "T177",
+      "T178",
+      "T179",
+      "T180",
+      "T176",
       "T173",
       "T174",
       "T164",

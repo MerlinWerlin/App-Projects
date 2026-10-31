@@ -16,11 +16,25 @@ import type { PackAccessInput, PackDetailView } from './packDetail.ts';
 
 /** Re-fetch catalog.json at most this often (unless the person pulls to refresh). */
 export const CATALOG_REFRESH_MS = 6 * 60 * 60 * 1000;
+/**
+ * T178: after a failed attempt (offline, a 404 from before the release existed, a bad file) or when
+ * the cached catalogue lists no packs, try again on the next launch / focus once this much time
+ * has passed, never waiting the full 6 h. Short enough to recover quickly, long enough not to hammer.
+ */
+export const CATALOG_RETRY_MS = 2 * 60 * 1000;
 /** The cached copy on the phone, under the pack store root (documentDirectory/packs/). */
 export const CATALOG_CACHE_FILE = 'catalog.json';
+/**
+ * T178: part of the cache stamp. Bump it whenever the app's catalogue handling changes, so the
+ * first launch of that code fetches a fresh catalogue instead of trusting a copy older code saved.
+ */
+export const CATALOG_CLIENT_REV = 't178';
 
-/** The cached catalogue: when it was fetched (ms since epoch) and its text exactly as served. */
-export type CatalogCache = { savedAt: number; text: string };
+/**
+ * The cached catalogue: when it was fetched (ms since epoch), its text exactly as served and
+ * (T178) the stamp of the app build + pack host it was saved under (absent on copies older code saved).
+ */
+export type CatalogCache = { savedAt: number; text: string; stamp?: string };
 
 function isObj(x: unknown): x is Record<string, unknown> {
   return typeof x === 'object' && x !== null && !Array.isArray(x);
@@ -39,8 +53,30 @@ export function parseCatalogText(text: unknown): Catalog | null {
   return r.ok ? r.value : null;
 }
 
+function oneLine(x: unknown): string {
+  return typeof x === 'string' || typeof x === 'number' ? String(x).replace(/\s+/g, ' ').trim().slice(0, 200) : '';
+}
+
+/** What the cache stamp is made of; missing parts (Expo Go, web, tests) read as ''. */
+export type CatalogStampInput = {
+  appVersion?: string | null;
+  build?: string | number | null;
+  /** The running JS bundle (expo-updates updateId), so a new build or an over-the-air update counts as new. */
+  updateId?: string | null;
+  baseUrl?: string | null;
+};
+
+/**
+ * T178: the stamp a cached catalogue is saved under. A cache saved under another stamp (new app
+ * version, build, JS bundle, pack host, or catalogue code) is refetched at once.
+ */
+export function catalogCacheStamp(i: CatalogStampInput): string {
+  const base = oneLine(i.baseUrl).replace(/\/+$/, '');
+  return [CATALOG_CLIENT_REV, oneLine(i.appVersion), oneLine(i.build), oneLine(i.updateId), base].join('|');
+}
+
 export function serializeCatalogCache(c: CatalogCache): string {
-  return JSON.stringify({ savedAt: c.savedAt, text: c.text });
+  return JSON.stringify(c.stamp ? { savedAt: c.savedAt, text: c.text, stamp: c.stamp } : { savedAt: c.savedAt, text: c.text });
 }
 
 /** The cached copy, or null if missing / damaged / not a valid catalogue. Never throws. */
@@ -53,17 +89,48 @@ export function parseCatalogCache(raw: unknown): CatalogCache | null {
     return null;
   }
   if (!isObj(v) || typeof v.savedAt !== 'number' || !Number.isFinite(v.savedAt) || typeof v.text !== 'string') return null;
-  return parseCatalogText(v.text) ? { savedAt: v.savedAt, text: v.text } : null;
+  if (!parseCatalogText(v.text)) return null;
+  return typeof v.stamp === 'string' && v.stamp ? { savedAt: v.savedAt, text: v.text, stamp: v.stamp } : { savedAt: v.savedAt, text: v.text };
+}
+
+/** Optional context for catalogNeedsFetch (T178). */
+export type CatalogFetchContext = {
+  /** catalogCacheStamp of the running app; a cache saved under another stamp is refetched. */
+  stamp?: string | null;
+  /** When this session last tried to fetch (ms since epoch), for the CATALOG_RETRY_MS backoff. */
+  lastAttemptAt?: number | null;
+};
+
+/** How many packs a cached copy lists (null when unknown: only savedAt given, or bad text). */
+function cachedPackCount(cache: Partial<CatalogCache>): number | null {
+  if (typeof cache.text !== 'string') return null;
+  const c = parseCatalogText(cache.text);
+  return c ? c.packs.length : null;
 }
 
 /**
- * Whether to fetch catalog.json now: always when forced (pull to refresh) or nothing is cached;
- * otherwise once the copy is CATALOG_REFRESH_MS old (or dated in the future after a clock change).
+ * Whether to fetch catalog.json now:
+ *  - always when forced (pull to refresh);
+ *  - otherwise never within CATALOG_RETRY_MS of this session's last attempt (no hammering);
+ *  - then yes when nothing is cached (first launch, or every earlier fetch failed / 404'd), once
+ *    the copy is CATALOG_REFRESH_MS old (or dated in the future after a clock change), when the
+ *    cache was saved under another stamp (T178: first launch of a new app version / build / host),
+ *    or when the cached catalogue lists no packs and is older than CATALOG_RETRY_MS.
  */
-export function catalogNeedsFetch(cache: Pick<CatalogCache, 'savedAt'> | null, now: number, force = false): boolean {
-  if (force || !cache) return true;
+export function catalogNeedsFetch(
+  cache: (Pick<CatalogCache, 'savedAt'> & Partial<CatalogCache>) | null,
+  now: number,
+  force = false,
+  ctx: CatalogFetchContext = {},
+): boolean {
+  if (force) return true;
+  const last = ctx.lastAttemptAt;
+  if (typeof last === 'number' && last > 0 && now - last >= 0 && now - last < CATALOG_RETRY_MS) return false;
+  if (!cache) return true;
   const age = now - cache.savedAt;
-  return age < 0 || age >= CATALOG_REFRESH_MS;
+  if (age < 0 || age >= CATALOG_REFRESH_MS) return true;
+  if (typeof ctx.stamp === 'string' && ctx.stamp !== '' && (cache.stamp ?? '') !== ctx.stamp) return true;
+  return cachedPackCount(cache) === 0 && age >= CATALOG_RETRY_MS;
 }
 
 /** Outcome of one fetch attempt; null when no fetch was made. */
@@ -81,13 +148,32 @@ export type CatalogDecision = {
 };
 
 /** Offline-safe choice between the cached catalogue and a fresh fetch. Never throws. */
-export function decideCatalog(cached: CatalogCache | null, fetched: CatalogFetch, now: number): CatalogDecision {
+export function decideCatalog(cached: CatalogCache | null, fetched: CatalogFetch, now: number, stamp?: string | null): CatalogDecision {
   const keep = (error: string | null): CatalogDecision => ({ catalog: cached ? parseCatalogText(cached.text) : null, cache: cached, save: false, error });
   if (!fetched) return keep(null);
   if (!fetched.ok) return keep(fetched.error || 'fetch failed');
   const fresh = parseCatalogText(fetched.text);
   if (!fresh) return keep('bad catalogue ignored');
-  return { catalog: fresh, cache: { savedAt: now, text: fetched.text }, save: true, error: null };
+  const cache: CatalogCache = stamp ? { savedAt: now, text: fetched.text, stamp } : { savedAt: now, text: fetched.text };
+  return { catalog: fresh, cache, save: true, error: null };
+}
+
+/**
+ * T178: what the Themes tab should draw for the remote collection.
+ *  - 'disabled': packs are off in this build (no request is ever made);
+ *  - 'loading': nothing to list yet and the first attempt is still running (show skeletons);
+ *  - 'ready': a catalogue with at least one pack is listed (a background refresh may be running);
+ *  - 'empty': the catalogue lists no packs;
+ *  - 'unavailable': no catalogue and the attempt failed (offline, 404). Never an error for the
+ *    person: show the bundled themes, at most a quiet "pull to refresh" hint.
+ */
+export type CatalogStatus = 'disabled' | 'loading' | 'ready' | 'empty' | 'unavailable';
+
+export function catalogStatus(i: { enabled: boolean; catalog: Pick<Catalog, 'packs'> | null; refreshing: boolean; attempted: boolean }): CatalogStatus {
+  if (!i.enabled) return 'disabled';
+  const pending = i.refreshing || !i.attempted;
+  if (i.catalog) return i.catalog.packs.length > 0 ? 'ready' : pending ? 'loading' : 'empty';
+  return pending ? 'loading' : 'unavailable';
 }
 
 // ------------------------------------------------------------------ catalogue packs as themes

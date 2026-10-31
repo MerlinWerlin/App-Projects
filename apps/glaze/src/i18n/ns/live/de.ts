@@ -8,6 +8,10 @@ export const de: NonNullable<LocaleMessages['live']> = {
     opening: 'Wird geöffnet…',
     pickHint: 'Öffnet deine Mediathek, um ein Video oder GIF auszuwählen',
     yourLoops: 'Deine Loops',
+    sections: {
+      make: { eyebrow: 'Live Photo erstellen', title: 'Mit einem Clip beginnen', body: 'Wähle ein Video oder GIF und richte es aus. Glaze sichert die ersten 3 Sekunden als Live Photo in Fotos.' },
+      loops: { eyebrow: 'In Glaze gesichert' },
+    },
     emptyTitle: 'Noch keine Loops',
     emptyBody: 'Wähle ein Video oder GIF, kürze es auf bis zu 15 Sekunden und richte es für deinen Sperrbildschirm aus.',
     pick: 'Video oder GIF auswählen',
@@ -35,6 +39,11 @@ export const de: NonNullable<LocaleMessages['live']> = {
   },
   editor: {
     loading: 'Loop wird geladen',
+    sections: {
+      frame: { eyebrow: 'Sperrbildschirm', title: 'Ausrichten' },
+      clip: { eyebrow: 'Clip' },
+      finish: { eyebrow: 'Fertigstellen', title: 'Sichern', body: 'Alles bleibt auf diesem Telefon. Nichts wird hochgeladen.' },
+    },
     missing: 'Diesen Loop gibt es nicht mehr.',
     nameLabel: 'Name des Loops',
     cropLabel: 'Ausschnitt für den Sperrbildschirm. Ziehen zum Verschieben, Aufziehen zum Zoomen.',

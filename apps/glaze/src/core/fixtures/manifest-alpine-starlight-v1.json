@@ -1,0 +1,105 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 1,
+  "id": "alpine-starlight",
+  "packVersion": 1,
+  "name": "Alpine Starlight",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#0F1217",
+    "tile": "#303236",
+    "glyph": "#FAF8F2",
+    "accent": "#07090C",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Alpine Starlight",
+    "mood": "Snowy peaks under a sky full of stars, moons and a ringed planet.",
+    "tags": [
+      "alpine",
+      "starlight",
+      "snowy",
+      "peaks",
+      "under",
+      "full",
+      "stars",
+      "moons",
+      "ringed",
+      "planet",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Casey Horner (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: lighting-weather. Asset: portrait iPhone wallpaper, 1440x3120 aspect ratio. Edit the supplied Casey Horner mountain and stars photograph into a restrained dark-night wallpaper matching the user's screenshot aesthetic. Preserve the exact mountain silhouette and photographic star positions and natural textures. Reduce sky exposure substantially to near-black charcoal/slate with small subdued silver stars, desaturate slightly; dim the orange horizon to a very subtle warm bronze glow, retain detailed snowy mountains low in the frame. Calm dark upper two thirds for readable white line icons. No moon added, no UI, icons, text, border or watermark. This is a colour-graded photographic wallpaper, not a painting.",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "xvcFCwB3gCh3bYG5loBmCWg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.d5e95932.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 150412,
+      "sha256": "d5e95932ffd48ca3b648d351303bc350a5092a7ebe16a02ed586b0299dca772f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.919f7026.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 134170,
+      "sha256": "919f7026edfdff8f288e17e74e811224c23d35a296cd5a9dd53bc6382f62dd09",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.7ddccc93.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 64112,
+      "sha256": "7ddccc933305d0fe0f466192d57b0fe2067efd58854784ed29bfa23f1aaa92c6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.b10e2c03.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 16808,
+      "sha256": "b10e2c03cf68cf40e73985512ce0435ec0264e158df4737d513484ac1a6c39ff",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.5a7b8f1e.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 141776,
+      "sha256": "5a7b8f1eeca102b9ffd464b7c752160added3d6ca4528e30f8ab177b9f6e7a44",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.b110e9cd.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 50428,
+      "sha256": "b110e9cda1b3a6d6713792977033c2c127c94479f49b85c547ed22270521577b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.e5731259.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 10260,
+      "sha256": "e57312592232e39fafabbc8b89d18d46b03c41a2e3ccd44dcb11276cfd31aeb3",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 567966
+}

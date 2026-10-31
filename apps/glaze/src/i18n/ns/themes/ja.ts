@@ -12,8 +12,11 @@ export const ja: NonNullable<LocaleMessages['themes']> = {
     body: 'グラデーション、メッシュ、粒子、パターンを iPhone のサイズで。',
     hint: '壁紙メーカーを開きます',
   },
-  eyebrow: { starters: 'はじめに', art: '無料のアート', space: '無料・実写', plus: 'Glaze Plus' },
+  eyebrow: { starters: 'はじめに', art: '無料のアート', space: '無料・実写', plus: 'Glaze Plus', season: '今の季節', collection: '新着' },
   starters: 'スターターテーマ',
+  /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
+  collection: { title: '新しいコレクション', body: 'Glaze スタジオのオリジナルアートテーマ。無料でダウンロードでき、新作はここに表示されます。', loadingA11y: '新しいコレクションを読み込み中', downloadA11y: '無料ダウンロード。' },
+  startersBody: 'Glaze に内蔵。ダウンロード不要です。',
   startersEmpty: 'スターターテーマはまだありません',
   plusPacks: 'Plus パック',
   plusPacksBody: 'どれでもプレビューできます。Glaze Plus は買い切りで、サブスクではありません。',

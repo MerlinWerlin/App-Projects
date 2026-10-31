@@ -45,6 +45,7 @@ export const de: NonNullable<LocaleMessages['wallpaper']> = {
     a11y: 'Vorschau des Hintergrunds, {style}',
     a11yPattern: 'Vorschau des Hintergrunds, {style} {pattern}',
     sizePx: '{width} × {height} px',
+    loadingA11y: 'Dein Hintergrundbild wird geladen',
   },
   design: {
     shuffle: 'Mischen',

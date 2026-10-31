@@ -159,3 +159,19 @@ test('every locale has the new Plus sheet and Settings strings', () => {
     }
   }
 });
+
+test('T175: the unused plus.lock.notNow string is gone from every locale (the sheet has no Not now button)', () => {
+  for (const loc of LOCALES) {
+    assert.ok(!/^\s+notNow: /m.test(read('src', 'i18n', 'ns', 'plus', `${loc}.ts`)), `${loc}: plus.lock.notNow removed`);
+  }
+  assert.ok(!strip(read(...SHEET)).includes('plus.lock.notNow'), 'PlusLockSheet does not use plus.lock.notNow');
+});
+
+test('D211-1: the Plus sheet promises no gallery themes it no longer has (no counts, "more coming" line)', () => {
+  const sheet = strip(read(...SHEET));
+  assert.ok(!sheet.includes('PLUS_THEMES') && !sheet.includes('PLUS_PACKS'), 'no Plus theme counts');
+  assert.ok(!/plus\.lock\.freeThemes', \{/.test(sheet), 'free row has no starter count');
+  const en = read('src', 'i18n', 'ns', 'plus', 'en.ts');
+  assert.match(en, /themes: 'More Plus themes are on the way'/);
+  assert.match(en, /freeThemes: 'Every theme in the gallery and the wallpaper maker'/);
+});

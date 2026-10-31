@@ -13,7 +13,6 @@ export const en = {
     freeIcons: 'Make-your-own icons, unlimited',
     freeInstall: 'Guided Shortcuts install (and bulk beta)',
     freeLive: 'Live Photo maker with your own video',
-    notNow: 'Not now',
     oneMoment: 'One moment…',
     unlock: 'Unlock (coming soon)',
     unlockHint: 'Glaze Plus is not on sale yet',
@@ -28,14 +27,8 @@ export const en = {
     restored: "Glaze Plus restored. Thank you!",
     restoreNone: "No earlier Glaze Plus purchase was found.",
     restoreFailed: "Couldn’t restore right now. Try again later.",
-    themes: {
-      one: '{count} more theme in {packs} packs',
-      other: '{count} more themes in {packs} packs',
-    },
-    freeThemes: {
-      one: '{count} illustrated starter theme and the wallpaper maker',
-      other: '{count} illustrated starter themes and the wallpaper maker',
-    },
+    themes: 'More Plus themes are on the way',
+    freeThemes: 'Every theme in the gallery and the wallpaper maker',
   },
   tipJar: {
     title: 'Tip jar',

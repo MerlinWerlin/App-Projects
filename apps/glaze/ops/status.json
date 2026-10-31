@@ -1,12 +1,12 @@
 {
-  "tests": "1350/1350 core tests green; UI typecheck against stubs clean",
+  "tests": "1433/1433 core tests green; UI typecheck against stubs clean",
   "typecheck": "core only (registry unreachable)",
-  "last_run": "2026-10-31 03:00 Sydney (run 184)",
+  "last_run": "2026-10-31 10:20 Sydney (run 190)",
   "stage": "owner-tested",
-  "oversight_seen": "v206 (1793364766-5b67): D206-1 followed again: no native code; PR #128 build result still not readable from the cloud (GitHub API not enabled; no result record in App-Projects), so the overseer/auto-ship must confirm the glaze-home-scan compile; no patches",
-  "headline": "Premium look reaches every screen: Install steps now show one current step, the Plus sheet is calmer with an art hero, Settings has tidy grouped rows, and the Icons tab scrolls as a light list.",
-  "next_for_owner": "1) On the next TestFlight build, answer docs/TRIAL.md \"New since your last test (31 Oct)\", \"(30 Oct night)\" and \"(30 Oct evening)\". 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud.)",
+  "oversight_seen": "v211 (1793400600-677b): D211-1 followed (T182 honest Plus sheet); D130-2 still applies (JS-only run).",
+  "headline": "The Glaze Plus sheet no longer promises the old Plus themes that left the gallery: it now says more Plus themes are on the way, and that every gallery theme is free. JS only, ships as an update.",
+  "next_for_owner": "1) Fully close and reopen the TestFlight Glaze twice once auto-ship sends the update, then answer docs/TRIAL.md \"New since your last test (31 Oct, morning: owner-1031)\". 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud.)",
   "trial_kit": true,
-  "trial_kit_commit": "bd90a16",
+  "trial_kit_commit": "94e5f93",
   "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested"
 }

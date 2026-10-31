@@ -153,13 +153,10 @@ test('showcase grid: two tall columns on phones, one on very narrow screens', ()
   assert.ok(showcaseCardWidth(100, 2) >= 120);
 });
 
-test('the gallery uses the paging logic', () => {
+// T177 (owner-1031): the Themes tab no longer pages categories (about 13 themes in two sections,
+// src/core/gallery.ts); the bubble row and the showcase grid keep their paging logic for reuse.
+test('the bubble row and showcase grid keep the paging logic', () => {
   const root = process.cwd();
-  const screen = readFileSync(join(root, 'app/(tabs)/themes.tsx'), 'utf8');
-  assert.match(screen, /<CategoryBubbleRow/);
-  assert.match(screen, /<ShowcaseGrid/);
-  assert.match(screen, /browsePages\(/);
-  assert.match(screen, /pageAfterStep\(/);
   const row = readFileSync(join(root, 'src/ui/CategoryBubbleRow.tsx'), 'utf8');
   assert.match(row, /bubbleSnapOffsets\(/);
   assert.match(row, /revealOffset\(/);

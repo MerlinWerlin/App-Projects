@@ -89,6 +89,13 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
     pairHome: 'ホーム',
     liveEmpty: 'Live Photos 用のクリップはまだありません。ビデオや GIF から作りましょう。',
     showMore: 'もっと見る',
+    // T176 (docs/PREMIUM_UI.md §3.9): editorial section headers per wallpaper group (core/wallpaperGroups).
+    groups: {
+      yours: { eyebrow: 'あなたが作る', title: '自分だけの壁紙', body: '自分の写真やビデオから始めましょう。データはこのデバイスから出ません。' },
+      free: { eyebrow: '無料', title: 'Glaze オリジナル', body: '無料テーマごとにデザインした壁紙です。タップして調整し、保存できます。' },
+      plus: { eyebrow: 'Glaze Plus', title: 'Plus コレクション', body: 'Plus テーマの壁紙。一度の購入で使えます。' },
+    },
+    loading: 'Live Photos 用のクリップを読み込み中',
     discover: {
       label: '壁紙の表示',
       newEmpty: 'いまは新着がありません',

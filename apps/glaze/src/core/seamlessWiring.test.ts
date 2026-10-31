@@ -18,7 +18,8 @@ test('theme detail imports the Seamless preview and controls', () => {
 });
 
 test('the Seamless card shows for art-pack themes only', () => {
-  assert.match(detail, /\{artPack \? <SeamlessCard artPackId=\{artPack\.artPack\.id\} \/> : null\}/);
+  // T168: remote art packs pass their downloaded wallpaper / hero files too.
+  assert.match(detail, /\{artPack \? <SeamlessCard artPackId=\{artPack\.artPack\.id\} theme=\{theme\} wallpaperUri=\{remoteWallpaperUri\} heroUris=\{remoteHeroUris\} \/> : null\}/);
   assert.equal((detail.match(/<SeamlessCard\b/g) ?? []).length, 1);
 });
 
@@ -34,7 +35,7 @@ test('widgets.setSeamless is called once, inside the onUse press handler', () =>
   // Checks the bridge first (Expo Go: nothing downloaded) and resolves local files.
   const body = detail.slice(start, end);
   assert.match(body, /widgets\.isAvailable\(\)/);
-  assert.match(body, /localAssetUri\(wallpaper,/);
+  assert.match(body, /localAssetUri\(wallpaperSrc\.module,/);
   assert.match(body, /seamlessCrop\(/);
 });
 

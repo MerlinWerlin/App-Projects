@@ -11,6 +11,16 @@ export const ko: NonNullable<LocaleMessages['icons']> = {
     other: "아이콘 {count}개의 기호가 잘 보이지 않을 수 있습니다(대비 3:1 미만): {names}. 다른 기호나 배경색을 사용해 보세요.",
   },
   yourApps: "내 앱",
+  // T176 (docs/PREMIUM_UI.md §3.8): editorial section headers on the Icons tab.
+  sections: {
+    previewEyebrow: "실시간 미리보기",
+    appsEyebrow: "내 세트",
+    appsBody: "여기 있는 모든 앱에 어울리는 아이콘이 만들어집니다.",
+    addEyebrow: "앱 찾기",
+    addBody: "검색하거나 카테고리를 고른 다음 원하는 앱을 체크하세요.",
+    styleEyebrow: "하나의 스타일",
+    styleBody: "모든 아이콘의 모양, 색상, 심볼 크기를 한 번에 정합니다.",
+  },
   emptyTitle: "아직 앱이 없습니다",
   emptyBody: "새 아이콘을 만들 앱을 고르세요. 인기 앱부터 시작하거나 아래에서 검색하세요.",
   addPopular: "인기 앱 추가",

@@ -163,6 +163,21 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
     readyA11y: '{pack} 主题包已下载',
     size: '大小：{size}',
   },
+  // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
+  remote: {
+    heroPreview: '作品预览。下载后即可获得全尺寸壁纸。',
+    heroDownloaded: '已下载到这台 iPhone。这是全尺寸壁纸。',
+    download: '下载',
+    downloadSize: '下载 · {size}',
+    downloadA11y: '下载{name}，{size}',
+    downloadHint: '将壁纸和小组件图案保存到这台 iPhone',
+    includes: '免费。壁纸、小组件图案，以及用其配色绘制的图标。',
+    downloading: '正在下载{name}',
+    offline: '暂时无法连接到合集。恢复联网后请再试一次。',
+    unlock: '用 Glaze Plus 解锁',
+    iconsNote: '此主题包含壁纸和小组件图案。你的图标会用 Glaze 字形以其配色绘制。',
+    loadingA11y: '正在载入主题',
+  },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {
     title: '配套小组件',

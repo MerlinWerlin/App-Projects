@@ -11,9 +11,9 @@ const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
 const strip = (src: string) => src.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
 const SPRINGY = /\bwithSpring\b|\.springify\(|\bZoomIn\b|\bBounceIn\b|\bwithSequence\b|\bLinearTransition\b|\blayout=\{|\bscale\b/;
 
-test('fb-1023: chips, sub-tabs and collections re-run the grid fade on Themes', () => {
-  const themes = strip(read('app', '(tabs)', 'themes.tsx'));
-  assert.match(themes, /fadeKey=\{`\$\{group \?\? ''\}\|\$\{tab\}\|\$\{collection \?\? ''\}`\}/);
+// T177 (owner-1031): the Themes tab no longer uses ShowcaseGrid (chips, sub-tabs and collections are
+// gone); the grid keeps its calm fade for reuse.
+test('fb-1023: the showcase grid fade is opacity only', () => {
   const grid = strip(read('src', 'ui', 'ShowcaseGrid.tsx'));
   assert.match(grid, /\[pageIndex, fadeKey, fade\]/);
   assert.match(grid, /opacity: fade\.value/);

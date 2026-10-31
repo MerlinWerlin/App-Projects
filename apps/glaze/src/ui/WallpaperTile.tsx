@@ -11,6 +11,8 @@
 // bottom reading end that likes the wallpaper on this device only. No counts or ranks.
 // T118 (fb-1024 B): the pair's Home version is computed once per wallpaper (module cache), the
 // pair art and the Lock Screen mock are memoised, and the tile's press handler is stable.
+// T176 (docs/PREMIUM_UI.md §3.9): every Text has a Dynamic Type cap; in dark mode the pair tile
+// lifts by the raised surface and its two phone frames drop the hairline (depth, not lines).
 import { Feather } from '@expo/vector-icons';
 import { memo, useCallback, type ReactNode } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -23,7 +25,7 @@ import { useT } from '../i18n';
 import { PlusBadge } from '../plus/PlusBadge';
 import { HomeTint } from '../render/HomeWallpaperView';
 import { WallpaperView } from '../render/WallpaperView';
-import { circleRadius, onArtV2, radiusV2, spaceV2, textV2, typeV2 } from '../theme/tokensV2';
+import { circleRadius, fontScaleCap, onArtV2, radiusV2, spaceV2, textV2, typeV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import type { FeatherName } from './featherName';
 import { HeartButton } from './HeartButton';
@@ -62,7 +64,7 @@ function LiveBadge({ label }: { label: string }) {
   return (
     <View style={[styles.badge, styles.badgeStart, styles.liveBadge]} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
       <View style={styles.liveDot} />
-      <Text style={styles.liveText} numberOfLines={1}>
+      <Text maxFontSizeMultiplier={fontScaleCap('caption2')} style={styles.liveText} numberOfLines={1}>
         {label}
       </Text>
     </View>
@@ -70,7 +72,7 @@ function LiveBadge({ label }: { label: string }) {
 }
 
 const PairArt = memo(function PairArt({ theme, width, lockLabel, homeLabel }: { theme: Theme; width: number; lockLabel: string; homeLabel: string }) {
-  const { c } = useColorsV2();
+  const { c, scheme } = useColorsV2();
   const half = pairHalfSize(width - spaceV2.sm * 2, PAIR_GAP);
   const home = homeFor(theme.wallpaper);
   const showArt = !theme.packId;
@@ -78,11 +80,11 @@ const PairArt = memo(function PairArt({ theme, width, lockLabel, homeLabel }: { 
     <View style={[styles.pairRow, noMirror]}>
       {[lockLabel, homeLabel].map((label, i) => (
         <View key={label + i} style={styles.pairHalf}>
-          <View style={[styles.pairFrame, { width: half.width, height: half.height, borderColor: c.separator }]}>
+          <View style={[styles.pairFrame, { width: half.width, height: half.height }, scheme === 'dark' ? null : [styles.pairFrameLine, { borderColor: c.separator }]]}>
             <WallpaperView params={theme.wallpaper} width={half.width} height={half.height} maxGrain={TILE_GRAIN / 2} showArt={showArt} />
             {i === 1 ? <HomeTint home={home} /> : null}
           </View>
-          <Text style={[textV2.caption2, { color: c.inkSecondary }]} numberOfLines={1}>
+          <Text maxFontSizeMultiplier={fontScaleCap('caption2')} style={[textV2.caption2, { color: c.inkSecondary }]} numberOfLines={1}>
             {label}
           </Text>
         </View>
@@ -92,7 +94,7 @@ const PairArt = memo(function PairArt({ theme, width, lockLabel, homeLabel }: { 
 });
 
 function WallpaperTileViewInner({ tile, theme, loopName, width, height, onOpen, liked = false, onToggleLike }: WallpaperTileViewProps) {
-  const { c } = useColorsV2();
+  const { c, scheme } = useColorsV2();
   const { t, script } = useT();
   const name = theme?.name ?? loopName ?? '';
   const favId = onToggleLike ? tileFavouriteId(tile) : undefined;
@@ -129,7 +131,7 @@ function WallpaperTileViewInner({ tile, theme, loopName, width, height, onOpen, 
           <LockMockM width={width} height={height} showGuides={false} />
         </View>
         <View style={[styles.scrim, withHeart ? styles.withHeart : null]}>
-          <Text style={[caption, styles.onArt]} numberOfLines={1}>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[caption, styles.onArt]} numberOfLines={1}>
             {name}
           </Text>
         </View>
@@ -137,9 +139,9 @@ function WallpaperTileViewInner({ tile, theme, loopName, width, height, onOpen, 
     );
   } else if (tile.kind === 'pair' && theme) {
     body = (
-      <View style={[styles.fill, styles.pairBody, { backgroundColor: c.surface }]}>
+      <View style={[styles.fill, styles.pairBody, { backgroundColor: scheme === 'dark' ? c.surfaceRaised : c.surface }]}>
         <PairArt theme={theme} width={width} lockLabel={t('tabs.wallpapersTab.pairLock')} homeLabel={t('tabs.wallpapersTab.pairHome')} />
-        <Text style={[caption, { color: c.ink }, withHeart ? styles.withHeart : null]} numberOfLines={1}>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[caption, { color: c.ink }, withHeart ? styles.withHeart : null]} numberOfLines={1}>
           {name}
         </Text>
       </View>
@@ -163,7 +165,7 @@ function WallpaperTileViewInner({ tile, theme, loopName, width, height, onOpen, 
         <View style={[styles.glyph, { backgroundColor: c.surface }]}>
           <Feather name={look.icon} size={24} color={look.ink} />
         </View>
-        <Text style={[caption, styles.center, { color: look.ink }]} numberOfLines={3}>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[caption, styles.center, { color: look.ink }]} numberOfLines={3}>
           {look.text}
         </Text>
       </View>
@@ -221,7 +223,8 @@ const styles = StyleSheet.create({
   pairBody: { padding: spaceV2.sm, gap: spaceV2.sm, justifyContent: 'center' },
   pairRow: { flexDirection: 'row', gap: PAIR_GAP, justifyContent: 'center' },
   pairHalf: { alignItems: 'center', gap: spaceV2.xxs },
-  pairFrame: { borderRadius: radiusV2.control, overflow: 'hidden', borderWidth: StyleSheet.hairlineWidth },
+  pairFrame: { borderRadius: radiusV2.control, overflow: 'hidden' },
+  pairFrameLine: { borderWidth: StyleSheet.hairlineWidth },
   badge: { position: 'absolute', top: spaceV2.sm },
   badgeStart: { start: spaceV2.sm },
   badgeEnd: { end: spaceV2.sm },

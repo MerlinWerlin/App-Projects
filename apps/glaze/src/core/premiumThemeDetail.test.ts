@@ -78,3 +78,9 @@ test('every Text on the theme detail path carries a Dynamic Type cap', () => {
     assert.deepEqual(uncapped, [], `${f.join('/')}: Text without maxFontSizeMultiplier`);
   }
 });
+
+test('T173 §3.3: apply waits show a skeleton of the result (icon tiles while the style renders, a wallpaper while it saves)', () => {
+  const d = strip(read(...DETAIL_PATH));
+  assert.match(d, /\{styleBusy \? <IconGridSkeleton\b/, 'icon style render shows icon-tile skeletons');
+  assert.match(d, /\{saver\.saving \|\| photoSaver\.saving \? \(\s*<Skeleton\b[^>]*PHONE_ASPECT/, 'wallpaper save shows a phone-shaped skeleton');
+});

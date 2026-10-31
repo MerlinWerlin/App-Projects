@@ -45,6 +45,7 @@ export const it: NonNullable<LocaleMessages['wallpaper']> = {
     a11y: 'Anteprima sfondo, {style}',
     a11yPattern: 'Anteprima sfondo, {style} {pattern}',
     sizePx: '{width} × {height} px',
+    loadingA11y: 'Caricamento dello sfondo',
   },
   design: {
     shuffle: 'Mescola',

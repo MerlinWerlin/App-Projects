@@ -89,6 +89,13 @@ export const fr: NonNullable<LocaleMessages['tabs']> = {
     pairHome: 'Accueil',
     liveEmpty: 'Aucun extrait Live Photo pour l’instant. Créez-en un à partir d’une vidéo ou d’un GIF.',
     showMore: 'Afficher plus',
+    // T176 (docs/PREMIUM_UI.md §3.9): editorial section headers per wallpaper group (core/wallpaperGroups).
+    groups: {
+      yours: { eyebrow: 'Par vous', title: 'Vos créations', body: 'Partez de vos propres photos et vidéos. Elles restent sur cet appareil.' },
+      free: { eyebrow: 'Gratuit', title: 'Originaux Glaze', body: 'Des fonds conçus pour chaque thème gratuit. Touchez-en un pour l’ajuster et l’enregistrer.' },
+      plus: { eyebrow: 'Glaze Plus', title: 'La collection Plus', body: 'Les fonds des thèmes Plus, avec un déblocage unique.' },
+    },
+    loading: 'Chargement de vos extraits Live Photo',
     discover: {
       label: 'Afficher les fonds',
       newEmpty: 'Rien de nouveau pour le moment',

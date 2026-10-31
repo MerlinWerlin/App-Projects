@@ -12,8 +12,11 @@ export const zhHans: NonNullable<LocaleMessages['themes']> = {
     body: '渐变、网格、颗粒和图案，按你的 iPhone 尺寸生成。',
     hint: '打开壁纸制作器',
   },
-  eyebrow: { starters: '从这里开始', art: '免费艺术', space: '免费 · 真实照片', plus: 'Glaze Plus' },
+  eyebrow: { starters: '从这里开始', art: '免费艺术', space: '免费 · 真实照片', plus: 'Glaze Plus', season: '应季精选', collection: '新上架' },
   starters: '入门主题',
+  /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
+  collection: { title: '新系列', body: '来自 Glaze 工作室的原创艺术主题。免费下载，新主题会出现在这里。', loadingA11y: '正在载入新系列', downloadA11y: '免费下载。' },
+  startersBody: '内置于 Glaze，无需下载。',
   startersEmpty: '暂无入门主题',
   plusPacks: 'Plus 主题包',
   plusPacksBody: '任何一个都可以预览。Glaze Plus 一次性解锁，绝不订阅。',

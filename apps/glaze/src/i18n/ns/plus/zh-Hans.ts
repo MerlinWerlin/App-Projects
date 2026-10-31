@@ -14,7 +14,6 @@ export const zhHans: NonNullable<LocaleMessages['plus']> = {
     freeIcons: '自制图标，不限数量',
     freeInstall: '引导式快捷指令安装（以及批量测试版）',
     freeLive: '用你自己的视频制作实况照片',
-    notNow: '以后再说',
     oneMoment: '请稍候…',
     unlock: '解锁（即将推出）',
     unlockHint: 'Glaze Plus 尚未开售',
@@ -29,12 +28,8 @@ export const zhHans: NonNullable<LocaleMessages['plus']> = {
     restored: "已恢复 Glaze Plus。谢谢！",
     restoreNone: "未找到之前的 Glaze Plus 购买。",
     restoreFailed: "暂时无法恢复，请稍后再试。",
-    themes: {
-      other: '{packs} 个主题包中的另外 {count} 个主题',
-    },
-    freeThemes: {
-      other: '{count} 个插画入门主题和墙纸制作',
-    },
+    themes: '更多 Plus 主题即将推出',
+    freeThemes: '图库中的所有主题和墙纸制作',
   },
   tipJar: {
     title: '小费罐',

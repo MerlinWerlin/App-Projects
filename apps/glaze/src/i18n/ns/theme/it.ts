@@ -164,6 +164,21 @@ export const it: NonNullable<LocaleMessages['theme']> = {
     readyA11y: 'Il pacchetto {pack} è stato scaricato',
     size: 'Dimensione: {size}',
   },
+  // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
+  remote: {
+    heroPreview: 'Anteprima dell’illustrazione. Scaricala per lo sfondo a grandezza piena.',
+    heroDownloaded: 'Scaricato su questo iPhone. Questo è lo sfondo a grandezza piena.',
+    download: 'Scarica',
+    downloadSize: 'Scarica · {size}',
+    downloadA11y: 'Scarica {name}, {size}',
+    downloadHint: 'Salva lo sfondo e le illustrazioni dei widget su questo iPhone',
+    includes: 'Gratis. Sfondo, illustrazioni dei widget e icone nei suoi colori.',
+    downloading: 'Download di {name}',
+    offline: 'Al momento la collezione non è raggiungibile. Quando torni online, riprova.',
+    unlock: 'Sblocca con Glaze Plus',
+    iconsNote: 'Questo tema porta il suo sfondo e le illustrazioni dei widget. Le tue icone sono disegnate con i glifi Glaze nei suoi colori.',
+    loadingA11y: 'Caricamento del tema',
+  },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {
     title: 'Widget abbinati',

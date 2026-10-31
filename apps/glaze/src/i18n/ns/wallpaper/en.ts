@@ -50,6 +50,7 @@ export const en = {
     a11y: 'Wallpaper preview, {style}',
     a11yPattern: 'Wallpaper preview, {style} {pattern}',
     sizePx: '{width} × {height} px',
+    loadingA11y: 'Loading your wallpaper',
   },
   design: {
     shuffle: 'Shuffle',

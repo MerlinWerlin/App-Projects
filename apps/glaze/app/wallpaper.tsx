@@ -1,3 +1,9 @@
+// Wallpaper maker (/wallpaper): designed wallpaper or the person's photo, Lock + Home pair, Save to Photos.
+// T176 (docs/PREMIUM_UI.md §3.9): editor cards lift by surface (raised in dark mode, the soft card
+// shadow in light) with no hairline; each card opens with a group SectionHeader (one heading);
+// the preview waits for the saved background as a skeleton in its own phone shape, and a save
+// shows a phone-shaped skeleton of the image being rendered (the Save pill keeps its busy label);
+// every Text has a Dynamic Type cap; tokens only (design guard 0). Saving itself is unchanged.
 import { Feather } from '@expo/vector-icons';
 import { useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -14,7 +20,8 @@ import {
 } from '../src/core/background';
 import { DEFAULT_TRANSFORM, looksSoft, pinchBy, type PhotoTransform } from '../src/core/photoCrop';
 import { pairSaveTicksWallpaper, type PairSaveOutcome } from '../src/core/applyChecklist';
-import { getAnyTheme, wallpaperMakerSwatches, wallpaperMakerTheme } from '../src/core/plusThemes';
+import { wallpaperMakerSwatches, wallpaperMakerTheme } from '../src/core/plusThemes';
+import { useAnyTheme } from '../src/native/useAnyTheme';
 import { previewSpecs } from '../src/core/themes';
 import {
   WALLPAPER_PATTERNS,
@@ -37,7 +44,7 @@ import { tickStoredChecklist } from '../src/store/applyChecklist';
 import { loadBackground, photoCopyExists, saveBackground } from '../src/store/background';
 import { applyWidgetTheme } from '../src/store/widgetTheme';
 import { useT } from '../src/i18n';
-import { circleRadius, continuous, onArtV2, radiusV2, sizeV2, spaceV2 } from '../src/theme/tokensV2';
+import { chromeRadiusV2, circleRadius, continuous, fontScaleCap, onArtV2, radiusV2, shadowV2, sizeV2, spaceV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import type { FeatherName } from '../src/ui/featherName';
 import { PillButton } from '../src/ui/PillButton';
@@ -50,6 +57,7 @@ import { haptic } from '../src/ui/haptics';
 import { useAnnounce } from '../src/ui/announce';
 import { localizedTypeV2, noMirror } from '../src/ui/i18nLayout';
 import { pickBackgroundPhoto } from '../src/ui/pickBackgroundPhoto';
+import { SectionHeader } from '../src/ui/SectionHeader';
 import { Skeleton } from '../src/ui/Skeleton';
 import { WallpaperPairCard } from '../src/ui/WallpaperPairCard';
 
@@ -80,6 +88,8 @@ const PICK_KEYS = {
 const PREVIEW_W = 220;
 /** Width of each half of the Lock + Home pair preview (T62). */
 const PAIR_W = 112;
+/** Width of the phone-shaped skeleton shown while a save renders (T176). */
+const SAVE_THUMB_W = 36;
 const ANGLE_STEP = 15;
 const GRAIN_STEP = 0.1;
 
@@ -161,7 +171,7 @@ function Segmented<T extends string>({
             hitSlop={3}
             style={[styles.segmentItem, grid && styles.segmentItemGrid, selected && { backgroundColor: c.surfaceRaised }]}
           >
-            <Text style={[tt.label, styles.segmentText, { color: selected ? c.tint : c.inkSecondary }]}>
+            <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[tt.label, styles.segmentText, { color: selected ? c.tint : c.inkSecondary }]}>
               {o.label}
             </Text>
           </Pressable>
@@ -191,9 +201,12 @@ function Stepper({
   const tt = localizedTypeV2(script);
   return (
     <View style={styles.stepper}>
-      <Text style={[tt.label, styles.flex, { color: c.ink }]}>{label}</Text>
+      <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[tt.label, styles.flex, { color: c.ink }]}>
+        {label}
+      </Text>
       <WallpaperIconButton icon="minus" accessibilityLabel={t('wallpaper.stepper.less', { label })} onPress={onMinus} disabled={minusDisabled} />
       <Text
+        maxFontSizeMultiplier={fontScaleCap('subhead')}
         style={[tt.label, styles.stepValue, { color: c.ink }]}
         accessibilityLabel={t('wallpaper.stepper.value', { label, value })}
         accessibilityLiveRegion="polite"
@@ -206,7 +219,7 @@ function Stepper({
 }
 
 export default function WallpaperScreen() {
-  const { c } = useColorsV2();
+  const { c, scheme } = useColorsV2();
   const { t, script, formatNumber } = useT();
   const tt = localizedTypeV2(script);
   /** Pixel sizes: locale digits, no grouping (1290 × 2796). */
@@ -219,7 +232,8 @@ export default function WallpaperScreen() {
   // T81: the designed-wallpaper editor starts from the theme it was opened for, Plus themes
   // included once unlocked (a locked Plus theme starts from a free one); the photo background
   // works in every theme, keyed by its id, with that theme's colours for the overlay.
-  const anyTheme = getAnyTheme(themeId);
+  // T179: a remote catalogue theme resolves too, so its photo background and icons stay its own.
+  const anyTheme = useAnyTheme(themeId);
   const plusLocked = useLocked(anyTheme?.plus === true);
   const startTheme = wallpaperMakerTheme(themeId, plusLocked);
   const swatchThemes = useMemo(() => wallpaperMakerSwatches(startTheme), [startTheme]);
@@ -478,6 +492,11 @@ export default function WallpaperScreen() {
   };
 
   const busySaving = saver.saving || photoSaver.saving || homeSaver.saving;
+  // T176: cards lift by surface, never a hairline (raised surface in dark, the soft card shadow in light).
+  const cardStyle = [styles.card, shadowV2('card', scheme), { backgroundColor: scheme === 'dark' ? c.surfaceRaised : c.surface }];
+  // Phone-shaped art frames keep a hairline edge in light mode only (art on a white page).
+  const frameLine = scheme === 'dark' ? null : [styles.phoneLine, { borderColor: c.separator }];
+  const capFootnote = fontScaleCap('footnote');
 
   return (
     <ScrollView bounces={false} overScrollMode="never"
@@ -487,7 +506,9 @@ export default function WallpaperScreen() {
     >
       <ContextTip ids={['photo-background', 'wallpaper-save']} />
       <View style={styles.gapSm}>
-        <Text style={[tt.small, { color: c.inkSecondary }]}>{t('wallpaper.source.for', { theme: bgTheme.name })}</Text>
+        <Text maxFontSizeMultiplier={capFootnote} style={[tt.small, { color: c.inkSecondary }]}>
+          {t('wallpaper.source.for', { theme: bgTheme.name })}
+        </Text>
         <Segmented
           label={t('wallpaper.source.label')}
           options={sources}
@@ -497,9 +518,14 @@ export default function WallpaperScreen() {
       </View>
 
       <View style={styles.previewWrap}>
-        {photoMode ? (
+        {!bgLoaded ? (
+          // T176: the saved background is still being read: the preview waits in its own shape.
+          <View accessible accessibilityRole="progressbar" accessibilityLabel={t('wallpaper.preview.loadingA11y')}>
+            <Skeleton width={PREVIEW_W} height={previewH} radius={chromeRadiusV2.card} />
+          </View> // i18n-ignore (code after a JSX element)
+        ) : photoMode ? (
           photoData ? (
-            <View style={[styles.phone, noMirror, { width: PREVIEW_W, height: previewH, borderColor: c.separator }]}>
+            <View style={[styles.phone, noMirror, { width: PREVIEW_W, height: previewH }, frameLine]}>
               <PhotoCropEditor
                 photo={photoData}
                 width={PREVIEW_W}
@@ -520,18 +546,18 @@ export default function WallpaperScreen() {
               style={[
                 styles.phone,
                 styles.emptyPhoto,
-                { width: PREVIEW_W, height: previewH, borderColor: c.separator, backgroundColor: c.tintSoft },
+                { width: PREVIEW_W, height: previewH, backgroundColor: c.tintSoft },
               ]}
             >
               <Feather name="image" size={32} color={c.onTintSoft} />
-              <Text style={[tt.label, { color: c.onTintSoft, textAlign: 'center' }]}>
+              <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[tt.label, styles.center, { color: c.onTintSoft }]}>
                 {picking ? t('wallpaper.photo.opening') : t('wallpaper.photo.choose')}
               </Text>
             </Pressable>
           )
         ) : (
           <View
-            style={[styles.phone, noMirror, { width: PREVIEW_W, height: previewH, borderColor: c.separator }]}
+            style={[styles.phone, noMirror, { width: PREVIEW_W, height: previewH }, frameLine]}
             accessible
             accessibilityRole="image"
             accessibilityLabel={
@@ -547,7 +573,7 @@ export default function WallpaperScreen() {
             <LockMock width={PREVIEW_W} height={previewH} showGuides={false} />
           </View>
         )}
-        <Text style={[tt.small, { color: c.inkSecondary }]}>
+        <Text maxFontSizeMultiplier={capFootnote} style={[tt.small, { color: c.inkSecondary }]}>
           {t('wallpaper.preview.sizePx', { width: px(size.width), height: px(size.height) })}
         </Text>
       </View>
@@ -556,7 +582,9 @@ export default function WallpaperScreen() {
         <>
           {photoData ? (
             <>
-              <Text style={[tt.small, { color: c.inkSecondary, textAlign: 'center' }]}>{t('wallpaper.photo.help')}</Text>
+              <Text maxFontSizeMultiplier={capFootnote} style={[tt.small, styles.center, { color: c.inkSecondary }]}>
+                {t('wallpaper.photo.help')}
+              </Text>
               <View style={styles.zoomRow}>
                 <WallpaperIconButton
                   icon="zoom-out"
@@ -583,7 +611,9 @@ export default function WallpaperScreen() {
                 />
               </View>
               {soft ? (
-                <Text style={[tt.small, { color: c.warn, textAlign: 'center' }]}>{t('wallpaper.photo.soft')}</Text>
+                <Text maxFontSizeMultiplier={capFootnote} style={[tt.small, styles.center, { color: c.warn }]}>
+                  {t('wallpaper.photo.soft')}
+                </Text>
               ) : null}
               <PillButton
                 label={picking ? t('wallpaper.photo.opening') : t('wallpaper.photo.change')}
@@ -596,11 +626,14 @@ export default function WallpaperScreen() {
             </>
           ) : null}
 
-          <View style={[styles.card, { backgroundColor: c.surface, borderColor: c.separator }]}>
-            <Text accessibilityRole="header" style={[tt.heading, { color: c.ink }]}>
-              {t('wallpaper.photo.touches', { theme: bgTheme.name })}
-            </Text>
-            <Text style={[tt.small, { color: c.inkSecondary }]}>{t('wallpaper.photo.touchesBody')}</Text>
+          <View style={cardStyle}>
+            <SectionHeader
+              level="group"
+              flushTop
+              title={t('wallpaper.photo.touches', { theme: bgTheme.name })}
+              body={t('wallpaper.photo.touchesBody')}
+              style={styles.cardHeader}
+            />
             <View style={styles.stepper}>
               <View style={[styles.tintSwatch, { backgroundColor: bgTheme.palette.accent, borderColor: c.separator }]} />
               <View style={styles.flex}>
@@ -628,7 +661,9 @@ export default function WallpaperScreen() {
             />
           </View>
 
-          <Text style={[tt.small, { color: c.inkSecondary }]}>{t('wallpaper.photo.privacy')}</Text>
+          <Text maxFontSizeMultiplier={capFootnote} style={[tt.small, { color: c.inkSecondary }]}>
+            {t('wallpaper.photo.privacy')}
+          </Text>
         </>
       ) : (
         <PillButton
@@ -643,10 +678,8 @@ export default function WallpaperScreen() {
 
       {photoMode ? null : (
         <>
-          <View style={[styles.card, { backgroundColor: c.surface, borderColor: c.separator }]}>
-            <Text accessibilityRole="header" style={[tt.heading, { color: c.ink }]}>
-              {t('wallpaper.design.style')}
-            </Text>
+          <View style={cardStyle}>
+            <SectionHeader level="group" flushTop title={t('wallpaper.design.style')} style={styles.cardHeader} />
             <Segmented grid label={t('wallpaper.design.style')} options={kinds} value={params.kind} onChange={(kind) => update({ kind })} />
             {params.kind === 'pattern' ? (
               <Segmented
@@ -673,10 +706,8 @@ export default function WallpaperScreen() {
             />
           </View>
 
-          <View style={[styles.card, { backgroundColor: c.surface, borderColor: c.separator }]}>
-            <Text accessibilityRole="header" style={[tt.heading, { color: c.ink }]}>
-              {t('wallpaper.design.colours')}
-            </Text>
+          <View style={cardStyle}>
+            <SectionHeader level="group" flushTop title={t('wallpaper.design.colours')} style={styles.cardHeader} />
             <View style={styles.swatches}>
               {swatchThemes.map((th) => {
                 const selected = th.id === paletteId;
@@ -712,10 +743,8 @@ export default function WallpaperScreen() {
         </>
       )}
 
-      <View style={[styles.card, { backgroundColor: c.surface, borderColor: c.separator }]}>
-        <Text accessibilityRole="header" style={[tt.heading, { color: c.ink }]}>
-          {t('wallpaper.size.heading')}
-        </Text>
+      <View style={cardStyle}>
+        <SectionHeader level="group" flushTop title={t('wallpaper.size.heading')} style={styles.cardHeader} />
         {WALLPAPER_SIZES.map((s) => {
           const selected = s.id === sizeId;
           return (
@@ -732,8 +761,10 @@ export default function WallpaperScreen() {
             >
               <Feather name={selected ? 'check-circle' : 'circle'} size={20} color={selected ? c.tint : c.inkTertiary} />
               <View style={styles.flex}>
-                <Text style={[tt.label, { color: c.ink }]}>{s.name}</Text>
-                <Text style={[tt.small, { color: c.inkSecondary }]}>
+                <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[tt.label, { color: c.ink }]}>
+                  {s.name}
+                </Text>
+                <Text maxFontSizeMultiplier={capFootnote} style={[tt.small, { color: c.inkSecondary }]}>
                   {t('wallpaper.size.dims', { width: px(s.width), height: px(s.height) })}
                 </Text>
               </View>
@@ -759,7 +790,7 @@ export default function WallpaperScreen() {
 
       {status ? (
         <View
-          style={[styles.toast, { backgroundColor: status.kind === 'saved' ? c.tintSoft : c.surface, borderColor: c.separator }]}
+          style={[styles.toast, { backgroundColor: status.kind === 'saved' ? c.tintSoft : scheme === 'dark' ? c.surfaceRaised : c.surface }]}
           accessibilityLiveRegion="polite"
           accessibilityRole="alert"
         >
@@ -768,19 +799,23 @@ export default function WallpaperScreen() {
             size={20}
             color={status.kind === 'saved' ? c.ok : c.warn}
           />
-          <Text style={[tt.body, styles.flex, { color: c.ink }]}>{status.text}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[tt.body, styles.flex, { color: c.ink }]}>
+            {status.text}
+          </Text>
         </View>
       ) : null}
       {status?.kind === 'denied' ? (
         <PillButton label={t('wallpaper.save.openSettings')} icon="settings" variant="tinted" haptic={false} onPress={openAppSettings} />
       ) : null}
-      <Text style={[tt.small, { color: status?.kind === 'saved' ? c.ink : c.inkSecondary }]}>{t('wallpaper.help')}</Text>
+      <Text maxFontSizeMultiplier={capFootnote} style={[tt.small, { color: status?.kind === 'saved' ? c.ink : c.inkSecondary }]}>
+        {t('wallpaper.help')}
+      </Text>
 
       {busySaving ? (
-        // Export wait (POLISH rule 5): shimmer in the button's place-holder row, not a bare spinner.
+        // Export wait (POLISH rule 5; T176): a phone-shaped skeleton of the image being rendered, not a spinner.
         <View style={styles.exporting} accessible accessibilityRole="progressbar" accessibilityLabel={t('wallpaper.save.renderingA11y')}>
-          <Skeleton width="100%" height={8} radius={radiusV2.pill} />
-          <Text style={[tt.small, { color: c.inkSecondary }]}>
+          <Skeleton width={SAVE_THUMB_W} height={Math.round((SAVE_THUMB_W * size.height) / size.width)} radius={chromeRadiusV2.control} />
+          <Text maxFontSizeMultiplier={capFootnote} style={[tt.small, styles.flex, { color: c.inkSecondary }]}>
             {t('wallpaper.save.rendering', { width: px(size.width), height: px(size.height) })}
           </Text>
         </View>
@@ -814,22 +849,26 @@ export default function WallpaperScreen() {
 const styles = StyleSheet.create({
   content: { padding: spaceV2.lg, gap: spaceV2.md, paddingBottom: spaceV2.xxl },
   previewWrap: { alignItems: 'center', gap: spaceV2.xs },
-  exporting: { gap: spaceV2.xs },
+  exporting: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md },
   gapSm: { gap: spaceV2.xs },
   emptyPhoto: { alignItems: 'center', justifyContent: 'center', gap: spaceV2.sm, padding: spaceV2.md },
   zoomRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spaceV2.sm },
   tintSwatch: { width: 24, height: 24, borderRadius: circleRadius(24), borderWidth: StyleSheet.hairlineWidth, marginEnd: spaceV2.sm },
-  phone: { ...continuous, borderRadius: radiusV2.card, overflow: 'hidden', borderWidth: StyleSheet.hairlineWidth },
-  card: { ...continuous, borderRadius: radiusV2.card, borderWidth: StyleSheet.hairlineWidth, padding: spaceV2.lg, gap: spaceV2.md },
-  segment: { flexDirection: 'row', borderRadius: radiusV2.pill, padding: 3 },
+  phone: { ...continuous, borderRadius: chromeRadiusV2.card, overflow: 'hidden' },
+  phoneLine: { borderWidth: StyleSheet.hairlineWidth },
+  card: { ...continuous, borderRadius: chromeRadiusV2.card, padding: spaceV2.lg, gap: spaceV2.md },
+  // The card's own gap spaces the header from the first control.
+  cardHeader: { paddingBottom: 0 },
+  center: { textAlign: 'center' },
+  segment: { flexDirection: 'row', borderRadius: chromeRadiusV2.pill, padding: spaceV2.xs },
   // 2×2 block (night 23 Oct): rounded track like the shared Segmented grid; each pill takes half the row.
-  segmentGrid: { flexWrap: 'wrap', borderRadius: radiusV2.group, gap: 3 },
+  segmentGrid: { flexWrap: 'wrap', borderRadius: radiusV2.group, gap: spaceV2.xs },
   segmentItem: {
     flex: 1,
-    minHeight: sizeV2.touch - 6,
+    minHeight: sizeV2.touch - spaceV2.sm,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radiusV2.pill,
+    borderRadius: chromeRadiusV2.pill,
     paddingHorizontal: spaceV2.xs,
   },
   segmentItemGrid: { flexGrow: 1, flexShrink: 0, flexBasis: '45%', paddingHorizontal: spaceV2.sm },
@@ -837,8 +876,9 @@ const styles = StyleSheet.create({
   stepValue: { minWidth: 56, textAlign: 'center' },
   segmentText: { textAlign: 'center' },
   swatches: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.sm },
-  swatchBtn: { width: sizeV2.touch, height: sizeV2.touch, borderRadius: radiusV2.control, overflow: 'hidden', padding: 3 },
-  swatchStripes: { flex: 1, flexDirection: 'row', borderRadius: 8, overflow: 'hidden' },
+  swatchBtn: { width: sizeV2.touch, height: sizeV2.touch, borderRadius: chromeRadiusV2.control, overflow: 'hidden', padding: spaceV2.xs },
+  // Concentric with the button: its radius less the padding.
+  swatchStripes: { flex: 1, flexDirection: 'row', borderRadius: chromeRadiusV2.control - spaceV2.xs, overflow: 'hidden' },
   sizeRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.xs },
   toast: {
     ...continuous,
@@ -846,8 +886,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: spaceV2.sm,
     padding: spaceV2.md,
-    borderRadius: radiusV2.card,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: chromeRadiusV2.card,
   },
   flex: { flex: 1 },
   iconBtn: { width: sizeV2.touch, height: sizeV2.touch, alignItems: 'center', justifyContent: 'center' },

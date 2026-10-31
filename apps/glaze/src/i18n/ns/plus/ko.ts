@@ -14,7 +14,6 @@ export const ko: NonNullable<LocaleMessages['plus']> = {
     freeIcons: '나만의 아이콘 만들기, 무제한',
     freeInstall: '안내형 단축어 설치(일괄 설치는 베타)',
     freeLive: '내 동영상으로 만드는 Live Photo 메이커',
-    notNow: '나중에',
     oneMoment: '잠시만요…',
     unlock: '잠금 해제(곧 제공)',
     unlockHint: 'Glaze Plus는 아직 판매하지 않습니다',
@@ -29,12 +28,8 @@ export const ko: NonNullable<LocaleMessages['plus']> = {
     restored: "Glaze Plus가 복원되었습니다. 감사합니다!",
     restoreNone: "이전 Glaze Plus 구매를 찾지 못했습니다.",
     restoreFailed: "지금은 복원할 수 없습니다. 나중에 다시 시도하세요.",
-    themes: {
-      other: '팩 {packs}개에 담긴 추가 테마 {count}개',
-    },
-    freeThemes: {
-      other: '일러스트 스타터 테마 {count}개와 배경화면 만들기',
-    },
+    themes: 'Plus 테마가 곧 추가됩니다',
+    freeThemes: '갤러리의 모든 테마와 배경화면 만들기',
   },
   tipJar: {
     title: '팁 상자',

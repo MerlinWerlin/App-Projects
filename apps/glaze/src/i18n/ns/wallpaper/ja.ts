@@ -45,6 +45,7 @@ export const ja: NonNullable<LocaleMessages['wallpaper']> = {
     a11y: '壁紙のプレビュー、{style}',
     a11yPattern: '壁紙のプレビュー、{style} {pattern}',
     sizePx: '{width} × {height} px',
+    loadingA11y: '壁紙を読み込み中',
   },
   design: {
     shuffle: 'シャッフル',

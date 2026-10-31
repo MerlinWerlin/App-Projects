@@ -16,6 +16,16 @@ export const ar: NonNullable<LocaleMessages['icons']> = {
     other: "{count} أيقونة رموزها قد يصعب رؤيتها (تباين أقل من 3:1): {names}. جرّب رمزًا أو لون خلفية آخر.",
   },
   yourApps: "تطبيقاتك",
+  // T176 (docs/PREMIUM_UI.md §3.8): editorial section headers on the Icons tab.
+  sections: {
+    previewEyebrow: "معاينة مباشرة",
+    appsEyebrow: "مجموعتك",
+    appsBody: "كل تطبيق هنا يحصل على أيقونة متناسقة.",
+    addEyebrow: "العثور على تطبيقات",
+    addBody: "ابحث أو اختر فئة، ثم حدّد التطبيقات التي تريدها.",
+    styleEyebrow: "مظهر واحد",
+    styleBody: "الشكل والألوان وحجم الرمز لكل الأيقونات دفعة واحدة.",
+  },
   emptyTitle: "لا توجد تطبيقات بعد",
   emptyBody: "اختر التطبيقات التي تريد لها أيقونات جديدة. ابدأ بالتطبيقات الشائعة أو ابحث أدناه.",
   addPopular: "إضافة التطبيقات الشائعة",

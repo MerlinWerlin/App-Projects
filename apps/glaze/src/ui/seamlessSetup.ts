@@ -3,6 +3,7 @@
 // throws; Expo Go callers check widgets.isAvailable() first so nothing is downloaded there.
 import { Dimensions, Image, PixelRatio } from 'react-native';
 import { lookupDevice, type SeamlessDevice } from '../core/seamlessWidget';
+import { isLocalFileUri } from '../core/seamlessSource';
 import * as fs from '../native/fs';
 
 /**
@@ -27,6 +28,20 @@ export async function localAssetUri(source: number | null, name: string): Promis
     await fs.makeDirectoryAsync(`${dir}seamless/`, { intermediates: true }).catch(() => undefined);
     const res = await fs.downloadAsync(uri, `${dir}seamless/${name}`);
     return res.status >= 200 && res.status < 300 ? res.uri : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * T168: a downloaded pack file (file:// URI) for the widget bridge, or null when it is not a local
+ * file or is no longer on the phone. Never throws.
+ */
+export async function existingLocalFile(uri: string | null | undefined): Promise<string | null> {
+  if (!isLocalFileUri(uri)) return null;
+  try {
+    const info = await fs.getInfoAsync(uri);
+    return info.exists ? uri : null;
   } catch {
     return null;
   }

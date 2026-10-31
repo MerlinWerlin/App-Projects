@@ -18,18 +18,21 @@
 // before a swap or a search keystroke stay mounted (core/perfReveal keptAcrossSwap) instead of
 // turning back into placeholders; the previews are still Home Screens (no per-icon animation
 // hooks) with icon specs from a module cache.
+// T173 (premium UI, docs/PREMIUM_UI.md §3.2): with `feature` on a wide phone (core/categoryPaging
+// showcaseFeature) the first theme is one full-row card with a larger preview and its name and
+// tagline beside it. Same calm card (no new motion), same reveal and fade; still one grid.
 import { memo, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-import { pageTransition, showcaseCardWidth, showcaseColumns, swipeStep } from '../core/categoryPaging';
+import { featureArtWidth, pageTransition, showcaseCardWidth, showcaseColumns, showcaseFeature, showcaseRowWidth, swipeStep } from '../core/categoryPaging';
 import { REVEAL_FIRST, nextReveal } from '../core/categorySwitch';
 import { isMounted, keptAcrossSwap } from '../core/perfReveal';
 import type { Theme } from '../core/themes';
 import { useT } from '../i18n';
 import { WallpaperView } from '../render/WallpaperView';
 import { easeOutCurve } from '../theme/motion';
-import { editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { HOME_ASPECT, HomeMock } from './HomeMock';
 import { HeartButton } from './HeartButton';
@@ -63,18 +66,24 @@ type GridProps = {
   onToggleLike?: (id: string) => void;
   /** fb-1023: when this changes (a search chip, sub-tab or collection), the grid does the same calm fade as a page change. */
   fadeKey?: string;
+  /** T173: lead with a full-row feature card for the first theme on wide phones (the plain "All" page). */
+  feature?: boolean;
 };
 
 const NO_KEPT: ReadonlySet<string> = new Set<string>();
 const idsOf = (xs: readonly Theme[]): string[] => xs.map((x) => x.id);
 
-export const ShowcaseGrid = memo(function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusBadge, plusNote, freeIds, freeBadge, freeNote, newIds, empty, likedIds, onToggleLike, fadeKey = '' }: GridProps) {
+export const ShowcaseGrid = memo(function ShowcaseGrid({ themes, pageIndex, onStep, onOpen, plusIds, plusBadge, plusNote, freeIds, freeBadge, freeNote, newIds, empty, likedIds, onToggleLike, fadeKey = '', feature = false }: GridProps) {
   const { isRTL } = useT();
   const { width } = useWindowDimensions();
   const columns = showcaseColumns(width);
   // T173: the same 16-pt card rhythm as the pack rows below (editorialV2.cardGap).
   const gap = editorialV2.cardGap;
   const cardWidth = showcaseCardWidth(width, columns, spaceV2.lg, gap);
+  // T173: one full-row feature card first on wide phones; the rest of the grid is unchanged.
+  const featured = feature && themes.length > 1 && showcaseFeature(width, columns);
+  const rowWidth = showcaseRowWidth(cardWidth, columns, gap);
+  const featureArt = featureArtWidth(rowWidth, cardWidth);
 
   // Page change: the whole grid fades up from GRID_FADE_FROM (opacity only, ease-out).
   const fade = useSharedValue(1);
@@ -132,8 +141,30 @@ export const ShowcaseGrid = memo(function ShowcaseGrid({ themes, pageIndex, onSt
         ) : (
           <View style={[styles.grid, { gap }]}>
             {themes.map((theme, i) => {
+              const lead = featured && i === 0;
               if (!isMounted(i, revealed, kept, theme.id)) {
-                return <CardPlaceholder key={theme.id} width={cardWidth} height={h} colour={theme.palette.bg} />;
+                return lead ? (
+                  <CardPlaceholder key={theme.id} width={rowWidth} height={Math.round(featureArt * HOME_ASPECT) - PLACEHOLDER_NAME_ROW} colour={theme.palette.bg} />
+                ) : (
+                  <CardPlaceholder key={theme.id} width={cardWidth} height={h} colour={theme.palette.bg} />
+                );
+              }
+              if (lead) {
+                return (
+                  <View key={theme.id} style={{ width: rowWidth }}>
+                    <FeatureCard
+                      theme={theme}
+                      width={rowWidth}
+                      artWidth={featureArt}
+                      onOpen={onOpen}
+                      isNew={newIds.has(theme.id)}
+                      badge={plusIds.has(theme.id) ? plusBadge : freeIds?.has(theme.id) ? freeBadge : undefined}
+                      note={plusIds.has(theme.id) ? plusNote : freeIds?.has(theme.id) ? freeNote : undefined}
+                      liked={likedIds?.has(theme.id) ?? false}
+                      onToggleLike={onToggleLike}
+                    />
+                  </View>
+                );
               }
               return (
               <View key={theme.id} style={{ width: cardWidth }}>
@@ -238,6 +269,76 @@ const ShowcaseCard = memo(function ShowcaseCard({ theme, width, onOpen, isNew, b
   );
 });
 
+type FeatureProps = CardProps & {
+  /** Width of the preview art at the start of the card (wider than a grid card). */
+  artWidth: number;
+};
+
+/**
+ * T173: the feature card. The first starter's whole Home Screen, larger than a grid card, edge to
+ * edge at the start of a full-row card; its name and tagline sit at the bottom of the other side.
+ * One button like a grid card (same label and hint), the heart its own button, no extra motion.
+ */
+const FeatureCard = memo(function FeatureCard({ theme, width, artWidth, onOpen, isNew, badge, note, liked, onToggleLike }: FeatureProps) {
+  const { c } = useColorsV2();
+  const { t, script } = useT();
+  const specs = cachedPreviewSpecs(theme, 20);
+  const h = Math.round(Math.max(120, artWidth) * HOME_ASPECT);
+  const label = [t('themeUi.card.a11y', { name: theme.name, tagline: theme.tagline }), isNew ? t('themes.badge.newA11y') : null, note ?? null]
+    .filter(Boolean)
+    .join(' ');
+  const type = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
+
+  return (
+    <View>
+      <SquircleCard
+        size="large"
+        padding={0}
+        haptic="select"
+        onPress={() => onOpen(theme.id)}
+        accessibilityLabel={label}
+        accessibilityHint={t('themeUi.card.hint')}
+      >
+        <View style={styles.featureRow}>
+          <View
+            style={[noMirror, { width: artWidth }]}
+            accessibilityElementsHidden
+            importantForAccessibility="no-hide-descendants"
+            pointerEvents="none"
+          >
+            <HomeMock
+              specs={specs}
+              width={artWidth}
+              maxIcons={20}
+              dockCount={4}
+              backgroundColour={theme.palette.bg}
+              still
+              background={<WallpaperView params={theme.wallpaper} width={artWidth} height={h} maxGrain={96} />}
+            />
+            {badge ? <View style={styles.badge}>{badge}</View> : null}
+            {isNew ? (
+              <View style={[styles.newPill, { backgroundColor: c.tint }]}>
+                <Text maxFontSizeMultiplier={fontScaleCap('caption2')} style={[...type('caption2'), { color: c.onTint }]}>
+                  {t('themes.badge.new')}
+                </Text>
+              </View>
+            ) : null}
+          </View>
+          <View style={[styles.featureText, onToggleLike ? styles.featureTextWithHeart : null]}>
+            <Text maxFontSizeMultiplier={fontScaleCap('title2')} style={[...type('title2'), { color: c.ink }]}>
+              {theme.name}
+            </Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...type('subhead'), { color: c.inkSecondary }]}>
+              {theme.tagline}
+            </Text>
+          </View>
+        </View>
+      </SquircleCard>
+      {onToggleLike ? <HeartButton id={theme.id} name={theme.name} liked={liked} onToggle={onToggleLike} style={styles.heart} /> : null}
+    </View>
+  );
+});
+
 const styles = StyleSheet.create({
   wrap: { minHeight: 48 },
   placeholder: { opacity: 0.5 },
@@ -256,4 +357,9 @@ const styles = StyleSheet.create({
   textWithHeart: { paddingEnd: sizeV2.touch + spaceV2.xxs },
   /** Placement only; HeartButton is the ≥ 48 pt target. */
   heart: { position: 'absolute', bottom: 0, end: spaceV2.xxs },
+  /** T173 feature card: art at the start, name and tagline at the bottom of the other side. */
+  featureRow: { flexDirection: 'row' },
+  featureText: { flex: 1, justifyContent: 'flex-end', gap: spaceV2.xs, padding: spaceV2.lg },
+  /** Room under the tagline for the heart (a ≥ 48 pt target at the bottom reading end). */
+  featureTextWithHeart: { paddingBottom: sizeV2.touch + spaceV2.xs },
 });

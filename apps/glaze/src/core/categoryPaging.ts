@@ -198,3 +198,29 @@ export function showcaseCardWidth(screenWidth: number, columns: number, gutter: 
   const w = Number.isFinite(screenWidth) && screenWidth > 0 ? screenWidth : 375;
   return Math.max(120, Math.floor((w - gutter * 2 - gap * (cols - 1)) / cols));
 }
+
+/**
+ * T173 (docs/PREMIUM_UI.md §3.2): wide phones (the Plus / Pro Max class, 414 pt and up) lead the
+ * starter showcase with one full-row "feature" card whose preview is larger than a grid card's.
+ * Narrower phones keep the plain two-column grid.
+ */
+export const FEATURE_MIN_WIDTH = 414;
+
+/** Share of the feature card's row given to its preview art (the rest holds the name). */
+export const FEATURE_ART_SHARE = 0.56;
+
+/** Whether the showcase leads with a feature card at this screen width and column count. */
+export function showcaseFeature(screenWidth: number, columns: number): boolean {
+  return Number.isFinite(screenWidth) && screenWidth >= FEATURE_MIN_WIDTH && columns >= 2;
+}
+
+/** Width of one full showcase row: `columns` cards of `cardWidth` with `gap` between them. */
+export function showcaseRowWidth(cardWidth: number, columns: number, gap: number): number {
+  const cols = Math.max(1, Math.floor(columns));
+  return cardWidth * cols + gap * (cols - 1);
+}
+
+/** Preview width inside the feature card: always wider than a grid card's preview. */
+export function featureArtWidth(rowWidth: number, gridCardWidth: number): number {
+  return Math.max(gridCardWidth + 1, Math.round(rowWidth * FEATURE_ART_SHARE));
+}

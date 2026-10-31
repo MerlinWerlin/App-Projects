@@ -65,11 +65,10 @@ test('fb-1022c: the Themes screen has no stagger and no centred-card pop', () =>
   const src = strip(read('app', '(tabs)', 'themes.tsx'));
   assert.doesNotMatch(src, SPRINGY);
   assert.doesNotMatch(src, /setPopKeys|onMomentumScrollEnd|firstMount/);
-  assert.match(src, /popKeys: NO_POPS/);
-  // T162: pack cards are list rows that never get a stagger slot.
-  assert.doesNotMatch(src, /staggerIndex=/);
-  // T107's deferred grid swap stays.
-  assert.match(src, /startTransition\(\(\) => \{\s*setCategory/);
+  // T177 (owner-1031): the gallery cards (GalleryArtCard) have no pop or stagger at all, so the
+  // NO_POPS and deferred category-swap guards retired with the old showcase and bubbles.
+  assert.doesNotMatch(src, /popKey|staggerIndex=|startTransition/);
+  assert.doesNotMatch(strip(read('src', 'ui', 'GalleryArtCard.tsx')), SPRINGY);
 });
 
 // D145-1 (owner rejection of run 113: "bouncing animations need to go"): no spring anywhere in the

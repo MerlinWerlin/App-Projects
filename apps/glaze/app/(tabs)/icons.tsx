@@ -3,6 +3,11 @@
 // Design v2 (docs/DESIGN_V2.md §9, T56): collapsing large title, the live preview on a large
 // squircle card on top, the app picker as inset-grouped rows with icon tiles and check
 // accessories, style controls in inset groups, and a glass bar with the "Install icons" pill.
+// T176 (docs/PREMIUM_UI.md §3.8): editorial SectionHeaders (eyebrow + title + body) for Your apps,
+// Add apps and Style, editorial group titles on the inset groups, the 16 pt card rhythm
+// (editorialV2.cardGap), cards lifted by surfaceRaised in dark mode with no hairline, a skeleton of
+// the screen while the studio loads, and a Dynamic Type cap on every Text / TextInput. Still one
+// virtualised list (T166).
 
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -21,7 +26,7 @@ import {
 import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CATEGORIES, getById, support, type SupportStatus } from '../../src/core/catalogue';
-import { getAnyTheme } from '../../src/core/plusThemes';
+import { useAnyTheme } from '../../src/native/useAnyTheme';
 import { separatorInset } from '../../src/core/designV2';
 import { contrastWarnings, installMethodFor, previewMonogram, type IconShape, type IconSpec } from '../../src/core/iconspec';
 import {
@@ -49,12 +54,26 @@ import { IconCanvas } from '../../src/render/IconCanvas';
 import { iconAccessibilityLabel } from '../../src/render/a11y';
 import { studioSpecs, useStudio } from '../../src/store/studio';
 import { listLayout, staggerIn, useMotionReduced } from '../../src/theme/motion';
-import { continuous, iconTileRadius, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
+import {
+  circleRadius,
+  continuous,
+  editorialV2,
+  eyebrowCaseFor,
+  fontScaleCap,
+  iconTileRadius,
+  radiusV2,
+  sizeV2,
+  spaceV2,
+  textV2,
+  typeV2,
+  type TypeRoleV2,
+} from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import type { FeatherName } from '../../src/ui/featherName';
 import { CustomisedBadge } from '../../src/ui/CustomisedBadge';
 import { HomeMock } from '../../src/ui/HomeMock';
-import { IconGridSkeleton } from '../../src/ui/Skeleton';
+import { IconGridSkeleton, Skeleton } from '../../src/ui/Skeleton';
+import { SectionHeader } from '../../src/ui/SectionHeader';
 import { ContextTip } from '../../src/ui/ContextTip';
 import { IconOverrideSheet, categoryName, colourName, customAppError, supportLabel } from '../../src/ui/IconOverrideSheet';
 import { PressableScale } from '../../src/ui/PressableScale';
@@ -123,14 +142,20 @@ function typeFor(script: Script, role: TypeRoleV2): TextStyle[] {
 }
 
 export default function IconsScreen() {
-  const { c } = useColorsV2();
+  const { c, scheme } = useColorsV2();
+  // T176: cards lift by a lighter surface in dark mode (no hairline), as on Themes and Widgets.
+  const cardTone = scheme === 'dark' ? 'raised' : 'surface';
+  const chipSurface = scheme === 'dark' ? c.surfaceRaised : c.surface;
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { t, script, isRTL } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
+  const eyebrowCase = eyebrowCaseFor(script);
   const { width } = useWindowDimensions();
   const { scrollY, onScroll } = useLargeTitleScroll();
   const { state, update } = useStudio();
+  // T179: the applied theme's name, remote catalogue themes included.
+  const appliedTheme = useAnyTheme(state?.themeId);
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
   const [editId, setEditId] = useState<string | null>(null);
@@ -227,10 +252,22 @@ export default function IconsScreen() {
   );
 
   if (!state) {
+    // T176: a skeleton of the screen (title, the preview card's icon grid, a section header), not a spinner.
     return (
-      <View style={[styles.root, styles.center, { backgroundColor: c.bg, paddingTop: insets.top }]}>
-        <IconGridSkeleton count={8} />
-        <Text style={[...ts('body'), { color: c.inkSecondary }]}>{t('icons.loading')}</Text>
+      <View style={[styles.root, { backgroundColor: c.bg, paddingTop: insets.top + sizeV2.navBar }]}>
+        <View style={styles.loading}>
+          <Skeleton width="45%" height={typeV2.largeTitle.lineHeight} style={styles.loadingTitle} />
+          <SquircleCard size="large" elevation="raised" tone={cardTone} outline={false} style={styles.side}>
+            <IconGridSkeleton count={8} />
+          </SquircleCard>
+          <View style={[styles.side, styles.loadingSection]}>
+            <Skeleton width="25%" height={typeV2.eyebrow.lineHeight} />
+            <Skeleton width="55%" height={typeV2.title2.lineHeight} />
+          </View>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.centerText, { color: c.inkSecondary }]}>
+            {t('icons.loading')}
+          </Text>
+        </View>
       </View>
     );
   }
@@ -243,7 +280,7 @@ export default function IconsScreen() {
   const editSpec = editId ? specs.find((s) => s.appId === editId) ?? null : null;
   // Overrides are kept per theme: here they apply to the applied theme (or the user's own style).
   const themeKey = activeThemeKey(state);
-  const themeName = getAnyTheme(state.themeId)?.name ?? t('icons.ownStyle');
+  const themeName = appliedTheme?.name ?? t('icons.ownStyle');
   const customised = customisedAppIds(state, themeKey);
 
   const styleChange = (fn: (s: StudioState) => StudioState) =>
@@ -300,26 +337,33 @@ export default function IconsScreen() {
       <LargeTitle title={t('icons.title')} subtitle={t('icons.intro')} scrollY={scrollY} />
       <ContextTip ids={['missing-app', 'icon-override']} style={styles.side} />
 
-      {/* Preview: the live Home Screen stays on top. */}
-      <SquircleCard size="large" elevation="raised" style={styles.side}>
+      {/* Preview: the live Home Screen stays on top, on a raised surface with a quiet eyebrow. */}
+      <SquircleCard size="large" elevation="raised" tone={cardTone} outline={false} style={styles.side}>
         <View style={styles.previewWrap}>
+          <Text
+            accessibilityRole="header"
+            maxFontSizeMultiplier={fontScaleCap('eyebrow')}
+            style={[...ts('eyebrow'), styles.eyebrow, { letterSpacing: eyebrowCase.letterSpacing, color: c.tint }, eyebrowCase.upper ? styles.upper : null]}
+          >
+            {t('icons.sections.previewEyebrow')}
+          </Text>
           <HomeMock
             specs={specs}
             width={previewWidth}
             backgroundColour={state.wallpaperColour ?? undefined}
             customisedIds={customised}
           />
-          <Text style={[...ts('footnote'), styles.centerText, { color: c.inkSecondary }]}>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.centerText, { color: c.inkSecondary }]}>
             {state.wallpaperColour ? t('icons.previewWallpaper') : t('icons.previewNoWallpaper')}
           </Text>
         </View>
       </SquircleCard>
 
       {warnNames.length > 0 ? (
-        <SquircleCard tone="butter" elevation="flat" style={styles.side}>
+        <SquircleCard tone="butter" elevation="flat" outline={false} style={styles.side}>
           <View style={styles.warn} accessibilityRole="alert">
             <Feather name="alert-triangle" size={18} color={c.pastels.butter.ink} />
-            <Text style={[...ts('footnote'), styles.flex, { color: c.pastels.butter.ink }]}>
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.flex, { color: c.pastels.butter.ink }]}>
               {t('icons.contrastWarning', {
                 count: warnNames.length,
                 names: `${warnNames.slice(0, 5).join(', ')}${warnNames.length > 5 ? '…' : ''}`,
@@ -330,13 +374,20 @@ export default function IconsScreen() {
       ) : null}
 
       {/* Your apps */}
-      <SectionTitle>{t('icons.yourApps')}</SectionTitle>
+      <SectionHeader
+        eyebrow={t('icons.sections.appsEyebrow')}
+        title={t('icons.yourApps')}
+        body={t('icons.sections.appsBody')}
+        style={styles.sectionHeader}
+      />
       {count === 0 ? (
-        <SquircleCard style={styles.side}>
+        <SquircleCard tone={cardTone} outline={false} style={styles.side}>
           <View style={styles.empty}>
-            <Feather name="grid" size={32} color={c.tint} />
-            <Text style={[...ts('headline'), styles.centerText, { color: c.ink }]}>{t('icons.emptyTitle')}</Text>
-            <Text style={[...ts('callout'), styles.centerText, { color: c.inkSecondary }]}>{t('icons.emptyBody')}</Text>
+            <View style={[styles.emptyIcon, { backgroundColor: c.tintSoft }]}>
+              <Feather name="grid" size={28} color={c.onTintSoft} />
+            </View>
+            <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), styles.centerText, { color: c.ink }]}>{t('icons.emptyTitle')}</Text>
+            <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), styles.centerText, { color: c.inkSecondary }]}>{t('icons.emptyBody')}</Text>
             <PillButton
               label={t('icons.addPopular')}
               icon="plus"
@@ -369,10 +420,16 @@ export default function IconsScreen() {
       )}
 
       {/* Add apps */}
-      <SectionTitle>{t('icons.addApps')}</SectionTitle>
+      <SectionHeader
+        eyebrow={t('icons.sections.addEyebrow')}
+        title={t('icons.addApps')}
+        body={t('icons.sections.addBody')}
+        style={styles.sectionHeader}
+      />
       <View style={[styles.search, styles.side, continuous, { backgroundColor: c.fill }]}>
         <Feather name="search" size={18} color={c.inkSecondary} />
         <TextInput
+          maxFontSizeMultiplier={fontScaleCap('body')}
           value={query}
           onChangeText={setQuery}
           placeholder={t('icons.searchPlaceholder')}
@@ -406,9 +463,9 @@ export default function IconsScreen() {
                 selection();
                 setCategory(cat);
               }}
-              style={[styles.catChip, continuous, { backgroundColor: active ? c.tint : c.surface }]}
+              style={[styles.catChip, continuous, { backgroundColor: active ? c.tint : chipSurface }]}
             >
-              <Text style={[...ts('subhead'), styles.semibold, { color: active ? c.onTint : c.ink }]}>{name}</Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...ts('subhead'), styles.semibold, { color: active ? c.onTint : c.ink }]}>{name}</Text>
             </PressableScale>
           );
         })}
@@ -418,15 +475,16 @@ export default function IconsScreen() {
   const listFooter = (
     <View>
       {RESULT_LIMIT < results.length ? (
-        <Text style={[...ts('footnote'), styles.groupFootnote, { color: c.inkSecondary }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.groupFootnote, { color: c.inkSecondary }]}>
           {t('icons.showingFirst', { limit: RESULT_LIMIT })}
         </Text>
       ) : null}
       <View style={styles.listFooter}>
         {/* Custom app: fields as inset rows with inline inputs. */}
-        <InsetGroup header={t('icons.customTitle')} footer={t('icons.schemeNote')}>
+        <InsetGroup title={t('icons.customTitle')} footer={t('icons.schemeNote')}>
           <View style={styles.fieldRow}>
             <TextInput
+              maxFontSizeMultiplier={fontScaleCap('body')}
               value={customName}
               onChangeText={(v) => {
                 setCustomName(v);
@@ -442,6 +500,7 @@ export default function IconsScreen() {
           </View>
           <View style={styles.fieldRow}>
             <TextInput
+              maxFontSizeMultiplier={fontScaleCap('body')}
               value={customScheme}
               onChangeText={(v) => {
                 setCustomScheme(v);
@@ -462,7 +521,7 @@ export default function IconsScreen() {
         </InsetGroup>
         <View style={[styles.side, styles.formEnd]}>
           {customError ? (
-            <Text style={[...ts('footnote'), { color: c.warn }]} accessibilityRole="alert">
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.warn }]} accessibilityRole="alert">
               {customError}
             </Text>
           ) : null}
@@ -478,8 +537,13 @@ export default function IconsScreen() {
         </View>
 
         {/* Style */}
-        <SectionTitle>{t('icons.styleTitle')}</SectionTitle>
-        <InsetGroup header={t('icons.shape')}>
+        <SectionHeader
+          eyebrow={t('icons.sections.styleEyebrow')}
+          title={t('icons.styleTitle')}
+          body={t('icons.sections.styleBody')}
+          style={styles.sectionHeader}
+        />
+        <InsetGroup title={t('icons.shape')}>
           <View style={styles.block}>
             <Segmented
               vertical
@@ -491,7 +555,7 @@ export default function IconsScreen() {
           </View>
         </InsetGroup>
 
-        <InsetGroup header={t('icons.background')}>
+        <InsetGroup title={t('icons.background')}>
           <View style={styles.block}>
             <Segmented
               label={t('icons.backgroundType')}
@@ -518,7 +582,7 @@ export default function IconsScreen() {
           </View>
         </InsetGroup>
 
-        <InsetGroup header={t('icons.symbolColour')}>
+        <InsetGroup title={t('icons.symbolColour')}>
           <View style={styles.block}>
             <Swatches
               label={t('icons.symbolColour')}
@@ -529,7 +593,7 @@ export default function IconsScreen() {
           </View>
         </InsetGroup>
 
-        <InsetGroup header={t('icons.symbolSize')}>
+        <InsetGroup title={t('icons.symbolSize')}>
           <View style={styles.block}>
             <Segmented
               label={t('icons.symbolSize')}
@@ -610,17 +674,6 @@ export default function IconsScreen() {
   );
 }
 
-/** Section heading between groups (title3, a screen-reader header). */
-function SectionTitle({ children }: { children?: ReactNode }) {
-  const { c } = useColorsV2();
-  const { script } = useT();
-  return (
-    <Text accessibilityRole="header" style={[...typeFor(script, 'title3'), styles.sectionTitle, { color: c.ink }]}>
-      {children}
-    </Text>
-  );
-}
-
 /**
  * T166: one slice of the "Add apps" inset-grouped card, drawn per list row (the InsetGroup look:
  * surface card, rounded first / last corners, hairline separator after every row but the last,
@@ -644,8 +697,12 @@ const NoMatchRow = memo(function NoMatchRow() {
     <GroupSegment first last={false} icon={false}>
       <View style={styles.emptySearch}>
         <Feather name="search" size={28} color={c.tint} />
-        <Text style={[...typeFor(script, 'headline'), styles.centerText, { color: c.ink }]}>{t('icons.noMatchTitle')}</Text>
-        <Text style={[...typeFor(script, 'callout'), styles.centerText, { color: c.inkSecondary }]}>{t('icons.noMatchBody')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), styles.centerText, { color: c.ink }]}>
+          {t('icons.noMatchTitle')}
+        </Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...typeFor(script, 'callout'), styles.centerText, { color: c.inkSecondary }]}>
+          {t('icons.noMatchBody')}
+        </Text>
       </View>
     </GroupSegment>
   );
@@ -694,16 +751,16 @@ const PickRow = memo(function PickRow({ row: r, on, first, look, onToggle, onDel
             style={noMirror}
           />
           <View style={styles.flex}>
-            <Text style={[...typeFor(script, 'body'), { color: c.ink }]} numberOfLines={1}>
+            <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...typeFor(script, 'body'), { color: c.ink }]} numberOfLines={1}>
               {r.name}
             </Text>
             <View style={styles.metaRow}>
-              <Text style={[...typeFor(script, 'footnote'), styles.shrink, { color: c.inkSecondary }]}>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), styles.shrink, { color: c.inkSecondary }]}>
                 {categoryName(t, r.category)}
               </Text>
               {status !== 'verified' ? (
                 <View style={[styles.supportBadge, continuous, { backgroundColor: shortcuts ? c.tintSoft : c.fill }]}>
-                  <Text style={[...typeFor(script, 'caption1'), { color: shortcuts ? c.onTintSoft : c.inkSecondary }]}>
+                  <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...typeFor(script, 'caption1'), { color: shortcuts ? c.onTintSoft : c.inkSecondary }]}>
                     {supportLabel(t, status)}
                   </Text>
                 </View>
@@ -740,8 +797,12 @@ const MissingRow = memo(function MissingRow({ onPress }: { onPress: () => void }
           <Feather name="plus" size={17} color={c.onTintSoft} />
         </View>
         <View style={styles.flex}>
-          <Text style={[...typeFor(script, 'body'), { color: c.tint }]}>{t('icons.missingTitle')}</Text>
-          <Text style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{t('icons.missingBody')}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...typeFor(script, 'body'), { color: c.tint }]}>
+            {t('icons.missingTitle')}
+          </Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>
+            {t('icons.missingBody')}
+          </Text>
         </View>
         <Feather name={Chevron.forward(isRTL)} size={18} color={c.inkTertiary} />
       </Pressable>
@@ -783,7 +844,7 @@ const AppChip = memo(function AppChip({ spec: s, index, animateIn, reduced, cust
           <IconCanvas spec={s} size={28} style={noMirror} />
           {customised ? <CustomisedBadge size={9} /> : null}
         </View>
-        <Text style={[...typeFor(script, 'subhead'), styles.chipLabel, { color: c.ink }]} numberOfLines={1}>
+        <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...typeFor(script, 'subhead'), styles.chipLabel, { color: c.ink }]} numberOfLines={1}>
           {s.label}
         </Text>
       </Pressable>
@@ -810,11 +871,24 @@ function SmallIconButton({ icon, onPress, accessibilityLabel }: { icon: FeatherN
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
-  center: { alignItems: 'center', justifyContent: 'center', gap: spaceV2.md },
   scroll: { paddingBottom: spaceV2.xxl },
-  // T166: the old ScrollView's 16 pt rhythm, now inside the list header / footer.
-  listHeader: { gap: spaceV2.lg, paddingBottom: spaceV2.lg },
-  listFooter: { gap: spaceV2.lg, paddingTop: spaceV2.lg },
+  // T166: the old ScrollView's 16 pt rhythm, now inside the list header / footer. T176: the
+  // editorial card gap (editorialV2.cardGap, 16 pt).
+  listHeader: { gap: editorialV2.cardGap, paddingBottom: editorialV2.cardGap },
+  listFooter: { gap: editorialV2.cardGap, paddingTop: editorialV2.cardGap },
+  // T176: a SectionHeader inside the gapped header / footer: the gap plus this padding make the
+  // editorial 32 pt above, and the negative margin brings the space below the title to 12 pt.
+  sectionHeader: {
+    paddingTop: editorialV2.sectionTop - editorialV2.cardGap,
+    paddingBottom: 0,
+    marginBottom: editorialV2.sectionBottom - editorialV2.cardGap,
+    paddingHorizontal: spaceV2.inset,
+  },
+  eyebrow: { alignSelf: 'stretch', textAlign: 'center' },
+  upper: { textTransform: 'uppercase' },
+  loading: { gap: editorialV2.cardGap, paddingTop: spaceV2.sm },
+  loadingTitle: { marginHorizontal: spaceV2.inset },
+  loadingSection: { gap: spaceV2.xs, paddingTop: editorialV2.sectionTop - editorialV2.cardGap, paddingHorizontal: spaceV2.xs },
   // InsetGroup's footnote under the results card (group gap, then the footer inset).
   groupFootnote: { marginTop: spaceV2.xs + spaceV2.xxs, marginHorizontal: spaceV2.lg, paddingHorizontal: spaceV2.lg },
   segment: { marginHorizontal: spaceV2.lg },
@@ -822,13 +896,20 @@ const styles = StyleSheet.create({
   segmentLast: { borderBottomStartRadius: radiusV2.group, borderBottomEndRadius: radiusV2.group, overflow: 'hidden' },
   separator: { height: StyleSheet.hairlineWidth },
   side: { marginHorizontal: spaceV2.lg },
-  sectionTitle: { paddingHorizontal: spaceV2.inset, marginTop: spaceV2.sm },
   centerText: { textAlign: 'center' },
   centerSelf: { alignSelf: 'center' },
   semibold: { fontWeight: '600' },
   previewWrap: { alignItems: 'center', gap: spaceV2.sm },
   warn: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
   empty: { padding: spaceV2.sm, alignItems: 'center', gap: spaceV2.sm },
+  // Empty state: the line icon in a soft circle (docs/PREMIUM_UI.md §2, one icon style).
+  emptyIcon: {
+    width: sizeV2.touch,
+    height: sizeV2.touch,
+    borderRadius: circleRadius(sizeV2.touch),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.sm, padding: spaceV2.md },
   chip: {
     flexDirection: 'row',

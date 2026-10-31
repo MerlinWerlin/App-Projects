@@ -164,6 +164,21 @@ export const ar: NonNullable<LocaleMessages['theme']> = {
     readyA11y: 'تم تنزيل حزمة {pack}',
     size: 'الحجم: {size}',
   },
+  // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
+  remote: {
+    heroPreview: 'معاينة للعمل الفني. نزّله للحصول على خلفية بالحجم الكامل.',
+    heroDownloaded: 'تم التنزيل على هذا الـ iPhone. هذه هي الخلفية بالحجم الكامل.',
+    download: 'تنزيل',
+    downloadSize: 'تنزيل · {size}',
+    downloadA11y: 'تنزيل {name}، {size}',
+    downloadHint: 'يحفظ الخلفية ورسوم الأدوات على هذا الـ iPhone',
+    includes: 'مجانًا. خلفية ورسوم للأدوات وأيقونات بألوانه.',
+    downloading: 'جارٍ تنزيل {name}',
+    offline: 'تعذّر الوصول إلى المجموعة الآن. حاول مرة أخرى عند عودتك إلى الاتصال.',
+    unlock: 'افتح القفل مع Glaze Plus',
+    iconsNote: 'تأتي هذه السمة بخلفيتها ورسوم أدواتها. تُرسم أيقوناتك بحروف Glaze الرمزية بألوانها.',
+    loadingA11y: 'جارٍ تحميل السمة',
+  },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {
     title: 'أدوات متناسقة',

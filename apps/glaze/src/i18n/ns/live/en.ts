@@ -8,6 +8,10 @@ export const en = {
     opening: 'Opening…',
     pickHint: 'Opens your photo library to pick a video or GIF',
     yourLoops: 'Your loops',
+    sections: {
+      make: { eyebrow: 'Make a Live Photo', title: 'Start with a clip', body: 'Pick a video or GIF and frame it. Glaze saves the first 3 seconds to Photos as a Live Photo.' },
+      loops: { eyebrow: 'Saved in Glaze' },
+    },
     emptyTitle: 'No loops yet',
     emptyBody: 'Pick a video or GIF, trim up to 15 seconds and frame it for your Lock Screen.',
     pick: 'Pick a video or GIF',
@@ -35,6 +39,11 @@ export const en = {
   },
   editor: {
     loading: 'Loading loop',
+    sections: {
+      frame: { eyebrow: 'Lock Screen', title: 'Frame it' },
+      clip: { eyebrow: 'Clip' },
+      finish: { eyebrow: 'Finish', title: 'Save it', body: 'Everything stays on this phone. Nothing is uploaded.' },
+    },
     missing: 'This loop no longer exists.',
     nameLabel: 'Loop name',
     cropLabel: 'Lock Screen crop. Drag to move, pinch to zoom.',

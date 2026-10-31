@@ -164,6 +164,21 @@ export const de: NonNullable<LocaleMessages['theme']> = {
     readyA11y: 'Das Paket {pack} ist geladen',
     size: 'Größe: {size}',
   },
+  // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
+  remote: {
+    heroPreview: 'Vorschau des Motivs. Lade es für das Hintergrundbild in voller Größe.',
+    heroDownloaded: 'Auf dieses iPhone geladen. Das ist das Hintergrundbild in voller Größe.',
+    download: 'Laden',
+    downloadSize: 'Laden · {size}',
+    downloadA11y: '{name} laden, {size}',
+    downloadHint: 'Speichert Hintergrundbild und Widget-Motive auf diesem iPhone',
+    includes: 'Kostenlos. Hintergrundbild, Widget-Motive und Symbole in seinen Farben.',
+    downloading: '{name} wird geladen',
+    offline: 'Die Sammlung ist gerade nicht erreichbar. Versuche es erneut, sobald du wieder online bist.',
+    unlock: 'Mit Glaze Plus freischalten',
+    iconsNote: 'Dieses Theme bringt Hintergrundbild und Widget-Motive mit. Deine Symbole werden mit Glaze-Glyphen in seinen Farben gezeichnet.',
+    loadingA11y: 'Theme wird geladen',
+  },
   // T59: matching widget previews on the theme detail.
   widgetPreviews: {
     title: 'Passende Widgets',

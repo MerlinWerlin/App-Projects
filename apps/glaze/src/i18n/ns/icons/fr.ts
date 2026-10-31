@@ -13,6 +13,16 @@ export const fr: NonNullable<LocaleMessages['icons']> = {
     other: "{count} icônes ont des symboles peut-être peu visibles (contraste inférieur à 3:1) : {names}. Essayez un autre symbole ou une autre couleur de fond.",
   },
   yourApps: "Vos apps",
+  // T176 (docs/PREMIUM_UI.md §3.8): editorial section headers on the Icons tab.
+  sections: {
+    previewEyebrow: "Aperçu en direct",
+    appsEyebrow: "Votre ensemble",
+    appsBody: "Chaque app ici reçoit une icône assortie.",
+    addEyebrow: "Trouver des apps",
+    addBody: "Recherchez ou choisissez une catégorie, puis cochez les apps voulues.",
+    styleEyebrow: "Un seul style",
+    styleBody: "Forme, couleurs et taille du symbole pour toutes les icônes à la fois.",
+  },
   emptyTitle: "Aucune app pour l’instant",
   emptyBody: "Choisissez les apps pour lesquelles vous voulez de nouvelles icônes. Commencez par les plus populaires ou cherchez ci-dessous.",
   addPopular: "Ajouter les apps populaires",
