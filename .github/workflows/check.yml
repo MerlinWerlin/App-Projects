@@ -46,11 +46,14 @@ jobs:
         working-directory: apps/${{ env.APP }}
         run: set -o pipefail; npx tsc --noEmit 2>&1 | tee /tmp/step-typecheck.log
 
+      # Tests and the bundle still run when the typecheck fails, so one old type error never hides them.
       - name: Tests
+        if: success() || failure()
         working-directory: apps/${{ env.APP }}
         run: set -o pipefail; npm test 2>&1 | tee /tmp/step-tests.log
 
       - name: Bundle (iOS + Android, as Expo Go loads it)
+        if: success() || failure()
         working-directory: apps/${{ env.APP }}
         run: set -o pipefail; npx expo export --platform ios --platform android --output-dir /tmp/export 2>&1 | tee /tmp/step-bundle.log
 
