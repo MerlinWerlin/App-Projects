@@ -47,3 +47,5 @@ browser, c none / colour cards).
   built-in browser redirects to its login page (signed out).
 - 2026-10-26: **c (none)**. (a) bridge CONTRACT still `tools_allowed: false`, no Codex image runner; (b) chatgpt.com
   in the built-in browser redirects to its login page (signed out).
+- 2026-10-31: **c (none)**, and no batch: StarNet up but every Sol and Luna job came back `WAIT_QUOTA` (OpenAI quota
+  exhausted). (a) CONTRACT still `tools_allowed: false`; (b) chatgpt.com redirects to its login page (signed out).
