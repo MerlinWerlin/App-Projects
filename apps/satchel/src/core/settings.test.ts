@@ -52,8 +52,8 @@ test('appearance: System follows the phone, Light and Dark override it', () => {
 });
 
 test('stored prefs from older builds gain the appearance default; junk is replaced', () => {
-  assert.deepEqual(normaliseAppPrefs({ haptics: false }), { haptics: false, appearance: 'system', language: 'system', languageHintSeen: false });
-  assert.deepEqual(normaliseAppPrefs({ haptics: true, appearance: 'dark' }), { haptics: true, appearance: 'dark', language: 'system', languageHintSeen: false });
+  assert.deepEqual(normaliseAppPrefs({ haptics: false }), { haptics: false, appearance: 'system', language: 'system', languageHintSeen: false, sleepBed: '23:00', sleepWake: '07:00' });
+  assert.deepEqual(normaliseAppPrefs({ haptics: true, appearance: 'dark' }), { haptics: true, appearance: 'dark', language: 'system', languageHintSeen: false, sleepBed: '23:00', sleepWake: '07:00' });
   assert.deepEqual(normaliseAppPrefs({ haptics: 'no', appearance: 'blue' }), DEFAULT_APP_PREFS);
   assert.deepEqual(normaliseAppPrefs(null), DEFAULT_APP_PREFS);
   assert.deepEqual(normaliseAppPrefs([1]), DEFAULT_APP_PREFS);

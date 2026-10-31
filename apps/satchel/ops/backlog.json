@@ -145,13 +145,14 @@
     },
     {
       "id": "T11",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T10"
       ],
       "title": "Offline map spike + design (no account sign-ups): verify Protomaps PMTiles licence/terms, OSM ODbL obligations, Cloudflare R2 free tier + terms, MapLibre React Native + PMTiles support in an Expo dev build; produce docs/OFFLINE_MAP.md with city-file pipeline (extract bbox, sizes for 5 sample cities), hosting plan for the owner to approve, and the adapter interface",
       "accept": "owner-approvable design; no spending",
-      "spec": "start from docs/research/MAP_SPIKE.md (OpenAI draft, unverified: R2 prices came from a third-party site; re-check on cloudflare.com, no sign-ups)"
+      "spec": "start from docs/research/MAP_SPIKE.md (OpenAI draft, unverified: R2 prices came from a third-party site; re-check on cloudflare.com, no sign-ups)",
+      "note": "Superseded 31 Oct by T47 (owner-1031 A): raster city packs on App-Projects release assets drawn with react-native-maps LocalTile; design in docs/MAP_PACKS.md."
     },
     {
       "id": "T12",
@@ -676,14 +677,16 @@
     },
     {
       "id": "T53",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "follow-up",
         "spec"
       ],
       "title": "Carry the owner-1031 string changes (map.online, emergency fallback keys, toilets.*, design.*, citymaps.*, and run 84: spending.*, essentials.*, phrases.*, privacy.*) into docs/spec STRINGS/EN_CATALOGUE and the translation lane",
-      "accept": "spec catalogues match src/i18n"
+      "accept": "spec catalogues match src/i18n",
+      "note": "Run 86: folded into T67.",
+      "commit": "0b18bf1"
     },
     {
       "id": "T54",
@@ -746,7 +749,231 @@
         "content"
       ],
       "title": "Run-84 follow-ups: verify country_essentials.json against live IEC World Plugs/ITU pages (via the OpenAI lane or a networked run) and resolve its nulls; native-speaker check of src/content/phrases.json (docs/research/PHRASES.md list); Traditional Chinese card for TW/HK/MO; allergen slot on the allergy card; home country also in Settings; sample spending on the demo trip",
-      "accept": "tests green; DECISIONS records sources"
+      "accept": "tests green; DECISIONS records sources",
+      "note": "Run 85: worker takes the offline part (home country in Settings, allergen slot, Traditional Chinese card for TW/HK/MO, sample spending on the demo trip); live-source verification and the native-speaker check stay open. Offline part done in run 85 (bc17b5e); still open: live IEC/ITU verification of country_essentials nulls, native-speaker check of phrases.json incl. zh-Hant + allergens, optional Cantonese/Jyutping card."
+    },
+    {
+      "id": "T59",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D",
+        "expand"
+      ],
+      "title": "Nearest help on Emergency (owner-1031 D, deepen Emergency): hospitals/clinics, pharmacies and police stations from OpenStreetMap, offline from downloaded city packs and online via Overpass elsewhere (same pattern as the Toilets tab), distance + walking direction, phone number when tagged (tap to call), opening hours, Open in Apple Maps; OSM attribution",
+      "accept": "core/help.ts tests (parsing, categories, sort, malformed rows, Overpass query); strings in en/help.ts; tokens only; free; no new npm dependency",
+      "commit": "2f17960"
+    },
+    {
+      "id": "T60",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D",
+        "expand"
+      ],
+      "title": "Trip readiness check (owner-1031 D, deepen Trips): a 'Ready to go?' hero card on the trip screen scoring passport validity vs trip end (6-month rule, warn), visa noted, packing progress, emergency card filled, hotel address cards, offline city map downloaded for the destination, with one-tap fixes; plus a 'Leaving soon' banner on the trips list 3 days out",
+      "accept": "core/readiness.ts tests (each check pass/warn/missing, dates across zones, no trip end); strings in en/readiness.ts; tokens only; free; no new npm dependency",
+      "commit": "7254b3f"
+    },
+    {
+      "id": "T61",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D",
+        "expand"
+      ],
+      "title": "Offline currency converter + bill split (owner-1031 D, deepen Wallet): Wallet > Converter using the trip's manual rates from Spending (edit a rate inline, last-updated date shown), big keypad, swap direction, quick table (e.g. 100/500/1,000/5,000 local in home currency); Split a bill among N people with rounding, 'Add as expense' into the trip's spending",
+      "accept": "core/convert.ts tests (minor units, rounding, zero-decimal currencies like JPY/KRW, missing rate, split remainders); strings in en/convert.ts; tokens only; free; no new npm dependency",
+      "commit": "723ec9e"
+    },
+    {
+      "id": "T62",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "follow-up",
+        "map"
+      ],
+      "title": "City packs: add police (amenity=police) plus phone and opening_hours tags for hospitals/pharmacies/police to tools/maps/build.mjs pois.json so Nearest help works fully offline; bump pack version; app keeps reading old packs",
+      "accept": "build.mjs test/fixture; help.ts already parses the fields",
+      "note": "Run 86: folded into T67.",
+      "commit": "6a19b98"
+    },
+    {
+      "id": "T63",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-85 follow-ups: Spending rate edits use setRateOn so the converter shows the rate date; readiness map row fetches nothing but should refresh after a city download; spec string catalogues for help.*, readiness.*, convert.*, followups85 (fold into T53)",
+      "accept": "tests green",
+      "note": "Run 86: folded into T67.",
+      "commit": "6a19b98"
+    },
+    {
+      "id": "T64",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D",
+        "expand"
+      ],
+      "title": "Trip journal (owner-1031 D, deepen Trips): a per-day travel diary on each trip: short note, up to 6 photos from the library/camera (local files, never uploaded), an optional saved place, mood/weather picked from icon chips; Journal screen grouped by trip day with a colourful day header; 'Today's page' prompt on the trip screen during a trip; included in .satchel export as text (photos optional, size shown); works fully offline",
+      "accept": "core/journal.ts tests (add/edit/delete entries, day grouping in the trip's zone, photo cap, tripfile round-trip incl. old files without journal); strings in en.ts; tokens only; free; no new npm dependency",
+      "commit": "702d1ad"
+    },
+    {
+      "id": "T65",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D",
+        "expand"
+      ],
+      "title": "Your travels (owner-1031 D, less bland): a stats screen + hero card on the Trips tab: countries and cities from all trips, days away, trips this year, longest trip, flight legs and great-circle km from flight items with known airports/coords, a colourful world tile grid of visited countries (original SVG, no map imagery), upcoming countdown; all computed offline from local trips",
+      "accept": "core/travelstats.ts tests (country dedupe, day counting across zones, km from coords, empty state, demo trips excluded option); strings in en.ts; tokens only; free; no new npm dependency",
+      "commit": "ec471f5"
+    },
+    {
+      "id": "T66",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D",
+        "expand"
+      ],
+      "title": "Jet lag + time zones (owner-1031 D, deepen Trips): for a trip whose flights cross 3+ hours, a simple adjust plan card (shift sleep 1 h/day for 3 days before, light/avoid-light windows on arrival days, generic and labelled 'general guidance, not medical advice'); a 'Home vs here' clock pair on the trip screen and a 'good time to call home' finder (both awake 08:00-22:00); all from the items' own IANA zones",
+      "accept": "core/jetlag.ts tests (east vs west direction, DST edge, <3 h no plan, overlap windows incl. none, zones from items); strings in en.ts; tokens only; free; no new npm dependency; no medical claims",
+      "commit": "536b96e"
+    },
+    {
+      "id": "T67",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Follow-ups T62 + T63 + T53: city-pack pois.json gains police + phone/opening_hours (tools/maps/build.mjs, pack version bump, old packs still read); Spending rate edits record the rate date (setRateOn); readiness map row refreshes after a city download; spec string catalogues (docs/spec) for all owner-1031/run 84-86 string groups",
+      "accept": "tests green; build.mjs fixture test; docs/spec catalogues match src/i18n",
+      "commit": "6a19b98"
+    },
+    {
+      "id": "T68",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-86 follow-ups: journal export photo option + import notice of left-out photos; re-resolve journal photo paths on load if the app folder moved; usual-sleep setting for the jet-lag plan and call finder beyond today; hide jet-lag card on past trips; translated country names in Your travels; camera/photo permission wording to mention journal photos (app.json, next native build only)",
+      "accept": "tests green",
+      "commit": "0c59965",
+      "note": "Run 87: all JS parts done; app.json camera/photo wording for journal photos moved to T72 (next native build)."
+    },
+    {
+      "id": "T69",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D",
+        "expand"
+      ],
+      "title": "Trip on the map (owner-1031 D, deepen Map + Trips): See on map from a trip; numbered stops per day in each item's own zone, coloured per day, dashed day routes, day chips with Today, fit-to-stops camera, summary card with straight-line legs and Apple Maps walking directions; empty state",
+      "accept": "core/triproute.ts tests; strings in en.ts; tokens only; no new npm dependency",
+      "commit": "b3aaf58"
+    },
+    {
+      "id": "T70",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D",
+        "expand"
+      ],
+      "title": "Weather + daylight (owner-1031 D): offline sunrise/sunset/civil twilight (NOAA algorithm, polar flags) and an online 5-day forecast from MET Norway Locationforecast (free, CC BY 4.0, identifying User-Agent, cached for offline, stale after 48 h) on the trip screen; daylight line on the Map tab; °C/°F setting",
+      "accept": "core/sun.ts + core/weather.ts tests; credit shown; THIRD_PARTY updated; no new npm dependency",
+      "commit": "cb08338",
+      "note": "Online path unverified: api.met.no unreachable from the cloud; parser written from the documented schema and tested on an invented fixture."
+    },
+    {
+      "id": "T71",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D",
+        "expand"
+      ],
+      "title": "Share the plan + morning brief (owner-1031 D, deepen Trips): Share plan as clean text (whole trip / one day / from today; booking codes off by default; never documents, notes or medical data) via the share sheet; \"Your day\" hero card on the Trips tab during a trip (next booking countdown, stops today, tonight's hotel, early-start heads-up)",
+      "accept": "core/itinerarytext.ts + core/daybrief.ts tests; strings in en.ts; no new npm dependency",
+      "commit": "f537dba"
+    },
+    {
+      "id": "T72",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-87 follow-ups: let users set a booking's position (Set place on map / pick from saved places) so trip routes and weather work beyond the sample trip; keep transport from/to positions on edit (itemFromDraft drops them); optional transport arrival stops; check numbered-pin speed (tracksViewChanges); decide whether Today card hides while Your day shows; add share./brief./triproute./weather. to spec catalogue sync; MET credit on a licences screen; app.json camera/photo wording for journal photos (next native build only); confirm Intl.DisplayNames on the phone",
+      "accept": "tests green",
+      "commit": "549c367"
+    },
+    {
+      "id": "T73",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "map"
+      ],
+      "title": "Find your way back (owner-1031 D, deepen Map): offline compass screen pointing to the hotel, any saved place, or a pin dropped where you stand ('I parked here', 'Meeting point'); distance + walking time; arrow turned by phone heading (expo-location watchHeadingAsync only while the screen is open) with a cardinal-direction text fallback; Open in Apple Maps walking; entry from Map tab quick action and hotel address card",
+      "accept": "core bearing/relative-angle + dropped-pin store tests green (wraparound, poles/antimeridian, invalid coords); works in flight mode with only GPS; no new npm dependency; strings in src/i18n/en/wayback.ts",
+      "commit": "3237bb6"
+    },
+    {
+      "id": "T74",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "trips"
+      ],
+      "title": "Airport day (owner-1031 D, deepen Trips + Wallet): flight bookings get optional terminal, gate, seat, boarding time and bag-drop-closes fields shown on the ticket hero; a 'Leave by' time from the user's own travel-to-airport minutes plus an editable buffer (default general guidance, domestic vs international) in the departure airport's zone; boarding countdown; Leave-by line on the Your day card",
+      "accept": "core leaveby.ts tests green (time zones, DST, midnight crossing, missing fields); fields round-trip through .satchel files; labelled general guidance, check with the airline; no new npm dependency; strings in src/i18n/en/airport.ts",
+      "commit": "787c8de"
+    },
+    {
+      "id": "T75",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "packing"
+      ],
+      "title": "Smart packing (owner-1031 D, deepen Packing): clothes quantities scaled by trip nights with a 'laundry on the trip' option; suggestions from the cached forecast or daylight (rain -> umbrella, cold -> warm layer) and from country essentials (plug adapter type for destination vs home country); 'Repack for home' resets ticks; share list as text; progress ring",
+      "accept": "core tests green (night counts across zones, suggestion rules, no duplicates on re-run, user edits kept); suggestions are opt-in chips, never auto-added; no new npm dependency; strings in src/i18n/en/smartpack.ts",
+      "commit": "cd5f313"
+    },
+    {
+      "id": "T76",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-88 follow-ups: draw downloaded offline city tiles in the booking position picker; Rename button for dropped pins; quantity editing on packing rows and non-English duplicate matching for suggestions; forecast for every trip stop, not only the next one; demo trip Tokyo check-in before the flight lands (route order); 'Use my default' for domestic/international on flights; full licence texts (from node_modules LICENSE files on the PC) + OFL for fonts on the Licences screen; add position./licences./wayback./airport./smartpack. to the spec catalogue sync; check MET and NOAA licence URLs online",
+      "accept": "tests green"
     }
   ],
   "priority_note": "owner-1031 (T47-T51) outranks everything else (docs/OWNER_1031.md). Owner: 'let's trial that for now'. Reach TRIAL fast; nothing native before the owner has tried the trial."

@@ -1,5 +1,7 @@
 // Trip spending (T54): budget progress and totals, add / edit / delete expenses (delete asks first), totals by
 // category and by day, then the exchange rates and the budget itself. Free, offline, stored on the trip.
+// A rate saved here is stamped with today's date (src/core/convert.ts setRateOn, T63), so the Wallet converter shows
+// how old the rate is.
 // Rates are typed by the traveller; spending in a currency with no rate is shown in its own currency and left out of
 // the home total with an "add a rate" prompt, never converted with a guessed rate.
 import { Ionicons } from '@expo/vector-icons';
@@ -7,6 +9,7 @@ import { Stack, useLocalSearchParams } from 'expo-router';
 import { memo, useCallback, useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo, Alert, FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { setRateOn } from '../../src/core/convert.ts';
 import { deviceZone, formatDay, todayIn } from '../../src/core/format.ts';
 import { EXPENSE_CATEGORIES, newId, type Expense, type ExpenseCategory, type Trip } from '../../src/core/model.ts';
 import {
@@ -30,7 +33,6 @@ import {
   readSpending,
   removeExpense,
   setBudget,
-  setRate,
   sortExpenses,
   suggestCurrency,
   total,
@@ -507,14 +509,14 @@ function Rates({ trip, s, home, save }: { trip: Trip; s: Spending; home: string 
       AccessibilityInfo.announceForAccessibility(t('spending.rates.err'));
       return;
     }
-    if (await save(setRate(trip, c, rate))) {
+    if (await save(setRateOn(trip, c, rate, todayIn(deviceZone())))) {
       setErrors((e) => e.filter((x) => x !== c));
       setDrafts(({ [c]: _gone, ...rest }) => rest);
       AccessibilityInfo.announceForAccessibility(t('spending.rates.saved'));
     }
   };
   const clear = async (c: string) => {
-    if (await save(setRate(trip, c, null))) setDrafts(({ [c]: _gone, ...rest }) => rest);
+    if (await save(setRateOn(trip, c, null, todayIn(deviceZone())))) setDrafts(({ [c]: _gone, ...rest }) => rest);
   };
   return (
     <Card style={{ gap: space.m }}>

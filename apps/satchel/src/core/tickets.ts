@@ -194,23 +194,54 @@ export function rebaseAttachments(list: Attachment[], docDir: string | null | un
   return changed ? out : list;
 }
 
-/** All trips with attachment paths rebased onto this install's documents folder; the same array when nothing moved. */
+/**
+ * T68: a trip journal with its photo paths rebased onto `docDir` (journal photos live in attachments/, so a path
+ * saved under an earlier install's container, or a stored relative 'attachments/…' path, points at this install's
+ * copy). Malformed rows are left as they are for readJournal to skip; the same array when nothing moved.
+ */
+export function rebaseJournal<J extends { photos?: unknown }>(journal: J[], docDir: string | null | undefined): J[] {
+  if (!docDir) return journal;
+  let changed = false;
+  const out = journal.map((e) => {
+    if (!e || typeof e !== 'object' || !Array.isArray(e.photos)) return e;
+    let photosChanged = false;
+    const photos = (e.photos as unknown[]).map((p) => {
+      if (!p || typeof p !== 'object' || typeof (p as { uri?: unknown }).uri !== 'string') return p;
+      const uri = rebaseUri((p as { uri: string }).uri, docDir);
+      if (uri === (p as { uri: string }).uri) return p;
+      photosChanged = true;
+      return { ...(p as object), uri };
+    });
+    if (!photosChanged) return e;
+    changed = true;
+    return { ...e, photos };
+  });
+  return changed ? out : journal;
+}
+
+/** All trips with attachment and journal photo paths rebased onto this install's documents folder; the same array when nothing moved. */
 export function rebaseTrips(trips: Trip[], docDir: string | null | undefined): Trip[] {
   if (!docDir) return trips;
   let changed = false;
   const out = trips.map((trip) => {
-    if (!Array.isArray(trip.items)) return trip;
-    let itemsChanged = false;
-    const items = trip.items.map((item) => {
-      if (!Array.isArray(item.attachments)) return item;
-      const attachments = rebaseAttachments(item.attachments, docDir);
-      if (attachments === item.attachments) return item;
-      itemsChanged = true;
-      return { ...item, attachments };
-    });
-    if (!itemsChanged) return trip;
-    changed = true;
-    return { ...trip, items };
+    let next = trip;
+    if (Array.isArray(trip.items)) {
+      let itemsChanged = false;
+      const items = trip.items.map((item) => {
+        if (!Array.isArray(item.attachments)) return item;
+        const attachments = rebaseAttachments(item.attachments, docDir);
+        if (attachments === item.attachments) return item;
+        itemsChanged = true;
+        return { ...item, attachments };
+      });
+      if (itemsChanged) next = { ...next, items };
+    }
+    if (Array.isArray(trip.journal)) {
+      const journal = rebaseJournal(trip.journal, docDir);
+      if (journal !== trip.journal) next = { ...next, journal };
+    }
+    if (next !== trip) changed = true;
+    return next;
   });
   return changed ? out : trips;
 }
@@ -220,9 +251,10 @@ export function itemFiles(item: Item): string[] {
   return [...new Set(Array.isArray(item.attachments) ? item.attachments.flatMap(filesOf) : [])];
 }
 
-/** Every file a trip's bookings hold (attachments and separate QR crops), without repeats. */
+/** Every file a trip holds: its bookings' attachments and separate QR crops, and its journal photos (T64), without repeats. */
 export function tripFiles(trip: Trip): string[] {
-  return [...new Set((trip.items ?? []).flatMap(itemFiles))];
+  const journal = Array.isArray(trip.journal) ? trip.journal.flatMap((e) => (Array.isArray(e?.photos) ? e.photos.map((p) => p.uri).filter((u) => typeof u === 'string') : [])) : [];
+  return [...new Set([...(trip.items ?? []).flatMap(itemFiles), ...journal])];
 }
 
 // ---- T44: the item form's Attachments section (FLOWS §4.1) edits a draft list; files follow Save or Cancel ----

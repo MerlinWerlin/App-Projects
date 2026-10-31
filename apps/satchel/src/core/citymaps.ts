@@ -9,6 +9,14 @@ export const MAPS_RELEASE = 'satchel-maps-v1';
 export const MAPS_BASE_URL = `https://github.com/MerlinWerlin/App-Projects/releases/download/${MAPS_RELEASE}/`;
 export const CATALOG_URL = `${MAPS_BASE_URL}catalog.json`;
 
+/**
+ * Newest pack format this build understands (tools/maps/pois.mjs POIS_FORMAT, docs/MAP_PACKS.md). 1 = the first
+ * packs (no `format` field): toilets and places by name only. 2 = adds police and, for hospitals/clinics, pharmacies
+ * and police, phone / opening_hours / amenity / emergency. The catalog itself stays `version: 1`, so builds from
+ * before format 2 still read the catalog and the packs (they ignore the extra fields).
+ */
+export const PACK_FORMAT = 2;
+
 /** [west, south, east, north] in degrees. */
 export type BBox = [number, number, number, number];
 
@@ -27,6 +35,8 @@ export type CityMap = {
   tiles?: number;
   pois?: number;
   attribution?: string;
+  /** Pack format (see PACK_FORMAT); absent on the first packs, which are format 1. */
+  format?: number;
 };
 
 export type CityCatalog = {
@@ -80,6 +90,7 @@ export function parseCity(raw: unknown): CityMap | null {
   if (isInt(raw.pois, 0, 1e8)) city.pois = raw.pois;
   const attribution = str(raw.attribution, 300);
   if (attribution) city.attribution = attribution;
+  if (isInt(raw.format, 1, 999)) city.format = raw.format;
   return city;
 }
 
@@ -102,6 +113,9 @@ export function parseCatalog(raw: unknown): CityCatalog | null {
     cities,
   };
 }
+
+/** A city's pack format: 1 when the entry predates the `format` field (or carries a junk one). */
+export const packFormat = (city: Pick<CityMap, 'format'>): number => city.format ?? 1;
 
 /** Download URL of a city's pack. */
 export const packUrl = (city: CityMap) => `${MAPS_BASE_URL}${city.file}`;

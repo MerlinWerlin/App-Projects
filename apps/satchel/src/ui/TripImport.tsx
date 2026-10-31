@@ -1,5 +1,6 @@
 // "Import a trip" on the Trips list (T15): picks a .satchel file, adds it as a new trip and opens it. Wrong,
 // newer or damaged files get STATES_COPY error blocks in place; nothing already on the phone changes.
+// T68: when the file left journal photos behind, the trip opens with a notice saying how many.
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { AccessibilityInfo, View } from 'react-native';
@@ -30,8 +31,13 @@ export function TripImport() {
     if (r.ok) {
       haptic.success();
       setState({ kind: 'idle' });
-      AccessibilityInfo.announceForAccessibility(t('tripfile.imported'));
-      router.push(`/trip/${r.tripId}`);
+      AccessibilityInfo.announceForAccessibility(
+        r.photosLeftOut
+          ? `${t('tripfile.imported')}. ${r.photosLeftOut === 1 ? t('tripfile.photos.leftOutOne') : t('tripfile.photos.leftOutMany', { n: r.photosLeftOut })}`
+          : t('tripfile.imported'),
+      );
+      // T68: the trip screen says how many journal photos the file didn't carry.
+      router.push(r.photosLeftOut ? { pathname: '/trip/[id]', params: { id: r.tripId, photosLeftOut: String(r.photosLeftOut) } } : `/trip/${r.tripId}`);
       return;
     }
     if (r.reason === 'cancelled') setState({ kind: 'idle' });

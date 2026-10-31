@@ -3,6 +3,8 @@
 // battery.clampThreshold; the stepper moves in whole steps of THRESHOLD_STEP.
 import { clampThreshold, MAX_THRESHOLD, MIN_THRESHOLD } from './battery.ts';
 import { isLanguagePref, type LanguagePref } from './languageHint.ts';
+import { findEssentials, HOME_COUNTRY_KEY, normaliseHome, type EssentialsTable } from './essentials.ts';
+import { DEFAULT_BED, DEFAULT_WAKE, hm } from './jetlag.ts';
 
 export const THRESHOLD_STEP = 0.05;
 
@@ -57,8 +59,78 @@ export function nativeScheme(pref: unknown): 'light' | 'dark' | 'unspecified' {
 }
 
 // language: 'system' follows the phone (T35). languageHintSeen: the first-launch language line has had its one session.
-export type AppPrefs = { haptics: boolean; appearance: AppearancePref; language: LanguagePref; languageHintSeen: boolean };
-export const DEFAULT_APP_PREFS: AppPrefs = { haptics: true, appearance: 'system', language: 'system', languageHintSeen: false };
+// sleepBed / sleepWake (T68): usual sleep, 'HH:mm' on whatever clock the traveller is on; used by the jet lag plan and
+// the good-time-to-call finder (awake hours run from wake to bed).
+export type AppPrefs = { haptics: boolean; appearance: AppearancePref; language: LanguagePref; languageHintSeen: boolean; sleepBed: string; sleepWake: string };
+export const DEFAULT_APP_PREFS: AppPrefs = {
+  haptics: true,
+  appearance: 'system',
+  language: 'system',
+  languageHintSeen: false,
+  sleepBed: DEFAULT_BED,
+  sleepWake: DEFAULT_WAKE,
+};
+
+// ---- Usual sleep (T68) ----
+
+/** The bed / wake time steppers move by this many minutes. */
+export const SLEEP_STEP_MIN = 30;
+/** At least this much sleep and this much awake time, so the plan and the call finder always have something to work with. */
+export const MIN_SLEEP_MIN = 240;
+export const MIN_AWAKE_MIN = 360;
+
+/** A stored sleep time: 'HH:mm' from 00:00 to 23:59 (24:00 is not a bed or wake time), else null. */
+export function sleepClock(v: unknown): string | null {
+  if (typeof v !== 'string') return null;
+  const m = hm(v);
+  return m === null || m >= 1440 ? null : v;
+}
+
+/** Minutes asleep from bed to wake (wrapping past midnight). */
+export function sleepLength(bed: string, wake: string): number {
+  const b = hm(bed) ?? 0;
+  const w = hm(wake) ?? 0;
+  return (((w - b) % 1440) + 1440) % 1440;
+}
+
+/** True when bed and wake leave at least MIN_SLEEP_MIN asleep and MIN_AWAKE_MIN awake. */
+export const sleepOk = (bed: string, wake: string): boolean => {
+  const n = sleepLength(bed, wake);
+  return n >= MIN_SLEEP_MIN && 1440 - n >= MIN_AWAKE_MIN;
+};
+
+/** Stored sleep times as a valid pair, else the defaults (23:00 to 07:00). */
+export function normaliseSleep(bed: unknown, wake: unknown): { sleepBed: string; sleepWake: string } {
+  const b = sleepClock(bed);
+  const w = sleepClock(wake);
+  if (b && w && sleepOk(b, w)) return { sleepBed: b, sleepWake: w };
+  return { sleepBed: DEFAULT_BED, sleepWake: DEFAULT_WAKE };
+}
+
+const clockOf = (min: number) => {
+  const m = ((Math.round(min) % 1440) + 1440) % 1440;
+  return `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+};
+
+/**
+ * One step of the bed or wake time (+1 later, −1 earlier), snapped to the step grid and wrapping round midnight.
+ * Returns the time unchanged when the step would leave less than MIN_SLEEP_MIN asleep or MIN_AWAKE_MIN awake.
+ */
+export function stepSleep(prefs: { sleepBed: string; sleepWake: string }, which: 'bed' | 'wake', dir: 1 | -1): { sleepBed: string; sleepWake: string } {
+  const cur = normaliseSleep(prefs.sleepBed, prefs.sleepWake);
+  const v = hm(which === 'bed' ? cur.sleepBed : cur.sleepWake) as number;
+  const snapped = Math.round(v / SLEEP_STEP_MIN) * SLEEP_STEP_MIN;
+  const nextMin = snapped !== v && Math.sign(snapped - v) === dir ? snapped : snapped + dir * SLEEP_STEP_MIN;
+  const next = which === 'bed' ? { ...cur, sleepBed: clockOf(nextMin) } : { ...cur, sleepWake: clockOf(nextMin) };
+  return sleepOk(next.sleepBed, next.sleepWake) ? next : cur;
+}
+
+/** Whether each sleep stepper can still move (the buttons are disabled at the limits). */
+export function sleepLimits(prefs: { sleepBed: string; sleepWake: string }, which: 'bed' | 'wake'): { canLower: boolean; canRaise: boolean } {
+  const cur = normaliseSleep(prefs.sleepBed, prefs.sleepWake);
+  const key = which === 'bed' ? 'sleepBed' : 'sleepWake';
+  return { canLower: stepSleep(cur, which, -1)[key] !== cur[key], canRaise: stepSleep(cur, which, 1)[key] !== cur[key] };
+}
 
 /** Stored prefs from any earlier build (or damaged storage) as a complete, valid AppPrefs. */
 export function normaliseAppPrefs(raw: unknown): AppPrefs {
@@ -68,5 +140,24 @@ export function normaliseAppPrefs(raw: unknown): AppPrefs {
     appearance: isAppearance(o.appearance) ? o.appearance : DEFAULT_APP_PREFS.appearance,
     language: isLanguagePref(o.language) ? o.language : DEFAULT_APP_PREFS.language,
     languageHintSeen: o.languageHintSeen === true,
+    ...normaliseSleep(o.sleepBed, o.sleepWake),
   };
+}
+
+// ---- Home country (T58): one stored value, HOME_COUNTRY_KEY, shared by Settings and the country essentials card ----
+
+/** The same key the essentials card uses, re-exported so Settings never invents a second copy of the choice. */
+export { HOME_COUNTRY_KEY };
+
+export type HomeCountry = { iso2: string; country: string };
+
+/** The saved home country as the table names it, or null when unset, unknown or unreadable. */
+export function homeCountry(table: EssentialsTable, stored: unknown): HomeCountry | null {
+  const row = findEssentials(table, normaliseHome(table, stored));
+  return row ? { iso2: row.iso2, country: row.country } : null;
+}
+
+/** What to store for a pick: the table's ISO code (any case in, capitals out), or null to forget the choice. */
+export function homeCountryToStore(table: EssentialsTable, pick: unknown): string | null {
+  return normaliseHome(table, pick);
 }

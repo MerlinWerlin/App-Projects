@@ -3,7 +3,7 @@
 // T50: warm hero with the upcoming count, a quick-access row (Emergency card, Documents, Packing, Essentials),
 // upcoming tickets grouped by trip, and ticket cards with a colour stripe per booking kind and an "Offline ready"
 // badge (the ticket file is saved on the phone). T56: a "Show a local" entry under the quick row opens the offline
-// phrase cards (app/phrases.tsx).
+// phrase cards (app/phrases.tsx). T61: Convert and Split bill quick actions open app/convert.tsx.
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
@@ -170,6 +170,11 @@ export default function WalletScreen() {
               onPress={() => focus && router.push(`/packing/${focus.id}`)}
             />
             <QuickAction icon="battery-half" tone="warn" label={t('design.wallet.q.essentials')} hint={t('design.wallet.q.essentialsHint')} onPress={() => router.push('/essentials')} />
+          </View>
+          {/* T61: offline converter and bill split on the trip's own rates. */}
+          <View style={{ flexDirection: 'row', gap: space.s }}>
+            <QuickAction icon="cash-outline" tone="accent" label={t('convert.q.convert')} hint={t('convert.q.convertHint')} onPress={() => router.push('/convert')} />
+            <QuickAction icon="people-outline" tone="ok" label={t('convert.q.split')} hint={t('convert.q.splitHint')} onPress={() => router.push({ pathname: '/convert', params: { section: 'split' } })} />
           </View>
           <Button kind="secondary" icon="chatbubbles-outline" label={t('phrases.walletEntry')} hint={t('phrases.walletEntryHint')} onPress={() => router.push('/phrases')} />
         </View>

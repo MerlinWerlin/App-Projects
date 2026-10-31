@@ -1,11 +1,11 @@
 # Phrase cards (T56): source and checks
 
-`src/content/phrases.json` (16 phrases × 11 languages: ja, zh-Hans, ko, th, vi, es, fr, de, it, pt, id) was **written by the model (Claude), not by a native speaker. Check every line with a native speaker before calling it verified.** The app says so under the list.
+`src/content/phrases.json` (16 phrases × 12 languages: ja, zh-Hans, zh-Hant (T58), ko, th, vi, es, fr, de, it, pt, id) was **written by the model (Claude), not by a native speaker. Check every line with a native speaker before calling it verified.** The app says so under the list.
 
 - Polite, standard forms throughout. Where a language marks the speaker's gender, the card avoids it or shows both forms.
 - Pronunciation (`roman`) only for non-Latin scripts: Hepburn with long-vowel marks (ja), Hanyu Pinyin with tone marks (zh-Hans), Revised Romanization (ko), simple RTGS **without tone marks** (th). It's a rough guide; the card is meant to be shown, not read aloud.
-- "I have an allergy" stays general on purpose (no allergen); a fill-in allergen card could come later.
-- Country → language mapping is in the same file (`countries`); each country maps to one language only. Taiwan, Hong Kong and Macau are left unmapped on purpose (they use Traditional characters); Switzerland maps to German.
+- "I have an allergy" stays general; since T58 the traveller can pick allergens and the card lists them underneath in the card's language (see below).
+- Country → language mapping is in the same file (`countries`); each country maps to one language only. Since T58 Taiwan, Hong Kong and Macau map to Traditional Chinese (zh-Hant), mainland China to Simplified; Switzerland maps to German.
 
 ## Lines I was unsure of
 
@@ -39,3 +39,45 @@
 | id | hello | Halo | Casual; "Selamat pagi/siang/sore/malam" depends on the time of day. |
 
 Language names in the picker are UI strings (`phrases.lang.*` in `src/i18n/en/phrases.ts`); the native names are in the JSON.
+
+## T58 additions (run 85): NEEDS A NATIVE-SPEAKER CHECK
+
+Everything in this section was written by the model (Claude), not a native speaker, and **must be checked by a native speaker before it is called verified**. The allergy card in the app says so under the allergen list.
+
+### Traditional Chinese (`zh-Hant`, 繁體中文) for TW / HK / MO — needs a native-speaker check
+
+- All 16 phrases plus the 9 allergens, in Traditional characters with **Taiwan-standard** wording and character forms (說 not 説, 裡 not 裏, 英文 not 英語, 結帳, 黃豆). A test fails if any Simplified-only form used on the zh-Hans card turns up on the zh-Hant card.
+- Pronunciation is **Mandarin** Hanyu Pinyin (Taiwan reading: 多少 duōshǎo). Hong Kong and Macau speak Cantonese: the card is written standard Chinese, which reads fine there, but the pinyin guide is not how to say it in Cantonese. A Cantonese guide (Jyutping) and Hong Kong wording (e.g. 唔該, 埋單) would be a separate language entry.
+
+| Phrase | Text | Doubt |
+|---|---|---|
+| toilet | 請問洗手間在哪裡？ | 廁所 is also everyday in Taiwan; 洗手間 is the polite choice. |
+| speakEnglish | 您會說英文嗎？ | 您 is polite; most Taiwanese would say 你 in casual speech. |
+| allergy | 我有過敏症。 | Same doubt as zh-Hans: 我會過敏 / 我對…過敏 may be more natural. |
+| bill | 請幫我結帳。 | 買單 is also common, especially in Hong Kong. |
+| station | 車站在哪裡？ | Ambiguous: 火車站 (rail), 捷運站 (Taipei metro), 港鐵站 (Hong Kong MTR). |
+
+### Allergen slot (9 allergens × 12 languages) — needs a native-speaker check
+
+Allergens: peanuts, tree nuts, shellfish, fish, milk, egg, wheat / gluten, soy, sesame. The card shows "I have an allergy." then each picked allergen in the local language with its English name (and pronunciation for non-Latin scripts). The list layout avoids building "I'm allergic to X and Y" sentences, whose grammar differs per language. Where regional words differ, both are shown.
+
+| Lang | Allergen | Text | Doubt |
+|---|---|---|---|
+| ja | tree nuts | ナッツ類 | Labels in Japan list くるみ, アーモンド, カシューナッツ separately; ナッツ類 is the general word. |
+| ja | shellfish | エビ・カニ・貝類 | Spelled out (prawn, crab, shellfish) rather than the label term 甲殻類. |
+| zh-Hans / zh-Hant | tree nuts | 坚果 / 堅果 | Can be read to include peanuts; check whether 树坚果 / 樹堅果 is clearer on a card. |
+| zh-Hant | soy | 黃豆（大豆） | 黃豆 is everyday Taiwanese; 大豆 is the label word. |
+| ko | shellfish | 새우·게·조개류 | Spelled out rather than 갑각류 (crustaceans). |
+| th | milk | นมวัว | "Cow's milk"; check it covers dairy in general (ผลิตภัณฑ์นม). |
+| th | wheat | ข้าวสาลี (กลูเตน) | Check กลูเตน is understood in restaurants. |
+| vi | peanuts / sesame | Lạc (đậu phộng) / Vừng (mè) | North and South words both shown. |
+| vi | tree nuts | Các loại hạt | "All kinds of nuts/seeds"; may be too broad. |
+| es | peanuts / tree nuts | Cacahuetes / maní; Frutos secos (nueces) | Spain vs Latin America both shown; Mexico says cacahuate. Frutos secos can also mean dried fruit in places. |
+| es | sesame | Sésamo (ajonjolí) | Both regional words shown. |
+| fr | shellfish | Crustacés et coquillages | Label term for molluscs is mollusques. |
+| de | tree nuts / shellfish | Nüsse (Schalenfrüchte); Krebstiere und Muscheln | Label terms; "Weichtiere" is the formal word for molluscs. |
+| it | wheat | Grano (glutine) | Frumento is the label word. |
+| pt | shellfish / sesame | Frutos do mar / marisco; Gergelim (sésamo) | Brazil vs Portugal both shown. |
+| pt | tree nuts | Castanhas e nozes | Portugal's label term is frutos de casca rija. |
+| id | tree nuts | Kacang almond, kenari, mete | Examples rather than a single word; check a native speaker's preferred term. |
+| id | shellfish | Udang, kepiting, kerang | Spelled out. |

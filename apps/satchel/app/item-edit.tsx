@@ -4,6 +4,7 @@
 // T44 (FLOWS §4.1 item 6): an Attachments section edits a draft list that is saved with the booking. After a
 // successful Save the copies of removed files are deleted; leaving without saving deletes only the copies added in
 // this form, so the saved booking and its files are untouched by Cancel or Discard.
+// T72: each place (hotel / activity / car hire, or a journey's from and to) can be put on the map (PositionField).
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo, View } from 'react-native';
@@ -29,10 +30,12 @@ import { removeAppFiles } from '../src/native/files.ts';
 import { useApp } from '../src/state/app.tsx';
 import { findItem, useTrips } from '../src/state/trips.tsx';
 import { space } from '../src/theme/tokens.ts';
+import { AirportFields, useAirportForm } from '../src/ui/AirportFields.tsx';
 import { AttachmentsField } from '../src/ui/AttachmentsField.tsx';
 import { useDiscardConfirm } from '../src/ui/discardConfirm.ts';
 import { ErrorNotice } from '../src/ui/ErrorNotice.tsx';
 import { KindIcon, carrierKey, formTitleKey, kindKey, numberKey, titleKey } from '../src/ui/kinds.tsx';
+import { PositionField } from '../src/ui/PositionField.tsx';
 import { DateField, TimeField } from '../src/ui/DateTimeField.tsx';
 import { Body, Button, Chip, EmptyState, Label, Screen, TextField, Warning } from '../src/ui/kit.tsx';
 import { ZoneField } from '../src/ui/ZonePicker.tsx';
@@ -56,6 +59,7 @@ export default function ItemEditScreen() {
   const [saveFailed, setSaveFailed] = useState(false);
   const [initialFiles] = useState<Attachment[]>(() => prev?.attachments ?? []);
   const [files, setFiles] = useState<Attachment[]>(initialFiles);
+  const airport = useAirportForm(prev);
   const savedIds = useMemo(() => new Set(initialFiles.map((a) => a.id)), [initialFiles]);
   // Every file copied in by this form, and whether the booking was saved: on leaving unsaved, those copies go.
   const addedFiles = useRef<Attachment[]>([]);
@@ -66,8 +70,11 @@ export default function ItemEditScreen() {
     },
     [initialFiles],
   );
-  const { leaving, gestureEnabled } = useDiscardConfirm(draftChanged(initial, d) || !sameAttachments(initialFiles, files));
+  const { leaving, gestureEnabled } = useDiscardConfirm(draftChanged(initial, d) || !sameAttachments(initialFiles, files) || airport.changed);
   const set = (k: keyof ItemDraft) => (v: string) => setD((o) => ({ ...o, [k]: v }));
+  // A position taken from one of the trip's places also fills its name field when that is still empty.
+  const setPos = (k: 'placePos' | 'fromPos' | 'toPos', nameKey: 'placeName' | 'fromName' | 'toName') => (v: string, name?: string) =>
+    setD((o) => ({ ...o, [k]: v, ...(name && !o[nameKey].trim() ? { [nameKey]: name } : {}) }));
   const err = (e: ItemError) => (errors.includes(e) ? t(`itemEdit.err.${e}`) : undefined);
   // Zones already used on this trip, plus the phone's: one tap to fill a zone field.
   const zones = useMemo(() => {
@@ -98,7 +105,7 @@ export default function ItemEditScreen() {
     if (saving) return;
     setSaving(true);
     setSaveFailed(false);
-    const ok = await saveItem({ ...itemFromDraft(d, trip.id, prev), attachments: files });
+    const ok = await saveItem({ ...airport.apply(itemFromDraft(d, trip.id, prev)), attachments: files });
     setSaving(false);
     if (!ok) {
       setSaveFailed(true);
@@ -148,7 +155,9 @@ export default function ItemEditScreen() {
       {isTransport(d.kind) ? (
         <>
           <TextField label={t('item.from')} value={d.fromName} onChange={set('fromName')} />
+          <PositionField label={t('position.from')} value={d.fromPos} onChange={setPos('fromPos', 'fromName')} trip={trip} itemId={prev?.id} />
           <TextField label={t('item.to')} value={d.toName} onChange={set('toName')} />
+          <PositionField label={t('position.to')} value={d.toPos} onChange={setPos('toPos', 'toName')} trip={trip} itemId={prev?.id} />
         </>
       ) : null}
       <Body muted>{t('itemEdit.tzHint')}</Body>
@@ -170,6 +179,7 @@ export default function ItemEditScreen() {
           <TextField label={t('item.address')} value={d.address} onChange={set('address')} multiline />
           <TextField label={t('item.localAddress')} value={d.localAddress} onChange={set('localAddress')} multiline />
           <TextField label={t('itemEdit.placePhone')} value={d.placePhone} onChange={set('placePhone')} placeholder={t('itemEdit.placePhonePlaceholder')} inputMode="tel" />
+          <PositionField label={t('position.place')} value={d.placePos} onChange={setPos('placePos', 'placeName')} trip={trip} itemId={prev?.id} />
         </>
       ) : null}
       {hasCarrier(d.kind) ? <TextField label={t(carrierKey(d.kind))} value={d.carrier} onChange={set('carrier')} /> : null}
@@ -179,6 +189,7 @@ export default function ItemEditScreen() {
           <TextField label={t('item.seat')} value={d.seat} onChange={set('seat')} autoCapitalize="none" />
         </>
       ) : null}
+      {d.kind === 'flight' ? <AirportFields form={airport} start={{ date: d.startDate, time: d.startTime, tz: d.startTz }} endTz={d.endTz} /> : null}
       {hasRef(d.kind) ? <TextField label={t('item.ref')} value={d.ref} onChange={set('ref')} autoCapitalize="none" /> : null}
       <TextField label={t('item.notes')} value={d.notes} onChange={set('notes')} multiline />
       <AttachmentsField

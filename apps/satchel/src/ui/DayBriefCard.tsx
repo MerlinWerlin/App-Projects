@@ -1,0 +1,101 @@
+// T71 "Your day": the morning brief at the top of the Trips tab while a trip is on. Today in the zone you're in:
+// what's next with its countdown ("Train in 2h 10m"), the first booking, how many stops, tonight's hotel (one tap to
+// its address card when an address is saved) and a heads-up for an early start tomorrow. Tapping the card opens the
+// trip at today's section. Logic in src/core/daybrief.ts; renders nothing when no trip is on today.
+import { useRouter } from 'expo-router';
+import { memo } from 'react';
+import { Text, View } from 'react-native';
+import { dayBrief } from '../core/daybrief.ts';
+import { formatDuration, formatTime, zoneCity } from '../core/format.ts';
+import type { Item, Trip } from '../core/model.ts';
+import { useApp } from '../state/app.tsx';
+import { radius, shadowOf, space, typeScale } from '../theme/tokens.ts';
+import { GradientFill } from './hero.tsx';
+import { KindIcon, kindKey } from './kinds.tsx';
+import { PressableScale } from './kit.tsx';
+import { useAirportPrefs } from './AirportFields.tsx';
+import { briefAirportLine } from './AirportPanel.tsx';
+import { useMinute } from './TripPass.tsx';
+
+export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[] }) {
+  const { theme, t } = useApp();
+  const router = useRouter();
+  const now = useMinute();
+  const [airportPrefs] = useAirportPrefs();
+  const b = dayBrief(trips, now);
+  if (!b) return null;
+
+  const at = (i: Item) => {
+    const time = formatTime(i.start.local);
+    return i.start.tz === b.zone ? time : t('brief.timeZone', { time, city: zoneCity(i.start.tz) });
+  };
+  const city = zoneCity(b.zone);
+  const eyebrow = b.lastDay ? t('brief.eyebrowLast', { city }) : t('brief.eyebrow', { day: b.day, total: b.total, city });
+  const n = b.next;
+  const headline = n
+    ? t(n.state === 'now' ? 'brief.nowLeft' : 'brief.nextIn', { kind: t(kindKey(n.item.kind)), d: formatDuration(n.minutes) })
+    : t(b.items.length ? 'brief.allDone' : 'brief.nothing');
+  const lines = [
+    n ? t('brief.next', { time: at(n.item), title: n.item.title }) : '',
+    b.first && b.first.id !== n?.item.id ? t('brief.first', { time: at(b.first), title: b.first.title }) : '',
+    b.stops === 0 ? t('brief.stopsNone') : b.stops === 1 ? t('brief.stopsOne') : t('brief.stopsMany', { n: b.stops }),
+  ].filter(Boolean);
+  // T74: on the day of a flight, when to leave for it (always labelled as general guidance).
+  const flight = briefAirportLine(b.trip, b.zone, b.today, now, airportPrefs, t);
+  const early = b.early ? t('brief.early', { kind: t(kindKey(b.early.kind)), time: at(b.early) }) : '';
+  const hotelName = b.tonight ? b.tonight.item.place?.name?.trim() || b.tonight.item.title : '';
+  const tonight = b.tonight ? t('brief.tonight', { name: hotelName }) : '';
+  const spoken = [eyebrow, headline, ...lines, flight?.line ?? '', flight?.guidance ?? '', b.tonight && !b.tonight.hasAddress ? tonight : '', early].filter(Boolean).join('. ');
+  const muted = [typeScale.body, { color: theme.heroMuted }];
+
+  return (
+    <View style={[{ borderRadius: radius.l, overflow: 'hidden', backgroundColor: theme.hero.map[0] }, shadowOf(theme, 'mid')]}>
+      <GradientFill tone="map" />
+      <PressableScale
+        accessibilityRole="button"
+        accessibilityLabel={spoken}
+        accessibilityHint={t('brief.openHint', { trip: b.trip.name })}
+        onPress={() => router.push({ pathname: '/trip/[id]', params: { id: b.trip.id, day: b.today } })}
+        style={{ padding: space.l, gap: space.s }}
+      >
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
+          <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: theme.heroWash, alignItems: 'center', justifyContent: 'center' }}>
+            <KindIcon kind={n?.item.kind ?? b.first?.kind ?? 'activity'} color={theme.heroAccent} size={18} />
+          </View>
+          <Text style={[typeScale.caption, { color: theme.heroMuted, flex: 1 }]}>{eyebrow}</Text>
+        </View>
+        <Text style={[typeScale.displayM, { color: theme.heroInk, fontVariant: ['tabular-nums'] }]}>{headline}</Text>
+        {lines.map((l) => (
+          <Text key={l} style={muted}>
+            {l}
+          </Text>
+        ))}
+        {flight ? (
+          <View style={{ gap: 2 }}>
+            <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{flight.line}</Text>
+            <Text style={[typeScale.caption, { color: theme.heroMuted }]}>{flight.guidance}</Text>
+          </View>
+        ) : null}
+        {b.tonight && !b.tonight.hasAddress ? <Text style={muted}>{tonight}</Text> : null}
+        {early ? <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{early}</Text> : null}
+      </PressableScale>
+      {b.tonight && b.tonight.hasAddress ? (
+        <>
+          <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.heroMuted, opacity: 0.6 }} />
+          <PressableScale
+            accessibilityRole="button"
+            accessibilityLabel={t('brief.tonightOpen', { name: hotelName })}
+            accessibilityHint={t('brief.tonightHint')}
+            onPress={() => b.tonight && router.push({ pathname: '/address/[id]', params: { id: b.tonight.item.id } })}
+            style={{ paddingHorizontal: space.l, paddingVertical: space.s, flexDirection: 'row', alignItems: 'center', gap: space.s }}
+          >
+            <KindIcon kind="hotel" color={theme.heroAccent} size={18} />
+            <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: theme.heroInk, flex: 1 }]}>
+              {tonight}
+            </Text>
+          </PressableScale>
+        </>
+      ) : null}
+    </View>
+  );
+});

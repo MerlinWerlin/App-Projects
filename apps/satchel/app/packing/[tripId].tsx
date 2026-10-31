@@ -1,7 +1,10 @@
 // Trip packing list (FLOWS §10). No list yet: pick one or more trip-type templates (the suggested one preselected)
-// or start empty. With a list: progress, items grouped by category with checkboxes, add / rename / remove, and
-// Reset ticks (confirmed), and Add a template to an existing list (items already there are skipped; ticks and
-// renames stay). Everything is stored on the phone under 'satchel.packing.v1'. Free forever.
+// or start empty. With a list: a hero card with a progress ring (T75), the laundry switch, opt-in suggestions
+// (forecast / daylight / season / plug adapter; Add or Dismiss, never added on their own), items grouped by category
+// with checkboxes, add / rename / remove, Add a template (items already there are skipped; ticks and renames stay),
+// Share list as text and Repack for home (unticks all, confirmed). Clothes counts follow the trip's nights read in
+// the bookings' own zones (src/core/smartpack.ts). Everything is stored on the phone under 'satchel.packing.v1'.
+// Free forever.
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
@@ -27,12 +30,26 @@ import {
   suggestTemplate,
   toggleItem,
   tripFacts,
-  tripNights,
   type PackItem,
   type PackList,
   type PackStore,
   type Template,
 } from '../../src/core/packing.ts';
+import {
+  acceptSuggestion,
+  dismissedOf,
+  dismissSuggestion,
+  isLaundry,
+  itemQty,
+  LAUNDRY_EVERY_NIGHTS,
+  openSuggestions,
+  restoreSuggestions,
+  ruleIndex,
+  setLaundry,
+  smartSuggestions,
+  tripNightsInZones,
+  type Suggestion,
+} from '../../src/core/smartpack.ts';
 import templateData from '../../src/content/packing_templates.json';
 import type { Trip } from '../../src/core/model.ts';
 import type { Key } from '../../src/i18n/en.ts';
@@ -42,9 +59,12 @@ import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { fonts, radius, space, TOUCH } from '../../src/theme/tokens.ts';
 import { useDiscardConfirm } from '../../src/ui/discardConfirm.ts';
-import { Body, Button, Card, EmptyState, Label, PressableScale, Screen, TextField, Title } from '../../src/ui/kit.tsx';
+import { Body, Button, Card, EmptyState, Label, PressableScale, Screen, TextField, Title, ToggleRow } from '../../src/ui/kit.tsx';
+import { PackHero, SharePackingList, suggestionLabel, SuggestionsCard, nightsText, useSmartData } from '../../src/ui/SmartPack.tsx';
+import { useTempUnit } from '../../src/ui/WeatherCard.tsx';
 
 const TEMPLATES: Template[] = parseTemplates(templateData).templates;
+const RULES = ruleIndex(TEMPLATES);
 
 const CATEGORY_KEYS: Record<string, Key> = {
   documents: 'packing.cat.documents',
@@ -99,7 +119,7 @@ export default function PackingScreen() {
         tripName={trip.name}
         suggested={suggestTemplate(trip, TEMPLATES)}
         onCreate={(chosen) => {
-          const next = chosen.length ? buildList(trip.id, chosen, { nights: tripNights(trip), facts: tripFacts(trip, chosen) }) : emptyList(trip.id);
+          const next = chosen.length ? buildList(trip.id, chosen, { nights: tripNightsInZones(trip), facts: tripFacts(trip, chosen) }) : emptyList(trip.id);
           setStore((s) => putList(s ?? {}, next));
         }}
       />
@@ -189,7 +209,7 @@ function AddTemplatePanel({ trip, list, update, onClose }: { trip: Trip; list: P
   const add = () => {
     const chosen = TEMPLATES.filter((tp) => picked.includes(tp.id));
     if (!chosen.length) return;
-    const opts = { nights: tripNights(trip), facts: tripFacts(trip, chosen) };
+    const opts = { nights: tripNightsInZones(trip), facts: tripFacts(trip, chosen) };
     const { added } = addTemplates(list, chosen, opts);
     update((l) => addTemplates(l, chosen, opts).list);
     setPicked([]);
@@ -218,6 +238,23 @@ function AddTemplatePanel({ trip, list, update, onClose }: { trip: Trip; list: P
 
 function PackingList({ trip, list, update }: { trip: Trip; list: PackList; update: (fn: (l: PackList) => PackList) => void }) {
   const { t, theme } = useApp();
+  const [unit] = useTempUnit();
+  const smart = useSmartData(trip);
+  const nights = tripNightsInZones(trip);
+  const laundry = isLaundry(list);
+  const qtyOf = useCallback((i: PackItem) => itemQty(i, { nights, laundry, rules: RULES }), [nights, laundry]);
+  const all = useMemo(() => smartSuggestions(smart.input), [smart.input]);
+  const open = useMemo(() => openSuggestions(list, all, (s) => suggestionLabel(t, s)), [list, all, t]);
+  const dismissedCount = dismissedOf(list).length;
+  const addSuggestion = (s: Suggestion, label: string) => {
+    const id = newId('pk');
+    update((l) => acceptSuggestion(l, s, label, id).list);
+    AccessibilityInfo.announceForAccessibility(t('smartpack.suggest.added', { label }));
+  };
+  const dismiss = (s: Suggestion) => {
+    update((l) => dismissSuggestion(l, s.id));
+    AccessibilityInfo.announceForAccessibility(t('smartpack.suggest.dismissed'));
+  };
   const tripName = trip.name;
   const [addingTemplate, setAddingTemplate] = useState(false);
   const insets = useSafeAreaInsets();
@@ -251,15 +288,16 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
     update((l) => addItem(l, label, id).list);
   };
 
+  // "Repack for home": untick everything (nothing removed), after a confirm.
   const confirmReset = () =>
-    Alert.alert(t('packing.resetTitle'), t('packing.resetBody'), [
+    Alert.alert(t('smartpack.repackTitle'), t('smartpack.repackBody'), [
       { text: t('common.cancel'), style: 'cancel' },
       {
-        text: t('packing.resetConfirm'),
+        text: t('smartpack.repackConfirm'),
         style: 'destructive',
         onPress: () => {
           update(resetTicks);
-          AccessibilityInfo.announceForAccessibility(t('packing.resetDone'));
+          AccessibilityInfo.announceForAccessibility(t('smartpack.repackDone'));
         },
       },
     ]);
@@ -278,6 +316,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
       ) : (
         <PackRow
           item={row.item}
+          qty={qtyOf(row.item)}
           editing={editing === row.item.id}
           onToggle={() => update((l) => toggleItem(l, row.item.id))}
           onEdit={() => setEditing(row.item.id)}
@@ -292,22 +331,31 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
           }}
         />
       ),
-    [t, theme, editing, update],
+    [t, theme, editing, update, qtyOf],
   );
 
-  const ratio = p.total ? p.done / p.total : 0;
   const header = (
-    <View style={{ gap: space.s, marginBottom: space.s }}>
-      <Title>{t('packing.forTrip', { trip: tripName })}</Title>
-      <View accessible accessibilityRole="progressbar" accessibilityLabel={t('packing.progress', { done: p.done, total: p.total })} accessibilityValue={{ min: 0, max: p.total, now: p.done }} style={{ gap: space.xs }}>
-        <Text style={{ fontFamily: fonts.bodyBold, fontSize: 18, color: theme.ink, fontVariant: ['tabular-nums'] }}>{t('packing.progress', { done: p.done, total: p.total })}</Text>
-        <View style={{ height: 8, borderRadius: radius.s, backgroundColor: theme.line, overflow: 'hidden' }}>
-          <View style={{ width: `${Math.round(ratio * 100)}%`, height: 8, backgroundColor: theme.ok }} />
-        </View>
-        {p.total ? (
-          <Body muted>{p.done === p.total ? t('packing.allPacked') : t('packing.remaining', { count: p.total - p.done })}</Body>
-        ) : null}
-      </View>
+    <View style={{ gap: space.m, marginBottom: space.s }}>
+      <PackHero tripName={tripName} done={p.done} total={p.total} nights={nights} laundry={laundry} />
+      <Card style={{ gap: space.xs }}>
+        <ToggleRow
+          label={t('smartpack.laundry')}
+          hint={t('smartpack.laundryHint', { n: LAUNDRY_EVERY_NIGHTS })}
+          value={laundry}
+          onChange={(on) => update((l) => setLaundry(l, on))}
+        />
+        <Body muted>{t('smartpack.laundryNote', { nights: nightsText(t, nights).toLowerCase() })}</Body>
+      </Card>
+      <SuggestionsCard
+        open={open}
+        unit={unit}
+        dismissedCount={dismissedCount}
+        homeGuessed={smart.homeGuessed}
+        fromForecast={smart.hasForecast}
+        onAdd={addSuggestion}
+        onDismiss={dismiss}
+        onRestore={() => update(restoreSuggestions)}
+      />
       {p.total === 0 ? <EmptyState title={t('packing.emptyTitle')} body={t('packing.emptyBody')} /> : null}
     </View>
   );
@@ -329,7 +377,8 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
       ) : (
         <Button label={t('packing.addTemplate')} hint={t('packing.addTemplateHint')} kind="quiet" onPress={() => setAddingTemplate(true)} />
       )}
-      {p.done > 0 ? <Button label={t('packing.reset')} hint={t('packing.resetHint')} kind="quiet" onPress={confirmReset} /> : null}
+      {p.total > 0 ? <SharePackingList tripName={tripName} list={list} qtyOf={qtyOf} laundry={laundry} categoryName={(c) => categoryName(t, c)} /> : null}
+      {p.done > 0 ? <Button label={t('smartpack.repack')} hint={t('smartpack.repackHint')} kind="quiet" icon="refresh-outline" onPress={confirmReset} /> : null}
     </View>
   );
 
@@ -342,7 +391,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
         data={rows}
         keyExtractor={(r) => r.key}
         renderItem={renderRow}
-        extraData={editing}
+        extraData={[editing, qtyOf]}
         ListHeaderComponent={header}
         ListFooterComponent={footer}
         keyboardShouldPersistTaps="handled"
@@ -354,6 +403,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
 
 const PackRow = memo(function PackRow({
   item,
+  qty,
   editing,
   onToggle,
   onEdit,
@@ -362,6 +412,8 @@ const PackRow = memo(function PackRow({
   onRemove,
 }: {
   item: PackItem;
+  /** Shown quantity (worked out from the trip's nights and the laundry switch). */
+  qty: number | undefined;
   editing: boolean;
   onToggle: () => void;
   onEdit: () => void;
@@ -372,8 +424,8 @@ const PackRow = memo(function PackRow({
   const { t, theme } = useApp();
   const [name, setName] = useState(item.label);
   const state = t(item.done ? 'packing.statePacked' : 'packing.stateNotPacked');
-  const a11y = item.qty
-    ? t('packing.itemQtyA11y', { label: item.label, qty: t('packing.qtyA11y', { qty: item.qty }), state })
+  const a11y = qty
+    ? t('packing.itemQtyA11y', { label: item.label, qty: t('packing.qtyA11y', { qty }), state })
     : t('packing.itemA11y', { label: item.label, state });
 
   if (editing) {
@@ -421,7 +473,7 @@ const PackRow = memo(function PackRow({
         >
           {item.label}
         </Text>
-        {item.qty ? <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.muted, fontVariant: ['tabular-nums'] }}>{t('packing.qty', { qty: item.qty })}</Text> : null}
+        {qty ? <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.muted, fontVariant: ['tabular-nums'] }}>{t('packing.qty', { qty })}</Text> : null}
       </PressableScale>
       <PressableScale
         accessibilityRole="button"

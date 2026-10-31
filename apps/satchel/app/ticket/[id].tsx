@@ -21,6 +21,7 @@ import { openInSystem } from '../../src/native/pickers.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { findItem, useTrips } from '../../src/state/trips.tsx';
 import { fonts, radius, space, TOUCH } from '../../src/theme/tokens.ts';
+import { AirportPanel } from '../../src/ui/AirportPanel.tsx';
 import { kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, EmptyState, Label, PressableScale, Warning } from '../../src/ui/kit.tsx';
 
@@ -148,6 +149,7 @@ export default function TicketScreen() {
               {big(item.seat)}
             </View>
           ) : null}
+          <AirportPanel item={item} />
           {when(startLabel, item.start)}
           {item.end ? when(endLabel, item.end) : null}
           {route ? <Body>{route}</Body> : null}

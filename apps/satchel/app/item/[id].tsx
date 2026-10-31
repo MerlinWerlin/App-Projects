@@ -12,6 +12,7 @@ import type { Key } from '../../src/i18n/en.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { findItem, useTrips } from '../../src/state/trips.tsx';
 import { fonts, space } from '../../src/theme/tokens.ts';
+import { AirportPanel } from '../../src/ui/AirportPanel.tsx';
 import { KindIcon, carrierKey, kindKey, numberKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, EmptyState, Label, Screen, Warning } from '../../src/ui/kit.tsx';
 import { ItemAddressSlot } from '../../src/ui/slots/ItemAddressSlot.tsx';
@@ -101,6 +102,7 @@ export default function ItemScreen() {
           </>
         ) : null}
       </Card>
+      <AirportPanel item={item} framed />
       {readable ? null : <Warning text={t('t43.item.zoneUnreadable')} />}
       {clashTitles ? <Warning text={t('spec41.item.overlaps', { titles: clashTitles })} /> : null}
       <ItemTicketSlot trip={trip} item={item} />

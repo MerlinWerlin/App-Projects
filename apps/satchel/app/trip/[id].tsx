@@ -2,8 +2,10 @@
 // day with its bookings and any journey still under way from an earlier day; add a booking by kind.
 // T41: rows that clash carry a worded overlap marker; a trip that has ended says so at the top (EDGE_CASES "Past
 // trips": kept and available, never presented as coming up).
+// T68: the jet lag card is hidden once the trip is over; a trip just imported from a file that left journal photos
+// behind says how many, once (the photosLeftOut param from TripImport), until dismissed.
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { overlapPartners, overlapTitles } from '../../src/core/clashes.ts';
@@ -17,11 +19,16 @@ import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { fonts, space, TOUCH } from '../../src/theme/tokens.ts';
 import { ItemRow } from '../../src/ui/ItemRow.tsx';
+import { JetLagCard } from '../../src/ui/JetLagCard.tsx';
+import { ReadinessCard } from '../../src/ui/ReadinessCard.tsx';
 import { KindIcon, kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, Screen, Warning } from '../../src/ui/kit.tsx';
 import { TripPackingSlot } from '../../src/ui/slots/TripPackingSlot.tsx';
 import { TripSpendingSlot } from '../../src/ui/slots/TripSpendingSlot.tsx';
+import { TripJournalSlot } from '../../src/ui/slots/TripJournalSlot.tsx';
+import { SharePlan } from '../../src/ui/SharePlan.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
+import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
 
 const DEMO_INTRO_KEY = 'satchel.demoIntro.done.v1';
 const NOT_DONE = false;
@@ -95,7 +102,8 @@ function TripPlaces({ trip }: { trip: Trip }) {
 }
 
 export default function TripScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  // `day` (T71): open scrolled to that day's section, e.g. today from the "Your day" card on the Trips tab.
+  const { id, photosLeftOut, day: focusDay } = useLocalSearchParams<{ id: string; photosLeftOut?: string; day?: string }>();
   const { t, theme, lang } = useApp();
   const { trips } = useTrips();
   const router = useRouter();
@@ -103,6 +111,17 @@ export default function TripScreen() {
   const [adding, setAdding] = useState<string | null>(null);
   const trip = trips.find((x) => x.id === id);
   const partners = useMemo(() => overlapPartners(trip?.items ?? []), [trip]);
+  const days = useMemo(() => (trip ? groupByDay(trip) : []), [trip]);
+  const listRef = useRef<FlatList<Day>>(null);
+  const focusIndex = focusDay ? days.findIndex((d) => d.date === focusDay) : -1;
+  const scrolled = useRef(false);
+  const retries = useRef(0);
+  useEffect(() => {
+    if (focusIndex < 0 || scrolled.current) return;
+    scrolled.current = true;
+    const id = setTimeout(() => listRef.current?.scrollToIndex({ index: focusIndex, animated: false, viewOffset: space.l }), 0);
+    return () => clearTimeout(id);
+  }, [focusIndex]);
 
   const add = (kind: ItemKind, date: string) => {
     setAdding(null);
@@ -157,16 +176,26 @@ export default function TripScreen() {
   const clashes = overlaps(trip.items);
   const empty = trip.items.length === 0;
   const past = tripPhase(trip, todayIn(deviceZone())) === 'past';
+  const leftOut = Math.max(0, Math.floor(Number(photosLeftOut) || 0));
   return (
     <>
       <Stack.Screen options={{ title: trip.name }} />
       <FlatList
+        ref={listRef}
         style={{ flex: 1, backgroundColor: theme.paper }}
         contentContainerStyle={{ padding: space.l, paddingBottom: insets.bottom + space.xxl, gap: space.m }}
-        data={groupByDay(trip)}
+        data={days}
         keyExtractor={(d) => d.date}
         renderItem={renderDay}
         extraData={adding}
+        initialNumToRender={Math.max(10, focusIndex + 1)}
+        onScrollToIndexFailed={(info) => {
+          // Rows above it aren't measured yet: jump near it, then try again once they are.
+          if (retries.current >= 3) return;
+          retries.current += 1;
+          listRef.current?.scrollToOffset({ offset: info.averageItemLength * info.index, animated: false });
+          setTimeout(() => listRef.current?.scrollToIndex({ index: info.index, animated: false, viewOffset: space.l }), 100);
+        }}
         ListHeaderComponent={
           <View style={{ gap: space.s, marginBottom: space.s }}>
             <Text style={{ fontFamily: fonts.body, fontSize: 16, color: theme.muted }}>{formatRange(trip.startDate, trip.endDate, lang)}</Text>
@@ -176,6 +205,27 @@ export default function TripScreen() {
                 <Body>{t('spec41.trip.pastNotice')}</Body>
               </Card>
             ) : null}
+            {leftOut > 0 ? (
+              <Card>
+                <View accessible accessibilityLiveRegion="polite" style={{ gap: space.xs }}>
+                  <Label>{t('tripfile.photos.leftOutTitle')}</Label>
+                  <Body>{leftOut === 1 ? t('tripfile.photos.leftOutOne') : t('tripfile.photos.leftOutMany', { n: leftOut })}</Body>
+                  <Body muted>{t('tripfile.photos.leftOutAsk')}</Body>
+                </View>
+                <Button label={t('tripfile.photos.dismiss')} hint={t('tripfile.photos.dismissHint')} kind="quiet" onPress={() => router.setParams({ photosLeftOut: '' })} />
+              </Card>
+            ) : null}
+            {/* T69: the trip on the map, day by day (numbered stops, dashed day routes). */}
+            <Button
+              label={t('triproute.seeOnMap')}
+              hint={t('triproute.seeOnMapHint')}
+              kind="secondary"
+              icon="map-outline"
+              onPress={() => router.navigate({ pathname: '/map', params: { tripId: trip.id, placeId: '' } })}
+            />
+            <ReadinessCard trip={trip} />
+            {past ? null : <JetLagCard trip={trip} />}
+            <WeatherCard trip={trip} />
             <DemoIntro trip={trip} />
             {empty ? (
               <EmptyState
@@ -188,11 +238,13 @@ export default function TripScreen() {
             {clashes.map(([a, b]) => (
               <Warning key={`${a.id}-${b.id}`} text={t('trip.warnClash', { a: a.title, b: b.title })} />
             ))}
+            <TripJournalSlot trip={trip} />
             <TripSpendingSlot trip={trip} />
             <TripPackingSlot trip={trip} />
             <TripPlaces trip={trip} />
-            <Button label={t('spec.timeline.map')} hint={t('spec.timeline.mapHint')} kind="quiet" onPress={() => router.navigate({ pathname: '/map', params: { tripId: trip.id, placeId: '' } })} />
+
             <Button label={t('trip.edit')} hint={t('spec.timeline.editHint')} kind="quiet" onPress={() => router.push({ pathname: '/trip-edit', params: { id: trip.id } })} />
+            <SharePlan trip={trip} />
             <TripExport trip={trip} />
           </View>
         }

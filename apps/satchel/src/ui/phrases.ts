@@ -15,6 +15,7 @@ export const PHRASE_TABLE = data as PhraseTable;
 export const LANG_KEY: Record<PhraseLang, Key> = {
   ja: 'phrases.lang.ja',
   'zh-Hans': 'phrases.lang.zh-Hans',
+  'zh-Hant': 'phrases.lang.zh-Hant',
   ko: 'phrases.lang.ko',
   th: 'phrases.lang.th',
   vi: 'phrases.lang.vi',

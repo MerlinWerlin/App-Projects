@@ -254,9 +254,13 @@ export function overpassQuery(lat: number, lon: number, radius: number): string 
   return `[out:json][timeout:20];nwr["amenity"="toilets"](around:${r},${fixed(lat)},${fixed(lon)});out center ${MAX_RESULTS};`;
 }
 
-/** Apple Maps walking directions to the point, labelled with the name when there is one. */
-export function appleMapsWalkUrl(lat: number, lon: number, name?: string): string {
-  const base = `http://maps.apple.com/?daddr=${fixed(lat)},${fixed(lon)}&dirflg=w`;
+/**
+ * Apple Maps walking directions to the point, labelled with the name when there is one. Starts from `from` when
+ * given (T69: between two stops of a trip day), otherwise from wherever the phone is.
+ */
+export function appleMapsWalkUrl(lat: number, lon: number, name?: string, from?: LatLon): string {
+  const start = from ? `saddr=${fixed(from.lat)},${fixed(from.lon)}&` : '';
+  const base = `http://maps.apple.com/?${start}daddr=${fixed(lat)},${fixed(lon)}&dirflg=w`;
   const q = name?.trim();
   return q ? `${base}&q=${encodeURIComponent(q)}` : base;
 }

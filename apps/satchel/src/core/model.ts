@@ -2,6 +2,9 @@
 // Times are stored as a wall-clock local time plus an IANA zone (what the ticket says), never as a bare UTC
 // instant, so "Depart 21:00 Tokyo" stays 21:00 Tokyo whatever zone the phone is in.
 
+import type { JournalEntry } from './journal.ts';
+import type { AirportInfo } from './leaveby.ts';
+
 /** Wall-clock local time, minute precision: 'YYYY-MM-DDTHH:mm'. */
 export type LocalDateTime = string;
 /** Calendar date: 'YYYY-MM-DD'. */
@@ -60,6 +63,8 @@ export type Item = {
   carrier?: string;
   number?: string;
   notes?: string;
+  /** T74 flights only: terminal, gate, boarding and bag-drop times (departure airport's clock), airport buffer and travel time. Read defensively in src/core/leaveby.ts. */
+  airport?: AirportInfo;
   attachments: Attachment[];
 };
 
@@ -79,7 +84,11 @@ export type Trip = {
   budget?: Budget;
   /** Manual exchange rates: 1 unit of the keyed currency (ISO 4217) = this many home units. */
   rates?: Record<string, number>;
+  /** T61: the day each rate was last typed in the converter, with the rate it stamped (a rate changed elsewhere no longer matches, so its old day is never shown). Read defensively in src/core/convert.ts. */
+  ratesUpdated?: Record<string, { day: LocalDate; rate: number }>;
   expenses?: Expense[];
+  /** T64 trip journal: per-day pages (absent on older trips). Read defensively in src/core/journal.ts. */
+  journal?: JournalEntry[];
 };
 
 export const EXPENSE_CATEGORIES = ['food', 'transport', 'stay', 'activities', 'shopping', 'other'] as const;

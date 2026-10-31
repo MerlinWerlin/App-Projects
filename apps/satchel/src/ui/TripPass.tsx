@@ -6,7 +6,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { memo, useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { formatRange, formatTime, zoneCity } from '../core/format.ts';
-import { clockPair, countdown, formatOffset, todayAgenda, tripDays, tripRoute, type Countdown } from '../core/glance.ts';
+import { agendaBesideBrief } from '../core/daybrief.ts';
+import { clockPair, countdown, formatOffset, tripDays, tripRoute, type Countdown } from '../core/glance.ts';
 import type { Trip } from '../core/model.ts';
 import type { T } from '../i18n/core.ts';
 import { useApp } from '../state/app.tsx';
@@ -43,7 +44,7 @@ export function countdownHeadline(t: T, c: Countdown, place: string): string {
 }
 
 /** One-minute ticker for live cards (clock, agenda). */
-function useMinute() {
+export function useMinute() {
   const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
     const id = setInterval(() => setNow(Date.now()), 60_000);
@@ -167,11 +168,14 @@ export const ClockCard = memo(function ClockCard({ destTz, homeTz }: { destTz: s
   );
 });
 
-/** Today's bookings across trips on now, as a small vertical timeline (done / now / later). Nothing when empty. */
+/**
+ * Today's bookings across trips on now, as a small vertical timeline (done / now / later). Nothing when empty.
+ * T72: while "Your day" shows, that trip's bookings are left to it (src/core/daybrief.ts agendaBesideBrief).
+ */
 export const TodayCard = memo(function TodayCard({ trips, max = 4 }: { trips: Trip[]; max?: number }) {
   const { theme, t } = useApp();
   const now = useMinute();
-  const rows = todayAgenda(trips, now).slice(0, max);
+  const rows = agendaBesideBrief(trips, now).slice(0, max);
   if (!rows.length) return null;
   return (
     <SectionCard title={t('design.today.title')} icon="today-outline" tone="accent">

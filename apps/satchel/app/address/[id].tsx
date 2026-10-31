@@ -4,10 +4,12 @@
 // still works where the clipboard module is missing).
 // T41 (FLOWS §7.1, ACCESSIBILITY "Hotel address card"): an Edit hotel address action under a saved address, and a
 // hint on Close.
+// T73: "Find my way back" opens the offline compass to this hotel when its place has a map position.
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { AccessibilityInfo, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { canFindWayBack, hotelKey } from '../../src/core/wayback.ts';
 import { clipboardAvailable, copyText } from '../../src/native/clipboard.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { findItem, useTrips } from '../../src/state/trips.tsx';
@@ -56,6 +58,15 @@ export default function AddressScreen() {
               </Text>
             ) : null}
             {!canCopy ? <Body muted>{t('address.copyTip')}</Body> : null}
+            {canFindWayBack(place) ? (
+              <Button
+                kind="secondary"
+                icon="compass-outline"
+                label={t('wayback.openTo')}
+                hint={t('wayback.openToHint', { name: place.name || found.item.title })}
+                onPress={() => router.push({ pathname: '/wayback', params: { target: hotelKey(found.item.id) } })}
+              />
+            ) : null}
             <Button
               kind="quiet"
               label={t('spec41.address.edit')}

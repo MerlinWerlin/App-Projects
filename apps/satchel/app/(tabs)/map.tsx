@@ -8,6 +8,9 @@
 // Offline city maps (T47): a list of the city packs in the satchel-maps-v1 release (saved so it shows offline) with
 // Download / progress / Cancel / Delete. When the map is over a downloaded city its raster tiles are drawn from the
 // phone, so that city works in flight mode, and an "Offline map: <city>" chip says so.
+// Trip on the map (T69): scoped to a trip, its bookings with a place position are numbered stops per day with a
+// dashed line, filtered by day chips under the map, with a summary card (src/ui/TripRouteLayer.tsx).
+// T73: "Find my way back" (the offline compass, app/wayback.tsx) under Where am I?, and for a selected saved place.
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
@@ -50,6 +53,9 @@ import { kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, Chip, Label, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
 import { PermissionNotice } from '../../src/ui/PermissionNotice.tsx';
+import { TripRouteDays, TripRoutePanel, useTripRoute } from '../../src/ui/TripRouteLayer.tsx';
+import { DaylightLine } from '../../src/ui/WeatherCard.tsx';
+import { placeKey } from '../../src/core/wayback.ts';
 
 const CATS = parsePoiCategories(tagData);
 const SETS: PoiSet[] = [parsePoiSet(tokyoData, CATS), parsePoiSet(kyotoData, CATS)].filter((s): s is PoiSet => s !== null);
@@ -284,6 +290,7 @@ export default function MapScreen() {
   useEffect(() => setScopeId(scopeParam(params.tripId)), [params.tripId]);
   const scope = useMemo(() => scopeTrips(trips, scopeId), [trips, scopeId]);
   const scoped = scope.scoped;
+  const layer = useTripRoute(scoped);
 
   const today = todayIn(deviceZone());
   const active = useMemo(() => scoped ?? activeTrip(trips, today), [scoped, trips, today]);
@@ -300,7 +307,11 @@ export default function MapScreen() {
   const savedAt = useCallback((at: LatLon) => saved.find((p) => haversineMeters(p, at) <= SAME_SPOT_M) ?? null, [saved]);
 
   const pins = useMemo<MapPin[]>(() => {
-    const out: MapPin[] = bookings.map((b) => ({
+    // Scoped to a trip, a booking's own place is its numbered stop, and so are a journey's from / to while the
+    // stations chip is on (T72); its other pins follow the day chips.
+    const shownBookings = scoped ? bookings.filter((b) => !layer.coversPin(b.id) && layer.showsItem(b.itemId)) : bookings;
+    const out: MapPin[] = [...layer.pins];
+    for (const b of shownBookings) out.push({
       id: `b:${b.id}`,
       lat: b.lat,
       lon: b.lon,
@@ -308,7 +319,7 @@ export default function MapScreen() {
       subtitle: t(kindKey(b.kind)),
       color: theme.accent,
       a11y: t('map.pinBooking', { kind: t(kindKey(b.kind)), name: b.name }),
-    }));
+    });
     for (const s of saved) {
       out.push({ id: `s:${s.id}`, lat: s.lat, lon: s.lon, title: s.name, subtitle: t('places.savedTo', { trip: s.tripName }), color: theme.warn, a11y: t('places.pinA11y', { name: s.name }) });
     }
@@ -321,7 +332,7 @@ export default function MapScreen() {
     }
     if (here) out.push({ id: 'me', lat: here.lat, lon: here.lon, title: t('map.here'), color: theme.ok, a11y: t('map.here') });
     return out;
-  }, [bookings, saved, savedSpots, shownPois, selected, here, theme, t, catLabel]);
+  }, [bookings, saved, savedSpots, shownPois, selected, here, theme, t, catLabel, scoped, layer.pins, layer.showsItem, layer.coversPin]);
 
   // The map only reads its first region; later moves go through `focus`.
   const [initialRegion] = useState<Region>(() => (set ? regionFor([set.center, ...set.pois]) : regionFor(bookings)) ?? FALLBACK_REGION);
@@ -330,6 +341,12 @@ export default function MapScreen() {
   useEffect(() => {
     if (focus) setView({ lat: focus.region.latitude, lon: focus.region.longitude });
   }, [focus]);
+  // A route fit moves the map too: look at the middle of what it frames, for the offline city tiles.
+  useEffect(() => {
+    const pts = layer.fit?.points;
+    const r = pts ? regionFor(pts) : null;
+    if (r) setView({ lat: r.latitude, lon: r.longitude });
+  }, [layer.fit]);
   const offlineCity = useMemo(() => pickCityFor(view.lat, view.lon, installed), [view, installed]);
   const offlineTiles = useMemo(() => (offlineCity ? offlineTilesFor(offlineCity) : null), [offlineCity]);
   const showCity = useCallback((city: CityMap) => setFocus({ region: regionForCity(city), key: Date.now() }), []);
@@ -346,6 +363,12 @@ export default function MapScreen() {
       if (id.startsWith('b:')) {
         const pin = bookings.find((b) => `b:${b.id}` === id);
         if (pin) select({ type: 'booking', pin });
+      } else if (id.startsWith('r:')) {
+        // A stop's id is r:<itemId>:<place|from|to>, the same as its booking pin's id after the prefix.
+        const key = id.slice(2);
+        const pin = bookings.find((b) => b.id === key);
+        if (pin) select({ type: 'booking', pin });
+        else router.push(`/item/${key.slice(0, key.lastIndexOf(':'))}`); // same spot as an earlier booking: open it directly
       } else if (id.startsWith('s:')) {
         select({ type: 'saved', id: id.slice(2) });
       } else if (id.startsWith('p:')) {
@@ -356,7 +379,7 @@ export default function MapScreen() {
         }
       }
     },
-    [bookings, set, savedAt, select],
+    [bookings, set, savedAt, select, router],
   );
 
   const onMapPress = useCallback(
@@ -400,10 +423,12 @@ export default function MapScreen() {
     const place = params.placeId ? saved.find((p) => p.placeId === params.placeId) : undefined;
     if (place) {
       setNotice(null);
+      layer.open(false);
       select({ type: 'saved', id: place.id });
       focusOn(place);
       return;
     }
+    if (layer.open(true)) return;
     const region = regionFor([...bookings, ...saved]);
     if (region) setFocus({ region, key: Date.now() });
     // Only when the requested trip or place changes, not on every save.
@@ -546,6 +571,7 @@ export default function MapScreen() {
         <Body muted>{[s.category ? catLabel(s.category) : null, t('places.savedTo', { trip: s.tripName })].filter(Boolean).join(' · ')}</Body>
         {here ? <Body muted>{dist(haversineMeters(here, s), 'map.fromHere')}</Body> : null}
         {s.sample ? <Body muted>{t('map.sample')}</Body> : null}
+        <Button kind="secondary" icon="compass-outline" label={t('wayback.openTo')} hint={t('wayback.openToHint', { name: s.name })} onPress={() => router.push({ pathname: '/wayback', params: { target: placeKey(s.tripId, s.placeId) } })} />
         <Button label={t('places.remove')} hint={t('places.removeHint')} kind="quiet" onPress={() => confirmRemove(s)} />
       </>
     );
@@ -559,11 +585,19 @@ export default function MapScreen() {
           <Button label={t('map.showAll')} hint={t('map.showAllHint')} kind="quiet" onPress={showAll} />
         </Card>
       ) : null}
+      {scoped ? (
+        <TripRoutePanel
+          layer={layer}
+          onOpenItem={(itemId) => router.push(`/item/${itemId}`)}
+          onBackToTrip={() => router.push(`/trip/${scoped.id}`)}
+        />
+      ) : null}
       <Body muted>{t('map.online')}</Body>
       <OfflineMaps installed={installed} refreshInstalled={refreshInstalled} onShow={showCity} />
 
       <View style={{ gap: space.s }}>
         <Button label={t('map.whereAmI')} hint={t('map.whereHint')} onPress={whereAmI} />
+        <Button kind="secondary" icon="compass-outline" label={t('wayback.open')} hint={t('wayback.openHint')} onPress={() => router.push('/wayback')} />
         <Body muted>{t('map.whereExplain')}</Body>
         {loc.s === 'checking' ? (
           <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 15, color: theme.muted }}>
@@ -702,7 +736,10 @@ export default function MapScreen() {
           offlineTiles={offlineTiles}
           limitZoom={net === 'offline'}
           onRegionChange={(r) => setView({ lat: r.latitude, lon: r.longitude })}
+          lines={layer.lines}
+          fit={layer.fit}
         />
+        {scoped ? <TripRouteDays layer={layer} /> : null}
         {offlineCity && offlineTiles ? (
           <View
             accessible
@@ -716,6 +753,7 @@ export default function MapScreen() {
             {t('citymaps.offlineNoCity')}
           </Text>
         ) : null}
+        <DaylightLine trip={active} />
         {mapAvailable() ? <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('places.tapHint')}</Text> : null}
         {shownPois.length > 0 ? (
           <>

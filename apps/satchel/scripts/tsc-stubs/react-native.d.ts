@@ -598,6 +598,7 @@ export interface FlatListProps<ItemT> extends ScrollViewProps {
   updateCellsBatchingPeriod?: number | undefined;
   windowSize?: number | undefined;
   fadingEdgeLength?: number | undefined;
+  onScrollToIndexFailed?: ((info: { index: number; highestMeasuredFrameIndex: number; averageItemLength: number }) => void) | undefined;
 }
 export class FlatList<ItemT = any> extends React.Component<FlatListProps<ItemT>> {
   scrollToEnd(params?: { animated?: boolean | null | undefined }): void;
@@ -1054,6 +1055,22 @@ export interface LinkingStatic {
   sendIntent(action: string, extras?: Array<{ key: string; value: string | number | boolean }>): Promise<void>;
 }
 export const Linking: LinkingStatic;
+
+export type ShareContent = { title?: string | undefined; url: string; message?: string | undefined } | { title?: string | undefined; url?: string | undefined; message: string };
+export type ShareOptions = {
+  dialogTitle?: string | undefined;
+  excludedActivityTypes?: Array<string> | undefined;
+  tintColor?: ColorValue | undefined;
+  subject?: string | undefined;
+  anchor?: number | undefined;
+};
+export type ShareAction = { action: 'sharedAction' | 'dismissedAction'; activityType?: string | null | undefined };
+export interface ShareStatic {
+  share(content: ShareContent, options?: ShareOptions): Promise<ShareAction>;
+  sharedAction: 'sharedAction';
+  dismissedAction: 'dismissedAction';
+}
+export const Share: ShareStatic;
 
 export type PlatformOSType = 'ios' | 'android' | 'macos' | 'windows' | 'web' | 'native';
 export interface PlatformStatic {
