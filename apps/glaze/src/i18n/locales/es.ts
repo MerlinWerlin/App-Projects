@@ -30,7 +30,7 @@ const base: LocaleMessages = {
     error: 'Algo salió mal',
     itemCount: { zero: 'Ningún elemento', one: '{count} elemento', many: '{count} de elementos', other: '{count} elementos' },
   },
-  tabs: { themes: 'Temas', icons: 'Iconos', live: 'Live', settings: 'Ajustes' },
+  tabs: { themes: 'Temas', icons: 'Iconos', live: 'Live', pets: 'Mascotas', settings: 'Ajustes' },
   settings: {
     language: {
       title: 'Idioma',

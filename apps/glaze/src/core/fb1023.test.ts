@@ -20,17 +20,14 @@ test('fb-1023: the showcase grid fade is opacity only', () => {
   assert.doesNotMatch(grid, SPRINGY);
 });
 
-test('fb-1023: the Wallpapers tiles fade (opacity only) when the sub-tab or discovery tab changes', () => {
+// T186 (owner-1101 #4 supersedes these two fb-1023 guards): the Wallpapers tab lost its sub-tabs,
+// discovery block and tile grid. What still holds: no springs there, and Segmented keeps its grid.
+test('fb-1023: the Wallpapers tab stays calm (no springs) after T186', () => {
   const wp = strip(read('app', '(tabs)', 'wallpapers.tsx'));
-  assert.match(wp, /useAnimatedStyle\(\(\) => \(\{ opacity: fade\.value \}\)\)/);
-  // T162: the grid is a virtualised list; each memoised row fades with the same shared value.
-  assert.match(wp, /<Animated\.View style=\{\[styles\.row, rowFade\]\}>/);
   assert.doesNotMatch(wp, SPRINGY);
 });
 
-test('fb-1023: All / New / Picks / Liked is a 2×2 block on Wallpapers', () => {
-  const wp = strip(read('app', '(tabs)', 'wallpapers.tsx'));
-  assert.match(wp, /<Segmented grid label=\{t\('tabs\.wallpapersTab\.discover\.label'\)\}/);
+test('fb-1023: Segmented still offers the 2×2 grid block', () => {
   const seg = strip(read('src', 'ui', 'Segmented.tsx'));
   assert.match(seg, /grid && styles\.grid/);
   assert.match(seg, /segGrid: \{ flexGrow: 1, flexShrink: 0, flexBasis: '45%' \}/);

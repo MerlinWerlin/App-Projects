@@ -7,6 +7,7 @@ import { en } from '../i18n/locales/en.ts';
 import { TRANSLATIONS } from '../i18n/locales/index.ts';
 import {
   HIDDEN_TAB_ROUTES,
+  LIVE_MAKER_HREF,
   TAB_ORDER,
   WIDGET_TAB_SIZES,
   isWidgetTabSize,
@@ -23,8 +24,10 @@ import { THEMES } from './themes.ts';
 
 const root = process.cwd();
 
-test('tab order is Themes / Widgets / Icons / Wallpapers / Live; Settings is hidden', () => {
-  assert.deepEqual([...TAB_ORDER], ['themes', 'widgets', 'icons', 'wallpapers', 'live']);
+// owner-1101 #4 (T186) supersedes T70's order: Pets joins, Live moves into Wallpapers.
+test('tab order is Themes / Widgets / Icons / Pets / Wallpapers; Settings is hidden', () => {
+  assert.deepEqual([...TAB_ORDER], ['themes', 'widgets', 'icons', 'pets', 'wallpapers']);
+  assert.ok(!(TAB_ORDER as readonly string[]).includes('live'), 'Live is not a tab any more');
   assert.deepEqual([...HIDDEN_TAB_ROUTES], ['settings']);
   assert.equal(tabLabelKey('wallpapers'), 'tabs.wallpapers');
 });
@@ -33,6 +36,19 @@ test('every tab has a route file, and hidden routes keep theirs (old links still
   for (const id of [...TAB_ORDER, ...HIDDEN_TAB_ROUTES]) assert.ok(existsSync(join(root, 'app', '(tabs)', `${id}.tsx`)), id);
   assert.ok(existsSync(join(root, 'app', 'widget-studio.tsx')));
   assert.ok(existsSync(join(root, 'app', 'wallpaper.tsx')));
+  // T186: /live (the Live Photo maker) and /pets keep working as stack routes; no tab file for Live.
+  assert.equal(LIVE_MAKER_HREF, '/live');
+  assert.ok(existsSync(join(root, 'app', 'live', 'index.tsx')));
+  assert.ok(!existsSync(join(root, 'app', '(tabs)', 'live.tsx')));
+  assert.ok(existsSync(join(root, 'app', 'pets.tsx')));
+});
+
+test('the Pets tab is a thin wrapper over the one pets screen (app/pets.tsx)', () => {
+  const tab = readFileSync(join(root, 'app', '(tabs)', 'pets.tsx'), 'utf8');
+  assert.match(tab, /from '\.\.\/pets'/);
+  const wallpapers = readFileSync(join(root, 'app', '(tabs)', 'wallpapers.tsx'), 'utf8');
+  assert.match(wallpapers, /LIVE_MAKER_HREF/, 'Wallpapers opens the Live Photo maker');
+  assert.match(wallpapers, /'\/collage'/, 'Wallpapers keeps the collage maker');
 });
 
 test('the tab layout lists the tabs in TAB_ORDER and hides Settings', () => {

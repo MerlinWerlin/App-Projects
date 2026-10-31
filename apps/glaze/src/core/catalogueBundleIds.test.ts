@@ -1,0 +1,93 @@
+// T183 (owner 1 Nov): home-screen icons must open apps with no Safari hop. Guards: every catalogue
+// bundle id is a well-formed, unique reverse-DNS id (null only when not known for certain, never
+// guessed), every URL scheme is well-formed, the schemes Safari rejected on the owner's iPhone are
+// gone, and the install default is the guided Shortcuts method with the "Open App" action.
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { BUNDLE_ID_RE, CATALOGUE, URL_SCHEME_RE, entryFromRow, getById, type Row } from './catalogue.ts';
+import { DEFAULT_INSTALL_METHOD, SHORTCUT_ACTION, defaultInstallState, shortcutSteps } from './install.ts';
+import { availableMethods, effectiveChoice, recommendedMethod } from './installMethods.ts';
+
+test('every catalogue entry carries a bundleId field: a well-formed reverse-DNS id or null', () => {
+  for (const e of CATALOGUE) {
+    assert.ok('bundleId' in e, `${e.id}: no bundleId field`);
+    if (e.bundleId === null) continue;
+    assert.equal(typeof e.bundleId, 'string', e.id);
+    assert.match(e.bundleId, BUNDLE_ID_RE, `${e.id}: ${e.bundleId}`);
+    assert.ok(e.bundleId.length <= 155, `${e.id}: bundle id too long`);
+  }
+});
+
+test('bundle ids are unique (case-insensitive) and the common apps all have one', () => {
+  const seen = new Map<string, string>();
+  for (const e of CATALOGUE) {
+    if (!e.bundleId) continue;
+    const k = e.bundleId.toLowerCase();
+    assert.ok(!seen.has(k), `${e.id} and ${seen.get(k)} share ${e.bundleId}`);
+    seen.set(k, e.id);
+  }
+  // Every Apple system app in the catalogue is a com.apple.* id.
+  for (const e of CATALOGUE.filter((x) => x.category === 'System')) {
+    assert.ok(e.bundleId, `${e.id}: system app without a bundle id`);
+    // Apple's own ids (the Apple Developer app's public id is developer.apple.wwdc-Release).
+    assert.match(e.bundleId, /^(com\.apple\.|developer\.apple\.)/, e.id);
+  }
+  assert.ok(seen.size >= 200, `only ${seen.size} bundle ids`);
+});
+
+test('the owner 1 Nov apps have their exact public bundle ids', () => {
+  const expect: Record<string, string> = {
+    settings: 'com.apple.Preferences',
+    notes: 'com.apple.mobilenotes',
+    weather: 'com.apple.weather',
+    youtube: 'com.google.ios.youtube',
+    instagram: 'com.burbn.instagram',
+    whatsapp: 'net.whatsapp.WhatsApp',
+    spotify: 'com.spotify.client',
+  };
+  for (const [id, bundle] of Object.entries(expect)) assert.equal(getById(id)?.bundleId, bundle, id);
+});
+
+test('every non-null URL scheme is well-formed; the ones Safari rejected are gone', () => {
+  for (const e of CATALOGUE) {
+    if (e.urlScheme === null) {
+      assert.equal(e.verified, false, `${e.id}: verified without a scheme`);
+      continue;
+    }
+    assert.match(e.urlScheme, URL_SCHEME_RE, `${e.id}: ${e.urlScheme}`);
+    assert.match(e.urlScheme, /^[a-z][a-z0-9+.-]*:(\/\/)?$/i, `${e.id}: ${e.urlScheme}`);
+    assert.ok(!/^app-prefs:/i.test(e.urlScheme) && !/^prefs:/i.test(e.urlScheme), `${e.id}: private settings scheme`);
+  }
+  // Owner 1 Nov: "the address is invalid" for both. They now use Open App only.
+  for (const id of ['settings', 'youtube']) {
+    assert.equal(getById(id)?.urlScheme, null, id);
+    assert.equal(getById(id)?.verified, false, id);
+  }
+});
+
+test('entryFromRow (shared with other catalogue data files) keeps bundleId and drops verified without a scheme', () => {
+  const row: Row = ['demo-app', 'Demo App', 'Utilities', null, true, 'box', ['demo'], 'com.example.demo'];
+  const e = entryFromRow(row);
+  assert.equal(e.bundleId, 'com.example.demo');
+  assert.equal(e.verified, false);
+  assert.ok(Object.isFrozen(e));
+});
+
+test('install default is the guided Shortcuts method with the Open App action', () => {
+  assert.equal(DEFAULT_INSTALL_METHOD, 'shortcuts');
+  assert.equal(defaultInstallState().choice, 'shortcuts');
+  assert.equal(SHORTCUT_ACTION, 'Open App');
+  const opts = { profileEnabled: true, profileCount: 10 };
+  assert.equal(availableMethods(opts)[0], 'shortcuts');
+  assert.equal(recommendedMethod(opts), 'shortcuts');
+  assert.equal(effectiveChoice(defaultInstallState().choice, opts, false), 'shortcuts');
+  const steps = shortcutSteps('Instagram', 'instagram://').join('\n');
+  assert.match(steps, /"Open App"/);
+  assert.doesNotMatch(steps, /Open URL|instagram:\/\//);
+  // The screen never offers "Open URL" steps any more.
+  const screen = readFileSync(new URL('../../app/install.tsx', import.meta.url), 'utf8');
+  assert.ok(!screen.includes('install.steps.addOpenUrl') && !screen.includes('install.steps.pasteUrl'));
+  assert.ok(screen.includes("t('install.steps.addOpenApp')"));
+  assert.ok(screen.includes("t('install.method.bulkWarning')"), 'the Bulk warning is on screen');
+});

@@ -1,17 +1,21 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  CHOICE_EPOCH,
   PROFILE_TIP_IDS,
   SHORTCUT_UNDO_STEPS,
   availableMethods,
   bulkSelectable,
   effectiveChoice,
   installSummary,
+  isCurrentPick,
+  recommendedMethod,
   showBulkCard,
   showMethodPicker,
   tipsForInstallMode,
 } from './installMethods.ts';
 import { PROFILE_INSTALL_ENABLED } from '../config/install.ts';
+import { DEFAULT_INSTALL_METHOD, defaultInstallState } from './install.ts';
 import { en } from '../i18n/locales/en.ts';
 import { readFileSync } from 'node:fs';
 
@@ -22,14 +26,17 @@ test('switch is a boolean exported from src/config/install.ts', () => {
   assert.equal(typeof PROFILE_INSTALL_ENABLED, 'boolean');
 });
 
-test('owner 25 Oct: profile on: Bulk is the only method; off or no link: Shortcuts fallback, no picker', () => {
-  assert.deepEqual(availableMethods({ profileEnabled: true, profileCount: 3 }), ['bulk']);
-  assert.equal(showMethodPicker({ profileEnabled: true, profileCount: 3 }), false);
+test('T183 (owner 1 Nov, supersedes 25 Oct): Shortcuts / Open App first and recommended; Bulk an optional second method', () => {
+  assert.deepEqual(availableMethods({ profileEnabled: true, profileCount: 3 }), ['shortcuts', 'bulk']);
+  assert.equal(showMethodPicker({ profileEnabled: true, profileCount: 3 }), true);
   assert.equal(showBulkCard({ profileEnabled: true, profileCount: 3 }), true);
+  assert.equal(recommendedMethod({ profileEnabled: true, profileCount: 3 }), 'shortcuts');
   assert.deepEqual(availableMethods({ profileEnabled: true, profileCount: 0 }), ['shortcuts']);
   assert.equal(showBulkCard({ profileEnabled: false, profileCount: 3 }), false);
   assert.deepEqual(availableMethods({ profileEnabled: false, profileCount: 3 }), ['shortcuts']);
   assert.equal(showMethodPicker({ profileEnabled: false, profileCount: 3 }), false);
+  assert.equal(DEFAULT_INSTALL_METHOD, 'shortcuts');
+  assert.equal(defaultInstallState().choice, 'shortcuts');
 });
 
 test('bulk selectable only when enabled and some app has a link', () => {
@@ -38,12 +45,18 @@ test('bulk selectable only when enabled and some app has a link', () => {
   assert.equal(bulkSelectable({ profileEnabled: false, profileCount: 5 }), false);
 });
 
-test('effectiveChoice ignores a saved bulk choice when the switch is off', () => {
-  assert.equal(effectiveChoice('bulk', { profileEnabled: true, profileCount: 2 }), 'bulk');
-  assert.equal(effectiveChoice('bulk', { profileEnabled: false, profileCount: 2 }), 'shortcuts');
-  assert.equal(effectiveChoice('bulk', { profileEnabled: true, profileCount: 0 }), 'shortcuts');
-  // Owner 25 Oct: an old saved Shortcuts choice no longer keeps people off Bulk.
-  assert.equal(effectiveChoice('shortcuts', { profileEnabled: true, profileCount: 2 }), 'bulk');
+test('effectiveChoice: Shortcuts unless Bulk was explicitly picked since the 1 Nov switch', () => {
+  const on = { profileEnabled: true, profileCount: 2 };
+  assert.equal(effectiveChoice('bulk', on, true), 'bulk');
+  assert.equal(effectiveChoice('bulk', on, false), 'shortcuts');
+  assert.equal(effectiveChoice('shortcuts', on, true), 'shortcuts');
+  assert.equal(effectiveChoice('bulk', { profileEnabled: false, profileCount: 2 }, true), 'shortcuts');
+  assert.equal(effectiveChoice('bulk', { profileEnabled: true, profileCount: 0 }, true), 'shortcuts');
+  // A pick saved before the switch (no or an older epoch) no longer counts.
+  assert.equal(isCurrentPick({ choiceExplicit: true }), false);
+  assert.equal(isCurrentPick({ choiceExplicit: true, choiceEpoch: CHOICE_EPOCH - 1 }), false);
+  assert.equal(isCurrentPick({ choiceExplicit: true, choiceEpoch: CHOICE_EPOCH }), true);
+  assert.equal(isCurrentPick({ choiceEpoch: CHOICE_EPOCH }), false);
 });
 
 test('summary counts every app as Shortcuts when the switch is off', () => {
@@ -72,6 +85,8 @@ test('install screen and tips read the switch and the method helpers', () => {
   const screen = readFileSync(new URL('../../app/install.tsx', import.meta.url), 'utf8');
   assert.match(screen, /PROFILE_INSTALL_ENABLED/);
   assert.match(screen, /effectiveChoice\(/);
+  assert.match(screen, /isCurrentPick\(install\.state\)/);
+  assert.match(screen, /choiceEpoch: CHOICE_EPOCH/);
   assert.match(screen, /showMethodPicker\(/);
   // fb-1022 G1: the first-run hints moved from the Themes screen into theme detail.
   const detail = readFileSync(new URL('../../app/theme/[id].tsx', import.meta.url), 'utf8');

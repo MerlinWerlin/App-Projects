@@ -100,8 +100,9 @@ test('list rows are memoised with stable keys and render callbacks', () => {
   assert.match(widgets, /const renderRow: ListRenderItem<FamilyRow<WidgetTabCard>> = useCallback\(/);
   assert.match(widgets, /keyExtractor=\{rowKey\}/);
   const walls = strip(read('app/(tabs)/wallpapers.tsx'));
-  assert.match(walls, /const TileRow = memo\(/);
-  assert.match(walls, /const renderRow: ListRenderItem<readonly WallpaperTile\[\]> = useCallback\(/);
+  // T186 (owner 1 Nov): the gallery tile grid became My wallpapers' thumbnail rows.
+  assert.match(walls, /const ThumbRow = memo\(/);
+  assert.match(walls, /const renderRow: ListRenderItem<MyWallpaper\[\]> = useCallback\(/);
   assert.match(walls, /keyExtractor=\{rowKey\}/);
   for (const [f, name] of [
     ['src/ui/WidgetPreview.tsx', 'WidgetPreview'],

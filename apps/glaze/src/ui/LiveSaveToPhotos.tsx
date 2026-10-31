@@ -23,6 +23,7 @@ import { Sheet } from './Sheet';
 import { haptic } from './haptics';
 import { textStyleFor } from './i18nLayout';
 import { liveContext, localizedSaveOptions } from './liveContext';
+import { rememberWallpaper } from '../store/myWallpapers';
 
 type FrameData = {
   source: ImageProps['source'];
@@ -128,7 +129,11 @@ export function LiveSaveToPhotos({ getProject, getPlayer }: Props) {
         },
         device.pixels,
       );
-      if (res.ok) finish({ kind: 'saved-still', width: res.width, height: res.height });
+      if (res.ok) {
+        // T186: the still is also listed under My wallpapers on the Wallpapers tab.
+        void rememberWallpaper({ kind: 'live', uri: res.uri, width: res.width, height: res.height, loopId: p.id });
+        finish({ kind: 'saved-still', width: res.width, height: res.height });
+      }
       else if (res.reason === 'denied') finish({ kind: 'denied' });
       else if (res.reason === 'unreadable') finish(p.kind === 'gif' ? { kind: 'unsupported' } : { kind: 'no-frame' });
       else finish({ kind: 'failed' });

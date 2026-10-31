@@ -61,3 +61,13 @@
 "pet.happy" = "ごきげん";
 "pet.playful" = "遊びたい";
 "pet.sleepy" = "ねむい";
+"pet.content" = "おだやか";
+"pet.hungry" = "おなかぺこぺこ";
+"pet.lifeSleeping" = "ぐっすり眠っています";
+"pet.lifeStir" = "もぞもぞして、また眠りました";
+"pet.lifeWaking" = "大きくのびをして目覚めました";
+"pet.lifeIdle" = "のんびり座っています";
+"pet.lifeEating" = "おやつを食べています";
+"pet.lifePlaying" = "遊んでいます";
+"pet.lifeWandering" = "ちょっとお散歩中";
+"pet.lifeHappy" = "うれしそう！";

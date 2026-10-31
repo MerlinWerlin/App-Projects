@@ -17,16 +17,16 @@ Paste after the feature sections (release standard §3; same pattern as the othe
 
 ## Icon install
 
-Since T138 (24 Oct) the guided Shortcuts method is the default and Recommended in every build; Bulk install (profile served to Safari) is an optional second card labelled beta, shown only while `PROFILE_INSTALL_ENABLED` is true. The owner's device test found the profile never reached Settings (Files route); the Safari route is unverified on a device. Advice for the first App Store submission: set the switch to false (Guideline 5.5).
+Since T183 (owner 1 Nov) the guided Shortcuts method with the **"Open App"** action (the app chosen from Apple's list, no URL) is the default and Recommended for every app in every build: it opens the app directly, with no Safari hop and no "Open in <app>?" prompt. Bulk install (web clip profile served to Safari) is an optional second card, shown only while `PROFILE_INSTALL_ENABLED` is true, with a plain warning that its icons open through Safari, iOS asks "Open in <app>?" each time, and some apps can't open that way (web clips hold only a URL; Apple's WebClip payload has no key to launch an app by bundle id). Guideline 5.5: the Shortcuts method uses no profile at all, so the first App Store submission can set the switch to false and lose nothing that matters.
 
 Pick the version that matches `PROFILE_INSTALL_ENABLED` in `src/config/install.ts` for this build.
 
 **Switch OFF (recommended for the first App Store submission):**
 
 > Glaze makes themed icons on the device. It can't change another app's icon, and it doesn't try to.
-> To add an icon, the user makes a shortcut in Apple's Shortcuts app with the "Open URL" or "Open App"
-> action and picks the Glaze image from Photos as the shortcut's icon. Glaze saves the images to a
-> "Glaze icons" album, shows the steps for each app and offers a link to copy. It doesn't install
+> To add an icon, the user makes a shortcut in Apple's Shortcuts app with the "Open App" action
+> (choosing the app from the list) and picks the Glaze image from Photos as the shortcut's icon. Glaze
+> saves the images to a "Glaze icons" album and shows the steps for each app, one at a time. It doesn't install
 > anything, change system settings or use device management. The install screen also explains how to
 > remove the shortcuts and bring back the original icons. There are no accounts, the icon flow makes no network
 > calls, and photos stay on the device.

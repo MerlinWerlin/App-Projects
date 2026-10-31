@@ -66,6 +66,12 @@ export interface WidgetsAdapter {
    */
   setSeamless(input: SeamlessInput): Promise<WidgetsResult>;
   /**
+   * T187: theme widget art FITTED (never cropped) on a plain theme colour or a blurred copy of the
+   * art, written to the same `seamless-<size>.png` the "GlazeSeamless" widget shows. A build whose
+   * bridge predates T187: { available: false, reason: 'not-built' } (callers fall back to setSeamless).
+   */
+  setWidgetArt(input: WidgetArtInput): Promise<WidgetsResult>;
+  /**
    * T146 widget link check (fb-1025 A): App Group container, stored theme and what the widget
    * extension last rendered (src/core/widgetLink.ts widgetLinkVerdict turns it into an answer).
    * Read-only. Expo Go / Android / missing module: { available: false }. A build whose bridge
@@ -87,6 +93,30 @@ export type SeamlessInput = {
   heroUri?: string | null;
   size: 'small' | 'medium' | 'large';
 };
+
+/** T187: inputs for widgets.setWidgetArt (local file:// URI of the art; never uploaded anywhere). */
+export type WidgetArtInput = {
+  artUri: string;
+  /** Output size in pixels (the widget's size on this phone). */
+  widthPx: number;
+  heightPx: number;
+  background: 'theme' | 'blur';
+  /** #RRGGBB behind the art (and under the blur). */
+  colour: string;
+  /** 'fill' only when the art already has the widget's aspect (src/core/widgetOptions.ts placeArt). */
+  fit: 'fit' | 'fill';
+  size: 'small' | 'medium' | 'large';
+};
+
+/** T187: true when the input is something the bridge can act on. */
+export function validWidgetArtInput(input: WidgetArtInput | null | undefined): boolean {
+  if (!input || typeof input.artUri !== 'string' || input.artUri.length === 0) return false;
+  if (input.size !== 'small' && input.size !== 'medium' && input.size !== 'large') return false;
+  if (input.background !== 'theme' && input.background !== 'blur') return false;
+  if (input.fit !== 'fit' && input.fit !== 'fill') return false;
+  if (typeof input.colour !== 'string' || !/^#[0-9A-Fa-f]{6}$/.test(input.colour)) return false;
+  return [input.widthPx, input.heightPx].every((n) => typeof n === 'number' && Number.isFinite(n) && n >= 1);
+}
 
 /** T131: true when the input is something the bridge can act on (checked before calling native). */
 export function validSeamlessInput(input: SeamlessInput | null | undefined): boolean {
@@ -118,6 +148,8 @@ type NativeBridge = {
     heroUri: string,
     family: string,
   ): Promise<boolean>;
+  /** T187: fit the art on a colour / blurred background, write seamless-<family>.png, reload "GlazeSeamless". */
+  setWidgetArt?(artUri: string, w: number, h: number, background: string, colour: string, fit: string, family: string): Promise<boolean>;
   /** T146: { containerOk, themeStored, lastRead, storedTheme } (read-only). */
   linkStatus?(): Promise<unknown>;
 };
@@ -230,8 +262,24 @@ export const widgets: WidgetsAdapter = {
   logHabit,
   migrateLocalHabits,
   setSeamless,
+  setWidgetArt,
   linkStatus,
 };
+
+async function setWidgetArt(input: WidgetArtInput): Promise<WidgetsResult> {
+  try {
+    const status = await isAvailable();
+    const mod = status.available ? loadNative() : null;
+    if (!mod) return { available: false, ok: false, reason: status.reason };
+    if (typeof mod.setWidgetArt !== 'function') return { available: false, ok: false, reason: 'not-built' };
+    if (!validWidgetArtInput(input)) return { available: true, ok: false, reason: 'failed' };
+    return run((m) =>
+      m.setWidgetArt?.(input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.background, input.colour, input.fit, input.size),
+    );
+  } catch {
+    return { available: true, ok: false, reason: 'failed' };
+  }
+}
 
 async function linkStatus(): Promise<WidgetLinkResult> {
   const none = (reason: WidgetsReason, available = false): WidgetLinkResult => ({ ...NO_WIDGET_LINK, available, reason });

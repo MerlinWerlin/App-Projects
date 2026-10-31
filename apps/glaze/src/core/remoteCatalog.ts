@@ -261,11 +261,12 @@ export type RemoteArtFiles = { wallpaper: string | null; thumb: string | null; h
 
 const HERO_ROLE: Readonly<Record<HeroSize, RemoteArtRole>> = { small: 'widget-small', medium: 'widget-medium', large: 'widget-large' };
 
-export function remoteArtFiles(m: Pick<RemoteArtManifest, 'assets'>): RemoteArtFiles {
+export function remoteArtFiles(m: Pick<RemoteArtManifest, 'assets'> & { widgets?: RemoteArtManifest['widgets'] }): RemoteArtFiles {
   const find = (role: RemoteArtRole) => m.assets.find((a) => a.role === role)?.path ?? null;
   const heroes: Partial<Record<HeroSize, string>> = {};
   for (const s of HERO_SIZES) {
-    const p = find(HERO_ROLE[s]);
+    // T187: a v2 pack may ship no widget-<size> file; its first option for the size stands in.
+    const p = find(HERO_ROLE[s]) ?? (m.widgets ?? []).find((o) => o.sizes.includes(s))?.image ?? null;
     if (p) heroes[s] = p;
   }
   return { wallpaper: find('wallpaper'), thumb: find('thumb'), heroes };

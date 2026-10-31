@@ -180,7 +180,7 @@ test('fb-1025 C: docs record the 25 Oct decision and the DTS evidence', () => {
 });
 
 test('fb-1025 C: the Live Photo screens use no springs or bounce', () => {
-  for (const f of ['src/ui/LivePhotoGuide.tsx', 'src/ui/LivePhotoSheet.tsx', 'src/ui/LiveSaveToPhotos.tsx', 'app/(tabs)/live.tsx', 'app/live/[id].tsx']) {
+  for (const f of ['src/ui/LivePhotoGuide.tsx', 'src/ui/LivePhotoSheet.tsx', 'src/ui/LiveSaveToPhotos.tsx', 'app/live/index.tsx', 'app/live/[id].tsx']) {
     assert.doesNotMatch(read(f), /withSpring|Animated\.spring|\bspring\(|Easing\.bounce|Easing\.elastic|damping:/, f);
   }
 });

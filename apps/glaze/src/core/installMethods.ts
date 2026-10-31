@@ -2,7 +2,7 @@
 // PROFILE_INSTALL_ENABLED in src/config/install.ts; this file holds the pure logic so the screen
 // never has to reason about it. Pure TS (no React Native / Expo).
 
-import type { InstallChoice, InstallPlan } from './install.ts';
+import { DEFAULT_INSTALL_METHOD, type InstallChoice, type InstallPlan } from './install.ts';
 import type { TipId } from './tips.ts';
 
 export type MethodOptions = {
@@ -21,25 +21,32 @@ export type MethodOptions = {
 const serverOk = (opts: MethodOptions) => opts.profileServer !== false;
 
 /**
- * Methods to offer (owner 25 Oct, glaze-retest B: "this can't be the main method, no one will do
- * it, I don't even think we should make it an option"). When Bulk can be used it is the ONLY
- * method offered; the guided Shortcuts path is no longer a choice. Shortcuts only remains as the
- * fallback when Bulk can't work at all: the switch is off (App Review) or no picked app has a link
- * a profile can open. Apps without a link inside a Bulk plan are still listed on the screen (the
- * profile can't carry them), but Shortcuts is not offered as a method next to Bulk.
+ * T183: generation of the method choice. Bumped on 1 Nov 2026 when Shortcuts / Open App became
+ * the default: an explicit pick saved before (choiceEpoch absent or lower) no longer counts.
  */
-export function availableMethods(opts: MethodOptions): InstallChoice[] {
-  return bulkSelectable(opts) ? ['bulk'] : ['shortcuts'];
+export const CHOICE_EPOCH = 2;
+
+/** True when a saved state holds an explicit method pick made since the current default. */
+export function isCurrentPick(s: { choiceExplicit?: true; choiceEpoch?: number }): boolean {
+  return s.choiceExplicit === true && s.choiceEpoch === CHOICE_EPOCH;
 }
 
 /**
- * The method to badge "Recommended": Bulk whenever it can be used (also without the Safari server:
- * the share-sheet route stays, with its warning). Kept as a function so the server flag can matter
- * again in one place.
+ * Methods to offer, the recommended one first. T183 (owner 1 Nov, supersedes owner 25 Oct "Bulk
+ * is the only method"): the guided Shortcuts method with the "Open App" action is the default for
+ * every app, because it opens apps directly with no Safari hop and no "Open in <app>?" prompt.
+ * Bulk (web clip profile) is an optional second method only while PROFILE_INSTALL_ENABLED is true
+ * and some picked app has a link a profile can open; the screen warns that its icons open through
+ * Safari and ask every time.
  */
+export function availableMethods(opts: MethodOptions): InstallChoice[] {
+  return bulkSelectable(opts) ? ['shortcuts', 'bulk'] : ['shortcuts'];
+}
+
+/** The method to badge "Recommended": always Shortcuts / Open App (T183). */
 export function recommendedMethod(opts: MethodOptions): InstallChoice {
   void serverOk(opts);
-  return bulkSelectable(opts) ? 'bulk' : 'shortcuts';
+  return DEFAULT_INSTALL_METHOD;
 }
 
 /** True when the method picker is worth showing (more than one method). */
@@ -47,7 +54,7 @@ export function showMethodPicker(opts: MethodOptions): boolean {
   return availableMethods(opts).length > 1;
 }
 
-/** True when the screen shows the Bulk card (the one method), false for the Shortcuts-only text. */
+/** True when the Bulk card is offered (as the optional second method). */
 export function showBulkCard(opts: MethodOptions): boolean {
   return availableMethods(opts).includes('bulk');
 }
@@ -58,14 +65,11 @@ export function bulkSelectable(opts: MethodOptions): boolean {
 }
 
 /**
- * The method actually in use: Bulk whenever it can be used, whatever was saved before (an old
- * saved 'shortcuts' choice no longer keeps people on Shortcuts), else the Shortcuts fallback.
- * `saved` and `explicit` are kept for the callers' signature.
+ * The method actually in use. Shortcuts / Open App unless the person explicitly picked Bulk since
+ * the 1 Nov switch (`explicit`, see isCurrentPick) and Bulk can still be used.
  */
 export function effectiveChoice(saved: InstallChoice, opts: MethodOptions, explicit: boolean = true): InstallChoice {
-  void saved;
-  void explicit;
-  return bulkSelectable(opts) ? 'bulk' : 'shortcuts';
+  return explicit && saved === 'bulk' && bulkSelectable(opts) ? 'bulk' : DEFAULT_INSTALL_METHOD;
 }
 
 export type SummaryKind = 'none' | 'viaShortcuts' | 'viaProfile' | 'mixed';

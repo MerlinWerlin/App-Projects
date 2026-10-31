@@ -1,7 +1,7 @@
 {
  "app": "glaze",
  "title": "Glaze (icon themes, matching widgets and wallpaper packs, working title)",
- "updated": "2026-10-31",
+ "updated": "2026-11-01",
  "milestones": {
   "TRIAL": [
    "T01",
@@ -2447,11 +2447,148 @@
    "source": "run 190 (oversight v211 D211-1)",
    "title": "Plus sheet honest after owner-1031: themes row says 'More Plus themes are on the way' (no stale 32-in-4-packs count), Always-free row says every gallery theme is free (no stale starter count); 12 locales; guard test",
    "note": "commit in run 190; no plus:true packs, price and paywall copy otherwise unchanged (D211-1)"
+  },
+  {
+   "id": "T183",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101"
+   ],
+   "source": "owner brief 1 Nov 08:32 Sydney (manual fire)",
+   "title": "owner-1101 #1: icons open apps with no Safari hop: guided Shortcuts \"Open App\" (by bundle id) is the default; Bulk profile optional with a plain \"asks Open in <app>?\" warning; fix invalid schemes (Settings, YouTube...); every catalogue entry gets a verified bundleId; test every entry has a valid bundle id and well-formed scheme",
+   "commit": "c4c4293",
+   "note": "Open App default; 237 of 597 hand-written entries have a certain bundle id, rest null (no guessing; Open App picks by name); Bulk optional with Safari warning. JS only."
+  },
+  {
+   "id": "T184",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101"
+   ],
+   "source": "owner brief 1 Nov 08:32 Sydney (manual fire)",
+   "title": "owner-1101 #2: applying a theme switches Icons tab, Widgets tab and wallpaper state immediately (frozen tabs re-read on focus/subscribe)",
+   "commit": "4df98f2",
+   "note": "applyThemeEverywhere + focus re-reads; JS only"
+  },
+  {
+   "id": "T185",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101"
+   ],
+   "source": "owner brief 1 Nov 08:32 Sydney (manual fire)",
+   "title": "owner-1101 #3: theme page = preview + \"Use this theme\" + three separate entry points (Wallpaper, Icons, Widgets), each its own screen; wallpaper \"Saved to Photos ✓\" + always \"Save again\"",
+   "commit": "4df98f2",
+   "note": "theme page: Use this theme + Wallpaper/Icons/Widgets screens; Saved ✓ + Save again; JS only"
+  },
+  {
+   "id": "T186",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101"
+   ],
+   "source": "owner brief 1 Nov 08:32 Sydney (manual fire)",
+   "title": "owner-1101 #4: 5 tabs Themes · Widgets · Icons · Pets · Wallpapers; Live moves into Wallpapers; Wallpapers keeps collage maker + \"My wallpapers\"; Liked stays in Themes; old wallpapers wiped from Wallpapers tab",
+   "commit": "9112f18",
+   "note": "5 tabs; Live at /live; My wallpapers; old gallery removed from the tab (dead code kept for a later cleanup); JS only"
+  },
+  {
+   "id": "T187",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101"
+   ],
+   "source": "owner brief 1 Nov 08:32 Sydney (manual fire)",
+   "title": "owner-1101 #5: theme pack format v2 (widget options list per theme, source image + suggested sizes), v1 still works; every Codex widget art piece offered; art fitted not cropped (theme/blurred background); premium widget menus; docs/THEME_PACKS.md",
+   "commit": "26449bc",
+   "note": "pack v2 (widgetOptions.ts, THEME_PACKS.md); v1 art offered in every size, fitted; art menu; native setWidgetArt + scaledToFit (new build). Republish packs in v2 only after this update reaches phones."
+  },
+  {
+   "id": "T188",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101"
+   ],
+   "source": "owner brief 1 Nov 08:32 Sydney (manual fire)",
+   "title": "owner-1101 #6: Island pets alive: time-of-day behaviour (sleep/wake/eat), idle animations, tap reactions, movement within Live Activity rules; Pets tab with state, mood, settings; battery-light",
+   "commit": "ce66544",
+   "note": "petLife.ts day cycle, Pets screen, Live Activity poses + staleDate switch (new build). Cat default name now Mushy. Follow-up: sync the Island on app open, not only from Pets."
+  },
+  {
+   "id": "T189",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "owner-1101"
+   ],
+   "source": "owner brief 1 Nov 08:32 Sydney (manual fire)",
+   "title": "owner-1101 #7: much bigger find-apps catalogue (aim ~1,500-2,000) with bundle ids checked against public Apple lookup data; generic glyphs/monograms only (StarNet part rejected: hard rule)",
+   "note": "part done (run 203, 94a2800): +79 apps, every bundle id checked against Apple public lookup via WebFetch (2-3 ids per call; shell blocked). Catalogue 676. Continue in later runs in batches; never guess ids."
+  },
+  {
+   "id": "T190",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101"
+   ],
+   "source": "owner brief 1 Nov 08:32 Sydney (manual fire)",
+   "title": "owner-1101 #8: cute prism creature as app icon direction + mascot; short calm startup animation (no bounce/springs)",
+   "commit": "0ad963b",
+   "note": "new prism creature icon/splash/mascot + 1.6 s calm intro (new build); brand PNGs 2.2 MB -> 308 KB"
+  },
+  {
+   "id": "T191",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101"
+   ],
+   "source": "owner brief 1 Nov 08:32 Sydney (manual fire)",
+   "title": "owner-1101 #9: docs/TRIAL.md \"New since your last test (1 Nov)\" yes/no questions for items 1-8, TestFlight wording",
+   "note": "docs/TRIAL.md 1 Nov section"
+  },
+  {
+   "id": "T192",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "owner-1101",
+    "follow-up"
+   ],
+   "source": "run 203 T188",
+   "title": "Island pet: sync the Live Activity whenever Glaze opens (one syncIslandPet call on app foreground), not only from the Pets screen"
+  },
+  {
+   "id": "T193",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "owner-1101",
+    "follow-up"
+   ],
+   "source": "run 203 T186/T183",
+   "title": "Cleanup: remove dead old-wallpaper-gallery code/strings (WallpaperTile, wallpaperTiles, wallpaperGroups, tabs.wallpapersTab gallery strings), unused Open URL/copy-link install strings, \"Live tab\" tip label; full-Live-Photo save adds a My wallpapers entry"
   }
  ],
  "priority_order": {
   "note": "run 191: oversight v212 (D211-1 still open, no new directives); only cloud-safe item T181 string retirement; rest waits on owner/PC or D130-2 holds. run 189: owner-1031 brief (manual fire, docs/OWNER_1031.md) outranks the backlog: T177-T180. run 188: T173 closed (all seven screens sliced); T176 Icons/Wallpapers/Live premium slices done (JS only, D130-2). run 187: oversight v210 lifted D206-1/D207-1 (PR #131 merged); T173 onboarding + Themes browse, T168 done (JS only, D130-2). run 185: D207-1 (≤2 small JS-only tasks): T175 + T173 theme-detail apply skeleton; no native. run 184: T173 Install/Plus/Settings slices + T166 + T156 done; D206-1 still holds native code (PR #128 result unreadable from the cloud). run 183: T173 slices continue every run (next Install flow); D206-1 holds new native code until a build with glaze-home-scan is confirmed green. run 182: owner-1030b brief (Jared's chat 30 Oct evening, synced from App-Projects 2b133ce) outranks the backlog: T169-T172 then T173 premium UI every run. run 179: owner-1030 brief (manual fire, docs/OWNER_1030.md) outranks the backlog: A (T159-T161) and C (T162) first, then B (T163-T164), D (T165). run 132: PR 107 (T155 widget/theme/icon repairs + T158 Island pets, v1.0.1) synced from App-Projects 1f90aa7; T157 done. 26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
   "order": [
+   "T183",
+   "T184",
+   "T185",
+   "T186",
+   "T187",
+   "T188",
+   "T189",
+   "T190",
+   "T191",
    "T177",
    "T178",
    "T179",

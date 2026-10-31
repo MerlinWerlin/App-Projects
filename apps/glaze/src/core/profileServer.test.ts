@@ -199,15 +199,15 @@ test('PROFILE_INSTALL_ENABLED still governs visibility, whatever the server says
   assert.match(read('app/install.tsx'), /profileEnabled: PROFILE_INSTALL_ENABLED/);
 });
 
-test('owner 25 Oct: with or without the server, Bulk is the only method, recommended and the default', () => {
+test('T183 (owner 1 Nov, supersedes 25 Oct): with or without the server, Shortcuts is recommended and the default; Bulk optional', () => {
   for (const profileServer of [true, false]) {
     const opts = { profileEnabled: true, profileCount: 5, profileServer };
-    assert.deepEqual(availableMethods(opts), ['bulk']);
-    assert.equal(recommendedMethod(opts), 'bulk');
-    assert.equal(effectiveChoice('bulk', opts, false), 'bulk');
-    assert.equal(effectiveChoice('shortcuts', opts, false), 'bulk');
-    assert.equal(effectiveChoice('shortcuts', opts, true), 'bulk', 'an old Shortcuts pick no longer wins');
-    assert.equal(recommendedMethod({ ...opts, profileCount: 0 }), 'shortcuts', 'no app has a link: fallback');
+    assert.deepEqual(availableMethods(opts), ['shortcuts', 'bulk']);
+    assert.equal(recommendedMethod(opts), 'shortcuts');
+    assert.equal(effectiveChoice('bulk', opts, false), 'shortcuts', 'an old Bulk default no longer wins');
+    assert.equal(effectiveChoice('shortcuts', opts, false), 'shortcuts');
+    assert.equal(effectiveChoice('bulk', opts, true), 'bulk', 'an explicit Bulk pick since the switch is kept');
+    assert.equal(recommendedMethod({ ...opts, profileCount: 0 }), 'shortcuts');
     assert.deepEqual(availableMethods({ ...opts, profileCount: 0 }), ['shortcuts']);
   }
 });

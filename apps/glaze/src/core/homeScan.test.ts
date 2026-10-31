@@ -40,6 +40,7 @@ const e = (id: string, name: string, aliases: string[] = [], glyph = 'box'): Cat
   verified: false,
   glyph,
   aliases,
+  bundleId: null,
 });
 
 const CAT: readonly CatalogueEntry[] = Object.freeze([

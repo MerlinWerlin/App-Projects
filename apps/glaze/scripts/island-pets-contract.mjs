@@ -15,7 +15,8 @@ for (const [locale, copy] of Object.entries(PET_COPY)) {
   const existing = readFileSync(new URL(path, root), 'utf8');
   const marker = '/* Island pets: generated from src/i18n/pets.ts */';
   const prefix = existing.split(marker)[0].trimEnd();
-  const lines = ['open', 'happy', 'playful', 'sleepy'].map(key => `"pet.${key}" = ${JSON.stringify(copy[key])};`).join('\n');
+  // T188: pet life captions and the two new moods (src/core/petLife.ts PET_CAPTIONS).
+  const lines = ['open', 'happy', 'playful', 'sleepy', 'content', 'hungry', 'lifeSleeping', 'lifeStir', 'lifeWaking', 'lifeIdle', 'lifeEating', 'lifePlaying', 'lifeWandering', 'lifeHappy'].map(key => `"pet.${key}" = ${JSON.stringify(copy[key])};`).join('\n');
   artifacts.push([path, `${prefix}\n\n${marker}\n${lines}\n`]);
 }
 for (const [path, expected] of artifacts) {

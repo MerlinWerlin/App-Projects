@@ -30,7 +30,7 @@ const base: LocaleMessages = {
     error: 'Algo deu errado',
     itemCount: { zero: 'Nenhum item', one: '{count} item', many: '{count} de itens', other: '{count} itens' },
   },
-  tabs: { themes: 'Temas', icons: 'Ícones', live: 'Live', settings: 'Ajustes' },
+  tabs: { themes: 'Temas', icons: 'Ícones', live: 'Live', pets: 'Pets', settings: 'Ajustes' },
   settings: {
     language: {
       title: 'Idioma',

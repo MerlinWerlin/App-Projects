@@ -103,21 +103,18 @@ test('every locale has the group headers, the Live loading label and the preview
   }
 });
 
-test('Wallpapers tab: editorial group headers, 16-pt rhythm, Live skeleton, still one virtualised list', () => {
+// T186 (owner-1101 #4 supersedes the T176 gallery layout here): editorial sections for Live Photo
+// from a clip, the collage maker and My wallpapers; 16-pt rhythm; My wallpapers waits as
+// thumbnail-shaped skeletons (never a false "nothing yet"); still one virtualised list.
+test('Wallpapers tab: editorial sections, 16-pt rhythm, skeleton wait, still one virtualised list', () => {
   const tab = strip(read(...TAB));
-  assert.match(tab, /<SectionHeader\b/);
-  assert.match(tab, /wallpaperGroupKeys\(group\)/);
+  assert.ok((tab.match(/<SectionHeader\b/g) ?? []).length >= 3);
   assert.match(tab, /const GAP = editorialV2\.cardGap;/);
-  assert.match(tab, /wallpaperGroupRows\(visible, grouped\)/);
-  assert.match(tab, /group=\{headers\.get\(index\)\}/);
-  assert.match(tab, /flushTop=\{firstSection\}/);
-  assert.match(tab, /sectionAfterRow: \{ paddingTop: editorialV2\.sectionTop - editorialV2\.cardGap \}/);
-  // The Live view waits for the saved loops as tile-shaped skeletons, never a false "no clips yet".
-  assert.match(tab, /const liveLoading = tab === 'live' && !loopsLoaded;/);
-  assert.match(tab, /const liveEmpty = tab === 'live' && loopsLoaded && loops\.length === 0;/);
-  assert.match(tab, /<Skeleton width=\{tileWidth\} height=\{tileHeight\} radius=\{chromeRadiusV2\.card\} \/>/);
+  assert.match(tab, /const mineWait = loaded \? null :/);
+  assert.match(tab, /loaded && items\.length === 0 \?/);
+  assert.match(tab, /<Skeleton key=\{i\} width=\{thumbW\} height=\{thumbH\} radius=\{chromeRadiusV2\.card\} \/>/);
   assert.match(tab, /<LargeTitleFlatList\b/);
-  assert.match(tab, /const TileRow = memo\(/);
+  assert.match(tab, /const ThumbRow = memo\(/);
 });
 
 test('Wallpaper tiles and the pair card lift by surface in dark mode, without hairlines', () => {

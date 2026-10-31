@@ -61,3 +61,13 @@
 "pet.happy" = "سعيد";
 "pet.playful" = "مرح";
 "pet.sleepy" = "نعسان";
+"pet.content" = "مرتاح";
+"pet.hungry" = "جائع";
+"pet.lifeSleeping" = "نائم بعمق";
+"pet.lifeStir" = "يتحرك قليلًا ثم يغفو";
+"pet.lifeWaking" = "يستيقظ بتمدد كبير";
+"pet.lifeIdle" = "يجلس بهدوء";
+"pet.lifeEating" = "يتناول وجبة خفيفة";
+"pet.lifePlaying" = "يلعب";
+"pet.lifeWandering" = "يتجول قليلًا";
+"pet.lifeHappy" = "أحب ذلك!";

@@ -134,13 +134,14 @@ test('the store keeps only the most recent themes', () => {
   assert.equal(Object.keys(store).length, CHECKLIST_MAX_THEMES);
 });
 
-test('theme detail shows the 3-step checklist with widgets, persisted, with a success moment', () => {
+// T185 (owner-1101 item 3): the theme page no longer runs the one continuous checklist; it has
+// "Use this theme" + separate Wallpaper / Icons / Widgets screens (guards in activeThemeT184.test.ts).
+// Its saves still tick the stored checklist, so the checklist data stays consistent.
+test('theme detail ticks the stored checklist from its own wallpaper and icon screens', () => {
   const src = readFileSync(new URL('../../app/theme/[id].tsx', import.meta.url), 'utf8');
-  assert.match(src, /CHECKLIST_ROWS/);
-  assert.match(src, /loadChecklist\(/);
-  assert.match(src, /saveChecklist\(/);
-  assert.match(src, /widgetsStepMode\(/);
-  assert.match(src, /celebrationDue\(/);
+  assert.doesNotMatch(src, /CHECKLIST_ROWS/);
+  assert.match(src, /tickStoredChecklist\(theme\.id, 'wallpaper'\)/);
+  assert.match(src, /tickStoredChecklist\(theme\.id, 'iconStyle'\)/);
   assert.match(src, /\/widget-studio/);
   assert.doesNotMatch(src, /STEP_KEYS/);
   const store = readFileSync(new URL('../store/applyChecklist.ts', import.meta.url), 'utf8');
@@ -210,12 +211,11 @@ test('the widgets step ticks only when the studio saves (added or preview saved)
   assert.equal(studioSaveTicksWidgets(null), false);
 });
 
-test('screens wire the T81 ticks: pair save, studio save, and a focus reload on theme detail', () => {
+test('screens wire the T81 ticks: pair save and studio save', () => {
   const detail = readFileSync(new URL('../../app/theme/[id].tsx', import.meta.url), 'utf8');
-  // Opening the studio no longer ticks widgets; only the studio's save does.
-  assert.doesNotMatch(detail, /tick\('widgets'\)/);
-  assert.match(detail, /useFocusEffect\(\s*useCallback\(\(\) => \{\s*let alive = true;\s*const fresh = checklistFor/);
-  assert.match(detail, /mergeTicks\(/);
+  // Opening the studio never ticks widgets; only the studio's save does. (T185: the theme page has
+  // no checklist UI any more, so its focus reload of the checklist went with it.)
+  assert.doesNotMatch(detail, /tick\('widgets'\)|tickStoredChecklist\(theme\.id, 'widgets'\)/);
   const studio = readFileSync(new URL('../../app/widget-studio.tsx', import.meta.url), 'utf8');
   assert.match(studio, /studioSaveTicksWidgets\(next\)\) void tickStoredChecklist\(theme\.id, 'widgets'\)/);
   const maker = readFileSync(new URL('../../app/wallpaper.tsx', import.meta.url), 'utf8');

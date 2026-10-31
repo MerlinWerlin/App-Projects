@@ -112,6 +112,27 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
     skip: 'छोड़ें',
     finish: 'पूरा करें',
   },
+  // T184 / T185 (owner-1101): "Use this theme" and the three entry points on the theme page.
+  use: {
+    cta: 'यह थीम इस्तेमाल करें',
+    inUse: 'इस्तेमाल में ✓',
+    hint: 'हर टैब में आइकन, विजेट और वॉलपेपर के लिए यह थीम इस्तेमाल करता है',
+    inUseHint: 'यह पहले से हर टैब की थीम है। फिर से लगाने के लिए टैप करें',
+    note: 'हर टैब के आइकन, विजेट और वॉलपेपर को इस थीम पर सेट करता है।',
+    inUseNote: 'आपके आइकन, विजेट और वॉलपेपर इस थीम के साथ चलते हैं।',
+    doneA11y: '{name} अब हर टैब में आपकी थीम है',
+    error: 'इस थीम पर नहीं बदल सके। कृपया फिर से कोशिश करें।',
+  },
+  parts: {
+    eyebrow: 'सेट अप करें',
+    title: 'वॉलपेपर, आइकन और विजेट',
+    wallpaper: 'वॉलपेपर',
+    wallpaperSub: 'फ़ोटो में सेव करें',
+    icons: 'आइकन',
+    iconsSub: 'स्टाइल चुनें, फिर इंस्टॉल करें',
+    widgets: 'विजेट',
+    widgetsSub: 'Widget Studio में मेल खाते विजेट',
+  },
   save: {
     body: '{name} वॉलपेपर को आपके iPhone के आकार ({width} × {height}) में Photos में सहेजें।',
     bodyPhoto: '{name} के लिए फ़्रेम की गई आपकी फ़ोटो को आपके iPhone के आकार ({width} × {height}) में Photos में सहेजें।',
@@ -133,6 +154,8 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
     saving: 'सहेजा जा रहा है…',
     again: 'फिर से सहेजें',
     cta: 'वॉलपेपर Photos में सहेजें',
+    // T185: the Wallpaper screen's badge once saved (Save again always stays).
+    savedBadge: 'फ़ोटो में सेव हो गया ✓',
   },
   style: {
     body: 'यह आइकन स्टाइल आइकन स्टूडियो में लोड करें, फिर वे ऐप चुनें जिन्हें थीम देना है।',

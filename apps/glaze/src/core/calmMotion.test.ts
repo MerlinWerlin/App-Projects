@@ -105,7 +105,7 @@ test('owner 25 Oct: the sheet and the Live Photo screens never spring or bounce'
     ['src', 'ui', 'LivePhotoSheet.tsx'],
     ['src', 'ui', 'LiveSaveToPhotos.tsx'],
     ['src', 'ui', 'LivePhotoGuide.tsx'],
-    ['app', '(tabs)', 'live.tsx'],
+    ['app', 'live', 'index.tsx'],
     ['app', 'live', '[id].tsx'],
   ];
   for (const f of files) {

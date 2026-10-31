@@ -112,6 +112,27 @@ export const es: NonNullable<LocaleMessages['theme']> = {
     skip: 'Omitir',
     finish: 'Terminar',
   },
+  // T184 / T185 (owner-1101): "Use this theme" and the three entry points on the theme page.
+  use: {
+    cta: 'Usar este tema',
+    inUse: 'En uso ✓',
+    hint: 'Usa este tema para tus iconos, widgets y fondo en todas las pestañas',
+    inUseHint: 'Ya es tu tema en todas las pestañas. Toca para aplicarlo de nuevo',
+    note: 'Pone tus iconos, widgets y fondo de todas las pestañas con este tema.',
+    inUseNote: 'Tus iconos, widgets y fondo siguen este tema.',
+    doneA11y: '{name} es ahora tu tema en todas las pestañas',
+    error: 'No se pudo cambiar a este tema. Inténtalo de nuevo.',
+  },
+  parts: {
+    eyebrow: 'Configurar',
+    title: 'Fondo, iconos y widgets',
+    wallpaper: 'Fondo de pantalla',
+    wallpaperSub: 'Guárdalo en Fotos',
+    icons: 'Iconos',
+    iconsSub: 'Elige el estilo y luego instala',
+    widgets: 'Widgets',
+    widgetsSub: 'Widgets a juego en Widget Studio',
+  },
   save: {
     body: 'Guarda el fondo {name} en Fotos al tamaño de tu iPhone ({width} × {height}).',
     bodyPhoto: 'Guarda tu foto, encuadrada para {name}, en Fotos al tamaño de tu iPhone ({width} × {height}).',
@@ -133,6 +154,8 @@ export const es: NonNullable<LocaleMessages['theme']> = {
     saving: 'Guardando…',
     again: 'Guardar de nuevo',
     cta: 'Guardar fondo en Fotos',
+    // T185: the Wallpaper screen's badge once saved (Save again always stays).
+    savedBadge: 'Guardado en Fotos ✓',
   },
   style: {
     body: 'Carga este estilo de iconos en el Estudio de iconos y elige las apps que quieras personalizar.',

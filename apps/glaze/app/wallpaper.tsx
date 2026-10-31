@@ -42,7 +42,10 @@ import { OffscreenWallpaper, WallpaperView } from '../src/render/WallpaperView';
 import { useLocked } from '../src/plus/useLocked';
 import { tickStoredChecklist } from '../src/store/applyChecklist';
 import { loadBackground, photoCopyExists, saveBackground } from '../src/store/background';
+import { rememberWallpaper } from '../src/store/myWallpapers';
 import { applyWidgetTheme } from '../src/store/widgetTheme';
+import { useActiveThemeId } from '../src/store/activeTheme';
+import { startThemeId } from '../src/core/activeTheme';
 import { useT } from '../src/i18n';
 import { chromeRadiusV2, circleRadius, continuous, fontScaleCap, onArtV2, radiusV2, shadowV2, sizeV2, spaceV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
@@ -228,7 +231,10 @@ export default function WallpaperScreen() {
   const kinds = KIND_IDS.map((id) => ({ id, label: t(KIND_KEYS[id]) }));
   const sources = SOURCE_IDS.map((id) => ({ id, label: t(SOURCE_KEYS[id]) }));
   const { theme: themeParam, source: sourceParam } = useLocalSearchParams<{ theme?: string; source?: string }>();
-  const themeId = typeof themeParam === 'string' ? themeParam : undefined;
+  // T184: opened without a theme (e.g. from the Wallpapers tab), it starts from the theme in use,
+  // re-read on focus, so "Use this theme" switches the wallpaper state too.
+  const activeId = useActiveThemeId();
+  const themeId = startThemeId(typeof themeParam === 'string' ? themeParam : undefined, activeId);
   // T81: the designed-wallpaper editor starts from the theme it was opened for, Plus themes
   // included once unlocked (a locked Plus theme starts from a free one); the photo background
   // works in every theme, keyed by its id, with that theme's colours for the overlay.
@@ -429,6 +435,8 @@ export default function WallpaperScreen() {
     const res = photoMode && photoData ? await photoSaver.save(photoData, size) : await saver.save(params, size);
     if (res.ok) {
       haptic('success');
+      // T186: the saved wallpaper is also listed under My wallpapers on the Wallpapers tab.
+      void rememberWallpaper({ kind: 'theme', uri: res.uri, width: res.width, height: res.height, themeId: anyTheme?.id });
       // T125: saving a theme's wallpaper applies that theme, so the widgets follow it too.
       if (anyTheme && !plusLocked) void applyWidgetTheme(anyTheme);
       setStatus({ kind: 'saved', text: t('wallpaper.status.saved', { width: px(res.width), height: px(res.height) }) });
@@ -465,6 +473,7 @@ export default function WallpaperScreen() {
       showSaveFailure(lock.reason);
       return;
     }
+    void rememberWallpaper({ kind: 'theme', uri: lock.uri, width: lock.width, height: lock.height, themeId: anyTheme?.id });
     const tickPair = (outcome: PairSaveOutcome) => {
       // T81: a saved pair ticks the wallpaper step of the theme this maker was opened for.
       if (anyTheme && !plusLocked && pairSaveTicksWallpaper(outcome)) void tickStoredChecklist(anyTheme.id, 'wallpaper');

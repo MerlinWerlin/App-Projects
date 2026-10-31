@@ -1,8 +1,9 @@
 // Theme detail, design v2 (docs/DESIGN_V2.md §9, docs/MARKET.md L2, T55): a large phone-shaped
-// preview with a Home / Lock toggle and ONE primary button ("Apply this look") in a sticky glass
-// bar at the bottom. A theme is one bundle (wallpaper + icons + matching widgets); the button
-// starts the existing apply steps in place. Everything else (photo, wallpaper editing, shape,
-// palette, matching widgets) sits below as quieter cards and inset rows.
+// preview with a Home / Lock toggle and ONE primary button in a sticky glass bar at the bottom.
+// T185 (owner-1101 item 3): the button is "Use this theme" (the base for every tab; "In use ✓"
+// when it already is), and Wallpaper, Icons and Widgets are three separate entry points, each its
+// own clean screen: /theme/[id]?step=wallpaper, /theme/[id]?step=icons and Widget Studio.
+// The old one-run Apply checklist is gone.
 // T173 premium slice (docs/PREMIUM_UI.md §3.3): the hero phone sits large and centred on a soft
 // surface with a quiet Home / Lock pill under it; the rest reads as editorial blocks (eyebrow +
 // title via SectionHeader: What's inside, Icons, Widgets, Wallpaper, Credits); the glass bar holds
@@ -27,26 +28,7 @@ import {
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
-import {
-  CHECKLIST_ROWS,
-  celebrationDue,
-  checklistFor,
-  checklistProgress,
-  defaultOpenRow,
-  freshChecklist,
-  isComplete,
-  markCelebrated,
-  mergeTicks,
-  resetChecklist,
-  rowDone,
-  rowParts,
-  tickTask,
-  widgetsStepMode,
-  type ChecklistRow,
-  type ChecklistState,
-  type ChecklistTask,
-  type WidgetsStepMode,
-} from '../../src/core/applyChecklist';
+import { isThemeInUse, themeStepOf, wallpaperSaveView, type ThemeStep } from '../../src/core/activeTheme';
 import { contrastRatio, mix } from '../../src/core/colour';
 import { DEFAULT_OVERLAY, defaultBackground, usesPhoto, type ThemeBackground } from '../../src/core/background';
 import { photoCreditParams, wallpaperSourceFor, type WallpaperSource } from '../../src/core/photoPack';
@@ -74,7 +56,8 @@ import { offersOpenSettings, saveFailureKey, type SaveFailure } from '../../src/
 import { openAppSettings, useOffscreenCapture, useWallpaperSaver } from '../../src/render/saveWallpaper';
 import { OffscreenWallpaper, WallpaperView } from '../../src/render/WallpaperView';
 import { usePackTheme } from '../../src/render/usePackTheme';
-import { loadChecklist, saveChecklist } from '../../src/store/applyChecklist';
+import { tickStoredChecklist } from '../../src/store/applyChecklist';
+import { applyThemeEverywhere, rememberWallpaperSaved, useActiveThemeId, wasWallpaperSaved } from '../../src/store/activeTheme';
 import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { loadBackground } from '../../src/store/background';
 import { setThemeShape, themeShapeFor } from '../../src/core/studio';
@@ -189,7 +172,7 @@ function styleSummary(t: TFunction, s: IconStyle): string {
 type SaveState = 'idle' | 'saved' | 'denied' | 'error';
 
 export default function ThemeDetailScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, step: stepParam } = useLocalSearchParams<{ id: string; step?: string }>();
   // T160: a remote art pack from the remote catalogue resolves too (bundled themes win).
   const remote = useRemoteArtTheme(typeof id === 'string' ? id : undefined);
   const theme = getAnyTheme(typeof id === 'string' ? id : undefined) ?? remote.theme;
@@ -213,15 +196,25 @@ export default function ThemeDetailScreen() {
     );
   }
   const own = remote.theme === theme;
-  return <ThemeDetail theme={theme} remoteWallpaperUri={own ? remote.wallpaperUri : null} remoteHeroUris={own ? remote.heroUris : null} />;
+  return (
+    <ThemeDetail
+      theme={theme}
+      step={themeStepOf(stepParam)}
+      remoteWallpaperUri={own ? remote.wallpaperUri : null}
+      remoteHeroUris={own ? remote.heroUris : null}
+    />
+  );
 }
 
 function ThemeDetail({
   theme: base,
+  step,
   remoteWallpaperUri,
   remoteHeroUris,
 }: {
   theme: Theme;
+  /** T185: the overview (preview + "Use this theme" + three entry points), or its Wallpaper / Icons screen. */
+  step: ThemeStep;
   remoteWallpaperUri: string | null;
   /** T168: downloaded hero art of a remote art pack (seamless widget card). */
   remoteHeroUris: Partial<Record<HeroSize, string>> | null;
@@ -241,7 +234,7 @@ function ThemeDetail({
   const theme = usePackTheme(base, wantsPackArtwork(packView));
   const canApply = canApplyFromDetail(packView);
   // T179: a remote theme's glass bar holds its one primary action: Download (with the size), then a
-  // determinate progress bar, a calm Try again, and Apply once the art is on the phone.
+  // determinate progress bar, a calm Try again, and "Use this theme" once the art is on the phone.
   const primary: RemotePrimary | null = remoteArt ? remotePrimary(packView, remoteArt.remoteArt.bytes, t('plus.packErrors.appVersion')) : null;
   const heroArt = remoteArt ? remoteHeroArt({ wallpaperUri: remoteWallpaperUri, thumbUrl: remoteArt.remoteArt.thumbUrl }) : null;
   const packName = remoteArt ? remoteArt.name : base.packId ? (packOf(base.id)?.name ?? base.packId) : '';
@@ -258,22 +251,22 @@ function ThemeDetail({
     const s = Dimensions.get('screen');
     return sizeForScreen(s.width, s.height);
   }, []);
-  // T61: the 3-in-1 apply checklist (Wallpaper > Icons > Widgets, Loop optional), kept per theme.
-  const [checklistOpen, setChecklistOpen] = useState(false);
-  const [openRow, setOpenRow] = useState<ChecklistRow | null>(null);
-  const [checklist, setChecklist] = useState<ChecklistState>(() => freshChecklist(theme.id));
-  const checklistRef = useRef<ChecklistState>(checklist);
-  const [widgetsMode, setWidgetsMode] = useState<WidgetsStepMode>('preview');
-  const [celebrateKey, setCelebrateKey] = useState(0);
+  // T184 / T185: the theme in use across every tab ("In use ✓"), re-read on focus.
+  const activeId = useActiveThemeId();
+  const inUse = isThemeInUse(activeId, theme.id);
+  const [useBusy, setUseBusy] = useState(false);
+  const [useError, setUseError] = useState(false);
   const [saveState, setSaveState] = useState<SaveState>('idle');
+  /** T185: this theme's wallpaper was saved to Photos before (badge only; Save again always shows). */
+  const [savedBefore, setSavedBefore] = useState(false);
   /** fb-1024 C: the real reason a save failed, in plain words, plus the technical detail. */
   const [saveWhy, setSaveWhy] = useState<{ why: SaveFailure; detail?: string } | null>(null);
   const [styleBusy, setStyleBusy] = useState(false);
   const [styleError, setStyleError] = useState(false);
   const locked = useLocked(theme.plus);
   const [lockOpen, setLockOpen] = useState(false);
-  /** Why the Plus sheet is open: unlocking from Download shouldn't start the apply steps. */
-  const lockFor = useRef<'apply' | 'download'>('apply');
+  /** Why the Plus sheet is open: unlocking from Download shouldn't put the theme in use. */
+  const lockFor = useRef<'apply' | 'download' | ThemeStep | 'widgets'>('apply');
   const reduced = useMotionReduced();
 
   // T55: the phone preview is sized from the window (large), with a real phone outline: a bezel
@@ -287,9 +280,10 @@ function ThemeDetail({
   const screenRadius = Math.round(screenW * 0.12);
   const bezelColour = scheme === 'dark' ? c.surfaceRaised : c.ink;
 
-  // G6: Home / Lock mocks share one frame and cross-fade (both stay mounted).
-  const [mode, setMode] = useState<PreviewMode>('home');
-  const homeShown = useSharedValue(1);
+  // G6: Home / Lock mocks share one frame and cross-fade (both stay mounted). The Wallpaper screen
+  // opens on the Lock Screen.
+  const [mode, setMode] = useState<PreviewMode>(step === 'wallpaper' ? 'lock' : 'home');
+  const homeShown = useSharedValue(mode === 'home' ? 1 : 0);
   useEffect(() => {
     homeShown.value = withTiming(mode === 'home' ? 1 : 0, {
       duration: reduced ? durations.fast : durations.base,
@@ -310,9 +304,9 @@ function ThemeDetail({
   }, [theme.id, reduced, tintIn]);
   const tintStyle = useAnimatedStyle(() => ({ opacity: tintIn.value }));
 
-  // G3: applying the look ripples the icons into the Home mock, then a success haptic and a
-  // single sheen across "Install icons". Reduced motion: HomeMock skips the ripple and settles
-  // at once, SheenButton swaps the sweep for a short fade.
+  // G3: using the theme ripples the icons into the Home mock, then a light haptic and a single
+  // sheen across "Install icons". Reduced motion: HomeMock skips the ripple and settles at once,
+  // SheenButton swaps the sweep for a short fade.
   const [rippleKey, setRippleKey] = useState(0);
   const [sheenKey, setSheenKey] = useState(0);
   const pendingSettle = useRef(false);
@@ -324,88 +318,24 @@ function ThemeDetail({
   const onIconsSettled = () => {
     if (!pendingSettle.current) return;
     pendingSettle.current = false;
-    // T173 (PREMIUM_UI §1.7): `success` is kept for the one end-of-flow moment (all steps done).
     haptic('light');
     setSheenKey((k) => k + 1);
   };
 
-  // T55: the steps open just under the preview; once they have laid out, scroll so their bottom is
-  // in view (no animation with Reduce Motion). The sticky Apply bar hides while they are open.
-  const scrollRef = useRef<ScrollView>(null);
-  const viewportH = useRef(0);
-  const revealSteps = useRef(false);
   const [barH, setBarH] = useState(0);
-  const onStepsLayout = (e: LayoutChangeEvent) => {
-    if (!revealSteps.current) return;
-    revealSteps.current = false;
-    const { y, height } = e.nativeEvent.layout;
-    const target = Math.max(0, y + height + spaceV2.lg - viewportH.current);
-    scrollRef.current?.scrollTo({ y: target, animated: !reduced });
-  };
-  const openSteps = () => {
-    revealSteps.current = true;
-    setChecklistOpen(true);
-    setOpenRow(defaultOpenRow(checklistRef.current));
-    playApply();
-    // T125: starting to apply a theme points the widgets at it straight away.
-    void applyWidgetTheme(theme);
-  };
 
-  // T61: load this theme's checklist (a different theme starts fresh) and learn whether widgets
-  // can really be added (full build with the widget bridge) or only previewed (Expo Go, Android).
-  // T81: reloaded on every focus, so ticks made by the wallpaper maker's Lock + Home pair and by
-  // Widget Studio's save show up when the person comes back here.
+  // T185: the saved flag is per theme and only changes the badge and the label; re-read on focus.
   useFocusEffect(
     useCallback(() => {
       let alive = true;
-      const fresh = checklistFor(checklistRef.current, theme.id);
-      checklistRef.current = fresh;
-      setChecklist(fresh);
-      loadChecklist(theme.id).then((saved: ChecklistState) => {
-        if (!alive || checklistRef.current.themeId !== theme.id) return;
-        // Keep any tick made while loading.
-        const merged = mergeTicks(saved, checklistRef.current, Date.now());
-        checklistRef.current = merged;
-        setChecklist(merged);
+      wasWallpaperSaved(theme.id).then((saved) => {
+        if (alive) setSavedBefore(saved);
       });
       return () => {
         alive = false;
       };
     }, [theme.id]),
   );
-  useEffect(() => {
-    let alive = true;
-    widgets
-      .isAvailable()
-      .then((r: { available: boolean }) => {
-        if (alive) setWidgetsMode(widgetsStepMode(r.available));
-      })
-      .catch(() => undefined);
-    return () => {
-      alive = false;
-    };
-  }, []);
-  const commitChecklist = (next: ChecklistState) => {
-    if (next === checklistRef.current) return;
-    checklistRef.current = next;
-    setChecklist(next);
-    void saveChecklist(next);
-  };
-  const tick = (task: ChecklistTask) => {
-    const before = checklistRef.current;
-    const next = tickTask(before, task, Date.now());
-    if (next === before) return;
-    haptic('light');
-    commitChecklist(next);
-  };
-  // The success moment: once, when the third step is ticked with the checklist on screen.
-  useEffect(() => {
-    if (!checklistOpen || !celebrationDue(checklist)) return;
-    setCelebrateKey((k) => k + 1);
-    haptic('success');
-    AccessibilityInfo.announceForAccessibility(t('theme.checklist.success.a11y'));
-    commitChecklist(markCelebrated(checklist, Date.now()));
-  }, [checklist, checklistOpen]);
 
   // Own photo background (T25): reload whenever we come back from /wallpaper.
   const photoSaver = useOffscreenCapture<PhotoWallpaperData>({ waitForReady: true });
@@ -439,7 +369,7 @@ function ThemeDetail({
   const spaceBackground = spacePhoto.uri ? (
     <ExpoImage source={{ uri: spacePhoto.uri }} contentFit="cover" cachePolicy="memory-disk" style={{ width: screenW, height: screenH }} accessibilityIgnoresInvertColors /> // i18n-ignore (code after a JSX element)
   ) : null;
-  // T105: what Apply's Wallpaper step saves (own photo > downloaded Webb photo > drawn wallpaper);
+  // T105: what the Wallpaper screen saves (own photo > downloaded Webb photo > drawn wallpaper);
   // a Space theme whose photo isn't on the phone yet offers the download first.
   const wallSource: WallpaperSource = wallpaperSourceFor({ ownPhoto: !!photo, isSpace: !!spacePhoto.photo, spaceReady: !!spacePhoto.uri });
   const spaceCredit = spacePhoto.photo ? photoCreditParams(spacePhoto.photo.photo) : null;
@@ -465,13 +395,49 @@ function ThemeDetail({
     <WallpaperView params={theme.wallpaper} width={screenW} height={screenH} maxGrain={300} />
   );
 
-  const start = () => {
+  /**
+   * T184 / T185: "Use this theme" makes it the base for every tab in one go: the icon style
+   * (Icons tab), the widget theme (Widgets tab + the Home Screen widgets) and the theme in use
+   * (wallpaper maker, "In use ✓"). Saving wallpaper and installing icons stay separate screens.
+   */
+  const putInUse = async () => {
+    if (useBusy) return;
+    setUseBusy(true);
+    setUseError(false);
+    try {
+      const res = await applyThemeEverywhere(theme);
+      if (!res.icons) {
+        setUseError(true);
+        haptic('warning');
+        return;
+      }
+      playApply();
+      AccessibilityInfo.announceForAccessibility(t('theme.use.doneA11y', { name: theme.name }));
+    } finally {
+      setUseBusy(false);
+    }
+  };
+  const onUseTheme = () => {
     if (locked) {
       lockFor.current = 'apply';
       setLockOpen(true);
       return;
     }
-    openSteps();
+    void putInUse();
+  };
+
+  /** T185: the three separate entry points, each its own clean screen. */
+  const openPart = (part: 'wallpaper' | 'icons' | 'widgets', checkLock = true) => {
+    if (checkLock && locked) {
+      lockFor.current = part;
+      setLockOpen(true);
+      return;
+    }
+    if (part === 'widgets') {
+      router.push({ pathname: '/widget-studio', params: { theme: theme.id } });
+      return;
+    }
+    router.push({ pathname: '/theme/[id]', params: { id: theme.id, step: part } });
   };
 
   const onDownloadPack = async () => {
@@ -534,7 +500,11 @@ function ThemeDetail({
       setSavedFrom(from);
       setSaveWhy(null);
       setSaveState('saved');
-      tick('wallpaper');
+      setSavedBefore(true);
+      haptic('success');
+      AccessibilityInfo.announceForAccessibility(t('theme.save.savedBadge'));
+      void rememberWallpaperSaved(theme.id);
+      void tickStoredChecklist(theme.id, 'wallpaper');
       // T125: saving a theme's wallpaper applies it, so the widgets follow it too.
       void applyWidgetTheme(theme); // no-op in Expo Go; never throws
     } else {
@@ -554,7 +524,7 @@ function ThemeDetail({
       await setStudioStyle(theme.iconStyle, theme.id, averageColour(theme.wallpaper));
       await studio.reload();
       void applyWidgetTheme(theme); // T125: also remembered for the launch re-write; never throws
-      tick('iconStyle');
+      void tickStoredChecklist(theme.id, 'iconStyle');
       // navigate, not push: push would stack a second copy of the tab navigator.
       router.navigate(destination);
     } catch {
@@ -562,38 +532,6 @@ function ThemeDetail({
     } finally {
       setStyleBusy(false);
     }
-  };
-
-  const toggleRow = (row: ChecklistRow) => {
-    haptic('select');
-    const next = openRow === row ? null : row;
-    setOpenRow(next);
-    if (next === 'icons') playApply();
-    // T125: opening the widgets step points the widgets at this theme.
-    if (next === 'widgets') void applyWidgetTheme(theme);
-  };
-  // T81: opening the studio doesn't tick the widgets step; the studio ticks it when it saves.
-  const openWidgetStudio = () => {
-    router.push({ pathname: '/widget-studio', params: { theme: theme.id } });
-  };
-  const progress = checklistProgress(checklist);
-  const complete = isComplete(checklist);
-  const rowTitle = (row: ChecklistRow): string =>
-    row === 'wallpaper'
-      ? t('theme.checklist.wallpaper.title')
-      : row === 'icons'
-        ? t('theme.checklist.icons.title')
-        : row === 'widgets'
-          ? t('theme.checklist.widgets.title')
-          : t('theme.checklist.loop.title');
-  const rowSub = (row: ChecklistRow): string => {
-    if (row === 'widgets' && rowDone(checklist, 'widgets')) {
-      return widgetsMode === 'add' ? t('theme.checklist.widgets.doneAdd') : t('theme.checklist.widgets.donePreview');
-    }
-    if (row === 'wallpaper') return t('theme.checklist.wallpaper.sub');
-    if (row === 'icons') return t('theme.checklist.icons.sub');
-    if (row === 'widgets') return widgetsMode === 'add' ? t('theme.checklist.widgets.subAdd') : t('theme.checklist.widgets.subPreview');
-    return t('theme.checklist.loop.sub');
   };
 
   const palette: [string, string][] = [
@@ -607,9 +545,10 @@ function ThemeDetail({
   const homeA11y = photo
     ? t(iosMask ? 'theme.a11y.homeIosPhoto' : 'theme.a11y.homeGlazePhoto', { name: theme.name })
     : t(iosMask ? 'theme.a11y.homeIos' : 'theme.a11y.homeGlaze', { name: theme.name });
-  const showBar = canApply && !checklistOpen && (!primary || primary.kind === 'apply');
+  const overview = step === 'overview';
+  const showBar = overview && canApply && (!primary || primary.kind === 'apply');
   /** T179: a remote theme not on the phone yet: Download / progress / Try again / Unlock in the bar. */
-  const showDownloadBar = !!primary && primary.kind !== 'apply' && !checklistOpen;
+  const showDownloadBar = overview && !!primary && primary.kind !== 'apply';
   const onUnlockRemote = () => {
     haptic('select');
     lockFor.current = 'download';
@@ -622,15 +561,15 @@ function ThemeDetail({
     noMirror,
     { width: screenW, borderRadius: screenRadius, backgroundColor: theme.palette.bg },
   ];
+  const saving = saver.saving || photoSaver.saving;
+  const saveView = wallpaperSaveView(savedBefore || saveState === 'saved', saving);
+  const title =
+    step === 'wallpaper' ? t('theme.parts.wallpaper') : step === 'icons' ? t('theme.parts.icons') : theme.name;
 
   return (
     <View style={[styles.root, { backgroundColor: c.bg }]}>
-      <Stack.Screen options={{ title: theme.name, headerTintColor: c.tint }} />
+      <Stack.Screen options={{ title, headerTintColor: c.tint }} />
       <ScrollView bounces={false} overScrollMode="never"
-        ref={scrollRef}
-        onLayout={(e: LayoutChangeEvent) => {
-          viewportH.current = e.nativeEvent.layout.height;
-        }}
         contentContainerStyle={[styles.content, { paddingBottom: (showBar || showDownloadBar ? barH : insets.bottom) + spaceV2.xxl }]}
       >
         <View style={styles.headWrap}>
@@ -656,16 +595,16 @@ function ThemeDetail({
               {theme.name}
             </Text>
             <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>
-              {theme.tagline}
+              {overview ? theme.tagline : step === 'wallpaper' ? t('theme.parts.wallpaperSub') : t('theme.parts.iconsSub')}
             </Text>
             {theme.plus ? <PlusBadge /> : null}
           </View>
         </View>
         {/* fb-1022 G1: the first-run hints moved here from the Themes screen. They appear after the
             first action (opening a theme), one line at a time, never stacked; "?" brings them back. */}
-        <ContextTip ids={DETAIL_TIPS} />
+        {overview ? <ContextTip ids={DETAIL_TIPS} /> : null}
 
-        {!remoteArt && showsPackCard(packView) ? <PackCard view={packView} packName={packName} onDownload={onDownloadPack} /> : null}
+        {overview && !remoteArt && showsPackCard(packView) ? <PackCard view={packView} packName={packName} onDownload={onDownloadPack} /> : null}
 
         {/* L2 + T173 hero: one large phone-shaped preview, centred on a soft surface (layered
             shadow, no border), with a quiet Home / Lock pill under it. */}
@@ -737,410 +676,285 @@ function ThemeDetail({
           </View>
         </SquircleCard>
 
-        {/* T61 (L2): the 3-in-1 apply checklist. Wallpaper > Icons > Widgets with ticks and a
-            progress indicator, Loop as an optional fourth row, a success moment at the end. */}
-        {canApply && checklistOpen ? (
-          <View onLayout={onStepsLayout} style={styles.side}>
-            <SquircleCard size="large" elevation="raised">
-              <View style={styles.stack}>
-                <Text maxFontSizeMultiplier={fontScaleCap('title2')} accessibilityRole="header" style={[...ts('title2'), { color: c.ink }]}>
-                  {t('theme.checklist.title')}
-                </Text>
-                <View
-                  style={styles.stack}
-                  accessible
-                  accessibilityRole="progressbar"
-                  accessibilityLabel={t('theme.checklist.progressA11y', { done: progress.done, total: progress.total })}
-                  accessibilityValue={{ min: 0, max: 100, now: Math.round(progress.fraction * 100) }}
-                >
-                  <View style={styles.progressRow}>
-                    {CHECKLIST_ROWS.filter((r: ChecklistRow) => r !== 'loop').map((r: ChecklistRow) => {
-                      const parts = rowParts(checklist, r);
-                      return (
-                        <View
-                          key={r}
-                          style={[
-                            styles.progressSeg,
-                            {
-                              backgroundColor:
-                                parts.done === parts.total ? c.tint : parts.done > 0 ? c.tintSoft : c.fill,
-                            },
-                          ]}
-                        />
-                      );
-                    })}
-                  </View>
-                  <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
-                    {t('theme.checklist.progress', { done: progress.done, total: progress.total })}
-                  </Text>
+        {/* T185 (owner-1101 item 3): three clear, separate entry points, each its own clean screen. */}
+        {overview && canApply ? (
+          <View style={styles.block}>
+            <SectionHeader eyebrow={t('theme.parts.eyebrow')} title={t('theme.parts.title')} style={styles.sectionHead} />
+            <InsetGroup>
+              <InsetRow
+                title={t('theme.parts.wallpaper')}
+                subtitle={savedBefore ? t('theme.save.savedBadge') : t('theme.parts.wallpaperSub')}
+                icon="image"
+                iconTone="sky"
+                onPress={() => openPart('wallpaper')}
+                accessibilityLabel={t('theme.parts.wallpaper')}
+                accessibilityHint={t('theme.parts.wallpaperSub')}
+              />
+              <InsetRow
+                title={t('theme.parts.icons')}
+                subtitle={t('theme.parts.iconsSub')}
+                icon="grid"
+                iconTone="mint"
+                onPress={() => openPart('icons')}
+                accessibilityLabel={t('theme.parts.icons')}
+                accessibilityHint={t('theme.parts.iconsSub')}
+              />
+              <InsetRow
+                title={t('theme.parts.widgets')}
+                subtitle={t('theme.parts.widgetsSub')}
+                icon="layout"
+                iconTone="lilac"
+                onPress={() => openPart('widgets')}
+                accessibilityLabel={t('theme.parts.widgets')}
+                accessibilityHint={t('theme.parts.widgetsSub')}
+              />
+            </InsetGroup>
+          </View>
+        ) : null}
+
+        {/* T185: the Wallpaper screen. "Saved to Photos ✓" once saved, and Save again always offered
+            (someone who deleted it from Photos gets it back). */}
+        {step === 'wallpaper' ? (
+          <SquircleCard size="large" elevation="raised" style={styles.side}>
+            <View style={styles.stack}>
+              <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
+                {photo
+                  ? t('theme.save.bodyPhoto', sizeParams)
+                  : wallSource === 'space-photo'
+                    ? t('ui.photoCredit.applyBody', sizeParams)
+                    : t('theme.save.body', sizeParams)}
+              </Text>
+              {/* T105: a Space theme offers its Webb photo download first (Retry on failure, T108). */}
+              {wallSource === 'space-offer-download' ? (
+                <View style={styles.gap}>
+                  <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('ui.photoCredit.applyOffer')}</Text>
+                  <PhotoDownloadControl p={spacePhoto} allowRemove={false} />
                 </View>
-
-                {complete ? (
-                  <SuccessBloom
-                    playKey={celebrateKey}
-                    reduced={reduced}
-                    title={t('theme.checklist.success.title')}
-                    body={
-                      widgetsMode === 'add'
-                        ? t('theme.checklist.success.body', { name: theme.name })
-                        : t('theme.checklist.success.bodyPreview', { name: theme.name })
-                    }
-                  />
-                ) : null}
-
-                {CHECKLIST_ROWS.map((row: ChecklistRow, i: number) => {
-                  const expanded = openRow === row;
-                  const parts = rowParts(checklist, row);
-                  const isDone = parts.done === parts.total;
-                  const optional = row === 'loop';
-                  const state = isDone
-                    ? t('theme.checklist.stateDone')
-                    : parts.done > 0
-                      ? t('theme.checklist.statePart', { done: parts.done, total: parts.total })
-                      : optional
-                        ? t('theme.checklist.optional')
-                        : t('theme.checklist.stateTodo');
-                  return (
-                    <View key={row} style={[styles.checkItem, i > 0 ? { borderTopColor: c.separator } : styles.noBorder]}>
-                      <ChecklistRowHeader
-                        index={i + 1}
-                        title={rowTitle(row)}
-                        subtitle={rowSub(row)}
-                        state={state}
-                        done={isDone}
-                        partial={!isDone && parts.done > 0}
-                        optional={optional}
-                        expanded={expanded}
-                        onPress={() => toggleRow(row)}
-                      />
-
-                      {expanded && row === 'wallpaper' ? (
-                        <View style={styles.rowBody}>
-                          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
-                            {photo
-                              ? t('theme.save.bodyPhoto', sizeParams)
-                              : wallSource === 'space-photo'
-                                ? t('ui.photoCredit.applyBody', sizeParams)
-                                : t('theme.save.body', sizeParams)}
-                          </Text>
-                          {/* T105: a Space theme offers its Webb photo download first (Retry on failure, T108). */}
-                          {wallSource === 'space-offer-download' ? (
-                            <View style={styles.gap}>
-                              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('ui.photoCredit.applyOffer')}</Text>
-                              <PhotoDownloadControl p={spacePhoto} allowRemove={false} />
-                            </View>
-                          ) : null}
-                          {/* The credit stays with the Webb photo wherever it is saved (T108). */}
-                          {wallSource === 'space-photo' && spaceCredit ? (
-                            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]} selectable>
-                              {t('ui.photoCredit.creditLine', spaceCredit)}
-                            </Text>
-                          ) : null}
-                          {saveState === 'saved' ? (
-                            <View style={[styles.note, continuous, { backgroundColor: c.pastels.mint.fill }]}>
-                              <Feather name="check" size={18} color={c.pastels.mint.ink} />
-                              <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.flex, { color: c.pastels.mint.ink }]} selectable={savedFrom === 'space-photo'}>
-                                {savedFrom === 'space-photo' && spaceCredit ? t('ui.photoCredit.savedCredit', spaceCredit) : t('theme.save.saved')}
-                              </Text>
-                            </View>
-                          ) : null}
-                          {saveState === 'denied' ? (
-                            <View style={styles.gap}>
-                              <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.warn }]}>{t('theme.save.denied')}</Text>
-                              <PillButton
-                                label={t('theme.save.openSettings')}
-                                icon="settings"
-                                variant="tinted"
-                                onPress={openAppSettings}
-                              />
-                            </View>
-                          ) : null}
-                          {saveState === 'error' ? (
-                            <View style={styles.gap} accessibilityLiveRegion="polite">
-                              <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.warn }]}>
-                                {saveWhy && saveFailureKey(saveWhy.why) ? t(`theme.save.why.${saveWhy.why}`) : t('theme.save.error')}
-                              </Text>
-                              {saveWhy?.detail ? (
-                                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]} selectable>
-                                  {saveWhy.detail}
-                                </Text>
-                              ) : null}
-                              <View style={styles.navRow}>
-                                <PillButton
-                                  label={t('theme.save.tryAgain')}
-                                  icon="refresh-cw"
-                                  variant="tinted"
-                                  size="small"
-                                  busy={saver.saving || photoSaver.saving}
-                                  onPress={onSaveWallpaper}
-                                  style={styles.flex}
-                                />
-                                {saveWhy && offersOpenSettings(saveWhy.why) ? (
-                                  <PillButton
-                                    label={t('theme.save.openSettings')}
-                                    icon="settings"
-                                    variant="plain"
-                                    size="small"
-                                    onPress={openAppSettings}
-                                    style={styles.flex}
-                                  />
-                                ) : null}
-                              </View>
-                            </View>
-                          ) : null}
-                          <PillButton
-                            label={
-                              saver.saving || photoSaver.saving
-                                ? t('theme.save.saving')
-                                : saveState === 'saved'
-                                  ? t('theme.save.again')
-                                  : t('theme.save.cta')
-                            }
-                            icon="download"
-                            variant={saveState === 'saved' ? 'tinted' : 'filled'}
-                            block
-                            busy={saver.saving || photoSaver.saving}
-                            onPress={onSaveWallpaper}
-                          />
-                          {/* T173 §3.3: while the wallpaper saves, a skeleton of the result (a phone-shaped wallpaper in the theme's colour). */}
-                          {saver.saving || photoSaver.saving ? (
-                            <Skeleton width={WALL_SKELETON_W} height={Math.round(WALL_SKELETON_W * PHONE_ASPECT)} radius={radiusV2.control} colour={theme.palette.surface} style={styles.wallSkeleton} />
-                          ) : null}
-                          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.checklist.wallpaper.pairBody')}</Text>
-                          <View style={styles.navRow}>
-                            <PillButton
-                              label={t('theme.checklist.wallpaper.pairCta')}
-                              icon="layers"
-                              variant="tinted"
-                              size="small"
-                              onPress={() => router.push({ pathname: '/wallpaper', params: { theme: theme.id } })}
-                              style={styles.flex}
-                            />
-                            {isDone ? null : (
-                              <PillButton
-                                label={t('theme.checklist.markDone')}
-                                icon="check"
-                                variant="plain"
-                                size="small"
-                                onPress={() => tick('wallpaper')}
-                                style={styles.flex}
-                              />
-                            )}
-                          </View>
-                        </View>
-                      ) : null}
-
-                      {expanded && row === 'icons' ? (
-                        <View style={styles.rowBody}>
-                          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
-                            {checklist.ticks.iconStyle ? '✓ ' : ''}
-                            {t('theme.checklist.icons.style')}
-                          </Text>
-                          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('theme.style.body')}</Text>
-                          {/* T179: art packs bring wallpaper + widget art; their icons are Glaze glyphs in the theme's colours. */}
-                          {remoteArt ? (
-                            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.remote.iconsNote')}</Text>
-                          ) : null}
-                          {styleError ? <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.warn }]}>{t('theme.style.error')}</Text> : null}
-                          <PillButton
-                            label={styleBusy ? t('common.loading') : t('theme.style.cta')}
-                            icon="grid"
-                            variant={checklist.ticks.iconStyle ? 'tinted' : 'filled'}
-                            block
-                            busy={styleBusy}
-                            onPress={() => void onUseStyle()}
-                            accessibilityHint={t('theme.style.hint')}
-                          />
-                          {/* T173 §3.3: while the icon style renders, a skeleton of the result (icon tiles), not a spinner. */}
-                          {styleBusy ? <IconGridSkeleton count={4} size={48} /> : null}
-                          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
-                            {checklist.ticks.iconInstall ? '✓ ' : ''}
-                            {t('theme.checklist.icons.install')}
-                          </Text>
-                          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('theme.install.body')}</Text>
-                          <SheenButton
-                            label={t('theme.install.cta')}
-                            icon="upload"
-                            sheenKey={sheenKey}
-                            onPress={() => {
-                              void onUseStyle('/install');
-                            }}
-                          />
-                        </View>
-                      ) : null}
-
-                      {expanded && row === 'widgets' ? (
-                        <View style={styles.rowBody}>
-                          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
-                            {widgetsMode === 'add' ? t('theme.checklist.widgets.bodyAdd') : t('theme.checklist.widgets.bodyPreview')}
-                          </Text>
-                          <PillButton
-                            label={widgetsMode === 'add' ? t('theme.checklist.widgets.ctaAdd') : t('theme.checklist.widgets.ctaPreview')}
-                            icon="grid"
-                            variant={isDone ? 'tinted' : 'filled'}
-                            block
-                            onPress={openWidgetStudio}
-                            accessibilityHint={t('theme.widgetPreviews.hint')}
-                          />
-                        </View>
-                      ) : null}
-
-                      {expanded && row === 'loop' ? (
-                        <View style={styles.rowBody}>
-                          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('theme.loop.body')}</Text>
-                          <PillButton
-                            label={t('theme.loop.cta')}
-                            icon="film"
-                            variant="tinted"
-                            block
-                            onPress={() => {
-                              tick('loop');
-                              router.navigate('/live');
-                            }}
-                          />
-                        </View>
-                      ) : null}
-                    </View>
-                  );
-                })}
-
-                <View style={styles.navRow}>
+              ) : null}
+              {/* The credit stays with the Webb photo wherever it is saved (T108). */}
+              {wallSource === 'space-photo' && spaceCredit ? (
+                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]} selectable>
+                  {t('ui.photoCredit.creditLine', spaceCredit)}
+                </Text>
+              ) : null}
+              {saveView.badge ? (
+                <View style={[styles.note, continuous, { backgroundColor: c.pastels.mint.fill }]} accessibilityLiveRegion="polite">
+                  <Feather name="check" size={18} color={c.pastels.mint.ink} />
+                  <View style={[styles.flex, styles.gap]}>
+                    <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.pastels.mint.ink }]}>
+                      {t('theme.save.savedBadge')}
+                    </Text>
+                    <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.pastels.mint.ink }]} selectable={savedFrom === 'space-photo'}>
+                      {savedFrom === 'space-photo' && spaceCredit ? t('ui.photoCredit.savedCredit', spaceCredit) : t('theme.save.saved')}
+                    </Text>
+                  </View>
+                </View>
+              ) : null}
+              {saveState === 'denied' ? (
+                <View style={styles.gap}>
+                  <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.warn }]}>{t('theme.save.denied')}</Text>
                   <PillButton
-                    label={t('common.close')}
-                    variant="plain"
-                    onPress={() => {
-                      setChecklistOpen(false);
-                      setOpenRow(null);
-                    }}
-                    style={styles.flex}
+                    label={t('theme.save.openSettings')}
+                    icon="settings"
+                    variant="tinted"
+                    onPress={openAppSettings}
                   />
-                  {complete ? (
+                </View>
+              ) : null}
+              {saveState === 'error' ? (
+                <View style={styles.gap} accessibilityLiveRegion="polite">
+                  <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.warn }]}>
+                    {saveWhy && saveFailureKey(saveWhy.why) ? t(`theme.save.why.${saveWhy.why}`) : t('theme.save.error')}
+                  </Text>
+                  {saveWhy?.detail ? (
+                    <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]} selectable>
+                      {saveWhy.detail}
+                    </Text>
+                  ) : null}
+                  {saveWhy && offersOpenSettings(saveWhy.why) ? (
                     <PillButton
-                      label={t('theme.checklist.again')}
-                      icon="rotate-ccw"
+                      label={t('theme.save.openSettings')}
+                      icon="settings"
                       variant="plain"
-                      onPress={() => {
-                        haptic('select');
-                        setSaveState('idle');
-                        commitChecklist(resetChecklist(checklistRef.current, Date.now()));
-                        setOpenRow('wallpaper');
-                      }}
-                      style={styles.flex}
+                      size="small"
+                      onPress={openAppSettings}
                     />
                   ) : null}
                 </View>
+              ) : null}
+              {/* T185: never hidden. The label reads Save again once saved. */}
+              <PillButton
+                label={t(`theme.save.${saveView.label}`)}
+                icon={saveView.badge ? 'refresh-cw' : 'download'}
+                variant={saveView.badge ? 'tinted' : 'filled'}
+                block
+                busy={saving}
+                onPress={onSaveWallpaper}
+              />
+              {/* T173 §3.3: while the wallpaper saves, a skeleton of the result (a phone-shaped wallpaper in the theme's colour). */}
+              {saver.saving || photoSaver.saving ? (
+                <Skeleton width={WALL_SKELETON_W} height={Math.round(WALL_SKELETON_W * PHONE_ASPECT)} radius={radiusV2.control} colour={theme.palette.surface} style={styles.wallSkeleton} />
+              ) : null}
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.checklist.wallpaper.pairBody')}</Text>
+              <PillButton
+                label={t('theme.checklist.wallpaper.pairCta')}
+                icon="layers"
+                variant="plain"
+                size="small"
+                onPress={() => router.push({ pathname: '/wallpaper', params: { theme: theme.id } })}
+              />
+            </View>
+          </SquircleCard>
+        ) : null}
+
+        {/* T185: the Icons screen: the style (with the shape choice), then install. */}
+        {step === 'icons' ? (
+          <SquircleCard size="large" elevation="raised" style={styles.side}>
+            <View style={styles.stack}>
+              <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('theme.style.body')}</Text>
+              {/* T179: art packs bring wallpaper + widget art; their icons are Glaze glyphs in the theme's colours. */}
+              {remoteArt ? (
+                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('theme.remote.iconsNote')}</Text>
+              ) : null}
+              {styleError ? <Text accessibilityLiveRegion="polite" maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.warn }]}>{t('theme.style.error')}</Text> : null}
+              <PillButton
+                label={styleBusy ? t('common.loading') : t('theme.style.cta')}
+                icon="grid"
+                block
+                busy={styleBusy}
+                onPress={() => void onUseStyle()}
+                accessibilityHint={t('theme.style.hint')}
+              />
+              {/* T173 §3.3: while the icon style renders, a skeleton of the result (icon tiles), not a spinner. */}
+              {styleBusy ? <IconGridSkeleton count={4} size={48} /> : null}
+              <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('theme.install.body')}</Text>
+              <SheenButton
+                label={t('theme.install.cta')}
+                icon="upload"
+                sheenKey={sheenKey}
+                onPress={() => {
+                  void onUseStyle('/install');
+                }}
+              />
+            </View>
+          </SquircleCard>
+        ) : null}
+
+        {/* T173 (PREMIUM_UI §3.3): editorial blocks, each one eyebrow + title (SectionHeader reads
+            them as one heading), quiet cards and inset rows under it, so "Use this theme" stays the
+            one primary action. Order: What's inside, Icons, Widgets, Wallpaper, Credits. */}
+        {overview ? (
+          <View style={styles.block}>
+            <SectionHeader eyebrow={t('theme.section.inside.eyebrow')} title={t('theme.section.inside.title')} style={styles.sectionHead} />
+            <SquircleCard style={styles.side}>
+              <View style={styles.stack}>
+                <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
+                  {t('theme.palette.title')}
+                </Text>
+                <View style={styles.dots}>
+                  {palette.map(([name, hex]) => (
+                    <View key={name} style={styles.dotItem} accessible accessibilityLabel={t('theme.a11y.swatch', { name, hex })}>
+                      <View style={[styles.dot, { backgroundColor: hex, borderColor: c.separator }]} />
+                      <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...ts('caption1'), styles.dotLabel, { color: c.inkSecondary }]}>
+                        {name}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
+                <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
+                  {t('theme.iconStyle')}
+                </Text>
+                <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>
+                  {styleSummary(t, { ...theme.iconStyle, shape })}
+                </Text>
+                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
+                  {t('theme.widgets.line', {
+                    style: t(`theme.widgets.${theme.widget.style}`),
+                    font: t(theme.widget.font === 'display' ? 'theme.widgets.display' : 'theme.widgets.body'),
+                  })}
+                </Text>
               </View>
             </SquircleCard>
           </View>
         ) : null}
 
-        {/* T173 (PREMIUM_UI §3.3): editorial blocks, each one eyebrow + title (SectionHeader reads
-            them as one heading), quiet cards and inset rows under it, so "Apply" stays the one
-            primary action. Order: What's inside, Icons, Widgets, Wallpaper, Credits. */}
-        <View style={styles.block}>
-          <SectionHeader eyebrow={t('theme.section.inside.eyebrow')} title={t('theme.section.inside.title')} style={styles.sectionHead} />
-          <SquircleCard style={styles.side}>
-            <View style={styles.stack}>
-              <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
-                {t('theme.palette.title')}
-              </Text>
-              <View style={styles.dots}>
-                {palette.map(([name, hex]) => (
-                  <View key={name} style={styles.dotItem} accessible accessibilityLabel={t('theme.a11y.swatch', { name, hex })}>
-                    <View style={[styles.dot, { backgroundColor: hex, borderColor: c.separator }]} />
-                    <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...ts('caption1'), styles.dotLabel, { color: c.inkSecondary }]}>
-                      {name}
-                    </Text>
-                  </View>
-                ))}
-              </View>
-              <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
-                {t('theme.iconStyle')}
-              </Text>
-              <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>
-                {styleSummary(t, { ...theme.iconStyle, shape })}
-              </Text>
-              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
-                {t('theme.widgets.line', {
-                  style: t(`theme.widgets.${theme.widget.style}`),
-                  font: t(theme.widget.font === 'display' ? 'theme.widgets.display' : 'theme.widgets.body'),
-                })}
-              </Text>
-            </View>
-          </SquircleCard>
-        </View>
-
-        {/* T26 + fb-1022 G2: the icon shape picker sits behind one collapsed "Shape" row here (the only
-            place it appears), with the "How it looks on iPhone" switch inside. */}
-        <View style={styles.block}>
-          <SectionHeader eyebrow={t('theme.section.icons.eyebrow')} title={t('theme.section.icons.title')} style={styles.sectionHead} />
-          <InsetGroup>
-            <InsetRow
-              title={t('theme.shapeRow.title')}
-              value={t(`themeUi.shape.names.${shape}`)}
-              icon="square"
-              iconTone="mint"
-              accessory="none"
-              trailing={<Feather name={shapeOpen ? 'chevron-up' : 'chevron-down'} size={18} color={c.inkTertiary} />}
-              onPress={() => setShapeOpen((o) => !o)}
-              accessibilityLabel={t('theme.shapeRow.a11y', { shape: t(`themeUi.shape.names.${shape}`) })}
-              accessibilityHint={shapeOpen ? t('theme.shapeRow.hideHint') : t('theme.shapeRow.showHint')}
-            />
-          </InsetGroup>
-          {shapeOpen ? (
-            <SquircleCard style={styles.side}>
-              <ShapePicker
-                theme={theme}
-                value={shape}
-                onChange={(next) => studio.update((s) => setThemeShape(s, shapeKey, next))}
-                iosMask={iosMask}
-                onIosMaskChange={setIosMask}
-                backdrop={iconBackdrop}
-              />
-            </SquircleCard>
-          ) : null}
-          {locked || !canApply ? null : (
-            <View style={styles.side}>
-              <ThemeOverrideRow theme={theme} />
-            </View>
-          )}
-        </View>
-
-        <View style={styles.block}>
-          <SectionHeader
-            eyebrow={t('theme.section.widgets.eyebrow')}
-            title={t('theme.widgetPreviews.title')}
-            body={t('theme.widgetPreviews.body')}
-            style={styles.sectionHead}
-          />
-          <WidgetPreviews theme={theme} />
-          {/* T133: the Seamless widget (wallpaper crop + floating art) for art-pack themes only. */}
-          {artPack ? <SeamlessCard artPackId={artPack.artPack.id} theme={theme} wallpaperUri={remoteWallpaperUri} heroUris={remoteHeroUris} /> : null}
-        </View>
-
-        {/* Make it yours: quiet rows for the photo and the wallpaper editor. */}
-        <View style={styles.block}>
-          <SectionHeader eyebrow={t('theme.section.wallpaper.eyebrow')} title={t('theme.customise')} style={styles.sectionHead} />
-          <InsetGroup footer={photo ? t('theme.photo.yours', { name: theme.name }) : t('theme.photo.prompt')}>
-            <InsetRow
-              title={photoLabel}
-              icon="image"
-              iconTone="sky"
-              onPress={openPhotoEditor}
-              accessibilityLabel={photoLabel}
-              accessibilityHint={t('theme.photo.hint')}
-            />
-            {locked || !canApply ? null : (
+        {/* T26 + fb-1022 G2: the icon shape picker sits behind one collapsed "Shape" row (on the Icons
+            screen since T185), with the "How it looks on iPhone" switch inside. */}
+        {step === 'icons' ? (
+          <View style={styles.block}>
+            <SectionHeader eyebrow={t('theme.section.icons.eyebrow')} title={t('theme.section.icons.title')} style={styles.sectionHead} />
+            <InsetGroup>
               <InsetRow
-                title={t('theme.editWallpaper')}
-                icon="sliders"
-                iconTone="lilac"
-                onPress={() => router.push({ pathname: '/wallpaper', params: { theme: theme.id } })}
-                accessibilityLabel={t('theme.editWallpaper')}
+                title={t('theme.shapeRow.title')}
+                value={t(`themeUi.shape.names.${shape}`)}
+                icon="square"
+                iconTone="mint"
+                accessory="none"
+                trailing={<Feather name={shapeOpen ? 'chevron-up' : 'chevron-down'} size={18} color={c.inkTertiary} />}
+                onPress={() => setShapeOpen((o) => !o)}
+                accessibilityLabel={t('theme.shapeRow.a11y', { shape: t(`themeUi.shape.names.${shape}`) })}
+                accessibilityHint={shapeOpen ? t('theme.shapeRow.hideHint') : t('theme.shapeRow.showHint')}
               />
+            </InsetGroup>
+            {shapeOpen ? (
+              <SquircleCard style={styles.side}>
+                <ShapePicker
+                  theme={theme}
+                  value={shape}
+                  onChange={(next) => studio.update((s) => setThemeShape(s, shapeKey, next))}
+                  iosMask={iosMask}
+                  onIosMaskChange={setIosMask}
+                  backdrop={iconBackdrop}
+                />
+              </SquircleCard>
+            ) : null}
+            {locked || !canApply ? null : (
+              <View style={styles.side}>
+                <ThemeOverrideRow theme={theme} />
+              </View>
             )}
-          </InsetGroup>
-        </View>
+          </View>
+        ) : null}
+
+        {overview ? (
+          <View style={styles.block}>
+            <SectionHeader
+              eyebrow={t('theme.section.widgets.eyebrow')}
+              title={t('theme.widgetPreviews.title')}
+              body={t('theme.widgetPreviews.body')}
+              style={styles.sectionHead}
+            />
+            <WidgetPreviews theme={theme} />
+            {/* T133: the Seamless widget (wallpaper crop + floating art) for art-pack themes only. */}
+            {artPack ? <SeamlessCard artPackId={artPack.artPack.id} theme={theme} wallpaperUri={remoteWallpaperUri} heroUris={remoteHeroUris} /> : null}
+          </View>
+        ) : null}
+
+        {/* Make it yours (Wallpaper screen): quiet rows for the photo and the wallpaper editor. */}
+        {step === 'wallpaper' ? (
+          <View style={styles.block}>
+            <SectionHeader eyebrow={t('theme.section.wallpaper.eyebrow')} title={t('theme.customise')} style={styles.sectionHead} />
+            <InsetGroup footer={photo ? t('theme.photo.yours', { name: theme.name }) : t('theme.photo.prompt')}>
+              <InsetRow
+                title={photoLabel}
+                icon="image"
+                iconTone="sky"
+                onPress={openPhotoEditor}
+                accessibilityLabel={photoLabel}
+                accessibilityHint={t('theme.photo.hint')}
+              />
+              {locked || !canApply ? null : (
+                <InsetRow
+                  title={t('theme.editWallpaper')}
+                  icon="sliders"
+                  iconTone="lilac"
+                  onPress={() => router.push({ pathname: '/wallpaper', params: { theme: theme.id } })}
+                  accessibilityLabel={t('theme.editWallpaper')}
+                />
+              )}
+            </InsetGroup>
+          </View>
+        ) : null}
 
         {hasCredits ? (
           <View style={styles.block}>
@@ -1156,8 +970,8 @@ function ThemeDetail({
         <OffscreenPhotoWallpaper ref={photoSaver.ref} job={photoSaver.job} onReady={photoSaver.markReady} />
       </ScrollView>
 
-      {/* The one primary action, sticky over the content on chrome glass: wallpaper + icons + widgets.
-          T173: one filled pill; "Choose icons" stays reachable as a quiet plain link under it. */}
+      {/* T185: the one primary action, sticky on chrome glass: "Use this theme" (the base for every
+          tab), or "In use ✓" when it already is. Wallpaper, Icons and Widgets are separate screens. */}
       {showBar ? (
         <GlassBar material="chrome" hairline="top" style={styles.bar}>
           <View
@@ -1165,31 +979,20 @@ function ThemeDetail({
             style={[styles.barInner, { paddingBottom: insets.bottom + spaceV2.sm }]}
           >
             <PillButton
-              label={t('theme.apply')}
+              label={useBusy ? t('common.loading') : inUse ? t('theme.use.inUse') : t('theme.use.cta')}
               icon={locked ? 'lock' : 'check-circle'}
               block
-              onPress={start}
-              accessibilityHint={locked ? t('theme.applyHintLocked') : t('theme.applyHint')}
+              busy={useBusy}
+              onPress={onUseTheme}
+              accessibilityHint={locked ? t('theme.applyHintLocked') : inUse ? t('theme.use.inUseHint') : t('theme.use.hint')}
             />
-            {!locked ? (
-              <PillButton
-                label={t('theme.style.cta')}
-                icon="grid"
-                variant="plain"
-                size="small"
-                busy={styleBusy}
-                onPress={() => void onUseStyle()}
-                accessibilityHint={t('theme.style.hint')}
-                style={styles.barLink}
-              />
-            ) : null}
-            {styleError ? (
+            {useError ? (
               <Text accessibilityLiveRegion="polite" maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.barNote, { color: c.warn }]}>
-                {t('theme.style.error')}
+                {t('theme.use.error')}
               </Text>
             ) : null}
             <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.barNote, { color: c.inkSecondary }]}>
-              {t('theme.applyBundle')}
+              {inUse ? t('theme.use.inUseNote') : t('theme.use.note')}
             </Text>
           </View>
         </GlassBar>
@@ -1212,114 +1015,19 @@ function ThemeDetail({
         onClose={() => setLockOpen(false)}
         subject={t('theme.lockSubject', { name: theme.name })}
         onUnlocked={() => {
-          if (lockFor.current === 'download') {
+          const why = lockFor.current;
+          if (why === 'download') {
             void onDownloadPack();
             return;
           }
-          openSteps();
+          if (why === 'apply' || why === 'overview') {
+            void putInUse();
+            return;
+          }
+          openPart(why, false);
         }}
       />
     </View>
-  );
-}
-
-type ChecklistRowHeaderProps = {
-  index: number;
-  title: string;
-  subtitle: string;
-  /** Spoken state: done / to do / 1 of 2 / optional. */
-  state: string;
-  done: boolean;
-  partial: boolean;
-  optional: boolean;
-  expanded: boolean;
-  onPress: () => void;
-};
-
-/** T61: one checklist row: a tick (or step number), title, status line and an expand chevron. */
-function ChecklistRowHeader({ index, title, subtitle, state, done, partial, optional, expanded, onPress }: ChecklistRowHeaderProps) {
-  const { c } = useColorsV2();
-  const { t, script } = useT();
-  const fill = done ? c.tint : partial ? c.tintSoft : 'transparent';
-  const ring = done ? c.tint : optional ? c.inkTertiary : c.tint;
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={t('theme.checklist.rowA11y', { name: title, state })}
-      accessibilityHint={t('theme.checklist.rowHint')}
-      accessibilityState={{ expanded, checked: done }}
-      onPress={onPress}
-      style={({ pressed }: { pressed: boolean }) => [styles.checkHead, { opacity: pressed ? 0.7 : 1 }]}
-    >
-      <View style={[styles.tick, { backgroundColor: fill, borderColor: ring }]}>
-        {done ? (
-          <Feather name="check" size={18} color={c.onTint} />
-        ) : (
-          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: partial ? c.onTintSoft : c.inkSecondary }]}>
-            {optional ? '+' : String(index)}
-          </Text>
-        )}
-      </View>
-      <View style={styles.flex}>
-        <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), { color: c.ink }]}>{title}</Text>
-        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>
-          {subtitle}
-          {' · '}
-          {state}
-        </Text>
-      </View>
-      <Feather name={expanded ? 'chevron-up' : 'chevron-down'} size={20} color={c.inkTertiary} />
-    </Pressable>
-  );
-}
-
-type SuccessBloomProps = { playKey: number; reduced: boolean; title: string; body: string };
-
-/**
- * T61: the success moment once all three steps are ticked. A check blooms out of a soft ring
- * (timed fade + fading halo, no spring); with Reduce Motion it simply fades in. The haptic and the VoiceOver
- * announcement fire from the screen when the moment is due. playKey 0 = shown without animation.
- */
-function SuccessBloom({ playKey, reduced, title, body }: SuccessBloomProps) {
-  const { c } = useColorsV2();
-  const { script } = useT();
-  const shown = useSharedValue(playKey > 0 ? 0 : 1);
-  const scale = useSharedValue(playKey > 0 && !reduced ? 0.4 : 1);
-  const halo = useSharedValue(0);
-  useEffect(() => {
-    if (playKey <= 0) return;
-    shown.value = 0;
-    shown.value = withTiming(1, { duration: reduced ? durations.fast : durations.base, easing: easeOutCurve });
-    if (reduced) {
-      scale.value = 1;
-      halo.value = 0;
-      return;
-    }
-    scale.value = 0.85;
-    scale.value = withTiming(1, { duration: durations.base, easing: easeOutCurve });
-    halo.value = 1;
-    halo.value = withTiming(0, { duration: durations.slow, easing: easeOutCurve });
-  }, [playKey, reduced, shown, scale, halo]);
-  const cardStyle = useAnimatedStyle(() => ({ opacity: shown.value }));
-  const checkStyle = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
-  const haloStyle = useAnimatedStyle(() => ({ opacity: halo.value * 0.5, transform: [{ scale: 1 + (1 - halo.value) * 0.9 }] }));
-  return (
-    <Animated.View
-      accessible
-      accessibilityLiveRegion="polite"
-      style={[styles.success, continuous, { backgroundColor: c.pastels.mint.fill }, cardStyle]}
-    >
-      <View style={styles.bloomWrap}>
-        <Animated.View pointerEvents="none" style={[styles.bloomHalo, { backgroundColor: c.ok }, haloStyle]} />
-        <Animated.View style={[styles.bloomCheck, { backgroundColor: c.ok }, checkStyle]}>
-          <Feather name="check" size={26} color={c.surface} />
-        </Animated.View>
-      </View>
-      <View style={styles.flex}>
-        <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), { color: c.pastels.mint.ink }]}>{title}</Text>
-        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.pastels.mint.ink }]}>{body}</Text>
-      </View>
-    </Animated.View>
   );
 }
 

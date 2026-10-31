@@ -112,6 +112,27 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
     skip: 'Pular',
     finish: 'Concluir',
   },
+  // T184 / T185 (owner-1101): "Use this theme" and the three entry points on the theme page.
+  use: {
+    cta: 'Usar este tema',
+    inUse: 'Em uso ✓',
+    hint: 'Usa este tema nos ícones, widgets e papel de parede de todas as abas',
+    inUseHint: 'Já é seu tema em todas as abas. Toque para aplicar de novo',
+    note: 'Coloca ícones, widgets e papel de parede de todas as abas neste tema.',
+    inUseNote: 'Seus ícones, widgets e papel de parede seguem este tema.',
+    doneA11y: '{name} agora é seu tema em todas as abas',
+    error: 'Não foi possível mudar para este tema. Tente de novo.',
+  },
+  parts: {
+    eyebrow: 'Configurar',
+    title: 'Papel de parede, ícones e widgets',
+    wallpaper: 'Papel de parede',
+    wallpaperSub: 'Salvar em Fotos',
+    icons: 'Ícones',
+    iconsSub: 'Escolha o estilo e depois instale',
+    widgets: 'Widgets',
+    widgetsSub: 'Widgets combinando no Widget Studio',
+  },
   save: {
     body: 'Salve o papel de parede {name} em Fotos no tamanho do seu iPhone ({width} × {height}).',
     bodyPhoto: 'Salve sua foto, enquadrada para {name}, em Fotos no tamanho do seu iPhone ({width} × {height}).',
@@ -133,6 +154,8 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
     saving: 'Salvando…',
     again: 'Salvar de novo',
     cta: 'Salvar papel de parede em Fotos',
+    // T185: the Wallpaper screen's badge once saved (Save again always stays).
+    savedBadge: 'Salvo em Fotos ✓',
   },
   style: {
     body: 'Carregue este estilo no Estúdio de ícones e escolha os apps que quer personalizar.',

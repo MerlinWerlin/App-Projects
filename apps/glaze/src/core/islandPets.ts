@@ -1,6 +1,6 @@
 // Original pixel companions. The native Live Activity uses the same checked-in pixel grid.
 export const PETS = [
-  { id: 'cat', name: 'Mochi', color: '#C5A6F4', rows: [
+  { id: 'cat', name: 'Mushy', color: '#C5A6F4', rows: [
     '................', '..##........##..', '..###......###..', '..#o########o#..',
     '..#oooooooooo#..', '..#oooooooooo#..', '..#ooeooooeoo#..', '..#oooooooooo#..',
     '...#oowwwwwo#...', '....##wwww##....', '....#oooooo#..#.', '...#oooooooo#o#.',

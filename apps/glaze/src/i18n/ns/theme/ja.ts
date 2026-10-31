@@ -112,6 +112,27 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
     skip: 'スキップ',
     finish: '完了',
   },
+  // T184 / T185 (owner-1101): "Use this theme" and the three entry points on the theme page.
+  use: {
+    cta: 'このテーマを使う',
+    inUse: '使用中 ✓',
+    hint: 'すべてのタブのアイコン、ウィジェット、壁紙にこのテーマを使います',
+    inUseHint: 'すでにすべてのタブのテーマです。タップでもう一度適用',
+    note: 'すべてのタブのアイコン、ウィジェット、壁紙をこのテーマにします。',
+    inUseNote: 'アイコン、ウィジェット、壁紙はこのテーマに合わせて表示されます。',
+    doneA11y: '{name}がすべてのタブのテーマになりました',
+    error: 'このテーマに切り替えられませんでした。もう一度お試しください。',
+  },
+  parts: {
+    eyebrow: '設定',
+    title: '壁紙、アイコン、ウィジェット',
+    wallpaper: '壁紙',
+    wallpaperSub: '写真に保存',
+    icons: 'アイコン',
+    iconsSub: 'スタイルを選んでインストール',
+    widgets: 'ウィジェット',
+    widgetsSub: 'Widget Studioでおそろいのウィジェット',
+  },
   save: {
     body: '{name} の壁紙を iPhone のサイズ（{width} × {height}）で写真に保存します。',
     bodyPhoto: '{name} 用に切り抜いたあなたの写真を iPhone のサイズ（{width} × {height}）で写真に保存します。',
@@ -133,6 +154,8 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
     saving: '保存中…',
     again: 'もう一度保存',
     cta: '壁紙を写真に保存',
+    // T185: the Wallpaper screen's badge once saved (Save again always stays).
+    savedBadge: '写真に保存しました ✓',
   },
   style: {
     body: 'このアイコンスタイルをアイコンスタジオに読み込み、テーマを適用するアプリを選びます。',

@@ -112,6 +112,27 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
     skip: '跳过',
     finish: '完成',
   },
+  // T184 / T185 (owner-1101): "Use this theme" and the three entry points on the theme page.
+  use: {
+    cta: '使用此主题',
+    inUse: '使用中 ✓',
+    hint: '在所有标签页的图标、小组件和墙纸上使用此主题',
+    inUseHint: '已是所有标签页的主题。轻点可再次应用',
+    note: '将所有标签页的图标、小组件和墙纸设为此主题。',
+    inUseNote: '你的图标、小组件和墙纸跟随此主题。',
+    doneA11y: '{name} 现在是所有标签页的主题',
+    error: '无法切换到此主题，请重试。',
+  },
+  parts: {
+    eyebrow: '设置',
+    title: '墙纸、图标和小组件',
+    wallpaper: '墙纸',
+    wallpaperSub: '存储到照片',
+    icons: '图标',
+    iconsSub: '选择风格，然后安装',
+    widgets: '小组件',
+    widgetsSub: '在 Widget Studio 中搭配小组件',
+  },
   save: {
     body: '将 {name} 壁纸按你的 iPhone 尺寸（{width} × {height}）保存到“照片”。',
     bodyPhoto: '将为 {name} 裁剪好的照片按你的 iPhone 尺寸（{width} × {height}）保存到“照片”。',
@@ -132,6 +153,8 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
     saving: '正在保存…',
     again: '再次保存',
     cta: '将壁纸保存到照片',
+    // T185: the Wallpaper screen's badge once saved (Save again always stays).
+    savedBadge: '已存储到照片 ✓',
   },
   style: {
     body: '将此图标样式载入图标工作室，然后选择要美化的 App。',

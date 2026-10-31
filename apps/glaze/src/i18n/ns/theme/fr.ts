@@ -112,6 +112,27 @@ export const fr: NonNullable<LocaleMessages['theme']> = {
     skip: 'Passer',
     finish: 'Terminer',
   },
+  // T184 / T185 (owner-1101): "Use this theme" and the three entry points on the theme page.
+  use: {
+    cta: 'Utiliser ce thème',
+    inUse: 'Utilisé ✓',
+    hint: 'Utilise ce thème pour vos icônes, widgets et fond d’écran dans chaque onglet',
+    inUseHint: 'Déjà votre thème dans chaque onglet. Touchez pour l’appliquer à nouveau',
+    note: 'Applique ce thème à vos icônes, widgets et fond d’écran dans chaque onglet.',
+    inUseNote: 'Vos icônes, widgets et fond d’écran suivent ce thème.',
+    doneA11y: '{name} est maintenant votre thème dans chaque onglet',
+    error: 'Impossible de passer à ce thème. Réessayez.',
+  },
+  parts: {
+    eyebrow: 'Mise en place',
+    title: 'Fond d’écran, icônes et widgets',
+    wallpaper: 'Fond d’écran',
+    wallpaperSub: 'L’enregistrer dans Photos',
+    icons: 'Icônes',
+    iconsSub: 'Choisir le style, puis installer',
+    widgets: 'Widgets',
+    widgetsSub: 'Widgets assortis dans Widget Studio',
+  },
   save: {
     body: 'Enregistrez le fond {name} dans Photos à la taille de votre iPhone ({width} × {height}).',
     bodyPhoto: 'Enregistrez votre photo, cadrée pour {name}, dans Photos à la taille de votre iPhone ({width} × {height}).',
@@ -133,6 +154,8 @@ export const fr: NonNullable<LocaleMessages['theme']> = {
     saving: 'Enregistrement…',
     again: 'Enregistrer à nouveau',
     cta: 'Enregistrer le fond dans Photos',
+    // T185: the Wallpaper screen's badge once saved (Save again always stays).
+    savedBadge: 'Enregistré dans Photos ✓',
   },
   style: {
     body: 'Chargez ce style d’icônes dans l’Atelier d’icônes, puis choisissez les apps à personnaliser.',

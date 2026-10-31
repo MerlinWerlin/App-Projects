@@ -1,113 +1,243 @@
+// Island pets (T188, owner-1101 #6). Each pet follows its day from src/core/petLife.ts (sleep in
+// quiet hours, a stretch on waking, meals, idle / wander / play), shows its state, mood and a
+// caption, idles with a slow calm breath, and reacts to a tap. Settings: which pet is on the
+// Island, Island on/off, quiet hours and names. The screen re-renders only at petLife boundaries
+// (one timeout to the earliest `until`) and the Live Activity is updated through
+// src/store/pets.ts at those boundaries only. Expo Go: everything but the Live Activity works.
+// T186 re-exports this screen as the Pets tab; keep the default export.
 import { useFocusEffect } from 'expo-router';
-import { useCallback, useRef, useState } from 'react';
-import { AppState, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Animated, AppState, Easing, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { PETS, petById, type PetId, type PetMood, type PetStatus } from '../src/core/islandPets';
+import { PETS, petById, type PetId, type PetStatus } from '../src/core/islandPets';
+import {
+  PET_NAME_MAX, cleanPetName, lifeInputFor, petDisplayName, petLife, shiftQuiet, withCare,
+  type PetFrameSet, type PetLife, type PetSettings,
+} from '../src/core/petLife';
 import { useT } from '../src/i18n';
-import { changePetMood, petsSupported, readPetStatus, startPet, stopPet } from '../src/native/islandPets';
-import { continuous, onArtV2, radiusV2, textV2 } from '../src/theme/tokensV2';
+import { petsSupported, readPetStatus } from '../src/native/islandPets';
+import { localOffset, syncIslandPet, usePetSettings } from '../src/store/pets';
+import { useMotionReduced } from '../src/theme/motion';
+import { continuous, onArtV2, radiusV2, sizeV2, spaceV2, textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import { IslandPetArt } from '../src/ui/IslandPetArt';
 import { PillButton } from '../src/ui/PillButton';
+import { SwitchRow } from '../src/ui/Switch';
+import { haptic } from '../src/ui/haptics';
 import { textStyleFor } from '../src/ui/i18nLayout';
+
+/** Breath period per pose: slow when asleep, a little quicker when busy. Opacity-free, 1 pt rise. */
+const BREATH_MS: Record<PetFrameSet, number> = { sleep: 4200, stretch: 2600, sit: 3200, eat: 1600, play: 1800, walk: 2000, cheer: 1200 };
+const SPOT_STEP = 10;
+
+/** A pet that breathes slowly and walks between spots with a timed ease (no spring, no bounce). */
+function LivingPet({ pet, life, size }: { pet: PetId; life: PetLife; size: number }) {
+  const reduced = useMotionReduced();
+  const breath = useRef(new Animated.Value(0)).current;
+  const x = useRef(new Animated.Value((life.spot - 2) * SPOT_STEP)).current;
+  // Faces the way it last walked.
+  const lastSpot = useRef(life.spot);
+  const facing = useRef(false);
+  if (life.spot !== lastSpot.current) { facing.current = life.spot < lastSpot.current; lastSpot.current = life.spot; }
+  const facingLeft = facing.current;
+  useEffect(() => {
+    breath.setValue(0);
+    if (reduced) return;
+    const half = BREATH_MS[life.frames] / 2;
+    const loop = Animated.loop(Animated.sequence([
+      Animated.timing(breath, { toValue: 1, duration: half, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+      Animated.timing(breath, { toValue: 0, duration: half, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+    ]));
+    loop.start();
+    return () => loop.stop();
+  }, [breath, life.frames, reduced]);
+  useEffect(() => {
+    const to = (life.spot - 2) * SPOT_STEP;
+    if (reduced) { x.setValue(to); return; }
+    Animated.timing(x, { toValue: to, duration: 1200, easing: Easing.inOut(Easing.quad), useNativeDriver: true }).start();
+  }, [life.spot, reduced, x]);
+  const translateY = breath.interpolate({ inputRange: [0, 1], outputRange: [0, -1.5] });
+  return (
+    <View style={[styles.track, { width: size + SPOT_STEP * 4, height: size }]}>
+      <Animated.View style={{ transform: [{ translateX: x }, { translateY }] }}>
+        <IslandPetArt pet={pet} frames={life.frames} facingLeft={facingLeft} size={size} />
+      </Animated.View>
+    </View>
+  );
+}
 
 export default function PetsScreen() {
   const { c } = useColorsV2();
-  const { t, script } = useT();
+  const { t, script, formatClock } = useT();
   const available = petsSupported();
-  const [selected, setSelected] = useState<PetId>('cat');
+  const { settings, ready, update } = usePetSettings();
+  const [now, setNow] = useState(() => Date.now());
   const [status, setStatus] = useState<PetStatus | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(false);
   const locked = useRef(false);
-  const chosen = useRef(false);
-  const accept = useCallback((next: PetStatus) => {
-    setStatus(next);
-    if (next.session && !chosen.current) setSelected(next.session.pet);
-  }, []);
-  const refresh = useCallback(async () => {
+  const settingsRef = useRef(settings);
+  settingsRef.current = settings;
+
+  const lives = useMemo(() => {
+    const offset = localOffset(now);
+    return Object.fromEntries(PETS.map(p => [p.id, petLife(lifeInputFor(settings, p.id, now, offset))])) as Record<PetId, PetLife>;
+  }, [settings, now]);
+
+  // One timeout to the earliest boundary of any pet: sparse re-renders, no polling.
+  useEffect(() => {
+    const until = Math.min(...PETS.map(p => lives[p.id].until));
+    const id = setTimeout(() => setNow(Date.now()), Math.min(2 ** 31 - 1, Math.max(1000, until - Date.now() + 50)));
+    return () => clearTimeout(id);
+  }, [lives]);
+
+  /** Reads the Live Activity and brings it in line with the settings (full iPhone build only). */
+  const reconcile = useCallback(async () => {
     if (!available || locked.current) return;
     locked.current = true; setBusy(true);
-    try { accept(await readPetStatus()); setError(false); }
-    catch { setError(true); }
-    finally { locked.current = false; setBusy(false); }
-  }, [available, accept]);
-  useFocusEffect(useCallback(() => {
-    void refresh();
-    const subscription = AppState.addEventListener('change', state => { if (state === 'active') void refresh(); });
-    return () => subscription.remove();
-  }, [refresh]));
-  const act = async (operation: () => Promise<PetStatus>) => {
-    if (locked.current) return;
-    locked.current = true; setBusy(true); setError(false);
-    try { accept(await operation()); }
+    try { setStatus(await syncIslandPet(settingsRef.current, await readPetStatus())); setError(false); }
     catch {
       // A failed response can follow an actual OS change. Reconcile, never invent a stopped pet.
       setError(true);
-      try { accept(await readPetStatus()); } catch { /* Retain the last confirmed status. */ }
+      try { setStatus(await readPetStatus()); } catch { /* Retain the last confirmed status. */ }
     } finally { locked.current = false; setBusy(false); }
-  };
+  }, [available]);
+
+  useFocusEffect(useCallback(() => {
+    setNow(Date.now());
+    const subscription = AppState.addEventListener('change', state => { if (state === 'active') setNow(Date.now()); });
+    return () => subscription.remove();
+  }, []));
+  // Settings changes and petLife boundaries (now) are the only triggers for a Live Activity sync.
+  useEffect(() => { if (ready) void reconcile(); }, [ready, settings, now, reconcile]);
+
+  const change = (fn: (s: PetSettings) => PetSettings) => { update(fn); setNow(Date.now()); };
+  const hello = (pet: PetId) => { haptic('light'); change(s => withCare(s, pet, 'tapAt', Date.now())); };
+  // PillButton gives its own haptic.
+  const care = (pet: PetId, kind: 'fedAt' | 'playAt') => change(s => withCare(s, pet, kind, Date.now()));
+
+  const label = (role: 'body' | 'footnote' | 'headline' | 'subhead') => [textV2[role], textStyleFor(script, textV2[role])];
+  const nameOf = (pet: PetId) => petDisplayName(settings, pet, petById(pet).name);
+  const moodText = (life: PetLife) => t(`pets.${life.mood}`);
+  const stateText = (caption: PetLife['caption']) => t(`pets.${caption}`);
+  const clock = (ms: number) => formatClock(new Date(ms));
+  const minuteDate = (m: number) => { const d = new Date(now); d.setHours(Math.floor(m / 60), m % 60, 0, 0); return d.getTime(); };
+  const island = lives[settings.pet];
   const session = status?.session;
-  const pose: PetMood = session?.pet === selected ? session.mood : 'happy';
-  const same = session?.pet === selected;
-  const label = (role: 'body' | 'footnote' | 'headline') => [textV2[role], textStyleFor(script, textV2[role])];
 
   return (
     <SafeAreaView edges={['left', 'right', 'bottom']} style={[styles.root, { backgroundColor: c.bg }]}>
-      <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.body}>
+      <ScrollView bounces={false} overScrollMode="never" keyboardShouldPersistTaps="handled" contentContainerStyle={styles.body}>
         <Text style={[...label('body'), { color: c.inkSecondary }]}>{t('pets.intro')}</Text>
+
         <View style={[styles.preview, continuous, { backgroundColor: c.fill }]}>
           <Text style={[...label('footnote'), { color: c.inkSecondary }]}>{t('pets.preview')}</Text>
-          <View style={styles.island} accessible accessibilityLabel={petById(selected).name}>
-            <IslandPetArt pet={selected} mood={pose} size={80} />
+          <Pressable accessibilityRole="button" accessibilityLabel={t('pets.hello', { name: nameOf(settings.pet) })}
+            accessibilityValue={{ text: stateText(island.caption) }} accessibilityHint={t('pets.moodLabel', { mood: moodText(island) })}
+            onPress={() => hello(settings.pet)} style={styles.island}>
+            <LivingPet pet={settings.pet} life={island} size={64} />
             <View style={styles.previewText}>
-              <Text style={[...label('headline'), { color: onArtV2.ink }]}>{petById(selected).name}</Text>
-              <Text style={[...label('footnote'), { color: '#E9DDF5' }]}>{t(`pets.${pose}`)}</Text>
+              <Text style={[...label('headline'), { color: onArtV2.ink }]}>{nameOf(settings.pet)}</Text>
+              <Text style={[...label('footnote'), { color: '#E9DDF5' }]}>{stateText(island.caption)}</Text>
             </View>
-          </View>
+          </Pressable>
+          <Text style={[...label('footnote'), { color: c.inkSecondary }]}>
+            {t('pets.next', { state: stateText(island.next.caption), time: clock(island.until) })}
+          </Text>
         </View>
-        <Text accessibilityRole="header" style={[...label('headline'), { color: c.ink }]}>{t('pets.choose')}</Text>
+
+        <Text style={[...label('footnote'), { color: c.inkSecondary }]}>{t('pets.tapHint')}</Text>
+        {PETS.map(pet => {
+          const life = lives[pet.id];
+          return (
+            <View key={pet.id} style={[styles.card, continuous, { backgroundColor: c.fill }]}>
+              <Pressable accessibilityRole="button" accessibilityLabel={t('pets.hello', { name: nameOf(pet.id) })}
+                accessibilityValue={{ text: stateText(life.caption) }} accessibilityHint={t('pets.moodLabel', { mood: moodText(life) })}
+                onPress={() => hello(pet.id)} style={styles.cardTop}>
+                <LivingPet pet={pet.id} life={life} size={56} />
+                <View style={styles.previewText}>
+                  <Text style={[...label('headline'), { color: c.ink }]}>{nameOf(pet.id)}</Text>
+                  <Text accessibilityLiveRegion="polite" style={[...label('subhead'), { color: c.ink }]}>{stateText(life.caption)}</Text>
+                  <Text style={[...label('footnote'), { color: c.inkSecondary }]}>{t('pets.moodLabel', { mood: moodText(life) })}</Text>
+                </View>
+              </Pressable>
+              <View style={styles.actions}>
+                <PillButton label={t('pets.feed')} variant="tinted" icon="coffee" disabled={!life.canFeed}
+                  style={styles.action} onPress={() => care(pet.id, 'fedAt')} />
+                <PillButton label={t('pets.play')} variant="tinted" icon="sun" disabled={!life.canPlay}
+                  style={styles.action} onPress={() => care(pet.id, 'playAt')} />
+              </View>
+            </View>
+          );
+        })}
+
+        <Text accessibilityRole="header" style={[...label('headline'), { color: c.ink }]}>{t('pets.settings')}</Text>
+        <Text style={[...label('subhead'), { color: c.inkSecondary }]}>{t('pets.choose')}</Text>
         <View style={styles.choices}>
           {PETS.map(pet => (
-            <Pressable key={pet.id} accessibilityRole="button" accessibilityLabel={pet.name}
-              accessibilityState={{ selected: selected === pet.id, disabled: busy }} disabled={busy}
-              onPress={() => { chosen.current = true; setSelected(pet.id); }}
-              style={[styles.choice, continuous, { backgroundColor: c.fill, borderColor: selected === pet.id ? c.tint : c.separator }]}>
-              <IslandPetArt pet={pet.id} mood="happy" size={64} />
-              <Text style={[...label('footnote'), { color: c.ink }]}>{pet.name}</Text>
+            <Pressable key={pet.id} accessibilityRole="button" accessibilityLabel={nameOf(pet.id)}
+              accessibilityState={{ selected: settings.pet === pet.id, disabled: busy }} disabled={busy}
+              onPress={() => { haptic('select'); change(s => ({ ...s, pet: pet.id })); }}
+              style={[styles.choice, continuous, { backgroundColor: c.fill, borderColor: settings.pet === pet.id ? c.tint : c.separator }]}>
+              <IslandPetArt pet={pet.id} frames="sit" size={48} />
+              <Text style={[...label('footnote'), { color: c.ink }]}>{nameOf(pet.id)}</Text>
             </Pressable>
           ))}
         </View>
-        <Text accessibilityLiveRegion="polite" style={[...label('body'), { color: c.ink }]}>
+
+        <SwitchRow label={t('pets.island')} value={available && settings.island} disabled={!available || busy}
+          onChange={on => { haptic('select'); change(s => ({ ...s, island: on })); }} />
+        <Text accessibilityLiveRegion="polite" style={[...label('footnote'), { color: c.inkSecondary }]}>
           {error ? t('pets.error') : !available ? t('pets.unavailable') : status && !status.enabled ? t('pets.disabled') :
-            session ? t('pets.running', { name: petById(session.pet).name }) : t('pets.off')}
+            session ? t('pets.running', { name: nameOf(session.pet) }) : t('pets.off')}
         </Text>
-        {available && <>
-          <PillButton label={t(session ? 'pets.switch' : 'pets.start')} block icon="heart"
-            busy={busy} disabled={!status?.enabled || same || error} onPress={() => void act(() => startPet(selected))} />
-          {session && <>
-            <View style={styles.actions}>
-              {(['happy', 'playful', 'sleepy'] as const).map((mood, i) => (
-                <PillButton key={mood} label={t((['pets.cuddle', 'pets.play', 'pets.nap'] as const)[i])}
-                  variant="tinted" disabled={busy || error} style={styles.action}
-                  onPress={() => void act(() => changePetMood(session.id, mood))} />
-              ))}
-            </View>
-            <PillButton label={t('pets.stop')} variant="plain" block disabled={busy} onPress={() => void act(stopPet)} />
-          </>}
-          {(error || !status?.enabled) && <PillButton label={t('pets.check')} variant="tinted" disabled={busy} onPress={() => void refresh()} />}
-        </>}
+        {available && (error || (status && !status.enabled)) &&
+          <PillButton label={t('pets.check')} variant="tinted" disabled={busy} onPress={() => void reconcile()} />}
+
+        <Text style={[...label('subhead'), { color: c.ink }]}>{t('pets.quiet')}</Text>
+        {(['quietStart', 'quietEnd'] as const).map(edge => (
+          <View key={edge} style={styles.quietRow}>
+            <Text style={[...label('body'), styles.quietLabel, { color: c.ink }]}>
+              {t(edge === 'quietStart' ? 'pets.bedtime' : 'pets.wake')} · {clock(minuteDate(settings[edge]))}
+            </Text>
+            <PillButton label="" icon="minus" variant="tinted" accessibilityLabel={t('pets.earlier')} accessibilityHint={t(edge === 'quietStart' ? 'pets.bedtime' : 'pets.wake')}
+              onPress={() => change(s => shiftQuiet(s, edge, -30))} />
+            <PillButton label="" icon="plus" variant="tinted" accessibilityLabel={t('pets.later')} accessibilityHint={t(edge === 'quietStart' ? 'pets.bedtime' : 'pets.wake')}
+              onPress={() => change(s => shiftQuiet(s, edge, 30))} />
+          </View>
+        ))}
+        <Text style={[...label('footnote'), { color: c.inkSecondary }]}>{t('pets.quietHint')}</Text>
+
+        <Text style={[...label('subhead'), { color: c.ink }]}>{t('pets.name')}</Text>
+        {PETS.map(pet => (
+          <TextInput key={pet.id} defaultValue={settings.names[pet.id] ?? ''} placeholder={pet.name}
+            placeholderTextColor={c.inkSecondary} selectionColor={c.tint} maxLength={PET_NAME_MAX}
+            accessibilityLabel={pet.name} accessibilityHint={t('pets.name')} autoCorrect={false} returnKeyType="done"
+            onEndEditing={e => {
+              const name = cleanPetName(e.nativeEvent.text);
+              change(s => ({ ...s, names: { ...s.names, [pet.id]: name || undefined } }));
+            }}
+            style={[...label('body'), styles.input, continuous, { color: c.ink, backgroundColor: c.fill }]} />
+        ))}
+
+        <Text style={[...label('footnote'), { color: c.inkSecondary }]}>{t('pets.lifeNote')}</Text>
         <Text style={[...label('footnote'), { color: c.inkSecondary }]}>{t('pets.limits')}</Text>
       </ScrollView>
     </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
-  root: { flex: 1 }, body: { padding: 20, gap: 18, paddingBottom: 36 },
-  preview: { padding: 20, borderRadius: radiusV2.card, alignItems: 'center', gap: 14 },
-  island: { backgroundColor: '#19131F', borderRadius: 36, paddingHorizontal: 20, paddingVertical: 12, flexDirection: 'row', alignItems: 'center', gap: 16, maxWidth: '100%' },
-  previewText: { flexShrink: 1, gap: 4 },
-  choices: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
-  choice: { flexGrow: 1, flexBasis: 88, borderWidth: 2, borderRadius: 20, alignItems: 'center', padding: 10, gap: 8 },
-  actions: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 }, action: { flexGrow: 1, flexBasis: 88 },
+  root: { flex: 1 }, body: { padding: spaceV2.inset, gap: spaceV2.lg, paddingBottom: spaceV2.xxl },
+  preview: { padding: spaceV2.inset, borderRadius: radiusV2.card, alignItems: 'center', gap: spaceV2.md },
+  island: { backgroundColor: '#19131F', borderRadius: 36, paddingHorizontal: spaceV2.inset, paddingVertical: spaceV2.md, flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, maxWidth: '100%', minHeight: sizeV2.touch },
+  previewText: { flexShrink: 1, flexGrow: 1, gap: spaceV2.xs },
+  track: { justifyContent: 'center', alignItems: 'center' },
+  card: { padding: spaceV2.lg, borderRadius: radiusV2.card, gap: spaceV2.md },
+  cardTop: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch },
+  choices: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.md },
+  choice: { flexGrow: 1, flexBasis: 88, borderWidth: 2, borderRadius: radiusV2.control, alignItems: 'center', padding: spaceV2.sm, gap: spaceV2.sm, minHeight: sizeV2.touch },
+  actions: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.sm }, action: { flexGrow: 1, flexBasis: 88 },
+  quietRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
+  quietLabel: { flex: 1 },
+  input: { borderRadius: radiusV2.control, paddingHorizontal: spaceV2.lg, minHeight: sizeV2.touch },
 });

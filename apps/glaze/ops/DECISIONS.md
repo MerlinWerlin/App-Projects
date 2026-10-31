@@ -180,3 +180,6 @@ Jared explicitly requested: “add the pets and also - push it all to test fligh
 - 2026-10-31 · run 194 · oversight D215-1 (v215) · accepted · repack before every publish via ops/bundle-check.sh (commit hashes unchanged, SHIP_BASE safe), base64 size recorded in RUNLOG, big-image guard above 15.6 MB; no history rewrite. No patches.
 - 2026-10-31 · run 196 · oversight D217-1 (v217) · accepted · PR #134 merged, holds lifted: resumed owner-first backlog with one small JS-only task (T80 part: theme-page widget previews show Widget Studio edits). D211-1 kept (no plus:true, no price/paywall change); D215-1 bundle guard kept. No patches.
 - 2026-10-31 · run 197 · oversight v218 · accepted · no new directives; D211-1 and D130-2 kept (JS-only T80 slice: studio photo-copy cleanup). No patches.
+- 2026-10-31 · run 199 · oversight v220 · accepted · no new directives; PR #140 shipped, holds lifted, but no JS-only task left (T80 rest native/undefined, T64/T68 held by D77-2). D211-1, D130-2 kept. No patches.
+
+- 2026-11-01 · owner brief owner-1101 (manual fire) · partial · items 1-6, 8, 9 accepted; item 7's "use StarNet/OpenAI for the bulk list" rejected (hard rule: never touch StarNet); the bigger catalogue is built in the cloud and checked against Apple's public lookup data.

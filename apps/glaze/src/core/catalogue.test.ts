@@ -25,8 +25,8 @@ const BRAND_GLYPHS = [
 const rot13 = (s: string) => s.replace(/[a-z]/g, (c) => String.fromCharCode(((c.charCodeAt(0) - 97 + 13) % 26) + 97));
 const COMPETITORS = ['gurzvsl', 'vpba gurzre', 'zlfperra', 'fperraxvg', 'jvqtrgfzvgu', 'vagbyvir', 'ybbcl', 'ybpxvb'].map(rot13);
 
-test('catalogue has ~560 entries with unique ids (T170 widened it from ~380)', () => {
-  assert.ok(CATALOGUE.length >= 460 && CATALOGUE.length <= 700, `${CATALOGUE.length} entries`);
+test('catalogue has 600+ entries with unique ids (T170 widened it from ~380; T189 adds catalogueExtra.ts)', () => {
+  assert.ok(CATALOGUE.length >= 600 && CATALOGUE.length <= 2500, `${CATALOGUE.length} entries`);
   const ids = CATALOGUE.map((e) => e.id);
   assert.equal(new Set(ids).size, ids.length, 'duplicate ids');
   for (const id of ids) assert.match(id, /^[a-z0-9]+(-[a-z0-9]+)*$/, id);
@@ -53,7 +53,6 @@ test('well-known schemes are present and verified', () => {
     spotify: 'spotify:',
     instagram: 'instagram://',
     whatsapp: 'whatsapp://',
-    youtube: 'youtube://',
     facebook: 'fb://',
     x: 'twitter://',
     messages: 'sms:',
@@ -70,7 +69,9 @@ test('well-known schemes are present and verified', () => {
     assert.equal(e.urlScheme, scheme, id);
     assert.equal(e.verified, true, id);
   }
-  assert.equal(getById('settings')?.urlScheme, 'App-prefs:');
+  // T183 (owner 1 Nov): web clips with these fail in Safari ("address is invalid"); Open App only.
+  assert.equal(getById('settings')?.urlScheme, null);
+  assert.equal(getById('youtube')?.urlScheme, null);
 });
 
 test('system apps are included', () => {

@@ -105,7 +105,8 @@ test('theme page source: one Download pill in its own glass bar, determinate pro
   assert.doesNotMatch(bar, /view\.message|\.error\b|c\.warn/, 'never the raw error or warning colour');
   // The Apply bar stays the first chrome glass bar (premiumThemeDetail guard), and hides until downloaded.
   assert.ok(d.indexOf('<GlassBar material="chrome"') < at);
-  assert.match(d, /const showBar = canApply && !checklistOpen && \(!primary \|\| primary\.kind === 'apply'\);/);
+  // T185: the bar ("Use this theme") shows on the overview only; the Wallpaper / Icons screens have none.
+  assert.match(d, /const showBar = overview && canApply && \(!primary \|\| primary\.kind === 'apply'\);/);
   assert.match(d, /!remoteArt && showsPackCard\(packView\) \? <PackCard/, 'the old pack card is not shown for remote themes');
   assert.doesNotMatch(d, /withSpring|ActivityIndicator/);
 });
