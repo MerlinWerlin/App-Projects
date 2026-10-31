@@ -23,14 +23,27 @@ import {
 import { pickFile, pickPhoto } from '../src/native/docPick.ts';
 import { copyIntoApp, removeFile } from '../src/native/files.ts';
 import { useApp } from '../src/state/app.tsx';
+import { usePrivacyGuard } from '../src/state/privacyGuard.ts';
 import { useVaultDocs, useVaultLock } from '../src/state/vaultLock.ts';
 import { fonts, radius, space } from '../src/theme/tokens.ts';
 import { Body, Button, Chip, Label, PressableScale, Screen, TextField, Warning } from '../src/ui/kit.tsx';
 import { useDiscardConfirm } from '../src/ui/discardConfirm.ts';
 import { PermissionNotice } from '../src/ui/PermissionNotice.tsx';
+import { PrivacyCover } from '../src/ui/PrivacyCover.tsx';
 import { DOC_ICON, docKindKey, VaultLockGate } from '../src/ui/slots/WalletVaultSlot.tsx';
 
+// T57: a native modal sits above the root layout's cover, so the editor carries its own privacy cover.
 export default function DocEditScreen() {
+  usePrivacyGuard();
+  return (
+    <View style={{ flex: 1 }}>
+      <DocEditForm />
+      <PrivacyCover />
+    </View>
+  );
+}
+
+function DocEditForm() {
   const { id } = useLocalSearchParams<{ id?: string }>();
   const { t, theme } = useApp();
   const router = useRouter();

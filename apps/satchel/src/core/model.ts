@@ -75,7 +75,19 @@ export type Trip = {
   places?: SavedPlace[];
   demo?: boolean;
   createdAt: string;
+  /** T54 spending, all optional (absent on older trips). Home currency and an optional limit in its minor units. */
+  budget?: Budget;
+  /** Manual exchange rates: 1 unit of the keyed currency (ISO 4217) = this many home units. */
+  rates?: Record<string, number>;
+  expenses?: Expense[];
 };
+
+export const EXPENSE_CATEGORIES = ['food', 'transport', 'stay', 'activities', 'shopping', 'other'] as const;
+export type ExpenseCategory = (typeof EXPENSE_CATEGORIES)[number];
+/** Money is integer minor units of its own currency (cents, yen, fils); see src/core/spending.ts. */
+export type Expense = { id: string; amount: number; currency: string; category: ExpenseCategory; day: LocalDate; note?: string; createdAt?: string };
+/** The trip's home currency (ISO 4217) and, when set, its spending limit in that currency's minor units. */
+export type Budget = { currency: string; amount?: number };
 
 export type DocKind = 'passport' | 'visa' | 'licence' | 'insurance' | 'other';
 export type TravelDoc = { id: string; kind: DocKind; label: string; expires?: LocalDate; attachments: Attachment[] };

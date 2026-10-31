@@ -1,0 +1,5266 @@
+{
+ "version": 1,
+ "checked": "2026-10-31",
+ "rule": "Always shown with 'verify locally'. Values were entered only where the build was confident from well-established public references (IEC World Plugs for plugs, voltage and frequency; the public left- and right-hand traffic list for driving side; the ITU E.164 country-code list for calling codes). Anything uncertain is null and the app shows 'Not sure — check locally'. Plug letters are limited to IEC types A–N. Sample check notes: docs/research/COUNTRY_ESSENTIALS.md.",
+ "countries": [
+  {
+   "iso2": "AD",
+   "country": "Andorra",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+376",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AE",
+   "country": "United Arab Emirates",
+   "plugs": [
+    "C",
+    "D",
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+971",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AF",
+   "country": "Afghanistan",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+93",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AG",
+   "country": "Antigua and Barbuda",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AI",
+   "country": "Anguilla",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    110
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AL",
+   "country": "Albania",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+355",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AM",
+   "country": "Armenia",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+374",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AO",
+   "country": "Angola",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+244",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AR",
+   "country": "Argentina",
+   "plugs": [
+    "C",
+    "I"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+54",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AS",
+   "country": "American Samoa",
+   "plugs": [
+    "A",
+    "B",
+    "F",
+    "I"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AT",
+   "country": "Austria",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+43",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AU",
+   "country": "Australia",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+61",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AW",
+   "country": "Aruba",
+   "plugs": [
+    "A",
+    "B",
+    "F"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+297",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AX",
+   "country": "Åland Islands",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+358",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "AZ",
+   "country": "Azerbaijan",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+994",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BA",
+   "country": "Bosnia and Herzegovina",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+387",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BB",
+   "country": "Barbados",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    115
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BD",
+   "country": "Bangladesh",
+   "plugs": [
+    "C",
+    "D",
+    "G",
+    "K"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+880",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BE",
+   "country": "Belgium",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+32",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BF",
+   "country": "Burkina Faso",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+226",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BG",
+   "country": "Bulgaria",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+359",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BH",
+   "country": "Bahrain",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+973",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BI",
+   "country": "Burundi",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+257",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BJ",
+   "country": "Benin",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+229",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BL",
+   "country": "Saint Barthélemy",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+590",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BM",
+   "country": "Bermuda",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BN",
+   "country": "Brunei",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+673",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BO",
+   "country": "Bolivia",
+   "plugs": [
+    "A",
+    "C"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+591",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BQ",
+   "country": "Bonaire, Sint Eustatius and Saba",
+   "plugs": null,
+   "voltage": null,
+   "frequency": null,
+   "driving": "right",
+   "calling_code": "+599",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BR",
+   "country": "Brazil",
+   "plugs": [
+    "C",
+    "N"
+   ],
+   "voltage": [
+    127,
+    220
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+55",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31",
+   "notes": "Voltage differs by state and even by city: 127 V or 220 V. Check the socket label."
+  },
+  {
+   "iso2": "BS",
+   "country": "Bahamas",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BT",
+   "country": "Bhutan",
+   "plugs": null,
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+975",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BW",
+   "country": "Botswana",
+   "plugs": [
+    "D",
+    "G",
+    "M"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+267",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BY",
+   "country": "Belarus",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+375",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "BZ",
+   "country": "Belize",
+   "plugs": [
+    "A",
+    "B",
+    "G"
+   ],
+   "voltage": [
+    110,
+    220
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+501",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31",
+   "notes": "Both 110 V and 220 V are found."
+  },
+  {
+   "iso2": "CA",
+   "country": "Canada",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CC",
+   "country": "Cocos (Keeling) Islands",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+61",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CD",
+   "country": "Democratic Republic of the Congo",
+   "plugs": [
+    "C",
+    "D",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+243",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CF",
+   "country": "Central African Republic",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+236",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CG",
+   "country": "Republic of the Congo",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+242",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CH",
+   "country": "Switzerland",
+   "plugs": [
+    "C",
+    "J"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+41",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CI",
+   "country": "Côte d’Ivoire",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+225",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CK",
+   "country": "Cook Islands",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+682",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CL",
+   "country": "Chile",
+   "plugs": [
+    "C",
+    "L"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+56",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CM",
+   "country": "Cameroon",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+237",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CN",
+   "country": "China",
+   "plugs": [
+    "A",
+    "C",
+    "I"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+86",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31",
+   "notes": "Many hotel sockets accept several plug shapes; type I is the angled-pin one."
+  },
+  {
+   "iso2": "CO",
+   "country": "Colombia",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    110
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+57",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CR",
+   "country": "Costa Rica",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+506",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CU",
+   "country": "Cuba",
+   "plugs": [
+    "A",
+    "B",
+    "C",
+    "L"
+   ],
+   "voltage": [
+    110,
+    220
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+53",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31",
+   "notes": "Both 110 V and 220 V are found."
+  },
+  {
+   "iso2": "CV",
+   "country": "Cabo Verde",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+238",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CW",
+   "country": "Curaçao",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    127
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+599",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CX",
+   "country": "Christmas Island",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+61",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CY",
+   "country": "Cyprus",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+357",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "CZ",
+   "country": "Czechia",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+420",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "DE",
+   "country": "Germany",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+49",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "DJ",
+   "country": "Djibouti",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+253",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "DK",
+   "country": "Denmark",
+   "plugs": [
+    "C",
+    "E",
+    "F",
+    "K"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+45",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "DM",
+   "country": "Dominica",
+   "plugs": [
+    "D",
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "DO",
+   "country": "Dominican Republic",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "DZ",
+   "country": "Algeria",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+213",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "EC",
+   "country": "Ecuador",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+593",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "EE",
+   "country": "Estonia",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+372",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "EG",
+   "country": "Egypt",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+20",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "EH",
+   "country": "Western Sahara",
+   "plugs": null,
+   "voltage": null,
+   "frequency": null,
+   "driving": "right",
+   "calling_code": null,
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "ER",
+   "country": "Eritrea",
+   "plugs": [
+    "C",
+    "L"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+291",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "ES",
+   "country": "Spain",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+34",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "ET",
+   "country": "Ethiopia",
+   "plugs": null,
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+251",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "FI",
+   "country": "Finland",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+358",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "FJ",
+   "country": "Fiji",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+679",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "FK",
+   "country": "Falkland Islands",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+500",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "FM",
+   "country": "Federated States of Micronesia",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+691",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "FO",
+   "country": "Faroe Islands",
+   "plugs": [
+    "C",
+    "E",
+    "F",
+    "K"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+298",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "FR",
+   "country": "France",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+33",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GA",
+   "country": "Gabon",
+   "plugs": [
+    "C"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+241",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GB",
+   "country": "United Kingdom",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+44",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GD",
+   "country": "Grenada",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GE",
+   "country": "Georgia",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+995",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GF",
+   "country": "French Guiana",
+   "plugs": [
+    "C",
+    "D",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+594",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GG",
+   "country": "Guernsey",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+44",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GH",
+   "country": "Ghana",
+   "plugs": [
+    "D",
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+233",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GI",
+   "country": "Gibraltar",
+   "plugs": [
+    "C",
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+350",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GL",
+   "country": "Greenland",
+   "plugs": [
+    "C",
+    "E",
+    "F",
+    "K"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+299",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GM",
+   "country": "The Gambia",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+220",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GN",
+   "country": "Guinea",
+   "plugs": [
+    "C",
+    "F",
+    "K"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+224",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GP",
+   "country": "Guadeloupe",
+   "plugs": [
+    "C",
+    "D",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+590",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GQ",
+   "country": "Equatorial Guinea",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+240",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GR",
+   "country": "Greece",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+30",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GS",
+   "country": "South Georgia and the South Sandwich Islands",
+   "plugs": null,
+   "voltage": null,
+   "frequency": null,
+   "driving": null,
+   "calling_code": "+500",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31",
+   "notes": "No public road network or regular power grid for visitors."
+  },
+  {
+   "iso2": "GT",
+   "country": "Guatemala",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+502",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GU",
+   "country": "Guam",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    110
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GW",
+   "country": "Guinea-Bissau",
+   "plugs": [
+    "C"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+245",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "GY",
+   "country": "Guyana",
+   "plugs": [
+    "A",
+    "B",
+    "D",
+    "G"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+592",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "HK",
+   "country": "Hong Kong",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+852",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "HN",
+   "country": "Honduras",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+504",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "HR",
+   "country": "Croatia",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+385",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "HT",
+   "country": "Haiti",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    110
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+509",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "HU",
+   "country": "Hungary",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+36",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "ID",
+   "country": "Indonesia",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+62",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "IE",
+   "country": "Ireland",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+353",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "IL",
+   "country": "Israel",
+   "plugs": [
+    "C",
+    "H"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+972",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "IM",
+   "country": "Isle of Man",
+   "plugs": [
+    "G"
+   ],
+   "voltage": null,
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+44",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "IN",
+   "country": "India",
+   "plugs": [
+    "C",
+    "D",
+    "M"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+91",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31",
+   "notes": "Type M is common for large appliances; C and D for small ones."
+  },
+  {
+   "iso2": "IQ",
+   "country": "Iraq",
+   "plugs": [
+    "C",
+    "D",
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+964",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "IR",
+   "country": "Iran",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+98",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "IS",
+   "country": "Iceland",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+354",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "IT",
+   "country": "Italy",
+   "plugs": [
+    "C",
+    "F",
+    "L"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+39",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "JE",
+   "country": "Jersey",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+44",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "JM",
+   "country": "Jamaica",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    110
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "JO",
+   "country": "Jordan",
+   "plugs": [
+    "B",
+    "C",
+    "D",
+    "F",
+    "G",
+    "J"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+962",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "JP",
+   "country": "Japan",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    100
+   ],
+   "frequency": [
+    50,
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+81",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31",
+   "notes": "Eastern Japan (Tokyo) is 50 Hz and western Japan (Osaka, Kyoto) is 60 Hz."
+  },
+  {
+   "iso2": "KE",
+   "country": "Kenya",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+254",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "KG",
+   "country": "Kyrgyzstan",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+996",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "KH",
+   "country": "Cambodia",
+   "plugs": [
+    "A",
+    "C",
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+855",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "KI",
+   "country": "Kiribati",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+686",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "KM",
+   "country": "Comoros",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+269",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "KN",
+   "country": "Saint Kitts and Nevis",
+   "plugs": null,
+   "voltage": [
+    230
+   ],
+   "frequency": null,
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "KP",
+   "country": "North Korea",
+   "plugs": null,
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+850",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "KR",
+   "country": "South Korea",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+82",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "KW",
+   "country": "Kuwait",
+   "plugs": [
+    "C",
+    "G"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+965",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "KY",
+   "country": "Cayman Islands",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "KZ",
+   "country": "Kazakhstan",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+7",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "LA",
+   "country": "Laos",
+   "plugs": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+856",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "LB",
+   "country": "Lebanon",
+   "plugs": null,
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+961",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "LC",
+   "country": "Saint Lucia",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "LI",
+   "country": "Liechtenstein",
+   "plugs": [
+    "C",
+    "J"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+423",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "LK",
+   "country": "Sri Lanka",
+   "plugs": [
+    "D",
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+94",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "LR",
+   "country": "Liberia",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+231",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "LS",
+   "country": "Lesotho",
+   "plugs": [
+    "M"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+266",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "LT",
+   "country": "Lithuania",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+370",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "LU",
+   "country": "Luxembourg",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+352",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "LV",
+   "country": "Latvia",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+371",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "LY",
+   "country": "Libya",
+   "plugs": [
+    "C",
+    "L"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+218",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MA",
+   "country": "Morocco",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+212",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MC",
+   "country": "Monaco",
+   "plugs": [
+    "C",
+    "D",
+    "E",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+377",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MD",
+   "country": "Moldova",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+373",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "ME",
+   "country": "Montenegro",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+382",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MF",
+   "country": "Saint Martin",
+   "plugs": null,
+   "voltage": null,
+   "frequency": null,
+   "driving": "right",
+   "calling_code": "+590",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MG",
+   "country": "Madagascar",
+   "plugs": null,
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+261",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MH",
+   "country": "Marshall Islands",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+692",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MK",
+   "country": "North Macedonia",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+389",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "ML",
+   "country": "Mali",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+223",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MM",
+   "country": "Myanmar",
+   "plugs": null,
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+95",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MN",
+   "country": "Mongolia",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+976",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MO",
+   "country": "Macao",
+   "plugs": null,
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+853",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MP",
+   "country": "Northern Mariana Islands",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    110
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MQ",
+   "country": "Martinique",
+   "plugs": [
+    "C",
+    "D",
+    "E"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+596",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MR",
+   "country": "Mauritania",
+   "plugs": [
+    "C"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+222",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MS",
+   "country": "Montserrat",
+   "plugs": null,
+   "voltage": null,
+   "frequency": null,
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MT",
+   "country": "Malta",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+356",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MU",
+   "country": "Mauritius",
+   "plugs": [
+    "C",
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+230",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MV",
+   "country": "Maldives",
+   "plugs": null,
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+960",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MW",
+   "country": "Malawi",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+265",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MX",
+   "country": "Mexico",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    127
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+52",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MY",
+   "country": "Malaysia",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+60",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "MZ",
+   "country": "Mozambique",
+   "plugs": [
+    "C",
+    "F",
+    "M"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+258",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NA",
+   "country": "Namibia",
+   "plugs": [
+    "D",
+    "M"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+264",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NC",
+   "country": "New Caledonia",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+687",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NE",
+   "country": "Niger",
+   "plugs": null,
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+227",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NF",
+   "country": "Norfolk Island",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+672",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NG",
+   "country": "Nigeria",
+   "plugs": [
+    "D",
+    "G"
+   ],
+   "voltage": null,
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+234",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NI",
+   "country": "Nicaragua",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+505",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NL",
+   "country": "Netherlands",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+31",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NO",
+   "country": "Norway",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+47",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NP",
+   "country": "Nepal",
+   "plugs": [
+    "C",
+    "D",
+    "M"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+977",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NR",
+   "country": "Nauru",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+674",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NU",
+   "country": "Niue",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+683",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "NZ",
+   "country": "New Zealand",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+64",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "OM",
+   "country": "Oman",
+   "plugs": [
+    "C",
+    "G"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+968",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PA",
+   "country": "Panama",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+507",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PE",
+   "country": "Peru",
+   "plugs": [
+    "A",
+    "C"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+51",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PF",
+   "country": "French Polynesia",
+   "plugs": null,
+   "voltage": null,
+   "frequency": null,
+   "driving": "right",
+   "calling_code": "+689",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PG",
+   "country": "Papua New Guinea",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+675",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PH",
+   "country": "Philippines",
+   "plugs": [
+    "A",
+    "B",
+    "C"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+63",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PK",
+   "country": "Pakistan",
+   "plugs": [
+    "C",
+    "D"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+92",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PL",
+   "country": "Poland",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+48",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PM",
+   "country": "Saint Pierre and Miquelon",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+508",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PN",
+   "country": "Pitcairn Islands",
+   "plugs": null,
+   "voltage": null,
+   "frequency": null,
+   "driving": null,
+   "calling_code": "+64",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31",
+   "notes": "Pitcairn is reached through the New Zealand code."
+  },
+  {
+   "iso2": "PR",
+   "country": "Puerto Rico",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PS",
+   "country": "Palestine",
+   "plugs": [
+    "C",
+    "H"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+970",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PT",
+   "country": "Portugal",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+351",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PW",
+   "country": "Palau",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+680",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "PY",
+   "country": "Paraguay",
+   "plugs": [
+    "C"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+595",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "QA",
+   "country": "Qatar",
+   "plugs": [
+    "D",
+    "G"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+974",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "RE",
+   "country": "Réunion",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+262",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "RO",
+   "country": "Romania",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+40",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "RS",
+   "country": "Serbia",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+381",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "RU",
+   "country": "Russia",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+7",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "RW",
+   "country": "Rwanda",
+   "plugs": null,
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+250",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SA",
+   "country": "Saudi Arabia",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+966",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SB",
+   "country": "Solomon Islands",
+   "plugs": null,
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+677",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SC",
+   "country": "Seychelles",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+248",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SD",
+   "country": "Sudan",
+   "plugs": [
+    "C",
+    "D"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+249",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SE",
+   "country": "Sweden",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+46",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SG",
+   "country": "Singapore",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+65",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SH",
+   "country": "Saint Helena, Ascension and Tristan da Cunha",
+   "plugs": null,
+   "voltage": null,
+   "frequency": null,
+   "driving": "left",
+   "calling_code": "+290",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SI",
+   "country": "Slovenia",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+386",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SJ",
+   "country": "Svalbard",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+47",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SK",
+   "country": "Slovakia",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+421",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SL",
+   "country": "Sierra Leone",
+   "plugs": [
+    "D",
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+232",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SM",
+   "country": "San Marino",
+   "plugs": [
+    "C",
+    "F",
+    "L"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+378",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SN",
+   "country": "Senegal",
+   "plugs": null,
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+221",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SO",
+   "country": "Somalia",
+   "plugs": null,
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+252",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SR",
+   "country": "Suriname",
+   "plugs": null,
+   "voltage": [
+    127
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+597",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SS",
+   "country": "South Sudan",
+   "plugs": [
+    "C",
+    "D"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+211",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "ST",
+   "country": "São Tomé and Príncipe",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+239",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SV",
+   "country": "El Salvador",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+503",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SX",
+   "country": "Sint Maarten",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    110
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SY",
+   "country": "Syria",
+   "plugs": [
+    "C",
+    "E",
+    "L"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+963",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "SZ",
+   "country": "Eswatini",
+   "plugs": [
+    "M"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+268",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TC",
+   "country": "Turks and Caicos Islands",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TD",
+   "country": "Chad",
+   "plugs": null,
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+235",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TG",
+   "country": "Togo",
+   "plugs": [
+    "C"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+228",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TH",
+   "country": "Thailand",
+   "plugs": [
+    "A",
+    "B",
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+66",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31",
+   "notes": "Thailand also has its own type O socket, which is outside the A–N set shown here."
+  },
+  {
+   "iso2": "TJ",
+   "country": "Tajikistan",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+992",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TK",
+   "country": "Tokelau",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": null,
+   "calling_code": "+690",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TL",
+   "country": "Timor-Leste",
+   "plugs": null,
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+670",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TM",
+   "country": "Turkmenistan",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+993",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TN",
+   "country": "Tunisia",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+216",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TO",
+   "country": "Tonga",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+676",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TR",
+   "country": "Türkiye",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+90",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TT",
+   "country": "Trinidad and Tobago",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    115
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TV",
+   "country": "Tuvalu",
+   "plugs": [
+    "I"
+   ],
+   "voltage": null,
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+688",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TW",
+   "country": "Taiwan",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    110
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+886",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "TZ",
+   "country": "Tanzania",
+   "plugs": [
+    "D",
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+255",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "UA",
+   "country": "Ukraine",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+380",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "UG",
+   "country": "Uganda",
+   "plugs": [
+    "G"
+   ],
+   "voltage": [
+    240
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+256",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "US",
+   "country": "United States",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "UY",
+   "country": "Uruguay",
+   "plugs": [
+    "C",
+    "F",
+    "I",
+    "L"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+598",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "UZ",
+   "country": "Uzbekistan",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+998",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "VA",
+   "country": "Vatican City",
+   "plugs": [
+    "C",
+    "F",
+    "L"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+39",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31",
+   "notes": "Vatican City uses the Italian network and the +39 code."
+  },
+  {
+   "iso2": "VC",
+   "country": "Saint Vincent and the Grenadines",
+   "plugs": null,
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "VE",
+   "country": "Venezuela",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    120
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "right",
+   "calling_code": "+58",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "VG",
+   "country": "British Virgin Islands",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    110
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "VI",
+   "country": "United States Virgin Islands",
+   "plugs": [
+    "A",
+    "B"
+   ],
+   "voltage": [
+    110
+   ],
+   "frequency": [
+    60
+   ],
+   "driving": "left",
+   "calling_code": "+1",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "VN",
+   "country": "Vietnam",
+   "plugs": [
+    "A",
+    "C"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+84",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "VU",
+   "country": "Vanuatu",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    220
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+678",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "WF",
+   "country": "Wallis and Futuna",
+   "plugs": null,
+   "voltage": null,
+   "frequency": null,
+   "driving": "right",
+   "calling_code": "+681",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "WS",
+   "country": "Samoa",
+   "plugs": [
+    "I"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+685",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "XK",
+   "country": "Kosovo",
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+383",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "YE",
+   "country": "Yemen",
+   "plugs": null,
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+967",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "YT",
+   "country": "Mayotte",
+   "plugs": [
+    "C",
+    "E"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "right",
+   "calling_code": "+262",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "ZA",
+   "country": "South Africa",
+   "plugs": [
+    "C",
+    "D",
+    "M",
+    "N"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+27",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31",
+   "notes": "Type N is the newer South African socket; type M is still the most common."
+  },
+  {
+   "iso2": "ZM",
+   "country": "Zambia",
+   "plugs": [
+    "C",
+    "D",
+    "G"
+   ],
+   "voltage": [
+    230
+   ],
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+260",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  },
+  {
+   "iso2": "ZW",
+   "country": "Zimbabwe",
+   "plugs": [
+    "D",
+    "G"
+   ],
+   "voltage": null,
+   "frequency": [
+    50
+   ],
+   "driving": "left",
+   "calling_code": "+263",
+   "sources": [
+    "https://www.iec.ch/world-plugs",
+    "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
+    "https://www.itu.int/pub/T-SP-E.164D"
+   ],
+   "checked": "2026-10-31"
+  }
+ ]
+}

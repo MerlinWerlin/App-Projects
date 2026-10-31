@@ -9,8 +9,10 @@ import { useEffect } from 'react';
 import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppProvider, useApp } from '../src/state/app.tsx';
+import { usePrivacyGuarded } from '../src/state/privacyGuard.ts';
 import { TripsProvider, useTrips } from '../src/state/trips.tsx';
 import { fonts } from '../src/theme/tokens.ts';
+import { PrivacyCover } from '../src/ui/PrivacyCover.tsx';
 import { StartupMark } from '../src/ui/StartupMark.tsx';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -30,6 +32,7 @@ export default function RootLayout() {
 function Shell() {
   const { ready, theme, t } = useApp();
   const { loaded } = useTrips();
+  const privateOnScreen = usePrivacyGuarded();
   const [bodyLoaded, bodyError] = useFonts({ Inter_400Regular, Inter_600SemiBold });
   const [displayLoaded, displayError] = useDisplayFonts({ SpaceGrotesk_500Medium, SpaceGrotesk_700Bold });
   // A font that fails to load falls back to the system font rather than holding the splash.
@@ -71,10 +74,15 @@ function Shell() {
           <Stack.Screen name="doc/[id]" options={{ ...header, title: t('route.doc') }} />
           <Stack.Screen name="doc-edit" options={{ ...header, presentation: 'modal', title: t('route.docEdit') }} />
           <Stack.Screen name="packing/[tripId]" options={{ ...header, title: t('route.packing') }} />
+          <Stack.Screen name="spending/[tripId]" options={{ ...header, title: t('spending.title') }} />
           <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
+          <Stack.Screen name="phrases" options={{ ...header, title: t('phrases.title') }} />
+          <Stack.Screen name="phrase-card" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="essentials" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'none' }} />
         </Stack>
       ) : null}
+      {/* T57: covers the stack (and its headers) in the app switcher while the vault or a document is open. */}
+      {show ? <PrivacyCover guarded={privateOnScreen} /> : null}
       {/* Mounted in the same render as the first screen, so it is already drawn when the native splash hides. */}
       {show ? <StartupMark dark={theme.dark} /> : null}
     </View>

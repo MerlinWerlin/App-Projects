@@ -99,3 +99,11 @@ test('recovered trips are added back without overwriting trips on the phone', ()
     ['Now', 'Lost'],
   );
 });
+
+test('T54: editing a trip keeps its budget, rates and expenses', () => {
+  const withSpending = { ...trip, budget: { currency: 'AUD', amount: 1000 }, rates: { JPY: 0.01 }, expenses: [{ id: 'e', amount: 5, currency: 'JPY', category: 'food' as const, day: trip.startDate }] };
+  const back = tripFromDraft({ name: 'Renamed', startDate: trip.startDate, endDate: trip.endDate, homeTz: trip.homeTz }, withSpending);
+  assert.deepEqual(back.budget, withSpending.budget);
+  assert.deepEqual(back.rates, withSpending.rates);
+  assert.deepEqual(back.expenses, withSpending.expenses);
+});

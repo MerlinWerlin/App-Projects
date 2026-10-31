@@ -24,6 +24,10 @@ import { tripfile } from './en/tripfile.ts';
 import { citymaps } from './en/citymaps.ts';
 import { toilets } from './en/toilets.ts';
 import { design } from './en/design.ts';
+import { privacy } from './en/privacy.ts';
+import { essentials } from './en/essentials.ts';
+import { phrases } from './en/phrases.ts';
+import { spending } from './en/spending.ts';
 
 const base = {
   'app.name': 'Satchel',
@@ -201,6 +205,6 @@ const base = {
   'itemEdit.attachmentFromPhotos': 'Choose from Photos',
 } as const;
 
-export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile, ...citymaps, ...toilets, ...design } as const;
+export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile, ...citymaps, ...toilets, ...design, ...privacy, ...essentials, ...phrases, ...spending } as const;
 
 export type Key = keyof typeof en;

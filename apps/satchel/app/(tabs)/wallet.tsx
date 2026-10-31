@@ -2,7 +2,8 @@
 // Each row opens the full-brightness ticket view. Tickets are free forever. The document vault entry sits below.
 // T50: warm hero with the upcoming count, a quick-access row (Emergency card, Documents, Packing, Essentials),
 // upcoming tickets grouped by trip, and ticket cards with a colour stripe per booking kind and an "Offline ready"
-// badge (the ticket file is saved on the phone).
+// badge (the ticket file is saved on the phone). T56: a "Show a local" entry under the quick row opens the offline
+// phrase cards (app/phrases.tsx).
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
@@ -170,6 +171,7 @@ export default function WalletScreen() {
             />
             <QuickAction icon="battery-half" tone="warn" label={t('design.wallet.q.essentials')} hint={t('design.wallet.q.essentialsHint')} onPress={() => router.push('/essentials')} />
           </View>
+          <Button kind="secondary" icon="chatbubbles-outline" label={t('phrases.walletEntry')} hint={t('phrases.walletEntryHint')} onPress={() => router.push('/phrases')} />
         </View>
       }
       ListEmptyComponent={
