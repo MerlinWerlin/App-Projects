@@ -1,12 +1,12 @@
 {
-  "tests": "1443/1443 core tests green; UI typecheck against stubs clean",
+  "tests": "1519/1519 core tests green; UI typecheck against stubs clean",
   "typecheck": "core only (registry unreachable)",
-  "last_run": "2026-11-01 00:30 Sydney",
+  "last_run": "2026-11-01 09:40 Sydney (run 203)",
   "stage": "owner-tested",
-  "oversight_seen": "v218 (1793451044-6c9f): no new directives; D211-1 still open; D130-2 kept (JS only); no patches.",
-  "headline": "Widget Studio tidies up old photo copies it no longer uses.",
-  "next_for_owner": "1) Fully close and reopen the TestFlight Glaze twice once auto-ship sends the update, then answer docs/TRIAL.md \"New since your last test (31 Oct, midday)\" and \"(31 Oct, morning: owner-1031)\". 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud.)",
+  "oversight_seen": "v222 (1793479750-7d53): no new directives; D211-1 open; no patches. (rechecked run 203)",
+  "headline": "Your 1 Nov list: icons open apps directly, one-tap Use this theme, 5 tabs, fitted widget art, living pets, new creature icon.",
+  "next_for_owner": "1) When the new TestFlight build arrives (auto-ship, native build), open it and answer docs/TRIAL.md \"New since your last test (1 Nov: owner-1101)\". 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud.)",
   "trial_kit": true,
-  "trial_kit_commit": "8a17236",
+  "trial_kit_commit": "a749ec6",
   "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested"
 }

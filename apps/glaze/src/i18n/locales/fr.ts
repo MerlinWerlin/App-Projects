@@ -30,7 +30,7 @@ const base: LocaleMessages = {
     error: 'Une erreur s’est produite',
     itemCount: { zero: 'Aucun élément', one: '{count} élément', many: '{count} d’éléments', other: '{count} éléments' },
   },
-  tabs: { themes: 'Thèmes', icons: 'Icônes', live: 'Live', settings: 'Réglages' },
+  tabs: { themes: 'Thèmes', icons: 'Icônes', live: 'Live', pets: 'Compagnons', settings: 'Réglages' },
   settings: {
     language: {
       title: 'Langue',

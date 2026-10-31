@@ -61,3 +61,13 @@
 "pet.happy" = "खुश";
 "pet.playful" = "चंचल";
 "pet.sleepy" = "नींद में";
+"pet.content" = "संतुष्ट";
+"pet.hungry" = "भूखा";
+"pet.lifeSleeping" = "गहरी नींद में";
+"pet.lifeStir" = "कुनमुनाया, फिर सो गया";
+"pet.lifeWaking" = "बड़ी अंगड़ाई लेकर जाग रहा है";
+"pet.lifeIdle" = "चुपचाप बैठा है";
+"pet.lifeEating" = "नाश्ता कर रहा है";
+"pet.lifePlaying" = "खेल रहा है";
+"pet.lifeWandering" = "थोड़ा घूमने निकला है";
+"pet.lifeHappy" = "बहुत पसंद आया!";

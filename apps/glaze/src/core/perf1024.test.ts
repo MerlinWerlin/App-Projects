@@ -143,7 +143,8 @@ test('heavy cards and previews are memoised', () => {
   assert.match(THEMES_TAB, /const GalleryCardRow = memo\(/);
   assert.match(THEMES_TAB, /const SkeletonCardRow = memo\(/);
   // T162: memoised rows of a virtualised list (replaces T118's TileGrid).
-  assert.match(WALLPAPERS_TAB, /const TileRow = memo\(/);
+  // T186 (owner 1 Nov supersedes T118/T162's tile grid): My wallpapers rows are memoised too.
+  assert.match(WALLPAPERS_TAB, /const ThumbRow = memo\(/);
   assert.match(WIDGETS_TAB, /const WidgetCell = memo\(/);
   // T162: the grid is a virtualised list of memoised rows (replaces T118's WidgetGrid).
   assert.match(WIDGETS_TAB, /const WidgetRow = memo\(/);
@@ -191,13 +192,13 @@ test('Themes tab: progressive showcase, deferred pack sections, no layout setSta
   assert.doesNotMatch(THEMES_TAB, /packs\.map\(\(pack\) => \(\s*<View/);
 });
 
-test('Wallpapers tab: no re-render on focus, stable tiles, progressive grid', () => {
-  assert.match(WALLPAPERS_TAB, /setLoops\(\(prev\) => keepIfSame\(prev, s\.projects, sameJson\)\)/);
-  assert.match(WALLPAPERS_TAB, /reuseEqual\(lastTiles\.current/);
-  // T162: rows mount as they scroll in (LargeTitleFlatList) instead of a per-frame reveal.
+// T186 (owner-1101 #4 supersedes the T118 gallery guard): the tab no longer reloads loops on focus;
+// My wallpapers comes from a store subscription, and its rows mount as they scroll in.
+test('Wallpapers tab: no reload on focus, memoised rows of a virtualised list', () => {
+  assert.doesNotMatch(WALLPAPERS_TAB, /useFocusEffect\(/);
+  assert.match(WALLPAPERS_TAB, /useMyWallpapers\(\)/);
   assert.match(WALLPAPERS_TAB, /<LargeTitleFlatList\b/);
-  assert.match(WALLPAPERS_TAB, /<TileRow\b/);
-  assert.match(WALLPAPERS_TAB, /onPress=\{showMore\}/);
+  assert.match(WALLPAPERS_TAB, /<ThumbRow\b/);
   assert.match(TILE, /onPress=\{open\}/);
 });
 

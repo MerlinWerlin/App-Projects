@@ -56,6 +56,7 @@ export const en = {
     themes: 'Themes',
     icons: 'Icons',
     live: 'Live',
+    pets: 'Pets',
     settings: 'Settings',
   },
   settings: { ...settingsNs,

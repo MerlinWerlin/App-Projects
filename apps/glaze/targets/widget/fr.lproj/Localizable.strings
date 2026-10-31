@@ -61,3 +61,13 @@
 "pet.happy" = "Heureux";
 "pet.playful" = "Joueur";
 "pet.sleepy" = "Endormi";
+"pet.content" = "Serein";
+"pet.hungry" = "A faim";
+"pet.lifeSleeping" = "Profondément endormi";
+"pet.lifeStir" = "Remue, puis se rendort";
+"pet.lifeWaking" = "Se réveille en s’étirant";
+"pet.lifeIdle" = "Assis tranquillement";
+"pet.lifeEating" = "Grignote un peu";
+"pet.lifePlaying" = "Joue";
+"pet.lifeWandering" = "Part se promener";
+"pet.lifeHappy" = "Il adore !";

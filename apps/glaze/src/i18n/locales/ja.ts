@@ -30,7 +30,7 @@ const base: LocaleMessages = {
     error: '問題が発生しました',
     itemCount: { zero: '項目なし', other: '{count}件の項目' },
   },
-  tabs: { themes: 'テーマ', icons: 'アイコン', live: 'ライブ', settings: '設定' },
+  tabs: { themes: 'テーマ', icons: 'アイコン', live: 'ライブ', pets: 'ペット', settings: '設定' },
   settings: {
     language: {
       title: '言語',

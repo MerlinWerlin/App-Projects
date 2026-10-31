@@ -53,10 +53,12 @@ test('fb-1023 D: MASCOT.md has the three concepts, originality statement and the
   assert.match(read('docs', 'LICENSES.md'), /Mascot concepts/);
 });
 
-test('fb-1023 D: the mascot is not wired in (the app icon is the faceless brand mark, not a mascot)', () => {
+test('fb-1023 D / T190: none of the three concept mascots is wired in; the icon is Prism the creature from assets/brand', () => {
   const expo = JSON.parse(read('app.json')).expo;
-  // The app icon is the faceless brand mark from assets/brand (src/core/introGlaze.ts): the glaze-pour tile on 23 Oct,
-  // Prism since fb-1025 G (25 Oct). Mascots were not picked: no icon, splash or plugin may point at them.
+  // History: the faceless glaze-pour tile (23 Oct), the plain Prism diamond (fb-1025 G, 25 Oct), and since owner-1101
+  // item 8 (T190, 1 Nov) Prism the little prism creature, which is now both the app icon and the mascot (it has a face
+  // on purpose; guard updated for that brief). Tessel, Latchling and Vitri were never picked: no icon, splash or
+  // plugin may point at them.
   assert.equal(expo.icon, './assets/brand/icon.png');
   assert.equal(expo.ios?.icon, undefined);
   assert.equal(expo.android?.icon, undefined);
@@ -64,18 +66,24 @@ test('fb-1023 D: the mascot is not wired in (the app icon is the faceless brand 
   assert.doesNotMatch(read('app.json'), /mascot/i);
   assert.doesNotMatch(read('app.config.ts'), /mascot/i);
   assert.doesNotMatch(JSON.stringify(expo.plugins ?? []), /alternate-app-icons|mascot/i);
-  // The brand mark has no face (no eyes, smile or blush from the Tessel concept).
+  // Not Tessel's face (its ink #1D1A21): Prism has its own.
   assert.doesNotMatch(read('assets', 'brand', 'icon.svg'), /#1D1A21/i);
+  assert.match(read('assets', 'brand', 'icon.svg'), /id="prism"/);
 });
 
-test('fb-1025 G: MASCOT.md records the Prism decision, mascots unused, and the redrawn-art caveat', () => {
+test('T190: MASCOT.md records Prism the creature (icon + mascot), the redraw caveat, the files and the older icons', () => {
   const md = read('docs', 'MASCOT.md');
-  assert.match(md, /## Decision \(fb-1025 G, 25 Oct 2026\): the app icon is Prism/);
-  assert.match(md, /mascot\/prism-icon\.(png|svg)/);
-  assert.match(md, /Mascots 1 to 3 \(Tessel, Latchling, Vitri\) are not used/);
+  assert.match(md, /## Decision \(owner-1101 item 8, 1 Nov 2026\): the app icon and mascot are Prism, the little prism creature/);
+  assert.match(md, /mascot\/prism-icon\.png/);
+  assert.match(md, /mascot\/prism-mascot\.png/);
+  assert.match(md, /assets\/brand\/mascot\.svg/);
+  assert.match(md, /If it isn't the creature you picked, say what's different/);
+  assert.match(md, /Needs a new native build/);
+  assert.match(md, /previous-prism-diamond/);
   assert.match(md, /previous-glaze-drip/);
-  assert.match(md, /redrawn from the concept\s+name/);
-  assert.match(read('assets', 'brand', 'icon.svg'), /id="prism"/);
-  assert.ok(existsSync(path('docs', 'mascot', 'prism-icon.svg')));
-  assert.match(read('docs', 'LICENSES.md'), /Prism/);
+  // The 25 Oct decision stays as a record.
+  assert.match(md, /## Earlier decision \(fb-1025 G, 25 Oct 2026\)/);
+  assert.match(md, /Mascots 1 to 3 \(Tessel, Latchling, Vitri\) are not used/);
+  for (const f of ['prism-icon.svg', 'prism-mascot.svg', 'prism-icon.png', 'prism-mascot.png']) assert.ok(existsSync(path('docs', 'mascot', f)), f);
+  assert.match(read('docs', 'LICENSES.md'), /prism creature/i);
 });

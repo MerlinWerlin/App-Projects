@@ -26,6 +26,7 @@ import {
   shortcutItems,
   shortcutSteps,
   shortcutUrl,
+  SHORTCUT_ACTION,
   toggleProfileStep,
   toggleShortcutDone,
   webClipIcons,
@@ -63,7 +64,7 @@ test('planInstall splits by URL scheme and keeps order', () => {
   assert.deepEqual(planInstall([]), { profile: [], shortcuts: [] });
 });
 
-test('shortcutItems: bulk lists only scheme-less apps, shortcuts lists all', () => {
+test('shortcutItems: bulk lists only scheme-less apps, shortcuts (the default) lists all via Open App', () => {
   const bulk = shortcutItems(SPECS, 'bulk');
   assert.deepEqual(bulk.map((i) => [i.spec.appId, i.reason, i.url]), [
     ['custom-bank', 'no-scheme', null],
@@ -72,12 +73,13 @@ test('shortcutItems: bulk lists only scheme-less apps, shortcuts lists all', () 
   const all = shortcutItems(SPECS, 'shortcuts');
   assert.deepEqual(all.map((i) => [i.spec.appId, i.reason]), [
     ['music', 'chosen'],
-    ['custom-bank', 'no-scheme'],
+    ['custom-bank', 'chosen'],
     ['maps', 'chosen'],
-    ['custom-blank', 'no-scheme'],
+    ['custom-blank', 'chosen'],
   ]);
   assert.equal(all[0].url, 'music:');
   assert.match(reasonText('no-scheme'), /Shortcuts/);
+  assert.match(reasonText('chosen'), /Open App/);
 });
 
 test('shortcutUrl trims and nulls empty schemes', () => {
@@ -131,20 +133,21 @@ test('file names are safe and sortable', () => {
   assert.equal(joinPath('file:///cache', 'a.png'), 'file:///cache/a.png');
 });
 
-test('shortcutSteps: Open URL with a scheme, Open App without', () => {
-  const withUrl = shortcutSteps('Music', 'music:');
-  const joined = withUrl.join('\n');
-  assert.match(joined, /Open URL/);
-  assert.match(joined, /music:/);
-  assert.match(joined, /Rename/);
-  assert.match(joined, /Add to Home Screen/);
-  assert.match(joined, /Choose Photo/);
-  assert.ok(joined.includes(PHOTOS_ALBUM));
-  assert.match(withUrl[withUrl.length - 1], /Tap Add/);
-  const noUrl = shortcutSteps('My Bank', null).join('\n');
-  assert.match(noUrl, /Open App/);
-  assert.doesNotMatch(noUrl, /Open URL/);
-  assert.match(noUrl, /My Bank/);
+test('T183: shortcutSteps always use Open App (app chosen from the list), never Open URL', () => {
+  for (const url of ['music:', null]) {
+    const steps = shortcutSteps('Music', url);
+    const joined = steps.join('\n');
+    assert.match(joined, /Open App/);
+    assert.doesNotMatch(joined, /Open URL/);
+    assert.ok(!joined.includes('music:'), 'no URL to paste');
+    assert.match(joined, /choose Music from the list/);
+    assert.match(joined, /Rename/);
+    assert.match(joined, /Add to Home Screen/);
+    assert.match(joined, /Choose Photo/);
+    assert.ok(joined.includes(PHOTOS_ALBUM));
+    assert.match(steps[steps.length - 1], /Tap Add/);
+  }
+  assert.equal(SHORTCUT_ACTION, 'Open App');
   assert.match(shortcutSteps('  ', null).join('\n'), /App/);
 });
 
@@ -218,7 +221,7 @@ test('install state round-trips and repairs bad input', () => {
   s = toggleProfileStep(s, 'Glaze-a.mobileconfig', 'open');
   s = toggleProfileStep(s, 'Glaze-a.mobileconfig', 'install');
   s = toggleShortcutDone(s, 'custom-bank');
-  s = { ...s, choice: 'shortcuts' };
+  s = { ...s, choice: 'bulk' };
   const back = parseInstallState(serializeInstallState(s));
   assert.deepEqual(back, s);
   assert.ok(isProfileStepDone(back, 'Glaze-a.mobileconfig', 'open'));
@@ -237,7 +240,10 @@ test('install state round-trips and repairs bad input', () => {
     shortcutsDone: ['m', null, 'm'],
     choice: 'teleport',
   });
-  assert.deepEqual(repaired, { profileSteps: { a: ['x'] }, shortcutsDone: ['m'], choice: 'bulk' });
+  // T183: the default (and the repaired value) is Shortcuts / Open App.
+  assert.deepEqual(repaired, { profileSteps: { a: ['x'] }, shortcutsDone: ['m'], choice: 'shortcuts' });
+  assert.equal(sanitizeInstallState({ choiceEpoch: 2 }).choiceEpoch, 2);
+  assert.equal('choiceEpoch' in sanitizeInstallState({ choiceEpoch: 'x' }), false);
   assert.deepEqual(sanitizeInstallState([1, 2]), defaultInstallState());
 });
 

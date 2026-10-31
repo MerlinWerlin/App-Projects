@@ -20,6 +20,7 @@ Free themes stay bundled. Glaze Plus themes can ship as **downloadable theme pac
 | `src/core/themesNew.ts` | The 12 new themes (4 free bundled, 8 Plus in `pack-aurora-2026`) |
 | `ops/build-pack.ts` | Builds a pack folder from themes |
 | `src/core/__fixtures__/packs/pack-aurora-2026/` | The built fixture pack the tests serve locally |
+| `src/core/widgetOptions.ts` | T187: pack v2 widget options (`parseWidgetOptions`, `validateWidgetOptions`), the v1 → options adapter (`widgetOptionsFromV1`), fit-not-crop geometry (`placeArt`) and the Widgets tab menu model (`widgetOptionSections`, `selectedOption`, `liveStudioHref`) |
 | `src/core/themesStoryPlay.ts` | T104: 13 original game, movie-night and storybook themes (6 free bundled, 7 Plus in `pack-storyplay-2026`); fixture in `src/core/__fixtures__/packs/pack-storyplay-2026/` |
 
 ## Format (version 1)
@@ -315,6 +316,96 @@ node --test "scripts/packs/*.test.mjs"
 - **Publish (R2/S3, reference only)**: env `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` (or `.env` in the app folder, gitignored). S3 API at `https://<account>.r2.cloudflarestorage.com`, region `auto`, path-style, SigV4 signed in `scripts/packs/sigv4.mjs` (tested against AWS's published vectors). Upload order: pack files, then manifests, then `catalog.json` last. Objects whose HEAD shows the same size, MD5 ETag and Cache-Control are skipped; a versioned manifest already on R2 with different bytes stops the run (bump the version instead of overwriting). Every object is HEAD-verified afterwards (size, content type). `--dry-run` needs no env and makes no network calls. Secrets are never printed.
 - **Cache headers** (R2/S3 uploader only; GitHub sets its own and the hashed names make that safe): everything under `art/` is `public, max-age=31536000, immutable` (file names carry the hash, manifests live in versioned folders); `catalog.json` is `public, max-age=300`. Content-Type from the extension (`image/webp`, `image/png`, `application/json`).
 - **CI**: `scripts/packs/publish-packs.yml` is a manual-dispatch GitHub Actions workflow (written, not run) that builds the packs and creates/updates the release with `gh` and the built-in `GITHUB_TOKEN`. It needs no secrets. It goes to `.github/workflows/glaze-publish-packs.yml` in App-Projects (`docs/PACK_HOSTING.md`).
+
+## Remote art pack v2: widget options (T187, owner-1101 #5)
+
+v2 lets a theme ship **any number of widget art pieces** (the 29 Oct "extra" ones included) and says, per piece, what it is and which widget sizes it suits. The Widgets tab shows every option of the picked theme for the chosen size (grouped by kind), and art is always **fitted, never cropped**. Parser and v1 adapter: `src/core/widgetOptions.ts` (`parseWidgetOptions`, `validateWidgetOptions`, `widgetOptionsFromV1`, `placeArt`), wired into `parseRemoteArtManifest` (`src/core/packCatalog.ts`); tests `src/core/widgetOptions.test.ts`.
+
+**What changes from v1** (everything else in the manifest is exactly as in v1: same `catalog.json`, same folder layout, same file naming `<name>.<sha8>.webp`, same hashing, sizes and `totalBytes` rules):
+
+1. `"version": 2`.
+2. A new asset role **`widget-art`** (v2 only; a v1 manifest with it is rejected). The v1 roles `widget-small` / `widget-medium` / `widget-large` are still allowed but no longer needed.
+3. A required top-level **`widgets`** list: one entry per option.
+
+### `widgets[]` entry
+
+| Field | Type | Required | Rule |
+|---|---|---|---|
+| `id` | string | yes | Unique in the pack. Lower case `a-z`, `0-9` and hyphens, 1-40 characters, no leading/trailing hyphen (e.g. `paper-boat`). |
+| `kind` | string | yes | One of `art`, `clock`, `date`, `calendar`, `countdown`, `habits`, `battery`, `photo`, `quote`. `art` is a picture. The others are pictures meant for that kind of widget: `clock`, `date` / `calendar`, `countdown`, `photo` and `habits` also offer **Make it live** (Widget Studio's live clock, month calendar, countdown, photo album or water tracker in the theme). `battery` and `quote` show as pictures today. |
+| `image` | string | yes | The `path` of an entry in `assets` with role `widget-art` (or a v1 `widget-small/medium/large` role). Not the wallpaper or thumb. |
+| `sizes` | string[] | yes | Non-empty, no repeats, each of `small`, `medium`, `large`, `lock`. The sizes this piece is offered in, best first. (`lock` is accepted and stored; the Lock tab doesn't show art yet, since iOS draws Lock Screen widgets in one colour.) |
+| `fit` | string | no (default `fit`) | `fit`: the whole art, centred, inset 6 % of the widget's short side. `fill`: edge to edge, **only** when the art's aspect is within 2 % of the widget's; otherwise the app fits it anyway. Nothing is ever cropped. |
+| `background` | string | no (default `theme`) | What fills the widget around fitted art: `theme` (the palette `bg` colour), `blur` (a blurred copy of the same art, best for opaque square art in wide/large widgets), `wallpaper` (the matching crop of the theme wallpaper: the seamless look, for art with a transparent background). |
+| `label` | string | no | Name in the menu, 1-40 characters after trimming (e.g. `"Paper boat"`). Without it the app shows "Art 1", "Art 2"… English only today. |
+
+Unknown extra fields are ignored. At most **32** options per pack (more are ignored).
+
+**Validation.** A manifest with `"version": 2` and no `widgets` array is rejected. Inside the list the app is lenient: a bad entry (bad id, duplicate id, unknown kind or size, image not in `assets` or with the wrong role, bad fit / background / label) is dropped and the others still show; if none is valid the app falls back to the v1 roles. A pack builder should be strict: `validateWidgetOptions(widgets, assets)` returns one line per problem and must return `[]` before publishing.
+
+### Image guidance
+
+| Art shape | Pixel size | Use for |
+|---|---|---|
+| Square | **1024 x 1024** (minimum 510 x 510) | `small`, and `medium` / `large` fitted on `blur` or `theme` |
+| Wide (2.14 : 1) | **1092 x 510** | `medium` with `fit: "fill"` |
+| Tall-square (0.95 : 1) | **1092 x 1146** | `large` with `fit: "fill"` |
+
+- WebP (preferred, quality ~82) or PNG, 8-bit sRGB, `mime` `image/webp` / `image/png`. Keep each file **≤ 250 KB** (most square pieces are 20-150 KB); the whole pack stays under 20 MB (`REMOTE_ART_MAX_BYTES`).
+- Long edge **≤ 1200 px**: the widget image is capped at 1200 px, so more is only bytes.
+- Keep the subject inside the middle ~88 % (the 6 % inset) and away from the corners (widgets have ~22 pt rounded corners).
+- Transparent art: use `background: "wallpaper"` (it floats on the wallpaper like v1 hero art). Opaque art: `theme` or `blur`.
+- Don't pre-crop square art to wide or tall shapes: list the square file with `sizes: ["small", "medium", "large"]` and the app fits it (this is the Cloud Atelier paper-boat fix).
+
+### Example v2 manifest (`art/cloud-atelier/v2/manifest.json`)
+
+```json
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "cloud-atelier",
+  "packVersion": 2,
+  "name": "Cloud Atelier",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": { "bg": "#DCE6F2", "tile": "#F7F9FC", "glyph": "#2B3A55", "accent": "#7FA4D6", "text": "#1E2A40" },
+  "meta": { "name": "Cloud Atelier", "mood": "…", "tags": ["clouds", "pastel"], "credits": "…", "licence": "openai-output-owned", "generator": "openai-image", "prompt": "…", "addedAt": "2026-10-31" },
+  "thumbhash": "xvcFCwB3gCh3bYG5loBmCWg=",
+  "assets": [
+    { "path": "wallpaper-2796.d5e95932.webp", "role": "wallpaper", "width": 1290, "height": 2796, "bytes": 150412, "sha256": "<64 hex>", "mime": "image/webp" },
+    { "path": "wallpaper-2556.919f7026.webp", "role": "wallpaper", "width": 1179, "height": 2556, "bytes": 134170, "sha256": "<64 hex>", "mime": "image/webp" },
+    { "path": "wallpaper-1334.7ddccc93.webp", "role": "wallpaper", "width": 750, "height": 1334, "bytes": 64112, "sha256": "<64 hex>", "mime": "image/webp" },
+    { "path": "thumb.e5731259.webp", "role": "thumb", "width": 240, "height": 520, "bytes": 10260, "sha256": "<64 hex>", "mime": "image/webp" },
+    { "path": "widget-paper-boat.0a0b0c0d.webp", "role": "widget-art", "width": 1024, "height": 1024, "bytes": 61234, "sha256": "<64 hex>", "mime": "image/webp" },
+    { "path": "widget-hot-air-balloon.1a1b1c1d.webp", "role": "widget-art", "width": 1024, "height": 1024, "bytes": 58410, "sha256": "<64 hex>", "mime": "image/webp" },
+    { "path": "widget-cloud-banner.2a2b2c2d.webp", "role": "widget-art", "width": 1092, "height": 510, "bytes": 72002, "sha256": "<64 hex>", "mime": "image/webp" },
+    { "path": "widget-cloud-clock.3a3b3c3d.webp", "role": "widget-art", "width": 1024, "height": 1024, "bytes": 40118, "sha256": "<64 hex>", "mime": "image/webp" },
+    { "path": "widget-rain-habits.4a4b4c4d.webp", "role": "widget-art", "width": 1024, "height": 1024, "bytes": 39876, "sha256": "<64 hex>", "mime": "image/webp" }
+  ],
+  "widgets": [
+    { "id": "paper-boat", "kind": "art", "image": "widget-paper-boat.0a0b0c0d.webp", "sizes": ["small", "medium", "large"], "fit": "fit", "background": "blur", "label": "Paper boat" },
+    { "id": "hot-air-balloon", "kind": "art", "image": "widget-hot-air-balloon.1a1b1c1d.webp", "sizes": ["small", "large"], "background": "theme", "label": "Balloon" },
+    { "id": "cloud-banner", "kind": "art", "image": "widget-cloud-banner.2a2b2c2d.webp", "sizes": ["medium"], "fit": "fill", "background": "theme" },
+    { "id": "cloud-clock", "kind": "clock", "image": "widget-cloud-clock.3a3b3c3d.webp", "sizes": ["small", "large"], "background": "blur", "label": "Cloud clock" },
+    { "id": "rain-habits", "kind": "habits", "image": "widget-rain-habits.4a4b4c4d.webp", "sizes": ["small", "medium"], "background": "theme", "label": "Rain tracker" }
+  ],
+  "totalBytes": 630594
+}
+```
+
+(`<64 hex>` and the sizes are placeholders: write the real SHA-256 and byte counts; `totalBytes` must equal the sum of `bytes`.) The `catalog.json` entry for the pack is unchanged except `packVersion` / `manifest` / `thumb` pointing at the new version folder.
+
+### v1 compatibility
+
+- **v1 packs keep working unchanged.** `widgetOptionsFromV1` turns each `widget-small` / `widget-medium` / `widget-large` asset into an `art` option (`background: "wallpaper"`, `fit: "fit"`), offered in **every** Home Screen size with its own size listed first, so the square small art also appears whole in medium and large.
+- A v2 pack doesn't need the v1 widget roles: the theme page's Seamless card uses the first option for each size when there is no `widget-<size>` file (`remoteArtFiles`).
+- Apps from before T187 reject `"version": 2` manifests (the download shows the calm "try again" line). Publish v2 packs only once the T187 update is on the phones (it is JavaScript, so it arrives as an over-the-air update). `scripts/packs/build_packs.mjs` in this repo still writes v1 from `themes/<id>/` folders.
+
+### On the phone
+
+- **Widgets tab** (`src/ui/ThemeWidgetArt.tsx`, `src/ui/WidgetArtMenu.tsx`): under the size tabs, "Widget art" lists every option of the picked theme for that size as large rounded previews (two columns for Small, one for Medium / Large), under a header per kind, with a tint ring and check badge on the chosen one. Previews draw the art inside the `placeArt` rectangle with `contentFit="contain"`; only the background (blurred art or wallpaper) is cover-scaled. A remote theme that isn't downloaded yet shows one line pointing to its page. Bundled art packs (Deep Sea, Starry Night, Sunset Dunes) list their three hero pieces the same way.
+- **Use on my widget** writes the chosen piece to the Glaze **Seamless** widget (`seamless-<size>.png`): `background: "wallpaper"` through `widgets.setSeamless` (wallpaper crop under the default spot + art fitted); `theme` / `blur` through the new `widgets.setWidgetArt` (native: colour fill, CIGaussianBlur aspect-fill copy for `blur`, then the art fitted with the 6 % inset). A native build from before T187 has no `setWidgetArt`, so the app uses the seamless path instead. Expo Go: "Needs the Glaze TestFlight app".
+- **Native widget** (`targets/widget/SeamlessWidget.swift`): the image is drawn `.scaledToFit()` over a blurred `.scaledToFill()` copy on the theme background, so a phone whose widget shape differs a little never cuts the art. This and `setWidgetArt` need a **new native build**.
 
 ## App side (remote catalogue)
 

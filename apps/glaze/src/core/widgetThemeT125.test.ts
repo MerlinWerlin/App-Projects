@@ -160,8 +160,11 @@ test('the app writes the theme on every apply path and once at launch', () => {
   assert.match(save, /applyWidgetTheme\(theme\)/, 'wallpaper save must apply the widget theme');
   const useStyle = /const onUseStyle = async \([^)]*\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
   assert.match(useStyle, /applyWidgetTheme\(theme\)/);
-  const toggle = /const toggleRow = [^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
-  assert.match(toggle, /next === 'widgets'\) void applyWidgetTheme\(theme\)/);
+  // T184 / T185: "Use this theme" (the old widgets step is gone) writes the widget theme through
+  // applyThemeEverywhere, which calls applyWidgetTheme.
+  const putInUse = /const putInUse = async \(\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
+  assert.match(putInUse, /applyThemeEverywhere\(theme\)/);
+  assert.match(read('src/store/activeTheme.ts'), /const widgets = await applyWidgetTheme\(theme\);/);
 
   const maker = read('app/wallpaper.tsx');
   const onSave = /const onSave = async \(\) => \{[^]*?\n {2}\};/.exec(maker)?.[0] ?? '';

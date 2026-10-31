@@ -112,6 +112,27 @@ export const ar: NonNullable<LocaleMessages['theme']> = {
     skip: 'تخطٍّ',
     finish: 'إنهاء',
   },
+  // T184 / T185 (owner-1101): "Use this theme" and the three entry points on the theme page.
+  use: {
+    cta: 'استخدام هذه السمة',
+    inUse: 'قيد الاستخدام ✓',
+    hint: 'يستخدم هذه السمة للأيقونات والأدوات والخلفية في كل علامة تبويب',
+    inUseHint: 'هذه سمتك بالفعل في كل علامة تبويب. اضغط لتطبيقها مجددًا',
+    note: 'يضبط الأيقونات والأدوات والخلفية في كل علامة تبويب على هذه السمة.',
+    inUseNote: 'تتبع أيقوناتك وأدواتك وخلفيتك هذه السمة.',
+    doneA11y: 'أصبحت {name} سمتك في كل علامة تبويب',
+    error: 'تعذّر التبديل إلى هذه السمة. حاول مرة أخرى.',
+  },
+  parts: {
+    eyebrow: 'الإعداد',
+    title: 'الخلفية والأيقونات والأدوات',
+    wallpaper: 'الخلفية',
+    wallpaperSub: 'احفظها في الصور',
+    icons: 'الأيقونات',
+    iconsSub: 'اختر النمط ثم ثبّت',
+    widgets: 'الأدوات',
+    widgetsSub: 'أدوات متناسقة في Widget Studio',
+  },
   save: {
     body: 'احفظ خلفية {name} في الصور بمقاس iPhone الخاص بك ({width} × {height}).',
     bodyPhoto: 'احفظ صورتك، مؤطرة لـ {name}، في الصور بمقاس iPhone الخاص بك ({width} × {height}).',
@@ -133,6 +154,8 @@ export const ar: NonNullable<LocaleMessages['theme']> = {
     saving: 'جارٍ الحفظ…',
     again: 'حفظ مرة أخرى',
     cta: 'حفظ الخلفية في الصور',
+    // T185: the Wallpaper screen's badge once saved (Save again always stays).
+    savedBadge: 'تم الحفظ في الصور ✓',
   },
   style: {
     body: 'حمّل نمط الأيقونات هذا في استوديو الأيقونات، ثم اختر التطبيقات التي تريد تزيينها.',

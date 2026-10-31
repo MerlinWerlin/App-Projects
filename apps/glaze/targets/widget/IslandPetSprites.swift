@@ -5,7 +5,7 @@ enum IslandPetSprites {
   struct Sprite { let name: String; let color: Color; let rows: [String] }
   static func pet(_ id: String) -> Sprite {
     switch id {
-    case "cat": return Sprite(name: "Mochi", color: Color(red: 0.772549, green: 0.650980, blue: 0.956863), rows: [
+    case "cat": return Sprite(name: "Mushy", color: Color(red: 0.772549, green: 0.650980, blue: 0.956863), rows: [
       "................",
       "..##........##..",
       "..###......###..",

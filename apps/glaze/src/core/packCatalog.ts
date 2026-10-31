@@ -15,12 +15,17 @@
 // Pure TS, no React Native / Expo imports.
 
 import { isArtPackId, PALETTE_KEYS, type ArtMeta, type ArtPalette } from './artPack.ts';
+import { widgetOptionsOfPack, type WidgetOption } from './widgetOptions.ts';
 
 export const CATALOG_FORMAT = 'glaze-catalog';
 export const CATALOG_VERSION = 1;
 export const CATALOG_FILE = 'catalog.json';
 export const REMOTE_ART_FORMAT = 'glaze-remote-art-pack';
+/** The version scripts/packs/build_packs.mjs writes (v1 has no widget option list). */
 export const REMOTE_ART_VERSION = 1;
+/** T187: v2 adds the `widgets` option list and the `widget-art` asset role (docs/THEME_PACKS.md). */
+export const REMOTE_ART_VERSION_2 = 2;
+export const REMOTE_ART_VERSIONS: readonly number[] = Object.freeze([1, 2]);
 export const REMOTE_ART_MANIFEST = 'manifest.json';
 /** Largest catalog.json the app will parse. */
 export const CATALOG_MAX_BYTES = 2_000_000;
@@ -28,8 +33,10 @@ export const CATALOG_MAX_BYTES = 2_000_000;
 export const REMOTE_ART_MAX_BYTES = 20_000_000;
 
 /** What a file in a remote art pack is. Wallpapers come in device classes (long edge in px). */
-export type RemoteArtRole = 'wallpaper' | 'widget-small' | 'widget-medium' | 'widget-large' | 'thumb';
-export const REMOTE_ART_ROLES: readonly RemoteArtRole[] = Object.freeze(['wallpaper', 'widget-small', 'widget-medium', 'widget-large', 'thumb'] as RemoteArtRole[]);
+export type RemoteArtRole = 'wallpaper' | 'widget-small' | 'widget-medium' | 'widget-large' | 'thumb' | 'widget-art';
+export const REMOTE_ART_ROLES: readonly RemoteArtRole[] = Object.freeze(['wallpaper', 'widget-small', 'widget-medium', 'widget-large', 'thumb', 'widget-art'] as RemoteArtRole[]);
+/** Roles a v1 manifest may use (`widget-art` is v2 only). */
+const V1_ROLES: readonly string[] = ['wallpaper', 'widget-small', 'widget-medium', 'widget-large', 'thumb'];
 
 export type RemoteArtAsset = {
   /** Relative to the pack version folder, e.g. "wallpaper-2796.1a2b3c4d.webp". No "/" or "..". */
@@ -45,7 +52,7 @@ export type RemoteArtAsset = {
 
 export type RemoteArtManifest = {
   format: typeof REMOTE_ART_FORMAT;
-  version: 1;
+  version: 1 | 2;
   id: string;
   packVersion: number;
   name: string;
@@ -57,6 +64,11 @@ export type RemoteArtManifest = {
   thumbhash: string;
   assets: RemoteArtAsset[];
   totalBytes: number;
+  /**
+   * T187: every widget option of the theme. v2: the manifest's `widgets` list (bad entries
+   * dropped); v1 (or a v2 list with no valid entry): derived from the widget-* assets.
+   */
+  widgets: WidgetOption[];
 };
 
 export type CatalogPack = {
@@ -166,7 +178,8 @@ export function parseCatalog(raw: unknown): ParseResult<Catalog> {
 export function parseRemoteArtManifest(raw: unknown, expectId?: string): ParseResult<RemoteArtManifest> {
   if (!isObj(raw)) return { ok: false, error: 'manifest: not an object' };
   if (raw.format !== REMOTE_ART_FORMAT) return { ok: false, error: 'manifest: unknown format' };
-  if (raw.version !== REMOTE_ART_VERSION) return { ok: false, error: 'manifest: unsupported version' };
+  if (raw.version !== 1 && raw.version !== 2) return { ok: false, error: 'manifest: unsupported version' };
+  const version: 1 | 2 = raw.version;
   if (!isArtPackId(raw.id)) return { ok: false, error: 'manifest: bad id' };
   if (expectId !== undefined && raw.id !== expectId) return { ok: false, error: 'manifest: wrong pack id' };
   if (!posInt(raw.packVersion)) return { ok: false, error: 'manifest: bad packVersion' };
@@ -185,7 +198,7 @@ export function parseRemoteArtManifest(raw: unknown, expectId?: string): ParseRe
   for (const a of raw.assets) {
     if (!isObj(a)) return { ok: false, error: 'manifest: bad asset' };
     if (!isSafeAssetPath(a.path) || paths.has(a.path)) return { ok: false, error: `manifest: bad asset path ${String(a.path)}` };
-    if (typeof a.role !== 'string' || !(REMOTE_ART_ROLES as readonly string[]).includes(a.role)) return { ok: false, error: 'manifest: bad asset role' };
+    if (typeof a.role !== 'string' || !(version === 1 ? V1_ROLES : (REMOTE_ART_ROLES as readonly string[])).includes(a.role)) return { ok: false, error: 'manifest: bad asset role' };
     if (!posInt(a.width) || !posInt(a.height) || !posInt(a.bytes)) return { ok: false, error: 'manifest: bad asset size' };
     if (typeof a.sha256 !== 'string' || !HEX64.test(a.sha256)) return { ok: false, error: 'manifest: bad asset hash' };
     if (a.mime !== 'image/webp' && a.mime !== 'image/png') return { ok: false, error: 'manifest: bad asset mime' };
@@ -197,11 +210,13 @@ export function parseRemoteArtManifest(raw: unknown, expectId?: string): ParseRe
   for (const need of ['wallpaper', 'thumb'] as const) if (!roles.has(need)) return { ok: false, error: `manifest: no ${need} asset` };
   if (raw.totalBytes !== sum) return { ok: false, error: 'manifest: totalBytes does not match assets' };
   if (sum > REMOTE_ART_MAX_BYTES) return { ok: false, error: 'manifest: pack too large' };
+  if (version === 2 && !Array.isArray(raw.widgets)) return { ok: false, error: 'manifest: v2 needs a widgets list' };
+  const widgets = widgetOptionsOfPack({ version, widgets: raw.widgets, assets });
   return {
     ok: true,
     value: {
       format: REMOTE_ART_FORMAT,
-      version: 1,
+      version,
       id: raw.id,
       packVersion: raw.packVersion,
       name: raw.name,
@@ -212,6 +227,7 @@ export function parseRemoteArtManifest(raw: unknown, expectId?: string): ParseRe
       thumbhash: raw.thumbhash,
       assets,
       totalBytes: sum,
+      widgets,
     },
   };
 }

@@ -1,8 +1,9 @@
 // Bottom tab bar and Widgets tab model (T70, docs/MARKET.md "Owner screenshots 18 Oct" L1).
 //
-// Tab order: Themes / Widgets / Icons / Wallpapers / Live. Settings stays a route inside the tab
-// group (so old /settings links still open it) but is hidden from the bar and reached from a gear
-// button on Themes.
+// Tab order (owner-1101 #4, T186): Themes / Widgets / Icons / Pets / Wallpapers. Live is no longer
+// a tab: the Live Photo maker is a stack screen at /live (app/live/index.tsx), opened from the
+// Wallpapers tab. Settings stays a route inside the tab group (so old /settings links still open
+// it) but is hidden from the bar and reached from a gear button on Themes.
 //
 // The Widgets tab shows, for one theme and one size sub-tab (Small / Medium / Large / Lock), the
 // theme-matched widgets from widgetSets.ts (real previews, open Widget Studio) followed by the
@@ -20,8 +21,11 @@ import { WIDGET_KINDS, widgetKindKey, widgetSizeKey, type WidgetKind, type Widge
 
 // ---------------------------------------------------------------------------------- tab bar
 
-export const TAB_ORDER = Object.freeze(['themes', 'widgets', 'icons', 'wallpapers', 'live'] as const);
+export const TAB_ORDER = Object.freeze(['themes', 'widgets', 'icons', 'pets', 'wallpapers'] as const);
 export type TabId = (typeof TAB_ORDER)[number];
+
+/** The Live Photo maker's route (a stack screen since T186, opened from the Wallpapers tab). */
+export const LIVE_MAKER_HREF = '/live';
 
 /** Routes in app/(tabs) that stay reachable by link but have no tab bar button. */
 export const HIDDEN_TAB_ROUTES = Object.freeze(['settings'] as const);
@@ -87,6 +91,7 @@ export function tabNavI18nKeys(): string[] {
   const keys = new Set<string>();
   for (const id of TAB_ORDER) keys.add(tabLabelKey(id));
   keys.add('tabs.settings');
+  keys.add('tabs.live');
   for (const s of WIDGET_TAB_SIZES) {
     keys.add(widgetTabSizeKey(s));
     for (const c of widgetTabCards(s, [])) {

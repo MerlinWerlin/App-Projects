@@ -38,7 +38,7 @@ const ART_ALLOWLIST: Record<string, string> = {
 const BASELINE: Record<string, Counts> = {
   'app/(tabs)/_layout.tsx': { fontSize: 1 },
   'app/collage.tsx': { radius: 2 },
-  'app/pets.tsx': { colour: 2, radius: 2 },
+  'app/pets.tsx': { colour: 2, radius: 1 },
   'src/ui/HeartButton.tsx': { colour: 1 },
   'src/ui/LivePhotoGuide.tsx': { colour: 6, fontSize: 1 },
   'src/ui/PhotoCropEditor.tsx': { colour: 1 },

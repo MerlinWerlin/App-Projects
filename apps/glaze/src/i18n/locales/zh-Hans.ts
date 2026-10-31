@@ -30,7 +30,7 @@ const base: LocaleMessages = {
     error: '出了点问题',
     itemCount: { zero: '没有项目', other: '{count} 个项目' },
   },
-  tabs: { themes: '主题', icons: '图标', live: '实况', settings: '设置' },
+  tabs: { themes: '主题', icons: '图标', live: '实况', pets: '宠物', settings: '设置' },
   settings: {
     language: {
       title: '语言',

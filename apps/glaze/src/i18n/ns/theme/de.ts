@@ -112,6 +112,27 @@ export const de: NonNullable<LocaleMessages['theme']> = {
     skip: 'Überspringen',
     finish: 'Fertig',
   },
+  // T184 / T185 (owner-1101): "Use this theme" and the three entry points on the theme page.
+  use: {
+    cta: 'Dieses Theme verwenden',
+    inUse: 'Wird verwendet ✓',
+    hint: 'Verwendet dieses Theme für Symbole, Widgets und Hintergrund in jedem Tab',
+    inUseHint: 'Schon dein Theme in jedem Tab. Tippen, um es erneut anzuwenden',
+    note: 'Stellt Symbole, Widgets und Hintergrund in jedem Tab auf dieses Theme.',
+    inUseNote: 'Deine Symbole, Widgets und dein Hintergrund folgen diesem Theme.',
+    doneA11y: '{name} ist jetzt dein Theme in jedem Tab',
+    error: 'Wechsel zu diesem Theme fehlgeschlagen. Bitte versuch es erneut.',
+  },
+  parts: {
+    eyebrow: 'Einrichten',
+    title: 'Hintergrund, Symbole und Widgets',
+    wallpaper: 'Hintergrund',
+    wallpaperSub: 'In Fotos sichern',
+    icons: 'Symbole',
+    iconsSub: 'Stil wählen, dann installieren',
+    widgets: 'Widgets',
+    widgetsSub: 'Passende Widgets im Widget Studio',
+  },
   save: {
     body: 'Sichere den {name}-Hintergrund in Fotos, passend für dein iPhone ({width} × {height}).',
     bodyPhoto: 'Sichere dein Foto, zugeschnitten für {name}, in Fotos, passend für dein iPhone ({width} × {height}).',
@@ -133,6 +154,8 @@ export const de: NonNullable<LocaleMessages['theme']> = {
     saving: 'Wird gesichert …',
     again: 'Erneut sichern',
     cta: 'Hintergrund in Fotos sichern',
+    // T185: the Wallpaper screen's badge once saved (Save again always stays).
+    savedBadge: 'In Fotos gesichert ✓',
   },
   style: {
     body: 'Lade diesen Symbolstil ins Symbol-Studio und wähle dann die Apps, die du gestalten willst.',

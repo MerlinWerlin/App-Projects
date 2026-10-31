@@ -45,7 +45,8 @@ import { PressableScale } from '../../src/ui/PressableScale';
 import { ContextTip } from '../../src/ui/ContextTip';
 import { Sheet } from '../../src/ui/Sheet';
 import { haptic } from '../../src/ui/haptics';
-import { textStyleFor } from '../../src/ui/i18nLayout';
+import { BarIconButton } from '../../src/ui/BarIconButton';
+import { Chevron, textStyleFor } from '../../src/ui/i18nLayout';
 import { Skeleton } from '../../src/ui/Skeleton';
 import { LargeTitleScrollView, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
 
@@ -55,6 +56,8 @@ function isGifAsset(a: ImagePicker.ImagePickerAsset): boolean {
   return a.mimeType === 'image/gif' || /\.gif$/i.test(a.fileName ?? '') || /\.gif(?:[?#].*)?$/i.test(a.uri);
 }
 
+// T186 (owner-1101 #4): no longer a tab. This is the Live Photo maker at /live, a stack screen
+// opened from the Wallpapers tab ("Live Photo from a clip"); a back button leads out of it.
 // Live tab (design v2, docs/DESIGN_V2.md, T56): collapsing large title, pill actions, v2 palette in
 // the sheets. T127: the playlist and "Set playlist on Lock Screen" (Now Playing) are gone; the Live
 // Photo guide explains the path. T176 (premium UI, docs/PREMIUM_UI.md §3.10): two editorial sections
@@ -64,7 +67,7 @@ function isGifAsset(a: ImagePicker.ImagePickerAsset): boolean {
 export default function LiveScreen() {
   const { c, scheme } = useColorsV2();
   const cardTone = scheme === 'dark' ? 'raised' : 'surface';
-  const { t, script } = useT();
+  const { t, script, isRTL } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => [textV2[role], textStyleFor(script, textV2[role])];
   const secs = (ms: number) => formatSeconds(ms, (value) => t('live.seconds', { value }));
   const router = useRouter();
@@ -174,7 +177,11 @@ export default function LiveScreen() {
 
 
   return (
-    <LargeTitleScrollView title={t('tabs.live')} subtitle={t('live.tab.subtitle')}>
+    <LargeTitleScrollView
+      title={t('tabs.live')}
+      subtitle={t('live.tab.subtitle')}
+      leading={router.canGoBack() ? <BarIconButton icon={Chevron.back(isRTL) as FeatherName} accessibilityLabel={t('common.back')} onPress={() => router.back()} /> : undefined}
+    >
       <ContextTip id="live-loop" style={styles.side} />
       <View style={styles.section}>
         <SectionHeader

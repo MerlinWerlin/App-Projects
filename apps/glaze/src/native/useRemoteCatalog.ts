@@ -7,7 +7,8 @@
 import { useEffect, useMemo, useSyncExternalStore } from 'react';
 import { AppState } from 'react-native';
 import type { HeroSize } from '../core/artPack';
-import type { Catalog } from '../core/packCatalog';
+import { pickWallpaper, type Catalog } from '../core/packCatalog';
+import type { WidgetOption } from '../core/widgetOptions';
 import { getAnyTheme } from '../core/plusThemes';
 import { remoteArtFiles, remoteArtThemes, remoteThemeById, withDownloadedArt, type CatalogStatus, type RemoteArtTheme } from '../core/remoteCatalog';
 import { PACK_BASE_RESOLVED, PACKS_ENABLED, getPackState, refreshCatalog, remoteArtFileUri, remoteArtOnDevice, subscribePacks } from './packs';
@@ -89,9 +90,17 @@ export type RemoteArtLocal = {
   thumbUri: string | null;
   /** T168: file:// URIs of the downloaded transparent hero art per widget size (seamless widgets). */
   heroUris: Partial<Record<HeroSize, string>>;
+  /** T187: every widget option of the downloaded pack (v2 list, or derived from v1) with its file:// URI. */
+  widgetOptions: readonly LocalWidgetOption[];
+  /** T187: pixel size of the downloaded wallpaper (for the seamless crop), or null. */
+  wallpaperPx: { w: number; h: number } | null;
 };
 
+/** T187: a widget option and the downloaded file that draws it. */
+export type LocalWidgetOption = { option: WidgetOption; uri: string };
+
 const NO_HERO_URIS: Partial<Record<HeroSize, string>> = Object.freeze({});
+const NO_OPTIONS: readonly LocalWidgetOption[] = Object.freeze([]) as readonly LocalWidgetOption[];
 
 /** One remote theme by id plus its downloaded files (verified on first read). */
 export function useRemoteArtTheme(id: string | null | undefined): RemoteArtLocal {
@@ -104,18 +113,26 @@ export function useRemoteArtTheme(id: string | null | undefined): RemoteArtLocal
     if (base && downloaded && !local) void remoteArtOnDevice(base.id);
   }, [base, downloaded, local]);
   return useMemo(() => {
-    if (!base || !local) return { theme: base, wallpaperUri: null, thumbUri: null, heroUris: NO_HERO_URIS };
+    if (!base || !local) return { theme: base, wallpaperUri: null, thumbUri: null, heroUris: NO_HERO_URIS, widgetOptions: NO_OPTIONS, wallpaperPx: null };
     const files = remoteArtFiles(local);
     const heroUris: Partial<Record<HeroSize, string>> = {};
     for (const s of Object.keys(files.heroes) as HeroSize[]) {
       const uri = remoteArtFileUri(base.id, files.heroes[s]);
       if (uri) heroUris[s] = uri;
     }
+    const widgetOptions: LocalWidgetOption[] = [];
+    for (const option of local.widgets ?? []) {
+      const uri = remoteArtFileUri(base.id, option.image);
+      if (uri) widgetOptions.push({ option, uri });
+    }
+    const wall = pickWallpaper(local, Number.MAX_SAFE_INTEGER);
     return {
       theme: withDownloadedArt(base, local),
       wallpaperUri: remoteArtFileUri(base.id, files.wallpaper),
       thumbUri: remoteArtFileUri(base.id, files.thumb),
       heroUris,
+      widgetOptions,
+      wallpaperPx: wall ? { w: wall.width, h: wall.height } : null,
     };
   }, [base, local]);
 }

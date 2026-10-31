@@ -55,10 +55,21 @@ struct SeamlessWidgetView: View {
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
     .containerBackground(for: .widget) {
       if let image = image {
-        // The file already has the widget's aspect; fill so no edge shows.
-        Image(uiImage: image)
-          .resizable()
-          .scaledToFill()
+        // T187 (owner-1101 #5: art is fitted, never cropped): the file is made at the widget's
+        // aspect, but a device whose widget shape differs a little must not cut it. Fit the image
+        // whole over a blurred copy of itself on the theme background, so no edge shows either.
+        ZStack {
+          GlazeBackground(theme: t)
+          Image(uiImage: image)
+            .resizable()
+            .scaledToFill()
+            .blur(radius: 16)
+            .opacity(0.85)
+          Image(uiImage: image)
+            .resizable()
+            .scaledToFit()
+        }
+        .clipped()
       } else {
         GlazeBackground(theme: t)
       }

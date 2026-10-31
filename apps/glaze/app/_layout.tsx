@@ -156,6 +156,8 @@ function RootStack() {
       <Stack.Screen name="install" options={{ title: t('install.title') }} />
       <Stack.Screen name="wallpaper" options={{ title: t('wallpaper.title') }} />
       <Stack.Screen name="collage" options={{ title: t('wallpaper.collage.title') }} />
+      {/* T186: the Live Photo maker left the tab bar; it draws its own large title and back button. */}
+      <Stack.Screen name="live/index" options={{ headerShown: false }} />
       <Stack.Screen name="live/[id]" options={{ title: t('live.editTitle') }} />
       <Stack.Screen name="feedback" options={{ title: t('feedback.title') }} />
       <Stack.Screen name="add-app" options={{ title: t('addApp.title') }} />

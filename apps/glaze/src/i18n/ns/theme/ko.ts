@@ -112,6 +112,27 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
     skip: '건너뛰기',
     finish: '완료',
   },
+  // T184 / T185 (owner-1101): "Use this theme" and the three entry points on the theme page.
+  use: {
+    cta: '이 테마 사용',
+    inUse: '사용 중 ✓',
+    hint: '모든 탭의 아이콘, 위젯, 배경화면에 이 테마를 사용합니다',
+    inUseHint: '이미 모든 탭의 테마입니다. 탭하면 다시 적용합니다',
+    note: '모든 탭의 아이콘, 위젯, 배경화면을 이 테마로 설정합니다.',
+    inUseNote: '아이콘, 위젯, 배경화면이 이 테마를 따릅니다.',
+    doneA11y: '이제 {name} 테마가 모든 탭에 적용됩니다',
+    error: '이 테마로 바꾸지 못했습니다. 다시 시도해 주세요.',
+  },
+  parts: {
+    eyebrow: '설정하기',
+    title: '배경화면, 아이콘, 위젯',
+    wallpaper: '배경화면',
+    wallpaperSub: '사진에 저장',
+    icons: '아이콘',
+    iconsSub: '스타일을 고른 뒤 설치',
+    widgets: '위젯',
+    widgetsSub: 'Widget Studio의 어울리는 위젯',
+  },
   save: {
     body: '{name} 배경화면을 iPhone 크기({width} × {height})로 사진 앱에 저장합니다.',
     bodyPhoto: '{name}에 맞춰 자른 내 사진을 iPhone 크기({width} × {height})로 사진 앱에 저장합니다.',
@@ -133,6 +154,8 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
     saving: '저장 중…',
     again: '다시 저장',
     cta: '배경화면을 사진에 저장',
+    // T185: the Wallpaper screen's badge once saved (Save again always stays).
+    savedBadge: '사진에 저장됨 ✓',
   },
   style: {
     body: '이 아이콘 스타일을 아이콘 스튜디오에 불러온 뒤 테마를 적용할 앱을 고르세요.',

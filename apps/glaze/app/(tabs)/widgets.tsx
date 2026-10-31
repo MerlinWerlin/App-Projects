@@ -38,13 +38,15 @@
 // by surface in dark mode (no hairline); previews wait as calm skeletons in their final shape while a
 // photo wallpaper is being sampled; Dynamic Type caps (fontScaleCap) on every Text; only tokens. Still
 // one virtualised list of memoised rows, with the ~16 pt spacer above the first section (T166).
+// T187 (owner-1101 #5): above the grid, the theme's own widget art menu (src/ui/ThemeWidgetArt.tsx):
+// every widget art piece of the theme for the chosen size, fitted (never cropped), grouped per kind.
 import { Feather } from '@expo/vector-icons';
 import { IslandPetArt } from '../../src/ui/IslandPetArt';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { memo, useCallback, useDeferredValue, useMemo, useRef, useState, type ReactNode } from 'react';
+import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions, type AccessibilityActionEvent, type ListRenderItem, type StyleProp, type ViewStyle } from 'react-native';
 import { WIDGET_TAB_SIZES, widgetStudioHref, widgetTabCards, widgetTabSizeKey, type WidgetTabCard, type WidgetTabSize } from '../../src/core/tabNav';
-import { getAnyTheme } from '../../src/core/plusThemes';
+import { pickAfterActiveChange } from '../../src/core/activeTheme';
 import { THEMES, type Theme } from '../../src/core/themes';
 import { CATALOGUE_SIZE_POINTS, catalogueKindKey, catalogueSizeKey, catalogueSpecOf, type CatalogueKind, type CatalogueSpec } from '../../src/core/widgetKinds';
 import { wallpaperTokensFor } from '../../src/core/wallpaperPalette';
@@ -66,7 +68,8 @@ import { WIDGET_GRID_COLUMNS, rowExtras, slotFor, type GridCardExtras, type Grid
 import { familyRows, widgetFamilyKeys, type FamilyRow, type WidgetFamily } from '../../src/core/widgetFamilies';
 import { weakKeyedCache, weakMemo } from '../../src/core/perfCache';
 import { useT } from '../../src/i18n';
-import { useStudio } from '../../src/store/studio';
+import { useActiveThemeId } from '../../src/store/activeTheme';
+import { useAnyTheme } from '../../src/native/useAnyTheme';
 import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { useWidgetLink } from '../../src/store/widgetLink';
 import { widgetLinkVisible, type WidgetLinkVerdict } from '../../src/core/widgetLink';
@@ -81,6 +84,7 @@ import { CatalogueWidgetPreview } from '../../src/ui/CatalogueWidgetPreview';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
 import { SizeArt, SwatchArt } from '../../src/ui/WidgetOptionArt';
+import { ThemeWidgetArt } from '../../src/ui/ThemeWidgetArt';
 import { lookSwatch, themeSwatch as rawThemeSwatch, type Swatch } from '../../src/core/widgetOptionArt';
 
 /** Untyped lookup for keys carried in data (tabNav card name/size keys). */
@@ -446,17 +450,25 @@ export default function WidgetsTab() {
   const tl = t as unknown as LooseT;
   const router = useRouter();
   const { width } = useWindowDimensions();
-  const { state } = useStudio();
   // T86: values logged on the Home Screen habit widgets (full iOS build) and the daily goals.
   const widgetHabits = useWidgetHabits();
 
-  // Default theme: the applied one (it may be a Plus theme), else the first bundled theme.
-  const applied: Theme | undefined = getAnyTheme(state?.themeId ?? undefined);
+  // Default theme: the one in use (it may be a Plus or remote theme), else the first bundled theme.
+  // T184: re-read on every focus (the tab is frozen while hidden), and a chip picked here is dropped
+  // once another theme is put in use, so "Use this theme" shows here straight away.
+  const activeId = useActiveThemeId();
+  const applied: Theme | undefined = useAnyTheme(activeId);
   const themes: readonly Theme[] = useMemo(
     () => (applied && !THEMES.some((x) => x.id === applied.id) ? [applied, ...THEMES] : THEMES),
     [applied],
   );
   const [picked, setPicked] = useState<string | null>(null);
+  const seenActive = useRef<string | null>(activeId);
+  useEffect(() => {
+    const prev = seenActive.current;
+    seenActive.current = activeId;
+    setPicked((p) => pickAfterActiveChange(prev, activeId, p));
+  }, [activeId]);
   const theme: Theme = themes.find((x) => x.id === picked) ?? applied ?? THEMES[0];
   const [size, setSize] = useState<WidgetTabSize>('small');
   // T146: link check; re-checked a few seconds after each pick (pickNonce) and on focus.
@@ -724,6 +736,9 @@ export default function WidgetsTab() {
         </Text>
       ) : null}
 
+      {/* T187: the theme's widget art, every piece, for this size (nothing on Lock or for drawn themes). */}
+      <ThemeWidgetArt theme={gridTheme} size={size} width={width - GUTTER * 2} style={styles.art} />
+
       {/* T166: the grid's top padding from before T162 (rows are list items now). T173: the first
           family's section header sits right under it (flushTop), so the gap stays ~16 pt. */}
       <View style={styles.gridTop} />
@@ -785,6 +800,8 @@ const styles = StyleSheet.create({
     gap: spaceV2.xxs,
   },
   note: { paddingHorizontal: GUTTER, marginTop: spaceV2.md },
+  // T187: the theme widget art menu sits in the side gutters, a section's space below the size tabs.
+  art: { paddingHorizontal: GUTTER, marginTop: spaceV2.xl },
   // Pets entry card (T162: was an inline style object). T173: tokens only (spacing grid, card radius).
   pets: { margin: GUTTER, padding: spaceV2.lg, borderRadius: chromeRadiusV2.card, flexDirection: 'row', alignItems: 'center', gap: spaceV2.md },
   petsText: { flex: 1, gap: spaceV2.xs },

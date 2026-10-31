@@ -35,6 +35,7 @@ import { sizeForScreen } from '../src/core/wallpaper';
 import { useT } from '../src/i18n';
 import { CollageView, OffscreenCollage, type CollageData, type CollagePhoto } from '../src/render/CollageView';
 import { openAppSettings, useOffscreenCapture } from '../src/render/saveWallpaper';
+import { rememberWallpaper } from '../src/store/myWallpapers';
 import { keepCollageCopies, loadCollageDraft, pruneCollageCopies, saveCollageDraft } from '../src/store/collage';
 import { useStudio } from '../src/store/studio';
 import { circleRadius, continuous, radiusV2, sizeV2, spaceV2 } from '../src/theme/tokensV2';
@@ -166,6 +167,8 @@ export default function CollageScreen() {
     const res = await saver.save(data, canvas);
     if (res.ok) {
       haptic('success');
+      // T186: the saved collage is also listed under My wallpapers on the Wallpapers tab.
+      void rememberWallpaper({ kind: 'collage', uri: res.uri, width: res.width, height: res.height, themeId });
       setStatus({ kind: 'saved', text: t('wallpaper.collage.saved', { width: px(res.width), height: px(res.height) }) });
     } else if (res.reason === 'denied') {
       haptic('warning');

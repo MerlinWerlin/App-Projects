@@ -156,10 +156,10 @@ test('the heart is device-local, labelled, ≥48 pt and never shows a count (sou
   assert.match(screen, /galleryRows<[^>]*>\(\{[^}]*filter[^}]*liked/);
   assert.match(screen, /<GalleryArtCard[\s\S]*?onToggleLike=\{onToggleLike\}/);
   assert.match(readFileSync(join(root, 'src', 'ui', 'GalleryArtCard.tsx'), 'utf8'), /<HeartButton\b/);
+  // T186 (owner-1101 #4 supersedes T77 here): the Wallpapers tab no longer shows the wallpaper
+  // gallery, so it has no hearts or discovery filters; Liked stays on Themes.
   const walls = readFileSync(join(root, 'app', '(tabs)', 'wallpapers.tsx'), 'utf8');
-  assert.match(walls, /discoverWallpaperTiles\(/);
-  assert.match(walls, /useWallpaperFavourites\(/);
-  assert.match(walls, /themes\.discover\.picksNote/, 'Our picks is explained as our choice on Wallpapers too');
+  assert.doesNotMatch(walls, /discoverWallpaperTiles\(|useWallpaperFavourites\(|<HeartButton\b/);
 });
 
 test('no invented counts or ranks anywhere discovery or hearts are drawn (source check)', () => {

@@ -473,3 +473,28 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - T80 part (8a17236): Widget Studio deletes its old photo copies (replaced, reset) once no theme's studio and no wallpaper background uses them, after the new state is written; core orphanedStudioPhotos/studioPhotoUris + 4 tests. Nothing for the owner to notice beyond freed storage, so no TRIAL question.
 - 1443/1443 core tests green, typecheck:ui (stubs) clean, core typecheck clean. Kit rebuilt. JS only. Nothing device-tested.
 - Bundle base64 14.89 MB (D215-1 guard 15.6 MB); no new images.
+## 2026-10-31 run 198 (15:14Z, artifact 1793452999-37c5; oversight v219)
+- No-op run for the app. Oversight v219: no new directives, no patches; D211-1 open; D130-2 kept. Run 197's ship PR #140 waits on the owner's merge (auto-ship refused at 14:22Z), so nothing stacked on the app. App-Projects: nothing new for apps/glaze since f744a8d (= PR #137). No page comments. npm registry not retried; full install + tsc + expo export needs PC verification.
+- 1443/1443 core tests green. Kit unchanged (8a17236). Nothing device-tested.
+## 2026-10-31 run 199 (17:11Z, artifact 1793459789-98db; oversight v220)
+- No-op run for the app. Oversight v220: no new directives, no patches; PR #140 shipped OTA (15:18Z), merge hold lifted; D211-1 open; D130-2 kept. App-Projects 976f872/708b494 = ship PR #140 + SHIP_BASE advance; nothing to sync. No page comments. npm registry not retried; full install + tsc + expo export needs PC verification.
+- Nothing cloud-safe left: T80's remaining slices are the native multi-photo album bridge (D130-2) and the undefined "pack theme copy in the studio"; T64/T68 held (D77-2); the rest waits on the owner or the PC. Owner decision 24 Oct (good enough to ship, no open-ended work), so nothing invented.
+- 1443/1443 core tests green. Kit unchanged (8a17236). Nothing device-tested.
+## 2026-10-31 run 200 (19:11Z, artifact 1793466793-a1dd; oversight v221)
+- No-op run for the app. Oversight v221: no new directives, no patches; D211-1 open. App-Projects: no unsynced apps/glaze changes (latest 708b494/b61fbb3 = SHIP_BASE advances). No page comments. npm registry not retried; full install + tsc + expo export needs PC verification.
+- Nothing cloud-safe left (same as run 199); waiting on owner (glaze-test-latest, glaze-iap-product, glaze-plus-content).
+- 1443/1443 core tests green. Kit unchanged (8a17236). Nothing device-tested.
+## 2026-10-31 run 201 (21:11Z, artifact 1793473995-cc23; oversight v222)
+- No-op run for the app. Oversight v222: no new directives, no patches; D211-1 open. App-Projects: no unsynced apps/glaze changes (latest 1048d5f = SHIP_BASE advance). No page comments. npm registry not retried; full install + tsc + expo export needs PC verification.
+- Nothing cloud-safe left (same as runs 199-200); waiting on owner (glaze-test-latest, glaze-iap-product, glaze-plus-content).
+- 1443/1443 core tests green. Kit unchanged (8a17236). Nothing device-tested.
+## 2026-10-31 run 202 (21:34Z, artifact 1793481219-d8fc; oversight v222)
+- No-op run for the app. Oversight still v222: no new directives, no patches; D211-1 open. App-Projects: no unsynced apps/glaze changes (latest de9387a = SHIP_BASE advance). No page comments. npm registry not retried; full install + tsc + expo export needs PC verification.
+- Nothing cloud-safe left (same as runs 199-201); waiting on owner (glaze-test-latest, glaze-iap-product, glaze-plus-content).
+- 1443/1443 core tests green. Kit unchanged (8a17236). Nothing device-tested.
+## 2026-10-31 run 203 (21:37Z, manual fire with owner brief owner-1101; artifact 1793482622-e46d; oversight v222)
+- Owner brief 1 Nov 08:32 Sydney imported (T183-T191, docs/OWNER_1101.md). Item 7's "use StarNet/OpenAI" rejected (hard rule); list built in the cloud and checked against Apple's public lookup instead. Oversight still v222, no patches. App-Projects: nothing new for apps/glaze. No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- 7 parallel workers, all merged clean: T183 Shortcuts "Open App" default, Bulk optional with Safari warning, Settings/YouTube schemes removed, bundleId field (237 certain ids); T184+T185 applyThemeEverywhere + focus re-reads, theme page with Use this theme + separate Wallpaper/Icons/Widgets screens, Saved ✓ + Save again; T186 5 tabs (Themes · Widgets · Icons · Pets · Wallpapers), Live at /live, My wallpapers, old gallery off the tab; T187 pack format v2 + fit-not-crop + art menu + native setWidgetArt; T188 petLife day cycle, Pets screen, Live Activity poses; T189 part (+79 Apple-checked apps, 676 total); T190 prism creature icon/splash + 1.6 s calm intro; T191 TRIAL.md 1 Nov section. Integration fix: extra rows carry bundleId; Apple Developer app id allowed in the system-app test. Cat renamed Mushy.
+- Needs a new native build (T187 widget fit, T188 pet poses, T190 icon) -> auto-ship production-native. Follow-ups T192 (Island sync on app open), T193 (dead-code cleanup).
+- 1519/1519 core tests green, core + UI stub typecheck clean. Nothing device-tested.
+- Bundle base64 15.58 MB (guard 15.6 MB, cap 16 MB): headroom almost gone after the new brand art + catalogue; next run must shrink (drop unreferenced assets/brand/icon-dark.png 108 KB, old wallpaper gallery images) or overseer decides a history squash (T150).

@@ -21,7 +21,8 @@ test("theme detail reads as editorial blocks: What's inside, Icons, Widgets, Wal
   const order = ['inside', 'icons', 'widgets', 'wallpaper', 'credits'].map((k) => d.indexOf(`t('theme.section.${k}.eyebrow')`));
   for (const at of order) assert.ok(at > 0, 'every block has its eyebrow');
   assert.deepEqual([...order].sort((a, b) => a - b), order, 'blocks in the planned order');
-  assert.equal((d.match(/<SectionHeader\b/g) ?? []).length, 5);
+  // T185 (owner-1101 item 3): plus the "Set it up" block with the Wallpaper / Icons / Widgets entry points.
+  assert.equal((d.match(/<SectionHeader\b/g) ?? []).length, 6);
   // Credits only when there is something to credit.
   assert.match(d, /\{hasCredits \? \(/);
 });

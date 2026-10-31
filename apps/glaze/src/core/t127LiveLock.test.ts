@@ -32,7 +32,7 @@ test('T127: the default Live flow never starts Now Playing', () => {
     assert.doesNotMatch(src, /\bsetOnLockScreen\b/, `${f} uses setOnLockScreen`);
     assert.doesNotMatch(src, /import\s*\{[^}]*\blivelock\b[^}]*\}\s*from\s*'[^']*native\/livelock'/, `${f} imports the livelock adapter`);
   }
-  for (const f of ['app/(tabs)/live.tsx', 'app/live/[id].tsx']) {
+  for (const f of ['app/live/index.tsx', 'app/live/[id].tsx']) {
     const src = read(f);
     assert.doesNotMatch(src, /live\.editor\.setOnLock|live\.tab\.setPlaylist|LivelockRunningCard|useLivelockState/, f);
     assert.match(src, /<LivePhotoGuide\b/, `${f} shows the Live Photo guide`);
@@ -53,7 +53,7 @@ test('T127: no audio background mode once Now Playing is gone', () => {
 });
 
 test('T127: Live Lock Screen stays free (no Plus gate)', () => {
-  for (const f of ['app/(tabs)/live.tsx', 'app/live/[id].tsx', 'src/ui/LivePhotoGuide.tsx', 'src/ui/LivePhotoSheet.tsx', 'src/native/livephoto.ts']) {
+  for (const f of ['app/live/index.tsx', 'app/live/[id].tsx', 'src/ui/LivePhotoGuide.tsx', 'src/ui/LivePhotoSheet.tsx', 'src/native/livephoto.ts']) {
     assert.doesNotMatch(read(f), /src\/plus|\/plus['/]|entitlement|isPlus|usePlus/i, f);
   }
 });

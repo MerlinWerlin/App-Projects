@@ -2,6 +2,18 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (1 Nov: owner-1101)
+This needs the **new TestFlight build** (new app icon, Island pets and widget art changes are built into the app; auto-ship sends it). Open the newest Glaze build from TestFlight, then answer yes / no:
+
+1. **Icons open straight away:** Icons > Install icons. Does it open on **Shortcuts (Recommended)**, with Bulk below it carrying a Safari warning? Make the Instagram icon with the "Open App" steps: does it open Instagram with no Safari and no "Open in…?" question? Do YouTube and Settings icons made this way open their apps? yes / no
+2. **Use this theme switches everything:** open Cloud Atelier, tap **Use this theme**. Does the button turn into "In use ✓", and do the Icons and Widgets tabs show Cloud Atelier straight away? yes / no
+3. **Theme page, three separate screens:** on a theme page, do Wallpaper, Icons and Widgets each open their own screen? After saving the wallpaper, does it show "Saved to Photos ✓" with **Save again** still there, and does Save again work after you delete the picture from Photos? yes / no
+4. **Five tabs:** is the tab bar Themes · Widgets · Icons · Pets · Wallpapers? On Wallpapers, does "Live Photo from a clip" open the Live Photo maker, and does a saved collage or theme wallpaper show up under **My wallpapers** (with Save again and Delete working)? Are the old wallpapers gone from that tab? yes / no
+5. **Widget art, never cropped:** Widgets tab with Cloud Atelier: does the Medium size show the paper-boat art whole? Do you see every art piece for the theme in the new art menu, with a clear selected state, and does "Use on my widget" put it on the widget uncropped? yes / no
+6. **Pets alive:** on the Pets tab, does each pet (Mushy, Pip, Clover) show what it is doing and its mood (sleeping at night, eating around meals, wandering or playing in the day), react when you tap it, and do Feed / Play work? With the Island on, does the pet's pose change after you open Glaze at a new time of day? yes / no
+7. **Bigger app list:** in Find apps, do searches like "Steam" or "TestFlight" find the app? (79 new apps this time, each checked against Apple's public data; more to come.) yes / no
+8. **New icon + startup:** is the new Home Screen icon (a lilac crystal creature under a rainbow) the cute prism creature you meant? When Glaze opens, does it wake, float, blink once and fade calmly into the app, with no bounce? yes / no
+
 ## New since your last test (31 Oct, midday)
 Fully close and reopen the TestFlight Glaze twice to load the update, then answer yes / no:
 

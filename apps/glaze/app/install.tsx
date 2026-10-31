@@ -2,7 +2,11 @@
 // Bulk: render icons -> one web clip .mobileconfig -> served to Safari from 127.0.0.1 on this
 // iPhone (T126, src/native/profileServer.ts) -> Allow -> Settings. Builds without the native
 // server (Expo Go, old builds) fall back to the share sheet and recommend Shortcuts.
-// Shortcuts: save icons to a "Glaze icons" Photos album -> per-app checklist with copyable URL.
+// Shortcuts (T183, owner 1 Nov: the DEFAULT and recommended method): save icons to a "Glaze icons"
+// Photos album (all at once, or one app's icon from its row) -> one app at a time, a Home Screen
+// shortcut with the "Open App" action (the app picked from the list; no URL, so no Safari hop and no
+// "Open in <app>?" prompt). Bulk is an optional second method while PROFILE_INSTALL_ENABLED, with a
+// plain warning that its web clips open through Safari and ask every time.
 // Delivery path chosen in docs/SPIKE_PROFILE.md. Free feature: nothing here reads Plus.
 // Design v2 (docs/DESIGN_V2.md §9, T55): method choice as two squircle cards (the recommended one
 // raised with a "Recommended" pill), steps and the Shortcuts checklist in inset groups with
@@ -15,7 +19,6 @@
 // made (the one `success` haptic of the flow stays in generate()); Dynamic Type caps on every Text.
 
 import { Feather } from '@expo/vector-icons';
-import * as Clipboard from 'expo-clipboard';
 import * as FileSystem from '../src/native/fs';
 import * as MediaLibrary from 'expo-media-library/legacy';
 import { useRouter } from 'expo-router';
@@ -51,11 +54,13 @@ import {
   type ShortcutItem,
 } from '../src/core/install';
 import {
+  CHOICE_EPOCH,
   SHORTCUT_UNDO_STEPS,
   availableMethods,
   bulkSelectable,
   effectiveChoice,
   installSummary,
+  isCurrentPick,
   recommendedMethod,
   showBulkCard,
   showMethodPicker,
@@ -204,7 +209,9 @@ export default function InstallScreen() {
   // Shortcuts / Photos
   const [photoStatus, setPhotoStatus] = useState<PhotoStatus>('idle');
   const [photoStep, setPhotoStep] = useState({ done: 0, total: 0 });
-  const [photoNote, setPhotoNote] = useState<string | null>(null);  const [shortcutsError, setShortcutsError] = useState<string | null>(null);  const [expanded, setExpanded] = useState<string | null>(null);  const [copied, setCopied] = useState<string | null>(null);  const copiedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [photoNote, setPhotoNote] = useState<string | null>(null);  const [shortcutsError, setShortcutsError] = useState<string | null>(null);  const [expanded, setExpanded] = useState<string | null>(null);
+  // T183: which app's single icon is being saved to Photos from its row (null = none / the whole set).
+  const [savingOne, setSavingOne] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoadError(null);
@@ -235,7 +242,6 @@ export default function InstallScreen() {
     return () => {
       alive.current = false;
       if (cancelToken.current) cancelToken.current.cancelled = true;
-      if (copiedTimer.current) clearTimeout(copiedTimer.current);
       profileServer.stop();
     };
   }, [load]);
@@ -257,8 +263,9 @@ export default function InstallScreen() {
     profileCount: plan.profile.length,
     profileServer: serverAvailable,
   };
-  // Owner 25 Oct: Bulk whenever it can be used; Shortcuts only as the fallback (src/core/installMethods.ts).
-  const choice: InstallChoice = effectiveChoice(install.state.choice, methodOpts, install.state.choiceExplicit === true);
+  // T183 (owner 1 Nov): Shortcuts / Open App unless Bulk was explicitly picked since the switch
+  // (choiceExplicit + choiceEpoch, src/core/installMethods.ts isCurrentPick).
+  const choice: InstallChoice = effectiveChoice(install.state.choice, methodOpts, isCurrentPick(install.state));
   const items: ShortcutItem[] = useMemo(() => shortcutItems(specs, choice), [specs, choice]);
   const profileKey = `profile:${themeName}`;
   const cards = useMemo(() => profileStepCards(Math.max(1, profiles.length), route), [profiles.length, route]);
@@ -382,7 +389,8 @@ export default function InstallScreen() {
 
   // ---- shortcuts ----
 
-  const saveToPhotos = useCallback(async () => {
+  /** Save every listed icon (no argument) or one app's icon (T183, from its row) to the album. */
+  const saveToPhotos = useCallback(async (one: IconSpec | null = null) => {
     if (busy || items.length === 0) return;
     tapLight();
     setShortcutsError(null);
@@ -393,8 +401,9 @@ export default function InstallScreen() {
       return;
     }
     setPhotoStatus('saving');
+    setSavingOne(one ? one.appId : null);
     try {
-      const list = items.map((i) => i.spec);
+      const list = one ? [one] : items.map((i) => i.spec);
       setPhotoStep({ done: 0, total: list.length });
       const token: RenderCancelToken = { cancelled: false };
       cancelToken.current = token;
@@ -424,11 +433,13 @@ export default function InstallScreen() {
           ? t('install.shortcuts.savedAlbum', { count: assets.length, album: PHOTOS_ALBUM })
           : t('install.shortcuts.savedNoAlbum', { count: assets.length, album: PHOTOS_ALBUM }),
       );
+      setSavingOne(null);
       setPhotoStatus('saved');
       haptic('success');
     } catch (e) {
       cancelToken.current = null;
       if (!alive.current) return;
+      setSavingOne(null);
       if (isRenderCancelled(e)) {
         setPhotoStatus('idle');
         return;
@@ -442,20 +453,6 @@ export default function InstallScreen() {
   const cancelRender = useCallback(() => {
     if (cancelToken.current) cancelToken.current.cancelled = true;
   }, []);
-
-  const copyUrl = useCallback(async (appId: string, url: string) => {
-    try {
-      await Clipboard.setStringAsync(url);
-      haptic('success');
-      setCopied(appId);
-      if (copiedTimer.current) clearTimeout(copiedTimer.current);
-      copiedTimer.current = setTimeout(() => {
-        if (alive.current) setCopied(null);
-      }, 1500);
-    } catch {
-      setShortcutsError(t('install.errors.copyFailed'));
-    }
-  }, [t]);
 
   const openShortcuts = useCallback(() => {
     tapLight();
@@ -540,7 +537,8 @@ export default function InstallScreen() {
   }
 
   const noScheme = plan.shortcuts.map((s) => s.label);
-  const sum = installSummary(plan, PROFILE_INSTALL_ENABLED);
+  // T183: the summary counts the profile only when Bulk is the method in use.
+  const sum = installSummary(plan, PROFILE_INSTALL_ENABLED && choice === 'bulk');
   const summary =
     sum.kind === 'none'
       ? t('install.summary.none')
@@ -556,7 +554,7 @@ export default function InstallScreen() {
 
   const pickChoice = (next: InstallChoice) => {
     if (next === choice || busy) return;
-    install.update((s) => ({ ...s, choice: next, choiceExplicit: true }));
+    install.update((s) => ({ ...s, choice: next, choiceExplicit: true, choiceEpoch: CHOICE_EPOCH }));
   };
   const recommended = recommendedMethod(methodOpts);
   // Guided Shortcuts (T126): one icon at a time, the first app not ticked off yet is "next".
@@ -587,7 +585,7 @@ export default function InstallScreen() {
     <SafeAreaView edges={['left', 'right']} style={[styles.root, { backgroundColor: c.bg }]}>
       <OffscreenIconRenderer ref={renderer.ref} backdrop={backdrop} />
       <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.scroll}>
-        {PROFILE_INSTALL_ENABLED ? (
+        {PROFILE_INSTALL_ENABLED && choice === 'bulk' ? (
           <View style={styles.side}>
             <ContextTip id="install-not-verified" />
           </View>
@@ -606,7 +604,7 @@ export default function InstallScreen() {
             <Text maxFontSizeMultiplier={fontScaleCap('title3')} accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
               {summary}
             </Text>
-            {!PROFILE_INSTALL_ENABLED ? null : noScheme.length > 0 ? (
+            {!PROFILE_INSTALL_ENABLED || choice !== 'bulk' ? null : noScheme.length > 0 ? (
               <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
                 {t('install.summary.noScheme', { count: noScheme.length, apps: noScheme.join(', ') })}
               </Text>
@@ -657,8 +655,9 @@ export default function InstallScreen() {
           ) : null}
         </View>
 
-        {/* Method: the Bulk card when Bulk can be used (owner 25 Oct: the only method), else the
-            Shortcuts-only fallback text. showMethodPicker stays for a future second method. */}
+        {/* Method (T183, owner 1 Nov): Shortcuts / Open App first and recommended; Bulk only as an
+            optional second card while the switch is on, with a plain Safari warning. Without Bulk,
+            one line of Shortcuts text instead of a picker. */}
         <SectionHeader title={t('install.method.heading')} style={[styles.sideText, styles.headerTight]} />
         {!showMethodPicker(methodOpts) && !showBulkCard(methodOpts) ? (
           <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.sideText, { color: c.ink }]}>{t('install.method.shortcutsOnly')}</Text>
@@ -676,7 +675,7 @@ export default function InstallScreen() {
                 body={
                   plan.profile.length === 0
                     ? t('install.method.bulkNone')
-                    : t('install.method.bulkBody', { count: plan.profile.length })
+                    : `${t('install.method.bulkBody', { count: plan.profile.length })} ${t('install.method.bulkWarning')}`
                 }
                 onPress={() => pickChoice('bulk')}
               />
@@ -701,6 +700,10 @@ export default function InstallScreen() {
             <SectionHeader title={t('install.method.bulk')} style={[styles.sideText, styles.headerTight]} />
             <SquircleCard style={styles.side}>
               <View style={styles.stack}>
+                {/* T183: say plainly what profile icons do before anything is made. */}
+                <Notice tone="warn" icon="alert-triangle">
+                  <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.ink }]}>{t('install.method.bulkWarning')}</Text>
+                </Notice>
                 <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
                   {route === 'safari' ? t('install.safari.intro') : t('install.bulk.intro')}
                 </Text>
@@ -902,7 +905,7 @@ export default function InstallScreen() {
                         size="small"
                         onPress={openAppSettings}
                       />
-                      <PillButton label={t('common.retry')} variant="plain" size="small" onPress={saveToPhotos} />
+                      <PillButton label={t('common.retry')} variant="plain" size="small" onPress={() => saveToPhotos()} />
                     </View>
                   </Notice>
                 ) : null}
@@ -915,7 +918,7 @@ export default function InstallScreen() {
                 {shortcutsError ? (
                   <InlineError
                     message={shortcutsError}
-                    onRetry={photoStatus === 'error' ? saveToPhotos : undefined}
+                    onRetry={photoStatus === 'error' ? () => saveToPhotos() : undefined}
                     retryLabel={t('common.retry')}
                     onDismiss={() => setShortcutsError(null)}
                   />
@@ -931,7 +934,7 @@ export default function InstallScreen() {
                   block
                   disabled={busy}
                   busy={photosBusy}
-                  onPress={saveToPhotos}
+                  onPress={() => saveToPhotos()}
                   accessibilityHint={
                     photoStatus === 'saved'
                       ? t('install.shortcuts.saveAgainHint')
@@ -983,12 +986,14 @@ export default function InstallScreen() {
                   item={item}
                   done={install.state.shortcutsDone.includes(item.spec.appId)}
                   open={expanded === item.spec.appId}
-                  copied={copied === item.spec.appId}
+                  busy={busy}
+                  savingIcon={photosBusy && savingOne === item.spec.appId}
                   onToggleOpen={() => {
                     setExpanded((cur) => (cur === item.spec.appId ? null : item.spec.appId));
                   }}
                   onToggleDone={() => toggleShortcut(item.spec.appId)}
-                  onCopy={(url) => copyUrl(item.spec.appId, url)}
+                  onSaveIcon={() => saveToPhotos(item.spec)}
+                  onOpenShortcuts={openShortcuts}
                 />
               ))}
             </InsetGroup>
@@ -1382,32 +1387,40 @@ function StepRow({
   );
 }
 
+/**
+ * One app on the guided Shortcuts checklist. T183: every app uses the "Open App" action (no URL to
+ * copy). Open, the row shows the numbered steps plus the two things they need: this app's icon in
+ * Photos (saved on its own, for the "Choose Photo" step) and a button to the Shortcuts app.
+ */
 function ShortcutRow({
   item,
   done,
   open,
-  copied,
+  busy,
+  savingIcon,
   onToggleOpen,
   onToggleDone,
-  onCopy,
+  onSaveIcon,
+  onOpenShortcuts,
 }: {
   item: ShortcutItem;
   done: boolean;
   open: boolean;
-  copied: boolean;
+  busy: boolean;
+  savingIcon: boolean;
   onToggleOpen: () => void;
   onToggleDone: () => void;
-  onCopy: (url: string) => void;
+  onSaveIcon: () => void;
+  onOpenShortcuts: () => void;
 }) {
   const { c } = useColorsV2();
   const { t, script, formatNumber } = useT();
-  const { spec, url } = item;
+  const { spec } = item;
   const name = spec.label.trim() || t('install.steps.appFallback');
   const steps = [
     t('install.steps.openShortcuts'),
-    ...(url
-      ? [t('install.steps.addOpenUrl'), t('install.steps.pasteUrl', { url })]
-      : [t('install.steps.addOpenApp'), t('install.steps.chooseApp', { name })]),
+    t('install.steps.addOpenApp'),
+    t('install.steps.chooseApp', { name }),
     t('install.steps.rename', { name }),
     t('install.steps.addToHome'),
     t('install.steps.choosePhoto'),
@@ -1426,8 +1439,8 @@ function ShortcutRow({
           >
             {spec.label}
           </Text>
-          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]} numberOfLines={url ? 2 : undefined}>
-            {item.reason === 'no-scheme' ? t('install.shortcuts.noLink') : url ?? ''}
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>
+            {item.reason === 'no-scheme' ? t('install.shortcuts.noLink') : t('install.shortcuts.viaOpenApp')}
           </Text>
         </View>
         <PressableScale
@@ -1442,22 +1455,6 @@ function ShortcutRow({
           <Feather name={open ? 'chevron-up' : 'chevron-down'} size={22} color={c.tint} />
         </PressableScale>
       </View>
-      {url ? (
-        <View style={[styles.urlRow, continuous, { backgroundColor: c.fill }]}>
-          <Text selectable maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), styles.flex, { color: c.ink }]} numberOfLines={1}>
-            {url}
-          </Text>
-          <PillButton
-            label={copied ? t('install.shortcuts.copied') : t('install.shortcuts.copy')}
-            icon={copied ? 'check' : 'copy'}
-            variant={copied ? 'plain' : 'tinted'}
-            size="small"
-            haptic={false}
-            onPress={() => onCopy(url)}
-            accessibilityLabel={copied ? t('install.shortcuts.linkCopied', { app: spec.label }) : t('install.shortcuts.copyLink', { app: spec.label, url })}
-          />
-        </View>
-      ) : null}
       {open ? (
         <View style={styles.steps}>
           {steps.map((s, i) => (
@@ -1466,6 +1463,19 @@ function ShortcutRow({
               <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), styles.flex, { color: c.ink }]}>{s}</Text>
             </View>
           ))}
+          <View style={styles.btnRow}>
+            <PillButton
+              label={t('install.shortcuts.saveOne', { app: spec.label })}
+              icon="image"
+              variant="tinted"
+              size="small"
+              disabled={busy}
+              busy={savingIcon}
+              onPress={onSaveIcon}
+              accessibilityHint={t('install.shortcuts.saveHint', { album: PHOTOS_ALBUM })}
+            />
+            <PillButton label={t('install.shortcuts.open')} icon="external-link" variant="plain" size="small" onPress={onOpenShortcuts} />
+          </View>
         </View>
       ) : null}
     </View>
@@ -1528,16 +1538,6 @@ const styles = StyleSheet.create({
   },
   sRow: { paddingVertical: spaceV2.sm, paddingStart: spaceV2.xs, paddingEnd: spaceV2.sm, gap: spaceV2.sm },
   sHead: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
-  urlRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spaceV2.sm,
-    marginStart: sizeV2.touch + spaceV2.sm,
-    borderRadius: radiusV2.control,
-    paddingStart: spaceV2.md,
-    paddingVertical: spaceV2.xxs,
-    paddingEnd: spaceV2.xxs,
-  },
   steps: { marginStart: sizeV2.touch + spaceV2.sm, gap: spaceV2.xs, paddingBottom: spaceV2.sm },
   stepLine: { flexDirection: 'row', gap: spaceV2.sm },
   stepNum: { minWidth: 20, fontWeight: '700' },

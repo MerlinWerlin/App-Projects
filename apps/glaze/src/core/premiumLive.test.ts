@@ -1,5 +1,5 @@
 // T176 premium UI, Live slice (docs/PREMIUM_UI.md §3.10): source guards for the Live tab
-// (app/(tabs)/live.tsx) and the loop editor (app/live/[id].tsx). Editorial section headers, the
+// (app/live/index.tsx since T186; was app/(tabs)/live.tsx) and the loop editor (app/live/[id].tsx). Editorial section headers, the
 // 16-pt rhythm, lifted loop cards without hairlines, skeletons in the result's shape instead of
 // spinners, Dynamic Type caps on every Text / TextInput, tokens only, strings in every locale. The
 // Live Photo export flow and the honest copy stay as they were: no "always looping" promise on
@@ -17,7 +17,7 @@ const strip = (src: string) => src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(
 // Same patterns as designGuard.test.ts (raw hex / rgba, numeric fontSize, numeric radius).
 const RAW = /(?<![\w&])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})(?!\w)|\brgba?\(|\bfontSize\s*[:=]\s*[{'"]?\s*\d|\bborder(?:Top|Bottom)?(?:Left|Right|Start|End)?Radius\s*[:=]\s*\{?\s*\d/;
 
-const TAB = ['app', '(tabs)', 'live.tsx'];
+const TAB = ['app', 'live', 'index.tsx'];
 const EDITOR = ['app', 'live', '[id].tsx'];
 
 type Msgs = { tab?: Record<string, unknown>; editor?: Record<string, unknown> };

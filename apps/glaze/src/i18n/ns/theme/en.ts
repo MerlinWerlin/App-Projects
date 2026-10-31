@@ -112,6 +112,27 @@ export const en = {
     skip: 'Skip',
     finish: 'Finish',
   },
+  // T184 / T185 (owner-1101): "Use this theme" and the three entry points on the theme page.
+  use: {
+    cta: 'Use this theme',
+    inUse: 'In use ✓',
+    hint: 'Uses this theme for your icons, widgets and wallpaper in every tab',
+    inUseHint: 'Already your theme in every tab. Tap to apply it again',
+    note: 'Sets your icons, widgets and wallpaper in every tab to this theme.',
+    inUseNote: 'Your icons, widgets and wallpaper follow this theme.',
+    doneA11y: '{name} is now your theme in every tab',
+    error: 'Couldn’t switch to this theme. Please try again.',
+  },
+  parts: {
+    eyebrow: 'Set it up',
+    title: 'Wallpaper, icons and widgets',
+    wallpaper: 'Wallpaper',
+    wallpaperSub: 'Save it to Photos',
+    icons: 'Icons',
+    iconsSub: 'Pick the style, then install',
+    widgets: 'Widgets',
+    widgetsSub: 'Matching widgets in Widget Studio',
+  },
   save: {
     body: 'Save the {name} wallpaper to Photos at your iPhone’s size ({width} × {height}).',
     bodyPhoto: 'Save your photo, framed for {name}, to Photos at your iPhone’s size ({width} × {height}).',
@@ -133,6 +154,8 @@ export const en = {
     saving: 'Saving…',
     again: 'Save again',
     cta: 'Save wallpaper to Photos',
+    // T185: the Wallpaper screen's badge once saved (Save again always stays).
+    savedBadge: 'Saved to Photos ✓',
   },
   style: {
     body: 'Load this icon style into Icon Studio, then pick the apps you want themed.',

@@ -15,6 +15,15 @@ export const SHORTCUTS_URL = 'shortcuts://';
 
 export type InstallChoice = 'bulk' | 'shortcuts';
 
+/**
+ * T183 (owner 1 Nov): the default and recommended method. A Home Screen shortcut that runs the
+ * Shortcuts "Open App" action opens the app directly: no Safari, no "Open in <app>?" prompt. Web
+ * clips from the Bulk profile only hold a URL, so iOS hops through Safari and asks every time.
+ */
+export const DEFAULT_INSTALL_METHOD: InstallChoice = 'shortcuts';
+/** The Shortcuts action every guided shortcut uses (the app is picked from the list, no URL). */
+export const SHORTCUT_ACTION = 'Open App';
+
 export type ShortcutReason = 'no-scheme' | 'chosen';
 
 export type InstallPlan = {
@@ -55,15 +64,16 @@ export function withoutMissingImages(
 export type ShortcutItem ={ spec: IconSpec; url: string | null; reason: ShortcutReason };
 
 /**
- * Apps listed on the Shortcuts path for a choice. With 'bulk' only apps without a scheme;
- * with 'shortcuts' every app (those without a scheme still say why).
+ * Apps listed on the Shortcuts path for a choice. With 'bulk' only apps without a scheme (the
+ * profile can't carry them); with 'shortcuts' (the default) every app. `url` is informational
+ * only: every shortcut uses Open App (T183).
  */
 export function shortcutItems(specs: readonly IconSpec[], choice: InstallChoice): ShortcutItem[] {
   const out: ShortcutItem[] = [];
   for (const spec of specs) {
     const url = shortcutUrl(spec);
-    if (url === null) out.push({ spec, url, reason: 'no-scheme' });
-    else if (choice === 'shortcuts') out.push({ spec, url, reason: 'chosen' });
+    if (choice === 'shortcuts') out.push({ spec, url, reason: 'chosen' });
+    else if (url === null) out.push({ spec, url, reason: 'no-scheme' });
   }
   return out;
 }
@@ -77,7 +87,7 @@ export function shortcutUrl(spec: { urlScheme: string | null }): string | null {
 export function reasonText(reason: ShortcutReason): string {
   return reason === 'no-scheme'
     ? 'No known link opens this app, so it uses Shortcuts'
-    : 'You chose Shortcuts';
+    : 'Opens straight from the Home Screen with Open App';
 }
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
@@ -218,18 +228,17 @@ export function joinPath(dir: string, name: string): string {
 
 // ---- Shortcuts steps ----
 
-/** Exact steps to build one Home Screen shortcut with our icon. */
-export function shortcutSteps(label: string, url: string | null): string[] {
+/**
+ * Exact steps to build one Home Screen shortcut with our icon. T183 (owner 1 Nov): always the
+ * "Open App" action with the app chosen from the list, never "Open URL": a URL shortcut can hop
+ * through Safari, Open App launches the app directly. `_url` is ignored (kept for old callers).
+ */
+export function shortcutSteps(label: string, _url?: string | null): string[] {
   const name = label.trim() || 'App';
-  const open = url
-    ? [
-        'Tap Add Action, search for "Open URL" and tap it.',
-        `Tap "URL" and paste ${url} (use Copy above).`,
-      ]
-    : ['Tap Add Action, search for "Open App" and tap it.', `Tap "App" and choose ${name} from the list.`];
   return [
     'Open the Shortcuts app and tap + (top right).',
-    ...open,
+    `Tap Add Action, search for "${SHORTCUT_ACTION}" and tap it.`,
+    `Tap "App" and choose ${name} from the list.`,
     `Tap the name at the top, choose Rename and type ${name}.`,
     'Tap the Share button (or ⋯ / the name menu) and choose Add to Home Screen.',
     'Tap the small icon next to the name, then Choose Photo.',
@@ -345,10 +354,15 @@ export type InstallState = {
   choice: InstallChoice;
   /** T126: present (true) once the person tapped a method card; absent while `choice` is the default. */
   choiceExplicit?: true;
+  /**
+   * T183: the method-choice generation the explicit pick was made in. Picks from before the
+   * 1 Nov switch (absent or older) are ignored, so everyone starts on Shortcuts / Open App.
+   */
+  choiceEpoch?: number;
 };
 
 export function defaultInstallState(): InstallState {
-  return { profileSteps: {}, shortcutsDone: [], choice: 'bulk' };
+  return { profileSteps: {}, shortcutsDone: [], choice: DEFAULT_INSTALL_METHOD };
 }
 
 const MAX_IDS = 400;
@@ -382,6 +396,9 @@ export function sanitizeInstallState(raw: unknown): InstallState {
   s.shortcutsDone = stringList(r.shortcutsDone);
   if (r.choice === 'bulk' || r.choice === 'shortcuts') s.choice = r.choice;
   if (r.choiceExplicit === true) s.choiceExplicit = true;
+  if (typeof r.choiceEpoch === 'number' && Number.isInteger(r.choiceEpoch) && r.choiceEpoch > 0 && r.choiceEpoch < 1000) {
+    s.choiceEpoch = r.choiceEpoch;
+  }
   return s;
 }
 

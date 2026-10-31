@@ -3,6 +3,7 @@
 // (native-plugins/widgets.json adds the entitlement to the app; targets/widget/expo-target.config.js
 // adds it to the extension). Keep the ids below in sync with src/core/widgetTheme.ts and
 // targets/widget/ThemeStore.swift.
+import CoreImage
 import ExpoModulesCore
 import Foundation
 import UIKit
@@ -147,6 +148,72 @@ public class GlazeWidgetBridgeModule: Module {
       return true
     }
 
+    /// T187 theme widget art (owner-1101 #5: art is fitted, never cropped). Draws a w x h px image:
+    /// the theme colour, then (background "blur") a blurred aspect-fill copy of the art under a light
+    /// veil of the colour, then the art itself FITTED (whole, centred, 6 % inset like heroRect), or
+    /// edge to edge only for fit "fill" (JS sends it only when the aspects already match). Caps the
+    /// long edge at 1200 px, writes seamless-<family>.png and reloads "GlazeSeamless".
+    AsyncFunction("setWidgetArt") { (artUri: String, w: Double, h: Double, background: String, colour: String, fit: String, family: String) -> Bool in
+      guard ["small", "medium", "large"].contains(family), w >= 1, h >= 1 else { return false }
+      guard
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
+        let art = GlazeWidgetBridgeModule.loadImage(artUri),
+        art.size.width > 0, art.size.height > 0
+      else { return false }
+      let longest = max(w, h)
+      let k: CGFloat = longest > 1200 ? 1200 / CGFloat(longest) : 1
+      let target = CGSize(width: max(1, floor(CGFloat(w) * k)), height: max(1, floor(CGFloat(h) * k)))
+      let base = GlazeWidgetBridgeModule.colour(colour)
+
+      var blurred: UIImage? = nil
+      if background == "blur", let cg = GlazeWidgetBridgeModule.uprightCGImage(art) {
+        let input = CIImage(cgImage: cg)
+        let filter = CIFilter(name: "CIGaussianBlur")
+        filter?.setValue(input.clampedToExtent(), forKey: kCIInputImageKey)
+        filter?.setValue(max(12, min(input.extent.width, input.extent.height) * 0.06), forKey: kCIInputRadiusKey)
+        if let out = filter?.outputImage?.cropped(to: input.extent), let made = CIContext().createCGImage(out, from: input.extent) {
+          blurred = UIImage(cgImage: made)
+        }
+      }
+
+      let format = UIGraphicsImageRendererFormat.default()
+      format.scale = 1
+      format.opaque = true
+      let composed = UIGraphicsImageRenderer(size: target, format: format).image { ctx in
+        base.setFill()
+        ctx.fill(CGRect(origin: .zero, size: target))
+        if let blurred = blurred {
+          // Background only: aspect-fill the blurred copy so no edge shows, then veil it a little.
+          let s = max(target.width / blurred.size.width, target.height / blurred.size.height)
+          let bw = blurred.size.width * s
+          let bh = blurred.size.height * s
+          blurred.draw(in: CGRect(x: (target.width - bw) / 2, y: (target.height - bh) / 2, width: bw, height: bh))
+          base.withAlphaComponent(0.25).setFill()
+          ctx.fill(CGRect(origin: .zero, size: target))
+        }
+        if fit == "fill" {
+          art.draw(in: CGRect(origin: .zero, size: target))
+        } else {
+          let pad = min(target.width, target.height) * 0.06
+          let box = CGRect(origin: .zero, size: target).insetBy(dx: pad, dy: pad)
+          let s = min(box.width / art.size.width, box.height / art.size.height)
+          let aw = art.size.width * s
+          let ah = art.size.height * s
+          art.draw(in: CGRect(x: (target.width - aw) / 2, y: (target.height - ah) / 2, width: aw, height: ah))
+        }
+      }
+      guard let data = composed.pngData() else { return false }
+      do {
+        try data.write(to: container.appendingPathComponent("seamless-\(family).png"), options: .atomic)
+      } catch {
+        return false
+      }
+      if #available(iOS 14.0, *) {
+        WidgetCenter.shared.reloadTimelines(ofKind: "GlazeSeamless")
+      }
+      return true
+    }
+
     /// T146 widget link check (fb-1025 A). Read-only: never writes or reloads anything.
     /// - containerOk: the app can open the App Group container (entitlement present on the app).
     /// - themeStored: the App Group UserDefaults holds glaze.theme.v1.
@@ -180,6 +247,13 @@ public class GlazeWidgetBridgeModule: Module {
     if #available(iOS 14.0, *) {
       WidgetCenter.shared.reloadAllTimelines()
     }
+  }
+
+  /// T187: #RRGGBB to a colour (anything else is a neutral dark grey).
+  private static func colour(_ hex: String) -> UIColor {
+    let digits = hex.hasPrefix("#") ? String(hex.dropFirst()) : hex
+    guard digits.count == 6, let v = UInt32(digits, radix: 16) else { return UIColor(white: 0.12, alpha: 1) }
+    return UIColor(red: CGFloat((v >> 16) & 0xFF) / 255, green: CGFloat((v >> 8) & 0xFF) / 255, blue: CGFloat(v & 0xFF) / 255, alpha: 1)
   }
 
   /// T131: a local image from a file:// URI or a plain path.

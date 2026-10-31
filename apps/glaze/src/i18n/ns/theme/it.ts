@@ -112,6 +112,27 @@ export const it: NonNullable<LocaleMessages['theme']> = {
     skip: 'Salta',
     finish: 'Fine',
   },
+  // T184 / T185 (owner-1101): "Use this theme" and the three entry points on the theme page.
+  use: {
+    cta: 'Usa questo tema',
+    inUse: 'In uso ✓',
+    hint: 'Usa questo tema per icone, widget e sfondo in ogni scheda',
+    inUseHint: 'È già il tuo tema in ogni scheda. Tocca per applicarlo di nuovo',
+    note: 'Imposta icone, widget e sfondo di ogni scheda su questo tema.',
+    inUseNote: 'Icone, widget e sfondo seguono questo tema.',
+    doneA11y: '{name} è ora il tuo tema in ogni scheda',
+    error: 'Impossibile passare a questo tema. Riprova.',
+  },
+  parts: {
+    eyebrow: 'Configura',
+    title: 'Sfondo, icone e widget',
+    wallpaper: 'Sfondo',
+    wallpaperSub: 'Salvalo in Foto',
+    icons: 'Icone',
+    iconsSub: 'Scegli lo stile, poi installa',
+    widgets: 'Widget',
+    widgetsSub: 'Widget abbinati in Widget Studio',
+  },
   save: {
     body: 'Salva lo sfondo {name} in Foto alla misura del tuo iPhone ({width} × {height}).',
     bodyPhoto: 'Salva la tua foto, inquadrata per {name}, in Foto alla misura del tuo iPhone ({width} × {height}).',
@@ -133,6 +154,8 @@ export const it: NonNullable<LocaleMessages['theme']> = {
     saving: 'Salvataggio…',
     again: 'Salva di nuovo',
     cta: 'Salva sfondo in Foto',
+    // T185: the Wallpaper screen's badge once saved (Save again always stays).
+    savedBadge: 'Salvato in Foto ✓',
   },
   style: {
     body: 'Carica questo stile nello Studio icone, poi scegli le app da personalizzare.',

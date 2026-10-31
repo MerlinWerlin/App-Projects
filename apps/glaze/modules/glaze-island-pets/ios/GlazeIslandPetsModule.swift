@@ -15,6 +15,15 @@ public class GlazeIslandPetsModule: Module {
       if #available(iOS 16.2, *) { return try await GlazePetSession.mood(id, mood) }
       return ["enabled": false, "active": false]
     }
+    // T188: life updates (JSON from src/core/petLife.ts activityStateFor), sent only at boundaries.
+    AsyncFunction("startLife") { (pet: String, state: String) async throws -> [String: Any] in
+      if #available(iOS 16.2, *) { return try await GlazePetSession.startLife(pet, state) }
+      return ["enabled": false, "active": false]
+    }
+    AsyncFunction("life") { (id: String, state: String) async throws -> [String: Any] in
+      if #available(iOS 16.2, *) { return try await GlazePetSession.life(id, state) }
+      return ["enabled": false, "active": false]
+    }
     AsyncFunction("stop") { () async throws -> [String: Any] in
       if #available(iOS 16.2, *) { return try await GlazePetSession.stop() }
       return ["enabled": false, "active": false]
