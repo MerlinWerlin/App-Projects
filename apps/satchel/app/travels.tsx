@@ -13,6 +13,7 @@ import { Body, Button, Card, EmptyState, ToggleRow } from '../src/ui/kit.tsx';
 import { displayCountryName, formatInt, useTravelStats } from '../src/ui/useTravelStats.ts';
 import { RecapList } from '../src/ui/RecapList.tsx';
 import { WorldTiles } from '../src/ui/WorldTiles.tsx';
+import { PassportCard } from '../src/ui/PassportCard.tsx';
 
 export default function TravelsScreen() {
   const { t, theme, lang } = useApp();
@@ -112,6 +113,9 @@ export default function TravelsScreen() {
               </SectionCard>
             </FadeInView>
           ) : null}
+          <FadeInView delay={140}>
+            <PassportCard />
+          </FadeInView>
           <FadeInView delay={280}>
             <RecapList includeDemo={includeDemo} />
           </FadeInView>

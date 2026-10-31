@@ -30,6 +30,8 @@ import { useHomeCountry } from './HomeCountryPicker.tsx';
 import { PressableScale } from './kit.tsx';
 import { PHRASE_TABLE } from './phrases.ts';
 import { useMinute } from './TripPass.tsx';
+import { holidayTodayIn } from '../core/holidays.ts';
+import { holidayTodayLine } from './HolidaysCard.tsx';
 
 const TABLES: ArrivalTables = { essentials: essentialsTable as EssentialsTable, emergency: emergencyTable as unknown as EmergencyTable, phrases: PHRASE_TABLE };
 const NO_DISMISSED: unknown = [];
@@ -118,6 +120,9 @@ function ArrivalHero({ view: v, onDismiss }: { view: ArrivalView; onDismiss: () 
   const router = useRouter();
   const when = v.when === 'here' ? t('arrival.whenHere') : t('arrival.whenToday');
   const services = (l: NumberLine) => lineLabelServices(l).map((s) => t(SERVICE[s])).join(', ');
+  // T106: today is a public holiday in this country (today on its own calendar).
+  const now = useMinute();
+  const holiday = useMemo(() => holidayTodayLine(t, holidayTodayIn(v.zone, now)), [t, v.zone, now]);
 
   const clock = v.clock;
   const off = clock ? formatOffset(clock.diffMinutes) : '';
@@ -149,6 +154,15 @@ function ArrivalHero({ view: v, onDismiss }: { view: ArrivalView; onDismiss: () 
               <Text style={[typeScale.small, { color: theme.heroMuted }]}>{t('arrival.subtitle')}</Text>
             </View>
           </View>
+
+          {holiday ? (
+            <View accessible accessibilityLabel={`${holiday} ${t('holidays.todayHint')}`}>
+              <Panel title={t('holidays.badge')} icon="flag-outline">
+                <Line strong>{holiday}</Line>
+                <Line muted>{t('holidays.todayHint')}</Line>
+              </Panel>
+            </View>
+          ) : null}
 
           {clock ? (
             <View accessible accessibilityLabel={t('arrival.timeA11y', { time: clock.time, homeTime: clock.homeTime, diff })}>
@@ -182,6 +196,10 @@ function ArrivalHero({ view: v, onDismiss }: { view: ArrivalView; onDismiss: () 
             )}
             <View style={{ flexDirection: 'row' }}>
               <HeroButton label={t('arrival.openConverter')} hint={t('arrival.openConverterHint')} icon="calculator-outline" onPress={() => router.push({ pathname: '/convert', params: { tripId: v.tripId } })} />
+            </View>
+            {/* T105: what's usual for tipping here, with a tip calculator. */}
+            <View style={{ flexDirection: 'row' }}>
+              <HeroButton label={t('tipping.fromArrival')} hint={t('tipping.fromArrivalHint', { country: v.country })} icon="happy-outline" onPress={() => router.push({ pathname: '/tipping', params: { tripId: v.tripId, country: v.iso2 } })} />
             </View>
           </Panel>
 

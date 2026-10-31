@@ -26,6 +26,7 @@ import { FadeInView, HeroHeader, IconBadge } from '../../src/ui/hero.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
 import { NearestHelpCard } from '../../src/ui/NearestHelpCard.tsx';
 import { SafeCheckCard } from '../../src/ui/SafeCheckCard.tsx';
+import { MedTimesCard } from '../../src/ui/MedTimesCard.tsx';
 import { TroubleCard } from '../../src/ui/TroubleCard.tsx';
 
 const TABLE = table as EmergencyTable;
@@ -161,6 +162,9 @@ export default function EmergencyScreen() {
       />
 
       <SafeCheckCard />
+
+      {/* T101: Medicine times (app/meds.tsx). */}
+      <MedTimesCard />
 
       <NearestHelpCard />
 

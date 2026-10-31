@@ -4,6 +4,8 @@
 // shows numbered stops and the route line over a downloaded city map where there is one; each stop has its
 // approximate walk, a "leave by" before timed bookings, Move up / Move down for untimed stops, and Apple Maps
 // walking directions per leg. ?day=YYYY-MM-DD picks the day (default: today on the trip, else its first day).
+// T100: a "Back to hotel at the end" switch (remembered for the day) adds a last walk to tonight's hotel, and a
+// warning line before a timed booking when the walk and the stops since the previous booking can't fit the time.
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -21,7 +23,11 @@ import {
   planPoints,
   removePlaceFromDay,
   resetDayOrder,
+  setBackToHotel,
+  setStopStay,
+  stepStay,
   type DayPlan,
+  type GapFit,
   type PlanLeg,
   type PlanStop,
 } from '../../src/core/dayplan.ts';
@@ -43,7 +49,7 @@ import { fonts, radius, space, TOUCH, typeScale } from '../../src/theme/tokens.t
 import { FadeInView, HeroHeader, SectionCard } from '../../src/ui/hero.tsx';
 import { categoryKey, IDEA_ICONS } from '../../src/ui/ideas.tsx';
 import { KIND_ICON, kindKey } from '../../src/ui/kinds.tsx';
-import { Body, Button, Card, Chip, EmptyState, Label, PressableScale } from '../../src/ui/kit.tsx';
+import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, ToggleRow } from '../../src/ui/kit.tsx';
 import { PermissionNotice } from '../../src/ui/PermissionNotice.tsx';
 
 const MAP_HEIGHT = 260;
@@ -295,8 +301,21 @@ function DayPlanView({ trip, day }: { trip: Trip; day: string }) {
                   onDirections={directions}
                   onMove={(dir) => save(moveStop(trip, plan, s.key, dir), t(dir < 0 ? 'dayplan.movedUp' : 'dayplan.movedDown', { name: s.name }))}
                   onRemove={s.kind === 'place' && s.placeId ? () => save(removePlaceFromDay(trip, day, s.placeId!), t('dayplan.removed', { name: s.name })) : undefined}
+                  onStay={(min) => save(setStopStay(trip, day, s.key, min), t('f95.stay.announce', { name: s.name, len: stayText(t, min) }))}
                 />
               ))}
+              <BackToHotel
+                plan={plan}
+                distance={distance}
+                walkTime={walkTime}
+                onToggle={(on) => save(setBackToHotel(trip, day, on), t(on ? 'f94.back.onAnnounce' : 'f94.back.offAnnounce'))}
+                onDirections={directions}
+              />
+              {plan.noFit ? (
+                <Text accessibilityLiveRegion="polite" style={[typeScale.small, { color: theme.warn }]}>
+                  {plan.noFit === 1 ? t('f94.fit.summaryOne') : t('f94.fit.summaryMany', { n: plan.noFit })}
+                </Text>
+              ) : null}
               {linkFailed ? (
                 <Text accessibilityLiveRegion="polite" style={[typeScale.small, { color: theme.danger }]}>
                   {t('dayplan.directionsFailed')}
@@ -380,6 +399,7 @@ function StopBlock({
   onDirections,
   onMove,
   onRemove,
+  onStay,
 }: {
   stop: PlanStop;
   plan: DayPlan;
@@ -391,6 +411,8 @@ function StopBlock({
   onDirections: (leg: PlanLeg) => void;
   onMove: (dir: -1 | 1) => void;
   onRemove?: () => void;
+  /** T104: sets this untimed stop's length (minutes). */
+  onStay: (min: number) => void;
 }) {
   const { t, theme } = useApp();
   const leg = s.leg;
@@ -442,6 +464,7 @@ function StopBlock({
           </View>
         </View>
       ) : null}
+      {s.fit && !s.fit.ok ? <FitWarning fit={s.fit} walkTime={walkTime} /> : null}
       {s.leave ? (
         <View accessible style={{ flexDirection: 'row', gap: space.s, alignItems: 'flex-start', padding: space.s, borderRadius: radius.m, backgroundColor: s.leave.tight ? theme.warnSoft : theme.tealSoft }}>
           <Ionicons name="time-outline" size={18} color={s.leave.tight ? theme.warn : theme.teal} />
@@ -471,6 +494,7 @@ function StopBlock({
           <Text style={[typeScale.small, { color: theme.muted }]}>{booking && s.title && s.title !== s.name ? `${line} · ${s.name}` : line}</Text>
         </View>
       </PressableScale>
+      {!booking && s.stayMin !== undefined ? <StayRow name={s.name} min={s.stayMin} onChange={onStay} /> : null}
       {can.up || can.down || onRemove ? (
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s, paddingLeft: 32 + space.m }}>
           {can.up || can.down ? (
@@ -497,6 +521,46 @@ function StopBlock({
   );
 }
 
+/** T104: "about 1 h 30 min" for a stop length. */
+function stayText(t: ReturnType<typeof useApp>['t'], min: number): string {
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+  return !h ? t('f95.stay.min', { m }) : m ? t('f95.stay.hoursMin', { h, m }) : t('f95.stay.hours', { h });
+}
+
+/** T104: "Stay about 30 min" with - / + buttons (15 min steps), counted in the "does it fit" check. */
+function StayRow({ name, min, onChange }: { name: string; min: number; onChange: (min: number) => void }) {
+  const { t, theme } = useApp();
+  const len = stayText(t, min);
+  const step = (dir: -1 | 1) => {
+    const next = stepStay(min, dir);
+    const enabled = next !== null;
+    return (
+      <PressableScale
+        accessibilityRole="button"
+        accessibilityLabel={t(dir < 0 ? 'f95.stay.lessA11y' : 'f95.stay.moreA11y', { name })}
+        accessibilityHint={t('f95.stay.hint', { len })}
+        accessibilityState={{ disabled: !enabled }}
+        disabled={!enabled}
+        onPress={() => next !== null && onChange(next)}
+        style={{ width: TOUCH, minHeight: TOUCH, alignItems: 'center', justifyContent: 'center', borderRadius: radius.pill, backgroundColor: enabled ? theme.seaSoft : theme.cardRaised, opacity: enabled ? 1 : 0.5 }}
+      >
+        <Ionicons name={dir < 0 ? 'remove' : 'add'} size={20} color={enabled ? theme.sea : theme.muted} />
+      </PressableScale>
+    );
+  };
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, paddingLeft: 32 + space.m }}>
+      <Ionicons name="hourglass-outline" size={16} color={theme.muted} />
+      <Text accessibilityLabel={t('f95.stay.a11y', { name, len })} style={[typeScale.small, { flex: 1, color: theme.muted }]}>
+        {t('f95.stay.label', { len })}
+      </Text>
+      {step(-1)}
+      {step(1)}
+    </View>
+  );
+}
+
 function MoveButton({ dir, enabled, name, onPress }: { dir: -1 | 1; enabled: boolean; name: string; onPress: () => void }) {
   const { t, theme } = useApp();
   return (
@@ -512,5 +576,82 @@ function MoveButton({ dir, enabled, name, onPress }: { dir: -1 | 1; enabled: boo
       <Ionicons name={dir < 0 ? 'arrow-up' : 'arrow-down'} size={16} color={enabled ? theme.sea : theme.muted} />
       <Text style={[typeScale.bodyStrong, { fontSize: 14, color: enabled ? theme.sea : theme.muted }]}>{t(dir < 0 ? 'dayplan.up' : 'dayplan.down')}</Text>
     </PressableScale>
+  );
+}
+
+/** T100: "May not fit" before a timed booking whose walk and stops since the previous booking need more time. */
+function FitWarning({ fit, walkTime }: { fit: GapFit; walkTime: (min: number) => string }) {
+  const { t, theme } = useApp();
+  // T104: stops can have their own lengths, so several stops are given as their total.
+  const stops = fit.stops === 0 ? t('f94.fit.stopsNone') : fit.stops === 1 ? t('f94.fit.stopsOne', { min: fit.visitMin }) : t('f95.fit.stopsTotal', { n: fit.stops, len: stayText(t, fit.visitMin) });
+  const free = walkTime(Math.max(0, fit.freeMin));
+  const need = walkTime(fit.needMin);
+  return (
+    <View
+      accessible
+      accessibilityLabel={t('f94.fit.warnA11y', { need, free, after: fit.after })}
+      style={{ flexDirection: 'row', gap: space.s, alignItems: 'flex-start', padding: space.s, borderRadius: radius.m, backgroundColor: theme.warnSoft }}
+    >
+      <Ionicons name="alert-circle-outline" size={18} color={theme.warn} />
+      <View style={{ flex: 1, gap: 2 }}>
+        <Text style={[typeScale.bodyStrong, { color: theme.warn }]}>{t('f94.fit.warn', { need, walk: walkTime(fit.walkMin), stops, free, after: fit.after })}</Text>
+        {fit.far ? <Text style={[typeScale.small, { color: theme.muted }]}>{t('f94.fit.far')}</Text> : null}
+      </View>
+    </View>
+  );
+}
+
+/** T100: the "Back to hotel at the end" switch and, while on, the last walk to tonight's hotel. */
+function BackToHotel({
+  plan,
+  distance,
+  walkTime,
+  onToggle,
+  onDirections,
+}: {
+  plan: DayPlan;
+  distance: (m: number) => string;
+  walkTime: (min: number) => string;
+  onToggle: (on: boolean) => void;
+  onDirections: (leg: PlanLeg) => void;
+}) {
+  const { t, theme } = useApp();
+  if (!plan.night) {
+    return plan.backToHotel ? <Text style={[typeScale.small, { color: theme.muted }]}>{t('f94.back.noHotel')}</Text> : null;
+  }
+  const name = plan.night.name;
+  const leg = plan.back;
+  return (
+    <View style={{ gap: space.xs }}>
+      <ToggleRow label={t('f94.back.toggle')} hint={t('f94.back.hint')} value={plan.backToHotel} onChange={onToggle} />
+      {leg ? (
+        <View style={{ marginLeft: 15, paddingLeft: space.l + 1, borderLeftWidth: 2, borderLeftColor: theme.line, borderStyle: 'dashed', gap: space.xs }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
+            <View
+              style={{ flex: 1 }}
+              accessible
+              accessibilityLabel={leg.same || leg.long ? undefined : t('f94.back.legA11y', { name, distance: distance(leg.walkM), time: walkTime(leg.minutes) })}
+            >
+              <Text style={[typeScale.bodyStrong, { color: theme.ink }]}>{t('f94.back.title', { name })}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted, fontVariant: ['tabular-nums'] }}>
+                {leg.same ? t('f94.back.legSame') : leg.long ? t('f94.back.legLong', { distance: distance(leg.straightM) }) : t('f94.back.leg', { distance: distance(leg.walkM), time: walkTime(leg.minutes) })}
+              </Text>
+            </View>
+            {leg.same ? null : (
+              <PressableScale
+                accessibilityRole="button"
+                accessibilityLabel={t('f94.back.directionsA11y', { name })}
+                accessibilityHint={t('dayplan.directionsHint')}
+                onPress={() => onDirections(leg)}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs, paddingHorizontal: space.l, borderRadius: radius.pill, backgroundColor: theme.seaSoft }}
+              >
+                <Ionicons name="walk-outline" size={16} color={theme.sea} />
+                <Text style={{ fontFamily: fonts.bodyBold, fontSize: 14, color: theme.sea }}>{t('dayplan.directions')}</Text>
+              </PressableScale>
+            )}
+          </View>
+        </View>
+      ) : null}
+    </View>
   );
 }

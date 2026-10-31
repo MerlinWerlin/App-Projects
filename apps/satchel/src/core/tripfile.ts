@@ -35,6 +35,8 @@ import { readCover } from './covers.ts';
 import { readAirport } from './leaveby.ts';
 import { checkFileSpending } from './spending.ts';
 import { cleanFileTogether } from './together.ts';
+import { cleanFileCash, importCash } from './cash.ts';
+import { importGifts, readFileGifts } from './gifts.ts';
 import { isLocalDateTime } from './tz.ts';
 
 export const TRIP_FILE_FORMAT = 'satchel-trip';
@@ -261,7 +263,8 @@ export function parseTripFile(data: unknown): ParseResult {
     packing = cleanBagData(p as unknown as Omit<PackList, 'tripId'>);
   }
   // T82: companions, payers, splits and settlements are optional; unreadable ones are dropped, never the trip.
-  const { items: _i, places: _p, demo, journal: rawJournal, ideas: rawIdeas, cover: rawCover, todos: rawTodos, dayPlans: rawDayPlans, ...tripFields } = cleanFileTogether(t);
+  // T102: so are cash rows (cleanFileCash).
+  const { items: _i, places: _p, demo, journal: rawJournal, ideas: rawIdeas, cover: rawCover, todos: rawTodos, dayPlans: rawDayPlans, gifts: rawGifts, ...tripFields } = cleanFileCash(cleanFileTogether(t));
   const journal = readFileJournal(rawJournal);
   // T81: ideas are optional (older files have none); unreadable rows are left out rather than refusing the file.
   const ideas = readFileIdeas(rawIdeas);
@@ -271,6 +274,8 @@ export function parseTripFile(data: unknown): ParseResult {
   const todos = readFileTodos(rawTodos);
   // T98: day plans are optional; unreadable rows and references are left out.
   const dayPlans = readFileDayPlans(rawDayPlans);
+  // T107: gifts are optional; unreadable rows are left out.
+  const gifts = readFileGifts(rawGifts);
   const trip: FileTrip = {
     ...(tripFields as unknown as FileTrip),
     ...(journal ? { journal } : {}),
@@ -278,6 +283,7 @@ export function parseTripFile(data: unknown): ParseResult {
     ...(cover ? { cover } : {}),
     ...(todos ? { todos } : {}),
     ...(dayPlans ? { dayPlans } : {}),
+    ...(gifts ? { gifts } : {}),
     id: isStr(t.id) ? t.id : '',
     homeTz: isStr(t.homeTz) ? t.homeTz : 'UTC',
     createdAt: isStr(t.createdAt) ? t.createdAt : '',
@@ -395,7 +401,21 @@ export function importTripFile(file: TripFile, newId: (prefix: string) => string
   if (todos) trip.todos = todos;
   else delete trip.todos;
   // T54: expenses get new ids like everything else.
-  if (file.trip.expenses) trip.expenses = file.trip.expenses.map((e) => ({ ...e, id: newId('exp') }));
+  const expenseIds = new Map<string, string>();
+  if (file.trip.expenses)
+    trip.expenses = file.trip.expenses.map((e) => {
+      const id = newId('exp');
+      expenseIds.set(e.id, id);
+      return { ...e, id };
+    });
+  // T102: cash moves get new ids; "paid in cash" marks follow their expenses' new ids.
+  const cash = importCash(file.trip.cash, expenseIds, newId);
+  if (cash) trip.cash = cash;
+  else delete trip.cash;
+  // T107: people and gifts get new ids; a gift's spending link follows its expense's new id.
+  const gifts = importGifts(file.trip.gifts, newId, expenseIds);
+  if (gifts) trip.gifts = gifts;
+  else delete trip.gifts;
   const packing: PackList | null = file.packing
     ? { ...file.packing, tripId, items: file.packing.items.map((i) => ({ ...i, id: newId('pack') })) }
     : null;

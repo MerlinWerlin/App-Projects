@@ -27,6 +27,7 @@ import { IDEA_ICONS, IDEA_TONES } from '../../src/ui/ideas.tsx';
 import { MOOD_ICONS, moodKey, PhotoThumb } from '../../src/ui/journal.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen, ToggleRow } from '../../src/ui/kit.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
+import { RecapStamps } from '../../src/ui/PassportCard.tsx';
 import { countryName, displayCountryName, formatInt } from '../../src/ui/useTravelStats.ts';
 
 const THUMB = 96;
@@ -169,6 +170,10 @@ function RecapBody({ trip, r, onOpen }: { trip: Trip; r: Recap; onOpen: (path: s
             <Body muted>{t('recap.places.none')}</Body>
           )}
         </SectionCard>
+      </FadeInView>
+
+      <FadeInView delay={140}>
+        <RecapStamps trip={trip} />
       </FadeInView>
 
       <FadeInView delay={160}>

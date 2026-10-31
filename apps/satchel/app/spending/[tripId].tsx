@@ -2,13 +2,16 @@
 // category and by day, then the exchange rates and the budget itself. Free, offline, stored on the trip.
 // A rate saved here is stamped with today's date (src/core/convert.ts setRateOn, T63), so the Wallet converter shows
 // how old the rate is.
+// T102: a "Paid in cash" switch on the expense form (src/core/cash.ts) and the Cash card under the summary.
+// T105: a "Work out a tip" button on the expense form opens app/tipping.tsx with the trip, category and currency.
 // Rates are typed by the traveller; spending in a currency with no rate is shown in its own currency and left out of
 // the home total with an "add a rate" prompt, never converted with a guessed rate.
 import { Ionicons } from '@expo/vector-icons';
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo, Alert, FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { cashPaidIds, isPaidInCash, setPaidInCash } from '../../src/core/cash.ts';
 import { setRateOn } from '../../src/core/convert.ts';
 import { deviceZone, formatDay, todayIn } from '../../src/core/format.ts';
 import { EXPENSE_CATEGORIES, newId, type Expense, type ExpenseCategory, type Trip } from '../../src/core/model.ts';
@@ -63,9 +66,10 @@ import type { Key } from '../../src/i18n/en.ts';
 import { phoneCurrency } from '../../src/native/device.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
-import { radius, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
+import { fonts, radius, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
 import { FadeInView, IconBadge, ProgressBar, type IconName, type Tone } from '../../src/ui/hero.tsx';
-import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, Screen, TextField, Warning } from '../../src/ui/kit.tsx';
+import { CashCard } from '../../src/ui/CashCard.tsx';
+import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, Screen, TextField, ToggleRow, Warning } from '../../src/ui/kit.tsx';
 import { expenseTogetherLine, PayerSplitFields, TogetherSection, usePeople, type People } from '../../src/ui/together.tsx';
 
 const CATEGORY_KEYS: Record<ExpenseCategory, Key> = {
@@ -87,7 +91,7 @@ const CATEGORY_ICONS: Record<ExpenseCategory, IconName> = {
 const CATEGORY_TONES: Record<ExpenseCategory, Tone> = { food: 'accent', transport: 'sea', stay: 'teal', activities: 'ok', shopping: 'warn', other: 'ink' };
 
 // T82: `together` holds the paid-by / split fields (used when the trip has companions).
-type Form = { prev?: Expense; draft: ExpenseDraft; errors: ExpenseError[]; together: TogetherDraft; togetherErrors: TogetherError[] };
+type Form = { prev?: Expense; draft: ExpenseDraft; errors: ExpenseError[]; together: TogetherDraft; togetherErrors: TogetherError[]; cash: boolean };
 
 export default function SpendingScreen() {
   const { tripId } = useLocalSearchParams<{ tripId: string }>();
@@ -117,6 +121,8 @@ function SpendingBody({ trip }: { trip: Trip }) {
   const [editingBudget, setEditingBudget] = useState(false);
   const money = useCallback((minor: number, code: string) => formatMoney(minor, code, lang), [lang]);
   const people = usePeople(trip);
+  // T104: the "Cash" marker on rows paid in cash.
+  const cashIds = useMemo(() => cashPaidIds(trip), [trip]);
 
   /** Stores the changed trip; says so when the phone couldn't save it. */
   const save = async (next: Trip): Promise<boolean> => {
@@ -126,12 +132,12 @@ function SpendingBody({ trip }: { trip: Trip }) {
   };
 
   const openNew = () => {
-    setForm({ draft: newExpenseDraft(defaultDay(trip, todayIn(deviceZone())), suggestCurrency(s, phoneCurrency())), errors: [], together: newTogetherDraft(trip), togetherErrors: [] });
+    setForm({ draft: newExpenseDraft(defaultDay(trip, todayIn(deviceZone())), suggestCurrency(s, phoneCurrency())), errors: [], together: newTogetherDraft(trip), togetherErrors: [], cash: false });
     list.current?.scrollToOffset({ offset: 0, animated: !reduceMotion });
   };
   const openEdit = useCallback(
     (e: Expense) => {
-      setForm({ prev: e, draft: draftFromExpense(e), errors: [], together: togetherDraftFromExpense(trip, e), togetherErrors: [] });
+      setForm({ prev: e, draft: draftFromExpense(e), errors: [], together: togetherDraftFromExpense(trip, e), togetherErrors: [], cash: isPaidInCash(trip, e.id) });
       list.current?.scrollToOffset({ offset: 0, animated: !reduceMotion });
     },
     [reduceMotion, trip],
@@ -154,7 +160,7 @@ function SpendingBody({ trip }: { trip: Trip }) {
     }
     const plain = expenseFromDraft(form.draft, newId('exp'), form.prev);
     const e = keepUnknown(form.prev, shared ? withSplit(plain, tg.paidBy, splitFromDraft(tg, plain.currency)) : withSplit(plain, ME, null));
-    if (await save(upsertExpense(trip, e))) {
+    if (await save(setPaidInCash(upsertExpense(trip, e), e.id, form.cash))) {
       setForm(null);
       AccessibilityInfo.announceForAccessibility(t('spending.form.saved'));
     }
@@ -171,7 +177,7 @@ function SpendingBody({ trip }: { trip: Trip }) {
           text: t('common.delete'),
           style: 'destructive',
           onPress: async () => {
-            if (await save(removeExpense(trip, e.id))) {
+            if (await save(setPaidInCash(removeExpense(trip, e.id), e.id, false))) {
               setForm((f) => (f?.prev?.id === e.id ? null : f));
               AccessibilityInfo.announceForAccessibility(t('spending.deleted'));
             }
@@ -193,9 +199,10 @@ function SpendingBody({ trip }: { trip: Trip }) {
         onEdit={openEdit}
         onDelete={confirmDelete}
         togetherLine={togetherLine(item, people, t)}
+        cash={cashIds.has(item.id)}
       />
     ),
-    [sorted, home, s.rates, openEdit, confirmDelete, people, t],
+    [sorted, home, s.rates, openEdit, confirmDelete, people, t, cashIds],
   );
 
   const header = (
@@ -209,6 +216,7 @@ function SpendingBody({ trip }: { trip: Trip }) {
         <Button label={t('spending.add')} hint={t('spending.addHint')} icon="add" onPress={openNew} />
       )}
       <TogetherSection trip={trip} save={save} />
+      <CashCard trip={trip} />
       {sorted.length ? (
         <View accessible accessibilityRole="header">
           <Label>{t('spending.list')}</Label>
@@ -310,6 +318,7 @@ const ExpenseRow = memo(function ExpenseRow({
   onEdit,
   onDelete,
   togetherLine,
+  cash,
 }: {
   expense: Expense;
   firstOfDay: boolean;
@@ -319,6 +328,8 @@ const ExpenseRow = memo(function ExpenseRow({
   onDelete: (e: Expense) => void;
   /** T82: "Sam paid · split 3 ways" (null for a plain solo expense). */
   togetherLine?: string | null;
+  /** T104: marked "paid in cash". */
+  cash?: boolean;
 }) {
   const { t, theme, lang } = useApp();
   const amount = formatMoney(e.amount, e.currency, lang);
@@ -347,14 +358,26 @@ const ExpenseRow = memo(function ExpenseRow({
       >
         <PressableScale
           accessibilityRole="button"
-          accessibilityLabel={[a11y, approx, togetherLine].filter(Boolean).join(', ')}
+          accessibilityLabel={[a11y, cash ? t('f95.cash.a11y') : '', approx, togetherLine].filter(Boolean).join(', ')}
           accessibilityHint={t('spending.row.hint')}
           onPress={() => onEdit(e)}
           style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.s }}
         >
           <IconBadge name={CATEGORY_ICONS[e.category]} tone={CATEGORY_TONES[e.category]} size="s" />
           <View style={{ flex: 1 }}>
-            <Text style={[typeScale.bodyStrong, { color: theme.ink, fontVariant: ['tabular-nums'] }]}>{amount}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, flexWrap: 'wrap' }}>
+              <Text style={[typeScale.bodyStrong, { color: theme.ink, fontVariant: ['tabular-nums'] }]}>{amount}</Text>
+              {cash ? (
+                <View
+                  accessibilityElementsHidden
+                  importantForAccessibility="no-hide-descendants"
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: space.s, paddingVertical: 2, borderRadius: radius.pill, backgroundColor: theme.okSoft }}
+                >
+                  <Ionicons name="cash-outline" size={14} color={theme.ok} />
+                  <Text style={{ fontFamily: fonts.bodyBold, fontSize: 12, color: theme.ok }}>{t('f95.cash.marker')}</Text>
+                </View>
+              ) : null}
+            </View>
             <Text numberOfLines={1} style={[typeScale.small, { color: theme.muted }]}>
               {e.note ? `${category} · ${e.note}` : category}
             </Text>
@@ -382,6 +405,7 @@ const ExpenseRow = memo(function ExpenseRow({
 
 function ExpenseForm({ trip, s, form, setForm, onSave }: { trip: Trip; s: Spending; form: Form; setForm: (f: Form | null) => void; onSave: () => void }) {
   const { t, theme, lang } = useApp();
+  const router = useRouter();
   const d = form.draft;
   const set = (patch: Partial<ExpenseDraft>) => setForm({ ...form, draft: { ...d, ...patch } });
   const choices = useMemo(() => currencyChoices(s, phoneCurrency()), [s]);
@@ -471,7 +495,17 @@ function ExpenseForm({ trip, s, form, setForm, onSave }: { trip: Trip; s: Spendi
         />
       ) : null}
 
+      <ToggleRow label={t('cash.paidInCash')} hint={t('cash.paidInCashHint')} value={form.cash} onChange={(cash) => setForm({ ...form, cash })} />
+
       <TextField label={t('spending.form.note')} value={d.note} onChange={(v) => set({ note: v })} placeholder={t('spending.form.notePlaceholder')} />
+      {/* T105: the tip calculator, filed under this form's category and currency; it saves its own expense. */}
+      <Button
+        kind="secondary"
+        icon="happy-outline"
+        label={t('tipping.fromExpense')}
+        hint={t('tipping.fromExpenseHint')}
+        onPress={() => router.push({ pathname: '/tipping', params: { tripId: trip.id, category: d.category, ...(isCurrency(code) ? { currency: code } : {}) } })}
+      />
       <Button label={t('spending.form.save')} hint={t('spending.form.saveHint')} icon="checkmark" onPress={onSave} />
       <Button label={t('common.cancel')} hint={t('spending.form.cancelHint')} kind="quiet" onPress={() => setForm(null)} />
     </Card>

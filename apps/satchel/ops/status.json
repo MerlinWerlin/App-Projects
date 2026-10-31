@@ -1,16 +1,16 @@
 {
- "tests": 1040,
- "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
- "last_run": "2026-11-01 07:30",
- "stage": "owner-tested",
- "oversight_seen": 221,
- "headline": "Expanding: I'm safe + share my location, Plan my day walking routes, bags in the packing list, local currency on the arrival card",
- "next_for_owner": [
-  "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
-  "Emergency tab: try I'm safe / Share where I am; then open the sample trip and tap Plan my day on a day, and Sort into bags on its packing list.",
-  "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
-  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (AS-AV are new) by commenting on this page."
- ],
- "trial_kit": true,
- "next_stage": "release-prep"
+  "tests": 1146,
+  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
+  "last_run": "2026-11-01 10:25",
+  "stage": "owner-tested",
+  "oversight_seen": 222,
+  "headline": "Expanding: tipping guide and tip calculator, public holidays on your trip, gifts and souvenirs list, sharper medicine times",
+  "next_for_owner": [
+    "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
+    "Wallet tab > Tipping; a trip's Holidays on this trip card; a trip's Gifts and souvenirs; Emergency tab > Medicine times row.",
+    "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
+    "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (BA-BD are new) by commenting on this page."
+  ],
+  "trial_kit": true,
+  "next_stage": "release-prep"
 }

@@ -303,6 +303,20 @@ declare module 'react-native-svg' {
   }
   export class Pattern extends Component<PatternProps> {}
 
+  // T103 passport stamps: SVG text (react-native-svg Text; FontProps subset Satchel uses).
+  export interface SvgTextProps extends CommonPathProps {
+    dx?: NumberArray;
+    dy?: NumberArray;
+    fontSize?: NumberProp;
+    fontFamily?: string;
+    fontWeight?: NumberProp;
+    letterSpacing?: NumberProp;
+    textAnchor?: 'start' | 'middle' | 'end';
+    alignmentBaseline?: 'baseline' | 'middle' | 'central' | 'hanging' | 'alphabetic';
+    children?: ReactNode;
+  }
+  export class Text extends Component<SvgTextProps> {}
+
   export interface LinearGradientProps {
     children?: ReactNode;
     x1?: NumberProp;

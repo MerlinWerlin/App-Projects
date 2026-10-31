@@ -11,9 +11,12 @@ import type { Attachment, Budget, Companion, Expense, ExpenseSplit, Item, Place,
 import type { Idea } from './ideas.ts';
 import type { Todo } from './todos.ts';
 import type { DayPlanRow } from './dayplan.ts';
+import type { CashCount, CashExchange, CashPaid, CashStart, CashWithdrawal, TripCash } from './cash.ts';
 import type { JournalEntry, JournalPhoto } from './journal.ts';
+import type { Gift, GiftPerson } from './gifts.ts';
 import { draftFromEntry, entryFromDraft, withJournalFiles } from './journal.ts';
 import { draftFromIdea, ideaFromDraft } from './ideas.ts';
+import { draftFromGift, draftFromPerson, giftFromDraft, personFromDraft } from './gifts.ts';
 import { draftFromExpense, expenseFromDraft } from './spending.ts';
 import { keepUnknown, splitFromDraft, togetherDraftFromExpense, withSplit } from './together.ts';
 import type { AirportInfo } from './leaveby.ts';
@@ -143,11 +146,19 @@ const todo: Required<Todo> = {
   updatedAt: '2027-03-03T09:00:00.000Z',
 };
 
-// T98: a day plan with an added saved place and a stored order naming a booking, an idea and the place.
+// T98: a day plan with an added saved place and a stored order naming a booking, an idea and the place (T100: and
+// the walk back to the hotel switched on).
 const dayPlanRow: Required<DayPlanRow> = {
   day: '2027-04-04',
   places: [{ placeId: 'sp_1' }],
   order: [{ ideaId: 'idea_1' }, { itemId: 'item_hotel', role: 'place' }, { placeId: 'sp_1' }],
+  // T100: the walk back to the hotel, remembered for the day.
+  backToHotel: true,
+  // T104: stop lengths the traveller set (an idea and the saved place).
+  stays: [
+    { ideaId: 'idea_1', min: 90 },
+    { placeId: 'sp_1', min: 45 },
+  ],
   updatedAt: '2027-03-04T09:00:00.000Z',
 };
 
@@ -166,6 +177,54 @@ const expense: Required<Expense> = {
 };
 const settlement: Required<Settlement> = { id: 'set_1', from: 'me', to: 'c_sam', amount: 1500, currency: 'JPY', day: '2027-04-05', createdAt: '2027-04-05T08:00:00.000Z' };
 const budget: Required<Budget> = { currency: 'AUD', amount: 300000 };
+
+// T102: cash on hand with every row kind and every field set; the cash-paid mark points at exp_1 (remapped on import).
+const cashStart: Required<CashStart> = { currency: 'JPY', amount: 20000 };
+const withdrawal: Required<CashWithdrawal> = {
+  id: 'cash_w1',
+  kind: 'withdrawal',
+  day: '2027-04-02',
+  currency: 'JPY',
+  amount: 30000,
+  fee: 350,
+  feeCurrency: 'AUD',
+  bankRate: 0.0105,
+  place: '7-Eleven Asakusa',
+  createdAt: '2027-04-02T09:00:00.000Z',
+};
+const exchange: Required<CashExchange> = {
+  id: 'cash_x1',
+  kind: 'exchange',
+  day: '2027-04-01',
+  currency: 'AUD',
+  amount: 10000,
+  toCurrency: 'JPY',
+  toAmount: 9500,
+  place: 'Airport counter',
+  createdAt: '2027-04-01T19:00:00.000Z',
+};
+const counted: Required<CashCount> = { id: 'cash_c1', kind: 'count', day: '2027-04-04', currency: 'JPY', amount: -120, createdAt: '2027-04-04T20:00:00.000Z' };
+const cashPaid: Required<CashPaid> = { expenseId: 'exp_1' };
+const cash: Required<TripCash> = { start: [cashStart], moves: [withdrawal, exchange, counted], paid: [cashPaid], leftover: { JPY: 'keep' }, local: 'JPY' };
+
+// T107: a person with a budget and a packed gift with every field: its spot, its bag and the spending entry it added.
+const gift: Required<Gift> = {
+  id: 'gift_1',
+  what: 'Tea towel',
+  where: 'Market by the station',
+  price: 1800,
+  currency: 'JPY',
+  status: 'packed',
+  lat: 35.7101,
+  lon: 139.8107,
+  spotName: 'Senso-ji',
+  bag: 'bag_cam',
+  weightG: 120,
+  expenseId: 'exp_1',
+  createdAt: '2027-04-03T08:00:00.000Z',
+  updatedAt: '2027-04-04T08:00:00.000Z',
+};
+const giftPerson: Required<GiftPerson> = { id: 'gp_mum', name: 'Mum', budget: { currency: 'AUD', amount: 5000 }, gifts: [gift], createdAt: '2027-03-20T08:00:00.000Z' };
 
 const fullTrip = (): Required<Trip> =>
   structuredClone({
@@ -189,6 +248,8 @@ const fullTrip = (): Required<Trip> =>
     cover: 'city',
     todos: [todo],
     dayPlans: [dayPlanRow],
+    cash,
+    gifts: [giftPerson],
   });
 
 // T99: an own hold bag with every field; Carry-on only moved the row out of it (bag + movedFrom), with a weight.
@@ -240,12 +301,15 @@ test('T85 fixture: every Trip and Item field is set (Required<> typing + no unde
   assertAllSet(ownBag, 'bag');
   // Keys Trip has today; a new one must be added to the fixture (tsc) and to this list (here).
   assert.deepEqual(Object.keys(t).sort(), [
-    'budget', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'homeTz', 'id', 'ideas', 'items', 'journal', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos',
+    'budget', 'cash', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos',
   ]);
   // T99: PackList / PackItem / Bag keys today (a new one must be added to the fixture and here).
   assert.deepEqual(Object.keys(packList).sort(), ['bags', 'carryOnOnly', 'dismissed', 'items', 'laundry', 'template', 'templates', 'tripId']);
   assert.deepEqual(Object.keys(packItem).sort(), ['bag', 'category', 'done', 'id', 'label', 'movedFrom', 'qty', 'suggestionId', 'templateItemId', 'userQty', 'weightG']);
   assert.deepEqual(Object.keys(ownBag).sort(), ['colour', 'hold', 'id', 'kind', 'limitG', 'name']);
+  // T107: Gift / GiftPerson keys today.
+  assert.deepEqual(Object.keys(gift).sort(), ['bag', 'createdAt', 'currency', 'expenseId', 'id', 'lat', 'lon', 'price', 'spotName', 'status', 'updatedAt', 'weightG', 'what', 'where']);
+  assert.deepEqual(Object.keys(giftPerson).sort(), ['budget', 'createdAt', 'gifts', 'id', 'name']);
   assert.deepEqual(Object.keys(flight).sort(), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
 });
 
@@ -317,6 +381,16 @@ test('T85 (2b) saving a journal page, idea or expense unchanged keeps every fiel
   assert.deepEqual(keepUnknown(x, withSplit(plain, tg.paidBy, splitFromDraft(tg, plain.currency))), x);
 });
 
+test('T107 (2b) saving a gift or a gift person unchanged keeps every field (updatedAt aside)', () => {
+  const p = fullTrip().gifts[0];
+  const g = p.gifts[0];
+  assert.deepEqual(giftFromDraft(draftFromGift(g, 'kg'), 'kg', 'en', () => 'x', g, LATER), { ...g, updatedAt: LATER });
+  assert.deepEqual(personFromDraft(draftFromPerson(p), 'AUD', () => 'x', p), p);
+  // A field a later build adds survives too.
+  const future = { ...g, futureField: 1 } as Gift;
+  assert.equal((giftFromDraft(draftFromGift(future, 'lb'), 'lb', 'en', () => 'x', future) as Gift & { futureField?: number }).futureField, 1);
+});
+
 test('T85 (2b) regression: a journal page field the form does not know survives an edit', () => {
   // entryFromDraft rebuilt the page from a fixed list, so a field added to JournalEntry later was dropped on edit.
   const e = { ...fullTrip().journal[0], futureField: 'kept' } as JournalEntry;
@@ -331,7 +405,7 @@ test('T85 (2b) regression: a journal page field the form does not know survives 
  * saved, and the imported trip's createdAt is the import time. Companion and settlement ids are kept: expenses' payers
  * and splits point at companion ids.
  */
-const RENEWED_KEYS = new Set(['id', 'tripId', 'placeId', 'ideaId', 'itemId', 'uri', 'qrCropUri']);
+const RENEWED_KEYS = new Set(['id', 'tripId', 'placeId', 'ideaId', 'itemId', 'expenseId', 'uri', 'qrCropUri']);
 function blankIds(x: unknown): unknown {
   if (Array.isArray(x)) return x.map(blankIds);
   if (x && typeof x === 'object') return Object.fromEntries(Object.entries(x).map(([k, v]) => [k, RENEWED_KEYS.has(k) && typeof v === 'string' ? '#' : blankIds(v)]));
@@ -383,7 +457,20 @@ test('T85 (3) .satchel export + import keeps every field (ids renewed, reference
   assert.notEqual(trip.todos?.[0].id, todo.id);
   assert.deepEqual(trip.dayPlans?.[0].order, [{ ideaId: trip.ideas?.[0].id }, { itemId: trip.items[1].id, role: 'place' }, { placeId: trip.places?.[0].id }], 'day plan points at the new ids');
   assert.deepEqual(trip.dayPlans?.[0].places, [{ placeId: trip.places?.[0].id }]);
+  assert.equal(trip.dayPlans?.[0].backToHotel, true, 'back to hotel travels with the day plan');
+  assert.deepEqual(trip.dayPlans?.[0].stays, [{ ideaId: trip.ideas?.[0].id, min: 90 }, { placeId: trip.places?.[0].id, min: 45 }], 'stop lengths follow the new ids');
   assert.notEqual(trip.expenses?.[0].id, expense.id);
+  // T102: cash moves get new ids and the cash-paid mark follows its expense's new id.
+  assert.deepEqual(trip.cash?.paid, [{ expenseId: trip.expenses?.[0].id }], 'cash-paid mark points at the new expense id');
+  assert.notEqual(trip.cash?.moves?.[0].id, withdrawal.id);
+  assert.deepEqual(trip.cash?.start, src.cash.start);
+  // T107: people and gifts get new ids; the gift's spending link follows its expense; its bag id is kept (bag ids are
+  // local to the packing list, which keeps them).
+  assert.notEqual(trip.gifts?.[0].id, giftPerson.id);
+  assert.notEqual(trip.gifts?.[0].gifts[0].id, gift.id);
+  assert.equal(trip.gifts?.[0].gifts[0].expenseId, trip.expenses?.[0].id, 'gift points at the new expense id');
+  assert.equal(trip.gifts?.[0].gifts[0].bag, 'bag_cam');
+  assert.ok(imp.packing?.bags?.some((b) => b.id === trip.gifts?.[0].gifts[0].bag), 'the gift bag is on the imported list');
   assert.deepEqual(trip.companions, src.companions, 'companion ids kept: payers and splits refer to them');
   assert.deepEqual(trip.settlements, src.settlements);
   // The packing list travels too, with new row ids.

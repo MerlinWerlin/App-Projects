@@ -69,6 +69,16 @@ export const SPEC_SYNC_PREFIXES = [
   'dayplan.',
   'bags.',
   'f93.',
+  // Run 95: T101 medicine times, T102 cash, T103 passport stamps, T100 follow-ups.
+  'meds.',
+  'cash.',
+  'stamps.',
+  'f94.',
+  // Run 96: T105 tipping, T106 public holidays, T107 gifts, T104 follow-ups.
+  'tipping.',
+  'holidays.',
+  'gifts.',
+  'f95.',
 ] as const;
 
 /** Single keys mirrored as well: map.online, the T48 emergency fallback wording, the Toilets tab, home country. */

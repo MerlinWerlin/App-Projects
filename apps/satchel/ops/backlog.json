@@ -1,7 +1,7 @@
 {
  "app": "satchel",
  "title": "Satchel",
- "updated": "2026-10-31",
+ "updated": "2026-11-01",
  "milestones": {
   "TRIAL": [
    "T00",
@@ -1258,13 +1258,110 @@
   },
   {
    "id": "T100",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "follow-up"
    ],
    "title": "Run-94 follow-ups: check the country-to-currency table against the current ISO 4217 list when online; group the shared packing-list text by bag; bag tips for non-English item names; one-tap 'add as trusted contact' for people already on the emergency card; remember the safe-message recipient ticks; Plan my day: optional back-to-hotel last leg and a does-it-fit check between timed bookings; device checks: sms:/open?addresses multi-recipient form on iOS, custom marker pins + Apple Maps walking hand-off, day header layout on small screens, search pin scroll, arrival currency line; still open from T96/T92: new Ionicons glyphs, .ics in the share sheet, share-sheet entry (native T14), OFL/npm licence text check on the PC",
-   "accept": "tests green"
+   "accept": "tests green",
+   "note": "Run 95: worker takes the offline parts (group shared packing text by bag, bag tips for non-English names via existing synonyms, add-as-trusted-contact from emergency card, remember safe-message recipient ticks, Plan my day back-to-hotel leg + does-it-fit check). Online ISO 4217 check, device checks and PC licence check stay open. Offline parts done in run 95 (85ad8b2); the online/device/PC checks moved to T104.",
+   "commit": "85ad8b2"
+  },
+  {
+   "id": "T101",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Medicine times across time zones (owner-1031 D, deepen Emergency + Trips): a 'Medicine times' screen reached from the Emergency tab and from each trip. The traveller adds medicines (name, dose text, times of day at home, 'every N hours' or 'fixed clock times'), kept only on this phone (never in .satchel trip files, never shared unless the user taps Share). For a trip it shows, per stop, the home schedule converted into the stop's local time (using the stop's IANA zone from bookings), and offers two plans: 'Keep home time' (same moment, local clock shown) and 'Shift to local time' (same clock time locally; for every-N-hours medicines a gradual shift over the first days in steps of at most 1-2 hours, never shortening the gap below a minimum the user can set). Shows doses that fall in the night as a warning, a 'next dose' line on Your day, and a clear 'General guidance only - ask your doctor or pharmacist, especially for time-critical medicines like insulin or contraceptives' line. Pure TS in src/core/medtimes.ts with tests; screen app/meds.tsx; storage key exported once",
+   "accept": "medtimes tests (home->local conversion across DST and +/-14 h zones, date-line crossing, gradual-shift never below the minimum gap and reaching local clock, night-dose detection, next-dose computation, excluded from tripfile export with a guard test); every string in src/i18n/en/meds.ts; no new npm dependency",
+   "commit": "379742e"
+  },
+  {
+   "id": "T102",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Cash on hand (owner-1031 D, deepen Wallet): a 'Cash' card on the Wallet tab and in each trip's Spending. Track cash per currency: starting cash, ATM withdrawals (amount, fee, rate the bank used if known, place) and exchanges between currencies; spending entries marked 'paid in cash' deduct automatically. Shows cash left per currency with its home-currency value at the saved rate, average withdrawal fee, an 'Getting low' hint from the trip's daily average, and a 'Leftover cash' summary on the last day (spend it, keep it for next time, or exchange). Optional 'tap to count' denomination counter for the trip's local currency (common banknotes/coins list per currency in a small table written here, labelled to re-check) that totals notes and coins. Pure TS in src/core/cash.ts with tests; screen app/cash/[tripId].tsx; data kept in the trip (optional Trip.cash) and included in .satchel files with the every-field round-trip guard updated",
+   "accept": "cash tests (balances per currency with withdrawals, fees, exchanges and cash-paid spending, home value at saved rate and no value without one, low-cash projection, leftover summary, denomination totals with integer minor units, round trip through tripfile + the every-field guard); every string in src/i18n/en/cash.ts; no new npm dependency",
+   "commit": "a38a1e2"
+  },
+  {
+   "id": "T103",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D",
+    "less-bland"
+   ],
+   "title": "Passport stamps (owner-1031 D, less bland): an original illustrated passport-stamp collection on Your travels and on each finished trip's recap. Every country (from bookings/stops) and city visited earns a stamp drawn in react-native-svg from a handful of original stamp shapes (round, oval, rectangle, triangle-ish, hexagon) with a ring of text (city/country name, date of first arrival, 'ARRIVED'/'DEPARTED'), slight rotation and an ink colour from the theme tokens (light + dark variants), deterministic per place so it never changes between opens. A 'Passport' page shows them on paper-texture pages (pure SVG pattern, no images), newest first, with counts (countries, cities, continents) and a 'first stamp' highlight on a newly finished trip; tap a stamp for the trip it came from; share a stamp page as an image only if the existing share helpers allow, otherwise as text. Timed fade-in only (no bounce/springs). Pure TS in src/core/stamps.ts (place extraction, dedupe, deterministic shape/rotation/colour pick, continent table) with tests; component src/ui/Stamp.tsx; screen app/passport.tsx",
+   "accept": "stamps tests (dedupe across trips, first-arrival date in the stop's own zone, deterministic pick stable across runs, continent counts, demo trip gives JP + AU stamps, upcoming trips give no stamp), contrast of ink tokens checked by the existing WCAG test; every string in src/i18n/en/stamps.ts; no new npm dependency; no spring/bounce APIs",
+   "commit": "ff7ec6a"
+  },
+  {
+   "id": "T104",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "title": "Run-95 follow-ups: Medicine times: native time picker instead of typed HH:MM, follow a clock change mid-stay in the gradual shift, list each day's times in the shared text, next dose on the Emergency row; Cash: 'cash' marker on expense rows, check the denomination table against each central bank's current notes and coins; Passport: share a stamp page as an image once a view-capture library can be installed (needs a TestFlight build), check curved SVG text on a device; Plan my day: per-stop length instead of a fixed 30 min; still open from T100: check the country-to-currency table against ISO 4217 online, device checks (sms: multi-recipient form, marker pins + Apple Maps walking hand-off, small-screen day header, search pin scroll, arrival currency line), new Ionicons glyphs, .ics in the share sheet, OFL/npm licence text check on the PC",
+   "accept": "tests green",
+   "note": "Run 96: worker takes the offline parts (native time picker for Medicine times, clock change mid-stay in the gradual shift, each day's times in the shared text, next dose on the Emergency row, 'cash' marker on expense rows, per-stop length in Plan my day). Still open after it: central-bank denomination check, ISO 4217 online check, image sharing (needs a view-capture library = TestFlight build), device checks, Ionicons glyphs, .ics share sheet, PC licence check.",
+   "commit": "55f24cc"
+  },
+  {
+   "id": "T105",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Tipping and service guide + tip calculator (owner-1031 D, deepen Wallet + Spending): a 'Tipping' screen reached from the Wallet tab, the arrival card and each expense form. Offline table (src/core/tipping.ts) for at least 60 countries covering restaurants, cafes/bars, taxis, hotel staff, guides and whether a service charge is usually already on the bill, each row with a short typical range (e.g. '10-15%', 'round up', 'not expected', 'can cause offence') written here and labelled 'General guidance only - customs vary, check locally', with a 'checked' date and a re-check marker like country_essentials. A calculator: bill amount in the trip's local currency, presets from the country's norm (none / round up / low / typical / generous), custom %, 'service already included' switch that zeroes the suggestion, round-up to a sensible local step (uses cash denominations where present), split between N people or the trip's companions, home value only with a saved rate, and 'Add to spending' which creates an expense with the tip included (category from context). Country picks: current trip stop, else home, else a searchable list. Pure TS with tests; screen app/tipping.tsx",
+   "accept": "tipping tests (every country row has all fields and a valid ISO code, calculator totals in integer minor units incl. 0-decimal currencies like JPY, round-up steps, included-service zeroes the tip, split remainder handling, add-to-spending draft amount); every string in src/i18n/en/tipping.ts; no new npm dependency",
+   "commit": "2dc34bd"
+  },
+  {
+   "id": "T106",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Public holidays on your trip (owner-1031 D, deepen Trips): pure TS src/core/holidays.ts computes public holidays by rule (fixed date, Easter-relative via the Gregorian computus and Orthodox Easter where needed, nth/last weekday of a month, simple 'observed on Monday' shifts) for at least 35 countries common for travellers (AU incl. national days only, NZ, GB with England/Scotland noted as national-level only, IE, US federal, CA federal, FR, DE national, IT, ES national, PT, NL, BE, CH national, AT, GR, SE, NO, DK, FI, PL, CZ, HU, HR, JP, KR solar-calendar days only, SG fixed days only, TH fixed days only, MX, BR, AR, CL, ZA, IS...), each country with notes of what it leaves out (regional days, lunar/Islamic/Hindu calendar days) so the UI can say 'Lunar-calendar holidays aren't shown'. Shown as: a 'Holidays on this trip' card on the trip screen (date in the stop's zone, name in English, 'shops and banks may close, transport may run a Sunday timetable'), a small holiday badge on timeline day headers, a line on the arrival card and on Your day when today is a holiday at the current stop. General guidance, verify locally. Screen app/holidays/[tripId].tsx",
+   "accept": "holiday tests (Easter Sunday for 2024-2030 against published dates, Orthodox Easter 2025/2026, Japan's Golden Week 2026 dates, US Thanksgiving 2026 = 26 Nov, UK late May bank holiday 2026 = 25 May, a Sunday fixed holiday observed on Monday where the rule says so, trip-range filter per stop zone, every country has at least 5 holidays per year and a notes line); every string in src/i18n/en/holidays.ts; no new npm dependency",
+   "commit": "f6fb122"
+  },
+  {
+   "id": "T107",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Gifts and souvenirs (owner-1031 D, deepen Packing + Spending): per-trip gift list. People to buy for (name, optional budget in home currency), gift ideas per person (what, where seen, price in local currency, status idea/bought/packed, optional map spot from the current position check or a saved place, optional bag from the trip's bags with weight). Progress per person and a budget bar (home value only with a saved rate), 'Bought' creates a spending entry (category shopping) on request, 'Packed' ticks it into the chosen bag's weight, and a general-guidance reminder card about duty-free allowances and food/plant items at customs (no country figures; 'check your home country's customs rules'). Shared text list (no prices by default). Pure TS src/core/gifts.ts with tests; screen app/gifts/[tripId].tsx; reached from the trip screen and the Packing tab; data in optional Trip.gifts included in .satchel files with the every-field round-trip guard updated",
+   "accept": "gifts tests (per-person totals and budget remaining, home value only with a rate, status transitions, bag weight added on packed and removed on unpacked, spending draft from bought, share text without prices by default, round trip through tripfile + the every-field guard); every string in src/i18n/en/gifts.ts; no new npm dependency",
+   "commit": "66d4195"
+  },
+  {
+   "id": "T108",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "title": "Run-96 follow-ups: Tipping: re-check the 37 rows marked less certain and the round-up steps for currencies not in the cash table (BRL, HUF, IDR, VND...); 'Work out a tip' fills the open expense form on return. Holidays: Italy 4 Oct (St Francis) from 2026, Argentina movable/bridge days, Chile moved days, Thai substitute days, Greek May Day near Orthodox Easter, NZ Matariki after 2030, regional days, lunar-calendar days via a published table. Gifts: gift map spots as pins on the trip map. Meds: drop unused meds.form.addTime keys. Still open from T104: central-bank denomination check, ISO 4217 online check, stamp image sharing (needs a TestFlight build), device checks, Ionicons glyphs, .ics share sheet, PC licence check",
+   "accept": "tests green; DECISIONS records sources"
   }
  ],
  "priority_note": "owner-1031 (T47-T51) outranks everything else (docs/OWNER_1031.md). Owner: 'let's trial that for now'. Reach TRIAL fast; nothing native before the owner has tried the trial."
