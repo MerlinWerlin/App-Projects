@@ -26,6 +26,7 @@ import {
   needsCalibration,
   nextRotation,
   parsePins,
+  PIN_LABEL_MAX,
   pickHeading,
   pinKey,
   pinName,
@@ -33,6 +34,7 @@ import {
   placeKey,
   relativeAngle,
   removePin,
+  renamePin,
   resolveTarget,
   walkTime,
   waybackTargets,
@@ -247,6 +249,26 @@ export default function WaybackScreen() {
     ]);
   };
 
+  // ---- rename a pin (T76) ----
+  const [renaming, setRenaming] = useState<{ id: string; text: string } | null>(null);
+  const [renameErr, setRenameErr] = useState(false);
+  const startRename = (pin: WaybackPin) => {
+    setNotice(null);
+    setKeeping(null);
+    setRenameErr(false);
+    setRenaming(renaming?.id === pin.id ? null : { id: pin.id, text: pin.label ?? pinLabel(pin) });
+  };
+  const saveRename = async () => {
+    if (!renaming) return;
+    const label = renaming.text.replace(/\s+/g, ' ').trim();
+    if (!label) return setRenameErr(true);
+    const ok = await setPersistedChecked<unknown>(PINS_KEY, (old: unknown) => renamePin(parsePins(old), renaming.id, label), NO_PINS);
+    if (!ok) return say(t('wayback.pinSaveFailed'), false);
+    setRenaming(null);
+    setRenameErr(false);
+    say(t('f88.wayback.renamed', { name: label.slice(0, PIN_LABEL_MAX).trim() }));
+  };
+
   // ---- keep a pin with a trip ----
   const tripChoices = useMemo(() => saveTargets(trips, today), [trips, today]);
   const onTrip = useMemo(() => activeTrip(trips, today), [trips, today]);
@@ -264,6 +286,7 @@ export default function WaybackScreen() {
   };
   const startKeep = (pin: WaybackPin) => {
     setNotice(null);
+    setRenaming(null);
     if (onTrip) return keep(pin, onTrip.id);
     if (tripChoices.length === 1) return keep(pin, tripChoices[0].id);
     setKeeping(keeping === pin.id ? null : pin.id);
@@ -508,6 +531,16 @@ export default function WaybackScreen() {
                 </PressableScale>
                 <PressableScale
                   accessibilityRole="button"
+                  accessibilityLabel={t('f88.wayback.renameA11y', { name })}
+                  accessibilityHint={t('f88.wayback.renameHint')}
+                  accessibilityState={{ expanded: renaming?.id === p.id }}
+                  onPress={() => startRename(p)}
+                  style={{ paddingHorizontal: space.l, borderRadius: radius.pill, backgroundColor: theme.accentSoft }}
+                >
+                  <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.accentInk }}>{t('f88.wayback.rename')}</Text>
+                </PressableScale>
+                <PressableScale
+                  accessibilityRole="button"
                   accessibilityLabel={t('wayback.pinDeleteA11y', { name })}
                   accessibilityHint={t('wayback.pinDeleteHint')}
                   onPress={() => confirmDelete(p)}
@@ -516,6 +549,24 @@ export default function WaybackScreen() {
                   <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.danger }}>{t('wayback.pinDelete')}</Text>
                 </PressableScale>
               </View>
+              {renaming?.id === p.id ? (
+                <View style={{ gap: space.s }}>
+                  <TextField
+                    label={t('f88.wayback.renameLabel')}
+                    value={renaming.text}
+                    onChange={(v) => {
+                      setRenaming({ id: p.id, text: v });
+                      setRenameErr(false);
+                    }}
+                    error={renameErr ? t('wayback.err.label') : undefined}
+                    autoCapitalize="sentences"
+                  />
+                  <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
+                    <Button label={t('f88.wayback.renameSave')} hint={t('f88.wayback.renameSaveHint')} icon="checkmark" onPress={saveRename} />
+                    <Button kind="quiet" label={t('common.cancel')} hint={t('f88.wayback.renameCancelHint')} onPress={() => setRenaming(null)} />
+                  </View>
+                </View>
+              ) : null}
               {keeping === p.id ? (
                 tripChoices.length === 0 ? (
                   <Body muted>{t('wayback.pinKeepNoTrips')}</Body>

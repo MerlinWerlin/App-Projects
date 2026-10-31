@@ -85,6 +85,10 @@ function Shell() {
           <Stack.Screen name="travels" options={{ ...header, title: t('travels.route') }} />
           <Stack.Screen name="jetlag" options={{ ...header, title: t('jetlag.route') }} />
           <Stack.Screen name="wayback" options={{ ...header, title: t('wayback.route') }} />
+          <Stack.Screen name="paste-booking" options={{ ...header, title: t('paste.route') }} />
+          <Stack.Screen name="trouble/index" options={{ ...header, title: t('trouble.route') }} />
+          <Stack.Screen name="trouble/[id]" options={{ ...header, title: t('trouble.route.guide') }} />
+          <Stack.Screen name="trouble/numbers" options={{ ...header, title: t('trouble.route.numbers') }} />
           <Stack.Screen name="phrase-card" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="essentials" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'none' }} />
         </Stack>

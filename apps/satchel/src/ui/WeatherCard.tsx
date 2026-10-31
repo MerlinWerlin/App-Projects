@@ -5,23 +5,25 @@
 // is FadeInView only (timed, nothing moves with Reduce Motion).
 import { Ionicons } from '@expo/vector-icons';
 import { memo, useEffect, useMemo, useState } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { formatDay, todayIn } from '../core/format.ts';
 import type { LocalDate, Trip } from '../core/model.ts';
 import { lightLeftMin, formatSpan, sunDay, type SunDay } from '../core/sun.ts';
 import { addDays, fromUtc, localDate, localTime } from '../core/tz.ts';
 import {
-  cardDates,
   dailySummary,
   dayOn,
+  defaultStop,
   DEFAULT_TEMP_UNIT,
   forecastReaches,
   formatMm,
   formatTemp,
   freshness,
   normaliseTempUnit,
+  stopDates,
   TEMP_UNIT_KEY,
   weatherPlace,
+  weatherStops,
   type TempUnit,
   type WeatherDay,
   type WeatherGroup,
@@ -34,6 +36,7 @@ import { useApp } from '../state/app.tsx';
 import { usePersisted } from '../state/persisted.ts';
 import { radius, space, typeScale } from '../theme/tokens.ts';
 import { FadeInView, SectionCard, type IconName } from './hero.tsx';
+import { Chip } from './kit.tsx';
 import { useMinute } from './JetLagCard.tsx';
 
 const GROUP_ICON: Record<WeatherGroup, IconName> = {
@@ -141,21 +144,28 @@ const DayRow = memo(function DayRow({ date, today, sun, day, unit, first }: { da
   );
 });
 
-/** Trip-screen card for the current or next destination. Nothing when the trip has no coordinates or has ended. */
+/**
+ * Trip-screen card. Opens on the current or next destination; T76: with more than one stop, chips pick any stop of
+ * the trip (each stop's forecast is cached on its own, by its coordinates). Nothing when the trip has no
+ * coordinates or has ended.
+ */
 export function WeatherCard({ trip }: { trip: Trip }) {
   const { t, theme, lang } = useApp();
   const now = useMinute();
   const [unit] = useTempUnit();
-  // Re-pick the place only when the trip or the hour changes (a check-in moves it).
+  // Re-pick the stops only when the trip or the hour changes (a check-in moves the default).
   const hour = Math.floor(now / 3_600_000);
-  const place = useMemo(() => weatherPlace(trip, now), [trip, hour]); // eslint-disable-line react-hooks/exhaustive-deps
+  const stops = useMemo(() => weatherStops(trip, now), [trip, hour]); // eslint-disable-line react-hooks/exhaustive-deps
+  const fallback = useMemo(() => defaultStop(stops, trip, now), [stops, trip, hour]); // eslint-disable-line react-hooks/exhaustive-deps
+  const [picked, setPicked] = useState<string | null>(null);
+  const place = stops.find((s) => s.key === picked) ?? fallback;
   const today = place ? todayIn(place.tz, now) : '';
-  const dates = useMemo(() => (place ? cardDates(trip, today) : []), [trip, place, today]);
+  const dates = useMemo(() => (place ? stopDates(trip, place, today) : []), [trip, place, today]);
   const wanted = !!place && dates.length > 0 && forecastReaches(dates, today);
   const load = useForecast(place, wanted);
   const days = useMemo(() => (load.s === 'ready' && place ? dailySummary(load.result.forecast, place.tz) : []), [load, place]);
   const suns = useMemo(() => (place ? dates.map((d) => sunDay(place.lat, place.lon, d, place.tz)) : []), [place, dates]);
-  if (!place || dates.length === 0) return null;
+  if (!place || (dates.length === 0 && picked === null)) return null;
 
   let status: { text: string; warn: boolean } | null = null;
   if (load.s === 'ready') {
@@ -173,6 +183,14 @@ export function WeatherCard({ trip }: { trip: Trip }) {
   return (
     <FadeInView>
       <SectionCard title={t('weather.title')} subtitle={t('weather.subtitle', { place: place.name })} icon="partly-sunny-outline" tone="sea">
+        {stops.length > 1 ? (
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} accessibilityRole="radiogroup" accessibilityLabel={t('f88.weather.stops')} contentContainerStyle={{ gap: space.s }}>
+            {stops.map((s) => (
+              <Chip key={s.key} label={s.name} selected={s.key === place.key} onPress={() => setPicked(s.key)} />
+            ))}
+          </ScrollView>
+        ) : null}
+        {dates.length === 0 ? <Text style={[typeScale.small, { color: theme.muted }]}>{t('f88.weather.stopPast')}</Text> : null}
         {dates.map((d, i) => (
           <DayRow key={d} date={d} today={today} sun={suns[i] ?? null} day={showForecast ? dayOn(days, d) : null} unit={unit} first={i === 0} />
         ))}

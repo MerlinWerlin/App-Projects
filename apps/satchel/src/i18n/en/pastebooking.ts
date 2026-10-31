@@ -1,0 +1,110 @@
+// T77 strings: Paste a booking (turn pasted confirmation text into a booking, offline). Keys prefixed "paste.".
+export const pastebooking = {
+  'paste.route': 'Paste a booking',
+  'paste.open': 'Paste a booking',
+  'paste.openHint': 'Opens a box where you paste a confirmation email or message. Satchel drafts the booking for you to check.',
+
+  // hero
+  'paste.hero.eyebrow': 'Works offline',
+  'paste.hero.title': 'Paste a booking',
+  'paste.hero.subtitle': 'Copy a confirmation email, text message or booking page, paste it here, and Satchel drafts the booking.',
+  'paste.privacy': 'Read on your phone only. Nothing is sent anywhere.',
+
+  // input
+  'paste.input.title': 'Your confirmation',
+  'paste.input.subtitle': 'Flights, hotels, trains, buses, ferries, car hire and event tickets',
+  'paste.input.label': 'Confirmation text',
+  'paste.input.placeholder': 'Paste the confirmation text here…',
+  'paste.fromClipboard': 'Paste from clipboard',
+  'paste.fromClipboardHint': 'Reads the text you copied and puts it in the box. Nothing leaves your phone.',
+  'paste.clipboardEmpty': 'There’s no text on the clipboard. Copy the confirmation first, then try again.',
+  'paste.clipboardUnavailable': 'This build can’t read the clipboard. Press and hold in the box and choose Paste.',
+  'paste.clear': 'Clear',
+  'paste.clearHint': 'Empties the box.',
+  'paste.dateOrder': 'Dates like 03/12/2027 mean',
+  'paste.dateOrder.dayFirst': 'Day first (3 Dec)',
+  'paste.dateOrder.monthFirst': 'Month first (Mar 12)',
+
+  // empty and nothing found
+  'paste.empty.title': 'Paste a confirmation to start',
+  'paste.empty.body': 'Open the confirmation in Mail, Messages or the booking page, select all the text, copy it, then come back and tap Paste from clipboard.',
+  'paste.tips.title': 'Tips',
+  'paste.tip.whole': 'Copy the whole confirmation, not just one line: dates, times and the reference are often far apart.',
+  'paste.tip.several': 'Several bookings in one email are fine; each one gets its own card.',
+  'paste.tip.check': 'Satchel reads the text on your phone and makes a draft. You always check it in the booking form before it’s saved.',
+  'paste.none.title': 'Nothing found yet',
+  'paste.none.body': 'Satchel couldn’t find a booking in this text. It looks for flight numbers and airport codes, check-in and check-out dates, pick-up and drop-off, and dates with times.',
+  'paste.none.tryMore': 'Try copying the whole email, or add the booking by hand instead.',
+  'paste.none.manual': 'Add by hand',
+  'paste.none.manualHint': 'Opens the trip so you can choose the kind of booking and fill it in.',
+
+  // results
+  'paste.found.one': 'Found 1 booking',
+  'paste.found.many': 'Found {n} bookings',
+  'paste.found.note': 'Fields marked “Check this” are a best guess. Nothing is saved until you tap Save in the booking form.',
+  'paste.card.a11y': '{kind}: {title}',
+  'paste.card.untitled': 'No name found',
+  'paste.check': 'Check this',
+  'paste.checkA11y': '{field}: {value}. Check this, it’s a best guess.',
+  'paste.fieldA11y': '{field}: {value}',
+  'paste.unknownCodes': 'Airport {codes} isn’t in Satchel’s list, so choose its time zone in the form.',
+  'paste.noZone': 'Choose the time zone in the form: times are kept as printed, on the place’s own clock.',
+  'paste.already': 'Already in this trip',
+  'paste.review': 'Review and save',
+  'paste.reviewHint': 'Opens the booking form filled in with this draft. Check it, then tap Save.',
+  'paste.zoneValue': '{city} time',
+  'paste.zoneTwo': '{from} → {to} time',
+  'paste.whenValue': '{day}, {time}',
+
+  // fields
+  'paste.field.title': 'Name',
+  'paste.field.from': 'From',
+  'paste.field.to': 'To',
+  'paste.field.start': 'Starts',
+  'paste.field.end': 'Ends',
+  'paste.field.zone': 'Time zone',
+  'paste.field.place': 'Place',
+  'paste.field.address': 'Address',
+  'paste.field.phone': 'Phone',
+  'paste.field.carrier': 'Operator',
+  'paste.field.number': 'Number',
+  'paste.field.seat': 'Seat',
+  'paste.field.terminal': 'Terminal',
+  'paste.field.gate': 'Gate',
+  'paste.field.boarding': 'Boarding',
+  'paste.field.dropOff': 'Drop-off',
+  'paste.field.ref': 'Booking reference',
+  'paste.start.flight': 'Departs',
+  'paste.end.flight': 'Arrives',
+  'paste.start.hotel': 'Check-in',
+  'paste.end.hotel': 'Check-out',
+  'paste.start.car': 'Pick-up',
+  'paste.end.car': 'Drop-off',
+  'paste.carrier.flight': 'Airline',
+  'paste.carrier.car': 'Hire company',
+
+  // trip choice
+  'paste.trip.label': 'Add to trip',
+  'paste.trip.suggested': 'Matches the booking dates',
+  'paste.trip.none': 'Make a trip first, then paste the booking into it.',
+  'paste.trip.new': 'New trip',
+  'paste.trip.newHint': 'Opens the new trip form. Your pasted text stays here.',
+  'paste.trip.choose': 'Choose a trip above first.',
+
+  // defaults handed to the form
+  'paste.defaultTitle.flight': 'Flight',
+  'paste.defaultTitle.train': 'Train',
+  'paste.defaultTitle.ferry': 'Ferry',
+  'paste.defaultTitle.bus': 'Bus',
+  'paste.defaultTitle.hotel': 'Hotel',
+  'paste.defaultTitle.car': 'Car hire',
+  'paste.defaultTitle.activity': 'Event',
+  'paste.defaultTitle.note': 'Note',
+  'paste.dropOffNote': 'Drop-off: {place}',
+
+  // the booking form
+  'paste.form.banner': 'Drafted from pasted text. Check every field, especially dates, times and time zones, then tap Save.',
+
+  // general guidance
+  'paste.guidance': 'General guidance: confirmations come in many layouts and Satchel reads them with simple patterns, so some details may be missed or misread. Your booking provider’s confirmation is what counts.',
+} as const;

@@ -6,26 +6,58 @@
 // directions. "Near my hotel" searches around today's hotel when it has coordinates, without location. Free, no
 // account. T56: "Ask for a toilet" opens the full-screen phrase card for "Where is the toilet?" in the local
 // language (app/phrase-card.tsx), fully offline. Results fade in with a timed transition (skipped with Reduce Motion).
-import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
-import { useCallback, useMemo, useRef, useState } from 'react';
+// T79 (deeper): each row says "Open now · closes 18:00" / "Closed · opens 09:00" from its opening_hours, read in the
+// searched place's zone (src/core/openinghours.ts; unknown forms say nothing). Filter chips with counts (Free,
+// Wheelchair, Changing table, Open now, Unisex) are remembered on the phone. A List / Map switch shows the results
+// as markers around the search point (with the offline city tiles when that city is downloaded); tapping a marker
+// shows its card. "My toilets": Save with a private note and thumbs up/down; saved ones near the search point come
+// first. "Recently used" keeps the last 10 opened in Apple Maps. All stored on the phone only. The Map tab's
+// "Nearest toilet" opens this tab with ?find=<nonce>, which starts a search once.
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, FlatList, Linking, Text, View } from 'react-native';
+import { pickCityFor, type CityMap } from '../../src/core/citymaps.ts';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
 import type { PermissionState } from '../../src/core/permissions.ts';
-import type { LatLon } from '../../src/core/poi.ts';
-import { appleMapsWalkUrl, arrowDegrees, stayFor, toiletChips, toiletDistance, type ToiletChip, type ToiletHit } from '../../src/core/toilets.ts';
-import type { Key } from '../../src/i18n/en.ts';
+import { regionFor, type LatLon, type Region } from '../../src/core/poi.ts';
+import {
+  applyFilters,
+  arrange,
+  filterCounts,
+  parseFilters,
+  parseRecent,
+  parseSaved,
+  pushRecent,
+  savedOf,
+  setNote,
+  setVote,
+  statusFor,
+  toggleFilter,
+  toggleSaved,
+  weekdayOf,
+  type Arranged,
+  type FilterId,
+  type RecentToilet,
+  type SavedToilet,
+} from '../../src/core/toiletplus.ts';
+import { appleMapsWalkUrl, stayFor, toiletDistance, type Toilet } from '../../src/core/toilets.ts';
+import { fromUtc } from '../../src/core/tz.ts';
+import type { HoursStatus } from '../../src/core/openinghours.ts';
+import { listInstalled, offlineTilesFor } from '../../src/native/cityMaps.ts';
 import { locateOnce } from '../../src/native/location.ts';
+import { mapAvailable, SatchelMap, type MapPin } from '../../src/native/maps.tsx';
 import { findToilets, type ToiletSearch } from '../../src/native/toilets.ts';
 import { useApp } from '../../src/state/app.tsx';
+import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { dur, duration } from '../../src/theme/motion.ts';
-import { fonts, radius, space, typeScale } from '../../src/theme/tokens.ts';
-import { FadeInView, HeroHeader, toneColours, type Tone } from '../../src/ui/hero.tsx';
-import { Button, Card, EmptyState, Screen } from '../../src/ui/kit.tsx';
+import { fonts, space } from '../../src/theme/tokens.ts';
+import { FadeInView, HeroHeader } from '../../src/ui/hero.tsx';
+import { Button, EmptyState, Screen } from '../../src/ui/kit.tsx';
 import { PermissionNotice } from '../../src/ui/PermissionNotice.tsx';
+import { FilterBar, MineSection, RecentSection, ToiletCard, ViewToggle } from '../../src/ui/toiletplus.tsx';
 
-type Origin = { kind: 'here' } | { kind: 'hotel'; name: string };
+type Origin = { kind: 'here'; at: LatLon; tz: string } | { kind: 'hotel'; at: LatLon; tz: string; name: string };
 type Phase =
   | { s: 'idle' }
   | { s: 'locating' }
@@ -34,39 +66,50 @@ type Phase =
   | { s: 'denied'; state: Exclude<PermissionState, 'granted'> }
   | { s: 'unavailable'; servicesOff: boolean };
 
-const chipKey = (c: ToiletChip): Key => `toilets.chip.${c.id}`;
-/** T50: each feature chip is tinted by what it means (free / step-free = good, paid / limited = heads-up). */
-const CHIP_TONE: Record<ToiletChip['id'], Tone> = {
-  free: 'ok',
-  paid: 'warn',
-  feeUnknown: 'ink',
-  wheelchair: 'sea',
-  wheelchairLimited: 'warn',
-  noWheelchair: 'danger',
-  changingTable: 'teal',
-  unisex: 'accent',
-  customersOnly: 'warn',
-  open247: 'ok',
-  hours: 'ink',
-};
+const FILTERS_KEY = 'satchel.toiletplus.filters.v1';
+const SAVED_KEY = 'satchel.toiletplus.saved.v1';
+const RECENT_KEY = 'satchel.toiletplus.recent.v1';
+const VIEW_KEY = 'satchel.toiletplus.view.v1';
+const NONE: unknown = [];
+const LIST_VIEW: 'list' | 'map' = 'list';
+const MAP_HEIGHT = 380;
+/** Re-read open/closed each minute while results are on screen. */
+const TICK_MS = 60_000;
+
+type Row = Arranged & { status: HoursStatus };
 
 export default function ToiletsScreen() {
   const { t, theme, reduceMotion } = useApp();
   const { trips } = useTrips();
   const router = useRouter();
+  const params = useLocalSearchParams<{ find?: string }>();
   const [phase, setPhase] = useState<Phase>({ s: 'idle' });
   const [openFailed, setOpenFailed] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [now, setNow] = useState(() => Date.now());
+  const [cities, setCities] = useState<CityMap[]>([]);
   const fade = useRef(new Animated.Value(1)).current;
   const seq = useRef(0);
+  const handledFind = useRef<string | null>(null);
+
+  const [rawFilters, setRawFilters] = usePersisted<unknown>(FILTERS_KEY, NONE);
+  const [rawSaved, setRawSaved] = usePersisted<unknown>(SAVED_KEY, NONE);
+  const [rawRecent, setRawRecent] = usePersisted<unknown>(RECENT_KEY, NONE);
+  const [view, setView] = usePersisted<'list' | 'map'>(VIEW_KEY, LIST_VIEW);
+  const filters = useMemo(() => parseFilters(rawFilters), [rawFilters]);
+  const saved = useMemo(() => parseSaved(rawSaved), [rawSaved]);
+  const recent = useMemo(() => parseRecent(rawRecent), [rawRecent]);
 
   const stay = useMemo(() => stayFor(trips, todayIn(deviceZone())), [trips]);
   const busy = phase.s === 'locating' || phase.s === 'searching';
 
   const search = useCallback(
-    async (at: LatLon, origin: Origin, mine: number) => {
+    async (origin: Origin, mine: number) => {
       setPhase({ s: 'searching', origin });
-      const result = await findToilets(at);
+      setSelectedId(null);
+      const result = await findToilets(origin.at);
       if (mine !== seq.current) return;
+      setNow(Date.now());
       fade.setValue(0);
       setPhase({ s: 'done', origin, result, run: mine });
       Animated.timing(fade, { toValue: 1, duration: dur(duration.slow, reduceMotion), useNativeDriver: true }).start();
@@ -81,7 +124,8 @@ export default function ToiletsScreen() {
     setPhase({ s: 'locating' });
     const r = await locateOnce();
     if (mine !== seq.current) return;
-    if (r.ok) await search({ lat: r.coords.lat, lon: r.coords.lon }, { kind: 'here' }, mine);
+    // You're standing there, so the phone's own zone is the place's zone.
+    if (r.ok) await search({ kind: 'here', at: { lat: r.coords.lat, lon: r.coords.lon }, tz: deviceZone() }, mine);
     else if (r.reason === 'denied') setPhase({ s: 'denied', state: r.state });
     else setPhase({ s: 'unavailable', servicesOff: r.servicesOff });
   }, [busy, search]);
@@ -90,22 +134,112 @@ export default function ToiletsScreen() {
     if (busy || !stay) return;
     const mine = ++seq.current;
     setOpenFailed(false);
-    await search({ lat: stay.lat, lon: stay.lon }, { kind: 'hotel', name: stay.name }, mine);
+    await search({ kind: 'hotel', at: { lat: stay.lat, lon: stay.lon }, tz: stay.tz ?? deviceZone(), name: stay.name }, mine);
   }, [busy, stay, search]);
 
-  const openMaps = async (h: ToiletHit) => {
-    setOpenFailed(false);
-    try {
-      await Linking.openURL(appleMapsWalkUrl(h.lat, h.lon, h.name));
-    } catch {
-      setOpenFailed(true);
-    }
-  };
+  // Map tab "Nearest toilet": each new nonce starts one search.
+  useEffect(() => {
+    const f = typeof params.find === 'string' ? params.find : null;
+    if (!f || handledFind.current === f) return;
+    handledFind.current = f;
+    nearMe();
+  }, [params.find, nearMe]);
 
-  const result = phase.s === 'done' ? phase.result : null;
-  const hits: ToiletHit[] = result?.ok ? result.toilets : [];
+  const done = phase.s === 'done' ? phase : null;
+  const result = done?.result ?? null;
+
+  // Keep the open/closed lines current while results are showing.
+  useEffect(() => {
+    if (!result?.ok) return;
+    const id = setInterval(() => setNow(Date.now()), TICK_MS);
+    return () => clearInterval(id);
+  }, [result]);
+
+  // Downloaded cities, for drawing offline tiles under the markers.
+  useEffect(() => {
+    if (!result?.ok) return;
+    let live = true;
+    listInstalled()
+      .then((list) => live && setCities(list))
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, [result]);
+
+  const openMaps = useCallback(
+    async (h: Toilet) => {
+      setOpenFailed(false);
+      try {
+        await Linking.openURL(appleMapsWalkUrl(h.lat, h.lon, h.name));
+        setRawRecent((old: unknown) => pushRecent(parseRecent(old), h, Date.now()));
+      } catch {
+        setOpenFailed(true);
+      }
+    },
+    [setRawRecent],
+  );
+
+  const onToggleSave = useCallback((h: Toilet) => setRawSaved((old: unknown) => toggleSaved(parseSaved(old), h, Date.now())), [setRawSaved]);
+  const onNote = useCallback((id: string, note: string) => setRawSaved((old: unknown) => setNote(parseSaved(old), id, note)), [setRawSaved]);
+  const onVote = useCallback((id: string, v: 'up' | 'down') => setRawSaved((old: unknown) => setVote(parseSaved(old), id, v)), [setRawSaved]);
+  const onToggleFilter = useCallback((f: FilterId) => setRawFilters((old: unknown) => toggleFilter(parseFilters(old), f)), [setRawFilters]);
+
+  const tz = done?.origin.tz ?? deviceZone();
+  const weekday = useMemo(() => weekdayOf(fromUtc(now, tz)), [now, tz]);
+  const allRows: Row[] = useMemo(() => {
+    if (!done || !result?.ok) return [];
+    return arrange(result.toilets, saved, done.origin.at).map((h) => ({ ...h, status: statusFor(h, now, done.origin.tz) }));
+  }, [done, result, saved, now]);
+  const asFilterRows = useMemo(() => allRows.map((r) => ({ hit: r, status: r.status })), [allRows]);
+  const rows = useMemo(() => applyFilters(asFilterRows, filters).map((r) => r.hit), [asFilterRows, filters]);
+  const counts = useMemo(() => filterCounts(asFilterRows, filters), [asFilterRows, filters]);
+  const anyPinned = rows.some((r) => r.pinned);
+  const openNowOn = filters.includes('openNow');
+  const selected = selectedId ? (rows.find((r) => r.id === selectedId) ?? null) : null;
+
   const backToIdle = () => setPhase({ s: 'idle' });
 
+  const renderCard = (h: Row) => (
+    <ToiletCard
+      hit={h}
+      status={h.status}
+      weekday={weekday}
+      labelUnknown={openNowOn}
+      pinned={h.pinned}
+      saved={savedOf(saved, h.id)}
+      onToggleSave={() => onToggleSave(h)}
+      onNote={(note) => onNote(h.id, note)}
+      onVote={(v) => onVote(h.id, v)}
+      onOpenMaps={() => openMaps(h)}
+    />
+  );
+
+  // --------------------------------------------------------------------------------------------------- map view
+  const originLabel = done ? (done.origin.kind === 'hotel' ? t('toiletplus.searchHotel', { name: done.origin.name }) : t('toiletplus.searchPoint')) : '';
+  const pins: MapPin[] = useMemo(() => {
+    if (!done) return [];
+    const out: MapPin[] = rows.map((r) => {
+      const name = r.name ?? t('toilets.unnamed');
+      return {
+        id: `t:${r.id}`,
+        lat: r.lat,
+        lon: r.lon,
+        title: name,
+        subtitle: t('toilets.distance', { ...toiletDistance(r.meters), min: r.minutes }),
+        color: r.pinned ? theme.warn : r.status.state === 'closed' ? theme.muted : theme.teal,
+        a11y: name,
+      };
+    });
+    out.push({ id: 'origin', lat: done.origin.at.lat, lon: done.origin.at.lon, title: originLabel, color: theme.accent, a11y: originLabel });
+    return out;
+  }, [done, rows, theme, t, originLabel]);
+  const initialRegion: Region | null = useMemo(() => (done ? regionFor([done.origin.at, ...rows.slice(0, 15)], 0.01) : null), [done, rows]);
+  const offlineCity = useMemo(() => (done ? pickCityFor(done.origin.at.lat, done.origin.at.lon, cities) : null), [done, cities]);
+  const offlineTiles = useMemo(() => (offlineCity ? offlineTilesFor(offlineCity) : null), [offlineCity]);
+  const onPinPress = useCallback((id: string) => setSelectedId(id.startsWith('t:') ? id.slice(2) : null), []);
+
+  const showResults = !!(result?.ok && done);
   const header = (
     <View style={{ gap: space.l, paddingBottom: space.s }}>
       <FadeInView>
@@ -158,29 +292,66 @@ export default function ToiletsScreen() {
         <Animated.View style={{ opacity: fade }}>
           {result.reason === 'none-found' ? <EmptyState title={t('toilets.noneTitle')} body={t('toilets.noneBody')} /> : null}
           {result.reason === 'offline-no-pack' ? (
-            <EmptyState title={t('toilets.offlineTitle')} body={t('toilets.offlineBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={phase.s === 'done' && phase.origin.kind === 'hotel' ? nearHotel : nearMe} />} />
+            <EmptyState title={t('toilets.offlineTitle')} body={t('toilets.offlineBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={done?.origin.kind === 'hotel' ? nearHotel : nearMe} />} />
           ) : null}
           {result.reason === 'network' ? (
-            <EmptyState title={t('toilets.networkTitle')} body={t('toilets.networkBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={phase.s === 'done' && phase.origin.kind === 'hotel' ? nearHotel : nearMe} />} />
+            <EmptyState title={t('toilets.networkTitle')} body={t('toilets.networkBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={done?.origin.kind === 'hotel' ? nearHotel : nearMe} />} />
           ) : null}
         </Animated.View>
       ) : null}
 
-      {result?.ok && phase.s === 'done' ? (
-        <Animated.View style={{ opacity: fade, gap: space.xs }}>
+      {showResults && done && result?.ok ? (
+        <Animated.View style={{ opacity: fade, gap: space.s }}>
           <Text accessibilityRole="header" style={{ fontFamily: fonts.displayMedium, fontSize: 20, color: theme.ink }}>
-            {phase.origin.kind === 'hotel' ? t('toilets.aroundHotel', { name: phase.origin.name }) : t('toilets.aroundHere')}
+            {done.origin.kind === 'hotel' ? t('toilets.aroundHotel', { name: done.origin.name }) : t('toilets.aroundHere')}
           </Text>
           <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted }}>
-            {hits.length === 1 ? t('toilets.count1') : t('toilets.count', { n: hits.length })}
+            {filters.length ? t('toiletplus.shown', { n: rows.length, total: allRows.length }) : allRows.length === 1 ? t('toilets.count1') : t('toilets.count', { n: allRows.length })}
             {' · '}
             {result.source === 'offline' ? t('toilets.source.offline', { city: result.city }) : t('toilets.source.online')}
           </Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('toilets.fromHere')}</Text>
+          <FilterBar active={filters} counts={counts} onToggle={onToggleFilter} />
+          {openNowOn ? <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('toiletplus.openNowNote')}</Text> : null}
+          <ViewToggle value={view} onChange={setView} />
+          {anyPinned ? <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('toiletplus.savedNear')}</Text> : null}
+          {view === 'list' ? <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('toilets.fromHere')}</Text> : null}
           {openFailed ? (
             <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.bodyBold, fontSize: 14, color: theme.danger }}>
               {t('toilets.openFailed')}
             </Text>
+          ) : null}
+          {rows.length === 0 && allRows.length > 0 ? (
+            <EmptyState
+              icon="funnel-outline"
+              title={t('toiletplus.noneMatchTitle')}
+              body={t('toiletplus.noneMatchBody')}
+              action={<Button kind="quiet" label={t('toiletplus.clearFilters')} hint={t('toiletplus.clearFiltersHint')} onPress={() => setRawFilters([])} />}
+            />
+          ) : null}
+          {view === 'map' && initialRegion ? (
+            <View style={{ gap: space.s }}>
+              <SatchelMap
+                key={`${done.run}`}
+                pins={pins}
+                initialRegion={initialRegion}
+                onPinPress={onPinPress}
+                height={MAP_HEIGHT}
+                label={t('toiletplus.mapA11y')}
+                fallbackTitle={t('toiletplus.noMapTitle')}
+                fallbackBody={t('toiletplus.noMapBody')}
+                offlineTiles={offlineTiles}
+                fit={{ points: [done.origin.at, ...rows.slice(0, 15)], key: done.run }}
+              />
+              <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('toilets.attribution')}</Text>
+              {offlineCity && offlineTiles ? <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.ok }}>{t('toiletplus.mapOffline', { city: offlineCity.name })}</Text> : null}
+              {mapAvailable() && !selected ? <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('toiletplus.mapTapHint')}</Text> : null}
+              {selected ? (
+                <FadeInView style={{ gap: space.s }}>
+                  {renderCard(selected)}
+                  <Button kind="quiet" icon="close" label={t('toiletplus.closeCard')} hint={t('toiletplus.closeCardHint')} onPress={() => setSelectedId(null)} />
+                </FadeInView>
+              ) : null}
+            </View>
           ) : null}
         </Animated.View>
       ) : null}
@@ -188,58 +359,28 @@ export default function ToiletsScreen() {
   );
 
   const footer = (
-    <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted, paddingTop: space.l }}>{t('toilets.attribution')}</Text>
+    <View style={{ gap: space.l, paddingTop: space.l, paddingBottom: space.xl }}>
+      {showResults ? <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('toiletplus.hoursNote')}</Text> : null}
+      <MineSection saved={saved} onOpen={(s: SavedToilet) => openMaps(s.toilet)} />
+      <RecentSection recent={recent} onOpen={(r: RecentToilet) => openMaps(r.toilet)} onClear={() => setRawRecent([])} />
+      <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('toilets.attribution')}</Text>
+    </View>
   );
 
-  const run = phase.s === 'done' ? phase.run : 0;
-  const renderItem = ({ item: h, index }: { item: ToiletHit; index: number }) => {
-    const name = h.name ?? t('toilets.unnamed');
-    const d = toiletDistance(h.meters);
-    const distance = t('toilets.distance', { n: d.n, unit: d.unit, min: h.minutes });
-    const dir = t(h.dirKey);
-    const chips = toiletChips(h).map((c) => ({ id: c.id, label: c.id === 'hours' ? t('toilets.chip.hours', { hours: c.text }) : t(chipKey(c)) }));
-    return (
-      <FadeInView delay={Math.min(index, 6) * 40} style={{ marginBottom: space.m }}>
-        <Card style={{ gap: space.m }}>
-          <View accessible accessibilityLabel={t('toilets.rowA11y', { name, distance, dir, features: chips.map((c) => c.label).join(', ') })} style={{ gap: space.m }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
-              <View style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: theme.tealSoft, alignItems: 'center', justifyContent: 'center' }}>
-                <View style={{ transform: [{ rotate: `${arrowDegrees(h.bearing)}deg` }] }}>
-                  <Ionicons name="arrow-up" size={26} color={theme.teal} />
-                </View>
-              </View>
-              <View style={{ flex: 1, gap: 2 }}>
-                <Text style={[typeScale.bodyStrong, { fontSize: 17, color: theme.ink }]}>{name}</Text>
-                <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.ink, fontVariant: ['tabular-nums'] }}>{distance}</Text>
-                <Text style={[typeScale.small, { color: theme.muted }]}>{t('toilets.direction', { dir })}</Text>
-              </View>
-            </View>
-            {chips.length ? (
-              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.xs }}>
-                {chips.map((c) => {
-                  const tone = toneColours(theme, CHIP_TONE[c.id]);
-                  return (
-                    <View key={c.label} style={{ backgroundColor: tone.bg, borderRadius: radius.pill, paddingHorizontal: space.m, paddingVertical: space.xs }}>
-                      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 13, color: CHIP_TONE[c.id] === 'ink' ? theme.ink : tone.fg }}>{c.label}</Text>
-                    </View>
-                  );
-                })}
-              </View>
-            ) : null}
-          </View>
-          <Button kind="secondary" icon="walk-outline" label={t('toilets.openMaps')} hint={t('toilets.openMapsHint', { name })} onPress={() => openMaps(h)} />
-        </Card>
-      </FadeInView>
-    );
-  };
-
+  const run = done?.run ?? 0;
+  const listData = showResults && view === 'list' ? rows : [];
   return (
     <Screen scroll={false}>
       <FlatList
         style={{ flex: 1 }}
-        data={hits}
+        data={listData}
         keyExtractor={(h) => `${run}:${h.id}`}
-        renderItem={renderItem}
+        renderItem={({ item, index }) => (
+          <FadeInView delay={Math.min(index, 6) * 40} style={{ marginBottom: space.m }}>
+            {renderCard(item)}
+          </FadeInView>
+        )}
+        extraData={saved}
         ListHeaderComponent={header}
         ListFooterComponent={footer}
         keyboardShouldPersistTaps="handled"

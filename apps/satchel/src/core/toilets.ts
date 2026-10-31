@@ -267,7 +267,8 @@ export function appleMapsWalkUrl(lat: number, lon: number, name?: string, from?:
 
 // ------------------------------------------------------------------------------------------------- near my hotel
 
-export type Stay = { name: string; lat: number; lon: number };
+/** T79: `tz` is the hotel booking's zone, for reading opening hours at that place. */
+export type Stay = { name: string; lat: number; lon: number; tz?: string };
 
 const dateOf = (local: string | undefined) => (local ?? '').slice(0, 10);
 
@@ -280,8 +281,8 @@ export function stayFor(trips: readonly Trip[], today: string): Stay | null {
   if (!trip) return null;
   const stays = trip.items
     .filter((i) => i.kind === 'hotel' && i.place && validLat(i.place.lat) && validLon(i.place.lon))
-    .map((i) => ({ from: dateOf(i.start.local), to: dateOf(i.end?.local) || dateOf(i.start.local), name: i.place?.name || i.title, lat: i.place?.lat as number, lon: i.place?.lon as number }))
+    .map((i) => ({ from: dateOf(i.start.local), to: dateOf(i.end?.local) || dateOf(i.start.local), name: i.place?.name || i.title, lat: i.place?.lat as number, lon: i.place?.lon as number, tz: i.start.tz }))
     .sort((a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : 0));
   const pick = stays.find((s) => s.from <= today && today <= s.to) ?? stays.find((s) => s.from > today) ?? [...stays].reverse().find((s) => s.from < today);
-  return pick ? { name: pick.name, lat: pick.lat, lon: pick.lon } : null;
+  return pick ? { name: pick.name, lat: pick.lat, lon: pick.lon, ...(pick.tz ? { tz: pick.tz } : {}) } : null;
 }

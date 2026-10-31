@@ -128,6 +128,11 @@ export default function TripScreen() {
     router.push({ pathname: '/item-edit', params: { tripId: id, kind, date } });
   };
 
+  const pasteBooking = () => {
+    setAdding(null);
+    router.push({ pathname: '/paste-booking', params: { tripId: id } });
+  };
+
   const kindChooser = (date: string) => (
     <View style={{ gap: space.s }}>
       <Label>{t('trip.chooseKind')}</Label>
@@ -136,6 +141,8 @@ export default function TripScreen() {
           <Chip key={k} label={t(kindKey(k))} selected={false} icon={<KindIcon kind={k} color={theme.accent} size={18} />} onPress={() => add(k, date)} />
         ))}
       </View>
+      {/* T77: or paste a confirmation and let Satchel draft it. */}
+      <Button label={t('paste.open')} hint={t('paste.openHint')} kind="secondary" icon="clipboard-outline" onPress={pasteBooking} />
       <Button label={t('common.cancel')} hint={t('spec.timeline.cancelAddHint')} kind="quiet" onPress={() => setAdding(null)} />
     </View>
   );
@@ -223,6 +230,7 @@ export default function TripScreen() {
               icon="map-outline"
               onPress={() => router.navigate({ pathname: '/map', params: { tripId: trip.id, placeId: '' } })}
             />
+            <Button label={t('paste.open')} hint={t('paste.openHint')} kind="quiet" icon="clipboard-outline" onPress={pasteBooking} />
             <ReadinessCard trip={trip} />
             {past ? null : <JetLagCard trip={trip} />}
             <WeatherCard trip={trip} />

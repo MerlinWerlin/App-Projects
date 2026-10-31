@@ -11,7 +11,7 @@
 import type { Item, LocalDate, Stamp, Trip } from './model.ts';
 import { countryForZone } from './emergency.ts';
 import { adapterHint, findEssentials, type EssentialsTable } from './essentials.ts';
-import { groupByCategory, normaliseLabel, progress, qtyFor, sortByCategory, type PackItem, type PackList, type QtyRule, type Template } from './packing.ts';
+import { cleanQty, groupByCategory, normaliseLabel, progress, qtyFor, sortByCategory, type PackItem, type PackList, type QtyRule, type Template } from './packing.ts';
 import { sunDay } from './sun.ts';
 import { addDays, daysBetween } from './tz.ts';
 import { STALE_AFTER_MS, type WeatherDay } from './weather.ts';
@@ -79,6 +79,13 @@ export type QtyContext = { nights: number; laundry: boolean; rules: RuleIndex };
  * laundry switch updates them); laundry only caps clothes. Rows without a rule show their stored quantity, if any.
  */
 export function itemQty(item: PackItem, ctx: QtyContext): number | undefined {
+  const own = cleanQty(item.userQty);
+  if (own !== undefined) return own;
+  return suggestedQty(item, ctx);
+}
+
+/** T76: the quantity worked out for a row, ignoring any hand-set one (what "Use suggested" goes back to). */
+export function suggestedQty(item: PackItem, ctx: QtyContext): number | undefined {
   const r = item.templateItemId ? ctx.rules.get(item.templateItemId) : undefined;
   if (!r) return typeof item.qty === 'number' && item.qty >= 1 ? Math.floor(item.qty) : undefined;
   const clothes = (item.category ?? r.category) === 'clothes';
@@ -287,7 +294,36 @@ export const COVERS: Record<Exclude<SuggestionKind, 'plug_adapter'>, readonly st
   eye_mask: ['eye mask', 'sleep mask'],
 };
 
+/**
+ * T76: the same items in German, French, Spanish, Italian, Dutch and Portuguese (written without accents: labels are
+ * folded before matching), so a row the traveller typed as "Regenschirm" or "parapluie" counts as the umbrella.
+ * Small on purpose: common everyday words only, whole words or phrases, never parts of words.
+ */
+export const COVERS_INTL: Record<Exclude<SuggestionKind, 'plug_adapter'>, readonly string[]> = {
+  umbrella: ['regenschirm', 'schirm', 'taschenschirm', 'parapluie', 'paraguas', 'ombrello', 'paraplu', 'guarda chuva', 'guarda chuvas', 'sombrinha'],
+  rain_jacket: ['regenjacke', 'regenmantel', 'regencape', 'impermeable', 'k way', 'veste de pluie', 'chubasquero', 'impermeabile', 'regenjas', 'capa de chuva', 'casaco impermeavel'],
+  warm_layer: ['pullover', 'pulli', 'fleecejacke', 'strickjacke', 'daunenjacke', 'polaire', 'doudoune', 'jersey', 'sudadera', 'forro polar', 'maglione', 'felpa', 'piumino', 'trui', 'camisola', 'casaco quente'],
+  gloves_hat: ['handschuhe', 'mutze', 'muetze', 'gants', 'bonnet', 'guantes', 'gorro', 'guanti', 'berretto', 'handschoenen', 'muts', 'luvas'],
+  sun_hat: ['sonnenhut', 'kappe', 'chapeau de soleil', 'casquette', 'sombrero', 'gorra', 'cappello', 'cappellino', 'zonnehoed', 'chapeu'],
+  sunscreen: ['sonnencreme', 'sonnenschutz', 'sonnenmilch', 'creme solaire', 'ecran solaire', 'protector solar', 'crema solar', 'crema solare', 'protezione solare', 'zonnebrand', 'zonnebrandcreme', 'protetor solar'],
+  eye_mask: ['schlafmaske', 'augenmaske', 'masque de sommeil', 'masque de nuit', 'antifaz', 'mascherina per dormire', 'slaapmasker', 'mascara de dormir'],
+};
+
+/** Lower-case words without accents ("Crème solaire" -> "creme solaire") for the synonym table. */
+export const foldLabel = (s: string) => normaliseLabel(s.normalize('NFD').replace(/\p{M}+/gu, ''));
+
 const hasPhrase = (label: string, phrase: string) => ` ${label} `.includes(` ${phrase} `);
+
+/** Whether a row label clearly names this kind of item, in English or one of the synonym table's languages. */
+export function labelCovers(kind: Exclude<SuggestionKind, 'plug_adapter'>, label: string): boolean {
+  const n = normaliseLabel(label);
+  if (COVERS[kind].some((ph) => hasPhrase(n, ph))) return true;
+  const f = foldLabel(label);
+  return COVERS_INTL[kind].some((ph) => hasPhrase(f, ph));
+}
+
+/** T76: "plug adapter" in the synonym table's languages (a generic adapter row covers any plug suggestion). */
+const INTL_ADAPTER = /(^| )(reiseadapter|steckeradapter|adapter|adaptateur|adaptador|adattatore|verloopstekker|reisstekker|wereldstekker)( |$)/;
 
 /** Plug letters named on an adapter row ("plug adapter types a b" -> A, B); null for a generic adapter. */
 function adapterLetters(norm: string): string[] | null {
@@ -312,11 +348,11 @@ export function isCovered(list: PackList, s: Suggestion, label: string): boolean
     const n = normaliseLabel(i.label);
     if (want && n === want) return true;
     if (s.kind === 'plug_adapter') {
-      if (!/\b(adapter|adaptor)s?\b/.test(n)) continue;
+      if (!/\b(adapter|adaptor)s?\b/.test(n) && !INTL_ADAPTER.test(foldLabel(i.label))) continue;
       const letters = adapterLetters(n);
       if (letters === null || letters.length === 0) return true;
       if ((s.plugs ?? []).every((p) => letters.includes(p))) return true;
-    } else if (COVERS[s.kind].some((ph) => hasPhrase(n, ph))) {
+    } else if (labelCovers(s.kind, i.label)) {
       return true;
     }
   }

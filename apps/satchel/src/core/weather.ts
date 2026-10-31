@@ -325,3 +325,68 @@ export function cardDates(trip: Trip, today: LocalDate, n = CARD_DAYS): LocalDat
 
 /** Whether any listed date is close enough for a forecast to exist (otherwise the app does not ask the network). */
 export const forecastReaches = (dates: readonly LocalDate[], today: LocalDate) => dates.some((d) => daysBetween(today, d) <= FORECAST_HORIZON_DAYS);
+
+// ---- T76: every stop of the trip, not only the next one ----
+
+/** A place the trip stops at, with the local dates the traveller is there (in the place's zone). */
+export type WeatherStop = WeatherPlace & { key: string; fromDate: LocalDate; toDate: LocalDate };
+
+/** Same key for the same spot (four decimals, as the forecast cache uses). */
+export const stopKey = (at: LatLon) => `${roundCoord(at.lat)},${roundCoord(at.lon)}`;
+
+const dateIn = (utc: number, tz: string): LocalDate | null => {
+  try {
+    return localDate(fromUtc(utc, tz));
+  } catch {
+    return null;
+  }
+};
+
+/**
+ * The trip's stops with coordinates, in the order they are first reached, one per spot (a hotel stay and the
+ * flight that lands next to it at the same coordinates count once; its dates widen to cover both). A trip with no
+ * booking coordinates falls back to the place weatherPlace picks (a saved place), over the trip's dates.
+ */
+export function weatherStops(trip: Trip, now: number): WeatherStop[] {
+  const out: WeatherStop[] = [];
+  const byKey = new Map<string, WeatherStop>();
+  for (const c of candidates(trip)) {
+    const from = dateIn(c.from, c.tz);
+    const to = dateIn(c.to, c.tz);
+    if (!from || !to) continue;
+    const key = stopKey(c.place);
+    const old = byKey.get(key);
+    if (old) {
+      if (to > old.toDate) old.toDate = to;
+      continue;
+    }
+    const stop: WeatherStop = { key, name: c.place.name, lat: c.place.lat, lon: c.place.lon, tz: c.tz, fromDate: from, toDate: to };
+    byKey.set(key, stop);
+    out.push(stop);
+  }
+  if (out.length) return out;
+  const p = weatherPlace(trip, now);
+  return p ? [{ ...p, key: stopKey(p), fromDate: trip.startDate, toDate: trip.endDate }] : [];
+}
+
+/** The stop the card opens on: the current or next destination (weatherPlace), else the first stop. */
+export function defaultStop(stops: readonly WeatherStop[], trip: Trip, now: number): WeatherStop | null {
+  const p = weatherPlace(trip, now);
+  const key = p ? stopKey(p) : null;
+  return stops.find((s) => s.key === key) ?? stops[0] ?? null;
+}
+
+/**
+ * The dates the card lists for a chosen stop: from the day the traveller gets there (or today, if later; never
+ * before the trip) for up to CARD_DAYS days, never past the trip's last day. A stop already left shows from today,
+ * like cardDates. Empty for a trip that has ended.
+ */
+export function stopDates(trip: Trip, stop: Pick<WeatherStop, 'fromDate'>, today: LocalDate, n = CARD_DAYS): LocalDate[] {
+  let start = today;
+  if (trip.startDate > start) start = trip.startDate;
+  if (stop.fromDate > start) start = stop.fromDate;
+  if (start > trip.endDate) return [];
+  const out: LocalDate[] = [];
+  for (let d = start; d <= trip.endDate && out.length < n; d = addDays(d, 1)) out.push(d);
+  return out;
+}

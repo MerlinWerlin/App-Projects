@@ -33,7 +33,7 @@ export function demoTrip(start: LocalDate, now = new Date().toISOString()): Trip
       kind: 'hotel',
       title: 'Hotel Asakusa Lantern (demo)',
       ref: 'H-58213',
-      start: { local: `${d(0)}T15:00`, tz: 'Asia/Tokyo' },
+      start: { local: `${d(0)}T19:30`, tz: 'Asia/Tokyo' }, // T76: after DA 21 lands (17:45), so the route reads flight -> hotel
       end: { local: `${d(4)}T11:00`, tz: 'Asia/Tokyo' },
       place: { id: 'h1', name: 'Hotel Asakusa Lantern (demo)', address: '2-1 Asakusa, Taito City, Tokyo', localAddress: '東京都台東区浅草2-1', lat: 35.7148, lon: 139.7967 },
     }),

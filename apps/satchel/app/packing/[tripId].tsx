@@ -1,7 +1,7 @@
 // Trip packing list (FLOWS §10). No list yet: pick one or more trip-type templates (the suggested one preselected)
 // or start empty. With a list: a hero card with a progress ring (T75), the laundry switch, opt-in suggestions
 // (forecast / daylight / season / plug adapter; Add or Dismiss, never added on their own), items grouped by category
-// with checkboxes, add / rename / remove, Add a template (items already there are skipped; ticks and renames stay),
+// with checkboxes, add / rename (and, T76, set the quantity by hand) / remove, Add a template (items already there are skipped; ticks and renames stay),
 // Share list as text and Repack for home (unticks all, confirmed). Clothes counts follow the trip's nights read in
 // the bookings' own zones (src/core/smartpack.ts). Everything is stored on the phone under 'satchel.packing.v1'.
 // Free forever.
@@ -20,6 +20,7 @@ import {
   groupByCategory,
   listFor,
   listTemplates,
+  MAX_QTY,
   PACKING_KEY,
   parseTemplates,
   progress,
@@ -27,6 +28,7 @@ import {
   removeItem,
   renameItem,
   resetTicks,
+  setItemQty,
   suggestTemplate,
   toggleItem,
   tripFacts,
@@ -47,6 +49,7 @@ import {
   ruleIndex,
   setLaundry,
   smartSuggestions,
+  suggestedQty,
   tripNightsInZones,
   type Suggestion,
 } from '../../src/core/smartpack.ts';
@@ -243,6 +246,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
   const nights = tripNightsInZones(trip);
   const laundry = isLaundry(list);
   const qtyOf = useCallback((i: PackItem) => itemQty(i, { nights, laundry, rules: RULES }), [nights, laundry]);
+  const suggestedOf = useCallback((i: PackItem) => suggestedQty(i, { nights, laundry, rules: RULES }), [nights, laundry]);
   const all = useMemo(() => smartSuggestions(smart.input), [smart.input]);
   const open = useMemo(() => openSuggestions(list, all, (s) => suggestionLabel(t, s)), [list, all, t]);
   const dismissedCount = dismissedOf(list).length;
@@ -317,11 +321,12 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
         <PackRow
           item={row.item}
           qty={qtyOf(row.item)}
+          suggested={suggestedOf(row.item)}
           editing={editing === row.item.id}
           onToggle={() => update((l) => toggleItem(l, row.item.id))}
           onEdit={() => setEditing(row.item.id)}
-          onRename={(label) => {
-            update((l) => renameItem(l, row.item.id, label));
+          onRename={(label, own) => {
+            update((l) => setItemQty(renameItem(l, row.item.id, label), row.item.id, own));
             setEditing(null);
           }}
           onCancel={() => setEditing(null)}
@@ -331,7 +336,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
           }}
         />
       ),
-    [t, theme, editing, update, qtyOf],
+    [t, theme, editing, update, qtyOf, suggestedOf],
   );
 
   const header = (
@@ -391,7 +396,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
         data={rows}
         keyExtractor={(r) => r.key}
         renderItem={renderRow}
-        extraData={[editing, qtyOf]}
+        extraData={[editing, qtyOf, suggestedOf]}
         ListHeaderComponent={header}
         ListFooterComponent={footer}
         keyboardShouldPersistTaps="handled"
@@ -404,6 +409,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
 const PackRow = memo(function PackRow({
   item,
   qty,
+  suggested,
   editing,
   onToggle,
   onEdit,
@@ -414,15 +420,21 @@ const PackRow = memo(function PackRow({
   item: PackItem;
   /** Shown quantity (worked out from the trip's nights and the laundry switch). */
   qty: number | undefined;
+  /** T76: the worked-out quantity, ignoring a hand-set one ("Use suggested" goes back to it). */
+  suggested: number | undefined;
   editing: boolean;
   onToggle: () => void;
   onEdit: () => void;
-  onRename: (label: string) => void;
+  /** New label and the hand-set quantity (null: use the worked-out one). */
+  onRename: (label: string, own: number | null) => void;
   onCancel: () => void;
   onRemove: () => void;
 }) {
   const { t, theme } = useApp();
   const [name, setName] = useState(item.label);
+  // T76: quantity editing. null = no hand-set quantity (the row shows the worked-out one, if any).
+  const [own, setOwn] = useState<number | null>(item.userQty ?? null);
+  const shown = own ?? suggested;
   const state = t(item.done ? 'packing.statePacked' : 'packing.stateNotPacked');
   const a11y = qty
     ? t('packing.itemQtyA11y', { label: item.label, qty: t('packing.qtyA11y', { qty }), state })
@@ -432,9 +444,47 @@ const PackRow = memo(function PackRow({
     return (
       <Card style={{ marginVertical: space.xs }}>
         <TextField label={t('packing.renameLabel')} value={name} onChange={setName} />
+        <Text style={{ fontFamily: fonts.bodyBold, fontSize: 14, color: theme.muted }}>{t('f88.packing.qtyLabel')}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
+          <PressableScale
+            accessibilityRole="button"
+            accessibilityLabel={t('f88.packing.qtyLess', { label: name || item.label })}
+            accessibilityState={{ disabled: shown === undefined || shown <= 1 }}
+            disabled={shown === undefined || shown <= 1}
+            onPress={() => setOwn(Math.max(1, (shown ?? 1) - 1))}
+            style={{ width: TOUCH, height: TOUCH, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center', backgroundColor: theme.accentSoft, opacity: shown === undefined || shown <= 1 ? 0.4 : 1 }}
+          >
+            <Ionicons name="remove" size={22} color={theme.accentInk} />
+          </PressableScale>
+          <Text
+            accessibilityLiveRegion="polite"
+            style={{ minWidth: 64, textAlign: 'center', fontFamily: fonts.bodyBold, fontSize: 18, color: shown ? theme.ink : theme.muted, fontVariant: ['tabular-nums'] }}
+          >
+            {shown ? t('packing.qty', { qty: shown }) : t('f88.packing.qtyNone')}
+          </Text>
+          <PressableScale
+            accessibilityRole="button"
+            accessibilityLabel={t('f88.packing.qtyMore', { label: name || item.label })}
+            accessibilityState={{ disabled: (shown ?? 0) >= MAX_QTY }}
+            disabled={(shown ?? 0) >= MAX_QTY}
+            onPress={() => setOwn(Math.min(MAX_QTY, (shown ?? 0) + 1))}
+            style={{ width: TOUCH, height: TOUCH, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center', backgroundColor: theme.accentSoft, opacity: (shown ?? 0) >= MAX_QTY ? 0.4 : 1 }}
+          >
+            <Ionicons name="add" size={22} color={theme.accentInk} />
+          </PressableScale>
+        </View>
+        {own !== null ? (
+          <Button
+            kind="quiet"
+            icon="refresh"
+            label={suggested ? t('f88.packing.qtySuggested', { qty: suggested }) : t('f88.packing.qtyClear')}
+            hint={t('f88.packing.qtySuggestedHint')}
+            onPress={() => setOwn(null)}
+          />
+        ) : null}
         <View style={{ flexDirection: 'row', gap: space.s }}>
           <View style={{ flex: 1 }}>
-            <Button label={t('common.save')} onPress={() => onRename(name)} />
+            <Button label={t('common.save')} onPress={() => onRename(name, own)} />
           </View>
           <View style={{ flex: 1 }}>
             <Button
@@ -442,6 +492,7 @@ const PackRow = memo(function PackRow({
               kind="quiet"
               onPress={() => {
                 setName(item.label);
+                setOwn(item.userQty ?? null);
                 onCancel();
               }}
             />
@@ -477,10 +528,11 @@ const PackRow = memo(function PackRow({
       </PressableScale>
       <PressableScale
         accessibilityRole="button"
-        accessibilityLabel={t('packing.renameItem', { label: item.label })}
-        accessibilityHint={t('packing.renameHint')}
+        accessibilityLabel={t('f88.packing.editItem', { label: item.label })}
+        accessibilityHint={t('f88.packing.editHint')}
         onPress={() => {
           setName(item.label);
+          setOwn(item.userQty ?? null);
           onEdit();
         }}
         style={{ width: TOUCH, alignItems: 'center' }}

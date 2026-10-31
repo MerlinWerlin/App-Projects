@@ -217,7 +217,7 @@ test('stayFor: the hotel covering today, else the next, else the last; needs coo
   const b = hotel('b', '2026-11-04', '2026-11-08', { id: 'p2', name: 'Kyoto Ryokan', lat: 35.0, lon: 135.75 });
   const noPos = hotel('c', '2026-11-08', '2026-11-10', { id: 'p3', name: 'Osaka Hotel' });
   const trips = [trip([b, noPos, a])];
-  assert.deepEqual(stayFor(trips, '2026-11-02'), { name: 'Tokyo Inn', lat: 35.68, lon: 139.76 });
+  assert.deepEqual(stayFor(trips, '2026-11-02'), { name: 'Tokyo Inn', lat: 35.68, lon: 139.76, tz: 'Asia/Tokyo' });
   assert.equal(stayFor(trips, '2026-11-05')?.name, 'Kyoto Ryokan');
   assert.equal(stayFor(trips, '2026-11-09')?.name, 'Kyoto Ryokan', 'no position on the Osaka stay: fall back to the last');
   assert.equal(stayFor(trips, '2026-12-01'), null, 'no trip today');
