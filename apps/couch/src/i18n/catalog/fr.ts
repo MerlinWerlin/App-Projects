@@ -752,7 +752,7 @@ export const fr: Catalogue = {
   "app.feedback.thanks": "Merci ! Le message est prêt dans Mail, il suffit d’appuyer sur Envoyer.",
   // T92 (cast-1024 phase B): AirPlay / Screen Mirroring button
   "ui.airplay.label": "AirPlay / Recopie de l’écran",
-  "ui.airplay.hint": "Ouvre la liste des téléviseurs AirPlay. Si elle ne s’ouvre pas, explique comment recopier l’écran.",
+  "ui.airplay.hint": "Montre comment recopier l’écran du téléphone sur la TV avec AirPlay.",
   // T92 (cast-1024 phase B): Screen Mirroring guide
   "app.airplay.title": "Recopie de l’écran",
   "app.airplay.intro": "Affichez tout l’écran de votre téléphone sur le téléviseur avec AirPlay.",

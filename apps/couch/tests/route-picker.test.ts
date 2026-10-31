@@ -124,10 +124,10 @@ describe('AirPlay button and guide', () => {
   const button = read('src/ui/cast/AirPlayButton.tsx');
   const guide = read('app/airplay.tsx');
 
-  it('the button opens the picker and falls back to the guide', () => {
+  it('the button opens the Screen Mirroring guide (owner feedback 1 Nov 2026: the bare picker left the TV waiting)', () => {
     expect(button).toContain('export default function AirPlayButton');
-    expect(button).toContain("from '../../native/routePicker'");
-    expect(button).toMatch(/const shown = await showRoutePicker\(\);\s*if \(!shown\) onShowGuide\(\);/);
+    expect(button).not.toContain("from '../../native/routePicker'");
+    expect(button).toContain('onPress={onShowGuide}');
     expect(button).toContain("label={t('ui.airplay.label')}");
     expect(button).toContain("accessibilityHint={t('ui.airplay.hint')}");
     expect(button).toContain('name="screenMirror"');

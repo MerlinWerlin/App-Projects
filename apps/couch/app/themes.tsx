@@ -1,4 +1,4 @@
-import { Stack, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { useEffect, useRef } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 import { dpadGeometry } from '../src/core/dpadGeometry';
@@ -88,7 +88,6 @@ export default function ThemesScreen() {
   const shownName = t(shown.nameKey);
   return (
     <>
-      <Stack.Screen options={{ headerShown: false }} />
       <LargeTitleHeader
         title={t('app.themes.title')}
         leading={<PillButton variant="plain" label={t('app.common.back')} onPress={() => router.back()} />}

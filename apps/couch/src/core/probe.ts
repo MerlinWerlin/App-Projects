@@ -1,6 +1,6 @@
 /**
  * Unicast fallback for when multicast is unavailable (iOS before the multicast entitlement,
- * Expo Go, guest Wi-Fi): walk the subnet with plain HTTP GETs, plus manual-IP validation.
+ * Expo Go, guest Wi-Fi): walk the subnet with plain HTTP requests, plus manual-IP validation.
  * Transport is injected (FetchLike). Tested with a fake fetch and sample payloads, not hardware.
  */
 import { t } from '../i18n/core';
@@ -10,6 +10,12 @@ import { isIpv4 } from './discovery';
 
 export const ROKU_ECP_PORT = 8060;
 export const SAMSUNG_API_PORT = 8001;
+/** Sony Bravia REST API (port 80): /sony/system getInterfaceInformation answers without a key. */
+export const SONY_API_PORT = 80;
+/** Chromecast built-in / Google TV local setup API (plain HTTP on older firmware). */
+export const CAST_SETUP_PORT = 8008;
+/** LG webOS SSAP plain WebSocket port; a plain HTTP GET there answers "Hello world". */
+export const WEBOS_PROBE_PORT = 3000;
 export const DEFAULT_PROBE_TIMEOUT_MS = 800;
 
 function toInt(ip: string): number | null {
@@ -126,6 +132,60 @@ export function parseSamsungApiV2(body: string, host: string): TvCandidate | nul
   return c;
 }
 
+/** Maps a Sony Bravia /sony/system getInterfaceInformation JSON body to a candidate. */
+export function parseSonyInterfaceInfo(body: string, host: string): TvCandidate | null {
+  let j: unknown;
+  try {
+    j = JSON.parse(body);
+  } catch {
+    return null;
+  }
+  const result = (j as { result?: unknown })?.result;
+  const info = Array.isArray(result) ? (result[0] as Record<string, unknown> | undefined) : undefined;
+  if (!info || typeof info !== 'object') return null;
+  const str = (v: unknown): string | undefined => (typeof v === 'string' && v.trim() !== '' ? v.trim() : undefined);
+  const category = str(info['productCategory']) ?? '';
+  if (!/tv/i.test(category)) return null;
+  const c: TvCandidate = { platform: 'sony', host, port: SONY_API_PORT, source: 'probe' };
+  const model = str(info['modelName']);
+  if (model) c.model = model;
+  const name = str(info['productName']);
+  if (name) c.name = name;
+  c.location = `http://${host}/sony/system`;
+  return c;
+}
+
+/** Maps a Chromecast built-in GET :8008/setup/eureka_info JSON body to a Google TV candidate. */
+export function parseCastEurekaInfo(body: string, host: string): TvCandidate | null {
+  let j: unknown;
+  try {
+    j = JSON.parse(body);
+  } catch {
+    return null;
+  }
+  if (typeof j !== 'object' || j === null) return null;
+  const root = j as Record<string, unknown>;
+  const str = (v: unknown): string | undefined => (typeof v === 'string' && v.trim() !== '' ? v.trim() : undefined);
+  // Only devices that look like a Cast receiver (a build or cast revision field, or a ssdp_udn).
+  if (!str(root['cast_build_revision']) && !str(root['build_version']) && !str(root['ssdp_udn']) && typeof root['build_info'] !== 'object') return null;
+  const c: TvCandidate = { platform: 'androidtv', host, port: CAST_SETUP_PORT, source: 'probe' };
+  const name = str(root['name']);
+  if (name) c.name = name;
+  const deviceInfo = (typeof root['device_info'] === 'object' && root['device_info'] !== null ? root['device_info'] : {}) as Record<string, unknown>;
+  const model = str(deviceInfo['model_name']) ?? str(root['model_name']);
+  if (model) c.model = model;
+  const udn = str(root['ssdp_udn']);
+  if (udn) c.usn = udn;
+  c.location = `http://${host}:${CAST_SETUP_PORT}/setup/eureka_info`;
+  return c;
+}
+
+/** LG webOS answers a plain HTTP GET on its SSAP port with "Hello world". */
+export function parseWebosHello(body: string, host: string): TvCandidate | null {
+  if (!/hello world/i.test(body)) return null;
+  return { platform: 'webos', host, port: WEBOS_PROBE_PORT, source: 'probe', location: `http://${host}:${WEBOS_PROBE_PORT}/` };
+}
+
 function safeDecodeHtml(s: string): string {
   return s.replace(/&quot;/g, '"').replace(/&amp;/g, '&');
 }
@@ -140,18 +200,44 @@ async function tryGet(fetch: FetchLike, url: string, timeoutMs: number): Promise
   }
 }
 
-/** Probes one host for Roku ECP and Samsung API v2 in parallel; Roku wins if both answer. */
+async function tryPostJson(fetch: FetchLike, url: string, body: string, timeoutMs: number): Promise<string | null> {
+  try {
+    const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body, timeoutMs });
+    if (!res.ok) return null;
+    return await res.text();
+  } catch {
+    return null;
+  }
+}
+
+const SONY_INTERFACE_INFO = JSON.stringify({ method: 'getInterfaceInformation', id: 33, params: [], version: '1.0' });
+
+/**
+ * Probes one host over plain HTTP for the TVs that answer without multicast: Roku ECP, Samsung API v2,
+ * Sony Bravia REST, Google TV / Chromecast built-in setup info and LG webOS (owner TestFlight feedback
+ * 1 Nov 2026: store builds have no SSDP / mDNS yet, so before this only Roku and Samsung could be found).
+ * All run in parallel; the first match in that order wins.
+ */
 export async function probeHost(
   fetch: FetchLike,
   host: string,
   opts: { timeoutMs?: number } = {},
 ): Promise<TvCandidate | null> {
   const timeoutMs = opts.timeoutMs ?? DEFAULT_PROBE_TIMEOUT_MS;
-  const [roku, samsung] = await Promise.all([
+  const [roku, samsung, sony, cast, webos] = await Promise.all([
     tryGet(fetch, `http://${host}:${ROKU_ECP_PORT}/query/device-info`, timeoutMs),
     tryGet(fetch, `http://${host}:${SAMSUNG_API_PORT}/api/v2/`, timeoutMs),
+    tryPostJson(fetch, `http://${host}/sony/system`, SONY_INTERFACE_INFO, timeoutMs),
+    tryGet(fetch, `http://${host}:${CAST_SETUP_PORT}/setup/eureka_info`, timeoutMs),
+    tryGet(fetch, `http://${host}:${WEBOS_PROBE_PORT}/`, timeoutMs),
   ]);
-  return (roku !== null ? parseRokuDeviceInfo(roku, host) : null) ?? (samsung !== null ? parseSamsungApiV2(samsung, host) : null);
+  return (
+    (roku !== null ? parseRokuDeviceInfo(roku, host) : null) ??
+    (samsung !== null ? parseSamsungApiV2(samsung, host) : null) ??
+    (sony !== null ? parseSonyInterfaceInfo(sony, host) : null) ??
+    (cast !== null ? parseCastEurekaInfo(cast, host) : null) ??
+    (webos !== null ? parseWebosHello(webos, host) : null)
+  );
 }
 
 export interface ProbeSubnetOptions {

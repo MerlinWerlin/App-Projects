@@ -737,7 +737,7 @@ export const ja: Catalogue = {
   "app.feedback.thanks": "ありがとうございます！メールアプリで送信をタップしてください。",
   // T92 (cast-1024 phase B): AirPlay / Screen Mirroring button
   "ui.airplay.label": "AirPlay / 画面ミラーリング",
-  "ui.airplay.hint": "AirPlay対応テレビの一覧を開きます。開けない場合は画面をミラーリングする方法を表示します。",
+  "ui.airplay.hint": "AirPlayで電話の画面をテレビにミラーリングする方法を表示します。",
   // T92 (cast-1024 phase B): Screen Mirroring guide
   "app.airplay.title": "画面ミラーリング",
   "app.airplay.intro": "AirPlayでスマートフォンの画面全体をテレビに表示します。",

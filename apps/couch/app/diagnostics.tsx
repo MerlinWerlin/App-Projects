@@ -1,4 +1,4 @@
-import { Stack, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { Share, StyleSheet, View } from 'react-native';
 import { ago, formatLogEntry, type Diagnostics } from '../src/core/diagnostics';
@@ -41,7 +41,6 @@ export default function DiagnosticsScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ headerShown: false }} />
       <LargeTitleHeader
         title={t('app.diagnostics.title')}
         leading={<PillButton variant="plain" label={t('app.common.back')} onPress={() => router.back()} />}

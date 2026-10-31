@@ -738,7 +738,7 @@ export const es: Catalogue = {
   "app.feedback.thanks": "¡Gracias! El mensaje está listo en tu app de Correo; solo toca Enviar.",
   // T92 (cast-1024 phase B): AirPlay / Screen Mirroring button
   "ui.airplay.label": "AirPlay / Duplicar pantalla",
-  "ui.airplay.hint": "Abre la lista de televisores AirPlay. Si no se abre, muestra cómo duplicar la pantalla.",
+  "ui.airplay.hint": "Muestra cómo duplicar la pantalla del teléfono en la TV con AirPlay.",
   // T92 (cast-1024 phase B): Screen Mirroring guide
   "app.airplay.title": "Duplicar pantalla",
   "app.airplay.intro": "Muestra toda la pantalla del teléfono en el televisor con AirPlay.",

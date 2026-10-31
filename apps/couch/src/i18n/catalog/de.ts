@@ -754,7 +754,7 @@ export const de: Catalogue = {
   "app.feedback.thanks": "Danke! Die Nachricht ist in deiner Mail-App bereit, tipp dort auf Senden.",
   // T92 (cast-1024 phase B): AirPlay / Screen Mirroring button
   "ui.airplay.label": "AirPlay / Bildschirmsynchronisierung",
-  "ui.airplay.hint": "Öffnet die Liste der AirPlay-Fernseher. Klappt das nicht, siehst du, wie du deinen Bildschirm spiegelst.",
+  "ui.airplay.hint": "Zeigt, wie du deinen Handybildschirm per AirPlay auf dem Fernseher spiegelst.",
   // T92 (cast-1024 phase B): Screen Mirroring guide
   "app.airplay.title": "Bildschirmsynchronisierung",
   "app.airplay.intro": "Zeig deinen ganzen Handybildschirm mit AirPlay auf dem Fernseher.",

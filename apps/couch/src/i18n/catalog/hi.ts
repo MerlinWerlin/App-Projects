@@ -737,7 +737,7 @@ export const hi: Catalogue = {
   "app.feedback.thanks": "धन्यवाद! संदेश आपके मेल ऐप में तैयार है, बस वहाँ भेजें दबाएँ।",
   // T92 (cast-1024 phase B): AirPlay / Screen Mirroring button
   "ui.airplay.label": "AirPlay / स्क्रीन मिररिंग",
-  "ui.airplay.hint": "AirPlay वाले टीवी की सूची खोलता है। अगर नहीं खुलती, तो स्क्रीन मिरर करने का तरीका दिखाता है।",
+  "ui.airplay.hint": "AirPlay से फ़ोन की स्क्रीन को TV पर मिरर करने का तरीका दिखाता है।",
   // T92 (cast-1024 phase B): Screen Mirroring guide
   "app.airplay.title": "स्क्रीन मिररिंग",
   "app.airplay.intro": "AirPlay से अपने फ़ोन की पूरी स्क्रीन टीवी पर दिखाएँ।",

@@ -737,7 +737,7 @@ export const ko: Catalogue = {
   "app.feedback.thanks": "감사합니다! 메일 앱에서 보내기만 누르세요.",
   // T92 (cast-1024 phase B): AirPlay / Screen Mirroring button
   "ui.airplay.label": "AirPlay / 화면 미러링",
-  "ui.airplay.hint": "AirPlay TV 목록을 엽니다. 열 수 없으면 화면을 미러링하는 방법을 보여 줍니다.",
+  "ui.airplay.hint": "AirPlay로 휴대폰 화면을 TV에 미러링하는 방법을 보여 줍니다.",
   // T92 (cast-1024 phase B): Screen Mirroring guide
   "app.airplay.title": "화면 미러링",
   "app.airplay.intro": "AirPlay로 휴대폰 화면 전체를 TV에 표시합니다.",

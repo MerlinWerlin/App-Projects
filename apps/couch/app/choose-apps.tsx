@@ -1,4 +1,4 @@
-import { Stack, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { useEffect, useMemo, useState } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { loadApps, type AppsLoad } from '../src/core/apps';
@@ -83,7 +83,6 @@ export default function ChooseAppsScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ headerShown: false }} />
       <LargeTitleHeader
         title={t('app.chooseApps.title')}
         leading={<PillButton variant="plain" label={t('app.common.back')} onPress={() => router.back()} />}

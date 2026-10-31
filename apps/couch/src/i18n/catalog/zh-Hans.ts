@@ -721,7 +721,7 @@ export const zhHans: Catalogue = {
   "app.feedback.thanks": "谢谢！邮件已准备好，在邮件应用中点发送即可。",
   // T92 (cast-1024 phase B): AirPlay / Screen Mirroring button
   "ui.airplay.label": "AirPlay / 屏幕镜像",
-  "ui.airplay.hint": "打开 AirPlay 电视列表。如果无法打开，会显示如何镜像屏幕。",
+  "ui.airplay.hint": "显示如何通过 AirPlay 将手机屏幕镜像到电视。",
   // T92 (cast-1024 phase B): Screen Mirroring guide
   "app.airplay.title": "屏幕镜像",
   "app.airplay.intro": "用 AirPlay 在电视上显示整个手机屏幕。",

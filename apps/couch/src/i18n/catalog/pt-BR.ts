@@ -750,7 +750,7 @@ export const ptBR: Catalogue = {
   "app.feedback.thanks": "Obrigado! A mensagem está pronta no app de E-mail, é só tocar em Enviar.",
   // T92 (cast-1024 phase B): AirPlay / Screen Mirroring button
   "ui.airplay.label": "AirPlay / Espelhar Tela",
-  "ui.airplay.hint": "Abre a lista de TVs com AirPlay. Se não abrir, mostra como espelhar a tela.",
+  "ui.airplay.hint": "Mostra como espelhar a tela do celular na TV com o AirPlay.",
   // T92 (cast-1024 phase B): Screen Mirroring guide
   "app.airplay.title": "Espelhar Tela",
   "app.airplay.intro": "Mostre a tela inteira do celular na TV com o AirPlay.",

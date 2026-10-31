@@ -1,4 +1,4 @@
-import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState, type ReactElement } from 'react';
 import { StyleSheet } from 'react-native';
 import { GLOW_OPTIONS, ONE_HANDED_OPTIONS, SETTING_COPY, THEME_OPTIONS, type SettingCopy } from '../src/core/prefs';
@@ -91,7 +91,6 @@ export default function SettingsScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ headerShown: false }} />
       <LargeTitleHeader
         title={t('app.settings.title')}
         leading={<PillButton variant="plain" label={t('app.common.back')} onPress={() => router.back()} />}

@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { FetchLike } from './driver';
-import { isPrivateLanIp, parseManualIp, parseRokuDeviceInfo, parseSamsungApiV2, probeHost, probeSubnet, subnetHosts } from './probe';
+import { isPrivateLanIp, parseCastEurekaInfo, parseManualIp, parseRokuDeviceInfo, parseSamsungApiV2, parseSonyInterfaceInfo, parseWebosHello, probeHost, probeSubnet, subnetHosts } from './probe';
 
 const fx = (name: string): string => readFileSync(join(__dirname, 'drivers', '__fixtures__', 'ssdp', name), 'utf8');
 
@@ -93,7 +93,10 @@ describe('probeHost', () => {
     const c = await probeHost(f, '192.168.1.134', { timeoutMs: 500 });
     expect(c?.platform).toBe('roku');
     expect(calls.map((x) => x.url).sort()).toEqual([
+      'http://192.168.1.134/sony/system',
+      'http://192.168.1.134:3000/',
       'http://192.168.1.134:8001/api/v2/',
+      'http://192.168.1.134:8008/setup/eureka_info',
       'http://192.168.1.134:8060/query/device-info',
     ]);
     expect(calls.every((x) => x.timeoutMs === 500)).toBe(true);
@@ -109,6 +112,29 @@ describe('probeHost', () => {
     });
     expect(await probeHost(f, '192.168.1.9')).toBeNull();
     expect(await probeHost(fakeFetch({}), '192.168.1.10')).toBeNull();
+  });
+});
+
+describe('probeHost: brands found without multicast (owner feedback 1 Nov 2026)', () => {
+  it('finds a Sony Bravia from getInterfaceInformation', async () => {
+    const body = JSON.stringify({ result: [{ productCategory: 'tv', productName: 'BRAVIA', modelName: 'XR-65A80L', serverName: '', interfaceVersion: '6.0.0' }], id: 33 });
+    const c = await probeHost(fakeFetch({ 'http://192.168.1.60/sony/system': { status: 200, body } }), '192.168.1.60');
+    expect(c).toMatchObject({ platform: 'sony', host: '192.168.1.60', model: 'XR-65A80L', name: 'BRAVIA' });
+  });
+  it('finds a Google TV / Cast receiver from eureka_info', async () => {
+    const body = JSON.stringify({ name: 'Living Room TV', cast_build_revision: '1.56.500000', ssdp_udn: 'abc-123', device_info: { model_name: 'Smart TV Pro' } });
+    const c = await probeHost(fakeFetch({ 'http://192.168.1.61:8008/setup/eureka_info': { status: 200, body } }), '192.168.1.61');
+    expect(c).toMatchObject({ platform: 'androidtv', name: 'Living Room TV', model: 'Smart TV Pro', usn: 'abc-123' });
+  });
+  it('finds an LG webOS TV from its SSAP hello', async () => {
+    const c = await probeHost(fakeFetch({ 'http://192.168.1.62:3000/': { status: 200, body: 'Hello world' } }), '192.168.1.62');
+    expect(c?.platform).toBe('webos');
+  });
+  it('ignores look-alikes', () => {
+    expect(parseSonyInterfaceInfo(JSON.stringify({ result: [{ productCategory: 'camera' }] }), 'h')).toBeNull();
+    expect(parseSonyInterfaceInfo('<html></html>', 'h')).toBeNull();
+    expect(parseCastEurekaInfo(JSON.stringify({ name: 'router' }), 'h')).toBeNull();
+    expect(parseWebosHello('<html>dev server</html>', 'h')).toBeNull();
   });
 });
 
