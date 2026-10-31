@@ -16,7 +16,7 @@ import {
   petLife,
   type PetSettings,
 } from '../core/petLife';
-import { startPetLife, stopPet, updatePetLife, type PetActivityPayload } from '../native/islandPets';
+import { petsSupported, readPetStatus, startPetLife, stopPet, updatePetLife, type PetActivityPayload } from '../native/islandPets';
 
 let cache: PetSettings = DEFAULT_PET_SETTINGS;
 let loaded: Promise<PetSettings> | null = null;
@@ -70,7 +70,31 @@ let sent: { session: string; payload: PetActivityPayload; at: number } | null = 
  * when the pet differs, otherwise update only when the petLife state changed. Call it with a
  * freshly read status. Full iPhone build only (callers check petsSupported()).
  */
-export async function syncIslandPet(settings: PetSettings, status: PetStatus): Promise<PetStatus> {
+// One sync at a time (Pets screen and app-foreground sync share it), so two callers never start two activities.
+let queue: Promise<unknown> = Promise.resolve();
+export function syncIslandPet(settings: PetSettings, status: PetStatus): Promise<PetStatus> {
+  const run = queue.then(() => syncIslandPetNow(settings, status));
+  queue = run.catch(() => {});
+  return run;
+}
+
+/**
+ * T192: brings the Island pet up to date whenever Glaze opens or comes back to the foreground, not
+ * only from the Pets screen. Reads the saved settings and the live status first. A no-op in Expo Go
+ * and on builds without the Live Activity module; never throws.
+ */
+export async function syncIslandPetOnOpen(): Promise<void> {
+  if (!petsSupported()) return;
+  try {
+    const settings = await loadPetSettings();
+    await queue.catch(() => {});
+    await syncIslandPet(settings, await readPetStatus());
+  } catch {
+    // Best effort: the Pets screen reconciles again when opened.
+  }
+}
+
+async function syncIslandPetNow(settings: PetSettings, status: PetStatus): Promise<PetStatus> {
   if (!settings.island) {
     sent = null;
     return status.session ? stopPet() : status;

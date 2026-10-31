@@ -47,6 +47,7 @@ Pick the version that matches `PROFILE_INSTALL_ENABLED` in `src/config/install.t
 Facts behind the notes (check before each submission):
 - Payload builder: `src/core/mobileconfig.ts` (`IsRemovable` true, `PayloadRemovalDisallowed` false,
   `FullScreen` false). Delivery (T126): served to Safari from 127.0.0.1 by `modules/glaze-profile-server` through `src/native/profileServer.ts`; share sheet fallback when the module is absent (`app/install.tsx`, `docs/OWNER_1024E.md (part B)`).
+- T194: every profile from one Glaze install has the same PayloadIdentifier (`com.jared797.glaze.icons.<installId>`, a random id made on the device and stored only locally, `src/store/installId.ts`) and stable per-slot web clip ids, so a new theme's profile replaces the previous Glaze profile instead of adding another; the id is not sent anywhere except inside the profile the user installs.
 - The method switch lives in `src/config/install.ts`. Availability logic is in
   `src/core/installMethods.ts`, with tests.
 - This text describes the code, not a device test. The flow hasn't been checked on a device for this

@@ -11,6 +11,8 @@
 //    action (by bundle id), so urlScheme is always null and every row is verified: false.
 //  - The list is much smaller than the owner's 1,500-2,000 aim on purpose: "fewer correct
 //    entries over many guessed ones". Grow it by adding rows here once each id is looked up.
+//  - 1 Nov 2026 (T196): +71 more, same method (AU lookup, a few ids per request; requests with
+//    5+ ids came back empty, so those were re-sent 1-3 at a time; ids still not returned were dropped).
 //
 // Glyphs are GENERIC names already used by the main catalogue (Feather or src/core/glyphnames.ts).
 // Never a brand logo; app names are plain labels.
@@ -130,4 +132,108 @@ export const EXTRA_ROWS: readonly ExtraRow[] = Object.freeze([
   ['farm-heroes-saga', 'Farm Heroes Saga', 'Games', 'com.midasplayer.apps.farmheroessaga', 'sun', ['match 3']],
   ['steam', 'Steam', 'Games', 'com.valvesoftware.Steam', 'game-controller', ['valve', 'pc games']],
   ['meta-horizon', 'Meta Horizon', 'Games', 'com.oculus.twilight', 'eye', ['oculus', 'quest', 'vr']],
+
+  // ==== T196 batch (1 Nov 2026): each id returned by the AU lookup, casing as Apple returned it.
+  // ---- System (Apple)
+  ['apple-sports', 'Apple Sports', 'System', 'com.apple.sports', 'award', ['scores', 'live scores']],
+  ['itunes-remote', 'iTunes Remote', 'System', 'com.apple.Remote', 'tv', ['apple remote', 'remote']],
+  ['airport-utility', 'AirPort Utility', 'System', 'com.apple.airport.mobileairportutility', 'wifi', ['airport', 'wi-fi base station']],
+
+  // ---- Social
+  ['meta-business-suite', 'Meta Business Suite', 'Social', 'com.facebook.PageAdminApp', 'briefcase', ['facebook pages', 'pages manager']],
+  ['9gag', '9GAG', 'Social', 'com.9gag.ios.mobile', 'smile', ['memes']],
+
+  // ---- Messaging
+  ['messenger-kids', 'Messenger Kids', 'Messaging', 'com.facebook.talk', 'message-circle', ['kids chat']],
+  ['mattermost', 'Mattermost', 'Messaging', 'com.mattermost.rn', 'message-square', ['team chat']],
+
+  // ---- Music & Audio
+  ['logic-pro', 'Logic Pro', 'Music & Audio', 'com.apple.mobilelogic', 'sliders', ['music production', 'daw']],
+
+  // ---- Video & TV
+  ['youtube-studio', 'YouTube Studio', 'Video & TV', 'com.google.ios.ytcreator', 'bar-chart', ['creator studio', 'yt studio']],
+  ['roku', 'Roku', 'Video & TV', 'com.roku.ios.roku', 'tv', ['roku remote']],
+  ['kanopy', 'Kanopy', 'Video & TV', 'com.kanopy.Kanopy', 'film', ['library films']],
+
+  // ---- Photo & Design
+  ['final-cut-pro', 'Final Cut Pro', 'Photo & Design', 'com.apple.FinalCutApp', 'film', ['video editor', 'fcp']],
+  ['microsoft-designer', 'Microsoft Designer', 'Photo & Design', 'com.microsoft.designer', 'feather', ['designer']],
+  ['snow', 'SNOW', 'Photo & Design', 'com.campmobile.snow', 'camera', ['selfie camera']],
+
+  // ---- Productivity
+  ['power-apps', 'Power Apps', 'Productivity', 'com.microsoft.msapps', 'layers', ['microsoft power apps']],
+  ['microsoft-loop', 'Microsoft Loop', 'Productivity', 'com.microsoft.loop', 'layers', ['loop']],
+  ['any-do', 'Any.do', 'Productivity', 'com.anydo.AnyDO', 'check-square', ['anydo', 'to do list']],
+  ['pdf-expert', 'PDF Expert', 'Productivity', 'com.readdle.PDFExpert5', 'edit', ['pdf editor']],
+  ['camscanner', 'CamScanner', 'Productivity', 'com.intsig.CamScanner', 'camera', ['document scanner']],
+  ['vibe-mistral', 'Vibe by Mistral', 'Productivity', 'ai.mistral.chat', 'message-square', ['le chat', 'mistral', 'ai chat']],
+
+  // ---- Utilities
+  ['microsoft-defender', 'Microsoft Defender', 'Utilities', 'com.microsoft.scmx', 'shield', ['defender', 'antivirus']],
+  ['firefox-focus', 'Firefox Focus', 'Utilities', 'org.mozilla.ios.Focus', 'globe', ['private browser']],
+  ['onion-browser', 'Onion Browser', 'Utilities', 'com.miketigas.OnionBrowser', 'globe', ['tor']],
+  ['ecosia', 'Ecosia', 'Utilities', 'com.ecosia.ecosiaapp', 'search', ['search engine', 'trees']],
+  ['mullvad-vpn', 'Mullvad VPN', 'Utilities', 'net.mullvad.MullvadVPN', 'shield', ['vpn', 'mullvad']],
+  ['home-assistant', 'Home Assistant', 'Utilities', 'io.robbie.HomeAssistant', 'home', ['smart home', 'hass']],
+  ['nest', 'Nest', 'Utilities', 'com.nestlabs.jasper.release', 'home', ['nest thermostat', 'google nest']],
+  ['lg-thinq', 'LG ThinQ', 'Utilities', 'com.lgeha.nuts', 'home', ['lg appliances']],
+  ['xiaomi-home', 'Xiaomi Home', 'Utilities', 'com.xiaomi.mihome', 'home', ['mi home', 'xiaomi']],
+  ['hp-smart', 'HP', 'Utilities', 'com.hp.printer.control', 'printer', ['hp smart', 'printer']],
+  ['ds-file', 'DS file', 'Utilities', 'com.synology.DSfile', 'hard-drive', ['synology', 'nas']],
+  ['citrix-workspace', 'Citrix Workspace', 'Utilities', 'com.citrix.ReceiveriPad', 'monitor', ['citrix', 'remote desktop']],
+  ['teamviewer', 'TeamViewer', 'Utilities', 'com.teamviewer.rc', 'monitor', ['remote control', 'remote support']],
+  ['okta-verify', 'Okta Verify', 'Utilities', 'com.okta.mobile', 'shield', ['okta', '2fa']],
+
+  // ---- Health & Fitness
+  ['withings', 'Withings', 'Health & Fitness', 'com.withings.wiScaleNG', 'activity', ['health mate', 'smart scale']],
+  ['polar-flow', 'Polar Flow', 'Health & Fitness', 'fi.polar.polarflow', 'activity', ['polar', 'heart rate']],
+
+  // ---- News & Reading
+  ['bloomberg', 'Bloomberg', 'News & Reading', 'com.bloomberg.Bloomberg', 'trending-up', ['business news', 'markets']],
+  ['smartnews', 'SmartNews', 'News & Reading', 'jp.gocro.SmartNews', 'rss', ['news']],
+  ['everand', 'Everand', 'News & Reading', 'com.scribd.iscribd', 'book-open', ['scribd', 'audiobooks', 'ebooks']],
+  ['hoopla', 'Hoopla', 'News & Reading', 'com.hoopladigital.hoopla', 'book', ['library', 'audiobooks']],
+
+  // ---- Education
+  ['chegg-study', 'Chegg Study', 'Education', 'com.chegg.mobile.consumer', 'help-circle', ['chegg', 'homework help']],
+  ['edx', 'edX', 'Education', 'org.edx.mobile', 'award', ['online courses']],
+  ['skillshare', 'Skillshare', 'Education', 'com.skillshare.Skillshare', 'play-circle', ['online classes']],
+  ['mathway', 'Mathway', 'Education', 'com.bagatrix.mathway', 'hash', ['math solver']],
+
+  // ---- Finance
+  ['etoro', 'eToro', 'Finance', 'com.etoro.openbook', 'trending-up', ['investing', 'trading']],
+  ['coinbase-wallet', 'Coinbase Wallet', 'Finance', 'org.toshi.distribution', 'lock', ['crypto wallet', 'base']],
+  ['phantom', 'Phantom', 'Finance', 'app.phantom', 'lock', ['crypto wallet', 'solana']],
+  ['ledger-wallet', 'Ledger Wallet', 'Finance', 'com.ledger.live', 'lock', ['ledger live', 'crypto wallet']],
+
+  // ---- Shopping
+  ['zalando', 'Zalando', 'Shopping', 'de.zalando.iphone', 'shopping-bag', ['fashion']],
+  ['alibaba', 'Alibaba.com', 'Shopping', 'com.alibaba.sourcing', 'package', ['alibaba', 'wholesale']],
+  ['adidas', 'adidas', 'Shopping', 'com.adidas.app', 'shopping-bag', ['sneakers', 'sportswear']],
+
+  // ---- Food & Drink
+  ['tasty', 'Tasty', 'Food & Drink', 'com.buzzfeed.tasty', 'coffee', ['recipes']],
+
+  // ---- Travel & Transport
+  ['maps-me', 'MAPS.ME', 'Travel & Transport', 'com.mapswithme.full', 'map', ['maps me', 'offline maps']],
+
+  // ---- Games
+  ['crossy-road', 'Crossy Road', 'Games', 'com.hipsterwhale.crossy', 'navigation', ['hipster whale']],
+  ['plague-inc', 'Plague Inc.', 'Games', 'com.ndemiccreations.plagueinc', 'globe', ['plague']],
+  ['dumb-ways-to-die', 'Dumb Ways to Die', 'Games', 'au.com.metro.DumbWaysToDie', 'smile', ['dumb ways']],
+  ['pokemon-sleep', 'Pokémon Sleep', 'Games', 'jp.pokemon.pokemonsleep', 'moon', ['pokemon sleep']],
+  ['pikmin-bloom', 'Pikmin Bloom', 'Games', 'com.nianticlabs.pikmin', 'sun', ['pikmin']],
+  ['pokemon-home', 'Pokémon HOME', 'Games', 'jp.pokemon.pokemonhome', 'box', ['pokemon home']],
+  ['riot-mobile', 'Riot Mobile', 'Games', 'com.riotgames.mobile.leagueconnect', 'users', ['riot games', 'league friends']],
+  ['zenless-zone-zero', 'Zenless Zone Zero', 'Games', 'com.HoYoverse.Nap', 'zap', ['zzz', 'hoyoverse']],
+  ['monument-valley-2', 'Monument Valley 2', 'Games', 'com.ustwo.monumentvalley2', 'triangle', ['puzzle']],
+  ['my-talking-angela-2', 'My Talking Angela 2', 'Games', 'com.outfit7.mytalkingangela2', 'heart', ['talking angela']],
+  ['bubble-witch-3', 'Bubble Witch 3 Saga', 'Games', 'com.midasplayer.apps.bubblewitchsaga3', 'circle', ['bubble shooter']],
+  ['royal-kingdom', 'Royal Kingdom', 'Games', 'com.dreamgames.royalkingdom', 'award', ['match 3']],
+  ['sky-children-of-the-light', 'Sky: Children of the Light', 'Games', 'com.tgc.sky.ios', 'cloud', ['sky', 'thatgamecompany']],
+  ['diablo-immortal', 'Diablo Immortal', 'Games', 'com.blizzard.diablo.immortal', 'shield', ['diablo']],
+  ['altos-adventure', "Alto's Adventure", 'Games', 'com.snowman.alto', 'wind', ['alto', 'snowboarding']],
+  ['jetpack-joyride', 'Jetpack Joyride', 'Games', 'com.halfbrick.jetpack', 'zap', ['halfbrick']],
+  ['lichess', 'Lichess', 'Games', 'org.lichess.mobileV2', 'grid', ['chess']],
+  ['mobilityware-solitaire', 'Solitaire by MobilityWare', 'Games', 'com.mobilityware.SolitaireFree', 'layers', ['solitaire', 'card game']],
 ] as ExtraRow[]);

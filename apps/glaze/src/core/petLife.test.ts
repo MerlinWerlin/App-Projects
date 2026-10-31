@@ -197,3 +197,16 @@ test('Live Activity follows Apple rules: staleDate + next state, no timers, no p
   assert.doesNotMatch(screen, /setInterval/);
   assert.match(screen, /useMotionReduced\(\)/);
 });
+
+// T192: the Island pet is synced whenever Glaze opens or returns to the foreground, one sync at a time.
+test('source guard: Island pet syncs on app open and foreground, serialised', async () => {
+  const { readFileSync } = await import('node:fs');
+  const root = new URL('../../', import.meta.url);
+  const layout = readFileSync(new URL('app/_layout.tsx', root), 'utf8');
+  const store = readFileSync(new URL('src/store/pets.ts', root), 'utf8');
+  assert.match(layout, /syncIslandPetOnOpen\(\)/);
+  assert.match(layout, /AppState\.addEventListener\('change'/);
+  assert.match(store, /export async function syncIslandPetOnOpen\(/);
+  assert.match(store, /if \(!petsSupported\(\)\) return;/);
+  assert.match(store, /queue = run\.catch/);
+});

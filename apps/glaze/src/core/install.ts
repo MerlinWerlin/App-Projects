@@ -132,11 +132,17 @@ export function buildInstallProfiles(
   specs: readonly IconSpec[],
   rendered: readonly { appId: string; pngBase64: string }[],
   themeName: string | null | undefined,
-  opts: { uuid?: () => string; maxBytes?: number } = {},
+  opts: { uuid?: () => string; maxBytes?: number; installId?: string } = {},
 ): ProfileFile[] {
   const icons = webClipIcons(specs, rendered);
   if (icons.length === 0) return [];
-  return buildProfiles({ themeName: profileThemeName(themeName), icons, uuid: opts.uuid, maxBytes: opts.maxBytes });
+  return buildProfiles({
+    themeName: profileThemeName(themeName),
+    icons,
+    uuid: opts.uuid,
+    maxBytes: opts.maxBytes,
+    installId: opts.installId,
+  });
 }
 
 // ---- progress ----

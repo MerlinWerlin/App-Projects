@@ -1,12 +1,18 @@
 {
-  "tests": "1519/1519 core tests green; UI typecheck against stubs clean",
+  "tests": "1543/1543 core tests green; UI typecheck against stubs clean",
   "typecheck": "core only (registry unreachable)",
-  "last_run": "2026-11-01 09:40 Sydney (run 203)",
+  "last_run": "2026-11-01 10:15 Sydney (run 206)",
   "stage": "owner-tested",
-  "oversight_seen": "v222 (1793479750-7d53): no new directives; D211-1 open; no patches. (rechecked run 203)",
-  "headline": "Your 1 Nov list: icons open apps directly, one-tap Use this theme, 5 tabs, fitted widget art, living pets, new creature icon.",
+  "oversight_seen": "v223 (1793486978-0b39): D223-1 followed (slim candidate prepared, no swap); D211-1 open; no patches.",
+  "headline": "Repo slim-down candidate ready (7.9 MB); swap waits on one App Factory chat step. No app change this run.",
   "next_for_owner": "1) When the new TestFlight build arrives (auto-ship, native build), open it and answer docs/TRIAL.md \"New since your last test (1 Nov: owner-1101)\". 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud.)",
   "trial_kit": true,
-  "trial_kit_commit": "a749ec6",
-  "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested"
+  "trial_kit_commit": "0ab5643",
+  "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested",
+  "slim_candidate": {
+    "ship_base_old": "f658d83",
+    "ship_base_new": "301a9f0c3befc8516f2de44004455dd9be0f01fb",
+    "files": "history/repo-slim-candidate.bundle.b64.txt + docs/REPO_MAP.json on the build page",
+    "state": "waiting for the SHIP_BASE re-pin"
+  }
 }

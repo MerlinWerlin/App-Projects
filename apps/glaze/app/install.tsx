@@ -80,6 +80,9 @@ import {
 import { openAppSettings } from '../src/render/saveWallpaper';
 import { androidNative } from '../src/native/android';
 import { useInstallState } from '../src/store/install';
+import { getInstallId } from '../src/store/installId';
+import { useIconCleanupRecord } from '../src/store/iconCleanup';
+import { cleanupThemeId, markOldRemoved, namesList, oldIconNames, oldIconsToRemove, recordWalk } from '../src/core/iconCleanup';
 import { activeThemeKey, findApp, overrideImageUris } from '../src/core/studio';
 import { coverageRows, coverageSummary } from '../src/core/iconCoverage';
 import { loadStudio, studioSpecs, useStudio, type StudioState } from '../src/store/studio';
@@ -197,6 +200,9 @@ export default function InstallScreen() {
     [liveUpdate],
   );
   const [missing, setMissing] = useState<ReadonlySet<string>>(() => new Set<string>());  const [loadError, setLoadError] = useState<string | null>(null);  const install = useInstallState();
+  // T194: the Shortcuts icons Glaze last walked through, for the "remove these old icons" note.
+  const cleanup = useIconCleanupRecord();
+  const cleanupUpdate = cleanup.update;
   const renderer = useIconBatchRenderer();
   const alive = useRef(true);
   // Cancel token for the current icon batch: set on Cancel or when leaving the screen.
@@ -256,6 +262,7 @@ export default function InstallScreen() {
   const coverage = useMemo(() => coverageSummary(specs), [specs]);
   const monogramRows = useMemo(() => coverageRows(specs).filter((r) => r.coverage === 'monogram'), [specs]);
   const themeName = profileThemeName(getTheme(studio?.themeId)?.name ?? null);
+  const themeId = studio?.themeId ?? null;
   const backdrop = studio?.wallpaperColour ?? undefined;
   // T60: the profile method can be switched off in src/config/install.ts (App Review risk).
   const methodOpts = {
@@ -330,7 +337,9 @@ export default function InstallScreen() {
       cancelToken.current = null;
       if (alive.current) setRenderTiming(timingText(rendered.length, Date.now() - renderStart));
       setPhase('building');
-      const files = buildInstallProfiles(plan.profile, rendered, themeName);
+      // T194: one stable profile identifier per install, so this profile replaces the last one.
+      const installId = await getInstallId();
+      const files = buildInstallProfiles(plan.profile, rendered, themeName, { installId });
       if (files.length === 0) throw new Error(t('install.errors.noIcons'));
       setPhase('saving');
       const dir = await cacheSubdir('profiles');
@@ -436,6 +445,7 @@ export default function InstallScreen() {
       setSavingOne(null);
       setPhotoStatus('saved');
       haptic('success');
+      cleanupUpdate((r) => recordWalk(r, cleanupThemeId(themeId), themeName, list.map((x) => ({ id: x.appId, label: x.label }))));
     } catch (e) {
       cancelToken.current = null;
       if (!alive.current) return;
@@ -448,7 +458,7 @@ export default function InstallScreen() {
       setShortcutsError(errText(e));
       setPhotoStatus('error');
     }
-  }, [busy, items, renderer, t]);
+  }, [busy, items, renderer, t, cleanupUpdate, themeId, themeName]);
 
   const cancelRender = useCallback(() => {
     if (cancelToken.current) cancelToken.current.cancelled = true;
@@ -551,6 +561,13 @@ export default function InstallScreen() {
   const editSpec = editId ? specs.find((s) => s.appId === editId) ?? null : null;
   const shortcutIds = items.map((i) => i.spec.appId);
   const tick = checklistCount(shortcutIds, install.state.shortcutsDone);
+  // T194: old Glaze Shortcuts icons from a different theme, to remove before adding these.
+  const oldIcons = cleanup.loaded ? oldIconsToRemove(cleanup.record, themeId, shortcutIds) : null;
+  const oldNames = oldIcons ? namesList(oldIconNames(oldIcons), 8, t('install.cleanup.listSeparator')) : null;
+  const openCleanup = () => {
+    tapLight();
+    router.push('/icons-cleanup');
+  };
 
   const pickChoice = (next: InstallChoice) => {
     if (next === choice || busy) return;
@@ -564,6 +581,8 @@ export default function InstallScreen() {
     install.update((s) => toggleShortcutDone(s, appId));
     // Ticking an app off opens the steps for the next one still to do.
     if (!wasDone) {
+      const made = items.find((i) => i.spec.appId === appId);
+      if (made) cleanup.update((r) => recordWalk(r, cleanupThemeId(themeId), themeName, [{ id: appId, label: made.spec.label }]));
       const next = items.find((i) => i.spec.appId !== appId && !install.state.shortcutsDone.includes(i.spec.appId));
       setExpanded(next ? next.spec.appId : null);
     }
@@ -724,6 +743,7 @@ export default function InstallScreen() {
                     reduced={reduced}
                   />
                 ) : null}
+                {bulkFinished ? <CleanupTip onPress={openCleanup} /> : null}
                 {renderTiming && !bulkBusy ? (
                   <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]} accessibilityLabel={renderTiming}>
                     {renderTiming}
@@ -863,6 +883,7 @@ export default function InstallScreen() {
                 {currentStep < 0 ? (
                   <FinishedPanel title={t('install.finished.title')} body={t('install.sequence.allDone')} reduced={reduced} />
                 ) : null}
+                {currentStep < 0 ? <CleanupTip onPress={openCleanup} /> : null}
               </View>
             </SquircleCard>
           </View>
@@ -877,6 +898,31 @@ export default function InstallScreen() {
             <SquircleCard style={styles.side}>
               <View style={styles.stack}>
                 <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('install.shortcuts.intro')}</Text>
+                {oldIcons && oldNames && oldNames.shown ? (
+                  <Notice tone="warn" icon="trash-2">
+                    <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.ink }]}>
+                      {oldNames.more > 0
+                        ? t('install.cleanup.removeOldMore', { theme: oldIcons.themeName, apps: oldNames.shown, more: oldNames.more })
+                        : t('install.cleanup.removeOld', { theme: oldIcons.themeName, apps: oldNames.shown })}
+                    </Text>
+                    <View style={styles.btnRow}>
+                      <PillButton
+                        label={t('install.cleanup.howTo')}
+                        icon="help-circle"
+                        variant="tinted"
+                        size="small"
+                        onPress={openCleanup}
+                        accessibilityHint={t('install.cleanup.openHint')}
+                      />
+                      <PillButton
+                        label={t('install.cleanup.markRemoved')}
+                        variant="plain"
+                        size="small"
+                        onPress={() => cleanup.update((r) => markOldRemoved(r, themeId))}
+                      />
+                    </View>
+                  </Notice>
+                ) : null}
                 {photosBusy ? (
                   <ProgressBar
                     progress={batchFraction(photoStep.done, photoStep.total)}
@@ -975,6 +1021,7 @@ export default function InstallScreen() {
                     <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.flex, { color: c.ink }]}>{t('install.guided.allDone')}</Text>
                   </View>
                 ) : null}
+                {!nextItem && tick.total > 0 ? <CleanupTip onPress={openCleanup} /> : null}
                 <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.guided.oneAtATime')}</Text>
               </View>
             </SquircleCard>
@@ -1192,7 +1239,7 @@ function MethodCard({
 }
 
 /** Soft notice box (warning tint) with an icon and free content. */
-function Notice({ tone, icon, children }: { tone: 'warn'; icon: 'lock' | 'alert-triangle'; children?: ReactNode }) {
+function Notice({ tone, icon, children }: { tone: 'warn'; icon: 'lock' | 'alert-triangle' | 'trash-2'; children?: ReactNode }) {
   const { c } = useColorsV2();
   const colour = tone === 'warn' ? c.warn : c.ink;
   return (
@@ -1257,6 +1304,26 @@ function ResultSkeleton({ icons, file = false }: { icons: number; file?: boolean
         </View>
       ) : null}
     </View>
+  );
+}
+
+/** T194: after a finish, the reminder to hide the original app icons, linking to the cleanup steps. */
+function CleanupTip({ onPress }: { onPress: () => void }) {
+  const { c } = useColorsV2();
+  const { t, script, isRTL } = useT();
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="link"
+      accessibilityHint={t('install.cleanup.openHint')}
+      style={({ pressed }) => [styles.okRow, styles.tipRow, { opacity: pressed ? 0.7 : 1 }]}
+    >
+      <Feather name="eye-off" size={18} color={c.tint} />
+      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), styles.flex, { color: c.ink }]}>
+        {t('install.cleanup.tipHide')}
+      </Text>
+      <Feather name={Chevron.forward(isRTL)} size={18} color={c.inkTertiary} />
+    </Pressable>
   );
 }
 
@@ -1521,6 +1588,7 @@ const styles = StyleSheet.create({
   notice: { flexDirection: 'row', gap: spaceV2.sm, borderRadius: radiusV2.control, padding: spaceV2.md },
   noticeBody: { gap: spaceV2.sm },
   okRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
+  tipRow: { minHeight: sizeV2.rowMin },
   btnRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.sm },
   headerTight: { paddingTop: editorialV2.sectionTop - spaceV2.lg, paddingBottom: 0 },
   sequence: { gap: spaceV2.xs },
