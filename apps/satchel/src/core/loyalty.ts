@@ -37,9 +37,13 @@ export type LoyaltyCard = {
   barcode: BarcodeType;
   /** ms since epoch; for a stable order among equal names. */
   createdAt: number;
+  /** T88: optional photo of the card, a file copied into Satchel's own folder (attachments/). Phone only. */
+  photo?: string;
 };
 
 export const LIMITS = { programme: 60, memberName: 80, number: 64, tier: 40 } as const;
+/** Longest stored photo path kept (anything longer is junk and dropped). */
+export const MAX_PHOTO_URI = 2048;
 
 const str = (v: unknown, max: number): string => (typeof v === 'string' ? v.replace(/\s+/g, ' ').trim().slice(0, max) : '');
 const pick = <T extends string>(v: unknown, all: readonly T[], fallback: T): T => (typeof v === 'string' && (all as readonly string[]).includes(v) ? (v as T) : fallback);
@@ -67,6 +71,7 @@ export function cleanCard(raw: unknown, now = 0): LoyaltyCard | null {
   const tier = str(r.tier, LIMITS.tier);
   if (tier) card.tier = tier;
   if (typeof r.expires === 'string' && isLocalDate(r.expires)) card.expires = r.expires;
+  if (typeof r.photo === 'string' && r.photo.trim() && r.photo.length <= MAX_PHOTO_URI) card.photo = r.photo.trim();
   // A stored barcode the number can no longer be drawn in falls back to number only (never a broken barcode).
   if (!barcodeFits(card.barcode, card.number)) card.barcode = 'none';
   return card;
@@ -106,6 +111,8 @@ export type CardDraft = {
   expires: string;
   colour: CardColour;
   barcode: BarcodeType;
+  /** T88: the card photo's file, or empty for none. */
+  photo: string;
 };
 export type CardError = 'programme' | 'number' | 'expires' | 'barcode';
 
@@ -118,6 +125,7 @@ export const newCardDraft = (kind: LoyaltyKind = 'air'): CardDraft => ({
   expires: '',
   colour: DEFAULT_COLOUR[kind],
   barcode: 'code128',
+  photo: '',
 });
 
 export const draftFromCard = (c: LoyaltyCard): CardDraft => ({
@@ -129,6 +137,7 @@ export const draftFromCard = (c: LoyaltyCard): CardDraft => ({
   expires: c.expires ?? '',
   colour: c.colour,
   barcode: c.barcode,
+  photo: c.photo ?? '',
 });
 
 export function validateCard(d: CardDraft): CardError[] {
@@ -142,7 +151,7 @@ export function validateCard(d: CardDraft): CardError[] {
 
 /** The card a valid draft saves as (cleaned like stored data). */
 export function cardFromDraft(d: CardDraft, id: string, createdAt: number): LoyaltyCard {
-  return cleanCard({ ...d, id, createdAt, expires: d.expires.trim() || undefined }, createdAt)!;
+  return cleanCard({ ...d, id, createdAt, expires: d.expires.trim() || undefined, photo: d.photo || undefined }, createdAt)!;
 }
 
 export const upsertCard = (cards: readonly LoyaltyCard[], c: LoyaltyCard): LoyaltyCard[] =>

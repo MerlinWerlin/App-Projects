@@ -2,7 +2,8 @@
 // (ease-out, no overshoot) and Reduce Motion turns it off. Exported for every tab:
 //   HeroHeader   gradient banner with an original vector illustration behind a title / subtitle (+ children)
 //   GradientFill the tone's gradient as an absolute backdrop for any custom card
-//   HeroIllustration  the illustrations on their own (route, ticket, map, cross, toilet)
+//   HeroIllustration  the illustrations on their own (route, ticket, map, cross, toilet, dial, book, passport)
+//   SectionHeader     T91: icon badge + small-caps title above a group of cards (one look for every screen)
 //   StatTile     a number that counts up (tabular figures) with a label and an icon badge
 //   SectionCard  elevated card with an icon badge, title, optional subtitle and action link
 //   IconBadge    an Ionicons glyph in a tinted circle
@@ -22,7 +23,8 @@ import { PressableScale } from './kit.tsx';
 
 export type IconName = ComponentProps<typeof Ionicons>['name'];
 export type Tone = 'sea' | 'teal' | 'ok' | 'warn' | 'danger' | 'accent' | 'ink';
-export type Illustration = 'route' | 'ticket' | 'map' | 'cross' | 'toilet' | 'none';
+/** T91 added dial (Settings), book (Licences) and passport (Vault). */
+export type Illustration = 'route' | 'ticket' | 'map' | 'cross' | 'toilet' | 'dial' | 'book' | 'passport' | 'none';
 
 /** Foreground / tinted background for a tone. fg on bg is at least 3:1 (icons) and bold text is AA in both themes. */
 export function toneColours(theme: Theme, tone: Tone): { fg: string; bg: string } {
@@ -59,6 +61,20 @@ export const IconBadge = memo(function IconBadge({ name, tone = 'sea', size = 'm
     </View>
   );
 });
+
+/**
+ * T91: the one section header look (Settings, Licences, Vault...): a small icon badge and a small-caps title in muted
+ * ink. The row is a single screen-reader header; the badge is decorative.
+ */
+export function SectionHeader({ title, icon, tone = 'sea' }: { title: string; icon?: IconName; tone?: Tone }) {
+  const { theme } = useApp();
+  return (
+    <View accessible accessibilityRole="header" accessibilityLabel={title} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, minHeight: 32 }}>
+      {icon ? <IconBadge name={icon} tone={tone} size="s" /> : null}
+      <Text style={[typeScale.caption, { fontSize: 13, color: theme.muted, flex: 1 }]}>{title}</Text>
+    </View>
+  );
+}
 
 /** Fades in and rises a little on mount (timed, ease-out). With Reduce Motion it is simply there. */
 export function FadeInView({ children, delay = 0, style }: { children: ReactNode; delay?: number; style?: StyleProp<ViewStyle> }) {
@@ -129,6 +145,55 @@ export const HeroIllustration = memo(function HeroIllustration({ kind, width = 1
           <Path d="M36 96 C36 86 44 80 52 80 C60 80 68 86 68 96 Z" fill={line} />
           <Circle cx={52} cy={70} r={7} fill={line} />
           <Path d="M20 104 H150" stroke={line} strokeWidth={2} strokeLinecap="round" strokeDasharray={[2, 6]} />
+        </G>
+      ) : null}
+      {kind === 'dial' ? (
+        <G>
+          {/* Settings: three slider tracks with knobs, and a gear-like dial behind. */}
+          <Circle cx={116} cy={48} r={36} fill={wash} />
+          <Circle cx={116} cy={48} r={16} fill="none" stroke={line} strokeWidth={2.5} />
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((d) => (
+            <Rect key={d} x={113} y={24} width={6} height={8} rx={2} fill={line} transform={`rotate(${d} 116 48)`} />
+          ))}
+          <Circle cx={116} cy={48} r={6} fill={warm} />
+          {[0, 1, 2].map((i) => (
+            <G key={i}>
+              <Path d={`M22 ${78 + i * 12} H96`} stroke={line} strokeWidth={2.5} strokeLinecap="round" />
+              <Circle cx={[44, 76, 58][i]} cy={78 + i * 12} r={5.5} fill={i === 1 ? warm : line} />
+            </G>
+          ))}
+        </G>
+      ) : null}
+      {kind === 'book' ? (
+        <G>
+          {/* Licences and credits: an open book with a ribbon and a small heart of thanks. */}
+          <Circle cx={104} cy={54} r={38} fill={wash} />
+          <Path d="M40 40 Q62 32 84 40 V96 Q62 88 40 96 Z" fill={wash} stroke={line} strokeWidth={2} strokeLinejoin="round" />
+          <Path d="M84 40 Q106 32 128 40 V96 Q106 88 84 96 Z" fill={wash} stroke={line} strokeWidth={2} strokeLinejoin="round" />
+          {[0, 1, 2].map((i) => (
+            <G key={i}>
+              <Path d={`M48 ${54 + i * 10} Q62 ${50 + i * 10} 76 ${54 + i * 10}`} fill="none" stroke={line} strokeWidth={1.8} strokeLinecap="round" />
+              <Path d={`M92 ${54 + i * 10} Q106 ${50 + i * 10} 120 ${54 + i * 10}`} fill="none" stroke={line} strokeWidth={1.8} strokeLinecap="round" />
+            </G>
+          ))}
+          <Path d="M110 36 V58 L115 53 L120 58 V36" fill={warm} />
+          <Path d="M136 20 C136 15 142 14 144 18 C146 14 152 15 152 20 C152 26 144 31 144 31 C144 31 136 26 136 20 Z" fill={warm} />
+        </G>
+      ) : null}
+      {kind === 'passport' ? (
+        <G>
+          {/* Document vault: a passport booklet with a globe, and a padlock in front. */}
+          <Circle cx={104} cy={50} r={38} fill={wash} />
+          <G transform="rotate(8 96 54)">
+            <Rect x={70} y={20} width={56} height={74} rx={8} fill={wash} stroke={line} strokeWidth={2} />
+            <Circle cx={98} cy={50} r={14} fill="none" stroke={line} strokeWidth={2} />
+            <Path d="M84 50 H112 M98 36 C90 44 90 56 98 64 C106 56 106 44 98 36" fill="none" stroke={line} strokeWidth={1.6} />
+            <Rect x={84} y={74} width={28} height={4} rx={2} fill={line} />
+          </G>
+          <Path d="M48 70 V62 Q48 52 58 52 Q68 52 68 62 V70" fill="none" stroke={warm} strokeWidth={4} strokeLinecap="round" />
+          <Rect x={42} y={68} width={32} height={26} rx={6} fill={warm} />
+          <Circle cx={58} cy={79} r={3.5} fill={theme.hero.wallet[0]} />
+          <Rect x={56.5} y={80} width={3} height={7} rx={1.5} fill={theme.hero.wallet[0]} />
         </G>
       ) : null}
     </Svg>

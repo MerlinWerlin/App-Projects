@@ -51,7 +51,7 @@ export const NextUpCard = memo(function NextUpCard({ trips }: { trips: Trip[] })
             <KindIcon kind={n.item.kind} color={theme.heroAccent} size={18} />
           </View>
           <Text style={[typeScale.caption, { color: theme.heroMuted, flex: 1 }]}>{t('next.title')}</Text>
-          <View style={{ backgroundColor: theme.heroWash, borderRadius: radius.pill, paddingHorizontal: space.m, paddingVertical: space.xs }}>
+          <View style={{ backgroundColor: theme.heroChip, borderRadius: radius.pill, paddingHorizontal: space.m, paddingVertical: space.xs }}>
             <Text style={[typeScale.caption, { color: theme.heroInk, fontVariant: ['tabular-nums'] }]}>{when}</Text>
           </View>
         </View>

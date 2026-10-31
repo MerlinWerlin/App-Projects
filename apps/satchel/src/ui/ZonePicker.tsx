@@ -29,7 +29,7 @@ function ZoneRow({ z, selected, onPress }: { z: ZoneMatch; selected: boolean; on
     >
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: space.m }}>
         <Text style={{ flexShrink: 1, fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink }}>{z.city}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 15, color: selected ? theme.accent : theme.muted }}>
+        <Text style={{ fontFamily: fonts.body, fontSize: 15, color: selected ? theme.accentInk : theme.muted }}>
           {selected ? `${t('pickers.zone.current')} · ${z.offsetLabel}` : z.offsetLabel}
         </Text>
       </View>

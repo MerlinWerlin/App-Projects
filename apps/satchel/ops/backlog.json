@@ -1111,12 +1111,60 @@
   },
   {
    "id": "T88",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "follow-up"
    ],
    "title": "Run-91 follow-ups: sample journal pages on the demo trip so Recap shows moods/photos/best day; loyalty card scan check on a device (Code 128 not machine-verified here) and optional card photo; Recap entry on the Trips tab for the latest finished trip; loyalty cards in Low-battery essentials; still open from T84: share-sheet entry (native T14), OFL/npm licence text check on the PC, Ionicons glyph check on device (arrow-up/arrow-down/information-circle-outline)",
+   "accept": "tests green",
+   "commit": "c6bb5f3"
+  },
+  {
+   "id": "T89",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Add to Calendar (owner-1031 D, deepen Trips): export a whole trip, one day or a single booking as a standard .ics file (pure TS RFC 5545 writer in src/core/ics.ts: VEVENTs with TZID per item's own IANA zone plus a UTC fallback, line folding at 75 octets, escaping, stable UIDs from item ids, all-day events for stays) shared through the system share sheet (expo-sharing) so it opens in Calendar; booking codes and private notes off by default with a switch; buttons on the trip screen menu, day header and booking screen",
+   "accept": "ics tests (folding, escaping, TZID, DST, all-day, UID stability, privacy defaults); every string in the catalogue; no new npm dependency",
+   "commit": "1a6b08a"
+  },
+  {
+   "id": "T90",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Travel converters (owner-1031 D, deepen Wallet): offline units screen next to the currency converter: temperature, distance/speed, weight, volume (incl. the 100 ml liquids hint), clothing and shoe sizes (EU/UK/US/JP general charts labelled 'approximate, brands vary'), with a swap button, remembered last tab and the home-country unit system as default; pure TS tables + converters in src/core/units.ts with tests",
+   "accept": "units tests (round trips, size lookups, edge values); every string in the catalogue; no new npm dependency",
+   "commit": "9bc2163"
+  },
+  {
+   "id": "T91",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D",
+    "design"
+   ],
+   "title": "Design sweep (owner-1031 D, less bland): automated WCAG contrast test over every light and dark token pair the screens use (text on surface, accent on hero, chips), fix failing tokens; hero headers with icon + tinted gradient on Emergency, Toilets, Settings, Licences, Help and Vault where still flat; consistent section headers and empty-state illustrations (original SVG, src/ui/illustrations); timed fades only (no springs) checked by a test that greps for spring/bounce APIs",
+   "accept": "contrast test passes for every pair at 4.5:1 (3:1 for large text/icons); no spring/bounce usage; ui-check clean; every string in the catalogue",
+   "commit": "69afbb3"
+  },
+  {
+   "id": "T92",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "title": "Run-92 follow-ups: device checks (Calendar offered in the share sheet for .ics, new Ionicons glyphs calendar-outline/image-outline/speedometer-outline/barbell-outline/shirt-outline/flash-outline/grid-outline, new hero art and illustrations in light/dark); camera option for card photos; illustrations on the remaining 'not found' empty states; still open from T88: share-sheet entry (native T14), OFL/npm licence text check on the PC",
    "accept": "tests green"
   }
  ],

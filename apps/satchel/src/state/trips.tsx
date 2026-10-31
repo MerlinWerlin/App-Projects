@@ -13,6 +13,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { demoTrip } from '../core/demo.ts';
 import { withSampleIdeas, withSampleSpending } from '../core/demoExtras.ts';
 import { deviceZone, todayIn } from '../core/format.ts';
+import { DEMO_JOURNAL_KEY, seedSampleJournal, withSampleJournal } from '../core/followups91.ts';
 import type { Item, Trip } from '../core/model.ts';
 import { dropList, EMPTY_STORE, PACKING_KEY, type PackStore } from '../core/packing.ts';
 import { itemFiles, rebaseTrips, tripFiles } from '../core/tickets.ts';
@@ -44,7 +45,8 @@ type TripsState = {
 const Ctx = createContext<TripsState | null>(null);
 
 // T58: fresh demo seeds carry sample spending; a demo trip already saved on a phone is left as it is.
-const freshDemo = () => withSampleIdeas(withSampleSpending(demoTrip(addDays(todayIn(deviceZone()), 3))));
+// T88: and sample journal pages; a demo trip already on a phone gets those once (DEMO_JOURNAL_KEY), below.
+const freshDemo = () => withSampleIdeas(withSampleSpending(withSampleJournal(demoTrip(addDays(todayIn(deviceZone()), 3)))));
 
 export function TripsProvider({ children }: { children: ReactNode }) {
   const [trips, setTrips] = useState<Trip[]>([]);
@@ -75,6 +77,13 @@ export function TripsProvider({ children }: { children: ReactNode }) {
           await AsyncStorage.setItem(SEEDED, '1');
           await AsyncStorage.setItem(KEY, JSON.stringify(list));
           await seedDemoExtras();
+        }
+        // T88: one pass, ever, for a demo trip saved before sample pages existed (only while its journal is empty).
+        if (!unreadable && !(await AsyncStorage.getItem(DEMO_JOURNAL_KEY))) {
+          const next = seedSampleJournal(list);
+          if (next !== list) await AsyncStorage.setItem(KEY, JSON.stringify(next));
+          list = next;
+          await AsyncStorage.setItem(DEMO_JOURNAL_KEY, '1');
         }
       } catch {
         // storage unavailable: show what we have; saves will report that they failed

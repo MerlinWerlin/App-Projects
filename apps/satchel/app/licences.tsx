@@ -7,11 +7,21 @@
 import { useState } from 'react';
 import { Linking, Text, View } from 'react-native';
 import { BUNDLED_FONTS, isOflHeading, OFL_1_1 } from '../src/core/fontlicence.ts';
-import { LICENCE_SECTIONS, summaryKey, type LicenceEntry } from '../src/core/licences.ts';
+import { LICENCE_SECTIONS, summaryKey, type LicenceEntry, type LicenceSection } from '../src/core/licences.ts';
 import type { Key } from '../src/i18n/en.ts';
 import { useApp } from '../src/state/app.tsx';
 import { fonts, space, typeScale } from '../src/theme/tokens.ts';
-import { Body, Button, Card, Label, Screen } from '../src/ui/kit.tsx';
+import { FadeInView, HeroHeader, SectionHeader, type IconName, type Tone } from '../src/ui/hero.tsx';
+import { Body, Button, Card, Screen } from '../src/ui/kit.tsx';
+
+/** T91: one icon and tone per section header. */
+const SECTION_ICON: Record<LicenceSection['id'], [IconName, Tone]> = {
+  data: ['map-outline', 'teal'],
+  fonts: ['text-outline', 'accent'],
+  libraries: ['code-slash-outline', 'sea'],
+  platform: ['cloud-outline', 'sea'],
+  content: ['sparkles-outline', 'warn'],
+};
 
 function Entry({ e, first, onFailed }: { e: LicenceEntry; first: boolean; onFailed: (url: string) => void }) {
   const { t, theme } = useApp();
@@ -43,9 +53,7 @@ function FontNotice() {
   const [full, setFull] = useState(false);
   return (
     <View style={{ gap: space.s }}>
-      <View accessibilityRole="header">
-        <Label>{t('f88.licences.oflTitle')}</Label>
-      </View>
+      <SectionHeader title={t('f88.licences.oflTitle')} icon="ribbon-outline" tone="accent" />
       <Card>
         <Body muted>{t('f88.licences.oflIntro')}</Body>
         {BUNDLED_FONTS.map((f) => (
@@ -88,6 +96,9 @@ export default function LicencesScreen() {
   const [failed, setFailed] = useState<string | null>(null);
   return (
     <Screen>
+      <FadeInView>
+        <HeroHeader tone="map" illustration="book" compact eyebrow={t('look.licences.heroEyebrow')} title={t('look.licences.heroTitle')} subtitle={t('look.licences.heroSubtitle')} />
+      </FadeInView>
       <Body>{t('licences.intro')}</Body>
       {failed ? (
         <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 14, color: theme.danger }}>
@@ -96,9 +107,7 @@ export default function LicencesScreen() {
       ) : null}
       {LICENCE_SECTIONS.map((s) => (
         <View key={s.id} style={{ gap: space.s }}>
-          <View accessibilityRole="header">
-            <Label>{t(s.title as Key)}</Label>
-          </View>
+          <SectionHeader title={t(s.title as Key)} icon={SECTION_ICON[s.id][0]} tone={SECTION_ICON[s.id][1]} />
           <Card>
             {s.entries.map((e, i) => (
               <Entry key={e.id} e={e} first={i === 0} onFailed={setFailed} />

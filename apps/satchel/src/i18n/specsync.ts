@@ -51,6 +51,14 @@ export const SPEC_SYNC_PREFIXES = [
   'f90.',
   'recap.',
   'loyalty.',
+  // T91: the run-92 design sweep (hero banners, section headers).
+  'look.',
+  // T88: the run-91 follow-ups.
+  'f91.',
+  // T89 Add to Calendar (run 92).
+  'calendar.',
+  // T90 (run 92): travel converters.
+  'units.',
 ] as const;
 
 /** Single keys mirrored as well: map.online, the T48 emergency fallback wording, the Toilets tab, home country. */

@@ -12,6 +12,7 @@ import type { Key } from '../../src/i18n/en.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { findItem, useTrips } from '../../src/state/trips.tsx';
 import { fonts, space } from '../../src/theme/tokens.ts';
+import { AddToCalendar } from '../../src/ui/AddToCalendar.tsx';
 import { AirportPanel } from '../../src/ui/AirportPanel.tsx';
 import { KindIcon, carrierKey, kindKey, numberKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, EmptyState, Label, Screen, Warning } from '../../src/ui/kit.tsx';
@@ -121,6 +122,7 @@ export default function ItemScreen() {
         {row('item.seat', item.seat)}
         {row('item.notes', item.notes)}
       </Card>
+      <AddToCalendar trip={trip} scope={{ kind: 'item', id: item.id }} />
       <Button label={t('item.edit')} hint={t('spec.item.editHint')} onPress={() => router.push({ pathname: '/item-edit', params: { tripId: trip.id, id: item.id } })} />
       <Button label={t('item.delete')} hint={t('spec.item.deleteHint')} kind="quiet" onPress={confirmDelete} />
     </Screen>

@@ -24,16 +24,15 @@ import { AirportSettings } from '../src/ui/AirportFields.tsx';
 import { HomeCountryPicker, useHomeCountry } from '../src/ui/HomeCountryPicker.tsx';
 import { TEMP_UNITS } from '../src/core/weather.ts';
 import { useTempUnit } from '../src/ui/WeatherCard.tsx';
-import { Body, Button, Card, Chip, Label, PressableScale, Screen, ToggleRow } from '../src/ui/kit.tsx';
+import { FadeInView, HeroHeader, SectionHeader, type IconName, type Tone } from '../src/ui/hero.tsx';
+import { Body, Button, Card, Chip, PressableScale, Screen, ToggleRow } from '../src/ui/kit.tsx';
 
 const LIST_DATE = typeof (table as { imported?: unknown }).imported === 'string' ? (table as { imported: string }).imported : null;
 
-function Section({ title, children }: { title: string; children: ReactNode }) {
+function Section({ title, icon, tone, children }: { title: string; icon: IconName; tone: Tone; children: ReactNode }) {
   return (
     <View style={{ gap: space.s }}>
-      <View accessibilityRole="header">
-        <Label>{title}</Label>
-      </View>
+      <SectionHeader title={title} icon={icon} tone={tone} />
       <Card>{children}</Card>
     </View>
   );
@@ -132,7 +131,10 @@ export default function SettingsScreen() {
 
   return (
     <Screen>
-      <Section title={t('language.settingsTitle')}>
+      <FadeInView>
+        <HeroHeader tone="trips" illustration="dial" compact eyebrow={t('look.settings.heroEyebrow')} title={t('look.settings.heroTitle')} subtitle={t('look.settings.heroSubtitle')} />
+      </FadeInView>
+      <Section title={t('language.settingsTitle')} icon="language-outline" tone="sea">
         <View accessibilityRole="radiogroup" accessibilityLabel={t('language.settingsTitle')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
           {languageOptions(shipped).map((o) => (
             <Chip
@@ -146,7 +148,7 @@ export default function SettingsScreen() {
         <Body muted>{t('language.body')}</Body>
       </Section>
 
-      <Section title={t('settings.appearance')}>
+      <Section title={t('settings.appearance')} icon="color-palette-outline" tone="accent">
         <View accessibilityRole="radiogroup" accessibilityLabel={t('settings.appearance')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
           {APPEARANCES.map((a) => (
             <Chip key={a} label={t(`settings.appearance.${a}`)} selected={prefs.appearance === a} onPress={() => setPrefs({ appearance: a })} />
@@ -155,7 +157,7 @@ export default function SettingsScreen() {
         <Body muted>{t('settings.appearanceBody')}</Body>
       </Section>
 
-      <Section title={t('weather.unitSetting')}>
+      <Section title={t('weather.unitSetting')} icon="thermometer-outline" tone="warn">
         <View accessibilityRole="radiogroup" accessibilityLabel={t('weather.unitSetting')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
           {TEMP_UNITS.map((u) => (
             <Chip key={u} label={t(`weather.unit.${u}`)} selected={tempUnit === u} onPress={() => setTempUnit(u)} />
@@ -164,12 +166,12 @@ export default function SettingsScreen() {
         <Body muted>{t('weather.unitSettingBody')}</Body>
       </Section>
 
-      <Section title={t('settings.sectionFeedback')}>
+      <Section title={t('settings.sectionFeedback')} icon="phone-portrait-outline" tone="teal">
         <ToggleRow label={t('settings.haptics')} hint={t('settings.hapticsA11yHint')} value={prefs.haptics} onChange={(v) => setPrefs({ haptics: v })} />
         <Body muted>{t('settings.hapticsHint')}</Body>
       </Section>
 
-      <Section title={t('settings.sectionEssentials')}>
+      <Section title={t('settings.sectionEssentials')} icon="battery-half-outline" tone="ok">
         <ToggleRow label={t('settings.essentialsManual')} hint={t('settings.essentialsManualHint')} value={essentials.manual} onChange={setManual} />
         <Body muted>{t('settings.essentialsBody')}</Body>
         <View style={{ height: 1, backgroundColor: theme.line, marginVertical: space.s }} />
@@ -196,7 +198,7 @@ export default function SettingsScreen() {
         <Body muted>{t('settings.thresholdBody')}</Body>
       </Section>
 
-      <Section title={t('settings.homeCountry')}>
+      <Section title={t('settings.homeCountry')} icon="home-outline" tone="sea">
         <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}>
           {t('settings.homeCountryValue', { country: homeRow ? homeRow.country : t('settings.homeCountryNone') })}
         </Text>
@@ -204,7 +206,7 @@ export default function SettingsScreen() {
         <HomeCountryPicker />
       </Section>
 
-      <Section title={t('settings.sleep')}>
+      <Section title={t('settings.sleep')} icon="moon-outline" tone="teal">
         <SleepRow which="bed" />
         <SleepRow which="wake" />
         <Body muted>{t('settings.sleepBody')}</Body>
@@ -212,7 +214,7 @@ export default function SettingsScreen() {
 
       <AirportSettings />
 
-      <Section title={t('settings.privacy')}>
+      <Section title={t('settings.privacy')} icon="shield-checkmark-outline" tone="ok">
         <Text accessibilityRole="header" style={{ fontFamily: fonts.displayMedium, fontSize: 20, color: theme.ink }}>
           {t('settings.privacyHeading')}
         </Text>
@@ -222,7 +224,7 @@ export default function SettingsScreen() {
         <Body muted>{t('settings.privacyMap')}</Body>
       </Section>
 
-      <Section title={t('settings.sectionAbout')}>
+      <Section title={t('settings.sectionAbout')} icon="information-circle-outline" tone="accent">
         <Body>{t('settings.version', { v: Constants.expoConfig?.version ?? '0.1.0' })}</Body>
         {LIST_DATE ? <Body muted>{t('settings.emergencyRef', { date: LIST_DATE })}</Body> : null}
         <Body muted>{t('licences.osm.credit')}</Body>

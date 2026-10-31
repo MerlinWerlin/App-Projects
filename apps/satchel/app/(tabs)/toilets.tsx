@@ -295,12 +295,12 @@ export default function ToiletsScreen() {
 
       {result && !result.ok ? (
         <Animated.View style={{ opacity: fade }}>
-          {result.reason === 'none-found' ? <EmptyState title={t('toilets.noneTitle')} body={t('toilets.noneBody')} /> : null}
+          {result.reason === 'none-found' ? <EmptyState art="mapPin" title={t('toilets.noneTitle')} body={t('toilets.noneBody')} /> : null}
           {result.reason === 'offline-no-pack' ? (
-            <EmptyState title={t('toilets.offlineTitle')} body={t('toilets.offlineBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={done?.origin.kind === 'hotel' ? nearHotel : nearMe} />} />
+            <EmptyState art="compass" title={t('toilets.offlineTitle')} body={t('toilets.offlineBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={done?.origin.kind === 'hotel' ? nearHotel : nearMe} />} />
           ) : null}
           {result.reason === 'network' ? (
-            <EmptyState title={t('toilets.networkTitle')} body={t('toilets.networkBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={done?.origin.kind === 'hotel' ? nearHotel : nearMe} />} />
+            <EmptyState art="compass" title={t('toilets.networkTitle')} body={t('toilets.networkBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={done?.origin.kind === 'hotel' ? nearHotel : nearMe} />} />
           ) : null}
         </Animated.View>
       ) : null}

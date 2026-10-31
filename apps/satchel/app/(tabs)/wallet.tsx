@@ -176,6 +176,8 @@ export default function WalletScreen() {
           <View style={{ flexDirection: 'row', gap: space.s }}>
             <QuickAction icon="cash-outline" tone="accent" label={t('convert.q.convert')} hint={t('convert.q.convertHint')} onPress={() => router.push('/convert')} />
             <QuickAction icon="people-outline" tone="ok" label={t('convert.q.split')} hint={t('convert.q.splitHint')} onPress={() => router.push({ pathname: '/convert', params: { section: 'split' } })} />
+            {/* T90: offline units and clothing sizes. */}
+            <QuickAction icon="speedometer-outline" tone="sea" label={t('units.q.units')} hint={t('units.q.unitsHint')} onPress={() => router.push('/units')} />
           </View>
           <Button kind="secondary" icon="chatbubbles-outline" label={t('phrases.walletEntry')} hint={t('phrases.walletEntryHint')} onPress={() => router.push('/phrases')} />
           {/* T87: membership cards, on this phone only. */}

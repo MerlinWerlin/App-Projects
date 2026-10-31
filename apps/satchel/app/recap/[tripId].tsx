@@ -14,6 +14,7 @@ import type { ExpenseCategory, Trip } from '../../src/core/model.ts';
 import { recapText, tripRecap, type Recap, type RecapWords, type StripPhoto } from '../../src/core/recap.ts';
 import { formatMoney } from '../../src/core/spending.ts';
 import { journalToday } from '../../src/core/journal.ts';
+import { isRecapPreview, recapToday } from '../../src/core/followups91.ts';
 import type { T } from '../../src/i18n/core.ts';
 import { haptic } from '../../src/native/device.ts';
 import { shareText } from '../../src/native/share.ts';
@@ -81,7 +82,10 @@ function RecapView({ trip }: { trip: Trip }) {
   const { t, theme, lang } = useApp();
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const today = journalToday(trip);
+  // T88: the sample trip before its dates opens as a preview of the whole trip (src/core/followups91.ts).
+  const realToday = journalToday(trip);
+  const preview = isRecapPreview(trip, realToday);
+  const today = recapToday(trip, realToday);
   const r = useMemo(() => tripRecap(trip, today, { countryName }), [trip, today]);
   const cover = useMemo(() => tripCover(trip), [trip]);
   const range = formatRange(r.start, r.end, lang);
@@ -102,6 +106,7 @@ function RecapView({ trip }: { trip: Trip }) {
             {eyebrow}
           </TripCoverHero>
         </FadeInView>
+        {preview ? <Body muted>{t('f91.recap.preview')}</Body> : null}
         {r.available ? (
           <RecapBody trip={trip} r={r} onOpen={(path) => router.push(path)} />
         ) : (
@@ -118,7 +123,7 @@ function RecapView({ trip }: { trip: Trip }) {
 function Pill({ icon, text }: { icon: IconName; text: string }) {
   const { theme } = useApp();
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs, backgroundColor: theme.heroWash, borderRadius: radius.pill, paddingHorizontal: space.m, paddingVertical: space.xs }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs, backgroundColor: theme.heroChip, borderRadius: radius.pill, paddingHorizontal: space.m, paddingVertical: space.xs }}>
       <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
         <Ionicons name={icon} size={14} color={theme.heroAccent} />
       </View>

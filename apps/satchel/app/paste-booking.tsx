@@ -118,7 +118,7 @@ export default function PasteBookingScreen() {
         <View
           accessible
           accessibilityLabel={t('paste.privacy')}
-          style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, alignSelf: 'flex-start', backgroundColor: theme.heroWash, borderRadius: radius.pill, paddingHorizontal: space.m, paddingVertical: space.xs }}
+          style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, alignSelf: 'flex-start', backgroundColor: theme.heroChip, borderRadius: radius.pill, paddingHorizontal: space.m, paddingVertical: space.xs }}
         >
           <Ionicons name="lock-closed" size={14} color={theme.heroInk} />
           <Text style={[typeScale.small, { color: theme.heroInk, fontFamily: fonts.bodyBold }]}>{t('paste.privacy')}</Text>

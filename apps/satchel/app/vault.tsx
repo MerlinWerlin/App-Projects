@@ -13,7 +13,8 @@ import { usePrivacyGuard } from '../src/state/privacyGuard.ts';
 import { useTrips } from '../src/state/trips.tsx';
 import { dispatchLock, useVaultDocs, useVaultLock } from '../src/state/vaultLock.ts';
 import { fonts, space } from '../src/theme/tokens.ts';
-import { Body, Button, Card, EmptyState, Label, PressableScale, Title, Warning } from '../src/ui/kit.tsx';
+import { FadeInView, HeroHeader } from '../src/ui/hero.tsx';
+import { Body, Button, Card, EmptyState, Label, PressableScale, Warning } from '../src/ui/kit.tsx';
 import { DOC_ICON, docKindKey, ExpiryBadge, expiryText, tripWarningText, UnprotectedBanner, VaultLockGate } from '../src/ui/slots/WalletVaultSlot.tsx';
 
 export default function VaultScreen() {
@@ -74,8 +75,9 @@ export default function VaultScreen() {
       renderItem={renderDoc}
       ListHeaderComponent={
         <View style={{ gap: space.m, marginBottom: space.s }}>
-          <Title>{t('vault.title')}</Title>
-          <Body muted>{t('vault.privacy')}</Body>
+          <FadeInView>
+            <HeroHeader tone="wallet" illustration="passport" compact eyebrow={t('look.vault.heroEyebrow')} title={t('vault.title')} subtitle={t('vault.privacy')} />
+          </FadeInView>
           <UnprotectedBanner />
           {warnings.map((w) => (
             <Warning key={`${w.docId}-${w.tripId}`} text={tripWarningText(t, w, labelOf(w.docId), lang)} />
@@ -83,7 +85,7 @@ export default function VaultScreen() {
           <Button label={t('vault.lockNow')} hint={t('vault.lockNowHint')} kind="quiet" onPress={() => dispatchLock({ type: 'lock' })} />
         </View>
       }
-      ListEmptyComponent={<EmptyState title={t('vault.empty')} body={t('vault.emptyBody')} />}
+      ListEmptyComponent={<EmptyState art="suitcase" title={t('vault.empty')} body={t('vault.emptyBody')} />}
       ListFooterComponent={
         <View style={{ gap: space.m, marginTop: space.s }}>
           <Button label={t('vault.add')} hint={t('vault.addHint')} onPress={() => router.push('/doc-edit')} />

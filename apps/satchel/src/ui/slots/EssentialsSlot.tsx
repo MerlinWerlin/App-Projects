@@ -1,4 +1,5 @@
-// Essentials screen content (T07, docs/spec/FLOWS.md §9.2): next ticket, hotel address card, emergency card, on
+// Essentials screen content (T07, docs/spec/FLOWS.md §9.2): next ticket, hotel address card, emergency card (and, T88,
+// membership cards: EssentialsLoyalty), on
 // pure black with white text. No animation (plain Pressables here; the shared address and emergency card views
 // turn their PressableScale off with animate={false} in the 'essentials' variant), no map. A section with nothing saved shows
 // a short prompt linking to the setup screen; nothing is ever invented.
@@ -18,6 +19,7 @@ import { essentials, fonts, radius, space, TOUCH } from '../../theme/tokens.ts';
 import { AddressCardView } from '../AddressCardView.tsx';
 import { callAndExplain, EmergencyCardView } from '../EmergencyCardView.tsx';
 import { KindIcon, kindKey } from '../kinds.tsx';
+import { EssentialsLoyalty } from './EssentialsLoyalty.tsx';
 
 const TABLE = table as EmergencyTable;
 const NO_PICK: string | null = null;
@@ -167,6 +169,8 @@ export function EssentialsSlot() {
         <EmergencyCardView variant="essentials" row={display} card={card} onCall={(n) => callAndExplain(n, t)} medicalShown={medicalShown} onToggleMedical={() => setMedicalShown(!medicalShown)} />
         <EssentialsButton label={t('battery.emergencyOpen')} hint={t('battery.emergencyOpenHint')} onPress={() => router.navigate('/emergency')} />
       </Section>
+      {/* T88: membership cards, opening the full-brightness card view. */}
+      <EssentialsLoyalty />
     </View>
   );
 }

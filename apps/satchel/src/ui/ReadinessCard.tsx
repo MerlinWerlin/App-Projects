@@ -181,7 +181,7 @@ export function ReadinessCard({ trip }: { trip: Trip }) {
               <View
                 accessible
                 accessibilityLabel={t('readiness.scoreA11y', { passed: r.passed, total: r.scored })}
-                style={{ backgroundColor: theme.heroWash, borderRadius: radius.pill, paddingHorizontal: space.m, paddingVertical: space.xs }}
+                style={{ backgroundColor: theme.heroChip, borderRadius: radius.pill, paddingHorizontal: space.m, paddingVertical: space.xs }}
               >
                 <Text style={[typeScale.caption, { color: theme.heroInk, fontVariant: ['tabular-nums'] }]}>{t('readiness.score', { passed: r.passed, total: r.scored })}</Text>
               </View>

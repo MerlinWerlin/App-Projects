@@ -10,6 +10,7 @@ import { haptic } from '../native/device.ts';
 import { useApp } from '../state/app.tsx';
 import { duration, pressScale } from '../theme/motion.ts';
 import { fonts, radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
+import { SpotArt, type SpotKind } from './illustrations/index.tsx';
 
 export function Screen({ children, scroll = true }: { children: ReactNode; scroll?: boolean }) {
   const { theme } = useApp();
@@ -139,11 +140,19 @@ export function Button({
   );
 }
 
-export function EmptyState({ title, body, action, icon }: { title: string; body: string; action?: ReactNode; icon?: IconName }) {
+/**
+ * Empty or nothing-found state: an illustration (T91 `art`, original spot art, decorative) or an icon badge, a title
+ * (screen-reader header), a body with the next step, and an optional action. `art` wins over `icon`.
+ */
+export function EmptyState({ title, body, action, icon, art }: { title: string; body: string; action?: ReactNode; icon?: IconName; art?: SpotKind }) {
   const { theme } = useApp();
   return (
     <Card style={{ alignItems: 'flex-start', gap: space.m }}>
-      {icon ? (
+      {art ? (
+        <View style={{ alignSelf: 'center' }}>
+          <SpotArt kind={art} size={132} />
+        </View>
+      ) : icon ? (
         <View
           accessibilityElementsHidden
           importantForAccessibility="no-hide-descendants"

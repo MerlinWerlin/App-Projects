@@ -361,7 +361,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
         onDismiss={dismiss}
         onRestore={() => update(restoreSuggestions)}
       />
-      {p.total === 0 ? <EmptyState title={t('packing.emptyTitle')} body={t('packing.emptyBody')} /> : null}
+      {p.total === 0 ? <EmptyState art="suitcase" title={t('packing.emptyTitle')} body={t('packing.emptyBody')} /> : null}
     </View>
   );
   const footer = (
