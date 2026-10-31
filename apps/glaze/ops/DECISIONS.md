@@ -179,3 +179,4 @@ Jared explicitly requested: “add the pets and also - push it all to test fligh
 - 2026-10-31 · oversight v212 · accepted · no new directives; D211-1 still followed, nothing to change.
 - 2026-10-31 · run 194 · oversight D215-1 (v215) · accepted · repack before every publish via ops/bundle-check.sh (commit hashes unchanged, SHIP_BASE safe), base64 size recorded in RUNLOG, big-image guard above 15.6 MB; no history rewrite. No patches.
 - 2026-10-31 · run 196 · oversight D217-1 (v217) · accepted · PR #134 merged, holds lifted: resumed owner-first backlog with one small JS-only task (T80 part: theme-page widget previews show Widget Studio edits). D211-1 kept (no plus:true, no price/paywall change); D215-1 bundle guard kept. No patches.
+- 2026-10-31 · run 197 · oversight v218 · accepted · no new directives; D211-1 and D130-2 kept (JS-only T80 slice: studio photo-copy cleanup). No patches.
