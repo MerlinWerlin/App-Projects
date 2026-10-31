@@ -2,6 +2,7 @@
 import type { CoverPaint } from '../core/coverArt.ts';
 import type { CoverId } from '../core/covers.ts';
 import type { CardColour } from '../core/loyalty.ts';
+import type { StampInk } from '../core/stamps.ts';
 export type Theme = {
   dark: boolean;
   paper: string;
@@ -255,3 +256,20 @@ export const cardPaints: { light: Record<CardColour, CardPaint>; dark: Record<Ca
 export const cardPaint = (theme: Theme, c: CardColour): CardPaint => (theme.dark ? cardPaints.dark : cardPaints.light)[c] ?? cardPaints.light.slate;
 /** Scannable barcode panel, the same in light and dark mode. */
 export const barcodePanel = { bg: '#FFFFFF', ink: '#000000' } as const;
+
+// ---- T103 passport stamps ----
+// The Passport's paper pages (drawn as a pure SVG pattern: `grain` dots and `fibre` hairlines on `paper`, `edge` for
+// the page border and the gutter rule) and the stamp inks (src/core/stamps.ts STAMP_INKS). Every ink is AA (4.5:1) on
+// `paper` and on `grain` in its theme, so stamp text stays readable wherever a speck of grain sits under it
+// (src/theme/contrast.test.ts). Dark mode is a night-blue page with pale inks.
+export type StampPaper = { paper: string; grain: string; fibre: string; edge: string };
+export const stampPapers: { light: StampPaper; dark: StampPaper } = {
+  light: { paper: '#F6EFDD', grain: '#E4D9BF', fibre: '#EADFC6', edge: '#D3C6A6' },
+  dark: { paper: '#1D2232', grain: '#2A3044', fibre: '#242A3C', edge: '#3A4258' },
+};
+export const stampInks: { light: Record<StampInk, string>; dark: Record<StampInk, string> } = {
+  light: { navy: '#1F3A68', rust: '#9A3F1C', forest: '#2E6B45', plum: '#6A3A82', teal: '#12655F', crimson: '#A32B22' },
+  dark: { navy: '#9DBDF0', rust: '#F2A27A', forest: '#8ED1A6', plum: '#CDA8EE', teal: '#6FD3C6', crimson: '#F5928B' },
+};
+export const stampPaper = (theme: Theme): StampPaper => (theme.dark ? stampPapers.dark : stampPapers.light);
+export const stampInk = (theme: Theme, ink: StampInk): string => (theme.dark ? stampInks.dark : stampInks.light)[ink] ?? (theme.dark ? stampInks.dark.navy : stampInks.light.navy);

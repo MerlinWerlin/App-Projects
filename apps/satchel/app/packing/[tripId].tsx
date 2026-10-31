@@ -8,7 +8,7 @@
 // Manage bags, and a bag picker + weight field in each row's edit card.
 // Free forever.
 import { Ionicons } from '@expo/vector-icons';
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
 import { AccessibilityInfo, Alert, FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -56,6 +56,7 @@ import {
   type Suggestion,
 } from '../../src/core/smartpack.ts';
 import { assignBag, bagsOf, filterItems, NO_BAG, parseWeight, setItemWeight, validFilter, weightInput, type Bag, type BagFilter, type WeightUnit } from '../../src/core/bags.ts';
+import { giftWeightsByBag } from '../../src/core/gifts.ts';
 import templateData from '../../src/content/packing_templates.json';
 import type { Trip } from '../../src/core/model.ts';
 import type { Key } from '../../src/i18n/en.ts';
@@ -281,6 +282,10 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const bagById = useMemo(() => new Map(bagsOf(list).map((b) => [b.id, b])), [bagsKey]);
 
+  // T107: packed gifts add their weight to their bag's tally.
+  const giftLoads = useMemo(() => giftWeightsByBag(trip, list), [trip, list]);
+  const router = useRouter();
+
   const p = progress(list);
   const rows = useMemo<Row[]>(() => {
     return groupByCategory({ ...list, items: filterItems(list, filter) }).flatMap((g) => [
@@ -373,7 +378,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
       {p.total > 0 ? (
         <>
           <BagFilterChips list={list} filter={filter} onFilter={setFilter} qtyOf={qtyOf} />
-          <BagHeaderCard list={list} filter={filter} onFilter={setFilter} update={update} qtyOf={qtyOf} />
+          <BagHeaderCard list={list} filter={filter} onFilter={setFilter} update={update} qtyOf={qtyOf} gifts={giftLoads} />
           <BagHintsCard list={list} update={update} qtyOf={qtyOf} />
         </>
       ) : null}
@@ -410,6 +415,8 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
         <Button label={t('packing.addTemplate')} hint={t('packing.addTemplateHint')} kind="quiet" onPress={() => setAddingTemplate(true)} />
       )}
       {p.total > 0 ? <SharePackingList tripName={tripName} list={list} qtyOf={qtyOf} laundry={laundry} categoryName={(c) => categoryName(t, c)} /> : null}
+      {/* T107: gifts and souvenirs (packed gifts count in their bag's weight). */}
+      <Button label={t('gifts.packing.open')} hint={t('gifts.packing.openHint')} kind="quiet" icon="gift-outline" onPress={() => router.push(`/gifts/${trip.id}`)} />
       {p.done > 0 ? <Button label={t('smartpack.repack')} hint={t('smartpack.repackHint')} kind="quiet" icon="refresh-outline" onPress={confirmReset} /> : null}
     </View>
   );

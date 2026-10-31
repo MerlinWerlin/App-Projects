@@ -8,9 +8,11 @@
 // Bags live on the packing list (PackList.bags / carryOnOnly; PackItem.bag / weightG / movedFrom) and so travel in
 // .satchel files with it. Bag ids are local to the list and are kept on import (rows get new ids; their bag link stays).
 // Pure and immutable like packing.ts: every edit returns a new list. Junk from storage or a file is cleaned, never fatal.
+// T100: the hints also read item names in the six languages of smart packing's synonym table (BATTERY_INTL etc.).
 import type { CardColour } from './loyalty.ts';
 import { CARD_COLOURS } from './loyalty.ts';
 import { categoryOf, normaliseLabel, type PackItem, type PackList } from './packing.ts';
+import { COVERS_INTL, foldLabel } from './smartpack.ts';
 import { decimalMark, parseNumber, roundTo, type UnitSystem } from './units.ts';
 
 export type BagKind = 'carry' | 'personal' | 'checked' | 'own';
@@ -143,10 +145,45 @@ const LIQUID_WORDS = [
   'toiletries', 'wash kit', 'body wash', 'shower gel', 'aerosol',
 ];
 
-export const isBatteryItem = (i: Pick<PackItem, 'label'>) => has(i.label, BATTERY_WORDS);
-export const isMedicineItem = (i: Pick<PackItem, 'label'>) => has(i.label, MEDICINE_WORDS);
+
+/**
+ * T100: the same things in German, French, Spanish, Italian, Dutch and Portuguese (the languages of smart packing's
+ * synonym table, written without accents: labels are folded with smartpack's foldLabel before matching), so a row
+ * typed as "Powerbank", "Medikamente" or "crème solaire" gets the same hint. Whole words or phrases only, common
+ * everyday words; words that also mean something else in another language (receta, compresse) are left out.
+ */
+export const BATTERY_INTL: readonly string[] = [
+  'akku', 'akkus', 'ersatzakku', 'zusatzakku', 'batterie', 'batterien', 'batterie externe', 'batterie de secours', 'piles',
+  'bateria', 'baterias', 'bateria externa', 'cargador portatil', 'pilas', 'batteria', 'batteria esterna', 'accu', 'accus',
+  'batterij', 'batterijen', 'bateria portatil', 'carregador portatil', 'sigaretta elettronica', 'cigarette electronique',
+];
+export const MEDICINE_INTL: readonly string[] = [
+  'medikament', 'medikamente', 'arznei', 'arzneimittel', 'tabletten', 'pillen', 'reiseapotheke', 'medicament', 'medicaments',
+  'trousse a pharmacie', 'comprimes', 'medicamento', 'medicamentos', 'medicinas', 'pastillas', 'botiquin', 'farmaci', 'farmaco',
+  'medicinali', 'pillole', 'medicijnen', 'medicatie', 'remedios', 'remedio', 'comprimidos', 'insuline', 'insulina',
+  'inhalator', 'inhalateur', 'inhalador', 'inalatore',
+];
+export const LIQUID_INTL: readonly string[] = [
+  // Sun cream: smart packing's own synonym row, so both features agree.
+  ...COVERS_INTL.sunscreen,
+  'shampooing', 'champu', 'xampu', 'spulung', 'haarspulung', 'apres shampooing', 'acondicionador', 'balsamo', 'condicionador',
+  'duschgel', 'gel douche', 'gel de ducha', 'gel de banho', 'bagnoschiuma', 'docciaschiuma', 'douchegel', 'zahnpasta',
+  'dentifrice', 'pasta de dientes', 'dentifricio', 'tandpasta', 'pasta de dentes', 'creme dental', 'parfum', 'profumo',
+  'mundwasser', 'bain de bouche', 'enjuague bucal', 'collutorio', 'mondwater', 'enxaguante bucal', 'creme', 'crema',
+  'kulturbeutel', 'trousse de toilette', 'neceser', 'necessaire', 'toilettas', 'beauty case', 'handgel', 'desinfektionsmittel',
+  'gel hydroalcoolique', 'gel desinfectante', 'gel igienizzante', 'alcool gel', 'kontaktlinsenlosung', 'lozione', 'locion',
+];
+
+const hasIntl = (label: string, words: readonly string[]) => {
+  const l = ` ${foldLabel(label)} `;
+  return words.some((w) => l.includes(` ${w} `));
+};
+
+export const isBatteryItem = (i: Pick<PackItem, 'label'>) => has(i.label, BATTERY_WORDS) || hasIntl(i.label, BATTERY_INTL);
+export const isMedicineItem = (i: Pick<PackItem, 'label'>) => has(i.label, MEDICINE_WORDS) || hasIntl(i.label, MEDICINE_INTL);
 /** Liquids, gels, creams and sprays (by name; a toiletries row counts, since a wash kit usually holds some). */
-export const isLiquidItem = (i: Pick<PackItem, 'label' | 'category'>) => has(i.label, LIQUID_WORDS) || (i.category ?? '') === 'toiletries';
+export const isLiquidItem = (i: Pick<PackItem, 'label' | 'category'>) =>
+  has(i.label, LIQUID_WORDS) || hasIntl(i.label, LIQUID_INTL) || (i.category ?? '') === 'toiletries';
 
 /**
  * Where a row usually goes when sorted into bags: power banks, medicines, tech and health in the carry-on; papers and

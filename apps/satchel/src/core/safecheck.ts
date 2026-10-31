@@ -5,6 +5,8 @@
 // - message templates filled from catalogue strings (a line whose value is missing is left out),
 // - sms: URLs (iOS forms, Android form) with an encoded body, and up to MAX_CONTACTS trusted contacts.
 // Trusted contacts live only on this phone (SAFE_CONTACTS_KEY in AsyncStorage); they are never part of a trip file.
+// T100: one-tap "Add as trusted contact" for people on the emergency card, and the ticks for a send remembered on this
+// phone (SAFE_TICKS_KEY), also never in a trip file.
 // Nothing here sends anything: the screen opens Messages or the share sheet and the person presses Send.
 import type { Trip } from './model.ts';
 import { haversineMeters, validLatLon, type LatLon } from './poi.ts';
@@ -308,3 +310,71 @@ export function addContact(list: readonly SafeContact[], draft: { name?: string 
 }
 
 export const removeContact = (list: readonly SafeContact[], id: string): SafeContact[] => cleanContacts(list).filter((c) => c.id !== id);
+
+// ------------------------------------------------------------------------- T100: from the emergency card
+
+/** A person on the emergency card (src/core/model.ts EmergencyContact), read loosely. */
+export type CardPerson = { id?: string; name?: string | null; phone?: string | null; relation?: string | null };
+export type TrustOffer = { key: string; name: string; phone: string; relation?: string };
+
+/**
+ * People on the emergency card who can be added as trusted contacts with one tap: a valid phone number that no
+ * trusted contact has yet (compared as cleaned digits), one offer per number, in card order. Empty when the trusted
+ * list is full.
+ */
+export function cardContactsToTrust(card: readonly CardPerson[] | null | undefined, trusted: readonly SafeContact[]): TrustOffer[] {
+  const current = cleanContacts(trusted);
+  if (current.length >= MAX_CONTACTS || !Array.isArray(card)) return [];
+  const have = new Set(current.map((c) => c.phone));
+  const out: TrustOffer[] = [];
+  card.forEach((p, i) => {
+    if (!p || typeof p !== 'object') return;
+    const phone = cleanPhone(p.phone);
+    if (!phone || have.has(phone)) return;
+    have.add(phone);
+    const relation = typeof p.relation === 'string' ? p.relation.trim() : '';
+    out.push({ key: typeof p.id === 'string' && p.id ? p.id : `card_${i}`, name: cleanName(p.name), phone, ...(relation ? { relation } : {}) });
+  });
+  return out;
+}
+
+// ------------------------------------------------------------------------- T100: remembered ticks
+
+/** Which trusted contacts were ticked for the message, on this phone only (never in a trip file). */
+export const SAFE_TICKS_KEY = 'satchel.safeTicks.v1';
+/** `known`: contacts that existed when the ticks were saved, so a contact added later starts ticked. */
+export type SafeTicks = { ticked: string[]; known: string[] };
+
+const idList = (v: unknown): string[] => (Array.isArray(v) ? [...new Set(v.filter((x): x is string => typeof x === 'string' && !!x))].slice(0, 50) : []);
+
+/** Stored ticks, cleaned (junk reads as nothing remembered). */
+export function cleanTicks(raw: unknown): SafeTicks {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return { ticked: [], known: [] };
+  const r = raw as Record<string, unknown>;
+  return { ticked: idList(r.ticked), known: idList(r.known) };
+}
+
+/**
+ * Ids of the contacts to pre-tick: the ones ticked last time, plus any contact added since (ticked by default, as
+ * before T100). With nothing remembered every contact is ticked.
+ */
+export function tickedIds(raw: unknown, contacts: readonly SafeContact[]): Set<string> {
+  const t = cleanTicks(raw);
+  const ticked = new Set(t.ticked);
+  const known = new Set(t.known);
+  return new Set(contacts.filter((c) => !known.has(c.id) || ticked.has(c.id)).map((c) => c.id));
+}
+
+/** What to store after a tick changes: the ticked ids and every current contact as known. */
+export function ticksToStore(contacts: readonly SafeContact[], ticked: ReadonlySet<string>): SafeTicks {
+  return { ticked: contacts.filter((c) => ticked.has(c.id)).map((c) => c.id), known: contacts.map((c) => c.id) };
+}
+
+/** Flips one contact's tick and returns what to store. */
+export function toggleTick(raw: unknown, contacts: readonly SafeContact[], id: string): SafeTicks {
+  const now = tickedIds(raw, contacts);
+  if (!contacts.some((c) => c.id === id)) return ticksToStore(contacts, now);
+  if (now.has(id)) now.delete(id);
+  else now.add(id);
+  return ticksToStore(contacts, now);
+}

@@ -10,13 +10,15 @@ import essentialsTable from '../content/country_essentials.json';
 import { findEssentials, type EssentialsTable } from '../core/essentials.ts';
 import type { Trip } from '../core/model.ts';
 import type { PackItem, PackList } from '../core/packing.ts';
-import { homeCountryFor, packingText, type SmartInput, type Suggestion } from '../core/smartpack.ts';
+import { packingTextByBag } from '../core/followups94.ts';
+import { homeCountryFor, type SmartInput, type Suggestion } from '../core/smartpack.ts';
 import { dailySummary, formatTemp, weatherPlace, type TempUnit, type WeatherDay } from '../core/weather.ts';
 import type { T } from '../i18n/core.ts';
 import { haptic } from '../native/device.ts';
 import { shareText } from '../native/share.ts';
 import { cachedForecast } from '../native/weather.ts';
 import { useApp } from '../state/app.tsx';
+import { bagName } from './bags.tsx';
 import { radius, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { ErrorNotice } from './ErrorNotice.tsx';
 import { FadeInView, GradientFill, IconBadge, SectionCard, toneColours, type IconName } from './hero.tsx';
@@ -274,14 +276,17 @@ export function SuggestionsCard({
 
 // ---------------------------------------------------------------- share
 
-/** "Share list": the list as plain text into the system share sheet (same path as Share plan). */
+/** "Share list": the list as plain text into the system share sheet (same path as Share plan), by bag when bags are in use. */
 export function SharePackingList({ tripName, list, qtyOf, laundry, categoryName }: { tripName: string; list: PackList; qtyOf: (i: PackItem) => number | undefined; laundry: boolean; categoryName: (c: string) => string }) {
   const { t } = useApp();
   const [failed, setFailed] = useState(false);
   const send = async () => {
-    const text = packingText(
+    // T100: grouped by bag once rows sit in bags, else by category.
+    const text = packingTextByBag(
       list,
       {
+        bag: (b) => bagName(t, b),
+        noBag: t('f94.share.noBag'),
         title: t('packing.forTrip', { trip: tripName }),
         progress: (done, total) => t('smartpack.text.progress', { done, total }),
         category: categoryName,

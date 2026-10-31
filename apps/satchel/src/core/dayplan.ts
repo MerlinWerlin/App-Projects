@@ -10,6 +10,11 @@
 // The traveller can move untimed stops up / down (past a booking too). That order, and the saved places added to a
 // day, are the only things stored: optional trip.dayPlans, read defensively, carried in .satchel files with every
 // id remapped. Without a stored order the suggested order is worked out fresh each time. Pure TS, no RN imports.
+// T100: an optional last leg back to the hotel the traveller sleeps in that night (DayPlanRow.backToHotel, per day),
+// and a "does it fit" check between timed bookings: the walking time plus STOP_VISIT_MIN per untimed stop against
+// the time between them (the earlier booking's end time when it has one on that day).
+// T104: each untimed stop's length can be set (DayPlanRow.stays, per day, STAY_STEP_MIN steps); a stop without one
+// counts STOP_VISIT_MIN (30 min) as before.
 import { ideaDayKeys, ideaSpot, ideasOn, type IdeaCategory } from './ideas.ts';
 import { airportPlan, DEFAULT_AIRPORT_PREFS, type AirportPrefs } from './leaveby.ts';
 import type { Item, ItemKind, LocalDate, LocalDateTime, Trip } from './model.ts';
@@ -28,11 +33,26 @@ export type AnchorRole = 'place' | 'from' | 'to';
 export type DayPlanRef = { ideaId: string } | { placeId: string } | { itemId: string; role: AnchorRole };
 /** A saved place added to the day's plan. */
 export type DayPlanPlace = { placeId: string };
+/** T104: how long the traveller means to spend at an untimed stop that day (minutes). */
+export type DayPlanStay = ({ ideaId: string } | { placeId: string }) & { min: number };
 /**
  * trip.dayPlans row. `places`: saved places added to this day. `order`: the traveller's own order (Move up / Move
  * down); absent means the suggested order. Fields this build doesn't know are kept.
  */
-export type DayPlanRow = { day: LocalDate; places?: DayPlanPlace[]; order?: DayPlanRef[]; updatedAt?: string };
+export type DayPlanRow = {
+  day: LocalDate;
+  places?: DayPlanPlace[];
+  order?: DayPlanRef[];
+  /** T100: end the day with a walk back to the hotel slept in that night. Absent: off. */
+  backToHotel?: true;
+  /** T104: stop lengths the traveller set (a stop without one counts STOP_VISIT_MIN). */
+  stays?: DayPlanStay[];
+  updatedAt?: string;
+};
+
+/** A row worth keeping: it adds places, stores an order or turns on the walk back to the hotel. */
+const rowHasData = (r: DayPlanRow | null | undefined): boolean =>
+  !!r && (!!r.places?.length || !!r.order?.length || r.backToHotel === true || !!r.stays?.length);
 
 /** Rows / refs a trip (or file) may carry; extra ones are left out. */
 export const MAX_DAY_PLANS = 400;
@@ -53,7 +73,7 @@ function readRef(x: unknown): DayPlanRef | null {
 
 function readRow(x: unknown): DayPlanRow | null {
   if (!isObj(x) || !isDay(x.day)) return null;
-  const { places, order, updatedAt, ...rest } = x;
+  const { places, order, updatedAt, backToHotel, stays, ...rest } = x;
   const out = { ...rest, day: x.day } as DayPlanRow;
   if (Array.isArray(places)) {
     const seen = new Set<string>();
@@ -69,8 +89,22 @@ function readRow(x: unknown): DayPlanRow | null {
     const list = order.slice(0, MAX_PLAN_REFS).map(readRef).filter((r): r is DayPlanRef => r !== null);
     if (list.length) out.order = list;
   }
+  if (backToHotel === true) out.backToHotel = true;
+  if (Array.isArray(stays)) {
+    const seen = new Set<string>();
+    const list: DayPlanStay[] = [];
+    for (const st of stays.slice(0, MAX_PLAN_REFS)) {
+      const ref = readRef(st);
+      if (!ref || 'itemId' in ref || !isObj(st) || !validStay(st.min)) continue;
+      const k = keyOfRef(ref);
+      if (seen.has(k)) continue;
+      seen.add(k);
+      list.push({ ...ref, min: st.min });
+    }
+    if (list.length) out.stays = list;
+  }
   if (typeof updatedAt === 'string') out.updatedAt = updatedAt;
-  return out.places || out.order ? out : null;
+  return rowHasData(out) ? out : null;
 }
 
 /** The trip's day plans, read defensively (absent on older trips; unreadable rows skipped; one row per day). */
@@ -95,7 +129,7 @@ function withRow(trip: Trip, day: LocalDate, edit: (row: DayPlanRow) => DayPlanR
   const rows = readDayPlans(trip);
   const i = rows.findIndex((r) => r.day === day);
   const next = edit(i < 0 ? { day } : rows[i]!);
-  const keep = next && (next.places?.length || next.order?.length) ? next : null;
+  const keep = rowHasData(next) ? next : null;
   const list = i < 0 ? (keep ? [...rows, keep] : rows) : keep ? rows.map((r, n) => (n === i ? keep : r)) : rows.filter((_, n) => n !== i);
   const { dayPlans: _d, ...rest } = trip;
   return list.length ? { ...rest, dayPlans: list } : (rest as Trip);
@@ -113,10 +147,11 @@ export function removePlaceFromDay(trip: Trip, day: LocalDate, placeId: string, 
   const row = dayPlanRow(trip, day);
   if (!row?.places?.some((p) => p.placeId === placeId)) return trip;
   return withRow(trip, day, (r) => {
-    const { places, order, ...rest } = r;
+    const { places, order, stays, ...rest } = r;
     const p = (places ?? []).filter((x) => x.placeId !== placeId);
     const o = (order ?? []).filter((x) => !('placeId' in x && x.placeId === placeId));
-    return { ...rest, ...(p.length ? { places: p } : {}), ...(o.length ? { order: o } : {}), updatedAt: now };
+    const st = (stays ?? []).filter((x) => !('placeId' in x && x.placeId === placeId));
+    return { ...rest, ...(p.length ? { places: p } : {}), ...(o.length ? { order: o } : {}), ...(st.length ? { stays: st } : {}), updatedAt: now };
   });
 }
 
@@ -126,6 +161,47 @@ export function resetDayOrder(trip: Trip, day: LocalDate, now = new Date().toISO
   return withRow(trip, day, (r) => {
     const { order: _o, ...rest } = r;
     return { ...rest, updatedAt: now };
+  });
+}
+
+/** T100: turns the walk back to the hotel at the end of `day` on or off (remembered for that day only). */
+export function setBackToHotel(trip: Trip, day: LocalDate, on: boolean, now = new Date().toISOString()): Trip {
+  if (!isDay(day) || (dayPlanRow(trip, day)?.backToHotel === true) === on) return trip;
+  return withRow(trip, day, (r) => {
+    const { backToHotel: _b, ...rest } = r;
+    return { ...rest, ...(on ? { backToHotel: true as const } : {}), updatedAt: now };
+  });
+}
+
+/** T104: shortest and longest stop length the traveller can set, and the step of the - / + buttons (minutes). */
+export const STAY_MIN = 15;
+export const STAY_MAX = 480;
+export const STAY_STEP_MIN = 15;
+function validStay(x: unknown): x is number {
+  return typeof x === 'number' && Number.isInteger(x) && x >= STAY_MIN && x <= STAY_MAX && x % STAY_STEP_MIN === 0;
+}
+
+/** T104: the next length for a stop's - / + button (null when it can't go further that way). */
+export function stepStay(min: number, dir: -1 | 1): number | null {
+  const next = Math.round(min / STAY_STEP_MIN) * STAY_STEP_MIN + dir * STAY_STEP_MIN;
+  return next < STAY_MIN || next > STAY_MAX ? null : next;
+}
+
+/**
+ * T104: sets how long the traveller means to spend at an untimed stop (`idea:<id>` / `place:<id>`) on `day`.
+ * STOP_VISIT_MIN (the default) clears it; an invalid length or a booking key leaves the trip unchanged.
+ */
+export function setStopStay(trip: Trip, day: LocalDate, key: string, min: number, now = new Date().toISOString()): Trip {
+  const ref: { ideaId: string } | { placeId: string } | null = key.startsWith('idea:') ? { ideaId: key.slice(5) } : key.startsWith('place:') ? { placeId: key.slice(6) } : null;
+  if (!isDay(day) || !ref || !isId(Object.values(ref)[0]) || !validStay(min)) return trip;
+  const row = dayPlanRow(trip, day);
+  const current = (row?.stays ?? []).find((x) => keyOfRef(x) === key)?.min ?? STOP_VISIT_MIN;
+  if (current === min) return trip;
+  return withRow(trip, day, (r) => {
+    const { stays, ...rest } = r;
+    const others = (stays ?? []).filter((x) => keyOfRef(x) !== key);
+    const list = min === STOP_VISIT_MIN ? others : [...others, { ...ref, min }];
+    return { ...rest, ...(list.length ? { stays: list } : {}), updatedAt: now };
   });
 }
 
@@ -248,11 +324,23 @@ export type PlanStop = LatLon & {
   category?: IdeaCategory;
   done?: boolean;
   placeId?: string;
+  /** T104, untimed stops: minutes the traveller means to spend there (STOP_VISIT_MIN unless set). */
+  stayMin?: number;
   /** The way here from the start point or the previous stop; absent for the first stop without a start point. */
   leg?: PlanLeg;
   /** Bookings reached on foot: when to set off. */
   leave?: LeaveBy;
+  /** T100, timed bookings after an earlier timed booking: whether the walk and the stops in between fit the time. */
+  fit?: GapFit;
 };
+
+/**
+ * T100 "does it fit": between two timed bookings, the approximate walking minutes plus STOP_VISIT_MIN for each
+ * untimed stop in between, against the minutes from the earlier booking (its end when it has one that day) to this
+ * one. `ok` false: it can't fit (the screen shows a warning line). `far`: a leg is too far to walk, so the walking
+ * time isn't known (not flagged on that account; the leg already suggests transport).
+ */
+export type GapFit = { ok: boolean; freeMin: number; needMin: number; walkMin: number; stops: number; visitMin: number; far: boolean; after: string };
 
 /** Where the walk starts: the hotel the traveller wakes up in, or where they are now. */
 export type StartPoint = LatLon & { kind: 'hotel' | 'here'; name: string; itemId?: string };
@@ -290,6 +378,14 @@ export type DayPlan = {
   longLegs: number;
   /** The traveller's own order is in use. */
   manual: boolean;
+  /** T100: the hotel slept in that night (offered for "Back to hotel" whether it is on or off). */
+  night: StartPoint | null;
+  /** T100: "Back to hotel" is on for this day. */
+  backToHotel: boolean;
+  /** T100: the last leg, from the last stop (or the start) back to `night`; only while it is on and possible. */
+  back?: PlanLeg;
+  /** T100: how many timed gaps can't fit their walk and stops. */
+  noFit: number;
   /** Planned ideas without a map spot and bookings of the day without a map position: listed, not routed. */
   unplaced: { ideas: { id: string; name: string }[]; bookings: { id: string; title: string }[] };
 };
@@ -298,6 +394,10 @@ export type DayPlan = {
 export const LONG_WALK_M = 5000;
 /** Leave-by times include this margin (minutes) so you arrive a little early. */
 export const LEAVE_MARGIN_MIN = 5;
+/** T100: minutes allowed at each untimed stop when checking whether a gap between bookings fits (approximate). T104: the default when the traveller hasn't set a stop's length. */
+export const STOP_VISIT_MIN = 30;
+/** T100: no walk back to the hotel is offered from further than this (metres, straight line): another city. */
+export const BACK_MAX_M = 50_000;
 const MIN = 60_000;
 
 /** The hotel the traveller wakes up in on `day`: a stay checked in before that day and checked out on or after it. */
@@ -315,7 +415,26 @@ export function wakeUpHotel(trip: Trip, day: LocalDate): StartPoint | null {
   return best?.s ?? null;
 }
 
-const keyOfRef = (r: DayPlanRef): string => ('ideaId' in r ? `idea:${r.ideaId}` : 'placeId' in r ? `place:${r.placeId}` : `${r.itemId}:${r.role}`);
+/** T100: the hotel slept in on the night of `day`: checked in on or before that day, checked out after it. */
+export function nightHotel(trip: Trip, day: LocalDate): StartPoint | null {
+  let best: { s: StartPoint; from: string } | null = null;
+  for (const it of Array.isArray(trip.items) ? trip.items : []) {
+    if (it.kind !== 'hotel' || !it.place || !validLatLon(it.place.lat, it.place.lon)) continue;
+    if (typeof it.start?.local !== 'string' || !isLocalDateTime(it.start.local)) continue;
+    if (!it.end || typeof it.end.local !== 'string' || !isLocalDateTime(it.end.local)) continue;
+    const from = localDate(it.start.local);
+    const to = localDate(it.end.local);
+    if (!(from <= day && day < to)) continue;
+    // The latest check-in wins (a move to a new hotel that day).
+    if (best && best.from > from) continue;
+    best = { from, s: { kind: 'hotel', name: it.place.name?.trim() || it.title, lat: it.place.lat as number, lon: it.place.lon as number, itemId: it.id } };
+  }
+  return best?.s ?? null;
+}
+
+function keyOfRef(r: DayPlanRef): string {
+  return 'ideaId' in r ? `idea:${r.ideaId}` : 'placeId' in r ? `place:${r.placeId}` : `${r.itemId}:${r.role}`;
+}
 const refOf = (s: PlanStop): DayPlanRef =>
   s.kind === 'idea' ? { ideaId: s.ideaId! } : s.kind === 'place' ? { placeId: s.placeId! } : { itemId: s.itemId!, role: s.role! };
 
@@ -353,18 +472,20 @@ function anchorsOf(trip: Trip, day: LocalDate): Anchor[] {
 function freeStopsOf(trip: Trip, day: LocalDate, row: DayPlanRow | undefined): { stops: PlanStop[]; noSpot: { id: string; name: string }[] } {
   const stops: PlanStop[] = [];
   const noSpot: { id: string; name: string }[] = [];
+  const stays = new Map((row?.stays ?? []).map((x) => [keyOfRef(x), x.min]));
+  const stayOf = (key: string) => stays.get(key) ?? STOP_VISIT_MIN;
   for (const i of ideasOn(trip, day)) {
     const at = ideaSpot(i);
     if (!at) {
       noSpot.push({ id: i.id, name: i.name });
       continue;
     }
-    stops.push({ key: `idea:${i.id}`, kind: 'idea', name: i.name, n: 0, lat: at.lat, lon: at.lon, ideaId: i.id, category: i.category, ...(i.done ? { done: true } : {}) });
+    stops.push({ key: `idea:${i.id}`, kind: 'idea', name: i.name, n: 0, lat: at.lat, lon: at.lon, ideaId: i.id, category: i.category, ...(i.done ? { done: true } : {}), stayMin: stayOf(`idea:${i.id}`) });
   }
   const saved = new Map(savedPlaces(trip).map((p) => [p.id, p]));
   for (const ref of row?.places ?? []) {
     const p = saved.get(ref.placeId);
-    if (p) stops.push({ key: `place:${p.id}`, kind: 'place', name: p.name, n: 0, lat: p.lat, lon: p.lon, placeId: p.id });
+    if (p) stops.push({ key: `place:${p.id}`, kind: 'place', name: p.name, n: 0, lat: p.lat, lon: p.lon, placeId: p.id, stayMin: stayOf(`place:${p.id}`) });
   }
   return { stops, noSpot };
 }
@@ -489,11 +610,44 @@ export function dayPlan(trip: Trip, day: LocalDate, opts: PlanOptions = {}): Day
       if (s.at !== undefined) lastTimed = s;
     }
   });
+  // T100: does each gap between timed bookings fit its walk and stops?
+  let noFit = 0;
+  let prevTimed = -1;
+  seq.forEach((s, i) => {
+    if (s.kind !== 'booking' || s.at === undefined) return;
+    if (prevTimed >= 0) {
+      const f = gapFit(seq, prevTimed, i, items);
+      if (f) {
+        s.fit = f;
+        if (!f.ok) noFit++;
+      }
+    }
+    prevTimed = i;
+  });
+
+  // T100: the walk back to the hotel slept in that night (not after a departure: you are on the way somewhere).
+  const night = nightHotel(trip, day);
+  const backToHotel = row?.backToHotel === true;
+  let back: PlanLeg | undefined;
+  const last = seq[seq.length - 1];
+  const from: (LatLon & { name: string }) | null = last ?? (start ? { ...start, name: start.name } : null);
+  if (backToHotel && night && from && !(last?.kind === 'booking' && last.role === 'from') && !(last?.kind === 'booking' && last.itemId === night.itemId)) {
+    const leg = legBetween(from, night);
+    // Further than BACK_MAX_M: the day ends in another city (a flight or train away), so no way back to offer.
+    if (leg.straightM <= BACK_MAX_M) {
+      back = leg;
+      if (!leg.long) {
+        walkM += leg.walkM;
+        minutes += leg.minutes;
+      } else longLegs++;
+    }
+  }
+
   const routed = new Set(anchors.map((a) => a.itemId));
   const bookings = (Array.isArray(trip.items) ? trip.items : [])
     .filter((it) => it.kind !== 'note' && typeof it.start?.local === 'string' && localDate(it.start.local) === day && !routed.has(it.id))
     .map((it) => ({ id: it.id, title: it.title }));
-  return { day, start, hotel, stops: seq, walkM, minutes, longLegs, manual, unplaced: { ideas: noSpot, bookings } };
+  return { day, start, hotel, stops: seq, walkM, minutes, longLegs, manual, night, backToHotel, ...(back ? { back } : {}), noFit, unplaced: { ideas: noSpot, bookings } };
 }
 
 /** A leg's maths: straight line, x DETOUR on foot, minutes at walking pace (wayback.walkTime). */
@@ -503,6 +657,40 @@ export function legBetween(from: LatLon & { name: string }, to: LatLon & { name:
   const minutes = same || ride ? 0 : (walkTime(straightM)?.minutes ?? 0);
   const walkM = same || ride ? 0 : straightM * DETOUR;
   return { from: { lat: from.lat, lon: from.lon, name: from.name }, to: { lat: to.lat, lon: to.lon, name: to.name }, straightM, walkM, minutes, same, ride, long: !ride && walkM > LONG_WALK_M };
+}
+
+/** The earlier booking's end on its own clock when it has one later the same day (a tour, a table), else its start. */
+function freeFrom(s: PlanStop, item: Item | undefined): number {
+  const at = s.at!;
+  if (s.role !== 'place' || !item?.end || typeof item.end.local !== 'string' || !isLocalDateTime(item.end.local) || !s.tz) return at;
+  const tz = isValidZone(item.end.tz) ? item.end.tz : s.tz;
+  if (typeof item.start?.local !== 'string' || localDate(item.end.local) !== localDate(item.start.local)) return at;
+  const end = toUtc({ local: item.end.local, tz });
+  return Number.isFinite(end) && end > at ? end : at;
+}
+
+/** T100: the fit of the gap between timed bookings seq[a] and seq[b] (null for a ride: a journey's own two ends). */
+function gapFit(seq: readonly PlanStop[], a: number, b: number, items: ReadonlyMap<string, Item>): GapFit | null {
+  const prev = seq[a]!;
+  const next = seq[b]!;
+  if (prev.role === 'from') return null;
+  let walkMin = 0;
+  let stops = 0;
+  let visitMin = 0;
+  let far = false;
+  for (let k = a + 1; k <= b; k++) {
+    const s = seq[k]!;
+    if (s.leg?.ride) return null;
+    if (s.leg?.long) far = true;
+    else if (s.leg) walkMin += s.leg.minutes;
+    if (k < b && s.kind !== 'booking') {
+      stops++;
+      visitMin += s.stayMin ?? STOP_VISIT_MIN;
+    }
+  }
+  const freeMin = Math.floor((next.at! - freeFrom(prev, items.get(prev.itemId!))) / MIN);
+  const needMin = walkMin + visitMin;
+  return { ok: freeMin >= needMin, freeMin, needMin, walkMin, stops, visitMin, far, after: prev.title ?? prev.name };
 }
 
 function leaveFor(s: PlanStop, item: Item | undefined, prefs: AirportPrefs | undefined, lastTimed: PlanStop | null): LeaveBy | undefined {
@@ -578,7 +766,12 @@ export function placesToAdd(trip: Trip, day: LocalDate): { id: string; name: str
 }
 
 /** Every point on the plan's map, start first. */
-export const planPoints = (plan: DayPlan): LatLon[] => [...(plan.start ? [{ lat: plan.start.lat, lon: plan.start.lon }] : []), ...plan.stops.map((s) => ({ lat: s.lat, lon: s.lon }))];
+export const planPoints = (plan: DayPlan): LatLon[] => [
+  ...(plan.start ? [{ lat: plan.start.lat, lon: plan.start.lon }] : []),
+  ...plan.stops.map((s) => ({ lat: s.lat, lon: s.lon })),
+  // T100: the walk back to the hotel ends the line.
+  ...(plan.back ? [{ lat: plan.back.to.lat, lon: plan.back.to.lon }] : []),
+];
 
 // ------------------------------------------------------------------------------------------ .satchel files
 
@@ -595,15 +788,19 @@ export function importDayPlans(list: readonly DayPlanRow[] | undefined, ids: Day
   if (!list || !list.length) return undefined;
   const out: DayPlanRow[] = [];
   for (const row of list) {
-    const { places, order, ...rest } = row;
+    const { places, order, stays, ...rest } = row;
+    const st = (stays ?? []).flatMap((x): DayPlanStay[] => {
+      if ('ideaId' in x) return ids.ideas.has(x.ideaId) ? [{ ...x, ideaId: ids.ideas.get(x.ideaId)! }] : [];
+      return ids.places.has(x.placeId) ? [{ ...x, placeId: ids.places.get(x.placeId)! }] : [];
+    });
     const p = (places ?? []).flatMap((x) => (ids.places.has(x.placeId) ? [{ ...x, placeId: ids.places.get(x.placeId)! }] : []));
     const o = (order ?? []).flatMap((r): DayPlanRef[] => {
       if ('ideaId' in r) return ids.ideas.has(r.ideaId) ? [{ ...r, ideaId: ids.ideas.get(r.ideaId)! }] : [];
       if ('placeId' in r) return ids.places.has(r.placeId) ? [{ ...r, placeId: ids.places.get(r.placeId)! }] : [];
       return ids.items.has(r.itemId) ? [{ ...r, itemId: ids.items.get(r.itemId)! }] : [];
     });
-    if (!p.length && !o.length) continue;
-    out.push({ ...rest, ...(p.length ? { places: p } : {}), ...(o.length ? { order: o } : {}) });
+    if (!p.length && !o.length && !st.length && rest.backToHotel !== true) continue;
+    out.push({ ...rest, ...(p.length ? { places: p } : {}), ...(o.length ? { order: o } : {}), ...(st.length ? { stays: st } : {}) });
   }
   return out.length ? out : undefined;
 }

@@ -4,12 +4,15 @@
 // upcoming tickets grouped by trip, and ticket cards with a colour stripe per booking kind and an "Offline ready"
 // badge (the ticket file is saved on the phone). T56: a "Show a local" entry under the quick row opens the offline
 // phrase cards (app/phrases.tsx). T61: Convert and Split bill quick actions open app/convert.tsx.
+// T105: a Tipping quick action opens app/tipping.tsx.
+// T102: a Cash card (cash on hand for the trip in progress or next) opens app/cash/[tripId].tsx.
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { deviceZone, formatDay, formatTime, todayIn, zoneCity } from '../../src/core/format.ts';
+import { cashTripFor } from '../../src/core/cash.ts';
 import { focusTrip } from '../../src/core/glance.ts';
 import { splitWallet, walletEntries, type WalletEntry } from '../../src/core/tickets.ts';
 import { useApp } from '../../src/state/app.tsx';
@@ -18,6 +21,7 @@ import { radius, shadowOf, space, typeScale } from '../../src/theme/tokens.ts';
 import { FadeInView, HeroHeader, IconBadge, QuickAction, toneColours } from '../../src/ui/hero.tsx';
 import { KIND_ICON, KIND_TONE, kindKey } from '../../src/ui/kinds.tsx';
 import { Button, EmptyState, Label, PressableScale } from '../../src/ui/kit.tsx';
+import { CashCard } from '../../src/ui/CashCard.tsx';
 import { WalletCards } from '../../src/ui/loyaltyCards.tsx';
 import { WalletVaultSlot } from '../../src/ui/slots/WalletVaultSlot.tsx';
 
@@ -91,6 +95,7 @@ export default function WalletScreen() {
   // Re-split upcoming / past each time the tab comes into view.
   useFocusEffect(useCallback(() => setNow(Date.now()), []));
   const focus = useMemo(() => focusTrip(trips, todayIn(deviceZone(), now)), [trips, now]);
+  const cashTrip = useMemo(() => cashTripFor(trips, todayIn(deviceZone(), now)), [trips, now]);
 
   const { rows, upcomingCount } = useMemo(() => {
     const { upcoming, past } = splitWallet(walletEntries(trips), now);
@@ -178,7 +183,11 @@ export default function WalletScreen() {
             <QuickAction icon="people-outline" tone="ok" label={t('convert.q.split')} hint={t('convert.q.splitHint')} onPress={() => router.push({ pathname: '/convert', params: { section: 'split' } })} />
             {/* T90: offline units and clothing sizes. */}
             <QuickAction icon="speedometer-outline" tone="sea" label={t('units.q.units')} hint={t('units.q.unitsHint')} onPress={() => router.push('/units')} />
+            {/* T105: tipping guide and tip calculator. */}
+            <QuickAction icon="happy-outline" tone="warn" label={t('tipping.q.tipping')} hint={t('tipping.q.tippingHint')} onPress={() => router.push('/tipping')} />
           </View>
+          {/* T102: cash on hand. */}
+          <CashCard trip={cashTrip} showTrip />
           <Button kind="secondary" icon="chatbubbles-outline" label={t('phrases.walletEntry')} hint={t('phrases.walletEntryHint')} onPress={() => router.push('/phrases')} />
           {/* T87: membership cards, on this phone only. */}
           <WalletCards />

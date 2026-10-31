@@ -19,6 +19,9 @@ import { useMinute } from './TripPass.tsx';
 import { briefTodos } from '../core/todos.ts';
 import { useMapsOnPhone } from './ReadinessCard.tsx';
 import { briefLine } from './todos.tsx';
+import { useNextDoseLine } from './MedTimesCard.tsx';
+import { holidayTodayIn } from '../core/holidays.ts';
+import { holidayTodayLine } from './HolidaysCard.tsx';
 
 export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[] }) {
   const { theme, t } = useApp();
@@ -27,6 +30,8 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
   const [airportPrefs] = useAirportPrefs();
   const maps = useMapsOnPhone();
   const b = dayBrief(trips, now);
+  // T101: next medicine dose under the trip's saved plan (empty with no medicines saved). Hook before the early return.
+  const dose = useNextDoseLine(b?.trip ?? null, b?.zone ?? '', now);
   if (!b) return null;
 
   const at = (i: Item) => {
@@ -51,7 +56,9 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
   const tonight = b.tonight ? t('brief.tonight', { name: hotelName }) : '';
   // T93: overdue / due-soon to-dos for this trip ("Due soon: Check in online for DA 6").
   const due = briefLine(t, briefTodos(b.trip, now, { catalog: maps.catalog, installed: maps.installed }));
-  const spoken = [eyebrow, headline, ...lines, flight?.line ?? '', flight?.guidance ?? '', b.tonight && !b.tonight.hasAddress ? tonight : '', early, due].filter(Boolean).join('. ');
+  // T106: today is a public holiday where you are (the brief's zone, its own calendar).
+  const holiday = holidayTodayLine(t, holidayTodayIn(b.zone, now));
+  const spoken = [eyebrow, headline, holiday ?? '', ...lines, flight?.line ?? '', flight?.guidance ?? '', b.tonight && !b.tonight.hasAddress ? tonight : '', early, due, dose].filter(Boolean).join('. ');
   const muted = [typeScale.body, { color: theme.heroMuted }];
 
   return (
@@ -71,6 +78,7 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
           <Text style={[typeScale.caption, { color: theme.heroMuted, flex: 1 }]}>{eyebrow}</Text>
         </View>
         <Text style={[typeScale.displayM, { color: theme.heroInk, fontVariant: ['tabular-nums'] }]}>{headline}</Text>
+        {holiday ? <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{holiday}</Text> : null}
         {lines.map((l) => (
           <Text key={l} style={muted}>
             {l}
@@ -85,6 +93,7 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
         {b.tonight && !b.tonight.hasAddress ? <Text style={muted}>{tonight}</Text> : null}
         {early ? <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{early}</Text> : null}
         {due ? <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{due}</Text> : null}
+        {dose ? <Text style={muted}>{dose}</Text> : null}
       </PressableScale>
       {b.tonight && b.tonight.hasAddress ? (
         <>

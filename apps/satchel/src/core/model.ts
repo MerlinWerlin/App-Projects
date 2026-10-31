@@ -7,6 +7,8 @@ import type { JournalEntry } from './journal.ts';
 import type { Todo } from './todos.ts';
 import type { AirportInfo } from './leaveby.ts';
 import type { DayPlanRow } from './dayplan.ts';
+import type { TripCash } from './cash.ts';
+import type { GiftPerson } from './gifts.ts';
 
 /** Wall-clock local time, minute precision: 'YYYY-MM-DDTHH:mm'. */
 export type LocalDateTime = string;
@@ -104,6 +106,10 @@ export type Trip = {
   todos?: Todo[];
   /** T98 Plan my day: saved places added to a day and the traveller's own stop order (absent = suggested). Read defensively in src/core/dayplan.ts. */
   dayPlans?: DayPlanRow[];
+  /** T102 cash on hand: starting cash, ATM withdrawals, exchanges, counted totals, cash-paid spending marks and leftover choices (absent on older trips). Read defensively in src/core/cash.ts. */
+  cash?: TripCash;
+  /** T107 gifts and souvenirs: people to buy for and their gift ideas (absent on older trips). Read defensively in src/core/gifts.ts. */
+  gifts?: GiftPerson[];
 };
 
 export const EXPENSE_CATEGORIES = ['food', 'transport', 'stay', 'activities', 'shopping', 'other'] as const;

@@ -5,13 +5,18 @@
 // with the time, the position, an Apple Maps link and the current hotel's address; the person can edit it, then
 // opens Messages (sms: link with the body, works on a phone signal without data) or the share sheet. Nothing is
 // sent automatically. Up to 5 trusted contacts are kept only on this phone (src/state/safeContacts.ts).
+// T100: people on the emergency card can be added as trusted contacts with one tap (ones already trusted are not
+// offered), and the contacts ticked for a send are remembered on this phone and pre-ticked next time.
 import { Ionicons } from '@expo/vector-icons';
 import { useMemo, useRef, useState } from 'react';
-import { Text, View } from 'react-native';
+import { AccessibilityInfo, Text, View } from 'react-native';
 import { currentHotel } from '../src/core/battery.ts';
+import { EMERGENCY_KEY, EMPTY_CARD, normaliseCard } from '../src/core/emergency.ts';
+import type { EmergencyCard } from '../src/core/model.ts';
 import { newId } from '../src/core/model.ts';
 import {
   addContact,
+  cardContactsToTrust,
   clockStamp,
   composeMessage,
   dmsPart,
@@ -28,6 +33,7 @@ import {
   type Hemispheres,
   type SafeContact,
   type TemplateKind,
+  type TrustOffer,
 } from '../src/core/safecheck.ts';
 import type { Key } from '../src/i18n/en.ts';
 import { pickContact } from '../src/native/contacts.ts';
@@ -37,7 +43,8 @@ import { locateOnce, type LocateResult } from '../src/native/location.ts';
 import { shareText } from '../src/native/share.ts';
 import { openSms, smsPlatform } from '../src/native/sms.ts';
 import { useApp } from '../src/state/app.tsx';
-import { saveSafeContacts, useSafeContacts } from '../src/state/safeContacts.ts';
+import { usePersisted } from '../src/state/persisted.ts';
+import { saveSafeContacts, useSafeContacts, useSafeTicks } from '../src/state/safeContacts.ts';
 import { useTrips } from '../src/state/trips.tsx';
 import { fonts, radius, space, TOUCH, typeScale } from '../src/theme/tokens.ts';
 import { FadeInView, SectionCard } from '../src/ui/hero.tsx';
@@ -59,7 +66,9 @@ export default function SafeScreen() {
   const [kind, setKind] = useState<TemplateKind>('safe');
   const [draft, setDraft] = useState<string | null>(null); // null: follow the template
   const [stampMs, setStampMs] = useState(() => Date.now());
-  const [skipped, setSkipped] = useState<Set<string>>(() => new Set());
+  const [ticked, toggleTick] = useSafeTicks(contacts);
+  const [storedCard] = usePersisted<EmergencyCard>(EMERGENCY_KEY, EMPTY_CARD);
+  const offers = useMemo(() => cardContactsToTrust(normaliseCard(storedCard).contacts, contacts), [storedCard, contacts]);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [contactError, setContactError] = useState<string | null>(null);
@@ -95,7 +104,7 @@ export default function SafeScreen() {
     },
   );
   const message = draft ?? templateText;
-  const recipients = contacts.filter((c) => !skipped.has(c.id));
+  const recipients = contacts.filter((c) => ticked.has(c.id));
 
   const locate = async () => {
     if (busy.current) return;
@@ -158,13 +167,11 @@ export default function SafeScreen() {
     if (!(await saveSafeContacts((old) => removeContact(old, c.id)))) setContactError(t('safe.contacts.err.save'));
   };
 
-  const toggle = (c: SafeContact) =>
-    setSkipped((old) => {
-      const next = new Set(old);
-      if (next.has(c.id)) next.delete(c.id);
-      else next.add(c.id);
-      return next;
-    });
+  const toggle = (c: SafeContact) => toggleTick(c.id);
+
+  const trust = async (o: TrustOffer) => {
+    if (await addFrom({ name: o.name, phone: o.phone })) AccessibilityInfo.announceForAccessibility(t('f94.trust.added', { name: o.name || o.phone }));
+  };
 
   const sendSms = async () => {
     setSendError(null);
@@ -258,7 +265,7 @@ export default function SafeScreen() {
         {contacts.length === 0 ? <Body muted>{t('safe.contacts.empty')}</Body> : null}
         {contacts.map((c) => {
           const label = c.name || c.phone;
-          const on = !skipped.has(c.id);
+          const on = ticked.has(c.id);
           return (
             <View key={c.id} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
               <PressableScale
@@ -297,6 +304,32 @@ export default function SafeScreen() {
             </View>
           );
         })}
+        {offers.length ? (
+          <View style={{ gap: space.s }}>
+            <Label>{t('f94.trust.heading')}</Label>
+            {offers.map((o) => {
+              const who = o.name || o.phone;
+              return (
+                <PressableScale
+                  key={o.key}
+                  accessibilityRole="button"
+                  accessibilityLabel={t('f94.trust.addA11y', { name: who })}
+                  accessibilityHint={t('f94.trust.addHint')}
+                  onPress={() => trust(o)}
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, paddingHorizontal: space.m, borderRadius: radius.m, borderWidth: 1, borderColor: theme.line, backgroundColor: theme.card }}
+                >
+                  <Ionicons name="medkit-outline" size={20} color={theme.teal} />
+                  <View style={{ flex: 1, paddingVertical: space.xs }}>
+                    <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink }}>{who}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted }}>{o.relation ? `${o.relation} · ${o.phone}` : o.phone}</Text>
+                  </View>
+                  <Text style={{ fontFamily: fonts.bodyBold, fontSize: 14, color: theme.teal }}>{t('f94.trust.add')}</Text>
+                </PressableScale>
+              );
+            })}
+          </View>
+        ) : null}
+        {contacts.length > 0 ? <Text style={[typeScale.small, { color: theme.muted }]}>{t('f94.ticks.remembered')}</Text> : null}
         {contacts.length < MAX_CONTACTS ? (
           <View style={{ gap: space.s }}>
             <Button kind="secondary" icon="person-add-outline" label={t('safe.contacts.pick')} hint={t('safe.contacts.pickHint')} onPress={pick} />

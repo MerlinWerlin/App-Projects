@@ -30,6 +30,7 @@ import {
   type Tally,
   type WeightUnit,
 } from '../core/bags.ts';
+import { withGiftWeight, type GiftBagLoad } from '../core/gifts.ts';
 import { CARD_COLOURS, type CardColour } from '../core/loyalty.ts';
 import { newId } from '../core/model.ts';
 import type { PackItem, PackList } from '../core/packing.ts';
@@ -131,7 +132,7 @@ function PaintBar({ value, track, fill, label }: { value: number; track: string;
 }
 
 /** One bag, painted in its colour: name, cabin / hold, packed progress, things and the weight tally. */
-const BagCard = memo(function BagCard({ bag, tally, unit, lang }: { bag: Bag; tally: Tally; unit: WeightUnit; lang: string }) {
+const BagCard = memo(function BagCard({ bag, tally, unit, lang, gifts }: { bag: Bag; tally: Tally; unit: WeightUnit; lang: string; gifts?: GiftBagLoad }) {
   const { t, theme } = useApp();
   const paint = cardPaint(theme, bag.colour);
   const name = bagName(t, bag);
@@ -182,6 +183,14 @@ const BagCard = memo(function BagCard({ bag, tally, unit, lang }: { bag: Bag; ta
       ) : tally.limitG !== undefined ? (
         <Text style={[typeScale.small, { color: paint.muted }]}>{t('bags.weight.left', { weight: formatWeight(tally.leftG, unit, lang), unit: u })}</Text>
       ) : null}
+      {/* T107: packed gifts in this bag (their weight is in the tally above). */}
+      {gifts && gifts.gifts > 0 ? (
+        <Text style={[typeScale.small, { color: paint.muted }]}>
+          {gifts.gifts === 1
+            ? t('gifts.bag.includesOne', { weight: formatWeight(gifts.grams, unit, lang), unit: u })
+            : t('gifts.bag.includes', { count: gifts.gifts, weight: formatWeight(gifts.grams, unit, lang), unit: u })}
+        </Text>
+      ) : null}
       {tally.weighed > 0 && tally.unweighed > 0 ? (
         <Text style={[typeScale.small, { color: paint.muted }]}>
           {tally.unweighed === 1 ? t('bags.weight.missingOne') : t('bags.weight.missing', { count: tally.unweighed })}
@@ -195,10 +204,26 @@ const BagCard = memo(function BagCard({ bag, tally, unit, lang }: { bag: Bag; ta
  * The header card. One bag chosen: that bag painted big. Everything: a tile per bag (tap to show only that bag).
  * Rows with no bag: how many, with "Sort into bags".
  */
-export function BagHeaderCard({ list, filter, onFilter, update, qtyOf }: { list: PackList; filter: BagFilter; onFilter: (f: BagFilter) => void; update: Update; qtyOf: QtyOf }) {
+export function BagHeaderCard({
+  list,
+  filter,
+  onFilter,
+  update,
+  qtyOf,
+  gifts,
+}: {
+  list: PackList;
+  filter: BagFilter;
+  onFilter: (f: BagFilter) => void;
+  update: Update;
+  qtyOf: QtyOf;
+  /** T107: packed gifts per bag (src/core/gifts.ts giftWeightsByBag); their weight is added to each bag's tally. */
+  gifts?: Record<string, GiftBagLoad>;
+}) {
   const { t, theme, lang } = useApp();
   const unit = useWeightUnit();
-  const s = bagSummaries(list, qtyOf);
+  const base = bagSummaries(list, qtyOf);
+  const s = { ...base, bags: base.bags.map(({ bag, tally }) => ({ bag, tally: withGiftWeight(tally, gifts?.[bag.id]?.grams ?? 0) })) };
   const sort = () => {
     const { sorted } = sortIntoBags(list);
     update((l) => sortIntoBags(l).list);
@@ -209,7 +234,7 @@ export function BagHeaderCard({ list, filter, onFilter, update, qtyOf }: { list:
   if (one) {
     return (
       <FadeInView>
-        <BagCard bag={one.bag} tally={one.tally} unit={unit} lang={lang} />
+        <BagCard bag={one.bag} tally={one.tally} unit={unit} lang={lang} gifts={gifts?.[one.bag.id]} />
       </FadeInView>
     );
   }

@@ -21,6 +21,7 @@ import { useTrips } from '../../src/state/trips.tsx';
 import { fonts, space, TOUCH } from '../../src/theme/tokens.ts';
 import { ItemRow } from '../../src/ui/ItemRow.tsx';
 import { JetLagCard } from '../../src/ui/JetLagCard.tsx';
+import { MedTimesCard } from '../../src/ui/MedTimesCard.tsx';
 import { ReadinessCard } from '../../src/ui/ReadinessCard.tsx';
 import { KindIcon, kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, Screen, Warning } from '../../src/ui/kit.tsx';
@@ -30,6 +31,7 @@ import { TripJournalSlot } from '../../src/ui/slots/TripJournalSlot.tsx';
 import { TripIdeasSlot } from '../../src/ui/slots/TripIdeasSlot.tsx';
 import { TripTodosSlot } from '../../src/ui/slots/TripTodosSlot.tsx';
 import { TripRecapSlot } from '../../src/ui/slots/TripRecapSlot.tsx';
+import { TripGiftsSlot } from '../../src/ui/slots/TripGiftsSlot.tsx';
 import { PlannedIdeas } from '../../src/ui/ideas.tsx';
 import { SharePlan } from '../../src/ui/SharePlan.tsx';
 import { AddToCalendar } from '../../src/ui/AddToCalendar.tsx';
@@ -37,6 +39,7 @@ import { ArrivalCard } from '../../src/ui/ArrivalCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
 import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
+import { HolidayBadge, HolidaysCard, useTripHolidays } from '../../src/ui/HolidaysCard.tsx';
 import { PlanDayButton } from '../../src/ui/PlanDayButton.tsx';
 
 const DEMO_INTRO_KEY = 'satchel.demoIntro.done.v1';
@@ -122,6 +125,8 @@ export default function TripScreen() {
   const partners = useMemo(() => overlapPartners(trip?.items ?? []), [trip]);
   const days = useMemo(() => (trip ? groupByDay(trip) : []), [trip]);
   const cover = useMemo(() => (trip ? tripCover(trip) : null), [trip]);
+  // T106: public holidays at the trip's stops, for the day-header badges.
+  const holidays = useTripHolidays(trip);
   const listRef = useRef<FlatList<Day>>(null);
   const focusIndex = focusDay ? days.findIndex((d) => d.date === focusDay) : -1;
   const scrolled = useRef(false);
@@ -161,8 +166,12 @@ export default function TripScreen() {
     ({ item: day }: { item: Day }) => (
       <Card>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <View accessible accessibilityRole="header" style={{ flex: 1 }}>
-            <Label>{formatDay(day.date, lang)}</Label>
+          <View style={{ flex: 1 }}>
+            <View accessible accessibilityRole="header">
+              <Label>{formatDay(day.date, lang)}</Label>
+            </View>
+            {/* T106: a public holiday at a stop on this day. */}
+            <HolidayBadge holidays={holidays?.byDate.get(day.date)} />
           </View>
           {/* T98: a walking plan for this day. */}
           {trip ? <PlanDayButton tripId={trip.id} day={day.date} /> : null}
@@ -186,7 +195,7 @@ export default function TripScreen() {
       </Card>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [adding, lang, t, theme, router, partners, trip],
+    [adding, lang, t, theme, router, partners, trip, holidays],
   );
 
   if (!trip) {
@@ -256,7 +265,11 @@ export default function TripScreen() {
             {/* T93: the trip's to-do list (hidden once the trip has ended). */}
             <TripTodosSlot trip={trip} />
             {past ? null : <JetLagCard trip={trip} />}
+            {/* T101: Medicine times for this trip's stops. */}
+            {past ? null : <MedTimesCard tripId={trip.id} />}
             <WeatherCard trip={trip} />
+            {/* T106: public holidays at the trip's stops. */}
+            <HolidaysCard trip={trip} />
             <DemoIntro trip={trip} />
             {empty ? (
               <EmptyState
@@ -275,6 +288,8 @@ export default function TripScreen() {
             <TripIdeasSlot trip={trip} />
             <TripSpendingSlot trip={trip} />
             <TripPackingSlot trip={trip} />
+            {/* T107: gifts and souvenirs. */}
+            <TripGiftsSlot trip={trip} />
             <TripPlaces trip={trip} />
 
             <Button label={t('trip.edit')} hint={t('spec.timeline.editHint')} kind="quiet" onPress={() => router.push({ pathname: '/trip-edit', params: { id: trip.id } })} />

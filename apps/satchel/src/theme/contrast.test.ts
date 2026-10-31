@@ -6,7 +6,8 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
 import { AA_LARGE, AA_TEXT, contrast, over, parseColour } from './contrast.ts';
-import { coverScrim, dark, essentials, light, type HeroTone, type Theme } from './tokens.ts';
+import { STAMP_INKS } from '../core/stamps.ts';
+import { coverScrim, dark, essentials, light, stampInks, stampPapers, type HeroTone, type Theme } from './tokens.ts';
 
 type Pair = { fg: string; bg: string; min: number; what: string };
 type ColourKey = { [K in keyof Theme]: Theme[K] extends string ? K : never }[keyof Theme];
@@ -80,6 +81,30 @@ test('cover scrim: hero text on the deepest scrim stop is AA even over a white s
       assert.ok(contrast(th.heroMuted, bottom) >= AA_TEXT, `${mode} heroMuted over ${scene}`);
     }
   }
+});
+
+test('T103 passport stamps: every ink is AA on the stamp paper and its grain, in both themes; page text reads on paper', () => {
+  const fails: string[] = [];
+  for (const mode of ['light', 'dark'] as const) {
+    const paper = stampPapers[mode];
+    const th = mode === 'light' ? light : dark;
+    for (const ink of STAMP_INKS) {
+      const c = stampInks[mode][ink];
+      assert.ok(c, `${mode} ${ink} missing`);
+      for (const bg of ['paper', 'grain', 'fibre'] as const) {
+        const r = contrast(c, paper[bg]);
+        if (r < AA_TEXT) fails.push(`${mode} ink ${ink} on stamp ${bg}: ${r.toFixed(2)}`);
+      }
+    }
+    // page captions (counts, page number) are ink / muted text on the paper
+    for (const fg of ['ink', 'muted'] as const) {
+      const r = contrast(th[fg], paper.paper);
+      if (r < AA_TEXT) fails.push(`${mode} ${fg} on stamp paper: ${r.toFixed(2)}`);
+    }
+    // the page edge reads as a border (3:1 not needed for decoration, but it must differ from the paper)
+    if (contrast(paper.edge, paper.paper) < 1.2) fails.push(`${mode} stamp edge too faint`);
+  }
+  assert.deepEqual(fails, []);
 });
 
 test('low-battery essentials: white and grey text on pure black', () => {
