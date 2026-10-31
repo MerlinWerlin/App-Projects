@@ -10,6 +10,7 @@ import assert from 'node:assert/strict';
 import type { Attachment, Budget, Companion, Expense, ExpenseSplit, Item, Place, SavedPlace, Settlement, Trip } from './model.ts';
 import type { Idea } from './ideas.ts';
 import type { Todo } from './todos.ts';
+import type { DayPlanRow } from './dayplan.ts';
 import type { JournalEntry, JournalPhoto } from './journal.ts';
 import { draftFromEntry, entryFromDraft, withJournalFiles } from './journal.ts';
 import { draftFromIdea, ideaFromDraft } from './ideas.ts';
@@ -18,6 +19,7 @@ import { keepUnknown, splitFromDraft, togetherDraftFromExpense, withSplit } from
 import type { AirportInfo } from './leaveby.ts';
 import { airportDraft, withAirport } from './leaveby.ts';
 import type { PackItem, PackList } from './packing.ts';
+import type { Bag } from './bags.ts';
 import { listFor, putList } from './packing.ts';
 import { withCover } from './covers.ts';
 import { rebaseTrips } from './tickets.ts';
@@ -141,6 +143,14 @@ const todo: Required<Todo> = {
   updatedAt: '2027-03-03T09:00:00.000Z',
 };
 
+// T98: a day plan with an added saved place and a stored order naming a booking, an idea and the place.
+const dayPlanRow: Required<DayPlanRow> = {
+  day: '2027-04-04',
+  places: [{ placeId: 'sp_1' }],
+  order: [{ ideaId: 'idea_1' }, { itemId: 'item_hotel', role: 'place' }, { placeId: 'sp_1' }],
+  updatedAt: '2027-03-04T09:00:00.000Z',
+};
+
 const companion: Required<Companion> = { id: 'c_sam', name: 'Sam' };
 const split: Required<ExpenseSplit> = { mode: 'shares', parts: [{ person: 'me', value: 2 }, { person: 'c_sam', value: 1 }] };
 const expense: Required<Expense> = {
@@ -178,10 +188,34 @@ const fullTrip = (): Required<Trip> =>
     settlements: [settlement],
     cover: 'city',
     todos: [todo],
+    dayPlans: [dayPlanRow],
   });
 
-const packItem: Required<PackItem> = { id: 'pack_1', label: 'Adapter', done: true, category: 'tech', qty: 2, templateItemId: 'tpl_adapter', suggestionId: 'sg_adapter', userQty: 3 };
-const packList: Required<PackList> = { tripId: 'trip_full', template: 'city', items: [packItem], templates: ['city', 'cold'], dismissed: ['sg_umbrella'], laundry: true };
+// T99: an own hold bag with every field; Carry-on only moved the row out of it (bag + movedFrom), with a weight.
+const ownBag: Required<Bag> = { id: 'bag_cam', kind: 'own', name: 'Camera bag', colour: 'plum', hold: true, limitG: 8000 };
+const packItem: Required<PackItem> = {
+  id: 'pack_1',
+  label: 'Adapter',
+  done: true,
+  category: 'tech',
+  qty: 2,
+  templateItemId: 'tpl_adapter',
+  suggestionId: 'sg_adapter',
+  userQty: 3,
+  bag: 'carry',
+  weightG: 250,
+  movedFrom: 'bag_cam',
+};
+const packList: Required<PackList> = {
+  tripId: 'trip_full',
+  template: 'city',
+  items: [packItem],
+  templates: ['city', 'cold'],
+  dismissed: ['sg_umbrella'],
+  laundry: true,
+  bags: [{ id: 'carry', kind: 'carry', colour: 'navy', limitG: 7000 }, { id: 'personal', kind: 'personal', colour: 'teal' }, { id: 'checked', kind: 'checked', colour: 'rust', limitG: 23000 }, ownBag],
+  carryOnOnly: true,
+};
 
 /** What the store does to a value (JSON drops undefined keys). */
 const json = <T>(x: T): T => JSON.parse(JSON.stringify(x)) as T;
@@ -203,10 +237,15 @@ test('T85 fixture: every Trip and Item field is set (Required<> typing + no unde
   const t = fullTrip();
   assertAllSet(t);
   assertAllSet(packList, 'packing');
+  assertAllSet(ownBag, 'bag');
   // Keys Trip has today; a new one must be added to the fixture (tsc) and to this list (here).
   assert.deepEqual(Object.keys(t).sort(), [
-    'budget', 'companions', 'cover', 'createdAt', 'demo', 'endDate', 'expenses', 'homeTz', 'id', 'ideas', 'items', 'journal', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos',
+    'budget', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'homeTz', 'id', 'ideas', 'items', 'journal', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos',
   ]);
+  // T99: PackList / PackItem / Bag keys today (a new one must be added to the fixture and here).
+  assert.deepEqual(Object.keys(packList).sort(), ['bags', 'carryOnOnly', 'dismissed', 'items', 'laundry', 'template', 'templates', 'tripId']);
+  assert.deepEqual(Object.keys(packItem).sort(), ['bag', 'category', 'done', 'id', 'label', 'movedFrom', 'qty', 'suggestionId', 'templateItemId', 'userQty', 'weightG']);
+  assert.deepEqual(Object.keys(ownBag).sort(), ['colour', 'hold', 'id', 'kind', 'limitG', 'name']);
   assert.deepEqual(Object.keys(flight).sort(), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
 });
 
@@ -292,7 +331,7 @@ test('T85 (2b) regression: a journal page field the form does not know survives 
  * saved, and the imported trip's createdAt is the import time. Companion and settlement ids are kept: expenses' payers
  * and splits point at companion ids.
  */
-const RENEWED_KEYS = new Set(['id', 'tripId', 'placeId', 'uri', 'qrCropUri']);
+const RENEWED_KEYS = new Set(['id', 'tripId', 'placeId', 'ideaId', 'itemId', 'uri', 'qrCropUri']);
 function blankIds(x: unknown): unknown {
   if (Array.isArray(x)) return x.map(blankIds);
   if (x && typeof x === 'object') return Object.fromEntries(Object.entries(x).map(([k, v]) => [k, RENEWED_KEYS.has(k) && typeof v === 'string' ? '#' : blankIds(v)]));
@@ -342,6 +381,8 @@ test('T85 (3) .satchel export + import keeps every field (ids renewed, reference
   assert.notEqual(trip.journal?.[0].photos[0].id, photo.id);
   assert.notEqual(trip.ideas?.[0].id, idea.id);
   assert.notEqual(trip.todos?.[0].id, todo.id);
+  assert.deepEqual(trip.dayPlans?.[0].order, [{ ideaId: trip.ideas?.[0].id }, { itemId: trip.items[1].id, role: 'place' }, { placeId: trip.places?.[0].id }], 'day plan points at the new ids');
+  assert.deepEqual(trip.dayPlans?.[0].places, [{ placeId: trip.places?.[0].id }]);
   assert.notEqual(trip.expenses?.[0].id, expense.id);
   assert.deepEqual(trip.companions, src.companions, 'companion ids kept: payers and splits refer to them');
   assert.deepEqual(trip.settlements, src.settlements);
@@ -349,6 +390,11 @@ test('T85 (3) .satchel export + import keeps every field (ids renewed, reference
   assert.ok(imp.packing);
   assert.equal(imp.packing.tripId, imp.trip.id);
   assert.deepEqual(blankIds(json(imp.packing)), blankIds(json(packList)));
+  // T99: bag ids are kept (they are local to the list), so the row still points at its bags.
+  assert.deepEqual(imp.packing.bags, packList.bags);
+  assert.equal(imp.packing.items[0].bag, 'carry');
+  assert.equal(imp.packing.items[0].movedFrom, 'bag_cam');
+  assert.equal(imp.packing.carryOnOnly, true);
 });
 
 test('T85 (3) a trip or booking field added later survives .satchel export + import', () => {

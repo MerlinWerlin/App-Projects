@@ -64,6 +64,11 @@ export const SPEC_SYNC_PREFIXES = [
   'mapsearch.',
   'arrival.',
   'f92.',
+  // Run 94: T97 I'm safe, T98 plan my day, T99 bags, T96 follow-ups.
+  'safe.',
+  'dayplan.',
+  'bags.',
+  'f93.',
 ] as const;
 
 /** Single keys mirrored as well: map.online, the T48 emergency fallback wording, the Toilets tab, home country. */

@@ -1209,12 +1209,61 @@
   },
   {
    "id": "T96",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "follow-up"
    ],
    "title": "Run-93 follow-ups: export the Toilets tab storage keys and use them in MapSearch (no duplicated key strings); tapping the search pin opens its result card; a sourced country-to-currency table so the arrival card can name the local currency (from the OpenAI content lane or a well-known public list, recorded in DECISIONS); device checks: to-dos screen + date picker, search keyboard/scroll in the map list header and speed with big city packs, arrival banner and flag emoji in light/dark, camera button permission paths, new Ionicons glyphs (checkbox-outline, cellular-outline, eye-off-outline, shield-checkmark-outline, card-outline, document-text-outline, camera-outline); still open from T92: .ics in the share sheet, share-sheet entry (native T14), OFL/npm licence text check on the PC",
+   "accept": "tests green",
+   "note": "Run 94: worker takes the offline parts (Toilets storage keys exported and reused in MapSearch, tapping the search pin opens its result card, sourced country-to-currency table for the arrival card); device checks stay open.",
+   "commit": "d7680fd"
+  },
+  {
+   "id": "T97",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "I'm safe + share my location (owner-1031 D, deepen Emergency): an 'I'm safe / Share where I am' card on the Emergency tab. One location check on request (never background) gives coordinates in decimal and degrees-minutes, a Plus Code (Open Location Code, pure TS encoder written here, tested against the published test vectors) and accuracy, plus 'near <hotel / saved place>' when one is close; big readable 'Read this to the operator' view. Message templates (I'm safe, I've landed, Running late, I need help) filled with time, coordinates, an Apple Maps link and the current hotel address; send by SMS (works without data on a phone signal) via the sms: link with body, or the share sheet; up to 5 trusted contacts kept only on this phone (pick from Contacts with expo-contacts or type a number); nothing is sent automatically. Pure TS in src/core/safecheck.ts with tests; screen app/safe.tsx",
+   "accept": "safecheck tests (OLC encode vs published vectors incl. poles/antimeridian, DMS formatting, template filling, nearest saved place within 300 m, sms: URL building for iOS incl. multiple recipients and encoding); every string in src/i18n/en/safecheck.ts; no new npm dependency",
+   "commit": "542bccf"
+  },
+  {
+   "id": "T98",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D",
+    "map"
+   ],
+   "title": "Plan my day (owner-1031 D, deepen Trips + Map): for any trip day, a day plan that puts the day's timed bookings in place and orders the untimed ideas/saved places planned for that day into a short walking route (nearest-neighbour + 2-opt, fixed bookings as anchors, start from the hotel of that night or current position), with walking distance and time between stops (straight-line x 1.3, labelled approximate), a total, 'leave by' hints before each timed booking, and drag-free reordering (Move up/Move down). See the route on the map (offline tiles where downloaded) as numbered stops with a polyline; open each leg in Apple Maps walking. Pure TS in src/core/dayplan.ts with tests; screen app/dayplan/[tripId].tsx; entry from each day on the trip screen",
+   "accept": "dayplan tests (ordering with anchors, 2-opt improves a crossed route, start point choice, leg maths, leave-by before timed bookings in the booking's zone, empty and one-stop days); every string in src/i18n/en/dayplan.ts; no new npm dependency",
+   "commit": "573b53f"
+  },
+  {
+   "id": "T99",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Bags (owner-1031 D, deepen Packing): put each packing item in a bag (Carry-on, Checked, Personal item, plus own bags with a colour), per-bag progress and item counts, optional item weights and a bag weight tally against a limit the user types (no airline data), a 'Carry-on only' trip switch that moves everything into cabin bags, gentle general-guidance hints (spare batteries and power banks in the cabin, liquids 100 ml in a clear bag, medicines in the cabin; labelled verify with your airline), bag filter chips on the packing screen, and a colourful bag header card. Bags travel in .satchel files (round-trip guard updated). Pure TS in src/core/bags.ts with tests",
+   "accept": "bags tests (default bags, assignment and moves, carry-on-only switch, weight tally in kg/lb with the home units, hint rules, .satchel round trip incl. every-field guard); every string in src/i18n/en/bags.ts; no new npm dependency",
+   "commit": "eec67a7"
+  },
+  {
+   "id": "T100",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "title": "Run-94 follow-ups: check the country-to-currency table against the current ISO 4217 list when online; group the shared packing-list text by bag; bag tips for non-English item names; one-tap 'add as trusted contact' for people already on the emergency card; remember the safe-message recipient ticks; Plan my day: optional back-to-hotel last leg and a does-it-fit check between timed bookings; device checks: sms:/open?addresses multi-recipient form on iOS, custom marker pins + Apple Maps walking hand-off, day header layout on small screens, search pin scroll, arrival currency line; still open from T96/T92: new Ionicons glyphs, .ics in the share sheet, share-sheet entry (native T14), OFL/npm licence text check on the PC",
    "accept": "tests green"
   }
  ],

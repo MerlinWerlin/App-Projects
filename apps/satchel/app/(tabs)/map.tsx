@@ -59,6 +59,7 @@ import { DaylightLine } from '../../src/ui/WeatherCard.tsx';
 import { placeKey } from '../../src/core/wayback.ts';
 import { requestNearestToilet } from '../../src/state/nearestToilet.ts';
 import type { SearchHit } from '../../src/core/mapsearch.ts';
+import { SEARCH_PIN_ID, searchPinTap } from '../../src/core/followups93.ts';
 import { MapSearch } from '../../src/ui/MapSearch.tsx';
 
 const CATS = parsePoiCategories(tagData);
@@ -257,7 +258,7 @@ function OfflineMaps({ installed, refreshInstalled, onShow }: { installed: CityM
 }
 
 export default function MapScreen() {
-  const { t, theme } = useApp();
+  const { t, theme, reduceMotion } = useApp();
   const router = useRouter();
   const { trips, saveTrip } = useTrips();
   const [cityIdx, setCityIdx] = useState(0);
@@ -269,6 +270,9 @@ export default function MapScreen() {
   const [loc, setLoc] = useState<Loc>({ s: 'idle' });
   const [focus, setFocus] = useState<MapFocus | null>(null);
   const [found, setFound] = useState<SearchHit | null>(null);
+  // T96: tapping the search pin opens its result card (MapSearch) and scrolls the list to it.
+  const [reveal, setReveal] = useState(0);
+  const searchY = useRef(0);
   const net = useNetworkStatus();
   const [installed, setInstalled] = useState<CityMap[]>([]);
   const refreshInstalled = useCallback(async () => setInstalled(await listInstalled()), []);
@@ -308,6 +312,7 @@ export default function MapScreen() {
   const origin: LatLon | null = set ? (here && haversineMeters(here, set.center) < NEAR_CITY_M ? here : set.center) : null;
   const fromYou = !!here && origin === here;
   const nearby = useMemo(() => (origin ? sortByDistance(shownPois, origin) : []), [shownPois, origin]);
+  const listRef = useRef<FlatList<(typeof nearby)[number]>>(null);
   const selectedSaved = selected?.type === 'saved' ? (saved.find((p) => p.id === selected.id) ?? null) : null;
   const savedAt = useCallback((at: LatLon) => saved.find((p) => haversineMeters(p, at) <= SAME_SPOT_M) ?? null, [saved]);
 
@@ -335,7 +340,7 @@ export default function MapScreen() {
     if (selected?.type === 'spot') {
       out.push({ id: 'spot', lat: selected.at.lat, lon: selected.at.lon, title: t('places.dropped'), color: theme.muted, a11y: t('places.dropped') });
     }
-    if (found) out.push({ id: 'q', lat: found.lat, lon: found.lon, title: found.name, color: theme.accentStrong, a11y: t('mapsearch.pinA11y', { name: found.name }) });
+    if (found) out.push({ id: SEARCH_PIN_ID, lat: found.lat, lon: found.lon, title: found.name, color: theme.accentStrong, a11y: t('mapsearch.pinA11y', { name: found.name }) });
     if (here) out.push({ id: 'me', lat: here.lat, lon: here.lon, title: t('map.here'), color: theme.ok, a11y: t('map.here') });
     return out;
   }, [bookings, saved, savedSpots, shownPois, selected, found, here, theme, t, catLabel, scoped, layer.pins, layer.showsItem, layer.coversPin]);
@@ -366,6 +371,13 @@ export default function MapScreen() {
   const onPinPress = useCallback(
     (id: string) => {
       setNotice(null);
+      const tap = searchPinTap(id, !!found, reveal);
+      if (tap.open === 'result') {
+        select(null);
+        setReveal(tap.nonce);
+        listRef.current?.scrollToOffset({ offset: searchY.current, animated: !reduceMotion });
+        return;
+      }
       if (id.startsWith('b:')) {
         const pin = bookings.find((b) => `b:${b.id}` === id);
         if (pin) select({ type: 'booking', pin });
@@ -385,7 +397,7 @@ export default function MapScreen() {
         }
       }
     },
-    [bookings, set, savedAt, select, router],
+    [bookings, set, savedAt, select, router, found, reveal, reduceMotion],
   );
 
   const onMapPress = useCallback(
@@ -598,15 +610,18 @@ export default function MapScreen() {
           onBackToTrip={() => router.push(`/trip/${scoped.id}`)}
         />
       ) : null}
-      <MapSearch
-        sets={SETS}
-        from={here}
-        installedKey={installed.map((c) => c.id).join(',')}
-        onPick={(h) => {
-          setFound(h);
-          if (h) focusOn(h);
-        }}
-      />
+      <View onLayout={(e) => (searchY.current = e.nativeEvent.layout.y)}>
+        <MapSearch
+          sets={SETS}
+          reveal={reveal}
+          from={here}
+          installedKey={installed.map((c) => c.id).join(',')}
+          onPick={(h) => {
+            setFound(h);
+            if (h) focusOn(h);
+          }}
+        />
+      </View>
       <Body muted>{t('map.online')}</Body>
       <OfflineMaps installed={installed} refreshInstalled={refreshInstalled} onShow={showCity} />
 
@@ -781,6 +796,7 @@ export default function MapScreen() {
         ) : null}
       </View>
       <FlatList
+        ref={listRef}
         style={{ flex: 1 }}
         data={nearby}
         keyExtractor={(p) => p.id}
