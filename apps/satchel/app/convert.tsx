@@ -68,6 +68,7 @@ export default function ConvertScreen() {
           body={t('convert.noTripBody')}
           action={<Button label={t('convert.noTripAction')} hint={t('convert.noTripActionHint')} onPress={() => router.navigate('/')} />}
         />
+        <UnitsLink />
       </Screen>
     );
   }
@@ -121,6 +122,7 @@ function ConvertBody({ trip, tripChoices, onPickTrip, toSplit }: { trip: Trip; t
           body={t('convert.noHomeBody', { trip: trip.name })}
           action={<Button label={t('convert.openSpending')} hint={t('convert.openSpendingHint')} icon="wallet-outline" onPress={() => router.push(`/spending/${trip.id}`)} />}
         />
+        <UnitsLink />
       </Screen>
     );
   }
@@ -142,6 +144,7 @@ function ConvertBody({ trip, tripChoices, onPickTrip, toSplit }: { trip: Trip; t
       {tripPicker}
       <LocalPicker home={home} offered={offered} current={current} onPick={setLocal} onAdd={(c) => { setExtra((x) => (x.includes(c) ? x : [...x, c])); setLocal(c); }} />
       {current ? <Converter key={current} trip={trip} local={current} home={home} today={today} saveTrip={saveTrip} /> : null}
+      <UnitsLink />
       <View
         onLayout={(e) => {
           if (!toSplit || scrolled.current) return;
@@ -568,4 +571,11 @@ function StepButton({ icon, label, hint, enabled, onPress }: { icon: 'add' | 're
       <Ionicons name={icon} size={24} color={theme.ink} />
     </PressableScale>
   );
+}
+
+/** T90: the offline units and sizes converter (app/units.tsx), which needs no trip or rates. */
+function UnitsLink() {
+  const { t } = useApp();
+  const router = useRouter();
+  return <Button kind="secondary" icon="speedometer-outline" label={t('units.fromConvert')} hint={t('units.fromConvertHint')} onPress={() => router.push('/units')} />;
 }

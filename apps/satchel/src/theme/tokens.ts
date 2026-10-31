@@ -19,6 +19,8 @@ export type Theme = {
   /** Dims the screen behind a bottom sheet (the iPhone date / time sheet); tap it to cancel. */
   scrim: string;
   // T50 richer travel look. Every pair below was checked for WCAG AA (4.5:1 text, 3:1 icons) in both themes.
+  // T91: src/theme/contrast.test.ts checks every pair screens use, in both themes. `accent` is for icons, borders and
+  // fills only (3:1); never put text in it or onAccent text on it (use accentInk / accentStrong).
   /** Warm text that reads on paper, card and accentSoft (accent itself is for fills and icons). */
   accentInk: string;
   /** Fill for primary buttons: onAccent text on it is AA (accent itself is only 3:1 with white in light mode). */
@@ -39,8 +41,10 @@ export type Theme = {
   heroMuted: string;
   /** Warm highlight for hero illustrations and large display numbers only. */
   heroAccent: string;
-  /** Translucent white wash for shapes drawn on top of a hero gradient. */
+  /** Translucent white wash for shapes drawn on top of a hero gradient (art and icon circles, not behind text). */
   heroWash: string;
+  /** T91: translucent dark glass for text pills on a hero gradient (heroInk / heroMuted on it are AA over every stop). */
+  heroChip: string;
   /** Hero gradients per tab: [top-left, bottom-right]. */
   hero: Record<HeroTone, readonly [string, string]>;
 };
@@ -54,12 +58,12 @@ export const light: Theme = {
   card: '#FFFFFF',
   line: '#DED8CC',
   ink: '#14213D',
-  muted: '#6B7280',
-  accent: '#E07A2F',
+  muted: '#5F6675',
+  accent: '#CC6A26',
   accentSoft: '#FBE7D6',
   sea: '#2A6F97',
-  ok: '#2C7A54',
-  warn: '#A2620F',
+  ok: '#28714E',
+  warn: '#8F560B',
   danger: '#B42318',
   onAccent: '#FFFFFF',
   scrim: 'rgba(20, 33, 61, 0.45)',
@@ -77,6 +81,7 @@ export const light: Theme = {
   heroMuted: '#EEF3F8',
   heroAccent: '#FFC796',
   heroWash: 'rgba(255, 255, 255, 0.14)',
+  heroChip: 'rgba(8, 16, 36, 0.24)',
   hero: {
     trips: ['#14213D', '#2A6F97'],
     wallet: ['#7A3A10', '#A34D18'],
@@ -115,6 +120,7 @@ export const dark: Theme = {
   heroMuted: '#C9D3E0',
   heroAccent: '#F29A5C',
   heroWash: 'rgba(255, 255, 255, 0.10)',
+  heroChip: 'rgba(0, 0, 0, 0.28)',
   hero: {
     trips: ['#0B1428', '#1B4A66'],
     wallet: ['#3A1C08', '#8A4214'],
@@ -132,7 +138,8 @@ export const essentials = { bg: '#000000', ink: '#FFFFFF', muted: '#BBBBBB', lin
  * app.json (and the theme paper) so there is no white frame. Mirrored in scripts/render-icons.mjs.
  */
 export const brand = {
-  light: { bg: light.paper, body: light.ink, flap: light.accent, detail: light.paper },
+  // The flap keeps the original logo orange (the owner likes the logo); light.accent was deepened in T91 for contrast.
+  light: { bg: light.paper, body: light.ink, flap: '#E07A2F', detail: light.paper },
   dark: { bg: dark.paper, body: light.paper, flap: dark.accent, detail: dark.paper },
 } as const;
 

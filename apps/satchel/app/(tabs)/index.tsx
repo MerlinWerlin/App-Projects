@@ -23,6 +23,7 @@ import { FadeInView, HeroHeader, ProgressBar, StatTile } from '../../src/ui/hero
 import { Button, EmptyState, Label, PressableScale } from '../../src/ui/kit.tsx';
 import { NextUpCard } from '../../src/ui/NextUpCard.tsx';
 import { LeavingSoonBanner } from '../../src/ui/ReadinessCard.tsx';
+import { RecapHeroCard } from '../../src/ui/RecapHeroCard.tsx';
 import { TravelsCard } from '../../src/ui/TravelsCard.tsx';
 import { TripImport } from '../../src/ui/TripImport.tsx';
 import { ClockCard, countdownHeadline, TodayCard, TripPass } from '../../src/ui/TripPass.tsx';
@@ -126,6 +127,7 @@ export default function TripsScreen() {
             </View>
           ) : null}
           <TravelsCard />
+          <RecapHeroCard trips={trips} />
           <NextUpCard trips={trips} />
           <TodayCard trips={trips} />
           {focus && dest ? <ClockCard destTz={dest} homeTz={focus.homeTz} /> : null}

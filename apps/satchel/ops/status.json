@@ -1,15 +1,15 @@
 {
- "tests": 857,
+ "tests": 911,
  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
- "last_run": "2026-11-01 01:22",
+ "last_run": "2026-11-01 03:20",
  "stage": "owner-tested",
- "oversight_seen": 218,
- "headline": "Expanding: loyalty cards with scannable barcodes in the Wallet, trip recaps, and a safety net so editing or sharing a trip never loses anything",
+ "oversight_seen": 219,
+ "headline": "Expanding: Add to Calendar, a units and size converter, and a crisper, more colourful look in light and dark",
  "next_for_owner": [
   "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
-  "Wallet tab: add a loyalty or membership card with a QR or Code 128 barcode and see if it scans; open a started trip and tap Trip recap.",
+  "Open a trip and tap Add trip to Calendar; then Wallet tab > Units to try the converters and clothing/shoe sizes.",
   "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
-  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (AG-AJ are new) by commenting on this page."
+  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (AK-AN are new) by commenting on this page."
  ],
  "trial_kit": true,
  "next_stage": "release-prep"

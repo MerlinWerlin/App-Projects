@@ -6,6 +6,7 @@ import { useRouter } from 'expo-router';
 import { useMemo } from 'react';
 import { Text, View } from 'react-native';
 import { journalToday } from '../../core/journal.ts';
+import { recapToday } from '../../core/followups91.ts';
 import type { Trip } from '../../core/model.ts';
 import { tripRecap } from '../../core/recap.ts';
 import { useApp } from '../../state/app.tsx';
@@ -17,7 +18,7 @@ import { countryName, formatInt } from '../useTravelStats.ts';
 export function TripRecapSlot({ trip }: { trip: Trip }) {
   const { t, theme, lang } = useApp();
   const router = useRouter();
-  const today = journalToday(trip);
+  const today = recapToday(trip, journalToday(trip)); // T88: the sample trip previews before its dates
   const r = useMemo(() => tripRecap(trip, today, { countryName }), [trip, today]);
   if (!r.available) return null;
   const cities = r.cities.length === 1 ? t('recap.slot.citiesOne') : t('recap.slot.cities', { n: r.cities.length });

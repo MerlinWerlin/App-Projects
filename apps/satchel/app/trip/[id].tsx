@@ -31,6 +31,7 @@ import { TripIdeasSlot } from '../../src/ui/slots/TripIdeasSlot.tsx';
 import { TripRecapSlot } from '../../src/ui/slots/TripRecapSlot.tsx';
 import { PlannedIdeas } from '../../src/ui/ideas.tsx';
 import { SharePlan } from '../../src/ui/SharePlan.tsx';
+import { AddToCalendar } from '../../src/ui/AddToCalendar.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
 import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
@@ -156,8 +157,12 @@ export default function TripScreen() {
   const renderDay = useCallback(
     ({ item: day }: { item: Day }) => (
       <Card>
-        <View accessible accessibilityRole="header">
-          <Label>{formatDay(day.date, lang)}</Label>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          <View accessible accessibilityRole="header" style={{ flex: 1 }}>
+            <Label>{formatDay(day.date, lang)}</Label>
+          </View>
+          {/* T89: add this day's bookings to Calendar. */}
+          {trip && (day.items.length || day.continuing.length) ? <AddToCalendar trip={trip} scope={{ kind: 'day', date: day.date }} compact /> : null}
         </View>
         {day.continuing.map((it) => (
           <ItemRow key={`c-${it.id}`} item={it} continuingOn={day.date} onPress={() => router.push(`/item/${it.id}`)} />
@@ -264,6 +269,7 @@ export default function TripScreen() {
 
             <Button label={t('trip.edit')} hint={t('spec.timeline.editHint')} kind="quiet" onPress={() => router.push({ pathname: '/trip-edit', params: { id: trip.id } })} />
             <SharePlan trip={trip} />
+            {empty ? null : <AddToCalendar trip={trip} scope={{ kind: 'trip' }} />}
             <TripExport trip={trip} />
           </View>
         }

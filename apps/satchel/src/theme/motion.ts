@@ -1,11 +1,10 @@
-// The one motion file (starter standard): three durations and one gentle spring. Respect Reduce Motion.
-// T50: timed helpers only (Animated.timing with an ease-out cubic curve); the owner's standing rule is no bounce and
-// no springs on screen, so `spring` stays exported for old callers but new code uses the helpers below.
+// The one motion file (starter standard): three durations, timed helpers only. Respect Reduce Motion.
+// T50: Animated.timing with an ease-out cubic curve. The owner's standing rule is no bounce and no springs on screen;
+// T91 removed the unused spring config and src/theme/motion.test.ts fails if any spring / bounce API comes back.
 import { useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Animated, Easing } from 'react-native';
 
 export const duration = { fast: 120, base: 200, slow: 320 } as const;
-export const spring = { damping: 18, stiffness: 180, mass: 1 } as const;
 export const pressScale = 0.97;
 /** Duration to use given the Reduce Motion setting. */
 export const dur = (ms: number, reduceMotion: boolean) => (reduceMotion ? 0 : ms);

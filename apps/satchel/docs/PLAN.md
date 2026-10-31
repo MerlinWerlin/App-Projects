@@ -67,8 +67,8 @@ No subscription, no ads, no tracking, no accounts.
 ## 5. Visual design
 Calm, legible "travel wallet": navy with boarding-pass paper, and one warm accent for tickets.
 ```
---paper:#F4F1EA --card:#FFFFFF --line:#DED8CC --ink:#14213D --muted:#6B7280
---accent:#E07A2F --accent-soft:#FBE7D6 --sea:#2A6F97 --ok:#2C7A54 --warn:#A2620F --danger:#B42318
+--paper:#F4F1EA --card:#FFFFFF --line:#DED8CC --ink:#14213D --muted:#5F6675
+--accent:#CC6A26 --accent-soft:#FBE7D6 --sea:#2A6F97 --ok:#28714E --warn:#8F560B --danger:#B42318
 dark: --paper:#0E1320 --card:#161C2C --line:#2A3247 --ink:#EEF1F7 --muted:#A3ABBD --accent:#F29A5C --accent-soft:#3A2516 --sea:#7DB7DA
 ```
 Fonts: Space Grotesk (display) and Inter (body). Touch targets 48 pt or more. Ticket screens work one-handed at full brightness. Low-battery mode is pure black with white text.

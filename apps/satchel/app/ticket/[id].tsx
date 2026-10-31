@@ -112,7 +112,7 @@ export default function TicketScreen() {
           {found ? <Body muted>{t('ticket.trip', { name: found.trip.name })}</Body> : null}
         </View>
 
-        {!shown ? <EmptyState title={t('ticket.none')} body={t('ticket.noneBody')} action={<Button label={t('ticket.manage')} hint={t('ticket.manageHint')} kind="quiet" onPress={manage} />} /> : null}
+        {!shown ? <EmptyState art="ticket" title={t('ticket.none')} body={t('ticket.noneBody')} action={<Button label={t('ticket.manage')} hint={t('ticket.manageHint')} kind="quiet" onPress={manage} />} /> : null}
 
         {showCrop ? (
           <View style={{ alignSelf: 'center', backgroundColor: theme.card, borderRadius: radius.m, borderWidth: 1, borderColor: theme.line, padding: space.s }}>
@@ -172,9 +172,9 @@ export default function TicketScreen() {
           </PressableScale>
         ) : null}
 
-        {shown && missing ? <EmptyState title={t('ticket.missing')} body={t('ticket.missingBody')} action={<Button label={t('ticket.manage')} hint={t('ticket.manageHint')} kind="quiet" onPress={manage} />} /> : null}
+        {shown && missing ? <EmptyState art="ticket" title={t('ticket.missing')} body={t('ticket.missingBody')} action={<Button label={t('ticket.manage')} hint={t('ticket.manageHint')} kind="quiet" onPress={manage} />} /> : null}
         {shown && !missing && (imageBroken || (cropBroken && !showImage && kind !== 'pdf')) ? (
-          <EmptyState title={t('ticket.broken')} body={t('ticket.brokenBody')} action={<Button label={t('ticket.manage')} hint={t('ticket.manageHint')} kind="quiet" onPress={manage} />} />
+          <EmptyState art="ticket" title={t('ticket.broken')} body={t('ticket.brokenBody')} action={<Button label={t('ticket.manage')} hint={t('ticket.manageHint')} kind="quiet" onPress={manage} />} />
         ) : null}
 
         {shown && kind === 'pdf' && !missing ? (

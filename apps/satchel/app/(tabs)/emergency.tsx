@@ -100,7 +100,7 @@ export default function EmergencyScreen() {
           onPress={() => setListOpen(!listOpen)}
         />
       ) : (
-        <EmptyState title={t('emergency.countryNone')} body={t('emergency.countryNoneBody')} />
+        <EmptyState art="mapPin" title={t('emergency.countryNone')} body={t('emergency.countryNoneBody')} />
       )}
 
       {showList ? (
@@ -142,6 +142,7 @@ export default function EmergencyScreen() {
 
       {cardStatus(card).empty ? (
         <EmptyState
+          art="compass"
           title={t('emergency.cardEmptyTitle')}
           body={t('emergency.cardEmptyBody')}
           action={<Button label={t('emergency.editCard')} hint={t('emergency.editCardHint')} onPress={() => router.push('/emergency-edit')} />}

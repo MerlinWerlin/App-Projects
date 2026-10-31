@@ -49,7 +49,7 @@ export function TripJournalSlot({ trip }: { trip: Trip }) {
             <View style={{ flex: 1, gap: 2 }}>
               <Text style={[typeScale.caption, { color: theme.heroMuted }]}>{t('journal.today.title')}</Text>
               <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{body}</Text>
-              <Text style={[typeScale.small, { color: theme.heroAccent }]}>{action}</Text>
+              <Text style={[typeScale.small, { fontFamily: typeScale.bodyStrong.fontFamily, color: theme.heroMuted }]}>{action}</Text>
             </View>
             <View importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
               <Ionicons name="chevron-forward" size={18} color={theme.heroMuted} />

@@ -76,6 +76,7 @@ export default function AddressScreen() {
           </>
         ) : (
           <EmptyState
+            art="mapPin"
             title={t('address.noAddressTitle')}
             body={t('address.noAddressBody')}
             action={

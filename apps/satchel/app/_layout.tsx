@@ -85,6 +85,7 @@ function Shell() {
           <Stack.Screen name="phrases" options={{ ...header, title: t('phrases.title') }} />
           <Stack.Screen name="help" options={{ ...header, title: t('help.title') }} />
           <Stack.Screen name="convert" options={{ ...header, title: t('convert.route') }} />
+          <Stack.Screen name="units" options={{ ...header, title: t('units.route') }} />
           <Stack.Screen name="travels" options={{ ...header, title: t('travels.route') }} />
           <Stack.Screen name="jetlag" options={{ ...header, title: t('jetlag.route') }} />
           <Stack.Screen name="wayback" options={{ ...header, title: t('wayback.route') }} />

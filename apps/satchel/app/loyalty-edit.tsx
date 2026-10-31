@@ -1,11 +1,14 @@
 // T87 add / edit a membership card: type (radio chips), programme name (typed by the user, never prefilled), name on
 // card, number, optional tier and expiry (YYYY-MM-DD, like vault documents), card colour (token paints) and what
 // the card shows (barcode, QR code or number only). A live preview of the card sits above Save. Saved on this phone
-// only. Leaving with changes asks first (src/ui/discardConfirm.ts).
+// only. Leaving with changes asks first (src/ui/discardConfirm.ts). T88: an optional card photo, picked from the
+// library and copied into Satchel's own folder like journal photos (src/native/journal.ts); a replaced or removed
+// photo's copy is deleted once the save is stored, and photos picked but not saved are deleted on leaving.
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
-import { AccessibilityInfo, View } from 'react-native';
+import { AccessibilityInfo, Image, View } from 'react-native';
+import { stalePhoto, unusedPicks } from '../src/core/followups91.ts';
 import {
   BARCODE_TYPES,
   CARD_COLOURS,
@@ -22,6 +25,9 @@ import {
 } from '../src/core/loyalty.ts';
 import { newId } from '../src/core/model.ts';
 import type { Key } from '../src/i18n/en.ts';
+import { haptic, openSettings } from '../src/native/device.ts';
+import { appPath, removeAppFiles } from '../src/native/files.ts';
+import { pickJournalPhotos } from '../src/native/journal.ts';
 import { useApp } from '../src/state/app.tsx';
 import { saveCards, useLoyaltyCards } from '../src/state/loyalty.ts';
 import { cardPaint, radius, space } from '../src/theme/tokens.ts';
@@ -44,6 +50,42 @@ export default function LoyaltyEditScreen() {
   const [saveFailed, setSaveFailed] = useState(false);
   const [busy, setBusy] = useState(false);
   const { leaving, gestureEnabled } = useDiscardConfirm(JSON.stringify(d) !== initial.current);
+  const [photoProblem, setPhotoProblem] = useState<{ key: Key; settings?: boolean } | null>(null);
+  const [picking, setPicking] = useState(false);
+  // Photo copies made in this editor; any the saved card doesn't keep are deleted (on save, or on leaving unsaved).
+  const picked = useRef<string[]>([]);
+  const saved = useRef(false);
+  const prevPhoto = useRef(prev?.photo);
+  prevPhoto.current = prev?.photo;
+  useEffect(
+    () => () => {
+      if (!saved.current) removeAppFiles(unusedPicks(picked.current, prevPhoto.current)).catch(() => {});
+    },
+    [],
+  );
+
+  const pickPhoto = async () => {
+    if (picking) return;
+    setPicking(true);
+    setPhotoProblem(null);
+    try {
+      const r = await pickJournalPhotos(1);
+      if (!r.ok) {
+        if (r.reason === 'canceled') return;
+        if (r.reason === 'denied') setPhotoProblem({ key: 'f91.photo.denied', settings: r.permission !== 'unavailable' });
+        else if (r.reason === 'storage') setPhotoProblem({ key: 'journal.edit.photos.storage' });
+        else setPhotoProblem({ key: 'journal.edit.photos.unreadable' });
+        return;
+      }
+      const uri = r.photos[0]?.uri;
+      if (!uri) return;
+      picked.current = [...picked.current, uri];
+      setD((o) => ({ ...o, photo: uri }));
+      haptic.success();
+    } finally {
+      setPicking(false);
+    }
+  };
 
   // Editing a card that was still loading from storage: fill the form once it arrives.
   useEffect(() => {
@@ -75,6 +117,9 @@ export default function LoyaltyEditScreen() {
       AccessibilityInfo.announceForAccessibility(t('loyalty.err.save'));
       return;
     }
+    saved.current = true;
+    const gone = [stalePhoto(prev, card), ...unusedPicks(picked.current, card.photo)].filter((u): u is string => !!u);
+    if (gone.length) removeAppFiles(gone).catch(() => {});
     leaving();
     router.back();
   };
@@ -150,6 +195,30 @@ export default function LoyaltyEditScreen() {
             );
           })}
         </View>
+      </View>
+
+      <View style={{ gap: space.s }}>
+        <Label>{t('f91.photo.label')}</Label>
+        <Body muted>{t('f91.photo.help')}</Body>
+        {d.photo ? (
+          <Image
+            source={{ uri: appPath(d.photo) }}
+            accessible
+            accessibilityLabel={t('f91.photo.a11y', { programme: d.programme.trim() || t('loyalty.field.programme') })}
+            resizeMode="contain"
+            style={{ width: '100%', aspectRatio: 1.586, borderRadius: radius.m, backgroundColor: theme.line }}
+          />
+        ) : null}
+        <Button
+          kind="secondary"
+          icon="image-outline"
+          label={d.photo ? t('f91.photo.change') : t('f91.photo.add')}
+          hint={d.photo ? t('f91.photo.changeHint') : t('f91.photo.addHint')}
+          onPress={pickPhoto}
+        />
+        {d.photo ? <Button kind="quiet" icon="trash-outline" label={t('f91.photo.remove')} hint={t('f91.photo.removeHint')} onPress={() => set('photo', '')} /> : null}
+        {photoProblem ? <Warning text={t(photoProblem.key)} /> : null}
+        {photoProblem?.settings ? <Button label={t('journal.edit.openSettings')} hint={t('journal.edit.openSettingsHint')} kind="secondary" onPress={openSettings} /> : null}
       </View>
 
       <View style={{ gap: space.s }}>

@@ -1,15 +1,17 @@
 // T87 membership card view: the card big at full brightness (the ticket brightness helper, restored on every exit),
 // the barcode drawn offline on a white panel, the number big with Copy, a gentle expiry note, Edit and Delete
-// (asks first), and a one-handed Close at the bottom. Fades in (timed); no springs.
+// (asks first), and a one-handed Close at the bottom. Fades in (timed); no springs. T88: the optional card photo
+// under the card (phone only); deleting the card deletes its photo copy too.
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { AccessibilityInfo, Alert, ScrollView, Text, useWindowDimensions, View } from 'react-native';
+import { AccessibilityInfo, Alert, Image, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
 import { cardExpiry, displayNumber, removeCard } from '../../src/core/loyalty.ts';
 import { restoreBrightness, useFullBrightness } from '../../src/native/brightness.ts';
 import { clipboardAvailable, copyText } from '../../src/native/clipboard.ts';
+import { appPath, removeAppFiles } from '../../src/native/files.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { saveCards, useLoyaltyCards } from '../../src/state/loyalty.ts';
 import { fonts, radius, space, TOUCH } from '../../src/theme/tokens.ts';
@@ -54,6 +56,7 @@ export default function LoyaltyCardScreen() {
             setSaveFailed(true);
             return;
           }
+          if (card.photo) removeAppFiles([card.photo]).catch(() => {});
           close();
         },
       },
@@ -75,6 +78,15 @@ export default function LoyaltyCardScreen() {
         <View accessible accessibilityRole="header" accessibilityLabel={[card.programme, card.tier, shown].filter(Boolean).join(', ')}>
           <LoyaltyCardFace card={card} size="full" />
         </View>
+        {card.photo ? (
+          <Image
+            source={{ uri: appPath(card.photo) }}
+            accessible
+            accessibilityLabel={t('f91.photo.a11y', { programme: card.programme })}
+            resizeMode="contain"
+            style={{ width: '100%', aspectRatio: 1.586, borderRadius: radius.m, backgroundColor: theme.line }}
+          />
+        ) : null}
         {drawable ? (
           <BarcodeView
             type={card.barcode}
