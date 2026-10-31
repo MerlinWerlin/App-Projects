@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze: new tabs (Themes, Widgets, Icons, Pets, Wallpapers), \"Use this theme\" switches everything, Island pets come alive, icons open apps without a Safari hop, Prism mascot and app icon",
+  "note": "Glaze: new tabs (Themes, Widgets, Icons, Pets, Wallpapers), Use this theme switches everything, Island pets come alive, icons open apps without a Safari hop, Prism mascot and app icon",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
