@@ -1,6 +1,6 @@
 {
   "mode": "update",
-  "note": "Satchel: trip recap (stats, places, spending, moods, photos, share), loyalty and membership cards in the Wallet, trip edits keep every field",
+  "note": "Satchel: Add to Calendar for trips, days and bookings, offline units and sizes converter, trip recap on the Trips tab, card photos, empty-state illustrations and contrast fixes",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }
