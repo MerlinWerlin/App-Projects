@@ -2,6 +2,11 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (31 Oct, midday)
+Fully close and reopen the TestFlight Glaze twice to load the update, then answer yes / no:
+
+1. **Your widget edits on the theme page:** open a theme, tap a widget under Widgets to open Widget Studio, change something you can see (a colour, the text, or a photo on the Photo widget), go back. Does the widget row on the theme page now show your version (same size you edited) instead of the plain one? yes / no
+
 ## New since your last test (31 Oct, morning: owner-1031)
 
 Fully close Glaze and reopen it twice first, so the update loads.

@@ -332,6 +332,39 @@ export function studioSet(set: WidgetSet, state: StudioState): WidgetSet {
   return { ...set, specs: set.specs.map((s) => (state.drafts[s.id] ? studioSpec(s, state.drafts[s.id]).spec : s)) };
 }
 
+/** T80: one preview on the theme page, with the person's saved studio edits applied. */
+export type StudioPreview = { spec: WidgetSpec; photoUri: string | null; edited: boolean };
+
+/**
+ * T80: the theme page's "Matching widgets" row: one widget per kind, drawn with the drafts saved
+ * in Widget Studio (text, colours, font, size, look, photo). Per kind it shows the size the person
+ * edited (first edited size in the set's order), else small, else the first size. `state` may be
+ * null (not loaded yet) or belong to another theme: then the plain set is shown. Never throws.
+ */
+export function studioPreviews(set: WidgetSet, state: StudioState | null): StudioPreview[] {
+  const drafts = state && state.themeId === set.themeId ? state.drafts : {};
+  const editedDraft = (id: string): StudioSpecDraft | null => {
+    const d = drafts[id];
+    return d && !isDraftEmpty(d) ? d : null;
+  };
+  return studioKinds(set).flatMap((kind): StudioPreview[] => {
+    const sizes = studioSizes(set, kind);
+    const specs = sizes.map((s) => widgetSpecOf(set, kind, s)).filter((s): s is WidgetSpec => !!s);
+    const base = specs.find((s) => editedDraft(s.id)) ?? specs.find((s) => s.size === 'small') ?? specs[0];
+    if (!base) return [];
+    const d = editedDraft(base.id);
+    if (!d) return [{ spec: base, photoUri: null, edited: false }];
+    let spec = base;
+    try {
+      spec = studioSpec(base, d).spec;
+    } catch {
+      spec = base;
+    }
+    const photoUri = base.editable.photo && d.background.kind === 'photo' ? d.background.uri : null;
+    return [{ spec, photoUri, edited: true }];
+  });
+}
+
 // ---------------------------------------------------------------------------------- swatches
 
 export type StudioSwatch = { hex: string; hex2?: string; nameKey: string; index?: number };

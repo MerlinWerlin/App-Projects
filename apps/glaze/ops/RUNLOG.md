@@ -463,3 +463,8 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 ## 2026-10-31 run 195 (09:11Z, artifact 1793430860-3261; oversight v216)
 - No-op run for the app. Oversight v216: no new directives, no patches; D215-1 closed; D211-1 open; PR #134 (run 191) still waits on the owner's merge, so nothing stacked. App-Projects: nothing new for apps/glaze since 4d60afa. No page comments. npm registry not retried; full install + tsc + expo export needs PC verification.
 - 1434/1434 core tests green. Kit unchanged (235bb36). Nothing device-tested.
+## 2026-10-31 run 196 (11:11Z, artifact 1793438205-fdc1; oversight v217)
+- Oversight v217: D217-1 followed (PR #134 merged and shipped OTA, holds lifted; owner items are device-only, so one small JS-only backlog task). D211-1 kept. No patches. App-Projects 7fbdeaa/e2d06a3 = ship PR #134 + SHIP_BASE advance; nothing to sync. No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- T80 part (63f6bb0): theme-page "Matching widgets" row draws the saved Widget Studio drafts (edited size, colours, text, font, look, photo), reloaded on focus; core studioPreviews + 5 tests. TRIAL.md "31 Oct, midday" Q1.
+- 1439/1439 core tests green, typecheck:ui (stubs) clean, core typecheck clean. Kit rebuilt. JS only. Nothing device-tested.
+- Bundle base64 14.89 MB (D215-1 guard 15.6 MB); no new images.

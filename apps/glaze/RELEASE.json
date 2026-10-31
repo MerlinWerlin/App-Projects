@@ -1,6 +1,6 @@
 {
   "mode": "update",
-  "note": "Glaze: retire 8 unused old-gallery theme strings in every language (tidy-up after the New collection)",
+  "note": "Glaze: theme-page widget previews now show your saved Widget Studio edits",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
