@@ -20,14 +20,14 @@ export default function JetLagScreen() {
   if (!trip) {
     return (
       <Screen>
-        <EmptyState title={t('jetlag.title')} body={t('trip.notFound')} />
+        <EmptyState art="magnifier" title={t('jetlag.title')} body={t('trip.notFound')} />
       </Screen>
     );
   }
   if (!view) {
     return (
       <Screen>
-        <EmptyState title={t('jetlag.title')} body={t('jetlag.plan.none')} icon="time-outline" />
+        <EmptyState art="clock" title={t('jetlag.title')} body={t('jetlag.plan.none')} />
       </Screen>
     );
   }

@@ -40,7 +40,7 @@ export default function AddressScreen() {
     <View style={{ flex: 1, backgroundColor: theme.paper }}>
       <ScrollView contentContainerStyle={{ paddingTop: insets.top + space.xl, paddingHorizontal: space.l, paddingBottom: space.xl, gap: space.l }}>
         {!found ? (
-          <EmptyState title={t('route.address')} body={t('address.notFound')} />
+          <EmptyState art="magnifier" title={t('route.address')} body={t('address.notFound')} />
         ) : hasAddress && place ? (
           <>
             <AddressCardView

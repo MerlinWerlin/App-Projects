@@ -97,7 +97,7 @@ export default function SpendingScreen() {
   if (!trip) {
     return (
       <Screen>
-        <EmptyState title={t('spending.title')} body={t('spending.notFound')} icon="wallet-outline" />
+        <EmptyState art="magnifier" title={t('spending.title')} body={t('spending.notFound')} />
       </Screen>
     );
   }
@@ -214,7 +214,7 @@ function SpendingBody({ trip }: { trip: Trip }) {
           <Label>{t('spending.list')}</Label>
         </View>
       ) : (
-        <EmptyState title={t('spending.emptyTitle')} body={t('spending.emptyBody')} icon="wallet-outline" />
+        <EmptyState art="coins" title={t('spending.emptyTitle')} body={t('spending.emptyBody')} />
       )}
     </View>
   );

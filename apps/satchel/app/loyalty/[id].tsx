@@ -66,7 +66,7 @@ export default function LoyaltyCardScreen() {
   const side = Math.min(width - space.l * 2, 440);
   let body;
   if (!card) {
-    body = loaded ? <EmptyState icon="card-outline" title={t('loyalty.section.title')} body={t('loyalty.view.notFound')} /> : null;
+    body = loaded ? <EmptyState art="magnifier" title={t('loyalty.section.title')} body={t('loyalty.view.notFound')} /> : null;
   } else {
     const drawable = card.barcode !== 'none' && canDraw(card.barcode, card.number);
     const shown = displayNumber(card.number);

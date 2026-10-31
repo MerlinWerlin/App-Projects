@@ -11,6 +11,7 @@
 // Trip on the map (T69): scoped to a trip, its bookings with a place position are numbered stops per day with a
 // dashed line, filtered by day chips under the map, with a summary card (src/ui/TripRouteLayer.tsx).
 // T73: "Find my way back" (the offline compass, app/wayback.tsx) under Where am I?, and for a selected saved place.
+// T94: Search the map (src/ui/MapSearch.tsx) at the top of the list; a picked result is centred with its own pin.
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
@@ -57,6 +58,8 @@ import { TripRouteDays, TripRoutePanel, useTripRoute } from '../../src/ui/TripRo
 import { DaylightLine } from '../../src/ui/WeatherCard.tsx';
 import { placeKey } from '../../src/core/wayback.ts';
 import { requestNearestToilet } from '../../src/state/nearestToilet.ts';
+import type { SearchHit } from '../../src/core/mapsearch.ts';
+import { MapSearch } from '../../src/ui/MapSearch.tsx';
 
 const CATS = parsePoiCategories(tagData);
 const SETS: PoiSet[] = [parsePoiSet(tokyoData, CATS), parsePoiSet(kyotoData, CATS)].filter((s): s is PoiSet => s !== null);
@@ -265,6 +268,7 @@ export default function MapScreen() {
   const [saveFailed, setSaveFailed] = useState(false);
   const [loc, setLoc] = useState<Loc>({ s: 'idle' });
   const [focus, setFocus] = useState<MapFocus | null>(null);
+  const [found, setFound] = useState<SearchHit | null>(null);
   const net = useNetworkStatus();
   const [installed, setInstalled] = useState<CityMap[]>([]);
   const refreshInstalled = useCallback(async () => setInstalled(await listInstalled()), []);
@@ -331,9 +335,10 @@ export default function MapScreen() {
     if (selected?.type === 'spot') {
       out.push({ id: 'spot', lat: selected.at.lat, lon: selected.at.lon, title: t('places.dropped'), color: theme.muted, a11y: t('places.dropped') });
     }
+    if (found) out.push({ id: 'q', lat: found.lat, lon: found.lon, title: found.name, color: theme.accentStrong, a11y: t('mapsearch.pinA11y', { name: found.name }) });
     if (here) out.push({ id: 'me', lat: here.lat, lon: here.lon, title: t('map.here'), color: theme.ok, a11y: t('map.here') });
     return out;
-  }, [bookings, saved, savedSpots, shownPois, selected, here, theme, t, catLabel, scoped, layer.pins, layer.showsItem, layer.coversPin]);
+  }, [bookings, saved, savedSpots, shownPois, selected, found, here, theme, t, catLabel, scoped, layer.pins, layer.showsItem, layer.coversPin]);
 
   // The map only reads its first region; later moves go through `focus`.
   const [initialRegion] = useState<Region>(() => (set ? regionFor([set.center, ...set.pois]) : regionFor(bookings)) ?? FALLBACK_REGION);
@@ -593,6 +598,15 @@ export default function MapScreen() {
           onBackToTrip={() => router.push(`/trip/${scoped.id}`)}
         />
       ) : null}
+      <MapSearch
+        sets={SETS}
+        from={here}
+        installedKey={installed.map((c) => c.id).join(',')}
+        onPick={(h) => {
+          setFound(h);
+          if (h) focusOn(h);
+        }}
+      />
       <Body muted>{t('map.online')}</Body>
       <OfflineMaps installed={installed} refreshInstalled={refreshInstalled} onShow={showCity} />
 

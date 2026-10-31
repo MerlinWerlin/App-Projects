@@ -27,6 +27,7 @@ import {
   type ImportJournalPhoto,
 } from './journal.ts';
 import { importIdeas, readFileIdeas } from './ideas.ts';
+import { importTodos, readFileTodos } from './todos.ts';
 import type { PackItem, PackList } from './packing.ts';
 import { readCover } from './covers.ts';
 import { readAirport } from './leaveby.ts';
@@ -257,17 +258,20 @@ export function parseTripFile(data: unknown): ParseResult {
     packing = p as unknown as TripFile['packing'];
   }
   // T82: companions, payers, splits and settlements are optional; unreadable ones are dropped, never the trip.
-  const { items: _i, places: _p, demo, journal: rawJournal, ideas: rawIdeas, cover: rawCover, ...tripFields } = cleanFileTogether(t);
+  const { items: _i, places: _p, demo, journal: rawJournal, ideas: rawIdeas, cover: rawCover, todos: rawTodos, ...tripFields } = cleanFileTogether(t);
   const journal = readFileJournal(rawJournal);
   // T81: ideas are optional (older files have none); unreadable rows are left out rather than refusing the file.
   const ideas = readFileIdeas(rawIdeas);
   // T83: the cover choice travels with the trip; a value that isn't a plain id is dropped (never refuses the file).
   const cover = readCover(rawCover);
+  // T93: to-dos are optional too; unreadable rows are left out.
+  const todos = readFileTodos(rawTodos);
   const trip: FileTrip = {
     ...(tripFields as unknown as FileTrip),
     ...(journal ? { journal } : {}),
     ...(ideas ? { ideas } : {}),
     ...(cover ? { cover } : {}),
+    ...(todos ? { todos } : {}),
     id: isStr(t.id) ? t.id : '',
     homeTz: isStr(t.homeTz) ? t.homeTz : 'UTC',
     createdAt: isStr(t.createdAt) ? t.createdAt : '',
@@ -373,6 +377,10 @@ export function importTripFile(file: TripFile, newId: (prefix: string) => string
   const ideas = importIdeas(file.trip.ideas, newId);
   if (ideas) trip.ideas = ideas;
   else delete trip.ideas;
+  // T93: to-dos get new ids; suggestion ticks are keyed by what they are about, so nothing to remap.
+  const todos = importTodos(file.trip.todos, newId);
+  if (todos) trip.todos = todos;
+  else delete trip.todos;
   // T54: expenses get new ids like everything else.
   if (file.trip.expenses) trip.expenses = file.trip.expenses.map((e) => ({ ...e, id: newId('exp') }));
   const packing: PackList | null = file.packing

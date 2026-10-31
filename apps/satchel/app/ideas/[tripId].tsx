@@ -25,7 +25,7 @@ export default function IdeasScreen() {
   if (!trip) {
     return (
       <Screen>
-        <EmptyState title={t('ideas.title')} body={t('ideas.notFound')} />
+        <EmptyState art="magnifier" title={t('ideas.title')} body={t('ideas.notFound')} />
       </Screen>
     );
   }
@@ -102,7 +102,7 @@ function Ideas({ trip }: { trip: Trip }) {
           <View style={{ gap: space.m }}>
             <HeroHeader tone="map" title={t('ideas.title')} eyebrow={trip.name} subtitle={subtitle} illustration="map" compact />
             {stats.total ? <CategoryFilter value={filter} counts={counts} total={stats.total} onChange={setFilter} /> : null}
-            {stats.total === 0 ? <EmptyState icon="bulb-outline" title={t('ideas.empty.title')} body={t('ideas.empty.body')} /> : null}
+            {stats.total === 0 ? <EmptyState art="notebook" title={t('ideas.empty.title')} body={t('ideas.empty.body')} /> : null}
             {stats.total > 0 && rows.length === 0 && filter !== 'all' ? <Body muted>{t('ideas.empty.filtered', { cat: t(categoryKey(filter)) })}</Body> : null}
             <Button label={t('ideas.add')} hint={t('ideas.addHint')} icon="add" onPress={add} />
           </View>

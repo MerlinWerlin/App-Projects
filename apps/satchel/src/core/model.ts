@@ -4,6 +4,7 @@
 
 import type { Idea } from './ideas.ts';
 import type { JournalEntry } from './journal.ts';
+import type { Todo } from './todos.ts';
 import type { AirportInfo } from './leaveby.ts';
 
 /** Wall-clock local time, minute precision: 'YYYY-MM-DDTHH:mm'. */
@@ -98,6 +99,8 @@ export type Trip = {
   settlements?: Settlement[];
   /** T83: the cover scene the user picked (src/core/covers.ts COVER_SCENES); absent = automatic. An unknown id is ignored. */
   cover?: string;
+  /** T93 trip to-dos: own to-dos and ticked / hidden suggestions (absent on older trips). Read defensively in src/core/todos.ts. */
+  todos?: Todo[];
 };
 
 export const EXPENSE_CATEGORIES = ['food', 'transport', 'stay', 'activities', 'shopping', 'other'] as const;

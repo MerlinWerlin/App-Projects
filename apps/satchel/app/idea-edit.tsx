@@ -60,7 +60,7 @@ export default function IdeaEditScreen() {
   if (!trip) {
     return (
       <Screen>
-        <EmptyState title={t('ideas.title')} body={t('ideas.notFound')} />
+        <EmptyState art="magnifier" title={t('ideas.title')} body={t('ideas.notFound')} />
       </Screen>
     );
   }

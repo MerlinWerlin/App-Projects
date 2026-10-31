@@ -91,7 +91,7 @@ export default function TicketScreen() {
 
   let body;
   if (!item) {
-    body = <EmptyState title={t('route.ticket')} body={t('item.notFound')} />;
+    body = <EmptyState art="magnifier" title={t('route.ticket')} body={t('item.notFound')} />;
   } else {
     const [startLabel, endLabel]: [Key, Key] = isTransport(item.kind)
       ? ['item.departs', 'item.arrives']

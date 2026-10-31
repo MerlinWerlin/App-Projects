@@ -59,6 +59,11 @@ export const SPEC_SYNC_PREFIXES = [
   'calendar.',
   // T90 (run 92): travel converters.
   'units.',
+  // Run 93: T93 trip to-dos, T94 map search, T95 arrival card, T92 follow-ups.
+  'todos.',
+  'mapsearch.',
+  'arrival.',
+  'f92.',
 ] as const;
 
 /** Single keys mirrored as well: map.online, the T48 emergency fallback wording, the Toilets tab, home country. */

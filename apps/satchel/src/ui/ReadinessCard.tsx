@@ -11,6 +11,7 @@ import { EMERGENCY_KEY, EMPTY_CARD, normaliseCard } from '../core/emergency.ts';
 import type { EmergencyCard, Trip } from '../core/model.ts';
 import { EMPTY_STORE, listFor, PACKING_KEY, type PackStore } from '../core/packing.ts';
 import { hoursUntil, nextLeaving, readiness, showReadiness, type Check, type CheckStatus, type Fix, type LeavingSoon } from '../core/readiness.ts';
+import { todosCheck } from '../core/todos.ts';
 import { formatExpiry } from '../core/vault.ts';
 import { cityMapsChanged } from '../core/signal.ts';
 import type { Key } from '../i18n/en.ts';
@@ -33,19 +34,25 @@ const STATUS_LOOK: Record<CheckStatus, { tone: Tone; icon: IconName }> = {
 
 /** The sentence under a row's title. Dates are the "valid until" day the trip needs, never a document's expiry. */
 export function checkDetail(t: T, c: Check, lang: string): string {
+  // T93: the to-dos row's words live with the other to-do strings.
+  if (c.id === 'todos') return t(`todos.readiness.${c.reason}` as Key, { done: c.done ?? 0, total: c.total ?? 0 });
   const vars = { until: c.until ? formatExpiry(c.until, lang) : '', done: c.done ?? 0, total: c.total ?? 0, city: c.city ?? '' };
   if (c.id === 'map' && !c.city && (c.reason === 'catalogUnavailable' || c.reason === 'notInCatalog')) return t(`readiness.map.${c.reason}Any`, vars);
   return t(`readiness.${c.id}.${c.reason}` as Key, vars);
 }
 
-const fixKey = (f: Fix): 'vault' | 'packing' | 'emergency' | 'address' | 'map' => f.kind;
+const fixKey = (f: Fix): 'vault' | 'packing' | 'emergency' | 'address' | 'map' => (f.kind === 'todos' ? 'packing' : f.kind);
+/** T93: the to-dos row's title and fix words come from the to-do strings. */
+const checkTitle = (t: T, id: Check['id']): string => (id === 'todos' ? t('todos.readiness.check') : t(`readiness.check.${id}`));
+const fixLabel = (t: T, f: Fix): string => (f.kind === 'todos' ? t('todos.readiness.fix') : t(`readiness.fix.${fixKey(f)}`));
+const fixHint = (t: T, f: Fix): string => (f.kind === 'todos' ? t('todos.readiness.fixHint') : t(`readiness.fix.${fixKey(f)}Hint`));
 
 /**
  * Loads the city-map list saved on this phone and the installed cities (no network), again on each focus and
  * whenever the offline maps change (a city finished downloading or was deleted, even while this screen stays
  * mounted underneath; T63). Only the newest load may set state.
  */
-function useMapsOnPhone(): { catalog: CityCatalog | null; installed: CityMap[]; loaded: boolean } {
+export function useMapsOnPhone(): { catalog: CityCatalog | null; installed: CityMap[]; loaded: boolean } {
   const [state, setState] = useState<{ catalog: CityCatalog | null; installed: CityMap[]; loaded: boolean }>({ catalog: null, installed: [], loaded: false });
   const alive = useRef(true);
   const run = useRef(0);
@@ -77,7 +84,7 @@ const Row = memo(function Row({ check, onFix }: { check: Check; onFix: (f: Fix) 
   const { t, theme, lang } = useApp();
   const look = STATUS_LOOK[check.status];
   const { fg, bg } = toneColours(theme, look.tone);
-  const title = t(`readiness.check.${check.id}`);
+  const title = checkTitle(t, check.id);
   const status = t(`readiness.status.${check.status}`);
   const detail = checkDetail(t, check, lang);
   const fix = check.fix;
@@ -93,7 +100,7 @@ const Row = memo(function Row({ check, onFix }: { check: Check; onFix: (f: Fix) 
           </View>
         </View>
         <Text style={[typeScale.small, { color: theme.muted }]}>{detail}</Text>
-        {fix ? <Text style={[typeScale.small, { fontFamily: typeScale.bodyStrong.fontFamily, color: theme.accentInk }]}>{t(`readiness.fix.${fixKey(fix)}`)}</Text> : null}
+        {fix ? <Text style={[typeScale.small, { fontFamily: typeScale.bodyStrong.fontFamily, color: theme.accentInk }]}>{fixLabel(t, fix)}</Text> : null}
       </View>
       {fix ? (
         <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
@@ -110,7 +117,7 @@ const Row = memo(function Row({ check, onFix }: { check: Check; onFix: (f: Fix) 
     );
   }
   return (
-    <PressableScale accessibilityRole="button" accessibilityLabel={label} accessibilityHint={t(`readiness.fix.${fixKey(fix)}Hint`)} onPress={() => onFix(fix)}>
+    <PressableScale accessibilityRole="button" accessibilityLabel={label} accessibilityHint={fixHint(t, fix)} onPress={() => onFix(fix)}>
       {body}
     </PressableScale>
   );
@@ -131,7 +138,16 @@ export function ReadinessCard({ trip }: { trip: Trip }) {
   const r = useMemo(
     () =>
       loaded
-        ? readiness({ trip, docs, packing: listFor(store, trip.id), card: normaliseCard(rawCard), catalog: maps.catalog, installed: maps.installed, now })
+        ? readiness({
+            trip,
+            docs,
+            packing: listFor(store, trip.id),
+            card: normaliseCard(rawCard),
+            catalog: maps.catalog,
+            installed: maps.installed,
+            now,
+            todos: todosCheck(trip, now, { catalog: maps.catalog, installed: maps.installed }),
+          })
         : null,
     [loaded, trip, docs, store, rawCard, maps, now],
   );
@@ -149,6 +165,8 @@ export function ReadinessCard({ trip }: { trip: Trip }) {
           return router.push({ pathname: '/address/[id]', params: { id: f.itemId } });
         case 'map':
           return router.navigate({ pathname: '/map', params: { tripId: f.tripId, placeId: '' } });
+        case 'todos':
+          return router.push(`/todos/${f.tripId}`);
       }
     },
     [router],
