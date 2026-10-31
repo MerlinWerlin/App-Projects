@@ -86,7 +86,7 @@ jobs:
         id: rel
         run: |
           echo "mode=$(jq -r '.mode // "build"' RELEASE.json)" >> "$GITHUB_OUTPUT"
-          echo "note=$(jq -r '.note // "Owner-approved release"' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          echo "note=$(jq -r '.note // "Owner-approved release"' RELEASE.json | tr -d '"\`$')" >> "$GITHUB_OUTPUT"
           echo "ascAppId=$(jq -r '.ascAppId // empty' RELEASE.json)" >> "$GITHUB_OUTPUT"
           # Optional build profile (default production), e.g. "production-native" for Glaze's native parts.
           echo "profile=$(jq -r '.profile // "production"' RELEASE.json)" >> "$GITHUB_OUTPUT"

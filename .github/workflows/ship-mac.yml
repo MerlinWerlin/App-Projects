@@ -53,7 +53,7 @@ jobs:
       - name: Read RELEASE.json
         id: rel
         run: |
-          echo "note=$(jq -r '.note // "Owner-approved release"' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          echo "note=$(jq -r '.note // "Owner-approved release"' RELEASE.json | tr -d '"\`$')" >> "$GITHUB_OUTPUT"
           echo "ascAppId=$(jq -r '.ascAppId // empty' RELEASE.json)" >> "$GITHUB_OUTPUT"
           echo "profile=$(jq -r '.profile // "production"' RELEASE.json)" >> "$GITHUB_OUTPUT"
           echo "ascKeyAuth=$(jq -r 'if .ascKeyAuth then "1" else "" end' RELEASE.json)" >> "$GITHUB_OUTPUT"
