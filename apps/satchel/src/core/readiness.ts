@@ -18,7 +18,7 @@ import { addMonths, isLocalDate, PASSPORT_MONTHS } from './vault.ts';
  * shown honestly and never counted against the score.
  */
 export type CheckStatus = 'pass' | 'warn' | 'fail' | 'missing' | 'unknown';
-export type CheckId = 'passport' | 'visa' | 'packing' | 'emergency' | 'hotels' | 'map';
+export type CheckId = 'passport' | 'visa' | 'packing' | 'emergency' | 'hotels' | 'map' | 'todos';
 export const CHECK_ORDER: readonly CheckId[] = ['passport', 'visa', 'packing', 'emergency', 'hotels', 'map'];
 
 /** Where the one-tap fix goes. */
@@ -27,7 +27,8 @@ export type Fix =
   | { kind: 'packing'; tripId: string }
   | { kind: 'emergency' }
   | { kind: 'address'; itemId: string }
-  | { kind: 'map'; tripId: string };
+  | { kind: 'map'; tripId: string }
+  | { kind: 'todos'; tripId: string };
 
 /**
  * Why a row has its status (the UI turns it into words). Only dates, counts and city names, never document data.
@@ -58,7 +59,11 @@ export type Reason =
   | 'catalogUnavailable'
   | 'notInCatalog'
   | 'notDownloaded'
-  | 'downloaded';
+  | 'downloaded'
+  // T93 to-dos row (src/core/todos.ts todosCheck): overdue | dueSoon | onTrack | done | none
+  | 'overdue'
+  | 'dueSoon'
+  | 'onTrack';
 
 export type Check = {
   id: CheckId;
@@ -97,6 +102,8 @@ export type ReadinessInput = {
   catalog: CityCatalog | null;
   installed: readonly CityMap[];
   now: number;
+  /** T93: the trip's to-dos row (src/core/todos.ts todosCheck), shown after the others when given. */
+  todos?: Check | null;
 };
 
 // ------------------------------------------------------------------ dates
@@ -254,6 +261,7 @@ export function readiness(input: ReadinessInput): Readiness {
     emergencyCheck(card),
     hotelsCheck(trip),
     mapCheck(trip, catalog, installed),
+    ...(input.todos ? [input.todos] : []),
   ];
   const judged = checks.filter((c) => c.status !== 'unknown');
   const passed = judged.filter((c) => c.status === 'pass').length;
@@ -263,12 +271,15 @@ export function readiness(input: ReadinessInput): Readiness {
   return { checks, passed, scored, score: scored ? passed / scored : 0, overall, today, tripEnd: end };
 }
 
+/** Card order; the T93 to-dos row comes last. */
+const order = (id: CheckId) => (id === 'todos' ? CHECK_ORDER.length : CHECK_ORDER.indexOf(id));
+
 /** The rows that still want something done, worst first (fail, missing, warn), then card order. */
 export function toFix(r: Readiness): Check[] {
   const rank: Record<CheckStatus, number> = { fail: 0, missing: 1, warn: 2, unknown: 3, pass: 4 };
   return r.checks
     .filter((c) => c.status !== 'pass' && c.status !== 'unknown')
-    .sort((a, b) => rank[a.status] - rank[b.status] || CHECK_ORDER.indexOf(a.id) - CHECK_ORDER.indexOf(b.id));
+    .sort((a, b) => rank[a.status] - rank[b.status] || order(a.id) - order(b.id));
 }
 
 /** The card shows for trips that have not ended (in the traveller's home zone). */

@@ -86,7 +86,7 @@ export default function JournalEditScreen() {
   if (!trip) {
     return (
       <Screen>
-        <EmptyState title={t('journal.title')} body={t('journal.notFound')} />
+        <EmptyState art="magnifier" title={t('journal.title')} body={t('journal.notFound')} />
       </Screen>
     );
   }

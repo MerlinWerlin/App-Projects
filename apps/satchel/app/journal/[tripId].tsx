@@ -28,7 +28,7 @@ export default function JournalScreen() {
   if (!trip) {
     return (
       <Screen>
-        <EmptyState title={t('journal.title')} body={t('journal.notFound')} />
+        <EmptyState art="magnifier" title={t('journal.title')} body={t('journal.notFound')} />
       </Screen>
     );
   }
@@ -89,7 +89,7 @@ function Journal({ trip }: { trip: Trip }) {
           <View style={{ gap: space.m }}>
             <HeroHeader tone="map" title={t('journal.title')} eyebrow={trip.name} subtitle={subtitle} illustration="map" compact />
             {days.length === 0 ? (
-              <EmptyState icon="book-outline" title={t('journal.empty.title')} body={t('journal.empty.body')} />
+              <EmptyState art="notebook" title={t('journal.empty.title')} body={t('journal.empty.body')} />
             ) : null}
             <Button label={t('journal.add')} hint={t('journal.addHint')} icon="create-outline" onPress={() => write(defaultJournalDay(trip))} />
           </View>

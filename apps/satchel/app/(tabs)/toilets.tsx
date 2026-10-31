@@ -327,7 +327,7 @@ export default function ToiletsScreen() {
           ) : null}
           {rows.length === 0 && allRows.length > 0 ? (
             <EmptyState
-              icon="funnel-outline"
+              art="mapPin"
               title={t('toiletplus.noneMatchTitle')}
               body={t('toiletplus.noneMatchBody')}
               action={<Button kind="quiet" label={t('toiletplus.clearFilters')} hint={t('toiletplus.clearFiltersHint')} onPress={() => setRawFilters([])} />}

@@ -56,7 +56,7 @@ export default function TravelsScreen() {
       {stats.tripsTaken === 0 ? (
         <FadeInView delay={80}>
           <EmptyState
-            icon="globe-outline"
+            art="compass"
             title={t('travels.empty.title')}
             body={!includeDemo && stats.demoLeftOut > 0 && !next ? t('travels.empty.demoBody') : t('travels.empty.body')}
             action={<Button label={t('travels.empty.add')} hint={t('travels.empty.addHint')} kind="quiet" icon="add" onPress={() => router.push('/trip-edit')} />}

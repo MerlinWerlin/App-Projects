@@ -78,6 +78,7 @@ function Shell() {
           <Stack.Screen name="journal/[tripId]" options={{ ...header, title: t('journal.title') }} />
           <Stack.Screen name="journal-edit" options={{ ...header, presentation: 'modal', title: t('journal.edit.newTitle') }} />
           <Stack.Screen name="ideas/[tripId]" options={{ ...header, title: t('ideas.title') }} />
+          <Stack.Screen name="todos/[tripId]" options={{ ...header, title: t('todos.title') }} />
           <Stack.Screen name="recap/[tripId]" options={{ ...header, title: t('recap.route') }} />
           <Stack.Screen name="idea-edit" options={{ ...header, presentation: 'modal', title: t('ideas.edit.newTitle') }} />
           <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />

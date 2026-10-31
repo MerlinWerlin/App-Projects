@@ -16,12 +16,16 @@ import { PressableScale } from './kit.tsx';
 import { useAirportPrefs } from './AirportFields.tsx';
 import { briefAirportLine } from './AirportPanel.tsx';
 import { useMinute } from './TripPass.tsx';
+import { briefTodos } from '../core/todos.ts';
+import { useMapsOnPhone } from './ReadinessCard.tsx';
+import { briefLine } from './todos.tsx';
 
 export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[] }) {
   const { theme, t } = useApp();
   const router = useRouter();
   const now = useMinute();
   const [airportPrefs] = useAirportPrefs();
+  const maps = useMapsOnPhone();
   const b = dayBrief(trips, now);
   if (!b) return null;
 
@@ -45,7 +49,9 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
   const early = b.early ? t('brief.early', { kind: t(kindKey(b.early.kind)), time: at(b.early) }) : '';
   const hotelName = b.tonight ? b.tonight.item.place?.name?.trim() || b.tonight.item.title : '';
   const tonight = b.tonight ? t('brief.tonight', { name: hotelName }) : '';
-  const spoken = [eyebrow, headline, ...lines, flight?.line ?? '', flight?.guidance ?? '', b.tonight && !b.tonight.hasAddress ? tonight : '', early].filter(Boolean).join('. ');
+  // T93: overdue / due-soon to-dos for this trip ("Due soon: Check in online for DA 6").
+  const due = briefLine(t, briefTodos(b.trip, now, { catalog: maps.catalog, installed: maps.installed }));
+  const spoken = [eyebrow, headline, ...lines, flight?.line ?? '', flight?.guidance ?? '', b.tonight && !b.tonight.hasAddress ? tonight : '', early, due].filter(Boolean).join('. ');
   const muted = [typeScale.body, { color: theme.heroMuted }];
 
   return (
@@ -78,6 +84,7 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
         ) : null}
         {b.tonight && !b.tonight.hasAddress ? <Text style={muted}>{tonight}</Text> : null}
         {early ? <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{early}</Text> : null}
+        {due ? <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{due}</Text> : null}
       </PressableScale>
       {b.tonight && b.tonight.hasAddress ? (
         <>

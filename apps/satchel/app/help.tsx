@@ -161,13 +161,13 @@ export default function HelpScreen() {
 
       {result && !result.ok ? (
         <Animated.View style={{ opacity: fade, gap: space.s }}>
-          {result.reason === 'none-found' ? <EmptyState icon="medkit-outline" title={t('help.noneTitle')} body={t('help.noneBody')} /> : null}
+          {result.reason === 'none-found' ? <EmptyState art="lifebuoy" title={t('help.noneTitle')} body={t('help.noneBody')} /> : null}
           {result.reason === 'none-found' && result.packCity && result.packLimited ? <Text style={[typeScale.small, { color: theme.muted }]}>{t('help.offlineLimits')}</Text> : null}
           {result.reason === 'offline-no-pack' ? (
-            <EmptyState icon="cloud-offline-outline" title={t('help.offlineTitle')} body={t('help.offlineBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={retry} />} />
+            <EmptyState art="compass" title={t('help.offlineTitle')} body={t('help.offlineBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={retry} />} />
           ) : null}
           {result.reason === 'network' ? (
-            <EmptyState icon="cloud-offline-outline" title={t('help.networkTitle')} body={t('help.networkBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={retry} />} />
+            <EmptyState art="compass" title={t('help.networkTitle')} body={t('help.networkBody')} action={<Button kind="quiet" label={t('common.tryAgain')} onPress={retry} />} />
           ) : null}
         </Animated.View>
       ) : null}

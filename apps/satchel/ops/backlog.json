@@ -1159,12 +1159,62 @@
   },
   {
    "id": "T92",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "follow-up"
    ],
    "title": "Run-92 follow-ups: device checks (Calendar offered in the share sheet for .ics, new Ionicons glyphs calendar-outline/image-outline/speedometer-outline/barbell-outline/shirt-outline/flash-outline/grid-outline, new hero art and illustrations in light/dark); camera option for card photos; illustrations on the remaining 'not found' empty states; still open from T88: share-sheet entry (native T14), OFL/npm licence text check on the PC",
+   "accept": "tests green",
+   "note": "Run 93: worker takes the offline parts (camera option for card photos, illustrations on the remaining 'not found' empty states, any other offline items); device checks stay open.",
+   "commit": "95d986f"
+  },
+  {
+   "id": "T93",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Trip to-dos (owner-1031 D, deepen Trips): a pre-trip checklist per trip with due dates relative to departure. Suggested to-dos built offline from the trip (travel insurance, check entry/visa rules for each country on the trip, tell your bank, roaming or eSIM, download the offline city map for each stop, airport transfer for each arriving flight, online check-in opens ~24 h before each flight labelled general guidance, print or save tickets), each dismissible; own to-dos with optional due date; tick off; overdue/due-soon states; Due soon line on the Your day card and a to-dos row in the Trip readiness check; to-dos travel in .satchel files (roundtrip guard updated). Pure TS in src/core/todos.ts with tests; screen app/todos/[tripId].tsx; entry on the trip screen",
+   "accept": "todos tests (suggestion rules, due-date maths in the departure zone, dismiss/restore, overdue, readiness row, .satchel round trip); every string in src/i18n/en/todos.ts; no new npm dependency",
+   "commit": "0118012"
+  },
+  {
+   "id": "T94",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D",
+    "map"
+   ],
+   "title": "Search on the Map (owner-1031 D, deepen Map): one offline search box on the Map tab over everything Satchel already holds: bookings and their places, places-to-go ideas, saved places and dropped pins, cached toilets, downloaded city POIs and the demo POIs; accent- and case-insensitive matching with simple ranking (prefix > word > substring, nearer first when a position is known); results list with kind icon, distance and walking direction; tap to centre the map with a pin, Open in Apple Maps; recent searches kept on the phone (clearable). Pure TS in src/core/mapsearch.ts with tests",
+   "accept": "mapsearch tests (normalisation incl. diacritics and Japanese kana passthrough, ranking, distance sort, empty/no-result states, recents cap + clear); every string in src/i18n/en/mapsearch.ts; no new npm dependency",
+   "commit": "3297bb8"
+  },
+  {
+   "id": "T95",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D",
+    "design"
+   ],
+   "title": "Arrival card (owner-1031 D, less bland, deepen Trips): when a trip reaches a new country (first booking in that country, or today's stop), a colourful 'Welcome to <country>' hero card on the trip screen and the Trips tab that pulls together what Satchel already knows offline: local time and difference from home, currency + cached rate with a quick 'what is 10/50/100 worth', plugs/voltage and driving side (verify locally), emergency numbers, two phrase cards (hello/thank you), nearest-toilet and wayback-to-hotel shortcuts; dismissible per country per trip; a 'Countries on this trip' strip with flags drawn from regional-indicator emoji. Pure TS selection logic in src/core/arrival.ts with tests",
+   "accept": "arrival tests (which country is 'arriving' by date and zone, multi-country trips, dismiss memory, missing data falls back gracefully, home-country trips show nothing); every string in src/i18n/en/arrival.ts; no new npm dependency",
+   "commit": "bd4d0eb"
+  },
+  {
+   "id": "T96",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "title": "Run-93 follow-ups: export the Toilets tab storage keys and use them in MapSearch (no duplicated key strings); tapping the search pin opens its result card; a sourced country-to-currency table so the arrival card can name the local currency (from the OpenAI content lane or a well-known public list, recorded in DECISIONS); device checks: to-dos screen + date picker, search keyboard/scroll in the map list header and speed with big city packs, arrival banner and flag emoji in light/dark, camera button permission paths, new Ionicons glyphs (checkbox-outline, cellular-outline, eye-off-outline, shield-checkmark-outline, card-outline, document-text-outline, camera-outline); still open from T92: .ics in the share sheet, share-sheet entry (native T14), OFL/npm licence text check on the PC",
    "accept": "tests green"
   }
  ],

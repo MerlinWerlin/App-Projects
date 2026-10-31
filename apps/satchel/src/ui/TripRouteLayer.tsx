@@ -217,7 +217,7 @@ export function TripRoutePanel({ layer, onOpenItem, onBackToTrip }: { layer: Tri
   if (route.stopCount === 0) {
     return (
       <EmptyState
-        icon="map-outline"
+        art="mapPin"
         title={t('triproute.emptyTitle')}
         body={t('triproute.emptyBody')}
         action={<Button label={t('triproute.emptyAction')} hint={t('triproute.emptyActionHint')} kind="secondary" icon="arrow-back" onPress={onBackToTrip} />}

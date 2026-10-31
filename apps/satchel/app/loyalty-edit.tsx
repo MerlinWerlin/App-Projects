@@ -4,11 +4,13 @@
 // only. Leaving with changes asks first (src/ui/discardConfirm.ts). T88: an optional card photo, picked from the
 // library and copied into Satchel's own folder like journal photos (src/native/journal.ts); a replaced or removed
 // photo's copy is deleted once the save is stored, and photos picked but not saved are deleted on leaving.
+// T92: or taken with the camera (same copy and clean-up rules; refusals worded by src/core/followups92.ts).
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Image, View } from 'react-native';
 import { stalePhoto, unusedPicks } from '../src/core/followups91.ts';
+import { cardPhotoProblem, type CardPhotoSource } from '../src/core/followups92.ts';
 import {
   BARCODE_TYPES,
   CARD_COLOURS,
@@ -27,7 +29,7 @@ import { newId } from '../src/core/model.ts';
 import type { Key } from '../src/i18n/en.ts';
 import { haptic, openSettings } from '../src/native/device.ts';
 import { appPath, removeAppFiles } from '../src/native/files.ts';
-import { pickJournalPhotos } from '../src/native/journal.ts';
+import { pickJournalPhotos, takeJournalPhoto } from '../src/native/journal.ts';
 import { useApp } from '../src/state/app.tsx';
 import { saveCards, useLoyaltyCards } from '../src/state/loyalty.ts';
 import { cardPaint, radius, space } from '../src/theme/tokens.ts';
@@ -64,17 +66,15 @@ export default function LoyaltyEditScreen() {
     [],
   );
 
-  const pickPhoto = async () => {
+  const pickPhoto = async (source: CardPhotoSource = 'library') => {
     if (picking) return;
     setPicking(true);
     setPhotoProblem(null);
     try {
-      const r = await pickJournalPhotos(1);
+      const r = source === 'camera' ? await takeJournalPhoto() : await pickJournalPhotos(1);
       if (!r.ok) {
-        if (r.reason === 'canceled') return;
-        if (r.reason === 'denied') setPhotoProblem({ key: 'f91.photo.denied', settings: r.permission !== 'unavailable' });
-        else if (r.reason === 'storage') setPhotoProblem({ key: 'journal.edit.photos.storage' });
-        else setPhotoProblem({ key: 'journal.edit.photos.unreadable' });
+        const problem = cardPhotoProblem(source, r.reason, r.permission);
+        if (problem) setPhotoProblem({ key: problem.key as Key, settings: problem.settings });
         return;
       }
       const uri = r.photos[0]?.uri;
@@ -214,7 +214,14 @@ export default function LoyaltyEditScreen() {
           icon="image-outline"
           label={d.photo ? t('f91.photo.change') : t('f91.photo.add')}
           hint={d.photo ? t('f91.photo.changeHint') : t('f91.photo.addHint')}
-          onPress={pickPhoto}
+          onPress={() => pickPhoto('library')}
+        />
+        <Button
+          kind="secondary"
+          icon="camera-outline"
+          label={d.photo ? t('f92.camera.retake') : t('f92.camera.take')}
+          hint={d.photo ? t('f92.camera.retakeHint') : t('f92.camera.takeHint')}
+          onPress={() => pickPhoto('camera')}
         />
         {d.photo ? <Button kind="quiet" icon="trash-outline" label={t('f91.photo.remove')} hint={t('f91.photo.removeHint')} onPress={() => set('photo', '')} /> : null}
         {photoProblem ? <Warning text={t(photoProblem.key)} /> : null}

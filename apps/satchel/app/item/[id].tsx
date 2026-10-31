@@ -29,7 +29,7 @@ export default function ItemScreen() {
   if (!found) {
     return (
       <Screen>
-        <EmptyState title={t('item.title')} body={t('item.notFound')} />
+        <EmptyState art="magnifier" title={t('item.title')} body={t('item.notFound')} />
       </Screen>
     );
   }

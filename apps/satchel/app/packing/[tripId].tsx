@@ -112,7 +112,7 @@ export default function PackingScreen() {
   if (!trip) {
     return (
       <Screen>
-        <EmptyState title={t('packing.title')} body={t('packing.notFound')} />
+        <EmptyState art="magnifier" title={t('packing.title')} body={t('packing.notFound')} />
       </Screen>
     );
   }

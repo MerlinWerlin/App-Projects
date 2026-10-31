@@ -85,7 +85,7 @@ export default function TroubleGuideScreen() {
   if (!guide) {
     return (
       <ScrollView style={{ flex: 1, backgroundColor: theme.paper }} contentContainerStyle={{ padding: space.l }}>
-        <EmptyState title={t('trouble.notFound')} body={t('trouble.guidance')} action={<Button label={t('trouble.back')} onPress={() => router.back()} />} />
+        <EmptyState art="magnifier" title={t('trouble.notFound')} body={t('trouble.guidance')} action={<Button label={t('trouble.back')} onPress={() => router.back()} />} />
       </ScrollView>
     );
   }

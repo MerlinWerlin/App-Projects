@@ -186,7 +186,7 @@ export default function WalletScreen() {
       }
       ListEmptyComponent={
         <EmptyState
-          icon="ticket-outline"
+          art="ticket"
           title={t('wallet.empty')}
           body={t('wallet.emptyBody')}
           action={<Button label={t('empty.wallet.action')} hint={t('empty.wallet.actionHint')} onPress={() => router.navigate('/')} />}

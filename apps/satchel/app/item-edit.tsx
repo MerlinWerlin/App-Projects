@@ -94,7 +94,7 @@ export default function ItemEditScreen() {
   if (!trip) {
     return (
       <Screen>
-        <EmptyState title={t('item.title')} body={t('trip.notFound')} />
+        <EmptyState art="magnifier" title={t('item.title')} body={t('trip.notFound')} />
       </Screen>
     );
   }

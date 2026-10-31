@@ -17,6 +17,7 @@ import { daysBetween } from '../../src/core/tz.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
 import { space } from '../../src/theme/tokens.ts';
+import { ArrivalHomeCard } from '../../src/ui/ArrivalCard.tsx';
 import { DayBriefCard } from '../../src/ui/DayBriefCard.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
 import { FadeInView, HeroHeader, ProgressBar, StatTile } from '../../src/ui/hero.tsx';
@@ -119,6 +120,8 @@ export default function TripsScreen() {
           <LeavingSoonBanner trips={trips} />
           {/* T71: "Your day" sits above the other cards, only while a trip is on today. */}
           <DayBriefCard trips={trips} />
+          {/* T95: the arrival card for the first trip in the list reaching a new country. */}
+          <ArrivalHomeCard trips={list} />
           {trips.length ? (
             <View style={{ flexDirection: 'row', gap: space.s }}>
               <StatTile value={stats.trips} label={t('design.stats.trips')} icon="airplane" tone="sea" />
@@ -140,7 +143,7 @@ export default function TripsScreen() {
         </View>
       }
       ListEmptyComponent={
-        <EmptyState icon="airplane-outline" title={t('trips.empty')} body={t('trips.emptyBody')} action={<Button label={t('trips.addDemo')} kind="quiet" onPress={addDemo} />} />
+        <EmptyState art="suitcase" title={t('trips.empty')} body={t('trips.emptyBody')} action={<Button label={t('trips.addDemo')} kind="quiet" onPress={addDemo} />} />
       }
       ListFooterComponent={
         <View style={{ gap: space.s, marginTop: space.s }}>

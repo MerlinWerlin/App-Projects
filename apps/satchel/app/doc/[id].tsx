@@ -44,7 +44,7 @@ export default function DocScreen() {
 
   if (requiresUnlock(lock)) return <VaultLockGate autoPrompt />;
   if (!doc) {
-    return <Screen>{loaded ? <EmptyState title={t('route.doc')} body={t('doc.notFound')} /> : null}</Screen>;
+    return <Screen>{loaded ? <EmptyState art="magnifier" title={t('route.doc')} body={t('doc.notFound')} /> : null}</Screen>;
   }
 
   const today = todayIn(deviceZone());

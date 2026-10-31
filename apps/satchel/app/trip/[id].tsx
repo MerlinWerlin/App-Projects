@@ -28,10 +28,12 @@ import { TripPackingSlot } from '../../src/ui/slots/TripPackingSlot.tsx';
 import { TripSpendingSlot } from '../../src/ui/slots/TripSpendingSlot.tsx';
 import { TripJournalSlot } from '../../src/ui/slots/TripJournalSlot.tsx';
 import { TripIdeasSlot } from '../../src/ui/slots/TripIdeasSlot.tsx';
+import { TripTodosSlot } from '../../src/ui/slots/TripTodosSlot.tsx';
 import { TripRecapSlot } from '../../src/ui/slots/TripRecapSlot.tsx';
 import { PlannedIdeas } from '../../src/ui/ideas.tsx';
 import { SharePlan } from '../../src/ui/SharePlan.tsx';
 import { AddToCalendar } from '../../src/ui/AddToCalendar.tsx';
+import { ArrivalCard } from '../../src/ui/ArrivalCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
 import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
@@ -187,7 +189,7 @@ export default function TripScreen() {
   if (!trip) {
     return (
       <Screen>
-        <EmptyState title={t('trip.title')} body={t('trip.notFound')} />
+        <EmptyState art="magnifier" title={t('trip.title')} body={t('trip.notFound')} />
       </Screen>
     );
   }
@@ -245,12 +247,17 @@ export default function TripScreen() {
               onPress={() => router.navigate({ pathname: '/map', params: { tripId: trip.id, placeId: '' } })}
             />
             <Button label={t('paste.open')} hint={t('paste.openHint')} kind="quiet" icon="clipboard-outline" onPress={pasteBooking} />
+            {/* T95: "Welcome to <country>" while a trip country is arriving, else the countries strip. */}
+            {past ? null : <ArrivalCard trip={trip} />}
             <ReadinessCard trip={trip} />
+            {/* T93: the trip's to-do list (hidden once the trip has ended). */}
+            <TripTodosSlot trip={trip} />
             {past ? null : <JetLagCard trip={trip} />}
             <WeatherCard trip={trip} />
             <DemoIntro trip={trip} />
             {empty ? (
               <EmptyState
+                art="suitcase"
                 title={t('spec.timeline.emptyTitle')}
                 body={t('spec.timeline.emptyBody')}
                 action={adding === FIRST ? kindChooser(trip.startDate) : <Button label={t('spec.timeline.addItem')} hint={t('spec.timeline.addItemHint')} onPress={() => setAdding(FIRST)} />}

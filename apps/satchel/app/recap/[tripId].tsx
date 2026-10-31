@@ -71,7 +71,7 @@ export default function RecapScreen() {
   if (!trip) {
     return (
       <Screen>
-        <EmptyState icon="sparkles-outline" title={t('recap.route')} body={t('recap.notFound')} />
+        <EmptyState art="magnifier" title={t('recap.route')} body={t('recap.notFound')} />
       </Screen>
     );
   }
@@ -111,7 +111,7 @@ function RecapView({ trip }: { trip: Trip }) {
           <RecapBody trip={trip} r={r} onOpen={(path) => router.push(path)} />
         ) : (
           <FadeInView delay={60}>
-            <EmptyState icon="hourglass-outline" title={t('recap.upcoming.title')} body={t('recap.upcoming.body')} />
+            <EmptyState art="clock" title={t('recap.upcoming.title')} body={t('recap.upcoming.body')} />
           </FadeInView>
         )}
         <Body muted>{t('recap.offline')}</Body>

@@ -9,6 +9,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { Attachment, Budget, Companion, Expense, ExpenseSplit, Item, Place, SavedPlace, Settlement, Trip } from './model.ts';
 import type { Idea } from './ideas.ts';
+import type { Todo } from './todos.ts';
 import type { JournalEntry, JournalPhoto } from './journal.ts';
 import { draftFromEntry, entryFromDraft, withJournalFiles } from './journal.ts';
 import { draftFromIdea, ideaFromDraft } from './ideas.ts';
@@ -128,6 +129,18 @@ const idea: Required<Idea> = {
   updatedAt: '2027-03-03T09:00:00.000Z',
 };
 
+// T93: an own to-do with every field (a suggestion's row uses `suggestion` / `dismissed` instead of a title).
+const todo: Required<Todo> = {
+  id: 'todo_1',
+  title: 'Book the onsen',
+  due: '2027-03-25',
+  done: true,
+  suggestion: 'checkin:2027-04-01T21:00|Australia/Sydney|ea 25',
+  dismissed: true,
+  createdAt: '2027-03-02T09:00:00.000Z',
+  updatedAt: '2027-03-03T09:00:00.000Z',
+};
+
 const companion: Required<Companion> = { id: 'c_sam', name: 'Sam' };
 const split: Required<ExpenseSplit> = { mode: 'shares', parts: [{ person: 'me', value: 2 }, { person: 'c_sam', value: 1 }] };
 const expense: Required<Expense> = {
@@ -164,6 +177,7 @@ const fullTrip = (): Required<Trip> =>
     companions: [companion],
     settlements: [settlement],
     cover: 'city',
+    todos: [todo],
   });
 
 const packItem: Required<PackItem> = { id: 'pack_1', label: 'Adapter', done: true, category: 'tech', qty: 2, templateItemId: 'tpl_adapter', suggestionId: 'sg_adapter', userQty: 3 };
@@ -191,7 +205,7 @@ test('T85 fixture: every Trip and Item field is set (Required<> typing + no unde
   assertAllSet(packList, 'packing');
   // Keys Trip has today; a new one must be added to the fixture (tsc) and to this list (here).
   assert.deepEqual(Object.keys(t).sort(), [
-    'budget', 'companions', 'cover', 'createdAt', 'demo', 'endDate', 'expenses', 'homeTz', 'id', 'ideas', 'items', 'journal', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate',
+    'budget', 'companions', 'cover', 'createdAt', 'demo', 'endDate', 'expenses', 'homeTz', 'id', 'ideas', 'items', 'journal', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos',
   ]);
   assert.deepEqual(Object.keys(flight).sort(), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
 });
@@ -327,6 +341,7 @@ test('T85 (3) .satchel export + import keeps every field (ids renewed, reference
   assert.equal(trip.journal?.[0].placeId, trip.places?.[0].id, 'journal page still points at its saved place');
   assert.notEqual(trip.journal?.[0].photos[0].id, photo.id);
   assert.notEqual(trip.ideas?.[0].id, idea.id);
+  assert.notEqual(trip.todos?.[0].id, todo.id);
   assert.notEqual(trip.expenses?.[0].id, expense.id);
   assert.deepEqual(trip.companions, src.companions, 'companion ids kept: payers and splits refer to them');
   assert.deepEqual(trip.settlements, src.settlements);

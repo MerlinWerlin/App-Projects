@@ -136,7 +136,7 @@ export default function ImportantNumbersScreen() {
         <Button icon="add" label={t('trouble.numbers.add')} hint={t('trouble.numbers.addHint')} onPress={startAdd} />
       )}
 
-      {groups.length === 0 && !draft ? <EmptyState icon="call-outline" title={t('trouble.numbers.emptyTitle')} body={t('trouble.numbers.emptyBody')} /> : null}
+      {groups.length === 0 && !draft ? <EmptyState art="lifebuoy" title={t('trouble.numbers.emptyTitle')} body={t('trouble.numbers.emptyBody')} /> : null}
 
       {groups.map(({ group, numbers: list }) => (
         <View key={group} style={{ gap: space.s }}>

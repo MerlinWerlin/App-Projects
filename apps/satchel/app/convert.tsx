@@ -63,7 +63,7 @@ export default function ConvertScreen() {
     return (
       <Screen>
         <EmptyState
-          icon="cash-outline"
+          art="coins"
           title={t('convert.noTrip')}
           body={t('convert.noTripBody')}
           action={<Button label={t('convert.noTripAction')} hint={t('convert.noTripActionHint')} onPress={() => router.navigate('/')} />}
@@ -117,7 +117,7 @@ function ConvertBody({ trip, tripChoices, onPickTrip, toSplit }: { trip: Trip; t
         {header}
         {tripPicker}
         <EmptyState
-          icon="cash-outline"
+          art="coins"
           title={t('convert.noHome')}
           body={t('convert.noHomeBody', { trip: trip.name })}
           action={<Button label={t('convert.openSpending')} hint={t('convert.openSpendingHint')} icon="wallet-outline" onPress={() => router.push(`/spending/${trip.id}`)} />}
