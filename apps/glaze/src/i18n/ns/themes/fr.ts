@@ -5,8 +5,6 @@ export const fr: NonNullable<LocaleMessages['themes']> = {
   subtitle: 'Des looks complets : fond d’écran, icônes, widgets et une boucle.',
   tipsA11y: 'Astuces',
   dismissTip: 'Masquer l’astuce : {title}',
-  hideTips: 'Compris, masquer les astuces',
-  hideTipsA11y: 'Masquer toutes les astuces',
   makeWallpaper: {
     title: 'Créer un fond d’écran',
     body: 'Dégradés, maillage, grain et motifs à la taille de votre iPhone.',
@@ -17,14 +15,9 @@ export const fr: NonNullable<LocaleMessages['themes']> = {
   /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
   collection: { title: 'Nouvelle collection', body: 'Des thèmes d’art original du studio Glaze. Téléchargement gratuit ; les nouveaux arrivent ici.', loadingA11y: 'Chargement de la nouvelle collection', downloadA11y: 'Téléchargement gratuit.' },
   startersBody: 'Inclus dans Glaze, prêts sans téléchargement.',
-  startersEmpty: 'Pas encore de thèmes de base',
-  plusPacks: 'Packs Plus',
-  plusPacksBody: 'Prévisualisez-les tous. Glaze Plus est un achat unique, jamais un abonnement.',
   space: { title: 'Espace · vraies photos de Webb', body: 'Gratuit. De vraies images du télescope spatial James Webb ; chaque photo ne se télécharge que lorsque vous touchez Télécharger dans le thème.' },
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'Art · fonds d’écran originaux', body: 'Gratuit. Des fonds d’écran d’art originaux avec icônes assorties et illustrations flottantes pour widgets. Rien à télécharger.' },
-  plusPacksEmpty: 'Pas encore de packs Plus',
-  packEmpty: '{name} est encore en cours de dessin',
   plusNote: 'Glaze Plus.',
   feedback: 'Envoyer un avis',
   feedbackHint: 'Suggérez un thème ou signalez un problème depuis votre app Mail',
@@ -32,7 +25,6 @@ export const fr: NonNullable<LocaleMessages['themes']> = {
     body: 'De nouveaux looks arrivent avec les mises à jour. En attendant, créez votre propre jeu dans Icônes.',
     a11y: '{title}. De nouveaux looks arrivent avec les mises à jour. En attendant, vous pouvez créer vos propres icônes.',
     cta: 'Créer vos propres icônes',
-    ctaHint: 'Ouvre l’Atelier d’icônes',
   },
   category: {
     all: 'Tous',

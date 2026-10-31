@@ -5,8 +5,6 @@ export const ja: NonNullable<LocaleMessages['themes']> = {
   subtitle: '壁紙、アイコン、ウィジェット、ループまで揃ったトータルルック。',
   tipsA11y: 'ヒント',
   dismissTip: 'ヒントを閉じる: {title}',
-  hideTips: 'OK、ヒントを隠す',
-  hideTipsA11y: 'すべてのヒントを隠す',
   makeWallpaper: {
     title: '壁紙を作る',
     body: 'グラデーション、メッシュ、粒子、パターンを iPhone のサイズで。',
@@ -17,14 +15,9 @@ export const ja: NonNullable<LocaleMessages['themes']> = {
   /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
   collection: { title: '新しいコレクション', body: 'Glaze スタジオのオリジナルアートテーマ。無料でダウンロードでき、新作はここに表示されます。', loadingA11y: '新しいコレクションを読み込み中', downloadA11y: '無料ダウンロード。' },
   startersBody: 'Glaze に内蔵。ダウンロード不要です。',
-  startersEmpty: 'スターターテーマはまだありません',
-  plusPacks: 'Plus パック',
-  plusPacksBody: 'どれでもプレビューできます。Glaze Plus は買い切りで、サブスクではありません。',
   space: { title: '宇宙 · ウェッブの本物の写真', body: '無料。ジェイムズ・ウェッブ宇宙望遠鏡の本物の画像です。写真はテーマでダウンロードをタップしたときだけ取得されます。' },
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'アート · オリジナル壁紙', body: '無料。オリジナルのアート壁紙に、合わせたアイコンと浮かぶウィジェットアート付き。ダウンロード不要です。' },
-  plusPacksEmpty: 'Plus パックはまだありません',
-  packEmpty: '{name} は制作中です',
   plusNote: 'Glaze Plus。',
   feedback: 'フィードバックを送る',
   feedbackHint: 'メールアプリからテーマの提案や問題の報告ができます',
@@ -32,7 +25,6 @@ export const ja: NonNullable<LocaleMessages['themes']> = {
     body: '新しいルックはアップデートで届きます。それまでは「アイコン」で自分のセットを作りましょう。',
     a11y: '{title}。新しいルックはアップデートで届きます。それまでは自分のアイコンを作れます。',
     cta: '自分のアイコンを作る',
-    ctaHint: 'アイコンスタジオを開きます',
   },
   category: {
     all: 'すべて',

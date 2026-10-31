@@ -5,8 +5,6 @@ export const hi: NonNullable<LocaleMessages['themes']> = {
   subtitle: 'पूरे लुक: वॉलपेपर, आइकन, विजेट और एक लूप।',
   tipsA11y: 'सुझाव',
   dismissTip: 'सुझाव हटाएँ: {title}',
-  hideTips: 'समझ गया, सुझाव छिपाएँ',
-  hideTipsA11y: 'सभी सुझाव छिपाएँ',
   makeWallpaper: {
     title: 'वॉलपेपर बनाएँ',
     body: 'ग्रेडिएंट, मेश, ग्रेन और पैटर्न, आपके iPhone के आकार में।',
@@ -17,14 +15,9 @@ export const hi: NonNullable<LocaleMessages['themes']> = {
   /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
   collection: { title: 'नया संग्रह', body: 'Glaze स्टूडियो की मौलिक कला थीम। डाउनलोड मुफ़्त; नई थीम यहीं दिखेंगी।', loadingA11y: 'नया संग्रह लोड हो रहा है', downloadA11y: 'मुफ़्त डाउनलोड।' },
   startersBody: 'Glaze में शामिल, बिना डाउनलोड तैयार।',
-  startersEmpty: 'अभी कोई शुरुआती थीम नहीं',
-  plusPacks: 'Plus पैक',
-  plusPacksBody: 'किसी का भी प्रीव्यू देखें। Glaze Plus एक बार की खरीद है, कभी सब्सक्रिप्शन नहीं।',
   space: { title: 'अंतरिक्ष · वेब की असली तस्वीरें', body: 'मुफ़्त। जेम्स वेब स्पेस टेलीस्कोप की असली तस्वीरें; हर फ़ोटो तभी डाउनलोड होती है जब आप थीम में डाउनलोड पर टैप करते हैं।' },
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'आर्ट · मौलिक वॉलपेपर', body: 'मुफ़्त। मौलिक आर्ट वॉलपेपर, मेल खाते आइकन और तैरती विजेट आर्ट के साथ। कुछ डाउनलोड नहीं करना।' },
-  plusPacksEmpty: 'अभी कोई Plus पैक नहीं',
-  packEmpty: '{name} अभी बनाया जा रहा है',
   plusNote: 'Glaze Plus।',
   feedback: 'फ़ीडबैक भेजें',
   feedbackHint: 'अपने Mail ऐप से कोई थीम सुझाएँ या समस्या बताएँ',
@@ -32,7 +25,6 @@ export const hi: NonNullable<LocaleMessages['themes']> = {
     body: 'नए लुक अपडेट के साथ आते हैं। तब तक, आइकन में अपना सेट बनाएँ।',
     a11y: '{title}। नए लुक अपडेट के साथ आते हैं। तब तक आप अपने आइकन बना सकते हैं।',
     cta: 'अपने आइकन बनाएँ',
-    ctaHint: 'आइकन स्टूडियो खोलता है',
   },
   category: {
     all: 'सभी',

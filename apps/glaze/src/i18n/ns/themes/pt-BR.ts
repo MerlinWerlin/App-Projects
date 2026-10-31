@@ -5,8 +5,6 @@ export const ptBR: NonNullable<LocaleMessages['themes']> = {
   subtitle: 'Visuais completos: papel de parede, ícones, widgets e um loop.',
   tipsA11y: 'Dicas',
   dismissTip: 'Dispensar dica: {title}',
-  hideTips: 'Entendi, ocultar dicas',
-  hideTipsA11y: 'Ocultar todas as dicas',
   makeWallpaper: {
     title: 'Criar um papel de parede',
     body: 'Degradês, malha, granulado e padrões no tamanho do seu iPhone.',
@@ -17,14 +15,9 @@ export const ptBR: NonNullable<LocaleMessages['themes']> = {
   /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
   collection: { title: 'Nova coleção', body: 'Temas de arte original do estúdio Glaze. Download grátis; os novos aparecem aqui.', loadingA11y: 'Carregando a nova coleção', downloadA11y: 'Download grátis.' },
   startersBody: 'Incluídos no Glaze, prontos sem download.',
-  startersEmpty: 'Ainda não há temas iniciais',
-  plusPacks: 'Pacotes Plus',
-  plusPacksBody: 'Veja a prévia de qualquer um. O Glaze Plus é uma compra única, nunca uma assinatura.',
   space: { title: 'Espaço · fotos reais do Webb', body: 'Grátis. Imagens reais do telescópio espacial James Webb; cada foto só é baixada quando você toca em Baixar no tema.' },
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'Arte · papéis de parede originais', body: 'Grátis. Papéis de parede de arte originais com ícones combinando e arte flutuante para widgets. Nada para baixar.' },
-  plusPacksEmpty: 'Ainda não há pacotes Plus',
-  packEmpty: '{name} ainda está sendo desenhado',
   plusNote: 'Glaze Plus.',
   feedback: 'Enviar feedback',
   feedbackHint: 'Sugira um tema ou relate um problema pelo seu app Mail',
@@ -32,7 +25,6 @@ export const ptBR: NonNullable<LocaleMessages['themes']> = {
     body: 'Novos visuais chegam com as atualizações. Enquanto isso, crie seu próprio conjunto em Ícones.',
     a11y: '{title}. Novos visuais chegam com as atualizações. Enquanto isso, você pode criar seus próprios ícones.',
     cta: 'Crie seus próprios ícones',
-    ctaHint: 'Abre o Estúdio de ícones',
   },
   category: {
     all: 'Todos',

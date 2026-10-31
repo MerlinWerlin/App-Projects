@@ -6,8 +6,6 @@ export const en = {
   subtitle: 'Whole looks: wallpaper, icons, widgets and a loop.',
   tipsA11y: 'Tips',
   dismissTip: 'Dismiss tip: {title}',
-  hideTips: 'Got it, hide tips',
-  hideTipsA11y: 'Hide all tips',
   makeWallpaper: {
     title: 'Make a wallpaper',
     body: 'Gradients, mesh, grain and patterns at your iPhone’s size.',
@@ -19,14 +17,9 @@ export const en = {
   /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
   collection: { title: 'New collection', body: 'Original art themes from the Glaze studio. Free to download; new ones appear here.', loadingA11y: 'Loading the new collection', downloadA11y: 'Free download.' },
   startersBody: 'Built into Glaze, ready without a download.',
-  startersEmpty: 'No starter themes yet',
-  plusPacks: 'Plus packs',
-  plusPacksBody: 'Preview any of them. Glaze Plus is a one-time unlock, never a subscription.',
   space: { title: 'Space · real Webb photos', body: 'Free. Real James Webb Space Telescope images; each photo downloads only when you tap Download in the theme.' },
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'Art · original wallpapers', body: 'Free. Original art wallpapers with matching icons and floating widget art. Nothing to download.' },
-  plusPacksEmpty: 'No Plus packs yet',
-  packEmpty: '{name} is still being drawn',
   plusNote: 'Glaze Plus.',
   feedback: 'Send feedback',
   feedbackHint: 'Suggest a theme or report a problem from your own Mail app',
@@ -34,7 +27,6 @@ export const en = {
     body: 'New looks arrive with updates. Meanwhile, make your own set in Icons.',
     a11y: '{title}. New looks arrive with updates. Meanwhile you can make your own icons.',
     cta: 'Make your own icons',
-    ctaHint: 'Opens the Icon Studio',
   },
   category: {
     all: 'All',

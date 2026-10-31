@@ -445,3 +445,7 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 ## 2026-10-30 run 190 (23:12Z, artifact 1793400126-708b; oversight v211)
 - Oversight v211: D211-1 followed — T182 Plus sheet no longer counts the old Plus packs (left the gallery): 'More Plus themes are on the way' + 'Every theme in the gallery' free row, 12 locales, guard test. No plus:true, no price/paywall change. No patches. App-Projects: nothing new since b737621. No page comments. npm registry not retried; full install + tsc + expo export needs PC verification.
 - 1433/1433 core tests green, typecheck:ui (stubs) clean. JS only. Kit rebuilt. Nothing device-tested.
+## 2026-10-31 run 191 (01:11Z, artifact 1793402116-f7de; oversight v212)
+- Oversight v212: no new directives; D211-1 still open (no plus:true, no price/paywall change); D130-2 kept (JS only). No patches. App-Projects 4d60afa = ship PR #133 of runs 189-190; tree matches outside PC-only files, nothing to sync. No page comments. npm registry unreachable; full install + tsc + expo export needs PC verification.
+- T181 part: retired 8 unused old-gallery theme strings in 11 locales + guard (e7cbbe7). Everything else open waits on the owner/PC or native holds.
+- 1434/1434 core tests green, typecheck:ui (stubs) clean. Kit rebuilt. Nothing device-tested.
