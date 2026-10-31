@@ -242,3 +242,51 @@ test('uniqueTripName adds (copy), then (copy 2), ignoring case and spaces', () =
   assert.equal(uniqueTripName('Tokyo', ['Tokyo', 'Tokyo (copy)'], copyName), 'Tokyo (copy 2)');
   assert.equal(uniqueTripName('Tokyo', ['Tokyo', 'TOKYO (COPY)', 'Tokyo (copy 2)'], copyName), 'Tokyo (copy 3)');
 });
+
+// ---- T54: spending in trip files ----
+
+const spendingTrip = (): Trip => ({
+  ...sampleTrip(),
+  budget: { currency: 'AUD', amount: 250000 },
+  rates: { JPY: 0.0102, KWD: 4.9 },
+  expenses: [
+    { id: 'e1', amount: 1200, currency: 'JPY', category: 'food', day: '2026-11-02', note: 'Ramen', createdAt: NOW },
+    { id: 'e2', amount: 1500, currency: 'KWD', category: 'shopping', day: '2026-11-03', createdAt: NOW },
+  ],
+});
+
+test('budget, rates and expenses travel in the file and come back with new expense ids', () => {
+  const original = spendingTrip();
+  const { file, trip } = roundTrip(original);
+  assert.deepEqual(file.trip.budget, original.budget);
+  assert.equal(file.trip.expenses?.length, 2);
+  assert.deepEqual(trip.budget, original.budget);
+  assert.deepEqual(trip.rates, original.rates);
+  assert.deepEqual(trip.expenses?.map(({ id: _id, ...e }) => e), original.expenses?.map(({ id: _id, ...e }) => e));
+  for (const e of trip.expenses ?? []) assert.ok(!['e1', 'e2'].includes(e.id), 'expense ids are new');
+});
+
+test('older files without spending still import', () => {
+  const g = good();
+  assert.equal(g.trip.expenses, undefined);
+  const r = parseTripFile(g);
+  assert.ok(r.ok);
+  const t = importTripFile(r.file, ids, NOW).trip;
+  assert.equal(t.expenses, undefined);
+  assert.equal(t.budget, undefined);
+});
+
+test('a file with malformed spending is rejected whole', () => {
+  const g = JSON.parse(JSON.stringify(buildTripFile(spendingTrip(), payloads, { now: NOW }).file)) as TripFile;
+  assert.equal(err(g), 'ok');
+  const bad = (trip: Record<string, unknown>) => err({ ...g, trip: { ...g.trip, ...trip } });
+  assert.equal(bad({ budget: { currency: 'dollars', amount: 1 } }), 'damaged');
+  assert.equal(bad({ budget: { currency: 'AUD', amount: -1 } }), 'damaged');
+  assert.equal(bad({ rates: { JPY: 'cheap' } }), 'damaged');
+  assert.equal(bad({ rates: { jpy: 0.01 } }), 'damaged');
+  assert.equal(bad({ expenses: 'lots' }), 'damaged');
+  assert.equal(bad({ expenses: [{ ...g.trip.expenses![0], amount: 12.5 }] }), 'damaged');
+  assert.equal(bad({ expenses: [{ ...g.trip.expenses![0], category: 'rocket' }] }), 'damaged');
+  assert.equal(bad({ expenses: [{ ...g.trip.expenses![0], day: '2026-02-30' }] }), 'damaged');
+  assert.equal(bad({ expenses: [g.trip.expenses![0], g.trip.expenses![0]] }), 'damaged');
+});

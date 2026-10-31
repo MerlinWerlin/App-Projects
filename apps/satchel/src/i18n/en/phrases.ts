@@ -1,0 +1,41 @@
+// T56 strings: "Show a local" phrase cards (the English UI only; the phrases themselves live in
+// src/content/phrases.json). Keys prefixed 'phrases.'.
+export const phrases = {
+  'phrases.title': 'Show a local',
+  'phrases.heroTitle': 'Ask in their language',
+  'phrases.subtitle': 'Common travel phrases in the local language. Tap one to show it full screen. Works offline.',
+  'phrases.language': 'Language',
+  'phrases.langFromTrip': 'Picked from your trip',
+  'phrases.langOption': '{native}, {english}',
+  'phrases.list': 'Phrases',
+  'phrases.rowA11y': '{english}, in {language}',
+  'phrases.rowHint': 'Opens this phrase full screen to show someone',
+  'phrases.disclaimer': 'Written with care but not checked by a native speaker yet. Pointing and a smile still help.',
+
+  'phrases.card.showThis': 'Show this to someone',
+  'phrases.card.sayIt': 'Say it',
+  'phrases.card.english': 'In English',
+  'phrases.card.close': 'Close',
+  'phrases.card.closeHint': 'Closes the card and goes back',
+  'phrases.card.prev': 'Previous phrase',
+  'phrases.card.next': 'Next phrase',
+  'phrases.card.position': '{n} of {total}',
+  'phrases.card.missing': 'This phrase isn’t available.',
+
+  'phrases.lang.ja': 'Japanese',
+  'phrases.lang.zh-Hans': 'Chinese (Simplified)',
+  'phrases.lang.ko': 'Korean',
+  'phrases.lang.th': 'Thai',
+  'phrases.lang.vi': 'Vietnamese',
+  'phrases.lang.es': 'Spanish',
+  'phrases.lang.fr': 'French',
+  'phrases.lang.de': 'German',
+  'phrases.lang.it': 'Italian',
+  'phrases.lang.pt': 'Portuguese',
+  'phrases.lang.id': 'Indonesian',
+
+  'phrases.toiletAsk': 'Ask for a toilet',
+  'phrases.toiletAskHint': 'Shows “Where is the toilet?” in the local language, full screen',
+  'phrases.walletEntry': 'Show a local: phrase cards',
+  'phrases.walletEntryHint': 'Opens travel phrases to show someone, in the local language',
+} as const;

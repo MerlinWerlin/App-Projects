@@ -47,6 +47,16 @@ export function phoneLanguages(): string[] {
   }
 }
 
+/** The phone's region currency (ISO 4217, e.g. 'AUD'), or null when unknown. Suggests a home currency (T54). */
+export function phoneCurrency(): string | null {
+  try {
+    const code = Localization.getLocales()[0]?.currencyCode;
+    return typeof code === 'string' && /^[A-Z]{3}$/.test(code) ? code : null;
+  } catch {
+    return null;
+  }
+}
+
 export const openSettings = () => {
   Linking.openSettings().catch(() => {});
 };

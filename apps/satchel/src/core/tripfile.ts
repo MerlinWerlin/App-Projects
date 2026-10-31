@@ -1,6 +1,6 @@
 // .satchel trip files (PLAN §2 "trip sharing by exporting a .satchel file"; EDGE_CASES "Trip export and import").
-// A trip file is one JSON object: the trip, its bookings, its saved places (FLOWS §11.2), its packing list when it
-// has one, and the bytes of the bookings' attachments as base64. Pure TypeScript: the UI reads and writes files.
+// A trip file is one JSON object: the trip (with its budget, exchange rates and expenses when it has them, T54),
+// its bookings, its saved places (FLOWS §11.2), its packing list when it has one, and the bytes of the bookings' attachments as base64. Pure TypeScript: the UI reads and writes files.
 //
 // What never goes in: travel documents (the vault), the emergency card and medical notes. They are not part of a
 // Trip in the model, and buildTripFile only ever sees the one trip and its own packing list, so they cannot leak in.
@@ -12,6 +12,7 @@
 import type { Attachment, Item, Place, SavedPlace, Trip } from './model.ts';
 import { ITEM_KINDS } from './model.ts';
 import type { PackItem, PackList } from './packing.ts';
+import { checkFileSpending } from './spending.ts';
 import { isLocalDateTime } from './tz.ts';
 
 export const TRIP_FILE_FORMAT = 'satchel-trip';
@@ -144,6 +145,8 @@ export function parseTripFile(data: unknown): ParseResult {
   if (data.version > TRIP_FILE_VERSION) return { ok: false, error: 'version' };
   const t = data.trip;
   if (!isObj(t) || !isStr(t.name) || !isDate(t.startDate) || !isDate(t.endDate)) return damaged('trip');
+  // T54: budget, rates and expenses are optional (older files have none); when present they must be valid in full.
+  if (!checkFileSpending(t)) return damaged('spending');
   if (!Array.isArray(data.items) || !Array.isArray(data.attachments)) return damaged('lists');
   const places = data.places === undefined ? [] : data.places;
   if (!Array.isArray(places)) return damaged('places');
@@ -258,6 +261,8 @@ export function importTripFile(file: TripFile, newId: (prefix: string) => string
   // Saved places are separate pins: each gets its own new id.
   const places: SavedPlace[] = file.places.map((p) => ({ ...p, id: newId('place') }));
   const trip: Trip = { ...file.trip, id: tripId, items, places, createdAt: now };
+  // T54: expenses get new ids like everything else.
+  if (file.trip.expenses) trip.expenses = file.trip.expenses.map((e) => ({ ...e, id: newId('exp') }));
   const packing: PackList | null = file.packing
     ? { ...file.packing, tripId, items: file.packing.items.map((i) => ({ ...i, id: newId('pack') })) }
     : null;

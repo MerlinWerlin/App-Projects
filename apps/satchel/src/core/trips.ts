@@ -204,6 +204,10 @@ export function tripFromDraft(d: TripDraft, prev?: Trip, now = new Date().toISOS
     ...(prev?.places ? { places: prev.places } : {}),
     demo: prev?.demo,
     createdAt: prev?.createdAt ?? now,
+    // T54: editing the trip's name or dates keeps its spending.
+    ...(prev?.budget ? { budget: prev.budget } : {}),
+    ...(prev?.rates ? { rates: prev.rates } : {}),
+    ...(prev?.expenses ? { expenses: prev.expenses } : {}),
   };
 }
 

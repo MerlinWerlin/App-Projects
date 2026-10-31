@@ -1,5 +1,5 @@
 // Document detail: type, name, expiry as text, saved copies (images inline, PDFs in the system viewer), Edit and
-// Delete. Behind the same vault lock as /vault.
+// Delete. Behind the same vault lock as /vault, and covered in the app switcher (T57).
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -10,6 +10,7 @@ import { expiryOf, isImage, isPdf, removeDoc, requiresUnlock, tripWarnings } fro
 import { openFile } from '../../src/native/docPick.ts';
 import { fileExists, removeFile } from '../../src/native/files.ts';
 import { useApp } from '../../src/state/app.tsx';
+import { usePrivacyGuard } from '../../src/state/privacyGuard.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { useVaultDocs, useVaultLock } from '../../src/state/vaultLock.ts';
 import { fonts, radius, space } from '../../src/theme/tokens.ts';
@@ -21,6 +22,7 @@ export default function DocScreen() {
   const { t, theme, lang } = useApp();
   const router = useRouter();
   const lock = useVaultLock();
+  usePrivacyGuard();
   const [docs, setDocs, loaded] = useVaultDocs();
   const { trips } = useTrips();
   const doc = docs.find((d) => d.id === id);

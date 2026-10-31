@@ -4,8 +4,10 @@
 // online via Overpass. Each row: name, distance + walking minutes, an arrow and compass word from where you
 // searched, feature chips (fee, wheelchair, changing table, unisex, hours) and Open in Apple Maps for walking
 // directions. "Near my hotel" searches around today's hotel when it has coordinates, without location. Free, no
-// account. Results fade in with a timed transition (skipped with Reduce Motion).
+// account. T56: "Ask for a toilet" opens the full-screen phrase card for "Where is the toilet?" in the local
+// language (app/phrase-card.tsx), fully offline. Results fade in with a timed transition (skipped with Reduce Motion).
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { Animated, FlatList, Linking, Text, View } from 'react-native';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
@@ -51,6 +53,7 @@ const CHIP_TONE: Record<ToiletChip['id'], Tone> = {
 export default function ToiletsScreen() {
   const { t, theme, reduceMotion } = useApp();
   const { trips } = useTrips();
+  const router = useRouter();
   const [phase, setPhase] = useState<Phase>({ s: 'idle' });
   const [openFailed, setOpenFailed] = useState(false);
   const fade = useRef(new Animated.Value(1)).current;
@@ -111,6 +114,13 @@ export default function ToiletsScreen() {
       <View style={{ gap: space.s }}>
         <Button label={t('toilets.findNearMe')} hint={t('toilets.findNearMeHint')} onPress={nearMe} />
         {stay ? <Button kind="quiet" label={t('toilets.nearHotel')} hint={t('toilets.nearHotelHint', { name: stay.name })} onPress={nearHotel} /> : null}
+        <Button
+          kind="secondary"
+          icon="chatbubble-ellipses-outline"
+          label={t('phrases.toiletAsk')}
+          hint={t('phrases.toiletAskHint')}
+          onPress={() => router.push({ pathname: '/phrase-card', params: { phrase: 'toilet' } })}
+        />
       </View>
 
       {busy ? (

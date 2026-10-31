@@ -406,6 +406,6 @@ declare module 'expo-blur' {
 }
 
 declare module 'expo-localization' {
-  export type Locale = { languageTag: string; languageCode: string | null; regionCode: string | null; textDirection: 'ltr' | 'rtl' | null };
+  export type Locale = { languageTag: string; languageCode: string | null; regionCode: string | null; textDirection: 'ltr' | 'rtl' | null; currencyCode: string | null };
   export function getLocales(): Locale[];
 }

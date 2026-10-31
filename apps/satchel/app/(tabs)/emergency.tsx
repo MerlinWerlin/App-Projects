@@ -3,6 +3,7 @@
 // T44 (ACCESSIBILITY "Emergency card" reading order): a Hotel address shortcut after the medical notes opens the
 // address card for the stay you're in now, else the next one (battery.currentHotel, as essentials uses). Hidden
 // when that stay has no saved address, so it never leads to an empty card.
+// T55: the country essentials card (plugs, power, driving side, calling code, Bring an adapter?) for the same country.
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
@@ -16,6 +17,7 @@ import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { fonts, radius, shadowOf, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
+import { CountryEssentialsCard } from '../../src/ui/CountryEssentialsCard.tsx';
 import { callAndExplain, EmergencyCardView } from '../../src/ui/EmergencyCardView.tsx';
 import { FadeInView, HeroHeader, IconBadge } from '../../src/ui/hero.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
@@ -150,6 +152,8 @@ export default function EmergencyScreen() {
         medicalShown={medicalShown}
         onToggleMedical={() => setMedicalShown(!medicalShown)}
       />
+
+      {display ? <CountryEssentialsCard iso2={display.iso2} /> : null}
 
       {hotel?.hasAddress ? (
         <PressableScale

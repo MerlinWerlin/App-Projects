@@ -1,20 +1,23 @@
-# Trying Satchel on your iPhone (Expo Go)
+# Trying Satchel on your iPhone (TestFlight)
 
-> 30 Oct 2026: PR 105 is merged and testing moves to **TestFlight** once the one-time iOS signing step is done (`npx eas-cli credentials -p ios` on the PC). The questions below apply the same in TestFlight; ignore the Expo Go-only steps.
-
-Satchel runs in **Expo Go** (SDK 58) until the native offline map needs a development build.
+Satchel is tested in **TestFlight** only. Changes without new native code arrive as an over-the-air update inside the TestFlight app; bigger ones arrive as a new TestFlight build.
 
 ## The 4 steps
-1. Install **Expo Go** from the App Store on your iPhone.
-2. Your PC's auto-start installs, checks and serves Satchel on port 8098 (`Desktop\Apps\_auto\STATUS.txt` shows "satchel ... ready"). On your iPhone open **Expo Go > Recently opened > Satchel**, or scan the QR code from the Satchel window in `Desktop\Apps\satchel`.
+1. On your iPhone open **TestFlight > Satchel** and tap **Install** or **Update** if offered (first time: open Apple's TestFlight invite email).
+2. Open Satchel, close it fully and open it again (twice if needed) so the newest over-the-air update loads.
 3. Try the demo trip, then turn on **flight mode** and try again.
 4. Comment on the Satchel Build page with anything that looks wrong (the yes/no questions below help).
 
-Fallback only, if the PC auto-start is not serving Satchel: the Satchel Build page also has a **Download trial kit** button with the same code.
-
-Nothing here is confirmed on a real phone until you say so.
+Nothing here is confirmed on a real phone until you say so. Older entries below that mention Expo Go are history; everything now applies to TestFlight.
 
 ## New since your last test
+- 31 Oct (run 84, "start expanding"): trip spending, a country essentials card, phrase cards to show a local (including "Where is the toilet?"), and a privacy cover for your documents. Open Satchel from TestFlight, close it fully and reopen (twice if needed).
+  - **Spending.** Open a trip: is there a Spending card above Packing? Set a budget in your home currency, add a ¥1,500 lunch and a rate for JPY: does the bar fill and show how much is left? (yes/no)
+  - Add an expense in a currency with no rate: does it show that currency's total separately and ask you to add a rate, instead of guessing? (yes/no)
+  - **Country essentials.** Emergency tab, pick Japan: is there a card with plug types (A, B), 100 V, 50/60 Hz, drives on the left and +81, with "verify locally"? Pick your home country on the card: does it say whether you need an adapter? (yes/no)
+  - **Phrase cards.** Toilets tab > Ask for a toilet: does a big full-screen card show "Where is the toilet?" in the local language (Japanese for the demo trip) with how to say it? (yes/no)
+  - Wallet > Show a local: phrase cards: can you switch language and step through the phrases with a smooth fade? (yes/no)
+  - **Privacy.** Open Documents (or a document), then swipe up to the app switcher: is Satchel covered by its logo instead of showing your passport? (yes/no)
 - 31 Oct (run 83, your TestFlight feedback): real offline city maps, every country's emergency numbers filled, a new Toilets tab, and a full design pass. Install the newest Satchel build from TestFlight (it may arrive as an update inside the app: close and reopen Satchel twice).
   - **A. Map.** Map tab > Offline city maps: does it list cities (Kyoto, Tokyo, Sydney) with a size and a Download button? If it says the city maps are still being published, that part isn't live yet (yes/no)
   - Download Kyoto, then turn on flight mode and tap Show on map: does the Kyoto map still draw streets and labels, with "© OpenStreetMap contributors" on it? (yes/no)

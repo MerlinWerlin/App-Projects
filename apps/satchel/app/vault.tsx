@@ -1,5 +1,6 @@
 // Document vault: locked first (device authentication), then the documents with expiry badges and trip warnings.
 // Relocks on Lock, when you leave the vault, and after more than 60 s in the background (src/core/vault.ts).
+// Covered in the app switcher while mounted (T57, src/ui/PrivacyCover.tsx in the root layout).
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo } from 'react';
@@ -8,6 +9,7 @@ import { deviceZone, todayIn } from '../src/core/format.ts';
 import type { TravelDoc } from '../src/core/model.ts';
 import { allTripWarnings, expiryOf, requiresUnlock, sortDocs } from '../src/core/vault.ts';
 import { useApp } from '../src/state/app.tsx';
+import { usePrivacyGuard } from '../src/state/privacyGuard.ts';
 import { useTrips } from '../src/state/trips.tsx';
 import { dispatchLock, useVaultDocs, useVaultLock } from '../src/state/vaultLock.ts';
 import { fonts, space } from '../src/theme/tokens.ts';
@@ -18,6 +20,7 @@ export default function VaultScreen() {
   const { t, theme, lang } = useApp();
   const router = useRouter();
   const lock = useVaultLock();
+  usePrivacyGuard();
   const [docs] = useVaultDocs();
   const { trips } = useTrips();
   const today = todayIn(deviceZone());

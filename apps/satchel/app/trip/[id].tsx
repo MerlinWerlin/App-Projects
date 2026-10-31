@@ -20,6 +20,7 @@ import { ItemRow } from '../../src/ui/ItemRow.tsx';
 import { KindIcon, kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, Screen, Warning } from '../../src/ui/kit.tsx';
 import { TripPackingSlot } from '../../src/ui/slots/TripPackingSlot.tsx';
+import { TripSpendingSlot } from '../../src/ui/slots/TripSpendingSlot.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
 
 const DEMO_INTRO_KEY = 'satchel.demoIntro.done.v1';
@@ -187,6 +188,7 @@ export default function TripScreen() {
             {clashes.map(([a, b]) => (
               <Warning key={`${a.id}-${b.id}`} text={t('trip.warnClash', { a: a.title, b: b.title })} />
             ))}
+            <TripSpendingSlot trip={trip} />
             <TripPackingSlot trip={trip} />
             <TripPlaces trip={trip} />
             <Button label={t('spec.timeline.map')} hint={t('spec.timeline.mapHint')} kind="quiet" onPress={() => router.navigate({ pathname: '/map', params: { tripId: trip.id, placeId: '' } })} />
