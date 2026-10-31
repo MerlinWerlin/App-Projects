@@ -21,6 +21,9 @@ import { followups31 } from './en/followups31.ts';
 import { language } from './en/language.ts';
 import { spec41 } from './en/spec41.ts';
 import { tripfile } from './en/tripfile.ts';
+import { citymaps } from './en/citymaps.ts';
+import { toilets } from './en/toilets.ts';
+import { design } from './en/design.ts';
 
 const base = {
   'app.name': 'Satchel',
@@ -156,7 +159,7 @@ const base = {
   'settings.version': 'Version {v}',
 
   'common.back': 'Back',
-  'common.comingSoon': 'Coming in a later build',
+  'common.comingSoon': 'Not available yet',
   'common.on': 'On',
   'common.cancel': 'Cancel',
   'common.delete': 'Delete',
@@ -198,6 +201,6 @@ const base = {
   'itemEdit.attachmentFromPhotos': 'Choose from Photos',
 } as const;
 
-export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile } as const;
+export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile, ...citymaps, ...toilets, ...design } as const;
 
 export type Key = keyof typeof en;

@@ -137,7 +137,7 @@ export function VaultLockGate({ autoPrompt = false }: { autoPrompt?: boolean }) 
           accessibilityLabel={t('vault.unlock.a11y')}
           accessibilityHint={t('vault.unlock.hint')}
           onPress={unlock}
-          style={{ backgroundColor: theme.accent, borderRadius: radius.m, paddingHorizontal: space.l, alignItems: 'center' }}
+          style={{ backgroundColor: theme.accentStrong, borderRadius: radius.m, paddingHorizontal: space.l, alignItems: 'center' }}
         >
           <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: theme.onAccent }}>{failed ? t('common.tryAgain') : t(UNLOCK_LABEL[method])}</Text>
         </PressableScale>

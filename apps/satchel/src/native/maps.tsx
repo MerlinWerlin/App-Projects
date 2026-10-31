@@ -1,6 +1,7 @@
-// Map adapter. TRIAL uses react-native-maps with the system map (online in Expo Go). The module is required lazily
-// inside try/catch, and rendering sits behind an error boundary, so a build without the native map shows a plain
-// list of the same pins instead of crashing. MapLibre (offline) replaces the inside of this file in NATIVE.
+// Map adapter: react-native-maps with the phone's own map (Apple Maps), which loads while connected. A downloaded
+// city map (T47, src/native/cityMaps.ts) is drawn on top as LocalTile raster tiles read from the phone, so that
+// city works in flight mode. The module is required lazily inside try/catch, and rendering sits behind an error
+// boundary, so a build without the native map shows a plain list of the same pins instead of crashing.
 // Never turns on showsUserLocation: that would watch location continuously. "You are here" is a pin we place
 // from a single check.
 import { Component, useEffect, useRef, type ReactNode } from 'react';
@@ -55,6 +56,12 @@ type Props = {
   fallbackBody: string;
   /** Tap on the map itself (not a pin): selects that spot (FLOWS §11.1). Not offered by the no-map fallback list. */
   onMapPress?: (at: LatLon) => void;
+  /** A downloaded city's raster tiles (plain file path with {z}/{x}/{y}), drawn over the system map. */
+  offlineTiles?: { pathTemplate: string; maxZoom: number; minZoom: number } | null;
+  /** Stop zooming in past the offline tiles' deepest level (used while the phone is offline, where nothing else draws). */
+  limitZoom?: boolean;
+  /** Called after the user moves the map. */
+  onRegionChange?: (region: Region) => void;
 };
 
 class Boundary extends Component<{ fallback: ReactNode; children: ReactNode }, { failed: boolean }> {
@@ -91,8 +98,8 @@ function PinList({ pins, onPinPress, title, body, height }: { pins: MapPin[]; on
   );
 }
 
-export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, label, fallbackTitle, fallbackBody, onMapPress }: Props) {
-  const { theme } = useApp();
+export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, label, fallbackTitle, fallbackBody, onMapPress, offlineTiles, limitZoom, onRegionChange }: Props) {
+  const { theme, t } = useApp();
   const ref = useRef<MapViewType | null>(null);
   const maps = loadMaps();
 
@@ -108,7 +115,8 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
   const fallback = <PinList pins={pins} onPinPress={onPinPress} title={fallbackTitle} body={fallbackBody} height={height} />;
   if (!maps) return fallback;
   const MapView = maps.default;
-  const { Marker } = maps;
+  const { Marker, LocalTile } = maps;
+  const tiles = offlineTiles && typeof LocalTile === 'function' ? offlineTiles : null;
   return (
     <Boundary fallback={fallback}>
       <View style={{ height, borderRadius: radius.m, overflow: 'hidden', borderWidth: 1, borderColor: theme.line }}>
@@ -122,6 +130,8 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
           toolbarEnabled={false}
           pitchEnabled={false}
           userInterfaceStyle={theme.dark ? 'dark' : 'light'}
+          maxZoomLevel={tiles && limitZoom ? tiles.maxZoom : undefined}
+          onRegionChangeComplete={onRegionChange ? (r) => onRegionChange(r) : undefined}
           onPress={
             onMapPress
               ? (e) => {
@@ -134,6 +144,7 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
               : undefined
           }
         >
+          {tiles ? <LocalTile pathTemplate={tiles.pathTemplate} tileSize={256} /> : null}
           {pins.map((p) => (
             <Marker
               key={p.id}
@@ -148,6 +159,11 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
             />
           ))}
         </MapView>
+        {tiles ? (
+          <View pointerEvents="none" style={{ position: 'absolute', right: 0, bottom: 0, paddingHorizontal: space.xs, borderTopLeftRadius: radius.s, backgroundColor: theme.card, opacity: 0.85 }}>
+            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: theme.ink }}>{t('citymaps.osm')}</Text>
+          </View>
+        ) : null}
       </View>
     </Boundary>
   );

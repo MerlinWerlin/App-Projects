@@ -1,6 +1,6 @@
 {
   "mode": "update",
-  "note": "Satchel: imported trips get '(copy)' names, and a failed packing-list save now rolls the whole import back",
+  "note": "Satchel: offline city maps, new Toilets tab, emergency numbers for every country, richer travel design",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

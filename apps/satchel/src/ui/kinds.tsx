@@ -31,3 +31,15 @@ export const titleKey = (k: ItemKind): Key =>
 export function KindIcon({ kind, color, size = 22 }: { kind: ItemKind; color: string; size?: number }) {
   return <Ionicons name={KIND_ICON[kind]} size={size} color={color} />;
 }
+
+/** T50: colour family per booking kind (stripe and icon badge tint on tickets and agenda rows). */
+export const KIND_TONE: Record<ItemKind, 'sea' | 'teal' | 'ok' | 'warn' | 'accent' | 'ink'> = {
+  flight: 'sea',
+  train: 'teal',
+  ferry: 'sea',
+  bus: 'ok',
+  hotel: 'accent',
+  car: 'warn',
+  activity: 'accent',
+  note: 'ink',
+};

@@ -2,7 +2,7 @@
  "version": 1,
  "imported": "2026-10-24",
  "origin": "StarNet OpenAI lane (gpt-6-luna) drop 2026-10-24 20:38 Sydney; deduplicated by the build run (sourced row, then higher confidence, wins)",
- "rule": "Always shown with 'verify locally'. Rows without source_url are shown as 'source pending' until a lane re-run adds an official source and date (T25).",
+ "rule": "Always shown with 'verify locally'. Every row has a source URL and a checked date. Rows sourced from the public Wikipedia list (not an official national source) say so in notes; replace with official sources in a lane re-run (T25).",
  "countries": [
   {
    "iso2": "AD",
@@ -12,9 +12,9 @@
    "ambulance": "116",
    "fire": "118",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -25,22 +25,22 @@
    "ambulance": "998",
    "fire": "997",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
    "iso2": "AF",
    "country": "Afghanistan",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "119",
+   "ambulance": "102",
+   "fire": "119",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police 119; ambulance 102 in Kabul (some lists give 112). Service is limited and may not answer outside major cities. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -51,9 +51,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -72,9 +72,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -93,9 +93,9 @@
    "ambulance": "127",
    "fire": "128",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -106,23 +106,23 @@
    "ambulance": "103",
    "fire": "101",
    "tourist_police": null,
-   "notes": "112 is the unified emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the unified emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
    "iso2": "AO",
    "country": "Angola",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "113",
+   "ambulance": "112",
+   "fire": "115",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
-   "confidence": "low"
+   "notes": "Police 113, ambulance 112, fire 115. Numbers vary by city; verify locally. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
+   "confidence": "medium"
   },
   {
    "iso2": "AR",
@@ -132,9 +132,9 @@
    "ambulance": "107",
    "fire": "100",
    "tourist_police": null,
-   "notes": "Use 911 for general emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use 911 for general emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -145,9 +145,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -160,7 +160,7 @@
    "tourist_police": null,
    "notes": "112 also works from mobile phones.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -171,9 +171,9 @@
    "ambulance": "000",
    "fire": "000",
    "tourist_police": null,
-   "notes": "112 may also work from mobile phones.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 may also work from mobile phones. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -184,9 +184,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "Police can also be reached on 100.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police can also be reached on 100. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -213,7 +213,7 @@
    "tourist_police": null,
    "notes": "Uses Finland's emergency number, 112.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -224,9 +224,9 @@
    "ambulance": "103",
    "fire": "101",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -237,9 +237,9 @@
    "ambulance": "124",
    "fire": "123",
    "tourist_police": null,
-   "notes": "Use the direct service numbers; a single general number may not work everywhere.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use the direct service numbers; a single general number may not work everywhere. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -250,9 +250,9 @@
    "ambulance": "511",
    "fire": "311",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -271,9 +271,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is the national emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is the national emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -286,7 +286,7 @@
    "tourist_police": null,
    "notes": "Call 101 for police; 112 for ambulance or fire.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -297,9 +297,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -312,7 +312,7 @@
    "tourist_police": null,
    "notes": "112 is the general emergency number.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -323,9 +323,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -336,9 +336,9 @@
    "ambulance": null,
    "fire": "118",
    "tourist_police": null,
-   "notes": "Ambulance number could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Ambulance number could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -349,9 +349,9 @@
    "ambulance": null,
    "fire": "118",
    "tourist_police": null,
-   "notes": "Ambulance number could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Ambulance number could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -362,9 +362,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "112 is the European emergency number; service-specific numbers also apply.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the European emergency number; service-specific numbers also apply. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -375,9 +375,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -388,9 +388,9 @@
    "ambulance": "991",
    "fire": "995",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -401,9 +401,9 @@
    "ambulance": "118",
    "fire": "119",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -422,9 +422,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is used for emergencies in the Caribbean Netherlands.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is used for emergencies in the Caribbean Netherlands. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -461,9 +461,9 @@
    "ambulance": "192",
    "fire": "193",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -482,9 +482,9 @@
    "ambulance": "919",
    "fire": "919",
    "tourist_police": null,
-   "notes": "911 and 919 are used for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 and 919 are used for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -515,9 +515,9 @@
    "ambulance": "112",
    "fire": "110",
    "tourist_police": null,
-   "notes": "Use the service-specific numbers.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use the service-specific numbers. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -528,9 +528,9 @@
    "ambulance": "997",
    "fire": "998",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -541,9 +541,9 @@
    "ambulance": "103",
    "fire": "101",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -554,9 +554,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -567,9 +567,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -580,35 +580,35 @@
    "ambulance": "000",
    "fire": "000",
    "tourist_police": null,
-   "notes": "Uses Australia's emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Uses Australia's emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
    "iso2": "CD",
    "country": "Democratic Republic of the Congo",
-   "general": null,
-   "police": null,
+   "general": "112",
+   "police": "112",
    "ambulance": null,
-   "fire": null,
+   "fire": "118",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is listed for police; fire 118 (Kinshasa). Coverage outside Kinshasa is very limited. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
    "iso2": "CF",
    "country": "Central African Republic",
    "general": null,
-   "police": null,
+   "police": "117",
    "ambulance": null,
-   "fire": null,
+   "fire": "118",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police 117 and fire 118 are listed for Bangui; there is no reliable national ambulance number. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -619,9 +619,9 @@
    "ambulance": null,
    "fire": "118",
    "tourist_police": null,
-   "notes": "Ambulance number could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Ambulance number could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -640,9 +640,9 @@
    "ambulance": "144",
    "fire": "118",
    "tourist_police": null,
-   "notes": "112 is the general emergency number; direct service numbers are also listed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number; direct service numbers are also listed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -653,9 +653,9 @@
    "ambulance": "185",
    "fire": "180",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -674,9 +674,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -687,9 +687,9 @@
    "ambulance": "131",
    "fire": "132",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -700,9 +700,9 @@
    "ambulance": null,
    "fire": "118",
    "tourist_police": null,
-   "notes": "Ambulance number could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Ambulance number could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -721,9 +721,9 @@
    "ambulance": "120",
    "fire": "119",
    "tourist_police": null,
-   "notes": "Use the service-specific numbers.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use the service-specific numbers. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -734,9 +734,9 @@
    "ambulance": "123",
    "fire": "123",
    "tourist_police": null,
-   "notes": "123 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "123 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -747,9 +747,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -760,9 +760,9 @@
    "ambulance": "104",
    "fire": "105",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -777,14 +777,14 @@
    "iso2": "CV",
    "country": "Cabo Verde",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "132",
+   "ambulance": "130",
+   "fire": "131",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
-   "confidence": "low"
+   "notes": "Police 132, ambulance 130, fire 131. Numbers vary by city; verify locally. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
+   "confidence": "medium"
   },
   {
    "iso2": "CW",
@@ -794,9 +794,9 @@
    "ambulance": "912",
    "fire": "911",
    "tourist_police": null,
-   "notes": "Emergency numbers may differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Emergency numbers may differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -815,9 +815,9 @@
    "ambulance": "000",
    "fire": "000",
    "tourist_police": null,
-   "notes": "Uses Australia's emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Uses Australia's emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -830,7 +830,7 @@
    "tourist_police": null,
    "notes": "112 and 199 are used for emergencies.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -843,7 +843,7 @@
    "tourist_police": null,
    "notes": "112 is the general emergency number; direct service numbers are also listed.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -856,7 +856,7 @@
    "tourist_police": null,
    "notes": "112 is for ambulance and fire; call 110 for police.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -867,9 +867,9 @@
    "ambulance": null,
    "fire": "18",
    "tourist_police": null,
-   "notes": "Ambulance number could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Ambulance number could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -882,7 +882,7 @@
    "tourist_police": null,
    "notes": "112 is the emergency number for all services.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -893,9 +893,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -914,9 +914,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -927,9 +927,9 @@
    "ambulance": "14",
    "fire": "14",
    "tourist_police": null,
-   "notes": "Civil Protection handles fire and medical emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Civil Protection handles fire and medical emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -948,9 +948,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -963,7 +963,7 @@
    "tourist_police": null,
    "notes": "112 is the emergency number for all services.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -974,35 +974,35 @@
    "ambulance": "123",
    "fire": "180",
    "tourist_police": "126",
-   "notes": "Separate numbers are used for police, ambulance, fire and tourist police.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance, fire and tourist police. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
    "iso2": "EH",
    "country": "Western Sahara",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "19",
+   "ambulance": "15",
+   "fire": "15",
    "tourist_police": null,
-   "notes": "Emergency services and numbers vary by area; none could be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "In the Moroccan-administered area (Laayoune, Dakhla) the Moroccan numbers are used: police 19, ambulance and fire 15; 112 from mobiles. Elsewhere there is no public service. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
    "iso2": "ER",
    "country": "Eritrea",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "113",
+   "ambulance": "114",
+   "fire": "116",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police 113, ambulance 114, fire 116 (Asmara). Numbers vary by city; verify locally. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1015,7 +1015,7 @@
    "tourist_police": null,
    "notes": "112 is the general emergency number; service numbers may vary by region.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1026,9 +1026,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Other emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Other emergency numbers could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1041,7 +1041,7 @@
    "tourist_police": null,
    "notes": "112 is the emergency number for all services.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1052,9 +1052,9 @@
    "ambulance": "911",
    "fire": "910",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1065,9 +1065,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is used for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is used for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1078,9 +1078,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is commonly listed as the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is commonly listed as the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1091,9 +1091,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "112 is the emergency number for all services.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the emergency number for all services. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1106,7 +1106,7 @@
    "tourist_police": null,
    "notes": "112 also works from mobiles; direct service numbers are listed.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1117,9 +1117,9 @@
    "ambulance": null,
    "fire": "18",
    "tourist_police": null,
-   "notes": "Police and ambulance numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police and ambulance numbers could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1130,9 +1130,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "Call 999 or 112 for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Call 999 or 112 for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1143,9 +1143,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1156,9 +1156,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "112 is the unified emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the unified emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1169,9 +1169,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "112 is the European emergency number; service-specific numbers also apply.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the European emergency number; service-specific numbers also apply. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1182,9 +1182,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "Call 999 or 112 for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Call 999 or 112 for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1195,9 +1195,9 @@
    "ambulance": "193",
    "fire": "192",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1208,9 +1208,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "112 or 999 can be used for emergency services.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 or 999 can be used for emergency services. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1221,9 +1221,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1242,9 +1242,9 @@
    "ambulance": "116",
    "fire": "118",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1263,9 +1263,9 @@
    "ambulance": null,
    "fire": "18",
    "tourist_police": null,
-   "notes": "Ambulance number could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Ambulance number could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1284,22 +1284,22 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "112 is the European emergency number; service-specific numbers also apply.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the European emergency number; service-specific numbers also apply. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
    "iso2": "GQ",
    "country": "Equatorial Guinea",
    "general": null,
-   "police": null,
+   "police": "114",
    "ambulance": null,
-   "fire": null,
+   "fire": "115",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police 114 and fire 115 are listed (Malabo, Bata); no reliable ambulance number. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1312,20 +1312,20 @@
    "tourist_police": "1571",
    "notes": "112 is the general emergency number; 1571 is tourist police.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
    "iso2": "GS",
    "country": "South Georgia and the South Sandwich Islands",
-   "general": null,
+   "general": "112",
    "police": null,
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "No resident population; local emergency arrangements apply.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "No permanent population and no public phone network. 112 is shown only as general mobile guidance. Contact the Government Officer at King Edward Point, or your vessel's master by radio; the territory is administered from the Falkland Islands (emergency 999 there). Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1344,9 +1344,9 @@
    "ambulance": "123",
    "fire": "122",
    "tourist_police": null,
-   "notes": "Use service-specific numbers for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use service-specific numbers for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1365,22 +1365,22 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
    "iso2": "GW",
    "country": "Guinea-Bissau",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "117",
+   "ambulance": "119",
+   "fire": "118",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police 117, ambulance 119, fire 118 (Bissau). Numbers vary by city; verify locally. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1391,9 +1391,9 @@
    "ambulance": "913",
    "fire": "912",
    "tourist_police": null,
-   "notes": "Use service-specific numbers for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use service-specific numbers for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1424,9 +1424,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1437,9 +1437,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1452,7 +1452,7 @@
    "tourist_police": null,
    "notes": "112 is the general emergency number; direct service numbers are also listed.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1463,9 +1463,9 @@
    "ambulance": null,
    "fire": "115",
    "tourist_police": null,
-   "notes": "Police and fire numbers are listed; ambulance number is unclear.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police and fire numbers are listed; ambulance number is unclear. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1492,7 +1492,7 @@
    "tourist_police": null,
    "notes": "112 is the general emergency number; direct service numbers are also listed.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1503,9 +1503,9 @@
    "ambulance": "118",
    "fire": "113",
    "tourist_police": null,
-   "notes": "112 availability may vary by area.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 availability may vary by area. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1526,7 +1526,7 @@
    "tourist_police": null,
    "notes": "Call 112 or 999 for emergencies.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1537,9 +1537,9 @@
    "ambulance": "101",
    "fire": "102",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1550,9 +1550,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "Call 999 or 112 for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Call 999 or 112 for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1563,9 +1563,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "112 is the national emergency number; older service numbers may also operate.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the national emergency number; older service numbers may also operate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1576,9 +1576,9 @@
    "ambulance": null,
    "fire": "115",
    "tourist_police": null,
-   "notes": "Ambulance number could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Ambulance number could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1589,9 +1589,9 @@
    "ambulance": "115",
    "fire": "125",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1602,9 +1602,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "112 is the emergency number for all services.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the emergency number for all services. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1617,7 +1617,7 @@
    "tourist_police": null,
    "notes": "112 is the general emergency number; direct service numbers are also listed.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1628,9 +1628,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "Call 999 or 112 for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Call 999 or 112 for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1641,9 +1641,9 @@
    "ambulance": "110",
    "fire": "110",
    "tourist_police": null,
-   "notes": "Use 119 for police; 110 is listed for fire and ambulance.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use 119 for police; 110 is listed for fire and ambulance. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1668,9 +1668,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the unified emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the unified emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1681,9 +1681,9 @@
    "ambulance": "119",
    "fire": "119",
    "tourist_police": null,
-   "notes": "119 serves ambulance and fire; 110 is police.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "119 serves ambulance and fire; 110 is police. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1694,9 +1694,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "999 is a national emergency number; other services may have separate lines.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is a national emergency number; other services may have separate lines. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1715,9 +1715,9 @@
    "ambulance": "103",
    "fire": "101",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1728,9 +1728,9 @@
    "ambulance": "119",
    "fire": "118",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1741,9 +1741,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is commonly listed as the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is commonly listed as the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1754,9 +1754,9 @@
    "ambulance": null,
    "fire": "18",
    "tourist_police": null,
-   "notes": "Ambulance number could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Ambulance number could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1767,9 +1767,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1784,13 +1784,13 @@
    "iso2": "KP",
    "country": "North Korea",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "112",
+   "ambulance": "119",
+   "fire": "119",
    "tourist_police": null,
-   "notes": "Emergency numbers are not reliably confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police 112; ambulance and fire 119. Visitors normally go through their guide or hotel. Many Western countries are represented by the Swedish embassy in Pyongyang. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1801,9 +1801,9 @@
    "ambulance": "119",
    "fire": "119",
    "tourist_police": null,
-   "notes": "119 serves ambulance and fire; 112 is police.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "119 serves ambulance and fire; 112 is police. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1814,9 +1814,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "112 is the unified emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the unified emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1827,9 +1827,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1840,9 +1840,9 @@
    "ambulance": "103",
    "fire": "101",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1853,9 +1853,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Other emergency numbers are not reliably confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Other emergency numbers are not reliably confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -1866,9 +1866,9 @@
    "ambulance": "140",
    "fire": "175",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1887,9 +1887,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -1926,9 +1926,9 @@
    "ambulance": "144",
    "fire": "118",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1939,9 +1939,9 @@
    "ambulance": "1990",
    "fire": "110",
    "tourist_police": null,
-   "notes": "1990 is the emergency ambulance service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "1990 is the emergency ambulance service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -1952,23 +1952,23 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "911 is reported as an emergency line; service availability may vary.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is reported as an emergency line; service availability may vary. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
    "iso2": "LS",
    "country": "Lesotho",
-   "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "general": "112",
+   "police": "123",
+   "ambulance": "121",
+   "fire": "122",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
-   "confidence": "low"
+   "notes": "Police 123 (112 also listed), ambulance 121, fire 122. Numbers vary by city; verify locally. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
+   "confidence": "medium"
   },
   {
    "iso2": "LT",
@@ -1980,7 +1980,7 @@
    "tourist_police": null,
    "notes": "112 is the emergency number for all services.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -1993,7 +1993,7 @@
    "tourist_police": null,
    "notes": "112 is for ambulance and fire; call 113 for police.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2006,20 +2006,20 @@
    "tourist_police": null,
    "notes": "112 is the general emergency number; 113 reaches emergency medical services.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
    "iso2": "LY",
    "country": "Libya",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "1515",
+   "ambulance": "193",
+   "fire": "193",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police 1515; ambulance and fire 193. Services and networks may be disrupted. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -2030,9 +2030,9 @@
    "ambulance": "15",
    "fire": "15",
    "tourist_police": null,
-   "notes": "112 may also work from mobile phones; 15 serves medical and fire emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 may also work from mobile phones; 15 serves medical and fire emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2057,9 +2057,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "112 is the general emergency number; direct service numbers are also listed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number; direct service numbers are also listed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2078,9 +2078,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "112 is the emergency number for all services.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the emergency number for all services. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2091,9 +2091,9 @@
    "ambulance": "124",
    "fire": "123",
    "tourist_police": null,
-   "notes": "112 is the general emergency number; direct service numbers are also listed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number; direct service numbers are also listed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2104,9 +2104,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "112 is the European emergency number; service-specific numbers also apply.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the European emergency number; service-specific numbers also apply. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2117,9 +2117,9 @@
    "ambulance": "124",
    "fire": "118",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2138,9 +2138,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is commonly listed as the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is commonly listed as the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -2151,9 +2151,9 @@
    "ambulance": "194",
    "fire": "193",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2164,9 +2164,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2177,9 +2177,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Other emergency numbers are not reliably confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Other emergency numbers are not reliably confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -2190,9 +2190,9 @@
    "ambulance": "103",
    "fire": "101",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2203,9 +2203,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2216,9 +2216,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2229,9 +2229,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "112 is the European emergency number; service-specific numbers also apply.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the European emergency number; service-specific numbers also apply. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2242,9 +2242,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Other emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Other emergency numbers could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2263,9 +2263,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2278,7 +2278,7 @@
    "tourist_police": null,
    "notes": "112 is the emergency number for all services.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2289,9 +2289,9 @@
    "ambulance": "114",
    "fire": "115",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2316,9 +2316,9 @@
    "ambulance": "102",
    "fire": "118",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2329,9 +2329,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Other emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Other emergency numbers could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2350,9 +2350,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2363,9 +2363,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "112 may also work from mobile phones.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 may also work from mobile phones. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2376,9 +2376,9 @@
    "ambulance": "117",
    "fire": "198",
    "tourist_police": null,
-   "notes": "Separate numbers are reported for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are reported for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2409,9 +2409,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Police number listed; other emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police number listed; other emergency numbers could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2430,9 +2430,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2443,9 +2443,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2456,9 +2456,9 @@
    "ambulance": "000",
    "fire": "000",
    "tourist_police": null,
-   "notes": "Uses Australia's emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Uses Australia's emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2469,9 +2469,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "112 is the national emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the national emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2482,9 +2482,9 @@
    "ambulance": "128",
    "fire": "118",
    "tourist_police": null,
-   "notes": "Numbers and availability can vary by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers and availability can vary by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2505,7 +2505,7 @@
    "tourist_police": null,
    "notes": "112 is the emergency number for all services.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2516,9 +2516,9 @@
    "ambulance": "113",
    "fire": "110",
    "tourist_police": null,
-   "notes": "Call 112 for police, 113 for ambulance or 110 for fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Call 112 for police, 113 for ambulance or 110 for fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2529,9 +2529,9 @@
    "ambulance": "102",
    "fire": "101",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2542,9 +2542,9 @@
    "ambulance": "111",
    "fire": "112",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -2555,9 +2555,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is commonly listed as the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is commonly listed as the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -2568,9 +2568,9 @@
    "ambulance": "111",
    "fire": "111",
    "tourist_police": null,
-   "notes": "111 is the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "111 is the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2581,9 +2581,9 @@
    "ambulance": "9999",
    "fire": "9999",
    "tourist_police": null,
-   "notes": "9999 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "9999 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2594,9 +2594,9 @@
    "ambulance": "911",
    "fire": "103",
    "tourist_police": null,
-   "notes": "911 is general; police and fire also have direct numbers.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is general; police and fire also have direct numbers. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2615,9 +2615,9 @@
    "ambulance": "106",
    "fire": "116",
    "tourist_police": null,
-   "notes": "Use service-specific numbers for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use service-specific numbers for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2628,9 +2628,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2655,9 +2655,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Other emergency numbers and coverage are not reliably confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Other emergency numbers and coverage are not reliably confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2676,9 +2676,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the national emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the national emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2689,9 +2689,9 @@
    "ambulance": "1122",
    "fire": "1122",
    "tourist_police": null,
-   "notes": "Rescue 1122 coverage varies by area.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Rescue 1122 coverage varies by area. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2712,7 +2712,7 @@
    "tourist_police": null,
    "notes": "112 is the general emergency number; direct service numbers are also listed.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2723,9 +2723,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "112 is the European emergency number; service-specific numbers also apply.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the European emergency number; service-specific numbers also apply. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2757,14 +2757,14 @@
   {
    "iso2": "PN",
    "country": "Pitcairn Islands",
-   "general": null,
+   "general": "112",
    "police": null,
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Emergency numbers are not reliably confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "No dedicated emergency number is confirmed. 112 is shown only as general mobile guidance. Contact the island's police officer or the Island Office in Adamstown in person (about 40 residents); off-island, the Pitcairn Islands Office in Auckland, New Zealand. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -2775,9 +2775,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2788,9 +2788,9 @@
    "ambulance": "101",
    "fire": "102",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2811,7 +2811,7 @@
    "tourist_police": null,
    "notes": "112 is the emergency number for all services.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2822,9 +2822,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is commonly listed as the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is commonly listed as the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2835,9 +2835,9 @@
    "ambulance": "141",
    "fire": "132",
    "tourist_police": null,
-   "notes": "Use service-specific numbers for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use service-specific numbers for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2862,9 +2862,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is the unified emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is the unified emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2875,9 +2875,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "European emergency numbers are used; 112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "European emergency numbers are used; 112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2898,7 +2898,7 @@
    "tourist_police": null,
    "notes": "112 is the emergency number for all services.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2909,9 +2909,9 @@
    "ambulance": "194",
    "fire": "193",
    "tourist_police": null,
-   "notes": "Use the direct service numbers if 112 is unavailable.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use the direct service numbers if 112 is unavailable. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -2922,9 +2922,9 @@
    "ambulance": "103",
    "fire": "101",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -2935,9 +2935,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2956,9 +2956,9 @@
    "ambulance": "997",
    "fire": "998",
    "tourist_police": null,
-   "notes": "911 is also used in some regions; service numbers vary by area.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is also used in some regions; service numbers vary by area. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -2977,9 +2977,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "999 is commonly listed for police; other services are uncertain.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is commonly listed for police; other services are uncertain. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3004,9 +3004,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "999 is commonly listed for police; other service lines could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is commonly listed for police; other service lines could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3025,9 +3025,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Police number listed; other emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police number listed; other emergency numbers could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3040,7 +3040,7 @@
    "tourist_police": null,
    "notes": "112 is the emergency number for all services.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -3051,23 +3051,23 @@
    "ambulance": "995",
    "fire": "995",
    "tourist_police": null,
-   "notes": "995 serves ambulance and fire; 999 is police.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "995 serves ambulance and fire; 999 is police. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
    "iso2": "SH",
    "country": "Saint Helena, Ascension and Tristan da Cunha",
-   "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "general": "999",
+   "police": "999",
+   "ambulance": "999",
+   "fire": "999",
    "tourist_police": null,
-   "notes": "Numbers may differ between islands; none could be confirmed.",
-   "source_url": null,
-   "source_checked": null,
-   "confidence": "low"
+   "notes": "999 on Saint Helena. Ascension and Tristan da Cunha have their own small services; ask locally. Numbers vary by city; verify locally. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
+   "confidence": "medium"
   },
   {
    "iso2": "SI",
@@ -3079,7 +3079,7 @@
    "tourist_police": null,
    "notes": "112 is for ambulance and fire; call 113 for police.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -3090,9 +3090,9 @@
    "ambulance": "113",
    "fire": "110",
    "tourist_police": null,
-   "notes": "Uses Norway's emergency numbers.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Uses Norway's emergency numbers. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3105,20 +3105,20 @@
    "tourist_police": null,
    "notes": "112 is the general emergency number; direct service numbers are also listed.",
    "source_url": "https://digital-strategy.ec.europa.eu/en/policies/112",
-   "source_checked": null,
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
    "iso2": "SL",
    "country": "Sierra Leone",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "019",
+   "ambulance": "117",
+   "fire": "019",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police and fire 019 (999 is also listed for police); national ambulance service 117. Numbers vary by city; verify locally. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3129,9 +3129,9 @@
    "ambulance": "118",
    "fire": "115",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3150,22 +3150,22 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
    "iso2": "SO",
    "country": "Somalia",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "888",
+   "ambulance": "999",
+   "fire": "555",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed; services vary by area.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police 888, ambulance 999, fire 555 (Mogadishu). Services vary by region. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3176,9 +3176,9 @@
    "ambulance": "113",
    "fire": "110",
    "tourist_police": null,
-   "notes": "Use service-specific numbers for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use service-specific numbers for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3205,26 +3205,26 @@
    "iso2": "SS",
    "country": "South Sudan",
    "general": null,
-   "police": null,
+   "police": "777",
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police 777 (Juba). No reliable national ambulance or fire number. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
    "iso2": "ST",
    "country": "São Tomé and Príncipe",
-   "general": null,
-   "police": null,
+   "general": "112",
+   "police": "112",
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is listed for police; other services have no confirmed number. Numbers vary by city; verify locally. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3235,9 +3235,9 @@
    "ambulance": "911",
    "fire": "913",
    "tourist_police": null,
-   "notes": "911 is the general emergency number; fire service also uses 913.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the general emergency number; fire service also uses 913. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3256,9 +3256,9 @@
    "ambulance": "912",
    "fire": "919",
    "tourist_police": null,
-   "notes": "Emergency numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Emergency numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3279,13 +3279,13 @@
    "iso2": "SY",
    "country": "Syria",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "112",
+   "ambulance": "110",
+   "fire": "113",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed; services vary by area.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police 112, ambulance 110, fire 113. Services and networks may be disrupted. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3296,9 +3296,9 @@
    "ambulance": "977",
    "fire": "933",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3309,9 +3309,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3322,9 +3322,9 @@
    "ambulance": null,
    "fire": "18",
    "tourist_police": null,
-   "notes": "Ambulance number could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Ambulance number could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3335,9 +3335,9 @@
    "ambulance": null,
    "fire": "118",
    "tourist_police": null,
-   "notes": "Ambulance number could not be confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Ambulance number could not be confirmed. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3348,9 +3348,9 @@
    "ambulance": "1669",
    "fire": "199",
    "tourist_police": "1155",
-   "notes": "Tourist police can be reached on 1155.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Tourist police can be reached on 1155. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3361,9 +3361,9 @@
    "ambulance": "103",
    "fire": "101",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3383,14 +3383,14 @@
   {
    "iso2": "TK",
    "country": "Tokelau",
-   "general": null,
+   "general": "112",
    "police": null,
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "Emergency numbers are not reliably confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "No dedicated emergency number is confirmed. 112 is shown only as general mobile guidance. Each atoll has a health centre and village authorities; ask your host. Tokelau is a territory of New Zealand (emergency 111 there). Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3401,9 +3401,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3414,9 +3414,9 @@
    "ambulance": "03",
    "fire": "01",
    "tourist_police": null,
-   "notes": "Numbers differ by service; mobile dialling may differ.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service; mobile dialling may differ. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3427,9 +3427,9 @@
    "ambulance": "190",
    "fire": "198",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and Civil Protection.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and Civil Protection. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -3440,9 +3440,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is commonly listed as the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is commonly listed as the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3453,9 +3453,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "112 is the unified emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the unified emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -3466,9 +3466,9 @@
    "ambulance": "811",
    "fire": "990",
    "tourist_police": null,
-   "notes": "Use service-specific numbers for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use service-specific numbers for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3488,14 +3488,14 @@
   {
    "iso2": "TV",
    "country": "Tuvalu",
-   "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "general": "911",
+   "police": "911",
+   "ambulance": "911",
+   "fire": "911",
    "tourist_police": null,
-   "notes": "Emergency numbers are not reliably confirmed.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is listed for all services (Funafuti). Services are very limited. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3506,9 +3506,9 @@
    "ambulance": "119",
    "fire": "119",
    "tourist_police": null,
-   "notes": "119 serves ambulance and fire; 110 is police.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "119 serves ambulance and fire; 110 is police. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -3519,9 +3519,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "112 is commonly listed as a general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is commonly listed as a general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3532,9 +3532,9 @@
    "ambulance": "103",
    "fire": "101",
    "tourist_police": null,
-   "notes": "Direct service numbers remain in use; check local availability of 112.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Direct service numbers remain in use; check local availability of 112. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3545,9 +3545,9 @@
    "ambulance": null,
    "fire": null,
    "tourist_police": null,
-   "notes": "999 is commonly listed as a general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is commonly listed as a general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3558,9 +3558,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -3571,9 +3571,9 @@
    "ambulance": "105",
    "fire": "104",
    "tourist_police": null,
-   "notes": "Use service-specific numbers for emergencies.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use service-specific numbers for emergencies. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3598,9 +3598,9 @@
    "ambulance": "103",
    "fire": "101",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3611,9 +3611,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "Use 112 for emergencies; local service arrangements may apply.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Use 112 for emergencies; local service arrangements may apply. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3632,9 +3632,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3645,9 +3645,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3666,9 +3666,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the main emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the main emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3679,9 +3679,9 @@
    "ambulance": "911",
    "fire": "911",
    "tourist_police": null,
-   "notes": "911 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "911 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "high"
   },
   {
@@ -3692,9 +3692,9 @@
    "ambulance": "115",
    "fire": "114",
    "tourist_police": null,
-   "notes": "Numbers differ by service.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Numbers differ by service. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3705,9 +3705,9 @@
    "ambulance": "112",
    "fire": "112",
    "tourist_police": null,
-   "notes": "112 is commonly listed as the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is commonly listed as the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3744,9 +3744,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "Uses French service-specific emergency numbers.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Uses French service-specific emergency numbers. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3757,9 +3757,9 @@
    "ambulance": "999",
    "fire": "999",
    "tourist_police": null,
-   "notes": "999 is commonly listed as the emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "999 is commonly listed as the emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3770,22 +3770,22 @@
    "ambulance": "194",
    "fire": "193",
    "tourist_police": null,
-   "notes": "112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
    "iso2": "YE",
    "country": "Yemen",
    "general": null,
-   "police": null,
-   "ambulance": null,
-   "fire": null,
+   "police": "199",
+   "ambulance": "191",
+   "fire": "191",
    "tourist_police": null,
-   "notes": "Emergency numbers could not be confirmed; services vary by area.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Police 199; ambulance and fire 191. Services and networks may be disrupted. If no one answers, contact your country's nearest embassy or consulate. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low"
   },
   {
@@ -3796,9 +3796,9 @@
    "ambulance": "15",
    "fire": "18",
    "tourist_police": null,
-   "notes": "European emergency numbers are used; 112 is the general emergency number.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "European emergency numbers are used; 112 is the general emergency number. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3817,9 +3817,9 @@
    "ambulance": "10177",
    "fire": "10177",
    "tourist_police": null,
-   "notes": "112 works from mobile phones; 10111 is police and 10177 is ambulance/fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "112 works from mobile phones; 10111 is police and 10177 is ambulance/fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3838,9 +3838,9 @@
    "ambulance": "991",
    "fire": "992",
    "tourist_police": null,
-   "notes": "Separate numbers are used for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are used for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "medium"
   },
   {
@@ -3851,9 +3851,9 @@
    "ambulance": "994",
    "fire": "993",
    "tourist_police": null,
-   "notes": "Separate numbers are reported for police, ambulance and fire.",
-   "source_url": null,
-   "source_checked": null,
+   "notes": "Separate numbers are reported for police, ambulance and fire. Source: public list, not an official national source.",
+   "source_url": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+   "source_checked": "2026-10-31",
    "confidence": "low",
    "guard_flags": [
     {
@@ -3877,5 +3877,6 @@
    ]
   }
  ],
- "guard": "Second-model review 2026-10-24 (StarNet GUARD lane): rows with guard_flags had a field doubted; numbers left as given, confidence set to low; resolve in T25 with official sources. Second pass 2026-10-26 (build run 24): rows where the 26 Oct lane re-run disagreed with the shown number, or where the 26 Oct GUARD review doubted the shown number, also got guard_flags; numbers unchanged."
+ "guard": "Second-model review 2026-10-24 (StarNet GUARD lane): rows with guard_flags had a field doubted; numbers left as given, confidence set to low; resolve in T25 with official sources. Second pass 2026-10-26 (build run 24): rows where the 26 Oct lane re-run disagreed with the shown number, or where the 26 Oct GUARD review doubted the shown number, also got guard_flags; numbers unchanged.",
+ "filled": "2026-10-31 (T48): 23 rows that had no number were filled from public lists (best-known numbers, low/medium confidence); every row got a source URL and checked date."
 }

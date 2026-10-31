@@ -1,26 +1,34 @@
 // Trips (home). T41: each row's spoken label says its state (Coming up / On now / Past) and dates.
 // A 'Trips didn’t load' notice if the saved list couldn't be read, Next up card, then trips (active and upcoming first). Windowed list with stable keys.
+// T50: dusk hero with a time-of-day greeting and the trip in focus ("Tokyo in 12 days" / "Day 3 of 9 in Tokyo") and
+// its progress, quick stats that count up, the Next up pass, today's mini timeline, the destination clock vs home,
+// and every trip as a boarding pass. Everything is worked out on the phone (no network).
 import { useRouter } from 'expo-router';
-import { useCallback, useState } from 'react';
-import { AccessibilityInfo, FlatList, Text, View } from 'react-native';
+import { useCallback, useMemo, useState } from 'react';
+import { AccessibilityInfo, FlatList, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { daysBetween } from '../../src/core/tz.ts';
 import { deviceZone, formatRange, todayIn } from '../../src/core/format.ts';
+import { countdown, dayPart, destinationZone, focusTrip, quickStats } from '../../src/core/glance.ts';
 import type { Trip } from '../../src/core/model.ts';
 import { tripPhase } from '../../src/core/timeline.ts';
 import { orderTrips } from '../../src/core/trips.ts';
+import { daysBetween } from '../../src/core/tz.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
-import { fonts, space } from '../../src/theme/tokens.ts';
-import { Body, Button, Card, EmptyState, Label, PressableScale, Title } from '../../src/ui/kit.tsx';
+import { space } from '../../src/theme/tokens.ts';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
+import { FadeInView, HeroHeader, ProgressBar, StatTile } from '../../src/ui/hero.tsx';
+import { Button, EmptyState, Label, PressableScale } from '../../src/ui/kit.tsx';
 import { NextUpCard } from '../../src/ui/NextUpCard.tsx';
 import { TripImport } from '../../src/ui/TripImport.tsx';
+import { ClockCard, countdownHeadline, TodayCard, TripPass } from '../../src/ui/TripPass.tsx';
 import { BatteryBannerSlot } from '../../src/ui/slots/BatteryBannerSlot.tsx';
 import { EmergencyShortcutSlot } from '../../src/ui/slots/EmergencyShortcutSlot.tsx';
+import { LanguageHintSlot } from '../../src/ui/slots/LanguageHintSlot.tsx';
 import { OfflineBannerSlot } from '../../src/ui/slots/OfflineBannerSlot.tsx';
 import { WelcomeSlot } from '../../src/ui/slots/WelcomeSlot.tsx';
-import { LanguageHintSlot } from '../../src/ui/slots/LanguageHintSlot.tsx';
+
+const cityOf = (tz: string) => (tz.split('/').pop() ?? tz).replace(/_/g, ' ');
 
 export default function TripsScreen() {
   const { t, theme, lang } = useApp();
@@ -35,46 +43,61 @@ export default function TripsScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const today = todayIn(deviceZone());
-  const list = orderTrips(trips, today);
+  const list = useMemo(() => orderTrips(trips, today), [trips, today]);
+  const focus = useMemo(() => focusTrip(trips, today), [trips, today]);
+  const stats = useMemo(() => quickStats(trips, today), [trips, today]);
+  const dest = useMemo(() => (focus ? destinationZone(focus) : null), [focus]);
+  const greeting = t(`design.greeting.${dayPart(new Date().getHours())}`);
 
   const renderTrip = useCallback(
-    ({ item: trip }: { item: Trip }) => {
+    ({ item: trip, index }: { item: Trip; index: number }) => {
       const phase = tripPhase(trip, today);
       const range = t('trips.dates', { range: formatRange(trip.startDate, trip.endDate, lang), n: daysBetween(trip.startDate, trip.endDate) + 1 });
       return (
-        <PressableScale
-          accessibilityRole="button"
-          accessibilityLabel={t('spec41.trips.rowA11y', { name: trip.name, phase: t(`trips.phase.${phase}`), range })}
-          accessibilityHint={t('spec41.trips.rowHint')}
-          onPress={() => router.push(`/trip/${trip.id}`)}
-        >
-          <Card style={{ opacity: phase === 'past' ? 0.7 : 1 }}>
-            <Label>
-              {t(`trips.phase.${phase}`)}
-              {trip.demo ? ` · ${t('trips.demoBadge')}` : ''}
-            </Label>
-            <Text style={{ fontFamily: fonts.displayMedium, fontSize: 20, color: theme.ink }}>{trip.name}</Text>
-            <Body muted>
-              {range} · {t('trip.items', { n: trip.items.length })}
-            </Body>
-          </Card>
-        </PressableScale>
+        <FadeInView delay={Math.min(index, 4) * 40}>
+          <PressableScale
+            accessibilityRole="button"
+            accessibilityLabel={t('spec41.trips.rowA11y', { name: trip.name, phase: t(`trips.phase.${phase}`), range })}
+            accessibilityHint={t('spec41.trips.rowHint')}
+            onPress={() => router.push(`/trip/${trip.id}`)}
+          >
+            <TripPass trip={trip} today={today} />
+          </PressableScale>
+        </FadeInView>
       );
     },
-    [t, theme, lang, today, router],
+    [t, lang, today, router],
   );
+
+  const c = focus ? countdown(focus, today) : null;
+  const place = focus ? (dest ? cityOf(dest) : focus.name) : '';
 
   return (
     <FlatList
       style={{ flex: 1, backgroundColor: theme.paper }}
-      contentContainerStyle={{ paddingTop: insets.top + space.l, paddingBottom: insets.bottom + space.xxl, paddingHorizontal: space.l, gap: space.m }}
+      contentContainerStyle={{ paddingTop: insets.top + space.m, paddingBottom: insets.bottom + space.xxl, paddingHorizontal: space.l, gap: space.m }}
       data={list}
       keyExtractor={(trip) => trip.id}
       renderItem={renderTrip}
+      initialNumToRender={6}
+      windowSize={7}
       ListHeaderComponent={
         <View style={{ gap: space.m, marginBottom: space.s }}>
-          <Title>{t('trips.title')}</Title>
-          <Body muted>{t('app.tagline')}</Body>
+          <FadeInView>
+            <HeroHeader
+              tone="trips"
+              illustration="route"
+              eyebrow={greeting}
+              title={focus && c ? countdownHeadline(t, c, place) : t('design.trips.heroNone')}
+              subtitle={
+                focus ? t('design.trips.countdownBody', { trip: focus.name, range: formatRange(focus.startDate, focus.endDate, lang) }) : t('design.trips.heroNoneBody')
+              }
+            >
+              {c && c.kind === 'active' ? (
+                <ProgressBar progress={c.progress} tone="ok" track={theme.heroWash} label={t('design.pass.progressA11y', { day: c.day, total: c.total })} />
+              ) : null}
+            </HeroHeader>
+          </FadeInView>
           <LanguageHintSlot />
           {loadError ? (
             <ErrorNotice
@@ -88,17 +111,33 @@ export default function TripsScreen() {
           <OfflineBannerSlot />
           <WelcomeSlot />
           <BatteryBannerSlot />
-          <EmergencyShortcutSlot />
+          {trips.length ? (
+            <View style={{ flexDirection: 'row', gap: space.s }}>
+              <StatTile value={stats.trips} label={t('design.stats.trips')} icon="airplane" tone="sea" />
+              <StatTile value={stats.bookings} label={t('design.stats.bookings')} icon="ticket" tone="accent" />
+              <StatTile value={stats.daysAway} label={t('design.stats.daysAway')} icon="sunny" tone="teal" />
+            </View>
+          ) : null}
           <NextUpCard trips={trips} />
+          <TodayCard trips={trips} />
+          {focus && dest ? <ClockCard destTz={dest} homeTz={focus.homeTz} /> : null}
+          <EmergencyShortcutSlot />
+          {list.length ? (
+            <View accessibilityRole="header" style={{ marginTop: space.s }}>
+              <Label>{t('trips.title')}</Label>
+            </View>
+          ) : null}
         </View>
       }
-      ListEmptyComponent={<EmptyState title={t('trips.empty')} body={t('trips.emptyBody')} action={<Button label={t('trips.addDemo')} kind="quiet" onPress={addDemo} />} />}
+      ListEmptyComponent={
+        <EmptyState icon="airplane-outline" title={t('trips.empty')} body={t('trips.emptyBody')} action={<Button label={t('trips.addDemo')} kind="quiet" onPress={addDemo} />} />
+      }
       ListFooterComponent={
         <View style={{ gap: space.s, marginTop: space.s }}>
-          <Button label={t('trips.add')} hint={t('spec41.trips.addHint')} onPress={() => router.push('/trip-edit')} />
+          <Button label={t('trips.add')} hint={t('spec41.trips.addHint')} icon="add" onPress={() => router.push('/trip-edit')} />
           <TripImport />
-          <Button label={t('essentials.title')} hint={t('essentials.body')} kind="quiet" onPress={() => router.push('/essentials')} />
-          <Button label={t('trips.settings')} hint={t('trips.settingsHint')} kind="quiet" onPress={() => router.push('/settings')} />
+          <Button label={t('essentials.title')} hint={t('essentials.body')} kind="quiet" icon="battery-half-outline" onPress={() => router.push('/essentials')} />
+          <Button label={t('trips.settings')} hint={t('trips.settingsHint')} kind="quiet" icon="settings-outline" onPress={() => router.push('/settings')} />
         </View>
       }
     />

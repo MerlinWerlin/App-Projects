@@ -92,7 +92,12 @@ export type RowDisplay = {
   country: string;
   /** Distinct numbers in service order (general first). Empty when the table has no confirmed number. */
   lines: NumberLine[];
+  /** No dialable number at all: the UI shows FALLBACK_NUMBER (112 from a mobile) and nearest-embassy advice, never a blank. */
   noNumber: boolean;
+  /** Police / ambulance / fire with no number of their own in the table. */
+  missingServices: Service[];
+  /** The general number that covers the missing services, or null when the row has no general number. */
+  coverNumber: string | null;
   /** Always true: the bundled table is never presented as guaranteed current. */
   verifyLocally: true;
   source: SourceInfo;
@@ -196,6 +201,18 @@ export function confidenceOf(raw: unknown): Confidence {
   return c === 'high' || c === 'medium' || c === 'low' ? c : 'unknown';
 }
 
+/** The services every country should show. Tourist police is extra and never counted as missing. */
+export const CORE_SERVICES: readonly Service[] = ['police', 'ambulance', 'fire'];
+
+/** Last-resort number when a row has nothing dialable: 112 works from mobiles in many countries. */
+export const FALLBACK_NUMBER = '112';
+
+/** True when a row has at least one dialable number in general / police / ambulance / fire. */
+export const hasDialable = (row: EmergencyRow): boolean => (['general', ...CORE_SERVICES] as Service[]).some((s) => isDialable(row[s]));
+
+/** A table number must be digits only (2–6), so what is shown is exactly what is dialled. */
+export const PLAIN_NUMBER = /^\d{2,6}$/;
+
 export function displayRow(row: EmergencyRow): RowDisplay {
   const doubted = doubtedFields(row);
   const lines: NumberLine[] = [];
@@ -217,6 +234,8 @@ export function displayRow(row: EmergencyRow): RowDisplay {
     country: row.country,
     lines,
     noNumber: lines.length === 0,
+    missingServices: CORE_SERVICES.filter((sv) => !onLine.has(sv)),
+    coverNumber: lines.find((l) => l.services.includes('general'))?.number ?? null,
     verifyLocally: true,
     source: sourceOf(row),
     notes,
