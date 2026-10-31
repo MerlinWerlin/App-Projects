@@ -1,0 +1,72 @@
+// Which src/i18n string groups the docs/spec catalogues must mirror word for word (T53, folded into T67), and the
+// pure merge that brings a catalogue in line. docs/spec/EN_CATALOGUE.json is the English export the translation lane
+// works from; docs/spec/STRINGS_NEW.json is the lane's own key list (reference only, but kept in step for these
+// groups). src/i18n/en.ts stays the single source. Groups other workers own (journal.*, travels.*, jetlag.*) are
+// deliberately not listed here: they are added when those features settle.
+// Refresh after changing a listed string: node tools/i18n/sync-spec-catalogues.mjs (src/i18n/specsync.test.ts checks).
+
+/** The docs/spec catalogue files that mirror the listed groups. */
+export const SPEC_CATALOGUES = ['docs/spec/EN_CATALOGUE.json', 'docs/spec/STRINGS_NEW.json'] as const;
+
+/** Key prefixes mirrored in full (owner-1031 and runs 84-87 features). */
+export const SPEC_SYNC_PREFIXES = [
+  'toilets.',
+  'design.',
+  'citymaps.',
+  'spending.',
+  'essentials.',
+  'phrases.',
+  'privacy.',
+  'help.',
+  'readiness.',
+  'convert.',
+  'journal.',
+  'travels.',
+  'jetlag.',
+  'emergency.fallback',
+  // T72: the run-87 features (T69 trip on the map, T70 weather, T71 share plan and Your day).
+  'share.',
+  'brief.',
+  'triproute.',
+  'weather.',
+] as const;
+
+/** Single keys mirrored as well: map.online, the T48 emergency fallback wording, the Toilets tab, home country. */
+export const SPEC_SYNC_KEYS = [
+  'map.online',
+  'emergency.noNumber',
+  'emergency.missingCovered',
+  'emergency.missingNone',
+  'tab.toilets',
+  'settings.homeCountry',
+  'settings.homeCountryBody',
+  'settings.homeCountryValue',
+  'settings.homeCountryNone',
+] as const;
+
+export const inSpecGroups = (key: string): boolean =>
+  (SPEC_SYNC_KEYS as readonly string[]).includes(key) || SPEC_SYNC_PREFIXES.some((p) => key.startsWith(p));
+
+export type SpecDrift = { missing: string[]; stale: string[]; changed: string[] };
+
+/** How a catalogue differs from en for the listed groups (empty lists = in line). */
+export function specDrift(catalogue: Record<string, unknown>, en: Record<string, string>): SpecDrift {
+  const missing = Object.keys(en).filter((k) => inSpecGroups(k) && !(k in catalogue));
+  const stale = Object.keys(catalogue).filter((k) => inSpecGroups(k) && !(k in en));
+  const changed = Object.keys(catalogue).filter((k) => inSpecGroups(k) && k in en && catalogue[k] !== en[k]);
+  return { missing, stale, changed };
+}
+
+/**
+ * The catalogue brought in line for the listed groups: changed values replaced where they stand, keys no longer in
+ * en removed, new keys appended in en's order. Keys outside the groups are never touched.
+ */
+export function syncSpec(catalogue: Record<string, unknown>, en: Record<string, string>): Record<string, unknown> {
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(catalogue)) {
+    if (!inSpecGroups(k)) out[k] = v;
+    else if (k in en) out[k] = en[k];
+  }
+  for (const [k, v] of Object.entries(en)) if (inSpecGroups(k) && !(k in out)) out[k] = v;
+  return out;
+}

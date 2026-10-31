@@ -2,6 +2,8 @@
 // lookups, a content check, and which language to open by default. Pure TypeScript, fully offline.
 // Default language: the country of the trip you're on (current / next booking), else the destination of the trip
 // coming up, else the language you used last, else the phone's own zone, else Japanese.
+// T58: Traditional Chinese (zh-Hant) for Taiwan, Hong Kong and Macau, and the allergen slot on the allergy card
+// (the traveller picks allergens once; the card lists them in the card's language under "I have an allergy.").
 import { countryForZone, guessCountry } from './emergency.ts';
 import { destinationZone, focusTrip } from './glance.ts';
 import type { LocalDate, Trip } from './model.ts';
@@ -26,7 +28,7 @@ export const PHRASE_IDS = [
 ] as const;
 export type PhraseId = (typeof PHRASE_IDS)[number];
 
-export const PHRASE_LANGS = ['ja', 'zh-Hans', 'ko', 'th', 'vi', 'es', 'fr', 'de', 'it', 'pt', 'id'] as const;
+export const PHRASE_LANGS = ['ja', 'zh-Hans', 'zh-Hant', 'ko', 'th', 'vi', 'es', 'fr', 'de', 'it', 'pt', 'id'] as const;
 export type PhraseLang = (typeof PHRASE_LANGS)[number];
 
 /** The language opened when nothing else says which (the demo trip goes to Japan). */
@@ -35,11 +37,56 @@ export const DEFAULT_PHRASE_LANG: PhraseLang = 'ja';
 export const PHRASE_LANG_KEY = 'satchel.phraseLang.v1';
 
 export type PhraseLine = { text: string; roman?: string };
-export type PhraseLanguage = { code: string; native: string; latin: boolean; countries: string[]; phrases: Record<string, PhraseLine> };
+export type PhraseLanguage = {
+  code: string;
+  native: string;
+  latin: boolean;
+  countries: string[];
+  phrases: Record<string, PhraseLine>;
+  /** T58 allergen names, keyed by AllergenId. */
+  allergens?: Record<string, PhraseLine>;
+};
 export type PhraseTable = { version: number; checked?: string; note?: string; phrases: { id: string; en: string }[]; languages: PhraseLanguage[] };
 
 export const isPhraseId = (v: unknown): v is PhraseId => typeof v === 'string' && (PHRASE_IDS as readonly string[]).includes(v);
 export const isPhraseLang = (v: unknown): v is PhraseLang => typeof v === 'string' && (PHRASE_LANGS as readonly string[]).includes(v);
+
+// ---- T58 allergen slot ----
+
+/** The common major food allergens, in the order the picker and the card show them. */
+export const ALLERGEN_IDS = ['peanuts', 'treeNuts', 'shellfish', 'fish', 'milk', 'egg', 'wheat', 'soy', 'sesame'] as const;
+export type AllergenId = (typeof ALLERGEN_IDS)[number];
+/** Persisted key (src/state/persisted.ts): the allergens picked for the allergy card (one list, every language). */
+export const ALLERGENS_KEY = 'satchel.allergens.v1';
+
+export const isAllergenId = (v: unknown): v is AllergenId => typeof v === 'string' && (ALLERGEN_IDS as readonly string[]).includes(v);
+
+/** A stored allergen list as known ids, no repeats, in the fixed order. Anything else (or junk storage) -> []. */
+export function normaliseAllergens(raw: unknown): AllergenId[] {
+  if (!Array.isArray(raw)) return [];
+  return ALLERGEN_IDS.filter((id) => raw.includes(id));
+}
+
+/** The list with this allergen added, or removed when it was already there (fixed order kept). */
+export function toggleAllergen(raw: unknown, id: AllergenId): AllergenId[] {
+  const list = normaliseAllergens(raw);
+  return list.includes(id) ? list.filter((x) => x !== id) : normaliseAllergens([...list, id]);
+}
+
+export type AllergenLine = { id: AllergenId; text: string; roman: string | null };
+
+/** The picked allergens in a language, for the allergy card. Ones the language doesn't carry are left out. */
+export function allergenLines(table: PhraseTable, lang: PhraseLang, picked: unknown): AllergenLine[] {
+  const l = findLanguage(table, lang);
+  if (!l) return [];
+  const out: AllergenLine[] = [];
+  for (const id of normaliseAllergens(picked)) {
+    const line = l.allergens?.[id];
+    if (!line || !line.text.trim()) continue;
+    out.push({ id, text: line.text, roman: l.latin ? null : line.roman?.trim() || null });
+  }
+  return out;
+}
 
 /** First value of a route param (expo-router gives string | string[] | undefined). */
 const first = (v: unknown): unknown => (Array.isArray(v) ? v[0] : v);
@@ -151,6 +198,17 @@ export function phraseProblems(table: PhraseTable): string[] {
       if (line.roman && hasNonLatin(line.roman)) out.push(`${l.code} ${id}: romanisation is not Latin`);
     }
     for (const id of Object.keys(l.phrases)) if (!isPhraseId(id)) out.push(`${l.code} ${id}: unknown phrase`);
+    for (const id of ALLERGEN_IDS) {
+      const line = l.allergens?.[id];
+      if (!line || !line.text?.trim()) {
+        out.push(`${l.code} allergen ${id}: missing`);
+        continue;
+      }
+      if (l.latin && hasNonLatin(line.text)) out.push(`${l.code} allergen ${id}: marked Latin but has other script`);
+      if (!l.latin && !line.roman?.trim()) out.push(`${l.code} allergen ${id}: no romanisation`);
+      if (line.roman && hasNonLatin(line.roman)) out.push(`${l.code} allergen ${id}: romanisation is not Latin`);
+    }
+    for (const id of Object.keys(l.allergens ?? {})) if (!isAllergenId(id)) out.push(`${l.code} allergen ${id}: unknown allergen`);
   }
   return out;
 }

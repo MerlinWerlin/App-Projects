@@ -74,6 +74,16 @@ Satchel Plus is not built yet (T16), so none of these can be met today; T16's ac
 |---|---|
 | During review, ship over-the-air only the fixes the reviewer needs | rule for build runs: no OTA update to the production channel while a version is in review except a reviewer-needed fix |
 
+## Next native build only (queued, never over the air)
+
+These change `app.json`, so they wait for the next TestFlight build (an over-the-air update can't change Info.plist). Apply them in the same commit as that build.
+
+- **Camera and photo wording for journal photos (T64 / T68 / T72).** The trip journal adds photos from the library and from the camera, but the purpose strings still only mention tickets and bookings. Replace both the `ios.infoPlist` entries and the `expo-image-picker` plugin options with:
+  - `NSPhotoLibraryUsageDescription` / `photosPermission`: "Satchel lets you add photos from your library to tickets, bookings and your trip journal. They are copied into Satchel and stay on your phone."
+  - `NSCameraUsageDescription` / `cameraPermission`: "Satchel only uses the camera when you choose to photograph a ticket or booking, or take a photo for your trip journal. The photo is copied into Satchel and stays on your phone."
+  - `microphonePermission` stays `false` (no video).
+  - Keep the two places identical (the plugin writes Info.plist at build time; the `infoPlist` copy is what an older prebuild reads). Then check the Settings > Satchel permission sheet on the phone shows the new text.
+
 ## Privacy and support pages (GitHub Pages)
 
 3. In the GitHub repo MerlinWerlin/App-Projects, Settings > Pages: publish from the main branch (root or `/docs`, whichever the other apps use).

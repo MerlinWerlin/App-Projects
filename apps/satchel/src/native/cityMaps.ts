@@ -4,9 +4,11 @@
 // decoded in src/core/tar.ts, and each allowed entry (src/core/citymaps.ts packEntryPath) is copied across as base64.
 // '.complete' is written last; a city without it is not installed. The tar is always deleted afterwards and a
 // partial city folder is deleted on any failure or cancel. Nothing here throws to the UI: every call returns a
-// result with a reason.
+// result with a reason. After an install, a delete or a new saved catalog copy, cityMapsChanged (src/core/signal.ts)
+// fires so the readiness card and Nearest help reload what they show (T63).
 import * as FileSystem from 'expo-file-system/legacy';
 import { CATALOG_URL, packEntryPath, packUrl, parseCatalog, parseCity, tilePathTemplate, type CityCatalog, type CityMap } from '../core/citymaps.ts';
+import { cityMapsChanged } from '../core/signal.ts';
 import { base64ToBytes, BLOCK, nextHeaderOffset, parseTarHeader } from '../core/tar.ts';
 
 const B64 = FileSystem.EncodingType.Base64;
@@ -88,6 +90,7 @@ export async function fetchCatalog(): Promise<CatalogResult> {
           try {
             await FileSystem.makeDirectoryAsync(dir, { intermediates: true }).catch(() => {});
             await FileSystem.writeAsStringAsync(`${dir}catalog.json`, text);
+            cityMapsChanged.emit();
           } catch {
             // the live copy still shows; it just won't be there offline
           }
@@ -142,8 +145,10 @@ export async function deleteCity(id: string): Promise<DeleteResult> {
     // .complete first, so a half-finished delete never looks installed
     await quietDelete(`${dir}.complete`);
     await FileSystem.deleteAsync(dir, { idempotent: true });
+    cityMapsChanged.emit();
     return { ok: true };
   } catch {
+    cityMapsChanged.emit(); // '.complete' may already be gone, so the city no longer counts as installed
     return { ok: false, reason: 'failed' };
   }
 }
@@ -267,6 +272,7 @@ export function downloadCity(city: CityMap, onProgress: (phase: DownloadPhase, f
       await FileSystem.writeAsStringAsync(`${dir}.complete`, '');
       await quietDelete(tmp);
       onProgress('unpack', 1);
+      cityMapsChanged.emit();
       return { ok: true, city: meta };
     } catch {
       return await fail(isCancelled ? 'cancelled' : 'failed');

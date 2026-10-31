@@ -75,8 +75,16 @@ function Shell() {
           <Stack.Screen name="doc-edit" options={{ ...header, presentation: 'modal', title: t('route.docEdit') }} />
           <Stack.Screen name="packing/[tripId]" options={{ ...header, title: t('route.packing') }} />
           <Stack.Screen name="spending/[tripId]" options={{ ...header, title: t('spending.title') }} />
+          <Stack.Screen name="journal/[tripId]" options={{ ...header, title: t('journal.title') }} />
+          <Stack.Screen name="journal-edit" options={{ ...header, presentation: 'modal', title: t('journal.edit.newTitle') }} />
           <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
+          <Stack.Screen name="licences" options={{ ...header, title: t('licences.title') }} />
           <Stack.Screen name="phrases" options={{ ...header, title: t('phrases.title') }} />
+          <Stack.Screen name="help" options={{ ...header, title: t('help.title') }} />
+          <Stack.Screen name="convert" options={{ ...header, title: t('convert.route') }} />
+          <Stack.Screen name="travels" options={{ ...header, title: t('travels.route') }} />
+          <Stack.Screen name="jetlag" options={{ ...header, title: t('jetlag.route') }} />
+          <Stack.Screen name="wayback" options={{ ...header, title: t('wayback.route') }} />
           <Stack.Screen name="phrase-card" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="essentials" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'none' }} />
         </Stack>

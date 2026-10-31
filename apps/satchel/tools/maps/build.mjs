@@ -3,9 +3,10 @@
 //   1. cut the city bbox out of the latest Protomaps OpenStreetMap build with `pmtiles extract` (range requests),
 //   2. render 256-pt raster tiles (PNG, @2x by default) z=minzoom..maxzoom with MapLibre Native and the
 //      Protomaps basemap style (BSD-3), with a gutter that is cropped away so labels aren't cut mid-tile,
-//   3. fetch toilets and the map POI categories for the bbox from the Overpass API (OSM, ODbL),
+//   3. fetch toilets, the map POI categories and police (with phone / opening_hours for Nearest help) for the bbox
+//      from the Overpass API (OSM, ODbL); query + shaping in ./pois.mjs (pack format POIS_FORMAT),
 //   4. write meta.json, pois.json and tiles/{z}/{x}/{y}.png and pack them as an uncompressed ustar <id>.tar.
-// Then writes out/catalog.json (upload it LAST). Contract: docs/MAP_PACKS.md and src/core/citymaps.ts.
+// Then writes out/catalog.json (upload it LAST; its `version` stays 1 so older app builds keep reading it). Contract: docs/MAP_PACKS.md and src/core/citymaps.ts.
 //
 // Usage: node build.mjs [--only kyoto] [--ratio 2] [--out out] [--pmtiles <url or file>]
 // Needs: the `pmtiles` CLI on PATH (go-pmtiles), xvfb on Linux (run under xvfb-run), npm deps in package.json.
@@ -17,6 +18,7 @@ import mbgl from '@maplibre/maplibre-gl-native';
 import { layers, namedFlavor } from '@protomaps/basemaps';
 import { PMTiles } from 'pmtiles';
 import sharp from 'sharp';
+import { overpassQuery, POIS_FORMAT, toPois } from './pois.mjs';
 
 const args = Object.fromEntries(
   process.argv.slice(2).reduce((acc, a, i, all) => (a.startsWith('--') ? [...acc, [a.slice(2), all[i + 1] ?? '']] : acc), []),
@@ -130,22 +132,9 @@ function makeRenderer(pm) {
 }
 
 // ---------------------------------------------------------------- POIs (Overpass)
-const POI_TAGS = {
-  drinking_water: [['amenity', 'drinking_water']],
-  fuel: [['amenity', 'fuel']],
-  pharmacy: [['amenity', 'pharmacy']],
-  hospital_clinic: [['amenity', 'hospital'], ['amenity', 'clinic']],
-  atm_bank: [['amenity', 'atm'], ['amenity', 'bank']],
-  transport: [['railway', 'station'], ['amenity', 'bus_station'], ['amenity', 'ferry_terminal']],
-};
-const TOILET_KEYS = ['name', 'fee', 'wheelchair', 'changing_table', 'opening_hours', 'access', 'unisex', 'operator'];
-
+// The query and the pois.json shaping live in ./pois.mjs (pure, fixture-tested by `npm test` in the app).
 async function overpass(bbox) {
-  const [w, s, e, n] = bbox;
-  const b = `${s},${w},${n},${e}`;
-  const parts = [`nwr["amenity"="toilets"](${b});`];
-  for (const tags of Object.values(POI_TAGS)) for (const [k, v] of tags) parts.push(`nwr["${k}"="${v}"](${b});`);
-  const q = `[out:json][timeout:120];(${parts.join('')});out center tags;`;
+  const q = overpassQuery(bbox);
   for (let attempt = 0; attempt < 4; attempt++) {
     const r = await fetch('https://overpass-api.de/api/interpreter', {
       method: 'POST',
@@ -156,33 +145,6 @@ async function overpass(bbox) {
     await new Promise((ok) => setTimeout(ok, 15000 * (attempt + 1)));
   }
   throw new Error('Overpass failed');
-}
-
-function toPois(elements) {
-  const toilets = [];
-  const places = [];
-  const seen = new Set();
-  for (const el of elements) {
-    const lat = el.lat ?? el.center?.lat;
-    const lon = el.lon ?? el.center?.lon;
-    const tags = el.tags ?? {};
-    if (typeof lat !== 'number' || typeof lon !== 'number') continue;
-    const id = el.type[0] + el.id;
-    if (seen.has(id)) continue;
-    seen.add(id);
-    const ll = { lat: +lat.toFixed(6), lon: +lon.toFixed(6) };
-    if (tags.amenity === 'toilets') {
-      if (tags.access === 'private' || tags.access === 'no') continue;
-      const t = { id, ...ll };
-      for (const k of TOILET_KEYS) if (tags[k]) t[k] = tags[k];
-      if (!t.changing_table && tags.diaper) t.changing_table = tags.diaper === 'no' ? 'no' : 'yes';
-      toilets.push(t);
-      continue;
-    }
-    const cat = Object.entries(POI_TAGS).find(([, list]) => list.some(([k, v]) => tags[k] === v));
-    if (cat) places.push({ id, ...ll, category: cat[0], ...(tags.name ? { name: tags['name:en'] || tags.name } : {}) });
-  }
-  return { built: BUILT, attribution: '© OpenStreetMap contributors (ODbL)', toilets, places };
 }
 
 // ---------------------------------------------------------------- main
@@ -215,10 +177,10 @@ for (const city of cfg.cities) {
   }
   r.release();
   src.close();
-  const pois = toPois(await overpass(city.bbox));
+  const pois = toPois(await overpass(city.bbox), BUILT);
   const center = [+((w + e) / 2).toFixed(5), +((s + n) / 2).toFixed(5)];
   const file = `${city.id}.tar`;
-  const meta = { id: city.id, name: city.name, country: city.country, bbox: city.bbox, center, minzoom: city.minzoom, maxzoom: city.maxzoom, file, tiles: count, pois: pois.toilets.length + pois.places.length, attribution: cfg.attribution, built: BUILT };
+  const meta = { id: city.id, format: POIS_FORMAT, name: city.name, country: city.country, bbox: city.bbox, center, minzoom: city.minzoom, maxzoom: city.maxzoom, file, tiles: count, pois: pois.toilets.length + pois.places.length, attribution: cfg.attribution, built: BUILT };
   writeFileSync(join(dir, 'meta.json'), JSON.stringify(meta));
   writeFileSync(join(dir, 'pois.json'), JSON.stringify(pois));
   const tar = join(OUT, file);
@@ -229,7 +191,7 @@ for (const city of cfg.cities) {
   const bytes = statSync(tar).size;
   const sha256 = createHash('sha256').update(readFileSync(tar)).digest('hex');
   catalog.cities.push({ ...meta, bytes, sha256 });
-  console.log(`${file}: ${count} tiles, ${pois.toilets.length} toilets, ${(bytes / 1e6).toFixed(1)} MB`);
+  console.log(`${file}: ${count} tiles, ${pois.toilets.length} toilets, ${pois.places.length} places, ${(bytes / 1e6).toFixed(1)} MB`);
 }
 
 if (!catalog.cities.length) throw new Error('no cities built');

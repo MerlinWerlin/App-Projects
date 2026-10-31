@@ -15,7 +15,7 @@ export type ToiletSearch =
   | { ok: true; source: 'online'; toilets: ToiletHit[] }
   | { ok: false; reason: 'offline-no-pack' | 'network' | 'none-found' };
 
-type Pack = { id: string; dir: string; name: string; bbox: Bbox };
+export type Pack = { id: string; dir: string; name: string; bbox: Bbox };
 
 const poisCache = new Map<string, Toilet[]>();
 
@@ -37,7 +37,7 @@ async function exists(uri: string): Promise<boolean> {
 }
 
 /** Installed (complete) city packs with a usable bbox. */
-async function installedPacks(): Promise<Pack[]> {
+export async function installedPacks(): Promise<Pack[]> {
   const root = mapsDir();
   if (!root || !(await exists(root))) return [];
   let names: string[] = [];

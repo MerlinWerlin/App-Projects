@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "checked": "2026-10-31",
-  "note": "T56 show-a-local phrase cards. Written by the model (not a native speaker); see docs/research/PHRASES.md before relying on any line. Polite standard forms. 'roman' is a simple pronunciation guide for non-Latin scripts: Hepburn (ja), Hanyu Pinyin with tone marks (zh-Hans), Revised Romanization (ko), simple RTGS without tone marks (th).",
+  "note": "T56 show-a-local phrase cards; T58 added zh-Hant (Taiwan / Hong Kong / Macau) and the allergen slot. Written by the model (not a native speaker); see docs/research/PHRASES.md before relying on any line. Polite standard forms. 'roman' is a simple pronunciation guide for non-Latin scripts: Hepburn (ja), Hanyu Pinyin with tone marks (zh-Hans, zh-Hant: Mandarin, not Cantonese), Revised Romanization (ko), simple RTGS without tone marks (th). 'allergens' are the names shown under 'I have an allergy.'; their English names are UI strings (phrases.allergen.*).",
   "phrases": [
     { "id": "toilet", "en": "Where is the toilet?" },
     { "id": "hello", "en": "Hello" },
@@ -43,6 +43,17 @@
         "lost": { "text": "道に迷いました。", "roman": "Michi ni mayoimashita." },
         "help": { "text": "助けてください！", "roman": "Tasukete kudasai!" },
         "noThanks": { "text": "いいえ、結構です。", "roman": "Iie, kekkō desu." }
+      },
+      "allergens": {
+        "peanuts": { "text": "ピーナッツ（落花生）", "roman": "Pīnattsu (rakkasei)" },
+        "treeNuts": { "text": "ナッツ類", "roman": "Nattsu-rui" },
+        "shellfish": { "text": "エビ・カニ・貝類", "roman": "Ebi, kani, kairui" },
+        "fish": { "text": "魚", "roman": "Sakana" },
+        "milk": { "text": "牛乳・乳製品", "roman": "Gyūnyū, nyūseihin" },
+        "egg": { "text": "卵", "roman": "Tamago" },
+        "wheat": { "text": "小麦（グルテン）", "roman": "Komugi (guruten)" },
+        "soy": { "text": "大豆", "roman": "Daizu" },
+        "sesame": { "text": "ごま", "roman": "Goma" }
       }
     },
     {
@@ -67,6 +78,52 @@
         "lost": { "text": "我迷路了。", "roman": "Wǒ mílù le." },
         "help": { "text": "救命！", "roman": "Jiùmìng!" },
         "noThanks": { "text": "不用了，谢谢。", "roman": "Bú yòng le, xièxie." }
+      },
+      "allergens": {
+        "peanuts": { "text": "花生", "roman": "Huāshēng" },
+        "treeNuts": { "text": "坚果", "roman": "Jiānguǒ" },
+        "shellfish": { "text": "虾、蟹和贝类", "roman": "Xiā, xiè hé bèilèi" },
+        "fish": { "text": "鱼", "roman": "Yú" },
+        "milk": { "text": "牛奶和奶制品", "roman": "Niúnǎi hé nǎizhìpǐn" },
+        "egg": { "text": "鸡蛋", "roman": "Jīdàn" },
+        "wheat": { "text": "小麦（麸质）", "roman": "Xiǎomài (fūzhì)" },
+        "soy": { "text": "大豆", "roman": "Dàdòu" },
+        "sesame": { "text": "芝麻", "roman": "Zhīma" }
+      }
+    },
+    {
+      "code": "zh-Hant",
+      "native": "繁體中文",
+      "latin": false,
+      "countries": ["TW", "HK", "MO"],
+      "phrases": {
+        "toilet": { "text": "請問洗手間在哪裡？", "roman": "Qǐngwèn xǐshǒujiān zài nǎlǐ?" },
+        "hello": { "text": "您好", "roman": "Nín hǎo" },
+        "thanks": { "text": "謝謝", "roman": "Xièxie" },
+        "excuseMe": { "text": "不好意思", "roman": "Bù hǎoyìsi" },
+        "speakEnglish": { "text": "您會說英文嗎？", "roman": "Nín huì shuō Yīngwén ma?" },
+        "howMuch": { "text": "這個多少錢？", "roman": "Zhège duōshǎo qián?" },
+        "doctor": { "text": "我需要看醫生。", "roman": "Wǒ xūyào kàn yīshēng." },
+        "police": { "text": "請幫我叫警察。", "roman": "Qǐng bāng wǒ jiào jǐngchá." },
+        "allergy": { "text": "我有過敏症。", "roman": "Wǒ yǒu guòmǐnzhèng." },
+        "water": { "text": "請給我一杯水。", "roman": "Qǐng gěi wǒ yì bēi shuǐ." },
+        "bill": { "text": "請幫我結帳。", "roman": "Qǐng bāng wǒ jiézhàng." },
+        "station": { "text": "車站在哪裡？", "roman": "Chēzhàn zài nǎlǐ?" },
+        "address": { "text": "請帶我去這個地址。", "roman": "Qǐng dài wǒ qù zhège dìzhǐ." },
+        "lost": { "text": "我迷路了。", "roman": "Wǒ mílù le." },
+        "help": { "text": "救命！", "roman": "Jiùmìng!" },
+        "noThanks": { "text": "不用了，謝謝。", "roman": "Bú yòng le, xièxie." }
+      },
+      "allergens": {
+        "peanuts": { "text": "花生", "roman": "Huāshēng" },
+        "treeNuts": { "text": "堅果", "roman": "Jiānguǒ" },
+        "shellfish": { "text": "蝦、蟹和貝類", "roman": "Xiā, xiè hé bèilèi" },
+        "fish": { "text": "魚", "roman": "Yú" },
+        "milk": { "text": "牛奶和乳製品", "roman": "Niúnǎi hé rǔzhìpǐn" },
+        "egg": { "text": "雞蛋", "roman": "Jīdàn" },
+        "wheat": { "text": "小麥（麩質）", "roman": "Xiǎomài (fūzhì)" },
+        "soy": { "text": "黃豆（大豆）", "roman": "Huángdòu (dàdòu)" },
+        "sesame": { "text": "芝麻", "roman": "Zhīma" }
       }
     },
     {
@@ -91,6 +148,17 @@
         "lost": { "text": "길을 잃었어요.", "roman": "Gireul ireosseoyo." },
         "help": { "text": "도와주세요!", "roman": "Dowajuseyo!" },
         "noThanks": { "text": "괜찮아요, 감사합니다.", "roman": "Gwaenchanayo, gamsahamnida." }
+      },
+      "allergens": {
+        "peanuts": { "text": "땅콩", "roman": "Ttangkong" },
+        "treeNuts": { "text": "견과류", "roman": "Gyeongwaryu" },
+        "shellfish": { "text": "새우·게·조개류", "roman": "Saeu, ge, jogaeryu" },
+        "fish": { "text": "생선", "roman": "Saengseon" },
+        "milk": { "text": "우유", "roman": "Uyu" },
+        "egg": { "text": "달걀", "roman": "Dalgyal" },
+        "wheat": { "text": "밀(글루텐)", "roman": "Mil (geulluten)" },
+        "soy": { "text": "대두(콩)", "roman": "Daedu (kong)" },
+        "sesame": { "text": "참깨", "roman": "Chamkkae" }
       }
     },
     {
@@ -115,6 +183,17 @@
         "lost": { "text": "หลงทางครับ/ค่ะ", "roman": "Long thang khrap/kha." },
         "help": { "text": "ช่วยด้วย!", "roman": "Chuai duai!" },
         "noThanks": { "text": "ไม่เป็นไร ขอบคุณครับ/ค่ะ", "roman": "Mai pen rai, khop khun khrap/kha." }
+      },
+      "allergens": {
+        "peanuts": { "text": "ถั่วลิสง", "roman": "Thua lisong" },
+        "treeNuts": { "text": "ถั่วเปลือกแข็ง", "roman": "Thua plueak khaeng" },
+        "shellfish": { "text": "กุ้ง ปู และหอย", "roman": "Kung pu lae hoi" },
+        "fish": { "text": "ปลา", "roman": "Pla" },
+        "milk": { "text": "นมวัว", "roman": "Nom wua" },
+        "egg": { "text": "ไข่", "roman": "Khai" },
+        "wheat": { "text": "ข้าวสาลี (กลูเตน)", "roman": "Khao sali (kluten)" },
+        "soy": { "text": "ถั่วเหลือง", "roman": "Thua lueang" },
+        "sesame": { "text": "งา", "roman": "Nga" }
       }
     },
     {
@@ -139,6 +218,17 @@
         "lost": { "text": "Tôi bị lạc đường." },
         "help": { "text": "Cứu tôi với!" },
         "noThanks": { "text": "Không, cảm ơn." }
+      },
+      "allergens": {
+        "peanuts": { "text": "Lạc (đậu phộng)" },
+        "treeNuts": { "text": "Các loại hạt" },
+        "shellfish": { "text": "Tôm, cua và sò ốc" },
+        "fish": { "text": "Cá" },
+        "milk": { "text": "Sữa" },
+        "egg": { "text": "Trứng" },
+        "wheat": { "text": "Lúa mì (gluten)" },
+        "soy": { "text": "Đậu nành" },
+        "sesame": { "text": "Vừng (mè)" }
       }
     },
     {
@@ -163,6 +253,17 @@
         "lost": { "text": "Me he perdido." },
         "help": { "text": "¡Ayuda!" },
         "noThanks": { "text": "No, gracias." }
+      },
+      "allergens": {
+        "peanuts": { "text": "Cacahuetes / maní" },
+        "treeNuts": { "text": "Frutos secos (nueces)" },
+        "shellfish": { "text": "Mariscos" },
+        "fish": { "text": "Pescado" },
+        "milk": { "text": "Leche" },
+        "egg": { "text": "Huevo" },
+        "wheat": { "text": "Trigo (gluten)" },
+        "soy": { "text": "Soja" },
+        "sesame": { "text": "Sésamo (ajonjolí)" }
       }
     },
     {
@@ -187,6 +288,17 @@
         "lost": { "text": "Je ne trouve pas mon chemin." },
         "help": { "text": "Au secours !" },
         "noThanks": { "text": "Non, merci." }
+      },
+      "allergens": {
+        "peanuts": { "text": "Arachides (cacahuètes)" },
+        "treeNuts": { "text": "Fruits à coque" },
+        "shellfish": { "text": "Crustacés et coquillages" },
+        "fish": { "text": "Poisson" },
+        "milk": { "text": "Lait" },
+        "egg": { "text": "Œufs" },
+        "wheat": { "text": "Blé (gluten)" },
+        "soy": { "text": "Soja" },
+        "sesame": { "text": "Sésame" }
       }
     },
     {
@@ -211,6 +323,17 @@
         "lost": { "text": "Ich habe mich verlaufen." },
         "help": { "text": "Hilfe!" },
         "noThanks": { "text": "Nein, danke." }
+      },
+      "allergens": {
+        "peanuts": { "text": "Erdnüsse" },
+        "treeNuts": { "text": "Nüsse (Schalenfrüchte)" },
+        "shellfish": { "text": "Krebstiere und Muscheln" },
+        "fish": { "text": "Fisch" },
+        "milk": { "text": "Milch" },
+        "egg": { "text": "Eier" },
+        "wheat": { "text": "Weizen (Gluten)" },
+        "soy": { "text": "Soja" },
+        "sesame": { "text": "Sesam" }
       }
     },
     {
@@ -235,6 +358,17 @@
         "lost": { "text": "Non trovo la strada." },
         "help": { "text": "Aiuto!" },
         "noThanks": { "text": "No, grazie." }
+      },
+      "allergens": {
+        "peanuts": { "text": "Arachidi" },
+        "treeNuts": { "text": "Frutta a guscio" },
+        "shellfish": { "text": "Crostacei e molluschi" },
+        "fish": { "text": "Pesce" },
+        "milk": { "text": "Latte" },
+        "egg": { "text": "Uova" },
+        "wheat": { "text": "Grano (glutine)" },
+        "soy": { "text": "Soia" },
+        "sesame": { "text": "Sesamo" }
       }
     },
     {
@@ -259,6 +393,17 @@
         "lost": { "text": "Não sei onde estou." },
         "help": { "text": "Socorro!" },
         "noThanks": { "text": "Não, obrigado / obrigada." }
+      },
+      "allergens": {
+        "peanuts": { "text": "Amendoim" },
+        "treeNuts": { "text": "Castanhas e nozes" },
+        "shellfish": { "text": "Frutos do mar / marisco" },
+        "fish": { "text": "Peixe" },
+        "milk": { "text": "Leite" },
+        "egg": { "text": "Ovo" },
+        "wheat": { "text": "Trigo (glúten)" },
+        "soy": { "text": "Soja" },
+        "sesame": { "text": "Gergelim (sésamo)" }
       }
     },
     {
@@ -283,6 +428,17 @@
         "lost": { "text": "Saya tersesat." },
         "help": { "text": "Tolong!" },
         "noThanks": { "text": "Tidak, terima kasih." }
+      },
+      "allergens": {
+        "peanuts": { "text": "Kacang tanah" },
+        "treeNuts": { "text": "Kacang almond, kenari, mete" },
+        "shellfish": { "text": "Udang, kepiting, kerang" },
+        "fish": { "text": "Ikan" },
+        "milk": { "text": "Susu" },
+        "egg": { "text": "Telur" },
+        "wheat": { "text": "Gandum (gluten)" },
+        "soy": { "text": "Kedelai" },
+        "sesame": { "text": "Wijen" }
       }
     }
   ]

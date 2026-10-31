@@ -57,8 +57,17 @@ export type PackItem = PackingItem & {
   qty?: number;
   /** Template item it came from (absent for items the traveller added). */
   templateItemId?: string;
+  /** T75: the smart-packing suggestion it was added from (src/core/smartpack.ts), so it is never suggested again. */
+  suggestionId?: string;
 };
-export type PackList = Omit<PackingList, 'items'> & { items: PackItem[]; templates?: string[] };
+export type PackList = Omit<PackingList, 'items'> & {
+  items: PackItem[];
+  templates?: string[];
+  /** T75: suggestion ids the traveller dismissed; they stay dismissed. */
+  dismissed?: string[];
+  /** T75: "Laundry on the trip" caps clothes quantities (src/core/smartpack.ts). */
+  laundry?: boolean;
+};
 /** Stored under 'satchel.packing.v1': tripId -> list. */
 export type PackStore = Record<string, PackList>;
 export const PACKING_KEY = 'satchel.packing.v1';

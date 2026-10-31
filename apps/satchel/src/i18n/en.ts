@@ -28,6 +28,22 @@ import { privacy } from './en/privacy.ts';
 import { essentials } from './en/essentials.ts';
 import { phrases } from './en/phrases.ts';
 import { spending } from './en/spending.ts';
+import { help } from './en/help.ts';
+import { readiness } from './en/readiness.ts';
+import { convert } from './en/convert.ts';
+import { followups85 } from './en/followups85.ts';
+import { travels } from './en/travels.ts';
+import { jetlag } from './en/jetlag.ts';
+import { journal } from './en/journal.ts';
+import { followups86 } from './en/followups86.ts';
+import { triproute } from './en/triproute.ts';
+import { weather } from './en/weather.ts';
+import { smartpack } from './en/smartpack.ts';
+import { plan } from './en/plan.ts';
+import { position } from './en/position.ts';
+import { licences } from './en/licences.ts';
+import { wayback } from './en/wayback.ts';
+import { airport } from './en/airport.ts';
 
 const base = {
   'app.name': 'Satchel',
@@ -205,6 +221,6 @@ const base = {
   'itemEdit.attachmentFromPhotos': 'Choose from Photos',
 } as const;
 
-export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile, ...citymaps, ...toilets, ...design, ...privacy, ...essentials, ...phrases, ...spending } as const;
+export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile, ...citymaps, ...toilets, ...design, ...privacy, ...essentials, ...phrases, ...spending, ...help, ...readiness, ...convert, ...followups85, ...travels, ...jetlag, ...journal, ...followups86, ...triproute, ...weather, ...plan, ...position, ...licences, ...wayback, ...airport, ...smartpack } as const;
 
 export type Key = keyof typeof en;

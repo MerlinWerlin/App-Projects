@@ -3,22 +3,16 @@
 // unknown value says "Not sure — check locally", never a blank. "Bring an adapter?" compares plugs and voltage with
 // the home country the traveller sets here (saved on this phone via usePersisted, HOME_COUNTRY_KEY). Tokens only,
 // light and dark; 48 pt targets; every control labelled; the hint fades in on a timed tween (no springs).
-import { useMemo, useState } from 'react';
+// T58: the home country picker moved to src/ui/HomeCountryPicker.tsx so Settings shows the same choice (one key).
 import { Text, View } from 'react-native';
-import emergencyTable from '../content/emergency_numbers.json';
 import essentialsTable from '../content/country_essentials.json';
-import { searchCountries, type EmergencyTable } from '../core/emergency.ts';
-import { adapterHint, displayEssentials, findEssentials, HOME_COUNTRY_KEY, normaliseHome, type EssentialsTable } from '../core/essentials.ts';
+import { adapterHint, displayEssentials, findEssentials, type EssentialsTable } from '../core/essentials.ts';
 import { useApp } from '../state/app.tsx';
-import { usePersisted } from '../state/persisted.ts';
-import { fonts, radius, space, typeScale } from '../theme/tokens.ts';
+import { radius, space, typeScale } from '../theme/tokens.ts';
 import { FadeInView, IconBadge, SectionCard, type IconName } from './hero.tsx';
-import { Body, Button, PressableScale, TextField } from './kit.tsx';
+import { HomeCountryPicker, useHomeCountry } from './HomeCountryPicker.tsx';
 
 const TABLE = essentialsTable as EssentialsTable;
-const COUNTRIES = emergencyTable as EmergencyTable;
-const NO_HOME: string | null = null;
-const MAX_LIST = 30;
 
 function FactRow({ icon, label, value }: { icon: IconName; label: string; value: string | null }) {
   const { t, theme } = useApp();
@@ -40,27 +34,16 @@ function FactRow({ icon, label, value }: { icon: IconName; label: string; value:
 
 export function CountryEssentialsCard({ iso2 }: { iso2: string }) {
   const { t, theme } = useApp();
-  const [storedHome, setHome] = usePersisted<string | null>(HOME_COUNTRY_KEY, NO_HOME);
-  const [listOpen, setListOpen] = useState(false);
-  const [query, setQuery] = useState('');
-  const results = useMemo(() => searchCountries(COUNTRIES, query), [query]);
+  const { homeRow } = useHomeCountry();
 
   const row = findEssentials(TABLE, iso2);
   if (!row) return null;
   const d = displayEssentials(row);
-  const homeIso = normaliseHome(TABLE, storedHome);
-  const homeRow = findEssentials(TABLE, homeIso);
   const hint = homeRow ? adapterHint(row, homeRow) : null;
   const homePlugs = homeRow?.plugs?.join(', ') ?? '';
 
   const driving = d.driving === 'left' ? t('essentials.drivingLeft') : d.driving === 'right' ? t('essentials.drivingRight') : null;
   const sources = d.sourceHosts.join(', ');
-
-  const choose = (code: string | null) => {
-    setHome(code);
-    setListOpen(false);
-    setQuery('');
-  };
 
   let verdict = '';
   if (hint && homeRow) {
@@ -103,48 +86,8 @@ export function CountryEssentialsCard({ iso2 }: { iso2: string }) {
         ) : (
           <Text style={[typeScale.body, { color: theme.ink }]}>{t('essentials.homeNone')}</Text>
         )}
-        <Button
-          kind="quiet"
-          label={listOpen ? t('essentials.homeDone') : homeRow ? t('essentials.homeChange') : t('essentials.homeSet')}
-          hint={listOpen ? undefined : homeRow ? t('essentials.homeChangeHint') : t('essentials.homeSetHint')}
-          onPress={() => setListOpen(!listOpen)}
-        />
+        <HomeCountryPicker />
       </View>
-
-      {listOpen ? (
-        <View style={{ gap: space.s }}>
-          <TextField label={t('essentials.homeSearch')} value={query} onChange={setQuery} placeholder={t('essentials.homeSearchPlaceholder')} autoCapitalize="none" />
-          {homeRow ? <Button kind="quiet" label={t('essentials.homeClear')} hint={t('essentials.homeClearHint')} onPress={() => choose(null)} /> : null}
-          {results.length === 0 ? <Body muted>{t('essentials.homeNoMatch', { q: query.trim() })}</Body> : null}
-          {results.slice(0, MAX_LIST).map((r) => {
-            const selected = r.iso2 === homeIso;
-            return (
-              <PressableScale
-                key={r.iso2}
-                accessibilityRole="radio"
-                accessibilityLabel={t('essentials.homePick', { country: r.country })}
-                accessibilityHint={t('essentials.homePickHint', { country: r.country })}
-                accessibilityState={{ selected, checked: selected }}
-                onPress={() => choose(r.iso2)}
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  paddingHorizontal: space.l,
-                  borderRadius: radius.m,
-                  borderWidth: 1,
-                  borderColor: selected ? theme.accent : theme.line,
-                  backgroundColor: selected ? theme.accentSoft : theme.card,
-                }}
-              >
-                <Text style={{ flex: 1, fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink }}>{r.country}</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted }}>{r.iso2}</Text>
-              </PressableScale>
-            );
-          })}
-          {results.length > MAX_LIST ? <Body muted>{t('essentials.homeMore', { n: MAX_LIST, total: results.length })}</Body> : null}
-        </View>
-      ) : null}
 
       <Text style={[typeScale.small, { color: theme.muted }]}>{t('essentials.verifyLocally')}</Text>
       <Text style={[typeScale.small, { color: theme.muted }]}>

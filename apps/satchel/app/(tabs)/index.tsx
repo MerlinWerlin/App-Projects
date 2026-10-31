@@ -2,7 +2,7 @@
 // A 'Trips didn’t load' notice if the saved list couldn't be read, Next up card, then trips (active and upcoming first). Windowed list with stable keys.
 // T50: dusk hero with a time-of-day greeting and the trip in focus ("Tokyo in 12 days" / "Day 3 of 9 in Tokyo") and
 // its progress, quick stats that count up, the Next up pass, today's mini timeline, the destination clock vs home,
-// and every trip as a boarding pass. Everything is worked out on the phone (no network).
+// and every trip as a boarding pass. T71: the "Your day" morning brief above the cards while a trip is on today. Everything is worked out on the phone (no network).
 import { useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { AccessibilityInfo, FlatList, View } from 'react-native';
@@ -16,10 +16,13 @@ import { daysBetween } from '../../src/core/tz.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
 import { space } from '../../src/theme/tokens.ts';
+import { DayBriefCard } from '../../src/ui/DayBriefCard.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
 import { FadeInView, HeroHeader, ProgressBar, StatTile } from '../../src/ui/hero.tsx';
 import { Button, EmptyState, Label, PressableScale } from '../../src/ui/kit.tsx';
 import { NextUpCard } from '../../src/ui/NextUpCard.tsx';
+import { LeavingSoonBanner } from '../../src/ui/ReadinessCard.tsx';
+import { TravelsCard } from '../../src/ui/TravelsCard.tsx';
 import { TripImport } from '../../src/ui/TripImport.tsx';
 import { ClockCard, countdownHeadline, TodayCard, TripPass } from '../../src/ui/TripPass.tsx';
 import { BatteryBannerSlot } from '../../src/ui/slots/BatteryBannerSlot.tsx';
@@ -111,6 +114,9 @@ export default function TripsScreen() {
           <OfflineBannerSlot />
           <WelcomeSlot />
           <BatteryBannerSlot />
+          <LeavingSoonBanner trips={trips} />
+          {/* T71: "Your day" sits above the other cards, only while a trip is on today. */}
+          <DayBriefCard trips={trips} />
           {trips.length ? (
             <View style={{ flexDirection: 'row', gap: space.s }}>
               <StatTile value={stats.trips} label={t('design.stats.trips')} icon="airplane" tone="sea" />
@@ -118,6 +124,7 @@ export default function TripsScreen() {
               <StatTile value={stats.daysAway} label={t('design.stats.daysAway')} icon="sunny" tone="teal" />
             </View>
           ) : null}
+          <TravelsCard />
           <NextUpCard trips={trips} />
           <TodayCard trips={trips} />
           {focus && dest ? <ClockCard destTz={dest} homeTz={focus.homeTz} /> : null}

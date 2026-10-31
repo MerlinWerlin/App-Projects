@@ -4,17 +4,28 @@ What Satchel ships that it did not write, the licence, and what the licence asks
 
 ## 1. OpenStreetMap data (ODbL 1.0)
 
-**Status (31 Oct 2026, T47/T49):** the app downloads offline city map packs (raster tiles rendered from Protomaps' OpenStreetMap build plus an OSM POI extract) from App-Projects release assets, and the Toilets tab queries the public Overpass API when online. "© OpenStreetMap contributors" shows on the map whenever offline tiles are drawn, in the offline maps section and in the Toilets tab. Build and licence details: docs/MAP_PACKS.md. The bundled demo points in `src/content/demo_pois_*.json` are still invented sample points (T09).
+**Status (31 Oct 2026, T47/T49):** the app downloads offline city map packs (raster tiles rendered from Protomaps' OpenStreetMap build plus an OSM POI extract) from App-Projects release assets, and the Toilets tab queries the public Overpass API when online. "© OpenStreetMap contributors" shows on the map whenever offline tiles are drawn, in the offline maps section and in the Toilets tab. T59: the Emergency tab's Nearest help screen (hospitals, clinics, pharmacies, police) reads the same packs and the same Overpass API, with the same attribution. Build and licence details: docs/MAP_PACKS.md. The bundled demo points in `src/content/demo_pois_*.json` are still invented sample points (T09).
 
 **From the NATIVE milestone (T12 offline map, T13 offline POIs)**, Satchel will ship city map extracts cut from Protomaps' OpenStreetMap builds and per-city POI extracts. Obligations (OSMF attribution guideline and the ODbL; see docs/research/MAP_SPIKE.md §3):
 
 - **Attribution:** show "© OpenStreetMap contributors" legibly on the map (a map corner) wherever OSM map or POI data is visible, with a link or tap-through to https://www.openstreetmap.org/copyright stating the data is available under the Open Database Licence. It may collapse after interaction or about 5 seconds only if it stays findable (an info button).
-- **Also show it in:** Settings > About > Data licences (an in-app licences screen), the city download screen, the offline-map pack metadata, and this file. The store description should mention "Map data © OpenStreetMap contributors" once offline maps ship.
+- **Also show it in:** Settings > About > Data licences (an in-app licences screen), the city download screen, the offline-map pack metadata, and this file. T72: done for Settings > About (the credit line) and Settings > Licences and credits (`app/licences.tsx`, rows in `src/core/licences.ts`, which a test checks against this file and package.json). The store description should mention "Map data © OpenStreetMap contributors" once offline maps ship.
 - **Rendered map tiles** (Protomaps basemap) are an ODbL *Produced Work*: attribution required; share-alike does not apply to the images themselves.
 - **Share-alike for derived databases:** if Satchel publishes or distributes a database derived from OSM (for example our own POI files filtered and reshaped from OSM, or the hosted city extracts), that derived database must be offered under the ODbL (or a compatible licence), and we must state how to get it. Plan: publish the extract scripts and the derived POI files (or a way to reproduce them) in the repo, under ODbL, alongside the downloads. Whether each POI file is a derivative database is **to verify** before T13 ships (MAP_SPIKE.md §6).
 - **No mixing** OSM-derived data with data under incompatible terms (for example data scraped from a commercial map service) in the same database.
 - **Protomaps basemap tooling:** described as BSD (code) + ODbL (data); **licence to confirm** for any Protomaps style or font assets bundled with the renderer.
 - **MapLibre Native** (renderer, T12): BSD-2-Clause, **licence to confirm** for the exact package and its bundled dependencies.
+
+## 1b. Weather forecast: MET Norway (CC BY 4.0)
+
+**Status (31 Oct 2026, T70):** the trip screen's "Weather & daylight" card fetches a forecast for the trip's current or next destination from the Norwegian Meteorological Institute's Locationforecast 2.0 API (`https://api.met.no/weatherapi/locationforecast/2.0/compact`), only when the phone may be online and only for a trip within about nine days. Free, no key, commercial use allowed under MET's terms of service (api.met.no/doc/TermsOfService). The data is licensed **CC BY 4.0** (and NLOD 2.0) by MET Norway.
+
+- **Attribution:** "Weather data: MET Norway" shows on the card wherever forecast numbers show. T72: Settings > About also carries "Weather data: MET Norway (the Norwegian Meteorological Institute), licensed under CC BY 4.0", and Settings > Licences and credits lists it with a link to api.met.no/doc/License. The store description should carry it too.
+- **Terms we follow:** an identifying `User-Agent` (`Satchel/<app version> github.com/MerlinWerlin/App-Projects`), coordinates rounded to four decimals, the `Expires` header respected (no request before it), `If-Modified-Since` sent with the cached `Last-Modified`, and the last forecast cached per place on the phone (AsyncStorage) so it shows offline. Only the place's rounded coordinates leave the phone; no trip details, no identifiers.
+- **Icons:** the eight weather groups are drawn with Ionicons glyphs (`@expo/vector-icons`, MIT), not MET's own weather symbols.
+- **Unverified online:** the cloud build box cannot reach api.met.no; the parser is written from MET's documented schema and tested on a fixture written to that schema (`src/core/fixtures/metno_compact_tokyo.json`, invented values, not MET data).
+
+Sunrise, sunset and civil twilight are computed on the phone (`src/core/sun.ts`, the public-domain NOAA solar position equations); no data source is involved.
 
 ## 2. Fonts (SIL Open Font License 1.1)
 
@@ -42,10 +53,11 @@ From `package.json` `dependencies`. All are open source; none is an analytics, a
 | react-native-screens | MIT |
 | react-native-svg | MIT |
 | @react-native-async-storage/async-storage | MIT |
+| @react-native-community/datetimepicker | MIT |
 
 Transitive dependencies (Babel, Metro runtime pieces, Hermes and so on) are mostly MIT, BSD or Apache-2.0: **licence to confirm** with a licence report on the PC before release (for example `npx license-checker --production --summary`), and add anything that is not MIT/BSD/Apache/ISC to this table.
 
-MIT, BSD and Apache-2.0 ask us to keep their copyright and licence notices with copies of the software: include an in-app "Open-source licences" list (Settings > About) generated from the installed packages.
+MIT, BSD and Apache-2.0 ask us to keep their copyright and licence notices with copies of the software: include an in-app "Open-source licences" list (Settings > About) generated from the installed packages. T72: Settings > Licences and credits lists every package above with its licence (hand-kept, tested against package.json); the full licence texts and copyright lines, generated from `node_modules/*/LICENSE` on the PC, and the OFL text for the fonts are still to add before release.
 
 **Platform services the app calls (not bundled data):** the map in this version is the system map (Apple Maps on iPhone; on Android react-native-maps uses Google Maps, which needs a Maps SDK key and is governed by Google's terms: **to confirm before an Android release**). expo-updates contacts Expo's update service to fetch over-the-air updates. Neither receives the user's trips.
 

@@ -4,6 +4,10 @@
 // T44 (ACCESSIBILITY "Settings": the threshold is one adjustable control): the threshold row is a single
 // accessibilityRole="adjustable" element with increment / decrement actions and a spoken value; the visible - / +
 // buttons stay for touch but are hidden from screen readers so VoiceOver and TalkBack meet one control, not three.
+// T58: Home country, the same saved choice (HOME_COUNTRY_KEY) as "Bring an adapter?" on the essentials card.
+// T68: Usual sleep (bedtime and wake-up, default 23:00 to 07:00), for the jet lag plan and the call finder. Each time
+// is one adjustable row like the threshold, moving in 30-minute steps.
+// T72: About carries the OpenStreetMap and MET Norway credits and opens Licences and credits (app/licences.tsx).
 import { Ionicons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
@@ -12,11 +16,15 @@ import { Text, View, type AccessibilityActionEvent } from 'react-native';
 import table from '../src/content/emergency_numbers.json';
 import { DEFAULT_ESSENTIALS, ESSENTIALS_KEY, MAX_THRESHOLD, MIN_THRESHOLD, normalisePrefs, type EssentialsPrefs } from '../src/core/battery.ts';
 import { languageName, languageOptions } from '../src/core/languageHint.ts';
-import { APPEARANCES, formatPercent, stepThreshold, thresholdLimits } from '../src/core/settings.ts';
+import { APPEARANCES, formatPercent, SLEEP_STEP_MIN, sleepLimits, stepSleep, stepThreshold, thresholdLimits } from '../src/core/settings.ts';
 import { useApp } from '../src/state/app.tsx';
 import { usePersisted } from '../src/state/persisted.ts';
 import { fonts, radius, space, TOUCH } from '../src/theme/tokens.ts';
-import { Body, Card, Chip, Label, PressableScale, Screen, ToggleRow } from '../src/ui/kit.tsx';
+import { AirportSettings } from '../src/ui/AirportFields.tsx';
+import { HomeCountryPicker, useHomeCountry } from '../src/ui/HomeCountryPicker.tsx';
+import { TEMP_UNITS } from '../src/core/weather.ts';
+import { useTempUnit } from '../src/ui/WeatherCard.tsx';
+import { Body, Button, Card, Chip, Label, PressableScale, Screen, ToggleRow } from '../src/ui/kit.tsx';
 
 const LIST_DATE = typeof (table as { imported?: unknown }).imported === 'string' ? (table as { imported: string }).imported : null;
 
@@ -60,6 +68,42 @@ function StepButton({ icon, label, hint, enabled, onPress }: { icon: 'add' | 're
   );
 }
 
+/** One sleep time (bedtime or wake-up) as a single adjustable control, with visible earlier / later buttons. */
+function SleepRow({ which }: { which: 'bed' | 'wake' }) {
+  const { t, prefs, setPrefs, theme } = useApp();
+  const current = { sleepBed: prefs.sleepBed, sleepWake: prefs.sleepWake };
+  const time = which === 'bed' ? prefs.sleepBed : prefs.sleepWake;
+  const { canLower, canRaise } = sleepLimits(current, which);
+  const vars = { min: SLEEP_STEP_MIN };
+  const step = (dir: 1 | -1) => setPrefs(stepSleep(current, which, dir));
+  const onAction = (e: AccessibilityActionEvent) => {
+    if (e.nativeEvent.actionName === 'increment' && canRaise) step(1);
+    else if (e.nativeEvent.actionName === 'decrement' && canLower) step(-1);
+  };
+  return (
+    <View
+      accessible
+      accessibilityRole="adjustable"
+      accessibilityLabel={t(which === 'bed' ? 'settings.sleepBedLabel' : 'settings.sleepWakeLabel')}
+      accessibilityHint={t('settings.sleepAdjustHint', vars)}
+      accessibilityValue={{ text: time }}
+      accessibilityActions={[
+        { name: 'increment', label: t('settings.sleepLater') },
+        { name: 'decrement', label: t('settings.sleepEarlier') },
+      ]}
+      onAccessibilityAction={onAction}
+      accessibilityLiveRegion="polite"
+      style={{ minHeight: TOUCH, flexDirection: 'row', alignItems: 'center', gap: space.m }}
+    >
+      <StepButton icon="remove" label={t('settings.sleepEarlier')} hint={t('settings.sleepEarlierHint', vars)} enabled={canLower} onPress={() => step(-1)} />
+      <Text style={{ flex: 1, textAlign: 'center', fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink, fontVariant: ['tabular-nums'] }}>
+        {t(which === 'bed' ? 'settings.sleepBed' : 'settings.sleepWake', { time })}
+      </Text>
+      <StepButton icon="add" label={t('settings.sleepLater')} hint={t('settings.sleepLaterHint', vars)} enabled={canRaise} onPress={() => step(1)} />
+    </View>
+  );
+}
+
 export default function SettingsScreen() {
   const { t, prefs, setPrefs, theme, lang, shipped } = useApp();
   const router = useRouter();
@@ -67,6 +111,8 @@ export default function SettingsScreen() {
   const essentials = normalisePrefs(stored);
   const percent = formatPercent(essentials.threshold, lang);
   const { canLower, canRaise } = thresholdLimits(essentials.threshold);
+  const { homeRow } = useHomeCountry();
+  const [tempUnit, setTempUnit] = useTempUnit();
 
   const setManual = (manual: boolean) => {
     setStored((old) => ({ ...normalisePrefs(old), manual }));
@@ -109,6 +155,15 @@ export default function SettingsScreen() {
         <Body muted>{t('settings.appearanceBody')}</Body>
       </Section>
 
+      <Section title={t('weather.unitSetting')}>
+        <View accessibilityRole="radiogroup" accessibilityLabel={t('weather.unitSetting')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
+          {TEMP_UNITS.map((u) => (
+            <Chip key={u} label={t(`weather.unit.${u}`)} selected={tempUnit === u} onPress={() => setTempUnit(u)} />
+          ))}
+        </View>
+        <Body muted>{t('weather.unitSettingBody')}</Body>
+      </Section>
+
       <Section title={t('settings.sectionFeedback')}>
         <ToggleRow label={t('settings.haptics')} hint={t('settings.hapticsA11yHint')} value={prefs.haptics} onChange={(v) => setPrefs({ haptics: v })} />
         <Body muted>{t('settings.hapticsHint')}</Body>
@@ -141,6 +196,22 @@ export default function SettingsScreen() {
         <Body muted>{t('settings.thresholdBody')}</Body>
       </Section>
 
+      <Section title={t('settings.homeCountry')}>
+        <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}>
+          {t('settings.homeCountryValue', { country: homeRow ? homeRow.country : t('settings.homeCountryNone') })}
+        </Text>
+        <Body muted>{t('settings.homeCountryBody')}</Body>
+        <HomeCountryPicker />
+      </Section>
+
+      <Section title={t('settings.sleep')}>
+        <SleepRow which="bed" />
+        <SleepRow which="wake" />
+        <Body muted>{t('settings.sleepBody')}</Body>
+      </Section>
+
+      <AirportSettings />
+
       <Section title={t('settings.privacy')}>
         <Text accessibilityRole="header" style={{ fontFamily: fonts.displayMedium, fontSize: 20, color: theme.ink }}>
           {t('settings.privacyHeading')}
@@ -154,6 +225,9 @@ export default function SettingsScreen() {
       <Section title={t('settings.sectionAbout')}>
         <Body>{t('settings.version', { v: Constants.expoConfig?.version ?? '0.1.0' })}</Body>
         {LIST_DATE ? <Body muted>{t('settings.emergencyRef', { date: LIST_DATE })}</Body> : null}
+        <Body muted>{t('licences.osm.credit')}</Body>
+        <Body muted>{t('licences.met.credit')}</Body>
+        <Button label={t('licences.open')} hint={t('licences.openHint')} kind="secondary" icon="document-text-outline" onPress={() => router.push('/licences')} />
       </Section>
     </Screen>
   );

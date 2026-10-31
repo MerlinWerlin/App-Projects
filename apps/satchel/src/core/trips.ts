@@ -1,6 +1,7 @@
 // Pure trip operations (the UI store calls these) and form validation for trips and items.
 import type { Item, ItemKind, LocalDate, Trip } from './model.ts';
 import { ITEM_KINDS, isTransport, newId } from './model.ts';
+import { encodePos, withPos } from './position.ts';
 import { addDays, isLocalDateTime, isValidZone, toUtc } from './tz.ts';
 
 export type TripDraft = { name: string; startDate: string; endDate: string; homeTz: string };
@@ -34,6 +35,10 @@ export type ItemDraft = {
   endTz: string;
   fromName: string;
   toName: string;
+  /** T72: map positions as "lat,lon" text, '' for none (src/core/position.ts). */
+  fromPos: string;
+  toPos: string;
+  placePos: string;
   placeName: string;
   address: string;
   localAddress: string;
@@ -96,6 +101,9 @@ export function draftFromItem(i: Item): ItemDraft {
     endTz: i.end?.tz ?? i.start.tz,
     fromName: i.from?.name ?? '',
     toName: i.to?.name ?? '',
+    fromPos: encodePos(i.from),
+    toPos: encodePos(i.to),
+    placePos: encodePos(i.place),
     placeName: i.place?.name ?? '',
     address: i.place?.address ?? '',
     localAddress: i.place?.localAddress ?? '',
@@ -122,6 +130,9 @@ export function newItemDraft(kind: ItemKind, date: LocalDate, tz: string): ItemD
     endTz: tz,
     fromName: '',
     toName: '',
+    fromPos: '',
+    toPos: '',
+    placePos: '',
     placeName: '',
     address: '',
     localAddress: '',
@@ -140,16 +151,22 @@ const opt = (s: string) => (s.trim() ? s.trim() : undefined);
 export function itemFromDraft(d: ItemDraft, tripId: string, prev?: Item): Item {
   const endGiven = hasEnd(d.kind) && !!(d.endDate.trim() && d.endTime.trim());
   const transport = isTransport(d.kind);
-  const place = hasPlace(d.kind) && (d.placeName.trim() || d.address.trim() || d.localAddress.trim() || d.placePhone.trim())
-    ? {
-        ...(prev?.place ?? {}),
-        id: prev?.place?.id ?? newId('pl'),
-        name: d.placeName.trim() || d.title.trim(),
-        address: opt(d.address),
-        localAddress: opt(d.localAddress),
-        phone: opt(d.placePhone),
-      }
+  const place = hasPlace(d.kind) && (d.placeName.trim() || d.address.trim() || d.localAddress.trim() || d.placePhone.trim() || d.placePos.trim())
+    ? withPos(
+        {
+          ...(prev?.place ?? {}),
+          id: prev?.place?.id ?? newId('pl'),
+          name: d.placeName.trim() || d.title.trim(),
+          address: opt(d.address),
+          localAddress: opt(d.localAddress),
+          phone: opt(d.placePhone),
+        },
+        d.placePos,
+      )
     : undefined;
+  // T72: a journey's from / to keep what the form doesn't show (address, and the position unless it was removed).
+  const end = (name: string, pos: string, old: Item['from']) =>
+    transport && (name.trim() || pos.trim()) ? withPos({ ...(old ?? {}), id: old?.id ?? newId('pl'), name: name.trim() || d.title.trim() }, pos) : undefined;
   return {
     id: prev?.id ?? newId('it'),
     tripId,
@@ -157,8 +174,8 @@ export function itemFromDraft(d: ItemDraft, tripId: string, prev?: Item): Item {
     title: d.title.trim(),
     start: { local: `${d.startDate}T${d.startTime}`, tz: d.startTz },
     end: endGiven ? { local: `${d.endDate}T${d.endTime}`, tz: d.endTz } : undefined,
-    from: transport && d.fromName.trim() ? { id: prev?.from?.id ?? newId('pl'), name: d.fromName.trim() } : undefined,
-    to: transport && d.toName.trim() ? { id: prev?.to?.id ?? newId('pl'), name: d.toName.trim() } : undefined,
+    from: end(d.fromName, d.fromPos, prev?.from),
+    to: end(d.toName, d.toPos, prev?.to),
     place,
     // Fields that don't belong to the kind are dropped, so switching a draft from flight to hotel can't leave a
     // hidden seat or airline behind.
@@ -207,6 +224,7 @@ export function tripFromDraft(d: TripDraft, prev?: Trip, now = new Date().toISOS
     // T54: editing the trip's name or dates keeps its spending.
     ...(prev?.budget ? { budget: prev.budget } : {}),
     ...(prev?.rates ? { rates: prev.rates } : {}),
+    ...(prev?.ratesUpdated ? { ratesUpdated: prev.ratesUpdated } : {}),
     ...(prev?.expenses ? { expenses: prev.expenses } : {}),
   };
 }

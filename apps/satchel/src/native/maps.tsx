@@ -4,11 +4,19 @@
 // boundary, so a build without the native map shows a plain list of the same pins instead of crashing.
 // Never turns on showsUserLocation: that would watch location continuously. "You are here" is a pin we place
 // from a single check.
-import { Component, useEffect, useRef, type ReactNode } from 'react';
+// T69 (trip on the map): a pin can carry a badge (stop number + kind icon, in its day's colour), `lines` draws
+// dashed polylines between a day's stops, and `fit` frames a set of points with padding (fitToCoordinates; one
+// spot zooms to it with the timed region move). With Reduce Motion the camera jumps instead of gliding.
+// T72: a numbered stop is a custom-view marker. It tracks view changes only long enough to draw its first frame
+// (and again briefly when its number, icon or colour changes), then stops, so a busy day doesn't redraw every pin
+// on each frame while the map pans (react-native-maps' advice for custom markers).
+import { Ionicons } from '@expo/vector-icons';
+import { Component, useCallback, useEffect, useRef, useState, type ComponentProps, type ReactNode } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import type MapViewType from 'react-native-maps';
 import { validLatLon, type LatLon, type Region } from '../core/poi.ts';
 import { useApp } from '../state/app.tsx';
+import { duration, dur } from '../theme/motion.ts';
 import { fonts, radius, space } from '../theme/tokens.ts';
 import { Body, PressableScale } from '../ui/kit.tsx';
 
@@ -39,7 +47,15 @@ export type MapPin = {
   color: string;
   /** Screen-reader label, already translated. */
   a11y: string;
+  /** T69: drawn as a numbered disc in `color` (text and icon in the card colour) instead of a plain pin. */
+  badge?: { text: string; icon?: ComponentProps<typeof Ionicons>['name'] };
 };
+
+/** A line on the map (T69: a day's stops in order). `color` is a theme token colour. */
+export type MapLine = { id: string; points: LatLon[]; color: string; dashed?: boolean };
+
+/** Changing `key` frames `points` (with `padding` points of space at each edge). */
+export type MapFit = { points: LatLon[]; key: number; padding?: number };
 
 /** Changing `key` moves the map to `region`. */
 export type MapFocus = { region: Region; key: number };
@@ -62,7 +78,13 @@ type Props = {
   limitZoom?: boolean;
   /** Called after the user moves the map. */
   onRegionChange?: (region: Region) => void;
+  lines?: MapLine[];
+  fit?: MapFit | null;
 };
+
+const FIT_PADDING = 48;
+/** Span (degrees) shown around a single framed spot. */
+const ONE_SPOT_DELTA = 0.012;
 
 class Boundary extends Component<{ fallback: ReactNode; children: ReactNode }, { failed: boolean }> {
   state = { failed: false };
@@ -87,7 +109,13 @@ function PinList({ pins, onPinPress, title, body, height }: { pins: MapPin[]; on
         keyExtractor={(p) => p.id}
         renderItem={({ item }) => (
           <PressableScale accessibilityRole="button" accessibilityLabel={item.a11y} onPress={() => onPinPress(item.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
-            <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: item.color }} />
+            {item.badge ? (
+              <View style={{ minWidth: 24, height: 24, borderRadius: 12, paddingHorizontal: space.xs, alignItems: 'center', justifyContent: 'center', backgroundColor: item.color }}>
+                <Text style={{ fontFamily: fonts.bodyBold, fontSize: 12, color: theme.card }}>{item.badge.text}</Text>
+              </View>
+            ) : (
+              <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: item.color }} />
+            )}
             <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 15, color: theme.ink }} numberOfLines={1}>
               {item.title}
             </Text>
@@ -98,10 +126,97 @@ function PinList({ pins, onPinPress, title, body, height }: { pins: MapPin[]; on
   );
 }
 
-export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, label, fallbackTitle, fallbackBody, onMapPress, offlineTiles, limitZoom, onRegionChange }: Props) {
-  const { theme, t } = useApp();
+function Badge({ pin }: { pin: MapPin & { badge: NonNullable<MapPin['badge']> } }) {
+  const { theme } = useApp();
+  return (
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 2,
+        minWidth: 34,
+        height: 34,
+        paddingHorizontal: space.s,
+        borderRadius: 17,
+        borderWidth: 2,
+        borderColor: theme.card,
+        backgroundColor: pin.color,
+      }}
+    >
+      {pin.badge.icon ? <Ionicons name={pin.badge.icon} size={13} color={theme.card} /> : null}
+      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 14, color: theme.card }}>{pin.badge.text}</Text>
+    </View>
+  );
+}
+
+/** How long a numbered marker tracks its view after it appears or changes: enough for the first frame. */
+export const BADGE_TRACK_MS = 500;
+
+/** True for BADGE_TRACK_MS after mount and after each change of `signature`, then false. */
+function useTrackBriefly(signature: string) {
+  const [tracking, setTracking] = useState(true);
+  useEffect(() => {
+    setTracking(true);
+    const id = setTimeout(() => setTracking(false), BADGE_TRACK_MS);
+    return () => clearTimeout(id);
+  }, [signature]);
+  return tracking;
+}
+
+function BadgeMarker({ Marker, pin, onPress }: { Marker: MapsModule['Marker']; pin: MapPin & { badge: NonNullable<MapPin['badge']> }; onPress: () => void }) {
+  const { theme } = useApp();
+  const tracking = useTrackBriefly(`${pin.badge.text}|${pin.badge.icon ?? ''}|${pin.color}|${theme.card}`);
+  return (
+    <Marker
+      identifier={pin.id}
+      coordinate={{ latitude: pin.lat, longitude: pin.lon }}
+      title={pin.title}
+      description={pin.subtitle}
+      anchor={{ x: 0.5, y: 0.5 }}
+      zIndex={2}
+      tracksViewChanges={tracking}
+      accessibilityLabel={pin.a11y}
+      onPress={onPress}
+    >
+      <Badge pin={pin} />
+    </Marker>
+  );
+}
+
+export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, label, fallbackTitle, fallbackBody, onMapPress, offlineTiles, limitZoom, onRegionChange, lines, fit }: Props) {
+  const { theme, t, reduceMotion } = useApp();
   const ref = useRef<MapViewType | null>(null);
+  const ready = useRef(false);
   const maps = loadMaps();
+
+  const applyFit = useCallback(
+    (f: MapFit) => {
+      const map = ref.current;
+      if (!map || f.points.length === 0) return;
+      try {
+        if (f.points.length === 1) {
+          const [p] = f.points;
+          map.animateToRegion({ latitude: p.lat, longitude: p.lon, latitudeDelta: ONE_SPOT_DELTA, longitudeDelta: ONE_SPOT_DELTA }, dur(duration.slow, reduceMotion));
+          return;
+        }
+        const pad = f.padding ?? FIT_PADDING;
+        map.fitToCoordinates(
+          f.points.map((p) => ({ latitude: p.lat, longitude: p.lon })),
+          { edgePadding: { top: pad, right: pad, bottom: pad, left: pad }, animated: !reduceMotion },
+        );
+      } catch {
+        // map not ready; onMapReady tries again
+      }
+    },
+    [reduceMotion],
+  );
+
+  useEffect(() => {
+    if (fit && ready.current) applyFit(fit);
+    // Only when a new fit is asked for.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fit?.key]);
 
   useEffect(() => {
     if (!focus) return;
@@ -116,6 +231,7 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
   if (!maps) return fallback;
   const MapView = maps.default;
   const { Marker, LocalTile } = maps;
+  const Polyline = typeof maps.Polyline === 'function' ? maps.Polyline : null;
   const tiles = offlineTiles && typeof LocalTile === 'function' ? offlineTiles : null;
   return (
     <Boundary fallback={fallback}>
@@ -132,6 +248,10 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
           userInterfaceStyle={theme.dark ? 'dark' : 'light'}
           maxZoomLevel={tiles && limitZoom ? tiles.maxZoom : undefined}
           onRegionChangeComplete={onRegionChange ? (r) => onRegionChange(r) : undefined}
+          onMapReady={() => {
+            ready.current = true;
+            if (fit) applyFit(fit);
+          }}
           onPress={
             onMapPress
               ? (e) => {
@@ -145,19 +265,38 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
           }
         >
           {tiles ? <LocalTile pathTemplate={tiles.pathTemplate} tileSize={256} /> : null}
-          {pins.map((p) => (
-            <Marker
-              key={p.id}
-              identifier={p.id}
-              coordinate={{ latitude: p.lat, longitude: p.lon }}
-              title={p.title}
-              description={p.subtitle}
-              pinColor={p.color}
-              tracksViewChanges={false}
-              accessibilityLabel={p.a11y}
-              onPress={() => onPinPress(p.id)}
-            />
-          ))}
+          {Polyline && lines
+            ? lines.map((l) =>
+                l.points.length > 1 ? (
+                  <Polyline
+                    key={l.id}
+                    coordinates={l.points.map((p) => ({ latitude: p.lat, longitude: p.lon }))}
+                    strokeColor={l.color}
+                    strokeWidth={3}
+                    lineDashPattern={l.dashed ? [8, 6] : undefined}
+                    lineCap="round"
+                    lineJoin="round"
+                  />
+                ) : null,
+              )
+            : null}
+          {pins.map((p) =>
+            p.badge ? (
+              <BadgeMarker key={p.id} Marker={Marker} pin={{ ...p, badge: p.badge }} onPress={() => onPinPress(p.id)} />
+            ) : (
+              <Marker
+                key={p.id}
+                identifier={p.id}
+                coordinate={{ latitude: p.lat, longitude: p.lon }}
+                title={p.title}
+                description={p.subtitle}
+                pinColor={p.color}
+                tracksViewChanges={false}
+                accessibilityLabel={p.a11y}
+                onPress={() => onPinPress(p.id)}
+              />
+            ),
+          )}
         </MapView>
         {tiles ? (
           <View pointerEvents="none" style={{ position: 'absolute', right: 0, bottom: 0, paddingHorizontal: space.xs, borderTopLeftRadius: radius.s, backgroundColor: theme.card, opacity: 0.85 }}>

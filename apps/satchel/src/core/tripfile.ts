@@ -1,6 +1,10 @@
 // .satchel trip files (PLAN §2 "trip sharing by exporting a .satchel file"; EDGE_CASES "Trip export and import").
 // A trip file is one JSON object: the trip (with its budget, exchange rates and expenses when it has them, T54),
 // its bookings, its saved places (FLOWS §11.2), its packing list when it has one, and the bytes of the bookings' attachments as base64. Pure TypeScript: the UI reads and writes files.
+// T64: the trip journal travels as text (notes, day, mood, weather, place link, and how many photos stayed on the
+// phone). T68: journal photos go in only when the sender turns on "Include journal photos" (off by default); their
+// bytes sit in `journal_photos`, and photos that couldn't be read or didn't fit stay counted in photoCount. Older
+// files have no journal or no journal_photos and import as before.
 //
 // What never goes in: travel documents (the vault), the emergency card and medical notes. They are not part of a
 // Trip in the model, and buildTripFile only ever sees the one trip and its own packing list, so they cannot leak in.
@@ -11,7 +15,19 @@
 // (the app already shows those as "zone not recognised"); dates that can't be placed on a timeline are rejected.
 import type { Attachment, Item, Place, SavedPlace, Trip } from './model.ts';
 import { ITEM_KINDS } from './model.ts';
+import {
+  checkFileJournal,
+  fileJournalPhotoIds,
+  fileJournalPhotos,
+  importJournalFile,
+  journalForFile,
+  journalPhotos,
+  readFileJournal,
+  type FileJournalEntry,
+  type ImportJournalPhoto,
+} from './journal.ts';
 import type { PackItem, PackList } from './packing.ts';
+import { readAirport } from './leaveby.ts';
 import { checkFileSpending } from './spending.ts';
 import { isLocalDateTime } from './tz.ts';
 
@@ -26,7 +42,7 @@ const MAX_ROWS = 5000;
 /** A booking's attachment as written in the file: no device path, just the id of its bytes in `attachments`. */
 export type FileAttachmentRef = Omit<Attachment, 'uri' | 'qrCropUri'> & { hasCrop?: boolean };
 export type FileItem = Omit<Item, 'attachments'> & { attachments: FileAttachmentRef[] };
-export type FileTrip = Omit<Trip, 'items' | 'places'>;
+export type FileTrip = Omit<Trip, 'items' | 'places' | 'journal'> & { journal?: FileJournalEntry[] };
 /** The bytes of one attachment (and of its saved QR crop when it is a separate file). */
 export type FilePayload = { id: string; name: string; mime: string; data_base64: string; crop_base64?: string };
 
@@ -39,6 +55,8 @@ export type TripFile = {
   places: SavedPlace[];
   packing?: Omit<PackList, 'tripId'>;
   attachments: FilePayload[];
+  /** T68: bytes of the journal photos the sender chose to include (absent when none were). */
+  journal_photos?: FilePayload[];
 };
 
 /** Why a file was refused. 'format': not a Satchel trip; 'version': made by a newer Satchel; 'damaged': fails a check; 'too-large'. */
@@ -48,11 +66,27 @@ export type ParseResult = { ok: true; file: TripFile } | { ok: false; error: Tri
 /** Base64 bytes read from the device for an attachment, keyed by attachment id. A missing entry drops that attachment. */
 export type Payloads = Record<string, { data: string; crop?: string } | undefined>;
 
-export type BuildResult = { file: TripFile; /** Attachments left out because their file couldn't be read. */ skipped: number };
+export type BuildResult = {
+  file: TripFile;
+  /** Attachments left out because their file couldn't be read. */
+  skipped: number;
+  /** T68: journal photos asked for but left out (unreadable, or the file would have been too large to import). */
+  photosSkipped: number;
+};
+
+/** Room kept for the file's text (bookings, notes, JSON) when deciding how many journal photos fit. */
+const TEXT_ROOM = 2 * 1024 * 1024;
+
+export type BuildOptions = {
+  packing?: PackList | null;
+  now?: string;
+  /** T68: base64 bytes of the journal photos to include, keyed by photo id. Absent: no photos (the default). */
+  journalPhotos?: Readonly<Record<string, string | undefined>>;
+};
 
 /** Builds the file for one trip. Only that trip, its items, places, packing list and attachments are read. */
-export function buildTripFile(trip: Trip, payloads: Payloads, opts: { packing?: PackList | null; now?: string } = {}): BuildResult {
-  const { items: _items, places: _places, ...rest } = trip;
+export function buildTripFile(trip: Trip, payloads: Payloads, opts: BuildOptions = {}): BuildResult {
+  const { items: _items, places: _places, journal: _journal, ...fields } = trip;
   const attachments: FilePayload[] = [];
   let skipped = 0;
   const items: FileItem[] = (trip.items ?? []).map((item) => {
@@ -72,6 +106,26 @@ export function buildTripFile(trip: Trip, payloads: Payloads, opts: { packing?: 
     const { attachments: _a, ...fields } = item;
     return { ...fields, tripId: trip.id, attachments: refs };
   });
+  // T68: journal photos in page order while the whole file stays under what import accepts.
+  const journalPayloads: FilePayload[] = [];
+  let photosSkipped = 0;
+  if (opts.journalPhotos) {
+    let room = MAX_TRIP_FILE_CHARS - TEXT_ROOM - attachments.reduce((n, a) => n + a.data_base64.length + (a.crop_base64?.length ?? 0), 0);
+    const seen = new Set<string>();
+    for (const p of journalPhotos(trip)) {
+      if (seen.has(p.id)) continue;
+      seen.add(p.id);
+      const data = opts.journalPhotos[p.id];
+      if (typeof data !== 'string' || !data || data.length > room) {
+        photosSkipped++;
+        continue;
+      }
+      room -= data.length;
+      journalPayloads.push({ id: p.id, name: p.name, mime: p.mime, data_base64: data });
+    }
+  }
+  const journal = journalForFile(trip, new Set(journalPayloads.map((p) => p.id)));
+  const rest: FileTrip = journal ? { ...fields, journal } : fields;
   const file: TripFile = {
     format: TRIP_FILE_FORMAT,
     version: TRIP_FILE_VERSION,
@@ -81,11 +135,12 @@ export function buildTripFile(trip: Trip, payloads: Payloads, opts: { packing?: 
     places: trip.places ?? [],
     attachments,
   };
+  if (journalPayloads.length) file.journal_photos = journalPayloads;
   if (opts.packing && opts.packing.tripId === trip.id) {
     const { tripId: _t, ...packing } = opts.packing;
     file.packing = packing;
   }
-  return { file, skipped };
+  return { file, skipped, photosSkipped };
 }
 
 /** A safe file name for the trip: '<trip name>.satchel' without characters Files or AirDrop refuse. */
@@ -136,6 +191,17 @@ const isPayload = (x: unknown): x is FilePayload =>
   isObj(x) && isStr(x.id) && isStr(x.name) && isStr(x.mime) && isBase64(x.data_base64) && (x.crop_base64 === undefined || isBase64(x.crop_base64));
 const isPackItem = (x: unknown): x is PackItem => isObj(x) && isStr(x.id) && isStr(x.label) && typeof x.done === 'boolean' && optStr(x.category) && optNum(x.qty);
 
+/**
+ * T74: a booking's airport fields (terminal, gate, boarding, bag drop, buffer, travel time) are optional. A value this
+ * build can't read is dropped rather than refusing the whole trip; keys it doesn't know are kept (readAirport).
+ */
+function fileAirport(item: FileItem): FileItem {
+  if (!('airport' in item)) return item;
+  const { airport, ...rest } = item;
+  const clean = readAirport(airport);
+  return clean ? { ...rest, airport: clean } : rest;
+}
+
 const damaged = (detail: string): ParseResult => ({ ok: false, error: 'damaged', detail });
 
 /** Checks a decoded JSON value in full. Nothing about it is trusted until this says ok. */
@@ -147,6 +213,8 @@ export function parseTripFile(data: unknown): ParseResult {
   if (!isObj(t) || !isStr(t.name) || !isDate(t.startDate) || !isDate(t.endDate)) return damaged('trip');
   // T54: budget, rates and expenses are optional (older files have none); when present they must be valid in full.
   if (!checkFileSpending(t)) return damaged('spending');
+  // T64: the journal is optional (older files have none); when present its structure must be valid in full.
+  if (!checkFileJournal(t)) return damaged('journal');
   if (!Array.isArray(data.items) || !Array.isArray(data.attachments)) return damaged('lists');
   const places = data.places === undefined ? [] : data.places;
   if (!Array.isArray(places)) return damaged('places');
@@ -167,15 +235,27 @@ export function parseTripFile(data: unknown): ParseResult {
       used.add(a.id);
     }
   }
+  // T68: journal photo bytes are optional; every photo a page lists must have its bytes here, once.
+  const journalPhotoData = data.journal_photos === undefined ? [] : data.journal_photos;
+  if (!Array.isArray(journalPhotoData) || journalPhotoData.length > MAX_ROWS) return damaged('journal-photos');
+  if (!journalPhotoData.every((p) => isPayload(p) && p.crop_base64 === undefined)) return damaged('journal-photos');
+  const photoIds = new Set<string>();
+  for (const p of journalPhotoData as FilePayload[]) {
+    if (photoIds.has(p.id)) return damaged('journal-photos');
+    photoIds.add(p.id);
+  }
+  for (const id of fileJournalPhotoIds(t.journal as FileJournalEntry[] | undefined)) if (!photoIds.has(id)) return damaged('journal-photos');
   let packing: TripFile['packing'];
   if (data.packing !== undefined) {
     const p = data.packing;
     if (!isObj(p) || !Array.isArray(p.items) || p.items.length > MAX_ROWS || !p.items.every(isPackItem)) return damaged('packing');
     packing = p as unknown as TripFile['packing'];
   }
-  const { items: _i, places: _p, demo, ...tripFields } = t;
+  const { items: _i, places: _p, demo, journal: rawJournal, ...tripFields } = t;
+  const journal = readFileJournal(rawJournal);
   const trip: FileTrip = {
     ...(tripFields as unknown as FileTrip),
+    ...(journal ? { journal } : {}),
     id: isStr(t.id) ? t.id : '',
     homeTz: isStr(t.homeTz) ? t.homeTz : 'UTC',
     createdAt: isStr(t.createdAt) ? t.createdAt : '',
@@ -188,10 +268,11 @@ export function parseTripFile(data: unknown): ParseResult {
       version: TRIP_FILE_VERSION,
       exported_at: isStr(data.exported_at) ? data.exported_at : '',
       trip,
-      items: data.items as FileItem[],
+      items: (data.items as FileItem[]).map(fileAirport),
       places: places as SavedPlace[],
       ...(packing ? { packing } : {}),
       attachments: data.attachments as FilePayload[],
+      ...(journalPhotoData.length ? { journal_photos: journalPhotoData as FilePayload[] } : {}),
     },
   };
 }
@@ -217,6 +298,10 @@ export type Imported = {
   trip: Trip;
   packing: PackList | null;
   files: ImportFile[];
+  /** T68: journal photos to write (then withJournalFiles); empty when the file carried none. */
+  journalFiles: ImportJournalPhoto[];
+  /** T68: journal photos that weren't in the file (they stayed on the sender's phone): the import notice. */
+  journalPhotosLeftOut: number;
 };
 
 /**
@@ -259,14 +344,25 @@ export function importTripFile(file: TripFile, newId: (prefix: string) => string
     return out;
   });
   // Saved places are separate pins: each gets its own new id.
-  const places: SavedPlace[] = file.places.map((p) => ({ ...p, id: newId('place') }));
-  const trip: Trip = { ...file.trip, id: tripId, items, places, createdAt: now };
+  const savedIds = new Map<string, string>();
+  const places: SavedPlace[] = file.places.map((p) => {
+    const id = newId('place');
+    savedIds.set(p.id, id);
+    return { ...p, id };
+  });
+  const { journal: fileJournal, ...tripFields } = file.trip;
+  const trip: Trip = { ...tripFields, id: tripId, items, places, createdAt: now };
+  // T64: journal pages get new ids and point at the imported places' new ids. T68: photos the file carries come
+  // with them; the rest stayed on the sender's phone and are counted for the import notice.
+  const photoBytes = new Map((file.journal_photos ?? []).map((p) => [p.id, p.data_base64]));
+  const { journal, files: journalFiles } = importJournalFile(fileJournal, newId, savedIds, photoBytes);
+  if (journal) trip.journal = journal;
   // T54: expenses get new ids like everything else.
   if (file.trip.expenses) trip.expenses = file.trip.expenses.map((e) => ({ ...e, id: newId('exp') }));
   const packing: PackList | null = file.packing
     ? { ...file.packing, tripId, items: file.packing.items.map((i) => ({ ...i, id: newId('pack') })) }
     : null;
-  return { trip, packing, files };
+  return { trip, packing, files, journalFiles, journalPhotosLeftOut: fileJournalPhotos(fileJournal) };
 }
 
 /** The imported trip with the written file paths filled in. Attachments whose file couldn't be written are dropped. */

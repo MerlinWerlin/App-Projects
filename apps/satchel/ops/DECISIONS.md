@@ -83,3 +83,38 @@
 - 2026-10-31 · build run 84 · owner-1031 D ("start expanding upon this now", deepen each tab) · accepted · added T54 trip spending (Trips), T55 country essentials (Emergency), T56 show-a-local phrase cards incl. "Where is the toilet?" (Toilets + Wallet), T57 vault app-switcher privacy cover. All pure JS on modules already in the TestFlight binary (expo-localization currencyCode, expo-keep-awake, AppState), so they ship over the air. Free, no Plus gate.
 - 2026-10-31 · build run 84 · T55 data · partial · country_essentials.json (244 rows, every emergency country) written from well-established references (IEC World Plugs, public traffic-side list, ITU E.164); the build box cannot reach iec.ch/wikipedia/itu.int, so values are reference knowledge. Lead hand-checked AU, JP, IN, GB, US, BR, ZA, TH, KR, AF, AO, IE, PH, SE, AR: all match. Uncertain values are null and show "Not sure — check locally" (28 plug rows, 13 voltage, 10 frequency, 3 driving, 1 calling code). Live re-check queued as T58. Notes: docs/research/COUNTRY_ESSENTIALS.md.
 - 2026-10-31 · build run 84 · T56 phrases · partial · 16 phrases × 11 languages (ja, zh-Hans, ko, th, vi, es, fr, de, it, pt, id) written by the model; Japanese sample read by the lead and fine. Doubtful lines listed in docs/research/PHRASES.md; native-speaker check queued as T58. Thai shows both polite endings; Traditional Chinese not offered yet.
+
+## 2026-10-31 · run 85
+- 2026-10-31 · oversight v212 · D211-2 accepted (still open): satchel-maps-v1 release still 404 (checked 02:10Z); honest "being published" state kept, no map files published from this task; T52 waits.
+- 2026-10-31 · App-Projects sync · nothing to bring in: main's apps/satchel differs from the build page only by ship-time files (RELEASE.json, SHIP_BASE.txt, store/ASC_REQUEST.json, PC .cmd removal, older TRIAL line) and run-84 work not yet shipped.
+- 2026-10-31 · OpenAI drops · none new (all MANIFEST entries in _spec, _drops/content, _drops/art already stamped).
+- 2026-10-31 · owner-1031 D "start expanding" · added and built T59 nearest help (OSM hospitals/pharmacies/police; online first because packs lack police/phone/hours → T62), T60 trip readiness, T61 offline converter + bill split (user's own rates only, nothing fetched), T58 offline part (home country in Settings, allergens, zh-Hant for TW/HK/MO, demo spending). zh-Hant and allergen names are model-written and flagged for a native-speaker check in docs/research/PHRASES.md.
+- 2026-10-31 · T11 marked done as superseded by T47 (raster packs on release assets).
+
+## 2026-10-31 · run 86
+- 2026-10-31 · App-Projects sync · brought in .gitignore entries for PC queue outputs (commit "sync from App-Projects cac2638"); other differences are ship-time files (RELEASE.json, SHIP_BASE.txt, store/ASC_REQUEST.json skipped by rule) and unshipped run 84-85 work.
+- 2026-10-31 · oversight v213 · D211-2 accepted (still open): satchel-maps-v1 still 404 (04:10Z); honest "being published" state kept; no map files published from this task. No patches.
+- 2026-10-31 · owner comments · none. OpenAI drops · none new (all MANIFEST entries already stamped).
+- 2026-10-31 · owner-1031 D "start expanding" · added and built T64 trip journal (text in .satchel export, photos stay on phone), T65 Your travels stats (original abstract tile grid, no map imagery; km only for legs with coords), T66 jet lag + time zones ("General guidance, not medical advice"; no medicine mentioned), T67 follow-ups (city-pack format 2 with police/phone/hours; catalog version kept at 1 so older app builds still list cities; rate dates; readiness refresh; spec catalogues incl. journal/travels/jetlag). No new npm dependency, no app.json change: OTA-shippable.
+- 2026-10-31 · T64 camera use relies on the existing NSCameraUsageDescription (ticket wording); journal wording queued in T68 for the next native build so this run stays OTA.
+- 2026-10-31 · oversight v214 · D211-2 still in force: satchel-maps-v1 still 404 (06:10Z); honest "being published" state kept; no map files published from this task. No patches.
+- 2026-10-31 · owner comments · none. OpenAI drops · none new (all MANIFEST entries already stamped). App-Projects · nothing new on apps/satchel since cac2638 (already synced).
+- 2026-10-31 · owner-1031 D "start expanding" · added and built T69 trip on the map, T70 weather + daylight, T71 share plan + Your day brief; T68 follow-ups done (JS parts).
+- 2026-10-31 · T70 weather source · MET Norway Locationforecast 2.0 chosen: free, no key, commercial use allowed under its terms, CC BY 4.0 credit shown, identifying User-Agent sent. Not reachable from the cloud sandbox, so the online path is unverified until a phone with signal tries it (TRIAL Q).
+- 2026-10-31 · T71 privacy · shared plan text never includes documents, item notes, attachments or medical data; booking codes off by default.
+
+## 2026-10-31 · T72 (run-87 follow-ups)
+- 2026-10-31 · T72 Today vs Your day · while the "Your day" brief shows, the Trips tab's "Today" mini timeline drops that trip's bookings (src/core/daybrief.ts agendaBesideBrief), so it hides in the usual case and only shows another overlapping trip's bookings. Reason: both listed the same next booking; Your day already opens the full day on the trip timeline. With no trip on today, Today is unchanged.
+- 2026-10-31 · T72 booking positions · set in the booking form by tapping a map or picking one of the trip's places (saved places, other bookings); no "use where I am" here, because the location purpose string promises a check only when you tap Where am I?. Positions are kept on edit (from / to too) and removed only by Remove position.
+- 2026-10-31 · T72 transport stops · journeys with a positioned from / to add departure and arrival stops on the Map tab's trip route, on by default with a "Stations & airports" chip to hide them; core tripRoute keeps them off unless asked, so older callers are unchanged.
+- 2026-10-31 · T72 numbered pins · custom stop markers track view changes only for 500 ms after they appear or change, then stop (react-native-maps' guidance for custom marker views). Unmeasured on a phone.
+- 2026-10-31 · T72 Intl.DisplayNames · localCountryName already feature-detects it and falls back to the bundled English name; tests now cover a missing, throwing, echoing and "unknown region" engine. Whether the phone's Hermes has it is unverified; either way the fallback keeps names readable.
+- 2026-10-31 · T72 journal photo permission wording · written into docs/RELEASE_CHECKLIST.md "Next native build only"; app.json unchanged so this run stays OTA.
+
+## 2026-10-31 · run 88
+- 2026-10-31 · oversight v215 · no new directives or patches; D211-2 kept (honest 'being published' state, release satchel-maps-v1 still 404).
+- 2026-10-31 · OpenAI drops · all _spec, _drops/content, _drops/art MANIFEST entries already stamped; nothing to import.
+- 2026-10-31 · App-Projects sync · no commits on apps/satchel since cac2638 (already synced in run 86); nothing brought in.
+- 2026-10-31 · T73 compass · continuous foreground position + heading watch only while the Find my way back screen is focused and the app is active; every other screen keeps the single-check rule. Apple Maps link reuses the tested http://maps.apple.com walking helper.
+- 2026-10-31 · T74 airport buffers · 90 min domestic / 180 min international defaults, user-editable, labelled general guidance; unknown domestic/international assumes international (earlier time).
+- 2026-10-31 · T75 suggestions · opt-in chips only, never auto-added; thresholds (1 mm rain, low <= 8 C, high >= 27 C) are judgement calls to tune from owner answers.
