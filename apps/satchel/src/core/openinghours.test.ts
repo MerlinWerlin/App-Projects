@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { hoursStatus, hoursStatusAt, parseDays, parseOpeningHours, parseTimes } from './openinghours.ts';
+import { hoursStatus, hoursStatusAt, parseDays, parseOpeningHours, parseTimes, withoutHolidays } from './openinghours.ts';
 
 // 2026-11-02 is a Monday; 2026-11-07 a Saturday; 2026-11-08 a Sunday.
 const MON = '2026-11-02';
@@ -138,8 +138,9 @@ test('anything we do not evaluate is unknown, never a guess', () => {
   const cases = [
     'sunrise-sunset',
     'Mo-Fr 08:00-sunset',
-    'Mo-Fr 08:00-18:00; PH off',
     'PH 10:00-14:00',
+    'PH off',
+    'Mo-Fr 08:00-18:00, PH off',
     'SH off',
     'Jan-Mar 10:00-16:00',
     'Apr-Oct Mo-Su 08:00-20:00',
@@ -192,4 +193,33 @@ test('hoursStatusAt reads the wall clock in the place zone', () => {
 
 test('a week with nothing open after now says closed without an opening time', () => {
   assert.deepEqual(hoursStatus('Mo-Su off', at(TUE, '10:00')), { state: 'closed' });
+});
+
+// T80: public holiday rules are set aside with a caveat instead of making the whole value unknown.
+test('PH rules keep the weekday hours and add the holiday caveat', () => {
+  assert.deepEqual(hoursStatus('Mo-Fr 08:00-18:00; PH off', at(MON, '09:00')), { state: 'open', closesAt: '18:00', closesInDays: 0, holidays: true });
+  assert.deepEqual(hoursStatus('Mo-Fr 08:00-18:00; PH off', at(MON, '19:00')), { state: 'closed', opensAt: '08:00', opensInDays: 1, holidays: true });
+  // PH with its own hours is set aside too; the weekday hours still decide.
+  assert.deepEqual(hoursStatus('Mo-Su 08:00-20:00; PH 10:00-14:00', at(MON, '19:00')), { state: 'open', closesAt: '20:00', closesInDays: 0, holidays: true });
+  // PH beside weekdays: the weekdays keep their rule.
+  assert.equal(hoursStatus('Mo-Fr 08:00-18:00; Sa,PH 10:00-14:00', at('2026-11-07', '11:00')).state, 'open');
+  assert.equal(hoursStatus('Mo-Fr 08:00-18:00; Sa,PH 10:00-14:00', at('2026-11-07', '11:00')).holidays, true);
+  assert.equal(hoursStatus('Mo-Sa 08:00-18:00; Su,PH off', at('2026-11-08', '11:00')).state, 'closed');
+  assert.equal(hoursStatus('Mo-Sa 08:00-18:00; PH,Su off', at('2026-11-08', '11:00')).state, 'closed');
+  assert.equal(hoursStatus('Mo-Fr 08:00-18:00 ; PH: off', at(MON, '09:00')).holidays, true);
+  // 24/7 with PH off: open, with the caveat.
+  assert.deepEqual(hoursStatus('24/7; PH off', at(MON, '03:00')), { state: 'open', holidays: true });
+  // No PH, no caveat.
+  assert.equal(hoursStatus('Mo-Fr 08:00-18:00', at(MON, '09:00')).holidays, undefined);
+  // Unknown stays unknown, and never carries the caveat.
+  assert.deepEqual(hoursStatus('Mo-Fr 08:00-sunset; PH off', at(MON, '09:00')), { state: 'unknown' });
+  assert.deepEqual(hoursStatus('PH off', at(MON, '09:00')), { state: 'unknown' });
+});
+
+test('withoutHolidays sets PH rules aside', () => {
+  assert.deepEqual(withoutHolidays('Mo-Fr 08:00-18:00; PH off'), { rest: 'Mo-Fr 08:00-18:00', holidays: true });
+  assert.deepEqual(withoutHolidays('Mo-Fr 08:00-18:00; Sa,PH 10:00-14:00'), { rest: 'Mo-Fr 08:00-18:00; Sa 10:00-14:00', holidays: true });
+  assert.deepEqual(withoutHolidays('Mo-Fr 08:00-18:00'), { rest: 'Mo-Fr 08:00-18:00', holidays: false });
+  assert.deepEqual(withoutHolidays('PH off'), { rest: '', holidays: true });
+  assert.equal(withoutHolidays('Mo-Fr 08:00-18:00; PHONE ahead').holidays, false);
 });

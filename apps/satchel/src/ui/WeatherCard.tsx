@@ -34,6 +34,7 @@ import { cachedForecast, loadForecast, type ForecastResult } from '../native/wea
 import { useNetworkStatus } from '../native/network.ts';
 import { useApp } from '../state/app.tsx';
 import { usePersisted } from '../state/persisted.ts';
+import { validStop, WEATHER_STOP_KEY, weatherStopFor, withWeatherStop } from '../core/followups89.ts';
 import { radius, space, typeScale } from '../theme/tokens.ts';
 import { FadeInView, SectionCard, type IconName } from './hero.tsx';
 import { Chip } from './kit.tsx';
@@ -147,8 +148,11 @@ const DayRow = memo(function DayRow({ date, today, sun, day, unit, first }: { da
 /**
  * Trip-screen card. Opens on the current or next destination; T76: with more than one stop, chips pick any stop of
  * the trip (each stop's forecast is cached on its own, by its coordinates). Nothing when the trip has no
- * coordinates or has ended.
+ * coordinates or has ended. T80: the chosen stop is remembered per trip on this phone (a stop no longer in the trip
+ * falls back to the default).
  */
+const NO_STOPS: Record<string, string> = {};
+
 export function WeatherCard({ trip }: { trip: Trip }) {
   const { t, theme, lang } = useApp();
   const now = useMinute();
@@ -157,7 +161,9 @@ export function WeatherCard({ trip }: { trip: Trip }) {
   const hour = Math.floor(now / 3_600_000);
   const stops = useMemo(() => weatherStops(trip, now), [trip, hour]); // eslint-disable-line react-hooks/exhaustive-deps
   const fallback = useMemo(() => defaultStop(stops, trip, now), [stops, trip, hour]); // eslint-disable-line react-hooks/exhaustive-deps
-  const [picked, setPicked] = useState<string | null>(null);
+  const [rawStops, setRawStops] = usePersisted<unknown>(WEATHER_STOP_KEY, NO_STOPS);
+  const picked = validStop(weatherStopFor(rawStops, trip.id), stops);
+  const setPicked = (key: string) => setRawStops((old: unknown) => withWeatherStop(old, trip.id, key));
   const place = stops.find((s) => s.key === picked) ?? fallback;
   const today = place ? todayIn(place.tz, now) : '';
   const dates = useMemo(() => (place ? stopDates(trip, place, today) : []), [trip, place, today]);

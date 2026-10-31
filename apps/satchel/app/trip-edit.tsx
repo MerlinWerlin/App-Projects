@@ -3,13 +3,16 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { AccessibilityInfo, Alert } from 'react-native';
+import { autoCover, withCover } from '../src/core/covers.ts';
 import { deviceZone, todayIn } from '../src/core/format.ts';
+import { newId } from '../src/core/model.ts';
 import { draftChanged, newTripDraft, tripFromDraft, validateTrip, type TripDraft, type TripError } from '../src/core/trips.ts';
 import { useApp } from '../src/state/app.tsx';
 import { useTrips } from '../src/state/trips.tsx';
 import { DateField } from '../src/ui/DateTimeField.tsx';
 import { useDiscardConfirm } from '../src/ui/discardConfirm.ts';
 import { ErrorNotice } from '../src/ui/ErrorNotice.tsx';
+import { CoverPicker } from '../src/ui/TripCover.tsx';
 import { Body, Button, Screen, TextField } from '../src/ui/kit.tsx';
 import { ZoneField } from '../src/ui/ZonePicker.tsx';
 
@@ -26,7 +29,11 @@ export default function TripEditScreen() {
   const [errors, setErrors] = useState<TripError[]>([]);
   const [saving, setSaving] = useState(false);
   const [saveFailed, setSaveFailed] = useState(false);
-  const { leaving, gestureEnabled } = useDiscardConfirm(draftChanged(initial, d));
+  // T83: cover choice (undefined = automatic). A new trip keeps one id, so the automatic preview matches what is saved.
+  const [tripId] = useState(() => prev?.id ?? newId('trip'));
+  const [cover, setCover] = useState<string | undefined>(prev?.cover);
+  const draftTrip = () => withCover({ ...tripFromDraft(d, prev), id: tripId }, cover);
+  const { leaving, gestureEnabled } = useDiscardConfirm(draftChanged(initial, d) || (cover ?? '') !== (prev?.cover ?? ''));
   const set = (k: keyof TripDraft) => (v: string) => setD((o) => ({ ...o, [k]: v }));
   const err = (e: TripError) => (errors.includes(e) ? t(`tripEdit.err.${e}`) : undefined);
 
@@ -41,7 +48,7 @@ export default function TripEditScreen() {
     if (saving) return;
     setSaving(true);
     setSaveFailed(false);
-    const trip = tripFromDraft(d, prev);
+    const trip = draftTrip();
     const ok = await saveTrip(trip);
     setSaving(false);
     if (!ok) {
@@ -81,6 +88,7 @@ export default function TripEditScreen() {
       <DateField label={t('pickers.trip.end')} typedLabel={t('tripEdit.end')} value={d.endDate} onChange={set('endDate')} hint={t('pickers.hint.tripEnd')} fallbackDay={d.startDate} minimumDay={d.startDate} error={err('endDate') ?? err('endBeforeStart')} />
       <ZoneField label={t('tripEdit.homeTz')} value={d.homeTz} onChange={set('homeTz')} hint={t('pickers.hint.homeZone')} error={err('homeTz')} suggestions={[deviceZone()]} chipLabel={(city) => t('itemEdit.useZone', { city })} />
       <Body muted>{t('spec.tripEdit.tzHint')}</Body>
+      <CoverPicker value={cover} auto={autoCover(draftTrip())} onChange={(v) => setCover(v ?? undefined)} />
       {saveFailed ? (
         <ErrorNotice title={t('error.trips.save.title')} body={t('error.trips.save.body')} action={t('common.tryAgain')} actionHint={t('error.saveRetryHint')} onAction={save} />
       ) : null}

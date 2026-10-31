@@ -6,6 +6,9 @@
 // Semantics follow the OSM spec: rules apply left to right; a ';' rule replaces what earlier rules said about the
 // days it names, a ',' rule adds to them. Anything else (sunrise/sunset, PH/SH, months, dates, weeks, '+', comments,
 // '||' fallbacks, 'unknown', typos) gives state 'unknown': we never guess whether a toilet is open.
+// T80: public holiday rules ('PH off', 'PH 10:00-14:00', 'Su,PH off') are set aside rather than giving up: the
+// weekday hours still show, and the status carries `holidays: true` so the screen adds "Public holidays may differ".
+// A value that is only about public holidays stays unknown.
 // The caller passes the wall clock in the place's own zone ('YYYY-MM-DDTHH:MM'); `hoursStatusAt` does that from a
 // UTC instant with src/core/tz.ts (Intl only, works offline).
 import type { LocalDateTime } from './model.ts';
@@ -23,6 +26,8 @@ export type HoursStatus = {
   opensAt?: string;
   /** Whole days from today to the opening (0 = later today, 1 = tomorrow...). */
   opensInDays?: number;
+  /** T80: the value also has public holiday (PH) rules, which are not applied; show a holiday caveat. */
+  holidays?: true;
 };
 
 const DAY = 1440;
@@ -118,10 +123,35 @@ function parseRule(raw: string, additive: boolean): Rule[] | null {
 /** Things we deliberately don't evaluate: any of them makes the whole value unknown. */
 const UNSUPPORTED = /sunrise|sunset|dawn|dusk|\bPH\b|\bSH\b|easter|week|\+|"|\[|\]|\|\||\bunknown\b|\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\b|\d{4}/i;
 
+/**
+ * T80: the value with its public holiday rules set aside. A ';' rule whose day selector names PH is dropped ('PH off',
+ * 'PH 10:00-14:00'); PH beside weekdays is taken out of the list ('Sa,PH 10:00-14:00' -> 'Sa 10:00-14:00').
+ * `holidays` says whether anything was set aside. PH anywhere else is left in, so the value stays unknown.
+ */
+export function withoutHolidays(value: string): { rest: string; holidays: boolean } {
+  let holidays = false;
+  const kept: string[] = [];
+  for (const part of value.split(';')) {
+    const m = /^\s*((?:[A-Za-z]{2}(?:\s*-\s*[A-Za-z]{2})?\s*,\s*)*PH(?:\s*,\s*[A-Za-z]{2}(?:\s*-\s*[A-Za-z]{2})?)*)(:?)(?=\s|$)(.*)$/.exec(part);
+    if (!m) {
+      kept.push(part);
+      continue;
+    }
+    holidays = true;
+    const days = m[1]
+      .split(',')
+      .map((d) => d.trim())
+      .filter((d) => d && d !== 'PH');
+    if (days.length) kept.push(` ${days.join(',')}${m[2]}${m[3]}`);
+  }
+  return { rest: kept.join(';').trim(), holidays };
+}
+
 /** The week as open intervals on 0..WEEK (Monday 00:00 = 0), or null when the value can't be evaluated. */
 export function parseOpeningHours(value: string | undefined | null): Interval[] | null {
   if (typeof value !== 'string') return null;
-  const v = value.trim();
+  if (value.length > 255) return null;
+  const v = withoutHolidays(value).rest;
   if (!v || v.length > 255 || UNSUPPORTED.test(v)) return null;
   const perDay: Interval[][] = DAYS.map(() => []);
   for (const part of v.split(';')) {
@@ -169,6 +199,11 @@ export function hoursStatus(value: string | undefined | null, local: LocalDateTi
   if (!m) return UNKNOWN;
   const week = parseOpeningHours(value);
   if (!week) return UNKNOWN;
+  const st = statusIn(week, m);
+  return typeof value === 'string' && withoutHolidays(value).holidays ? { ...st, holidays: true } : st;
+}
+
+function statusIn(week: Interval[], m: RegExpExecArray): HoursStatus {
   const [y, mo, d, h, mi] = m.slice(1).map(Number);
   const weekday = (new Date(Date.UTC(y, mo - 1, d)).getUTCDay() + 6) % 7;
   const today = weekday * DAY;

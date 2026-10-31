@@ -209,9 +209,11 @@ export const ToiletCard = memo(function ToiletCard({ hit: h, status, weekday, la
   const chips = toiletChips(h).map((c) => ({ id: c.id, label: c.id === 'hours' ? t('toilets.chip.hours', { hours: c.text }) : t(chipKey(c)) }));
   const hoursText = useHoursText(status, weekday);
   const hours = hoursText ?? (labelUnknown ? t('toiletplus.hours.unknown') : null);
+  // T80: hours tagged with public holiday rules ('PH off') still show, with a caveat line.
+  const holidayNote = hoursText && status.holidays ? t('f89.hours.holidayCaveat') : null;
   const hoursColour = status.state === 'open' ? theme.ok : status.state === 'closed' ? theme.danger : theme.muted;
   const vote: Vote = saved?.vote ?? null;
-  const features = [hours, ...chips.map((c) => c.label)].filter(Boolean).join(', ');
+  const features = [hours, holidayNote, ...chips.map((c) => c.label)].filter(Boolean).join(', ');
   return (
     <Card style={{ gap: space.m, borderWidth: pinned ? 1.5 : 0, borderColor: theme.warn }}>
       <View accessible accessibilityLabel={t('toilets.rowA11y', { name, distance, dir, features })} style={{ gap: space.m }}>
@@ -237,6 +239,12 @@ export const ToiletCard = memo(function ToiletCard({ hit: h, status, weekday, la
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
             <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: hoursColour }} />
             <Text style={{ fontFamily: fonts.bodyBold, fontSize: 14, color: hoursColour, fontVariant: ['tabular-nums'] }}>{hours}</Text>
+          </View>
+        ) : null}
+        {holidayNote ? (
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
+            <Ionicons name="calendar-outline" size={14} color={theme.muted} />
+            <Text style={[typeScale.small, { color: theme.muted }]}>{holidayNote}</Text>
           </View>
         ) : null}
         {chips.length ? (

@@ -212,6 +212,9 @@ export const removeItem = (trips: Trip[], tripId: string, itemId: string): Trip[
 
 export function tripFromDraft(d: TripDraft, prev?: Trip, now = new Date().toISOString()): Trip {
   return {
+    // Run 90: keep every other field of the trip (journal, ideas, companions, settlements and anything added
+    // later) so editing the name or dates never drops data; the fields below are the ones the edit form owns.
+    ...(prev ?? {}),
     id: prev?.id ?? newId('trip'),
     name: d.name.trim(),
     startDate: d.startDate,
@@ -226,6 +229,8 @@ export function tripFromDraft(d: TripDraft, prev?: Trip, now = new Date().toISOS
     ...(prev?.rates ? { rates: prev.rates } : {}),
     ...(prev?.ratesUpdated ? { ratesUpdated: prev.ratesUpdated } : {}),
     ...(prev?.expenses ? { expenses: prev.expenses } : {}),
+    // T83: and its cover choice (trip-edit then applies the picker's value with withCover).
+    ...(prev?.cover ? { cover: prev.cover } : {}),
   };
 }
 

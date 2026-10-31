@@ -7,6 +7,9 @@
 // T72: with `transport` on, a journey whose from / to has a map position adds a departure stop (its start, in the
 // start zone) and an arrival stop (its end, in the end zone, on the arrival date), so a day reads "station → hotel".
 // Off by default here (older callers and tests unchanged); the Map tab turns it on, with a chip to hide them.
+// T81: with `ideas` on, ideas planned for a day that have a map spot join that day after its timed stops (role
+// 'idea', no time), so See on map shows the plan too. Off by default (older callers and tests unchanged).
+import { plannedSpots, type IdeaCategory } from './ideas.ts';
 import { journalToday } from './journal.ts';
 import type { Item, ItemKind, LocalDate, Place, Stamp, Trip } from './model.ts';
 import { savedPlaces } from './places.ts';
@@ -15,7 +18,7 @@ import { sortItems } from './timeline.ts';
 import { dateRange, daysBetween, isLocalDateTime, isValidZone, localDate, localTime, toUtc } from './tz.ts';
 
 /** Which of the booking's places a stop is: its own place, or a journey's departure / arrival (T72). */
-export type StopRole = 'place' | 'from' | 'to';
+export type StopRole = 'place' | 'from' | 'to' | 'idea';
 
 /** A booking with a map position (its `place`, or a journey's from / to), numbered 1, 2 … within its day. */
 export type RouteStop = LatLon & {
@@ -34,6 +37,9 @@ export type RouteStop = LatLon & {
   tz: string;
   /** 1-based position within the day. */
   n: number;
+  /** T81, role 'idea' only: the idea's id and category (itemId is '', time and tz are ''). */
+  ideaId?: string;
+  category?: IdeaCategory;
 };
 
 export type RouteLeg = { from: RouteStop; to: RouteStop; meters: number };
@@ -70,6 +76,8 @@ const validDate = (d: unknown): d is LocalDate => typeof d === 'string' && isLoc
 export type RouteOptions = {
   /** T72: add departure / arrival stops for journeys whose from / to has a map position. */
   transport?: boolean;
+  /** T81: add planned ideas that have a map spot, after the day's timed stops. */
+  ideas?: boolean;
 };
 
 const ROLES: readonly StopRole[] = ['place', 'from', 'to'];
@@ -120,6 +128,13 @@ export function tripRoute(trip: Trip, opts: RouteOptions = {}): TripRoute {
     const list = byDay.get(s.day) ?? [];
     list.push({ ...s, n: list.length + 1 });
     byDay.set(s.day, list);
+  }
+  if (opts.ideas) {
+    for (const p of plannedSpots(trip)) {
+      const list = byDay.get(p.day) ?? [];
+      list.push({ key: `idea:${p.ideaId}`, role: 'idea', itemId: '', kind: 'activity', title: p.name, name: p.name, lat: p.lat, lon: p.lon, day: p.day, time: '', tz: '', n: list.length + 1, ideaId: p.ideaId, category: p.category });
+      byDay.set(p.day, list);
+    }
   }
   const dates = new Set<LocalDate>(byDay.keys());
   if (validDate(trip.startDate) && validDate(trip.endDate) && trip.startDate <= trip.endDate) for (const d of dateRange(trip.startDate, trip.endDate)) dates.add(d);

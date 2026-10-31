@@ -9,6 +9,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { overlapPartners, overlapTitles } from '../../src/core/clashes.ts';
+import { tripCover } from '../../src/core/covers.ts';
 import { deviceZone, formatDay, formatRange, todayIn } from '../../src/core/format.ts';
 import { ITEM_KINDS, type ItemKind, type Trip } from '../../src/core/model.ts';
 import { placesByName } from '../../src/core/places.ts';
@@ -26,7 +27,10 @@ import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, Screen, Wa
 import { TripPackingSlot } from '../../src/ui/slots/TripPackingSlot.tsx';
 import { TripSpendingSlot } from '../../src/ui/slots/TripSpendingSlot.tsx';
 import { TripJournalSlot } from '../../src/ui/slots/TripJournalSlot.tsx';
+import { TripIdeasSlot } from '../../src/ui/slots/TripIdeasSlot.tsx';
+import { PlannedIdeas } from '../../src/ui/ideas.tsx';
 import { SharePlan } from '../../src/ui/SharePlan.tsx';
+import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
 import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
 
@@ -112,6 +116,7 @@ export default function TripScreen() {
   const trip = trips.find((x) => x.id === id);
   const partners = useMemo(() => overlapPartners(trip?.items ?? []), [trip]);
   const days = useMemo(() => (trip ? groupByDay(trip) : []), [trip]);
+  const cover = useMemo(() => (trip ? tripCover(trip) : null), [trip]);
   const listRef = useRef<FlatList<Day>>(null);
   const focusIndex = focusDay ? days.findIndex((d) => d.date === focusDay) : -1;
   const scrolled = useRef(false);
@@ -159,6 +164,8 @@ export default function TripScreen() {
         {day.items.map((it) => (
           <ItemRow key={it.id} item={it} overlapsWith={overlapTitles(partners, it.id) || undefined} onPress={() => router.push(`/item/${it.id}`)} />
         ))}
+        {/* T81: ideas planned for this day, as light "Planned" rows. */}
+        {trip ? <PlannedIdeas trip={trip} day={day.date} /> : null}
         {!day.items.length && !day.continuing.length ? <Body muted>{t('trip.dayEmpty')}</Body> : null}
         {adding === day.date ? (
           kindChooser(day.date)
@@ -168,7 +175,7 @@ export default function TripScreen() {
       </Card>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [adding, lang, t, theme, router, partners],
+    [adding, lang, t, theme, router, partners, trip],
   );
 
   if (!trip) {
@@ -205,7 +212,8 @@ export default function TripScreen() {
         }}
         ListHeaderComponent={
           <View style={{ gap: space.s, marginBottom: space.s }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: 16, color: theme.muted }}>{formatRange(trip.startDate, trip.endDate, lang)}</Text>
+            {/* T83: the trip's illustrated cover with its name and dates. */}
+            {cover ? <TripCoverHero scene={cover} title={trip.name} subtitle={formatRange(trip.startDate, trip.endDate, lang)} /> : null}
             {past ? (
               <Card>
                 <Label>{t('trips.phase.past')}</Label>
@@ -247,6 +255,7 @@ export default function TripScreen() {
               <Warning key={`${a.id}-${b.id}`} text={t('trip.warnClash', { a: a.title, b: b.title })} />
             ))}
             <TripJournalSlot trip={trip} />
+            <TripIdeasSlot trip={trip} />
             <TripSpendingSlot trip={trip} />
             <TripPackingSlot trip={trip} />
             <TripPlaces trip={trip} />

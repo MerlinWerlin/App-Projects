@@ -49,6 +49,8 @@ import { mapAvailable, SatchelMap, type MapPin } from '../../src/native/maps.tsx
 import { findToilets, type ToiletSearch } from '../../src/native/toilets.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
+import { clearNearestToilet, useNearestToiletRequest } from '../../src/state/nearestToilet.ts';
+import { nextFindNonce } from '../../src/core/followups89.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { dur, duration } from '../../src/theme/motion.ts';
 import { fonts, space } from '../../src/theme/tokens.ts';
@@ -90,7 +92,8 @@ export default function ToiletsScreen() {
   const [cities, setCities] = useState<CityMap[]>([]);
   const fade = useRef(new Animated.Value(1)).current;
   const seq = useRef(0);
-  const handledFind = useRef<string | null>(null);
+  const handledFind = useRef<Set<string>>(new Set());
+  const requested = useNearestToiletRequest();
 
   const [rawFilters, setRawFilters] = usePersisted<unknown>(FILTERS_KEY, NONE);
   const [rawSaved, setRawSaved] = usePersisted<unknown>(SAVED_KEY, NONE);
@@ -137,13 +140,15 @@ export default function ToiletsScreen() {
     await search({ kind: 'hotel', at: { lat: stay.lat, lon: stay.lon }, tz: stay.tz ?? deviceZone(), name: stay.name }, mine);
   }, [busy, stay, search]);
 
-  // Map tab "Nearest toilet": each new nonce starts one search.
+  // Map tab "Nearest toilet": each new nonce starts one search. T80: the in-memory request also reaches this tab when
+  // it is already open (its params may not change); a request made during a search runs once that search ends.
   useEffect(() => {
-    const f = typeof params.find === 'string' ? params.find : null;
-    if (!f || handledFind.current === f) return;
-    handledFind.current = f;
+    const f = nextFindNonce([requested, typeof params.find === 'string' ? params.find : null], handledFind.current, busy);
+    if (!f) return;
+    handledFind.current.add(f);
+    clearNearestToilet(f);
     nearMe();
-  }, [params.find, nearMe]);
+  }, [requested, params.find, nearMe, busy]);
 
   const done = phase.s === 'done' ? phase : null;
   const result = done?.result ?? null;
