@@ -56,6 +56,7 @@ import { PermissionNotice } from '../../src/ui/PermissionNotice.tsx';
 import { TripRouteDays, TripRoutePanel, useTripRoute } from '../../src/ui/TripRouteLayer.tsx';
 import { DaylightLine } from '../../src/ui/WeatherCard.tsx';
 import { placeKey } from '../../src/core/wayback.ts';
+import { requestNearestToilet } from '../../src/state/nearestToilet.ts';
 
 const CATS = parsePoiCategories(tagData);
 const SETS: PoiSet[] = [parsePoiSet(tokyoData, CATS), parsePoiSet(kyotoData, CATS)].filter((s): s is PoiSet => s !== null);
@@ -598,8 +599,9 @@ export default function MapScreen() {
       <View style={{ gap: space.s }}>
         <Button label={t('map.whereAmI')} hint={t('map.whereHint')} onPress={whereAmI} />
         <Button kind="secondary" icon="compass-outline" label={t('wayback.open')} hint={t('wayback.openHint')} onPress={() => router.push('/wayback')} />
-        {/* T79: opens the Toilets tab and starts one "near me" search (the nonce makes each tap a new search). */}
-        <Button kind="secondary" icon="male-female-outline" label={t('toiletplus.nearestToilet')} hint={t('toiletplus.nearestToiletHint')} onPress={() => router.navigate({ pathname: '/toilets', params: { find: String(Date.now()) } })} />
+        {/* T79: opens the Toilets tab and starts one "near me" search (the nonce makes each tap a new search). T80: the
+            nonce also goes through src/state/nearestToilet.ts, so it works when the Toilets tab is already open. */}
+        <Button kind="secondary" icon="male-female-outline" label={t('toiletplus.nearestToilet')} hint={t('toiletplus.nearestToiletHint')} onPress={() => router.navigate({ pathname: '/toilets', params: { find: requestNearestToilet() } })} />
         <Body muted>{t('map.whereExplain')}</Body>
         {loc.s === 'checking' ? (
           <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 15, color: theme.muted }}>

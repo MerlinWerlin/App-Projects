@@ -8,12 +8,14 @@ import { Text, View } from 'react-native';
 import { formatRange, formatTime, zoneCity } from '../core/format.ts';
 import { agendaBesideBrief } from '../core/daybrief.ts';
 import { clockPair, countdown, formatOffset, tripDays, tripRoute, type Countdown } from '../core/glance.ts';
+import type { CoverId } from '../core/covers.ts';
 import type { Trip } from '../core/model.ts';
 import type { T } from '../i18n/core.ts';
 import { useApp } from '../state/app.tsx';
 import { radius, shadowOf, space, typeScale } from '../theme/tokens.ts';
 import { IconBadge, ProgressBar, SectionCard, toneColours, type Tone } from './hero.tsx';
 import { KIND_ICON, KIND_TONE, kindKey } from './kinds.tsx';
+import { TripCover } from './TripCover.tsx';
 
 /** Short status for a trip: "In 12 days", "Tomorrow", "Starts today", "Day 3 of 9", "Finished". */
 export function countdownShort(t: T, c: Countdown): string {
@@ -55,8 +57,11 @@ export function useMinute() {
 
 const PHASE_TONE: Record<Countdown['kind'], Tone> = { upcoming: 'sea', today: 'accent', active: 'ok', past: 'ink' };
 
-/** The boarding-pass body of a trip row (the caller wraps it in its pressable and gives the spoken label). */
-export const TripPass = memo(function TripPass({ trip, today }: { trip: Trip; today: string }) {
+/**
+ * The boarding-pass body of a trip row (the caller wraps it in its pressable and gives the spoken label).
+ * T83: `cover` adds the trip's illustrated cover as a strip across the top.
+ */
+export const TripPass = memo(function TripPass({ trip, today, cover }: { trip: Trip; today: string; cover?: CoverId }) {
   const { theme, t, lang } = useApp();
   const c = countdown(trip, today);
   const route = tripRoute(trip);
@@ -74,7 +79,12 @@ export const TripPass = memo(function TripPass({ trip, today }: { trip: Trip; to
         shadowOf(theme, 'low'),
       ]}
     >
-      <View style={{ height: 6, backgroundColor: stripe, borderTopLeftRadius: radius.l, borderTopRightRadius: radius.l }} />
+      {cover ? (
+        <View style={{ borderTopLeftRadius: radius.l, borderTopRightRadius: radius.l, overflow: 'hidden' }}>
+          <TripCover scene={cover} aspectRatio={3.4} rounded={0} label={null} />
+        </View>
+      ) : null}
+      <View style={{ height: 6, backgroundColor: stripe, borderTopLeftRadius: cover ? 0 : radius.l, borderTopRightRadius: cover ? 0 : radius.l }} />
       <View style={{ padding: space.l, gap: space.m }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
           <Text numberOfLines={1} style={[typeScale.title, { color: theme.ink, flex: 1 }]}>

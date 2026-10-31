@@ -29,7 +29,7 @@ import {
 } from '../src/core/trips.ts';
 import { checkWallTime, isLocalDateTime, isValidZone } from '../src/core/tz.ts';
 import { removeAppFiles } from '../src/native/files.ts';
-import { pastedDraft } from '../src/state/pasteDraft.ts';
+import { markPasteSaved, pastedDraft } from '../src/state/pasteDraft.ts';
 import { useApp } from '../src/state/app.tsx';
 import { findItem, useTrips } from '../src/state/trips.tsx';
 import { space } from '../src/theme/tokens.ts';
@@ -110,7 +110,8 @@ export default function ItemEditScreen() {
     if (saving) return;
     setSaving(true);
     setSaveFailed(false);
-    const ok = await saveItem({ ...airport.apply(itemFromDraft(d, trip.id, prev)), attachments: files });
+    const item = { ...airport.apply(itemFromDraft(d, trip.id, prev)), attachments: files };
+    const ok = await saveItem(item);
     setSaving(false);
     if (!ok) {
       setSaveFailed(true);
@@ -119,6 +120,8 @@ export default function ItemEditScreen() {
     }
     // Saved: copies no longer listed (removed saved files, or ones added then removed here) go; the rest belong to the item.
     committed.current = true;
+    // T80: Paste a booking shows this card as "Saved" from now on.
+    if (pasted?.fingerprint) markPasteSaved(pasted.fingerprint, trip.id, item.id);
     removeAppFiles(droppedFiles([...initialFiles, ...addedFiles.current], files));
     leaving();
     router.back();

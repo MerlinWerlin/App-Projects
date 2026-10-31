@@ -45,6 +45,19 @@ import {
   type Spending,
   type Total,
 } from '../../src/core/spending.ts';
+import {
+  keepUnknown,
+  ME,
+  newTogetherDraft,
+  peopleOf,
+  resolveExpense,
+  splitFromDraft,
+  togetherDraftFromExpense,
+  validateTogether,
+  withSplit,
+  type TogetherDraft,
+  type TogetherError,
+} from '../../src/core/together.ts';
 import { addDays } from '../../src/core/tz.ts';
 import type { Key } from '../../src/i18n/en.ts';
 import { phoneCurrency } from '../../src/native/device.ts';
@@ -53,6 +66,7 @@ import { useTrips } from '../../src/state/trips.tsx';
 import { radius, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
 import { FadeInView, IconBadge, ProgressBar, type IconName, type Tone } from '../../src/ui/hero.tsx';
 import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, Screen, TextField, Warning } from '../../src/ui/kit.tsx';
+import { expenseTogetherLine, PayerSplitFields, TogetherSection, usePeople, type People } from '../../src/ui/together.tsx';
 
 const CATEGORY_KEYS: Record<ExpenseCategory, Key> = {
   food: 'spending.cat.food',
@@ -72,7 +86,8 @@ const CATEGORY_ICONS: Record<ExpenseCategory, IconName> = {
 };
 const CATEGORY_TONES: Record<ExpenseCategory, Tone> = { food: 'accent', transport: 'sea', stay: 'teal', activities: 'ok', shopping: 'warn', other: 'ink' };
 
-type Form = { prev?: Expense; draft: ExpenseDraft; errors: ExpenseError[] };
+// T82: `together` holds the paid-by / split fields (used when the trip has companions).
+type Form = { prev?: Expense; draft: ExpenseDraft; errors: ExpenseError[]; together: TogetherDraft; togetherErrors: TogetherError[] };
 
 export default function SpendingScreen() {
   const { tripId } = useLocalSearchParams<{ tripId: string }>();
@@ -101,6 +116,7 @@ function SpendingBody({ trip }: { trip: Trip }) {
   const [form, setForm] = useState<Form | null>(null);
   const [editingBudget, setEditingBudget] = useState(false);
   const money = useCallback((minor: number, code: string) => formatMoney(minor, code, lang), [lang]);
+  const people = usePeople(trip);
 
   /** Stores the changed trip; says so when the phone couldn't save it. */
   const save = async (next: Trip): Promise<boolean> => {
@@ -110,27 +126,34 @@ function SpendingBody({ trip }: { trip: Trip }) {
   };
 
   const openNew = () => {
-    setForm({ draft: newExpenseDraft(defaultDay(trip, todayIn(deviceZone())), suggestCurrency(s, phoneCurrency())), errors: [] });
+    setForm({ draft: newExpenseDraft(defaultDay(trip, todayIn(deviceZone())), suggestCurrency(s, phoneCurrency())), errors: [], together: newTogetherDraft(trip), togetherErrors: [] });
     list.current?.scrollToOffset({ offset: 0, animated: !reduceMotion });
   };
   const openEdit = useCallback(
     (e: Expense) => {
-      setForm({ prev: e, draft: draftFromExpense(e), errors: [] });
+      setForm({ prev: e, draft: draftFromExpense(e), errors: [], together: togetherDraftFromExpense(trip, e), togetherErrors: [] });
       list.current?.scrollToOffset({ offset: 0, animated: !reduceMotion });
     },
-    [reduceMotion],
+    [reduceMotion, trip],
   );
   const toRates = () => list.current?.scrollToEnd({ animated: !reduceMotion });
 
   const submit = async () => {
     if (!form) return;
     const errors = validateExpense(form.draft);
-    if (errors.length) {
-      setForm({ ...form, errors });
+    const order = peopleOf(trip);
+    const shared = order.length > 1;
+    const code = cleanCurrency(form.draft.currency);
+    // Someone removed while the form was open drops out of it (what they paid falls back to You).
+    const tg: TogetherDraft = { ...form.together, paidBy: order.includes(form.together.paidBy) ? form.together.paidBy : ME, people: form.together.people.filter((p) => order.includes(p)) };
+    const togetherErrors = shared ? validateTogether(tg, isCurrency(code) ? parseAmount(form.draft.amount, code) : null, code) : [];
+    if (errors.length || togetherErrors.length) {
+      setForm({ ...form, errors, together: tg, togetherErrors });
       AccessibilityInfo.announceForAccessibility(t('spec.form.checkFields'));
       return;
     }
-    const e = expenseFromDraft(form.draft, newId('exp'), form.prev);
+    const plain = expenseFromDraft(form.draft, newId('exp'), form.prev);
+    const e = keepUnknown(form.prev, shared ? withSplit(plain, tg.paidBy, splitFromDraft(tg, plain.currency)) : withSplit(plain, ME, null));
     if (await save(upsertExpense(trip, e))) {
       setForm(null);
       AccessibilityInfo.announceForAccessibility(t('spending.form.saved'));
@@ -169,9 +192,10 @@ function SpendingBody({ trip }: { trip: Trip }) {
         rates={s.rates}
         onEdit={openEdit}
         onDelete={confirmDelete}
+        togetherLine={togetherLine(item, people, t)}
       />
     ),
-    [sorted, home, s.rates, openEdit, confirmDelete],
+    [sorted, home, s.rates, openEdit, confirmDelete, people, t],
   );
 
   const header = (
@@ -184,6 +208,7 @@ function SpendingBody({ trip }: { trip: Trip }) {
       ) : (
         <Button label={t('spending.add')} hint={t('spending.addHint')} icon="add" onPress={openNew} />
       )}
+      <TogetherSection trip={trip} save={save} />
       {sorted.length ? (
         <View accessible accessibilityRole="header">
           <Label>{t('spending.list')}</Label>
@@ -284,6 +309,7 @@ const ExpenseRow = memo(function ExpenseRow({
   rates,
   onEdit,
   onDelete,
+  togetherLine,
 }: {
   expense: Expense;
   firstOfDay: boolean;
@@ -291,6 +317,8 @@ const ExpenseRow = memo(function ExpenseRow({
   rates: Record<string, number>;
   onEdit: (e: Expense) => void;
   onDelete: (e: Expense) => void;
+  /** T82: "Sam paid · split 3 ways" (null for a plain solo expense). */
+  togetherLine?: string | null;
 }) {
   const { t, theme, lang } = useApp();
   const amount = formatMoney(e.amount, e.currency, lang);
@@ -319,7 +347,7 @@ const ExpenseRow = memo(function ExpenseRow({
       >
         <PressableScale
           accessibilityRole="button"
-          accessibilityLabel={approx ? `${a11y}, ${approx}` : a11y}
+          accessibilityLabel={[a11y, approx, togetherLine].filter(Boolean).join(', ')}
           accessibilityHint={t('spending.row.hint')}
           onPress={() => onEdit(e)}
           style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.s }}
@@ -330,6 +358,11 @@ const ExpenseRow = memo(function ExpenseRow({
             <Text numberOfLines={1} style={[typeScale.small, { color: theme.muted }]}>
               {e.note ? `${category} · ${e.note}` : category}
             </Text>
+            {togetherLine ? (
+              <Text numberOfLines={1} style={[typeScale.small, { color: theme.teal }]}>
+                {togetherLine}
+              </Text>
+            ) : null}
           </View>
           {approx ? <Text style={[typeScale.small, { color: theme.muted, fontVariant: ['tabular-nums'] }]}>{approx}</Text> : null}
         </PressableScale>
@@ -426,6 +459,17 @@ function ExpenseForm({ trip, s, form, setForm, onSave }: { trip: Trip; s: Spendi
         </PressableScale>
       </View>
       {err('day') ? <Text style={[typeScale.small, { color: theme.danger }]}>{t('spending.err.day')}</Text> : null}
+
+      {peopleOf(trip).length > 1 ? (
+        <PayerSplitFields
+          trip={trip}
+          draft={form.together}
+          onChange={(together) => setForm({ ...form, together, togetherErrors: [] })}
+          amount={isCurrency(code) ? parseAmount(d.amount, code) : null}
+          currency={isCurrency(code) ? code : ''}
+          errors={form.togetherErrors}
+        />
+      ) : null}
 
       <TextField label={t('spending.form.note')} value={d.note} onChange={(v) => set({ note: v })} placeholder={t('spending.form.notePlaceholder')} />
       <Button label={t('spending.form.save')} hint={t('spending.form.saveHint')} icon="checkmark" onPress={onSave} />
@@ -672,4 +716,10 @@ function BudgetCard({ trip, s, editing, setEditing, save }: { trip: Trip; s: Spe
       )}
     </Card>
   );
+}
+
+/** T82: the expense row's "who paid / split" line for a shared expense, or null. */
+function togetherLine(e: Expense, people: People, t: ReturnType<typeof useApp>['t']): string | null {
+  const r = resolveExpense(e, people.order);
+  return expenseTogetherLine(r.payer, r.shares.length, r.together, people, t);
 }

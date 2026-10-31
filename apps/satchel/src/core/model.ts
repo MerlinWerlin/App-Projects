@@ -2,6 +2,7 @@
 // Times are stored as a wall-clock local time plus an IANA zone (what the ticket says), never as a bare UTC
 // instant, so "Depart 21:00 Tokyo" stays 21:00 Tokyo whatever zone the phone is in.
 
+import type { Idea } from './ideas.ts';
 import type { JournalEntry } from './journal.ts';
 import type { AirportInfo } from './leaveby.ts';
 
@@ -89,12 +90,40 @@ export type Trip = {
   expenses?: Expense[];
   /** T64 trip journal: per-day pages (absent on older trips). Read defensively in src/core/journal.ts. */
   journal?: JournalEntry[];
+  /** T81 places to go: per-trip ideas (absent on older trips). Read defensively in src/core/ideas.ts. */
+  ideas?: Idea[];
+  /** T82 travelling together: the people sharing costs besides "You" (names only, on this phone). Read defensively in src/core/together.ts. */
+  companions?: Companion[];
+  /** T82: settle-up payments marked as done ("Sam paid You A$20"). Read defensively in src/core/together.ts. */
+  settlements?: Settlement[];
+  /** T83: the cover scene the user picked (src/core/covers.ts COVER_SCENES); absent = automatic. An unknown id is ignored. */
+  cover?: string;
 };
 
 export const EXPENSE_CATEGORIES = ['food', 'transport', 'stay', 'activities', 'shopping', 'other'] as const;
 export type ExpenseCategory = (typeof EXPENSE_CATEGORIES)[number];
 /** Money is integer minor units of its own currency (cents, yen, fils); see src/core/spending.ts. */
-export type Expense = { id: string; amount: number; currency: string; category: ExpenseCategory; day: LocalDate; note?: string; createdAt?: string };
+export type Expense = {
+  id: string;
+  amount: number;
+  currency: string;
+  category: ExpenseCategory;
+  day: LocalDate;
+  note?: string;
+  createdAt?: string;
+  /** T82: who paid ('me' or a companion id). Absent: You. */
+  paidBy?: string;
+  /** T82: who shares the cost and how. Absent: nobody else (You carry it all, as before). */
+  split?: ExpenseSplit;
+};
+/** T82: 'me' is the phone's owner ("You"); companions have their own ids. */
+export type Companion = { id: string; name: string };
+export type SplitMode = 'equal' | 'shares' | 'exact';
+/** value: ignored for equal, a whole-number weight for shares, minor units of the expense's currency for exact. */
+export type SplitPart = { person: string; value: number };
+export type ExpenseSplit = { mode: SplitMode; parts: SplitPart[] };
+/** `from` paid `to` this amount (minor units of `currency`) to settle up. */
+export type Settlement = { id: string; from: string; to: string; amount: number; currency: string; day?: LocalDate; createdAt?: string };
 /** The trip's home currency (ISO 4217) and, when set, its spending limit in that currency's minor units. */
 export type Budget = { currency: string; amount?: number };
 

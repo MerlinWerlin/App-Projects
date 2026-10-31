@@ -1,15 +1,15 @@
 {
- "tests": 735,
+ "tests": 784,
  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
- "last_run": "2026-10-31 21:22 Sydney",
+ "last_run": "2026-10-31 23:21 Sydney",
  "stage": "owner-tested",
- "oversight_seen": 216,
- "headline": "Expanding: paste a booking to fill it in, step-by-step help when things go wrong, and a deeper Toilets tab with open now, filters and a map",
+ "oversight_seen": 217,
+ "headline": "Expanding: places to go on each trip, splitting costs with your travel partner, and illustrated trip covers",
  "next_for_owner": [
   "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
-  "Try Paste a booking on a trip (copy a confirmation email first), Emergency > When things go wrong, and Map > Nearest toilet with the new filters and map.",
+  "Open a trip: try the new cover picture, Places to go (add an idea and plan it for a day), and on Spending add your partner and split an expense.",
   "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
-  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (Y-AB are new) by commenting on this page."
+  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (AC-AF are new) by commenting on this page."
  ],
  "trial_kit": true,
  "next_stage": "release-prep"

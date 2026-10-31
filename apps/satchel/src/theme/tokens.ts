@@ -1,4 +1,6 @@
 // Design tokens from docs/PLAN.md §5. Screens take every colour from here (no raw colours in app/).
+import type { CoverPaint } from '../core/coverArt.ts';
+import type { CoverId } from '../core/covers.ts';
 export type Theme = {
   dark: boolean;
   paper: string;
@@ -172,3 +174,44 @@ export const space = { xs: 4, s: 8, m: 12, l: 16, xl: 24, xxl: 32 } as const;
 export const radius = { s: 8, m: 14, l: 20, xl: 28, pill: 999 } as const;
 /** Minimum touch target (points). */
 export const TOUCH = 48;
+
+// ---- T83 trip covers ----
+// One palette per illustrated scene (src/core/coverArt.ts): a day version for light mode and a dusk / night version
+// for dark mode. Slots: sky0 (top of the sky) -> sky1 (horizon), glow (sun, moon, stars, glints), far / mid / near
+// (layers back to front), accent (sea, roofs, pines), detail (windows, snow caps, wave lines).
+export type CoverPalette = Record<CoverPaint, string>;
+
+export const coverPalettes: { light: Record<CoverId, CoverPalette>; dark: Record<CoverId, CoverPalette> } = {
+  light: {
+    city: { sky0: '#8EC3E6', sky1: '#FBE3C4', glow: '#FFD27A', far: '#A9BED6', mid: '#3F5F86', near: '#22395A', accent: '#9CC3E0', detail: '#FFE9B8' },
+    mountains: { sky0: '#7DB9E8', sky1: '#E6F2F8', glow: '#FFE19A', far: '#9DB8D3', mid: '#4F7398', near: '#3C7A55', accent: '#1E4D3A', detail: '#FFFFFF' },
+    coast: { sky0: '#6FB6E3', sky1: '#FFE2BC', glow: '#FFD27A', far: '#7FA7C4', mid: '#C98B5A', near: '#F1D3A1', accent: '#2E86B5', detail: '#FFFFFF' },
+    oldtown: { sky0: '#9CCBEA', sky1: '#FCE8CF', glow: '#FFD27A', far: '#A9C29A', mid: '#F3E2C4', near: '#6B4A3A', accent: '#C4573A', detail: '#4A5B78' },
+    countryside: { sky0: '#8FC6EC', sky1: '#FDF0D2', glow: '#FFD27A', far: '#A8CBA0', mid: '#6FAE6A', near: '#3E7D4B', accent: '#C4573A', detail: '#FFF6E0' },
+    snow: { sky0: '#A7D3F2', sky1: '#EEF6FB', glow: '#FFE9A8', far: '#7F9DC2', mid: '#E3EEF7', near: '#FFFFFF', accent: '#2F5E4E', detail: '#FFFFFF' },
+    desert: { sky0: '#79B8E0', sky1: '#FCE3B5', glow: '#FFE08A', far: '#E3B884', mid: '#E6A55E', near: '#D08440', accent: '#3F6B3A', detail: '#FBE0B0' },
+    island: { sky0: '#6CC0EA', sky1: '#E8F7FA', glow: '#FFE08A', far: '#7FD8D0', mid: '#3E9A5A', near: '#F4DCA8', accent: '#1F8FBF', detail: '#2E5A3A' },
+  },
+  dark: {
+    city: { sky0: '#0A1430', sky1: '#3B2F5E', glow: '#F6E7C1', far: '#2B3866', mid: '#18224A', near: '#0C1330', accent: '#5A6FA8', detail: '#FFC864' },
+    mountains: { sky0: '#101A3A', sky1: '#4A3F6E', glow: '#F3E6C4', far: '#34406C', mid: '#222C52', near: '#14302A', accent: '#0B1F1B', detail: '#C9D4EC' },
+    coast: { sky0: '#1B2350', sky1: '#D9826A', glow: '#FFC27A', far: '#3A3F6E', mid: '#3E2C48', near: '#7A5E66', accent: '#24406E', detail: '#F6D9C2' },
+    oldtown: { sky0: '#0E1736', sky1: '#3E3466', glow: '#F4E6C2', far: '#2C3760', mid: '#5A4E6E', near: '#1E1A2E', accent: '#8E3E3A', detail: '#FFC864' },
+    countryside: { sky0: '#0F1A3A', sky1: '#3A4470', glow: '#F3E6C4', far: '#2F4A55', mid: '#22413F', near: '#142B28', accent: '#8E3E3A', detail: '#E8D9A8' },
+    snow: { sky0: '#0B1533', sky1: '#2E4470', glow: '#FFD58A', far: '#3A4C78', mid: '#8C9EC4', near: '#B8C6E2', accent: '#102A2A', detail: '#E6ECF8' },
+    desert: { sky0: '#1A1842', sky1: '#8A4A5E', glow: '#FFB870', far: '#5A3A5A', mid: '#7A4A50', near: '#5A3440', accent: '#20262A', detail: '#C88A6A' },
+    island: { sky0: '#0D1840', sky1: '#3D3A72', glow: '#F3E6C4', far: '#1E5866', mid: '#173A30', near: '#8A7466', accent: '#14305A', detail: '#0C1E1A' },
+  },
+};
+
+/** The palette for a scene in the current theme. */
+export const coverPalette = (theme: Theme, id: CoverId): CoverPalette => (theme.dark ? coverPalettes.dark : coverPalettes.light)[id];
+
+/**
+ * Scrim behind text laid over a cover (top-down gradient over the lower part: clear -> half -> deep navy). heroInk / heroMuted text on the
+ * bottom stop is AA in both themes whatever the scene underneath.
+ */
+export const coverScrim = {
+  light: { from: 'rgba(12, 20, 40, 0)', mid: 'rgba(12, 20, 40, 0.5)', to: 'rgba(12, 20, 40, 0.84)' },
+  dark: { from: 'rgba(4, 8, 20, 0)', mid: 'rgba(4, 8, 20, 0.55)', to: 'rgba(4, 8, 20, 0.86)' },
+} as const;

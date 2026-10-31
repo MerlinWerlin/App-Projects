@@ -26,9 +26,12 @@ import {
   type FileJournalEntry,
   type ImportJournalPhoto,
 } from './journal.ts';
+import { importIdeas, readFileIdeas } from './ideas.ts';
 import type { PackItem, PackList } from './packing.ts';
+import { readCover } from './covers.ts';
 import { readAirport } from './leaveby.ts';
 import { checkFileSpending } from './spending.ts';
+import { cleanFileTogether } from './together.ts';
 import { isLocalDateTime } from './tz.ts';
 
 export const TRIP_FILE_FORMAT = 'satchel-trip';
@@ -251,11 +254,18 @@ export function parseTripFile(data: unknown): ParseResult {
     if (!isObj(p) || !Array.isArray(p.items) || p.items.length > MAX_ROWS || !p.items.every(isPackItem)) return damaged('packing');
     packing = p as unknown as TripFile['packing'];
   }
-  const { items: _i, places: _p, demo, journal: rawJournal, ...tripFields } = t;
+  // T82: companions, payers, splits and settlements are optional; unreadable ones are dropped, never the trip.
+  const { items: _i, places: _p, demo, journal: rawJournal, ideas: rawIdeas, cover: rawCover, ...tripFields } = cleanFileTogether(t);
   const journal = readFileJournal(rawJournal);
+  // T81: ideas are optional (older files have none); unreadable rows are left out rather than refusing the file.
+  const ideas = readFileIdeas(rawIdeas);
+  // T83: the cover choice travels with the trip; a value that isn't a plain id is dropped (never refuses the file).
+  const cover = readCover(rawCover);
   const trip: FileTrip = {
     ...(tripFields as unknown as FileTrip),
     ...(journal ? { journal } : {}),
+    ...(ideas ? { ideas } : {}),
+    ...(cover ? { cover } : {}),
     id: isStr(t.id) ? t.id : '',
     homeTz: isStr(t.homeTz) ? t.homeTz : 'UTC',
     createdAt: isStr(t.createdAt) ? t.createdAt : '',
@@ -357,6 +367,10 @@ export function importTripFile(file: TripFile, newId: (prefix: string) => string
   const photoBytes = new Map((file.journal_photos ?? []).map((p) => [p.id, p.data_base64]));
   const { journal, files: journalFiles } = importJournalFile(fileJournal, newId, savedIds, photoBytes);
   if (journal) trip.journal = journal;
+  // T81: ideas get new ids too (their map spots are coordinates, so nothing to remap).
+  const ideas = importIdeas(file.trip.ideas, newId);
+  if (ideas) trip.ideas = ideas;
+  else delete trip.ideas;
   // T54: expenses get new ids like everything else.
   if (file.trip.expenses) trip.expenses = file.trip.expenses.map((e) => ({ ...e, id: newId('exp') }));
   const packing: PackList | null = file.packing

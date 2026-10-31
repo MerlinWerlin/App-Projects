@@ -7,6 +7,7 @@ import { useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { AccessibilityInfo, FlatList, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { tripCover } from '../../src/core/covers.ts';
 import { deviceZone, formatRange, todayIn } from '../../src/core/format.ts';
 import { countdown, dayPart, destinationZone, focusTrip, quickStats } from '../../src/core/glance.ts';
 import type { Trip } from '../../src/core/model.ts';
@@ -64,7 +65,7 @@ export default function TripsScreen() {
             accessibilityHint={t('spec41.trips.rowHint')}
             onPress={() => router.push(`/trip/${trip.id}`)}
           >
-            <TripPass trip={trip} today={today} />
+            <TripPass trip={trip} today={today} cover={tripCover(trip)} />
           </PressableScale>
         </FadeInView>
       );

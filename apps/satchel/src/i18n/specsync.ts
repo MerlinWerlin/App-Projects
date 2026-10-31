@@ -37,6 +37,12 @@ export const SPEC_SYNC_PREFIXES = [
   'airport.',
   'smartpack.',
   'f88.',
+  // T80: the run-89 features (T77 paste a booking, T78 when things go wrong, T79 toilets deeper) and the T80
+  // follow-ups.
+  'paste.',
+  'trouble.',
+  'toiletplus.',
+  'f89.',
 ] as const;
 
 /** Single keys mirrored as well: map.online, the T48 emergency fallback wording, the Toilets tab, home country. */

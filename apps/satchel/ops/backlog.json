@@ -1014,12 +1014,61 @@
   },
   {
    "id": "T80",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "follow-up"
    ],
    "title": "Run-89 follow-ups: add paste./trouble./toiletplus. to the spec catalogue sync; bigger airport table for Paste a booking + remember day/month choice + mark pasted cards saved; share-sheet entry into the paste parser (native build, with T14); check OFL text and font copyright lines against node_modules/@expo-google-fonts on the PC and generate full npm licence texts; remember the chosen weather stop; check Ionicons glyph names (help-buoy etc.) on device; Nearest toilet when Toilets tab already open; opening_hours with 'PH off' could show weekday hours with a holiday caveat",
+   "accept": "tests green",
+   "note": "Run 90 worker takes the cloud part: spec sync prefixes (paste./trouble./toiletplus.), bigger airport table, remember day/month choice, mark pasted cards saved, remember weather stop, Nearest toilet when Toilets is already open, 'PH off' holiday caveat. Left for later: share-sheet entry (native, T14), OFL/npm licence texts check on the PC, Ionicons glyph check on device.",
+   "commit": "47f9631"
+  },
+  {
+   "id": "T81",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "owner-D"
+   ],
+   "title": "Places to go (owner-1031 D, deepen Trips + Map): per-trip ideas list (name, category eat/see/do/shop/other, note, link text, optional map spot via the existing Set on map / saved place picker); plan an idea for a day so it shows on that day of the trip timeline and on See on map; 'Been there' tick offers a journal page; ideas travel in .satchel files (backward compatible); strings prefix ideas.",
+   "accept": "tests green (core ideas.ts + tripfile round trip); every string in src/i18n/en/ideas.ts; tokens only; timed fades, no springs",
+   "commit": "f802517"
+  },
+  {
+   "id": "T82",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "owner-D"
+   ],
+   "title": "Travelling together (owner-1031 D, deepen Spending): trip companions (names only, on this phone), each expense gets paid-by and split-between (equal / shares / exact amounts, integer minor units, exact remainders), balances per person in home currency via the trip's own rates (unconverted currencies shown apart), fewest settle-up transfers, mark a transfer settled, share settle-up as text; old expenses read as paid by you, split with no one; .satchel round trip; strings prefix together.",
+   "accept": "tests green (core together.ts: splits sum exactly, balances sum to zero, minimal transfers, legacy expenses); every string in src/i18n/en/together.ts",
+   "commit": "dd5b8f6"
+  },
+  {
+   "id": "T83",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "owner-D",
+    "design"
+   ],
+   "title": "Trip covers (owner-1031 D, less bland): original illustrated SVG trip covers (at least 8 scenes: city skyline, mountains, coast/beach, old town, countryside, snow, desert, island; built from shapes, no brands or landmarks that copy any artwork) with day/night palettes from tokens for light and dark; auto-picked from the trip's destinations (country/city keyword table in core, pure + tested) with a cover picker in trip edit; cover hero on the trip screen and a cover strip on Trips list cards; timed fades only, Reduce Motion respected; strings prefix covers.",
+   "accept": "tests green (core covers.ts pick rules, every scene id renders a component, tokens only via ui-check); every string in src/i18n/en/covers.ts",
+   "commit": "0d4abeb"
+  },
+  {
+   "id": "T84",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "title": "Run-90 follow-ups: seed 3-4 sample ideas on the demo trip; own a11y string for the idea category chips (not journal.); let ideas be ordered within a day on See on map; companion avatar colours stable per companion (not list order); Help line on settle-up after a rate change; tune automatic cover weights (France/Paris without a hotel address shows countryside); add ideas./together./covers. to the spec catalogue sync; still open from T80: share-sheet entry (native, T14), OFL/npm licence text check on the PC, Ionicons glyph check on device",
    "accept": "tests green"
   }
  ],
