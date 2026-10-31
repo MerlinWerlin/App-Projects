@@ -34,6 +34,10 @@ import {
   statusFor,
   toggleFilter,
   toggleSaved,
+  TOILET_FILTERS_KEY,
+  TOILET_RECENT_KEY,
+  TOILET_SAVED_KEY,
+  TOILET_VIEW_KEY,
   weekdayOf,
   type Arranged,
   type FilterId,
@@ -68,10 +72,6 @@ type Phase =
   | { s: 'denied'; state: Exclude<PermissionState, 'granted'> }
   | { s: 'unavailable'; servicesOff: boolean };
 
-const FILTERS_KEY = 'satchel.toiletplus.filters.v1';
-const SAVED_KEY = 'satchel.toiletplus.saved.v1';
-const RECENT_KEY = 'satchel.toiletplus.recent.v1';
-const VIEW_KEY = 'satchel.toiletplus.view.v1';
 const NONE: unknown = [];
 const LIST_VIEW: 'list' | 'map' = 'list';
 const MAP_HEIGHT = 380;
@@ -95,10 +95,10 @@ export default function ToiletsScreen() {
   const handledFind = useRef<Set<string>>(new Set());
   const requested = useNearestToiletRequest();
 
-  const [rawFilters, setRawFilters] = usePersisted<unknown>(FILTERS_KEY, NONE);
-  const [rawSaved, setRawSaved] = usePersisted<unknown>(SAVED_KEY, NONE);
-  const [rawRecent, setRawRecent] = usePersisted<unknown>(RECENT_KEY, NONE);
-  const [view, setView] = usePersisted<'list' | 'map'>(VIEW_KEY, LIST_VIEW);
+  const [rawFilters, setRawFilters] = usePersisted<unknown>(TOILET_FILTERS_KEY, NONE);
+  const [rawSaved, setRawSaved] = usePersisted<unknown>(TOILET_SAVED_KEY, NONE);
+  const [rawRecent, setRawRecent] = usePersisted<unknown>(TOILET_RECENT_KEY, NONE);
+  const [view, setView] = usePersisted<'list' | 'map'>(TOILET_VIEW_KEY, LIST_VIEW);
   const filters = useMemo(() => parseFilters(rawFilters), [rawFilters]);
   const saved = useMemo(() => parseSaved(rawSaved), [rawSaved]);
   const recent = useMemo(() => parseRecent(rawRecent), [rawRecent]);

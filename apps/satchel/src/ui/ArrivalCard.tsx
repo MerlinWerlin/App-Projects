@@ -16,6 +16,7 @@ import { lineLabelServices, type EmergencyTable, type NumberLine, type Service }
 import type { EssentialsTable } from '../core/essentials.ts';
 import { deviceZone, formatDay, zoneCity } from '../core/format.ts';
 import { formatOffset } from '../core/glance.ts';
+import { currencyName } from '../core/countrycurrency.ts';
 import type { Trip } from '../core/model.ts';
 import { formatMoney, rateToText } from '../core/spending.ts';
 import type { Key } from '../i18n/en.ts';
@@ -126,6 +127,9 @@ function ArrivalHero({ view: v, onDismiss }: { view: ArrivalView; onDismiss: () 
   const p = v.power;
   const e = v.emergency;
   const m = v.money;
+  // T96: the local currency named from the ISO 4217 table (name from the phone's Intl data when it has one).
+  const cur = v.currency;
+  const curName = cur ? currencyName(cur.code, lang) : null;
 
   return (
     <FadeInView>
@@ -155,8 +159,17 @@ function ArrivalHero({ view: v, onDismiss }: { view: ArrivalView; onDismiss: () 
             </View>
           ) : null}
 
-          <Panel title={t('arrival.moneyLabel')} icon="cash-outline">
-            {m ? (
+          <Panel title={cur ? t('f93.moneyTitle') : t('arrival.moneyLabel')} icon="cash-outline">
+            {cur ? (
+              <>
+                <Line strong>{curName ? t('f93.localCurrency', { name: curName, code: cur.code }) : t('f93.localCurrencyCode', { code: cur.code })}</Line>
+                {cur.also.length ? <Line>{t('f93.localCurrencyAlso', { codes: cur.also.join(', ') })}</Line> : null}
+                <Line muted>{t('f93.currencyVerify')}</Line>
+              </>
+            ) : null}
+            {cur?.sameAsHome ? (
+              <Line>{t('f93.sameAsHome')}</Line>
+            ) : m ? (
               <>
                 <Line strong>{t('arrival.moneyRate', { local: m.local, rate: rateToText(m.rate), home: m.home })}</Line>
                 {m.rows.map((r) => (
@@ -165,7 +178,7 @@ function ArrivalHero({ view: v, onDismiss }: { view: ArrivalView; onDismiss: () 
                 <Line muted>{m.rateDay ? t('arrival.moneyRateDay', { day: formatDay(m.rateDay, lang) }) : t('arrival.moneyRateNoDay')}</Line>
               </>
             ) : (
-              <Line>{v.moneyMissing === 'home' ? t('arrival.moneyNoHome') : t('arrival.moneyNoRate')}</Line>
+              <Line>{v.moneyMissing === 'home' ? t('arrival.moneyNoHome') : cur ? t('f93.noRateFor', { code: cur.code }) : t('arrival.moneyNoRate')}</Line>
             )}
             <View style={{ flexDirection: 'row' }}>
               <HeroButton label={t('arrival.openConverter')} hint={t('arrival.openConverterHint')} icon="calculator-outline" onPress={() => router.push({ pathname: '/convert', params: { tripId: v.tripId } })} />

@@ -5,6 +5,7 @@
 // when that stay has no saved address, so it never leads to an empty card.
 // T59: a Nearest help card (hospitals, pharmacies, police; app/help.tsx) right after the numbers card.
 // T78: a When things go wrong card (offline step-by-step guides; app/trouble/) right after Nearest help.
+// T97: an I'm safe / Share where I am card (app/safe.tsx) right after the numbers card, before Nearest help.
 // T55: the country essentials card (plugs, power, driving side, calling code, Bring an adapter?) for the same country.
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -24,6 +25,7 @@ import { callAndExplain, EmergencyCardView } from '../../src/ui/EmergencyCardVie
 import { FadeInView, HeroHeader, IconBadge } from '../../src/ui/hero.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
 import { NearestHelpCard } from '../../src/ui/NearestHelpCard.tsx';
+import { SafeCheckCard } from '../../src/ui/SafeCheckCard.tsx';
 import { TroubleCard } from '../../src/ui/TroubleCard.tsx';
 
 const TABLE = table as EmergencyTable;
@@ -157,6 +159,8 @@ export default function EmergencyScreen() {
         medicalShown={medicalShown}
         onToggleMedical={() => setMedicalShown(!medicalShown)}
       />
+
+      <SafeCheckCard />
 
       <NearestHelpCard />
 

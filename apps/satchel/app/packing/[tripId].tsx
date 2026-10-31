@@ -4,6 +4,8 @@
 // with checkboxes, add / rename (and, T76, set the quantity by hand) / remove, Add a template (items already there are skipped; ticks and renames stay),
 // Share list as text and Repack for home (unticks all, confirmed). Clothes counts follow the trip's nights read in
 // the bookings' own zones (src/core/smartpack.ts). Everything is stored on the phone under 'satchel.packing.v1'.
+// T99: bags (src/core/bags.ts, src/ui/bags.tsx): filter chips, a colourful bag header card, bag tips, Carry-on only,
+// Manage bags, and a bag picker + weight field in each row's edit card.
 // Free forever.
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams } from 'expo-router';
@@ -53,6 +55,7 @@ import {
   tripNightsInZones,
   type Suggestion,
 } from '../../src/core/smartpack.ts';
+import { assignBag, bagsOf, filterItems, NO_BAG, parseWeight, setItemWeight, validFilter, weightInput, type Bag, type BagFilter, type WeightUnit } from '../../src/core/bags.ts';
 import templateData from '../../src/content/packing_templates.json';
 import type { Trip } from '../../src/core/model.ts';
 import type { Key } from '../../src/i18n/en.ts';
@@ -65,6 +68,7 @@ import { useDiscardConfirm } from '../../src/ui/discardConfirm.ts';
 import { Body, Button, Card, EmptyState, Label, PressableScale, Screen, TextField, Title, ToggleRow } from '../../src/ui/kit.tsx';
 import { PackHero, SharePackingList, suggestionLabel, SuggestionsCard, nightsText, useSmartData } from '../../src/ui/SmartPack.tsx';
 import { useTempUnit } from '../../src/ui/WeatherCard.tsx';
+import { BagBadge, BagFilterChips, BagHeaderCard, BagHintsCard, BagSettingsCard, ItemBagPicker, ItemWeightField, useWeightUnit } from '../../src/ui/bags.tsx';
 
 const TEMPLATES: Template[] = parseTemplates(templateData).templates;
 const RULES = ruleIndex(TEMPLATES);
@@ -268,16 +272,22 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
   // An item typed but not added, or a rename still open, asks before leaving (src/ui/discardConfirm.ts). Ticks,
   // adds and removals are saved at once, so they never count as unsaved.
   const { gestureEnabled } = useDiscardConfirm(draft.trim() !== '' || editing !== null);
+  // T99: which bag the list shows ('all', 'none' or a bag id); a removed or hidden bag falls back to everything.
+  const [rawFilter, setFilter] = useState<BagFilter>('all');
+  const filter = validFilter(list, rawFilter);
+  const wUnit = useWeightUnit();
+  // Keyed on the bags' content, so ticking a row doesn't hand every row a new bag object (rows are memoised).
+  const bagsKey = JSON.stringify(list.bags ?? null);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const bagById = useMemo(() => new Map(bagsOf(list).map((b) => [b.id, b])), [bagsKey]);
 
   const p = progress(list);
   const rows = useMemo<Row[]>(() => {
-    const cat = new Map(p.categories.map((c) => [c.category, c]));
-    return groupByCategory(list).flatMap((g) => [
-      { type: 'header' as const, key: `h:${g.category}`, category: g.category, done: cat.get(g.category)?.done ?? 0, total: g.items.length },
+    return groupByCategory({ ...list, items: filterItems(list, filter) }).flatMap((g) => [
+      { type: 'header' as const, key: `h:${g.category}`, category: g.category, done: g.items.filter((i) => i.done).length, total: g.items.length },
       ...g.items.map((item) => ({ type: 'item' as const, key: `i:${item.id}`, item })),
     ]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [list]);
+  }, [list, filter]);
 
   const add = () => {
     const id = newId('pk');
@@ -289,7 +299,12 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
     }
     setError(undefined);
     setDraft('');
-    update((l) => addItem(l, label, id).list);
+    // T99: with one bag shown, a new item goes straight into that bag.
+    const into = filter !== 'all' && filter !== NO_BAG ? filter : null;
+    update((l) => {
+      const next = addItem(l, label, id).list;
+      return into ? assignBag(next, id, into) : next;
+    });
   };
 
   // "Repack for home": untick everything (nothing removed), after a confirm.
@@ -323,10 +338,14 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
           qty={qtyOf(row.item)}
           suggested={suggestedOf(row.item)}
           editing={editing === row.item.id}
+          bag={row.item.bag ? bagById.get(row.item.bag) ?? null : null}
+          unit={wUnit}
+          pickerList={editing === row.item.id ? list : null}
+          onPickBag={(bagId) => update((l) => assignBag(l, row.item.id, bagId))}
           onToggle={() => update((l) => toggleItem(l, row.item.id))}
           onEdit={() => setEditing(row.item.id)}
-          onRename={(label, own) => {
-            update((l) => setItemQty(renameItem(l, row.item.id, label), row.item.id, own));
+          onRename={(label, own, weightG) => {
+            update((l) => setItemWeight(setItemQty(renameItem(l, row.item.id, label), row.item.id, own), row.item.id, weightG));
             setEditing(null);
           }}
           onCancel={() => setEditing(null)}
@@ -336,7 +355,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
           }}
         />
       ),
-    [t, theme, editing, update, qtyOf, suggestedOf],
+    [t, theme, editing, update, qtyOf, suggestedOf, bagById, wUnit, list],
   );
 
   const header = (
@@ -351,6 +370,14 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
         />
         <Body muted>{t('smartpack.laundryNote', { nights: nightsText(t, nights).toLowerCase() })}</Body>
       </Card>
+      {p.total > 0 ? (
+        <>
+          <BagFilterChips list={list} filter={filter} onFilter={setFilter} qtyOf={qtyOf} />
+          <BagHeaderCard list={list} filter={filter} onFilter={setFilter} update={update} qtyOf={qtyOf} />
+          <BagHintsCard list={list} update={update} qtyOf={qtyOf} />
+        </>
+      ) : null}
+      <BagSettingsCard list={list} update={update} />
       <SuggestionsCard
         open={open}
         unit={unit}
@@ -396,7 +423,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
         data={rows}
         keyExtractor={(r) => r.key}
         renderItem={renderRow}
-        extraData={[editing, qtyOf, suggestedOf]}
+        extraData={[editing, qtyOf, suggestedOf, filter, wUnit]}
         ListHeaderComponent={header}
         ListFooterComponent={footer}
         keyboardShouldPersistTaps="handled"
@@ -411,6 +438,10 @@ const PackRow = memo(function PackRow({
   qty,
   suggested,
   editing,
+  bag,
+  unit,
+  pickerList,
+  onPickBag,
   onToggle,
   onEdit,
   onRename,
@@ -418,6 +449,11 @@ const PackRow = memo(function PackRow({
   onRemove,
 }: {
   item: PackItem;
+  /** T99: the row's bag (null: none yet), the weight unit, and the list for the bag picker (only while editing). */
+  bag: Bag | null;
+  unit: WeightUnit;
+  pickerList: PackList | null;
+  onPickBag: (bagId: string | null) => void;
   /** Shown quantity (worked out from the trip's nights and the laundry switch). */
   qty: number | undefined;
   /** T76: the worked-out quantity, ignoring a hand-set one ("Use suggested" goes back to it). */
@@ -425,13 +461,15 @@ const PackRow = memo(function PackRow({
   editing: boolean;
   onToggle: () => void;
   onEdit: () => void;
-  /** New label and the hand-set quantity (null: use the worked-out one). */
-  onRename: (label: string, own: number | null) => void;
+  /** New label, the hand-set quantity (null: use the worked-out one) and the weight of one in grams (null: none). */
+  onRename: (label: string, own: number | null, weightG: number | null) => void;
   onCancel: () => void;
   onRemove: () => void;
 }) {
-  const { t, theme } = useApp();
+  const { t, theme, lang } = useApp();
   const [name, setName] = useState(item.label);
+  const [weight, setWeight] = useState(weightInput(item.weightG, unit, lang));
+  const [weightBad, setWeightBad] = useState(false);
   // T76: quantity editing. null = no hand-set quantity (the row shows the worked-out one, if any).
   const [own, setOwn] = useState<number | null>(item.userQty ?? null);
   const shown = own ?? suggested;
@@ -482,9 +520,28 @@ const PackRow = memo(function PackRow({
             onPress={() => setOwn(null)}
           />
         ) : null}
+        {pickerList ? <ItemBagPicker list={pickerList} item={item} onPick={onPickBag} /> : null}
+        <ItemWeightField
+          value={weight}
+          onChange={(v) => {
+            setWeight(v);
+            if (weightBad) setWeightBad(false);
+          }}
+          error={weightBad}
+        />
         <View style={{ flexDirection: 'row', gap: space.s }}>
           <View style={{ flex: 1 }}>
-            <Button label={t('common.save')} onPress={() => onRename(name, own)} />
+            <Button
+              label={t('common.save')}
+              onPress={() => {
+                const g = parseWeight(weight, unit, lang);
+                if (g === null) {
+                  setWeightBad(true);
+                  return;
+                }
+                onRename(name, own, g ?? null);
+              }}
+            />
           </View>
           <View style={{ flex: 1 }}>
             <Button
@@ -493,6 +550,8 @@ const PackRow = memo(function PackRow({
               onPress={() => {
                 setName(item.label);
                 setOwn(item.userQty ?? null);
+                setWeight(weightInput(item.weightG, unit, lang));
+                setWeightBad(false);
                 onCancel();
               }}
             />
@@ -513,17 +572,19 @@ const PackRow = memo(function PackRow({
         style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.xs }}
       >
         <Ionicons name={item.done ? 'checkbox' : 'square-outline'} size={26} color={item.done ? theme.ok : theme.muted} />
-        <Text
-          style={{
-            flex: 1,
-            fontFamily: fonts.body,
-            fontSize: 16,
-            color: item.done ? theme.muted : theme.ink,
-            textDecorationLine: item.done ? 'line-through' : 'none',
-          }}
-        >
-          {item.label}
-        </Text>
+        <View style={{ flex: 1, gap: 2 }}>
+          <Text
+            style={{
+              fontFamily: fonts.body,
+              fontSize: 16,
+              color: item.done ? theme.muted : theme.ink,
+              textDecorationLine: item.done ? 'line-through' : 'none',
+            }}
+          >
+            {item.label}
+          </Text>
+          <BagBadge bag={bag} weightG={item.weightG} unit={unit} />
+        </View>
         {qty ? <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.muted, fontVariant: ['tabular-nums'] }}>{t('packing.qty', { qty })}</Text> : null}
       </PressableScale>
       <PressableScale
@@ -533,6 +594,8 @@ const PackRow = memo(function PackRow({
         onPress={() => {
           setName(item.label);
           setOwn(item.userQty ?? null);
+          setWeight(weightInput(item.weightG, unit, lang));
+          setWeightBad(false);
           onEdit();
         }}
         style={{ width: TOUCH, alignItems: 'center' }}

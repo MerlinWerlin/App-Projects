@@ -28,7 +28,9 @@ import {
 } from './journal.ts';
 import { importIdeas, readFileIdeas } from './ideas.ts';
 import { importTodos, readFileTodos } from './todos.ts';
+import { importDayPlans, readFileDayPlans } from './dayplan.ts';
 import type { PackItem, PackList } from './packing.ts';
+import { cleanBagData } from './bags.ts';
 import { readCover } from './covers.ts';
 import { readAirport } from './leaveby.ts';
 import { checkFileSpending } from './spending.ts';
@@ -255,10 +257,11 @@ export function parseTripFile(data: unknown): ParseResult {
   if (data.packing !== undefined) {
     const p = data.packing;
     if (!isObj(p) || !Array.isArray(p.items) || p.items.length > MAX_ROWS || !p.items.every(isPackItem)) return damaged('packing');
-    packing = p as unknown as TripFile['packing'];
+    // T99: bags, row bag links and weights are optional (older files have none); junk is dropped, never the file.
+    packing = cleanBagData(p as unknown as Omit<PackList, 'tripId'>);
   }
   // T82: companions, payers, splits and settlements are optional; unreadable ones are dropped, never the trip.
-  const { items: _i, places: _p, demo, journal: rawJournal, ideas: rawIdeas, cover: rawCover, todos: rawTodos, ...tripFields } = cleanFileTogether(t);
+  const { items: _i, places: _p, demo, journal: rawJournal, ideas: rawIdeas, cover: rawCover, todos: rawTodos, dayPlans: rawDayPlans, ...tripFields } = cleanFileTogether(t);
   const journal = readFileJournal(rawJournal);
   // T81: ideas are optional (older files have none); unreadable rows are left out rather than refusing the file.
   const ideas = readFileIdeas(rawIdeas);
@@ -266,12 +269,15 @@ export function parseTripFile(data: unknown): ParseResult {
   const cover = readCover(rawCover);
   // T93: to-dos are optional too; unreadable rows are left out.
   const todos = readFileTodos(rawTodos);
+  // T98: day plans are optional; unreadable rows and references are left out.
+  const dayPlans = readFileDayPlans(rawDayPlans);
   const trip: FileTrip = {
     ...(tripFields as unknown as FileTrip),
     ...(journal ? { journal } : {}),
     ...(ideas ? { ideas } : {}),
     ...(cover ? { cover } : {}),
     ...(todos ? { todos } : {}),
+    ...(dayPlans ? { dayPlans } : {}),
     id: isStr(t.id) ? t.id : '',
     homeTz: isStr(t.homeTz) ? t.homeTz : 'UTC',
     createdAt: isStr(t.createdAt) ? t.createdAt : '',
@@ -339,6 +345,7 @@ export function importTripFile(file: TripFile, newId: (prefix: string) => string
   };
   const byPayload = new Map(file.attachments.map((p) => [p.id, p]));
   const files: ImportFile[] = [];
+  const itemIds = new Map<string, string>();
   const items: Item[] = file.items.map((it) => {
     const { attachments: refs, from, to, place, ...fields } = it;
     const attachments: Attachment[] = refs.map((r) => {
@@ -351,6 +358,7 @@ export function importTripFile(file: TripFile, newId: (prefix: string) => string
       return { ...meta, id, uri: '', ...(hasCrop ? { qrCropUri: '' } : {}) };
     });
     const out: Item = { ...fields, id: newId('item'), tripId, attachments };
+    itemIds.set(it.id, out.id);
     const f = remapPlace(from);
     const tt = remapPlace(to);
     const pl = remapPlace(place);
@@ -377,6 +385,11 @@ export function importTripFile(file: TripFile, newId: (prefix: string) => string
   const ideas = importIdeas(file.trip.ideas, newId);
   if (ideas) trip.ideas = ideas;
   else delete trip.ideas;
+  // T98: day plans point at the new idea, booking and saved place ids.
+  const ideaIds = new Map((file.trip.ideas ?? []).map((i, n) => [i.id, ideas?.[n]?.id ?? ''] as [string, string]).filter(([, v]) => v));
+  const dayPlans = importDayPlans(file.trip.dayPlans, { ideas: ideaIds, items: itemIds, places: savedIds });
+  if (dayPlans) trip.dayPlans = dayPlans;
+  else delete trip.dayPlans;
   // T93: to-dos get new ids; suggestion ticks are keyed by what they are about, so nothing to remap.
   const todos = importTodos(file.trip.todos, newId);
   if (todos) trip.todos = todos;

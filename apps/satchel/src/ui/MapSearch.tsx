@@ -6,13 +6,15 @@
 // OpenStreetMap result is listed. No network.
 import { useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Linking, Text, View } from 'react-native';
+import { AccessibilityInfo, Linking, Text, View } from 'react-native';
 import { ideaEntries, bookingEntries, hitDistance, MAPSEARCH_RECENTS_KEY, needsOsmCredit, packPlaceEntries, parseRecents, pinEntries, prepare, pushRecent, sampleEntries, savedEntries, search, searchState, toiletEntries, type Labels, type SearchEntry, type SearchHit, type SearchKind } from '../core/mapsearch.ts';
 import { isMapCategory, type LatLon, type PoiSet } from '../core/poi.ts';
 import { appleMapsWalkUrl } from '../core/toilets.ts';
-import { parseRecent as parseRecentToilets, parseSaved as parseSavedToilets } from '../core/toiletplus.ts';
+// The Toilets tab's own stores (saved toilets, recently used), keys shared from src/core/toiletplus.ts.
+import { parseRecent as parseRecentToilets, parseSaved as parseSavedToilets, TOILET_RECENT_KEY, TOILET_SAVED_KEY } from '../core/toiletplus.ts';
 import { cardinalKey, parsePins, pinName, WAYBACK_PINS_KEY } from '../core/wayback.ts';
 import type { Key } from '../i18n/en.ts';
+import { haptic } from '../native/device.ts';
 import { clearSearchPackCache, packPois, type PackPois } from '../native/searchPacks.ts';
 import { useApp } from '../state/app.tsx';
 import { usePersisted } from '../state/persisted.ts';
@@ -23,9 +25,6 @@ import { kindKey } from './kinds.tsx';
 import { Body, Button, Card, Label, PressableScale, TextField } from './kit.tsx';
 
 const NONE: unknown = [];
-/** The Toilets tab's stores (app/(tabs)/toilets.tsx): saved toilets and the recently used list, both on the phone. */
-const TOILET_SAVED_KEY = 'satchel.toiletplus.saved.v1';
-const TOILET_RECENT_KEY = 'satchel.toiletplus.recent.v1';
 const SHOWN = 20;
 
 const KIND_ICON: Record<SearchKind, { icon: IconName; tone: Tone }> = {
@@ -40,7 +39,11 @@ const KIND_ICON: Record<SearchKind, { icon: IconName; tone: Tone }> = {
 
 const kindLabelKey = (k: SearchKind): Key => `mapsearch.kind.${k}`;
 
-export function MapSearch({ sets, from, installedKey, onPick }: { sets: readonly PoiSet[]; from: LatLon | null; installedKey: string; onPick: (hit: SearchHit | null) => void }) {
+/**
+ * `reveal` (T96): the Map bumps it when its search pin is tapped; the picked result's card then opens again (fades in
+ * afresh) and is announced, so the pin and the card stay one thing.
+ */
+export function MapSearch({ sets, from, installedKey, onPick, reveal = 0 }: { sets: readonly PoiSet[]; from: LatLon | null; installedKey: string; onPick: (hit: SearchHit | null) => void; reveal?: number }) {
   const { t, theme } = useApp();
   const router = useRouter();
   const { trips } = useTrips();
@@ -54,6 +57,14 @@ export function MapSearch({ sets, from, installedKey, onPick }: { sets: readonly
   const [rawSavedToilets] = usePersisted<unknown>(TOILET_SAVED_KEY, NONE);
   const [rawRecentToilets] = usePersisted<unknown>(TOILET_RECENT_KEY, NONE);
   const recents = useMemo(() => parseRecents(rawRecents), [rawRecents]);
+  // The search pin was tapped on the map: the card below is the pin's card.
+  useEffect(() => {
+    if (reveal <= 0 || !picked) return;
+    haptic.tap();
+    AccessibilityInfo.announceForAccessibility(t('f93.pinOpened', { name: picked.name }));
+    // Only when the map asks again, not when the pick changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reveal]);
   const typed = query.trim() !== '';
 
   // City packs are read from the phone the first time something is typed, and again when the downloads change.
@@ -145,7 +156,7 @@ export function MapSearch({ sets, from, installedKey, onPick }: { sets: readonly
       {typed ? <Button kind="quiet" icon="close-outline" label={t('mapsearch.clearQuery')} hint={t('mapsearch.clearQueryHint')} onPress={() => setQuery('')} /> : null}
 
       {picked ? (
-        <FadeInView key={picked.key}>
+        <FadeInView key={`${picked.key}:${reveal}`}>
           <Card>
             <Label>{t('mapsearch.picked')}</Label>
             <Text accessibilityRole="header" style={[typeScale.bodyStrong, { color: theme.ink }]}>

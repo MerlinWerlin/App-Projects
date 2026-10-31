@@ -1,5 +1,6 @@
 // Packing lists: one per trip, started from one or more templates (src/content/packing_templates.json) or empty.
 // Pure and immutable: every edit returns a new list. The UI owns persistence (key 'satchel.packing.v1').
+import type { Bag } from './bags.ts';
 import type { PackingItem, PackingList, Trip } from './model.ts';
 import { zonesReadable } from './timeline.ts';
 import { daysBetween, minutesBetween } from './tz.ts';
@@ -61,6 +62,12 @@ export type PackItem = PackingItem & {
   suggestionId?: string;
   /** T76: a quantity the traveller set by hand; it wins over the worked-out one until they go back to the suggestion. */
   userQty?: number;
+  /** T99: the bag it goes in (a Bag id on this list, src/core/bags.ts); absent until sorted into a bag. */
+  bag?: string;
+  /** T99: weight of one of it, in grams (the bag tally multiplies by the quantity). */
+  weightG?: number;
+  /** T99: the hold bag "Carry-on only" moved it out of, so switching that off puts it back. */
+  movedFrom?: string;
 };
 export type PackList = Omit<PackingList, 'items'> & {
   items: PackItem[];
@@ -69,6 +76,10 @@ export type PackList = Omit<PackingList, 'items'> & {
   dismissed?: string[];
   /** T75: "Laundry on the trip" caps clothes quantities (src/core/smartpack.ts). */
   laundry?: boolean;
+  /** T99: built-in and own bags (src/core/bags.ts); absent means the three built-in bags. */
+  bags?: Bag[];
+  /** T99: "Carry-on only": the hold bags are emptied into the carry-on and hidden. */
+  carryOnOnly?: boolean;
 };
 /** Stored under 'satchel.packing.v1': tripId -> list. */
 export type PackStore = Record<string, PackList>;

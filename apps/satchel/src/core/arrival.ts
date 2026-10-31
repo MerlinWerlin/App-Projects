@@ -1,8 +1,10 @@
 // T95 Arrival card: when a trip reaches a new country (today's stop by the bookings, or the first booking there
 // lands later today), a "Welcome to <country>" card pulls together what Satchel already holds offline:
 //   - local time there and the difference from home (the trip's home zone, else the phone's)
-//   - the traveller's own saved rate (Spending / converter) with what 10 / 50 / 100 is worth. Satchel bundles no
-//     country -> currency table, so the currency is the trip's own: the one spent on days in this country, else the
+//   - the local currency, named from the ISO 4217 country table (src/core/countrycurrency.ts, T96), and the
+//     traveller's own saved rate (Spending / converter) with what 10 / 50 / 100 is worth. With a table currency the
+//     quick rows use it (or another currency ISO lists for the country) only when a rate is saved for it; a country
+//     the table has no currency for falls back to the trip's own: the one spent on days in this country, else the
 //     converter's first choice. No rate or no home currency: money is null and the card offers the converter.
 //   - plugs, voltage and driving side from src/content/country_essentials.json (always "verify locally")
 //   - emergency numbers from src/content/emergency_numbers.json (always "verify locally")
@@ -12,6 +14,7 @@
 // is a list of "tripId|ISO" strings kept on the phone (usePersisted). Missing data is null, never guessed. A trip
 // that never leaves the home country has no countries and shows nothing. Pure TypeScript; Node runs it directly.
 import { convertAmount, defaultLocal, rateDates } from './convert.ts';
+import { currenciesOf, currencyForCountry } from './countrycurrency.ts';
 import { countryForZone, displayRow, FALLBACK_NUMBER, findCountry, type EmergencyTable, type NumberLine } from './emergency.ts';
 import { displayEssentials, findEssentials, type DrivingSide, type EssentialsTable } from './essentials.ts';
 import { clockPair } from './glance.ts';
@@ -173,6 +176,8 @@ export type ArrivalView = {
   tone: ArrivalTone;
   clock: { time: string; homeTime: string; homeZone: string; diffMinutes: number } | null;
   money: ArrivalMoney | null;
+  /** The local currency from the ISO 4217 table (T96): main code first, plus any others listed; null when unknown. */
+  currency: { code: string; also: string[]; sameAsHome: boolean } | null;
   /** Home currency and rate: what the card is missing for the money row (it offers the converter). */
   moneyMissing: 'home' | 'rate' | null;
   power: ArrivalPower | null;
@@ -197,15 +202,27 @@ function stepScale(rate: number): number {
   return m;
 }
 
-/** The trip's currency for this country: most spent (with a rate) on days the trip is there, else the converter's first. */
-function moneyFor(trip: Trip, c: TripCountry | undefined): { money: ArrivalMoney | null; missing: 'home' | 'rate' | null } {
+/**
+ * The money row. A country in the ISO 4217 table: the first of its currencies with a saved rate (none: 'rate'; one of
+ * them is the home currency: no row, nothing missing). Otherwise the trip's own currency for this country: most spent
+ * (with a rate) on days the trip is there, else the converter's first.
+ */
+function moneyFor(trip: Trip, iso2: string, c: TripCountry | undefined): { money: ArrivalMoney | null; missing: 'home' | 'rate' | null } {
   const s = readSpending(trip);
   const home = s.budget?.currency ?? null;
   if (!home) return { money: null, missing: 'home' };
-  const spent = new Map<string, number>();
-  if (c) for (const e of s.expenses) if (e.currency !== home && rateFor(e.currency, home, s.rates) != null && e.day >= c.firstDay && e.day <= c.lastDay) spent.set(e.currency, (spent.get(e.currency) ?? 0) + 1);
-  const ranked = [...spent.entries()].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
-  const local = ranked[0]?.[0] ?? defaultLocal(s, home);
+  const named = currencyForCountry(iso2);
+  let local: string | null;
+  if (named) {
+    const codes = currenciesOf(named);
+    if (codes.includes(home)) return { money: null, missing: null };
+    local = codes.find((x) => rateFor(x, home, s.rates) != null) ?? null;
+  } else {
+    const spent = new Map<string, number>();
+    if (c) for (const e of s.expenses) if (e.currency !== home && rateFor(e.currency, home, s.rates) != null && e.day >= c.firstDay && e.day <= c.lastDay) spent.set(e.currency, (spent.get(e.currency) ?? 0) + 1);
+    const ranked = [...spent.entries()].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
+    local = ranked[0]?.[0] ?? defaultLocal(s, home);
+  }
   const rate = local ? rateFor(local, home, s.rates) : null;
   if (!local || rate == null) return { money: null, missing: 'rate' };
   const m = stepScale(rate);
@@ -260,7 +277,9 @@ export function arrivalView(
   const lang = languageForCountry(tables.phrases, a.iso2);
   const cards = lang ? (['hello', 'thanks'] as const).map((id) => phraseCard(tables.phrases, lang, id)).filter((x): x is PhraseCard => x !== null) : [];
 
-  const { money, missing } = moneyFor(trip, c);
+  const { money, missing } = moneyFor(trip, a.iso2, c);
+  const named = currencyForCountry(a.iso2);
+  const homeCur = readSpending(trip).budget?.currency ?? null;
   return {
     tripId: trip.id,
     tripName: trip.name,
@@ -272,6 +291,7 @@ export function arrivalView(
     tone: ARRIVAL_TONES[tileSeed(a.iso2) % ARRIVAL_TONES.length],
     clock: cp ? { time: cp.destTime, homeTime: cp.homeTime, homeZone: hz, diffMinutes: cp.diffMinutes } : null,
     money,
+    currency: named ? { code: named.code, also: [...(named.also ?? [])], sameAsHome: !!homeCur && currenciesOf(named).includes(homeCur) } : null,
     moneyMissing: missing,
     power,
     emergency,

@@ -37,6 +37,7 @@ import { ArrivalCard } from '../../src/ui/ArrivalCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
 import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
+import { PlanDayButton } from '../../src/ui/PlanDayButton.tsx';
 
 const DEMO_INTRO_KEY = 'satchel.demoIntro.done.v1';
 const NOT_DONE = false;
@@ -163,6 +164,8 @@ export default function TripScreen() {
           <View accessible accessibilityRole="header" style={{ flex: 1 }}>
             <Label>{formatDay(day.date, lang)}</Label>
           </View>
+          {/* T98: a walking plan for this day. */}
+          {trip ? <PlanDayButton tripId={trip.id} day={day.date} /> : null}
           {/* T89: add this day's bookings to Calendar. */}
           {trip && (day.items.length || day.continuing.length) ? <AddToCalendar trip={trip} scope={{ kind: 'day', date: day.date }} compact /> : null}
         </View>

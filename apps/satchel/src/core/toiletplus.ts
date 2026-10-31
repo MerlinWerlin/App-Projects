@@ -6,6 +6,15 @@ import { hoursStatusAt, type HoursStatus } from './openinghours.ts';
 import { haversineMeters, type LatLon } from './poi.ts';
 import { isAlwaysOpen, nearestToilets, type Toilet, type ToiletHit } from './toilets.ts';
 
+// ------------------------------------------------------------------------------------------------- storage keys
+
+/** The Toilets tab's stores on the phone (usePersisted). One home for them, so other screens (Map search) read the
+ * same lists instead of repeating the key strings. Changing a value loses what travellers already saved. */
+export const TOILET_FILTERS_KEY = 'satchel.toiletplus.filters.v1';
+export const TOILET_SAVED_KEY = 'satchel.toiletplus.saved.v1';
+export const TOILET_RECENT_KEY = 'satchel.toiletplus.recent.v1';
+export const TOILET_VIEW_KEY = 'satchel.toiletplus.view.v1';
+
 // ------------------------------------------------------------------------------------------------------ filters
 
 export const FILTERS = ['free', 'wheelchair', 'changingTable', 'openNow', 'unisex'] as const;

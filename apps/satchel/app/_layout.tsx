@@ -80,6 +80,7 @@ function Shell() {
           <Stack.Screen name="ideas/[tripId]" options={{ ...header, title: t('ideas.title') }} />
           <Stack.Screen name="todos/[tripId]" options={{ ...header, title: t('todos.title') }} />
           <Stack.Screen name="recap/[tripId]" options={{ ...header, title: t('recap.route') }} />
+          <Stack.Screen name="dayplan/[tripId]" options={{ ...header, title: t('dayplan.route') }} />
           <Stack.Screen name="idea-edit" options={{ ...header, presentation: 'modal', title: t('ideas.edit.newTitle') }} />
           <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
           <Stack.Screen name="licences" options={{ ...header, title: t('licences.title') }} />
@@ -89,6 +90,7 @@ function Shell() {
           <Stack.Screen name="units" options={{ ...header, title: t('units.route') }} />
           <Stack.Screen name="travels" options={{ ...header, title: t('travels.route') }} />
           <Stack.Screen name="jetlag" options={{ ...header, title: t('jetlag.route') }} />
+          <Stack.Screen name="safe" options={{ ...header, title: t('safe.route') }} />
           <Stack.Screen name="wayback" options={{ ...header, title: t('wayback.route') }} />
           <Stack.Screen name="paste-booking" options={{ ...header, title: t('paste.route') }} />
           <Stack.Screen name="trouble/index" options={{ ...header, title: t('trouble.route') }} />
