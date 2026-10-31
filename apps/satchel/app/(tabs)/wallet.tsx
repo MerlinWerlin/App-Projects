@@ -18,6 +18,7 @@ import { radius, shadowOf, space, typeScale } from '../../src/theme/tokens.ts';
 import { FadeInView, HeroHeader, IconBadge, QuickAction, toneColours } from '../../src/ui/hero.tsx';
 import { KIND_ICON, KIND_TONE, kindKey } from '../../src/ui/kinds.tsx';
 import { Button, EmptyState, Label, PressableScale } from '../../src/ui/kit.tsx';
+import { WalletCards } from '../../src/ui/loyaltyCards.tsx';
 import { WalletVaultSlot } from '../../src/ui/slots/WalletVaultSlot.tsx';
 
 type Row =
@@ -177,6 +178,8 @@ export default function WalletScreen() {
             <QuickAction icon="people-outline" tone="ok" label={t('convert.q.split')} hint={t('convert.q.splitHint')} onPress={() => router.push({ pathname: '/convert', params: { section: 'split' } })} />
           </View>
           <Button kind="secondary" icon="chatbubbles-outline" label={t('phrases.walletEntry')} hint={t('phrases.walletEntryHint')} onPress={() => router.push('/phrases')} />
+          {/* T87: membership cards, on this phone only. */}
+          <WalletCards />
         </View>
       }
       ListEmptyComponent={

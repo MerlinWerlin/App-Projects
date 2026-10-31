@@ -241,12 +241,13 @@ export function TextField({
 }
 
 /** A selectable chip (radio semantics). */
-export function Chip({ label, selected, onPress, icon }: { label: string; selected: boolean; onPress: () => void; icon?: ReactNode }) {
+export function Chip({ label, selected, onPress, icon, a11yLabel, hint }: { label: string; selected: boolean; onPress: () => void; icon?: ReactNode; a11yLabel?: string; hint?: string }) {
   const { theme } = useApp();
   return (
     <PressableScale
       accessibilityRole="radio"
-      accessibilityLabel={label}
+      accessibilityLabel={a11yLabel ?? label}
+      accessibilityHint={hint}
       accessibilityState={{ selected, checked: selected }}
       onPress={onPress}
       style={{

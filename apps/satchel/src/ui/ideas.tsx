@@ -5,9 +5,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { memo, useCallback, useState } from 'react';
-import { Alert, Linking, ScrollView, Text, View } from 'react-native';
+import { AccessibilityInfo, Alert, Linking, ScrollView, Text, View } from 'react-native';
 import { formatDay } from '../core/format.ts';
-import { IDEA_CATEGORIES, ideasOn, ideaJournalDay, setIdeaDone, webLink, type Idea, type IdeaCategory, type IdeaFilter } from '../core/ideas.ts';
+import { canMoveIdea, IDEA_CATEGORIES, ideaSpot, ideasOn, ideaJournalDay, moveIdea, setIdeaDone, webLink, type Idea, type IdeaCategory, type IdeaFilter } from '../core/ideas.ts';
 import { entriesOn } from '../core/journal.ts';
 import type { Trip } from '../core/model.ts';
 import type { Key } from '../i18n/en.ts';
@@ -41,11 +41,19 @@ export function CategoryFilter({ value, counts, total, onChange }: { value: Idea
       accessibilityLabel={t('ideas.filter.label')}
       contentContainerStyle={{ gap: space.s, paddingVertical: space.xs }}
     >
-      <Chip label={t('ideas.filter.all', { n: total })} selected={value === 'all'} onPress={() => onChange('all')} />
+      <Chip
+        label={t('ideas.filter.all', { n: total })}
+        a11yLabel={t('f90.ideaFilter.allA11y', { n: total })}
+        hint={t('f90.ideaFilter.allHint')}
+        selected={value === 'all'}
+        onPress={() => onChange('all')}
+      />
       {CATEGORIES.map((c) => (
         <Chip
           key={c}
           label={t('ideas.filter.cat', { cat: t(categoryKey(c)), n: counts[c] })}
+          a11yLabel={t('f90.ideaFilter.catA11y', { cat: t(categoryKey(c)), n: counts[c] })}
+          hint={t('f90.ideaFilter.catHint', { cat: t(categoryKey(c)) })}
           selected={value === c}
           icon={<Ionicons name={IDEA_ICONS[c]} size={16} color={value === c ? theme.accentInk : theme.sea} />}
           onPress={() => onChange(c)}
@@ -186,6 +194,48 @@ export const IdeaRow = memo(function IdeaRow({
     </View>
   );
 });
+
+/** See on map moves ideas past others that have a map spot, so every move changes the numbers on the map. */
+const hasSpot = (i: Idea) => ideaSpot(i) !== null;
+
+/**
+ * T84: Move earlier / Move later for a planned idea on See on map. The day's order is stored on the trip, and the
+ * map numbers the ideas in that order after the day's bookings. Hidden when the idea has nowhere to move.
+ */
+export function IdeaOrderButtons({ tripId, ideaId, name }: { tripId: string; ideaId: string; name: string }) {
+  const { t, theme } = useApp();
+  const { trips, saveTrip } = useTrips();
+  const trip = trips.find((x) => x.id === tripId);
+  if (!trip) return null;
+  const can = canMoveIdea(trip, ideaId, hasSpot);
+  if (!can.up && !can.down) return null;
+  const move = async (dir: -1 | 1) => {
+    const next = moveIdea(trip, ideaId, dir, hasSpot);
+    if (next === trip) return;
+    if (!(await saveTrip(next))) {
+      Alert.alert(t('ideas.saveFailed.title'), t('ideas.saveFailed.body'));
+      return;
+    }
+    haptic.tap();
+    AccessibilityInfo.announceForAccessibility(t(dir < 0 ? 'f90.order.movedUp' : 'f90.order.movedDown', { name }));
+  };
+  const button = (dir: -1 | 1, enabled: boolean) => (
+    <PressableScale
+      key={dir}
+      accessibilityRole="button"
+      accessibilityLabel={t(dir < 0 ? 'f90.order.upA11y' : 'f90.order.downA11y', { name })}
+      accessibilityHint={t(dir < 0 ? 'f90.order.upHint' : 'f90.order.downHint')}
+      accessibilityState={{ disabled: !enabled }}
+      disabled={!enabled}
+      onPress={() => move(dir)}
+      style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs, minHeight: TOUCH, paddingHorizontal: space.l, borderRadius: radius.pill, backgroundColor: enabled ? theme.seaSoft : theme.cardRaised, opacity: enabled ? 1 : 0.5 }}
+    >
+      <Ionicons name={dir < 0 ? 'arrow-up' : 'arrow-down'} size={16} color={enabled ? theme.sea : theme.muted} />
+      <Text style={[typeScale.bodyStrong, { fontSize: 14, color: enabled ? theme.sea : theme.muted }]}>{t(dir < 0 ? 'f90.order.up' : 'f90.order.down')}</Text>
+    </PressableScale>
+  );
+  return <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s, paddingLeft: 32 + space.m }}>{[button(-1, can.up), button(1, can.down)]}</View>;
+}
 
 /** The trip timeline's light "Planned" rows for one day: a dashed outline, the category icon and the idea's name. */
 export function PlannedIdeas({ trip, day }: { trip: Trip; day: string }) {

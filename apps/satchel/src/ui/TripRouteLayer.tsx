@@ -7,6 +7,7 @@
 // T72: journeys with a positioned from / to add departure and arrival stops ("Stations & airports" chip, on by
 // default, hides them again); those stops take the place of the booking's plain from / to pins (coversPin).
 // T81: planned ideas with a map spot are stops too (after the day's bookings, "Planned", no time); a tap opens the idea.
+// T84: a day's ideas can be moved earlier / later there (stored on the trip; the numbers follow).
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
@@ -20,7 +21,7 @@ import type { MapFit, MapLine, MapPin } from '../native/maps.tsx';
 import { useApp } from '../state/app.tsx';
 import { fonts, radius, space, typeScale, type Theme } from '../theme/tokens.ts';
 import { SectionCard } from './hero.tsx';
-import { IDEA_ICONS } from './ideas.tsx';
+import { IDEA_ICONS, IdeaOrderButtons } from './ideas.tsx';
 import { KIND_ICON, kindKey } from './kinds.tsx';
 import { Body, Button, EmptyState, PressableScale } from './kit.tsx';
 
@@ -300,6 +301,7 @@ export function TripRoutePanel({ layer, onOpenItem, onBackToTrip }: { layer: Tri
                 <Text style={[typeScale.small, { color: theme.muted }]}>{when}</Text>
               </View>
             </PressableScale>
+            {idea && s.ideaId ? <IdeaOrderButtons tripId={layer.tripId} ideaId={s.ideaId} name={s.name} /> : null}
             {leg ? (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, marginLeft: 15, paddingLeft: space.l + 1, borderLeftWidth: 2, borderLeftColor: colour, borderStyle: 'dashed' }}>
                 <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 14, color: theme.muted, fontVariant: ['tabular-nums'] }}>{t('triproute.leg', { distance: distance(leg.meters) })}</Text>

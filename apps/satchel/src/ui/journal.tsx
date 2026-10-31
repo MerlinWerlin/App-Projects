@@ -62,7 +62,8 @@ export const DayHeader = memo(function DayHeader({ tone, label, date, meta }: { 
 
 /**
  * A row of icon chips with radio semantics; tapping the selected chip clears it (the field is optional).
- * `group` names the row for screen readers.
+ * `group` names the row for screen readers. T84: a caller may give each chip its own spoken label and hint (the
+ * idea editor does); otherwise the journal's "{group}: {value}" is used.
  */
 export function IconChips<V extends string>({
   group,
@@ -71,6 +72,8 @@ export function IconChips<V extends string>({
   icon,
   label,
   onChange,
+  a11yLabel,
+  a11yHint,
 }: {
   group: string;
   values: readonly V[];
@@ -78,6 +81,8 @@ export function IconChips<V extends string>({
   icon: (v: V) => IconName;
   label: (v: V) => string;
   onChange: (v: V | undefined) => void;
+  a11yLabel?: (v: V) => string;
+  a11yHint?: (v: V, selected: boolean) => string;
 }) {
   const { theme, t } = useApp();
   return (
@@ -88,7 +93,8 @@ export function IconChips<V extends string>({
           <PressableScale
             key={v}
             accessibilityRole="radio"
-            accessibilityLabel={t('journal.chip.a11y', { group, value: label(v) })}
+            accessibilityLabel={a11yLabel ? a11yLabel(v) : t('journal.chip.a11y', { group, value: label(v) })}
+            accessibilityHint={a11yHint ? a11yHint(v, on) : undefined}
             accessibilityState={{ selected: on, checked: on }}
             onPress={() => onChange(on ? undefined : v)}
             style={{

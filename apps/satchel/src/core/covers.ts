@@ -66,6 +66,10 @@ export const COVER_CITIES: Record<string, CoverId> = {
   'las vegas': 'desert', phoenix: 'desert', 'alice springs': 'desert', riyadh: 'desert', muscat: 'desert', amman: 'desert', cairo: 'desert', luxor: 'desert',
   // countryside
   cotswolds: 'countryside', tuscany: 'countryside', provence: 'countryside', bordeaux: 'countryside', napa: 'countryside',
+  normandy: 'countryside', dordogne: 'countryside', burgundy: 'countryside', champagne: 'countryside', loire: 'countryside', 'lake district': 'mountains',
+  // T84: a few more French and other cities that trips often name
+  lyon: 'oldtown', strasbourg: 'oldtown', avignon: 'oldtown', marseille: 'coast', biarritz: 'coast', 'saint malo': 'coast',
+  hanoi: 'city', 'ho chi minh city': 'city', delhi: 'city', 'new delhi': 'city', vancouver: 'city', montreal: 'city', 'buenos aires': 'city', lima: 'city',
   // islands
   bali: 'island', phuket: 'island', 'koh samui': 'island', santorini: 'island', mykonos: 'island', mallorca: 'island', ibiza: 'island', tenerife: 'island',
   nadi: 'island', papeete: 'island', 'port louis': 'island', mahe: 'island', boracay: 'island', langkawi: 'island', zanzibar: 'island',
@@ -107,7 +111,15 @@ const W_ITEM_WORD = 3;
 const W_CITY = 6;
 /** The city a zone is named after, once per zone: a hint only, since one zone covers a whole country (Pacific/Auckland is all of New Zealand). */
 const W_ZONE_CITY = 1;
+/**
+ * T84: the zone's city when its country's scene is a general one (city, old town, countryside): a trip in
+ * Europe/Paris with no address is far more likely Paris than the French countryside, so the city beats the country.
+ * Countries known for a landscape (NZ mountains, Maldives islands, UAE desert) keep it: the hint stays W_ZONE_CITY.
+ */
+const W_ZONE_CITY_STRONG = 3;
 const W_COUNTRY = 2;
+/** Country scenes that say little about one city in that country (so the zone's city may outweigh them). */
+const GENERAL_SCENES: ReadonlySet<CoverId> = new Set(['city', 'oldtown', 'countryside']);
 
 const placesOf = (i: Item): Place[] => [i.place, i.from, i.to].filter((p): p is Place => !!p);
 
@@ -177,8 +189,9 @@ export function coverScores(trip: Trip): Record<CoverId, number> {
   const countries = new Set<string>();
   for (const [tz, n] of zones) {
     const city = COVER_CITIES[foldWords(zoneCity(tz)).trim()];
-    if (city && n > 0) score[city] += W_ZONE_CITY;
     const iso2 = countryForZone(tz);
+    const country = iso2 ? COVER_COUNTRIES[iso2] : undefined;
+    if (city && n > 0) score[city] += !country || GENERAL_SCENES.has(country) ? W_ZONE_CITY_STRONG : W_ZONE_CITY;
     if (iso2) countries.add(iso2);
   }
   for (const iso2 of countries) {

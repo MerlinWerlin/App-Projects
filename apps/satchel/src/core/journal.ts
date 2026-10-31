@@ -121,7 +121,10 @@ export const removePhoto = (photos: readonly JournalPhoto[], id: string): Journa
 
 /** The entry a draft saves as (new when `prev` is absent). The note is trimmed and capped; the photo list capped. */
 export function entryFromDraft(d: JournalDraft, newId: (prefix: string) => string, prev?: JournalEntry, now = new Date().toISOString()): JournalEntry {
+  // T85: fields the form doesn't own (and any added to JournalEntry later) are kept from the page being edited.
+  const { placeId: _p, mood: _m, weather: _w, updatedAt: _u, ...kept } = prev ?? ({} as Partial<JournalEntry>);
   const out: JournalEntry = {
+    ...kept,
     id: prev?.id ?? newId('jrnl'),
     day: d.day,
     note: d.note.trim().slice(0, MAX_JOURNAL_NOTE),
@@ -221,9 +224,10 @@ export function journalForFile(trip: Pick<Trip, 'journal'>, included: ReadonlySe
   const list = readJournal(trip);
   if (!list.length) return undefined;
   return list.map(({ photos, ...rest }) => {
+    // T85: a photo travels with every field but its device path (fields added later included).
     const files: FileJournalPhoto[] = photos
       .filter((p) => included.has(p.id))
-      .map((p) => ({ id: p.id, name: p.name, mime: p.mime, ...(typeof p.size === 'number' ? { size: p.size } : {}) }));
+      .map(({ uri: _uri, size, ...meta }) => ({ ...meta, ...(typeof size === 'number' ? { size } : {}) }));
     const left = photos.length - files.length;
     return { ...rest, ...(left ? { photoCount: left } : {}), ...(files.length ? { photoFiles: files } : {}) };
   });
@@ -285,14 +289,16 @@ export const fileJournalPhotoIds = (list: readonly FileJournalEntry[] | undefine
 export function readFileJournal(j: unknown): FileJournalEntry[] | undefined {
   if (!Array.isArray(j)) return undefined;
   return j.map((e: Record<string, unknown>) => {
-    const out: FileJournalEntry = { id: e.id as string, day: e.day as LocalDate, note: (e.note as string).slice(0, MAX_JOURNAL_NOTE), createdAt: e.createdAt as string };
+    // T85: fields this build doesn't know are kept as they are (a newer Satchel may have written them), like ideas.
+    const { updatedAt: _u, placeId: _p, mood: _m, weather: _w, photoCount: _c, photoFiles: _f, photos: _ph, ...rest } = e;
+    const out = { ...rest, id: e.id as string, day: e.day as LocalDate, note: (e.note as string).slice(0, MAX_JOURNAL_NOTE), createdAt: e.createdAt as string } as FileJournalEntry;
     if (isStr(e.updatedAt)) out.updatedAt = e.updatedAt;
     if (isStr(e.placeId)) out.placeId = e.placeId;
     if (isMood(e.mood)) out.mood = e.mood;
     if (isWeather(e.weather)) out.weather = e.weather;
     if (typeof e.photoCount === 'number' && e.photoCount > 0) out.photoCount = e.photoCount;
     if (Array.isArray(e.photoFiles) && e.photoFiles.length) {
-      out.photoFiles = (e.photoFiles as FileJournalPhoto[]).map((p) => ({ id: p.id, name: p.name, mime: p.mime, ...(typeof p.size === 'number' ? { size: p.size } : {}) }));
+      out.photoFiles = (e.photoFiles as FileJournalPhoto[]).map(({ size, uri: _uri, ...p }: FileJournalPhoto & { uri?: unknown }) => ({ ...p, ...(typeof size === 'number' ? { size } : {}) }));
     }
     return out;
   });
@@ -322,7 +328,7 @@ export function importJournalFile(
       if (data === undefined) continue;
       const id = newId('jph');
       files.push({ photoId: id, name: p.name, mime: p.mime, data_base64: data });
-      photos.push({ id, uri: '', name: p.name, mime: p.mime, ...(typeof p.size === 'number' ? { size: p.size } : {}) });
+      photos.push({ ...p, id, uri: '' });
     }
     const out: JournalEntry = { ...rest, id: newId('jrnl'), photos };
     const mapped = placeId ? placeIds.get(placeId) : undefined;

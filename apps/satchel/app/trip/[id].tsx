@@ -28,6 +28,7 @@ import { TripPackingSlot } from '../../src/ui/slots/TripPackingSlot.tsx';
 import { TripSpendingSlot } from '../../src/ui/slots/TripSpendingSlot.tsx';
 import { TripJournalSlot } from '../../src/ui/slots/TripJournalSlot.tsx';
 import { TripIdeasSlot } from '../../src/ui/slots/TripIdeasSlot.tsx';
+import { TripRecapSlot } from '../../src/ui/slots/TripRecapSlot.tsx';
 import { PlannedIdeas } from '../../src/ui/ideas.tsx';
 import { SharePlan } from '../../src/ui/SharePlan.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
@@ -254,6 +255,7 @@ export default function TripScreen() {
             {clashes.map(([a, b]) => (
               <Warning key={`${a.id}-${b.id}`} text={t('trip.warnClash', { a: a.title, b: b.title })} />
             ))}
+            <TripRecapSlot trip={trip} />
             <TripJournalSlot trip={trip} />
             <TripIdeasSlot trip={trip} />
             <TripSpendingSlot trip={trip} />

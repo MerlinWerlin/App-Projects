@@ -1,6 +1,7 @@
 // Design tokens from docs/PLAN.md §5. Screens take every colour from here (no raw colours in app/).
 import type { CoverPaint } from '../core/coverArt.ts';
 import type { CoverId } from '../core/covers.ts';
+import type { CardColour } from '../core/loyalty.ts';
 export type Theme = {
   dark: boolean;
   paper: string;
@@ -215,3 +216,35 @@ export const coverScrim = {
   light: { from: 'rgba(12, 20, 40, 0)', mid: 'rgba(12, 20, 40, 0.5)', to: 'rgba(12, 20, 40, 0.84)' },
   dark: { from: 'rgba(4, 8, 20, 0)', mid: 'rgba(4, 8, 20, 0.55)', to: 'rgba(4, 8, 20, 0.86)' },
 } as const;
+
+// ---- T87 loyalty cards ----
+// Card paints the user picks from (src/core/loyalty.ts CARD_COLOURS). `ink` and `muted` text are AA (4.5:1) on every
+// fill in both themes (src/theme/cardPaints.test.ts); dark mode uses deeper fills so a card doesn't glare at night.
+// `wash` is for decorative shapes drawn on the card. The barcode panel is always black on white, in both themes,
+// because scanners need dark bars on a light ground with a clear quiet zone.
+export type CardPaint = { fill: string; ink: string; muted: string; wash: string };
+export const cardPaints: { light: Record<CardColour, CardPaint>; dark: Record<CardColour, CardPaint> } = {
+  light: {
+    navy: { fill: '#1F3A68', ink: '#FFFFFF', muted: '#E3E9F4', wash: 'rgba(255, 255, 255, 0.12)' },
+    sea: { fill: '#1F5F86', ink: '#FFFFFF', muted: '#E6EFF5', wash: 'rgba(255, 255, 255, 0.12)' },
+    teal: { fill: '#12655F', ink: '#FFFFFF', muted: '#E3F1EE', wash: 'rgba(255, 255, 255, 0.12)' },
+    forest: { fill: '#2E6B45', ink: '#FFFFFF', muted: '#E6F1EA', wash: 'rgba(255, 255, 255, 0.12)' },
+    amber: { fill: '#8A5A0B', ink: '#FFFFFF', muted: '#FBEFD9', wash: 'rgba(255, 255, 255, 0.12)' },
+    rust: { fill: '#9A3F1C', ink: '#FFFFFF', muted: '#FBE7DC', wash: 'rgba(255, 255, 255, 0.12)' },
+    plum: { fill: '#5E3A78', ink: '#FFFFFF', muted: '#EEE6F4', wash: 'rgba(255, 255, 255, 0.12)' },
+    slate: { fill: '#3F4A5C', ink: '#FFFFFF', muted: '#E7EAF0', wash: 'rgba(255, 255, 255, 0.12)' },
+  },
+  dark: {
+    navy: { fill: '#1A2F55', ink: '#FFFFFF', muted: '#C9D3E6', wash: 'rgba(255, 255, 255, 0.08)' },
+    sea: { fill: '#184C6B', ink: '#FFFFFF', muted: '#CBDCE8', wash: 'rgba(255, 255, 255, 0.08)' },
+    teal: { fill: '#0F524D', ink: '#FFFFFF', muted: '#C8E2DD', wash: 'rgba(255, 255, 255, 0.08)' },
+    forest: { fill: '#24553A', ink: '#FFFFFF', muted: '#CDE2D4', wash: 'rgba(255, 255, 255, 0.08)' },
+    amber: { fill: '#6E4808', ink: '#FFFFFF', muted: '#F1DEBD', wash: 'rgba(255, 255, 255, 0.08)' },
+    rust: { fill: '#7C3216', ink: '#FFFFFF', muted: '#EFD2C4', wash: 'rgba(255, 255, 255, 0.08)' },
+    plum: { fill: '#4B2E60', ink: '#FFFFFF', muted: '#DCCDE8', wash: 'rgba(255, 255, 255, 0.08)' },
+    slate: { fill: '#333C4B', ink: '#FFFFFF', muted: '#D2D7E0', wash: 'rgba(255, 255, 255, 0.08)' },
+  },
+};
+export const cardPaint = (theme: Theme, c: CardColour): CardPaint => (theme.dark ? cardPaints.dark : cardPaints.light)[c] ?? cardPaints.light.slate;
+/** Scannable barcode panel, the same in light and dark mode. */
+export const barcodePanel = { bg: '#FFFFFF', ink: '#000000' } as const;

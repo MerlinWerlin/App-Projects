@@ -11,7 +11,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { demoTrip } from '../core/demo.ts';
-import { withSampleSpending } from '../core/demoExtras.ts';
+import { withSampleIdeas, withSampleSpending } from '../core/demoExtras.ts';
 import { deviceZone, todayIn } from '../core/format.ts';
 import type { Item, Trip } from '../core/model.ts';
 import { dropList, EMPTY_STORE, PACKING_KEY, type PackStore } from '../core/packing.ts';
@@ -44,7 +44,7 @@ type TripsState = {
 const Ctx = createContext<TripsState | null>(null);
 
 // T58: fresh demo seeds carry sample spending; a demo trip already saved on a phone is left as it is.
-const freshDemo = () => withSampleSpending(demoTrip(addDays(todayIn(deviceZone()), 3)));
+const freshDemo = () => withSampleIdeas(withSampleSpending(demoTrip(addDays(todayIn(deviceZone()), 3))));
 
 export function TripsProvider({ children }: { children: ReactNode }) {
   const [trips, setTrips] = useState<Trip[]>([]);

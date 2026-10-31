@@ -1,15 +1,15 @@
 {
- "tests": 784,
+ "tests": 857,
  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
- "last_run": "2026-10-31 23:21 Sydney",
+ "last_run": "2026-11-01 01:22",
  "stage": "owner-tested",
- "oversight_seen": 217,
- "headline": "Expanding: places to go on each trip, splitting costs with your travel partner, and illustrated trip covers",
+ "oversight_seen": 218,
+ "headline": "Expanding: loyalty cards with scannable barcodes in the Wallet, trip recaps, and a safety net so editing or sharing a trip never loses anything",
  "next_for_owner": [
   "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
-  "Open a trip: try the new cover picture, Places to go (add an idea and plan it for a day), and on Spending add your partner and split an expense.",
+  "Wallet tab: add a loyalty or membership card with a QR or Code 128 barcode and see if it scans; open a started trip and tap Trip recap.",
   "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
-  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (AC-AF are new) by commenting on this page."
+  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (AG-AJ are new) by commenting on this page."
  ],
  "trial_kit": true,
  "next_stage": "release-prep"

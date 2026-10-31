@@ -43,6 +43,14 @@ export const SPEC_SYNC_PREFIXES = [
   'trouble.',
   'toiletplus.',
   'f89.',
+  // T84: the run-90 features (T81 places to go, T82 travelling together, T83 trip covers) and the T84 follow-ups,
+  // plus the run-91 groups (T86 trip recap, T87 loyalty cards): re-run the sync after their strings land.
+  'ideas.',
+  'together.',
+  'covers.',
+  'f90.',
+  'recap.',
+  'loyalty.',
 ] as const;
 
 /** Single keys mirrored as well: map.online, the T48 emergency fallback wording, the Toilets tab, home country. */

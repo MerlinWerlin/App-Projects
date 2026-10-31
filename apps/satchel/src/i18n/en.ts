@@ -51,6 +51,9 @@ import { followups88 } from './en/followups88.ts';
 import { ideas } from './en/ideas.ts';
 import { together } from './en/together.ts';
 import { covers } from './en/covers.ts';
+import { recap } from './en/recap.ts';
+import { loyalty } from './en/loyalty.ts';
+import { followups90 } from './en/followups90.ts';
 import { followups89 } from './en/followups89.ts';
 
 const base = {
@@ -229,6 +232,6 @@ const base = {
   'itemEdit.attachmentFromPhotos': 'Choose from Photos',
 } as const;
 
-export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile, ...citymaps, ...toilets, ...design, ...privacy, ...essentials, ...phrases, ...spending, ...help, ...readiness, ...convert, ...followups85, ...travels, ...jetlag, ...journal, ...followups86, ...triproute, ...weather, ...plan, ...position, ...licences, ...wayback, ...airport, ...smartpack, ...pastebooking, ...troubles, ...toiletplus, ...followups88, ...ideas, ...together, ...covers, ...followups89 } as const;
+export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile, ...citymaps, ...toilets, ...design, ...privacy, ...essentials, ...phrases, ...spending, ...help, ...readiness, ...convert, ...followups85, ...travels, ...jetlag, ...journal, ...followups86, ...triproute, ...weather, ...plan, ...position, ...licences, ...wayback, ...airport, ...smartpack, ...pastebooking, ...troubles, ...toiletplus, ...followups88, ...ideas, ...together, ...covers, ...followups89, ...recap, ...loyalty, ...followups90 } as const;
 
 export type Key = keyof typeof en;

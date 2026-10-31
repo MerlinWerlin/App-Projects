@@ -4,6 +4,9 @@
 // removing the demo trip takes the extras away again (the card only if it still holds exactly the sample details).
 // T58: sample spending (an AUD budget, a JPY rate and a few yen expenses) so the Spending card isn't empty on first
 // open. Only fresh demo seeds get it; a demo trip already on a phone is never changed.
+// T84: sample places to go (one planned on a Tokyo day, two on a Kyoto day with map spots, one unplanned with a web
+// link), so Places to go and See on map aren't empty on first open. Same rule: fresh demo seeds only.
+import type { Idea } from './ideas.ts';
 import type { Attachment, Budget, EmergencyCard, Expense, LocalDate, TravelDoc, Trip } from './model.ts';
 import { cardStatus } from './emergency.ts';
 import { addDays } from './tz.ts';
@@ -124,4 +127,27 @@ export function withSampleSpending(trip: Trip, now = new Date().toISOString()): 
     createdAt: now,
   }));
   return { ...trip, budget: { ...SAMPLE_BUDGET }, rates: { ...SAMPLE_RATES }, expenses };
+}
+
+// ---- T84 sample places to go ----
+
+/** Sample ideas: day offset from the trip start (null = unplanned), category, map spot, link and note. */
+const SAMPLE_IDEAS: readonly (Omit<Idea, 'createdAt' | 'day'> & { dayOffset: number | null })[] = [
+  { id: 'demo-i1', name: 'Senso-ji before the crowds (sample)', category: 'see', dayOffset: 1, lat: 35.7148, lon: 139.7963, spotName: 'Senso-ji, Asakusa', note: 'Sample idea: the temple grounds are quiet before 8am.' },
+  { id: 'demo-i2', name: 'Fushimi Inari gates (sample)', category: 'see', dayOffset: 5, lat: 34.9671, lon: 135.7727, spotName: 'Fushimi Inari Taisha', note: 'Sample idea: walk up as far as the first viewpoint.' },
+  { id: 'demo-i3', name: 'Nishiki Market snacks (sample)', category: 'eat', dayOffset: 5, lat: 35.005, lon: 135.7649, spotName: 'Nishiki Market' },
+  { id: 'demo-i4', name: 'Look up a festival this week (sample)', category: 'do', dayOffset: null, link: 'https://www.japan.travel/en/', note: 'Sample idea with a web link: it opens in your browser when you are online.' },
+];
+
+export const SAMPLE_IDEA_IDS: readonly string[] = SAMPLE_IDEAS.map((i) => i.id);
+
+/**
+ * The demo trip with the sample ideas, planned on days counted from the trip's own first day. Any other trip, or a
+ * demo trip that already has ideas (the traveller's own or an earlier seed), is returned unchanged.
+ */
+export function withSampleIdeas(trip: Trip, now = new Date().toISOString()): Trip {
+  if (trip.id !== DEMO_TRIP_ID || !trip.demo) return trip;
+  if (Array.isArray(trip.ideas) && trip.ideas.length > 0) return trip;
+  const ideas: Idea[] = SAMPLE_IDEAS.map(({ dayOffset, ...i }) => ({ ...i, ...(dayOffset === null ? {} : { day: addDays(trip.startDate, dayOffset) }), createdAt: now }));
+  return { ...trip, ideas };
 }

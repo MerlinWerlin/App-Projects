@@ -6,6 +6,7 @@ import { memo, useMemo, useState } from 'react';
 import { AccessibilityInfo, Alert, Text, View } from 'react-native';
 import { deviceZone, formatDay, todayIn } from '../core/format.ts';
 import { newId, type SplitMode, type Trip } from '../core/model.ts';
+import { companionToneIndex } from '../core/followups90.ts';
 import { formatMoney, readSpending } from '../core/spending.ts';
 import {
   addCompanion,
@@ -38,7 +39,10 @@ import { fonts, radius, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { FadeInView, IconBadge, toneColours, type Tone } from './hero.tsx';
 import { Body, Button, Card, Chip, Label, PressableScale, TextField, Warning } from './kit.tsx';
 
-/** Avatar colours: You in the warm accent, companions cycle through the other token tones (all AA in both themes). */
+/**
+ * Avatar colours: You in the warm accent, companions one of the other token tones (all AA in both themes), picked
+ * from the companion's id (T84) so a colour never moves to someone else when the list changes.
+ */
 const COMPANION_TONES: readonly Tone[] = ['sea', 'teal', 'ok', 'warn', 'ink', 'danger'];
 const NAME_ERRORS: Record<NameError, Key> = {
   empty: 'together.err.empty',
@@ -55,7 +59,7 @@ export function usePeople(trip: Trip): People {
   const { t } = useApp();
   return useMemo(() => {
     const companions = readCompanions(trip);
-    const byId = new Map(companions.map((c, i) => [c.id, { name: c.name, tone: COMPANION_TONES[i % COMPANION_TONES.length] }]));
+    const byId = new Map(companions.map((c) => [c.id, { name: c.name, tone: COMPANION_TONES[companionToneIndex(c.id, COMPANION_TONES.length)] ?? 'sea' }]));
     return {
       order: peopleOf(trip),
       name: (id: string) => byId.get(id)?.name ?? t('together.you'),
@@ -343,6 +347,14 @@ function SettleCard({ trip, save, people, plan }: { trip: Trip; save: Save; peop
         </View>
       ) : (
         <Body muted>{t('together.settleBody')}</Body>
+      )}
+      {plan.settled ? null : (
+        <View accessible accessibilityLabel={t('f90.settle.ratesHelp')} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: space.s }}>
+          <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+            <Ionicons name="information-circle-outline" size={18} color={theme.muted} />
+          </View>
+          <Text style={[typeScale.small, { flex: 1, color: theme.muted }]}>{t('f90.settle.ratesHelp')}</Text>
+        </View>
       )}
       {groups.map((g) => (
         <View key={g.currency} style={{ gap: space.s }}>
