@@ -5,8 +5,6 @@ export const it: NonNullable<LocaleMessages['themes']> = {
   subtitle: 'Look completi: sfondo, icone, widget e un loop.',
   tipsA11y: 'Suggerimenti',
   dismissTip: 'Chiudi suggerimento: {title}',
-  hideTips: 'Ho capito, nascondi i suggerimenti',
-  hideTipsA11y: 'Nascondi tutti i suggerimenti',
   makeWallpaper: {
     title: 'Crea uno sfondo',
     body: 'Sfumature, mesh, grana e motivi alla misura del tuo iPhone.',
@@ -17,14 +15,9 @@ export const it: NonNullable<LocaleMessages['themes']> = {
   /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
   collection: { title: 'Nuova collezione', body: 'Temi d’arte originale dallo studio Glaze. Download gratuito; i nuovi compaiono qui.', loadingA11y: 'Caricamento della nuova collezione', downloadA11y: 'Download gratuito.' },
   startersBody: 'Inclusi in Glaze, pronti senza download.',
-  startersEmpty: 'Ancora nessun tema di base',
-  plusPacks: 'Pacchetti Plus',
-  plusPacksBody: 'Provali tutti in anteprima. Glaze Plus è un acquisto unico, mai un abbonamento.',
   space: { title: 'Spazio · vere foto di Webb', body: 'Gratis. Immagini reali del telescopio spaziale James Webb; ogni foto si scarica solo quando tocchi Scarica nel tema.' },
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'Arte · sfondi originali', body: 'Gratis. Sfondi d’arte originali con icone abbinate e illustrazioni fluttuanti per i widget. Niente da scaricare.' },
-  plusPacksEmpty: 'Ancora nessun pacchetto Plus',
-  packEmpty: '{name} è ancora in lavorazione',
   plusNote: 'Glaze Plus.',
   feedback: 'Invia feedback',
   feedbackHint: 'Suggerisci un tema o segnala un problema dalla tua app Mail',
@@ -32,7 +25,6 @@ export const it: NonNullable<LocaleMessages['themes']> = {
     body: 'Nuovi look arrivano con gli aggiornamenti. Nel frattempo, crea il tuo set in Icone.',
     a11y: '{title}. Nuovi look arrivano con gli aggiornamenti. Nel frattempo puoi creare le tue icone.',
     cta: 'Crea le tue icone',
-    ctaHint: 'Apre lo Studio icone',
   },
   category: {
     all: 'Tutti',

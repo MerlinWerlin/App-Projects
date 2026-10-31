@@ -5,8 +5,6 @@ export const de: NonNullable<LocaleMessages['themes']> = {
   subtitle: 'Komplette Looks: Hintergrund, Symbole, Widgets und ein Loop.',
   tipsA11y: 'Tipps',
   dismissTip: 'Tipp ausblenden: {title}',
-  hideTips: 'Verstanden, Tipps ausblenden',
-  hideTipsA11y: 'Alle Tipps ausblenden',
   makeWallpaper: {
     title: 'Hintergrund erstellen',
     body: 'Verläufe, Mesh, Körnung und Muster in der Größe deines iPhones.',
@@ -17,14 +15,9 @@ export const de: NonNullable<LocaleMessages['themes']> = {
   /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
   collection: { title: 'Neue Kollektion', body: 'Originale Kunst-Themes aus dem Glaze-Studio. Kostenlos zum Laden; Neues erscheint hier.', loadingA11y: 'Neue Kollektion wird geladen', downloadA11y: 'Kostenloser Download.' },
   startersBody: 'In Glaze enthalten, ganz ohne Download.',
-  startersEmpty: 'Noch keine Starter-Themes',
-  plusPacks: 'Plus-Pakete',
-  plusPacksBody: 'Sieh dir alle an. Glaze Plus ist ein einmaliger Kauf, nie ein Abo.',
   space: { title: 'Weltall · echte Webb-Fotos', body: 'Kostenlos. Echte Bilder des James-Webb-Weltraumteleskops; jedes Foto wird erst geladen, wenn du im Theme auf Laden tippst.' },
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'Kunst · eigene Hintergrundbilder', body: 'Kostenlos. Eigene Kunst-Hintergrundbilder mit passenden Symbolen und schwebender Widget-Kunst. Nichts zu laden.' },
-  plusPacksEmpty: 'Noch keine Plus-Pakete',
-  packEmpty: '{name} wird noch gezeichnet',
   plusNote: 'Glaze Plus.',
   feedback: 'Feedback senden',
   feedbackHint: 'Schlage ein Theme vor oder melde ein Problem über deine Mail-App',
@@ -32,7 +25,6 @@ export const de: NonNullable<LocaleMessages['themes']> = {
     body: 'Neue Looks kommen mit Updates. Gestalte bis dahin dein eigenes Set unter Symbole.',
     a11y: '{title}. Neue Looks kommen mit Updates. Bis dahin kannst du eigene Symbole gestalten.',
     cta: 'Eigene Symbole gestalten',
-    ctaHint: 'Öffnet das Symbol-Studio',
   },
   category: {
     all: 'Alle',

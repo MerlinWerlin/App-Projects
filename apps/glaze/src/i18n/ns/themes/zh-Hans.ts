@@ -5,8 +5,6 @@ export const zhHans: NonNullable<LocaleMessages['themes']> = {
   subtitle: '整套造型：壁纸、图标、小组件和循环动画。',
   tipsA11y: '提示',
   dismissTip: '关闭提示：{title}',
-  hideTips: '知道了，隐藏提示',
-  hideTipsA11y: '隐藏所有提示',
   makeWallpaper: {
     title: '制作壁纸',
     body: '渐变、网格、颗粒和图案，按你的 iPhone 尺寸生成。',
@@ -17,14 +15,9 @@ export const zhHans: NonNullable<LocaleMessages['themes']> = {
   /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
   collection: { title: '新系列', body: '来自 Glaze 工作室的原创艺术主题。免费下载，新主题会出现在这里。', loadingA11y: '正在载入新系列', downloadA11y: '免费下载。' },
   startersBody: '内置于 Glaze，无需下载。',
-  startersEmpty: '暂无入门主题',
-  plusPacks: 'Plus 主题包',
-  plusPacksBody: '任何一个都可以预览。Glaze Plus 一次性解锁，绝不订阅。',
   space: { title: '太空 · 韦布真实照片', body: '免费。詹姆斯·韦布空间望远镜的真实图像；只有在主题中轻点“下载”时才会下载照片。' },
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: '艺术 · 原创壁纸', body: '免费。原创艺术壁纸，配有相称的图标和悬浮的小组件插画。无需下载。' },
-  plusPacksEmpty: '暂无 Plus 主题包',
-  packEmpty: '{name} 仍在绘制中',
   plusNote: 'Glaze Plus。',
   feedback: '发送反馈',
   feedbackHint: '用你的邮件 App 推荐主题或报告问题',
@@ -32,7 +25,6 @@ export const zhHans: NonNullable<LocaleMessages['themes']> = {
     body: '新造型会随更新推出。在此之前，可以在“图标”中制作你自己的一套。',
     a11y: '{title}。新造型会随更新推出。在此之前，你可以制作自己的图标。',
     cta: '制作自己的图标',
-    ctaHint: '打开图标工作室',
   },
   category: {
     all: '全部',

@@ -5,8 +5,6 @@ export const es: NonNullable<LocaleMessages['themes']> = {
   subtitle: 'Estilos completos: fondo, iconos, widgets y un bucle.',
   tipsA11y: 'Consejos',
   dismissTip: 'Descartar consejo: {title}',
-  hideTips: 'Entendido, ocultar consejos',
-  hideTipsA11y: 'Ocultar todos los consejos',
   makeWallpaper: {
     title: 'Crear un fondo',
     body: 'Degradados, malla, grano y patrones al tamaño de tu iPhone.',
@@ -17,14 +15,9 @@ export const es: NonNullable<LocaleMessages['themes']> = {
   /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
   collection: { title: 'Nueva colección', body: 'Temas de arte original del estudio Glaze. Descarga gratis; los nuevos aparecen aquí.', loadingA11y: 'Cargando la nueva colección', downloadA11y: 'Descarga gratis.' },
   startersBody: 'Incluidos en Glaze, listos sin descargar.',
-  startersEmpty: 'Aún no hay temas básicos',
-  plusPacks: 'Packs Plus',
-  plusPacksBody: 'Prueba cualquiera. Glaze Plus es un pago único, nunca una suscripción.',
   space: { title: 'Espacio · fotos reales del Webb', body: 'Gratis. Imágenes reales del telescopio espacial James Webb; cada foto se descarga solo cuando tocas Descargar en el tema.' },
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'Arte · fondos originales', body: 'Gratis. Fondos de arte originales con iconos a juego y arte flotante para widgets. Nada que descargar.' },
-  plusPacksEmpty: 'Aún no hay packs Plus',
-  packEmpty: '{name} aún se está dibujando',
   plusNote: 'Glaze Plus.',
   feedback: 'Enviar comentarios',
   feedbackHint: 'Sugiere un tema o informa de un problema desde tu app Mail',
@@ -32,7 +25,6 @@ export const es: NonNullable<LocaleMessages['themes']> = {
     body: 'Llegan estilos nuevos con cada actualización. Mientras tanto, crea tu propio set en Iconos.',
     a11y: '{title}. Llegan estilos nuevos con cada actualización. Mientras tanto, puedes crear tus propios iconos.',
     cta: 'Crea tus propios iconos',
-    ctaHint: 'Abre el Estudio de iconos',
   },
   category: {
     all: 'Todos',

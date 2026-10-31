@@ -5,8 +5,6 @@ export const ar: NonNullable<LocaleMessages['themes']> = {
   subtitle: 'إطلالات كاملة: خلفية وأيقونات وأدوات وحلقة متحركة.',
   tipsA11y: 'نصائح',
   dismissTip: 'إغلاق النصيحة: {title}',
-  hideTips: 'فهمت، أخفِ النصائح',
-  hideTipsA11y: 'إخفاء كل النصائح',
   makeWallpaper: {
     title: 'إنشاء خلفية',
     body: 'تدرجات وشبكات وحبيبات وأنماط بمقاس iPhone الخاص بك.',
@@ -17,14 +15,9 @@ export const ar: NonNullable<LocaleMessages['themes']> = {
   /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
   collection: { title: 'المجموعة الجديدة', body: 'سمات فنية أصلية من استوديو Glaze. تنزيلها مجاني، والجديد يظهر هنا.', loadingA11y: 'جارٍ تحميل المجموعة الجديدة', downloadA11y: 'تنزيل مجاني.' },
   startersBody: 'مضمّنة في Glaze، جاهزة بلا تنزيل.',
-  startersEmpty: 'لا توجد سمات أساسية بعد',
-  plusPacks: 'حزم Plus',
-  plusPacksBody: 'عاين أيًّا منها. ‏Glaze Plus شراء لمرة واحدة، وليس اشتراكًا أبدًا.',
   space: { title: 'الفضاء · صور حقيقية من ويب', body: 'مجاني. صور حقيقية من تلسكوب جيمس ويب الفضائي؛ لا تُنزَّل كل صورة إلا عند النقر على تنزيل في السمة.' },
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'فن · خلفيات أصلية', body: 'مجاني. خلفيات فنية أصلية مع أيقونات متناسقة ورسوم عائمة للأدوات. لا شيء للتنزيل.' },
-  plusPacksEmpty: 'لا توجد حزم Plus بعد',
-  packEmpty: '{name} لا تزال قيد الرسم',
   plusNote: 'Glaze Plus.',
   feedback: 'إرسال ملاحظات',
   feedbackHint: 'اقترح سمة أو أبلغ عن مشكلة من تطبيق البريد لديك',
@@ -32,7 +25,6 @@ export const ar: NonNullable<LocaleMessages['themes']> = {
     body: 'تصل إطلالات جديدة مع التحديثات. وحتى ذلك الحين، أنشئ مجموعتك الخاصة في الأيقونات.',
     a11y: '{title}. تصل إطلالات جديدة مع التحديثات. وحتى ذلك الحين يمكنك إنشاء أيقوناتك الخاصة.',
     cta: 'أنشئ أيقوناتك الخاصة',
-    ctaHint: 'يفتح استوديو الأيقونات',
   },
   category: {
     all: 'الكل',

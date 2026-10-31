@@ -5,8 +5,6 @@ export const ko: NonNullable<LocaleMessages['themes']> = {
   subtitle: '배경화면, 아이콘, 위젯, 루프까지 갖춘 완성된 룩.',
   tipsA11y: '도움말',
   dismissTip: '도움말 닫기: {title}',
-  hideTips: '확인, 도움말 숨기기',
-  hideTipsA11y: '모든 도움말 숨기기',
   makeWallpaper: {
     title: '배경화면 만들기',
     body: '그라데이션, 메시, 그레인, 패턴을 iPhone 크기에 맞게.',
@@ -17,14 +15,9 @@ export const ko: NonNullable<LocaleMessages['themes']> = {
   /** T177 (owner-1031): the gallery's New collection (remote catalogue) and the Starters body. */
   collection: { title: '새 컬렉션', body: 'Glaze 스튜디오의 오리지널 아트 테마. 무료로 다운로드하고, 새 테마는 여기에 나타나요.', loadingA11y: '새 컬렉션 불러오는 중', downloadA11y: '무료 다운로드.' },
   startersBody: 'Glaze에 내장되어 다운로드 없이 바로 사용해요.',
-  startersEmpty: '아직 기본 테마가 없습니다',
-  plusPacks: 'Plus 팩',
-  plusPacksBody: '무엇이든 미리 볼 수 있어요. Glaze Plus는 한 번만 구매하며 구독이 아닙니다.',
   space: { title: '우주 · 실제 웹 망원경 사진', body: '무료. 제임스 웹 우주 망원경의 실제 이미지이며, 테마에서 다운로드를 탭할 때만 사진을 받습니다.' },
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: '아트 · 오리지널 배경화면', body: '무료. 어울리는 아이콘과 떠 있는 위젯 아트가 함께하는 오리지널 아트 배경화면입니다. 다운로드할 필요가 없습니다.' },
-  plusPacksEmpty: '아직 Plus 팩이 없습니다',
-  packEmpty: '{name}은(는) 아직 제작 중입니다',
   plusNote: 'Glaze Plus.',
   feedback: '피드백 보내기',
   feedbackHint: '메일 앱에서 테마를 제안하거나 문제를 알려 주세요',
@@ -32,7 +25,6 @@ export const ko: NonNullable<LocaleMessages['themes']> = {
     body: '새 룩은 업데이트와 함께 찾아옵니다. 그동안 아이콘 탭에서 나만의 세트를 만들어 보세요.',
     a11y: '{title}. 새 룩은 업데이트와 함께 찾아옵니다. 그동안 나만의 아이콘을 만들 수 있습니다.',
     cta: '나만의 아이콘 만들기',
-    ctaHint: '아이콘 스튜디오를 엽니다',
   },
   category: {
     all: '전체',
