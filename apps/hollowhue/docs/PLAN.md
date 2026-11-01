@@ -8,8 +8,9 @@ inspired it ("Infinity Coloring Book") has a single theme.
 
 ## How the zoom works
 - A scene is a tree of **levels**. Each level is line art in its own 1200 x 900 space, placed inside a **portal**
-  rectangle (or ellipse) of its parent. The parent draws a simple stand-in there; once the child fills 15% of the
-  screen its real detail is drawn on top, and once it covers the screen the parent stops being drawn.
+  rectangle (or ellipse) of its parent. The child is drawn in place from when it is 10 px wide; each shape fades in
+  as it grows from 1.5 to 5 px on screen, so detail emerges continuously. Once the child covers the screen the
+  parent stops being drawn (invisible, since it is fully covered).
 - Regions are SVG paths; the same path draws the art and drives tap hit-testing (even-odd, topmost wins).
 - `from` links let a region show another level's colour until coloured itself (zoom into a wall you painted
   and it is still that colour; stand-ins match the detail).

@@ -1,6 +1,6 @@
 {
-  "mode": "build",
-  "note": "First Hollowhue build: Bookshop Lane zoom, tap-fill and drawing",
+  "mode": "update",
+  "note": "Round 1 feedback: Eraser tool in both modes, zoom goes much deeper (Bookshop 6 levels, Mandala 5), seamless zoom with no pop",
   "ascAppId": "6829399355",
   "ascKeyAuth": true
 }

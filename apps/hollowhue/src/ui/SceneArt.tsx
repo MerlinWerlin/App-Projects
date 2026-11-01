@@ -4,7 +4,7 @@ import { memo, useMemo } from 'react';
 import Svg, { ClipPath, Defs, Ellipse, G, Path, Rect } from 'react-native-svg';
 import { strokePath } from '../core/geom';
 import { type Progress, type Stroke, TOOL_STYLE } from '../core/progress';
-import type { Layout, Placed, Visible } from '../core/scene';
+import { type Layout, type Placed, type Visible, detailStep, regionSizes, shapeOpacity } from '../core/scene';
 import { ART } from '../theme/tokens';
 
 type Fills = Record<string, string>;
@@ -32,8 +32,14 @@ function sameStrokes(a: Stroke[], b: Stroke[]) {
   return true;
 }
 
+/** The level everything is drawn relative to (keeps numbers small at deep zoom: no float precision loss). */
+export type Base = { ox: number; oy: number; s: number };
+
 type LevelProps = {
   level: Placed;
+  base: Base;
+  /** Quantised zoom (detailStep): which shapes are drawn and how faded. */
+  step: number;
   fills: Fills | undefined;
   linkKey: string;
   linkMap: Fills;
@@ -58,8 +64,9 @@ function StrokePath({ s }: { s: Stroke }) {
 }
 
 const LevelArt = memo(
-  function LevelArt({ level, fills, linkMap, strokes, hidden, clip }: LevelProps) {
+  function LevelArt({ level, base, step, fills, linkMap, strokes, hidden, clip }: LevelProps) {
     const sw = level.stroke ?? 2.6;
+    const sizes = regionSizes(level);
     // Strokes that stay inside a shape are drawn right after that shape (so shapes on top still cover them),
     // then that shape's outline again so the line art stays crisp. Free strokes go on top of everything.
     const byRegion = new Map<string, Stroke[]>();
@@ -75,7 +82,7 @@ const LevelArt = memo(
     const cid = (r: string) => `c-${level.id}-${r}`;
     const levelClip = `lv-${level.id}`;
     return (
-      <G transform={`translate(${level.ox} ${level.oy}) scale(${level.s})`}>
+      <G transform={`translate(${(level.ox - base.ox) / base.s} ${(level.oy - base.oy) / base.s}) scale(${level.s / base.s})`}>
         <Defs>
           {clip ? (
             <ClipPath id={levelClip}>
@@ -96,11 +103,16 @@ const LevelArt = memo(
           })}
         </Defs>
         <G clipPath={clip ? `url(#${levelClip})` : undefined}>
-          {level.regions.map((r) => {
+          {level.regions.map((r, i) => {
+            const inside = r.line ? undefined : byRegion.get(r.id);
+            // Detail fades in as it grows on screen; shapes holding the person's drawing always show.
+            const op = inside ? 1 : shapeOpacity(sizes[i]!, step);
+            if (op === 0) return null;
             if (r.line) {
               return (
                 <Path
                   key={r.id}
+                  opacity={op}
                   d={r.d}
                   fill="none"
                   stroke={ART.ink}
@@ -110,11 +122,13 @@ const LevelArt = memo(
                 />
               );
             }
-            const inside = byRegion.get(r.id);
             const paint = fills?.[r.id] ?? linkMap[r.id] ?? ART.paper;
+            // A nested level's background has no outline: its edge is the portal edge, and a drawn border there
+            // would show the seam between the two pictures.
+            const seam = i === 0 && level.depth > 0;
             if (!inside) {
               return (
-                <Path key={r.id} d={r.d} fill={paint} fillRule="evenodd" stroke={ART.ink} strokeWidth={sw} strokeLinejoin="round" />
+                <Path key={r.id} opacity={op} d={r.d} fill={paint} fillRule="evenodd" stroke={seam ? 'none' : ART.ink} strokeWidth={sw} strokeLinejoin="round" />
               );
             }
             return (
@@ -125,7 +139,7 @@ const LevelArt = memo(
                     <StrokePath key={s.id} s={s} />
                   ))}
                 </G>
-                <Path d={r.d} fill="none" stroke={ART.ink} strokeWidth={sw} strokeLinejoin="round" />
+                {seam ? null : <Path d={r.d} fill="none" stroke={ART.ink} strokeWidth={sw} strokeLinejoin="round" />}
               </G>
             );
           })}
@@ -138,6 +152,8 @@ const LevelArt = memo(
   },
   (a, b) =>
     a.level === b.level &&
+    a.base === b.base &&
+    a.step === b.step &&
     a.fills === b.fills &&
     a.linkKey === b.linkKey &&
     a.clip === b.clip &&
@@ -146,6 +162,7 @@ const LevelArt = memo(
 );
 
 const NO_STROKES: Stroke[] = [];
+const ROOT_BASE: Base = { ox: 0, oy: 0, s: 1 };
 
 export function useStrokesByLevel(p: Progress) {
   return useMemo(() => {
@@ -162,23 +179,27 @@ export function useStrokesByLevel(p: Progress) {
 /** All visible levels of a scene inside one Svg. */
 export function SceneLevels({
   vis,
+  base,
   progress,
   strokesByLevel,
   hidden,
 }: {
   vis: Visible;
+  base: Base;
   progress: Progress;
   strokesByLevel: Map<string, Stroke[]>;
   hidden?: Set<string>;
 }) {
   return (
     <>
-      {vis.map(({ level }) => {
+      {vis.map(({ level, step }) => {
         const l = links(level, progress.fills);
         return (
           <LevelArt
             key={level.id}
             level={level}
+            base={base}
+            step={step}
             fills={progress.fills[level.id]}
             linkKey={l.key}
             linkMap={l.map}
@@ -198,7 +219,7 @@ export const SceneThumb = memo(function SceneThumb({ L, progress, width }: { L: 
   const r = L.root;
   return (
     <Svg width={width} height={(width * r.h) / r.w} viewBox={`0 0 ${r.w} ${r.h}`} pointerEvents="none">
-      <SceneLevels vis={[{ level: r, alpha: 1 }]} progress={progress} strokesByLevel={strokes} />
+      <SceneLevels vis={[{ level: r, frac: 1, step: detailStep(width / r.w) }]} base={ROOT_BASE} progress={progress} strokesByLevel={strokes} />
     </Svg>
   );
 });
