@@ -95,9 +95,10 @@ struct SeamlessWidgetView: View {
     let t = theme
     let image = WidgetArtStore.load(pieceID, preferSize: SeamlessStore.familyName(family)) ?? SeamlessStore.load(family)
     let fit = layout == .fit
+    let live = LiveArtStore.spec(pieceID: pieceID, family: family) != nil
     // Fit only: the raw art of the same source (piece or per-size file), else the composed image.
     // Not loaded for Fill (widget memory budget).
-    let raw: UIImage? = fit ? (WidgetArtStore.has(pieceID) ? WidgetArtStore.loadArt(pieceID) : SeamlessStore.loadArt(family)) : nil
+    let raw: UIImage? = fit && !live ? (WidgetArtStore.has(pieceID) ? WidgetArtStore.loadArt(pieceID) : SeamlessStore.loadArt(family)) : nil
     ZStack(alignment: .bottomLeading) {
       // T259: following a theme with no piece of this size = its plain background, no hint.
       if image == nil && !WidgetArtStore.unpinnedShowsBackground(family) {
@@ -115,11 +116,11 @@ struct SeamlessWidgetView: View {
     // T237: the live value (time, date, battery, countdown, focus timer) over a piece that has one;
     // nothing for plain art. In the content (not the background) so the focus Button can be tapped.
     .overlay {
-      // Fill only: the stored rect is relative to the composed full-bleed image (Fit shows the raw
-      // art with an inset, where the plate would not line up; documented in docs/WIDGETS.md).
-      if let image = image, !fit {
+      // Live Fit retains the composed image and shares its inset with this layer.
+      // Switching layout must not freeze a clock or reveal its painted sample value.
+      if let image = image {
         if #available(iOS 17.0, *) {
-          LiveArtLayer(pieceID: pieceID, imageSize: image.size, theme: t, date: date)
+          LiveArtLayer(pieceID: pieceID, imageSize: image.size, theme: t, date: date, insetFraction: fit ? 0.06 : 0)
         }
       }
     }

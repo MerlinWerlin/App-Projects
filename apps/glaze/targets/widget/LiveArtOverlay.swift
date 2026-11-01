@@ -49,6 +49,7 @@ struct LiveArtSpec {
     else { return nil }
     let v = list.map { $0.doubleValue }
     guard v.allSatisfy({ $0.isFinite && $0 >= 0 && $0 <= 1 }), v[2] > 0, v[3] > 0 else { return nil }
+    guard v[0] + v[2] <= 1.0001, v[1] + v[3] <= 1.0001 else { return nil }
     var target: Date? = nil
     if kind == .countdown {
       guard let day = r["target"] as? String, let d = LiveArtSpec.day(day) else { return nil }
@@ -166,11 +167,15 @@ struct LiveArtLayer: View {
   let imageSize: CGSize
   let theme: WidgetTheme
   let date: Date
+  /// Fit uses the composed image, inset by the same fraction as its background view.
+  var insetFraction: CGFloat = 0
 
   var body: some View {
     if let spec = LiveArtStore.spec(pieceID: pieceID, family: family) {
       GeometryReader { geo in
-        let frame = LiveArtLayer.fitted(imageSize, in: geo.size)
+        let inset = min(geo.size.width, geo.size.height) * insetFraction
+        let box = CGSize(width: max(0, geo.size.width - 2 * inset), height: max(0, geo.size.height - 2 * inset))
+        let frame = LiveArtLayer.fitted(imageSize, in: box).offsetBy(dx: inset, dy: inset)
         let r = CGRect(
           x: frame.minX + spec.rect.minX * frame.width,
           y: frame.minY + spec.rect.minY * frame.height,
@@ -218,9 +223,9 @@ struct LiveArtValueView: View {
     }
   }
 
-  /// Nearly opaque over a painted value (it must vanish), lighter as a badge on number-free art.
+  /// Opaque over a painted value; translucent only on a verified number-free face.
   @ViewBuilder private var plate: some View {
-    let fill = Color(hex: spec.plate).opacity(spec.cover ? 0.94 : 0.72)
+    let fill = Color(hex: spec.plate).opacity(spec.cover ? 1 : 0.72)
     if spec.circle {
       Circle()
         .fill(fill)

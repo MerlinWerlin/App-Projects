@@ -72,6 +72,8 @@ export type WidgetOption = {
    * habits or battery picture is treated as art (its numbers would never change). See fixedValues.
    */
   numberFree?: boolean;
+  /** Optional value area on a verified number-free face, in source-art coordinates. */
+  liveFrame?: { rect: [number, number, number, number]; shape: 'circle' | 'plate' };
   /**
    * T237: the Glaze widget draws this piece's live value over it (src/core/liveArt.ts withLiveArt),
    * so it is a working widget even though a value is painted in. Set by the app, never by a pack.
@@ -136,6 +138,16 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
       label = o.label.trim();
     }
     if (o.numberFree !== undefined && typeof o.numberFree !== 'boolean') return void errors.push(`${at} (${o.id}): bad numberFree`);
+    let liveFrame: WidgetOption['liveFrame'];
+    if (o.liveFrame !== undefined) {
+      const f = o.liveFrame;
+      if (o.numberFree !== true || !isObj(f) || !Array.isArray(f.rect) || f.rect.length !== 4 ||
+          !f.rect.every((v) => typeof v === 'number' && Number.isFinite(v) && v >= 0 && v <= 1) ||
+          (f.shape !== 'circle' && f.shape !== 'plate')) return void errors.push(`${at} (${o.id}): bad liveFrame`);
+      const [x, y, w, h] = f.rect as number[];
+      if (w <= 0 || h <= 0 || x + w > 1 || y + h > 1) return void errors.push(`${at} (${o.id}): liveFrame outside art`);
+      liveFrame = { rect: [x, y, w, h], shape: f.shape };
+    }
     ids.add(o.id);
     options.push({
       id: o.id,
@@ -149,6 +161,7 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
       height: asset.height,
       derived: false,
       ...(o.numberFree === true ? { numberFree: true } : {}),
+      ...(liveFrame ? { liveFrame } : {}),
     });
   });
   return { options, errors };

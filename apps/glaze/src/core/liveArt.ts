@@ -111,7 +111,7 @@ export type LiveArtPlan = {
  */
 export function liveArtPlan(
   themeId: string,
-  option: Pick<WidgetOption, 'id' | 'kind' | 'numberFree'>,
+  option: Pick<WidgetOption, 'id' | 'kind' | 'numberFree' | 'liveFrame'>,
   opts: { countdownTo?: string | null } = {},
 ): LiveArtPlan | null {
   const known = KNOWN_LIVE_PIECES[`${themeId}/${option.id}`];
@@ -120,7 +120,14 @@ export function liveArtPlan(
     plan = { kind: known.kind, rect: { ...known.rect }, shape: known.shape, cover: true };
   } else if (option.numberFree === true) {
     const kind = liveArtKindOf(option.kind);
-    if (kind) plan = { kind, rect: { ...DEFAULT_BADGE_RECT }, shape: 'plate', cover: false };
+    if (kind) {
+      const f = option.liveFrame;
+      if (f) {
+        const [x, y, w, h] = f.rect;
+        if (![x, y, w, h].every((v) => Number.isFinite(v) && v >= 0 && v <= 1) || w <= 0 || h <= 0 || x + w > 1 || y + h > 1) return null;
+        plan = { kind, rect: { x, y, w, h }, shape: f.shape, cover: false };
+      } else plan = { kind, rect: { ...DEFAULT_BADGE_RECT }, shape: 'plate', cover: false };
+    }
   }
   if (!plan) return null;
   if (plan.kind === 'countdown') {
@@ -136,7 +143,7 @@ export function liveArtPlan(
  * `liveArt` and listed under its live kind (harbour-focus becomes a `focus` piece); every other
  * option is returned unchanged (and is shown as Art when it has values painted in: fixedValues).
  */
-export function withLiveArt<T extends Pick<WidgetOption, 'id' | 'kind' | 'numberFree'>>(themeId: string, options: readonly T[], opts: { countdownTo?: string | null } = {}): T[] {
+export function withLiveArt<T extends Pick<WidgetOption, 'id' | 'kind' | 'numberFree' | 'liveFrame'>>(themeId: string, options: readonly T[], opts: { countdownTo?: string | null } = {}): T[] {
   return options.map((o) => {
     const plan = liveArtPlan(themeId, o, opts);
     if (!plan) return o;
