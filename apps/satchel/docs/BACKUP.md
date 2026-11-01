@@ -28,6 +28,10 @@ memory while backing up. Above 100 MB the screen warns first; a picked file over
   postcards, leaving-home codes, settings and the other phone-only lists. New stores are picked up automatically
   (the backup reads all keys by prefix, not a fixed list).
 - Files under `<documents>/attachments/` (booking files, QR crops, journal, receipt, bag and car photos).
+- Trip cover photos under `<documents>/covers/` (T154; always, not a document). On restore the phone-only cover map
+  (`satchel.coverphoto.v1`) is rewritten entry by entry onto the new install's documents folder
+  (`rebaseCoverPhotoStore`), which also fixes paths from an older app container than the one the backup was made in.
+  A backup made before T154 has the map but not the files: those trips fall back to their illustrated cover.
 - **Documents vault** (`satchel.vault.v1` and `<documents>/vault/`) only when "Include documents" is on. Off by
   default; when on, the screen warns that the file then holds unlocked passport copies and should be kept private.
 
@@ -40,9 +44,10 @@ memory while backing up. Above 100 MB the screen warns first; a picked file over
 
 ## Restore
 Restore from a file (document picker) -> checks -> preview (made on, app version, trips, bookings, files, size,
-documents) -> Merge or Replace.
+documents) -> Merge or Replace. Since T154 a `.satchelbackup` opened from Files, Mail or AirDrop (Open in / Share >
+Satchel, document type `app.satchel.backup`) goes straight to the same preview.
 - Checks: not JSON / not this format -> "That isn't a Satchel backup" (a `.satchel` trip file says to use Import a
-  trip); newer version -> refused; cut off, a key outside `satchel.`, a bad path (`..`, outside attachments/vault),
+  trip); newer version -> refused; cut off, a key outside `satchel.`, a bad path (`..`, outside attachments/vault/covers),
   or a file whose size or SHA-256 doesn't match -> "This backup is damaged". Nothing changes on any refusal.
 - **Merge** keeps both sides. Lists of records with ids (trips, documents, contacts...) are joined by id; on the same
   id the newer `updatedAt` wins when both have one, otherwise the backup's. Objects merge key by key; other values
@@ -61,4 +66,5 @@ on this phone in the last 30 days. Dismissing hides it for that trip for good.
 Automatic sync between the user's own devices is CloudKit (private database), which needs a native module and
 the iCloud capability in a dev build (PLAN §3 SYNC, a Plus feature). The backup file is the free, offline path
 until then; the same key/file model can feed a CloudKit record per store later. Opening a `.satchelbackup` from
-Files straight into Satchel also needs the document type registered (like `.satchel`, see docs/TRIPFILE.md).
+Files straight into Satchel works since T154: `.satchelbackup` is exported as `app.satchel.backup` in app.json
+(needs a new native build; older builds still restore through the picker).

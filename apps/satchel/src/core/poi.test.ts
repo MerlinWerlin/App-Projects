@@ -5,7 +5,6 @@ import { demoTrip } from './demo.ts';
 import {
   bookingPins,
   categoryForTags,
-  defaultToggles,
   distanceParts,
   filterByCategories,
   haversineMeters,
@@ -71,10 +70,14 @@ test('parsePoiCategories skips malformed rows and duplicates', () => {
   assert.deepEqual(parsePoiCategories('nope'), []);
 });
 
-test('toggles start from default_on and filter the points', () => {
-  const on = defaultToggles(cats);
-  assert.deepEqual(Object.keys(on), [...MAP_V0_CATEGORIES]);
-  assert.ok(Object.values(on).every((v) => v === true));
+// T155: defaultToggles retired (the map starts every offered category on, src/core/packpois.ts); default_on is
+// still read from the content so that rule can be tested against it.
+test('categories keep default_on from the content; the toggles filter the points', () => {
+  const byId = new Map(cats.map((c) => [c.id, c]));
+  for (const id of MAP_V0_CATEGORIES) assert.equal(byId.get(id)?.defaultOn, true, id);
+  assert.equal(byId.get('embassy')?.defaultOn, false);
+  assert.equal(parsePoiCategories({ categories: [{ id: 'z', tags: [{ key: 'a', value: 'b' }] }] })[0].defaultOn, true, 'on if unknown');
+  const on: Record<string, boolean> = Object.fromEntries(MAP_V0_CATEGORIES.map((id) => [id, true]));
   const pois = [
     { id: '1', category: 'toilets' },
     { id: '2', category: 'food' },

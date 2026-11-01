@@ -25,6 +25,7 @@ import { keepUnknown, splitFromDraft, togetherDraftFromExpense, withSplit } from
 import type { AirportInfo } from './leaveby.ts';
 import type { LegInfo } from './layovers.ts';
 import type { CheckinInfo } from './checkin.ts';
+import type { AccessNote } from './stepfree.ts';
 import { legInfoDraft, withLegInfo } from './layovers.ts';
 import { airportDraft, withAirport } from './leaveby.ts';
 import type { PackItem, PackList } from './packing.ts';
@@ -56,6 +57,8 @@ const attachment: Required<Attachment> = {
   mime: 'application/pdf',
   role: 'ticket',
   qrCropUri: `${DOCS}attachments/att_1-crop.png`,
+  // T28: the in-app QR crop rectangle (fractions of the image).
+  qrCrop: { x: 0.25, y: 0.3, w: 0.5, h: 0.25 },
 };
 
 const airport: Required<AirportInfo> = {
@@ -71,6 +74,9 @@ const airport: Required<AirportInfo> = {
 // T131: arrival / departure terminal and gate typed on a journey.
 // T143: check-in offsets, bag-drop minutes, car desk hours and the tick.
 const checkin: Required<CheckinInfo> = { opensH: 30, closesMin: 50, bagDropMin: 70, deskFrom: '08:00', deskTo: '18:30', doneAt: '2027-03-31T10:00:00.000Z', outAt: '2027-04-04T09:30:00.000Z' };
+
+// T156: per-booking access notes (step-free room, assistance booked, lift, a note).
+const access: Required<AccessNote> = { stepFreeRoom: true, assistance: true, lift: true, note: 'Assistance meets at gate 52' };
 
 const legInfo: Required<LegInfo> = { depTerminal: 'T1', depGate: '52', arrTerminal: 'Terminal 3', arrGate: '114' };
 
@@ -96,6 +102,7 @@ const flight: Required<Item> = {
   // T140: the indoor / outdoor mark (activities use it; set here so every path is checked with it).
   setting: 'outdoor',
   checkin,
+  access,
   attachments: [attachment],
 };
 
@@ -119,7 +126,8 @@ const hotel: Required<Item> = {
   // T140: the indoor / outdoor mark (activities use it; set here so every path is checked with it).
   setting: 'outdoor',
   checkin,
-  attachments: [{ id: 'att_2', uri: `${DOCS}attachments/att_2-voucher.png`, name: 'voucher.png', mime: 'image/png', role: 'booking', qrCropUri: `${DOCS}attachments/att_2-voucher.png` }],
+  access,
+  attachments: [{ id: 'att_2', uri: `${DOCS}attachments/att_2-voucher.png`, name: 'voucher.png', mime: 'image/png', role: 'booking', qrCropUri: `${DOCS}attachments/att_2-voucher.png`, qrCrop: { x: 0, y: 0.5, w: 1, h: 0.125 } }],
 };
 
 const savedPlace: Required<SavedPlace> = { ...place('sp_1', 'Senso-ji', 35.7148, 139.7967), category: 'see', sample: true, savedAt: '2027-03-01T10:00:00.000Z', setting: 'indoor' }; // T142: the place's own indoor / outdoor mark
@@ -372,11 +380,13 @@ test('T85 fixture: every Trip and Item field is set (Required<> typing + no unde
   // T107: Gift / GiftPerson keys today.
   assert.deepEqual(Object.keys(gift).sort(), ['bag', 'createdAt', 'currency', 'expenseId', 'id', 'lat', 'lon', 'price', 'spotName', 'status', 'updatedAt', 'weightG', 'what', 'where']);
   assert.deepEqual(Object.keys(giftPerson).sort(), ['budget', 'createdAt', 'gifts', 'id', 'name']);
-  assert.deepEqual(Object.keys(flight).sort(), ['airport', 'attachments', 'carrier', 'checkin', 'end', 'from', 'id', 'kind', 'legInfo', 'notes', 'number', 'place', 'ref', 'seat', 'setting', 'start', 'title', 'to', 'tripId']);
+  assert.deepEqual(Object.keys(flight).sort(), ['access', 'airport', 'attachments', 'carrier', 'checkin', 'end', 'from', 'id', 'kind', 'legInfo', 'notes', 'number', 'place', 'ref', 'seat', 'setting', 'start', 'title', 'to', 'tripId']);
   // T142: SavedPlace keys today (setting added).
   assert.deepEqual(Object.keys(savedPlace).sort(), ['address', 'category', 'id', 'lat', 'localAddress', 'lon', 'name', 'phone', 'sample', 'savedAt', 'setting']);
   // T143: CheckinInfo keys today.
   assert.deepEqual(Object.keys(checkin).sort(), ['bagDropMin', 'closesMin', 'deskFrom', 'deskTo', 'doneAt', 'opensH', 'outAt']);
+  // T156: AccessNote keys today.
+  assert.deepEqual(Object.keys(access).sort(), ['assistance', 'lift', 'note', 'stepFreeRoom']);
   // T131: LegInfo keys today.
   assert.deepEqual(Object.keys(legInfo).sort(), ['arrGate', 'arrTerminal', 'depGate', 'depTerminal']);
 });
@@ -576,6 +586,23 @@ test('T85 (3) regression: attachment, journal page and journal photo fields adde
   assert.equal((trip.journal?.[0] as JournalEntry & { pinned?: boolean }).pinned, true);
   assert.equal((trip.journal?.[0].photos[0] as JournalPhoto & { takenAt?: string }).takenAt, '2027-04-03T09:00:00.000Z');
   assert.equal('uri' in (buildTripFile(src, { att_1: { data: 'QUJD' }, att_2: { data: 'QUJD' } }).file.items[0].attachments[0] as object), false, 'no device path in the file');
+});
+
+test('T28: the in-app QR crop rectangle survives .satchel export + import, store reload and an app update', () => {
+  const src = fullTrip();
+  const { trip } = exportImport(src, null);
+  assert.deepEqual(trip.items.map((i) => i.attachments.map((a) => a.qrCrop)), [[attachment.qrCrop], [{ x: 0, y: 0.5, w: 1, h: 0.125 }]]);
+  const moved = 'file:///var/mobile/Containers/Data/Application/C3/Documents/';
+  const [t] = rebaseTrips(parseStoredTrips(JSON.stringify([src])) ?? [], moved);
+  assert.deepEqual(t.items[0].attachments[0].qrCrop, attachment.qrCrop);
+  // A damaged rectangle in a hand-edited file is dropped on import, never drawn.
+  const built = buildTripFile(src, { att_1: { data: 'QUJD', crop: 'REVG' }, att_2: { data: 'QUJD' } });
+  (built.file.items[0].attachments[0] as { qrCrop?: unknown }).qrCrop = { x: 'a', y: 0, w: 0, h: 1 };
+  const parsed = parseTripFileText(JSON.stringify(built.file));
+  assert.ok(parsed.ok);
+  const imp = importTripFile(parsed.file, (p) => `${p}_d`);
+  assert.equal('qrCrop' in imp.trip.items[0].attachments[0], false);
+  assert.deepEqual(imp.trip.items[1].attachments[0].qrCrop, { x: 0, y: 0.5, w: 1, h: 0.125 });
 });
 
 test('T85 (3) without "Include journal photos" the photos stay on the phone and are counted', () => {

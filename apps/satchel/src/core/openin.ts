@@ -5,15 +5,21 @@
 //   text / eml -> Paste a booking, filled in (the T77 parser)
 //   pdf / image -> Add to a trip (pick a trip, then a new booking with the file attached)
 //   trip -> the T15 import flow
+//   backup (.satchelbackup, T154) -> Settings > Backup's restore preview (Merge or Replace), never a trip import
 //   unknown -> an honest "Satchel can't read this kind of file" screen with a way back
 // Nothing here touches the file system; src/native/openin.ts copies the file into the app first. No RN imports.
+import { BACKUP_FILE_MIME, BACKUP_UTI } from './backup.ts';
 import { extensionOf } from './tickets.ts';
 
-export type OpenInKind = 'trip' | 'pdf' | 'image' | 'text' | 'eml' | 'unknown';
-export type OpenInRoute = 'import' | 'addToTrip' | 'paste' | 'unsupported';
+export type OpenInKind = 'trip' | 'backup' | 'pdf' | 'image' | 'text' | 'eml' | 'unknown';
+export type OpenInRoute = 'import' | 'restore' | 'addToTrip' | 'paste' | 'unsupported';
 
 /** Largest file Satchel takes in through Open in (bytes). Bigger ones get the "too large" message. */
 export const MAX_INCOMING_BYTES = 40 * 1024 * 1024;
+/** A backup carries every attachment and photo, so it may be larger: the restore screen's own limit applies. */
+export const MAX_INCOMING_BACKUP_BYTES = 400 * 1024 * 1024;
+/** The size limit for an incoming file of this kind. */
+export const maxIncomingBytes = (kind: OpenInKind): number => (kind === 'backup' ? MAX_INCOMING_BACKUP_BYTES : MAX_INCOMING_BYTES);
 /** Text handed to Paste a booking is cut to this many characters (a confirmation is never longer). */
 export const MAX_PASTE_CHARS = 20000;
 /** How many leading bytes the native side reads for sniffing a file with no telling name. */
@@ -41,6 +47,7 @@ export function fileNameFromUrl(url: string): string {
 
 const EXT_KIND: Record<string, OpenInKind> = {
   satchel: 'trip',
+  satchelbackup: 'backup',
   pdf: 'pdf',
   jpg: 'image',
   jpeg: 'image',
@@ -56,6 +63,7 @@ const EXT_KIND: Record<string, OpenInKind> = {
 
 const UTI_KIND: Record<string, OpenInKind> = {
   [TRIP_UTI]: 'trip',
+  [BACKUP_UTI]: 'backup',
   'com.adobe.pdf': 'pdf',
   'public.image': 'image',
   'public.jpeg': 'image',
@@ -78,6 +86,7 @@ function kindForMime(mime: string): OpenInKind {
   if (m === 'message/rfc822') return 'eml';
   if (m === 'text/plain') return 'text';
   if (m === 'application/vnd.satchel.trip+json') return 'trip';
+  if (m === BACKUP_FILE_MIME) return 'backup';
   return 'unknown';
 }
 
@@ -116,6 +125,7 @@ export function sniffKind(bytes: Uint8Array): OpenInKind | null {
   const text = decodeBytes(bytes.subarray(start), 'utf-8');
   const lead = text.trimStart();
   if (lead.startsWith('{') && /"format"\s*:\s*"satchel-trip"/.test(text)) return 'trip';
+  if (lead.startsWith('{') && /"format"\s*:\s*"satchel-backup"/.test(text)) return 'backup';
   if (lead.startsWith('{') || lead.startsWith('[')) return 'unknown'; // some other JSON: not ours
   if (EML_HEAD.test(lead)) return 'eml';
   return 'text';
@@ -128,7 +138,7 @@ export function decideKind(p: { name?: string | null; mime?: string | null; uti?
   // A file named .json or .txt could still be a trip file renamed by a mail app; the bytes decide those.
   if (named !== 'unknown' && ext !== 'txt' && ext !== 'text') return named;
   const sniffed = head ? sniffKind(head) : null;
-  if (named === 'text') return sniffed === 'trip' || sniffed === 'eml' ? sniffed : 'text';
+  if (named === 'text') return sniffed === 'trip' || sniffed === 'backup' || sniffed === 'eml' ? sniffed : 'text';
   return sniffed ?? 'unknown';
 }
 
@@ -137,6 +147,8 @@ export function routeFor(kind: OpenInKind): OpenInRoute {
   switch (kind) {
     case 'trip':
       return 'import';
+    case 'backup':
+      return 'restore';
     case 'pdf':
     case 'image':
       return 'addToTrip';
@@ -164,7 +176,7 @@ export function incomingRedirect(path: unknown): string | null {
 
 /** A safe file name for the inbox copy: `<id>-<name>`, path characters replaced, never empty, at most 80 chars. */
 export function incomingName(id: string, name: string, kind: OpenInKind = 'unknown'): string {
-  const fallback = kind === 'pdf' ? 'file.pdf' : kind === 'image' ? 'image.jpg' : kind === 'eml' ? 'message.eml' : kind === 'trip' ? 'trip.satchel' : 'file';
+  const fallback = kind === 'pdf' ? 'file.pdf' : kind === 'image' ? 'image.jpg' : kind === 'eml' ? 'message.eml' : kind === 'trip' ? 'trip.satchel' : kind === 'backup' ? 'backup.satchelbackup' : 'file';
   const clean = name.replace(/[^\w.\-]+/g, '_').replace(/^\.+/, '').slice(-80) || fallback;
   return `${id}-${clean}`;
 }

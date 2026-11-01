@@ -187,3 +187,18 @@ test('state, file name and reminder', () => {
   assert.equal(backupReminderTrip(trips, { ...s, dismissed: ['soon'] }, '2026-11-01', now), null, 'dismissed for that trip');
   assert.equal(backupReminderTrip(trips, s, '2026-11-09', now), null, 'nothing starting within 7 days');
 });
+
+test('T28: an attachment\'s in-app QR crop rectangle comes back from a backup (Replace and Merge)', () => {
+  const crop = { x: 0.3, y: 0.45, w: 0.4, h: 0.2 };
+  const trips = JSON.stringify([
+    { id: 't1', name: 'Kyoto', startDate: '2027-04-01', items: [{ id: 'i1', tripId: 't1', attachments: [{ id: 'a1', uri: `${OLD}attachments/a1-shot.png`, name: 'shot.png', mime: 'image/png', role: 'ticket', qrCrop: crop }] }] },
+  ]);
+  const r = parseBackup(serializeBackup(buildBackup(meta(false), [['satchel.trips.v1', trips]], [{ path: 'attachments/a1-shot.png', base64: 'QUJD' }])));
+  assert.ok(r.ok);
+  if (!r.ok) return;
+  for (const mode of ['replace', 'merge'] as const) {
+    const back = JSON.parse(planRestore(r.backup, {}, mode, NEW).set['satchel.trips.v1']);
+    assert.deepEqual(back[0].items[0].attachments[0].qrCrop, crop, mode);
+    assert.equal(back[0].items[0].attachments[0].uri, `${NEW}attachments/a1-shot.png`);
+  }
+});

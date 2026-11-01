@@ -24,6 +24,8 @@ export type PackPlace = {
   phone?: string;
   opening_hours?: string;
   emergency?: string;
+  /** T156: the OSM wheelchair tag, when the place has one. */
+  wheelchair?: string;
 };
 
 export type PackToilet = { id: string; lat: number; lon: number } & Record<string, string | number>;

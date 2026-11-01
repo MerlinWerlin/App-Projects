@@ -1,12 +1,14 @@
 // T117 Map layers + legend: the Layers button under the map and its sheet. One row per pin family the map draws
 // (a switch with its count, and the colour + icon its pins use, so the list is also the legend), the other pins'
 // colours, "Show all trips" / "Only this trip", and "Fit to visible pins". Choices are kept on this phone by
-// src/ui/useMapLayers.ts. The sheet slides (or fades with Reduce Motion): timed, never a spring.
+// src/ui/useMapLayers.ts. T13: a "Kinds of place" section with a switch per place category (the same choice as the
+// chips above Nearby, kept on this phone, every kind on at first open) and the OSM / ODbL line. The sheet slides (or fades with Reduce Motion): timed, never a spring.
 import { Ionicons } from '@expo/vector-icons';
 import type { ComponentProps } from 'react';
 import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { hiddenCount, isShown, LAYER_SPECS, MAP_LAYERS, type LayerCounts, type LayerPrefs, type MapLayerId, type MapScope } from '../core/maplayers.ts';
+import type { OfferedCategory } from '../core/packpois.ts';
 import type { Key } from '../i18n/en.ts';
 import { useApp } from '../state/app.tsx';
 import { fonts, radius, space, typeScale } from '../theme/tokens.ts';
@@ -59,6 +61,7 @@ export function MapLayersSheet({
   onScope,
   canFit,
   onFit,
+  places,
 }: {
   open: boolean;
   onClose: () => void;
@@ -74,6 +77,16 @@ export function MapLayersSheet({
   onScope: (scope: MapScope) => void;
   canFit: boolean;
   onFit: () => void;
+  /** T13: per-category place toggles (src/core/packpois.ts); the attribution shows when downloaded places are in use. */
+  places?: {
+    categories: readonly OfferedCategory[];
+    on: Readonly<Record<OfferedCategory, boolean>>;
+    counts: Readonly<Record<OfferedCategory, number>>;
+    label: (id: OfferedCategory) => string;
+    onToggle: (id: OfferedCategory) => void;
+    onShowAll: () => void;
+    attribution: string | null;
+  };
 }) {
   const { t, theme, reduceMotion } = useApp();
   const insets = useSafeAreaInsets();
@@ -146,6 +159,37 @@ export function MapLayersSheet({
               );
             })}
             {hiddenCount(prefs) > 0 ? <Button kind="quiet" label={t('maplayers.showEvery')} hint={t('maplayers.showEveryHint')} onPress={onShowAll} /> : null}
+
+            {places ? (
+              <>
+                <Label>{t('packpois.sheet.label')}</Label>
+                <Body muted>{t('packpois.sheet.body')}</Body>
+                {places.categories.map((id) => {
+                  const on = places.on[id];
+                  const name = places.label(id);
+                  const count = countText(places.counts[id]);
+                  return (
+                    <PressableScale
+                      key={id}
+                      accessibilityRole="switch"
+                      accessibilityLabel={t('packpois.sheet.toggleA11y', { label: name, count, state: t(on ? 'maplayers.shown' : 'maplayers.hidden') })}
+                      accessibilityHint={t('map.toggleHint')}
+                      accessibilityState={{ checked: on }}
+                      onPress={() => places.onToggle(id)}
+                      style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, minHeight: 48, borderTopWidth: 1, borderTopColor: theme.line }}
+                    >
+                      <Text style={[typeScale.bodyStrong, { flex: 1, color: on ? theme.ink : theme.muted }]}>{name}</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted, fontVariant: ['tabular-nums'] }}>{count}</Text>
+                      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: on ? theme.ok : theme.muted, minWidth: 36, textAlign: 'right' }}>{t(on ? 'common.on' : 'common.off')}</Text>
+                    </PressableScale>
+                  );
+                })}
+                {places.categories.some((id) => !places.on[id]) ? (
+                  <Button kind="quiet" label={t('packpois.sheet.showAll')} hint={t('packpois.sheet.showAllHint')} onPress={places.onShowAll} />
+                ) : null}
+                {places.attribution ? <Text style={[typeScale.small, { color: theme.muted }]}>{places.attribution}</Text> : null}
+              </>
+            ) : null}
 
             <Label>{t('maplayers.other')}</Label>
             {(

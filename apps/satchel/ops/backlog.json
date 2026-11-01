@@ -167,12 +167,13 @@
     },
     {
       "id": "T13",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T12"
       ],
       "title": "Offline POI layers: per-city OSM extracts shipped with the map download; toggles; attribution",
-      "accept": "tests for POI file parsing; release standard §1: every offered category on at first open (ignore content default_on false), empty filtered list keeps the Show all button"
+      "accept": "tests for POI file parsing; release standard §1: every offered category on at first open (ignore content default_on false), empty filtered list keeps the Show all button",
+      "commit": "8777bd2"
     },
     {
       "id": "T14",
@@ -360,7 +361,7 @@
     },
     {
       "id": "T28",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T10"
       ],
@@ -370,7 +371,8 @@
       ],
       "accept": "see title",
       "title": "Native polish after trial: in-app QR crop screen (expo-image-manipulator) for files attached from Files, inline PDF viewer, app-switcher privacy cover for the vault",
-      "note": "App-switcher cover split out as T57 (31 Oct)."
+      "note": "App-switcher cover split out as T57 (31 Oct).",
+      "commit": "e104897"
     },
     {
       "id": "T29",
@@ -683,7 +685,7 @@
       ],
       "title": "Verify the satchel-maps-v1 release (catalog.json + city tars) once published; tune tile size/zoom from the owner's TestFlight answers; dark-style tiles",
       "accept": "catalog fetch OK; owner answers A yes",
-      "note": "Run 84: release satchel-maps-v1 still 404 (D211-2: keep the honest being-published state; do not publish map files from this task)."
+      "note": "Run 84: release satchel-maps-v1 still 404 (D211-2: keep the honest being-published state; do not publish map files from this task). Run 109: contract test (src/core/mapcontract.test.ts) + meta.json bytes fix (fab9163); packs need a rebuild to carry the new food/supermarket/embassy POI categories (T13); the phone does not check sha256 (would need a native hash)."
     },
     {
       "id": "T53",
@@ -1875,17 +1877,20 @@
         "content"
       ],
       "title": "Getting around rows still flagged (TR Istanbul card tapping, EG Cairo metro gates, KR Seoul, MX Mexico City, VN HCMC, PH Manila taxis): clear only from official operator/government pages fetched in a networked run; record each source in DECISIONS (split from T146).",
-      "accept": "tests green; DECISIONS records sources"
+      "accept": "tests green; DECISIONS records sources",
+      "note": "Run 110: networked worker retries official operator/government pages. Run 110 (429ea00): VN row updated from baochinhphu.vn + vietnam.travel (still flagged: no page says foreign cards work at the gates); KR MX TR EG PH unchanged, official pages block automated fetching. Stays todo for a later networked run or the OpenAI lane."
     },
     {
       "id": "T151",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "follow-up"
       ],
       "title": "Run-107 follow-ups: Postcards row on Your day on a free afternoon and a 'Postcards' entry in Plan this trip again summary; Plan this trip again offers to copy the kids list (phone-only store) with names; check-out Calendar reminder via ics; Macau Traditional Chinese sign wording; Numbers trainer casual spoken forms (e.g. Chinese 块, Vietnamese ngàn) as optional second line; native-speaker check of kids.json, numbers rules, HK/TH/PT sign lines; device checks CR-CU.",
-      "accept": "tests green; strings in a new followups107 file (prefix f107.); DECISIONS records sources"
+      "accept": "tests green; strings in a new followups107 file (prefix f107.); DECISIONS records sources",
+      "note": "Run 110: worker takes the offline code parts; native-speaker checks and device checks stay open.",
+      "commit": "d215cb1"
     },
     {
       "id": "T152",
@@ -1901,24 +1906,60 @@
     },
     {
       "id": "T153",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1101s",
         "map"
       ],
       "title": "Owner 1101s-2 Map test path: check the app side against tools/maps output (catalog URL, asset names, sizes, tar layout); exact TestFlight test steps for the map in docs/TRIAL.md and on the board; keep the honest being-published state until satchel-maps-v1 exists (D211-2).",
-      "accept": "contract test app vs tools/maps; TRIAL steps"
+      "accept": "contract test app vs tools/maps; TRIAL steps",
+      "commit": "fab9163"
     },
     {
       "id": "T154",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1101s",
         "follow-up"
       ],
       "title": "Run-108 follow-ups: own cover photos (documents/covers/) into the .satchelbackup with path rebasing; .satchelbackup document type so a backup opens straight into Satchel from Files (with T14's Open in router); trip export shared with UTI app.satchel.trip; clean the stale plus.* keys (iCloud/widgets/themes) out of docs/spec/STRINGS.json; import the OpenAI cover art (docs/research/COVER_ART_REQUEST.md) once it lands in _drops/art; device checks CV-CZ.",
+      "accept": "tests green; DECISIONS records",
+      "commit": "0ce9cfd"
+    },
+    {
+      "id": "T155",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-109 follow-ups: PDF viewer + QR crop for vault documents (doc/[id]); per-category icons/colours for map place pins; retire poi.ts defaultToggles (unused, follows default_on); PDF crop (render page to image); Android backup MIME intent filter; check react-native-webview 13.16.1 with npx expo install --check on the PC (copied from an SDK 57 lock); device checks DA-DD.",
+      "accept": "tests green; DECISIONS records",
+      "note": "Run 110: worker takes the code parts (vault PDF viewer + crop, pin icons/colours, defaultToggles retirement, Android backup intent filter); PDF crop only if it needs no new native module; PC expo install --check stays open.",
+      "commit": "8911f09"
+    },
+    {
+      "id": "T156",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Step-free travel (owner-1031 D, deepen Map + Toilets + Trips): phone-only access needs (wheelchair, step-free, pram/stroller, limited walking); Toilets puts wheelchair/changing-table toilets first with a quick filter when set; Map place pins and Nearby show the OSM wheelchair tag (yes/limited/no) where packs carry it and tools/maps/pois.mjs keeps the wheelchair tag + adds lifts (highway=elevator) as an additive kind; per-booking access notes (step-free room, assistance booked, lift) kept in .satchel with the every-field guard; Airport day and readiness rows 'Book travel assistance' (generic advice, no company names) when needs are set; an access needs Help card line in the stay country's language reusing helpcards; original SVG icons; tests.",
+      "accept": "tests green; strings in src/i18n/en/stepfree.ts (prefix stepfree.); ODbL attribution where OSM data appears; DECISIONS records",
+      "commit": "5f4bb0d"
+    },
+    {
+      "id": "T157",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-110 follow-ups: accessible-toilet pin colour on the Toilets map view; Lifts icon in the Layers sheet; 'Where is the lift?' as a full-screen phrase card; native-speaker check of stepfree_lines.json, Macau sign lines and the casual number forms; PDF page crop (needs a native renderer, see DECISIONS); packs need a rebuild for wheelchair tags + lifts (with T52); device checks DE-DH.",
       "accept": "tests green; DECISIONS records"
     }
   ],

@@ -8,6 +8,12 @@
 //   2: adds `police` places, and for the help categories (hospital_clinic, pharmacy, police) the OSM `amenity`,
 //      `phone` (phone or contact:phone), `opening_hours` and `emergency` (hospitals); access=private/no help places
 //      are left out. Old app builds ignore the new fields, and new builds still read format 1 packs.
+//   T13 (still format 2, additive): `places[].category` may also be `food` (restaurant / cafe / fast food),
+//      `supermarket` and `embassy` (amenity=embassy or office=diplomatic), for the Map tab's offline POI layer
+//      (src/core/packpois.ts). Older app builds skip categories they do not know, so no format bump is needed.
+//   T156 (still format 2, additive): `places[].category` may also be `lift` (highway=elevator), and every place keeps
+//      the OSM `wheelchair` tag (yes / limited / no / designated) when it has one, for step-free travel
+//      (src/core/stepfree.ts). Older app builds ignore both.
 
 export const POIS_FORMAT = 2;
 export const POIS_ATTRIBUTION = '© OpenStreetMap contributors (ODbL)';
@@ -21,6 +27,12 @@ export const POI_TAGS = {
   police: [['amenity', 'police']],
   atm_bank: [['amenity', 'atm'], ['amenity', 'bank']],
   transport: [['railway', 'station'], ['amenity', 'bus_station'], ['amenity', 'ferry_terminal']],
+  // T13: added after the first categories so their matches never change.
+  food: [['amenity', 'restaurant'], ['amenity', 'cafe'], ['amenity', 'fast_food']],
+  supermarket: [['shop', 'supermarket']],
+  embassy: [['amenity', 'embassy'], ['office', 'diplomatic']],
+  // T156: lifts, added last so no earlier match changes.
+  lift: [['highway', 'elevator']],
 };
 
 /** The categories Nearest help reads (src/core/help.ts); these get the contact details. */
@@ -89,7 +101,8 @@ export function toPois(elements, built) {
     const help = HELP_POI_CATEGORIES.includes(cat[0]);
     if (help && HIDDEN_ACCESS.has(tags.access)) continue;
     const name = tag(tags, 'name:en') ?? tag(tags, 'name');
-    places.push({ id, ...ll, category: cat[0], ...(name ? { name } : {}), ...(help ? helpDetails(tags) : {}) });
+    const wheelchair = tag(tags, 'wheelchair');
+    places.push({ id, ...ll, category: cat[0], ...(name ? { name } : {}), ...(help ? helpDetails(tags) : {}), ...(wheelchair ? { wheelchair } : {}) });
   }
   return { format: POIS_FORMAT, built, attribution: POIS_ATTRIBUTION, toilets, places };
 }

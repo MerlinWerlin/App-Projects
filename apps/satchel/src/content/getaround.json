@@ -736,17 +736,22 @@
       "country": "Vietnam",
       "area": "Ho Chi Minh City",
       "transit": "In Ho Chi Minh City, Metro Line 1 runs from Ben Thanh Market to the Eastern Bus Terminal; buy tickets in the official metro app. City buses run 150+ routes; avoid the morning and evening rush hours.",
-      "tickets": null,
-      "contactless": null,
-      "contactless_note": null,
+      "tickets": ["Day ticket (Metro Line 1)", "Monthly ticket (Metro Line 1)"],
+      "contactless": "some",
+      "contactless_note": "Metro Line 1 gates take contactless debit and credit cards on Vietnam's NAPAS network (since February 2025); the government page does not say if foreign Visa or Mastercard cards work.",
       "hours": null,
       "taxi": "Taxis are air-conditioned: use a trusted company and make sure the meter is on, or confirm the price in a ride app before you set off. On motorbike taxis, always wear a helmet.",
       "rides": "available",
-      "airport": null,
-      "sources": ["https://visithcmc.vn/useful-information/"],
+      "airport": "Tan Son Nhat: yellow city buses 109 and 49 run between the airport and the city centre (route 49 to Ben Thanh); taxis wait at the taxi bay.",
+      "sources": [
+        "https://visithcmc.vn/useful-information/",
+        "https://en.baochinhphu.vn/first-metro-line-starts-operation-in-ho-chi-minh-city-111241223160018449.htm",
+        "https://baochinhphu.vn/the-napas-chinh-thuc-duoc-trien-khai-tren-tuyen-metro-so-1-tphcm-102250214131020134.htm",
+        "https://vietnam.travel/things-to-do/travellers-guide-vietnams-airports/"
+      ],
       "checked": "2026-11-01",
       "recheck": true,
-      "recheck_reason": "Ticket names, bank-card tapping and airport links were not on the official page read."
+      "recheck_reason": "Foreign Visa or Mastercard tapping at Metro Line 1 gates was not on the official pages read (only Vietnam's NAPAS cards); ticket types are from the line's opening notice and where to buy them was not stated."
     },
     {
       "iso2": "ZA",

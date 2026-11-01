@@ -1,0 +1,225 @@
+{
+ "version": 1,
+ "checked": "2026-11-01",
+ "note": "T156 step-free travel: access-needs card lines that src/content/helpcards.json does not already have (wheelchair, step-free and 'I need to sit down' are reused from there). Same languages as helpcards.json. Written by the model (not a native speaker): every line is marked \"check\": true until a native speaker has read it. Simple, polite, gender-neutral wording; pt reads in both Portugal and Brazil; zh-Hant uses Taiwan wording.",
+ "sentences": [
+  {
+   "id": "pram",
+   "en": "I have a pram (stroller). Is there a way with no steps?"
+  },
+  {
+   "id": "walkLimited",
+   "en": "I can only walk a short distance."
+  },
+  {
+   "id": "liftAsk",
+   "en": "Where is the lift (elevator)?"
+  }
+ ],
+ "languages": [
+  {
+   "code": "ja",
+   "lines": {
+    "pram": {
+     "text": "ベビーカーを使っています。段差のない道はありますか？",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "長い距離は歩けません。",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "エレベーターはどこですか？",
+     "check": true
+    }
+   }
+  },
+  {
+   "code": "zh-Hans",
+   "lines": {
+    "pram": {
+     "text": "我推着婴儿车。有没有没有台阶的路？",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "我只能走很短的距离。",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "电梯在哪里？",
+     "check": true
+    }
+   }
+  },
+  {
+   "code": "zh-Hant",
+   "lines": {
+    "pram": {
+     "text": "我推著嬰兒車。有沒有不用走樓梯的路？",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "我只能走很短的距離。",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "電梯在哪裡？",
+     "check": true
+    }
+   }
+  },
+  {
+   "code": "ko",
+   "lines": {
+    "pram": {
+     "text": "유모차를 가지고 있어요. 계단 없는 길이 있나요?",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "저는 짧은 거리만 걸을 수 있어요.",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "엘리베이터가 어디에 있나요?",
+     "check": true
+    }
+   }
+  },
+  {
+   "code": "th",
+   "lines": {
+    "pram": {
+     "text": "ฉันมีรถเข็นเด็ก มีทางที่ไม่มีขั้นบันไดไหม",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "ฉันเดินได้แค่ระยะสั้นๆ",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "ลิฟต์อยู่ที่ไหน",
+     "check": true
+    }
+   }
+  },
+  {
+   "code": "vi",
+   "lines": {
+    "pram": {
+     "text": "Tôi có xe đẩy em bé. Có lối đi không có bậc thang không?",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "Tôi chỉ đi bộ được một quãng ngắn.",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "Thang máy ở đâu?",
+     "check": true
+    }
+   }
+  },
+  {
+   "code": "es",
+   "lines": {
+    "pram": {
+     "text": "Llevo un cochecito de bebé. ¿Hay un camino sin escalones?",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "Solo puedo caminar distancias cortas.",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "¿Dónde está el ascensor?",
+     "check": true
+    }
+   }
+  },
+  {
+   "code": "fr",
+   "lines": {
+    "pram": {
+     "text": "J'ai une poussette. Y a-t-il un passage sans marches ?",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "Je ne peux marcher que sur de courtes distances.",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "Où est l'ascenseur ?",
+     "check": true
+    }
+   }
+  },
+  {
+   "code": "de",
+   "lines": {
+    "pram": {
+     "text": "Ich habe einen Kinderwagen. Gibt es einen Weg ohne Stufen?",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "Ich kann nur kurze Strecken gehen.",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "Wo ist der Aufzug?",
+     "check": true
+    }
+   }
+  },
+  {
+   "code": "it",
+   "lines": {
+    "pram": {
+     "text": "Ho un passeggino. C'è un percorso senza gradini?",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "Posso camminare solo per brevi distanze.",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "Dov'è l'ascensore?",
+     "check": true
+    }
+   }
+  },
+  {
+   "code": "pt",
+   "lines": {
+    "pram": {
+     "text": "Tenho um carrinho para criança. Há um caminho sem degraus?",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "Só consigo andar distâncias curtas.",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "Onde fica o elevador?",
+     "check": true
+    }
+   }
+  },
+  {
+   "code": "id",
+   "lines": {
+    "pram": {
+     "text": "Saya membawa kereta bayi. Apakah ada jalan tanpa tangga?",
+     "check": true
+    },
+    "walkLimited": {
+     "text": "Saya hanya bisa berjalan jarak pendek.",
+     "check": true
+    },
+    "liftAsk": {
+     "text": "Di mana liftnya?",
+     "check": true
+    }
+   }
+  }
+ ]
+}

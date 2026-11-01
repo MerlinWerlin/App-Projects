@@ -16,6 +16,12 @@
 // family, Show all trips / Only this trip, Fit to visible pins); choices stay on this phone (src/ui/useMapLayers.ts,
 // which also adds ideas with a spot, your way-back pins, saved toilets and today's plan stops). Every pin goes
 // through its filter (src/core/maplayers.ts visiblePins), which also lets a saved place stand in for its sample point.
+// T13 offline POI layers: a downloaded city's own places (its pack's pois.json: toilets, water, food, supermarkets,
+// pharmacies, hospitals, police, embassies, ATMs, transport, fuel) are the Nearby list and the place pins for that
+// city, read from the phone (src/native/packPois.ts, parsed by src/core/packpois.ts), so they work offline; the
+// sample points stay for the demo cities. Per-category chips here and in the Layers sheet share one choice kept on
+// this phone (every category on at first open); the nearest POI_MARKER_LIMIT are drawn; the OSM / ODbL line shows
+// whenever places are on screen; a filtered list that comes out empty keeps its Show all button.
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
@@ -31,19 +37,15 @@ import { PlaceSettingSlot } from '../../src/ui/rainplan.tsx';
 import { activeTrip, addPlace, ALL_TRIPS, removePlace, SAME_SPOT_M, scopeParam, savedPins, saveTargets, scopeTrips, type PlaceError, type SavedPin } from '../../src/core/places.ts';
 import {
   bookingPins,
-  defaultToggles,
   distanceParts,
-  filterByCategories,
   haversineMeters,
   isMapCategory,
-  MAP_V0_CATEGORIES,
   parsePoiCategories,
   parsePoiSet,
   regionFor,
   sortByDistance,
   type BookingPin,
   type LatLon,
-  type MapCategory,
   type Poi,
   type PoiSet,
   type Region,
@@ -66,6 +68,7 @@ import { PermissionNotice } from '../../src/ui/PermissionNotice.tsx';
 import { TripRouteDays, TripRoutePanel, useTripRoute } from '../../src/ui/TripRouteLayer.tsx';
 import { DaylightLine } from '../../src/ui/WeatherCard.tsx';
 import { placeKey } from '../../src/core/wayback.ts';
+import { poiPinStyle } from '../../src/core/poipins.ts';
 import { requestNearestToilet } from '../../src/state/nearestToilet.ts';
 import type { SearchHit } from '../../src/core/mapsearch.ts';
 import { SEARCH_PIN_ID, searchPinTap } from '../../src/core/followups93.ts';
@@ -74,6 +77,26 @@ import { fitRegion, isShown, layerCounts, MAP_LAYERS, startScope, type MapScope 
 import { focusTrip } from '../../src/core/wayback.ts';
 import { MapLayersButton, MapLayersSheet } from '../../src/ui/MapLayersSheet.tsx';
 import { useMapLayers } from '../../src/ui/useMapLayers.ts';
+import {
+  allPoiCategoriesOn,
+  filterPoisByToggles,
+  isOfferedCategory,
+  nearestPois,
+  OFFERED_POI_CATEGORIES,
+  packPoiSet,
+  parsePoiToggles,
+  poiCategoryCounts,
+  poiListEmpty,
+  POI_LIST_LIMIT,
+  POI_MARKER_LIMIT,
+  POI_TOGGLES_KEY,
+  storePoiToggles,
+  togglePoiCategory,
+  type OfferedCategory,
+} from '../../src/core/packpois.ts';
+import { loadCityPois, type CityPois } from '../../src/native/packPois.ts';
+import { WheelchairLine, WheelchairSource, wheelchairText } from '../../src/ui/stepfree.tsx';
+import { usePersisted } from '../../src/state/persisted.ts';
 
 const CATS = parsePoiCategories(tagData);
 const SETS: PoiSet[] = [parsePoiSet(tokyoData, CATS), parsePoiSet(kyotoData, CATS)].filter((s): s is PoiSet => s !== null);
@@ -97,7 +120,11 @@ type Selected =
   | null;
 type SaveForm = { name: string; tripId: string | null; errors: (PlaceError | 'trip')[] };
 
-const catKey = (id: MapCategory): Key => `map.cat.${id}`;
+/** A category's label key: the Map v0 ones under map.cat., the ones T13 added under packpois.cat. */
+// T156: lifts' label lives with the step-free strings.
+const catKey = (id: OfferedCategory): Key => (id === 'lift' ? 'stepfree.cat.lift' : isMapCategory(id) ? `map.cat.${id}` : `packpois.cat.${id as 'supermarket' | 'police' | 'embassy'}`);
+const setKey = (s: PoiSet) => `${s.source}|${s.city}`;
+const NO_TOGGLES: unknown = null;
 
 // ---- Offline city maps (T47) ----
 
@@ -278,8 +305,10 @@ export default function MapScreen() {
   const { t, theme, reduceMotion } = useApp();
   const router = useRouter();
   const { trips, saveTrip } = useTrips();
-  const [cityIdx, setCityIdx] = useState(0);
-  const [on, setOn] = useState<Record<string, boolean>>(() => defaultToggles(CATS));
+  const [cityKey, setCityKey] = useState<string | null>(null);
+  // T13: per-category toggles kept on this phone; nothing stored = every offered category on (release standard §1).
+  const [rawToggles, setRawToggles] = usePersisted<unknown>(POI_TOGGLES_KEY, NO_TOGGLES);
+  const on = useMemo(() => parsePoiToggles(rawToggles), [rawToggles]);
   const [selected, setSelected] = useState<Selected>(null);
   const [form, setForm] = useState<SaveForm | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -298,8 +327,33 @@ export default function MapScreen() {
     refreshInstalled();
   }, [refreshInstalled]);
 
-  const set = SETS[cityIdx] ?? null;
-  const catLabel = useCallback((id: string) => (isMapCategory(id) ? t(catKey(id)) : id), [t]);
+  // The map only reads its first region; later moves go through `focus`.
+  const [initialRegion] = useState<Region>(() => (SETS[0] ? regionFor([SETS[0].center, ...SETS[0].pois]) : null) ?? FALLBACK_REGION);
+  // Where the map is looking: picks the downloaded city whose tiles (and places) to show.
+  const [view, setView] = useState<LatLon>(() => ({ lat: initialRegion.latitude, lon: initialRegion.longitude }));
+  const offlineCity = useMemo(() => pickCityFor(view.lat, view.lon, installed), [view, installed]);
+  const catLabel = useCallback((id: string) => (isOfferedCategory(id) ? t(catKey(id)) : id), [t]);
+  // T13: each downloaded city's own places (read from the phone once per city), before the demo sample sets.
+  const [cityPois, setCityPois] = useState<CityPois[]>([]);
+  useEffect(() => {
+    let live = true;
+    loadCityPois(installed).then((r) => live && setCityPois(r));
+    return () => {
+      live = false;
+    };
+  }, [installed]);
+  const packSets = useMemo(() => cityPois.filter((c) => c.pois.length > 0).map((c) => packPoiSet(c.city, c.pois, (cat) => t(catKey(cat)))), [cityPois, t]);
+  const sets = useMemo(() => [...packSets, ...SETS], [packSets]);
+  // The chosen city; until one is chosen, the downloaded city the map is over (else the first downloaded, else a sample).
+  const set = useMemo<PoiSet | null>(
+    () =>
+      sets.find((s) => setKey(s) === cityKey) ??
+      (offlineCity ? packSets.find((s) => s.source === `pack:${offlineCity.id}`) : undefined) ??
+      packSets[0] ??
+      sets[0] ??
+      null,
+    [sets, cityKey, offlineCity, packSets],
+  );
   const dist = useCallback(
     (m: number, key: 'map.away' | 'map.fromHere' = 'map.away') => {
       const d = distanceParts(m);
@@ -330,11 +384,19 @@ export default function MapScreen() {
   const saved = useMemo(() => savedPins(scope.trips), [scope]);
   // T108: gifts with a map spot (Gifts screen), on the trips the map shows; a tap opens the gift.
   const gifts = useMemo(() => giftPins(scope.trips), [scope]);
-  const shownPois = useMemo(() => (set ? filterByCategories(set.pois, on) : []), [set, on]);
+  const filteredPois = useMemo(() => (set ? filterPoisByToggles(set.pois, on) : []), [set, on]);
   const here = loc.s === 'here' ? loc.coords : null;
   const origin: LatLon | null = set ? (here && haversineMeters(here, set.center) < NEAR_CITY_M ? here : set.center) : null;
   const fromYou = !!here && origin === here;
-  const nearby = useMemo(() => (origin ? sortByDistance(shownPois, origin) : []), [shownPois, origin]);
+  // A downloaded city can hold thousands of places: the list keeps the nearest POI_LIST_LIMIT, the map draws the
+  // POI_MARKER_LIMIT nearest to where it looks.
+  const nearby = useMemo(() => (origin ? sortByDistance(nearestPois(filteredPois, origin, POI_LIST_LIMIT), origin) : []), [filteredPois, origin]);
+  const listCut = filteredPois.length > nearby.length;
+  // Pins: the nearest to where the map looks when that is in this city, else to the list's origin.
+  const pinFrom: LatLon | null = set ? (haversineMeters(view, set.center) < NEAR_CITY_M ? view : origin) : null;
+  const shownPois = useMemo(() => (pinFrom ? nearestPois(filteredPois, pinFrom, POI_MARKER_LIMIT) : []), [filteredPois, pinFrom ? Math.round(pinFrom.lat * 1000) : null, pinFrom ? Math.round(pinFrom.lon * 1000) : null]); // eslint-disable-line react-hooks/exhaustive-deps
+  const poiCounts = useMemo(() => poiCategoryCounts(set?.pois ?? []), [set]);
+  const listEmpty = poiListEmpty(set?.pois.length ?? 0, filteredPois.length, on);
   const listRef = useRef<FlatList<(typeof nearby)[number]>>(null);
   const selectedSaved = selected?.type === 'saved' ? (saved.find((p) => p.id === selected.id) ?? null) : null;
   const savedAt = useCallback((at: LatLon) => saved.find((p) => haversineMeters(p, at) <= SAME_SPOT_M) ?? null, [saved]);
@@ -361,7 +423,9 @@ export default function MapScreen() {
     }
     out.push(...layers.extra);
     for (const p of shownPois) {
-      out.push({ id: `p:${p.id}`, lat: p.lat, lon: p.lon, title: p.name, subtitle: catLabel(p.category), color: theme.sea, a11y: t('map.pinPoi', { category: catLabel(p.category), name: p.name }) });
+      // T155: each category its own glyph and theme colour (src/core/poipins.ts); T156: wheelchair tag in subtitle + label.
+      const look = poiPinStyle(p.category);
+      out.push({ id: `p:${p.id}`, lat: p.lat, lon: p.lon, title: p.name, subtitle: [catLabel(p.category), wheelchairText(t, p.wheelchair)].filter(Boolean).join(' · '), color: theme[look.tone], glyph: look.icon as MapPin['glyph'], a11y: [t('map.pinPoi', { category: catLabel(p.category), name: p.name }), wheelchairText(t, p.wheelchair)].filter(Boolean).join('. ') });
     }
     if (selected?.type === 'spot') {
       out.push({ id: 'spot', lat: selected.at.lat, lon: selected.at.lon, title: t('places.dropped'), color: theme.muted, a11y: t('places.dropped') });
@@ -379,10 +443,6 @@ export default function MapScreen() {
     if (region) setFocus({ region, key: Date.now() });
   };
 
-  // The map only reads its first region; later moves go through `focus`.
-  const [initialRegion] = useState<Region>(() => (set ? regionFor([set.center, ...set.pois]) : regionFor(bookings)) ?? FALLBACK_REGION);
-  // Where the map is looking: picks the downloaded city whose tiles to draw.
-  const [view, setView] = useState<LatLon>(() => ({ lat: initialRegion.latitude, lon: initialRegion.longitude }));
   useEffect(() => {
     if (focus) setView({ lat: focus.region.latitude, lon: focus.region.longitude });
   }, [focus]);
@@ -392,7 +452,6 @@ export default function MapScreen() {
     const r = pts ? regionFor(pts) : null;
     if (r) setView({ lat: r.latitude, lon: r.longitude });
   }, [layer.fit]);
-  const offlineCity = useMemo(() => pickCityFor(view.lat, view.lon, installed), [view, installed]);
   const offlineTiles = useMemo(() => (offlineCity ? offlineTilesFor(offlineCity) : null), [offlineCity]);
   const showCity = useCallback((city: CityMap) => setFocus({ region: regionForCity(city), key: Date.now() }), []);
 
@@ -448,11 +507,11 @@ export default function MapScreen() {
     [savedAt, select],
   );
 
-  const chooseCity = (i: number) => {
-    setCityIdx(i);
+  const chooseCity = (s: PoiSet) => {
+    setCityKey(setKey(s));
     select(null);
-    const s = SETS[i];
-    const region = s ? regionFor([s.center, ...s.pois]) : null;
+    const city = s.sample ? null : installed.find((c) => s.source === `pack:${c.id}`);
+    const region = city ? regionForCity(city) : regionFor([s.center, ...s.pois]);
     if (region) setFocus({ region, key: Date.now() });
   };
 
@@ -467,10 +526,9 @@ export default function MapScreen() {
     else setLoc({ s: 'unavailable', servicesOff: r.servicesOff });
   };
 
-  const toggle = (id: string) => setOn((o) => ({ ...o, [id]: !o[id] }));
+  const toggle = (id: OfferedCategory) => setRawToggles((old: unknown) => storePoiToggles(togglePoiCategory(parsePoiToggles(old), id)));
   // Release standard §1: a filtered list that comes out empty says why and offers a one-tap "Show all".
-  const anyCatOn = Object.values(on).some(Boolean);
-  const showAllCats = () => setOn((o) => Object.fromEntries(Object.keys(o).map((k) => [k, true])));
+  const showAllCats = () => setRawToggles(storePoiToggles(allPoiCategoriesOn()));
 
   const focusOn = (p: LatLon) => setFocus({ region: { latitude: p.lat, longitude: p.lon, latitudeDelta: 0.01, longitudeDelta: 0.01 }, key: Date.now() });
 
@@ -615,6 +673,9 @@ export default function MapScreen() {
       <>
         {heading(selected.poi.name)}
         <Body muted>{catLabel(selected.poi.category)}</Body>
+        {/* T156: the OSM wheelchair tag, where the downloaded pack carries it (ODbL line with it). */}
+        {selected.poi.wheelchair ? <WheelchairLine level={selected.poi.wheelchair} /> : null}
+        {selected.poi.wheelchair ? <WheelchairSource /> : null}
         {origin ? <Body muted>{dist(haversineMeters(origin, selected.poi), fromYou ? 'map.fromHere' : 'map.away')}</Body> : null}
         {set?.sample ? <Body muted>{t('map.sample')}</Body> : null}
         {form ? saveForm : <Button label={t('places.save')} hint={t('places.saveHint')} onPress={startSave} />}
@@ -764,12 +825,17 @@ export default function MapScreen() {
 
       <View style={{ gap: rhythm.tight }}>
       <SectionHeader title={t('f99.map.sectionNearby')} icon="location-outline" tone="sea" />
-      {SETS.length > 1 ? (
+      {sets.length > 1 ? (
         <View style={{ gap: space.s }}>
-          <Label>{t('map.city')}</Label>
-          <View accessibilityRole="radiogroup" accessibilityLabel={t('map.city')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
-            {SETS.map((s, i) => (
-              <Chip key={s.city} label={s.city} selected={i === cityIdx} onPress={() => chooseCity(i)} />
+          <Label>{t(packSets.length ? 'packpois.city' : 'map.city')}</Label>
+          <View accessibilityRole="radiogroup" accessibilityLabel={t(packSets.length ? 'packpois.city' : 'map.city')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
+            {sets.map((s) => (
+              <Chip
+                key={setKey(s)}
+                label={s.sample && packSets.length ? t('packpois.sampleChip', { city: s.city }) : s.city}
+                selected={!!set && setKey(s) === setKey(set)}
+                onPress={() => chooseCity(s)}
+              />
             ))}
           </View>
         </View>
@@ -779,7 +845,7 @@ export default function MapScreen() {
         <Label>{t('map.categories')}</Label>
         <FlatList
           horizontal
-          data={MAP_V0_CATEGORIES as readonly MapCategory[]}
+          data={OFFERED_POI_CATEGORIES}
           keyExtractor={(id) => id}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ gap: space.s }}
@@ -811,6 +877,8 @@ export default function MapScreen() {
       {bookings.length === 0 ? <Body muted>{t('map.noBookingPins')}</Body> : null}
 
       {set ? heading(fromYou ? t('map.nearbyFromYou') : t('map.nearbyFromCity', { city: set.city })) : null}
+      {set && !set.sample ? <Body muted>{t('packpois.offline', { city: set.city })}</Body> : null}
+      {listCut ? <Body muted>{t('packpois.nearestN', { n: nearby.length })}</Body> : null}
       </View>
     </View>
   );
@@ -851,6 +919,15 @@ export default function MapScreen() {
           onScope={chooseScope}
           canFit={pins.length > 0}
           onFit={fitVisible}
+          places={{
+            categories: OFFERED_POI_CATEGORIES,
+            on,
+            counts: poiCounts,
+            label: (id) => t(catKey(id)),
+            onToggle: toggle,
+            onShowAll: showAllCats,
+            attribution: set && !set.sample ? t('packpois.attribution') : null,
+          }}
         />
         {offlineCity && offlineTiles ? (
           <View
@@ -867,9 +944,10 @@ export default function MapScreen() {
         ) : null}
         <DaylightLine trip={active} />
         {mapAvailable() ? <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('places.tapHint')}</Text> : null}
-        {shownPois.length > 0 ? (
+        {shownPois.length > 0 && isShown(layers.prefs, 'pois') ? (
           <>
-            <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('map.attribution')}</Text>
+            {/* T13: OSM / ODbL attribution whenever places are on the map (the pack extract is ODbL data). */}
+            <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t(set?.sample ? 'map.attribution' : 'packpois.attribution')}</Text>
             {set?.sample ? <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('map.sample')}</Text> : null}
           </>
         ) : null}
@@ -881,10 +959,10 @@ export default function MapScreen() {
         keyExtractor={(p) => p.id}
         ListHeaderComponent={header}
         ListEmptyComponent={
-          set && origin ? (
+          set && origin && listEmpty ? (
             <View style={{ gap: space.xs }}>
-              <Body muted>{t(anyCatOn ? 'map.noneInCats' : 'map.noneOn')}</Body>
-              <Button label={t('map.catsShowAll')} hint={t('map.catsShowAllHint')} kind="quiet" onPress={showAllCats} />
+              <Body muted>{t(listEmpty.kind === 'noneOn' ? 'map.noneOn' : listEmpty.kind === 'noneInCats' ? 'map.noneInCats' : 'packpois.none')}</Body>
+              {listEmpty.showAll ? <Button label={t('map.catsShowAll')} hint={t('map.catsShowAllHint')} kind="quiet" onPress={showAllCats} /> : null}
             </View>
           ) : undefined
         }
@@ -895,7 +973,7 @@ export default function MapScreen() {
           return (
             <PressableScale
               accessibilityRole="button"
-              accessibilityLabel={t('map.placeA11y', { name: item.name, category: cat, distance: d })}
+              accessibilityLabel={[t('map.placeA11y', { name: item.name, category: cat, distance: d }), wheelchairText(t, item.wheelchair)].filter(Boolean).join('. ')}
               onPress={() => {
                 setNotice(null);
                 const s = savedAt(item);
@@ -908,6 +986,7 @@ export default function MapScreen() {
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink }}>{item.name}</Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted }}>{cat}</Text>
+                <WheelchairLine level={item.wheelchair} small />
               </View>
               <Text style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted, fontVariant: ['tabular-nums'] }}>{d}</Text>
             </PressableScale>
