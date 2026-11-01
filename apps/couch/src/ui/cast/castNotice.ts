@@ -30,7 +30,8 @@ export function castNoticeText(notice: CastNotice, t: (key: MessageKey, params?:
  * must fetch the file from.
  */
 export function castDeliveryText(delivery: CastDelivery, t: (key: MessageKey, params?: Params) => string): string {
-  const params = { tvHost: delivery.tvHost, fileHost: delivery.fileHost || '?' };
+  const fileHost = (delivery.fileHost || '?') + (delivery.fileCheck ? ` (${delivery.fileCheck})` : '');
+  const params = { tvHost: delivery.tvHost, fileHost };
   if (delivery.via === 'roku') return t('ui.cast.deliveryRoku', params);
   if (delivery.via === 'googlecast') return t('ui.cast.deliveryGcast', params);
   return t('ui.cast.deliveryDlna', params);

@@ -47,7 +47,11 @@ export default function CastScreen() {
 
   const error = snap.error ?? (snap.cast.state === 'error' ? snap.cast.error : null);
   const unconfirmed = !error && castUnconfirmed(snap);
-  const delivery = snap.delivery && (unconfirmed || error) ? castDeliveryText(snap.delivery, t) : null;
+  // Owner 1 Nov 2026 (TCL showed black while Couch said casting): keep the delivery line, with the
+  // TV's reported state, visible on real TVs until the cause is found.
+  const delivery = snap.delivery
+    ? `${castDeliveryText(snap.delivery, t)} [TV: ${snap.cast.state}${snap.cast.confirmed ? ', confirmed' : ''}]`
+    : null;
   useAnnounce(error);
   useAnnounce(notice);
 

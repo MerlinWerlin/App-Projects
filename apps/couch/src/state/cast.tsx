@@ -46,6 +46,11 @@ function createController(): CastController {
     canSearch: !!udp,
     canGoogleCast: !!tcp,
     timer: SYSTEM_TIMER,
+    checkFile: async (url) => {
+      const r = await fetchAdapter(url, { method: 'HEAD', timeoutMs: 4000 });
+      const type = r.headers?.get('content-type') ?? '';
+      return `phone check: ${r.status}${type ? ` ${type}` : ''}`;
+    },
   });
 }
 
