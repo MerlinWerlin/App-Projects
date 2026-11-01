@@ -7,7 +7,7 @@
 // result with a reason. After an install, a delete or a new saved catalog copy, cityMapsChanged (src/core/signal.ts)
 // fires so the readiness card and Nearest help reload what they show (T63).
 import * as FileSystem from 'expo-file-system/legacy';
-import { CATALOG_URL, packEntryPath, packUrl, parseCatalog, parseCity, tilePathTemplate, type CityCatalog, type CityMap } from '../core/citymaps.ts';
+import { CATALOG_URL, packEntryPath, packMetaToSave, packUrl, parseCatalog, parseCity, parsePackMeta, tilePathTemplate, type CityCatalog, type CityMap } from '../core/citymaps.ts';
 import { cityMapsChanged } from '../core/signal.ts';
 import { base64ToBytes, BLOCK, nextHeaderOffset, parseTarHeader } from '../core/tar.ts';
 
@@ -261,13 +261,22 @@ export function downloadCity(city: CityMap, onProgress: (phase: DownloadPhase, f
       const outcome = await unpack(tmp, info.size, dir, () => isCancelled, (f) => onProgress('unpack', f));
       if (outcome !== 'ok') return await fail(outcome);
 
+      // meta.json has no bytes/sha256 (they describe the tar it was in): take them from the catalog entry and save
+      // them back, so listInstalled (parseCity) reads the city later without the catalog (T153).
       let meta: CityMap | null = null;
+      let rawMeta: unknown = null;
       try {
-        meta = parseCity(JSON.parse(await FileSystem.readAsStringAsync(`${dir}meta.json`)));
+        rawMeta = JSON.parse(await FileSystem.readAsStringAsync(`${dir}meta.json`));
+        meta = parsePackMeta(rawMeta, city);
       } catch {
         meta = null;
       }
       if (!meta || meta.id !== city.id) return await fail('bad-pack');
+      try {
+        await FileSystem.writeAsStringAsync(`${dir}meta.json`, JSON.stringify(packMetaToSave(rawMeta, meta)));
+      } catch {
+        return await fail('failed');
+      }
       if (isCancelled) return await fail('cancelled');
       await FileSystem.writeAsStringAsync(`${dir}.complete`, '');
       await quietDelete(tmp);

@@ -7,8 +7,11 @@ share-extension target (see "Later" below).
 1. **app.json** declares what Satchel can open: `CFBundleDocumentTypes` for PDF (`com.adobe.pdf`), images
    (`public.image`), plain text (`public.plain-text`), email messages (`com.apple.mail.email`, `public.email-message`)
    and Satchel trips (`app.satchel.trip`, exported in `UTExportedTypeDeclarations`, extension `.satchel`, conforms to
-   `public.json` / `public.data`). `LSSupportsOpeningDocumentsInPlace` is false, so iOS hands Satchel a copy.
-   Android: one VIEW intent filter (content:// and file://) for the same MIME types.
+   `public.json` / `public.data`) and Satchel backups (T154: `app.satchel.backup`, exported, extension
+   `.satchelbackup`, MIME `application/vnd.satchel.backup+json`, conforms to `public.json` / `public.data`; both
+   Satchel types are rank Owner). `LSSupportsOpeningDocumentsInPlace` is false, so iOS hands Satchel a copy.
+   Android: one VIEW intent filter (content:// and file://) for the same MIME types, including
+   `application/vnd.satchel.trip+json` and `application/vnd.satchel.backup+json` (T155).
 2. The traveller taps **Share > Satchel** (or **Copy to Satchel** under More) on a file. iOS opens Satchel with a
    `file://` URL.
 3. **app/+native-intent.tsx** (`redirectSystemPath`) turns any file:// or content:// URL into `/openin?uri=...`
@@ -26,6 +29,9 @@ share-extension target (see "Later" below).
      opens with the file in Attachments (copied into attachments/, the same storage as the form's own picker).
      Nothing is saved until Save; leaving the form deletes the copy.
    - **.satchel** -> imported as a new trip with the T15 all-or-nothing import, then the trip opens.
+   - **.satchelbackup** (T154; by extension, UTI, MIME or a `"format":"satchel-backup"` head) -> Settings > Backup
+     (`/backup?incoming=<copy>`), which reads the copy, deletes it and shows the restore preview with Merge / Replace.
+     Never the trip import. Backups may be up to 400 MB here (other files 40 MB, `maxIncomingBytes`).
    - **anything else** -> "Satchel can't read this kind of file" with Back to Trips. Nothing is saved.
 5. Settings has a "Save to Satchel" line telling the traveller to tap Share > Satchel on a booking PDF or email.
 

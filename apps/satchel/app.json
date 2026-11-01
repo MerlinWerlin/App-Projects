@@ -28,6 +28,14 @@
             ]
           },
           {
+            "CFBundleTypeName": "Satchel backup",
+            "CFBundleTypeRole": "Editor",
+            "LSHandlerRank": "Owner",
+            "LSItemContentTypes": [
+              "app.satchel.backup"
+            ]
+          },
+          {
             "CFBundleTypeName": "PDF document",
             "CFBundleTypeRole": "Viewer",
             "LSHandlerRank": "Alternate",
@@ -75,6 +83,22 @@
               ],
               "public.mime-type": [
                 "application/vnd.satchel.trip+json"
+              ]
+            }
+          },
+          {
+            "UTTypeIdentifier": "app.satchel.backup",
+            "UTTypeDescription": "Satchel backup",
+            "UTTypeConformsTo": [
+              "public.json",
+              "public.data"
+            ],
+            "UTTypeTagSpecification": {
+              "public.filename-extension": [
+                "satchelbackup"
+              ],
+              "public.mime-type": [
+                "application/vnd.satchel.backup+json"
               ]
             }
           }
@@ -156,6 +180,12 @@
             },
             {
               "mimeType": "application/json"
+            },
+            {
+              "mimeType": "application/vnd.satchel.trip+json"
+            },
+            {
+              "mimeType": "application/vnd.satchel.backup+json"
             }
           ]
         }

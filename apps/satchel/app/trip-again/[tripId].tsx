@@ -14,6 +14,9 @@ import { useApp } from '../../src/state/app.tsx';
 import { setPersistedChecked, usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { copyPostcardPeople, usePostcards } from '../../src/state/postcards.ts';
+import { useKids } from '../../src/state/kids.ts';
+import { copyKidsList } from '../../src/state/followups107.ts';
+import { copySummary, namesShort } from '../../src/core/followups107.ts';
 import { fonts, space } from '../../src/theme/tokens.ts';
 import { DateField } from '../../src/ui/DateTimeField.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
@@ -59,6 +62,12 @@ function PlanAgain({ trip }: { trip: Trip }) {
   const [postcardBook] = usePostcards(trip.id);
   const postcardPeople = postcardBook.people.length;
   const [postcards, setPostcards] = useState(true);
+  // T151: the children (first names and age groups, on this phone) come along by default too; marks never do.
+  const [kidsData] = useKids(trip.id);
+  const kidCount = kidsData.children.length;
+  const [kids, setKids] = useState(true);
+  const kidNames = namesShort(kidsData.children.map((c) => c.name));
+  const kidLabel = t('f107.copy.kids', { n: kidCount, names: kidNames.more ? t('f107.copy.kidsMore', { names: kidNames.shown.join(', '), n: kidNames.more }) : kidNames.shown.join(', ') });
   const [saving, setSaving] = useState(false);
   const [saveFailed, setSaveFailed] = useState(false);
   const counts = useMemo(() => partCounts(trip, packing), [trip, packing]);
@@ -105,12 +114,26 @@ function PlanAgain({ trip }: { trip: Trip }) {
       const cardsSaved = await copyPostcardPeople(trip.id, result.trip.id, newId);
       if (!cardsSaved) AccessibilityInfo.announceForAccessibility(t('postcards.copy.failed'));
     }
+    if (kids && kidCount > 0) {
+      const kidsSaved = await copyKidsList(trip.id, result.trip.id, newId);
+      if (!kidsSaved) AccessibilityInfo.announceForAccessibility(t('f107.copy.kidsFailed'));
+    }
     AccessibilityInfo.announceForAccessibility(t('tripcopy.created', { name: result.trip.name }));
     setSaving(false);
     router.replace(`/trip/${result.trip.id}`);
   };
 
   const rows = parts.bookings ? preview.rows.slice(0, PREVIEW_ROWS) : [];
+  // T151: one "Coming along" line summing up the choices (Postcards and Children included).
+  const summary = copySummary({
+    ...Object.fromEntries(shown.map((p) => [p, parts[p]])),
+    giftNames: giftNames && counts.giftPeople > 0,
+    leavingHome: leavingHome && counts.leavingHome > 0,
+    comingHome: comingHome && counts.comingHome > 0,
+    postcards: postcards && postcardPeople > 0,
+    kids: kids && kidCount > 0,
+  });
+  const summaryText = summary.length ? summary.map((p) => t(`f107.summary.${p}`)).join(', ') : t('f107.summary.none');
   return (
     <Screen>
       <Stack.Screen options={{ title: t('tripcopy.route') }} />
@@ -166,9 +189,19 @@ function PlanAgain({ trip }: { trip: Trip }) {
             <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('postcards.copy.hint')}</Text>
           </View>
         ) : null}
+        {kidCount > 0 ? (
+          <View style={{ gap: space.xs }}>
+            <ToggleRow label={kidLabel} hint={t('f107.copy.kidsHint')} value={kids} onChange={setKids} />
+            <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('f107.copy.kidsHint')}</Text>
+          </View>
+        ) : null}
+        <View accessible accessibilityLiveRegion="polite" style={{ gap: space.xs, borderTopWidth: 1, borderTopColor: theme.line, paddingTop: space.s }}>
+          <Label>{t('f107.summary.title')}</Label>
+          <Body>{summaryText}</Body>
+        </View>
         <View style={{ gap: space.xs, borderTopWidth: 1, borderTopColor: theme.line, paddingTop: space.s }}>
           <Label>{t('tripcopy.never.title')}</Label>
-          <Body muted>{t('f104.copy.neverBody')}</Body>
+          <Body muted>{t('f107.copy.neverBody')}</Body>
         </View>
       </Card>
 

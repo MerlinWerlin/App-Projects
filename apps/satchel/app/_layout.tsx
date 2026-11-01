@@ -72,6 +72,8 @@ function Shell() {
           <Stack.Screen name="trip-edit" options={{ ...header, presentation: 'modal', title: t('tripEdit.newTitle') }} />
           <Stack.Screen name="item-edit" options={{ ...header, presentation: 'modal', title: t('itemEdit.newTitle') }} />
           <Stack.Screen name="ticket/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
+          <Stack.Screen name="crop/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
+          <Stack.Screen name="doc-crop/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="address/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="stay/[itemId]" options={{ ...header, title: t('stay.route') }} />
           <Stack.Screen name="inflight/[itemId]" options={{ ...header, title: t('inflight.route') }} />
@@ -134,6 +136,7 @@ function Shell() {
           <Stack.Screen name="games/questions" options={{ ...header, title: t('games.questions.route') }} />
           <Stack.Screen name="games/scores" options={{ ...header, title: t('games.scores.route') }} />
           <Stack.Screen name="helpcards" options={{ ...header, title: t('helpcards.route') }} />
+          <Stack.Screen name="stepfree" options={{ ...header, title: t('stepfree.route') }} />
           <Stack.Screen name="helpcard-edit" options={{ ...header, presentation: 'modal', title: t('helpcards.edit.route') }} />
           <Stack.Screen name="helpcard" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="loyalty/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />

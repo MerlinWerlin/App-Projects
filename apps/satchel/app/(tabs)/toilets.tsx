@@ -67,6 +67,9 @@ import { FadeInView, FocusEntrance, HeroHeader, SectionHeader } from '../../src/
 import { Button, EmptyState, Screen } from '../../src/ui/kit.tsx';
 import { PermissionNotice } from '../../src/ui/PermissionNotice.tsx';
 import { FilterBar, MineSection, RecentSection, ToiletCard, ViewToggle } from '../../src/ui/toiletplus.tsx';
+import { accessibleCount, accessibleFirst, accessibleOnly, setAccessibleOnly } from '../../src/core/stepfree.ts';
+import { useStepFree } from '../../src/state/stepfree.ts';
+import { ToiletAccessBar } from '../../src/ui/stepfree.tsx';
 
 type Origin = { kind: 'here'; at: LatLon; tz: string } | { kind: 'hotel'; at: LatLon; tz: string; name: string };
 type Phase =
@@ -228,7 +231,11 @@ export default function ToiletsScreen() {
     return arrange(result.toilets, saved, done.origin.at).map((h) => ({ ...h, status: statusFor(h, now, done.origin.tz) }));
   }, [done, result, saved, now]);
   const asFilterRows = useMemo(() => allRows.map((r) => ({ hit: r, status: r.status })), [allRows]);
-  const rows = useMemo(() => applyFilters(asFilterRows, filters).map((r) => r.hit), [asFilterRows, filters]);
+  // T156: with access needs set (phone only), wheelchair / changing-table toilets first, plus the Accessible only filter.
+  const [stepFree, changeStepFree] = useStepFree();
+  const filtered = useMemo(() => accessibleFirst(applyFilters(asFilterRows, filters).map((r) => r.hit), stepFree.needs), [asFilterRows, filters, stepFree.needs]);
+  const rows = useMemo(() => accessibleOnly(filtered, stepFree), [filtered, stepFree]);
+  const accessibleN = useMemo(() => accessibleCount(filtered, stepFree.needs), [filtered, stepFree.needs]);
   const counts = useMemo(() => filterCounts(asFilterRows, filters), [asFilterRows, filters]);
   const anyPinned = rows.some((r) => r.pinned);
   const openNowOn = filters.includes('openNow');
@@ -341,11 +348,12 @@ export default function ToiletsScreen() {
             {done.origin.kind === 'hotel' ? t('toilets.aroundHotel', { name: done.origin.name }) : t('toilets.aroundHere')}
           </Text>
           <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted }}>
-            {filters.length ? t('toiletplus.shown', { n: rows.length, total: allRows.length }) : allRows.length === 1 ? t('toilets.count1') : t('toilets.count', { n: allRows.length })}
+            {filters.length || rows.length !== allRows.length ? t('toiletplus.shown', { n: rows.length, total: allRows.length }) : allRows.length === 1 ? t('toilets.count1') : t('toilets.count', { n: allRows.length })}
             {' · '}
             {result.source === 'offline' ? t('toilets.source.offline', { city: result.city }) : t('toilets.source.online')}
           </Text>
           <FilterBar active={filters} counts={counts} onToggle={onToggleFilter} />
+          <ToiletAccessBar prefs={stepFree} count={accessibleN} onToggle={() => changeStepFree((p) => setAccessibleOnly(p, !p.accessibleOnly))} />
           {openNowOn ? <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('toiletplus.openNowNote')}</Text> : null}
           <ViewToggle value={view} onChange={setView} />
           {anyPinned ? <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('toiletplus.savedNear')}</Text> : null}
@@ -355,7 +363,15 @@ export default function ToiletsScreen() {
               {t('toilets.openFailed')}
             </Text>
           ) : null}
-          {rows.length === 0 && allRows.length > 0 ? (
+          {rows.length === 0 && filtered.length > 0 ? (
+            <EmptyState
+              art="mapPin"
+              title={t('stepfree.toilets.noneTitle')}
+              body={t('stepfree.toilets.noneBody')}
+              action={<Button kind="quiet" label={t('stepfree.toilets.showAll')} hint={t('stepfree.toilets.showAllHint')} onPress={() => changeStepFree((p) => setAccessibleOnly(p, false))} />}
+            />
+          ) : null}
+          {filtered.length === 0 && allRows.length > 0 ? (
             <EmptyState
               art="mapPin"
               title={t('toiletplus.noneMatchTitle')}

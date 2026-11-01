@@ -1,7 +1,7 @@
 {
  "version": 1,
  "checked": null,
- "note": "T144 sign reader. Written by the model (not a native speaker): every line is native_check: true until a fluent speaker confirms it. Common standard sign wording; null where the model was not confident of the usual wording (shown as 'not written yet'). 'roman' follows phrases.json: Hepburn (ja), Hanyu Pinyin (zh-Hans, zh-Hant: Mandarin), Revised Romanization (ko), simple RTGS without tone marks (th). Regional picks: es Spain wording, pt Brazilian wording, zh-Hant Taiwan wording (T146: Hong Kong wording under zh-Hant 'regional.HK' only where it reliably differs: lift, taxi, bus stop, lockers, pharmacy, no smoking, airport departures / arrivals; readings in Jyutping, Cantonese). English names and meanings are UI strings (signs.sign.* / signs.meaning.*); 'also' are extra English search words.",
+ "note": "T144 sign reader. Written by the model (not a native speaker): every line is native_check: true until a fluent speaker confirms it. Common standard sign wording; null where the model was not confident of the usual wording (shown as 'not written yet'). 'roman' follows phrases.json: Hepburn (ja), Hanyu Pinyin (zh-Hans, zh-Hant: Mandarin), Revised Romanization (ko), simple RTGS without tone marks (th). Regional picks: es Spain wording, pt Brazilian wording, zh-Hant Taiwan wording (T146: Hong Kong wording under zh-Hant 'regional.HK' only where it reliably differs: lift, taxi, bus stop, lockers, pharmacy, no smoking, airport departures / arrivals; readings in Jyutping, Cantonese. T151: Macau wording under 'regional.MO', the Hong Kong lines that Macau shares: lift 升降機, taxi 的士, bus stop 巴士站, lockers 儲物櫃, pharmacy 藥房, no smoking 禁止吸煙; airport departures / arrivals left on the main wording (離港 / 抵港 name Hong Kong); all native_check). English names and meanings are UI strings (signs.sign.* / signs.meaning.*); 'also' are extra English search words.",
  "signs": [
   {
    "id": "exit",
@@ -722,6 +722,41 @@
       "arrivals": {
        "text": "抵港",
        "roman": "dai2 gong2",
+       "native_check": true
+      }
+     }
+    },
+    "MO": {
+     "roman": "jyutping",
+     "lines": {
+      "lift": {
+       "text": "升降機",
+       "roman": "sing1 gong3 gei1",
+       "native_check": true
+      },
+      "taxi": {
+       "text": "的士",
+       "roman": "dik1 si2",
+       "native_check": true
+      },
+      "busStop": {
+       "text": "巴士站",
+       "roman": "baa1 si2 zaam6",
+       "native_check": true
+      },
+      "lockers": {
+       "text": "儲物櫃",
+       "roman": "cyu5 mat6 gwai6",
+       "native_check": true
+      },
+      "pharmacy": {
+       "text": "藥房",
+       "roman": "joek6 fong4",
+       "native_check": true
+      },
+      "noSmoking": {
+       "text": "禁止吸煙",
+       "roman": "gam3 zi2 kap1 jin1",
        "native_check": true
       }
      }

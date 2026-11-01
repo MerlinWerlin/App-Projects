@@ -1,16 +1,17 @@
 {
-  "tests": 1736,
+  "tests": 1809,
   "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
-  "last_run": "2026-11-01 21:10",
+  "last_run": "2026-11-01 23:05",
   "stage": "owner-tested",
-  "oversight_seen": 228,
-  "headline": "Owner brief 1 Nov: own-photo covers + redrawn art, Satchel Plus, Save to Satchel, Backup and restore (needs a new TestFlight build)",
+  "oversight_seen": 229,
+  "headline": "Run 110: step-free travel (accessible toilets first, wheelchair access on map places, assistance reminders), Vault crop + PDF view, place pin icons, postcards nudge + check-out reminder",
   "next_for_owner": [
-    "When a new Satchel build appears in TestFlight (build 4 or later, with the purchase, share-sheet and backup parts), tap Update and open it.",
-    "Try: Edit a trip > Choose a cover photo; Settings > Back up and restore; share a booking PDF from Mail to Satchel.",
+    "Close Satchel fully and open it again from TestFlight (twice if needed) to get the run-110 update; if a new TestFlight build is still pending from runs 108-109, tap Update when it appears.",
+    "Try: Settings > Step-free travel, then Toilets > Find toilets near me; a flight booking's Access notes; Vault > a document > Crop to the code.",
     "App Store Connect: create the non-consumable in-app purchase com.jared797.satchel.plus (steps in docs/PLUS.md) so Satchel Plus can show a price.",
-    "Map tab > Offline city maps: city downloads start once the App Factory runs the map publishing workflow (question CW has the exact test).",
-    "Answer the yes/no questions CV-CZ under 'New since your last test' in docs/TRIAL.md by commenting on this page."
+    "Map tab > Offline city maps: downloads start once the App Factory runs the map publishing workflow (question DA has the exact test).",
+    "Answer the yes/no questions DE-DH (and DA-DD, CV-CZ) under 'New since your last test' in docs/TRIAL.md by commenting on this page.",
+    "Full install + tsc + expo export needs PC verification (react-native-webview 13.16.1 from run 109)."
   ],
   "trial_kit": true,
   "next_stage": "release-prep"

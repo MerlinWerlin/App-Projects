@@ -32,6 +32,7 @@ import type { Budget, Companion, Item, LocalDate, Place, SavedPlace, Stamp, Trip
 import type { AirportInfo } from './leaveby.ts';
 import type { LegInfo } from './layovers.ts';
 import type { CheckinInfo } from './checkin.ts';
+import type { AccessNote } from './stepfree.ts';
 import { readOutfits, type OutfitDay, type OutfitExtra, type TripOutfits } from './outfits.ts';
 import type { Idea } from './ideas.ts';
 import type { Todo } from './todos.ts';
@@ -114,6 +115,8 @@ export const ITEM_RULES: Rules<Item> = {
   setting: 'keep',
   // T143: own check-in offsets and desk hours come along; the "Mark checked in" tick doesn't (CHECKIN_RULES).
   checkin: 'keep',
+  // T156: the lift and the note are about the place; the room request and assistance booking are that trip's (ACCESS_RULES).
+  access: 'keep',
   attachments: 'drop',
 };
 
@@ -125,6 +128,8 @@ export const SAVED_PLACE_RULES: Rules<SavedPlace> = { ...PLACE_RULES, lat: 'keep
 export const LEG_INFO_RULES: Rules<LegInfo> = { depTerminal: 'keep', depGate: 'drop', arrTerminal: 'keep', arrGate: 'drop' };
 /** T143: offsets and desk hours keep; the tick is that trip's. */
 export const CHECKIN_RULES: Rules<CheckinInfo> = { opensH: 'keep', closesMin: 'keep', bagDropMin: 'keep', deskFrom: 'keep', deskTo: 'keep', doneAt: 'drop', outAt: 'drop' };
+/** T156: the lift and the note come along; a step-free room request and booked assistance are that trip's. */
+export const ACCESS_RULES: Rules<AccessNote> = { stepFreeRoom: 'drop', assistance: 'drop', lift: 'keep', note: 'keep' };
 export const AIRPORT_RULES: Rules<AirportInfo> = { terminal: 'keep', gate: 'drop', boarding: 'keep', bagDrop: 'keep', scope: 'keep', bufferMin: 'keep', travelMin: 'keep' };
 export const IDEA_RULES: Rules<Idea> = {
   id: 'new',
@@ -347,6 +352,11 @@ function copyItem(item: Item, tripId: string, days: number, newId: (prefix: stri
     const c = kept(item.checkin, CHECKIN_RULES);
     if (Object.keys(c).length) out.checkin = c;
     else delete out.checkin;
+  }
+  if (item.access) {
+    const a = kept(item.access, ACCESS_RULES);
+    if (Object.keys(a).length) out.access = a;
+    else delete out.access;
   }
   if (item.legInfo) {
     const l = kept(item.legInfo, LEG_INFO_RULES);

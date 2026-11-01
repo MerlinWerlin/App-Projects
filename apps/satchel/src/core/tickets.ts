@@ -3,6 +3,7 @@
 import type { Attachment, Item, ItemKind, Trip } from './model.ts';
 import { isTransport } from './model.ts';
 import { span, zonesReadable } from './timeline.ts';
+import { hasCropRect } from './qrcrop.ts';
 
 export type AttachmentKind = 'image' | 'pdf' | 'other';
 
@@ -84,7 +85,10 @@ export function setQrCrop(item: Item, attachmentId: string, qrCropUri: string | 
     attachments: item.attachments.map((x) => {
       if (x.id !== attachmentId) return x;
       const { qrCropUri: _old, ...rest } = x;
-      return qrCropUri ? { ...rest, qrCropUri } : rest;
+      if (!qrCropUri) return rest;
+      // T28: a new crop image replaces an in-app crop rectangle (the newest choice wins).
+      const { qrCrop: _rect, ...plain } = rest;
+      return { ...plain, qrCropUri };
     }),
   };
 }
@@ -100,7 +104,7 @@ export function filesOf(a: Attachment): string[] {
  */
 export function primaryTicket(item: Item): Attachment | null {
   const as = item.attachments;
-  return as.find((a) => a.qrCropUri) ?? as.find((a) => a.role === 'ticket') ?? as.find((a) => a.role === 'booking') ?? null;
+  return as.find((a) => a.qrCropUri || hasCropRect(a)) ?? as.find((a) => a.role === 'ticket') ?? as.find((a) => a.role === 'booking') ?? null;
 }
 
 /** The attachment to show: the one asked for by id if it exists, else the primary ticket. */
@@ -272,5 +276,5 @@ export function droppedFiles(before: readonly Attachment[], after: readonly Atta
 
 /** True when two attachment lists hold the same files in the same order (the form's "unsaved changes" test). */
 export function sameAttachments(a: readonly Attachment[], b: readonly Attachment[]): boolean {
-  return a.length === b.length && a.every((x, i) => x.id === b[i].id && x.uri === b[i].uri && x.qrCropUri === b[i].qrCropUri);
+  return a.length === b.length && a.every((x, i) => x.id === b[i].id && x.uri === b[i].uri && x.qrCropUri === b[i].qrCropUri && JSON.stringify(x.qrCrop ?? null) === JSON.stringify(b[i].qrCrop ?? null));
 }

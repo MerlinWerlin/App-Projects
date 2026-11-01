@@ -1,5 +1,5 @@
 // Backup and restore, device side (T17). Reads every satchel.* AsyncStorage key and Satchel's own files
-// (<documents>/attachments/ and, with "Include documents", <documents>/vault/), writes the .satchelbackup file to the
+// (<documents>/attachments/, the trip cover photos in <documents>/covers/ (T154) and, with "Include documents", <documents>/vault/), writes the .satchelbackup file to the
 // cache folder one file's base64 at a time (append), and hands it to the share sheet (Save to Files, iCloud Drive,
 // AirDrop). Restore picks a file with the document picker, and a checked plan (src/core/backup.ts) is written back:
 // files first, then the keys; if a key write fails the keys it changed are put back. Nothing here throws to the UI.
@@ -12,6 +12,7 @@ import * as Updates from 'expo-updates';
 import { DevSettings } from 'react-native';
 import {
   BACKUP_MIME,
+  BACKUP_UTI,
   backupFileName,
   backupParts,
   countBackup,
@@ -146,7 +147,8 @@ export async function shareBackup(uri: string, dialogTitle: string): Promise<Sha
     return 'unavailable';
   }
   try {
-    await Sharing.shareAsync(uri, { mimeType: BACKUP_MIME, UTI: 'public.json', dialogTitle });
+    // T154: the exported UTI (app.json), so a backup saved to Files or AirDropped opens straight into Satchel.
+    await Sharing.shareAsync(uri, { mimeType: BACKUP_MIME, UTI: BACKUP_UTI, dialogTitle });
     return 'shared';
   } catch {
     return 'failed';
@@ -155,7 +157,7 @@ export async function shareBackup(uri: string, dialogTitle: string): Promise<Sha
 
 export type PickedBackup = { ok: true; uri: string; size: number | null } | { ok: false; reason: 'cancelled' | 'unavailable' };
 
-/** Lets the user choose a backup file (any type is offered: .satchelbackup isn't a registered type yet). */
+/** Lets the user choose a backup file. Any type is offered: builds before T154 don't declare .satchelbackup, and a renamed file still restores. */
 export async function pickBackup(): Promise<PickedBackup> {
   try {
     const res = await DocumentPicker.getDocumentAsync({ type: ['*/*'], copyToCacheDirectory: true, multiple: false });

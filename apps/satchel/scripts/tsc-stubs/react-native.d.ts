@@ -1130,3 +1130,7 @@ export function PlatformColor(...colors: string[]): OpaqueColorValue;
 declare global {
   const __DEV__: boolean;
 }
+
+// T28: native module presence checks (src/native/pdfView.tsx guards react-native-webview with these).
+export const TurboModuleRegistry: { get<T = unknown>(name: string): T | null; getEnforcing<T = unknown>(name: string): T };
+export const NativeModules: { [name: string]: unknown };

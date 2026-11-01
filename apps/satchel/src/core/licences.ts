@@ -92,6 +92,7 @@ export const LICENCE_SECTIONS: readonly LicenceSection[] = [
       { id: 'safearea', name: 'react-native-safe-area-context', licence: 'MIT', packages: ['react-native-safe-area-context'] },
       { id: 'screens', name: 'react-native-screens', licence: 'MIT', packages: ['react-native-screens'] },
       { id: 'svg', name: 'react-native-svg', licence: 'MIT', packages: ['react-native-svg'] },
+      { id: 'webview', name: 'react-native-webview', licence: 'MIT', url: 'https://github.com/react-native-webview/react-native-webview/blob/master/LICENSE', packages: ['react-native-webview'] },
       { id: 'iap', name: 'expo-iap', licence: 'MIT', url: 'https://github.com/hyochan/expo-iap/blob/main/LICENSE', packages: ['expo-iap'] },
       { id: 'asyncstorage', name: 'Async Storage', licence: 'MIT', packages: ['@react-native-async-storage/async-storage'] },
       { id: 'datetimepicker', name: 'DateTimePicker', licence: 'MIT', packages: ['@react-native-community/datetimepicker'] },

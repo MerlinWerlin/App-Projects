@@ -1,19 +1,26 @@
 // Document detail: type, name, expiry as text, saved copies (images inline, PDFs in the system viewer), Edit and
 // Delete. Behind the same vault lock as /vault, and covered in the app switcher (T57).
+// T155: the ticket pieces for documents too: an image copy can be cropped to its QR / barcode (app/doc-crop/[id].tsx,
+// the crop shows big above the copy) and a PDF opens full screen inside Satchel on builds with the viewer
+// (src/native/pdfView.tsx: local file only, JavaScript off, links refused), else the system preview / share sheet.
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Alert, Image, Text, View } from 'react-native';
+import { AccessibilityInfo, Alert, Image, Text, useWindowDimensions, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
 import type { Attachment } from '../../src/core/model.ts';
 import { expiryOf, isImage, isPdf, removeDoc, requiresUnlock, tripWarnings } from '../../src/core/vault.ts';
+import { copyView } from '../../src/core/vaultcopy.ts';
 import { openFile } from '../../src/native/docPick.ts';
+import { PdfView, pdfViewerAvailable } from '../../src/native/pdfView.tsx';
 import { fileExists, removeFile } from '../../src/native/files.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { usePrivacyGuard } from '../../src/state/privacyGuard.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { useVaultDocs, useVaultLock } from '../../src/state/vaultLock.ts';
-import { fonts, radius, space } from '../../src/theme/tokens.ts';
+import { fonts, radius, space, TOUCH } from '../../src/theme/tokens.ts';
+import { CroppedImage } from '../../src/ui/CroppedImage.tsx';
 import { Body, Button, Card, EmptyState, Label, PressableScale, Screen, Warning } from '../../src/ui/kit.tsx';
 import { DOC_ICON, docKindKey, ExpiryBadge, expiryText, tripWarningText, UnprotectedBanner, VaultLockGate } from '../../src/ui/slots/WalletVaultSlot.tsx';
 
@@ -28,6 +35,12 @@ export default function DocScreen() {
   const doc = docs.find((d) => d.id === id);
   const [missing, setMissing] = useState<string[]>([]);
   const [openFailed, setOpenFailed] = useState(false);
+  // T155: the PDF copy shown full screen (its attachment id), a viewer that failed, crops that can't be drawn.
+  const [pdfOpen, setPdfOpen] = useState<string | null>(null);
+  const [pdfFailed, setPdfFailed] = useState(false);
+  const [cropBroken, setCropBroken] = useState<string[]>([]);
+  const { width } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
 
   const uris = doc?.attachments.map((a) => a.uri).join('|') ?? '';
   useEffect(() => {
@@ -74,19 +87,50 @@ export default function DocScreen() {
       },
     ]);
 
+  const side = Math.min(width - space.l * 4, 420);
   const copy = (a: Attachment) => {
     if (missing.includes(a.id)) return <Warning key={a.id} text={t('doc.missingFile', { name: a.name })} />;
+    const view = copyView(a, !pdfFailed && pdfViewerAvailable());
     if (isImage(a)) {
+      const showCrop = !!view.crop && !cropBroken.includes(a.id);
       return (
-        <Image
-          key={a.id}
-          source={{ uri: a.uri }}
-          resizeMode="contain"
-          accessible
-          accessibilityRole="image"
-          accessibilityLabel={t('doc.imageA11y', { label: doc.label, name: a.name })}
-          style={{ width: '100%', height: 260, borderRadius: radius.s, backgroundColor: theme.paper }}
-        />
+        <View key={a.id} style={{ gap: space.s }}>
+          {showCrop ? (
+            <View style={{ alignSelf: 'center', backgroundColor: theme.card, borderRadius: radius.m, borderWidth: 1, borderColor: theme.line, padding: space.s }}>
+              <CroppedImage
+                uri={a.uri}
+                crop={view.crop!}
+                boxW={side - space.s * 2}
+                boxH={Math.round(side * 1.1)}
+                label={t('f109.doc.codeLabel', { label: doc.label, name: a.name })}
+                onError={() => setCropBroken((b) => (b.includes(a.id) ? b : [...b, a.id]))}
+              />
+            </View>
+          ) : null}
+          <Image
+            source={{ uri: a.uri }}
+            resizeMode="contain"
+            accessible
+            accessibilityRole="image"
+            accessibilityLabel={t('doc.imageA11y', { label: doc.label, name: a.name })}
+            style={{ width: '100%', height: 260, borderRadius: radius.s, backgroundColor: theme.paper }}
+          />
+          <Button
+            label={t(view.cropAction === 'adjust' ? 'f109.doc.cropAdjust' : 'f109.doc.cropAdd')}
+            hint={t(view.cropAction === 'adjust' ? 'f109.doc.cropAdjustHint' : 'f109.doc.cropAddHint', { name: a.name })}
+            kind="quiet"
+            icon="crop"
+            onPress={() => router.push({ pathname: '/doc-crop/[id]', params: { id: doc.id, att: a.id } })}
+          />
+        </View>
+      );
+    }
+    if (view.inlinePdf) {
+      return (
+        <View key={a.id} style={{ gap: space.xs }}>
+          <Button label={t('f109.doc.viewPdf', { name: a.name })} hint={t('f109.doc.viewPdfHint')} kind="secondary" icon="document-text-outline" onPress={() => setPdfOpen(a.id)} />
+          <Button label={t('f109.doc.sharePdf')} hint={t('f109.doc.sharePdfHint', { name: a.name })} kind="quiet" onPress={() => open(a)} />
+        </View>
       );
     }
     return (
@@ -106,6 +150,53 @@ export default function DocScreen() {
       </PressableScale>
     );
   };
+
+  const shownPdf = pdfOpen && !pdfFailed ? doc.attachments.find((a) => a.id === pdfOpen && isPdf(a) && !missing.includes(a.id)) : undefined;
+  if (shownPdf) {
+    // Full screen PDF (the ticket view's viewer): the system's own pinch-zoom and page scrolling; Back returns here.
+    return (
+      <View style={{ flex: 1, backgroundColor: theme.paper }}>
+        <View style={{ flex: 1 }}>
+          <PdfView
+            uri={shownPdf.uri}
+            label={t('f109.doc.pdfLabel', { label: doc.label, name: shownPdf.name })}
+            background={theme.paper}
+            onFail={() => {
+              setPdfFailed(true);
+              setPdfOpen(null);
+              AccessibilityInfo.announceForAccessibility(t('f109.doc.pdfFailed'));
+            }}
+          />
+        </View>
+        {openFailed ? (
+          <View style={{ paddingHorizontal: space.l, paddingTop: space.s }}>
+            <Warning text={t('doc.openFailed')} />
+          </View>
+        ) : null}
+        <View style={{ flexDirection: 'row', gap: space.s, paddingHorizontal: space.l, paddingTop: space.s, paddingBottom: insets.bottom + space.m, borderTopWidth: 1, borderTopColor: theme.line, backgroundColor: theme.paper }}>
+          <PressableScale
+            accessibilityRole="button"
+            accessibilityLabel={t('f109.doc.pdfBack')}
+            accessibilityHint={t('f109.doc.pdfBackHint')}
+            onPress={() => setPdfOpen(null)}
+            style={{ flex: 1, minHeight: TOUCH + 12, borderRadius: radius.m, backgroundColor: theme.accentStrong, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: space.s }}
+          >
+            <Ionicons name="chevron-back" size={22} color={theme.onAccent} />
+            <Text style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.onAccent }}>{t('f109.doc.pdfBack')}</Text>
+          </PressableScale>
+          <PressableScale
+            accessibilityRole="button"
+            accessibilityLabel={t('f109.doc.sharePdf')}
+            accessibilityHint={t('f109.doc.sharePdfHint', { name: shownPdf.name })}
+            onPress={() => open(shownPdf)}
+            style={{ width: TOUCH + 12, minHeight: TOUCH + 12, borderRadius: radius.m, borderWidth: 1, borderColor: theme.line, alignItems: 'center', justifyContent: 'center' }}
+          >
+            <Ionicons name="share-outline" size={22} color={theme.ink} />
+          </PressableScale>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <Screen>
@@ -132,6 +223,7 @@ export default function DocScreen() {
       <Card>
         <Label>{t('doc.copiesTitle')}</Label>
         {doc.attachments.length ? doc.attachments.map(copy) : <Body muted>{t('doc.noCopies')}</Body>}
+        {pdfFailed ? <Warning text={t('f109.doc.pdfFailed')} /> : null}
         {openFailed ? <Warning text={t('doc.openFailed')} /> : null}
       </Card>
       <Button label={t('doc.edit')} hint={t('spec41.doc.editHint')} onPress={() => router.push({ pathname: '/doc-edit', params: { id: doc.id } })} />

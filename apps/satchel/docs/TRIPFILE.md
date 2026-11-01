@@ -3,7 +3,8 @@
 - Format: one JSON object, `format: "satchel-trip"`, `version: 1` (src/core/tripfile.ts). It holds the trip, its
   bookings, saved places, packing list and the bookings' attachments as base64. Vault documents, the emergency card
   and medical notes are never written to it. A newer version is refused with `error.import.version`.
-- Export: trip screen, "Export trip". Writes `<trip name>.satchel` to the cache folder and opens the share sheet.
+- Export: trip screen, "Export trip". Writes `<trip name>.satchel` to the cache folder and opens the share sheet
+  with the UTI `app.satchel.trip` (T154; was `public.json`), so AirDrop and Files treat it as a Satchel trip.
 - Import: Trips list, "Import a trip" (document picker, any file type). Every id is new, so importing twice gives
   two trips. All-or-nothing: a failed check or write leaves the phone unchanged.
 - **Import on open (T46, done in T14, 1 Nov).** app.json declares the exported UTI `app.satchel.trip` (conforms to

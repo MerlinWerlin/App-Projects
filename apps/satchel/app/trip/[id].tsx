@@ -28,6 +28,7 @@ import { ItemRow } from '../../src/ui/ItemRow.tsx';
 import { JetLagCard } from '../../src/ui/JetLagCard.tsx';
 import { MedTimesCard } from '../../src/ui/MedTimesCard.tsx';
 import { ReadinessCard } from '../../src/ui/ReadinessCard.tsx';
+import { StepFreeEntry } from '../../src/ui/stepfree.tsx';
 import { KindIcon, kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, Screen, Warning } from '../../src/ui/kit.tsx';
 import { TripPackingSlot } from '../../src/ui/slots/TripPackingSlot.tsx';
@@ -363,6 +364,8 @@ export default function TripScreen() {
             <PostcardsTripCard trip={trip} />
             {/* T149: travelling with kids (who is coming, lost card, packing rows, journey reminders). */}
             {past ? null : <KidsTripCard trip={trip} />}
+            {/* T156: step-free travel (needs on this phone, local-language card, assistance advice). */}
+            {past ? null : <StepFreeEntry />}
             <ReadinessCard trip={trip} />
             {/* T143: when check-in opens and closes for the next bookings (each on its own clock). */}
             {past ? null : <CheckinTripCard trip={trip} />}

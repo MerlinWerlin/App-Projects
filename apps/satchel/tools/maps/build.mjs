@@ -180,6 +180,8 @@ for (const city of cfg.cities) {
   const pois = toPois(await overpass(city.bbox), BUILT);
   const center = [+((w + e) / 2).toFixed(5), +((s + n) / 2).toFixed(5)];
   const file = `${city.id}.tar`;
+  // meta.json has no bytes/sha256 (they describe the tar it goes into); the app takes them from the catalog entry
+  // (parsePackMeta in src/core/citymaps.ts). Keys are checked by src/core/mapcontract.test.ts.
   const meta = { id: city.id, format: POIS_FORMAT, name: city.name, country: city.country, bbox: city.bbox, center, minzoom: city.minzoom, maxzoom: city.maxzoom, file, tiles: count, pois: pois.toilets.length + pois.places.length, attribution: cfg.attribution, built: BUILT };
   writeFileSync(join(dir, 'meta.json'), JSON.stringify(meta));
   writeFileSync(join(dir, 'pois.json'), JSON.stringify(pois));

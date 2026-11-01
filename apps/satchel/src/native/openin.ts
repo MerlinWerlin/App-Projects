@@ -8,13 +8,14 @@ import * as FileSystem from 'expo-file-system/legacy';
 import { newId } from '../core/model.ts';
 import {
   base64ToBytes,
+  classifyFile,
   decideKind,
   decodeBytes,
   fileNameFromUrl,
   INCOMING_FOLDER,
   incomingName,
   isIncomingFileUrl,
-  MAX_INCOMING_BYTES,
+  maxIncomingBytes,
   SNIFF_BYTES,
   type OpenInKind,
 } from '../core/openin.ts';
@@ -75,7 +76,8 @@ export async function receiveIncoming(url: string): Promise<Received> {
   } catch {
     // content:// sources may not report a size; the copy still works
   }
-  if (size != null && size > MAX_INCOMING_BYTES) return { ok: false, reason: 'too-large', name };
+  // A .satchelbackup may be far larger than a booking file (T154); everything else keeps the 40 MB limit.
+  if (size != null && size > maxIncomingBytes(classifyFile({ name }))) return { ok: false, reason: 'too-large', name };
   const to = `${dir}${incomingName(newId('in'), name)}`;
   try {
     await FileSystem.makeDirectoryAsync(dir, { intermediates: true }).catch(() => {});

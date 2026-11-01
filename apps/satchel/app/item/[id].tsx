@@ -24,6 +24,7 @@ import { ItemRentalSlot } from '../../src/ui/driving.tsx';
 import { LegInfoLines } from '../../src/ui/layovers.tsx';
 import { ItemSettingSlot } from '../../src/ui/rainplan.tsx';
 import { ItemCheckinSlot } from '../../src/ui/checkin.tsx';
+import { ItemAccessSlot } from '../../src/ui/stepfree.tsx';
 
 export default function ItemScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -124,6 +125,8 @@ export default function ItemScreen() {
       <ItemRentalSlot item={item} />
       {/* T140: indoors / outdoors, for rainy-day plan B (activities only). */}
       <ItemSettingSlot item={item} />
+      {/* T156: step-free room / assistance booked / lift and a note (shown when needs are set or notes exist). */}
+      <ItemAccessSlot item={item} />
       <Card>
         {row('item.from', item.from?.name)}
         {row('item.to', item.to?.name)}

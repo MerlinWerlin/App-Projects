@@ -29,6 +29,7 @@ import { TEMP_UNITS } from '../src/core/weather.ts';
 import { useTempUnit } from '../src/ui/WeatherCard.tsx';
 import { FadeInView, HeroHeader, SectionHeader, type IconName, type Tone } from '../src/ui/hero.tsx';
 import { Body, Button, Card, Chip, PressableScale, Screen, ToggleRow } from '../src/ui/kit.tsx';
+import { StepFreeEntry } from '../src/ui/stepfree.tsx';
 
 const LIST_DATE = typeof (table as { imported?: unknown }).imported === 'string' ? (table as { imported: string }).imported : null;
 
@@ -226,6 +227,9 @@ export default function SettingsScreen() {
       <Section title={t('openin.settings.title')} icon="share-outline" tone="sea">
         <Body>{t('openin.settings.body')}</Body>
       </Section>
+
+      {/* T156: step-free travel needs (phone only). */}
+      <StepFreeEntry />
 
       {/* T17: backup and restore (changing phones). */}
       <Section title={t('backup.settingsTitle')} icon="cloud-upload-outline" tone="sea">

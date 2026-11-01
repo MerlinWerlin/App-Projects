@@ -14,6 +14,7 @@
 // importing the same file twice gives two separate trips. A file is checked in full before anything is imported;
 // a file that fails any check is rejected whole (no partial import). Unreadable time zones are kept as they are
 // (the app already shows those as "zone not recognised"); dates that can't be placed on a timeline are rejected.
+import { cleanCrop } from './qrcrop.ts';
 import { importKids, readFileKids, type FileKids, type KidsData } from './kids.ts';
 import type { Attachment, Item, Place, SavedPlace, Trip } from './model.ts';
 import { ITEM_KINDS } from './model.ts';
@@ -38,6 +39,7 @@ import { readAirport } from './leaveby.ts';
 import { readLegInfo } from './layovers.ts';
 import { readPlanSetting } from './plansetting.ts';
 import { readCheckin } from './checkin.ts';
+import { readAccess } from './stepfree.ts';
 import { checkFileSpending } from './spending.ts';
 import { cleanFileTogether } from './together.ts';
 import { cleanFileCash, importCash } from './cash.ts';
@@ -260,6 +262,14 @@ function fileCheckin(item: FileItem): FileItem {
   return (c ? { ...rest, checkin: c } : rest) as FileItem;
 }
 
+/** T156: a booking's access notes are optional; bad values are dropped (never refusing the file). */
+function fileAccess(item: FileItem): FileItem {
+  if (!('access' in item)) return item;
+  const { access, ...rest } = item as FileItem & { access?: unknown };
+  const a = readAccess(access);
+  return (a ? { ...rest, access: a } : rest) as FileItem;
+}
+
 const damaged = (detail: string): ParseResult => ({ ok: false, error: 'damaged', detail });
 
 /** Checks a decoded JSON value in full. Nothing about it is trusted until this says ok. */
@@ -355,7 +365,7 @@ export function parseTripFile(data: unknown): ParseResult {
       version: TRIP_FILE_VERSION,
       exported_at: isStr(data.exported_at) ? data.exported_at : '',
       trip,
-      items: (data.items as FileItem[]).map((i) => fileCheckin(fileSetting(fileLegInfo(fileAirport(i))))),
+      items: (data.items as FileItem[]).map((i) => fileAccess(fileCheckin(fileSetting(fileLegInfo(fileAirport(i)))))),
       places: (places as SavedPlace[]).map(filePlaceSetting),
       ...(packing ? { packing } : {}),
       attachments: data.attachments as FilePayload[],
@@ -421,9 +431,11 @@ export function importTripFile(file: TripFile, newId: (prefix: string) => string
       attIds.set(r.id, id);
       const p = byPayload.get(r.id);
       if (p) files.push({ attachmentId: id, name: r.name, mime: r.mime, data_base64: p.data_base64, ...(p.crop_base64 ? { crop_base64: p.crop_base64 } : {}) });
-      const { hasCrop, ...meta } = r;
+      const { hasCrop, qrCrop: rawRect, ...meta } = r;
+      // T28: an in-app crop rectangle travels as data; a damaged one is dropped rather than drawn.
+      const rect = rawRect === undefined ? null : cleanCrop(rawRect);
       // qrCropUri is filled by withFiles once the files are written ('' marks "crop is the main file").
-      return { ...meta, id, uri: '', ...(hasCrop ? { qrCropUri: '' } : {}) };
+      return { ...meta, id, uri: '', ...(hasCrop ? { qrCropUri: '' } : {}), ...(rect ? { qrCrop: rect } : {}) };
     });
     const out: Item = { ...fields, id: newId('item'), tripId, attachments };
     itemIds.set(it.id, out.id);

@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useRef, useState } from 'react';
 import { Alert, Text, View } from 'react-native';
+import { hasCropRect } from '../../core/qrcrop.ts';
 import type { Attachment, Item, Trip } from '../../core/model.ts';
 import type { PermissionState } from '../../core/permissions.ts';
 import { newId } from '../../core/model.ts';
@@ -49,6 +50,7 @@ export function ItemTicketSlot({ item }: { trip: Trip; item: Item }) {
   latest.current = item;
 
   const primary = primaryTicket(item);
+  const cropTarget = primary ?? item.attachments[0];
 
   const run = async (fn: () => Promise<void>) => {
     if (busy) return;
@@ -74,8 +76,14 @@ export function ItemTicketSlot({ item }: { trip: Trip; item: Item }) {
       haptic.success();
     });
 
-  const saveCrop = () =>
-    run(async () => {
+  const saveCrop = () => {
+    // T28: an image ticket (from Files or Photos) is cropped in the app; a PDF or no file still takes a photo crop.
+    const pick = primaryTicket(latest.current) ?? latest.current.attachments[0];
+    if (pick && attachmentKind(pick.mime, pick.name) === 'image') {
+      router.push({ pathname: '/crop/[id]', params: { id: latest.current.id, att: pick.id } });
+      return;
+    }
+    return run(async () => {
       const target = primaryTicket(latest.current) ?? latest.current.attachments[0];
       const r = await importQrCrop(target?.id ?? latest.current.id);
       if (!r.ok) return setProblem(failureKey(r.reason, true, r.permission));
@@ -99,6 +107,7 @@ export function ItemTicketSlot({ item }: { trip: Trip; item: Item }) {
       haptic.success();
       setNote('ticket.qrSavedDone');
     });
+  };
 
   const confirmRemove = (a: Attachment) =>
     Alert.alert(t('ticket.removeConfirm', { name: a.name }), t('ticket.removeBody'), [
@@ -129,7 +138,7 @@ export function ItemTicketSlot({ item }: { trip: Trip; item: Item }) {
       ) : (
         item.attachments.map((a) => {
           const kind = attachmentKind(a.mime, a.name);
-          const meta = [t(`ticket.role.${a.role}`), t(`ticket.kind.${kind}`), a.qrCropUri ? t('ticket.qrSaved') : ''].filter(Boolean).join(' · ');
+          const meta = [t(`ticket.role.${a.role}`), t(`ticket.kind.${kind}`), a.qrCropUri || hasCropRect(a) ? t('ticket.qrSaved') : ''].filter(Boolean).join(' · ');
           return (
             <View key={a.id} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
               <PressableScale
@@ -140,7 +149,7 @@ export function ItemTicketSlot({ item }: { trip: Trip; item: Item }) {
                 style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.xs }}
               >
                 <View style={{ width: 40, height: 40, borderRadius: radius.s, backgroundColor: theme.accentSoft, alignItems: 'center', justifyContent: 'center' }}>
-                  <Ionicons name={a.qrCropUri ? 'qr-code-outline' : kind === 'pdf' ? 'document-outline' : 'image-outline'} size={22} color={theme.accent} />
+                  <Ionicons name={a.qrCropUri || hasCropRect(a) ? 'qr-code-outline' : kind === 'pdf' ? 'document-outline' : 'image-outline'} size={22} color={theme.accent} />
                 </View>
                 <View style={{ flex: 1, gap: 2 }}>
                   <Text numberOfLines={2} style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink }}>
@@ -188,8 +197,8 @@ export function ItemTicketSlot({ item }: { trip: Trip; item: Item }) {
         <Button label={t('ticket.chooseFile')} hint={t('ticket.chooseFileHint')} kind="quiet" onPress={() => add('files')} />
         <Button label={t('ticket.choosePhoto')} hint={t('ticket.choosePhotoHint')} kind="quiet" onPress={() => add('photos')} />
         <Button
-          label={primary?.qrCropUri ? t('ticket.qrReplace') : item.attachments.length ? t('ticket.qrSet') : t('ticket.qrAdd')}
-          hint={t('ticket.qrHint')}
+          label={primary?.qrCropUri || (primary && hasCropRect(primary)) ? t('ticket.qrReplace') : item.attachments.length ? t('ticket.qrSet') : t('ticket.qrAdd')}
+          hint={cropTarget && attachmentKind(cropTarget.mime, cropTarget.name) === 'image' ? t('tpolish.cropActionHint') : t('ticket.qrHint')}
           kind="quiet"
           onPress={saveCrop}
         />

@@ -9,13 +9,19 @@
 //     files: [{ path: 'attachments/a1-pass.pdf', size, sha256, data: '<base64>' }, ...], counts: {...} }
 // `keys` holds every AsyncStorage key with the `satchel.` prefix, value as stored (text), except the transient ones
 // below. Vault documents (key and vault/ files) only when "Include documents" is on.
+import { cleanCoverPhotos, COVER_PHOTO_FOLDER, COVER_PHOTO_KEY, coverPhotosValue, type CoverPhotos } from './covers2.ts';
 import { base64ToBytes } from './tar.ts';
+import { rebaseUri } from './tickets.ts';
 import { addDays } from './tz.ts';
 
 export const BACKUP_FORMAT = 'satchel-backup';
 export const BACKUP_VERSION = 1;
 export const BACKUP_EXT = '.satchelbackup';
 export const BACKUP_MIME = 'application/json';
+/** T154: the exported UTI for .satchelbackup (app.json UTExportedTypeDeclarations, conforms to public.json / public.data). */
+export const BACKUP_UTI = 'app.satchel.backup';
+/** The MIME type declared with that UTI (Open in may report it). */
+export const BACKUP_FILE_MIME = 'application/vnd.satchel.backup+json';
 export const KEY_PREFIX = 'satchel.';
 /** Above this the screens warn first (the file is read and written in memory on the phone). */
 export const LARGE_BACKUP_BYTES = 100 * 1024 * 1024;
@@ -36,8 +42,11 @@ export const TRANSIENT_PREFIXES: readonly string[] = [
 ];
 /** Keys that hold the documents vault (passport, visa, licence copies): only with "Include documents". */
 export const DOCUMENT_KEYS: readonly string[] = [VAULT_KEY];
-/** Document folders under <documents>/ backed up: attachments always, vault only with "Include documents". */
-export const FILE_FOLDERS = ['attachments', 'vault'] as const;
+/**
+ * Document folders under <documents>/ backed up: attachments and the trip cover photos (covers/, T154) always,
+ * vault only with "Include documents".
+ */
+export const FILE_FOLDERS = ['attachments', 'vault', 'covers'] as const;
 export const DOCUMENT_FOLDERS: readonly string[] = ['vault'];
 /** Not backed up (re-downloadable): offline city map packs and their catalog live in <documents>/maps/. */
 export const EXCLUDED_FOLDERS: readonly string[] = ['maps'];
@@ -332,6 +341,38 @@ export function moveDocPaths(value: string, from: string | null, to: string | nu
   return value.split(from).join(to).split(esc(from)).join(esc(to));
 }
 
+/**
+ * T154: the phone-only cover photo map (satchel.coverphoto.v1, tripId -> covers/<file>) with every path moved onto
+ * this install's documents folder. Unlike moveDocPaths this does not need the backup's own docDir to match: iOS
+ * moves the app container on every update and the map is only rebased when read, so a stored path can still name an
+ * older container than the one the backup was made in (or be relative, or an Android files/ path). Paths that are
+ * not inside a documents folder's covers/ can't point at a restored file and are dropped (the trip shows its
+ * illustrated cover). Text that isn't the map is returned unchanged.
+ */
+export function rebaseCoverPhotoStore(text: string, docDir: string | null): string {
+  if (!docDir) return text;
+  let raw: unknown;
+  try {
+    raw = JSON.parse(text);
+  } catch {
+    return text;
+  }
+  if (!isObj(raw)) return text;
+  const out: CoverPhotos = {};
+  for (const [id, uri] of Object.entries(cleanCoverPhotos(raw))) {
+    const moved = rebaseUri(uri, docDir, [COVER_PHOTO_FOLDER]);
+    const rel = moved.startsWith(docDir) ? moved.slice(docDir.length) : '';
+    if (rel.startsWith(`${COVER_PHOTO_FOLDER}/`) && !rel.split('/').includes('..')) out[id] = moved;
+  }
+  return JSON.stringify(coverPhotosValue(out));
+}
+
+/** A stored value moved onto this install: every file path, and for the cover map each entry on its own. */
+export function moveStoredValue(key: string, value: string, from: string | null, to: string | null): string {
+  const v = moveDocPaths(value, from, to);
+  return key === COVER_PHOTO_KEY ? rebaseCoverPhotoStore(v, to) : v;
+}
+
 const hasId = (v: unknown): v is { id: string } => isObj(v) && typeof v.id === 'string';
 const isIdList = (v: unknown): v is { id: string }[] => Array.isArray(v) && v.length > 0 && v.every(hasId);
 
@@ -394,7 +435,7 @@ export function planRestore(b: Backup, current: Record<string, string>, mode: Re
   const set: Record<string, string> = {};
   for (const [k, raw] of Object.entries(b.keys)) {
     if (isTransientKey(k)) continue;
-    const v = moveDocPaths(raw, b.docDir, docDir);
+    const v = moveStoredValue(k, raw, b.docDir, docDir);
     const next = mode === 'merge' ? mergeStored(current[k], v) : v;
     if (current[k] !== next) set[k] = next;
   }

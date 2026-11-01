@@ -52,6 +52,7 @@ import { radius, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { FadeInView, SectionCard } from './hero.tsx';
 import { useMinute } from './JetLagCard.tsx';
 import { Body, Button, Chip, Label, PressableScale, TextField, ToggleRow } from './kit.tsx';
+import { CheckoutRemindButton } from './followups107.tsx';
 
 // ------------------------------------------------------------------ text helpers
 
@@ -420,6 +421,8 @@ export function ItemCheckinSlot({ item }: { item: Item }) {
         <ToggleRow label={t('f106.checkout.mark')} hint={t('f106.checkout.markHint')} value={isOut(item)} onChange={(v) => save(readCheckin(setOut(item, v, Date.now()).checkin))} />
       ) : null}
       {next ? <Button label={t('checkin.remind')} hint={t('checkin.remindHint', { kind: kindText(t, next) })} kind="secondary" icon="calendar-outline" onPress={remind} /> : null}
+      {/* T151: a stay's check-out reminder in Calendar, an hour before check-out on the hotel's clock. */}
+      {item.kind === 'hotel' ? <CheckoutRemindButton item={item} now={now} /> : null}
       {item.kind === 'car' ? <DeskHours item={item} /> : null}
       {journey ? (
         <>

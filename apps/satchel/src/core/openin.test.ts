@@ -252,3 +252,55 @@ test('app.json declares the document types, the exported trip UTI and Android VI
   const mimes = filters.filter((f) => f.action === 'VIEW').flatMap((f) => f.data.map((d) => d.mimeType));
   for (const m of ['application/pdf', 'image/*', 'text/plain', 'message/rfc822', 'application/json']) assert.ok(mimes.includes(m), m);
 });
+
+// T155: Android opens Satchel's own trip and backup files by MIME type too (the same VIEW filter), and each routes.
+test('app.json Android VIEW filter carries the trip and backup MIME types', async () => {
+  const { BACKUP_FILE_MIME } = await import('./backup.ts');
+  const app = JSON.parse(readFileSync(new URL('../../app.json', import.meta.url), 'utf8')) as {
+    expo: { ios: { infoPlist: { UTExportedTypeDeclarations: { UTTypeTagSpecification: Record<string, string[]> }[] } }; android: { intentFilters: { action: string; category: string[]; data: { mimeType?: string }[] }[] } };
+  };
+  const view = app.expo.android.intentFilters.filter((f) => f.action === 'VIEW');
+  const mimes = view.flatMap((f) => f.data.map((d) => d.mimeType)).filter(Boolean);
+  // the same MIME types the iOS exported types declare
+  const exported = app.expo.ios.infoPlist.UTExportedTypeDeclarations.flatMap((u) => u.UTTypeTagSpecification['public.mime-type'] ?? []);
+  assert.ok(exported.includes(BACKUP_FILE_MIME));
+  for (const m of exported) assert.ok(mimes.includes(m), m);
+  assert.equal(classifyFile({ name: '', mime: BACKUP_FILE_MIME }), 'backup');
+  assert.equal(classifyFile({ name: '', mime: 'application/vnd.satchel.trip+json' }), 'trip');
+  assert.ok(view.every((f) => f.category.includes('DEFAULT')));
+});
+
+// T154: a .satchelbackup opened in Satchel goes to the restore preview, never to the trip import.
+test('a .satchelbackup is a backup by name, UTI, MIME type or contents, and routes to restore', async () => {
+  const { BACKUP_UTI, BACKUP_FILE_MIME, BACKUP_EXT } = await import('./backup.ts');
+  const { maxIncomingBytes, MAX_INCOMING_BYTES, MAX_INCOMING_BACKUP_BYTES } = await import('./openin.ts');
+  assert.equal(BACKUP_UTI, 'app.satchel.backup');
+  assert.equal(classifyFile({ name: `Satchel backup 2026-11-01${BACKUP_EXT}` }), 'backup');
+  assert.equal(classifyFile({ name: 'x', uti: BACKUP_UTI }), 'backup');
+  assert.equal(classifyFile({ name: 'x', mime: BACKUP_FILE_MIME }), 'backup');
+  assert.equal(routeFor('backup'), 'restore');
+  assert.equal(routeFor('trip'), 'import');
+  const head = new TextEncoder().encode('{"format":"satchel-backup","version":1,"app":"0.1.0"');
+  assert.equal(decideKind({ name: 'backup.json' }, head), 'backup', 'a renamed .json backup is still a backup');
+  assert.equal(decideKind({ name: 'backup.txt' }, head), 'backup');
+  assert.equal(decideKind({ name: '' }, head), 'backup', 'nameless content:// file');
+  assert.equal(decideKind({ name: 'trip.json' }, new TextEncoder().encode('{"format":"satchel-trip","version":1}')), 'trip');
+  assert.equal(incomingName('in1', '', 'backup'), 'in1-backup.satchelbackup');
+  assert.equal(maxIncomingBytes('backup'), MAX_INCOMING_BACKUP_BYTES);
+  assert.equal(maxIncomingBytes('pdf'), MAX_INCOMING_BYTES);
+  assert.equal(incomingRedirect('file:///private/var/mobile/Inbox/Satchel%20backup.satchelbackup'), `/openin?uri=${encodeURIComponent('file:///private/var/mobile/Inbox/Satchel%20backup.satchelbackup')}`);
+});
+
+test('app.json declares and exports app.satchel.backup (.satchelbackup) next to the trip UTI', () => {
+  const plist = (JSON.parse(readFileSync(new URL('../../app.json', import.meta.url), 'utf8')) as { expo: { ios: { infoPlist: Record<string, unknown> } } }).expo.ios.infoPlist;
+  const docTypes = plist.CFBundleDocumentTypes as { CFBundleTypeName: string; LSHandlerRank: string; LSItemContentTypes: string[] }[];
+  const backup = docTypes.find((d) => d.LSItemContentTypes.includes('app.satchel.backup'));
+  assert.ok(backup, 'document type');
+  assert.equal(backup.LSHandlerRank, 'Owner');
+  const exported = plist.UTExportedTypeDeclarations as { UTTypeIdentifier: string; UTTypeConformsTo: string[]; UTTypeTagSpecification: Record<string, string[]> }[];
+  assert.deepEqual(exported.map((e) => e.UTTypeIdentifier), ['app.satchel.trip', 'app.satchel.backup']);
+  const b = exported[1];
+  assert.ok(b.UTTypeConformsTo.includes('public.data'));
+  assert.deepEqual(b.UTTypeTagSpecification['public.filename-extension'], ['satchelbackup']);
+  assert.deepEqual(b.UTTypeTagSpecification['public.mime-type'], ['application/vnd.satchel.backup+json']);
+});
