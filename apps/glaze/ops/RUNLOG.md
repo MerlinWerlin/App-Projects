@@ -586,3 +586,8 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - Brief imported (T264-T267, docs/OWNER_1101I.md). App-Projects: nothing new for apps/glaze since a342ed3. Oversight v227 (seen), no patches. No page comments. npm registry unreachable.
 - 4 parallel workers, all merged: T264 (7cdaf4a) crash hardening + per-screen Retry boundaries; T265 (bdb79cb) guided Use this theme flow + Set it up section (merge fix d0d4d0d: setup opens after the T264 try-wrapped celebration); T266 (37c4570) release docs, support/privacy pages, export-compliance guard; T267 (47019be) screenshot templates + renderer, 12 JPEGs published under store-screens/. Follow-ups T268-T270.
 - Needs a native build (bridge Swift guards). 1811/1811 core tests green, core + UI stub typecheck clean. Nothing device-tested.
+## 2026-11-01 run 224 (09:10Z, scheduled; artifact 1793521925-35f3; oversight v228)
+- Synced App-Projects 3e3a5e3 (categories for the 24 built-in themes + test) and 3516f7d (store/ASC_REQUEST.json); 99a7677/aac8726 are ships of runs 222/223. Oversight v228: no new directives, no patches. No page comments. npm registry unreachable (timeout); full install + tsc + expo export needs PC verification.
+- T258 (me, d36529a): pack/remote-art inventory and verify hash in 64 KB slices with an event-loop yield between (sha256HexChunked, verifyAssetAsync); +1 test. Other eligible tasks wait on the owner, the PC or a native build result (D225-3).
+- JS only (rides with the next build). 1815/1815 core tests green, core + UI stub typecheck clean. Nothing device-tested.
+- Bundle base64 ~14.74 MB (guard 15.6 MB). Trial kit rebuilt from 1fa8297.

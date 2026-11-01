@@ -1,6 +1,6 @@
 {
-  "mode": "build",
-  "note": "Glaze: 3-step Use this theme guide (wallpaper with Blur off, icons, widgets), crash-safe screens with Retry, every theme in a category, App Store release prep",
+  "mode": "update",
+  "note": "Glaze: theme pack downloads now check files in small slices so the screen stays responsive",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
