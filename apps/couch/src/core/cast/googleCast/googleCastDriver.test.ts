@@ -187,7 +187,8 @@ describe('createGoogleCast: errors', () => {
     dev.connectMode = 'refuse';
     const e = await rejection(driver.load(VIDEO));
     expect(e.code).toBe('network');
-    expect(e.message).toBe(t('core.driver.cast.gcast.connectFailed'));
+    // The socket's own reason follows in brackets (owner feedback 1 Nov 2026).
+    expect(e.message.startsWith(t('core.driver.cast.gcast.connectFailed'))).toBe(true);
     expect(driver.snapshot().state).toBe('error');
   });
 
