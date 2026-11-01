@@ -1,11 +1,12 @@
-"""Shrink the brand PNGs (the app bundle is near its size cap; T190 aims for < 100 KB each).
+"""Finish the brand PNGs.
 
-- icon.png / icon-dark.png: opaque, no alpha channel and no transparency chunk (App Store rule). Reduced to an
-  adaptive 160-colour palette (PNG colour type 3, no tRNS; no dithering, so flat areas stay flat and compress well).
-  An RGB save of the same pixels is ~240 KB; the palette file is a fraction of that. Expo re-encodes the iOS
-  AppIcon sizes from it at prebuild anyway.
-- splash and Android adaptive images: 8-bit palette with transparency (PNG colour type 3 + tRNS), which keeps the
-  soft edges and is a fraction of the RGBA size.
+T199: the Prism diamond is all soft gradients (the beam, the colour fan, the glow), and a palette PNG bands them
+badly (tried 112 to 256 colours, with and without dithering), so:
+- icon.png / icon-dark.png: opaque RGB (colour type 2), no alpha channel and no transparency chunk (App Store rule),
+  zlib level 9. About 420 KB each; Expo re-encodes the iOS AppIcon sizes from it at prebuild anyway.
+- adaptive-foreground.png and the splash images: RGBA, for the same reason.
+- the Android monochrome icon: white on transparency, so an 8-bit palette with transparency (PNG colour type 3 +
+  tRNS) stays faithful and small.
 """
 import sys
 from pathlib import Path
@@ -21,8 +22,11 @@ def opaque(p: Path) -> None:
         bg = Image.new('RGB', im.size, (0, 0, 0))
         bg.paste(im, mask=im.split()[-1] if im.mode in ('RGBA', 'LA') else None)
         im = bg
-    q = im.quantize(colors=160, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
-    q.save(p, optimize=True, compress_level=9)
+    im.save(p, optimize=True, compress_level=9)
+
+
+def rgba(p: Path) -> None:
+    Image.open(p).convert('RGBA').save(p, optimize=True, compress_level=9)
 
 
 def transparent(p: Path) -> None:
@@ -33,15 +37,10 @@ def transparent(p: Path) -> None:
 
 for name in ('icon.png', 'icon-dark.png'):
     opaque(brand / name)
-for name in ('splash-icon.png', 'splash-icon-dark.png', 'adaptive-foreground.png', 'adaptive-monochrome.png'):
+for name in ('adaptive-foreground.png', 'splash-icon.png', 'splash-icon-dark.png'):
+    rgba(brand / name)
+for name in ('adaptive-monochrome.png',):
     transparent(brand / name)
-docs = root / 'docs' / 'mascot'
-for name in ('prism-icon.png',):
-    if (docs / name).exists():
-        opaque(docs / name)
-for name in ('prism-mascot.png',):
-    if (docs / name).exists():
-        transparent(docs / name)
-for p in sorted(list(brand.glob('*.png')) + list(docs.glob('prism-*.png'))):
+for p in sorted(brand.glob('*.png')):
     im = Image.open(p)
     print(p.name, im.mode, im.size, p.stat().st_size // 1024, 'KB')

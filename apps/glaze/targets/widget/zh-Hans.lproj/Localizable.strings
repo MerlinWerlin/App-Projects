@@ -55,19 +55,3 @@
 "Seamless" = "无缝";
 "Art that floats on your wallpaper. Set it up in Glaze." = "浮在壁纸上的艺术图。在 Glaze 中设置。";
 "Set up in Glaze" = "在 Glaze 中设置";
-
-/* Island pets: generated from src/i18n/pets.ts */
-"pet.open" = "轻点探望宠物";
-"pet.happy" = "开心";
-"pet.playful" = "活泼";
-"pet.sleepy" = "困了";
-"pet.content" = "惬意";
-"pet.hungry" = "饿了";
-"pet.lifeSleeping" = "睡得正香";
-"pet.lifeStir" = "动了动，又睡着了";
-"pet.lifeWaking" = "伸个大懒腰醒来了";
-"pet.lifeIdle" = "安静地坐着";
-"pet.lifeEating" = "正在吃点心";
-"pet.lifePlaying" = "正在玩耍";
-"pet.lifeWandering" = "出去溜达一下";
-"pet.lifeHappy" = "好喜欢！";

@@ -1,30 +1,23 @@
-// Writes the Glaze brand assets from src/core/introGlaze.ts (the one source of Prism's geometry) and renders the
-// PNGs with headless Chromium. Run from the repo root:
+// Writes the Glaze brand assets and renders the PNGs with headless Chromium. Run from the repo root:
 //   node scripts/brand/build-brand.mjs            (SVG + PNG; needs Playwright + Chromium)
 //   python3 scripts/brand/flatten.py              (strips alpha from icon.png: App Store rule; shrinks every PNG)
+// T199 (owner-1101d #2): the app icon is the 25 Oct Prism diamond again. Its SVGs are copied verbatim from
+// docs/mascot/previous-prism-diamond/; the splash image (the unlit diamond, no tile) is generated from
+// src/core/introGlaze.ts, the same geometry the in-app intro draws.
 // Env: PLAYWRIGHT (path to playwright's index.mjs or a package name), CHROMIUM (executable path, optional).
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import { adaptiveForegroundSvg, iconSvg, mascotSvg, monochromeSvg, splashSvg } from '../../src/core/introGlaze.ts';
+import { splashSvg } from '../../src/core/introGlaze.ts';
 
 const out = join(process.cwd(), 'assets', 'brand');
-const docs = join(process.cwd(), 'docs', 'mascot');
+const diamond = join(process.cwd(), 'docs', 'mascot', 'previous-prism-diamond');
 mkdirSync(out, { recursive: true });
-const files = {
-  'icon.svg': iconSvg('light'),
-  'icon-dark.svg': iconSvg('dark'),
-  'splash-icon.svg': splashSvg('light'),
-  'splash-icon-dark.svg': splashSvg('dark'),
-  'adaptive-foreground.svg': adaptiveForegroundSvg(),
-  'adaptive-monochrome.svg': monochromeSvg(),
-  'mascot.svg': mascotSvg(),
-};
+const copied = ['icon.svg', 'icon-dark.svg', 'adaptive-foreground.svg', 'adaptive-monochrome.svg'];
+for (const f of copied) copyFileSync(join(diamond, f), join(out, f));
+const files = { 'splash-icon.svg': splashSvg(), 'splash-icon-dark.svg': splashSvg() };
 for (const [name, svg] of Object.entries(files)) writeFileSync(join(out, name), svg);
-// Docs previews (MASCOT.md, the build page).
-writeFileSync(join(docs, 'prism-icon.svg'), iconSvg('light'));
-writeFileSync(join(docs, 'prism-mascot.svg'), mascotSvg());
-console.log('wrote', Object.keys(files).join(', '), '+ docs/mascot/prism-icon.svg, prism-mascot.svg');
+console.log('copied', copied.join(', '), '+ wrote', Object.keys(files).join(', '));
 
 // The first Playwright that loads and launches wins (a CommonJS require also sees NODE_PATH / global installs).
 const req = createRequire(import.meta.url);
@@ -64,7 +57,5 @@ const pngs = [
   ['adaptive-monochrome.svg', 'adaptive-monochrome.png', true],
 ];
 for (const [src, dst, transparent] of pngs) await shot(readFileSync(join(out, src), 'utf8'), join(out, dst), 1024, transparent);
-await shot(iconSvg('light'), join(docs, 'prism-icon.png'), 256, false);
-await shot(mascotSvg(), join(docs, 'prism-mascot.png'), 256, true);
 await browser.close();
-console.log('rendered', pngs.map((p) => p[1]).join(', '), '+ docs/mascot/prism-icon.png, prism-mascot.png');
+console.log('rendered', pngs.map((p) => p[1]).join(', '));

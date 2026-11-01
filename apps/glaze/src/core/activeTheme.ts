@@ -120,9 +120,12 @@ export function wallpaperSaveView(saved: boolean, saving: boolean): WallpaperSav
   return { badge: saved, showSave: true, label: saving ? 'saving' : saved ? 'again' : 'cta' };
 }
 
-/** The theme page's views: the overview, or one of its own clean screens. */
-export type ThemeStep = 'overview' | 'wallpaper' | 'icons';
+/**
+ * The theme page's views: the overview, or one of its own clean screens. T201: `widgets` is the
+ * theme's widgets screen (practical pieces, then art, then the standard set in its palette).
+ */
+export type ThemeStep = 'overview' | 'wallpaper' | 'icons' | 'widgets';
 
 export function themeStepOf(param: unknown): ThemeStep {
-  return param === 'wallpaper' || param === 'icons' ? param : 'overview';
+  return param === 'wallpaper' || param === 'icons' || param === 'widgets' ? param : 'overview';
 }

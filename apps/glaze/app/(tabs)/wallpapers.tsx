@@ -8,6 +8,8 @@
 //      save it to Photos again or delete it (src/store/myWallpapers.ts; nothing leaves the device).
 // The old bundled wallpaper gallery is gone from this tab; theme wallpapers stay on each theme's
 // page. Motion is calm: the sheet fades in, nothing bounces. Tokens from tokensV2 only.
+// T198: Wallpapers is the 4th tab again (Pets were cut). Sections are spaced by SectionHeader's own
+// editorial rhythm (sectionTop above, sectionBottom below), with no extra gap stacked on top.
 import { Image as ExpoImage } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
@@ -245,7 +247,7 @@ export default function WallpapersTab() {
 }
 
 const styles = StyleSheet.create({
-  body: { paddingHorizontal: spaceV2.lg, gap: editorialV2.sectionTop - editorialV2.cardGap, paddingBottom: spaceV2.lg },
+  body: { paddingHorizontal: spaceV2.lg, paddingBottom: spaceV2.lg },
   // Each row is a list item, so it carries the side gutter and the gap below it.
   row: { flexDirection: 'row', gap: GAP, paddingHorizontal: spaceV2.lg, marginBottom: GAP },
   thumb: { borderRadius: chromeRadiusV2.card, overflow: 'hidden' },

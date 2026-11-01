@@ -30,7 +30,7 @@ const base: LocaleMessages = {
     error: 'Qualcosa è andato storto',
     itemCount: { zero: 'Nessun elemento', one: '{count} elemento', many: '{count} di elementi', other: '{count} elementi' },
   },
-  tabs: { themes: 'Temi', icons: 'Icone', live: 'Live', pets: 'Animali', settings: 'Impostazioni' },
+  tabs: { themes: 'Temi', icons: 'Icone', live: 'Live', settings: 'Impostazioni' },
   settings: {
     language: {
       title: 'Lingua',

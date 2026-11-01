@@ -130,7 +130,6 @@ export function removeMyWallpaper(state: MyWallpapersState, id: string): { state
 export function myWallpapersI18nKeys(): string[] {
   const keys = [
     'tabs.wallpapers',
-    'tabs.pets',
     'tabs.live',
     'tabs.wallpapersTab.subtitle',
     'tabs.wallpapersTab.liveEntry.eyebrow',

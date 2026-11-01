@@ -8,6 +8,9 @@
 // Live kinds (clock, date, countdown, photo, habits) also offer "Make it live" (Widget Studio with
 // that catalogue widget in this theme). Expo Go: the button explains that the TestFlight app is
 // needed; nothing throws. No motion.
+// T201: shown on the Widgets tab AND the theme page's Widgets step, practical pieces first, then art
+// (widgetShelf), with the standard widget set after it on both screens. "Use on my widget" writes the
+// App Group file and the bridge reloads every widget timeline (reloadAllTimelines).
 import { useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { AccessibilityInfo, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';

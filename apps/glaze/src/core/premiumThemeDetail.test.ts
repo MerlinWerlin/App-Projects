@@ -14,26 +14,58 @@ const strip = (src: string) => src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(
 const DETAIL_PATH = ['app', 'theme', '[id].tsx'];
 const LOCALES = ['en', 'de', 'es', 'fr', 'it', 'pt-BR', 'ja', 'ko', 'zh-Hans', 'hi', 'ar'];
 
-test("theme detail reads as editorial blocks: What's inside, Icons, Widgets, Wallpaper, Credits", () => {
+test('theme detail reads as editorial blocks: Icons, Widgets, Wallpaper, Credits', () => {
   const d = strip(read(...DETAIL_PATH));
   // (Plain substring checks: an import-shaped regex here would trip guard.test.ts's import scan.)
   assert.ok(d.includes(' SectionHeader, SquircleCard }'), 'SectionHeader comes from src/ui/v2');
-  const order = ['inside', 'icons', 'widgets', 'wallpaper', 'credits'].map((k) => d.indexOf(`t('theme.section.${k}.eyebrow')`));
+  const order = ['icons', 'widgets', 'wallpaper', 'credits'].map((k) => d.indexOf(`t('theme.section.${k}.eyebrow')`));
   for (const at of order) assert.ok(at > 0, 'every block has its eyebrow');
   assert.deepEqual([...order].sort((a, b) => a - b), order, 'blocks in the planned order');
-  // T185 (owner-1101 item 3): plus the "Set it up" block with the Wallpaper / Icons / Widgets entry points.
-  assert.equal((d.match(/<SectionHeader\b/g) ?? []).length, 6);
+  // T200: no "What's inside" block (its palette moved to the widgets block).
+  assert.ok(!d.includes("theme.section.inside"), "no What's inside block");
+  assert.ok(!d.includes("t('theme.iconStyle')") && !d.includes('theme.summary.') && !d.includes("t('theme.widgets.line'"), 'no style summary');
+  assert.equal((d.match(/<SectionHeader\b/g) ?? []).length, 4);
   // Credits only when there is something to credit.
   assert.match(d, /\{hasCredits \? \(/);
 });
 
-test('every locale has the theme detail section strings', () => {
+test('T200: "Set it up" is a bold title1 section header with a subtitle, above the three entry cards', () => {
+  const d = strip(read(...DETAIL_PATH));
+  const at = d.indexOf("t('theme.parts.title')");
+  const cards = d.indexOf("title={t('theme.parts.wallpaper')}");
+  assert.ok(at > 0 && cards > at, 'header comes before the cards');
+  const head = d.slice(d.lastIndexOf('<View style={styles.setUpHead}', at), cards);
+  assert.match(head, /accessibilityRole="header"/);
+  assert.match(head, /ts\('title1'\)/, 'title1 from the type tokens (larger than a section title2)');
+  assert.match(head, /styles\.setUpTitle/);
+  assert.match(head, /t\('theme\.parts\.subtitle'\)/);
+  assert.match(d, /setUpTitle: \{ fontWeight: '800' \}/);
+  assert.ok(!d.includes('theme.parts.eyebrow'));
+});
+
+test('T200: the palette is shown in the matching-widgets block with its caption', () => {
+  const d = strip(read(...DETAIL_PATH));
+  assert.match(d, /<WidgetPreviews theme=\{theme\} palette=\{palette\} \/>/);
+  const fn = d.slice(d.indexOf('function WidgetPreviews('), d.indexOf('const WIDGET_PREVIEW_W'));
+  assert.match(fn, /palette\.map\(/);
+  assert.match(fn, /t\('theme\.a11y\.swatch', \{ name, hex \}\)/);
+  assert.match(fn, /t\('theme\.widgetPreviews\.palette'\)/);
+});
+
+test('every locale has the theme detail section strings (and none of the retired ones)', () => {
   for (const loc of LOCALES) {
     const src = read('src', 'i18n', 'ns', 'theme', `${loc}.ts`);
     const block = /\n {2}section: \{\n([\s\S]*?)\n {2}\},\n/.exec(src)?.[1] ?? '';
-    for (const k of ['inside: { eyebrow:', 'icons: { eyebrow:', 'widgets: { eyebrow:', 'wallpaper: { eyebrow:', 'credits: { eyebrow:']) {
+    for (const k of ['icons: { eyebrow:', 'widgets: { eyebrow:', 'wallpaper: { eyebrow:', 'credits: { eyebrow:']) {
       assert.ok(block.includes(k), `${loc}: theme.section ${k}`);
     }
+    assert.ok(!block.includes('inside:'), `${loc}: theme.section.inside retired`);
+    const parts = /\n {2}parts: \{\n([\s\S]*?)\n {2}\},\n/.exec(src)?.[1] ?? '';
+    assert.match(parts, /^ {4}title: '/m, `${loc}: parts.title`);
+    assert.match(parts, /^ {4}subtitle: '/m, `${loc}: parts.subtitle`);
+    assert.doesNotMatch(parts, /^ {4}eyebrow:/m, `${loc}: parts.eyebrow retired`);
+    assert.match(src, /\n {4}palette: '[^']+',\n/, `${loc}: widgetPreviews.palette caption`);
+    assert.doesNotMatch(src, /\n {2}(summary|iconStyle|widgets): /, `${loc}: retired summary / iconStyle / widgets line`);
   }
 });
 

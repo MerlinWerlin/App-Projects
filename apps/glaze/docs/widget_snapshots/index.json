@@ -1,0 +1,6857 @@
+{
+ "task": "T203",
+ "generated": "2026-11-01",
+ "env": "production",
+ "device": {
+  "id": "2796",
+  "label": "6.7-inch 2796",
+  "scale": 3
+ },
+ "sizesPt": {
+  "small": {
+   "w": 170,
+   "h": 170
+  },
+  "medium": {
+   "w": 364,
+   "h": 170
+  },
+  "large": {
+   "w": 364,
+   "h": 382
+  }
+ },
+ "checks": [
+  "crop",
+  "fill",
+  "stretch",
+  "metaAspect",
+  "cornerClip",
+  "letterbox",
+  "noWallpaper",
+  "empty",
+  "white",
+  "edgeCut",
+  "textOverflow",
+  "notOffered"
+ ],
+ "downloadErrors": [],
+ "themes": [
+  {
+   "id": "deep-sea",
+   "name": "Deep Sea",
+   "source": "bundled",
+   "packVersion": 1,
+   "manifestVersion": null,
+   "sheet": "deep-sea.jpg",
+   "sheetScale": 1,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "hero-small",
+     "kind": "art",
+     "label": null,
+     "fit": "fit",
+     "background": "wallpaper",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": true,
+     "declaredPx": {
+      "w": 510,
+      "h": 510
+     },
+     "imagePx": {
+      "w": 510,
+      "h": 510
+     },
+     "transparent": true,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Art 1",
+       "widthPt": 31,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Art 2",
+       "widthPt": 34,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Art 2",
+       "widthPt": 34,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 510,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 1146
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "hero-medium",
+     "kind": "art",
+     "label": null,
+     "fit": "fit",
+     "background": "wallpaper",
+     "sizes": [
+      "medium",
+      "small",
+      "large"
+     ],
+     "derived": true,
+     "declaredPx": {
+      "w": 1092,
+      "h": 510
+     },
+     "imagePx": {
+      "w": 1092,
+      "h": 510
+     },
+     "transparent": true,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Art 3",
+       "widthPt": 35,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Art 1",
+       "widthPt": 31,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Art 3",
+       "widthPt": 35,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 510,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 10.2,
+        "y": 50.1,
+        "w": 149.6,
+        "h": 69.9
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "medium": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 10.2,
+        "w": 320.3,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "large": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 1146
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 116.2,
+        "w": 320.3,
+        "h": 149.6
+       },
+       "coverage": 0.34,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 34 % of the widget"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "hero-large",
+     "kind": "art",
+     "label": null,
+     "fit": "fit",
+     "background": "wallpaper",
+     "sizes": [
+      "large",
+      "small",
+      "medium"
+     ],
+     "derived": true,
+     "declaredPx": {
+      "w": 1092,
+      "h": 1146
+     },
+     "imagePx": {
+      "w": 1092,
+      "h": 1146
+     },
+     "transparent": true,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Art 2",
+       "widthPt": 34,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Art 3",
+       "widthPt": 35,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Art 1",
+       "widthPt": 31,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 510,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 13.7,
+        "y": 10.2,
+        "w": 142.6,
+        "h": 149.6
+       },
+       "coverage": 0.74,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 110.7,
+        "y": 10.2,
+        "w": 142.6,
+        "h": 149.6
+       },
+       "coverage": 0.34,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 34 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 1146
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 22.9,
+        "w": 320.3,
+        "h": 336.2
+       },
+       "coverage": 0.77,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "starry-night",
+   "name": "Starry Night",
+   "source": "bundled",
+   "packVersion": 1,
+   "manifestVersion": null,
+   "sheet": "starry-night.jpg",
+   "sheetScale": 1,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "hero-small",
+     "kind": "art",
+     "label": null,
+     "fit": "fit",
+     "background": "wallpaper",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": true,
+     "declaredPx": {
+      "w": 510,
+      "h": 510
+     },
+     "imagePx": {
+      "w": 510,
+      "h": 510
+     },
+     "transparent": true,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Art 1",
+       "widthPt": 31,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Art 2",
+       "widthPt": 34,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Art 2",
+       "widthPt": 34,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 510,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 1146
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "hero-medium",
+     "kind": "art",
+     "label": null,
+     "fit": "fit",
+     "background": "wallpaper",
+     "sizes": [
+      "medium",
+      "small",
+      "large"
+     ],
+     "derived": true,
+     "declaredPx": {
+      "w": 1092,
+      "h": 510
+     },
+     "imagePx": {
+      "w": 1092,
+      "h": 510
+     },
+     "transparent": true,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Art 3",
+       "widthPt": 35,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Art 1",
+       "widthPt": 31,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Art 3",
+       "widthPt": 35,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 510,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 10.2,
+        "y": 50.1,
+        "w": 149.6,
+        "h": 69.9
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "medium": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 10.2,
+        "w": 320.3,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "large": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 1146
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 116.2,
+        "w": 320.3,
+        "h": 149.6
+       },
+       "coverage": 0.34,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 34 % of the widget"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "hero-large",
+     "kind": "art",
+     "label": null,
+     "fit": "fit",
+     "background": "wallpaper",
+     "sizes": [
+      "large",
+      "small",
+      "medium"
+     ],
+     "derived": true,
+     "declaredPx": {
+      "w": 1092,
+      "h": 1146
+     },
+     "imagePx": {
+      "w": 1092,
+      "h": 1146
+     },
+     "transparent": true,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Art 2",
+       "widthPt": 34,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Art 3",
+       "widthPt": 35,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Art 1",
+       "widthPt": 31,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 510,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 13.7,
+        "y": 10.2,
+        "w": 142.6,
+        "h": 149.6
+       },
+       "coverage": 0.74,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 110.7,
+        "y": 10.2,
+        "w": 142.6,
+        "h": 149.6
+       },
+       "coverage": 0.34,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 34 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 1146
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 22.9,
+        "w": 320.3,
+        "h": 336.2
+       },
+       "coverage": 0.77,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sunset-dunes",
+   "name": "Sunset Dunes",
+   "source": "bundled",
+   "packVersion": 1,
+   "manifestVersion": null,
+   "sheet": "sunset-dunes.jpg",
+   "sheetScale": 1,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "hero-small",
+     "kind": "art",
+     "label": null,
+     "fit": "fit",
+     "background": "wallpaper",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": true,
+     "declaredPx": {
+      "w": 510,
+      "h": 510
+     },
+     "imagePx": {
+      "w": 510,
+      "h": 510
+     },
+     "transparent": true,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Art 1",
+       "widthPt": 31,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Art 2",
+       "widthPt": 34,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Art 2",
+       "widthPt": 34,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 510,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 1146
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "hero-medium",
+     "kind": "art",
+     "label": null,
+     "fit": "fit",
+     "background": "wallpaper",
+     "sizes": [
+      "medium",
+      "small",
+      "large"
+     ],
+     "derived": true,
+     "declaredPx": {
+      "w": 1092,
+      "h": 510
+     },
+     "imagePx": {
+      "w": 1092,
+      "h": 510
+     },
+     "transparent": true,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Art 3",
+       "widthPt": 35,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Art 1",
+       "widthPt": 31,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Art 3",
+       "widthPt": 35,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 510,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 10.2,
+        "y": 50.1,
+        "w": 149.6,
+        "h": 69.9
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "medium": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 10.2,
+        "w": 320.3,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "large": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 1146
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 116.2,
+        "w": 320.3,
+        "h": 149.6
+       },
+       "coverage": 0.34,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 34 % of the widget"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "hero-large",
+     "kind": "art",
+     "label": null,
+     "fit": "fit",
+     "background": "wallpaper",
+     "sizes": [
+      "large",
+      "small",
+      "medium"
+     ],
+     "derived": true,
+     "declaredPx": {
+      "w": 1092,
+      "h": 1146
+     },
+     "imagePx": {
+      "w": 1092,
+      "h": 1146
+     },
+     "transparent": true,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Art 2",
+       "widthPt": 34,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Art 3",
+       "widthPt": 35,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Art 1",
+       "widthPt": 31,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 510,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 13.7,
+        "y": 10.2,
+        "w": 142.6,
+        "h": 149.6
+       },
+       "coverage": 0.74,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 510
+       },
+       "artRectPt": {
+        "x": 110.7,
+        "y": 10.2,
+        "w": 142.6,
+        "h": 149.6
+       },
+       "coverage": 0.34,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 34 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "seamless",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": {
+        "x": 99,
+        "y": 282,
+        "w": 1092,
+        "h": 1146
+       },
+       "artRectPt": {
+        "x": 21.8,
+        "y": 22.9,
+        "w": 320.3,
+        "h": 336.2
+       },
+       "coverage": 0.77,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "alpine-starlight",
+   "name": "Alpine Starlight",
+   "source": "remote",
+   "packVersion": 2,
+   "manifestVersion": 2,
+   "sheet": "alpine-starlight.jpg",
+   "sheetScale": 0.65,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "constellation-clock",
+     "kind": "clock",
+     "label": "Constellation clock",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Constellation clock",
+       "widthPt": 179,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Constellation clock",
+       "widthPt": 179,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Constellation clock",
+       "widthPt": 179,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "copper-eclipse",
+     "kind": "art",
+     "label": "Copper eclipse",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Copper eclipse",
+       "widthPt": 106,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Copper eclipse",
+       "widthPt": 106,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Copper eclipse",
+       "widthPt": 106,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "jupiter-polar",
+     "kind": "art",
+     "label": "Jupiter polar",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Jupiter polar",
+       "widthPt": 89,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Jupiter polar",
+       "widthPt": 89,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Jupiter polar",
+       "widthPt": 89,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "saturn-rings",
+     "kind": "art",
+     "label": "Saturn rings",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Saturn rings",
+       "widthPt": 86,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Saturn rings",
+       "widthPt": 86,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Saturn rings",
+       "widthPt": 86,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "silver-moon",
+     "kind": "art",
+     "label": "Silver moon",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Silver moon",
+       "widthPt": 83,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Silver moon",
+       "widthPt": 83,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Silver moon",
+       "widthPt": 83,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "spiral-galaxy",
+     "kind": "art",
+     "label": "Spiral galaxy",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Spiral galaxy",
+       "widthPt": 90,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Spiral galaxy",
+       "widthPt": 90,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Spiral galaxy",
+       "widthPt": 90,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "cloud-atelier",
+   "name": "Cloud Atelier",
+   "source": "remote",
+   "packVersion": 2,
+   "manifestVersion": 2,
+   "sheet": "cloud-atelier.jpg",
+   "sheetScale": 0.8,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "cloud-date",
+     "kind": "calendar",
+     "label": "Cloud date",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Cloud date",
+       "widthPt": 122,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Cloud date",
+       "widthPt": 122,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Cloud date",
+       "widthPt": 122,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "cloud-whale",
+     "kind": "art",
+     "label": "Cloud whale",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Cloud whale",
+       "widthPt": 87,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Cloud whale",
+       "widthPt": 87,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Cloud whale",
+       "widthPt": 87,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "balloon-skiff",
+     "kind": "art",
+     "label": "Balloon skiff",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Balloon skiff",
+       "widthPt": 86,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Balloon skiff",
+       "widthPt": 86,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Balloon skiff",
+       "widthPt": 86,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "cloud-kite",
+     "kind": "art",
+     "label": "Cloud kite",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Cloud kite",
+       "widthPt": 71,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Cloud kite",
+       "widthPt": 71,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Cloud kite",
+       "widthPt": 71,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "paper-boat",
+     "kind": "art",
+     "label": "Paper boat",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Paper boat",
+       "widthPt": 76,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Paper boat",
+       "widthPt": 76,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Paper boat",
+       "widthPt": 76,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "desert-afterglow",
+   "name": "Desert Afterglow",
+   "source": "remote",
+   "packVersion": 2,
+   "manifestVersion": 2,
+   "sheet": "desert-afterglow.jpg",
+   "sheetScale": 0.65,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "dune-countdown",
+     "kind": "countdown",
+     "label": "Dune countdown",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Dune countdown",
+       "widthPt": 165,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Dune countdown",
+       "widthPt": 165,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Dune countdown",
+       "widthPt": 165,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "dunes-photo",
+     "kind": "photo",
+     "label": "Dunes photo",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Dunes photo",
+       "widthPt": 135,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Dunes photo",
+       "widthPt": 135,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Dunes photo",
+       "widthPt": 135,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "crescent-moon",
+     "kind": "art",
+     "label": "Crescent moon",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Crescent moon",
+       "widthPt": 107,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Crescent moon",
+       "widthPt": 107,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Crescent moon",
+       "widthPt": 107,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "desert-scarab",
+     "kind": "art",
+     "label": "Desert scarab",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Desert scarab",
+       "widthPt": 99,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Desert scarab",
+       "widthPt": 99,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Desert scarab",
+       "widthPt": 99,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "sandstone-arch",
+     "kind": "art",
+     "label": "Sandstone arch",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Sandstone arch",
+       "widthPt": 110,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Sandstone arch",
+       "widthPt": 110,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Sandstone arch",
+       "widthPt": 110,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "pyramid",
+     "kind": "art",
+     "label": "Pyramid",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Pyramid",
+       "widthPt": 58,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Pyramid",
+       "widthPt": 58,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Pyramid",
+       "widthPt": 58,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "solstice-seal",
+     "kind": "art",
+     "label": "Solstice seal",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Solstice seal",
+       "widthPt": 88,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Solstice seal",
+       "widthPt": 88,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Solstice seal",
+       "widthPt": 88,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "firefly-grove",
+   "name": "Firefly Grove",
+   "source": "remote",
+   "packVersion": 2,
+   "manifestVersion": 2,
+   "sheet": "firefly-grove.jpg",
+   "sheetScale": 0.5,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "acorn-habits",
+     "kind": "habits",
+     "label": "Acorn habits",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Acorn habits",
+       "widthPt": 135,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Acorn habits",
+       "widthPt": 135,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Acorn habits",
+       "widthPt": 135,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "firefly-jar",
+     "kind": "art",
+     "label": "Firefly jar",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Firefly jar",
+       "widthPt": 66,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Firefly jar",
+       "widthPt": 66,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Firefly jar",
+       "widthPt": 66,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "mosswood-door",
+     "kind": "art",
+     "label": "Mosswood door",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Mosswood door",
+       "widthPt": 114,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Mosswood door",
+       "widthPt": 114,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Mosswood door",
+       "widthPt": 114,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "mushroom-lantern",
+     "kind": "art",
+     "label": "Mushroom lantern",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Mushroom lantern",
+       "widthPt": 129,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Mushroom lantern",
+       "widthPt": 129,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Mushroom lantern",
+       "widthPt": 129,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "sleeping-fox",
+     "kind": "art",
+     "label": "Sleeping fox",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Sleeping fox",
+       "widthPt": 87,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Sleeping fox",
+       "widthPt": 87,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Sleeping fox",
+       "widthPt": 87,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "indigo-current",
+   "name": "Indigo Current",
+   "source": "remote",
+   "packVersion": 2,
+   "manifestVersion": 2,
+   "sheet": "indigo-current.jpg",
+   "sheetScale": 0.65,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "harbour-focus",
+     "kind": "art",
+     "label": "Harbour focus",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Harbour focus",
+       "widthPt": 101,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Harbour focus",
+       "widthPt": 101,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Harbour focus",
+       "widthPt": 101,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "ink-stingray",
+     "kind": "art",
+     "label": "Ink stingray",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Ink stingray",
+       "widthPt": 82,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Ink stingray",
+       "widthPt": 82,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Ink stingray",
+       "widthPt": 82,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "paper-lighthouse",
+     "kind": "art",
+     "label": "Paper lighthouse",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Paper lighthouse",
+       "widthPt": 119,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Paper lighthouse",
+       "widthPt": 119,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Paper lighthouse",
+       "widthPt": 119,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "ink-whale",
+     "kind": "art",
+     "label": "Ink whale",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Ink whale",
+       "widthPt": 67,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Ink whale",
+       "widthPt": 67,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Ink whale",
+       "widthPt": 67,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "paper-harbour",
+     "kind": "art",
+     "label": "Paper harbour",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Paper harbour",
+       "widthPt": 101,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Paper harbour",
+       "widthPt": 101,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Paper harbour",
+       "widthPt": 101,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "meadowglow",
+   "name": "Meadowglow",
+   "source": "remote",
+   "packVersion": 2,
+   "manifestVersion": 2,
+   "sheet": "meadowglow.jpg",
+   "sheetScale": 0.65,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "meadow-date",
+     "kind": "calendar",
+     "label": "Meadow date",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Meadow date",
+       "widthPt": 141,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Meadow date",
+       "widthPt": 141,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Meadow date",
+       "widthPt": 141,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "dew-daisy",
+     "kind": "art",
+     "label": "Dew daisy",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Dew daisy",
+       "widthPt": 73,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Dew daisy",
+       "widthPt": 73,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Dew daisy",
+       "widthPt": 73,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "dew-grass-orb",
+     "kind": "art",
+     "label": "Dew grass orb",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Dew grass orb",
+       "widthPt": 101,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Dew grass orb",
+       "widthPt": 101,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Dew grass orb",
+       "widthPt": 101,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "sunlit-dandelion",
+     "kind": "art",
+     "label": "Sunlit dandelion",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Sunlit dandelion",
+       "widthPt": 113,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Sunlit dandelion",
+       "widthPt": 113,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Sunlit dandelion",
+       "widthPt": 113,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "morning-grass",
+     "kind": "art",
+     "label": "Morning grass",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Morning grass",
+       "widthPt": 102,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Morning grass",
+       "widthPt": 102,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Morning grass",
+       "widthPt": 102,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "moonpatch",
+   "name": "Moonpatch",
+   "source": "remote",
+   "packVersion": 2,
+   "manifestVersion": 2,
+   "sheet": "moonpatch.jpg",
+   "sheetScale": 0.65,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "moonpatch-habits",
+     "kind": "habits",
+     "label": "Moonpatch habits",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Moonpatch habits",
+       "widthPt": 172,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Moonpatch habits",
+       "widthPt": 172,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Moonpatch habits",
+       "widthPt": 172,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "patchwork-kite",
+     "kind": "art",
+     "label": "Patchwork kite",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Patchwork kite",
+       "widthPt": 104,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Patchwork kite",
+       "widthPt": 104,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Patchwork kite",
+       "widthPt": 104,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "quilted-rocket",
+     "kind": "art",
+     "label": "Quilted rocket",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Quilted rocket",
+       "widthPt": 99,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Quilted rocket",
+       "widthPt": 99,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Quilted rocket",
+       "widthPt": 99,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "pocket-rocket",
+     "kind": "art",
+     "label": "Pocket rocket",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Pocket rocket",
+       "widthPt": 96,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Pocket rocket",
+       "widthPt": 96,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Pocket rocket",
+       "widthPt": 96,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "star-catcher",
+     "kind": "art",
+     "label": "Star catcher",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Star catcher",
+       "widthPt": 86,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Star catcher",
+       "widthPt": 86,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Star catcher",
+       "widthPt": 86,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "opal-abyss",
+   "name": "Opal Abyss",
+   "source": "remote",
+   "packVersion": 2,
+   "manifestVersion": 2,
+   "sheet": "opal-abyss.jpg",
+   "sheetScale": 0.5,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "abyss-battery",
+     "kind": "battery",
+     "label": "Abyss battery",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Abyss battery",
+       "widthPt": 98,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Abyss battery",
+       "widthPt": 98,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Abyss battery",
+       "widthPt": 98,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "droplet-lighthouse",
+     "kind": "art",
+     "label": "Droplet lighthouse",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Droplet lighthouse",
+       "widthPt": 129,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Droplet lighthouse",
+       "widthPt": 129,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Droplet lighthouse",
+       "widthPt": 129,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "moon-jelly-window",
+     "kind": "art",
+     "label": "Moon jelly window",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Moon jelly window",
+       "widthPt": 131,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Moon jelly window",
+       "widthPt": 131,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Moon jelly window",
+       "widthPt": 131,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "pearl-shell",
+     "kind": "art",
+     "label": "Pearl shell",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Pearl shell",
+       "widthPt": 73,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Pearl shell",
+       "widthPt": 73,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Pearl shell",
+       "widthPt": 73,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "nautilus",
+     "kind": "art",
+     "label": "Nautilus",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Nautilus",
+       "widthPt": 58,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Nautilus",
+       "widthPt": 58,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Nautilus",
+       "widthPt": 58,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "rainlight",
+   "name": "Rainlight",
+   "source": "remote",
+   "packVersion": 2,
+   "manifestVersion": 2,
+   "sheet": "rainlight.jpg",
+   "sheetScale": 0.65,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "rainlight-date",
+     "kind": "calendar",
+     "label": "Rainlight date",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Rainlight date",
+       "widthPt": 141,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Rainlight date",
+       "widthPt": 141,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Rainlight date",
+       "widthPt": 141,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "glass-umbrella",
+     "kind": "art",
+     "label": "Glass umbrella",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Glass umbrella",
+       "widthPt": 104,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Glass umbrella",
+       "widthPt": 104,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Glass umbrella",
+       "widthPt": 104,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "rain-leaf",
+     "kind": "art",
+     "label": "Rain leaf",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Rain leaf",
+       "widthPt": 60,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Rain leaf",
+       "widthPt": 60,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Rain leaf",
+       "widthPt": 60,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "koi",
+     "kind": "art",
+     "label": "Koi",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Koi",
+       "widthPt": 22,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Koi",
+       "widthPt": 22,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Koi",
+       "widthPt": 22,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "rosewater-reverie",
+   "name": "Rosewater Reverie",
+   "source": "remote",
+   "packVersion": 2,
+   "manifestVersion": 2,
+   "sheet": "rosewater-reverie.jpg",
+   "sheetScale": 0.65,
+   "wallpaper": {
+    "w": 1290,
+    "h": 2796
+   },
+   "manifestErrors": [],
+   "options": [
+    {
+     "id": "rehearsal-countdown",
+     "kind": "countdown",
+     "label": "Rehearsal countdown",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Rehearsal countdown",
+       "widthPt": 198,
+       "availablePt": 185,
+       "truncated": true
+      },
+      "medium": {
+       "text": "Rehearsal countdown",
+       "widthPt": 198,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Rehearsal countdown",
+       "widthPt": 198,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": [
+        {
+         "code": "textOverflow",
+         "severity": "warn",
+         "detail": "menu label \"Rehearsal countdown\" needs 198 pt of 185"
+        }
+       ]
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "bottled-ballet",
+     "kind": "art",
+     "label": "Bottled ballet",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Bottled ballet",
+       "widthPt": 92,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Bottled ballet",
+       "widthPt": 92,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Bottled ballet",
+       "widthPt": 92,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "glass-rose",
+     "kind": "art",
+     "label": "Glass rose",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Glass rose",
+       "widthPt": 74,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Glass rose",
+       "widthPt": 74,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Glass rose",
+       "widthPt": 74,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "pearl-ballet-brooch",
+     "kind": "art",
+     "label": "Pearl ballet brooch",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Pearl ballet brooch",
+       "widthPt": 132,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Pearl ballet brooch",
+       "widthPt": 132,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Pearl ballet brooch",
+       "widthPt": 132,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    },
+    {
+     "id": "satin-swan",
+     "kind": "art",
+     "label": "Satin swan",
+     "fit": "fit",
+     "background": "blur",
+     "sizes": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "derived": false,
+     "declaredPx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "imagePx": {
+      "w": 1024,
+      "h": 1024
+     },
+     "transparent": false,
+     "flags": [],
+     "menu": {
+      "small": {
+       "text": "Satin swan",
+       "widthPt": 77,
+       "availablePt": 185,
+       "truncated": false
+      },
+      "medium": {
+       "text": "Satin swan",
+       "widthPt": 77,
+       "availablePt": 390,
+       "truncated": false
+      },
+      "large": {
+       "text": "Satin swan",
+       "widthPt": 77,
+       "availablePt": 390,
+       "truncated": false
+      }
+     },
+     "cells": {
+      "small": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 510,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 10.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.77,
+       "flags": []
+      },
+      "medium": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 510
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 107.2,
+        "y": 10.2,
+        "w": 149.6,
+        "h": 149.6
+       },
+       "coverage": 0.36,
+       "flags": [
+        {
+         "code": "letterbox",
+         "severity": "info",
+         "detail": "art covers 36 % of the widget"
+        }
+       ]
+      },
+      "large": {
+       "offered": true,
+       "path": "widgetArt",
+       "mode": "fit",
+       "targetPx": {
+        "w": 1092,
+        "h": 1146
+       },
+       "crop": null,
+       "artRectPt": {
+        "x": 21.8,
+        "y": 30.8,
+        "w": 320.3,
+        "h": 320.3
+       },
+       "coverage": 0.74,
+       "flags": []
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "noArtThemes": [
+  "strawberry-dessert",
+  "cottage-garden",
+  "wildflower-meadow",
+  "celestial-night",
+  "moon-phase",
+  "whimsy-forest",
+  "romantic-lace",
+  "cloud-nine",
+  "seaside-shells",
+  "retro-diner",
+  "matcha-cafe",
+  "cherry-blossom",
+  "pumpkin-patch",
+  "candy-arcade",
+  "still-water",
+  "sakura-sprint",
+  "little-ghosts",
+  "night-drive",
+  "pixel-party",
+  "little-acre",
+  "midnight-munchers",
+  "cape-and-bolt",
+  "storybook-castle",
+  "woodland-friends"
+ ],
+ "noArtPackThemes": [
+  "space-webb/space-pillars",
+  "space-webb/space-cosmic-cliffs",
+  "space-webb/space-tarantula",
+  "space-webb/space-cas-a",
+  "space-webb/space-cas-a-infrared",
+  "space-webb/space-rho-ophiuchi",
+  "space-webb/space-cartwheel",
+  "space-webb/space-pillars-infrared"
+ ],
+ "summary": {
+  "themes": 13,
+  "options": 61,
+  "flags": {
+   "letterbox": 64,
+   "textOverflow": 1
+  }
+ }
+}

@@ -83,6 +83,7 @@ test('the Save button never hides: Saved to Photos ✓ plus Save again', () => {
 test('theme page steps', () => {
   assert.equal(themeStepOf('wallpaper'), 'wallpaper');
   assert.equal(themeStepOf('icons'), 'icons');
+  assert.equal(themeStepOf('widgets'), 'widgets');
   assert.equal(themeStepOf(undefined), 'overview');
   assert.equal(themeStepOf(['icons']), 'overview');
 });
@@ -130,7 +131,8 @@ test('T185 theme page: one "Use this theme" button and three separate entry poin
   assert.match(d, /openPart\('wallpaper'\)/);
   assert.match(d, /openPart\('icons'\)/);
   assert.match(d, /openPart\('widgets'\)/);
-  assert.match(d, /pathname: '\/widget-studio', params: \{ theme: theme\.id \}/);
+  // T201: Widgets is the theme page's own widgets step (not Widget Studio directly).
+  assert.doesNotMatch(d, /pathname: '\/widget-studio', params: \{ theme: theme\.id \} \}\)/);
   assert.match(d, /pathname: '\/theme\/\[id\]', params: \{ id: theme\.id, step: part \}/);
   // The one continuous Apply run is gone.
   assert.doesNotMatch(d, /CHECKLIST_ROWS|openSteps|checklistOpen/);

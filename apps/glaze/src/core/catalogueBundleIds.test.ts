@@ -1,7 +1,7 @@
 // T183 (owner 1 Nov): home-screen icons must open apps with no Safari hop. Guards: every catalogue
 // bundle id is a well-formed, unique reverse-DNS id (null only when not known for certain, never
 // guessed), every URL scheme is well-formed, the schemes Safari rejected on the owner's iPhone are
-// gone, and the install default is the guided Shortcuts method with the "Open App" action.
+// gone, and the Shortcuts path (now the fallback, T202) uses the "Open App" action.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -74,14 +74,16 @@ test('entryFromRow (shared with other catalogue data files) keeps bundleId and d
   assert.ok(Object.isFrozen(e));
 });
 
-test('install default is the guided Shortcuts method with the Open App action', () => {
-  assert.equal(DEFAULT_INSTALL_METHOD, 'shortcuts');
-  assert.equal(defaultInstallState().choice, 'shortcuts');
+test('T202: install default is the profile; the Shortcuts fallback uses the Open App action', () => {
+  assert.equal(DEFAULT_INSTALL_METHOD, 'bulk');
+  assert.equal(defaultInstallState().choice, 'bulk');
   assert.equal(SHORTCUT_ACTION, 'Open App');
   const opts = { profileEnabled: true, profileCount: 10 };
-  assert.equal(availableMethods(opts)[0], 'shortcuts');
-  assert.equal(recommendedMethod(opts), 'shortcuts');
-  assert.equal(effectiveChoice(defaultInstallState().choice, opts, false), 'shortcuts');
+  assert.equal(availableMethods(opts)[0], 'bulk');
+  assert.equal(recommendedMethod(opts), 'bulk');
+  assert.equal(effectiveChoice(defaultInstallState().choice, opts, false), 'bulk');
+  // Apps without a link still go through Shortcuts.
+  assert.equal(effectiveChoice(defaultInstallState().choice, { profileEnabled: true, profileCount: 0 }, false), 'shortcuts');
   const steps = shortcutSteps('Instagram', 'instagram://').join('\n');
   assert.match(steps, /"Open App"/);
   assert.doesNotMatch(steps, /Open URL|instagram:\/\//);
@@ -89,5 +91,6 @@ test('install default is the guided Shortcuts method with the Open App action', 
   const screen = readFileSync(new URL('../../app/install.tsx', import.meta.url), 'utf8');
   assert.ok(!screen.includes('install.steps.addOpenUrl') && !screen.includes('install.steps.pasteUrl'));
   assert.ok(screen.includes("t('install.steps.addOpenApp')"));
-  assert.ok(screen.includes("t('install.method.bulkWarning')"), 'the Bulk warning is on screen');
+  // T202: the Safari tap is stated plainly, with the count computed from the data.
+  assert.ok(screen.includes("t('install.method.safariTapAll'"), 'the Safari-tap line is on screen');
 });

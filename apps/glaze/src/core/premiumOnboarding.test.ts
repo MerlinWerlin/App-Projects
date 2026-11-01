@@ -1,5 +1,5 @@
 // T173 premium UI, onboarding slice (docs/PREMIUM_UI.md §3.1): the Prism intro hands over to the Themes tab with no
-// colour jump, and the Themes first screen shows title, category bubbles and one editorial section start, with nothing
+// blank frame (T199: a dark full-screen scene that fades over the app), and the Themes first screen shows title, category bubbles and one editorial section start, with nothing
 // else competing above it. Source guards (the screens are React Native, so they are read as text).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -13,20 +13,23 @@ const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
 /** Drop line and block comments so a comment never satisfies (or trips) a guard. */
 const strip = (s: string) => s.replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
 
-test('intro background is the app bg token in light and dark (no copy of the hex)', () => {
+test('intro background is the dark app bg token in both appearances; the app keeps its own bg (T199)', () => {
+  // T199 (owner-1101d #2): the intro is a full-screen dark scene in light and dark. It reads the dark `bg` token (no
+  // copy of the hex) and the native splash uses the same colour, so the hand-over has no flash.
+  assert.equal(BRAND.introBg, darkV2.bg);
   assert.equal(BRAND.light.bg, lightV2.bg);
   assert.equal(BRAND.dark.bg, darkV2.bg);
   const core = strip(read('src', 'core', 'introGlaze.ts'));
+  assert.match(core, /introBg: darkV2\.bg/);
   assert.match(core, /bg: lightV2\.bg/);
-  assert.match(core, /bg: darkV2\.bg/);
 });
 
-test('intro last frame and Themes read the same token from the same scheme', () => {
+test('intro sits on the dark bg token and fades over the app, which paints its own scheme token underneath', () => {
   const intro = strip(read('src', 'ui', 'IntroGlaze.tsx'));
   assert.match(intro, /import \{ paletteFor \} from '\.\.\/theme\/tokensV2'/);
-  assert.match(intro, /const bg = paletteFor\(scheme\)\.bg;/);
+  assert.match(intro, /const bg = paletteFor\('dark'\)\.bg;/);
   assert.match(intro, /StyleSheet\.absoluteFill, styles\.host, \{ backgroundColor: bg, opacity: fade \}/);
-  assert.doesNotMatch(intro, /backgroundColor: c\.bg/, 'the host no longer reads the brand copy');
+  assert.doesNotMatch(intro, /backgroundColor: c\.bg/, 'the host does not read a brand copy');
 
   // useColorsV2 is paletteFor(system scheme); the intro's `dark` comes from that same hook.
   const hook = read('src', 'theme', 'useTokens.ts');
@@ -40,10 +43,10 @@ test('intro last frame and Themes read the same token from the same scheme', () 
   assert.match(strip(read('app', 'index.tsx')), /backgroundColor: c\.bg/);
   assert.match(strip(read('app', '(tabs)', 'themes.tsx')), /<View style=\{\[styles\.root, \{ backgroundColor: c\.bg \}\]\}>/);
 
-  // The native splash is the same colour too (app.json, built by expo-splash-screen).
+  // The native splash is the intro's first frame: the dark bg in both appearances (app.json, expo-splash-screen).
   const splash = JSON.parse(read('app.json')).expo.plugins.find((p: unknown) => Array.isArray(p) && p[0] === 'expo-splash-screen')?.[1];
   assert.ok(splash, 'expo-splash-screen plugin config');
-  assert.equal(splash.backgroundColor, lightV2.bg);
+  assert.equal(splash.backgroundColor, darkV2.bg);
   assert.equal(splash.dark.backgroundColor, darkV2.bg);
 });
 

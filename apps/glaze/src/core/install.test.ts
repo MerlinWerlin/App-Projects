@@ -240,8 +240,8 @@ test('install state round-trips and repairs bad input', () => {
     shortcutsDone: ['m', null, 'm'],
     choice: 'teleport',
   });
-  // T183: the default (and the repaired value) is Shortcuts / Open App.
-  assert.deepEqual(repaired, { profileSteps: { a: ['x'] }, shortcutsDone: ['m'], choice: 'shortcuts' });
+  // T202: the default (and the repaired value) is Install all at once (was Shortcuts under T183).
+  assert.deepEqual(repaired, { profileSteps: { a: ['x'] }, shortcutsDone: ['m'], choice: 'bulk' });
   assert.equal(sanitizeInstallState({ choiceEpoch: 2 }).choiceEpoch, 2);
   assert.equal('choiceEpoch' in sanitizeInstallState({ choiceEpoch: 'x' }), false);
   assert.deepEqual(sanitizeInstallState([1, 2]), defaultInstallState());
