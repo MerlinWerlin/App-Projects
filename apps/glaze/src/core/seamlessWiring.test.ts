@@ -20,7 +20,7 @@ test('theme detail imports the Seamless preview and controls', () => {
 test('the Seamless card shows for art-pack themes only', () => {
   // T168: remote art packs pass their downloaded wallpaper / hero files too.
   // T201: on the theme's Widgets step (after its widget art), not the overview.
-  assert.match(detail, /\{step === 'widgets' && artPack \? <SeamlessCard artPackId=\{artPack\.artPack\.id\} theme=\{theme\} wallpaperUri=\{remoteWallpaperUri\} heroUris=\{remoteHeroUris\} \/> : null\}/);
+  assert.match(detail, /\{step === 'widgets' && artPack \? <SeamlessCard artPackId=\{artPack\.artPack\.id\} theme=\{theme\} wallpaperUri=\{remoteWallpaperUri\} heroUris=\{remoteHeroUris\} remoteHeroSizes=\{remoteHeroSizes\} \/> : null\}/);
   assert.equal((detail.match(/<SeamlessCard\b/g) ?? []).length, 1);
 });
 

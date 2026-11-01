@@ -64,6 +64,12 @@ export type WidgetOption = {
   height: number;
   /** True when the option was derived from v1 fields (not written in the pack). */
   derived: boolean;
+  /**
+   * T206: the pack says this practical piece has NO value drawn in (no date, count, time, level), so
+   * it can be presented as a practical widget. Absent / false: a clock, date, calendar, countdown,
+   * habits or battery picture is treated as art (its numbers would never change). See fixedValues.
+   */
+  numberFree?: boolean;
 };
 
 /** The asset fields the options need. */
@@ -122,6 +128,7 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
       }
       label = o.label.trim();
     }
+    if (o.numberFree !== undefined && typeof o.numberFree !== 'boolean') return void errors.push(`${at} (${o.id}): bad numberFree`);
     ids.add(o.id);
     options.push({
       id: o.id,
@@ -134,6 +141,7 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
       width: asset.width,
       height: asset.height,
       derived: false,
+      ...(o.numberFree === true ? { numberFree: true } : {}),
     });
   });
   return { options, errors };
@@ -292,6 +300,55 @@ export function isPracticalKind(kind: WidgetOptionKind): boolean {
   return kind !== 'art';
 }
 
+// ------------------------------------------------------------------ fixed values (T206)
+
+/**
+ * T206 (run 208 snapshot review): kinds whose picture shows a value (a date, a time, a count, a
+ * level). Pack art for them has the value painted in ('29 THU OCT', '14 DAYS', '3/5', '78%', fixed
+ * clock hands) and the widget only shows the picture, so the value never changes.
+ */
+export const VALUE_KINDS: readonly WidgetOptionKind[] = Object.freeze(['clock', 'date', 'calendar', 'countdown', 'habits', 'battery'] as WidgetOptionKind[]);
+
+/**
+ * True when the option's picture has a value baked in that will never update: a value kind the
+ * pack has not marked `numberFree`. Such a piece is presented as art (shelfKind), with no "Live"
+ * badge; its live counterpart in Widget Studio is offered as a separate widget.
+ */
+export function fixedValues(option: Pick<WidgetOption, 'kind' | 'numberFree'>): boolean {
+  return VALUE_KINDS.includes(option.kind) && option.numberFree !== true;
+}
+
+/** The kind an option is shown under: `art` for a picture with fixed values (fixedValues), else its own kind. */
+export function shelfKind(option: Pick<WidgetOption, 'kind' | 'numberFree'>): WidgetOptionKind {
+  return fixedValues(option) ? 'art' : option.kind;
+}
+
+/** True when the menu card may carry the "Live" badge: the piece itself can be a live widget. */
+export function showsLiveBadge(option: Pick<WidgetOption, 'kind' | 'numberFree'>): boolean {
+  return liveKindOf(shelfKind(option)) !== null;
+}
+
+// ------------------------------------------------------------------ menu names (T209)
+
+/** i18n key of a derived v1 piece's name (tabs.widgetsTab.art.heroNames.<size>). */
+export function heroNameKey(size: HomeOptionSize): string {
+  return `tabs.widgetsTab.art.heroNames.${size}`;
+}
+
+/**
+ * T209 (run 208 sheets showed "Art 1, Art 3, Art 2" and the same piece numbered differently per
+ * size): the menu name of an option, the same in every size. The pack's label; else a derived v1
+ * piece is named after its shape (heroNameKey); else "Art n" with n its place in the pack (stable).
+ */
+export type OptionName = { text: string } | { key: string; params?: Record<string, number> };
+export function optionName(option: WidgetOption, options: readonly WidgetOption[]): OptionName {
+  if (option.label) return { text: option.label };
+  const hero = /^hero-(small|medium|large)$/.exec(option.id);
+  if (option.derived && hero) return { key: heroNameKey(hero[1] as HomeOptionSize) };
+  const i = options.findIndex((o) => o.id === option.id);
+  return { key: 'tabs.widgetsTab.art.numbered', params: { n: (i < 0 ? 0 : i) + 1 } };
+}
+
 /**
  * The three groups of every widgets screen (theme page > Widgets and the Widgets tab), in order:
  * (a) practical theme-matched pieces (Make it live where possible), (b) the theme's art pieces,
@@ -312,8 +369,9 @@ export type WidgetShelfBlock<S> =
  */
 export function widgetShelf<S = never>(options: readonly WidgetOption[], size: WidgetOptionSize, standard: readonly S[] = []): WidgetShelfBlock<S>[] {
   const list = optionsForSize(options, size);
-  const sections = PRACTICAL_KINDS.map((kind) => ({ kind, options: list.filter((o) => o.kind === kind) })).filter((s) => s.options.length > 0);
-  const art = list.filter((o) => o.kind === 'art');
+  // T206: a picture with fixed values (fixedValues) is shown with the art, not as a practical piece.
+  const sections = PRACTICAL_KINDS.map((kind) => ({ kind, options: list.filter((o) => shelfKind(o) === kind) })).filter((s) => s.options.length > 0);
+  const art = list.filter((o) => shelfKind(o) === 'art');
   const out: WidgetShelfBlock<S>[] = [];
   for (const group of WIDGET_SHELF_ORDER) {
     if (group === 'practical' && sections.length > 0) out.push({ group, sections });

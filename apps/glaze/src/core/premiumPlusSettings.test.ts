@@ -175,3 +175,40 @@ test('D211-1: the Plus sheet promises no gallery themes it no longer has (no cou
   assert.match(en, /themes: 'More Plus themes are on the way'/);
   assert.match(en, /freeThemes: 'Every theme in the gallery and the wallpaper maker'/);
 });
+
+// ---- T210: Settings after the owner-1101d brief (Install all at once main, Clean up old icons). ----
+
+test('T210: Settings › Help opens Clean up old icons (same strings as the Icons tab row)', () => {
+  const s = strip(read(...SETTINGS));
+  const help = s.slice(s.indexOf("<InsetGroup title={t('settings.help.title')}>"), s.indexOf('</InsetGroup>', s.indexOf("t('settings.help.title')")));
+  assert.ok(help.length > 0);
+  const row = help.slice(help.indexOf("title={t('install.cleanup.title')}") - 80, help.indexOf("router.push('/icons-cleanup')") + 40);
+  assert.ok(row.includes('icon="trash-2"') && row.includes('iconTone='), 'pastel circle row icon');
+  assert.ok(row.includes("subtitle={t('install.cleanup.rowSubtitle')}"));
+  assert.ok(row.includes("accessibilityHint={t('install.cleanup.openHint')}"));
+  assert.ok(help.indexOf("t('settings.help.howIcons')") < help.indexOf("t('install.cleanup.title')"), 'right after How icons work');
+});
+
+test('T210: the How icons work sheet tells the post-T202 truth: Install all at once is the main way', () => {
+  for (const loc of LOCALES) {
+    const src = read('src', 'i18n', 'ns', 'settings', `${loc}.ts`);
+    const ways = /\n {4}waysBody: '([^']+)',/.exec(src)?.[1] ?? '';
+    assert.ok(ways.length > 0, `${loc}: waysBody`);
+    assert.ok(ways.includes('Safari') && ways.includes('iOS'), `${loc}: names the Safari tap and the iOS limit`);
+    assert.doesNotMatch(ways, /beta|recommended|empfohlen|recomendado|recommandé|consigliato|おすすめ|권장|推荐|सुझाया|موصى/i, `${loc}: no stale "Shortcuts recommended / Bulk beta"`);
+  }
+  const en = read('src', 'i18n', 'ns', 'settings', 'en.ts');
+  assert.match(en, /waysBody: 'Install all at once \(the main way\): one profile adds every icon/);
+  assert.match(en, /replaces the old icons/);
+  assert.match(en, /Shortcuts \(one icon at a time\): each icon uses the “Open App” action/);
+});
+
+test('T210: the sheet shows the removal steps as one numbered sequence on a soft well', () => {
+  const s = strip(read(...SETTINGS));
+  assert.match(s, /<View style=\{\[styles\.stepsWell, continuous, \{ backgroundColor: c\.fill \}\]\}>/);
+  assert.match(s, /<View style=\{\[styles\.stepDot, \{ backgroundColor: c\.tint \}\]\}>/);
+  assert.match(s, /\{formatNumber\(i \+ 1\)\}/);
+  assert.match(s, /accessibilityLabel=\{\[t\('settings\.explainer\.stepNumber', \{ number: i \+ 1 \}\), t\(step\)\]\.join\(' '\)\}/, 'each step is one VoiceOver line');
+  assert.match(s, /stepDot: \{[^}]*borderRadius: circleRadius\(sizeV2\.rowIcon\)/);
+  assert.doesNotMatch(s, /hairlineWidth|borderTopWidth/, 'no ruled lines in Settings');
+});

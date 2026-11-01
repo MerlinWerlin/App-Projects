@@ -25,6 +25,11 @@ private let habitWidgetKinds = ["GlazeHabitWater", "GlazeHabitMood", "GlazeHabit
 /// T146: written by the widget extension on every theme load (targets/widget/ThemeStore.swift,
 /// src/core/widgetLink.ts WIDGET_LAST_READ_KEY); the app only reads it.
 private let lastReadKey = "glaze.widget.lastRead.v1"
+/// T221 "My widget art" library (src/core/widgetArtLibrary.ts WIDGET_ART_DIR / WIDGET_ART_INDEX_FILE /
+/// WIDGET_ART_SOURCES; read by targets/widget/WidgetArtLibrary.swift).
+private let artDir = "widget-art"
+private let artIndexFile = "index.json"
+private let artSourceFiles: Set<String> = ["seamless-small.png", "seamless-medium.png", "seamless-large.png", "widget-photo.jpg"]
 
 public class GlazeWidgetBridgeModule: Module {
   public func definition() -> ModuleDefinition {
@@ -191,7 +196,13 @@ public class GlazeWidgetBridgeModule: Module {
           base.withAlphaComponent(0.25).setFill()
           ctx.fill(CGRect(origin: .zero, size: target))
         }
-        if fit == "fill" {
+        // T223: edge to edge only when the REAL art already has the output's aspect (within 2 %,
+        // src/core/widgetPreview.ts NATIVE_FILL_MIN_ASPECT_MATCH); a pack whose declared size is
+        // wrong gets the art fitted below instead, never stretched or cropped.
+        let artAspect = art.size.width / art.size.height
+        let outAspect = target.width / target.height
+        let aspectsMatch = min(artAspect, outAspect) / max(artAspect, outAspect) >= 0.98
+        if fit == "fill" && aspectsMatch {
           art.draw(in: CGRect(origin: .zero, size: target))
         } else {
           let pad = min(target.width, target.height) * 0.06
@@ -241,6 +252,78 @@ public class GlazeWidgetBridgeModule: Module {
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }
+
+    /// T221 "My widget art": copies one App Group file the bridge just wrote (seamless-<size>.png
+    /// from setWidgetArt / setSeamless, or widget-photo.jpg from setPhoto) into widget-art/<id>.jpg,
+    /// so applying a new piece ADDS to the library instead of only overwriting the per-size image.
+    /// The app then writes the index (setWidgetArtIndex), which reloads the timelines.
+    AsyncFunction("saveWidgetArtPiece") { (id: String, from: String) -> Bool in
+      guard GlazeWidgetBridgeModule.validArtId(id), artSourceFiles.contains(from) else { return false }
+      guard
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
+        let image = UIImage(contentsOfFile: container.appendingPathComponent(from).path)
+      else { return false }
+      let dir = container.appendingPathComponent(artDir, isDirectory: true)
+      do {
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+      } catch {
+        return false
+      }
+      let scaled = GlazeWidgetBridgeModule.downscale(image, maxEdge: 1200)
+      guard let data = scaled.jpegData(compressionQuality: 0.88) else { return false }
+      do {
+        try data.write(to: dir.appendingPathComponent("\(id).jpg"), options: .atomic)
+      } catch {
+        return false
+      }
+      return true
+    }
+
+    /// T221: { index: widget-art/index.json as stored ("" when missing), dir: file URL of widget-art/
+    /// ("" when the container is missing) }. Read-only.
+    AsyncFunction("getWidgetArtLibrary") { () -> [String: String] in
+      guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
+        return ["index": "", "dir": ""]
+      }
+      let dir = container.appendingPathComponent(artDir, isDirectory: true)
+      let raw = (try? String(contentsOf: dir.appendingPathComponent(artIndexFile), encoding: .utf8)) ?? ""
+      return ["index": raw, "dir": dir.absoluteString]
+    }
+
+    /// T221: writes widget-art/index.json (built in JS by src/core/widgetArtLibrary.ts), deletes every
+    /// file in widget-art/ the index no longer lists (removed or over the cap), then reloads all
+    /// timelines so widgets showing a removed piece fall back to the last applied image.
+    AsyncFunction("setWidgetArtIndex") { (json: String) -> Bool in
+      guard
+        let data = json.data(using: .utf8), data.count < 256 * 1024,
+        let payload = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+        payload["v"] as? Int == 1,
+        let pieces = payload["pieces"] as? [[String: Any]],
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)
+      else { return false }
+      let dir = container.appendingPathComponent(artDir, isDirectory: true)
+      do {
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        try data.write(to: dir.appendingPathComponent(artIndexFile), options: .atomic)
+      } catch {
+        return false
+      }
+      var keep = Set<String>([artIndexFile])
+      for p in pieces {
+        if let id = p["id"] as? String, GlazeWidgetBridgeModule.validArtId(id) { keep.insert("\(id).jpg") }
+      }
+      let names = (try? FileManager.default.contentsOfDirectory(atPath: dir.path)) ?? []
+      for name in names where !keep.contains(name) {
+        try? FileManager.default.removeItem(at: dir.appendingPathComponent(name))
+      }
+      GlazeWidgetBridgeModule.reloadWidgets()
+      return true
+    }
+  }
+
+  /// T221: same rule as WIDGET_ART_ID_RE in src/core/widgetArtLibrary.ts (^[A-Za-z0-9_-]{1,64}$).
+  private static func validArtId(_ id: String) -> Bool {
+    return id.range(of: "^[A-Za-z0-9_-]{1,64}$", options: .regularExpression) != nil
   }
 
   private static func reloadWidgets() {

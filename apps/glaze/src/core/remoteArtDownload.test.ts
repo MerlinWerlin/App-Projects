@@ -222,7 +222,8 @@ test('remote art pack: downloads only this phone’s files, verifies, writes the
   const entry = remoteArtCacheEntry(r.manifest, new Date('2026-10-30T10:00:00Z'));
   const index = parseCacheIndex(JSON.stringify(cacheIndexAdd(EMPTY_CACHE_INDEX, entry)));
   assert.equal(isPackDownloaded(index, ID), true);
-  assert.deepEqual(index.packs[0], { id: ID, name: 'Deep Blue', version: 1, bytes: 5000, themeIds: [ID], downloadedAt: '2026-10-30T10:00:00.000Z' });
+  // T222: the entry also records the pack's packVersion (so a newer catalogue version updates it).
+  assert.deepEqual(index.packs[0], { id: ID, name: 'Deep Blue', version: 1, packVersion: 1, bytes: 5000, themeIds: [ID], downloadedAt: '2026-10-30T10:00:00.000Z' });
 
   // Again: only the manifest is fetched.
   requests.length = 0;

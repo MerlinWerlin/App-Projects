@@ -167,6 +167,17 @@ export const de: NonNullable<LocaleMessages['theme']> = {
     readyA11y: 'Das Paket {pack} ist geladen',
     size: 'Größe: {size}',
   },
+  // T222: a newer version of a downloaded pack (theme page note, src/ui/PackUpdateNote.tsx).
+  update: {
+    title: 'Update verfügbar',
+    pending: 'Eine neue Version des Pakets {pack} mit mehr Widget-Bildern ist bereit. Sie lädt von selbst; deine aktuellen Bilder funktionieren bis dahin weiter.',
+    failed: 'Das Paket {pack} wurde nicht aktualisiert. Deine aktuellen Bilder funktionieren weiter.',
+    cta: 'Jetzt aktualisieren',
+    retry: 'Erneut versuchen',
+    hint: 'Lädt die neue Version dieses Pakets',
+    updating: 'Paket {pack} wird aktualisiert',
+    doneA11y: 'Das Paket {pack} ist aktuell',
+  },
   // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
   remote: {
     heroPreview: 'Vorschau des Motivs. Lade es für das Hintergrundbild in voller Größe.',

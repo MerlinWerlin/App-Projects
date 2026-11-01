@@ -30,7 +30,7 @@ export const ja: NonNullable<LocaleMessages['tips']> = {
     wallpaper: '壁紙メーカー',
     icons: 'アイコンタブ',
     install: 'アイコンをインストール',
-    live: 'Live タブ',
+    live: 'ライブフォトメーカー',
     shapes: 'アイコンの形の設定',
     override: 'アイコンタブ',
     addApp: 'アイコンタブ',
@@ -46,7 +46,7 @@ export const ja: NonNullable<LocaleMessages['tips']> = {
     },
     liveLock: {
       title: 'Live Photos を作る',
-      body: 'Live タブでビデオを Live Photos に変換します。写真アプリでは動きますが、壁紙にすると iPhone では静止したままになることがよくあります。',
+      body: '壁紙のライブフォトメーカーでビデオを Live Photos に変換します。写真アプリでは動きますが、壁紙にすると iPhone では静止したままになることがよくあります。',
     },
     themePick: {
       title: 'テーマから始めよう',

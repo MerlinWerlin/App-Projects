@@ -27,6 +27,8 @@ export const ja: NonNullable<LocaleMessages['install']> = {
     },
     cantReplace: 'iOSではAppアイコンを置き換えられません。Appを開く新しいアイコンを追加し、元のアイコンはAppライブラリに移ります。',
     more: '+{count}',
+    // T210: eyebrow over the summary heading.
+    eyebrow: 'あなたのアイコンセット',
   },
   state: {
     loadError: 'アイコンセットを読み込めませんでした。',
@@ -37,7 +39,10 @@ export const ja: NonNullable<LocaleMessages['install']> = {
   },
   method: {
     heading: 'インストール方法',
-    bulk: '一括インストール',
+    // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
+    bulk: 'すべてまとめてインストール',
+    // T210: eyebrow over the Install all at once heading.
+    bulkEyebrow: 'すばやい方法',
     bulkBody: { other: '1つのプロファイルで{count}個のアイコンをまとめて追加。約2分で完了します。' },
     a11yNoBadge: '{title}。{body}',
     shortcutsOnly: 'Glaze はショートカット App の「Appを開く」アクションでアイコンを追加します。アイコンは App をすぐに開き、Safari も「“…”で開きますか？」の確認もありません。App ごとに1つ、1つあたり約1分です。どの App でも使えます。',
@@ -64,7 +69,6 @@ export const ja: NonNullable<LocaleMessages['install']> = {
     noSharing: 'このデバイスでは共有が使えないため、プロファイルを“ファイル”に保存できません。',
     noIcons: 'プロファイル用のアイコンを描画できませんでした。',
     cleared: 'プロファイルファイルがキャッシュから削除されました。もう一度「プロファイルを作成」をタップしてください。',
-    copyFailed: 'コピーできませんでした。リンクのテキストを選択して手動でコピーしてください。',
     noShortcutsApp: 'ショートカットAppがインストールされていません。App Storeから無料で入手してから戻ってください。',
   },
   shortcuts: {
@@ -91,10 +95,6 @@ export const ja: NonNullable<LocaleMessages['install']> = {
     saveOne: '{app} のアイコンを写真に保存',
     showSteps: '{app}の手順を表示',
     hideSteps: '{app}の手順を隠す',
-    copy: 'コピー',
-    copied: 'コピーしました',
-    copyLink: '{app}のリンクをコピー {url}',
-    linkCopied: '{app}のリンクをコピーしました',
     undo: {
       title: 'あとで元に戻すには',
       removeIcon: '新しいアイコンを消すには、長押しして「取り除く」(または「ブックマークを削除」)をタップし、確認します。消えるのはそのアイコンだけです。',
@@ -104,8 +104,6 @@ export const ja: NonNullable<LocaleMessages['install']> = {
   },
   steps: {
     openShortcuts: 'ショートカットAppを開き、右上の＋をタップします。',
-    addOpenUrl: '「アクションを追加」をタップし、「URLを開く」を検索してタップします。',
-    pasteUrl: '「URL」をタップし、{url}をペーストします（上の「コピー」を使用）。',
     addOpenApp: '「アクションを追加」をタップし、「Appを開く」を検索してタップします。',
     chooseApp: '「App」をタップし、リストから{name}を選びます。',
     rename: '上部の名前をタップし、「名称変更」を選んで{name}と入力します。',

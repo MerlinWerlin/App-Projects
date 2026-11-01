@@ -44,6 +44,8 @@ export const en = {
     },
     cantReplace: 'iOS can’t replace app icons. These add new icons that open your apps; the originals move to the App Library.',
     more: '+{count}',
+    // T210: eyebrow over the summary heading.
+    eyebrow: 'Your icon set',
   },
   state: {
     loadError: 'Your icon set could not be loaded.',
@@ -55,6 +57,8 @@ export const en = {
   method: {
     heading: 'How to install',
     bulk: 'Install all at once',
+    // T210: eyebrow over the Install all at once heading.
+    bulkEyebrow: 'The quick way',
     bulkBody: {
       one: 'One profile adds {count} icon at once, through Safari, then Settings.',
       other: 'One profile adds {count} icons at once, through Safari, then Settings.',
@@ -84,7 +88,6 @@ export const en = {
     noSharing: 'Sharing is not available on this device, so the profile cannot be saved to Files.',
     noIcons: 'No icons could be drawn for the profile.',
     cleared: 'The profile file was cleared from the cache. Tap Generate profile again.',
-    copyFailed: 'Could not copy. Select the link text and copy it by hand.',
     noShortcutsApp: 'The Shortcuts app is not installed. Get it free from the App Store, then come back.',
   },
   shortcuts: {
@@ -115,10 +118,6 @@ export const en = {
     saveOne: 'Save the {app} icon to Photos',
     showSteps: 'Show steps for {app}',
     hideSteps: 'Hide steps for {app}',
-    copy: 'Copy',
-    copied: 'Copied',
-    copyLink: 'Copy {app} link {url}',
-    linkCopied: '{app} link copied',
     undo: {
       title: 'To undo later',
       removeIcon: 'To remove a new icon, touch and hold it, tap Remove (or Delete Bookmark) and confirm. Only that icon goes away.',
@@ -128,8 +127,6 @@ export const en = {
   },
   steps: {
     openShortcuts: 'Open the Shortcuts app and tap + (top right).',
-    addOpenUrl: 'Tap Add Action, search for “Open URL” and tap it.',
-    pasteUrl: 'Tap “URL” and paste {url} (use Copy above).',
     addOpenApp: 'Tap Add Action, search for “Open App” and tap it.',
     chooseApp: 'Tap “App” and choose {name} from the list.',
     rename: 'Tap the name at the top, choose Rename and type {name}.',

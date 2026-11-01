@@ -49,10 +49,13 @@ test('fill is used only when the declared aspect matches, and a stretch is an er
   assert.deepEqual(codes(ok), ['fill']);
   const square = snapshotPlan({ option: opt({ fit: 'fill' }), size: 'medium', device, artPx: { w: 1024, h: 1024 }, wallpaperPx: null });
   assert.equal(square.mode, 'fit');
-  // The manifest says wide, the real image is square: the app asks for fill, the bridge stretches.
+  // The manifest says wide, the real image is square: the app asks for fill, but since T223 the
+  // bridge checks the real aspect and fits the art (no stretch, no crop); the lying size is flagged.
   const lie = snapshotPlan({ option: opt({ fit: 'fill', width: 1092, height: 510 }), size: 'medium', device, artPx: { w: 1024, h: 1024 }, wallpaperPx: null });
-  assert.deepEqual(codes(lie), ['fill', 'metaAspect', 'stretch']);
-  assert.equal(worstSeverity(lie.flags), 'error');
+  assert.equal(lie.mode, 'fit');
+  assert.ok(codes(lie).includes('metaAspect'));
+  assert.ok(!codes(lie).includes('stretch'));
+  assert.ok(!codes(lie).includes('crop'));
 });
 
 test('wallpaper background takes the seamless path with the default slot crop', () => {

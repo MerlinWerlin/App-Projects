@@ -69,7 +69,7 @@ export const ptBR: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-lock': {
       title: 'Crie uma Live Photo',
-      body: 'Transforme um vídeo em Live Photo na aba Live. Ela se move no Fotos; como papel de parede, o iPhone muitas vezes a deixa parada.',
+      body: 'Transforme um vídeo em Live Photo no Criador de Live Photos, em Papéis de parede. Ela se move no Fotos; como papel de parede, o iPhone muitas vezes a deixa parada.',
     },
     'theme-pick': {
       title: 'Comece com um tema',

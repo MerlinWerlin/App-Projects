@@ -386,6 +386,12 @@ export type PackCacheEntry = {
   name: string;
   /** Manifest format version the pack was stored with. */
   version: number;
+  /**
+   * T222: content version of a downloaded remote art pack (catalogue `packVersion`), so a newer
+   * catalogue entry triggers an update. Absent on theme packs and on entries written before T222
+   * (src/core/packUpdates.ts downloadedPackVersion back-fills those from the manifest, else 1).
+   */
+  packVersion?: number;
   bytes: number;
   themeIds: string[];
   /** ISO timestamp. */
@@ -409,9 +415,19 @@ export function cacheEntryFor(manifest: PackManifest, now: Date): PackCacheEntry
 /** Add or replace a pack (sorted by name so Settings is stable). */
 export function cacheIndexAdd(index: PackCacheIndex, entry: PackCacheEntry): PackCacheIndex {
   const packs = index.packs.filter((p) => p.id !== entry.id);
-  packs.push({ ...entry, themeIds: [...entry.themeIds] });
+  const copy: PackCacheEntry = { ...entry, themeIds: [...entry.themeIds] };
+  if (copy.packVersion === undefined) delete copy.packVersion;
+  packs.push(copy);
   packs.sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id));
   return { version: 1, packs };
+}
+
+/** T222: record a downloaded pack's packVersion (back-fill of an entry written before T222). */
+export function cacheIndexSetPackVersion(index: PackCacheIndex, id: string, packVersion: number): PackCacheIndex {
+  if (!Number.isInteger(packVersion) || packVersion <= 0) return index;
+  const hit = index.packs.find((p) => p.id === id);
+  if (!hit || hit.packVersion === packVersion) return index;
+  return { version: 1, packs: index.packs.map((p) => (p.id === id ? { ...p, themeIds: [...p.themeIds], packVersion } : p)) };
 }
 
 export function cacheIndexRemove(index: PackCacheIndex, id: string): PackCacheIndex {
@@ -445,6 +461,7 @@ export function parseCacheIndex(input: unknown): PackCacheIndex {
       id: p.id,
       name: p.name,
       version: typeof p.version === 'number' ? p.version : PACK_VERSION,
+      ...(typeof p.packVersion === 'number' && Number.isInteger(p.packVersion) && p.packVersion > 0 ? { packVersion: p.packVersion } : {}),
       bytes: Math.round(p.bytes),
       themeIds: Array.isArray(p.themeIds) ? p.themeIds.filter((t): t is string => typeof t === 'string') : [],
       downloadedAt: typeof p.downloadedAt === 'string' ? p.downloadedAt : '',

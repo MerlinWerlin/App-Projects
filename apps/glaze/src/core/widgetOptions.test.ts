@@ -291,9 +291,10 @@ test('the option boxes have the same aspect as the real widget sizes', () => {
 test('sections: one per kind, practical kinds first (shelf order), art last; every piece in every Home size', () => {
   const r = parseWidgetOptions(
     [
-      { id: 'c1', kind: 'clock', image: 'widget-clock.22222222.webp', sizes: ['small'] },
+      // T206: number-free pictures stay practical (pictures with fixed numbers go with the art).
+      { id: 'c1', kind: 'clock', image: 'widget-clock.22222222.webp', sizes: ['small'], numberFree: true },
       { id: 'a1', kind: 'art', image: 'widget-boat.11111111.webp', sizes: ['small', 'medium'] },
-      { id: 'b1', kind: 'battery', image: 'widget-clock.22222222.webp', sizes: ['small'] },
+      { id: 'b1', kind: 'battery', image: 'widget-clock.22222222.webp', sizes: ['small'], numberFree: true },
       { id: 'a2', kind: 'art', image: 'widget-wide.33333333.webp', sizes: ['medium'] },
     ],
     ASSETS,
@@ -317,12 +318,12 @@ test('T201 widgetShelf: practical (habits, countdown, calendar, date, clock, bat
   const r = parseWidgetOptions(
     [
       { id: 'fox', kind: 'art', image: img, sizes: ['small', 'medium', 'large'] },
-      { id: 'clock', kind: 'clock', image: img, sizes: ['small'] },
-      { id: 'cal', kind: 'calendar', image: img, sizes: ['medium'] },
-      { id: 'water', kind: 'habits', image: img, sizes: ['small', 'medium'] },
-      { id: 'trip', kind: 'countdown', image: img, sizes: ['large'] },
+      { id: 'clock', kind: 'clock', image: img, sizes: ['small'], numberFree: true },
+      { id: 'cal', kind: 'calendar', image: img, sizes: ['medium'], numberFree: true },
+      { id: 'water', kind: 'habits', image: img, sizes: ['small', 'medium'], numberFree: true },
+      { id: 'trip', kind: 'countdown', image: img, sizes: ['large'], numberFree: true },
       { id: 'owl', kind: 'art', image: 'widget-wide.33333333.webp', sizes: ['medium'] },
-      { id: 'lockonly', kind: 'date', image: img, sizes: ['lock'] },
+      { id: 'lockonly', kind: 'date', image: img, sizes: ['lock'], numberFree: true },
     ],
     ASSETS,
   );

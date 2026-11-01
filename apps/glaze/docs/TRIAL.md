@@ -2,6 +2,14 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (1 Nov, midday: owner-1101e brief)
+These need the **new TestFlight build** (icon, startup and widget changes are built into the app; auto-ship sends it). In TestFlight, check the build number is newer than the one you last tested, open Glaze, then answer yes / no:
+
+1. **Your Prism everywhere:** is the Home Screen icon the glass-ribbon Prism with two small eyes you picked on 25 Oct? When Glaze opens, is it the same light-beam animation you liked, but with that Prism figure (beam onto its head, it lights up, colours pour from under its feet, then Themes)? yes / no
+2. **Different art per widget:** apply two different art pieces with **Use on my widget**, then add two Glaze **Seamless** widgets. Long-press each > **Edit Widget** > **Art**: does the list show your pieces (newest first), and can each widget show a different picture? Does **My widget art** on the Widgets tab list them, with Remove working? yes / no
+3. **Theme packs update:** open a theme you downloaded before (e.g. Cloud Atelier). Within a minute, does it update by itself (or show **Update available** > Update now) and then show more widget art pieces than the old 3? yes / no
+4. **Paper boat fits:** put Cloud Atelier's paper boat on a Small, Medium and Large widget. Is the whole boat visible in every size (soft blurred fill around it, nothing cut off)? yes / no
+
 ## New since your last test (1 Nov, late morning: owner-1101d)
 This needs the **new TestFlight build** (pets removed, new icon and intro, widget refresh fixes are built into the app; auto-ship sends it). Delete nothing first. Open the newest Glaze build from TestFlight, then answer yes / no:
 
@@ -11,6 +19,15 @@ This needs the **new TestFlight build** (pets removed, new icon and intro, widge
 4. **Widgets order:** theme page > **Widgets**: do you now see the practical pieces first (habits, countdown, date, clock, battery, with **Make it live**), then the art, then the standard widgets in the theme's colours? Can you pick any art piece for Small, Medium and Large? After you apply one, does the widget on your Home Screen change within a few seconds? Is Firefly Grove's sleeping fox whole, not cropped? yes / no
 5. **Icons replace the old ones:** Icons > Install icons: does it open straight on **Install all at once**, with only a small "Prefer Shortcuts?" link? Install one theme's icons, then another theme's: does iOS replace the Glaze profile so the old icons go away and nothing doubles up? (A profile from a build before 1 Nov still needs removing once: Icons > Clean up old icons.) yes / no
 6. **Widget check pictures:** nothing to do. Glaze's build now draws every widget of every theme at every size and checks them (docs/widget_snapshots/). Medium widgets show square art in the middle with a soft blurred fill on the sides. Is that look fine for now? yes / no
+7. **Widget menu (run 209):** theme page > Widgets: do art pieces keep the same name ("Art 2" stays "Art 2") in Small, Medium and Large? In the Small cards, does a long name like "Rehearsal countdown" fit with the **Live** badge under it? Does the menu heading read **This theme's widgets**? yes / no
+8. **Previews match the widget:** pick a piece with the **Wallpaper** background, then one with **Blur**: does the preview card look the same as the widget on your Home Screen (same part of the wallpaper, similar blur and tint)? yes / no
+9. **Set it up cards (run 210):** on a theme page, are Wallpaper, Icons and Widgets now three separate cards, each with a small picture in the theme's own colours? yes / no
+10. **Install screen:** Icons > Install icons: does it open on a summary card with your icon set, then "The quick way: Install all at once", with "Prefer Shortcuts?" small at the bottom? yes / no
+11. **Pictures with numbers:** pieces like the "14 DAYS" swan or "29 THU OCT" date now sit with the art (no Live badge), with a "Live widget instead" button. Is that clear? yes / no
+12. **Find apps:** 983 apps now (was 749; 864 in run 210). Are the apps you use there? Which are missing? yes / no + names
+13. **Removing a Shortcuts icon:** on your iPhone, when you long-press a Shortcuts icon, does it say **Delete Bookmark** or **Remove App**? (Settings and the Clean up screen disagree; your answer fixes both.)
+14. **Your picked Prism icon:** see question 1 of the newer section above.
+15. **Live Photo tip:** do the tips now send you to the **Live Photo maker, under Wallpapers** (no mention of a Live tab)? yes / no
 
 ## New since your last test (1 Nov: owner-1101)
 This needs the **new TestFlight build** (new app icon, Island pets and widget art changes are built into the app; auto-ship sends it). Open the newest Glaze build from TestFlight, then answer yes / no:

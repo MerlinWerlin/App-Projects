@@ -13,6 +13,7 @@
 // The native bridge sizes the art from the decoded image, the app from the manifest / reference
 // size, so the plan takes both and flags any difference. Pure TS, tested in widgetSnapshot.test.ts.
 
+import { NATIVE_FILL_MIN_ASPECT_MATCH } from './widgetPreview.ts';
 import { aspectMatch, placeArt, type Box, type HomeOptionSize, type Rect, type WidgetOption, type WidgetOptionFit } from './widgetOptions.ts';
 import { heroRect, normaliseSlot, SEAMLESS_MAX_EDGE_PX, seamlessCrop, WIDGET_CORNER_PT, widgetSizePx, type SeamlessDevice } from './seamlessWidget.ts';
 
@@ -151,6 +152,10 @@ export function snapshotPlan(input: SnapshotInput): SnapshotPlan {
     const px = widgetSizePx(device, size);
     mode = placeArt(declared, px, option.fit).mode;
     targetPx = capTarget(px);
+    // T223: the bridge re-checks the REAL image's aspect before drawing edge to edge
+    // (GlazeWidgetBridgeModule.setWidgetArt, NATIVE_FILL_MIN_ASPECT_MATCH); a manifest that lies
+    // about the size gets the art fitted, never stretched or cropped.
+    if (mode === 'fill' && aspectMatch(artPx, targetPx) < NATIVE_FILL_MIN_ASPECT_MATCH) mode = 'fit';
     artRect = mode === 'fill' ? { x: 0, y: 0, w: targetPx.w, h: targetPx.h } : placeArt(artPx, targetPx, 'fit').rect;
     if (mode === 'fill') {
       flags.push({ code: 'fill', severity: 'warn', detail: `${option.id} drawn edge to edge (fit "fill")` });

@@ -12,10 +12,13 @@
 // T200 (owner-1101d #3): "Set it up" is a bold section header (title1 + one-line subtitle) above
 // the three entry cards; the old "What's inside" block (palette + style) is gone, and the palette
 // sits in the matching-widgets block ("These widgets are made from this palette").
+// T210 (premium pass): the three Set it up entry points are lifted cards (PartCard: surface, not a
+// ruled inset group), each led by a small piece of the theme itself: a phone in its wallpaper
+// colours, four of its icons, a widget in its palette.
 import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
 import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import {
   AccessibilityInfo,
   Dimensions,
@@ -58,6 +61,7 @@ import {
 import { offersOpenSettings, saveFailureKey, type SaveFailure } from '../../src/core/photoSave';
 import { openAppSettings, useOffscreenCapture, useWallpaperSaver } from '../../src/render/saveWallpaper';
 import { OffscreenWallpaper, WallpaperView } from '../../src/render/WallpaperView';
+import { IconCanvas } from '../../src/render/IconCanvas';
 import { usePackTheme } from '../../src/render/usePackTheme';
 import { tickStoredChecklist } from '../../src/store/applyChecklist';
 import { applyThemeEverywhere, rememberWallpaperSaved, useActiveThemeId, wasWallpaperSaved } from '../../src/store/activeTheme';
@@ -71,6 +75,7 @@ import {
   continuous,
   editorialV2,
   fontScaleCap,
+  iconTileRadius,
   radiusV2,
   sizeV2,
   spaceV2,
@@ -82,6 +87,7 @@ import { HOME_ASPECT, HomeMock } from '../../src/ui/HomeMock';
 import { LockMock } from '../../src/ui/LockMock';
 import { bezelFor } from '../../src/ui/PhoneFrame';
 import { ProgressBar } from '../../src/ui/ProgressBar';
+import { PackUpdateNote } from '../../src/ui/PackUpdateNote';
 import { IconGridSkeleton, Skeleton } from '../../src/ui/Skeleton';
 import { PreviewModeLabel, ShapePicker } from '../../src/ui/ShapePicker';
 import { Segmented } from '../../src/ui/Segmented';
@@ -111,7 +117,7 @@ import { FIRST_RUN_TIP_IDS, type TipId as AnyTipId } from '../../src/core/tips';
 import { tipsForInstallMode } from '../../src/core/installMethods';
 import { PROFILE_INSTALL_ENABLED } from '../../src/config/install';
 import { haptic } from '../../src/ui/haptics';
-import { noMirror, textStyleFor } from '../../src/ui/i18nLayout';
+import { Chevron, noMirror, textStyleFor } from '../../src/ui/i18nLayout';
 import { GlassBar, InsetGroup, InsetRow, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { ThemeWidgetArt } from '../../src/ui/ThemeWidgetArt';
@@ -193,6 +199,7 @@ export default function ThemeDetailScreen() {
       step={themeStepOf(stepParam)}
       remoteWallpaperUri={own ? remote.wallpaperUri : null}
       remoteHeroUris={own ? remote.heroUris : null}
+      remoteHeroSizes={own ? remote.heroPx : null}
     />
   );
 }
@@ -202,6 +209,7 @@ function ThemeDetail({
   step,
   remoteWallpaperUri,
   remoteHeroUris,
+  remoteHeroSizes,
 }: {
   theme: Theme;
   /** T185: the overview (preview + "Use this theme" + three entry points), or its Wallpaper / Icons screen. */
@@ -209,6 +217,8 @@ function ThemeDetail({
   remoteWallpaperUri: string | null;
   /** T168: downloaded hero art of a remote art pack (seamless widget card). */
   remoteHeroUris: Partial<Record<HeroSize, string>> | null;
+  /** T208: pixel size of each downloaded hero piece (manifest), so the preview fits the real piece. */
+  remoteHeroSizes: Partial<Record<HeroSize, { w: number; h: number }>> | null;
 }) {
   const { c, scheme } = useColorsV2();
   const router = useRouter();
@@ -606,6 +616,17 @@ function ThemeDetail({
         {overview ? <ContextTip ids={DETAIL_TIPS} /> : null}
 
         {overview && !remoteArt && showsPackCard(packView) ? <PackCard view={packView} packName={packName} onDownload={onDownloadPack} /> : null}
+        {/* T222: a newer version of this downloaded pack is listed: background update state + manual Update. */}
+        {overview && remoteArt && packView.kind === 'ready' ? (
+          <PackUpdateNote
+            theme={remoteArt}
+            packName={packName}
+            onLocked={() => {
+              lockFor.current = 'download';
+              setLockOpen(true);
+            }}
+          />
+        ) : null}
 
         {/* L2 + T173 hero: one large phone-shaped preview, centred on a soft surface (layered
             shadow, no border), with a quiet Home / Lock pill under it. */}
@@ -691,35 +712,34 @@ function ThemeDetail({
                 {t('theme.parts.subtitle')}
               </Text>
             </View>
-            <InsetGroup>
-              <InsetRow
+            {/* T210 (premium pass): three lifted entry cards on the 16 pt rhythm instead of one
+                ruled inset group; each leads with a small piece of this theme (a phone in its
+                wallpaper colours, four of its icons, a widget in its palette), then the name, one
+                line, and "Saved to Photos ✓" on the wallpaper card once saved. */}
+            <View style={styles.parts}>
+              <PartCard
                 title={t('theme.parts.wallpaper')}
-                subtitle={savedBefore ? t('theme.save.savedBadge') : t('theme.parts.wallpaperSub')}
-                icon="image"
-                iconTone="sky"
+                subtitle={t('theme.parts.wallpaperSub')}
+                status={savedBefore ? t('theme.save.savedBadge') : null}
+                art={<PartWallpaperArt theme={theme} />}
                 onPress={() => openPart('wallpaper')}
-                accessibilityLabel={t('theme.parts.wallpaper')}
                 accessibilityHint={t('theme.parts.wallpaperSub')}
               />
-              <InsetRow
+              <PartCard
                 title={t('theme.parts.icons')}
                 subtitle={t('theme.parts.iconsSub')}
-                icon="grid"
-                iconTone="mint"
+                art={<PartIconsArt specs={specs} />}
                 onPress={() => openPart('icons')}
-                accessibilityLabel={t('theme.parts.icons')}
                 accessibilityHint={t('theme.parts.iconsSub')}
               />
-              <InsetRow
+              <PartCard
                 title={t('theme.parts.widgets')}
                 subtitle={t('theme.parts.widgetsSub')}
-                icon="layout"
-                iconTone="lilac"
+                art={<PartWidgetArt theme={theme} />}
                 onPress={() => openPart('widgets')}
-                accessibilityLabel={t('theme.parts.widgets')}
                 accessibilityHint={t('theme.parts.widgetsSub')}
               />
-            </InsetGroup>
+            </View>
           </View>
         ) : null}
 
@@ -899,7 +919,7 @@ function ThemeDetail({
             The overview keeps only (c) as a teaser; the Widgets card opens this screen. */}
         {step === 'widgets' ? <ThemeWidgetsShelf theme={theme} /> : null}
         {/* T133: the Seamless widget (wallpaper crop + floating art), art-pack themes only: part of (b). */}
-        {step === 'widgets' && artPack ? <SeamlessCard artPackId={artPack.artPack.id} theme={theme} wallpaperUri={remoteWallpaperUri} heroUris={remoteHeroUris} /> : null}
+        {step === 'widgets' && artPack ? <SeamlessCard artPackId={artPack.artPack.id} theme={theme} wallpaperUri={remoteWallpaperUri} heroUris={remoteHeroUris} remoteHeroSizes={remoteHeroSizes} /> : null}
         {overview || step === 'widgets' ? (
           <View style={styles.block}>
             <SectionHeader
@@ -1132,11 +1152,13 @@ function SeamlessCard({
   theme,
   wallpaperUri: remoteWallpaper,
   heroUris,
+  remoteHeroSizes,
 }: {
   artPackId: string;
   theme: Theme;
   wallpaperUri: string | null;
   heroUris: Partial<Record<HeroSize, string>> | null;
+  remoteHeroSizes: Partial<Record<HeroSize, { w: number; h: number }>> | null;
 }) {
   const { c } = useColorsV2();
   const { t, script } = useT();
@@ -1164,7 +1186,10 @@ function SeamlessCard({
     (w: number, h: number) => <WallpaperView params={theme.wallpaper} width={w} height={h} maxGrain={120} />,
     [theme.wallpaper],
   );
+  // T208: a downloaded piece is fitted at its real size (a v2 piece may be square in every size);
+  // a bundled hero is the reference size for its slot.
   const heroRef = HERO_REFERENCE_SIZES[size];
+  const heroPx = (heroSrc.kind === 'file' ? remoteHeroSizes?.[size] : undefined) ?? { w: heroRef.width, h: heroRef.height };
   const previewW = Math.max(160, Math.min(240, Math.round(window.width * 0.6)));
 
   const strings = useMemo<SeamlessControlsStrings>(() => {
@@ -1284,7 +1309,7 @@ function SeamlessCard({
           onHeroError={() => markFailed(seamlessSourceKey(heroSrc))}
           wallpaperPx={{ w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height }}
           hero={seamlessImageSource(heroSrc)}
-          heroPx={{ w: heroRef.width, h: heroRef.height }}
+          heroPx={heroPx}
           size={size}
           slot={slot}
           nudge={nudge}
@@ -1514,8 +1539,129 @@ function PackCard({ view, packName, onDownload, bytes }: { view: PackDetailView;
   );
 }
 
+// ---------------------------------------------------------------- T210 "Set it up" entry cards
+
+/** Edge of the art well that leads each "Set it up" card (points). */
+const PART_ART = 56;
+/** Mini phone in the wallpaper card: about a phone's aspect inside the well. */
+const PART_PHONE_W = 26;
+/** Each of the four icons in the icons card. */
+const PART_ICON = 20;
+/** Mini widget in the widgets card. */
+const PART_WIDGET = 40;
+
+/**
+ * T210: one "Set it up" entry point as its own lifted card (raised surface in dark mode, the soft
+ * card shadow in light, never a hairline): a small art well from this theme, the name (headline),
+ * one line (footnote) and, when given, a status line in `ok` ("Saved to Photos ✓"). The whole card
+ * is the ≥ 48 pt target and one VoiceOver element; a `select` haptic and the timed press ease come
+ * from SquircleCard (no spring).
+ */
+function PartCard({
+  title,
+  subtitle,
+  status = null,
+  art,
+  onPress,
+  accessibilityHint,
+}: {
+  title: string;
+  subtitle: string;
+  status?: string | null;
+  art: ReactNode;
+  onPress: () => void;
+  accessibilityHint: string;
+}) {
+  const { c, scheme } = useColorsV2();
+  const { script, isRTL } = useT();
+  const label = status ? `${title}, ${subtitle}, ${status}` : `${title}, ${subtitle}`;
+  return (
+    <SquircleCard
+      tone={scheme === 'dark' ? 'raised' : 'surface'}
+      outline={false}
+      padding={spaceV2.md}
+      onPress={onPress}
+      haptic="select"
+      accessibilityLabel={label}
+      accessibilityHint={accessibilityHint}
+      style={styles.side}
+    >
+      <View style={styles.partRow}>
+        <View
+          style={[styles.partArt, continuous, { backgroundColor: c.fill }]}
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+        >
+          {art}
+        </View>
+        <View style={styles.partText}>
+          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), { color: c.ink }]}>
+            {title}
+          </Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>
+            {subtitle}
+          </Text>
+          {status ? (
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), styles.partStatus, { color: c.ok }]}>
+              {status}
+            </Text>
+          ) : null}
+        </View>
+        <Feather name={Chevron.forward(isRTL)} size={18} color={c.inkTertiary} />
+      </View>
+    </SquircleCard>
+  );
+}
+
+/** A tiny phone in the theme's wallpaper colours: background, a glow in the accent, a dock in the surface colour. */
+function PartWallpaperArt({ theme }: { theme: Theme }) {
+  const h = Math.round(PART_PHONE_W * PHONE_ASPECT);
+  return (
+    <View style={[styles.partPhone, continuous, { width: PART_PHONE_W, height: Math.min(h, PART_ART - spaceV2.xs), borderRadius: iconTileRadius(PART_PHONE_W), backgroundColor: theme.palette.bg }]}>
+      <View style={[styles.partGlow, { backgroundColor: theme.palette.accent }]} />
+      <View style={[styles.partDock, { backgroundColor: theme.palette.surface }]} />
+    </View>
+  );
+}
+
+/** Four of the theme's own icons, drawn as they install (no morph animation in a thumbnail). */
+function PartIconsArt({ specs }: { specs: ReturnType<typeof previewSpecs> }) {
+  return (
+    <View style={styles.partIcons}>
+      {specs.slice(0, 4).map((s, i) => (
+        <IconCanvas key={`${s.appId}-${i}`} spec={s} size={PART_ICON} morph={false} />
+      ))}
+    </View>
+  );
+}
+
+/** A small widget in the theme's palette: its surface, an accent bar and two lines of ink. */
+function PartWidgetArt({ theme }: { theme: Theme }) {
+  return (
+    <View style={[styles.partWidget, continuous, { borderRadius: iconTileRadius(PART_WIDGET), backgroundColor: theme.palette.surface }]}>
+      <View style={[styles.partBar, { backgroundColor: theme.palette.accent }]} />
+      <View style={[styles.partLine, { backgroundColor: theme.palette.ink }]} />
+      <View style={[styles.partLine, styles.partLineShort, { backgroundColor: theme.palette.ink }]} />
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   root: { flex: 1 },
+  // T210 "Set it up" entry cards: 16 pt between cards (editorialV2.cardGap).
+  parts: { gap: editorialV2.cardGap },
+  partRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch },
+  partArt: { width: PART_ART, height: PART_ART, borderRadius: radiusV2.control, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
+  partText: { flex: 1, gap: spaceV2.xxs },
+  partStatus: { fontWeight: '600' },
+  partPhone: { alignItems: 'center', justifyContent: 'space-between', paddingVertical: spaceV2.xs, overflow: 'hidden' },
+  partGlow: { width: spaceV2.md, height: spaceV2.md, borderRadius: circleRadius(spaceV2.md), marginTop: spaceV2.sm },
+  partDock: { width: PART_PHONE_W - spaceV2.sm, height: spaceV2.xs + spaceV2.xxs, borderRadius: circleRadius(spaceV2.xs + spaceV2.xxs) },
+  partIcons: { width: PART_ICON * 2 + spaceV2.xs, flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.xs },
+  partWidget: { width: PART_WIDGET, height: PART_WIDGET, padding: spaceV2.sm - spaceV2.xxs, gap: spaceV2.xs, justifyContent: 'flex-end' },
+  partBar: { width: '70%', height: spaceV2.xs + spaceV2.xxs, borderRadius: circleRadius(spaceV2.xs + spaceV2.xxs) },
+  partLine: { width: '90%', height: spaceV2.xxs + 1, borderRadius: circleRadius(spaceV2.xxs + 1), opacity: 0.55 },
+  partLineShort: { width: '55%' },
   content: { gap: spaceV2.lg },
   missing: { flex: 1, padding: spaceV2.inset, gap: spaceV2.md, justifyContent: 'center' },
   side: { marginHorizontal: spaceV2.lg },

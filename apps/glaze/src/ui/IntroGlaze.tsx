@@ -1,5 +1,6 @@
 // Opening animation (owner, 23 Oct: "each app ... their own little logo and animation on start up"). T199
-// (owner-1101d #2): full screen, premium and calm, with the Prism diamond (the cute creature intro was rejected).
+// (owner-1101d #2): full screen, premium and calm. T220 (owner-1101e 11:39): same animation he likes, now with the
+// Prism figure he picked on 25 Oct (assets/brand/prism-figure.png) instead of the diamond.
 // The native splash is the dark screen with the small unlit diamond in the middle; this view takes over on its first
 // frame with exactly that picture (same colour, size and place). A thin beam of light sweeps in from the upper left and
 // settles on the diamond, the diamond lights up, the light leaves its point as six soft glaze-colour bands fanning
@@ -12,25 +13,18 @@
 // Reduce Motion (system or the Glaze setting): the finished frame shows at once and simply fades when the app is ready.
 import { useEffect, useMemo, useRef } from 'react';
 import { whenFirstScreen } from '../core/startupHandoff';
-import { AccessibilityInfo, Animated, Easing, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { AccessibilityInfo, Animated, Easing, Image, StyleSheet, useWindowDimensions, View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
-import Svg, { Circle, Defs, LinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
+import Svg, { Defs, LinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 import {
   BAND_OPACITY,
   BRAND,
-  GEM_EDGES_D,
-  GEM_FACETS,
-  GEM_GLINT_D,
-  GEM_GLOSS_D,
-  GEM_OUTLINE_D,
-  GEM_STROKE,
-  GEM_TIP_GLOW,
+  FIGURE_GLINT_D,
   INTRO_MS,
   SPLASH_SIZE,
   SPECTRUM,
   canFade,
   introLayout,
-  polyPath,
   trackKeyframes,
   type Track,
 } from '../core/introGlaze';
@@ -46,36 +40,13 @@ const calmInOut = Easing.inOut(Easing.sin);
 
 const BAND_TRACKS: readonly Track[] = ['band0', 'band1', 'band2', 'band3', 'band4', 'band5'];
 
-/** The diamond in the 1024 icon canvas, lit or unlit (the unlit one is the native splash image). */
-function Gem({ size, mode }: { size: number; mode: 'lit' | 'dim' }) {
-  const [edge, outline] = GEM_STROKE[mode];
-  return (
-    <Svg width={size} height={size} viewBox="0 0 1024 1024">
-      <Defs>
-        {GEM_FACETS.map((fc) => (
-          <LinearGradient key={fc.id} id={`intro-${mode}-${fc.id}`} x1="0" y1="0" x2="0.35" y2="1">
-            <Stop offset="0" stopColor={fc[mode][0]} />
-            <Stop offset="1" stopColor={fc[mode][1]} />
-          </LinearGradient>
-        ))}
-        <RadialGradient id={`intro-${mode}-tip`} cx={GEM_TIP_GLOW.cx} cy={GEM_TIP_GLOW.cy} r={GEM_TIP_GLOW.r} gradientUnits="userSpaceOnUse">
-          <Stop offset="0" stopColor="#FFFFFF" stopOpacity={0.9} />
-          <Stop offset="1" stopColor="#FFFFFF" stopOpacity={0} />
-        </RadialGradient>
-      </Defs>
-      {GEM_FACETS.map((fc) => (
-        <Path key={fc.id} d={polyPath(fc.pts)} fill={`url(#intro-${mode}-${fc.id})`} />
-      ))}
-      <Path d={GEM_EDGES_D} fill="none" stroke="#FFFFFF" strokeOpacity={edge} strokeWidth={3} strokeLinecap="round" />
-      <Path d={GEM_OUTLINE_D} fill="none" stroke="#FFFFFF" strokeOpacity={outline} strokeWidth={5} strokeLinejoin="round" />
-      {mode === 'lit' ? (
-        <>
-          <Circle cx={GEM_TIP_GLOW.cx} cy={GEM_TIP_GLOW.cy} r={GEM_TIP_GLOW.r} fill={`url(#intro-${mode}-tip)`} />
-          <Path d={GEM_GLOSS_D} fill="none" stroke="#FFFFFF" strokeWidth={12} strokeLinecap="round" opacity={0.75} />
-        </>
-      ) : null}
-    </Svg>
-  );
+// T220: the picked Prism figure, unlit (= the native splash image) or lit. Bundled PNGs, no network.
+const FIGURE_DIM = require('../../assets/brand/splash-icon.png');
+const FIGURE_LIT = require('../../assets/brand/prism-figure.png');
+
+/** The Prism figure in the 1024 canvas, lit or unlit (the unlit one is the native splash image). */
+function Figure({ size, mode }: { size: number; mode: 'lit' | 'dim' }) {
+  return <Image source={mode === 'lit' ? FIGURE_LIT : FIGURE_DIM} style={{ width: size, height: size }} resizeMode="contain" fadeDuration={0} />;
 }
 
 export function IntroGlaze({
@@ -189,7 +160,7 @@ export function IntroGlaze({
       importantForAccessibility="no-hide-descendants"
       style={[StyleSheet.absoluteFill, styles.host, { backgroundColor: bg, opacity: fade }]}
     >
-      {/* A soft violet bloom behind the diamond while it is lit. */}
+      {/* A soft violet bloom behind the figure while it is lit. */}
       <Animated.View style={[StyleSheet.absoluteFill, { opacity: ignite }]}>
         <Svg width={width} height={height}>
           <Defs>
@@ -235,15 +206,15 @@ export function IntroGlaze({
           <Path d={`M${beam.x2} ${beam.y2} L${beam.x1} ${beam.y1}`} stroke="url(#introBeam)" strokeWidth={3} strokeLinecap="round" />
         </Svg>
       </Animated.View>
-      {/* The diamond: unlit (identical to assets/brand/splash-icon.png), with the lit one and the glint faded in over it. */}
+      {/* The Prism figure: unlit (assets/brand/splash-icon.png, the native splash), with the lit one and the glint faded in over it. */}
       <View style={[styles.abs, { left: lay.ox, top: lay.oy, width: size, height: size }]}>
-        <Gem size={size} mode="dim" />
+        <Figure size={size} mode="dim" />
         <Animated.View style={[StyleSheet.absoluteFill, { opacity: ignite }]}>
-          <Gem size={size} mode="lit" />
+          <Figure size={size} mode="lit" />
         </Animated.View>
         <Animated.View style={[StyleSheet.absoluteFill, { opacity: glint }]}>
           <Svg width={size} height={size} viewBox="0 0 1024 1024">
-            <Path d={GEM_GLINT_D} fill="#FFFFFF" />
+            <Path d={FIGURE_GLINT_D} fill="#FFFFFF" />
           </Svg>
         </Animated.View>
       </View>

@@ -10,6 +10,13 @@
 // T178: the cache is stamped with the app version + build + JS bundle + pack base URL, so the first
 // launch of a new build / OTA refetches at once; an empty catalogue or a failed attempt (404,
 // offline) is retried on the next launch / focus after 2 min instead of sticking for 6 h.
+// T222 (owner-1101e): downloaded remote art packs follow the catalogue. After every catalogue
+// load, packs whose catalogue packVersion is newer than the copy on the phone are re-downloaded in
+// the background, one at a time, staged next to the old copy and swapped in once verified
+// (src/core/packDownloader.ts); a failure keeps the old pack and is retried with a backoff
+// (src/core/packUpdates.ts). The index records each pack's packVersion (older entries back-filled).
+// Only files under documentDirectory/packs/<id>/ are replaced: widget art and wallpapers already
+// applied were copied into the App Group / Photos, so they keep working.
 import Constants from 'expo-constants';
 import { Dimensions, PixelRatio, Platform } from 'react-native';
 import { buildFrom } from '../core/feedback';
@@ -24,6 +31,7 @@ import {
   loadPackContent,
   loadRemoteArt,
   packsEnabled,
+  readLocalRemoteArt,
   remoteArtCacheEntry,
   removePack,
   resolvePackBaseUrl,
@@ -44,7 +52,8 @@ import {
 } from '../core/remoteCatalog';
 import { registerPackMotifs, unregisterPackMotifs } from '../core/packMotifs';
 import { restorePackMotifs } from '../core/packRestore';
-import { cacheEntryFor, cacheIndexAdd, cacheIndexRemove, parseCacheIndex, type PackCacheIndex, type PackContent } from '../core/themePack';
+import { cacheEntryFor, cacheIndexAdd, cacheIndexRemove, cacheIndexSetPackVersion, parseCacheIndex, type PackCacheIndex, type PackContent } from '../core/themePack';
+import { downloadedPackVersion, packUpdatePlan, recordUpdateFailure, type PackUpdateFailure } from '../core/packUpdates';
 import type { Theme } from '../core/themes';
 import { t } from '../i18n';
 import * as fs from './fs';
@@ -115,6 +124,12 @@ export const deviceTransport: Transport = {
   async remove(rel) {
     await fs.deleteAsync(uri(rel), { idempotent: true });
   },
+  // T222: swaps a staged pack update in (a folder rename inside documentDirectory/packs/).
+  async move(from, to) {
+    const dest = uri(to);
+    await fs.makeDirectoryAsync(parentOf(dest), { intermediates: true }).catch(() => undefined);
+    await fs.moveAsync({ from: uri(from), to: dest });
+  },
 };
 
 // ------------------------------------------------------------ store
@@ -138,6 +153,8 @@ export type PackStoreState = {
   catalogStatus: CatalogStatus;
   /** Verified, downloaded remote art packs by id (read on demand by remoteArtOnDevice). */
   remoteArt: Record<string, RemoteArtManifest>;
+  /** T222: last failed update attempt per pack id (the old version keeps working meanwhile). */
+  updateFailures: Record<string, PackUpdateFailure>;
 };
 
 let state: PackStoreState = {
@@ -150,6 +167,7 @@ let state: PackStoreState = {
   catalogAttempted: false,
   catalogStatus: 'loading',
   remoteArt: {},
+  updateFailures: {},
 };
 const listeners = new Set<() => void>();
 
@@ -314,6 +332,10 @@ export async function removePackFromDevice(packId: string): Promise<void> {
     const { [packId]: _gone, ...rest } = state.remoteArt;
     set({ remoteArt: rest });
   }
+  if (packId in state.updateFailures) {
+    const { [packId]: _old, ...failures } = state.updateFailures;
+    set({ updateFailures: failures });
+  }
   unregisterPackMotifs(packId);
   try {
     await removePack(deviceTransport, packId);
@@ -455,6 +477,8 @@ export function refreshCatalog(force = false): Promise<void> {
       catalogRun = null;
       catalogRunFetches = false;
     }
+    // T222: outdated downloaded packs update in the background (not awaited by callers).
+    void runPackUpdates();
   })();
   return catalogRun;
 }
@@ -513,6 +537,9 @@ export async function downloadRemoteArtToDevice(id: string): Promise<string | nu
   if (id in state.busy) return null;
   const entry = catalogPack(id);
   if (!entry) return t('plus.packErrors.generic');
+  // T222: with a copy already on the phone this is an update: staged, the old copy stays usable,
+  // and a failure is recorded as an update failure (retried later), not as a download error.
+  const updating = state.index.packs.some((p) => p.id === id);
   set({ busy: { ...state.busy, [id]: 0 }, errors: { ...state.errors, [id]: '' } });
   try {
     const r = await downloadRemoteArtPack({
@@ -524,16 +551,96 @@ export async function downloadRemoteArtToDevice(id: string): Promise<string | nu
       screenLongEdgePx: screenLongEdgePx(),
       onProgress: (p) => set({ busy: { ...state.busy, [id]: p.totalBytes ? p.doneBytes / p.totalBytes : 0 } }),
     });
+    // Everything derived from the old manifest (widget art list, hero files, wallpaper URI,
+    // credits) re-derives from this new object: useRemoteArtTheme memoises on it.
     remoteCache.set(id, Promise.resolve(r.manifest));
-    set({ remoteArt: { ...state.remoteArt, [id]: r.manifest } });
+    const { [id]: _fixed, ...failures } = state.updateFailures;
+    set({ remoteArt: { ...state.remoteArt, [id]: r.manifest }, updateFailures: failures });
     await saveIndex(cacheIndexAdd(state.index, remoteArtCacheEntry(r.manifest, new Date())));
     return null;
   } catch (e) {
     const msg = messageFor(e);
-    set({ errors: { ...state.errors, [id]: msg } });
+    if (updating) set({ updateFailures: { ...state.updateFailures, [id]: recordUpdateFailure(state.updateFailures[id], Date.now(), entry.packVersion) } });
+    else set({ errors: { ...state.errors, [id]: msg } });
     return msg;
   } finally {
     const { [id]: _done, ...rest } = state.busy;
     set({ busy: rest });
   }
+}
+
+// ------------------------------------------------------------ T222: keep downloaded packs current
+
+/**
+ * The packVersion of a downloaded remote pack: recorded in the index, else (entry written before
+ * T222) read from its stored manifest and saved back, else 1. Null when not downloaded.
+ */
+async function downloadedVersionOf(id: string): Promise<number | null> {
+  const entry = state.index.packs.find((p) => p.id === id);
+  if (!entry) return null;
+  if (typeof entry.packVersion === 'number') return downloadedPackVersion(entry);
+  let manifest: RemoteArtManifest | null = state.remoteArt[id] ?? null;
+  if (!manifest) {
+    try {
+      manifest = await readLocalRemoteArt(deviceTransport, id);
+    } catch {
+      manifest = null;
+    }
+  }
+  const v = downloadedPackVersion(entry, manifest) ?? 1;
+  await saveIndex(cacheIndexSetPackVersion(state.index, id, v));
+  return v;
+}
+
+/** Downloaded pack version per catalogue pack id (null = not on the phone). */
+async function downloadedVersions(): Promise<Record<string, number | null>> {
+  const out: Record<string, number | null> = {};
+  for (const p of state.catalog?.packs ?? []) out[p.id] = await downloadedVersionOf(p.id);
+  return out;
+}
+
+/** The downloaded packVersion of a pack, synchronously from the index (back-filled view). */
+export function downloadedPackVersionOf(id: string): number | null {
+  const entry = state.index.packs.find((p) => p.id === id);
+  return entry ? downloadedPackVersion(entry, state.remoteArt[id]) : null;
+}
+
+let updatesRun: Promise<void> | null = null;
+
+/**
+ * T222: update every downloaded remote pack the catalogue lists in a newer version, one at a time,
+ * in the background. Packs inside a failure backoff wait for a later catalogue load. No request
+ * when packs are disabled or nothing is outdated. Never rejects.
+ */
+export function runPackUpdates(): Promise<void> {
+  if (!PACKS_ENABLED || !state.catalog) return Promise.resolve();
+  if (updatesRun) return updatesRun;
+  updatesRun = (async () => {
+    try {
+      await loadPackIndex();
+      const done = new Set<string>();
+      for (;;) {
+        const plan = packUpdatePlan({ catalog: state.catalog, versions: await downloadedVersions(), busy: state.busy, failures: state.updateFailures, now: Date.now() });
+        const next = plan.find((task) => !done.has(task.id));
+        if (!next) break;
+        done.add(next.id);
+        await downloadRemoteArtToDevice(next.id);
+      }
+    } catch {
+      // Never surfaces: the old packs keep working; the next catalogue load tries again.
+    } finally {
+      updatesRun = null;
+    }
+  })();
+  return updatesRun;
+}
+
+/**
+ * T222: the manual Update button (theme page): update this pack now, ignoring the retry backoff.
+ * Call only through src/plus (entitlement). Returns null on success or a user-facing error.
+ */
+export async function updatePackNow(id: string): Promise<string | null> {
+  if (!PACKS_ENABLED) return t('plus.packErrors.disabled');
+  if (!state.catalog) await refreshCatalog();
+  return downloadRemoteArtToDevice(id);
 }

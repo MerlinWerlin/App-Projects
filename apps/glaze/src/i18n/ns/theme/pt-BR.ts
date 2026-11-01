@@ -167,6 +167,17 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
     readyA11y: 'O pacote {pack} foi baixado',
     size: 'Tamanho: {size}',
   },
+  // T222: a newer version of a downloaded pack (theme page note, src/ui/PackUpdateNote.tsx).
+  update: {
+    title: 'Atualização disponível',
+    pending: 'Uma nova versão do pacote {pack} com mais artes de widget está pronta. Ela baixa sozinha; sua arte atual continua funcionando até lá.',
+    failed: 'O pacote {pack} não foi atualizado. Sua arte atual continua funcionando.',
+    cta: 'Atualizar agora',
+    retry: 'Tentar de novo',
+    hint: 'Baixa a nova versão deste pacote',
+    updating: 'Atualizando o pacote {pack}',
+    doneA11y: 'O pacote {pack} está atualizado',
+  },
   // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
   remote: {
     heroPreview: 'Prévia da arte. Baixe para ter o papel de parede em tamanho real.',

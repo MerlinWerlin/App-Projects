@@ -1,6 +1,29 @@
-# Glaze app icon: the Prism diamond (plus the earlier mascot concepts, fb-1023 D)
+# Glaze app icon: the Prism picture Jared picked (plus the earlier concepts)
 
-## Decision (owner-1101d #2, 1 Nov 2026, 10:31): creature rejected, back to the Prism diamond
+## Decision (owner-1101e 11:39 #1, T216 + T220, 1 Nov 2026): the picked Prism picture everywhere
+
+![The picked Prism](mascot/picked-1025/glaze-prism.jpg)
+
+The App Factory chat found the real picture Jared picked on 25 Oct (*"go Prism"*) in the Workboard review-room assets
+and put it in `docs/mascot/picked-1025/` (App-Projects 0f8b1e9): a folded iridescent glass-ribbon prism figure with two
+small eyes on a deep violet-to-teal ground. Owner brief 1 Nov 11:39: make **this** image the app icon and use the same
+figure in the full-screen startup animation he likes; stop redrawing guesses. So (closes Workboard need glaze-prism-image):
+
+- **iOS app icon** (`assets/brand/icon.png`, and `icon-dark.png`, the same file because the picture is already dark):
+  the picture as is, 1024 x 1024 opaque RGB.
+- **Android adaptive foreground**: the picture scaled into the safe zone, its own ground blurred out to full bleed.
+  **Android monochrome** (themed icons): the figure's silhouette with the two eyes cut out.
+- **Splash + opening animation** (T220): the figure is cut out of its ground (the ground is a smooth gradient, so a
+  fitted surface separates it; the floor glow stays as a soft halo). The native splash shows it unlit (darker, cooler)
+  on the dark screen; `src/ui/IntroGlaze.tsx` starts on exactly that frame, and the **same animation** he likes plays:
+  the beam sweeps in from the upper left onto its head, the figure lights up, six soft colour bands pour from under its
+  feet, a glint appears by its head, then it fades into Themes (1.5 s, no bounce, Reduce Motion respected).
+- Everything is made by `python3 scripts/brand/picked-icon.py` (`assets/brand/prism-figure.png`, `splash-icon*.png`,
+  `icon*.png`, `adaptive-*.png`). The diamond SVGs in `assets/brand/` are kept only as reference.
+- **Needs a new native build** (icons and splash are baked in): auto-ship's production-native build carries it.
+- The rejected "cute prism creature" (1 Nov 10:31) was a redrawn guess, not this picture.
+
+## Earlier decision (owner-1101d #2, 1 Nov 2026, 10:31): creature rejected, back to the Prism diamond
 
 ![The Prism diamond](mascot/previous-prism-diamond/icon-preview.png)
 

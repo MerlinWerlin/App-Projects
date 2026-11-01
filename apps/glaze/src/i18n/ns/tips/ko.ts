@@ -30,7 +30,7 @@ export const ko: NonNullable<LocaleMessages['tips']> = {
     wallpaper: '배경화면 만들기',
     icons: '아이콘 탭',
     install: '아이콘 설치',
-    live: 'Live 탭',
+    live: '라이브 포토 메이커',
     shapes: '아이콘 모양 설정',
     override: '아이콘 탭',
     addApp: '아이콘 탭',
@@ -46,7 +46,7 @@ export const ko: NonNullable<LocaleMessages['tips']> = {
     },
     liveLock: {
       title: 'Live Photo 만들기',
-      body: 'Live 탭에서 비디오를 Live Photo로 바꾸세요. 사진 앱에서는 움직이지만, 배경화면으로는 iPhone이 멈춘 채로 두는 경우가 많습니다.',
+      body: '배경화면의 라이브 포토 메이커에서 비디오를 Live Photo로 바꾸세요. 사진 앱에서는 움직이지만, 배경화면으로는 iPhone이 멈춘 채로 두는 경우가 많습니다.',
     },
     themePick: {
       title: '테마로 시작하기',

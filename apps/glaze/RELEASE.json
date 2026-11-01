@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze: pets and Live Activities removed, Prism diamond icon back with a full-screen light-beam intro, install profile is the main way to set icons and a new theme replaces old icons, one widget shelf order and any art at any size",
+  "note": "Glaze: your picked Prism figure as the app icon and in the startup, each widget can show its own art (Edit Widget > Art from My widget art), downloaded themes update to the full widget art",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

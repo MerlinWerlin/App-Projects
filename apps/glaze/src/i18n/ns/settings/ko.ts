@@ -83,7 +83,8 @@ export const ko: NonNullable<LocaleMessages['settings']> = {
     addedTitle: '아이콘은 교체가 아니라 추가됩니다',
     addedBody: 'iOS에서는 어떤 앱도 다른 앱의 아이콘을 바꿀 수 없습니다. 대신 Glaze는 새로운 디자인의 단축어를 홈 화면에 추가합니다. 탭하면 실제 앱이 열립니다.',
     waysTitle: '추가하는 두 가지 방법',
-    waysBody: '단축어(권장): Glaze가 안내하는 대로 단축어 앱으로 아이콘을 하나씩 추가합니다. 일괄(선택형 베타): 프로필 하나로 모든 아이콘을 한 번에 추가합니다.',
+    // T210: Install all at once is the main way since T202 (owner-1101d #5).
+    waysBody: '한 번에 모두 설치(기본 방법): 프로파일 하나가 Safari와 설정을 거쳐 모든 아이콘을 추가하며, 새 테마용으로 만든 프로파일은 이전 아이콘을 대체합니다. 프로파일 아이콘은 Safari에서 한 번 탭한 뒤 앱을 엽니다(‘…에서 열겠습니까?’). iOS 제한입니다. 단축어(하나씩): 각 아이콘이 ‘앱 열기’ 동작을 사용하므로 앱이 바로 열립니다.',
     originalsTitle: '원래 아이콘은 어디로 가나요',
     originalsBody: '원래 아이콘을 길게 누르고 앱 제거, 홈 화면에서 제거를 탭하세요. 앱은 설치된 채로 앱 보관함으로 이동합니다(마지막 페이지에서 왼쪽으로 스와이프).',
     removeTitle: 'Glaze 아이콘 제거',

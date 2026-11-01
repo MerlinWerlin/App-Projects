@@ -83,7 +83,8 @@ export const zhHans: NonNullable<LocaleMessages['settings']> = {
     addedTitle: '图标是添加的，而不是替换',
     addedBody: 'iOS 不允许任何应用更改其他应用的图标。因此 Glaze 会在主屏幕上添加带有新外观的快捷方式。轻点即可打开真正的应用。',
     waysTitle: '两种添加方式',
-    waysBody: '快捷指令（推荐）：Glaze 会引导你用“快捷指令”应用逐个添加图标。批量（可选测试版）：一个描述文件一次添加所有图标。',
+    // T210: Install all at once is the main way since T202 (owner-1101d #5).
+    waysBody: '一次全部安装（主要方式）：一个描述文件经由 Safari 和“设置”添加所有图标；为新主题制作的描述文件会替换旧图标。描述文件图标需要先在 Safari 中轻点一下才能打开 App（“在…中打开？”），这是 iOS 的限制。快捷指令（一次一个）：每个图标使用“打开 App”操作，直接打开 App。',
     originalsTitle: '原来的图标去哪了',
     originalsBody: '长按原图标，轻点“移除 App”，再轻点“从主屏幕移除”。应用仍然安装着，并会移到 App 资源库（在最后一页继续向左滑动）。',
     removeTitle: '移除 Glaze 图标',

@@ -32,7 +32,7 @@ export const it: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'Creatore di sfondi',
     icons: 'Scheda Icone',
     install: 'Installa icone',
-    live: 'Scheda Live',
+    live: 'Creatore di Live Photo',
     shapes: 'Impostazioni forma icona',
     override: 'Scheda Icone',
     addApp: 'Scheda Icone',
@@ -48,7 +48,7 @@ export const it: NonNullable<LocaleMessages['tips']> = {
     },
     liveLock: {
       title: 'Crea una Live Photo',
-      body: 'Trasforma un video in Live Photo nella scheda Live. Si muove in Foto; come sfondo, l’iPhone spesso la lascia ferma.',
+      body: 'Trasforma un video in Live Photo con il Creatore di Live Photo, in Sfondi. Si muove in Foto; come sfondo, l’iPhone spesso la lascia ferma.',
     },
     themePick: {
       title: 'Parti da un tema',

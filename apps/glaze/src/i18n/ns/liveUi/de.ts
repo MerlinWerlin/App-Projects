@@ -20,7 +20,7 @@ export const de: NonNullable<LocaleMessages['liveUi']> = {
     subtitle: 'aus deinem eigenen Video',
     cta: 'Video oder GIF auswählen',
     a11y: 'Live Photo aus deinem eigenen Video erstellen. {detail}',
-    hint: 'Öffnet den Tab „Live“ und deine Mediathek, um ein Video oder GIF auszuwählen',
+    hint: 'Öffnet den Live-Photo-Editor und deine Mediathek, um ein Video oder GIF auszuwählen',
     subExpoGo: 'Hier ausrichten und ansehen, dann ein Standbild als Hintergrund und den Clip sichern. Die volle Glaze-Version speichert es als Live Photo.',
     subLoop: 'Als Live Photo in Fotos gesichert. Es bewegt sich, wenn du es in Fotos gedrückt hältst, nicht in einem Dauer-Loop.',
     subLivePhoto: 'Als Live Photo in Fotos gesichert, das sich beim Drücken bewegt. Unter iOS {version} bleibt es als Hintergrund unbewegt.',

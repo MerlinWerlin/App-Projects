@@ -31,7 +31,7 @@ export const hi: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'वॉलपेपर मेकर',
     icons: 'आइकन टैब',
     install: 'आइकन इंस्टॉल करें',
-    live: 'Live टैब',
+    live: 'लाइव फ़ोटो मेकर',
     shapes: 'आइकन आकार सेटिंग',
     override: 'आइकन टैब',
     addApp: 'आइकन टैब',
@@ -47,7 +47,7 @@ export const hi: NonNullable<LocaleMessages['tips']> = {
     },
     liveLock: {
       title: 'Live Photo बनाएँ',
-      body: 'Live टैब में किसी वीडियो को Live Photo में बदलें। यह Photos में चलती है; वॉलपेपर के रूप में iPhone अक्सर इसे स्थिर रखता है।',
+      body: 'वॉलपेपर में लाइव फ़ोटो मेकर से किसी वीडियो को Live Photo में बदलें। यह Photos में चलती है; वॉलपेपर के रूप में iPhone अक्सर इसे स्थिर रखता है।',
     },
     themePick: {
       title: 'किसी थीम से शुरू करें',

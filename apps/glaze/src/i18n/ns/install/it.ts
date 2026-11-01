@@ -37,6 +37,8 @@ export const it: NonNullable<LocaleMessages['install']> = {
     },
     cantReplace: 'iOS non permette di sostituire le icone delle app. Così aggiungi nuove icone che aprono le tue app; le originali finiscono nella Libreria app.',
     more: '+{count}',
+    // T210: eyebrow over the summary heading.
+    eyebrow: 'Il tuo set di icone',
   },
   state: {
     loadError: 'Impossibile caricare il tuo set di icone.',
@@ -47,7 +49,10 @@ export const it: NonNullable<LocaleMessages['install']> = {
   },
   method: {
     heading: 'Come installare',
-    bulk: 'Installazione in blocco',
+    // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
+    bulk: 'Installa tutto in una volta',
+    // T210: eyebrow over the Install all at once heading.
+    bulkEyebrow: 'Il modo rapido',
     bulkBody: {
       one: 'Un profilo aggiunge {count} icona in una volta. Circa due minuti.',
       other: 'Un profilo aggiunge {count} icone in una volta. Circa due minuti.',
@@ -56,7 +61,7 @@ export const it: NonNullable<LocaleMessages['install']> = {
     shortcutsOnly: 'Glaze aggiunge ogni icona con l’app Comandi Rapidi e l’azione «Apri app»: l’icona apre subito l’app, senza Safari e senza la domanda «Aprire in…?». Un comando per app, circa un minuto ciascuno. Funziona con tutte le app.',
     shortcutsFallback: 'Preferisci Comandi Rapidi? Un’icona alla volta',
     shortcutsFallbackHint: 'Passa a creare ogni icona con l’app Comandi Rapidi',
-    backToBulk: 'Installa tutto in una volta',
+    backToBulk: 'Installa invece tutto in una volta',
     backToBulkHint: 'Torna a un solo profilo per tutte le icone',
     safariTap: { one: '{count} delle tue {total} app si apre con un rapido tocco in Safari («Aprire in…?»): un limite di iOS per le icone dei profili.', other: '{count} delle tue {total} app si aprono con un rapido tocco in Safari («Aprire in…?»): un limite di iOS per le icone dei profili.' },
     safariTapAll: { one: 'Questa app si apre con un rapido tocco in Safari («Aprire in…?»): un limite di iOS per le icone dei profili.', other: 'Tutte le {count} app si aprono con un rapido tocco in Safari («Aprire in…?»): un limite di iOS per le icone dei profili.' },
@@ -77,7 +82,6 @@ export const it: NonNullable<LocaleMessages['install']> = {
     noSharing: 'La condivisione non è disponibile su questo dispositivo, quindi il profilo non può essere salvato su File.',
     noIcons: 'Non è stato possibile disegnare icone per il profilo.',
     cleared: 'Il file del profilo è stato rimosso dalla cache. Tocca di nuovo Genera profilo.',
-    copyFailed: 'Copia non riuscita. Seleziona il testo del link e copialo a mano.',
     noShortcutsApp: 'L’app Comandi Rapidi non è installata. Scaricala gratis dall’App Store, poi torna qui.',
   },
   shortcuts: {
@@ -108,10 +112,6 @@ export const it: NonNullable<LocaleMessages['install']> = {
     saveOne: 'Salva l’icona di {app} in Foto',
     showSteps: 'Mostra i passaggi per {app}',
     hideSteps: 'Nascondi i passaggi per {app}',
-    copy: 'Copia',
-    copied: 'Copiato',
-    copyLink: 'Copia il link di {app} {url}',
-    linkCopied: 'Link di {app} copiato',
     undo: {
       title: 'Per annullare in seguito',
       removeIcon: 'Per togliere una nuova icona, tienila premuta, tocca Rimuovi (o Elimina segnalibro) e conferma. Sparisce solo quell’icona.',
@@ -121,8 +121,6 @@ export const it: NonNullable<LocaleMessages['install']> = {
   },
   steps: {
     openShortcuts: 'Apri l’app Comandi Rapidi e tocca + (in alto a destra).',
-    addOpenUrl: 'Tocca Aggiungi azione, cerca «Apri URL» e toccala.',
-    pasteUrl: 'Tocca «URL» e incolla {url} (usa Copia qui sopra).',
     addOpenApp: 'Tocca Aggiungi azione, cerca «Apri app» e toccala.',
     chooseApp: 'Tocca «App» e scegli {name} dall’elenco.',
     rename: 'Tocca il nome in alto, scegli Rinomina e scrivi {name}.',

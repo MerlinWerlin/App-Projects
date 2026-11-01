@@ -18,6 +18,8 @@ import {
   GEM_EDGES_D,
   GEM_OUTLINE_D,
   GEM_GLINT_D,
+  FIGURE,
+  FIGURE_GLINT_D,
   INTRO_MS,
   SPECTRUM,
   SPLASH_SIZE,
@@ -65,7 +67,7 @@ const BRAND_SVGS = [...DIAMOND, 'splash-icon.svg', 'splash-icon-dark.svg'];
 
 // ---------------------------------------------------------------- the mark
 
-test('brand (T199): the app icon and adaptive icons are the 25 Oct Prism diamond, verbatim; no creature anywhere', () => {
+test('brand (T199, T216): the brand SVG sources (splash, intro gem, Android monochrome) are the 25 Oct Prism diamond, verbatim', () => {
   for (const f of DIAMOND) {
     assert.equal(read('assets', 'brand', f), read('docs', 'mascot', 'previous-prism-diamond', f), `${f} = the 25 Oct diamond (node scripts/brand/build-brand.mjs)`);
   }
@@ -97,7 +99,7 @@ test('brand (T199): the app icon and adaptive icons are the 25 Oct Prism diamond
   assert.ok(lum(ADAPTIVE_BG) < 0.05);
 });
 
-test('brand (T199): the splash image is the unlit diamond alone (no tile, no beam, transparent), generated from introGlaze.ts', () => {
+test('brand (T199, reference since T220): the diamond splash SVG still matches introGlaze.ts', () => {
   assert.equal(read('assets', 'brand', 'splash-icon.svg'), splashSvg(), 'regenerate: node scripts/brand/build-brand.mjs');
   assert.equal(read('assets', 'brand', 'splash-icon-dark.svg'), splashSvg());
   const svg = splashSvg();
@@ -116,16 +118,19 @@ test('brand: icon.png is 1024 × 1024 with no alpha (App Store); Android foregro
     assert.ok(icon.type === 2 || icon.type === 3, `${f}: colour type ${icon.type} has no alpha`);
     assert.ok(!icon.chunks.includes('tRNS'), 'no transparency chunk');
   }
-  for (const f of ['adaptive-foreground.png', 'adaptive-monochrome.png', 'splash-icon.png', 'splash-icon-dark.png']) {
+  for (const f of ['adaptive-foreground.png', 'adaptive-monochrome.png', 'splash-icon.png', 'splash-icon-dark.png', 'prism-figure.png']) {
     const p = ihdr(`assets/brand/${f}`);
-    assert.equal(p.w, 1024, f);
-    assert.equal(p.h, 1024, f);
+    // T220: the splash / intro figure is 720 px (shown at SPLASH_SIZE = 240 pt, so @3x); the Android icons 1024.
+    const px = f.startsWith('adaptive') ? 1024 : 720;
+    assert.equal(p.w, px, f);
+    assert.equal(p.h, px, f);
     assert.ok(p.type === 6 || (p.type === 3 && p.chunks.includes('tRNS')), `${f} keeps transparency`);
   }
-  // Bundle budget. T199: the diamond's soft gradients band badly in a palette PNG, so the icons are RGB (about
+  // Bundle budget. T216: icon.png / icon-dark.png / adaptive-foreground.png are the picked Prism picture (RGB, a
+  // palette PNG bands its glass gradients). T199: the diamond's soft gradients band badly in a palette PNG, so the icons are RGB (about
   // 420 KB, like the 25 Oct files); everything else stays small.
-  const budget: Record<string, number> = { 'icon.png': 460, 'icon-dark.png': 460 };
-  for (const f of ['icon.png', 'icon-dark.png', 'adaptive-foreground.png', 'adaptive-monochrome.png', 'splash-icon.png', 'splash-icon-dark.png']) {
+  const budget: Record<string, number> = { 'icon.png': 860, 'icon-dark.png': 860, 'adaptive-foreground.png': 520, 'splash-icon.png': 380, 'splash-icon-dark.png': 380, 'prism-figure.png': 480 };
+  for (const f of ['icon.png', 'icon-dark.png', 'adaptive-foreground.png', 'adaptive-monochrome.png', 'splash-icon.png', 'splash-icon-dark.png', 'prism-figure.png']) {
     const kb = statSync(join(root, 'assets', 'brand', f)).size / 1024;
     assert.ok(kb <= (budget[f] ?? 130), `${f} is ${kb.toFixed(0)} KB`);
   }
@@ -292,8 +297,8 @@ test('intro (T199): IntroGlaze is full screen, calm, untouchable, hidden from Vo
   assert.match(src, /isReduceMotionEnabled\(\)/);
   assert.match(src, /shouldReduceMotion\(/);
   assert.match(src, /clock\.setValue\(1\)/);
-  // Draws the diamond from the shared geometry, unlit then lit; the beam, the six bands and the glint.
-  for (const name of ['GEM_FACETS', 'GEM_EDGES_D', 'GEM_OUTLINE_D', 'GEM_GLINT_D', 'SPECTRUM', 'mode="dim"', 'mode="lit"', "trackKeyframes('sweep')", "trackKeyframes('ignite')", 'BAND_TRACKS']) {
+  // T220: draws the picked Prism figure, unlit (the splash) then lit; the beam, the six bands and the glint.
+  for (const name of ['FIGURE_GLINT_D', 'assets/brand/prism-figure.png', 'assets/brand/splash-icon.png', 'SPECTRUM', 'mode="dim"', 'mode="lit"', "trackKeyframes('sweep')", "trackKeyframes('ignite')", 'BAND_TRACKS']) {
     assert.ok(src.includes(name), name);
   }
   // No leftover creature (eyes, blink, float, arch) or glaze-drip mark.
@@ -319,4 +324,34 @@ test('intro: the root layout mounts the app only when the intro starts fading, w
   // The app the intro fades to keeps its own background (light or dark).
   assert.equal(BRAND.light.bg, lightV2.bg);
   assert.equal(BRAND.dark.bg, darkV2.bg);
+});
+
+test('brand (T216): the app icon is the Prism picture Jared picked on 25 Oct, not a redrawn guess', () => {
+  const dir = join(root, 'docs', 'mascot', 'picked-1025');
+  assert.ok(existsSync(join(dir, 'glaze-prism.jpg')), 'the picked picture is in the repo');
+  assert.match(read('docs', 'mascot', 'picked-1025', 'README.md'), /glaze-prism\.jpg — THE PICK/);
+  // icon-dark is the same picture (it is already dark), byte for byte.
+  assert.ok(readFileSync(join(root, 'assets', 'brand', 'icon.png')).equals(readFileSync(join(root, 'assets', 'brand', 'icon-dark.png'))));
+  // Generated by the picked-icon script; build-brand.mjs no longer renders these from the diamond SVGs.
+  const build = read('scripts', 'brand', 'build-brand.mjs');
+  for (const f of ['icon.png', 'icon-dark.png', 'adaptive-foreground.png', 'adaptive-monochrome.png', 'splash-icon.png', 'splash-icon-dark.png', 'prism-figure.png']) {
+    assert.ok(!build.includes(`'${f}'`), `build-brand.mjs leaves ${f} alone`);
+  }
+  assert.match(read('scripts', 'brand', 'picked-icon.py'), /glaze-prism\.jpg/);
+  // The photo-like icon is far bigger than the old vector render (about 420 KB); a guard against falling back to it.
+  assert.ok(statSync(join(root, 'assets', 'brand', 'icon.png')).size > 600 * 1024, 'icon.png is the picked picture');
+});
+
+test('brand (T220, owner-1101e 11:39): splash, intro and Android monochrome all come from the picked Prism picture', () => {
+  const script = read('scripts', 'brand', 'picked-icon.py');
+  for (const f of ['prism-figure.png', 'splash-icon.png', 'splash-icon-dark.png', 'adaptive-monochrome.png']) assert.ok(script.includes(`'${f}'`), f);
+  // Light and dark splash are the same unlit figure.
+  assert.ok(readFileSync(join(root, 'assets', 'brand', 'splash-icon.png')).equals(readFileSync(join(root, 'assets', 'brand', 'splash-icon-dark.png'))));
+  // The beam enters the head from above and the colour fan pours from under the feet, inside the 1024 canvas.
+  assert.ok(FIGURE.ENTRY[1] < FIGURE.TIP[1]);
+  for (const p of [FIGURE.ENTRY, FIGURE.TIP]) assert.ok(p[0] > 0 && p[0] < 1024 && p[1] > 0 && p[1] < 1024);
+  const L = introLayout(390, 844);
+  const k = L.size / 1024;
+  assert.ok(Math.abs(L.tip[1] - (L.oy + FIGURE.TIP[1] * k)) < 0.1, 'fan from the figure, not the old gem tip');
+  assert.match(FIGURE_GLINT_D, /^M\d/);
 });

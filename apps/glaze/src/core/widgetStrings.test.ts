@@ -84,7 +84,7 @@ test('no hard-coded English left in the habit widget views', () => {
 });
 
 test('App Intent titles and the other widgets\' literal names have English entries', () => {
-  for (const f of ['HabitIntents.swift', 'ClockWidget.swift', 'DateWidget.swift', 'PhotoWidget.swift', 'QuoteWidget.swift', 'SeamlessWidget.swift']) {
+  for (const f of ['HabitIntents.swift', 'ClockWidget.swift', 'DateWidget.swift', 'PhotoWidget.swift', 'QuoteWidget.swift', 'SeamlessWidget.swift', 'WidgetArtLibrary.swift']) {
     const src = readFileSync(join(WIDGET_DIR, f), 'utf8');
     const literals = [
       ...src.matchAll(/(?:title:|LocalizedStringResource =|configurationDisplayName\(|\.description\(|Text\()\s*"((?:[^"\\]|\\.)*)"/g),

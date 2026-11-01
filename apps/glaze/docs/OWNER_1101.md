@@ -43,3 +43,18 @@ First: the repo slim-down. SHIP_BASE was re-pinned to `19a742e`, and run 207 swa
 | 5 | Icon install: profile always the main method (Shortcuts only as a fallback link); a new profile must replace the old icons. | T202 | done: Install all at once is the main method, Shortcuts a small fallback link; stable profile + per-app web clip ids (v5 UUIDs from install id + app) so a new theme replaces the old icons; screen says how many apps open via a Safari tap (all, for profile icons: iOS limit) |
 | 6 | Widget render check: contact sheets of every option at every size, reviewed each run. | T203 | done: scripts/widget-snapshots.mjs renders all 61 art options of 13 themes at 3 sizes with the app's own placement maths; sheets in docs/widget_snapshots/; nothing cropped. Follow-ups T205-T208 (square art small in medium, fixed numbers in practical art, menu polish, preview vs native blur). macOS SwiftUI renderer plan in docs/widget_snapshots/MACOS_RENDERER.md (needs a CI change by the App Factory chat) |
 | 7 | TRIAL.md yes/no questions. | T204 | done: docs/TRIAL.md "New since your last test (1 Nov, late morning: owner-1101d)" |
+
+## owner-1101e (manual fire, 1 Nov 11:06 Sydney)
+"Run builds back-to-back today, not just on schedule. Continue the open owner-1101/1101d items and the premium UI pass; review the widget render-check sheets and fix anything off; keep growing Find apps."
+Tasks: T209 (widget sheets review + fixes, incl. T206 app side), T210 (premium UI on the owner-1101d screens), T211 (Find apps batch), plus T193 cleanup.
+
+## owner-1101e brief (manual fire, 1 Nov 11:39 Sydney, run 212)
+He likes the new full-screen startup animation.
+
+| # | Brief | Task | Status |
+|---|---|---|---|
+| 1 | The real Prism pick is found (docs/mascot/picked-1025/glaze-prism.jpg): make it the app icon (iOS + Android foreground/monochrome) and use the same figure in the startup animation, same style. Stop redrawing guesses; record in MASCOT.md. | T216 (run 211), T220 | done (uncompiled, needs native build): icon, Android foreground + monochrome, splash and intro all from the picked picture (scripts/brand/picked-icon.py); docs/MASCOT.md |
+| 2 | Several different art widgets: each widget instance configurable (iOS 17 AppIntent, long-press > Edit Widget > choose art) from a "My widget art" library (applied pieces from any theme + own photos, each its own App Group file); old single image stays the fallback. | T221 | done (Swift uncompiled, needs native build): Seamless widget is now AppIntentConfiguration with WidgetArtEntity/WidgetArtQuery; widget-art/<id>.jpg + index.json; Use on my widget adds; My widget art list with Remove |
+| 3 | Downloaded packs must update when the catalogue packVersion is newer (v1 phones show only 3 pieces). | T222 | done (JS): background re-download into staging + atomic swap; "Update available" card with Update now / Try again |
+| 4 | Cloud Atelier's paper boat didn't fit: verify scaledToFit over blurred fill at every size, v2 options reach it, check the sheets. | T223 | done: path verified fit everywhere; fixed the fill path to fit when the real image's shape doesn't match its declared size; findings in docs/WIDGETS.md. Most likely he was on a build from before T201 |
+| - | TRIAL.md yes/no for 1-4. | - | done: docs/TRIAL.md "New since your last test (1 Nov, midday: owner-1101e brief)" |

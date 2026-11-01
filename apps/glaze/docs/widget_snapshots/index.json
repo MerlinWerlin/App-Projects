@@ -54,6 +54,8 @@
     {
      "id": "hero-small",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": null,
      "fit": "fit",
      "background": "wallpaper",
@@ -75,20 +77,20 @@
      "flags": [],
      "menu": {
       "small": {
-       "text": "Art 1",
-       "widthPt": 31,
+       "text": "Small piece",
+       "widthPt": 40,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
-       "text": "Art 2",
-       "widthPt": 34,
+       "text": "Small piece",
+       "widthPt": 81,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
-       "text": "Art 2",
-       "widthPt": 34,
+       "text": "Small piece",
+       "widthPt": 81,
        "availablePt": 390,
        "truncated": false
       }
@@ -174,6 +176,8 @@
     {
      "id": "hero-medium",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": null,
      "fit": "fit",
      "background": "wallpaper",
@@ -195,20 +199,20 @@
      "flags": [],
      "menu": {
       "small": {
-       "text": "Art 3",
-       "widthPt": 35,
+       "text": "Wide piece",
+       "widthPt": 39,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
-       "text": "Art 1",
-       "widthPt": 31,
+       "text": "Wide piece",
+       "widthPt": 79,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
-       "text": "Art 3",
-       "widthPt": 35,
+       "text": "Wide piece",
+       "widthPt": 79,
        "availablePt": 390,
        "truncated": false
       }
@@ -300,6 +304,8 @@
     {
      "id": "hero-large",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": null,
      "fit": "fit",
      "background": "wallpaper",
@@ -321,20 +327,20 @@
      "flags": [],
      "menu": {
       "small": {
-       "text": "Art 2",
-       "widthPt": 34,
+       "text": "Large piece",
+       "widthPt": 41,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
-       "text": "Art 3",
-       "widthPt": 35,
+       "text": "Large piece",
+       "widthPt": 82,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
-       "text": "Art 1",
-       "widthPt": 31,
+       "text": "Large piece",
+       "widthPt": 82,
        "availablePt": 390,
        "truncated": false
       }
@@ -436,6 +442,8 @@
     {
      "id": "hero-small",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": null,
      "fit": "fit",
      "background": "wallpaper",
@@ -457,20 +465,20 @@
      "flags": [],
      "menu": {
       "small": {
-       "text": "Art 1",
-       "widthPt": 31,
+       "text": "Small piece",
+       "widthPt": 40,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
-       "text": "Art 2",
-       "widthPt": 34,
+       "text": "Small piece",
+       "widthPt": 81,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
-       "text": "Art 2",
-       "widthPt": 34,
+       "text": "Small piece",
+       "widthPt": 81,
        "availablePt": 390,
        "truncated": false
       }
@@ -556,6 +564,8 @@
     {
      "id": "hero-medium",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": null,
      "fit": "fit",
      "background": "wallpaper",
@@ -577,20 +587,20 @@
      "flags": [],
      "menu": {
       "small": {
-       "text": "Art 3",
-       "widthPt": 35,
+       "text": "Wide piece",
+       "widthPt": 39,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
-       "text": "Art 1",
-       "widthPt": 31,
+       "text": "Wide piece",
+       "widthPt": 79,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
-       "text": "Art 3",
-       "widthPt": 35,
+       "text": "Wide piece",
+       "widthPt": 79,
        "availablePt": 390,
        "truncated": false
       }
@@ -682,6 +692,8 @@
     {
      "id": "hero-large",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": null,
      "fit": "fit",
      "background": "wallpaper",
@@ -703,20 +715,20 @@
      "flags": [],
      "menu": {
       "small": {
-       "text": "Art 2",
-       "widthPt": 34,
+       "text": "Large piece",
+       "widthPt": 41,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
-       "text": "Art 3",
-       "widthPt": 35,
+       "text": "Large piece",
+       "widthPt": 82,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
-       "text": "Art 1",
-       "widthPt": 31,
+       "text": "Large piece",
+       "widthPt": 82,
        "availablePt": 390,
        "truncated": false
       }
@@ -818,6 +830,8 @@
     {
      "id": "hero-small",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": null,
      "fit": "fit",
      "background": "wallpaper",
@@ -839,20 +853,20 @@
      "flags": [],
      "menu": {
       "small": {
-       "text": "Art 1",
-       "widthPt": 31,
+       "text": "Small piece",
+       "widthPt": 40,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
-       "text": "Art 2",
-       "widthPt": 34,
+       "text": "Small piece",
+       "widthPt": 81,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
-       "text": "Art 2",
-       "widthPt": 34,
+       "text": "Small piece",
+       "widthPt": 81,
        "availablePt": 390,
        "truncated": false
       }
@@ -938,6 +952,8 @@
     {
      "id": "hero-medium",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": null,
      "fit": "fit",
      "background": "wallpaper",
@@ -959,20 +975,20 @@
      "flags": [],
      "menu": {
       "small": {
-       "text": "Art 3",
-       "widthPt": 35,
+       "text": "Wide piece",
+       "widthPt": 39,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
-       "text": "Art 1",
-       "widthPt": 31,
+       "text": "Wide piece",
+       "widthPt": 79,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
-       "text": "Art 3",
-       "widthPt": 35,
+       "text": "Wide piece",
+       "widthPt": 79,
        "availablePt": 390,
        "truncated": false
       }
@@ -1064,6 +1080,8 @@
     {
      "id": "hero-large",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": null,
      "fit": "fit",
      "background": "wallpaper",
@@ -1085,20 +1103,20 @@
      "flags": [],
      "menu": {
       "small": {
-       "text": "Art 2",
-       "widthPt": 34,
+       "text": "Large piece",
+       "widthPt": 41,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
-       "text": "Art 3",
-       "widthPt": 35,
+       "text": "Large piece",
+       "widthPt": 82,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
-       "text": "Art 1",
-       "widthPt": 31,
+       "text": "Large piece",
+       "widthPt": 82,
        "availablePt": 390,
        "truncated": false
       }
@@ -1200,6 +1218,8 @@
     {
      "id": "constellation-clock",
      "kind": "clock",
+     "shelfKind": "art",
+     "fixedValues": true,
      "label": "Constellation clock",
      "fit": "fit",
      "background": "blur",
@@ -1222,19 +1242,19 @@
      "menu": {
       "small": {
        "text": "Constellation clock",
-       "widthPt": 179,
+       "widthPt": 67,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
        "text": "Constellation clock",
-       "widthPt": 179,
+       "widthPt": 134,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
        "text": "Constellation clock",
-       "widthPt": 179,
+       "widthPt": 134,
        "availablePt": 390,
        "truncated": false
       }
@@ -1305,6 +1325,8 @@
     {
      "id": "copper-eclipse",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Copper eclipse",
      "fit": "fit",
      "background": "blur",
@@ -1327,7 +1349,7 @@
      "menu": {
       "small": {
        "text": "Copper eclipse",
-       "widthPt": 106,
+       "widthPt": 53,
        "availablePt": 185,
        "truncated": false
       },
@@ -1410,6 +1432,8 @@
     {
      "id": "jupiter-polar",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Jupiter polar",
      "fit": "fit",
      "background": "blur",
@@ -1432,7 +1456,7 @@
      "menu": {
       "small": {
        "text": "Jupiter polar",
-       "widthPt": 89,
+       "widthPt": 44,
        "availablePt": 185,
        "truncated": false
       },
@@ -1515,6 +1539,8 @@
     {
      "id": "saturn-rings",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Saturn rings",
      "fit": "fit",
      "background": "blur",
@@ -1537,7 +1563,7 @@
      "menu": {
       "small": {
        "text": "Saturn rings",
-       "widthPt": 86,
+       "widthPt": 43,
        "availablePt": 185,
        "truncated": false
       },
@@ -1620,6 +1646,8 @@
     {
      "id": "silver-moon",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Silver moon",
      "fit": "fit",
      "background": "blur",
@@ -1642,7 +1670,7 @@
      "menu": {
       "small": {
        "text": "Silver moon",
-       "widthPt": 83,
+       "widthPt": 42,
        "availablePt": 185,
        "truncated": false
       },
@@ -1725,6 +1753,8 @@
     {
      "id": "spiral-galaxy",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Spiral galaxy",
      "fit": "fit",
      "background": "blur",
@@ -1747,7 +1777,7 @@
      "menu": {
       "small": {
        "text": "Spiral galaxy",
-       "widthPt": 90,
+       "widthPt": 45,
        "availablePt": 185,
        "truncated": false
       },
@@ -1846,6 +1876,8 @@
     {
      "id": "cloud-date",
      "kind": "calendar",
+     "shelfKind": "art",
+     "fixedValues": true,
      "label": "Cloud date",
      "fit": "fit",
      "background": "blur",
@@ -1868,19 +1900,19 @@
      "menu": {
       "small": {
        "text": "Cloud date",
-       "widthPt": 122,
+       "widthPt": 38,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
        "text": "Cloud date",
-       "widthPt": 122,
+       "widthPt": 76,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
        "text": "Cloud date",
-       "widthPt": 122,
+       "widthPt": 76,
        "availablePt": 390,
        "truncated": false
       }
@@ -1951,6 +1983,8 @@
     {
      "id": "cloud-whale",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Cloud whale",
      "fit": "fit",
      "background": "blur",
@@ -1973,7 +2007,7 @@
      "menu": {
       "small": {
        "text": "Cloud whale",
-       "widthPt": 87,
+       "widthPt": 43,
        "availablePt": 185,
        "truncated": false
       },
@@ -2056,6 +2090,8 @@
     {
      "id": "balloon-skiff",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Balloon skiff",
      "fit": "fit",
      "background": "blur",
@@ -2078,7 +2114,7 @@
      "menu": {
       "small": {
        "text": "Balloon skiff",
-       "widthPt": 86,
+       "widthPt": 43,
        "availablePt": 185,
        "truncated": false
       },
@@ -2161,6 +2197,8 @@
     {
      "id": "cloud-kite",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Cloud kite",
      "fit": "fit",
      "background": "blur",
@@ -2183,7 +2221,7 @@
      "menu": {
       "small": {
        "text": "Cloud kite",
-       "widthPt": 71,
+       "widthPt": 35,
        "availablePt": 185,
        "truncated": false
       },
@@ -2266,6 +2304,8 @@
     {
      "id": "paper-boat",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Paper boat",
      "fit": "fit",
      "background": "blur",
@@ -2288,7 +2328,7 @@
      "menu": {
       "small": {
        "text": "Paper boat",
-       "widthPt": 76,
+       "widthPt": 38,
        "availablePt": 185,
        "truncated": false
       },
@@ -2387,6 +2427,8 @@
     {
      "id": "dune-countdown",
      "kind": "countdown",
+     "shelfKind": "art",
+     "fixedValues": true,
      "label": "Dune countdown",
      "fit": "fit",
      "background": "blur",
@@ -2409,19 +2451,19 @@
      "menu": {
       "small": {
        "text": "Dune countdown",
-       "widthPt": 165,
+       "widthPt": 60,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
        "text": "Dune countdown",
-       "widthPt": 165,
+       "widthPt": 120,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
        "text": "Dune countdown",
-       "widthPt": 165,
+       "widthPt": 120,
        "availablePt": 390,
        "truncated": false
       }
@@ -2492,6 +2534,8 @@
     {
      "id": "dunes-photo",
      "kind": "photo",
+     "shelfKind": "photo",
+     "fixedValues": false,
      "label": "Dunes photo",
      "fit": "fit",
      "background": "blur",
@@ -2514,7 +2558,7 @@
      "menu": {
       "small": {
        "text": "Dunes photo",
-       "widthPt": 135,
+       "widthPt": 45,
        "availablePt": 185,
        "truncated": false
       },
@@ -2597,6 +2641,8 @@
     {
      "id": "crescent-moon",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Crescent moon",
      "fit": "fit",
      "background": "blur",
@@ -2619,7 +2665,7 @@
      "menu": {
       "small": {
        "text": "Crescent moon",
-       "widthPt": 107,
+       "widthPt": 54,
        "availablePt": 185,
        "truncated": false
       },
@@ -2702,6 +2748,8 @@
     {
      "id": "desert-scarab",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Desert scarab",
      "fit": "fit",
      "background": "blur",
@@ -2724,7 +2772,7 @@
      "menu": {
       "small": {
        "text": "Desert scarab",
-       "widthPt": 99,
+       "widthPt": 49,
        "availablePt": 185,
        "truncated": false
       },
@@ -2807,6 +2855,8 @@
     {
      "id": "sandstone-arch",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Sandstone arch",
      "fit": "fit",
      "background": "blur",
@@ -2829,7 +2879,7 @@
      "menu": {
       "small": {
        "text": "Sandstone arch",
-       "widthPt": 110,
+       "widthPt": 55,
        "availablePt": 185,
        "truncated": false
       },
@@ -2912,6 +2962,8 @@
     {
      "id": "pyramid",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Pyramid",
      "fit": "fit",
      "background": "blur",
@@ -2934,7 +2986,7 @@
      "menu": {
       "small": {
        "text": "Pyramid",
-       "widthPt": 58,
+       "widthPt": 29,
        "availablePt": 185,
        "truncated": false
       },
@@ -3017,6 +3069,8 @@
     {
      "id": "solstice-seal",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Solstice seal",
      "fit": "fit",
      "background": "blur",
@@ -3039,7 +3093,7 @@
      "menu": {
       "small": {
        "text": "Solstice seal",
-       "widthPt": 88,
+       "widthPt": 44,
        "availablePt": 185,
        "truncated": false
       },
@@ -3138,6 +3192,8 @@
     {
      "id": "acorn-habits",
      "kind": "habits",
+     "shelfKind": "art",
+     "fixedValues": true,
      "label": "Acorn habits",
      "fit": "fit",
      "background": "blur",
@@ -3160,19 +3216,19 @@
      "menu": {
       "small": {
        "text": "Acorn habits",
-       "widthPt": 135,
+       "widthPt": 45,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
        "text": "Acorn habits",
-       "widthPt": 135,
+       "widthPt": 89,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
        "text": "Acorn habits",
-       "widthPt": 135,
+       "widthPt": 89,
        "availablePt": 390,
        "truncated": false
       }
@@ -3243,6 +3299,8 @@
     {
      "id": "firefly-jar",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Firefly jar",
      "fit": "fit",
      "background": "blur",
@@ -3265,7 +3323,7 @@
      "menu": {
       "small": {
        "text": "Firefly jar",
-       "widthPt": 66,
+       "widthPt": 33,
        "availablePt": 185,
        "truncated": false
       },
@@ -3348,6 +3406,8 @@
     {
      "id": "mosswood-door",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Mosswood door",
      "fit": "fit",
      "background": "blur",
@@ -3370,7 +3430,7 @@
      "menu": {
       "small": {
        "text": "Mosswood door",
-       "widthPt": 114,
+       "widthPt": 57,
        "availablePt": 185,
        "truncated": false
       },
@@ -3453,6 +3513,8 @@
     {
      "id": "mushroom-lantern",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Mushroom lantern",
      "fit": "fit",
      "background": "blur",
@@ -3475,7 +3537,7 @@
      "menu": {
       "small": {
        "text": "Mushroom lantern",
-       "widthPt": 129,
+       "widthPt": 64,
        "availablePt": 185,
        "truncated": false
       },
@@ -3558,6 +3620,8 @@
     {
      "id": "sleeping-fox",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Sleeping fox",
      "fit": "fit",
      "background": "blur",
@@ -3580,7 +3644,7 @@
      "menu": {
       "small": {
        "text": "Sleeping fox",
-       "widthPt": 87,
+       "widthPt": 43,
        "availablePt": 185,
        "truncated": false
       },
@@ -3679,6 +3743,8 @@
     {
      "id": "harbour-focus",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Harbour focus",
      "fit": "fit",
      "background": "blur",
@@ -3701,7 +3767,7 @@
      "menu": {
       "small": {
        "text": "Harbour focus",
-       "widthPt": 101,
+       "widthPt": 51,
        "availablePt": 185,
        "truncated": false
       },
@@ -3784,6 +3850,8 @@
     {
      "id": "ink-stingray",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Ink stingray",
      "fit": "fit",
      "background": "blur",
@@ -3806,7 +3874,7 @@
      "menu": {
       "small": {
        "text": "Ink stingray",
-       "widthPt": 82,
+       "widthPt": 41,
        "availablePt": 185,
        "truncated": false
       },
@@ -3889,6 +3957,8 @@
     {
      "id": "paper-lighthouse",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Paper lighthouse",
      "fit": "fit",
      "background": "blur",
@@ -3911,7 +3981,7 @@
      "menu": {
       "small": {
        "text": "Paper lighthouse",
-       "widthPt": 119,
+       "widthPt": 59,
        "availablePt": 185,
        "truncated": false
       },
@@ -3994,6 +4064,8 @@
     {
      "id": "ink-whale",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Ink whale",
      "fit": "fit",
      "background": "blur",
@@ -4016,7 +4088,7 @@
      "menu": {
       "small": {
        "text": "Ink whale",
-       "widthPt": 67,
+       "widthPt": 33,
        "availablePt": 185,
        "truncated": false
       },
@@ -4099,6 +4171,8 @@
     {
      "id": "paper-harbour",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Paper harbour",
      "fit": "fit",
      "background": "blur",
@@ -4121,7 +4195,7 @@
      "menu": {
       "small": {
        "text": "Paper harbour",
-       "widthPt": 101,
+       "widthPt": 50,
        "availablePt": 185,
        "truncated": false
       },
@@ -4220,6 +4294,8 @@
     {
      "id": "meadow-date",
      "kind": "calendar",
+     "shelfKind": "art",
+     "fixedValues": true,
      "label": "Meadow date",
      "fit": "fit",
      "background": "blur",
@@ -4242,19 +4318,19 @@
      "menu": {
       "small": {
        "text": "Meadow date",
-       "widthPt": 141,
+       "widthPt": 48,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
        "text": "Meadow date",
-       "widthPt": 141,
+       "widthPt": 95,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
        "text": "Meadow date",
-       "widthPt": 141,
+       "widthPt": 95,
        "availablePt": 390,
        "truncated": false
       }
@@ -4325,6 +4401,8 @@
     {
      "id": "dew-daisy",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Dew daisy",
      "fit": "fit",
      "background": "blur",
@@ -4347,7 +4425,7 @@
      "menu": {
       "small": {
        "text": "Dew daisy",
-       "widthPt": 73,
+       "widthPt": 36,
        "availablePt": 185,
        "truncated": false
       },
@@ -4430,6 +4508,8 @@
     {
      "id": "dew-grass-orb",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Dew grass orb",
      "fit": "fit",
      "background": "blur",
@@ -4452,7 +4532,7 @@
      "menu": {
       "small": {
        "text": "Dew grass orb",
-       "widthPt": 101,
+       "widthPt": 51,
        "availablePt": 185,
        "truncated": false
       },
@@ -4535,6 +4615,8 @@
     {
      "id": "sunlit-dandelion",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Sunlit dandelion",
      "fit": "fit",
      "background": "blur",
@@ -4557,7 +4639,7 @@
      "menu": {
       "small": {
        "text": "Sunlit dandelion",
-       "widthPt": 113,
+       "widthPt": 56,
        "availablePt": 185,
        "truncated": false
       },
@@ -4640,6 +4722,8 @@
     {
      "id": "morning-grass",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Morning grass",
      "fit": "fit",
      "background": "blur",
@@ -4662,7 +4746,7 @@
      "menu": {
       "small": {
        "text": "Morning grass",
-       "widthPt": 102,
+       "widthPt": 51,
        "availablePt": 185,
        "truncated": false
       },
@@ -4761,6 +4845,8 @@
     {
      "id": "moonpatch-habits",
      "kind": "habits",
+     "shelfKind": "art",
+     "fixedValues": true,
      "label": "Moonpatch habits",
      "fit": "fit",
      "background": "blur",
@@ -4783,19 +4869,19 @@
      "menu": {
       "small": {
        "text": "Moonpatch habits",
-       "widthPt": 172,
+       "widthPt": 63,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
        "text": "Moonpatch habits",
-       "widthPt": 172,
+       "widthPt": 127,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
        "text": "Moonpatch habits",
-       "widthPt": 172,
+       "widthPt": 127,
        "availablePt": 390,
        "truncated": false
       }
@@ -4866,6 +4952,8 @@
     {
      "id": "patchwork-kite",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Patchwork kite",
      "fit": "fit",
      "background": "blur",
@@ -4888,7 +4976,7 @@
      "menu": {
       "small": {
        "text": "Patchwork kite",
-       "widthPt": 104,
+       "widthPt": 52,
        "availablePt": 185,
        "truncated": false
       },
@@ -4971,6 +5059,8 @@
     {
      "id": "quilted-rocket",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Quilted rocket",
      "fit": "fit",
      "background": "blur",
@@ -4993,7 +5083,7 @@
      "menu": {
       "small": {
        "text": "Quilted rocket",
-       "widthPt": 99,
+       "widthPt": 49,
        "availablePt": 185,
        "truncated": false
       },
@@ -5076,6 +5166,8 @@
     {
      "id": "pocket-rocket",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Pocket rocket",
      "fit": "fit",
      "background": "blur",
@@ -5098,7 +5190,7 @@
      "menu": {
       "small": {
        "text": "Pocket rocket",
-       "widthPt": 96,
+       "widthPt": 48,
        "availablePt": 185,
        "truncated": false
       },
@@ -5181,6 +5273,8 @@
     {
      "id": "star-catcher",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Star catcher",
      "fit": "fit",
      "background": "blur",
@@ -5203,7 +5297,7 @@
      "menu": {
       "small": {
        "text": "Star catcher",
-       "widthPt": 86,
+       "widthPt": 43,
        "availablePt": 185,
        "truncated": false
       },
@@ -5302,6 +5396,8 @@
     {
      "id": "abyss-battery",
      "kind": "battery",
+     "shelfKind": "art",
+     "fixedValues": true,
      "label": "Abyss battery",
      "fit": "fit",
      "background": "blur",
@@ -5324,7 +5420,7 @@
      "menu": {
       "small": {
        "text": "Abyss battery",
-       "widthPt": 98,
+       "widthPt": 49,
        "availablePt": 185,
        "truncated": false
       },
@@ -5407,6 +5503,8 @@
     {
      "id": "droplet-lighthouse",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Droplet lighthouse",
      "fit": "fit",
      "background": "blur",
@@ -5429,7 +5527,7 @@
      "menu": {
       "small": {
        "text": "Droplet lighthouse",
-       "widthPt": 129,
+       "widthPt": 64,
        "availablePt": 185,
        "truncated": false
       },
@@ -5512,6 +5610,8 @@
     {
      "id": "moon-jelly-window",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Moon jelly window",
      "fit": "fit",
      "background": "blur",
@@ -5534,7 +5634,7 @@
      "menu": {
       "small": {
        "text": "Moon jelly window",
-       "widthPt": 131,
+       "widthPt": 65,
        "availablePt": 185,
        "truncated": false
       },
@@ -5617,6 +5717,8 @@
     {
      "id": "pearl-shell",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Pearl shell",
      "fit": "fit",
      "background": "blur",
@@ -5639,7 +5741,7 @@
      "menu": {
       "small": {
        "text": "Pearl shell",
-       "widthPt": 73,
+       "widthPt": 36,
        "availablePt": 185,
        "truncated": false
       },
@@ -5722,6 +5824,8 @@
     {
      "id": "nautilus",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Nautilus",
      "fit": "fit",
      "background": "blur",
@@ -5744,7 +5848,7 @@
      "menu": {
       "small": {
        "text": "Nautilus",
-       "widthPt": 58,
+       "widthPt": 29,
        "availablePt": 185,
        "truncated": false
       },
@@ -5843,6 +5947,8 @@
     {
      "id": "rainlight-date",
      "kind": "calendar",
+     "shelfKind": "art",
+     "fixedValues": true,
      "label": "Rainlight date",
      "fit": "fit",
      "background": "blur",
@@ -5865,19 +5971,19 @@
      "menu": {
       "small": {
        "text": "Rainlight date",
-       "widthPt": 141,
+       "widthPt": 48,
        "availablePt": 185,
        "truncated": false
       },
       "medium": {
        "text": "Rainlight date",
-       "widthPt": 141,
+       "widthPt": 96,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
        "text": "Rainlight date",
-       "widthPt": 141,
+       "widthPt": 96,
        "availablePt": 390,
        "truncated": false
       }
@@ -5948,6 +6054,8 @@
     {
      "id": "glass-umbrella",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Glass umbrella",
      "fit": "fit",
      "background": "blur",
@@ -5970,7 +6078,7 @@
      "menu": {
       "small": {
        "text": "Glass umbrella",
-       "widthPt": 104,
+       "widthPt": 52,
        "availablePt": 185,
        "truncated": false
       },
@@ -6053,6 +6161,8 @@
     {
      "id": "rain-leaf",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Rain leaf",
      "fit": "fit",
      "background": "blur",
@@ -6075,7 +6185,7 @@
      "menu": {
       "small": {
        "text": "Rain leaf",
-       "widthPt": 60,
+       "widthPt": 30,
        "availablePt": 185,
        "truncated": false
       },
@@ -6158,6 +6268,8 @@
     {
      "id": "koi",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Koi",
      "fit": "fit",
      "background": "blur",
@@ -6180,7 +6292,7 @@
      "menu": {
       "small": {
        "text": "Koi",
-       "widthPt": 22,
+       "widthPt": 11,
        "availablePt": 185,
        "truncated": false
       },
@@ -6279,6 +6391,8 @@
     {
      "id": "rehearsal-countdown",
      "kind": "countdown",
+     "shelfKind": "art",
+     "fixedValues": true,
      "label": "Rehearsal countdown",
      "fit": "fit",
      "background": "blur",
@@ -6301,19 +6415,19 @@
      "menu": {
       "small": {
        "text": "Rehearsal countdown",
-       "widthPt": 198,
+       "widthPt": 76,
        "availablePt": 185,
-       "truncated": true
+       "truncated": false
       },
       "medium": {
        "text": "Rehearsal countdown",
-       "widthPt": 198,
+       "widthPt": 153,
        "availablePt": 390,
        "truncated": false
       },
       "large": {
        "text": "Rehearsal countdown",
-       "widthPt": 198,
+       "widthPt": 153,
        "availablePt": 390,
        "truncated": false
       }
@@ -6335,13 +6449,7 @@
         "h": 149.6
        },
        "coverage": 0.77,
-       "flags": [
-        {
-         "code": "textOverflow",
-         "severity": "warn",
-         "detail": "menu label \"Rehearsal countdown\" needs 198 pt of 185"
-        }
-       ]
+       "flags": []
       },
       "medium": {
        "offered": true,
@@ -6390,6 +6498,8 @@
     {
      "id": "bottled-ballet",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Bottled ballet",
      "fit": "fit",
      "background": "blur",
@@ -6412,7 +6522,7 @@
      "menu": {
       "small": {
        "text": "Bottled ballet",
-       "widthPt": 92,
+       "widthPt": 46,
        "availablePt": 185,
        "truncated": false
       },
@@ -6495,6 +6605,8 @@
     {
      "id": "glass-rose",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Glass rose",
      "fit": "fit",
      "background": "blur",
@@ -6517,7 +6629,7 @@
      "menu": {
       "small": {
        "text": "Glass rose",
-       "widthPt": 74,
+       "widthPt": 37,
        "availablePt": 185,
        "truncated": false
       },
@@ -6600,6 +6712,8 @@
     {
      "id": "pearl-ballet-brooch",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Pearl ballet brooch",
      "fit": "fit",
      "background": "blur",
@@ -6622,7 +6736,7 @@
      "menu": {
       "small": {
        "text": "Pearl ballet brooch",
-       "widthPt": 132,
+       "widthPt": 66,
        "availablePt": 185,
        "truncated": false
       },
@@ -6705,6 +6819,8 @@
     {
      "id": "satin-swan",
      "kind": "art",
+     "shelfKind": "art",
+     "fixedValues": false,
      "label": "Satin swan",
      "fit": "fit",
      "background": "blur",
@@ -6727,7 +6843,7 @@
      "menu": {
       "small": {
        "text": "Satin swan",
-       "widthPt": 77,
+       "widthPt": 38,
        "availablePt": 185,
        "truncated": false
       },
@@ -6850,8 +6966,7 @@
   "themes": 13,
   "options": 61,
   "flags": {
-   "letterbox": 64,
-   "textOverflow": 1
+   "letterbox": 64
   }
  }
 }

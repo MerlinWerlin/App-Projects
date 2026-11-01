@@ -111,6 +111,18 @@ The Live area is "Make a Live Photo" (owner 24 Oct): the first 3 seconds of a lo
 - [x] Live Photo export flow, the guide and the honest copy unchanged (`src/core/premiumLive.test.ts`).
 - [ ] Check on device: preview phone size inside its card on a small phone (SE) and at the largest text size; dark mode cards.
 
+### 3.11 Screens changed by the owner's 1 Nov brief (owner-1101d, T210)
+T202 made Install all at once the main method, T194 added Clean up old icons, T200 made "Set it up" a bold section on the theme page. This pass brings those screens back up to the criteria.
+- [x] Install flow (`app/install.tsx`): every card lifts by surface (`tone` raised in dark, `outline={false}`), no hairline anywhere on the screen (saved profile files are soft filled rows, the "Your apps" monogram rows are spaced, not ruled).
+- [x] Install flow: the summary card is the hero: the set's first icons on a soft well, then one editorial heading ("Your icon set" eyebrow + the count line, `SectionHeader level="group"`).
+- [x] Install flow: Install all at once is an editorial header (eyebrow "The quick way", title, the "One profile adds N icons…" line as its body); the Prefer Shortcuts link stays a small plain pill, centred at the card's foot after the main pill.
+- [x] Install flow: the first load is a skeleton of the screen (summary card, method header, method card with a pill-shaped block), not a centred grid and a line of text; the Shortcuts undo steps use an editorial group title.
+- [x] Clean up old icons (`app/icons-cleanup.tsx`): each way is an editorial group title on the 32 pt section rhythm.
+- [x] Theme page "Set it up": three lifted entry cards on the 16 pt rhythm instead of one ruled inset group; each leads with a small piece of the theme itself (a phone in its wallpaper colours, four of its own icons, a widget in its palette), then the name, one line, and "Saved to Photos ✓" on the wallpaper card once saved. One VoiceOver element per card, `select` haptic, timed press ease.
+- [x] Settings: Help has a Clean up old icons row; the How icons work sheet now says Install all at once is the main way (it still said "Shortcuts recommended, Bulk beta") and shows the removal steps as one numbered sequence (tint number circles on a soft well).
+- [ ] Check on device: the Set it up cards at the largest text size (title and line wrap beside the art well), the install summary well on an SE, dark mode surfaces on all three screens.
+Guards: `src/core/premiumInstall.test.ts`, `src/core/premiumThemeDetail.test.ts`, `src/core/premiumPlusSettings.test.ts` (the T210 tests).
+
 ## 4. "Done" checklist (per screen)
 
 A screen is **done** when all of these hold:
@@ -142,6 +154,7 @@ A screen is **done** when all of these hold:
 | Icons tab | Slice shipped: editorial section headers (Your apps / Add apps / Style) and group titles, 16 pt rhythm, raised dark cards without hairlines, skeleton loading screen, Dynamic Type caps, still virtualised and free | 188 |
 | Wallpapers | Slice shipped: group section headers (Made by you / Free / Plus) on the unfiltered views, 16 pt rhythm, lifted tiles and maker cards without hairlines, Live and maker skeleton waits, Dynamic Type caps, tokens only; Save to Photos unchanged | 188 |
 | Live | Slice shipped: editorial sections on the tab and in the loop editor, lifted loop cards without hairlines, skeletons in the result's shape (no spinner), preview on a raised surface, tokens only, Dynamic Type caps; Live Photo flow and honest copy unchanged | 188 |
+| Owner-1101d screens (§3.11) | Slice shipped: install flow lifted cards with no hairlines, summary hero, editorial Install all at once with the quiet Shortcuts link, screen skeleton; Clean up titles; theme page Set it up as three art-led cards; Settings Clean up row, honest How icons work copy, numbered removal steps | T210 |
 
 ## 6. Tokens added for this pass (in `src/core/designV2.ts`, re-exported by `tokensV2`)
 

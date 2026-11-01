@@ -4,6 +4,13 @@
 // Writer: modules/glaze-widget-bridge `setSeamless` → App Group file seamless-<family>.png
 // (keep in sync with src/core/seamlessWidget.ts seamlessFileName / SEAMLESS_WIDGET_KIND).
 // Without a file: the theme background and a short "Set up in Glaze" hint.
+// T221 (owner-1101e): iOS 17 AppIntentConfiguration (WidgetArtLibrary.swift). Each widget can pick
+// its own piece from "My widget art" (long-press > Edit Widget > Art); with no piece chosen, or one
+// removed from the library, it shows the last applied image for its size as before. Same kind
+// ("GlazeSeamless"), so widgets already on the Home Screen keep working.
+// T223: every family (small, medium, large, extra large) and every source (chosen piece or the
+// per-size file) goes through the one view below: the art is FITTED whole (scaledToFit) over a
+// blurred aspect-filled copy of itself, never cropped.
 // The three SwiftUI string literals below are localised like the other widgets' (looked up by
 // their English text in targets/widget/<lang>.lproj/Localizable.strings; T133).
 import SwiftUI
@@ -17,6 +24,8 @@ enum SeamlessStore {
     case .systemSmall: return "small"
     case .systemMedium: return "medium"
     case .systemLarge: return "large"
+    // iPad only. No file is composed at this size; the large one is fitted into it.
+    case .systemExtraLarge: return "large"
     default: return nil
     }
   }
@@ -35,11 +44,13 @@ enum SeamlessStore {
 
 struct SeamlessWidgetView: View {
   @Environment(\.widgetFamily) private var family
-  let entry: GlazeEntry
+  let theme: WidgetTheme
+  /// T221: the piece chosen in Edit Widget (nil = the last applied image for this size).
+  let pieceID: String?
 
   var body: some View {
-    let t = entry.theme
-    let image = SeamlessStore.load(family)
+    let t = theme
+    let image = WidgetArtStore.load(pieceID) ?? SeamlessStore.load(family)
     ZStack(alignment: .bottomLeading) {
       if image == nil {
         VStack(alignment: .leading, spacing: 4) {
@@ -86,16 +97,17 @@ struct SeamlessWidgetView: View {
   }
 }
 
+@available(iOS 17.0, *)
 struct SeamlessWidget: Widget {
   let kind = "GlazeSeamless"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: StaticProvider()) { entry in
-      SeamlessWidgetView(entry: entry)
+    AppIntentConfiguration(kind: kind, intent: ChooseWidgetArtIntent.self, provider: ArtProvider()) { entry in
+      SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID)
     }
     .configurationDisplayName("Seamless")
-    .description("Art that floats on your wallpaper. Set it up in Glaze.")
-    .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .description("Your Glaze art. Long-press and choose Edit Widget to pick a piece.")
+    .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
     .contentMarginsDisabled()
   }
 }

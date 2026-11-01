@@ -65,7 +65,7 @@ export const TIPS: readonly Tip[] = Object.freeze([
   {
     id: 'live-lock',
     title: 'Make a Live Photo',
-    body: 'Turn a video into a Live Photo on the Live tab. It moves in Photos; as a wallpaper, iPhone often keeps app-made Live Photos still.',
+    body: 'Turn a video into a Live Photo in the Live Photo maker, under Wallpapers. It moves in Photos; as a wallpaper, iPhone often keeps app-made Live Photos still.',
     placement: 'first-run',
     order: 3,
     icon: 'film',
@@ -210,7 +210,7 @@ export const PLACEMENT_LABELS: Readonly<Record<TipPlacement, string>> = Object.f
   wallpaper: 'Wallpaper maker',
   icons: 'Icons tab',
   install: 'Install icons',
-  live: 'Live tab',
+  live: 'Live Photo maker',
   shapes: 'Icon shape settings',
   override: 'Icons tab',
   'add-app': 'Icons tab',

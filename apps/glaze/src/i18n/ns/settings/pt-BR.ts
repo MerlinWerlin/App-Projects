@@ -83,7 +83,8 @@ export const ptBR: NonNullable<LocaleMessages['settings']> = {
     addedTitle: 'Os ícones são adicionados, não substituídos',
     addedBody: 'O iOS não deixa nenhum app mudar o ícone de outro. Em vez disso, o Glaze adiciona atalhos na Tela de Início com o seu novo visual. Tocar em um abre o app de verdade.',
     waysTitle: 'Duas formas de adicionar',
-    waysBody: 'Atalhos (recomendado): o Glaze guia você para adicionar cada ícone com o app Atalhos. Em lote (beta opcional): um perfil adiciona todos os ícones de uma vez.',
+    // T210: Install all at once is the main way since T202 (owner-1101d #5).
+    waysBody: 'Instalar tudo de uma vez (o jeito principal): um perfil adiciona todos os ícones, pelo Safari e depois Ajustes, e um perfil feito para um tema novo substitui os ícones antigos. Os ícones de perfil abrem o app depois de um toque rápido no Safari (“Abrir no…?”), um limite do iOS. Atalhos (um ícone por vez): cada ícone usa a ação “Abrir App” e abre o app direto.',
     originalsTitle: 'Para onde vão os ícones originais',
     originalsBody: 'Mantenha um ícone original pressionado, toque em Remover App e depois em Remover da Tela de Início. O app continua instalado e vai para a Biblioteca de Apps (deslize para a esquerda após a última página).',
     removeTitle: 'Remover os ícones do Glaze',

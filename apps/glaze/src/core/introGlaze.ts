@@ -84,6 +84,18 @@ export const SPECTRUM = ['#9D7BFF', '#76C3FF', '#78E0BE', '#FFE07F', '#FFAE82', 
 /** Where the beam enters the table (icon space). */
 export const BEAM_ENTRY: Pt = [479, 318];
 
+/**
+ * T220 (owner-1101e 11:39 #1): the intro shows the Prism figure Jared picked (assets/brand/prism-figure.png, cut out of
+ * docs/mascot/picked-1025/glaze-prism.jpg by scripts/brand/picked-icon.py) instead of the diamond. Points in the same
+ * 1024 canvas: the beam enters the top of its head, the colour fan pours from under its feet, the glint sits just off
+ * the head's upper-left corner.
+ */
+export const FIGURE = {
+  ENTRY: [468, 150],
+  TIP: [505, 872],
+} as const satisfies Record<string, Pt>;
+export const FIGURE_GLINT_D = 'M408 58 Q414.3 83.2 440 90 Q414.3 96.8 408 122 Q401.7 96.8 376 90 Q401.7 83.2 408 58 Z';
+
 /** Android adaptive icon background colour (the icon ground's mid tone). */
 export const ADAPTIVE_BG = '#1C1442';
 
@@ -141,8 +153,8 @@ export function introLayout(w: number, h: number): IntroLayout {
   const ox = (W - size) / 2;
   const oy = (H - size) / 2;
   const at = (p: Pt): Pt => [r1(ox + p[0] * k), r1(oy + p[1] * k)];
-  const entry = at(BEAM_ENTRY);
-  const tip = at(GEM.TIP);
+  const entry = at(FIGURE.ENTRY);
+  const tip = at(FIGURE.TIP);
   const len = Math.ceil(Math.hypot(W, H));
   const t = rad(BEAM_TILT_DEG);
   const beam = { x1: len, y1: len, x2: r1(len - len * Math.sin(t)), y2: r1(len - len * Math.cos(t)) };

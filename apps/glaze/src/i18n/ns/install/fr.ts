@@ -37,6 +37,8 @@ export const fr: NonNullable<LocaleMessages['install']> = {
     },
     cantReplace: 'iOS ne permet pas de remplacer les icônes des apps. Glaze ajoute de nouvelles icônes qui ouvrent vos apps ; les originales vont dans la bibliothèque d’apps.',
     more: '+{count}',
+    // T210: eyebrow over the summary heading.
+    eyebrow: 'Votre set d’icônes',
   },
   state: {
     loadError: 'Impossible de charger votre set d’icônes.',
@@ -47,7 +49,10 @@ export const fr: NonNullable<LocaleMessages['install']> = {
   },
   method: {
     heading: 'Comment installer',
-    bulk: 'Installation groupée',
+    // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
+    bulk: 'Tout installer d’un coup',
+    // T210: eyebrow over the Install all at once heading.
+    bulkEyebrow: 'La méthode rapide',
     bulkBody: {
       one: 'Un profil ajoute {count} icône d’un coup. Environ deux minutes.',
       other: 'Un profil ajoute {count} icônes d’un coup. Environ deux minutes.',
@@ -77,7 +82,6 @@ export const fr: NonNullable<LocaleMessages['install']> = {
     noSharing: 'Le partage n’est pas disponible sur cet appareil : impossible d’enregistrer le profil dans Fichiers.',
     noIcons: 'Aucune icône n’a pu être dessinée pour le profil.',
     cleared: 'Le fichier du profil a été effacé du cache. Touchez à nouveau Générer le profil.',
-    copyFailed: 'Copie impossible. Sélectionnez le texte du lien et copiez-le à la main.',
     noShortcutsApp: 'L’app Raccourcis n’est pas installée. Téléchargez-la gratuitement sur l’App Store, puis revenez.',
   },
   shortcuts: {
@@ -108,10 +112,6 @@ export const fr: NonNullable<LocaleMessages['install']> = {
     saveOne: 'Enregistrer l’icône de {app} dans Photos',
     showSteps: 'Afficher les étapes pour {app}',
     hideSteps: 'Masquer les étapes pour {app}',
-    copy: 'Copier',
-    copied: 'Copié',
-    copyLink: 'Copier le lien de {app} {url}',
-    linkCopied: 'Lien de {app} copié',
     undo: {
       title: 'Pour annuler plus tard',
       removeIcon: 'Pour retirer une nouvelle icône, maintiens-la, touche Supprimer (ou Supprimer le signet) et confirme. Seule cette icône disparaît.',
@@ -121,8 +121,6 @@ export const fr: NonNullable<LocaleMessages['install']> = {
   },
   steps: {
     openShortcuts: 'Ouvrez l’app Raccourcis et touchez + (en haut à droite).',
-    addOpenUrl: 'Touchez Ajouter une action, cherchez « Ouvrir l’URL » et touchez-la.',
-    pasteUrl: 'Touchez « URL » et collez {url} (utilisez Copier ci-dessus).',
     addOpenApp: 'Touchez Ajouter une action, cherchez « Ouvrir l’app » et touchez-la.',
     chooseApp: 'Touchez « App » et choisissez {name} dans la liste.',
     rename: 'Touchez le nom en haut, choisissez Renommer et tapez {name}.',

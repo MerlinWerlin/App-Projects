@@ -166,6 +166,17 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
     readyA11y: '{pack} 主题包已下载',
     size: '大小：{size}',
   },
+  // T222: a newer version of a downloaded pack (theme page note, src/ui/PackUpdateNote.tsx).
+  update: {
+    title: '有可用更新',
+    pending: '{pack} 素材包的新版本已就绪，包含更多小组件图案。它会自动下载；在此之前，当前图案仍可正常使用。',
+    failed: '{pack} 素材包未能更新。当前图案仍可正常使用。',
+    cta: '立即更新',
+    retry: '重试',
+    hint: '下载此素材包的新版本',
+    updating: '正在更新 {pack} 素材包',
+    doneA11y: '{pack} 素材包已是最新',
+  },
   // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
   remote: {
     heroPreview: '作品预览。下载后即可获得全尺寸壁纸。',

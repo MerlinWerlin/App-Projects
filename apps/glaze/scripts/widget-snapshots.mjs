@@ -24,11 +24,12 @@ import { createRequire } from 'node:module';
 import { HERO_REFERENCE_SIZES, HERO_FILES, ART_WALLPAPER_SIZE, WALLPAPER_FILE, readPngHeader } from '../src/core/artPack.ts';
 import { ART_PACK_THEMES } from '../src/core/artPackThemes.ts';
 import { THEMES } from '../src/core/themes.ts';
-import { OPTION_SIZE_POINTS, liveKindOf, optionsForSize, widgetOptionsFromV1 } from '../src/core/widgetOptions.ts';
+import { OPTION_SIZE_POINTS, fixedValues, optionName, shelfKind, shelfOptions, showsLiveBadge, widgetOptionsFromV1 } from '../src/core/widgetOptions.ts';
 import { DEFAULT_DEVICE_ID, WIDGET_CORNER_PT, deviceById } from '../src/core/seamlessWidget.ts';
 import { parseCatalog, parseRemoteArtManifest, pickWallpaper, packFolder, CATALOG_FILE } from '../src/core/packCatalog.ts';
 import { PACK_BASE_URLS, packObjectUrl } from '../src/config/packs.ts';
 import { edgeFlags, pixelFlags, snapshotPlan, worstSeverity } from '../src/core/widgetSnapshot.ts';
+import { menuCaptionLayout } from '../src/core/widgetPreview.ts';
 import { spaceV2, typeV2 } from '../src/core/designV2.ts';
 import { en as tabsEn } from '../src/i18n/ns/tabs/en.ts';
 
@@ -214,6 +215,13 @@ async function probeImages(urls) {
   return out;
 }
 
+/** English text of an optionName (src/core/widgetOptions.ts), as WidgetArtMenu shows it. */
+function menuText(nm) {
+  if ('text' in nm) return nm.text;
+  const v = nm.key.replace(/^tabs\./, '').split('.').reduce((o, k) => (o == null ? o : o[k]), tabsEn);
+  return String(v ?? nm.key).replace(/\{(\w+)\}/g, (_, k) => String(nm.params?.[k] ?? ''));
+}
+
 /** Runs in the page: draw the sheet (see buildPage) and return per-cell pixel stats + label widths. */
 async function drawSheet(spec) {
   const load = async (url) => {
@@ -345,7 +353,7 @@ function buildPage(theme, rows, scale) {
   const body = rows
     .map((r) => {
       const o = r.option;
-      const meta = [`<b>${esc(o.label ?? r.menuName)}</b>`, esc(o.id), `${o.kind} · fit ${o.fit} · bg ${o.background}`, `sizes ${o.sizes.join(',')}`, `${r.probe.w}×${r.probe.h}${r.probe.transparent ? ' alpha' : ''}`];
+      const meta = [`<b>${esc(o.label ?? r.menuName)}</b>`, esc(o.id), `${o.kind}${fixedValues(o) ? ' → art (fixed numbers)' : ''} · fit ${o.fit} · bg ${o.background}`, `sizes ${o.sizes.join(',')}`, `${r.probe.w}×${r.probe.h}${r.probe.transparent ? ' alpha' : ''}`];
       const themeFlags = r.flags.map((f) => `<span class="${f.severity}">${esc(f.code)}</span>`).join(' ');
       const cells = SIZES.map((s) => {
         const c = r.cells[s];
@@ -428,22 +436,24 @@ async function main() {
       }
       return { option, probe: p, flags: optFlags, cells, menuName: option.label ?? null };
     });
-    // Menu names as the app numbers them (per size, in menu order).
+    // Menu names as the app shows them (optionName: the same in every size), in shelf order.
     const labels = [];
+    const all = theme.options.map((o) => o.option);
     for (const size of SIZES) {
-      const list = optionsForSize(theme.options.map((o) => o.option), size);
-      list.forEach((o, i) => {
+      const list = shelfOptions(all, size);
+      list.forEach((o) => {
         const row = rows.find((r) => r.option.id === o.id);
-        const text = o.label ?? tabsEn.widgetsTab.art.numbered.replace('{n}', String(i + 1));
-        if (size === 'small' || !row.menuName) row.menuName = row.menuName ?? text;
+        const text = menuText(optionName(o, all));
+        row.menuName = row.menuName ?? text;
         labels.push({
           key: `${o.id}:${size}`,
           text,
           fontSize: typeV2.subhead.fontSize,
           letterSpacing: typeV2.subhead.letterSpacing,
-          badge: liveKindOf(o.kind) ? tabsEn.widgetsTab.art.live : null,
+          badge: showsLiveBadge(o) ? tabsEn.widgetsTab.art.live : null,
           badgeFontSize: typeV2.caption2.fontSize,
           available: cardWidthFor(size) - spaceV2.xs * 2,
+          caption: menuCaptionLayout(size),
         });
       });
     }
@@ -479,8 +489,11 @@ async function main() {
       for (const s of SIZES) {
         const l = labels.find((x) => x.key === `${r.option.id}:${s}`);
         if (!l) continue;
-        const badge = l.badge ? widths[`${l.key}:badge`] + spaceV2.sm * 2 + spaceV2.sm : 0;
-        const need = widths[l.key] + badge;
+        // T207: a stacked caption (small cards) puts the badge on its own line and lets the name wrap.
+        const badgeW = l.badge ? widths[`${l.key}:badge`] + spaceV2.sm * 2 : 0;
+        const need = l.caption.stacked
+          ? Math.max(widths[l.key] / l.caption.nameLines, badgeW)
+          : widths[l.key] + (l.badge ? badgeW + spaceV2.sm : 0);
         r.menu[s] = { text: l.text, widthPt: Math.round(need), availablePt: l.available, truncated: need > l.available };
         if (need > l.available) r.cells[s].flags.push({ code: 'textOverflow', severity: 'warn', detail: `menu label "${l.text}" needs ${Math.round(need)} pt of ${l.available}` });
       }
@@ -519,6 +532,8 @@ async function main() {
       options: rows.map((r) => ({
         id: r.option.id,
         kind: r.option.kind,
+        shelfKind: shelfKind(r.option),
+        fixedValues: fixedValues(r.option),
         label: r.option.label,
         fit: r.option.fit,
         background: r.option.background,

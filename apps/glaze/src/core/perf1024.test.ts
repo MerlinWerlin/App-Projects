@@ -35,7 +35,8 @@ const WIDGETS_TAB = strip(read('app', '(tabs)', 'widgets.tsx'));
 const SHOWCASE = strip(read('src', 'ui', 'ShowcaseGrid.tsx'));
 const THEME_CARD = strip(read('src', 'ui', 'ThemeCard.tsx'));
 const HOME_MOCK = strip(read('src', 'ui', 'HomeMock.tsx'));
-const TILE = strip(read('src', 'ui', 'WallpaperTile.tsx'));
+// T193: the old Wallpapers gallery tile (src/ui/WallpaperTile.tsx) is gone; the Themes gallery card took its place here.
+const GALLERY_CARD = strip(read('src', 'ui', 'GalleryArtCard.tsx'));
 const HEART = strip(read('src', 'ui', 'HeartButton.tsx'));
 const SQUIRCLE = strip(read('src', 'ui', 'SquircleCard.tsx'));
 const PALETTE = strip(read('src', 'ui', 'useWallpaperPalette.tsx'));
@@ -135,8 +136,8 @@ test('heavy cards and previews are memoised', () => {
   assert.match(THEME_CARD, /export const ThemeCard = memo\(/);
   assert.match(SHOWCASE, /export const ShowcaseGrid = memo\(/);
   assert.match(SHOWCASE, /const ShowcaseCard = memo\(/);
-  assert.match(TILE, /export const WallpaperTileView = memo\(/);
-  assert.match(TILE, /const PairArt = memo\(/);
+  assert.match(GALLERY_CARD, /export const GalleryArtCard = memo\(/);
+  assert.match(GALLERY_CARD, /export const GalleryCardSkeleton = memo\(/);
   assert.match(HEART, /export const HeartButton = memo\(/);
   // T177 (owner-1031): the gallery sections are memoised list rows (replace T162's PackHead / PackCardRow).
   assert.match(THEMES_TAB, /const GalleryHead = memo\(/);
@@ -164,7 +165,8 @@ test('gallery previews are still Home Screens with cached specs and cached wallp
   }
   assert.match(WALLPAPER_VIEW, /LAYOUTS\.get\(params, `\$\{width\}x\$\{height\}`/);
   assert.match(WALLPAPER_VIEW, /ARTS\.get\(params, `\$\{width\}x\$\{height\}`/);
-  assert.match(TILE, /const homeFor = weakMemo\(/);
+  // My wallpapers thumbnails: cached decodes, recycled per item, no fade on reuse.
+  assert.match(WALLPAPERS_TAB, /cachePolicy="memory-disk" transition=\{0\} recyclingKey=\{item\.id\}/);
 });
 
 // T177 (owner-1031): the Themes tab no longer mounts the showcase; the ShowcaseGrid guards stay for
@@ -187,7 +189,7 @@ test('Themes tab: progressive showcase, deferred pack sections, no layout setSta
   assert.match(THEMES_TAB, /const filterOptions: PillTabOption<GalleryFilter>\[\] = useMemo\(/);
   // No screen maps the whole theme list straight into cards.
   for (const src of [THEMES_TAB, WALLPAPERS_TAB, WIDGETS_TAB]) {
-    assert.doesNotMatch(src, /(ALL_THEMES|SPACE_THEMES|PLUS_PACKS)\.map\(\([^)]*\) => \(?\s*<(ThemeCard|WallpaperTileView|ShowcaseCard)/);
+    assert.doesNotMatch(src, /(ALL_THEMES|SPACE_THEMES|PLUS_PACKS)\.map\(\([^)]*\) => \(?\s*<(ThemeCard|GalleryArtCard|ShowcaseCard)/);
   }
   assert.doesNotMatch(THEMES_TAB, /packs\.map\(\(pack\) => \(\s*<View/);
 });
@@ -199,7 +201,8 @@ test('Wallpapers tab: no reload on focus, memoised rows of a virtualised list', 
   assert.match(WALLPAPERS_TAB, /useMyWallpapers\(\)/);
   assert.match(WALLPAPERS_TAB, /<LargeTitleFlatList\b/);
   assert.match(WALLPAPERS_TAB, /<ThumbRow\b/);
-  assert.match(TILE, /onPress=\{open\}/);
+  assert.match(WALLPAPERS_TAB, /const onOpen = useCallback\(/);
+  assert.match(WALLPAPERS_TAB, /<ThumbRow row=\{item\} width=\{thumbW\} height=\{thumbH\} onOpen=\{onOpen\} \/>/);
 });
 
 test('Widgets tab: specs solved once per change, memoised cells, deferred previews, clock only in focus', () => {
@@ -224,9 +227,9 @@ test('Widgets tab: specs solved once per change, memoised cells, deferred previe
 });
 
 test('animations stay on the UI thread and calm (no JS driver, no springs in the touched code)', () => {
-  const touched = [THEMES_TAB, WALLPAPERS_TAB, WIDGETS_TAB, SHOWCASE, THEME_CARD, HOME_MOCK, TILE, HEART, SQUIRCLE, PALETTE];
+  const touched = [THEMES_TAB, WALLPAPERS_TAB, WIDGETS_TAB, SHOWCASE, THEME_CARD, HOME_MOCK, GALLERY_CARD, HEART, SQUIRCLE, PALETTE];
   for (const src of touched) assert.doesNotMatch(src, /useNativeDriver:\s*false/);
-  for (const src of [THEMES_TAB, WALLPAPERS_TAB, WIDGETS_TAB, SHOWCASE, THEME_CARD, TILE, HEART, SQUIRCLE]) {
+  for (const src of [THEMES_TAB, WALLPAPERS_TAB, WIDGETS_TAB, SHOWCASE, THEME_CARD, GALLERY_CARD, HEART, SQUIRCLE]) {
     assert.doesNotMatch(src, /\bwithSpring\b|\.springify\(|\bZoomIn\b|\bBounceIn\b|\bLinearTransition\b/);
   }
   // A card that mounts at rest starts no animation.

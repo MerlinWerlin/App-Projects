@@ -167,6 +167,17 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
     readyA11y: '{pack} 팩이 다운로드되었습니다',
     size: '크기: {size}',
   },
+  // T222: a newer version of a downloaded pack (theme page note, src/ui/PackUpdateNote.tsx).
+  update: {
+    title: '업데이트 가능',
+    pending: '위젯 아트가 더 많은 {pack} 팩의 새 버전이 준비되었습니다. 자동으로 다운로드되며, 그때까지 현재 아트는 계속 작동합니다.',
+    failed: '{pack} 팩을 업데이트하지 못했습니다. 현재 아트는 계속 작동합니다.',
+    cta: '지금 업데이트',
+    retry: '다시 시도',
+    hint: '이 팩의 새 버전을 다운로드합니다',
+    updating: '{pack} 팩 업데이트 중',
+    doneA11y: '{pack} 팩이 최신 상태입니다',
+  },
   // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
   remote: {
     heroPreview: '아트워크 미리보기입니다. 다운로드하면 전체 크기 배경화면을 받을 수 있어요.',

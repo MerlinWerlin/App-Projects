@@ -4,10 +4,12 @@
 // Home Screen, and hide the original app icons (they stay in the App Library).
 // Reached from the Icons tab and from the end of the install flow (app/install.tsx).
 // Free feature: nothing here reads Plus.
+// T210 (premium pass): each way is an editorial group title (SectionHeader via InsetGroup `title`),
+// not the small grey header, on the 32 pt section rhythm.
 import { ScrollView, StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useT, type MessageKey } from '../src/i18n';
-import { fontScaleCap, spaceV2, textV2 } from '../src/theme/tokensV2';
+import { editorialV2, fontScaleCap, spaceV2, textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import { textStyleFor } from '../src/ui/i18nLayout';
 import { InsetGroup, InsetRow } from '../src/ui/v2';
@@ -44,7 +46,7 @@ export default function IconsCleanupScreen() {
           {t('install.cleanup.intro')}
         </Text>
         {SECTIONS.map((s) => (
-          <InsetGroup key={s.header} header={t(s.header)} footer={s.footer ? t(s.footer) : undefined}>
+          <InsetGroup key={s.header} title={t(s.header)} footer={s.footer ? t(s.footer) : undefined}>
             {s.steps.map((key) => (
               <InsetRow key={key} title={t(key)} />
             ))}
@@ -57,6 +59,6 @@ export default function IconsCleanupScreen() {
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
-  body: { paddingVertical: spaceV2.lg, gap: spaceV2.xl, paddingBottom: spaceV2.xxl },
+  body: { paddingVertical: spaceV2.lg, gap: editorialV2.sectionTop, paddingBottom: spaceV2.xxl },
   intro: { marginHorizontal: spaceV2.lg },
 });

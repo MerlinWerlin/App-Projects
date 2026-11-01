@@ -47,6 +47,12 @@ over 100 KB). The header of each sheet says which scale it used.
 Every option is drawn in all three sizes; a size the option does not list is dimmed and marked
 "not offered".
 
+The label column shows the menu name the app uses (`optionName`: the pack label, a derived v1 piece's
+shape name such as "Small piece", else "Art n" by pack place; the same in every size) and, for a
+practical kind whose picture has fixed numbers, `kind → art (fixed numbers)` (T206, `fixedValues`:
+the app shelves it with the art, without the "Live" badge). `index.json` has `shelfKind` and
+`fixedValues` per option.
+
 ## Automatic checks (`index.json` → `flags`)
 
 | Flag | Severity | Meaning |
@@ -59,7 +65,7 @@ Every option is drawn in all three sizes; a size the option does not list is dim
 | `metaAspect` | warn | the declared size (manifest or `HERO_REFERENCE_SIZES`) has another aspect than the real image, so the app's `placeArt` and the bridge disagree |
 | `cornerClip` | warn | a corner of the art rectangle falls outside the rounded mask |
 | `edgeCut` | warn | transparent art whose picture runs off its own image edge (subject cut in the source file) |
-| `textOverflow` | warn | the option's name (plus the "Live" badge) is wider than its card in the Widgets tab menu (`WidgetArtMenu`, subhead 15 pt semibold, one line): the app truncates it. Measured with a stand-in for SF Pro, so treat ±10 pt as noise |
+| `textOverflow` | warn | the option's name (plus the "Live" badge) is wider than its card in the Widgets tab menu (`WidgetArtMenu`, subhead 15 pt semibold; one line with the badge beside it, or in small cards up to two lines with the badge underneath, `menuCaptionLayout`): the app truncates it. Names are numbered once per piece (`stableArtNumbers`), the same in every size. Measured with a stand-in for SF Pro, so treat ±10 pt as noise |
 | `letterbox` | info | fitted art covers under 40 % of the widget (square art in a medium widget) |
 
 Error / warn cells get a red / orange frame on the sheet. `index.json` also records, per cell, the

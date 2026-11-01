@@ -53,5 +53,10 @@
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "Nahtlos";
-"Art that floats on your wallpaper. Set it up in Glaze." = "Kunst, die über deinem Hintergrundbild schwebt. Richte sie in Glaze ein.";
+"Your Glaze art. Long-press and choose Edit Widget to pick a piece." = "Deine Glaze-Kunst. Lange drücken und „Widget bearbeiten“ wählen, um ein Motiv auszusuchen.";
 "Set up in Glaze" = "In Glaze einrichten";
+
+/* My widget art picker (WidgetArtLibrary.swift, T221) */
+"Choose widget art" = "Widget-Motiv wählen";
+"Art" = "Motiv";
+"Widget art" = "Widget-Motiv";

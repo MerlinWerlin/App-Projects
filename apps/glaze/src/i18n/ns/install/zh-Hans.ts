@@ -27,6 +27,8 @@ export const zhHans: NonNullable<LocaleMessages['install']> = {
     },
     cantReplace: 'iOS 无法替换 App 图标。这里会添加能打开你的 App 的新图标，原图标会移到 App 资源库。',
     more: '+{count}',
+    // T210: eyebrow over the summary heading.
+    eyebrow: '你的图标组',
   },
   state: {
     loadError: '无法载入你的图标组。',
@@ -37,7 +39,10 @@ export const zhHans: NonNullable<LocaleMessages['install']> = {
   },
   method: {
     heading: '安装方式',
-    bulk: '批量安装',
+    // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
+    bulk: '一次全部安装',
+    // T210: eyebrow over the Install all at once heading.
+    bulkEyebrow: '最快的方法',
     bulkBody: { other: '一个描述文件一次添加 {count} 个图标。约需两分钟。' },
     a11yNoBadge: '{title}。{body}',
     shortcutsOnly: 'Glaze 用“快捷指令”App 的“打开 App”操作添加每个图标：图标会直接打开 App，不经过 Safari，也不会问“在…中打开？”。每个 App 一个快捷指令，每个约一分钟。适用于所有 App。',
@@ -64,7 +69,6 @@ export const zhHans: NonNullable<LocaleMessages['install']> = {
     noSharing: '这台设备不支持共享，因此无法将描述文件存储到“文件”。',
     noIcons: '无法为描述文件绘制任何图标。',
     cleared: '描述文件已从缓存中清除。请再次轻点“生成描述文件”。',
-    copyFailed: '无法拷贝。请选中链接文本并手动拷贝。',
     noShortcutsApp: '未安装“快捷指令”App。请从 App Store 免费获取后再回来。',
   },
   shortcuts: {
@@ -89,10 +93,6 @@ export const zhHans: NonNullable<LocaleMessages['install']> = {
     saveOne: '将 {app} 图标存储到照片',
     showSteps: '显示 {app} 的步骤',
     hideSteps: '隐藏 {app} 的步骤',
-    copy: '拷贝',
-    copied: '已拷贝',
-    copyLink: '拷贝 {app} 链接 {url}',
-    linkCopied: '已拷贝 {app} 链接',
     undo: {
       title: '以后撤销',
       removeIcon: '要移除新图标，请按住它，轻点“移除”（或“删除书签”）并确认。只有这个图标会消失。',
@@ -102,8 +102,6 @@ export const zhHans: NonNullable<LocaleMessages['install']> = {
   },
   steps: {
     openShortcuts: '打开“快捷指令”App，轻点右上角的 +。',
-    addOpenUrl: '轻点“添加操作”，搜索“打开 URL”并轻点它。',
-    pasteUrl: '轻点“URL”并粘贴 {url}（使用上方的“拷贝”）。',
     addOpenApp: '轻点“添加操作”，搜索“打开 App”并轻点它。',
     chooseApp: '轻点“App”，从列表中选择 {name}。',
     rename: '轻点顶部的名称，选择“重新命名”并输入 {name}。',

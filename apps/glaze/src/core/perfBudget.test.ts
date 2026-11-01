@@ -126,6 +126,7 @@ const RN_IMAGE_OK: Record<string, string> = {
   'src/render/PhotoWallpaperView.tsx': 'captured by react-native-view-shot for Save; not in a list',
   'src/render/HomeWallpaperView.tsx': 'captured by react-native-view-shot for Save; not in a list',
   'app/theme/[id].tsx': 'theme detail uses Image.getSize as well; one screen, not a list (T162 follow-up)',
+  'src/ui/IntroGlaze.tsx': 'T220 startup intro: two bundled PNGs shown once over the native splash; the first frame must match the splash, so no expo-image transition or cache layer on the startup path',
   // T166: SeamlessWidgetPreview, app/live/[id].tsx, app/feedback.tsx and IconOverrideSheet moved to expo-image.
 };
 

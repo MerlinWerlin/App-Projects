@@ -167,6 +167,17 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
     readyA11y: '{pack} パックはダウンロード済みです',
     size: 'サイズ: {size}',
   },
+  // T222: a newer version of a downloaded pack (theme page note, src/ui/PackUpdateNote.tsx).
+  update: {
+    title: 'アップデートがあります',
+    pending: 'ウィジェットアートが増えた{pack}パックの新しいバージョンがあります。自動でダウンロードされ、それまでは今のアートがそのまま使えます。',
+    failed: '{pack}パックをアップデートできませんでした。今のアートはそのまま使えます。',
+    cta: '今すぐアップデート',
+    retry: 'もう一度試す',
+    hint: 'このパックの新しいバージョンをダウンロードします',
+    updating: '{pack}パックをアップデート中',
+    doneA11y: '{pack}パックは最新です',
+  },
   // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
   remote: {
     heroPreview: 'アートのプレビューです。ダウンロードするとフルサイズの壁紙になります。',

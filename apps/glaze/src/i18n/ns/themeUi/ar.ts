@@ -76,7 +76,7 @@ export const ar: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-lock': {
       title: 'اصنع صورة حية',
-      body: 'حوّل فيديو إلى صورة حية من تبويب Live. تتحرك في الصور؛ أما كخلفية فكثيرًا ما يُبقيها iPhone ثابتة.',
+      body: 'حوّل فيديو إلى صورة حية في صانع صور Live ضمن الخلفيات. تتحرك في الصور؛ أما كخلفية فكثيرًا ما يُبقيها iPhone ثابتة.',
     },
     'theme-pick': {
       title: 'ابدأ من سمة',

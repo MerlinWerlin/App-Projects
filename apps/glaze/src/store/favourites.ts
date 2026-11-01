@@ -1,11 +1,10 @@
-// T77: liked themes (the heart on Themes cards) and liked wallpapers (the heart on Wallpapers
-// tiles). Device-local only: AsyncStorage `glaze.favourites.v1` (themes) and
-// `glaze.wallpaperFavourites.v1` (wallpapers, by theme id) = { liked: [id, ...] }, oldest like
-// first. Never uploaded, never counted. Pure rules (parse, toggle, ordering) live in
-// src/core/discovery.ts.
+// T77: liked themes (the heart on Themes cards). Device-local only: AsyncStorage
+// `glaze.favourites.v1` = { liked: [id, ...] }, oldest like first. Never uploaded, never counted.
+// Pure rules (parse, toggle, ordering) live in src/core/discovery.ts. (T193: the liked-wallpapers
+// list went with the old Wallpapers gallery.)
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCallback, useEffect, useState } from 'react';
-import { FAVOURITES_KEY, WALLPAPER_FAVOURITES_KEY, parseFavourites, serializeFavourites, toggleFavourite } from '../core/discovery';
+import { FAVOURITES_KEY, parseFavourites, serializeFavourites, toggleFavourite } from '../core/discovery';
 
 type Listener = (liked: string[]) => void;
 
@@ -56,7 +55,6 @@ function createFavouritesStore(key: string): FavouritesStore {
 }
 
 const themeStore: FavouritesStore = createFavouritesStore(FAVOURITES_KEY);
-const wallpaperStore: FavouritesStore = createFavouritesStore(WALLPAPER_FAVOURITES_KEY);
 
 export function loadFavourites(): Promise<string[]> {
   return themeStore.load();
@@ -101,9 +99,4 @@ function useStore(store: FavouritesStore): { liked: string[]; toggle: (id: strin
 /** Live liked theme ids (oldest first; empty while loading) and a stable toggle. */
 export function useFavourites(): { liked: string[]; toggle: (id: string) => void } {
   return useStore(themeStore);
-}
-
-/** Live liked wallpaper ids (theme ids; oldest first; empty while loading) and a stable toggle. */
-export function useWallpaperFavourites(): { liked: string[]; toggle: (id: string) => void } {
-  return useStore(wallpaperStore);
 }

@@ -4,6 +4,8 @@
 // T173 premium pass (docs/PREMIUM_UI.md §3.7): inset groups only (Plus and the tip jar too), editorial
 // group titles (SectionHeader via InsetGroup `title`), row icons in pastel circles, values in
 // inkSecondary, Storage sizes as skeletons while measuring, a Dynamic Type cap on every Text.
+// T210 (owner-1101d screens): Help has a Clean up old icons row; the How icons work sheet says
+// Install all at once is the main way (T202) and shows the removal steps as a numbered sequence.
 import Constants from 'expo-constants';
 import { router } from 'expo-router';
 import { useState, type ReactNode } from 'react';
@@ -17,7 +19,7 @@ import { TipJar } from '../../src/plus/TipJar';
 import { useSettings } from '../../src/store/settings';
 import { useStudio } from '../../src/store/studio';
 import { resetTips } from '../../src/store/tips';
-import { circleRadius, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
+import { circleRadius, continuous, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { haptic } from '../../src/ui/haptics';
 import { LanguageSection } from '../../src/ui/LanguageSection';
@@ -79,7 +81,7 @@ export default function SettingsScreen() {
   const { settings, update: updateSettings } = useSettings();
   const [explainer, setExplainer] = useState(false);
   const [plusOpen, setPlusOpen] = useState(false);
-  const { t, script } = useT();
+  const { t, script, formatNumber } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
   const version = Constants.expoConfig?.version ?? 'dev'; // i18n-ignore (version string)
 
@@ -208,6 +210,16 @@ export default function SettingsScreen() {
           accessibilityHint={t('settings.help.howIconsHint')}
           onPress={() => setExplainer(true)}
         />
+        {/* T210: the owner-1101d "Clean up old icons" steps are one tap from Help as well. */}
+        <InsetRow
+          icon="trash-2"
+          iconTone="mint"
+          title={t('install.cleanup.title')}
+          subtitle={t('install.cleanup.rowSubtitle')}
+          accessibilityLabel={t('install.cleanup.title')}
+          accessibilityHint={t('install.cleanup.openHint')}
+          onPress={() => router.push('/icons-cleanup')}
+        />
         <InsetRow
           icon="info"
           iconTone="lilac"
@@ -276,16 +288,27 @@ export default function SettingsScreen() {
         <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
           {t('settings.explainer.removeTitle')}
         </Text>
-        {REMOVE_STEPS.map((step, i) => (
-          <View key={step} style={styles.step}>
-            <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), styles.stepNum, { color: c.tint }]}>
-              {t('settings.explainer.stepNumber', { number: i + 1 })}
-            </Text>
-            <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.flex, { color: c.ink }]}>
-              {t(step)}
-            </Text>
-          </View>
-        ))}
+        {/* T210: the removal steps as one numbered sequence on a soft well (surface, no lines),
+            each number in a tint circle; each step is read as one line by VoiceOver. */}
+        <View style={[styles.stepsWell, continuous, { backgroundColor: c.fill }]}>
+          {REMOVE_STEPS.map((step, i) => (
+            <View
+              key={step}
+              style={styles.step}
+              accessible
+              accessibilityLabel={[t('settings.explainer.stepNumber', { number: i + 1 }), t(step)].join(' ')}
+            >
+              <View style={[styles.stepDot, { backgroundColor: c.tint }]}>
+                <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...ts('subhead'), styles.stepDigit, { color: c.onTint }]}>
+                  {formatNumber(i + 1)}
+                </Text>
+              </View>
+              <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.flex, { color: c.ink }]}>
+                {t(step)}
+              </Text>
+            </View>
+          ))}
+        </View>
         <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
           {t('settings.explainer.shortcutsNote')}
         </Text>
@@ -343,6 +366,9 @@ const styles = StyleSheet.create({
   flex: { flex: 1, flexShrink: 1, gap: spaceV2.xxs },
   skeletonRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, paddingHorizontal: spaceV2.lg, paddingVertical: spaceV2.md },
   para: { gap: spaceV2.xs },
-  step: { flexDirection: 'row', gap: spaceV2.sm },
-  stepNum: { minWidth: 20 },
+  // T210: numbered removal steps on a soft well; numbers in tint circles (rowIcon size).
+  stepsWell: { borderRadius: radiusV2.control, padding: spaceV2.md, gap: spaceV2.md },
+  step: { flexDirection: 'row', alignItems: 'flex-start', gap: spaceV2.md },
+  stepDot: { width: sizeV2.rowIcon, height: sizeV2.rowIcon, borderRadius: circleRadius(sizeV2.rowIcon), alignItems: 'center', justifyContent: 'center' },
+  stepDigit: { fontWeight: '700' },
 });

@@ -20,7 +20,7 @@ export const fr: NonNullable<LocaleMessages['liveUi']> = {
     subtitle: 'à partir de votre propre vidéo',
     cta: 'Choisir une vidéo ou un GIF',
     a11y: 'Créer une Live Photo à partir de votre propre vidéo. {detail}',
-    hint: 'Ouvre l’onglet Live et votre photothèque pour choisir une vidéo ou un GIF',
+    hint: 'Ouvre le Créateur de Live Photos et votre photothèque pour choisir une vidéo ou un GIF',
     subExpoGo: 'Cadrez et prévisualisez ici, puis enregistrez un fond fixe et l’extrait. La version complète de Glaze l’enregistre en Live Photo.',
     subLoop: 'Enregistrée dans Photos en Live Photo. Elle s’anime quand vous la maintenez appuyée dans Photos, pas en boucle continue.',
     subLivePhoto: 'Enregistrée dans Photos en Live Photo qui s’anime quand vous appuyez dessus. Sous iOS {version}, en fond d’écran, elle reste fixe.',

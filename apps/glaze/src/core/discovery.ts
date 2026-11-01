@@ -10,9 +10,8 @@
 // A sub-tab composes with the category bubbles and search: the screen filters the sub-tab's list
 // by category/query, and themesInCategory/searchThemes keep the order this file sets.
 //
-// The Wallpapers tab (core/wallpaperTiles.ts discoverWallpaperTiles) uses the same tabs and the
-// same picks on its Still and Pairs grids; its hearts are a separate device-local list
-// (WALLPAPER_FAVOURITES_KEY) of theme ids whose wallpaper was liked.
+// T193: the Wallpapers tab no longer has a wallpaper gallery (T186), so discovery and hearts live
+// on Themes only. Old installs may still hold an unused `glaze.wallpaperFavourites.v1` entry.
 //
 // Pure TS, no React.
 
@@ -52,8 +51,6 @@ export const OUR_PICKS: readonly string[] = Object.freeze([
 
 /** AsyncStorage key for the device-local favourites (liked theme ids). */
 export const FAVOURITES_KEY = 'glaze.favourites.v1';
-/** AsyncStorage key for liked wallpapers (theme ids whose wallpaper was hearted on the Wallpapers tab). */
-export const WALLPAPER_FAVOURITES_KEY = 'glaze.wallpaperFavourites.v1';
 /** Upper bound so a corrupt or runaway list can't grow without limit. */
 export const MAX_FAVOURITES = 500;
 
@@ -146,8 +143,5 @@ export function discoveryI18nKeys(): string[] {
   const keys: string[] = DISCOVERY_TABS.map(discoveryTabKey);
   for (const k of ['label', 'picksNote', 'newEmpty', 'likedEmpty', 'likedEmptyBody']) keys.push(`themes.discover.${k}`);
   for (const k of ['add', 'remove', 'hint']) keys.push(`themes.like.${k}`);
-  // Wallpapers tab (same sub-tab labels and picks note; its own heading, empty states and heart).
-  for (const k of ['label', 'newEmpty', 'likedEmpty', 'likedEmptyBody']) keys.push(`tabs.wallpapersTab.discover.${k}`);
-  for (const k of ['add', 'remove', 'hint']) keys.push(`tabs.wallpapersTab.like.${k}`);
   return keys.sort();
 }

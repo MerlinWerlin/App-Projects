@@ -20,7 +20,7 @@ export const ko: NonNullable<LocaleMessages['liveUi']> = {
     subtitle: '내 비디오로',
     cta: '비디오 또는 GIF 선택',
     a11y: '내 비디오로 Live Photo 만들기. {detail}',
-    hint: 'Live 탭과 사진 보관함을 열어 비디오나 GIF를 고릅니다',
+    hint: '라이브 포토 메이커와 사진 보관함을 열어 비디오나 GIF를 고릅니다',
     subExpoGo: '여기서 구도를 잡고 미리 본 다음 정지 배경화면과 클립을 저장하세요. Live Photo로 저장하려면 Glaze 정식 버전이 필요합니다.',
     subLoop: '사진 앱에 Live Photo로 저장됩니다. 사진 앱에서 길게 누르면 움직이며, 계속 반복되지는 않습니다.',
     subLivePhoto: '누르면 움직이는 Live Photo로 사진 앱에 저장됩니다. iOS {version}에서는 배경화면으로 설정하면 움직이지 않습니다.',

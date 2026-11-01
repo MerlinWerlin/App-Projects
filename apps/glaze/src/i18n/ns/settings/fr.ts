@@ -83,7 +83,8 @@ export const fr: NonNullable<LocaleMessages['settings']> = {
     addedTitle: 'Les icônes sont ajoutées, pas remplacées',
     addedBody: 'iOS ne permet à aucune app de changer l’icône d’une autre. Glaze ajoute donc des raccourcis à l’écran d’accueil avec votre nouveau style. En touchant l’un d’eux, la vraie app s’ouvre.',
     waysTitle: 'Deux façons de les ajouter',
-    waysBody: 'Raccourcis (recommandé) : Glaze vous guide pour ajouter chaque icône avec l’app Raccourcis. En bloc (bêta facultative) : un profil ajoute toutes les icônes d’un coup.',
+    // T210: Install all at once is the main way since T202 (owner-1101d #5).
+    waysBody: 'Tout installer d’un coup (la méthode principale) : un profil ajoute toutes les icônes, via Safari puis Réglages, et un profil créé pour un nouveau thème remplace les anciennes icônes. Les icônes de profil ouvrent leur app après un toucher rapide dans Safari (« Ouvrir dans… ? »), une limite d’iOS. Raccourcis (une icône à la fois) : chaque icône utilise l’action « Ouvrir l’app » et ouvre l’app directement.',
     originalsTitle: 'Où vont les icônes d’origine',
     originalsBody: 'Maintenez une icône d’origine, touchez Supprimer l’app, puis Retirer de l’écran d’accueil. L’app reste installée et passe dans la bibliothèque d’apps (balayez vers la gauche après votre dernière page).',
     removeTitle: 'Supprimer les icônes Glaze',

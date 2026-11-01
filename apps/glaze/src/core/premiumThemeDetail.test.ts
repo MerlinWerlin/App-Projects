@@ -117,3 +117,33 @@ test('T173 §3.3: apply waits show a skeleton of the result (icon tiles while th
   assert.match(d, /\{styleBusy \? <IconGridSkeleton\b/, 'icon style render shows icon-tile skeletons');
   assert.match(d, /\{saver\.saving \|\| photoSaver\.saving \? \(\s*<Skeleton\b[^>]*PHONE_ASPECT/, 'wallpaper save shows a phone-shaped skeleton');
 });
+
+test('T210: "Set it up" entry points are three lifted, art-led cards on the 16 pt rhythm (no ruled inset group)', () => {
+  const d = strip(read(...DETAIL_PATH));
+  const at = d.indexOf("t('theme.parts.title')");
+  const end = d.indexOf("step === 'wallpaper' ? (", at);
+  assert.ok(at > 0 && end > at);
+  const block = d.slice(at, end);
+  assert.ok(!block.includes('<InsetGroup') && !block.includes('<InsetRow'), 'no inset group under Set it up');
+  assert.match(block, /<View style=\{styles\.parts\}>/);
+  assert.equal((block.match(/<PartCard\b/g) ?? []).length, 3);
+  for (const [part, art] of [['wallpaper', 'PartWallpaperArt'], ['icons', 'PartIconsArt'], ['widgets', 'PartWidgetArt']]) {
+    assert.ok(block.includes(`title={t('theme.parts.${part}')}`), part);
+    assert.ok(block.includes(`onPress={() => openPart('${part}')}`), part);
+    assert.ok(block.includes(`art={<${art} `), `${part} leads with ${art}`);
+  }
+  assert.match(block, /status=\{savedBefore \? t\('theme\.save\.savedBadge'\) : null\}/, 'the wallpaper card says Saved to Photos once saved');
+  assert.match(d, /parts: \{ gap: editorialV2\.cardGap \}/);
+  const card = d.slice(d.indexOf('function PartCard('), d.indexOf('function PartWallpaperArt('));
+  assert.match(card, /tone=\{scheme === 'dark' \? 'raised' : 'surface'\}\s+outline=\{false\}/, 'lifts by surface, no hairline');
+  assert.match(card, /haptic="select"/);
+  assert.match(card, /accessibilityLabel=\{label\}/);
+  assert.match(card, /accessibilityElementsHidden\s+importantForAccessibility="no-hide-descendants"/, 'the art is decorative');
+  assert.match(d, /partRow: \{[^}]*minHeight: sizeV2\.touch/);
+  // The art comes from the theme itself (palette and its own icons), never a stock picture.
+  const art = d.slice(d.indexOf('function PartWallpaperArt('), d.indexOf('const styles = StyleSheet.create'));
+  assert.match(art, /theme\.palette\.bg/);
+  assert.match(art, /<IconCanvas key=\{.+?\} spec=\{s\} size=\{PART_ICON\} morph=\{false\} \/>/);
+  assert.match(art, /theme\.palette\.surface/);
+  assert.doesNotMatch(art, /withSpring|withTiming|Animated\./, 'the thumbnails never move');
+});

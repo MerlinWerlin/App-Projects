@@ -27,6 +27,8 @@ export const ko: NonNullable<LocaleMessages['install']> = {
     },
     cantReplace: 'iOS에서는 앱 아이콘을 바꿀 수 없습니다. 앱을 여는 새 아이콘을 추가하고, 원래 아이콘은 앱 보관함으로 이동합니다.',
     more: '+{count}',
+    // T210: eyebrow over the summary heading.
+    eyebrow: '내 아이콘 세트',
   },
   state: {
     loadError: '아이콘 세트를 불러오지 못했습니다.',
@@ -37,7 +39,10 @@ export const ko: NonNullable<LocaleMessages['install']> = {
   },
   method: {
     heading: '설치 방법',
-    bulk: '일괄 설치',
+    // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
+    bulk: '한 번에 모두 설치',
+    // T210: eyebrow over the Install all at once heading.
+    bulkEyebrow: '빠른 방법',
     bulkBody: { other: '프로파일 하나로 아이콘 {count}개를 한 번에 추가합니다. 약 2분 걸립니다.' },
     a11yNoBadge: '{title}. {body}',
     shortcutsOnly: 'Glaze는 단축어 앱의 ‘앱 열기’ 동작으로 아이콘을 추가합니다. 아이콘을 누르면 Safari 없이, ‘…에서 열겠습니까?’ 질문 없이 앱이 바로 열립니다. 앱마다 단축어 하나, 하나에 1분 정도 걸립니다. 모든 앱에서 됩니다.',
@@ -64,7 +69,6 @@ export const ko: NonNullable<LocaleMessages['install']> = {
     noSharing: '이 기기에서는 공유를 사용할 수 없어 프로파일을 파일에 저장할 수 없습니다.',
     noIcons: '프로파일용 아이콘을 그리지 못했습니다.',
     cleared: '프로파일 파일이 캐시에서 지워졌습니다. ‘프로파일 만들기’를 다시 탭하세요.',
-    copyFailed: '복사하지 못했습니다. 링크 텍스트를 선택해 직접 복사하세요.',
     noShortcutsApp: '단축어 앱이 설치되어 있지 않습니다. App Store에서 무료로 받은 뒤 돌아오세요.',
   },
   shortcuts: {
@@ -91,10 +95,6 @@ export const ko: NonNullable<LocaleMessages['install']> = {
     saveOne: '{app} 아이콘을 사진에 저장',
     showSteps: '{app} 단계 보기',
     hideSteps: '{app} 단계 숨기기',
-    copy: '복사',
-    copied: '복사됨',
-    copyLink: '{app} 링크 복사 {url}',
-    linkCopied: '{app} 링크 복사됨',
     undo: {
       title: '나중에 되돌리려면',
       removeIcon: '새 아이콘을 없애려면 길게 누르고 제거(또는 책갈피 삭제)를 탭한 다음 확인하세요. 그 아이콘만 사라집니다.',
@@ -104,8 +104,6 @@ export const ko: NonNullable<LocaleMessages['install']> = {
   },
   steps: {
     openShortcuts: '단축어 앱을 열고 오른쪽 위의 +를 탭합니다.',
-    addOpenUrl: '‘동작 추가’를 탭하고 ‘URL 열기’를 검색해 탭합니다.',
-    pasteUrl: '‘URL’을 탭하고 {url}을(를) 붙여넣습니다(위의 ‘복사’ 사용).',
     addOpenApp: '‘동작 추가’를 탭하고 ‘앱 열기’를 검색해 탭합니다.',
     chooseApp: '‘앱’을 탭하고 목록에서 {name}을(를) 고릅니다.',
     rename: '위쪽의 이름을 탭하고 ‘이름 변경’을 골라 {name}을(를) 입력합니다.',

@@ -1,7 +1,7 @@
 {
  "app": "glaze",
  "title": "Glaze (icon themes, matching widgets and wallpaper packs, working title)",
- "updated": "2026-11-01",
+ "updated": "2026-11-01 run 212",
  "milestones": {
   "TRIAL": [
    "T01",
@@ -2569,7 +2569,7 @@
   },
   {
    "id": "T193",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "owner-1101",
@@ -2577,7 +2577,8 @@
    ],
    "source": "run 203 T186/T183",
    "title": "Cleanup: remove dead old-wallpaper-gallery code/strings (WallpaperTile, wallpaperTiles, wallpaperGroups, tabs.wallpapersTab gallery strings), unused Open URL/copy-link install strings, \"Live tab\" tip label; full-Live-Photo save adds a My wallpapers entry",
-   "note": "run 204: left for later: removing the old gallery code means rewriting ~6 source-guard tests with no visible change (owner decision 24 Oct: good enough to ship), and a full-Live-Photo My wallpapers entry needs a still image the native livephoto.save does not return yet (native change, D130-2 caution)."
+   "note": "run 204: left for later: removing the old gallery code means rewriting ~6 source-guard tests with no visible change (owner decision 24 Oct: good enough to ship), and a full-Live-Photo My wallpapers entry needs a still image the native livephoto.save does not return yet (native change, D130-2 caution). | run 210: dead wallpaper-gallery code/strings + unused install copy strings removed; Live tab label -> Live Photo maker. Full-Live-Photo My wallpapers entry split to T212.",
+   "commit": "0a5b772"
   },
   {
    "id": "T194",
@@ -2616,14 +2617,16 @@
   },
   {
    "id": "T197",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "owner-1101",
     "recurring"
    ],
    "source": "owner addendum 1 Nov item 12",
-   "title": "Find apps: next verified batch toward ~1,500 (WebFetch itunes lookup, 1-3 ids per call; retry run 205's possible false negatives one id at a time: Family Link, Lifesum, Xero, NetNewsWire, Genius Scan, FotMob, FlightAware, Hill Climb Racing 2)"
+   "title": "Find apps: next verified batch toward ~1,500 (WebFetch itunes lookup, 1-3 ids per call; retry run 205's possible false negatives one id at a time: Family Link, Lifesum, Xero, NetNewsWire, Genius Scan, FotMob, FlightAware, Hill Climb Racing 2)",
+   "commit": "d6e13b2",
+   "note": " | run 210: covered by T211."
   },
   {
    "id": "T198",
@@ -2715,41 +2718,280 @@
   },
   {
    "id": "T206",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "owner-1101d",
     "follow-up"
    ],
    "source": "run 208 widget snapshot review (T203)",
-   "title": "Practical art has fixed numbers drawn in (cloud/meadow/rainlight dates '29 THU OCT', '14 DAYS' countdowns, '25:00', '3/5' habits, '78% BATTERY', fixed clock hands): either the pack ships number-free art and the widget draws live values on top, or label these pieces as art. Rainlight/cloud date text is 3-4 pt in small/medium."
+   "title": "Practical art has fixed numbers drawn in (cloud/meadow/rainlight dates '29 THU OCT', '14 DAYS' countdowns, '25:00', '3/5' habits, '78% BATTERY', fixed clock hands): either the pack ships number-free art and the widget draws live values on top, or label these pieces as art. Rainlight/cloud date text is 3-4 pt in small/medium.",
+   "commit": "2d61e3c",
+   "note": " | run 210: app side: fixedValues() -> pictures with baked numbers sorted as art, no Live badge, button \"Live widget instead\" + note; pack may set numberFree:true (docs/THEME_PACKS.md). Number-free art + live values on top = pack/native later (T205)."
   },
   {
    "id": "T207",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "owner-1101d",
     "follow-up"
    ],
    "source": "run 208 widget snapshot review (T203)",
-   "title": "Widget menu polish from snapshots: bundled 'Art n' names change between sizes (stable names per piece); 'Rehearsal countdown' + Live badge truncates in the small card; Widgets tab menu header still says 'This theme / Widget art' though practical pieces come first."
+   "title": "Widget menu polish from snapshots: bundled 'Art n' names change between sizes (stable names per piece); 'Rehearsal countdown' + Live badge truncates in the small card; Widgets tab menu header still says 'This theme / Widget art' though practical pieces come first.",
+   "commit": "6762eac",
+   "note": "run 209: stable Art n names, small-card stacked Live badge, header \"This theme's widgets\" (10 machine translations)."
   },
   {
    "id": "T208",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "owner-1101d",
     "follow-up"
    ],
    "source": "run 208 widget snapshot review (T203)",
-   "title": "WidgetArtMenu previews differ from native: wallpaper background preview shows whole wallpaper (native crops under slot), blur preview radius 24 no veil vs native CIGaussianBlur max(12, 6%) + 25% veil; theme-page Seamless preview sizes from HERO_REFERENCE_SIZES not real v2 size."
+   "title": "WidgetArtMenu previews differ from native: wallpaper background preview shows whole wallpaper (native crops under slot), blur preview radius 24 no veil vs native CIGaussianBlur max(12, 6%) + 25% veil; theme-page Seamless preview sizes from HERO_REFERENCE_SIZES not real v2 size.",
+   "commit": "3da6985",
+   "note": "run 209: src/core/widgetPreview.ts mirrors native crop/blur/veil (test pins the Swift values); Seamless hero sized from downloaded piece. Blur strength on a phone unverified (expo-image blurRadius)."
+  },
+  {
+   "id": "T209",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101e"
+   ],
+   "source": "owner manual fire 1 Nov 11:06 Sydney (owner-1101e)",
+   "title": "owner-1101e: review the widget render-check sheets (re-render with scripts/widget-snapshots.mjs) and fix anything off app-side; includes T206's app-side choice (pieces with baked-in numbers are labelled/placed as art, never offered as live practical widgets)",
+   "commit": "2d61e3c",
+   "note": " | run 210: 13 sheets re-rendered (remote packs downloaded): no crop/stretch/overflow; 64 letterbox notices = square art in medium (pack side, T205). Fixed: bundled names changed per size (optionName), Rehearsal countdown overflow. Merged onto T207/T208 (optionName wins in UI). Post-merge re-render: only letterbox flags."
+  },
+  {
+   "id": "T210",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101e"
+   ],
+   "source": "owner manual fire 1 Nov 11:06 Sydney (owner-1101e)",
+   "title": "owner-1101e: premium UI pass continues on screens changed by owner-1101d (Icons install flow after T202, theme page Set it up, Widgets tab shelf, Settings): docs/PREMIUM_UI.md criteria, JS only",
+   "commit": "b9f4212",
+   "note": " | run 210: install flow surfaces/summary/skeleton, Set it up as three art-led cards, Settings Clean up row + honest How icons work copy (11 locales)."
+  },
+  {
+   "id": "T211",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101e"
+   ],
+   "source": "owner manual fire 1 Nov 11:06 Sydney (owner-1101e)",
+   "title": "owner-1101e: Find apps next verified batch (same rules as T197: Apple public lookup, never guess ids)",
+   "commit": "d6e13b2",
+   "note": " | run 210: +115 Apple-verified rows (749 -> 864); Family Link, FotMob, Hill Climb Racing 2 verified; Lifesum, Xero, NetNewsWire, Genius Scan, FlightAware still not returned."
+  },
+  {
+   "id": "T212",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "source": "run 210 follow-ups",
+   "title": "Full-Live-Photo save adds a My wallpapers entry (needs a still image returned by native livephoto.save; native change)"
+  },
+  {
+   "id": "T213",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "source": "run 210 follow-ups",
+   "title": "Copy: tip body / liveUi hint still say 'on the Live tab' (tips.items.liveLock.body, themeUi.tips.live-lock.body x11, src/core/tips.ts, fb1025Live test) -> 'Live Photo maker'; non-en install files still say 'bulk install' style names for Install all at once",
+   "commit": "e6e3109",
+   "note": " | run 211: no copy points to a Live tab (Live Photo maker, under Wallpapers; 11 locales); Install all at once named consistently in the 10 non-en install/settings files (machine translations awaiting review); guard t213NoLiveTab."
+  },
+  {
+   "id": "T214",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "source": "run 210 follow-ups",
+   "title": "Shortcuts icon removal wording: Settings sheet says 'Delete Bookmark', Clean up screen says 'Remove App > Remove from Home Screen' - owner answers TRIAL.md, then make both match",
+   "note": " | run 211: still waiting on the owner answer (TRIAL.md 1 Nov Q13)."
+  },
+  {
+   "id": "T215",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "source": "run 210 follow-ups",
+   "title": "Find apps: next verified batch (WebFetch lookup by candidate id; search endpoint robots-blocked); fill null bundleIds in main rows (Hill Climb Racing, My Talking Tom 2, EA SPORTS FC Mobile, Ludo King)",
+   "commit": "f0db4a3",
+   "note": " | run 211: +119 Apple-verified rows (864 -> 983) incl. developer-id lookups; 20 main-row bundle ids filled (Hill Climb Racing, My Talking Tom 2, EA SPORTS FC Mobile, Ludo King + 16)."
+  },
+  {
+   "id": "T216",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101e"
+   ],
+   "source": "App-Projects 0f8b1e9 (Jared chat 1 Nov 11:50): the Prism picture Jared picked on 25 Oct found; Workboard glaze-prism-image",
+   "title": "App icon = the picked Prism picture (docs/mascot/picked-1025/glaze-prism.jpg): iOS icon + icon-dark + Android adaptive foreground; splash/intro/monochrome stay the diamond",
+   "commit": "1d5798b",
+   "note": " | run 211: scripts/brand/picked-icon.py; needs a native build (auto-ship production-native)."
+  },
+  {
+   "id": "T217",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "source": "run 211 follow-ups (T213 worker)",
+   "title": "Copy: English + translated tips.items.bulkInstall.title / themeUi.tips.bulk-install still say 'Bulk install (optional beta)' and plus.freeInstall says 'bulk beta' although Install all at once is the main way (T202); install.profileHeader 'An old Glaze profile (Bulk install)' may stay"
+  },
+  {
+   "id": "T218",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "source": "run 211 follow-ups (T215 worker)",
+   "title": "Find apps: ~340 main catalogue rows still have null bundleId (Royal Match, Monopoly GO!, Block Blast!, Remini, Google Meet...): fill via Apple lookup by developer id (lookup?id=<artistId>&entity=software&limit=5) or numeric app id; never guess"
+  },
+  {
+   "id": "T219",
+   "status": "done",
+   "deps": [
+    "T216"
+   ],
+   "tags": [
+    "follow-up"
+   ],
+   "source": "run 211",
+   "title": "If the owner wants it (TRIAL.md 1 Nov Q14): splash + opening intro + Android monochrome icon from the picked Prism picture instead of the diamond",
+   "commit": "08d2937",
+   "note": " | run 212: superseded by owner-1101e 11:39 #1 (T220)."
+  },
+  {
+   "id": "T220",
+   "status": "done",
+   "deps": [
+    "T216"
+   ],
+   "tags": [
+    "owner-1101e"
+   ],
+   "source": "owner manual fire 1 Nov 11:39 Sydney (owner-1101e brief)",
+   "title": "owner-1101e #1: picked Prism picture as Android monochrome + splash + full-screen intro figure (same animation style)",
+   "commit": "08d2937",
+   "note": " | run 212: figure cut out by fitted ground surface; intro uses prism-figure.png / splash-icon.png; needs native build."
+  },
+  {
+   "id": "T221",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101e"
+   ],
+   "source": "owner manual fire 1 Nov 11:39 Sydney (owner-1101e brief)",
+   "title": "owner-1101e #2: per-widget art: iOS 17 AppIntentConfiguration (Edit Widget > Art) over a My widget art library in the App Group; old single image as fallback",
+   "commit": "50a2121",
+   "note": " | run 212: Swift uncompiled; needs native build + device check."
+  },
+  {
+   "id": "T222",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101e"
+   ],
+   "source": "owner manual fire 1 Nov 11:39 Sydney (owner-1101e brief)",
+   "title": "owner-1101e #3: downloaded packs update when catalogue packVersion > downloaded (background re-download, atomic swap, Update card)",
+   "commit": "328737b",
+   "note": " | run 212: JS only."
+  },
+  {
+   "id": "T223",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101e"
+   ],
+   "source": "owner manual fire 1 Nov 11:39 Sydney (owner-1101e brief)",
+   "title": "owner-1101e #4: paper boat fit audit: scaledToFit over blur at every size; fill only when real aspect matches",
+   "commit": "d2ade5d",
+   "note": " | run 212: findings docs/WIDGETS.md; likely an old build on his phone."
+  },
+  {
+   "id": "T224",
+   "status": "todo",
+   "deps": [
+    "T221"
+   ],
+   "tags": [
+    "follow-up"
+   ],
+   "source": "run 212 follow-ups",
+   "title": "After the native build: if the widget Swift fails to compile (AppIntentConfiguration / WidgetArtEntity), fix from the build log first; then device check Edit Widget list, old widgets still render, removed piece falls back"
+  },
+  {
+   "id": "T225",
+   "status": "todo",
+   "deps": [
+    "T222"
+   ],
+   "tags": [
+    "follow-up"
+   ],
+   "source": "run 212 follow-ups",
+   "title": "Pack updates: persist the retry wait across restarts; Settings > Storage 'updated' wording; decide whether background updates skip Plus packs when Plus isn't owned"
+  },
+  {
+   "id": "T226",
+   "status": "todo",
+   "deps": [
+    "T221"
+   ],
+   "tags": [
+    "follow-up"
+   ],
+   "source": "run 212 follow-ups",
+   "title": "My widget art: a piece is stored at the size it was applied at (letterboxed in other sizes; wallpaper-backed pieces only line up at their slot): store per-size renders or the source art; review machine-translated library strings"
+  },
+  {
+   "id": "T227",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up",
+    "repo-space"
+   ],
+   "source": "run 212",
+   "title": "Repo space: bundle base64 is 15.42 MB after the picked-icon PNGs (guard 15.6 MB): next big binary must wait. Options: re-slim history (as T195, needs SHIP_BASE re-pin by the App Factory chat), or drop superseded brand PNGs from history; small runs are still fine"
   }
  ],
  "priority_order": {
-  "note": "run 191: oversight v212 (D211-1 still open, no new directives); only cloud-safe item T181 string retirement; rest waits on owner/PC or D130-2 holds. run 189: owner-1031 brief (manual fire, docs/OWNER_1031.md) outranks the backlog: T177-T180. run 188: T173 closed (all seven screens sliced); T176 Icons/Wallpapers/Live premium slices done (JS only, D130-2). run 187: oversight v210 lifted D206-1/D207-1 (PR #131 merged); T173 onboarding + Themes browse, T168 done (JS only, D130-2). run 185: D207-1 (≤2 small JS-only tasks): T175 + T173 theme-detail apply skeleton; no native. run 184: T173 Install/Plus/Settings slices + T166 + T156 done; D206-1 still holds native code (PR #128 result unreadable from the cloud). run 183: T173 slices continue every run (next Install flow); D206-1 holds new native code until a build with glaze-home-scan is confirmed green. run 182: owner-1030b brief (Jared's chat 30 Oct evening, synced from App-Projects 2b133ce) outranks the backlog: T169-T172 then T173 premium UI every run. run 179: owner-1030 brief (manual fire, docs/OWNER_1030.md) outranks the backlog: A (T159-T161) and C (T162) first, then B (T163-T164), D (T165). run 132: PR 107 (T155 widget/theme/icon repairs + T158 Island pets, v1.0.1) synced from App-Projects 1f90aa7; T157 done. 26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
+  "note": "run 210: owner manual fire 1 Nov 11:06 (owner-1101e: back-to-back runs today; continue owner-1101/1101d items, premium UI, review widget sheets, grow Find apps) -> T209-T211, T193. run 191: oversight v212 (D211-1 still open, no new directives); only cloud-safe item T181 string retirement; rest waits on owner/PC or D130-2 holds. run 189: owner-1031 brief (manual fire, docs/OWNER_1031.md) outranks the backlog: T177-T180. run 188: T173 closed (all seven screens sliced); T176 Icons/Wallpapers/Live premium slices done (JS only, D130-2). run 187: oversight v210 lifted D206-1/D207-1 (PR #131 merged); T173 onboarding + Themes browse, T168 done (JS only, D130-2). run 185: D207-1 (≤2 small JS-only tasks): T175 + T173 theme-detail apply skeleton; no native. run 184: T173 Install/Plus/Settings slices + T166 + T156 done; D206-1 still holds native code (PR #128 result unreadable from the cloud). run 183: T173 slices continue every run (next Install flow); D206-1 holds new native code until a build with glaze-home-scan is confirmed green. run 182: owner-1030b brief (Jared's chat 30 Oct evening, synced from App-Projects 2b133ce) outranks the backlog: T169-T172 then T173 premium UI every run. run 179: owner-1030 brief (manual fire, docs/OWNER_1030.md) outranks the backlog: A (T159-T161) and C (T162) first, then B (T163-T164), D (T165). run 132: PR 107 (T155 widget/theme/icon repairs + T158 Island pets, v1.0.1) synced from App-Projects 1f90aa7; T157 done. 26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
   "order": [
+   "T224",
+   "T227",
+   "T217",
+   "T218",
+   "T214",
+   "T209",
+   "T210",
+   "T211",
+   "T193",
    "T198",
    "T199",
    "T200",

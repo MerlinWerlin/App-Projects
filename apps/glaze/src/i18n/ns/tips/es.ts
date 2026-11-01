@@ -32,7 +32,7 @@ export const es: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'Creador de fondos',
     icons: 'Pestaña Iconos',
     install: 'Instalar iconos',
-    live: 'Pestaña Live',
+    live: 'Creador de Live Photos',
     shapes: 'Ajustes de forma de icono',
     override: 'Pestaña Iconos',
     addApp: 'Pestaña Iconos',
@@ -48,7 +48,7 @@ export const es: NonNullable<LocaleMessages['tips']> = {
     },
     liveLock: {
       title: 'Crea una Live Photo',
-      body: 'Convierte un vídeo en Live Photo en la pestaña Live. Se mueve en Fotos; como fondo, el iPhone suele dejar fijas las creadas por apps.',
+      body: 'Convierte un vídeo en Live Photo con el Creador de Live Photos, en Fondos. Se mueve en Fotos; como fondo, el iPhone suele dejar fijas las creadas por apps.',
     },
     themePick: {
       title: 'Empieza con un tema',

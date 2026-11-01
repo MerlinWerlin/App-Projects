@@ -167,6 +167,17 @@ export const en = {
     readyA11y: 'The {pack} pack is downloaded',
     size: 'Size: {size}',
   },
+  // T222: a newer version of a downloaded pack (theme page note, src/ui/PackUpdateNote.tsx).
+  update: {
+    title: 'Update available',
+    pending: 'A new version of the {pack} pack with more widget art is ready. It downloads by itself; your current art keeps working until then.',
+    failed: 'The {pack} pack didn’t update. Your current art still works.',
+    cta: 'Update now',
+    retry: 'Try again',
+    hint: 'Downloads the new version of this pack',
+    updating: 'Updating the {pack} pack',
+    doneA11y: 'The {pack} pack is up to date',
+  },
   // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
   remote: {
     heroPreview: 'Preview of the artwork. Download it for the full-size wallpaper.',

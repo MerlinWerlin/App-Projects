@@ -20,7 +20,7 @@ export const it: NonNullable<LocaleMessages['liveUi']> = {
     subtitle: 'dal tuo video',
     cta: 'Scegli un video o una GIF',
     a11y: 'Crea una Live Photo dal tuo video. {detail}',
-    hint: 'Apre la scheda Live e la tua libreria foto per scegliere un video o una GIF',
+    hint: 'Apre il Creatore di Live Photo e la tua libreria foto per scegliere un video o una GIF',
     subExpoGo: 'Inquadralo e guardalo in anteprima qui, poi salva uno sfondo statico e la clip. La versione completa di Glaze lo salva come Live Photo.',
     subLoop: 'Salvata in Foto come Live Photo. Si muove quando la tieni premuta in Foto, non in un loop continuo.',
     subLivePhoto: 'Salvata in Foto come Live Photo che si muove quando la premi. Su iOS {version}, come sfondo resta ferma.',

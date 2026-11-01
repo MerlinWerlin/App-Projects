@@ -167,6 +167,17 @@ export const es: NonNullable<LocaleMessages['theme']> = {
     readyA11y: 'El paquete {pack} está descargado',
     size: 'Tamaño: {size}',
   },
+  // T222: a newer version of a downloaded pack (theme page note, src/ui/PackUpdateNote.tsx).
+  update: {
+    title: 'Actualización disponible',
+    pending: 'Hay una nueva versión del paquete {pack} con más arte para widgets. Se descarga sola; tu arte actual sigue funcionando hasta entonces.',
+    failed: 'El paquete {pack} no se actualizó. Tu arte actual sigue funcionando.',
+    cta: 'Actualizar ahora',
+    retry: 'Reintentar',
+    hint: 'Descarga la nueva versión de este paquete',
+    updating: 'Actualizando el paquete {pack}',
+    doneA11y: 'El paquete {pack} está actualizado',
+  },
   // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
   remote: {
     heroPreview: 'Vista previa de la ilustración. Descárgala para tener el fondo a tamaño completo.',

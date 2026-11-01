@@ -83,7 +83,8 @@ export const de: NonNullable<LocaleMessages['settings']> = {
     addedTitle: 'Symbole werden hinzugefügt, nicht ersetzt',
     addedBody: 'iOS lässt keine App das Symbol einer anderen App ändern. Glaze fügt stattdessen Kurzbefehle mit deinem neuen Look zum Home-Bildschirm hinzu. Ein Tipp darauf öffnet die echte App.',
     waysTitle: 'Zwei Wege zum Hinzufügen',
-    waysBody: 'Kurzbefehle (empfohlen): Glaze führt dich durch das Hinzufügen jedes Symbols mit der Kurzbefehle-App. Sammelinstallation (optionale Beta): Ein Profil fügt alle Symbole auf einmal hinzu.',
+    // T210: Install all at once is the main way since T202 (owner-1101d #5).
+    waysBody: 'Alle auf einmal installieren (der Hauptweg): Ein Profil fügt alle Symbole hinzu, über Safari und dann die Einstellungen; ein Profil für ein neues Theme ersetzt die alten Symbole. Profil-Symbole öffnen ihre App nach einem kurzen Tippen in Safari („In … öffnen?“), eine iOS-Grenze. Kurzbefehle (ein Symbol nach dem anderen): Jedes Symbol nutzt die Aktion „App öffnen“ und öffnet die App direkt.',
     originalsTitle: 'Wohin die Original-Symbole kommen',
     originalsBody: 'Halte ein Original-Symbol gedrückt, tippe auf „App entfernen“ und dann auf „Vom Home-Bildschirm entfernen“. Die App bleibt installiert und landet in der App-Mediathek (nach der letzten Seite nach links wischen).',
     removeTitle: 'Glaze-Symbole entfernen',

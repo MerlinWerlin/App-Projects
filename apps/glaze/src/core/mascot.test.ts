@@ -73,7 +73,8 @@ test('fb-1023 D / T199: no mascot is wired in; the icon is the Prism diamond fro
 
 test('T199: MASCOT.md records the creature rejection, the return to the diamond and the missing picked image', () => {
   const md = read('docs', 'MASCOT.md');
-  assert.match(md, /## Decision \(owner-1101d #2, 1 Nov 2026, 10:31\): creature rejected, back to the Prism diamond/);
+  assert.match(md, /## Earlier decision \(owner-1101d #2, 1 Nov 2026, 10:31\): creature rejected, back to the Prism diamond/);
+  assert.match(md, /## Decision \(owner-1101e 11:39 #1, T216 \+ T220, 1 Nov 2026\): the picked Prism picture everywhere/);
   assert.match(md, /docs\/mascot\/picked-prism\.png/);
   assert.match(md, /glaze-prism-image/);
   assert.match(md, /rejected-prism-creature/);

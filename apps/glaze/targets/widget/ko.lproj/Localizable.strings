@@ -53,5 +53,10 @@
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "심리스";
-"Art that floats on your wallpaper. Set it up in Glaze." = "배경화면 위에 떠 있는 아트. Glaze에서 설정하세요.";
+"Your Glaze art. Long-press and choose Edit Widget to pick a piece." = "Glaze 아트. 길게 누른 뒤 위젯 편집을 눌러 작품을 고르세요.";
 "Set up in Glaze" = "Glaze에서 설정";
+
+/* My widget art picker (WidgetArtLibrary.swift, T221) */
+"Choose widget art" = "위젯 아트 선택";
+"Art" = "아트";
+"Widget art" = "위젯 아트";

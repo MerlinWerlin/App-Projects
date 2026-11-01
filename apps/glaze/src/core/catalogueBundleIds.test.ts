@@ -5,6 +5,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import * as installNs from '../i18n/ns/install/index.ts';
 import { BUNDLE_ID_RE, CATALOGUE, URL_SCHEME_RE, entryFromRow, getById, type Row } from './catalogue.ts';
 import { DEFAULT_INSTALL_METHOD, SHORTCUT_ACTION, defaultInstallState, shortcutSteps } from './install.ts';
 import { availableMethods, effectiveChoice, recommendedMethod } from './installMethods.ts';
@@ -91,6 +92,16 @@ test('T202: install default is the profile; the Shortcuts fallback uses the Open
   const screen = readFileSync(new URL('../../app/install.tsx', import.meta.url), 'utf8');
   assert.ok(!screen.includes('install.steps.addOpenUrl') && !screen.includes('install.steps.pasteUrl'));
   assert.ok(screen.includes("t('install.steps.addOpenApp')"));
+  // T193: the Open URL steps and the copy-link strings that went with them are gone from every locale.
+  const locales = Object.entries(installNs) as [string, Record<string, Record<string, unknown>>][];
+  assert.equal(locales.length, 11);
+  for (const [loc, msgs] of locales) {
+    for (const k of ['addOpenUrl', 'pasteUrl']) assert.ok(!(k in msgs.steps), `${loc}: install.steps.${k}`);
+    for (const k of ['copy', 'copied', 'copyLink', 'linkCopied']) assert.ok(!(k in msgs.shortcuts), `${loc}: install.shortcuts.${k}`);
+    assert.ok(!('copyFailed' in msgs.errors), `${loc}: install.errors.copyFailed`);
+    assert.equal(typeof msgs.steps.addOpenApp, 'string', `${loc}: install.steps.addOpenApp kept`);
+  }
+  assert.doesNotMatch(screen, /install\.shortcuts\.(copy|copied|copyLink|linkCopied)\b|install\.errors\.copyFailed/);
   // T202: the Safari tap is stated plainly, with the count computed from the data.
   assert.ok(screen.includes("t('install.method.safariTapAll'"), 'the Safari-tap line is on screen');
 });

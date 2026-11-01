@@ -37,6 +37,8 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
     },
     cantReplace: 'O iOS não permite substituir ícones de apps. Isto adiciona novos ícones que abrem seus apps; os originais vão para a Biblioteca de Apps.',
     more: '+{count}',
+    // T210: eyebrow over the summary heading.
+    eyebrow: 'Seu conjunto de ícones',
   },
   state: {
     loadError: 'Não foi possível carregar seu conjunto de ícones.',
@@ -47,7 +49,10 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
   },
   method: {
     heading: 'Como instalar',
-    bulk: 'Instalação em lote',
+    // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
+    bulk: 'Instalar tudo de uma vez',
+    // T210: eyebrow over the Install all at once heading.
+    bulkEyebrow: 'O jeito rápido',
     bulkBody: {
       one: 'Um perfil adiciona {count} ícone de uma vez. Leva uns dois minutos.',
       other: 'Um perfil adiciona {count} ícones de uma vez. Leva uns dois minutos.',
@@ -56,7 +61,7 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
     shortcutsOnly: 'O Glaze adiciona cada ícone com o app Atalhos e a ação “Abrir App”: o ícone abre o app na hora, sem Safari e sem a pergunta “Abrir no…?”. Um atalho por app, cerca de um minuto cada. Funciona com todos os apps.',
     shortcutsFallback: 'Prefere o Atalhos? Um ícone por vez',
     shortcutsFallbackHint: 'Muda para criar cada ícone com o app Atalhos',
-    backToBulk: 'Instalar tudo de uma vez',
+    backToBulk: 'Prefiro instalar tudo de uma vez',
     backToBulkHint: 'Volta para um só perfil com todos os ícones',
     safariTap: { one: '{count} dos seus {total} apps abre com um toque rápido no Safari (“Abrir no…?”): uma limitação do iOS para ícones de perfil.', other: '{count} dos seus {total} apps abrem com um toque rápido no Safari (“Abrir no…?”): uma limitação do iOS para ícones de perfil.' },
     safariTapAll: { one: 'Este app abre com um toque rápido no Safari (“Abrir no…?”): uma limitação do iOS para ícones de perfil.', other: 'Os {count} apps abrem com um toque rápido no Safari (“Abrir no…?”): uma limitação do iOS para ícones de perfil.' },
@@ -77,7 +82,6 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
     noSharing: 'O compartilhamento não está disponível neste aparelho, então o perfil não pode ser salvo em Arquivos.',
     noIcons: 'Nenhum ícone pôde ser desenhado para o perfil.',
     cleared: 'O arquivo do perfil foi apagado do cache. Toque em Gerar perfil de novo.',
-    copyFailed: 'Não foi possível copiar. Selecione o texto do link e copie manualmente.',
     noShortcutsApp: 'O app Atalhos não está instalado. Baixe grátis na App Store e depois volte.',
   },
   shortcuts: {
@@ -108,10 +112,6 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
     saveOne: 'Salvar o ícone de {app} no Fotos',
     showSteps: 'Mostrar passos para {app}',
     hideSteps: 'Ocultar passos para {app}',
-    copy: 'Copiar',
-    copied: 'Copiado',
-    copyLink: 'Copiar link de {app} {url}',
-    linkCopied: 'Link de {app} copiado',
     undo: {
       title: 'Para desfazer depois',
       removeIcon: 'Para tirar um ícone novo, toque e segure nele, toque em Remover (ou Apagar Favorito) e confirme. Só esse ícone some.',
@@ -121,8 +121,6 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
   },
   steps: {
     openShortcuts: 'Abra o app Atalhos e toque em + (canto superior direito).',
-    addOpenUrl: 'Toque em Adicionar Ação, busque “Abrir URL” e toque nela.',
-    pasteUrl: 'Toque em “URL” e cole {url} (use Copiar acima).',
     addOpenApp: 'Toque em Adicionar Ação, busque “Abrir App” e toque nela.',
     chooseApp: 'Toque em “App” e escolha {name} na lista.',
     rename: 'Toque no nome no topo, escolha Renomear e digite {name}.',

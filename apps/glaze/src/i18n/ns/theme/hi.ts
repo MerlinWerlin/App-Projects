@@ -167,6 +167,17 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
     readyA11y: '{pack} पैक डाउनलोड हो गया है',
     size: 'आकार: {size}',
   },
+  // T222: a newer version of a downloaded pack (theme page note, src/ui/PackUpdateNote.tsx).
+  update: {
+    title: 'अपडेट उपलब्ध है',
+    pending: '{pack} पैक का नया संस्करण तैयार है, जिसमें ज़्यादा विजेट आर्ट है। यह अपने आप डाउनलोड होगा; तब तक आपका मौजूदा आर्ट काम करता रहेगा।',
+    failed: '{pack} पैक अपडेट नहीं हुआ। आपका मौजूदा आर्ट अब भी काम करता है।',
+    cta: 'अभी अपडेट करें',
+    retry: 'फिर से कोशिश करें',
+    hint: 'इस पैक का नया संस्करण डाउनलोड करता है',
+    updating: '{pack} पैक अपडेट हो रहा है',
+    doneA11y: '{pack} पैक अप टू डेट है',
+  },
   // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
   remote: {
     heroPreview: 'आर्टवर्क का पूर्वावलोकन। पूरे आकार का वॉलपेपर पाने के लिए इसे डाउनलोड करें।',

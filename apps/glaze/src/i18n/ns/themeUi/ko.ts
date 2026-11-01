@@ -69,7 +69,7 @@ export const ko: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-lock': {
       title: 'Live Photo 만들기',
-      body: 'Live 탭에서 비디오를 Live Photo로 바꾸세요. 사진 앱에서는 움직이지만, 배경화면으로는 iPhone이 멈춘 채로 두는 경우가 많습니다.',
+      body: '배경화면의 라이브 포토 메이커에서 비디오를 Live Photo로 바꾸세요. 사진 앱에서는 움직이지만, 배경화면으로는 iPhone이 멈춘 채로 두는 경우가 많습니다.',
     },
     'theme-pick': {
       title: '테마로 시작하기',

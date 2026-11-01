@@ -86,6 +86,7 @@ import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
 import { SizeArt, SwatchArt } from '../../src/ui/WidgetOptionArt';
 import { ThemeWidgetArt } from '../../src/ui/ThemeWidgetArt';
+import { WidgetArtLibraryList } from '../../src/ui/WidgetArtLibraryList';
 import { lookSwatch, themeSwatch as rawThemeSwatch, type Swatch } from '../../src/core/widgetOptionArt';
 
 /** Untyped lookup for keys carried in data (tabNav card name/size keys). */
@@ -474,6 +475,8 @@ export default function WidgetsTab() {
   const [size, setSize] = useState<WidgetTabSize>('small');
   // T146: link check; re-checked a few seconds after each pick (pickNonce) and on focus.
   const [pickNonce, setPickNonce] = useState(0);
+  // T221: bumped when a piece is added to "My widget art", so the list below the menu re-reads it.
+  const [artLibKey, setArtLibKey] = useState(0);
   const linkVerdict = useWidgetLink(picked, pickNonce);
 
   const [look, setLook] = useState<WidgetLook>('theme');
@@ -720,7 +723,9 @@ export default function WidgetsTab() {
       ) : null}
 
       {/* T187: the theme's widget art, every piece, for this size (nothing on Lock or for drawn themes). */}
-      <ThemeWidgetArt theme={gridTheme} size={size} width={width - GUTTER * 2} style={styles.art} />
+      <ThemeWidgetArt theme={gridTheme} size={size} width={width - GUTTER * 2} style={styles.art} onLibraryChange={() => setArtLibKey((k) => k + 1)} />
+      {/* T221: "My widget art" (every applied piece + Studio photos, Remove each); hidden without the native library. */}
+      {size === 'lock' ? null : <WidgetArtLibraryList refreshKey={artLibKey} style={styles.art} />}
 
       {/* T166: the grid's top padding from before T162 (rows are list items now). T173: the first
           family's section header sits right under it (flushTop), so the gap stays ~16 pt. */}

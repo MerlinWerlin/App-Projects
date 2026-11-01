@@ -10,7 +10,7 @@ const COMPETITORS = ['gurzvsl', 'vpba gurzre', 'zlfperra', 'fperraxvg', 'jvqtrgf
 const BUNDLE_RE = /^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$/;
 
 test('extra rows: unique, well-formed ids and names', () => {
-  assert.ok(EXTRA_ROWS.length >= 152, `${EXTRA_ROWS.length} rows`); // T196: 81 + 71
+  assert.ok(EXTRA_ROWS.length >= 386, `${EXTRA_ROWS.length} rows`); // T196: 81 + 71; T211: +115; T215: +119
   const ids = EXTRA_ROWS.map((r) => r[0]);
   assert.equal(new Set(ids).size, ids.length, 'duplicate ids');
   for (const id of ids) assert.match(id, /^[a-z0-9]+(-[a-z0-9]+)*$/, id);
@@ -89,6 +89,28 @@ test('search finds extra apps by name and alias', () => {
   assert.equal(search('le chat')[0].id, 'vibe-mistral');
   assert.equal(findByName('Dumb Ways to Die')?.id, 'dumb-ways-to-die');
   assert.equal(bundleIdFor('kanopy'), 'com.kanopy.Kanopy');
+  // T211 batch (incl. run 205 retries now verified).
+  assert.equal(search('family link')[0].id, 'google-family-link');
+  assert.equal(bundleIdFor('fotmob'), 'com.mobilefootie.fotmobpro');
+  assert.equal(findByName('Hill Climb Racing 2')?.id, 'hill-climb-racing-2');
+  assert.equal(findByName('Hill Climb Racing')?.id, 'hill-climb-racing');
+  assert.equal(bundleIdFor('carsales'), 'com.carsales.Carsales');
+  assert.equal(search('midomi')[0].id, 'soundhound');
+  // T215 batch (incl. developer-id lookups) and the main rows it filled.
+  assert.equal(search('notebooklm')[0].id, 'gemini-notebook');
+  assert.equal(bundleIdFor('homescapes'), 'com.playrix.gardenscapes-sweethome');
+  assert.equal(findByName('My Talking Tom')?.id, 'my-talking-tom');
+  assert.equal(findByName('My Talking Tom 2')?.id, 'my-talking-tom-2');
+  const filled: Record<string, string> = {
+    'hill-climb-racing': 'com.fingersoft.hillclimbracing',
+    'my-talking-tom-2': 'com.outfit7.mytalkingtom2',
+    'ea-sports-fc-mobile': 'com.ea.ios.fifamobile',
+    'ludo-king': 'com.gametion.ludo',
+    township: 'com.playrix.township-ios',
+    facetune: 'com.lightricks.Facetune2',
+  };
+  for (const [id, b] of Object.entries(filled)) assert.equal(getById(id)?.bundleId, b, id);
+  assert.equal(CATALOGUE.length, 983);
   // The hand-written rows still win their own names.
   assert.equal(search('spotify')[0].id, 'spotify');
   assert.equal(findByName('Temple Run 2')?.id, 'temple-run-2');

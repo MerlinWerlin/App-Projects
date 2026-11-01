@@ -246,7 +246,8 @@ test('Swift: SeamlessWidget.swift exists, kind GlazeSeamless, edge to edge, regi
   assert.match(src, /let kind = "GlazeSeamless"/);
   assert.match(src, /\.contentMarginsDisabled\(\)/);
   assert.match(src, /\.containerBackground\(for: \.widget\)/);
-  assert.match(src, /\.supportedFamilies\(\[\.systemSmall, \.systemMedium, \.systemLarge\]\)/);
+  // T221/T223: extra large (iPad) too; it shows the large file, fitted.
+  assert.match(src, /\.supportedFamilies\(\[\.systemSmall, \.systemMedium, \.systemLarge, \.systemExtraLarge\]\)/);
   assert.match(src, /"seamless-\\\(/, 'file name built from the family (seamless-<family>.png)');
   for (const f of ['"small"', '"medium"', '"large"']) assert.ok(src.includes(f), `family name ${f}`);
   assert.match(src, /GlazeBackground\(theme:/, 'falls back to the theme background');

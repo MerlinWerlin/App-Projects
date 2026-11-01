@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   FIRST_RUN_TIP_IDS,
+  PLACEMENT_LABELS,
   TIPS,
   TIPS_KEY,
   TIP_IDS,
@@ -19,6 +20,7 @@ import {
   visibleTips,
   type TipId,
 } from './tips.ts';
+import * as tipsNs from '../i18n/ns/tips/index.ts';
 
 test('storage key is unchanged from T09', () => {
   assert.equal(TIPS_KEY, 'glaze.tips.v1');
@@ -166,6 +168,12 @@ test('library groups list every tip exactly once', () => {
   assert.deepEqual([...ids].sort(), [...TIP_IDS].sort());
   assert.equal(groups[0].title, 'Getting started');
   for (const g of groups) assert.ok(g.tips.length > 0);
+  // T193: there is no Live tab (the Live Photo maker is /live, opened from Wallpapers).
+  assert.equal(PLACEMENT_LABELS.live, 'Live Photo maker');
+  for (const [loc, msgs] of Object.entries(tipsNs) as [string, { places: Record<string, string> }][]) {
+    assert.ok(msgs.places.live.length > 0, loc);
+    assert.doesNotMatch(msgs.places.live, /tab|Tab|Pestaña|Onglet|Scheda|Aba|タブ|탭|标签页|टैब|تبويب/, `${loc}: tips.places.live names a Live tab`);
+  }
 });
 
 test('hiddenCount', () => {

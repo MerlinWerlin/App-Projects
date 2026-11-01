@@ -554,11 +554,79 @@ transparent hero art (a planet, a moon) on top, so the art seems to float on the
   - Tinted and clear Home Screen icon modes tint widgets too; the effect only holds in the default
     mode.
   - Lock Screen widgets are not supported (they cannot draw a full-colour image background).
-  - Each size keeps one image, so two widgets of the same size share it.
+  - ~~Each size keeps one image, so two widgets of the same size share it.~~ Since T221 each widget
+    can pick its own piece (Edit Widget, below); the per-size image is the default.
   - The table is measured, not official: use the nudge until the edges disappear.
 - **Not wired yet**: no screen uses the preview, controls or `setSeamless`; the lead connects them
   to the theme art packs (wallpaper 1290×2796 + transparent widget-small/medium/large.png). The
   widget's three strings have no Localizable.strings entries yet.
+
+### My widget art: a different piece per widget (T221, owner-1101e)
+
+Owner: "picking art overwrites the one Seamless image per size, so every Glaze art widget shows the
+same picture." Now every widget instance is configurable.
+
+- **Widget** (`targets/widget/SeamlessWidget.swift` + `WidgetArtLibrary.swift`): the Seamless widget
+  (same kind `GlazeSeamless`, so widgets already placed keep working) is an iOS 17
+  `AppIntentConfiguration` with `ChooseWidgetArtIntent: WidgetConfigurationIntent`, parameter
+  `art: WidgetArtEntity?` (`AppEntity`; `WidgetArtQuery: EntityQuery` with `entities(for:)` and
+  `suggestedEntities()`, newest first). Long-press > Edit Widget > Art. Families: small, medium,
+  large, extra large (iPad; shows the large file). The extension's deployment target is 17.0, so no
+  `if #available` fallback is needed; lowering it means adding a StaticConfiguration twin.
+- **Fallback**: no piece chosen, or the chosen piece was removed (or its file is missing) → the last
+  applied image for the size (`seamless-<size>.png`), exactly as before.
+- **Library** (App Group): `widget-art/<id>.jpg` per piece + `widget-art/index.json`
+  `{ v: 1, pieces: [{ id, name, themeName, themeId, source: theme|photo, file, created, aspect, size }] }`.
+  Index logic is pure TS in `src/core/widgetArtLibrary.ts` (tested: add, dedupe by id, remove,
+  cap 40 dropping the oldest, newest-first listing, tolerant parse). Ids: `t-<theme>-<option>-<size>`
+  (re-applying refreshes the same entry) and `p-<hash of the photo URI>`.
+- **Bridge** (`GlazeWidgetBridgeModule.swift`): `saveWidgetArtPiece(id, from)` copies a file the
+  bridge itself just wrote (`seamless-<size>.png` or `widget-photo.jpg`; whitelist) into the
+  library (downscaled whole to 1200 px, JPEG); `getWidgetArtLibrary()` → `{ index, dir }`;
+  `setWidgetArtIndex(json)` writes the index, deletes unlisted files and calls
+  `WidgetCenter.shared.reloadAllTimelines()`. JS: `widgets.addToArtLibrary / artLibrary /
+  removeFromArtLibrary` (`src/native/widgets.ts`), `{ available: false }` in Expo Go, on Android
+  and with an older bridge.
+- **App**: "Use on my widget" (`src/ui/ThemeWidgetArt.tsx`, Widgets tab and theme page) adds the
+  piece after the normal save and says so in plain words (`ui.seamless.library.added`: long-press >
+  Edit Widget). The Widget Studio adds the photo it copies for the Photo widget (reusing
+  `widget-photo.jpg`, no second copy pipeline). The Widgets tab lists "My widget art" with a Remove
+  button per piece (`src/ui/WidgetArtLibraryList.tsx`; hidden without the native library).
+- **Caveats**: a piece is the composed image for the size it was applied at; shown in another size
+  it is fitted whole over its blur (letterboxed, never cropped). A wallpaper-backed (seamless)
+  piece only lines up with the wallpaper at the slot/size it was made for.
+- **Not compiled or device-tested here** (no Xcode). VERIFY on a dev build: Edit Widget lists the
+  pieces newest first; two small widgets show different pieces; removing a piece makes its widget
+  fall back to the last applied image; widgets placed before the update still render.
+
+### Paper boat fit check (T223, owner-1101e)
+
+Owner: Cloud Atelier's paper boat still did not fit on his phone. Findings (code read + harness):
+
+- **The app's pick**: Cloud Atelier is a remote v2 pack; `paper-boat` is `kind art`, `fit "fit"`,
+  `background "blur"`, 1024×1024 declared and real (`docs/widget_snapshots/index.json`). So
+  ThemeWidgetArt calls `setWidgetArt` with `fit: "fit"` at `widgetSizePx` for the phone, and the
+  file written is `seamless-<size>.png` (plus, since T221, `widget-art/t-cloud-atelier-paper-boat-<size>.jpg`).
+- **Bridge**: `setWidgetArt` fits the art with min scale and a 6 % inset over the blurred,
+  aspect-filled copy (the only max-scale draw). `setSeamless` fits the hero the same way. Harness:
+  the paper boat is "fit" at every size, coverage 77 % small / 36 % medium (letterbox, info) / 74 %
+  large, no crop flags.
+- **Widget**: one view for every family and source: blurred `scaledToFill` backdrop pinned to the
+  widget size and clipped, art `scaledToFit` pinned to the widget size (T201). Extra large now
+  listed too, through the same view.
+- **Fixed (T223)**: the one path that could still distort was fit `"fill"`: the bridge drew the art
+  edge to edge trusting the pack's DECLARED size. It now checks the real image's aspect
+  (`min/max >= 0.98`, `NATIVE_FILL_MIN_ASPECT_MATCH` in `src/core/widgetPreview.ts`, pinned by a
+  test) and fits otherwise; `widgetSnapshot.ts` mirrors it (a lying manifest is `metaAspect`, no
+  longer `stretch`). Cloud Atelier never used "fill", so this was not his bug.
+- **Likely cause on his phone**: an old build. Builds before T201 let the aspect-filled blur layer
+  grow the widget's stack, so the fitted art was pushed past the edges (the T201 comment in
+  `SeamlessWidget.swift`); builds before T187 had no `setWidgetArt` at all (the app falls back to
+  the wallpaper-crop path, art still fitted). Ask which build he is on (Settings >
+  About) before chasing further.
+- Not checked here: StandBy / tinted / clear Home Screen modes can drop `containerBackground`
+  (the art lives there), which would hide the art rather than crop it. Snapshot sheets were not
+  regenerated (no Playwright/downloads here); no option in the current index uses "fill".
 
 ## Testing on a dev build
 

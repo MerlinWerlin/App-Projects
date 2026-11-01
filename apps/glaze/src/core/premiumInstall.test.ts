@@ -123,3 +123,70 @@ test('T156: the Safari page and step copy say Safari may ask before Install is t
     assert.match(allow, before[loc], `${loc}: allow step`);
   }
 });
+
+// ---- T210: premium pass on the owner-1101d install flow (Install all at once main, small
+// "Prefer Shortcuts?" link, Clean up old icons). ----
+
+test('T210: install cards lift by surface (raised in dark), never a hairline', () => {
+  const d = strip(read(...INSTALL_PATH));
+  assert.match(d, /const cardTone: CardTone = scheme === 'dark' \? 'raised' : 'surface';/);
+  const cards = [...d.matchAll(/<SquircleCard\b[^>]*>/g)].map((m) => m[0]);
+  assert.ok(cards.length >= 6, 'summary, coverage, bulk, sequence, shortcuts, android, skeleton');
+  for (const card of cards) assert.match(card, /outline=\{false\}/, card);
+  assert.doesNotMatch(d, /hairlineWidth/, 'no ruled lines: file rows and coverage rows are spaced surfaces');
+  assert.doesNotMatch(d, /borderTop(Width|Color)/);
+  assert.match(d, /styles\.fileRow, continuous, \{ backgroundColor: c\.fill \}/);
+});
+
+test('T210: the summary is the hero: icons on a soft well, one editorial heading with an eyebrow', () => {
+  const d = strip(read(...INSTALL_PATH));
+  const at = d.indexOf('<SquircleCard size="large" tone={cardTone}');
+  assert.ok(at > 0);
+  const card = d.slice(at, d.indexOf('</SquircleCard>', at));
+  assert.match(card, /styles\.well, continuous, \{ backgroundColor: c\.fill \}/);
+  assert.match(card, /<SectionHeader level="group" flushTop eyebrow=\{t\('install\.summary\.eyebrow'\)\} title=\{summary\}/);
+  assert.ok(!card.includes('accessibilityRole="header"'), 'no bare header Text left in the summary');
+});
+
+test('T210: Install all at once is an editorial header; Prefer Shortcuts stays a small centred link at the foot', () => {
+  const d = strip(read(...INSTALL_PATH));
+  assert.match(
+    d,
+    /<SectionHeader\s+eyebrow=\{t\('install\.method\.bulkEyebrow'\)\}\s+title=\{t\('install\.method\.bulk'\)\}\s+body=\{t\('install\.method\.bulkBody', \{ count: plan\.profile\.length \}\)\}/,
+  );
+  const card = d.slice(d.indexOf("title={t('install.method.bulk')}"), d.indexOf("eyebrow={t('install.sequence.eyebrow')}"));
+  const link = card.indexOf("label={t('install.method.shortcutsFallback')}");
+  const main = card.indexOf("t('install.bulk.generate')");
+  assert.ok(main > 0 && link > main, 'the fallback link comes after the main pill');
+  const pill = card.slice(card.lastIndexOf('<PillButton', link), card.indexOf('/>', link));
+  assert.match(pill, /variant="plain"/);
+  assert.match(pill, /size="small"/);
+  assert.match(card, /<View style=\{styles\.fallbackLink\}>/);
+  assert.match(d, /fallbackLink: \{ alignItems: 'center', paddingTop: spaceV2\.sm \}/);
+});
+
+test('T210: the first load is a skeleton of the screen, and Clean up old icons uses editorial titles', () => {
+  const d = strip(read(...INSTALL_PATH));
+  assert.match(d, /<InstallSkeleton label=\{t\('install\.state\.loading'\)\} tone=\{cardTone\} \/>/);
+  const sk = d.slice(d.indexOf('function InstallSkeleton('), d.indexOf('function CleanupTip('));
+  assert.ok(sk.includes('<IconGridSkeleton') && (sk.match(/<Skeleton\b/g) ?? []).length >= 5);
+  assert.ok(!sk.includes('<Text'), 'just the shape (the label is for VoiceOver)');
+  assert.doesNotMatch(d, /<InsetGroup\b[^>]*\bheader=/, 'editorial group titles on the install screen');
+  const cleanup = strip(read('app', 'icons-cleanup.tsx'));
+  assert.doesNotMatch(cleanup, /<InsetGroup\b[^>]*\bheader=/);
+  assert.match(cleanup, /<InsetGroup key=\{s\.header\} title=\{t\(s\.header\)\}/);
+  assert.match(cleanup, /gap: editorialV2\.sectionTop/);
+  const tags = [...cleanup.matchAll(/<(Text|TextInput)\b[^>]*>/g)].map((m) => m[0]);
+  assert.ok(tags.length > 0 && tags.every((x) => /maxFontSizeMultiplier=/.test(x)));
+});
+
+test('T210: the new install eyebrows exist in every locale', () => {
+  for (const loc of LOCALES) {
+    const src = read('src', 'i18n', 'ns', 'install', `${loc}.ts`);
+    assert.match(block(src, 'summary'), /\n {4}eyebrow: '[^']+',/, `${loc}: install.summary.eyebrow`);
+    assert.match(block(src, 'method'), /\n {4}bulkEyebrow: '[^']+',/, `${loc}: install.method.bulkEyebrow`);
+  }
+  const en = read('src', 'i18n', 'ns', 'install', 'en.ts');
+  assert.match(en, /eyebrow: 'Your icon set',/);
+  assert.match(en, /bulkEyebrow: 'The quick way',/);
+});

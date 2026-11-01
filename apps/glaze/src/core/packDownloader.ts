@@ -46,9 +46,14 @@ export interface Transport {
   readFile(path: string): Promise<Uint8Array | null>;
   /** Delete a local file or folder; no error if it is missing. */
   remove(path: string): Promise<void>;
+  /**
+   * T222: rename a local file or folder (the destination must not exist; parents are created).
+   * Used to swap a staged pack update in. Optional: without it the update is copied file by file.
+   */
+  move?(from: string, to: string): Promise<void>;
 }
 
-export type PackErrorCode = 'disabled' | 'bad-url' | 'network' | 'manifest' | 'app-version' | 'integrity' | 'cancelled';
+export type PackErrorCode = 'disabled' | 'bad-url' | 'network' | 'manifest' | 'app-version' | 'integrity' | 'cancelled' | 'storage';
 
 export class PackError extends Error {
   code: PackErrorCode;
@@ -311,9 +316,11 @@ export async function loadPackThemes(transport: Transport, packId: string): Prom
   return (await loadPackContent(transport, packId)).themes;
 }
 
-/** Delete a pack's folder. */
+/** Delete a pack's folder (and, T222, any staged or previous copy of a remote art pack update). */
 export async function removePack(transport: Transport, packId: string): Promise<void> {
   await transport.remove(packId);
+  await transport.remove(stagingDir(packId));
+  await transport.remove(previousDir(packId));
 }
 
 // ------------------------------------------------------------ remote art packs + catalogue (owner-1030 A, T160)
@@ -411,9 +418,25 @@ export type RemoteArtDownloadResult = {
 };
 
 /**
+ * T222: a pack update downloads into `.staging/<id>/` while the old version stays in `<id>/` and
+ * keeps working. Once every file is verified and the staged manifest is written, `<id>/` moves to
+ * `.previous/<id>/`, the staged folder moves to `<id>/`, and the previous copy is deleted. Pack ids
+ * are lower-case slugs, so these dot folders never collide with a pack.
+ */
+export const STAGING_ROOT = '.staging';
+export const PREVIOUS_ROOT = '.previous';
+export const stagingDir = (id: string) => `${STAGING_ROOT}/${id}`;
+export const previousDir = (id: string) => `${PREVIOUS_ROOT}/${id}`;
+/** Marker in a staging folder: the packVersion being staged. Removed before the swap. */
+const STAGING_MARK = 'staging-version.txt';
+
+/**
  * Download (or resume) a remote art pack: the manifest, then the files this phone needs with the
- * same resume + SHA-256 verification as theme packs, then the local manifest last. A different
- * version already on the phone is removed first (file names carry content hashes).
+ * same resume + SHA-256 verification as theme packs, then the local manifest last.
+ * T222: when another version is already on the phone this is an UPDATE: it is staged next to the
+ * old copy (files the versions share are copied locally, not downloaded again) and swapped in
+ * only once complete, so a failed or cancelled update leaves the old version working and a later
+ * attempt resumes the staged files.
  */
 export async function downloadRemoteArtPack(opts: RemoteArtDownloadOptions): Promise<RemoteArtDownloadResult> {
   const base = resolvePackBaseUrl(opts.baseUrl);
@@ -424,16 +447,32 @@ export async function downloadRemoteArtPack(opts: RemoteArtDownloadOptions): Pro
   if (!supportsApp(manifest, opts.appVersion)) {
     throw new PackError('app-version', `${manifest.name} needs Glaze ${manifest.minAppVersion} or later`);
   }
+  await recoverRemoteArtSwap(t, id);
   const old = await readLocalRemoteArt(t, id);
-  if (old && old.packVersion !== manifest.packVersion) await t.remove(id);
-  // Written last; drop any stale copy so a half-updated pack never looks complete.
-  await t.remove(localPath(id, REMOTE_ART_MANIFEST));
-
   const assets = assetsForDevice(manifest, opts.screenLongEdgePx);
   const folder = packFolder(id, manifest.packVersion);
+  const updating = !!old && old.packVersion !== manifest.packVersion;
+  const localDir = updating ? stagingDir(id) : id;
+  if (updating) {
+    // The staging folder is marked with the version it is for. Partial files of another version
+    // (the catalogue moved on) are useless now; files of this version resume.
+    const markPath = localPath(localDir, STAGING_MARK);
+    const mark = await t.readFile(markPath);
+    if (!mark || utf8Decode(mark) !== String(manifest.packVersion)) {
+      await t.remove(localDir);
+      await t.writeAppend(markPath, utf8Encode(String(manifest.packVersion)));
+    }
+    await t.remove(localPath(localDir, REMOTE_ART_MANIFEST));
+    await seedFromOld(t, id, old, assets, localDir);
+  } else {
+    // Written last; drop any stale copy so a half-updated pack never looks complete.
+    await t.remove(localPath(id, REMOTE_ART_MANIFEST));
+    await t.remove(stagingDir(id));
+  }
+
   const run = await fetchAndVerifyAssets({
     transport: t,
-    localDir: id,
+    localDir,
     assets,
     urlFor: (path) => packObjectUrl(base, `${folder}/${path}`),
     retries: Math.max(0, opts.retries ?? 1),
@@ -441,9 +480,85 @@ export async function downloadRemoteArtPack(opts: RemoteArtDownloadOptions): Pro
     onProgress: opts.onProgress,
   });
   const local = deviceManifest(manifest, assets);
-  await t.writeAppend(localPath(id, REMOTE_ART_MANIFEST), utf8Encode(JSON.stringify(local)));
+  await t.writeAppend(localPath(localDir, REMOTE_ART_MANIFEST), utf8Encode(JSON.stringify(local)));
+  if (updating) {
+    if (opts.isCancelled?.()) throw new PackError('cancelled', 'download cancelled');
+    await t.remove(localPath(localDir, STAGING_MARK));
+    await swapInStaged(t, id, local);
+  }
   opts.onProgress?.({ doneBytes: local.totalBytes, totalBytes: local.totalBytes });
   return { manifest: local, ...run };
+}
+
+/** Copy files the old version shares with the new one (same name and hash) into the staging folder. */
+async function seedFromOld(t: Transport, id: string, old: RemoteArtManifest, assets: readonly RemoteArtAsset[], stage: string): Promise<void> {
+  for (const a of assets) {
+    const prev = old.assets.find((o) => o.path === a.path && o.sha256 === a.sha256 && o.bytes === a.bytes);
+    if (!prev) continue;
+    const dest = localPath(stage, a.path);
+    const have = await t.readFile(dest);
+    if (have && verifyAsset(a, have).ok) continue;
+    const bytes = await t.readFile(localPath(id, a.path));
+    if (!bytes || !verifyAsset(a, bytes).ok) continue;
+    await t.remove(dest);
+    await t.writeAppend(dest, bytes);
+  }
+}
+
+/** Swap the complete staged update into `<id>/`; on a failed move the old version is put back. */
+async function swapInStaged(t: Transport, id: string, local: RemoteArtManifest): Promise<void> {
+  const stage = stagingDir(id);
+  const prev = previousDir(id);
+  await t.remove(prev);
+  if (t.move) {
+    try {
+      await t.move(id, prev);
+    } catch (e) {
+      throw new PackError('storage', e instanceof Error ? e.message : String(e));
+    }
+    try {
+      await t.move(stage, id);
+    } catch (e) {
+      await t.remove(id).catch(() => undefined);
+      await t.move(prev, id).catch(() => undefined);
+      throw new PackError('storage', e instanceof Error ? e.message : String(e));
+    }
+    await t.remove(prev).catch(() => undefined);
+    return;
+  }
+  // No rename on this transport: copy the new files in (hashed names never clash with different
+  // content), replace the manifest, then delete what the new version no longer lists.
+  const keep = new Set(local.assets.map((a) => a.path));
+  for (const a of local.assets) {
+    const bytes = await t.readFile(localPath(stage, a.path));
+    if (!bytes || !verifyAsset(a, bytes).ok) throw new PackError('integrity', `${a.path} failed its integrity check`);
+    const dest = localPath(id, a.path);
+    const have = await t.readFile(dest);
+    if (have && verifyAsset(a, have).ok) continue;
+    await t.remove(dest);
+    await t.writeAppend(dest, bytes);
+  }
+  const old = await readLocalRemoteArt(t, id);
+  await t.remove(localPath(id, REMOTE_ART_MANIFEST));
+  await t.writeAppend(localPath(id, REMOTE_ART_MANIFEST), utf8Encode(JSON.stringify(local)));
+  for (const a of old?.assets ?? []) if (!keep.has(a.path)) await t.remove(localPath(id, a.path));
+  await t.remove(stage);
+}
+
+/**
+ * T222: finish or undo a swap the app was killed in the middle of: `<id>/` has no manifest but
+ * `.previous/<id>/` has one → put the previous version back. Never rejects.
+ */
+export async function recoverRemoteArtSwap(t: Transport, id: string): Promise<void> {
+  try {
+    if (await t.readFile(localPath(id, REMOTE_ART_MANIFEST))) return;
+    if (!(await t.readFile(localPath(previousDir(id), REMOTE_ART_MANIFEST)))) return;
+    if (!t.move) return;
+    await t.remove(id);
+    await t.move(previousDir(id), id);
+  } catch {
+    // Leave it: the pack then simply offers its download again.
+  }
 }
 
 /** A downloaded remote art pack's (device) manifest, or null if it isn't (fully) downloaded. */
@@ -457,6 +572,7 @@ export async function readLocalRemoteArt(transport: Transport, id: string): Prom
  * the phone or a file was tampered with / damaged (the theme then offers the download again).
  */
 export async function loadRemoteArt(transport: Transport, id: string): Promise<RemoteArtManifest | null> {
+  await recoverRemoteArtSwap(transport, id);
   const m = await readLocalRemoteArt(transport, id);
   if (!m) return null;
   for (const a of m.assets) {
@@ -468,5 +584,5 @@ export async function loadRemoteArt(transport: Transport, id: string): Promise<R
 
 /** Cache-index entry (Settings › Storage) for a downloaded remote art pack. */
 export function remoteArtCacheEntry(m: RemoteArtManifest, now: Date): PackCacheEntry {
-  return { id: m.id, name: m.name, version: m.version, bytes: m.totalBytes, themeIds: [m.id], downloadedAt: now.toISOString() };
+  return { id: m.id, name: m.name, version: m.version, packVersion: m.packVersion, bytes: m.totalBytes, themeIds: [m.id], downloadedAt: now.toISOString() };
 }

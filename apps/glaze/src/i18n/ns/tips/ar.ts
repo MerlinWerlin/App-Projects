@@ -35,7 +35,7 @@ export const ar: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'صانع الخلفيات',
     icons: 'تبويب الأيقونات',
     install: 'تثبيت الأيقونات',
-    live: 'تبويب Live',
+    live: 'صانع صور Live',
     shapes: 'إعدادات شكل الأيقونة',
     override: 'تبويب الأيقونات',
     addApp: 'تبويب الأيقونات',
@@ -51,7 +51,7 @@ export const ar: NonNullable<LocaleMessages['tips']> = {
     },
     liveLock: {
       title: 'اصنع صورة حية',
-      body: 'حوّل فيديو إلى صورة حية من تبويب Live. تتحرك في الصور؛ أما كخلفية فكثيرًا ما يُبقيها iPhone ثابتة.',
+      body: 'حوّل فيديو إلى صورة حية في صانع صور Live ضمن الخلفيات. تتحرك في الصور؛ أما كخلفية فكثيرًا ما يُبقيها iPhone ثابتة.',
     },
     themePick: {
       title: 'ابدأ بسمة',

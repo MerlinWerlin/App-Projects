@@ -1,17 +1,15 @@
-// T176 premium UI, Wallpapers slice (docs/PREMIUM_UI.md §3.9): wallpaper groups on the Wallpapers
-// tab (src/core/wallpaperGroups.ts), and source guards for the tab and the wallpaper maker
-// (/wallpaper): editorial headers, 16-pt rhythm, skeletons not spinners, surfaces not hairlines in
-// dark mode, Dynamic Type caps, tokens only, strings in every locale, Save to Photos untouched.
+// T176 premium UI, Wallpapers slice (docs/PREMIUM_UI.md §3.9): source guards for the Wallpapers
+// tab and the wallpaper maker (/wallpaper): editorial headers, 16-pt rhythm, skeletons not
+// spinners, surfaces not hairlines in dark mode, Dynamic Type caps, tokens only, strings in every
+// locale, Save to Photos untouched. T193: the old wallpaper gallery (tiles, groups, sub-tabs) is
+// gone; its guards became the "old gallery stays gone" checks below.
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
 import * as tabsNs from '../i18n/ns/tabs/index.ts';
 import * as wallpaperNs from '../i18n/ns/wallpaper/index.ts';
-import { DISCOVERY_TABS } from './discovery.ts';
-import { ALL_THEMES } from './plusThemes.ts';
-import { WALLPAPER_GROUPS, wallpaperGroupKeys, wallpaperGroupOf, wallpaperGroupRows, wallpaperViewGrouped } from './wallpaperGroups.ts';
-import { WALLPAPER_SUB_TABS, discoverWallpaperTiles, tileRows } from './wallpaperTiles.ts';
+import { myWallpapersI18nKeys } from './myWallpapers.ts';
 
 const root = process.cwd();
 const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
@@ -19,84 +17,40 @@ const strip = (src: string) => src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(
 
 const TAB = ['app', '(tabs)', 'wallpapers.tsx'];
 const EDITOR = ['app', 'wallpaper.tsx'];
-const TILE = ['src', 'ui', 'WallpaperTile.tsx'];
 const PAIR = ['src', 'ui', 'WallpaperPairCard.tsx'];
-const PATH = [TAB, EDITOR, TILE, PAIR, ['src', 'ui', 'Switch.tsx'], ['src', 'ui', 'ContextTip.tsx']];
+const PATH = [TAB, EDITOR, PAIR, ['src', 'ui', 'Switch.tsx'], ['src', 'ui', 'ContextTip.tsx']];
 
-const LOOPS = [
-  { id: 'a', updatedAt: 2 },
-  { id: 'b', updatedAt: 1 },
+/** Keys of the T77/T176 gallery that T186 replaced; T193 removed them. */
+const OLD_GALLERY_KEYS = [
+  'subTabs', 'sub', 'liveBadge', 'photoTile', 'photoTileHint', 'themeTileA11y', 'themeTileHint', 'plusTileHint',
+  'loopTileA11y', 'loopTileHint', 'makeLiveTile', 'makeLiveHint', 'pairTileA11y', 'pairLock', 'pairHome',
+  'liveEmpty', 'showMore', 'groups', 'loading', 'discover', 'like',
 ];
-const tilesFor = (tab: (typeof WALLPAPER_SUB_TABS)[number], discovery: (typeof DISCOVERY_TABS)[number], liked: string[] = []) =>
-  discoverWallpaperTiles(tab, discovery, { themes: ALL_THEMES, loops: LOOPS, today: '2026-10-30', liked });
 
-test('groups: your own photos and loops, free theme wallpapers, Plus theme wallpapers', () => {
-  assert.deepEqual([...WALLPAPER_GROUPS], ['yours', 'free', 'plus']);
-  for (const kind of ['photo', 'loop', 'makeLive'] as const) assert.equal(wallpaperGroupOf({ kind, plus: false }), 'yours');
-  for (const kind of ['theme', 'pair'] as const) {
-    assert.equal(wallpaperGroupOf({ kind, plus: false }), 'free');
-    assert.equal(wallpaperGroupOf({ kind, plus: true }), 'plus');
+test('old wallpaper gallery stays gone: no tile, tile model or group code, no gallery copy', () => {
+  for (const f of [['src', 'ui', 'WallpaperTile.tsx'], ['src', 'core', 'wallpaperTiles.ts'], ['src', 'core', 'wallpaperGroups.ts']]) {
+    assert.ok(!existsSync(join(root, ...f)), `${f.join('/')} was removed in T193`);
   }
-  assert.equal(wallpaperViewGrouped('live', 'liked'), true, 'Live ignores discovery and is grouped');
-  for (const tab of ['still', 'pairs'] as const) {
-    assert.equal(wallpaperViewGrouped(tab, 'all'), true);
-    for (const d of DISCOVERY_TABS.filter((x) => x !== 'all')) assert.equal(wallpaperViewGrouped(tab, d), false, `${tab}/${d} keeps its own order`);
-  }
-});
-
-test('grouped rows keep every tile once, in order, never mix groups in a row, one header per group', () => {
-  for (const tab of WALLPAPER_SUB_TABS) {
-    const tiles = tilesFor(tab, 'all');
-    for (const shown of [1, 3, 8, tiles.length]) {
-      const visible = tiles.slice(0, shown);
-      const { rows, headers } = wallpaperGroupRows(visible, true);
-      assert.deepEqual(rows.flat().map((x) => x.id), visible.map((x) => x.id), `${tab}/${shown}: same tiles, same order`);
-      for (const r of rows) {
-        assert.ok(r.length >= 1 && r.length <= 2);
-        assert.equal(new Set(r.map(wallpaperGroupOf)).size, 1, `${tab}: a row is one group`);
-      }
-      const opened = [...headers.entries()].sort((a, b) => a[0] - b[0]);
-      assert.deepEqual(opened.map(([, g]) => g), [...new Set(visible.map(wallpaperGroupOf))], `${tab}/${shown}: one header per group present`);
-      for (const [i, g] of opened) assert.equal(wallpaperGroupOf(rows[i][0]), g, `${tab}: header ${g} opens its own first row`);
-      assert.equal(new Set(rows.map((r) => r.map((x) => x.id).join('|'))).size, rows.length, `${tab}: stable unique row keys`);
-    }
-  }
-  // Still opens with your own photo, then the free themes, then Plus; Pairs has no "yours"; Live is all yours.
-  const still = wallpaperGroupRows(tilesFor('still', 'all'), true).headers;
-  assert.deepEqual([...still.values()], ['yours', 'free', 'plus']);
-  assert.deepEqual([...wallpaperGroupRows(tilesFor('pairs', 'all'), true).headers.values()], ['free', 'plus']);
-  assert.deepEqual([...wallpaperGroupRows(tilesFor('live', 'all'), true).headers.values()], ['yours']);
-  assert.deepEqual(wallpaperGroupRows([], true), { rows: [], headers: new Map() });
-});
-
-test('filtered views (New / Our picks / Liked) keep their own order and have no headers', () => {
-  const liked = [ALL_THEMES[40].id, ALL_THEMES[2].id, ALL_THEMES[30].id];
-  for (const tab of ['still', 'pairs'] as const) {
-    for (const d of DISCOVERY_TABS.filter((x) => x !== 'all')) {
-      const tiles = tilesFor(tab, d, liked);
-      const out = wallpaperGroupRows(tiles, wallpaperViewGrouped(tab, d));
-      assert.deepEqual(out.rows, tileRows(tiles), `${tab}/${d}`);
-      assert.equal(out.headers.size, 0);
-    }
-  }
-});
-
-test('every locale has the group headers, the Live loading label and the preview loading label', () => {
   const tabs = Object.entries(tabsNs) as [string, { wallpapersTab?: Record<string, unknown> }][];
-  const walls = Object.entries(wallpaperNs) as [string, { preview?: Record<string, unknown> }][];
   assert.equal(tabs.length, 11);
-  assert.equal(walls.length, 11);
   for (const [loc, msgs] of tabs) {
     const wt = msgs.wallpapersTab ?? {};
-    const groups = (wt.groups ?? {}) as Record<string, Record<string, string>>;
-    for (const g of WALLPAPER_GROUPS) {
-      const keys = wallpaperGroupKeys(g);
-      for (const part of ['eyebrow', 'title', 'body'] as const) {
-        assert.ok(keys[part].endsWith(`wallpapersTab.groups.${g}.${part}`));
-        assert.ok(typeof groups[g]?.[part] === 'string' && groups[g][part].length > 0, `${loc}: groups.${g}.${part}`);
-      }
+    for (const k of OLD_GALLERY_KEYS) assert.ok(!(k in wt), `${loc}: tabs.wallpapersTab.${k} is dead gallery copy`);
+  }
+});
+
+test('every locale has the Wallpapers tab section strings and the preview loading label', () => {
+  const tabs = Object.entries(tabsNs) as [string, Record<string, unknown>][];
+  const walls = Object.entries(wallpaperNs) as [string, { preview?: Record<string, unknown> }][];
+  assert.equal(walls.length, 11);
+  const keys = myWallpapersI18nKeys().filter((k) => k.startsWith('tabs.wallpapersTab.'));
+  assert.ok(keys.includes('tabs.wallpapersTab.liveEntry.title') && keys.includes('tabs.wallpapersTab.mine.title'));
+  for (const [loc, msgs] of tabs) {
+    for (const key of keys) {
+      let v: unknown = msgs;
+      for (const part of key.split('.').slice(1)) v = (v as Record<string, unknown> | undefined)?.[part];
+      assert.ok(typeof v === 'string' && v.length > 0, `${loc}: ${key}`);
     }
-    assert.ok(typeof wt.loading === 'string' && (wt.loading as string).length > 0, `${loc}: wallpapersTab.loading`);
   }
   for (const [loc, msgs] of walls) {
     assert.ok(typeof msgs.preview?.loadingA11y === 'string' && (msgs.preview.loadingA11y as string).length > 0, `${loc}: wallpaper.preview.loadingA11y`);
@@ -117,11 +71,7 @@ test('Wallpapers tab: editorial sections, 16-pt rhythm, skeleton wait, still one
   assert.match(tab, /const ThumbRow = memo\(/);
 });
 
-test('Wallpaper tiles and the pair card lift by surface in dark mode, without hairlines', () => {
-  const tile = strip(read(...TILE));
-  assert.match(tile, /backgroundColor: scheme === 'dark' \? c\.surfaceRaised : c\.surface/);
-  assert.match(tile, /scheme === 'dark' \? null : \[styles\.pairFrameLine/);
-  assert.doesNotMatch(tile, /pairFrame: \{[^}]*borderWidth/);
+test('the pair card lifts by surface in dark mode, without hairlines', () => {
   const pair = strip(read(...PAIR));
   assert.match(pair, /backgroundColor: scheme === 'dark' \? c\.surfaceRaised : c\.surface/);
   assert.doesNotMatch(pair, /scheme === 'dark' \? \{ borderColor/);

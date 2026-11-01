@@ -37,6 +37,8 @@ export const de: NonNullable<LocaleMessages['install']> = {
     },
     cantReplace: 'iOS kann App-Icons nicht ersetzen. Glaze fügt neue Icons hinzu, die deine Apps öffnen; die Originale wandern in die App-Mediathek.',
     more: '+{count}',
+    // T210: eyebrow over the summary heading.
+    eyebrow: 'Dein Symbol-Set',
   },
   state: {
     loadError: 'Dein Icon-Set konnte nicht geladen werden.',
@@ -47,7 +49,10 @@ export const de: NonNullable<LocaleMessages['install']> = {
   },
   method: {
     heading: 'So installierst du',
-    bulk: 'Sammelinstallation',
+    // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
+    bulk: 'Alle auf einmal installieren',
+    // T210: eyebrow over the Install all at once heading.
+    bulkEyebrow: 'Der schnelle Weg',
     bulkBody: {
       one: 'Ein Profil fügt {count} Icon auf einmal hinzu. Dauert etwa zwei Minuten.',
       other: 'Ein Profil fügt {count} Icons auf einmal hinzu. Dauert etwa zwei Minuten.',
@@ -77,7 +82,6 @@ export const de: NonNullable<LocaleMessages['install']> = {
     noSharing: 'Teilen ist auf diesem Gerät nicht verfügbar, daher kann das Profil nicht in Dateien gesichert werden.',
     noIcons: 'Für das Profil konnten keine Icons gezeichnet werden.',
     cleared: 'Die Profildatei wurde aus dem Cache gelöscht. Tippe erneut auf „Profil erstellen“.',
-    copyFailed: 'Kopieren fehlgeschlagen. Markiere den Link und kopiere ihn von Hand.',
     noShortcutsApp: 'Die Kurzbefehle-App ist nicht installiert. Lade sie kostenlos im App Store und komm dann zurück.',
   },
   shortcuts: {
@@ -108,10 +112,6 @@ export const de: NonNullable<LocaleMessages['install']> = {
     saveOne: 'Icon für {app} in Fotos sichern',
     showSteps: 'Schritte für {app} anzeigen',
     hideSteps: 'Schritte für {app} ausblenden',
-    copy: 'Kopieren',
-    copied: 'Kopiert',
-    copyLink: 'Link für {app} kopieren: {url}',
-    linkCopied: 'Link für {app} kopiert',
     undo: {
       title: 'Später rückgängig machen',
       removeIcon: 'Um ein neues Icon zu entfernen, halte es gedrückt, tippe auf „Entfernen“ (oder „Lesezeichen löschen“) und bestätige. Nur dieses Icon verschwindet.',
@@ -121,8 +121,6 @@ export const de: NonNullable<LocaleMessages['install']> = {
   },
   steps: {
     openShortcuts: 'Öffne die Kurzbefehle-App und tippe auf + (oben rechts).',
-    addOpenUrl: 'Tippe auf „Aktion hinzufügen“, suche „URL öffnen“ und tippe darauf.',
-    pasteUrl: 'Tippe auf „URL“ und füge {url} ein (nutze „Kopieren“ oben).',
     addOpenApp: 'Tippe auf „Aktion hinzufügen“, suche „App öffnen“ und tippe darauf.',
     chooseApp: 'Tippe auf „App“ und wähle {name} aus der Liste.',
     rename: 'Tippe oben auf den Namen, wähle „Umbenennen“ und gib {name} ein.',

@@ -134,11 +134,13 @@ test('the heart is device-local, labelled, ≥48 pt and never shows a count (sou
   assert.match(store, /FAVOURITES_KEY/);
   assert.match(store, /AsyncStorage/);
   assert.doesNotMatch(store, /fetch\(|https?:\/\//, 'favourites never leave the device');
-  assert.match(store, /WALLPAPER_FAVOURITES_KEY/);
+  // T193: the liked-wallpapers list went with the old Wallpapers gallery; one list of liked themes.
+  assert.doesNotMatch(store, /WALLPAPER_FAVOURITES_KEY|useWallpaperFavourites|wallpaperFavourites/);
   const heart = readFileSync(join(root, 'src', 'ui', 'HeartButton.tsx'), 'utf8');
-  for (const key of ['themes.like.add', 'themes.like.remove', 'themes.like.hint', 'tabs.wallpapersTab.like.add', 'tabs.wallpapersTab.like.remove', 'tabs.wallpapersTab.like.hint']) {
+  for (const key of ['themes.like.add', 'themes.like.remove', 'themes.like.hint']) {
     assert.ok(heart.includes(`'${key}'`), `heart uses ${key}`);
   }
+  assert.doesNotMatch(heart, /wallpapersTab|kind === 'wallpaper'/, 'the heart has one copy: liking a theme');
   assert.match(heart, /accessibilityState=\{\{ selected: liked \}\}/);
   assert.match(heart, /accessibilityRole="button"/);
   assert.match(heart, /haptic\(/);
@@ -147,7 +149,7 @@ test('the heart is device-local, labelled, ≥48 pt and never shows a count (sou
   const users = [
     join(root, 'src', 'ui', 'ShowcaseGrid.tsx'),
     join(root, 'src', 'ui', 'ThemeCard.tsx'),
-    join(root, 'src', 'ui', 'WallpaperTile.tsx'),
+    join(root, 'src', 'ui', 'GalleryArtCard.tsx'),
   ];
   for (const f of users) assert.match(readFileSync(f, 'utf8'), /<HeartButton\b/, `${f} uses HeartButton`);
   // T177 (owner-1031): the Themes tab keeps only All / Liked (src/core/gallery.ts); every gallery card
@@ -167,7 +169,7 @@ test('no invented counts or ranks anywhere discovery or hearts are drawn (source
     ['src', 'ui', 'HeartButton.tsx'],
     ['src', 'ui', 'ShowcaseGrid.tsx'],
     ['src', 'ui', 'ThemeCard.tsx'],
-    ['src', 'ui', 'WallpaperTile.tsx'],
+    ['src', 'ui', 'GalleryArtCard.tsx'],
     ['app', '(tabs)', 'themes.tsx'],
     ['app', '(tabs)', 'wallpapers.tsx'],
     ['src', 'store', 'favourites.ts'],
@@ -179,7 +181,8 @@ test('no invented counts or ranks anywhere discovery or hearts are drawn (source
   }
   // The copy: no "popular", "trending", "top", "most", "#", or numbers in any discovery/heart string.
   const keys = discoveryI18nKeys();
-  assert.ok(keys.some((k) => k.startsWith('tabs.wallpapersTab.')), 'covers the Wallpapers copy');
+  assert.ok(keys.includes('themes.like.add') && keys.includes('themes.discover.label'), 'covers the heart and sub-tab copy');
+  assert.ok(!keys.some((k) => k.startsWith('tabs.wallpapersTab.')), 'T193: no Wallpapers gallery copy left');
   for (const [locale, cat] of [['en', en], ...Object.entries(TRANSLATIONS)] as const) {
     for (const key of keys) {
       const s = String(lookup(cat as unknown as CatalogueTree, key));

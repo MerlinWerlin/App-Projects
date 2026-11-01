@@ -69,7 +69,7 @@ export const de: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-lock': {
       title: 'Live Photo erstellen',
-      body: 'Mach im Tab „Live“ aus einem Video ein Live Photo. In Fotos bewegt es sich; als Hintergrund lässt das iPhone es oft unbewegt.',
+      body: 'Mach im Live-Photo-Editor (unter „Hintergründe“) aus einem Video ein Live Photo. In Fotos bewegt es sich; als Hintergrund lässt das iPhone es oft unbewegt.',
     },
     'theme-pick': {
       title: 'Starte mit einem Theme',

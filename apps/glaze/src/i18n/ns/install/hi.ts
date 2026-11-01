@@ -37,6 +37,8 @@ export const hi: NonNullable<LocaleMessages['install']> = {
     },
     cantReplace: 'iOS ऐप आइकन नहीं बदल सकता। ये नए आइकन जोड़ते हैं जो आपके ऐप खोलते हैं; मूल आइकन ऐप लाइब्रेरी में चले जाते हैं।',
     more: '+{count}',
+    // T210: eyebrow over the summary heading.
+    eyebrow: 'आपका आइकन सेट',
   },
   state: {
     loadError: 'आपका आइकन सेट लोड नहीं हो सका।',
@@ -47,7 +49,10 @@ export const hi: NonNullable<LocaleMessages['install']> = {
   },
   method: {
     heading: 'कैसे इंस्टॉल करें',
-    bulk: 'एक साथ इंस्टॉल',
+    // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
+    bulk: 'सभी एक साथ इंस्टॉल करें',
+    // T210: eyebrow over the Install all at once heading.
+    bulkEyebrow: 'तेज़ तरीका',
     bulkBody: {
       one: 'एक प्रोफ़ाइल एक बार में {count} आइकन जोड़ती है। लगभग दो मिनट लगते हैं।',
       other: 'एक प्रोफ़ाइल एक बार में {count} आइकन जोड़ती है। लगभग दो मिनट लगते हैं।',
@@ -56,7 +61,7 @@ export const hi: NonNullable<LocaleMessages['install']> = {
     shortcutsOnly: 'Glaze हर आइकन शॉर्टकट्स ऐप के “ऐप खोलें” ऐक्शन से जोड़ता है: आइकन ऐप को तुरंत खोलता है, बिना Safari और बिना “…में खोलें?” वाले सवाल के। हर ऐप के लिए एक शॉर्टकट, हर एक में लगभग एक मिनट। यह हर ऐप के लिए काम करता है।',
     shortcutsFallback: 'शॉर्टकट्स पसंद हैं? एक बार में एक आइकन',
     shortcutsFallbackHint: 'हर आइकन शॉर्टकट्स ऐप से बनाने के तरीके पर बदलता है',
-    backToBulk: 'सभी एक साथ इंस्टॉल करें',
+    backToBulk: 'इसके बजाय सभी एक साथ इंस्टॉल करें',
     backToBulkHint: 'सभी आइकन के लिए एक प्रोफ़ाइल पर वापस जाता है',
     safariTap: { one: 'आपके {total} ऐप में से {count} Safari में एक छोटे टैप (“…में खोलें?”) से खुलता है — प्रोफ़ाइल आइकन के लिए iOS की सीमा।', other: 'आपके {total} ऐप में से {count} Safari में एक छोटे टैप (“…में खोलें?”) से खुलते हैं — प्रोफ़ाइल आइकन के लिए iOS की सीमा।' },
     safariTapAll: { one: 'यह ऐप Safari में एक छोटे टैप (“…में खोलें?”) से खुलता है — प्रोफ़ाइल आइकन के लिए iOS की सीमा।', other: 'सभी {count} ऐप Safari में एक छोटे टैप (“…में खोलें?”) से खुलते हैं — प्रोफ़ाइल आइकन के लिए iOS की सीमा।' },
@@ -77,7 +82,6 @@ export const hi: NonNullable<LocaleMessages['install']> = {
     noSharing: 'इस डिवाइस पर शेयरिंग उपलब्ध नहीं है, इसलिए प्रोफ़ाइल फ़ाइल्स में सहेजी नहीं जा सकती।',
     noIcons: 'प्रोफ़ाइल के लिए कोई आइकन नहीं बन सका।',
     cleared: 'प्रोफ़ाइल फ़ाइल कैश से हट गई। फिर से “प्रोफ़ाइल बनाएँ” पर टैप करें।',
-    copyFailed: 'कॉपी नहीं हो सका। लिंक टेक्स्ट चुनकर खुद कॉपी करें।',
     noShortcutsApp: 'शॉर्टकट्स ऐप इंस्टॉल नहीं है। इसे App Store से मुफ़्त पाएँ, फिर लौटें।',
   },
   shortcuts: {
@@ -108,10 +112,6 @@ export const hi: NonNullable<LocaleMessages['install']> = {
     saveOne: '{app} का आइकन फ़ोटो में सेव करें',
     showSteps: '{app} के चरण दिखाएँ',
     hideSteps: '{app} के चरण छिपाएँ',
-    copy: 'कॉपी करें',
-    copied: 'कॉपी हुआ',
-    copyLink: '{app} का लिंक कॉपी करें {url}',
-    linkCopied: '{app} का लिंक कॉपी हुआ',
     undo: {
       title: 'बाद में वापस करने के लिए',
       removeIcon: 'नया आइकन हटाने के लिए उसे दबाकर रखें, Remove (या Delete Bookmark) पर टैप करें और पुष्टि करें। सिर्फ़ वही आइकन हटता है।',
@@ -121,8 +121,6 @@ export const hi: NonNullable<LocaleMessages['install']> = {
   },
   steps: {
     openShortcuts: 'शॉर्टकट्स ऐप खोलें और + (ऊपर दाईं ओर) पर टैप करें।',
-    addOpenUrl: '“ऐक्शन जोड़ें” पर टैप करें, “URL खोलें” खोजें और उस पर टैप करें।',
-    pasteUrl: '“URL” पर टैप करें और {url} पेस्ट करें (ऊपर “कॉपी करें” इस्तेमाल करें)।',
     addOpenApp: '“ऐक्शन जोड़ें” पर टैप करें, “ऐप खोलें” खोजें और उस पर टैप करें।',
     chooseApp: '“ऐप” पर टैप करें और सूची से {name} चुनें।',
     rename: 'ऊपर नाम पर टैप करें, “नाम बदलें” चुनें और {name} लिखें।',

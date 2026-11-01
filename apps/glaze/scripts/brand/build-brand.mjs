@@ -4,6 +4,11 @@
 // T199 (owner-1101d #2): the app icon is the 25 Oct Prism diamond again. Its SVGs are copied verbatim from
 // docs/mascot/previous-prism-diamond/; the splash image (the unlit diamond, no tile) is generated from
 // src/core/introGlaze.ts, the same geometry the in-app intro draws.
+// T216 (1 Nov): icon.png, icon-dark.png and adaptive-foreground.png are no longer rendered from the diamond SVGs: they
+// come from the picture Jared picked on 25 Oct (python3 scripts/brand/picked-icon.py). The diamond SVGs stay as the
+// source of the splash, the intro gem and the Android monochrome icon.
+// T220 (owner-1101e 11:39): the splash, intro figure and Android monochrome PNGs now come from the picked picture too,
+// so this script only writes the diamond SVGs (kept as reference) and renders nothing.
 // Env: PLAYWRIGHT (path to playwright's index.mjs or a package name), CHROMIUM (executable path, optional).
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -49,12 +54,6 @@ const shot = async (svg, path, size, transparent) => {
   await page.close();
 };
 const pngs = [
-  ['icon.svg', 'icon.png', false],
-  ['icon-dark.svg', 'icon-dark.png', false],
-  ['splash-icon.svg', 'splash-icon.png', true],
-  ['splash-icon-dark.svg', 'splash-icon-dark.png', true],
-  ['adaptive-foreground.svg', 'adaptive-foreground.png', true],
-  ['adaptive-monochrome.svg', 'adaptive-monochrome.png', true],
 ];
 for (const [src, dst, transparent] of pngs) await shot(readFileSync(join(out, src), 'utf8'), join(out, dst), 1024, transparent);
 await browser.close();

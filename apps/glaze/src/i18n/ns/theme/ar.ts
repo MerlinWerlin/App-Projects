@@ -167,6 +167,17 @@ export const ar: NonNullable<LocaleMessages['theme']> = {
     readyA11y: 'تم تنزيل حزمة {pack}',
     size: 'الحجم: {size}',
   },
+  // T222: a newer version of a downloaded pack (theme page note, src/ui/PackUpdateNote.tsx).
+  update: {
+    title: 'يتوفر تحديث',
+    pending: 'إصدار جديد من حزمة {pack} مع مزيد من رسومات الأدوات جاهز. يُنزَّل تلقائيًا، وتبقى رسوماتك الحالية تعمل حتى ذلك الحين.',
+    failed: 'لم يتم تحديث حزمة {pack}. رسوماتك الحالية لا تزال تعمل.',
+    cta: 'حدّث الآن',
+    retry: 'حاول مجددًا',
+    hint: 'ينزّل الإصدار الجديد من هذه الحزمة',
+    updating: 'جارٍ تحديث حزمة {pack}',
+    doneA11y: 'حزمة {pack} محدّثة',
+  },
   // T179: the theme page of a remote catalogue theme (glass-bar Download, hero note, icons note).
   remote: {
     heroPreview: 'معاينة للعمل الفني. نزّله للحصول على خلفية بالحجم الكامل.',

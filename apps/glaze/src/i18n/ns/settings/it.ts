@@ -83,7 +83,8 @@ export const it: NonNullable<LocaleMessages['settings']> = {
     addedTitle: 'Le icone si aggiungono, non si sostituiscono',
     addedBody: 'iOS non permette a nessuna app di cambiare l’icona di un’altra. Glaze aggiunge invece collegamenti alla schermata Home con il tuo nuovo stile. Toccandone uno si apre l’app vera.',
     waysTitle: 'Due modi per aggiungerle',
-    waysBody: 'Comandi Rapidi (consigliato): Glaze ti guida nell’aggiungere ogni icona con l’app Comandi Rapidi. In blocco (beta facoltativa): un profilo aggiunge tutte le icone insieme.',
+    // T210: Install all at once is the main way since T202 (owner-1101d #5).
+    waysBody: 'Installa tutto in una volta (il modo principale): un profilo aggiunge tutte le icone, tramite Safari e poi Impostazioni, e un profilo creato per un nuovo tema sostituisce le icone vecchie. Le icone del profilo aprono la loro app dopo un rapido tocco in Safari («Aprire in…?»), un limite di iOS. Comandi Rapidi (un’icona alla volta): ogni icona usa l’azione «Apri app» e apre l’app direttamente.',
     originalsTitle: 'Dove finiscono le icone originali',
     originalsBody: 'Tieni premuta un’icona originale, tocca Rimuovi app, poi Rimuovi dalla schermata Home. L’app resta installata e passa alla Libreria app (scorri a sinistra oltre l’ultima pagina).',
     removeTitle: 'Rimuovere le icone di Glaze',

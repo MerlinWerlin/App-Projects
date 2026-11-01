@@ -92,6 +92,7 @@ import {
   type StudioSwatch,
 } from '../src/core/widgetStudio';
 import { useT } from '../src/i18n';
+import { photoPieceId } from '../src/core/widgetArtLibrary';
 import { widgets } from '../src/native/widgets';
 import { PlusLockSheet } from '../src/plus/PlusLockSheet';
 import { useLocked } from '../src/plus/useLocked';
@@ -342,6 +343,14 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
       } else {
         const photo = state.catalogue ? null : needsPhotoCopy(set, state);
         const photoOk = photo ? (await widgets.setPhoto(photo)).ok : true;
+        // T221: the copied photo (widget-photo.jpg) also joins "My widget art", so a Seamless widget
+        // can show it via Edit Widget. Reuses the file setPhoto just wrote; a failure here is ignored.
+        if (photo && photoOk) {
+          await widgets.addToArtLibrary(
+            { id: photoPieceId(photo), name: t('ui.seamless.library.photoName'), themeName: '', themeId: null, source: 'photo', created: Date.now(), aspect: 0, size: null },
+            'widget-photo.jpg',
+          );
+        }
         if (!photoOk) {
           next = 'photoFailed';
         } else {

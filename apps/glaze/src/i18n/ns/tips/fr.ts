@@ -32,7 +32,7 @@ export const fr: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'Créateur de fonds d’écran',
     icons: 'Onglet Icônes',
     install: 'Installer les icônes',
-    live: 'Onglet Live',
+    live: 'Créateur de Live Photos',
     shapes: 'Réglages de forme d’icône',
     override: 'Onglet Icônes',
     addApp: 'Onglet Icônes',
@@ -48,7 +48,7 @@ export const fr: NonNullable<LocaleMessages['tips']> = {
     },
     liveLock: {
       title: 'Créer une Live Photo',
-      body: 'Transformez une vidéo en Live Photo dans l’onglet Live. Elle s’anime dans Photos ; en fond d’écran, l’iPhone la garde souvent fixe.',
+      body: 'Transformez une vidéo en Live Photo avec le Créateur de Live Photos, dans Fonds d’écran. Elle s’anime dans Photos ; en fond d’écran, l’iPhone la garde souvent fixe.',
     },
     themePick: {
       title: 'Partez d’un thème',

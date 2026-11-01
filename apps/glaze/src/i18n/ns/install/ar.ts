@@ -67,6 +67,8 @@ export const ar: NonNullable<LocaleMessages['install']> = {
     },
     cantReplace: 'لا يسمح iOS باستبدال أيقونات التطبيقات. تضيف هذه أيقونات جديدة تفتح تطبيقاتك، وتنتقل الأصلية إلى مكتبة التطبيقات.',
     more: '+{count}',
+    // T210: eyebrow over the summary heading.
+    eyebrow: 'مجموعة أيقوناتك',
   },
   state: {
     loadError: 'تعذّر تحميل مجموعة أيقوناتك.',
@@ -77,7 +79,10 @@ export const ar: NonNullable<LocaleMessages['install']> = {
   },
   method: {
     heading: 'طريقة التثبيت',
-    bulk: 'تثبيت جماعي',
+    // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
+    bulk: 'تثبيت الكل دفعة واحدة',
+    // T210: eyebrow over the Install all at once heading.
+    bulkEyebrow: 'الطريقة السريعة',
     bulkBody: {
       zero: 'لا يضيف ملف التعريف أي أيقونة.',
       one: 'يضيف ملف تعريف واحد أيقونة واحدة دفعة واحدة. يستغرق نحو دقيقتين.',
@@ -111,7 +116,6 @@ export const ar: NonNullable<LocaleMessages['install']> = {
     noSharing: 'المشاركة غير متاحة على هذا الجهاز، لذا لا يمكن حفظ ملف التعريف في الملفات.',
     noIcons: 'تعذّر رسم أي أيقونات لملف التعريف.',
     cleared: 'حُذف ملف التعريف من الذاكرة المؤقتة. اضغط «إنشاء ملف التعريف» مجددًا.',
-    copyFailed: 'تعذّر النسخ. حدّد نص الرابط وانسخه يدويًا.',
     noShortcutsApp: 'تطبيق الاختصارات غير مثبّت. احصل عليه مجانًا من App Store ثم عُد.',
   },
   shortcuts: {
@@ -157,10 +161,6 @@ export const ar: NonNullable<LocaleMessages['install']> = {
     saveOne: 'حفظ أيقونة {app} في الصور',
     showSteps: 'عرض خطوات {app}',
     hideSteps: 'إخفاء خطوات {app}',
-    copy: 'نسخ',
-    copied: 'تم النسخ',
-    copyLink: 'نسخ رابط {app} {url}',
-    linkCopied: 'تم نسخ رابط {app}',
     undo: {
       title: 'للتراجع لاحقًا',
       removeIcon: 'لإزالة أيقونة جديدة، المسها مطولًا واضغط إزالة (أو حذف الإشارة المرجعية) ثم أكّد. تختفي تلك الأيقونة فقط.',
@@ -170,8 +170,6 @@ export const ar: NonNullable<LocaleMessages['install']> = {
   },
   steps: {
     openShortcuts: 'افتح تطبيق الاختصارات واضغط + (أعلى الشاشة).',
-    addOpenUrl: 'اضغط «إضافة إجراء»، وابحث عن «فتح URL» واضغط عليه.',
-    pasteUrl: 'اضغط «URL» والصق {url} (استخدم «نسخ» أعلاه).',
     addOpenApp: 'اضغط «إضافة إجراء»، وابحث عن «فتح التطبيق» واضغط عليه.',
     chooseApp: 'اضغط «التطبيق» واختر {name} من القائمة.',
     rename: 'اضغط الاسم في الأعلى، واختر «إعادة تسمية» واكتب {name}.',

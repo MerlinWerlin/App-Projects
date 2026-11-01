@@ -68,7 +68,7 @@ export const zhHans: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-lock': {
       title: '制作实况照片',
-      body: '在 Live 标签页把视频转换成实况照片。它在“照片”中会动；设为墙纸时，iPhone 常常让它保持静止。',
+      body: '在“壁纸”的实况照片制作器里把视频转换成实况照片。它在“照片”中会动；设为墙纸时，iPhone 常常让它保持静止。',
     },
     'theme-pick': {
       title: '从主题开始',

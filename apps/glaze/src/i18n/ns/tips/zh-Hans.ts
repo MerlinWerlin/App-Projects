@@ -30,7 +30,7 @@ export const zhHans: NonNullable<LocaleMessages['tips']> = {
     wallpaper: '墙纸制作',
     icons: '图标标签页',
     install: '安装图标',
-    live: 'Live 标签页',
+    live: '实况照片制作器',
     shapes: '图标形状设置',
     override: '图标标签页',
     addApp: '图标标签页',
@@ -46,7 +46,7 @@ export const zhHans: NonNullable<LocaleMessages['tips']> = {
     },
     liveLock: {
       title: '制作实况照片',
-      body: '在 Live 标签页把视频转换成实况照片。它在“照片”中会动；设为墙纸时，iPhone 常常让它保持静止。',
+      body: '在“壁纸”的实况照片制作器里把视频转换成实况照片。它在“照片”中会动；设为墙纸时，iPhone 常常让它保持静止。',
     },
     themePick: {
       title: '从主题开始',

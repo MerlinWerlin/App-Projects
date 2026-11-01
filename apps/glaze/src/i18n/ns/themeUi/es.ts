@@ -69,7 +69,7 @@ export const es: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-lock': {
       title: 'Crea una Live Photo',
-      body: 'Convierte un vídeo en Live Photo en la pestaña Live. Se mueve en Fotos; como fondo, el iPhone suele dejar fijas las creadas por apps.',
+      body: 'Convierte un vídeo en Live Photo con el Creador de Live Photos, en Fondos. Se mueve en Fotos; como fondo, el iPhone suele dejar fijas las creadas por apps.',
     },
     'theme-pick': {
       title: 'Empieza con un tema',

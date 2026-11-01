@@ -22,7 +22,7 @@ export const en = {
     subtitle: 'from your own video',
     cta: 'Pick a video or GIF',
     a11y: 'Make a Live Photo from your own video. {detail}',
-    hint: 'Opens the Live tab and your photo library to pick a video or GIF',
+    hint: 'Opens the Live Photo maker and your photo library to pick a video or GIF',
     subExpoGo: 'Frame and preview it here, then save a still wallpaper and the clip. The full Glaze build saves it as a Live Photo.',
     subLoop: 'Saved to Photos as a Live Photo. It moves when you press it in Photos, not in a constant loop.',
     subLivePhoto: 'Saved to Photos as a Live Photo that moves when you press it. On iOS {version}, wallpapers show it still.',

@@ -12,6 +12,18 @@ import type { HabitKind, HabitState } from '../core/habits';
 import { logHabitTapInStore, logHabitUndoInStore } from '../core/habitTap';
 import { migrateLocalHabitsInStore } from '../core/habitMigrate';
 import { NO_WIDGET_LINK, normaliseWidgetLinkStatus, type WidgetLinkStatus } from '../core/widgetLink';
+import {
+  addPiece,
+  isValidPieceId,
+  listPieces,
+  parseLibrary,
+  removePiece,
+  serializeLibrary,
+  WIDGET_ART_SOURCES,
+  type WidgetArtIndex,
+  type WidgetArtPiece,
+  type WidgetArtSourceFile,
+} from '../core/widgetArtLibrary';
 
 export type WidgetsReason = 'expo-go' | 'android' | 'not-built' | 'failed' | null;
 export type WidgetsResult = { available: boolean; ok: boolean; reason: WidgetsReason };
@@ -78,7 +90,21 @@ export interface WidgetsAdapter {
    * predates T146: { available: true, supported: false } (link unknown). Never throws.
    */
   linkStatus(): Promise<WidgetLinkResult>;
+  /**
+   * T221 "My widget art": copy `from` (an App Group file the bridge just wrote: seamless-<size>.png
+   * or widget-photo.jpg) into widget-art/<id>.jpg and add the piece to the index (deduped by id,
+   * capped; src/core/widgetArtLibrary.ts). Every Glaze art widget can then pick its own piece
+   * (long-press > Edit Widget). Expo Go / Android / older bridge: { available: false }, nothing runs.
+   */
+  addToArtLibrary(piece: Omit<WidgetArtPiece, 'file'>, from: WidgetArtSourceFile): Promise<WidgetsResult>;
+  /** T221: the library, newest first, plus the file:// folder holding the images ('' when unknown). */
+  artLibrary(): Promise<ArtLibraryResult>;
+  /** T221: remove one piece (its file is deleted; widgets showing it fall back to the last applied image). */
+  removeFromArtLibrary(id: string): Promise<WidgetsResult>;
 }
+
+/** T221: widgets.artLibrary() result. */
+export type ArtLibraryResult = WidgetsResult & { pieces: WidgetArtPiece[]; dir: string };
 
 /** T146: linkStatus result (normalised status + why it is unavailable). */
 export type WidgetLinkResult = WidgetLinkStatus & { reason: WidgetsReason };
@@ -152,6 +178,12 @@ type NativeBridge = {
   setWidgetArt?(artUri: string, w: number, h: number, background: string, colour: string, fit: string, family: string): Promise<boolean>;
   /** T146: { containerOk, themeStored, lastRead, storedTheme } (read-only). */
   linkStatus?(): Promise<unknown>;
+  /** T221: copy an App Group file into widget-art/<id>.jpg. */
+  saveWidgetArtPiece?(id: string, from: string): Promise<boolean>;
+  /** T221: { index, dir } (read-only). */
+  getWidgetArtLibrary?(): Promise<{ index?: string | null; dir?: string | null } | null>;
+  /** T221: write widget-art/index.json, prune unlisted files, reload all timelines. */
+  setWidgetArtIndex?(json: string): Promise<boolean>;
 };
 
 function isExpoGo(): boolean {
@@ -264,7 +296,66 @@ export const widgets: WidgetsAdapter = {
   setSeamless,
   setWidgetArt,
   linkStatus,
+  addToArtLibrary,
+  artLibrary,
+  removeFromArtLibrary,
 };
+
+/** T221: the bridge with the library functions, or why not. */
+async function artBridge(): Promise<{ mod: NativeBridge | null; reason: WidgetsReason }> {
+  const status = await isAvailable();
+  const mod = status.available ? loadNative() : null;
+  if (!mod) return { mod: null, reason: status.reason };
+  if (typeof mod.saveWidgetArtPiece !== 'function' || typeof mod.getWidgetArtLibrary !== 'function' || typeof mod.setWidgetArtIndex !== 'function') {
+    return { mod: null, reason: 'not-built' };
+  }
+  return { mod, reason: null };
+}
+
+async function readArtIndex(mod: NativeBridge): Promise<{ lib: WidgetArtIndex; dir: string }> {
+  const raw = await mod.getWidgetArtLibrary?.();
+  const index = raw && typeof raw.index === 'string' ? raw.index : null;
+  const dir = raw && typeof raw.dir === 'string' ? raw.dir : '';
+  return { lib: parseLibrary(index), dir };
+}
+
+async function addToArtLibrary(piece: Omit<WidgetArtPiece, 'file'>, from: WidgetArtSourceFile): Promise<WidgetsResult> {
+  try {
+    const { mod, reason } = await artBridge();
+    if (!mod) return { available: false, ok: false, reason };
+    if (!isValidPieceId(piece.id) || !(WIDGET_ART_SOURCES as readonly string[]).includes(from)) return { available: true, ok: false, reason: 'failed' };
+    if ((await mod.saveWidgetArtPiece?.(piece.id, from)) !== true) return { available: true, ok: false, reason: 'failed' };
+    const { lib } = await readArtIndex(mod);
+    const next = addPiece(lib, piece);
+    const ok = (await mod.setWidgetArtIndex?.(serializeLibrary(next.lib))) === true;
+    return { available: true, ok, reason: ok ? null : 'failed' };
+  } catch {
+    return { available: true, ok: false, reason: 'failed' };
+  }
+}
+
+async function artLibrary(): Promise<ArtLibraryResult> {
+  try {
+    const { mod, reason } = await artBridge();
+    if (!mod) return { available: false, ok: false, reason, pieces: [], dir: '' };
+    const { lib, dir } = await readArtIndex(mod);
+    return { available: true, ok: true, reason: null, pieces: listPieces(lib), dir };
+  } catch {
+    return { available: true, ok: false, reason: 'failed', pieces: [], dir: '' };
+  }
+}
+
+async function removeFromArtLibrary(id: string): Promise<WidgetsResult> {
+  try {
+    const { mod, reason } = await artBridge();
+    if (!mod) return { available: false, ok: false, reason };
+    const { lib } = await readArtIndex(mod);
+    const ok = (await mod.setWidgetArtIndex?.(serializeLibrary(removePiece(lib, id)))) === true;
+    return { available: true, ok, reason: ok ? null : 'failed' };
+  } catch {
+    return { available: true, ok: false, reason: 'failed' };
+  }
+}
 
 async function setWidgetArt(input: WidgetArtInput): Promise<WidgetsResult> {
   try {

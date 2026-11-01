@@ -20,7 +20,7 @@ export const zhHans: NonNullable<LocaleMessages['liveUi']> = {
     subtitle: '用你自己的视频',
     cta: '选择视频或 GIF',
     a11y: '用你自己的视频制作实况照片。{detail}',
-    hint: '打开 Live 标签页和照片图库，选择视频或 GIF',
+    hint: '打开实况照片制作器和照片图库，选择视频或 GIF',
     subExpoGo: '在这里构图和预览，然后存储静态墙纸和片段。完整版 Glaze 才能将其存为实况照片。',
     subLoop: '以实况照片存入“照片”。在“照片”中按住它时会动起来，不会一直循环。',
     subLivePhoto: '以实况照片存入“照片”，按住时会动。在 iOS {version} 上，设为墙纸会保持静止。',

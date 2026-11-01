@@ -20,7 +20,7 @@ export const ja: NonNullable<LocaleMessages['liveUi']> = {
     subtitle: '自分のビデオから',
     cta: 'ビデオまたはGIFを選ぶ',
     a11y: '自分のビデオから Live Photos を作る。{detail}',
-    hint: 'Live タブとフォトライブラリを開いてビデオまたは GIF を選びます',
+    hint: 'ライブフォトメーカーとフォトライブラリを開いてビデオまたは GIF を選びます',
     subExpoGo: 'ここでフレーミングとプレビューをして、静止画の壁紙とクリップを保存できます。Live Photos として保存するには Glaze のフル版が必要です。',
     subLoop: '写真アプリに Live Photos として保存。写真アプリで長押しすると動きます。ずっとループはしません。',
     subLivePhoto: '押すと動く Live Photos として写真アプリに保存。iOS {version} では壁紙にすると静止したままです。',

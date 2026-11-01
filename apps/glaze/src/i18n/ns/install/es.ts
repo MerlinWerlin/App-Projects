@@ -37,6 +37,8 @@ export const es: NonNullable<LocaleMessages['install']> = {
     },
     cantReplace: 'iOS no permite sustituir los iconos de las apps. Esto añade iconos nuevos que abren tus apps; los originales pasan a la biblioteca de apps.',
     more: '+{count}',
+    // T210: eyebrow over the summary heading.
+    eyebrow: 'Tu set de iconos',
   },
   state: {
     loadError: 'No se pudo cargar tu set de iconos.',
@@ -47,7 +49,10 @@ export const es: NonNullable<LocaleMessages['install']> = {
   },
   method: {
     heading: 'Cómo instalar',
-    bulk: 'Instalación en bloque',
+    // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
+    bulk: 'Instalar todo de una vez',
+    // T210: eyebrow over the Install all at once heading.
+    bulkEyebrow: 'La forma rápida',
     bulkBody: {
       one: 'Un perfil añade {count} icono de una vez. Tarda unos dos minutos.',
       other: 'Un perfil añade {count} iconos de una vez. Tarda unos dos minutos.',
@@ -77,7 +82,6 @@ export const es: NonNullable<LocaleMessages['install']> = {
     noSharing: 'Compartir no está disponible en este dispositivo, así que el perfil no se puede guardar en Archivos.',
     noIcons: 'No se pudo dibujar ningún icono para el perfil.',
     cleared: 'El archivo del perfil se borró de la caché. Toca Generar perfil otra vez.',
-    copyFailed: 'No se pudo copiar. Selecciona el texto del enlace y cópialo a mano.',
     noShortcutsApp: 'La app Atajos no está instalada. Descárgala gratis en el App Store y vuelve.',
   },
   shortcuts: {
@@ -108,10 +112,6 @@ export const es: NonNullable<LocaleMessages['install']> = {
     saveOne: 'Guardar el icono de {app} en Fotos',
     showSteps: 'Mostrar pasos para {app}',
     hideSteps: 'Ocultar pasos para {app}',
-    copy: 'Copiar',
-    copied: 'Copiado',
-    copyLink: 'Copiar enlace de {app}: {url}',
-    linkCopied: 'Enlace de {app} copiado',
     undo: {
       title: 'Para deshacerlo',
       removeIcon: 'Para quitar un icono nuevo, mantenlo pulsado, toca Eliminar (o Eliminar marcador) y confirma. Solo desaparece ese icono.',
@@ -121,8 +121,6 @@ export const es: NonNullable<LocaleMessages['install']> = {
   },
   steps: {
     openShortcuts: 'Abre la app Atajos y toca + (arriba a la derecha).',
-    addOpenUrl: 'Toca Añadir acción, busca «Abrir URL» y tócala.',
-    pasteUrl: 'Toca «URL» y pega {url} (usa Copiar de arriba).',
     addOpenApp: 'Toca Añadir acción, busca «Abrir app» y tócala.',
     chooseApp: 'Toca «App» y elige {name} en la lista.',
     rename: 'Toca el nombre de arriba, elige Renombrar y escribe {name}.',

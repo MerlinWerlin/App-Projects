@@ -69,7 +69,7 @@ export const ja: NonNullable<LocaleMessages['themeUi']> = {
     },
     'live-lock': {
       title: 'Live Photos を作る',
-      body: 'Live タブでビデオを Live Photos に変換します。写真アプリでは動きますが、壁紙にすると iPhone では静止したままになることがよくあります。',
+      body: '壁紙のライブフォトメーカーでビデオを Live Photos に変換します。写真アプリでは動きますが、壁紙にすると iPhone では静止したままになることがよくあります。',
     },
     'theme-pick': {
       title: 'テーマから始めよう',

@@ -32,7 +32,7 @@ export const ptBR: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'Criador de papel de parede',
     icons: 'Aba Ícones',
     install: 'Instalar ícones',
-    live: 'Aba Live',
+    live: 'Criador de Live Photos',
     shapes: 'Ajustes de formato do ícone',
     override: 'Aba Ícones',
     addApp: 'Aba Ícones',
@@ -48,7 +48,7 @@ export const ptBR: NonNullable<LocaleMessages['tips']> = {
     },
     liveLock: {
       title: 'Crie uma Live Photo',
-      body: 'Transforme um vídeo em Live Photo na aba Live. Ela se move no Fotos; como papel de parede, o iPhone muitas vezes a deixa parada.',
+      body: 'Transforme um vídeo em Live Photo no Criador de Live Photos, em Papéis de parede. Ela se move no Fotos; como papel de parede, o iPhone muitas vezes a deixa parada.',
     },
     themePick: {
       title: 'Comece com um tema',

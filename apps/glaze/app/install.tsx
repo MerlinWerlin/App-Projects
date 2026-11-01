@@ -16,6 +16,11 @@
 // shorter under Reduce Motion) and the others are muted; waits (drawing icons, saving) show
 // skeletons of the result under the progress bar; a finished "Done" panel after the profile is
 // made (the one `success` haptic of the flow stays in generate()); Dynamic Type caps on every Text.
+// T210 (premium pass on the owner-1101d screens): every card lifts by surface (raised in dark mode,
+// no hairline); the summary is the hero (icons on a soft well + one "Your icon set" heading); Install
+// all at once is an editorial header (eyebrow + title + count line); the Prefer Shortcuts link sits
+// centred at the card's foot; file rows and coverage rows are spaced surfaces, not ruled lines; the
+// first load is a skeleton of the screen; the Shortcuts undo steps use an editorial group title.
 
 import { Feather } from '@expo/vector-icons';
 import * as FileSystem from '../src/native/fs';
@@ -179,6 +184,8 @@ export default function InstallScreen() {
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
   const router = useRouter();
   const reduced = useMotionReduced();
+  // T210 (PREMIUM_UI §1.6): every card lifts by surface, never a dark-mode hairline.
+  const cardTone: CardTone = scheme === 'dark' ? 'raised' : 'surface';
   // T126: can this build serve the profile to Safari? (false in Expo Go, on Android, old builds)
   const [serverAvailable] = useState<boolean>(() => profileServer.status().available);
   const route = profileRoute(serverAvailable);
@@ -516,10 +523,10 @@ export default function InstallScreen() {
   }
 
   if (!studio || !install.loaded) {
+    // T210: the wait is a skeleton of the screen itself (summary card, method header, method card).
     return (
-      <SafeAreaView edges={['left', 'right', 'bottom']} style={[styles.root, styles.center, { backgroundColor: c.bg }]}>
-        <IconGridSkeleton count={8} />
-        <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.inkSecondary }]}>{t('install.state.loading')}</Text>
+      <SafeAreaView edges={['left', 'right', 'bottom']} style={[styles.root, { backgroundColor: c.bg }]}>
+        <InstallSkeleton label={t('install.state.loading')} tone={cardTone} />
       </SafeAreaView>
     );
   }
@@ -607,19 +614,23 @@ export default function InstallScreen() {
           </View>
         ) : null}
         {/* Summary */}
-        <SquircleCard size="large" style={styles.side}>
+        {/* T210: the summary card opens the screen as its hero: the set's first icons on a soft
+            well, then one editorial heading (eyebrow "Your icon set" + the count line). */}
+        <SquircleCard size="large" tone={cardTone} outline={false} style={styles.side}>
           <View style={styles.stack}>
-            <View style={styles.strip} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+            <View
+              style={[styles.strip, styles.well, continuous, { backgroundColor: c.fill }]}
+              accessibilityElementsHidden
+              importantForAccessibility="no-hide-descendants"
+            >
               {specs.slice(0, 6).map((s) => (
-                <IconCanvas key={s.appId} spec={s} size={40} />
+                <IconCanvas key={s.appId} spec={s} size={RESULT_ICON} />
               ))}
               {specs.length > 6 ? (
                 <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.summary.more', { count: specs.length - 6 })}</Text>
               ) : null}
             </View>
-            <Text maxFontSizeMultiplier={fontScaleCap('title3')} accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
-              {summary}
-            </Text>
+            <SectionHeader level="group" flushTop eyebrow={t('install.summary.eyebrow')} title={summary} style={styles.headerFlush} />
             {!PROFILE_INSTALL_ENABLED || choice !== 'bulk' ? null : noScheme.length > 0 ? (
               <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
                 {t('install.summary.noScheme', { count: noScheme.length, apps: noScheme.join(', ') })}
@@ -652,13 +663,12 @@ export default function InstallScreen() {
             {coverage.monogram > 0 ? t('install.coverage.monogramHint') : t('install.coverage.allThemed')}
           </Text>
           {monogramRows.length > 0 ? (
-            <SquircleCard style={styles.side}>
-              <View>
-                {monogramRows.map(({ spec }, i) => (
+            <SquircleCard tone={cardTone} outline={false} padding={spaceV2.sm} style={styles.side}>
+              <View style={styles.coverageList}>
+                {monogramRows.map(({ spec }) => (
                   <CoverageRow
                     key={spec.appId}
                     spec={spec}
-                    first={i === 0}
                     tag={t('install.coverage.tag')}
                     disabled={busy || !live.state}
                     accessibilityLabel={t('install.coverage.rowA11y', { app: spec.label })}
@@ -697,12 +707,16 @@ export default function InstallScreen() {
 
         {choice === 'bulk' ? (
           <View style={styles.section}>
-            <SectionHeader title={t('install.method.bulk')} style={[styles.sideText, styles.headerTight]} />
-            <SquircleCard style={styles.side}>
+            {/* T210: the main method reads as one editorial heading (eyebrow + title + the count
+                line as its body), so the card under it starts with the facts and the pill. */}
+            <SectionHeader
+              eyebrow={t('install.method.bulkEyebrow')}
+              title={t('install.method.bulk')}
+              body={t('install.method.bulkBody', { count: plan.profile.length })}
+              style={[styles.sideText, styles.headerTight]}
+            />
+            <SquircleCard tone={cardTone} outline={false} style={styles.side}>
               <View style={styles.stack}>
-                <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
-                  {t('install.method.bulkBody', { count: plan.profile.length })}
-                </Text>
                 {/* T202: say plainly, from the data, how many apps still need a quick Safari tap. */}
                 {tapInfo.tap > 0 ? (
                   <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
@@ -761,7 +775,7 @@ export default function InstallScreen() {
                 {profiles.map((p) => {
                   const done = isProfileStepDone(install.state, p.filename, 'installed');
                   return (
-                    <View key={p.filename} style={[styles.fileRow, { borderTopColor: c.separator }]}>
+                    <View key={p.filename} style={[styles.fileRow, continuous, { backgroundColor: c.fill }]}>
                       <Feather name="file" size={18} color={c.tint} />
                       <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.flex, { color: c.ink }]} numberOfLines={2}>
                         {p.filename}
@@ -828,17 +842,20 @@ export default function InstallScreen() {
                     onPress={() => shareAgain(profiles[0])}
                   />
                 ) : null}
-                {/* T202: Shortcuts only as a small fallback link. */}
+                {/* T202: Shortcuts only as a small fallback link. T210: centred at the card's foot,
+                    after a little extra space, so it reads as the quiet alternative. */}
                 {showShortcutsFallback(methodOpts) ? (
-                  <PillButton
-                    label={t('install.method.shortcutsFallback')}
-                    icon="command"
-                    variant="plain"
-                    size="small"
-                    disabled={busy}
-                    onPress={() => pickChoice('shortcuts')}
-                    accessibilityHint={t('install.method.shortcutsFallbackHint')}
-                  />
+                  <View style={styles.fallbackLink}>
+                    <PillButton
+                      label={t('install.method.shortcutsFallback')}
+                      icon="command"
+                      variant="plain"
+                      size="small"
+                      disabled={busy}
+                      onPress={() => pickChoice('shortcuts')}
+                      accessibilityHint={t('install.method.shortcutsFallbackHint')}
+                    />
+                  </View>
                 ) : null}
               </View>
             </SquircleCard>
@@ -895,7 +912,7 @@ export default function InstallScreen() {
               title={choice === 'bulk' ? t('install.shortcuts.headingRest') : t('install.shortcuts.heading')}
               style={[styles.sideText, styles.headerTight]}
             />
-            <SquircleCard style={styles.side}>
+            <SquircleCard tone={cardTone} outline={false} style={styles.side}>
               <View style={styles.stack}>
                 <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('install.shortcuts.intro')}</Text>
                 {oldIcons && oldNames && oldNames.shown ? (
@@ -1046,7 +1063,7 @@ export default function InstallScreen() {
             </InsetGroup>
 
             {/* T60: how to undo the Shortcuts method */}
-            <InsetGroup header={t('install.shortcuts.undo.title')}>
+            <InsetGroup title={t('install.shortcuts.undo.title')}>
               {SHORTCUT_UNDO_STEPS.map((id) => (
                 <InsetRow key={id} title={t(`install.shortcuts.undo.${id}`)} />
               ))}
@@ -1055,7 +1072,7 @@ export default function InstallScreen() {
         ) : null}
 
         {androidNative.isAndroid ? (
-          <SquircleCard style={styles.side}>
+          <SquircleCard tone={cardTone} outline={false} style={styles.side}>
             <View style={styles.stack}>
               <Text maxFontSizeMultiplier={fontScaleCap('title3')} accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
                 {t('install.android.heading')}
@@ -1107,7 +1124,6 @@ export default function InstallScreen() {
  */
 function CoverageRow({
   spec,
-  first,
   tag,
   disabled,
   accessibilityLabel,
@@ -1115,7 +1131,6 @@ function CoverageRow({
   onPress,
 }: {
   spec: IconSpec;
-  first: boolean;
   tag: string;
   disabled: boolean;
   accessibilityLabel: string;
@@ -1134,7 +1149,7 @@ function CoverageRow({
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
       accessibilityState={{ disabled }}
-      style={[styles.coverageRow, first ? null : { borderTopColor: c.separator, borderTopWidth: StyleSheet.hairlineWidth }, disabled ? styles.dim : null]}
+      style={[styles.coverageRow, disabled ? styles.dim : null]}
     >
       <IconCanvas spec={spec} size={COVERAGE_ICON} />
       <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...typeFor(script, 'body'), styles.flex, { color: c.ink }]} numberOfLines={1}>
@@ -1234,6 +1249,43 @@ function ResultSkeleton({ icons, file = false }: { icons: number; file?: boolean
           <Skeleton width="60%" height={spaceV2.lg} />
         </View>
       ) : null}
+    </View>
+  );
+}
+
+/** Card tone for the screen's lifted cards: raised in dark mode, the plain surface in light. */
+type CardTone = 'surface' | 'raised';
+
+/**
+ * T210: the first load as a skeleton of the screen it becomes: the summary card (a row of icon
+ * tiles on its well, eyebrow, title and a body line), the method header, and the method card with
+ * a pill-shaped block. One accessible "Loading your icons…" label; calm pulse (Skeleton), no spinner.
+ */
+function InstallSkeleton({ label, tone }: { label: string; tone: CardTone }) {
+  const { c } = useColorsV2();
+  return (
+    <View style={styles.scroll} accessible accessibilityLabel={label}>
+      <SquircleCard size="large" tone={tone} outline={false} style={styles.side}>
+        <View style={styles.stack}>
+          <View style={[styles.well, continuous, { backgroundColor: c.fill }]}>
+            <IconGridSkeleton count={RESULT_ICONS} size={RESULT_ICON} cols={RESULT_ICONS} />
+          </View>
+          <Skeleton width="35%" height={spaceV2.md} />
+          <Skeleton width="75%" height={spaceV2.xl} />
+          <Skeleton width="90%" height={spaceV2.lg} />
+        </View>
+      </SquircleCard>
+      <View style={[styles.sideText, styles.skeletonHead]}>
+        <Skeleton width="30%" height={spaceV2.md} />
+        <Skeleton width="60%" height={spaceV2.xl} />
+      </View>
+      <SquircleCard tone={tone} outline={false} style={styles.side}>
+        <View style={styles.stack}>
+          <Skeleton width="90%" height={spaceV2.lg} />
+          <Skeleton width="70%" height={spaceV2.lg} />
+          <Skeleton width="100%" height={sizeV2.pill} radius={radiusV2.pill} />
+        </View>
+      </SquircleCard>
     </View>
   );
 }
@@ -1496,13 +1548,21 @@ const styles = StyleSheet.create({
   coverageRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm },
   flex: { flex: 1 },
   dim: { opacity: 0.45 },
+  // T210: a saved profile file is a soft filled row (surface, not a hairline above it).
   fileRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spaceV2.sm,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    paddingTop: spaceV2.sm,
+    borderRadius: radiusV2.control,
+    paddingStart: spaceV2.md,
+    paddingEnd: spaceV2.xs,
   },
+  // T210: the summary's icon strip sits on a soft well; the coverage rows are spaced, not ruled.
+  well: { borderRadius: radiusV2.control, padding: spaceV2.md },
+  headerFlush: { paddingBottom: 0 },
+  coverageList: { gap: spaceV2.xs, paddingHorizontal: spaceV2.sm },
+  fallbackLink: { alignItems: 'center', paddingTop: spaceV2.sm },
+  skeletonHead: { gap: spaceV2.sm, paddingTop: editorialV2.sectionTop - spaceV2.lg },
   smallBtn: { width: sizeV2.touch, height: sizeV2.touch, alignItems: 'center', justifyContent: 'center' },
   notice: { flexDirection: 'row', gap: spaceV2.sm, borderRadius: radiusV2.control, padding: spaceV2.md },
   noticeBody: { gap: spaceV2.sm },

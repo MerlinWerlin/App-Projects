@@ -31,7 +31,7 @@ export const de: NonNullable<LocaleMessages['tips']> = {
     wallpaper: 'Hintergrund-Editor',
     icons: 'Tab „Symbole“',
     install: 'Symbole installieren',
-    live: 'Tab „Live“',
+    live: 'Live-Photo-Editor',
     shapes: 'Einstellungen zur Symbolform',
     override: 'Tab „Symbole“',
     addApp: 'Tab „Symbole“',
@@ -47,7 +47,7 @@ export const de: NonNullable<LocaleMessages['tips']> = {
     },
     liveLock: {
       title: 'Live Photo erstellen',
-      body: 'Mach im Tab „Live“ aus einem Video ein Live Photo. In Fotos bewegt es sich; als Hintergrund lässt das iPhone es oft unbewegt.',
+      body: 'Mach im Live-Photo-Editor (unter „Hintergründe“) aus einem Video ein Live Photo. In Fotos bewegt es sich; als Hintergrund lässt das iPhone es oft unbewegt.',
     },
     themePick: {
       title: 'Starte mit einem Theme',

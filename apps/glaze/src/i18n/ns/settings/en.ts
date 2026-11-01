@@ -82,7 +82,8 @@ export const en = {
     addedTitle: 'Icons are added, not replaced',
     addedBody: 'iOS doesn’t let any app change another app’s icon. Instead, Glaze adds Home Screen shortcuts with your new look. Tapping one opens the real app.',
     waysTitle: 'Two ways to add them',
-    waysBody: 'Shortcuts (recommended): Glaze guides you through adding each icon with the Shortcuts app. Bulk (optional beta): one profile adds every icon at once.',
+    // T210: Install all at once is the main way since T202 (owner-1101d #5).
+    waysBody: 'Install all at once (the main way): one profile adds every icon, through Safari and then Settings, and a profile made for a new theme replaces the old icons. Profile icons open their app after a quick Safari tap (“Open in…?”), an iOS limit. Shortcuts (one icon at a time): each icon uses the “Open App” action, so it opens the app straight away.',
     originalsTitle: 'Where the original icons go',
     originalsBody: 'Long-press an original icon, tap Remove App, then Remove from Home Screen. The app stays installed and moves to the App Library (swipe left past your last Home Screen page).',
     removeTitle: 'Removing Glaze icons',
