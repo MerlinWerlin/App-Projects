@@ -1,5 +1,5 @@
 {
   "mode": "update",
-  "note": "Couch 1.0.2: finds Google TVs (e.g. TCL) through the Cast port when their web ports are shut",
+  "note": "Couch 1.0.2: add a Google TV for casting; Google TV remote pairing with the on-screen code (native build)",
   "ascAppId": "6826135134"
 }
