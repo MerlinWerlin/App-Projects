@@ -9,6 +9,8 @@ import { journalPhotos, withJournalFiles } from '../core/journal.ts';
 import { buildTripFile, importTripFile, parseTripFileText, tripFileName, uniqueTripName, withFiles, type Payloads, type TripFileError } from '../core/tripfile.ts';
 import { removeAppFiles } from '../native/files.ts';
 import { pickTripFile, readBase64, saveImportedFile, shareTripFile, writeTripFile } from '../native/tripFile.ts';
+import { kidsForFile } from '../core/kids.ts';
+import { readKids, saveKids } from './kids.ts';
 import { readPersisted, setPersistedChecked } from './persisted.ts';
 
 /** 'write': the file couldn't be prepared; 'share' / 'unavailable': ready but the share sheet failed / isn't there. */
@@ -39,7 +41,9 @@ export async function exportTrip(trip: Trip, dialogTitle: string, opts: { includ
         if (data != null) photos[p.id] = data;
       }
     }
-    const built = buildTripFile(trip, payloads, { packing, journalPhotos: photos });
+    // T149: children's names go in only when the traveller turned that on for this trip (default off).
+    const kids = kidsForFile(await readKids(trip.id));
+    const built = buildTripFile(trip, payloads, { packing, journalPhotos: photos, kids });
     skipped = built.skipped;
     photosSkipped = built.photosSkipped;
     const written = await writeTripFile(tripFileName(trip.name), JSON.stringify(built.file));
@@ -125,6 +129,8 @@ export async function importTrip(deps: ImportDeps, onReading?: () => void): Prom
         throw new Error('save');
       }
     }
+    // T149: children the sender included go into this phone's kids store (best effort; the trip is already saved).
+    if (imp.kids) await saveKids(trip.id, imp.kids).catch(() => false);
     return { ok: true, tripId: trip.id, photosLeftOut: imp.journalPhotosLeftOut };
   } catch {
     await removeAppFiles(all);

@@ -88,7 +88,7 @@ export type Item = {
   legInfo?: LegInfo;
   /** T140 activities: the traveller's indoor / outdoor mark (rainy-day plan B). Absent: guessed from the name. Read defensively in src/core/plansetting.ts. */
   setting?: PlanSetting;
-  /** T143 check-in times: own opening / closing offsets, bag-drop minutes, car desk hours and the "Mark checked in" tick. Read defensively in src/core/checkin.ts. */
+  /** T143 check-in times: own opening / closing offsets, bag-drop minutes, car desk hours, the "Mark checked in" tick and (T146, stays) the "Mark checked out" tick. Read defensively in src/core/checkin.ts. */
   checkin?: CheckinInfo;
   attachments: Attachment[];
 };

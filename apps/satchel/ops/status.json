@@ -1,15 +1,15 @@
 {
- "tests": 1609,
+ "tests": 1673,
  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
- "last_run": "2026-11-01 18:55",
+ "last_run": "2026-11-01 19:56",
  "stage": "owner-tested",
  "oversight_seen": 227,
- "headline": "Expanding: Check-in times, Sign reader, dismissable Plan B, late photo light",
+ "headline": "Expanding: Postcards, Numbers and prices trainer, Travelling with kids, check-out reminders",
  "next_for_owner": [
   "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
-  "Open a flight on the demo trip: the new Check-in card shows when online check-in opens and closes; Phrases > Read signs opens the Sign reader.",
+  "Open the demo trip: the new Postcards card and Travelling with kids page are on the trip screen; Phrases > Numbers and prices opens the trainer.",
   "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
-  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (CN-CQ are new) by commenting on this page."
+  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (CR-CU are new) by commenting on this page."
  ],
  "trial_kit": true,
  "next_stage": "release-prep"

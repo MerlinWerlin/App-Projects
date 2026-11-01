@@ -26,6 +26,7 @@ import {
   lightLeftToday,
   nextGoodLight,
   spotLight,
+  spotWindows,
   sunArc,
   type DayWindow,
   type LightWindow,
@@ -64,9 +65,12 @@ const dayText = (t: T, d: PhotoDay, now: number, lang: string) => (daysAway(d, n
 /** The one-line summary for a saved place or idea: "Today: golden 06:10–06:52, 17:42–18:21 · blue …". */
 export function spotLine(t: T, d: PhotoDay, now: number, lang: string): string {
   const day = dayText(t, d, now, lang);
-  const join = (ws: LightWindow[]) => ws.map((w) => rangeText(t, w)).reduce((a, b) => (a ? t('light.spot.list', { a, b }) : b), '');
-  const golden = join(goldenWindows(d));
-  const blue = join(blueWindows(d));
+  // T146: joined across midnight like the day card ("23:52–00:56"); one carried from the evening before says so.
+  const one = (w: DayWindow) => (w.carried ? t('f106.light.spotCarried', { range: rangeText(t, w) }) : rangeText(t, w));
+  const join = (ws: DayWindow[]) => ws.map(one).reduce((a, b) => (a ? t('light.spot.list', { a, b }) : b), '');
+  const sw = spotWindows(d);
+  const golden = join(sw.golden);
+  const blue = join(sw.blue);
   if (golden && blue) return t('light.spot.line', { day, golden, blue });
   if (golden) return t('light.spot.goldenOnly', { day, golden });
   return t('light.spot.note', { day, note: noteText(t, d) });

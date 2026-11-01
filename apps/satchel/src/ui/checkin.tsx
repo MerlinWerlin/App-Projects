@@ -21,13 +21,16 @@ import {
   OPENS_CHOICES,
   USUAL_CLOSE_MIN,
   briefCheckin,
+  briefCheckout,
   flightScope,
   isDone,
+  isOut,
   itemStatus,
   pickupOutsideDesk,
   readCheckin,
   reminderIcs,
   setDone,
+  setOut,
   splitMinutes,
   tripStatus,
   windowsFor,
@@ -84,7 +87,7 @@ export function kindText(t: T, s: WindowStatus): string {
 export function stateText(t: T, s: WindowStatus, now: number, lang: string, city = false): string {
   const w = s.window;
   const when = (m: Moment) => whenText(t, m, w.tz, now, lang, city);
-  if (s.state === 'done') return t('checkin.state.done');
+  if (s.state === 'done') return w.kind === 'stayOut' ? t('f106.checkout.state.done') : t('checkin.state.done');
   if (s.state === 'past') return t('checkin.state.past');
   if (w.kind === 'desk' && w.opens && w.closes) {
     const hours = t('checkin.state.deskHours', { from: localTime(w.opens.local), to: localTime(w.closes.local) });
@@ -412,6 +415,10 @@ export function ItemCheckinSlot({ item }: { item: Item }) {
       ) : null}
       {item.kind === 'car' && pickupOutsideDesk(item) ? <Text style={[typeScale.small, { color: theme.danger }]}>{t('checkin.deskOutside')}</Text> : null}
       {status.length ? <ToggleRow label={t('checkin.mark')} hint={t('checkin.markHint')} value={done} onChange={(v) => save(readCheckin(setDone(item, v, Date.now()).checkin))} /> : null}
+      {/* T146: stays get their own "Mark checked out" tick (kept on Item.checkin, dropped by Plan this trip again). */}
+      {status.some((s) => s.window.kind === 'stayOut') ? (
+        <ToggleRow label={t('f106.checkout.mark')} hint={t('f106.checkout.markHint')} value={isOut(item)} onChange={(v) => save(readCheckin(setOut(item, v, Date.now()).checkin))} />
+      ) : null}
       {next ? <Button label={t('checkin.remind')} hint={t('checkin.remindHint', { kind: kindText(t, next) })} kind="secondary" icon="calendar-outline" onPress={remind} /> : null}
       {item.kind === 'car' ? <DeskHours item={item} /> : null}
       {journey ? (
@@ -469,6 +476,45 @@ export function CheckinBriefRow({ trip, now }: { trip: Trip; now: number }) {
       >
         <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: theme.heroWash, alignItems: 'center', justifyContent: 'center' }}>
           <Ionicons name="time-outline" size={18} color={theme.heroAccent} />
+        </View>
+        <View style={{ flex: 1, gap: 2 }}>
+          <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.heroInk }]}>
+            {line}
+          </Text>
+          <Text numberOfLines={1} style={[typeScale.small, { color: theme.heroMuted }]}>
+            {sub}
+          </Text>
+        </View>
+      </PressableScale>
+    </>
+  );
+}
+
+/**
+ * T146: the Your day row on a stay's last morning, "Check out of Hotel Gracery by 11:00 today", until the check-out
+ * time or until it is ticked "checked out" (tap opens the booking to tick it). On the hotel's own clock.
+ */
+export function CheckoutBriefRow({ trip, now }: { trip: Trip; now: number }) {
+  const { t, theme, lang } = useApp();
+  const router = useRouter();
+  const b = useMemo(() => briefCheckout(trip, now), [trip, now]);
+  if (!b || !b.status.window.closes) return null;
+  const w = b.status.window;
+  const name = itemName(b.item) || t('f106.checkout.stay');
+  const line = t('f106.checkout.brief', { name, when: whenText(t, w.closes as Moment, w.tz, now, lang) });
+  const sub = w.usual ? t('checkin.usual') : zoneCity(w.tz);
+  return (
+    <>
+      <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.heroMuted, opacity: 0.6 }} />
+      <PressableScale
+        accessibilityRole="button"
+        accessibilityLabel={`${line}. ${sub}`}
+        accessibilityHint={t('f106.checkout.briefHint')}
+        onPress={() => router.push(`/item/${b.item.id}`)}
+        style={{ minHeight: TOUCH, paddingHorizontal: space.l, paddingVertical: space.s, flexDirection: 'row', alignItems: 'center', gap: space.s }}
+      >
+        <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: theme.heroWash, alignItems: 'center', justifyContent: 'center' }}>
+          <Ionicons name="key-outline" size={18} color={theme.heroAccent} />
         </View>
         <View style={{ flex: 1, gap: 2 }}>
           <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.heroInk }]}>

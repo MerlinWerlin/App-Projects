@@ -13,6 +13,7 @@ import { ALL_PARTS, COPY_PARTS, copyPreview, copyTrip, nameForYear, partCounts, 
 import { useApp } from '../../src/state/app.tsx';
 import { setPersistedChecked, usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
+import { copyPostcardPeople, usePostcards } from '../../src/state/postcards.ts';
 import { fonts, space } from '../../src/theme/tokens.ts';
 import { DateField } from '../../src/ui/DateTimeField.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
@@ -54,6 +55,10 @@ function PlanAgain({ trip }: { trip: Trip }) {
   const [leavingHome, setLeavingHome] = useState(false);
   // T130: the Coming home lists (ticks cleared, no rating), off by default too.
   const [comingHome, setComingHome] = useState(false);
+  // T147: the postcard people (names and addresses, on this phone) come along by default; the sent ticks never do.
+  const [postcardBook] = usePostcards(trip.id);
+  const postcardPeople = postcardBook.people.length;
+  const [postcards, setPostcards] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saveFailed, setSaveFailed] = useState(false);
   const counts = useMemo(() => partCounts(trip, packing), [trip, packing]);
@@ -95,6 +100,10 @@ function PlanAgain({ trip }: { trip: Trip }) {
     if (list) {
       const listSaved = await setPersistedChecked<PackStore>(PACKING_KEY, (s) => putList(s && typeof s === 'object' && !Array.isArray(s) ? s : {}, list), EMPTY_STORE);
       if (!listSaved) AccessibilityInfo.announceForAccessibility(t('tripcopy.packingFailed'));
+    }
+    if (postcards && postcardPeople > 0) {
+      const cardsSaved = await copyPostcardPeople(trip.id, result.trip.id, newId);
+      if (!cardsSaved) AccessibilityInfo.announceForAccessibility(t('postcards.copy.failed'));
     }
     AccessibilityInfo.announceForAccessibility(t('tripcopy.created', { name: result.trip.name }));
     setSaving(false);
@@ -149,6 +158,12 @@ function PlanAgain({ trip }: { trip: Trip }) {
           <View style={{ gap: space.xs }}>
             <ToggleRow label={t('f102.copy.comingHome', { n: counts.comingHome })} hint={t('f102.copy.comingHomeHint')} value={comingHome} onChange={setComingHome} />
             <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('f102.copy.comingHomeHint')}</Text>
+          </View>
+        ) : null}
+        {postcardPeople > 0 ? (
+          <View style={{ gap: space.xs }}>
+            <ToggleRow label={t('postcards.copy.toggle', { n: postcardPeople })} hint={t('postcards.copy.hint')} value={postcards} onChange={setPostcards} />
+            <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('postcards.copy.hint')}</Text>
           </View>
         ) : null}
         <View style={{ gap: space.xs, borderTopWidth: 1, borderTopColor: theme.line, paddingTop: space.s }}>

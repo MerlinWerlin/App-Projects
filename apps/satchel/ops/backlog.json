@@ -1810,13 +1810,72 @@
     },
     {
       "id": "T146",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "follow-up"
       ],
       "title": "Run-106 follow-ups: saved-place and idea Photo light lines join across midnight like the day card; check-in: stays show a check-out reminder row on the last morning and a per-booking 'checked out' tick; Sign reader: Hong Kong Traditional Chinese wording where it differs from Taiwan, fill the 3 null lines (TH ticket office, TH lockers, PT lockers) only when sure; Getting around rows still flagged (TR Istanbul card tapping, EG Cairo gates, KR Seoul, MX Mexico City, VN HCMC, PH Manila taxis) from official pages only; device checks CN-CQ.",
-      "accept": "tests green; strings in a new followups106 file (prefix f106.); DECISIONS records sources"
+      "accept": "tests green; strings in a new followups106 file (prefix f106.); DECISIONS records sources",
+      "note": "Run 107: the Getting around rows are split out as T150; T146 takes the offline parts.",
+      "commit": "cf50602"
+    },
+    {
+      "id": "T147",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Postcards (owner-1031 D, less bland, deepen Trips + Wallet): a per-trip postcard list of people to write to (name + postal address kept on the phone only, never in .satchel exports; a guard test), a sent tick with the date and place it was sent from (trip stop on its own zone), 'big address' view to show at a post office counter or copy onto the card (address lines large, country line in capitals as postal services ask), a short 'what to write' prompt list drawn from the trip journal/ideas of that day (no AI, no network), and a Postcards row on the trip screen and the Coming home list ('3 of 5 sent'). Original SVG postcard + stamp illustrations (tokens, light/dark), timed fade, Reduce Motion static. Plan this trip again copies the people, not the ticks. Pure TS core src/core/postcards.ts with tests.",
+      "accept": "postcards tests (sent counts, sent-from stop by date on its own zone, address formatting with country line upper-cased, never exported in .satchel (guard), plan-again copies names without ticks); every string in src/i18n/en/postcards.ts (prefix postcards.); tokens only; timed transitions, no springs; no new npm dependency",
+      "commit": "29a2c18"
+    },
+    {
+      "id": "T148",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Numbers and prices trainer (owner-1031 D, less bland, deepen Phrases + Wallet): learn to read and hear numbers in the 12 languages of src/content/phrases.json: a number reader that spells any amount 0-999,999 in the local language with script + romanised reading (pure TS rules per language: e.g. Japanese/Chinese man-units, French 70/80/90, German unit-before-ten, Thai, Korean sino numbers for prices), a 'price at the till' card that shows a typed amount in the local currency formatted the local way (decimal and grouping separators), and a timed quiz (hear/see a price, pick the right one; scores kept on the phone) that uses the trip's countries first. Every generated reading is marked native_check (caption 'checked by a fluent speaker: not yet') with a test table of known values per language. Pure TS core src/core/numbers.ts with tests; entries from Phrases, Sign reader and the currency converter.",
+      "accept": "numbers tests (a known-values table per language incl. 0, 10, 11, 20, 70, 80, 99, 100, 1,000, 10,000, 12,345 and 999,999; local currency formatting per country; quiz seed determinism); speech only through the existing speech helper if one exists, else text only; every string in src/i18n/en/numbers.ts (prefix numbers.); tokens only; timed transitions, no springs; no new npm dependency",
+      "commit": "fec4589"
+    },
+    {
+      "id": "T149",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Travelling with kids (owner-1031 D, deepen Emergency + Packing + Trips): per-trip 'travelling with' children entries (first name, age band only: baby/toddler/child/teen, no birth dates), an 'If I am lost' card to show or screenshot onto a child's phone/lock screen (the parent's phone number and the stay's address from the trip, plus the existing help-card line 'Please call my parent' in the stop country's language from src/content/phrases.json or help cards, marked native_check), extra packing rows by age band merged into the trip's list (own rows kept), a kid-friendly filter for Places to go ideas (own mark only, no guessing claims), car-seat / stroller reminders on journeys and hire cars, and a Your day 'Kids' row with the next long journey and snack/sleep reminder. Data kept on the phone; children's names never exported in .satchel unless the traveller turns it on (default off; guard test). Pure TS core src/core/kids.ts with tests; original SVG illustrations, tokens, light/dark, timed fade, Reduce Motion static.",
+      "accept": "kids tests (age bands, packing merge keeps own rows and does not duplicate, lost card picks the stop country language for the date, export default off guard, journey reminders by length); every string in src/i18n/en/kids.ts (prefix kids.); tokens only; timed transitions, no springs; no new npm dependency",
+      "commit": "187a636"
+    },
+    {
+      "id": "T150",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "follow-up",
+        "content"
+      ],
+      "title": "Getting around rows still flagged (TR Istanbul card tapping, EG Cairo metro gates, KR Seoul, MX Mexico City, VN HCMC, PH Manila taxis): clear only from official operator/government pages fetched in a networked run; record each source in DECISIONS (split from T146).",
+      "accept": "tests green; DECISIONS records sources"
+    },
+    {
+      "id": "T151",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-107 follow-ups: Postcards row on Your day on a free afternoon and a 'Postcards' entry in Plan this trip again summary; Plan this trip again offers to copy the kids list (phone-only store) with names; check-out Calendar reminder via ics; Macau Traditional Chinese sign wording; Numbers trainer casual spoken forms (e.g. Chinese 块, Vietnamese ngàn) as optional second line; native-speaker check of kids.json, numbers rules, HK/TH/PT sign lines; device checks CR-CU.",
+      "accept": "tests green; strings in a new followups107 file (prefix f107.); DECISIONS records sources"
     }
   ],
   "priority_note": "owner-1031 (T47-T51) outranks everything else (docs/OWNER_1031.md). Owner: 'let's trial that for now'. Reach TRIAL fast; nothing native before the owner has tried the trial."

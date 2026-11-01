@@ -38,6 +38,7 @@ import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
 import { radius, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
 import { comeDueLine } from '../../src/ui/comehome.tsx';
+import { PostcardsComeHomeRow } from '../../src/ui/postcards.tsx';
 import { FadeInView, ProgressBar, SectionCard } from '../../src/ui/hero.tsx';
 import { useHomeCountry } from '../../src/ui/HomeCountryPicker.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
@@ -106,6 +107,8 @@ function ComeHome({ trip }: { trip: Trip }) {
         </SectionCard>
       )}
       <ListCard trip={trip} ch={ch} list="before" />
+      {/* T147: "Postcards · 3 of 5 sent" once someone is on the trip's postcard list. */}
+      <PostcardsComeHomeRow trip={trip} />
       <AllowanceCard />
       <ListCard trip={trip} ch={ch} list="after" />
       <RatingCard trip={trip} rating={ch?.rating} />

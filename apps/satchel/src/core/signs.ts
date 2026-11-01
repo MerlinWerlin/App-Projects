@@ -48,7 +48,20 @@ export const SIGN_CATEGORIES = ['way', 'toilets', 'transport', 'rules', 'safety'
 export type SignCategory = (typeof SIGN_CATEGORIES)[number];
 
 export type SignLine = { text: string; roman?: string; native_check?: boolean };
-export type SignLanguage = { code: string; latin: boolean; lines: Record<string, SignLine | null> };
+/**
+ * T146: a place whose signs reliably use other words than the language's main pick (zh-Hant: Hong Kong next to the
+ * Taiwan wording). Only the signs that differ are listed; `roman` names the reading system of its lines.
+ */
+export type SignRegional = { roman: string; lines: Record<string, SignLine> };
+export type SignLanguage = {
+  code: string;
+  latin: boolean;
+  lines: Record<string, SignLine | null>;
+  /** T146: ISO2 of the place the main lines' wording follows (zh-Hant: TW). */
+  region?: string;
+  /** T146: other wording by place (ISO2), only where it reliably differs. */
+  regional?: Record<string, SignRegional>;
+};
 export type SignEntry = { id: string; category: string; also?: string[] };
 export type SignTable = { version: number; checked?: string | null; note?: string; signs: SignEntry[]; languages: SignLanguage[] };
 
@@ -99,26 +112,79 @@ export type SignCard = {
   roman: string | null;
   /** Model-written, not yet confirmed by a fluent speaker. */
   needsCheck: boolean;
+  /** T146: ISO2 of the place this wording is for when the language has regional wording (zh-Hant: TW or HK), else null. */
+  region: string | null;
+  /** T146: the reading system when it isn't the language's usual one (HK lines: 'jyutping'), else null. */
+  romanSystem: string | null;
+  /** T146: the other place's wording for this sign, when it differs (Taiwan 電梯 / Hong Kong 升降機). */
+  alt: { region: string; text: string; roman: string | null; romanSystem: string | null } | null;
 };
 
-/** One sign in one language (text null when the language has an explicit null). */
-export function signCard(table: SignTable, lang: PhraseLang, id: SignId): SignCard {
+/** T146: a language's lines for a place: its regional entry when it has one for that sign. */
+function regionalLine(l: SignLanguage | null, region: string | null | undefined, id: string): { line: SignLine; system: string } | null {
+  if (!l || !region || region === l.region) return null;
+  const r = l.regional?.[region];
+  const line = r?.lines?.[id];
+  return r && line && line.text.trim() ? { line, system: r.roman } : null;
+}
+
+/** T146: the place to show regional wording for, from the trip's countries in order (first one the language has). */
+export function signRegionFor(table: SignTable, lang: PhraseLang, countries: readonly (string | null | undefined)[]): string | null {
   const l = findSignLanguage(table, lang);
-  const line = l?.lines[id] ?? null;
-  const text = line && line.text.trim() ? line.text : null;
-  return {
+  if (!l?.regional) return null;
+  for (const c of countries) {
+    const cc = typeof c === 'string' ? c.trim().toUpperCase() : '';
+    if (cc && (cc === l.region || cc in l.regional)) return cc;
+  }
+  return null;
+}
+
+/**
+ * One sign in one language (text null when the language has an explicit null). T146: with `region` (ISO2, e.g. 'HK')
+ * the place's own wording is shown when the language lists one for this sign, and the main wording becomes `alt`;
+ * without it, a sign that reads differently somewhere carries that place's wording as `alt`.
+ */
+export function signCard(table: SignTable, lang: PhraseLang, id: SignId, region?: string | null): SignCard {
+  const l = findSignLanguage(table, lang);
+  const base = l?.lines[id] ?? null;
+  const baseText = base && base.text.trim() ? base.text : null;
+  const own = regionalLine(l, region, id);
+  const romanOf = (x: SignLine | null) => (l && !l.latin ? x?.roman?.trim() || null : null);
+  const card: SignCard = {
     id,
     category: signCategory(table, id),
     lang,
-    text,
-    roman: text && l && !l.latin ? line?.roman?.trim() || null : null,
-    needsCheck: text ? line?.native_check !== false : false,
+    text: baseText,
+    roman: baseText ? romanOf(base) : null,
+    needsCheck: baseText ? base?.native_check !== false : false,
+    region: l?.regional && l.region ? l.region : null,
+    romanSystem: null,
+    alt: null,
   };
+  if (own) {
+    card.text = own.line.text;
+    card.roman = romanOf(own.line);
+    card.needsCheck = own.line.native_check !== false;
+    card.region = region ?? null;
+    card.romanSystem = own.system;
+    card.alt = baseText && l?.region ? { region: l.region, text: baseText, roman: romanOf(base), romanSystem: null } : null;
+    return card;
+  }
+  if (baseText && l?.regional) {
+    for (const [r, entry] of Object.entries(l.regional)) {
+      const x = entry.lines[id];
+      if (x && x.text.trim() && x.text !== baseText) {
+        card.alt = { region: r, text: x.text, roman: romanOf(x), romanSystem: entry.roman };
+        break;
+      }
+    }
+  }
+  return card;
 }
 
 /** Every sign in a language, in the fixed order, optionally one category only. */
-export function signCards(table: SignTable, lang: PhraseLang, category?: SignCategory | null): SignCard[] {
-  return SIGN_IDS.filter((id) => !category || signCategory(table, id) === category).map((id) => signCard(table, lang, id));
+export function signCards(table: SignTable, lang: PhraseLang, category?: SignCategory | null, region?: string | null): SignCard[] {
+  return SIGN_IDS.filter((id) => !category || signCategory(table, id) === category).map((id) => signCard(table, lang, id, region));
 }
 
 /**
@@ -178,6 +244,15 @@ export function searchSigns(table: SignTable, query: string, opts: { names: Sign
       consider(line.text, 'local', lang);
       if (line.roman) consider(line.roman, 'roman', lang);
     }
+    // T146: regional wording (Hong Kong 升降機) is found too, on its language.
+    for (const lang of order) {
+      for (const r of Object.values(findSignLanguage(table, lang)?.regional ?? {})) {
+        const line = r.lines?.[id];
+        if (!line) continue;
+        consider(line.text, 'local', lang);
+        if (line.roman) consider(line.roman, 'roman', lang);
+      }
+    }
     if (found[0]) hits.push(found[0]);
   });
   return hits.map((h, i) => ({ h, i })).sort((a, b) => a.h.score - b.h.score || a.i - b.i).map((x) => x.h);
@@ -212,6 +287,25 @@ export function signProblems(table: SignTable): string[] {
       if (line.roman !== undefined && (!line.roman.trim() || NON_LATIN.test(line.roman))) out.push(`${l.code} ${id}: romanisation empty or not Latin`);
     }
     for (const id of Object.keys(l.lines)) if (!isSignId(id)) out.push(`${l.code} ${id}: unknown sign`);
+    // T146: regional wording: a known place code, the main region named, real lines only, all to native-check.
+    if (l.regional !== undefined) {
+      if (!l.region || !/^[A-Z]{2}$/.test(l.region)) out.push(`${l.code}: regional wording needs its main region`);
+      for (const [r, entry] of Object.entries(l.regional)) {
+        if (!/^[A-Z]{2}$/.test(r) || r === l.region) out.push(`${l.code} ${r}: bad region`);
+        if (!entry || typeof entry.roman !== 'string' || !entry.roman.trim()) out.push(`${l.code} ${r}: no reading system`);
+        for (const [id, line] of Object.entries(entry?.lines ?? {})) {
+          const at = `${l.code}-${r} ${id}`;
+          if (!isSignId(id)) out.push(`${at}: unknown sign`);
+          if (!line || typeof line.text !== 'string' || !line.text.trim()) {
+            out.push(`${at}: empty text`);
+            continue;
+          }
+          if (line.native_check !== true) out.push(`${at}: not marked native_check`);
+          if (!l.latin && (!line.roman?.trim() || NON_LATIN.test(line.roman))) out.push(`${at}: no romanisation`);
+          if (l.lines[id] && l.lines[id]?.text === line.text) out.push(`${at}: same as the main wording`);
+        }
+      }
+    }
   }
   return out;
 }

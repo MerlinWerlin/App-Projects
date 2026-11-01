@@ -1,7 +1,7 @@
 {
  "version": 1,
  "checked": null,
- "note": "T144 sign reader. Written by the model (not a native speaker): every line is native_check: true until a fluent speaker confirms it. Common standard sign wording; null where the model was not confident of the usual wording (shown as 'not written yet'). 'roman' follows phrases.json: Hepburn (ja), Hanyu Pinyin (zh-Hans, zh-Hant: Mandarin), Revised Romanization (ko), simple RTGS without tone marks (th). Regional picks: es Spain wording, pt Brazilian wording, zh-Hant Taiwan wording. English names and meanings are UI strings (signs.sign.* / signs.meaning.*); 'also' are extra English search words.",
+ "note": "T144 sign reader. Written by the model (not a native speaker): every line is native_check: true until a fluent speaker confirms it. Common standard sign wording; null where the model was not confident of the usual wording (shown as 'not written yet'). 'roman' follows phrases.json: Hepburn (ja), Hanyu Pinyin (zh-Hans, zh-Hant: Mandarin), Revised Romanization (ko), simple RTGS without tone marks (th). Regional picks: es Spain wording, pt Brazilian wording, zh-Hant Taiwan wording (T146: Hong Kong wording under zh-Hant 'regional.HK' only where it reliably differs: lift, taxi, bus stop, lockers, pharmacy, no smoking, airport departures / arrivals; readings in Jyutping, Cantonese). English names and meanings are UI strings (signs.sign.* / signs.meaning.*); 'also' are extra English search words.",
  "signs": [
   {
    "id": "exit",
@@ -527,6 +527,7 @@
   {
    "code": "zh-Hant",
    "latin": false,
+   "region": "TW",
    "lines": {
     "exit": {
      "text": "出口",
@@ -677,6 +678,53 @@
      "text": "詢問處",
      "roman": "xúnwènchù",
      "native_check": true
+    }
+   },
+   "regional": {
+    "HK": {
+     "roman": "jyutping",
+     "lines": {
+      "lift": {
+       "text": "升降機",
+       "roman": "sing1 gong3 gei1",
+       "native_check": true
+      },
+      "taxi": {
+       "text": "的士",
+       "roman": "dik1 si2",
+       "native_check": true
+      },
+      "busStop": {
+       "text": "巴士站",
+       "roman": "baa1 si2 zaam6",
+       "native_check": true
+      },
+      "lockers": {
+       "text": "儲物櫃",
+       "roman": "cyu5 mat6 gwai6",
+       "native_check": true
+      },
+      "pharmacy": {
+       "text": "藥房",
+       "roman": "joek6 fong4",
+       "native_check": true
+      },
+      "noSmoking": {
+       "text": "禁止吸煙",
+       "roman": "gam3 zi2 kap1 jin1",
+       "native_check": true
+      },
+      "departures": {
+       "text": "離港",
+       "roman": "lei4 gong2",
+       "native_check": true
+      },
+      "arrivals": {
+       "text": "抵港",
+       "roman": "dai2 gong2",
+       "native_check": true
+      }
+     }
     }
    }
   },
@@ -915,8 +963,16 @@
      "roman": "kha khao",
      "native_check": true
     },
-    "ticketOffice": null,
-    "lockers": null,
+    "ticketOffice": {
+     "text": "ที่จำหน่ายตั๋ว",
+     "roman": "thi chamnai tua",
+     "native_check": true
+    },
+    "lockers": {
+     "text": "ตู้ล็อกเกอร์",
+     "roman": "tu lokkoe",
+     "native_check": true
+    },
     "taxi": {
      "text": "แท็กซี่",
      "roman": "thaeksi",
@@ -1682,7 +1738,10 @@
      "text": "Bilheteria",
      "native_check": true
     },
-    "lockers": null,
+    "lockers": {
+     "text": "Guarda-volumes",
+     "native_check": true
+    },
     "taxi": {
      "text": "Táxi",
      "native_check": true

@@ -87,6 +87,9 @@ export default function PhrasesScreen() {
         <Button kind="secondary" icon="image-outline" label={t('signs.fromPhrases')} hint={t('signs.fromPhrasesHint')} onPress={() => router.push({ pathname: '/signs', params: { lang } })} />
       </View>
       <View style={{ flexDirection: 'row' }}>
+        <Button kind="secondary" icon="calculator-outline" label={t('numbers.fromPhrases')} hint={t('numbers.fromPhrasesHint')} onPress={() => router.push({ pathname: '/numbers', params: { lang } })} />
+      </View>
+      <View style={{ flexDirection: 'row' }}>
         <Button
           kind="secondary"
           icon="help-buoy-outline"
