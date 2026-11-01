@@ -342,7 +342,8 @@ export function createDeferredQueue(host: DeferredHost): DeferredQueue {
         waiting.set(name, { name, seq: ++seq, arg, hasArg, resumed: false });
       }
       markPending(name);
-      if (started && loaded) void drain();
+      // T264: a drain can never surface as an unhandled rejection.
+      if (started && loaded) drain().catch(() => undefined);
     },
     start() {
       if (started) return started;

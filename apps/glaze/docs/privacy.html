@@ -34,12 +34,29 @@ hr{border:0;border-top:1px solid var(--line);margin:28px 0}
 
 <h2>Theme pack downloads</h2>
 <p>The theme-pack catalogue and art packs are downloaded from GitHub (GitHub Releases) as plain files. No personal data, account or identifier is sent with these downloads; like any website, GitHub sees the network address of the request. Every file is checked against a fingerprint in its pack before use.</p>
+<p>A few older Space themes use a real telescope photo. If you open one, Glaze downloads that one photo from the official ESA/Webb image site (cdn.esawebb.org) as a plain image download, with nothing about you added.</p>
 
 <h2>App updates</h2>
 <p>Glaze checks Expo's update service for fixes to the version you have installed. Expo's update library sends the app version and a random installation ID it creates on first launch (not derived from your device, Apple ID or any account; it resets if you delete the app) so it can serve the right update. Glaze adds no personal data to that request.</p>
 
 <h2>Purchases</h2>
 <p>Glaze Plus is bought through Apple's In-App Purchase. Apple handles the payment; Glaze only learns whether Plus is unlocked.</p>
+
+<h2>Installing icons</h2>
+<p>"Install all at once" builds a configuration profile on your iPhone that holds only Home Screen web clips, one per app you chose. Glaze hands it to Safari from your own iPhone (address 127.0.0.1), so it never goes over the internet. You install it yourself in Settings and can remove it there at any time (Settings &gt; General &gt; VPN &amp; Device Management). The Shortcuts method uses Apple's Shortcuts app and sends nothing.</p>
+
+<h2>Everything Glaze connects to</h2>
+<ul>
+<li>GitHub: theme packs (files only, no identifiers).</li>
+<li>Expo's update service (u.expo.dev): app fixes, with the app version and a random installation ID.</li>
+<li>Apple's public App Store search (itunes.apple.com): only the name of an app Glaze doesn't recognise, plus your store's country code.</li>
+<li>ESA/Webb image site: only if you open an older Space theme.</li>
+<li>Apple's App Store (StoreKit): only when you buy or restore Glaze Plus.</li>
+</ul>
+<p>None of these requests carry your name, email, Apple ID, contacts, location, photos or usage history, and none are used for tracking or advertising. That is why the App Store page says "Data Not Collected".</p>
+
+<h2>Children</h2>
+<p>Glaze is rated 4+, has no accounts, chat, user-generated content or ads, and collects no data from anyone, including children.</p>
 
 <h2>Feedback</h2>
 <p>Sending feedback opens your own Mail app. Nothing is sent unless you press Send there, and only what you write is included.</p>

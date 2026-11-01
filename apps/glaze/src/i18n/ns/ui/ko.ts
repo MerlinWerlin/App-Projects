@@ -5,6 +5,9 @@ export const ko: NonNullable<LocaleMessages['ui']> = {
   error: {
     body: '이 화면에 문제가 생겨 멈췄습니다. 아이콘, 테마, 반복 영상은 휴대폰에 저장되어 있으며 영향이 없습니다. 다시 시도하고, 계속되면 아래 메모를 보내 주세요.',
     retryHint: '이 화면을 다시 불러옵니다',
+    screenTitle: '문제가 발생했습니다',
+    screenBody: '이 화면에 문제가 생겼습니다. 테마, 아이콘, 위젯은 휴대폰에 안전하게 저장되어 있습니다. 다시 시도를 탭해 다시 불러오세요.',
+    retry: '다시 시도',
     report: '문제 신고',
     reportHint: '이 오류가 입력된 상태로 메일 앱을 엽니다. Glaze 자체는 아무것도 보내지 않습니다.',
     opening: '메일 여는 중…',

@@ -68,18 +68,29 @@ export async function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
   } catch {
     icons = false;
   }
-  const widgets = await rememberWidgetTheme(theme);
+  const widgets = await rememberWidgetTheme(theme); // never rejects (src/store/widgetTheme.ts)
   try {
     await AsyncStorage.setItem(ACTIVE_THEME_KEY, serializeActiveTheme({ themeId: theme.id, at: Date.now() }));
   } catch {
     // Storage unavailable: the screens still hear the change below.
   }
-  for (const l of listeners) l(theme.id);
+  // T264: one listener throwing (an unmounting screen) must not stop the others or the queue below.
+  for (const l of [...listeners]) {
+    try {
+      l(theme.id);
+    } catch (e) {
+      if (typeof __DEV__ !== 'undefined' && __DEV__) console.warn('Glaze: theme listener failed', e);
+    }
+  }
   // T250: the heavy follow-ups, queued (never awaited here). Each works from the stored state above,
   // so a run resumed on the next launch does the same thing.
-  requestDeferred(DEFERRED_STEPS.widgetTheme); // App Group write + reloadAllTimelines (T125)
-  requestDeferred(DEFERRED_STEPS.themeArt, theme); // "My widget art" follows the theme (T238 / T252)
-  requestDeferred(DEFERRED_STEPS.installedProbe, 'apply'); // T229: tick the popular apps on this iPhone
+  try {
+    requestDeferred(DEFERRED_STEPS.widgetTheme); // App Group write + reloadAllTimelines (T125)
+    requestDeferred(DEFERRED_STEPS.themeArt, theme); // "My widget art" follows the theme (T238 / T252)
+    requestDeferred(DEFERRED_STEPS.installedProbe, 'apply'); // T229: tick the popular apps on this iPhone
+  } catch (e) {
+    if (typeof __DEV__ !== 'undefined' && __DEV__) console.warn('Glaze: deferred queue request failed', e);
+  }
   return { icons, widgets };
 }
 
@@ -146,9 +157,11 @@ export function useActiveThemeId(): string | null {
   }, []);
   useFocusEffect(
     useCallback(() => {
-      loadActiveThemeId().then((next) => {
-        if (alive.current) setId(next);
-      });
+      loadActiveThemeId()
+        .then((next) => {
+          if (alive.current) setId(next);
+        })
+        .catch(() => undefined);
     }, []),
   );
   return id;
@@ -166,7 +179,8 @@ async function readSaved() {
 
 /** True when this theme's wallpaper was saved to Photos before (badge only; Save stays). */
 export async function wasWallpaperSaved(themeId: string): Promise<boolean> {
-  return themeId in (await readSaved());
+  const saved = await readSaved();
+  return !!saved && typeof saved === 'object' && themeId in saved;
 }
 
 export async function rememberWallpaperSaved(themeId: string): Promise<void> {

@@ -4,6 +4,9 @@ export const en = {
   error: {
     body: 'This screen hit a problem and stopped. Your icons, themes and loops are saved on your phone and are not affected. Try again, and if it keeps happening, send us the note below.',
     retryHint: 'Reloads this screen',
+    screenTitle: 'Something went wrong',
+    screenBody: 'This screen hit a snag. Your themes, icons and widgets are safe on your phone. Tap Retry to load it again.',
+    retry: 'Retry',
     report: 'Report a problem',
     reportHint: 'Opens your Mail app with this error filled in. Glaze sends nothing itself.',
     opening: 'Opening Mail…',

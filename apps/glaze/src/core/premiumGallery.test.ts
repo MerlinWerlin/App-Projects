@@ -168,7 +168,8 @@ test('old ids still resolve via getAnyTheme (applied themes, widgets and saved s
 // catalogue themes plus the bundled starters; galleryRows' two-section layout is retired.
 test('the Themes tab is built from themeBrowse over useRemoteArtThemes + starters, and imports no old lists', () => {
   assert.match(SCREEN, /const remote = useRemoteArtThemes\(\);/);
-  assert.match(SCREEN, /browseThemes<GalleryTheme, GalleryTheme>\(remote, STARTERS\)/);
+  // T264: malformed catalogue entries are filtered first (`drawable`).
+  assert.match(SCREEN, /browseThemes<GalleryTheme, GalleryTheme>\(\(remote \?\? \[\]\)\.filter\(drawable\), STARTERS\)/);
   assert.match(SCREEN, /browseHomeRows<GalleryTheme>\(\{ themes, columns, waiting \}\)/);
   assert.match(SCREEN, /browseGridThemes<GalleryTheme>\(\{ themes, view, query, filter, liked \}\)/);
   assert.match(SCREEN, /const STARTERS: readonly GalleryTheme\[\] = galleryStarters\(\);/);
@@ -202,7 +203,8 @@ test('category sections with See all, then All themes; skeleton row while loadin
 
 test('pull to refresh calls refreshRemoteCatalog; the list stays virtualised and bounces only at the top', () => {
   assert.match(SCREEN, /import \{ refreshRemoteCatalog, useRemoteArtThemes, useRemoteCatalogStatus \} from '\.\.\/\.\.\/src\/native\/useRemoteCatalog';/);
-  assert.match(SCREEN, /void refreshRemoteCatalog\(\)\.then\(done, done\);/);
+  // T264: never an unhandled rejection.
+  assert.match(SCREEN, /refreshRemoteCatalog\(\)\.then\(done, done\)\.catch\(\(\) => undefined\);/);
   const list = SCREEN.slice(SCREEN.indexOf('<Animated.FlatList'));
   assert.match(list, /refreshing=\{refreshing\}/);
   assert.match(list, /onRefresh=\{onRefresh\}/);

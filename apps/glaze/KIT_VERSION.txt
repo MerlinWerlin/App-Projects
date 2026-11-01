@@ -1,5 +1,5 @@
 Glaze trial kit
-Built from commit: e6d27fc (2026-11-01)
+Built from commit: 611f42f (2026-11-01)
 Includes up to: fb-1023 (owner test 23 Oct evening: calm chip fade, 2x2 Picks pills, widget option pictures, mascot concepts; T52 tsconfig split)
 
 If "Built from commit" above shows a dollar sign instead of a short code, this folder is a

@@ -3421,11 +3421,96 @@
       ],
       "source": "run 222 T262",
       "title": "Check the 10 non-English translations of the iOS 27 profile labels ('More for Your iPhone', 'View Profile', 'Install Profile') against Apple's localised wording; owner glance at the 4 drawn guide illustrations on the phone"
+    },
+    {
+      "id": "T264",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1101i",
+        "crash"
+      ],
+      "source": "owner-1101i brief (manual fire, Jared 1 Nov 18:50 on TestFlight 20), docs/OWNER_1101I.md",
+      "title": "#2 Crash hardening on build 20: theme apply / return to app / widget art / category browse catch and recover; per-tab error boundary 'Something went wrong - Retry'",
+      "commit": "7cdaf4a"
+    },
+    {
+      "id": "T265",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1101i",
+        "ux"
+      ],
+      "source": "owner-1101i brief (manual fire, Jared 1 Nov 18:50 on TestFlight 20), docs/OWNER_1101I.md",
+      "title": "#1 Guided 'Use this theme' flow: 1 Wallpaper (save, Photos steps, Blur off, Open Photos) 2 Icons (Install all, iOS 27 profile steps, Open Settings) 3 Widgets; progress dots, skip, re-open from theme page 'Set it up'; drawn mocks",
+      "commit": "bdb79cb"
+    },
+    {
+      "id": "T266",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1101i",
+        "release"
+      ],
+      "source": "owner-1101i brief (manual fire, Jared 1 Nov 18:50 on TestFlight 20), docs/OWNER_1101I.md",
+      "title": "#3 Release prep docs: RELEASE_CHECKLIST, STORE.md, App Privacy, REVIEW_NOTES, age rating, export compliance, docs/site support + privacy pages, version decision, free vs Plus list",
+      "commit": "37c4570"
+    },
+    {
+      "id": "T267",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1101i",
+        "release"
+      ],
+      "source": "owner-1101i brief (manual fire, Jared 1 Nov 18:50 on TestFlight 20), docs/OWNER_1101I.md",
+      "title": "#3 App Store screenshots 6.9\" 1320x2868 and 6.5\" 1284x2778 with captions (render templates in repo; images published on the build page, not in the repo bundle)",
+      "commit": "47019be"
+    },
+    {
+      "id": "T268",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "owner-1101i",
+        "crash"
+      ],
+      "source": "run 223 T264",
+      "title": "When Jared's chat forwards the build 20 crash stack, fix the exact cause (T264 hardened likely paths only)"
+    },
+    {
+      "id": "T269",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "owner-1101i",
+        "release"
+      ],
+      "source": "run 223 T266",
+      "title": "Plus sheet promises 'Extra widget styles' / 'Curated symbol sets' a user can't reach (3.1.1 risk): once the owner picks Plus option A/B/C (RELEASE_CHECKLIST §2b), trim the sheet to built features; also drop 'a loop' from the Themes tab subtitle"
+    },
+    {
+      "id": "T270",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "owner-1101i",
+        "release"
+      ],
+      "source": "run 223 T266",
+      "title": "src/config/feedback.ts still sends in-app feedback to the owner's personal Gmail; switch to the support address once the owner picks one (SUPPORT_EMAIL in docs/site/index.html)"
     }
   ],
   "priority_order": {
-    "note": "run 222: owner-1101i reference screenshots (synced a342ed3) -> T262 in-app profile guide first; then T260, T259, T257 (owner-1101h follow-ups). run 218: owner-1101g brief (manual fire, Jared 1 Nov 16:01 after TestFlight 18) outranks everything, order 1,2,6,4,5,3 = T236,T237,T238,T239,T240,T241; T242 guard, T243 records. run 216: owner-1101f brief (manual fire, Jared live; the chat ships right after) outranks everything: T228 crash first, then T229-T231, T232 records. run 215: T218 closed (+93 ids, 18 unverifiable left null); remaining cloud items wait on the held native build (T224), T227 re-slim (App Factory chat), owner TRIAL answers (T214) or the PC. run 210: owner manual fire 1 Nov 11:06 (owner-1101e: back-to-back runs today; continue owner-1101/1101d items, premium UI, review widget sheets, grow Find apps) -> T209-T211, T193. run 191: oversight v212 (D211-1 still open, no new directives); only cloud-safe item T181 string retirement; rest waits on owner/PC or D130-2 holds. run 189: owner-1031 brief (manual fire, docs/OWNER_1031.md) outranks the backlog: T177-T180. run 188: T173 closed (all seven screens sliced); T176 Icons/Wallpapers/Live premium slices done (JS only, D130-2). run 187: oversight v210 lifted D206-1/D207-1 (PR #131 merged); T173 onboarding + Themes browse, T168 done (JS only, D130-2). run 185: D207-1 (≤2 small JS-only tasks): T175 + T173 theme-detail apply skeleton; no native. run 184: T173 Install/Plus/Settings slices + T166 + T156 done; D206-1 still holds native code (PR #128 result unreadable from the cloud). run 183: T173 slices continue every run (next Install flow); D206-1 holds new native code until a build with glaze-home-scan is confirmed green. run 182: owner-1030b brief (Jared's chat 30 Oct evening, synced from App-Projects 2b133ce) outranks the backlog: T169-T172 then T173 premium UI every run. run 179: owner-1030 brief (manual fire, docs/OWNER_1030.md) outranks the backlog: A (T159-T161) and C (T162) first, then B (T163-T164), D (T165). run 132: PR 107 (T155 widget/theme/icon repairs + T158 Island pets, v1.0.1) synced from App-Projects 1f90aa7; T157 done. 26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
+    "note": "run 223: owner-1101i brief (manual fire) outranks everything, order 2,1,3 = T264, T265, T266+T267. run 222: owner-1101i reference screenshots (synced a342ed3) -> T262 in-app profile guide first; then T260, T259, T257 (owner-1101h follow-ups). run 218: owner-1101g brief (manual fire, Jared 1 Nov 16:01 after TestFlight 18) outranks everything, order 1,2,6,4,5,3 = T236,T237,T238,T239,T240,T241; T242 guard, T243 records. run 216: owner-1101f brief (manual fire, Jared live; the chat ships right after) outranks everything: T228 crash first, then T229-T231, T232 records. run 215: T218 closed (+93 ids, 18 unverifiable left null); remaining cloud items wait on the held native build (T224), T227 re-slim (App Factory chat), owner TRIAL answers (T214) or the PC. run 210: owner manual fire 1 Nov 11:06 (owner-1101e: back-to-back runs today; continue owner-1101/1101d items, premium UI, review widget sheets, grow Find apps) -> T209-T211, T193. run 191: oversight v212 (D211-1 still open, no new directives); only cloud-safe item T181 string retirement; rest waits on owner/PC or D130-2 holds. run 189: owner-1031 brief (manual fire, docs/OWNER_1031.md) outranks the backlog: T177-T180. run 188: T173 closed (all seven screens sliced); T176 Icons/Wallpapers/Live premium slices done (JS only, D130-2). run 187: oversight v210 lifted D206-1/D207-1 (PR #131 merged); T173 onboarding + Themes browse, T168 done (JS only, D130-2). run 185: D207-1 (≤2 small JS-only tasks): T175 + T173 theme-detail apply skeleton; no native. run 184: T173 Install/Plus/Settings slices + T166 + T156 done; D206-1 still holds native code (PR #128 result unreadable from the cloud). run 183: T173 slices continue every run (next Install flow); D206-1 holds new native code until a build with glaze-home-scan is confirmed green. run 182: owner-1030b brief (Jared's chat 30 Oct evening, synced from App-Projects 2b133ce) outranks the backlog: T169-T172 then T173 premium UI every run. run 179: owner-1030 brief (manual fire, docs/OWNER_1030.md) outranks the backlog: A (T159-T161) and C (T162) first, then B (T163-T164), D (T165). run 132: PR 107 (T155 widget/theme/icon repairs + T158 Island pets, v1.0.1) synced from App-Projects 1f90aa7; T157 done. 26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
     "order": [
+      "T264",
+      "T265",
+      "T266",
+      "T267",
       "T262",
       "T260",
       "T259",

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glaze Privacy</title>
+<style>
+:root{--bg:#F7F6F3;--ink:#1C1B19;--muted:#5D5A55;--line:#DDD9D2;--accent:#2C7A54}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161615;--ink:#EEECE8;--muted:#A9A59E;--line:#34322F;--accent:#6CC79A}}
+:root[data-theme="dark"]{--bg:#161615;--ink:#EEECE8;--muted:#A9A59E;--line:#34322F;--accent:#6CC79A}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+main{max-width:680px;margin:0 auto;padding:32px 16px 48px}
+h1{font-size:28px;margin:0 0 4px}
+h2{font-size:19px;margin:28px 0 6px}
+p,li{color:var(--ink)}
+.muted{color:var(--muted);font-size:15px}
+.badge{display:inline-block;border:1px solid var(--accent);color:var(--accent);border-radius:999px;padding:2px 12px;font-size:14px;font-weight:600}
+hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+</style>
+</head>
+<body>
+<main>
+<h1>Glaze privacy</h1>
+<p class="muted">Last updated 1 November 2026</p>
+<p><span class="badge">Data Not Collected</span></p>
+<p>Glaze has no accounts, analytics, ads or tracking. We don't collect, store or share any information about you.</p>
+
+<h2>Your photos and videos</h2>
+<p>Photos and videos you pick to make icons, wallpapers and Live Photos are processed on your iPhone and never leave the device. "Scan my Home Screen" reads app names from your screenshots on the device with Apple's text recognition; the screenshots are never uploaded.</p>
+
+<h2>Apps on your iPhone</h2>
+<p>To pre-select icons for you, Glaze asks iOS only whether 50 specific popular apps are installed (iOS gives no list of your apps). The answer is used only to pre-select icons for those exact apps, which you can untick, and nothing leaves your phone.</p>
+<p>When Scan my Home Screen finds an app that isn't in Glaze's catalogue, Glaze may look up that app's name in Apple's public App Store search (itunes.apple.com) to choose a symbol for its kind of app, such as Finance or Food. Only the app name and your store's country code are sent, and only for apps Glaze doesn't already recognise. No screenshots, photos, other app names, identifiers or account details are sent, no sign-in or account is used, and answers are cached on the phone. Without a connection, Glaze picks the symbol on the phone from the app's name, and nothing is sent.</p>
+
+<h2>Theme pack downloads</h2>
+<p>The theme-pack catalogue and art packs are downloaded from GitHub (GitHub Releases) as plain files. No personal data, account or identifier is sent with these downloads; like any website, GitHub sees the network address of the request. Every file is checked against a fingerprint in its pack before use.</p>
+<p>A few older Space themes use a real telescope photo. If you open one, Glaze downloads that one photo from the official ESA/Webb image site (cdn.esawebb.org) as a plain image download, with nothing about you added.</p>
+
+<h2>App updates</h2>
+<p>Glaze checks Expo's update service for fixes to the version you have installed. Expo's update library sends the app version and a random installation ID it creates on first launch (not derived from your device, Apple ID or any account; it resets if you delete the app) so it can serve the right update. Glaze adds no personal data to that request.</p>
+
+<h2>Purchases</h2>
+<p>Glaze Plus is bought through Apple's In-App Purchase. Apple handles the payment; Glaze only learns whether Plus is unlocked.</p>
+
+<h2>Installing icons</h2>
+<p>"Install all at once" builds a configuration profile on your iPhone that holds only Home Screen web clips, one per app you chose. Glaze hands it to Safari from your own iPhone (address 127.0.0.1), so it never goes over the internet. You install it yourself in Settings and can remove it there at any time (Settings &gt; General &gt; VPN &amp; Device Management). The Shortcuts method uses Apple's Shortcuts app and sends nothing.</p>
+
+<h2>Everything Glaze connects to</h2>
+<ul>
+<li>GitHub: theme packs (files only, no identifiers).</li>
+<li>Expo's update service (u.expo.dev): app fixes, with the app version and a random installation ID.</li>
+<li>Apple's public App Store search (itunes.apple.com): only the name of an app Glaze doesn't recognise, plus your store's country code.</li>
+<li>ESA/Webb image site: only if you open an older Space theme.</li>
+<li>Apple's App Store (StoreKit): only when you buy or restore Glaze Plus.</li>
+</ul>
+<p>None of these requests carry your name, email, Apple ID, contacts, location, photos or usage history, and none are used for tracking or advertising. That is why the App Store page says "Data Not Collected".</p>
+
+<h2>Children</h2>
+<p>Glaze is rated 4+, has no accounts, chat, user-generated content or ads, and collects no data from anyone, including children.</p>
+
+<h2>Feedback</h2>
+<p>Sending feedback opens your own Mail app. Nothing is sent unless you press Send there, and only what you write is included.</p>
+
+<hr>
+<p class="muted">Questions about privacy: use Send Feedback in the app's Settings.</p>
+</main>
+</body>
+</html>

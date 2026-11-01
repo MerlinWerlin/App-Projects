@@ -5,6 +5,9 @@ export const ptBR: NonNullable<LocaleMessages['ui']> = {
   error: {
     body: 'Esta tela teve um problema e parou. Seus ícones, temas e loops estão salvos no celular e não foram afetados. Tente de novo e, se continuar, envie a nota abaixo.',
     retryHint: 'Recarrega esta tela',
+    screenTitle: 'Algo deu errado',
+    screenBody: 'Esta tela teve um problema. Seus temas, ícones e widgets estão seguros no seu telefone. Toque em Tentar de novo para carregá-la outra vez.',
+    retry: 'Tentar de novo',
     report: 'Relatar um problema',
     reportHint: 'Abre seu app Mail com este erro preenchido. O Glaze não envia nada sozinho.',
     opening: 'Abrindo o Mail…',

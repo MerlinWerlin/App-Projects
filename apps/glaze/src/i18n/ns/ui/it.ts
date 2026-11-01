@@ -5,6 +5,9 @@ export const it: NonNullable<LocaleMessages['ui']> = {
   error: {
     body: 'Questa schermata ha avuto un problema e si è fermata. Icone, temi e loop sono salvati sul telefono e non sono stati toccati. Riprova e, se succede ancora, inviaci la nota qui sotto.',
     retryHint: 'Ricarica questa schermata',
+    screenTitle: 'Qualcosa è andato storto',
+    screenBody: 'Questa schermata ha avuto un problema. I tuoi temi, icone e widget sono al sicuro sul telefono. Tocca Riprova per ricaricarla.',
+    retry: 'Riprova',
     report: 'Segnala un problema',
     reportHint: 'Apre la tua app Mail con questo errore già compilato. Glaze non invia nulla da solo.',
     opening: 'Apertura di Mail…',

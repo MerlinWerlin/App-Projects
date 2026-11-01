@@ -97,7 +97,8 @@ test('T184 "Use this theme" writes the icon style, the widget theme (bridge) and
   assert.match(fn, /rememberWidgetTheme\(theme\)/);
   assert.match(fn, /requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);
   assert.match(fn, /AsyncStorage\.setItem\(ACTIVE_THEME_KEY/);
-  assert.match(fn, /for \(const l of listeners\) l\(theme\.id\)/);
+  // T264: each listener is try-wrapped (one throwing never stops the others).
+  assert.match(fn, /for \(const l of \[\.\.\.listeners\]\) \{\s*try \{\s*l\(theme\.id\);/);
   // The bridge write itself stays in applyWidgetTheme (T125).
   assert.match(read('src', 'store', 'widgetTheme.ts'), /widgets\.setTheme\(/);
 });

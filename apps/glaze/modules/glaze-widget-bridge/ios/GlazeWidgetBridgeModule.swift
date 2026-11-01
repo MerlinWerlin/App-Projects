@@ -394,6 +394,8 @@ public class GlazeWidgetBridgeModule: Module {
   /// out of the upright wallpaper, draws the hero (may be "") centred-fit with the 6 % padding of
   /// heroRect, long edge capped at 1200 px. nil when the wallpaper can't be read or the crop is empty.
   private static func composeSeamlessImage(wallpaperUri: String, x: Double, y: Double, w: Double, h: Double, heroUri: String) -> (image: UIImage, hero: UIImage?)? {
+    // T264 (owner-1101i #2): a NaN / infinite crop from JS is refused, never drawn.
+    guard x.isFinite, y.isFinite, w.isFinite, h.isFinite, w >= 1, h >= 1 else { return nil }
     guard
       let wallpaper = GlazeWidgetBridgeModule.loadImage(wallpaperUri),
       let source = GlazeWidgetBridgeModule.uprightCGImage(wallpaper)
@@ -430,13 +432,22 @@ public class GlazeWidgetBridgeModule: Module {
   /// <= 1200): the opaque theme colour as the base, then the art whole, edge to edge when the
   /// aspects match within 2 %, else fitted with NO inset. No blurred copy of the art anywhere (the
   /// blurred strips read as a light-grey frame round a black square).
-  private static func composeArtImage(art: UIImage, w: Double, h: Double, colour: String) -> UIImage {
+  private static func composeArtImage(art: UIImage, w rawW: Double, h rawH: Double, colour: String) -> UIImage {
+    // T264 (owner-1101i #2): never a NaN / zero canvas (UIGraphicsImageRenderer must get a real size).
+    let w = rawW.isFinite && rawW >= 1 ? rawW : 1
+    let h = rawH.isFinite && rawH >= 1 ? rawH : 1
     let longest = max(w, h)
     let k: CGFloat = longest > 1200 ? 1200 / CGFloat(longest) : 1
     let target = CGSize(width: max(1, floor(CGFloat(w) * k)), height: max(1, floor(CGFloat(h) * k)))
     let canvas = CGRect(origin: .zero, size: target)
     let base = GlazeWidgetBridgeModule.colour(colour)
 
+    guard art.size.width > 0, art.size.height > 0 else {
+      return UIGraphicsImageRenderer(size: target).image { ctx in
+        base.setFill()
+        ctx.fill(canvas)
+      }
+    }
     let artAspect = art.size.width / art.size.height
     let outAspect = target.width / target.height
     let aspectsMatch = min(artAspect, outAspect) / max(artAspect, outAspect) >= 0.98
@@ -498,7 +509,8 @@ public class GlazeWidgetBridgeModule: Module {
     let longest = max(size.width, size.height)
     guard longest > maxEdge, longest > 0 else { return image }
     let scale = maxEdge / longest
-    let target = CGSize(width: floor(size.width * scale), height: floor(size.height * scale))
+    // T264: at least 1 x 1 px (a very thin image never asks for a zero-size canvas).
+    let target = CGSize(width: max(1, floor(size.width * scale)), height: max(1, floor(size.height * scale)))
     let format = UIGraphicsImageRendererFormat.default()
     format.scale = 1
     return UIGraphicsImageRenderer(size: target, format: format).image { _ in

@@ -7,7 +7,7 @@
 // the one-time clean-up of art from older versions / other themes runs on the first load.
 import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Alert, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import type { WidgetArtPiece } from '../core/widgetArtLibrary';
 import { useT } from '../i18n';
@@ -41,24 +41,44 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
   const [selected, setSelected] = useState<ReadonlySet<string>>(new Set());
   const [bulkBusy, setBulkBusy] = useState(false);
 
+  // T264 (owner-1101i #2): no setState after unmount, and a failed bridge read hides the list
+  // instead of rejecting unhandled.
+  const alive = useRef(true);
+  useEffect(() => {
+    alive.current = true;
+    return () => {
+      alive.current = false;
+    };
+  }, []);
   const load = useCallback(async () => {
-    if (!migrationTried) {
-      migrationTried = true;
-      await widgets.migrateArtLibrary(await loadActiveThemeId());
+    try {
+      if (!migrationTried) {
+        migrationTried = true;
+        try {
+          await widgets.migrateArtLibrary(await loadActiveThemeId());
+        } catch {
+          // Best effort: the library still lists below.
+        }
+      }
+      const res = await widgets.artLibrary();
+      if (!alive.current) return;
+      if (!res || !res.available || !res.ok || !Array.isArray(res.pieces)) {
+        setPieces(null);
+        return;
+      }
+      const list = res.pieces.filter((p) => !!p && typeof p.id === 'string');
+      setPieces(list);
+      setDir(typeof res.dir === 'string' ? res.dir : '');
+      setSelected((prev) => new Set([...prev].filter((id) => list.some((p) => p.id === id))));
+      if (list.length === 0) setManaging(false);
+    } catch (e) {
+      console.warn('[WidgetArt] library read failed', e);
+      if (alive.current) setPieces(null);
     }
-    const res = await widgets.artLibrary();
-    if (!res.available || !res.ok) {
-      setPieces(null);
-      return;
-    }
-    setPieces(res.pieces);
-    setDir(res.dir);
-    setSelected((prev) => new Set([...prev].filter((id) => res.pieces.some((p) => p.id === id))));
-    if (res.pieces.length === 0) setManaging(false);
   }, []);
 
   useEffect(() => {
-    void load();
+    load().catch(() => undefined);
   }, [load, refreshKey]);
 
   if (pieces === null) return null;
@@ -67,7 +87,12 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
     if (busyId) return;
     setBusyId(piece.id);
     haptic('select');
-    const res = await widgets.removeFromArtLibrary(piece.id);
+    let res: { ok: boolean };
+    try {
+      res = await widgets.removeFromArtLibrary(piece.id);
+    } catch {
+      res = { ok: false }; // T264
+    }
     setBusyId(null);
     const msg = res.ok ? t('ui.seamless.library.removed') : t('ui.seamless.library.failed');
     setLine(msg);
@@ -95,7 +120,12 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
     if (bulkBusy || selected.size === 0) return;
     setBulkBusy(true);
     haptic('warning');
-    const res = await widgets.removeManyFromArtLibrary([...selected]);
+    let res: { ok: boolean };
+    try {
+      res = await widgets.removeManyFromArtLibrary([...selected]);
+    } catch {
+      res = { ok: false }; // T264
+    }
     setBulkBusy(false);
     setSelected(new Set());
     announce(res.ok, t('ui.seamless.library.deleted'));
@@ -112,7 +142,12 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
         style: 'destructive',
         onPress: async () => {
           setBulkBusy(true);
-          const res = await widgets.clearArtLibrary();
+          let res: { ok: boolean };
+          try {
+            res = await widgets.clearArtLibrary();
+          } catch {
+            res = { ok: false }; // T264
+          }
           setBulkBusy(false);
           setSelected(new Set());
           announce(res.ok, t('ui.seamless.library.deleted'));
@@ -161,7 +196,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
             disabled={selected.size === 0}
             busy={bulkBusy}
             haptic={false}
-            onPress={() => void onDeleteSelected()}
+            onPress={() => onDeleteSelected().catch(() => undefined)}
           />
           <PillButton label={t('ui.seamless.library.clearAll')} variant="plain" size="small" haptic={false} disabled={bulkBusy} onPress={onClearAll} />
         </View>
@@ -217,7 +252,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
             size="small"
             busy={busyId === p.id}
             haptic={false}
-            onPress={() => void onRemove(p)}
+            onPress={() => onRemove(p).catch(() => undefined)}
             accessibilityLabel={t('ui.seamless.library.removeA11y', { name: p.name })}
           />
         </View>

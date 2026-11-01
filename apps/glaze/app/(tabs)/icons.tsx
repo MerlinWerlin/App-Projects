@@ -84,6 +84,7 @@ import { haptic } from '../../src/ui/haptics';
 import { Chevron, noMirror, textStyleFor } from '../../src/ui/i18nLayout';
 import { GlassBar, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SquircleCard, SwitchInsetRow, useLargeTitleScroll } from '../../src/ui/v2';
 import { useT, type MessageKey, type Script } from '../../src/i18n';
+import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 const RESULT_LIMIT = 60;
 
@@ -142,7 +143,7 @@ function typeFor(script: Script, role: TypeRoleV2): TextStyle[] {
   return [textV2[role], textStyleFor(script, textV2[role])];
 }
 
-export default function IconsScreen() {
+function IconsScreen() {
   const { c, scheme } = useColorsV2();
   // T176: cards lift by a lighter surface in dark mode (no hairline), as on Themes and Widgets.
   const cardTone = scheme === 'dark' ? 'raised' : 'surface';
@@ -1009,3 +1010,6 @@ const styles = StyleSheet.create({
   iconBtn: { width: sizeV2.touch, height: sizeV2.touch, alignItems: 'center', justifyContent: 'center' },
   cta: { paddingHorizontal: spaceV2.inset, paddingVertical: spaceV2.md },
 });
+
+// T264 (owner-1101i #2): this screen fails on its own: a calm card + Retry, never a closed app.
+export default withScreenBoundary(IconsScreen, 'icons');

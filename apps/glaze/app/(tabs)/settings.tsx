@@ -36,6 +36,7 @@ import { useT, type MessageKey, type Script } from '../../src/i18n';
 import { textStyleFor } from '../../src/ui/i18nLayout';
 import { BarIconButton, InsetGroup, InsetRow, LargeTitleScrollView, Skeleton, SwitchInsetRow } from '../../src/ui/v2';
 import { checkForUpdate, reloadApp } from '../../src/native/updates';
+import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 const PLUS_NAME = 'Glaze Plus'; // i18n-ignore (product name)
 
@@ -86,7 +87,7 @@ function nearestSize(scale: number): SizeKey {
   return best.key;
 }
 
-export default function SettingsScreen() {
+function SettingsScreen() {
   const { c } = useColorsV2();
   const toast = useToast();
   const { state, update } = useStudio();
@@ -429,3 +430,6 @@ const styles = StyleSheet.create({
   stepDot: { width: sizeV2.rowIcon, height: sizeV2.rowIcon, borderRadius: circleRadius(sizeV2.rowIcon), alignItems: 'center', justifyContent: 'center' },
   stepDigit: { fontWeight: '700' },
 });
+
+// T264 (owner-1101i #2): this screen fails on its own: a calm card + Retry, never a closed app.
+export default withScreenBoundary(SettingsScreen, 'settings');

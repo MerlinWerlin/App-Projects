@@ -26,7 +26,12 @@ function hookFocusRefresh(): void {
   focusHooked = true;
   try {
     AppState.addEventListener('change', (s) => {
-      if (s === 'active') void refreshCatalog(false);
+      // T264: try-wrapped, and the refresh can never reject unhandled.
+      try {
+        if (s === 'active') refreshCatalog(false).catch(() => undefined);
+      } catch {
+        // Never let a foreground re-check close the app.
+      }
     });
   } catch {
     // No AppState (tests / web): the mount-time check still runs.
@@ -38,8 +43,15 @@ let memo: { catalog: Catalog | null; themes: readonly RemoteArtTheme[] } = { cat
 /** Catalogue packs as themes (bundled themes with the same id win), memoised per catalogue. */
 function themesFor(catalog: Catalog | null): readonly RemoteArtTheme[] {
   if (memo.catalog === catalog) return memo.themes;
-  const bundled = catalog ? catalog.packs.filter((p) => !!getAnyTheme(p.id)).map((p) => p.id) : [];
-  const themes = catalog ? remoteArtThemes(catalog, PACK_BASE_RESOLVED, bundled) : NONE;
+  // T264: a malformed catalogue (missing packs / ids) lists nothing instead of crashing the Themes tab.
+  let themes: readonly RemoteArtTheme[] = NONE;
+  try {
+    const packs = catalog && Array.isArray(catalog.packs) ? catalog.packs : [];
+    const bundled = packs.filter((p) => !!p && typeof p.id === 'string' && !!getAnyTheme(p.id)).map((p) => p.id);
+    themes = catalog ? remoteArtThemes(catalog, PACK_BASE_RESOLVED, bundled).filter((th) => !!th && typeof th.id === 'string') : NONE;
+  } catch {
+    themes = NONE;
+  }
   memo = { catalog, themes: themes.length ? Object.freeze(themes) : NONE };
   return memo.themes;
 }
@@ -55,7 +67,7 @@ export function useRemoteArtThemes(): readonly RemoteArtTheme[] {
   useEffect(() => {
     if (!PACKS_ENABLED) return;
     hookFocusRefresh();
-    void refreshCatalog(false);
+    refreshCatalog(false).catch(() => undefined);
   }, []);
   return themesFor(catalog);
 }
@@ -114,10 +126,12 @@ export function useRemoteArtTheme(id: string | null | undefined): RemoteArtLocal
   const downloaded = base ? store.index.packs.some((p) => p.id === base.id) : false;
   const local = base ? store.remoteArt[base.id] : undefined;
   useEffect(() => {
-    if (base && downloaded && !local) void remoteArtOnDevice(base.id);
+    if (base && downloaded && !local) Promise.resolve(remoteArtOnDevice(base.id)).catch(() => undefined);
   }, [base, downloaded, local]);
   return useMemo(() => {
     if (!base || !local) return { theme: base, wallpaperUri: null, thumbUri: null, heroUris: NO_HERO_URIS, heroPx: NO_HERO_PX, widgetOptions: NO_OPTIONS, wallpaperPx: null };
+    // T264: a malformed downloaded manifest must not crash the screen: fall back to "not downloaded".
+    try {
     const files = remoteArtFiles(local);
     const heroUris: Partial<Record<HeroSize, string>> = {};
     for (const s of Object.keys(files.heroes) as HeroSize[]) {
@@ -126,6 +140,7 @@ export function useRemoteArtTheme(id: string | null | undefined): RemoteArtLocal
     }
     const widgetOptions: LocalWidgetOption[] = [];
     for (const option of local.widgets ?? []) {
+      if (!option || typeof option.image !== 'string') continue;
       const uri = remoteArtFileUri(base.id, option.image);
       if (uri) widgetOptions.push({ option, uri });
     }
@@ -139,5 +154,8 @@ export function useRemoteArtTheme(id: string | null | undefined): RemoteArtLocal
       widgetOptions,
       wallpaperPx: wall ? { w: wall.width, h: wall.height } : null,
     };
+    } catch {
+      return { theme: base, wallpaperUri: null, thumbUri: null, heroUris: NO_HERO_URIS, heroPx: NO_HERO_PX, widgetOptions: NO_OPTIONS, wallpaperPx: null };
+    }
   }, [base, local]);
 }

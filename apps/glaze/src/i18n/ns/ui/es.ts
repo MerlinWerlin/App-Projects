@@ -5,6 +5,9 @@ export const es: NonNullable<LocaleMessages['ui']> = {
   error: {
     body: 'Esta pantalla tuvo un problema y se detuvo. Tus iconos, temas y bucles están guardados en tu teléfono y no se ven afectados. Inténtalo otra vez y, si sigue pasando, envíanos la nota de abajo.',
     retryHint: 'Vuelve a cargar esta pantalla',
+    screenTitle: 'Algo salió mal',
+    screenBody: 'Esta pantalla tuvo un problema. Tus temas, iconos y widgets están a salvo en tu teléfono. Toca Reintentar para cargarla de nuevo.',
+    retry: 'Reintentar',
     report: 'Informar de un problema',
     reportHint: 'Abre tu app Mail con este error ya escrito. Glaze no envía nada por sí mismo.',
     opening: 'Abriendo Mail…',

@@ -1,0 +1,63 @@
+{
+  "note": "T267 App Store screenshots. Captions follow docs/STORE.md rules: no competitor names, no ranks, badges or download counts, no live-wallpaper promise. {themeCount} is filled by render.mjs from the theme catalogue the Themes tab shows (remote catalogue + bundled starters).",
+  "sizes": [
+    { "id": "6.9", "width": 1320, "height": 2868 },
+    { "id": "6.5", "width": 1284, "height": 2778 }
+  ],
+  "fallbackThemeCount": 98,
+  "shots": [
+    {
+      "n": 1,
+      "slug": "home-hook",
+      "screen": "home",
+      "theme": "sunset-dunes",
+      "title": "Themes, icons and widgets that match.",
+      "accent": "One price. No weekly subscription.",
+      "bg": ["#FFE3D3", "#F9D3EC"]
+    },
+    {
+      "n": 2,
+      "slug": "themes-tab",
+      "screen": "themes",
+      "title": "{themeCount} themes to choose from",
+      "accent": "",
+      "bg": ["#F3E6FF", "#FFE0EE"]
+    },
+    {
+      "n": 3,
+      "slug": "matching-icons",
+      "screen": "theme",
+      "theme": "deep-sea",
+      "title": "Matching icons for your apps",
+      "accent": "",
+      "bg": ["#D9F3F4", "#E3E3FF"]
+    },
+    {
+      "n": 4,
+      "slug": "widgets",
+      "screen": "widgets",
+      "theme": "starry-night",
+      "title": "Widgets that follow your theme",
+      "accent": "",
+      "bg": ["#E2E6FF", "#F6E5FF"]
+    },
+    {
+      "n": 5,
+      "slug": "install",
+      "screen": "install",
+      "theme": "cloud-atelier",
+      "title": "Install all icons in one go",
+      "accent": "",
+      "bg": ["#FFE6DA", "#FBE1F1"]
+    },
+    {
+      "n": 6,
+      "slug": "make-your-own",
+      "screen": "studio",
+      "theme": "cloud-atelier",
+      "title": "Make your own icons,",
+      "accent": "free",
+      "bg": ["#E1EEFF", "#FBE1F1"]
+    }
+  ]
+}

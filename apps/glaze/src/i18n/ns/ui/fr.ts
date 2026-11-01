@@ -5,6 +5,9 @@ export const fr: NonNullable<LocaleMessages['ui']> = {
   error: {
     body: 'Cet écran a rencontré un problème et s’est arrêté. Vos icônes, thèmes et boucles sont enregistrés sur votre téléphone et ne sont pas touchés. Réessayez et, si cela se reproduit, envoyez-nous la note ci-dessous.',
     retryHint: 'Recharge cet écran',
+    screenTitle: 'Un problème est survenu',
+    screenBody: 'Cet écran a rencontré un souci. Tes thèmes, icônes et widgets sont en sécurité sur ton téléphone. Touche Réessayer pour le recharger.',
+    retry: 'Réessayer',
     report: 'Signaler un problème',
     reportHint: 'Ouvre votre app Mail avec cette erreur déjà remplie. Glaze n’envoie rien lui-même.',
     opening: 'Ouverture de Mail…',

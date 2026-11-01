@@ -5,6 +5,9 @@ export const de: NonNullable<LocaleMessages['ui']> = {
   error: {
     body: 'Auf diesem Bildschirm ist ein Problem aufgetreten. Deine Symbole, Themes und Schleifen sind auf deinem Telefon gespeichert und nicht betroffen. Versuch es noch einmal und schick uns die Notiz unten, wenn es wieder passiert.',
     retryHint: 'Lädt diesen Bildschirm neu',
+    screenTitle: 'Etwas ist schiefgelaufen',
+    screenBody: 'Auf diesem Bildschirm ist etwas schiefgegangen. Deine Themes, Symbole und Widgets sind sicher auf deinem Telefon. Tippe auf Erneut versuchen, um ihn neu zu laden.',
+    retry: 'Erneut versuchen',
     report: 'Problem melden',
     reportHint: 'Öffnet deine Mail-App mit diesem Fehler ausgefüllt. Glaze selbst sendet nichts.',
     opening: 'Mail wird geöffnet…',

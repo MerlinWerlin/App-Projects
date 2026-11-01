@@ -2,6 +2,15 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (1 Nov, owner-1101i)
+Needs a TestFlight build **newer than 1.0.1 (20)**. Answer yes / no:
+
+1. **Guided setup:** open a theme > **Use this theme**. Does a 3-step guide open straight away (dots 1-2-3: Wallpaper, Icons, Widgets), one short sentence per step with a small drawing? yes / no
+2. **Wallpaper step:** does **Save wallpaper to Photos** save it, does **Open Photos** open Photos, and do the steps (Share > Use as Wallpaper > Add > Set as Wallpaper Pair > Blur OFF) match your iPhone? yes / no
+3. **Icons step:** does **Install all icons** go straight to the install and open Safari, and do steps (a)-(e) match what you see (Close > More for Your iPhone > View Profile > Install)? Does **Open Settings** open Settings? yes / no
+4. **Set it up later:** on the theme page, does the **Set it up** section reopen each step, with a tick on the ones you finished? yes / no
+5. **No crash:** swap themes a few times, leave Glaze and come back, browse theme categories, edit widget art. Any crash or freeze? If a screen ever fails, do you get a "Something went wrong · Retry" card instead of the app closing? (no crash = yes) yes / no
+
 ## New since your last test (1 Nov, late: run 222)
 Needs a TestFlight build **newer than 1.0.1 (20)** (the widget part is built into the app). Answer yes / no:
 

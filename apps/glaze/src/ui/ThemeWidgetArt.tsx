@@ -235,7 +235,7 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
         block
         busy={status === 'busy'}
         haptic={false}
-        onPress={() => void onUse()}
+        onPress={() => onUse().catch(() => undefined)}
         accessibilityLabel={t('tabs.widgetsTab.art.useA11y', { name: pickedName })}
       />
       {liveHref ? (

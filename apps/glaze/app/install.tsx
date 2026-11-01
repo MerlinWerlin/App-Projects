@@ -25,7 +25,7 @@
 import { Feather } from '@expo/vector-icons';
 import * as FileSystem from '../src/native/fs';
 import * as MediaLibrary from 'expo-media-library/legacy';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import * as Sharing from 'expo-sharing';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Linking, Pressable, ScrollView, StyleSheet, Text, View, type TextStyle } from 'react-native';
@@ -390,6 +390,17 @@ export default function InstallScreen() {
     // timingText only formats with the current t.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [busy, plan.profile, renderer, themeName, shareProfile, openInSafari, route, t]);
+
+  // T265: "Install all icons" in the guided "Use this theme" flow opens this screen with auto=1,
+  // which starts the same bulk profile install once (Install all at once only; nothing else changes).
+  const { auto } = useLocalSearchParams<{ auto?: string }>();
+  const autoStarted = useRef(false);
+  useEffect(() => {
+    if (auto !== '1' || autoStarted.current || !studio || busy) return;
+    if (!PROFILE_INSTALL_ENABLED || choice !== 'bulk' || plan.profile.length === 0) return;
+    autoStarted.current = true;
+    generate().catch(() => {});
+  }, [auto, studio, busy, choice, plan.profile.length, generate]);
 
   const shareAgain = useCallback(
     async (p: SavedProfile, via: 'safari' | 'share' = 'share') => {

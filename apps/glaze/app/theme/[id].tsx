@@ -122,9 +122,11 @@ import { haptic } from '../../src/ui/haptics';
 import { Chevron, noMirror, textStyleFor } from '../../src/ui/i18nLayout';
 import { GlassBar, InsetGroup, InsetRow, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
+import { ThemeSetupFlow, ThemeSetupSection, useThemeSetup } from '../../src/ui/ThemeSetupFlow';
 import { ThemeWidgetArt } from '../../src/ui/ThemeWidgetArt';
 import { widgetTabSizeKey } from '../../src/core/tabNav';
 import type { HomeOptionSize } from '../../src/core/widgetOptions';
+import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 /** Outer width of the phone preview for a window width: large, but leaves the toggle and bar room. */
 function previewWidthFor(windowW: number): number {
@@ -170,7 +172,7 @@ function headerTint(page: string, accent: string, ink: string, muted: string): s
 
 type SaveState = 'idle' | 'saved' | 'denied' | 'error';
 
-export default function ThemeDetailScreen() {
+function ThemeDetailScreen() {
   const { id, step: stepParam } = useLocalSearchParams<{ id: string; step?: string }>();
   // T160: a remote art pack from the remote catalogue resolves too (bundled themes win).
   const remote = useRemoteArtTheme(typeof id === 'string' ? id : undefined);
@@ -278,6 +280,8 @@ function ThemeDetail({
   /** Why the Plus sheet is open: unlocking from Download shouldn't put the theme in use. */
   const lockFor = useRef<'apply' | 'download' | ThemeStep | 'widgets'>('apply');
   const reduced = useMotionReduced();
+  // T265: the guided Wallpaper / Icons / Widgets flow that opens after "Use this theme".
+  const setup = useThemeSetup(theme.id);
 
   // T55: the phone preview is sized from the window (large), with a real phone outline: a bezel
   // around a screen that clips the Home / Lock mock to rounded corners.
@@ -338,9 +342,11 @@ function ThemeDetail({
   useFocusEffect(
     useCallback(() => {
       let alive = true;
-      wasWallpaperSaved(theme.id).then((saved) => {
-        if (alive) setSavedBefore(saved);
-      });
+      wasWallpaperSaved(theme.id)
+        .then((saved) => {
+          if (alive) setSavedBefore(saved);
+        })
+        .catch(() => undefined);
       return () => {
         alive = false;
       };
@@ -353,9 +359,11 @@ function ThemeDetail({
   useFocusEffect(
     useCallback(() => {
       let alive = true;
-      loadBackground(theme.id).then((b) => {
-        if (alive) setBg(b);
-      });
+      loadBackground(theme.id)
+        .then((b) => {
+          if (alive) setBg(b);
+        })
+        .catch(() => undefined);
       return () => {
         alive = false;
       };
@@ -421,8 +429,17 @@ function ThemeDetail({
         haptic('warning');
         return;
       }
-      playApply();
-      AccessibilityInfo.announceForAccessibility(t('theme.use.doneA11y', { name: theme.name }));
+      try {
+        playApply();
+        AccessibilityInfo.announceForAccessibility(t('theme.use.doneA11y', { name: theme.name }));
+      } catch {
+        // T264: the celebration is optional; the theme is already applied.
+      }
+      setup.openAt('wallpaper'); // T265: straight into the guided setup
+    } catch (e) {
+      // T264 (owner-1101i #2): an apply that throws shows the calm "couldn't apply" note, never a crash.
+      console.warn('[Theme] apply failed', e);
+      setUseError(true);
     } finally {
       setUseBusy(false);
     }
@@ -433,7 +450,30 @@ function ThemeDetail({
       setLockOpen(true);
       return;
     }
-    void putInUse();
+    putInUse().catch(() => undefined);
+  };
+
+  /** T265: a "Set it up" row opens the guided flow at that step (a locked theme asks for Plus first). */
+  const openSetup = (part: 'wallpaper' | 'icons' | 'widgets') => {
+    if (locked) {
+      lockFor.current = 'apply';
+      setLockOpen(true);
+      return;
+    }
+    setup.openAt(part);
+  };
+  /** T265: "Install all icons" puts this theme's icons in use if needed, then starts the bulk install. */
+  const installFromSetup = () => {
+    setup.leaveFor('icons', () => {
+      const go = () => router.push({ pathname: '/install', params: { auto: '1' } });
+      if (inUse) {
+        go();
+        return;
+      }
+      applyThemeEverywhere(theme)
+        .catch(() => null)
+        .finally(go);
+    });
   };
 
   /** T185: the three separate entry points, each its own clean screen. */
@@ -451,7 +491,12 @@ function ThemeDetail({
   const onDownloadPack = async () => {
     if (pack.state === 'downloading') return;
     haptic('select');
-    const r = await pack.download();
+    let r: Awaited<ReturnType<typeof pack.download>> | 'error';
+    try {
+      r = await pack.download();
+    } catch {
+      r = 'error'; // T264: a failed download never rejects unhandled
+    }
     if (r === 'locked') {
       lockFor.current = 'download';
       setLockOpen(true);
@@ -753,6 +798,9 @@ function ThemeDetail({
           </View>
         ) : null}
 
+        {/* T265: re-open the guided setup at any step; finished steps are ticked. */}
+        {overview && canApply ? <ThemeSetupSection themeName={theme.name} done={setup.done} onOpen={openSetup} /> : null}
+
         {/* T185: the Wallpaper screen. "Saved to Photos ✓" once saved, and Save again always offered
             (someone who deleted it from Photos gets it back). */}
         {step === 'wallpaper' ? (
@@ -1033,6 +1081,24 @@ function ThemeDetail({
         />
       ) : null}
 
+      {/* T265: the guided "Use this theme" flow (Wallpaper, Icons, Widgets). */}
+      <ThemeSetupFlow
+        setup={setup}
+        themeName={theme.name}
+        wallpaper={{
+          onSave: onSaveWallpaper,
+          saving,
+          saved: saveState === 'saved',
+          error:
+            saveState === 'denied' || saveState === 'error'
+              ? saveWhy && saveFailureKey(saveWhy.why)
+                ? t(`theme.save.why.${saveWhy.why}`)
+                : t('theme.setup.wallpaper.saveError')
+              : null,
+        }}
+        onInstallIcons={installFromSetup}
+      />
+
       <PlusLockSheet
         visible={lockOpen}
         onClose={() => setLockOpen(false)}
@@ -1040,11 +1106,11 @@ function ThemeDetail({
         onUnlocked={() => {
           const why = lockFor.current;
           if (why === 'download') {
-            void onDownloadPack();
+            onDownloadPack().catch(() => undefined);
             return;
           }
           if (why === 'apply' || why === 'overview') {
-            void putInUse();
+            putInUse().catch(() => undefined);
             return;
           }
           openPart(why, false);
@@ -1740,3 +1806,6 @@ const styles = StyleSheet.create({
   skeletonPage: { padding: spaceV2.inset, gap: spaceV2.md, alignItems: 'center' },
   skeletonHero: { marginTop: spaceV2.lg },
 });
+
+// T264 (owner-1101i #2): this screen fails on its own: a calm card + Retry, never a closed app.
+export default withScreenBoundary(ThemeDetailScreen, 'theme');

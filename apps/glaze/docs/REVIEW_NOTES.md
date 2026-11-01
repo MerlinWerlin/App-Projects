@@ -6,6 +6,54 @@ Keep each section true to the build being submitted. Background and sources are 
 
 Glaze has no Live Activities and no Dynamic Island content: the Island pets feature and `NSSupportsLiveActivities` were removed on 1 Nov 2026 (T198). Do not describe pets in review notes.
 
+## Notes to paste for version 1.0.1 (T266, first App Store release)
+
+Paste the block below into App Store Connect > Apps > Glaze > version 1.0.1 > App Review Information > Notes
+(limit 4,000 characters; this block is about 3,700). Sign-in required: **off** (no demo account). Attach the
+screen recording (owner step). It matches a `production-native` build with `PROFILE_INSTALL_ENABLED = true`; if the
+switch is false, replace paragraph 3 with the "Switch OFF" text under "Icon install" below.
+
+```text
+WHAT GLAZE DOES
+Glaze is a Home Screen customisation app. Each theme has an original wallpaper, matching app icons and matching home-screen widgets. There is also a Widget Studio, a wallpaper maker and an extra Live Photo maker that turns the user's own clip into a Live Photo. No account, login or sign-in exists anywhere in the app; no demo account is needed.
+
+HOW TO TEST (about 3 minutes)
+1. Open Glaze. The Themes tab shows the theme gallery (themes download in a few seconds on first open; three are bundled).
+2. Tap any theme, then tap "Use this theme". Glaze shows three guided steps with progress dots. Each step can be skipped.
+3. Step 1 Wallpaper: tap "Save wallpaper to Photos" (asks for add-only Photos access). The step explains how to set it from Photos > Share > Use as Wallpaper.
+4. Step 2 Icons: choose a few apps, tap "Install all icons". Safari opens and offers a profile download (Allow, then Close). In Settings tap "Profile Downloaded" (or "More for Your iPhone"; older iOS: General > VPN & Device Management) > Install. The themed icons appear on the Home Screen. Remove: Settings > General > VPN & Device Management > Glaze icons > Remove Profile.
+5. Step 3 Widgets: long-press the Home Screen > Edit > Add Widget > Glaze, pick a size; long-press the widget > Edit Widget to choose its art.
+6. Glaze Plus: Settings > Glaze Plus opens the Plus sheet with Unlock and Restore purchases (sandbox account).
+
+HOW ICONS ARE INSTALLED
+Glaze cannot change another app's icon and does not try to. "Install all icons" builds a standard configuration profile on the device that contains only Home Screen web clips (com.apple.webClip.managed), one per app the user chose; each opens that app's public URL scheme. Glaze serves the file to Safari from a short-lived server on the device's loopback address (127.0.0.1), so nothing leaves the iPhone. The user installs it manually in Settings (iOS shows "Not Verified" because it is unsigned). It has no MDM, VPN, certificate, restriction or account payloads, is removable, and the app explains how to remove it. Glaze is not an MDM app and does not manage the device. A second method, one icon at a time with Apple's Shortcuts app ("Open App" action), needs no profile at all. If App Review considers the profile route outside Guideline 5.5, we will switch it off and keep only the Shortcuts method; it is a single setting in the app.
+
+IN-APP PURCHASE
+Glaze Plus (com.jared797.glaze.plus) is a non-consumable, one-time unlock bought with StoreKit. There are no subscriptions. Restore purchases is on the Plus sheet and in Settings. Everything needed to review the app works without buying.
+
+NETWORK AND PRIVACY
+No accounts, analytics, ads or tracking; photos and videos never leave the device. Network use: theme packs are plain files from GitHub Releases (each checked against a SHA-256 in its manifest); app fixes come from Expo's update service (app version and a random per-install ID, not a device or account identifier); when "Scan my Home Screen" finds an app name Glaze doesn't know, only that app name and the store country code are sent to Apple's public App Store search to pick a symbol category. Without a connection the app still works with bundled and downloaded themes.
+
+OTHER NOTES
+- No background audio and no UIBackgroundModes; no Live Activities.
+- The Live Photo maker saves a Live Photo to Photos (add-only access). The app does not promise it will move as a wallpaper and says so in the app.
+- Glaze declares 50 app URL schemes in LSApplicationQueriesSchemes only to pre-select icons for apps the user has; the result never leaves the device.
+- All themes, icons and art are original; no brand logos or third-party characters.
+```
+
+### App Review risk notes (not for pasting; owner and lead only)
+
+| Guideline | Risk | Mitigation in this build |
+|---|---|---|
+| 5.5 Developer Code of Conduct (configuration profiles / MDM) | Medium. Public text says profile-offering apps must meet MDM rules; whether a web-clip-only profile counts is not stated. Similar apps ship profile routes, but rejections happen. | Web clips only, no MDM payloads, served from loopback, installed by the user, removable, explained in-app. One switch, `src/config/install.ts` `PROFILE_INSTALL_ENABLED`: set it to `false` and the install screen becomes Shortcuts-only with no profile code path (`src/core/installMethods.ts`). It is JS, so it can reach review as a new build or an over-the-air fix if Review asks. |
+| 4.3 Spam / 4.2 Minimum functionality | Low-medium. Theme/icon apps are a crowded category. | Original art (95 remote + 3 bundled themes), real WidgetKit widgets, Widget Studio, guided set-up, Live Photo maker; not a re-skin of a template. |
+| 4.1 Copycats / 5.2 IP | Low. | No brand logos, no famous characters; icon labels are generic. Licences in `docs/LICENSES.md`. |
+| 2.3 Accurate metadata | Low. | Listing says no live-wallpaper motion, shows only built features, real theme count (`docs/STORE.md`). |
+| 2.5.2 Downloaded code | Low. | Theme packs are data (PNG + JSON), SHA-256 checked. Expo updates change JS only, within the reviewed feature set (Apple allows interpreted code that doesn't change the app's purpose, 3.3.1(B)/2.5.2). Ship only reviewer-needed fixes over the air while in review. |
+| 2.5.4 Background modes | None. | No `UIBackgroundModes` (guarded by `src/core/t127LiveLock.test.ts`). |
+| 3.1.1 In-App Purchase | Medium until the owner decides Plus content. | If Plus unlocks nothing a reviewer can see, Review may reject the IAP as not delivering content. See `docs/RELEASE_CHECKLIST.md` §2b (owner decision). |
+| 5.1.1 Data / 5.1.2 | Low. | Data Not Collected, explained per network call in `docs/privacy.html`. |
+
 ## App Review information (Apple's new-developer questions)
 
 Paste after the feature sections (release standard §3; same pattern as the other App Factory apps).
@@ -36,7 +84,7 @@ Since T202 (owner-1101d #5, supersedes T183) **"Install all at once"** (web clip
 
 Pick the version that matches `PROFILE_INSTALL_ENABLED` in `src/config/install.ts` for this build.
 
-**Switch OFF (recommended for the first App Store submission):**
+**Switch OFF (fallback: use this text only if `PROFILE_INSTALL_ENABLED` is false in the submitted build):**
 
 > Glaze makes themed icons on the device. It can't change another app's icon, and it doesn't try to.
 > To add an icon, the user makes a shortcut in Apple's Shortcuts app with the "Open App" action

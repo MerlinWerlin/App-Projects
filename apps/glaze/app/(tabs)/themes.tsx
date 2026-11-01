@@ -74,6 +74,7 @@ import { THUMB_LABEL_HEIGHT, ThemeThumbCard } from '../../src/ui/ThemeThumbCard'
 import { haptic } from '../../src/ui/haptics';
 import { textStyleFor } from '../../src/ui/i18nLayout';
 import { BarIconButton, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
+import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 type FeatherName = ComponentProps<typeof Feather>['name'];
 type GalleryTheme = Theme & { browseCategory?: BrowseCategoryId };
@@ -99,8 +100,16 @@ function typeFor(script: Script, role: TypeRoleV2): TextStyle[] {
   return [textV2[role], textStyleFor(script, textV2[role])];
 }
 
-const rowKey = (row: Row): string => row.key;
-const themeKey = (theme: GalleryTheme): string => theme.id;
+// T264 (owner-1101i #2): keys never throw on a malformed row / theme (fall back to the index).
+const rowKey = (row: Row, index: number): string => (row && typeof row.key === 'string' ? row.key : `row-${index}`);
+const themeKey = (theme: GalleryTheme, index: number): string => (theme && typeof theme.id === 'string' ? theme.id : `theme-${index}`);
+/** T264: a theme the gallery can draw (a catalogue entry missing its id is skipped, never a crash). */
+const drawable = (theme: GalleryTheme | null | undefined): theme is GalleryTheme => !!theme && typeof theme.id === 'string' && theme.id.length > 0;
+/** T264: a finite, positive size (a NaN / zero window or layout never reaches the list geometry). */
+const finitePos = (n: number, fallback: number): number => (Number.isFinite(n) && n > 0 ? n : fallback);
+/** Layout fallback before the window reports a size (a common phone width / height in pt). */
+const FALLBACK_W = 390;
+const FALLBACK_H = 844;
 /** Nothing extra to spread onto the list (the overview keeps LIST_WINDOW). */
 const NO_PROPS = Object.freeze({});
 
@@ -188,8 +197,10 @@ const BrowseHead = memo(function BrowseHead({ section, count, onSeeAll }: { sect
 /** One category's horizontal rail of art-led cards (fixed card width, so getItemLayout is exact). */
 const CategoryRail = memo(function CategoryRail({ themes, shared }: { themes: readonly GalleryTheme[]; shared: CardShared }) {
   const gap = editorialV2.cardGap;
+  const railData = useMemo(() => (themes ?? []).filter(drawable), [themes]);
   const renderItem: ListRenderItem<GalleryTheme> = useCallback(
     ({ item }) => (
+      !drawable(item) ? null :
       <View style={styles.railItem}>
         <BrowseCard theme={item} variant="art" shared={shared} />
       </View>
@@ -199,7 +210,7 @@ const CategoryRail = memo(function CategoryRail({ themes, shared }: { themes: re
   const getItemLayout = useCallback((_: ArrayLike<GalleryTheme> | null | undefined, index: number) => railItemLayout(shared.railWidth, gap, index), [shared.railWidth, gap]);
   return (
     <FlatList
-      data={themes}
+      data={railData}
       renderItem={renderItem}
       keyExtractor={themeKey}
       getItemLayout={getItemLayout}
@@ -217,7 +228,7 @@ const CategoryRail = memo(function CategoryRail({ themes, shared }: { themes: re
 const GalleryCardRow = memo(function GalleryCardRow({ themes, shared }: { themes: readonly GalleryTheme[]; shared: CardShared }) {
   return (
     <View style={styles.cardRow}>
-      {themes.map((theme) => (
+      {(themes ?? []).filter(drawable).map((theme) => (
         <BrowseCard key={theme.id} theme={theme} variant="thumb" shared={shared} />
       ))}
     </View>
@@ -305,12 +316,14 @@ const GalleryEmpty = memo(function GalleryEmpty({ reason, onReset }: { reason: '
   );
 });
 
-export default function ThemesScreen() {
+function ThemesScreen() {
   const { c } = useColorsV2();
   const router = useRouter();
   const { t, script } = useT();
   const insets = useSafeAreaInsets();
-  const { width, height } = useWindowDimensions();
+  const win = useWindowDimensions();
+  const width = finitePos(win.width, FALLBACK_W);
+  const height = finitePos(win.height, FALLBACK_H);
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState<BrowseFilter>('all');
   const [view, setView] = useState<BrowseView>('home');
@@ -322,7 +335,14 @@ export default function ThemesScreen() {
   // The remote catalogue (cached at once, refreshed in the background) plus the bundled starters.
   const remote = useRemoteArtThemes();
   const status = useRemoteCatalogStatus();
-  const themes: readonly GalleryTheme[] = useMemo(() => browseThemes<GalleryTheme, GalleryTheme>(remote, STARTERS), [remote]);
+  const themes: readonly GalleryTheme[] = useMemo(() => {
+    // T264: a malformed catalogue entry (no id) is dropped; a throw falls back to the bundled starters.
+    try {
+      return browseThemes<GalleryTheme, GalleryTheme>((remote ?? []).filter(drawable), STARTERS).filter(drawable);
+    } catch {
+      return STARTERS;
+    }
+  }, [remote]);
   const sections = useMemo(() => groupByCategory(themes), [themes]);
   const chips = useMemo(() => browseChips(sections, themes.length), [sections, themes.length]);
   const waiting = status === 'loading' && remote.length === 0;
@@ -333,7 +353,7 @@ export default function ThemesScreen() {
     () => gridGeometry({ width, columns, gutter: spaceV2.lg, gap: editorialV2.cardGap, aspect: PHONE_ASPECT, labelHeight: THUMB_LABEL_HEIGHT }),
     [width, columns],
   );
-  const railWidth = railCardWidth(width, spaceV2.lg, editorialV2.cardGap);
+  const railWidth = finitePos(railCardWidth(width, spaceV2.lg, editorialV2.cardGap), sizeV2.touch);
   const gridWin = useMemo(
     () => ({ ...gridWindow(height, geo.rowHeight), removeClippedSubviews: LIST_WINDOW.removeClippedSubviews, updateCellsBatchingPeriod: LIST_WINDOW.updateCellsBatchingPeriod }),
     [height, geo.rowHeight],
@@ -352,7 +372,12 @@ export default function ThemesScreen() {
 
   const onOpen = useCallback(
     (id: string) => {
-      router.push(`/theme/${id}`);
+      if (typeof id !== 'string' || id.length === 0) return;
+      try {
+        router.push(`/theme/${id}`);
+      } catch (e) {
+        console.warn('[Themes] could not open a theme', e);
+      }
     },
     [router],
   );
@@ -408,6 +433,7 @@ export default function ThemesScreen() {
 
   const renderRow: ListRenderItem<Row> = useCallback(
     ({ item }) => {
+      if (!item) return null; // T264: a hole in the rows draws nothing
       if (item.kind === 'head') return <BrowseHead section={item.section} count={item.count} onSeeAll={seeAll} />; // i18n-ignore (code after a JSX element)
       if (item.kind === 'rail') return <CategoryRail themes={item.themes} shared={shared} />; // i18n-ignore (code after a JSX element)
       if (item.kind === 'skeleton') return <SkeletonCardRow count={Math.min(item.count, columns)} cardWidth={geo.cardWidth} />; // i18n-ignore (code after a JSX element)
@@ -421,7 +447,8 @@ export default function ThemesScreen() {
   const [headerH, setHeaderH] = useState(0);
   const listTop = insets.top + sizeV2.navBar + headerH;
   const onHeaderLayout = useCallback((e: LayoutChangeEvent) => {
-    const h = Math.round(e.nativeEvent.layout.height);
+    const h = Math.round(e?.nativeEvent?.layout?.height ?? 0);
+    if (!Number.isFinite(h) || h < 0) return;
     setHeaderH((old) => (old === h ? old : h));
   }, []);
   const getGridLayout = useCallback(
@@ -431,10 +458,24 @@ export default function ThemesScreen() {
 
   // Pull to refresh: fetch catalog.json now. Never rejects; a 404 or offline keeps what is shown.
   const [refreshing, setRefreshing] = useState(false);
+  // T264: no setState after the tab unmounted (a refresh that outlives the screen), no unhandled rejection.
+  const mounted = useRef(true);
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    const done = () => setRefreshing(false);
-    void refreshRemoteCatalog().then(done, done);
+    const done = () => {
+      if (mounted.current) setRefreshing(false);
+    };
+    try {
+      refreshRemoteCatalog().then(done, done).catch(() => undefined);
+    } catch {
+      done();
+    }
   }, []);
 
   const filterOptions: PillTabOption<BrowseFilter>[] = useMemo(
@@ -596,3 +637,6 @@ const styles = StyleSheet.create({
   empty: { alignItems: 'center', gap: spaceV2.sm },
   emptyIcon: { width: 48, height: 48, borderRadius: circleRadius(48), alignItems: 'center', justifyContent: 'center' },
 });
+
+// T264 (owner-1101i #2): this screen fails on its own: a calm card + Retry, never a closed app.
+export default withScreenBoundary(ThemesScreen, 'themes');

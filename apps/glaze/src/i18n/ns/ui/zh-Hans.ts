@@ -5,6 +5,9 @@ export const zhHans: NonNullable<LocaleMessages['ui']> = {
   error: {
     body: '此页面出现问题并已停止。你的图标、主题和循环都保存在手机上，不受影响。请重试；如果问题持续，请把下方的说明发给我们。',
     retryHint: '重新加载此页面',
+    screenTitle: '出了点问题',
+    screenBody: '此页面遇到了问题。你的主题、图标和小组件都安全地保存在手机上。轻点“重试”重新加载。',
+    retry: '重试',
     report: '报告问题',
     reportHint: '打开邮件应用并填好此错误。Glaze 自身不会发送任何内容。',
     opening: '正在打开邮件…',

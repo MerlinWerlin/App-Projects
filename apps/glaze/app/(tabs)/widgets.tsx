@@ -88,6 +88,7 @@ import { SizeArt, SwatchArt } from '../../src/ui/WidgetOptionArt';
 import { ThemeWidgetArt } from '../../src/ui/ThemeWidgetArt';
 import { WidgetArtLibraryList } from '../../src/ui/WidgetArtLibraryList';
 import { lookSwatch, themeSwatch as rawThemeSwatch, type Swatch } from '../../src/core/widgetOptionArt';
+import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 /** Untyped lookup for keys carried in data (tabNav card name/size keys). */
 type LooseT = (key: string, params?: Record<string, string | number>) => string;
@@ -446,7 +447,7 @@ const WidgetRow = memo(function WidgetRow({
 
 const rowKey = (row: FamilyRow<WidgetTabCard>): string => row.key;
 
-export default function WidgetsTab() {
+function WidgetsTab() {
   const { c } = useColorsV2();
   const { t, script } = useT();
   const tl = t as unknown as LooseT;
@@ -553,7 +554,7 @@ export default function WidgetsTab() {
     haptic('select');
     setPicked(id);
     const next = themes.find((x) => x.id === id);
-    if (next) void applyWidgetTheme(next);
+    if (next) Promise.resolve(applyWidgetTheme(next)).catch(() => undefined); // T264: never unhandled
     setPickNonce((n) => n + 1);
   };
   const pickLook = (l: WidgetLook) => {
@@ -575,12 +576,12 @@ export default function WidgetsTab() {
   // T89: one tap logs one step. The haptic fires straight away; a tracker at its maximum buzzes.
   const logHabit = useCallback((k: HabitKind) => {
     haptic(canTapHabit(habitsRef.current.habits, k, new Date()) ? 'light' : 'warning');
-    void logWidgetHabit(k);
+    Promise.resolve(logWidgetHabit(k)).catch(() => undefined);
   }, []);
   // T94: touch and hold (or the VoiceOver "decrement" action) takes one step off.
   const undoHabit = useCallback((k: HabitKind) => {
     haptic(canUndoHabitTap(habitsRef.current.habits, k, new Date()) ? 'select' : 'warning');
-    void undoWidgetHabit(k);
+    Promise.resolve(undoWidgetHabit(k)).catch(() => undefined);
   }, []);
   const onOpen = useCallback((href: string) => router.push(href), [router]);
   const onGoals = useCallback(() => router.push('/habit-goals'), [router]);
@@ -819,3 +820,6 @@ const styles = StyleSheet.create({
     paddingVertical: spaceV2.xxs,
   },
 });
+
+// T264 (owner-1101i #2): this screen fails on its own: a calm card + Retry, never a closed app.
+export default withScreenBoundary(WidgetsTab, 'widgets');
