@@ -524,6 +524,37 @@ def testflight(app):
             say(f"- add build to group: {str(e)[:200]}")
 
 
+
+def feedback(app):
+    """Read-only: the newest TestFlight crash and screenshot feedback for the app, with the crash log text."""
+    rel, _ = app_cfg(app)
+    app_id = rel["ascAppId"]
+    say(f"# TestFlight feedback: {app}")
+    try:
+        crashes = get(f"/v1/apps/{app_id}/betaFeedbackCrashSubmissions", limit=5, sort="-createdDate")["data"]
+    except RuntimeError as e:
+        crashes = []
+        say(f"- crash list: {str(e)[:300]}")
+    for c in crashes:
+        a = attrs(c)
+        say(f"## Crash {a.get('createdDate')} build {a.get('buildBundleId') or ''} {a.get('deviceModel')} iOS {a.get('osVersion')}")
+        say(f"- comment: {a.get('comment')}")
+        try:
+            log = get(f"/v1/betaFeedbackCrashSubmissions/{c['id']}/crashLog")["data"]
+            txt = attrs(log).get("logText") or ""
+            say("```")
+            say(txt[:12000])
+            say("```")
+        except RuntimeError as e:
+            say(f"- crash log: {str(e)[:300]}")
+    try:
+        shots = get(f"/v1/apps/{app_id}/betaFeedbackScreenshotSubmissions", limit=5, sort="-createdDate")["data"]
+        for sh in shots:
+            a = attrs(sh)
+            say(f"## Screenshot feedback {a.get('createdDate')}: {a.get('comment')}")
+    except RuntimeError as e:
+        say(f"- screenshot list: {str(e)[:300]}")
+
 def upload_shots(ver_id, locale, disp, folder):
     import hashlib
     files = sorted((ROOT / folder).glob("*.jpg")) + sorted((ROOT / folder).glob("*.png"))
@@ -742,6 +773,8 @@ if __name__ == "__main__":
             make_profile(app)
         elif mode == "testflight":
             testflight(app)
+        elif mode == "feedback":
+            feedback(app)
         else:
             (status if mode == "status" else apply)(app)
         if mode == "apply":
