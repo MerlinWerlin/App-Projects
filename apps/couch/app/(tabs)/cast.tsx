@@ -152,6 +152,9 @@ export default function CastScreen() {
                 {delivery}
               </Text>
             ) : null}
+            {snap.delivery?.via === 'googlecast' ? (
+              <PillButton variant="plain" label="Send test picture" onPress={() => void cast.sendTestPicture()} />
+            ) : null}
             <Card>
               <TransportBar
                 cast={snap.cast}

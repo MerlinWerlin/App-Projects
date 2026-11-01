@@ -1,5 +1,5 @@
 {
   "mode": "update",
-  "note": "Couch: Cast tab shows whether the phone can serve the file and what the TV reports",
+  "note": "Couch: Send test picture on the Cast tab (finds why the TV stays black)",
   "ascAppId": "6826135134"
 }

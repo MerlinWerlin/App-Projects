@@ -1,3 +1,4 @@
+import { CAST_TEST_IMAGE_URL } from './googleCast/googleCastDriver';
 /**
  * Cast tab controller (cast-1024, T91): ties the target list, the active CastDriver, the CastQueue
  * and the MediaServer together, without React. src/state/cast.tsx builds one with the real
@@ -410,6 +411,19 @@ export class CastController {
   }
 
   /** Stops casting: the TV, the served file and the server. The queue is kept. */
+  /** Google Cast only: shows a fixed web picture on the TV (diagnostic, owner 1 Nov 2026). Never throws. */
+  async sendTestPicture(): Promise<void> {
+    const driver = this.driver;
+    if (!driver || driver.target.kind !== 'googlecast') return;
+    this.set({ error: null });
+    try {
+      await this.stopServing();
+      await driver.load({ url: CAST_TEST_IMAGE_URL, title: 'Couch test picture', mime: 'image/jpeg', kind: 'photo' });
+    } catch (e) {
+      this.set({ error: asDriverError(e).message });
+    }
+  }
+
   async stop(): Promise<void> {
     this.playGen += 1;
     this.clearConfirm();

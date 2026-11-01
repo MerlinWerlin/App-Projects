@@ -37,6 +37,12 @@ import {
 
 /** The Default Media Receiver: Google's stock receiver app for plain media URLs. */
 export const DEFAULT_MEDIA_RECEIVER_APP_ID = 'CC1AD845';
+/**
+ * A fixed picture on Couch's own website, cast by the Cast tab's "Send test picture" (owner 1 Nov 2026:
+ * TCL showed black while the phone served the file). If this shows but phone files don't, the TV
+ * can't reach the phone; if this is black too, the TV's cast viewer is at fault.
+ */
+export const CAST_TEST_IMAGE_URL = 'https://merlinwerlin.github.io/App-Projects/couch/img/01-every-tv.jpg';
 export const GCAST_LAUNCH_TIMEOUT_MS = 15_000;
 export const GCAST_LOAD_TIMEOUT_MS = 20_000;
 export const GCAST_CONTROL_TIMEOUT_MS = 5000;
@@ -331,7 +337,7 @@ export function createGoogleCast(
   const load = async (media: CastMedia): Promise<void> => {
     ensureUsable();
     if (!target.accepts[media.kind]) throw driverError('unsupported', 'core.driver.cast.formatUnsupported');
-    validateMedia(media);
+    if (media.url !== CAST_TEST_IMAGE_URL) validateMedia(media);
     if (!isRfc1918Host(target.host)) throw driverError('forbidden', 'core.driver.cast.notLan');
     const g = ++gen;
     stopPoll();
