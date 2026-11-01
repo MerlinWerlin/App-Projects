@@ -5,7 +5,9 @@ import { bboxOf, flatten, inRings, strokePath } from './geom.ts';
 import { apply, emptyProgress, finishStroke, markFound, percent, redo, restoreProgress, strokesNear, undo, type History } from './progress.ts';
 import {
   type Scene,
-  REVEAL_AT,
+  LEVEL_MIN_PX,
+  detailStep,
+  shapeOpacity,
   cameraFor,
   clampCamera,
   fitCamera,
@@ -82,35 +84,53 @@ test('camera is clamped to the scene and to the zoom range', () => {
   assert.equal(out.cx, 50);
 });
 
-test('child detail appears once it fills enough of the screen', () => {
+test('a child level is drawn as soon as it is a few px wide, in its exact place', () => {
   const L = layout(tiny);
-  const fit = fitCamera(L, SC);
-  assert.deepEqual(visibleLevels(L, fit, SC).map((v) => v.level.id), ['a']);
   const b = L.byId.get('b')!;
-  const near = { cx: 50, cy: 37.5, z: (SC.w * REVEAL_AT * 1.1) / b.world.w };
-  assert.deepEqual(visibleLevels(L, near, SC).map((v) => v.level.id), ['a', 'b']);
-  // Zoomed right into the child: the parent is no longer drawn at all.
+  const tooSmall = { cx: 50, cy: 37.5, z: (LEVEL_MIN_PX * 0.9) / b.world.w };
+  assert.deepEqual(visibleLevels(L, tooSmall, SC).map((v) => v.level.id), ['a']);
+  const fit = fitCamera(L, SC);
+  assert.deepEqual(visibleLevels(L, fit, SC).map((v) => v.level.id), ['a', 'b']);
+  // Zoomed right into the child: the parent is no longer drawn at all (the child covers the screen).
   const deep = cameraFor(b, SC, 1.5);
   assert.deepEqual(visibleLevels(L, deep, SC).map((v) => v.level.id), ['b']);
+  // ...but while any of the parent still shows, both are drawn.
+  const edge = cameraFor(b, SC, 0.9);
+  assert.deepEqual(visibleLevels(L, edge, SC).map((v) => v.level.id), ['a', 'b']);
+});
+
+test('detail fades in smoothly with zoom, never snapping', () => {
+  // A 10-unit shape: invisible below 1.5 px, fully drawn by 5 px, in small steps between.
+  const seen: number[] = [];
+  for (let px = 0.05; px < 1; px *= 1.05) seen.push(shapeOpacity(10, detailStep(px)));
+  assert.equal(seen[0], 0);
+  assert.equal(seen.at(-1), 1);
+  for (let i = 1; i < seen.length; i++) {
+    assert.ok(seen[i]! >= seen[i - 1]!, 'monotonic');
+    assert.ok(seen[i]! - seen[i - 1]! <= 0.5, `no jump bigger than half: ${seen[i - 1]} -> ${seen[i]}`);
+  }
 });
 
 test('taps hit the deepest drawn level and the topmost region', () => {
   const L = layout(tiny);
   const fit = fitCamera(L, SC);
   assert.deepEqual(hitTest(visibleLevels(L, fit, SC), 20, 20), { level: 'a', region: 'dot' });
-  // world (45, 33.75) is the middle of b: hidden at fit (parent's background), its box when zoomed in
-  assert.deepEqual(hitTest(visibleLevels(L, fit, SC), 45, 33.75), { level: 'a', region: 'bg' });
+  // world (45, 33.75) is the middle of b: its box is too small to hit from afar (b's background takes the
+  // tap), and is the target when zoomed in
+  const far = { ...fit, z: (LEVEL_MIN_PX * 1.2) / 10 };
+  assert.deepEqual(hitTest(visibleLevels(L, far, SC), 45, 33.75), { level: 'b', region: 'bg' });
   const deep = cameraFor(L.byId.get('b')!, SC);
   assert.deepEqual(hitTest(visibleLevels(L, deep, SC), 45, 33.75), { level: 'b', region: 'box' });
 });
 
-test('bookshop zooms through all four levels', () => {
+test('bookshop zooms through all six levels', () => {
   const L = layout(bookshop);
+  const lim = zoomLimits(L, SC);
+  const bug = cameraFor(L.byId.get('ladybird')!, SC);
+  assert.equal(visibleLevels(L, bug, SC).at(-1)!.level.id, 'ladybird');
+  assert.ok(bug.z * 4 < lim.max, 'room to zoom well past the deepest level');
   const cat = L.byId.get('cushion')!;
   const cam = cameraFor(cat, SC);
-  assert.equal(visibleLevels(L, cam, SC).at(-1)!.level.id, 'cushion');
-  const lim = zoomLimits(L, SC);
-  assert.ok(cam.z < lim.max, 'deepest level can be framed within the zoom limit');
   // the cat's head is a fillable region at the deepest level
   const head = toWorld(cam, SC, SC.w * (850 / 1200), SC.h / 2 + ((600 - 450) / 900) * SC.h * 0.92);
   assert.equal(hitTest(visibleLevels(L, cam, SC), head.x, head.y)?.level, 'cushion');

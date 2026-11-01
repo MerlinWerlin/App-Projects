@@ -7,10 +7,11 @@ import { PALETTES } from '../core/palettes.ts';
 import { fillableCount, layout } from '../core/scene.ts';
 import { SCENES } from './index.ts';
 
-test('scene ids are unique and the flagship has four levels', () => {
+test('scene ids are unique and the deep scenes go at least six and five levels down', () => {
   assert.equal(new Set(SCENES.map((s) => s.id)).size, SCENES.length);
   assert.equal(SCENES[0]!.id, 'bookshop');
-  assert.equal(SCENES[0]!.levels.length, 4);
+  assert.ok(SCENES[0]!.levels.length >= 6);
+  assert.ok(SCENES.find((s) => s.id === 'mandala')!.levels.length >= 5);
   assert.ok(SCENES.length >= 3);
 });
 

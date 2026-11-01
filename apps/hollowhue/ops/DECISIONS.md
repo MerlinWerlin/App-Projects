@@ -8,3 +8,5 @@
   at any zoom, tiny saves, works in a plain Expo build (no native modules, no gesture-handler/reanimated).
 - 2026-11-01 · Claude · Child detail switches on at 15% of screen width (no cross-fade ghosting).
 - 2026-11-01 · Claude · No purchases in phase 1; packs + optional lifetime Plus later (docs/PLAN.md).
+- 2026-11-01 · Claude · Replaced the 15% hard reveal and hand-drawn stand-ins with continuous per-shape fade-in by on-screen size (Jared saw the pop).
+- 2026-11-01 · Jared · Eraser must be an obvious tool in both modes.

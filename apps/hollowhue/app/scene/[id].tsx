@@ -46,11 +46,13 @@ function Colouring({ sceneId }: { sceneId: string }) {
   const hist = useRef<History>({ past: [], future: [] });
   const [histLen, setHistLen] = useState({ past: 0, future: 0 });
   const [mode, setMode] = useState<Mode>('fill');
-  const [tool, setTool] = useState<DrawTool>('pencil');
+  const [tool, setTool] = useState<'pencil' | 'marker'>('pencil');
+  // The eraser is its own tool in both modes: clears a shape's colour (tap) or rubs out drawing (drag).
+  const [erasing, setErasing] = useState(false);
   const [sizeIndex, setSizeIndex] = useState<0 | 1 | 2>(1);
   const [paletteId, setPaletteId] = useState(scene.palette);
   const palette = paletteById(paletteId);
-  const [color, setColor] = useState<string | null>(palette.colors[0] ?? '#B5523B');
+  const [color, setColor] = useState<string>(palette.colors[0] ?? '#B5523B');
   const [focus, setFocus] = useState(L.root.id);
   const [toast, setToast] = useState<string | null>(null);
   const [hint, setHint] = useState(true);
@@ -140,8 +142,8 @@ function Colouring({ sceneId }: { sceneId: string }) {
         L={L}
         progress={progress}
         mode={mode}
-        tool={tool}
-        color={color}
+        tool={erasing ? ('eraser' as DrawTool) : tool}
+        color={erasing ? null : color}
         sizeIndex={sizeIndex}
         insideLines={settings.insideLines}
         onEdit={onEdit}
@@ -219,7 +221,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
       <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, bottom: insets.bottom + space.md, alignItems: 'center' }}>
         {hint ? (
           <View pointerEvents="none" style={{ marginBottom: space.sm, backgroundColor: c.card, borderRadius: radius.md, paddingHorizontal: space.md, paddingVertical: space.sm, maxWidth: panelW }}>
-            <Text style={[ty.small, { color: c.ink2, textAlign: 'center' }]}>{mode === 'fill' ? t('hint.fill') : t('hint.draw')}</Text>
+            <Text style={[ty.small, { color: c.ink2, textAlign: 'center' }]}>{erasing ? (mode === 'fill' ? t('hint.eraseFill') : t('hint.eraseDraw')) : mode === 'fill' ? t('hint.fill') : t('hint.draw')}</Text>
           </View>
         ) : null}
         <View style={{ width: panelW, backgroundColor: c.card, borderRadius: radius.lg, borderWidth: 1, borderColor: c.line, padding: space.sm, gap: space.sm }}>
@@ -232,16 +234,41 @@ function Colouring({ sceneId }: { sceneId: string }) {
               value={mode}
               onChange={(m) => {
                 setMode(m as Mode);
-                if (m === 'draw' && color === null) setColor(palette.colors[0] ?? '#2B2622');
+                setErasing(false);
+                setHint(true);
               }}
             />
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={t('tool.eraser')}
+              accessibilityHint={mode === 'fill' ? t('hint.eraseFill') : t('hint.eraseDraw')}
+              accessibilityState={{ selected: erasing }}
+              onPress={() => {
+                h.select();
+                setErasing((e) => !e);
+                setHint(true);
+              }}
+              style={{
+                minHeight: 44,
+                paddingHorizontal: space.md,
+                borderRadius: radius.pill,
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 6,
+                borderWidth: 1.5,
+                borderColor: erasing ? c.accent : c.line,
+                backgroundColor: erasing ? c.accent : 'transparent',
+              }}
+            >
+              <MaterialCommunityIcons name={'eraser' as never} size={20} color={erasing ? c.accentInk : c.ink2} />
+              <Text style={[ty.small, { color: erasing ? c.accentInk : c.ink2, fontWeight: '700' }]}>{t('tool.eraser')}</Text>
+            </Pressable>
             {mode === 'draw' ? (
               <>
                 <View style={{ width: 1, height: 28, backgroundColor: c.line, marginHorizontal: space.xs }} />
-                <IconButton icon="pencil-outline" label={t('tool.pencil')} active={tool === 'pencil'} onPress={() => setTool('pencil')} />
-                <IconButton icon="marker" label={t('tool.marker')} active={tool === 'marker'} onPress={() => setTool('marker')} />
-                <IconButton icon="eraser" label={t('tool.eraser')} active={tool === 'eraser'} onPress={() => setTool('eraser')} />
-                {tool !== 'eraser'
+                <IconButton icon="pencil-outline" label={t('tool.pencil')} active={!erasing && tool === 'pencil'} onPress={() => { setTool('pencil'); setErasing(false); }} />
+                <IconButton icon="marker" label={t('tool.marker')} active={!erasing && tool === 'marker'} onPress={() => { setTool('marker'); setErasing(false); }} />
+                {!erasing
                   ? ([0, 1, 2] as const).map((i) => (
                       <Pressable
                         key={i}
@@ -262,7 +289,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
                       </Pressable>
                     ))
                   : null}
-                {tool !== 'eraser' ? (
+                {!erasing ? (
                   <IconButton
                     icon={settings.insideLines ? 'shape-outline' : 'shape-plus'}
                     label={t('tool.inside')}
@@ -282,7 +309,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
                 accessibilityLabel={tx(`palette.${p.id}`)}
                 onPress={() => {
                   setPaletteId(p.id);
-                  if (color !== null) setColor(p.colors[0] ?? color);
+                  setColor(p.colors[0] ?? color);
                 }}
                 style={{
                   minHeight: 32,
@@ -297,29 +324,8 @@ function Colouring({ sceneId }: { sceneId: string }) {
             ))}
           </ScrollView>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingHorizontal: 2, alignItems: 'center' }}>
-            {mode === 'fill' ? (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel={t('colour.erase')}
-                accessibilityState={{ selected: color === null }}
-                onPress={() => setColor(null)}
-                style={{
-                  width: swatchSize + 8,
-                  height: swatchSize + 8,
-                  borderRadius: (swatchSize + 8) / 2,
-                  borderWidth: 3,
-                  borderColor: color === null ? c.accent : 'transparent',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <View style={{ width: swatchSize, height: swatchSize, borderRadius: swatchSize / 2, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: c.line, alignItems: 'center', justifyContent: 'center' }}>
-                  <MaterialCommunityIcons name={'eraser-variant' as never} size={18} color={c.ink2} />
-                </View>
-              </Pressable>
-            ) : null}
             {palette.colors.map((col, i) => {
-              const on = color === col;
+              const on = !erasing && color === col;
               return (
                 <Pressable
                   key={col}
@@ -328,7 +334,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
                   accessibilityState={{ selected: on }}
                   onPress={() => {
                     setColor(col);
-                    if (mode === 'draw' && tool === 'eraser') setTool('pencil');
+                    setErasing(false);
                   }}
                   style={{
                     width: swatchSize + 8,

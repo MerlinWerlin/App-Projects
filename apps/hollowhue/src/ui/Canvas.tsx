@@ -13,7 +13,9 @@ import {
   cameraFor,
   clampCamera,
   fitCamera,
+  FOUND_AT,
   flight,
+  focusAt,
   hitTest,
   levelAt,
   toLocal,
@@ -24,7 +26,7 @@ import {
 } from '../core/scene';
 import { t } from '../i18n';
 import { motion } from '../theme/tokens';
-import { SceneLevels, useStrokesByLevel } from './SceneArt';
+import { type Base, SceneLevels, useStrokesByLevel } from './SceneArt';
 
 export type Mode = 'fill' | 'draw';
 export type DrawTool = Tool | 'eraser';
@@ -45,8 +47,8 @@ type Props = {
   sizeIndex: 0 | 1 | 2;
   insideLines: boolean;
   onEdit: (e: Edit) => void;
-  /** Deepest level whose area is under the screen centre, reported as the view changes. */
-  onFocus: (levelId: string, visibleIds: string[]) => void;
+  /** Deepest sizeable level under the screen centre, and every level big enough on screen to count as found. */
+  onFocus: (levelId: string, foundIds: string[]) => void;
   onTouchStart?: () => void;
 };
 
@@ -57,7 +59,7 @@ type Gesture =
   | { kind: 'pan'; start: Pt; cam: Camera }
   | { kind: 'pinch'; mid: Pt; dist: number; cam: Camera }
   | { kind: 'draw'; level: Placed; stroke: Stroke; t0: number; last: Pt }
-  | { kind: 'erase'; ids: Set<string> };
+  | { kind: 'erase'; ids: Set<string>; start: Pt; moved: boolean };
 
 let strokeSeq = 0;
 const newId = () => `${Date.now().toString(36)}${(strokeSeq++).toString(36)}`;
@@ -172,8 +174,11 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
   useEffect(() => {
     if (!ready) return;
     const w = toWorld(cam, sc, sc.w / 2, sc.h / 2);
-    const lv = levelAt(vis, w.x, w.y) ?? L.root;
-    onFocus(lv.id, vis.map((v) => v.level.id));
+    const lv = focusAt(vis, w.x, w.y) ?? L.root;
+    onFocus(
+      lv.id,
+      vis.filter((v) => v.frac >= FOUND_AT).map((v) => v.level.id),
+    );
   }, [focusKey, Math.round(Math.log2(cam.z) * 4), Math.round(cam.cx), Math.round(cam.cy)]);
 
   // ---------------- gestures ----------------
@@ -193,7 +198,7 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
       return;
     }
     if (P.tool === 'eraser') {
-      g.current = { kind: 'erase', ids: new Set() };
+      g.current = { kind: 'erase', ids: new Set(), start: p, moved: false };
       eraseAt(p);
       return;
     }
@@ -303,6 +308,7 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
         return;
       }
       case 'erase':
+        if (Math.hypot(p.x - cur.start.x, p.y - cur.start.y) > 8) cur.moved = true;
         eraseAt(p);
         return;
       default:
@@ -310,9 +316,15 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
     }
   };
 
-  const commitErase = () => {
+  const commitErase = (tapped = false) => {
     const cur = g.current;
     if (cur.kind === 'erase' && cur.ids.size) latest.current.onEdit({ kind: 'erase', ids: [...cur.ids] });
+    else if (cur.kind === 'erase' && tapped && !cur.moved) {
+      // A tap with the rubber on a shape with no drawing clears that shape's colour.
+      const w = toWorld(camRef.current, scRef.current, cur.start.x, cur.start.y);
+      const hit = hitTest(visRef.current, w.x, w.y);
+      if (hit) latest.current.onEdit({ kind: 'fill', level: hit.level, region: hit.region, color: null });
+    }
     setErasing(undefined);
   };
 
@@ -327,7 +339,7 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
       // A single touch with no movement leaves a dot, which is what a pencil does.
       endDraw(true);
     } else if (cur.kind === 'erase') {
-      commitErase();
+      commitErase(true);
     }
     g.current = { kind: 'idle' };
   };
@@ -338,7 +350,11 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
     g.current = { kind: 'idle' };
   };
 
-  const vb = viewBox(cam, sc);
+  // Draw relative to the outermost drawn level so SVG numbers stay small at any depth.
+  const baseLevel = vis[0]?.level ?? L.root;
+  const base = useMemo<Base>(() => ({ ox: baseLevel.ox, oy: baseLevel.oy, s: baseLevel.s }), [baseLevel]);
+  const wvb = viewBox(cam, sc);
+  const vb = { x: (wvb.x - base.ox) / base.s, y: (wvb.y - base.oy) / base.s, w: wvb.w / base.s, h: wvb.h / base.s };
   return (
     <View
       style={{ flex: 1, overflow: 'hidden' }}
@@ -355,10 +371,10 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
     >
       {ready ? (
         <Svg width={sc.w} height={sc.h} viewBox={`${vb.x} ${vb.y} ${vb.w} ${vb.h}`} pointerEvents="none">
-          <SceneLevels vis={vis} progress={progress} strokesByLevel={strokesByLevel} hidden={erasing} />
+          <SceneLevels vis={vis} base={base} progress={progress} strokesByLevel={strokesByLevel} hidden={erasing} />
           {live ? (
             <Path
-              transform={`translate(${live.level.ox} ${live.level.oy}) scale(${live.level.s})`}
+              transform={`translate(${(live.level.ox - base.ox) / base.s} ${(live.level.oy - base.oy) / base.s}) scale(${live.level.s / base.s})`}
               d={strokePath(live.stroke.pts)}
               stroke={live.stroke.color}
               strokeOpacity={TOOL_STYLE[live.stroke.tool].opacity}

@@ -52,6 +52,7 @@ export type Placed = Level & {
   world: BBox;
   /** Flattened fillable regions (lazily built). */
   hit?: { id: string; rings: Ring[]; box: BBox }[];
+  sizes?: number[];
   children: string[];
 };
 
@@ -121,7 +122,7 @@ export function fitCamera(L: Layout, sc: Screen, margin = 0.94): Camera {
 
 export function zoomLimits(L: Layout, sc: Screen) {
   const fit = fitCamera(L, sc).z;
-  return { min: fit * 0.85, max: (fit / L.minScale) * 4 };
+  return { min: fit * 0.85, max: (fit / L.minScale) * 8 };
 }
 
 export function clampCamera(L: Layout, sc: Screen, cam: Camera): Camera {
@@ -173,17 +174,46 @@ export function flight(a: Camera, b: Camera, t: number): Camera {
 }
 
 // ---------- what to draw ----------
+//
+// There are no stand-ins: a child level is drawn in the exact place and scale it occupies inside its parent
+// from the moment it is a few pixels wide. Each shape fades in as its on-screen size grows (DETAIL_PX), so
+// detail emerges continuously while zooming and nothing ever snaps in. A parent stops being drawn only once a
+// rectangular child covers the whole screen, when it is entirely hidden by the child anyway.
 
-/** Share of the screen width a child level must fill before its detail is drawn. */
-export const REVEAL_AT = 0.15;
+/** Shapes smaller than `from` px on screen are skipped; they fade in fully by `to` px. */
+export const DETAIL_PX = { from: 1.5, to: 5 };
+/** A child level is drawn once it is this many px wide on screen. */
+export const LEVEL_MIN_PX = 10;
+/** Taps only land on shapes at least this many px across (smaller ones colour the shape beneath). */
+export const HIT_MIN_PX = 4;
+/** A level counts as "found" (title, toast, Look closer) once it is this share of the screen width. */
+export const FOUND_AT = 0.3;
+
+/** Size of every region (max bbox side, level units), in region order. Lazily computed, cached. */
+export function regionSizes(p: Placed): number[] {
+  if (!p.sizes) {
+    p.sizes = p.regions.map((r) => {
+      const b = bboxOf(flatten(r.d, 4));
+      return Math.max(b.w, b.h);
+    });
+  }
+  return p.sizes;
+}
 
 /**
- * Whether a child level's detail is drawn at this zoom (1) or its parent's simple stand-in shows (0).
- * A hard switch while the child is still small on screen reads as detail appearing, without ghosting.
+ * Zoom of a level in screen px per level unit, quantised to quarter-octaves so a level's art only re-renders
+ * when its detail actually changes (about every 19% of zoom), not on every pinch frame.
  */
-export function revealOf(p: Placed, cam: Camera, sc: Screen): number {
-  if (p.depth === 0) return 1;
-  return (p.world.w * cam.z) / sc.w >= REVEAL_AT ? 1 : 0;
+export function detailStep(pxPerUnit: number): number {
+  return Math.round(Math.log2(Math.max(1e-12, pxPerUnit)) * 4);
+}
+export const stepScale = (step: number) => Math.pow(2, step / 4);
+
+/** Opacity of a shape `size` level units across at a quantised step: 0 (skipped) .. 1, in eighths. */
+export function shapeOpacity(size: number, step: number): number {
+  const px = size * stepScale(step);
+  const a = (px - DETAIL_PX.from) / (DETAIL_PX.to - DETAIL_PX.from);
+  return a <= 0 ? 0 : a >= 1 ? 1 : Math.round(a * 8) / 8;
 }
 
 function overlaps(a: BBox, b: BBox) {
@@ -194,65 +224,83 @@ function contains(outer: BBox, inner: BBox) {
   return inner.x >= outer.x && inner.y >= outer.y && inner.x + inner.w <= outer.x + outer.w && inner.y + inner.h <= outer.y + outer.h;
 }
 
-export type Visible = { level: Placed; alpha: number }[];
+/** The child hides everything behind it on screen: its rectangle, or for round levels its ellipse, holds the view. */
+function covers(c: Placed, vb: BBox) {
+  if (!c.round) return contains(c.world, vb);
+  const cx = c.world.x + c.world.w / 2;
+  const cy = c.world.y + c.world.h / 2;
+  return [vb.x, vb.x + vb.w].every((x) =>
+    [vb.y, vb.y + vb.h].every((y) => ((x - cx) / (c.world.w / 2)) ** 2 + ((y - cy) / (c.world.h / 2)) ** 2 <= 1),
+  );
+}
+
+/** frac: level width as a share of screen width. step: detailStep of the level at this zoom. */
+export type Visible = { level: Placed; frac: number; step: number }[];
 
 /**
- * Levels to draw, parents first. A fully revealed level that covers the whole screen hides its ancestors,
+ * Levels to draw, parents first. A rectangular child that covers the whole screen hides its ancestors,
  * so deep zoom only ever draws a handful of levels.
  */
 export function visibleLevels(L: Layout, cam: Camera, sc: Screen): Visible {
   const vb = viewBox(cam, sc);
   let base = L.root;
-  // Walk down while a fully revealed (rectangular) child covers the screen.
   for (;;) {
-    const next = base.children
-      .map((id) => L.byId.get(id)!)
-      .find((c) => !c.round && revealOf(c, cam, sc) >= 1 && contains(c.world, vb));
+    const next = base.children.map((id) => L.byId.get(id)!).find((c) => covers(c, vb));
     if (!next) break;
     base = next;
   }
   const out: Visible = [];
-  const walk = (p: Placed, alpha: number) => {
-    out.push({ level: p, alpha });
+  const walk = (p: Placed) => {
+    out.push({ level: p, frac: (p.world.w * cam.z) / sc.w, step: detailStep(p.s * cam.z) });
     for (const id of p.children) {
       const c = L.byId.get(id)!;
-      const a = revealOf(c, cam, sc);
-      if (a > 0 && overlaps(c.world, vb)) walk(c, a);
+      if (c.world.w * cam.z >= LEVEL_MIN_PX && overlaps(c.world, vb)) walk(c);
     }
   };
-  walk(base, 1);
+  walk(base);
   return out;
+}
+
+function insideLevel(p: Placed, wx: number, wy: number) {
+  if (!inBox(p.world, wx, wy)) return false;
+  if (!p.round) return true;
+  const l = toLocal(p, wx, wy);
+  const dx = (l.x - p.w / 2) / (p.w / 2);
+  const dy = (l.y - p.h / 2) / (p.h / 2);
+  return dx * dx + dy * dy <= 1;
 }
 
 export type Hit = { level: string; region: string };
 
-/** Which fillable region a world point lands on: the deepest level shown at least half-revealed, topmost region. */
+/** What you see is what you tap: the topmost drawn shape (deepest level first) big enough to hit. */
 export function hitTest(vis: Visible, wx: number, wy: number): Hit | null {
-  const cands = vis
-    .filter((v) => v.alpha >= 0.5 && inBox(v.level.world, wx, wy))
-    .filter((v) => {
-      if (!v.level.round) return true;
-      const l = toLocal(v.level, wx, wy);
-      const dx = (l.x - v.level.w / 2) / (v.level.w / 2);
-      const dy = (l.y - v.level.h / 2) / (v.level.h / 2);
-      return dx * dx + dy * dy <= 1;
-    })
-    .sort((a, b) => b.level.depth - a.level.depth);
+  const cands = vis.filter((v) => insideLevel(v.level, wx, wy)).sort((a, b) => b.level.depth - a.level.depth);
   for (const v of cands) {
     const l = toLocal(v.level, wx, wy);
     const shapes = hitShapes(v.level);
+    const k = stepScale(v.step);
     for (let i = shapes.length - 1; i >= 0; i--) {
       const s = shapes[i]!;
+      if (i > 0 && Math.max(s.box.w, s.box.h) * k < HIT_MIN_PX) continue;
       if (inBox(s.box, l.x, l.y) && inRings(s.rings, l.x, l.y)) return { level: v.level.id, region: s.id };
     }
   }
   return null;
 }
 
-/** Deepest level drawn (at least half revealed) under a world point: where a freehand stroke belongs. */
+/** Deepest drawn level under a world point: where a freehand stroke belongs. */
 export function levelAt(vis: Visible, wx: number, wy: number): Placed | null {
   let best: Placed | null = null;
-  for (const v of vis) if (v.alpha >= 0.5 && inBox(v.level.world, wx, wy) && (!best || v.level.depth > best.depth)) best = v.level;
+  for (const v of vis) if (insideLevel(v.level, wx, wy) && (!best || v.level.depth > best.depth)) best = v.level;
+  return best;
+}
+
+/** Deepest level under a point big enough to count as "where you are" (title chip, found toasts). */
+export function focusAt(vis: Visible, wx: number, wy: number): Placed | null {
+  let best: Placed | null = null;
+  for (const v of vis) {
+    if ((v.level.depth === 0 || v.frac >= FOUND_AT) && insideLevel(v.level, wx, wy) && (!best || v.level.depth > best.depth)) best = v.level;
+  }
   return best;
 }
 
