@@ -1,5 +1,5 @@
 {
   "mode": "update",
-  "note": "Couch 1.0.2: Show AirPlay TVs button on the Screen Mirroring page",
+  "note": "Couch 1.0.2: cast errors show the reason",
   "ascAppId": "6826135134"
 }
