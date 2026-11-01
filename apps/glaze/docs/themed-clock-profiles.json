@@ -113,9 +113,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -127,9 +127,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -142,9 +142,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -157,9 +157,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -198,9 +198,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -212,9 +212,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -227,9 +227,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -242,9 +242,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -283,9 +283,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -297,9 +297,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -312,9 +312,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -327,9 +327,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -453,9 +453,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -467,9 +467,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -482,9 +482,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -497,9 +497,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -538,9 +538,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -552,9 +552,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -567,9 +567,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -582,9 +582,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -623,9 +623,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -637,9 +637,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -652,9 +652,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -667,9 +667,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -708,9 +708,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -722,9 +722,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -737,9 +737,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.14,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -752,9 +752,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.157,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -793,9 +793,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -807,9 +807,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -822,9 +822,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -837,9 +837,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -855,7 +855,7 @@
     {
       "id": "011-amber-archive",
       "bg": "#dcba91",
-      "ink": "#F5F3EC",
+      "ink": "#17201D",
       "image": "011-amber-archive.jpg",
       "source": "011-amber-archive/widgets/bookshop.png",
       "sourceSha256": "0d2ec65e34e5165a1072df3fff7f9d01efe5b4c7cf897a9dbe90959bb9573353",
@@ -878,13 +878,13 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
-          "ink": "#F5F3EC"
+          "ink": "#17201D"
         }
       },
       "composed": {
@@ -892,14 +892,14 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
           "plate": "#DCBA91",
-          "ink": "#F5F3EC",
+          "ink": "#17201D",
           "clockStyle": "digital",
           "cleanFace": true
         },
@@ -907,14 +907,14 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
           "plate": "#DCBA91",
-          "ink": "#F5F3EC",
+          "ink": "#17201D",
           "clockStyle": "digital",
           "cleanFace": true
         },
@@ -922,14 +922,14 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
           "plate": "#DCBA91",
-          "ink": "#F5F3EC",
+          "ink": "#17201D",
           "clockStyle": "digital",
           "cleanFace": true
         }
@@ -963,9 +963,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -977,9 +977,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -992,9 +992,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1007,9 +1007,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1048,9 +1048,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1062,9 +1062,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1077,9 +1077,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1092,9 +1092,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1133,9 +1133,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1147,9 +1147,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1162,9 +1162,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1177,9 +1177,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1218,9 +1218,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1232,9 +1232,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1247,9 +1247,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1262,9 +1262,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1303,9 +1303,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1317,9 +1317,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1332,9 +1332,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.14,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1347,9 +1347,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.157,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1388,9 +1388,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1402,9 +1402,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1417,9 +1417,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.68,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1432,9 +1432,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.6715,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1473,9 +1473,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1487,9 +1487,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1502,9 +1502,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1517,9 +1517,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1558,9 +1558,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1572,9 +1572,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1587,9 +1587,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1602,9 +1602,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1643,9 +1643,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.14,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1657,9 +1657,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.14,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1672,9 +1672,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.14,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1687,9 +1687,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.157,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1728,9 +1728,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1742,9 +1742,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1757,9 +1757,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.14,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1772,9 +1772,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.157,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1813,9 +1813,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1827,9 +1827,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1842,9 +1842,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1857,9 +1857,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1898,9 +1898,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1912,9 +1912,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1927,9 +1927,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -1942,9 +1942,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -1983,9 +1983,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1997,9 +1997,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2012,9 +2012,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2027,9 +2027,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -2068,9 +2068,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -2082,9 +2082,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2097,9 +2097,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2112,9 +2112,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -2153,9 +2153,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -2167,9 +2167,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2182,9 +2182,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.68,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2197,9 +2197,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.6715,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -2238,9 +2238,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -2252,9 +2252,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2267,9 +2267,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2282,9 +2282,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -2323,9 +2323,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -2337,9 +2337,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2352,9 +2352,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2367,9 +2367,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -2408,9 +2408,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -2422,9 +2422,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2437,9 +2437,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2452,9 +2452,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -2493,9 +2493,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -2507,9 +2507,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2522,9 +2522,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2537,9 +2537,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -2578,9 +2578,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -2592,9 +2592,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2607,9 +2607,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2622,9 +2622,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -2663,9 +2663,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -2677,9 +2677,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2692,9 +2692,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2707,9 +2707,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -2748,9 +2748,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -2762,9 +2762,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2777,9 +2777,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2792,9 +2792,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -2833,9 +2833,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -2847,9 +2847,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2862,9 +2862,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2877,9 +2877,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -2918,9 +2918,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -2932,9 +2932,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2947,9 +2947,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -2962,9 +2962,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3003,9 +3003,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3017,9 +3017,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3032,9 +3032,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3047,9 +3047,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3088,9 +3088,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3102,9 +3102,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3117,9 +3117,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3132,9 +3132,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3173,9 +3173,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3187,9 +3187,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3202,9 +3202,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3217,9 +3217,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3258,9 +3258,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3272,9 +3272,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3287,9 +3287,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3302,9 +3302,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3343,9 +3343,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3357,9 +3357,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3372,9 +3372,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3387,9 +3387,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3428,9 +3428,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3442,9 +3442,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3457,9 +3457,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3472,9 +3472,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3513,9 +3513,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3527,9 +3527,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3542,9 +3542,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3557,9 +3557,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3598,9 +3598,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3612,9 +3612,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3627,9 +3627,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3642,9 +3642,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3683,9 +3683,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3697,9 +3697,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3712,9 +3712,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3727,9 +3727,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3768,9 +3768,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3782,9 +3782,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3797,9 +3797,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.68,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3812,9 +3812,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.6715,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3853,9 +3853,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3867,9 +3867,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3882,9 +3882,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3897,9 +3897,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -3938,9 +3938,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -3952,9 +3952,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3967,9 +3967,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -3982,9 +3982,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4023,9 +4023,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4037,9 +4037,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4052,9 +4052,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4067,9 +4067,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4108,9 +4108,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4122,9 +4122,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4137,9 +4137,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4152,9 +4152,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4193,9 +4193,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4207,9 +4207,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4222,9 +4222,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4237,9 +4237,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4278,9 +4278,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4292,9 +4292,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4307,9 +4307,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4322,9 +4322,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4363,9 +4363,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4377,9 +4377,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4392,9 +4392,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4407,9 +4407,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4448,9 +4448,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4462,9 +4462,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4477,9 +4477,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.68,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4492,9 +4492,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.6715,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4533,9 +4533,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4547,9 +4547,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4562,9 +4562,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4577,9 +4577,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4618,9 +4618,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4632,9 +4632,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4647,9 +4647,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.68,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4662,9 +4662,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.6715,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4703,9 +4703,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4717,9 +4717,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4732,9 +4732,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4747,9 +4747,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4788,9 +4788,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4802,9 +4802,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4817,9 +4817,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4832,9 +4832,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4873,9 +4873,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4887,9 +4887,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4902,9 +4902,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4917,9 +4917,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -4958,9 +4958,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -4972,9 +4972,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -4987,9 +4987,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5002,9 +5002,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5043,9 +5043,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5057,9 +5057,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5072,9 +5072,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5087,9 +5087,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5128,9 +5128,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5142,9 +5142,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5157,9 +5157,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5172,9 +5172,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5213,9 +5213,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5227,9 +5227,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5242,9 +5242,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5257,9 +5257,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5298,9 +5298,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5312,9 +5312,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5327,9 +5327,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5342,9 +5342,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5383,9 +5383,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5397,9 +5397,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5412,9 +5412,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5427,9 +5427,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5468,9 +5468,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5482,9 +5482,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5497,9 +5497,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5512,9 +5512,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5553,9 +5553,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5567,9 +5567,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5582,9 +5582,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5597,9 +5597,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5638,9 +5638,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5652,9 +5652,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5667,9 +5667,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5682,9 +5682,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5723,9 +5723,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5737,9 +5737,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5752,9 +5752,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5767,9 +5767,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5808,9 +5808,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5822,9 +5822,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5837,9 +5837,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5852,9 +5852,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5893,9 +5893,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5907,9 +5907,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5922,9 +5922,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -5937,9 +5937,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -5978,9 +5978,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -5992,9 +5992,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6007,9 +6007,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6022,9 +6022,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -6040,7 +6040,7 @@
     {
       "id": "074-bellbat-bloom",
       "bg": "#c2ae9f",
-      "ink": "#17201D",
+      "ink": "#F5F3EC",
       "image": "074-bellbat-bloom.jpg",
       "source": "074-bellbat-bloom/widgets/bellflower-nook.png",
       "sourceSha256": "fbbf8c9db03dcff7aef51467ba004ac911e7b6123a658f1517a757546bdd67b7",
@@ -6063,13 +6063,13 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
-          "ink": "#17201D"
+          "ink": "#F5F3EC"
         }
       },
       "composed": {
@@ -6077,14 +6077,14 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
           "plate": "#C2AE9F",
-          "ink": "#17201D",
+          "ink": "#F5F3EC",
           "clockStyle": "digital",
           "cleanFace": true
         },
@@ -6092,14 +6092,14 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
           "plate": "#C2AE9F",
-          "ink": "#17201D",
+          "ink": "#F5F3EC",
           "clockStyle": "digital",
           "cleanFace": true
         },
@@ -6107,14 +6107,14 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
           "plate": "#C2AE9F",
-          "ink": "#17201D",
+          "ink": "#F5F3EC",
           "clockStyle": "digital",
           "cleanFace": true
         }
@@ -6148,9 +6148,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -6162,9 +6162,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6177,9 +6177,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6192,9 +6192,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -6233,9 +6233,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -6247,9 +6247,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6262,9 +6262,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6277,9 +6277,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -6318,9 +6318,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -6332,9 +6332,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6347,9 +6347,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6362,9 +6362,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -6403,9 +6403,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -6417,9 +6417,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6432,9 +6432,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6447,9 +6447,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -6488,9 +6488,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -6502,9 +6502,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6517,9 +6517,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6532,9 +6532,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -6573,9 +6573,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -6587,9 +6587,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6602,9 +6602,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6617,9 +6617,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -6658,9 +6658,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -6672,9 +6672,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6687,9 +6687,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6702,9 +6702,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -6743,9 +6743,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -6757,9 +6757,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6772,9 +6772,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6787,9 +6787,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -6828,9 +6828,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -6842,9 +6842,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6857,9 +6857,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6872,9 +6872,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -6913,9 +6913,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -6927,9 +6927,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6942,9 +6942,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.14,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -6957,9 +6957,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.157,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -6998,9 +6998,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7012,9 +7012,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7027,9 +7027,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7042,9 +7042,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -7083,9 +7083,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7097,9 +7097,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7112,9 +7112,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7127,9 +7127,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -7168,9 +7168,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7182,9 +7182,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7197,9 +7197,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7212,9 +7212,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -7253,9 +7253,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7267,9 +7267,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7282,9 +7282,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7297,9 +7297,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -7338,9 +7338,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7352,9 +7352,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7367,9 +7367,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7382,9 +7382,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -7423,9 +7423,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7437,9 +7437,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7452,9 +7452,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7467,9 +7467,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -7508,9 +7508,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7522,9 +7522,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7537,9 +7537,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.14,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7552,9 +7552,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.157,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -7593,9 +7593,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7607,9 +7607,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7622,9 +7622,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7637,9 +7637,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -7678,9 +7678,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7692,9 +7692,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7707,9 +7707,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7722,9 +7722,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -7763,9 +7763,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7777,9 +7777,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.14,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7792,9 +7792,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.14,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7807,9 +7807,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.157,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -7848,9 +7848,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7862,9 +7862,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.68,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7877,9 +7877,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.68,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7892,9 +7892,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.6715,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -7933,9 +7933,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.68,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -7947,9 +7947,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.68,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7962,9 +7962,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.68,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -7977,9 +7977,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.6715,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -8018,9 +8018,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -8032,9 +8032,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8047,9 +8047,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8062,9 +8062,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -8103,9 +8103,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -8117,9 +8117,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8132,9 +8132,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8147,9 +8147,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -8188,9 +8188,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -8202,9 +8202,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8217,9 +8217,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8232,9 +8232,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -8273,9 +8273,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -8287,9 +8287,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8302,9 +8302,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8317,9 +8317,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -8358,9 +8358,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -8372,9 +8372,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8387,9 +8387,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8402,9 +8402,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -8443,9 +8443,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -8457,9 +8457,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8472,9 +8472,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8487,9 +8487,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -8528,9 +8528,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -8542,9 +8542,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8557,9 +8557,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8572,9 +8572,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -8613,9 +8613,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -8627,9 +8627,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8642,9 +8642,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8657,9 +8657,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -8698,9 +8698,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -8712,9 +8712,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.74,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8727,9 +8727,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.74,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8742,9 +8742,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.7287,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -8783,9 +8783,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -8797,9 +8797,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.025,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8812,9 +8812,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.025,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8827,9 +8827,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.0474,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,
@@ -8868,9 +8868,9 @@
         "liveFrame": {
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -8882,9 +8882,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.08,
+            0.81,
             0.76,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8897,9 +8897,9 @@
           "kind": "clock",
           "rect": [
             0.3225,
-            0.08,
+            0.81,
             0.3549,
-            0.18
+            0.14
           ],
           "shape": "plate",
           "cover": false,
@@ -8912,9 +8912,9 @@
           "kind": "clock",
           "rect": [
             0.12,
-            0.0998,
+            0.7954,
             0.76,
-            0.1715
+            0.1334
           ],
           "shape": "plate",
           "cover": false,

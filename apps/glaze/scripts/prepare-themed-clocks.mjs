@@ -25,12 +25,15 @@ for(const t of cat.themes){
  }else{
    // Analyze pixels only; the source artwork is neither painted over nor altered.
    const {data,info}=await sharp(source).resize(96,96,{fit:'fill'}).removeAlpha().raw().toBuffer({resolveWithObject:true});
-   const candidates=[.08,.14,.68,.74].map(y=>[.12,y,.76,.18]);let best;
+   // The contact-sheet review exposed head/finial clashes in the old17%-down band.
+   // Reserve a quieter edge band instead of running the label through the central subject.
+   const candidates=[.025,.81].map(y=>[.12,y,.76,.14]);let best;
    for(const box of candidates){
      const values=[];for(let y=Math.floor(box[1]*96);y<Math.floor((box[1]+box[3])*96);y++)for(let x=12;x<84;x++){const i=(y*96+x)*info.channels;values.push(luminance(data[i],data[i+1],data[i+2]));}
      const mean=values.reduce((a,b)=>a+b,0)/values.length,variance=values.reduce((a,b)=>a+(b-mean)**2,0)/values.length;
      const options=[t.foreground,'#F5F3EC','#17201D'].map(c=>{const l=luminance(...rgb(c));const ratios=values.map(v=>(Math.max(l,v)+.05)/(Math.min(l,v)+.05)).sort((a,b)=>a-b);return {ink:c,contrast:ratios[Math.floor(ratios.length*.1)]};}).sort((a,b)=>b.contrast-a.contrast);
-     const score=variance+(options[0].contrast<4.5?.3:0);if(!best||score<best.score)best={rect:box,score,...options[0]};
+     const lowerOnly=['028','031','045','049','051','059','074','081'].includes(t.id.slice(0,3));
+     const score=variance+(options[0].contrast<4.5?.3:0)+(lowerOnly&&box[1]<.5?10:0);if(!best||score<best.score)best={rect:box,score,...options[0]};
    }
    rect=best.rect;ink=best.ink;
  }
