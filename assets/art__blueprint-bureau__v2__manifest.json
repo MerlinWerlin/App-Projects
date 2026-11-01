@@ -1,0 +1,150 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "blueprint-bureau",
+  "packVersion": 2,
+  "name": "Blueprint Bureau",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#0F4D6C",
+    "tile": "#30657F",
+    "glyph": "#FAF8F2",
+    "accent": "#0B4A69",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Blueprint Bureau",
+    "mood": "Cyan paper, ivory line icons, bellows-camera diagram, clockwork dragonfly and drafting clock.",
+    "tags": [
+      "blueprint",
+      "bureau",
+      "cyan",
+      "paper",
+      "ivory",
+      "line",
+      "icons",
+      "bellows",
+      "camera",
+      "diagram",
+      "clockwork",
+      "dragonfly",
+      "drafting",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for BLUEPRINT BUREAU. Cyanotype technical drawing art, NOT photoreal objects. Upper74percent uniform deep muted cyan-blue drawing paper #185A73 with very subtle fine fibres, completely quiet with no grid, marks, labels or light effects behind future app icons. Bottom26percent exquisite precise ivory-white technical line drawing of a vintage unbranded folding bellows camera in three-quarter perspective, partially expanded bellows and large round lens, with two subtle exploded lens rings and one small draughtsman's divider near it. Thin varied-weight engraved engineering lines, fine crosshatching, barely visible ghosted construction lines ONLY near bottom objects. Restrained one soft pale-cyan accent, no bright neon. Elegant antique patent-plate/cyanotype aesthetic, exact architectural drafting craft, monochrome ink on deep cyan paper. Entire camera reasonably low and contained, much clean useful blue space above. No readable text, brand, annotations, numbers, UI, phones, borders, stars, gradient, global grid, 3D rendered metal or photographic shadows. Full bleed portrait wallpaper.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "EYYBCwIZhKxnm3BfKHCKApc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.d4e6ab5b.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 246710,
+      "sha256": "d4e6ab5b90939b230626883543985475ecadf062dd363df249758c1d25013fe9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.cd1b803b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 218820,
+      "sha256": "cd1b803b41337ffa8ddd5655c8f8e7454321b3a1a64be68cb8b3a06c92df1c37",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.dc581a59.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 92534,
+      "sha256": "dc581a59e8687a3bbae587eb6f972fdeb3de0e1fee26e4aa4c79594db4871b57",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.5e6f582b.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7322,
+      "sha256": "5e6f582b93d12bfda939544c3f0f4e6ca35cae570f422aaf49cdd97376515bbb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-blueprint-focus.d6cb6881.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 166512,
+      "sha256": "d6cb6881b565fbc2b8d3682d402924e34c22a197617d1e6e9d87c35a1472887c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-blueprint-house.10739bd8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 215604,
+      "sha256": "10739bd87a67a9c1347fd27c3b396ec5095dd4b8db952d2935e7a0a98319b2e7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-compass-beetle.4c6ea18a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 159952,
+      "sha256": "4c6ea18a0fef65c8d04675e66647c881b47419431eb2e834c3658385dd08e7f9",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1107454,
+  "widgets": [
+    {
+      "id": "blueprint-focus",
+      "kind": "art",
+      "image": "widget-blueprint-focus.d6cb6881.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Blueprint focus"
+    },
+    {
+      "id": "blueprint-house",
+      "kind": "art",
+      "image": "widget-blueprint-house.10739bd8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Blueprint house"
+    },
+    {
+      "id": "compass-beetle",
+      "kind": "art",
+      "image": "widget-compass-beetle.4c6ea18a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Compass beetle"
+    }
+  ]
+}

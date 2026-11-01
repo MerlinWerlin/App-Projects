@@ -1,0 +1,193 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "wickling-hollow",
+  "packVersion": 2,
+  "name": "Wickling Hollow",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#022435",
+    "tile": "#25424F",
+    "glyph": "#FAF8F2",
+    "accent": "#B06519",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Wickling Hollow",
+    "mood": "A sleepy beeswax dragon with petrol-blue paper, ivory icons, moth lantern.",
+    "tags": [
+      "wickling",
+      "hollow",
+      "sleepy",
+      "beeswax",
+      "dragon",
+      "with",
+      "petrol",
+      "blue",
+      "paper",
+      "ivory",
+      "icons",
+      "moth",
+      "lantern",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "DPgFMwo3gIuIfoKZSHCIBIc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.f3ff3778.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 141544,
+      "sha256": "f3ff3778a2db775f0a914ca3c08d770ed275c1afab784885ea703403cf154c12",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.5b8a4729.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 124888,
+      "sha256": "5b8a4729eb7f3d3a4fd52a2ba918abdfde0233ce2838ff1553132b0a80db6696",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.f30b615a.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 59304,
+      "sha256": "f30b615ad3f156b5efcdda96191e982ccaf14a737a31456cb56a3de30cbca42c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.3327fa60.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9184,
+      "sha256": "3327fa6076be43b33bd99772fbd4ee95554fe1d12fb411e9c2b43db530d200fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dragon-nest.864d2462.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75534,
+      "sha256": "864d24625d7fc56f22e3fa5e4ff207b6f1907cc79c5dc2eff176ee799e7ba6fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-candle-lantern-beetle.438f3415.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84030,
+      "sha256": "438f3415c697828ea76740009dbe46428f3bdbb9afd6c42baaf0324746e9801d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-hollow-key-door.3f300ef5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 96916,
+      "sha256": "3f300ef56bae0344cc3a06f3d30d24212bb4676c9848ba35de24d0c85558e8d5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wick-focus.a864d003.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 81852,
+      "sha256": "a864d00361aeb5b107f585fa0cfaad05de931ec1d5c5892202821941c0448aee",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-moth-lantern.f0118ef0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 79308,
+      "sha256": "f0118ef0b3cd487c9047aac725d5cdb6c67ead4aa3e511ce7afe76b85dff4ec0",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 752560,
+  "widgets": [
+    {
+      "id": "dragon-nest",
+      "kind": "art",
+      "image": "widget-dragon-nest.864d2462.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dragon nest"
+    },
+    {
+      "id": "candle-lantern-beetle",
+      "kind": "art",
+      "image": "widget-candle-lantern-beetle.438f3415.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Candle lantern beetle"
+    },
+    {
+      "id": "hollow-key-door",
+      "kind": "art",
+      "image": "widget-hollow-key-door.3f300ef5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Hollow key door"
+    },
+    {
+      "id": "wick-focus",
+      "kind": "art",
+      "image": "widget-wick-focus.a864d003.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wick focus"
+    },
+    {
+      "id": "moth-lantern",
+      "kind": "art",
+      "image": "widget-moth-lantern.f0118ef0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Moth lantern"
+    }
+  ]
+}

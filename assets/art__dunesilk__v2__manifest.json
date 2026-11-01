@@ -1,0 +1,129 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "dunesilk",
+  "packVersion": 2,
+  "name": "Dunesilk",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#EEDEC9",
+    "tile": "#D1C2B0",
+    "glyph": "#1C1816",
+    "accent": "#EFC085",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Dunesilk",
+    "mood": "A photographic-style dune landscape with pale sand haze, umber icons, wind lines, desert rose.",
+    "tags": [
+      "dunesilk",
+      "photographic",
+      "style",
+      "dune",
+      "landscape",
+      "with",
+      "pale",
+      "sand",
+      "haze",
+      "umber",
+      "icons",
+      "wind",
+      "lines",
+      "desert",
+      "rose",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "bTkSEwR5f1h4hnloamCYBpY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.15f1ec83.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 127572,
+      "sha256": "15f1ec833ad3f255cba0abc75f3905460973a71e91139bf2cadbba41f8282220",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.94b11972.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 113794,
+      "sha256": "94b11972fc67d1404d908639fa5a2c7c8d5960965af401021011e609c24c040a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.a6afea8c.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 50292,
+      "sha256": "a6afea8c6466c70de7256a8096669b372ad54f467025dbc4f1fb3dd7b1c35ed0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.69585977.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9004,
+      "sha256": "695859772986c3fbaadfa6a1178975908e8a9d951ea82fe066a448e048829833",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-desert-rose.3c262e96.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 141784,
+      "sha256": "3c262e968e8f6b050c72dc53cfc32847cf93fca544e66d31871827160c6d632b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wind-lines.7ee03f14.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 224208,
+      "sha256": "7ee03f141291fc62a1e13f400b84ae47f12f24b3f368860c6d4bbb68bb824e9f",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 666654,
+  "widgets": [
+    {
+      "id": "desert-rose",
+      "kind": "art",
+      "image": "widget-desert-rose.3c262e96.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Desert rose"
+    },
+    {
+      "id": "wind-lines",
+      "kind": "art",
+      "image": "widget-wind-lines.7ee03f14.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wind lines"
+    }
+  ]
+}

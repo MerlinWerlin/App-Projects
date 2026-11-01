@@ -1,0 +1,188 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "neon-monsoon",
+  "packVersion": 2,
+  "name": "Neon Monsoon",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#0B0A14",
+    "tile": "#2C2B33",
+    "glyph": "#FAF8F2",
+    "accent": "#997E8C",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Neon Monsoon",
+    "mood": "A rainy neon alley with a tiny ramen shop.",
+    "tags": [
+      "neon",
+      "monsoon",
+      "rainy",
+      "alley",
+      "with",
+      "tiny",
+      "ramen",
+      "shop",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Nicolas Caetano (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "yBcGCwSGkLiGinWJFoBYBrg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.b6fdf8a8.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 249960,
+      "sha256": "b6fdf8a8ffc35baae8ab00a662e6094e73de93e2ed59c5518a0867a446ee6014",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.bfad2505.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 226216,
+      "sha256": "bfad250568839ad4870109792733edb1d368062c7763c765c7ba08bc3d3b1c66",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.1035c485.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 114866,
+      "sha256": "1035c48568302447eaaf439651f9bc4dde8e5e53d7f596ee6d5019b85fa8d02e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.7983814f.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 20420,
+      "sha256": "7983814ffd22226c401a41523d7350dede65bf5b43f30a942a864a06f7c70e09",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-monsoon-date.ae586857.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 257408,
+      "sha256": "ae586857c7e1c5923c84183da8530880e59f89239acf2d805446dceb13121e51",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-neon-paper-fish.a2fb26fa.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 186272,
+      "sha256": "a2fb26fa3bee10648139f6a9a6df58a8e1d57f92a42c94f26b8b5f5b512db4eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rain-capsule.e16cd9ab.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 192648,
+      "sha256": "e16cd9ab084f256c9fba7993237234d72320273dfd887a94e3a1a2767c651a13",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glass-crane.a1f8b8d2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 169458,
+      "sha256": "a1f8b8d2f9739c27ee1fae10496a5790a79425e093780cb2261158d1d97c0ad6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-midnight-ramen.c3c850cb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 215724,
+      "sha256": "c3c850cb11176dfdf15f0f2c80490dfc8b9570815722b5706f2c266cf874ab69",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1632972,
+  "widgets": [
+    {
+      "id": "monsoon-date",
+      "kind": "calendar",
+      "image": "widget-monsoon-date.ae586857.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Monsoon date"
+    },
+    {
+      "id": "neon-paper-fish",
+      "kind": "art",
+      "image": "widget-neon-paper-fish.a2fb26fa.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Neon paper fish"
+    },
+    {
+      "id": "rain-capsule",
+      "kind": "art",
+      "image": "widget-rain-capsule.e16cd9ab.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rain capsule"
+    },
+    {
+      "id": "glass-crane",
+      "kind": "art",
+      "image": "widget-glass-crane.a1f8b8d2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glass crane"
+    },
+    {
+      "id": "midnight-ramen",
+      "kind": "art",
+      "image": "widget-midnight-ramen.c3c850cb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Midnight ramen"
+    }
+  ]
+}

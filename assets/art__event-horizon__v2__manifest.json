@@ -1,0 +1,192 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "event-horizon",
+  "packVersion": 2,
+  "name": "Event Horizon",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#000000",
+    "tile": "#232322",
+    "glyph": "#FAF8F2",
+    "accent": "#B95412",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Event Horizon",
+    "mood": "Black, platinum and amber accretion disc, lensing study, blended icons and horizon clock.",
+    "tags": [
+      "event",
+      "horizon",
+      "black",
+      "platinum",
+      "amber",
+      "accretion",
+      "disc",
+      "lensing",
+      "study",
+      "blended",
+      "icons",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "QxgGEwRrUWmHr1CqamCGBmc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.8bc1c69d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 73826,
+      "sha256": "8bc1c69d34999be8e66261552843da732282ce647019652972e34089480e2b0e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.706dfb79.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 66406,
+      "sha256": "706dfb79a297eba38f5890021b842efcd38f538290ef475c80a0174b01aa43b2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.4d852ea7.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 36622,
+      "sha256": "4d852ea7998fff4d68b4e668e4f1d72cf25e57d9b7e19abcf435cb4b1bd9d80a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.ad8a120c.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6144,
+      "sha256": "ad8a120c096fa344897d1067687265c3566a3e18cecf9f159f0732a2e718589f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-accretion.6473c35b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 65674,
+      "sha256": "6473c35bad8e5d0c9d3bfba9ae9bf330166fb1853039ce72cfe93c7cbcff35a2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-gravity-hourglass.31652c4a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 97770,
+      "sha256": "31652c4a649dea8f67b9c96b67b2500e61f29474bf6bbb0339e495c9a7551060",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-orbit-diamond.e06377b3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 56798,
+      "sha256": "e06377b3c8af0cb7133e2d24eb03d5f1352d0c839d84882a61eff589b447b4b9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-orbit-focus.9a00bb7a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 65892,
+      "sha256": "9a00bb7aaf6b99089c9214b10e79dafc1c23105d45b9887b71e2be09d1144e88",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lensing-study.8d533096.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 35960,
+      "sha256": "8d533096b43e96beac1f143f5166f8a1f6efc7728b96b1ccc13408b623d8d943",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 505092,
+  "widgets": [
+    {
+      "id": "accretion",
+      "kind": "art",
+      "image": "widget-accretion.6473c35b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Accretion"
+    },
+    {
+      "id": "gravity-hourglass",
+      "kind": "art",
+      "image": "widget-gravity-hourglass.31652c4a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Gravity hourglass"
+    },
+    {
+      "id": "orbit-diamond",
+      "kind": "art",
+      "image": "widget-orbit-diamond.e06377b3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Orbit diamond"
+    },
+    {
+      "id": "orbit-focus",
+      "kind": "art",
+      "image": "widget-orbit-focus.9a00bb7a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Orbit focus"
+    },
+    {
+      "id": "lensing-study",
+      "kind": "art",
+      "image": "widget-lensing-study.8d533096.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lensing study"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "fossil-cove",
+  "packVersion": 2,
+  "name": "Fossil Cove",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#CCD6CD",
+    "tile": "#B3BBB3",
+    "glyph": "#1C1816",
+    "accent": "#806A4F",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Fossil Cove",
+    "mood": "Misty sage, limestone and teal, miniature egg museum, ceramic triceratops and strata clock.",
+    "tags": [
+      "fossil",
+      "cove",
+      "misty",
+      "sage",
+      "limestone",
+      "teal",
+      "miniature",
+      "museum",
+      "ceramic",
+      "triceratops",
+      "strata",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for FOSSIL COVE. Upper75percent quiet almost uniform pale misty sage #DCE5DE matte fine-paper background, no objects or pattern behind future icons. Bottom25percent exquisite miniature coastal palaeontology still life: low pale limestone strata ledges, one beautiful small spiral ammonite fossil embedded horizontally in a flat stone at lower-left, tiny fern fronds beside a smooth sage-green pebble and narrow pale sand pathway, subtle muted terracotta mineral seams. Elegant contemporary natural-history museum display reinterpreted as sculptural macro collectible art. Soft misty daylight, fine chalky limestone texture and delicate fossil ridges, calm sage/ivory/deep petrol palette, restrained warm earthy accent. All detail low, useful clean space above. No animals walking, text, labels, UI, phones, frames, giant dinosaur skeletons or busy upper background. Full bleed portrait.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "bvgJEwR3j0h3eImGeXCcCMc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.0bba713b.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 173196,
+      "sha256": "0bba713bed0eff10c0648becc752808977f5e08416962ce6260d9c57ae2c0dbf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.929137ce.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 156104,
+      "sha256": "929137cea1518492935f29e252ba29933ef3a766ab10627ff428c85320716ce2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.9dd83a64.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 77172,
+      "sha256": "9dd83a641db505b1e4ce2a696a0a94d5ca309faf63fe57b38ed1fefb537dec28",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.54920f22.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12932,
+      "sha256": "54920f2292f68266228cb2e5974bfa8d44f4a5d0f896a9a68788ff258773f8f7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fossil-date.94cb8448.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 206626,
+      "sha256": "94cb844867d261950bd98bd8be8789a34dac900460935c0e9c860da60c89984a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ceramic-pterosaur.c9b20012.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 74486,
+      "sha256": "c9b20012575faa5b455f40d3c1f7ae07b4f915d80b6a238fa5d56eccd3ff59e5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fossil-ammonite.00c38063.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 147990,
+      "sha256": "00c38063c56a4372cbb54097134691a1c0bee82c16b087728276475ea6d72d19",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 848506,
+  "widgets": [
+    {
+      "id": "fossil-date",
+      "kind": "calendar",
+      "image": "widget-fossil-date.94cb8448.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fossil date"
+    },
+    {
+      "id": "ceramic-pterosaur",
+      "kind": "art",
+      "image": "widget-ceramic-pterosaur.c9b20012.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ceramic pterosaur"
+    },
+    {
+      "id": "fossil-ammonite",
+      "kind": "art",
+      "image": "widget-fossil-ammonite.00c38063.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fossil ammonite"
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "carbon-velocity",
+  "packVersion": 2,
+  "name": "Carbon Velocity",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#141718",
+    "tile": "#343737",
+    "glyph": "#FAF8F2",
+    "accent": "#8D927F",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Carbon Velocity",
+    "mood": "Graphite, titanium and acid-lime racing garage.",
+    "tags": [
+      "carbon",
+      "velocity",
+      "graphite",
+      "titanium",
+      "acid",
+      "lime",
+      "racing",
+      "garage",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Create original premium portrait iPhone wallpaper, 9:19.5 composition, for CARBON VELOCITY theme. Upper 72 percent is an exquisitely quiet uniform near-black graphite field (#171B1B), extremely subtle matte mineral grain, no pattern or bright marks behind future icons. Lower 28 percent contains a minimalist brutalist banked racing circuit sculpted as one sweeping ribbon of brushed dark titanium, disappearing through a low arch, one single restrained acid-lime luminous line tracing the apex. Low viewpoint, macro architectural model photography, smoked grey atmosphere and soft silver grazing light. Tiny pale fog along ground, very sophisticated industrial design, high contrast detail confined to bottom. No vehicles, no buildings in upper portion. Charcoal, titanium, restrained acid lime. No text, no logos, no UI, no border, no icon placeholders. Full bleed beautiful quiet wallpaper.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "yfcFAwBngMh3iGVqZ4B99Dk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.3b9e8b9c.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 102580,
+      "sha256": "3b9e8b9cd308a6e09f9c00d8504c0156094fdc8d72582112108d7a38dcf60c9f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.505d6aee.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 91894,
+      "sha256": "505d6aee04bb3e7ffb8c3fba0d0a8abdc7ddf3fca3b9bdc0828f327adff7c0e6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.807b8422.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 47264,
+      "sha256": "807b8422ee45379628e1e3e453848460f368e83af416eb64c331df2a96f99df8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.0f0bdb2d.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6832,
+      "sha256": "0f0bdb2d40cb6508e82c47f9d9b8cb4cdbe54869cbb7d88486a376f73129b157",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-carbon-helmet.4f283b88.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 123836,
+      "sha256": "4f283b8831982c1bad7cce303b271c1af4b1d96de4eea99d666ae3f1fdd40be3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pit-stop-focus.654a8902.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 80098,
+      "sha256": "654a8902dd6e6964c0190d9f42f8a7307976a7aa166a0f8ea6767ac35f0a9238",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-titanium-turbine.74f960f1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 99196,
+      "sha256": "74f960f1e64e29d6fb2542827be83cc91f00308126989803adbb24604cc1acda",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 551700,
+  "widgets": [
+    {
+      "id": "carbon-helmet",
+      "kind": "art",
+      "image": "widget-carbon-helmet.4f283b88.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Carbon helmet"
+    },
+    {
+      "id": "pit-stop-focus",
+      "kind": "art",
+      "image": "widget-pit-stop-focus.654a8902.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pit stop focus"
+    },
+    {
+      "id": "titanium-turbine",
+      "kind": "art",
+      "image": "widget-titanium-turbine.74f960f1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Titanium turbine"
+    }
+  ]
+}

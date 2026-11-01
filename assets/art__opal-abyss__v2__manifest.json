@@ -1,0 +1,189 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "opal-abyss",
+  "packVersion": 2,
+  "name": "Opal Abyss",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#000C25",
+    "tile": "#232D42",
+    "glyph": "#FAF8F2",
+    "accent": "#7D8DA3",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Opal Abyss",
+    "mood": "Deep ink-blue water with a pearl nautilus and a lighthouse.",
+    "tags": [
+      "opal",
+      "abyss",
+      "deep",
+      "blue",
+      "water",
+      "with",
+      "pearl",
+      "nautilus",
+      "lighthouse",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Ben Everett (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "DecNAwB4cLl4eYV5WcCBBj0=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.018fbde1.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 178314,
+      "sha256": "018fbde163159e1b1a06b32810430e9e814658d1c72dfcffd82d822f1327aec2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c460a24b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 161688,
+      "sha256": "c460a24bdc86454e07a089e7d0d35d6545ae98409ec6b7594af3abcf66e1d321",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.1cb64ab8.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 82222,
+      "sha256": "1cb64ab8d82eed4c3cf7bb369c7cc3eaae0682b4cefa9632c71ba4d7057086d9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.b14bea31.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14852,
+      "sha256": "b14bea31fc116e425d1de37058fdd62c14d27f3434cb48646da6d820a8e6b8f7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-abyss-battery.a350cc03.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 130862,
+      "sha256": "a350cc033a3fddcb37c84481dc887d1016920a23e4989338002d18da17ef3fb8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-droplet-lighthouse.0187e107.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 147912,
+      "sha256": "0187e107d3bae1700d013f3ec989d3322e6f2a87e9347c17d940a5e857222380",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-moon-jelly-window.5717c9c6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 178998,
+      "sha256": "5717c9c61a8a9908fa36c4460572fbf7f6f59b09eeabe3504a153f1ffdac8ab3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pearl-shell.4f3e2b0c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 164624,
+      "sha256": "4f3e2b0cb9495248e698a128e70cc91250293736bcdf179edd788627a51f0c48",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-nautilus.7e22e68c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 216212,
+      "sha256": "7e22e68cdb0c72c70b3ed186908a87b853a0563a910bc8f75e25e43eead18fa7",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1275684,
+  "widgets": [
+    {
+      "id": "abyss-battery",
+      "kind": "battery",
+      "image": "widget-abyss-battery.a350cc03.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Abyss battery"
+    },
+    {
+      "id": "droplet-lighthouse",
+      "kind": "art",
+      "image": "widget-droplet-lighthouse.0187e107.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Droplet lighthouse"
+    },
+    {
+      "id": "moon-jelly-window",
+      "kind": "art",
+      "image": "widget-moon-jelly-window.5717c9c6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Moon jelly window"
+    },
+    {
+      "id": "pearl-shell",
+      "kind": "art",
+      "image": "widget-pearl-shell.4f3e2b0c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pearl shell"
+    },
+    {
+      "id": "nautilus",
+      "kind": "art",
+      "image": "widget-nautilus.7e22e68c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Nautilus"
+    }
+  ]
+}

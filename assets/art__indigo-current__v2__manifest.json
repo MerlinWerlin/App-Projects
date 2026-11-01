@@ -1,0 +1,188 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "indigo-current",
+  "packVersion": 2,
+  "name": "Indigo Current",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#0E1F3D",
+    "tile": "#2F3D56",
+    "glyph": "#FAF8F2",
+    "accent": "#9298A4",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Indigo Current",
+    "mood": "Indigo paper-craft harbour with a silver ink whale.",
+    "tags": [
+      "indigo",
+      "current",
+      "paper",
+      "craft",
+      "harbour",
+      "with",
+      "silver",
+      "whale",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Olga Thelavart (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "zdYFAwB6YLh3ipV5enC3CEc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.46cc170d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 429946,
+      "sha256": "46cc170dd50bbd2e112255b94c74db7f685ec3bcf93679e30046af8515a15e27",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.be26ecf1.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 387336,
+      "sha256": "be26ecf149cbe88e975290b74b2f63ff94362ee22e71e53bed733298c2467a14",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.2e8d9bdd.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 175130,
+      "sha256": "2e8d9bdd01220bd9435e690379cafb07e70e44cec1070c22c969df292ed80331",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.ea44ea86.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 16116,
+      "sha256": "ea44ea866f2e3a282d64157f95e4cbaa395720568a29adf5d014c81dfbecd4f5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-harbour-focus.d8d1b10a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 201010,
+      "sha256": "d8d1b10ae4def31fbce37152a5b1f714942e345cc78ce2ab41746d53910f7b00",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ink-stingray.52c7ea9c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 223708,
+      "sha256": "52c7ea9c5beebe22715541dda85e827e53d0e7139a74bda0f5f28148d621f8f0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-lighthouse.1881cd47.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 193820,
+      "sha256": "1881cd472ee770a60d0cebcbf0811f06b5655f86ce6d89660fe62ef72fded27a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ink-whale.f74fd02f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 245548,
+      "sha256": "f74fd02f7d5a6c7f1f97ec6052f8787ff7404ae8af82646dc249c59bd0f8f53e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-harbour.0d11a46e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 269386,
+      "sha256": "0d11a46e2eb0f8afb27628e7dcd88f94d42694963baab88630ecbd73a2872dc6",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2142000,
+  "widgets": [
+    {
+      "id": "harbour-focus",
+      "kind": "art",
+      "image": "widget-harbour-focus.d8d1b10a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Harbour focus"
+    },
+    {
+      "id": "ink-stingray",
+      "kind": "art",
+      "image": "widget-ink-stingray.52c7ea9c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ink stingray"
+    },
+    {
+      "id": "paper-lighthouse",
+      "kind": "art",
+      "image": "widget-paper-lighthouse.1881cd47.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Paper lighthouse"
+    },
+    {
+      "id": "ink-whale",
+      "kind": "art",
+      "image": "widget-ink-whale.f74fd02f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ink whale"
+    },
+    {
+      "id": "paper-harbour",
+      "kind": "art",
+      "image": "widget-paper-harbour.0d11a46e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Paper harbour"
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "verdigris-voyage",
+  "packVersion": 2,
+  "name": "Verdigris Voyage",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#C6D0BC",
+    "tile": "#AEB6A5",
+    "glyph": "#1C1816",
+    "accent": "#AEAA8B",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Verdigris Voyage",
+    "mood": "Seafoam mist and aged copper botanical machines.",
+    "tags": [
+      "verdigris",
+      "voyage",
+      "seafoam",
+      "mist",
+      "aged",
+      "copper",
+      "botanical",
+      "machines",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "rPgJCwJ0nzh3epd3Z3BKBrc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.b43b28e0.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 190924,
+      "sha256": "b43b28e0cbaeebf06ee40c163fc55c5184a8ed93cb9eb221b207e3c782c542b2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.17b5aefb.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 172220,
+      "sha256": "17b5aefba0905e09d3789b6bf280231b7217abb6623b0574c62fc9cf1ab5c920",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.87069dee.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 71246,
+      "sha256": "87069dee9c3367ef0ab306e22598a1317c6195993fc9484601d726068d339da6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.52d82148.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12462,
+      "sha256": "52d82148c629dec5f3394002b2152e2efe4ebff5e234d7b4c3391c43c0f4d197",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-voyager-date.fcd75e05.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 180066,
+      "sha256": "fcd75e053c5bcab65de6a537168132038f630aba6df43ea8417c926891f488b0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-clockwork-hummingbird.0a3d503c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 173212,
+      "sha256": "0a3d503ced7e6dd95ec617ea4bc20743eb634c47959fbdb87bebf427d2673615",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-copper-seed-capsule.8fd67f50.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 160948,
+      "sha256": "8fd67f5047b41b40966aebf2b0d2ad888f08112f0382cef724ece61c3c174f8b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-terrarium-sailboat.05c1e006.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 163474,
+      "sha256": "05c1e00629d0dd500b84807f11d733cda91ae53e25fc8eb5364ded24f54cbd09",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-greenhouse-airship.4731de75.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 223814,
+      "sha256": "4731de75067ee0b80f95032e522d3765a5cebcb170b4925b194b355ac328d14b",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1348366,
+  "widgets": [
+    {
+      "id": "voyager-date",
+      "kind": "calendar",
+      "image": "widget-voyager-date.fcd75e05.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Voyager date"
+    },
+    {
+      "id": "clockwork-hummingbird",
+      "kind": "clock",
+      "image": "widget-clockwork-hummingbird.0a3d503c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Clockwork hummingbird"
+    },
+    {
+      "id": "copper-seed-capsule",
+      "kind": "art",
+      "image": "widget-copper-seed-capsule.8fd67f50.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Copper seed capsule"
+    },
+    {
+      "id": "terrarium-sailboat",
+      "kind": "art",
+      "image": "widget-terrarium-sailboat.05c1e006.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Terrarium sailboat"
+    },
+    {
+      "id": "greenhouse-airship",
+      "kind": "art",
+      "image": "widget-greenhouse-airship.4731de75.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Greenhouse airship"
+    }
+  ]
+}

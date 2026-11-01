@@ -1,0 +1,194 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "birchlight",
+  "packVersion": 2,
+  "name": "Birchlight",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D5D4D3",
+    "tile": "#BBBAB9",
+    "glyph": "#1C1816",
+    "accent": "#987D5F",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Birchlight",
+    "mood": "A photographic-style autumn birch lake with pale fog, umber icons, golden leaf, bark study.",
+    "tags": [
+      "birchlight",
+      "photographic",
+      "style",
+      "autumn",
+      "birch",
+      "lake",
+      "with",
+      "pale",
+      "umber",
+      "icons",
+      "golden",
+      "leaf",
+      "bark",
+      "study",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "axgOEwKEn4d4dneITlDSBTU=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.4507cbbc.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 193330,
+      "sha256": "4507cbbcb70ef5fa855e1d6d0aada359b1278ddefecb6112cdc2d3df706eb75a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.44b94a9b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 174804,
+      "sha256": "44b94a9be0fb5b9bd7ca803a5223cdebfc674f9679e368e764d854380b04442c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.c6aaaae2.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 90706,
+      "sha256": "c6aaaae21c395cdb520303d76d3233c83c72b33ef0b2179d36ca30d9a820d9af",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.9785c070.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11562,
+      "sha256": "9785c070a05e4ef8a92e804195bdbe07ea5a5dba28081ea2c17973b5d0e0e8bd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-birch-date.122d0a84.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 81550,
+      "sha256": "122d0a840aa3538a1f08ea728ce633cde0a5722f89cece7ee20691170dcbe0f9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-birch-and-lichen.110f5b0a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 205400,
+      "sha256": "110f5b0a4c2fa61bde2c5ebb748574efae10ff3ccf5c8d1ed7e1cf4c3c0a5f1d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-amber-fern-frame.d6cc25fc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 152640,
+      "sha256": "d6cc25fc7fa8f4ac00d58919cf9a5d881119c05a4a8688ca4f0145514515ec90",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-birch-seedpod.8c4e71f2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 73812,
+      "sha256": "8c4e71f2f9c25ae4bf2aa54b5638477fd45db440e7fa031fe83d07c593fced83",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-golden-leaf.af1b6a6e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 108066,
+      "sha256": "af1b6a6e529b546388599cf39693215e2300cbd49345f67754cee255abbe6d55",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1091870,
+  "widgets": [
+    {
+      "id": "birch-date",
+      "kind": "calendar",
+      "image": "widget-birch-date.122d0a84.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Birch date"
+    },
+    {
+      "id": "birch-and-lichen",
+      "kind": "art",
+      "image": "widget-birch-and-lichen.110f5b0a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Birch and lichen"
+    },
+    {
+      "id": "amber-fern-frame",
+      "kind": "art",
+      "image": "widget-amber-fern-frame.d6cc25fc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Amber fern frame"
+    },
+    {
+      "id": "birch-seedpod",
+      "kind": "art",
+      "image": "widget-birch-seedpod.8c4e71f2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Birch seedpod"
+    },
+    {
+      "id": "golden-leaf",
+      "kind": "art",
+      "image": "widget-golden-leaf.af1b6a6e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Golden leaf"
+    }
+  ]
+}

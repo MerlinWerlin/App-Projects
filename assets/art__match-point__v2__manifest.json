@@ -1,0 +1,193 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "match-point",
+  "packVersion": 2,
+  "name": "Match Point",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#B2360B",
+    "tile": "#B94922",
+    "glyph": "#FAF8F2",
+    "accent": "#B4370B",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Match Point",
+    "mood": "Clay tennis, cream icons, miniature court, vintage rackets and a navy scoreboard clock.",
+    "tags": [
+      "match",
+      "point",
+      "clay",
+      "tennis",
+      "cream",
+      "icons",
+      "miniature",
+      "court",
+      "vintage",
+      "rackets",
+      "navy",
+      "scoreboard",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Emre Koşak (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "FNsCCwR+RliJn2B8iW+V+Gc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.0d94eeb2.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 649594,
+      "sha256": "0d94eeb2293df93d8e47c8aee203f357ffecae9e59586835416a43c5be9cd0d1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.90d770c9.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 578630,
+      "sha256": "90d770c92d6b113b69dc0d45502594e36d3894161d870925c15a635fe166c091",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.d29ce245.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 256340,
+      "sha256": "d29ce24522bab4c446cdce134903c4c376723a2271ab93530650f3c7a758851c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.2ddbccee.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 20886,
+      "sha256": "2ddbccee15c6af57875208b6670705a5652452892febbb1c7198e3a759845016",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-match-countdown.87a135e6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 314792,
+      "sha256": "87a135e6cfe5adae4ee77da930b93f4264af2737cdbb6760867d6b5798488ac0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-centre-court.ddd255f4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 316526,
+      "sha256": "ddd255f4fe5f8bcdb215eb17bb95111d9a58535e41a9bbd9228edccd0f645b7f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-racket-butterfly.ad8137a3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 311154,
+      "sha256": "ad8137a3d5a365a0798b2bd52d3891db9584aa97f574b6058b5c56d9708c93f2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tennis-planter.32ebd7db.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 198408,
+      "sha256": "32ebd7db7605d81735e31dee9bc701a7de31382fc062c5ed8c7cd3a24ae8c2ec",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-racket-study.d1a11295.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 366750,
+      "sha256": "d1a112952ec1487512e100f061dd3b6429d3be66544cca073d1992a17e336fd5",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 3013080,
+  "widgets": [
+    {
+      "id": "match-countdown",
+      "kind": "countdown",
+      "image": "widget-match-countdown.87a135e6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Match countdown"
+    },
+    {
+      "id": "centre-court",
+      "kind": "art",
+      "image": "widget-centre-court.ddd255f4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Centre court"
+    },
+    {
+      "id": "racket-butterfly",
+      "kind": "art",
+      "image": "widget-racket-butterfly.ad8137a3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Racket butterfly"
+    },
+    {
+      "id": "tennis-planter",
+      "kind": "art",
+      "image": "widget-tennis-planter.32ebd7db.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tennis planter"
+    },
+    {
+      "id": "racket-study",
+      "kind": "art",
+      "image": "widget-racket-study.d1a11295.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Racket study"
+    }
+  ]
+}

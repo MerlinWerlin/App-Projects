@@ -1,0 +1,143 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "moonmallow",
+  "packVersion": 2,
+  "name": "Moonmallow",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#2D2A3F",
+    "tile": "#4A4758",
+    "glyph": "#FAF8F2",
+    "accent": "#D4B9A2",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Moonmallow",
+    "mood": "A tufted-wool koala dozing under the moon.",
+    "tags": [
+      "moonmallow",
+      "tufted",
+      "wool",
+      "koala",
+      "dozing",
+      "under",
+      "moon",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 MOONMALLOW. Cute original flat-but-tactile PUNCH-NEEDLE TUFTED WOOL RUG illustration, tightly looped short yarn pile, little dense rounded tufts, sculpted low relief with clean embroidered contours, not plush stuffed toy, not crochet stitches, not plastic/ceramic/resin, not photography of real animal. Plain deep muted PLUM-BLUE textile ground #303148, UPPER68percent EMPTY quiet dark plum-blue cloth, faint fabric texture only no stars patterns lettering or clutter. Bottom30percent ONE small adorable round pale-LILAC KOALA, huge round fluffy circular ears with cream centers, large soft charcoal oval nose, two tiny cocoa dot eyes closed sleepily, rosy cheeks, stubby arms hugging a butter-yellow puffy five-point STAR PILLOW. Koala sits on tiny cream/lilac scalloped oval rug patch with a single little yellow yarn star on floor. Entire small scene around55percent canvas width, koala around16percent image height, centered LOW with safe margins. Clearly wool tufted low-relief storybook wall-rug craftsmanship, short dense loop pile with tiny scallops and stitching, sweet kawaii, restrained gallery-like still life against dark fabric. Plumblue/lilac/cream/butteryellow/softrose palette, soft diffused light. No bats dragons hamsters buns food corgis rabbits ducks tea moon astronauts or seahorses. No text logo phoneframe UI watermark.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "kgcKEwI3gHqIfXR4N4B4A3c=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.7631dd74.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 272726,
+      "sha256": "7631dd7423016f0b0f89a72c8548710056b0603b2f6d7539b782d3b45acd3bdd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.abc84183.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 245948,
+      "sha256": "abc84183271217efc516c87d11d6910230acdea5dd1356bd2abaf8cb38a557a7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.6c46405e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 120564,
+      "sha256": "6c46405e0d2f9fb761e40c0ed8971de87c6bdc447ad8900c62a7ea238f18699e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.188d1f38.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11814,
+      "sha256": "188d1f382e4148765bca2d96f9fa473761617fcfda80c54e8e606e2cc0557d1c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-moonmallow-date.ccec02b0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 184532,
+      "sha256": "ccec02b0c718f6a95167b3ae03200be32efc675aaa7b1b53dd239fd9462485c0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tufted-moonbird.6d8f612b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 132584,
+      "sha256": "6d8f612bc86ca287ba81acec64c657ffc820079d272d15be8e477aaa61084a89",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wool-cloud-swing.a410e4ec.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 166260,
+      "sha256": "a410e4ec624817db42c8d8f8f2613aa43d050cba5026fe0312fabd531e7c7126",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1134428,
+  "widgets": [
+    {
+      "id": "moonmallow-date",
+      "kind": "calendar",
+      "image": "widget-moonmallow-date.ccec02b0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Moonmallow date"
+    },
+    {
+      "id": "tufted-moonbird",
+      "kind": "art",
+      "image": "widget-tufted-moonbird.6d8f612b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tufted moonbird"
+    },
+    {
+      "id": "wool-cloud-swing",
+      "kind": "art",
+      "image": "widget-wool-cloud-swing.a410e4ec.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wool cloud swing"
+    }
+  ]
+}

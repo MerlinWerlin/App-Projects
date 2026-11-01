@@ -1,0 +1,150 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "aurora-haven",
+  "packVersion": 2,
+  "name": "Aurora Haven",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#04232D",
+    "tile": "#264149",
+    "glyph": "#FAF8F2",
+    "accent": "#48CFA0",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Aurora Haven",
+    "mood": "Emerald/violet northern lights, snowy fjord, ice prism, frosty ivory icons and polar clock.",
+    "tags": [
+      "aurora",
+      "haven",
+      "emerald",
+      "violet",
+      "northern",
+      "lights",
+      "snowy",
+      "fjord",
+      "prism",
+      "frosty",
+      "ivory",
+      "icons",
+      "polar",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: photorealistic-natural, original fictional landscape photographic artwork. Premium portrait iPhone wallpaper roughly9:19.5, AURORA HAVEN. The NORTHERN LIGHTS are the hero: vivid natural emerald-green and turquoise aurora curtains with delicate violet fringe sweeping across the lower-middle sky in a graceful broad luminous arch, directly above a quiet snowy Norwegian-style fjord. Composition: upper58percent very dark, almost uniform Arctic deep-teal night sky #09232B, only extremely subtle atmosphere, NO stars or bright light in this upper quiet icon area. Aurora fills from about60percent to82percent height, large enough to feel spectacular but remains clear of future icons. Bottom18percent still dark water reflecting restrained green/violet light, low rugged snow-covered coast, a tiny simple timber lookout platform on the near right shore, distant dark peaks. Natural airy fine light curtains rather than opaque paint or a space cloud, realistic soft snow and dark water, contemplative cinematic northern landscape, luminous but sophisticated, no oversaturation. Sharp fine detail in low landscape, abundant clean upper negative space. Full bleed. No planets nebula galaxies stars text people buildings UI phones border logos or fantasy spacecraft.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "DqcJCwR3kEiGjIeFZ39P2fk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.91ff7f90.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 162020,
+      "sha256": "91ff7f906b0248167e27f06044c94ebad5faac49d79e2b0cbaf78188f268fd75",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.7c3c695c.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 147524,
+      "sha256": "7c3c695c105c0bab321827c6c39e1bab5fe8d9d178920eac0554d9eed2cb9db0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.576378b7.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 66030,
+      "sha256": "576378b78a7caf2646d5fdd81b35a66466ffb0a14321ed63c7f18c057407c0bf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.6078c660.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12310,
+      "sha256": "6078c660892613e7de819ad6ed98373c446f616b6e2ad31408131ba1390190dc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-aurora-date.4c624689.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 153830,
+      "sha256": "4c6246895c510856c261ecf73dabf3e6a4a54a86093d42a34536c7d8c10eb71c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-aurora-bottle.3ab29753.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 124680,
+      "sha256": "3ab297531b82b054c2938882ee177eda04b6e13b6faa29aa81aaae4386f325f7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-snow-mushrooms.3628bf90.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 109312,
+      "sha256": "3628bf90bdb3829f733fd6ac4ee7a1a97d6d72fd78bc9125fcace8e595d02e62",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 775706,
+  "widgets": [
+    {
+      "id": "aurora-date",
+      "kind": "calendar",
+      "image": "widget-aurora-date.4c624689.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Aurora date"
+    },
+    {
+      "id": "aurora-bottle",
+      "kind": "art",
+      "image": "widget-aurora-bottle.3ab29753.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Aurora bottle"
+    },
+    {
+      "id": "snow-mushrooms",
+      "kind": "art",
+      "image": "widget-snow-mushrooms.3628bf90.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Snow mushrooms"
+    }
+  ]
+}

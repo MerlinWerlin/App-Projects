@@ -1,0 +1,189 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "firefly-grove",
+  "packVersion": 2,
+  "name": "Firefly Grove",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#0E1718",
+    "tile": "#2F3737",
+    "glyph": "#FAF8F2",
+    "accent": "#71602C",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Firefly Grove",
+    "mood": "Mossy woodland at blue hour, a lantern, ferns and fireflies.",
+    "tags": [
+      "firefly",
+      "grove",
+      "mossy",
+      "woodland",
+      "blue",
+      "hour",
+      "lantern",
+      "ferns",
+      "fireflies",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Greg Rosenke (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Create one portrait9:19.5 iPhone wallpaper 'Firefly Grove'. Attached real mossy forest photo is botanical texture reference ONLY. Beautiful original woodland photographic/diorama scene at blue-hour twilight: upper60% very dark forest-green haze with soft distant tree silhouettes and sparse tiny warm firefly pinpoints, quiet uncluttered space for icons; lower40% rich velvety moss hummocks, delicate ferns, bark, small mushrooms beside one elegant amber lantern nestled on a mossy root. Warm lantern light creates a small inviting pool across moss and tiny dew droplets; three or four dim fireflies, subtle not glitter. A mysterious narrow woodland path disappears into soft background. Tasteful subtly magical editorial miniature-set realism, not cartoon, no characters, no faces in mushrooms, no giant fantasy buildings. Matte deep evergreen, sage, muted ivory and restrained amber. Keep bright details low and upper area dark for readable ivory glyphs. No text, UI, icons, borders, logos or watermark, no moon. Distinct moody handmade storybook photographic art direction.",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "R/gFEwI0cXd4X5KJhpBnCYg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.1fc8d207.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 249058,
+      "sha256": "1fc8d20745864d9c26540e3aafadce7b392c3c3f3b4792696b76e560ac49f8a7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.fbb6f73d.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 227414,
+      "sha256": "fbb6f73d770881d6ff862b2e13c3faf2c612ead0d8ff136e833dbdbfb95c5fe7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.1c9200f9.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 120068,
+      "sha256": "1c9200f9905ba9b521ef317f6333b372f690fca95247b9c9001ef529747d0423",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.4bb67955.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 23282,
+      "sha256": "4bb679552259aca77004711e8b25743b20cd4e8adaeef8aea253edd03ec53463",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-acorn-habits.3dc71b47.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 121568,
+      "sha256": "3dc71b4777e65b8db05b585ea64eb312d0b55597f78b9c755763790c47428055",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-firefly-jar.af5adc05.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 144768,
+      "sha256": "af5adc05f55e924f2338391367ea9a8ab0da41d4783283c841e93f41df261414",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mosswood-door.2f87b60d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 199210,
+      "sha256": "2f87b60d78a439bf3e545b0e7b227fa288335094980af46bafa4885378bd053c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mushroom-lantern.7ef593b6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 160272,
+      "sha256": "7ef593b6356873e33edc5c9abcc85a39be2724d73d9852295a303e8ccfdb6c27",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sleeping-fox.abe6b02a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 184230,
+      "sha256": "abe6b02a68e5cf573f4c88d8833619515e49004768710889b9def761dc706b61",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1429870,
+  "widgets": [
+    {
+      "id": "acorn-habits",
+      "kind": "habits",
+      "image": "widget-acorn-habits.3dc71b47.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Acorn habits"
+    },
+    {
+      "id": "firefly-jar",
+      "kind": "art",
+      "image": "widget-firefly-jar.af5adc05.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Firefly jar"
+    },
+    {
+      "id": "mosswood-door",
+      "kind": "art",
+      "image": "widget-mosswood-door.2f87b60d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mosswood door"
+    },
+    {
+      "id": "mushroom-lantern",
+      "kind": "art",
+      "image": "widget-mushroom-lantern.7ef593b6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mushroom lantern"
+    },
+    {
+      "id": "sleeping-fox",
+      "kind": "art",
+      "image": "widget-sleeping-fox.abe6b02a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sleeping fox"
+    }
+  ]
+}

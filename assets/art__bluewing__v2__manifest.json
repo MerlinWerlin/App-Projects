@@ -1,0 +1,98 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "bluewing",
+  "packVersion": 2,
+  "name": "Bluewing",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#15202E",
+    "tile": "#353E49",
+    "glyph": "#FAF8F2",
+    "accent": "#253E5E",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Bluewing",
+    "mood": "Iridescent blue butterfly wings up close.",
+    "tags": [
+      "bluewing",
+      "iridescent",
+      "blue",
+      "butterfly",
+      "wings",
+      "close",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 BLUEWING. Fine-art natural BUTTERFLY MACRO PHOTOGRAPH aesthetic. Near-black soft CHARCOAL-BLUE background #161E2A. UPPER70percent EMPTY quiet dark charcoalblue with barely visible smooth tonal depth, no bokeh points stars or objects. Bottom28percent ONE beautiful small iridescent BLUE BUTTERFLY with wings gently opened symmetrically in near-top view, rich cobalt-to-skyblue wing scales, fine dark indigo outer margins and delicate natural vein patterns, slender dark body and TWO fine antennae. Butterfly rests on one small curved matte dark twig near lower center, no flowers or leaves. Soft grazing natural light brings out real-looking wing scale texture, subtle blue iridescence not neon glow, faint believable soft shadow. Entire butterfly only44percent canvas width, around14percent image height, low with ample margins and bottom space. Minimal restrained editorial nature photograph, blue/charcoal/silverblue palette, anatomically plausible butterfly with four wings and six delicate legs mostly tucked under. No fantasy glow glitter jewels crystals craft paper painting textile toys other insects birds flowers shells glass ice lotus UI phones text branding border watermark. Original generated photographic-style image, no external photo.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "SOcBCwAFaXt4jXBt+JiJn5k=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.f3f42fb2.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 61000,
+      "sha256": "f3f42fb21a568adf2d888b03cd9a21c1fafee15ed48a03f3d7b96552f46359b2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c100915e.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 54222,
+      "sha256": "c100915ee3de8d742031ec6b323fcfe8e427afdd9a7f15d2d556d62edb6d6c2c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.61cf11c2.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 28014,
+      "sha256": "61cf11c2ab40b95e94e31889c95cd7b3419161b9da5f4e32100f7d518dc62825",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.e31cf4fd.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4114,
+      "sha256": "e31cf4fd815a737116a7d2820eb94e436ad16e2f32bf03e43ec38326bd6f6233",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-scene.2e0c3775.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 27472,
+      "sha256": "2e0c3775e2fed4f7673ad909ba0930c7841160deb04a3167495825661b6645c2",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 174822,
+  "widgets": [
+    {
+      "id": "scene",
+      "kind": "art",
+      "image": "widget-scene.2e0c3775.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Scene"
+    }
+  ]
+}

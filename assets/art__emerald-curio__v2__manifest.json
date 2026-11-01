@@ -1,0 +1,144 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "emerald-curio",
+  "packVersion": 2,
+  "name": "Emerald Curio",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#201521",
+    "tile": "#3F353E",
+    "glyph": "#FAF8F2",
+    "accent": "#0B0205",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Emerald Curio",
+    "mood": "Dark aubergine, emerald enamel and antique-brass collector theme.",
+    "tags": [
+      "emerald",
+      "curio",
+      "dark",
+      "aubergine",
+      "enamel",
+      "antique",
+      "brass",
+      "collector",
+      "theme"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium still-life artwork. Portrait iPhone wallpaper approx9:19.5, EMERALD CURIO. Upper60percent quiet near-uniform very dark matte aubergine #27232E, extremely subtle studio falloff, no objects patterns bright flecks gold lines or shadows there. Lower40percent exquisite large jewelled SCARAB BROOCH posed on a small low dark-plum velvet cushion, angled three-quarter view, emerald-green translucent enamel wing cases, fine etched antique brass edges, six slender carefully arranged brass legs and two modest antennae, precious-object realism NOT actual living insect. Symmetric split emerald wing-case surface with beautiful luminous green guilloche beneath enamel, tiny restrained faceted green stones, not diamond clutter. Behind and to side of cushion one small aged brass botanical twig lies horizontally, whole composition at bottom with generous negative space. Brooch main body occupies18percent total image height, luxurious balanced macro product photography, tactile velvet, polished emerald enamel, gently aged warm brass, soft diffused warm sidelight, low dark plum shadow matching ground. No giant wreaths halos circles, no glass jars domes museums text labels pins people actual preserved animals galaxy nebula stars water jellyfish horses flowers skulls insects flying or extra beetles. Full-bleed portrait artwork, no phone UI logos borders or watermark.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "BxgCCwI1izipf4fRZ4CFj8Y=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.be05ce03.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 170898,
+      "sha256": "be05ce030a7b5ce9a833b90c33828557561998322893791c3e7dc586520aeceb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.beeaf9c3.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 154076,
+      "sha256": "beeaf9c317b39b95cce4779d67b92d1b8ae7d60c92ee8c9b519082b57c205739",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.e9d265e2.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 78550,
+      "sha256": "e9d265e2e1f6ebbf2accb6b9e4ed4d5c71b5a62dff5662a4f3ff1ab858008042",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.0f3f9b0e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12888,
+      "sha256": "0f3f9b0e153194ba9be8ba6bd00ecf6902e015e806f898cf2918cf0900e23559",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-curio-focus.8d432a3f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 124030,
+      "sha256": "8d432a3f801365ba2aeb4df3aa6ec2cde5ef685c1103d2dad825c644dbf7ca26",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-emerald-beetle.401e3059.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 99290,
+      "sha256": "401e3059d1f7bc4ab5290a6c51c910058b1f38821ec379f74a1d61c2b28cd8c7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fern-curio-orb.a47e0e84.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 119988,
+      "sha256": "a47e0e84c7ddac5d5d1ed6ff9dc65547f9eb163b3ef7d3a1c9e7df98336fbdfa",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 759720,
+  "widgets": [
+    {
+      "id": "curio-focus",
+      "kind": "art",
+      "image": "widget-curio-focus.8d432a3f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Curio focus"
+    },
+    {
+      "id": "emerald-beetle",
+      "kind": "art",
+      "image": "widget-emerald-beetle.401e3059.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Emerald beetle"
+    },
+    {
+      "id": "fern-curio-orb",
+      "kind": "art",
+      "image": "widget-fern-curio-orb.a47e0e84.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fern curio orb"
+    }
+  ]
+}

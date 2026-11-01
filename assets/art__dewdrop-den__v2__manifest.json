@@ -1,0 +1,190 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "dewdrop-den",
+  "packVersion": 2,
+  "name": "Dewdrop Den",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#BCA9CB",
+    "tile": "#A695B2",
+    "glyph": "#1C1816",
+    "accent": "#B6A4C6",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Dewdrop Den",
+    "mood": "A resin axolotl, pressed lilac flowers, lavender backgrounds, plum icons.",
+    "tags": [
+      "dewdrop",
+      "resin",
+      "axolotl",
+      "pressed",
+      "lilac",
+      "flowers",
+      "lavender",
+      "backgrounds",
+      "plum",
+      "icons",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "ricCEwCfjHWXioe0enD3FnA=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.0763d252.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 162748,
+      "sha256": "0763d2521adba61ac54edf8e882f14b81f3e4c633a6e147c3aa1dd4d7edf6d6b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.6b07f437.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 145256,
+      "sha256": "6b07f437db4b8b81bfb1a56eef4f487bb9b7add0866e341d961f5466d9599c6e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.a6c77674.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 74482,
+      "sha256": "a6c776745e31ca88db381ed93eba024c51b55cb9cb1d41b287661a4a7176bea0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.beaafa2a.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11408,
+      "sha256": "beaafa2adef75cdaa83b15c846a2c1fc46bc4648bd5471eb01ae53c0c65be036",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dew-habits.1af7c4fa.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 123882,
+      "sha256": "1af7c4fa485db6555214995fb1d5885c3e07521543fd223faad2028c107204d0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fern-dew-bead.afccf5b9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 83904,
+      "sha256": "afccf5b9beb3e96814484023dca4a94b8c6aeac21e0fef2b04dc21cbe6e17f3a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-moss-lantern-ball.dd91bd13.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 120828,
+      "sha256": "dd91bd13b156b386515ac6289709a54c2e7297cb0d169f33e08601a238a93c79",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-leaf-hammock.cbcb15fa.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 95006,
+      "sha256": "cbcb15fa175a2f8388b947bed2f9a60e700eba1b20c44ba671ee6af7030e93c1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-raindrop-den.a0755213.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 77762,
+      "sha256": "a075521357472089e9c0e2edad2b40120c0493490b9f8e9f3ff4683a6163a366",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 895276,
+  "widgets": [
+    {
+      "id": "dew-habits",
+      "kind": "habits",
+      "image": "widget-dew-habits.1af7c4fa.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dew habits"
+    },
+    {
+      "id": "fern-dew-bead",
+      "kind": "art",
+      "image": "widget-fern-dew-bead.afccf5b9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fern dew bead"
+    },
+    {
+      "id": "moss-lantern-ball",
+      "kind": "art",
+      "image": "widget-moss-lantern-ball.dd91bd13.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Moss lantern ball"
+    },
+    {
+      "id": "leaf-hammock",
+      "kind": "art",
+      "image": "widget-leaf-hammock.cbcb15fa.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Leaf hammock"
+    },
+    {
+      "id": "raindrop-den",
+      "kind": "art",
+      "image": "widget-raindrop-den.a0755213.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Raindrop den"
+    }
+  ]
+}

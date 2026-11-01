@@ -1,0 +1,193 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "silver-orchard",
+  "packVersion": 2,
+  "name": "Silver Orchard",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#2A2623",
+    "tile": "#474340",
+    "glyph": "#FAF8F2",
+    "accent": "#918F74",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Silver Orchard",
+    "mood": "Warm charcoal, oxidised silver, celadon pears, pear conservatory, sleeping dormouse and leaf clock.",
+    "tags": [
+      "silver",
+      "orchard",
+      "warm",
+      "charcoal",
+      "oxidised",
+      "celadon",
+      "pears",
+      "pear",
+      "conservatory",
+      "sleeping",
+      "dormouse",
+      "leaf",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Syed Qaarif Andrabi (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "DAgGCwBKoLl5bJB8VpD6h6Q=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.ef50c64b.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 174892,
+      "sha256": "ef50c64b31a973a25c1ee758947206d78b4e055b17a4d2006eadd3e0b7b7432e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.5bee130b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 157122,
+      "sha256": "5bee130bbc9231972063bf449569176e29b15dd71fd2a6f892c01254178f121f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.c32541f6.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 77616,
+      "sha256": "c32541f6518163f6fd6448d07e0b03999e55ab53a411f6fba94d37d6851551ec",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.76032c6e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9812,
+      "sha256": "76032c6ef9b152373bbc7fab77ec5ad6d82fb546fb53d32ef6d7b9f600b5dd73",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-orchard-date.1fa6fd06.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 126340,
+      "sha256": "1fa6fd060c1e00b9b0b140f6dfdb91d6bb9e0b27051a9e9aae94161c02b6e40c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glass-orchard-snail.10df11be.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 112104,
+      "sha256": "10df11be8162ec1beb6fd134e398cff302f9f5f70ba9e3bd00ed223eff853025",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-silver-leaf-lantern.0e3e56b7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 96254,
+      "sha256": "0e3e56b70b741ea1ad582c65d2dae2653ccc25efa6f4bfd550b5bb97ad551e6c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pear-conservatory.1fe0b254.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 147092,
+      "sha256": "1fe0b254ae57196ecdffda04471e60fc2302434dbedece1734cf97b7fb0cd609",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-silver-dormouse.9881d967.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 118360,
+      "sha256": "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1019592,
+  "widgets": [
+    {
+      "id": "orchard-date",
+      "kind": "calendar",
+      "image": "widget-orchard-date.1fa6fd06.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Orchard date"
+    },
+    {
+      "id": "glass-orchard-snail",
+      "kind": "art",
+      "image": "widget-glass-orchard-snail.10df11be.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glass orchard snail"
+    },
+    {
+      "id": "silver-leaf-lantern",
+      "kind": "art",
+      "image": "widget-silver-leaf-lantern.0e3e56b7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Silver leaf lantern"
+    },
+    {
+      "id": "pear-conservatory",
+      "kind": "art",
+      "image": "widget-pear-conservatory.1fe0b254.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pear conservatory"
+    },
+    {
+      "id": "silver-dormouse",
+      "kind": "art",
+      "image": "widget-silver-dormouse.9881d967.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Silver dormouse"
+    }
+  ]
+}

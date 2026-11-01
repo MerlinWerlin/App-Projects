@@ -1,0 +1,192 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "curlfin-cove",
+  "packVersion": 2,
+  "name": "Curlfin Cove",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#C4DBCE",
+    "tile": "#ACC0B4",
+    "glyph": "#1C1816",
+    "accent": "#9A7258",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Curlfin Cove",
+    "mood": "A peach quilled-paper seahorse with sea-glass paper, teal icons, bubble mobile.",
+    "tags": [
+      "curlfin",
+      "cove",
+      "peach",
+      "quilled",
+      "paper",
+      "seahorse",
+      "with",
+      "glass",
+      "teal",
+      "icons",
+      "bubble",
+      "mobile",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "b/gFEwSGj3eIdYuVJ4B4Aog=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.9684cccf.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 316734,
+      "sha256": "9684cccf59a11393b9996cfcf9da3b5e53037a3444f1e0e1f39a27ff323117a1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.0f282e58.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 286336,
+      "sha256": "0f282e58ec207ca52b151617c98266df05fc1eca902ec658425045bfb08da029",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.26beba2e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 134996,
+      "sha256": "26beba2e85357368313ba88926256a448949315ef6f7706f39e52ae47119fdb0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.956d72f7.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 13330,
+      "sha256": "956d72f7ed559c89116abe406cfa9141364d0a2992591de105ae55ceb9618caa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cove-date.ab3a1f59.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 179192,
+      "sha256": "ab3a1f59e4333ebb965cf8f06986de1b7348eb21bc32ee86cfd1d039a81f1bf0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bubble-mobile.c448d44b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 126236,
+      "sha256": "c448d44baa624a4f2fd048f9c78195f4efbb7a50317e4d8808cacec710f74723",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-starfish.6e87e8b5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 154870,
+      "sha256": "6e87e8b54aebe60f711bc9f096d817ee85eddfbe384749c8759b39906bb96563",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-quilled-nautilus.1e41b3f1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 173212,
+      "sha256": "1e41b3f1ef9d095aaa4ebb4956cf0b244ae7f04be076b409098b3f78d19f5ac0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-shell-nap.fece485d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 141860,
+      "sha256": "fece485da24cdaef550813bdc31907c89f3fc1648161bfb48eb083cb59ce0aa2",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1526766,
+  "widgets": [
+    {
+      "id": "cove-date",
+      "kind": "calendar",
+      "image": "widget-cove-date.ab3a1f59.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cove date"
+    },
+    {
+      "id": "bubble-mobile",
+      "kind": "art",
+      "image": "widget-bubble-mobile.c448d44b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bubble mobile"
+    },
+    {
+      "id": "paper-starfish",
+      "kind": "art",
+      "image": "widget-paper-starfish.6e87e8b5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Paper starfish"
+    },
+    {
+      "id": "quilled-nautilus",
+      "kind": "art",
+      "image": "widget-quilled-nautilus.1e41b3f1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Quilled nautilus"
+    },
+    {
+      "id": "shell-nap",
+      "kind": "art",
+      "image": "widget-shell-nap.fece485d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Shell nap"
+    }
+  ]
+}

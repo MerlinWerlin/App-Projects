@@ -1,0 +1,140 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "clover-nap",
+  "packVersion": 2,
+  "name": "Clover Nap",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F7F0E3",
+    "tile": "#D8D2C6",
+    "glyph": "#1C1816",
+    "accent": "#9C9459",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Clover Nap",
+    "mood": "A watercolour hedgehog napping in clover.",
+    "tags": [
+      "clover",
+      "watercolour",
+      "hedgehog",
+      "napping",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 CLOVER NAP. Beautiful cute BOTANICAL WATERCOLOR and fine brown-pencil picture-book illustration on warm IVORY watercolor paper #F5F0E4. Clearly flat hand-painted2D, transparent pigment blooms and subtle wet edges, fine paper tooth, delicate pencil detail, not3D plastic clay plush yarn or photorealistic animal. UPPER68percent EMPTY quiet ivory paper, no objects lettering patterns. Bottom30percent a small tender meadow vignette: ONE tiny round baby HEDGEHOG curled asleep in a shallow nest made from two CLOVER LEAVES, creamy face/tummy, tiny cocoa nose, closed crescent eyes, pink cheeks, back covered with short soft cinnamon-brown painted spine dashes not frightening spikes. One gracefully arched DAISY stem bends above its head like a parasol, creamy white petals and butter-yellow center. A few small green clover sprigs around the nest, one tiny fallen yellow petal and dewdrop. Small full vignette only55percent canvas width, hedgehog12percent total image height, positioned LOW with full margins. Quiet botanical nature, soft spring morning, sweet almost-kawaii picturebook character but finely observed leaves and flowers. Ivory/clovergreen/sage/cinnamon/butteryellow palette. No koalas moon stars bats guardians cats hamsters rabbits seahorses corgis toy props buildings or food. No text branding UI phoneframes watermark.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "9wgGEwCmj1aHdYyzSHBKYFo=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.82639d1c.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 177500,
+      "sha256": "82639d1c630d59bdd99dae934cf4d41edc13c398b893d23bfd30162c104fe473",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.0f9dbbba.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 158512,
+      "sha256": "0f9dbbbab9803bb2ccc328db9986cbbfbba5bf8d551ab94bfa0a55946b06706d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.39fd3b51.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 75746,
+      "sha256": "39fd3b51467533b33c2d616d2378bea9bcc3d8236ae72abc3033ce5848385954",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.9082f718.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 8908,
+      "sha256": "9082f71849eb8b13003fdb7c3e6882d3e4ff1214b8661ad4b64f801cbf74be9e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-clover-habits.0ffe905b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 112608,
+      "sha256": "0ffe905b8854a81dbf6dc653c070e38ce5496c778ebf369a4d3e02353a35ac4b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-acorn-teacup.b6f2f626.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 126616,
+      "sha256": "b6f2f62698369a94ed0bfe34445a23ecb7c38adf30e62da58caf2a77a87c5fdb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-daisy-ladybird.c95b5f93.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 83136,
+      "sha256": "c95b5f93b962047c27f2ffa74adb27a2fdedef2d3ea515388883b634c6393cfd",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 743026,
+  "widgets": [
+    {
+      "id": "clover-habits",
+      "kind": "habits",
+      "image": "widget-clover-habits.0ffe905b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Clover habits"
+    },
+    {
+      "id": "acorn-teacup",
+      "kind": "art",
+      "image": "widget-acorn-teacup.b6f2f626.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Acorn teacup"
+    },
+    {
+      "id": "daisy-ladybird",
+      "kind": "art",
+      "image": "widget-daisy-ladybird.c95b5f93.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Daisy ladybird"
+    }
+  ]
+}

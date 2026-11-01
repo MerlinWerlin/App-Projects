@@ -1,0 +1,192 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "lavender-nocturne",
+  "packVersion": 2,
+  "name": "Lavender Nocturne",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#281521",
+    "tile": "#45353E",
+    "glyph": "#FAF8F2",
+    "accent": "#271420",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Lavender Nocturne",
+    "mood": "Aubergine linen, ivory icons, teacup village, sleeping hare and hoop clock.",
+    "tags": [
+      "lavender",
+      "nocturne",
+      "aubergine",
+      "linen",
+      "ivory",
+      "icons",
+      "teacup",
+      "village",
+      "sleeping",
+      "hare",
+      "hoop",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Kelly Rabie (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "CigGCwB2gLh3eXR6dZAroMo=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.51187683.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 633802,
+      "sha256": "511876834878fdaa358a07e5ed947d9895e563c022eadef96096a62cdb265510",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1b0995d7.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 563902,
+      "sha256": "1b0995d7c0001ffc0b0c38a63ed1da1a1249db82df7456871fb3a803ddc8f55b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.2607be3c.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 283584,
+      "sha256": "2607be3cb2b332e30849c4e3323670e60cafc91dca6362788300248382c0d045",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.d2c4c266.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 27672,
+      "sha256": "d2c4c266a6d518dcf6174fbec924d84ced3858c10cc9ef327fa0c99b1b12d5a3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-nocturne-habits.eb2fca24.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 280468,
+      "sha256": "eb2fca2473c1400ab603aa78e7899480e0ed8a385a81c33a7c1b927f7c5372b9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lavender-butterfly.4b103393.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 304544,
+      "sha256": "4b103393d7b0f147b896feb7e5fcf0d53f52611d63650385c2e1181e41709768",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lavender-dream-jar.b985f1be.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 308384,
+      "sha256": "b985f1bec8f9fe3e67c592fa9987d720854840341415977deb9f3776ae298d83",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lavender-hare.17187ace.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 310730,
+      "sha256": "17187ace5d722823644c4b331a2afdf3857dc808c22aea21e80bfbd74149a91c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-teacup-village.6ccf6e75.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 334824,
+      "sha256": "6ccf6e75e43f0702ba52abf568f2f232e2528364601a79b46f93cd28157e7d83",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 3047910,
+  "widgets": [
+    {
+      "id": "nocturne-habits",
+      "kind": "habits",
+      "image": "widget-nocturne-habits.eb2fca24.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Nocturne habits"
+    },
+    {
+      "id": "lavender-butterfly",
+      "kind": "art",
+      "image": "widget-lavender-butterfly.4b103393.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lavender butterfly"
+    },
+    {
+      "id": "lavender-dream-jar",
+      "kind": "art",
+      "image": "widget-lavender-dream-jar.b985f1be.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lavender dream jar"
+    },
+    {
+      "id": "lavender-hare",
+      "kind": "art",
+      "image": "widget-lavender-hare.17187ace.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lavender hare"
+    },
+    {
+      "id": "teacup-village",
+      "kind": "art",
+      "image": "widget-teacup-village.6ccf6e75.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Teacup village"
+    }
+  ]
+}

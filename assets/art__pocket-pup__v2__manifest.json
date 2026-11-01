@@ -1,0 +1,143 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "pocket-pup",
+  "packVersion": 2,
+  "name": "Pocket Pup",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D9EAFC",
+    "tile": "#BFCDDC",
+    "glyph": "#1C1816",
+    "accent": "#DAEAFD",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Pocket Pup",
+    "mood": "A tiny eraser-style corgi in soft pastels.",
+    "tags": [
+      "pocket",
+      "tiny",
+      "eraser",
+      "style",
+      "corgi",
+      "soft",
+      "pastels",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 POCKET PUP. Adorably cute miniature CORGI made in the style of a hand-carved JAPANESE NOVELTY ERASER: velvety MATTE RUBBER, faint micro-porous texture, clean simplified softly rounded molded shapes, no gloss no fur no yarn no ceramic no resin. Powder BLUE background #E5EDF7, UPPER68percent EMPTY quiet blue, subtle fine paper texture only, no pattern lettering objects. Bottom30percent ONE tiny round warm-cream CORGI PUPPY with biscuit-tan ears/back, huge short rounded ears, cocoa dot eyes, tiny black nose and tiny smiling mouth, pale peach blush, stumpy paws. Puppy tucked snugly into ONE oversized soft PERIWINKLE SLIPPER shaped eraser with pale cream lining, front paws resting over rounded slipper rim, tiny peach collar with cream heart tag. A small pastel peach rubber ball with one simple cream star beside slipper, two tiny cream daisy flowers. Entire scene small around55percent canvas width, corgi about13percent canvas height, centered LOW, full safe margins. Sweet cozy kawaii stationery collectible, beautifully restrained tiny still life, diffused light and soft contact shadows. Powderblue/cream/biscuit tan/periwinkle/peach palette. No strawberry rabbit yarn crochet dragon beeswax lantern axolotl capybara duck tea or clocks. No logos lettering packaging phoneframes UI watermark.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "eOcFCwLmj5RocY6EGWOgECY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.ffab743a.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 54100,
+      "sha256": "ffab743aa3e8cd3fa7e6ae009a55e74a2ccd05815f9d44eb61aa270a871599db",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1282c2b2.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 46598,
+      "sha256": "1282c2b2b653aac884812416a625318600236f82db541edb208653a882a02f15",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.24ab129e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 21034,
+      "sha256": "24ab129e2c772fe896d994f545cb444f8b97015560af35f4ccd0a1896ce79692",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.07a08583.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 3506,
+      "sha256": "07a0858341b817033201b26fe4f6ccd49bb91d18576de0e026bb40e56960f84a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pup-habits.92020abb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 36688,
+      "sha256": "92020abb5d3fd22ab5873ed61534322d725cf959f3b4bf9ebf808931a1e970fc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-eraser-bone-planter.9d7b534d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 22988,
+      "sha256": "9d7b534d90f186c4f4c3cfcd55eca1049634c1f19bc098521dfc8b9b0c97a9ec",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pocket-mailbox.0a0b59ef.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 33292,
+      "sha256": "0a0b59ef7344da26a6fe75cd5ad91788f53a106ea0d2a4b3eaa48ef9b689e930",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 218206,
+  "widgets": [
+    {
+      "id": "pup-habits",
+      "kind": "habits",
+      "image": "widget-pup-habits.92020abb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pup habits"
+    },
+    {
+      "id": "eraser-bone-planter",
+      "kind": "art",
+      "image": "widget-eraser-bone-planter.9d7b534d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Eraser bone planter"
+    },
+    {
+      "id": "pocket-mailbox",
+      "kind": "art",
+      "image": "widget-pocket-mailbox.0a0b59ef.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pocket mailbox"
+    }
+  ]
+}

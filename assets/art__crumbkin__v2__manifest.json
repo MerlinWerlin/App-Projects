@@ -1,0 +1,143 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "crumbkin",
+  "packVersion": 2,
+  "name": "Crumbkin",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F1E0CE",
+    "tile": "#D3C4B4",
+    "glyph": "#1C1816",
+    "accent": "#D69D64",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Crumbkin",
+    "mood": "A marzipan hamster with crumbs and sweet treats.",
+    "tags": [
+      "crumbkin",
+      "marzipan",
+      "hamster",
+      "with",
+      "crumbs",
+      "sweet",
+      "treats",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 CRUMBKIN. Very cute tiny handcrafted MARZIPAN CONFECTIONERY fantasy, fine sugar-dusted almond-paste texture, soft matte crumbly edges and delicate fondant-like colored details, no glossy plastic no ceramic no yarn no resin. Warm pale OAT background #F4EADC, UPPER68percent EMPTY quiet oat with faint papergrain, no patterns lettering decor. Bottom30percent ONE small pudgy APRICOT HAMSTER, round cheeks, tiny round ears with pink centers, cocoa dot eyes, tiny nose and smiling mouth, short cream muzzle/tummy, stubby paws. Hamster tucked into a plump split cream bread BUN BED, pale cinnamon crust and soft cream interior, paws resting over bun edge; tiny biscuit-brown sleeping cap with cream pompom. One little heart-shaped butter biscuit and a tiny pale apricot sugar flower beside bun. Full small scene only55percent width, hamster around13percent total image height, low centered with safe margins. Tactile hand-shaped novelty patisserie figurine, elegant restrained food-art miniature, soft diffuse light and gentle shadows, kawaii cozy adorable. Oat/cream/cinnamon/apricot/cocoa palette. No bunnies strawberries corgis slippers bats bellflowers dragons axolotl ducks capybara tea branding. No lettering packaging phoneframes UI watermark.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "NSkGEwLKb3V3g36TN4BoA4g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.11d36b4d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 90564,
+      "sha256": "11d36b4df38ec8229e3bfeb44c0f57f352a4e2490beacfbf630076f492a8f39a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.54b28a7e.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 80026,
+      "sha256": "54b28a7e09b24468ddc27b029ec1f6b0d15d2ca185499fb6604960a18f7ea780",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.9c2dab53.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 39026,
+      "sha256": "9c2dab53b5e59fcc369902a225884a16e11cf94cdcfc2eaf9d87449704a7b1f4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.989a46d5.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5168,
+      "sha256": "989a46d5fc3d9d01f228f86908256c9b245a6bbb4796ab7e0ef9a10753eba94d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-crumb-goals.d17e0f49.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 83692,
+      "sha256": "d17e0f4941c5a64f7284cbf8e15c1e5a6d9734b840f0810084ae82322a18abeb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-marzipan-snail.dc4db876.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75924,
+      "sha256": "dc4db876ffb43eff0015105c0fd20b469e0c4240b8b4cb59303264a8b377002e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-nougat-flowerpot.cc66f541.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75820,
+      "sha256": "cc66f5411eb109d9e7eff0caeb6ff3acd4bcf4e807f5736c6790c65cc2a2071e",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 450220,
+  "widgets": [
+    {
+      "id": "crumb-goals",
+      "kind": "art",
+      "image": "widget-crumb-goals.d17e0f49.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Crumb goals"
+    },
+    {
+      "id": "marzipan-snail",
+      "kind": "art",
+      "image": "widget-marzipan-snail.dc4db876.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Marzipan snail"
+    },
+    {
+      "id": "nougat-flowerpot",
+      "kind": "art",
+      "image": "widget-nougat-flowerpot.cc66f541.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Nougat flowerpot"
+    }
+  ]
+}

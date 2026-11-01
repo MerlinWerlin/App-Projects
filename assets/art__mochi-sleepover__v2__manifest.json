@@ -1,0 +1,146 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "mochi-sleepover",
+  "packVersion": 2,
+  "name": "Mochi Sleepover",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#EAE0FC",
+    "tile": "#CDC4DC",
+    "glyph": "#1C1816",
+    "accent": "#D2A2C1",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Mochi Sleepover",
+    "mood": "Milky lilac, strawberry pink and marshmallow-cream kawaii sleepover theme.",
+    "tags": [
+      "mochi",
+      "sleepover",
+      "milky",
+      "lilac",
+      "strawberry",
+      "pink",
+      "marshmallow",
+      "cream",
+      "kawaii",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: adorable original kawaii character illustration rendered as premium soft pastel3D clay/plush. Portrait iPhone wallpaper9:19.5 MOCHI SLEEPOVER. Overall pale milky LILAC #EEE7FA, strawberry-milk pink, marshmallow cream and tiny soft buttery-yellow accents. Upper62percent completely clean pale milky lilac with very subtle soft paper-like finish, no objects lettering stars or patterns there, practical quiet space for future cute icons. LOWER38percent an unbelievably cute small sleepover cuddle pile on ONE pillowy lilac cloud: CHUBBY CREAM BUNNY with stubby round ears/round little feet holding a strawberry-pink HEART PILLOW, SQUISHY WHITE KITTEN with tiny triangle ears and tiny paws sleeping cheek-to-cheek beside bunny, and a very small round lavender sleepy bear tucked behind them under a fluffy pink blanket. All characters have tiny dark brown bead eyes or curved sleeping eyes, tiny peach blush cheeks, tiny simple smiles, soft round marshmallow bodies, NO realistic fur anatomy, no creepy teeth or long limbs. One tiny butter-yellow plush star and two very small matte pink heart charms nestled beside cloud, nothing floating high above. Cloud and entire characters safely contained in bottom38percent with breathing room left/right, soft warm ambient lighting and delicate shadows, irresistibly sweet Japanese-inspired kawaii stationery aesthetic, high quality tasteful gentle pastel3D, cute collectible plush/slime softness. No text logos UI phone frames borders watermark, no realistic rooms furniture machines typewriters jewellery bugs, no dramatic scenery or actual cosmic astronomy. Full bleed portrait.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "uCcGCwR2j1iHd4l3eIB1B5g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.9f81d70c.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 66058,
+      "sha256": "9f81d70cd4e75a2226f89873d7e1425b2a0ea8254c04ccf5207575c14a1704f9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.d990629b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 57756,
+      "sha256": "d990629b6c6094151c1454a8816072d72b032c83dae461aab7e324d71bf864b8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.4a49400e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 27092,
+      "sha256": "4a49400e78e5e44b7fad66968a12dba2b8c1beb2b50ca61a1086f8ef0b84d02d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.91843d6f.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5600,
+      "sha256": "91843d6fc4f04b96dbae1d267ea5900d8e06fe5cb235a09ccff963ecc7c8dea8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sleepover-habits.42952e43.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 43782,
+      "sha256": "42952e4379f13737dc581a0fda85fe309b595d3e68eb406f1b4477480ad0d3cc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mallow-cloud-pillow.8e31472c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 31856,
+      "sha256": "8e31472c1489f465dc80fe7d8e26d3cc1ec397587fcb8ea3e9c2c9e01a9610a7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-star-hot-water-bottle.0c51b022.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 42252,
+      "sha256": "0c51b0227afa3780d62cb29e3f79ead6f3721a6081b15b34bad7ff32db3c1e3b",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 274396,
+  "widgets": [
+    {
+      "id": "sleepover-habits",
+      "kind": "habits",
+      "image": "widget-sleepover-habits.42952e43.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sleepover habits"
+    },
+    {
+      "id": "mallow-cloud-pillow",
+      "kind": "art",
+      "image": "widget-mallow-cloud-pillow.8e31472c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mallow cloud pillow"
+    },
+    {
+      "id": "star-hot-water-bottle",
+      "kind": "art",
+      "image": "widget-star-hot-water-bottle.0c51b022.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Star hot water bottle"
+    }
+  ]
+}

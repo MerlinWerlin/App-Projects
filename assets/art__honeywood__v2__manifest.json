@@ -1,0 +1,148 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "honeywood",
+  "packVersion": 2,
+  "name": "Honeywood",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F5DAAD",
+    "tile": "#D7BF98",
+    "glyph": "#1C1816",
+    "accent": "#864710",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Honeywood",
+    "mood": "Toasted cream, cocoa icons, amber honeycomb treehouse, sleeping wool bee and hexagonal clock.",
+    "tags": [
+      "honeywood",
+      "toasted",
+      "cream",
+      "cocoa",
+      "icons",
+      "amber",
+      "honeycomb",
+      "treehouse",
+      "sleeping",
+      "wool",
+      "hexagonal",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for HONEYWOOD. Upper75percent quiet nearly uniform warm toasted-cream matte paper field #F3E2BC, very subtle tactile fine grain, no objects/patterns/highlights behind future app icons. Bottom25percent exquisite miniature woodland architecture: stepped translucent honey-amber glass hexagonal terraces nested in warm pale wood, a delicate curving twig bridge, three tiny creamy wildflowers and a soft moss tuft low at one side. Warm macro craft photography, realistic amber-glass refraction and pale wood grain, gentle golden afternoon light, beautifully restrained cozy design with abundant usable negative space. Low composition, whole miniature contained. No bees, houses, UI, text, labels, borders, stars, logos or phone. Cream/honey/cocoa palette, fine-art wallpaper full bleed.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "LUoOEwR4fzh3iHmVdZBbCLk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.949dfaab.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 144562,
+      "sha256": "949dfaabb2c918a51f1e8b2a756d738c17cc46b83f4fb405ed574417297ee568",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.526a6104.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 120190,
+      "sha256": "526a6104e5b72e7464f8fca85405fe8e24bd5d28e1346145fbd88c413ee5daeb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.f0e297b9.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 53898,
+      "sha256": "f0e297b92c63fe827a7faad78e748435f0eb97280894ee4b6aed85b249915539",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.8306dfa2.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 10520,
+      "sha256": "8306dfa2beba0982647eda07d8238478c741b90b1b3a607e61125ca90e5694b7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-honey-habits.5d54709f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 117428,
+      "sha256": "5d54709f58453e0bf930f178f00f61b94cc977ca610024ec353251b9fbc32545",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-honey-acorn.cf2d5c03.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 105914,
+      "sha256": "cf2d5c03656b7a420f627e32aafe2e1e3b95f254ed99c710160ce549953c27a2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wool-moth.e4c27022.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 97526,
+      "sha256": "e4c270223768ca399ae20795ad7a63a500fb46b9c3a59110d6857c93392663fe",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 650038,
+  "widgets": [
+    {
+      "id": "honey-habits",
+      "kind": "habits",
+      "image": "widget-honey-habits.5d54709f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Honey habits"
+    },
+    {
+      "id": "honey-acorn",
+      "kind": "art",
+      "image": "widget-honey-acorn.cf2d5c03.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Honey acorn"
+    },
+    {
+      "id": "wool-moth",
+      "kind": "art",
+      "image": "widget-wool-moth.e4c27022.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wool moth"
+    }
+  ]
+}

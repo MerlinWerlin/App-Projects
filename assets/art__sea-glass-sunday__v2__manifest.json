@@ -1,0 +1,141 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "sea-glass-sunday",
+  "packVersion": 2,
+  "name": "Sea Glass Sunday",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#EEE5D9",
+    "tile": "#D1C8BE",
+    "glyph": "#1C1816",
+    "accent": "#EDE2D3",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Sea Glass Sunday",
+    "mood": "Sea glass and shells on a lazy Sunday shore.",
+    "tags": [
+      "glass",
+      "sunday",
+      "shells",
+      "lazy",
+      "shore",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 SEA GLASS SUNDAY. Fine-art coastal STILL-LIFE PHOTOGRAPH aesthetic, pale warm SAND-CREAM background #F3EFE5, upper70percent EMPTY quiet uniform sandcream with extremely subtle fine sand texture, no patterns lettering objects footprints or horizons. Bottom28percent tiny carefully arranged natural beach collection: THREE small irregular rounded FROSTED SEA-GLASS pieces in pale aqua, seafoam and translucent pale blue, edges smoothly weathered and surfaces finely sea-worn matte, beside ONE small delicate ivory SPIRAL SEASHELL with faint peach ridges. A short graceful strand of pale sage seaweed lies nearby; tiny scatter of natural sand grains only near collection, no beads jewelry or ribbons. Full small arrangement around52percent canvas width, low centered with full margins, tallest object8percent image height. Soft natural morning windowlike light casts gentle short shadows, subtle realistic frosted translucency and shell growth details, beautiful minimal coastal editorial photography. Cream/sand/aqua/seafoam/peach palette. No water scene lake lotus flowers forests animals faces craft toys plastic resin jewelry typography branding frames UI watermark. Original generated photographic-style still life, no external photo input.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "thgGAwCoj3aHhH2TkqAHjYw=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.6c3511f6.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 120806,
+      "sha256": "6c3511f64a8a8763adb4b8fd12f980802e7866893ce7c3825cd3e577976da878",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.b5e0b3c4.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 107658,
+      "sha256": "b5e0b3c4e2d944075c3f7d01a9259f749d2bcb4579426c85df0c9db645ad7682",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.2c927e55.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 54412,
+      "sha256": "2c927e553d23fc6abcf0b171f51438b8df7e823facdbe1516b4165e204bc7aca",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.509024f5.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 8178,
+      "sha256": "509024f5bd7841c8e45e2006100390adef8eab3aecbd8350e3cd86132a4466ee",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-coastal-countdown.30176c4b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 90234,
+      "sha256": "30176c4b2b58c913785c72bb66c0be33ac6c9e37cf4ffb44fb36296184899720",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sand-dollar.de220988.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 117618,
+      "sha256": "de220988eef9f3f2f8c598d2105d5f3b9f48847246fb6bfd0b6eb561cc4e4606",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sea-glass-bottle.72804a7b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 104046,
+      "sha256": "72804a7b9f6e16e4021d4b6bb87a92b61c3d8b630d1e9daf03a91c674a3194a3",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 602952,
+  "widgets": [
+    {
+      "id": "coastal-countdown",
+      "kind": "countdown",
+      "image": "widget-coastal-countdown.30176c4b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Coastal countdown"
+    },
+    {
+      "id": "sand-dollar",
+      "kind": "art",
+      "image": "widget-sand-dollar.de220988.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sand dollar"
+    },
+    {
+      "id": "sea-glass-bottle",
+      "kind": "art",
+      "image": "widget-sea-glass-bottle.72804a7b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sea glass bottle"
+    }
+  ]
+}

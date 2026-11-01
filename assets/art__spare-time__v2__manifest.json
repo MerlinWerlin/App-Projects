@@ -1,0 +1,145 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "spare-time",
+  "packVersion": 2,
+  "name": "Spare Time",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#CEE4EC",
+    "tile": "#B5C7CE",
+    "glyph": "#1C1816",
+    "accent": "#F6CDA2",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Spare Time",
+    "mood": "Powder-blue, navy and coral retro bowling theme.",
+    "tags": [
+      "spare",
+      "time",
+      "powder",
+      "blue",
+      "navy",
+      "coral",
+      "retro",
+      "bowling",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium miniature architectural product photograph. Portrait iPhone wallpaper approx9:19.5 for SPARE TIME, cheerful refined retro bowling design. Upper60percent quiet uniform pale powder blue #DCE9EC matte ground, nearly flat studio light, no objects text outlines patterns stars gradients or shadows there, reserved for future navy app icons. Lower40percent an exquisite miniature TWO-LANE vintage bowling alley on a low rounded rectangular maple-wood platform, three-quarter frontal perspective. Glossy warm pale maple lanes with tiny black lane arrows, separated dark navy gutters, cream bowling pins with coral-red neck stripes grouped at the far ends, a low curved coral-and-cream pinsetter canopy with no words, slim blue side walls, one shiny coral-cream marbled bowling ball near front right of platform. All parts of diorama comfortably fit in lower40percent with blue margins; no actual room enclosing model, no human figures or seats clutter. Warm soft studio lighting, fine wood grain, tactile enamel, restrained powder-blue/navy/coral/cream palette, elegant playful collectible model, premium architectural photography, no plastic toy cheapness. Ground remains powder blue edge-to-edge. No glass jar dome bottle, no neon signs lettering logos game scores numbers phones UI borders or watermark. No space water jellyfish beetles horses cars arcade cabinets roller skates.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "MvgJGwSWj5d5Yot4R4CGBGg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.ecb4c37f.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 107508,
+      "sha256": "ecb4c37f35972d4ac1bb3baa28f69d63a724b960366971ecada6755302de07ba",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.85a7d872.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 97468,
+      "sha256": "85a7d872086f2615c07d9375c1696772a2c7d39c9120409a6de93c889e8812fa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.b4e6ff64.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 56654,
+      "sha256": "b4e6ff643372651dcea3167a7b25e19eb8982410498dcfc76388a4702c0d786f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.9ecd0905.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 10280,
+      "sha256": "9ecd0905bfc39b6b4452919f3f55828de252ab44a633ccffbb929be939c150ea",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bowling-pin-flower.c6a23de4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 18096,
+      "sha256": "c6a23de4b397b5c99f087e2008b60a7158325d312530b9ac4b07b0539e37817a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bowling-satellite.026a2933.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 42178,
+      "sha256": "026a2933d175cc549bd423d74d2bdd4adda880a4e05e25966ba52b73963a2b24",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-spare-goals.3393b2db.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 46034,
+      "sha256": "3393b2db3ebbb080eb11afc7296d2961c39a1258e637b88aeb3cb55b9644eaeb",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 378218,
+  "widgets": [
+    {
+      "id": "bowling-pin-flower",
+      "kind": "art",
+      "image": "widget-bowling-pin-flower.c6a23de4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bowling pin flower"
+    },
+    {
+      "id": "bowling-satellite",
+      "kind": "art",
+      "image": "widget-bowling-satellite.026a2933.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bowling satellite"
+    },
+    {
+      "id": "spare-goals",
+      "kind": "art",
+      "image": "widget-spare-goals.3393b2db.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Spare goals"
+    }
+  ]
+}

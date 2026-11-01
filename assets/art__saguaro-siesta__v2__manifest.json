@@ -1,0 +1,146 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "saguaro-siesta",
+  "packVersion": 2,
+  "name": "Saguaro Siesta",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#EFD8BA",
+    "tile": "#D1BDA3",
+    "glyph": "#1C1816",
+    "accent": "#C99066",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Saguaro Siesta",
+    "mood": "Warm sand, terracotta, cactus green and turquoise desert theme.",
+    "tags": [
+      "saguaro",
+      "siesta",
+      "warm",
+      "sand",
+      "terracotta",
+      "cactus",
+      "green",
+      "turquoise",
+      "desert",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium natural landscape artwork. Portrait iPhone wallpaper approx9:19.5 SAGUARO SIESTA. Upper65percent quiet near-uniform pale warm sand #E9D9BF sky, visually very clean matte atmosphere, no clouds sun dark shapes lines trees branches patterns or text in upper65percent. Lower35percent refined realistic desert landscape: ONE sculptural green saguaro cactus with two asymmetrical raised arms, whole cactus body and arms occupy only22percent total image height with tip BELOW65percent canvas height, cactus slightly left of center, natural fine vertical ribs and subtle spines. A low terracotta mesa ridge at78percent height behind it, a couple small rounded sandstone rocks at bottom right and a few sparse small agave tufts only at bottom edge, warm pale sandy ground. Gentle late-afternoon sunlight, soft natural shadows, warm sand/terracotta/sage-green palette, premium quiet desert editorial photography. Frame broad landscape from a distance so cactus does NOT fill screen, entire cactus with generous negative space around arms. No dramatic sunset or sky textures, no pebbles crowding icons. Original fictional southwestern-type landscape, no named landmark. No people buildings birds animals jellyfish beach stars nebula cars signs logos text UI phone frames borders watermark. Full bleed portrait.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "bjkOCwSIjzh3iXiWd4BsCNk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.6612bbda.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 177820,
+      "sha256": "6612bbda24173e12b1ed47ddfcb8e852ee71cb482803f99591e02fd668aef502",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.a85c0c6a.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 162072,
+      "sha256": "a85c0c6ab8a304b2d9b09824b032dc244c2962c9a6878b158939a68b08a59b0d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.e0a05e2f.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 61578,
+      "sha256": "e0a05e2fd77378a1ef120bd043f3f38c1640ff519044dab848a86a3ce634ab49",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.2c50fc92.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12080,
+      "sha256": "2c50fc921d11c5f38e65484b5297414a4c95f761e663178c69f8f2804e334e01",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cactus-lantern.5a3047c0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 64484,
+      "sha256": "5a3047c0f54fe659c3bd3893859b1e7caca7fa98a4ca907c6b5bdea4ee5b5ad2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-siesta-focus.f7298eeb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 95580,
+      "sha256": "f7298eeb684534f6564a4193555c9ba773495aaaf5ac3bc183e1ec500c5ee14d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-terracotta-snake.e0eb8f4e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 87548,
+      "sha256": "e0eb8f4e64d7f26c8674ad79578d2e30be728c5e55b60679232537497938d43f",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 661162,
+  "widgets": [
+    {
+      "id": "cactus-lantern",
+      "kind": "art",
+      "image": "widget-cactus-lantern.5a3047c0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cactus lantern"
+    },
+    {
+      "id": "siesta-focus",
+      "kind": "art",
+      "image": "widget-siesta-focus.f7298eeb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Siesta focus"
+    },
+    {
+      "id": "terracotta-snake",
+      "kind": "art",
+      "image": "widget-terracotta-snake.e0eb8f4e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Terracotta snake"
+    }
+  ]
+}

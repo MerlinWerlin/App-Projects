@@ -1,0 +1,143 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "peach-puddle",
+  "packVersion": 2,
+  "name": "Peach Puddle",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#FAE2D8",
+    "tile": "#DBC6BD",
+    "glyph": "#1C1816",
+    "accent": "#ECB798",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Peach Puddle",
+    "mood": "A chalk-pastel duckling splashing in peach puddles.",
+    "tags": [
+      "peach",
+      "puddle",
+      "chalk",
+      "pastel",
+      "duckling",
+      "splashing",
+      "puddles",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper 9:19.5 PEACH PUDDLE. Very cute almost-kawaii picture-book illustration in SOFT CHALK PASTEL and colored-pencil on pale warm BLUSH PAPER #F8E7E0. Clearly FLAT 2D drawing, visible delicate dry pigment grain, gently smudged edges, tiny pencil details; NO3D renders plastic ceramic felt plush resin photographic lighting. Palette soft peach/custard/sage/dusty coral, cocoa line details. UPPER68percent quiet EMPTY blush paper with very fine paper tooth only, no pattern objects text. Bottom30percent a small chubby peach-yellow DUCKLING with little orange flat bill, round black dot eyes, pink cheeks, tiny wings, wearing comically oversized sage-green rain boots; holding a folded peach leaf as a small umbrella on a thin stem. It stands in a little muted coral-pink puddle with two simple drawn ripple lines. A tiny cream folded paper boat floats beside it; one fallen peach blossom. Full small scene approx58percent canvas width with generous margins, duckling about12percent total canvas height, whole scene LOW with ample empty space above. Soft sweet minimal storybook fantasy, hand-drawn crayon softness, restrained paper art, not garish. No axolotl resin terrarium capybara citrus bath ghost laundry moon snail cat tea imagery. No lettering branding phone frames UI watermarks.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "+DgGCwLYf1SXhoqlJ4B6A6g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.29a5e941.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 87088,
+      "sha256": "29a5e941c8eff18fea0825443c1c275ed0dd6e2f0a30b18f751e5b552a70c859",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.673e9be8.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 75036,
+      "sha256": "673e9be8a11b6fd4a8c5c0298c3ba8fbfd37d8d54f92f877374ab250f4ad35ec",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.f2ffcecd.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 31456,
+      "sha256": "f2ffcecd3fa707ee50be0d2f5bfd5e50d57ff9b683d6bc4ab734e35a490cfac4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.7f3817b2.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4028,
+      "sha256": "7f3817b2716897d4dae84b259d0721dc01c8fc0bd15dda4157f3464b3ca5e4fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-puddle-date.0f9e46a5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 102890,
+      "sha256": "0f9e46a508f367f2057e122f4030385c86152ac4beb45a809ec8d5ca12f361c1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lily-pad-boat.cebb76a8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 85796,
+      "sha256": "cebb76a81520f26bc511c97d82be6bc9de41ee4b1ae0853a50a5f45d8fda402f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-peach-umbrella-snail.44a1b298.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 79876,
+      "sha256": "44a1b298dad448b8087862b76ce2fa0000cb66769800079b457c03580d41a84f",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 466170,
+  "widgets": [
+    {
+      "id": "puddle-date",
+      "kind": "calendar",
+      "image": "widget-puddle-date.0f9e46a5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Puddle date"
+    },
+    {
+      "id": "lily-pad-boat",
+      "kind": "art",
+      "image": "widget-lily-pad-boat.cebb76a8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lily pad boat"
+    },
+    {
+      "id": "peach-umbrella-snail",
+      "kind": "art",
+      "image": "widget-peach-umbrella-snail.44a1b298.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Peach umbrella snail"
+    }
+  ]
+}

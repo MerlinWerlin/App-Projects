@@ -1,0 +1,146 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "boba-bear-club",
+  "packVersion": 2,
+  "name": "Boba Bear Club",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#FAE7D4",
+    "tile": "#DBCAB9",
+    "glyph": "#1C1816",
+    "accent": "#C9815E",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Boba Bear Club",
+    "mood": "Milk-tea cream, caramel and strawberry-pink kawaii theme.",
+    "tags": [
+      "boba",
+      "bear",
+      "club",
+      "milk",
+      "cream",
+      "caramel",
+      "strawberry",
+      "pink",
+      "kawaii",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original adorable kawaii character illustration, premium soft3D plush/clay, portrait iPhone wallpaper9:19.5 BOBA BEAR CLUB. Uniform pale milk-tea CREAM #F5E7D6, caramel brown, strawberry-milk pink and tiny sage accents. Upper65percent totally clean pale milk-tea cream, no lettering icons stars patterns objects there. LOWER35percent a squishy little cuddle party on one small fluffy pink cushion: ONE very chubby light-caramel BABY BEAR with round ears/dark bead eyes/tiny smile/pink blush/stubby feet and paws, hugging oversized creamy milk-tea cup with a few dark round tapioca pearls visible at bottom, pale pink lid and short pink straw; small pink bow on bear head. Beside bear ONE tiny marshmallow-cream HAMSTER with peach blush and little flipper-like round paws, wearing a pink STRAWBERRY HOOD with tiny pale seeds/green leaf cap and holding a small strawberry. Between them one small smiling butter-cream star cookie friend, plus two tiny pink heart charms beside cushion. Entire cuddle group comfortably contained bottom35percent with margins, visible tiny plush paws/soft materials, irrepressibly sweet kawaii stationery mood, soft ambient light/delicate shadow. NO photorealistic animals fur anatomy claws long limbs teeth or wet materials. No cafe room furniture machinery typewriters realistic bugs carnival starscapes logos text UI phone borders watermark. Full bleed.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "NUkGEwSln5Z4YnqHSXCWBoc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2957fe3f.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 92244,
+      "sha256": "2957fe3febcac8a7d6362752a7ad557246dcc59d027f7c199cc46f1ffe47086c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c4e7b968.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 82438,
+      "sha256": "c4e7b968784afc7fbb07b4c9e68cc585ed8ea82d61720879d4ae53a3cbc68bdb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.ebbfd54d.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 40976,
+      "sha256": "ebbfd54dd015d49f8f4ad3f4afcf2d63890fb6b5b75dc0552e453a90194ea4b1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.bcde65a3.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6846,
+      "sha256": "bcde65a3af61c6ab2cd15e4cc3bcf3a2a61710bd1c74fdd48ff598204c23f24a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-boba-teapot.bb1fd12c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 48912,
+      "sha256": "bb1fd12cc8c9e375d05998b9cd275d5e75e61f4dae4c940940a0d9a2ab2a7ff2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tapioca-planet.1c8a5752.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 54442,
+      "sha256": "1c8a5752649d534a09b553123d0caccc249b6a1052fdf6615c9e37c5b25f2d89",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tea-break-focus.fb5c2e54.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 49860,
+      "sha256": "fb5c2e54ca8919033286b42c91c819279c059abf1c22d0666747236f94b29cbe",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 375718,
+  "widgets": [
+    {
+      "id": "boba-teapot",
+      "kind": "art",
+      "image": "widget-boba-teapot.bb1fd12c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Boba teapot"
+    },
+    {
+      "id": "tapioca-planet",
+      "kind": "art",
+      "image": "widget-tapioca-planet.1c8a5752.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tapioca planet"
+    },
+    {
+      "id": "tea-break-focus",
+      "kind": "art",
+      "image": "widget-tea-break-focus.fb5c2e54.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tea break focus"
+    }
+  ]
+}

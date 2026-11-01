@@ -1,0 +1,191 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "signal-yellow",
+  "packVersion": 2,
+  "name": "Signal Yellow",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#BFB7AF",
+    "tile": "#A8A19A",
+    "glyph": "#1C1816",
+    "accent": "#C7A369",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Signal Yellow",
+    "mood": "Concrete grey, black icons, yellow metro station, route sculpture and station clock.",
+    "tags": [
+      "signal",
+      "yellow",
+      "concrete",
+      "grey",
+      "black",
+      "icons",
+      "metro",
+      "station",
+      "route",
+      "sculpture",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Gül Işık (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "pxgOEwKGj0eId4l3aXCZBpc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.fdbda710.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 341430,
+      "sha256": "fdbda710ae3cfa456358095bfb5ec4d56d0e96b38baa48391a57f49b60cc66d1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.b10ff389.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 309922,
+      "sha256": "b10ff38940c4240bd808acdb004f206081a1177d4959afe9d6431b2b6465359c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.3ad6cc88.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 136268,
+      "sha256": "3ad6cc8881286e82404987c56b5d9926e61fb504f3a1af69324ef81b1dfd026d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.d316d195.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11778,
+      "sha256": "d316d195aa00a5f68cc31f3132f3bc1e0b70ab94ed456d28c7cf93b41aa1ac26",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-platform-focus.1ee20e0a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 216708,
+      "sha256": "1ee20e0add1e6e798235c50f85ede69b75376c3d14983a5c4de6d373b5c313ae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-signal-lantern.4ca883f4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 253268,
+      "sha256": "4ca883f4a345916034e55c143f8c4534ff455f1f3414e0e4929fb7525031212e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-transit-ticket-fold.60eb656b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 196410,
+      "sha256": "60eb656b9ebb12b53b5a3748f381dca01d5ca65fbd3942ee8d3dd8bfacbe28f9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-interchange.1df2eee6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 188734,
+      "sha256": "1df2eee63218ec7197590ecbeb38280956b786a4061a31da16d79a7694a6c8fa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-platform-slice.8c78d32f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 197066,
+      "sha256": "8c78d32f1b97961f68f3df16699840551d88033aa42db59e1b70160f2f96f15d",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1851584,
+  "widgets": [
+    {
+      "id": "platform-focus",
+      "kind": "art",
+      "image": "widget-platform-focus.1ee20e0a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Platform focus"
+    },
+    {
+      "id": "signal-lantern",
+      "kind": "art",
+      "image": "widget-signal-lantern.4ca883f4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Signal lantern"
+    },
+    {
+      "id": "transit-ticket-fold",
+      "kind": "art",
+      "image": "widget-transit-ticket-fold.60eb656b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Transit ticket fold"
+    },
+    {
+      "id": "interchange",
+      "kind": "art",
+      "image": "widget-interchange.1df2eee6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Interchange"
+    },
+    {
+      "id": "platform-slice",
+      "kind": "art",
+      "image": "widget-platform-slice.8c78d32f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Platform slice"
+    }
+  ]
+}

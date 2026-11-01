@@ -1,0 +1,147 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "pistachio-parlour",
+  "packVersion": 2,
+  "name": "Pistachio Parlour",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DFE1C8",
+    "tile": "#C4C5AF",
+    "glyph": "#1C1816",
+    "accent": "#946531",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Pistachio Parlour",
+    "mood": "Pistachio, cream and cocoa, miniature pastry atelier, croissant study and porcelain clock.",
+    "tags": [
+      "pistachio",
+      "parlour",
+      "cream",
+      "cocoa",
+      "miniature",
+      "pastry",
+      "atelier",
+      "croissant",
+      "study",
+      "porcelain",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for PISTACHIO PARLOUR. Upper76percent quiet almost uniform pale pistachio matte paper #E4E9D5, extremely subtle soft grain, no objects folds blossoms steam labels crumbs or patterns behind future app icons. Bottom24percent refined patisserie still life on pale pistachio ground: one small golden flaky butter croissant on a low ivory scalloped porcelain saucer, two tiny pistachio macarons stacked beside it, one neatly folded muted blush linen corner and three shelled pistachio kernels. Soft warm morning light, exquisite tactile pastry crumb/cream porcelain/linen editorial product photography, pale pistachio/ivory/cocoa/muted blush palette, restrained delicate luxury with clear silhouettes. Entire objects contained LOW, plenty of clean usable space above. No coffee cup, people, animals, text, logos, UI, phone, border, stars or floral patterns. Full bleed portrait wallpaper.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "MQkKEwSpb0aId4uzV4B7Bqg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.d800efd5.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 98572,
+      "sha256": "d800efd52e1aa716aa502619dae6bb911a803c98b51b1a26eb2219b0acf17398",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.9166c6f8.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 87594,
+      "sha256": "9166c6f8cb7ce0ba5e28c27551ea2f34d0606610392b31ed4183246f8ef660d8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.2640776c.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 43720,
+      "sha256": "2640776c95fb0a9d06aee2fa40fc5c16a1b1fadd2813c2acbddde33973b859b8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.379833e4.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7626,
+      "sha256": "379833e4b6e1a570f7ace547d2e1b523b911602635cae6aa869442fd94c26066",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-parlour-date.af2a6994.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 82242,
+      "sha256": "af2a6994843303f26136271b122124a2440bf485be6204b88391395abaf0fc56",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pistachio-mouse.4d6bef4d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 40004,
+      "sha256": "4d6bef4d1183dbabec9cda5ce35ae3aa828bb5c25b4527bbc5322239c4a0499d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pistachio-sundae.7ca4fa13.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84916,
+      "sha256": "7ca4fa13cb36786a481e7e63e0a74a6b6aa41805b06c18a9b5355f08f0919c96",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 444674,
+  "widgets": [
+    {
+      "id": "parlour-date",
+      "kind": "calendar",
+      "image": "widget-parlour-date.af2a6994.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Parlour date"
+    },
+    {
+      "id": "pistachio-mouse",
+      "kind": "art",
+      "image": "widget-pistachio-mouse.4d6bef4d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pistachio mouse"
+    },
+    {
+      "id": "pistachio-sundae",
+      "kind": "art",
+      "image": "widget-pistachio-sundae.7ca4fa13.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pistachio sundae"
+    }
+  ]
+}

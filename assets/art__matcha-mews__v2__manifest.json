@@ -1,0 +1,146 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "matcha-mews",
+  "packVersion": 2,
+  "name": "Matcha Mews",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F8F1DF",
+    "tile": "#D9D3C3",
+    "glyph": "#1C1816",
+    "accent": "#BBAB7D",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Matcha Mews",
+    "mood": "Warm cream, matcha green and pale pink original plush theme.",
+    "tags": [
+      "matcha",
+      "mews",
+      "warm",
+      "cream",
+      "green",
+      "pale",
+      "pink",
+      "original",
+      "plush",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original adorable kawaii PLUSH TOY wallpaper, portrait iPhone9:19.5 MATCHA MEWS. User requests matcha and Jellycat-like soft beanbag plush feel: use tactile short-pile velour, embroidered smiles, tiny corduroy dangling legs, affectionate understated faces. Invent original toys with NO brand labels/logos or exact existing products. Overall warm CREAM #F4F0DF, muted MATCHA GREEN #82966D, tiny strawberry-pink accents. Upper65percent clean uniform warm cream, no objects patterns lettering or shadows there, quiet icon space. LOWER35percent TWO unbelievably cute cuddly beanbag toys on one small low soft matcha-green cushion: a smiling cream MATCHA CUP PLUSH with tiny rounded handle, fuzzy green matcha surface with small cream foam HEART, dark bead eyes and simple embroidered curved smile/pink cheeks, TWO little cocoa corduroy legs and round feet dangling forward. Beside cup a small round marshmallow CREAM KITTEN with tiny triangle ears/dark bead eyes/stitched little smile/tiny whiskers/peach blush, stubby paws holding a small green heart-shaped mochi, one floppy green bow at neck. At their feet one small smiling pale-green mochi ball and one tiny pink heart charm. Entire group below63percent with generous side margins, soft real velvety textile texture, warm diffuse studio lighting, premium collectible plush product photograph aesthetic, squishy marshmallow softness, kawaii cuteness. No realistic live-animal anatomy claws teeth long limbs, no cafe furniture machinery bugs stars space scenes paper carnival, no logos labels text UI phones borders watermark. Full bleed.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "9BgOEwCYf1eIdoukZ4BpBVk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.6194c177.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 108186,
+      "sha256": "6194c177d66b87765004fa51f58b7cd2326d76de98f9556e8900ee5dcd25c994",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.e53498c7.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 97876,
+      "sha256": "e53498c7ee35bb7b3e3fd87f49bf39af946306bb812de4ff85fcec6b5652f2fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.2df1907e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 53890,
+      "sha256": "2df1907e303b7c475af21f89141eca9ae5e39b28830fdd1b31921ce996697f84",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.df1c3e97.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7434,
+      "sha256": "df1c3e9738f1aa3591597b30238dd681809f2ba2e7dade67083c2e5b72864bda",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-matcha-date.69487760.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 90456,
+      "sha256": "69487760f7c2f35fd01500726a76daeb909a52089177b5c7d6457bd539b41edc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-felt-matcha-fish.03ae8e2f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 71292,
+      "sha256": "03ae8e2fedfdd9ace6dcc42b3368df67acf516c5e8c18fb457c153e2510e2472",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-teacup-fern.d19da77f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 76678,
+      "sha256": "d19da77f576555abc69dc29e8b9e4038db610c2466a4a9e88daa5d10836cd87f",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 505812,
+  "widgets": [
+    {
+      "id": "matcha-date",
+      "kind": "calendar",
+      "image": "widget-matcha-date.69487760.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Matcha date"
+    },
+    {
+      "id": "felt-matcha-fish",
+      "kind": "art",
+      "image": "widget-felt-matcha-fish.03ae8e2f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Felt matcha fish"
+    },
+    {
+      "id": "teacup-fern",
+      "kind": "art",
+      "image": "widget-teacup-fern.d19da77f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Teacup fern"
+    }
+  ]
+}

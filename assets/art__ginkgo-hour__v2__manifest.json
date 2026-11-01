@@ -1,0 +1,98 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "ginkgo-hour",
+  "packVersion": 2,
+  "name": "Ginkgo Hour",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F5ECE0",
+    "tile": "#D7CEC4",
+    "glyph": "#1C1816",
+    "accent": "#D59625",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Ginkgo Hour",
+    "mood": "Golden ginkgo leaves in late-afternoon light.",
+    "tags": [
+      "ginkgo",
+      "hour",
+      "golden",
+      "leaves",
+      "late",
+      "afternoon",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: photorealistic-natural. Create an ORIGINAL portrait iPhone wallpaper, 9:19.5 aspect ratio, named GINKGO HOUR. Fine-art botanical still-life photography aesthetic. Seamless warm rice-ivory background #F5F0E5, smooth and quiet. UPPER 70% is genuinely empty warm ivory negative space for readable app icons, only extremely faint natural tonal depth. In the BOTTOM 27% place one small elegant GINKGO twig, two slender warm-brown stems and THREE unmistakable broad fan-shaped golden-yellow ginkgo leaves with radiating fine veins and soft irregular bilobed edges. A fourth fallen fan leaf lies low at the right. A natural autumn botanical specimen, beautifully detailed fine radial veins, buttery golden ochre translucent edges, realistic organic imperfections. Entire composition occupies about 62% canvas width and stays low with generous clear margins. Soft late-afternoon side light and delicate diffused shadows, luxurious calm editorial macro photography; palette warm ivory, golden ochre, muted olive, pale honey. No tree landscape, no birch, no berries or flowers, no vase, no ribbon, no paper craft, no jewelry, no faces or characters, no phone frame, no UI, no lettering or watermark. Original generated botanical imagery, no external photo.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "NikGGwKnf4Zoc3laRpBkBWk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.229ca5cc.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 86408,
+      "sha256": "229ca5cc5b469808e245e486c7c4d70a60f08144b64b701d7d3a880536d7df7d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.a9eb3359.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 78216,
+      "sha256": "a9eb33596ffd27472360998189a6bf5712bed828578dad62f2693bf26af7f074",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.75091447.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 41234,
+      "sha256": "7509144720f68c8cdce74bd0d65597cd75f881e3f131e194da356552768b58cf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.01e8900d.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7082,
+      "sha256": "01e8900dcb330a4dacde6fa2cc54be68bd2dc057330130d9d75fd0c202444539",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-scene.b29d2c16.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 43524,
+      "sha256": "b29d2c1651516650e7de7bae2bc0a4a79614123f39aab3ba1913485f1044d705",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 256464,
+  "widgets": [
+    {
+      "id": "scene",
+      "kind": "art",
+      "image": "widget-scene.b29d2c16.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Scene"
+    }
+  ]
+}

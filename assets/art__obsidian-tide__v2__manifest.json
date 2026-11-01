@@ -1,0 +1,146 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "obsidian-tide",
+  "packVersion": 2,
+  "name": "Obsidian Tide",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#2A2F34",
+    "tile": "#474B4F",
+    "glyph": "#FAF8F2",
+    "accent": "#809EA3",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Obsidian Tide",
+    "mood": "Black volcanic sand and turquoise surf seen from above.",
+    "tags": [
+      "obsidian",
+      "tide",
+      "black",
+      "volcanic",
+      "sand",
+      "turquoise",
+      "surf",
+      "seen",
+      "from",
+      "above",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Thomas Dorgler (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Create a distinctive photographic iPhone wallpaper named Obsidian Tide, portrait 9:19.5. Use attached real aerial black-sand beach photo as material/composition reference, redesign composition artistically: upper 60 percent is very dark smooth wet volcanic sand, almost-black charcoal with subtle water-swept striations, uncluttered calm area for app icons. Lower 40 percent: one sweeping diagonal turquoise wave enters from lower right towards left edge, intricate ivory sea foam feathering against black sand. Nearly overhead drone photography, hyperreal fine organic textures. Deep petrol teal, oxidised sea-glass green, charcoal and muted pearl white. Dramatic but restrained, boutique photographic art direction. Crop out ALL buildings, roads, people and vegetation. No stars, mountains, moon, fantasy glow, text, icons, border or watermark. Keep wave and foam concentrated in lower third; upper field rich subtly textured charcoal rather than flat black. Make a fresh visually distinctive composition, not merely a colour filter.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "ktcJEwZoUFiLflV4em+191Y=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.420561b6.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 450408,
+      "sha256": "420561b6f2dd6144f9b9d945d648fc8f4e7c87d03a9abc754113e2b596c9d902",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.7cb7a11d.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 413040,
+      "sha256": "7cb7a11da7a090a4bb04f88faf9ea5ab632987ed66bdfbae0d5a0b182bc7250f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.976750bb.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 205122,
+      "sha256": "976750bbcd3e467d67db9f8b730fd441787e43d9b6cb2e78ac11a27039d1c0ee",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.24bc89fe.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 29048,
+      "sha256": "24bc89fe032d4747906330104a7732fa0461698213039731b77063a19165e602",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-foam-pebble-garden.cc81b622.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 296972,
+      "sha256": "cc81b6224a6f9179d61ba1759e0bc127e095046ee1d0588ab42576cbc1f93a8f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sea-glass-wave-sculpture.a61fce4c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 250852,
+      "sha256": "a61fce4c0664688e7fc2bb3b2777e9ffd5e995472896e646dbf5793400075ab8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tide-focus.17ce15c8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 238002,
+      "sha256": "17ce15c82caba1d5e4f7b2873de9f3073afba9aa0c3e3a7ed0ef1c853f2a8fc5",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1883444,
+  "widgets": [
+    {
+      "id": "foam-pebble-garden",
+      "kind": "art",
+      "image": "widget-foam-pebble-garden.cc81b622.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Foam pebble garden"
+    },
+    {
+      "id": "sea-glass-wave-sculpture",
+      "kind": "art",
+      "image": "widget-sea-glass-wave-sculpture.a61fce4c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sea glass wave sculpture"
+    },
+    {
+      "id": "tide-focus",
+      "kind": "art",
+      "image": "widget-tide-focus.17ce15c8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tide focus"
+    }
+  ]
+}

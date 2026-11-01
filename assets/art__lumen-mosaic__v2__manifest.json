@@ -1,0 +1,144 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "lumen-mosaic",
+  "packVersion": 2,
+  "name": "Lumen Mosaic",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#E6C5AD",
+    "tile": "#CAAD98",
+    "glyph": "#1C1816",
+    "accent": "#EAB27E",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Lumen Mosaic",
+    "mood": "Peach, petrol teal and jewel-glass theme.",
+    "tags": [
+      "lumen",
+      "mosaic",
+      "peach",
+      "petrol",
+      "teal",
+      "jewel",
+      "glass",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium photographic artwork. Portrait iPhone wallpaper approximately9:19.5 for LUMEN MOSAIC. Upper58percent clean near-uniform very pale warm peach plaster #F1E3D8, matte and subtly tactile but visually quiet, NO objects outlines typography strong shadows colored reflections or patterned light in upper58percent. Lower42percent an exquisite freestanding small architectural art-deco arched stained-glass window leaning upright on a low pale peach plaster step: geometric fan pattern made from translucent petrol teal, amber honey, pale aquamarine and muted coral art glass with thin dark bronze lead cames. Entire arched window contained in lower area with ample side margins, hero occupies lower-center38percent, subtly asymmetrical composition. Sunlight shines through the window casting richly colored angular pools of light ONLY across the low step and bottom floor. One or two loose matching faceted glass offcuts resting on the step, tiny studio details. Beautiful rippled glass imperfections, precise handmade metal joints, refined real architectural-art photography, soft warm illumination. Background fully peach edge to edge. Sophisticated tactile material, contemporary craft, calm clean upper screen. No religious figures crosses saints church architecture, no rose window circular clock on wallpaper, no flowers plants people animals planets nebula stars clouds storms coast glass jars phone UI icons text logos borders or watermark. Full bleed.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "bEkKEwKqf6dXg4mIZJAKHvo=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.a6617ccb.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 232544,
+      "sha256": "a6617ccbe5039f105a0d6b110ee1e827fcc985009276b300d1135a618f687a0a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.075d8e94.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 206542,
+      "sha256": "075d8e94e7cb36948487abf2cb7113577fb8a0e286792bf67a47d70face2cc73",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.e4c306c8.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 96298,
+      "sha256": "e4c306c82a027cc9021b3b43555dd8fba3079d80f81b33ea615fc61a46c14fc1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.c8e57494.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14180,
+      "sha256": "c8e574941a88f6909493ab99cc8895a6e167e6537760ac8a5c62b75787df467e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mosaic-date.afdf66db.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 114898,
+      "sha256": "afdf66dbc1bdf385b9bfeba0ab04d24b2179cdc1d8ed672c4f66a0b8517ef03d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mosaic-lantern.7297dfed.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 122622,
+      "sha256": "7297dfed82fe7f860310bf3be143b7dc989bb844381da53faeeef787f941f6db",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tessellated-sunbird.81d4eab9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 145212,
+      "sha256": "81d4eab99cc1ad6482949706585c38f7511070afb1990d416716b27b1a2b239c",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 932296,
+  "widgets": [
+    {
+      "id": "mosaic-date",
+      "kind": "calendar",
+      "image": "widget-mosaic-date.afdf66db.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mosaic date"
+    },
+    {
+      "id": "mosaic-lantern",
+      "kind": "art",
+      "image": "widget-mosaic-lantern.7297dfed.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mosaic lantern"
+    },
+    {
+      "id": "tessellated-sunbird",
+      "kind": "art",
+      "image": "widget-tessellated-sunbird.81d4eab9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tessellated sunbird"
+    }
+  ]
+}

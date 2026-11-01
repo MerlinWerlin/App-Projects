@@ -1,0 +1,145 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "matcha-riso-garden",
+  "packVersion": 2,
+  "name": "Matcha Riso Garden",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F6EFDC",
+    "tile": "#D7D1C0",
+    "glyph": "#1C1816",
+    "accent": "#A1996D",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Matcha Riso Garden",
+    "mood": "Cream, matcha and rose risograph-style storybook fantasy.",
+    "tags": [
+      "matcha",
+      "riso",
+      "garden",
+      "cream",
+      "rose",
+      "risograph",
+      "style",
+      "storybook",
+      "fantasy",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Create original portrait iPhone wallpaper9:19.5 MATCHA RISO GARDEN. Reference Matcha Mews board is ONLY palette and cute cream-kitten identity; completely change technique from3D plush to FLAT TWO-DIMENSIONAL RISOGRAPH STORYBOOK illustration. Warm uncoated cream paper #F4F0DF, limited matcha-green/sage/dark-olive/soft-rose inks, fine stippled ink grain and subtle imperfect overprinting, flat cut silhouettes, hand-drawn gentle outlines, exquisitely printed little art zine. Absolutely no3D objects, rendered toys, fuzzy fur, realistic lighting or photographic depth. UPPER68percent empty cream paper with very subtle fine papergrain only, no art patterns or lettering. BOTTOM32percent a small whimsical tea garden growing INSIDE a broad cream chawan tea bowl: layered flat green matcha hills and three tiny tea sprouts, ONE tiny round white CAT GARDENER with dot eyes, pink blush, stubby paws, small sage leaf hat, watering a tea sprout with a little rose-pink watering can. A miniature cream footpath winds across the bowl garden, tiny pink fallen blossom at bowl foot. Bowl whole silhouette sits low, around65percent canvas width, kitten around9percent total image height, generous quiet margins. Sweet fantastical kawaii picture-book character, minimal elegant composition, tactile printmaking style, charming rather than realistic. No snails cottages acorn carts astronauts rocket/moon imagery, no lettering logos phones UI borders watermark.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "9RgKCwCXj4aHcY1HZ4BIB7k=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.10c4ae68.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 243290,
+      "sha256": "10c4ae68431f6525c961354be34c1be458e1ccbbf1fb5154e17e314033e2c261",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.a9d1e04e.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 218780,
+      "sha256": "a9d1e04ef8abc1835c6f5270ba609dd2c32f1e79af42c4ecd48d03cbb2ccc2a3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.b0edc2e9.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 105166,
+      "sha256": "b0edc2e9ef7d6a42ee39099e5bd0513c9d3e2a044709a806258eb324405e69e9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.79d00c4c.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 13310,
+      "sha256": "79d00c4cadd778950d14e7308c3d0f70a644070414e38145438a70485fd83243",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-riso-date.f951185e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 190024,
+      "sha256": "f951185e056949d74d0d620ec0a97ae782d2b0e21149d8eaa6d738426b6da9aa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-printed-garden-pebble.f283d156.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 155054,
+      "sha256": "f283d1562e9acf8dbdb41edaa77f94980307ca4534f76c7f98939b0a43d74c25",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-riso-butterfly.f87b5650.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 130206,
+      "sha256": "f87b56503fe18f937dfd40c12fe90f6e987f264c4bfabbda12c9ea38fdeb7c6e",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1055830,
+  "widgets": [
+    {
+      "id": "riso-date",
+      "kind": "calendar",
+      "image": "widget-riso-date.f951185e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Riso date"
+    },
+    {
+      "id": "printed-garden-pebble",
+      "kind": "art",
+      "image": "widget-printed-garden-pebble.f283d156.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Printed garden pebble"
+    },
+    {
+      "id": "riso-butterfly",
+      "kind": "art",
+      "image": "widget-riso-butterfly.f87b5650.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Riso butterfly"
+    }
+  ]
+}

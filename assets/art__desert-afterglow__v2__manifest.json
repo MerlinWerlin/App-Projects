@@ -1,0 +1,234 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "desert-afterglow",
+  "packVersion": 2,
+  "name": "Desert Afterglow",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#553232",
+    "tile": "#6C4E4D",
+    "glyph": "#FAF8F2",
+    "accent": "#E4894D",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Desert Afterglow",
+    "mood": "Terracotta dunes glowing after sunset, warm cocoa and ivory.",
+    "tags": [
+      "desert",
+      "afterglow",
+      "terracotta",
+      "dunes",
+      "glowing",
+      "after",
+      "sunset",
+      "warm",
+      "cocoa",
+      "ivory",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Jacob Castle (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Create photographic portrait 9:19.5 iPhone wallpaper 'Desert Afterglow' using attached Jacob Castle desert photograph as natural reference. A sophisticated warm theme: upper55% calm dark cocoa-plum dusk sky grading softly toward muted apricot near horizon; lower45% sculptural terracotta desert dunes, beautiful fine wind-ripple sand, long deep aubergine shadows, thin copper light along sharp dune crests. Low horizon and elegant sweeping S-curve dune ridge, realistic natural photography with a refined editorial colour grade. Subtle warm glow at horizon but no visible sun disk. Dark enough upper area to blend cocoa icon tiles and ivory lettering, retain natural texture rather than flat solid. No stars, moon, foliage, footprints, people, buildings, UI, text, logos or borders. Fresh restrained cinematic photographic reinterpretation, not illustration.",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "zkgKGwaEewh5hXl6dHhQlwc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2576832c.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 94022,
+      "sha256": "2576832c31003c1ad3729dce3b6293a76903e70fbcbe1ba40579d867be8e5c2e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.5f6e5641.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 83208,
+      "sha256": "5f6e5641a5948cb17520fb80039489370bd72d93c1821139fa7411c602a03116",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.afdeb4ea.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 40718,
+      "sha256": "afdeb4ea1b000c69511bc555ab9080bd2b570390ae2e713576c054072f1fadde",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.2e482e82.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6870,
+      "sha256": "2e482e82e5b8cfa2f9c849326a9c362b0dcbf4110843b1dcb4be7de1f8bb3255",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dune-countdown.33308c41.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 51086,
+      "sha256": "33308c41f27defd9752fb2bd6fe60d50d7a6d9d8cbfdd9e085acfed8c48145cf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dunes-photo.98606aef.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 90552,
+      "sha256": "98606aef98bfae5177fcb4e564add3dfd4b92408d4babed9f408cfc6f0fb29e5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-crescent-moon.bd9ad406.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 42092,
+      "sha256": "bd9ad406e97fc27f8a0bed06f8e5f1be574f85e14e8a970db79b70c1bd6fa856",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-desert-scarab.ce7b90e0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 136686,
+      "sha256": "ce7b90e012b8e921dcf1a9395639f3c18dfab94fdee2aeeb9077660bec2fca59",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sandstone-arch.60c2e33d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 79432,
+      "sha256": "60c2e33d303816ffaf46985087e227243fc80b5fd002b9519f5f8d1a468ed7a2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pyramid.3bd50f14.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 86894,
+      "sha256": "3bd50f143108145fb18400228e730495f0401c7d42972d02d4f6c76832d65ed0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-solstice-seal.d86ce31c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 133440,
+      "sha256": "d86ce31cc437754ef3b7bdc086d35bb26e539d1392b8dae7bbba15b22ecde967",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 845000,
+  "widgets": [
+    {
+      "id": "dune-countdown",
+      "kind": "countdown",
+      "image": "widget-dune-countdown.33308c41.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dune countdown"
+    },
+    {
+      "id": "dunes-photo",
+      "kind": "photo",
+      "image": "widget-dunes-photo.98606aef.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dunes photo"
+    },
+    {
+      "id": "crescent-moon",
+      "kind": "art",
+      "image": "widget-crescent-moon.bd9ad406.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Crescent moon"
+    },
+    {
+      "id": "desert-scarab",
+      "kind": "art",
+      "image": "widget-desert-scarab.ce7b90e0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Desert scarab"
+    },
+    {
+      "id": "sandstone-arch",
+      "kind": "art",
+      "image": "widget-sandstone-arch.60c2e33d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sandstone arch"
+    },
+    {
+      "id": "pyramid",
+      "kind": "art",
+      "image": "widget-pyramid.3bd50f14.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pyramid"
+    },
+    {
+      "id": "solstice-seal",
+      "kind": "art",
+      "image": "widget-solstice-seal.d86ce31c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Solstice seal"
+    }
+  ]
+}

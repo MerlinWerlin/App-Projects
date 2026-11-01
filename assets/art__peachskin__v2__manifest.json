@@ -1,0 +1,99 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "peachskin",
+  "packVersion": 2,
+  "name": "Peachskin",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F8E1D1",
+    "tile": "#D9C5B7",
+    "glyph": "#1C1816",
+    "accent": "#B9874E",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Peachskin",
+    "mood": "Velvety peach skin and soft fruit tones.",
+    "tags": [
+      "peachskin",
+      "velvety",
+      "peach",
+      "skin",
+      "soft",
+      "fruit",
+      "tones",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 PEACHSKIN. Fine-art BOTANICAL FRUIT STILL-LIFE PHOTOGRAPH aesthetic, warm pale PEACH-CREAM background #F6EBE2. UPPER70percent EMPTY quiet smooth peachcream with faint natural tonal softness only no patterns objects bokeh points or text. Bottom28percent a small graceful fruiting PEACH branch entering from lower-left, holding TWO small ripe natural peaches with velvety fine fuzz, warm pale-gold skin and muted dusty-coral blush, delicate central seams, a few slender fresh SAGE-GREEN peach leaves. One tiny pale-pink peach blossom on a shorter side twig. Compact low arrangement around55percent canvas width, peaches together about13percent image height, full bottom safe margin. Soft natural morning light, beautiful tactile fruit fuzz and subtle leaf veins, restrained authentic small imperfections, shallow natural depth of field and soft shadows, elegant serene botanical editorial photography. Peachcream/coral/palegold/sage palette, warm airy minimal composition. No faces characters animals ribbons embroidery toys craft plastic porcelain glass gems other fruit bottles text UI phoneframes logos watermark. Original generated photographic-style image, no external photograph.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "NDkGEwKVr2eHdIyFWXCJA6c=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.00418452.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 75040,
+      "sha256": "00418452fc1ce4770877f108efd6e8b91d5ee313db838aa3879bc4ab00bd68a7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.6e5ea95b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 66782,
+      "sha256": "6e5ea95bb60f4ced8b7f4ead0e7afc1a60b8973b28a10b3c678b6d6707fa369c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.71dd816a.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 34498,
+      "sha256": "71dd816a6195f6fcedbf1b05cb3ea41eb4c414db74844871fb228720e4481c01",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.05e8d3fd.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6326,
+      "sha256": "05e8d3fdf25fa993962fe9e8a2edaf6f945f4649a6e2fcb6a5ccffd445fe792a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-scene.87ce5064.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 33162,
+      "sha256": "87ce50648028b106a034f3196884cf5c9d7c6b9e686613d9e14fc5369ebb20e4",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 215808,
+  "widgets": [
+    {
+      "id": "scene",
+      "kind": "art",
+      "image": "widget-scene.87ce5064.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Scene"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "olive-outpost",
+  "packVersion": 2,
+  "name": "Olive Outpost",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#30331E",
+    "tile": "#4C4F3C",
+    "glyph": "#FAF8F2",
+    "accent": "#99723A",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Olive Outpost",
+    "mood": "Dark olive canvas, cream icons, pocket campsite, camping lantern and field-watch clock.",
+    "tags": [
+      "olive",
+      "outpost",
+      "dark",
+      "canvas",
+      "cream",
+      "icons",
+      "pocket",
+      "campsite",
+      "camping",
+      "lantern",
+      "field",
+      "watch",
+      "clock"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for OLIVE OUTPOST. Upper76percent quiet uniform dark muted olive canvas #343D2E with extremely subtle fine woven cotton texture, absolutely no seams folds objects foliage highlights map grids or labels behind future app icons. Bottom24percent exquisite restrained outdoor equipment still life: one small ivory enamel camping mug with dark olive rim, a closed flat brass pocket compass angled beside it, one folded edge of sandy canvas and a tiny pine cone low at left, on matte dark-olive ground. Warm golden lantern-like side light, high-end camping catalogue macro photography, soft shadows, tactile enamel/brass/cotton realism. Whole items contained low with small safe margins, no large landscape or mountains. Muted olive/ivory/sand/warm amber palette, calm woodland evening mood. No fire, people, animals, text, brands, UI, phones, border, stars or background pattern. Full bleed portrait with abundant quiet icon space.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "zAgGCwJdQZl4qzBejEC6CKU=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.e52c30c2.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 111306,
+      "sha256": "e52c30c2b8abced695b985ea22d58de9b6c36a100bf9cb7b888a2fae411b75e0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.6a6753fa.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 94870,
+      "sha256": "6a6753fad646c9cf4987230b10ce292fae0a5de96ecde45b128f5bddf7982806",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.61cfa67e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 39196,
+      "sha256": "61cfa67e9e3660cae9b7f9577661ea2259fbeb24fe2f2c0acc8c2bf0fdc5674b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.6c39935a.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4938,
+      "sha256": "6c39935aa8789f0fbc3645a0263a47665e60fd9b7ba1c5082a49371026d59dcf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-outpost-date.28bbf7ed.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 92056,
+      "sha256": "28bbf7ed234cfd44fd55ef144086f16bcaa217e9a81ced67ded66ebf80ad0d30",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-canvas-fern-bird.b2f31d97.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 122670,
+      "sha256": "b2f31d97b85001c11954a1b04baee6cf90dff66f5a329d7ff65b9d06df57f6ca",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-olive-field-radio.f70b3b2a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 107518,
+      "sha256": "f70b3b2abda080a9423093e38c46b596c9e07b74edbd84b9a557161f4bc4d0b3",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 572554,
+  "widgets": [
+    {
+      "id": "outpost-date",
+      "kind": "calendar",
+      "image": "widget-outpost-date.28bbf7ed.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Outpost date"
+    },
+    {
+      "id": "canvas-fern-bird",
+      "kind": "art",
+      "image": "widget-canvas-fern-bird.b2f31d97.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Canvas fern bird"
+    },
+    {
+      "id": "olive-field-radio",
+      "kind": "art",
+      "image": "widget-olive-field-radio.f70b3b2a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Olive field radio"
+    }
+  ]
+}

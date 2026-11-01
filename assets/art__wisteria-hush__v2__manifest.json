@@ -1,0 +1,142 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "wisteria-hush",
+  "packVersion": 2,
+  "name": "Wisteria Hush",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#E4DAF2",
+    "tile": "#C8BFD3",
+    "glyph": "#1C1816",
+    "accent": "#E0D6F2",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Wisteria Hush",
+    "mood": "Soft wisteria blooms in a hushed garden.",
+    "tags": [
+      "wisteria",
+      "hush",
+      "soft",
+      "blooms",
+      "hushed",
+      "garden",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 WISTERIA HUSH. Fine-art BOTANICAL MACRO PHOTOGRAPH aesthetic, delicate natural lavender WISTERIA flowers, misty pastel LILAC background #EEEAF5, romantic serene softness. UPPER68percent EMPTY uniform misty pale lilac with only very faint out-of-focus tonal gradient, no objects bokeh dots pattern or lettering. Bottom30percent one graceful slender natural wisteria branch entering from lower left around72percentheight, sweeping gently right, holding THREE small hanging lilac/lavender wisteria flower racemes with dozens of delicate pea-like petals, a few small fresh sage-green compound leaflets. Whole botanical arrangement compact around60percent image width, low with full bottom safe margin; longest raceme descends toward90percentheight, not cropped. Natural flowers anatomically plausible, subtle petal translucency, soft overcast morning light, pale buttery highlights and true lavender shadows, no harsh contrast. Quiet clean pastel botanical editorial photography, graceful sparse composition, rich fine petal details against smooth background. No animals faces characters ribbons cherries textiles embroidery toys clay resin buildings watermarks phoneframes UI text logos. Original generated photographic-style image, not a copy of a photograph.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "dhcGAwKWj4aIdIp3AHyABXg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.5d0032b3.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 98946,
+      "sha256": "5d0032b3b5215b285a522fcf1dc79bacfc036fcdcf9fc9642865796368514b13",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.d973fb4a.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 88904,
+      "sha256": "d973fb4acdc70516a0271d767e9a96dfa12427673f352f3ce06c80ff625b9f5f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.6bd6bcef.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 50414,
+      "sha256": "6bd6bceff6b24ca3a8629ec0379adee3c013134537f75f2791190bc4517dfc23",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.1a69eb79.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9456,
+      "sha256": "1a69eb79fb68a7ece00ec1c556e76b6d744795ae37fdac92e8dfcb8f4c7e729b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-hush-focus.356312c1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 33558,
+      "sha256": "356312c1a60e3ec206d729d92993d50120ff0174b1ba4579b67d31b35cc7af8c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wisteria-dew.f8cc9506.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 40640,
+      "sha256": "f8cc95065f180f1b1c97aa8b93a22fd83d20c057fbfe16e177f1aed3093ca3bb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wisteria-lacewing.0450b0e6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 58186,
+      "sha256": "0450b0e60793c99c462728bd9ccc6f15a280603413d9077f205b93e7b238a705",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 380104,
+  "widgets": [
+    {
+      "id": "hush-focus",
+      "kind": "art",
+      "image": "widget-hush-focus.356312c1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Hush focus"
+    },
+    {
+      "id": "wisteria-dew",
+      "kind": "art",
+      "image": "widget-wisteria-dew.f8cc9506.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wisteria dew"
+    },
+    {
+      "id": "wisteria-lacewing",
+      "kind": "art",
+      "image": "widget-wisteria-lacewing.0450b0e6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wisteria lacewing"
+    }
+  ]
+}

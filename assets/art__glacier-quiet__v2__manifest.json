@@ -1,0 +1,193 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "glacier-quiet",
+  "packVersion": 2,
+  "name": "Glacier Quiet",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#C4D3E5",
+    "tile": "#ACB9C8",
+    "glyph": "#1C1816",
+    "accent": "#66899B",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Glacier Quiet",
+    "mood": "A photographic-style blue ice lagoon with pale fog, slate icons, frozen bubble artwork.",
+    "tags": [
+      "glacier",
+      "quiet",
+      "photographic",
+      "style",
+      "blue",
+      "lagoon",
+      "with",
+      "pale",
+      "slate",
+      "icons",
+      "frozen",
+      "bubble",
+      "artwork",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "LdcNAwJ2j0h3iYd4qI9t+nk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.52eb7b8f.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 170718,
+      "sha256": "52eb7b8f72018b17fe8d50b93589e42698a3848a004dfdf5bf14f0320c2d409e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.ac67c52f.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 153514,
+      "sha256": "ac67c52f1cbbdf54b071ec6969878b6390ee2817af2cfccdbf3c539cab499a1e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.21f7fe91.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 61518,
+      "sha256": "21f7fe9174a0648335d3fac7feb773946545fd0bfd615b049febff1403e083da",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.4dd40acb.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 10560,
+      "sha256": "4dd40acbe46e2ed109fb5338303847135adaf47095bdad376b43125ac30db0f2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glacier-date.21151c0d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84872,
+      "sha256": "21151c0dd5b78a3e89b5d6c2c59c1c69ad8e61ce00acd5841fb589b5e288e6de",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-blue-ice.60957052.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 126552,
+      "sha256": "609570527c9fa402b2333a795a40b8b1b396c2b48f3cd74d4f8f5c68464ed698",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-frost-feather.c0226a56.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 143280,
+      "sha256": "c0226a5636ca21afa2f14bf1a8ec0351412761f43095af155f6bd8ec397b7e41",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glacial-iceberg.e46a964e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 117734,
+      "sha256": "e46a964eb9d50f3bad20273c7bd16c616fb74e85452c379c31e371eb6c5feaf3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-frozen-bubbles.c109808d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 321906,
+      "sha256": "c109808dc981bdb48598b5eead810c78680e69dbe1673f4e873e24493895f46f",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1190654,
+  "widgets": [
+    {
+      "id": "glacier-date",
+      "kind": "calendar",
+      "image": "widget-glacier-date.21151c0d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glacier date"
+    },
+    {
+      "id": "blue-ice",
+      "kind": "art",
+      "image": "widget-blue-ice.60957052.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Blue ice"
+    },
+    {
+      "id": "frost-feather",
+      "kind": "art",
+      "image": "widget-frost-feather.c0226a56.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Frost feather"
+    },
+    {
+      "id": "glacial-iceberg",
+      "kind": "art",
+      "image": "widget-glacial-iceberg.e46a964e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glacial iceberg"
+    },
+    {
+      "id": "frozen-bubbles",
+      "kind": "art",
+      "image": "widget-frozen-bubbles.c109808d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Frozen bubbles"
+    }
+  ]
+}

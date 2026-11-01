@@ -1,0 +1,193 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "cloudwash",
+  "packVersion": 2,
+  "name": "Cloudwash",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F1E7D7",
+    "tile": "#D3CABC",
+    "glyph": "#1C1816",
+    "accent": "#7791AE",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Cloudwash",
+    "mood": "A friendly ghost laundry with blue linocut icons, ivory paper, sleeping cloud basket.",
+    "tags": [
+      "cloudwash",
+      "friendly",
+      "ghost",
+      "laundry",
+      "with",
+      "blue",
+      "linocut",
+      "icons",
+      "ivory",
+      "paper",
+      "sleeping",
+      "cloud",
+      "basket",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "dQgGEwJ4fzh4eYd4aH+C9jc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.86d49fdf.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 357364,
+      "sha256": "86d49fdff747eae8a56db517cf54fbda7f2b0048009e2873d24185dc2eca0f90",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.bbac7f39.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 320202,
+      "sha256": "bbac7f39ee58c7536c0bbfa21c6cee2e03831e9790ddb27fd7c657f885b3e883",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.97ae25ad.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 135174,
+      "sha256": "97ae25adc4a6f187e0cd11218d6dc398bb7230823fdf769902b6ae2371def9f1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.1e34fbe5.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 16584,
+      "sha256": "1e34fbe59bebc1ace3f02ce6b2e53fb6f9dfb030b0a7be32a722cd81523739ca",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cloud-basket.d49ec418.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 175240,
+      "sha256": "d49ec4180e83c0cc1b5403a5ce60210309d99c813d3b3d488b5ac724a3c85e63",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-clothespin-bird.424c32a2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 193660,
+      "sha256": "424c32a2c160b9d3e67a74656c44ec15633737372d645e038b7e56c68128d3ff",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cloud-laundry-basket.b2ae0508.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 199628,
+      "sha256": "b2ae0508a0ac6a9e0c15f448d8e2c5416e2435270dca70a5271295df1c334497",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-laundry-focus.a4a27ceb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 181416,
+      "sha256": "a4a27ceb9cb36863a6c5288fa55afc97e7ac6f354c2da7a4d02b9c473d40f2e8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-star-wash.2b34bf02.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 165208,
+      "sha256": "2b34bf0272fe5cbf6a586dd4f388d1cfb5f87a54b6d13f1c9b152310c4c3ce64",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1744476,
+  "widgets": [
+    {
+      "id": "cloud-basket",
+      "kind": "art",
+      "image": "widget-cloud-basket.d49ec418.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cloud basket"
+    },
+    {
+      "id": "clothespin-bird",
+      "kind": "art",
+      "image": "widget-clothespin-bird.424c32a2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Clothespin bird"
+    },
+    {
+      "id": "cloud-laundry-basket",
+      "kind": "art",
+      "image": "widget-cloud-laundry-basket.b2ae0508.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cloud laundry basket"
+    },
+    {
+      "id": "laundry-focus",
+      "kind": "art",
+      "image": "widget-laundry-focus.a4a27ceb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Laundry focus"
+    },
+    {
+      "id": "star-wash",
+      "kind": "art",
+      "image": "widget-star-wash.2b34bf02.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Star wash"
+    }
+  ]
+}

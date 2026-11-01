@@ -1,0 +1,193 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "paper-carnival",
+  "packVersion": 2,
+  "name": "Paper Carnival",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F3E4D0",
+    "tile": "#D5C7B6",
+    "glyph": "#1C1816",
+    "accent": "#88564E",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Paper Carnival",
+    "mood": "Ivory paper, ink-blue icons, crimson foldout tent, pinwheel trio and Ferris-wheel clock.",
+    "tags": [
+      "paper",
+      "carnival",
+      "ivory",
+      "blue",
+      "icons",
+      "crimson",
+      "foldout",
+      "tent",
+      "pinwheel",
+      "trio",
+      "ferris",
+      "wheel",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Ann H (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "8ygKCwKXjzeHiHq0aYCNBsg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.7364f254.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 287788,
+      "sha256": "7364f254911ff659a1457df349d4d936d771a5ae15a5b8c4670006ed29117a15",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.5d37b31e.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 258570,
+      "sha256": "5d37b31e0fe2bd2c18f7d109c530eb790ee8401870ec1d4a5e216362f13ed997",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.21c9d125.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 132654,
+      "sha256": "21c9d125b604423e73a8b44ada152cc2eb84fa547f8890ca42472ed19d917269",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.f092aa86.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12486,
+      "sha256": "f092aa86417d251275900bbae04827beffbdf190b4dbaa694aa514042612104e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-carnival-countdown.a8b9ea3f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 141252,
+      "sha256": "a8b9ea3f304b8ddd86c831dd626b59c680ffbc1d5abdebbc421d6b1472b0a23f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-confetti-snail.dd3b1238.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 147038,
+      "sha256": "dd3b1238cc61215ba1d78588cbd37aae8882e2fcc6c107dd3048e24d4388a7fc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-dragon-kite.980cf85e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 129314,
+      "sha256": "980cf85ef4abbb33c5a0d199a5a1f1b7ddfdd5303e9cdbbb1db99f95d714e503",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-foldout-big-top.dceef9f8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 111708,
+      "sha256": "dceef9f86820fe6b9cc77b1ecaef17558dd039f214b6fad0005f4c9d030bdbe4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pinwheel-trio.d4ea7b9c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 101864,
+      "sha256": "d4ea7b9c10f94216a9bff5325e81e4b3f430a87c7e7ffc3e380a1066dc52de0c",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1322674,
+  "widgets": [
+    {
+      "id": "carnival-countdown",
+      "kind": "countdown",
+      "image": "widget-carnival-countdown.a8b9ea3f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Carnival countdown"
+    },
+    {
+      "id": "confetti-snail",
+      "kind": "art",
+      "image": "widget-confetti-snail.dd3b1238.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Confetti snail"
+    },
+    {
+      "id": "paper-dragon-kite",
+      "kind": "art",
+      "image": "widget-paper-dragon-kite.980cf85e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Paper dragon kite"
+    },
+    {
+      "id": "foldout-big-top",
+      "kind": "art",
+      "image": "widget-foldout-big-top.dceef9f8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Foldout big top"
+    },
+    {
+      "id": "pinwheel-trio",
+      "kind": "art",
+      "image": "widget-pinwheel-trio.d4ea7b9c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pinwheel trio"
+    }
+  ]
+}

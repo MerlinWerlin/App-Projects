@@ -1,0 +1,188 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "nebula-veil",
+  "packVersion": 2,
+  "name": "Nebula Veil",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#090B1A",
+    "tile": "#2B2C38",
+    "glyph": "#FAF8F2",
+    "accent": "#9B80A2",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Nebula Veil",
+    "mood": "Ink-violet starfield with cyan and rose gas clouds.",
+    "tags": [
+      "nebula",
+      "veil",
+      "violet",
+      "starfield",
+      "with",
+      "cyan",
+      "rose",
+      "clouds",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "ixcKCwZmgFl4m2Z3m1N/CKg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.db358dcc.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 285268,
+      "sha256": "db358dcc1084dabe658c321ca3280408fe3bfbf7fc98a04012c9ddd0471c122b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.930d47bf.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 261370,
+      "sha256": "930d47bf8cc69d7fe7331c58d8fd29ed2da9b66e08c333659de4c556cb98922f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.3a628053.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 130708,
+      "sha256": "3a62805301dd268b12c34bdc96b098e3bb4798755849492bb5fe53b33388456f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.d0e7278c.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 21734,
+      "sha256": "d0e7278cf4ee484b26ba7346c1b1efc8c08e2a4226e8c9335909cbbd623d797e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-nebula-habits.3774fa15.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 202296,
+      "sha256": "3774fa15b3596e673210d16ecee25f3bc705a545505773072a1a809f950af194",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glass-satellite.cdebc99e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 193264,
+      "sha256": "cdebc99e78e3fbaa5c03d0fe0ef27e9cdfe84b1b23de1c60c07abcddb4ed971b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-nebula-quill.7320aa7d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 208430,
+      "sha256": "7320aa7dca87fb3fd520c3b781395cb94fafcf87fb3c03305879ac4db4fbf417",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glass-comet.641d18b9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 230480,
+      "sha256": "641d18b9d512c77b1fd3d5a97addf8419fad61fe8d68e1727b7d7064f2266703",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-nebula-aperture.325cb7d7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 242090,
+      "sha256": "325cb7d7265dfb323ea4187b63a0b6bd3b0fe674910ff6544b11f0edc9e265d4",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1775640,
+  "widgets": [
+    {
+      "id": "nebula-habits",
+      "kind": "habits",
+      "image": "widget-nebula-habits.3774fa15.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Nebula habits"
+    },
+    {
+      "id": "glass-satellite",
+      "kind": "art",
+      "image": "widget-glass-satellite.cdebc99e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glass satellite"
+    },
+    {
+      "id": "nebula-quill",
+      "kind": "art",
+      "image": "widget-nebula-quill.7320aa7d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Nebula quill"
+    },
+    {
+      "id": "glass-comet",
+      "kind": "art",
+      "image": "widget-glass-comet.641d18b9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glass comet"
+    },
+    {
+      "id": "nebula-aperture",
+      "kind": "art",
+      "image": "widget-nebula-aperture.325cb7d7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Nebula aperture"
+    }
+  ]
+}

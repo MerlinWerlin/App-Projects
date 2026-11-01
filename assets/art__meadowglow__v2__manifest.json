@@ -1,0 +1,187 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "meadowglow",
+  "packVersion": 2,
+  "name": "Meadowglow",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F5EADE",
+    "tile": "#D7CDC2",
+    "glyph": "#1C1816",
+    "accent": "#A18346",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Meadowglow",
+    "mood": "A sunlit daisy meadow in soft morning mist.",
+    "tags": [
+      "meadowglow",
+      "sunlit",
+      "daisy",
+      "meadow",
+      "soft",
+      "morning",
+      "mist",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "bykSIwJ3j0iHiHd4d4BnBxk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.c9ab9ffa.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 150108,
+      "sha256": "c9ab9ffae8d3c67a0822df6364ef0a74b6dca2269a3c6ed26e7807ffb9f3740f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.fc2f5be1.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 136476,
+      "sha256": "fc2f5be103a79b09c0b16acb01f13642706b7b63cddd70716fe59eef31acfed1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.57fa0d4e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 59850,
+      "sha256": "57fa0d4e309ab48a34ca0cce17afa6442b56e86a5d38a4cf4741c3d5c1a3212d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.98e8601f.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 16644,
+      "sha256": "98e8601fe784bd15a546a602cf194080d6774b05932c7797bb33955068948ff0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-meadow-date.679785f6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 74134,
+      "sha256": "679785f679c8dcaabbd8ed069e0185c4ecd18ff20a8c5406b57ae513047be85f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dew-daisy.14655691.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 51932,
+      "sha256": "14655691d524c0ca42e9ca0b88b89df51a2c8f1287e55014d81588c8d68f837f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dew-grass-orb.ab598b91.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 103612,
+      "sha256": "ab598b9169e5dfb508dd8446fd1aca74ef61d1f7dd8c4a4feb0647f45a265f1c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sunlit-dandelion.d099e95f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 110172,
+      "sha256": "d099e95f864c456f491ac36e54572d10ca8c4b4578401c63f5e15d99da1195f7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-morning-grass.aed4e109.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 78784,
+      "sha256": "aed4e109fc75ec127b6743414a028b5f5336a3c4dbb8fcbeb099e92c4b06df1a",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 781712,
+  "widgets": [
+    {
+      "id": "meadow-date",
+      "kind": "calendar",
+      "image": "widget-meadow-date.679785f6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Meadow date"
+    },
+    {
+      "id": "dew-daisy",
+      "kind": "art",
+      "image": "widget-dew-daisy.14655691.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dew daisy"
+    },
+    {
+      "id": "dew-grass-orb",
+      "kind": "art",
+      "image": "widget-dew-grass-orb.ab598b91.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dew grass orb"
+    },
+    {
+      "id": "sunlit-dandelion",
+      "kind": "art",
+      "image": "widget-sunlit-dandelion.d099e95f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sunlit dandelion"
+    },
+    {
+      "id": "morning-grass",
+      "kind": "art",
+      "image": "widget-morning-grass.aed4e109.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Morning grass"
+    }
+  ]
+}

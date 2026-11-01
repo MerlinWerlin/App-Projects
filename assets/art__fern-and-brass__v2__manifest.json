@@ -1,0 +1,164 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "fern-and-brass",
+  "packVersion": 2,
+  "name": "Fern & Brass",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#040E0E",
+    "tile": "#262F2E",
+    "glyph": "#FAF8F2",
+    "accent": "#020C0A",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Fern & Brass",
+    "mood": "Lush ferns and warm antique brass.",
+    "tags": [
+      "fern",
+      "brass",
+      "lush",
+      "ferns",
+      "warm",
+      "antique",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Philipp Pilz (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Create portrait 9:19.5 iPhone wallpaper 'Fern & Brass' based on attached Philipp Pilz dark fern photograph as botanical material reference. Refine into exquisite realistic botanical photography: deep nearly-black forest green upper 55% calm shadow with faint barely visible fern silhouettes, lower half and lower side edges layered elegant fern fronds in moss green, sage highlights and one subtly bronzed autumn frond. Soft slanted warm natural light catches fine leaf edges and a few dew droplets, mostly dark. Real organic texture and premium restrained composition. Botanical fern, not tropical palm or monstera. No synthetic gold foil, no sparkles/stars, fantasy glow, text, icons, phone frame, logo or watermark. Keep useful quiet negative space for widgets/apps and rich foliage lower down. Photographic art, no interface.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "BegBCwBacDl1jpV3aIAFB64=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.c71a7cd8.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 218752,
+      "sha256": "c71a7cd8265a851165697a4d31c2536bb01e7e0258a2c8a34fbc150c9cbdacd2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.829bab12.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 197854,
+      "sha256": "829bab128180581cc7d8e9a33d886a0dbfb8097490963ea6caef5616caa761c4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.ca936160.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 107394,
+      "sha256": "ca93616086805bdc91929a0b8f9bc1d7ddbdae68c167afe54fd855014d57c12b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.5b8348c9.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 19358,
+      "sha256": "5b8348c97c177b9224fa97f6525d2d5ec4556c4bbb8b8302664174292dcdd563",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-frond-habits.46321a5b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 87438,
+      "sha256": "46321a5b7d1541a355032c5e4c0cb31ec664456c65c3a715209de372188bd1fa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fern-photo.07566cbd.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 129786,
+      "sha256": "07566cbd401065346965366c6abb2b5777af934024e0a5021bcca5eb1313a2b4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-brass-leaf-beetle.78dc3cc0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 106548,
+      "sha256": "78dc3cc0a760dede45cd85e6d0985837dbb60c63bd6e348b44102eb2c78bcd21",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fern-glasshouse.25659d29.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 131120,
+      "sha256": "25659d294beac074d5dfc81f5272dfa3be31e2f3c12a376ee6ec6db02f545961",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 998250,
+  "widgets": [
+    {
+      "id": "frond-habits",
+      "kind": "habits",
+      "image": "widget-frond-habits.46321a5b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Frond habits"
+    },
+    {
+      "id": "fern-photo",
+      "kind": "photo",
+      "image": "widget-fern-photo.07566cbd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fern photo"
+    },
+    {
+      "id": "brass-leaf-beetle",
+      "kind": "art",
+      "image": "widget-brass-leaf-beetle.78dc3cc0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Brass leaf beetle"
+    },
+    {
+      "id": "fern-glasshouse",
+      "kind": "art",
+      "image": "widget-fern-glasshouse.25659d29.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fern glasshouse"
+    }
+  ]
+}

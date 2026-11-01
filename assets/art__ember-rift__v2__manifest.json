@@ -1,0 +1,127 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "ember-rift",
+  "packVersion": 2,
+  "name": "Ember Rift",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#181E27",
+    "tile": "#383D43",
+    "glyph": "#FAF8F2",
+    "accent": "#753B24",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Ember Rift",
+    "mood": "A photographic-style lava stream with charcoal backgrounds, ash-white icons, basalt columns.",
+    "tags": [
+      "ember",
+      "rift",
+      "photographic",
+      "style",
+      "lava",
+      "stream",
+      "with",
+      "charcoal",
+      "backgrounds",
+      "white",
+      "icons",
+      "basalt",
+      "columns",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "CAgCEwYwwpqWXaM/dZBaB6k=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.7a3d783d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 234814,
+      "sha256": "7a3d783d4f06f8bdf03ff4245e6e8d57a1ae1c4e924f6b7bea582e9ff3701dca",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.91e18bf3.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 212334,
+      "sha256": "91e18bf31198590982e2edfd0c6ec3af8757c1c71aa28c62cf6a0d6711e365f9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.463e4404.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 95738,
+      "sha256": "463e4404cbb33ff84f37dcc3e0278e833cbf8c52fbf209029617ca707f6691d8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.813630e5.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14610,
+      "sha256": "813630e5258e96b9b55e4ea8df5e151721ae86afb7ff4b904e9f6f14f784f8bb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-basalt-columns.e4ae1f78.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 226744,
+      "sha256": "e4ae1f786e8c77281a8a0ad7704e8d235fea06aae41dd6daf907b87705ab3119",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cooling-lava.9ee0a84b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 230418,
+      "sha256": "9ee0a84bf2c3aae5b199df871492789aa1c63cc4674aece2a30d99d1580a157a",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1014658,
+  "widgets": [
+    {
+      "id": "basalt-columns",
+      "kind": "art",
+      "image": "widget-basalt-columns.e4ae1f78.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Basalt columns"
+    },
+    {
+      "id": "cooling-lava",
+      "kind": "art",
+      "image": "widget-cooling-lava.9ee0a84b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cooling lava"
+    }
+  ]
+}

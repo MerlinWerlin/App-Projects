@@ -1,0 +1,148 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "tempest-noir",
+  "packVersion": 2,
+  "name": "Tempest Noir",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#131523",
+    "tile": "#333540",
+    "glyph": "#FAF8F2",
+    "accent": "#836C64",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Tempest Noir",
+    "mood": "Charcoal, electric ivory and copper, coastal lightning, bolt sculpture and basalt clock.",
+    "tags": [
+      "tempest",
+      "noir",
+      "charcoal",
+      "electric",
+      "ivory",
+      "copper",
+      "coastal",
+      "lightning",
+      "bolt",
+      "sculpture",
+      "basalt",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: photorealistic-natural, original fictional landscape artwork. Premium portrait iPhone wallpaper about9:19.5 for TEMPEST NOIR. A cinematic realistic electrical thunderstorm above a rugged empty coast at night. Upper57percent almost uniform very dark charcoal-indigo #1C1D2D with extremely subtle cloud atmosphere, calm clean space for future icons, no bright clouds lightning stars or texture patterns there. Lower-middle58to80percent one dramatic slender naturally branching WHITE lightning bolt with faint warm amber edges dropping from dark storm cloud into the distant sea behind low jagged headland, illuminate a little moody rain haze. Bottom20percent black basalt coastal rocks and dark rolling waves, beautiful realistic white sea-foam lines catching the distant lightning, soft muted copper reflection on wet rock. Lightning looks like actual airy electric discharge, not a solid zigzag logo, no giant orange fire or explosions. Strong elegant contrast, deep charcoal/ivory/ember-copper palette, editorial storm photography, refined restrained detail. The lightning/low coast are the lower-screen hero; leave upper sky quiet and dark. Full bleed portrait, no people buildings ships lighthouse nebula aurora planets text UI phones logos or borders.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "yQcGCwIlcDuKfVZIRZA3AVk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.b4e88db6.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 192552,
+      "sha256": "b4e88db60ef67592c1b86f28a9c8bd2c075abbdab986b82dcafe5e9a798bd5aa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.b139d5ce.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 172948,
+      "sha256": "b139d5ce7a370608c49bda4da9ceab47bd585dbbd55f072bf6c29f2fcb129b8c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.155900fc.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 73840,
+      "sha256": "155900fcd4c9f27b60bef38ffcdeb5c97c95f85891ee6f51a974e39374566299",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.333e2ce2.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 13192,
+      "sha256": "333e2ce22e2e589a791e7e0cc7191e2fd14011c82ef971473ed9e55c34392b83",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-slate-heron.771a26f7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 93102,
+      "sha256": "771a26f7c4c312b4e292b93cefc19c050222ade1633687eb2ae188d1b1020db1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-storm-glass.b04819ef.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 113592,
+      "sha256": "b04819ef024ef4718b51851b24991a0c87e875bc05dc3f09b06b13bfcd828f80",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tempest-focus.a18196cf.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 129138,
+      "sha256": "a18196cfed465a01201329776f5fc6eae1b1c7495d2f83342bca57bd04f51951",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 788364,
+  "widgets": [
+    {
+      "id": "slate-heron",
+      "kind": "art",
+      "image": "widget-slate-heron.771a26f7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Slate heron"
+    },
+    {
+      "id": "storm-glass",
+      "kind": "art",
+      "image": "widget-storm-glass.b04819ef.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Storm glass"
+    },
+    {
+      "id": "tempest-focus",
+      "kind": "art",
+      "image": "widget-tempest-focus.a18196cf.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tempest focus"
+    }
+  ]
+}

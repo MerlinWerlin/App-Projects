@@ -1,0 +1,142 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "cherry-ribbon",
+  "packVersion": 2,
+  "name": "Cherry Ribbon",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#EEE5D9",
+    "tile": "#D1C8BE",
+    "glyph": "#1C1816",
+    "accent": "#BD8E80",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Cherry Ribbon",
+    "mood": "Embroidered cherries and satin bows.",
+    "tags": [
+      "cherry",
+      "ribbon",
+      "embroidered",
+      "cherries",
+      "satin",
+      "bows",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 CHERRY RIBBON. Refined sweet kawaii textile still life: fine IVORY LINEN #F7F0E5, delicate slightly raised SATIN-STITCH EMBROIDERY combined with real-looking soft silk ribbon, soft natural studio light. UPPER70percent EMPTY quiet ivory linen with faint fine weave only; NO repeated pattern, no stars, no letters. Bottom28percent ONE small pair of ripe CHERRY-RED cherries embroidered with lustrous red thread, two thin joined olive-green embroidered stems and two small realistic stitched leaves. At joined stems a soft DUSTY-ROSE SATIN BOW with two gently looping ears and two short curling tails, fine woven silk texture and subdued sheen. A single tiny pale-pink satin blossom beside cherries. Full vignette only42percent canvas width, low centered with large quiet margins; cherries themselves8percent total canvas height. Original elegant cute ribbon-and-fruit motif, sophisticated delicate sewing sampler, tactile but minimal, no faces no characters. Ivory/cherry red/dusty rose/olive palette, calm clean restrained composition, not3D clay resin toys crochet or watercolor. No meadow daisies hedgehogs bunnies dogs koalas tea buildings clocks phones. No text branding packaging borders UI watermark.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "thgGAwLnf3OIhH2kF4B4Aag=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.f62acaf9.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 439282,
+      "sha256": "f62acaf9b98e8db6cc0d144ab86a29e0e6882173b7968a6e2998735160f43a6a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.efec5b08.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 379648,
+      "sha256": "efec5b08b466d23f8f8a9ab6a929ac444ab98dacf02ce50e5d4cc71a3d9ed305",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.fe36a7cd.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 199490,
+      "sha256": "fe36a7cd49a92be008a9c24cd654371a56093b7cab6ca4a0519bddfd9cee50bf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.e90ce1a1.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12996,
+      "sha256": "e90ce1a1cc8d59f09362019c7e3fe0936a68721f9a54b6b973a19abee15951d6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ribbon-countdown.6fd9e9a7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 332508,
+      "sha256": "6fd9e9a78a6313f63f8b0d861f2cf885fc366c7be008f1b67135cbf5827f4369",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cherry-butterfly.93444841.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 310720,
+      "sha256": "93444841b7921e124b84e38e0a3727dedd80df519bcd30d56b41cce8b5008140",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ribbon-locket.e88c8d14.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 302306,
+      "sha256": "e88c8d14e59484298150a8aa3a90103a62471608070aec3704c745a83a01f8b7",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1976950,
+  "widgets": [
+    {
+      "id": "ribbon-countdown",
+      "kind": "countdown",
+      "image": "widget-ribbon-countdown.6fd9e9a7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ribbon countdown"
+    },
+    {
+      "id": "cherry-butterfly",
+      "kind": "art",
+      "image": "widget-cherry-butterfly.93444841.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cherry butterfly"
+    },
+    {
+      "id": "ribbon-locket",
+      "kind": "art",
+      "image": "widget-ribbon-locket.e88c8d14.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ribbon locket"
+    }
+  ]
+}

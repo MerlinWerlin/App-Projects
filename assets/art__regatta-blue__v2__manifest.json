@@ -1,0 +1,147 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "regatta-blue",
+  "packVersion": 2,
+  "name": "Regatta Blue",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#223B59",
+    "tile": "#40556E",
+    "glyph": "#FAF8F2",
+    "accent": "#0C223B",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Regatta Blue",
+    "mood": "Slate navy, sailcloth ivory, teak and warm-brass sailing theme.",
+    "tags": [
+      "regatta",
+      "blue",
+      "slate",
+      "navy",
+      "sailcloth",
+      "ivory",
+      "teak",
+      "warm",
+      "brass",
+      "sailing",
+      "theme",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium cinematic nautical photograph. Portrait iPhone wallpaper approx9:19.5 REGATTA BLUE. Upper60percent calm almost uniform dark muted slate navy #263C52 sky, smooth overcast blue-hour atmosphere, no visible clouds bright sun stars silhouettes lines or textures above60percent, quiet area for ivory icons. Lower40percent ONE beautiful classic wooden sailing yacht on calm dark slate-blue water, three-quarter side view sailing gently left to right, slender warm teak hull, single tall mast with TWO elegant natural ivory canvas sails, fine realistic rigging and tiny brass fittings, full mast/sails/hull contained entirely below60percent with generous margins. Yacht roughly55percent canvas width and27percent total height, positioned lower center around76percent height, no people aboard, no flags logos lettering numbers or extra boats. Low distant hazy headland at64percent height, restrained soft warm reflection on water around hull and subtle wake confined bottom, rich subdued nautical editorial photography with natural teak/cream/brass, elegant calm believable proportions. Horizon dark and softly merged with navy sky, upper area remains visually flat. No lighthouse buildings sunset sunbeams marine animals birds docks ropes crossing upper area cosmic imagery phones UI text borders watermark. Full bleed portrait.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "z9YFCwIGmSyHf4KJB4B5EIg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2786eb44.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 136530,
+      "sha256": "2786eb44ca4927251ccb9db46f33417ef37d76f1b5e721bdca0ec9bb2b57b4ba",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.58b8d6ca.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 122992,
+      "sha256": "58b8d6ca19ceb49249530c6fa58537be2935a649f3ff980a4d47e89e255109d6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.da0ecd2b.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 54304,
+      "sha256": "da0ecd2be496b8d6c5fa0ea6f765ac87f326851442a7edf0d33441f64e62259e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.5e4280af.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9104,
+      "sha256": "5e4280af0ab9fbfb0767b4b29b41067a7b10a810792dd7267b01b9cfa9c55b7e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-regatta-date.7825dfa8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84118,
+      "sha256": "7825dfa8104fea1b72993cdc22b7c299385a66729cddcb04c043f0f3169d0eed",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rope-whale.e2930402.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 70432,
+      "sha256": "e2930402f9312dd09add1ae93ab6502a35eee1b2d9b45ebe1901fb072dc299f2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sail-glass-bottle.a4380d22.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 74432,
+      "sha256": "a4380d22e60d6d019066427570a63a613630f126b2dc8bec7923d116af696682",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 551912,
+  "widgets": [
+    {
+      "id": "regatta-date",
+      "kind": "calendar",
+      "image": "widget-regatta-date.7825dfa8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Regatta date"
+    },
+    {
+      "id": "rope-whale",
+      "kind": "art",
+      "image": "widget-rope-whale.e2930402.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rope whale"
+    },
+    {
+      "id": "sail-glass-bottle",
+      "kind": "art",
+      "image": "widget-sail-glass-bottle.a4380d22.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sail glass bottle"
+    }
+  ]
+}

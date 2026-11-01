@@ -1,0 +1,192 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "chromatic-lab",
+  "packVersion": 2,
+  "name": "Chromatic Lab",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#C3C9D3",
+    "tile": "#ACB0B9",
+    "glyph": "#1C1816",
+    "accent": "#6E5C8B",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Chromatic Lab",
+    "mood": "Milky grey, graphite icons, cobalt/vermilion glass coil and mobile, and an instrument clock.",
+    "tags": [
+      "chromatic",
+      "milky",
+      "grey",
+      "graphite",
+      "icons",
+      "cobalt",
+      "vermilion",
+      "glass",
+      "coil",
+      "mobile",
+      "instrument",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Ivan S (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "r/cFEwRtj5h4dIyFfyn3SJI=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.7658c2bb.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 77036,
+      "sha256": "7658c2bb316a9b3c1abe7aed426981e8e08308d46af29acbaebbf954014ef62f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c0f417c1.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 68834,
+      "sha256": "c0f417c18dd2210d5d3197728abb61832a6e39ded73a5e9d7333522de687c624",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.103ef5a1.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 34410,
+      "sha256": "103ef5a181e481bd4c017d56043e10a37c1a90406fd878fece183ef339f0b275",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.25273e2a.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7028,
+      "sha256": "25273e2aa3f607bca67f7a6e5838aef997f99ae561a7bc990d2b0381a5e7871b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lab-focus.227de480.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 52374,
+      "sha256": "227de48044e8529661de3205a69c2711897bf8aeedf4720429154419520bbc8b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-molecular-butterfly.6c1a553b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 87052,
+      "sha256": "6c1a553b41da26bf6dbe7f4d5fd447df22efa4ab665e229c63fe3b4de347bd65",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-prism-beaker-garden.513390be.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 78834,
+      "sha256": "513390be4cd5fb9d6edcfdb0394a8eb63e9696d27be79f9c0e8512d2f14f3998",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-molecular-mobile.1ec5f865.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 48444,
+      "sha256": "1ec5f8651a80a0cff86d72a991f5b7977f63541b0d6afa9c9c3cce2d3f2db783",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-spiral-glass.8fb4d7f3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 60250,
+      "sha256": "8fb4d7f3ef9ff2c2fb91b1823eda4020c4ef44bcbd60888064da400e8cf61198",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 514262,
+  "widgets": [
+    {
+      "id": "lab-focus",
+      "kind": "art",
+      "image": "widget-lab-focus.227de480.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lab focus"
+    },
+    {
+      "id": "molecular-butterfly",
+      "kind": "art",
+      "image": "widget-molecular-butterfly.6c1a553b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Molecular butterfly"
+    },
+    {
+      "id": "prism-beaker-garden",
+      "kind": "art",
+      "image": "widget-prism-beaker-garden.513390be.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Prism beaker garden"
+    },
+    {
+      "id": "molecular-mobile",
+      "kind": "art",
+      "image": "widget-molecular-mobile.1ec5f865.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Molecular mobile"
+    },
+    {
+      "id": "spiral-glass",
+      "kind": "art",
+      "image": "widget-spiral-glass.8fb4d7f3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Spiral glass"
+    }
+  ]
+}

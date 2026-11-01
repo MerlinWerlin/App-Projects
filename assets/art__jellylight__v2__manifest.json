@@ -1,0 +1,193 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "jellylight",
+  "packVersion": 2,
+  "name": "Jellylight",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#00213C",
+    "tile": "#233F55",
+    "glyph": "#FAF8F2",
+    "accent": "#396A91",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Jellylight",
+    "mood": "Deep teal water, clean seafoam icons, translucent jellyfish, iridescent drifter and Current Clock.",
+    "tags": [
+      "jellylight",
+      "deep",
+      "teal",
+      "water",
+      "clean",
+      "seafoam",
+      "icons",
+      "translucent",
+      "jellyfish",
+      "iridescent",
+      "drifter",
+      "current",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Tanya Gorelova (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "jLYFCwJEhGmZb3al3KaQWwo=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.4d8812d9.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 105258,
+      "sha256": "4d8812d95d9719792a9323679042560a3fcc9014339648496cd4be775c5b58a9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.8715cb8a.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 93948,
+      "sha256": "8715cb8a2e9d3a6f34e64f855639244187a19b5c2daf159973ec9d0910af5af5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.3247d6c3.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 47992,
+      "sha256": "3247d6c3b3ec711270ef7ab38f910830bb298fef7c55dcdc6de6d337bc1d13af",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.15cdc28a.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9546,
+      "sha256": "15cdc28aadac1acab0e8a59c3261451c1b09edd5673783f7d1193c0937354bc3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-jellylight-date.94a7b9b8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 103110,
+      "sha256": "94a7b9b8d0bfc531ba73821ed83e761f7383a4cd5d4514643d651703b2df343f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glass-anemone.0376a5e8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 100654,
+      "sha256": "0376a5e831462ccd052e99243680b899d879595091b4b61baf073f3a628c9e1a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-opal-stingray.6101c6ed.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 71918,
+      "sha256": "6101c6ed4b7340a29716e942eb6a5b26196b6d7ea48aea52412301253c4678e1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-jellyfish-bloom.e62e9f83.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 105816,
+      "sha256": "e62e9f8370f52c1b05bd56d97b4ef82e44d8e753d5c1a3120229c20ca06b7d9c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-prism-drifter.30dd486a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 86876,
+      "sha256": "30dd486a60d75ee8c44b3a0f2687f1994624adb0da58495966d1aeb248949f10",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 725118,
+  "widgets": [
+    {
+      "id": "jellylight-date",
+      "kind": "calendar",
+      "image": "widget-jellylight-date.94a7b9b8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Jellylight date"
+    },
+    {
+      "id": "glass-anemone",
+      "kind": "art",
+      "image": "widget-glass-anemone.0376a5e8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glass anemone"
+    },
+    {
+      "id": "opal-stingray",
+      "kind": "art",
+      "image": "widget-opal-stingray.6101c6ed.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Opal stingray"
+    },
+    {
+      "id": "jellyfish-bloom",
+      "kind": "art",
+      "image": "widget-jellyfish-bloom.e62e9f83.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Jellyfish bloom"
+    },
+    {
+      "id": "prism-drifter",
+      "kind": "art",
+      "image": "widget-prism-drifter.30dd486a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Prism drifter"
+    }
+  ]
+}

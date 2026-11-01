@@ -1,0 +1,144 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "saddlewood",
+  "packVersion": 2,
+  "name": "Saddlewood",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D7DCCB",
+    "tile": "#BDC1B2",
+    "glyph": "#1C1816",
+    "accent": "#D2AA6C",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Saddlewood",
+    "mood": "Sage, chestnut leather and antique-brass equestrian theme.",
+    "tags": [
+      "saddlewood",
+      "sage",
+      "chestnut",
+      "leather",
+      "antique",
+      "brass",
+      "equestrian",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium photographic artwork. Portrait iPhone wallpaper approx9:19.5, SADDLEWOOD equestrian theme. Upper58percent almost uniform very pale dusty sage #DFE5D7, a softly misted sky fading into the same sage, quiet clean space for chestnut outline app icons, NO objects clouds horizon branches dark shapes text or patterns in upper58percent. Lower42percent exquisite cinematic rural equestrian landscape at early golden morning: ONE elegant anatomically accurate chestnut horse in full side profile calmly standing in a sunlit grass paddock, all four legs visible, a short weathered cream timber rail fence behind, far distant soft moss-green trees kept low at58percent, muted honey-gold grass at bottom, gentle atmospheric sage haze behind. Horse occupies lower-center roughly22percent screen height, enough breathing room all around, realistic fine reddish-brown coat and dark mane/tail, no rider bridle saddle riding equipment or extra horses. Subtle warm side lighting, natural editorial equestrian photography, quiet country luxury, very restrained sage/chestnut/cream/gold palette. Not illustration or sculpture, not fantasy. Full-bleed portrait. No racing jumping competition logos buildings storm space stars nebula floral clusters text icons phone frames borders or watermark.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "LRkOKwiHj1eIdYtXd4B7B6g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.3180e3c6.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 165492,
+      "sha256": "3180e3c6e795930c592e7e39d37465e6520bc0aad1b66e91ff448a355afbd2f2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1d8cbb51.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 148960,
+      "sha256": "1d8cbb51f36f4ea47f355d1ef67ee8187aa802d3b148db2920a0f15dc6e3c46a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.975f8433.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 71310,
+      "sha256": "975f8433c29bdb76ef77406a0166bc531d2faa924cf079b6a0f801751f89b56d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.82ae9434.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14604,
+      "sha256": "82ae9434a27dcb2319a2452408a4eb99cddddf41ec461f7d52d9467a65fa573c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-trail-countdown.8c8946db.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 118240,
+      "sha256": "8c8946dbd9e5600d54259881b33f7c196fcecc04695a1b8ede21f6dac0385a1c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bronze-horse-brooch.3618fb97.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 148992,
+      "sha256": "3618fb97beaa92693efd6e782f60302cd1cbeec838be2a49b16fc7123221e0eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-leather-compass.df12997d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 80080,
+      "sha256": "df12997d4a1ae815bdd6802995d4feab3680480acc967d4ffc0099a474c64127",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 747678,
+  "widgets": [
+    {
+      "id": "trail-countdown",
+      "kind": "countdown",
+      "image": "widget-trail-countdown.8c8946db.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Trail countdown"
+    },
+    {
+      "id": "bronze-horse-brooch",
+      "kind": "art",
+      "image": "widget-bronze-horse-brooch.3618fb97.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bronze horse brooch"
+    },
+    {
+      "id": "leather-compass",
+      "kind": "art",
+      "image": "widget-leather-compass.df12997d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Leather compass"
+    }
+  ]
+}

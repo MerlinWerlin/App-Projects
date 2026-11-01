@@ -1,0 +1,191 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "cobalt-caravan",
+  "packVersion": 2,
+  "name": "Cobalt Caravan",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#00134C",
+    "tile": "#233363",
+    "glyph": "#FAF8F2",
+    "accent": "#975422",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Cobalt Caravan",
+    "mood": "Midnight blue, ivory icons, lantern oasis, sandstone cat and dune dial.",
+    "tags": [
+      "cobalt",
+      "caravan",
+      "midnight",
+      "blue",
+      "ivory",
+      "icons",
+      "lantern",
+      "oasis",
+      "sandstone",
+      "dune",
+      "dial",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Walid Ahmad (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "yPYFMwYqhmmInWBcd3B5Bpc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.8db420a5.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 192322,
+      "sha256": "8db420a5520f2f2e681be6962f76c60efe2df92bd735a58eb7f4d19532c6d433",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.f12c2191.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 168122,
+      "sha256": "f12c2191d79f8c2850b1ac6f8ca6507bbba52c94f6ce530225aa61538566746c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.83704236.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 67720,
+      "sha256": "837042360787ac794261e7407ccbd6cd4c4443dfab516e963c3e9172b53319d6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.791acf04.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7948,
+      "sha256": "791acf04434b0428a3a18b576434275eaa50ec5a4d2f18ceabb24a4c9a7c344f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-caravan-date.a4088244.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 121496,
+      "sha256": "a4088244f1d5f39115f7b588bfc32703b48355e41d6b087f7d0e3b5a175575a4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lapis-compass.529ff43b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 153310,
+      "sha256": "529ff43b394eec6999d1e5d437482fea887a688b4ebf74c9b72d906634c9199a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-oasis-bird.6a06c2c3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 109752,
+      "sha256": "6a06c2c3b52cdb0ca1fc473a9578dff4a201d4c01132c04480c19829feea0292",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lantern-oasis.cd565817.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 157400,
+      "sha256": "cd56581703a78e952c41e3c57d30813f4f850381ef95a05b9bbc9e07d6627023",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sand-cat.e189ed45.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 142606,
+      "sha256": "e189ed4579fb02d61af772fe723c56469a9994d3f1dbf98b7fd3310013743398",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1120676,
+  "widgets": [
+    {
+      "id": "caravan-date",
+      "kind": "calendar",
+      "image": "widget-caravan-date.a4088244.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Caravan date"
+    },
+    {
+      "id": "lapis-compass",
+      "kind": "art",
+      "image": "widget-lapis-compass.529ff43b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lapis compass"
+    },
+    {
+      "id": "oasis-bird",
+      "kind": "art",
+      "image": "widget-oasis-bird.6a06c2c3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Oasis bird"
+    },
+    {
+      "id": "lantern-oasis",
+      "kind": "art",
+      "image": "widget-lantern-oasis.cd565817.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lantern oasis"
+    },
+    {
+      "id": "sand-cat",
+      "kind": "art",
+      "image": "widget-sand-cat.e189ed45.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sand cat"
+    }
+  ]
+}

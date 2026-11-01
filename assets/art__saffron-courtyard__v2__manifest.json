@@ -1,0 +1,188 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "saffron-courtyard",
+  "packVersion": 2,
+  "name": "Saffron Courtyard",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F7DFC4",
+    "tile": "#D8C3AC",
+    "glyph": "#1C1816",
+    "accent": "#D8935D",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Saffron Courtyard",
+    "mood": "Warm chalk, terracotta and teal around a sunny courtyard.",
+    "tags": [
+      "saffron",
+      "courtyard",
+      "warm",
+      "chalk",
+      "terracotta",
+      "teal",
+      "around",
+      "sunny",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Nimisha Mekala (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "rEkSGwZ5f3iHdYiImXCYCJc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.e769e6a6.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 270260,
+      "sha256": "e769e6a6dd1cf06a217d4060319ab30959ad0c93a898d6e59d06cbf8c5fb6ed4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.7788e746.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 241754,
+      "sha256": "7788e746f4305e6b800ff2519c2c896207e65ff56b48b336d4e6e37693e71e33",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.29353376.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 119974,
+      "sha256": "29353376682973f8d74fd96826328f56ead4f9bf0228d72a4c96b03b44012825",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.44141cc1.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 18488,
+      "sha256": "44141cc171662e7bf75974fd689291848ebe05856aeaf14915e4d17880c91f08",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-courtyard-date.c7a91778.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 127222,
+      "sha256": "c7a91778c8acb774adf664a457f2ed78d05b39bef2ab2fa778a5ba9e3c056912",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glazed-lemons.408010c8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 98778,
+      "sha256": "408010c8d45878880761ffcd0c45245774e4b8f86df547451e0f140dcd2841d1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mosaic-sunbird.1cdd845f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 88112,
+      "sha256": "1cdd845f5fb065408b92824ec1ccb1156f2f1994426548cdfecb542b0e7bdc96",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mosaic-tortoise.67da9cb2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 121494,
+      "sha256": "67da9cb25ac37488aab3b79467190b8aaeff3a8020a22738315c86c3bb135675",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pomegranate-court.07ac6777.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 159856,
+      "sha256": "07ac6777aa2afc6b2257aca389aea795fc595c5025e34cb43cc3555b744d5de0",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1245938,
+  "widgets": [
+    {
+      "id": "courtyard-date",
+      "kind": "calendar",
+      "image": "widget-courtyard-date.c7a91778.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Courtyard date"
+    },
+    {
+      "id": "glazed-lemons",
+      "kind": "art",
+      "image": "widget-glazed-lemons.408010c8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glazed lemons"
+    },
+    {
+      "id": "mosaic-sunbird",
+      "kind": "art",
+      "image": "widget-mosaic-sunbird.1cdd845f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mosaic sunbird"
+    },
+    {
+      "id": "mosaic-tortoise",
+      "kind": "art",
+      "image": "widget-mosaic-tortoise.67da9cb2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mosaic tortoise"
+    },
+    {
+      "id": "pomegranate-court",
+      "kind": "art",
+      "image": "widget-pomegranate-court.07ac6777.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pomegranate court"
+    }
+  ]
+}

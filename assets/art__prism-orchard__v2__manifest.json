@@ -1,0 +1,187 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "prism-orchard",
+  "packVersion": 2,
+  "name": "Prism Orchard",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#CDC6D7",
+    "tile": "#B4AEBC",
+    "glyph": "#1C1816",
+    "accent": "#DCBDB7",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Prism Orchard",
+    "mood": "Lilac mist and an orchard inside a glass pear.",
+    "tags": [
+      "prism",
+      "orchard",
+      "lilac",
+      "mist",
+      "inside",
+      "glass",
+      "pear",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Bobby (@thapapawan) (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "MRgGGwRXX5mJdYl3iIB4CZg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2de89fc2.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 228872,
+      "sha256": "2de89fc23ce5da4b333bf88c4067754d246ba826f8474357c7e50d243224ee4d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.67547ca5.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 208534,
+      "sha256": "67547ca5de43b6b8a946a09ab37c08e3f5a285ec7148c6bb1826dc86848706a5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.c98212c8.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 107464,
+      "sha256": "c98212c84cd5a62db7bb0e36d5e42c0de96bffb0c4c18fcaba527de565cf1f07",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.e791d81b.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 20138,
+      "sha256": "e791d81b812666ad2e910438aea6c6942d9c3dfb09543c0cc83787a1d970419c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-orchard-habits.856578e1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 114844,
+      "sha256": "856578e150bb2d9451de61286ea429e59717272a3c98ac2d60947d89f0573337",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glass-plum.df948b64.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 149628,
+      "sha256": "df948b647b05e17044f06ca92bbab84594235cbdd28704213e3e6dfeb297d51f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-opal-tree-frog.87be490c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 104126,
+      "sha256": "87be490cd80633af054b45a06aa8ceb6a32fdb525ceff5160ff388e0ad9407a3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glass-pear.09603efc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 183084,
+      "sha256": "09603efc1b075d524abeb850f412443c1a5f024bbd8aff7415c9712fa256271d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-petal-hummingbird.2e0c34fc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 130454,
+      "sha256": "2e0c34fc637a1eedad6ca0f7a77c4e067ced252725b4e9a1a99b78f1a08cd085",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1247144,
+  "widgets": [
+    {
+      "id": "orchard-habits",
+      "kind": "habits",
+      "image": "widget-orchard-habits.856578e1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Orchard habits"
+    },
+    {
+      "id": "glass-plum",
+      "kind": "art",
+      "image": "widget-glass-plum.df948b64.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glass plum"
+    },
+    {
+      "id": "opal-tree-frog",
+      "kind": "art",
+      "image": "widget-opal-tree-frog.87be490c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Opal tree frog"
+    },
+    {
+      "id": "glass-pear",
+      "kind": "art",
+      "image": "widget-glass-pear.09603efc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glass pear"
+    },
+    {
+      "id": "petal-hummingbird",
+      "kind": "art",
+      "image": "widget-petal-hummingbird.2e0c34fc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Petal hummingbird"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "ember-workshop",
+  "packVersion": 2,
+  "name": "Ember Workshop",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#161412",
+    "tile": "#363431",
+    "glyph": "#FAF8F2",
+    "accent": "#935631",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Ember Workshop",
+    "mood": "Soot-black paper, hammered copper and a railway inside a pocket watch.",
+    "tags": [
+      "ember",
+      "workshop",
+      "soot",
+      "black",
+      "paper",
+      "hammered",
+      "copper",
+      "railway",
+      "inside",
+      "pocket",
+      "watch",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Fabian Kleiser (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "hygGEwSWkKh3imWHlZBpCZg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.d528d983.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 313506,
+      "sha256": "d528d98339b30022b9d6f027413ab2e3b80bc8c3b792478cbddf2f1f7e9b304e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c1c261fc.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 284642,
+      "sha256": "c1c261fce9533c717572da8925af1016fc505455dd8d2b81898edf0d6124e3ba",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.a1cbc4b2.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 136024,
+      "sha256": "a1cbc4b2d2203adb91945c1130a45dbf1775ff90612d628879ce71aa3b7a35f9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.1004248e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 19278,
+      "sha256": "1004248e236ad891e4a185aa066b418e564c6778bf36b00183fbe717b0ff6140",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-copper-pangolin.5d6e86a6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 213628,
+      "sha256": "5d6e86a6db86b5a1e518f1e288b7fe72cb044809a3a43b7419facd23b0a75615",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ember-lizard.7f4e27c2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 213822,
+      "sha256": "7f4e27c25b4612b12f7e3cf946bb85440f23c8e0978c3b42940bc522555987c6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tin-workshop-robot.f3ab8e48.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 176012,
+      "sha256": "f3ab8e48410011ee8da870488bde51d0079c024193b17cfdb8d8934d7a95374c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-workshop-focus.c3dac0fe.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 163368,
+      "sha256": "c3dac0fefdfdfee4d9372112e662e6e70228ba431abe1330932a11b57bc82488",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pocket-railway.532bda46.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 223022,
+      "sha256": "532bda464b3d643ede75679fb7ace7d5b2b9859ade64965a1fa319544b855772",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1743302,
+  "widgets": [
+    {
+      "id": "copper-pangolin",
+      "kind": "art",
+      "image": "widget-copper-pangolin.5d6e86a6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Copper pangolin"
+    },
+    {
+      "id": "ember-lizard",
+      "kind": "art",
+      "image": "widget-ember-lizard.7f4e27c2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ember lizard"
+    },
+    {
+      "id": "tin-workshop-robot",
+      "kind": "art",
+      "image": "widget-tin-workshop-robot.f3ab8e48.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tin workshop robot"
+    },
+    {
+      "id": "workshop-focus",
+      "kind": "art",
+      "image": "widget-workshop-focus.c3dac0fe.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Workshop focus"
+    },
+    {
+      "id": "pocket-railway",
+      "kind": "art",
+      "image": "widget-pocket-railway.532bda46.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pocket railway"
+    }
+  ]
+}

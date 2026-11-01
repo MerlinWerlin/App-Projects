@@ -1,0 +1,143 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "yuzu-soak",
+  "packVersion": 2,
+  "name": "Yuzu Soak",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#FEEFCA",
+    "tile": "#DED1B1",
+    "glyph": "#1C1816",
+    "accent": "#BA8553",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Yuzu Soak",
+    "mood": "A ceramic capybara soaking in a warm yuzu bath.",
+    "tags": [
+      "yuzu",
+      "soak",
+      "ceramic",
+      "capybara",
+      "soaking",
+      "warm",
+      "bath",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Create original portrait iPhone wallpaper 9:19.5 for YUZU SOAK, a very cute kawaii fantasy made from hand-sculpted glossy NERIKOMI MARBLED STONEWARE pottery. Warm pale butter-ivory background #FFF3D7. Upper 68 percent EMPTY plain ivory, only faint ceramic-like surface softness, no patterns lettering UI or decoration. Bottom 32 percent: a small rounded apricot ceramic soaking tub on three stubby feet, marbled bands of pale peach and lilac clay visible through translucent glaze. ONE adorable chubby caramel CAPYBARA with tiny round ears, dot eyes closed contentedly, rosy cheeks, blunt rounded muzzle, tiny paws resting on tub rim, submerged in milky water. A single small yellow YUZU citrus balances on its head with two green leaves. Two little glazed yuzu fruits by the tub, one tiny ceramic folded lilac towel. The whole tub is small around 58 percent canvas width, located low with full safe margins, capybara only 12 percent canvas height. Charming handcrafted miniature collectible with slight irregular clay edges, delicate ceramic glaze pinpricks, beautiful tactile light, sculptural nerikomi rather than plush or plastic. Cozy whimsical sweetness, refined restrained composition, butter yellow/apricot/lavender palette. No ghosts laundry clouds snails kittens matcha tea astronaut typewriter or logos. No text phone mockups frames UI watermark.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "tikGCwK2j2V3dIyUW1CJBJc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.5d1ea986.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 62522,
+      "sha256": "5d1ea9868c278ddc7593e78a7a3238edd5e0005188d943d83e16e9491bae99e7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.33bee64d.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 55704,
+      "sha256": "33bee64db0797a9dd2dc72be86eeef4f231163296b496152a72c69706b94598c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.00b4f400.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 29358,
+      "sha256": "00b4f40031c5d6a08d5e558286d3ffe6fd8a6864e5d9a4ab6d074a2179f64f0f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.8723d567.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5346,
+      "sha256": "8723d567d0d2164723ee314586389e52ece407f322ce342d4bca4e554cffd099",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-citrus-bath-bird.5aea5110.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 43654,
+      "sha256": "5aea511055424ee76aa14aa4034273fcb9432170098460a935d62475c83ca859",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-soak-focus.803ca19e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 61278,
+      "sha256": "803ca19e338bd6d194bf435f0b65b0be252da2eb5d6743f349543d1159330c49",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-yuzu-pond-bowl.0c88e614.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 36496,
+      "sha256": "0c88e6147402df781800ea7168d8a566489a6bd598fbf1c44e8531a85f94e427",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 294358,
+  "widgets": [
+    {
+      "id": "citrus-bath-bird",
+      "kind": "art",
+      "image": "widget-citrus-bath-bird.5aea5110.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Citrus bath bird"
+    },
+    {
+      "id": "soak-focus",
+      "kind": "art",
+      "image": "widget-soak-focus.803ca19e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Soak focus"
+    },
+    {
+      "id": "yuzu-pond-bowl",
+      "kind": "art",
+      "image": "widget-yuzu-pond-bowl.0c88e614.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Yuzu pond bowl"
+    }
+  ]
+}

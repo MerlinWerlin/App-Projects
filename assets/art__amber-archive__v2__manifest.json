@@ -1,0 +1,189 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "amber-archive",
+  "packVersion": 2,
+  "name": "Amber Archive",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DBB88E",
+    "tile": "#C0A27D",
+    "glyph": "#1C1816",
+    "accent": "#82471D",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Amber Archive",
+    "mood": "Warm parchment and a tiny bookshop inside curled pages.",
+    "tags": [
+      "amber",
+      "archive",
+      "warm",
+      "parchment",
+      "tiny",
+      "bookshop",
+      "inside",
+      "curled",
+      "pages",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Kiwihug (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "40kSCwJ3f0h4eIh4ZZlQBzo=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.b55d69ce.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 341336,
+      "sha256": "b55d69ce5255b2af915b322373b3093e826107d049591bcf13ab6e93ac2cea45",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.14e6da74.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 306824,
+      "sha256": "14e6da74e073350b16d81ccf77a5863f361932f1d0db7acc16181741aaccb477",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.ef75b25f.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 145334,
+      "sha256": "ef75b25f9c79bf9b1e32031e0ea48bee475c3d36f182a7b6802ccbaa053838bf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.cca9d273.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14564,
+      "sha256": "cca9d27388b7dbfd02604c5a350c9ce49b3946c547ce8614ab94f58f96db9ad1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bookshop.a255d2b8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 185106,
+      "sha256": "a255d2b8d53e603ca729c7c8d9b872f50f95eadc04a7b56020006b2326f67607",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-archive-wax-seal.253a57d2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 196280,
+      "sha256": "253a57d26fed6fe10a7b356a7b9ffbbd54c8b9721ccd29c1cada7db277b2dca5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pressed-leaf-bookmark.32eb52eb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 194352,
+      "sha256": "32eb52ebaa83d55fde3c3db162d5a8eb959248b50ec47a9e67cc8d2b95ec6c5f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-reading-chapters.c656e045.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 139102,
+      "sha256": "c656e0458497a1778f54a9119e8c01a0b1b4b27046cede3765a1e58ea1382c8d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-owl.a1aa6a2f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 146122,
+      "sha256": "a1aa6a2f0291000118bf6ac3ff7ea0fd63aa340c535909c6e86328e027a66306",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1669020,
+  "widgets": [
+    {
+      "id": "bookshop",
+      "kind": "art",
+      "image": "widget-bookshop.a255d2b8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bookshop"
+    },
+    {
+      "id": "archive-wax-seal",
+      "kind": "art",
+      "image": "widget-archive-wax-seal.253a57d2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Archive wax seal"
+    },
+    {
+      "id": "pressed-leaf-bookmark",
+      "kind": "art",
+      "image": "widget-pressed-leaf-bookmark.32eb52eb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pressed leaf bookmark"
+    },
+    {
+      "id": "reading-chapters",
+      "kind": "art",
+      "image": "widget-reading-chapters.c656e045.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Reading chapters"
+    },
+    {
+      "id": "paper-owl",
+      "kind": "art",
+      "image": "widget-paper-owl.a1aa6a2f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Paper owl"
+    }
+  ]
+}

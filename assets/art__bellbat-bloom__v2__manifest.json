@@ -1,0 +1,192 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "bellbat-bloom",
+  "packVersion": 2,
+  "name": "Bellbat Bloom",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#C2AE9F",
+    "tile": "#AB998C",
+    "glyph": "#1C1816",
+    "accent": "#99776B",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Bellbat Bloom",
+    "mood": "A velvet bat and bellflower with mushroom-grey paper, plum icons, seedpod swing.",
+    "tags": [
+      "bellbat",
+      "bloom",
+      "velvet",
+      "bellflower",
+      "with",
+      "mushroom",
+      "grey",
+      "paper",
+      "plum",
+      "icons",
+      "seedpod",
+      "swing",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "5ygKAwK1j3Z4dYu0qmowAEo=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.982e1abd.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 211504,
+      "sha256": "982e1abd823177a62b627f3c33ae67ec5768f459f3b92fab8b036406fa05c79c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.5abea512.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 187010,
+      "sha256": "5abea512b08aa7a37aa0cf503378e604c0a62d7afcb867bab4392e9007cc8370",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.fa3aa453.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 90736,
+      "sha256": "fa3aa453a5170aface3d7a86e4b0879981e963b655d4e9a4f4baf1ab1617d967",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.b03ca820.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12454,
+      "sha256": "b03ca8202a75c7ae6cfa0cb82a463bae68c5ddb2917e15a41b37724496d767f8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bellbloom-date.504089ae.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 159844,
+      "sha256": "504089ae6f70bd3a8184038a722837558e3c7d1143edfe4395ca0f88ae317136",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bellflower-nook.69c3f03a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 155016,
+      "sha256": "69c3f03a42f61355167442a0838375516bb7d14a94c3719130a15df93a915c18",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bellflower-basket.8c16184b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 152142,
+      "sha256": "8c16184bef3e68e974486d46b3ccc59c3321722e0a756f97e17fe99e4524d277",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-velvet-wing-bow.112d0152.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 144296,
+      "sha256": "112d0152d42b6bdd032e191cf6d806fb439861ef1fea8ca76458bca7a95dc0a2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-seedpod-swing.01460c99.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 155760,
+      "sha256": "01460c997f2d40bfc8eb1ef3e02b496d2f04bbeff3b8528309a9c13be163c918",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1268762,
+  "widgets": [
+    {
+      "id": "bellbloom-date",
+      "kind": "calendar",
+      "image": "widget-bellbloom-date.504089ae.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bellbloom date"
+    },
+    {
+      "id": "bellflower-nook",
+      "kind": "art",
+      "image": "widget-bellflower-nook.69c3f03a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bellflower nook"
+    },
+    {
+      "id": "bellflower-basket",
+      "kind": "art",
+      "image": "widget-bellflower-basket.8c16184b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bellflower basket"
+    },
+    {
+      "id": "velvet-wing-bow",
+      "kind": "art",
+      "image": "widget-velvet-wing-bow.112d0152.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Velvet wing bow"
+    },
+    {
+      "id": "seedpod-swing",
+      "kind": "art",
+      "image": "widget-seedpod-swing.01460c99.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Seedpod swing"
+    }
+  ]
+}

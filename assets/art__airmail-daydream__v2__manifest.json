@@ -1,0 +1,148 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "airmail-daydream",
+  "packVersion": 2,
+  "name": "Airmail Daydream",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#C5DCE9",
+    "tile": "#ADC1CB",
+    "glyph": "#1C1816",
+    "accent": "#C2DBE8",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Airmail Daydream",
+    "mood": "Sky blue, coral and cream, balloon post office, sealed letters and postmark clock.",
+    "tags": [
+      "airmail",
+      "daydream",
+      "blue",
+      "coral",
+      "cream",
+      "balloon",
+      "post",
+      "office",
+      "sealed",
+      "letters",
+      "postmark",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for AIRMAIL DAYDREAM. Upper76percent quiet nearly uniform pale powder-blue matte paper #DDEBF0, extremely subtle fibres, no clouds objects writing stripes patterns or icons behind future apps. Bottom24percent exquisite tactile postal still life: two small ivory airmail envelopes with tiny coral/navy striped edges, a round coral wax seal with simple unlettered hot-air-balloon symbol, one delicate folded paper plane hovering just above the lower envelope with a fine natural shadow. Envelopes have NO handwriting, address, letters or legible text. Soft warm daylight, sophisticated handmade paper stationery photography, sky-blue/cream/navy/coral palette, playful restrained travel-mail mood. Entire objects low and contained, ample empty blue space above, no actual postage values, brand logos, people, phone, UI, border, stamps near upper field or stars. Full bleed portrait wallpaper.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "dNcFCwKWnzaXeoemVpBrBbk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2aa9cbfb.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 171392,
+      "sha256": "2aa9cbfb9133ead3716c5098b679140b9c8350f39ebe2e628ae3c6a1a3e5701e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.64b6c04e.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 150562,
+      "sha256": "64b6c04e4c8ca120138e925d1d85ba39e943c4cf299467c56e52b1440fd2c104",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.8b1c65fc.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 57826,
+      "sha256": "8b1c65fcec00370a8899bc8e821e2704d31e9973f85162c1292587feb0931119",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.9040b1c9.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5576,
+      "sha256": "9040b1c92e40bd32c8d91845b3a46bacaf01f12f3e7bebcebee730c7726a995f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-airmail-countdown.d94779b9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 117350,
+      "sha256": "d94779b9e811138f28bd2ba521f2ff9f987faa0c64452427d937a1ead44b5b6c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-aircraft-mobile.f0e3d4c1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 56298,
+      "sha256": "f0e3d4c1c6ceccd0b580bad4a2407c0e0acfde27c6ddae7ba875dcc8f029fae5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-stamp-terrarium.2ed43af0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 103422,
+      "sha256": "2ed43af07cb5ab470e4c4f1a007c99208e51c7735d92752c540161cd3f6878cb",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 662426,
+  "widgets": [
+    {
+      "id": "airmail-countdown",
+      "kind": "countdown",
+      "image": "widget-airmail-countdown.d94779b9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Airmail countdown"
+    },
+    {
+      "id": "paper-aircraft-mobile",
+      "kind": "art",
+      "image": "widget-paper-aircraft-mobile.f0e3d4c1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Paper aircraft mobile"
+    },
+    {
+      "id": "stamp-terrarium",
+      "kind": "art",
+      "image": "widget-stamp-terrarium.2ed43af0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Stamp terrarium"
+    }
+  ]
+}

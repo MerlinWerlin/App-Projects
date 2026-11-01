@@ -1,0 +1,96 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "kingfisher-blue",
+  "packVersion": 2,
+  "name": "Kingfisher Blue",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D1E6F5",
+    "tile": "#B8C9D6",
+    "glyph": "#1C1816",
+    "accent": "#CBE2F2",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Kingfisher Blue",
+    "mood": "A brilliant kingfisher by the water.",
+    "tags": [
+      "kingfisher",
+      "blue",
+      "brilliant",
+      "water",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: photorealistic-natural. Original portrait iPhone wallpaper 9:19.5 KINGFISHER BLUE. Fine-art wildlife editorial photography of ONE small real common kingfisher bird, rich electric teal-blue crown and wings, warm copper-orange breast, cream throat patch, long pointed dark beak and glossy dark eye; accurate natural bird proportions, no exaggerated cartoon eye. Bird perches sideways facing left on one slender dry reed stem across lower right, its compact body entirely inside the bottom25percent of the composition. Tiny natural talons, exquisite individual feather detail and subtle living posture. Seamless smooth pale POWDER RIVER BLUE #E6EFF3 backdrop with only very subtle soft hazy natural light. Upper72percent completely quiet and empty for home-screen icons: no branches, leaves, bokeh dots, clouds, text or objects. Bird should occupy about24percent canvas width, not a huge closeup. One fine reed leaf curves very low along bottom edge. Soft diffuse morning light, luminous blue plumage and natural copper chest, delicate soft shadows, calm refined nature photography. Palette pale river blue, teal, navy and restrained copper. No other birds, flowers, fish, water splashes, landscapes, human figures, jewelry, craft material, phone frame, UI, logo or watermark. Original generated wildlife imagery; no external photograph.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "ddcFCwCbX2d4pFx2B4KaQLY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.3036e191.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 69512,
+      "sha256": "3036e19126e4b68a61eefe9c6d9adf3625649f3fef6e83cd7faa6239e246a03f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.d902ff51.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 62586,
+      "sha256": "d902ff513dfc26f418f5ba1b8f352b0d8009e2d53d39fe1884957881bf1e3e27",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.16a394c0.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 30936,
+      "sha256": "16a394c0e18da967078dc5837b7fe43ba127987d96058e09972d5cc3d09b03c4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.00589bcb.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5898,
+      "sha256": "00589bcbc3cd2c149a89a9b009805fe5d8b25f52981e6b46a2adfacf82c4141b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-scene.1cbf3e68.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 28498,
+      "sha256": "1cbf3e68f5c8483a896a022fa8162f49b16b5c14f86d4357fb2d8c650b4ccffa",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 197430,
+  "widgets": [
+    {
+      "id": "scene",
+      "kind": "art",
+      "image": "widget-scene.1cbf3e68.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Scene"
+    }
+  ]
+}

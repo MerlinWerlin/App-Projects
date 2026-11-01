@@ -1,0 +1,195 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "stellar-cradle",
+  "packVersion": 2,
+  "name": "Stellar Cradle",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#010816",
+    "tile": "#242A35",
+    "glyph": "#FAF8F2",
+    "accent": "#865E69",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Stellar Cradle",
+    "mood": "Midnight navy, pearl icons, peach/blue protostellar cavities, dust disc and First Light Clock.",
+    "tags": [
+      "stellar",
+      "cradle",
+      "midnight",
+      "navy",
+      "pearl",
+      "icons",
+      "peach",
+      "blue",
+      "protostellar",
+      "cavities",
+      "dust",
+      "disc",
+      "first",
+      "light",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "hwcGEwQokEuEjbVoXljQVAY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.50b5a5b6.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 102966,
+      "sha256": "50b5a5b6920f7b0c587bb9db429d2960b3774966af0af99c61425469abcc3499",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.91c6815f.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 91930,
+      "sha256": "91c6815ff9c73056eead19bab43791b01b1bc2fa0bf121c3d0a42f29ac9fcc29",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.66421c72.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 47612,
+      "sha256": "66421c7204a3060a342dd77710ba3f9b7078419f7fb5a5804d8891eb25523a9a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.d0a73ffb.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9340,
+      "sha256": "d0a73ffb31e488a7d72b5f13beead240d0ebf9e7aa504c07ec40b0ab95b7c8c7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-stellar-battery.0410a4fb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 108110,
+      "sha256": "0410a4fb47b09815a18913fde8da9689cfc840c55c2c7a8f026febdf535ba1a4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dust-disc.3e6faa42.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 168930,
+      "sha256": "3e6faa425b0807bf223649674a394c1fa83c2c3544d05876b5bd83d52797ee81",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-nebula-egg.4054a8c9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 134362,
+      "sha256": "4054a8c9f6976f8c30f6203cd8d1934fcf00e84e85186868b675d9ccb9c84a20",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-star-seedling.a3f9a3bc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 102130,
+      "sha256": "a3f9a3bc637334cc5abf4ebb01a3bd1a2e0cd98dc2d581fa604fc19573124010",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-stellar-nursery.a570bcc6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 165990,
+      "sha256": "a570bcc69601606ba3bf72ff38ff17c44338addfccfa84c4202aa5e012f47b09",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 931370,
+  "widgets": [
+    {
+      "id": "stellar-battery",
+      "kind": "battery",
+      "image": "widget-stellar-battery.0410a4fb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Stellar battery"
+    },
+    {
+      "id": "dust-disc",
+      "kind": "art",
+      "image": "widget-dust-disc.3e6faa42.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dust disc"
+    },
+    {
+      "id": "nebula-egg",
+      "kind": "art",
+      "image": "widget-nebula-egg.4054a8c9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Nebula egg"
+    },
+    {
+      "id": "star-seedling",
+      "kind": "art",
+      "image": "widget-star-seedling.a3f9a3bc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Star seedling"
+    },
+    {
+      "id": "stellar-nursery",
+      "kind": "art",
+      "image": "widget-stellar-nursery.a570bcc6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Stellar nursery"
+    }
+  ]
+}

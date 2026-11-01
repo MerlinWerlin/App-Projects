@@ -1,0 +1,144 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "froggy-picnic",
+  "packVersion": 2,
+  "name": "Froggy Picnic",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#E0F0E4",
+    "tile": "#C5D2C7",
+    "glyph": "#1C1816",
+    "accent": "#C4A77D",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Froggy Picnic",
+    "mood": "Pastel mint, peach and butter-yellow kawaii picnic.",
+    "tags": [
+      "froggy",
+      "picnic",
+      "pastel",
+      "mint",
+      "peach",
+      "butter",
+      "yellow",
+      "kawaii",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original adorable kawaii character illustration, premium soft3D clay/plush, portrait iPhone wallpaper9:19.5 FROGGY PICNIC. Overall clean pastel mint #E3F2E6, peach pink and butter yellow. Upper65percent completely empty uniform very pale mint, no decorations patterns text objects there, practical icon space. LOWER35percent tiny irresistible cuddle picnic: ONE squat round pastel-green BABY FROG with two round eye bumps, dark simple bead eyes and tiny happy smile, peach blush, little stubby feet/paws, hugging a plump pale PEACH fruit with one tiny green leaf. Beside frog ONE chubby butter-yellow DUCKLING wearing tiny peach sunhat, and ONE small cream baby snail with a pink spiral shell. All sitting on a low round mint lily pad with tiny folded peach gingham picnic napkin beside it, TWO tiny white daisy flowers and one peach heart charm nestled at bottom. Whole characters safely contained at bottom, lots of breathing room, tiny proportions and cuddly marshmallow softness, tactile matte plush/clay with soft lighting. Flat pastel background to edges. No realistic animal anatomy spines teeth long limbs wet slime, no furniture buildings machinery typewriters carnival frogs with robots, no logos text phones UI borders watermark. Very cute cheerful kawaii stationery aesthetic, no actual astronomy.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "d+gFCwK3f2WIc46TN4B4BIg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.ef2f5a2e.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 46688,
+      "sha256": "ef2f5a2e9c9f45e5abc341e6f1379e9d9a4695c444cd9ae45e7bb1f7357d8865",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.ffc63ec8.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 41060,
+      "sha256": "ffc63ec8cbff9c9f0683dcafca424b1669dfa4995e85d16b59a7ea05a847f0f9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.582e3712.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 21626,
+      "sha256": "582e3712d589925fc83d2eebd9d0ef80c44c43c4e7c7aadddb77939d06d4ffe5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.ff3b24a1.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4732,
+      "sha256": "ff3b24a1089be5036318f22abd0df3b343b360f102cf4d4c0a0fd5da8ceee969",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-picnic-date.d6694a23.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 66640,
+      "sha256": "d6694a233493d5d74e327475792859ba66e35ca415a2600ce475287890d4d4e8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-daisy-duck.e42c3008.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 33792,
+      "sha256": "e42c300843a637ad14e9bb64cca17be71b48e0a2513053c95281a2da2d65160c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-strawberry-basket.425136d4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 58522,
+      "sha256": "425136d4a99dba36529a869372f5032715772a1db3cc2f657219175e10afe01a",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 273060,
+  "widgets": [
+    {
+      "id": "picnic-date",
+      "kind": "calendar",
+      "image": "widget-picnic-date.d6694a23.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Picnic date"
+    },
+    {
+      "id": "daisy-duck",
+      "kind": "art",
+      "image": "widget-daisy-duck.e42c3008.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Daisy duck"
+    },
+    {
+      "id": "strawberry-basket",
+      "kind": "art",
+      "image": "widget-strawberry-basket.425136d4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Strawberry basket"
+    }
+  ]
+}

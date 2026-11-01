@@ -1,0 +1,128 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "saltveil",
+  "packVersion": 2,
+  "name": "Saltveil",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DCA2A0",
+    "tile": "#C18F8D",
+    "glyph": "#1C1816",
+    "accent": "#D99C9B",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Saltveil",
+    "mood": "A photographic-style rose salt lagoon with blush backgrounds, wine icons, salt crystal, brine ripples.",
+    "tags": [
+      "saltveil",
+      "photographic",
+      "style",
+      "rose",
+      "salt",
+      "lagoon",
+      "with",
+      "blush",
+      "backgrounds",
+      "wine",
+      "icons",
+      "crystal",
+      "brine",
+      "ripples",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "rVgCCwJ31YhwrdiTZo1Q9jg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.7563b760.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 162570,
+      "sha256": "7563b76003038dc8f9106d3b1b13c771d267eabc718403a4fdda6e8cbe2f1316",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.57dcdc65.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 146500,
+      "sha256": "57dcdc65b35b1034f76933bbfba4932b6127b05665bd31aca9bd2e897503556d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.37660905.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 71704,
+      "sha256": "37660905e7b514c2ce93f7cb1ae0d5e67f1f2e7f32197035b5b23b0f9d6656f3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.bfc24321.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11026,
+      "sha256": "bfc243217a35bf01c0d58a6b8e7da769b6236ed54ab1aacbae579d1b2fbcb46d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-brine-ripples.ad16bbc9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 124328,
+      "sha256": "ad16bbc929c6b03f2af3e21f1f0cf358141957b600ec285588544d63c698785d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-salt-crystal.a68920a7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 97336,
+      "sha256": "a68920a735e352dcc6ece702a74820b64021c794f3c1a6c4fc2650fffd2ea66f",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 613464,
+  "widgets": [
+    {
+      "id": "brine-ripples",
+      "kind": "art",
+      "image": "widget-brine-ripples.ad16bbc9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Brine ripples"
+    },
+    {
+      "id": "salt-crystal",
+      "kind": "art",
+      "image": "widget-salt-crystal.a68920a7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Salt crystal"
+    }
+  ]
+}

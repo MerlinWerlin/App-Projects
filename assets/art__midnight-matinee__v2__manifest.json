@@ -1,0 +1,188 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "midnight-matinee",
+  "packVersion": 2,
+  "name": "Midnight Matinee",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#060000",
+    "tile": "#282322",
+    "glyph": "#FAF8F2",
+    "accent": "#845A42",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Midnight Matinee",
+    "mood": "Charcoal and cherry velvet, an old cinema and an embroidered moth.",
+    "tags": [
+      "midnight",
+      "matinee",
+      "charcoal",
+      "cherry",
+      "velvet",
+      "cinema",
+      "embroidered",
+      "moth",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Tima Miroshnichenko (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "QxgGCwRmgFiKb2SWZoBmB4g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.da95e36c.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 98608,
+      "sha256": "da95e36cb564779f432808e3b065428a3fcfa4cd3ac9853015563f8e9c9e421e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.a8f4110a.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 87744,
+      "sha256": "a8f4110a9827629f6a2ee5c135be89c7c54bcef9776646b8b2ba63a44b33eb8f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.fb56b52e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 45396,
+      "sha256": "fb56b52ebfe296c931332d63a29df0939933c7cd957a0ca32e98ff09a4319905",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.15241117.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 8272,
+      "sha256": "15241117561c0b064c36b55906cd6caef243f4b834a250914339fa04bc01d12a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-matinee-countdown.82efd13d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 107704,
+      "sha256": "82efd13d4551a9fe7b328506353b68114b22d2fe05f3067a427e024a74009aa3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-popcorn-planet.aa23ec72.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 111734,
+      "sha256": "aa23ec72ac791b1ecff68043785140cb4332181b8be1f06f577a9704575a09eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-velvet-cinema-bat.07ddad2d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 124618,
+      "sha256": "07ddad2d5d06563a2fc55e604fd5a4a81248d3fb0244b5b6e86afe3031d05ac5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-reel-cinema.db34b9f5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 127294,
+      "sha256": "db34b9f5e2f1506dd25b441a95bcb5d5acefae2d6a12916b91be2dc51b9645ea",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-velvet-moth.a3e004ad.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 137396,
+      "sha256": "a3e004ade3cc62035e7bdd059bf9c129faf71574478e833cf49db374a8e82208",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 848766,
+  "widgets": [
+    {
+      "id": "matinee-countdown",
+      "kind": "countdown",
+      "image": "widget-matinee-countdown.82efd13d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Matinee countdown"
+    },
+    {
+      "id": "popcorn-planet",
+      "kind": "art",
+      "image": "widget-popcorn-planet.aa23ec72.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Popcorn planet"
+    },
+    {
+      "id": "velvet-cinema-bat",
+      "kind": "art",
+      "image": "widget-velvet-cinema-bat.07ddad2d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Velvet cinema bat"
+    },
+    {
+      "id": "reel-cinema",
+      "kind": "art",
+      "image": "widget-reel-cinema.db34b9f5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Reel cinema"
+    },
+    {
+      "id": "velvet-moth",
+      "kind": "art",
+      "image": "widget-velvet-moth.a3e004ad.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Velvet moth"
+    }
+  ]
+}

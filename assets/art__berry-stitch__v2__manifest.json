@@ -1,0 +1,143 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "berry-stitch",
+  "packVersion": 2,
+  "name": "Berry Stitch",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DBE8D9",
+    "tile": "#C0CBBE",
+    "glyph": "#1C1816",
+    "accent": "#B2927D",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Berry Stitch",
+    "mood": "A crocheted bunny among berries and stitches.",
+    "tags": [
+      "berry",
+      "stitch",
+      "crocheted",
+      "bunny",
+      "among",
+      "berries",
+      "stitches",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 BERRY STITCH. Extremely cute handmade AMIGURUMI CROCHET miniature, clearly real-looking soft cotton yarn stitches with visible loops and tiny fuzzy fibres, not smooth plastic resin ceramic wax or flat painting. Plain pale MINT background #E6F0E5, upper68percent EMPTY quiet mint with barely visible soft paper texture, no patterns lettering or decor. Bottom30percent ONE tiny plump CREAM CROCHET LOP-EARED BUNNY, very round head/body, short floppy ears with pale rose inner stitching, tiny cocoa embroidered dot eyes and tiny Y-mouth, rosy yarn cheeks, short stubby paws. Bunny wears a tiny sage crocheted neck bow and carries a bright dusty-strawberry PINK CROCHET STRAWBERRY SATCHEL with cream embroidered seeds and sage leaf cap. Sitting on a very small pale sage crocheted oval picnic mat, two tiny crochet strawberry fruits nearby, one little cream yarn daisy. Full small scene only55percent canvas width with safe margins and quiet negative space, bunny about15percent image height, centered low. Charming small textile toy, soft diffused studio lighting, delicate tactile knit details, refined kawaii cuteness. Mint/cream/dusty strawberry rose/sage palette. No dragons lanterns beeswax dark blue ducks capybara resin axolotls clouds ghosts tea matcha or astronauts. No lettering logos frames UI watermark.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "dfgFCwK6f1WYhnzCJ4CJA5c=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.38afd87e.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 73854,
+      "sha256": "38afd87e8742dbfa009afc5228b827e8b3c9aa667f51cdd188d727029ca38a82",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.6600433b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 65552,
+      "sha256": "6600433bf1b1497b8c8a25f93c4684dd0d4c6d29306634f8f1614ea4f956a20e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.31783f21.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 34476,
+      "sha256": "31783f2105d01be2aec7de975f054b623a6e3fcb82804c97ebc8a391aea43563",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.236ae131.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5902,
+      "sha256": "236ae13103f64e1bc939c99c5c2330dc90a054882131881e68e574f759911356",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-berry-habits.e9707831.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 134082,
+      "sha256": "e970783161295c75ee826131f21314871c0c3ba6e8ca27389ab895b2614a7050",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-felt-berry-bird.cd61e360.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 83614,
+      "sha256": "cd61e3607005182b9ad2ef41f67894c2f02fc7081cb8c6364e08adb957ae3aa9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-stitched-berry-basket.6486a4b6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 79276,
+      "sha256": "6486a4b62fe5d34f9c8114983022083602ad9245b24509750a45806528f3e0b1",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 476756,
+  "widgets": [
+    {
+      "id": "berry-habits",
+      "kind": "habits",
+      "image": "widget-berry-habits.e9707831.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Berry habits"
+    },
+    {
+      "id": "felt-berry-bird",
+      "kind": "art",
+      "image": "widget-felt-berry-bird.cd61e360.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Felt berry bird"
+    },
+    {
+      "id": "stitched-berry-basket",
+      "kind": "art",
+      "image": "widget-stitched-berry-basket.6486a4b6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Stitched berry basket"
+    }
+  ]
+}

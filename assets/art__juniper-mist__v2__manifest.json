@@ -1,0 +1,98 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "juniper-mist",
+  "packVersion": 2,
+  "name": "Juniper Mist",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D7E0DA",
+    "tile": "#BDC4BF",
+    "glyph": "#1C1816",
+    "accent": "#DBE4DE",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Juniper Mist",
+    "mood": "Misty juniper branches and frosted berries.",
+    "tags": [
+      "juniper",
+      "mist",
+      "misty",
+      "branches",
+      "frosted",
+      "berries",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 JUNIPER MIST. Fine-art BOTANICAL STILL-LIFE PHOTOGRAPH aesthetic, pale cool SAGE-MIST background #E8EEEA. UPPER70percent EMPTY quiet smooth pale sage, only extremely subtle soft natural tonal depth, no objects pattern bokeh points text. Bottom28percent ONE small graceful natural JUNIPER SPRIG entering from lower-left, slender warm brown twig with fine short deep-green pointed needle clusters, FIVE small round dusty-blue juniper berries with delicate pale waxy bloom and tiny natural surface marks, two tiny clear dew beads on needles. Entire sprig compact around58percent canvas width, low centered with full margins, berry cluster only8percent total imageheight. Soft cool diffuse morning light, beautiful sharp fine needle tips and powdery berries, subtle natural imperfections, pale background separation and restrained gentle shadows. Calm winterlike botanical editorial photography, pale sage/evergreen/dustyblue/silver palette. No snow crystals ice cubes other fruits flowers animals faces characters ribbons craft toys sculpture jewelry glass UI phoneframes text branding watermark. Original generated photographic-style image, no external photo.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "MegJAwCEr3d3dJyFrFB2+Yk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.ae5e3209.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 94102,
+      "sha256": "ae5e3209ea1a08e53f97d45f326eedb0ad9ef29d6c73fbcb531ad51f677340a4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.98bda801.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 85784,
+      "sha256": "98bda8014acdf007dfcb34340627b8688adbbccb3366dca3a5544c3954150165",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.535dcd78.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 49748,
+      "sha256": "535dcd78aaae65280b39a2a16fafa843a985e095737dbb3815862bcb2b0c4af9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.74e15c85.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9700,
+      "sha256": "74e15c856f44a92f6eaf3fd192ecd236c050b7ee9602b330d7258db74d257277",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-scene.a00ddf34.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 45380,
+      "sha256": "a00ddf346f4230b1b3c0ef29ff9429f48d03353546438ef935a7d7d80235e3fb",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 284714,
+  "widgets": [
+    {
+      "id": "scene",
+      "kind": "art",
+      "image": "widget-scene.a00ddf34.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Scene"
+    }
+  ]
+}

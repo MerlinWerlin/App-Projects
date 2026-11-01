@@ -1,0 +1,142 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "lotus-drift",
+  "packVersion": 2,
+  "name": "Lotus Drift",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#3A4C5F",
+    "tile": "#556474",
+    "glyph": "#FAF8F2",
+    "accent": "#1B2F3F",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Lotus Drift",
+    "mood": "Lotus flowers drifting on a calm pond.",
+    "tags": [
+      "lotus",
+      "drift",
+      "flowers",
+      "drifting",
+      "calm",
+      "pond",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 LOTUS DRIFT. Fine-art BOTANICAL WATER PHOTOGRAPH aesthetic, calm dusk pond with one beautiful BLUSH-PINK LOTUS BLOSSOM, deep muted DUSTY BLUE background #243948. UPPER68percent EMPTY quiet uniform dusty-blue pond reflection with extremely faint broad smooth tonal gradients, no distinct objects stars bokeh points or text. Bottom30percent one small natural blush-pink LOTUS flower floating at water level, elegant layered petals pale cream at center and muted rose at outer tips, subtle small yellow seedpod/stamens, one small round slate-sage lotus leaf behind and to side, delicate little droplets on petals. Few faint broad ripples around bloom and tiny natural reflection beneath, water smooth dark dusty blue. Compact low centered composition around50percent canvas width, flower itself11percent imageheight, safely abovebottom edge. Photographic macro botanical editorial, soft diffused dusk light, translucent petal detail and believable lotus anatomy, serene beautiful refined composition. Dustyblue/blushrose/palecream/slatesage palette. No wisteria cherries ribbons textile animals faces characters toys sculptures fantasy glow buildings phoneframes UI text logos borders watermark. Original generated photographic-style image, no external photo input.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "EtcFCwIpnnt3fYB8SICIA5g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.93332657.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 52022,
+      "sha256": "933326571b9d73237ac500addcebec669ba9579ac36ef4ae5e6414fd4f587b81",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.3178c8e9.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 46422,
+      "sha256": "3178c8e9837708ce087aadfaafa4503ed64d234a338f1817d35b990c01fc7947",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.3e7c5f03.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 23870,
+      "sha256": "3e7c5f03187ab27e89970f1193a5f950b3ad840b8a42c07c709087b621738e43",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.cf8bec5d.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4614,
+      "sha256": "cf8bec5db03e1d83638da6c17aa07944c1cc54322b0f420c5737c9327844b8f7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-jade-lotus-frog.affa2b0e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 53032,
+      "sha256": "affa2b0e844096a6c0b453764e839129bd30ee61098d0652abe96293f3838257",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lotus-focus.6074b1c6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 46974,
+      "sha256": "6074b1c6537b62b284e810349ee995038c7770438db98a1bee5e0519b3725bbd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pond-dragonfly.63d8b43c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 67406,
+      "sha256": "63d8b43c320afa7ded4286cde3f0b0c458d9d5e8d873317cb80d11f47ce883e2",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 294340,
+  "widgets": [
+    {
+      "id": "jade-lotus-frog",
+      "kind": "art",
+      "image": "widget-jade-lotus-frog.affa2b0e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Jade lotus frog"
+    },
+    {
+      "id": "lotus-focus",
+      "kind": "art",
+      "image": "widget-lotus-focus.6074b1c6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lotus focus"
+    },
+    {
+      "id": "pond-dragonfly",
+      "kind": "art",
+      "image": "widget-pond-dragonfly.63d8b43c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pond dragonfly"
+    }
+  ]
+}

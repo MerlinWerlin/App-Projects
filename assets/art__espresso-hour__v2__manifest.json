@@ -1,0 +1,148 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "espresso-hour",
+  "packVersion": 2,
+  "name": "Espresso Hour",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#311E13",
+    "tile": "#4D3D32",
+    "glyph": "#FAF8F2",
+    "accent": "#B5855A",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Espresso Hour",
+    "mood": "Coffee-brown, cream and copper, cutaway moka cafe, latte artwork and cafe clock.",
+    "tags": [
+      "espresso",
+      "hour",
+      "coffee",
+      "brown",
+      "cream",
+      "copper",
+      "cutaway",
+      "moka",
+      "cafe",
+      "latte",
+      "artwork",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for ESPRESSO HOUR. Upper75percent almost uniform deep espresso-brown matte paper #30241F, very subtle cocoa grain, no objects patterns steam highlights or text behind future app icons. Bottom25percent an exquisite restrained editorial still life: a small brushed-copper moka pot next to a low ivory ceramic espresso cup with thick golden crema, three coffee beans on a soft folded oatmeal linen corner, grounded on dark brown stone. Warm tiny amber rim light, soft realistic natural shadows, high-end quiet late-night coffee bar photography. Entire objects contained low with generous margins, copper/ivory/cocoa palette, no steam cloud reaching upper field. Realistic tactile metal, ceramic and linen, no miniature buildings in wallpaper. Full bleed portrait, no brands, lettering, UI, phones, frame, stars, neon or borders.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "yigGCwJdQMmJd3RMS1DaA6U=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.a78a032a.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 137902,
+      "sha256": "a78a032ab7c6594e0fdf589479f970daae8c425fda8fa51bcb0d67f1b188db6a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.537dc639.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 121828,
+      "sha256": "537dc639b471f06bd4af4c323f9c8cd6606d5232663e501936d8aa6a3521b8ac",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.08858ad5.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 53554,
+      "sha256": "08858ad57cfd87eb5c495116b24f5448d5f185cad9c43c769f99534236e8d2af",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.38a7db3e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9008,
+      "sha256": "38a7db3e14be4462540d129a20a3a5d86ccafcb96b35ff08e028c8c36835814a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bean-moon.b9655bd9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 89790,
+      "sha256": "b9655bd93c44b22d077031da29f0839a580e6e5d2b7b79a8b8b0ee2f1ef96caf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-coffee-focus.a949be3f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 61026,
+      "sha256": "a949be3f795936ab3116085f46cbf0dfed9efcd7932820da1cb0d3b97d0877c4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-coffee-plant-glass.a19df771.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 113238,
+      "sha256": "a19df7711121b2bb65e3cf50145548822b3b970f234233bf89db67e406b31c18",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 586346,
+  "widgets": [
+    {
+      "id": "bean-moon",
+      "kind": "art",
+      "image": "widget-bean-moon.b9655bd9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bean moon"
+    },
+    {
+      "id": "coffee-focus",
+      "kind": "art",
+      "image": "widget-coffee-focus.a949be3f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Coffee focus"
+    },
+    {
+      "id": "coffee-plant-glass",
+      "kind": "art",
+      "image": "widget-coffee-plant-glass.a19df771.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Coffee plant glass"
+    }
+  ]
+}

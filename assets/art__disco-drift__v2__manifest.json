@@ -1,0 +1,149 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "disco-drift",
+  "packVersion": 2,
+  "name": "Disco Drift",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D8D9F6",
+    "tile": "#BEBED7",
+    "glyph": "#1C1816",
+    "accent": "#B47EA1",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Disco Drift",
+    "mood": "Periwinkle, plum and tangerine, mirrorball roller rink, iridescent quad skate and flip clock.",
+    "tags": [
+      "disco",
+      "drift",
+      "periwinkle",
+      "plum",
+      "tangerine",
+      "mirrorball",
+      "roller",
+      "rink",
+      "iridescent",
+      "quad",
+      "skate",
+      "flip",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for DISCO DRIFT. Upper75percent quiet almost uniform pale periwinkle matte field #E4E5F4 with very subtle soft paper grain, no objects light dots stars or busy patterns behind future icons. Bottom25percent a sculptural miniature retro roller-skating rink: smooth lilac wooden floor makes a low sweeping curve edged by one thin tangerine-orange rail, soft mauve low curved seating, a small mirrored-silver half sphere on floor far lower-left casts a few beautiful subdued pastel reflections only across lower rink. Elegant1970s leisure-club aesthetic reinterpreted as contemporary collectible architectural model. Periwinkle/plum/tangerine with restrained iridescent silver, warm glancing studio light, refined playful nostalgia. All detail stays low, abundant useful empty space above. No skaters, text, logos, phones, UI, borders or stars. Full bleed portrait wallpaper.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "NBcGCwZ3f1h4dnqFlZB+CLg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.07161c0e.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 83308,
+      "sha256": "07161c0edf0acc3cecabe1f21b5e13eae5a6c3750a080371a728a3ecb9f290e2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.241e2691.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 70936,
+      "sha256": "241e269134f1951fb9c714fed8a7cfc561d345a82efbaa845a9b076fda6027cb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.37ed0132.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 25508,
+      "sha256": "37ed01322a2cbe22181bccfaf23a68d5c4cbcff71569e6abc6453a67418730eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.8d1b9299.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5218,
+      "sha256": "8d1b9299866d6b614e6d48f7aa72de41eb2c6d586e134f3e7ab12057a0d574dc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rink-countdown.b620caa5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 121872,
+      "sha256": "b620caa576acf407d264970998c30c611343094c4e55e50887218e14b3e44c33",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-disco-jellyfish.4b276208.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 66004,
+      "sha256": "4b276208e796fd86fac4aaf52904d88f2578027bcd17c252ab5a6d021c2dbac0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mirror-snapshot.c55f10e6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 51058,
+      "sha256": "c55f10e6ea78faa5ee56e68006d16f0d04390e2d38560fe42dcf730a163b0fd4",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 423904,
+  "widgets": [
+    {
+      "id": "rink-countdown",
+      "kind": "countdown",
+      "image": "widget-rink-countdown.b620caa5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rink countdown"
+    },
+    {
+      "id": "disco-jellyfish",
+      "kind": "art",
+      "image": "widget-disco-jellyfish.4b276208.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Disco jellyfish"
+    },
+    {
+      "id": "mirror-snapshot",
+      "kind": "art",
+      "image": "widget-mirror-snapshot.c55f10e6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mirror snapshot"
+    }
+  ]
+}

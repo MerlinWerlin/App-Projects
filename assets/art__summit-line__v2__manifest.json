@@ -1,0 +1,146 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "summit-line",
+  "packVersion": 2,
+  "name": "Summit Line",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#162829",
+    "tile": "#364545",
+    "glyph": "#FAF8F2",
+    "accent": "#64768F",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Summit Line",
+    "mood": "Pine-black, snowy ivory and signal-red alpine cable-car theme.",
+    "tags": [
+      "summit",
+      "line",
+      "pine",
+      "black",
+      "snowy",
+      "ivory",
+      "signal",
+      "alpine",
+      "cable",
+      "theme",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original cinematic landscape photography artwork. Portrait iPhone wallpaper approx9:19.5 SUMMIT LINE, alpine cable-car theme. Upper58percent almost uniform very dark pine-black #172725 overcast dusk sky, no stars aurora moon clouds bright gradients texture patterns cables silhouettes or text in upper58percent, quiet clean space for ivory app icons. Lower42percent realistic snowy alpine mountain landscape at blue hour, jagged distant snow peaks kept low behind a dark snow-dusted evergreen ridge, very soft cold mist. ONE compact vintage SIGNAL RED gondola cable-car cabin with black glass panoramic windows hangs from a realistic dark hanger and TWO fine taut cable lines that cross ONLY the lower-middle screen at about64percent height; cable cabin at lower-center-right around70percent height, whole cabin and hanger visible, warm tiny cream cabin light, NO people inside visible. Snow-laden dark pine trees form low bottom corners with snow-covered rock ledge, one warm red accent from cable car, cinematic refined natural photographic realism. Gondola appears physically suspended, no giant floating cabin. Dark pine-black, cool ivory snow and restrained red. Landscape concentrated below60percent, calm large upper sky matches #172725. Fictional location not a real resort, full bleed. No resort text signs logos crosses UI icons phone frames borders or watermarks, no extra gondolas, no nebula stars aurora glass jars people animals trains or ski racers.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "jNcFCwBocHl5a5fEh493CMg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.9a5b10de.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 190076,
+      "sha256": "9a5b10deab1ab9d08201da4b27782562fbd82277e19c6fa319a31874a115c154",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c993af20.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 172588,
+      "sha256": "c993af20123e9c866876506df7369b705b91d9cb84c8a7ae3951b43f779b40b9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.360124b9.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 82352,
+      "sha256": "360124b905c4f89b34aa5582dcc9b6476c830561468646799470858461a03012",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.d453cf3e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14226,
+      "sha256": "d453cf3e191c07af95dbf253104c9dd2ce7bebc0a17d1b28f04e8e19feda4e35",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-summit-countdown.571a0609.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 98468,
+      "sha256": "571a0609c65febb3d09a8758b2338fdc352f71f1a5738b65bfb458355df8dcb9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-cable-car.c6e7f066.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 98526,
+      "sha256": "c6e7f066d00250816fbd6c95ae776a6493bad414f03e5795486dd1865454ceee",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pine-rope-pendant.38e56c1c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 61748,
+      "sha256": "38e56c1c0fd6c7f6d56124256addc6fc0b80aa3122929c48ada4b5470b4c0a63",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 717984,
+  "widgets": [
+    {
+      "id": "summit-countdown",
+      "kind": "countdown",
+      "image": "widget-summit-countdown.571a0609.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Summit countdown"
+    },
+    {
+      "id": "paper-cable-car",
+      "kind": "art",
+      "image": "widget-paper-cable-car.c6e7f066.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Paper cable car"
+    },
+    {
+      "id": "pine-rope-pendant",
+      "kind": "art",
+      "image": "widget-pine-rope-pendant.38e56c1c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pine rope pendant"
+    }
+  ]
+}

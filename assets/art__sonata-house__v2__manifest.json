@@ -1,0 +1,145 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "sonata-house",
+  "packVersion": 2,
+  "name": "Sonata House",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#E2D6C4",
+    "tile": "#C6BBAC",
+    "glyph": "#1C1816",
+    "accent": "#88542F",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Sonata House",
+    "mood": "Warm ivory, walnut and burgundy chamber-music theme.",
+    "tags": [
+      "sonata",
+      "house",
+      "warm",
+      "ivory",
+      "walnut",
+      "burgundy",
+      "chamber",
+      "music",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium photographic artwork. Portrait iPhone wallpaper approximately9:19.5. SONATA HOUSE, quiet acoustic chamber-music design. Upper58percent clean uniform warm ivory #EEE7DB, matte subtly plastered wall, visually nearly flat, NO objects lines text shadows or bright patterns in upper58percent, calm background for dark line app icons. In the lower42percent a beautiful intimate miniature chamber music salon as an exquisite architectural scale model, no enclosing box or glass dome: dark warm walnut baby grand piano open lid, visible ivory-and-ebony keys, a tiny oxblood velvet piano stool, sculptural curved ivory plaster alcove rising only to58percent height, warm walnut parquet stage with one burgundy textile rug, soft afternoon sunlight grazing from lower right, very elegant refined editorial interior photography. Piano correctly constructed and recognizable, sensible perspective, small gold pedals, model fills bottom38percent while margins remain generous. Warm ivory, dark walnut, very restrained burgundy, tiny brushed brass. Tactile fine wood grain, real velvet, soft diffuse shadows, restrained luxury. Wallpaper continues ivory to all edges, no dark sky, no space nebula aurora storm coastal scene, no fruit animals people plants signage text UI icons phone frame borders or watermark. Full bleed.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "KTkSEwSnj1aHh3iHhpB5B6g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.e5a69ecf.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 145676,
+      "sha256": "e5a69ecf85fd905f83bd60a8b084fc949f39c66cc8187dccc31503fd6c0a333a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.44e7a72f.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 125278,
+      "sha256": "44e7a72f9728b5b5977342b203a001212b8099d7b854348c12ea11a8c830b263",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.326a4f29.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 59042,
+      "sha256": "326a4f29c6b310cfb0cb551e1df8ade72597a73fcd249940db4355061dc5c369",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.f35310ca.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9898,
+      "sha256": "f35310ca010ea4809921e304594a18c2db2343f809cd9f16efeeb5c1a882637c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-piano-garden.444d2484.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 104666,
+      "sha256": "444d24846d2ab62b9107259da8c2f240aab5341c4b17578901fa84349c6d3cd1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-practice-chapters.1090c2b9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 57818,
+      "sha256": "1090c2b9aae19d102e0a4937f0573bfd3ca9f5770a82d06108f9eabab7f83a30",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-string-butterfly.7ef3bab5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 81710,
+      "sha256": "7ef3bab57cc57f52fce734b6b120c517ae9bf8fb578f2b9367a308d36604bf38",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 584088,
+  "widgets": [
+    {
+      "id": "piano-garden",
+      "kind": "art",
+      "image": "widget-piano-garden.444d2484.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Piano garden"
+    },
+    {
+      "id": "practice-chapters",
+      "kind": "art",
+      "image": "widget-practice-chapters.1090c2b9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Practice chapters"
+    },
+    {
+      "id": "string-butterfly",
+      "kind": "art",
+      "image": "widget-string-butterfly.7ef3bab5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "String butterfly"
+    }
+  ]
+}

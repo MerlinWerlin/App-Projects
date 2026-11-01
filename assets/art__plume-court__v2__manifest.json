@@ -1,0 +1,145 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "plume-court",
+  "packVersion": 2,
+  "name": "Plume Court",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#E0CCB3",
+    "tile": "#C5B39D",
+    "glyph": "#1C1816",
+    "accent": "#F1DABA",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Plume Court",
+    "mood": "Limestone, peacock-blue, jade and bronze garden theme.",
+    "tags": [
+      "plume",
+      "court",
+      "limestone",
+      "peacock",
+      "blue",
+      "jade",
+      "bronze",
+      "garden",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium editorial wildlife/garden artwork. Portrait iPhone wallpaper approx9:19.5 PLUME COURT. Upper60percent almost uniform warm pale limestone #E8E0CD, softly defocused matte stone wall, NO shapes lines arches objects leaves strong shadows colorful reflections or patterns there; calm space for future blue outline app icons. Lower40percent ONE beautiful anatomically coherent male peacock in full frontal display on a low pale limestone garden terrace: small elegant sapphire-blue neck/body at lower center, fully fanned jade/teal/blue tail with fine bronze eye markings forming a broad graceful low semicircle, all feathers and body/feet comfortably visible within portrait width; fan stays below59percent screen height and fills lower-middle, no feather reaches upper sky. Fine realistic individual feather texture, iridescent natural sheen, small cobalt crest. A very low carefully clipped dark jade hedge along distant bottom side edges, warm stone floor foreground, very soft gold afternoon side light, sophisticated tranquil private-courtyard atmosphere. Natural peacock photography aesthetic, rich but restrained blues greens bronze against warm stone. NO palace building arch columns people statues other birds flower clutter text labels logos icons phone frame borders or watermark, no jellyfish sea nebula stars or aurora. Full bleed and quiet very usable wallpaper.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "LBkKAwKHjqd3gH1H+XSNy/g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.22748553.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 272290,
+      "sha256": "2274855303da5147ac394345a254f88898212b44d1c9ca4367f7e08469c4a57d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.d4212d8a.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 248336,
+      "sha256": "d4212d8a4e48f8320b82d236ac7109e939f4c949b9c94251d668e00ffb6fc32b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.3349fca6.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 130684,
+      "sha256": "3349fca6833ad752773f8598301dd331fb1d3adc66cbc50e8dab477cdfb29dfb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.09ab5af4.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 18596,
+      "sha256": "09ab5af49f989a3ece0dd1028308113195561ccdad6ee1d70ca4f69bb12b6443",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-plume-habits.fcffff1e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 149330,
+      "sha256": "fcffff1e2833b7a48bbf324f583f071f4a54f015b27b955dac6a1364d5a4c670",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-feather-fan.59b4e742.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 161688,
+      "sha256": "59b4e742f11870c88fdaf7c7a43ea04b41327316bf46940b2122684db527c81e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-porcelain-quail.ae5d0161.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 119256,
+      "sha256": "ae5d01615da65ab483e5f1db808e6e899b0025c5e722fd6daf4585d39a64ff1e",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1100180,
+  "widgets": [
+    {
+      "id": "plume-habits",
+      "kind": "habits",
+      "image": "widget-plume-habits.fcffff1e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Plume habits"
+    },
+    {
+      "id": "feather-fan",
+      "kind": "art",
+      "image": "widget-feather-fan.59b4e742.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Feather fan"
+    },
+    {
+      "id": "porcelain-quail",
+      "kind": "art",
+      "image": "widget-porcelain-quail.ae5d0161.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Porcelain quail"
+    }
+  ]
+}

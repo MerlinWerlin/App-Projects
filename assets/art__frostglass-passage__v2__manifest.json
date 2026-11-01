@@ -1,0 +1,196 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "frostglass-passage",
+  "packVersion": 2,
+  "name": "Frostglass Passage",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D3DCE8",
+    "tile": "#B9C1CB",
+    "glyph": "#1C1816",
+    "accent": "#B6C2D3",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Frostglass Passage",
+    "mood": "Pale silver-blue mist and snowy peaks with quiet slate outline icons, crystal cabin, frost-ring Arctic fox.",
+    "tags": [
+      "frostglass",
+      "passage",
+      "pale",
+      "silver",
+      "blue",
+      "mist",
+      "snowy",
+      "peaks",
+      "with",
+      "quiet",
+      "slate",
+      "outline",
+      "icons",
+      "crystal",
+      "cabin",
+      "frost",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Master Unknown (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "c+cFAwAlvxl3iIeGBqlBkAs=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2bb274af.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 144384,
+      "sha256": "2bb274af8a2d2687951a89366395b1c4c1f4ba5c29a144523331a71ffe2882bf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.399e8bbc.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 132290,
+      "sha256": "399e8bbc4192c26bc9ba32119e58b6601a73314e80946708a925304789026219",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.ae4be3ef.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 58574,
+      "sha256": "ae4be3ef31a01384748848b38492be23ed671d7dc895924a7de2c64e278d4e1a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.4606cfe3.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11886,
+      "sha256": "4606cfe3663d28183554d05af7a8da9cf8fcf6d09d10e80edd90a18ebc74afd7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-crystal-cabin.ee1b9f13.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 205164,
+      "sha256": "ee1b9f13324e4b9b249a1be57ad46e5b055d92cef0c38c14a6f84db9b6fe2b9e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-frost-focus.7f24e4a2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 124596,
+      "sha256": "7f24e4a2d8ceb7231101a9a3678d22d2df1d6ef6be70f9b59ddd9d9b807bb37a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glacier-pebble.c0d83cc8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 130852,
+      "sha256": "c0d83cc89a81abbf41f51fcf97f40eab0d29d3557de4761e4264214940123b9b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ice-lantern.5985bcd1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 151074,
+      "sha256": "5985bcd1aee7e5644dcbcb249246c721be7d32277245008e1a4c40bf017735a0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-frost-fox.a661798b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 146740,
+      "sha256": "a661798bc3b09c1a2886c26ee7a7741a87d88f62895bbb0929b278812b62f976",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1105560,
+  "widgets": [
+    {
+      "id": "crystal-cabin",
+      "kind": "art",
+      "image": "widget-crystal-cabin.ee1b9f13.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Crystal cabin"
+    },
+    {
+      "id": "frost-focus",
+      "kind": "art",
+      "image": "widget-frost-focus.7f24e4a2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Frost focus"
+    },
+    {
+      "id": "glacier-pebble",
+      "kind": "art",
+      "image": "widget-glacier-pebble.c0d83cc8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glacier pebble"
+    },
+    {
+      "id": "ice-lantern",
+      "kind": "art",
+      "image": "widget-ice-lantern.5985bcd1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ice lantern"
+    },
+    {
+      "id": "frost-fox",
+      "kind": "art",
+      "image": "widget-frost-fox.a661798b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Frost fox"
+    }
+  ]
+}

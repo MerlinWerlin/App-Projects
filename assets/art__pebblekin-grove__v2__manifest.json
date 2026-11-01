@@ -1,0 +1,193 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "pebblekin-grove",
+  "packVersion": 2,
+  "name": "Pebblekin Grove",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#A7A692",
+    "tile": "#949281",
+    "glyph": "#1C1816",
+    "accent": "#9B8A6D",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Pebblekin Grove",
+    "mood": "A carved stone guardian with sage-grey paper, charcoal icons, pocket grotto.",
+    "tags": [
+      "pebblekin",
+      "grove",
+      "carved",
+      "stone",
+      "guardian",
+      "with",
+      "sage",
+      "grey",
+      "paper",
+      "charcoal",
+      "icons",
+      "pocket",
+      "grotto",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "5ggGCwKVm5aIYZ+iVpBnBok=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.7cf45929.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 259068,
+      "sha256": "7cf4592923fe2961a9fb96835065a9036b53e0afb751ded3d721b5e94e116226",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.3e28644c.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 232972,
+      "sha256": "3e28644ce55ba332156b06da632130040b00adcf4a641b3d57e2eeecd7a3074b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.1a8181b8.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 121026,
+      "sha256": "1a8181b83d409f700ca88f2fee2b2bb8e595318528703070ae98768e5f1d4083",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.5db841e9.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14480,
+      "sha256": "5db841e9491d9b17e737e297357cb023333dac10fc99d31b3b5e4987f93aafa4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-grove-habits.4411b6eb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 198736,
+      "sha256": "4411b6eb501bf9e82ca6b983f4f3621bfb07c57db163b841c9e50a2ebc2e84dd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fern-altar.9011bc9d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 194874,
+      "sha256": "9011bc9d38846d33a3d9733b6cc2478a034c7c23e23fd1307f2bf6864a95ea52",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pebble-moth.58194985.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 160828,
+      "sha256": "581949858ce75027e0d495c659b838910deca9933d5efeffd57cbb68cf0e1320",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pocket-grotto.d75c6d45.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 167316,
+      "sha256": "d75c6d4527312fb5a00b007cf37154c0e652ac0ef028dd8fef02d99168ec9329",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sprout-keeper.b72f099a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 153552,
+      "sha256": "b72f099a8f1f717c71ed233f23cea7439a20a898bda6199504fc67d9c050cc6a",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1502852,
+  "widgets": [
+    {
+      "id": "grove-habits",
+      "kind": "habits",
+      "image": "widget-grove-habits.4411b6eb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Grove habits"
+    },
+    {
+      "id": "fern-altar",
+      "kind": "art",
+      "image": "widget-fern-altar.9011bc9d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fern altar"
+    },
+    {
+      "id": "pebble-moth",
+      "kind": "art",
+      "image": "widget-pebble-moth.58194985.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pebble moth"
+    },
+    {
+      "id": "pocket-grotto",
+      "kind": "art",
+      "image": "widget-pocket-grotto.d75c6d45.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pocket grotto"
+    },
+    {
+      "id": "sprout-keeper",
+      "kind": "art",
+      "image": "widget-sprout-keeper.b72f099a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sprout keeper"
+    }
+  ]
+}

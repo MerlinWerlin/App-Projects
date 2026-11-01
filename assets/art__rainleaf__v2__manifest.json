@@ -1,0 +1,193 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "rainleaf",
+  "packVersion": 2,
+  "name": "Rainleaf",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#0C1610",
+    "tile": "#2D3630",
+    "glyph": "#FAF8F2",
+    "accent": "#08140A",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Rainleaf",
+    "mood": "Photographic-style wet tropical leaves with dark forest backgrounds, silver-green icons, fern unfurl.",
+    "tags": [
+      "rainleaf",
+      "photographic",
+      "style",
+      "tropical",
+      "leaves",
+      "with",
+      "dark",
+      "forest",
+      "backgrounds",
+      "silver",
+      "green",
+      "icons",
+      "fern",
+      "unfurl"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "BugFAwBZc2p3n4SnWXBZ+cg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.948ad7f1.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 156844,
+      "sha256": "948ad7f163d8e0528a364e880b59e8990aec19afcce13c93b73863c8da20af24",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.9fe210ad.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 144888,
+      "sha256": "9fe210adffa7b004f9895e11ac17966a1fa6a498d0d0f64e9d4b55e843d450c1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.65cd6117.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 77524,
+      "sha256": "65cd6117e4ccfa5fa3ea21c19a3677003b697c79cabc6995b97d0d7547fbeaab",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.66110054.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12604,
+      "sha256": "66110054b70c9a1fc76457d57f1933f35f6d13c8e36cd88f213f032f44bb63c2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dew-leaf.ac226ea1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 134900,
+      "sha256": "ac226ea177b6793e7ea4cd7ccf62439650077f431c46f7f0089b2575dceb536b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-jade-rain-frog.ba8d48f9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 105480,
+      "sha256": "ba8d48f9a6a4939d774ba34f9090619580ff0e2679596c1fac64a13e61d98eed",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rain-bamboo.19b64eec.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 93540,
+      "sha256": "19b64eec77391383ec948e341ce49cacd96305b78d64cf9927ae420157dd4722",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rainleaf-focus.1841d82d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 74264,
+      "sha256": "1841d82ddb186b7b02a6c561b47fac86dc03c48f7c3672b89f2e78a62a2bb169",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fern-unfurl.b500c090.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75066,
+      "sha256": "b500c0900699bf1b998a5a4cd0b2d5433c1d15b324d766cc0b0bc9b391f45766",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 875110,
+  "widgets": [
+    {
+      "id": "dew-leaf",
+      "kind": "art",
+      "image": "widget-dew-leaf.ac226ea1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dew leaf"
+    },
+    {
+      "id": "jade-rain-frog",
+      "kind": "art",
+      "image": "widget-jade-rain-frog.ba8d48f9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Jade rain frog"
+    },
+    {
+      "id": "rain-bamboo",
+      "kind": "art",
+      "image": "widget-rain-bamboo.19b64eec.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rain bamboo"
+    },
+    {
+      "id": "rainleaf-focus",
+      "kind": "art",
+      "image": "widget-rainleaf-focus.1841d82d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rainleaf focus"
+    },
+    {
+      "id": "fern-unfurl",
+      "kind": "art",
+      "image": "widget-fern-unfurl.b500c090.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fern unfurl"
+    }
+  ]
+}

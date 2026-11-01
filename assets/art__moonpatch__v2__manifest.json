@@ -1,0 +1,187 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "moonpatch",
+  "packVersion": 2,
+  "name": "Moonpatch",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#101322",
+    "tile": "#31333F",
+    "glyph": "#FAF8F2",
+    "accent": "#C2A993",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Moonpatch",
+    "mood": "A tiny felt astronaut on a cratered wool moon.",
+    "tags": [
+      "moonpatch",
+      "tiny",
+      "felt",
+      "astronaut",
+      "cratered",
+      "wool",
+      "moon",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-10-31"
+  },
+  "thumbhash": "ywcKEwJXgMl3hndpV4B8Bdg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.3fb93b60.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 610984,
+      "sha256": "3fb93b607f05b0e9d696264f01ab52aaf24a9d55b91284f1f18c1874c3e3c55b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1a3ad881.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 582510,
+      "sha256": "1a3ad881b1724aeda81b0beebb2a62b7a1c94b93cb4ac8ce3eb68f7fa2bf1fae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.81570331.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 277052,
+      "sha256": "81570331986d513391e24c639e0911841681d4afb0dc9f9b8d0fe83ced61d21a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.c40a80dd.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 31784,
+      "sha256": "c40a80dd4b0f407d2c1f6d5dbba78d6d6483eec34be10fe93cb9db0a8ff8766d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-moonpatch-habits.979177ac.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 265316,
+      "sha256": "979177acbc4997d5400c3404be4b45ecb01f35768db99f53a9b0891239058d0d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-patchwork-kite.647a4340.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 295618,
+      "sha256": "647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-quilted-rocket.bd026b99.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 293698,
+      "sha256": "bd026b9975abea444c82eaea3959ed674e1e2911c38f98ba56eb282487f8c657",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pocket-rocket.4ba97b5b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 286872,
+      "sha256": "4ba97b5be97d1eea1851268b833df49b8791234a8511717b87eb00decebcafe6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-star-catcher.b7b5d2a9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 310570,
+      "sha256": "b7b5d2a93e5b7c915b36c1cdc45b4d315d9aec76ca6d34425d314c5dffbb8ae8",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2954404,
+  "widgets": [
+    {
+      "id": "moonpatch-habits",
+      "kind": "habits",
+      "image": "widget-moonpatch-habits.979177ac.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Moonpatch habits"
+    },
+    {
+      "id": "patchwork-kite",
+      "kind": "art",
+      "image": "widget-patchwork-kite.647a4340.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Patchwork kite"
+    },
+    {
+      "id": "quilted-rocket",
+      "kind": "art",
+      "image": "widget-quilted-rocket.bd026b99.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Quilted rocket"
+    },
+    {
+      "id": "pocket-rocket",
+      "kind": "art",
+      "image": "widget-pocket-rocket.4ba97b5b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pocket rocket"
+    },
+    {
+      "id": "star-catcher",
+      "kind": "art",
+      "image": "widget-star-catcher.b7b5d2a9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Star catcher"
+    }
+  ]
+}

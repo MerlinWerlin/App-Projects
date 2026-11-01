@@ -1,0 +1,149 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "lemon-lagoon",
+  "packVersion": 2,
+  "name": "Lemon Lagoon",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F6E8B5",
+    "tile": "#D7CB9F",
+    "glyph": "#1C1816",
+    "accent": "#72B3BE",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Lemon Lagoon",
+    "mood": "Pale lemon, cobalt icons, a bottled pool resort, blue ceramic octopus and pool-tile clock.",
+    "tags": [
+      "lemon",
+      "lagoon",
+      "pale",
+      "cobalt",
+      "icons",
+      "bottled",
+      "pool",
+      "resort",
+      "blue",
+      "ceramic",
+      "octopus",
+      "tile",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper 9:19.5 for LEMON LAGOON, a playful stylish Mediterranean poolside theme. Upper75percent completely quiet pale butter-lemon matte plaster background, nearly uniform #F6F0C9 with only very delicate sunlit paper grain, no objects or highlights behind future icons. Bottom25percent beautiful highly crafted miniature kidney-shaped cobalt blue swimming pool recessed in creamy terrazzo, a tiny coral parasol at lower-right, one small floating sliced lemon ring, soft pale-blue rippling water and intricate cobalt mosaic edge. High-end miniature ceramic resort photography, fresh summer daylight, sculptural playful restrained design, crisp cobalt blue, pale lemon, tiny coral accents. Pool is near bottom with curved terrace fully contained. No sea scene, no lettering, no UI, no text, no frame, no random decoration in upper area. Full bleed portrait wallpaper, serene useful negative space.",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "8vgJKwZ3n1lnhXx1l49W+2o=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.d9e83761.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 190096,
+      "sha256": "d9e8376141e1d11842dc696b3d30db745efa94437e68b1d0ed84c84892e88ccb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.cc5bc146.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 176502,
+      "sha256": "cc5bc146d2255921e15e8661befa915a039ece5742809bb107aec12ea2139c43",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.7c0ae841.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 70778,
+      "sha256": "7c0ae8413a4242c2190da6e4c7e12661677c6023dd3126242e825d79d83a56a2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.c61e4048.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 13762,
+      "sha256": "c61e4048735b1fc7c69f606b8f8b205c944c7e78afe4674ed4f27b6ccf8a6763",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pool-day-countdown.07a5235e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 101894,
+      "sha256": "07a5235ea4eef9f7270177092ff14bbd6d217323a3c7701ca40cfc2ad97116f2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-coral-pool-float.9e165f01.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 68190,
+      "sha256": "9e165f010d0cab758d526b8ffebc39681f85a9666c0b2fb2ed33aefd357049ca",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lemon-sailboat.b0b902b8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84960,
+      "sha256": "b0b902b8e99531c239d91b7fd522ebc365a10df946633976a8b80c9d197d1de4",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 706182,
+  "widgets": [
+    {
+      "id": "pool-day-countdown",
+      "kind": "countdown",
+      "image": "widget-pool-day-countdown.07a5235e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pool day countdown"
+    },
+    {
+      "id": "coral-pool-float",
+      "kind": "art",
+      "image": "widget-coral-pool-float.9e165f01.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Coral pool float"
+    },
+    {
+      "id": "lemon-sailboat",
+      "kind": "art",
+      "image": "widget-lemon-sailboat.b0b902b8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lemon sailboat"
+    }
+  ]
+}

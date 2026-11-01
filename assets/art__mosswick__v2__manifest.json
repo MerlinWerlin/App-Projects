@@ -1,0 +1,191 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "mosswick",
+  "packVersion": 2,
+  "name": "Mosswick",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#BBB7A1",
+    "tile": "#A5A18E",
+    "glyph": "#1C1816",
+    "accent": "#977341",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Mosswick",
+    "mood": "A cork snail cottage with tufted moss, paper backgrounds, cocoa icons.",
+    "tags": [
+      "mosswick",
+      "cork",
+      "snail",
+      "cottage",
+      "with",
+      "tufted",
+      "moss",
+      "paper",
+      "backgrounds",
+      "cocoa",
+      "icons",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01"
+  },
+  "thumbhash": "JhkKEwKZbzd4iWd3aHB8BLg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.92d0dc34.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 427956,
+      "sha256": "92d0dc343bd96bd7514fddf0c823d9aeabd01d713bb74a0f4604a50887dfa937",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c2133b7e.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 388398,
+      "sha256": "c2133b7eb78c16d8429cec2241faa99623be9984dd111aebaa858c8f87341fe1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.3c713185.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 176000,
+      "sha256": "3c7131851793cf769965e74fea1a5244e3601966a46f6e12dfa1c089d336a2d1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.22d7162b.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 21298,
+      "sha256": "22d7162b0f6cd0d854f4f845eb1de6546985b21e02b64d7fea545db434c2cea3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-moss-habits.fe8272ab.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 258394,
+      "sha256": "fe8272abed0590b81d8ac5c207f31daab9d82f821ef9f367a8f7ec8fc9db9ebd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-acorn-cart.738e9239.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 224288,
+      "sha256": "738e9239e29668f304966678bef77636fa2d2db862556997bc2cff4a9388c6f7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bark-snail.06eb2ab1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 234824,
+      "sha256": "06eb2ab1889f8778f84c7fdd9a9762303b64f80fd196fd91555d45aa747026bc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-moss-tower.462a4a4b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 188804,
+      "sha256": "462a4a4b03dce6059bb4dce3b33644ef2dd8c6ff19e65504ba233c83de87887a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-travelling-cottage.8f26df1d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 226858,
+      "sha256": "8f26df1d8a1a583e4ab535dc7f9225ff8a2c8613ecf9d46da924c6ad2d6dcec0",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2146820,
+  "widgets": [
+    {
+      "id": "moss-habits",
+      "kind": "habits",
+      "image": "widget-moss-habits.fe8272ab.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Moss habits"
+    },
+    {
+      "id": "acorn-cart",
+      "kind": "art",
+      "image": "widget-acorn-cart.738e9239.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Acorn cart"
+    },
+    {
+      "id": "bark-snail",
+      "kind": "art",
+      "image": "widget-bark-snail.06eb2ab1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bark snail"
+    },
+    {
+      "id": "moss-tower",
+      "kind": "art",
+      "image": "widget-moss-tower.462a4a4b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Moss tower"
+    },
+    {
+      "id": "travelling-cottage",
+      "kind": "art",
+      "image": "widget-travelling-cottage.8f26df1d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Travelling cottage"
+    }
+  ]
+}
