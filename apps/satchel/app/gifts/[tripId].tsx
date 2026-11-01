@@ -4,12 +4,15 @@
 // budget bar (home values only with a saved rate). "Bought" offers to add a Shopping entry to Spending; "Packed"
 // counts the gift in its bag's weight on the packing screen. A general-guidance customs reminder and a shared text
 // list (no prices unless switched on). Logic in src/core/gifts.ts; stored on the trip (Trip.gifts) and in .satchel files.
+// T112: a gift opened from its Map-tab pin is scrolled into view and highlighted (accent border, "From the map").
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { AccessibilityInfo, Alert, Text, View } from 'react-native';
+import { AccessibilityInfo, Alert, ScrollView, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { formatWeight } from '../../src/core/bags.ts';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
+import { scrollTargetY } from '../../src/core/followups97.ts';
 import {
   addGiftSpending,
   canAddSpending,
@@ -86,7 +89,14 @@ export default function GiftsScreen() {
 }
 
 function GiftsBody({ trip }: { trip: Trip }) {
-  const { t, theme, lang } = useApp();
+  const { t, theme, lang, reduceMotion } = useApp();
+  const insets = useSafeAreaInsets();
+  // T112: the gift opened from the Map tab, scrolled to and highlighted while its editor is open.
+  const scroll = useRef<ScrollView>(null);
+  const scrollY = useRef(0);
+  const [focusGift, setFocusGift] = useState<string | null>(null);
+  const scrollToGift = (giftWindowY: number) =>
+    scroll.current?.measureInWindow((_x, y) => scroll.current?.scrollTo({ y: scrollTargetY(scrollY.current, giftWindowY, y, space.l), animated: !reduceMotion }));
   const { saveTrip } = useTrips();
   const router = useRouter();
   const people = useMemo(() => readGifts(trip), [trip]);
@@ -107,6 +117,7 @@ function GiftsBody({ trip }: { trip: Trip }) {
     const g = people.find((p) => p.id === personId)?.gifts.find((x) => x.id === giftId);
     if (!g) return;
     setGiftForm({ personId, prev: g, draft: draftFromGift(g, unit, lang), errors: [] });
+    setFocusGift(g.id);
     AccessibilityInfo.announceForAccessibility(t('f96.gift.opened', { what: g.what }));
   }, [params, people, unit, lang, t]);
 
@@ -175,7 +186,15 @@ function GiftsBody({ trip }: { trip: Trip }) {
   };
 
   return (
-    <Screen>
+    <ScrollView
+      ref={scroll}
+      onScroll={(e) => {
+        scrollY.current = e.nativeEvent.contentOffset.y;
+      }}
+      scrollEventThrottle={32}
+      style={{ flex: 1, backgroundColor: theme.paper }}
+      contentContainerStyle={{ paddingTop: insets.top + space.l, paddingBottom: insets.bottom + space.xxl, paddingHorizontal: space.l, gap: space.l }}
+    >
       <Stack.Screen options={{ title: t('gifts.title') }} />
 
       <SectionCard title={t('gifts.summary.title')} subtitle={t('gifts.summary.sub')} icon="gift-outline" tone="accent">
@@ -203,6 +222,8 @@ function GiftsBody({ trip }: { trip: Trip }) {
           home={home}
           giftForm={giftForm?.personId === p.id ? giftForm : null}
           setGiftForm={setGiftForm}
+          focusGift={giftForm?.prev?.id === focusGift ? focusGift : null}
+          onFocusLocated={scrollToGift}
           onEditPerson={() => setPersonForm({ prev: p, draft: draftFromPerson(p), errors: [] })}
           onStatus={(g, s) => changeStatus(p, g, s)}
           onAddSpending={(g) => offerSpending(trip, p, g)}
@@ -242,7 +263,7 @@ function GiftsBody({ trip }: { trip: Trip }) {
 
       <CustomsCard />
       <ShareCard trip={trip} />
-    </Screen>
+    </ScrollView>
   );
 }
 
@@ -273,12 +294,17 @@ function PersonCard({
   onStatus,
   onAddSpending,
   save,
+  focusGift,
+  onFocusLocated,
 }: {
   trip: Trip;
   person: GiftPerson;
   home: string | null;
   giftForm: GiftForm | null;
   setGiftForm: (f: GiftForm | null) => void;
+  /** T112: the gift opened from the Map tab (highlighted and scrolled to), else null. */
+  focusGift: string | null;
+  onFocusLocated: (windowY: number) => void;
   onEditPerson: () => void;
   onStatus: (g: Gift, s: GiftStatus) => void;
   onAddSpending: (g: Gift) => void;
@@ -322,7 +348,7 @@ function PersonCard({
 
       {person.gifts.map((g) =>
         giftForm?.prev?.id === g.id ? (
-          <GiftEditor key={g.id} trip={trip} person={person} form={giftForm} setForm={setGiftForm} save={save} />
+          <GiftEditor key={g.id} trip={trip} person={person} form={giftForm} setForm={setGiftForm} save={save} fromMap={focusGift === g.id} onLocated={onFocusLocated} />
         ) : (
           <GiftRow key={g.id} trip={trip} gift={g} home={home} rates={rates} onEdit={(draft) => setGiftForm({ personId: person.id, prev: g, draft, errors: [] })} onStatus={(s) => onStatus(g, s)} onAddSpending={() => onAddSpending(g)} />
         ),
@@ -411,8 +437,34 @@ function GiftRow({
   );
 }
 
-function GiftEditor({ trip, person, form, setForm, save }: { trip: Trip; person: GiftPerson; form: GiftForm; setForm: (f: GiftForm | null) => void; save: (t: Trip) => Promise<boolean> }) {
-  const { t, lang } = useApp();
+function GiftEditor({
+  trip,
+  person,
+  form,
+  setForm,
+  save,
+  fromMap = false,
+  onLocated,
+}: {
+  trip: Trip;
+  person: GiftPerson;
+  form: GiftForm;
+  setForm: (f: GiftForm | null) => void;
+  save: (t: Trip) => Promise<boolean>;
+  /** T112: opened from the gift's Map-tab pin: highlighted, and its window position reported once laid out. */
+  fromMap?: boolean;
+  onLocated?: (windowY: number) => void;
+}) {
+  const { t, lang, theme } = useApp();
+  const box = useRef<View>(null);
+  const located = useRef(onLocated);
+  located.current = onLocated;
+  useEffect(() => {
+    if (!fromMap) return;
+    // After the fade-in has laid the editor out; measured in the window so nesting inside cards doesn't matter.
+    const id = setTimeout(() => box.current?.measureInWindow((_x, y) => located.current?.(y)), 250);
+    return () => clearTimeout(id);
+  }, [fromMap]);
   const unit = useWeightUnit();
   const [store] = usePersisted<PackStore>(PACKING_KEY, EMPTY_STORE);
   const bags = giftBagChoices(listFor(store, trip.id));
@@ -475,59 +527,71 @@ function GiftEditor({ trip, person, form, setForm, save }: { trip: Trip; person:
   };
 
   return (
-    <FadeInView style={{ gap: space.m }}>
-      <Label>{form.prev ? t('gifts.gift.edit') : t('gifts.gift.new', { name: person.name })}</Label>
-      <TextField label={t('gifts.gift.what')} value={d.what} onChange={(what) => set({ what })} placeholder={t('gifts.gift.whatPlaceholder')} error={err('what') ? t('gifts.err.what') : undefined} />
-      <TextField label={t('gifts.gift.where')} value={d.where} onChange={(where) => set({ where })} placeholder={t('gifts.gift.wherePlaceholder')} />
-      <TextField
-        label={t('gifts.gift.price')}
-        value={d.price}
-        onChange={(price) => set({ price })}
-        placeholder={t('gifts.gift.pricePlaceholder')}
-        inputMode="decimal"
-        error={err('price') ? (isCurrency(code) ? t('gifts.err.price', { code, n: currencyDigits(code) }) : t('gifts.err.priceNoCode')) : undefined}
-      />
-      <View style={{ gap: space.s }}>
-        <Label>{t('gifts.gift.currency')}</Label>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }} accessibilityRole="radiogroup" accessibilityLabel={t('gifts.gift.currency')}>
-          {choices.map((c) => (
-            <Chip key={c} label={c} selected={code === c} onPress={() => set({ currency: c })} />
-          ))}
+    <View
+      ref={box}
+      collapsable={false}
+      style={fromMap ? { borderWidth: 2, borderColor: theme.accent, borderRadius: radius.m, padding: space.m, backgroundColor: theme.accentSoft } : undefined}
+    >
+      <FadeInView style={{ gap: space.m }}>
+        {fromMap ? (
+          <View accessible accessibilityLabel={t('f97.gift.fromMap')} style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
+            <Ionicons name="map-outline" size={16} color={theme.accentInk} />
+            <Text style={[typeScale.small, { color: theme.accentInk }]}>{t('f97.gift.fromMap')}</Text>
+          </View>
+        ) : null}
+        <Label>{form.prev ? t('gifts.gift.edit') : t('gifts.gift.new', { name: person.name })}</Label>
+        <TextField label={t('gifts.gift.what')} value={d.what} onChange={(what) => set({ what })} placeholder={t('gifts.gift.whatPlaceholder')} error={err('what') ? t('gifts.err.what') : undefined} />
+        <TextField label={t('gifts.gift.where')} value={d.where} onChange={(where) => set({ where })} placeholder={t('gifts.gift.wherePlaceholder')} />
+        <TextField
+          label={t('gifts.gift.price')}
+          value={d.price}
+          onChange={(price) => set({ price })}
+          placeholder={t('gifts.gift.pricePlaceholder')}
+          inputMode="decimal"
+          error={err('price') ? (isCurrency(code) ? t('gifts.err.price', { code, n: currencyDigits(code) }) : t('gifts.err.priceNoCode')) : undefined}
+        />
+        <View style={{ gap: space.s }}>
+          <Label>{t('gifts.gift.currency')}</Label>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }} accessibilityRole="radiogroup" accessibilityLabel={t('gifts.gift.currency')}>
+            {choices.map((c) => (
+              <Chip key={c} label={c} selected={code === c} onPress={() => set({ currency: c })} />
+            ))}
+          </View>
+          <TextField
+            label={t('gifts.gift.code')}
+            value={d.currency}
+            onChange={(v) => set({ currency: v.toUpperCase().slice(0, 3) })}
+            placeholder={t('gifts.gift.codePlaceholder')}
+            autoCapitalize="none"
+            error={err('currency') ? t('gifts.err.currency') : undefined}
+          />
+        </View>
+        <PositionField label={t('gifts.gift.spot')} value={d.pos} trip={trip} onChange={(pos, name) => set({ pos, spotName: pos ? (name ?? '') : '' })} />
+        <Button kind="quiet" icon="locate-outline" label={locating ? t('gifts.gift.locating') : t('gifts.gift.here')} hint={t('gifts.gift.hereHint')} onPress={here} />
+        {hereNote ? <Body muted>{hereNote}</Body> : null}
+        {err('pos') ? <Warning text={t('gifts.err.pos')} /> : null}
+        <View style={{ gap: space.s }}>
+          <Label>{t('gifts.gift.bag')}</Label>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }} accessibilityRole="radiogroup" accessibilityLabel={t('gifts.gift.bag')}>
+            <Chip label={t('gifts.gift.bagNone')} selected={!d.bag} onPress={() => set({ bag: '' })} hint={t('gifts.gift.bagHint')} />
+            {bags.map((b) => (
+              <Chip key={b.id} label={bagName(t, b)} a11yLabel={t('gifts.gift.bagA11y', { name: bagName(t, b) })} hint={t('gifts.gift.bagHint')} selected={d.bag === b.id} onPress={() => set({ bag: b.id })} />
+            ))}
+          </View>
         </View>
         <TextField
-          label={t('gifts.gift.code')}
-          value={d.currency}
-          onChange={(v) => set({ currency: v.toUpperCase().slice(0, 3) })}
-          placeholder={t('gifts.gift.codePlaceholder')}
-          autoCapitalize="none"
-          error={err('currency') ? t('gifts.err.currency') : undefined}
+          label={t('gifts.gift.weight', { unit: u })}
+          value={d.weight}
+          onChange={(weight) => set({ weight })}
+          placeholder={t('gifts.gift.weightPlaceholder')}
+          inputMode="decimal"
+          error={err('weight') ? t('gifts.err.weight', { unit: u }) : undefined}
         />
-      </View>
-      <PositionField label={t('gifts.gift.spot')} value={d.pos} trip={trip} onChange={(pos, name) => set({ pos, spotName: pos ? (name ?? '') : '' })} />
-      <Button kind="quiet" icon="locate-outline" label={locating ? t('gifts.gift.locating') : t('gifts.gift.here')} hint={t('gifts.gift.hereHint')} onPress={here} />
-      {hereNote ? <Body muted>{hereNote}</Body> : null}
-      {err('pos') ? <Warning text={t('gifts.err.pos')} /> : null}
-      <View style={{ gap: space.s }}>
-        <Label>{t('gifts.gift.bag')}</Label>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }} accessibilityRole="radiogroup" accessibilityLabel={t('gifts.gift.bag')}>
-          <Chip label={t('gifts.gift.bagNone')} selected={!d.bag} onPress={() => set({ bag: '' })} hint={t('gifts.gift.bagHint')} />
-          {bags.map((b) => (
-            <Chip key={b.id} label={bagName(t, b)} a11yLabel={t('gifts.gift.bagA11y', { name: bagName(t, b) })} hint={t('gifts.gift.bagHint')} selected={d.bag === b.id} onPress={() => set({ bag: b.id })} />
-          ))}
-        </View>
-      </View>
-      <TextField
-        label={t('gifts.gift.weight', { unit: u })}
-        value={d.weight}
-        onChange={(weight) => set({ weight })}
-        placeholder={t('gifts.gift.weightPlaceholder')}
-        inputMode="decimal"
-        error={err('weight') ? t('gifts.err.weight', { unit: u }) : undefined}
-      />
-      <Button label={t('gifts.gift.save')} hint={t('gifts.gift.saveHint')} icon="checkmark" onPress={submit} />
-      {form.prev ? <Button label={t('gifts.gift.delete')} hint={t('gifts.gift.deleteHint')} kind="quiet" icon="trash-outline" onPress={remove} /> : null}
-      <Button label={t('common.cancel')} hint={t('gifts.gift.cancelHint')} kind="quiet" onPress={() => setForm(null)} />
-    </FadeInView>
+        <Button label={t('gifts.gift.save')} hint={t('gifts.gift.saveHint')} icon="checkmark" onPress={submit} />
+        {form.prev ? <Button label={t('gifts.gift.delete')} hint={t('gifts.gift.deleteHint')} kind="quiet" icon="trash-outline" onPress={remove} /> : null}
+        <Button label={t('common.cancel')} hint={t('gifts.gift.cancelHint')} kind="quiet" onPress={() => setForm(null)} />
+      </FadeInView>
+    </View>
   );
 }
 

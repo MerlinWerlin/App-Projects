@@ -3,13 +3,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useSyncExternalStore } from 'react';
 
-type Entry = { value: unknown; loaded: boolean; loading?: Promise<void>; listeners: Set<() => void> };
+type Entry = { value: unknown; fallback: unknown; loaded: boolean; loading?: Promise<void>; listeners: Set<() => void> };
 const entries = new Map<string, Entry>();
 
 function entry(key: string, fallback: unknown): Entry {
   let e = entries.get(key);
   if (!e) {
-    e = { value: fallback, loaded: false, listeners: new Set() };
+    e = { value: fallback, fallback, loaded: false, listeners: new Set() };
     entries.set(key, e);
   }
   return e;
@@ -79,4 +79,24 @@ export function usePersisted<T>(key: string, fallback: T): [T, (next: T | ((old:
 export async function readPersisted<T>(key: string, fallback: T): Promise<T> {
   await load(key, fallback);
   return entry(key, fallback).value as T;
+}
+
+/**
+ * T112: deletes stored keys and puts any value already in memory back to its fallback (screens showing it update).
+ * Best effort: never throws. Used when a booking or trip is deleted (its phone-only stay details go with it).
+ */
+export async function removePersisted(keys: readonly string[]): Promise<void> {
+  if (!keys.length) return;
+  for (const key of keys) {
+    const e = entries.get(key);
+    if (!e) continue;
+    e.value = e.fallback;
+    e.loaded = true;
+    e.listeners.forEach((l) => l());
+  }
+  try {
+    await AsyncStorage.multiRemove(keys);
+  } catch {
+    // a leftover key is harmless: nothing reads a deleted booking's id again
+  }
 }

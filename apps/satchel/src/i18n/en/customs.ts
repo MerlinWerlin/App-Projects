@@ -1,0 +1,52 @@
+// Strings for customs (run 98, T115 "Local customs guide"). Every UI string lives in the catalogue.
+export const customs = {
+  'customs.route': 'Local customs',
+  'customs.title': 'Local customs',
+  'customs.subtitle': 'Everyday etiquette, offline: greetings, dress, photos, water and more.',
+  'customs.disclaimer': 'General guidance only - customs vary by place and person, so verify locally. Not legal advice.',
+
+  // Country switcher
+  'customs.country': 'Country',
+  'customs.onThisTrip': 'On this trip',
+  'customs.tripCountryA11y': '{country}, on this trip',
+  'customs.tripCountryHint': 'Shows local customs for {country}.',
+  'customs.change': 'Change country',
+  'customs.changeHint': 'Opens a searchable list of the countries in the guide.',
+  'customs.listDone': 'Close list',
+  'customs.search': 'Search countries',
+  'customs.searchPlaceholder': 'Name or 2-letter code',
+  'customs.pickHint': 'Shows local customs for {country}.',
+  'customs.noMatch': 'No country in the guide matches “{q}”.',
+  'customs.more': 'Showing {n} of {total}. Keep typing to narrow the list.',
+  'customs.noCountry': 'Pick a country',
+  'customs.noCountryBody': 'Choose a country to read its local customs.',
+  'customs.notCovered': 'The guide doesn’t cover this country yet. Pick another, or ask locally.',
+
+  // Sections
+  'customs.section.greetings': 'Greetings',
+  'customs.section.water': 'Tap water',
+  'customs.section.shoes': 'Shoes indoors',
+  'customs.section.dress': 'Dress at religious sites',
+  'customs.section.photos': 'Photos',
+  'customs.section.gestures': 'Gestures to avoid',
+  'customs.section.public': 'Out and about',
+  'customs.section.alcohol': 'Alcohol and smoking in public',
+  'customs.section.good_to_know': 'Good to know',
+  'customs.water.yes': 'Usually safe to drink',
+  'customs.water.no': 'Drink bottled or treated water',
+  'customs.water.varies': 'Depends where you are',
+  'customs.notSure': 'Not sure - check locally.',
+  'customs.sectionA11y': '{title}: {text}',
+  'customs.recheck': 'Less certain - re-check this country locally.',
+  'customs.checked': 'Written from {hosts} on {date}.',
+  'customs.verify': 'Customs change and differ between regions and communities. If in doubt, watch what people around you do, or ask.',
+
+  // Entry points
+  'customs.fromArrival': 'Local customs',
+  'customs.fromArrivalHint': 'Opens the local customs guide for {country}.',
+  'customs.linkTitle': 'Local customs',
+  'customs.linkBody': 'Greetings, dress, photos, tap water and more for {country}.',
+  'customs.linkHint': 'Opens the local customs guide for {country}.',
+  'customs.readFor': 'Read the customs for {country}',
+  'customs.readForHint': 'Opens the local customs guide for {country}.',
+} as const;

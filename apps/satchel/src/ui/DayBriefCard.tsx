@@ -24,6 +24,7 @@ import { holidayTodayIn } from '../core/holidays.ts';
 import { holidayTodayLine } from './HolidaysCard.tsx';
 import { currentStay } from '../core/staydetails.ts';
 import { StayBriefRow } from './stay.tsx';
+import { CallHomeBriefRow } from './callhome.tsx';
 
 export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[] }) {
   const { theme, t } = useApp();
@@ -122,6 +123,8 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
           <StayBriefRow item={stay.item} />
         </>
       ) : null}
+      {/* T114: "Good time to call Mum until 21:00" (nothing with nobody saved). */}
+      <CallHomeBriefRow trip={b.trip} />
     </View>
   );
 });

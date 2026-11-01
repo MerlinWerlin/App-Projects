@@ -13,6 +13,7 @@
 // shows its card. "My toilets": Save with a private note and thumbs up/down; saved ones near the search point come
 // first. "Recently used" keeps the last 10 opened in Apple Maps. All stored on the phone only. The Map tab's
 // "Nearest toilet" opens this tab with ?find=<nonce>, which starts a search once.
+// T119: signpost hero scene (entrance on every tab focus), Find one / Yours section headers and the shared rhythm.
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, FlatList, Linking, Text, View } from 'react-native';
@@ -57,8 +58,8 @@ import { clearNearestToilet, useNearestToiletRequest } from '../../src/state/nea
 import { nextFindNonce } from '../../src/core/followups89.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { dur, duration } from '../../src/theme/motion.ts';
-import { fonts, space } from '../../src/theme/tokens.ts';
-import { FadeInView, HeroHeader } from '../../src/ui/hero.tsx';
+import { fonts, rhythm, space } from '../../src/theme/tokens.ts';
+import { FadeInView, FocusEntrance, HeroHeader, SectionHeader } from '../../src/ui/hero.tsx';
 import { Button, EmptyState, Screen } from '../../src/ui/kit.tsx';
 import { PermissionNotice } from '../../src/ui/PermissionNotice.tsx';
 import { FilterBar, MineSection, RecentSection, ToiletCard, ViewToggle } from '../../src/ui/toiletplus.tsx';
@@ -246,11 +247,10 @@ export default function ToiletsScreen() {
 
   const showResults = !!(result?.ok && done);
   const header = (
-    <View style={{ gap: space.l, paddingBottom: space.s }}>
-      <FadeInView>
-        <HeroHeader tone="toilets" illustration="toilet" title={t('toilets.title')} subtitle={t('toilets.subtitle')} />
-      </FadeInView>
-      <View style={{ gap: space.s }}>
+    <View style={{ gap: rhythm.section, paddingBottom: rhythm.tight }}>
+      <HeroHeader scene="toilets" title={t('toilets.title')} subtitle={t('toilets.subtitle')} />
+      <FocusEntrance delay={60} style={{ gap: rhythm.tight }}>
+        <SectionHeader title={t('look2.toilets.sectionFind')} icon="navigate-outline" tone="teal" />
         <Button label={t('toilets.findNearMe')} hint={t('toilets.findNearMeHint')} onPress={nearMe} />
         {stay ? <Button kind="quiet" label={t('toilets.nearHotel')} hint={t('toilets.nearHotelHint', { name: stay.name })} onPress={nearHotel} /> : null}
         <Button
@@ -260,7 +260,7 @@ export default function ToiletsScreen() {
           hint={t('phrases.toiletAskHint')}
           onPress={() => router.push({ pathname: '/phrase-card', params: { phrase: 'toilet' } })}
         />
-      </View>
+      </FocusEntrance>
 
       {busy ? (
         <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.muted }}>
@@ -306,7 +306,7 @@ export default function ToiletsScreen() {
       ) : null}
 
       {showResults && done && result?.ok ? (
-        <Animated.View style={{ opacity: fade, gap: space.s }}>
+        <Animated.View style={{ opacity: fade, gap: rhythm.tight }}>
           <Text accessibilityRole="header" style={{ fontFamily: fonts.displayMedium, fontSize: 20, color: theme.ink }}>
             {done.origin.kind === 'hotel' ? t('toilets.aroundHotel', { name: done.origin.name }) : t('toilets.aroundHere')}
           </Text>
@@ -364,8 +364,9 @@ export default function ToiletsScreen() {
   );
 
   const footer = (
-    <View style={{ gap: space.l, paddingTop: space.l, paddingBottom: space.xl }}>
+    <View style={{ gap: rhythm.stack, paddingTop: rhythm.section, paddingBottom: space.xl }}>
       {showResults ? <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('toiletplus.hoursNote')}</Text> : null}
+      <SectionHeader title={t('look2.toilets.sectionYours')} icon="bookmark-outline" tone="warn" />
       <MineSection saved={saved} onOpen={(s: SavedToilet) => openMaps(s.toilet)} />
       <RecentSection recent={recent} onOpen={(r: RecentToilet) => openMaps(r.toilet)} onClear={() => setRawRecent([])} />
       <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('toilets.attribution')}</Text>
@@ -381,7 +382,7 @@ export default function ToiletsScreen() {
         data={listData}
         keyExtractor={(h) => `${run}:${h.id}`}
         renderItem={({ item, index }) => (
-          <FadeInView delay={Math.min(index, 6) * 40} style={{ marginBottom: space.m }}>
+          <FadeInView delay={Math.min(index, 6) * 40} style={{ marginBottom: rhythm.stack }}>
             {renderCard(item)}
           </FadeInView>
         )}

@@ -2,7 +2,8 @@
 // three days from today so "Next up" has something to show, with its sample ticket, vault passport and emergency
 // details (src/state/demoSeed.ts); deleting the demo trip takes those extras away again. Attachment paths are rebased onto this install's
 // documents folder on load (iOS moves the app's container on update). Deleting a trip also drops its packing list
-// and its attachment files; deleting one booking drops that booking's files (best effort, never throws).
+// and its attachment files; deleting one booking drops that booking's files (best effort, never throws). T112: and
+// the phone-only stay details of each deleted booking (src/state/stay.ts forgetStays).
 // Every change is written to storage first and only then shown, so the save functions can say whether it worked:
 // they resolve to true when saved, false when the phone couldn't write it (forms then show error.item.save /
 // error.trips.save and stay open with what was typed). Writes run one at a time, each on the latest list.
@@ -20,8 +21,10 @@ import { itemFiles, rebaseTrips, tripFiles } from '../core/tickets.ts';
 import { mergeRecovered, parseStoredTrips, removeItem, removeTrip, upsertItem, upsertTrip } from '../core/trips.ts';
 import { addDays } from '../core/tz.ts';
 import { documentDir, removeAppFiles } from '../native/files.ts';
+import { stayKeysToDrop } from '../core/followups97.ts';
 import { demoWithTicket, removeDemoExtras, seedDemoExtras } from './demoSeed.ts';
 import { readPersisted, setPersisted } from './persisted.ts';
+import { forgetStays } from './stay.ts';
 
 const KEY = 'satchel.trips.v1';
 const UNREADABLE = `${KEY}.unreadable`;
@@ -148,7 +151,7 @@ export function TripsProvider({ children }: { children: ReactNode }) {
       deleteTrip: async (id) => {
         const gone = latest.current.find((x) => x.id === id);
         const ok = await commit((l) => removeTrip(l, id));
-        if (ok) cleanUpTrip(id, gone);
+        if (ok) cleanUpTrip(id, gone, latest.current);
         // An imported copy of the demo is also marked demo: the sample extras go only when no demo trip is left.
         if (ok && gone?.demo && !latest.current.some((x) => x.demo)) removeDemoExtras().catch(() => {});
         return ok;
@@ -173,9 +176,11 @@ export function TripsProvider({ children }: { children: ReactNode }) {
 }
 
 /** The trip's packing list and attachment files go with it. Best effort: failures leave harmless leftovers. */
-function cleanUpTrip(id: string, trip: Trip | undefined): void {
+function cleanUpTrip(id: string, trip: Trip | undefined, remaining: Trip[]): void {
   try {
     if (trip) removeAppFiles(tripFiles(trip)).catch(() => {});
+    // T112: each booking's phone-only stay details go with the trip.
+    if (trip) forgetStays(stayKeysToDrop(trip.items, remaining));
     // Load the stored lists first so dropping one never overwrites the others with an empty store.
     readPersisted<PackStore>(PACKING_KEY, EMPTY_STORE)
       .then(() => setPersisted<PackStore>(PACKING_KEY, (s) => (s && typeof s === 'object' && !Array.isArray(s) ? dropList(s, id) : s), EMPTY_STORE))
@@ -190,6 +195,8 @@ function cleanUpItem(item: Item, remaining: Trip[]): void {
   try {
     const still = new Set(remaining.flatMap(tripFiles));
     removeAppFiles(itemFiles(item).filter((u) => !still.has(u))).catch(() => {});
+    // T112: the booking's phone-only stay details (room, codes, Wi-Fi) go with it.
+    forgetStays(stayKeysToDrop([item], remaining));
   } catch {
     // never let clean-up break a delete
   }

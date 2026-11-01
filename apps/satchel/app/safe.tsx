@@ -7,11 +7,15 @@
 // sent automatically. Up to 5 trusted contacts are kept only on this phone (src/state/safeContacts.ts).
 // T100: people on the emergency card can be added as trusted contacts with one tap (ones already trusted are not
 // offered), and the contacts ticked for a send are remembered on this phone and pre-ticked next time.
+// T116: "Plan a call home" opens the Call home planner for the trip on now (else the next one; else the phone's clock).
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo, Text, View } from 'react-native';
 import { currentHotel } from '../src/core/battery.ts';
 import { EMERGENCY_KEY, EMPTY_CARD, normaliseCard } from '../src/core/emergency.ts';
+import { deviceZone, todayIn } from '../src/core/format.ts';
+import { focusTrip } from '../src/core/glance.ts';
 import type { EmergencyCard } from '../src/core/model.ts';
 import { newId } from '../src/core/model.ts';
 import {
@@ -58,6 +62,7 @@ const offsetAt = (ms: number) => -new Date(ms).getTimezoneOffset();
 
 export default function SafeScreen() {
   const { t, theme } = useApp();
+  const router = useRouter();
   const { trips } = useTrips();
   const [contacts] = useSafeContacts();
   const [check, setCheck] = useState<Check>({ state: 'idle' });
@@ -354,6 +359,17 @@ export default function SafeScreen() {
         <Text style={[typeScale.small, { color: theme.muted }]}>{t('safe.send.smsNote')}</Text>
         <Text style={[typeScale.small, { color: theme.muted }]}>{t('safe.send.manual')}</Text>
       </SectionCard>
+
+      <Button
+        kind="quiet"
+        icon="call-outline"
+        label={t('f98.safe.callhome')}
+        hint={t('f98.safe.callhomeHint')}
+        onPress={() => {
+          const trip = focusTrip(trips, todayIn(deviceZone()));
+          router.push(trip ? { pathname: '/callhome', params: { tripId: trip.id } } : '/callhome');
+        }}
+      />
     </Screen>
   );
 }

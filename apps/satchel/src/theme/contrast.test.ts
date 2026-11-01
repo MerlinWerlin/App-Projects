@@ -6,8 +6,10 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
 import { AA_LARGE, AA_TEXT, contrast, over, parseColour } from './contrast.ts';
+import { COVER_SCENES } from '../core/covers.ts';
 import { STAMP_INKS } from '../core/stamps.ts';
-import { coverScrim, dark, essentials, light, stampInks, stampPapers, type HeroTone, type Theme } from './tokens.ts';
+import { coverScrim, dark, elevated, elevation, essentials, light, stampInks, stampPapers, surfaces, type HeroTone, type Theme } from './tokens.ts';
+import { tripAccent } from './tripAccent.ts';
 
 type Pair = { fg: string; bg: string; min: number; what: string };
 type ColourKey = { [K in keyof Theme]: Theme[K] extends string ? K : never }[keyof Theme];
@@ -105,6 +107,90 @@ test('T103 passport stamps: every ink is AA on the stamp paper and its grain, in
     if (contrast(paper.edge, paper.paper) < 1.2) fails.push(`${mode} stamp edge too faint`);
   }
   assert.deepEqual(fails, []);
+});
+
+test('T119 hero scenes: heroPaper reads on every gradient stop and each tone\'s deep stop reads on heroPaper (3:1)', () => {
+  const fails: string[] = [];
+  for (const th of [light, dark]) {
+    const name = th.dark ? 'dark' : 'light';
+    for (const tone of HERO_TONES) {
+      for (const stop of th.hero[tone]) {
+        const r = contrast(th.heroPaper, stop);
+        if (r < AA_LARGE) fails.push(`${name} heroPaper on hero.${tone} ${stop}: ${r.toFixed(2)}`);
+      }
+      const deep = contrast(th.hero[tone][0], th.heroPaper);
+      if (deep < AA_LARGE) fails.push(`${name} hero.${tone} deep stop on heroPaper: ${deep.toFixed(2)}`);
+      // the shaded map panel (heroChip over heroPaper) still carries the deep route line
+      const shaded = contrast(th.hero[tone][0], over(th.heroChip, th.heroPaper));
+      if (shaded < AA_LARGE) fails.push(`${name} hero.${tone} deep stop on shaded heroPaper: ${shaded.toFixed(2)}`);
+    }
+  }
+  assert.deepEqual(fails, []);
+});
+
+test('T119 elevation audit: every surface level carries the text pairs, and dark levels step up in lightness', () => {
+  const fails: string[] = [];
+  const levels = Object.keys(elevation) as (keyof typeof elevation)[];
+  for (const th of [light, dark]) {
+    const name = th.dark ? 'dark' : 'light';
+    for (const level of levels) {
+      const bg = elevated(th, level).backgroundColor;
+      for (const fg of ['ink', 'muted', 'accentInk', 'sea', 'ok', 'warn', 'danger', 'teal'] as ColourKey[]) {
+        const r = contrast(th[fg] as string, bg);
+        if (r < AA_TEXT) fails.push(`${name} ${fg} on ${level} surface: ${r.toFixed(2)}`);
+      }
+      const s = elevated(th, level);
+      // dark mode: the edge is what separates a card from the page; light mode: the shadow does, so no edge
+      assert.equal(s.borderWidth, th.dark ? 1 : 0, `${name} ${level} edge`);
+      assert.ok(s.shadowOpacity <= 0.4, `${name} ${level} shadow too heavy`);
+    }
+  }
+  // dark: low < mid < high in luminance, all above the page, and the low level is the cardRaised token
+  const lum = (c: string) => contrast(c, '#000000');
+  const d = surfaces.dark;
+  assert.ok(lum(dark.paper) < lum(d.low) && lum(d.low) < lum(d.mid) && lum(d.mid) < lum(d.high), 'dark levels must step up');
+  assert.equal(d.low, dark.cardRaised);
+  assert.equal(surfaces.light.low, light.cardRaised);
+  assert.deepEqual(fails, []);
+});
+
+test('T119 per-trip accents: every cover scene in both themes meets AA on the page, cards, raised levels and its tint', () => {
+  const fails: string[] = [];
+  const inks = new Set<string>();
+  for (const th of [light, dark]) {
+    const name = th.dark ? 'dark' : 'light';
+    const pages = [th.paper, th.card, th.cardRaised, ...Object.values(th.dark ? surfaces.dark : surfaces.light)];
+    for (const scene of COVER_SCENES) {
+      const a = tripAccent(scene, th);
+      inks.add(`${name}:${a.ink}`);
+      for (const bg of [...pages, a.soft]) {
+        const r = contrast(a.ink, bg);
+        if (r < AA_TEXT) fails.push(`${name} ${scene} accent ink on ${bg}: ${r.toFixed(2)}`);
+      }
+      for (const fg of [th.ink, th.muted]) {
+        const r = contrast(fg, a.soft);
+        if (r < AA_TEXT) fails.push(`${name} ${scene} ${fg} on accent soft: ${r.toFixed(2)}`);
+      }
+      const on = contrast(a.onStrong, a.strong);
+      if (on < AA_TEXT) fails.push(`${name} ${scene} onStrong on strong: ${on.toFixed(2)}`);
+      for (const bg of pages) {
+        const r = contrast(a.strong, bg);
+        if (r < AA_LARGE) fails.push(`${name} ${scene} strong stripe on ${bg}: ${r.toFixed(2)}`);
+      }
+      for (const c of Object.values(a)) assert.match(c, /^#[0-9A-F]{6}$/, `${name} ${scene} ${c}`);
+    }
+  }
+  assert.deepEqual(fails, []);
+  // the accents are the trip's own: most scenes get a distinct colour (8 scenes, at least 6 different per theme)
+  assert.ok([...inks].filter((k) => k.startsWith('light:')).length >= 6, [...inks].join());
+  assert.ok([...inks].filter((k) => k.startsWith('dark:')).length >= 6, [...inks].join());
+});
+
+test('T119 per-trip accent: the same scene always gives the same accent; an unknown scene falls back safely', () => {
+  assert.deepEqual(tripAccent('coast', light), tripAccent('coast', light));
+  assert.notDeepEqual(tripAccent('coast', light), tripAccent('coast', dark));
+  const odd = tripAccent('nowhere' as never, dark);
+  assert.ok(contrast(odd.ink, dark.paper) >= AA_TEXT);
 });
 
 test('low-battery essentials: white and grey text on pure black', () => {

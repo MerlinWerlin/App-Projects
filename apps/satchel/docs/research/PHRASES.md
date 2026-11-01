@@ -90,7 +90,7 @@ Allergens: peanuts, tree nuts, shellfish, fish, milk, egg, wheat / gluten, soy, 
 - Categories: meat, fish and seafood, eggs and dairy, nuts / soy / wheat and other allergens, vegetables and fruit, rice / noodles / dishes, cooking methods, spice level and taste, drinks, diet words (vegetarian, vegan, halal, gluten-free, no meat; Thai เจ).
 - `flags` say what a food **usually** contains (pork, beef, poultry, fish, shellfish, egg, dairy, peanuts, tree nuts, gluten, soy, sesame, alcohol, honey); pork, beef and poultry imply meat. Dishes vary, so the flags are prompts to ask, not a guarantee.
 - Romanisation as for the phrase cards: Hepburn with long-vowel marks (ja), Hanyu Pinyin with tone marks (zh-Hans, dictionary tones: 不辣 bù là), Revised Romanization (ko), simple RTGS without tone marks (th). Vietnamese stays in its own Latin script with diacritics. Regional alternatives are in brackets (es Spain / Latin America, pt Brazil / Portugal, vi North / South).
-- No Traditional Chinese (TW / HK / MO) or Indonesian menu words yet; links there are hidden.
+- T112 (run 98): Traditional Chinese (TW / HK / MO, 124 words) and Indonesian (118 words) added, also by the model; `toNativeCheck` in menu.json lists them for a native-speaker check first (doubts below). Links from Taiwan, Hong Kong, Macau and Indonesia now open them.
 
 | Lang | Word | Text | Doubt |
 |---|---|---|---|
@@ -110,3 +110,11 @@ Allergens: peanuts, tree nuts, shellfish, fish, milk, egg, wheat / gluten, soy, 
 | de | crab | Krabbe | In northern Germany Krabben are often brown shrimp. |
 | pt | ham | presunto | Brazil: cooked ham; Portugal: cured ham (fiambre = cooked). |
 | it | rice noodles | spaghetti di riso | Also "noodles di riso" on menus. |
+| zh-Hant | vocabulary | 番茄 / 馬鈴薯 / 高麗菜 / 鮭魚 / 鮪魚 / 起司 / 優格 / 美乃滋 | Taiwan words (土豆 is a peanut in Taiwan); Hong Kong alternatives only in brackets where known (芝士, 牛油, 三文魚). Cantonese romanisation not given: Hanyu Pinyin only. |
+| zh-Hant | butter / cream | 奶油 (牛油) / 鮮奶油 | In Taiwan 奶油 is usually butter; mainland 奶油 is cream. |
+| zh-Hant | spice level, no ice | 小辣 / 大辣 / 去冰 | Taiwan drink-shop and restaurant ordering words. |
+| zh-Hant | vegan | 純素 (全素) | Taiwan 全素 is Buddhist-style and may also exclude onion and garlic (五辛). |
+| id | lamb | daging domba (kambing) | Kambing (goat) is what most menus mean by mutton. |
+| id | soy sauce | kecap asin (kecap) | Kecap alone often means the sweet kecap manis. |
+| id | MSG | MSG (micin, penyedap rasa) | Micin is everyday speech. |
+| id | not included | walnut, pistachio, hazelnut, scallops, buckwheat, beans, rice wine | Left out rather than guessed. |

@@ -21,8 +21,10 @@ import { useApp } from '../state/app.tsx';
 import { usePersisted } from '../state/persisted.ts';
 import { useVaultDocs } from '../state/vaultLock.ts';
 import { radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
+import { CustomsReadRows } from './CustomsLink.tsx';
 import { FadeInView, GradientFill, IconBadge, ProgressBar, toneColours, type IconName, type Tone } from './hero.tsx';
 import { PressableScale } from './kit.tsx';
+import { CallHomeReadyRow } from './callhome.tsx';
 
 const STATUS_LOOK: Record<CheckStatus, { tone: Tone; icon: IconName }> = {
   pass: { tone: 'ok', icon: 'checkmark-circle' },
@@ -215,6 +217,10 @@ export function ReadinessCard({ trip }: { trip: Trip }) {
                 <Row check={c} onFix={onFix} />
               </View>
             ))}
+            {/* T114: call home planner link (not scored). */}
+            <CallHomeReadyRow trip={trip} />
+            {/* T115: "Read the customs for Japan", one row per covered trip country (not scored). */}
+            <CustomsReadRows trip={trip} />
             <Text style={[typeScale.small, { color: theme.muted, paddingVertical: space.s }]}>{t('readiness.privacy')}</Text>
           </View>
         ) : null}

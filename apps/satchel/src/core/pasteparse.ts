@@ -21,6 +21,7 @@
 // ambiguous day/month, a default check-in time, a fallback zone, an arrival day worked out from the clock) so the
 // screen can say "check this". Nothing here saves: the traveller reviews every draft in the normal booking form.
 import { airportByCode, zoneFromCity } from './airports.ts';
+import { findWifi, type PastedWifi } from './pastewifi.ts';
 import type { Item, ItemKind, LocalDate, Trip } from './model.ts';
 import type { ItemDraft } from './trips.ts';
 import { addDays, isValidZone, toUtc } from './tz.ts';
@@ -60,6 +61,8 @@ export type PasteBooking = {
   unknownCodes: string[];
   /** Car hire returned somewhere other than the pick-up place (the screen puts it in the notes, in words). */
   dropOff?: string;
+  /** T112 hotels only: Wi-Fi network / password lines, offered for the booking's Stay details (never put in the draft). */
+  wifi?: PastedWifi;
 };
 
 export type PasteOptions = {
@@ -640,6 +643,8 @@ function hotel(lines: string[], shared: Shared, opts: PasteOptions): PasteBookin
   if (defaultIn) b.confidence.start = 'low';
   if (defaultOut) b.confidence.end = 'low';
   set(b, 'ref', 'ref', findRef(lines) ?? shared.ref);
+  const wifi = findWifi(lines) ?? shared.wifi;
+  if (wifi) b.wifi = wifi;
   return b;
 }
 
@@ -700,7 +705,8 @@ function activity(lines: string[], shared: Shared, opts: PasteOptions): PasteBoo
   return b;
 }
 
-type Shared = { ref?: string; carrier?: string };
+/** wifi (T112): Wi-Fi lines before the bookings, used only when the paste has exactly one hotel. */
+type Shared = { ref?: string; carrier?: string; wifi?: PastedWifi };
 
 /** "Sunfield Air", "Coral Wing Airways": an airline-looking name anywhere in the lines. */
 const airlineIn = (lines: string[]) => /\b([A-Z][\w&'-]*(?:\s+[A-Z][\w&'-]*){0,3}\s+(?:Airways|Airlines|Air))\b/.exec(lines.join('\n'))?.[1] || undefined;
@@ -784,6 +790,7 @@ function parse(text: string, opts: PasteOptions): PasteBooking[] {
   const shared: Shared = {
     ref: findRef(head),
     carrier: carrierIn(head),
+    wifi: groups.filter((g) => g.kind === 'hotel').length === 1 ? findWifi(head) ?? undefined : undefined,
   };
   const out: PasteBooking[] = [];
   for (const g of groups) {

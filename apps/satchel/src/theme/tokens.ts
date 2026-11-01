@@ -46,6 +46,11 @@ export type Theme = {
   heroWash: string;
   /** T91: translucent dark glass for text pills on a hero gradient (heroInk / heroMuted on it are AA over every stop). */
   heroChip: string;
+  /**
+   * T119: opaque "paper" for the tab hero scenes (tickets, map panels, signboards, the compass face) drawn on a hero
+   * gradient. It reads at 3:1 on every gradient stop, and the deep stop of each tone reads at 3:1 on it (contrast test).
+   */
+  heroPaper: string;
   /** Hero gradients per tab: [top-left, bottom-right]. */
   hero: Record<HeroTone, readonly [string, string]>;
 };
@@ -83,6 +88,7 @@ export const light: Theme = {
   heroAccent: '#FFC796',
   heroWash: 'rgba(255, 255, 255, 0.14)',
   heroChip: 'rgba(8, 16, 36, 0.24)',
+  heroPaper: '#FBF6EC',
   hero: {
     trips: ['#14213D', '#2A6F97'],
     wallet: ['#7A3A10', '#A34D18'],
@@ -122,6 +128,7 @@ export const dark: Theme = {
   heroAccent: '#F29A5C',
   heroWash: 'rgba(255, 255, 255, 0.10)',
   heroChip: 'rgba(0, 0, 0, 0.28)',
+  heroPaper: '#D8D1C2',
   hero: {
     trips: ['#0B1428', '#1B4A66'],
     wallet: ['#3A1C08', '#8A4214'],
@@ -179,7 +186,29 @@ export const shadowOf = (theme: Theme, level: keyof typeof elevation) => ({
   shadowOpacity: theme.dark ? elevation[level].shadowOpacity * 2 : elevation[level].shadowOpacity,
 });
 
+/**
+ * T119 elevation audit. In dark mode a shadow hardly shows on the navy page, so height reads from the surface itself:
+ * each level is one step lighter than the last, with a hairline edge in `line`. Light mode keeps white cards and
+ * lets the shadow do the work. Text pairs on every dark surface are in src/theme/contrast.test.ts.
+ */
+export const surfaces: { light: Record<keyof typeof elevation, string>; dark: Record<keyof typeof elevation, string> } = {
+  light: { low: '#FFFFFF', mid: '#FFFFFF', high: '#FFFFFF' },
+  dark: { low: '#1C2336', mid: '#212A40', high: '#262F48' },
+};
+/** Background, edge and shadow for a card at an elevation level, in the current theme. Spread into a View style. */
+export const elevated = (theme: Theme, level: keyof typeof elevation) => ({
+  backgroundColor: (theme.dark ? surfaces.dark : surfaces.light)[level],
+  borderWidth: theme.dark ? 1 : 0,
+  borderColor: theme.line,
+  ...shadowOf(theme, level),
+});
+
 export const space = { xs: 4, s: 8, m: 12, l: 16, xl: 24, xxl: 32 } as const;
+/**
+ * T119 section rhythm for the tabs: `section` between groups (each led by a SectionHeader), `stack` between cards in a
+ * group, `tight` between a header and its first card or between related controls, `hair` inside a text block.
+ */
+export const rhythm = { section: space.xl, stack: space.m, tight: space.s, hair: 2 } as const;
 export const radius = { s: 8, m: 14, l: 20, xl: 28, pill: 999 } as const;
 /** Minimum touch target (points). */
 export const TOUCH = 48;

@@ -5,13 +5,14 @@
 // - Each word carries flags ("usually contains pork / shellfish / nuts / alcohol..."); pork, beef and poultry imply
 //   meat. The traveller's diet (chosen on the screen, kept on this phone) says which flags to watch for.
 // - The language follows the trip's country like the phrase cards (src/core/phrases.ts), when we carry menu words
-//   for it; Traditional Chinese and Indonesian have none yet.
+//   for it. T112: Traditional Chinese (Taiwan words, Hanyu Pinyin) and Indonesian added, listed in the table's
+//   toNativeCheck until a native speaker has checked them.
 import { hasNonLatin, isPhraseLang, languageForCountry, type PhraseTable } from './phrases.ts';
 
-export const MENU_LANGS = ['ja', 'zh-Hans', 'ko', 'th', 'vi', 'fr', 'it', 'es', 'de', 'pt'] as const;
+export const MENU_LANGS = ['ja', 'zh-Hans', 'zh-Hant', 'ko', 'th', 'vi', 'fr', 'it', 'es', 'de', 'pt', 'id'] as const;
 export type MenuLang = (typeof MENU_LANGS)[number];
 /** Languages written in a non-Latin script: every word needs a romanisation. */
-export const NON_LATIN_MENU_LANGS: readonly MenuLang[] = ['ja', 'zh-Hans', 'ko', 'th'];
+export const NON_LATIN_MENU_LANGS: readonly MenuLang[] = ['ja', 'zh-Hans', 'zh-Hant', 'ko', 'th'];
 export const DEFAULT_MENU_LANG: MenuLang = 'ja';
 
 export const MENU_CATS = ['meat', 'seafood', 'eggDairy', 'nuts', 'veg', 'staple', 'cooking', 'taste', 'drink', 'diet'] as const;
@@ -67,7 +68,8 @@ export const MENU_LANG_KEY = 'satchel.menuLang.v1';
 
 export type MenuLine = { text: string; roman?: string };
 export type MenuEntry = { id: string; cat: string; flags: string[]; en: string; also?: string[]; words: Partial<Record<string, MenuLine>> };
-export type MenuTable = { version: number; checked?: string; note?: string; languages: string[]; entries: MenuEntry[] };
+/** toNativeCheck (T112): languages added since the last native-speaker check, to check first. */
+export type MenuTable = { version: number; checked?: string; note?: string; toNativeCheck?: string[]; languages: string[]; entries: MenuEntry[] };
 
 export const isMenuLang = (v: unknown): v is MenuLang => typeof v === 'string' && (MENU_LANGS as readonly string[]).includes(v);
 export const isMenuFlag = (v: unknown): v is MenuFlag => typeof v === 'string' && (MENU_FLAGS as readonly string[]).includes(v);
@@ -81,7 +83,7 @@ export const parseMenuLangParam = (v: unknown): MenuLang | null => {
   return isMenuLang(s) ? s : null;
 };
 
-/** The menu language for a phrase language, or null when we carry no menu words for it (zh-Hant, id). */
+/** The menu language for a phrase language, or null when we carry no menu words for it. */
 export const menuLangFor = (lang: unknown): MenuLang | null => (isMenuLang(lang) ? lang : null);
 
 /** The menu language for a country (ISO 3166-1 alpha-2), via the phrase table's country list; null when none. */

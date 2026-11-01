@@ -4,6 +4,8 @@
 // trips": kept and available, never presented as coming up).
 // T68: the jet lag card is hidden once the trip is over; a trip just imported from a file that left journal photos
 // behind says how many, once (the photosLeftOut param from TripImport), until dismissed.
+// T119: the trip's own accent (src/theme/tripAccent.ts, from its cover scene) marks each day card: a stripe on the
+// left and the day heading in the accent's text colour (AA on the card in both themes).
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
@@ -18,7 +20,8 @@ import { groupByDay, nightsWithoutBed, overlaps, tripPhase, type Day } from '../
 import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
-import { fonts, space, TOUCH } from '../../src/theme/tokens.ts';
+import { fonts, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
+import { tripAccent } from '../../src/theme/tripAccent.ts';
 import { ItemRow } from '../../src/ui/ItemRow.tsx';
 import { JetLagCard } from '../../src/ui/JetLagCard.tsx';
 import { MedTimesCard } from '../../src/ui/MedTimesCard.tsx';
@@ -36,8 +39,10 @@ import { PlannedIdeas } from '../../src/ui/ideas.tsx';
 import { SharePlan } from '../../src/ui/SharePlan.tsx';
 import { AddToCalendar } from '../../src/ui/AddToCalendar.tsx';
 import { ArrivalCard } from '../../src/ui/ArrivalCard.tsx';
+import { InflightTripCard } from '../../src/ui/InflightCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
+import { PlanAgainButton } from '../../src/ui/PlanAgainButton.tsx';
 import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
 import { HolidayBadge, HolidaysCard, useTripHolidays } from '../../src/ui/HolidaysCard.tsx';
 import { PlanDayButton } from '../../src/ui/PlanDayButton.tsx';
@@ -125,6 +130,7 @@ export default function TripScreen() {
   const partners = useMemo(() => overlapPartners(trip?.items ?? []), [trip]);
   const days = useMemo(() => (trip ? groupByDay(trip) : []), [trip]);
   const cover = useMemo(() => (trip ? tripCover(trip) : null), [trip]);
+  const accent = useMemo(() => (cover ? tripAccent(cover, theme) : null), [cover, theme]);
   // T106: public holidays at the trip's stops, for the day-header badges.
   const holidays = useTripHolidays(trip);
   const listRef = useRef<FlatList<Day>>(null);
@@ -164,11 +170,11 @@ export default function TripScreen() {
 
   const renderDay = useCallback(
     ({ item: day }: { item: Day }) => (
-      <Card>
+      <Card style={accent ? { borderLeftWidth: 4, borderLeftColor: accent.strong } : undefined}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
           <View style={{ flex: 1 }}>
             <View accessible accessibilityRole="header">
-              <Label>{formatDay(day.date, lang)}</Label>
+              {accent ? <Text style={[typeScale.caption, { fontSize: 13, color: accent.ink }]}>{formatDay(day.date, lang)}</Text> : <Label>{formatDay(day.date, lang)}</Label>}
             </View>
             {/* T106: a public holiday at a stop on this day. */}
             <HolidayBadge holidays={holidays?.byDate.get(day.date)} />
@@ -195,7 +201,7 @@ export default function TripScreen() {
       </Card>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [adding, lang, t, theme, router, partners, trip, holidays],
+    [adding, lang, t, theme, router, partners, trip, holidays, accent],
   );
 
   if (!trip) {
@@ -234,6 +240,8 @@ export default function TripScreen() {
           <View style={{ gap: space.s, marginBottom: space.s }}>
             {/* T83: the trip's illustrated cover with its name and dates. */}
             {cover ? <TripCoverHero scene={cover} title={trip.name} subtitle={formatRange(trip.startDate, trip.endDate, lang)} /> : null}
+            {/* T113: "In the air" for this trip's flight (24 h before to 6 h after). */}
+            {past ? null : <InflightTripCard trip={trip} />}
             {past ? (
               <Card>
                 <Label>{t('trips.phase.past')}</Label>
@@ -293,6 +301,8 @@ export default function TripScreen() {
             <TripPlaces trip={trip} />
 
             <Button label={t('trip.edit')} hint={t('spec.timeline.editHint')} kind="quiet" onPress={() => router.push({ pathname: '/trip-edit', params: { id: trip.id } })} />
+            {/* T118: copy this trip to new dates. */}
+            <PlanAgainButton trip={trip} />
             <SharePlan trip={trip} />
             {empty ? null : <AddToCalendar trip={trip} scope={{ kind: 'trip' }} />}
             <TripExport trip={trip} />

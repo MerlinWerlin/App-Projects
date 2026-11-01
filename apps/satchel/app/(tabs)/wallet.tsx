@@ -6,6 +6,8 @@
 // phrase cards (app/phrases.tsx). T61: Convert and Split bill quick actions open app/convert.tsx.
 // T105: a Tipping quick action opens app/tipping.tsx.
 // T102: a Cash card (cash on hand for the trip in progress or next) opens app/cash/[tripId].tsx.
+// T119: wallet hero scene (entrance on every tab focus), SectionHeader rhythm, elevated cards, and each trip's group
+// header in that trip's own accent (src/theme/tripAccent.ts, from its cover scene).
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
@@ -13,21 +15,23 @@ import { FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { deviceZone, formatDay, formatTime, todayIn, zoneCity } from '../../src/core/format.ts';
 import { cashTripFor } from '../../src/core/cash.ts';
+import { tripCover } from '../../src/core/covers.ts';
 import { focusTrip } from '../../src/core/glance.ts';
 import { splitWallet, walletEntries, type WalletEntry } from '../../src/core/tickets.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
-import { radius, shadowOf, space, typeScale } from '../../src/theme/tokens.ts';
-import { FadeInView, HeroHeader, IconBadge, QuickAction, toneColours } from '../../src/ui/hero.tsx';
+import { elevated, radius, rhythm, space, typeScale } from '../../src/theme/tokens.ts';
+import { tripAccent, type TripAccent } from '../../src/theme/tripAccent.ts';
+import { FocusEntrance, HeroHeader, IconBadge, QuickAction, SectionHeader, toneColours } from '../../src/ui/hero.tsx';
 import { KIND_ICON, KIND_TONE, kindKey } from '../../src/ui/kinds.tsx';
-import { Button, EmptyState, Label, PressableScale } from '../../src/ui/kit.tsx';
+import { Button, EmptyState, PressableScale } from '../../src/ui/kit.tsx';
 import { CashCard } from '../../src/ui/CashCard.tsx';
 import { WalletCards } from '../../src/ui/loyaltyCards.tsx';
 import { WalletVaultSlot } from '../../src/ui/slots/WalletVaultSlot.tsx';
 
 type Row =
-  | { type: 'header'; key: string; label: string }
-  | { type: 'trip'; key: string; label: string }
+  | { type: 'header'; key: string; label: string; past: boolean }
+  | { type: 'trip'; key: string; label: string; tripId: string }
   | { type: 'entry'; key: string; entry: WalletEntry; past: boolean };
 
 const TicketCard = memo(function TicketCard({ entry, past }: { entry: WalletEntry; past: boolean }) {
@@ -44,20 +48,17 @@ const TicketCard = memo(function TicketCard({ entry, past }: { entry: WalletEntr
         style={[
           {
             flexDirection: 'row',
-            backgroundColor: theme.cardRaised,
             borderRadius: radius.l,
             overflow: 'hidden',
             opacity: past ? 0.72 : 1,
-            borderWidth: theme.dark ? 1 : 0,
-            borderColor: theme.line,
           },
-          shadowOf(theme, 'low'),
+          elevated(theme, 'low'),
         ]}
       >
         <View style={{ width: 6, backgroundColor: stripe }} />
         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.m, padding: space.l }}>
           <IconBadge name={KIND_ICON[item.kind]} tone={past ? 'ink' : tone} />
-          <View style={{ flex: 1, gap: 2 }}>
+          <View style={{ flex: 1, gap: rhythm.hair }}>
             <Text numberOfLines={2} style={[typeScale.bodyStrong, { fontSize: 17, color: theme.ink }]}>
               {item.title}
             </Text>
@@ -73,7 +74,7 @@ const TicketCard = memo(function TicketCard({ entry, past }: { entry: WalletEntr
             ) : null}
           </View>
           {ticket.qrCropUri ? (
-            <View style={{ alignItems: 'center', gap: 2, backgroundColor: theme.accentSoft, borderRadius: radius.m, padding: space.s }}>
+            <View style={{ alignItems: 'center', gap: rhythm.hair, backgroundColor: theme.accentSoft, borderRadius: radius.m, padding: space.s }}>
               <Ionicons name="qr-code" size={22} color={theme.accentInk} />
               <Text style={[typeScale.caption, { color: theme.accentInk }]}>{t('wallet.qrBadge')}</Text>
             </View>
@@ -100,7 +101,7 @@ export default function WalletScreen() {
   const { rows, upcomingCount } = useMemo(() => {
     const { upcoming, past } = splitWallet(walletEntries(trips), now);
     const out: Row[] = [];
-    if (upcoming.length) out.push({ type: 'header', key: 'h-upcoming', label: t('wallet.upcoming') });
+    if (upcoming.length) out.push({ type: 'header', key: 'h-upcoming', label: t('wallet.upcoming'), past: false });
     // Grouped by trip, trips in order of their soonest ticket; tickets keep their time order inside a trip.
     const order: string[] = [];
     const byTrip = new Map<string, WalletEntry[]>();
@@ -113,28 +114,37 @@ export default function WalletScreen() {
     }
     for (const id of order) {
       const group = byTrip.get(id)!;
-      if (order.length > 1) out.push({ type: 'trip', key: `t-${id}`, label: group[0].tripName });
+      if (order.length > 1) out.push({ type: 'trip', key: `t-${id}`, label: group[0].tripName, tripId: id });
       for (const e of group) out.push({ type: 'entry', key: e.key, entry: e, past: false });
     }
-    if (past.length) out.push({ type: 'header', key: 'h-past', label: t('wallet.past') });
+    if (past.length) out.push({ type: 'header', key: 'h-past', label: t('wallet.past'), past: true });
     for (const e of past) out.push({ type: 'entry', key: e.key, entry: e, past: true });
     return { rows: out, upcomingCount: upcoming.length };
   }, [trips, now, t]);
+
+  // T119: each trip's own accent (from its cover) for its group header.
+  const accents = useMemo(() => {
+    const m = new Map<string, TripAccent>();
+    for (const trip of trips) m.set(trip.id, tripAccent(tripCover(trip), theme));
+    return m;
+  }, [trips, theme]);
 
   const renderRow = useCallback(
     ({ item: row }: { item: Row }) => {
       if (row.type === 'header') {
         return (
-          <View accessibilityRole="header" style={{ marginTop: space.s }}>
-            <Label>{row.label}</Label>
+          <View style={{ marginTop: rhythm.tight }}>
+            <SectionHeader title={row.label} icon={row.past ? 'archive-outline' : 'time-outline'} tone={row.past ? 'ink' : 'accent'} />
           </View>
         );
       }
       if (row.type === 'trip') {
+        const accent = accents.get(row.tripId);
         return (
-          <View accessibilityRole="header" style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
-            <Ionicons name="briefcase-outline" size={16} color={theme.muted} />
-            <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: theme.ink, flex: 1 }]}>
+          <View accessible accessibilityRole="header" accessibilityLabel={row.label} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
+            <View style={{ width: 4, alignSelf: 'stretch', borderRadius: radius.pill, backgroundColor: accent?.strong ?? theme.line }} />
+            <Ionicons name="briefcase-outline" size={16} color={accent?.ink ?? theme.muted} />
+            <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: accent?.ink ?? theme.ink, flex: 1 }]}>
               {row.label}
             </Text>
           </View>
@@ -142,7 +152,7 @@ export default function WalletScreen() {
       }
       return <TicketCard entry={row.entry} past={row.past} />;
     },
-    [theme],
+    [theme, accents],
   );
 
   const heroCount = upcomingCount === 0 ? t('design.wallet.heroCountNone') : upcomingCount === 1 ? t('design.wallet.heroCountOne') : t('design.wallet.heroCount', { n: upcomingCount });
@@ -150,47 +160,48 @@ export default function WalletScreen() {
   return (
     <FlatList
       style={{ flex: 1, backgroundColor: theme.paper }}
-      contentContainerStyle={{ paddingTop: insets.top + space.m, paddingBottom: insets.bottom + space.xxl, paddingHorizontal: space.l, gap: space.m }}
+      contentContainerStyle={{ paddingTop: insets.top + space.m, paddingBottom: insets.bottom + space.xxl, paddingHorizontal: space.l, gap: rhythm.stack }}
       data={rows}
       keyExtractor={(row) => row.key}
       renderItem={renderRow}
       initialNumToRender={8}
       windowSize={7}
       ListHeaderComponent={
-        <View style={{ gap: space.m, marginBottom: space.s }}>
-          <FadeInView>
-            <HeroHeader tone="wallet" illustration="ticket" eyebrow={heroCount} title={t('wallet.title')} subtitle={t('design.wallet.subtitle')} />
-          </FadeInView>
-          <View accessibilityRole="header">
-            <Label>{t('design.wallet.quick')}</Label>
-          </View>
-          <View style={{ flexDirection: 'row', gap: space.s }}>
-            <QuickAction icon="medkit" tone="danger" label={t('design.wallet.q.emergency')} hint={t('design.wallet.q.emergencyHint')} onPress={() => router.navigate('/emergency')} />
-            <QuickAction icon="lock-closed" tone="sea" label={t('design.wallet.q.vault')} hint={t('design.wallet.q.vaultHint')} onPress={() => router.push('/vault')} />
-            <QuickAction
-              icon="bag-handle"
-              tone="teal"
-              label={t('design.wallet.q.packing')}
-              hint={focus ? t('design.wallet.q.packingHint', { trip: focus.name }) : t('design.wallet.q.packingNone')}
-              disabled={!focus}
-              onPress={() => focus && router.push(`/packing/${focus.id}`)}
-            />
-            <QuickAction icon="battery-half" tone="warn" label={t('design.wallet.q.essentials')} hint={t('design.wallet.q.essentialsHint')} onPress={() => router.push('/essentials')} />
-          </View>
-          {/* T61: offline converter and bill split on the trip's own rates. */}
-          <View style={{ flexDirection: 'row', gap: space.s }}>
-            <QuickAction icon="cash-outline" tone="accent" label={t('convert.q.convert')} hint={t('convert.q.convertHint')} onPress={() => router.push('/convert')} />
-            <QuickAction icon="people-outline" tone="ok" label={t('convert.q.split')} hint={t('convert.q.splitHint')} onPress={() => router.push({ pathname: '/convert', params: { section: 'split' } })} />
-            {/* T90: offline units and clothing sizes. */}
-            <QuickAction icon="speedometer-outline" tone="sea" label={t('units.q.units')} hint={t('units.q.unitsHint')} onPress={() => router.push('/units')} />
-            {/* T105: tipping guide and tip calculator. */}
-            <QuickAction icon="happy-outline" tone="warn" label={t('tipping.q.tipping')} hint={t('tipping.q.tippingHint')} onPress={() => router.push('/tipping')} />
-          </View>
-          {/* T102: cash on hand. */}
-          <CashCard trip={cashTrip} showTrip />
-          <Button kind="secondary" icon="chatbubbles-outline" label={t('phrases.walletEntry')} hint={t('phrases.walletEntryHint')} onPress={() => router.push('/phrases')} />
-          {/* T87: membership cards, on this phone only. */}
-          <WalletCards />
+        <View style={{ gap: rhythm.section, marginBottom: rhythm.tight }}>
+          <HeroHeader scene="wallet" eyebrow={heroCount} title={t('wallet.title')} subtitle={t('design.wallet.subtitle')} />
+          <FocusEntrance delay={60} style={{ gap: rhythm.tight }}>
+            <SectionHeader title={t('design.wallet.quick')} icon="flash-outline" tone="accent" />
+            <View style={{ flexDirection: 'row', gap: space.s }}>
+              <QuickAction icon="medkit" tone="danger" label={t('design.wallet.q.emergency')} hint={t('design.wallet.q.emergencyHint')} onPress={() => router.navigate('/emergency')} />
+              <QuickAction icon="lock-closed" tone="sea" label={t('design.wallet.q.vault')} hint={t('design.wallet.q.vaultHint')} onPress={() => router.push('/vault')} />
+              <QuickAction
+                icon="bag-handle"
+                tone="teal"
+                label={t('design.wallet.q.packing')}
+                hint={focus ? t('design.wallet.q.packingHint', { trip: focus.name }) : t('design.wallet.q.packingNone')}
+                disabled={!focus}
+                onPress={() => focus && router.push(`/packing/${focus.id}`)}
+              />
+              <QuickAction icon="battery-half" tone="warn" label={t('design.wallet.q.essentials')} hint={t('design.wallet.q.essentialsHint')} onPress={() => router.push('/essentials')} />
+            </View>
+            {/* T61: offline converter and bill split on the trip's own rates. */}
+            <View style={{ flexDirection: 'row', gap: space.s }}>
+              <QuickAction icon="cash-outline" tone="accent" label={t('convert.q.convert')} hint={t('convert.q.convertHint')} onPress={() => router.push('/convert')} />
+              <QuickAction icon="people-outline" tone="ok" label={t('convert.q.split')} hint={t('convert.q.splitHint')} onPress={() => router.push({ pathname: '/convert', params: { section: 'split' } })} />
+              {/* T90: offline units and clothing sizes. */}
+              <QuickAction icon="speedometer-outline" tone="sea" label={t('units.q.units')} hint={t('units.q.unitsHint')} onPress={() => router.push('/units')} />
+              {/* T105: tipping guide and tip calculator. */}
+              <QuickAction icon="happy-outline" tone="warn" label={t('tipping.q.tipping')} hint={t('tipping.q.tippingHint')} onPress={() => router.push('/tipping')} />
+            </View>
+          </FocusEntrance>
+          <FocusEntrance delay={120} style={{ gap: rhythm.stack }}>
+            <SectionHeader title={t('look2.wallet.sectionMore')} icon="wallet-outline" tone="teal" />
+            {/* T102: cash on hand. */}
+            <CashCard trip={cashTrip} showTrip />
+            <Button kind="secondary" icon="chatbubbles-outline" label={t('phrases.walletEntry')} hint={t('phrases.walletEntryHint')} onPress={() => router.push('/phrases')} />
+            {/* T87: membership cards, on this phone only. */}
+            <WalletCards />
+          </FocusEntrance>
         </View>
       }
       ListEmptyComponent={
@@ -202,7 +213,8 @@ export default function WalletScreen() {
         />
       }
       ListFooterComponent={
-        <View style={{ marginTop: space.l }}>
+        <View style={{ marginTop: rhythm.section, gap: rhythm.tight }}>
+          <SectionHeader title={t('look2.wallet.sectionDocs')} icon="lock-closed-outline" tone="sea" />
           <WalletVaultSlot />
         </View>
       }

@@ -2,12 +2,16 @@
 // memory, by a short key in the route params (a whole draft would not fit nicely in a URL). Nothing is stored: if
 // the app restarts, the form simply opens empty. Kept to the last few drafts.
 import type { AirportInfo } from '../core/leaveby.ts';
+import type { PastedWifi } from '../core/pastewifi.ts';
 import type { ItemDraft } from '../core/trips.ts';
 import { PASTE_SAVED_KEY, recordPasteSaved } from '../core/followups89.ts';
 import { setPersistedChecked } from './persisted.ts';
 
-/** fingerprint (T80): what the paste screen found, so a save from the form marks that card "Saved". */
-export type PastedDraft = { draft: ItemDraft; airport?: AirportInfo; fingerprint?: string };
+/**
+ * fingerprint (T80): what the paste screen found, so a save from the form marks that card "Saved". wifi (T112): Wi-Fi
+ * from a hotel confirmation the traveller chose to add to Stay details once the booking is saved (memory only).
+ */
+export type PastedDraft = { draft: ItemDraft; airport?: AirportInfo; fingerprint?: string; wifi?: PastedWifi };
 
 const KEEP = 8;
 const drafts = new Map<string, PastedDraft>();
