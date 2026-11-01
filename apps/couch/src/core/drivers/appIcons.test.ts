@@ -124,10 +124,10 @@ describe('platforms whose remote protocol exposes no app icons (typographic tile
     for (const a of apps) expect(Object.keys(a).some((k) => /icon/i.test(k))).toBe(false);
   });
 
-  it('Android TV / Google TV (Remote v2): no app list and no icons', () => {
+  it('Android TV / Google TV (Remote v2): fixed app list, no icons', async () => {
     const identity = { certPem: 'CERT', keyPem: 'KEY', publicKey: { modulus: new Uint8Array([1]), exponent: new Uint8Array([1]) } } as unknown as ClientIdentity;
     const tv = new AndroidTvDriver({ host: '192.168.1.90', tls: async () => Promise.reject(new Error('unused')), identity });
-    expect(tv.listApps).toBeUndefined();
+    expect((await tv.listApps!()).map((a) => a.name)).toContain('Netflix'); // fixed list, launched by link (owner 1 Nov 2026)
     expect(tv.capabilities.has('appIcons')).toBe(false);
     expect(driverIconFetch(tv)).toBeNull();
   });

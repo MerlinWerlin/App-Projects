@@ -18,10 +18,11 @@
  */
 import { Emitter, type DriverEvent, type TcpLike, type TvDriver } from '../../driver';
 import type { Key } from '../../keys';
-import { DriverError, type Capability, type PairState } from '../../types';
+import { DriverError, type Capability, type PairState, type TvApp } from '../../types';
 import { t } from '../../../i18n/core';
 import { driverError, asDriverError } from '../errors';
 import { ANDROIDTV_KEYS, KEYCODE } from './keys';
+import { androidTvApps } from './apps';
 import { pairingSecret, type RsaPublicKey } from './pairing';
 import { COUCH_APP_PACKAGE } from '../../appIdentity';
 import {
@@ -554,6 +555,11 @@ export class AndroidTvDriver implements TvDriver {
   /** Not supported yet (needs remote_ime_batch_edit). The app falls back to key-by-key or nothing. */
   async sendText(_text: string): Promise<void> {
     this.fail(driverError('unsupported', 'core.driver.androidtv.noTyping'));
+  }
+
+  /** Google TVs can't list installed apps over this protocol, so offer a fixed set of common apps. */
+  async listApps(): Promise<TvApp[]> {
+    return androidTvApps();
   }
 
   /**
