@@ -34,11 +34,25 @@ jobs:
         run: |
           gh release view "$TAG" -R "$R" >/dev/null 2>&1 || \
             gh release create "$TAG" -R "$R" --title "Glaze theme packs ($TAG)" --notes "Theme art packs for the Glaze app." --latest=false
-      - name: Upload (files, manifests, catalog last)
+      - name: Upload (files, manifests, catalog last; one at a time, skips files already there)
         run: |
           cd assets
+          gh release view "$TAG" -R "$R" --json assets -q '.assets[] | "\(.name) \(.size)"' > ../have.txt || true
+          up() {
+            for try in 1 2 3 4 5 6; do
+              if gh release upload "$TAG" -R "$R" --clobber "$1"; then sleep 1; return 0; fi
+              echo "retry $try for $1"; sleep $((try * 30))
+            done
+            return 1
+          }
           for list in upload-1-files.txt upload-2-manifests.txt upload-3-catalog.txt; do
-            if [ -s "../$list" ]; then xargs -a "../$list" -d '\n' -n 40 gh release upload "$TAG" -R "$R" --clobber; fi
+            [ -s "../$list" ] || continue
+            while IFS= read -r f; do
+              [ -n "$f" ] || continue
+              size=$(stat -c %s "$f")
+              if [ "$f" != "catalog.json" ] && grep -qxF "$f $size" ../have.txt; then continue; fi
+              up "$f"
+            done < "../$list"
           done
       - name: Verify
         run: |
