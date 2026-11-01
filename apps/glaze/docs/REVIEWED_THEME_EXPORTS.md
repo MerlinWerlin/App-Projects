@@ -1,5 +1,7 @@
 # Reviewed theme export candidates
 
+2 November correction: the flat icon exports and generic clean faces below are technical prototypes/fallbacks, not finished theme-faithful designs. Preserve the original textures, materials, motifs and accents where suitable; simple designs remain appropriate for some themes. See THEMED_NATIVE_CLOCKS.md for artwork-preserving native clock editions. Individual artistic approval, final styled icon exports and installed-device QA remain outstanding.
+
 `scripts/export-reviewed-themes.mjs` takes `--reviews <glaze-theme-reviews>` and reads the visual-review snapshot at `release-simulation/catalogue.json`. It writes only additive dated exports into the existing theme folders. It does not upload packs or increase the installed app bundle.
 
 Each theme receives opaque 1024px square PNGs for the production catalogue's 133 generic glyphs. `icons/exports-20261101/app-map.json` maps all 983 catalogue rows to those shared images and records hashes and byte sizes. These are the app's Feather font and in-house SVG geometry, in the reviewed palette; they are not cropped concept-board icons or brand logos. Retain the Feather MIT license and notice when distributing them.

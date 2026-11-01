@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Export reviewed palettes using the app's own glyph font/in-house paths, plus number-free UI faces.
+// Technical flat icon prototypes and plain fallback UI faces, NOT final styled theme exports.
+// Preserve original theme material/motifs when preparing the actual final artwork.
 // No screenshots are cropped into icons; originals are never overwritten. Not a publication tool.
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { resolve, join } from 'node:path';
@@ -49,7 +50,7 @@ try{
    if(!existsSync(dest))writeFileSync(dest,bytes);
    entries.push({glyph,file:name,width:1024,height:1024,bytes:bytes.length,sha256:sha(bytes)});
   }
-  writeFileSync(join(icons,'app-map.json'),JSON.stringify({theme:theme.id,source:'Glaze production catalogue generic glyphs; not brand logos',apps:CATALOGUE.map(a=>({id:a.id,name:a.name,glyph:a.glyph,file:a.glyph+'.png'})),icons:entries},null,2)+'\n');
+  writeFileSync(join(icons,'app-map.json'),JSON.stringify({theme:theme.id,designStatus:'technical_flat_prototype_not_final',source:'Glaze production catalogue generic glyphs; not brand logos',apps:CATALOGUE.map(a=>({id:a.id,name:a.name,glyph:a.glyph,file:a.glyph+'.png'})),icons:entries},null,2)+'\n');
   writeFileSync(join(icons,'README.md'),'Glaze production-style 1024px opaque square icons for '+theme.id+'. APP SEARCH exports the existing app Feather font and in-house glyph paths in the reviewed theme ink on a background-matched flat square. iOS supplies its own mask. app-map.json maps983 catalogue entries to shared glyph files; these are generic symbols, not brand logos or material-perfect copies of the concept boards. Feather is MIT licensed (https://github.com/feathericons/feather/blob/main/LICENSE); retain NOTICE.txt. Native installation is unverified. APPS A2 / Glaze.\n');
   writeFileSync(join(icons,'NOTICE.txt'),'Feather glyphs: copyright Cole Bemis, MIT license. Source: https://github.com/feathericons/feather. In-house glyphs: Glaze original code at src/render/inhouse.ts. Full Feather license is distributed in the shared export folder FEATHER-LICENSE.txt; retain it with redistributed exports.\n');
   const needed=Math.max(1,6-new Set(theme.widgets.map(w=>w.originalSha256||w.sha256)).size),kinds=['clock','date','focus','battery'].slice(0,Math.min(4,needed)),options=[];
