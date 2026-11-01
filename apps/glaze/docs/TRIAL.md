@@ -2,6 +2,13 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (1 Nov, run 225)
+JS only: shows in the next TestFlight build (or Expo Go). Answer yes / no:
+
+1. **Countdown art:** Widgets tab > a theme with the Dune or Rehearsal countdown piece > pick it. Is there a **Countdown to** field? Type a day (YYYY-MM-DD) and tap **Use on my widget**: does your widget count the days down over the art? Without a day does it stay a plain picture (no made-up number)? yes / no
+2. **Fill / Fit note:** on a live piece (clock, date, battery), does the note under it say live values show in **Fill** and Fit shows the art only? Is that what your widget does? yes / no
+3. **Themes tab:** does the top line now read "Whole looks: wallpaper, icons and widgets that match."? yes / no
+
 ## New since your last test (1 Nov, owner-1101i)
 Needs a TestFlight build **newer than 1.0.1 (20)**. Answer yes / no:
 

@@ -44,6 +44,9 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
       artBadge: 'Kunst',
       liveOnArt: 'Funktioniert auf dem Home-Bildschirm: Das Glaze-Widget zeigt den echten Wert über diesem Bild.',
       focusNote: 'Tippe im Widget auf Start für 25 Minuten Fokus; tippe erneut zum Pausieren.',
+      countdownNote: 'Wähle oben einen Tag und tippe dann auf „Für mein Widget nutzen“: Das Widget zählt über diesem Bild bis dahin herunter. Ohne Tag bleibt es ein Bild.',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: 'Live-Werte erscheinen im Layout „Füllen“ (Widget gedrückt halten, Widget bearbeiten, Layout). „Einpassen“ zeigt vorerst nur das Bild.',
       heroNames: { small: 'Kleines Bild', medium: 'Breites Bild', large: 'Großes Bild' },
       download: 'Lade dieses Thema auf seiner Seite, um hier alle Widget-Bilder zu sehen.',
       kinds: { art: 'Kunst', clock: 'Uhren', date: 'Datum', calendar: 'Kalender', countdown: 'Countdowns', habits: 'Gewohnheiten', battery: 'Batterie', photo: 'Fotos', quote: 'Zitate', focus: 'Fokus' },

@@ -2,7 +2,7 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ja: NonNullable<LocaleMessages['themes']> = {
-  subtitle: '壁紙、アイコン、ウィジェット、ループまで揃ったトータルルック。',
+  subtitle: '壁紙、アイコン、ウィジェットがそろったトータルルック。',
   tipsA11y: 'ヒント',
   dismissTip: 'ヒントを閉じる: {title}',
   makeWallpaper: {

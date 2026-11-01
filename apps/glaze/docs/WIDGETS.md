@@ -712,6 +712,19 @@ gets an overlay). The menu shows "Live" or "Art" on every card. Plate rects were
 run-208 snapshot sheets: VERIFY alignment on device (and if T236 changes the composition geometry,
 `liveArtSpec`'s placeArt mapping must follow).
 
+**Fit layout (T246).** Edit Widget > Layout > Fit shows the raw art (`<id>-art.png`, same framing as
+the art) whole, inset by 6 % of the widget's short side, so the Fill rect (0..1 of the composed image)
+does not line up there. Each `live` spec now also stores `art: [x, y, w, h]` (the plate, 0..1 of the
+art itself), and `src/core/liveArtFit.ts` maps it onto the contained art (`fitLayoutPlate`, tested
+for square / wide / tall art in every size; no raw art file = the composed rect on the fitted composed
+image; an older record without `art` over a raw art file = no plate). **Native caveat:**
+`SeamlessWidget.swift` still skips `LiveArtLayer` in Fit (`if let image = image, !fit`) and new Swift
+is held (D225-3), so the widget shows live values in **Fill only**; `FIT_LAYOUT_LIVE_IN_WIDGET` is
+false and the theme art screen says so (`tabs.widgetsTab.art.liveFillOnly`). The native change, when
+allowed: in Fit, parse `art`, frame = `LiveArtLayer.fitted(raw.size, in: box inset by min(w,h)*0.06)`
+(or the composed image's rect with `rect` when there is no raw file), place the plate on that frame,
+then flip the flag (liveArtFit.test.ts checks the flag against the Swift source).
+
 ### Art blends with the wallpaper (T251, owner-1101h #2)
 
 Owner, TestFlight 1.0.1 (19): Alpine Starlight's white full moon (large) showed a light-grey frame

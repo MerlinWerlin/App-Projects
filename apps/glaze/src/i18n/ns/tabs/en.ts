@@ -44,6 +44,9 @@ export const en = {
       artBadge: 'Art',
       liveOnArt: 'Works on your Home Screen: the Glaze widget shows the real value over this art.',
       focusNote: 'Tap Start on the widget for a 25-minute focus session; tap again to pause.',
+      countdownNote: 'Pick a day above, then tap Use on my widget: the widget counts down to it over this art. Without a day it stays a picture.',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: 'Live values show in the Fill layout (long-press the widget, Edit Widget, Layout). Fit shows the art only for now.',
       heroNames: { small: 'Small piece', medium: 'Wide piece', large: 'Large piece' },
       download: 'Download this theme on its page to see all of its widget art here.',
       kinds: { art: 'Art', clock: 'Clocks', date: 'Dates', calendar: 'Calendars', countdown: 'Countdowns', habits: 'Habits', battery: 'Battery', photo: 'Photos', quote: 'Quotes', focus: 'Focus' },

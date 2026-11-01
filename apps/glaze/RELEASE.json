@@ -1,6 +1,6 @@
 {
   "mode": "update",
-  "note": "Glaze: theme pack downloads now check files in small slices so the screen stays responsive",
+  "note": "Glaze: live values in the Fit layout, countdown art pieces take a target day, Themes tab subtitle fix",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

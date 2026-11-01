@@ -44,6 +44,9 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
       artBadge: 'アート',
       liveOnArt: 'ホーム画面で動作します：Glazeウィジェットがこのアートの上に実際の値を表示します。',
       focusNote: 'ウィジェットの「開始」をタップすると25分間の集中セッション。もう一度タップで一時停止します。',
+      countdownNote: '上で日付を選んでから「ウィジェットに使う」をタップすると、このアートの上でその日までのカウントダウンを表示します。日付がなければ絵のままです。',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: '実際の値はレイアウト「全体に表示」で表示されます（ウィジェットを長押し、ウィジェットを編集、レイアウト）。「全体を収める」では今のところアートのみです。',
       heroNames: { small: '小さいアート', medium: '横長アート', large: '大きいアート' },
       download: 'テーマのページでダウンロードすると、ここにすべてのウィジェットアートが表示されます。',
       kinds: { art: 'アート', clock: '時計', date: '日付', calendar: 'カレンダー', countdown: 'カウントダウン', habits: '習慣', battery: 'バッテリー', photo: '写真', quote: '名言', focus: '集中' },

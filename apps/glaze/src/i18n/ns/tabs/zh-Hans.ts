@@ -44,6 +44,9 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
       artBadge: '插画',
       liveOnArt: '可在主屏幕上使用：Glaze 小组件会在这幅插画上显示实时数值。',
       focusNote: '轻点小组件上的“开始”进行 25 分钟专注，再次轻点即可暂停。',
+      countdownNote: '在上方选择一个日期，然后轻点“用于我的小组件”：小组件会在这幅作品上显示到那天的倒计时。没有日期时它只是一幅图片。',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: '实时数值在“填充”布局中显示（长按小组件，编辑小组件，布局）。“适应”目前只显示插画。',
       heroNames: { small: '小幅插画', medium: '宽幅插画', large: '大幅插画' },
       download: '在主题页面下载此主题后，这里会显示它的全部小组件插画。',
       kinds: { art: '插画', clock: '时钟', date: '日期', calendar: '日历', countdown: '倒计时', habits: '习惯', battery: '电池', photo: '照片', quote: '语录', focus: '专注' },

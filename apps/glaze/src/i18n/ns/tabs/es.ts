@@ -44,6 +44,9 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
       artBadge: 'Arte',
       liveOnArt: 'Funciona en tu pantalla de inicio: el widget de Glaze muestra el valor real sobre este arte.',
       focusNote: 'Toca Empezar en el widget para 25 minutos de concentración; vuelve a tocar para pausar.',
+      countdownNote: 'Elige un día arriba y toca Usar en mi widget: el widget cuenta los días que faltan sobre este arte. Sin día, se queda como imagen.',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: 'Los valores en vivo se ven con el diseño «Rellenar» (mantén pulsado el widget, Editar widget, Diseño). «Ajustar» muestra solo el arte por ahora.',
       heroNames: { small: 'Pieza pequeña', medium: 'Pieza ancha', large: 'Pieza grande' },
       download: 'Descarga este tema en su página para ver aquí todo su arte para widgets.',
       kinds: { art: 'Arte', clock: 'Relojes', date: 'Fechas', calendar: 'Calendarios', countdown: 'Cuentas atrás', habits: 'Hábitos', battery: 'Batería', photo: 'Fotos', quote: 'Citas', focus: 'Enfoque' },

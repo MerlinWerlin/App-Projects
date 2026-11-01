@@ -22,13 +22,20 @@
 // T237 (owner-1101g #2): pieces the widget can make work (src/core/liveArt.ts: the constellation
 // clock, the harbour focus timer, date and battery pieces) are marked liveArt and saved with a
 // `live` spec, so the Seamless widget draws the real time / date / level / focus timer over them.
+// T245: countdown pieces (dune-countdown, rehearsal-countdown) get a "Countdown to" day field (the
+// same YYYY-MM-DD field and strings as Widget Studio); with a day they are live and the saved spec
+// carries `target`; without one they stay Art.
+// T246: the spec also carries the plate on the art itself (`art`; src/core/liveArtFit.ts maps it onto
+// the inset art of Edit Widget > Layout > Fit). The widget build still draws live values in Fill only
+// (no new Swift, D225-3), so while liveValueShowsIn('fit') is false the note under the menu says so.
 import { useRouter } from 'expo-router';
-import { useCallback, useMemo, useState } from 'react';
-import { AccessibilityInfo, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { AccessibilityInfo, StyleSheet, Text, TextInput, View, type StyleProp, type ViewStyle } from 'react-native';
 import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES, HERO_SIZES, isArtPackTheme } from '../core/artPack';
 import { isRemoteArtTheme } from '../core/remoteCatalog';
 import { normaliseSlot, seamlessCrop, seamlessFileName, widgetSizePx } from '../core/seamlessWidget';
-import { liveArtPlan, liveArtSpec, withLiveArt } from '../core/liveArt';
+import { countdownArtTarget, isCountdownArtPiece, liveArtPlan, liveArtSpec, validTargetDay, withLiveArt, type CountdownArtTargets } from '../core/liveArt';
+import { liveValueShowsIn } from '../core/liveArtFit';
 import { themePieceId } from '../core/widgetArtLibrary';
 import type { WidgetTabSize } from '../core/tabNav';
 import type { Theme } from '../core/themes';
@@ -36,7 +43,8 @@ import { fixedValues, liveStudioHref, optionName, placeArt, selectedOption, widg
 import { useT } from '../i18n';
 import { widgets } from '../native/widgets';
 import { useRemoteArtTheme } from '../native/useRemoteCatalog';
-import { fontScaleCap, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
+import { chromeRadiusV2, continuous, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
+import { countdownArtTargetsNow, loadCountdownArtTargets, setCountdownArtTarget, subscribeCountdownArtTargets } from '../store/countdownArtTargets';
 import { useColorsV2 } from '../theme/useTokens';
 import { artPackHero, artPackWallpaper } from './artPackSources';
 import { haptic } from './haptics';
@@ -67,12 +75,27 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
   const remoteTheme = isRemoteArtTheme(theme);
   const remote = useRemoteArtTheme(remoteTheme ? theme.id : null);
   const artId = isArtPackTheme(theme) ? theme.artPack.id : null;
+  // T245: the days chosen for countdown art pieces (none = those pieces stay Art).
+  const [targets, setTargets] = useState<CountdownArtTargets>(countdownArtTargetsNow);
+  useEffect(() => {
+    let alive = true;
+    loadCountdownArtTargets()
+      .then((v) => {
+        if (alive) setTargets(v);
+      })
+      .catch(() => undefined);
+    const off = subscribeCountdownArtTargets((v) => setTargets(v));
+    return () => {
+      alive = false;
+      off();
+    };
+  }, []);
 
   const options: readonly MenuOption[] = useMemo(() => {
     if (remoteTheme) {
       if (!remote.widgetOptions.length) return NONE;
-      // T237: no countdown target is chosen for art pieces yet, so countdown pictures stay Art.
-      const live = withLiveArt(theme.id, remote.widgetOptions.map((o) => o.option));
+      // T245: countdown pictures are live only once the person picked a day for them.
+      const live = withLiveArt(theme.id, remote.widgetOptions.map((o) => o.option), { targets });
       return remote.widgetOptions.map((o, i) => ({ option: live[i], source: { uri: o.uri } }));
     }
     if (!artId) return NONE;
@@ -89,7 +112,7 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
       const mod = sources.get(option.image);
       return mod === undefined ? [] : [{ option, source: mod }];
     });
-  }, [remoteTheme, remote.widgetOptions, artId, theme.id]);
+  }, [remoteTheme, remote.widgetOptions, artId, theme.id, targets]);
 
   const wallpaper: ArtSource | null = remote.wallpaperUri ? { uri: remote.wallpaperUri } : artId ? artPackWallpaper(artId) : null;
   const wallpaperPx = remote.wallpaperPx ?? { w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height };
@@ -175,7 +198,7 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
             // T221: keep this piece in "My widget art" too (a failure here never undoes the save).
             const px = widgetSizePx(seamlessDeviceHere(), home);
             // T237: what the widget draws live over this piece (null = a picture only).
-            const plan = liveArtPlan(theme.id, option);
+            const plan = liveArtPlan(theme.id, option, { targets });
             const live = plan
               ? liveArtSpec(plan, { w: option.width, h: option.height }, px, path, { bg: theme.palette.bg, ink: theme.palette.ink })
               : null;
@@ -223,6 +246,8 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
   const liveHref = liveOnArt ? null : liveStudioHref(theme.id, pickedItem.option.kind, home);
   // T206: the picture's numbers never change, so the live widget is offered as a separate one.
   const fixed = fixedValues(pickedItem.option);
+  // T245: a countdown picture takes a target day.
+  const countdownPiece = isCountdownArtPiece(theme.id, pickedItem.option);
   const statusLine =
     status === 'savedLibrary' ? t('ui.seamless.library.added') : status === 'saved' ? t('ui.seamless.saved') : status === 'unavailable' ? t('ui.seamless.notAvailable') : status === 'failed' ? t('ui.seamless.failed') : null;
 
@@ -254,9 +279,29 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
           {t('tabs.widgetsTab.art.fixedNote')}
         </Text>
       ) : null}
+      {countdownPiece ? (
+        <CountdownDayField
+          key={`${theme.id}/${pickedItem.option.id}`}
+          day={countdownArtTarget(targets, theme.id, pickedItem.option.id)}
+          onDay={(day) => {
+            setStatus('idle');
+            setCountdownArtTarget(theme.id, pickedItem.option.id, day).catch(() => undefined);
+          }}
+        />
+      ) : null}
+      {countdownPiece && !liveOnArt ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+          {t('tabs.widgetsTab.art.countdownNote')}
+        </Text>
+      ) : null}
       {liveOnArt ? (
         <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
           {pickedItem.option.kind === 'focus' ? t('tabs.widgetsTab.art.focusNote') : t('tabs.widgetsTab.art.liveOnArt')}
+        </Text>
+      ) : null}
+      {liveOnArt && !liveValueShowsIn('fit') ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+          {t('tabs.widgetsTab.art.liveFillOnly')}
         </Text>
       ) : null}
       {statusLine ? (
@@ -283,7 +328,44 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
   );
 }
 
+/** T245: "Countdown to" YYYY-MM-DD field (the same field and strings as Widget Studio's countdown). */
+function CountdownDayField({ day, onDay }: { day: string | null; onDay: (day: string | null) => void }) {
+  const { c } = useColorsV2();
+  const { t, script } = useT();
+  const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
+  const [text, setText] = useState(day ?? '');
+  const bad = text !== '' && !validTargetDay(text);
+  return (
+    <View style={styles.field}>
+      <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label('subhead'), { color: c.ink }]}>
+        {t('themeUi.widgetStudio.countdown.header')}
+      </Text>
+      <TextInput
+        maxFontSizeMultiplier={fontScaleCap('body')}
+        value={text}
+        onChangeText={(v) => {
+          setText(v);
+          if (v === '') onDay(null);
+          else if (validTargetDay(v)) onDay(v);
+        }}
+        placeholder={t('themeUi.widgetStudio.countdown.placeholder')}
+        placeholderTextColor={c.inkTertiary}
+        keyboardType="numbers-and-punctuation"
+        maxLength={10}
+        accessibilityLabel={t('themeUi.widgetStudio.countdown.header')}
+        accessibilityHint={t('themeUi.widgetStudio.countdown.hint')}
+        style={[...label('body'), styles.input, continuous, { color: c.ink, backgroundColor: c.fill }]}
+      />
+      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+        {bad ? t('themeUi.widgetStudio.countdown.invalid') : t('themeUi.widgetStudio.countdown.hint')}
+      </Text>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   actions: { gap: spaceV2.sm, marginTop: spaceV2.xs },
+  field: { gap: spaceV2.xs },
+  input: { minHeight: sizeV2.touch, borderRadius: chromeRadiusV2.control, paddingHorizontal: spaceV2.md, paddingVertical: spaceV2.sm },
   note: { marginTop: spaceV2.md },
 });

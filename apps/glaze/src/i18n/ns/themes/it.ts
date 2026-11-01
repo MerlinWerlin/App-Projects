@@ -2,7 +2,7 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const it: NonNullable<LocaleMessages['themes']> = {
-  subtitle: 'Look completi: sfondo, icone, widget e un loop.',
+  subtitle: 'Look completi: sfondo, icone e widget abbinati.',
   tipsA11y: 'Suggerimenti',
   dismissTip: 'Chiudi suggerimento: {title}',
   makeWallpaper: {
