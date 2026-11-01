@@ -79,6 +79,29 @@
       "recheck_reason": "Only Sydney was checked; other cities have their own systems."
     },
     {
+      "iso2": "BR",
+      "country": "Brazil",
+      "area": "São Paulo",
+      "transit": "In São Paulo, buy single Metrô tickets at station ticket offices. The Bilhete Único (from SPTrans) covers bus and Metrô transfers but needs a Brazilian CPF number.",
+      "tickets": ["Single ticket", "Bilhete Único", "Cartão TOP"],
+      "contactless": "some",
+      "contactless_note": "Contactless Visa, Mastercard and Elo cards work at dedicated turnstiles in Metrô lines 1, 2, 3 and 15 stations (a pilot); phones and watches on lines 1 to 3. No bus integration.",
+      "hours": "Metrô runs daily from 4:40am to midnight.",
+      "taxi": "At GRU airport, the official taxi cooperative has service desks in Terminals 1, 2 and 3, with standard rates and bilingual staff.",
+      "rides": null,
+      "airport": "GRU: CPTM Line 13-Jade runs from Aeroporto-Guarulhos station (free shuttle to the terminals) to Engenheiro Goulart, linking to Line 12 for Tatuapé, Brás and Luz; about 4am to midnight, to 1am on Saturdays.",
+      "sources": [
+        "https://www.metro.sp.gov.br/sua-viagem/turismetro/",
+        "https://www.metro.sp.gov.br/pt_BR/2025/12/04/pagamento-por-aproximacao-disponivel-em-todas-as-estacoes-do-metro/",
+        "https://www.metro.sp.gov.br/2026/04/09/metro-passa-a-aceitar-cartoes-virtuais-nas-catracas/",
+        "https://www.gru.com.br/en/passenger/to-from-gru-airport/train",
+        "https://www.gru.com.br/en/passenger/to-from-gru-airport/taxi"
+      ],
+      "checked": "2026-11-01",
+      "recheck": true,
+      "recheck_reason": "Taxis were only checked at the airport; Metrô bank-card tapping is a pilot."
+    },
+    {
       "iso2": "CA",
       "country": "Canada",
       "area": "Toronto",
@@ -130,6 +153,27 @@
       "recheck_reason": "Taxis, hours and airport links were not on the official page read."
     },
     {
+      "iso2": "CN",
+      "country": "China",
+      "area": "Shanghai",
+      "transit": "In Shanghai, pay for the metro with a single journey ticket, a Shanghai Public Transportation Card (also on a phone or watch), a QR code in a metro or payment app, or a bank card tap at the gates.",
+      "tickets": ["Single Journey Ticket", "Shanghai Public Transportation Card", "Maglev and Metro Pass"],
+      "contactless": "yes",
+      "contactless_note": "Tap to Ride takes contactless UnionPay, Visa, Mastercard, American Express and JCB cards at metro gates; turn on password-free small payments. Station service centres sell tickets for overseas cards.",
+      "hours": null,
+      "taxi": "Most people book taxis online; you can still hail one, but not at intersections. All taxis take cash and the transport card; one large company's cabs take international cards. Ask for a receipt.",
+      "rides": "available",
+      "airport": "The Maglev links Pudong Airport with Longyang Road in about eight minutes; the Airport Link Line connects Hongqiao and Pudong in about 40 minutes.",
+      "sources": [
+        "https://english.shanghai.gov.cn/en-TravelYourWay/20251010/6f1beb560360472b8edaffd6187f4988.html",
+        "https://english.shanghai.gov.cn/en-Transportation/20240102/44f499a17b324b25996f2d58fcbf5f23.html",
+        "https://english.shanghai.gov.cn/en-Transportation/20250919/5dd5b4725b7344cab776d3ddcbce224d.html"
+      ],
+      "checked": "2026-11-01",
+      "recheck": false,
+      "recheck_reason": null
+    },
+    {
       "iso2": "CZ",
       "country": "Czechia",
       "area": "Prague",
@@ -164,21 +208,42 @@
       "recheck_reason": "Taxis and airport links were not on the official page read."
     },
     {
-      "iso2": "ES",
-      "country": "Spain",
-      "area": "Barcelona",
-      "transit": "In Barcelona, the T-casual is a 10-journey ticket for one person, held on a T-mobilitat card, an NFC phone or an anonymous card.",
-      "tickets": ["T-casual", "T-mobilitat"],
+      "iso2": "EG",
+      "country": "Egypt",
+      "area": "Cairo",
+      "transit": "Cairo has three metro lines; Line 1 runs Helwan to New El Marg, Line 2 Shubra El Kheima to El Mounib, with interchanges at Sadat and Al Shohadaa. Single tickets are priced by number of stations.",
+      "tickets": ["Single-trip ticket", "Metro smart card"],
       "contactless": null,
       "contactless_note": null,
       "hours": null,
-      "taxi": null,
+      "taxi": "White taxis have meters; old black-and-white taxis usually do not, so agree the price first. At the airport, ignore freelance drivers in the arrival hall.",
       "rides": null,
-      "airport": "The T-casual is not valid at the Aeroport T1 and T2 metro stations on line L9 Sud; check the airport ticket before you travel.",
-      "sources": ["https://tmb.cat/en/barcelona-fares-metro-bus/t-casual"],
+      "airport": "Cairo Airport: limousines with fixed fares by destination wait at the kerb; city buses leave from the bus station in front of Terminal 1 only.",
+      "sources": [
+        "https://cairo.gov.eg/en/governorate-services/transportation-services/metro/",
+        "https://www.cairo.gov.eg/en/governorate-services/transportation-services/metro/metro-tickets/",
+        "https://www.cairo-airport.com/en-us/Services/Passenger-Guide/Move-From-To-Airport"
+      ],
       "checked": "2026-11-01",
       "recheck": true,
-      "recheck_reason": "Bank-card tapping, taxis and hours were not on the official page read; the Madrid metro site could not be read."
+      "recheck_reason": "Bank-card tapping and hours were not on the official pages read; the state information service page could not be read."
+    },
+    {
+      "iso2": "ES",
+      "country": "Spain",
+      "area": "Madrid",
+      "transit": "Madrid has 12 metro lines, three Metro Ligero tram lines and a short Ramal line. Pay-per-ride tickets are loaded onto the Tarjeta Multi, a contactless, transferable smart card; the Tourist Travel Pass gives unlimited travel.",
+      "tickets": ["Tarjeta Multi", "Tourist Travel Pass"],
+      "contactless": null,
+      "contactless_note": null,
+      "hours": "Metro runs from 6am to 1:30am, every 2 minutes at rush hour and every 15 minutes after midnight; works close parts of some lines.",
+      "taxi": "At the airport, take a taxi from the rank; there is a fixed flat fare to the centre inside the M-30 ring road.",
+      "rides": null,
+      "airport": "Barajas: Metro Line 8 runs to Nuevos Ministerios (an airport fee is added); the Airport Express bus runs 24 hours to Cibeles and Atocha; Cercanías C-1 runs from T4 about every 20 minutes.",
+      "sources": ["https://www.esmadrid.com/en/getting-around-madrid-metro", "https://www.esmadrid.com/en/getting-madrid-plane"],
+      "checked": "2026-11-01",
+      "recheck": true,
+      "recheck_reason": "Bank-card tapping was not on the official pages read; only Madrid was checked (Barcelona and other cities differ)."
     },
     {
       "iso2": "FR",
@@ -301,7 +366,10 @@
       "taxi": "Taxis, hackneys and limousines are licensed by the National Transport Authority, which offers a tool to check a licence.",
       "rides": null,
       "airport": null,
-      "sources": ["https://www.transportforireland.ie/getting-around/visitor-travel-information/", "https://www.transportforireland.ie/leap-card/leap-visitor-card/"],
+      "sources": [
+        "https://www.transportforireland.ie/getting-around/visitor-travel-information/",
+        "https://www.transportforireland.ie/leap-card/leap-visitor-card/"
+      ],
       "checked": "2026-11-01",
       "recheck": true,
       "recheck_reason": "Bank-card tapping and airport links were not on the official pages read."
@@ -373,10 +441,74 @@
       "taxi": "Taxis are metered by distance, with a surcharge from 10pm to 5am. A red sign means free. Doors open and close automatically. Cards are generally accepted in big-city taxis; carry cash in the countryside.",
       "rides": "available",
       "airport": "Narita: ask the driver for the fixed taxi fare to central Tokyo zones. Haneda: flat-rate taxis to most of Tokyo. Kansai and Itami: shared taxi shuttles.",
-      "sources": ["https://www.japan.travel/en/guide/how-to-travel-by-train-and-bus-in-japan/", "https://www.japan.travel/en/plan/getting-around/taxis"],
+      "sources": [
+        "https://www.japan.travel/en/guide/how-to-travel-by-train-and-bus-in-japan/",
+        "https://www.japan.travel/en/plan/getting-around/taxis"
+      ],
       "checked": "2026-11-01",
       "recheck": true,
       "recheck_reason": "Bank-card tapping and airport rail links were not on the official pages read."
+    },
+    {
+      "iso2": "KR",
+      "country": "South Korea",
+      "area": "Seoul",
+      "transit": "In Seoul, a T-money card pays on buses, the subway and taxis. Subway transfers happen inside stations; bus-subway transfers are free with T-money if you tap when you get off.",
+      "tickets": ["T-money card", "T-money Mpass"],
+      "contactless": null,
+      "contactless_note": null,
+      "hours": "Subway trains run from about 5:30am until midnight.",
+      "taxi": "Taxis use meters and take cash, credit cards and T-money. Regular taxis are mostly orange; deluxe are black. International taxis (English, Chinese or Japanese speaking drivers) can be booked ahead.",
+      "rides": null,
+      "airport": "Incheon: AREX express trains run non-stop to Seoul Station (about 43 minutes from T1); all-stop trains take about an hour. Buy limousine bus tickets before boarding. Standard and deluxe taxis wait at the taxi platform at both terminals.",
+      "sources": [
+        "https://english.visitseoul.net/essential-Info-article/Getting-Around_/211",
+        "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140654"
+      ],
+      "checked": "2026-11-01",
+      "recheck": true,
+      "recheck_reason": "Tapping a foreign bank card on the subway and buses was not on the official pages read."
+    },
+    {
+      "iso2": "MA",
+      "country": "Morocco",
+      "area": "Casablanca",
+      "transit": "Casablanca has four tram lines and two busway lines on dedicated lanes.",
+      "tickets": null,
+      "contactless": null,
+      "contactless_note": null,
+      "hours": null,
+      "taxi": "Petits taxis (red in Casablanca) do city trips only and may be shared by up to three passengers; grands taxis run fixed routes between nearby cities.",
+      "rides": null,
+      "airport": "Mohammed V Airport: the train station is reached from the arrivals hall, with ticket offices and machines; taxis run to Casablanca and other cities.",
+      "sources": [
+        "https://visitcasablanca.ma/en/mice-informations-pratiques/",
+        "https://www.onda.ma/en/Our-Airports/Casablanca-Mohammed-V-Airport/Access-Facilitations/Arrival"
+      ],
+      "checked": "2026-11-01",
+      "recheck": true,
+      "recheck_reason": "Ticket names, bank-card tapping and hours were not on the official pages read; the tram operator's site could not be read."
+    },
+    {
+      "iso2": "MX",
+      "country": "Mexico",
+      "area": "Mexico City",
+      "transit": "In Mexico City, the MI card (Tarjeta de Movilidad Integrada) is the way in on the Metro, Metrobús, Cablebús, Tren Ligero, trolleybuses, RTP buses and the El Insurgente train. Buy and top it up with cash at Metro ticket offices or Metrobús machines.",
+      "tickets": ["Tarjeta de Movilidad Integrada (MI)"],
+      "contactless": null,
+      "contactless_note": null,
+      "hours": null,
+      "taxi": "Only use street taxis in the current pink and white livery: the plate should start with A or B and match the number painted on the car, and the driver's ID should be on display. Radio taxis are safer.",
+      "rides": "available",
+      "airport": "AICM: buy official taxi tickets at the marked counters inside the terminals. Metrobús Line 4 runs from the terminals to the Historic Centre; Metro Line 5's Terminal Aérea station is by Terminal 1 (hard with heavy bags).",
+      "sources": [
+        "https://mexicocity.cdmx.gob.mx/e/getting-around/mexico-city-metro-card",
+        "https://mexicocity.cdmx.gob.mx/e/getting-around/taxis-taxi-apps/?lang=en",
+        "https://mexicocity.cdmx.gob.mx/venues/aeropuerto-internacional-de-la-ciudad-de-mexico-aicm/?lang=en"
+      ],
+      "checked": "2026-11-01",
+      "recheck": true,
+      "recheck_reason": "Bank-card tapping and service hours were not on the official pages read."
     },
     {
       "iso2": "MY",
@@ -390,7 +522,10 @@
       "taxi": null,
       "rides": null,
       "airport": null,
-      "sources": ["https://mrt.com.my/fare/tng_card.htm", "https://myrapid.com.my/change-myrapid-card-to-the-new-myrapid-tng-card-for-seamless-travel"],
+      "sources": [
+        "https://mrt.com.my/fare/tng_card.htm",
+        "https://myrapid.com.my/change-myrapid-card-to-the-new-myrapid-tng-card-for-seamless-travel"
+      ],
       "checked": "2026-11-01",
       "recheck": true,
       "recheck_reason": "The operator pages read are older; bank-card tapping, taxis and airport links were not on them."
@@ -450,6 +585,26 @@
       "recheck_reason": "Only Auckland was checked; taxis and airport links were not on the official page read."
     },
     {
+      "iso2": "PH",
+      "country": "Philippines",
+      "area": "Metro Manila",
+      "transit": "In Metro Manila, the beep stored-value card works at all LRT-1, LRT-2 and MRT-3 stations. On LRT-2, single journey tickets are sold at ticket machines and teller booths.",
+      "tickets": ["beep card", "Single Journey Ticket (LRT-2)"],
+      "contactless": null,
+      "contactless_note": null,
+      "hours": null,
+      "taxi": null,
+      "rides": "available",
+      "airport": "NAIA Terminal 3 has a central hub for metered taxis and app-based rides.",
+      "sources": [
+        "https://www.lrta.gov.ph/tickets-and-fares/",
+        "https://newnaia.com.ph/about-us/news/centralized-ride-hailing-and-taxi-hub-now-fully-operational-at-naia-t3"
+      ],
+      "checked": "2026-11-01",
+      "recheck": true,
+      "recheck_reason": "Bank-card tapping, hours and city taxis were not on the official pages read; the transport department's MRT-3 page could not be read."
+    },
+    {
       "iso2": "PT",
       "country": "Portugal",
       "area": "Lisbon",
@@ -491,18 +646,39 @@
       "iso2": "TH",
       "country": "Thailand",
       "area": "Bangkok",
-      "transit": "From 1 June 2026, Bangkok's MRT lines take contactless bank cards; one card works on all four MRT lines.",
-      "tickets": null,
+      "transit": "From 1 June 2026, Bangkok's MRT lines take contactless bank cards; one card works on all four MRT lines. The BTS Skytrain sells single journey cards and One-Day Passes at ticket offices and machines, and uses Rabbit stored-value cards.",
+      "tickets": ["Rabbit card", "BTS Single Journey Card", "BTS One-Day Pass"],
       "contactless": "yes",
       "contactless_note": "EMV contactless cards with the contactless symbol, Thai or foreign (Visa, Mastercard and others), pay the adult fare on the MRT.",
       "hours": null,
       "taxi": null,
       "rides": null,
       "airport": null,
-      "sources": ["https://www.mrta.co.th/en/news-release/33436", "https://metro.bemplc.co.th/EMV-Contactless-Terms?lang=en"],
+      "sources": [
+        "https://www.mrta.co.th/en/news-release/33436",
+        "https://metro.bemplc.co.th/EMV-Contactless-Terms?lang=en",
+        "https://www.bts.co.th/eng/library/system-tickets.html"
+      ],
       "checked": "2026-11-01",
       "recheck": true,
-      "recheck_reason": "Only the MRT was checked; the BTS Skytrain, taxis and airport links were not on the official pages read."
+      "recheck_reason": "Bank-card tapping on the BTS Skytrain, taxis and airport links were not on the official pages read."
+    },
+    {
+      "iso2": "TR",
+      "country": "Türkiye",
+      "area": "Istanbul",
+      "transit": "In Istanbul, Istanbulkart is the city's official smart card for public transport, run by the municipality; cards are issued at application centres and can be managed in the official app.",
+      "tickets": ["Istanbulkart"],
+      "contactless": null,
+      "contactless_note": null,
+      "hours": null,
+      "taxi": null,
+      "rides": null,
+      "airport": "Istanbul Airport: IETT H-line city buses run to Mahmutbey Metro, Mecidiyeköy, Halkalı and Hacıosman, and HAVAİST shuttles serve the city. Sabiha Gökçen: IETT buses run to Kadıköy, Taksim, 4. Levent Metro and Bostancı.",
+      "sources": ["https://www.istanbulkart.istanbul/", "https://iett.istanbul/icerik/Access-to-Airports"],
+      "checked": "2026-11-01",
+      "recheck": true,
+      "recheck_reason": "Bank-card tapping, which lines take Istanbulkart, hours and taxis were not on the official pages read; the metro operator's site could not be read."
     },
     {
       "iso2": "TW",
@@ -539,6 +715,23 @@
       "recheck_reason": "Only New York City was checked; taxi details were not on the official pages read."
     },
     {
+      "iso2": "VN",
+      "country": "Vietnam",
+      "area": "Ho Chi Minh City",
+      "transit": "In Ho Chi Minh City, Metro Line 1 runs from Ben Thanh Market to the Eastern Bus Terminal; buy tickets in the official metro app. City buses run 150+ routes; avoid the morning and evening rush hours.",
+      "tickets": null,
+      "contactless": null,
+      "contactless_note": null,
+      "hours": null,
+      "taxi": "Taxis are air-conditioned: use a trusted company and make sure the meter is on, or confirm the price in a ride app before you set off. On motorbike taxis, always wear a helmet.",
+      "rides": "available",
+      "airport": null,
+      "sources": ["https://visithcmc.vn/useful-information/"],
+      "checked": "2026-11-01",
+      "recheck": true,
+      "recheck_reason": "Ticket names, bank-card tapping and airport links were not on the official page read."
+    },
+    {
       "iso2": "ZA",
       "country": "South Africa",
       "area": "Gauteng",
@@ -556,15 +749,5 @@
       "recheck_reason": "Only the Gautrain was checked; city buses and taxis were not on the official page read."
     }
   ],
-  "not_covered": [
-    { "iso2": "BR", "country": "Brazil", "reason": "No official operator page could be read for this build." },
-    { "iso2": "CN", "country": "China", "reason": "No official operator page could be read for this build." },
-    { "iso2": "EG", "country": "Egypt", "reason": "No official operator page could be read for this build." },
-    { "iso2": "KR", "country": "South Korea", "reason": "No official operator page could be read for this build." },
-    { "iso2": "MA", "country": "Morocco", "reason": "No official operator page could be read for this build." },
-    { "iso2": "MX", "country": "Mexico", "reason": "No official operator page could be read for this build." },
-    { "iso2": "PH", "country": "Philippines", "reason": "No official operator page could be read for this build." },
-    { "iso2": "TR", "country": "Türkiye", "reason": "No official operator page could be read for this build." },
-    { "iso2": "VN", "country": "Vietnam", "reason": "No official operator page could be read for this build." }
-  ]
+  "not_covered": []
 }

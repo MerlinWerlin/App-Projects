@@ -28,6 +28,7 @@ import { readPersisted, setPersisted } from './persisted.ts';
 import { forgetStays } from './stay.ts';
 import { forgetRentals } from './rental.ts';
 import { forgetTripLostBags } from './lostbag.ts';
+import { dropLayoverOverrides, LAYOVER_OVERRIDE_KEY } from '../core/layovers.ts';
 
 const KEY = 'satchel.trips.v1';
 const UNREADABLE = `${KEY}.unreadable`;
@@ -163,7 +164,7 @@ export function TripsProvider({ children }: { children: ReactNode }) {
       deleteItem: async (tripId, itemId) => {
         const gone = latest.current.find((x) => x.id === tripId)?.items.find((i) => i.id === itemId);
         const ok = await commit((l) => removeItem(l, tripId, itemId));
-        if (ok && gone) cleanUpItem(gone, latest.current);
+        if (ok && gone) cleanUpItem(gone, latest.current, tripId);
         return ok;
       },
       addDemo: async () => {
@@ -188,6 +189,8 @@ function cleanUpTrip(id: string, trip: Trip | undefined, remaining: Trip[]): voi
     if (trip) forgetRentals(rentalKeysToDrop(trip.items, remaining));
     // T127: the trip's phone-only lost-bag records (and their photos) go with it.
     forgetTripLostBags(id);
+    // T134: each change's own layover limits on this trip go with it.
+    forgetLayoverOverrides(id);
     // Load the stored lists first so dropping one never overwrites the others with an empty store.
     readPersisted<PackStore>(PACKING_KEY, EMPTY_STORE)
       .then(() => setPersisted<PackStore>(PACKING_KEY, (s) => (s && typeof s === 'object' && !Array.isArray(s) ? dropList(s, id) : s), EMPTY_STORE))
@@ -197,8 +200,16 @@ function cleanUpTrip(id: string, trip: Trip | undefined, remaining: Trip[]): voi
   }
 }
 
+/** T134: drops stored own layover limits for a deleted trip (no ids) or deleted legs. Best effort, never throws. */
+function forgetLayoverOverrides(tripId: string, itemIds?: string[]): void {
+  readPersisted<unknown>(LAYOVER_OVERRIDE_KEY, NO_OVERRIDES)
+    .then(() => setPersisted<unknown>(LAYOVER_OVERRIDE_KEY, (old: unknown) => dropLayoverOverrides(old, tripId, itemIds), NO_OVERRIDES))
+    .catch(() => {});
+}
+const NO_OVERRIDES: unknown = [];
+
 /** A deleted booking's own files go with it; a file some other booking still lists is kept. Best effort. */
-function cleanUpItem(item: Item, remaining: Trip[]): void {
+function cleanUpItem(item: Item, remaining: Trip[], tripId: string = item.tripId): void {
   try {
     const still = new Set(remaining.flatMap(tripFiles));
     removeAppFiles(itemFiles(item).filter((u) => !still.has(u))).catch(() => {});
@@ -206,6 +217,8 @@ function cleanUpItem(item: Item, remaining: Trip[]): void {
     forgetStays(stayKeysToDrop([item], remaining));
     // T122: a car booking's rental checklist and pick-up photos go with it.
     forgetRentals(rentalKeysToDrop([item], remaining));
+    // T134: own layover limits of a change this booking was one leg of.
+    forgetLayoverOverrides(tripId, [item.id]);
   } catch {
     // never let clean-up break a delete
   }

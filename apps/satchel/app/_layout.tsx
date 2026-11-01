@@ -102,6 +102,7 @@ function Shell() {
           <Stack.Screen name="lostbag/index" options={{ ...header, title: t('lostbag.route') }} />
           <Stack.Screen name="lostbag/[tripId]" options={{ ...header, title: t('lostbag.route') }} />
           <Stack.Screen name="comehome/[tripId]" options={{ ...header, title: t('comehome.route') }} />
+          <Stack.Screen name="outfits/[tripId]" options={{ ...header, title: t('outfits.route') }} />
           <Stack.Screen name="units" options={{ ...header, title: t('units.route') }} />
           <Stack.Screen name="travels" options={{ ...header, title: t('travels.route') }} />
           <Stack.Screen name="passport" options={{ ...header, title: t('stamps.route') }} />

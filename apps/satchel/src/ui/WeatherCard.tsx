@@ -40,7 +40,7 @@ import { FadeInView, SectionCard, type IconName } from './hero.tsx';
 import { Chip } from './kit.tsx';
 import { useMinute } from './JetLagCard.tsx';
 
-const GROUP_ICON: Record<WeatherGroup, IconName> = {
+export const GROUP_ICON: Record<WeatherGroup, IconName> = {
   clear: 'sunny-outline',
   partly: 'partly-sunny-outline',
   cloudy: 'cloud-outline',

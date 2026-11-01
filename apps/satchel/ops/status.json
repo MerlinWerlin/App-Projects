@@ -1,16 +1,16 @@
 {
- "tests": 1488,
- "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
- "last_run": "2026-11-01 16:02",
- "stage": "owner-tested",
- "oversight_seen": 225,
- "headline": "Expanding: connections and layovers, Getting around guide for 31 countries, Heading home card, editable lost-bag rows",
- "next_for_owner": [
-  "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
-  "Open a trip with two flights close together for the connection card; trip screen > Getting around; Trips tab near a trip's end for the Heading home card.",
-  "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
-  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (CB-CE are new) by commenting on this page."
- ],
- "trial_kit": true,
- "next_stage": "release-prep"
+  "tests": 1533,
+  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
+  "last_run": "2026-11-01 16:54",
+  "stage": "owner-tested",
+  "oversight_seen": 226,
+  "headline": "Expanding: Trip gaps, Outfit planner, per-connection limits, Getting around in all 40 countries",
+  "next_for_owner": [
+    "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
+    "Open the demo trip and delete the Kyoto hotel to see the Trip gaps card; Packing > Plan outfits for the outfit planner; a connection card > Limits for this change.",
+    "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
+    "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (CF-CI are new) by commenting on this page."
+  ],
+  "trial_kit": true,
+  "next_stage": "release-prep"
 }

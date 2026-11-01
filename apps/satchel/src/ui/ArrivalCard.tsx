@@ -7,11 +7,11 @@
 // fade only (FadeInView), no springs. Missing data shows a plain line, never a blank or a guess.
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useMemo, type ReactNode } from 'react';
+import { useCallback, useMemo, type ReactNode } from 'react';
 import { Text, View } from 'react-native';
 import emergencyTable from '../content/emergency_numbers.json';
 import essentialsTable from '../content/country_essentials.json';
-import { ARRIVAL_DISMISS_KEY, arrivalForTrips, arrivalView, countryStrip, dismissArrival, homeCountryFor, type ArrivalTables, type ArrivalView, type StripCountry } from '../core/arrival.ts';
+import { ARRIVAL_DISMISS_KEY, arrivalForTrips, arrivalView, countryNameFrom, countryStrip, dismissArrival, focusCountry, homeCountryFor, type ArrivalTables, type ArrivalView, type StripCountry } from '../core/arrival.ts';
 import { lineLabelServices, type EmergencyTable, type NumberLine, type Service } from '../core/emergency.ts';
 import type { EssentialsTable } from '../core/essentials.ts';
 import { deviceZone, formatDay, zoneCity } from '../core/format.ts';
@@ -59,20 +59,40 @@ function useDismissed() {
   return { dismissed, loaded, dismiss: (tripId: string, iso2: string) => setDismissed((old: unknown) => dismissArrival(old, tripId, iso2)) };
 }
 
-/** Trip screen: the welcome card while a country is arriving, else just the countries strip (nothing on a home trip). */
-export function ArrivalCard({ trip }: { trip: Trip }) {
+/**
+ * Trip screen: the welcome card while a country is arriving, else just the countries strip (nothing on a home trip).
+ * T134 `focusIso2`: opened for one stop (a long layover's "Arrival card for <country>"): that country's card, closed
+ * with `onCloseFocus`.
+ */
+export function ArrivalCard({ trip, focusIso2, onCloseFocus }: { trip: Trip; focusIso2?: string | null; onCloseFocus?: () => void }) {
   const { homeIso } = useHomeCountry();
   const { dismissed, loaded, dismiss } = useDismissed();
   const now = useMinute();
   const view = useMemo(
-    () => (loaded ? arrivalView(trip, { now, homeIso2: homeIso, phoneZone: deviceZone(), dismissed, tables: TABLES }) : null),
-    [trip, now, homeIso, dismissed, loaded],
+    () => (loaded ? arrivalView(trip, { now, homeIso2: homeIso, phoneZone: deviceZone(), dismissed, tables: TABLES, focusIso2 }) : null),
+    [trip, now, homeIso, dismissed, loaded, focusIso2],
   );
   const strip = useMemo(() => countryStrip(trip, now, homeCountryFor(trip, homeIso), TABLES), [trip, now, homeIso]);
   const stay = useMemo(() => arrivalStay(trip, now), [trip, now]);
   if (!loaded) return null;
-  if (view) return <ArrivalHero view={view} stay={stay} onDismiss={() => dismiss(view.tripId, view.iso2)} />;
+  if (view) return <ArrivalHero view={view} stay={stay} onDismiss={() => (view.when === 'stop' ? onCloseFocus?.() : dismiss(view.tripId, view.iso2))} />;
   return strip.length ? <CountriesCard countries={strip} /> : null;
+}
+
+/**
+ * T134: the country a long layover's ideas can open the arrival card for (the change country, when it is a trip
+ * country other than home), with its name; null otherwise.
+ */
+export function useStopArrival(trip: Trip | undefined): (iso2: string | null) => { iso2: string; country: string } | null {
+  const { homeIso } = useHomeCountry();
+  return useCallback(
+    (iso2: string | null) => {
+      if (!trip || !iso2) return null;
+      const c = focusCountry(trip, iso2, homeCountryFor(trip, homeIso));
+      return c ? { iso2: c.iso2, country: countryNameFrom(TABLES, c.iso2) } : null;
+    },
+    [trip, homeIso],
+  );
 }
 
 /** Trips tab: the first trip (in list order) with a country arriving now and not hidden. */
@@ -130,7 +150,8 @@ function HeroButton({ label, hint, icon, onPress, a11yLabel }: { label: string; 
 function ArrivalHero({ view: v, stay, onDismiss }: { view: ArrivalView; stay: CurrentStay | null; onDismiss: () => void }) {
   const { t, theme, lang } = useApp();
   const router = useRouter();
-  const when = v.when === 'here' ? t('arrival.whenHere') : t('arrival.whenToday');
+  const when = v.when === 'here' ? t('arrival.whenHere') : v.when === 'stop' ? t('f103.arrival.whenStop') : t('arrival.whenToday');
+  const eyebrow = v.when === 'here' ? t('arrival.eyebrowHere', { trip: v.tripName }) : v.when === 'stop' ? t('f103.arrival.eyebrowStop', { trip: v.tripName }) : t('arrival.eyebrowToday', { trip: v.tripName });
   const services = (l: NumberLine) => lineLabelServices(l).map((s) => t(SERVICE[s])).join(', ');
   // T106: today is a public holiday in this country (today on its own calendar).
   const now = useMinute();
@@ -161,7 +182,7 @@ function ArrivalHero({ view: v, stay, onDismiss }: { view: ArrivalView; stay: Cu
               </Text>
             ) : null}
             <View style={{ flex: 1, gap: 2 }}>
-              <Text style={[typeScale.caption, { color: theme.heroMuted }]}>{v.when === 'here' ? t('arrival.eyebrowHere', { trip: v.tripName }) : t('arrival.eyebrowToday', { trip: v.tripName })}</Text>
+              <Text style={[typeScale.caption, { color: theme.heroMuted }]}>{eyebrow}</Text>
               <Text style={[typeScale.displayM, { color: theme.heroInk }]}>{t('arrival.title', { country: v.country })}</Text>
               <Text style={[typeScale.small, { color: theme.heroMuted }]}>{t('arrival.subtitle')}</Text>
             </View>
@@ -319,7 +340,11 @@ function ArrivalHero({ view: v, stay, onDismiss }: { view: ArrivalView; stay: Cu
           {v.countries.length > 1 ? <Strip countries={v.countries} onHero /> : null}
 
           <View style={{ flexDirection: 'row' }}>
-            <HeroButton label={t('arrival.dismiss', { country: v.country })} hint={t('arrival.dismissHint', { country: v.country })} icon="eye-off-outline" onPress={onDismiss} />
+            {v.when === 'stop' ? (
+              <HeroButton label={t('f103.arrival.close')} hint={t('f103.arrival.closeHint')} icon="close" onPress={onDismiss} />
+            ) : (
+              <HeroButton label={t('arrival.dismiss', { country: v.country })} hint={t('arrival.dismissHint', { country: v.country })} icon="eye-off-outline" onPress={onDismiss} />
+            )}
           </View>
         </View>
       </View>

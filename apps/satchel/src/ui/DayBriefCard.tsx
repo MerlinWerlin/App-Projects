@@ -31,6 +31,8 @@ import { LeaveHomeBriefRow } from './leavehome.tsx';
 import { ComeHomeBriefRow } from './comehome.tsx';
 import { GamesBriefRow } from './games.tsx';
 import { LayoverBriefRow } from './layovers.tsx';
+import { GapsBriefRow } from './gaps.tsx';
+import { OutfitBriefRow } from './outfits.tsx';
 
 export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[] }) {
   const { theme, t } = useApp();
@@ -125,6 +127,8 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
           </PressableScale>
         </>
       ) : null}
+      {/* T135: "No stay booked for tonight" (a night gap today, not dismissed); a tap adds a stay from tonight. */}
+      {b.tonight ? null : <GapsBriefRow trip={b.trip} today={b.today} />}
       {stay ? (
         <>
           <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.heroMuted, opacity: 0.6 }} />
@@ -137,14 +141,17 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
           <RentalBriefRow item={car} zone={b.zone} />
         </>
       ) : null}
+      {/* T136: "Today's outfit: Linen shirt, Shorts, Sandals" when one is planned for today. */}
+      <OutfitBriefRow trip={b.trip} today={b.today} />
       {/* T131: "Change at Singapore: 1 h 25 min, terminal 1 to 3" on the day of a change. */}
       <LayoverBriefRow trip={b.trip} zone={b.zone} today={b.today} now={now} />
       {/* T114: "Good time to call Mum until 21:00" (nothing with nobody saved). */}
       <CallHomeBriefRow trip={b.trip} />
       {/* T124: "Before you lock the door: today · 3 of 12 left" on the day you leave. */}
       <LeaveHomeBriefRow trip={b.trip} now={now} />
-      {/* T128: "Before you head home: today · 3 of 6 left" on the last days, "Home again" the day after. */}
-      <ComeHomeBriefRow trip={b.trip} now={now} />
+      {/* T128: "Before you head home: today · 3 of 6 left" on the last days, "Home again" the day after. T134: not
+          while the Trips tab's Heading home card shows this trip (same `trips`). */}
+      <ComeHomeBriefRow trip={b.trip} trips={trips} now={now} />
       {/* T125: "Games for the wait", mode from the next (or first) booking today. */}
       <GamesBriefRow trip={b.trip} kind={n?.item.kind ?? b.first?.kind} />
     </View>

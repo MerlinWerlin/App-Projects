@@ -1668,12 +1668,60 @@
     },
     {
       "id": "T134",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "follow-up"
       ],
       "title": "Run-103 follow-ups: Getting around for KR TR MX BR VN PH CN EG MA (official sources only) and the taxi/airport gaps on 27 re-check rows (Madrid row, Bangkok BTS); toll rows EG PE PA GT SA QA JO FJ NP need a browser-read of gob.pe / ositran / ena.com.pa / sis.gov.eg; drop Your day's coming-home row while the Heading home card shows; per-connection limit override; long-layover link to the arrival card; device checks: connection card, terminal fields, Getting around screen, Heading home card, lost-bag row edit with VoiceOver.",
+      "accept": "tests green; DECISIONS records sources",
+      "note": "Run 104: split. T134 (this task) = offline parts (Your day drops the coming-home row while the Heading home card shows; per-connection limit override; long-layover card links to the arrival card). T137 = online Getting around rows and gaps. Toll rows EG PE PA GT SA QA JO FJ NP stay flagged (official pages blocked for automated reading in runs 102-103). Device checks stay owner TestFlight items.",
+      "commit": "3e19a5e"
+    },
+    {
+      "id": "T135",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Trip gaps (owner-1031 D, deepen Trips): find holes and clashes in a trip offline: nights with no stay booked (between the first arrival and the last departure, on each night's local date), a change of city/country with no journey between them, overlapping stays, two journeys that overlap in time, a stay check-in after the next journey leaves, a journey arriving after its stay's check-out day, and a trip with no journey home. Pure TS core src/core/gaps.ts (each gap typed with dates/items, DST- and zone-safe on each item's own IANA zone, ignores cancelled/dismissed gaps) with tests; a Trip gaps card on the trip screen (count, each gap with a one-line reason and an 'Add a stay'/'Add a journey' button prefilled with the dates, a Dismiss that is kept per trip on the phone), a gaps row on the readiness check, and a Your day row when tonight has no stay.",
+      "accept": "gaps tests (zones, midnight, DST, single-day trips, open-ended items, dismissed gaps); every string in src/i18n/en/gaps.ts (prefix gaps.); tokens only; timed transitions, no springs; no new npm dependency",
+      "commit": "2631362"
+    },
+    {
+      "id": "T136",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Outfit planner (owner-1031 D, less bland, deepen Packing): plan what to wear each day of a trip from the trip's packing list clothes items (and own extra items), one outfit per day (optional second for evening), shown on day cards with the day's cached weather where available, original SVG garment icons (top, bottom, dress, layer, shoes, accessory) in light and dark; wear counts per item with 'never worn in your plan: leave it at home?' and 'worn 4+ days: pack a spare?' hints; laundry day marker resets counts; Today's outfit row on Your day. Pure TS core src/core/outfits.ts (category guess from item names with a tested word list, counts, laundry resets, trip date range on the trip's own zones) with tests; phone-only per trip storage, carried in .satchel as optional Trip.outfits with the every-field guard; entries from the packing list and the trip screen.",
+      "accept": "outfits tests; every string in src/i18n/en/outfits.ts (prefix outfits.); tokens only; original art only; timed transitions, no springs; no new npm dependency; every-field guard updated",
+      "commit": "30bea43"
+    },
+    {
+      "id": "T137",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "follow-up",
+        "content"
+      ],
+      "title": "Run-103 online follow-ups: Getting around rows for KR TR MX BR VN PH CN EG MA from official transport operator / government / national tourism board pages (https + ISO checked date, null for unknown, never fares or ride-app brands), and fill the taxi/airport gaps on the 27 re-check rows (Madrid row, Bangkok BTS); clear a re-check flag only with an official source.",
+      "accept": "getaround tests green; DECISIONS records each source",
+      "commit": "cb38752"
+    },
+    {
+      "id": "T138",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-104 follow-ups: move VoiceOver focus to the arrival card after the layover jump and drop the 8 pt wrapper gap; outfits scroll to today on open and Plan this trip again 'never copied' line names planned outfits; gaps: catch a same-country city change by name/zone when positions are missing (Tokyo->Kyoto stays); Getting around bank-card tapping for KR TR MX BR VN PH EG MA ES, Istanbul taxis/hours, Bangkok airport rail link (official sources only); device checks: Trip gaps card + prefilled Add a stay, per-connection limits, outfit planner icons light/dark, Today's outfit row.",
       "accept": "tests green; DECISIONS records sources"
     }
   ],

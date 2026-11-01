@@ -285,6 +285,19 @@ export function nextComeNudge(trips: readonly Trip[], now: number): { trip: Trip
   return best;
 }
 
+/**
+ * T134: the Your day coming-home row for `trip`: 'heading' (before you head home) or 'home' (Home again), or null.
+ * The heading row is left out while the Trips tab's Heading home card (nextComeNudge over the same `trips`) shows
+ * that same trip, so the one nudge is not said twice on one screen; it stays when the card shows another trip or
+ * nothing. The Home again row is never on the card, so it always stays.
+ */
+export function comeBriefRow(trip: Trip, trips: readonly Trip[], now: number): { kind: 'heading' | 'home'; due: ComeDue } | null {
+  const heading = comeNudge(trip, now);
+  if (heading) return nextComeNudge(trips, now)?.trip.id === trip.id ? null : { kind: 'heading', due: heading };
+  const back = homeAgainNudge(trip, now);
+  return back ? { kind: 'home', due: back } : null;
+}
+
 /** The "Home again" nudge: the day after you get back, while that list isn't finished. */
 export function homeAgainNudge(trip: Trip, now: number): ComeDue | null {
   const d = comeDue(trip, now);

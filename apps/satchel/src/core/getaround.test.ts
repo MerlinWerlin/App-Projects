@@ -61,8 +61,11 @@ test('findGetaround: case and spaces forgiven; unknown, empty and malformed code
 });
 
 test('notCoveredEntry: countries listed as not yet covered, never one that has a row', () => {
+  // T137 covered the last 9 backlog countries, so the bundled list is empty; check the lookup on a sample table too.
   const nc = TABLE.not_covered ?? [];
-  assert.ok(nc.length > 0);
+  const sample: GetaroundTable = { ...TABLE, not_covered: [{ iso2: 'AQ', country: 'Antarctica', reason: 'No official operator page could be read.' }] };
+  assert.equal(notCoveredEntry(sample, 'aq')?.country, 'Antarctica');
+  assert.equal(notCoveredEntry(sample, 'JP'), null);
   for (const e of nc) {
     assert.equal(notCoveredEntry(TABLE, e.iso2.toLowerCase())?.iso2, e.iso2);
     assert.equal(findGetaround(TABLE, e.iso2), null, `${e.iso2} is both covered and not covered`);
@@ -93,14 +96,19 @@ test('tripGetaroundCountries: trip order, home left out, uncovered countries ski
     item('flight', ['2026-12-08T09:00', 'Asia/Hong_Kong'], ['2026-12-08T20:00', 'Asia/Tokyo']),
     item('flight', ['2026-12-09T09:00', 'Asia/Tokyo'], ['2026-12-09T21:00', 'Australia/Sydney']),
   ]);
-  // Korea is listed as not yet covered, so it is skipped.
   assert.deepEqual(
     tripGetaroundCountries(t, 'AU', TABLE).map((r) => r.iso2),
-    ['JP', 'HK'],
+    ['JP', 'KR', 'HK'],
   );
   assert.deepEqual(
     tripGetaroundCountries(t, 'JP', TABLE).map((r) => r.iso2),
-    ['AU', 'HK'],
+    ['AU', 'KR', 'HK'],
+  );
+  // A country without a row (Korea left out here) is skipped.
+  const noKorea: GetaroundTable = { ...TABLE, countries: TABLE.countries.filter((r) => r.iso2 !== 'KR') };
+  assert.deepEqual(
+    tripGetaroundCountries(t, 'AU', noKorea).map((r) => r.iso2),
+    ['JP', 'HK'],
   );
   assert.deepEqual(tripGetaroundCountries(trip('Australia/Sydney', []), 'AU', TABLE), []);
   assert.deepEqual(tripGetaroundCountries(t, 'AU', table()), []);
@@ -160,7 +168,8 @@ test('searchGetaround: covered countries only, code then prefix then word then c
   assert.ok(searchGetaround(TABLE, 'kingdom').some((r) => r.iso2 === 'GB'));
   assert.ok(searchGetaround(TABLE, 'lisbon').some((r) => r.iso2 === 'PT'));
   assert.deepEqual(searchGetaround(TABLE, 'antarctica'), []);
-  assert.deepEqual(searchGetaround(TABLE, 'korea'), []);
+  assert.equal(searchGetaround(TABLE, 'korea')[0].iso2, 'KR');
+  assert.equal(searchGetaround(TABLE, 'shanghai')[0].iso2, 'CN');
   const all = searchGetaround(TABLE, '  ');
   assert.equal(all.length, TABLE.countries.length);
   assert.deepEqual(

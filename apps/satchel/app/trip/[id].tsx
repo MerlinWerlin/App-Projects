@@ -13,10 +13,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { overlapPartners, overlapTitles } from '../../src/core/clashes.ts';
 import { tripCover } from '../../src/core/covers.ts';
 import { deviceZone, formatDay, formatRange, todayIn } from '../../src/core/format.ts';
-import { ITEM_KINDS, type ItemKind, type Trip } from '../../src/core/model.ts';
+import { ITEM_KINDS, isTransport, type ItemKind, type Trip } from '../../src/core/model.ts';
 import { placesByName } from '../../src/core/places.ts';
 import { isMapCategory } from '../../src/core/poi.ts';
-import { groupByDay, nightsWithoutBed, overlaps, tripPhase, type Day } from '../../src/core/timeline.ts';
+import { groupByDay, overlaps, tripPhase, type Day } from '../../src/core/timeline.ts';
 import { connectionAfter, connectionDay, connections } from '../../src/core/layovers.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
@@ -39,11 +39,12 @@ import { TripGiftsSlot } from '../../src/ui/slots/TripGiftsSlot.tsx';
 import { PlannedIdeas } from '../../src/ui/ideas.tsx';
 import { SharePlan } from '../../src/ui/SharePlan.tsx';
 import { AddToCalendar } from '../../src/ui/AddToCalendar.tsx';
-import { ArrivalCard } from '../../src/ui/ArrivalCard.tsx';
+import { ArrivalCard, useStopArrival } from '../../src/ui/ArrivalCard.tsx';
 import { DriveSideBanner } from '../../src/ui/driving.tsx';
 import { LeaveHomeTripCard } from '../../src/ui/leavehome.tsx';
 import { GetaroundTripCard } from '../../src/ui/getaround.tsx';
 import { ComeHomeTripCard } from '../../src/ui/comehome.tsx';
+import { OutfitsTripCard } from '../../src/ui/outfits.tsx';
 import { InflightTripCard } from '../../src/ui/InflightCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
@@ -51,7 +52,8 @@ import { PlanAgainButton } from '../../src/ui/PlanAgainButton.tsx';
 import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
 import { HolidayBadge, HolidaysCard, useTripHolidays } from '../../src/ui/HolidaysCard.tsx';
 import { PlanDayButton } from '../../src/ui/PlanDayButton.tsx';
-import { ConnectionCard, useLayoverPrefs } from '../../src/ui/layovers.tsx';
+import { ConnectionCard, useLayoverOverrides, useLayoverPrefs } from '../../src/ui/layovers.tsx';
+import { TripGapsCard } from '../../src/ui/gaps.tsx';
 
 const DEMO_INTRO_KEY = 'satchel.demoIntro.done.v1';
 const NOT_DONE = false;
@@ -126,8 +128,9 @@ function TripPlaces({ trip }: { trip: Trip }) {
 
 export default function TripScreen() {
   // `day` (T71): open scrolled to that day's section, e.g. today from the "Your day" card on the Trips tab.
-  const { id, photosLeftOut, day: focusDay } = useLocalSearchParams<{ id: string; photosLeftOut?: string; day?: string }>();
-  const { t, theme, lang } = useApp();
+  // `arrival` (T134): open with that stop's arrival card (ISO country code) at the top, e.g. from a long layover.
+  const { id, photosLeftOut, day: focusDay, arrival: arrivalParam } = useLocalSearchParams<{ id: string; photosLeftOut?: string; day?: string; arrival?: string }>();
+  const { t, theme, lang, reduceMotion } = useApp();
   const { trips } = useTrips();
   const router = useRouter();
   const insets = useSafeAreaInsets();
@@ -137,7 +140,14 @@ export default function TripScreen() {
   const days = useMemo(() => (trip ? groupByDay(trip) : []), [trip]);
   // T131: changes between back-to-back journeys, shown as a card after the leg that lands (on its arrival day).
   const [layoverPrefs] = useLayoverPrefs();
-  const conns = useMemo(() => connections(trip?.items ?? [], layoverPrefs), [trip, layoverPrefs]);
+  // T134: a change's own limits (set on its card) decide its status.
+  const [layoverOwn] = useLayoverOverrides();
+  const conns = useMemo(() => connections(trip?.items ?? [], layoverPrefs, trip ? { tripId: trip.id, overrides: layoverOwn } : undefined), [trip, layoverPrefs, layoverOwn]);
+  // T134: the arrival card opened for one stop (a long layover's "Arrival card for <country>"), scrolled into view.
+  const stopArrival = useStopArrival(trip);
+  const [arrivalFocus, setArrivalFocus] = useState<string | null>(typeof arrivalParam === 'string' && arrivalParam ? arrivalParam : null);
+  const arrivalY = useRef<number | null>(null);
+  const arrivalPending = useRef(!!arrivalFocus);
   const cover = useMemo(() => (trip ? tripCover(trip) : null), [trip]);
   const accent = useMemo(() => (cover ? tripAccent(cover, theme) : null), [cover, theme]);
   // T106: public holidays at the trip's stops, for the day-header badges.
@@ -152,6 +162,22 @@ export default function TripScreen() {
     const id = setTimeout(() => listRef.current?.scrollToIndex({ index: focusIndex, animated: false, viewOffset: space.l }), 0);
     return () => clearTimeout(id);
   }, [focusIndex]);
+
+  const scrollToArrival = useCallback(() => {
+    if (arrivalY.current === null) {
+      arrivalPending.current = true;
+      return;
+    }
+    arrivalPending.current = false;
+    listRef.current?.scrollToOffset({ offset: Math.max(0, arrivalY.current), animated: !reduceMotion });
+  }, [reduceMotion]);
+  const openArrival = useCallback(
+    (iso2: string) => {
+      setArrivalFocus(iso2);
+      setTimeout(scrollToArrival, 0);
+    },
+    [scrollToArrival],
+  );
 
   const add = (kind: ItemKind, date: string) => {
     setAdding(null);
@@ -180,7 +206,7 @@ export default function TripScreen() {
   /** T131: the change after this leg, on the day the leg lands. */
   const connectionCard = (arriveId: string, date: string) => {
     const c = connectionAfter(conns, arriveId);
-    return c && trip && connectionDay(c) === date ? <ConnectionCard c={c} tripId={trip.id} /> : null;
+    return c && trip && connectionDay(c) === date ? <ConnectionCard c={c} tripId={trip.id} usual={layoverPrefs} arrival={stopArrival(c.country)} onArrival={openArrival} /> : null;
   };
 
   const renderDay = useCallback(
@@ -222,7 +248,7 @@ export default function TripScreen() {
       </Card>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [adding, lang, t, theme, router, partners, trip, holidays, accent, conns],
+    [adding, lang, t, theme, router, partners, trip, holidays, accent, conns, layoverPrefs, stopArrival, openArrival],
   );
 
   if (!trip) {
@@ -233,8 +259,8 @@ export default function TripScreen() {
     );
   }
 
-  const nights = nightsWithoutBed(trip);
-  const clashes = overlaps(trip.items);
+  // T135: nights with no stay and overlapping stays / journeys are in the Trip gaps card; other clashes stay here.
+  const clashes = overlaps(trip.items).filter(([a, b]) => !(a.kind === 'hotel' && b.kind === 'hotel') && !(isTransport(a.kind) && isTransport(b.kind)));
   const empty = trip.items.length === 0;
   const past = tripPhase(trip, todayIn(deviceZone())) === 'past';
   const leftOut = Math.max(0, Math.floor(Number(photosLeftOut) || 0));
@@ -289,7 +315,15 @@ export default function TripScreen() {
             />
             <Button label={t('paste.open')} hint={t('paste.openHint')} kind="quiet" icon="clipboard-outline" onPress={pasteBooking} />
             {/* T95: "Welcome to <country>" while a trip country is arriving, else the countries strip. */}
-            {past ? null : <ArrivalCard trip={trip} />}
+            {/* T134: also opened for one stop (arrivalFocus), past trips included; the list scrolls to it. */}
+            <View
+              onLayout={(e) => {
+                arrivalY.current = e.nativeEvent.layout.y;
+                if (arrivalPending.current) setTimeout(scrollToArrival, 0);
+              }}
+            >
+              {past && !arrivalFocus ? null : <ArrivalCard trip={trip} focusIso2={arrivalFocus} onCloseFocus={() => setArrivalFocus(null)} />}
+            </View>
             {/* T122: "Drive on the LEFT / RIGHT" for each country the trip has a car booking in. */}
             {past ? null : <DriveSideBanner trip={trip} />}
             {/* T132: getting around each covered trip country (transit cards, bank card, taxis, airport). */}
@@ -298,7 +332,11 @@ export default function TripScreen() {
             {past ? null : <LeaveHomeTripCard trip={trip} />}
             {/* T128: coming home, from three days before the final departure to the day after you're back. */}
             <ComeHomeTripCard trip={trip} />
+            {/* T136: what to wear each day, from the packing list's clothes. */}
+            {past ? null : <OutfitsTripCard trip={trip} />}
             <ReadinessCard trip={trip} />
+            {/* T135: holes and clashes in the plan (nights with no stay, missing journeys, overlaps, no way home). */}
+            {past ? null : <TripGapsCard trip={trip} />}
             {/* T93: the trip's to-do list (hidden once the trip has ended). */}
             <TripTodosSlot trip={trip} />
             {past ? null : <JetLagCard trip={trip} />}
@@ -316,7 +354,6 @@ export default function TripScreen() {
                 action={adding === FIRST ? kindChooser(trip.startDate) : <Button label={t('spec.timeline.addItem')} hint={t('spec.timeline.addItemHint')} onPress={() => setAdding(FIRST)} />}
               />
             ) : null}
-            {nights.length ? <Warning text={t('trip.warnNights', { n: nights.length, days: nights.map((d) => formatDay(d, lang)).join(', ') })} /> : null}
             {clashes.map(([a, b]) => (
               <Warning key={`${a.id}-${b.id}`} text={t('trip.warnClash', { a: a.title, b: b.title })} />
             ))}

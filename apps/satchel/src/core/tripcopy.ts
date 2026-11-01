@@ -24,9 +24,14 @@
 // T130: the Coming home lists can come along the same way (CopyOptions.comingHome, off by default): both lists' rows
 // as the traveller left them (own rows, renamed template rows; removed template rows stay removed), every tick
 // cleared, new ids; the trip rating never comes (it is how the old trip went).
+//
+// T136: the outfit plan itself never comes (its days and laundry marks belong to the old dates). With the packing part
+// the undated wardrobe comes along: the traveller's own extra pieces (new ids, their category choices follow them) and
+// the category choices for packing pieces (keyed by name), so the new planner starts with the same clothes, no days.
 import type { Budget, Companion, Item, LocalDate, Place, SavedPlace, Stamp, Trip } from './model.ts';
 import type { AirportInfo } from './leaveby.ts';
 import type { LegInfo } from './layovers.ts';
+import { readOutfits, type OutfitDay, type OutfitExtra, type TripOutfits } from './outfits.ts';
 import type { Idea } from './ideas.ts';
 import type { Todo } from './todos.ts';
 import type { PackItem, PackList } from './packing.ts';
@@ -82,6 +87,8 @@ export const TRIP_RULES: Rules<Trip> = {
   // T128: the coming-home ticks and rating belong to the old trip: never copied as they are. T130: with the comingHome
   // option a fresh copy of the rows comes instead, by COMING_HOME_RULES (ticks cleared, no rating).
   comingHome: 'drop',
+  // T136: the days planned belong to the old dates; with the packing part the undated wardrobe comes (OUTFITS_RULES).
+  outfits: { part: 'packing' },
 };
 
 /** Item.attachments is required by the model, so 'drop' leaves it an empty list. */
@@ -152,6 +159,12 @@ export const SITTER_TASK_RULES: Rules<SitterTask> = { id: 'new', when: 'undated'
 export const COMING_HOME_RULES: Rules<ComingHome> = { rows: 'keep', rating: 'drop', updatedAt: 'new' };
 /** Both lists' rows as the traveller left them (own rows, renamed template rows, removed ones stay removed); ticks clear. */
 export const COME_ROW_RULES: Rules<ComeRow> = { id: 'new', list: 'keep', tpl: 'keep', label: 'keep', done: 'clear' };
+/** T136 outfit plan (with the packing part): own pieces and category choices come; planned days never do. */
+export const OUTFITS_RULES: Rules<TripOutfits> = { extras: 'keep', cats: 'keep', days: 'drop', updatedAt: 'new' };
+/** Own pieces get new ids; a category choice for one follows its new id (packing pieces are keyed by name). */
+export const OUTFIT_EXTRA_RULES: Rules<OutfitExtra> = { id: 'new', label: 'keep', cat: 'keep' };
+/** Every field of a planned day is tied to its date: none comes along. */
+export const OUTFIT_DAY_RULES: Rules<OutfitDay> = { date: 'drop', day: 'drop', evening: 'drop', laundry: 'drop' };
 export const BUDGET_RULES: Rules<Budget> = { currency: 'keep', amount: 'keep' };
 export const PACK_LIST_RULES: Rules<PackList> = {
   tripId: 'new',
@@ -379,6 +392,31 @@ export function copyComingHome(trip: Trip, newId: (prefix: string) => string, no
   return { rows, updatedAt: now };
 }
 
+/** T136: the copy's wardrobe (read through readOutfits, so broken rows and unknown fields never come); no days. */
+export function copyOutfits(trip: Trip, newId: (prefix: string) => string, now: string): TripOutfits | undefined {
+  const o = readOutfits(trip);
+  if (!o) return undefined;
+  const out = kept(o, OUTFITS_RULES);
+  const ids = new Map<string, string>();
+  if (out.extras) out.extras = out.extras.map((x) => {
+    const id = newId('of');
+    ids.set(x.id, id);
+    return { ...kept(x, OUTFIT_EXTRA_RULES), id } as OutfitExtra;
+  });
+  if (out.cats) {
+    const cats: Record<string, OutfitExtra['cat']> = {};
+    for (const [k, c] of Object.entries(out.cats)) {
+      const key = k.startsWith('p:') ? k : ids.get(k);
+      if (key) cats[key] = c;
+    }
+    out.cats = cats;
+  }
+  if (!out.extras?.length) delete out.extras;
+  if (out.cats && !Object.keys(out.cats).length) delete out.cats;
+  if (!out.extras && !out.cats) return undefined;
+  return { ...out, updatedAt: now };
+}
+
 function copyPacking(list: PackList, tripId: string, parts: CopyParts, newId: (prefix: string) => string): PackList | null {
   if (!parts.packing && !parts.bags) return null;
   const out = { ...kept(list, PACK_LIST_RULES), tripId, items: [] } as PackList;
@@ -446,6 +484,10 @@ export function copyTrip(trip: Trip, packing: PackList | null | undefined, opts:
   if (opts.comingHome === true) {
     const ch = copyComingHome(trip, newId, now);
     if (ch) out.comingHome = ch;
+  }
+  if (parts.packing) {
+    const o = copyOutfits(trip, newId, now);
+    if (o) out.outfits = o;
   }
   if (parts.budget && trip.budget) {
     const b = kept(trip.budget, BUDGET_RULES) as Budget;
