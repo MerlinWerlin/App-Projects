@@ -125,7 +125,13 @@ export function gcastError(e: unknown, phase: Phase): DriverError {
  * connection and the message gave no clue why). Kept short; empty reasons add nothing.
  */
 function withDetail(err: DriverError, detail: string): DriverError {
-  const d = detail.replace(/\s+/g, ' ').trim().slice(0, 140);
+  const d = detail
+    .replace(/\(at ExpoModulesCore[^)]*\)?/g, '')
+    .replace(/The operation couldn.t be completed\.\s*/g, '')
+    .replace(/Network\.NWError error /g, 'error ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 160);
   return d ? new DriverError(err.code, `${err.message} (${d})`) : err;
 }
 
