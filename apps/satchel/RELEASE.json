@@ -1,6 +1,6 @@
 {
   "mode": "update",
-  "note": "Satchel: sample travels to try the app, lift pins and bigger-text fixes, Open-in filter moved to a config plugin so updates publish again",
+  "note": "Satchel: sample trips no longer offer Plan this trip again, and removing the samples brings back Include demo trips",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }
