@@ -1,8 +1,11 @@
 {
   "app": "hollowhue",
   "stage": "build",
-  "headline": "Phase 1 built 1 Nov: four scenes (Bookshop Lane zooms 4 levels deep), tap-fill and freehand drawing.",
+  "headline": "Phase 1 merged 1 Nov (PR #181). Expo project linked, bundle id com.jared797.hollowhue registered and signing set up on Expo. Waiting only on the App Store Connect app record.",
   "next_for_owner": [
-    "Open the Hollowhue build in TestFlight on the iPad when Apple emails you and answer docs/TRIAL.md"
-  ]
+    "In App Store Connect: Apps > + > New App: iOS, name Hollowhue, primary language English (Australia), bundle ID com.jared797.hollowhue, SKU hollowhue, Full access. Then tell Claude the app's Apple ID number (App Information > Apple ID) and the first TestFlight build ships straight away.",
+    "Then open the build in TestFlight on the iPad and answer docs/TRIAL.md"
+  ],
+  "tests": 24,
+  "typecheck": "real tsc on GitHub: clean; expo-doctor 21/21; iOS + Android bundle OK"
 }
