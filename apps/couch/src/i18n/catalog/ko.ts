@@ -197,6 +197,9 @@ export const ko: Catalogue = {
   'core.driver.androidtv.noTyping': '이 TV에서는 아직 문자 입력을 사용할 수 없어요.',
   'core.driver.androidtv.noLink': '앱 링크가 지정되지 않았어요.',
   'core.driver.androidtv.codeFormat': '코드는 {length}자이며 0-9와 A-F로 이루어져 있어요.',
+  'core.driver.androidtv.identity': "이 휴대폰의 페어링 키를 설정하지 못했어요. 다시 시도해 주세요.",
+  'core.driver.castOnly.comingSoon': "Google TV 리모컨 기능은 다음 업데이트에서 제공돼요. 지금은 전송 탭에서 이 TV로 사진과 동영상을 보낼 수 있어요.",
+  'core.driver.castOnly.addAgain': "이 TV는 전송 전용으로 저장되어 있어요. 리모컨으로 쓰려면 다시 추가하고 TV에 표시된 코드를 입력하세요.",
   'core.driver.androidtv.codeMismatch': 'TV에 표시된 코드와 맞지 않아요. 확인하고 다시 시도하세요.',
 
   'core.driver.firetv.vegaOs': '이 Fire TV는 Vega OS를 사용해서 Couch로 아직 제어할 수 없어요.',
@@ -255,6 +258,7 @@ export const ko: Catalogue = {
   'core.addTv.pskRejected': '키가 맞지 않아요. TV의 사전 공유 키를 확인하세요.',
   'core.addTv.enterCode': 'TV에 표시된 코드를 입력하세요.',
   'core.addTv.enterPin': 'TV에 표시된 PIN을 입력하세요.',
+  'core.addTv.castOnlyIntro': "Google TV 리모컨 기능은 다음 업데이트에서 제공돼요. 지금은 이 TV로 사진과 동영상을 전송할 수 있어요.",
   'core.addTv.comingSoon': '{platform} TV 제어는 곧 지원돼요. TV를 찾았지만 아직 제어할 수 없어요.',
   'core.addTv.platformTv': '{platform} TV',
   'core.addTv.noAnswer': '이 주소에서 응답한 TV가 없어요. TV가 켜져 있고 같은 Wi-Fi에 있는지 확인하세요.',
@@ -518,6 +522,11 @@ export const ko: Catalogue = {
   'app.addTv.allowIfAsks': '{message}. TV에서 요청하면 TV 리모컨으로 허용을 선택하세요.',
   'app.addTv.save': '저장',
   'app.addTv.nowControlling': '이제 이 TV를 조작하고 있어요.',
+  'app.addTv.castOnlyUse': "사진과 동영상 전송에 사용",
+  'app.addTv.castOnlySaved': "전송 준비가 됐어요. Google TV 리모컨 기능은 다음 업데이트에서 제공돼요.",
+  'app.addTv.openCast': "전송으로 이동",
+  'app.addTv.atvStarting': "TV에 코드를 표시하도록 요청하는 중…",
+  'app.addTv.atvRetry': "코드 다시 표시",
   'app.addTv.useRemote': '리모컨 사용',
   'app.addTv.addAnother': '다른 TV 추가',
 
@@ -546,6 +555,7 @@ export const ko: Catalogue = {
   'app.remote.errorLabel': '{message} 탭하여 닫기.',
   'app.remote.sentRich': '{key} 전송됨',
   'app.remote.ms': '{ms} ms',
+  'app.remote.castOnlyOpen': "전송 열기",
   'app.remote.ready': '준비됨',
 
   // Apps tab (app/(tabs)/apps.tsx)
@@ -657,6 +667,7 @@ export const ko: Catalogue = {
   'app.settings.groupGeneral': "일반",
   'app.settings.groupHelp': "도움말",
   'app.tvs.add': "추가",
+  'app.tvs.detailCastOnly': "{detail} · {platform} · 전송 전용",
   'app.tvs.detailPlatform': "{detail} · {platform}",
   // T73 (run 42): editable app shortcuts (favourites)
   'app.apps.fav.title': "즐겨찾기",

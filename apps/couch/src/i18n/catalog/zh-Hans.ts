@@ -123,6 +123,7 @@ export const zhHans: Catalogue = {
   'core.addTv.pskRejected': '该密钥无效。请检查电视上的预共享密钥。',
   'core.addTv.enterCode': '请输入电视上显示的代码。',
   'core.addTv.enterPin': '请输入电视上显示的 PIN。',
+  'core.addTv.castOnlyIntro': "Google TV 的遥控功能将在下次更新中推出。现在已可用这台电视投放照片和视频。",
   'core.addTv.comingSoon': '{platform} 电视的控制功能即将推出。已找到该电视，但暂时无法控制。',
   'core.addTv.platformTv': '{platform} 电视',
   'core.addTv.noAnswer': '该地址没有电视响应。请确认电视已开机并连接同一 Wi-Fi。',
@@ -243,6 +244,9 @@ export const zhHans: Catalogue = {
   'core.driver.androidtv.noTyping': '这台电视暂不支持输入文字。',
   'core.driver.androidtv.noLink': '未提供应用链接。',
   'core.driver.androidtv.codeFormat': '代码为 {length} 个字符，由 0-9 和 A-F 组成。',
+  'core.driver.androidtv.identity': "无法设置这部手机的配对密钥。请重试。",
+  'core.driver.castOnly.comingSoon': "Google TV 的遥控功能将在下次更新中推出。现在可以在“投放”标签页把照片和视频投放到这台电视。",
+  'core.driver.castOnly.addAgain': "这台电视仅保存用于投放。若要用作遥控器，请重新添加并输入电视上显示的代码。",
   'core.driver.androidtv.codeMismatch': '该代码与电视上显示的不一致。请检查后重试。',
   'core.driver.firetv.vegaOs': '这台 Fire TV 运行的是 Vega OS，Couch 暂时无法控制。',
   'core.driver.firetv.noRemoteService':
@@ -502,6 +506,11 @@ export const zhHans: Catalogue = {
   'app.addTv.allowIfAsks': '{message}，如有提示：请用电视遥控器选择“允许”。',
   'app.addTv.save': '保存',
   'app.addTv.nowControlling': '现在正在控制这台电视。',
+  'app.addTv.castOnlyUse': "用于投放照片和视频",
+  'app.addTv.castOnlySaved': "已可投放。Google TV 的遥控功能将在下次更新中推出。",
+  'app.addTv.openCast': "前往投放",
+  'app.addTv.atvStarting': "正在请电视显示代码…",
+  'app.addTv.atvRetry': "再次显示代码",
   'app.addTv.useRemote': '使用遥控器',
   'app.addTv.addAnother': '添加另一台电视',
 
@@ -530,6 +539,7 @@ export const zhHans: Catalogue = {
   'app.remote.errorLabel': '{message} 轻点关闭。',
   'app.remote.sentRich': '已发送 {key}',
   'app.remote.ms': '{ms} 毫秒',
+  'app.remote.castOnlyOpen': "打开投放",
   'app.remote.ready': '就绪',
 
   // Apps tab (app/(tabs)/apps.tsx)
@@ -641,6 +651,7 @@ export const zhHans: Catalogue = {
   'app.settings.groupGeneral': "通用",
   'app.settings.groupHelp': "帮助",
   'app.tvs.add': "添加",
+  'app.tvs.detailCastOnly': "{detail} · {platform} · 仅投放",
   'app.tvs.detailPlatform': "{detail} · {platform}",
   // T73 (run 42): editable app shortcuts (favourites)
   'app.apps.fav.title': "收藏",

@@ -1,5 +1,6 @@
 import { t } from '../i18n/core';
 import type { DriverEvent, TvDriver } from './driver';
+import { isCastOnlyDriver } from './drivers/castOnly';
 import { keepAlivePing, withTimeout, type Ping } from './keepAlive';
 import type { ConnectionState } from './types';
 
@@ -160,8 +161,13 @@ export class Reconnector {
     };
   }
 
-  /** Point at a TV/driver (null to stop). Switching TVs cancels any pending run. */
-  setTarget(tvId: string | null, driver: TvDriver | null): void {
+  /**
+   * Point at a TV/driver (null to stop). Switching TVs cancels any pending run. A cast-only TV
+   * (src/core/drivers/castOnly.ts) has no link to keep: it is treated like no driver, so nothing
+   * ever retries it.
+   */
+  setTarget(tvId: string | null, target: TvDriver | null): void {
+    const driver = isCastOnlyDriver(target) ? null : target;
     if (driver === this.driver && tvId === this.tvId) return;
     this.cancel();
     this.unsubDriver?.();

@@ -10,13 +10,23 @@
  * Pair steps: Roku none; Samsung / LG 'prompt' (press Allow on the TV); Google TV a 6-character hex
  * code; Fire TV a 4-digit PIN; Sony Bravia a Pre-Shared Key the user sets on the TV ('psk', stored as Tv.token). Which platforms can be controlled depends on the transport: Roku needs
  * fetch, Samsung needs fetch + a WebSocket factory (the lan-wss native module, dev builds only), the
- * demo MockTv needs nothing. Everything else is found but shown as "coming soon". Tested end to end
- * against MockTv and fixtures, not real TVs.
+ * demo MockTv needs nothing, Google TV needs the Android TV Remote mutual-TLS socket (transport.androidTv,
+ * lan-wss LanAtv, iOS builds that include it). Everything else is found but shown as "coming soon".
+ *
+ * Google TV without that socket (Expo Go, older builds): the "coming soon" step offers "Use for
+ * casting photos and videos" (castOnlyOffered), which saves the TV with castOnly: true and no remote
+ * driver (CastOnlyDriver), so it shows in TVs and as a Google Cast target. With the socket, the pair
+ * step asks the TV to show its 6-character code (startAndroidTvPairing) and checks the typed code
+ * (submitAndroidTvCode); the paired driver is handed to finishAddTv. Tested end to end against MockTv
+ * and fixtures, not real TVs.
  */
 import { t } from '../i18n/core';
 import { withCopy } from '../i18n/lazyCopy';
+import { GOOGLE_CAST_ON } from './cast/googleCast/switch';
 import type { TvCandidate } from './discovery';
 import type { Transport, TvDriver } from './driver';
+import { AndroidTvDriver } from './drivers/androidtv/driver';
+import { CastOnlyDriver } from './drivers/castOnly';
 import { IrDriver } from './drivers/ir';
 import { MockTv, type MockTvOptions } from './drivers/mock';
 import { RokuDriver } from './drivers/roku';
@@ -24,6 +34,7 @@ import { SamsungDriver, type SamsungDriverOptions } from './drivers/samsung';
 import { SonyDriver, type SonyDriverOptions } from './drivers/sony';
 import { WebOsDriver, type WebOsDriverOptions } from './drivers/webos';
 import { codeSetFor } from './ir/codes';
+import { isRfc1918Host } from './lanHost';
 import { parseManualIp } from './probe';
 import type { RemoteSession } from './session';
 import type { SavedTvStore } from './store';
@@ -84,16 +95,20 @@ export function isCodeComplete(code: string, step: Extract<PairStep, { kind: 'co
 }
 
 /** Platforms that have a driver. Whether one can be used right now also depends on the transport. */
-export const SUPPORTED_PLATFORMS: ReadonlySet<Platform> = new Set<Platform>(['mock', 'roku', 'samsung', 'webos', 'sony']);
+export const SUPPORTED_PLATFORMS: ReadonlySet<Platform> = new Set<Platform>(['mock', 'roku', 'samsung', 'webos', 'sony', 'androidtv']);
 
 /** Which transport adapters are present (what the reducer needs to know; it never holds the adapters). */
 export interface TransportCaps {
   fetch: boolean;
   ws: boolean;
+  /** The Android TV Remote v2 mutual-TLS socket + client identity (transport.androidTv). Absent = no. */
+  androidTv?: boolean;
 }
 
 export function transportCaps(t: Transport): TransportCaps {
-  return { fetch: typeof t.fetch === 'function', ws: typeof t.ws === 'function' };
+  const caps: TransportCaps = { fetch: typeof t.fetch === 'function', ws: typeof t.ws === 'function' };
+  if (typeof t.androidTv?.tls === 'function' && typeof t.androidTv.identity === 'function') caps.androidTv = true;
+  return caps;
 }
 
 /** Caps assumed when none were given: fetch only (Expo Go, no native WebSocket module). */
@@ -105,7 +120,8 @@ function isCaps(t: Transport | TransportCaps): t is TransportCaps {
 
 /**
  * True when Couch can control this platform with the given transport: mock always, Roku with fetch,
- * Samsung with fetch + ws, LG webOS with ws, Sony with fetch. Without a transport, FETCH_ONLY_CAPS is assumed.
+ * Samsung with fetch + ws, LG webOS with ws, Sony with fetch, Google TV with the Android TV Remote
+ * native socket (caps.androidTv). Without a transport, FETCH_ONLY_CAPS is assumed.
  */
 export function isSupported(platform: Platform, transport: Transport | TransportCaps = FETCH_ONLY_CAPS): boolean {
   const caps = isCaps(transport) ? transport : transportCaps(transport);
@@ -120,6 +136,8 @@ export function isSupported(platform: Platform, transport: Transport | Transport
       return caps.ws;
     case 'sony':
       return caps.fetch;
+    case 'androidtv':
+      return caps.androidTv === true;
     default:
       return false;
   }
@@ -130,14 +148,29 @@ export function comingSoonMessage(platform: Platform): string {
 }
 
 /**
+ * Whether the "coming soon" step offers "Use for casting photos and videos": a real Google TV
+ * (not a demo candidate) on a literal RFC 1918 address (what Google Cast connects to), while the
+ * Google Cast switch is on.
+ */
+export function castOnlyOffered(c: AddCandidate): boolean {
+  return GOOGLE_CAST_ON && c.platform === 'androidtv' && c.pairAs === undefined && isRfc1918Host(c.host);
+}
+
+/** "Coming soon" text for the unsupported step; Google TV gets the cast-only explanation instead. */
+export function unsupportedMessage(c: AddCandidate): string {
+  return castOnlyOffered(c) ? t('core.addTv.castOnlyIntro') : comingSoonMessage(c.platform);
+}
+
+/**
  * Driver factory: 'mock' -> MockTv; 'roku' -> RokuDriver (needs transport.fetch); 'samsung' ->
  * SamsungDriver (needs transport.fetch and transport.ws); 'webos' -> WebOsDriver (needs transport.ws);
  * 'sony' -> SonyDriver (needs transport.fetch and the Pre-Shared Key saved as tv.token); 'ir' -> IrDriver from the saved irBrand/irSet
- * (needs transport.ir); anything else, or a missing adapter ->
- * null, which the UI shows as "coming soon". Never throws.
+ * (needs transport.ir); 'androidtv' -> AndroidTvDriver with transport.androidTv, else (or when the TV
+ * was saved castOnly) a CastOnlyDriver, so a Google TV always stays listed and castable; anything
+ * else, or a missing adapter -> null, which the UI shows as "coming soon". Never throws.
  */
 export function driverFor(
-  tv: Pick<Tv, 'platform' | 'host'> & Partial<Pick<Tv, 'token' | 'mac' | 'irBrand' | 'irSet'>>,
+  tv: Pick<Tv, 'platform' | 'host'> & Partial<Pick<Tv, 'token' | 'mac' | 'irBrand' | 'irSet' | 'castOnly'>>,
   transport: Transport,
   opts: { mock?: MockTvOptions } = {},
 ): TvDriver | null {
@@ -168,6 +201,13 @@ export function driverFor(
         const o: SonyDriverOptions = { host: tv.host, fetch: transport.fetch, psk: tv.token };
         if (tv.mac) o.mac = tv.mac;
         return new SonyDriver(o);
+      }
+      case 'androidtv': {
+        // Google TV: remote over Android TV Remote v2 when the native mutual-TLS socket exists.
+        // Saved for casting only, or no socket in this build: a cast-only driver (no controls).
+        const atv = transport.androidTv;
+        if (tv.castOnly === true || !atv) return new CastOnlyDriver({ platform: 'androidtv', remoteAvailable: !!atv });
+        return new AndroidTvDriver({ host: tv.host, tls: atv.tls, identity: atv.identity });
       }
       case 'ir': {
         // Rebuilt from the saved (irBrand, irSet); null without an emitter or when the set is gone.
@@ -244,7 +284,8 @@ export type AddTvState = AddTvBase &
     | { step: 'list' }
     | { step: 'manual'; ip: string; error: string | null; probing: boolean }
     | { step: 'ir' }
-    | { step: 'unsupported'; candidate: AddCandidate; message: string }
+    /** `castOnly`: offer "Use for casting photos and videos" (Google TV, see castOnlyOffered). */
+    | { step: 'unsupported'; candidate: AddCandidate; message: string; castOnly: boolean }
     | { step: 'pair'; candidate: AddCandidate; pair: PairStep; code: string; error: string | null }
     | {
       step: 'name';
@@ -255,6 +296,8 @@ export type AddTvState = AddTvBase &
       token?: string;
       error: string | null;
       saving: boolean;
+      /** Saving for casting only: no remote driver (Tv.castOnly). */
+      castOnly?: boolean;
     }
     | { step: 'saved'; tv: Tv }
   );
@@ -271,7 +314,11 @@ export type AddTvEvent =
   | { type: 'probeResult'; candidate: AddCandidate | null }
   | { type: 'pick'; host: string }
   | { type: 'codeChanged'; code: string }
+  /** Google TV pairing could not start or the TV refused the code: stay on the pair step with the error. */
+  | { type: 'pairFailed'; message: string }
   | { type: 'paired'; token?: string }
+  /** "Use for casting photos and videos" on the unsupported step (when it offers it). */
+  | { type: 'castOnly' }
   | { type: 'nameChanged'; name: string }
   | { type: 'roomChanged'; room: string }
   | { type: 'save' }
@@ -309,7 +356,7 @@ function addCandidate(list: AddCandidate[], c: AddCandidate): AddCandidate[] {
 
 function toPair(s: AddTvState, candidates: AddCandidate[], c: AddCandidate): AddTvState {
   if (!isSupported(c.platform, s.caps ?? FETCH_ONLY_CAPS))
-    return { ...base(s, candidates), step: 'unsupported', candidate: c, message: comingSoonMessage(c.platform) };
+    return { ...base(s, candidates), step: 'unsupported', candidate: c, message: unsupportedMessage(c), castOnly: castOnlyOffered(c) };
   return { ...base(s, candidates), step: 'pair', candidate: c, pair: candidatePairStep(c), code: '', error: null };
 }
 
@@ -372,6 +419,21 @@ export function addTvReducer(s: AddTvState, e: AddTvEvent): AddTvState {
       const c = s.candidates.find((x) => x.host === e.host);
       return c ? toPair(s, s.candidates, c) : s;
     }
+    case 'pairFailed':
+      return s.step === 'pair' ? { ...s, error: e.message } : s;
+    case 'castOnly':
+      if (s.step !== 'unsupported' || !s.castOnly) return s;
+      return {
+        ...base(s),
+        step: 'name',
+        candidate: s.candidate,
+        pair: { kind: 'none' },
+        name: nextTvName(s.taken ?? []),
+        room: '',
+        error: null,
+        saving: false,
+        castOnly: true,
+      };
     case 'codeChanged':
       if (s.step !== 'pair') return s;
       if (s.pair.kind === 'code') return { ...s, code: normalizeCode(e.code, s.pair), error: null };
@@ -418,6 +480,8 @@ export function addTvReducer(s: AddTvState, e: AddTvEvent): AddTvState {
           return { ...base(s), step: 'list' };
         case 'name':
           if (s.saving) return s;
+          // Cast-only: back to the "coming soon" step that offered it.
+          if (s.castOnly) return toPair(s, s.candidates, s.candidate);
           if (s.pair.kind === 'none') return { ...base(s), step: 'list' };
           // A typed Pre-Shared Key is kept so the user can correct it rather than retype it.
           return { ...base(s), step: 'pair', candidate: s.candidate, pair: s.pair, code: s.pair.kind === 'psk' ? (s.token ?? '') : '', error: null };
@@ -441,6 +505,7 @@ export function tvFromNameStep(s: Extract<AddTvState, { step: 'name' }>, now: nu
   const room = s.room.trim();
   if (room) tv.room = room;
   if (s.token) tv.token = s.token;
+  if (s.castOnly) tv.castOnly = true;
   return tv;
 }
 
@@ -452,6 +517,11 @@ export interface FinishDeps {
   mock?: MockTvOptions;
   /** How the TV joins the session; defaults to `session.add` (the app passes its addTv helper). */
   addToSession?: (session: RemoteSession, tv: Tv, driver: TvDriver) => void;
+  /**
+   * A driver already paired in the pair step (Google TV: the AndroidTvDriver that ran
+   * startPairing / submitCode). Used instead of building a new one when its platform matches.
+   */
+  driver?: TvDriver | null;
 }
 
 /**
@@ -462,7 +532,8 @@ export interface FinishDeps {
 export async function finishAddTv(s: Extract<AddTvState, { step: 'name' }>, deps: FinishDeps): Promise<AddTvEvent> {
   const now = deps.now ?? Date.now;
   const tv = tvFromNameStep(s, now());
-  const driver = driverFor(tv, deps.transport, deps.mock ? { mock: deps.mock } : {});
+  const paired = !tv.castOnly && deps.driver && deps.driver.platform === tv.platform ? deps.driver : null;
+  const driver = paired ?? driverFor(tv, deps.transport, deps.mock ? { mock: deps.mock } : {});
   if (!driver) return { type: 'saveFailed', message: comingSoonMessage(tv.platform) };
   try {
     await driver.connect();
@@ -491,6 +562,48 @@ export async function finishAddTv(s: Extract<AddTvState, { step: 'name' }>, deps
   if (deps.addToSession) deps.addToSession(deps.session, tv, driver);
   else deps.session.add(tv, driver);
   return { type: 'saved', tv };
+}
+
+// ---------------------------------------------------------------------------------------------
+// Google TV pairing (Android TV Remote v2, :6467): the pair step drives a real AndroidTvDriver.
+
+/**
+ * The driver to pair a found Google TV with, or null when this is not a real Google TV or the
+ * build has no Android TV Remote socket (then the TV is "coming soon" / cast-only anyway).
+ */
+export function androidTvPairingDriver(c: AddCandidate, transport: Transport): AndroidTvDriver | null {
+  if (c.platform !== 'androidtv' || c.pairAs !== undefined || !transport.androidTv) return null;
+  const d = driverFor({ platform: 'androidtv', host: c.host }, transport);
+  return d instanceof AndroidTvDriver ? d : null;
+}
+
+const errText = (e: unknown): string => (e instanceof Error ? e.message : String(e));
+
+/**
+ * Asks the TV to show its pairing code. Resolves null once the code is on screen, or the
+ * 'pairFailed' event to dispatch (TV unreachable, refused). Never throws.
+ */
+export async function startAndroidTvPairing(d: AndroidTvDriver): Promise<AddTvEvent | null> {
+  try {
+    await d.startPairing();
+    return null;
+  } catch (e) {
+    return { type: 'pairFailed', message: errText(e) };
+  }
+}
+
+/**
+ * Sends the typed code. Resolves 'paired' when the TV accepted it, else 'pairFailed' with the
+ * driver's translated message (a mistyped code keeps pairing open, so the user can retype).
+ * Never throws.
+ */
+export async function submitAndroidTvCode(d: AndroidTvDriver, code: string): Promise<AddTvEvent> {
+  try {
+    await d.submitCode(code);
+    return { type: 'paired' };
+  } catch (e) {
+    return { type: 'pairFailed', message: errText(e) };
+  }
 }
 
 // ---------------------------------------------------------------------------------------------

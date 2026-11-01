@@ -131,6 +131,11 @@ export const appEn = {
   'app.addTv.allowIfAsks': '{message} if it asks: use the TV remote to choose Allow.',
   'app.addTv.save': 'Save',
   'app.addTv.nowControlling': "It's now the TV you're controlling.",
+  'app.addTv.castOnlyUse': "Use for casting photos and videos",
+  'app.addTv.castOnlySaved': "Ready for casting. Remote control for Google TV is coming in the next update.",
+  'app.addTv.openCast': "Go to Cast",
+  'app.addTv.atvStarting': "Asking the TV to show a code…",
+  'app.addTv.atvRetry': "Show the code again",
   'app.addTv.useRemote': 'Use the remote',
   'app.addTv.addAnother': 'Add another TV',
 
@@ -159,6 +164,7 @@ export const appEn = {
   'app.remote.errorLabel': '{message} Tap to dismiss.',
   'app.remote.sentRich': 'sent {key}',
   'app.remote.ms': '{ms} ms',
+  'app.remote.castOnlyOpen': "Open Cast",
   'app.remote.ready': 'Ready',
 
   // Apps tab (app/(tabs)/apps.tsx)
@@ -215,6 +221,7 @@ export const appEn = {
   'app.settings.groupGeneral': "General",
   'app.settings.groupHelp': "Help",
   'app.tvs.add': "Add",
+  'app.tvs.detailCastOnly': "{detail} · {platform} · Casting only",
   'app.tvs.detailPlatform': "{detail} · {platform}",
   // T73 (run 42): editable app shortcuts (favourites)
   'app.apps.fav.title': "Favourites",

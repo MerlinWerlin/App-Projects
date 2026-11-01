@@ -9,7 +9,8 @@
  *   in remote_start and pings periodically (the client must echo val1 or the TV drops it).
  *
  * The TLS socket (with a client certificate and access to the TV's certificate) and the client
- * key/certificate generation are native and injected through TlsClientFactory / ClientIdentity.
+ * key/certificate generation are native and injected through TlsClientFactory / ClientIdentity
+ * (iOS: modules/lan-wss LanAtv.swift + src/native/androidTvTls.ts; the key stays in the Keychain).
  *
  * Written from public protocol knowledge (androidtvremote2, Apache-2.0; kud/androidtv-remote, MIT;
  * logic described, nothing copied). Tested only against reconstructed fixtures in
@@ -97,10 +98,16 @@ export interface ClientIdentity {
   publicKey: RsaPublicKey;
 }
 
+/**
+ * Where the client identity comes from: the identity itself, or a loader (the native Keychain
+ * identity is created on first use, asynchronously). A loader is called at most once per success.
+ */
+export type ClientIdentitySource = ClientIdentity | (() => Promise<ClientIdentity>);
+
 export interface AndroidTvDriverOptions {
   host: string;
   tls: TlsClientFactory;
-  identity: ClientIdentity;
+  identity: ClientIdentitySource;
   /** Client name shown on the TV while pairing. */
   clientName?: string;
   /** Overrides for the device_info sent in remote_configure. */
@@ -172,6 +179,9 @@ export class AndroidTvDriver implements TvDriver {
   private sock: TlsSocketLike | null = null;
   private connected = false;
 
+  // identity (resolved lazily when opts.identity is a loader)
+  private identity: ClientIdentity | null = null;
+
   constructor(opts: AndroidTvDriverOptions) {
     this.opts = opts;
     this.now = opts.now ?? Date.now;
@@ -181,6 +191,18 @@ export class AndroidTvDriver implements TvDriver {
 
   on(cb: (e: DriverEvent) => void): () => void {
     return this.events.on(cb);
+  }
+
+  /** The client identity, loading it on first use. Throws a translated DriverError when it cannot be made. */
+  private async clientIdentity(): Promise<ClientIdentity> {
+    if (this.identity) return this.identity;
+    const src = this.opts.identity;
+    try {
+      this.identity = typeof src === 'function' ? await src() : src;
+    } catch {
+      throw driverError('network', 'core.driver.androidtv.identity');
+    }
+    return this.identity;
   }
 
   private fail(e: unknown): never {
@@ -201,11 +223,12 @@ export class AndroidTvDriver implements TvDriver {
     this.pairInbox = [];
     this.pairClosed = false;
     try {
+      const identity = await this.clientIdentity();
       let sock: TlsSocketLike;
       try {
         sock = await this.opts.tls(this.opts.host, this.opts.pairingPort ?? ANDROIDTV_PAIRING_PORT, {
-          certPem: this.opts.identity.certPem,
-          keyPem: this.opts.identity.keyPem,
+          certPem: identity.certPem,
+          keyPem: identity.keyPem,
         });
       } catch {
         throw driverError('network', 'core.driver.androidtv.pairUnreachable', { port: '6467' });
@@ -267,7 +290,7 @@ export class AndroidTvDriver implements TvDriver {
       } catch {
         throw driverError('network', 'core.driver.androidtv.certificate');
       }
-      const secret = pairingSecret(this.opts.identity.publicKey, server, code); // throws on mismatch
+      const secret = pairingSecret((await this.clientIdentity()).publicKey, server, code); // throws on mismatch
       this.pairingState = 'verifying';
       try {
         await this.pairExchange(pairingSecretMessage(secret), 'secretAck');
@@ -381,11 +404,12 @@ export class AndroidTvDriver implements TvDriver {
     this.connected = false;
     closeQuietly(old);
 
+    const identity = await this.clientIdentity();
     let sock: TlsSocketLike;
     try {
       sock = await this.opts.tls(this.opts.host, this.opts.remotePort ?? ANDROIDTV_REMOTE_PORT, {
-        certPem: this.opts.identity.certPem,
-        keyPem: this.opts.identity.keyPem,
+        certPem: identity.certPem,
+        keyPem: identity.keyPem,
       });
     } catch (e) {
       if (e instanceof TlsAuthError || (e instanceof Error && e.name === 'TlsAuthError')) {

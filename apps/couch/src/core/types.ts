@@ -70,6 +70,11 @@ export interface Tv {
   /** Infrared TVs (platform 'ir'): the code set chosen in setup, as (brand, 1-based set) for codeSetFor(). */
   irBrand?: string;
   irSet?: number;
+  /**
+   * Saved for casting only ("Use for casting photos and videos", Google TV): no remote driver is
+   * connected for it (src/core/drivers/castOnly.ts); it is listed in TVs and offered as a Cast target.
+   */
+  castOnly?: boolean;
 }
 
 /** A TV input (HDMI 1, TV tuner, AV ...) as the TV reports it. */

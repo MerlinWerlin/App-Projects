@@ -5,6 +5,7 @@
 import { driverFor, isSupported } from '../src/core/addTv';
 import { createDemoSession } from '../src/core/demo';
 import type { FetchLike, WsFactory } from '../src/core/driver';
+import { isCastOnlyDriver } from '../src/core/drivers/castOnly';
 import { IrDriver } from '../src/core/drivers/ir';
 import { MockTv } from '../src/core/drivers/mock';
 import { RokuDriver } from '../src/core/drivers/roku';
@@ -42,10 +43,17 @@ describe('appTransport without the lan-wss module', () => {
 
   it('other platforms stay null (coming soon)', () => {
     const t = appTransport();
-    for (const platform of ['webos', 'androidtv', 'firetv', 'vizio', 'philips', 'ir'] as const) {
+    for (const platform of ['webos', 'firetv', 'vizio', 'philips', 'ir'] as const) {
       expect(driverFor({ platform, host }, t)).toBeNull();
       expect(isSupported(platform, t)).toBe(false);
     }
+  });
+
+  it('Google TV is cast-only: a driver without controls, not supported for the remote', () => {
+    const t = appTransport();
+    expect('androidTv' in t).toBe(false);
+    expect(isCastOnlyDriver(driverFor({ platform: 'androidtv', host }, t))).toBe(true);
+    expect(isSupported('androidtv', t)).toBe(false);
   });
 });
 

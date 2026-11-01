@@ -122,7 +122,11 @@ export default function TvsScreen() {
               <Row
                 key={tv.id}
                 title={inUse ? t('app.tvs.nameInUse', { name: tv.name }) : tv.name}
-                subtitle={t('app.tvs.detailPlatform', { detail, platform: PLATFORM_LABEL[tv.platform] })}
+                subtitle={
+                  tv.castOnly
+                    ? t('app.tvs.detailCastOnly', { detail, platform: PLATFORM_LABEL[tv.platform] })
+                    : t('app.tvs.detailPlatform', { detail, platform: PLATFORM_LABEL[tv.platform] })
+                }
                 icon={<RemoteIcon name="tv" size={20} color={p.tintInk} />}
                 iconBackground={p.tint}
                 accessory={inUse ? { type: 'check', checked: true } : { type: 'chevron' }}

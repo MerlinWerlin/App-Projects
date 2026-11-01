@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { Pressable, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { isCastOnlyDriver } from '../../src/core/drivers/castOnly';
 import type { Key } from '../../src/core/keys';
 import { oneHandedAlign } from '../../src/core/prefs';
 import { minKeyHeight, remoteContentWidth, rowOrStack } from '../../src/core/textScale';
@@ -91,6 +92,9 @@ export default function RemoteScreen() {
   const [last, setLast] = useState<string | null>(null);
   const [note, setNote] = useState<string | null>(null);
   const tv = session.activeTv();
+  // A Google TV saved for casting (or no Google TV remote in this build): say so, keys do nothing.
+  const activeDriver = session.activeDriver();
+  const castOnlyNote = isCastOnlyDriver(activeDriver) ? activeDriver.message() : null;
   // cast-1024: while a cast is on the TV, Play/Pause controls the cast (src/state/cast.tsx).
   const { handlesKey: castHandles, togglePlay: castTogglePlay } = useCastRouting();
   // Cinema glow colour (null = none). 'theme' (default) uses the remote theme's glow; Match TV uses
@@ -112,6 +116,8 @@ export default function RemoteScreen() {
         castTogglePlay();
         return;
       }
+      // Cast-only TV: the notice above the remote already explains; no toast per press.
+      if (castOnlyNote !== null) return;
       // Source opens the source picker (prototype v2); the sheet sends the input change itself.
       if (opensSourceSheet(key)) {
         setSrcOpen(true);
@@ -121,7 +127,7 @@ export default function RemoteScreen() {
       setNote(null);
       void session.sendKey(key);
     },
-    [session, castHandles, castTogglePlay],
+    [session, castHandles, castTogglePlay, castOnlyNote],
   );
 
   const onAction = (a: ActionId) => {
@@ -147,6 +153,23 @@ export default function RemoteScreen() {
         <RemoteCastPill />
         {/* Release standard 1: "Language: English · Change", first session only, in the flow above the remote. */}
         <LanguageHint ink={stage.ink} />
+
+        {castOnlyNote !== null ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={castOnlyNote}
+            accessibilityHint={t('app.remote.castOnlyOpen')}
+            onPress={() => router.navigate('/cast')}
+            style={[styles.error, styles.notice, { backgroundColor: theme.accentSoft }]}
+          >
+            <Text scaleRole="body" style={[styles.noticeText, { color: theme.ink }]}>
+              {castOnlyNote}
+            </Text>
+            <Text scaleRole="body" style={[styles.errorText, { color: theme.ink }]}>
+              {t('app.remote.castOnlyOpen')}
+            </Text>
+          </Pressable>
+        ) : null}
 
         {snap.lastError ? (
           <Pressable
@@ -322,4 +345,7 @@ const styles = StyleSheet.create({
   logText: { fontFamily: fonts.mono, fontSize: 11.5, flexShrink: 1 },
   error: { borderRadius: 12, paddingVertical: 10, paddingHorizontal: 12, minHeight: 44, justifyContent: 'center' },
   errorText: { fontFamily: fonts.textSemi, fontSize: 13.5 },
+  /** Cast-only Google TV notice: same card as the error, message then the "Open Cast" action. */
+  notice: { gap: 6 },
+  noticeText: { fontFamily: fonts.text, fontSize: 13.5 },
 });
