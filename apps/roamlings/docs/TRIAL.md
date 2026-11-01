@@ -9,4 +9,7 @@ First build (1 Nov 2026):
 3. After walking a bit and reopening the app, did the Steps and Spark numbers go up? (yes/no)
 4. Do Feed / Pet / Play change its mood and then wait before they can be used again? (yes/no)
 5. Does the Dex show grey "???" shapes for species you haven't found? (yes/no)
-6. Anything that felt confusing, ugly or slow? (free text)
+6. Did the three welcome cards show on first open, then ask to count your steps? (yes/no)
+7. Widget build only: long-press your home screen, add the Roamlings "Buddy" widget (small and medium). Does it show your pet and the egg meter? (yes/no)
+8. Widget build only: tap Feed or Pet on the medium widget. Does the pet look happier, and is the care counted when you open the app? (yes/no)
+9. Anything that felt confusing, ugly or slow? (free text)
