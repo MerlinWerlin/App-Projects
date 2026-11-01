@@ -9,6 +9,8 @@
 // twice by accident.
 // T112: Wi-Fi network / password lines in a hotel confirmation are shown on its card with a switch (on by default);
 // after Save in the booking form they fill that booking's empty Stay details fields (phone-only, never the booking).
+// T14: opened with ?incoming=<key> from Save to Satchel (an email or text file shared to Satchel), the box starts with
+// the text read from that file (src/state/openinStash.ts) and a note saying where it came from.
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
@@ -22,13 +24,14 @@ import type { Key } from '../src/i18n/en.ts';
 import { DEFAULT_DATE_ORDER, parseDateOrder, PASTE_DATE_ORDER_KEY, PASTE_SAVED_KEY, parseSavedPastes, pasteFingerprint, pasteSavedIn } from '../src/core/followups89.ts';
 import { readText } from '../src/native/clipboard.ts';
 import { useApp } from '../src/state/app.tsx';
+import { incomingText } from '../src/state/openinStash.ts';
 import { stashPastedDraft } from '../src/state/pasteDraft.ts';
 import { usePersisted } from '../src/state/persisted.ts';
 import { useTrips } from '../src/state/trips.tsx';
 import { elevated, fonts, radius, space, TOUCH, typeScale } from '../src/theme/tokens.ts';
 import { FadeInView, HeroHeader, IconBadge, SectionCard, toneColours } from '../src/ui/hero.tsx';
 import { KIND_ICON, KIND_TONE, kindKey } from '../src/ui/kinds.tsx';
-import { Body, Button, Chip, Label, ToggleRow } from '../src/ui/kit.tsx';
+import { Body, Button, Chip, Label, ToggleRow, Warning } from '../src/ui/kit.tsx';
 
 const NO_SAVED: unknown[] = [];
 const NUMERIC_DATE = /\b\d{1,2}[/.]\d{1,2}[/.]\d{2,4}\b/;
@@ -41,12 +44,13 @@ function fieldKey(f: PasteField, kind: ItemKind): Key {
 }
 
 export default function PasteBookingScreen() {
-  const params = useLocalSearchParams<{ tripId?: string }>();
+  const params = useLocalSearchParams<{ tripId?: string; incoming?: string }>();
   const { t, theme, lang } = useApp();
   const { trips } = useTrips();
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const [text, setText] = useState('');
+  const [shared] = useState(() => incomingText(params.incoming));
+  const [text, setText] = useState(shared ?? '');
   const [order, setOrder] = usePersisted<unknown>(PASTE_DATE_ORDER_KEY, DEFAULT_DATE_ORDER);
   const us = parseDateOrder(order) === 'monthFirst';
   const setUs = (v: boolean) => setOrder(v ? 'monthFirst' : 'dayFirst');
@@ -129,6 +133,8 @@ export default function PasteBookingScreen() {
           <Text style={[typeScale.small, { color: theme.heroInk, fontFamily: fonts.bodyBold }]}>{t('paste.privacy')}</Text>
         </View>
       </HeroHeader>
+
+      {shared ? <Warning text={t('openin.paste.banner')} /> : null}
 
       <SectionCard title={t('paste.input.title')} subtitle={t('paste.input.subtitle')} icon="clipboard-outline" tone="sea">
         <TextInput

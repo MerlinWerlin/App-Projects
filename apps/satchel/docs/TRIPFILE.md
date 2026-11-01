@@ -6,10 +6,12 @@
 - Export: trip screen, "Export trip". Writes `<trip name>.satchel` to the cache folder and opens the share sheet.
 - Import: Trips list, "Import a trip" (document picker, any file type). Every id is new, so importing twice gives
   two trips. All-or-nothing: a failed check or write leaves the phone unchanged.
-- **Import on open (not done yet).** Tapping a `.satchel` file in Files or Messages to open it in Satchel needs the
-  document type declared in app.json (iOS `CFBundleDocumentTypes` + an exported UTI such as `app.satchel.trip`
-  conforming to `public.json`; Android intent filter) and a handler for the incoming URL. That needs a dev build,
-  so it waits for the TRIAL milestone; until then the picker path is the way in.
+- **Import on open (T46, done in T14, 1 Nov).** app.json declares the exported UTI `app.satchel.trip` (conforms to
+  `public.json` and `public.data`, extension `satchel`) and a `CFBundleDocumentTypes` entry for it (rank Owner), plus
+  an Android VIEW intent filter. Tapping a `.satchel` file in Files, Mail or Messages (or Share > Satchel) opens
+  Satchel, which copies it in and imports it with the same all-or-nothing code as the picker
+  (`importTripText`, src/state/tripTransfer.ts), then opens the new trip. Needs a TestFlight build made from this
+  app.json; Expo Go and older builds keep the picker path. See docs/OPEN_IN.md.
 - **T45 (26 Oct):** an imported trip whose name matches a trip on the phone (trimmed, any case) is renamed
   `<name> (copy)`, then `(copy 2)`, ... (`uniqueTripName`, catalogue strings `tripfile.copyName[N]`). The packing
   list is saved with a checked write (`setPersistedChecked`); if that write fails the new trip is deleted again and

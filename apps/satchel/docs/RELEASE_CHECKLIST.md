@@ -40,19 +40,19 @@ Line-by-line pass against App-Projects `docs/RELEASE_STANDARD.md` (25 Oct 2026, 
 | An empty filtered list says why and offers a one-tap "Show all" | Map "Nearby" list: says all categories are hidden (or none in the ones that are on) and now has a "Show all categories" button | met (T39, this run) |
 
 ### 2. Purchases (expo-iap)
-Satchel Plus is not built yet (T16), so none of these can be met today; T16's acceptance now lists every line.
+Satchel Plus is built (T16, run 108; docs/PLUS.md). Still to prove on a real iPhone: step 19.
 | Standard line | Status |
 |---|---|
-| expo-iap pinned to an exact version | gap → T16 |
-| Request sends both key styles (`ios`/`android`/`apple`/`google`), `type: 'in-app'` | gap → T16 |
-| Result taken from both the return value and `purchaseUpdatedListener`; a listener error does not end the purchase while another shape is tried | gap → T16 |
-| After a failure or empty result, re-check `getAvailablePurchases()` for up to ~10 s | gap → T16 |
-| Failure alert says nothing was charged and shows the store's error code(s) in brackets | gap → T16 |
-| Restore purchases on the same screen as Unlock | gap → T16 (Unlock and Restore both in Settings > Satchel Plus) |
-| `finishTransaction({ isConsumable: false })` | gap → T16 |
+| expo-iap pinned to an exact version | met (T16): `"expo-iap": "6.2.0"` |
+| Request sends both key styles (`ios`/`android`/`apple`/`google`), `type: 'in-app'` | met (T16): src/plus/store.ts, tested |
+| Result taken from both the return value and `purchaseUpdatedListener`; a listener error does not end the purchase while another shape is tried | met (T16), tested |
+| After a failure or empty result, re-check `getAvailablePurchases()` for up to ~10 s | met (T16): 10 checks, 1 s apart |
+| Failure alert says nothing was charged and shows the store's error code(s) in brackets | met (T16): plus.failBody / plus.unavailableBody |
+| Restore purchases on the same screen as Unlock | met (T16): Settings > Satchel Plus |
+| `finishTransaction({ isConsumable: false })` | met (T16), tested |
 | Free trial = a free non-consumable "XX-day Trial" the person starts | not applicable: no trial planned (the free core is the trial) |
 | \* On TestFlight buy, (trial,) Restore on a real iPhone before submitting | yours, step 19 below |
-| Paywall promises only features in this build; no "test build" / "purchases aren't available" text in a store build | gap → T16 |
+| Paywall promises only features in this build; no "test build" / "purchases aren't available" text in a store build | met (T16): lists only extra offline cities; src/plus/entitlement.test.ts checks the wording |
 
 ### 3. App Store Connect
 | Standard line | Status |
@@ -103,7 +103,7 @@ These change `app.json`, so they wait for the next TestFlight build (an over-the
     - Type **Non-Consumable**, reference name "Satchel Plus", product id `com.jared797.satchel.plus`.
     - Price: pick the tier (about A$7.99).
     - Display name and description (for example "Satchel Plus: one-time upgrade").
-    - **Review screenshot:** a screenshot of the Satchel Plus purchase sheet from a TestFlight build (needs T16).
+    - **Review screenshot:** a screenshot of Settings > Satchel Plus from a TestFlight build (docs/PLUS.md).
     - Add it to the first app version when you submit (step 22).
 12. App Privacy: answer **"No, we do not collect data from this app"**, which shows **Data Not Collected**. (No analytics, no ads, no account, data stays on the phone. Apple Maps and Expo updates are platform/infrastructure calls that do not send user data; re-check if any SDK is added.)
 13. App Information: privacy policy URL (step 4); category Travel, secondary Productivity. Version page: support URL (step 4).

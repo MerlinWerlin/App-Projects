@@ -266,6 +266,12 @@ export const coverScrim = {
   dark: { from: 'rgba(4, 8, 20, 0)', mid: 'rgba(4, 8, 20, 0.55)', to: 'rgba(4, 8, 20, 0.86)' },
 } as const;
 
+/**
+ * T152 cover drawing helpers (both themes): the mask colours that cut the night crescent from the full moon (SVG masks
+ * read luminance: show = keep, hide = cut), and the hot white the sun / moon disc brightens towards at its centre.
+ */
+export const coverFx = { maskShow: '#FFFFFF', maskHide: '#000000', discCore: '#FFFFFF' } as const;
+
 // ---- T87 loyalty cards ----
 // Card paints the user picks from (src/core/loyalty.ts CARD_COLOURS). `ink` and `muted` text are AA (4.5:1) on every
 // fill in both themes (src/theme/cardPaints.test.ts); dark mode uses deeper fills so a card doesn't glare at night.

@@ -1,6 +1,6 @@
 {
-  "mode": "update",
-  "note": "Satchel: numbers and prices trainer, postcards, travelling with kids, follow-up fixes",
+  "mode": "build",
+  "note": "Satchel: Satchel Plus one-time purchase, Open in / Copy to Satchel for PDFs, photos, text and email, backup and restore, your own photo trip covers",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

@@ -156,12 +156,14 @@
     },
     {
       "id": "T12",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T11"
       ],
       "title": "Offline map (native, behind adapter): MapLibre with downloaded city PMTiles, dark style, GPS dot in flight mode (single fix / watch only while open), download manager with sizes, pre-flight reminder to download destination",
-      "accept": "Expo Go shows v0 map without crashing"
+      "accept": "Expo Go shows v0 map without crashing",
+      "note": "Run 108: superseded by T47 (react-native-maps LocalTile city packs, already in the TestFlight binary) + T52/T153 (release verification); no MapLibre module needed.",
+      "commit": "4399f77"
     },
     {
       "id": "T13",
@@ -174,12 +176,15 @@
     },
     {
       "id": "T14",
-      "status": "todo",
-      "deps": [
-        "T10"
+      "status": "done",
+      "deps": [],
+      "title": "Owner 1101s-4 'Save to Satchel': Open in / Copy to Satchel from the iOS share sheet for PDFs, images, plain text, .eml and .satchel files (CFBundleDocumentTypes + exported UTI app.satchel.trip, folds in T46), incoming-file handler routing text/.eml to the paste-booking parser, PDFs/images to 'Add to a trip' as a new booking with the attachment, .satchel to the import flow; never an unmatched-route screen. A true text share-extension target needs a package no App-Projects lockfile has yet: recorded as a later step.",
+      "accept": "tests for the incoming-file router (kind by extension/UTI, eml/text extraction, unknown file kept honest); app.json document types; strings in src/i18n/en/openin.ts (prefix openin.); Expo Go/older builds never crash on an incoming URL",
+      "tags": [
+        "owner-1101s",
+        "native"
       ],
-      "title": "Share extension 'Save to Satchel' (dev build) + core share.ts suggestion of trip/day; Expo Go fallback via document picker",
-      "accept": "tests green"
+      "commit": "41f98d6"
     },
     {
       "id": "T15",
@@ -195,24 +200,27 @@
     },
     {
       "id": "T16",
-      "status": "todo",
-      "deps": [
-        "T10"
-      ],
-      "title": "Satchel Plus: guarded expo-iap adapter (Linework pattern), one-time com.jared797.satchel.plus; gates only extra cities/regions, POI layers beyond the first city, iCloud sync, widgets, themes; entitlement test",
+      "status": "done",
+      "deps": [],
+      "title": "Owner 1101s-3 Satchel Plus one-time purchase: guarded expo-iap adapter (backspin/cue pattern, expo-iap 6.2.0 pinned exact), product com.jared797.satchel.plus; free core stays free (tickets, emergency card, documents, packing, low-battery mode, first offline city per trip, toilets); Plus = extra offline cities per trip beyond the first, cover art packs/own-photo covers stay free, themes/app icons if any; Unlock + Restore in Settings; entitlement test.  guarded expo-iap adapter (Linework pattern), one-time com.jared797.satchel.plus; gates only extra cities/regions, POI layers beyond the first city, iCloud sync, widgets, themes; entitlement test",
       "accept": "core never reads entitlement; release-std purchase rules: Restore purchases in Settings, never gates tickets/emergency card/documents/first offline city, every Plus feature unlocked while purchases are stubbed, price shown from the store, no countdowns, nags or repeated upsell prompts; release standard §2: expo-iap pinned exact; request sends ios/android/apple/google key styles with type in-app; result from return value and purchaseUpdatedListener (listener error does not end the attempt); on failure/empty re-check getAvailablePurchases for ~10 s; failure alert says nothing was charged and shows store error codes in brackets; Unlock and Restore on the same screen; finishTransaction isConsumable false; paywall promises only features in this build, no test-build text in a store build",
       "tags": [
-        "release-std"
-      ]
+        "owner-1101s",
+        "release-std",
+        "native"
+      ],
+      "commit": "11fe271"
     },
     {
       "id": "T17",
-      "status": "todo",
-      "deps": [
-        "T16"
+      "status": "done",
+      "deps": [],
+      "title": "Owner 1101s-5 Backup and restore so changing phones never loses trips: one versioned .satchelbackup file (all trips with items and attachments, emergency card, packing, every phone-only satchel.* store; documents vault only when 'Include documents' is switched on with a plain warning), saved through the share sheet to Files / iCloud Drive / AirDrop; Restore from Files with a preview (counts, date, app version) and Merge or Replace; Settings > Backup with last-backup date and a gentle reminder before a trip; CloudKit live sync stays a later native step (design note in docs/BACKUP.md).",
+      "accept": "round-trip tests (every store key back, attachments byte-identical, newer-format file refused honestly, merge keeps both sides by id); strings in src/i18n/en/backup.ts (prefix backup.); no new npm dependency",
+      "tags": [
+        "owner-1101s"
       ],
-      "title": "iCloud (CloudKit private DB) sync design + adapter; Apple Wallet .pkpass pass-through; Lock Screen/Home widget for next item (production-native)",
-      "accept": "design + adapters"
+      "commit": "9afe5e4"
     },
     {
       "id": "T18",
@@ -590,7 +598,7 @@
     },
     {
       "id": "T46",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T45"
       ],
@@ -599,7 +607,9 @@
         "native"
       ],
       "title": "Import on open (dev build): .satchel document type + exported UTI (app.satchel.trip, conforms to public.json) in app.json, Android intent filter, and an incoming-file handler that routes to the import flow without an unmatched-route screen (docs/TRIPFILE.md)",
-      "accept": "tests green; Expo Go keeps the Import a trip picker path and never crashes on an incoming URL"
+      "accept": "tests green; Expo Go keeps the Import a trip picker path and never crashes on an incoming URL",
+      "note": "Run 108: folded into T14 (owner-1101s-4).",
+      "commit": "41f98d6"
     },
     {
       "id": "T47",
@@ -1876,7 +1886,41 @@
       ],
       "title": "Run-107 follow-ups: Postcards row on Your day on a free afternoon and a 'Postcards' entry in Plan this trip again summary; Plan this trip again offers to copy the kids list (phone-only store) with names; check-out Calendar reminder via ics; Macau Traditional Chinese sign wording; Numbers trainer casual spoken forms (e.g. Chinese 块, Vietnamese ngàn) as optional second line; native-speaker check of kids.json, numbers rules, HK/TH/PT sign lines; device checks CR-CU.",
       "accept": "tests green; strings in a new followups107 file (prefix f107.); DECISIONS records sources"
+    },
+    {
+      "id": "T152",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1101s",
+        "covers"
+      ],
+      "title": "Owner 1101s-1 Trip covers: (a) own photo as a trip cover (expo-image-picker, already in the binary: pick, crop to the cover aspect, copy into the app's documents folder, shown in the trip hero and Trips list; Remove photo goes back to the illustrated cover; phone-only, Plan this trip again does not copy it); (b) illustrated raster cover art slot: src/content/coverArt manifest mapping each of the 8 scenes (+ night variants) to bundled optimised images in assets/covers/ when present, the auto-pick rules unchanged, SVG scenes only as fallback; (c) until the OpenAI art lands, redraw the SVG fallback scenes so they no longer look flat (layered depth, light, texture, sky gradients, day/night), tokens only; (d) docs/research/COVER_ART_REQUEST.md prompt pack for the Satchel OpenAI lanes (8+ scenes x day/night, size/format/budget, original art only, no landmarks copied from artworks, no brands).",
+      "accept": "covers tests (photo cover wins over scene, missing photo file falls back, manifest falls back to SVG when an image is absent); strings in src/i18n/en/covers2.ts (prefix cover2.); no new npm dependency; timed fade, no springs",
+      "commit": "711f9ee"
+    },
+    {
+      "id": "T153",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "owner-1101s",
+        "map"
+      ],
+      "title": "Owner 1101s-2 Map test path: check the app side against tools/maps output (catalog URL, asset names, sizes, tar layout); exact TestFlight test steps for the map in docs/TRIAL.md and on the board; keep the honest being-published state until satchel-maps-v1 exists (D211-2).",
+      "accept": "contract test app vs tools/maps; TRIAL steps"
+    },
+    {
+      "id": "T154",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "owner-1101s",
+        "follow-up"
+      ],
+      "title": "Run-108 follow-ups: own cover photos (documents/covers/) into the .satchelbackup with path rebasing; .satchelbackup document type so a backup opens straight into Satchel from Files (with T14's Open in router); trip export shared with UTI app.satchel.trip; clean the stale plus.* keys (iCloud/widgets/themes) out of docs/spec/STRINGS.json; import the OpenAI cover art (docs/research/COVER_ART_REQUEST.md) once it lands in _drops/art; device checks CV-CZ.",
+      "accept": "tests green; DECISIONS records"
     }
   ],
-  "priority_note": "owner-1031 (T47-T51) outranks everything else (docs/OWNER_1031.md). Owner: 'let's trial that for now'. Reach TRIAL fast; nothing native before the owner has tried the trial."
+  "priority_note": "owner-1101s (docs/OWNER_1101s.md: T152 covers, T153/T52 map, T16 Plus, T14 Save to Satchel, T17 backup) outranks everything; after these five, no new features: release prep only (screenshots, STORE.md, privacy, RELEASE_CHECKLIST). owner-1031 (T47-T51) done."
 }

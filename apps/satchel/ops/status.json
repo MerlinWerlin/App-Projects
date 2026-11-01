@@ -1,16 +1,17 @@
 {
- "tests": 1673,
- "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
- "last_run": "2026-11-01 19:56",
- "stage": "owner-tested",
- "oversight_seen": 227,
- "headline": "Expanding: Postcards, Numbers and prices trainer, Travelling with kids, check-out reminders",
- "next_for_owner": [
-  "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
-  "Open the demo trip: the new Postcards card and Travelling with kids page are on the trip screen; Phrases > Numbers and prices opens the trainer.",
-  "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
-  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (CR-CU are new) by commenting on this page."
- ],
- "trial_kit": true,
- "next_stage": "release-prep"
+  "tests": 1736,
+  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
+  "last_run": "2026-11-01 21:10",
+  "stage": "owner-tested",
+  "oversight_seen": 228,
+  "headline": "Owner brief 1 Nov: own-photo covers + redrawn art, Satchel Plus, Save to Satchel, Backup and restore (needs a new TestFlight build)",
+  "next_for_owner": [
+    "When a new Satchel build appears in TestFlight (build 4 or later, with the purchase, share-sheet and backup parts), tap Update and open it.",
+    "Try: Edit a trip > Choose a cover photo; Settings > Back up and restore; share a booking PDF from Mail to Satchel.",
+    "App Store Connect: create the non-consumable in-app purchase com.jared797.satchel.plus (steps in docs/PLUS.md) so Satchel Plus can show a price.",
+    "Map tab > Offline city maps: city downloads start once the App Factory runs the map publishing workflow (question CW has the exact test).",
+    "Answer the yes/no questions CV-CZ under 'New since your last test' in docs/TRIAL.md by commenting on this page."
+  ],
+  "trial_kit": true,
+  "next_stage": "release-prep"
 }

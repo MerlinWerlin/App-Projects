@@ -52,6 +52,7 @@ From `package.json` `dependencies`. All are open source; none is an analytics, a
 | react-native-safe-area-context | MIT |
 | react-native-screens | MIT |
 | react-native-svg | MIT |
+| expo-iap (Satchel Plus purchase, T16) | MIT |
 | @react-native-async-storage/async-storage | MIT |
 | @react-native-community/datetimepicker | MIT |
 
