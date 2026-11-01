@@ -1,0 +1,8 @@
+{
+  "app": "roamlings",
+  "stage": "build",
+  "headline": "Phase 1 started 1 Nov: hatch loop, growth, Dex and step counting written; waiting for the App Store Connect record before the first TestFlight build.",
+  "tests": 20,
+  "typecheck": "strict, offline stubs: clean",
+  "next_for_owner": ["Create the Roamlings app in App Store Connect (bundle id com.jared797.roamlings) and tell Claude its Apple ID number"]
+}

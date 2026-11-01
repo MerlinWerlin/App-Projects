@@ -1,0 +1,77 @@
+{
+  "expo": {
+    "name": "Roamlings",
+    "slug": "roamlings",
+    "scheme": "roamlings",
+    "version": "0.1.0",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jared797.roamlings",
+      "infoPlist": {
+        "NSMotionUsageDescription": "Roamlings counts your steps so walking earns Spark and eggs. Steps are read on your phone and never leave it.",
+        "CFBundleAllowMixedLocalizations": true
+      },
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "privacyManifests": {
+        "NSPrivacyTracking": false,
+        "NSPrivacyTrackingDomains": [],
+        "NSPrivacyCollectedDataTypes": [],
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+            "NSPrivacyAccessedAPITypeReasons": ["CA92.1"]
+          }
+        ]
+      }
+    },
+    "android": {
+      "package": "com.jared797.roamlings",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FBF7F0"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": ["android.permission.ACTIVITY_RECOGNITION"]
+    },
+    "plugins": [
+      "expo-router",
+      "expo-localization",
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "Roamlings counts your steps so walking earns Spark and eggs. Steps are read on your phone and never leave it."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#FBF7F0",
+          "dark": {
+            "image": "./assets/splash-icon.png",
+            "backgroundColor": "#16131C"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": false
+    },
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    },
+    "owner": "jared797"
+  }
+}

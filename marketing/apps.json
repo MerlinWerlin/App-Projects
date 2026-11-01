@@ -299,6 +299,49 @@
       ],
       "note": "Docs in apps/backspin/docs (PLAN.md, MARKET.md); store draft apps/backspin/store/listing.draft.json. Turn on by setting stage to prelaunch.",
       "accent": "#FF5A4E"
+    },
+    {
+      "slug": "roamlings",
+      "name": "Roamlings",
+      "storeName": "",
+      "tagline": "Walk, hatch and raise little pets",
+      "stage": "building",
+      "nameLocked": false,
+      "ascAppId": "",
+      "appStoreUrl": "",
+      "testflightUrl": "",
+      "playUrl": "",
+      "pinSource": {
+        "kind": "screenshots"
+      },
+      "boards": [
+        "Cute Fitness Motivation",
+        "Kawaii Creatures",
+        "Habit Tracker Ideas"
+      ],
+      "reddit": {
+        "queries": [
+          "walking pet app",
+          "virtual pet that grows when you walk",
+          "habit app with pets",
+          "step counter game for kids",
+          "focus timer pet"
+        ],
+        "subs": [
+          "iphone",
+          "apps",
+          "getdisciplined",
+          "walking"
+        ]
+      },
+      "avoid": [
+        "any competitor or franchise name",
+        "anything that suggests buying eggs or random rewards",
+        "claims about health outcomes",
+        "trading for money"
+      ],
+      "note": "Docs in apps/roamlings/docs (PLAN.md); concept https://claude.ai/artifact/RhrtGb8BAep9D3UCJGDnBa. Kids are a target audience: keep posts parent-friendly. Turn on by setting stage to prelaunch.",
+      "accent": "#6C5CE7"
     }
   ]
 }
