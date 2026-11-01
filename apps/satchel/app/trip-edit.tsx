@@ -3,7 +3,7 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { AccessibilityInfo, Alert } from 'react-native';
-import { autoCover, withCover } from '../src/core/covers.ts';
+import { autoCover, tripCover, withCover } from '../src/core/covers.ts';
 import { deviceZone, todayIn } from '../src/core/format.ts';
 import { newId } from '../src/core/model.ts';
 import { draftChanged, newTripDraft, tripFromDraft, validateTrip, type TripDraft, type TripError } from '../src/core/trips.ts';
@@ -13,6 +13,7 @@ import { DateField } from '../src/ui/DateTimeField.tsx';
 import { useDiscardConfirm } from '../src/ui/discardConfirm.ts';
 import { ErrorNotice } from '../src/ui/ErrorNotice.tsx';
 import { CoverPicker } from '../src/ui/TripCover.tsx';
+import { CoverPhotoSection } from '../src/ui/CoverPhotoSection.tsx';
 import { Body, Button, Screen, TextField } from '../src/ui/kit.tsx';
 import { ZoneField } from '../src/ui/ZonePicker.tsx';
 
@@ -88,6 +89,8 @@ export default function TripEditScreen() {
       <DateField label={t('pickers.trip.end')} typedLabel={t('tripEdit.end')} value={d.endDate} onChange={set('endDate')} hint={t('pickers.hint.tripEnd')} fallbackDay={d.startDate} minimumDay={d.startDate} error={err('endDate') ?? err('endBeforeStart')} />
       <ZoneField label={t('tripEdit.homeTz')} value={d.homeTz} onChange={set('homeTz')} hint={t('pickers.hint.homeZone')} error={err('homeTz')} suggestions={[deviceZone()]} chipLabel={(city) => t('itemEdit.useZone', { city })} />
       <Body muted>{t('spec.tripEdit.tzHint')}</Body>
+      {/* T152: the trip's own photo (phone-only, stored straight away; only for a saved trip). */}
+      <CoverPhotoSection tripId={prev ? prev.id : null} tripName={d.name || prev?.name || ''} scene={tripCover(draftTrip())} />
       <CoverPicker value={cover} auto={autoCover(draftTrip())} onChange={(v) => setCover(v ?? undefined)} />
       {saveFailed ? (
         <ErrorNotice title={t('error.trips.save.title')} body={t('error.trips.save.body')} action={t('common.tryAgain')} actionHint={t('error.saveRetryHint')} onAction={save} />

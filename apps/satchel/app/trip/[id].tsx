@@ -50,6 +50,7 @@ import { PostcardsTripCard } from '../../src/ui/postcards.tsx';
 import { KidsTripCard } from '../../src/ui/kids.tsx';
 import { InflightTripCard } from '../../src/ui/InflightCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
+import { useCoverPhoto } from '../../src/state/coverPhotos.ts';
 import { TripExport } from '../../src/ui/TripExport.tsx';
 import { PlanAgainButton } from '../../src/ui/PlanAgainButton.tsx';
 import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
@@ -160,6 +161,8 @@ export default function TripScreen() {
   // T138: the stop card's heading; VoiceOver focus moves there once the scroll has settled.
   const arrivalHeading = useRef<View | null>(null);
   const cover = useMemo(() => (trip ? tripCover(trip) : null), [trip]);
+  // T152: the trip's own cover photo (phone-only) wins over the illustration.
+  const coverPhoto = useCoverPhoto(trip?.id);
   const accent = useMemo(() => (cover ? tripAccent(cover, theme) : null), [cover, theme]);
   // T106: public holidays at the trip's stops, for the day-header badges.
   const holidays = useTripHolidays(trip);
@@ -303,7 +306,7 @@ export default function TripScreen() {
         ListHeaderComponent={
           <View style={{ gap: space.s, marginBottom: space.s }}>
             {/* T83: the trip's illustrated cover with its name and dates. */}
-            {cover ? <TripCoverHero scene={cover} title={trip.name} subtitle={formatRange(trip.startDate, trip.endDate, lang)} /> : null}
+            {cover ? <TripCoverHero scene={cover} photo={coverPhoto} title={trip.name} subtitle={formatRange(trip.startDate, trip.endDate, lang)} /> : null}
             {/* T113: "In the air" for this trip's flight (24 h before to 6 h after). */}
             {past ? null : <InflightTripCard trip={trip} />}
             {past ? (

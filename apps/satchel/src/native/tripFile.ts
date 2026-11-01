@@ -2,8 +2,8 @@
 // share sheet (AirDrop, Messages, Files), and picks a .satchel file to import. Built on the same Expo Go modules
 // as the rest of src/native (expo-file-system/legacy, expo-sharing, expo-document-picker). Nothing here throws to
 // the UI; every function returns a result with a reason instead.
-// "Open in Satchel" from Files or Messages needs the .satchel document type registered in a dev build; until then
-// importing goes through the picker (see docs/TRIPFILE.md).
+// "Open in Satchel" from Files or Messages (T14, docs/OPEN_IN.md) needs a build with the .satchel document type; the
+// picker below stays the way in on Expo Go and older builds.
 import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Sharing from 'expo-sharing';

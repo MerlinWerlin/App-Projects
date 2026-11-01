@@ -30,6 +30,7 @@ import { LeavingSoonBanner } from '../../src/ui/ReadinessCard.tsx';
 import { RecapHeroCard } from '../../src/ui/RecapHeroCard.tsx';
 import { TravelsCard } from '../../src/ui/TravelsCard.tsx';
 import { TripImport } from '../../src/ui/TripImport.tsx';
+import { BackupReminder } from '../../src/ui/BackupReminder.tsx';
 import { GamesEntryCard } from '../../src/ui/games.tsx';
 import { DRIVING_TABLE, driveSideA11y } from '../../src/ui/driving.tsx';
 import { leaveNudge } from '../../src/core/leavehome.ts';
@@ -136,6 +137,8 @@ export default function TripsScreen() {
           <WelcomeSlot />
           <BatteryBannerSlot />
           <LeavingSoonBanner trips={trips} />
+          {/* T17: one dismissable line when a trip starts within 7 days and there is no recent backup. */}
+          <BackupReminder trips={trips} />
           {/* T113: "In the air" while a flight is under way (24 h before, 6 h after). */}
           <InflightHomeCard trips={list} />
           {/* T71: "Your day" sits above the other cards, only while a trip is on today. */}

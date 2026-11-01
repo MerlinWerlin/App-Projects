@@ -147,7 +147,8 @@ export function splitWallet(entries: WalletEntry[], now: number): { upcoming: Wa
 }
 
 /** Folders under the documents directory that hold Satchel's own copies of files. */
-export const APP_FOLDERS: readonly string[] = ['attachments', 'vault'];
+// T152: covers/ holds the phone-only trip cover photos (src/core/covers2.ts).
+export const APP_FOLDERS: readonly string[] = ['attachments', 'vault', 'covers'];
 
 /**
  * iOS moves the app's container when the app is updated or restored, so a saved absolute file URI can go stale.

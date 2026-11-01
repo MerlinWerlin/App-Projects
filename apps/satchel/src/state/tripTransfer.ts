@@ -83,14 +83,22 @@ export type ImportDeps = {
 
 /** Picks a .satchel file and adds it as a new trip (all-or-nothing, packing list included). */
 export async function importTrip(deps: ImportDeps, onReading?: () => void): Promise<ImportResult> {
-  const { saveTrip, deleteTrip, existingNames, copyName } = deps;
   const picked = await pickTripFile();
   if (!picked.ok) {
     if (picked.reason === 'cancelled') return { ok: false, reason: 'cancelled' };
     return { ok: false, reason: picked.reason === 'unavailable' ? 'unavailable' : 'file' };
   }
   onReading?.();
-  const parsed = parseTripFileText(picked.text);
+  return importTripText(deps, picked.text);
+}
+
+/**
+ * Adds the trip in a .satchel file's text as a new trip (all-or-nothing). Used by the picker path above and by T14
+ * Open in (a .satchel file shared to Satchel from Files, Mail or Messages).
+ */
+export async function importTripText(deps: ImportDeps, text: string): Promise<ImportResult> {
+  const { saveTrip, deleteTrip, existingNames, copyName } = deps;
+  const parsed = parseTripFileText(text);
   if (!parsed.ok) return { ok: false, reason: failureFor(parsed.error) };
   const imp = importTripFile(parsed.file, newId);
   const written: Record<string, { uri: string; cropUri?: string }> = {};

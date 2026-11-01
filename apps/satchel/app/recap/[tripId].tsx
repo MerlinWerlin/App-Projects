@@ -27,6 +27,7 @@ import { IDEA_ICONS, IDEA_TONES } from '../../src/ui/ideas.tsx';
 import { MOOD_ICONS, moodKey, PhotoThumb } from '../../src/ui/journal.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen, ToggleRow } from '../../src/ui/kit.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
+import { useCoverPhoto } from '../../src/state/coverPhotos.ts';
 import { PlanAgainButton } from '../../src/ui/PlanAgainButton.tsx';
 import { RecapStamps } from '../../src/ui/PassportCard.tsx';
 import { countryName, displayCountryName, formatInt } from '../../src/ui/useTravelStats.ts';
@@ -90,6 +91,7 @@ function RecapView({ trip }: { trip: Trip }) {
   const today = recapToday(trip, realToday);
   const r = useMemo(() => tripRecap(trip, today, { countryName }), [trip, today]);
   const cover = useMemo(() => tripCover(trip), [trip]);
+  const coverPhoto = useCoverPhoto(trip.id);
   const range = formatRange(r.start, r.end, lang);
 
   const eyebrow = (
@@ -104,7 +106,7 @@ function RecapView({ trip }: { trip: Trip }) {
       <Stack.Screen options={{ title: t('recap.route') }} />
       <ScrollView style={{ flex: 1, backgroundColor: theme.paper }} contentContainerStyle={{ padding: space.l, paddingBottom: insets.bottom + space.xxl, gap: space.m }}>
         <FadeInView>
-          <TripCoverHero scene={cover} title={trip.name} subtitle={range}>
+          <TripCoverHero scene={cover} photo={coverPhoto} title={trip.name} subtitle={range}>
             {eyebrow}
           </TripCoverHero>
         </FadeInView>

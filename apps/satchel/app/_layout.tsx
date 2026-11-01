@@ -17,6 +17,10 @@ import { StartupMark } from '../src/ui/StartupMark.tsx';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
+// T14: a screen opened from outside (a file shared to Satchel, see app/+native-intent.tsx) sits on top of the tabs,
+// so its back button and "Back to Trips" always have somewhere to go.
+export const unstable_settings = { initialRouteName: '(tabs)' };
+
 export default function RootLayout() {
   return (
     <SafeAreaProvider>
@@ -89,6 +93,7 @@ function Shell() {
           <Stack.Screen name="idea-edit" options={{ ...header, presentation: 'modal', title: t('ideas.edit.newTitle') }} />
           <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
           <Stack.Screen name="licences" options={{ ...header, title: t('licences.title') }} />
+          <Stack.Screen name="backup" options={{ ...header, title: t('backup.route') }} />
           <Stack.Screen name="phrases" options={{ ...header, title: t('phrases.title') }} />
           <Stack.Screen name="menu" options={{ ...header, title: t('menu.title') }} />
           <Stack.Screen name="signs" options={{ ...header, title: t('signs.route') }} />
@@ -134,6 +139,9 @@ function Shell() {
           <Stack.Screen name="loyalty/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="loyalty-edit" options={{ ...header, presentation: 'modal', title: t('loyalty.edit.newTitle') }} />
           <Stack.Screen name="trip-again/[tripId]" options={{ ...header, title: t('tripcopy.route') }} />
+          <Stack.Screen name="openin/index" options={{ ...header, title: t('openin.route') }} />
+          <Stack.Screen name="openin/add" options={{ ...header, title: t('openin.add.route') }} />
+          <Stack.Screen name="+not-found" options={{ ...header, title: t('openin.notFound.route') }} />
           <Stack.Screen name="essentials" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'none' }} />
         </Stack>
       ) : null}

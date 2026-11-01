@@ -409,3 +409,11 @@ declare module 'expo-localization' {
   export type Locale = { languageTag: string; languageCode: string | null; regionCode: string | null; textDirection: 'ltr' | 'rtl' | null; currencyCode: string | null };
   export function getLocales(): Locale[];
 }
+
+// T14 Open in / Copy to Satchel: the expo-linking members app/+not-found.tsx uses (SDK 58 public API).
+declare module 'expo-linking' {
+  export function useLinkingURL(): string | null;
+  export function getLinkingURL(): string | null;
+  export function getInitialURL(): Promise<string | null>;
+  export function addEventListener(type: 'url', handler: (event: { url: string }) => void): { remove: () => void };
+}

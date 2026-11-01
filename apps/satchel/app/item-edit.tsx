@@ -7,6 +7,9 @@
 // T72: each place (hotel / activity / car hire, or a journey's from and to) can be put on the map (PositionField).
 // T77: opened with ?paste=<key> from Paste a booking, the form starts filled from the pasted draft (src/state/
 // pasteDraft.ts) with a note to check every field; nothing is saved until Save, and leaving asks first.
+// T14: opened with ?openin=<key> from Save to Satchel > Add to a trip, the form starts with the shared PDF or image
+// already in Attachments (src/state/openinStash.ts). It counts as a file added in this form: Save keeps it, leaving
+// without saving deletes the copy.
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo, View } from 'react-native';
@@ -29,6 +32,7 @@ import {
 } from '../src/core/trips.ts';
 import { checkWallTime, isLocalDateTime, isValidZone } from '../src/core/tz.ts';
 import { removeAppFiles } from '../src/native/files.ts';
+import { incomingFile } from '../src/state/openinStash.ts';
 import { markPasteSaved, pastedDraft } from '../src/state/pasteDraft.ts';
 import { isStay } from '../src/core/staydetails.ts';
 import { fillStayWifi } from '../src/state/stay.ts';
@@ -47,7 +51,7 @@ import { Body, Button, Chip, EmptyState, Label, Screen, TextField, Warning } fro
 import { ZoneField } from '../src/ui/ZonePicker.tsx';
 
 export default function ItemEditScreen() {
-  const params = useLocalSearchParams<{ tripId: string; id?: string; kind?: string; date?: string; paste?: string; until?: string; tz?: string }>();
+  const params = useLocalSearchParams<{ tripId: string; id?: string; kind?: string; date?: string; paste?: string; until?: string; tz?: string; openin?: string }>();
   const { t, theme, lang } = useApp();
   const { trips, saveItem } = useTrips();
   const router = useRouter();
@@ -70,13 +74,14 @@ export default function ItemEditScreen() {
   const [saving, setSaving] = useState(false);
   const [saveFailed, setSaveFailed] = useState(false);
   const [initialFiles] = useState<Attachment[]>(() => prev?.attachments ?? []);
-  const [files, setFiles] = useState<Attachment[]>(initialFiles);
+  const [shared] = useState<Attachment | undefined>(() => (prev ? undefined : incomingFile(params.openin)));
+  const [files, setFiles] = useState<Attachment[]>(() => (shared ? [...initialFiles, shared] : initialFiles));
   const airport = useAirportForm(prev, pasted?.airport);
   // T131: arrival / departure terminal and gate on a journey.
   const legInfo = useLegInfoForm(prev);
   const savedIds = useMemo(() => new Set(initialFiles.map((a) => a.id)), [initialFiles]);
   // Every file copied in by this form, and whether the booking was saved: on leaving unsaved, those copies go.
-  const addedFiles = useRef<Attachment[]>([]);
+  const addedFiles = useRef<Attachment[]>(shared ? [shared] : []);
   const committed = useRef(false);
   useEffect(
     () => () => {
@@ -161,6 +166,7 @@ export default function ItemEditScreen() {
     <Screen>
       <Stack.Screen options={{ title: t(formTitleKey(d.kind, !!prev)), gestureEnabled }} />
       {pasted ? <Warning text={t('paste.form.banner')} /> : null}
+      {shared ? <Warning text={t('openin.form.banner')} /> : null}
       <Label>{t('itemEdit.kind')}</Label>
       <View accessibilityRole="radiogroup" accessibilityLabel={t('itemEdit.kind')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
         {ITEM_KINDS.map((k) => (

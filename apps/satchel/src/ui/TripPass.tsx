@@ -17,6 +17,7 @@ import { elevated, radius, space, typeScale } from '../theme/tokens.ts';
 import { IconBadge, ProgressBar, SectionCard, toneColours, type Tone } from './hero.tsx';
 import { KIND_ICON, KIND_TONE, kindKey } from './kinds.tsx';
 import { TripCover } from './TripCover.tsx';
+import { useCoverPhoto } from '../state/coverPhotos.ts';
 import { DriveSidePill } from './driving.tsx';
 import type { LeaveDue } from '../core/leavehome.ts';
 import { LeaveHomePill } from './leavehome.tsx';
@@ -72,6 +73,8 @@ const PHASE_TONE: Record<Countdown['kind'], Tone> = { upcoming: 'sea', today: 'a
  */
 export const TripPass = memo(function TripPass({ trip, today, cover, driving, leaving, coming }: { trip: Trip; today: string; cover?: CoverId; driving?: readonly DrivingBanner[]; leaving?: LeaveDue | null; coming?: ComeDue | null }) {
   const { theme, t, lang } = useApp();
+  // T152: the trip's own cover photo (phone-only) wins over the illustration.
+  const photo = useCoverPhoto(cover ? trip.id : undefined);
   const c = countdown(trip, today);
   const route = tripRoute(trip);
   const tone = PHASE_TONE[c.kind];
@@ -90,7 +93,7 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
     >
       {cover ? (
         <View style={{ borderTopLeftRadius: radius.l, borderTopRightRadius: radius.l, overflow: 'hidden' }}>
-          <TripCover scene={cover} aspectRatio={3.4} rounded={0} label={null} />
+          <TripCover scene={cover} photo={photo} aspectRatio={3.4} rounded={0} label={null} />
         </View>
       ) : null}
       <View style={{ height: 6, backgroundColor: stripe, borderTopLeftRadius: cover ? 0 : radius.l, borderTopRightRadius: cover ? 0 : radius.l }} />

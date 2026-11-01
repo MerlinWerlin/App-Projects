@@ -17,7 +17,69 @@
         "NSFaceIDUsageDescription": "Satchel uses Face ID to lock your document vault (passport, visa and licence copies).",
         "NSContactsUsageDescription": "Satchel lets you pick emergency contacts for your emergency card. Only the contacts you pick are saved, on your phone.",
         "CFBundleAllowMixedLocalizations": true,
-        "NSCameraUsageDescription": "Satchel only uses the camera if you choose to photograph a ticket or booking. The photo is copied into Satchel and stays on your phone."
+        "NSCameraUsageDescription": "Satchel only uses the camera if you choose to photograph a ticket or booking. The photo is copied into Satchel and stays on your phone.",
+        "CFBundleDocumentTypes": [
+          {
+            "CFBundleTypeName": "Satchel trip",
+            "CFBundleTypeRole": "Editor",
+            "LSHandlerRank": "Owner",
+            "LSItemContentTypes": [
+              "app.satchel.trip"
+            ]
+          },
+          {
+            "CFBundleTypeName": "PDF document",
+            "CFBundleTypeRole": "Viewer",
+            "LSHandlerRank": "Alternate",
+            "LSItemContentTypes": [
+              "com.adobe.pdf"
+            ]
+          },
+          {
+            "CFBundleTypeName": "Image",
+            "CFBundleTypeRole": "Viewer",
+            "LSHandlerRank": "Alternate",
+            "LSItemContentTypes": [
+              "public.image"
+            ]
+          },
+          {
+            "CFBundleTypeName": "Plain text",
+            "CFBundleTypeRole": "Viewer",
+            "LSHandlerRank": "Alternate",
+            "LSItemContentTypes": [
+              "public.plain-text"
+            ]
+          },
+          {
+            "CFBundleTypeName": "Email message",
+            "CFBundleTypeRole": "Viewer",
+            "LSHandlerRank": "Alternate",
+            "LSItemContentTypes": [
+              "com.apple.mail.email",
+              "public.email-message"
+            ]
+          }
+        ],
+        "UTExportedTypeDeclarations": [
+          {
+            "UTTypeIdentifier": "app.satchel.trip",
+            "UTTypeDescription": "Satchel trip",
+            "UTTypeConformsTo": [
+              "public.json",
+              "public.data"
+            ],
+            "UTTypeTagSpecification": {
+              "public.filename-extension": [
+                "satchel"
+              ],
+              "public.mime-type": [
+                "application/vnd.satchel.trip+json"
+              ]
+            }
+          }
+        ],
+        "LSSupportsOpeningDocumentsInPlace": false
       },
       "config": {
         "usesNonExemptEncryption": false
@@ -66,6 +128,37 @@
       ],
       "blockedPermissions": [
         "android.permission.ACCESS_BACKGROUND_LOCATION"
+      ],
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "category": [
+            "DEFAULT"
+          ],
+          "data": [
+            {
+              "scheme": "content"
+            },
+            {
+              "scheme": "file"
+            },
+            {
+              "mimeType": "application/pdf"
+            },
+            {
+              "mimeType": "image/*"
+            },
+            {
+              "mimeType": "text/plain"
+            },
+            {
+              "mimeType": "message/rfc822"
+            },
+            {
+              "mimeType": "application/json"
+            }
+          ]
+        }
       ]
     },
     "plugins": [
