@@ -1,0 +1,24 @@
+{
+  "eyebrow": "GLAZE · ICON THEMES & WIDGETS",
+  "footer": "Glaze · themes, icons and widgets for iPhone",
+  "story_title": "Your Home Screen,\nbut make it you",
+  "cta_title": "One app.\nEvery mood.",
+  "cta_body": "Wallpapers, matching icons and widgets for iPhone. Start free, no weekly subscription.",
+  "cta_button": "Glaze on the App Store",
+  "hero": ["aurora-haven","boba-bear-club","nebula-veil","cloud-atelier","firefly-grove","moonmallow","neon-monsoon","jellylight","matcha-mews","desert-afterglow","cherry-ribbon","yuzu-soak"],
+  "trios": [
+    {"title": "Pick your vibe", "themes": ["boba-bear-club","aurora-haven","neon-monsoon"]},
+    {"title": "Three moods,\none app", "themes": ["matcha-mews","nebula-veil","desert-afterglow"]},
+    {"title": "Cosy season", "themes": ["moonmallow","firefly-grove","yuzu-soak"]}
+  ],
+  "carousels": {
+    "cute":   {"title": "Cute & cosy\nhome screens", "themes": ["boba-bear-club","matcha-mews","moonmallow","yuzu-soak","mochi-sleepover","froggy-picnic"]},
+    "dark":   {"title": "Dark & moody\nhome screens", "themes": ["neon-monsoon","crimson-reverie","midnight-conservatory","event-horizon","ember-workshop","rainlight"]},
+    "nature": {"title": "Nature\nhome screens", "themes": ["aurora-haven","firefly-grove","meadowglow","kingfisher-blue","desert-afterglow","lotus-drift"]},
+    "space":  {"title": "Space & night\nhome screens", "themes": ["nebula-veil","alpine-starlight","moonpatch","stellar-cradle","velvet-observatory","midnight-conservatory"]}
+  },
+  "reels": [
+    {"title": "One tap.\nA whole new look.", "themes": ["boba-bear-club","neon-monsoon","aurora-haven","matcha-mews","nebula-veil","moonmallow"]},
+    {"title": "Which one\nare you?", "themes": ["cloud-atelier","firefly-grove","jellylight","desert-afterglow","cherry-ribbon","yuzu-soak"]}
+  ]
+}
