@@ -120,3 +120,25 @@ export function loadLanTls(): TcpFactory | null {
 export function hasLanTls(): boolean {
   return loadModule() !== null;
 }
+
+/** Short connect timeout for the scan's Cast-port check (most hosts refuse at once; silent ones time out). */
+export const CAST_PORT_CHECK_TIMEOUT_MS = 1500;
+
+/**
+ * "Does host:port complete a TLS handshake?" for the Add TV scan (owner's TCL Google TV, 1 Nov 2026):
+ * opens and immediately closes a lan-wss TLS socket. Null when the native socket is not compiled in.
+ */
+export function loadTlsPortCheck(timeoutMs = CAST_PORT_CHECK_TIMEOUT_MS): ((host: string, port: number) => Promise<boolean>) | null {
+  const mod = loadModule();
+  if (!mod) return null;
+  const factory = lanTlsFromModule(mod, timeoutMs);
+  return async (host, port) => {
+    try {
+      const sock = await factory(host, port, { tls: true });
+      sock.close();
+      return true;
+    } catch {
+      return false;
+    }
+  };
+}

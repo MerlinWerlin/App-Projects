@@ -16,6 +16,11 @@ export const SONY_API_PORT = 80;
 export const CAST_SETUP_PORT = 8008;
 /** LG webOS SSAP plain WebSocket port; a plain HTTP GET there answers "Hello world". */
 export const WEBOS_PROBE_PORT = 3000;
+/** Google Cast (CASTV2) TLS port: open on every Chromecast built-in / Google TV, even when :8008 is shut. */
+export const CAST_TLS_PORT = 8009;
+
+/** True when a TLS connection to host:port completes (native socket; injected, absent in Expo Go/tests). */
+export type TlsPortCheck = (host: string, port: number) => Promise<boolean>;
 export const DEFAULT_PROBE_TIMEOUT_MS = 800;
 
 function toInt(ip: string): number | null {
@@ -249,7 +254,7 @@ const SONY_INTERFACE_INFO = JSON.stringify({ method: 'getInterfaceInformation', 
 export async function probeHost(
   fetch: FetchLike,
   host: string,
-  opts: { timeoutMs?: number } = {},
+  opts: { timeoutMs?: number; tlsCheck?: TlsPortCheck } = {},
 ): Promise<TvCandidate | null> {
   const timeoutMs = opts.timeoutMs ?? DEFAULT_PROBE_TIMEOUT_MS;
   const [roku, samsung, sony, cast, webos] = await Promise.all([
@@ -268,9 +273,17 @@ export async function probeHost(
   if (found) return found;
   // Google TV whose eureka_info is restricted: a host that answered on :8008 at all (even 403/404)
   // gets one more look at the DIAL device description. Hosts with :8008 closed cost nothing extra.
-  if (cast === null) return null;
-  const desc = await tryGet(fetch, `http://${host}:${CAST_SETUP_PORT}/ssdp/device-desc.xml`, timeoutMs);
-  return desc !== null ? parseCastDeviceDesc(desc, host) : null;
+  if (cast !== null) {
+    const desc = await tryGet(fetch, `http://${host}:${CAST_SETUP_PORT}/ssdp/device-desc.xml`, timeoutMs);
+    const viaDesc = desc !== null ? parseCastDeviceDesc(desc, host) : null;
+    if (viaDesc) return viaDesc;
+  }
+  // Newer Google TVs (e.g. TCL, owner 1 Nov 2026) close the plain-HTTP ports; the Cast TLS port stays
+  // open. Only builds with the native TLS socket can check it.
+  if (opts.tlsCheck && (await opts.tlsCheck(host, CAST_TLS_PORT).catch(() => false))) {
+    return { platform: 'androidtv', host, port: CAST_TLS_PORT, source: 'probe' };
+  }
+  return null;
 }
 
 export interface ProbeSubnetOptions {
@@ -279,6 +292,8 @@ export interface ProbeSubnetOptions {
   onFound?: (c: TvCandidate) => void;
   /** Checked between hosts; return true to stop early (sheet closed). */
   isCancelled?: () => boolean;
+  /** Google Cast TLS port check (native builds only); see probeHost. */
+  tlsCheck?: TlsPortCheck;
 }
 
 /** Probes hosts with a bounded worker pool. Results are returned in input order. */
@@ -296,8 +311,9 @@ export async function probeSubnet(
       const i = next++;
       const host = hosts[i];
       if (host === undefined) continue;
-      const opt: { timeoutMs?: number } = {};
+      const opt: { timeoutMs?: number; tlsCheck?: TlsPortCheck } = {};
       if (opts.timeoutMs !== undefined) opt.timeoutMs = opts.timeoutMs;
+      if (opts.tlsCheck) opt.tlsCheck = opts.tlsCheck;
       const c = await probeHost(fetch, host, opt);
       if (c) {
         results[i] = c;
