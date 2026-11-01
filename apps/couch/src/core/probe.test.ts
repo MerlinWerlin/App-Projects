@@ -142,6 +142,19 @@ describe('probeHost: brands found without multicast (owner feedback 1 Nov 2026)'
     expect(c).toMatchObject({ platform: 'androidtv', name: 'Smart TV Pro', usn: 'uuid:abcd' });
     expect(parseCastDeviceDesc('<root><device><manufacturer>ACME</manufacturer><modelName>NAS</modelName></device></root>', 'h')).toBeNull();
   });
+  it('finds a Google TV with every HTTP port shut through the Cast TLS port (native builds)', async () => {
+    const checked: string[] = [];
+    const tlsCheck = async (host: string, port: number) => {
+      checked.push(`${host}:${port}`);
+      return host === '192.168.1.64';
+    };
+    const c = await probeHost(fakeFetch({}), '192.168.1.64', { tlsCheck });
+    expect(c).toMatchObject({ platform: 'androidtv', host: '192.168.1.64', port: 8009 });
+    expect(await probeHost(fakeFetch({}), '192.168.1.65', { tlsCheck })).toBeNull();
+    expect(checked).toEqual(['192.168.1.64:8009', '192.168.1.65:8009']);
+    // A failing check never breaks the probe.
+    expect(await probeHost(fakeFetch({}), '192.168.1.66', { tlsCheck: async () => { throw new Error('boom'); } })).toBeNull();
+  });
   it('ignores look-alikes', () => {
     expect(parseSonyInterfaceInfo(JSON.stringify({ result: [{ productCategory: 'camera' }] }), 'h')).toBeNull();
     expect(parseSonyInterfaceInfo('<html></html>', 'h')).toBeNull();

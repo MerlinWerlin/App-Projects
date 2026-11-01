@@ -15,7 +15,7 @@ import {
   parseSsdpResponse,
 } from './discovery';
 import { resolvePhoneIp, type PhoneIpProvider } from './autoProbe';
-import { probeSubnet, subnetHosts } from './probe';
+import { probeSubnet, subnetHosts, type TlsPortCheck } from './probe';
 
 /** mDNS browser adapter. `browse` returns a stop function. */
 export interface MdnsLike {
@@ -36,6 +36,8 @@ export interface DiscoveryDeps {
    * every scan (see DiscoveryOptions.alwaysProbe), de-duplicated against SSDP / mDNS results.
    */
   phoneIp?: PhoneIpProvider | null;
+  /** Google Cast TLS port check for the subnet probe (native builds with the lan-wss TLS socket). */
+  tlsCheck?: TlsPortCheck | null;
   /** Injected timer for tests. */
   sleep?: (ms: number) => Promise<void>;
 }
@@ -163,6 +165,7 @@ export async function discoverTvs(deps: DiscoveryDeps, opts: DiscoveryOptions = 
       if (opts.probeConcurrency !== undefined) probeOpts.concurrency = opts.probeConcurrency;
       if (opts.probeTimeoutMs !== undefined) probeOpts.timeoutMs = opts.probeTimeoutMs;
       if (opts.isCancelled) probeOpts.isCancelled = opts.isCancelled;
+      if (deps.tlsCheck) probeOpts.tlsCheck = deps.tlsCheck;
       await probeSubnet(deps.fetch, hosts, probeOpts);
     }
   }
