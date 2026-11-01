@@ -40,7 +40,8 @@ enum NativeReviewCapture {
         var theme = WidgetTheme(); theme.themeId = id; theme.bg = [bg]; theme.surface = bg; theme.ink = ink; theme.accent = ink
         for (size, width, height) in sizes {
           guard let spec = LiveArtSpec.parse(composed[size]) else { throw NSError(domain: "GlazeReview", code: 3) }
-          let artwork = NativeClockArt(image: image, width: width, height: height)
+          let renderedArt = ClockArtRenderer.render(image:image,width:width,height:height,colour:bg)
+          let artwork = NativeClockArt(image: renderedArt, width: width, height: height)
           for fit in [false, true] {
           var hashes = Set<String>()
           for (hour, minute) in times {
@@ -86,8 +87,7 @@ struct NativeClockArt: View {
   let height: CGFloat
   var body: some View {
     ZStack {
-      Image(uiImage: image).resizable().scaledToFill().frame(width: width, height: height).blur(radius: min(width,height) * 0.12)
-      Image(uiImage: image).resizable().scaledToFit().frame(width: width, height: height)
+      Image(uiImage: image).resizable().frame(width: width, height: height)
     }.frame(width: width, height: height).clipped()
   }
 }

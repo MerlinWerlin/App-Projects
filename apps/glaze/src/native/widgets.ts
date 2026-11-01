@@ -137,7 +137,7 @@ export interface WidgetsAdapter {
 
 /** T252: one piece for widgets.composeArtPiece (local file:// URIs; never uploaded anywhere). */
 export type ComposeArtPieceInput =
-  | { id: string; kind: 'art'; artUri: string; widthPx: number; heightPx: number; colour: string; skipIfPresent?: boolean }
+  | { id: string; kind: 'art'; artUri: string; widthPx: number; heightPx: number; colour: string; skipIfPresent?: boolean; preserveArtwork?: boolean }
   | { id: string; kind: 'seamless'; wallpaperUri: string; cropPx: { x: number; y: number; w: number; h: number }; heroUri: string; skipIfPresent?: boolean };
 
 /** T221: widgets.artLibrary() result. */
@@ -159,6 +159,7 @@ export type SeamlessInput = {
 
 /** T187: inputs for widgets.setWidgetArt (local file:// URI of the art; never uploaded anywhere). */
 export type WidgetArtInput = {
+  preserveArtwork?: boolean;
   artUri: string;
   /** Output size in pixels (the widget's size on this phone). */
   widthPx: number;
@@ -217,6 +218,8 @@ type NativeBridge = {
   ): Promise<boolean>;
   /** T187: fit the art on a colour / blurred background, write seamless-<family>.png, reload "GlazeSeamless". */
   setWidgetArt?(artUri: string, w: number, h: number, background: string, colour: string, fit: string, family: string): Promise<boolean>;
+  setClockArt?(artUri: string, w: number, h: number, colour: string, family: string): Promise<boolean>;
+  composeClockArtPiece?(id: string, artUri: string, w: number, h: number, colour: string, skipIfPresent: boolean): Promise<boolean>;
   /** T146: { containerOk, themeStored, lastRead, storedTheme } (read-only). */
   linkStatus?(): Promise<unknown>;
   /** T221: copy an App Group file into widget-art/<id>.jpg. */
@@ -382,7 +385,9 @@ async function composeArtPiece(input: ComposeArtPieceInput): Promise<WidgetsResu
     if (input.kind === 'art') {
       if (typeof input.artUri !== 'string' || !input.artUri || !/^#[0-9A-Fa-f]{6}$/.test(input.colour)) return { available: true, ok: false, reason: 'failed' };
       if (!finite(input.widthPx) || !finite(input.heightPx) || input.widthPx < 1 || input.heightPx < 1) return { available: true, ok: false, reason: 'failed' };
-      ok = (await mod.composeWidgetArtPiece(input.id, input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.colour, skip)) === true;
+      if (input.preserveArtwork && typeof mod.composeClockArtPiece !== 'function') return { available: false, ok: false, reason: 'not-built' };
+      const compose = input.preserveArtwork ? mod.composeClockArtPiece : mod.composeWidgetArtPiece;
+      ok = (await compose?.(input.id, input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.colour, skip)) === true;
     } else {
       const c = input.cropPx;
       if (typeof input.wallpaperUri !== 'string' || !input.wallpaperUri || !c || ![c.x, c.y, c.w, c.h].every(finite) || c.w < 1 || c.h < 1) {
@@ -514,10 +519,11 @@ async function setWidgetArt(input: WidgetArtInput): Promise<WidgetsResult> {
     const mod = status.available ? loadNative() : null;
     if (!mod) return { available: false, ok: false, reason: status.reason };
     if (typeof mod.setWidgetArt !== 'function') return { available: false, ok: false, reason: 'not-built' };
+    if (input.preserveArtwork && typeof mod.setClockArt !== 'function') return { available: false, ok: false, reason: 'not-built' };
     if (!validWidgetArtInput(input)) return { available: true, ok: false, reason: 'failed' };
-    const res = await run((m) =>
-      m.setWidgetArt?.(input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.background, input.colour, input.fit, input.size),
-    );
+    const res = await run((m) => input.preserveArtwork
+      ? m.setClockArt?.(input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.colour, input.size)
+      : m.setWidgetArt?.(input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.background, input.colour, input.fit, input.size));
     if (res.ok) await showLastApplied(input.size);
     return res;
   } catch {

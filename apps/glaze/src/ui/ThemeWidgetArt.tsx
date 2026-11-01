@@ -153,13 +153,15 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
           // out / feathers a painted one, src/core/artBlend.ts), whatever its pack `background`
           // says. Only a theme with no wallpaper file falls back to setWidgetArt (the theme colour,
           // same blend, no blurred copy).
-          let path: 'fit' | 'bleed' = 'fit';
-          ok = await seamless(artUri);
+          const preserveArtwork = option.kind === 'clock' && option.numberFree === true && !!option.liveFrame?.clockStyle;
+          let path: 'fit' | 'bleed' = preserveArtwork ? 'bleed' : 'fit';
+          ok = preserveArtwork ? false : await seamless(artUri);
           if (ok === false && option.background !== 'wallpaper') {
             path = 'bleed';
             const px = widgetSizePx(seamlessDeviceHere(), home);
             const res = await widgets.setWidgetArt({
               artUri,
+              preserveArtwork,
               widthPx: px.w,
               heightPx: px.h,
               background: option.background,

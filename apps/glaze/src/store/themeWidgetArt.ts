@@ -246,7 +246,8 @@ async function composeOne(theme: Theme, art: ThemeArt, piece: PlannedThemePiece)
     res = await widgets.composeArtPiece({ id: piece.id, kind: 'seamless', wallpaperUri, cropPx: crop.cropPx, heroUri: artUri });
   } else {
     const px = widgetSizePx(device, piece.size);
-    res = await widgets.composeArtPiece({ id: piece.id, kind: 'art', artUri, widthPx: px.w, heightPx: px.h, colour: theme.palette.bg });
+    const preserveArtwork = src.option.kind === 'clock' && src.option.numberFree === true && !!src.option.liveFrame?.clockStyle;
+    res = await widgets.composeArtPiece({ id: piece.id, kind: 'art', artUri, widthPx: px.w, heightPx: px.h, colour: theme.palette.bg, preserveArtwork });
   }
   if (!res.available && res.reason === 'not-built') return 'not-built';
   return res.ok ? 'ok' : 'failed';
