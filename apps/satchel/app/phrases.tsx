@@ -2,6 +2,7 @@
 // picker (defaults to the trip's country, else the last one used, else the phone's zone, else Japanese), then the
 // phrases, "Where is the toilet?" first: English over the local text and, for non-Latin scripts, how to say it.
 // Tap a phrase for the full-screen card (app/phrase-card.tsx). Optional ?lang= and ?phrase= (opens that card).
+// T121: a Help cards button opens the If I'm lost / access needs cards in the same language (app/helpcards.tsx).
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
@@ -11,7 +12,7 @@ import { menuLangFor } from '../src/core/menu.ts';
 import { parseLangParam, parsePhraseParam, phraseCards, type PhraseCard, type PhraseLang, PHRASE_LANGS } from '../src/core/phrases.ts';
 import { useApp } from '../src/state/app.tsx';
 import { fadeIn } from '../src/theme/motion.ts';
-import { radius, shadowOf, space, typeScale } from '../src/theme/tokens.ts';
+import { elevated, radius, space, typeScale } from '../src/theme/tokens.ts';
 import { FadeInView, HeroHeader } from '../src/ui/hero.tsx';
 import { Button, Chip, Label, PressableScale } from '../src/ui/kit.tsx';
 import { LANG_KEY, PHRASE_TABLE, usePhraseLang } from '../src/ui/phrases.ts';
@@ -82,6 +83,15 @@ export default function PhrasesScreen() {
           />
         </View>
       ) : null}
+      <View style={{ flexDirection: 'row' }}>
+        <Button
+          kind="secondary"
+          icon="help-buoy-outline"
+          label={t('helpcards.fromPhrases')}
+          hint={t('helpcards.fromPhrasesHint')}
+          onPress={() => router.push({ pathname: '/helpcards', params: { lang } })}
+        />
+      </View>
       <View accessibilityRole="header">
         <Label>{t('phrases.list')}</Label>
       </View>
@@ -102,11 +112,8 @@ export default function PhrasesScreen() {
             gap: space.m,
             padding: space.l,
             borderRadius: radius.l,
-            backgroundColor: theme.cardRaised,
-            borderWidth: theme.dark ? 1 : 0,
-            borderColor: theme.line,
           },
-          shadowOf(theme, 'low'),
+          elevated(theme, 'low'),
         ]}
       >
         <View style={{ flex: 1, gap: 2 }}>

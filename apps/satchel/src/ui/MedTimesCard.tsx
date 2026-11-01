@@ -12,7 +12,7 @@ import type { Trip } from '../core/model.ts';
 import { useApp } from '../state/app.tsx';
 import { useMeds } from '../state/meds.ts';
 import { useTrips } from '../state/trips.tsx';
-import { fonts, radius, shadowOf, space, TOUCH } from '../theme/tokens.ts';
+import { elevated, fonts, radius, space, TOUCH } from '../theme/tokens.ts';
 import { IconBadge } from './hero.tsx';
 import { PressableScale } from './kit.tsx';
 import { useMinute } from './TripPass.tsx';
@@ -54,10 +54,7 @@ export function MedTimesCard({ tripId }: { tripId?: string }) {
         paddingHorizontal: space.l,
         paddingVertical: space.m,
         borderRadius: radius.l,
-        borderWidth: theme.dark ? 1 : 0,
-        borderColor: theme.line,
-        backgroundColor: theme.cardRaised,
-        ...shadowOf(theme, 'low'),
+        ...elevated(theme, 'low'),
       }}
     >
       <IconBadge name="medkit-outline" tone="teal" />

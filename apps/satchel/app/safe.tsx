@@ -7,6 +7,7 @@
 // sent automatically. Up to 5 trusted contacts are kept only on this phone (src/state/safeContacts.ts).
 // T100: people on the emergency card can be added as trusted contacts with one tap (ones already trusted are not
 // offered), and the contacts ticked for a send are remembered on this phone and pre-ticked next time.
+// T121: "Help cards" opens the If I'm lost / access needs cards (app/helpcards.tsx).
 // T116: "Plan a call home" opens the Call home planner for the trip on now (else the next one; else the phone's clock).
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -360,6 +361,7 @@ export default function SafeScreen() {
         <Text style={[typeScale.small, { color: theme.muted }]}>{t('safe.send.manual')}</Text>
       </SectionCard>
 
+      <Button kind="quiet" icon="help-buoy-outline" label={t('helpcards.fromSafe')} hint={t('helpcards.fromSafeHint')} onPress={() => router.push('/helpcards')} />
       <Button
         kind="quiet"
         icon="call-outline"

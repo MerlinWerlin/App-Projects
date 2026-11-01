@@ -9,7 +9,7 @@ import { deviceZone, todayIn } from '../core/format.ts';
 import type { Trip } from '../core/model.ts';
 import { formatMoney } from '../core/spending.ts';
 import { useApp } from '../state/app.tsx';
-import { fonts, radius, shadowOf, space, TOUCH } from '../theme/tokens.ts';
+import { elevated, fonts, radius, space, TOUCH } from '../theme/tokens.ts';
 import { IconBadge } from './hero.tsx';
 import { PressableScale } from './kit.tsx';
 
@@ -49,11 +49,8 @@ export function CashCard({ trip, showTrip }: { trip: Trip | null; showTrip?: boo
         paddingHorizontal: space.l,
         paddingVertical: space.m,
         borderRadius: radius.l,
-        borderWidth: theme.dark ? 1 : 0,
-        borderColor: theme.line,
-        backgroundColor: theme.cardRaised,
         opacity: trip ? 1 : 0.6,
-        ...shadowOf(theme, 'low'),
+        ...elevated(theme, 'low'),
       }}
     >
       <IconBadge name="cash-outline" tone="ok" />

@@ -92,6 +92,9 @@ export const SPEC_SYNC_PREFIXES = [
   'tripcopy.',
   'look2.',
   'f98.',
+  'helpcards.',
+  'driving.',
+  'f99.',
 ] as const;
 
 /** Single keys mirrored as well: map.online, the T48 emergency fallback wording, the Toilets tab, home country. */

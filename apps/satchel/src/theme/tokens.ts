@@ -51,6 +51,14 @@ export type Theme = {
    * gradient. It reads at 3:1 on every gradient stop, and the deep stop of each tone reads at 3:1 on it (contrast test).
    */
   heroPaper: string;
+  /**
+   * T120 map pins of their own: today's Plan my day stops (`mapPlan`) and your way-back pins (`mapWayback`), also the
+   * legend swatches in the Layers sheet. Each reads at 3:1 on the page, the cards, every raised level and a typical map
+   * ground; `card` text and icons on it (the numbered badge, the swatch glyph) are AA; and its hue stands apart from the
+   * other layers' colours (src/theme/contrast.test.ts).
+   */
+  mapPlan: string;
+  mapWayback: string;
   /** Hero gradients per tab: [top-left, bottom-right]. */
   hero: Record<HeroTone, readonly [string, string]>;
 };
@@ -89,6 +97,8 @@ export const light: Theme = {
   heroWash: 'rgba(255, 255, 255, 0.14)',
   heroChip: 'rgba(8, 16, 36, 0.24)',
   heroPaper: '#FBF6EC',
+  mapPlan: '#6B3FA0',
+  mapWayback: '#A3306A',
   hero: {
     trips: ['#14213D', '#2A6F97'],
     wallet: ['#7A3A10', '#A34D18'],
@@ -129,6 +139,8 @@ export const dark: Theme = {
   heroWash: 'rgba(255, 255, 255, 0.10)',
   heroChip: 'rgba(0, 0, 0, 0.28)',
   heroPaper: '#D8D1C2',
+  mapPlan: '#C4A2F2',
+  mapWayback: '#F28DBF',
   hero: {
     trips: ['#0B1428', '#1B4A66'],
     wallet: ['#3A1C08', '#8A4214'],

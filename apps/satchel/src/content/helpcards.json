@@ -1,0 +1,849 @@
+{
+  "version": 1,
+  "checked": "2026-11-01",
+  "note": "T121 help cards: the fixed sentences on the 'If I'm lost' and access needs cards, in the phrases.json languages. Written by the model (not a native speaker): every line is marked \"check\": true until a native speaker has read it. Simple, polite, gender-neutral wording where the language allows. pt is written to read in both Portugal and Brazil; zh-Hant uses Taiwan wording; zh-Hans and zh-Hant are Mandarin. What the traveller types (names, meeting point, other needs) is shown as typed, not translated.",
+  "sentences": [
+    {
+      "id": "lostTitle",
+      "en": "I am lost. Please help me."
+    },
+    {
+      "id": "lostCall",
+      "en": "Please call this number for me."
+    },
+    {
+      "id": "lostStay",
+      "en": "Please stay with me until my family or friends come."
+    },
+    {
+      "id": "labelName",
+      "en": "My name"
+    },
+    {
+      "id": "labelCall",
+      "en": "Who to call"
+    },
+    {
+      "id": "labelHotel",
+      "en": "Our hotel"
+    },
+    {
+      "id": "labelMeet",
+      "en": "Our meeting point"
+    },
+    {
+      "id": "needsTitle",
+      "en": "Thank you for your help. These are my needs:"
+    },
+    {
+      "id": "wheelchair",
+      "en": "I use a wheelchair."
+    },
+    {
+      "id": "stepFree",
+      "en": "I need a way with no steps or stairs."
+    },
+    {
+      "id": "deaf",
+      "en": "I am deaf or hard of hearing. Please write it down."
+    },
+    {
+      "id": "blind",
+      "en": "I am blind or have low vision. Please guide me with words."
+    },
+    {
+      "id": "serviceDog",
+      "en": "This is my assistance dog. It must stay with me."
+    },
+    {
+      "id": "sit",
+      "en": "I need to sit down. Is there a seat?"
+    },
+    {
+      "id": "labelOther",
+      "en": "Other needs"
+    }
+  ],
+  "languages": [
+    {
+      "code": "ja",
+      "lines": {
+        "lostTitle": {
+          "text": "迷子になりました。助けてください。",
+          "check": true
+        },
+        "lostCall": {
+          "text": "この番号に電話をかけてください。",
+          "check": true
+        },
+        "lostStay": {
+          "text": "家族か友人が来るまで、一緒にいてください。",
+          "check": true
+        },
+        "labelName": {
+          "text": "私の名前",
+          "check": true
+        },
+        "labelCall": {
+          "text": "連絡先",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "宿泊先のホテル",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "待ち合わせ場所",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "ご協力ありがとうございます。私に必要なことは次のとおりです。",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "私は車いすを使っています。",
+          "check": true
+        },
+        "stepFree": {
+          "text": "段差や階段のない道が必要です。",
+          "check": true
+        },
+        "deaf": {
+          "text": "耳が聞こえない、または聞こえにくいです。紙に書いてください。",
+          "check": true
+        },
+        "blind": {
+          "text": "目が見えない、または見えにくいです。言葉で案内してください。",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "これは私の補助犬です。私と一緒にいる必要があります。",
+          "check": true
+        },
+        "sit": {
+          "text": "座る必要があります。座れる場所はありますか？",
+          "check": true
+        },
+        "labelOther": {
+          "text": "その他の必要なこと",
+          "check": true
+        }
+      }
+    },
+    {
+      "code": "zh-Hans",
+      "lines": {
+        "lostTitle": {
+          "text": "我走丢了。请帮帮我。",
+          "check": true
+        },
+        "lostCall": {
+          "text": "请帮我拨打这个电话号码。",
+          "check": true
+        },
+        "lostStay": {
+          "text": "在我的家人或朋友到来之前，请陪着我。",
+          "check": true
+        },
+        "labelName": {
+          "text": "我的名字",
+          "check": true
+        },
+        "labelCall": {
+          "text": "联系人",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "我们住的酒店",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "我们的集合地点",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "谢谢您的帮助。我需要以下帮助：",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "我使用轮椅。",
+          "check": true
+        },
+        "stepFree": {
+          "text": "我需要一条没有台阶或楼梯的路。",
+          "check": true
+        },
+        "deaf": {
+          "text": "我是聋人或听力不好。请写下来。",
+          "check": true
+        },
+        "blind": {
+          "text": "我是盲人或视力不好。请用语言为我引路。",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "这是我的辅助犬。它必须和我在一起。",
+          "check": true
+        },
+        "sit": {
+          "text": "我需要坐下。这里有座位吗？",
+          "check": true
+        },
+        "labelOther": {
+          "text": "其他需要",
+          "check": true
+        }
+      }
+    },
+    {
+      "code": "zh-Hant",
+      "lines": {
+        "lostTitle": {
+          "text": "我走失了。請幫幫我。",
+          "check": true
+        },
+        "lostCall": {
+          "text": "請幫我撥打這個電話號碼。",
+          "check": true
+        },
+        "lostStay": {
+          "text": "在我的家人或朋友到來之前，請陪著我。",
+          "check": true
+        },
+        "labelName": {
+          "text": "我的名字",
+          "check": true
+        },
+        "labelCall": {
+          "text": "聯絡人",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "我們住的飯店",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "我們的集合地點",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "謝謝您的幫助。我需要以下協助：",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "我使用輪椅。",
+          "check": true
+        },
+        "stepFree": {
+          "text": "我需要一條沒有台階或樓梯的路。",
+          "check": true
+        },
+        "deaf": {
+          "text": "我是聾人或聽力不好。請寫下來。",
+          "check": true
+        },
+        "blind": {
+          "text": "我是盲人或視力不好。請用言語為我引路。",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "這是我的輔助犬。牠必須和我在一起。",
+          "check": true
+        },
+        "sit": {
+          "text": "我需要坐下。這裡有座位嗎？",
+          "check": true
+        },
+        "labelOther": {
+          "text": "其他需求",
+          "check": true
+        }
+      }
+    },
+    {
+      "code": "ko",
+      "lines": {
+        "lostTitle": {
+          "text": "길을 잃었어요. 도와주세요.",
+          "check": true
+        },
+        "lostCall": {
+          "text": "이 번호로 전화해 주세요.",
+          "check": true
+        },
+        "lostStay": {
+          "text": "가족이나 친구가 올 때까지 같이 있어 주세요.",
+          "check": true
+        },
+        "labelName": {
+          "text": "제 이름",
+          "check": true
+        },
+        "labelCall": {
+          "text": "연락처",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "묵고 있는 호텔",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "만나기로 한 장소",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "도와주셔서 감사합니다. 저에게 필요한 것은 다음과 같아요:",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "저는 휠체어를 사용해요.",
+          "check": true
+        },
+        "stepFree": {
+          "text": "계단이나 턱이 없는 길이 필요해요.",
+          "check": true
+        },
+        "deaf": {
+          "text": "저는 청각 장애가 있거나 잘 들리지 않아요. 글로 써 주세요.",
+          "check": true
+        },
+        "blind": {
+          "text": "저는 시각 장애가 있거나 잘 보이지 않아요. 말로 안내해 주세요.",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "이 개는 제 보조견이에요. 저와 함께 있어야 해요.",
+          "check": true
+        },
+        "sit": {
+          "text": "앉아야 해요. 앉을 자리가 있나요?",
+          "check": true
+        },
+        "labelOther": {
+          "text": "그 밖에 필요한 것",
+          "check": true
+        }
+      }
+    },
+    {
+      "code": "th",
+      "lines": {
+        "lostTitle": {
+          "text": "ฉันหลงทาง กรุณาช่วยฉันด้วย",
+          "check": true
+        },
+        "lostCall": {
+          "text": "กรุณาโทรหาเบอร์นี้ให้ฉันหน่อย",
+          "check": true
+        },
+        "lostStay": {
+          "text": "กรุณาอยู่กับฉันจนกว่าครอบครัวหรือเพื่อนของฉันจะมา",
+          "check": true
+        },
+        "labelName": {
+          "text": "ชื่อของฉัน",
+          "check": true
+        },
+        "labelCall": {
+          "text": "ผู้ติดต่อ",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "โรงแรมที่เราพัก",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "จุดนัดพบของเรา",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "ขอบคุณที่ช่วยเหลือ สิ่งที่ฉันต้องการมีดังนี้",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "ฉันใช้รถเข็นวีลแชร์",
+          "check": true
+        },
+        "stepFree": {
+          "text": "ฉันต้องการทางที่ไม่มีขั้นบันได",
+          "check": true
+        },
+        "deaf": {
+          "text": "ฉันหูหนวกหรือได้ยินไม่ชัด กรุณาเขียนให้ฉันอ่าน",
+          "check": true
+        },
+        "blind": {
+          "text": "ฉันตาบอดหรือมองเห็นไม่ชัด กรุณาบอกทางฉันด้วยคำพูด",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "นี่คือสุนัขช่วยเหลือของฉัน มันต้องอยู่กับฉัน",
+          "check": true
+        },
+        "sit": {
+          "text": "ฉันต้องนั่งพัก มีที่นั่งไหม",
+          "check": true
+        },
+        "labelOther": {
+          "text": "ความต้องการอื่น ๆ",
+          "check": true
+        }
+      }
+    },
+    {
+      "code": "vi",
+      "lines": {
+        "lostTitle": {
+          "text": "Tôi bị lạc. Xin hãy giúp tôi.",
+          "check": true
+        },
+        "lostCall": {
+          "text": "Xin hãy gọi số này giúp tôi.",
+          "check": true
+        },
+        "lostStay": {
+          "text": "Xin hãy ở lại với tôi cho đến khi gia đình hoặc bạn bè tôi đến.",
+          "check": true
+        },
+        "labelName": {
+          "text": "Tên tôi",
+          "check": true
+        },
+        "labelCall": {
+          "text": "Người cần gọi",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "Khách sạn của chúng tôi",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "Điểm hẹn của chúng tôi",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "Cảm ơn bạn đã giúp đỡ. Đây là những điều tôi cần:",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "Tôi dùng xe lăn.",
+          "check": true
+        },
+        "stepFree": {
+          "text": "Tôi cần lối đi không có bậc thang.",
+          "check": true
+        },
+        "deaf": {
+          "text": "Tôi bị điếc hoặc nghe kém. Xin hãy viết ra giấy.",
+          "check": true
+        },
+        "blind": {
+          "text": "Tôi bị mù hoặc thị lực kém. Xin hãy hướng dẫn tôi bằng lời nói.",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "Đây là chó hỗ trợ của tôi. Nó phải ở bên tôi.",
+          "check": true
+        },
+        "sit": {
+          "text": "Tôi cần ngồi xuống. Ở đây có chỗ ngồi không?",
+          "check": true
+        },
+        "labelOther": {
+          "text": "Nhu cầu khác",
+          "check": true
+        }
+      }
+    },
+    {
+      "code": "es",
+      "lines": {
+        "lostTitle": {
+          "text": "Me he perdido. Por favor, ayúdeme.",
+          "check": true
+        },
+        "lostCall": {
+          "text": "Por favor, llame a este número por mí.",
+          "check": true
+        },
+        "lostStay": {
+          "text": "Por favor, quédese conmigo hasta que lleguen mi familia o mis amigos.",
+          "check": true
+        },
+        "labelName": {
+          "text": "Mi nombre",
+          "check": true
+        },
+        "labelCall": {
+          "text": "Persona de contacto",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "Nuestro hotel",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "Nuestro punto de encuentro",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "Gracias por su ayuda. Esto es lo que necesito:",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "Uso silla de ruedas.",
+          "check": true
+        },
+        "stepFree": {
+          "text": "Necesito un camino sin escalones ni escaleras.",
+          "check": true
+        },
+        "deaf": {
+          "text": "Tengo sordera o problemas de audición. Por favor, escríbalo.",
+          "check": true
+        },
+        "blind": {
+          "text": "Tengo ceguera o baja visión. Por favor, guíeme con palabras.",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "Este es mi perro de asistencia. Debe quedarse conmigo.",
+          "check": true
+        },
+        "sit": {
+          "text": "Necesito sentarme. ¿Hay algún asiento?",
+          "check": true
+        },
+        "labelOther": {
+          "text": "Otras necesidades",
+          "check": true
+        }
+      }
+    },
+    {
+      "code": "fr",
+      "lines": {
+        "lostTitle": {
+          "text": "J'ai perdu mon chemin. Aidez-moi, s'il vous plaît.",
+          "check": true
+        },
+        "lostCall": {
+          "text": "Appelez ce numéro pour moi, s'il vous plaît.",
+          "check": true
+        },
+        "lostStay": {
+          "text": "Restez avec moi jusqu'à l'arrivée de ma famille ou de mes amis, s'il vous plaît.",
+          "check": true
+        },
+        "labelName": {
+          "text": "Mon nom",
+          "check": true
+        },
+        "labelCall": {
+          "text": "Personne à appeler",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "Notre hôtel",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "Notre point de rendez-vous",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "Merci de votre aide. Voici mes besoins :",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "J'utilise un fauteuil roulant.",
+          "check": true
+        },
+        "stepFree": {
+          "text": "J'ai besoin d'un chemin sans marches ni escaliers.",
+          "check": true
+        },
+        "deaf": {
+          "text": "Je n'entends pas ou j'entends mal. Écrivez-le, s'il vous plaît.",
+          "check": true
+        },
+        "blind": {
+          "text": "Je ne vois pas ou je vois mal. Guidez-moi avec des mots, s'il vous plaît.",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "Voici mon chien d'assistance. Il doit rester avec moi.",
+          "check": true
+        },
+        "sit": {
+          "text": "J'ai besoin de m'asseoir. Y a-t-il une place assise ?",
+          "check": true
+        },
+        "labelOther": {
+          "text": "Autres besoins",
+          "check": true
+        }
+      }
+    },
+    {
+      "code": "de",
+      "lines": {
+        "lostTitle": {
+          "text": "Ich habe mich verlaufen. Bitte helfen Sie mir.",
+          "check": true
+        },
+        "lostCall": {
+          "text": "Bitte rufen Sie diese Nummer für mich an.",
+          "check": true
+        },
+        "lostStay": {
+          "text": "Bitte bleiben Sie bei mir, bis meine Familie oder meine Freunde kommen.",
+          "check": true
+        },
+        "labelName": {
+          "text": "Mein Name",
+          "check": true
+        },
+        "labelCall": {
+          "text": "Bitte anrufen",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "Unser Hotel",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "Unser Treffpunkt",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "Danke für Ihre Hilfe. Das brauche ich:",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "Ich benutze einen Rollstuhl.",
+          "check": true
+        },
+        "stepFree": {
+          "text": "Ich brauche einen Weg ohne Stufen oder Treppen.",
+          "check": true
+        },
+        "deaf": {
+          "text": "Ich bin gehörlos oder schwerhörig. Bitte schreiben Sie es auf.",
+          "check": true
+        },
+        "blind": {
+          "text": "Ich bin blind oder sehbehindert. Bitte beschreiben Sie mir den Weg mit Worten.",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "Das ist mein Assistenzhund. Er muss bei mir bleiben.",
+          "check": true
+        },
+        "sit": {
+          "text": "Ich muss mich hinsetzen. Gibt es hier einen Sitzplatz?",
+          "check": true
+        },
+        "labelOther": {
+          "text": "Weitere Bedürfnisse",
+          "check": true
+        }
+      }
+    },
+    {
+      "code": "it",
+      "lines": {
+        "lostTitle": {
+          "text": "Non trovo più la strada. Mi aiuti, per favore.",
+          "check": true
+        },
+        "lostCall": {
+          "text": "Per favore, chiami questo numero per me.",
+          "check": true
+        },
+        "lostStay": {
+          "text": "Per favore, resti con me finché non arrivano la mia famiglia o i miei amici.",
+          "check": true
+        },
+        "labelName": {
+          "text": "Il mio nome",
+          "check": true
+        },
+        "labelCall": {
+          "text": "Persona da chiamare",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "Il nostro hotel",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "Il nostro punto d'incontro",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "Grazie per l'aiuto. Ecco di cosa ho bisogno:",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "Uso una sedia a rotelle.",
+          "check": true
+        },
+        "stepFree": {
+          "text": "Ho bisogno di un percorso senza gradini né scale.",
+          "check": true
+        },
+        "deaf": {
+          "text": "Non sento o sento poco. Per favore, lo scriva.",
+          "check": true
+        },
+        "blind": {
+          "text": "Non vedo o vedo poco. Per favore, mi guidi a parole.",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "Questo è il mio cane d'assistenza. Deve restare con me.",
+          "check": true
+        },
+        "sit": {
+          "text": "Ho bisogno di sedermi. C'è un posto a sedere?",
+          "check": true
+        },
+        "labelOther": {
+          "text": "Altre esigenze",
+          "check": true
+        }
+      }
+    },
+    {
+      "code": "pt",
+      "lines": {
+        "lostTitle": {
+          "text": "Não sei onde estou. Por favor, ajude-me.",
+          "check": true
+        },
+        "lostCall": {
+          "text": "Por favor, ligue para este número por mim.",
+          "check": true
+        },
+        "lostStay": {
+          "text": "Por favor, fique comigo até a minha família ou os meus amigos chegarem.",
+          "check": true
+        },
+        "labelName": {
+          "text": "O meu nome",
+          "check": true
+        },
+        "labelCall": {
+          "text": "Ligar para",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "O nosso hotel",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "O nosso ponto de encontro",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "Agradeço a sua ajuda. Isto é o que preciso:",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "Uso cadeira de rodas.",
+          "check": true
+        },
+        "stepFree": {
+          "text": "Preciso de um caminho sem degraus nem escadas.",
+          "check": true
+        },
+        "deaf": {
+          "text": "Não ouço ou ouço mal. Por favor, escreva.",
+          "check": true
+        },
+        "blind": {
+          "text": "Não vejo ou vejo mal. Por favor, guie-me com palavras.",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "Este é o meu cão de assistência. Ele tem de ficar comigo.",
+          "check": true
+        },
+        "sit": {
+          "text": "Preciso de me sentar. Há algum lugar para sentar?",
+          "check": true
+        },
+        "labelOther": {
+          "text": "Outras necessidades",
+          "check": true
+        }
+      }
+    },
+    {
+      "code": "id",
+      "lines": {
+        "lostTitle": {
+          "text": "Saya tersesat. Tolong bantu saya.",
+          "check": true
+        },
+        "lostCall": {
+          "text": "Tolong telepon nomor ini untuk saya.",
+          "check": true
+        },
+        "lostStay": {
+          "text": "Tolong temani saya sampai keluarga atau teman saya datang.",
+          "check": true
+        },
+        "labelName": {
+          "text": "Nama saya",
+          "check": true
+        },
+        "labelCall": {
+          "text": "Tolong telepon",
+          "check": true
+        },
+        "labelHotel": {
+          "text": "Hotel kami",
+          "check": true
+        },
+        "labelMeet": {
+          "text": "Tempat bertemu kami",
+          "check": true
+        },
+        "needsTitle": {
+          "text": "Terima kasih atas bantuan Anda. Ini kebutuhan saya:",
+          "check": true
+        },
+        "wheelchair": {
+          "text": "Saya memakai kursi roda.",
+          "check": true
+        },
+        "stepFree": {
+          "text": "Saya butuh jalan tanpa anak tangga.",
+          "check": true
+        },
+        "deaf": {
+          "text": "Saya tuli atau sulit mendengar. Tolong tuliskan.",
+          "check": true
+        },
+        "blind": {
+          "text": "Saya tunanetra atau penglihatan saya lemah. Tolong pandu saya dengan kata-kata.",
+          "check": true
+        },
+        "serviceDog": {
+          "text": "Ini anjing pendamping saya. Anjing ini harus tetap bersama saya.",
+          "check": true
+        },
+        "sit": {
+          "text": "Saya perlu duduk. Apakah ada tempat duduk?",
+          "check": true
+        },
+        "labelOther": {
+          "text": "Kebutuhan lain",
+          "check": true
+        }
+      }
+    }
+  ]
+}

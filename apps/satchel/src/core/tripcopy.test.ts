@@ -17,6 +17,7 @@ import {
   BUDGET_RULES,
   COMPANION_RULES,
   COPY_PARTS,
+  GIFT_PERSON_RULES,
   copyPreview,
   copyTrip,
   IDEA_RULES,
@@ -450,9 +451,9 @@ test('T118 the picker starts on the same day next year; 29 Feb goes to 28 Feb', 
 });
 
 test('T118 part counts for the choice list', () => {
-  assert.deepEqual(partCounts(fullTrip(), packList()), { bookings: 2, packing: 1, bags: 2, ideas: 2, todos: 2, companions: 1, budget: true });
+  assert.deepEqual(partCounts(fullTrip(), packList()), { bookings: 2, packing: 1, bags: 2, ideas: 2, todos: 2, companions: 1, giftPeople: 1, budget: true });
   const bare: Trip = { id: 'b', name: 'B', startDate: '2027-01-01', endDate: '2027-01-02', homeTz: 'UTC', items: [], createdAt: NOW };
-  assert.deepEqual(partCounts(bare, null), { bookings: 0, packing: 0, bags: 0, ideas: 0, todos: 0, companions: 0, budget: false });
+  assert.deepEqual(partCounts(bare, null), { bookings: 0, packing: 0, bags: 0, ideas: 0, todos: 0, companions: 0, giftPeople: 0, budget: false });
 });
 
 test('T118 an unreadable new date leaves the dates as they were (no shift)', () => {
@@ -460,4 +461,32 @@ test('T118 an unreadable new date leaves the dates as they were (no shift)', () 
   assert.equal(r.days, 0);
   assert.equal(r.trip.startDate, '2027-04-01');
   assert.equal(r.trip.endDate, '2027-04-06');
+});
+
+test('T120 gift people by name only: off by default; on, names with new ids and nothing else', () => {
+  assert.equal(copy().trip.gifts, undefined, 'off unless asked');
+  const src = fullTrip();
+  src.gifts = [
+    { id: 'gp_mum', name: 'Mum', budget: { currency: 'AUD', amount: 5000 }, gifts: [{ id: 'gift_1', what: 'Tea towel', status: 'packed', price: 1200, currency: 'JPY', createdAt: NOW }], createdAt: NOW },
+    { id: 'gp_sam', name: 'Sam', gifts: [] },
+  ];
+  const { trip } = copyTrip(src, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, giftNames: true });
+  assert.ok(trip.gifts);
+  assert.deepEqual(trip.gifts.map((p) => p.name), ['Mum', 'Sam']);
+  for (const p of trip.gifts) {
+    assert.ok(!['gp_mum', 'gp_sam'].includes(p.id), 'new id');
+    assert.deepEqual(p.gifts, []);
+    assert.equal(p.budget, undefined);
+    assert.equal(p.createdAt, NOW);
+    assert.deepEqual(keys(p), ['createdAt', 'gifts', 'id', 'name']);
+  }
+  // every GiftPerson field has a rule; only the name is kept
+  assert.deepEqual(keys(GIFT_PERSON_RULES), ['budget', 'createdAt', 'gifts', 'id', 'name']);
+  assert.deepEqual(Object.entries(GIFT_PERSON_RULES).filter(([, r]) => r === 'keep').map(([k]) => k), ['name']);
+  // the old trip is untouched
+  assert.equal(src.gifts[0].gifts.length, 1);
+  // no gift people: nothing added
+  assert.equal(copyTrip(fullTrip(), null, { startDate: '2027-10-01', parts: none, newId, now: NOW, giftNames: true }).trip.gifts?.length, 1);
+  const bare = { ...fullTrip(), gifts: undefined };
+  assert.equal(copyTrip(bare, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, giftNames: true }).trip.gifts, undefined);
 });

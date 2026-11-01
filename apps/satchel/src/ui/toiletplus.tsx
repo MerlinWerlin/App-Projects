@@ -2,7 +2,7 @@
 // star with a private note and thumbs up/down, Open in Apple Maps), the filter chips with counts, the List/Map
 // switch, and the "My toilets" and "Recently used" sections. Used by app/(tabs)/toilets.tsx. Theme tokens only.
 import { Ionicons } from '@expo/vector-icons';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { FILTERS, hoursLine, type FilterId, type RecentToilet, type SavedToilet, type Vote } from '../core/toiletplus.ts';
 import type { HoursStatus } from '../core/openinghours.ts';
@@ -310,24 +310,59 @@ function PlainRow({ icon, tone, title, sub, a11y, hint, onPress }: { icon: IconN
 }
 
 /** Saved toilets (all of them), each opening walking directions. */
-export function MineSection({ saved, onOpen }: { saved: readonly SavedToilet[]; onOpen: (s: SavedToilet) => void }) {
-  const { t } = useApp();
+export function MineSection({
+  saved,
+  onOpen,
+  focusId = null,
+  onLocated,
+}: {
+  saved: readonly SavedToilet[];
+  onOpen: (s: SavedToilet) => void;
+  /** T120: the toilet opened from its Map-tab pin: highlighted, and its window position reported once laid out. */
+  focusId?: string | null;
+  onLocated?: (windowY: number) => void;
+}) {
+  const { t, theme } = useApp();
+  const box = useRef<View>(null);
+  const located = useRef(onLocated);
+  located.current = onLocated;
+  const focusShown = !!focusId && saved.some((s) => s.toilet.id === focusId);
+  useEffect(() => {
+    if (!focusShown) return;
+    // After layout; measured in the window so nesting inside the card and the list footer doesn't matter.
+    const id = setTimeout(() => box.current?.measureInWindow((_x, y) => located.current?.(y)), 250);
+    return () => clearTimeout(id);
+  }, [focusShown, focusId]);
   return (
     <SectionCard title={t('toiletplus.mineTitle')} subtitle={t('toiletplus.mineSubtitle')} icon="star" tone="warn">
       {saved.length === 0 ? <Body muted>{t('toiletplus.mineNone')}</Body> : null}
       {saved.map((s) => {
         const name = s.toilet.name ?? t('toilets.unnamed');
-        return (
+        const base = s.note ? t('toiletplus.mineRowA11y', { name, note: s.note }) : name;
+        const row = (
           <PlainRow
             key={s.toilet.id}
             icon={s.vote === 'up' ? 'thumbs-up' : s.vote === 'down' ? 'thumbs-down' : 'star'}
             tone={s.vote === 'down' ? 'danger' : s.vote === 'up' ? 'ok' : 'warn'}
             title={name}
             sub={s.note || undefined}
-            a11y={s.note ? t('toiletplus.mineRowA11y', { name, note: s.note }) : name}
+            a11y={s.toilet.id === focusId ? t('f99.toilet.fromMapA11y', { name: base }) : base}
             hint={t('toiletplus.mineOpenHint')}
             onPress={() => onOpen(s)}
           />
+        );
+        if (s.toilet.id !== focusId) return row;
+        return (
+          <View
+            key={s.toilet.id}
+            ref={box}
+            style={{ gap: space.xs, padding: space.s, marginHorizontal: -space.s, borderRadius: radius.m, borderWidth: 1.5, borderColor: theme.accent }}
+          >
+            <Text importantForAccessibility="no" accessibilityElementsHidden style={[typeScale.caption, { color: theme.accentInk }]}>
+              {t('f99.toilet.fromMap')}
+            </Text>
+            {row}
+          </View>
         );
       })}
     </SectionCard>

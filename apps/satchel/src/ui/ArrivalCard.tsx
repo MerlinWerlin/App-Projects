@@ -30,6 +30,8 @@ import { FadeInView, GradientFill, SectionCard, type IconName } from './hero.tsx
 import { useHomeCountry } from './HomeCountryPicker.tsx';
 import { hasCustoms } from '../core/customs.ts';
 import { CUSTOMS_TABLE } from './CustomsLink.tsx';
+import { hasDriving } from '../core/driving.ts';
+import { DRIVING_TABLE } from './driving.tsx';
 import { PressableScale } from './kit.tsx';
 import { PHRASE_TABLE } from './phrases.ts';
 import { useMinute } from './TripPass.tsx';
@@ -213,6 +215,12 @@ function ArrivalHero({ view: v, stay, onDismiss }: { view: ArrivalView; stay: Cu
             {hasCustoms(CUSTOMS_TABLE, v.iso2) ? (
               <View style={{ flexDirection: 'row' }}>
                 <HeroButton label={t('customs.fromArrival')} hint={t('customs.fromArrivalHint', { country: v.country })} icon="people-outline" onPress={() => router.push({ pathname: '/customs/[iso2]', params: { iso2: v.iso2, tripId: v.tripId } })} />
+              </View>
+            ) : null}
+            {/* T122: driving notes (side of the road, speed unit, permit, fuel words, tolls) when the guide covers the country. */}
+            {hasDriving(DRIVING_TABLE, v.iso2) ? (
+              <View style={{ flexDirection: 'row' }}>
+                <HeroButton label={t('driving.fromArrival')} hint={t('driving.fromArrivalHint', { country: v.country })} icon="car-outline" onPress={() => router.push({ pathname: '/driving/[iso2]', params: { iso2: v.iso2, tripId: v.tripId } })} />
               </View>
             ) : null}
           </Panel>

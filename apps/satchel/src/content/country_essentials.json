@@ -686,7 +686,13 @@
   {
    "iso2": "BT",
    "country": "Bhutan",
-   "plugs": null,
+   "plugs": [
+    "C",
+    "D",
+    "F",
+    "G",
+    "M"
+   ],
    "voltage": [
     230
    ],
@@ -697,10 +703,13 @@
    "calling_code": "+975",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeF.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "BW",
@@ -1455,7 +1464,12 @@
   {
    "iso2": "ET",
    "country": "Ethiopia",
-   "plugs": null,
+   "plugs": [
+    "C",
+    "E",
+    "F",
+    "L"
+   ],
    "voltage": [
     220
    ],
@@ -1466,10 +1480,11 @@
    "calling_code": "+251",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeF.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "FI",
@@ -2196,7 +2211,9 @@
    "plugs": [
     "G"
    ],
-   "voltage": null,
+   "voltage": [
+    240
+   ],
    "frequency": [
     50
    ],
@@ -2204,10 +2221,11 @@
    "calling_code": "+44",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "IN",
@@ -2528,24 +2546,37 @@
   {
    "iso2": "KN",
    "country": "Saint Kitts and Nevis",
-   "plugs": null,
+   "plugs": [
+    "A",
+    "B",
+    "D",
+    "G"
+   ],
    "voltage": [
     230
    ],
-   "frequency": null,
+   "frequency": [
+    60
+   ],
    "driving": "left",
    "calling_code": "+1",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "KP",
    "country": "North Korea",
-   "plugs": null,
+   "plugs": [
+    "A",
+    "C",
+    "F"
+   ],
    "voltage": [
     220
    ],
@@ -2556,10 +2587,11 @@
    "calling_code": "+850",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeF.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "KR",
@@ -2677,7 +2709,13 @@
   {
    "iso2": "LB",
    "country": "Lebanon",
-   "plugs": null,
+   "plugs": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G"
+   ],
    "voltage": [
     230
    ],
@@ -2688,10 +2726,12 @@
    "calling_code": "+961",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "LC",
@@ -2982,22 +3022,37 @@
   {
    "iso2": "MF",
    "country": "Saint Martin",
-   "plugs": null,
-   "voltage": null,
-   "frequency": null,
+   "plugs": [
+    "C",
+    "F"
+   ],
+   "voltage": [
+    120,
+    220
+   ],
+   "frequency": [
+    60
+   ],
    "driving": "right",
    "calling_code": "+590",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeF.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "MG",
    "country": "Madagascar",
-   "plugs": null,
+   "plugs": [
+    "C",
+    "D",
+    "E",
+    "J",
+    "K"
+   ],
    "voltage": [
     220
    ],
@@ -3008,10 +3063,12 @@
    "calling_code": "+261",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeK.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "MH",
@@ -3082,7 +3139,12 @@
   {
    "iso2": "MM",
    "country": "Myanmar",
-   "plugs": null,
+   "plugs": [
+    "C",
+    "D",
+    "F",
+    "G"
+   ],
    "voltage": [
     230
    ],
@@ -3093,10 +3155,13 @@
    "calling_code": "+95",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeF.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "MN",
@@ -3123,7 +3188,12 @@
   {
    "iso2": "MO",
    "country": "Macao",
-   "plugs": null,
+   "plugs": [
+    "D",
+    "F",
+    "G",
+    "M"
+   ],
    "voltage": [
     220
    ],
@@ -3134,10 +3204,13 @@
    "calling_code": "+853",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeF.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "MP",
@@ -3266,7 +3339,15 @@
   {
    "iso2": "MV",
    "country": "Maldives",
-   "plugs": null,
+   "plugs": [
+    "A",
+    "C",
+    "D",
+    "G",
+    "J",
+    "K",
+    "L"
+   ],
    "voltage": [
     230
    ],
@@ -3277,10 +3358,13 @@
    "calling_code": "+960",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeK.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "MW",
@@ -3416,7 +3500,14 @@
   {
    "iso2": "NE",
    "country": "Niger",
-   "plugs": null,
+   "plugs": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ],
    "voltage": [
     220
    ],
@@ -3427,10 +3518,12 @@
    "calling_code": "+227",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeF.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "NF",
@@ -3460,7 +3553,9 @@
     "D",
     "G"
    ],
-   "voltage": null,
+   "voltage": [
+    230
+   ],
    "frequency": [
     50
    ],
@@ -3468,10 +3563,12 @@
    "calling_code": "+234",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "NI",
@@ -4094,7 +4191,10 @@
   {
    "iso2": "SB",
    "country": "Solomon Islands",
-   "plugs": null,
+   "plugs": [
+    "G",
+    "I"
+   ],
    "voltage": [
     230
    ],
@@ -4105,10 +4205,12 @@
    "calling_code": "+677",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeI.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "SC",
@@ -4325,7 +4427,12 @@
   {
    "iso2": "SN",
    "country": "Senegal",
-   "plugs": null,
+   "plugs": [
+    "C",
+    "D",
+    "E",
+    "K"
+   ],
    "voltage": [
     230
    ],
@@ -4336,10 +4443,12 @@
    "calling_code": "+221",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeK.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "SO",
@@ -4363,7 +4472,10 @@
   {
    "iso2": "SR",
    "country": "Suriname",
-   "plugs": null,
+   "plugs": [
+    "C",
+    "F"
+   ],
    "voltage": [
     127
    ],
@@ -4374,10 +4486,11 @@
    "calling_code": "+597",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeF.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "SS",
@@ -4536,7 +4649,12 @@
   {
    "iso2": "TD",
    "country": "Chad",
-   "plugs": null,
+   "plugs": [
+    "C",
+    "D",
+    "E",
+    "F"
+   ],
    "voltage": [
     220
    ],
@@ -4547,10 +4665,12 @@
    "calling_code": "+235",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeF.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "TG",
@@ -4644,7 +4764,12 @@
   {
    "iso2": "TL",
    "country": "Timor-Leste",
-   "plugs": null,
+   "plugs": [
+    "C",
+    "E",
+    "F",
+    "I"
+   ],
    "voltage": [
     220
    ],
@@ -4655,10 +4780,12 @@
    "calling_code": "+670",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeI.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeF.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "TM",
@@ -4970,7 +5097,14 @@
   {
    "iso2": "VC",
    "country": "Saint Vincent and the Grenadines",
-   "plugs": null,
+   "plugs": [
+    "A",
+    "C",
+    "E",
+    "G",
+    "I",
+    "K"
+   ],
    "voltage": [
     230
    ],
@@ -4981,10 +5115,13 @@
    "calling_code": "+1",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeK.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeI.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "VE",
@@ -5156,7 +5293,11 @@
   {
    "iso2": "YE",
    "country": "Yemen",
-   "plugs": null,
+   "plugs": [
+    "A",
+    "D",
+    "G"
+   ],
    "voltage": [
     230
    ],
@@ -5167,10 +5308,12 @@
    "calling_code": "+967",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   },
   {
    "iso2": "YT",
@@ -5249,7 +5392,9 @@
     "D",
     "G"
    ],
-   "voltage": null,
+   "voltage": [
+    220
+   ],
    "frequency": [
     50
    ],
@@ -5257,10 +5402,12 @@
    "calling_code": "+263",
    "sources": [
     "https://www.iec.ch/world-plugs",
+    "https://pubweb2.iec.ch/worldplugs/typeG.htm",
+    "https://pubweb2.iec.ch/worldplugs/typeD.htm",
     "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic",
     "https://www.itu.int/pub/T-SP-E.164D"
    ],
-   "checked": "2026-10-31"
+   "checked": "2026-11-01"
   }
  ]
 }

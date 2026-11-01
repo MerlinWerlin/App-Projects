@@ -14,7 +14,7 @@ import type { Key } from '../i18n/en.ts';
 import { haptic } from '../native/device.ts';
 import { useApp } from '../state/app.tsx';
 import { useTrips } from '../state/trips.tsx';
-import { radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
+import { elevated, radius, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import type { IconName, Tone } from './hero.tsx';
 import { IconBadge } from './hero.tsx';
 import { Chip, PressableScale } from './kit.tsx';
@@ -134,8 +134,8 @@ export const IdeaRow = memo(function IdeaRow({
   return (
     <View
       style={[
-        { backgroundColor: theme.cardRaised, borderRadius: radius.l, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line, padding: space.s, gap: space.xs },
-        shadowOf(theme, 'low'),
+        elevated(theme, 'low'),
+        { borderRadius: radius.l, padding: space.s, gap: space.xs },
       ]}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>

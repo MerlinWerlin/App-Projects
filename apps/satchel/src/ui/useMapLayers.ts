@@ -1,6 +1,7 @@
 // T117 map layers: the Map tab's layer choices (kept on this phone under MAPLAYERS_KEY through the persisted
 // helper), the pins of the families the layers added (ideas with a spot, your way-back pins, saved toilets, today's
-// day plan stops), the visibility filter and where a tap on one of those pins leads. Pure rules in
+// day plan stops), the visibility filter and where a tap on one of those pins leads (T120: a saved toilet opens the
+// Toilets tab at that toilet). Pure rules in
 // src/core/maplayers.ts; the sheet is src/ui/MapLayersSheet.tsx.
 import { useRouter } from 'expo-router';
 import { useCallback, useMemo } from 'react';
@@ -25,6 +26,7 @@ import { TOILET_SAVED_KEY } from '../core/toiletplus.ts';
 import { pinKey, pinName, WAYBACK_PINS_KEY } from '../core/wayback.ts';
 import type { MapPin } from '../native/maps.tsx';
 import { useApp } from '../state/app.tsx';
+import { requestToiletFocus } from '../state/focusToilet.ts';
 import { usePersisted } from '../state/persisted.ts';
 
 const NONE: unknown = null;
@@ -76,7 +78,7 @@ export function useMapLayers({ trips, planTrip, today }: { trips: readonly Trip[
   const showAll = useCallback(() => update(showAllLayers), [update]);
   const setScope = useCallback((scope: MapScope) => update((p) => withScope(p, scope)), [update]);
 
-  /** A tap on one of the added pins: true when handled (a saved toilet just shows its callout). */
+  /** A tap on one of the added pins: true when handled. */
   const onPress = useCallback(
     (id: string): boolean => {
       const i = ideas.find((p) => p.id === id);
@@ -94,7 +96,13 @@ export function useMapLayers({ trips, planTrip, today }: { trips: readonly Trip[
         router.push({ pathname: `/dayplan/${d.tripId}`, params: { day: d.day } });
         return true;
       }
-      return toilets.some((p) => p.id === id);
+      // T120: a saved toilet opens the Toilets tab at that toilet in "My toilets" (one-time token, also in memory).
+      const s = toilets.find((p) => p.id === id);
+      if (s) {
+        router.navigate({ pathname: '/toilets', params: { focus: requestToiletFocus(s.toiletId) } });
+        return true;
+      }
+      return false;
     },
     [ideas, wayback, plan, toilets, router],
   );

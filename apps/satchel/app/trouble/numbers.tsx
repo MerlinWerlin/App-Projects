@@ -26,7 +26,7 @@ import {
 import type { Key } from '../../src/i18n/en.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
-import { fonts, radius, shadowOf, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
+import { elevated, fonts, radius, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
 import { callAndExplain } from '../../src/ui/EmergencyCardView.tsx';
 import { FadeInView, IconBadge, type IconName, type Tone } from '../../src/ui/hero.tsx';
 import { Body, Button, Card, Chip, EmptyState, PressableScale, TextField } from '../../src/ui/kit.tsx';
@@ -150,8 +150,8 @@ export default function ImportantNumbersScreen() {
             <View
               key={n.id}
               style={[
-                { flexDirection: 'row', alignItems: 'center', borderRadius: radius.l, backgroundColor: theme.cardRaised, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line, paddingRight: space.xs },
-                shadowOf(theme, 'low'),
+                elevated(theme, 'low'),
+                { flexDirection: 'row', alignItems: 'center', borderRadius: radius.l, paddingRight: space.xs },
               ]}
             >
               <PressableScale

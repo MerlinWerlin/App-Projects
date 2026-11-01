@@ -13,7 +13,7 @@ import type { T } from '../i18n/core.ts';
 import type { Key } from '../i18n/en.ts';
 import { useApp } from '../state/app.tsx';
 import { useLoyaltyCards } from '../state/loyalty.ts';
-import { cardPaint, fonts, radius, shadowOf, space, typeScale } from '../theme/tokens.ts';
+import { cardPaint, elevated, fonts, radius, shadowOf, space, typeScale } from '../theme/tokens.ts';
 import { FadeInView, IconBadge } from './hero.tsx';
 import { Button, PressableScale } from './kit.tsx';
 
@@ -153,8 +153,8 @@ export function WalletCards() {
       {!sorted.length ? (
         <View
           style={[
-            { backgroundColor: theme.cardRaised, borderRadius: radius.l, padding: space.l, gap: space.m, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line },
-            shadowOf(theme, 'low'),
+            elevated(theme, 'low'),
+            { borderRadius: radius.l, padding: space.l, gap: space.m },
           ]}
         >
           <Text style={[typeScale.bodyStrong, { color: theme.ink }]}>{t('loyalty.section.emptyTitle')}</Text>

@@ -42,6 +42,8 @@ const CHECKED = new Set([
   'map-outline', 'male-female-outline', 'cellular-outline', 'location-outline', 'locate-outline',
   'chatbubble-ellipses-outline', 'medkit-outline', 'add-outline', 'send-outline', 'chatbox-outline', 'share-outline',
   'checkbox', 'square-outline',
+  // T121 (run 100): the Help cards button on I'm safe (same glyph as the Trouble card).
+  'help-buoy-outline',
 ]);
 
 function iconNames(src: string): string[] {

@@ -12,11 +12,12 @@
 // as markers around the search point (with the offline city tiles when that city is downloaded); tapping a marker
 // shows its card. "My toilets": Save with a private note and thumbs up/down; saved ones near the search point come
 // first. "Recently used" keeps the last 10 opened in Apple Maps. All stored on the phone only. The Map tab's
-// "Nearest toilet" opens this tab with ?find=<nonce>, which starts a search once.
+// "Nearest toilet" opens this tab with ?find=<nonce>, which starts a search once. T120: a saved toilet pin on the Map
+// tab opens it with ?focus=<token> (src/core/followups99.ts): My toilets highlights that toilet and scrolls to it.
 // T119: signpost hero scene (entrance on every tab focus), Find one / Yours section headers and the shared rhythm.
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, FlatList, Linking, Text, View } from 'react-native';
+import { AccessibilityInfo, Animated, FlatList, Linking, Text, View } from 'react-native';
 import { pickCityFor, type CityMap } from '../../src/core/citymaps.ts';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
 import type { PermissionState } from '../../src/core/permissions.ts';
@@ -56,6 +57,9 @@ import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { clearNearestToilet, useNearestToiletRequest } from '../../src/state/nearestToilet.ts';
 import { nextFindNonce } from '../../src/core/followups89.ts';
+import { scrollTargetY } from '../../src/core/followups97.ts';
+import { encodeToiletFocus, nextToiletFocus } from '../../src/core/followups99.ts';
+import { clearToiletFocus, useToiletFocusRequest } from '../../src/state/focusToilet.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { dur, duration } from '../../src/theme/motion.ts';
 import { fonts, rhythm, space } from '../../src/theme/tokens.ts';
@@ -85,7 +89,7 @@ export default function ToiletsScreen() {
   const { t, theme, reduceMotion } = useApp();
   const { trips } = useTrips();
   const router = useRouter();
-  const params = useLocalSearchParams<{ find?: string }>();
+  const params = useLocalSearchParams<{ find?: string; focus?: string }>();
   const [phase, setPhase] = useState<Phase>({ s: 'idle' });
   const [openFailed, setOpenFailed] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -95,9 +99,17 @@ export default function ToiletsScreen() {
   const seq = useRef(0);
   const handledFind = useRef<Set<string>>(new Set());
   const requested = useNearestToiletRequest();
+  // T120: a saved toilet's pin on the Map tab opens this tab at that toilet in My toilets (one-time token).
+  const focusRequested = useToiletFocusRequest();
+  const handledFocus = useRef<Set<string>>(new Set());
+  const [focusId, setFocusId] = useState<string | null>(null);
+  const [focusGone, setFocusGone] = useState(false);
+  const listRef = useRef<FlatList<Row>>(null);
+  const listBox = useRef<View>(null);
+  const scrollY = useRef(0);
 
   const [rawFilters, setRawFilters] = usePersisted<unknown>(TOILET_FILTERS_KEY, NONE);
-  const [rawSaved, setRawSaved] = usePersisted<unknown>(TOILET_SAVED_KEY, NONE);
+  const [rawSaved, setRawSaved, savedLoaded] = usePersisted<unknown>(TOILET_SAVED_KEY, NONE);
   const [rawRecent, setRawRecent] = usePersisted<unknown>(TOILET_RECENT_KEY, NONE);
   const [view, setView] = usePersisted<'list' | 'map'>(TOILET_VIEW_KEY, LIST_VIEW);
   const filters = useMemo(() => parseFilters(rawFilters), [rawFilters]);
@@ -150,6 +162,24 @@ export default function ToiletsScreen() {
     clearNearestToilet(f);
     nearMe();
   }, [requested, params.find, nearMe, busy]);
+
+  // Runs once the saved list is read, so a toilet saved earlier is found; one that was removed says so.
+  useEffect(() => {
+    if (!savedLoaded) return;
+    const f = nextToiletFocus([focusRequested, params.focus], handledFocus.current);
+    if (!f) return;
+    handledFocus.current.add(f.nonce);
+    clearToiletFocus(encodeToiletFocus(f));
+    const hit = saved.find((s) => s.toilet.id === f.toiletId);
+    setFocusId(hit ? f.toiletId : null);
+    setFocusGone(!hit);
+    AccessibilityInfo.announceForAccessibility(hit ? t('f99.toilet.fromMapA11y', { name: hit.toilet.name ?? t('toilets.unnamed') }) : t('f99.toilet.gone'));
+  }, [focusRequested, params.focus, savedLoaded, saved, t]);
+  const scrollToFocus = useCallback(
+    (rowWindowY: number) =>
+      listBox.current?.measureInWindow((_x, top) => listRef.current?.scrollToOffset({ offset: scrollTargetY(scrollY.current, rowWindowY, top, space.l), animated: !reduceMotion })),
+    [reduceMotion],
+  );
 
   const done = phase.s === 'done' ? phase : null;
   const result = done?.result ?? null;
@@ -367,7 +397,12 @@ export default function ToiletsScreen() {
     <View style={{ gap: rhythm.stack, paddingTop: rhythm.section, paddingBottom: space.xl }}>
       {showResults ? <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('toiletplus.hoursNote')}</Text> : null}
       <SectionHeader title={t('look2.toilets.sectionYours')} icon="bookmark-outline" tone="warn" />
-      <MineSection saved={saved} onOpen={(s: SavedToilet) => openMaps(s.toilet)} />
+      {focusGone ? (
+        <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted }}>
+          {t('f99.toilet.gone')}
+        </Text>
+      ) : null}
+      <MineSection saved={saved} onOpen={(s: SavedToilet) => openMaps(s.toilet)} focusId={focusId} onLocated={scrollToFocus} />
       <RecentSection recent={recent} onOpen={(r: RecentToilet) => openMaps(r.toilet)} onClear={() => setRawRecent([])} />
       <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('toilets.attribution')}</Text>
     </View>
@@ -377,8 +412,12 @@ export default function ToiletsScreen() {
   const listData = showResults && view === 'list' ? rows : [];
   return (
     <Screen scroll={false}>
+      <View ref={listBox} collapsable={false} style={{ flex: 1 }}>
       <FlatList
+        ref={listRef}
         style={{ flex: 1 }}
+        onScroll={(e) => (scrollY.current = e.nativeEvent.contentOffset.y)}
+        scrollEventThrottle={64}
         data={listData}
         keyExtractor={(h) => `${run}:${h.id}`}
         renderItem={({ item, index }) => (
@@ -392,6 +431,7 @@ export default function ToiletsScreen() {
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
       />
+      </View>
     </Screen>
   );
 }

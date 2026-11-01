@@ -13,8 +13,9 @@ import type { Trip } from '../../src/core/model.ts';
 import type { Key } from '../../src/i18n/en.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
-import { radius, shadowOf, space, typeScale } from '../../src/theme/tokens.ts';
+import { radius, elevated, space, typeScale } from '../../src/theme/tokens.ts';
 import { FadeInView, HeroHeader } from '../../src/ui/hero.tsx';
+import { useTripAccent } from '../../src/ui/TripAccentBand.tsx';
 import { DAY_TONES, DayHeader, MOOD_ICONS, moodKey, PhotoThumb, WEATHER_ICONS, weatherKey } from '../../src/ui/journal.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen } from '../../src/ui/kit.tsx';
 
@@ -107,6 +108,8 @@ function Journal({ trip }: { trip: Trip }) {
 
 const EntryCard = memo(function EntryCard({ trip, entry, date, onPress }: { trip: Trip; entry: JournalEntry; date: string; onPress: () => void }) {
   const { t, theme } = useApp();
+  // T120: each page carries the trip's own accent stripe (from its cover), like the trip screen's day cards.
+  const accent = useTripAccent(trip);
   const place = entryPlace(trip, entry);
   const chips = [
     entry.mood ? { icon: MOOD_ICONS[entry.mood], label: t(moodKey(entry.mood)) } : null,
@@ -116,7 +119,7 @@ const EntryCard = memo(function EntryCard({ trip, entry, date, onPress }: { trip
     .filter(Boolean)
     .join('. ');
   return (
-    <View style={[{ backgroundColor: theme.cardRaised, borderRadius: radius.l, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line, overflow: 'hidden' }, shadowOf(theme, 'low')]}>
+    <View style={[elevated(theme, 'low'), { borderRadius: radius.l, overflow: 'hidden', borderLeftWidth: 4, borderLeftColor: accent.strong }]}>
       <PressableScale
         accessibilityRole="button"
         accessibilityLabel={t('journal.entry.open', { day: date, summary })}

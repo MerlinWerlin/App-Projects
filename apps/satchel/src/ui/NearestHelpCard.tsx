@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { Text, View } from 'react-native';
 import { useApp } from '../state/app.tsx';
-import { fonts, radius, shadowOf, space, TOUCH } from '../theme/tokens.ts';
+import { elevated, fonts, radius, space, TOUCH } from '../theme/tokens.ts';
 import { IconBadge } from './hero.tsx';
 import { PressableScale } from './kit.tsx';
 
@@ -25,10 +25,7 @@ export function NearestHelpCard() {
         paddingHorizontal: space.l,
         paddingVertical: space.m,
         borderRadius: radius.l,
-        borderWidth: theme.dark ? 1 : 0,
-        borderColor: theme.line,
-        backgroundColor: theme.cardRaised,
-        ...shadowOf(theme, 'low'),
+        ...elevated(theme, 'low'),
       }}
     >
       <IconBadge name="medkit-outline" tone="danger" />

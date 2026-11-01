@@ -77,6 +77,7 @@ import { setPersisted, usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { fonts, radius, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
 import { FadeInView, IconBadge, ProgressBar, type Tone } from '../../src/ui/hero.tsx';
+import { AccentHeading, TripAccentBand, useTripAccent } from '../../src/ui/TripAccentBand.tsx';
 import { CATEGORY_ICONS, CATEGORY_KEYS, CATEGORY_TONES, ReceiptThumb, ReceiptViewer, SpendingInsights } from '../../src/ui/insights.tsx';
 import { CashCard } from '../../src/ui/CashCard.tsx';
 import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, Screen, TextField, ToggleRow, Warning } from '../../src/ui/kit.tsx';
@@ -108,6 +109,8 @@ function SpendingBody({ trip }: { trip: Trip }) {
   const { t, theme, lang, reduceMotion } = useApp();
   const { saveTrip } = useTrips();
   const insets = useSafeAreaInsets();
+  // T120: the trip's own accent (from its cover) on the screen's heading and the list heading.
+  const accent = useTripAccent(trip);
   const list = useRef<FlatList<Expense>>(null);
   const s = useMemo(() => readSpending(trip), [trip]);
   const home = s.budget?.currency ?? null;
@@ -241,6 +244,7 @@ function SpendingBody({ trip }: { trip: Trip }) {
 
   const header = (
     <View style={{ gap: space.m, marginBottom: space.s }}>
+      <TripAccentBand trip={trip} />
       <Summary s={s} sum={sum} home={home} onRates={toRates} onBudget={() => { setEditingBudget(true); toRates(); }} />
       {form ? (
         <FadeInView>
@@ -252,9 +256,7 @@ function SpendingBody({ trip }: { trip: Trip }) {
       <TogetherSection trip={trip} save={save} />
       <CashCard trip={trip} />
       {sorted.length ? (
-        <View accessible accessibilityRole="header">
-          <Label>{t('spending.list')}</Label>
-        </View>
+        <AccentHeading accent={accent} text={t('spending.list')} />
       ) : (
         <EmptyState art="coins" title={t('spending.emptyTitle')} body={t('spending.emptyBody')} />
       )}

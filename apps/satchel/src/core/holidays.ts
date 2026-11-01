@@ -208,9 +208,9 @@ const MAUNDY = 'Maundy Thursday';
 const CHRISTMAS_EVE = 'Christmas Eve';
 
 /**
- * New Zealand's Matariki, set in law year by year (Te Kāhui o Matariki Public Holiday Act 2022 schedule). T112: 2031-2035
- * added from the same schedule; each is a Friday within four days of the Pipiri last-quarter moon (checked offline in
- * holidays.test.ts). Re-check against the published schedule online.
+ * New Zealand's Matariki, set in law year by year (Te Kāhui o Matariki Public Holiday Act 2022, Schedule 1). Every year
+ * 2023-2035 checked online on 2026-11-01 against https://www.legislation.govt.nz/act/public/2022/14/en/latest/ (T58);
+ * pinned in followups100.test.ts.
  */
 const MATARIKI: Record<number, string> = {
   2023: '07-14',

@@ -12,7 +12,7 @@ import { DIET_IDS, MENU_LANGS, parseMenuLangParam, searchMenu, toggleDiet, watch
 import type { Key } from '../src/i18n/en.ts';
 import { useApp } from '../src/state/app.tsx';
 import { fadeIn } from '../src/theme/motion.ts';
-import { radius, shadowOf, space, TOUCH, typeScale } from '../src/theme/tokens.ts';
+import { elevated, radius, space, TOUCH, typeScale } from '../src/theme/tokens.ts';
 import { FadeInView, HeroHeader, SectionHeader } from '../src/ui/hero.tsx';
 import { Body, Button, Chip, PressableScale, TextField, ToggleRow, Warning } from '../src/ui/kit.tsx';
 import { MENU_TABLE, useMenuDiet, useMenuLang } from '../src/ui/menu.ts';
@@ -142,16 +142,15 @@ export default function MenuScreen() {
           accessibilityHint={t('menu.rowHint')}
           onPress={() => router.push({ pathname: '/menu-card', params: { lang, word: w.id } })}
           style={[
+            elevated(theme, 'low'),
             {
               minHeight: TOUCH,
               gap: space.s,
               padding: space.l,
               borderRadius: radius.l,
-              backgroundColor: theme.cardRaised,
               borderWidth: watch ? 1.5 : theme.dark ? 1 : 0,
               borderColor: watch ? theme.danger : theme.line,
             },
-            shadowOf(theme, 'low'),
           ]}
         >
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>

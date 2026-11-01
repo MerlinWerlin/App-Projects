@@ -8,7 +8,7 @@ import { Text, View } from 'react-native';
 import { entriesOn, journalStats, journalToday, showTodayPrompt } from '../../core/journal.ts';
 import type { Trip } from '../../core/model.ts';
 import { useApp } from '../../state/app.tsx';
-import { radius, shadowOf, space, typeScale } from '../../theme/tokens.ts';
+import { elevated, radius, shadowOf, space, typeScale } from '../../theme/tokens.ts';
 import { FadeInView, GradientFill, IconBadge } from '../hero.tsx';
 import { PressableScale } from '../kit.tsx';
 
@@ -82,8 +82,8 @@ export function TripJournalSlot({ trip }: { trip: Trip }) {
       accessibilityHint={t('journal.slot.hint')}
       onPress={openJournal}
       style={[
-        { backgroundColor: theme.cardRaised, borderRadius: radius.l, padding: space.l, gap: space.s, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line },
-        shadowOf(theme, 'low'),
+        elevated(theme, 'low'),
+        { borderRadius: radius.l, padding: space.l, gap: space.s },
       ]}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
