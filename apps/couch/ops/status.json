@@ -1,12 +1,12 @@
 {
   "stage": "owner-tested",
   "trial_kit": true,
-  "oversight_seen": 153,
-  "tests": "1851 pass (bun, Jest-compatible)",
+  "oversight_seen": 225,
+  "tests": "1932 pass (bun, Jest-compatible)",
   "typecheck": "core clean; app/ and src/ui clean against offline stubs (new, D75-1); full app tsc with real types needs PC verification",
-  "last_run": "2026-10-26 11:51 Sydney (run 95)",
-  "headline": "TestFlight build: waiting. Couch 1.0.2 (Google Cast route for your TCL, honest cast status, tip jar removed) was sent to TestFlight at 11:26 Sydney (PR #103) and is building on GitHub's Mac; no failure reported yet.",
-  "next_for_owner": "1) When TestFlight 1.0.2 shows up, install it and answer docs/TRIAL.md \"25 Oct late\" questions 4-6 with your TCL (1-3 work over the air now). 2) For App Review: App Privacy ('Data Not Collected'), review contact, screen recording (docs/RELEASE_CHECKLIST.md). Full install/typecheck needs PC verification (npm registry unreachable from the cloud).",
+  "last_run": "2026-11-01 14:10 Sydney (run 167)",
+  "headline": "Your later 1 Nov fixes are in the build (Bonjour discovery, Show AirPlay TVs, cast error reasons, Cast port from Bonjour), and a failed Google TV pairing now offers \"casting only\" instead of a dead end.",
+  "next_for_owner": "1) Restart Couch twice and answer docs/TRIAL.md \"1 Nov\" questions 1-8 with your TCL. 2) On the newest TestFlight build, try pairing the TCL as a remote. 3) For App Review: App Privacy ('Data Not Collected'), review contact, screen recording (docs/RELEASE_CHECKLIST.md). Full install/typecheck needs PC verification (npm registry unreachable from the cloud).",
   "screenshots": {
     "dir": "store/screenshots/publish",
     "size": "1320x2868",

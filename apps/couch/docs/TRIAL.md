@@ -6,6 +6,19 @@ Next TestFlight build: 1.0.2 (Google Cast for your TCL, honest cast status, no t
 
 Please answer the yes/no questions first (copy them into a comment on the Couch build page); how to open Couch is below them.
 
+## New since your last test (1 Nov, over the air): Add TV and your TCL
+These came from your TestFlight notes on 1 Nov (fixed in your own chats and now in the build too). Restart Couch twice to get them.
+1. Add TV: does the sheet stay still while it scans, and do taps work straight away? yes / no
+2. Add TV with the TCL on: is it found as a Google TV? If not, does the scan report at the bottom say what was tried? (screenshot it) yes / no
+3. If the TCL is found but can't be controlled yet: does "Use for casting photos and videos" save it, and does it show in TVs as "Casting only"? yes / no
+4. Do the bottom tabs look like separate tiles with readable labels? yes / no
+5. Cast > AirPlay: does it now open the Screen Mirroring guide (instead of switching the TV)? yes / no
+Pairing the TCL as a full remote needs the next TestFlight build (the Mac build); do not expect it over the air.
+Later on 1 Nov (your chats #159-#168, now in the build too):
+6. Cast > AirPlay > Screen Mirroring page: is there a "Show AirPlay TVs" button that opens the iPhone's AirPlay list? yes / no
+7. Cast a photo to the TCL: does it now reach the TV? If not, does the red line end with the reason in brackets? (screenshot it) yes / no
+8. On the newest TestFlight build (Bonjour discovery): pair the TCL with the code it shows. If pairing fails, is there a "Use for casting photos and videos" button under the error, and does it save the TV as "Casting only"? yes / no
+
 ## New since your last test (25 Oct late): your TCL Google TV
 Thanks for the TV model. Two fixes. The first is over the air. The second needs TestFlight 1.0.2, which is building now (sent 26 Oct 11:26 Sydney).
 Over the air (restart Couch twice), Cast tab with your TV connected:
