@@ -1,5 +1,5 @@
 {
-  "mode": "build",
-  "note": "Couch 1.0.2: Google Cast for Google TVs (new native TLS socket, behind one switch), honest cast status, tip jar removed, Plus A$3.99",
+  "mode": "update",
+  "note": "Couch 1.0.2: also finds Google TVs (e.g. TCL) from their casting description",
   "ascAppId": "6826135134"
 }
