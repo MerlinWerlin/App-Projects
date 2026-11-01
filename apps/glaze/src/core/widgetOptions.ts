@@ -241,28 +241,106 @@ export function placeArt(art: Box, box: Box, fit: WidgetOptionFit = 'fit'): ArtP
 
 // ------------------------------------------------------------------ menu
 
-/** The options for one size, in pack order; derived (v1) options put the best-matching art first. */
+const HOME_SIZES: readonly HomeOptionSize[] = ['small', 'medium', 'large'];
+
+/**
+ * The options for one size. T201 (owner-1101d #4: "any art piece in any size"): a Home Screen size
+ * offers EVERY option that suits some Home Screen size, fitted (placeArt) when its aspect differs.
+ * The ones the pack suggests for this size come first (pack order; derived v1 options put their own
+ * size first, then the best aspect match), then the rest by aspect match, then pack order. The
+ * Lock Screen only offers the options that list `lock`.
+ */
 export function optionsForSize(options: readonly WidgetOption[], size: WidgetOptionSize): WidgetOption[] {
-  const list = options.filter((o) => o.sizes.includes(size));
-  if (size === 'lock' || !list.every((o) => o.derived)) return list;
+  if (size === 'lock') return options.filter((o) => o.sizes.includes('lock'));
   const box = OPTION_SIZE_POINTS[size];
-  return list
-    .map((o, i) => ({ o, i, m: o.sizes[0] === size ? 2 : aspectMatch({ w: o.width, h: o.height }, box) }))
-    .sort((a, b) => b.m - a.m || a.i - b.i)
+  const allDerived = options.every((o) => o.derived);
+  return options
+    .filter((o) => o.sizes.some((s) => (HOME_SIZES as readonly string[]).includes(s)))
+    .map((o, i) => {
+      const listed = o.sizes.includes(size);
+      const m = aspectMatch({ w: o.width, h: o.height }, box);
+      // Rank: listed first (derived: own size highest, then by aspect), then unlisted by aspect.
+      const rank = listed ? (allDerived ? (o.sizes[0] === size ? 4 : 2 + m) : 3) : m;
+      return { o, i, rank };
+    })
+    .sort((a, b) => b.rank - a.rank || a.i - b.i)
     .map((x) => x.o);
 }
 
 export type WidgetOptionSection = { kind: WidgetOptionKind; options: WidgetOption[] };
 
-/** Menu sections for one size: one per kind that has options, in WIDGET_OPTION_KINDS order. */
-export function widgetOptionSections(options: readonly WidgetOption[], size: WidgetOptionSize): WidgetOptionSection[] {
-  const list = optionsForSize(options, size);
-  return WIDGET_OPTION_KINDS.map((kind) => ({ kind, options: list.filter((o) => o.kind === kind) })).filter((s) => s.options.length > 0);
+// ------------------------------------------------------------------ shelf order (T201)
+
+/**
+ * T201 (owner-1101d #4): the theme-matched pieces that do a job, in the order they are shown:
+ * habits, countdown, calendar / date, clock, battery, then photo and quote. Plain `art` comes after.
+ */
+export const PRACTICAL_KINDS: readonly WidgetOptionKind[] = Object.freeze([
+  'habits',
+  'countdown',
+  'calendar',
+  'date',
+  'clock',
+  'battery',
+  'photo',
+  'quote',
+] as WidgetOptionKind[]);
+/** Every option kind in shelf order: the practical kinds, then `art`. */
+export const WIDGET_SHELF_KINDS: readonly WidgetOptionKind[] = Object.freeze([...PRACTICAL_KINDS, 'art'] as WidgetOptionKind[]);
+
+export function isPracticalKind(kind: WidgetOptionKind): boolean {
+  return kind !== 'art';
 }
 
-/** The option to show as chosen: the remembered id if it is still offered for this size, else the first. */
-export function selectedOption(options: readonly WidgetOption[], size: WidgetOptionSize, id: string | null | undefined): WidgetOption | null {
+/**
+ * The three groups of every widgets screen (theme page > Widgets and the Widgets tab), in order:
+ * (a) practical theme-matched pieces (Make it live where possible), (b) the theme's art pieces,
+ * (c) the standard widget types (clock, battery, date, calendar…) drawn in the theme's palette.
+ */
+export type WidgetShelfGroup = 'practical' | 'art' | 'standard';
+export const WIDGET_SHELF_ORDER: readonly WidgetShelfGroup[] = Object.freeze(['practical', 'art', 'standard'] as WidgetShelfGroup[]);
+
+export type WidgetShelfBlock<S> =
+  | { group: 'practical'; sections: WidgetOptionSection[] }
+  | { group: 'art'; options: WidgetOption[] }
+  | { group: 'standard'; items: S[] };
+
+/**
+ * The one ordering every widgets screen uses (pure; T201). For a size: the practical options
+ * grouped per kind in PRACTICAL_KINDS order, then the art options, then the given standard widgets
+ * (kept in their order). Empty groups are left out. Within a group, optionsForSize's order.
+ */
+export function widgetShelf<S = never>(options: readonly WidgetOption[], size: WidgetOptionSize, standard: readonly S[] = []): WidgetShelfBlock<S>[] {
   const list = optionsForSize(options, size);
+  const sections = PRACTICAL_KINDS.map((kind) => ({ kind, options: list.filter((o) => o.kind === kind) })).filter((s) => s.options.length > 0);
+  const art = list.filter((o) => o.kind === 'art');
+  const out: WidgetShelfBlock<S>[] = [];
+  for (const group of WIDGET_SHELF_ORDER) {
+    if (group === 'practical' && sections.length > 0) out.push({ group, sections });
+    if (group === 'art' && art.length > 0) out.push({ group, options: art });
+    if (group === 'standard' && standard.length > 0) out.push({ group, items: [...standard] });
+  }
+  return out;
+}
+
+/** Menu sections for one size: one per kind that has options, practical kinds first, `art` last (widgetShelf). */
+export function widgetOptionSections(options: readonly WidgetOption[], size: WidgetOptionSize): WidgetOptionSection[] {
+  const out: WidgetOptionSection[] = [];
+  for (const b of widgetShelf(options, size)) {
+    if (b.group === 'practical') out.push(...b.sections);
+    else if (b.group === 'art') out.push({ kind: 'art', options: b.options });
+  }
+  return out;
+}
+
+/** The options of a size flattened in shelf order (what the menu shows, top to bottom). */
+export function shelfOptions(options: readonly WidgetOption[], size: WidgetOptionSize): WidgetOption[] {
+  return widgetOptionSections(options, size).flatMap((s) => s.options);
+}
+
+/** The option to show as chosen: the remembered id if it is still offered for this size, else the first on the shelf. */
+export function selectedOption(options: readonly WidgetOption[], size: WidgetOptionSize, id: string | null | undefined): WidgetOption | null {
+  const list = shelfOptions(options, size);
   return list.find((o) => o.id === id) ?? list[0] ?? null;
 }
 

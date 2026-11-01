@@ -2049,7 +2049,7 @@
   },
   {
    "id": "T150",
-   "status": "parked",
+   "status": "done",
    "tags": [
     "ops"
    ],
@@ -2058,7 +2058,7 @@
    "title": "Repo bundle is 10.6 MB (base64 14.4 MB; WORKFLOW asks < 10 MB, artifact hard cap 16 MB per file): shrink it, e.g. palette-quantise the brand/splash PNGs and store shots, or keep large rendered previews out of git and regenerate them",
    "deps": [],
    "blocked_on": null,
-   "note": "run 118: repack -adf --window=250 saves nothing; 3 refs only; the size is history (old store-shot/icon PNG versions), and re-compressing current PNGs would ADD new blobs. Only a history squash shrinks it, which would drop the only canonical history: not done. 10.6 MB bundle / 14.1 MB base64 is under the 16 MB artifact cap; keep new large binaries out (regenerate store shots at render time) and revisit if base64 passes 15 MB. Run 193: base64 is now 15.34 MB (bundle 11.50 MB raw) against the 16 MB artifact cap, ~1.4 MB headroom; recent growth ~16 KB raw / ~22 KB base64 per run, so roughly 30-60 more runs. A history squash is still NOT safe: App-Projects apps/glaze/SHIP_BASE.txt pins our commit d684762, so rewriting hashes would break auto-ship. Needs an overseer decision (e.g. squash + re-pin SHIP_BASE in one coordinated step, or split the bundle into two artifact files with a prompt change) before base64 reaches ~15.9 MB. | run 194: D215-1 adopted: ops/bundle-check.sh repacks before every publish (hashes unchanged) and guards new/changed PNG/JPG > 100 KB above 15.6 MB; size logged in RUNLOG each run. No history rewrite. | run 205: superseded by T195 (owner item 11): archive + slim-bundle swap plan, docs/REPO_SPACE.md."
+   "note": "run 118: repack -adf --window=250 saves nothing; 3 refs only; the size is history (old store-shot/icon PNG versions), and re-compressing current PNGs would ADD new blobs. Only a history squash shrinks it, which would drop the only canonical history: not done. 10.6 MB bundle / 14.1 MB base64 is under the 16 MB artifact cap; keep new large binaries out (regenerate store shots at render time) and revisit if base64 passes 15 MB. Run 193: base64 is now 15.34 MB (bundle 11.50 MB raw) against the 16 MB artifact cap, ~1.4 MB headroom; recent growth ~16 KB raw / ~22 KB base64 per run, so roughly 30-60 more runs. A history squash is still NOT safe: App-Projects apps/glaze/SHIP_BASE.txt pins our commit d684762, so rewriting hashes would break auto-ship. Needs an overseer decision (e.g. squash + re-pin SHIP_BASE in one coordinated step, or split the bundle into two artifact files with a prompt change) before base64 reaches ~15.9 MB. | run 194: D215-1 adopted: ops/bundle-check.sh repacks before every publish (hashes unchanged) and guards new/changed PNG/JPG > 100 KB above 15.6 MB; size logged in RUNLOG each run. No history rewrite. | run 205: superseded by T195 (owner item 11): archive + slim-bundle swap plan, docs/REPO_SPACE.md. | run 207: resolved by the T195 slim swap (base64 ~7.9 MB)."
   },
   {
    "id": "T151",
@@ -2592,7 +2592,7 @@
   },
   {
    "id": "T195",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "owner-1101",
@@ -2600,7 +2600,8 @@
    ],
    "source": "owner addendum 1 Nov item 11",
    "title": "Repo space: archive full history on the build page, then swap to a slim bundle (ops/slim-bundle.sh) once the overseer re-pins SHIP_BASE; docs/REPO_SPACE.md",
-   "note": "run 205: measured (full 15.6 MB vs slim 7.9 MB base64), full-history archive published as history/repo-full-2026-11-01.bundle.b64.txt, slim script dry-run OK (identical tree). Swap blocked on overseer: D215-1 forbids rewriting history and auto-ship's SHIP_BASE (f658d83) must be re-pinned to the new root in the same step. | run 206 (D223-1, oversight v223): slim candidate prepared with ops/slim-candidate.sh: root = tree of SHIP_BASE f658d83 (new id 301a9f0, stable on every rebuild: fixed dates/identity), then each later first-parent commit replayed with its own tree. Published as history/repo-slim-candidate.bundle.b64.txt (~7.9 MB) + docs/REPO_MAP.json (old->new ids); live repo.bundle.b64.txt untouched. Swap only when App-Projects SHIP_BASE names a NEW id from the map. If auto-ship advances SHIP_BASE first, the next rebuild uses the new SHIP_BASE as root (new map)."
+   "note": "run 205: measured (full 15.6 MB vs slim 7.9 MB base64), full-history archive published as history/repo-full-2026-11-01.bundle.b64.txt, slim script dry-run OK (identical tree). Swap blocked on overseer: D215-1 forbids rewriting history and auto-ship's SHIP_BASE (f658d83) must be re-pinned to the new root in the same step. | run 206 (D223-1, oversight v223): slim candidate prepared with ops/slim-candidate.sh: root = tree of SHIP_BASE f658d83 (new id 301a9f0, stable on every rebuild: fixed dates/identity), then each later first-parent commit replayed with its own tree. Published as history/repo-slim-candidate.bundle.b64.txt (~7.9 MB) + docs/REPO_MAP.json (old->new ids); live repo.bundle.b64.txt untouched. Swap only when App-Projects SHIP_BASE names a NEW id from the map. If auto-ship advances SHIP_BASE first, the next rebuild uses the new SHIP_BASE as root (new map). | run 207: overseer re-pinned App-Projects SHIP_BASE to 19a742e (App-Projects 1db00f2, D223-1). Swapped: repo.bundle.b64.txt is now the slim history (root 301a9f0 = tree of old f658d83; tip tree identical to old 80c783e, checked). Full history stays at history/repo-full-2026-11-01.bundle.b64.txt; old->new ids in docs/REPO_MAP.json.",
+   "done_commit": "run 207"
   },
   {
    "id": "T196",
@@ -2623,11 +2624,139 @@
    ],
    "source": "owner addendum 1 Nov item 12",
    "title": "Find apps: next verified batch toward ~1,500 (WebFetch itunes lookup, 1-3 ids per call; retry run 205's possible false negatives one id at a time: Family Link, Lifesum, Xero, NetNewsWire, Genius Scan, FotMob, FlightAware, Hill Climb Racing 2)"
+  },
+  {
+   "id": "T198",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101d"
+   ],
+   "source": "owner brief 1 Nov 10:31 Sydney (owner-1101d)",
+   "title": "#1 Remove pets: Pets tab, Island pets, every Live Activity / Dynamic Island feature (code, NSSupportsLiveActivities, activity widget, strings, tests). Tabs: Themes · Widgets · Icons · Wallpapers (Wallpapers tidied in 4th position). Park pet notes/art in docs/future/pets-game/README.md, linked from docs/PLAN.md.",
+   "done_commit": "1e7ef05"
+  },
+  {
+   "id": "T199",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101d"
+   ],
+   "source": "owner brief 1 Nov 10:31 Sydney (owner-1101d)",
+   "title": "#2 App icon + startup: revert icon/splash to the 25 Oct Prism diamond (docs/mascot/previous-prism-diamond); full-screen premium intro (light beam sweeps the dark screen and splits into the six glaze colours, then Themes), <=1.5 s, calm, no bounce, Reduce Motion fade. Workboard need glaze-prism-image.",
+   "done_commit": "507e621"
+  },
+  {
+   "id": "T200",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101d"
+   ],
+   "source": "owner brief 1 Nov 10:31 Sydney (owner-1101d)",
+   "title": "#3 Theme page: 'Set it up' heading much bolder/more prominent; remove the What's inside / Palette / Style section; show the palette inside the matching-widgets area ('these widgets are made from this palette').",
+   "done_commit": "3565f0b"
+  },
+  {
+   "id": "T201",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101d"
+   ],
+   "source": "owner brief 1 Nov 10:31 Sydney (owner-1101d)",
+   "title": "#4 Widgets order everywhere (theme page > Widgets and Widgets tab): practical theme-matched pieces first (habits, countdown, calendar/date, clock, battery; Make it live), then the theme's art pieces, then standard widget types in the theme palette. Fix: theme page > Widgets showed art but not practical ones. Any art piece choosable for any size. Applying reloads widget timelines. Cropped art (Firefly Grove fox): placeArt/setWidgetArt + Seamless path use pack v2 options, never scale-to-fill.",
+   "done_commit": "353d28b"
+  },
+  {
+   "id": "T202",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101d"
+   ],
+   "source": "owner brief 1 Nov 10:31 Sydney (owner-1101d)",
+   "title": "#5 Icon install: the profile ('Install all at once') is the main method; Shortcuts only as a fallback link. Bug: a new theme's profile added icons instead of replacing: one stable PayloadIdentifier, stable per-app payload UUIDs from install id + app, PayloadRemovalDisallowed false; tests on the generated XML; say plainly if any app still needs a tap.",
+   "done_commit": "65e9356"
+  },
+  {
+   "id": "T203",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101d"
+   ],
+   "source": "owner brief 1 Nov 10:31 Sydney (owner-1101d)",
+   "title": "#6 Widget render check: script renders every widget option of every bundled + remote theme at small/medium/large to PNG/JPG contact sheets (same placement maths as the native widget) under docs/widget_snapshots/; review each run; fix crops. macOS SwiftUI ImageRenderer snapshots only if feasible (needs a CI change outside this task's write access).",
+   "done_commit": "dca2ba8"
+  },
+  {
+   "id": "T204",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1101d"
+   ],
+   "source": "owner brief 1 Nov 10:31 Sydney (owner-1101d)",
+   "title": "#7 docs/TRIAL.md 'New since your last test' yes/no questions for items 1-6, TestFlight wording.",
+   "done_commit": "run 208"
+  },
+  {
+   "id": "T205",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "owner-1101d",
+    "follow-up"
+   ],
+   "source": "run 208 widget snapshot review (T203)",
+   "title": "Medium widgets: every remote v2 piece is 1024x1024 square, so in medium it is a 150 pt square between blurred side panels (36% of the widget). Ask the pack side (App Factory chat / Codex batch) for wide medium art (~2.14:1) per piece in pack v3; app keeps fit-never-crop."
+  },
+  {
+   "id": "T206",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "owner-1101d",
+    "follow-up"
+   ],
+   "source": "run 208 widget snapshot review (T203)",
+   "title": "Practical art has fixed numbers drawn in (cloud/meadow/rainlight dates '29 THU OCT', '14 DAYS' countdowns, '25:00', '3/5' habits, '78% BATTERY', fixed clock hands): either the pack ships number-free art and the widget draws live values on top, or label these pieces as art. Rainlight/cloud date text is 3-4 pt in small/medium."
+  },
+  {
+   "id": "T207",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "owner-1101d",
+    "follow-up"
+   ],
+   "source": "run 208 widget snapshot review (T203)",
+   "title": "Widget menu polish from snapshots: bundled 'Art n' names change between sizes (stable names per piece); 'Rehearsal countdown' + Live badge truncates in the small card; Widgets tab menu header still says 'This theme / Widget art' though practical pieces come first."
+  },
+  {
+   "id": "T208",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "owner-1101d",
+    "follow-up"
+   ],
+   "source": "run 208 widget snapshot review (T203)",
+   "title": "WidgetArtMenu previews differ from native: wallpaper background preview shows whole wallpaper (native crops under slot), blur preview radius 24 no veil vs native CIGaussianBlur max(12, 6%) + 25% veil; theme-page Seamless preview sizes from HERO_REFERENCE_SIZES not real v2 size."
   }
  ],
  "priority_order": {
   "note": "run 191: oversight v212 (D211-1 still open, no new directives); only cloud-safe item T181 string retirement; rest waits on owner/PC or D130-2 holds. run 189: owner-1031 brief (manual fire, docs/OWNER_1031.md) outranks the backlog: T177-T180. run 188: T173 closed (all seven screens sliced); T176 Icons/Wallpapers/Live premium slices done (JS only, D130-2). run 187: oversight v210 lifted D206-1/D207-1 (PR #131 merged); T173 onboarding + Themes browse, T168 done (JS only, D130-2). run 185: D207-1 (≤2 small JS-only tasks): T175 + T173 theme-detail apply skeleton; no native. run 184: T173 Install/Plus/Settings slices + T166 + T156 done; D206-1 still holds native code (PR #128 result unreadable from the cloud). run 183: T173 slices continue every run (next Install flow); D206-1 holds new native code until a build with glaze-home-scan is confirmed green. run 182: owner-1030b brief (Jared's chat 30 Oct evening, synced from App-Projects 2b133ce) outranks the backlog: T169-T172 then T173 premium UI every run. run 179: owner-1030 brief (manual fire, docs/OWNER_1030.md) outranks the backlog: A (T159-T161) and C (T162) first, then B (T163-T164), D (T165). run 132: PR 107 (T155 widget/theme/icon repairs + T158 Island pets, v1.0.1) synced from App-Projects 1f90aa7; T157 done. 26 Oct owner feedback supersedes the old bulk/app-park question: bulk install worked. Deliver the widget/theme/icon fixes and validate the next native build. run 120: owner brief 25 Oct 21:29 (fb-1025b): T151-T154 done; T155 owner retest decides bulk install / app park. run 104: owner decision 24 Oct 21:03 — finish Glaze 'good enough to ship' around themes, icons, widgets, wallpaper packs; continuous loop parked (T137, D134-1), Shortcuts install default (T138), copy repositioned (T139); next = owner retest T129 on the next production-native TestFlight build. run 103: fb-1024e C corrected by the owner (continuous loop on iOS 26 animated artwork) as T135, plus T136 compile audit of A/B (D133-2: land A+B+C in one native build). run 101: fb-1024e (owner test 24 Oct evening on the native TestFlight build: 'none of the features are currently working') T125-T128 outrank everything. run 90: fb-1023 (owner 23 Oct evening, D121-1) A+B, T52, C, D done; T116 mascot follow-up held until the owner picks. run 78: D110-1 T111 done (kit names its commit); no motion or Themes-screen changes until the owner's T109 retest. run 77: fb-1022c (owner 22 Oct evening) T110 done first (outranks everything except trial blockers): bounce removed, calm fade. run 75: idle per D106-1, waiting on the owner retest (T109, T105). run 74: T107 (fb-1022-perf), T108, T106 done, T105 waits on the iPhone URL check; T109 = owner's device retest of the bubble lag. fb-1022-perf (owner follow-up 22 Oct, D104-1): T107 outranks everything except trial blockers, then T108 (D104-2), T105, T106. fb-1022 (owner test 22 Oct): T99-T104 outrank everything except trial blockers; G1-G4 first, then G5. Run 73: T99-T104 done; next T105, T106. market-1018 (owner 18 Oct): these outrank everything except trial blockers and open owner-comment tasks; ranked by user want x build cost (MARKET.md); shots-1018 (owner screenshots 18 Oct) tasks T70-T77 merged in; D72-2: one screen per commit, Live/loop editor screen last, store shots (T67) after the v2 migration; D78-1 (run 55): T86 then T87 then T85; T64/T68/weather held (D77-2); run 55: T85-T88 done; next T91 grid fix, T89, T90, then T79 Swift v2 reader; v80 D79-1 (run 56): T89 app side, T91, T90; D79-2 → T92; no new Swift (T79, T74, T93) until the owner's dev build log; run 56: T89 (app), T90, T91, T92 done; next T95 bug fix, T94, T96; Swift (T79/T74/T93) still held by D79-1; v81 D81-1 (run 57): T95, T96, T94 done one per commit; T76 collage maker done (not held); next T97, T80 needs Swift so held with T79/T74/T93 (D81-2), T64/T68/weather held",
   "order": [
+   "T198",
+   "T199",
+   "T200",
+   "T201",
+   "T202",
+   "T203",
+   "T204",
    "T197",
    "T195",
    "T183",

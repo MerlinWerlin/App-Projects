@@ -142,9 +142,9 @@ public class GlazeWidgetBridgeModule: Module {
       } catch {
         return false
       }
-      if #available(iOS 14.0, *) {
-        WidgetCenter.shared.reloadTimelines(ofKind: "GlazeSeamless")
-      }
+      // T201 (owner-1101d #4): reload every timeline (WidgetCenter.reloadAllTimelines), so the
+      // GlazeSeamless widget and anything else showing the theme pick the new image up at once.
+      GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }
 
@@ -208,9 +208,9 @@ public class GlazeWidgetBridgeModule: Module {
       } catch {
         return false
       }
-      if #available(iOS 14.0, *) {
-        WidgetCenter.shared.reloadTimelines(ofKind: "GlazeSeamless")
-      }
+      // T201 (owner-1101d #4): reload every timeline (WidgetCenter.reloadAllTimelines), so the
+      // GlazeSeamless widget and anything else showing the theme pick the new image up at once.
+      GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }
 

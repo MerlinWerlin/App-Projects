@@ -55,19 +55,3 @@
 "Seamless" = "Nahtlos";
 "Art that floats on your wallpaper. Set it up in Glaze." = "Kunst, die über deinem Hintergrundbild schwebt. Richte sie in Glaze ein.";
 "Set up in Glaze" = "In Glaze einrichten";
-
-/* Island pets: generated from src/i18n/pets.ts */
-"pet.open" = "Tippe, um dein Tier zu besuchen";
-"pet.happy" = "Fröhlich";
-"pet.playful" = "Verspielt";
-"pet.sleepy" = "Schläfrig";
-"pet.content" = "Zufrieden";
-"pet.hungry" = "Hungrig";
-"pet.lifeSleeping" = "Tief und fest am Schlafen";
-"pet.lifeStir" = "Regt sich und schläft wieder ein";
-"pet.lifeWaking" = "Wacht mit einem großen Strecken auf";
-"pet.lifeIdle" = "Sitzt ruhig da";
-"pet.lifeEating" = "Nascht etwas";
-"pet.lifePlaying" = "Spielt";
-"pet.lifeWandering" = "Macht einen kleinen Spaziergang";
-"pet.lifeHappy" = "Liebt das!";

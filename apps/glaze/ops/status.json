@@ -1,18 +1,19 @@
 {
-  "tests": "1543/1543 core tests green; UI typecheck against stubs clean",
-  "typecheck": "core only (registry unreachable)",
-  "last_run": "2026-11-01 10:15 Sydney (run 206)",
-  "stage": "owner-tested",
-  "oversight_seen": "v223 (1793486978-0b39): D223-1 followed (slim candidate prepared, no swap); D211-1 open; no patches.",
-  "headline": "Repo slim-down candidate ready (7.9 MB); swap waits on one App Factory chat step. No app change this run.",
-  "next_for_owner": "1) When the new TestFlight build arrives (auto-ship, native build), open it and answer docs/TRIAL.md \"New since your last test (1 Nov: owner-1101)\". 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud.)",
-  "trial_kit": true,
-  "trial_kit_commit": "0ab5643",
-  "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested",
-  "slim_candidate": {
-    "ship_base_old": "f658d83",
-    "ship_base_new": "301a9f0c3befc8516f2de44004455dd9be0f01fb",
-    "files": "history/repo-slim-candidate.bundle.b64.txt + docs/REPO_MAP.json on the build page",
-    "state": "waiting for the SHIP_BASE re-pin"
-  }
+ "tests": "1552/1552 core tests green; UI typecheck against stubs clean",
+ "typecheck": "core only (registry unreachable)",
+ "last_run": "2026-11-01 11:15 Sydney (run 208)",
+ "stage": "owner-tested",
+ "oversight_seen": "v223 (1793486978-0b39): D223-1 completed (SHIP_BASE re-pinned to 19a742e by the App Factory chat; slim bundle swapped in); D211-1 open; no patches.",
+ "headline": "Owner brief 1 Nov (owner-1101d): pets removed, Prism gem icon + full-screen intro, bolder theme page, widgets practical-first with reload, profile install replaces old icons, widget snapshot check. Needs the new TestFlight build.",
+ "next_for_owner": "1) When the new TestFlight build arrives (auto-ship, native build), open it and answer docs/TRIAL.md \"New since your last test (1 Nov, late morning: owner-1101d)\". 2) Say where the Prism image you picked is (Workboard glaze-prism-image). 3) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud.)",
+ "trial_kit": true,
+ "trial_kit_commit": "d7c016c",
+ "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested",
+ "slim_candidate": {
+  "state": "swapped in run 207",
+  "ship_base": "19a742e2dc1f7e84bf4519cb4407aa92d174024d",
+  "root": "301a9f0",
+  "full_history": "history/repo-full-2026-11-01.bundle.b64.txt",
+  "map": "docs/REPO_MAP.json"
+ }
 }

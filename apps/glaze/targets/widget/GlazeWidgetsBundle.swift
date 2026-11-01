@@ -20,7 +20,6 @@ struct GlazeWidgetsBundle: WidgetBundle {
     LockAccessoryWidget()
     GlazeHabitWidgetsBundle().body
     GlazeCatalogueWidgetsBundle().body
-    IslandPetActivity()
     // TODO(T10): "Live Lock" start/stop control. Needs an iOS 18 ControlWidget backed by an
     // App Intent that calls into the GlazeLivelock module (modules/glaze-livelock, reached from JS
     // via src/native/livelock.ts). The intent must run in the app process (openAppWhenRun or

@@ -6,14 +6,13 @@ import { Stack, type ErrorBoundaryProps } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState, type ReactNode } from 'react';
-import { AppState, View } from 'react-native';
+import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { durations } from '../src/theme/motion';
 import { INTRO_MS, startupReady } from '../src/core/introGlaze';
 import { I18nProvider, loadLocaleOverride, useT } from '../src/i18n';
 import { restoreDownloadedPacks } from '../src/native/packs';
-import { syncIslandPetOnOpen } from '../src/store/pets';
 import { syncWidgetThemeAtLaunch } from '../src/store/widgetTheme';
 import { textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
@@ -24,7 +23,7 @@ import { ToastProvider } from '../src/ui/Toast';
 SplashScreen.preventAutoHideAsync().catch(() => {});
 // Register downloaded packs' motifs while fonts load, before any screen reads the studio (T50).
 restoreDownloadedPacks().catch(() => {});
-// The native splash (the empty porcelain tile) hands over to IntroGlaze on its first frame; the two are drawn
+// The native splash (the unlit Prism diamond on the dark bg) hands over to IntroGlaze on its first frame; the two are drawn
 // identically, so this fade is invisible (POLISH rule 6).
 try {
   SplashScreen.setOptions({ fade: true, duration: durations.slow });
@@ -81,14 +80,6 @@ export default function RootLayout() {
     return () => clearTimeout(id);
   }, []);
 
-  // T192: the Island pet follows its day (sleep, wake, hungry) whenever Glaze opens or returns to the foreground,
-  // not only from the Pets screen. No-op in Expo Go. Delayed at launch to stay off startup.
-  useEffect(() => {
-    const id = setTimeout(() => { void syncIslandPetOnOpen(); }, 2500);
-    const sub = AppState.addEventListener('change', (state) => { if (state === 'active') void syncIslandPetOnOpen(); });
-    return () => { clearTimeout(id); sub.remove(); };
-  }, []);
-
   // Never an endless splash: go ahead after INTRO_MS.maxWait even if fonts or languages are still loading.
   const [timedOut, setTimedOut] = useState(false);
   useEffect(() => {
@@ -103,7 +94,7 @@ export default function RootLayout() {
     if (ready) SplashScreen.hideAsync().catch(() => {});
   }, [ready]);
 
-  // Opening: the glaze pours over the tile, then the intro fades over the app. In a store build the app's native
+  // Opening: a beam of light through the Prism diamond (full screen), then the intro fades over the app. In a store build the app's native
   // screens draw over any JS view above the navigator (Linework fb-1023), so the intro is a sibling after the app and
   // the app mounts only once the intro starts fading (onReveal), never on top of it. The intro keeps its place in the
   // tree before and after `ready`, so it never restarts.
@@ -175,7 +166,6 @@ function RootStack() {
       <Stack.Screen name="tips" options={{ title: t('tips.title') }} />
       <Stack.Screen name="habit-goals" options={{ title: t('tabs.widgetsTab.goals.title') }} />
       <Stack.Screen name="widget-studio" options={{ title: t('themeUi.widgetStudio.title') }} />
-      <Stack.Screen name="pets" options={{ title: t('pets.title') }} />
     </Stack>
   );
 }

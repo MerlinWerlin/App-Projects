@@ -1,8 +1,38 @@
-# Glaze mascot: Prism (plus the earlier concepts, fb-1023 D)
+# Glaze app icon: the Prism diamond (plus the earlier mascot concepts, fb-1023 D)
 
-## Decision (owner-1101 item 8, 1 Nov 2026): the app icon and mascot are Prism, the little prism creature
+## Decision (owner-1101d #2, 1 Nov 2026, 10:31): creature rejected, back to the Prism diamond
 
-![Prism the creature](mascot/prism-icon.png) ![Prism the mascot](mascot/prism-mascot.png)
+![The Prism diamond](mascot/previous-prism-diamond/icon-preview.png)
+
+Owner, 1 Nov 10:31: he dislikes the cute prism creature icon and its intro animation (*"doesn't go towards the male
+audience"*). So (T199):
+
+- **App icon, adaptive icons and splash are the 25 Oct Prism diamond again**: the gem with the beam of light
+  splitting into the six glaze colours. `assets/brand/icon.svg`, `icon-dark.svg`, `adaptive-foreground.svg` and
+  `adaptive-monochrome.svg` are verbatim copies of `docs/mascot/previous-prism-diamond/`; the PNGs are rendered from
+  them. Same file names, so `app.json` only changed the splash background. **Needs a new native build** (icons are
+  baked in; an over-the-air update can't change them).
+- **This is a stopgap until the owner's picked Prism image is found.** The Prism picture he chose on 25 Oct never
+  reached the repo (both the diamond and the creature were redrawn from descriptions). Workboard need
+  **glaze-prism-image**: when the image turns up it goes in `docs/mascot/picked-prism.png` and the icon is redrawn
+  from it.
+- **Splash** (`assets/brand/splash-icon.png`, same file for dark): the small unlit diamond alone on a transparent
+  canvas (no tile), on the dark app background `#0F0D12` (the `bg` token of dark mode) in both light and dark mode.
+- **Opening animation** (`src/ui/IntroGlaze.tsx`, full screen, 1.1 s + 80 ms pause + 320 ms fade = 1.5 s): it starts on
+  exactly the splash picture. A thin beam of light sweeps in from the upper left and settles on the diamond, the
+  diamond lights up, the light leaves its point as six soft colour bands fanning down to the bottom of the screen, a
+  glint appears, then everything fades to the Themes tab. Sine ease-in-out only; no springs, bounce, overshoot or size
+  change (the only movement is the beam's rotation). Reduce Motion (system or the Glaze setting) shows the finished
+  frame at once and simply fades.
+- **Files.** Geometry, colours and timings: `src/core/introGlaze.ts`. Rebuild with
+  `node scripts/brand/build-brand.mjs && python3 scripts/brand/flatten.py` (Playwright Chromium renders the PNGs). The
+  icons are RGB PNGs (about 420 KB): the diamond's soft gradients band badly as palette PNGs.
+- **The rejected creature** (icon previews, mascot SVG) is kept for reference in
+  `docs/mascot/rejected-prism-creature/`; it is not bundled.
+
+## Rejected (owner-1101 item 8, 1 Nov 2026 morning, T190): Prism, the little prism creature
+
+Superseded the same day by the decision above. Art in `docs/mascot/rejected-prism-creature/`.
 
 Owner, 1 Nov: drop the plain diamond prism look and use *"the cute prism creature"* as the app icon direction and the
 mascot, with a short cute startup animation; *"people get obsessive over cute shit."*
@@ -14,25 +44,13 @@ mascot, with a short cute startup animation; *"people get obsessive over cute sh
   stubby arms and two little feet, standing under a soft rainbow arch (with a cloud at each end) on the deep indigo
   Prism ground, with two sparkles.** If it isn't the creature you picked, say what's different (shape, colours, face)
   and it gets redrawn.
-- **App icon** (1024 × 1024, no text, full bleed, opaque): `assets/brand/icon.png` (+ `icon-dark.png`); Android
-  adaptive foreground (Prism inside the 66/108 safe zone on `#1C1442`) and a monochrome themed icon (white silhouette,
-  face cut out). Same file names as before, so `app.json` did not change. **Needs a new native build** (icons are
-  baked in; an over-the-air update can't change them).
-- **Mascot**: `assets/brand/mascot.svg` (the same drawing on transparency), preview `docs/mascot/prism-mascot.png`.
-- **Splash and opening animation** (`src/ui/IntroGlaze.tsx`, ≤ 1.6 s): the native splash shows Prism **asleep** in its
-  tile (eyes closed, no rainbow). The rainbow arch fades in, Prism opens its eyes, floats up a few points and settles
-  (one smooth rise and fall), a shimmer crosses its glass, it blinks once and the sparkles appear, then the intro fades
-  to the Themes tab as before (same start-up hand-off, `src/core/startupHandoff.ts`). Calm only: sine ease-in-out,
-  linear and raised-cosine curves; no springs, bounce, overshoot or size change. Reduce Motion (system or the Glaze
-  setting) shows the awake frame at once and simply fades.
-- **Files.** Single source of truth: `src/core/introGlaze.ts` (geometry, colours, timings). Rebuild with
-  `node scripts/brand/build-brand.mjs && python3 scripts/brand/flatten.py` (Playwright Chromium renders the PNGs;
-  flatten.py makes them small palette PNGs: icon about 95 KB, splash about 35 KB, Android about 20 KB). Previews:
-  `docs/mascot/prism-icon.svg|png`, `docs/mascot/prism-mascot.svg|png`.
-- **Kept for reference:** the plain Prism diamond (25 Oct to 1 Nov) in `docs/mascot/previous-prism-diamond/` and the
-  glaze-drip tile before it in `docs/mascot/previous-glaze-drip/`.
+- It was the app icon and mascot (previews `rejected-prism-creature/prism-icon.png` and `prism-mascot.png`, mascot
+  `rejected-prism-creature/mascot.svg`), with a 1.6 s intro inside a small tile: Prism asleep, the rainbow arch fading
+  in, Prism waking, floating, blinking. All of it was removed by T199.
+- **Kept for reference:** the plain Prism diamond (25 Oct, current again) in `docs/mascot/previous-prism-diamond/` and
+  the glaze-drip tile before it in `docs/mascot/previous-glaze-drip/`.
 
-## Earlier decision (fb-1025 G, 25 Oct 2026): the app icon is Prism (plain diamond, superseded 1 Nov)
+## Earlier decision (fb-1025 G, 25 Oct 2026): the app icon is Prism (plain diamond; current again since 1 Nov 10:31)
 
 Owner, 25 Oct: *"I like both, but males won't go for the first one, so go Prism; I like it more than the current
 Glaze icon."* So:

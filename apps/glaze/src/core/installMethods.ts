@@ -2,7 +2,7 @@
 // PROFILE_INSTALL_ENABLED in src/config/install.ts; this file holds the pure logic so the screen
 // never has to reason about it. Pure TS (no React Native / Expo).
 
-import { DEFAULT_INSTALL_METHOD, type InstallChoice, type InstallPlan } from './install.ts';
+import { type InstallChoice, type InstallPlan } from './install.ts';
 import type { TipId } from './tips.ts';
 
 export type MethodOptions = {
@@ -12,64 +12,65 @@ export type MethodOptions = {
   profileCount: number;
   /**
    * T126: whether this build can serve the profile to Safari (src/native/profileServer.ts).
-   * Omitted = true (the original behaviour). False (Expo Go, old builds): the profile can only go
-   * through the share sheet, which iOS often won't install from, so Shortcuts leads.
+   * Omitted = true. False (Expo Go, old builds): the profile goes through the share sheet instead;
+   * since T202 the profile stays the main method either way (the screen explains the share route).
    */
   profileServer?: boolean;
 };
 
-const serverOk = (opts: MethodOptions) => opts.profileServer !== false;
-
 /**
- * T183: generation of the method choice. Bumped on 1 Nov 2026 when Shortcuts / Open App became
- * the default: an explicit pick saved before (choiceEpoch absent or lower) no longer counts.
+ * Generation of the method choice. T183 (1 Nov 08:32) bumped it to 2 when Shortcuts became the
+ * default; T202 (owner-1101d #5, 1 Nov 10:31) bumped it to 3 when "Install all at once" became the
+ * main method again: an explicit pick saved before (choiceEpoch absent or lower) no longer counts,
+ * so everyone lands on the profile.
  */
-export const CHOICE_EPOCH = 2;
+export const CHOICE_EPOCH = 3;
 
 /** True when a saved state holds an explicit method pick made since the current default. */
 export function isCurrentPick(s: { choiceExplicit?: true; choiceEpoch?: number }): boolean {
   return s.choiceExplicit === true && s.choiceEpoch === CHOICE_EPOCH;
 }
 
-/**
- * Methods to offer, the recommended one first. T183 (owner 1 Nov, supersedes owner 25 Oct "Bulk
- * is the only method"): the guided Shortcuts method with the "Open App" action is the default for
- * every app, because it opens apps directly with no Safari hop and no "Open in <app>?" prompt.
- * Bulk (web clip profile) is an optional second method only while PROFILE_INSTALL_ENABLED is true
- * and some picked app has a link a profile can open; the screen warns that its icons open through
- * Safari and ask every time.
- */
-export function availableMethods(opts: MethodOptions): InstallChoice[] {
-  return bulkSelectable(opts) ? ['shortcuts', 'bulk'] : ['shortcuts'];
-}
-
-/** The method to badge "Recommended": always Shortcuts / Open App (T183). */
-export function recommendedMethod(opts: MethodOptions): InstallChoice {
-  void serverOk(opts);
-  return DEFAULT_INSTALL_METHOD;
-}
-
-/** True when the method picker is worth showing (more than one method). */
-export function showMethodPicker(opts: MethodOptions): boolean {
-  return availableMethods(opts).length > 1;
-}
-
-/** True when the Bulk card is offered (as the optional second method). */
-export function showBulkCard(opts: MethodOptions): boolean {
-  return availableMethods(opts).includes('bulk');
-}
-
-/** Whether the Bulk card can be picked (offered and at least one app has a link). */
+/** Whether the profile ("Install all at once") can be used: switch on and some app has a link. */
 export function bulkSelectable(opts: MethodOptions): boolean {
   return opts.profileEnabled && opts.profileCount > 0;
 }
 
 /**
- * The method actually in use. Shortcuts / Open App unless the person explicitly picked Bulk since
- * the 1 Nov switch (`explicit`, see isCurrentPick) and Bulk can still be used.
+ * Methods available, the main one first. T202 (owner-1101d #5, supersedes T183): "Install all at
+ * once" (web clip profile) is ALWAYS the main method whenever it can be used; Shortcuts "Open App"
+ * is only a fallback (a small link on the screen, not a second card) and covers the apps a profile
+ * can't open.
+ */
+export function availableMethods(opts: MethodOptions): InstallChoice[] {
+  return bulkSelectable(opts) ? ['bulk', 'shortcuts'] : ['shortcuts'];
+}
+
+/** The main method: the profile whenever it can be used, else Shortcuts. */
+export function recommendedMethod(opts: MethodOptions): InstallChoice {
+  return bulkSelectable(opts) ? 'bulk' : 'shortcuts';
+}
+
+/**
+ * T202: no method picker any more. The profile is the main flow; switching to Shortcuts is one
+ * small "Prefer Shortcuts?" link (showShortcutsFallback).
+ */
+export function showMethodPicker(_opts: MethodOptions): boolean {
+  return false;
+}
+
+/** True when the "Prefer Shortcuts? One icon at a time" fallback link is worth showing. */
+export function showShortcutsFallback(opts: MethodOptions): boolean {
+  return bulkSelectable(opts);
+}
+
+/**
+ * The method actually in use: the profile, unless the person explicitly took the Shortcuts
+ * fallback since the T202 switch (`explicit`, see isCurrentPick) or the profile can't be used.
  */
 export function effectiveChoice(saved: InstallChoice, opts: MethodOptions, explicit: boolean = true): InstallChoice {
-  return explicit && saved === 'bulk' && bulkSelectable(opts) ? 'bulk' : DEFAULT_INSTALL_METHOD;
+  if (!bulkSelectable(opts)) return 'shortcuts';
+  return explicit && saved === 'shortcuts' ? 'shortcuts' : 'bulk';
 }
 
 export type SummaryKind = 'none' | 'viaShortcuts' | 'viaProfile' | 'mixed';

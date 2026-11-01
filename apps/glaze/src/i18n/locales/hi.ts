@@ -30,7 +30,7 @@ const base: LocaleMessages = {
     error: 'कुछ गलत हो गया',
     itemCount: { zero: 'कोई आइटम नहीं', one: '{count} आइटम', other: '{count} आइटम' },
   },
-  tabs: { themes: 'थीम', icons: 'आइकन', live: 'लाइव', pets: 'पेट्स', settings: 'सेटिंग्स' },
+  tabs: { themes: 'थीम', icons: 'आइकन', live: 'लाइव', settings: 'सेटिंग्स' },
   settings: {
     language: {
       title: 'भाषा',

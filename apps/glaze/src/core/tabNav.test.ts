@@ -24,9 +24,10 @@ import { THEMES } from './themes.ts';
 
 const root = process.cwd();
 
-// owner-1101 #4 (T186) supersedes T70's order: Pets joins, Live moves into Wallpapers.
-test('tab order is Themes / Widgets / Icons / Pets / Wallpapers; Settings is hidden', () => {
-  assert.deepEqual([...TAB_ORDER], ['themes', 'widgets', 'icons', 'pets', 'wallpapers']);
+// owner-1101 #4 (T186) moved Live into Wallpapers; owner-1101d #1 (T198) cut Pets.
+test('tab order is Themes / Widgets / Icons / Wallpapers; Settings is hidden', () => {
+  assert.deepEqual([...TAB_ORDER], ['themes', 'widgets', 'icons', 'wallpapers']);
+  assert.ok(!(TAB_ORDER as readonly string[]).includes('pets'), 'Pets were cut (T198)');
   assert.ok(!(TAB_ORDER as readonly string[]).includes('live'), 'Live is not a tab any more');
   assert.deepEqual([...HIDDEN_TAB_ROUTES], ['settings']);
   assert.equal(tabLabelKey('wallpapers'), 'tabs.wallpapers');
@@ -36,16 +37,13 @@ test('every tab has a route file, and hidden routes keep theirs (old links still
   for (const id of [...TAB_ORDER, ...HIDDEN_TAB_ROUTES]) assert.ok(existsSync(join(root, 'app', '(tabs)', `${id}.tsx`)), id);
   assert.ok(existsSync(join(root, 'app', 'widget-studio.tsx')));
   assert.ok(existsSync(join(root, 'app', 'wallpaper.tsx')));
-  // T186: /live (the Live Photo maker) and /pets keep working as stack routes; no tab file for Live.
+  // T186: /live (the Live Photo maker) is a stack route; no tab file for Live.
   assert.equal(LIVE_MAKER_HREF, '/live');
   assert.ok(existsSync(join(root, 'app', 'live', 'index.tsx')));
   assert.ok(!existsSync(join(root, 'app', '(tabs)', 'live.tsx')));
-  assert.ok(existsSync(join(root, 'app', 'pets.tsx')));
 });
 
-test('the Pets tab is a thin wrapper over the one pets screen (app/pets.tsx)', () => {
-  const tab = readFileSync(join(root, 'app', '(tabs)', 'pets.tsx'), 'utf8');
-  assert.match(tab, /from '\.\.\/pets'/);
+test('Wallpapers tab opens the Live Photo and collage makers', () => {
   const wallpapers = readFileSync(join(root, 'app', '(tabs)', 'wallpapers.tsx'), 'utf8');
   assert.match(wallpapers, /LIVE_MAKER_HREF/, 'Wallpapers opens the Live Photo maker');
   assert.match(wallpapers, /'\/collage'/, 'Wallpapers keeps the collage maker');

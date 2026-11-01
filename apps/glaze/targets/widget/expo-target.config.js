@@ -22,7 +22,7 @@ module.exports = (config) => ({
   // 17.0 is also the floor for interactive widgets (Button(intent:), T73). Do not lower it
   // without wrapping the habit widgets in availability checks.
   deploymentTarget: '17.0',
-  frameworks: ['SwiftUI', 'WidgetKit', 'AppIntents', 'ActivityKit'],
+  frameworks: ['SwiftUI', 'WidgetKit', 'AppIntents'],
   entitlements: {
     'com.apple.security.application-groups':
       (config.ios && config.ios.entitlements && config.ios.entitlements['com.apple.security.application-groups']) || [

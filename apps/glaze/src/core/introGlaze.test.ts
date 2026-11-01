@@ -1,41 +1,39 @@
-// Glaze brand mark + opening animation (owner, 23 Oct night; the plain Prism diamond since fb-1025 G, 25 Oct; Prism the
-// little prism creature since owner-1101 item 8, T190, 1 Nov). Geometry, timings and source guards (the cloud can't
-// mount React Native).
+// Glaze brand mark + opening animation. T199 (owner-1101d #2, 1 Nov): the app icon is the 25 Oct Prism diamond again
+// (the cute prism creature of T190 was rejected) and the intro is a full-screen light-beam scene. Geometry, timings
+// and source guards (the cloud can't mount React Native).
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
 import {
   ADAPTIVE_BG,
-  ADAPTIVE_SCALE,
-  ARCH,
-  ARMS,
-  BODY,
+  BAND_OPACITY,
+  BEAM_TILT_DEG,
   BRAND,
   CALM_EASINGS,
-  EYES,
-  FACETS,
-  FEET,
-  FLOAT_UNITS,
+  FAN_FROM_DEG,
+  FAN_TO_DEG,
+  GEM,
+  GEM_FACETS,
+  GEM_EDGES_D,
+  GEM_OUTLINE_D,
+  GEM_GLINT_D,
   INTRO_MS,
-  MARK_CY,
-  SPARKLES,
   SPECTRUM,
-  TILE,
+  SPLASH_SIZE,
+  SWEEP_FROM_DEG,
   TRACKS,
-  adaptiveForegroundSvg,
   allTweens,
   canFade,
   ease,
   frameAt,
-  hump,
-  iconSvg,
-  mascotSvg,
-  monochromeSvg,
+  introLayout,
+  polyPath,
   splashSvg,
   startupReady,
   trackKeyframes,
 } from './introGlaze.ts';
+import { darkV2, lightV2 } from './designV2.ts';
 import { durations } from './motion.ts';
 
 const root = process.cwd();
@@ -62,49 +60,15 @@ function lum(hex: string): number {
   return 0.2126 * ch[0]! + 0.7152 * ch[1]! + 0.0722 * ch[2]!;
 }
 
-const BRAND_SVGS = ['icon.svg', 'icon-dark.svg', 'splash-icon.svg', 'splash-icon-dark.svg', 'adaptive-foreground.svg', 'adaptive-monochrome.svg', 'mascot.svg'];
+const DIAMOND = ['icon.svg', 'icon-dark.svg', 'adaptive-foreground.svg', 'adaptive-monochrome.svg'];
+const BRAND_SVGS = [...DIAMOND, 'splash-icon.svg', 'splash-icon-dark.svg'];
 
 // ---------------------------------------------------------------- the mark
 
-test('brand (T190): the mark is Prism the creature: an upright crystal with a face, arms and feet under a rainbow arch', () => {
-  // Upright crystal, point up, centred, wider at the shoulders than the base.
-  assert.equal(BODY.A[0], 512, 'centred');
-  assert.ok(BODY.A[1] < BODY.SL[1] && BODY.A[1] < BODY.SR[1], 'point up');
-  assert.ok(BODY.SR[0] - BODY.SL[0] > BODY.BR[0] - BODY.BL[0], 'shoulders wider than the base');
-  assert.ok(FACETS.length >= 4, 'soft facets');
-  assert.equal(new Set(FACETS.map((f) => f.id)).size, FACETS.length);
-  // A face: two big eyes on the body, symmetric, below the crown; two arms and two feet.
-  assert.equal(EYES.length, 2);
-  assert.equal(EYES[0].cx + EYES[1].cx, 1024, 'eyes symmetric');
-  assert.ok(EYES[0].cy > BODY.SL[1], 'eyes below the crown line');
-  assert.equal(ARMS.length, 2);
-  assert.equal(FEET.length, 2);
-  for (const f of FEET) assert.ok(f.cy > BODY.BL[1] - 20, 'feet under the body');
-  // Spectrum: six distinct colours, not pink-dominant (at most one pink/rose band).
-  assert.equal(SPECTRUM.length, 6);
-  assert.equal(new Set(SPECTRUM).size, 6);
-  const pinkish = SPECTRUM.filter((c) => {
-    const [r, g, b] = [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
-    return r! > 220 && b! > 150 && g! < 180;
-  });
-  assert.ok(pinkish.length <= 1, `pink bands: ${pinkish.join(', ')}`);
-  // The arch is behind and above Prism; the big sparkle is up and to the right.
-  assert.ok(Math.abs(ARCH.cy - ARCH.outer - BODY.A[1]) <= 24, 'the arch frames the head (its top is level with the point)');
-  assert.ok(ARCH.cy > BODY.SL[1], 'the arch comes down beside Prism');
-  assert.ok(SPARKLES[0].cx > 512 && SPARKLES[0].cy < BODY.SL[1]);
-  // Deep ground: the icon background is dark in both schemes so the rainbow and the lilac glass glow.
-  for (const s of ['light', 'dark'] as const) for (const c of BRAND[s].iconBg) assert.ok(lum(c) < 0.05, `${s} ${c} is deep`);
-  assert.ok(lum(ADAPTIVE_BG) < 0.05);
-});
-
-test('brand: the brand SVGs are generated from introGlaze.ts, carry the prism marker, no text; the splash is Prism asleep', () => {
-  assert.equal(read('assets', 'brand', 'icon.svg'), iconSvg('light'), 'regenerate: node scripts/brand/build-brand.mjs');
-  assert.equal(read('assets', 'brand', 'icon-dark.svg'), iconSvg('dark'));
-  assert.equal(read('assets', 'brand', 'splash-icon.svg'), splashSvg('light'));
-  assert.equal(read('assets', 'brand', 'splash-icon-dark.svg'), splashSvg('dark'));
-  assert.equal(read('assets', 'brand', 'adaptive-foreground.svg'), adaptiveForegroundSvg());
-  assert.equal(read('assets', 'brand', 'adaptive-monochrome.svg'), monochromeSvg());
-  assert.equal(read('assets', 'brand', 'mascot.svg'), mascotSvg());
+test('brand (T199): the app icon and adaptive icons are the 25 Oct Prism diamond, verbatim; no creature anywhere', () => {
+  for (const f of DIAMOND) {
+    assert.equal(read('assets', 'brand', f), read('docs', 'mascot', 'previous-prism-diamond', f), `${f} = the 25 Oct diamond (node scripts/brand/build-brand.mjs)`);
+  }
   for (const f of BRAND_SVGS) {
     const svg = read('assets', 'brand', f);
     assert.match(svg, /id="prism"/, `${f} carries the prism marker`);
@@ -112,55 +76,43 @@ test('brand: the brand SVGs are generated from introGlaze.ts, carry the prism ma
     // Original art: plain shapes and gradients, no text, no external images.
     assert.doesNotMatch(svg, /<text|<image|href=|<script|<foreignObject/);
     assert.ok(statSync(join(root, 'assets', 'brand', f)).size < 24 * 1024, `${f} stays small`);
+    // No creature: no eyes, blush or rainbow arch.
+    assert.doesNotMatch(svg, /<ellipse/, `${f}: no creature face or feet`);
   }
-  // The icon and mascot are awake (open eyes: filled ovals) with every rainbow colour; the splash is asleep (closed-eye
-  // arcs, no ovals), with no arch and no sparkles: the intro wakes it.
-  for (const svg of [iconSvg('light'), mascotSvg()]) {
-    for (const c of SPECTRUM) assert.ok(svg.includes(`stroke="${c}"`), `arch ${c}`);
-    assert.match(svg, /<ellipse cx="438" cy="598" rx="41" ry="53"/);
+  assert.ok(!existsSync(join(root, 'assets', 'brand', 'mascot.svg')), 'the creature mascot left the bundle');
+  // The gem in the intro / splash is the icon's gem: same facets and lit gradients, same edges, outline and glint.
+  const icon = read('assets', 'brand', 'icon.svg');
+  for (const fc of GEM_FACETS) {
+    assert.ok(icon.includes(`<path d="${polyPath(fc.pts)}" fill="url(#plit-${fc.id})"/>`), `facet ${fc.id}`);
+    assert.ok(icon.includes(`id="plit-${fc.id}" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="${fc.lit[0]}"/><stop offset="1" stop-color="${fc.lit[1]}"/>`), `lit ${fc.id}`);
   }
-  for (const s of ['light', 'dark'] as const) {
-    const svg = splashSvg(s);
-    for (const c of SPECTRUM) assert.ok(!svg.includes(`stroke="${c}"`), `splash has no ${c} arch`);
-    assert.doesNotMatch(svg, /rx="41" ry="53"/, 'eyes closed');
-    assert.ok(svg.includes('Q438 632'), 'closed-eye arc');
-  }
-  // The mascot is the same drawing without the ground (transparent).
-  assert.doesNotMatch(mascotSvg(), /url\(#mbg\)/);
-  // The splash tile sits inside the canvas with room for its shadow.
-  assert.ok(TILE.cy - TILE.b >= 40 && TILE.cy + TILE.b + 30 + 34 <= 1024);
+  for (const d of [GEM_EDGES_D, GEM_OUTLINE_D, GEM_GLINT_D]) assert.ok(icon.includes(`d="${d}"`), d.slice(0, 20));
+  for (const c of SPECTRUM) assert.ok(icon.includes(`fill="${c}"`), `fan ${c}`);
+  // The 25 Oct splash's unlit colours are the intro's first frame.
+  const oldSplash = read('docs', 'mascot', 'previous-prism-diamond', 'splash-icon.svg');
+  for (const fc of GEM_FACETS) assert.ok(oldSplash.includes(`<stop offset="0" stop-color="${fc.dim[0]}"/><stop offset="1" stop-color="${fc.dim[1]}"/>`), `dim ${fc.id}`);
+  // Point down, centred; a dark ground.
+  assert.equal(GEM.TIP[0], 512);
+  assert.ok(GEM.TIP[1] > GEM.L[1] && GEM.TIP[1] > GEM.T1[1]);
+  assert.ok(lum(ADAPTIVE_BG) < 0.05);
 });
 
-test('brand: the Android foreground keeps the mark inside the 66/108 safe zone', () => {
-  assert.ok(ADAPTIVE_SCALE <= 66 / 108 + 0.06);
-  const svg = adaptiveForegroundSvg();
-  const m = svg.match(/translate\(([\d.]+) ([\d.]+)\) scale\(([\d.]+)\)/);
-  assert.ok(m, 'one transform');
-  const [tx, ty, s] = [Number(m![1]), Number(m![2]), Number(m![3])];
-  assert.ok(Math.abs(ty - (512 - MARK_CY * s)) < 0.1);
-  // Prism (point, shoulders, feet), the arch's outer edge and the clouds map inside the safe circle (radius ≈ 313).
-  const outerR = ARCH.outer;
-  const pts: (readonly [number, number])[] = [
-    BODY.A, BODY.SL, BODY.SR,
-    [FEET[0].cx - 58, FEET[0].cy + 34], [FEET[1].cx + 58, FEET[1].cy + 34],
-    [ARCH.cx, ARCH.cy - outerR], [ARCH.cx - outerR * 0.7, ARCH.cy - outerR * 0.7], [ARCH.cx + outerR * 0.7, ARCH.cy - outerR * 0.7],
-    [ARCH.cx - outerR, ARCH.cy + 46], [ARCH.cx + outerR, ARCH.cy + 46],
-  ];
-  for (const [x, y] of pts) {
-    const px = tx + x * s;
-    const py = ty + y * s;
-    assert.ok(Math.hypot(px - 512, py - 512) <= 512 * (66 / 108) + 2, `(${x}, ${y}) → ${px.toFixed(0)}, ${py.toFixed(0)}`);
-  }
+test('brand (T199): the splash image is the unlit diamond alone (no tile, no beam, transparent), generated from introGlaze.ts', () => {
+  assert.equal(read('assets', 'brand', 'splash-icon.svg'), splashSvg(), 'regenerate: node scripts/brand/build-brand.mjs');
+  assert.equal(read('assets', 'brand', 'splash-icon-dark.svg'), splashSvg());
+  const svg = splashSvg();
+  assert.doesNotMatch(svg, /<rect|clip-path|<ellipse|<circle/, 'no tile, ground, shadow or glow');
+  for (const fc of GEM_FACETS) assert.ok(svg.includes(`stop-color="${fc.dim[0]}"`), `dim ${fc.id}`);
+  for (const c of SPECTRUM) assert.ok(!svg.includes(`fill="${c}"`), `no ${c} fan before the light arrives`);
 });
 
-test('brand: icon.png is 1024 × 1024 with no alpha (App Store); Android foreground and splash keep transparency; all small', () => {
+test('brand: icon.png is 1024 × 1024 with no alpha (App Store); Android foreground and splash keep transparency', () => {
   for (const f of ['icon.png', 'icon-dark.png']) {
     const icon = ihdr(`assets/brand/${f}`);
     assert.equal(icon.w, 1024, f);
     assert.equal(icon.h, 1024, f);
     assert.equal(icon.depth, 8);
-    // T190: an opaque palette PNG (type 3) keeps the icon under ~100 KB; RGB (type 2) is fine too. Never an alpha
-    // channel (types 4 / 6) and never a transparency chunk.
+    // Never an alpha channel (types 4 / 6) and never a transparency chunk.
     assert.ok(icon.type === 2 || icon.type === 3, `${f}: colour type ${icon.type} has no alpha`);
     assert.ok(!icon.chunks.includes('tRNS'), 'no transparency chunk');
   }
@@ -170,14 +122,16 @@ test('brand: icon.png is 1024 × 1024 with no alpha (App Store); Android foregro
     assert.equal(p.h, 1024, f);
     assert.ok(p.type === 6 || (p.type === 3 && p.chunks.includes('tRNS')), `${f} keeps transparency`);
   }
-  // Bundle budget (T190): each brand PNG ≤ 110 KB (the old Prism files were 360 to 455 KB).
+  // Bundle budget. T199: the diamond's soft gradients band badly in a palette PNG, so the icons are RGB (about
+  // 420 KB, like the 25 Oct files); everything else stays small.
+  const budget: Record<string, number> = { 'icon.png': 460, 'icon-dark.png': 460 };
   for (const f of ['icon.png', 'icon-dark.png', 'adaptive-foreground.png', 'adaptive-monochrome.png', 'splash-icon.png', 'splash-icon-dark.png']) {
     const kb = statSync(join(root, 'assets', 'brand', f)).size / 1024;
-    assert.ok(kb <= 110, `${f} is ${kb.toFixed(0)} KB`);
+    assert.ok(kb <= (budget[f] ?? 130), `${f} is ${kb.toFixed(0)} KB`);
   }
 });
 
-test('brand: app.json wires the icon, adaptive icon and both splash images; splash imageWidth = INTRO_SIZE', () => {
+test('brand: app.json wires the icon, adaptive icon and both splash images; the splash is dark in both appearances', () => {
   const expo = JSON.parse(read('app.json')).expo;
   assert.equal(expo.icon, './assets/brand/icon.png');
   const ai = expo.android.adaptiveIcon;
@@ -188,80 +142,96 @@ test('brand: app.json wires the icon, adaptive icon and both splash images; spla
   assert.ok(splash, 'expo-splash-screen plugin configured');
   assert.equal(splash.image, './assets/brand/splash-icon.png');
   assert.equal(splash.dark.image, './assets/brand/splash-icon-dark.png');
-  // Splash background = the intro background = the app background (designV2 bg), so the hand-over is seamless.
-  assert.equal(splash.backgroundColor, BRAND.light.bg);
-  assert.equal(splash.dark.backgroundColor, BRAND.dark.bg);
-  const ui = read('src', 'ui', 'IntroGlaze.tsx');
-  assert.match(ui, new RegExp(`export const INTRO_SIZE = ${splash.imageWidth};`));
+  // T199: splash background = the intro's first frame (the dark bg token) in light and dark, so there is no flash.
+  assert.equal(BRAND.introBg, darkV2.bg);
+  assert.equal(splash.backgroundColor, BRAND.introBg);
+  assert.equal(splash.dark.backgroundColor, BRAND.introBg);
+  assert.equal(splash.imageWidth, SPLASH_SIZE);
+  assert.match(read('src', 'ui', 'IntroGlaze.tsx'), /export const INTRO_SIZE = SPLASH_SIZE;/);
   for (const f of [expo.icon, ai.foregroundImage, ai.monochromeImage, splash.image, splash.dark.image]) {
     assert.ok(existsSync(join(root, f)), f);
   }
 });
 
-test('brand: the previous icons (glaze drip, plain Prism diamond) are kept for reference; the Prism previews exist', () => {
+test('brand: the previous icons are kept for reference; the rejected creature is filed away, not bundled', () => {
   for (const dir of ['previous-glaze-drip', 'previous-prism-diamond']) {
     for (const f of ['icon.svg', 'icon-dark.svg', 'splash-icon.svg', 'splash-icon-dark.svg', 'adaptive-foreground.svg', 'adaptive-monochrome.svg']) {
       assert.ok(existsSync(join(root, 'docs', 'mascot', dir, f)), `${dir}/${f}`);
     }
   }
-  assert.equal(read('docs', 'mascot', 'prism-icon.svg'), iconSvg('light'));
-  assert.equal(read('docs', 'mascot', 'prism-mascot.svg'), mascotSvg());
-  for (const f of ['docs/mascot/prism-icon.png', 'docs/mascot/prism-mascot.png']) {
-    const prev = ihdr(f);
-    assert.ok(prev.w >= 256 && prev.w === prev.h, f);
+  for (const f of ['prism-icon.svg', 'prism-icon.png', 'prism-mascot.svg', 'prism-mascot.png', 'mascot.svg']) {
+    assert.ok(existsSync(join(root, 'docs', 'mascot', 'rejected-prism-creature', f)), `rejected-prism-creature/${f}`);
+    assert.ok(!existsSync(join(root, 'docs', 'mascot', f)), `${f} moved out of docs/mascot`);
   }
+});
+
+// ---------------------------------------------------------------- full-screen layout
+
+test('intro layout: the gem sits where the native splash draws it; the beam and the fan reach past the screen edges', () => {
+  for (const [w, h] of [[390, 844], [320, 568], [430, 932], [1024, 1366], [200, 200]] as const) {
+    const L = introLayout(w, h);
+    assert.equal(L.size, Math.min(SPLASH_SIZE, w - 32, h - 32), 'same size as the splash image (imageWidth, contain)');
+    assert.ok(Math.abs(L.ox - (w - L.size) / 2) <= 0.05 && Math.abs(L.oy - (h - L.size) / 2) <= 0.05, 'centred like the splash');
+    // The tip and the entry point are on the gem, inside the screen.
+    assert.ok(L.tip[0] > 0 && L.tip[0] < w && L.tip[1] > 0 && L.tip[1] < h);
+    assert.ok(L.entry[1] < L.tip[1], 'light enters above the point');
+    // The beam (in its 2·len square, centred on the entry point) starts at the centre and leaves the screen whatever
+    // the sweep angle: its length covers the whole diagonal.
+    assert.equal(L.beam.x1, L.len);
+    assert.equal(L.beam.y1, L.len);
+    assert.ok(L.len >= Math.hypot(w, h));
+    assert.ok(L.beam.x2 < L.beam.x1 && L.beam.y2 < L.beam.y1, 'from the upper left');
+    // Six bands, one per glaze colour, fanning downward from the tip.
+    assert.equal(L.bands.length, 6);
+    assert.deepEqual(L.bands.map((b) => b.color), [...SPECTRUM]);
+    for (const b of L.bands) {
+      assert.ok(b.d.startsWith(`M${L.tip[0]} ${L.tip[1]} L`), 'from the point');
+      assert.ok(b.y2 > L.tip[1], 'downward');
+    }
+  }
+  assert.ok(BEAM_TILT_DEG > 0 && BEAM_TILT_DEG < 30, 'a gentle diagonal');
+  assert.ok(FAN_FROM_DEG < 0 && FAN_TO_DEG > 0 && FAN_TO_DEG - FAN_FROM_DEG <= 80);
+  assert.ok(BAND_OPACITY > 0 && BAND_OPACITY < 0.8, 'soft bands, never solid');
+  assert.doesNotThrow(() => introLayout(Number.NaN, 0));
 });
 
 // ---------------------------------------------------------------- timings (calm)
 
-test('intro: every tween is calm (ease-in-out or linear) and the whole animation is short (≤ 1.6 s)', () => {
+test('intro (T199): every tween is calm (ease-in-out or linear) and the whole thing, fade included, is ≤ 1.5 s', () => {
   for (const tw of allTweens()) {
     assert.ok((CALM_EASINGS as readonly string[]).includes(tw.easing), tw.easing);
     assert.ok(tw.duration > 0 && tw.start >= 0);
     assert.ok(tw.start + tw.duration <= INTRO_MS.total, 'inside the timeline');
   }
-  assert.equal(Math.max(...allTweens().map((tw) => tw.start + tw.duration)), INTRO_MS.total);
-  assert.ok(INTRO_MS.total >= 1200 && INTRO_MS.total <= 1600, `intro ${INTRO_MS.total} ms`);
+  assert.ok(Math.abs(Math.max(...allTweens().map((tw) => tw.start + tw.duration)) - INTRO_MS.total) <= 20, 'total = the last tween');
   assert.equal(INTRO_MS.fadeOut, durations.slow, 'fade reuses the motion token');
+  assert.ok(INTRO_MS.total + INTRO_MS.settle + INTRO_MS.fadeOut <= 1500, `intro ${INTRO_MS.total} + ${INTRO_MS.settle} + ${INTRO_MS.fadeOut} ms`);
   assert.ok(INTRO_MS.maxWait <= 3000, 'cap is at most 3 s');
-  assert.ok(INTRO_MS.total + INTRO_MS.settle + INTRO_MS.fadeOut <= 3000, 'a ready app is showing within 3 s');
-  // Order: the arch starts first, Prism wakes before the shimmer, the blink comes after it is awake, sparkles last.
-  assert.ok(INTRO_MS.arch.start <= INTRO_MS.wake.start);
-  assert.ok(INTRO_MS.wake.start + INTRO_MS.wake.duration < INTRO_MS.blink.start, 'awake before it blinks');
-  assert.ok(INTRO_MS.shimmer.start >= INTRO_MS.wake.start);
-  assert.ok(INTRO_MS.sparkle.start >= INTRO_MS.shimmer.start);
-  // A gentle float: a few points at the 240 pt intro, never more.
-  assert.ok(FLOAT_UNITS > 0 && (FLOAT_UNITS * 240) / 1024 <= 6, `float ${FLOAT_UNITS} units`);
+  // Order: the beam arrives, then the gem lights, then the bands bloom, the glint last.
+  assert.ok(INTRO_MS.beam.start <= INTRO_MS.ignite.start);
+  assert.ok(INTRO_MS.ignite.start < INTRO_MS.band.start);
+  assert.ok(INTRO_MS.glint.start > INTRO_MS.band.start);
 });
 
-test('intro: the first frame is the native splash (asleep, nothing lit) and the last frame is the icon (awake, at rest)', () => {
+test('intro: the first frame is the native splash (unlit, dark, no beam) and the last is the finished scene', () => {
   const f0 = frameAt(0);
-  assert.equal(f0.arch, 0);
-  assert.equal(f0.eyesClosed, 1);
-  assert.equal(f0.float, 0);
-  assert.equal(f0.shimmerOpacity, 0);
-  assert.equal(f0.sparkle, 0);
+  assert.equal(f0.beam, 0);
+  assert.equal(f0.ignite, 0);
+  assert.equal(f0.glint, 0);
+  assert.deepEqual(f0.bands, [0, 0, 0, 0, 0, 0]);
+  assert.equal(f0.sweep, SWEEP_FROM_DEG);
   const f1 = frameAt(INTRO_MS.total);
-  assert.equal(f1.arch, 1);
-  assert.equal(f1.eyesClosed, 0);
-  assert.equal(f1.float, 0, 'settled back exactly where it started');
-  assert.equal(f1.shimmerOpacity, 0);
-  assert.equal(f1.sparkle, 1);
-  // Exactly one blink after waking: the eyes close fully once, mid-blink.
-  const mid = INTRO_MS.blink.start + INTRO_MS.blink.duration / 2;
-  assert.equal(frameAt(mid).eyesClosed, 1);
-  assert.equal(frameAt(INTRO_MS.blink.start - 10).eyesClosed, 0);
-  let closings = 0;
-  let prev = 1;
-  for (let ms = 0; ms <= INTRO_MS.total; ms += 5) {
-    const v = frameAt(ms).eyesClosed;
-    if (prev < 0.5 && v >= 0.5) closings++;
-    prev = v;
-  }
-  assert.equal(closings, 1, 'one blink');
+  assert.equal(f1.beam, 1);
+  assert.equal(f1.ignite, 1);
+  assert.equal(f1.glint, 1);
+  assert.equal(f1.sweep, 0, 'the beam settles exactly on the gem');
+  assert.deepEqual(f1.bands, [1, 1, 1, 1, 1, 1]);
+  // The bands bloom left to right.
+  const mid = frameAt(INTRO_MS.band.start + INTRO_MS.band.duration / 2);
+  for (let i = 1; i < 6; i++) assert.ok(mid.bands[i]! <= mid.bands[i - 1]!, `band ${i} follows band ${i - 1}`);
 });
 
-test('intro: no overshoot or bounce: easing stays in 0..1, the float rises and settles once, fades are monotonic', () => {
+test('intro: no overshoot or bounce: easing stays in 0..1 and every track moves one way only', () => {
   for (const name of CALM_EASINGS) {
     let prev = -1;
     for (let i = 0; i <= 100; i++) {
@@ -271,32 +241,15 @@ test('intro: no overshoot or bounce: easing stays in 0..1, the float rises and s
       prev = v;
     }
   }
-  for (let i = 0; i <= 100; i++) {
-    const h = hump(i / 100);
-    assert.ok(h >= 0 && h <= 1);
-  }
-  assert.equal(hump(0), 0);
-  assert.ok(Math.abs(hump(1)) < 1e-12);
-  // Float: within 0..FLOAT_UNITS, one peak (rises, then only falls), never below rest (no dip = no bounce).
-  const fl = trackKeyframes('float').v;
-  assert.ok(fl.every((v) => v >= 0 && v <= FLOAT_UNITS));
-  const peak = fl.indexOf(Math.max(...fl));
-  for (let i = 1; i <= peak; i++) assert.ok(fl[i]! >= fl[i - 1]!, 'rises');
-  for (let i = peak + 1; i < fl.length; i++) assert.ok(fl[i]! <= fl[i - 1]!, 'then settles');
-  for (const track of ['arch', 'shimmerX', 'sparkle'] as const) {
-    const { v } = trackKeyframes(track);
-    for (let i = 1; i < v.length; i++) assert.ok(v[i]! >= v[i - 1]!, `${track} never goes back`);
-  }
   for (const track of TRACKS) {
     const { t, v } = trackKeyframes(track);
     for (let i = 1; i < t.length; i++) assert.ok(t[i]! > t[i - 1]!, `${track} keyframe times increase`);
     assert.ok(t[0]! >= 0 && t[t.length - 1]! <= 1);
     assert.ok(v.every((x) => Number.isFinite(x)));
+    for (let i = 1; i < v.length; i++) assert.ok(v[i]! >= v[i - 1]!, `${track} never goes back`);
+    if (track === 'sweep') assert.ok(v.every((x) => x >= SWEEP_FROM_DEG && x <= 0), 'the sweep never passes its rest angle');
+    else assert.ok(v.every((x) => x >= 0 && x <= 1));
   }
-  const op = trackKeyframes('shimmerOpacity').v;
-  assert.equal(op[0], 0);
-  assert.equal(op[op.length - 1], 0);
-  assert.ok(Math.max(...op) <= 0.8);
   assert.throws(() => trackKeyframes('nope' as never));
 });
 
@@ -314,13 +267,13 @@ test('intro: startup goes ahead when fonts + languages are ready, or by the cap;
 
 const SPRINGY = /\bwithSpring\b|\.springify\(|\bspringConfig\b|Animated\.spring\b|Easing\.(bounce|elastic|back)\b|\bBounceIn\b|\bZoomIn\b/;
 
-test('intro: IntroGlaze is calm, untouchable, hidden from VoiceOver and Expo Go-safe', () => {
+test('intro (T199): IntroGlaze is full screen, calm, untouchable, hidden from VoiceOver and Expo Go-safe', () => {
   const src = strip(read('src', 'ui', 'IntroGlaze.tsx'));
-  assert.doesNotMatch(src, SPRINGY);
+  assert.doesNotMatch(src, SPRINGY, 'no springs');
   assert.doesNotMatch(src, /scale/i, 'no squash, stretch or zoom');
-  // The only transform on a view is the float (a vertical translate).
+  // The only transform is the beam's rotation (the sweep).
   const transforms = [...src.matchAll(/transform: \[([^\]]*)\]/g)].map((m) => m[1]!.trim());
-  assert.deepEqual(transforms, ['{ translateY: lift }']);
+  assert.deepEqual(transforms, ['{ rotate: sweep }']);
   assert.match(src, /pointerEvents="none"/);
   assert.match(src, /accessibilityElementsHidden/);
   assert.match(src, /importantForAccessibility="no-hide-descendants"/);
@@ -328,17 +281,23 @@ test('intro: IntroGlaze is calm, untouchable, hidden from VoiceOver and Expo Go-
   for (const m of src.matchAll(/Easing\.(\w+)/g)) assert.ok(['linear', 'inOut', 'sin'].includes(m[1]!), `Easing.${m[1]}`);
   assert.match(src, /duration: INTRO_MS\.fadeOut/);
   assert.match(src, /duration: INTRO_MS\.total/);
-  // Hands over from the native splash on the first frame; Reduce Motion jumps to the finished frame.
+  // Full screen: the host fills the window on the dark bg token, and the scene is drawn at window size (no tile).
+  assert.match(src, /StyleSheet\.absoluteFill, styles\.host, \{ backgroundColor: bg, opacity: fade \}/);
+  assert.match(src, /const bg = paletteFor\('dark'\)\.bg;/);
+  assert.match(src, /introLayout\(width, height\)/);
+  assert.match(src, /<Svg width=\{width\} height=\{height\}>/);
+  assert.doesNotMatch(src, /squirclePath|TILE\b|tileRim/, 'no tile');
+  // Hands over from the native splash on the first frame; Reduce Motion jumps to the finished frame, then fades.
   assert.match(src, /requestAnimationFrame\(\(\) => \{\s*SplashScreen\.hideAsync\(\)/);
   assert.match(src, /isReduceMotionEnabled\(\)/);
   assert.match(src, /shouldReduceMotion\(/);
   assert.match(src, /clock\.setValue\(1\)/);
-  // Draws Prism the creature from the shared geometry: body, facets, arch, eyes (open + closed for the wake and blink).
-  for (const name of ['BODY_D', 'FACETS', 'archPath', 'SPECTRUM', 'EYES', 'closedEyePath', 'SPARKLES_D', "trackKeyframes('eyesClosed')", "trackKeyframes('float')"]) {
+  // Draws the diamond from the shared geometry, unlit then lit; the beam, the six bands and the glint.
+  for (const name of ['GEM_FACETS', 'GEM_EDGES_D', 'GEM_OUTLINE_D', 'GEM_GLINT_D', 'SPECTRUM', 'mode="dim"', 'mode="lit"', "trackKeyframes('sweep')", "trackKeyframes('ignite')", 'BAND_TRACKS']) {
     assert.ok(src.includes(name), name);
   }
-  // No leftover plain-diamond or glaze-drip mark.
-  assert.doesNotMatch(src, /GEM_OUTLINE|rayPath|BEAM_D|glazePath|beadCircle|DRIPS/);
+  // No leftover creature (eyes, blink, float, arch) or glaze-drip mark.
+  assert.doesNotMatch(src, /EYES|closedEye|blink|FLOAT|archPath|CLOUDS|glazePath|DRIPS/);
   // Expo Go-safe imports only.
   const imports = [...src.matchAll(/from '([^']+)'/g)].map((m) => m[1]!);
   for (const i of imports) assert.ok(/^(react|react-native|react-native-svg|expo-splash-screen|\.\.\/.+)$/.test(i), i);
@@ -357,4 +316,7 @@ test('intro: the root layout mounts the app only when the intro starts fading, w
   for (const f of [read('app', '_layout.tsx'), read('src', 'ui', 'IntroGlaze.tsx')]) {
     assert.doesNotMatch(f, /from ['"][^'"]*(catalogue|themes|photoPack)[^'"]*['"]/);
   }
+  // The app the intro fades to keeps its own background (light or dark).
+  assert.equal(BRAND.light.bg, lightV2.bg);
+  assert.equal(BRAND.dark.bg, darkV2.bg);
 });

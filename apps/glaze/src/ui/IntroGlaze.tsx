@@ -1,109 +1,117 @@
-// Opening animation (owner, 23 Oct: "each app ... their own little logo and animation on start up"; mark = Prism, the
-// little prism creature since owner-1101 item 8, T190). The native splash shows Prism asleep in its tile; this view
-// takes over on its first frame at the same size and place. The rainbow arch fades in, Prism opens its eyes, floats up
-// a few points and settles, a shimmer crosses its glass, it blinks once and the sparkles appear (≤ 1.6 s), then
-// everything fades to reveal the app. Never takes touches; hidden from VoiceOver.
+// Opening animation (owner, 23 Oct: "each app ... their own little logo and animation on start up"). T199
+// (owner-1101d #2): full screen, premium and calm, with the Prism diamond (the cute creature intro was rejected).
+// The native splash is the dark screen with the small unlit diamond in the middle; this view takes over on its first
+// frame with exactly that picture (same colour, size and place). A thin beam of light sweeps in from the upper left and
+// settles on the diamond, the diamond lights up, the light leaves its point as six soft glaze-colour bands fanning
+// down to the bottom of the screen, a glint appears (1.1 s), then everything fades to reveal the Themes tab
+// (≤ 1.5 s in all). Never takes touches; hidden from VoiceOver.
 // Calm motion only (fb-1022c, T151): one linear clock drives every layer through keyframes sampled from sine
-// ease-in-out / raised-cosine curves in src/core/introGlaze.ts; the float is a plain vertical translate (no size
-// change); the fade is the app's `slow` token, eased in-out. No springs, overshoot or bounce.
-// Reduce Motion (system or the Glaze setting): the finished frame (awake, arch and sparkles) shows at once and simply
-// fades when the app is ready.
+// ease-in-out curves in src/core/introGlaze.ts; the only movement is the beam's rotation about the point where it
+// enters the gem; everything else is opacity. The fade is the app's `slow` token, eased in-out. No springs,
+// overshoot, bounce or size change.
+// Reduce Motion (system or the Glaze setting): the finished frame shows at once and simply fades when the app is ready.
 import { useEffect, useMemo, useRef } from 'react';
 import { whenFirstScreen } from '../core/startupHandoff';
 import { AccessibilityInfo, Animated, Easing, StyleSheet, useWindowDimensions, View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
-import Svg, { Circle, ClipPath, Defs, Ellipse, G, LinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
+import Svg, { Circle, Defs, LinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 import {
-  ARM,
-  ARMS,
-  BLUSH,
-  BLUSH_R,
-  BODY_D,
+  BAND_OPACITY,
   BRAND,
-  CLOUDS_D,
-  CLOUD_FILL,
-  EYE,
-  EYES,
-  FACETS,
-  FACET_EDGES_D,
-  FEET,
-  FOOT,
-  GLASS,
-  GLOSS_STREAK_D,
+  GEM_EDGES_D,
+  GEM_FACETS,
+  GEM_GLINT_D,
+  GEM_GLOSS_D,
+  GEM_OUTLINE_D,
+  GEM_STROKE,
+  GEM_TIP_GLOW,
   INTRO_MS,
-  MOUTH_D,
-  SHADOW,
-  SHEEN_OPACITY,
-  SHIMMER_ANGLE,
-  SHIMMER_BAND_W,
-  SPARKLES_D,
+  SPLASH_SIZE,
   SPECTRUM,
-  TILE,
-  archPath,
   canFade,
-  closedEyePath,
+  introLayout,
   polyPath,
-  sheenPath,
-  squirclePath,
   trackKeyframes,
+  type Track,
 } from '../core/introGlaze';
 import { shouldReduceMotion } from '../core/settings';
 import { loadSettings } from '../store/settings';
 import { paletteFor } from '../theme/tokensV2';
 
-const AnimatedPath = Animated.createAnimatedComponent(Path);
-const AnimatedRect = Animated.createAnimatedComponent(Rect);
-const AnimatedG = Animated.createAnimatedComponent(G);
-
-/** Must equal expo-splash-screen imageWidth in app.json (introGlaze.test.ts checks). */
-export const INTRO_SIZE = 240;
+/** Must equal expo-splash-screen imageWidth in app.json and SPLASH_SIZE (introGlaze.test.ts checks). */
+export const INTRO_SIZE = SPLASH_SIZE;
 
 /** Sine ease-in-out, the same curve as introGlaze.ease('inOut'). */
 const calmInOut = Easing.inOut(Easing.sin);
 
-type Keyframes = { t: number[]; v: number[] };
+const BAND_TRACKS: readonly Track[] = ['band0', 'band1', 'band2', 'band3', 'band4', 'band5'];
+
+/** The diamond in the 1024 icon canvas, lit or unlit (the unlit one is the native splash image). */
+function Gem({ size, mode }: { size: number; mode: 'lit' | 'dim' }) {
+  const [edge, outline] = GEM_STROKE[mode];
+  return (
+    <Svg width={size} height={size} viewBox="0 0 1024 1024">
+      <Defs>
+        {GEM_FACETS.map((fc) => (
+          <LinearGradient key={fc.id} id={`intro-${mode}-${fc.id}`} x1="0" y1="0" x2="0.35" y2="1">
+            <Stop offset="0" stopColor={fc[mode][0]} />
+            <Stop offset="1" stopColor={fc[mode][1]} />
+          </LinearGradient>
+        ))}
+        <RadialGradient id={`intro-${mode}-tip`} cx={GEM_TIP_GLOW.cx} cy={GEM_TIP_GLOW.cy} r={GEM_TIP_GLOW.r} gradientUnits="userSpaceOnUse">
+          <Stop offset="0" stopColor="#FFFFFF" stopOpacity={0.9} />
+          <Stop offset="1" stopColor="#FFFFFF" stopOpacity={0} />
+        </RadialGradient>
+      </Defs>
+      {GEM_FACETS.map((fc) => (
+        <Path key={fc.id} d={polyPath(fc.pts)} fill={`url(#intro-${mode}-${fc.id})`} />
+      ))}
+      <Path d={GEM_EDGES_D} fill="none" stroke="#FFFFFF" strokeOpacity={edge} strokeWidth={3} strokeLinecap="round" />
+      <Path d={GEM_OUTLINE_D} fill="none" stroke="#FFFFFF" strokeOpacity={outline} strokeWidth={5} strokeLinejoin="round" />
+      {mode === 'lit' ? (
+        <>
+          <Circle cx={GEM_TIP_GLOW.cx} cy={GEM_TIP_GLOW.cy} r={GEM_TIP_GLOW.r} fill={`url(#intro-${mode}-tip)`} />
+          <Path d={GEM_GLOSS_D} fill="none" stroke="#FFFFFF" strokeWidth={12} strokeLinecap="round" opacity={0.75} />
+        </>
+      ) : null}
+    </Svg>
+  );
+}
 
 export function IntroGlaze({
   ready,
-  dark,
   onReveal,
   onDone,
 }: {
   ready: boolean;
+  /** System appearance (kept for the caller; the intro itself is dark in both, like the native splash). */
   dark: boolean;
   /** Fade-out starts: mount the app underneath now (a store build's native screens would cover the intro). */
   onReveal?: () => void;
   onDone: () => void;
 }) {
   const { width, height } = useWindowDimensions();
-  const scheme = dark ? 'dark' : 'light';
-  const c = BRAND[scheme];
-  // T173 (PREMIUM_UI §3.1): the host reads the same `bg` token as every screen (Themes, the "/" redirect), so the
-  // last frame of the fade and the Themes background are one colour in light and dark.
-  const bg = paletteFor(scheme).bg;
-  // Same size and place as the native splash image (app.json imageWidth, centred) so the hand-over is seamless.
-  const size = Math.min(INTRO_SIZE, width - 32, height - 32);
+  // T199: the intro and the native splash are the dark `bg` token in both appearances (first frame = splash, no
+  // flash); the fade then reveals the Themes tab on its own background.
+  const bg = paletteFor('dark').bg;
+  // Same size and place as the native splash image (app.json imageWidth = SPLASH_SIZE, centred).
+  const lay = useMemo(() => introLayout(width, height), [width, height]);
+  const size = lay.size;
 
-  const art = useMemo(
+  const kf = useMemo(
     () => ({
-      tile: squirclePath(0),
-      facets: FACETS.map((fc) => ({ ...fc, d: polyPath(fc.pts) })),
-      arches: SPECTRUM.map((color, i) => ({ color, d: archPath(i) })),
-      sheen: SPECTRUM.map((color, i) => ({ color, d: sheenPath(i) })),
-      closedEyes: EYES.map((e) => closedEyePath(e.cx, e.cy)).join(' '),
-      arch: trackKeyframes('arch'),
-      eyesClosed: trackKeyframes('eyesClosed'),
-      float: trackKeyframes('float'),
-      shimmerX: trackKeyframes('shimmerX'),
-      shimmerOpacity: trackKeyframes('shimmerOpacity'),
-      sparkleIn: trackKeyframes('sparkle'),
+      beam: trackKeyframes('beam'),
+      sweep: trackKeyframes('sweep'),
+      ignite: trackKeyframes('ignite'),
+      glint: trackKeyframes('glint'),
+      bands: BAND_TRACKS.map((t) => trackKeyframes(t)),
     }),
     [],
   );
 
   const clock = useRef(new Animated.Value(0)).current;
   const fade = useRef(new Animated.Value(1)).current;
-  const poured = useRef(false);
+  const played = useRef(false);
   const readyRef = useRef(ready);
   const finishing = useRef(false);
   const onRevealRef = useRef(onReveal);
@@ -114,7 +122,7 @@ export function IntroGlaze({
 
   const finish = useRef(() => {});
   finish.current = () => {
-    if (finishing.current || !canFade(poured.current, readyRef.current)) return;
+    if (finishing.current || !canFade(played.current, readyRef.current)) return;
     finishing.current = true;
     setTimeout(() => {
       // Mount the app under the (still opaque) intro, then fade only once its first screen has laid out, so no route
@@ -143,14 +151,14 @@ export function IntroGlaze({
         if (!alive) return;
         if (reduce) {
           clock.setValue(1);
-          poured.current = true;
+          played.current = true;
           finish.current();
           return;
         }
         // One linear clock; every layer's calm curve is baked into its keyframes.
-        Animated.timing(clock, { toValue: 1, duration: INTRO_MS.total, easing: Easing.linear, useNativeDriver: false }).start(() => {
+        Animated.timing(clock, { toValue: 1, duration: INTRO_MS.total, easing: Easing.linear, useNativeDriver: true }).start(() => {
           if (!alive) return;
-          poured.current = true;
+          played.current = true;
           finish.current();
         });
       });
@@ -164,16 +172,14 @@ export function IntroGlaze({
     if (ready) finish.current();
   }, [ready]);
 
-  const track = (kf: Keyframes, map?: (v: number) => number) =>
-    clock.interpolate({ inputRange: kf.t, outputRange: map ? kf.v.map(map) : kf.v, extrapolate: 'clamp' });
-  const archIn = track(art.arch);
-  const eyesShut = track(art.eyesClosed);
-  const eyesOpen = track(art.eyesClosed, (v) => 1 - v);
-  // Icon units → points, upward.
-  const lift = track(art.float, (v) => -(v * size) / 1024);
-  const shimmerX = track(art.shimmerX);
-  const shimmerOpacity = track(art.shimmerOpacity);
-  const sparkle = track(art.sparkleIn);
+  const track = (k: { t: number[]; v: number[] }) => clock.interpolate({ inputRange: k.t, outputRange: k.v, extrapolate: 'clamp' });
+  const beamIn = track(kf.beam);
+  const sweep = clock.interpolate({ inputRange: kf.sweep.t, outputRange: kf.sweep.v.map((v) => `${v}deg`), extrapolate: 'clamp' });
+  const ignite = track(kf.ignite);
+  const glint = track(kf.glint);
+  const bands = kf.bands.map(track);
+
+  const { entry, tip, len, beam } = lay;
 
   return (
     <Animated.View
@@ -183,108 +189,61 @@ export function IntroGlaze({
       importantForAccessibility="no-hide-descendants"
       style={[StyleSheet.absoluteFill, styles.host, { backgroundColor: bg, opacity: fade }]}
     >
-      <View style={{ width: size, height: size }}>
-        {/* The tile, its ground, the arch and the sparkles (still). Identical to assets/brand/splash-icon(-dark).png
-            while the arch and sparkles are at 0. */}
-        <Svg width={size} height={size} viewBox="0 0 1024 1024">
+      {/* A soft violet bloom behind the diamond while it is lit. */}
+      <Animated.View style={[StyleSheet.absoluteFill, { opacity: ignite }]}>
+        <Svg width={width} height={height}>
           <Defs>
-            <LinearGradient id="introBg" x1="0" y1="0" x2="0" y2="1">
-              <Stop offset="0" stopColor={c.iconBg[0]} />
-              <Stop offset="1" stopColor={c.iconBg[1]} />
-            </LinearGradient>
-            <RadialGradient id="introGlow" cx="512" cy="520" r="440" gradientUnits="userSpaceOnUse">
-              <Stop offset="0" stopColor={c.glow} stopOpacity={0.6} />
-              <Stop offset="1" stopColor={c.glow} stopOpacity={0} />
+            <RadialGradient id="introBloom" cx={tip[0]} cy={tip[1] - size * 0.15} r={Math.max(width, height) * 0.45} gradientUnits="userSpaceOnUse">
+              <Stop offset="0" stopColor={BRAND.glow} stopOpacity={0.5} />
+              <Stop offset="1" stopColor={BRAND.glow} stopOpacity={0} />
             </RadialGradient>
-            <RadialGradient id="introTileShadow" cx="0.5" cy="0.5" r="0.5">
-              <Stop offset="0" stopColor={c.shadow} stopOpacity={dark ? 0.6 : 0.28} />
-              <Stop offset="1" stopColor={c.shadow} stopOpacity={0} />
-            </RadialGradient>
-            <RadialGradient id="introShadow" cx="0.5" cy="0.5" r="0.5">
-              <Stop offset="0" stopColor="#000000" stopOpacity={0.45} />
-              <Stop offset="1" stopColor="#000000" stopOpacity={0} />
-            </RadialGradient>
-            <ClipPath id="introClip">
-              <Path d={art.tile} />
-            </ClipPath>
           </Defs>
-          <Ellipse cx={TILE.cx} cy={TILE.cy + TILE.b + 30} rx={TILE.a * 0.86} ry={34} fill="url(#introTileShadow)" />
-          <G clipPath="url(#introClip)">
-            <Rect width={1024} height={1024} fill="url(#introBg)" />
-            <Rect width={1024} height={1024} fill="url(#introGlow)" />
-            <AnimatedG opacity={archIn}>
-              <G opacity={0.9}>
-                {art.arches.map((a) => (
-                  <Path key={a.color} d={a.d} fill="none" stroke={a.color} strokeWidth={23} />
-                ))}
-              </G>
-              <Path d={CLOUDS_D} fill={CLOUD_FILL} />
-            </AnimatedG>
-            <Ellipse cx={SHADOW.cx} cy={SHADOW.cy} rx={SHADOW.rx} ry={SHADOW.ry} fill="url(#introShadow)" />
-            <AnimatedG opacity={sparkle}>
-              <Path d={SPARKLES_D} fill="#FFFFFF" />
-            </AnimatedG>
-          </G>
-          <Path d={art.tile} fill="none" stroke={c.tileRim} strokeWidth={3} />
+          <Rect width={width} height={height} fill="url(#introBloom)" />
         </Svg>
-        {/* Prism itself, on its own layer so the float is a plain translate. */}
-        <Animated.View style={[StyleSheet.absoluteFill, { transform: [{ translateY: lift }] }]}>
-          <Svg width={size} height={size} viewBox="0 0 1024 1024">
+      </Animated.View>
+      {/* The six glaze colours fanning out of the point, soft bands that fade before the screen edge. */}
+      {lay.bands.map((b, i) => (
+        <Animated.View key={b.color} style={[StyleSheet.absoluteFill, { opacity: bands[i] }]}>
+          <Svg width={width} height={height}>
             <Defs>
-              <LinearGradient id="introGlass" x1="0" y1="0" x2="0.25" y2="1">
-                <Stop offset="0" stopColor={GLASS.top} />
-                <Stop offset="0.5" stopColor={GLASS.mid} />
-                <Stop offset="1" stopColor={GLASS.bottom} />
+              <LinearGradient id={`introBand${i}`} x1={tip[0]} y1={tip[1]} x2={b.x2} y2={b.y2} gradientUnits="userSpaceOnUse">
+                <Stop offset="0" stopColor={SPECTRUM[i]} stopOpacity={BAND_OPACITY} />
+                <Stop offset="0.55" stopColor={SPECTRUM[i]} stopOpacity={BAND_OPACITY * 0.35} />
+                <Stop offset="1" stopColor={SPECTRUM[i]} stopOpacity={0} />
               </LinearGradient>
-              <LinearGradient id="introLimb" x1="0" y1="0" x2="0" y2="1">
-                <Stop offset="0" stopColor={GLASS.limb[0]} />
-                <Stop offset="1" stopColor={GLASS.limb[1]} />
-              </LinearGradient>
-              <LinearGradient id="introBand" x1="0" y1="0" x2="1" y2="0">
-                <Stop offset="0" stopColor="#FFFFFF" stopOpacity={0} />
-                <Stop offset="0.5" stopColor="#FFFFFF" stopOpacity={1} />
-                <Stop offset="1" stopColor="#FFFFFF" stopOpacity={0} />
-              </LinearGradient>
-              <ClipPath id="introBody">
-                <Path d={BODY_D} />
-              </ClipPath>
             </Defs>
-            {ARMS.map((a) => (
-              <Ellipse key={`arm${a.cx}`} cx={a.cx} cy={a.cy} rx={ARM.rx} ry={ARM.ry} transform={`rotate(${a.rot} ${a.cx} ${a.cy})`} fill="url(#introLimb)" />
-            ))}
-            {FEET.map((f) => (
-              <Ellipse key={`foot${f.cx}`} cx={f.cx} cy={f.cy} rx={FOOT.rx} ry={FOOT.ry} fill="url(#introLimb)" />
-            ))}
-            <Path d={BODY_D} fill="url(#introGlass)" />
-            <G clipPath="url(#introBody)">
-              {art.facets.map((fc) => (
-                <Path key={fc.id} d={fc.d} fill={fc.fill} fillOpacity={fc.opacity} />
-              ))}
-              {art.sheen.map((s) => (
-                <Path key={s.color} d={s.d} fill={s.color} fillOpacity={SHEEN_OPACITY} />
-              ))}
-              <Path d={FACET_EDGES_D} fill="none" stroke="#FFFFFF" strokeOpacity={0.45} strokeWidth={4} strokeLinecap="round" />
-              <G transform={`rotate(${SHIMMER_ANGLE} 512 520)`}>
-                <AnimatedRect x={shimmerX} y={-300} width={SHIMMER_BAND_W} height={1600} fill="url(#introBand)" opacity={shimmerOpacity} />
-              </G>
-            </G>
-            <Path d={BODY_D} fill="none" stroke="#FFFFFF" strokeOpacity={0.75} strokeWidth={6} strokeLinejoin="round" />
-            <Path d={GLOSS_STREAK_D} fill="none" stroke="#FFFFFF" strokeWidth={16} strokeLinecap="round" opacity={0.8} />
-            {BLUSH.map((b) => (
-              <Ellipse key={`blush${b.cx}`} cx={b.cx} cy={b.cy} rx={BLUSH_R.rx} ry={BLUSH_R.ry} fill={GLASS.blush} fillOpacity={0.6} />
-            ))}
-            {/* Asleep on the splash; the eyes open, and blink once, by cross-fading these two layers. */}
-            <AnimatedPath d={art.closedEyes} fill="none" stroke={GLASS.ink} strokeWidth={12} strokeLinecap="round" opacity={eyesShut} />
-            <AnimatedG opacity={eyesOpen}>
-              {EYES.map((e) => (
-                <G key={`eye${e.cx}`}>
-                  <Ellipse cx={e.cx} cy={e.cy} rx={EYE.rx} ry={EYE.ry} fill={GLASS.ink} />
-                  <Circle cx={e.cx + 13} cy={e.cy - 20} r={15} fill="#FFFFFF" />
-                  <Circle cx={e.cx - 13} cy={e.cy + 21} r={7} fill="#FFFFFF" fillOpacity={0.8} />
-                </G>
-              ))}
-            </AnimatedG>
-            <Path d={MOUTH_D} fill="none" stroke={GLASS.ink} strokeWidth={10} strokeLinecap="round" />
+            <Path d={b.d} fill={`url(#introBand${i})`} />
+          </Svg>
+        </Animated.View>
+      ))}
+      {/* The beam: a thin line of light (with a faint halo) in a square centred on its entry point, rotated there. */}
+      <Animated.View
+        style={[
+          styles.abs,
+          { left: entry[0] - len, top: entry[1] - len, width: 2 * len, height: 2 * len, opacity: beamIn, transform: [{ rotate: sweep }] },
+        ]}
+      >
+        <Svg width={2 * len} height={2 * len}>
+          <Defs>
+            <LinearGradient id="introBeam" x1={beam.x2} y1={beam.y2} x2={beam.x1} y2={beam.y1} gradientUnits="userSpaceOnUse">
+              <Stop offset="0" stopColor="#FFFFFF" stopOpacity={0} />
+              <Stop offset="0.6" stopColor="#FFFFFF" stopOpacity={0.55} />
+              <Stop offset="1" stopColor="#FFFFFF" stopOpacity={0.95} />
+            </LinearGradient>
+          </Defs>
+          <Path d={`M${beam.x2} ${beam.y2} L${beam.x1} ${beam.y1}`} stroke="url(#introBeam)" strokeWidth={14} strokeLinecap="round" opacity={0.22} />
+          <Path d={`M${beam.x2} ${beam.y2} L${beam.x1} ${beam.y1}`} stroke="url(#introBeam)" strokeWidth={3} strokeLinecap="round" />
+        </Svg>
+      </Animated.View>
+      {/* The diamond: unlit (identical to assets/brand/splash-icon.png), with the lit one and the glint faded in over it. */}
+      <View style={[styles.abs, { left: lay.ox, top: lay.oy, width: size, height: size }]}>
+        <Gem size={size} mode="dim" />
+        <Animated.View style={[StyleSheet.absoluteFill, { opacity: ignite }]}>
+          <Gem size={size} mode="lit" />
+        </Animated.View>
+        <Animated.View style={[StyleSheet.absoluteFill, { opacity: glint }]}>
+          <Svg width={size} height={size} viewBox="0 0 1024 1024">
+            <Path d={GEM_GLINT_D} fill="#FFFFFF" />
           </Svg>
         </Animated.View>
       </View>
@@ -293,5 +252,6 @@ export function IntroGlaze({
 }
 
 const styles = StyleSheet.create({
-  host: { alignItems: 'center', justifyContent: 'center', zIndex: 100 },
+  host: { zIndex: 100, overflow: 'hidden' },
+  abs: { position: 'absolute' },
 });

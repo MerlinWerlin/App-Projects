@@ -58,18 +58,27 @@ struct SeamlessWidgetView: View {
         // T187 (owner-1101 #5: art is fitted, never cropped): the file is made at the widget's
         // aspect, but a device whose widget shape differs a little must not cut it. Fit the image
         // whole over a blurred copy of itself on the theme background, so no edge shows either.
-        ZStack {
-          GlazeBackground(theme: t)
-          Image(uiImage: image)
-            .resizable()
-            .scaledToFill()
-            .blur(radius: 16)
-            .opacity(0.85)
-          Image(uiImage: image)
-            .resizable()
-            .scaledToFit()
+        // T201 (owner-1101d #4): both layers are pinned to the widget's own size, so the
+        // aspect-filled blur (background only) can never grow the stack and push the fitted
+        // art past the widget's edges.
+        GeometryReader { geo in
+          ZStack {
+            GlazeBackground(theme: t)
+            Image(uiImage: image)
+              .resizable()
+              .scaledToFill()
+              .frame(width: geo.size.width, height: geo.size.height)
+              .clipped()
+              .blur(radius: 16)
+              .opacity(0.85)
+            Image(uiImage: image)
+              .resizable()
+              .scaledToFit()
+              .frame(width: geo.size.width, height: geo.size.height)
+          }
+          .frame(width: geo.size.width, height: geo.size.height)
+          .clipped()
         }
-        .clipped()
       } else {
         GlazeBackground(theme: t)
       }
