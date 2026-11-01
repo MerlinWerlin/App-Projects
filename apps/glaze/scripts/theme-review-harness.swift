@@ -40,7 +40,8 @@ enum NativeReviewCapture {
         var theme = WidgetTheme(); theme.themeId = id; theme.bg = [bg]; theme.surface = bg; theme.ink = ink; theme.accent = ink
         for (size, width, height) in sizes {
           guard let spec = LiveArtSpec.parse(composed[size]) else { throw NSError(domain: "GlazeReview", code: 3) }
-          let renderedArt = ClockArtRenderer.render(image:image,width:width,height:height,colour:bg)
+          // Match the2x capture scale; rendering at logical points would blur the source texture.
+          let renderedArt = ClockArtRenderer.render(image:image,width:width*2,height:height*2,colour:bg)
           let artwork = NativeClockArt(image: renderedArt, width: width, height: height)
           for fit in [false, true] {
           var hashes = Set<String>()
@@ -53,10 +54,10 @@ enum NativeReviewCapture {
                 .environment(\.colorScheme, .light)
                 .environment(\.locale, Locale(identifier: "en_US"))
               let renderer = ImageRenderer(content: value); renderer.scale = 2
-              guard let image = renderer.uiImage, let bytes = image.pngData() else {
+              guard let image = renderer.uiImage, let bytes = image.jpegData(compressionQuality:0.93) else {
                 throw NSError(domain: "GlazeReview", code: 4, userInfo: [NSLocalizedDescriptionKey: "Native renderer returned no image"])
               }
-              let filename = "\(id)_\(size)_\(fit ? "fit" : "fill")_\(hour)-\(minute).png"
+              let filename = "\(id)_\(size)_\(fit ? "fit" : "fill")_\(hour)-\(minute).jpg"
               try bytes.write(to: folder.appendingPathComponent(filename), options: .atomic)
               let digest = SHA256.hash(data: bytes).map { String(format: "%02x", $0) }.joined(); hashes.insert(digest)
               records.append(["theme": id, "size": size, "fit": fit ? "fit" : "fill", "hour": hour, "minute": minute, "file": filename, "sha256": digest, "width": Int(image.size.width * image.scale), "height": Int(image.size.height * image.scale)])
