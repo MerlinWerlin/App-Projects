@@ -507,6 +507,10 @@ export const de: Catalogue = {
   'app.addTv.candidateLabelBeta': '{title}, {host}, {platform} Beta',
   'app.addTv.chipBeta': '{platform} · Beta',
   'app.addTv.scanning': 'Suche nach Fernsehern in deinem Wi-Fi…',
+  'app.addTv.report': 'Scan-Bericht: Telefon {ip} · {count} Adressen geprüft · Cast-Prüfung {cast}',
+  'app.addTv.reportCastOn': 'an',
+  'app.addTv.reportCastOff': 'aus',
+  'app.addTv.reportNoIp': 'Scan-Bericht: Dieses Telefon hat keine WLAN-Adresse, daher wurde nichts geprüft. Verbinde dich mit deinem WLAN und suche erneut.',
   'app.addTv.scanHint':
     'Schalte den Fernseher ein und bleib mit dem Handy im selben Wi-Fi. Tippe auf deinen Fernseher, sobald er erscheint.',
   'app.addTv.scanAgain': 'Erneut suchen',

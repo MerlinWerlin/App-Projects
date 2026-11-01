@@ -499,6 +499,10 @@ export const it: Catalogue = {
   'app.addTv.candidateLabelBeta': '{title}, {host}, {platform} beta',
   'app.addTv.chipBeta': '{platform} · beta',
   'app.addTv.scanning': 'Ricerca di TV sulla tua Wi-Fi…',
+  'app.addTv.report': 'Rapporto: telefono {ip} · {count} indirizzi controllati · controllo Cast {cast}',
+  'app.addTv.reportCastOn': 'attivo',
+  'app.addTv.reportCastOff': 'disattivato',
+  'app.addTv.reportNoIp': 'Rapporto: questo telefono non ha un indirizzo Wi-Fi, quindi non è stato controllato nulla. Connettiti al Wi-Fi e cerca di nuovo.',
   'app.addTv.scanHint':
     'Accendi la TV e tieni il telefono sulla stessa Wi-Fi. Tocca la tua TV quando compare.',
   'app.addTv.scanAgain': 'Cerca di nuovo',

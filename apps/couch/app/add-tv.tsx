@@ -68,6 +68,8 @@ export default function AddTvScreen() {
   const alive = useRef<boolean>(true);
   const demo = snap.demo;
   const [lostOpen, setLostOpen] = useState(false);
+  // One-line scan report under "No TVs found" (owner 1 Nov 2026: TCL Google TV not found; shows what the scan saw).
+  const [report, setReport] = useState<string | null>(null);
   // Google TV pairing (real TVs only): the driver that shows the code on the TV, and its phase.
   const atvRef = useRef<AndroidTvDriver | null>(null);
   const [atvPhase, setAtvPhase] = useState<'starting' | 'ready' | 'failed'>('starting');
@@ -120,9 +122,13 @@ export default function AddTvScreen() {
       if (!isCancelled()) dispatch({ type: 'found', candidate: c });
     };
     const discoveryDeps = appDiscoveryDeps();
+    setReport(null);
     const scan = demo
       ? demoScan(onFound, { isCancelled })
-      : discoverTvs(discoveryDeps, { windowMs: discoveryDeps.udp || discoveryDeps.mdns ? 3000 : 0, onFound, isCancelled }).then((r) => r.candidates);
+      : discoverTvs(discoveryDeps, { windowMs: discoveryDeps.udp || discoveryDeps.mdns ? 3000 : 0, onFound, isCancelled }).then((r) => {
+          if (!isCancelled()) setReport(scanReport(r, t));
+          return r.candidates;
+        });
     scan
       .then(() => {
         // Scan first: even when nothing was found we stay on the list; the address link is a last resort.
@@ -261,8 +267,9 @@ export default function AddTvScreen() {
           {s.candidates.length > 0 ? (
             <InsetGroupedList footer={t('app.addTv.scanHint')}>{s.candidates.map(candidateRow)}</InsetGroupedList>
           ) : (
-            <View style={styles.block}>
+            <View style={[styles.block, styles.gap]}>
               <StepText tone="secondary">{t('app.addTv.scanHint')}</StepText>
+              {s.step === 'list' && report ? <StepText tone="secondary">{report}</StepText> : null}
             </View>
           )}
           <View style={[styles.block, styles.actions]}>
@@ -481,6 +488,16 @@ export default function AddTvScreen() {
       <LostRemoteSheet visible={lostOpen} onClose={() => setLostOpen(false)} caps={s.caps} onIr={openIrFromSheet} />
     </>
   );
+}
+
+/** "Phone 192.168.1.20 · checked 253 addresses · casting check on" (or why nothing was checked). */
+function scanReport(r: { localIp?: string | null; probed?: number; tlsCheck?: boolean; methods: string[] }, t: ReturnType<typeof useT>): string {
+  if (!r.localIp) return t('app.addTv.reportNoIp');
+  return t('app.addTv.report', {
+    ip: r.localIp,
+    count: r.probed ?? 0,
+    cast: r.tlsCheck ? t('app.addTv.reportCastOn') : t('app.addTv.reportCastOff'),
+  });
 }
 
 /** "Your TV will ask to allow Couch" etc.: what the TV will ask for, before pairing. Nothing for 'none'. */
