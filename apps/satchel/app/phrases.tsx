@@ -7,12 +7,13 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { Animated, FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { menuLangFor } from '../src/core/menu.ts';
 import { parseLangParam, parsePhraseParam, phraseCards, type PhraseCard, type PhraseLang, PHRASE_LANGS } from '../src/core/phrases.ts';
 import { useApp } from '../src/state/app.tsx';
 import { fadeIn } from '../src/theme/motion.ts';
 import { radius, shadowOf, space, typeScale } from '../src/theme/tokens.ts';
 import { FadeInView, HeroHeader } from '../src/ui/hero.tsx';
-import { Chip, Label, PressableScale } from '../src/ui/kit.tsx';
+import { Button, Chip, Label, PressableScale } from '../src/ui/kit.tsx';
 import { LANG_KEY, PHRASE_TABLE, usePhraseLang } from '../src/ui/phrases.ts';
 
 export default function PhrasesScreen() {
@@ -43,6 +44,8 @@ export default function PhrasesScreen() {
   };
 
   const languageName = (l: PhraseLang) => t(LANG_KEY[l]);
+  // T110: the menu-word dictionary in the same language, when we carry one for it.
+  const menuLang = menuLangFor(lang);
   const native = (l: PhraseLang) => PHRASE_TABLE.languages.find((x) => x.code === l)?.native ?? l;
 
   const header = (
@@ -68,6 +71,17 @@ export default function PhrasesScreen() {
           </View>
         ) : null}
       </View>
+      {menuLang ? (
+        <View style={{ flexDirection: 'row' }}>
+          <Button
+            kind="secondary"
+            icon="restaurant-outline"
+            label={t('menu.openFromPhrases')}
+            hint={t('menu.openFromPhrasesHint')}
+            onPress={() => router.push({ pathname: '/menu', params: { lang: menuLang } })}
+          />
+        </View>
+      ) : null}
       <View accessibilityRole="header">
         <Label>{t('phrases.list')}</Label>
       </View>

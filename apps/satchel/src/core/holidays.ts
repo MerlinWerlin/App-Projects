@@ -357,6 +357,8 @@ export const COUNTRY_HOLIDAYS: Readonly<Record<string, CountryHolidays>> = {
       fixed(5, 1, LABOUR),
       fixed(6, 2, 'Republic Day'),
       fixed(8, 15, 'Ferragosto (Assumption Day)'),
+      // T108: a national holiday again from 2026 (law of October 2025 restoring 4 October); no weekend shift in Italy.
+      fixed(10, 4, 'Feast of St Francis of Assisi', { from: 2026 }),
       fixed(11, 1, ALL_SAINTS),
       fixed(12, 8, IMMACULATE),
       fixed(12, 25, CHRISTMAS),

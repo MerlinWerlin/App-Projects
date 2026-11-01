@@ -22,6 +22,8 @@ import { briefLine } from './todos.tsx';
 import { useNextDoseLine } from './MedTimesCard.tsx';
 import { holidayTodayIn } from '../core/holidays.ts';
 import { holidayTodayLine } from './HolidaysCard.tsx';
+import { currentStay } from '../core/staydetails.ts';
+import { StayBriefRow } from './stay.tsx';
 
 export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[] }) {
   const { theme, t } = useApp();
@@ -33,6 +35,8 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
   // T101: next medicine dose under the trip's saved plan (empty with no medicines saved). Hook before the early return.
   const dose = useNextDoseLine(b?.trip ?? null, b?.zone ?? '', now);
   if (!b) return null;
+  // T109: stay details for the stay you're in right now on this trip (by real instants, across zones).
+  const stay = currentStay([b.trip], now);
 
   const at = (i: Item) => {
     const time = formatTime(i.start.local);
@@ -110,6 +114,12 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
               {tonight}
             </Text>
           </PressableScale>
+        </>
+      ) : null}
+      {stay ? (
+        <>
+          <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.heroMuted, opacity: 0.6 }} />
+          <StayBriefRow item={stay.item} />
         </>
       ) : null}
     </View>

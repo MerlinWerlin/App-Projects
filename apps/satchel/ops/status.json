@@ -1,16 +1,16 @@
 {
-  "tests": 1146,
-  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
-  "last_run": "2026-11-01 10:25",
-  "stage": "owner-tested",
-  "oversight_seen": 222,
-  "headline": "Expanding: tipping guide and tip calculator, public holidays on your trip, gifts and souvenirs list, sharper medicine times",
-  "next_for_owner": [
-    "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
-    "Wallet tab > Tipping; a trip's Holidays on this trip card; a trip's Gifts and souvenirs; Emergency tab > Medicine times row.",
-    "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
-    "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (BA-BD are new) by commenting on this page."
-  ],
-  "trial_kit": true,
-  "next_stage": "release-prep"
+ "tests": 1193,
+ "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
+ "last_run": "2026-11-01 11:00",
+ "stage": "owner-tested",
+ "oversight_seen": 223,
+ "headline": "Expanding: stay details with join-Wi-Fi, menu helper, spending insights with receipts, tips straight into your expense",
+ "next_for_owner": [
+  "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
+  "A hotel booking > Stay details; Menu helper from the allergy card or phrases; a trip's Spending insights and receipt photos; Work out a tip from the expense form.",
+  "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
+  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (BE-BH are new) by commenting on this page."
+ ],
+ "trial_kit": true,
+ "next_stage": "release-prep"
 }
