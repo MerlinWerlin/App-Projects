@@ -143,6 +143,7 @@ function RootStack() {
         <Stack.Screen name="feedback" />
         {/* cast-1024 (T92): AirPlay / Screen Mirroring guide, opened from the Cast tab. */}
         <Stack.Screen name="airplay" options={{ presentation: 'modal', headerShown: false }} />
+        <Stack.Screen name="airplay-show" options={{ presentation: 'fullScreenModal', headerShown: false }} />
         <Stack.Screen name="choose-apps" options={{ headerShown: false, title: t('app.chooseApps.title') }} />
         <Stack.Screen name="themes" options={{ headerShown: false, title: t('app.themes.title') }} />
         <Stack.Screen name="plus" options={{ headerShown: false, title: t('app.plus.title') }} />

@@ -285,6 +285,15 @@ export const appEn = {
   "app.feedback.empty": "Write a few words first.",
   "app.feedback.noMail": "Mail isn’t set up on this phone. Send your message to this address instead:",
   "app.feedback.thanks": "Thanks! Your Mail app has the message ready, just tap Send there.",
+  // Owner 1 Nov 2026: TVs that won't fetch files from the phone (TCL C7K) show the queue over AirPlay.
+  "app.cast.airplayShow": "Show on TV with AirPlay",
+  "app.airplayShow.hint": "Turn on Screen Mirroring to your TV: swipe down from the top-right corner, tap Screen Mirroring, then choose your TV. Tap the left or right side to change photo.",
+  "app.airplayShow.hideHint": "Hide tip",
+  "app.airplayShow.done": "Done",
+  "app.airplayShow.video": "Videos can't be shown this way yet. Play this one from the Photos app with AirPlay.",
+  "app.airplayShow.count": "{n} of {total}",
+  "app.airplayShow.prev": "Previous",
+  "app.airplayShow.next": "Next",
   // T92 (cast-1024 phase B): Screen Mirroring guide (app/airplay.tsx)
   "app.airplay.title": "Screen Mirroring",
   "app.airplay.intro": "Show your whole phone screen on the TV with AirPlay.",

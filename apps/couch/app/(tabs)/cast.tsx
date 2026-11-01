@@ -155,6 +155,9 @@ export default function CastScreen() {
             {snap.delivery?.via === 'googlecast' ? (
               <PillButton variant="plain" label="Send test picture" onPress={() => void cast.sendTestPicture()} />
             ) : null}
+            {queue.items.length > 0 ? (
+              <PillButton variant="tinted" stretch label={t('app.cast.airplayShow')} onPress={() => router.push('/airplay-show')} />
+            ) : null}
             <Card>
               <TransportBar
                 cast={snap.cast}
