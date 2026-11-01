@@ -1,0 +1,142 @@
+{
+  "app": "roamlings",
+  "note": "Owner feedback (TestFlight comments, concept-doc comments, App-Projects commits) outranks this order. Phase numbers match docs/PLAN.md.",
+  "tasks": [
+    {
+      "id": "R01",
+      "phase": 1,
+      "title": "Core game logic: rng, 12 species with 4 colourways + 2 rare part mods, hatch + rarity + pity, Spark + daily cap, eggs, growth + branching, care + streak, regions, tests",
+      "status": "done",
+      "commit": "first commit"
+    },
+    {
+      "id": "R02",
+      "phase": 1,
+      "title": "SVG pet renderer for every species/part/colourway/stage/branch/mood",
+      "status": "done",
+      "commit": "first commit"
+    },
+    {
+      "id": "R03",
+      "phase": 1,
+      "title": "Screens: Home (buddy, care, egg meter, today), hatch, focus timer, Pets, pet detail + rename + buddy, Dex, Settings",
+      "status": "done",
+      "commit": "first commit"
+    },
+    {
+      "id": "R04",
+      "phase": 1,
+      "title": "Step counting via expo-sensors Pedometer, denied state with Open Settings; original icon + splash",
+      "status": "done",
+      "commit": "first commit"
+    },
+    {
+      "id": "R05",
+      "phase": 1,
+      "title": "Home-screen widgets (iOS WidgetKit target via @bacons/apple-targets like apps/glaze, added in eas-build-post-install; production-native profile): small = buddy + mood + egg meter, medium = + today's Spark + Feed/Pet buttons (AppIntents, iOS 17+). App writes buddy pose PNGs + state to the App Group on each change and calls reloadAllTimelines. Each widget instance can pick its pet (configurable intent). Fail soft without the native module. DONE 1 Nov: small + medium buddy widget, Feed/Pet buttons; per-widget pet choice moved to R14.",
+      "status": "done",
+      "commit": "PR #164"
+    },
+    {
+      "id": "R06",
+      "phase": 1,
+      "title": "Pet pose PNGs for widgets: react-native-svg toDataURL of the buddy in 3 moods (src/ui/WidgetSync.tsx)",
+      "status": "done",
+      "deps": [],
+      "commit": "PR #164"
+    },
+    {
+      "id": "R07",
+      "phase": 1,
+      "title": "First-run onboarding: 3 short cards (walk = Spark, eggs hatch pets, pets grow into forms) then the starter egg; asks for Motion permission with a plain reason",
+      "status": "done",
+      "commit": "PR #164"
+    },
+    {
+      "id": "R08",
+      "phase": 1,
+      "title": "Hatch polish: egg wiggles on its own, crack particles, rarity-coloured burst for Rare+, sound off by default; Reduce Motion path",
+      "status": "todo"
+    },
+    {
+      "id": "R09",
+      "phase": 1,
+      "title": "HealthKit adapter (sleep, workouts, mindful minutes) behind src/native/health.ts; sleep -> Dreamy branch XP, workouts -> Strong; add those branches to species art",
+      "status": "todo"
+    },
+    {
+      "id": "R10",
+      "phase": 1,
+      "title": "Release kit: docs/privacy.html, docs/support.html, docs/STORE.md (no competitor names), store/ screenshots kit, docs/RELEASE_CHECKLIST.md",
+      "status": "todo"
+    },
+    {
+      "id": "R11",
+      "phase": 1,
+      "title": "Add Roamlings to marketing/apps.json as stage building (name not locked)",
+      "status": "done",
+      "commit": "first commit"
+    },
+    {
+      "id": "R12",
+      "phase": 1,
+      "title": "Pet journal on the detail screen (hatched where/when, evolutions, renames) and a gentle 'buddy says' line on Home based on trait + mood",
+      "status": "todo"
+    },
+    {
+      "id": "R13",
+      "phase": 1,
+      "title": "More species: 12 regional species (2 per region) gated by state.region, plus a weekly 'visitor' species rotation (deterministic from the ISO week)",
+      "status": "todo"
+    },
+    {
+      "id": "R14",
+      "phase": 1,
+      "title": "Widget: choose which pet each widget shows (configurable AppIntent), lock-screen egg-meter widget",
+      "status": "todo"
+    },
+    {
+      "id": "P2",
+      "phase": 2,
+      "title": "Server + accounts (needs Jared's OK for a free Supabase or Cloudflare account): age gate, server-side hatch rolls from seed, pet ledger, Spark caps, sync",
+      "status": "blocked",
+      "blocked_on": "Jared: backend account choice"
+    },
+    {
+      "id": "P3",
+      "phase": 3,
+      "title": "Friends + trading: QR/bump add, bump + remote trades as single server transactions, gifts, preset reactions, block/report, trade-only evolutions",
+      "status": "todo",
+      "deps": [
+        "P2"
+      ]
+    },
+    {
+      "id": "P4",
+      "phase": 4,
+      "title": "Family: parent account + dashboard, parent quests, friend/trade approvals, time and Spark limits",
+      "status": "todo",
+      "deps": [
+        "P2"
+      ]
+    },
+    {
+      "id": "P5",
+      "phase": 5,
+      "title": "World: World Dex map, weather/time-of-day odds, seasonal events (both hemispheres), community goals",
+      "status": "todo"
+    },
+    {
+      "id": "P6",
+      "phase": 6,
+      "title": "Depth: pairing, habitats, expeditions (widget countdown), races and shows, Live Activities",
+      "status": "todo"
+    },
+    {
+      "id": "P7",
+      "phase": 7,
+      "title": "Launch prep: Plus / Family Plus (never sells randomness), cosmetics shop, privacy review, age ratings, store listing, Apple Watch",
+      "status": "todo"
+    }
+  ]
+}

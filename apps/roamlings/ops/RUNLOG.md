@@ -1,0 +1,4 @@
+# Run log
+
+- 2026-11-01 (Claude, chat "pet collector app"): Started Roamlings. Core game logic (12 species, 8 variants each, rarity + pity, Spark, eggs, growth/branching, care, streak, regions) with 20 offline tests; screens Home, hatch, focus timer, Pets, pet detail, Dex, Settings; SVG pet renderer; step counting via Pedometer; original icon + splash. Strict offline typecheck clean. Not yet on a phone.
+- 2026-11-01 13:30 (same chat; Jared: "just have it working now, not every few hours"): R05/R06 home-screen buddy widget (small + medium, mood images from the app, egg meter, Feed/Pet buttons via App Intents, taps applied with care rules), R07 first-run welcome; expo-font added (doctor: vector-icons peer). check.yml green: install, typecheck, 25 tests, iOS + Android bundle, expo-doctor 21/21. No scheduled build task (Jared's call): work continues in chat.

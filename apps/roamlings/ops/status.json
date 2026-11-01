@@ -1,0 +1,11 @@
+{
+  "app": "roamlings",
+  "stage": "build",
+  "headline": "Phase 1 working build ready 1 Nov: hatch loop, growth, Dex, steps, welcome, home-screen widget. Waiting for PR #164 merge and the App Store Connect record for TestFlight.",
+  "tests": 25,
+  "typecheck": "real tsc on GitHub: clean; expo-doctor 21/21",
+  "next_for_owner": [
+    "Merge PR #164 (or tell Claude \"merge PR 164\")",
+    "Create the Roamlings app in App Store Connect (bundle id com.jared797.roamlings) and send Claude its Apple ID number"
+  ]
+}
