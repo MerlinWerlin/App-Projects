@@ -33,9 +33,11 @@ for(const t of catalogue.themes){
  for(const name of readdirSync(join(folder,'widgets')).filter(n=>n.endsWith('.png')).sort()){
   const original=join(folder,'widgets',name),override=t.widgets.find(w=>w.originalFile&&basename(w.originalFile)===name);
   const src=override?join(root,override.file):original,digest=sha(readFileSync(src));if(hashes.has(digest))continue;hashes.add(digest);
-  const live=runtimeByFile.get(name),optionId=live?.id??short(name.slice(0,-4));if(ids.has(optionId))throw Error('Duplicate option '+id+'/'+optionId);ids.add(optionId);
+  const live=runtimeByFile.get(name);
+  // Keep the old painted clock as a static concept beside its cleaned live replacement.
+  const optionId=id==='alpine-starlight'&&name==='constellation-clock-preview.png'&&existsSync(join(folder,'widgets/themed-clock-20261102.json'))?'constellation-clock-concept':live?.id??short(name.slice(0,-4));if(ids.has(optionId))throw Error('Duplicate option '+id+'/'+optionId);ids.add(optionId);
   const a=await image(src,'widget-art','widget-'+optionId,{width:1024,height:1024,fit:'inside',withoutEnlargement:true});
-  const base={id:optionId,kind:live?.kind??'art',image:a.path,sizes:['small','medium','large'],fit:'fit',background:'theme',label:live?.label??optionId.replaceAll('-',' ').slice(0,40)};
+  const base={id:optionId,kind:live?.kind??'art',image:a.path,sizes:['small','medium','large'],fit:'fit',background:'theme',label:live?.kind==='clock'?'Plain clock (fallback)':live?.label??optionId.replaceAll('-',' ').slice(0,40)};
   if(live){base.numberFree=true;base.liveFrame=live.liveFrame}
   widgets.push(base);
  }
@@ -43,7 +45,7 @@ for(const t of catalogue.themes){
  if(existsSync(clockProfile)){
   const profile=JSON.parse(readFileSync(clockProfile,'utf8'));
   const asset=await image(profile.option.image,'widget-art','widget-themed-live-clock',{width:1024,height:1024,fit:'inside',withoutEnlargement:true});
-  widgets.push({...profile.option,image:asset.path});
+  widgets.unshift({...profile.option,image:asset.path});
  }
  if(widgets.length<6)throw Error(id+' has fewer than six candidate designs');
  const palette={bg:t.background,tile:t.background,glyph:t.foreground,accent:t.foreground,text:t.foreground};
