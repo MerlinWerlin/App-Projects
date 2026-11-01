@@ -53,3 +53,23 @@ test('painted value covers cannot opt out of their background with a cleanFace f
   assert.equal(painted.cleanFace, undefined);
   assert.equal(painted.cover, true);
 });
+
+test('each themed clock style and per-art ink survives the pack, composition and native record', () => {
+  for (const style of ['analog', 'digital', 'stacked'] as const) {
+    const result = parseWidgetOptions([{ ...option, liveFrame: { ...frame, clockStyle: style, ink: '#abCDef' } }], assets);
+    assert.deepEqual(result.errors, []);
+    const plan = liveArtPlan('custom-art', result.options[0]); assert.ok(plan);
+    const spec = liveArtSpec(plan, {w: 1024,h: 1024}, {w: 364,h: 170}, 'fit', {bg:'#000000',ink:'#000000'}); assert.ok(spec);
+    assert.equal(spec.clockStyle, style); assert.equal(spec.ink, '#ABCDEF');
+    assert.deepEqual(parseLiveArtSpec(spec), spec);
+  }
+});
+
+test('untrusted clock styles and non-hex colour expressions are rejected by the pack parser', () => {
+  for (const patch of [{clockStyle:'html'}, {ink:'red'}, {ink:'#FFFFFF00'}, {ink:'url(secret)'}]) {
+    const result = parseWidgetOptions([{ ...option, liveFrame: { ...frame, ...patch } }], assets);
+    assert.equal(result.options.length,0); assert.equal(result.errors.length,1);
+  }
+  const parsed = parseLiveArtSpec({kind:'clock',rect:[0,0,1,1],clockStyle:'html',ink:'#FFFFFF'});
+  assert.ok(parsed); assert.equal(parsed.clockStyle,undefined);
+});

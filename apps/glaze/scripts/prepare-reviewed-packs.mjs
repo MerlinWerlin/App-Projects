@@ -39,13 +39,19 @@ for(const t of catalogue.themes){
   if(live){base.numberFree=true;base.liveFrame=live.liveFrame}
   widgets.push(base);
  }
+ const clockProfile=join(folder,'widgets/themed-clock-20261102.json');
+ if(existsSync(clockProfile)){
+  const profile=JSON.parse(readFileSync(clockProfile,'utf8'));
+  const asset=await image(profile.option.image,'widget-art','widget-themed-live-clock',{width:1024,height:1024,fit:'inside',withoutEnlargement:true});
+  widgets.push({...profile.option,image:asset.path});
+ }
  if(widgets.length<6)throw Error(id+' has fewer than six candidate designs');
  const palette={bg:t.background,tile:t.background,glyph:t.foreground,accent:t.foreground,text:t.foreground};
  const name=String(source.set??t.id).replace(/^\d{3}[- ]/,'').replaceAll('-',' ').slice(0,60);
  const manifest={format:REMOTE_ART_FORMAT,version:2,id,packVersion:1,name,plus:false,minAppVersion:'1.0.1',palette,
   meta:{name,mood:'Coordinated artwork and native value faces; local release-review candidate.',tags:['review-candidate'],credits:source.source?.photographer?`Glaze theme artwork; reference photograph by ${source.source.photographer}${source.source.page?' ('+source.source.page+')':''}.`:'Glaze generated theme artwork and original UI geometry.',licence:'openai-output-owned',generator:'openai-image',prompt:'Mixed original theme artwork and code-drawn UI faces. Exact artwork prompts retained in source review folder.',addedAt:'2026-11-01'},
   thumbhash,assets,totalBytes:assets.reduce((s,a)=>s+a.bytes,0),widgets,
-  review:{publication:false,pricing:'unassigned; plus=false is local-test metadata only',nativeCapability:'live-frame-v1',nativePR:190,sourceReleaseNote:source.source?.release_note??null,rights:'Original source credits and any source-specific release notes still apply. No new rights clearance is asserted.'}};
+  review:{publication:false,designApproved:false,pricing:'unassigned; plus=false is local-test metadata only',nativeCapability:'live-frame-clock-style-v2',nativePR:190,sourceReleaseNote:source.source?.release_note??null,rights:'Original source credits and any source-specific release notes still apply. No new rights clearance is asserted.'}};
  const parsed=parseRemoteArtManifest(manifest,id);if(!parsed.ok)throw Error(id+': '+parsed.error);
  const errors=validateWidgetOptions(widgets,assets);if(errors.length)throw Error(errors.join(';'));
  const options=withLiveArt(id,parsed.value.widgets),clocks=options.filter(w=>liveArtPlan(id,w)?.kind==='clock');if(!clocks.length)throw Error(id+' has no native clock plan');

@@ -35,6 +35,7 @@ struct LiveArtSpec {
   let circle: Bool
   let cover: Bool
   let cleanFace: Bool
+  let clockStyle: String
   let plate: String
   let ink: String
   /// Countdown target (start of that day, current calendar).
@@ -64,6 +65,7 @@ struct LiveArtSpec {
       circle: (r["shape"] as? String) == "circle",
       cover: (r["cover"] as? Bool) == true,
       cleanFace: (r["cleanFace"] as? Bool) == true && (r["cover"] as? Bool) != true,
+      clockStyle: ["analog", "digital", "stacked"].contains(r["clockStyle"] as? String ?? "") ? (r["clockStyle"] as! String) : "legacy",
       plate: plate,
       ink: ink,
       target: target
@@ -244,6 +246,38 @@ struct LiveArtValueView: View {
   @ViewBuilder private func content(s: CGFloat) -> some View {
     switch spec.kind {
     case .clock:
+      clock(s: s)
+    case .date:
+      dateContent(s: s)
+    case .countdown:
+      countdownContent(s: s)
+    case .battery:
+      batteryContent(s: s)
+    case .focus:
+      LiveFocusButton(date: date, theme: theme, s: s)
+    }
+  }
+
+  /// Value-only rendering: the art provides the dial/material, never a flat replacement face.
+  @ViewBuilder private func clock(s: CGFloat) -> some View {
+    switch spec.clockStyle {
+    case "analog":
+      LiveClockHands(date: date, ink: ink)
+        .accessibilityLabel(date.formatted(date: .omitted, time: .shortened))
+    case "digital":
+      Text(date, style: .time)
+        .font(theme.typeface(size: max(12, s * 0.64), weight: .medium))
+        .monospacedDigit().lineLimit(1).minimumScaleFactor(0.3)
+    case "stacked":
+      VStack(spacing: 0) {
+        Text(verbatim: String(format: "%02d", Calendar.current.component(.hour, from: date)))
+        Text(verbatim: String(format: "%02d", Calendar.current.component(.minute, from: date)))
+      }
+      .font(theme.typeface(size: max(14, s * 0.78), weight: .light))
+      .monospacedDigit().lineLimit(1).minimumScaleFactor(0.4)
+      .accessibilityElement(children: .ignore)
+      .accessibilityLabel(date.formatted(date: .omitted, time: .shortened))
+    default:
       ZStack {
         LiveClockHands(date: date, ink: ink)
           .frame(width: s * 0.70, height: s * 0.70)
@@ -254,7 +288,10 @@ struct LiveArtValueView: View {
           .minimumScaleFactor(0.5)
           .offset(y: s * 0.39)
       }
-    case .date:
+    }
+  }
+
+  private func dateContent(s: CGFloat) -> some View {
       VStack(spacing: s * 0.02) {
         Text(verbatim: date.formatted(.dateTime.weekday(.abbreviated)).uppercased())
           .font(theme.typeface(size: max(9, s * 0.13), weight: .semibold))
@@ -266,7 +303,9 @@ struct LiveArtValueView: View {
       .lineLimit(1)
       .minimumScaleFactor(0.4)
       .padding(s * 0.06)
-    case .countdown:
+  }
+
+  @ViewBuilder private func countdownContent(s: CGFloat) -> some View {
       if let target = spec.target {
         let cal = Calendar.current
         let days = max(0, cal.dateComponents([.day], from: cal.startOfDay(for: date), to: target).day ?? 0)
@@ -281,7 +320,9 @@ struct LiveArtValueView: View {
         .minimumScaleFactor(0.4)
         .padding(s * 0.06)
       }
-    case .battery:
+  }
+
+  @ViewBuilder private func batteryContent(s: CGFloat) -> some View {
       if let pct = LiveBattery.percent() {
         Text(verbatim: "\(pct)%")
           .font(theme.typeface(size: max(14, s * 0.3), weight: .bold))
@@ -294,9 +335,6 @@ struct LiveArtValueView: View {
         Text(verbatim: "–")
           .font(theme.typeface(size: max(14, s * 0.3), weight: .bold))
       }
-    case .focus:
-      LiveFocusButton(date: date, theme: theme, s: s)
-    }
   }
 }
 

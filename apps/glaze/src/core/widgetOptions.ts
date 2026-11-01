@@ -73,7 +73,7 @@ export type WidgetOption = {
    */
   numberFree?: boolean;
   /** Optional value area on a verified number-free face, in source-art coordinates. */
-  liveFrame?: { rect: [number, number, number, number]; shape: 'circle' | 'plate' };
+  liveFrame?: { rect: [number, number, number, number]; shape: 'circle' | 'plate'; clockStyle?: 'analog' | 'digital' | 'stacked'; ink?: string };
   /**
    * T237: the Glaze widget draws this piece's live value over it (src/core/liveArt.ts withLiveArt),
    * so it is a working widget even though a value is painted in. Set by the app, never by a pack.
@@ -147,6 +147,14 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
       const [x, y, w, h] = f.rect as number[];
       if (w <= 0 || h <= 0 || x + w > 1 || y + h > 1) return void errors.push(`${at} (${o.id}): liveFrame outside art`);
       liveFrame = { rect: [x, y, w, h], shape: f.shape };
+      if (f.clockStyle !== undefined) {
+        if (o.kind !== 'clock' || !['analog', 'digital', 'stacked'].includes(String(f.clockStyle))) return void errors.push(`${at} (${o.id}): bad clockStyle`);
+        liveFrame.clockStyle = f.clockStyle as 'analog' | 'digital' | 'stacked';
+      }
+      if (f.ink !== undefined) {
+        if (typeof f.ink !== 'string' || !/^#[0-9a-fA-F]{6}$/.test(f.ink)) return void errors.push(`${at} (${o.id}): bad liveFrame ink`);
+        liveFrame.ink = f.ink.toUpperCase();
+      }
     }
     ids.add(o.id);
     options.push({

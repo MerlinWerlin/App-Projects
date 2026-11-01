@@ -2,7 +2,7 @@ name: Glaze reviewed clock rendering
 on:
   push:
     branches: ['codex/glaze-theme-release-20261101']
-    paths: ['apps/glaze/scripts/theme-review-harness.swift', 'apps/glaze/docs/reviewed-theme-palettes.json', 'apps/glaze/targets/widget/**', '.github/workflows/glaze-reviewed-clock-capture.yml']
+    paths: ['apps/glaze/scripts/theme-review-harness.swift', 'apps/glaze/docs/themed-clock-profiles.json', 'apps/glaze/docs/themed-clock-fixtures/**', 'apps/glaze/targets/widget/**', '.github/workflows/glaze-reviewed-clock-capture.yml']
 permissions:
   contents: read
 jobs:
@@ -24,7 +24,8 @@ jobs:
             if [[ "$FILE" != "targets/widget/GlazeWidgetsBundle.swift" ]]; then SOURCES+=("$FILE"); fi
           done
           xcrun swiftc -parse-as-library -sdk "$SDK" -target "$ARCH-apple-ios17.0-simulator" "${SOURCES[@]}" scripts/theme-review-harness.swift -o "$APP/GlazeReview" > "$RUNNER_TEMP/glaze-native-compile.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-native-compile.log"; exit 1; }
-          cp docs/reviewed-theme-palettes.json "$APP/"
+          cp docs/themed-clock-profiles.json "$APP/"
+          cp -R docs/themed-clock-fixtures "$APP/"
           python3 - <<'PY'
           import os,plistlib,pathlib
           app=pathlib.Path(os.environ['RUNNER_TEMP'])/'GlazeReview.app'
@@ -50,7 +51,7 @@ jobs:
           if [[ -d "$SOURCE" ]]; then cp -R "$SOURCE/." "$RUNNER_TEMP/glaze-native-review/"; fi
           if [[ -f "$SOURCE/_ERROR.txt" ]]; then cat "$SOURCE/_ERROR.txt"; exit 1; fi
           test -f "$SOURCE/_SUCCESS.json"
-          python3 -c 'import json,os,pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"])/"glaze-native-review/_SUCCESS.json"; r=json.loads(p.read_text()); assert r["themes"]==105 and r["renders"]==1260; print("Verified",r["renders"],"native clock renders; physical device and installed widget tests remain unverified")'
+          python3 -c 'import json,os,pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"])/"glaze-native-review/_SUCCESS.json"; r=json.loads(p.read_text()); assert r["themes"]==105 and r["renders"]==2520; print("Verified",r["renders"],"native art clock renders; physical device and installed widget tests remain unverified")'
       - uses: actions/upload-artifact@v4
         if: always()
         with:

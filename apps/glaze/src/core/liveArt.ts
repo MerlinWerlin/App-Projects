@@ -95,6 +95,8 @@ export function validTargetDay(day: unknown): string | null {
 }
 
 export type LiveArtPlan = {
+  clockStyle?: 'analog' | 'digital' | 'stacked';
+  ink?: string;
   kind: LiveArtKind;
   /** 0..1 of the art. */
   rect: NRect;
@@ -128,6 +130,8 @@ export function liveArtPlan(
         const [x, y, w, h] = f.rect;
         if (![x, y, w, h].every((v) => Number.isFinite(v) && v >= 0 && v <= 1) || w <= 0 || h <= 0 || x + w > 1 || y + h > 1) return null;
         plan = { kind, rect: { x, y, w, h }, shape: f.shape, cover: false, cleanFace: true };
+        if (kind === 'clock' && f.clockStyle) plan.clockStyle = f.clockStyle;
+        if (f.ink) plan.ink = f.ink;
       } else plan = { kind, rect: { ...DEFAULT_BADGE_RECT }, shape: 'plate', cover: false };
     }
   }
@@ -164,6 +168,7 @@ const clamp01 = (n: number): number => (n < 0 ? 0 : n > 1 ? 1 : n);
 
 /** Stored with the piece (widget-art/index.json `live`); read by LiveArtOverlay.swift. */
 export type LiveArtSpec = {
+  clockStyle?: 'analog' | 'digital' | 'stacked';
   kind: LiveArtKind;
   /** [x, y, w, h], 0..1 of the composed image the widget shows. */
   rect: [number, number, number, number];
@@ -198,8 +203,9 @@ export function liveArtSpec(plan: LiveArtPlan, art: Box, composed: Box, fit: Wid
     shape: plan.shape,
     cover: plan.cover,
     plate: hex(palette.bg) ?? '#000000',
-    ink: hex(palette.ink) ?? '#FFFFFF',
+    ink: hex(plan.ink) ?? hex(palette.ink) ?? '#FFFFFF',
   };
+  if (plan.kind === 'clock' && plan.clockStyle) spec.clockStyle = plan.clockStyle;
   if (plan.target) spec.target = plan.target;
   if (plan.cleanFace === true && !plan.cover) spec.cleanFace = true;
   if (plan.kind === 'focus') spec.minutes = FOCUS_MINUTES;
@@ -224,6 +230,7 @@ export function parseLiveArtSpec(raw: unknown): LiveArtSpec | null {
     ink: hex(r.ink) ?? '#FFFFFF',
   };
   if (r.cleanFace === true && !spec.cover) spec.cleanFace = true;
+  if (kind === 'clock' && ['analog', 'digital', 'stacked'].includes(String(r.clockStyle))) spec.clockStyle = r.clockStyle as 'analog' | 'digital' | 'stacked';
   if (kind === 'countdown') {
     const t = validTargetDay(r.target);
     if (!t) return null;

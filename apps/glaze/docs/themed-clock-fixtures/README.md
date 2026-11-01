@@ -1,0 +1,1 @@
+CI-only downscaled art fixtures for APPS A2 native clock composition review. Written by prepare-themed-clocks.mjs; original sources and hashes are in themed-clock-profiles.json. Not app bundle artwork, not installed-widget or rights approval.
