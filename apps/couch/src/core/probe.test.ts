@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { FetchLike } from './driver';
-import { isPrivateLanIp, parseCastEurekaInfo, parseManualIp, parseRokuDeviceInfo, parseSamsungApiV2, parseSonyInterfaceInfo, parseWebosHello, probeHost, probeSubnet, subnetHosts } from './probe';
+import { isPrivateLanIp, parseCastDeviceDesc, parseCastEurekaInfo, parseManualIp, parseRokuDeviceInfo, parseSamsungApiV2, parseSonyInterfaceInfo, parseWebosHello, probeHost, probeSubnet, subnetHosts } from './probe';
 
 const fx = (name: string): string => readFileSync(join(__dirname, 'drivers', '__fixtures__', 'ssdp', name), 'utf8');
 
@@ -129,6 +129,18 @@ describe('probeHost: brands found without multicast (owner feedback 1 Nov 2026)'
   it('finds an LG webOS TV from its SSAP hello', async () => {
     const c = await probeHost(fakeFetch({ 'http://192.168.1.62:3000/': { status: 200, body: 'Hello world' } }), '192.168.1.62');
     expect(c?.platform).toBe('webos');
+  });
+  it('finds a Google TV from its DIAL description when eureka_info is restricted', async () => {
+    const desc = '<?xml version="1.0"?><root xmlns="urn:schemas-upnp-org:device-1-0"><device><deviceType>urn:dial-multiscreen-org:device:dial:1</deviceType><friendlyName>Smart TV Pro</friendlyName><manufacturer>Google Inc.</manufacturer><modelName>Eureka Dongle</modelName><UDN>uuid:abcd</UDN></device></root>';
+    const c = await probeHost(
+      fakeFetch({
+        'http://192.168.1.63:8008/setup/eureka_info': { status: 403, body: '' },
+        'http://192.168.1.63:8008/ssdp/device-desc.xml': { status: 200, body: desc },
+      }),
+      '192.168.1.63',
+    );
+    expect(c).toMatchObject({ platform: 'androidtv', name: 'Smart TV Pro', usn: 'uuid:abcd' });
+    expect(parseCastDeviceDesc('<root><device><manufacturer>ACME</manufacturer><modelName>NAS</modelName></device></root>', 'h')).toBeNull();
   });
   it('ignores look-alikes', () => {
     expect(parseSonyInterfaceInfo(JSON.stringify({ result: [{ productCategory: 'camera' }] }), 'h')).toBeNull();

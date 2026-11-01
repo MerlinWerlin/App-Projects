@@ -180,6 +180,24 @@ export function parseCastEurekaInfo(body: string, host: string): TvCandidate | n
   return c;
 }
 
+/**
+ * Maps the DIAL device description (GET :8008/ssdp/device-desc.xml, served by Chromecast built-in for
+ * casting from phone apps) to a Google TV candidate. A second chance when eureka_info is restricted.
+ */
+export function parseCastDeviceDesc(xml: string, host: string): TvCandidate | null {
+  if (!/<root[\s>]/i.test(xml) || !/<device>/i.test(xml)) return null;
+  const manufacturer = xmlTag(xml, 'manufacturer') ?? '';
+  const modelName = xmlTag(xml, 'modelName') ?? '';
+  if (!/google/i.test(manufacturer) && !/chromecast|eureka|google/i.test(modelName)) return null;
+  const c: TvCandidate = { platform: 'androidtv', host, port: CAST_SETUP_PORT, source: 'probe' };
+  const name = xmlTag(xml, 'friendlyName');
+  if (name) c.name = name;
+  const udn = xmlTag(xml, 'UDN');
+  if (udn) c.usn = udn;
+  c.location = `http://${host}:${CAST_SETUP_PORT}/ssdp/device-desc.xml`;
+  return c;
+}
+
 /** LG webOS answers a plain HTTP GET on its SSAP port with "Hello world". */
 export function parseWebosHello(body: string, host: string): TvCandidate | null {
   if (!/hello world/i.test(body)) return null;
@@ -195,6 +213,16 @@ async function tryGet(fetch: FetchLike, url: string, timeoutMs: number): Promise
     const res = await fetch(url, { method: 'GET', timeoutMs });
     if (!res.ok) return null;
     return await res.text();
+  } catch {
+    return null;
+  }
+}
+
+/** Any HTTP answer (even 403/404) as { ok, body }; null when refused or timed out. */
+async function tryAny(fetch: FetchLike, url: string, timeoutMs: number): Promise<{ ok: boolean; body: string } | null> {
+  try {
+    const res = await fetch(url, { method: 'GET', timeoutMs });
+    return { ok: res.ok, body: res.ok ? await res.text() : '' };
   } catch {
     return null;
   }
@@ -228,16 +256,21 @@ export async function probeHost(
     tryGet(fetch, `http://${host}:${ROKU_ECP_PORT}/query/device-info`, timeoutMs),
     tryGet(fetch, `http://${host}:${SAMSUNG_API_PORT}/api/v2/`, timeoutMs),
     tryPostJson(fetch, `http://${host}/sony/system`, SONY_INTERFACE_INFO, timeoutMs),
-    tryGet(fetch, `http://${host}:${CAST_SETUP_PORT}/setup/eureka_info`, timeoutMs),
+    tryAny(fetch, `http://${host}:${CAST_SETUP_PORT}/setup/eureka_info`, timeoutMs),
     tryGet(fetch, `http://${host}:${WEBOS_PROBE_PORT}/`, timeoutMs),
   ]);
-  return (
+  const found =
     (roku !== null ? parseRokuDeviceInfo(roku, host) : null) ??
     (samsung !== null ? parseSamsungApiV2(samsung, host) : null) ??
     (sony !== null ? parseSonyInterfaceInfo(sony, host) : null) ??
-    (cast !== null ? parseCastEurekaInfo(cast, host) : null) ??
-    (webos !== null ? parseWebosHello(webos, host) : null)
-  );
+    (cast?.ok ? parseCastEurekaInfo(cast.body, host) : null) ??
+    (webos !== null ? parseWebosHello(webos, host) : null);
+  if (found) return found;
+  // Google TV whose eureka_info is restricted: a host that answered on :8008 at all (even 403/404)
+  // gets one more look at the DIAL device description. Hosts with :8008 closed cost nothing extra.
+  if (cast === null) return null;
+  const desc = await tryGet(fetch, `http://${host}:${CAST_SETUP_PORT}/ssdp/device-desc.xml`, timeoutMs);
+  return desc !== null ? parseCastDeviceDesc(desc, host) : null;
 }
 
 export interface ProbeSubnetOptions {
