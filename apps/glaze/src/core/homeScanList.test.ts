@@ -8,6 +8,7 @@ import type { CatalogueEntry } from './catalogue.ts';
 import {
   applyScan,
   glyphForScannedName,
+  isFolderTitle,
   isJunkLine,
   isListViewPage,
   isPlausibleLabel,
@@ -223,4 +224,23 @@ test('glyphForScannedName: family glyph, generic fallback, never a monogram for 
   assert.equal(glyphForScannedName('Qwzx'), 'grid');
   assert.equal(glyphForScannedName('Qwzx', 'Music'), 'music');
   assert.notEqual(glyphForScannedName(''), MONOGRAM_GLYPH);
+});
+
+test('T234: App Library folder titles are not apps; real apps and catalogue names still come through', () => {
+  for (const t of ['Social', 'Utilities', 'Entertainment', 'Productivity & Finance', 'Information & Reading', 'Recently Added', 'Health & Fitness', 'Other']) {
+    assert.equal(isFolderTitle(t), true, t);
+  }
+  for (const t of ['News', 'Sports', 'Instagram', 'Photos', 'Health']) assert.equal(isFolderTitle(t), false, t);
+  const cat = [e('ig', 'Instagram'), e('ut', 'Utilities')];
+  const page: OcrObservation[] = [
+    { text: 'Social', x: 0.1, y: 0.3, w: 0.2, h: 0.03 },
+    { text: 'Entertainment', x: 0.55, y: 0.3, w: 0.3, h: 0.03 },
+    { text: 'Instagram', x: 0.1, y: 0.5, w: 0.2, h: 0.03 },
+    { text: 'Productivity & Finance', x: 0.1, y: 0.6, w: 0.4, h: 0.03 },
+    { text: 'Utilities', x: 0.55, y: 0.6, w: 0.2, h: 0.03 },
+    { text: 'Zorblax', x: 0.55, y: 0.5, w: 0.2, h: 0.03 },
+  ];
+  const r = scanHomeScreens([page], cat);
+  assert.deepEqual(r.matched.map((m) => m.name).sort(), ['Instagram', 'Utilities']);
+  assert.deepEqual(r.unmatched, ['Zorblax']);
 });

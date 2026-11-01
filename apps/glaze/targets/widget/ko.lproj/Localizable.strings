@@ -60,3 +60,14 @@
 "Choose widget art" = "위젯 아트 선택";
 "Art" = "아트";
 "Widget art" = "위젯 아트";
+
+/* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */
+"Layout" = "레이아웃";
+"Fill" = "채우기";
+"Fit" = "맞추기";
+/* Live values over art: focus timer and countdown (LiveArtOverlay.swift, FocusIntents.swift, T237) */
+"Start or pause focus" = "집중 시작 또는 일시정지";
+"Start" = "시작";
+"Pause" = "일시정지";
+"Resume" = "계속";
+"Days" = "일";

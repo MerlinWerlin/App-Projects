@@ -25,18 +25,19 @@ const root = join(import.meta.dirname, '..', '..');
 const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
 const close = (a: number, b: number, eps = 1e-6) => assert.ok(Math.abs(a - b) <= eps, `${a} ≈ ${b}`);
 
-test('native blur constants match GlazeWidgetBridgeModule.setWidgetArt', () => {
+test('native blur constants match GlazeWidgetBridgeModule.setWidgetArt (T236: no veil)', () => {
   const bridge = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
-  assert.match(bridge, /CIGaussianBlur/);
-  assert.match(bridge, /max\(12, min\(input\.extent\.width, input\.extent\.height\) \* 0\.06\)/);
-  assert.match(bridge, /base\.withAlphaComponent\(0\.25\)\.setFill\(\)/);
+  const setArt = bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArt")'), bridge.indexOf('AsyncFunction("linkStatus")'));
+  assert.match(setArt, /CIGaussianBlur/);
+  assert.match(setArt, /max\(12, min\(target\.width, target\.height\) \* 0\.08\)/);
+  assert.doesNotMatch(setArt, /withAlphaComponent/);
   assert.equal(NATIVE_BLUR_MIN_RADIUS, 12);
-  assert.equal(NATIVE_BLUR_RADIUS_SHARE, 0.06);
-  assert.equal(NATIVE_BLUR_VEIL_ALPHA, 0.25);
+  assert.equal(NATIVE_BLUR_RADIUS_SHARE, 0.08);
+  assert.equal(NATIVE_BLUR_VEIL_ALPHA, 0);
 });
 
-test('nativeBlurRadiusPx: max(12, 6 % of the short side)', () => {
-  assert.equal(nativeBlurRadiusPx({ w: 1000, h: 500 }), 30);
+test('nativeBlurRadiusPx: max(12, 8 % of the output short side)', () => {
+  assert.equal(nativeBlurRadiusPx({ w: 1000, h: 500 }), 40);
   assert.equal(nativeBlurRadiusPx({ w: 100, h: 100 }), 12);
   assert.equal(nativeBlurRadiusPx({ w: 0, h: Number.NaN }), 12);
 });
@@ -49,19 +50,16 @@ test('coverRect: aspect-fill, centred', () => {
   close(s.y, (170 - 364) / 2);
 });
 
-test('blurBackdrop: native radius scaled with the art; 25 % veil', () => {
+test('blurBackdrop: native radius share of the box; no veil (T236)', () => {
   const art = { w: 1092, h: 1146 };
   const box = { w: 150, h: 150 };
   const b = blurBackdrop(art, box);
-  const scale = 150 / 1092;
-  close(b.radius, Math.round(1092 * 0.06 * scale * 100) / 100, 0.01);
-  close(b.radius, 9, 0.01); // 6 % of the short side of the box the art covers
-  assert.equal(b.veil, 0.25);
+  close(b.radius, 12, 0.01); // 8 % of the box's short side
+  assert.equal(b.veil, 0);
   close(b.rect.w, 150);
   assert.ok(b.rect.h >= 150);
-  // A tiny piece: the 12 px floor, scaled.
-  const tiny = blurBackdrop({ w: 100, h: 100 }, { w: 200, h: 200 });
-  assert.equal(tiny.radius, 24);
+  const wide = blurBackdrop({ w: 100, h: 100 }, { w: 364, h: 170 });
+  close(wide.radius, 13.6, 0.01);
 });
 
 test('wallpaperUnderSlot: only the seamless crop shows in the box', () => {
@@ -142,7 +140,7 @@ test('WidgetArtMenu: stable names, stacked small caption, native-like background
   assert.match(menu, /wallpaperUnderSlot\(/);
   assert.match(menu, /blurBackdrop\(/);
   assert.match(menu, /blurRadius=\{blur\.radius\}/);
-  assert.match(menu, /opacity: blur\.veil/);
+  assert.doesNotMatch(menu, /blur\.veil/, 'T236: no veil of the theme colour over the art');
   assert.doesNotMatch(menu, /blurRadius=\{24\}|\? 24 :/);
   const art = read('src', 'ui', 'ThemeWidgetArt.tsx');
   assert.match(art, /seamlessCrop\(/);
@@ -157,30 +155,31 @@ test('theme page Seamless card sizes the hero from the downloaded piece (remoteH
   assert.match(hook, /remoteHeroPx\(local\)/);
 });
 
-test('T223: setWidgetArt fills edge to edge only when the real aspect matches (else fits); value mirrored', () => {
+test('T223/T236: setWidgetArt draws edge to edge only when the real aspect matches (else whole + extended edges); value mirrored', () => {
   const bridge = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
   const setArt = bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArt")'), bridge.indexOf('AsyncFunction("linkStatus")'));
   assert.match(setArt, /let aspectsMatch = min\(artAspect, outAspect\) \/ max\(artAspect, outAspect\) >= 0\.98/);
-  assert.match(setArt, /if fit == "fill" && aspectsMatch \{/);
-  assert.doesNotMatch(setArt, /if fit == "fill" \{/);
+  assert.match(setArt, /if aspectsMatch \{\s*art\.draw\(in: canvas\)/);
   assert.equal(NATIVE_FILL_MIN_ASPECT_MATCH, 0.98);
   close(NATIVE_FILL_MIN_ASPECT_MATCH, 1 - FILL_ASPECT_TOLERANCE);
 });
 
-test('T223: every Seamless family and every image source goes through the one fitted view', () => {
+test('T223/T236: every Seamless family and every image source goes through the one view (Fill / Fit)', () => {
   const widget = read('targets', 'widget', 'SeamlessWidget.swift');
   // One image for the view: the chosen library piece, else the last applied file for the family.
-  assert.equal((widget.match(/Image\(uiImage: image\)/g) ?? []).length, 2, 'blurred backdrop + fitted art, nothing else');
-  assert.equal((widget.match(/\.scaledToFit\(\)/g) ?? []).length, 1);
-  assert.equal((widget.match(/\.scaledToFill\(\)/g) ?? []).length, 1, 'only the blurred backdrop fills');
+  // Fill: blurred backdrop + (edge to edge | fitted) image; Fit: the raw art (or the image).
+  assert.equal((widget.match(/Image\(uiImage: image\)/g) ?? []).length, 3, 'blurred backdrop + edge-to-edge or fitted image');
+  assert.equal((widget.match(/Image\(uiImage: raw \?\? image\)/g) ?? []).length, 1, 'Fit layout');
+  assert.equal((widget.match(/\.scaledToFit\(\)/g) ?? []).length, 2);
+  assert.equal((widget.match(/\.scaledToFill\(\)/g) ?? []).length, 2, 'blurred backdrop + edge to edge when the aspect matches');
   for (const fam of ['.systemSmall', '.systemMedium', '.systemLarge', '.systemExtraLarge']) assert.ok(widget.includes(`case ${fam}:`), fam);
   // No per-family view branches that could skip the fit: the view never switches on the family.
   const view = widget.slice(widget.indexOf('struct SeamlessWidgetView'), widget.indexOf('struct SeamlessWidget: Widget'));
   assert.doesNotMatch(view, /switch family|if family ==/);
-  // Both bridge writers fit the art with min scale (6 % inset) before the widget fits the file again.
+  // The wallpaper writer still insets the hero (heroRect); widget art is fitted with no inset (T236).
   const bridge = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
   assert.match(bridge, /let s = min\(box\.width \/ hero\.size\.width, box\.height \/ hero\.size\.height\)/);
-  assert.match(bridge, /let s = min\(box\.width \/ art\.size\.width, box\.height \/ art\.size\.height\)/);
+  assert.match(bridge, /let s = min\(target\.width \/ art\.size\.width, target\.height \/ art\.size\.height\)/);
   // Library copies are downscaled whole (aspect kept), never cropped.
   const save = bridge.slice(bridge.indexOf('AsyncFunction("saveWidgetArtPiece")'), bridge.indexOf('AsyncFunction("getWidgetArtLibrary")'));
   assert.match(save, /downscale\(image, maxEdge: 1200\)/);

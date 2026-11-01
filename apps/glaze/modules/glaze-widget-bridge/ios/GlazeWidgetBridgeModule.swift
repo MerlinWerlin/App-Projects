@@ -147,17 +147,27 @@ public class GlazeWidgetBridgeModule: Module {
       } catch {
         return false
       }
+      // T236: no raw art for a wallpaper-backed image; drop a stale one so the widget's Fit layout
+      // falls back to this composed image instead of an older piece.
+      try? FileManager.default.removeItem(at: container.appendingPathComponent("seamless-\(family)-art.png"))
       // T201 (owner-1101d #4): reload every timeline (WidgetCenter.reloadAllTimelines), so the
       // GlazeSeamless widget and anything else showing the theme pick the new image up at once.
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }
 
-    /// T187 theme widget art (owner-1101 #5: art is fitted, never cropped). Draws a w x h px image:
-    /// the theme colour, then (background "blur") a blurred aspect-fill copy of the art under a light
-    /// veil of the colour, then the art itself FITTED (whole, centred, 6 % inset like heroRect), or
-    /// edge to edge only for fit "fill" (JS sends it only when the aspects already match). Caps the
-    /// long edge at 1200 px, writes seamless-<family>.png and reloads "GlazeSeamless".
+    /// T187 theme widget art, T236 (owner-1101g #1: art FILLS the widget, no frame ever, subject
+    /// never cut). Draws a w x h px image, full bleed:
+    ///   - art aspect within 2 % of the output (src/core/widgetPreview.ts NATIVE_FILL_MIN_ASPECT_MATCH):
+    ///     the art edge to edge;
+    ///   - otherwise the art drawn WHOLE at its fitted rect (scale to fit, no inset), and the strips
+    ///     around it filled with the art's own edges extended (CIImage clampedToExtent of the fitted
+    ///     art, Gaussian-blurred), so it reads as one seamless image (widgetPreview.ts fullBleedArt).
+    /// No veil. The theme colour is only the opaque base under transparent pixels (dark themes stay
+    /// dark), so it never shows as a frame around opaque art. Same output for background "theme"
+    /// and "blur"; `fit` is kept for the JS signature (the widget's own Fit / Fill choice uses the
+    /// raw art below). Caps the long edge at 1200 px, writes seamless-<family>.png plus the raw art
+    /// as seamless-<family>-art.png (for Edit Widget > Layout > Fit), and reloads the timelines.
     AsyncFunction("setWidgetArt") { (artUri: String, w: Double, h: Double, background: String, colour: String, fit: String, family: String) -> Bool in
       guard ["small", "medium", "large"].contains(family), w >= 1, h >= 1 else { return false }
       guard
@@ -168,16 +178,31 @@ public class GlazeWidgetBridgeModule: Module {
       let longest = max(w, h)
       let k: CGFloat = longest > 1200 ? 1200 / CGFloat(longest) : 1
       let target = CGSize(width: max(1, floor(CGFloat(w) * k)), height: max(1, floor(CGFloat(h) * k)))
+      let canvas = CGRect(origin: .zero, size: target)
       let base = GlazeWidgetBridgeModule.colour(colour)
 
-      var blurred: UIImage? = nil
-      if background == "blur", let cg = GlazeWidgetBridgeModule.uprightCGImage(art) {
-        let input = CIImage(cgImage: cg)
+      let artAspect = art.size.width / art.size.height
+      let outAspect = target.width / target.height
+      let aspectsMatch = min(artAspect, outAspect) / max(artAspect, outAspect) >= 0.98
+      // The art whole, centred, scaled to fit with NO inset.
+      let s = min(target.width / art.size.width, target.height / art.size.height)
+      let aw = art.size.width * s
+      let ah = art.size.height * s
+      let artRect = CGRect(x: (target.width - aw) / 2, y: (target.height - ah) / 2, width: aw, height: ah)
+
+      // The art's own edges extended over the whole canvas (background only, under the strips).
+      var extended: UIImage? = nil
+      if !aspectsMatch, let cg = GlazeWidgetBridgeModule.uprightCGImage(art), cg.width > 0, cg.height > 0 {
+        let ks = aw / CGFloat(cg.width)
+        // CI's origin is bottom-left; the fitted rect is centred, so the same offsets apply.
+        let placed = CIImage(cgImage: cg)
+          .transformed(by: CGAffineTransform(scaleX: ks, y: ks))
+          .transformed(by: CGAffineTransform(translationX: artRect.minX, y: artRect.minY))
         let filter = CIFilter(name: "CIGaussianBlur")
-        filter?.setValue(input.clampedToExtent(), forKey: kCIInputImageKey)
-        filter?.setValue(max(12, min(input.extent.width, input.extent.height) * 0.06), forKey: kCIInputRadiusKey)
-        if let out = filter?.outputImage?.cropped(to: input.extent), let made = CIContext().createCGImage(out, from: input.extent) {
-          blurred = UIImage(cgImage: made)
+        filter?.setValue(placed.clampedToExtent(), forKey: kCIInputImageKey)
+        filter?.setValue(max(12, min(target.width, target.height) * 0.08), forKey: kCIInputRadiusKey)
+        if let out = filter?.outputImage?.cropped(to: canvas), let made = CIContext().createCGImage(out, from: canvas) {
+          extended = UIImage(cgImage: made)
         }
       }
 
@@ -186,31 +211,21 @@ public class GlazeWidgetBridgeModule: Module {
       format.opaque = true
       let composed = UIGraphicsImageRenderer(size: target, format: format).image { ctx in
         base.setFill()
-        ctx.fill(CGRect(origin: .zero, size: target))
-        if let blurred = blurred {
-          // Background only: aspect-fill the blurred copy so no edge shows, then veil it a little.
-          let s = max(target.width / blurred.size.width, target.height / blurred.size.height)
-          let bw = blurred.size.width * s
-          let bh = blurred.size.height * s
-          blurred.draw(in: CGRect(x: (target.width - bw) / 2, y: (target.height - bh) / 2, width: bw, height: bh))
-          base.withAlphaComponent(0.25).setFill()
-          ctx.fill(CGRect(origin: .zero, size: target))
-        }
-        // T223: edge to edge only when the REAL art already has the output's aspect (within 2 %,
-        // src/core/widgetPreview.ts NATIVE_FILL_MIN_ASPECT_MATCH); a pack whose declared size is
-        // wrong gets the art fitted below instead, never stretched or cropped.
-        let artAspect = art.size.width / art.size.height
-        let outAspect = target.width / target.height
-        let aspectsMatch = min(artAspect, outAspect) / max(artAspect, outAspect) >= 0.98
-        if fit == "fill" && aspectsMatch {
-          art.draw(in: CGRect(origin: .zero, size: target))
+        ctx.fill(canvas)
+        if aspectsMatch {
+          art.draw(in: canvas)
         } else {
-          let pad = min(target.width, target.height) * 0.06
-          let box = CGRect(origin: .zero, size: target).insetBy(dx: pad, dy: pad)
-          let s = min(box.width / art.size.width, box.height / art.size.height)
-          let aw = art.size.width * s
-          let ah = art.size.height * s
-          art.draw(in: CGRect(x: (target.width - aw) / 2, y: (target.height - ah) / 2, width: aw, height: ah))
+          if let extended = extended {
+            // Only OUTSIDE the art (even-odd clip), so transparent art gets no blurred ghost under it.
+            ctx.cgContext.saveGState()
+            let strips = UIBezierPath(rect: canvas)
+            strips.append(UIBezierPath(rect: artRect))
+            strips.usesEvenOddFillRule = true
+            strips.addClip()
+            extended.draw(in: canvas)
+            ctx.cgContext.restoreGState()
+          }
+          art.draw(in: artRect)
         }
       }
       guard let data = composed.pngData() else { return false }
@@ -218,6 +233,14 @@ public class GlazeWidgetBridgeModule: Module {
         try data.write(to: container.appendingPathComponent("seamless-\(family).png"), options: .atomic)
       } catch {
         return false
+      }
+      // T236: the raw art (long edge <= 1200 px) for the widget's own Fit layout. Best effort: the
+      // widget falls back to the composed image without it.
+      let rawURL = container.appendingPathComponent("seamless-\(family)-art.png")
+      if let raw = GlazeWidgetBridgeModule.downscale(art, maxEdge: 1200).pngData() {
+        try? raw.write(to: rawURL, options: .atomic)
+      } else {
+        try? FileManager.default.removeItem(at: rawURL)
       }
       // T201 (owner-1101d #4): reload every timeline (WidgetCenter.reloadAllTimelines), so the
       // GlazeSeamless widget and anything else showing the theme pick the new image up at once.
@@ -276,6 +299,18 @@ public class GlazeWidgetBridgeModule: Module {
       } catch {
         return false
       }
+      // T236: copy the raw art alongside as <id>-art.png when the source has one
+      // (seamless-<size>-art.png from setWidgetArt) for the widget's Fit layout. Optional: pieces
+      // without it still work (Fit then uses <id>.jpg).
+      let rawDest = dir.appendingPathComponent("\(id)-art.png")
+      try? FileManager.default.removeItem(at: rawDest)
+      if from.hasPrefix("seamless-"), from.hasSuffix(".png") {
+        let rawName = String(from.dropLast(4)) + "-art.png"
+        let rawSource = container.appendingPathComponent(rawName)
+        if FileManager.default.fileExists(atPath: rawSource.path) {
+          try? FileManager.default.copyItem(at: rawSource, to: rawDest)
+        }
+      }
       return true
     }
 
@@ -310,7 +345,10 @@ public class GlazeWidgetBridgeModule: Module {
       }
       var keep = Set<String>([artIndexFile])
       for p in pieces {
-        if let id = p["id"] as? String, GlazeWidgetBridgeModule.validArtId(id) { keep.insert("\(id).jpg") }
+        if let id = p["id"] as? String, GlazeWidgetBridgeModule.validArtId(id) {
+          keep.insert("\(id).jpg")
+          keep.insert("\(id)-art.png") // T236 raw art for the widget's Fit layout (optional)
+        }
       }
       let names = (try? FileManager.default.contentsOfDirectory(atPath: dir.path)) ?? []
       for name in names where !keep.contains(name) {

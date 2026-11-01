@@ -42,7 +42,7 @@ import { photoCreditParams, wallpaperSourceFor, type WallpaperSource } from '../
 import { DEFAULT_TRANSFORM } from '../../src/core/photoCrop';
 import { canApplyFromDetail, packDetailView, showsPackCard, wantsPackArtwork, type PackDetailView } from '../../src/core/packDetail';
 import { getAnyTheme, packOf } from '../../src/core/plusThemes';
-import { previewSpecs, type Theme } from '../../src/core/themes';
+import { previewApps, previewSpecs, type Theme } from '../../src/core/themes';
 import { averageColour, sizeForScreen } from '../../src/core/wallpaper';
 import { generateWidgetSet, widgetKindKey, widgetSizeKey } from '../../src/core/widgetSets';
 import { studioPreviews, type StudioState } from '../../src/core/widgetStudio';
@@ -68,8 +68,8 @@ import { applyThemeEverywhere, rememberWallpaperSaved, useActiveThemeId, wasWall
 import { runInstalledProbe } from '../../src/store/installedProbe';
 import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { loadBackground } from '../../src/store/background';
-import { setThemeShape, themeShapeFor } from '../../src/core/studio';
-import { setStudioStyle, useStudio } from '../../src/store/studio';
+import { setThemeLook, setThemeShape, studioApps, themeLookFor, themeShapeFor } from '../../src/core/studio';
+import { applyThemeIcons, useStudio } from '../../src/store/studio';
 import { durations, easeOutCurve, useMotionReduced } from '../../src/theme/motion';
 import {
   circleRadius,
@@ -90,6 +90,7 @@ import { bezelFor } from '../../src/ui/PhoneFrame';
 import { ProgressBar } from '../../src/ui/ProgressBar';
 import { PackUpdateNote } from '../../src/ui/PackUpdateNote';
 import { IconGridSkeleton, Skeleton } from '../../src/ui/Skeleton';
+import { IconLookPicker } from '../../src/ui/IconLookPicker';
 import { PreviewModeLabel, ShapePicker } from '../../src/ui/ShapePicker';
 import { Segmented } from '../../src/ui/Segmented';
 import { SheenButton } from '../../src/ui/SheenButton';
@@ -248,7 +249,14 @@ function ThemeDetail({
   const shapeKey = studio.state?.themeId && getAnyTheme(studio.state.themeId)?.id === theme.id ? studio.state.themeId : theme.id;
   const shape = studio.state ? themeShapeFor(studio.state, shapeKey, theme.iconStyle.shape) : theme.iconStyle.shape;
   const iconBackdrop = useMemo(() => averageColour(theme.wallpaper), [theme]);
-  const specs = useMemo(() => previewSpecs(theme, undefined, shape), [theme, shape]);
+  // T240: the person's icon look for this theme (default 'themed', T241), shown everywhere here.
+  const look = studio.state ? themeLookFor(studio.state, shapeKey) : 'themed';
+  const specs = useMemo(() => previewSpecs(theme, undefined, shape, look), [theme, shape, look]);
+  // The look picker previews the person's own apps (the preview apps until they pick some).
+  const lookApps = useMemo(() => {
+    const own = studio.state ? studioApps(studio.state) : [];
+    return own.length > 0 ? own : previewApps();
+  }, [studio.state]);
   const size = useMemo(() => {
     const s = Dimensions.get('screen');
     return sizeForScreen(s.width, s.height);
@@ -521,7 +529,7 @@ function ThemeDetail({
     setStyleError(false);
     try {
       // The store applies the user's chosen shape for this theme, so it is baked into the exports.
-      await setStudioStyle(theme.iconStyle, theme.id, averageColour(theme.wallpaper));
+      await applyThemeIcons(theme, averageColour(theme.wallpaper));
       await studio.reload();
       void applyWidgetTheme(theme); // T125: also remembered for the launch re-write; never throws
       void tickStoredChecklist(theme.id, 'iconStyle');
@@ -844,6 +852,16 @@ function ThemeDetail({
         {step === 'icons' ? (
           <SquircleCard size="large" elevation="raised" style={styles.side}>
             <View style={styles.stack}>
+              {/* T240 (owner-1101g #5): the icon look is always visible here, first, as a segmented
+                  selector with live previews of the person's own apps (never behind a menu). */}
+              <IconLookPicker
+                theme={theme}
+                value={look}
+                onChange={(next) => studio.update((s) => setThemeLook(s, theme, next, shapeKey))}
+                apps={lookApps}
+                shape={shape}
+                backdrop={iconBackdrop}
+              />
               <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>{t('theme.style.body')}</Text>
               {/* T179: art packs bring wallpaper + widget art; their icons are Glaze glyphs in the theme's colours. */}
               {remoteArt ? (
@@ -900,6 +918,7 @@ function ThemeDetail({
                   theme={theme}
                   value={shape}
                   onChange={(next) => studio.update((s) => setThemeShape(s, shapeKey, next))}
+                  look={look}
                   iosMask={iosMask}
                   onIosMaskChange={setIosMask}
                   backdrop={iconBackdrop}

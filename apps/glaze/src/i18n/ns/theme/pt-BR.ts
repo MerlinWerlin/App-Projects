@@ -35,6 +35,7 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
   applyHintLocked: 'Parte do Glaze Plus. Explica a compra única',
   editWallpaper: 'Editar o papel de parede',
   shapeRow: { title: 'Formato', a11y: 'Formato dos ícones: {shape}', showHint: 'Mostra os formatos de ícone', hideHint: 'Oculta os formatos de ícone' },
+  iconLook: { title: 'Estilo dos ícones', groupA11y: 'Estilo dos ícones de {name}', optionA11y: 'Estilo de ícones {look}', previewA11y: 'Seus apps no estilo {look}', names: { themed: 'Temático', tinted: 'Tingido', glass: 'Vidro', dark: 'Escuro' }, notes: { themed: 'A textura do tema atrás de cada ícone', tinted: 'Cor intensa da paleta do tema', glass: 'Vidro fosco escuro que combina com seu papel de parede', dark: 'Quase preto com um símbolo colorido' } },
   lockSubject: 'O tema {name}',
   checklist: {
     title: 'Aplicar este visual',

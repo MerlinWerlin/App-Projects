@@ -35,6 +35,7 @@ export const ar: NonNullable<LocaleMessages['theme']> = {
   applyHintLocked: 'جزء من Glaze Plus. يشرح الشراء لمرة واحدة',
   editWallpaper: 'تعديل الخلفية',
   shapeRow: { title: 'الشكل', a11y: 'شكل الأيقونات: {shape}', showHint: 'يعرض أشكال الأيقونات', hideHint: 'يخفي أشكال الأيقونات' },
+  iconLook: { title: 'نمط الأيقونات', groupA11y: 'نمط الأيقونات لـ {name}', optionA11y: 'نمط الأيقونات {look}', previewA11y: 'تطبيقاتك بنمط {look}', names: { themed: 'السمة', tinted: 'ملوّن', glass: 'زجاج', dark: 'داكن' }, notes: { themed: 'نقشة السمة خلف كل أيقونة', tinted: 'لون عميق من ألوان السمة', glass: 'زجاج مصنفر داكن ينسجم مع خلفيتك', dark: 'شبه أسود مع رمز ملوّن' } },
   lockSubject: 'سمة {name}',
   checklist: {
     title: 'طبّق هذا المظهر',

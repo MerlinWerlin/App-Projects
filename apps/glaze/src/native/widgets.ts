@@ -14,10 +14,14 @@ import { migrateLocalHabitsInStore } from '../core/habitMigrate';
 import { NO_WIDGET_LINK, normaliseWidgetLinkStatus, type WidgetLinkStatus } from '../core/widgetLink';
 import {
   addPiece,
+  clearAll,
   isValidPieceId,
   listPieces,
+  migrateLibrary,
   parseLibrary,
+  removeMany,
   removePiece,
+  replaceThemeArt,
   serializeLibrary,
   WIDGET_ART_SOURCES,
   type WidgetArtIndex,
@@ -101,6 +105,17 @@ export interface WidgetsAdapter {
   artLibrary(): Promise<ArtLibraryResult>;
   /** T221: remove one piece (its file is deleted; widgets showing it fall back to the last applied image). */
   removeFromArtLibrary(id: string): Promise<WidgetsResult>;
+  /** T238 Manage > Delete selected: one index write (files pruned, timelines reloaded natively). */
+  removeManyFromArtLibrary(ids: readonly string[]): Promise<WidgetsResult>;
+  /** T238 Manage > Clear all (own photos too). */
+  clearArtLibrary(): Promise<WidgetsResult>;
+  /**
+   * T238: a theme was applied: keep own photos + this theme's art, remove other auto-added theme art,
+   * remember it as the current theme (widget fallback). Also runs after a theme piece is added.
+   */
+  replaceThemeArt(themeId: string): Promise<WidgetsResult>;
+  /** T238: one-time clean-up of art from older versions / other themes (no-op once done). */
+  migrateArtLibrary(currentThemeId: string | null): Promise<WidgetsResult>;
 }
 
 /** T221: widgets.artLibrary() result. */
@@ -129,7 +144,11 @@ export type WidgetArtInput = {
   background: 'theme' | 'blur';
   /** #RRGGBB behind the art (and under the blur). */
   colour: string;
-  /** 'fill' only when the art already has the widget's aspect (src/core/widgetOptions.ts placeArt). */
+  /**
+   * 'fill' only when the art already has the widget's aspect (src/core/widgetOptions.ts placeArt).
+   * T236: the bridge now composes full bleed for both (fullBleedArt) and decides edge to edge from
+   * the real image; kept for the native signature.
+   */
   fit: 'fit' | 'fill';
   size: 'small' | 'medium' | 'large';
 };
@@ -299,7 +318,34 @@ export const widgets: WidgetsAdapter = {
   addToArtLibrary,
   artLibrary,
   removeFromArtLibrary,
+  removeManyFromArtLibrary: (ids) => editArtIndex((lib) => removeMany(lib, ids).lib),
+  clearArtLibrary: () => editArtIndex((lib) => clearAll(lib).lib),
+  replaceThemeArt: (themeId) => editArtIndex((lib) => replaceThemeArt(lib, themeId).lib),
+  migrateArtLibrary: (currentThemeId) =>
+    editArtIndex((lib) => {
+      const r = migrateLibrary(lib, currentThemeId);
+      return r.ran ? r.lib : null;
+    }),
 };
+
+/**
+ * T238: read index.json, change it in JS, write it back in one atomic write (setWidgetArtIndex also
+ * deletes the files the index no longer lists and reloads all timelines). `edit` returning null =
+ * nothing to write. Expo Go / Android / older bridge: { available: false }. Never throws.
+ */
+async function editArtIndex(edit: (lib: WidgetArtIndex) => WidgetArtIndex | null): Promise<WidgetsResult> {
+  try {
+    const { mod, reason } = await artBridge();
+    if (!mod) return { available: false, ok: false, reason };
+    const { lib } = await readArtIndex(mod);
+    const next = edit(lib);
+    if (!next) return { available: true, ok: true, reason: null };
+    const ok = (await mod.setWidgetArtIndex?.(serializeLibrary(next))) === true;
+    return { available: true, ok, reason: ok ? null : 'failed' };
+  } catch {
+    return { available: true, ok: false, reason: 'failed' };
+  }
+}
 
 /** T221: the bridge with the library functions, or why not. */
 async function artBridge(): Promise<{ mod: NativeBridge | null; reason: WidgetsReason }> {
@@ -326,7 +372,9 @@ async function addToArtLibrary(piece: Omit<WidgetArtPiece, 'file'>, from: Widget
     if (!isValidPieceId(piece.id) || !(WIDGET_ART_SOURCES as readonly string[]).includes(from)) return { available: true, ok: false, reason: 'failed' };
     if ((await mod.saveWidgetArtPiece?.(piece.id, from)) !== true) return { available: true, ok: false, reason: 'failed' };
     const { lib } = await readArtIndex(mod);
-    const next = addPiece(lib, piece);
+    let next = addPiece(lib, piece);
+    // T238: adding a theme's art replaces the previous theme's auto-added art.
+    if (piece.source !== 'photo' && piece.themeId) next = { ...next, lib: replaceThemeArt(next.lib, piece.themeId).lib };
     const ok = (await mod.setWidgetArtIndex?.(serializeLibrary(next.lib))) === true;
     return { available: true, ok, reason: ok ? null : 'failed' };
   } catch {

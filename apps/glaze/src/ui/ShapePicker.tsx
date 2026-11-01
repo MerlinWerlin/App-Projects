@@ -12,6 +12,7 @@ import { Feather } from '@expo/vector-icons';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { Pressable, StyleSheet, Text, View, type LayoutChangeEvent } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import type { IconLook } from '../core/iconLook';
 import type { IconShape } from '../core/iconspec';
 import { SHAPES } from '../core/shapes';
 import { previewSpecs, type Theme } from '../core/themes';
@@ -37,16 +38,18 @@ export type ShapePickerProps = {
   onIosMaskChange: (on: boolean) => void;
   /** Colour behind each icon's shape (the wallpaper colour exported icons are drawn on). */
   backdrop: string;
+  /** T240: draw the samples in the person's icon look (default 'themed'). */
+  look?: IconLook;
 };
 
-export function ShapePicker({ theme, value, onChange, iosMask, onIosMaskChange, backdrop }: ShapePickerProps) {
+export function ShapePicker({ theme, value, onChange, iosMask, onIosMaskChange, backdrop, look }: ShapePickerProps) {
   const { c } = useColorsV2();
   const { t, script } = useT();
   const label = [textV2.headline, textStyleFor(script, textV2.headline)];
   const note = [textV2.footnote, textStyleFor(script, textV2.footnote)];
   const samples = useMemo(
-    () => SHAPES.map((shape) => ({ shape, spec: previewSpecs(theme, 1, shape)[0] })).filter((x) => x.spec !== undefined),
-    [theme],
+    () => SHAPES.map((shape) => ({ shape, spec: previewSpecs(theme, 1, shape, look)[0] })).filter((x) => x.spec !== undefined),
+    [theme, look],
   );
 
   // Sliding selection indicator: positioned from each tile's measured layout.

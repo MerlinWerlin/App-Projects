@@ -5,6 +5,7 @@
 // generated XML. Without an install id the old behaviour is unchanged.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import {
   GLAZE_UUID_NAMESPACE,
   UUID_NAMESPACE_DNS,
@@ -240,4 +241,16 @@ test('safariTapCount counts profile apps whose link is an app scheme (iOS asks â
   assert.deepEqual(safariTapCount([{ urlScheme: 'music:' }, { urlScheme: 'spotify://' }, { urlScheme: null }]), { tap: 2, total: 2 });
   assert.deepEqual(safariTapCount([{ urlScheme: 'https://example.com' }, { urlScheme: 'maps:' }]), { tap: 1, total: 2 });
   assert.deepEqual(safariTapCount([]), { tap: 0, total: 0 });
+});
+
+test('T242 (owner-1101g, keep): the install screen always builds the profile with the stored install id', () => {
+  // Jared, 1 Nov: applying a new theme's profile REPLACED the old Home Screen icons. That relies on
+  // the same PayloadIdentifier / per-app clip ids for every theme, keyed by the install id.
+  const root = new URL('../../', import.meta.url);
+  const install = readFileSync(new URL('app/install.tsx', root), 'utf8');
+  assert.match(install, /const installId = await getInstallId\(\);/);
+  assert.match(install, /buildInstallProfiles\([^)]*\{ installId \}\)/);
+  const store = readFileSync(new URL('src/store/installId.ts', root), 'utf8');
+  assert.match(store, /'glaze\.installId\.v1'/, 'the storage key never changes (a new key = a second profile)');
+  assert.match(store, /isValidInstallId\(stored\)\) return stored/);
 });

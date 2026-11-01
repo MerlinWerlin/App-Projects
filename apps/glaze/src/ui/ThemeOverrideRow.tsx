@@ -7,7 +7,7 @@ import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { customisedAppIds, findApp, specsForTheme, themeStyleWithShape } from '../core/studio';
+import { customisedAppIds, findApp, specsForTheme, themeIconStyle } from '../core/studio';
 import { getAnyTheme } from '../core/plusThemes';
 import type { Theme } from '../core/themes';
 import { averageColour } from '../core/wallpaper';
@@ -35,7 +35,7 @@ export function ThemeOverrideRow({ theme }: { theme: Theme }) {
   // Same key as the theme page and Your look: a legacy stored theme id keeps its overrides.
   const key = state?.themeId && getAnyTheme(state.themeId)?.id === theme.id ? state.themeId : theme.id;
   const specs = useMemo(
-    () => (state ? specsForTheme(state, key, themeStyleWithShape(state, key, theme.iconStyle)) : []),
+    () => (state ? specsForTheme(state, key, themeIconStyle(state, theme, key)) : []),
     [state, theme, key],
   );
   const wallpaperColour = useMemo(() => averageColour(theme.wallpaper), [theme]);

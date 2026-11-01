@@ -35,6 +35,7 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
   applyHintLocked: 'Glaze Plus に含まれます。買い切りについて説明します',
   editWallpaper: '壁紙を編集',
   shapeRow: { title: '形', a11y: 'アイコンの形：{shape}', showHint: 'アイコンの形を表示します', hideHint: 'アイコンの形を隠します' },
+  iconLook: { title: 'アイコンのスタイル', groupA11y: '{name}のアイコンのスタイル', optionA11y: '{look}のアイコンスタイル', previewA11y: '{look}スタイルのあなたのアプリ', names: { themed: 'テーマ', tinted: 'ティント', glass: 'ガラス', dark: 'ダーク' }, notes: { themed: '各アイコンの背景にテーマのテクスチャ', tinted: 'テーマのパレットから深い色', glass: '壁紙になじむダークなすりガラス', dark: '黒に近い背景に色付きの記号' } },
   lockSubject: 'テーマ「{name}」',
   checklist: {
     title: 'このルックを適用',

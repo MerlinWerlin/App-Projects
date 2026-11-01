@@ -9,8 +9,11 @@
 // removed from the library, it shows the last applied image for its size as before. Same kind
 // ("GlazeSeamless"), so widgets already on the Home Screen keep working.
 // T223: every family (small, medium, large, extra large) and every source (chosen piece or the
-// per-size file) goes through the one view below: the art is FITTED whole (scaledToFit) over a
-// blurred aspect-filled copy of itself, never cropped.
+// per-size file) goes through the one view below.
+// T236 (owner-1101g #1): Edit Widget > Layout. Fill (default): the composed image, which the bridge
+// now makes full bleed (art whole + its own edges extended, no inset, no veil), edge to edge over a
+// full-opacity blur of itself: no grey/light frame ever, subject never cut. Fit: the raw art
+// (<id>-art.png / seamless-<family>-art.png, else the composed image) whole, inset, on the theme.
 // The three SwiftUI string literals below are localised like the other widgets' (looked up by
 // their English text in targets/widget/<lang>.lproj/Localizable.strings; T133).
 import SwiftUI
@@ -40,17 +43,51 @@ enum SeamlessStore {
     guard FileManager.default.fileExists(atPath: url.path) else { return nil }
     return UIImage(contentsOfFile: url.path)
   }
+
+  /// T236: the raw art behind this family's composed image (seamless-<family>-art.png, written by
+  /// setWidgetArt, removed by setSeamless), for the Fit layout. nil = fit the composed image.
+  static func loadArt(_ family: WidgetFamily) -> UIImage? {
+    guard
+      let name = familyName(family),
+      let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GlazeShared.appGroup)
+    else { return nil }
+    let url = container.appendingPathComponent("seamless-\(name)-art.png")
+    guard FileManager.default.fileExists(atPath: url.path) else { return nil }
+    return UIImage(contentsOfFile: url.path)
+  }
 }
+
+/// T236: Fill draws the image edge to edge only when its aspect is within this of the widget's
+/// (the composed file is made at the widget's aspect); otherwise (iPad extra large shows the large
+/// file, or a device whose widget shape differs) the image is fitted whole over a full-opacity
+/// blurred fill of itself, so the subject is never cut and no light frame shows.
+private let seamlessFillMinAspectMatch: CGFloat = 0.97
 
 struct SeamlessWidgetView: View {
   @Environment(\.widgetFamily) private var family
   let theme: WidgetTheme
   /// T221: the piece chosen in Edit Widget (nil = the last applied image for this size).
   let pieceID: String?
+  /// T236: Edit Widget > Layout. nil = .fill.
+  var layout: ArtLayout? = nil
+
+  /// 0-1, 1 = same aspect (same rule as src/core/widgetOptions.ts aspectMatch).
+  static func aspectMatch(_ a: CGSize, _ b: CGSize) -> CGFloat {
+    guard a.width > 0, a.height > 0, b.width > 0, b.height > 0 else { return 1 }
+    let x = a.width / a.height
+    let y = b.width / b.height
+    return min(x, y) / max(x, y)
+  }
+  /// T237: the timeline entry's date (live values over the art, LiveArtOverlay.swift).
+  var date: Date = Date()
 
   var body: some View {
     let t = theme
-    let image = WidgetArtStore.load(pieceID) ?? SeamlessStore.load(family)
+    let image = WidgetArtStore.load(pieceID, preferSize: SeamlessStore.familyName(family)) ?? SeamlessStore.load(family)
+    let fit = layout == .fit
+    // Fit only: the raw art of the same source (piece or per-size file), else the composed image.
+    // Not loaded for Fill (widget memory budget).
+    let raw: UIImage? = fit ? (WidgetArtStore.has(pieceID) ? WidgetArtStore.loadArt(pieceID) : SeamlessStore.loadArt(family)) : nil
     ZStack(alignment: .bottomLeading) {
       if image == nil {
         VStack(alignment: .leading, spacing: 4) {
@@ -64,31 +101,66 @@ struct SeamlessWidgetView: View {
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+    // T237: the live value (time, date, battery, countdown, focus timer) over a piece that has one;
+    // nothing for plain art. In the content (not the background) so the focus Button can be tapped.
+    .overlay {
+      // Fill only: the stored rect is relative to the composed full-bleed image (Fit shows the raw
+      // art with an inset, where the plate would not line up; documented in docs/WIDGETS.md).
+      if let image = image, !fit {
+        if #available(iOS 17.0, *) {
+          LiveArtLayer(pieceID: pieceID, imageSize: image.size, theme: t, date: date)
+        }
+      }
+    }
     .containerBackground(for: .widget) {
       if let image = image {
-        // T187 (owner-1101 #5: art is fitted, never cropped): the file is made at the widget's
-        // aspect, but a device whose widget shape differs a little must not cut it. Fit the image
-        // whole over a blurred copy of itself on the theme background, so no edge shows either.
-        // T201 (owner-1101d #4): both layers are pinned to the widget's own size, so the
-        // aspect-filled blur (background only) can never grow the stack and push the fitted
-        // art past the widget's edges.
+        // T201 (owner-1101d #4): every layer is pinned to the widget's own size, so an aspect-filled
+        // layer can never grow the stack and push the art past the widget's edges.
         GeometryReader { geo in
-          ZStack {
-            GlazeBackground(theme: t)
-            Image(uiImage: image)
-              .resizable()
-              .scaledToFill()
-              .frame(width: geo.size.width, height: geo.size.height)
-              .clipped()
-              .blur(radius: 16)
-              .opacity(0.85)
-            Image(uiImage: image)
-              .resizable()
-              .scaledToFit()
-              .frame(width: geo.size.width, height: geo.size.height)
+          let size = geo.size
+          if fit {
+            // T236 Fit: the whole raw art, small inset, on the theme background.
+            let inset = min(size.width, size.height) * 0.06
+            ZStack {
+              GlazeBackground(theme: t)
+              Image(uiImage: raw ?? image)
+                .resizable()
+                .scaledToFit()
+                .padding(inset)
+                .frame(width: size.width, height: size.height)
+            }
+            .frame(width: size.width, height: size.height)
+            .clipped()
+          } else {
+            // T236 Fill (default; owner-1101g #1: fill the widget, no grey/light frame ever, subject
+            // never cut). The composed file is already full bleed at the widget's aspect (the art's
+            // own edges extended by the bridge), so it goes edge to edge. Behind it: the same image
+            // blurred at FULL opacity (no veil, never the theme colour as a frame). When the shapes
+            // differ (iPad extra large, older pieces) the image is fitted whole over that blur.
+            let edgeToEdge = SeamlessWidgetView.aspectMatch(image.size, size) >= seamlessFillMinAspectMatch
+            ZStack {
+              Image(uiImage: image)
+                .resizable()
+                .scaledToFill()
+                .frame(width: size.width, height: size.height)
+                .clipped()
+                .blur(radius: 16, opaque: true)
+              if edgeToEdge {
+                Image(uiImage: image)
+                  .resizable()
+                  .scaledToFill()
+                  .frame(width: size.width, height: size.height)
+                  .clipped()
+              } else {
+                Image(uiImage: image)
+                  .resizable()
+                  .scaledToFit()
+                  .frame(width: size.width, height: size.height)
+              }
+            }
+            .frame(width: size.width, height: size.height)
+            .clipped()
           }
-          .frame(width: geo.size.width, height: geo.size.height)
-          .clipped()
         }
       } else {
         GlazeBackground(theme: t)
@@ -103,7 +175,7 @@ struct SeamlessWidget: Widget {
 
   var body: some WidgetConfiguration {
     AppIntentConfiguration(kind: kind, intent: ChooseWidgetArtIntent.self, provider: ArtProvider()) { entry in
-      SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID)
+      SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date)
     }
     .configurationDisplayName("Seamless")
     .description("Your Glaze art. Long-press and choose Edit Widget to pick a piece.")

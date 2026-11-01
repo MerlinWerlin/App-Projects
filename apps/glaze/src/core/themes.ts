@@ -4,6 +4,7 @@
 
 import { iconArtOf, wallpaperArtOf, type ThemeArt } from './artwork.ts';
 import { getById, type CatalogueEntry } from './catalogue.ts';
+import { DEFAULT_ICON_LOOK, iconStyleForLook, type IconLook } from './iconLook.ts';
 import { resolveSpecs, type IconShape, type IconSpec, type IconStyle } from './iconspec.ts';
 import type { WallpaperParams } from './wallpaper.ts';
 import { NEW_FREE_THEMES } from './themesNew.ts';
@@ -542,8 +543,17 @@ export function previewApps(): CatalogueEntry[] {
   return PREVIEW_APP_IDS.map((id) => getById(id)).filter((e): e is CatalogueEntry => e !== undefined);
 }
 
-/** Icon specs for a theme over the preview apps, optionally in another shape (the user's choice). */
-export function previewSpecs(theme: Theme, count: number = PREVIEW_APP_IDS.length, shape?: IconShape): IconSpec[] {
-  const style = shape ? { ...theme.iconStyle, shape } : theme.iconStyle;
+/**
+ * Icon specs for a theme over the preview apps, optionally in another shape (the user's choice)
+ * and look (T240; default 'themed', the textured look, T241).
+ */
+export function previewSpecs(
+  theme: Theme,
+  count: number = PREVIEW_APP_IDS.length,
+  shape?: IconShape,
+  look: IconLook = DEFAULT_ICON_LOOK,
+): IconSpec[] {
+  const lookStyle = iconStyleForLook(theme, look);
+  const style = shape ? { ...lookStyle, shape } : lookStyle;
   return resolveSpecs(previewApps().slice(0, Math.max(0, count)), style);
 }

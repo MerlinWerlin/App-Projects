@@ -90,7 +90,7 @@ export type MotifId = (typeof MOTIF_IDS)[number];
 export type FrameKind = 'none' | 'scalloped' | 'lace' | 'stitched' | 'ribbon' | 'double';
 export const FRAME_KINDS: readonly FrameKind[] = Object.freeze(['none', 'scalloped', 'lace', 'stitched', 'ribbon', 'double'] as FrameKind[]);
 
-export type TextureKind = 'none' | 'gingham' | 'polka' | 'speckle' | 'linen' | 'starfield' | 'wash' | 'stripes';
+export type TextureKind = 'none' | 'gingham' | 'polka' | 'speckle' | 'linen' | 'starfield' | 'wash' | 'stripes' | 'stars' | 'grain';
 export const TEXTURE_KINDS: readonly TextureKind[] = Object.freeze([
   'none',
   'gingham',
@@ -100,6 +100,8 @@ export const TEXTURE_KINDS: readonly TextureKind[] = Object.freeze([
   'starfield',
   'wash',
   'stripes',
+  'stars',
+  'grain',
 ] as TextureKind[]);
 
 export type CompositionKind =
@@ -149,6 +151,8 @@ export type IconArt = {
   stickers: Sticker[];
   /** T170: the theme's display type, so monograms letter in the theme's face. Absent = system face. */
   displayFont?: DisplayFont;
+  /** T241: mixed into each app's texture seed (the theme's own), so themes scatter differently. */
+  textureSeed?: number;
 };
 
 /** Artwork carried by wallpaper params: a composition of motifs over the generated base. */
@@ -1464,6 +1468,8 @@ export const TEXTURE_OPACITY: Readonly<Record<TextureKind, number>> = Object.fre
   starfield: 0.85,
   wash: 0.16,
   stripes: 0.15,
+  stars: 0.8,
+  grain: 0.22,
 });
 
 /**
@@ -1479,6 +1485,10 @@ export const TEXTURE_TINT: Readonly<Record<TextureKind, number>> = Object.freeze
   starfield: 0.12,
   wash: 1 - (1 - 0.16) * (1 - 0.16),
   stripes: 0.15,
+  // T241: sparse seeded dots, sparkles kept out of the glyph's middle.
+  stars: 0.14,
+  // T241: fine grain plus one soft highlight (0.1) where it overlaps.
+  grain: 1 - (1 - 0.1) * (1 - 0.08),
 });
 
 /** Texture over the whole icon square (the shape clip trims it). At most 3 paths. */
@@ -1566,10 +1576,49 @@ export function textureLayers(kind: TextureKind, colour: string, size: number, s
       }
       return [{ d, fill: colour, opacity: op }];
     }
+    case 'stars': {
+      // T241 (themed icons): a crop of a night sky. Every dot, star and sparkle is seeded (theme +
+      // app), so each icon differs slightly but stays the same on every render and export.
+      let dots = '';
+      for (let i = 0; i < 26; i++) dots += circ(rnd() * s, rnd() * s, s * (0.004 + rnd() * 0.006));
+      let bright = '';
+      for (let i = 0; i < 7; i++) bright += circ(rnd() * s, rnd() * s, s * (0.009 + rnd() * 0.008));
+      let sparkles = '';
+      const n = 2 + Math.floor(rnd() * 2);
+      for (let i = 0; i < n; i++) {
+        const p = outerPoint(rnd, s);
+        sparkles += sparklePath(p.x, p.y, s * (0.03 + rnd() * 0.035));
+      }
+      return [
+        { d: dots, fill: colour, opacity: op * 0.6 },
+        { d: bright, fill: colour, opacity: op * 0.85 },
+        { d: sparkles, fill: colour, opacity: op },
+      ];
+    }
+    case 'grain': {
+      // T241: fine film grain, one soft highlight and a couple of faint sparkles near the edge.
+      let d = '';
+      for (let i = 0; i < 90; i++) d += circ(rnd() * s, rnd() * s, s * (0.003 + rnd() * 0.004));
+      const hx = s * (0.15 + rnd() * 0.2);
+      const hy = s * (0.1 + rnd() * 0.15);
+      const p = outerPoint(rnd, s);
+      return [
+        { d, fill: colour, opacity: op },
+        { d: ell(hx, hy, s * 0.42, s * 0.26, -25), fill: '#FFFFFF', opacity: 0.1 },
+        { d: sparklePath(p.x, p.y, s * 0.035), fill: colour, opacity: op * 1.6 },
+      ];
+    }
     case 'none':
     default:
       return [];
   }
+}
+
+/** A seeded point in the outer band of the icon (away from the glyph in the middle). */
+function outerPoint(rnd: () => number, s: number): Point {
+  const a = rnd() * Math.PI * 2;
+  const r = s * (0.3 + rnd() * 0.12);
+  return { x: s / 2 + r * Math.cos(a), y: s / 2 + r * Math.sin(a) };
 }
 
 function smoothPath(pts: Point[]): string {
@@ -1615,7 +1664,8 @@ export function stickerLayers(stickers: readonly Sticker[], colours: ArtColours,
 /** Everything an icon draws for its artwork, in layer order: texture (under the glyph), then stickers and frame (over it). */
 export function iconArtLayout(art: IconArt, shape: IconShape, size: number, seed: number | string = 0): IconArtLayout {
   const s = Math.max(1, size);
-  const numSeed = typeof seed === 'number' ? seed >>> 0 : hashSeed(seed);
+  const appSeed = typeof seed === 'number' ? seed >>> 0 : hashSeed(seed);
+  const numSeed = typeof art.textureSeed === 'number' && Number.isFinite(art.textureSeed) ? (appSeed ^ art.textureSeed) >>> 0 : appSeed;
   return {
     texture: textureLayers(art.texture, art.colours[art.textureRole], s, numSeed),
     stickers: stickerLayers(art.stickers, art.colours, shape, s),
@@ -1693,6 +1743,7 @@ export function sanitizeIconArt(raw: unknown, extraMotifs?: ReadonlySet<string>)
     textureRole: isRole(raw.textureRole) ? raw.textureRole : 'light',
     stickers,
     ...(isDisplayFont(raw.displayFont) ? { displayFont: raw.displayFont } : {}),
+    ...(typeof raw.textureSeed === 'number' && Number.isFinite(raw.textureSeed) ? { textureSeed: raw.textureSeed >>> 0 } : {}),
   };
 }
 

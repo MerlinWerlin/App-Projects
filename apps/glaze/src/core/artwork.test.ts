@@ -38,6 +38,7 @@ import { ALL_THEMES, PLUS_THEMES } from './plusThemes.ts';
 import { SHAPES } from './shapes.ts';
 import { sanitizeStyle, DEFAULT_STYLE } from './studio.ts';
 import { LEGACY_THEME_IDS, THEMES, getTheme, previewApps, previewSpecs } from './themes.ts';
+import { iconStyleForLook } from './iconLook.ts';
 import { averageColour } from './wallpaper.ts';
 
 const COLOURS: ArtColours = { primary: '#E8475A', secondary: '#5FA35A', accent: '#F2B33D', ink: '#3A2020', light: '#FFFFFF' };
@@ -291,7 +292,11 @@ test('retired starter ids still resolve to a new theme', () => {
 
 test('theme art reaches every IconSpec; the manual Icon Studio style has none', () => {
   const t = getTheme('celestial-night')!;
-  for (const s of previewSpecs(t)) assert.deepEqual(s.art, t.iconStyle.art);
+  // T241: previews default to the 'themed' look: the theme's art, scattered as a starfield.
+  for (const s of previewSpecs(t)) {
+    assert.deepEqual(s.art, iconStyleForLook(t, 'themed').art);
+    assert.equal(s.art?.texture, 'stars');
+  }
   assert.equal(DEFAULT_STYLE.art, undefined);
   for (const s of resolveSpecs(previewApps(), DEFAULT_STYLE)) assert.equal(s.art, undefined);
 });

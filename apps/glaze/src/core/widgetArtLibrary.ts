@@ -14,6 +14,10 @@
 // chosen piece, or whose piece was removed, shows the last applied image (seamless-<size>.png).
 //
 // Pure TS (Node runs it directly), tested in widgetArtLibrary.test.ts.
+// T237: a piece may carry `live` (src/core/liveArt.ts LiveArtSpec): the widget draws the live value
+// (time, date, battery, countdown, focus timer) over it. Absent on older records = plain art.
+
+import { parseLiveArtSpec, type LiveArtSpec } from './liveArt.ts';
 
 export const WIDGET_ART_DIR = 'widget-art';
 export const WIDGET_ART_INDEX_FILE = 'index.json';
@@ -44,9 +48,18 @@ export type WidgetArtPiece = {
   aspect: number;
   /** Widget size the piece was composed for (null for photos). */
   size: WidgetArtSize | null;
+  /** T237: what the widget draws live over this piece; absent = a picture only. */
+  live?: LiveArtSpec;
 };
 
-export type WidgetArtIndex = { v: 1; pieces: WidgetArtPiece[] };
+export type WidgetArtIndex = {
+  v: 1;
+  pieces: WidgetArtPiece[];
+  /** T238: the theme whose auto-added art is kept (the widget falls back to its first piece). */
+  currentThemeId?: string | null;
+  /** T238: the one-time clean-up version already run (WIDGET_ART_MIGRATION). */
+  migrated?: number;
+};
 
 export function emptyLibrary(): WidgetArtIndex {
   return { v: 1, pieces: [] };
@@ -102,7 +115,14 @@ function normalisePiece(raw: unknown): WidgetArtPiece | null {
     created: num(r.created),
     aspect: num(r.aspect),
     size,
+    // T237 (additive): keep a valid live spec, drop a broken one.
+    ...liveField(r.live),
   };
+}
+
+function liveField(raw: unknown): { live?: LiveArtSpec } {
+  const live = parseLiveArtSpec(raw);
+  return live ? { live } : {};
 }
 
 /** Tolerant read of index.json: anything broken gives an empty library; duplicate ids keep the newest. */
@@ -118,6 +138,7 @@ export function parseLibrary(raw: string | null | undefined): WidgetArtIndex {
   const list = (data as { pieces?: unknown }).pieces;
   if (!Array.isArray(list)) return emptyLibrary();
   let lib = emptyLibrary();
+  const meta = readMeta(data as Record<string, unknown>);
   for (const item of list) {
     const p = normalisePiece(item);
     if (!p) continue;
@@ -125,11 +146,18 @@ export function parseLibrary(raw: string | null | undefined): WidgetArtIndex {
     if (prev && prev.created >= p.created) continue;
     lib = { v: 1, pieces: [...lib.pieces.filter((q) => q.id !== p.id), p] };
   }
-  return lib;
+  return { ...lib, ...meta };
+}
+
+function readMeta(r: Record<string, unknown>): Pick<WidgetArtIndex, 'currentThemeId' | 'migrated'> {
+  const out: Pick<WidgetArtIndex, 'currentThemeId' | 'migrated'> = {};
+  if (typeof r.currentThemeId === 'string' && r.currentThemeId.length > 0) out.currentThemeId = r.currentThemeId.slice(0, 120);
+  if (typeof r.migrated === 'number' && Number.isFinite(r.migrated) && r.migrated > 0) out.migrated = Math.floor(r.migrated);
+  return out;
 }
 
 export function serializeLibrary(lib: WidgetArtIndex): string {
-  return JSON.stringify({ v: 1, pieces: listPieces(lib) });
+  return JSON.stringify({ v: 1, pieces: listPieces(lib), ...readMeta(lib as unknown as Record<string, unknown>) });
 }
 
 /** Newest first; ties by id so the order is stable. This is the Edit Widget picker order too. */
@@ -153,9 +181,90 @@ export function addPiece(lib: WidgetArtIndex, piece: Omit<WidgetArtPiece, 'file'
   const ordered = [p, ...merged.filter((q) => q.id !== p.id)];
   const kept = ordered.slice(0, keep);
   const evicted = ordered.slice(keep).map((q) => q.id);
-  return { lib: { v: 1, pieces: listPieces({ v: 1, pieces: kept }) }, added: !existed, evicted };
+  return { lib: { ...lib, v: 1, pieces: listPieces({ v: 1, pieces: kept }) }, added: !existed, evicted };
 }
 
 export function removePiece(lib: WidgetArtIndex, id: string): WidgetArtIndex {
-  return { v: 1, pieces: lib.pieces.filter((p) => p.id !== id) };
+  return { ...lib, v: 1, pieces: lib.pieces.filter((p) => p.id !== id) };
+}
+
+// ---------------------------------------------------------------- T238 clean-up (owner-1101g #6)
+// "My widget art" piled up: every theme added its art and nothing went. Now:
+// - a piece the person added themselves (source 'photo': their own photo) stays until they delete it;
+// - every other piece is AUTO-ADDED theme art (unknown / missing source from older versions counts
+//   as auto-added, normalisePiece maps it to 'theme'), and only the current theme's is kept:
+//   applying a theme (or adding a theme's art) replaces the previous theme's pieces;
+// - a one-time migration (WIDGET_ART_MIGRATION, flag `migrated` in index.json) drops leftovers from
+//   older versions and other themes;
+// - Manage: removeMany / clearAll.
+// A widget whose piece went falls back to the current theme's first piece (index `currentThemeId`,
+// targets/widget/WidgetArtLibrary.swift), else the last applied image for its size.
+
+/** The clean-up version; index.json `migrated` >= this means it already ran. */
+export const WIDGET_ART_MIGRATION = 1101;
+
+/** True for a piece the person added themselves (never removed automatically). */
+export function isUserPiece(p: WidgetArtPiece): boolean {
+  return p.source === 'photo';
+}
+
+export type CleanResult = { lib: WidgetArtIndex; keep: string[]; remove: string[] };
+
+function split(lib: WidgetArtIndex, drop: (p: WidgetArtPiece) => boolean): { keep: WidgetArtPiece[]; remove: string[] } {
+  const keep: WidgetArtPiece[] = [];
+  const remove: string[] = [];
+  for (const p of lib.pieces) {
+    if (drop(p)) remove.push(p.id);
+    else keep.push(p);
+  }
+  return { keep, remove };
+}
+
+/**
+ * A theme was applied (or its art added): keep the person's own pieces and `themeId`'s pieces,
+ * remove every other auto-added piece. Records `themeId` as the index's current theme.
+ */
+export function replaceThemeArt(lib: WidgetArtIndex, themeId: string | null): CleanResult {
+  const current = typeof themeId === 'string' && themeId.length > 0 ? themeId.slice(0, 120) : null;
+  const { keep, remove } = split(lib, (p) => !isUserPiece(p) && (current === null || p.themeId !== current));
+  const next: WidgetArtIndex = { ...lib, v: 1, pieces: listPieces({ v: 1, pieces: keep }) };
+  if (current) next.currentThemeId = current;
+  else delete next.currentThemeId;
+  return { lib: next, keep: next.pieces.map((p) => p.id), remove };
+}
+
+/**
+ * One-time clean-up after an update: the same rule as replaceThemeArt for the theme in use
+ * (`currentThemeId`; null = the index's own current theme, else the theme of the newest auto-added
+ * piece). Runs once per `version`: an index already at `version` comes back unchanged (remove = []).
+ */
+export function migrateLibrary(lib: WidgetArtIndex, currentThemeId: string | null, version = WIDGET_ART_MIGRATION): CleanResult & { ran: boolean } {
+  if ((lib.migrated ?? 0) >= version) return { lib, keep: lib.pieces.map((p) => p.id), remove: [], ran: false };
+  const newestTheme = listPieces(lib).find((p) => !isUserPiece(p) && p.themeId)?.themeId ?? null;
+  const current = currentThemeId || lib.currentThemeId || newestTheme;
+  const r = replaceThemeArt(lib, current);
+  return { ...r, lib: { ...r.lib, migrated: version }, ran: true };
+}
+
+/** Manage > Delete selected. Unknown ids are ignored. */
+export function removeMany(lib: WidgetArtIndex, ids: readonly string[]): CleanResult {
+  const set = new Set(ids);
+  const { keep, remove } = split(lib, (p) => set.has(p.id));
+  return { lib: { ...lib, v: 1, pieces: keep }, keep: keep.map((p) => p.id), remove };
+}
+
+/** Manage > Clear all: every piece goes (own photos too); the current theme / migration flag stay. */
+export function clearAll(lib: WidgetArtIndex): CleanResult {
+  return { lib: { ...lib, v: 1, pieces: [] }, keep: [], remove: lib.pieces.map((p) => p.id) };
+}
+
+/**
+ * The piece a widget shows when its chosen one is gone (mirrors WidgetArtStore.load in Swift):
+ * the current theme's newest piece, preferring `size`; null = the last applied image.
+ */
+export function fallbackPiece(lib: WidgetArtIndex, size: WidgetArtSize | null = null): WidgetArtPiece | null {
+  const cur = lib.currentThemeId;
+  if (!cur) return null;
+  const mine = listPieces(lib).filter((p) => !isUserPiece(p) && p.themeId === cur);
+  return mine.find((p) => size !== null && p.size === size) ?? mine[0] ?? null;
 }

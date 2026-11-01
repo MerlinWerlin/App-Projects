@@ -140,7 +140,7 @@ test('extension: Seamless widget is an iOS 17 AppIntentConfiguration with a Widg
   // Newest first, like listPieces.
   assert.match(lib, /sorted \{ \$0\.created > \$1\.created/);
   // A chosen piece wins; with none (or a missing file) the last applied image per size shows.
-  assert.match(widget, /WidgetArtStore\.load\(pieceID\) \?\? SeamlessStore\.load\(family\)/);
+  assert.match(widget, /WidgetArtStore\.load\(pieceID(, preferSize: SeamlessStore\.familyName\(family\))?\) \?\? SeamlessStore\.load\(family\)/);
   // No plain-white fallback anywhere in the art widget.
   assert.doesNotMatch(widget + lib, /Color\.white|\.white\b|UIColor\.white/);
   const bundle = read('targets', 'widget', 'GlazeWidgetsBundle.swift');

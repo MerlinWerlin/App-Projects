@@ -2,14 +2,18 @@
 // photos), newest first, each with a Remove button, plus the plain-words hint that each Glaze
 // Seamless widget can show its own piece (long-press > Edit Widget). Reads the App Group library
 // through widgets.artLibrary(); shows nothing in Expo Go / Android / an older build (no library).
-// Removing deletes the piece's file; a widget that showed it falls back to the last applied image.
+// Removing deletes the piece's file; a widget that showed it falls back to the current theme's art.
+// T238 (owner-1101g #6): Manage (select with checkboxes > Delete selected, Clear all with a confirm);
+// the one-time clean-up of art from older versions / other themes runs on the first load.
+import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
 import { useCallback, useEffect, useState } from 'react';
-import { AccessibilityInfo, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { AccessibilityInfo, Alert, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import type { WidgetArtPiece } from '../core/widgetArtLibrary';
 import { useT } from '../i18n';
 import { widgets } from '../native/widgets';
-import { chromeRadiusV2, fontScaleCap, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
+import { loadActiveThemeId } from '../store/activeTheme';
+import { chromeRadiusV2, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { haptic } from './haptics';
 import { textStyleFor } from './i18nLayout';
@@ -22,6 +26,8 @@ type Props = {
 };
 
 const THUMB = 56;
+/** T238: the one-time clean-up runs once per app launch at most (it is a no-op once flagged). */
+let migrationTried = false;
 
 export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
   const { c } = useColorsV2();
@@ -31,8 +37,15 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
   const [dir, setDir] = useState('');
   const [busyId, setBusyId] = useState<string | null>(null);
   const [line, setLine] = useState<string | null>(null);
+  const [managing, setManaging] = useState(false);
+  const [selected, setSelected] = useState<ReadonlySet<string>>(new Set());
+  const [bulkBusy, setBulkBusy] = useState(false);
 
   const load = useCallback(async () => {
+    if (!migrationTried) {
+      migrationTried = true;
+      await widgets.migrateArtLibrary(await loadActiveThemeId());
+    }
     const res = await widgets.artLibrary();
     if (!res.available || !res.ok) {
       setPieces(null);
@@ -40,6 +53,8 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
     }
     setPieces(res.pieces);
     setDir(res.dir);
+    setSelected((prev) => new Set([...prev].filter((id) => res.pieces.some((p) => p.id === id))));
+    if (res.pieces.length === 0) setManaging(false);
   }, []);
 
   useEffect(() => {
@@ -60,18 +75,101 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
     await load();
   };
 
+  const announce = (ok: boolean, done: string) => {
+    const msg = ok ? done : t('ui.seamless.library.failed');
+    setLine(msg);
+    AccessibilityInfo.announceForAccessibility(msg);
+  };
+
+  const toggle = (id: string) => {
+    haptic('select');
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const onDeleteSelected = async () => {
+    if (bulkBusy || selected.size === 0) return;
+    setBulkBusy(true);
+    haptic('warning');
+    const res = await widgets.removeManyFromArtLibrary([...selected]);
+    setBulkBusy(false);
+    setSelected(new Set());
+    announce(res.ok, t('ui.seamless.library.deleted'));
+    await load();
+  };
+
+  const onClearAll = () => {
+    if (bulkBusy) return;
+    haptic('warning');
+    Alert.alert(t('ui.seamless.library.clearTitle'), t('ui.seamless.library.clearBody'), [
+      { text: t('common.cancel'), style: 'cancel' },
+      {
+        text: t('ui.seamless.library.clearAll'),
+        style: 'destructive',
+        onPress: async () => {
+          setBulkBusy(true);
+          const res = await widgets.clearArtLibrary();
+          setBulkBusy(false);
+          setSelected(new Set());
+          announce(res.ok, t('ui.seamless.library.deleted'));
+          await load();
+        },
+      },
+    ]);
+  };
+
   const base = dir.endsWith('/') ? dir : `${dir}/`;
 
   return (
     <View style={[styles.wrap, style]}>
-      <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('headline')} style={[...label('headline'), { color: c.ink }]}>
-        {t('ui.seamless.library.title')}
-      </Text>
+      <View style={styles.head}>
+        <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('headline')} style={[...label('headline'), styles.text, { color: c.ink }]}>
+          {t('ui.seamless.library.title')}
+        </Text>
+        {pieces.length ? (
+          <PillButton
+            label={managing ? t('ui.seamless.library.done') : t('ui.seamless.library.manage')}
+            variant="plain"
+            size="small"
+            onPress={() => {
+              setManaging((m) => !m);
+              setSelected(new Set());
+            }}
+            accessibilityLabel={managing ? t('ui.seamless.library.done') : t('ui.seamless.library.manageA11y')}
+          />
+        ) : null}
+      </View>
       <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
         {pieces.length ? t('ui.seamless.library.hint') : t('ui.seamless.library.empty')}
       </Text>
-      {pieces.map((p) => (
-        <View key={p.id} style={[styles.row, { borderColor: c.separator }]}>
+      {pieces.length ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+          {t('ui.seamless.library.kept')}
+        </Text>
+      ) : null}
+      {managing ? (
+        <View style={styles.actions}>
+          <PillButton
+            label={t('ui.seamless.library.deleteSelected')}
+            icon="trash-2"
+            variant="destructive"
+            size="small"
+            disabled={selected.size === 0}
+            busy={bulkBusy}
+            haptic={false}
+            onPress={() => void onDeleteSelected()}
+          />
+          <PillButton label={t('ui.seamless.library.clearAll')} variant="plain" size="small" haptic={false} disabled={bulkBusy} onPress={onClearAll} />
+        </View>
+      ) : null}
+      {pieces.map((p) => {
+        const on = selected.has(p.id);
+        const body = (
+          <>
           {dir ? (
             <ExpoImage
               source={{ uri: `${base}${p.file}` }}
@@ -92,6 +190,26 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
               </Text>
             ) : null}
           </View>
+          </>
+        );
+        if (managing) {
+          return (
+            <Pressable
+              key={p.id}
+              onPress={() => toggle(p.id)}
+              accessibilityRole="checkbox"
+              accessibilityState={{ checked: on }}
+              accessibilityLabel={t('ui.seamless.library.selectA11y', { name: p.name })}
+              style={({ pressed }) => [styles.row, { borderColor: c.separator, opacity: pressed ? 0.7 : 1 }]}
+            >
+              <Feather name={on ? 'check-circle' : 'circle'} size={sizeV2.rowIcon} color={on ? c.tint : c.inkSecondary} />
+              {body}
+            </Pressable>
+          );
+        }
+        return (
+        <View key={p.id} style={[styles.row, { borderColor: c.separator }]}>
+          {body}
           <PillButton
             label={t('ui.seamless.library.remove')}
             icon="trash-2"
@@ -103,7 +221,8 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
             accessibilityLabel={t('ui.seamless.library.removeA11y', { name: p.name })}
           />
         </View>
-      ))}
+        );
+      })}
       {line ? (
         <Text maxFontSizeMultiplier={fontScaleCap('footnote')} accessibilityLiveRegion="polite" style={[...label('footnote'), { color: c.inkSecondary }]}>
           {line}
@@ -115,7 +234,9 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
 
 const styles = StyleSheet.create({
   wrap: { gap: spaceV2.sm, marginTop: spaceV2.lg },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, paddingVertical: spaceV2.sm, borderTopWidth: StyleSheet.hairlineWidth },
+  head: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
+  actions: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.sm },
+  row: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm, borderTopWidth: StyleSheet.hairlineWidth },
   thumb: { width: THUMB, height: THUMB, borderRadius: chromeRadiusV2.control },
   text: { flex: 1, gap: spaceV2.xxs },
 });

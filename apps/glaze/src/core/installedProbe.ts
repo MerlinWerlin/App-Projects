@@ -6,7 +6,10 @@
 // from the catalogue by popularity (AU / US, across categories), and the pure selection rules.
 //
 // Rules for the list:
-//  - only catalogue rows with a non-null urlScheme and verified === true (no guessed schemes);
+//  - catalogue rows with a non-null urlScheme and verified === true first; T239 (owner-1101g #4:
+//    "fill it to 50") then tops up with PROBE_UNVERIFIED_IDS, the best-known public schemes of the
+//    most-owned apps, marked unverified (ProbeApp.verified false). A wrong scheme fails safely:
+//    canOpenURL answers false and the app simply stays unticked;
 //  - no System (Apple) rows: Phone, Messages, App Store and friends are on every iPhone, so asking
 //    tells us nothing, and tel: / sms: answer true without being declared;
 //  - at most 50 unique bare scheme names (Apple's limit), most popular first.
@@ -60,12 +63,47 @@ export const PROBE_APP_IDS: readonly string[] = Object.freeze([
   'bear',
 ]);
 
+/**
+ * T239: popular apps whose catalogue scheme is the widely published one but not yet verified by us,
+ * most-owned first (AU / US top charts). Probed after PROBE_APP_IDS, up to MAX_QUERY_SCHEMES.
+ */
+export const PROBE_UNVERIFIED_IDS: readonly string[] = Object.freeze([
+  'youtube',
+  'netflix',
+  'tiktok',
+  'reddit',
+  'amazon',
+  'linkedin',
+  'discord',
+  'paypal',
+  'ebay',
+  'disney-plus',
+  'prime-video',
+  'uber-eats',
+  'doordash',
+  'threads',
+  'duolingo',
+  'google',
+  'google-drive',
+  'shazam',
+  'notion',
+  'google-photos',
+  'dropbox',
+  'airbnb',
+  'booking',
+  'strava',
+  'signal',
+]);
+
+/** T239: schemes for unverified rows whose catalogue scheme is empty (bare names). */
+export const UNVERIFIED_SCHEME_OVERRIDES: Readonly<Record<string, string>> = Object.freeze({ youtube: 'youtube' });
+
 /** "instagram://" / "spotify:" / "instagram" -> "instagram" (lower case, no ':' or '//'). */
 export function bareScheme(scheme: string): string {
   return scheme.trim().replace(/:(\/\/)?$/, '').toLowerCase();
 }
 
-export type ProbeApp = { id: string; scheme: string };
+export type ProbeApp = { id: string; scheme: string; verified: boolean };
 
 /** The ordered { id, scheme } list (bare scheme names), unknown or unverified rows dropped. */
 export const PROBE_APPS: readonly ProbeApp[] = Object.freeze(
@@ -78,8 +116,19 @@ export const PROBE_APPS: readonly ProbeApp[] = Object.freeze(
       const scheme = bareScheme(e.urlScheme);
       if (!scheme || seen.has(scheme)) continue;
       seen.add(scheme);
-      out.push(Object.freeze({ id, scheme }));
+      out.push(Object.freeze({ id, scheme, verified: true }));
       if (out.length >= MAX_QUERY_SCHEMES) break;
+    }
+    for (const id of PROBE_UNVERIFIED_IDS) {
+      if (out.length >= MAX_QUERY_SCHEMES) break;
+      const e = getById(id);
+      if (!e || e.category === 'System' || out.some((a) => a.id === id)) continue;
+      const raw = e.urlScheme ?? UNVERIFIED_SCHEME_OVERRIDES[id] ?? null;
+      if (!raw) continue;
+      const scheme = bareScheme(raw);
+      if (!scheme || seen.has(scheme)) continue;
+      seen.add(scheme);
+      out.push(Object.freeze({ id, scheme, verified: e.verified === true }));
     }
     return out;
   })(),
@@ -136,7 +185,7 @@ export function defaultProbeState(): ProbeState {
   return { unticked: [], foundIds: [] };
 }
 
-const PROBE_IDS = new Set(PROBE_APP_IDS);
+const PROBE_IDS = new Set(PROBE_APPS.map((a) => a.id));
 
 function probeIds(x: unknown): string[] {
   return Array.isArray(x) ? [...new Set(x.filter((v): v is string => typeof v === 'string' && PROBE_IDS.has(v)))] : [];

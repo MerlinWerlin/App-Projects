@@ -592,6 +592,12 @@ same picture." Now every widget instance is configurable.
   Edit Widget). The Widget Studio adds the photo it copies for the Photo widget (reusing
   `widget-photo.jpg`, no second copy pipeline). The Widgets tab lists "My widget art" with a Remove
   button per piece (`src/ui/WidgetArtLibraryList.tsx`; hidden without the native library).
+- **Clean-up (T238, owner-1101g #6)**: only the theme in use and the person's own photos stay.
+  "Use this theme" and adding a theme's art run `replaceThemeArt` (other auto-added theme art goes);
+  a one-time `migrateLibrary` (index.json `"migrated": 1101`) drops older/other-theme art on the
+  first Widgets-tab load; Manage = checkboxes > Delete selected, Clear all (confirm). All one atomic
+  `setWidgetArtIndex` write. A widget whose piece went shows the current theme's newest piece
+  (index `"currentThemeId"`, `WidgetArtStore.fallbackID`), else `seamless-<size>.png`.
 - **Caveats**: a piece is the composed image for the size it was applied at; shown in another size
   it is fitted whole over its blur (letterboxed, never cropped). A wallpaper-backed (seamless)
   piece only lines up with the wallpaper at the slot/size it was made for.
@@ -627,6 +633,29 @@ Owner: Cloud Atelier's paper boat still did not fit on his phone. Findings (code
 - Not checked here: StandBy / tinted / clear Home Screen modes can drop `containerBackground`
   (the art lives there), which would hide the art rather than crop it. Snapshot sheets were not
   regenerated (no Playwright/downloads here); no option in the current index uses "fill".
+
+### Full-bleed widget art (T236, owner-1101g #1)
+
+Build 18 showed Saturn letterboxed in a light-grey frame (6 % inset + 25 % veil of a light theme
+colour). Now `setWidgetArt` draws the art whole with NO inset (edge to edge within 2 % aspect),
+fills the strips with the art's own edges extended (clampedToExtent + blur, no veil), and writes
+the raw art as `seamless-<size>-art.png` (library copy `widget-art/<id>-art.png`, optional). Edit
+Widget > Layout: Fill (default; full bleed) or Fit (raw art inset on the theme). Preview math:
+`fullBleedArt` (`src/core/widgetPreview.ts`). Not device-tested. Follow-up: pre-sized pack images
+per widget size (deferred, no new images now); pieces saved before T236 keep their old frame until re-applied.
+### Live values over art (T237, owner-1101g #2)
+Rule: a piece that looks like a clock, date, battery, countdown or focus timer must work, or be labelled
+**Art**. `src/core/liveArt.ts` decides; the piece's `live` spec is saved in widget-art/index.json and
+`targets/widget/LiveArtOverlay.swift` draws it (clock: hands + time, minute timeline; date: today;
+battery: real level or a dash; countdown: days to a stored target; focus: `Button(intent:
+ToggleFocusIntent())`, 25 min start/pause, `Text(timerInterval:)`, FocusIntents.swift).
+Baked numbers: known production pieces (`KNOWN_LIVE_PIECES`: constellation clock, harbour focus, the
+three date pieces, abyss battery) get a near-opaque plate in their own palette laid exactly over the
+painted value, so nothing is doubled; a `numberFree` piece gets a badge low in the art; any other
+piece with painted values, habits pieces and countdowns without a target stay Art (no Art piece ever
+gets an overlay). The menu shows "Live" or "Art" on every card. Plate rects were measured from the
+run-208 snapshot sheets: VERIFY alignment on device (and if T236 changes the composition geometry,
+`liveArtSpec`'s placeArt mapping must follow).
 
 ## Testing on a dev build
 
@@ -682,3 +711,4 @@ Validation: `.github/workflows/glaze-widgets-check.yml` compiles the actual widg
 ## Island pets (removed)
 
 Cut on 1 Nov 2026 (owner-1101d #1, T198): no pets, no Live Activity, no Dynamic Island. Notes and art: [future/pets-game/README.md](future/pets-game/README.md).
+- T236/T237 merge (run 218): live values sit on the Fill layout only; in Fit the painted picture shows as art.

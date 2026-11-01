@@ -17,6 +17,8 @@ import {
   parseProbeState,
   probeUrlFor,
   schemesToQuery,
+  PROBE_UNVERIFIED_IDS,
+  UNVERIFIED_SCHEME_OVERRIDES,
   serializeProbeState,
   withFound,
 } from './installedProbe.ts';
@@ -32,17 +34,27 @@ test('T229: at most 50 schemes, unique, bare (no ":" or "//")', () => {
   for (const x of s) assert.match(x, /^[a-z][a-z0-9+.-]*$/, x);
 });
 
-test('T229: every probed app is in the catalogue, verified, with its catalogue scheme, not a System app', () => {
-  assert.equal(PROBE_APPS.length, PROBE_APP_IDS.length, 'no listed id was dropped');
+test('T229/T239: verified ids first; then unverified popular apps, all catalogue rows, never System', () => {
   assert.equal(new Set(PROBE_APP_IDS).size, PROBE_APP_IDS.length);
+  const verified = PROBE_APPS.filter((a) => a.verified);
+  assert.equal(verified.length, PROBE_APP_IDS.length, 'no verified id was dropped');
+  assert.deepEqual(PROBE_APPS.slice(0, verified.length).map((a) => a.id), [...PROBE_APP_IDS]);
   for (const a of PROBE_APPS) {
     const e = getById(a.id);
     assert.ok(e, a.id);
-    assert.equal(e.verified, true, a.id);
-    assert.ok(e.urlScheme, a.id);
-    assert.equal(bareScheme(e.urlScheme), a.scheme, a.id);
     assert.notEqual(e.category, 'System', a.id);
+    assert.equal(a.verified, e.verified === true, a.id);
+    const raw = e.urlScheme ?? UNVERIFIED_SCHEME_OVERRIDES[a.id];
+    assert.ok(raw, a.id);
+    assert.equal(bareScheme(raw), a.scheme, a.id);
+    if (!a.verified) assert.ok(PROBE_UNVERIFIED_IDS.includes(a.id), a.id);
   }
+});
+
+test('T239 (owner-1101g #4): the full 50, with the big unverified apps in it', () => {
+  assert.equal(schemesToQuery().length, MAX_QUERY_SCHEMES);
+  const ids = new Set(PROBE_APPS.map((a) => a.id));
+  for (const id of ['youtube', 'netflix', 'tiktok', 'reddit', 'amazon', 'paypal', 'disney-plus', 'uber-eats']) assert.ok(ids.has(id), id);
 });
 
 test('T229: list covers the main categories', () => {

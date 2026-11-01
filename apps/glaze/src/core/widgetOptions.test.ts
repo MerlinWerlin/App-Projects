@@ -453,14 +453,15 @@ test('Widgets tab shows the theme widget art menu above the grid', () => {
   assert.match(art, /reason === 'not-built' \? await seamless\(artUri\)/, 'older native builds fall back to the seamless path');
 });
 
-test('menu previews fit the art (never crop): placeArt rectangle + contain; cover only for the background', () => {
+test('menu previews fit the art (never crop): fullBleedArt / placeArt rectangle + contain; blur only in the strips', () => {
   const menu = read('src', 'ui', 'WidgetArtMenu.tsx');
-  assert.match(menu, /placeArt\(/);
+  assert.match(menu, /placeArt\(/); // wallpaper path (inset hero, like setSeamless)
+  assert.match(menu, /fullBleedArt\(/); // T236 theme / blur path (full bleed, no inset)
   assert.match(menu, /<ExpoImage source=\{source\} style=\{artStyle\} contentFit="contain"/);
-  // Every "cover" image is the backdrop (blurred art or wallpaper), never the art itself.
-  const covers = menu.match(/<ExpoImage[^>]*contentFit="cover"[^>]*>/g) ?? [];
-  assert.equal(covers.length, 1);
-  assert.match(covers[0], /source=\{backdrop\}/);
+  // T236: no "cover" image of the art; the blurred copy is drawn only inside the strips beside it.
+  assert.equal((menu.match(/contentFit="cover"/g) ?? []).length, 0);
+  assert.match(menu, /strips\.map\(/);
+  assert.match(menu, /styles\.strip/);
   assert.match(menu, /accessibilityState=\{\{ selected \}\}/);
   assert.match(menu, /widgetOptionSections\(/);
   assert.doesNotMatch(menu, /withSpring|Animated\.spring|ActivityIndicator/);
@@ -473,7 +474,7 @@ test('native: the Seamless widget fits its image over a blurred copy; the bridge
   const bridge = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
   assert.match(bridge, /AsyncFunction\("setWidgetArt"\)/);
   assert.match(bridge, /CIGaussianBlur/);
-  assert.match(bridge, /let s = min\(box\.width \/ art\.size\.width, box\.height \/ art\.size\.height\)/, 'fit = min scale');
+  assert.match(bridge, /let s = min\(target\.width \/ art\.size\.width, target\.height \/ art\.size\.height\)/, 'fit = min scale (T236: no inset)');
   const adapter = read('src', 'native', 'widgets.ts');
   assert.match(adapter, /typeof mod\.setWidgetArt !== 'function'\) return \{ available: false, ok: false, reason: 'not-built' \}/);
 });

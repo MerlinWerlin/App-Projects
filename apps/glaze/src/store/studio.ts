@@ -9,6 +9,8 @@ import {
   DEFAULT_STYLE,
   defaultStudioState,
   imagesInUse,
+  migrateThemedLook,
+  themeIconStyle,
   mapImageUris,
   parseStudioState,
   serializeStudioState,
@@ -17,6 +19,8 @@ import {
   type StudioState,
 } from '../core/studio';
 import type { IconStyle } from '../core/iconspec';
+import type { LookTheme } from '../core/iconLook';
+import { getAnyTheme } from '../core/plusThemes';
 import { restoreDownloadedPacks } from '../native/packs';
 
 export { DEFAULT_STYLE, studioApps, studioSpecs };
@@ -49,7 +53,9 @@ async function read(): Promise<StudioState> {
   await restoreDownloadedPacks();
   try {
     // v1 data (overrides by app only) is migrated by the parser into the current theme's overrides.
-    return mapImageUris(parseStudioState(await AsyncStorage.getItem(KEY)), resolveImageUri);
+    const s = mapImageUris(parseStudioState(await AsyncStorage.getItem(KEY)), resolveImageUri);
+    // T241: a theme applied before icon looks existed moves to the textured 'themed' look.
+    return migrateThemedLook(s, s.looksMigrated ? undefined : getAnyTheme(s.themeId));
   } catch {
     return defaultStudioState();
   }
@@ -94,6 +100,21 @@ export function setStudioStyle(
     // The theme's style with the user's chosen shape for it (T26), so it is baked into exports.
     const next: StudioState = applyThemeStyle(s, style, themeId, wallpaperColour);
     // Round-trip through the parser so a bad colour can't be stored.
+    const clean = parseStudioState(serializeStudioState(next));
+    await write(clean);
+    emit(clean);
+    return clean;
+  });
+}
+
+/**
+ * T240 / T241: apply a theme's icons in the user's look for it (default 'themed', textured) and
+ * chosen shape. Used by "Use this theme" and the Icons step, so the exports match the preview.
+ */
+export function applyThemeIcons(theme: LookTheme, wallpaperColour?: string | null): Promise<StudioState> {
+  return serial(async () => {
+    const s = await read();
+    const next: StudioState = applyThemeStyle(s, themeIconStyle(s, theme), theme.id, wallpaperColour);
     const clean = parseStudioState(serializeStudioState(next));
     await write(clean);
     emit(clean);

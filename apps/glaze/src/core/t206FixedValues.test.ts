@@ -45,8 +45,8 @@ const PRODUCTION_LIKE = [
   { id: 'satin-swan', kind: 'art', label: 'Satin swan' },
 ].map((o) => ({ ...o, image: IMG, sizes: ALL, background: 'blur' }));
 
-test('value kinds: clock, date, calendar, countdown, habits, battery; photo / quote / art are not', () => {
-  assert.deepEqual([...VALUE_KINDS].sort(), ['battery', 'calendar', 'clock', 'countdown', 'date', 'habits']);
+test('value kinds: clock, date, calendar, countdown, habits, battery, focus (T237); photo / quote / art are not', () => {
+  assert.deepEqual([...VALUE_KINDS].sort(), ['battery', 'calendar', 'clock', 'countdown', 'date', 'focus', 'habits']);
   for (const kind of WIDGET_OPTION_KINDS) {
     const baked = fixedValues({ kind });
     assert.equal(baked, VALUE_KINDS.includes(kind), kind);

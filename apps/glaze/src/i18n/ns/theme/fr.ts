@@ -35,6 +35,7 @@ export const fr: NonNullable<LocaleMessages['theme']> = {
   applyHintLocked: 'Fait partie de Glaze Plus. Explique l’achat unique',
   editWallpaper: 'Modifier le fond d’écran',
   shapeRow: { title: 'Forme', a11y: 'Forme des icônes : {shape}', showHint: 'Affiche les formes d’icônes', hideHint: 'Masque les formes d’icônes' },
+  iconLook: { title: 'Style d’icônes', groupA11y: 'Style d’icônes pour {name}', optionA11y: 'Style d’icônes {look}', previewA11y: 'Vos apps avec le style {look}', names: { themed: 'Thème', tinted: 'Teinté', glass: 'Verre', dark: 'Sombre' }, notes: { themed: 'La texture du thème derrière chaque icône', tinted: 'Couleur profonde tirée de la palette du thème', glass: 'Verre dépoli sombre qui se fond dans votre fond d’écran', dark: 'Presque noir avec un symbole coloré' } },
   lockSubject: 'Le thème {name}',
   checklist: {
     title: 'Appliquer ce style',

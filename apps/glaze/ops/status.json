@@ -1,13 +1,13 @@
 {
-  "tests": "1639/1639 core tests green; core + UI stub typecheck clean",
+  "tests": "1678/1678 core tests green; core + UI stub typecheck clean",
   "typecheck": "core only (registry unreachable)",
-  "last_run": "2026-11-01 15:20 AEDT (run 216)",
+  "last_run": "2026-11-01 17:00 AEDT (run 218)",
   "stage": "owner-tested",
-  "oversight_seen": "v225 (1793501369-891a): D225-2 (no new images until T227) and D225-3 (eye-check new Swift, no new native features until the held build) accepted; D211-1 followed; no patches.",
-  "headline": "Run 216 (owner-1101f): wallpaper crop crash fixed and crash-proofed; Glaze ticks your installed popular apps by itself; App Library list scans; family icons for unknown apps. Needs the new TestFlight build.",
-  "next_for_owner": "1) When the new TestFlight build arrives (auto-ship, native build), open it and answer docs/TRIAL.md \"New since your last test (1 Nov, midday: owner-1101e brief)\" questions 1-4, then the older 1 Nov questions. 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud; the new widget Swift is uncompiled until the native build.)",
+  "oversight_seen": "v226 (1793508577-aaa5): D226-1 partly overridden by the owner brief (bundle 15.67 MB, over the 15.6 MB guard, under the 16 MB cap; no images added); D225-2 followed (no images); D225-3 overridden by the owner brief (new widget Swift).",
+  "headline": "Run 218 (owner-1101g): widget art fills the widget, clock/date/battery/focus art works, art clean-up, 50 apps detected, always-visible icon style picker with darker glass, textured themed icons. Needs a new TestFlight build.",
+  "next_for_owner": "1) When TestFlight build 19+ arrives (your chat ships it), answer docs/TRIAL.md \"New since your last test (1 Nov, evening: owner-1101g brief)\" 1-9. 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud; new widget Swift is uncompiled until the native build.)",
   "trial_kit": true,
-  "trial_kit_commit": "413fc77",
+  "trial_kit_commit": "f8bb29e",
   "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested",
   "slim_candidate": {
     "state": "swapped in run 207",
@@ -16,5 +16,5 @@
     "full_history": "history/repo-full-2026-11-01.bundle.b64.txt",
     "map": "docs/REPO_MAP.json"
   },
-  "size_note": "bundle base64 ~15.47 MB of 15.6 MB guard (run 214); D225-2: text/code only until T227"
+  "size_note": "bundle base64 ~15.67 MB: OVER the 15.6 MB guard (under the 16 MB cap) after run 218; T227 re-slim needed before the next code run"
 }

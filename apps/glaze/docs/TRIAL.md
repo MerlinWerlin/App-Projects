@@ -2,6 +2,19 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (1 Nov, evening: owner-1101g brief)
+These need the **new TestFlight build** (widget and icon changes are built into the app). Check the build number is newer than 1.0.1 (18), open Glaze, then answer yes / no:
+
+1. **Widget art fills:** put a theme's art on a Glaze widget (Widgets tab > pick a piece > **Use on my widget**), small, medium and large. Does the art fill the whole widget with no grey or light frame, and is the subject (e.g. Saturn) still whole? yes / no
+2. **Fit / Fill:** long-press that widget > **Edit Widget** > **Layout**. Does **Fit** show the whole picture on the theme colour and **Fill** (the default) fill it edge to edge? yes / no
+3. **Working clock and focus:** use the Alpine Starlight *constellation clock* piece. Does it show the real time and move each minute? Use the Indigo Current *focus* piece and tap **Start**. Does a 25-minute countdown run, and does Pause work? yes / no
+4. **Art labels:** in the widget art menu, does every card say **Live** or **Art**, so it's clear which ones show real values? yes / no
+5. **Art clean-up:** apply a different theme with **Use this theme**, then open **My widget art**. Did the old theme's pieces go (your own photos stay), and do **Manage** > select > **Delete** and **Clear all** work? yes / no
+6. **More apps found:** open the **Icons** tab. Does Glaze now find more of your apps than the 25 last time (YouTube, Netflix, TikTok, Reddit, Amazon, PayPal, Disney+, Uber Eats... if you have them)? yes / no
+7. **Style picker:** open a theme's **Icons** step. Do you see **Themed / Tinted / Glass / Dark** right at the top, each showing your own apps? Is Glass now darker and matching the theme? yes / no
+8. **Textured icons:** with **Themed** picked, do the icons carry the theme's look behind the symbol (stars on night themes, fine grain and a soft glow on others) instead of a flat colour? Do they still look right after you install them on the Home Screen? yes / no
+9. **Still replaces:** install the icons of a new theme. Do they still replace the old Glaze icons (no second set)? yes / no
+
 ## New since your last test (1 Nov, afternoon: owner-1101f brief)
 These need the **new TestFlight build** (the installed-app check is built into the app). In TestFlight, check the build number is newer than 1.0.1 (17), open Glaze, then answer yes / no:
 

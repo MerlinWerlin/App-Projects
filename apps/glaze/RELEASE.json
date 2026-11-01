@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze: crash fix for applying a saved theme wallpaper, popular apps detected and ticked automatically, App Library screenshots in Scan my Home Screen, themed category symbols for unknown apps",
+  "note": "Glaze: widget art fills the widget, working clock date battery and focus timer, widget art clean-up, 50 apps detected, icon style picker with darker glass, textured theme icons",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

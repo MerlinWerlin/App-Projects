@@ -35,6 +35,7 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
   applyHintLocked: 'Glaze Plus에 포함됩니다. 1회 구매에 대해 설명합니다',
   editWallpaper: '배경화면 편집',
   shapeRow: { title: '모양', a11y: '아이콘 모양: {shape}', showHint: '아이콘 모양을 표시합니다', hideHint: '아이콘 모양을 숨깁니다' },
+  iconLook: { title: '아이콘 스타일', groupA11y: '{name} 아이콘 스타일', optionA11y: '{look} 아이콘 스타일', previewA11y: '{look} 스타일의 내 앱', names: { themed: '테마', tinted: '틴트', glass: '글래스', dark: '다크' }, notes: { themed: '각 아이콘 뒤에 테마 텍스처', tinted: '테마 팔레트의 깊은 색', glass: '배경화면에 어울리는 어두운 반투명 유리', dark: '거의 검은색 바탕에 색 있는 기호' } },
   lockSubject: '{name} 테마',
   checklist: {
     title: '이 룩 적용',

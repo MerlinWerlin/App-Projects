@@ -27,26 +27,29 @@ const opt = (o: Partial<WidgetOption>): SnapshotInput['option'] => ({
 });
 const codes = (p: { flags: { code: string }[] }) => p.flags.map((f) => f.code).sort();
 
-test('fitted square art in every size stays inside the widget, centred, never filled', () => {
+test('T236 full bleed: square art in every size stays whole inside the widget, centred, no inset, no letterbox', () => {
   for (const size of ['small', 'medium', 'large'] as const) {
     const p = snapshotPlan({ option: opt({}), size, device, artPx: { w: 1024, h: 1024 }, wallpaperPx: null });
     assert.equal(p.path, 'widgetArt');
-    assert.equal(p.mode, 'fit');
-    assert.equal(overreach(p.artRectPt, p.widgetPt), 0);
+    // Square art in the square small widget is drawn edge to edge; elsewhere whole + extended edges.
+    assert.equal(p.mode, size === 'small' ? 'fill' : 'fit');
+    assert.ok(overreach(p.artRectPt, p.widgetPt) <= 0.5);
     assert.ok(Math.abs(p.artRectPt.x + p.artRectPt.w / 2 - p.widgetPt.w / 2) < 0.01);
+    // No inset: the art touches both sides of its tighter dimension.
+    const tight = Math.min(p.widgetPt.w, p.widgetPt.h);
+    assert.ok(Math.abs(Math.min(p.artRectPt.w, p.artRectPt.h) - tight) < 0.6, `${size}: art spans the widget's short side`);
     assert.ok(!codes(p).includes('crop'));
-    assert.ok(!codes(p).includes('fill'));
+    assert.ok(!codes(p).includes('stretch'));
+    assert.ok(!codes(p).includes('letterbox'), 'strips are the art’s own edges, never bands of colour');
+    assert.notEqual(worstSeverity(p.flags), 'error');
   }
-  // Square art in a wide medium widget covers well under half: letterbox (info only).
-  const m = snapshotPlan({ option: opt({}), size: 'medium', device, artPx: { w: 1024, h: 1024 }, wallpaperPx: null });
-  assert.ok(codes(m).includes('letterbox'));
-  assert.equal(worstSeverity(m.flags), 'info');
 });
 
-test('fill is used only when the declared aspect matches, and a stretch is an error', () => {
+test('edge to edge only when the real aspect matches, and a stretch is an error', () => {
   const ok = snapshotPlan({ option: opt({ fit: 'fill', width: 1092, height: 510 }), size: 'medium', device, artPx: { w: 1092, h: 510 }, wallpaperPx: null });
   assert.equal(ok.mode, 'fill');
   assert.deepEqual(codes(ok), ['fill']);
+  assert.equal(worstSeverity(ok.flags), 'info');
   const square = snapshotPlan({ option: opt({ fit: 'fill' }), size: 'medium', device, artPx: { w: 1024, h: 1024 }, wallpaperPx: null });
   assert.equal(square.mode, 'fit');
   // The manifest says wide, the real image is square: the app asks for fill, but since T223 the

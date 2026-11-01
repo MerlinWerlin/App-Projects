@@ -60,3 +60,14 @@
 "Choose widget art" = "Widget-Motiv wählen";
 "Art" = "Motiv";
 "Widget art" = "Widget-Motiv";
+
+/* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */
+"Layout" = "Layout";
+"Fill" = "Füllen";
+"Fit" = "Einpassen";
+/* Live values over art: focus timer and countdown (LiveArtOverlay.swift, FocusIntents.swift, T237) */
+"Start or pause focus" = "Fokus starten oder pausieren";
+"Start" = "Start";
+"Pause" = "Pause";
+"Resume" = "Weiter";
+"Days" = "Tage";

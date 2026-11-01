@@ -19,8 +19,9 @@ import {
 } from '../core/activeTheme';
 import type { Theme } from '../core/themes';
 import { averageColour } from '../core/wallpaper';
+import { widgets as nativeWidgets } from '../native/widgets';
 import { runInstalledProbe } from './installedProbe';
-import { loadStudio, setStudioStyle } from './studio';
+import { applyThemeIcons, loadStudio } from './studio';
 import { applyWidgetTheme } from './widgetTheme';
 
 type Listener = (id: string | null) => void;
@@ -52,13 +53,17 @@ export type ApplyResult = { icons: boolean; widgets: boolean };
 export async function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
   let icons = true;
   try {
-    await setStudioStyle(theme.iconStyle, theme.id, averageColour(theme.wallpaper));
+    // T241: in the user's look for this theme (textured 'themed' by default).
+    await applyThemeIcons(theme, averageColour(theme.wallpaper));
   } catch {
     icons = false;
   }
   // T229: tick the popular apps that are on this iPhone (non-blocking; nothing in Expo Go).
   void runInstalledProbe();
   const widgets = await applyWidgetTheme(theme);
+  // T238 (owner-1101g #6): this theme's widget art replaces the previous theme's auto-added art in
+  // "My widget art" (own photos stay). No-op in Expo Go / Android; never throws.
+  await nativeWidgets.replaceThemeArt(theme.id);
   try {
     await AsyncStorage.setItem(ACTIVE_THEME_KEY, serializeActiveTheme({ themeId: theme.id, at: Date.now() }));
   } catch {

@@ -13,7 +13,7 @@ import { defaultBackground, usesPhoto, type ThemeBackground } from '../core/back
 import type { IconShape } from '../core/iconspec';
 import { DEFAULT_TRANSFORM } from '../core/photoCrop';
 import { useAnyTheme } from '../native/useAnyTheme';
-import { customisedAppIds, specsForTheme, themeShapeFor, themeStyleWithShape } from '../core/studio';
+import { customisedAppIds, specsForTheme, themeShapeFor, themeIconStyle } from '../core/studio';
 import { previewSpecs, THEMES } from '../core/themes';
 import { averageColour } from '../core/wallpaper';
 import { useT } from '../i18n';
@@ -64,7 +64,7 @@ export function YourLookPanel() {
   const specs = useMemo(() => {
     // The user's own apps (with their overrides for this theme) when they have picked some.
     if (state && state.selected.length > 0) {
-      return specsForTheme(state, key, themeStyleWithShape(state, key, theme.iconStyle)).slice(0, 16);
+      return specsForTheme(state, key, themeIconStyle(state, theme, key)).slice(0, 16);
     }
     return previewSpecs(theme, 12, shape);
   }, [state, theme, shape, key]);

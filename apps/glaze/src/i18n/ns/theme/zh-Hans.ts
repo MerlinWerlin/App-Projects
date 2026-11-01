@@ -35,6 +35,7 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
   applyHintLocked: '属于 Glaze Plus。介绍一次性解锁',
   editWallpaper: '编辑壁纸',
   shapeRow: { title: '形状', a11y: '图标形状：{shape}', showHint: '显示图标形状', hideHint: '隐藏图标形状' },
+  iconLook: { title: '图标样式', groupA11y: '{name} 的图标样式', optionA11y: '{look}图标样式', previewA11y: '你的应用（{look}样式）', names: { themed: '主题', tinted: '着色', glass: '玻璃', dark: '深色' }, notes: { themed: '每个图标背后都有主题纹理', tinted: '来自主题调色板的深色', glass: '融入壁纸的深色磨砂玻璃', dark: '近黑色背景配彩色符号' } },
   lockSubject: '{name} 主题',
   checklist: {
     title: '应用此风格',

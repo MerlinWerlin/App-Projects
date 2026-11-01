@@ -60,3 +60,14 @@
 "Choose widget art" = "选择小组件图片";
 "Art" = "图片";
 "Widget art" = "小组件图片";
+
+/* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */
+"Layout" = "布局";
+"Fill" = "填充";
+"Fit" = "适应";
+/* Live values over art: focus timer and countdown (LiveArtOverlay.swift, FocusIntents.swift, T237) */
+"Start or pause focus" = "开始或暂停专注";
+"Start" = "开始";
+"Pause" = "暂停";
+"Resume" = "继续";
+"Days" = "天";

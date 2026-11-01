@@ -11,7 +11,8 @@
 import { CATALOGUE_KIND_SIZES } from './widgetKinds.ts';
 
 /** What an option is. `art` is a picture; the others are pictures for a widget that can also be live. */
-export type WidgetOptionKind = 'art' | 'clock' | 'date' | 'calendar' | 'habits' | 'battery' | 'countdown' | 'photo' | 'quote';
+/** T237: `focus` is a focus-timer piece (the Seamless widget can run it: liveArt.ts). */
+export type WidgetOptionKind = 'art' | 'clock' | 'date' | 'calendar' | 'habits' | 'battery' | 'countdown' | 'photo' | 'quote' | 'focus';
 export const WIDGET_OPTION_KINDS: readonly WidgetOptionKind[] = Object.freeze([
   'art',
   'clock',
@@ -22,6 +23,7 @@ export const WIDGET_OPTION_KINDS: readonly WidgetOptionKind[] = Object.freeze([
   'battery',
   'photo',
   'quote',
+  'focus',
 ] as WidgetOptionKind[]);
 
 /** Where an option can go: the three Home Screen sizes and the Lock Screen. */
@@ -70,6 +72,11 @@ export type WidgetOption = {
    * habits or battery picture is treated as art (its numbers would never change). See fixedValues.
    */
   numberFree?: boolean;
+  /**
+   * T237: the Glaze widget draws this piece's live value over it (src/core/liveArt.ts withLiveArt),
+   * so it is a working widget even though a value is painted in. Set by the app, never by a pack.
+   */
+  liveArt?: boolean;
 };
 
 /** The asset fields the options need. */
@@ -281,7 +288,7 @@ export type WidgetOptionSection = { kind: WidgetOptionKind; options: WidgetOptio
 
 /**
  * T201 (owner-1101d #4): the theme-matched pieces that do a job, in the order they are shown:
- * habits, countdown, calendar / date, clock, battery, then photo and quote. Plain `art` comes after.
+ * habits, countdown, calendar / date, clock, battery, focus (T237), then photo and quote. Plain `art` comes after.
  */
 export const PRACTICAL_KINDS: readonly WidgetOptionKind[] = Object.freeze([
   'habits',
@@ -290,6 +297,7 @@ export const PRACTICAL_KINDS: readonly WidgetOptionKind[] = Object.freeze([
   'date',
   'clock',
   'battery',
+  'focus',
   'photo',
   'quote',
 ] as WidgetOptionKind[]);
@@ -307,24 +315,28 @@ export function isPracticalKind(kind: WidgetOptionKind): boolean {
  * level). Pack art for them has the value painted in ('29 THU OCT', '14 DAYS', '3/5', '78%', fixed
  * clock hands) and the widget only shows the picture, so the value never changes.
  */
-export const VALUE_KINDS: readonly WidgetOptionKind[] = Object.freeze(['clock', 'date', 'calendar', 'countdown', 'habits', 'battery'] as WidgetOptionKind[]);
+export const VALUE_KINDS: readonly WidgetOptionKind[] = Object.freeze(['clock', 'date', 'calendar', 'countdown', 'habits', 'battery', 'focus'] as WidgetOptionKind[]);
 
 /**
  * True when the option's picture has a value baked in that will never update: a value kind the
  * pack has not marked `numberFree`. Such a piece is presented as art (shelfKind), with no "Live"
  * badge; its live counterpart in Widget Studio is offered as a separate widget.
  */
-export function fixedValues(option: Pick<WidgetOption, 'kind' | 'numberFree'>): boolean {
-  return VALUE_KINDS.includes(option.kind) && option.numberFree !== true;
+export function fixedValues(option: Pick<WidgetOption, 'kind' | 'numberFree' | 'liveArt'>): boolean {
+  return VALUE_KINDS.includes(option.kind) && option.numberFree !== true && option.liveArt !== true;
 }
 
 /** The kind an option is shown under: `art` for a picture with fixed values (fixedValues), else its own kind. */
-export function shelfKind(option: Pick<WidgetOption, 'kind' | 'numberFree'>): WidgetOptionKind {
+export function shelfKind(option: Pick<WidgetOption, 'kind' | 'numberFree' | 'liveArt'>): WidgetOptionKind {
   return fixedValues(option) ? 'art' : option.kind;
 }
 
-/** True when the menu card may carry the "Live" badge: the piece itself can be a live widget. */
-export function showsLiveBadge(option: Pick<WidgetOption, 'kind' | 'numberFree'>): boolean {
+/**
+ * True when the menu card may carry the "Live" badge: the piece itself can be a live widget. T237:
+ * a piece the widget draws live values over (liveArt) always does; every other card says "Art".
+ */
+export function showsLiveBadge(option: Pick<WidgetOption, 'kind' | 'numberFree' | 'liveArt'>): boolean {
+  if (option.liveArt === true) return true;
   return liveKindOf(shelfKind(option)) !== null;
 }
 

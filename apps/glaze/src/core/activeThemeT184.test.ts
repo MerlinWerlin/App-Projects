@@ -91,7 +91,8 @@ test('theme page steps', () => {
 test('T184 "Use this theme" writes the icon style, the widget theme (bridge) and the theme in use', () => {
   const store = strip(read('src', 'store', 'activeTheme.ts'));
   const fn = /export async function applyThemeEverywhere[^]*?\n\}/.exec(store)?.[0] ?? '';
-  assert.match(fn, /setStudioStyle\(theme\.iconStyle, theme\.id/);
+  // T241: in the user's look for the theme (textured 'themed' by default), with its shape.
+  assert.match(fn, /applyThemeIcons\(theme, /);
   assert.match(fn, /applyWidgetTheme\(theme\)/);
   assert.match(fn, /AsyncStorage\.setItem\(ACTIVE_THEME_KEY/);
   assert.match(fn, /for \(const l of listeners\) l\(theme\.id\)/);

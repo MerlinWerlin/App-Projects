@@ -33,6 +33,7 @@ import { resolveGlyph } from '../core/glyphnames';
 import { useMotionReduced } from '../theme/motion';
 import { ArtPaths } from './ArtPaths';
 import { iconBackdrop } from '../core/iconBackdrop';
+import { GLASS_FROST } from '../core/iconLook';
 import { FeatherGlyphOverlay, InhouseSvgGlyph } from './glyphs';
 
 /** The fields IconCanvas needs; a full IconSpec satisfies it. */
@@ -94,8 +95,8 @@ function BackgroundDefs({ bg, id }: { bg: IconBackground; id: string }) {
   if (bg.kind === 'glass') {
     return (
       <LinearGradient id={`${id}-shine`} x1="0%" y1="0%" x2="0%" y2="100%">
-        <Stop offset="0" stopColor="#FFFFFF" stopOpacity={0.55} />
-        <Stop offset="0.5" stopColor="#FFFFFF" stopOpacity={0.08} />
+        <Stop offset="0" stopColor="#FFFFFF" stopOpacity={GLASS_FROST.shineTop} />
+        <Stop offset="0.5" stopColor="#FFFFFF" stopOpacity={GLASS_FROST.shineMid} />
         <Stop offset="1" stopColor="#FFFFFF" stopOpacity={0} />
       </LinearGradient>
     );
@@ -106,13 +107,14 @@ function BackgroundDefs({ bg, id }: { bg: IconBackground; id: string }) {
 function BackgroundLayer({ bg, d, size, id }: BgProps) {
   if (bg.kind === 'solid') return <Path d={d} fill={bg.colour} />;
   if (bg.kind === 'gradient') return <Path d={d} fill={`url(#${id}-grad)`} />;
-  // Glass: translucent tint, white top highlight, hairline edge (stroke is centred on the
-  // path, so twice the width leaves one hairline inside the clip).
+  // Glass: translucent tint, faint white top frost, quiet hairline edge (stroke is centred on the
+  // path, so twice the width leaves one hairline inside the clip). T240: frost values live in
+  // src/core/iconLook.ts GLASS_FROST (the old bright 0.55 shine / 0.5 rim read as a white tile).
   return (
     <G>
       <Path d={d} fill={bg.tint} fillOpacity={clampOpacity(bg.opacity)} />
       <Rect x={0} y={0} width={size} height={size * 0.6} fill={`url(#${id}-shine)`} />
-      <Path d={d} fill="none" stroke="#FFFFFF" strokeOpacity={0.5} strokeWidth={hairline(size) * 2} />
+      <Path d={d} fill="none" stroke="#FFFFFF" strokeOpacity={GLASS_FROST.edge} strokeWidth={hairline(size) * 2} />
     </G>
   );
 }

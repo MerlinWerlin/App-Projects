@@ -3,7 +3,8 @@
 // a bundled art pack: its three hero pieces), shows them in WidgetArtMenu for the chosen size and
 // puts the chosen one on the Glaze "Seamless" widget:
 //   background "wallpaper" → widgets.setSeamless (the wallpaper crop under the widget + the art fitted);
-//   background "theme" / "blur" → widgets.setWidgetArt (art fitted on the colour / blurred art), and
+//   background "theme" / "blur" → widgets.setWidgetArt (T236: full bleed, the art whole with its own
+//   edges extended, no frame; also writes the raw art for the widget's Fit layout), and
 //   on a build whose bridge predates T187, the setSeamless path instead.
 // T206: a picture with numbers painted in (fixedValues) says so under the menu, and its button reads
 // "Live widget instead" (the live one is a separate catalogue widget, not this picture).
@@ -18,12 +19,16 @@
 // T221 (owner-1101e): a saved piece is also ADDED to "My widget art" (widgets.addToArtLibrary, a
 // copy of the seamless-<size>.png just written), so each Glaze art widget can show a different
 // piece (long-press > Edit Widget). The library list with Remove buttons is WidgetArtLibraryList.
+// T237 (owner-1101g #2): pieces the widget can make work (src/core/liveArt.ts: the constellation
+// clock, the harbour focus timer, date and battery pieces) are marked liveArt and saved with a
+// `live` spec, so the Seamless widget draws the real time / date / level / focus timer over them.
 import { useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { AccessibilityInfo, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES, HERO_SIZES, isArtPackTheme } from '../core/artPack';
 import { isRemoteArtTheme } from '../core/remoteCatalog';
 import { normaliseSlot, seamlessCrop, seamlessFileName, widgetSizePx } from '../core/seamlessWidget';
+import { liveArtPlan, liveArtSpec, withLiveArt } from '../core/liveArt';
 import { themePieceId } from '../core/widgetArtLibrary';
 import type { WidgetTabSize } from '../core/tabNav';
 import type { Theme } from '../core/themes';
@@ -64,7 +69,12 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
   const artId = isArtPackTheme(theme) ? theme.artPack.id : null;
 
   const options: readonly MenuOption[] = useMemo(() => {
-    if (remoteTheme) return remote.widgetOptions.length ? remote.widgetOptions.map((o) => ({ option: o.option, source: { uri: o.uri } })) : NONE;
+    if (remoteTheme) {
+      if (!remote.widgetOptions.length) return NONE;
+      // T237: no countdown target is chosen for art pieces yet, so countdown pictures stay Art.
+      const live = withLiveArt(theme.id, remote.widgetOptions.map((o) => o.option));
+      return remote.widgetOptions.map((o, i) => ({ option: live[i], source: { uri: o.uri } }));
+    }
     if (!artId) return NONE;
     // A bundled art pack: its hero pieces, as a v1 pack would list them.
     const sources = new Map<string, number>();
@@ -79,7 +89,7 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
       const mod = sources.get(option.image);
       return mod === undefined ? [] : [{ option, source: mod }];
     });
-  }, [remoteTheme, remote.widgetOptions, artId]);
+  }, [remoteTheme, remote.widgetOptions, artId, theme.id]);
 
   const wallpaper: ArtSource | null = remote.wallpaperUri ? { uri: remote.wallpaperUri } : artId ? artPackWallpaper(artId) : null;
   const wallpaperPx = remote.wallpaperPx ?? { w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height };
@@ -158,6 +168,11 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
           if (ok) {
             // T221: keep this piece in "My widget art" too (a failure here never undoes the save).
             const px = widgetSizePx(seamlessDeviceHere(), home);
+            // T237: what the widget draws live over this piece (null = a picture only).
+            const plan = liveArtPlan(theme.id, option);
+            const live = plan
+              ? liveArtSpec(plan, { w: option.width, h: option.height }, px, option.background === 'wallpaper' ? 'fit' : 'bleed', { bg: theme.palette.bg, ink: theme.palette.ink })
+              : null;
             const lib = await widgets.addToArtLibrary(
               {
                 id: themePieceId(theme.id, option.id, home),
@@ -168,6 +183,7 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
                 created: Date.now(),
                 aspect: px.h > 0 ? px.w / px.h : 0,
                 size: home,
+                ...(live ? { live } : {}),
               },
               seamlessFileName(home),
             );
@@ -196,7 +212,9 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
     : null;
   const pickedNm = optionName(pickedItem.option, options.map((o) => o.option));
   const pickedName = 'text' in pickedNm ? pickedNm.text : (t as unknown as (k: string, p?: Record<string, unknown>) => string)(pickedNm.key, pickedNm.params);
-  const liveHref = liveStudioHref(theme.id, pickedItem.option.kind, home);
+  // T237: a piece the widget makes live needs no separate Studio widget.
+  const liveOnArt = pickedItem.option.liveArt === true;
+  const liveHref = liveOnArt ? null : liveStudioHref(theme.id, pickedItem.option.kind, home);
   // T206: the picture's numbers never change, so the live widget is offered as a separate one.
   const fixed = fixedValues(pickedItem.option);
   const statusLine =
@@ -228,6 +246,11 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
       {fixed ? (
         <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
           {t('tabs.widgetsTab.art.fixedNote')}
+        </Text>
+      ) : null}
+      {liveOnArt ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+          {pickedItem.option.kind === 'focus' ? t('tabs.widgetsTab.art.focusNote') : t('tabs.widgetsTab.art.liveOnArt')}
         </Text>
       ) : null}
       {statusLine ? (

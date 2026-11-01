@@ -6,9 +6,15 @@
 //                            (seamlessCrop), then the art fitted. The preview draws the whole
 //                            wallpaper at the crop's scale and offset inside the clipped card, so
 //                            only the crop shows (wallpaperUnderSlot).
-//   background "blur"      → setWidgetArt: CIGaussianBlur of the art with radius
-//                            max(12, 6 % of the art's short side) in art pixels, aspect-filled, under
-//                            a 25 % veil of the theme colour (blurBackdrop).
+//   background "theme" /   → setWidgetArt, T236 (owner-1101g #1: art FILLS the widget, no grey/light
+//   "blur"                   frame ever, subject never cut): full bleed (fullBleedArt). The art is
+//                            drawn whole at its fitted rect with NO inset (edge to edge when the
+//                            aspects match within 2 %), and the strips around it are the art's own
+//                            edges extended and blurred (CIImage clampedToExtent + CIGaussianBlur,
+//                            radius max(12, 8 % of the output's short side)). No veil; the theme
+//                            colour only shows under transparent pixels. The preview approximates
+//                            the extension with a blurred aspect-filled copy of the art clipped to
+//                            the strips (blurBackdrop).
 //
 // Also the stable menu names ("Art n" numbered once per theme, not per size) and the menu caption
 // layout, and the real pixel size of a downloaded pack's hero piece per size (remoteHeroPx).
@@ -19,24 +25,82 @@ import type { RemoteArtManifest } from './packCatalog.ts';
 import { remoteArtFiles } from './remoteCatalog.ts';
 import type { Box, HomeOptionSize, Rect, WidgetOption } from './widgetOptions.ts';
 
-/** GlazeWidgetBridgeModule.setWidgetArt: `max(12, min(w, h) * 0.06)` (art px). */
+/**
+ * T236: GlazeWidgetBridgeModule.setWidgetArt blurs the extended edges with
+ * `max(12, min(target.width, target.height) * 0.08)` (OUTPUT px, not art px).
+ */
 export const NATIVE_BLUR_MIN_RADIUS = 12;
-export const NATIVE_BLUR_RADIUS_SHARE = 0.06;
-/** GlazeWidgetBridgeModule.setWidgetArt: `base.withAlphaComponent(0.25)` over the blurred copy. */
-export const NATIVE_BLUR_VEIL_ALPHA = 0.25;
+export const NATIVE_BLUR_RADIUS_SHARE = 0.08;
+/** T236: no veil any more (the old 25 % veil of a light theme colour read as a grey frame). */
+export const NATIVE_BLUR_VEIL_ALPHA = 0;
 
 /**
- * T223: GlazeWidgetBridgeModule.setWidgetArt draws fit "fill" edge to edge only when the REAL art
- * aspect is within this match of the output (`min/max >= 0.98`, i.e. 1 - FILL_ASPECT_TOLERANCE);
- * otherwise it fits the art whole, so a pack whose declared size is wrong can't stretch or crop.
+ * T223 / T236: GlazeWidgetBridgeModule.setWidgetArt draws the art edge to edge only when the REAL
+ * art aspect is within this match of the output (`min/max >= 0.98`, i.e. 1 - FILL_ASPECT_TOLERANCE);
+ * otherwise it draws the art whole (no inset) and extends its edges, so nothing is stretched or cut.
  */
 export const NATIVE_FILL_MIN_ASPECT_MATCH = 0.98;
 
+/**
+ * T236: targets/widget/SeamlessWidget.swift (Layout "Fill", the default) draws the composed file
+ * edge to edge (scaledToFill) when its aspect is within this match of the widget's, else fits it
+ * whole over a full-opacity blur of itself (iPad extra large shows the large file).
+ */
+export const SEAMLESS_FILL_MIN_ASPECT_MATCH = 0.97;
+
 const pos = (n: number): number => (Number.isFinite(n) && n > 0 ? n : 1);
 
-/** The CIGaussianBlur radius the bridge uses for art of `artPx` (in art pixels). */
-export function nativeBlurRadiusPx(artPx: Box): number {
-  return Math.max(NATIVE_BLUR_MIN_RADIUS, Math.min(pos(artPx.w), pos(artPx.h)) * NATIVE_BLUR_RADIUS_SHARE);
+/** The CIGaussianBlur radius the bridge uses for an output of `outPx` (in output pixels). */
+export function nativeBlurRadiusPx(outPx: Box): number {
+  return Math.max(NATIVE_BLUR_MIN_RADIUS, Math.min(pos(outPx.w), pos(outPx.h)) * NATIVE_BLUR_RADIUS_SHARE);
+}
+
+const match = (a: Box, b: Box): number => {
+  const x = pos(a.w) / pos(a.h);
+  const y = pos(b.w) / pos(b.h);
+  return Math.min(x, y) / Math.max(x, y);
+};
+
+export type FullBleedArt = {
+  /** True when the aspects match within 2 %: the art is drawn edge to edge, no strips. */
+  edgeToEdge: boolean;
+  /** Where the art goes (same units as the box): the whole box, or fitted whole with NO inset. */
+  rect: Rect;
+  /** The strips around the art that the art's own extended edges fill (empty when edgeToEdge). */
+  strips: Rect[];
+};
+
+/**
+ * T236 (owner-1101g #1): the full-bleed placement GlazeWidgetBridgeModule.setWidgetArt draws for
+ * art of `art` in an output of `box`. The art is never cropped (rect always inside the box, with
+ * the art's own aspect unless edge to edge), never inset, and together rect + strips cover the
+ * whole box, so no theme colour can show as a frame.
+ */
+export function fullBleedArt(art: Box, box: Box): FullBleedArt {
+  const W = Math.max(0, box.w);
+  const H = Math.max(0, box.h);
+  if (match(art, { w: W, h: H }) >= NATIVE_FILL_MIN_ASPECT_MATCH) {
+    return { edgeToEdge: true, rect: { x: 0, y: 0, w: W, h: H }, strips: [] };
+  }
+  const aw = pos(art.w);
+  const ah = pos(art.h);
+  const s = Math.min(W / aw, H / ah);
+  const w = aw * s;
+  const h = ah * s;
+  const rect: Rect = { x: (W - w) / 2, y: (H - h) / 2, w, h };
+  const strips: Rect[] =
+    rect.x > 0
+      ? [
+          { x: 0, y: 0, w: rect.x, h: H },
+          { x: rect.x + w, y: 0, w: W - rect.x - w, h: H },
+        ]
+      : rect.y > 0
+        ? [
+            { x: 0, y: 0, w: W, h: rect.y },
+            { x: 0, y: rect.y + h, w: W, h: H - rect.y - h },
+          ]
+        : [];
+  return { edgeToEdge: false, rect, strips };
 }
 
 /** Aspect-fill `inner` over `outer` (scale = max), centred. Same units as `outer`. */
@@ -54,20 +118,21 @@ export function coverRect(inner: Box, outer: Box): Rect & { scale: number } {
 export type BlurBackdrop = {
   /** Where the (blurred) art copy goes in the preview box: aspect-filled, centred. */
   rect: Rect;
-  /** Blur radius in preview units: the native radius scaled with the art. */
+  /** Blur radius in preview units: the native share of the box's short side. */
   radius: number;
-  /** Opacity of the theme-colour veil drawn over the blurred copy. */
+  /** Opacity of a theme-colour veil over the blurred copy: 0 since T236 (no veil). */
   veil: number;
 };
 
 /**
- * The blurred-art background of a "blur" option in a preview box of `box` (points): the native
- * blur radius (art px) scaled by the same factor the art is aspect-filled with, so a small card
- * looks as soft as the widget, plus the 25 % veil.
+ * The extended-edge background of a "theme" / "blur" option in a preview box of `box` (points):
+ * a blurred aspect-filled copy of the art (drawn only in fullBleedArt's strips), with the native
+ * radius share of the box's short side so a small card looks as soft as the widget. No veil.
  */
 export function blurBackdrop(artPx: Box, box: Box): BlurBackdrop {
   const c = coverRect(artPx, box);
-  const radius = Math.round(nativeBlurRadiusPx(artPx) * c.scale * 100) / 100;
+  const short = Math.min(Math.max(0, box.w), Math.max(0, box.h));
+  const radius = Math.round(short * NATIVE_BLUR_RADIUS_SHARE * 100) / 100;
   return { rect: { x: c.x, y: c.y, w: c.w, h: c.h }, radius, veil: NATIVE_BLUR_VEIL_ALPHA };
 }
 

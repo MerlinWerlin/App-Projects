@@ -10,9 +10,14 @@
 // small card stacks the "Live" badge under a two-line name (menuCaptionLayout) so long names fit.
 // T208: the backgrounds mimic the native compositor (src/core/widgetPreview.ts): the wallpaper is
 // the seamless CROP under the widget's slot (wallpaperUnderSlot), the blurred art uses the bridge's
-// CIGaussianBlur radius scaled to the card plus its 25 % veil of the theme colour (blurBackdrop).
+// CIGaussianBlur radius scaled to the card (blurBackdrop).
+// T236 (owner-1101g #1): "theme" / "blur" previews are full bleed like the bridge (fullBleedArt):
+// the art whole with no inset, the strips beside it filled by a blurred copy of the art (its own
+// edges extended), no veil, so the card never shows a light frame. "wallpaper" is unchanged.
 // T209/T206: names come from optionName (the same in every size); a picture with fixed numbers
 // (fixedValues: '29 THU OCT', '14 DAYS', '3/5'…) sits with the art and has no "Live" badge.
+// T237 (owner-1101g #2): a card is either "Live" (the widget shows a real value: a liveArt piece
+// or one with a live counterpart) or "Art", so no picture pretends to work.
 // Only tokens for chrome; the theme colour and the art are theme data. No motion. Works in Expo Go
 // (expo-image is already used across the app).
 import { Feather } from '@expo/vector-icons';
@@ -32,7 +37,7 @@ import {
   type WidgetOption,
 } from '../core/widgetOptions';
 import { widgetTabSizeKey } from '../core/tabNav';
-import { blurBackdrop, menuCaptionLayout, wallpaperUnderSlot } from '../core/widgetPreview';
+import { blurBackdrop, fullBleedArt, menuCaptionLayout, wallpaperUnderSlot } from '../core/widgetPreview';
 import { useT } from '../i18n';
 import { chromeRadiusV2, circleRadius, continuous, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
@@ -73,16 +78,19 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, selected,
   const box = OPTION_SIZE_POINTS[size];
   const w = Math.max(1, width - RING * 4);
   const h = Math.max(1, Math.round((w * box.h) / box.w));
-  const place = placeArt({ w: option.width, h: option.height }, { w, h }, option.fit);
+  // T236: "theme" / "blur" options are composed full bleed by the bridge (fullBleedArt: the art whole,
+  // no inset, its own edges extended in the strips); "wallpaper" keeps the inset hero (placeArt).
+  const isWall = option.background === 'wallpaper';
+  const bleed = fullBleedArt({ w: option.width, h: option.height }, { w, h });
+  const place = isWall ? placeArt({ w: option.width, h: option.height }, { w, h }, option.fit) : { rect: bleed.rect };
   const caption = menuCaptionLayout(size);
   // T206: a picture with fixed numbers (fixedValues) is art: no "Live" badge.
   const live = showsLiveBadge(option);
   const sizeName = tl(widgetTabSizeKey(size));
   const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
-  // Background only (it may be cut at the edges), as the bridge composes it: a blurred aspect-filled
-  // copy of the art under a veil of the theme colour, or the wallpaper crop under the widget's slot.
-  const isBlur = option.background === 'blur';
-  const backdrop: ArtSource | null = isBlur ? source : null;
+  // Background only, as the bridge composes it: the art's edges extended (a blurred aspect-filled
+  // copy of the art at full opacity, clipped to the strips, no veil), or the wallpaper crop.
+  const strips = isWall ? [] : bleed.strips;
   const blur = blurBackdrop({ w: option.width, h: option.height }, { w, h });
   const wall = option.background === 'wallpaper' && wallpaper ? wallpaperUnderSlot(wallpaper.px, wallpaper.crop, { w, h }) : null;
   const wallStyle: StyleProp<ViewStyle> = wall ? { position: 'absolute', left: wall.x, top: wall.y, width: wall.w, height: wall.h } : null;
@@ -101,8 +109,18 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, selected,
     >
       <View style={[styles.ring, continuous, { borderColor: selected ? c.tint : 'transparent' }]}>
         <View style={[styles.preview, continuous, { width: w, height: h, backgroundColor: themeColour }]}>
-          {backdrop ? <ExpoImage source={backdrop} style={StyleSheet.absoluteFill} contentFit="cover" blurRadius={blur.radius} cachePolicy="memory-disk" transition={0} /> : null}
-          {backdrop ? <View pointerEvents="none" style={[StyleSheet.absoluteFill, { backgroundColor: themeColour, opacity: blur.veil }]} /> : null}
+          {strips.map((s, i) => (
+            <View key={i} pointerEvents="none" style={[styles.strip, { left: s.x, top: s.y, width: s.w, height: s.h }]}>
+              <ExpoImage
+                source={source}
+                style={{ position: 'absolute', left: blur.rect.x - s.x, top: blur.rect.y - s.y, width: blur.rect.w, height: blur.rect.h }}
+                contentFit="fill"
+                blurRadius={blur.radius}
+                cachePolicy="memory-disk"
+                transition={0}
+              />
+            </View>
+          ))}
           {/* The whole wallpaper at the crop's scale and offset: the clipped card shows only the crop. */}
           {wall && wallpaper ? <ExpoImage source={wallpaper.source} style={wallStyle} contentFit="fill" cachePolicy="memory-disk" transition={0} /> : null}
           {/* The art itself: always whole (contain inside its fitted rectangle). */}
@@ -128,7 +146,13 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, selected,
               {t('tabs.widgetsTab.art.live')}
             </Text>
           </View>
-        ) : null}
+        ) : (
+          <View style={[styles.badge, caption.stacked ? styles.badgeStacked : null, { backgroundColor: c.fill }]}>
+            <Text maxFontSizeMultiplier={fontScaleCap('caption2')} style={[...label('caption2'), { color: c.inkSecondary }]} numberOfLines={1}>
+              {t('tabs.widgetsTab.art.artBadge')}
+            </Text>
+          </View>
+        )}
       </View>
     </Pressable>
   );
@@ -200,6 +224,7 @@ const styles = StyleSheet.create({
   card: { gap: spaceV2.sm, minHeight: sizeV2.touch },
   ring: { borderWidth: RING, borderRadius: chromeRadiusV2.card + RING * 2, padding: RING },
   preview: { borderRadius: chromeRadiusV2.card, overflow: 'hidden' },
+  strip: { position: 'absolute', overflow: 'hidden' },
   check: {
     position: 'absolute',
     top: spaceV2.sm,

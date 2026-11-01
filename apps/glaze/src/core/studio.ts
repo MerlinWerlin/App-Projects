@@ -9,6 +9,7 @@ import { packMotifIds } from './packMotifs.ts';
 import { CATALOGUE, getById, search, type CatalogueEntry } from './catalogue.ts';
 import { isHex, lighten, mix, normalizeHex } from './colour.ts';
 import { MONOGRAM_GLYPH, cleanMonogramText } from './monogram.ts';
+import { DEFAULT_ICON_LOOK, iconStyleForLook, isIconLook, type IconLook, type LookTheme } from './iconLook.ts';
 import {
   resolveSpecs,
   type IconApp,
@@ -56,6 +57,16 @@ export type StudioState = {
    * Added in Oct 2026 without a version bump: older stored state simply has none.
    */
   themeShapes: Record<string, IconShape>;
+  /**
+   * T240: the icon look the user picked for each theme (theme id -> look). Missing = the default,
+   * 'themed' (T241). Added without a version bump: older stored state simply has none.
+   */
+  themeLooks: Record<string, IconLook>;
+  /**
+   * T241: true once a stored theme style from before looks existed has been moved to 'themed'
+   * (only when the user had not changed it in Icon Studio). New installs start migrated.
+   */
+  looksMigrated: boolean;
   /** Average wallpaper colour: icon backdrop + preview background. */
   wallpaperColour: string | null;
 };
@@ -128,6 +139,8 @@ export function defaultStudioState(): StudioState {
     images: [],
     themeId: null,
     themeShapes: {},
+    themeLooks: {},
+    looksMigrated: true,
     wallpaperColour: null,
   };
 }
@@ -274,6 +287,16 @@ export function sanitizeStudioState(raw: unknown): StudioState {
       }
     }
   }
+  if (isObj(raw.themeLooks)) {
+    for (const [k, v] of Object.entries(raw.themeLooks)) {
+      const key = cleanThemeKey(k);
+      if (key && key !== ALL_THEMES_KEY && isIconLook(v) && Object.keys(out.themeLooks).length < MAX_THEME_SHAPES) {
+        out.themeLooks[key] = v;
+      }
+    }
+  }
+  // Stored state from before T241 has no flag: it still needs the themed-default migration.
+  out.looksMigrated = raw.looksMigrated === true;
   const sanitizeMap = (m: unknown): Record<string, IconOverride> => {
     const res: Record<string, IconOverride> = {};
     if (!isObj(m)) return res;
@@ -505,6 +528,55 @@ export function clearThemeShape(s: StudioState, themeId: string): StudioState {
 /** A theme's icon style with the user's chosen shape for it (for previews and applying). */
 export function themeStyleWithShape(s: Pick<StudioState, 'themeShapes'>, themeId: string, style: IconStyle): IconStyle {
   return { ...style, shape: themeShapeFor(s, themeId, style.shape) };
+}
+
+// ---------------------------------------------------------------- icon look per theme (T240 / T241)
+
+/** The look to use for `themeId`: the user's pick, else 'themed'. */
+export function themeLookFor(s: Pick<StudioState, 'themeLooks'>, themeId: string): IconLook {
+  const chosen = s.themeLooks?.[themeId];
+  return isIconLook(chosen) ? chosen : DEFAULT_ICON_LOOK;
+}
+
+/** A theme's icon style in the user's look for it, with the user's shape (previews + applying). */
+export function themeIconStyle(s: Pick<StudioState, 'themeShapes' | 'themeLooks'>, theme: LookTheme, key: string = theme.id): IconStyle {
+  return themeStyleWithShape(s, key, iconStyleForLook(theme, themeLookFor(s, key)));
+}
+
+/**
+ * Remember the user's look for a theme. If that theme is the applied one, the studio style
+ * changes too (keeping the shape), so the exported icons use the new look straight away.
+ */
+export function setThemeLook(s: StudioState, theme: LookTheme, look: IconLook, themeKey: string = theme.id): StudioState {
+  const key = cleanThemeKey(themeKey);
+  if (!key || key === ALL_THEMES_KEY || !isIconLook(look)) return s;
+  const themeLooks = { ...s.themeLooks, [key]: look };
+  if (s.themeId === key) {
+    return { ...s, themeLooks, style: sanitizeStyle({ ...iconStyleForLook(theme, look), shape: s.style.shape }) };
+  }
+  return { ...s, themeLooks };
+}
+
+function sameBackground(a: IconBackground, b: IconBackground): boolean {
+  return JSON.stringify(sanitizeBackground(a)) === JSON.stringify(sanitizeBackground(b));
+}
+
+/**
+ * T241 migration: stored state from before looks has the applied theme's old flat style. Move it
+ * to the themed look unless the user had changed the background or glyph colour in Icon Studio
+ * (an explicit pick, kept). `theme` is the applied theme (undefined while it is not available,
+ * e.g. a pack not restored yet: the state is returned unchanged and the migration retries later).
+ */
+export function migrateThemedLook(s: StudioState, theme: LookTheme | undefined): StudioState {
+  if (s.looksMigrated) return s;
+  if (!s.themeId) return { ...s, looksMigrated: true };
+  if (!theme || theme.id !== s.themeId) return s;
+  const untouched =
+    sameBackground(s.style.background, theme.iconStyle.background) &&
+    normalizeHex(s.style.glyphColour) === normalizeHex(theme.iconStyle.glyphColour) &&
+    s.themeLooks[theme.id] === undefined;
+  if (!untouched) return { ...s, looksMigrated: true };
+  return { ...s, looksMigrated: true, style: sanitizeStyle({ ...iconStyleForLook(theme, DEFAULT_ICON_LOOK), shape: s.style.shape }) };
 }
 
 /**

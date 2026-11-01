@@ -443,7 +443,13 @@ test('artPackTheme maps the palette, keeps vector glyph icons and flags the imag
   assert.equal(specs.length, 4);
   for (const s of specs) {
     assert.equal(s.overrideImage, undefined);
-    assert.deepEqual(s.background, { kind: 'solid', colour: '#161C2E' });
+    // T241: the default 'themed' look textures the tile with a wallpaper-matching gradient.
+    assert.equal(s.background.kind, 'gradient');
+    assert.ok(s.art && (s.art.texture === 'stars' || s.art.texture === 'grain'), s.art?.texture);
+  }
+  for (const s of previewSpecs(t, 4, undefined, 'dark')) {
+    assert.equal(s.overrideImage, undefined);
+    assert.equal(s.background.kind, 'solid');
   }
   assert.deepEqual(artPackCreditParams(t.artPack), { credit: 'Glaze (original procedural art)', licence: 'Original artwork' });
 });

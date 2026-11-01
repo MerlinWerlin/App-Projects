@@ -21,7 +21,7 @@ Paste after the feature sections (release standard §3; same pattern as the othe
 
 Native builds only (`native-plugins/queryschemes.json`, merged when `GLAZE_NATIVE=1`; the plain `production` profile has none, and then the check finds nothing and does nothing).
 
-> Glaze declares 32 URL schemes of popular apps in LSApplicationQueriesSchemes (under Apple's limit of 50;
+> Glaze declares 50 URL schemes of popular apps in LSApplicationQueriesSchemes (Apple's limit is 50;
 > the list is generated from `src/core/installedProbe.ts`). It calls `canOpenURL` on these exact schemes only
 > to pre-select matching icons for those apps in the icon editor, so the user doesn't have to find them; the
 > user can untick any app and it is not added again. The answers are not stored beyond that selection, are not

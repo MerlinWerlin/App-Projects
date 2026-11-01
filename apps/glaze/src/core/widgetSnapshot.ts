@@ -5,16 +5,17 @@
 //
 //   ThemeWidgetArt.onUse  background "wallpaper" → setSeamless: crop of the wallpaper under the
 //                         widget's default slot (seamlessCrop), hero fitted with heroRect (6 % inset)
-//                         background "theme" / "blur" → setWidgetArt at widgetSizePx, fit decided by
-//                         placeArt on the option's declared size, art drawn fitted (or, for "fill",
-//                         stretched edge to edge) by GlazeWidgetBridgeModule
-//   SeamlessWidget.swift  the composed file scaledToFit inside the widget frame (corner mask 22 pt)
+//                         background "theme" / "blur" → setWidgetArt at widgetSizePx, T236 full bleed
+//                         (widgetPreview.fullBleedArt on the REAL art size: edge to edge when the
+//                         aspects match, else whole with no inset and its edges extended)
+//   SeamlessWidget.swift  Layout "Fill" (default): the composed file edge to edge when its aspect
+//                         matches the widget's, else fitted (corner mask 22 pt)
 //
 // The native bridge sizes the art from the decoded image, the app from the manifest / reference
 // size, so the plan takes both and flags any difference. Pure TS, tested in widgetSnapshot.test.ts.
 
-import { NATIVE_FILL_MIN_ASPECT_MATCH } from './widgetPreview.ts';
-import { aspectMatch, placeArt, type Box, type HomeOptionSize, type Rect, type WidgetOption, type WidgetOptionFit } from './widgetOptions.ts';
+import { coverRect, fullBleedArt, SEAMLESS_FILL_MIN_ASPECT_MATCH } from './widgetPreview.ts';
+import { aspectMatch, type Box, type HomeOptionSize, type Rect, type WidgetOption, type WidgetOptionFit } from './widgetOptions.ts';
 import { heroRect, normaliseSlot, SEAMLESS_MAX_EDGE_PX, seamlessCrop, WIDGET_CORNER_PT, widgetSizePx, type SeamlessDevice } from './seamlessWidget.ts';
 
 export type SnapshotSeverity = 'error' | 'warn' | 'info';
@@ -149,23 +150,26 @@ export function snapshotPlan(input: SnapshotInput): SnapshotPlan {
     artRect = heroRect(targetPx, artPx);
   } else {
     path = 'widgetArt';
-    const px = widgetSizePx(device, size);
-    mode = placeArt(declared, px, option.fit).mode;
-    targetPx = capTarget(px);
-    // T223: the bridge re-checks the REAL image's aspect before drawing edge to edge
-    // (GlazeWidgetBridgeModule.setWidgetArt, NATIVE_FILL_MIN_ASPECT_MATCH); a manifest that lies
-    // about the size gets the art fitted, never stretched or cropped.
-    if (mode === 'fill' && aspectMatch(artPx, targetPx) < NATIVE_FILL_MIN_ASPECT_MATCH) mode = 'fit';
-    artRect = mode === 'fill' ? { x: 0, y: 0, w: targetPx.w, h: targetPx.h } : placeArt(artPx, targetPx, 'fit').rect;
+    targetPx = capTarget(widgetSizePx(device, size));
+    // T236 (owner-1101g #1): full bleed (fullBleedArt). The bridge checks the REAL image's aspect:
+    // within NATIVE_FILL_MIN_ASPECT_MATCH it draws the art edge to edge, otherwise whole with NO
+    // inset and its own edges extended into the strips (never stretched, cropped or framed).
+    const bleed = fullBleedArt(artPx, targetPx);
+    mode = bleed.edgeToEdge ? 'fill' : 'fit';
+    artRect = bleed.rect;
     if (mode === 'fill') {
-      flags.push({ code: 'fill', severity: 'warn', detail: `${option.id} drawn edge to edge (fit "fill")` });
+      flags.push({ code: 'fill', severity: 'info', detail: `${option.id} drawn edge to edge (aspect matches)` });
       const stretch = 1 - aspectMatch(artPx, targetPx);
       if (stretch > ASPECT_TOLERANCE) flags.push({ code: 'stretch', severity: 'error', detail: `art stretched ${r2(stretch * 100)} % to the widget's aspect` });
     }
   }
 
   const widgetPt: Box = { w: widgetSizePx(device, size).w / device.scale, h: widgetSizePx(device, size).h / device.scale };
-  const imageRectPt = fitRect(targetPx, widgetPt);
+  // T236: SeamlessWidget.swift Layout "Fill" (default) draws the file edge to edge when its aspect
+  // is within SEAMLESS_FILL_MIN_ASPECT_MATCH of the widget's, else fits it whole over its own blur.
+  const cover = coverRect(targetPx, widgetPt);
+  const imageRectPt: Rect =
+    aspectMatch(targetPx, widgetPt) >= SEAMLESS_FILL_MIN_ASPECT_MATCH ? { x: cover.x, y: cover.y, w: cover.w, h: cover.h } : fitRect(targetPx, widgetPt);
   const k = imageRectPt.w / targetPx.w;
   const artRectPt: Rect = { x: imageRectPt.x + artRect.x * k, y: imageRectPt.y + artRect.y * k, w: artRect.w * k, h: artRect.h * k };
   const over = overreach(artRectPt, widgetPt);
@@ -174,7 +178,9 @@ export function snapshotPlan(input: SnapshotInput): SnapshotPlan {
     flags.push({ code: 'cornerClip', severity: 'warn', detail: `an art corner falls outside the ${WIDGET_CORNER_PT} pt rounded mask` });
   }
   const coverage = Math.min(1, (artRectPt.w * artRectPt.h) / Math.max(1e-9, widgetPt.w * widgetPt.h));
-  if (mode === 'fit' && coverage < LETTERBOX_COVERAGE) {
+  // T236: only the wallpaper path can still show bands around the art (the wallpaper crop); widget
+  // art fills the strips with its own extended edges, so it is never letterboxed.
+  if (path === 'seamless' && mode === 'fit' && coverage < LETTERBOX_COVERAGE) {
     flags.push({ code: 'letterbox', severity: 'info', detail: `art covers ${Math.round(coverage * 100)} % of the widget` });
   }
   return { path, offered, targetPx, crop, mode, artRect, widgetPt, imageRectPt, artRectPt, coverage, flags };

@@ -60,3 +60,14 @@
 "Choose widget art" = "اختر رسم الأداة";
 "Art" = "الرسم";
 "Widget art" = "رسم الأداة";
+
+/* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */
+"Layout" = "التخطيط";
+"Fill" = "ملء";
+"Fit" = "احتواء";
+/* Live values over art: focus timer and countdown (LiveArtOverlay.swift, FocusIntents.swift, T237) */
+"Start or pause focus" = "بدء التركيز أو إيقافه مؤقتًا";
+"Start" = "ابدأ";
+"Pause" = "إيقاف مؤقت";
+"Resume" = "استئناف";
+"Days" = "أيام";

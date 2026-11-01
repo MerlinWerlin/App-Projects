@@ -35,6 +35,7 @@ export const en = {
   applyHintLocked: 'Part of Glaze Plus. Explains the one-time unlock',
   editWallpaper: 'Edit the wallpaper',
   shapeRow: { title: 'Shape', a11y: 'Icon shape: {shape}', showHint: 'Shows the icon shapes', hideHint: 'Hides the icon shapes' },
+  iconLook: { title: 'Icon style', groupA11y: 'Icon style for {name}', optionA11y: '{look} icon style', previewA11y: 'Your apps in the {look} style', names: { themed: 'Themed', tinted: 'Tinted', glass: 'Glass', dark: 'Dark' }, notes: { themed: 'The theme\'s texture behind each icon', tinted: 'Deep colour from the theme\'s palette', glass: 'Dark frosted glass that sits in your wallpaper', dark: 'Near black with a coloured symbol' } },
   lockSubject: 'The {name} theme',
   checklist: {
     title: 'Apply this look',

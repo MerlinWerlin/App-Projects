@@ -84,22 +84,23 @@ test('no crop of art: JS previews contain; Swift widget pins both layers; the br
   assert.match(art, /fit: placeArt\(\{ w: option\.width, h: option\.height \}, px, option\.fit\)\.mode/, 'fill only when placeArt allows it');
 
   const widget = read('targets', 'widget', 'SeamlessWidget.swift');
-  // Every aspect-fill in the Seamless widget is the blurred background, clipped to the widget size.
+  // Every aspect-fill in the Seamless widget is pinned and clipped to the widget size; T236: besides
+  // the blurred background, the only sharp fill is the edge-to-edge Fill layout, used only when the
+  // composed file already has the widget's aspect (else the image is fitted whole).
   const fills = [...widget.matchAll(/\.scaledToFill\(\)([\s\S]{0,200})/g)];
-  assert.ok(fills.length >= 1);
-  for (const f of fills) {
-    assert.match(f[1], /^\s*\.frame\(width: geo\.size\.width, height: geo\.size\.height\)\s*\.clipped\(\)\s*\.blur\(radius:/);
-  }
-  assert.match(widget, /\.scaledToFit\(\)\s*\.frame\(width: geo\.size\.width, height: geo\.size\.height\)/);
+  assert.equal(fills.length, 2);
+  for (const f of fills) assert.match(f[1], /^\s*\.frame\(width: size\.width, height: size\.height\)\s*\.clipped\(\)/);
+  assert.match(fills[0][1], /\.clipped\(\)\s*\.blur\(radius:/);
+  assert.match(widget, /if edgeToEdge \{\s*Image\(uiImage: image\)\s*\.resizable\(\)\s*\.scaledToFill\(\)/);
+  assert.match(widget, /\.scaledToFit\(\)\s*\.frame\(width: size\.width, height: size\.height\)/);
   assert.doesNotMatch(widget, /aspectRatio\(contentMode: \.fill\)/);
 
   const bridge = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
   const setArt = bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArt")'), bridge.indexOf('AsyncFunction("linkStatus")'));
-  // The only aspect-fill (max scale) is the blurred background copy; the art is min-scale fitted,
-  // or drawn edge to edge only for fit "fill" (which JS sends only when the aspects already match).
-  assert.equal((setArt.match(/let s = max\(/g) ?? []).length, 1);
-  assert.match(setArt, /let s = max\(target\.width \/ blurred\.size\.width, target\.height \/ blurred\.size\.height\)/);
-  assert.match(setArt, /let s = min\(box\.width \/ art\.size\.width, box\.height \/ art\.size\.height\)/);
+  // T236: no aspect-fill (max scale) of the art at all: it is min-scale fitted with no inset, or
+  // drawn edge to edge only when the real aspects match; the strips are its own extended edges.
+  assert.equal((setArt.match(/let s = max\(/g) ?? []).length, 0);
+  assert.match(setArt, /let s = min\(target\.width \/ art\.size\.width, target\.height \/ art\.size\.height\)/);
   const setSeam = bridge.slice(bridge.indexOf('AsyncFunction("setSeamless")'), bridge.indexOf('AsyncFunction("setWidgetArt")'));
   assert.match(setSeam, /let s = min\(box\.width \/ hero\.size\.width, box\.height \/ hero\.size\.height\)/);
   assert.doesNotMatch(setSeam, /max\(box/);

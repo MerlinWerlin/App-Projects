@@ -113,6 +113,22 @@ const SEARCH = /^(?:q|o|ⓠ|🔍)?\s*search$/i;
 const APP_LIBRARY = /^(?:q|o|ⓠ|🔍)?\s*(?:app library|app-mediathek|biblioth[eè]que d['’]apps|biblioteca de apps|libreria app|appライブラリ|앱 보관함|app\s?资源库|ऐप लाइब्रेरी|مكتبة التطبيقات)$/iu;
 /** List-view chrome next to the search field. */
 const LIST_CHROME = /^(?:cancel|done|edit|suggestions|recently added)$/i;
+/**
+ * T234: App Library (grid) folder titles and the stock Home Screen folder names. Only a whole
+ * line equal to one of these is dropped, and only when it is not a catalogue app.
+ */
+const FOLDER_TITLES = new Set([
+  // Names that are also real app names (News, Sports, Shopping...) are left out on purpose.
+  'suggestions', 'recently added', 'social', 'utilities', 'productivity', 'productivity & finance',
+  'productivity and finance', 'creativity', 'entertainment', 'information & reading', 'information and reading',
+  'shopping & food', 'shopping and food', 'food & drink', 'travel', 'health & fitness', 'health and fitness',
+  'games', 'education', 'other', 'lifestyle', 'photo & video', 'photo and video', 'extras',
+]);
+/** True for an App Library / folder title ("Social", "Productivity & Finance"). */
+export function isFolderTitle(text: string): boolean {
+  const t = String(text ?? '').replace(/\s+/g, ' ').trim().toLowerCase().replace(/[^\p{L}\p{N}&' ]+$/u, '');
+  return FOLDER_TITLES.has(t);
+}
 /** A section header / index letter in the App Library list ("A", "B", "#"). */
 const SECTION_LETTER = /^(?:[\p{Lu}]|#)$/u;
 /** Weekday initials of a calendar widget ("M T W T F S S") are not an alphabetical index. */
@@ -402,10 +418,11 @@ export function labelsFromPage(obs: readonly OcrObservation[], catalogue: readon
       if (list && LIST_CHROME.test(piece.trim())) continue;
       if (list && SECTION_LETTER.test(piece.trim()) && !(onRow && piece.trim() !== '#')) continue;
       const whole = matchLabel(piece, catalogue);
-      if (whole) {
+      if (whole && !(isFolderTitle(piece) && compactLabel(whole.entry.name) !== compactLabel(piece))) {
         out.push(piece);
         continue;
       }
+      if (isFolderTitle(piece)) continue; // T234: folder / App Library category title, not an app
       // A list row is one app: never split it into several catalogue names.
       const segs = list ? null : segmentWords(piece, catalogue);
       if (segs) {

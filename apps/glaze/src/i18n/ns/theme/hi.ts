@@ -35,6 +35,7 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
   applyHintLocked: 'Glaze Plus का हिस्सा। एक बार की खरीद के बारे में बताता है',
   editWallpaper: 'वॉलपेपर संपादित करें',
   shapeRow: { title: 'आकार', a11y: 'आइकन का आकार: {shape}', showHint: 'आइकन के आकार दिखाता है', hideHint: 'आइकन के आकार छिपाता है' },
+  iconLook: { title: 'आइकन स्टाइल', groupA11y: '{name} के लिए आइकन स्टाइल', optionA11y: '{look} आइकन स्टाइल', previewA11y: '{look} स्टाइल में आपके ऐप', names: { themed: 'थीम', tinted: 'टिंटेड', glass: 'ग्लास', dark: 'डार्क' }, notes: { themed: 'हर आइकन के पीछे थीम का टेक्सचर', tinted: 'थीम के पैलेट का गहरा रंग', glass: 'गहरा फ्रॉस्टेड ग्लास जो वॉलपेपर में घुल जाए', dark: 'लगभग काला, रंगीन चिह्न के साथ' } },
   lockSubject: '{name} थीम',
   checklist: {
     title: 'यह लुक लगाएँ',

@@ -5,7 +5,9 @@
 // src/core/widgetArtLibrary.ts, keep in sync):
 //   <App Group>/widget-art/index.json  { "v": 1, "pieces": [{ id, name, themeName, themeId, source,
 //                                        file, created, aspect, size }] }
-//   <App Group>/widget-art/<id>.jpg    the composed image (already fitted, long edge <= 1200 px)
+//   <App Group>/widget-art/<id>.jpg    the composed image (full bleed since T236, long edge <= 1200 px)
+//   <App Group>/widget-art/<id>-art.png  T236, optional: the raw art for the Fit layout
+// T236: Edit Widget also has Layout (ArtLayout): Fill (default) or Fit, see SeamlessWidget.swift.
 // The picker lists pieces newest first (same order as listPieces in TS).
 //
 // iOS 17+ only (WidgetConfigurationIntent / AppIntentConfiguration). The extension's deployment
@@ -73,11 +75,53 @@ enum WidgetArtStore {
     }
   }
 
-  /// The chosen piece's image, or nil (no choice, removed from the library, or unreadable), in which
-  /// case the widget shows the last applied image for its size (SeamlessStore.load).
-  static func load(_ id: String?) -> UIImage? {
+  /// The chosen piece's image, or nil (no choice, or unreadable), in which case the widget shows
+  /// the last applied image for its size (SeamlessStore.load).
+  /// T238: a chosen piece that was removed (Manage / theme replace / clean-up) falls back to the
+  /// current theme's newest piece (index "currentThemeId"; `preferSize` "small"/"medium"/"large"
+  /// wins when given), else nil (last applied image). Mirrors fallbackPiece in widgetArtLibrary.ts.
+  static func load(_ id: String?, preferSize: String? = nil) -> UIImage? {
     guard let id = id, validID(id), let dir = directory() else { return nil }
     let url = dir.appendingPathComponent("\(id).jpg")
+    if FileManager.default.fileExists(atPath: url.path) {
+      return UIImage(contentsOfFile: url.path)
+    }
+    guard let fallback = fallbackID(preferSize: preferSize), fallback != id else { return nil }
+    return UIImage(contentsOfFile: dir.appendingPathComponent("\(fallback).jpg").path)
+  }
+
+  /// T238: newest auto-added piece of the index's current theme whose file exists, or nil.
+  static func fallbackID(preferSize: String?) -> String? {
+    guard
+      let dir = directory(),
+      let data = try? Data(contentsOf: dir.appendingPathComponent(indexName)),
+      let root = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+      let current = root["currentThemeId"] as? String, !current.isEmpty,
+      let pieces = root["pieces"] as? [[String: Any]]
+    else { return nil }
+    var mine: [(id: String, created: Double, size: String)] = []
+    for p in pieces {
+      guard let id = p["id"] as? String, validID(id) else { continue }
+      guard (p["source"] as? String) != "photo", (p["themeId"] as? String) == current else { continue }
+      guard FileManager.default.fileExists(atPath: dir.appendingPathComponent("\(id).jpg").path) else { continue }
+      mine.append((id: id, created: (p["created"] as? NSNumber)?.doubleValue ?? 0, size: (p["size"] as? String) ?? ""))
+    }
+    mine.sort { $0.created > $1.created || ($0.created == $1.created && $0.id < $1.id) }
+    if let size = preferSize, let hit = mine.first(where: { $0.size == size }) { return hit.id }
+    return mine.first?.id
+  }
+
+  /// T236: true when the chosen piece's composed file exists (so the widget shows the piece).
+  static func has(_ id: String?) -> Bool {
+    guard let id = id, validID(id), let dir = directory() else { return false }
+    return FileManager.default.fileExists(atPath: dir.appendingPathComponent("\(id).jpg").path)
+  }
+
+  /// T236: the chosen piece's raw art (<id>-art.png) for the Fit layout, or nil (older pieces and
+  /// wallpaper-backed ones have none; the view then fits the composed image).
+  static func loadArt(_ id: String?) -> UIImage? {
+    guard let id = id, validID(id), let dir = directory() else { return nil }
+    let url = dir.appendingPathComponent("\(id)-art.png")
     guard FileManager.default.fileExists(atPath: url.path) else { return nil }
     return UIImage(contentsOfFile: url.path)
   }
@@ -128,7 +172,25 @@ struct ChooseWidgetArtIntent: WidgetConfigurationIntent {
   @Parameter(title: "Art")
   var art: WidgetArtEntity?
 
+  /// T236 (owner-1101g #1): Fill (default) = the full-bleed image edge to edge; Fit = the raw art
+  /// whole on the theme background. Widgets configured before T236 get the default, Fill.
+  @Parameter(title: "Layout", default: .fill)
+  var layout: ArtLayout
+
   init() {}
+}
+
+/// T236: Edit Widget > Layout. Fill (default) never shows a frame; Fit shows the whole art inset.
+@available(iOS 17.0, *)
+enum ArtLayout: String, AppEnum {
+  case fill
+  case fit
+
+  static var typeDisplayRepresentation: TypeDisplayRepresentation = "Layout"
+  static var caseDisplayRepresentations: [ArtLayout: DisplayRepresentation] = [
+    .fill: "Fill",
+    .fit: "Fit",
+  ]
 }
 
 @available(iOS 17.0, *)
@@ -136,6 +198,8 @@ struct ArtEntry: TimelineEntry {
   let date: Date
   let theme: WidgetTheme
   let pieceID: String?
+  /// T236: nil (placeholder) behaves as .fill.
+  let layout: ArtLayout?
 }
 
 /// Static content: only changes when the app reloads timelines (every library change does) or the
@@ -143,15 +207,19 @@ struct ArtEntry: TimelineEntry {
 @available(iOS 17.0, *)
 struct ArtProvider: AppIntentTimelineProvider {
   func placeholder(in context: Context) -> ArtEntry {
-    ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: nil)
+    ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: nil, layout: nil)
   }
 
   func snapshot(for configuration: ChooseWidgetArtIntent, in context: Context) async -> ArtEntry {
-    ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: configuration.art?.id)
+    ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: configuration.art?.id, layout: configuration.layout)
   }
 
   func timeline(for configuration: ChooseWidgetArtIntent, in context: Context) async -> Timeline<ArtEntry> {
-    let entry = ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: configuration.art?.id)
-    return Timeline(entries: [entry], policy: .never)
+    let entry = ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: configuration.art?.id, layout: configuration.layout)
+    // T237: a piece with a live value (LiveArtOverlay.swift) gets per-minute entries (clock), a reload
+    // after midnight (date), every 15 min (battery) or at the end of a focus session; else as before.
+    let live = LiveArtSchedule.plan(pieceID: entry.pieceID, family: context.family, from: entry.date)
+    let entries = live.dates.map { ArtEntry(date: $0, theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout) }
+    return Timeline(entries: entries, policy: live.policy)
   }
 }
