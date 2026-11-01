@@ -769,6 +769,7 @@ export const it: Catalogue = {
   "app.airplay.step2": "Tocca Duplica schermo.",
   "app.airplay.step3": "Scegli il tuo televisore. Deve supportare AirPlay; molti televisori recenti lo fanno. Se il tuo non compare, cerca AirPlay nelle impostazioni del televisore.",
   "app.airplay.stepLabel": "Passo {n} di {total}: {text}",
+  'app.airplay.openList': 'Mostra TV AirPlay',
   "app.airplay.wifi": "Telefono e televisore devono essere sulla stessa rete Wi-Fi.",
   "app.airplay.notOnTv": "Non compare sul tuo televisore? Puoi comunque inviare foto e video dalla scheda Trasmetti.",
   "app.airplay.done": "Fine",

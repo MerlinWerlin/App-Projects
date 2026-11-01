@@ -760,6 +760,7 @@ export const ko: Catalogue = {
   "app.airplay.step2": "화면 미러링을 탭합니다.",
   "app.airplay.step3": "TV를 선택합니다. TV가 AirPlay를 지원해야 하며, 최신 TV는 대부분 지원합니다. 목록에 없으면 TV 설정에서 AirPlay를 찾아보세요.",
   "app.airplay.stepLabel": "{total}단계 중 {n}단계: {text}",
+  'app.airplay.openList': 'AirPlay TV 보기',
   "app.airplay.wifi": "휴대폰과 TV가 같은 Wi-Fi에 연결되어 있어야 합니다.",
   "app.airplay.notOnTv": "TV에 나오지 않나요? 전송 탭에서 사진과 동영상은 계속 보낼 수 있습니다.",
   "app.airplay.done": "완료",

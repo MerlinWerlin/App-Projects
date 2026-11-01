@@ -777,6 +777,7 @@ export const de: Catalogue = {
   "app.airplay.step2": "Tippe auf „Bildschirmsynchronisierung“.",
   "app.airplay.step3": "Wähle deinen Fernseher. Er muss AirPlay unterstützen, viele neuere Fernseher tun das. Fehlt er in der Liste, such in den Einstellungen des Fernsehers nach AirPlay.",
   "app.airplay.stepLabel": "Schritt {n} von {total}: {text}",
+  'app.airplay.openList': 'AirPlay-Fernseher anzeigen',
   "app.airplay.wifi": "Handy und Fernseher müssen im selben WLAN sein.",
   "app.airplay.notOnTv": "Nicht auf deinem Fernseher? Fotos und Videos kannst du trotzdem im Tab „Streamen“ senden.",
   "app.airplay.done": "Fertig",

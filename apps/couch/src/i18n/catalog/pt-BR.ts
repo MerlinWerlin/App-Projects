@@ -773,6 +773,7 @@ export const ptBR: Catalogue = {
   "app.airplay.step2": "Toque em Espelhar Tela.",
   "app.airplay.step3": "Escolha sua TV. Ela precisa ser compatível com AirPlay; muitas TVs recentes são. Se a sua não aparecer, procure AirPlay nos ajustes da TV.",
   "app.airplay.stepLabel": "Passo {n} de {total}: {text}",
+  'app.airplay.openList': 'Mostrar TVs com AirPlay',
   "app.airplay.wifi": "O celular e a TV precisam estar na mesma rede Wi-Fi.",
   "app.airplay.notOnTv": "Não aparece na sua TV? Você ainda pode transmitir fotos e vídeos pela aba Transmitir.",
   "app.airplay.done": "OK",

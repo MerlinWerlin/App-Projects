@@ -1,6 +1,8 @@
 import { useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useT } from '../src/i18n/react';
+import { hasRoutePicker, showRoutePicker } from '../src/native/routePicker';
 import { list, space, textStyle } from '../src/theme/design';
 import { Text } from '../src/ui/Text';
 import { Card, LargeTitleHeader, PillButton, useDesign } from '../src/ui/v2';
@@ -18,6 +20,15 @@ export default function AirPlayGuideScreen() {
   const p = useDesign();
   const t = useT();
   const router = useRouter();
+  // Owner 1 Nov 2026: keep the system AirPlay list one tap away (it listed the TV straight away).
+  const [picker, setPicker] = useState(false);
+  useEffect(() => {
+    try {
+      setPicker(hasRoutePicker());
+    } catch {
+      setPicker(false);
+    }
+  }, []);
 
   return (
     <>
@@ -50,6 +61,16 @@ export default function AirPlayGuideScreen() {
             </View>
           </Card>
 
+          {picker ? (
+            <PillButton
+              stretch
+              variant="tinted"
+              label={t('app.airplay.openList')}
+              onPress={() => {
+                void showRoutePicker();
+              }}
+            />
+          ) : null}
           <Text style={[textStyle('subheadline'), { color: p.label }]}>{t('app.airplay.wifi')}</Text>
           <Text style={[textStyle('subheadline'), { color: p.secondaryLabel }]}>{t('app.airplay.notOnTv')}</Text>
         </View>
