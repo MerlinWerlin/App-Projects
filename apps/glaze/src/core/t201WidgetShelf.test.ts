@@ -77,31 +77,39 @@ test('apply → App Group write → reload: ThemeWidgetArt → adapter → bridg
 
 test('no crop of art: JS previews contain; Swift widget pins both layers; the bridge fits (min scale)', () => {
   const menu = read('src', 'ui', 'WidgetArtMenu.tsx');
-  assert.match(menu, /<ExpoImage source=\{source\} style=\{artStyle\} contentFit="contain"/);
+  // T251: the art is drawn by BlendedArt (contain / SVG meet: whole, never cropped).
+  assert.match(menu, /<BlendedArt source=\{source\} rect=\{place\.rect\} blend=\{blend\} \/>/);
+  const blended = read('src', 'ui', 'BlendedArt.tsx');
+  assert.match(blended, /contentFit="contain"/);
+  assert.match(blended, /preserveAspectRatio="xMidYMid meet"/);
   const preview = read('src', 'ui', 'SeamlessWidgetPreview.tsx');
   assert.match(preview, /<ExpoImage source=\{hero\}[^>]*contentFit="contain"/);
   const art = read('src', 'ui', 'ThemeWidgetArt.tsx');
   assert.match(art, /fit: placeArt\(\{ w: option\.width, h: option\.height \}, px, option\.fit\)\.mode/, 'fill only when placeArt allows it');
 
   const widget = read('targets', 'widget', 'SeamlessWidget.swift');
-  // Every aspect-fill in the Seamless widget is pinned and clipped to the widget size; T236: besides
-  // the blurred background, the only sharp fill is the edge-to-edge Fill layout, used only when the
+  // Every aspect-fill in the Seamless widget is pinned and clipped to the widget size; T251: no
+  // blurred background any more, the only fill is the edge-to-edge Fill layout, used only when the
   // composed file already has the widget's aspect (else the image is fitted whole).
   const fills = [...widget.matchAll(/\.scaledToFill\(\)([\s\S]{0,200})/g)];
-  assert.equal(fills.length, 2);
+  assert.equal(fills.length, 1);
   for (const f of fills) assert.match(f[1], /^\s*\.frame\(width: size\.width, height: size\.height\)\s*\.clipped\(\)/);
-  assert.match(fills[0][1], /\.clipped\(\)\s*\.blur\(radius:/);
+  assert.doesNotMatch(widget, /\.blur\(radius:/);
   assert.match(widget, /if edgeToEdge \{\s*Image\(uiImage: image\)\s*\.resizable\(\)\s*\.scaledToFill\(\)/);
   assert.match(widget, /\.scaledToFit\(\)\s*\.frame\(width: size\.width, height: size\.height\)/);
   assert.doesNotMatch(widget, /aspectRatio\(contentMode: \.fill\)/);
 
   const bridge = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
-  const setArt = bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArt")'), bridge.indexOf('AsyncFunction("linkStatus")'));
+  const setArt = bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArt")'), bridge.indexOf('AsyncFunction("linkStatus")')) +
+    // T252: the composition itself lives in the shared helper (also used by composeWidgetArtPiece).
+    bridge.slice(bridge.indexOf('private static func composeArtImage('), bridge.indexOf('private static func reloadWidgets()'));
   // T236: no aspect-fill (max scale) of the art at all: it is min-scale fitted with no inset, or
   // drawn edge to edge only when the real aspects match; the strips are its own extended edges.
   assert.equal((setArt.match(/let s = max\(/g) ?? []).length, 0);
   assert.match(setArt, /let s = min\(target\.width \/ art\.size\.width, target\.height \/ art\.size\.height\)/);
-  const setSeam = bridge.slice(bridge.indexOf('AsyncFunction("setSeamless")'), bridge.indexOf('AsyncFunction("setWidgetArt")'));
+  const setSeam = bridge.slice(bridge.indexOf('AsyncFunction("setSeamless")'), bridge.indexOf('AsyncFunction("setWidgetArt")')) +
+    // T252: the composition itself lives in the shared helper (also used by composeSeamlessPiece).
+    bridge.slice(bridge.indexOf('private static func composeSeamlessImage('), bridge.indexOf('private static func composeArtImage('));
   assert.match(setSeam, /let s = min\(box\.width \/ hero\.size\.width, box\.height \/ hero\.size\.height\)/);
   assert.doesNotMatch(setSeam, /max\(box/);
 });

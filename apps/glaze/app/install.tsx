@@ -83,6 +83,7 @@ import { openAppSettings } from '../src/render/saveWallpaper';
 import { androidNative } from '../src/native/android';
 import { useInstallState } from '../src/store/install';
 import { getInstallId } from '../src/store/installId';
+import { DEFERRED_STEPS, requestDeferred } from '../src/store/deferredWork';
 import { useIconCleanupRecord } from '../src/store/iconCleanup';
 import { cleanupThemeId, markOldRemoved, namesList, oldIconNames, oldIconsToRemove, recordWalk } from '../src/core/iconCleanup';
 import { activeThemeKey, findApp, overrideImageUris } from '../src/core/studio';
@@ -356,6 +357,8 @@ export default function InstallScreen() {
       if (!alive.current) return;
       setProfiles(saved);
       haptic('success');
+      // T250: an icon install re-checks the installed apps once (queued, chunked, after interactions).
+      requestDeferred(DEFERRED_STEPS.installedProbe, 'install');
       setPhase('sharing');
       // Safari route: open part 1 now; iOS holds one downloaded profile at a time, so later parts
       // are opened from their rows after part 1 is installed.

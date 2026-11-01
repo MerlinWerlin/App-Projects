@@ -92,4 +92,18 @@ export const zhHans: NonNullable<LocaleMessages['themes']> = {
     remove: '取消喜欢{name}',
     hint: '仅在这台设备上保存到“喜欢”',
   },
+  /** T253 (owner-1101h #4): the Themes front page categories, chip row, See all and All themes. */
+  browse: {
+    category: { spaceNight: '星空与夜', nature: '自然', oceanWater: '海洋与水', cuteCosy: '可爱温馨', sweetsTreats: '甜品', dreamyPastel: '梦幻粉彩', moodyDark: '暗调氛围', abstractArt: '抽象艺术', seasonal: '季节', cityRetro: '城市与复古', more: '更多' },
+    chipsLabel: '主题分类',
+    chipA11y: { other: '{label}，{count} 个主题' },
+    chipHint: '只显示这些主题。再次轻点即可返回。',
+    allThemes: '全部主题',
+    allThemesBody: '所有主题，尽在一处。',
+    seeAll: '查看全部',
+    seeAllA11y: '查看全部{label}主题',
+    count: { other: '{count} 个主题' },
+    backHome: '全部分类',
+    backHomeHint: '返回分类总览',
+  },
 };

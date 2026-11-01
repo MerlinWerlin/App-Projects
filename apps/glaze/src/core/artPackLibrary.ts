@@ -29,7 +29,8 @@ export const ART_PACK_LIBRARY: readonly ArtPackData[] = Object.freeze([
       "licence": "original",
       "generator": "procedural",
       "prompt": "",
-      "addedAt": "2026-10-24"
+      "addedAt": "2026-10-24",
+      "category": "Ocean & Water"
     },
     "wallpaper": {
       "width": 1290,
@@ -55,7 +56,7 @@ export const ART_PACK_LIBRARY: readonly ArtPackData[] = Object.freeze([
       "widget-medium.png": 41058,
       "widget-large.png": 90445,
       "palette.json": 109,
-      "meta.json": 375
+      "meta.json": 406
     }
   },
   {
@@ -84,7 +85,8 @@ export const ART_PACK_LIBRARY: readonly ArtPackData[] = Object.freeze([
       "licence": "original",
       "generator": "procedural",
       "prompt": "",
-      "addedAt": "2026-10-24"
+      "addedAt": "2026-10-24",
+      "category": "Space & Night"
     },
     "wallpaper": {
       "width": 1290,
@@ -110,7 +112,7 @@ export const ART_PACK_LIBRARY: readonly ArtPackData[] = Object.freeze([
       "widget-medium.png": 47560,
       "widget-large.png": 131885,
       "palette.json": 109,
-      "meta.json": 377
+      "meta.json": 408
     }
   },
   {
@@ -139,7 +141,8 @@ export const ART_PACK_LIBRARY: readonly ArtPackData[] = Object.freeze([
       "licence": "original",
       "generator": "procedural",
       "prompt": "",
-      "addedAt": "2026-10-24"
+      "addedAt": "2026-10-24",
+      "category": "Nature"
     },
     "wallpaper": {
       "width": 1290,
@@ -165,7 +168,7 @@ export const ART_PACK_LIBRARY: readonly ArtPackData[] = Object.freeze([
       "widget-medium.png": 28928,
       "widget-large.png": 74007,
       "palette.json": 109,
-      "meta.json": 381
+      "meta.json": 405
     }
   }
 ] as ArtPackData[]);

@@ -51,7 +51,22 @@ export interface Transport {
    * Used to swap a staged pack update in. Optional: without it the update is copied file by file.
    */
   move?(from: string, to: string): Promise<void>;
+  /**
+   * T250: a local file's size in bytes without reading it into JS (null if it doesn't exist).
+   * Optional: loadRemoteArtQuick falls back to the full (hashing) check without it.
+   */
+  size?(path: string): Promise<number | null>;
+  /**
+   * T254: GET `url` with `If-None-Match: etag` when `etag` is given. Resolves `{ status: 304 }`
+   * (not modified: keep the cached copy) or `{ status: 200, text, etag }` (the new body and its
+   * ETag, null when the server sent none). Rejects on other HTTP errors or a body over `limit`
+   * bytes. Optional: without it the catalogue is fetched in full every time (fetchRange).
+   */
+  fetchConditional?(url: string, etag: string | null, limit: number): Promise<ConditionalResponse>;
 }
+
+/** T254: result of Transport.fetchConditional. */
+export type ConditionalResponse = { status: 304 } | { status: 200; text: string; etag: string | null };
 
 export type PackErrorCode = 'disabled' | 'bad-url' | 'network' | 'manifest' | 'app-version' | 'integrity' | 'cancelled' | 'storage';
 
@@ -362,6 +377,43 @@ export async function fetchCatalogText(transport: Transport, baseUrl: string): P
   return fetchText(transport, packObjectUrl(base, CATALOG_FILE), CATALOG_MAX_BYTES, 'network');
 }
 
+/** T254: catalog.json fetched with its ETag: a new body, or "not modified" (keep the cached copy). */
+export type CatalogTextResult = { notModified: true } | { notModified: false; text: string; etag: string | null };
+
+/** The ETag to remember: a short single-line printable value, else null. */
+export function cleanEtag(x: unknown): string | null {
+  if (typeof x !== 'string') return null;
+  const v = x.trim();
+  return v.length > 0 && v.length <= 200 && /^[\x21-\x7e](?:[\x20-\x7e]*[\x21-\x7e])?$/.test(v) ? v : null;
+}
+
+/**
+ * T254: catalog.json, conditionally. With a cached `etag` and a transport that can send headers
+ * (fetchConditional) it asks `If-None-Match`, so an unchanged catalogue costs a 304 and no body.
+ * Same URL as fetchCatalogText (no new endpoint). Without fetchConditional it falls back to the
+ * full fetch. Rejects like fetchCatalogText ('disabled' with no request, 'network' otherwise).
+ */
+export async function fetchCatalogConditional(transport: Transport, baseUrl: string, etag: string | null): Promise<CatalogTextResult> {
+  const base = resolvePackBaseUrl(baseUrl);
+  if (base === null) throw new PackError('disabled', 'theme packs are not available yet');
+  const url = packObjectUrl(base, CATALOG_FILE);
+  if (!transport.fetchConditional) return { notModified: false, text: await fetchText(transport, url, CATALOG_MAX_BYTES, 'network'), etag: null };
+  let res: ConditionalResponse;
+  try {
+    res = await transport.fetchConditional(url, cleanEtag(etag), CATALOG_MAX_BYTES);
+  } catch (e) {
+    throw asNetwork(e);
+  }
+  if (res.status === 304) {
+    // A 304 to a request that sent no ETag makes no sense: treat it as a failed fetch.
+    if (!cleanEtag(etag)) throw new PackError('network', 'not modified without an ETag');
+    return { notModified: true };
+  }
+  if (typeof res.text !== 'string') throw new PackError('network', 'empty response');
+  if (utf8Encode(res.text).length > CATALOG_MAX_BYTES) throw new PackError('network', 'response too large');
+  return { notModified: false, text: res.text, etag: cleanEtag(res.etag) };
+}
+
 function parseManifestText(text: string, id: string): RemoteArtManifest | null {
   let raw: unknown;
   try {
@@ -578,6 +630,27 @@ export async function loadRemoteArt(transport: Transport, id: string): Promise<R
   for (const a of m.assets) {
     const bytes = await transport.readFile(localPath(id, a.path));
     if (!bytes || !verifyAsset(a, bytes).ok) return null;
+  }
+  return m;
+}
+
+/**
+ * T250 (owner-1101h #1): the downloaded remote art pack WITHOUT reading its files into JS: every file
+ * it lists must exist with exactly the size in its manifest. Re-hashing a downloaded pack (multi-MB
+ * wallpaper + heroes + widget art, base64-read then SHA-256 in JS) on its first read after launch
+ * froze the app after a theme swap; every file was already checked against its SHA-256 when it was
+ * downloaded or updated (downloadRemoteArtPack), and a half-written / truncated / missing file still
+ * fails here. Without `transport.size` this is loadRemoteArt (the full check).
+ */
+export async function loadRemoteArtQuick(transport: Transport, id: string): Promise<RemoteArtManifest | null> {
+  const size = transport.size;
+  if (!size) return loadRemoteArt(transport, id);
+  await recoverRemoteArtSwap(transport, id);
+  const m = await readLocalRemoteArt(transport, id);
+  if (!m) return null;
+  for (const a of m.assets) {
+    const n = await size.call(transport, localPath(id, a.path));
+    if (n !== a.bytes) return null;
   }
   return m;
 }

@@ -823,6 +823,11 @@ declare module 'react-native' {
     share(content: { message?: string; url?: string; title?: string }, options?: object): Promise<{ action: string; activityType?: string | null }>;
   };
   export const Vibration: { vibrate(pattern?: number | number[], repeat?: boolean): void; cancel(): void };
+  export const InteractionManager: {
+    runAfterInteractions(task?: () => any): { then(onfulfilled?: () => any, onrejected?: () => any): Promise<any>; done(...args: any[]): any; cancel(): void };
+    createInteractionHandle(): number;
+    clearInteractionHandle(handle: number): void;
+  };
   export function findNodeHandle(componentOrHandle: any): number | null;
 
   // ---------- Animated (core) ----------

@@ -135,7 +135,8 @@ test('wiring: adapter, theme apply, widget fallback and Manage UI', () => {
   assert.match(adapter, /removeManyFromArtLibrary/);
   assert.match(adapter, /clearArtLibrary/);
   const apply = read('src', 'store', 'activeTheme.ts');
-  assert.match(apply, /[wW]idgets\.replaceThemeArt\(theme\.id\)/);
+  // T252: the apply now adds ALL the theme's art and replaces the previous theme's in one write.
+  assert.match(apply, /syncThemeWidgetArt\(theme\)/);
   const swift = read('targets', 'widget', 'WidgetArtLibrary.swift');
   assert.match(swift, /"currentThemeId"/);
   assert.match(swift, /fallbackID\(/);

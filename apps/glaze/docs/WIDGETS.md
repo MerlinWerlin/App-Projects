@@ -605,6 +605,40 @@ same picture." Now every widget instance is configurable.
   pieces newest first; two small widgets show different pieces; removing a piece makes its widget
   fall back to the last applied image; widgets placed before the update still render.
 
+### Theme apply adds all its widget art (T252, owner-1101h #3)
+
+Owner: applying a theme should add ALL its widget art to My widget art and drop the previous
+theme's (own photos stay); changing a widget's art "bugged out" after a swap.
+- **Entry point**: `syncThemeWidgetArt(theme)` (`src/store/themeWidgetArt.ts`), called (not
+  awaited) by `applyThemeEverywhere`; T250's deferred queue may call it instead.
+  `pendingThemeWidgetArt()` returns the theme id of a run that never committed (app killed).
+- **Plan** (pure, `src/core/themeArtSync.ts`): one piece per option per Home Screen size the
+  option itself lists, id `themePieceId`, `slot` = position among the theme's pieces of that size
+  in shelf order. Other sizes stay a manual "Use on my widget" (kept).
+- **Compose**: each planned piece not in the index yet goes straight into
+  `widget-art/<id>.jpg` (+ `<id>-art.png`) via the new bridge calls `composeWidgetArtPiece` /
+  `composeSeamlessPiece`. They share their image code with `setWidgetArt` / `setSeamless`
+  (`composeArtImage` / `composeSeamlessImage`), write atomically (the .jpg last), skip a file
+  already on disk, and never write the index, `seamless-<size>.png` or reload anything. One piece
+  at a time, a yield between pieces; a newer apply supersedes before the commit.
+- **Commit**: ONE `setWidgetArtIndex` write (`commitThemeArt`): the new set, own photos, any other
+  piece of this theme; the previous theme's auto pieces go and are remembered in index `retired`
+  (`{ id: { size, slot } }`, capped at 120). The bridge writes the index, prunes unlisted files
+  (failed or interrupted pieces), calls `invalidateConfigurationRecommendations()` and only then
+  `reloadAllTimelines()`. Index edits in JS are serialised (`artQueue`). Older bridge without the
+  compose calls: the commit still replaces the old theme's art.
+- **Extension** (`WidgetArtLibrary.swift`): every query, timeline and load reads index.json fresh
+  (`WidgetArtStore.snapshot()`, no static cache). Edit Widget > Art lists the current theme's
+  pieces first (size, slot), then the rest newest first (`pickerPieces`). A widget whose piece was
+  removed shows the current theme's piece of the same size + slot, else that size's first, else
+  the theme's first (`resolveWidgetPiece` ⇄ `WidgetArtSnapshot.resolve`), else the last applied
+  image, else the theme background; `entities(for:)` returns the removed id with the
+  replacement's name so the widget keeps its configuration. A widget with no piece chosen still
+  shows the last applied image (unchanged).
+- **Not compiled or device-tested here.** VERIFY on a dev build: apply theme A, place two Seamless
+  widgets on A's pieces, apply theme B: Edit Widget > Art lists B's pieces first at once, both
+  widgets show B's pieces in the same slots, own photos still listed.
+
 ### Paper boat fit check (T223, owner-1101e)
 
 Owner: Cloud Atelier's paper boat still did not fit on his phone. Findings (code read + harness):
@@ -656,6 +690,42 @@ piece with painted values, habits pieces and countdowns without a target stay Ar
 gets an overlay). The menu shows "Live" or "Art" on every card. Plate rects were measured from the
 run-208 snapshot sheets: VERIFY alignment on device (and if T236 changes the composition geometry,
 `liveArtSpec`'s placeArt mapping must follow).
+
+### Art blends with the wallpaper (T251, owner-1101h #2)
+
+Owner, TestFlight 1.0.1 (19): Alpine Starlight's white full moon (large) showed a light-grey frame
+round a black square; the red blood moon sat on a dark box with a soft glow edge. Cause: every remote
+piece ships opaque (black / painted square, `"background": "blur"`), and both the bridge (blurred
+extended edges in the strips) and the widget (a blurred `scaledToFill` copy behind the image) drew a
+blur of that square. Now:
+
+- **Rule** (`src/core/artBlend.ts`, tested): measure the art's edge ring (3 % of the short side).
+  Edge already transparent → draw as is. Plain background (spread <= 10, >= 95 % within 20 rgb of the
+  median, subject left) → **key**: alpha = smoothstep of the rgb distance to the key colour (lo = 16 +
+  spread, soft 48), colour un-mixed from the key (no dark fringe), an interior hold (dim parts of the
+  subject farther than 2 % of the side from the border-connected background stay opaque, so no stars
+  show through the blood moon's dark limb; pure-key holes such as a clock dial stay clear) and a 4 %
+  edge feather. Anything busier → **feather**: edges fade to transparent over 14 % of the side.
+- **Bridge** (`GlazeWidgetBridgeModule.swift`, `GlazeArtBlend`, same constants, pinned by
+  `artBlend.test.ts`): `setSeamless` blends the hero before drawing it on the wallpaper crop and
+  writes the blended hero as `seamless-<size>-art.png`; `setWidgetArt` blends the art onto the
+  theme colour with no CoreImage blur at all.
+- **App** (`ThemeWidgetArt.tsx`): every piece now goes through `setSeamless` (the wallpaper crop
+  under the widget's default slot), whatever its pack `background`; `setWidgetArt` only when the
+  theme has no wallpaper file.
+- **Widget** (`SeamlessWidget.swift`): no blur, border, shadow, material or outline on the art
+  path. Fill draws the composed image edge to edge (or fitted over `ArtBackdrop`, the plain theme
+  gradient, when the shape differs); Fit draws the blended raw art inset on `ArtBackdrop`.
+- **Preview** (`WidgetArtMenu.tsx` + `BlendedArt.tsx`): every option over the wallpaper crop;
+  keyed pieces with `mixBlendMode` screen / multiply (`KNOWN_ART_BLEND`, measured), others with an
+  SVG feather mask; transparent bundled heroes as is. No blurred copy.
+- **Audit + fix** (`scripts/packs/blend-audit.py`): contact sheets raw vs blended at small / medium
+  / large over each theme's wallpaper, flags (`box`, `frame`, `halo`, `outline`, `seam`), and
+  `--fix DIR` writes blended PNGs for the pack build. Findings: `docs/widget_snapshots/BLEND_AUDIT_1101H.md`.
+- **Caveats**: needs a new native build (OTA alone keeps the old blur). The wallpaper crop matches
+  only the default slot (top) for each size; elsewhere a slight seam of wallpaper can show. Live
+  plates (T237) are still drawn in the theme colour over keyed art. Pieces saved before T251 keep
+  their old composition until re-applied. Not device-tested.
 
 ## Testing on a dev build
 

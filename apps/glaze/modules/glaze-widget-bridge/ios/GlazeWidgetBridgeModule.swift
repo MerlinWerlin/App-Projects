@@ -111,131 +111,70 @@ public class GlazeWidgetBridgeModule: Module {
     /// (transparent PNG, may be "") centred-fit on top with the same 6 % padding as heroRect, caps
     /// the long edge at 1200 px and writes seamless-<family>.png into the App Group container.
     /// Then reloads only the "GlazeSeamless" widget (targets/widget/SeamlessWidget.swift).
+    /// T251 (owner-1101h #2): the hero goes through GlazeArtBlend first, so an opaque piece on a plain
+    /// background is keyed out and a painted one has its edges feathered: it floats on the wallpaper
+    /// crop with no box, frame or halo. The blended hero is also written as seamless-<family>-art.png
+    /// (the widget's Fit layout); with no hero that file is removed.
     AsyncFunction("setSeamless") { (wallpaperUri: String, x: Double, y: Double, w: Double, h: Double, heroUri: String, family: String) -> Bool in
       guard ["small", "medium", "large"].contains(family) else { return false }
+      // T252: the composition is shared with composeSeamlessPiece (library pieces) below.
       guard
         let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
-        let wallpaper = GlazeWidgetBridgeModule.loadImage(wallpaperUri),
-        let source = GlazeWidgetBridgeModule.uprightCGImage(wallpaper)
+        let made = GlazeWidgetBridgeModule.composeSeamlessImage(wallpaperUri: wallpaperUri, x: x, y: y, w: w, h: h, heroUri: heroUri)
       else { return false }
-      let bounds = CGRect(x: 0, y: 0, width: CGFloat(source.width), height: CGFloat(source.height))
-      let wanted = CGRect(x: CGFloat(x), y: CGFloat(y), width: CGFloat(w), height: CGFloat(h)).integral.intersection(bounds)
-      guard !wanted.isNull, wanted.width >= 1, wanted.height >= 1, let cropped = source.cropping(to: wanted) else { return false }
-
-      let longest = max(wanted.width, wanted.height)
-      let k: CGFloat = longest > 1200 ? 1200 / longest : 1
-      let target = CGSize(width: max(1, floor(wanted.width * k)), height: max(1, floor(wanted.height * k)))
-      let hero: UIImage? = heroUri.isEmpty ? nil : GlazeWidgetBridgeModule.loadImage(heroUri)
-
-      let format = UIGraphicsImageRendererFormat.default()
-      format.scale = 1
-      format.opaque = true
-      let composed = UIGraphicsImageRenderer(size: target, format: format).image { _ in
-        UIImage(cgImage: cropped).draw(in: CGRect(origin: .zero, size: target))
-        if let hero = hero, hero.size.width > 0, hero.size.height > 0 {
-          let pad = min(target.width, target.height) * 0.06
-          let box = CGRect(origin: .zero, size: target).insetBy(dx: pad, dy: pad)
-          let s = min(box.width / hero.size.width, box.height / hero.size.height)
-          let hw = hero.size.width * s
-          let hh = hero.size.height * s
-          hero.draw(in: CGRect(x: (target.width - hw) / 2, y: (target.height - hh) / 2, width: hw, height: hh))
-        }
-      }
+      let composed = made.image
+      // T251: the keyed / feathered hero (nil without one), for the Fit layout file below.
+      let hero = made.hero
       guard let data = composed.pngData() else { return false }
       do {
         try data.write(to: container.appendingPathComponent("seamless-\(family).png"), options: .atomic)
       } catch {
         return false
       }
-      // T236: no raw art for a wallpaper-backed image; drop a stale one so the widget's Fit layout
-      // falls back to this composed image instead of an older piece.
-      try? FileManager.default.removeItem(at: container.appendingPathComponent("seamless-\(family)-art.png"))
+      // T251: the blended hero is the raw art for the widget's Fit layout. Without a hero, drop a stale
+      // file so Fit falls back to this composed image instead of an older piece.
+      let heroURL = container.appendingPathComponent("seamless-\(family)-art.png")
+      if let hero = hero, let raw = GlazeWidgetBridgeModule.downscale(hero, maxEdge: 1200).pngData() {
+        try? raw.write(to: heroURL, options: .atomic)
+      } else {
+        try? FileManager.default.removeItem(at: heroURL)
+      }
       // T201 (owner-1101d #4): reload every timeline (WidgetCenter.reloadAllTimelines), so the
       // GlazeSeamless widget and anything else showing the theme pick the new image up at once.
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }
 
-    /// T187 theme widget art, T236 (owner-1101g #1: art FILLS the widget, no frame ever, subject
-    /// never cut). Draws a w x h px image, full bleed:
-    ///   - art aspect within 2 % of the output (src/core/widgetPreview.ts NATIVE_FILL_MIN_ASPECT_MATCH):
-    ///     the art edge to edge;
-    ///   - otherwise the art drawn WHOLE at its fitted rect (scale to fit, no inset), and the strips
-    ///     around it filled with the art's own edges extended (CIImage clampedToExtent of the fitted
-    ///     art, Gaussian-blurred), so it reads as one seamless image (widgetPreview.ts fullBleedArt).
-    /// No veil. The theme colour is only the opaque base under transparent pixels (dark themes stay
-    /// dark), so it never shows as a frame around opaque art. Same output for background "theme"
-    /// and "blur"; `fit` is kept for the JS signature (the widget's own Fit / Fill choice uses the
-    /// raw art below). Caps the long edge at 1200 px, writes seamless-<family>.png plus the raw art
-    /// as seamless-<family>-art.png (for Edit Widget > Layout > Fit), and reloads the timelines.
+    /// T187 theme widget art, T236 (owner-1101g #1: art fills the widget, subject never cut), T251
+    /// (owner-1101h #2: art BLENDS, no frame / box / halo). The fallback for a theme with no wallpaper
+    /// file (the app tries setSeamless first: the wallpaper crop under the widget). Draws a w x h px
+    /// image: the wallpaper-sampled theme colour (`colour`) as the opaque base, then the art through
+    /// GlazeArtBlend (plain background keyed out, painted edges feathered), whole, NO inset, edge to
+    /// edge when the aspects match within 2 % (src/core/widgetPreview.ts NATIVE_FILL_MIN_ASPECT_MATCH),
+    /// else fitted. No blurred copy of the art anywhere (T251: the blurred strips read as a light-grey
+    /// frame round a black square). `background` / `fit` are kept for the JS signature. Caps the long
+    /// edge at 1200 px, writes seamless-<family>.png plus the blended art as seamless-<family>-art.png
+    /// (for Edit Widget > Layout > Fit), and reloads the timelines.
     AsyncFunction("setWidgetArt") { (artUri: String, w: Double, h: Double, background: String, colour: String, fit: String, family: String) -> Bool in
       guard ["small", "medium", "large"].contains(family), w >= 1, h >= 1 else { return false }
       guard
         let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
-        let art = GlazeWidgetBridgeModule.loadImage(artUri),
-        art.size.width > 0, art.size.height > 0
+        let loaded = GlazeWidgetBridgeModule.loadImage(artUri),
+        loaded.size.width > 0, loaded.size.height > 0
       else { return false }
-      let longest = max(w, h)
-      let k: CGFloat = longest > 1200 ? 1200 / CGFloat(longest) : 1
-      let target = CGSize(width: max(1, floor(CGFloat(w) * k)), height: max(1, floor(CGFloat(h) * k)))
-      let canvas = CGRect(origin: .zero, size: target)
-      let base = GlazeWidgetBridgeModule.colour(colour)
-
-      let artAspect = art.size.width / art.size.height
-      let outAspect = target.width / target.height
-      let aspectsMatch = min(artAspect, outAspect) / max(artAspect, outAspect) >= 0.98
-      // The art whole, centred, scaled to fit with NO inset.
-      let s = min(target.width / art.size.width, target.height / art.size.height)
-      let aw = art.size.width * s
-      let ah = art.size.height * s
-      let artRect = CGRect(x: (target.width - aw) / 2, y: (target.height - ah) / 2, width: aw, height: ah)
-
-      // The art's own edges extended over the whole canvas (background only, under the strips).
-      var extended: UIImage? = nil
-      if !aspectsMatch, let cg = GlazeWidgetBridgeModule.uprightCGImage(art), cg.width > 0, cg.height > 0 {
-        let ks = aw / CGFloat(cg.width)
-        // CI's origin is bottom-left; the fitted rect is centred, so the same offsets apply.
-        let placed = CIImage(cgImage: cg)
-          .transformed(by: CGAffineTransform(scaleX: ks, y: ks))
-          .transformed(by: CGAffineTransform(translationX: artRect.minX, y: artRect.minY))
-        let filter = CIFilter(name: "CIGaussianBlur")
-        filter?.setValue(placed.clampedToExtent(), forKey: kCIInputImageKey)
-        filter?.setValue(max(12, min(target.width, target.height) * 0.08), forKey: kCIInputRadiusKey)
-        if let out = filter?.outputImage?.cropped(to: canvas), let made = CIContext().createCGImage(out, from: canvas) {
-          extended = UIImage(cgImage: made)
-        }
-      }
-
-      let format = UIGraphicsImageRendererFormat.default()
-      format.scale = 1
-      format.opaque = true
-      let composed = UIGraphicsImageRenderer(size: target, format: format).image { ctx in
-        base.setFill()
-        ctx.fill(canvas)
-        if aspectsMatch {
-          art.draw(in: canvas)
-        } else {
-          if let extended = extended {
-            // Only OUTSIDE the art (even-odd clip), so transparent art gets no blurred ghost under it.
-            ctx.cgContext.saveGState()
-            let strips = UIBezierPath(rect: canvas)
-            strips.append(UIBezierPath(rect: artRect))
-            strips.usesEvenOddFillRule = true
-            strips.addClip()
-            extended.draw(in: canvas)
-            ctx.cgContext.restoreGState()
-          }
-          art.draw(in: artRect)
-        }
-      }
+      // T251: keyed / feathered first (unchanged when its edge is already transparent).
+      let art = GlazeArtBlend.blended(loaded)
+      guard art.size.width > 0, art.size.height > 0 else { return false }
+      // T252: the composition is shared with composeWidgetArtPiece (library pieces) below.
+      let composed = GlazeWidgetBridgeModule.composeArtImage(art: art, w: w, h: h, colour: colour)
       guard let data = composed.pngData() else { return false }
       do {
         try data.write(to: container.appendingPathComponent("seamless-\(family).png"), options: .atomic)
       } catch {
         return false
       }
-      // T236: the raw art (long edge <= 1200 px) for the widget's own Fit layout. Best effort: the
-      // widget falls back to the composed image without it.
+      // T236/T251: the blended art (long edge <= 1200 px) for the widget's own Fit layout. Best
+      // effort: the widget falls back to the composed image without it.
       let rawURL = container.appendingPathComponent("seamless-\(family)-art.png")
       if let raw = GlazeWidgetBridgeModule.downscale(art, maxEdge: 1200).pngData() {
         try? raw.write(to: rawURL, options: .atomic)
@@ -354,14 +293,169 @@ public class GlazeWidgetBridgeModule: Module {
       for name in names where !keep.contains(name) {
         try? FileManager.default.removeItem(at: dir.appendingPathComponent(name))
       }
+      // T252 (owner-1101h #3): only now, with the new index on disk and the files it no longer lists
+      // gone, tell WidgetKit: drop any cached configuration suggestions, then reload every timeline,
+      // so Edit Widget > Art and every Glaze art widget read the fresh index.
+      if #available(iOS 16.0, *) {
+        WidgetCenter.shared.invalidateConfigurationRecommendations()
+      }
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
+    }
+
+    /// T252 (owner-1101h #3): composes one theme art piece straight into the library as
+    /// widget-art/<id>.jpg (+ the raw art as <id>-art.png for the Fit layout), the same full-bleed
+    /// image setWidgetArt makes, WITHOUT touching seamless-<size>.png, the index or the timelines.
+    /// The app composes every missing piece of a theme this way, then writes the index once with
+    /// setWidgetArtIndex (which prunes unlisted files and only then reloads). skipIfPresent: a piece
+    /// already on disk (an interrupted earlier run) is kept as it is. Atomic writes, the .jpg last,
+    /// so a piece is either whole or absent; leftovers are pruned by the next index write.
+    AsyncFunction("composeWidgetArtPiece") { (id: String, artUri: String, w: Double, h: Double, colour: String, skipIfPresent: Bool) -> Bool in
+      guard GlazeWidgetBridgeModule.validArtId(id), w >= 1, h >= 1 else { return false }
+      guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else { return false }
+      let dir = container.appendingPathComponent(artDir, isDirectory: true)
+      let dest = dir.appendingPathComponent("\(id).jpg")
+      if skipIfPresent && FileManager.default.fileExists(atPath: dest.path) { return true }
+      do {
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+      } catch {
+        return false
+      }
+      // One piece at a time, its images freed before the next (the app calls this in a loop).
+      let ok: Bool = autoreleasepool { () -> Bool in
+        guard
+          let loaded = GlazeWidgetBridgeModule.loadImage(artUri),
+          loaded.size.width > 0, loaded.size.height > 0
+        else { return false }
+        // T251: the same blend as setWidgetArt (no box, frame or halo).
+        let art = GlazeArtBlend.blended(loaded)
+        guard art.size.width > 0, art.size.height > 0 else { return false }
+        let composed = GlazeWidgetBridgeModule.composeArtImage(art: art, w: w, h: h, colour: colour)
+        guard let data = composed.jpegData(compressionQuality: 0.88) else { return false }
+        let rawDest = dir.appendingPathComponent("\(id)-art.png")
+        if let raw = GlazeWidgetBridgeModule.downscale(art, maxEdge: 1200).pngData() {
+          try? raw.write(to: rawDest, options: .atomic)
+        } else {
+          try? FileManager.default.removeItem(at: rawDest)
+        }
+        do {
+          try data.write(to: dest, options: .atomic)
+        } catch {
+          return false
+        }
+        return true
+      }
+      return ok
+    }
+
+    /// T252: the wallpaper-backed twin of composeWidgetArtPiece (setSeamless's image: the crop of
+    /// the wallpaper under the widget with the hero fitted on top). crop = [x, y, w, h] in wallpaper
+    /// pixels. No raw art (the Fit layout fits the composed image). No index write, no reload.
+    AsyncFunction("composeSeamlessPiece") { (id: String, wallpaperUri: String, crop: [Double], heroUri: String, skipIfPresent: Bool) -> Bool in
+      guard GlazeWidgetBridgeModule.validArtId(id), crop.count == 4 else { return false }
+      guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else { return false }
+      let dir = container.appendingPathComponent(artDir, isDirectory: true)
+      let dest = dir.appendingPathComponent("\(id).jpg")
+      if skipIfPresent && FileManager.default.fileExists(atPath: dest.path) { return true }
+      do {
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+      } catch {
+        return false
+      }
+      let ok: Bool = autoreleasepool { () -> Bool in
+        guard
+          let made = GlazeWidgetBridgeModule.composeSeamlessImage(wallpaperUri: wallpaperUri, x: crop[0], y: crop[1], w: crop[2], h: crop[3], heroUri: heroUri),
+          let data = made.image.jpegData(compressionQuality: 0.88)
+        else { return false }
+        // T251: the blended hero is the Fit layout's raw art (as setSeamless writes it).
+        let rawDest = dir.appendingPathComponent("\(id)-art.png")
+        if let hero = made.hero, let raw = GlazeWidgetBridgeModule.downscale(hero, maxEdge: 1200).pngData() {
+          try? raw.write(to: rawDest, options: .atomic)
+        } else {
+          try? FileManager.default.removeItem(at: rawDest)
+        }
+        do {
+          try data.write(to: dest, options: .atomic)
+        } catch {
+          return false
+        }
+        return true
+      }
+      return ok
     }
   }
 
   /// T221: same rule as WIDGET_ART_ID_RE in src/core/widgetArtLibrary.ts (^[A-Za-z0-9_-]{1,64}$).
   private static func validArtId(_ id: String) -> Bool {
     return id.range(of: "^[A-Za-z0-9_-]{1,64}$", options: .regularExpression) != nil
+  }
+
+  /// T252: setSeamless's composition (T131), shared with composeSeamlessPiece: crops (x, y, w, h)
+  /// out of the upright wallpaper, draws the hero (may be "") centred-fit with the 6 % padding of
+  /// heroRect, long edge capped at 1200 px. nil when the wallpaper can't be read or the crop is empty.
+  private static func composeSeamlessImage(wallpaperUri: String, x: Double, y: Double, w: Double, h: Double, heroUri: String) -> (image: UIImage, hero: UIImage?)? {
+    guard
+      let wallpaper = GlazeWidgetBridgeModule.loadImage(wallpaperUri),
+      let source = GlazeWidgetBridgeModule.uprightCGImage(wallpaper)
+    else { return nil }
+    let bounds = CGRect(x: 0, y: 0, width: CGFloat(source.width), height: CGFloat(source.height))
+    let wanted = CGRect(x: CGFloat(x), y: CGFloat(y), width: CGFloat(w), height: CGFloat(h)).integral.intersection(bounds)
+    guard !wanted.isNull, wanted.width >= 1, wanted.height >= 1, let cropped = source.cropping(to: wanted) else { return nil }
+
+    let longest = max(wanted.width, wanted.height)
+    let k: CGFloat = longest > 1200 ? 1200 / longest : 1
+    let target = CGSize(width: max(1, floor(wanted.width * k)), height: max(1, floor(wanted.height * k)))
+    // T251: keyed / feathered (returned unchanged when its edge is already transparent).
+    let hero: UIImage? = heroUri.isEmpty ? nil : GlazeWidgetBridgeModule.loadImage(heroUri).map { GlazeArtBlend.blended($0) }
+
+    let format = UIGraphicsImageRendererFormat.default()
+    format.scale = 1
+    format.opaque = true
+    let composed = UIGraphicsImageRenderer(size: target, format: format).image { _ in
+      UIImage(cgImage: cropped).draw(in: CGRect(origin: .zero, size: target))
+      if let hero = hero, hero.size.width > 0, hero.size.height > 0 {
+        let pad = min(target.width, target.height) * 0.06
+        let box = CGRect(origin: .zero, size: target).insetBy(dx: pad, dy: pad)
+        let s = min(box.width / hero.size.width, box.height / hero.size.height)
+        let hw = hero.size.width * s
+        let hh = hero.size.height * s
+        hero.draw(in: CGRect(x: (target.width - hw) / 2, y: (target.height - hh) / 2, width: hw, height: hh))
+      }
+    }
+    return (image: composed, hero: hero)
+  }
+
+  /// T252: setWidgetArt's full-bleed composition (T187 / T236), shared with composeWidgetArtPiece.
+  /// T251 (owner-1101h #2): `art` is already blended (GlazeArtBlend). A w x h px image (long edge
+  /// <= 1200): the opaque theme colour as the base, then the art whole, edge to edge when the
+  /// aspects match within 2 %, else fitted with NO inset. No blurred copy of the art anywhere (the
+  /// blurred strips read as a light-grey frame round a black square).
+  private static func composeArtImage(art: UIImage, w: Double, h: Double, colour: String) -> UIImage {
+    let longest = max(w, h)
+    let k: CGFloat = longest > 1200 ? 1200 / CGFloat(longest) : 1
+    let target = CGSize(width: max(1, floor(CGFloat(w) * k)), height: max(1, floor(CGFloat(h) * k)))
+    let canvas = CGRect(origin: .zero, size: target)
+    let base = GlazeWidgetBridgeModule.colour(colour)
+
+    let artAspect = art.size.width / art.size.height
+    let outAspect = target.width / target.height
+    let aspectsMatch = min(artAspect, outAspect) / max(artAspect, outAspect) >= 0.98
+    // The art whole, centred, scaled to fit with NO inset.
+    let s = min(target.width / art.size.width, target.height / art.size.height)
+    let aw = art.size.width * s
+    let ah = art.size.height * s
+    let artRect = aspectsMatch ? canvas : CGRect(x: (target.width - aw) / 2, y: (target.height - ah) / 2, width: aw, height: ah)
+
+    // The base colour, then the blended art. Its edges are transparent (keyed / feathered), so the
+    // colour flows round it: no box, no frame, no blurred copy.
+    let format = UIGraphicsImageRendererFormat.default()
+    format.scale = 1
+    format.opaque = true
+    return UIGraphicsImageRenderer(size: target, format: format).image { ctx in
+      base.setFill()
+      ctx.fill(canvas)
+      art.draw(in: artRect)
+    }
   }
 
   private static func reloadWidgets() {
@@ -410,5 +504,250 @@ public class GlazeWidgetBridgeModule: Module {
     return UIGraphicsImageRenderer(size: target, format: format).image { _ in
       image.draw(in: CGRect(origin: .zero, size: target))
     }
+  }
+}
+
+// MARK: - T251 art blend
+
+/// T251 (owner-1101h #2): widget art blends with the wallpaper. Mirror of src/core/artBlend.ts
+/// (measureArtEdges + decideArtBlend + applyArtBlend) and scripts/packs/blend-audit.py; the
+/// constants are pinned by src/core/artBlend.test.ts. An image whose edge ring is already
+/// transparent comes back unchanged. A plain (flat / near-black) background is keyed out with a
+/// soft threshold and the colour un-mixed from the key (no dark fringe), plus a thin edge feather; a
+/// busy painted background has its edges feathered to transparent. Pixels: RGBA8 premultiplied.
+enum GlazeArtBlend {
+  static let ringShare: Double = 0.03
+  static let ringMinPx: Int = 2
+  static let transparentShare: Double = 0.5
+  static let keyNear: Double = 20
+  static let keyMinUniform: Double = 0.95
+  static let keyMaxSpread: Double = 10
+  static let keyLoBase: Double = 16
+  static let keySoft: Double = 48
+  static let minSubject: Double = 0.03
+  static let featherShare: Double = 0.14
+  static let keyEdgeFeatherShare: Double = 0.04
+  static let keyBgAlpha: Double = 0.5
+  static let keyRimShare: Double = 0.02
+  static let keyHoldLo: Double = 0.05
+  static let keyHoldHi: Double = 0.3
+  static let maxEdge: CGFloat = 1200
+
+  static func smoothstep(_ e0: Double, _ e1: Double, _ x: Double) -> Double {
+    if !(e1 > e0) { return x >= e1 ? 1 : 0 }
+    let t = min(1, max(0, (x - e0) / (e1 - e0)))
+    return t * t * (3 - 2 * t)
+  }
+
+  /// The image drawn upright into a premultiplied RGBA8 sRGB bitmap (long edge <= maxEdge).
+  private static func bitmap(_ image: UIImage) -> CGContext? {
+    let pw = image.size.width * image.scale
+    let ph = image.size.height * image.scale
+    guard pw >= 1, ph >= 1 else { return nil }
+    let k = min(1, maxEdge / max(pw, ph))
+    let w = max(1, Int(floor(pw * k)))
+    let h = max(1, Int(floor(ph * k)))
+    guard
+      let space = CGColorSpace(name: CGColorSpace.sRGB),
+      let ctx = CGContext(data: nil, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4, space: space,
+                          bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
+    else { return nil }
+    UIGraphicsPushContext(ctx)
+    // UIKit draws top-down; flip the context so the image lands upright.
+    ctx.translateBy(x: 0, y: CGFloat(h))
+    ctx.scaleBy(x: 1, y: -1)
+    image.draw(in: CGRect(x: 0, y: 0, width: CGFloat(w), height: CGFloat(h)))
+    UIGraphicsPopContext()
+    return ctx
+  }
+
+  /// The art ready to sit on the wallpaper (or the original when nothing needs doing / on failure).
+  static func blended(_ image: UIImage) -> UIImage {
+    guard let ctx = bitmap(image), let data = ctx.data else { return image }
+    let w = ctx.width
+    let h = ctx.height
+    let row = ctx.bytesPerRow
+    let px = data.bindMemory(to: UInt8.self, capacity: row * h)
+    let r = max(ringMinPx, Int((Double(min(w, h)) * ringShare).rounded()))
+    func inRing(_ x: Int, _ y: Int) -> Bool { x < r || y < r || x >= w - r || y >= h - r }
+    /// Straight (un-premultiplied) colour and alpha of pixel (x, y).
+    func pixel(_ x: Int, _ y: Int) -> (Double, Double, Double, Int) {
+      let i = y * row + x * 4
+      let a = Int(px[i + 3])
+      if a == 0 { return (0, 0, 0, 0) }
+      let k = 255.0 / Double(a)
+      return (min(255, Double(px[i]) * k), min(255, Double(px[i + 1]) * k), min(255, Double(px[i + 2]) * k), a)
+    }
+
+    // 1. The edge ring: transparent share, per-channel median (histograms), spread.
+    var hist = [[Int]](repeating: [Int](repeating: 0, count: 256), count: 3)
+    var sum = [Double](repeating: 0, count: 3)
+    var sq = [Double](repeating: 0, count: 3)
+    var ringTotal = 0
+    var transparent = 0
+    var opaque = 0
+    for y in 0..<h {
+      for x in 0..<w where inRing(x, y) {
+        ringTotal += 1
+        let p = pixel(x, y)
+        if p.3 < 128 {
+          transparent += 1
+          continue
+        }
+        opaque += 1
+        let c = [p.0, p.1, p.2]
+        for ch in 0..<3 {
+          let v = min(255, max(0, Int(c[ch].rounded())))
+          hist[ch][v] += 1
+          sum[ch] += c[ch]
+          sq[ch] += c[ch] * c[ch]
+        }
+      }
+    }
+    guard ringTotal > 0, Double(transparent) / Double(ringTotal) < transparentShare, opaque > 0 else { return image }
+    func median(_ hgram: [Int]) -> Double {
+      let half = (opaque + 1) / 2
+      var cum = 0
+      for v in 0..<256 {
+        cum += hgram[v]
+        if cum >= half { return Double(v) }
+      }
+      return 0
+    }
+    let key = (median(hist[0]), median(hist[1]), median(hist[2]))
+    var spread = 0.0
+    for ch in 0..<3 {
+      let m = sum[ch] / Double(opaque)
+      spread += sqrt(max(0, sq[ch] / Double(opaque) - m * m))
+    }
+    spread /= 3
+    let lo = keyLoBase + max(0, spread)
+    let hi = lo + keySoft
+    func dist(_ p: (Double, Double, Double, Int)) -> Double {
+      let dr = p.0 - key.0
+      let dg = p.1 - key.1
+      let db = p.2 - key.2
+      return sqrt(dr * dr + dg * dg + db * db)
+    }
+
+    // 2. Uniform share of the ring and the subject share of the whole image.
+    var near = 0
+    var subject = 0
+    for y in 0..<h {
+      for x in 0..<w {
+        let p = pixel(x, y)
+        if p.3 < 128 { continue }
+        let d = dist(p)
+        if inRing(x, y) && d <= keyNear { near += 1 }
+        if d > hi { subject += 1 }
+      }
+    }
+    let uniform = Double(near) / Double(opaque)
+    let subjectShare = Double(subject) / Double(w * h)
+    let key_ = spread <= keyMaxSpread && uniform >= keyMinUniform && subjectShare >= minSubject
+    let band = max(1, (key_ ? keyEdgeFeatherShare : featherShare) * Double(min(w, h)))
+    let n = w * h
+
+    // 3. Keyed only: key alpha per pixel, the background connected to the border (flood fill of
+    //    t < keyBgAlpha), and the chamfer (3-4) distance to it, for the interior hold
+    //    (artBlend.ts keyBackground / chamferDistance / heldKeyAlpha).
+    var keyT = [Double]()
+    var toBg = [Double]()
+    if key_ {
+      keyT = [Double](repeating: 0, count: n)
+      for y in 0..<h {
+        for x in 0..<w {
+          keyT[y * w + x] = smoothstep(lo, hi, dist(pixel(x, y)))
+        }
+      }
+      var bg = [Bool](repeating: false, count: n)
+      var queue = [Int](repeating: 0, count: n)
+      var head = 0
+      var tail = 0
+      func seed(_ i: Int) {
+        if !bg[i] && keyT[i] < keyBgAlpha {
+          bg[i] = true
+          queue[tail] = i
+          tail += 1
+        }
+      }
+      for x in 0..<w {
+        seed(x)
+        seed((h - 1) * w + x)
+      }
+      for y in 0..<h {
+        seed(y * w)
+        seed(y * w + w - 1)
+      }
+      while head < tail {
+        let i = queue[head]
+        head += 1
+        let x = i % w
+        if x > 0 { seed(i - 1) }
+        if x < w - 1 { seed(i + 1) }
+        if i >= w { seed(i - w) }
+        if i < (h - 1) * w { seed(i + w) }
+      }
+      toBg = [Double](repeating: Double.infinity, count: n)
+      for i in 0..<n where bg[i] { toBg[i] = 0 }
+      for y in 0..<h {
+        for x in 0..<w {
+          let i = y * w + x
+          var v = toBg[i]
+          if x > 0 { v = min(v, toBg[i - 1] + 3) }
+          if y > 0 {
+            v = min(v, toBg[i - w] + 3)
+            if x > 0 { v = min(v, toBg[i - w - 1] + 4) }
+            if x < w - 1 { v = min(v, toBg[i - w + 1] + 4) }
+          }
+          toBg[i] = v
+        }
+      }
+      for y in stride(from: h - 1, through: 0, by: -1) {
+        for x in stride(from: w - 1, through: 0, by: -1) {
+          let i = y * w + x
+          var v = toBg[i]
+          if x < w - 1 { v = min(v, toBg[i + 1] + 3) }
+          if y < h - 1 {
+            v = min(v, toBg[i + w] + 3)
+            if x < w - 1 { v = min(v, toBg[i + w + 1] + 4) }
+            if x > 0 { v = min(v, toBg[i + w - 1] + 4) }
+          }
+          toBg[i] = v
+        }
+      }
+    }
+    let rim = keyRimShare * Double(min(w, h))
+
+    // 4. Apply: key (soft threshold, interior hold, un-mix) and / or feather; write premultiplied.
+    for y in 0..<h {
+      for x in 0..<w {
+        let p = pixel(x, y)
+        var c = (p.0, p.1, p.2)
+        var a = Double(p.3) / 255
+        if key_ {
+          let raw = keyT[y * w + x]
+          let hold = smoothstep(rim * 0.5, rim, toBg[y * w + x] / 3) * smoothstep(keyHoldLo, keyHoldHi, raw)
+          let t = max(raw, hold)
+          if t > 1.0 / 255 {
+            c = (min(255, max(0, key.0 + (c.0 - key.0) / t)),
+                 min(255, max(0, key.1 + (c.1 - key.1) / t)),
+                 min(255, max(0, key.2 + (c.2 - key.2) / t)))
+          } else {
+            c = (0, 0, 0)
+          }
+          a *= t
+        }
+        let e = min(Double(x) + 0.5, Double(y) + 0.5, Double(w - x) - 0.5, Double(h - y) - 0.5)
+        a *= smoothstep(0, band, e)
+        let i = y * row + x * 4
+        px[i] = UInt8(min(255, max(0, (c.0 * a).rounded())))
+        px[i + 1] = UInt8(min(255, max(0, (c.1 * a).rounded())))
+        px[i + 2] = UInt8(min(255, max(0, (c.2 * a).rounded())))
+        px[i + 3] = UInt8(min(255, max(0, (a * 255).rounded())))
+      }
+    }
+    guard let out = ctx.makeImage() else { return image }
+    return UIImage(cgImage: out)
   }
 }

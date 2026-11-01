@@ -1,5 +1,10 @@
 # Widget snapshots (T203, owner-1101d #6)
 
+> **T251 (owner-1101h #2):** the JPG sheets below predate T251 and still show the old blurred
+> backgrounds (now removed). The blend audit is the current check:
+> `python3 scripts/packs/blend-audit.py [--download] [--fix DIR]` writes raw-vs-blended contact
+> sheets outside the repo; findings in [BLEND_AUDIT_1101H.md](BLEND_AUDIT_1101H.md).
+
 Contact sheets of every widget art option of every theme, at small / medium / large, drawn with the
 same placement maths as the phone, so a placement problem shows up here before anyone tests on a
 phone. One JPG per theme, plus `index.json` (every option, every size, the numbers and the flags).

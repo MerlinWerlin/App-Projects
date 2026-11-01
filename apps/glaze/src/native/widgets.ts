@@ -28,6 +28,7 @@ import {
   type WidgetArtPiece,
   type WidgetArtSourceFile,
 } from '../core/widgetArtLibrary';
+import { commitThemeArt, type PlannedThemePiece } from '../core/themeArtSync';
 
 export type WidgetsReason = 'expo-go' | 'android' | 'not-built' | 'failed' | null;
 export type WidgetsResult = { available: boolean; ok: boolean; reason: WidgetsReason };
@@ -116,7 +117,26 @@ export interface WidgetsAdapter {
   replaceThemeArt(themeId: string): Promise<WidgetsResult>;
   /** T238: one-time clean-up of art from older versions / other themes (no-op once done). */
   migrateArtLibrary(currentThemeId: string | null): Promise<WidgetsResult>;
+  /**
+   * T252: compose one theme art piece straight into widget-art/<id>.jpg (bridge
+   * composeWidgetArtPiece / composeSeamlessPiece). Never touches the index, seamless-<size>.png or
+   * the timelines; a piece already on disk is kept (skipIfPresent). A build whose bridge predates
+   * T252: { available: false, reason: 'not-built' }. Never throws.
+   */
+  composeArtPiece(input: ComposeArtPieceInput): Promise<WidgetsResult>;
+  /**
+   * T252: the ONE index write of a theme apply (src/core/themeArtSync.ts commitThemeArt): own photos
+   * kept, the theme's planned pieces that exist (`ready` = made this run) listed, other themes' auto
+   * art removed, current theme recorded. The bridge writes the index, prunes unlisted files and only
+   * then reloads every timeline. Serialised with every other index edit. Never throws.
+   */
+  commitThemeArt(themeId: string, planned: readonly PlannedThemePiece[], ready: readonly string[]): Promise<WidgetsResult>;
 }
+
+/** T252: one piece for widgets.composeArtPiece (local file:// URIs; never uploaded anywhere). */
+export type ComposeArtPieceInput =
+  | { id: string; kind: 'art'; artUri: string; widthPx: number; heightPx: number; colour: string; skipIfPresent?: boolean }
+  | { id: string; kind: 'seamless'; wallpaperUri: string; cropPx: { x: number; y: number; w: number; h: number }; heroUri: string; skipIfPresent?: boolean };
 
 /** T221: widgets.artLibrary() result. */
 export type ArtLibraryResult = WidgetsResult & { pieces: WidgetArtPiece[]; dir: string };
@@ -203,6 +223,10 @@ type NativeBridge = {
   getWidgetArtLibrary?(): Promise<{ index?: string | null; dir?: string | null } | null>;
   /** T221: write widget-art/index.json, prune unlisted files, reload all timelines. */
   setWidgetArtIndex?(json: string): Promise<boolean>;
+  /** T252: compose a theme piece into widget-art/<id>.jpg (no index write, no reload). */
+  composeWidgetArtPiece?(id: string, artUri: string, w: number, h: number, colour: string, skipIfPresent: boolean): Promise<boolean>;
+  /** T252: the wallpaper-backed twin; crop = [x, y, w, h] in wallpaper pixels. */
+  composeSeamlessPiece?(id: string, wallpaperUri: string, crop: number[], heroUri: string, skipIfPresent: boolean): Promise<boolean>;
 };
 
 function isExpoGo(): boolean {
@@ -326,14 +350,61 @@ export const widgets: WidgetsAdapter = {
       const r = migrateLibrary(lib, currentThemeId);
       return r.ran ? r.lib : null;
     }),
+  composeArtPiece,
+  commitThemeArt: (themeId, planned, ready) => editArtIndex((lib) => commitThemeArt(lib, themeId, planned, ready, Date.now()).lib),
 };
+
+/**
+ * T252: every read-change-write of index.json runs one at a time (a theme apply's commit, "Use on
+ * my widget", Manage), so two edits can never overwrite each other's index.
+ */
+let artQueue: Promise<unknown> = Promise.resolve();
+function serialArt<T>(job: () => Promise<T>): Promise<T> {
+  const next = artQueue.then(job, job);
+  artQueue = next.catch(() => undefined);
+  return next;
+}
+
+const finite = (n: unknown): n is number => typeof n === 'number' && Number.isFinite(n);
+
+async function composeArtPiece(input: ComposeArtPieceInput): Promise<WidgetsResult> {
+  try {
+    const { mod, reason } = await artBridge();
+    if (!mod) return { available: false, ok: false, reason };
+    if (typeof mod.composeWidgetArtPiece !== 'function' || typeof mod.composeSeamlessPiece !== 'function') {
+      return { available: false, ok: false, reason: 'not-built' };
+    }
+    if (!input || !isValidPieceId(input.id)) return { available: true, ok: false, reason: 'failed' };
+    const skip = input.skipIfPresent !== false;
+    let ok = false;
+    if (input.kind === 'art') {
+      if (typeof input.artUri !== 'string' || !input.artUri || !/^#[0-9A-Fa-f]{6}$/.test(input.colour)) return { available: true, ok: false, reason: 'failed' };
+      if (!finite(input.widthPx) || !finite(input.heightPx) || input.widthPx < 1 || input.heightPx < 1) return { available: true, ok: false, reason: 'failed' };
+      ok = (await mod.composeWidgetArtPiece(input.id, input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.colour, skip)) === true;
+    } else {
+      const c = input.cropPx;
+      if (typeof input.wallpaperUri !== 'string' || !input.wallpaperUri || !c || ![c.x, c.y, c.w, c.h].every(finite) || c.w < 1 || c.h < 1) {
+        return { available: true, ok: false, reason: 'failed' };
+      }
+      const crop = [Math.round(c.x), Math.round(c.y), Math.round(c.w), Math.round(c.h)];
+      ok = (await mod.composeSeamlessPiece(input.id, input.wallpaperUri, crop, input.heroUri ?? '', skip)) === true;
+    }
+    return { available: true, ok, reason: ok ? null : 'failed' };
+  } catch {
+    return { available: true, ok: false, reason: 'failed' };
+  }
+}
 
 /**
  * T238: read index.json, change it in JS, write it back in one atomic write (setWidgetArtIndex also
  * deletes the files the index no longer lists and reloads all timelines). `edit` returning null =
  * nothing to write. Expo Go / Android / older bridge: { available: false }. Never throws.
  */
-async function editArtIndex(edit: (lib: WidgetArtIndex) => WidgetArtIndex | null): Promise<WidgetsResult> {
+function editArtIndex(edit: (lib: WidgetArtIndex) => WidgetArtIndex | null): Promise<WidgetsResult> {
+  return serialArt(() => editArtIndexNow(edit));
+}
+
+async function editArtIndexNow(edit: (lib: WidgetArtIndex) => WidgetArtIndex | null): Promise<WidgetsResult> {
   try {
     const { mod, reason } = await artBridge();
     if (!mod) return { available: false, ok: false, reason };
@@ -365,7 +436,11 @@ async function readArtIndex(mod: NativeBridge): Promise<{ lib: WidgetArtIndex; d
   return { lib: parseLibrary(index), dir };
 }
 
-async function addToArtLibrary(piece: Omit<WidgetArtPiece, 'file'>, from: WidgetArtSourceFile): Promise<WidgetsResult> {
+function addToArtLibrary(piece: Omit<WidgetArtPiece, 'file'>, from: WidgetArtSourceFile): Promise<WidgetsResult> {
+  return serialArt(() => addToArtLibraryNow(piece, from));
+}
+
+async function addToArtLibraryNow(piece: Omit<WidgetArtPiece, 'file'>, from: WidgetArtSourceFile): Promise<WidgetsResult> {
   try {
     const { mod, reason } = await artBridge();
     if (!mod) return { available: false, ok: false, reason };
@@ -393,7 +468,11 @@ async function artLibrary(): Promise<ArtLibraryResult> {
   }
 }
 
-async function removeFromArtLibrary(id: string): Promise<WidgetsResult> {
+function removeFromArtLibrary(id: string): Promise<WidgetsResult> {
+  return serialArt(() => removeFromArtLibraryNow(id));
+}
+
+async function removeFromArtLibraryNow(id: string): Promise<WidgetsResult> {
   try {
     const { mod, reason } = await artBridge();
     if (!mod) return { available: false, ok: false, reason };

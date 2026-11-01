@@ -11,7 +11,9 @@
 // T208: the backgrounds mimic the native compositor (src/core/widgetPreview.ts): the wallpaper is
 // the seamless CROP under the widget's slot (wallpaperUnderSlot), the blurred art uses the bridge's
 // CIGaussianBlur radius scaled to the card (blurBackdrop).
-// T236 (owner-1101g #1): "theme" / "blur" previews are full bleed like the bridge (fullBleedArt):
+// T251 (owner-1101h #2) replaces the T208/T236 blurred backdrop: every option shows the wallpaper crop
+// with the art BLENDED on it (BlendedArt; src/core/artBlend.ts), no blurred copy, no frame, no box.
+// History, T236 (owner-1101g #1): "theme" / "blur" previews were full bleed like the bridge (fullBleedArt):
 // the art whole with no inset, the strips beside it filled by a blurred copy of the art (its own
 // edges extended), no veil, so the card never shows a light frame. "wallpaper" is unchanged.
 // T209/T206: names come from optionName (the same in every size); a picture with fixed numbers
@@ -37,10 +39,12 @@ import {
   type WidgetOption,
 } from '../core/widgetOptions';
 import { widgetTabSizeKey } from '../core/tabNav';
-import { blurBackdrop, fullBleedArt, menuCaptionLayout, wallpaperUnderSlot } from '../core/widgetPreview';
+import { fullBleedArt, menuCaptionLayout, wallpaperUnderSlot } from '../core/widgetPreview';
+import { previewBlendFor, type PreviewBlend } from '../core/artBlend';
 import { useT } from '../i18n';
 import { chromeRadiusV2, circleRadius, continuous, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
+import { BlendedArt } from './BlendedArt';
 import { textStyleFor } from './i18nLayout';
 import { SectionHeader } from './SectionHeader';
 
@@ -67,10 +71,12 @@ type CardProps = {
   selected: boolean;
   themeColour: string;
   wallpaper: MenuWallpaper | null;
+  /** T251: how the art blends (src/core/artBlend.ts previewBlendFor). */
+  blend: PreviewBlend;
   onSelect: (id: string) => void;
 };
 
-const OptionCard = memo(function OptionCard({ item, size, width, name, selected, themeColour, wallpaper, onSelect }: CardProps) {
+const OptionCard = memo(function OptionCard({ item, size, width, name, selected, themeColour, wallpaper, blend, onSelect }: CardProps) {
   const { c } = useColorsV2();
   const { t, script } = useT();
   const tl = t as unknown as LooseT;
@@ -78,26 +84,20 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, selected,
   const box = OPTION_SIZE_POINTS[size];
   const w = Math.max(1, width - RING * 4);
   const h = Math.max(1, Math.round((w * box.h) / box.w));
-  // T236: "theme" / "blur" options are composed full bleed by the bridge (fullBleedArt: the art whole,
-  // no inset, its own edges extended in the strips); "wallpaper" keeps the inset hero (placeArt).
-  const isWall = option.background === 'wallpaper';
-  const bleed = fullBleedArt({ w: option.width, h: option.height }, { w, h });
-  const place = isWall ? placeArt({ w: option.width, h: option.height }, { w, h }, option.fit) : { rect: bleed.rect };
+  // T251 (owner-1101h #2): every option is composed like the phone now does it: the wallpaper crop
+  // under the widget's slot with the art inset on it (placeArt, like setSeamless), or, for a theme
+  // without a wallpaper, the theme colour with the art full bleed (fullBleedArt, like setWidgetArt).
+  // The art is blended (BlendedArt: keyed / feathered), never on a blurred copy of itself.
+  const wall = wallpaper ? wallpaperUnderSlot(wallpaper.px, wallpaper.crop, { w, h }) : null;
+  const place = wall
+    ? placeArt({ w: option.width, h: option.height }, { w, h }, option.fit)
+    : { rect: fullBleedArt({ w: option.width, h: option.height }, { w, h }).rect };
   const caption = menuCaptionLayout(size);
   // T206: a picture with fixed numbers (fixedValues) is art: no "Live" badge.
   const live = showsLiveBadge(option);
   const sizeName = tl(widgetTabSizeKey(size));
   const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
-  // Background only, as the bridge composes it: the art's edges extended (a blurred aspect-filled
-  // copy of the art at full opacity, clipped to the strips, no veil), or the wallpaper crop.
-  const strips = isWall ? [] : bleed.strips;
-  const blur = blurBackdrop({ w: option.width, h: option.height }, { w, h });
-  const wall = option.background === 'wallpaper' && wallpaper ? wallpaperUnderSlot(wallpaper.px, wallpaper.crop, { w, h }) : null;
   const wallStyle: StyleProp<ViewStyle> = wall ? { position: 'absolute', left: wall.x, top: wall.y, width: wall.w, height: wall.h } : null;
-  const artStyle: StyleProp<ViewStyle> = useMemo(
-    () => ({ position: 'absolute', left: place.rect.x, top: place.rect.y, width: place.rect.w, height: place.rect.h }),
-    [place.rect.x, place.rect.y, place.rect.w, place.rect.h],
-  );
   return (
     <Pressable
       onPress={() => onSelect(option.id)}
@@ -109,22 +109,10 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, selected,
     >
       <View style={[styles.ring, continuous, { borderColor: selected ? c.tint : 'transparent' }]}>
         <View style={[styles.preview, continuous, { width: w, height: h, backgroundColor: themeColour }]}>
-          {strips.map((s, i) => (
-            <View key={i} pointerEvents="none" style={[styles.strip, { left: s.x, top: s.y, width: s.w, height: s.h }]}>
-              <ExpoImage
-                source={source}
-                style={{ position: 'absolute', left: blur.rect.x - s.x, top: blur.rect.y - s.y, width: blur.rect.w, height: blur.rect.h }}
-                contentFit="fill"
-                blurRadius={blur.radius}
-                cachePolicy="memory-disk"
-                transition={0}
-              />
-            </View>
-          ))}
           {/* The whole wallpaper at the crop's scale and offset: the clipped card shows only the crop. */}
           {wall && wallpaper ? <ExpoImage source={wallpaper.source} style={wallStyle} contentFit="fill" cachePolicy="memory-disk" transition={0} /> : null}
-          {/* The art itself: always whole (contain inside its fitted rectangle). */}
-          <ExpoImage source={source} style={artStyle} contentFit="contain" cachePolicy="memory-disk" transition={0} />
+          {/* The art itself: always whole (contain inside its fitted rectangle), blended (T251). */}
+          <BlendedArt source={source} rect={place.rect} blend={blend} />
           {selected ? (
             <View style={[styles.check, { backgroundColor: c.tint }]}>
               <Feather name="check" size={16} color={c.onTint} />
@@ -165,8 +153,11 @@ type Props = {
   width: number;
   /** The theme's own background colour (#RRGGBB), behind fitted art. */
   themeColour: string;
-  /** The theme wallpaper and its seamless crop for `size`, for options whose background is the wallpaper. */
+  /** The theme wallpaper and its seamless crop for `size`: since T251 behind EVERY option (art blends with it). */
   wallpaper: MenuWallpaper | null;
+  /** T251: the theme id (measured production pieces, KNOWN_ART_BLEND) and whether its art is already transparent (bundled heroes). */
+  themeId?: string;
+  artTransparent?: boolean;
   selectedId: string | null;
   onSelect: (id: string) => void;
   /** Extra content under the grid (the Use button and status line). */
@@ -175,7 +166,7 @@ type Props = {
 };
 
 /** The menu: one header, then a section per kind with its grid. Renders nothing when there is no option. */
-export function WidgetArtMenu({ options, size, width, themeColour, wallpaper, selectedId, onSelect, footer, style }: Props) {
+export function WidgetArtMenu({ options, size, width, themeColour, wallpaper, themeId = '', artTransparent = false, selectedId, onSelect, footer, style }: Props) {
   const { t } = useT();
   const tl = t as unknown as LooseT;
   const bySource = useMemo(() => new Map(options.map((o) => [o.option.id, o] as const)), [options]);
@@ -206,6 +197,7 @@ export function WidgetArtMenu({ options, size, width, themeColour, wallpaper, se
                   selected={o.id === selectedId}
                   themeColour={themeColour}
                   wallpaper={wallpaper}
+                  blend={previewBlendFor(themeId, o.id, artTransparent)}
                   onSelect={onSelect}
                 />
               );
@@ -224,7 +216,6 @@ const styles = StyleSheet.create({
   card: { gap: spaceV2.sm, minHeight: sizeV2.touch },
   ring: { borderWidth: RING, borderRadius: chromeRadiusV2.card + RING * 2, padding: RING },
   preview: { borderRadius: chromeRadiusV2.card, overflow: 'hidden' },
-  strip: { position: 'absolute', overflow: 'hidden' },
   check: {
     position: 'absolute',
     top: spaceV2.sm,

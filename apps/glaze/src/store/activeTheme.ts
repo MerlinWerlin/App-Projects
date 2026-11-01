@@ -4,6 +4,11 @@
 // bridge write in applyWidgetTheme) and the theme in use (wallpaper maker's start, "In use ✓").
 // The tabs are lazy + freezeOnBlur, so screens re-read it on focus (useActiveThemeId) as well as
 // hearing the change through a listener. Never throws.
+// T250 (owner-1101h #1, freeze + crash after a theme swap): it now returns as soon as the essential
+// state is written (icon style, remembered widget theme, theme in use) and the screens are told;
+// the heavy follow-ups (App Group write + reloadAllTimelines, "My widget art" replace, installed-apps
+// check) are queued as deferred steps (src/store/deferredWork.ts): after interactions, one at a
+// time, crash-safe, retried on the next launch if the app was killed first.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -17,12 +22,14 @@ import {
   serializeActiveTheme,
   serializeSavedWallpapers,
 } from '../core/activeTheme';
+import { DEFERRED_STEPS } from '../core/deferredWork';
 import type { Theme } from '../core/themes';
 import { averageColour } from '../core/wallpaper';
 import { widgets as nativeWidgets } from '../native/widgets';
-import { runInstalledProbe } from './installedProbe';
+import { registerDeferred, requestDeferred } from './deferredWork';
 import { applyThemeIcons, loadStudio } from './studio';
-import { applyWidgetTheme } from './widgetTheme';
+import { syncThemeWidgetArt } from './themeWidgetArt';
+import { rememberWidgetTheme } from './widgetTheme';
 
 type Listener = (id: string | null) => void;
 const listeners = new Set<Listener>();
@@ -47,8 +54,9 @@ export type ApplyResult = { icons: boolean; widgets: boolean };
 
 /**
  * "Use this theme": the base for every tab. Writes the icon style (with the person's chosen shape),
- * the widget theme (App Group bridge; no-op in Expo Go) and the theme in use, then tells every
- * mounted screen. Each part is independent: one failing never stops the others.
+ * remembers the widget theme and the theme in use, then tells every mounted screen. Each part is
+ * independent: one failing never stops the others. `widgets` = the widget theme was remembered; the
+ * App Group write itself is the deferred 'widgetTheme' step (T250).
  */
 export async function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
   let icons = true;
@@ -58,20 +66,47 @@ export async function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
   } catch {
     icons = false;
   }
-  // T229: tick the popular apps that are on this iPhone (non-blocking; nothing in Expo Go).
-  void runInstalledProbe();
-  const widgets = await applyWidgetTheme(theme);
-  // T238 (owner-1101g #6): this theme's widget art replaces the previous theme's auto-added art in
-  // "My widget art" (own photos stay). No-op in Expo Go / Android; never throws.
-  await nativeWidgets.replaceThemeArt(theme.id);
+  const widgets = await rememberWidgetTheme(theme);
   try {
     await AsyncStorage.setItem(ACTIVE_THEME_KEY, serializeActiveTheme({ themeId: theme.id, at: Date.now() }));
   } catch {
     // Storage unavailable: the screens still hear the change below.
   }
   for (const l of listeners) l(theme.id);
+  // T250: the heavy follow-ups, queued (never awaited here). Each works from the stored state above,
+  // so a run resumed on the next launch does the same thing.
+  requestDeferred(DEFERRED_STEPS.widgetTheme); // App Group write + reloadAllTimelines (T125)
+  requestDeferred(DEFERRED_STEPS.themeArt, theme); // "My widget art" follows the theme (T238 / T252)
+  requestDeferred(DEFERRED_STEPS.installedProbe, 'apply'); // T229: tick the popular apps on this iPhone
   return { icons, widgets };
 }
+
+/**
+ * T250: the deferred 'themeArt' step (requested by applyThemeEverywhere). T238 (owner-1101g #6): the
+ * theme's widget art replaces the previous theme's auto-added art in "My widget art" (own photos
+ * stay). With no in-memory theme (resumed on the next launch) it uses the stored theme in use.
+ * No-op in Expo Go / Android. A failed bridge write throws, so the queue retries it next launch.
+ * T252 owns what this does to the library (src/native/widgets.ts / src/core/widgetArtLibrary.ts);
+ * extra per-theme art work belongs in this step, not in applyThemeEverywhere.
+ */
+async function themeArtStep(arg: unknown): Promise<void> {
+  const theme = arg && typeof arg === 'object' && typeof (arg as Theme).id === 'string' ? (arg as Theme) : null;
+  let res;
+  if (theme) {
+    // T252 (owner-1101h #3): ALL of this theme's widget art is added to My widget art and the previous
+    // theme's auto-added art goes (own photos stay), in one index write, then the widgets reload.
+    const r = await syncThemeWidgetArt(theme);
+    if (r.superseded || !r.available) return;
+    res = { available: r.available, ok: r.ok };
+  } else {
+    const id = await loadActiveThemeId();
+    if (!id) return;
+    res = await nativeWidgets.replaceThemeArt(id);
+  }
+  if (res.available && !res.ok) throw new Error('widget art index write failed');
+}
+
+registerDeferred(DEFERRED_STEPS.themeArt, { priority: 30, run: themeArtStep });
 
 /** The theme in use for a screen: read on mount and on every focus, and on each change. */
 export function useActiveThemeId(): string | null {

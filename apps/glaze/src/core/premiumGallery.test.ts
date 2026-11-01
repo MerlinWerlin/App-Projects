@@ -164,11 +164,16 @@ test('old ids still resolve via getAnyTheme (applied themes, widgets and saved s
 
 // ------------------------------------------------------------------ screen source guards
 
-test('the Themes tab is built from galleryRows over useRemoteArtThemes, and imports no old lists', () => {
+// T253 (owner-1101h): the front page is categories + All themes (src/core/themeBrowse.ts) over the
+// catalogue themes plus the bundled starters; galleryRows' two-section layout is retired.
+test('the Themes tab is built from themeBrowse over useRemoteArtThemes + starters, and imports no old lists', () => {
   assert.match(SCREEN, /const remote = useRemoteArtThemes\(\);/);
-  assert.match(SCREEN, /galleryRows<GalleryTheme, GalleryTheme>\(\{ remote, starters: STARTERS, columns, query, filter, liked \}\)/);
-  assert.match(SCREEN, /const STARTERS = galleryStarters\(\);/);
+  assert.match(SCREEN, /browseThemes<GalleryTheme, GalleryTheme>\(remote, STARTERS\)/);
+  assert.match(SCREEN, /browseHomeRows<GalleryTheme>\(\{ themes, columns, waiting \}\)/);
+  assert.match(SCREEN, /browseGridThemes<GalleryTheme>\(\{ themes, view, query, filter, liked \}\)/);
+  assert.match(SCREEN, /const STARTERS: readonly GalleryTheme\[\] = galleryStarters\(\);/);
   assert.match(SCREEN, /data=\{rows\}/);
+  assert.match(SCREEN, /browseGridRows<GalleryTheme>\(gridThemes, columns\)/);
   for (const mod of ['themesNew', 'themesStoryPlay', 'spacePack', 'plusThemes', 'seasons', 'freeMarks', 'discovery', 'categoryPaging', 'categorySwitch', 'artPackThemes']) {
     assert.doesNotMatch(SCREEN, new RegExp(`from '[./]*src/core/${mod}'`), `themes.tsx imports ${mod}`);
   }
@@ -178,13 +183,15 @@ test('the Themes tab is built from galleryRows over useRemoteArtThemes, and impo
   }
 });
 
-test('New collection header first, then Starters; skeleton rows while empty; no error copy', () => {
-  const head = SCREEN.slice(SCREEN.indexOf('const GalleryHead = memo('));
-  const collection = head.indexOf("t('themes.collection.title')");
-  const starters = head.indexOf("t('themes.starters')");
-  assert.ok(collection >= 0 && starters > collection);
-  assert.match(head, /eyebrow=\{t\('themes\.eyebrow\.collection'\)\}/);
-  assert.match(SCREEN, /if \(item\.kind === 'skeleton'\) return <SkeletonCardRow count=\{item\.count\} cardWidth=\{cardWidth\} \/>/);
+test('category sections with See all, then All themes; skeleton row while loading; no error copy', () => {
+  const head = SCREEN.slice(SCREEN.indexOf('const BrowseHead = memo('));
+  assert.match(head, /t\('themes\.browse\.allThemes'\)/);
+  assert.match(head, /t\(browseCategoryLabelKey\(section\)\)/);
+  assert.match(head, /label=\{t\('themes\.browse\.seeAll'\)\}/);
+  assert.match(head, /accessibilityLabel=\{t\('themes\.browse\.seeAllA11y', \{ label \}\)\}/);
+  assert.match(SCREEN, /<CategoryChipRow chips=\{chips\} view=\{view\} onPick=\{pickChip\} \/>/);
+  assert.match(SCREEN, /const waiting = status === 'loading' && remote\.length === 0;/);
+  assert.match(SCREEN, /if \(item\.kind === 'skeleton'\) return <SkeletonCardRow count=\{Math\.min\(item\.count, columns\)\} cardWidth=\{geo\.cardWidth\} \/>/);
   assert.match(SCREEN, /accessibilityLabel=\{t\('themes\.collection\.loadingA11y'\)\}/);
   assert.match(CARD, /export const GalleryCardSkeleton = memo\(/);
   assert.match(CARD, /<Skeleton width=\{width\} height=\{artH\}/);
@@ -194,7 +201,7 @@ test('New collection header first, then Starters; skeleton rows while empty; no 
 });
 
 test('pull to refresh calls refreshRemoteCatalog; the list stays virtualised and bounces only at the top', () => {
-  assert.match(SCREEN, /import \{ refreshRemoteCatalog, useRemoteArtThemes \} from '\.\.\/\.\.\/src\/native\/useRemoteCatalog';/);
+  assert.match(SCREEN, /import \{ refreshRemoteCatalog, useRemoteArtThemes, useRemoteCatalogStatus \} from '\.\.\/\.\.\/src\/native\/useRemoteCatalog';/);
   assert.match(SCREEN, /void refreshRemoteCatalog\(\)\.then\(done, done\);/);
   const list = SCREEN.slice(SCREEN.indexOf('<Animated.FlatList'));
   assert.match(list, /refreshing=\{refreshing\}/);

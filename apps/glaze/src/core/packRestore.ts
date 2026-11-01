@@ -23,9 +23,20 @@ export async function restorePackMotifs(
   transport: Transport,
   index: PackCacheIndex,
   load: (t: Transport, packId: string) => Promise<PackContent> = loadPackContent,
+  /** T250: awaited between packs so a phone with many downloaded packs keeps drawing frames. */
+  pause?: () => Promise<void>,
 ): Promise<RestoreResult> {
   const out: RestoreResult = { packs: [], motifs: [], missing: [] };
+  let first = true;
   for (const entry of index.packs) {
+    if (!first && pause) {
+      try {
+        await pause();
+      } catch {
+        // A broken pause still restores the rest.
+      }
+    }
+    first = false;
     try {
       const c = await load(transport, entry.id);
       if (c.themes.length === 0) {

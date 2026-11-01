@@ -303,6 +303,8 @@ export async function buildPacks(opts = {}) {
       tags: b.pack.meta.tags,
       mood: b.pack.meta.mood,
       addedAt: b.pack.meta.addedAt ?? art.ART_PACK_DEFAULT_ADDED_AT,
+      // T253: front-page category (src/core/themeBrowse.ts); "" (More) when meta.json has none.
+      category: b.pack.meta.category ?? '',
     });
     built.push({ id, packVersion, folder, totalBytes: b.manifestNoVersion.totalBytes });
     log(`OK     ${id} v${packVersion} (${(b.manifestNoVersion.totalBytes / 1000).toFixed(0)} kB, ${b.assets.length} files)`);

@@ -450,30 +450,29 @@ test('Widgets tab shows the theme widget art menu above the grid', () => {
   assert.match(art, /widgetOptionsFromV1\(/, 'bundled art packs list their hero pieces as options');
   assert.match(art, /widgets\.setWidgetArt\(/);
   assert.match(art, /widgets\.setSeamless\(/);
-  assert.match(art, /reason === 'not-built' \? await seamless\(artUri\)/, 'older native builds fall back to the seamless path');
+  // T251: every piece tries the wallpaper crop first; setWidgetArt only when there is no wallpaper file.
+  assert.match(art, /ok = await seamless\(artUri\);\s*if \(ok === false && option\.background !== 'wallpaper'\)/);
 });
 
-test('menu previews fit the art (never crop): fullBleedArt / placeArt rectangle + contain; blur only in the strips', () => {
+test('menu previews fit the art (never crop): placeArt / fullBleedArt rectangle + contain; T251 no blurred copy', () => {
   const menu = read('src', 'ui', 'WidgetArtMenu.tsx');
-  assert.match(menu, /placeArt\(/); // wallpaper path (inset hero, like setSeamless)
-  assert.match(menu, /fullBleedArt\(/); // T236 theme / blur path (full bleed, no inset)
-  assert.match(menu, /<ExpoImage source=\{source\} style=\{artStyle\} contentFit="contain"/);
-  // T236: no "cover" image of the art; the blurred copy is drawn only inside the strips beside it.
+  assert.match(menu, /placeArt\(/); // over the wallpaper crop (inset hero, like setSeamless)
+  assert.match(menu, /fullBleedArt\(/); // no wallpaper: theme colour, full bleed (like setWidgetArt)
+  assert.match(menu, /<BlendedArt source=\{source\} rect=\{place\.rect\} blend=\{blend\} \/>/);
   assert.equal((menu.match(/contentFit="cover"/g) ?? []).length, 0);
-  assert.match(menu, /strips\.map\(/);
-  assert.match(menu, /styles\.strip/);
+  assert.doesNotMatch(menu, /strips\.map\(|styles\.strip|blurRadius/);
   assert.match(menu, /accessibilityState=\{\{ selected \}\}/);
   assert.match(menu, /widgetOptionSections\(/);
   assert.doesNotMatch(menu, /withSpring|Animated\.spring|ActivityIndicator/);
 });
 
-test('native: the Seamless widget fits its image over a blurred copy; the bridge has setWidgetArt (fit)', () => {
+test('native: the Seamless widget fits its image (T251: no blurred copy); the bridge has setWidgetArt (fit)', () => {
   const widget = read('targets', 'widget', 'SeamlessWidget.swift');
   assert.match(widget, /\.scaledToFit\(\)/);
-  assert.match(widget, /\.blur\(radius:/);
+  assert.doesNotMatch(widget, /\.blur\(radius:/);
   const bridge = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
   assert.match(bridge, /AsyncFunction\("setWidgetArt"\)/);
-  assert.match(bridge, /CIGaussianBlur/);
+  assert.doesNotMatch(bridge, /CIGaussianBlur/);
   assert.match(bridge, /let s = min\(target\.width \/ art\.size\.width, target\.height \/ art\.size\.height\)/, 'fit = min scale (T236: no inset)');
   const adapter = read('src', 'native', 'widgets.ts');
   assert.match(adapter, /typeof mod\.setWidgetArt !== 'function'\) return \{ available: false, ok: false, reason: 'not-built' \}/);

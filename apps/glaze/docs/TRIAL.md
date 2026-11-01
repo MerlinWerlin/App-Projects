@@ -2,6 +2,17 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (1 Nov, night: owner-1101h brief)
+These need the **new TestFlight build** (newer than 1.0.1 (19)): the widget changes are built into the app. Open Glaze, then answer yes / no:
+
+1. **No freeze after a theme swap:** apply a downloaded theme (e.g. Firefly Grove) with **Use this theme**, leave Glaze, come back, then fully close and reopen it. Does it open straight away with no freeze, no long wait and no crash? Try it 3 times. yes / no
+2. **Widget art blends in:** on Alpine Starlight put the white **full moon** on a large Glaze widget and the **red blood moon** on another. Do both float on the wallpaper with no grey frame, no dark box and no glowing edge? yes / no
+3. **Other themes blend too:** try one piece from two other themes (e.g. Meadowglow, Rosewater Reverie). Does the art fade into the wallpaper instead of sitting in a square? yes / no
+4. **Widget art follows the theme by itself:** apply a different theme, then go straight to the Home Screen and long-press a Glaze widget > **Edit Widget** > **Art** (don't open My widget art first). Are the new theme's pieces listed first, does picking one work, and did your own photos stay? yes / no
+5. **Themes page:** on the Themes tab, do you see category chips (Space & Night, Nature, Ocean & Water...) and a row per category with **See all**, plus **All themes** at the bottom? Does it scroll smoothly? yes / no
+6. **All the new themes:** once the new themes are published, do they all show up (about 80+), each in a sensible category, and does search by name still find them? yes / no
+7. **Still good:** starry textured icons, icon replacement on theme swap, My widget art Manage / Delete, the live clock widget and the Fill layout all still work as before? yes / no
+
 ## New since your last test (1 Nov, evening: owner-1101g brief)
 These need the **new TestFlight build** (widget and icon changes are built into the app). Check the build number is newer than 1.0.1 (18), open Glaze, then answer yes / no:
 

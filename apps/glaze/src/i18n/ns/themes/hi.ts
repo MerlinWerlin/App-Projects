@@ -92,4 +92,18 @@ export const hi: NonNullable<LocaleMessages['themes']> = {
     remove: '{name} को पसंदीदा से हटाएँ',
     hint: 'इसे केवल इसी डिवाइस पर पसंदीदा में रखता है',
   },
+  /** T253 (owner-1101h #4): the Themes front page categories, chip row, See all and All themes. */
+  browse: {
+    category: { spaceNight: 'अंतरिक्ष और रात', nature: 'प्रकृति', oceanWater: 'समुद्र और पानी', cuteCosy: 'प्यारी और आरामदायक', sweetsTreats: 'मिठाइयाँ', dreamyPastel: 'सपनीली पेस्टल', moodyDark: 'गहरी और उदास', abstractArt: 'अमूर्त और कला', seasonal: 'मौसमी', cityRetro: 'शहर और रेट्रो', more: 'और' },
+    chipsLabel: 'थीम श्रेणियाँ',
+    chipA11y: { one: '{label}, {count} थीम', other: '{label}, {count} थीम' },
+    chipHint: 'सिर्फ़ ये थीम दिखाता है। वापस जाने के लिए फिर टैप करें।',
+    allThemes: 'सभी थीम',
+    allThemesBody: 'हर थीम एक ही जगह।',
+    seeAll: 'सभी देखें',
+    seeAllA11y: '{label} की सभी थीम देखें',
+    count: { one: '{count} थीम', other: '{count} थीम' },
+    backHome: 'सभी श्रेणियाँ',
+    backHomeHint: 'श्रेणियों के अवलोकन पर वापस',
+  },
 };

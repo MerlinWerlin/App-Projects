@@ -1,22 +1,31 @@
-// T229: "the app does it for them". Once per launch (after the first render, off the startup path)
-// and after every "Use this theme", ask iOS which of the popular apps in src/core/installedProbe.ts
+// T229: "the app does it for them". After launch (T250: at most once per 24 h) and after every
+// "Use this theme" / icon install, ask iOS which of the popular apps in src/core/installedProbe.ts
 // are installed and tick them in Icon Studio. Apps the person removes are remembered, so the check
 // never adds them back. In Expo Go / Android / builds without the Info.plist list every answer is
 // false and nothing changes. Nothing leaves the phone.
+// T250: it runs only as the deferred 'installedProbe' step (src/store/launchWork.ts, after the first
+// screen, one step at a time) and asks PROBE_CHUNK schemes per tick, yielding the JS thread between.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
+import { chunked } from '../core/deferredWork';
 import {
+  PROBE_CHUNK,
+  PROBE_LAST_RUN_KEY,
   autoSelect,
   clearUnticked,
   installedIdsFrom,
   markUnticked,
+  parseProbeLastRun,
   parseProbeState,
+  probeDue,
   schemesToQuery,
   serializeProbeState,
   withFound,
+  type ProbeReason,
   type ProbeState,
 } from '../core/installedProbe';
 import { probeSchemes } from '../native/installedApps';
+import { yieldToUi } from './deferredWork';
 import { updateStudio } from './studio';
 
 const KEY = 'glaze.installedProbe.v1';
@@ -69,12 +78,23 @@ export function recordTick(id: string): void {
 
 let running: Promise<void> | null = null;
 
+/** T250: PROBE_CHUNK canOpenURL answers per tick, the JS thread yields between chunks. */
+async function probeInChunks(): Promise<Record<string, boolean>> {
+  const answers: Record<string, boolean> = {};
+  const parts = chunked(schemesToQuery(), PROBE_CHUNK);
+  for (let i = 0; i < parts.length; i++) {
+    if (i > 0) await yieldToUi();
+    Object.assign(answers, await probeSchemes(parts[i]!));
+  }
+  return answers;
+}
+
 /** Probe and auto-select. Never throws; concurrent calls share one run. */
 export function runInstalledProbe(): Promise<void> {
   if (running) return running;
   running = (async () => {
     try {
-      const answers = await probeSchemes(schemesToQuery());
+      const answers = await probeInChunks();
       const installed = installedIdsFrom(answers);
       if (installed.length === 0) return; // Expo Go, Android or nothing found: do nothing.
       await serial(async () => {
@@ -97,20 +117,24 @@ export function runInstalledProbe(): Promise<void> {
   return running;
 }
 
-let launched = false;
-
-/** Once per launch, delayed so it stays off startup. */
-export function runInstalledProbeOnLaunch(delayMs: number = 2000): () => void {
-  if (launched) return () => undefined;
-  launched = true;
-  const id = setTimeout(() => {
-    void runInstalledProbe();
-  }, delayMs);
-  return () => {
-    // Unmounted before it ran (dev double-mount): let the next mount schedule it.
-    clearTimeout(id);
-    launched = false;
-  };
+/**
+ * T250: the deferred 'installedProbe' step. A launch ('launch') probes at most once per
+ * PROBE_INTERVAL_MS (24 h); a theme apply or icon install always does. Never throws.
+ */
+export async function runInstalledProbeStep(reason: ProbeReason): Promise<void> {
+  let last: number | null = null;
+  try {
+    last = parseProbeLastRun(await AsyncStorage.getItem(PROBE_LAST_RUN_KEY));
+  } catch {
+    last = null;
+  }
+  if (!probeDue(last, Date.now(), reason)) return;
+  await runInstalledProbe();
+  try {
+    await AsyncStorage.setItem(PROBE_LAST_RUN_KEY, String(Date.now()));
+  } catch {
+    // Probes again next launch: harmless.
+  }
 }
 
 /** How many probed apps are on this iPhone and in the icon set (0 = show no note). */

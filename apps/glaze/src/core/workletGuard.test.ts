@@ -356,3 +356,16 @@ test('PhotoCropEditor mounts gestures only for usable sizes and guards withDecay
     assert.match(before, /Number\.isFinite\(lo\) && Number\.isFinite\(hi\) && hi - lo >= 0\.5 && Number\.isFinite\(v\)/);
   }
 });
+
+test('T250 re-check: the crop editor animated style (UI thread) catches its own errors too', () => {
+  const src = sources.get('src/ui/PhotoCropEditor.tsx')!;
+  const hits = [...src.matchAll(/useAnimatedStyle\(\(\) => \{/g)];
+  assert.ok(hits.length >= 1, 'found the crop editor animated style');
+  for (const m of hits) {
+    const body = src.slice((m.index ?? 0) + m[0].length, (m.index ?? 0) + m[0].length + 1200);
+    assert.match(body, /^\s*try \{/, 'useAnimatedStyle body starts with try');
+    const c = /\} catch \(_?\w*\) \{([^}]*)\}/.exec(body);
+    assert.ok(c, 'has a catch');
+    assert.doesNotMatch(c[1]!, /\bthrow\b/);
+  }
+});

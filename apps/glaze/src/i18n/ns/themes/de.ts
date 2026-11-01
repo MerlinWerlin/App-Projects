@@ -92,4 +92,18 @@ export const de: NonNullable<LocaleMessages['themes']> = {
     remove: '{name} aus Favoriten entfernen',
     hint: 'Speichert es unter Favoriten, nur auf diesem Gerät',
   },
+  /** T253 (owner-1101h #4): the Themes front page categories, chip row, See all and All themes. */
+  browse: {
+    category: { spaceNight: 'Weltall & Nacht', nature: 'Natur', oceanWater: 'Meer & Wasser', cuteCosy: 'Süß & gemütlich', sweetsTreats: 'Naschereien', dreamyPastel: 'Verträumt & pastell', moodyDark: 'Düster & dunkel', abstractArt: 'Abstrakt & Kunst', seasonal: 'Jahreszeiten', cityRetro: 'Stadt & Retro', more: 'Mehr' },
+    chipsLabel: 'Themenkategorien',
+    chipA11y: { one: '{label}, {count} Theme', other: '{label}, {count} Themes' },
+    chipHint: 'Zeigt nur diese Themes. Nochmal tippen, um zurückzugehen.',
+    allThemes: 'Alle Themes',
+    allThemesBody: 'Jedes Theme an einem Ort.',
+    seeAll: 'Alle ansehen',
+    seeAllA11y: 'Alle Themes in {label} ansehen',
+    count: { one: '{count} Theme', other: '{count} Themes' },
+    backHome: 'Alle Kategorien',
+    backHomeHint: 'Zurück zur Kategorienübersicht',
+  },
 };

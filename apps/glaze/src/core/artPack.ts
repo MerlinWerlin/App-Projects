@@ -20,6 +20,7 @@ import { iconArtOf, wallpaperArtOf, type ThemeArt } from './artwork.ts';
 import { contrastRatio, mix, relativeLuminance } from './colour.ts';
 import { inflateRaw } from './inflate.ts';
 import type { Theme, ThemeCategoryId } from './themes.ts';
+import { parseBrowseCategory, type BrowseCategoryId } from './themeBrowse.ts';
 
 // ------------------------------------------------------------------ format constants
 
@@ -112,6 +113,11 @@ export type ArtMeta = {
   prompt: string;
   /** Optional ISO date (YYYY-MM-DD) the theme was added; drives the "New" badge. */
   addedAt?: string;
+  /**
+   * T253: optional Themes front-page category, e.g. "Space & Night" (src/core/themeBrowse.ts,
+   * matched tolerantly; missing or unknown files the theme under More).
+   */
+  category?: string;
 };
 
 /** What the app keeps per pack (no image bytes): written to src/core/artPackLibrary.ts. */
@@ -372,7 +378,7 @@ export function validatePalette(raw: unknown): { palette: ArtPalette | null; err
   return { palette: errors.length ? null : out, errors, warnings };
 }
 
-const META_KEYS = ['name', 'mood', 'tags', 'credits', 'licence', 'generator', 'prompt', 'addedAt'];
+const META_KEYS = ['name', 'mood', 'tags', 'credits', 'licence', 'generator', 'prompt', 'addedAt', 'category'];
 
 export function validateMeta(raw: unknown): { meta: ArtMeta | null; errors: string[]; warnings: string[] } {
   const errors: string[] = [];
@@ -426,6 +432,14 @@ export function validateMeta(raw: unknown): { meta: ArtMeta | null; errors: stri
       errors.push(`${META_FILE}: "addedAt" must be a YYYY-MM-DD date`);
     } else addedAt = raw.addedAt;
   }
+  let category: string | undefined;
+  if (raw.category !== undefined) {
+    if (typeof raw.category !== 'string' || !raw.category.trim() || raw.category.length > 60) warnings.push(`${META_FILE}: "category" should be a short string such as "Space & Night"; ignored, so the theme is listed under More`);
+    else {
+      category = raw.category.trim();
+      if (parseBrowseCategory(category) === 'more' && category.toLowerCase() !== 'more') warnings.push(`${META_FILE}: category "${category}" is not one of the browse categories, so the theme is listed under More`);
+    }
+  }
   for (const k of Object.keys(raw)) if (!META_KEYS.includes(k)) warnings.push(`${META_FILE}: unknown key "${k}" is ignored`);
 
   // Credits: required for CC-BY, and naming the agency whenever a space agency or telescope is mentioned.
@@ -445,6 +459,7 @@ export function validateMeta(raw: unknown): { meta: ArtMeta | null; errors: stri
   if (errors.length) return { meta: null, errors, warnings };
   const meta: ArtMeta = { name, mood, tags, credits, licence: licence as ArtLicence, generator, prompt };
   if (addedAt) meta.addedAt = addedAt;
+  if (category) meta.category = category;
   return { meta, errors, warnings };
 }
 
@@ -571,7 +586,8 @@ export type ArtPackRef = {
   generator: string;
 };
 
-export type ArtPackTheme = Theme & { plus: false; artPack: ArtPackRef };
+/** T253: `browseCategory` is the Themes front-page category (src/core/themeBrowse.ts). */
+export type ArtPackTheme = Theme & { plus: false; artPack: ArtPackRef; browseCategory: BrowseCategoryId };
 
 export function isArtPackTheme(t: unknown): t is ArtPackTheme {
   return isObj(t) && isObj(t.artPack) && t.artPack.wallpaperImage === true && typeof t.artPack.id === 'string';
@@ -648,6 +664,7 @@ export function artPackTheme(pack: ArtPackData): ArtPackTheme {
     categories: Object.freeze(artPackCategories(pack)),
     tags: Object.freeze(['art', ...pack.meta.tags.filter((t) => t !== 'art')]),
     addedAt: pack.meta.addedAt ?? ART_PACK_DEFAULT_ADDED_AT,
+    browseCategory: parseBrowseCategory(pack.meta.category),
     artPack: Object.freeze({
       id: pack.id,
       wallpaperImage: true,

@@ -92,4 +92,18 @@ export const ja: NonNullable<LocaleMessages['themes']> = {
     remove: '{name}をお気に入りから外す',
     hint: 'このデバイスだけのお気に入りに保存します',
   },
+  /** T253 (owner-1101h #4): the Themes front page categories, chip row, See all and All themes. */
+  browse: {
+    category: { spaceNight: '宇宙と夜', nature: '自然', oceanWater: '海と水', cuteCosy: 'かわいい・ほっこり', sweetsTreats: 'スイーツ', dreamyPastel: '夢見るパステル', moodyDark: 'ムーディー・ダーク', abstractArt: 'アブストラクト・アート', seasonal: '季節', cityRetro: '街とレトロ', more: 'その他' },
+    chipsLabel: 'テーマのカテゴリ',
+    chipA11y: { other: '{label}、{count} 件のテーマ' },
+    chipHint: 'これらのテーマだけを表示します。もう一度タップすると戻ります。',
+    allThemes: 'すべてのテーマ',
+    allThemesBody: 'すべてのテーマをひとつの場所に。',
+    seeAll: 'すべて表示',
+    seeAllA11y: '{label}のテーマをすべて表示',
+    count: { other: '{count} 件のテーマ' },
+    backHome: 'すべてのカテゴリ',
+    backHomeHint: 'カテゴリの一覧に戻ります',
+  },
 };

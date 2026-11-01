@@ -113,4 +113,18 @@ export const ar: NonNullable<LocaleMessages['themes']> = {
     remove: 'إزالة {name} من المفضلة',
     hint: 'يحفظها في المفضلة على هذا الجهاز فقط',
   },
+  /** T253 (owner-1101h #4): the Themes front page categories, chip row, See all and All themes. */
+  browse: {
+    category: { spaceNight: 'الفضاء والليل', nature: 'الطبيعة', oceanWater: 'المحيط والماء', cuteCosy: 'لطيف ودافئ', sweetsTreats: 'حلويات', dreamyPastel: 'حالم وباستيل', moodyDark: 'داكن وغامض', abstractArt: 'تجريدي وفني', seasonal: 'موسمي', cityRetro: 'المدينة والطابع القديم', more: 'المزيد' },
+    chipsLabel: 'فئات السمات',
+    chipA11y: { zero: '{label}، لا توجد سمات', one: '{label}، سمة واحدة', two: '{label}، سمتان', few: '{label}، {count} سمات', many: '{label}، {count} سمة', other: '{label}، {count} سمة' },
+    chipHint: 'يعرض هذه السمات فقط. اضغط مرة أخرى للرجوع.',
+    allThemes: 'كل السمات',
+    allThemesBody: 'كل السمات في مكان واحد.',
+    seeAll: 'عرض الكل',
+    seeAllA11y: 'عرض كل سمات {label}',
+    count: { zero: 'لا توجد سمات', one: 'سمة واحدة', two: 'سمتان', few: '{count} سمات', many: '{count} سمة', other: '{count} سمة' },
+    backHome: 'كل الفئات',
+    backHomeHint: 'الرجوع إلى نظرة عامة على الفئات',
+  },
 };

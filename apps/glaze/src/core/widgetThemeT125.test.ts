@@ -149,8 +149,11 @@ test('bridge and extension agree on suite, key and file, and the bridge reloads 
 });
 
 test('the app writes the theme on every apply path and once at launch', () => {
-  const layout = read('app/_layout.tsx');
-  assert.match(layout, /syncWidgetThemeAtLaunch\(\)/);
+  // T250: the launch re-write is the deferred 'widgetTheme' step, queued by startLaunchWork.
+  assert.match(read('app/_layout.tsx'), /startLaunchWork\(\)/);
+  const launch = read('src/store/launchWork.ts');
+  assert.match(launch, /requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);
+  assert.match(launch, /registerDeferred\(DEFERRED_STEPS\.widgetTheme,[^]*?pushStoredWidgetTheme\(\)/);
   const store = read('src/store/widgetTheme.ts');
   assert.match(store, /widgets\.setTheme\(/);
   assert.match(store, /AsyncStorage\.setItem\(ACTIVE_WIDGET_THEME_KEY/);
@@ -161,10 +164,11 @@ test('the app writes the theme on every apply path and once at launch', () => {
   const useStyle = /const onUseStyle = async \([^)]*\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
   assert.match(useStyle, /applyWidgetTheme\(theme\)/);
   // T184 / T185: "Use this theme" (the old widgets step is gone) writes the widget theme through
-  // applyThemeEverywhere, which calls applyWidgetTheme.
+  // applyThemeEverywhere, which remembers it and (T250) queues the App Group write.
   const putInUse = /const putInUse = async \(\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
   assert.match(putInUse, /applyThemeEverywhere\(theme\)/);
-  assert.match(read('src/store/activeTheme.ts'), /const widgets = await applyWidgetTheme\(theme\);/);
+  assert.match(read('src/store/activeTheme.ts'), /const widgets = await rememberWidgetTheme\(theme\);/);
+  assert.match(read('src/store/activeTheme.ts'), /requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);
 
   const maker = read('app/wallpaper.tsx');
   const onSave = /const onSave = async \(\) => \{[^]*?\n {2}\};/.exec(maker)?.[0] ?? '';

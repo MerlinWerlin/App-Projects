@@ -3,6 +3,8 @@
 // functions the app and the native compositor use, so the contact sheets in docs/widget_snapshots/
 // show the real placement without a phone:
 //
+//   T251: any background, when the theme has a wallpaper, takes the setSeamless path below (the art
+//   blended onto the crop, src/core/artBlend.ts); "theme" / "blur" use setWidgetArt only without one.
 //   ThemeWidgetArt.onUse  background "wallpaper" → setSeamless: crop of the wallpaper under the
 //                         widget's default slot (seamlessCrop), hero fitted with heroRect (6 % inset)
 //                         background "theme" / "blur" → setWidgetArt at widgetSizePx, T236 full bleed
@@ -137,7 +139,9 @@ export function snapshotPlan(input: SnapshotInput): SnapshotPlan {
   let crop: Rect | null = null;
   let mode: WidgetOptionFit = 'fit';
   let artRect: Rect;
-  if (option.background === 'wallpaper') {
+  // T251 (owner-1101h #2): every option goes on the wallpaper crop when the theme has a wallpaper
+  // (ThemeWidgetArt tries setSeamless first; the bridge blends the art); setWidgetArt only without one.
+  if (option.background === 'wallpaper' || input.wallpaperPx) {
     path = 'seamless';
     if (input.wallpaperPx) {
       const c = seamlessCrop({ device, wallpaper: input.wallpaperPx, size, slot: normaliseSlot(size, null), nudge: { dx: 0, dy: 0 } });

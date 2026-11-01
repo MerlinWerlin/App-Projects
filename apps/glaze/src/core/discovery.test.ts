@@ -155,7 +155,8 @@ test('the heart is device-local, labelled, ≥48 pt and never shows a count (sou
   // T177 (owner-1031): the Themes tab keeps only All / Liked (src/core/gallery.ts); every gallery card
   // (src/ui/GalleryArtCard.tsx) carries the shared heart, so Liked covers the whole gallery.
   const screen = readFileSync(join(root, 'app', '(tabs)', 'themes.tsx'), 'utf8');
-  assert.match(screen, /galleryRows<[^>]*>\(\{[^}]*filter[^}]*liked/);
+  // T253 (owner-1101h): the grid view (chips, See all, search, Liked) is browseGridThemes (src/core/themeBrowse.ts).
+  assert.match(screen, /browseGridThemes<[^>]*>\(\{[^}]*filter[^}]*liked/);
   assert.match(screen, /<GalleryArtCard[\s\S]*?onToggleLike=\{onToggleLike\}/);
   assert.match(readFileSync(join(root, 'src', 'ui', 'GalleryArtCard.tsx'), 'utf8'), /<HeartButton\b/);
   // T186 (owner-1101 #4 supersedes T77 here): the Wallpapers tab no longer shows the wallpaper

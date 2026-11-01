@@ -34,7 +34,7 @@ export const CATALOG_CLIENT_REV = 't178';
  * The cached catalogue: when it was fetched (ms since epoch), its text exactly as served and
  * (T178) the stamp of the app build + pack host it was saved under (absent on copies older code saved).
  */
-export type CatalogCache = { savedAt: number; text: string; stamp?: string };
+export type CatalogCache = { savedAt: number; text: string; stamp?: string; etag?: string };
 
 function isObj(x: unknown): x is Record<string, unknown> {
   return typeof x === 'object' && x !== null && !Array.isArray(x);
@@ -76,7 +76,10 @@ export function catalogCacheStamp(i: CatalogStampInput): string {
 }
 
 export function serializeCatalogCache(c: CatalogCache): string {
-  return JSON.stringify(c.stamp ? { savedAt: c.savedAt, text: c.text, stamp: c.stamp } : { savedAt: c.savedAt, text: c.text });
+  const out: CatalogCache = { savedAt: c.savedAt, text: c.text };
+  if (c.stamp) out.stamp = c.stamp;
+  if (c.etag) out.etag = c.etag;
+  return JSON.stringify(out);
 }
 
 /** The cached copy, or null if missing / damaged / not a valid catalogue. Never throws. */
@@ -90,7 +93,21 @@ export function parseCatalogCache(raw: unknown): CatalogCache | null {
   }
   if (!isObj(v) || typeof v.savedAt !== 'number' || !Number.isFinite(v.savedAt) || typeof v.text !== 'string') return null;
   if (!parseCatalogText(v.text)) return null;
-  return typeof v.stamp === 'string' && v.stamp ? { savedAt: v.savedAt, text: v.text, stamp: v.stamp } : { savedAt: v.savedAt, text: v.text };
+  const out: CatalogCache = { savedAt: v.savedAt, text: v.text };
+  if (typeof v.stamp === 'string' && v.stamp) out.stamp = v.stamp;
+  // T254: the ETag the copy was served with (sent back as If-None-Match).
+  if (typeof v.etag === 'string' && v.etag && v.etag.length <= 200) out.etag = v.etag;
+  return out;
+}
+
+/**
+ * T254: the ETag to send as If-None-Match, or null for a full fetch. Only for a cached copy saved
+ * under this app's stamp (a new build / OTA / host still refetches in full, T178).
+ */
+export function catalogRequestEtag(cache: CatalogCache | null, stamp?: string | null): string | null {
+  if (!cache || !cache.etag) return null;
+  if (typeof stamp === 'string' && stamp !== '' && (cache.stamp ?? '') !== stamp) return null;
+  return cache.etag;
 }
 
 /** Optional context for catalogNeedsFetch (T178). */
@@ -133,8 +150,11 @@ export function catalogNeedsFetch(
   return cachedPackCount(cache) === 0 && age >= CATALOG_RETRY_MS;
 }
 
-/** Outcome of one fetch attempt; null when no fetch was made. */
-export type CatalogFetch = { ok: true; text: string } | { ok: false; error: string } | null;
+/**
+ * Outcome of one fetch attempt; null when no fetch was made. T254: a fetch may carry the served
+ * ETag, or be `notModified` (HTTP 304 to If-None-Match: the cached copy is still current).
+ */
+export type CatalogFetch = { ok: true; text: string; etag?: string | null } | { ok: true; notModified: true } | { ok: false; error: string } | null;
 
 export type CatalogDecision = {
   /** What the gallery lists (null: nothing remote to show). */
@@ -145,6 +165,11 @@ export type CatalogDecision = {
   save: boolean;
   /** Why the fetch didn't replace the cached copy (offline, bad file), or null. */
   error: string | null;
+  /**
+   * T254: true when the listed catalogue is the same as the cached one (a 304, or the same text
+   * served again), so the screen can keep its current list instead of rebuilding it.
+   */
+  unchanged?: boolean;
 };
 
 /** Offline-safe choice between the cached catalogue and a fresh fetch. Never throws. */
@@ -152,10 +177,20 @@ export function decideCatalog(cached: CatalogCache | null, fetched: CatalogFetch
   const keep = (error: string | null): CatalogDecision => ({ catalog: cached ? parseCatalogText(cached.text) : null, cache: cached, save: false, error });
   if (!fetched) return keep(null);
   if (!fetched.ok) return keep(fetched.error || 'fetch failed');
+  if ('notModified' in fetched) {
+    // T254: 304 Not Modified. Only meaningful with a cached copy; it restarts the TTL.
+    if (!cached) return keep('not modified without a cached copy');
+    const cache: CatalogCache = { ...cached, savedAt: now };
+    if (stamp) cache.stamp = stamp;
+    return { catalog: parseCatalogText(cached.text), cache, save: true, error: null, unchanged: true };
+  }
   const fresh = parseCatalogText(fetched.text);
   if (!fresh) return keep('bad catalogue ignored');
   const cache: CatalogCache = stamp ? { savedAt: now, text: fetched.text, stamp } : { savedAt: now, text: fetched.text };
-  return { catalog: fresh, cache, save: true, error: null };
+  const etag = typeof fetched.etag === 'string' && fetched.etag ? fetched.etag : '';
+  if (etag) cache.etag = etag;
+  const unchanged = !!cached && cached.text === fetched.text;
+  return unchanged ? { catalog: fresh, cache, save: true, error: null, unchanged } : { catalog: fresh, cache, save: true, error: null };
 }
 
 /**
@@ -205,7 +240,7 @@ export function remoteArtTheme(p: CatalogPack, baseUrl: string | null): RemoteAr
   const data: ArtPackData = {
     id: p.id,
     palette: p.palette,
-    meta: { name: p.name, mood: p.mood, tags: p.tags, credits: '', licence: 'original', generator: '', prompt: '', addedAt: p.addedAt || ART_PACK_DEFAULT_ADDED_AT },
+    meta: { name: p.name, mood: p.mood, tags: p.tags, credits: '', licence: 'original', generator: '', prompt: '', addedAt: p.addedAt || ART_PACK_DEFAULT_ADDED_AT, category: p.category || undefined },
     wallpaper: ART_WALLPAPER_SIZE,
     heroes: NO_HEROES,
     bytes: {},

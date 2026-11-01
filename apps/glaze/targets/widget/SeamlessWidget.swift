@@ -14,6 +14,9 @@
 // now makes full bleed (art whole + its own edges extended, no inset, no veil), edge to edge over a
 // full-opacity blur of itself: no grey/light frame ever, subject never cut. Fit: the raw art
 // (<id>-art.png / seamless-<family>-art.png, else the composed image) whole, inset, on the theme.
+// T251 (owner-1101h #2): art BLENDS with the wallpaper. The bridge keys / feathers the art
+// (GlazeArtBlend) over the wallpaper crop under the widget; this view adds nothing round it: no
+// blurred copy (the old light-grey frame), no border, no shadow, no material panel (ArtBackdrop).
 // The three SwiftUI string literals below are localised like the other widgets' (looked up by
 // their English text in targets/widget/<lang>.lproj/Localizable.strings; T133).
 import SwiftUI
@@ -119,10 +122,12 @@ struct SeamlessWidgetView: View {
         GeometryReader { geo in
           let size = geo.size
           if fit {
-            // T236 Fit: the whole raw art, small inset, on the theme background.
+            // T236 Fit: the whole raw art, small inset. T251: the raw art is the BLENDED art (keyed /
+            // feathered by the bridge, transparent edges), on the plain wallpaper-sampled theme
+            // gradient (ArtBackdrop: no material panel, no outline), so no box shows round it.
             let inset = min(size.width, size.height) * 0.06
             ZStack {
-              GlazeBackground(theme: t)
+              ArtBackdrop(theme: t)
               Image(uiImage: raw ?? image)
                 .resizable()
                 .scaledToFit()
@@ -132,19 +137,14 @@ struct SeamlessWidgetView: View {
             .frame(width: size.width, height: size.height)
             .clipped()
           } else {
-            // T236 Fill (default; owner-1101g #1: fill the widget, no grey/light frame ever, subject
-            // never cut). The composed file is already full bleed at the widget's aspect (the art's
-            // own edges extended by the bridge), so it goes edge to edge. Behind it: the same image
-            // blurred at FULL opacity (no veil, never the theme colour as a frame). When the shapes
-            // differ (iPad extra large, older pieces) the image is fitted whole over that blur.
+            // T236 Fill (default). T251 (owner-1101h #2): the composed file (the wallpaper crop under
+            // the widget, or the theme colour, with the blended art on it) goes edge to edge. NO
+            // blurred copy behind it any more: that blur of a black square with a white moon was the
+            // light-grey frame. When the shapes differ (iPad extra large, older pieces) the image is
+            // fitted whole over the plain theme gradient (ArtBackdrop), never a grey/white box.
             let edgeToEdge = SeamlessWidgetView.aspectMatch(image.size, size) >= seamlessFillMinAspectMatch
             ZStack {
-              Image(uiImage: image)
-                .resizable()
-                .scaledToFill()
-                .frame(width: size.width, height: size.height)
-                .clipped()
-                .blur(radius: 16, opaque: true)
+              ArtBackdrop(theme: t)
               if edgeToEdge {
                 Image(uiImage: image)
                   .resizable()
@@ -166,6 +166,17 @@ struct SeamlessWidgetView: View {
         GlazeBackground(theme: t)
       }
     }
+  }
+}
+
+/// T251: what sits behind widget art. The theme's own two colours (sampled from its wallpaper) as a
+/// plain corner-to-corner gradient: no material panel (glass), no outline stroke, no blur, no shadow,
+/// so art never gets a frame or a box from the widget itself.
+struct ArtBackdrop: View {
+  let theme: WidgetTheme
+
+  var body: some View {
+    LinearGradient(colors: theme.backgroundColors, startPoint: .topLeading, endPoint: .bottomTrailing)
   }
 }
 

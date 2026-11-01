@@ -226,3 +226,32 @@ export function markUnticked(s: ProbeState, id: string): ProbeState {
 export function clearUnticked(s: ProbeState, id: string): ProbeState {
   return s.unticked.includes(id) ? { ...s, unticked: s.unticked.filter((x) => x !== id) } : s;
 }
+
+// ---------------------------------------------------------------- T250: throttle + chunking
+
+/** T250: the launch probe runs at most once per this interval (a theme apply or icon install always probes). */
+export const PROBE_INTERVAL_MS = 24 * 60 * 60 * 1000;
+/** T250: canOpenURL answers asked per tick; the JS thread yields between chunks. */
+export const PROBE_CHUNK = 10;
+export const PROBE_LAST_RUN_KEY = 'glaze.installedProbe.lastRun.v1';
+
+export type ProbeReason = 'launch' | 'apply' | 'install';
+
+/**
+ * T250: should the installed-apps check run now? A launch probes only when the last finished check
+ * is unknown, at least PROBE_INTERVAL_MS old, or in the future (clock changed); 'apply' and
+ * 'install' always probe (the deferred queue coalesces repeats).
+ */
+export function probeDue(lastRunAt: number | null, now: number, reason: ProbeReason): boolean {
+  if (reason !== 'launch') return true;
+  if (lastRunAt === null || !Number.isFinite(lastRunAt)) return true;
+  if (lastRunAt > now) return true;
+  return now - lastRunAt >= PROBE_INTERVAL_MS;
+}
+
+/** T250: the stored last-run time (ms), or null when missing / unreadable. */
+export function parseProbeLastRun(raw: string | null | undefined): number | null {
+  if (!raw) return null;
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? n : null;
+}

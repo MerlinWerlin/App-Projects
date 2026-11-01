@@ -12,9 +12,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { durations } from '../src/theme/motion';
 import { INTRO_MS, startupReady } from '../src/core/introGlaze';
 import { I18nProvider, loadLocaleOverride, useT } from '../src/i18n';
-import { restoreDownloadedPacks } from '../src/native/packs';
-import { runInstalledProbeOnLaunch } from '../src/store/installedProbe';
-import { syncWidgetThemeAtLaunch } from '../src/store/widgetTheme';
+import { startLaunchWork } from '../src/store/launchWork';
 import { textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import { ErrorFallback } from '../src/ui/ErrorBoundary';
@@ -22,8 +20,8 @@ import { IntroGlaze } from '../src/ui/IntroGlaze';
 import { ToastProvider } from '../src/ui/Toast';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
-// Register downloaded packs' motifs while fonts load, before any screen reads the studio (T50).
-restoreDownloadedPacks().catch(() => {});
+// T250: nothing heavy at module load. Downloaded packs' motifs (T50) are restored by the first
+// deferred step, and src/store/studio.ts awaits the same memoised promise before it parses a style.
 // The native splash (the unlit Prism diamond on the dark bg) hands over to IntroGlaze on its first frame; the two are drawn
 // identically, so this fade is invisible (POLISH rule 6).
 try {
@@ -72,18 +70,12 @@ export default function RootLayout() {
       .finally(() => setI18nReady(true));
   }, []);
 
-  // T125: once per launch, re-write the active widget theme to the App Group (no-op in Expo Go), so a theme picked
-  // before this build, or a write the extension missed, still reaches the widgets. Delayed to stay off startup.
+  // T250 (owner-1101h #1): the launch work (T50 pack motifs, T125 widget theme re-write to the App Group,
+  // T229 installed-apps check, at most daily) is queued here and runs only after the first screen has drawn,
+  // one deferred step at a time (src/store/launchWork.ts). Nothing here awaits it.
   useEffect(() => {
-    const id = setTimeout(() => {
-      syncWidgetThemeAtLaunch().catch(() => false);
-    }, 1500);
-    return () => clearTimeout(id);
+    startLaunchWork();
   }, []);
-
-  // T229: once per launch, after the first render and off startup, tick the popular apps iOS says are on this
-  // iPhone (native builds only; Expo Go answers false and nothing changes).
-  useEffect(() => runInstalledProbeOnLaunch(2500), []);
 
   // Never an endless splash: go ahead after INTRO_MS.maxWait even if fonts or languages are still loading.
   const [timedOut, setTimedOut] = useState(false);

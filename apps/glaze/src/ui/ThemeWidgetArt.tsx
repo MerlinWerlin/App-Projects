@@ -3,9 +3,9 @@
 // a bundled art pack: its three hero pieces), shows them in WidgetArtMenu for the chosen size and
 // puts the chosen one on the Glaze "Seamless" widget:
 //   background "wallpaper" → widgets.setSeamless (the wallpaper crop under the widget + the art fitted);
-//   background "theme" / "blur" → widgets.setWidgetArt (T236: full bleed, the art whole with its own
-//   edges extended, no frame; also writes the raw art for the widget's Fit layout), and
-//   on a build whose bridge predates T187, the setSeamless path instead.
+//   background "theme" / "blur" → since T251 (owner-1101h #2: art BLENDS with the wallpaper, no box)
+//   also widgets.setSeamless (the bridge keys / feathers the art onto the wallpaper crop); only a
+//   theme without a wallpaper file falls back to widgets.setWidgetArt (theme colour, same blend).
 // T206: a picture with numbers painted in (fixedValues) says so under the menu, and its button reads
 // "Live widget instead" (the live one is a separate catalogue widget, not this picture).
 // Live kinds (clock, date, countdown, photo, habits) also offer "Make it live" (Widget Studio with
@@ -148,9 +148,15 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
           typeof source === 'number' ? await localAssetUri(source, `${theme.id}-${option.id}.png`) : await existingLocalFile(source.uri);
         if (artUri) {
           let ok: boolean | null;
-          if (option.background === 'wallpaper') {
-            ok = await seamless(artUri);
-          } else {
+          // T251 (owner-1101h #2): art BLENDS with the wallpaper on every theme. Every piece goes on
+          // the wallpaper crop under the widget (setSeamless; the bridge keys a plain background
+          // out / feathers a painted one, src/core/artBlend.ts), whatever its pack `background`
+          // says. Only a theme with no wallpaper file falls back to setWidgetArt (the theme colour,
+          // same blend, no blurred copy).
+          let path: 'fit' | 'bleed' = 'fit';
+          ok = await seamless(artUri);
+          if (ok === false && option.background !== 'wallpaper') {
+            path = 'bleed';
             const px = widgetSizePx(seamlessDeviceHere(), home);
             const res = await widgets.setWidgetArt({
               artUri,
@@ -161,8 +167,8 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
               fit: placeArt({ w: option.width, h: option.height }, px, option.fit).mode,
               size: home,
             });
-            // A bridge from before T187: the seamless path still shows the art whole.
-            ok = res.available ? res.ok : res.reason === 'not-built' ? await seamless(artUri) : null;
+            // The seamless path already failed (no wallpaper file); a bridge without setWidgetArt has nothing left.
+            ok = res.available ? res.ok : false;
           }
           next = ok === null ? 'unavailable' : ok ? 'saved' : 'failed';
           if (ok) {
@@ -171,7 +177,7 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
             // T237: what the widget draws live over this piece (null = a picture only).
             const plan = liveArtPlan(theme.id, option);
             const live = plan
-              ? liveArtSpec(plan, { w: option.width, h: option.height }, px, option.background === 'wallpaper' ? 'fit' : 'bleed', { bg: theme.palette.bg, ink: theme.palette.ink })
+              ? liveArtSpec(plan, { w: option.width, h: option.height }, px, path, { bg: theme.palette.bg, ink: theme.palette.ink })
               : null;
             const lib = await widgets.addToArtLibrary(
               {
@@ -267,6 +273,8 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
       width={width}
       themeColour={theme.palette.bg}
       wallpaper={menuWallpaper}
+      themeId={theme.id}
+      artTransparent={!remoteTheme}
       selectedId={pickedItem.option.id}
       onSelect={onSelect}
       footer={footer}

@@ -92,3 +92,16 @@ test('missing, tampered or failing packs are skipped and never throw', async () 
   assert.deepEqual(failing.missing, [AURORA_PACK_ID]);
   assert.deepEqual(await restorePackMotifs(memoryTransport(files), EMPTY_CACHE_INDEX), { packs: [], motifs: [], missing: [] });
 });
+
+test('T250 restore yields between packs (never before the first) and a failing pause never stops it', async () => {
+  const { files, index } = downloadedPack();
+  const two = cacheIndexAdd(index, { ...index.packs[0], id: 'ghost-pack', name: 'Ghost' });
+  let pauses = 0;
+  const r = await restorePackMotifs(memoryTransport(files), two, undefined, async () => {
+    pauses++;
+    throw new Error('no timers');
+  });
+  assert.equal(pauses, two.packs.length - 1);
+  assert.deepEqual(r.packs, [AURORA_PACK_ID]);
+  clearPackMotifs();
+});

@@ -92,4 +92,18 @@ export const ptBR: NonNullable<LocaleMessages['themes']> = {
     remove: 'Descurtir {name}',
     hint: 'Guarda em Curtidos, só neste aparelho',
   },
+  /** T253 (owner-1101h #4): the Themes front page categories, chip row, See all and All themes. */
+  browse: {
+    category: { spaceNight: 'Espaço e noite', nature: 'Natureza', oceanWater: 'Oceano e água', cuteCosy: 'Fofo e aconchegante', sweetsTreats: 'Doces e guloseimas', dreamyPastel: 'Sonhador e pastel', moodyDark: 'Sombrio e escuro', abstractArt: 'Abstrato e arte', seasonal: 'Sazonais', cityRetro: 'Cidade e retrô', more: 'Mais' },
+    chipsLabel: 'Categorias de temas',
+    chipA11y: { one: '{label}, {count} tema', other: '{label}, {count} temas' },
+    chipHint: 'Mostra só estes temas. Toque de novo para voltar.',
+    allThemes: 'Todos os temas',
+    allThemesBody: 'Todos os temas em um só lugar.',
+    seeAll: 'Ver tudo',
+    seeAllA11y: 'Ver todos os temas de {label}',
+    count: { one: '{count} tema', other: '{count} temas' },
+    backHome: 'Todas as categorias',
+    backHomeHint: 'Volta para a visão geral das categorias',
+  },
 };

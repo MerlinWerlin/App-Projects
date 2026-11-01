@@ -87,6 +87,11 @@ export type CatalogPack = {
   tags: string[];
   mood: string;
   addedAt: string;
+  /**
+   * T253: the Themes front-page category as served ("Space & Night"), '' when absent. Optional in
+   * catalog.json; matched tolerantly (src/core/themeBrowse.ts parseBrowseCategory, unknown → More).
+   */
+  category: string;
 };
 
 export type Catalog = {
@@ -137,6 +142,16 @@ export function isSafeAssetPath(p: unknown): p is string {
   return typeof p === 'string' && FILE_NAME.test(p) && !p.includes('..') && p !== REMOTE_ART_MANIFEST;
 }
 
+/**
+ * T253/T254: the optional `category` of a catalogue entry, tolerant of what a publisher may send:
+ * a string (trimmed, capped), or a list whose first string is used; anything else is ''.
+ * Unknown fields elsewhere in an entry are ignored, so new catalogue fields never hide a pack.
+ */
+function catalogCategory(x: unknown): string {
+  const v = Array.isArray(x) ? x.find((s) => typeof s === 'string') : x;
+  return typeof v === 'string' ? v.replace(/\s+/g, ' ').trim().slice(0, 60) : '';
+}
+
 export function parseCatalog(raw: unknown): ParseResult<Catalog> {
   if (!isObj(raw)) return { ok: false, error: 'catalog: not an object' };
   if (raw.format !== CATALOG_FORMAT) return { ok: false, error: 'catalog: unknown format' };
@@ -170,6 +185,7 @@ export function parseCatalog(raw: unknown): ParseResult<Catalog> {
       tags,
       mood: typeof p.mood === 'string' ? p.mood.slice(0, 200) : '',
       addedAt: typeof p.addedAt === 'string' ? p.addedAt.slice(0, 10) : '',
+      category: catalogCategory(p.category),
     });
   }
   return { ok: true, value: { format: CATALOG_FORMAT, version: 1, generatedAt: raw.generatedAt, packs } };

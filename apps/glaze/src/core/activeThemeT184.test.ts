@@ -93,7 +93,9 @@ test('T184 "Use this theme" writes the icon style, the widget theme (bridge) and
   const fn = /export async function applyThemeEverywhere[^]*?\n\}/.exec(store)?.[0] ?? '';
   // T241: in the user's look for the theme (textured 'themed' by default), with its shape.
   assert.match(fn, /applyThemeIcons\(theme, /);
-  assert.match(fn, /applyWidgetTheme\(theme\)/);
+  // T250: the widget theme is remembered here; the App Group write is the queued 'widgetTheme' step.
+  assert.match(fn, /rememberWidgetTheme\(theme\)/);
+  assert.match(fn, /requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);
   assert.match(fn, /AsyncStorage\.setItem\(ACTIVE_THEME_KEY/);
   assert.match(fn, /for \(const l of listeners\) l\(theme\.id\)/);
   // The bridge write itself stays in applyWidgetTheme (T125).

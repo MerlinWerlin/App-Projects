@@ -50,7 +50,18 @@ export type WidgetArtPiece = {
   size: WidgetArtSize | null;
   /** T237: what the widget draws live over this piece; absent = a picture only. */
   live?: LiveArtSpec;
+  /**
+   * T252: position of an auto-added theme piece among its theme's pieces of the same size (0 = the
+   * first on the shelf). A widget whose piece was removed by a theme swap shows the new theme's
+   * piece in the same slot (resolveWidgetPiece). Absent on photos and older records.
+   */
+  slot?: number;
 };
+
+/** T252: what a removed auto-added piece was (size + slot), so its widgets can be remapped. */
+export type RetiredPiece = { size: WidgetArtSize | null; slot: number | null };
+/** T252: most retired ids remembered (oldest forgotten first). */
+export const WIDGET_ART_RETIRED_CAP = 120;
 
 export type WidgetArtIndex = {
   v: 1;
@@ -59,6 +70,11 @@ export type WidgetArtIndex = {
   currentThemeId?: string | null;
   /** T238: the one-time clean-up version already run (WIDGET_ART_MIGRATION). */
   migrated?: number;
+  /**
+   * T252: auto-added pieces removed by a theme swap, by id. Widgets still configured with one of
+   * these ids show the current theme's piece of the same size + slot (WidgetArtStore.resolve).
+   */
+  retired?: Record<string, RetiredPiece>;
 };
 
 export function emptyLibrary(): WidgetArtIndex {
@@ -117,7 +133,30 @@ function normalisePiece(raw: unknown): WidgetArtPiece | null {
     size,
     // T237 (additive): keep a valid live spec, drop a broken one.
     ...liveField(r.live),
+    // T252 (additive): slot of an auto-added theme piece.
+    ...slotField(r.slot),
   };
+}
+
+function slotField(raw: unknown): { slot?: number } {
+  return typeof raw === 'number' && Number.isInteger(raw) && raw >= 0 && raw < 1000 ? { slot: raw } : {};
+}
+
+function readRetired(raw: unknown): Record<string, RetiredPiece> | undefined {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return undefined;
+  const out: Record<string, RetiredPiece> = {};
+  let n = 0;
+  const entries = Object.entries(raw as Record<string, unknown>);
+  // Keep the newest (last written) entries when over the cap.
+  for (const [id, v] of entries.slice(Math.max(0, entries.length - WIDGET_ART_RETIRED_CAP))) {
+    if (!isValidPieceId(id) || !v || typeof v !== 'object') continue;
+    const r = v as Record<string, unknown>;
+    const size = r.size === 'small' || r.size === 'medium' || r.size === 'large' ? r.size : null;
+    const slot = slotField(r.slot).slot ?? null;
+    out[id] = { size, slot };
+    n++;
+  }
+  return n > 0 ? out : undefined;
 }
 
 function liveField(raw: unknown): { live?: LiveArtSpec } {
@@ -149,10 +188,12 @@ export function parseLibrary(raw: string | null | undefined): WidgetArtIndex {
   return { ...lib, ...meta };
 }
 
-function readMeta(r: Record<string, unknown>): Pick<WidgetArtIndex, 'currentThemeId' | 'migrated'> {
-  const out: Pick<WidgetArtIndex, 'currentThemeId' | 'migrated'> = {};
+function readMeta(r: Record<string, unknown>): Pick<WidgetArtIndex, 'currentThemeId' | 'migrated' | 'retired'> {
+  const out: Pick<WidgetArtIndex, 'currentThemeId' | 'migrated' | 'retired'> = {};
   if (typeof r.currentThemeId === 'string' && r.currentThemeId.length > 0) out.currentThemeId = r.currentThemeId.slice(0, 120);
   if (typeof r.migrated === 'number' && Number.isFinite(r.migrated) && r.migrated > 0) out.migrated = Math.floor(r.migrated);
+  const retired = readRetired(r.retired);
+  if (retired) out.retired = retired;
   return out;
 }
 
@@ -172,9 +213,12 @@ export type AddResult = { lib: WidgetArtIndex; added: boolean; evicted: string[]
  * the oldest pieces are dropped and listed in `evicted` (the bridge deletes their files).
  */
 export function addPiece(lib: WidgetArtIndex, piece: Omit<WidgetArtPiece, 'file'> & { file?: string }, cap = WIDGET_ART_LIBRARY_CAP): AddResult {
-  const p = normalisePiece(piece);
-  if (!p) return { lib, added: false, evicted: [] };
-  const existed = lib.pieces.some((q) => q.id === p.id);
+  const p0 = normalisePiece(piece);
+  if (!p0) return { lib, added: false, evicted: [] };
+  const prev = lib.pieces.find((q) => q.id === p0.id);
+  const existed = prev !== undefined;
+  // T252: re-applying an auto-added piece ("Use on my widget") keeps its slot.
+  const p: WidgetArtPiece = p0.slot === undefined && prev?.slot !== undefined ? { ...p0, slot: prev.slot } : p0;
   const merged = listPieces({ v: 1, pieces: [p, ...lib.pieces.filter((q) => q.id !== p.id)] });
   const keep = Math.max(1, Math.floor(cap));
   // Never evict the piece just added, even if its clock is behind.
@@ -230,7 +274,35 @@ export function replaceThemeArt(lib: WidgetArtIndex, themeId: string | null): Cl
   const next: WidgetArtIndex = { ...lib, v: 1, pieces: listPieces({ v: 1, pieces: keep }) };
   if (current) next.currentThemeId = current;
   else delete next.currentThemeId;
+  const retired = retire(lib.retired, lib.pieces.filter((p) => remove.includes(p.id)), next.pieces);
+  if (retired) next.retired = retired;
+  else delete next.retired;
   return { lib: next, keep: next.pieces.map((p) => p.id), remove };
+}
+
+/**
+ * T252: the retired map after `gone` pieces were removed: their size + slot are remembered (newest
+ * last, capped), and ids that are in the library again (`present`) are forgotten. undefined = empty.
+ */
+export function retire(
+  prev: Record<string, RetiredPiece> | undefined,
+  gone: readonly WidgetArtPiece[],
+  present: readonly WidgetArtPiece[],
+): Record<string, RetiredPiece> | undefined {
+  const here = new Set(present.map((p) => p.id));
+  const entries: [string, RetiredPiece][] = [];
+  for (const [id, r] of Object.entries(prev ?? {})) {
+    if (!here.has(id) && !gone.some((g) => g.id === id)) entries.push([id, r]);
+  }
+  for (const g of gone) {
+    if (isUserPiece(g) || here.has(g.id)) continue;
+    entries.push([g.id, { size: g.size, slot: g.slot ?? null }]);
+  }
+  const kept = entries.slice(Math.max(0, entries.length - WIDGET_ART_RETIRED_CAP));
+  if (kept.length === 0) return undefined;
+  const out: Record<string, RetiredPiece> = {};
+  for (const [id, r] of kept) out[id] = r;
+  return out;
 }
 
 /**
@@ -268,3 +340,58 @@ export function fallbackPiece(lib: WidgetArtIndex, size: WidgetArtSize | null = 
   const mine = listPieces(lib).filter((p) => !isUserPiece(p) && p.themeId === cur);
   return mine.find((p) => size !== null && p.size === size) ?? mine[0] ?? null;
 }
+
+// ---------------------------------------------------------------- T252 (owner-1101h #3)
+// A widget's configured piece may be gone (theme swap, Manage). WidgetArtStore.resolve in
+// targets/widget/WidgetArtLibrary.swift mirrors resolveWidgetPiece EXACTLY; keep the two in sync.
+
+const SIZE_ORDER: Record<string, number> = { small: 0, medium: 1, large: 2 };
+
+/** Current-theme ordering: size (small, medium, large, none), slot (none last), newest, id. */
+export function byShelf(a: WidgetArtPiece, b: WidgetArtPiece): number {
+  const sa = a.size ? SIZE_ORDER[a.size] : 3;
+  const sb = b.size ? SIZE_ORDER[b.size] : 3;
+  if (sa !== sb) return sa - sb;
+  const la = a.slot ?? Number.MAX_SAFE_INTEGER;
+  const lb = b.slot ?? Number.MAX_SAFE_INTEGER;
+  if (la !== lb) return la - lb;
+  return b.created - a.created || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+}
+
+/** The current theme's auto-added pieces in shelf order (byShelf). */
+export function currentThemePieces(lib: WidgetArtIndex): WidgetArtPiece[] {
+  const cur = lib.currentThemeId;
+  if (!cur) return [];
+  return lib.pieces.filter((p) => !isUserPiece(p) && p.themeId === cur).sort(byShelf);
+}
+
+/**
+ * Edit Widget > Art order (suggestedEntities): the current theme's pieces first (byShelf), then
+ * every other piece (own photos, art kept from elsewhere) newest first.
+ */
+export function pickerPieces(lib: WidgetArtIndex): WidgetArtPiece[] {
+  const mine = currentThemePieces(lib);
+  const ids = new Set(mine.map((p) => p.id));
+  return [...mine, ...listPieces(lib).filter((p) => !ids.has(p.id))];
+}
+
+/**
+ * The piece a widget configured with `id` shows, for a widget of `size`:
+ * - `id` when it is still in the library;
+ * - else (removed) the current theme's piece of the same size and slot (size = the widget's, else
+ *   the removed piece's), else that size's first piece, else the current theme's first piece;
+ * - null = no choice / nothing to map to: the widget shows the last applied image for its size
+ *   (seamless-<size>.png), else the theme background. Never blank.
+ */
+export function resolveWidgetPiece(lib: WidgetArtIndex, id: string | null | undefined, size: WidgetArtSize | null): string | null {
+  if (!isValidPieceId(id)) return null;
+  if (lib.pieces.some((p) => p.id === id)) return id;
+  const mine = currentThemePieces(lib);
+  if (mine.length === 0) return null;
+  const r = lib.retired?.[id];
+  const want = size ?? r?.size ?? null;
+  const sameSize = want ? mine.filter((p) => p.size === want) : [];
+  const sameSlot = r && r.slot !== null ? sameSize.find((p) => p.slot === r.slot) : undefined;
+  return (sameSlot ?? sameSize[0] ?? mine[0]).id;
+}
+

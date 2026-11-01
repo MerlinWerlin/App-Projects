@@ -437,17 +437,23 @@ function LiveCropEditor({
   const drawnW = base.width * layoutZoom;
   const drawnH = base.height * layoutZoom;
   const imageStyle = useAnimatedStyle(() => {
-    const s = z.value / layoutZoom;
-    if (!(Number.isFinite(s) && s > 0 && Number.isFinite(x.value) && Number.isFinite(y.value))) {
+    // T250 re-check of T228: this updater runs on the UI thread too, so it catches its own errors
+    // (an uncaught throw there aborts the app) and falls back to the identity transform.
+    try {
+      const s = z.value / layoutZoom;
+      if (!(Number.isFinite(s) && s > 0 && Number.isFinite(x.value) && Number.isFinite(y.value))) {
+        return { transform: [{ translateX: 0 }, { translateY: 0 }, { scale: 1 }] };
+      }
+      return {
+        transform: [
+          { translateX: x.value + (drawnW * (s - 1)) / 2 },
+          { translateY: y.value + (drawnH * (s - 1)) / 2 },
+          { scale: s },
+        ],
+      };
+    } catch (_e) {
       return { transform: [{ translateX: 0 }, { translateY: 0 }, { scale: 1 }] };
     }
-    return {
-      transform: [
-        { translateX: x.value + (drawnW * (s - 1)) / 2 },
-        { translateY: y.value + (drawnH * (s - 1)) / 2 },
-        { scale: s },
-      ],
-    };
   }, [layoutZoom, drawnW, drawnH]);
 
   // Accessibility actions (no gestures needed): same steps as before, committed directly.

@@ -58,7 +58,11 @@ test('feature card lives inside the one showcase grid (no new list rows, same re
   assert.match(card, /accessibilityHint=\{t\('themeUi\.card\.hint'\)\}/);
   assert.match(card, /<HeartButton\b/);
   assert.doesNotMatch(GRID, /getItemLayout/);
-  assert.doesNotMatch(THEMES, /getItemLayout/);
+  // T253 (owner-1101h, 100+ themes): the Themes tab's rails and thumbnail grid have fixed card
+  // geometry, so they use getItemLayout, always through the core helpers (src/core/themeBrowse.ts).
+  for (const m of THEMES.matchAll(/getItemLayout=\{(\w+)\}/g)) assert.match(m[1], /^(getItemLayout|getGridLayout)$/);
+  assert.match(THEMES, /railItemLayout\(shared\.railWidth, gap, index\)/);
+  assert.match(THEMES, /gridItemLayout\(geo\.rowHeight, listTop, index\)/);
 });
 
 test('Live hero: raised surface without a hairline, an eyebrow, caps on every Text, label and hint kept', () => {

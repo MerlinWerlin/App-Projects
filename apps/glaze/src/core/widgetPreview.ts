@@ -16,6 +16,10 @@
 //                            the extension with a blurred aspect-filled copy of the art clipped to
 //                            the strips (blurBackdrop).
 //
+// T251 (owner-1101h #2): the blurred copy is GONE from the bridge, the widget and the menu preview
+// (it was the light-grey frame round the black-square moon). Art now blends onto the wallpaper crop
+// (src/core/artBlend.ts). The NATIVE_BLUR_* constants and blurBackdrop stay only for older tests.
+//
 // Also the stable menu names ("Art n" numbered once per theme, not per size) and the menu caption
 // layout, and the real pixel size of a downloaded pack's hero piece per size (remoteHeroPx).
 // Pure TS (Node runs it directly), tested in widgetPreview.test.ts.

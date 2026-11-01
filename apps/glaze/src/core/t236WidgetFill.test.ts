@@ -62,22 +62,28 @@ test('fullBleedArt: edge to edge within 2 % of the aspect, else extended', () =>
 
 test('bridge setWidgetArt: full bleed, no 6 % inset, no veil, edges extended, raw art written', () => {
   const bridge = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
-  const setArt = bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArt")'), bridge.indexOf('AsyncFunction("linkStatus")'));
+  const setArt = bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArt")'), bridge.indexOf('AsyncFunction("linkStatus")')) +
+    // T252: the composition itself lives in the shared helper (also used by composeWidgetArtPiece).
+    bridge.slice(bridge.indexOf('private static func composeArtImage('), bridge.indexOf('private static func reloadWidgets()'));
   const code = setArt.replace(/\/\/.*$/gm, '');
   assert.doesNotMatch(code, /0\.06/, 'no 6 % pad');
   assert.doesNotMatch(code, /insetBy/, 'no inset');
   assert.doesNotMatch(code, /withAlphaComponent/, 'no veil of the theme colour');
-  assert.match(code, /clampedToExtent\(\)/, "the art's own edges extended");
-  assert.match(code, /CIGaussianBlur/);
-  // The extension is drawn only outside the art (no ghost under transparent art).
-  assert.match(code, /usesEvenOddFillRule = true/);
+  // T251 (owner-1101h #2): the blurred extended edges read as a light-grey frame: gone. The art is
+  // blended (keyed / feathered) and drawn on the theme colour.
+  assert.doesNotMatch(code, /clampedToExtent|CIGaussianBlur|CIFilter/);
+  assert.match(code, /let art = GlazeArtBlend\.blended\(loaded\)/);
   assert.match(code, /art\.draw\(in: artRect\)/);
   assert.match(code, /"seamless-\\\(family\)-art\.png"/);
   assert.match(code, /downscale\(art, maxEdge: 1200\)\.pngData\(\)/);
-  // The wallpaper path keeps its inset hero and drops a stale raw art file.
-  const setSeam = bridge.slice(bridge.indexOf('AsyncFunction("setSeamless")'), bridge.indexOf('AsyncFunction("setWidgetArt")'));
+  // The wallpaper path keeps its inset hero; T251: it blends the hero, writes it as the raw art and
+  // drops a stale file when there is no hero. T252: the composition lives in the shared helper.
+  const setSeam = bridge.slice(bridge.indexOf('AsyncFunction("setSeamless")'), bridge.indexOf('AsyncFunction("setWidgetArt")')) +
+    bridge.slice(bridge.indexOf('private static func composeSeamlessImage('), bridge.indexOf('private static func composeArtImage('));
   assert.match(setSeam, /\* 0\.06/);
-  assert.match(setSeam, /removeItem\(at: container\.appendingPathComponent\("seamless-\\\(family\)-art\.png"\)\)/);
+  assert.match(setSeam, /GlazeArtBlend\.blended\(\$0\)/);
+  assert.match(setSeam, /let heroURL = container\.appendingPathComponent\("seamless-\\\(family\)-art\.png"\)/);
+  assert.match(setSeam, /removeItem\(at: heroURL\)/);
 });
 
 test('library: <id>-art.png copied beside <id>.jpg when present and kept by the index', () => {
@@ -105,12 +111,14 @@ test('Seamless widget: Edit Widget Layout Fill (default) / Fit; Fill never shows
   const fill = widget.slice(widget.indexOf('} else {\n            // T236 Fill'), widget.indexOf('} else {\n        GlazeBackground'));
   assert.ok(fill.length > 100, 'Fill branch found');
   assert.doesNotMatch(fill, /GlazeBackground|\.opacity\(/);
-  assert.match(fill, /\.blur\(radius: 16, opaque: true\)/);
+  // T251: no blur at all; the plain theme gradient (no material / outline) only behind the image.
+  assert.doesNotMatch(fill, /\.blur\(/);
+  assert.match(fill, /ArtBackdrop\(theme: t\)/);
   assert.match(widget, /seamlessFillMinAspectMatch: CGFloat = 0\.97/);
   assert.equal(SEAMLESS_FILL_MIN_ASPECT_MATCH, 0.97);
   // Fit branch: the raw art whole, inset, on the theme background.
   const fit = widget.slice(widget.indexOf('if fit {'), widget.indexOf('// T236 Fill'));
-  assert.match(fit, /GlazeBackground\(theme: t\)/);
+  assert.match(fit, /ArtBackdrop\(theme: t\)/, 'T251: plain gradient behind the blended raw art, no panel / outline');
   assert.match(fit, /Image\(uiImage: raw \?\? image\)\s*\.resizable\(\)\s*\.scaledToFit\(\)\s*\.padding\(inset\)/);
   // The new literals are localised in every language.
   const en = read('targets', 'widget', 'en.lproj', 'Localizable.strings');

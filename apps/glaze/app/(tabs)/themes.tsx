@@ -1,57 +1,88 @@
-// Themes tab. T177 (owner brief 31 Oct, docs/OWNER_1031.md: "it has all of the old themes which need
-// to go ... none of the new themes from GitHub"): the gallery is rebuilt around the remote
-// catalogue. Two editorial sections, composed in src/core/gallery.ts:
-//   1. "New collection": every theme in the catalogue (useRemoteArtThemes), data-driven, so a later
-//      batch of packs appears with no app change. Art-led large cards (src/ui/GalleryArtCard): the
-//      catalogue thumbnail through expo-image with its ThumbHash placeholder, the name, the mood line.
-//      While the catalogue is still empty (first launch, offline, a 404) the section shows calm
-//      skeleton cards in the final shape, never an error.
-//   2. "Starters": the three bundled art packs (Deep Sea, Starry Night, Sunset Dunes).
-// Gone from the gallery: the old starter showcase, the themesNew / themesStoryPlay lists, Space, the
-// Plus packs, the seasonal collections banner, the story chips, the category bubbles and the
-// New / Our picks sub-tabs. Their data modules stay, so a theme someone already applied still
-// resolves by id (getAnyTheme) on the theme page, in widgets and in saved state.
-// Kept: search over the listed themes, the Liked filter (hearts are device-local), the Live hero,
-// Your look, Make a wallpaper, Send feedback, the header "?" and Settings gear.
-// Pull to refresh fetches catalog.json now (refreshRemoteCatalog). The list only allows the iOS
-// overscroll while it rests at the very top, which is what pulling to refresh needs; anywhere else
-// it never bounces (owner 25 Oct), and Android never shows the overscroll glow.
+// Themes tab. T253 (owner-1101h #4, docs/OWNER_1101H.md: "Themes front page with categories + All
+// themes", fast with 100+ themes): the front page is built from src/core/themeBrowse.ts.
+//   Home view: a category chip row (All themes + every non-empty category in the fixed order, More
+//   last), then one editorial section per non-empty category (header with "See all" and a
+//   horizontal rail of art-led cards, src/ui/GalleryArtCard), then "All themes": every theme as
+//   rows of thumbnail cards (src/ui/ThemeThumbCard), scrolled by this one virtualised list.
+//   Grid view: a chip, "See all", a search or the Liked filter shows a virtualised thumbnail grid:
+//   fixed-height rows of `columns` thumbnails (what FlatList numColumns does) in the SAME list, so
+//   the search field in the header keeps focus; getItemLayout over the fixed card geometry and a
+//   progressive render window (about one screen of rows per batch).
+//   Tapping the selected chip again, or "All categories", goes back to the overview.
+// Themes come from the remote catalogue (useRemoteArtThemes, cached with a TTL + ETag, T254) plus
+// the bundled starters; each carries a `category` in its data. Listing uses catalogue metadata and
+// thumbnail URLs only: a pack downloads when its theme page is opened, never from this tab (T254,
+// guarded in src/core/themeBrowse.test.ts). Thumbnails load lazily as cells mount (expo-image).
+// While the catalogue's first load runs, a skeleton row in the final shape shows; never an error.
+// Kept: search over every theme (name, mood, tags, category), the Liked filter (hearts are
+// device-local), pull to refresh, the Live hero, Your look, Make a wallpaper, Send feedback, the
+// header "?" and Settings gear. The list only allows the iOS overscroll while it rests at the very
+// top (pull to refresh); anywhere else it never bounces (owner 25 Oct), and Android never glows.
 // docs/PREMIUM_UI.md §1-2: tokens only, 16 pt rhythm (editorialV2), surfaces not hairlines,
-// skeletons not spinners, Dynamic Type caps, ≥ 48 pt targets, one virtualised list (LIST_WINDOW,
+// skeletons not spinners, Dynamic Type caps, ≥ 48 pt targets, virtualised lists (LIST_WINDOW,
 // memoised rows, stable keys), no spring or bounce.
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { memo, useCallback, useMemo, useState, type ComponentProps, type ReactNode } from 'react';
-import { StyleSheet, Text, TextInput, useWindowDimensions, View, type ListRenderItem, type TextStyle } from 'react-native';
+import { memo, useCallback, useEffect, useMemo, useRef, useState, type ComponentProps, type ReactNode } from 'react';
+import { StyleSheet, Text, TextInput, useWindowDimensions, View, FlatList, type LayoutChangeEvent, type ListRenderItem, type TextStyle } from 'react-native';
 import Animated, { runOnJS, useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { GALLERY_FILTERS, galleryCardWidth, galleryColumns, galleryFiltering, galleryMatchCount, galleryRows, galleryStarters, type GalleryFilter, type GalleryRow, type GallerySectionId } from '../../src/core/gallery';
+import { galleryStarters } from '../../src/core/gallery';
 import { isRemoteArtTheme } from '../../src/core/remoteCatalog';
+import {
+  BROWSE_FILTERS,
+  RAIL_WINDOW,
+  browseCategoryLabelKey,
+  browseChips,
+  browseEmptyReason,
+  browseFiltering,
+  browseGridRows,
+  browseGridThemes,
+  browseHomeRows,
+  browseMode,
+  browseThemes,
+  gridColumns,
+  gridGeometry,
+  gridItemLayout,
+  gridWindow,
+  groupByCategory,
+  nextBrowseView,
+  railCardWidth,
+  railItemLayout,
+  type BrowseCategoryId,
+  type BrowseChip,
+  type BrowseFilter,
+  type BrowseRow,
+  type BrowseView,
+} from '../../src/core/themeBrowse';
 import type { Theme } from '../../src/core/themes';
 import { useT, type Script } from '../../src/i18n';
-import { refreshRemoteCatalog, useRemoteArtThemes } from '../../src/native/useRemoteCatalog';
+import { refreshRemoteCatalog, useRemoteArtThemes, useRemoteCatalogStatus } from '../../src/native/useRemoteCatalog';
 import { PlusBadge } from '../../src/plus/PlusBadge';
 import { useFavourites } from '../../src/store/favourites';
 import { circleRadius, continuous, editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
+import { CategoryChipRow } from '../../src/ui/CategoryChipRow';
 import { GalleryArtCard, GalleryCardSkeleton } from '../../src/ui/GalleryArtCard';
 import { LanguageHintLine } from '../../src/ui/LanguageHintLine';
 import { LiveHeroCard } from '../../src/ui/LiveHeroCard';
 import { YourLookPanel } from '../../src/ui/YourLookPanel';
 import { PressableScale } from '../../src/ui/PressableScale';
 import { PillTabs, type PillTabOption } from '../../src/ui/PillTabs';
+import { PHONE_ASPECT } from '../../src/ui/ThemeCard';
+import { THUMB_LABEL_HEIGHT, ThemeThumbCard } from '../../src/ui/ThemeThumbCard';
 import { haptic } from '../../src/ui/haptics';
 import { textStyleFor } from '../../src/ui/i18nLayout';
 import { BarIconButton, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
 
 type FeatherName = ComponentProps<typeof Feather>['name'];
-type GalleryTheme = Theme;
-type Row = GalleryRow<GalleryTheme>;
+type GalleryTheme = Theme & { browseCategory?: BrowseCategoryId };
+type Row = BrowseRow<GalleryTheme>;
 
 /** Stable badge element so memoised cards don't re-render for it (a catalogue pack marked Plus). */
 const PLUS_BADGE = <PlusBadge />; // i18n-ignore (code after a JSX element)
-/** The three bundled starters, once. */
-const STARTERS = galleryStarters();
+/** The bundled starters, once (each with its category from themes/<id>/meta.json). */
+const STARTERS: readonly GalleryTheme[] = galleryStarters();
 /** Panels below the gallery take no props; memoised so a filter change skips them. */
 const LiveHeroCardM = memo(LiveHeroCard);
 const YourLookPanelM = memo(YourLookPanel);
@@ -69,6 +100,9 @@ function typeFor(script: Script, role: TypeRoleV2): TextStyle[] {
 }
 
 const rowKey = (row: Row): string => row.key;
+const themeKey = (theme: GalleryTheme): string => theme.id;
+/** Nothing extra to spread onto the list (the overview keeps LIST_WINDOW). */
+const NO_PROPS = Object.freeze({});
 
 /**
  * The bar's trailing actions (reading end). This is the header-right slot: add further bar
@@ -78,59 +112,119 @@ function HeaderActions({ children }: { children?: ReactNode }) {
   return <View style={styles.headerActions}>{children}</View>;
 }
 
-/** The props every card row shares (one memoised object from the screen). */
+/** The props every card shares (one memoised object from the screen). */
 type CardShared = {
-  cardWidth: number;
+  /** Art-led rail card width. */
+  railWidth: number;
+  /** Thumbnail card width and art height (fixed grid geometry). */
+  thumbWidth: number;
+  thumbArt: number;
   onOpen: (id: string) => void;
   likedIds: ReadonlySet<string>;
   onToggleLike: (id: string) => void;
 };
 
-/** Editorial header of a gallery section (eyebrow + title + body, read as one heading). */
-const GalleryHead = memo(function GalleryHead({ section }: { section: GallerySectionId }) {
-  const { t } = useT();
-  if (section === 'collection') {
-    return (
-      <SectionHeader
-        eyebrow={t('themes.eyebrow.collection')}
-        title={t('themes.collection.title')}
-        body={t('themes.collection.body')}
-        style={styles.headRow}
-      />
-    );
-  }
-  return <SectionHeader eyebrow={t('themes.eyebrow.starters')} title={t('themes.starters')} body={t('themes.startersBody')} style={styles.headRow} />;
-});
-
-/** One row of art-led cards (memoised list row; stable shared props). */
-const GalleryCardRow = memo(function GalleryCardRow({ themes, shared }: { themes: readonly GalleryTheme[]; shared: CardShared }) {
+/** One theme card: art-led in a rail, a thumbnail in a grid. A catalogue pack marked Plus shows the badge. */
+const BrowseCard = memo(function BrowseCard({ theme, variant, shared }: { theme: GalleryTheme; variant: 'art' | 'thumb'; shared: CardShared }) {
   const { t } = useT();
   const plusNote = t('themes.plusNote');
   const downloadNote = t('themes.collection.downloadA11y');
-  const { cardWidth, onOpen, likedIds, onToggleLike } = shared;
+  const remote = isRemoteArtTheme(theme);
+  const plus = remote && theme.plus;
+  const { onOpen, likedIds, onToggleLike } = shared;
+  if (variant === 'art') {
+    return (
+      <GalleryArtCard
+        theme={theme}
+        width={shared.railWidth}
+        onOpen={onOpen}
+        badge={plus ? PLUS_BADGE : undefined}
+        accessibilityNote={plus ? plusNote : remote ? downloadNote : undefined}
+        liked={likedIds.has(theme.id)}
+        onToggleLike={onToggleLike}
+      />
+    );
+  }
   return (
-    <View style={styles.cardRow}>
-      {themes.map((theme) => {
-        const remote = isRemoteArtTheme(theme);
-        const plus = remote && theme.plus;
-        return (
-          <GalleryArtCard
-            key={theme.id}
-            theme={theme}
-            width={cardWidth}
-            onOpen={onOpen}
-            badge={plus ? PLUS_BADGE : undefined}
-            accessibilityNote={plus ? plusNote : remote ? downloadNote : undefined}
-            liked={likedIds.has(theme.id)}
-            onToggleLike={onToggleLike}
-          />
-        );
-      })}
+    <ThemeThumbCard
+      theme={theme}
+      width={shared.thumbWidth}
+      artHeight={shared.thumbArt}
+      onOpen={onOpen}
+      badge={plus ? PLUS_BADGE : undefined}
+      accessibilityNote={plus ? plusNote : remote ? downloadNote : undefined}
+      liked={likedIds.has(theme.id)}
+      onToggleLike={onToggleLike}
+    />
+  );
+});
+
+/** Header of a home section: the category (or All themes) with its count and a "See all" button. */
+const BrowseHead = memo(function BrowseHead({ section, count, onSeeAll }: { section: BrowseCategoryId | 'all'; count: number; onSeeAll: (id: BrowseCategoryId | 'all') => void }) {
+  const { t } = useT();
+  const label = section === 'all' ? t('themes.browse.allThemes') : t(browseCategoryLabelKey(section));
+  return (
+    <View style={styles.headRow}>
+      <SectionHeader
+        eyebrow={t('themes.browse.count', { count })}
+        title={label}
+        body={section === 'all' ? t('themes.browse.allThemesBody') : undefined}
+        style={styles.headText}
+      />
+      {section === 'all' ? null : (
+        <PillButton
+          label={t('themes.browse.seeAll')}
+          size="small"
+          variant="plain"
+          onPress={() => onSeeAll(section)}
+          accessibilityLabel={t('themes.browse.seeAllA11y', { label })}
+          style={styles.seeAll}
+        />
+      )}
     </View>
   );
 });
 
-/** New collection while the catalogue is still empty: cards in their final shape, a calm pulse, no error. */
+/** One category's horizontal rail of art-led cards (fixed card width, so getItemLayout is exact). */
+const CategoryRail = memo(function CategoryRail({ themes, shared }: { themes: readonly GalleryTheme[]; shared: CardShared }) {
+  const gap = editorialV2.cardGap;
+  const renderItem: ListRenderItem<GalleryTheme> = useCallback(
+    ({ item }) => (
+      <View style={styles.railItem}>
+        <BrowseCard theme={item} variant="art" shared={shared} />
+      </View>
+    ),
+    [shared],
+  );
+  const getItemLayout = useCallback((_: ArrayLike<GalleryTheme> | null | undefined, index: number) => railItemLayout(shared.railWidth, gap, index), [shared.railWidth, gap]);
+  return (
+    <FlatList
+      data={themes}
+      renderItem={renderItem}
+      keyExtractor={themeKey}
+      getItemLayout={getItemLayout}
+      {...RAIL_WINDOW}
+      horizontal
+      bounces={false}
+      overScrollMode="never"
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={styles.rail}
+    />
+  );
+});
+
+/** One row of thumbnail cards in the home view's All themes section (memoised list row). */
+const GalleryCardRow = memo(function GalleryCardRow({ themes, shared }: { themes: readonly GalleryTheme[]; shared: CardShared }) {
+  return (
+    <View style={styles.cardRow}>
+      {themes.map((theme) => (
+        <BrowseCard key={theme.id} theme={theme} variant="thumb" shared={shared} />
+      ))}
+    </View>
+  );
+});
+
+/** While the catalogue's first load runs: cards in their final shape, a calm pulse, no error. */
 const SkeletonCardRow = memo(function SkeletonCardRow({ count, cardWidth }: { count: number; cardWidth: number }) {
   const { t } = useT();
   return (
@@ -152,7 +246,7 @@ function EmptyIcon({ icon }: { icon: FeatherName }) {
   );
 }
 
-/** Search field over the listed themes' name, mood and tags (a pill on `fill`). */
+/** Search field over every theme's name, mood, tags and category (a pill on `fill`). */
 function SearchField({ value, onChange }: { value: string; onChange: (q: string) => void }) {
   const { c } = useColorsV2();
   const { t, script } = useT();
@@ -216,23 +310,45 @@ export default function ThemesScreen() {
   const router = useRouter();
   const { t, script } = useT();
   const insets = useSafeAreaInsets();
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const [query, setQuery] = useState('');
-  const [filter, setFilter] = useState<GalleryFilter>('all');
+  const [filter, setFilter] = useState<BrowseFilter>('all');
+  const [view, setView] = useState<BrowseView>('home');
   const { liked, toggle: toggleLike } = useFavourites();
   const likedIds = useMemo(() => new Set(liked), [liked]);
-  const filtering = galleryFiltering(query, filter);
+  const filtering = browseFiltering(query, filter);
+  const mode = browseMode(view, query, filter);
 
-  // The New collection: the remote catalogue (cached at once, refreshed in the background).
+  // The remote catalogue (cached at once, refreshed in the background) plus the bundled starters.
   const remote = useRemoteArtThemes();
+  const status = useRemoteCatalogStatus();
+  const themes: readonly GalleryTheme[] = useMemo(() => browseThemes<GalleryTheme, GalleryTheme>(remote, STARTERS), [remote]);
+  const sections = useMemo(() => groupByCategory(themes), [themes]);
+  const chips = useMemo(() => browseChips(sections, themes.length), [sections, themes.length]);
+  const waiting = status === 'loading' && remote.length === 0;
 
-  const columns = galleryColumns(width);
-  const cardWidth = galleryCardWidth(width, columns, spaceV2.lg, editorialV2.cardGap);
-  const rows: readonly Row[] = useMemo(
-    () => galleryRows<GalleryTheme, GalleryTheme>({ remote, starters: STARTERS, columns, query, filter, liked }),
-    [remote, columns, query, filter, liked],
+  // Fixed card geometry: rails show ~2.3 art cards, the grid 3 thumbnails per row on phones.
+  const columns = gridColumns(width);
+  const geo = useMemo(
+    () => gridGeometry({ width, columns, gutter: spaceV2.lg, gap: editorialV2.cardGap, aspect: PHONE_ASPECT, labelHeight: THUMB_LABEL_HEIGHT }),
+    [width, columns],
   );
-  const matchCount = galleryMatchCount(rows);
+  const railWidth = railCardWidth(width, spaceV2.lg, editorialV2.cardGap);
+  const gridWin = useMemo(
+    () => ({ ...gridWindow(height, geo.rowHeight), removeClippedSubviews: LIST_WINDOW.removeClippedSubviews, updateCellsBatchingPeriod: LIST_WINDOW.updateCellsBatchingPeriod }),
+    [height, geo.rowHeight],
+  );
+
+  const gridThemes: readonly GalleryTheme[] = useMemo(
+    () => (mode === 'grid' ? browseGridThemes<GalleryTheme>({ themes, view, query, filter, liked }) : []),
+    [mode, themes, view, query, filter, liked],
+  );
+  // One list for both views (so the search field in its header keeps focus while the view changes):
+  // the overview's rows, or the grid as fixed-height rows of `columns` thumbnails.
+  const rows: readonly Row[] = useMemo(
+    () => (mode === 'home' ? browseHomeRows<GalleryTheme>({ themes, columns, waiting }) : browseGridRows<GalleryTheme>(gridThemes, columns)),
+    [mode, themes, columns, waiting, gridThemes],
+  );
 
   const onOpen = useCallback(
     (id: string) => {
@@ -244,26 +360,12 @@ export default function ThemesScreen() {
     haptic('select');
     setQuery('');
     setFilter('all');
+    setView('home');
   }, []);
-  const shared: CardShared = useMemo(() => ({ cardWidth, onOpen, likedIds, onToggleLike: toggleLike }), [cardWidth, onOpen, likedIds, toggleLike]);
-
-  const renderRow: ListRenderItem<Row> = useCallback(
-    ({ item }) => {
-      if (item.kind === 'head') return <GalleryHead section={item.section} />; // i18n-ignore (code after a JSX element)
-      if (item.kind === 'skeleton') return <SkeletonCardRow count={item.count} cardWidth={cardWidth} />; // i18n-ignore (code after a JSX element)
-      if (item.kind === 'empty') return <GalleryEmpty reason={item.reason} onReset={resetFilters} />; // i18n-ignore (code after a JSX element)
-      return <GalleryCardRow themes={item.themes} shared={shared} />; // i18n-ignore (code after a JSX element)
-    },
-    [cardWidth, shared, resetFilters],
+  const shared: CardShared = useMemo(
+    () => ({ railWidth, thumbWidth: geo.cardWidth, thumbArt: geo.artHeight, onOpen, likedIds, onToggleLike: toggleLike }),
+    [railWidth, geo.cardWidth, geo.artHeight, onOpen, likedIds, toggleLike],
   );
-
-  // Pull to refresh: fetch catalog.json now. Never rejects; a 404 or offline keeps what is shown.
-  const [refreshing, setRefreshing] = useState(false);
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    const done = () => setRefreshing(false);
-    void refreshRemoteCatalog().then(done, done);
-  }, []);
 
   // Scroll position lives in a shared value written on the UI thread; the large title and glass bar
   // read it to collapse. `atTop` only flips when the list crosses the top, so it rarely re-renders.
@@ -286,32 +388,101 @@ export default function ThemesScreen() {
     },
   });
 
-  const filterOptions: PillTabOption<GalleryFilter>[] = useMemo(
-    () => GALLERY_FILTERS.map((id) => ({ value: id, label: t(`themes.discover.${id}`) })),
+  // A chip or See all opens its grid at the top (the title and pull to refresh follow the scroll).
+  const listRef = useRef<FlatList<Row> | null>(null);
+  useEffect(() => {
+    try {
+      listRef.current?.scrollToOffset({ offset: 0, animated: false });
+    } catch {
+      // No list yet (first render): it starts at the top anyway.
+    }
+  }, [view]);
+
+  const pickChip = useCallback((id: BrowseChip['id']) => {
+    setView((v) => nextBrowseView(v, id));
+  }, []);
+  const seeAll = useCallback((id: BrowseCategoryId | 'all') => {
+    haptic('select');
+    setView(id);
+  }, []);
+
+  const renderRow: ListRenderItem<Row> = useCallback(
+    ({ item }) => {
+      if (item.kind === 'head') return <BrowseHead section={item.section} count={item.count} onSeeAll={seeAll} />; // i18n-ignore (code after a JSX element)
+      if (item.kind === 'rail') return <CategoryRail themes={item.themes} shared={shared} />; // i18n-ignore (code after a JSX element)
+      if (item.kind === 'skeleton') return <SkeletonCardRow count={Math.min(item.count, columns)} cardWidth={geo.cardWidth} />; // i18n-ignore (code after a JSX element)
+      return <GalleryCardRow themes={item.themes} shared={shared} />; // i18n-ignore (code after a JSX element)
+    },
+    [seeAll, shared, columns, geo.cardWidth],
+  );
+
+  // Where the grid's first row starts: the content inset above the header plus the header's
+  // measured height (cell offsets are content-relative), so getItemLayout matches the real rows.
+  const [headerH, setHeaderH] = useState(0);
+  const listTop = insets.top + sizeV2.navBar + headerH;
+  const onHeaderLayout = useCallback((e: LayoutChangeEvent) => {
+    const h = Math.round(e.nativeEvent.layout.height);
+    setHeaderH((old) => (old === h ? old : h));
+  }, []);
+  const getGridLayout = useCallback(
+    (_: ArrayLike<Row> | null | undefined, index: number) => gridItemLayout(geo.rowHeight, listTop, index),
+    [geo.rowHeight, listTop],
+  );
+
+  // Pull to refresh: fetch catalog.json now. Never rejects; a 404 or offline keeps what is shown.
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    const done = () => setRefreshing(false);
+    void refreshRemoteCatalog().then(done, done);
+  }, []);
+
+  const filterOptions: PillTabOption<BrowseFilter>[] = useMemo(
+    () => BROWSE_FILTERS.map((id) => ({ value: id, label: t(`themes.discover.${id}`) })),
     [t],
   );
   const title = t('tabs.themes');
+  const gridTitle = view === 'home' ? null : view === 'all' ? t('themes.browse.allThemes') : t(browseCategoryLabelKey(view));
+  const matchCount = gridThemes.length;
 
   const listHeader = useMemo(
     () => (
-      <>
+      <View onLayout={onHeaderLayout}>
         <LargeTitle title={title} subtitle={t('themes.subtitle')} scrollY={scrollY} />
         <View style={styles.inner}>
           {/* Release standard §1: "Language: English · Change", first session only, until tapped. */}
           <LanguageHintLine />
           {/* All / Liked as content-sized pills (never clipped). */}
           <PillTabs label={t('themes.discover.label')} options={filterOptions} value={filter} onChange={setFilter} />
-          {/* Search narrows both sections below. */}
+          {/* Search covers every theme (name, mood, tags, category). */}
           <SearchField value={query} onChange={setQuery} />
+          {/* T253: All themes + every non-empty category; the selected chip again goes back. */}
+          <CategoryChipRow chips={chips} view={view} onPick={pickChip} />
           {filtering && matchCount > 0 ? (
             <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]} accessibilityLiveRegion="polite">
               {t('themes.search.results', { count: matchCount })}
             </Text>
           ) : null}
         </View>
-      </>
+        {gridTitle ? (
+          <View style={styles.headRow}>
+            <SectionHeader eyebrow={t('themes.browse.count', { count: matchCount })} title={gridTitle} style={styles.headText} />
+            <PillButton
+              label={t('themes.browse.backHome')}
+              size="small"
+              variant="plain"
+              icon="grid"
+              onPress={resetFilters}
+              accessibilityHint={t('themes.browse.backHomeHint')}
+              style={styles.seeAll}
+            />
+          </View>
+        ) : (
+          <View style={styles.gridTop} />
+        )}
+      </View>
     ),
-    [title, t, scrollY, filterOptions, filter, query, filtering, matchCount, script, c.inkSecondary],
+    [onHeaderLayout, title, t, scrollY, filterOptions, filter, query, chips, view, pickChip, filtering, matchCount, script, c.inkSecondary, gridTitle, resetFilters],
   );
 
   const listFooter = useMemo(
@@ -349,13 +520,18 @@ export default function ThemesScreen() {
     [filtering, t, router],
   );
 
+  const gridEmpty = useMemo(() => <GalleryEmpty reason={browseEmptyReason(query, filter)} onReset={resetFilters} />, [query, filter, resetFilters]); // i18n-ignore (code after a JSX element)
+
   return (
     <View style={[styles.root, { backgroundColor: c.bg }]}>
       <Animated.FlatList
+        ref={listRef}
         data={rows}
         renderItem={renderRow}
         keyExtractor={rowKey}
         {...LIST_WINDOW}
+        {...(mode === 'grid' ? gridWin : NO_PROPS)}
+        getItemLayout={mode === 'grid' ? getGridLayout : undefined}
         bounces={atTop}
         overScrollMode="never"
         refreshing={refreshing}
@@ -367,6 +543,7 @@ export default function ThemesScreen() {
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
         ListHeaderComponent={listHeader}
+        ListEmptyComponent={mode === 'grid' ? gridEmpty : null}
         ListFooterComponent={listFooter}
       />
       {/* Header-right slot: more bar actions go inside HeaderActions next to the Tips "?". */}
@@ -391,8 +568,14 @@ const styles = StyleSheet.create({
   inner: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.md, gap: spaceV2.lg },
   // List rows below the header carry the side gutter themselves; SectionHeader brings the editorial
   // 32 above a section and 12 below its title; card rows keep the 16-pt rhythm.
-  headRow: { paddingHorizontal: spaceV2.lg },
+  headRow: { flexDirection: 'row', alignItems: 'flex-end', paddingHorizontal: spaceV2.lg, gap: spaceV2.sm },
+  headText: { flex: 1 },
+  seeAll: { marginBottom: spaceV2.xs },
+  rail: { paddingHorizontal: spaceV2.lg, paddingBottom: editorialV2.cardGap },
+  railItem: { paddingEnd: editorialV2.cardGap },
+  // Thumbnail rows: fixed height (card + gap), so the grid's getItemLayout is exact.
   cardRow: { flexDirection: 'row', gap: editorialV2.cardGap, paddingHorizontal: spaceV2.lg, marginBottom: editorialV2.cardGap },
+  gridTop: { height: editorialV2.sectionBottom },
   emptyRow: { paddingHorizontal: spaceV2.lg, paddingTop: editorialV2.sectionTop },
   footer: { paddingHorizontal: spaceV2.lg, paddingTop: editorialV2.sectionTop, gap: spaceV2.lg },
   headerActions: { flexDirection: 'row', alignItems: 'center' },

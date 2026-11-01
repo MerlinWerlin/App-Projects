@@ -27,9 +27,9 @@ import {
   PackError,
   downloadPack,
   downloadRemoteArtPack,
-  fetchCatalogText,
+  fetchCatalogConditional,
   loadPackContent,
-  loadRemoteArt,
+  loadRemoteArtQuick,
   packsEnabled,
   readLocalRemoteArt,
   remoteArtCacheEntry,
@@ -42,6 +42,7 @@ import {
   CATALOG_CACHE_FILE,
   catalogCacheStamp,
   catalogNeedsFetch,
+  catalogRequestEtag,
   catalogStatus,
   decideCatalog,
   parseCatalogCache,
@@ -135,6 +136,27 @@ export const deviceTransport: Transport = {
   },
   async remove(rel) {
     await fs.deleteAsync(uri(rel), { idempotent: true });
+  },
+  // T250: a file's size from the file system, never its bytes (loadRemoteArtQuick).
+  async size(rel) {
+    const info = await fs.getInfoAsync(uri(rel));
+    return info.exists && typeof info.size === 'number' ? info.size : null;
+  },
+  // T254: catalog.json with If-None-Match, so an unchanged catalogue answers 304 with no body.
+  async fetchConditional(url, etag, limit) {
+    const res = await fetch(url, etag ? { headers: { 'If-None-Match': etag } } : undefined);
+    if (res.status === 304) return { status: 304 };
+    if (res.status !== 200) throw new Error(`HTTP ${res.status}`);
+    if (!finalUrlOk(url, (res as { url?: unknown }).url)) throw new Error('redirected off HTTPS');
+    const text = await res.text();
+    if (text.length > limit) throw new Error('response too large');
+    let tag: string | null = null;
+    try {
+      tag = res.headers?.get?.('etag') ?? null;
+    } catch {
+      tag = null;
+    }
+    return { status: 200, text, etag: tag };
   },
   // T222: swaps a staged pack update in (a folder rename inside documentDirectory/packs/).
   async move(from, to) {
@@ -416,17 +438,24 @@ export function packThemesOnDevice(packId: string): Promise<Theme[]> {
 
 let restoring: Promise<void> | null = null;
 
+/** T250: give the JS thread back for a frame between chunks of file work. */
+function nextTick(): Promise<void> {
+  return new Promise<void>((resolve) => setTimeout(resolve, 0));
+}
+
 /**
  * Cold start (T50): read every downloaded pack once and register its pack-only motifs, so a saved
  * style that uses one survives a restart. src/store/studio.ts awaits this before parsing the saved
- * state; app/_layout.tsx starts it early. Memoised, never rejects, no network.
+ * state; T250: src/store/launchWork.ts starts it as the first deferred step after the first frame
+ * (it was started at module load), and it yields between packs. Memoised, never rejects, no network.
  */
 export function restoreDownloadedPacks(): Promise<void> {
   if (!restoring) {
     restoring = (async () => {
       try {
         await loadPackIndex();
-        await restorePackMotifs(deviceTransport, state.index, (_t, id) => packContentOnDevice(id));
+        // T250: one pack per tick, so many downloaded packs never hold the JS thread at once.
+        await restorePackMotifs(deviceTransport, state.index, (_t, id) => packContentOnDevice(id), nextTick);
       } catch {
         // A broken pack folder must never block the app; its themes just stay hidden.
       }
@@ -491,7 +520,9 @@ export function refreshCatalog(force = false): Promise<void> {
         lastAttempt = now;
         set({ catalogRefreshing: true });
         try {
-          fetched = { ok: true, text: await fetchCatalogText(deviceTransport, PACK_BASE) };
+          // T254: conditional (ETag) when the cached copy has one; same catalog.json URL.
+          const r = await fetchCatalogConditional(deviceTransport, PACK_BASE, catalogRequestEtag(cached, stamp));
+          fetched = r.notModified ? { ok: true, notModified: true } : { ok: true, text: r.text, etag: r.etag };
         } catch (e) {
           fetched = { ok: false, error: e instanceof Error ? e.message : String(e) };
         }
@@ -510,7 +541,8 @@ export function refreshCatalog(force = false): Promise<void> {
       }
       // d.error (offline, 404, bad file) is deliberately not shown: the last good copy stays listed.
       // Keep the listed object when nothing new was saved, so the gallery doesn't rebuild on every focus.
-      set({ catalog: d.save ? d.catalog : (state.catalog ?? d.catalog), catalogRefreshing: false, catalogAttempted: true });
+      // T254: a 304 (or the same text again) keeps the listed object too.
+      set({ catalog: d.save && !(d.unchanged && state.catalog) ? d.catalog : (state.catalog ?? d.catalog), catalogRefreshing: false, catalogAttempted: true });
     } catch {
       set({ catalogRefreshing: false, catalogAttempted: true });
     } finally {
@@ -518,7 +550,9 @@ export function refreshCatalog(force = false): Promise<void> {
       catalogRunFetches = false;
     }
     // T222: outdated downloaded packs update in the background (not awaited by callers).
-    void runPackUpdates();
+    // T250: through the deferred queue (after interactions, one step at a time), never right on
+    // a launch / foreground.
+    schedulePackUpdates();
   })();
   return catalogRun;
 }
@@ -542,7 +576,7 @@ export function remoteArtFileUri(id: string, path: string | null | undefined): s
 const remoteCache = new Map<string, Promise<RemoteArtManifest | null>>();
 
 /**
- * A downloaded remote art pack, verified again on first read. A pack that fails verification is
+ * A downloaded remote art pack, checked again on first read (T250: file sizes, see loadRemoteArtQuick). A pack that fails verification is
  * dropped from the index so the theme offers the download again. Never rejects.
  */
 export function remoteArtOnDevice(id: string): Promise<RemoteArtManifest | null> {
@@ -551,7 +585,9 @@ export function remoteArtOnDevice(id: string): Promise<RemoteArtManifest | null>
   const p = (async () => {
     try {
       await loadPackIndex();
-      const m = await loadRemoteArt(deviceTransport, id);
+      // T250: exists + exact size per file (no base64 read + SHA-256 in JS of every multi-MB file on
+      // first read after launch: the freeze after a theme swap). Hashes were checked at download.
+      const m = await loadRemoteArtQuick(deviceTransport, id);
       if (m) set({ remoteArt: { ...state.remoteArt, [id]: m } });
       else {
         remoteCache.delete(id);
@@ -655,6 +691,26 @@ export function downloadedPackVersionOf(id: string): number | null {
 }
 
 let updatesRun: Promise<void> | null = null;
+
+/** T250: how a due pack-update pass is started; src/store/launchWork.ts routes it through the deferred queue. */
+let packUpdateScheduler: (() => void) | null = null;
+
+/** T250: set by src/store/launchWork.ts (kept here as a setter so this adapter never imports the store). */
+export function setPackUpdateScheduler(fn: (() => void) | null): void {
+  packUpdateScheduler = fn;
+}
+
+function schedulePackUpdates(): void {
+  try {
+    if (packUpdateScheduler) {
+      packUpdateScheduler();
+      return;
+    }
+  } catch {
+    // Fall through to a delayed run.
+  }
+  setTimeout(() => void runPackUpdates(), 3000);
+}
 
 /**
  * T222: update every downloaded remote pack the catalogue lists in a newer version, one at a time,

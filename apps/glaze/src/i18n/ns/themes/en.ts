@@ -99,4 +99,18 @@ export const en = {
     remove: 'Unlike {name}',
     hint: 'Keeps it in Liked, on this device only',
   },
+  /** T253 (owner-1101h #4): the Themes front page categories, chip row, See all and All themes. */
+  browse: {
+    category: { spaceNight: 'Space & Night', nature: 'Nature', oceanWater: 'Ocean & Water', cuteCosy: 'Cute & Cosy', sweetsTreats: 'Sweets & Treats', dreamyPastel: 'Dreamy & Pastel', moodyDark: 'Moody & Dark', abstractArt: 'Abstract & Art', seasonal: 'Seasonal', cityRetro: 'City & Retro', more: 'More' },
+    chipsLabel: 'Theme categories',
+    chipA11y: { one: '{label}, {count} theme', other: '{label}, {count} themes' },
+    chipHint: 'Shows only these themes. Tap again to go back.',
+    allThemes: 'All themes',
+    allThemesBody: 'Every theme in one place.',
+    seeAll: 'See all',
+    seeAllA11y: 'See all {label} themes',
+    count: { one: '{count} theme', other: '{count} themes' },
+    backHome: 'All categories',
+    backHomeHint: 'Back to the categories overview',
+  },
 } as const;

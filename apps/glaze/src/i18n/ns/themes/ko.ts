@@ -92,4 +92,18 @@ export const ko: NonNullable<LocaleMessages['themes']> = {
     remove: '{name} 좋아요 취소',
     hint: '이 기기에서만 좋아요 목록에 보관해요',
   },
+  /** T253 (owner-1101h #4): the Themes front page categories, chip row, See all and All themes. */
+  browse: {
+    category: { spaceNight: '우주와 밤', nature: '자연', oceanWater: '바다와 물', cuteCosy: '귀엽고 아늑한', sweetsTreats: '디저트', dreamyPastel: '몽환 파스텔', moodyDark: '무디 다크', abstractArt: '추상과 아트', seasonal: '계절', cityRetro: '도시와 레트로', more: '더 보기' },
+    chipsLabel: '테마 카테고리',
+    chipA11y: { other: '{label}, 테마 {count}개' },
+    chipHint: '이 테마만 표시합니다. 다시 탭하면 돌아갑니다.',
+    allThemes: '모든 테마',
+    allThemesBody: '모든 테마를 한곳에.',
+    seeAll: '모두 보기',
+    seeAllA11y: '{label} 테마 모두 보기',
+    count: { other: '테마 {count}개' },
+    backHome: '모든 카테고리',
+    backHomeHint: '카테고리 개요로 돌아갑니다',
+  },
 };

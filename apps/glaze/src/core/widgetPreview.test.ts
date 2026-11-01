@@ -25,11 +25,12 @@ const root = join(import.meta.dirname, '..', '..');
 const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
 const close = (a: number, b: number, eps = 1e-6) => assert.ok(Math.abs(a - b) <= eps, `${a} ≈ ${b}`);
 
-test('native blur constants match GlazeWidgetBridgeModule.setWidgetArt (T236: no veil)', () => {
+test('T251: setWidgetArt has no blurred copy of the art any more (the light-grey frame); constants kept for old previews', () => {
   const bridge = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
-  const setArt = bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArt")'), bridge.indexOf('AsyncFunction("linkStatus")'));
-  assert.match(setArt, /CIGaussianBlur/);
-  assert.match(setArt, /max\(12, min\(target\.width, target\.height\) \* 0\.08\)/);
+  // T252: the composition lives in the shared helper (also used by composeWidgetArtPiece). T251: no blur.
+  const setArt = (bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArt")'), bridge.indexOf('AsyncFunction("linkStatus")')) +
+    bridge.slice(bridge.indexOf('private static func composeArtImage('), bridge.indexOf('private static func reloadWidgets()'))).replace(/\/\/.*$/gm, '');
+  assert.doesNotMatch(setArt, /CIGaussianBlur|clampedToExtent|CIFilter/);
   assert.doesNotMatch(setArt, /withAlphaComponent/);
   assert.equal(NATIVE_BLUR_MIN_RADIUS, 12);
   assert.equal(NATIVE_BLUR_RADIUS_SHARE, 0.08);
@@ -138,9 +139,10 @@ test('WidgetArtMenu: stable names, stacked small caption, native-like background
   assert.match(menu, /menuCaptionLayout\(size\)/);
   assert.match(menu, /numberOfLines=\{caption\.nameLines\}/);
   assert.match(menu, /wallpaperUnderSlot\(/);
-  assert.match(menu, /blurBackdrop\(/);
-  assert.match(menu, /blurRadius=\{blur\.radius\}/);
-  assert.doesNotMatch(menu, /blur\.veil/, 'T236: no veil of the theme colour over the art');
+  // T251: no blurred copy of the art in the preview; the art is blended onto the wallpaper crop.
+  assert.doesNotMatch(menu, /blurBackdrop\(|blurRadius/);
+  assert.match(menu, /<BlendedArt /);
+  assert.match(menu, /previewBlendFor\(themeId, o\.id, artTransparent\)/);
   assert.doesNotMatch(menu, /blurRadius=\{24\}|\? 24 :/);
   const art = read('src', 'ui', 'ThemeWidgetArt.tsx');
   assert.match(art, /seamlessCrop\(/);
@@ -157,9 +159,12 @@ test('theme page Seamless card sizes the hero from the downloaded piece (remoteH
 
 test('T223/T236: setWidgetArt draws edge to edge only when the real aspect matches (else whole + extended edges); value mirrored', () => {
   const bridge = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
-  const setArt = bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArt")'), bridge.indexOf('AsyncFunction("linkStatus")'));
+  const setArt = bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArt")'), bridge.indexOf('AsyncFunction("linkStatus")')) +
+    // T252: the composition itself lives in the shared helper (also used by composeWidgetArtPiece).
+    bridge.slice(bridge.indexOf('private static func composeArtImage('), bridge.indexOf('private static func reloadWidgets()'));
   assert.match(setArt, /let aspectsMatch = min\(artAspect, outAspect\) \/ max\(artAspect, outAspect\) >= 0\.98/);
-  assert.match(setArt, /if aspectsMatch \{\s*art\.draw\(in: canvas\)/);
+  assert.match(setArt, /let artRect = aspectsMatch \? canvas :/);
+  assert.match(setArt, /art\.draw\(in: artRect\)/);
   assert.equal(NATIVE_FILL_MIN_ASPECT_MATCH, 0.98);
   close(NATIVE_FILL_MIN_ASPECT_MATCH, 1 - FILL_ASPECT_TOLERANCE);
 });
@@ -168,10 +173,10 @@ test('T223/T236: every Seamless family and every image source goes through the o
   const widget = read('targets', 'widget', 'SeamlessWidget.swift');
   // One image for the view: the chosen library piece, else the last applied file for the family.
   // Fill: blurred backdrop + (edge to edge | fitted) image; Fit: the raw art (or the image).
-  assert.equal((widget.match(/Image\(uiImage: image\)/g) ?? []).length, 3, 'blurred backdrop + edge-to-edge or fitted image');
+  assert.equal((widget.match(/Image\(uiImage: image\)/g) ?? []).length, 2, 'T251: edge-to-edge or fitted image, no blurred backdrop');
   assert.equal((widget.match(/Image\(uiImage: raw \?\? image\)/g) ?? []).length, 1, 'Fit layout');
   assert.equal((widget.match(/\.scaledToFit\(\)/g) ?? []).length, 2);
-  assert.equal((widget.match(/\.scaledToFill\(\)/g) ?? []).length, 2, 'blurred backdrop + edge to edge when the aspect matches');
+  assert.equal((widget.match(/\.scaledToFill\(\)/g) ?? []).length, 1, 'edge to edge when the aspect matches');
   for (const fam of ['.systemSmall', '.systemMedium', '.systemLarge', '.systemExtraLarge']) assert.ok(widget.includes(`case ${fam}:`), fam);
   // No per-family view branches that could skip the fit: the view never switches on the family.
   const view = widget.slice(widget.indexOf('struct SeamlessWidgetView'), widget.indexOf('struct SeamlessWidget: Widget'));

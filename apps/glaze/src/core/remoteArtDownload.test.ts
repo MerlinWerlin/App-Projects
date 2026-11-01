@@ -14,6 +14,7 @@ import {
   downloadRemoteArtPack,
   fetchCatalogText,
   loadRemoteArt,
+  loadRemoteArtQuick,
   readLocalRemoteArt,
   remoteArtCacheEntry,
   removePack,
@@ -280,6 +281,37 @@ test('remote art pack: tampering fails integrity; a tampered stored file hides t
 
   appendFileSync(join(dir, ID, files[3].path), 'x');
   assert.equal(await loadRemoteArt(t, ID), null, 'tampered file on the phone: not usable');
+  rmSync(dir, { recursive: true, force: true });
+});
+
+test('T250 loadRemoteArtQuick: sizes only (no file read into JS); a truncated / grown / missing file still fails', async () => {
+  reset();
+  bucket.clear();
+  const files = publish(1);
+  const dir = temp();
+  const base = nodeTransport(dir);
+  await downloadRemoteArtPack(opts(base));
+  let reads = 0;
+  const quick: Transport = {
+    ...base,
+    async readFile(rel: string) {
+      if (!rel.endsWith('manifest.json')) reads++;
+      return base.readFile(rel);
+    },
+    async size(rel: string) {
+      const f = join(dir, rel);
+      return existsSync(f) && statSync(f).isFile() ? statSync(f).size : null;
+    },
+  };
+  const m = await loadRemoteArtQuick(quick, ID);
+  assert.ok(m);
+  assert.equal(reads, 0, 'no asset bytes read (nothing hashed)');
+  appendFileSync(join(dir, ID, files[3].path), 'x');
+  assert.equal(await loadRemoteArtQuick(quick, ID), null, 'size changed: not usable');
+  rmSync(join(dir, ID, files[3].path));
+  assert.equal(await loadRemoteArtQuick(quick, ID), null, 'file missing: not usable');
+  // Without size() it is the full (hashing) check.
+  assert.equal(await loadRemoteArtQuick(base, ID), null);
   rmSync(dir, { recursive: true, force: true });
 });
 

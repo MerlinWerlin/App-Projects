@@ -140,7 +140,10 @@ test('heavy cards and previews are memoised', () => {
   assert.match(GALLERY_CARD, /export const GalleryCardSkeleton = memo\(/);
   assert.match(HEART, /export const HeartButton = memo\(/);
   // T177 (owner-1031): the gallery sections are memoised list rows (replace T162's PackHead / PackCardRow).
-  assert.match(THEMES_TAB, /const GalleryHead = memo\(/);
+  // T253: category / All themes section headers, rails and thumbnail cards are memoised rows.
+  assert.match(THEMES_TAB, /const BrowseHead = memo\(/);
+  assert.match(THEMES_TAB, /const CategoryRail = memo\(/);
+  assert.match(THEMES_TAB, /const BrowseCard = memo\(/);
   assert.match(THEMES_TAB, /const GalleryCardRow = memo\(/);
   assert.match(THEMES_TAB, /const SkeletonCardRow = memo\(/);
   // T162: memoised rows of a virtualised list (replaces T118's TileGrid).
@@ -186,7 +189,7 @@ test('Themes tab: progressive showcase, deferred pack sections, no layout setSta
   // Stable props for the memoised children.
   assert.match(THEMES_TAB, /const shared: CardShared = useMemo\(/);
   assert.match(THEMES_TAB, /const rows: readonly Row\[\] = useMemo\(/);
-  assert.match(THEMES_TAB, /const filterOptions: PillTabOption<GalleryFilter>\[\] = useMemo\(/);
+  assert.match(THEMES_TAB, /const filterOptions: PillTabOption<BrowseFilter>\[\] = useMemo\(/);
   // No screen maps the whole theme list straight into cards.
   for (const src of [THEMES_TAB, WALLPAPERS_TAB, WIDGETS_TAB]) {
     assert.doesNotMatch(src, /(ALL_THEMES|SPACE_THEMES|PLUS_PACKS)\.map\(\([^)]*\) => \(?\s*<(ThemeCard|GalleryArtCard|ShowcaseCard)/);
