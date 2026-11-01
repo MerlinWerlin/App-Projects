@@ -1,17 +1,17 @@
 // T128 coming home: the due line, the "Heading home today / tomorrow" pill on the trip card, the trip screen card
-// and the Your day row. Logic in src/core/comehome.ts. Motion is the timed FadeInView only (Reduce Motion respected
+// and the Your day row. T130: the Trips tab hero card while the before-you-head-home list is due today / tomorrow. Logic in src/core/comehome.ts. Motion is the timed FadeInView only (Reduce Motion respected
 // there); colours from theme tokens.
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
-import { comeDue, comeNudge, homeAgainNudge, type ComeDue } from '../core/comehome.ts';
+import { comeDue, comeNudge, homeAgainNudge, lastCheckout, nextComeNudge, readComingHome, type ComeDue } from '../core/comehome.ts';
 import { formatDay, zoneCity } from '../core/format.ts';
 import type { Trip } from '../core/model.ts';
 import type { T } from '../i18n/core.ts';
 import { useApp } from '../state/app.tsx';
-import { elevated, radius, space, TOUCH, typeScale } from '../theme/tokens.ts';
-import { FadeInView, IconBadge, ProgressBar } from './hero.tsx';
+import { elevated, radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
+import { FadeInView, GradientFill, IconBadge, ProgressBar } from './hero.tsx';
 import { PressableScale } from './kit.tsx';
 
 /** "Today, before your 22:00 departure", "Heading home Wed 7 Apr at 22:00 (Tokyo time)", "Welcome home". */
@@ -147,3 +147,63 @@ export function ComeHomeBriefRow({ trip, now }: { trip: Trip; now: number }) {
     </>
   );
 }
+
+/**
+ * T130 Trips tab: a hero card like the leaving-home one ("Heading home tomorrow") while a trip's before-you-head-home
+ * list is due today or tomorrow and not finished (or not started); the soonest departure wins. Opens that trip's
+ * coming-home lists. Shown alongside Your day (which keeps its one-line row) because the last days of a trip always
+ * have a brief, so hiding behind it would hide the card every time.
+ */
+export const ComeHomeHomeCard = memo(function ComeHomeHomeCard({ trips }: { trips: Trip[] }) {
+  const { t, theme, lang } = useApp();
+  const router = useRouter();
+  const now = useFocusNow();
+  const next = useMemo(() => nextComeNudge(trips, now), [trips, now]);
+  if (!next) return null;
+  const { trip, due } = next;
+  const eyebrow = t('f102.home.eyebrow');
+  const head = t(due.when === 'today' ? 'f102.home.headToday' : 'f102.home.headTomorrow');
+  const line = comeDueLine(t, due, lang);
+  const left = t('comehome.brief.line', { when: whenWord(t, due), left: comeLeftLine(t, due, 'before') });
+  // The check-out time, while the checkout row is still open (or the lists aren't started).
+  const checkoutRow = readComingHome(trip)?.rows.find((r) => r.tpl === 'checkout');
+  const checkout = !due.started || (checkoutRow && !checkoutRow.done) ? lastCheckout(trip, due.dep) : null;
+  const checkoutLine = checkout
+    ? checkout.date === due.dep.stamp.local.slice(0, 10)
+      ? t('comehome.checkout.by', { name: checkout.name, time: checkout.time })
+      : t('comehome.checkout.byDate', { name: checkout.name, time: checkout.time, date: formatDay(checkout.date, lang) })
+    : '';
+  const p = due.before;
+  return (
+    <FadeInView>
+      <View style={[{ borderRadius: radius.l, overflow: 'hidden', backgroundColor: theme.hero.map[0] }, shadowOf(theme, 'mid')]}>
+        <GradientFill tone="map" />
+        <PressableScale
+          accessibilityRole="button"
+          accessibilityLabel={[eyebrow, head, trip.name, line, checkoutLine, left].filter(Boolean).join('. ')}
+          accessibilityHint={t('comehome.brief.hint', { trip: trip.name })}
+          onPress={() => router.push({ pathname: '/comehome/[tripId]', params: { tripId: trip.id } })}
+          style={{ padding: space.l, gap: space.s, minHeight: TOUCH }}
+        >
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
+            <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: theme.heroWash, alignItems: 'center', justifyContent: 'center' }}>
+              <Ionicons name="home-outline" size={18} color={theme.heroAccent} />
+            </View>
+            <Text style={[typeScale.caption, { color: theme.heroMuted, flex: 1 }]}>{eyebrow}</Text>
+            <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+              <Ionicons name="chevron-forward" size={18} color={theme.heroMuted} />
+            </View>
+          </View>
+          <Text style={[typeScale.displayM, { color: theme.heroInk }]}>{head}</Text>
+          <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{trip.name}</Text>
+          <Text style={[typeScale.body, { color: theme.heroMuted }]}>{line}</Text>
+          {checkoutLine ? <Text style={[typeScale.body, { color: theme.heroMuted }]}>{checkoutLine}</Text> : null}
+          <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{left}</Text>
+          {due.started && p.total ? (
+            <ProgressBar progress={p.done / p.total} tone="ok" track={theme.heroWash} label={t('comehome.card.progress', { done: p.done, total: p.total })} />
+          ) : null}
+        </PressableScale>
+      </View>
+    </FadeInView>
+  );
+});

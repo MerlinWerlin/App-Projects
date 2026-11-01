@@ -12,6 +12,7 @@ import type { EmergencyCard, Trip } from '../core/model.ts';
 import { EMPTY_STORE, listFor, PACKING_KEY, type PackStore } from '../core/packing.ts';
 import { hoursUntil, nextLeaving, readiness, showReadiness, type Check, type CheckStatus, type Fix, type LeavingSoon } from '../core/readiness.ts';
 import { todosCheck } from '../core/todos.ts';
+import { connectionsCheck } from '../core/layovers.ts';
 import { formatExpiry } from '../core/vault.ts';
 import { cityMapsChanged } from '../core/signal.ts';
 import type { Key } from '../i18n/en.ts';
@@ -25,6 +26,7 @@ import { CustomsReadRows } from './CustomsLink.tsx';
 import { FadeInView, GradientFill, IconBadge, ProgressBar, toneColours, type IconName, type Tone } from './hero.tsx';
 import { PressableScale } from './kit.tsx';
 import { CallHomeReadyRow } from './callhome.tsx';
+import { connectionsDetail, useLayoverPrefs } from './layovers.tsx';
 
 const STATUS_LOOK: Record<CheckStatus, { tone: Tone; icon: IconName }> = {
   pass: { tone: 'ok', icon: 'checkmark-circle' },
@@ -38,16 +40,21 @@ const STATUS_LOOK: Record<CheckStatus, { tone: Tone; icon: IconName }> = {
 export function checkDetail(t: T, c: Check, lang: string): string {
   // T93: the to-dos row's words live with the other to-do strings.
   if (c.id === 'todos') return t(`todos.readiness.${c.reason}` as Key, { done: c.done ?? 0, total: c.total ?? 0 });
+  // T131: the connections row's words live with the other layover strings.
+  if (c.id === 'connections') return connectionsDetail(t, c);
   const vars = { until: c.until ? formatExpiry(c.until, lang) : '', done: c.done ?? 0, total: c.total ?? 0, city: c.city ?? '' };
   if (c.id === 'map' && !c.city && (c.reason === 'catalogUnavailable' || c.reason === 'notInCatalog')) return t(`readiness.map.${c.reason}Any`, vars);
   return t(`readiness.${c.id}.${c.reason}` as Key, vars);
 }
 
-const fixKey = (f: Fix): 'vault' | 'packing' | 'emergency' | 'address' | 'map' => (f.kind === 'todos' ? 'packing' : f.kind);
-/** T93: the to-dos row's title and fix words come from the to-do strings. */
-const checkTitle = (t: T, id: Check['id']): string => (id === 'todos' ? t('todos.readiness.check') : t(`readiness.check.${id}`));
-const fixLabel = (t: T, f: Fix): string => (f.kind === 'todos' ? t('todos.readiness.fix') : t(`readiness.fix.${fixKey(f)}`));
-const fixHint = (t: T, f: Fix): string => (f.kind === 'todos' ? t('todos.readiness.fixHint') : t(`readiness.fix.${fixKey(f)}Hint`));
+const fixKey = (f: Fix): 'vault' | 'packing' | 'emergency' | 'address' | 'map' => (f.kind === 'todos' || f.kind === 'connection' ? 'packing' : f.kind);
+/** T93 / T131: the to-dos and connections rows' title and fix words come from their own strings. */
+const checkTitle = (t: T, id: Check['id']): string =>
+  id === 'todos' ? t('todos.readiness.check') : id === 'connections' ? t('layover.readiness.check') : t(`readiness.check.${id}`);
+const fixLabel = (t: T, f: Fix): string =>
+  f.kind === 'todos' ? t('todos.readiness.fix') : f.kind === 'connection' ? t('layover.readiness.fix') : t(`readiness.fix.${fixKey(f)}`);
+const fixHint = (t: T, f: Fix): string =>
+  f.kind === 'todos' ? t('todos.readiness.fixHint') : f.kind === 'connection' ? t('layover.readiness.fixHint') : t(`readiness.fix.${fixKey(f)}Hint`);
 
 /**
  * Loads the city-map list saved on this phone and the installed cities (no network), again on each focus and
@@ -133,6 +140,7 @@ export function ReadinessCard({ trip }: { trip: Trip }) {
   const [store, , packLoaded] = usePersisted<PackStore>(PACKING_KEY, EMPTY_STORE);
   const [rawCard, , cardLoaded] = usePersisted<EmergencyCard>(EMERGENCY_KEY, EMPTY_CARD);
   const maps = useMapsOnPhone();
+  const [layoverPrefs] = useLayoverPrefs();
   const [now, setNow] = useState(() => Date.now());
   useFocusEffect(useCallback(() => setNow(Date.now()), []));
 
@@ -149,9 +157,10 @@ export function ReadinessCard({ trip }: { trip: Trip }) {
             installed: maps.installed,
             now,
             todos: todosCheck(trip, now, { catalog: maps.catalog, installed: maps.installed }),
+            connections: connectionsCheck(trip, layoverPrefs),
           })
         : null,
-    [loaded, trip, docs, store, rawCard, maps, now],
+    [loaded, trip, docs, store, rawCard, maps, now, layoverPrefs],
   );
 
   const onFix = useCallback(
@@ -169,6 +178,8 @@ export function ReadinessCard({ trip }: { trip: Trip }) {
           return router.navigate({ pathname: '/map', params: { tripId: f.tripId, placeId: '' } });
         case 'todos':
           return router.push(`/todos/${f.tripId}`);
+        case 'connection':
+          return router.push(`/item/${f.itemId}`);
       }
     },
     [router],

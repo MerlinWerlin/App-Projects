@@ -21,6 +21,7 @@ import { ItemLoyaltySlot } from '../../src/ui/slots/ItemLoyaltySlot.tsx';
 import { ItemTicketSlot } from '../../src/ui/slots/ItemTicketSlot.tsx';
 import { ItemStaySlot } from '../../src/ui/stay.tsx';
 import { ItemRentalSlot } from '../../src/ui/driving.tsx';
+import { LegInfoLines } from '../../src/ui/layovers.tsx';
 
 export default function ItemScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -105,6 +106,8 @@ export default function ItemScreen() {
             {item.kind !== 'hotel' && readable ? <Body muted>{t('item.duration', { d: formatDuration(minutesBetween(item.start, item.end)) })}</Body> : null}
           </>
         ) : null}
+        {/* T131: terminal and gate typed on a journey. */}
+        <LegInfoLines item={item} />
       </Card>
       <AirportPanel item={item} framed />
       {readable ? null : <Warning text={t('t43.item.zoneUnreadable')} />}

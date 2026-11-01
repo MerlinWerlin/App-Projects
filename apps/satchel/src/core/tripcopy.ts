@@ -20,13 +20,19 @@
 // row as the traveller left it (own rows, renamed and removed template rows), all ticks cleared, new ids; the sitter
 // note's words and its daily tasks come along, dated tasks never do (they belong to the old days). Codes are
 // phone-only and never on a Trip.
+//
+// T130: the Coming home lists can come along the same way (CopyOptions.comingHome, off by default): both lists' rows
+// as the traveller left them (own rows, renamed template rows; removed template rows stay removed), every tick
+// cleared, new ids; the trip rating never comes (it is how the old trip went).
 import type { Budget, Companion, Item, LocalDate, Place, SavedPlace, Stamp, Trip } from './model.ts';
 import type { AirportInfo } from './leaveby.ts';
+import type { LegInfo } from './layovers.ts';
 import type { Idea } from './ideas.ts';
 import type { Todo } from './todos.ts';
 import type { PackItem, PackList } from './packing.ts';
 import type { Bag } from './bags.ts';
 import { readGifts, type GiftPerson } from './gifts.ts';
+import { readComingHome, type ComeRow, type ComingHome } from './comehome.ts';
 import { readLeavingHome, type LeaveRow, type LeavingHome, type SitterNote, type SitterTask } from './leavehome.ts';
 import { addDays, checkWallTime, daysBetween, isLocalDateTime, isValidZone, wallMs, wallString } from './tz.ts';
 
@@ -73,7 +79,8 @@ export const TRIP_RULES: Rules<Trip> = {
   // T124: the trip's own checklist (ticks, tasks by date) never comes as it is. T126: with the leavingHome option a
   // fresh copy comes instead, by LEAVING_HOME_RULES (ticks cleared, no dated tasks).
   leavingHome: 'drop',
-  // T128: the coming-home ticks and rating belong to the old trip: not copied.
+  // T128: the coming-home ticks and rating belong to the old trip: never copied as they are. T130: with the comingHome
+  // option a fresh copy of the rows comes instead, by COMING_HOME_RULES (ticks cleared, no rating).
   comingHome: 'drop',
 };
 
@@ -94,6 +101,7 @@ export const ITEM_RULES: Rules<Item> = {
   number: 'keep',
   notes: 'keep',
   airport: 'keep',
+  legInfo: 'keep',
   attachments: 'drop',
 };
 
@@ -101,6 +109,8 @@ export const ITEM_RULES: Rules<Item> = {
 export const PLACE_RULES: Rules<Place> = { id: 'new', name: 'keep', address: 'keep', localAddress: 'keep', lat: 'keep', lon: 'keep', phone: 'keep' };
 export const SAVED_PLACE_RULES: Rules<SavedPlace> = { ...PLACE_RULES, lat: 'keep', lon: 'keep', category: 'keep', sample: 'keep', savedAt: 'new' };
 /** The gate is this flight's, on that day; terminal and the usual times and buffers come along. */
+/** T131: terminals come along like the airport terminal; gates are that day's. */
+export const LEG_INFO_RULES: Rules<LegInfo> = { depTerminal: 'keep', depGate: 'drop', arrTerminal: 'keep', arrGate: 'drop' };
 export const AIRPORT_RULES: Rules<AirportInfo> = { terminal: 'keep', gate: 'drop', boarding: 'keep', bagDrop: 'keep', scope: 'keep', bufferMin: 'keep', travelMin: 'keep' };
 export const IDEA_RULES: Rules<Idea> = {
   id: 'new',
@@ -138,6 +148,10 @@ export const SITTER_NOTE_RULES: Rules<SitterNote> = {
 };
 /** A daily task comes along with a new id; a task on a date of the old trip does not. */
 export const SITTER_TASK_RULES: Rules<SitterTask> = { id: 'new', when: 'undated', text: 'keep' };
+/** T130 Coming home (the comingHome option): rows by COME_ROW_RULES, a new date; the rating stays with the old trip. */
+export const COMING_HOME_RULES: Rules<ComingHome> = { rows: 'keep', rating: 'drop', updatedAt: 'new' };
+/** Both lists' rows as the traveller left them (own rows, renamed template rows, removed ones stay removed); ticks clear. */
+export const COME_ROW_RULES: Rules<ComeRow> = { id: 'new', list: 'keep', tpl: 'keep', label: 'keep', done: 'clear' };
 export const BUDGET_RULES: Rules<Budget> = { currency: 'keep', amount: 'keep' };
 export const PACK_LIST_RULES: Rules<PackList> = {
   tripId: 'new',
@@ -248,7 +262,7 @@ export function copyPreview(trip: Trip, newStart: LocalDate): CopyPreview {
 }
 
 /** How much each part would bring along (0 / false: nothing to copy, the screen hides that choice). */
-export type PartCounts = Record<Exclude<CopyPart, 'budget'>, number> & { budget: boolean; giftPeople: number; leavingHome: number };
+export type PartCounts = Record<Exclude<CopyPart, 'budget'>, number> & { budget: boolean; giftPeople: number; leavingHome: number; comingHome: number };
 export function partCounts(trip: Trip, packing: PackList | null | undefined): PartCounts {
   const list = packing && packing.tripId === trip.id ? packing : null;
   return {
@@ -262,6 +276,8 @@ export function partCounts(trip: Trip, packing: PackList | null | undefined): Pa
     giftPeople: readGifts(trip).length,
     // T126: checklist rows (a note with no rows has nothing to tick, but its words can still come: count it as one).
     leavingHome: leavingHomeCount(trip),
+    // T130: coming-home rows on both lists (a rating alone has nothing to copy).
+    comingHome: readComingHome(trip)?.rows.length ?? 0,
     budget: !!trip.budget && typeof trip.budget.currency === 'string' && !!trip.budget.currency,
   };
 }
@@ -279,6 +295,8 @@ export type CopyOptions = {
   giftNames?: boolean;
   /** T126: bring the Leaving home checklist (ticks cleared) and the sitter note without dated tasks. Off unless set. */
   leavingHome?: boolean;
+  /** T130: bring the Coming home lists' rows (ticks cleared, no rating). Off unless set. */
+  comingHome?: boolean;
 };
 export type CopyResult = { trip: Trip; packing: PackList | null; days: number };
 
@@ -302,6 +320,11 @@ function copyItem(item: Item, tripId: string, days: number, newId: (prefix: stri
     const a = kept(item.airport, AIRPORT_RULES);
     if (Object.keys(a).length) out.airport = a;
     else delete out.airport;
+  }
+  if (item.legInfo) {
+    const l = kept(item.legInfo, LEG_INFO_RULES);
+    if (Object.keys(l).length) out.legInfo = l;
+    else delete out.legInfo;
   }
   return out;
 }
@@ -346,6 +369,14 @@ export function copyLeavingHome(trip: Trip, newId: (prefix: string) => string, n
   const note = copyNote(lh.note, newId);
   if (!rows.length && !note) return undefined;
   return { rows, ...(note ? { note } : {}), updatedAt: now };
+}
+
+/** T130: a fresh Coming home for the copy (read through readComingHome, so broken rows and unknown fields never come). */
+export function copyComingHome(trip: Trip, newId: (prefix: string) => string, now: string): ComingHome | undefined {
+  const ch = readComingHome(trip);
+  if (!ch || !ch.rows.length) return undefined;
+  const rows = ch.rows.map((r) => ({ ...kept(r, COME_ROW_RULES), id: newId('ch'), done: false }) as ComeRow);
+  return { rows, updatedAt: now };
 }
 
 function copyPacking(list: PackList, tripId: string, parts: CopyParts, newId: (prefix: string) => string): PackList | null {
@@ -411,6 +442,10 @@ export function copyTrip(trip: Trip, packing: PackList | null | undefined, opts:
   if (opts.leavingHome === true) {
     const lh = copyLeavingHome(trip, newId, now);
     if (lh) out.leavingHome = lh;
+  }
+  if (opts.comingHome === true) {
+    const ch = copyComingHome(trip, newId, now);
+    if (ch) out.comingHome = ch;
   }
   if (parts.budget && trip.budget) {
     const b = kept(trip.budget, BUDGET_RULES) as Budget;

@@ -207,7 +207,7 @@ test('New Zealand: Matariki every covered year, on a Friday near the Pipiri last
  */
 const CHECKED_IONICONS = new Set([
   'add', 'airplane', 'alert-circle', 'alert-circle-outline', 'analytics-outline', 'bag-check-outline', 'bag-handle-outline',
-  'bar-chart-outline', 'bed-outline', 'bulb-outline', 'bus-outline', 'calculator-outline', 'call', 'call-outline',
+  'bar-chart-outline', 'bed-outline', 'train-outline', 'bulb-outline', 'bus-outline', 'calculator-outline', 'call', 'call-outline',
   'camera-outline', 'car-outline', 'card', 'card-outline', 'cash-outline', 'checkbox', 'checkmark', 'checkmark-circle',
   'checkmark-circle-outline', 'chevron-back', 'chevron-forward', 'close', 'copy-outline', 'create-outline', 'cube-outline',
   'document-text-outline', 'ellipsis-horizontal-circle-outline', 'expand-outline', 'eye-off-outline', 'flag-outline',

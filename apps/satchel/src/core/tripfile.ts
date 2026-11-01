@@ -34,6 +34,7 @@ import type { PackItem, PackList } from './packing.ts';
 import { cleanBagData } from './bags.ts';
 import { readCover } from './covers.ts';
 import { readAirport } from './leaveby.ts';
+import { readLegInfo } from './layovers.ts';
 import { checkFileSpending } from './spending.ts';
 import { cleanFileTogether } from './together.ts';
 import { cleanFileCash, importCash } from './cash.ts';
@@ -218,6 +219,14 @@ function fileAirport(item: FileItem): FileItem {
   return clean ? { ...rest, airport: clean } : rest;
 }
 
+/** T131: a journey's terminal / gate fields are optional; bad values are dropped, unknown keys kept (readLegInfo). */
+function fileLegInfo(item: FileItem): FileItem {
+  if (!('legInfo' in item)) return item;
+  const { legInfo, ...rest } = item;
+  const clean = readLegInfo(legInfo);
+  return clean ? { ...rest, legInfo: clean } : rest;
+}
+
 const damaged = (detail: string): ParseResult => ({ ok: false, error: 'damaged', detail });
 
 /** Checks a decoded JSON value in full. Nothing about it is trusted until this says ok. */
@@ -308,7 +317,7 @@ export function parseTripFile(data: unknown): ParseResult {
       version: TRIP_FILE_VERSION,
       exported_at: isStr(data.exported_at) ? data.exported_at : '',
       trip,
-      items: (data.items as FileItem[]).map(fileAirport),
+      items: (data.items as FileItem[]).map((i) => fileLegInfo(fileAirport(i))),
       places: places as SavedPlace[],
       ...(packing ? { packing } : {}),
       attachments: data.attachments as FilePayload[],

@@ -4,18 +4,23 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { Budget, Companion, Item, Place, SavedPlace, Trip } from './model.ts';
 import type { AirportInfo } from './leaveby.ts';
+import type { LegInfo } from './layovers.ts';
 import type { Idea } from './ideas.ts';
 import type { Todo } from './todos.ts';
 import type { PackItem, PackList } from './packing.ts';
 import type { Bag } from './bags.ts';
+import type { ComeRow, ComingHome } from './comehome.ts';
 import type { LeaveRow, LeavingHome, SitterNote, SitterTask } from './leavehome.ts';
 import { stayKey } from './staydetails.ts';
 import { toUtc } from './tz.ts';
 import {
   AIRPORT_RULES,
+  LEG_INFO_RULES,
   ALL_PARTS,
   BAG_RULES,
   BUDGET_RULES,
+  COMING_HOME_RULES,
+  COME_ROW_RULES,
   COMPANION_RULES,
   COPY_PARTS,
   GIFT_PERSON_RULES,
@@ -48,6 +53,7 @@ const NOW = '2026-11-01T09:00:00.000Z';
 
 const place = (id: string, name: string, lat: number, lon: number): Required<Place> => ({ id, name, address: `${name} street 1`, localAddress: `${name} 1丁目`, lat, lon, phone: '+81 3 1234 5678' });
 const airport: Required<AirportInfo> = { terminal: 'T1', gate: '52', boarding: '20:30', bagDrop: '19:45', scope: 'international', bufferMin: 150, travelMin: 45 };
+const legInfo: Required<LegInfo> = { depTerminal: 'T1', depGate: '52', arrTerminal: 'T3', arrGate: '114' };
 const flight: Required<Item> = {
   id: 'item_flight',
   tripId: 'trip_full',
@@ -64,6 +70,7 @@ const flight: Required<Item> = {
   number: 'EA 25',
   notes: 'Vegetarian meal',
   airport,
+  legInfo,
   attachments: [{ id: 'att_1', uri: 'file:///docs/attachments/att_1-boarding.pdf', name: 'boarding.pdf', mime: 'application/pdf', role: 'ticket', qrCropUri: 'file:///docs/attachments/att_1-crop.png' }],
 };
 const hotel: Required<Item> = {
@@ -202,6 +209,7 @@ test('T118 guard: every field of every copied type has exactly one rule (copied,
   assert.deepEqual(keys(PLACE_RULES), keys(flight.from));
   assert.deepEqual(keys(SAVED_PLACE_RULES), keys(savedPlace));
   assert.deepEqual(keys(AIRPORT_RULES), keys(airport));
+  assert.deepEqual(keys(LEG_INFO_RULES), keys(legInfo));
   assert.deepEqual(keys(IDEA_RULES), keys(idea));
   assert.deepEqual(keys(TODO_RULES), keys(todo));
   assert.deepEqual(keys(COMPANION_RULES), keys(companion));
@@ -211,7 +219,7 @@ test('T118 guard: every field of every copied type has exactly one rule (copied,
   assert.deepEqual(keys(BAG_RULES), keys(ownBag));
   // Same Trip / Item key list the T85 round-trip guard pins today (a new field must be ruled on in both).
   assert.deepEqual(keys(TRIP_RULES), ['budget', 'cash', 'comingHome', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'leavingHome', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos']);
-  assert.deepEqual(keys(ITEM_RULES), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
+  assert.deepEqual(keys(ITEM_RULES), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'legInfo', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
   // Phone-only and money data is never a part the traveller can switch on.
   for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo', 'leavingHome', 'comingHome'] as const) assert.equal(TRIP_RULES[k], 'drop', k);
   for (const k of ['ref', 'seat', 'attachments'] as const) assert.equal(ITEM_RULES[k], 'drop', k);
@@ -273,7 +281,7 @@ test('T118 every rule holds on a trip with every field set (all parts on)', () =
       items: each<Item>(ITEM_RULES, (s, o, p) =>
         checkRules(s as unknown as Record<string, unknown>, o as unknown as Record<string, unknown>, ITEM_RULES as Record<string, Rule>, p, {
           shifted: { start: shiftStamp(s.start, 183), end: shiftStamp(s.end!, 183) },
-          nested: { from: placeCheck(PLACE_RULES), to: placeCheck(PLACE_RULES), place: placeCheck(PLACE_RULES), airport: placeCheck(AIRPORT_RULES) },
+          nested: { from: placeCheck(PLACE_RULES), to: placeCheck(PLACE_RULES), place: placeCheck(PLACE_RULES), airport: placeCheck(AIRPORT_RULES), legInfo: placeCheck(LEG_INFO_RULES) },
         }),
       ),
       places: each<SavedPlace>(SAVED_PLACE_RULES, (s, o, p) => checkRules(s as unknown as Record<string, unknown>, o as unknown as Record<string, unknown>, SAVED_PLACE_RULES as Record<string, Rule>, p)),
@@ -458,9 +466,9 @@ test('T118 the picker starts on the same day next year; 29 Feb goes to 28 Feb', 
 });
 
 test('T118 part counts for the choice list', () => {
-  assert.deepEqual(partCounts(fullTrip(), packList()), { bookings: 2, packing: 1, bags: 2, ideas: 2, todos: 2, companions: 1, giftPeople: 1, leavingHome: 1, budget: true });
+  assert.deepEqual(partCounts(fullTrip(), packList()), { bookings: 2, packing: 1, bags: 2, ideas: 2, todos: 2, companions: 1, giftPeople: 1, leavingHome: 1, comingHome: 1, budget: true });
   const bare: Trip = { id: 'b', name: 'B', startDate: '2027-01-01', endDate: '2027-01-02', homeTz: 'UTC', items: [], createdAt: NOW };
-  assert.deepEqual(partCounts(bare, null), { bookings: 0, packing: 0, bags: 0, ideas: 0, todos: 0, companions: 0, giftPeople: 0, leavingHome: 0, budget: false });
+  assert.deepEqual(partCounts(bare, null), { bookings: 0, packing: 0, bags: 0, ideas: 0, todos: 0, companions: 0, giftPeople: 0, leavingHome: 0, comingHome: 0, budget: false });
 });
 
 test('T118 an unreadable new date leaves the dates as they were (no shift)', () => {
@@ -578,4 +586,66 @@ test('T126 Leaving home copy: codes and unknown fields never come; nothing to co
   const words = { ...fullTrip(), leavingHome: { rows: [], note: { address: '1 Home St' } } };
   assert.equal(partCounts(words, null).leavingHome, 1);
   assert.deepEqual(copyTrip(words, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, leavingHome: true }).trip.leavingHome, { rows: [], note: { address: '1 Home St' }, updatedAt: NOW });
+});
+
+// ---- T130 Coming home ----
+
+const comeOwn: Required<ComeRow> = { id: 'ch_own', list: 'after', tpl: 'photos', label: 'Back up to the NAS', done: true };
+const coming = (): Required<ComingHome> =>
+  structuredClone({
+    rows: [
+      { id: 'ch_1', list: 'before', tpl: 'checkout', done: true },
+      { id: 'ch_2', list: 'before', label: 'Return the hire car', done: true },
+      { id: 'ch_3', list: 'after', tpl: 'unpack', done: false },
+      comeOwn,
+    ] as ComeRow[],
+    rating: 4,
+    updatedAt: '2027-04-10T09:00:00.000Z',
+  });
+
+test('T130 guard: every Coming home field has a rule; ticks clear, the rating never comes', () => {
+  assert.deepEqual(keys(COMING_HOME_RULES), keys(coming()));
+  assert.deepEqual(keys(COME_ROW_RULES), keys(comeOwn));
+  assert.equal(COME_ROW_RULES.done, 'clear');
+  assert.equal(COMING_HOME_RULES.rating, 'drop');
+  assert.equal(COMING_HOME_RULES.updatedAt, 'new');
+  assert.equal(TRIP_RULES.comingHome, 'drop', 'never copied as it is');
+});
+
+test('T130 Coming home: off by default; on, both lists as left (own, renamed, removed template rows) with ticks cleared and no rating', () => {
+  const src = fullTrip();
+  src.comingHome = coming();
+  assert.equal(copyTrip(src, null, { startDate: '2027-10-01', parts: ALL_PARTS, newId, now: NOW, leavingHome: true }).trip.comingHome, undefined, 'off unless asked');
+  assert.equal(partCounts(src, null).comingHome, 4);
+  const { trip } = copyTrip(src, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, comingHome: true });
+  const ch = trip.comingHome;
+  assert.ok(ch);
+  assert.deepEqual(
+    ch.rows.map((r) => [r.list, r.tpl, r.label, r.done]),
+    [['before', 'checkout', undefined, false], ['before', undefined, 'Return the hire car', false], ['after', 'unpack', undefined, false], ['after', 'photos', 'Back up to the NAS', false]],
+  );
+  for (const r of ch.rows) {
+    assert.ok(!['ch_1', 'ch_2', 'ch_3', 'ch_own'].includes(r.id), 'new id');
+    checkRules(src.comingHome.rows.find((x) => x.tpl === r.tpl && x.label === r.label) as unknown as Record<string, unknown>, r as unknown as Record<string, unknown>, COME_ROW_RULES as Record<string, Rule>, 'row');
+  }
+  assert.equal(new Set(ch.rows.map((r) => r.id)).size, ch.rows.length);
+  assert.equal(ch.rating, undefined);
+  assert.equal(ch.updatedAt, NOW);
+  // The old trip is untouched.
+  assert.equal(src.comingHome.rows[0].done, true);
+  assert.equal(src.comingHome.rating, 4);
+});
+
+test('T130 Coming home copy: unknown fields and broken rows never come; a rating alone adds nothing', () => {
+  const src = fullTrip();
+  src.comingHome = { ...coming(), extraField: 'secret', rows: [...coming().rows, { id: 'bad' }, { id: 'ch_x', list: 'after', label: 'Ok', done: true, junk: 'zzz' }] } as unknown as ComingHome;
+  const { trip } = copyTrip(src, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, comingHome: true });
+  const text = JSON.stringify(trip.comingHome);
+  for (const s of ['secret', 'extraField', 'junk', 'zzz', '"rating"']) assert.ok(!text.includes(s), s);
+  assert.equal(trip.comingHome?.rows.length, 5);
+  const rated = { ...fullTrip(), comingHome: { rows: [], rating: 5 } };
+  assert.equal(partCounts(rated, null).comingHome, 0);
+  assert.equal(copyTrip(rated, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, comingHome: true }).trip.comingHome, undefined);
+  const bare = { ...fullTrip(), comingHome: undefined };
+  assert.equal(copyTrip(bare, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, comingHome: true }).trip.comingHome, undefined);
 });

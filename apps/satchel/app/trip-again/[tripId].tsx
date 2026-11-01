@@ -52,6 +52,8 @@ function PlanAgain({ trip }: { trip: Trip }) {
   const [giftNames, setGiftNames] = useState(false);
   // T126: the Leaving home checklist (ticks cleared, no dated sitter tasks), off by default like gift names.
   const [leavingHome, setLeavingHome] = useState(false);
+  // T130: the Coming home lists (ticks cleared, no rating), off by default too.
+  const [comingHome, setComingHome] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saveFailed, setSaveFailed] = useState(false);
   const counts = useMemo(() => partCounts(trip, packing), [trip, packing]);
@@ -81,7 +83,7 @@ function PlanAgain({ trip }: { trip: Trip }) {
     setSaving(true);
     setSaveFailed(false);
     const chosen = Object.fromEntries(COPY_PARTS.map((p) => [p, parts[p] && shown.includes(p)])) as CopyParts;
-    const result = copyTrip(trip, packing, { startDate: start, parts: chosen, newId, name: name ?? autoName, giftNames: giftNames && counts.giftPeople > 0, leavingHome: leavingHome && counts.leavingHome > 0 });
+    const result = copyTrip(trip, packing, { startDate: start, parts: chosen, newId, name: name ?? autoName, giftNames: giftNames && counts.giftPeople > 0, leavingHome: leavingHome && counts.leavingHome > 0, comingHome: comingHome && counts.comingHome > 0 });
     const ok = await saveTrip(result.trip);
     if (!ok) {
       setSaving(false);
@@ -143,9 +145,15 @@ function PlanAgain({ trip }: { trip: Trip }) {
             <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('f101.copy.leavingHomeHint')}</Text>
           </View>
         ) : null}
+        {counts.comingHome > 0 ? (
+          <View style={{ gap: space.xs }}>
+            <ToggleRow label={t('f102.copy.comingHome', { n: counts.comingHome })} hint={t('f102.copy.comingHomeHint')} value={comingHome} onChange={setComingHome} />
+            <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('f102.copy.comingHomeHint')}</Text>
+          </View>
+        ) : null}
         <View style={{ gap: space.xs, borderTopWidth: 1, borderTopColor: theme.line, paddingTop: space.s }}>
           <Label>{t('tripcopy.never.title')}</Label>
-          <Body muted>{t('tripcopy.never.body')}</Body>
+          <Body muted>{t('f102.copy.neverBody')}</Body>
         </View>
       </Card>
 

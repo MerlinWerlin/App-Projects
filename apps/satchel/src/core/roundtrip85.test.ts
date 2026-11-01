@@ -22,6 +22,8 @@ import { draftFromGift, draftFromPerson, giftFromDraft, personFromDraft } from '
 import { draftFromExpense, expenseFromDraft } from './spending.ts';
 import { keepUnknown, splitFromDraft, togetherDraftFromExpense, withSplit } from './together.ts';
 import type { AirportInfo } from './leaveby.ts';
+import type { LegInfo } from './layovers.ts';
+import { legInfoDraft, withLegInfo } from './layovers.ts';
 import { airportDraft, withAirport } from './leaveby.ts';
 import type { PackItem, PackList } from './packing.ts';
 import type { Bag } from './bags.ts';
@@ -64,6 +66,9 @@ const airport: Required<AirportInfo> = {
   travelMin: 45,
 };
 
+// T131: arrival / departure terminal and gate typed on a journey.
+const legInfo: Required<LegInfo> = { depTerminal: 'T1', depGate: '52', arrTerminal: 'Terminal 3', arrGate: '114' };
+
 const flight: Required<Item> = {
   id: 'item_flight',
   tripId: 'trip_full',
@@ -82,6 +87,7 @@ const flight: Required<Item> = {
   number: 'EA 25',
   notes: 'Window seat, vegetarian meal',
   airport,
+  legInfo,
   attachments: [attachment],
 };
 
@@ -101,6 +107,7 @@ const hotel: Required<Item> = {
   number: 'n/a',
   notes: 'Late check-in agreed',
   airport,
+  legInfo,
   attachments: [{ id: 'att_2', uri: `${DOCS}attachments/att_2-voucher.png`, name: 'voucher.png', mime: 'image/png', role: 'booking', qrCropUri: `${DOCS}attachments/att_2-voucher.png` }],
 };
 
@@ -342,7 +349,9 @@ test('T85 fixture: every Trip and Item field is set (Required<> typing + no unde
   // T107: Gift / GiftPerson keys today.
   assert.deepEqual(Object.keys(gift).sort(), ['bag', 'createdAt', 'currency', 'expenseId', 'id', 'lat', 'lon', 'price', 'spotName', 'status', 'updatedAt', 'weightG', 'what', 'where']);
   assert.deepEqual(Object.keys(giftPerson).sort(), ['budget', 'createdAt', 'gifts', 'id', 'name']);
-  assert.deepEqual(Object.keys(flight).sort(), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
+  assert.deepEqual(Object.keys(flight).sort(), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'legInfo', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
+  // T131: LegInfo keys today.
+  assert.deepEqual(Object.keys(legInfo).sort(), ['arrGate', 'arrTerminal', 'depGate', 'depTerminal']);
 });
 
 // ---- (1) Edit trip save ----
@@ -370,7 +379,10 @@ test('T85 (1) a trip field added later survives Edit trip save', () => {
 // ---- (2) Edit booking save ----
 
 /** What app/item-edit.tsx saves when nothing is changed in the form. */
-const editItem = (prev: Item): Item => ({ ...withAirport(itemFromDraft(draftFromItem(prev), prev.tripId, prev), airportDraft(prev.airport), prev.airport), attachments: prev.attachments });
+const editItem = (prev: Item): Item => ({
+  ...withLegInfo(withAirport(itemFromDraft(draftFromItem(prev), prev.tripId, prev), airportDraft(prev.airport), prev.airport), legInfoDraft(prev.legInfo), prev.legInfo),
+  attachments: prev.attachments,
+});
 
 test('T85 (2) Edit booking save keeps every field the kind owns (flight)', () => {
   const prev = structuredClone(flight);
@@ -381,7 +393,7 @@ test('T85 (2) Edit booking save keeps every field the kind owns (flight)', () =>
 
 test('T85 (2) Edit booking save keeps every field the kind owns (hotel)', () => {
   const prev = structuredClone(hotel);
-  const { from: _f, to: _t, seat: _s, carrier: _c, number: _n, airport: _a, ...expected } = prev;
+  const { from: _f, to: _t, seat: _s, carrier: _c, number: _n, airport: _a, legInfo: _l, ...expected } = prev;
   assert.deepEqual(json(editItem(prev)), json(expected));
 });
 
@@ -394,6 +406,7 @@ test('T85 (2) regression: a booking field the form does not know survives Edit b
   const asHotel = itemFromDraft({ ...draftFromItem(prev), kind: 'hotel' }, prev.tripId, prev);
   assert.equal(asHotel.seat, undefined);
   assert.equal(asHotel.airport, undefined);
+  assert.equal(asHotel.legInfo, undefined);
   assert.equal(asHotel.from, undefined);
 });
 

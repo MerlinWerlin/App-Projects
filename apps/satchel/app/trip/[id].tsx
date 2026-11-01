@@ -17,6 +17,7 @@ import { ITEM_KINDS, type ItemKind, type Trip } from '../../src/core/model.ts';
 import { placesByName } from '../../src/core/places.ts';
 import { isMapCategory } from '../../src/core/poi.ts';
 import { groupByDay, nightsWithoutBed, overlaps, tripPhase, type Day } from '../../src/core/timeline.ts';
+import { connectionAfter, connectionDay, connections } from '../../src/core/layovers.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
@@ -41,6 +42,7 @@ import { AddToCalendar } from '../../src/ui/AddToCalendar.tsx';
 import { ArrivalCard } from '../../src/ui/ArrivalCard.tsx';
 import { DriveSideBanner } from '../../src/ui/driving.tsx';
 import { LeaveHomeTripCard } from '../../src/ui/leavehome.tsx';
+import { GetaroundTripCard } from '../../src/ui/getaround.tsx';
 import { ComeHomeTripCard } from '../../src/ui/comehome.tsx';
 import { InflightTripCard } from '../../src/ui/InflightCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
@@ -49,6 +51,7 @@ import { PlanAgainButton } from '../../src/ui/PlanAgainButton.tsx';
 import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
 import { HolidayBadge, HolidaysCard, useTripHolidays } from '../../src/ui/HolidaysCard.tsx';
 import { PlanDayButton } from '../../src/ui/PlanDayButton.tsx';
+import { ConnectionCard, useLayoverPrefs } from '../../src/ui/layovers.tsx';
 
 const DEMO_INTRO_KEY = 'satchel.demoIntro.done.v1';
 const NOT_DONE = false;
@@ -132,6 +135,9 @@ export default function TripScreen() {
   const trip = trips.find((x) => x.id === id);
   const partners = useMemo(() => overlapPartners(trip?.items ?? []), [trip]);
   const days = useMemo(() => (trip ? groupByDay(trip) : []), [trip]);
+  // T131: changes between back-to-back journeys, shown as a card after the leg that lands (on its arrival day).
+  const [layoverPrefs] = useLayoverPrefs();
+  const conns = useMemo(() => connections(trip?.items ?? [], layoverPrefs), [trip, layoverPrefs]);
   const cover = useMemo(() => (trip ? tripCover(trip) : null), [trip]);
   const accent = useMemo(() => (cover ? tripAccent(cover, theme) : null), [cover, theme]);
   // T106: public holidays at the trip's stops, for the day-header badges.
@@ -171,6 +177,12 @@ export default function TripScreen() {
     </View>
   );
 
+  /** T131: the change after this leg, on the day the leg lands. */
+  const connectionCard = (arriveId: string, date: string) => {
+    const c = connectionAfter(conns, arriveId);
+    return c && trip && connectionDay(c) === date ? <ConnectionCard c={c} tripId={trip.id} /> : null;
+  };
+
   const renderDay = useCallback(
     ({ item: day }: { item: Day }) => (
       <Card style={accent ? { borderLeftWidth: 4, borderLeftColor: accent.strong } : undefined}>
@@ -188,10 +200,16 @@ export default function TripScreen() {
           {trip && (day.items.length || day.continuing.length) ? <AddToCalendar trip={trip} scope={{ kind: 'day', date: day.date }} compact /> : null}
         </View>
         {day.continuing.map((it) => (
-          <ItemRow key={`c-${it.id}`} item={it} continuingOn={day.date} onPress={() => router.push(`/item/${it.id}`)} />
+          <View key={`c-${it.id}`}>
+            <ItemRow item={it} continuingOn={day.date} onPress={() => router.push(`/item/${it.id}`)} />
+            {connectionCard(it.id, day.date)}
+          </View>
         ))}
         {day.items.map((it) => (
-          <ItemRow key={it.id} item={it} overlapsWith={overlapTitles(partners, it.id) || undefined} onPress={() => router.push(`/item/${it.id}`)} />
+          <View key={it.id}>
+            <ItemRow item={it} overlapsWith={overlapTitles(partners, it.id) || undefined} onPress={() => router.push(`/item/${it.id}`)} />
+            {connectionCard(it.id, day.date)}
+          </View>
         ))}
         {/* T81: ideas planned for this day, as light "Planned" rows. */}
         {trip ? <PlannedIdeas trip={trip} day={day.date} /> : null}
@@ -204,7 +222,7 @@ export default function TripScreen() {
       </Card>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [adding, lang, t, theme, router, partners, trip, holidays, accent],
+    [adding, lang, t, theme, router, partners, trip, holidays, accent, conns],
   );
 
   if (!trip) {
@@ -274,6 +292,8 @@ export default function TripScreen() {
             {past ? null : <ArrivalCard trip={trip} />}
             {/* T122: "Drive on the LEFT / RIGHT" for each country the trip has a car booking in. */}
             {past ? null : <DriveSideBanner trip={trip} />}
+            {/* T132: getting around each covered trip country (transit cards, bank card, taxis, airport). */}
+            {past ? null : <GetaroundTripCard trip={trip} />}
             {/* T124: before you lock the door, timed to the first departure (hidden once you've left). */}
             {past ? null : <LeaveHomeTripCard trip={trip} />}
             {/* T128: coming home, from three days before the final departure to the day after you're back. */}

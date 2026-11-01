@@ -31,6 +31,8 @@ import { useHomeCountry } from './HomeCountryPicker.tsx';
 import { hasCustoms } from '../core/customs.ts';
 import { CUSTOMS_TABLE } from './CustomsLink.tsx';
 import { hasDriving } from '../core/driving.ts';
+import { hasGetaround } from '../core/getaround.ts';
+import { GETAROUND_TABLE } from './getaround.tsx';
 import { DRIVING_TABLE } from './driving.tsx';
 import { PressableScale } from './kit.tsx';
 import { PHRASE_TABLE } from './phrases.ts';
@@ -215,6 +217,12 @@ function ArrivalHero({ view: v, stay, onDismiss }: { view: ArrivalView; stay: Cu
             {hasCustoms(CUSTOMS_TABLE, v.iso2) ? (
               <View style={{ flexDirection: 'row' }}>
                 <HeroButton label={t('customs.fromArrival')} hint={t('customs.fromArrivalHint', { country: v.country })} icon="people-outline" onPress={() => router.push({ pathname: '/customs/[iso2]', params: { iso2: v.iso2, tripId: v.tripId } })} />
+              </View>
+            ) : null}
+            {/* T132: local transport (transit cards, tapping a bank card, taxis, airport) when the guide covers the country. */}
+            {hasGetaround(GETAROUND_TABLE, v.iso2) ? (
+              <View style={{ flexDirection: 'row' }}>
+                <HeroButton label={t('getaround.fromArrival')} hint={t('getaround.fromArrivalHint', { country: v.country })} icon="train-outline" onPress={() => router.push({ pathname: '/getaround/[country]', params: { country: v.iso2, tripId: v.tripId } })} />
               </View>
             ) : null}
             {/* T122: driving notes (side of the road, speed unit, permit, fuel words, tolls) when the guide covers the country. */}

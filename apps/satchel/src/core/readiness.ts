@@ -18,7 +18,7 @@ import { addMonths, isLocalDate, PASSPORT_MONTHS } from './vault.ts';
  * shown honestly and never counted against the score.
  */
 export type CheckStatus = 'pass' | 'warn' | 'fail' | 'missing' | 'unknown';
-export type CheckId = 'passport' | 'visa' | 'packing' | 'emergency' | 'hotels' | 'map' | 'todos';
+export type CheckId = 'passport' | 'visa' | 'packing' | 'emergency' | 'hotels' | 'map' | 'todos' | 'connections';
 export const CHECK_ORDER: readonly CheckId[] = ['passport', 'visa', 'packing', 'emergency', 'hotels', 'map'];
 
 /** Where the one-tap fix goes. */
@@ -28,7 +28,8 @@ export type Fix =
   | { kind: 'emergency' }
   | { kind: 'address'; itemId: string }
   | { kind: 'map'; tripId: string }
-  | { kind: 'todos'; tripId: string };
+  | { kind: 'todos'; tripId: string }
+  | { kind: 'connection'; itemId: string };
 
 /**
  * Why a row has its status (the UI turns it into words). Only dates, counts and city names, never document data.
@@ -63,7 +64,9 @@ export type Reason =
   // T93 to-dos row (src/core/todos.ts todosCheck): overdue | dueSoon | onTrack | done | none
   | 'overdue'
   | 'dueSoon'
-  | 'onTrack';
+  | 'onTrack'
+  // T131 connections row (src/core/layovers.ts connectionsCheck): tight | ok
+  | 'tight';
 
 export type Check = {
   id: CheckId;
@@ -74,8 +77,10 @@ export type Check = {
   total?: number;
   /** Passport / visa: the date it must be valid until (trip end, or 6 months after it). Never the expiry itself. */
   until?: LocalDate;
-  /** Map: the city the check is about. */
+  /** Map: the city the check is about. T131 connections: the places of the tight changes, joined. */
   city?: string;
+  /** T131 connections: the shortest tight change, in minutes. */
+  minutes?: number;
   fix: Fix | null;
 };
 
@@ -104,6 +109,8 @@ export type ReadinessInput = {
   now: number;
   /** T93: the trip's to-dos row (src/core/todos.ts todosCheck), shown after the others when given. */
   todos?: Check | null;
+  /** T131: the trip's connections row (src/core/layovers.ts connectionsCheck), after the map row; null: no connections. */
+  connections?: Check | null;
 };
 
 // ------------------------------------------------------------------ dates
@@ -261,6 +268,7 @@ export function readiness(input: ReadinessInput): Readiness {
     emergencyCheck(card),
     hotelsCheck(trip),
     mapCheck(trip, catalog, installed),
+    ...(input.connections ? [input.connections] : []),
     ...(input.todos ? [input.todos] : []),
   ];
   const judged = checks.filter((c) => c.status !== 'unknown');
@@ -271,8 +279,8 @@ export function readiness(input: ReadinessInput): Readiness {
   return { checks, passed, scored, score: scored ? passed / scored : 0, overall, today, tripEnd: end };
 }
 
-/** Card order; the T93 to-dos row comes last. */
-const order = (id: CheckId) => (id === 'todos' ? CHECK_ORDER.length : CHECK_ORDER.indexOf(id));
+/** Card order; the T131 connections row, then the T93 to-dos row, come last. */
+const order = (id: CheckId) => (id === 'connections' ? CHECK_ORDER.length : id === 'todos' ? CHECK_ORDER.length + 1 : CHECK_ORDER.indexOf(id));
 
 /** The rows that still want something done, worst first (fail, missing, warn), then card order. */
 export function toFix(r: Readiness): Check[] {
