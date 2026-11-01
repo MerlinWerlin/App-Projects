@@ -11,6 +11,7 @@
 // below. Vault documents (key and vault/ files) only when "Include documents" is on.
 import { cleanCoverPhotos, COVER_PHOTO_FOLDER, COVER_PHOTO_KEY, coverPhotosValue, type CoverPhotos } from './covers2.ts';
 import { base64ToBytes } from './tar.ts';
+import { stripSampleTravelsText } from './sampletravels.ts';
 import { rebaseUri } from './tickets.ts';
 import { addDays } from './tz.ts';
 
@@ -180,11 +181,14 @@ export function fileEntry(path: string, base64: string): BackupFile | null {
   return { path: p, size: bytes.length, sha256: sha256Hex(bytes), data: base64 };
 }
 
-/** The keys that go in, sorted, from the stored [key, value] pairs (null values are skipped). */
+/**
+ * The keys that go in, sorted, from the stored [key, value] pairs (null values are skipped). T163: the screenshot
+ * sample past trips are taken out of the trips list (src/core/sampletravels.ts), so a backup never carries them.
+ */
 export function pickKeys(entries: readonly (readonly [string, string | null])[], includeDocuments: boolean): Record<string, string> {
   const out: Record<string, string> = {};
   for (const [k, v] of [...entries].sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0))) {
-    if (typeof v === 'string' && shouldBackUpKey(k, includeDocuments)) out[k] = v;
+    if (typeof v === 'string' && shouldBackUpKey(k, includeDocuments)) out[k] = k === TRIPS_KEY ? stripSampleTravelsText(v) : v;
   }
   return out;
 }

@@ -5,6 +5,7 @@
 // 5) No raw colours on the themed (non-camera) screens.
 // 7-12) T160 release pass: TextInput / Switch labels, touch targets, images / SVGs named or hidden, header text that
 //    clips under Dynamic Type, developer wording in the English catalogue, and Reduce Motion around every animation.
+// 13) T164: one-line text inside a touchable must shrink to fit (adjustsFontSizeToFit) or wrap.
 // Usage: node ops/ui-check.mjs   (needs the `typescript` package somewhere: local node_modules or global)
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -189,6 +190,9 @@ const LABELLED_INPUTS = new Set(['TextInput', 'Switch']);
 // 9) T160: an <Image> / <Svg> carries its own label or hiding, or sits inside an element that does (or a touchable,
 //    which VoiceOver reads as one element). Checked lexically within a file.
 // 10) T160 Dynamic Type: a header with numberOfLines must shrink to fit (adjustsFontSizeToFit), never clip.
+// 13) T164 Dynamic Type: a <Text numberOfLines={1}> inside a touchable (a button / row / control, lexically in the same
+//    file) must shrink to fit (adjustsFontSizeToFit), or drop / raise numberOfLines and wrap. At the largest text
+//    sizes a one-line cap would cut the control's name or number off with an ellipsis.
 const COVERING = ['accessibilityLabel', 'accessible', 'accessibilityElementsHidden', 'importantForAccessibility', 'aria-label', 'aria-hidden'];
 for (const [f, sf] of parsed) {
   if (!f.endsWith('.tsx')) continue;
@@ -201,9 +205,10 @@ for (const [f, sf] of parsed) {
     console.log(`${msg[0]} ${rel}:${line + 1} ${msg[1]}`);
     problems++;
   };
-  const visit = (n, covered) => {
+  const visit = (n, covered, inControl) => {
     const o = opening(n);
     let cov = covered;
+    let ctl = inControl;
     if (o) {
       const tag = o.tagName.getText(sf);
       const touchable = TOUCHABLES.has(tag);
@@ -218,11 +223,14 @@ for (const [f, sf] of parsed) {
       if ((tag === 'Image' || tag === 'Svg') && !covered && !COVERING.some((a) => attrOf(o, a))) report(o, ['A11Y', `<${tag}> needs a label, or accessibilityElementsHidden + importantForAccessibility="no-hide-descendants"`]);
       if (tag === 'Text' && /['"]header['"]/.test(attrOf(o, 'accessibilityRole')?.getText(sf) ?? '') && attrOf(o, 'numberOfLines') && !attrOf(o, 'adjustsFontSizeToFit'))
         report(o, ['TYPE', 'header clips with numberOfLines; drop it or add adjustsFontSizeToFit']);
+      if (tag === 'Text' && inControl && /^\{\s*1\s*\}$/.test(attrOf(o, 'numberOfLines')?.initializer?.getText(sf) ?? '') && !attrOf(o, 'adjustsFontSizeToFit'))
+        report(o, ['TYPE', 'one-line text inside a control clips at large text sizes; add adjustsFontSizeToFit + minimumFontScale, or let it wrap']);
       cov = covered || touchable || COVERING.some((a) => attrOf(o, a));
+      ctl = inControl || touchable;
     }
-    ts.forEachChild(n, (k) => visit(k, cov));
+    ts.forEachChild(n, (k) => visit(k, cov, ctl));
   };
-  visit(sf, false);
+  visit(sf, false, false);
 }
 
 // 11) T160: no developer wording in what the user reads. Checks the string values of the English catalogue.

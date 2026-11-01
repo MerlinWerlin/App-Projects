@@ -1,6 +1,6 @@
 {
   "mode": "update",
-  "note": "Satchel: accessible-toilet pins with a map legend, a full-screen \"Where is the lift?\" card, Lifts icon in Layers, accessibility and wording fixes",
+  "note": "Satchel: sample travels to try the app, lift pins and bigger-text fixes, Open-in filter moved to a config plugin so updates publish again",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

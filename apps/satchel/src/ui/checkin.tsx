@@ -484,7 +484,7 @@ export function CheckinBriefRow({ trip, now }: { trip: Trip; now: number }) {
           <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.heroInk }]}>
             {line}
           </Text>
-          <Text numberOfLines={1} style={[typeScale.small, { color: theme.heroMuted }]}>
+          <Text numberOfLines={2} style={[typeScale.small, { color: theme.heroMuted }]}>
             {sub}
           </Text>
         </View>
@@ -523,7 +523,7 @@ export function CheckoutBriefRow({ trip, now }: { trip: Trip; now: number }) {
           <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.heroInk }]}>
             {line}
           </Text>
-          <Text numberOfLines={1} style={[typeScale.small, { color: theme.heroMuted }]}>
+          <Text numberOfLines={2} style={[typeScale.small, { color: theme.heroMuted }]}>
             {sub}
           </Text>
         </View>

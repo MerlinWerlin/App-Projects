@@ -53,6 +53,7 @@ import { InflightTripCard } from '../../src/ui/InflightCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { useCoverPhoto } from '../../src/state/coverPhotos.ts';
 import { TripExport } from '../../src/ui/TripExport.tsx';
+import { canExportTrip } from '../../src/core/sampletravels.ts';
 import { PlanAgainButton } from '../../src/ui/PlanAgainButton.tsx';
 import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
 import { HolidayBadge, HolidaysCard, useTripHolidays } from '../../src/ui/HolidaysCard.tsx';
@@ -407,7 +408,8 @@ export default function TripScreen() {
             <PlanAgainButton trip={trip} />
             <SharePlan trip={trip} />
             {empty ? null : <AddToCalendar trip={trip} scope={{ kind: 'trip' }} />}
-            <TripExport trip={trip} />
+            {/* T163: sample past trips never leave the phone as a .satchel file. */}
+            {canExportTrip(trip) ? <TripExport trip={trip} /> : <Body muted>{t('demo2.noExport')}</Body>}
           </View>
         }
       />

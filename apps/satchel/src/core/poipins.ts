@@ -7,7 +7,14 @@ import { OFFERED_POI_CATEGORIES, type OfferedCategory } from './packpois.ts';
 /** Theme tokens a place pin may use (each one carries a card-coloured glyph at 3:1, checked in poipins.test.ts). */
 export type PoiPinTone = 'ok' | 'sea' | 'teal' | 'accentStrong' | 'accentInk' | 'danger' | 'warn' | 'ink';
 
-export type PoiPinStyle = { /** Ionicons glyph name. */ icon: string; tone: PoiPinTone };
+/**
+ * T164: original SVG glyphs a pin may draw instead of its Ionicons glyph (src/ui/stepfreeIcons.tsx; 'lift' is
+ * LiftGlyph). The Ionicons `icon` stays as the fallback and keeps the glyph-uniqueness test meaningful.
+ */
+export type PinSvgGlyph = 'lift';
+export const PIN_SVG_GLYPHS: readonly PinSvgGlyph[] = ['lift'];
+
+export type PoiPinStyle = { /** Ionicons glyph name (fallback when `svg` is set). */ icon: string; tone: PoiPinTone; /** T164: draw this original SVG glyph instead. */ svg?: PinSvgGlyph };
 
 export const POI_PIN_STYLES: Readonly<Record<OfferedCategory, PoiPinStyle>> = {
   toilets: { icon: 'male-female', tone: 'ok' },
@@ -21,7 +28,7 @@ export const POI_PIN_STYLES: Readonly<Record<OfferedCategory, PoiPinStyle>> = {
   atm_bank: { icon: 'cash', tone: 'warn' },
   transport: { icon: 'train', tone: 'sea' },
   fuel: { icon: 'car', tone: 'teal' },
-  lift: { icon: 'swap-vertical', tone: 'teal' }, // T156: lifts (highway=elevator)
+  lift: { icon: 'swap-vertical', tone: 'teal', svg: 'lift' }, // T156: lifts (highway=elevator); T164: drawn with LiftGlyph
 };
 
 /** The plain look for a category the map does not know (an old or hand-edited file): the T13 sea pin. */

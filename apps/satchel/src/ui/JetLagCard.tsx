@@ -65,7 +65,7 @@ function Clock({ label, tz, now, homeDate, big }: { label: string; tz: string; n
     <View accessible accessibilityLabel={t('jetlag.clockA11y', { label, city, time, day })} style={{ flex: 1, gap: 2 }}>
       <Text style={[typeScale.caption, { color: theme.muted }]}>{label}</Text>
       <Text style={[big ? typeScale.displayXL : typeScale.displayM, { color: theme.ink, fontVariant: ['tabular-nums'] }]}>{time}</Text>
-      <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: theme.teal }]}>
+      <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.teal }]}>
         {city}
       </Text>
       {day ? <Text style={[typeScale.small, { color: theme.muted }]}>{day}</Text> : null}

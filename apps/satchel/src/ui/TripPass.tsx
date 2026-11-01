@@ -11,6 +11,7 @@ import { clockPair, countdown, formatOffset, tripDays, tripRoute, type Countdown
 import type { CoverId } from '../core/covers.ts';
 import type { DrivingBanner } from '../core/driving.ts';
 import type { Trip } from '../core/model.ts';
+import { isSampleTravel } from '../core/sampletravels.ts';
 import type { T } from '../i18n/core.ts';
 import { useApp } from '../state/app.tsx';
 import { elevated, radius, space, typeScale } from '../theme/tokens.ts';
@@ -99,12 +100,12 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
       <View style={{ height: 6, backgroundColor: stripe, borderTopLeftRadius: cover ? 0 : radius.l, borderTopRightRadius: cover ? 0 : radius.l }} />
       <View style={{ padding: space.l, gap: space.m }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
-          <Text numberOfLines={1} style={[typeScale.title, { color: theme.ink, flex: 1 }]}>
+          <Text numberOfLines={2} style={[typeScale.title, { color: theme.ink, flex: 1 }]}>
             {trip.name}
           </Text>
           {trip.demo ? (
             <View style={{ borderRadius: radius.pill, borderWidth: 1, borderColor: theme.line, paddingHorizontal: space.s, paddingVertical: 2 }}>
-              <Text style={[typeScale.caption, { color: theme.muted }]}>{t('trips.demoBadge')}</Text>
+              <Text style={[typeScale.caption, { color: theme.muted }]}>{isSampleTravel(trip) ? t('demo2.chip') : t('trips.demoBadge')}</Text>
             </View>
           ) : null}
           <View style={{ borderRadius: radius.pill, backgroundColor: bg, paddingHorizontal: space.m, paddingVertical: space.xs }}>
@@ -116,7 +117,7 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
             <View style={{ minWidth: 72 }}>
               <Text style={[typeScale.caption, { color: theme.muted }]}>{t('design.pass.from')}</Text>
               <Text style={[typeScale.displayL, { color: theme.ink }]}>{route.fromCode}</Text>
-              <Text numberOfLines={1} style={[typeScale.small, { color: theme.muted }]}>
+              <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.6} style={[typeScale.small, { color: theme.muted }]}>
                 {route.fromCity}
               </Text>
             </View>
@@ -128,7 +129,7 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
             <View style={{ minWidth: 72, alignItems: 'flex-end' }}>
               <Text style={[typeScale.caption, { color: theme.muted }]}>{t('design.pass.to')}</Text>
               <Text style={[typeScale.displayL, { color: theme.ink }]}>{route.toCode}</Text>
-              <Text numberOfLines={1} style={[typeScale.small, { color: theme.muted }]}>
+              <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.6} style={[typeScale.small, { color: theme.muted }]}>
                 {route.toCity}
               </Text>
             </View>
@@ -158,7 +159,7 @@ function Stub({ label, value, grow }: { label: string; value: string; grow?: boo
   return (
     <View style={{ flex: grow ? 1 : undefined, gap: 2 }}>
       <Text style={[typeScale.caption, { color: theme.muted }]}>{label}</Text>
-      <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: theme.ink, fontVariant: ['tabular-nums'] }]}>
+      <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.6} style={[typeScale.bodyStrong, { color: theme.ink, fontVariant: ['tabular-nums'] }]}>
         {value}
       </Text>
     </View>
@@ -225,7 +226,7 @@ export const TodayCard = memo(function TodayCard({ trips, max = 4 }: { trips: Tr
               <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.s }}>
                 <Text style={[typeScale.bodyStrong, { color: theme.ink, width: 52, fontVariant: ['tabular-nums'] }]}>{time}</Text>
                 <IconBadge name={KIND_ICON[r.item.kind]} tone={tone} size="s" />
-                <Text numberOfLines={1} style={[typeScale.body, { color: theme.ink, flex: 1 }]}>
+                <Text numberOfLines={2} style={[typeScale.body, { color: theme.ink, flex: 1 }]}>
                   {r.item.title}
                 </Text>
                 {r.state === 'now' ? <Text style={[typeScale.caption, { color: theme.accentInk }]}>{stateText}</Text> : null}

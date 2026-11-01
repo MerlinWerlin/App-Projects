@@ -426,11 +426,11 @@ const ExpenseRow = memo(function ExpenseRow({
                 </View>
               ) : null}
             </View>
-            <Text numberOfLines={1} style={[typeScale.small, { color: theme.muted }]}>
+            <Text numberOfLines={2} style={[typeScale.small, { color: theme.muted }]}>
               {e.note ? `${category} · ${e.note}` : category}
             </Text>
             {togetherLine ? (
-              <Text numberOfLines={1} style={[typeScale.small, { color: theme.teal }]}>
+              <Text numberOfLines={2} style={[typeScale.small, { color: theme.teal }]}>
                 {togetherLine}
               </Text>
             ) : null}

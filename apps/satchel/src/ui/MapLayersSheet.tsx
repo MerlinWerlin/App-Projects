@@ -183,7 +183,7 @@ export function MapLayersSheet({
                       onPress={() => places.onToggle(id)}
                       style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, minHeight: 48, borderTopWidth: 1, borderTopColor: theme.line }}
                     >
-                      <Swatch colour={on ? theme[look.tone] : theme.muted} icon={look.icon as IconName} lift={id === 'lift'} />
+                      <Swatch colour={on ? theme[look.tone] : theme.muted} icon={look.icon as IconName} lift={look.svg === 'lift'} />
                       <Text style={[typeScale.bodyStrong, { flex: 1, color: on ? theme.ink : theme.muted }]}>{name}</Text>
                       <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted, fontVariant: ['tabular-nums'] }}>{count}</Text>
                       <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: on ? theme.ok : theme.muted, minWidth: 36, textAlign: 'right' }}>{t(on ? 'common.on' : 'common.off')}</Text>

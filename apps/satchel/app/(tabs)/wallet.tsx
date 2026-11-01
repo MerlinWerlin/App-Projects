@@ -64,7 +64,7 @@ const TicketCard = memo(function TicketCard({ entry, past }: { entry: WalletEntr
               {item.title}
             </Text>
             <Text style={[typeScale.small, { color: theme.muted, fontVariant: ['tabular-nums'] }]}>{whenText}</Text>
-            <Text numberOfLines={1} style={[typeScale.small, { color: theme.muted }]}>
+            <Text numberOfLines={2} style={[typeScale.small, { color: theme.muted }]}>
               {[tripName, item.ref ? t('wallet.refShort', { ref: item.ref }) : ''].filter(Boolean).join(' · ')}
             </Text>
             {!past ? (
@@ -145,7 +145,7 @@ export default function WalletScreen() {
           <View accessible accessibilityRole="header" accessibilityLabel={row.label} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
             <View style={{ width: 4, alignSelf: 'stretch', borderRadius: radius.pill, backgroundColor: accent?.strong ?? theme.line }} />
             <Ionicons name="briefcase-outline" size={16} color={accent?.ink ?? theme.muted} />
-            <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: accent?.ink ?? theme.ink, flex: 1 }]}>
+            <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: accent?.ink ?? theme.ink, flex: 1 }]}>
               {row.label}
             </Text>
           </View>

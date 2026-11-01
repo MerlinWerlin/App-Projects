@@ -369,7 +369,7 @@ export const StatTile = memo(function StatTile({
     >
       {icon ? <IconBadge name={icon} tone={tone} size="s" /> : null}
       <Text style={[typeScale.displayM, { color: theme.ink, fontVariant: ['tabular-nums'] }]}>{shown}</Text>
-      <Text numberOfLines={1} style={[typeScale.caption, { color: theme.muted }]}>
+      <Text numberOfLines={2} style={[typeScale.caption, { color: theme.muted }]}>
         {label}
       </Text>
     </View>
@@ -465,7 +465,7 @@ export const QuickAction = memo(function QuickAction({
         ]}
       >
         <IconBadge name={icon} tone={tone} />
-        <Text numberOfLines={1} style={[typeScale.small, { fontFamily: typeScale.bodyStrong.fontFamily, color: theme.ink }]}>
+        <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={[typeScale.small, { fontFamily: typeScale.bodyStrong.fontFamily, color: theme.ink }]}>
           {label}
         </Text>
       </PressableScale>

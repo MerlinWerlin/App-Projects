@@ -143,7 +143,7 @@ export default function DocScreen() {
         style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, borderWidth: 1, borderColor: theme.line, borderRadius: radius.s, paddingHorizontal: space.m }}
       >
         <Ionicons name="document-outline" size={22} color={theme.ink} />
-        <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink, flex: 1 }} numberOfLines={1}>
+        <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink, flex: 1 }} numberOfLines={2}>
           {a.name}
         </Text>
         <Ionicons name="open-outline" size={20} color={theme.muted} />
