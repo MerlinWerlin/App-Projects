@@ -27,6 +27,7 @@ import { demoWithTicket, removeDemoExtras, seedDemoExtras } from './demoSeed.ts'
 import { readPersisted, setPersisted } from './persisted.ts';
 import { forgetStays } from './stay.ts';
 import { forgetRentals } from './rental.ts';
+import { forgetTripLostBags } from './lostbag.ts';
 
 const KEY = 'satchel.trips.v1';
 const UNREADABLE = `${KEY}.unreadable`;
@@ -185,6 +186,8 @@ function cleanUpTrip(id: string, trip: Trip | undefined, remaining: Trip[]): voi
     if (trip) forgetStays(stayKeysToDrop(trip.items, remaining));
     // T122: each car booking's phone-only rental checklist (and its pick-up photos) goes with the trip.
     if (trip) forgetRentals(rentalKeysToDrop(trip.items, remaining));
+    // T127: the trip's phone-only lost-bag records (and their photos) go with it.
+    forgetTripLostBags(id);
     // Load the stored lists first so dropping one never overwrites the others with an empty store.
     readPersisted<PackStore>(PACKING_KEY, EMPTY_STORE)
       .then(() => setPersisted<PackStore>(PACKING_KEY, (s) => (s && typeof s === 'object' && !Array.isArray(s) ? dropList(s, id) : s), EMPTY_STORE))

@@ -15,6 +15,7 @@ import type { CashCount, CashExchange, CashPaid, CashStart, CashWithdrawal, Trip
 import type { JournalEntry, JournalPhoto } from './journal.ts';
 import type { Gift, GiftPerson } from './gifts.ts';
 import type { LeaveRow, LeavingHome, SitterNote, SitterTask } from './leavehome.ts';
+import type { ComeRow, ComingHome } from './comehome.ts';
 import { draftFromEntry, entryFromDraft, withJournalFiles } from './journal.ts';
 import { draftFromIdea, ideaFromDraft } from './ideas.ts';
 import { draftFromGift, draftFromPerson, giftFromDraft, personFromDraft } from './gifts.ts';
@@ -243,6 +244,10 @@ const sitterNote: Required<SitterNote> = {
 };
 const leavingHome: Required<LeavingHome> = { rows: [leaveRow], note: sitterNote, updatedAt: '2027-03-30T09:00:00.000Z' };
 
+// T128: coming home, a renamed template row on "before" and the trip rating.
+const comeRow: Required<ComeRow> = { id: 'ch_1', list: 'before', tpl: 'keys', label: 'Hand back the room cards', done: true };
+const comingHome: Required<ComingHome> = { rows: [comeRow, { id: 'ch_2', list: 'after', label: 'Pick up the cat', done: false }], rating: 4, updatedAt: '2027-04-07T09:00:00.000Z' };
+
 const fullTrip = (): Required<Trip> =>
   structuredClone({
     id: 'trip_full',
@@ -268,6 +273,7 @@ const fullTrip = (): Required<Trip> =>
     cash,
     gifts: [giftPerson],
     leavingHome,
+    comingHome,
   });
 
 // T99: an own hold bag with every field; Carry-on only moved the row out of it (bag + movedFrom), with a weight.
@@ -319,13 +325,16 @@ test('T85 fixture: every Trip and Item field is set (Required<> typing + no unde
   assertAllSet(ownBag, 'bag');
   // Keys Trip has today; a new one must be added to the fixture (tsc) and to this list (here).
   assert.deepEqual(Object.keys(t).sort(), [
-    'budget', 'cash', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'leavingHome', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos',
+    'budget', 'cash', 'comingHome', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'leavingHome', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos',
   ]);
   // T124: LeavingHome / LeaveRow / SitterNote / SitterTask keys today.
   assert.deepEqual(Object.keys(leavingHome).sort(), ['note', 'rows', 'updatedAt']);
   assert.deepEqual(Object.keys(leaveRow).sort(), ['done', 'id', 'label', 'tpl']);
   assert.deepEqual(Object.keys(sitterNote).sort(), ['address', 'bins', 'contactName', 'contactPhone', 'extra', 'pets', 'plants', 'tasks']);
   assert.deepEqual(Object.keys(sitterTask).sort(), ['id', 'text', 'when']);
+  // T128: ComingHome / ComeRow keys today.
+  assert.deepEqual(Object.keys(comingHome).sort(), ['rating', 'rows', 'updatedAt']);
+  assert.deepEqual(Object.keys(comeRow).sort(), ['done', 'id', 'label', 'list', 'tpl']);
   // T99: PackList / PackItem / Bag keys today (a new one must be added to the fixture and here).
   assert.deepEqual(Object.keys(packList).sort(), ['bags', 'carryOnOnly', 'dismissed', 'items', 'laundry', 'template', 'templates', 'tripId']);
   assert.deepEqual(Object.keys(packItem).sort(), ['bag', 'category', 'done', 'id', 'label', 'movedFrom', 'qty', 'suggestionId', 'templateItemId', 'userQty', 'weightG']);

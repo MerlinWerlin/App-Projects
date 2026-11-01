@@ -98,6 +98,9 @@ function Shell() {
           <Stack.Screen name="driving/[iso2]" options={{ ...header, title: t('driving.route') }} />
           <Stack.Screen name="rental/[itemId]" options={{ ...header, title: t('driving.rental.route') }} />
           <Stack.Screen name="leavehome/[tripId]" options={{ ...header, title: t('leavehome.route') }} />
+          <Stack.Screen name="lostbag/index" options={{ ...header, title: t('lostbag.route') }} />
+          <Stack.Screen name="lostbag/[tripId]" options={{ ...header, title: t('lostbag.route') }} />
+          <Stack.Screen name="comehome/[tripId]" options={{ ...header, title: t('comehome.route') }} />
           <Stack.Screen name="units" options={{ ...header, title: t('units.route') }} />
           <Stack.Screen name="travels" options={{ ...header, title: t('travels.route') }} />
           <Stack.Screen name="passport" options={{ ...header, title: t('stamps.route') }} />

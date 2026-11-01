@@ -41,6 +41,7 @@ import { AddToCalendar } from '../../src/ui/AddToCalendar.tsx';
 import { ArrivalCard } from '../../src/ui/ArrivalCard.tsx';
 import { DriveSideBanner } from '../../src/ui/driving.tsx';
 import { LeaveHomeTripCard } from '../../src/ui/leavehome.tsx';
+import { ComeHomeTripCard } from '../../src/ui/comehome.tsx';
 import { InflightTripCard } from '../../src/ui/InflightCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
@@ -275,6 +276,8 @@ export default function TripScreen() {
             {past ? null : <DriveSideBanner trip={trip} />}
             {/* T124: before you lock the door, timed to the first departure (hidden once you've left). */}
             {past ? null : <LeaveHomeTripCard trip={trip} />}
+            {/* T128: coming home, from three days before the final departure to the day after you're back. */}
+            <ComeHomeTripCard trip={trip} />
             <ReadinessCard trip={trip} />
             {/* T93: the trip's to-do list (hidden once the trip has ended). */}
             <TripTodosSlot trip={trip} />

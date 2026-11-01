@@ -50,6 +50,8 @@ function PlanAgain({ trip }: { trip: Trip }) {
   const [parts, setParts] = useState<CopyParts>(ALL_PARTS);
   // T120: gift people's names only, off by default (gifts, prices and budgets never come along).
   const [giftNames, setGiftNames] = useState(false);
+  // T126: the Leaving home checklist (ticks cleared, no dated sitter tasks), off by default like gift names.
+  const [leavingHome, setLeavingHome] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saveFailed, setSaveFailed] = useState(false);
   const counts = useMemo(() => partCounts(trip, packing), [trip, packing]);
@@ -79,7 +81,7 @@ function PlanAgain({ trip }: { trip: Trip }) {
     setSaving(true);
     setSaveFailed(false);
     const chosen = Object.fromEntries(COPY_PARTS.map((p) => [p, parts[p] && shown.includes(p)])) as CopyParts;
-    const result = copyTrip(trip, packing, { startDate: start, parts: chosen, newId, name: name ?? autoName, giftNames: giftNames && counts.giftPeople > 0 });
+    const result = copyTrip(trip, packing, { startDate: start, parts: chosen, newId, name: name ?? autoName, giftNames: giftNames && counts.giftPeople > 0, leavingHome: leavingHome && counts.leavingHome > 0 });
     const ok = await saveTrip(result.trip);
     if (!ok) {
       setSaving(false);
@@ -133,6 +135,12 @@ function PlanAgain({ trip }: { trip: Trip }) {
           <View style={{ gap: space.xs }}>
             <ToggleRow label={t('f99.copy.giftNames', { n: counts.giftPeople })} hint={t('f99.copy.giftNamesHint')} value={giftNames} onChange={setGiftNames} />
             <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('f99.copy.giftNamesHint')}</Text>
+          </View>
+        ) : null}
+        {counts.leavingHome > 0 ? (
+          <View style={{ gap: space.xs }}>
+            <ToggleRow label={t('f101.copy.leavingHome', { n: counts.leavingHome })} hint={t('f101.copy.leavingHomeHint')} value={leavingHome} onChange={setLeavingHome} />
+            <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('f101.copy.leavingHomeHint')}</Text>
           </View>
         ) : null}
         <View style={{ gap: space.xs, borderTopWidth: 1, borderTopColor: theme.line, paddingTop: space.s }}>

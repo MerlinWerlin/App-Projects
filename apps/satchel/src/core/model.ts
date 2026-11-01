@@ -10,6 +10,7 @@ import type { DayPlanRow } from './dayplan.ts';
 import type { TripCash } from './cash.ts';
 import type { GiftPerson } from './gifts.ts';
 import type { LeavingHome } from './leavehome.ts';
+import type { ComingHome } from './comehome.ts';
 
 /** Wall-clock local time, minute precision: 'YYYY-MM-DDTHH:mm'. */
 export type LocalDateTime = string;
@@ -113,6 +114,8 @@ export type Trip = {
   gifts?: GiftPerson[];
   /** T124 leaving home: the "before you lock the door" checklist and the house-sitter note (absent on older trips). No codes: Wi-Fi and alarm stay on this phone (src/core/leavehome.ts). Read defensively there. */
   leavingHome?: LeavingHome;
+  /** T128 coming home: the "Before you head home" and "Home again" lists and the trip rating (absent on older trips). Read defensively in src/core/comehome.ts. */
+  comingHome?: ComingHome;
 };
 
 export const EXPENSE_CATEGORIES = ['food', 'transport', 'stay', 'activities', 'shopping', 'other'] as const;

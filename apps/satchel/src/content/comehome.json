@@ -1,0 +1,70 @@
+{
+ "version": 1,
+ "checked": "2026-11-01",
+ "rule": "A reminder only, not legal advice. Each row links the official customs page for your home country, read by the build on the checked date. Duty-free limits for alcohol, tobacco and goods change, so verify before you fly.",
+ "allowances": [
+  {
+   "id": "AU",
+   "countries": ["AU"],
+   "authority": "Australian Border Force",
+   "url": "https://www.abf.gov.au/entering-and-leaving-australia/duty-free",
+   "checked": "2026-11-01",
+   "verify": true,
+   "summary": "Australia has duty-free limits for general goods, alcohol and tobacco. Over a limit, duty and tax apply to everything of that type."
+  },
+  {
+   "id": "NZ",
+   "countries": ["NZ"],
+   "authority": "New Zealand Customs Service",
+   "url": "https://www.customs.govt.nz/travel-to-and-from-new-zealand/duty-free-shopping",
+   "checked": "2026-11-01",
+   "verify": true,
+   "summary": "New Zealand has duty-free limits for goods, alcohol and tobacco. Declare anything over them when you arrive."
+  },
+  {
+   "id": "GB",
+   "countries": ["GB"],
+   "authority": "GOV.UK",
+   "url": "https://www.gov.uk/bringing-goods-into-uk-personal-use/arriving-in-Great-Britain",
+   "checked": "2026-11-01",
+   "verify": true,
+   "summary": "Great Britain has tax and duty-free allowances for alcohol, tobacco, vaping liquid and other goods. Northern Ireland has its own page."
+  },
+  {
+   "id": "IE",
+   "countries": ["IE"],
+   "authority": "Revenue (Ireland)",
+   "url": "https://www.revenue.ie/en/customs/individuals/info-travelling-duty-free/from-outside-eu/allowances.aspx",
+   "checked": "2026-11-01",
+   "verify": true,
+   "summary": "Coming back to Ireland from outside the EU, there are duty-free allowances for goods, alcohol and tobacco."
+  },
+  {
+   "id": "US",
+   "countries": ["US"],
+   "authority": "U.S. Customs and Border Protection",
+   "url": "https://www.cbp.gov/travel/us-citizens/know-before-you-go/what-expect-when-you-return",
+   "checked": "2026-11-01",
+   "verify": true,
+   "summary": "Declare what you bought abroad when you return. The duty-free exemption depends on the countries you visited."
+  },
+  {
+   "id": "CA",
+   "countries": ["CA"],
+   "authority": "Canada Border Services Agency",
+   "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/declare-eng.html",
+   "checked": "2026-11-01",
+   "verify": true,
+   "summary": "Your personal exemption depends on how long you were away, with separate limits for alcohol and tobacco."
+  },
+  {
+   "id": "EU",
+   "countries": ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"],
+   "authority": "Your Europe (European Union)",
+   "url": "https://europa.eu/youreurope/citizens/travel/carry/alcohol-tobacco-cash/index_en.htm",
+   "checked": "2026-11-01",
+   "verify": true,
+   "summary": "Entering the EU from outside it, there are duty-free allowances for alcohol, tobacco and other goods. Some EU countries set higher or lower limits, so check your own."
+  }
+ ]
+}

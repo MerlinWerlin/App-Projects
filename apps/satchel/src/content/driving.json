@@ -249,14 +249,15 @@
         "petrol": "Gasolina",
         "diesel": "ACPM (diésel)"
       },
-      "tolls": null,
+      "tolls": "Main highways have toll stations (peajes); some lanes are only for electronic tags (Colpass).",
       "note": null,
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/colombia/safety-and-security",
+        "https://colpass.mintransporte.gov.co/",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "CR",
@@ -270,14 +271,15 @@
         "petrol": "Gasolina",
         "diesel": "Diésel"
       },
-      "tolls": null,
+      "tolls": "Some highways have toll stations (peajes): pay cash, ideally the exact amount, or use the lane for electronic tags.",
       "note": "San José limits private cars on some weekdays by the last digit of the number plate.",
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/costa-rica/safety-and-security",
+        "https://www.mopt.go.cr/noticias/2026/conductores-pueden-usar-pago-automatico-o-efectivo-en-peajes-estatales",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "CY",
@@ -376,14 +378,15 @@
         "petrol": "Gasolina",
         "diesel": "Gasoil"
       },
-      "tolls": null,
+      "tolls": "Main highways have toll stations (peajes); the Paso Rápido lane is for electronic-tag users only.",
       "note": null,
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/dominican-republic/safety-and-security",
+        "https://rdvial.gob.do/servicios/paso-rapido/",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "EC",
@@ -397,14 +400,16 @@
         "petrol": "Gasolina",
         "diesel": "Diésel"
       },
-      "tolls": null,
+      "tolls": "Some highways have toll stations (peajes); Quito's Guayasamín toll must be paid within 15 days, so ask the rental desk how they handle it.",
       "note": null,
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/ecuador/safety-and-security",
+        "https://www.mit.gob.ec/usuarios-frecuentes-o-cercanos-pueden-acceder-a-tarifas-especiales-en-pago-de-peajes/",
+        "https://www.quitoinforma.gob.ec/2026/05/16/peaje-guayasamin-conozca-como-realizar-pagos-en-linea-y-puntos-habilitados/",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "EE",
@@ -713,14 +718,15 @@
         "petrol": "בנזין (benzin)",
         "diesel": "סולר (soler)"
       },
-      "tolls": null,
+      "tolls": "Highway 6 is tolled and billed to the car's registered owner, so the rental company passes the charge on, often with a handling fee.",
       "note": null,
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/israel/safety-and-security",
+        "https://www.kvish6.co.il/ContentPage.aspx?Id=54",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "IN",
@@ -797,14 +803,15 @@
         "petrol": "Gas / Petrol",
         "diesel": "Diesel"
       },
-      "tolls": null,
+      "tolls": "Highway 2000 is tolled at toll plazas; bank cards can't be used there, so have cash or a toll tag.",
       "note": null,
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/jamaica/safety-and-security",
+        "https://tollauthority.gov.jm/faqs/",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "JO",
@@ -860,35 +867,38 @@
         "petrol": "Petrol (super)",
         "diesel": "Diesel"
       },
-      "tolls": null,
+      "tolls": "The Nairobi Expressway is tolled: pay cash, mobile money or a prepaid card in the manual lanes, or use an electronic tag.",
       "note": null,
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/kenya/safety-and-security",
+        "https://www.nairobiexpressway.ke/frequently-asked-questions",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "KH",
       "country": "Cambodia",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "often",
       "seatbelts": "Wear a seat belt where fitted; book a child seat in advance.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
         "petrol": "សាំង (sang)",
         "diesel": "ម៉ាស៊ូត (masut)"
       },
-      "tolls": null,
-      "note": "Many visitors hire a car with a driver.",
+      "tolls": "The Phnom Penh–Sihanoukville Expressway is tolled: pay at the booth or use a prepaid electronic toll card.",
+      "note": "Hire firms may ask for the 1949 International Driving Permit; long-term hire needs a Cambodian licence. Many visitors hire a car with a driver.",
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/cambodia/safety-and-security",
+        "https://mpwt.gov.kh/en/press/35903",
+        "https://www.gov.uk/driving-abroad/international-driving-permit",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "KR",
@@ -945,14 +955,15 @@
         "petrol": "Benzinas",
         "diesel": "Dyzelinas"
       },
-      "tolls": null,
+      "tolls": "Ordinary cars need no vignette; e-vignettes are for buses and goods vehicles, including vans.",
       "note": "Dipped headlights on at all times.",
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/lithuania/safety-and-security",
+        "https://lakd.lt/en/user-charge-vignettes/",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "LU",
@@ -1008,14 +1019,16 @@
         "petrol": "Essence (بنزين)",
         "diesel": "Gasoil (gazoil)"
       },
-      "tolls": null,
+      "tolls": "Motorways have toll stations: take a ticket on entry where there is one; Jawaz lanes are for electronic-tag users only.",
       "note": "Carry the 1968 International Driving Permit; the 1949 version is no longer accepted.",
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/morocco/safety-and-security",
+        "https://www.adm.co.ma/fr/aide",
+        "https://www.adm.co.ma/fr/le-pass-jawaz",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "MT",
@@ -1218,14 +1231,15 @@
         "petrol": "Gasoline",
         "diesel": "Diesel"
       },
-      "tolls": null,
+      "tolls": "Expressways need a loaded electronic toll sticker (RFID) on the car; check the hire car has one.",
       "note": null,
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/philippines/safety-and-security",
+        "https://trb.gov.ph/index.php/faqs/47-press-release",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "PL",
@@ -1452,14 +1466,15 @@
         "petrol": "Essence",
         "diesel": "Gasoil"
       },
-      "tolls": null,
+      "tolls": "Motorways have toll stations; télépéage lanes are for electronic-badge users.",
       "note": null,
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/tunisia/safety-and-security",
+        "https://www.tunisieautoroutes.tn/en/help/",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "TR",
@@ -1515,14 +1530,15 @@
         "petrol": "Petroli",
         "diesel": "Dizeli"
       },
-      "tolls": null,
+      "tolls": "Dar es Salaam's Nyerere (Kigamboni) Bridge has a toll plaza; ask the rental desk about any other tolls.",
       "note": "Zanzibar also needs a local driving permit; hire companies can arrange it.",
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/tanzania/safety-and-security",
+        "https://www.nssf.go.tz/pages/daraja-la-nyerere",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "US",
@@ -1578,14 +1594,15 @@
         "petrol": "Xăng",
         "diesel": "Dầu diesel"
       },
-      "tolls": null,
+      "tolls": "Expressways use non-stop electronic tolling; cars need a toll tag, so check the hire car has one.",
       "note": "Traffic is heavy with many motorbikes; many visitors hire a car with a driver.",
       "sources": [
         "https://www.gov.uk/foreign-travel-advice/vietnam/safety-and-security",
+        "https://en.baochinhphu.vn/automatic-toll-collection-compulsory-on-all-highways-from-next-month-111220720153424024.htm",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "ZA",

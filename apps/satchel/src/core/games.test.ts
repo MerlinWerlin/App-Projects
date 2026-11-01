@@ -7,6 +7,7 @@ import {
   addPoints,
   ALL_LINES,
   BINGO_CELLS,
+  bingoFor,
   bingoLines,
   buildCard,
   cellsOnLines,
@@ -28,6 +29,9 @@ import {
   newLines,
   newSeed,
   playersFor,
+  putBingo,
+  setBingoMarks,
+  showBingo,
   removePlayer,
   resetScores,
   rng,
@@ -203,6 +207,7 @@ test('cleanGames: bad input resets, good input kept, unknown fields dropped', ()
   });
   assert.deepEqual(g, {
     bingo: { mode: 'train', seed: 99, marks: [1, FREE_INDEX] },
+    bingoCards: { train: { seed: 99, marks: [1, FREE_INDEX] } },
     spy: { air: ['x'] },
     seen: { rather: ['wyr-1'] },
     deckSeed: 4,
@@ -218,4 +223,50 @@ test('games state stays on the phone: no trip file, export or model code mention
     const src = readFileSync(new URL(f, import.meta.url), 'utf8');
     assert.doesNotMatch(src, /games/i, f);
   }
+});
+
+// ---- T126 bingo marks per mode ----
+
+test('T126 bingo keeps a card and marks per mode: switching mode and back restores them', () => {
+  let g = cleanGames(null);
+  g = showBingo(g, 'air', 11);
+  g = setBingoMarks(g, 'air', toggleMark(toggleMark(bingoFor(g, 'air')!.marks, 0), 1));
+  g = showBingo(g, 'train', 22);
+  assert.equal(g.bingo?.mode, 'train');
+  assert.deepEqual(bingoFor(g, 'train'), { mode: 'train', seed: 22, marks: [FREE_INDEX] }, 'a new mode gets a fresh card');
+  g = setBingoMarks(g, 'train', [3, FREE_INDEX]);
+  g = showBingo(g, 'road', 33);
+  g = showBingo(g, 'city', 44);
+  // Back to air: the same card (seed) and its marks; a later seed never replaces a saved card.
+  g = showBingo(g, 'air', 99);
+  assert.deepEqual(g.bingo, { mode: 'air', seed: 11, marks: [0, 1, FREE_INDEX] });
+  assert.deepEqual(bingoFor(g, 'train'), { mode: 'train', seed: 22, marks: [3, FREE_INDEX] });
+  assert.deepEqual(Object.keys(g.bingoCards ?? {}).sort(), ['air', 'city', 'road', 'train']);
+  // Survives a save and read (cleaned on every read).
+  const back = cleanGames(JSON.parse(JSON.stringify(g)));
+  assert.deepEqual(back, g);
+  // A new card or clearing marks touches only that mode.
+  g = putBingo(g, { mode: 'air', seed: 5, marks: [] });
+  g = setBingoMarks(g, 'road', [24]);
+  assert.deepEqual(bingoFor(g, 'air'), { mode: 'air', seed: 5, marks: [FREE_INDEX] });
+  assert.deepEqual(bingoFor(g, 'train')?.marks, [3, FREE_INDEX]);
+  assert.deepEqual(bingoFor(g, 'road')?.marks, [FREE_INDEX, 24]);
+  assert.equal(g.bingo?.mode, 'road');
+  // Marks for a mode with no card: unchanged.
+  const empty = cleanGames(null);
+  assert.equal(setBingoMarks(empty, 'air', [1]), empty);
+});
+
+test('T126 bingo state saved before per-mode cards: the one card becomes its mode\'s card; bad cards dropped', () => {
+  const old = cleanGames({ bingo: { mode: 'road', seed: 7, marks: [2] } });
+  assert.deepEqual(old.bingoCards, { road: { seed: 7, marks: [2, FREE_INDEX] } });
+  assert.deepEqual(bingoFor(old, 'road'), { mode: 'road', seed: 7, marks: [2, FREE_INDEX] });
+  assert.equal(bingoFor(old, 'air'), null);
+  const g = cleanGames({ bingoCards: { air: { seed: 1, marks: [99, 4] }, boat: { seed: 2, marks: [] }, train: { seed: 'x' }, city: null } });
+  assert.deepEqual(g.bingoCards, { air: { seed: 1, marks: [4, FREE_INDEX] } });
+  assert.equal(g.bingo, undefined);
+  // The current card is the newest copy of its mode.
+  assert.deepEqual(cleanGames({ bingo: { mode: 'air', seed: 3, marks: [] }, bingoCards: { air: { seed: 1, marks: [] } } }).bingoCards?.air, { seed: 3, marks: [FREE_INDEX] });
+  // Still phone-only: nothing about bingo is added to a trip (the store key is the same).
+  assert.equal(GAMES_KEY, 'satchel.games.v1');
 });

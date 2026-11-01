@@ -8,6 +8,7 @@ import type { Idea } from './ideas.ts';
 import type { Todo } from './todos.ts';
 import type { PackItem, PackList } from './packing.ts';
 import type { Bag } from './bags.ts';
+import type { LeaveRow, LeavingHome, SitterNote, SitterTask } from './leavehome.ts';
 import { stayKey } from './staydetails.ts';
 import { toUtc } from './tz.ts';
 import {
@@ -18,6 +19,10 @@ import {
   COMPANION_RULES,
   COPY_PARTS,
   GIFT_PERSON_RULES,
+  LEAVE_ROW_RULES,
+  LEAVING_HOME_RULES,
+  SITTER_NOTE_RULES,
+  SITTER_TASK_RULES,
   copyPreview,
   copyTrip,
   IDEA_RULES,
@@ -132,6 +137,7 @@ const fullTrip = (): Required<Trip> =>
     cash: { start: [{ currency: 'JPY', amount: 20000 }], moves: [], paid: [{ expenseId: 'exp_1' }], leftover: { JPY: 'keep' }, local: 'JPY' },
     gifts: [{ id: 'gp_mum', name: 'Mum', gifts: [{ id: 'gift_1', what: 'Tea towel', status: 'packed', createdAt: NOW }], createdAt: NOW }],
     leavingHome: { rows: [{ id: 'lh_1', tpl: 'bins', done: true }], note: { address: '1 Home St', bins: 'Tuesday night' }, updatedAt: NOW },
+    comingHome: { rows: [{ id: 'ch_1', list: 'before', tpl: 'keys', done: true }], rating: 5, updatedAt: NOW },
   } as Required<Trip>);
 
 const ownBag: Required<Bag> = { id: 'bag_cam', kind: 'own', name: 'Camera bag', colour: 'plum', hold: true, limitG: 8000 };
@@ -204,10 +210,10 @@ test('T118 guard: every field of every copied type has exactly one rule (copied,
   assert.deepEqual(keys(PACK_ITEM_RULES), keys(packItem));
   assert.deepEqual(keys(BAG_RULES), keys(ownBag));
   // Same Trip / Item key list the T85 round-trip guard pins today (a new field must be ruled on in both).
-  assert.deepEqual(keys(TRIP_RULES), ['budget', 'cash', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'leavingHome', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos']);
+  assert.deepEqual(keys(TRIP_RULES), ['budget', 'cash', 'comingHome', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'leavingHome', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos']);
   assert.deepEqual(keys(ITEM_RULES), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
   // Phone-only and money data is never a part the traveller can switch on.
-  for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo', 'leavingHome'] as const) assert.equal(TRIP_RULES[k], 'drop', k);
+  for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo', 'leavingHome', 'comingHome'] as const) assert.equal(TRIP_RULES[k], 'drop', k);
   for (const k of ['ref', 'seat', 'attachments'] as const) assert.equal(ITEM_RULES[k], 'drop', k);
 });
 
@@ -424,7 +430,7 @@ test('T118 no phone-only data: no codes, seats, files, gate, stay keys, receipts
   // Stay details are keyed by booking id on this phone: the copy's bookings can never read the old ones.
   const oldKeys = new Set(fullTrip().items.map((i) => stayKey(i.id)));
   for (const i of trip.items) assert.ok(!oldKeys.has(stayKey(i.id)));
-  for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo', 'leavingHome'] as const) assert.equal(trip[k], undefined, k);
+  for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo', 'leavingHome', 'comingHome'] as const) assert.equal(trip[k], undefined, k);
 });
 
 test('T118 a packing list of another trip is never copied', () => {
@@ -452,9 +458,9 @@ test('T118 the picker starts on the same day next year; 29 Feb goes to 28 Feb', 
 });
 
 test('T118 part counts for the choice list', () => {
-  assert.deepEqual(partCounts(fullTrip(), packList()), { bookings: 2, packing: 1, bags: 2, ideas: 2, todos: 2, companions: 1, giftPeople: 1, budget: true });
+  assert.deepEqual(partCounts(fullTrip(), packList()), { bookings: 2, packing: 1, bags: 2, ideas: 2, todos: 2, companions: 1, giftPeople: 1, leavingHome: 1, budget: true });
   const bare: Trip = { id: 'b', name: 'B', startDate: '2027-01-01', endDate: '2027-01-02', homeTz: 'UTC', items: [], createdAt: NOW };
-  assert.deepEqual(partCounts(bare, null), { bookings: 0, packing: 0, bags: 0, ideas: 0, todos: 0, companions: 0, giftPeople: 0, budget: false });
+  assert.deepEqual(partCounts(bare, null), { bookings: 0, packing: 0, bags: 0, ideas: 0, todos: 0, companions: 0, giftPeople: 0, leavingHome: 0, budget: false });
 });
 
 test('T118 an unreadable new date leaves the dates as they were (no shift)', () => {
@@ -490,4 +496,86 @@ test('T120 gift people by name only: off by default; on, names with new ids and 
   assert.equal(copyTrip(fullTrip(), null, { startDate: '2027-10-01', parts: none, newId, now: NOW, giftNames: true }).trip.gifts?.length, 1);
   const bare = { ...fullTrip(), gifts: undefined };
   assert.equal(copyTrip(bare, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, giftNames: true }).trip.gifts, undefined);
+});
+
+// ---- T126 Leaving home ----
+
+const ownRow: Required<LeaveRow> = { id: 'lh_own', tpl: 'plants', label: 'Water the fern', done: true };
+const dailyTask: Required<SitterTask> = { id: 'lht_1', when: 'daily', text: 'Feed the cat' };
+const datedTask: Required<SitterTask> = { id: 'lht_2', when: '2027-04-03', text: 'Bins out' };
+const sitterNote: Required<SitterNote> = {
+  address: '1 Home St',
+  tasks: [dailyTask, datedTask],
+  pets: 'Cat food in the pantry',
+  plants: 'Fern weekly',
+  bins: 'Tuesday night',
+  contactName: 'Alex',
+  contactPhone: '+61 400 000 000',
+  extra: 'Thanks!',
+};
+const leaving = (): Required<LeavingHome> =>
+  structuredClone({
+    rows: [{ id: 'lh_1', tpl: 'bins', done: true }, ownRow, { id: 'lh_3', label: 'Cancel the paper', done: true }, { id: 'lh_4', tpl: 'fridge', done: false }],
+    note: sitterNote,
+    updatedAt: '2027-03-30T09:00:00.000Z',
+  });
+
+test('T126 guard: every Leaving home field has a rule; ticks clear, dated tasks never come', () => {
+  assert.deepEqual(keys(LEAVING_HOME_RULES), keys(leaving()));
+  assert.deepEqual(keys(LEAVE_ROW_RULES), keys(ownRow));
+  assert.deepEqual(keys(SITTER_NOTE_RULES), keys(sitterNote));
+  assert.deepEqual(keys(SITTER_TASK_RULES), keys(dailyTask));
+  assert.equal(LEAVE_ROW_RULES.done, 'clear');
+  assert.equal(SITTER_TASK_RULES.when, 'undated');
+  assert.equal(SITTER_NOTE_RULES.tasks, 'undated');
+  assert.equal(LEAVING_HOME_RULES.updatedAt, 'new');
+});
+
+test('T126 Leaving home: off by default; on, rows as left (own, renamed, removed template rows) with ticks cleared, note without dated tasks', () => {
+  const src = fullTrip();
+  src.leavingHome = leaving();
+  assert.equal(copyTrip(src, null, { startDate: '2027-10-01', parts: ALL_PARTS, newId, now: NOW }).trip.leavingHome, undefined, 'off unless asked');
+  assert.equal(partCounts(src, null).leavingHome, 4);
+  const { trip } = copyTrip(src, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, leavingHome: true });
+  const lh = trip.leavingHome;
+  assert.ok(lh);
+  // Same rows in the same order (removed template rows stay removed), words kept, every tick cleared, new ids.
+  assert.deepEqual(
+    lh.rows.map((r) => [r.tpl, r.label, r.done]),
+    [['bins', undefined, false], ['plants', 'Water the fern', false], [undefined, 'Cancel the paper', false], ['fridge', undefined, false]],
+  );
+  for (const r of lh.rows) {
+    assert.ok(!['lh_1', 'lh_own', 'lh_3', 'lh_4'].includes(r.id), 'new id');
+    checkRules(src.leavingHome.rows.find((x) => x.tpl === r.tpl && x.label === r.label) as unknown as Record<string, unknown>, r as unknown as Record<string, unknown>, LEAVE_ROW_RULES as Record<string, Rule>, 'row');
+  }
+  assert.equal(new Set(lh.rows.map((r) => r.id)).size, lh.rows.length);
+  // The note's words come; only the daily task comes, with a new id; the dated one (old trip's day) does not.
+  assert.ok(lh.note);
+  for (const [k, r] of Object.entries(SITTER_NOTE_RULES)) if (r === 'keep') assert.equal(lh.note[k as keyof SitterNote], sitterNote[k as keyof SitterNote], k);
+  assert.deepEqual(lh.note.tasks?.map((t) => [t.when, t.text]), [['daily', 'Feed the cat']]);
+  assert.notEqual(lh.note.tasks?.[0].id, 'lht_1');
+  assert.equal(lh.updatedAt, NOW);
+  assert.ok(!JSON.stringify(trip).includes('2027-04-03'), 'nothing dated from the old trip');
+  // The old trip is untouched.
+  assert.equal(src.leavingHome.rows[0].done, true);
+  assert.equal(src.leavingHome.note?.tasks?.length, 2);
+});
+
+test('T126 Leaving home copy: codes and unknown fields never come; nothing to copy adds nothing', () => {
+  const src = fullTrip();
+  src.leavingHome = { ...leaving(), wifiPassword: 'hunter2', extraField: 1, note: { ...sitterNote, alarmCode: '1234', tasks: [datedTask] } } as unknown as LeavingHome;
+  const { trip } = copyTrip(src, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, leavingHome: true });
+  const text = JSON.stringify(trip.leavingHome);
+  for (const s of ['hunter2', '1234', 'extraField', 'Bins out']) assert.ok(!text.includes(s), s);
+  assert.equal(trip.leavingHome?.note?.tasks, undefined);
+  // A note with only dated tasks and no rows: nothing left to copy.
+  const empty = { ...fullTrip(), leavingHome: { rows: [], note: { tasks: [datedTask] } } };
+  assert.equal(partCounts(empty, null).leavingHome, 0);
+  assert.equal(copyTrip(empty, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, leavingHome: true }).trip.leavingHome, undefined);
+  const none2 = { ...fullTrip(), leavingHome: undefined };
+  assert.equal(copyTrip(none2, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, leavingHome: true }).trip.leavingHome, undefined);
+  // A note with words only (no rows) still counts and comes.
+  const words = { ...fullTrip(), leavingHome: { rows: [], note: { address: '1 Home St' } } };
+  assert.equal(partCounts(words, null).leavingHome, 1);
+  assert.deepEqual(copyTrip(words, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, leavingHome: true }).trip.leavingHome, { rows: [], note: { address: '1 Home St' }, updatedAt: NOW });
 });
