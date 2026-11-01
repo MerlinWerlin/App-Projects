@@ -92,3 +92,21 @@ export const AccessIcon = memo(function AccessIcon({ id, size = 28, tone = 'sea'
     </View>
   );
 });
+
+/**
+ * T157: the lift drawing (door split down the middle, up and down arrows) in a single colour, for small discs such as
+ * the Lifts row in the Map's Layers sheet, where it sits card-coloured on the lift pins' theme colour like the other
+ * rows' glyphs. Heavier strokes than AccessIcon so it still reads at 16 pt. Decorative: the row carries the words.
+ */
+export const LiftGlyph = memo(function LiftGlyph({ size = 16, color }: { size?: number; color: string }) {
+  const st = { stroke: color, strokeWidth: 4, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, fill: 'none' };
+  return (
+    <View importantForAccessibility="no-hide-descendants" accessibilityElementsHidden style={{ width: size, height: size }}>
+      <Svg width={size} height={size} viewBox="0 0 48 48">
+        <Rect x={9} y={18} width={30} height={26} rx={3} {...st} />
+        <Line x1={24} y1={18} x2={24} y2={44} {...st} />
+        <Path d="M10 11 L16 4 L22 11 M26 4 L32 11 L38 4" {...st} />
+      </Svg>
+    </View>
+  );
+});

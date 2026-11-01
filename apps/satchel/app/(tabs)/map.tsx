@@ -69,6 +69,8 @@ import { TripRouteDays, TripRoutePanel, useTripRoute } from '../../src/ui/TripRo
 import { DaylightLine } from '../../src/ui/WeatherCard.tsx';
 import { placeKey } from '../../src/core/wayback.ts';
 import { poiPinStyle } from '../../src/core/poipins.ts';
+import { LIFT_CARD, showLiftAsk } from '../../src/core/liftcard.ts';
+import { useStepFree } from '../../src/state/stepfree.ts';
 import { requestNearestToilet } from '../../src/state/nearestToilet.ts';
 import type { SearchHit } from '../../src/core/mapsearch.ts';
 import { SEARCH_PIN_ID, searchPinTap } from '../../src/core/followups93.ts';
@@ -396,6 +398,7 @@ export default function MapScreen() {
   const pinFrom: LatLon | null = set ? (haversineMeters(view, set.center) < NEAR_CITY_M ? view : origin) : null;
   const shownPois = useMemo(() => (pinFrom ? nearestPois(filteredPois, pinFrom, POI_MARKER_LIMIT) : []), [filteredPois, pinFrom ? Math.round(pinFrom.lat * 1000) : null, pinFrom ? Math.round(pinFrom.lon * 1000) : null]); // eslint-disable-line react-hooks/exhaustive-deps
   const poiCounts = useMemo(() => poiCategoryCounts(set?.pois ?? []), [set]);
+  const [stepFree] = useStepFree();
   const listEmpty = poiListEmpty(set?.pois.length ?? 0, filteredPois.length, on);
   const listRef = useRef<FlatList<(typeof nearby)[number]>>(null);
   const selectedSaved = selected?.type === 'saved' ? (saved.find((p) => p.id === selected.id) ?? null) : null;
@@ -905,6 +908,16 @@ export default function MapScreen() {
         />
         {scoped ? <TripRouteDays layer={layer} /> : null}
         <MapLayersButton prefs={layers.prefs} onPress={() => setLayersOpen(true)} />
+        {/* T157: with the Lifts kind on, "Where is the lift?" full screen in the local language (src/core/liftcard.ts). */}
+        {showLiftAsk(on.lift, poiCounts.lift, stepFree) ? (
+          <Button
+            kind="quiet"
+            icon="chatbubble-ellipses-outline"
+            label={t('f110.lift.ask')}
+            hint={t('f110.lift.askHint')}
+            onPress={() => router.push({ pathname: '/phrase-card', params: { phrase: LIFT_CARD } })}
+          />
+        ) : null}
         {layers.prefs.hidden.length === MAP_LAYERS.length ? <Body muted>{t('maplayers.allOff')}</Body> : null}
         <MapLayersSheet
           open={layersOpen}

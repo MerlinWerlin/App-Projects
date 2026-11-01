@@ -12,12 +12,12 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.jared797.satchel",
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "Satchel checks your location once, only when you tap Where am I?, to show you on the map. It never tracks you in the background. Your location stays on your phone.",
-        "NSPhotoLibraryUsageDescription": "Satchel lets you attach ticket and booking images from your photos. They are copied into Satchel and stay on your phone.",
-        "NSFaceIDUsageDescription": "Satchel uses Face ID to lock your document vault (passport, visa and licence copies).",
-        "NSContactsUsageDescription": "Satchel lets you pick emergency contacts for your emergency card. Only the contacts you pick are saved, on your phone.",
+        "NSLocationWhenInUseUsageDescription": "Satchel uses your location only when you ask, for example Where am I? on the map, a near-me search, planning a walk or sharing where you are, and for Find my way back while that screen is open. Never in the background. A near-me search outside your downloaded city maps sends that spot to OpenStreetMap.",
+        "NSPhotoLibraryUsageDescription": "Satchel lets you add photos from your library to tickets, bookings, documents, receipts, cards, trip covers and your trip journal. They are copied into Satchel and stay on your phone.",
+        "NSFaceIDUsageDescription": "Satchel uses Face ID to lock your document vault (passport, visa and licence copies) and any hotel door or key box codes you choose to hide. Face ID data never leaves your phone.",
+        "NSContactsUsageDescription": "Satchel lets you pick contacts for your emergency card, help cards and trusted contacts. Only the contacts you pick are saved, on your phone.",
         "CFBundleAllowMixedLocalizations": true,
-        "NSCameraUsageDescription": "Satchel only uses the camera if you choose to photograph a ticket or booking. The photo is copied into Satchel and stays on your phone.",
+        "NSCameraUsageDescription": "Satchel only uses the camera when you choose to take a photo, for example of a ticket, receipt, membership card, rental car or lost bag, or for your trip journal. The photo is copied into Satchel and stays on your phone.",
         "CFBundleDocumentTypes": [
           {
             "CFBundleTypeName": "Satchel trip",
@@ -212,7 +212,7 @@
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "Satchel checks your location once, only when you tap Where am I?, to show you on the map. It never tracks you in the background. Your location stays on your phone.",
+          "locationWhenInUsePermission": "Satchel uses your location only when you ask, for example Where am I? on the map, a near-me search, planning a walk or sharing where you are, and for Find my way back while that screen is open. Never in the background. A near-me search outside your downloaded city maps sends that spot to OpenStreetMap.",
           "locationAlwaysAndWhenInUsePermission": false,
           "locationAlwaysPermission": false,
           "isIosBackgroundLocationEnabled": false,
@@ -223,8 +223,8 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "Satchel lets you attach ticket and booking images from your photos. They are copied into Satchel and stay on your phone.",
-          "cameraPermission": "Satchel only uses the camera if you choose to photograph a ticket or booking. The photo is copied into Satchel and stays on your phone.",
+          "photosPermission": "Satchel lets you add photos from your library to tickets, bookings, documents, receipts, cards, trip covers and your trip journal. They are copied into Satchel and stay on your phone.",
+          "cameraPermission": "Satchel only uses the camera when you choose to take a photo, for example of a ticket, receipt, membership card, rental car or lost bag, or for your trip journal. The photo is copied into Satchel and stays on your phone.",
           "microphonePermission": false
         }
       ],

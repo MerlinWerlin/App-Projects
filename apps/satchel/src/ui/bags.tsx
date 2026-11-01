@@ -151,7 +151,7 @@ const BagCard = memo(function BagCard({ bag, tally, unit, lang, gifts }: { bag: 
         </View>
         <View style={{ flex: 1 }}>
           <Text style={[typeScale.caption, { color: paint.muted }]}>{whereText(t, bag)}</Text>
-          <Text accessibilityRole="header" numberOfLines={2} style={[typeScale.displayM, { color: paint.ink }]}>
+          <Text accessibilityRole="header" style={[typeScale.displayM, { color: paint.ink }]}>
             {name}
           </Text>
         </View>

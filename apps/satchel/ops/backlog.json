@@ -1954,14 +1954,63 @@
     },
     {
       "id": "T157",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "follow-up"
       ],
       "title": "Run-110 follow-ups: accessible-toilet pin colour on the Toilets map view; Lifts icon in the Layers sheet; 'Where is the lift?' as a full-screen phrase card; native-speaker check of stepfree_lines.json, Macau sign lines and the casual number forms; PDF page crop (needs a native renderer, see DECISIONS); packs need a rebuild for wheelchair tags + lifts (with T52); device checks DE-DH.",
+      "accept": "tests green; DECISIONS records",
+      "note": "Run 111: worker takes the offline code parts (accessible-toilet pin colour, Lifts icon in the Layers sheet, 'Where is the lift?' full-screen phrase card); native-speaker checks, PDF page crop (native renderer), pack rebuild (T52) and device checks DE-DH stay open.",
+      "commit": "6540404"
+    },
+    {
+      "id": "T158",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "release",
+        "owner-1101s"
+      ],
+      "title": "Release prep: store listing refresh. Rewrite docs/STORE.md (App Store name/subtitle/keywords/promo text/description/What's New + Google Play short/full description) against what is built now (runs 84-110), keeping the rule 'only describe built features' and listing city-map downloads under 'Add when shipped' until satchel-maps-v1 exists; no competitor or brand names, no battery numbers, no 'works on your phone' claims beyond what TRIAL.md answers confirm. Refresh docs/SCREENSHOTS.md (six to eight shots from the demo trip showing the richer look: trip cover hero, timeline, ticket, Toilets, Emergency, Your travels, Packing; light + dark). Add tools/store/limits.mjs + a node test that fails if any field in STORE.md's tables exceeds its store limit.",
+      "accept": "tests green; character limits enforced by a test; DECISIONS records",
+      "commit": "6eee815"
+    },
+    {
+      "id": "T159",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "release",
+        "owner-1101s"
+      ],
+      "title": "Release prep: privacy, support and data inventory. Refresh docs/privacy.html and docs/support.html for everything the app does now (one-shot location, photos/camera roll picks, contacts pick, Calendar via .ics, Files/Open in, backups, in-app purchase handled by Apple, online lookups: OpenStreetMap Overpass, map tiles, weather, GitHub release downloads, any other host in src/); write docs/APP_PRIVACY.md with the App Store Connect App Privacy answers ('Data Not Collected', with the reasoning per data type) and the Play Data safety answers; add a node test that scans src/ and app/ for network hosts the app calls at runtime (fetch/URL builders, not source-citation URLs in content files) and fails if one is missing from privacy.html. Refresh docs/RELEASE_CHECKLIST.md (what is done, what Jared still decides: final name, support email, iPad yes/no, Android map key).",
+      "accept": "tests green; privacy page lists every runtime host; DECISIONS records",
+      "commit": "77584e6"
+    },
+    {
+      "id": "T160",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "release",
+        "owner-1101s"
+      ],
+      "title": "Release prep R5 (static end-to-end pass): go through every screen under app/ and every shared control in src/ui for accessibility labels and roles, 48 pt touch targets, Dynamic Type (no fixed heights that clip text), dark-mode tokens (no raw colours), permission-denied and offline states for location/photos/contacts/camera/Face ID, empty states, no leftover 'Expo Go' / 'full build' / developer wording in UI strings, no springs/bounce (timed transitions only, Reduce Motion respected). Fix what is found (strings in src/i18n/en/e2e.ts, prefix e2e.); extend ops/ui-check.mjs with any check that can be automated; write docs/E2E_PASS.md (per-screen table: checked statically / needs a TestFlight check). Do not edit app/(tabs)/map.tsx, app/(tabs)/toilets.tsx, src/ui/MapLayersSheet.tsx or src/ui/stepfree* (another worker owns them this run).",
+      "accept": "tests + ui-check green; docs/E2E_PASS.md; DECISIONS records",
+      "commit": "7b3e4fe"
+    },
+    {
+      "id": "T161",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "follow-up",
+        "release"
+      ],
+      "title": "Run-111 follow-ups: put SUPPORT_EMAIL into privacy.html/support.html once Jared gives the address; decide with Jared whether the Satchel Plus purchase ships with 0.1.0 before city maps are live (a reviewer can't see what it unlocks); add one or two invented past demo trips (opt-in) for the Your travels screenshot; lift pins on the map use the new SVG glyph (pins only take Ionicons today); check about 100 secondary numberOfLines uses at the largest text size; device checks DI-DK.",
       "accept": "tests green; DECISIONS records"
     }
   ],
-  "priority_note": "owner-1101s (docs/OWNER_1101s.md: T152 covers, T153/T52 map, T16 Plus, T14 Save to Satchel, T17 backup) outranks everything; after these five, no new features: release prep only (screenshots, STORE.md, privacy, RELEASE_CHECKLIST). owner-1031 (T47-T51) done."
+  "priority_note": "owner-1101s (docs/OWNER_1101s.md) is the latest owner direction (1 Nov 19:05 Sydney): the five features are done, so no new features; release prep only (store listing, screenshots, privacy, RELEASE_CHECKLIST, end-to-end pass) plus follow-ups and fixes to what is built. Run 111 noted that run 110's T156 was a new feature added against this; kept (merged and shipped) but no more."
 }

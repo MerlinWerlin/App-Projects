@@ -2,10 +2,12 @@
 // on this phone only (src/state/stepfree.ts), what they change across the app, a "show a local" card in the stay
 // country's language (the phrase screen's own pick: trip country, else last used, else phone zone) built from the
 // help-card lines plus src/content/stepfree_lines.json, and generic travel-assistance advice (no company names).
+// T157: "Ask for a lift" opens "Where is the lift?" as a full-screen phrase card (app/phrase-card.tsx?phrase=lift).
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 import type { HelpTable } from '../src/core/helpcards.ts';
+import { LIFT_CARD } from '../src/core/liftcard.ts';
 import { ACCESS_NEEDS, ASSISTANCE_NOTICE_HOURS, needsCard, needsCardText, toggleNeed, type StepFreeTable } from '../src/core/stepfree.ts';
 import helpData from '../src/content/helpcards.json';
 import sfData from '../src/content/stepfree_lines.json';
@@ -91,6 +93,13 @@ export default function StepFreeScreen() {
         <Text style={[typeScale.small, { color: theme.muted }]}>{t('stepfree.cardLang', { lang: t(LANG_KEY[lang]) })}</Text>
         {card.lines.length ? <Button kind="secondary" icon="share-outline" label={t('stepfree.cardShare')} hint={t('stepfree.cardShareHint')} onPress={share} /> : null}
         {shareFailed ? <Text style={[typeScale.small, { color: theme.danger }]}>{t('helpcards.card.shareFailed')}</Text> : null}
+        <Button
+          kind="secondary"
+          icon="chatbubble-ellipses-outline"
+          label={t('f110.lift.ask')}
+          hint={t('f110.lift.askHint')}
+          onPress={() => router.push({ pathname: '/phrase-card', params: { phrase: LIFT_CARD, lang } })}
+        />
         <Text style={[typeScale.small, { color: theme.muted }]}>{t('stepfree.cardCheck')}</Text>
         <Button kind="quiet" icon="people-outline" label={t('stepfree.helpCards')} hint={t('stepfree.helpCardsHint')} onPress={() => router.push({ pathname: '/helpcards', params: { lang } })} />
       </SectionCard>

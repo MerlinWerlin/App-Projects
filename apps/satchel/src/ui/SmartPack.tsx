@@ -185,7 +185,7 @@ export function PackHero({ tripName, done, total, nights, laundry }: { tripName:
         >
           <View style={{ flex: 1, gap: space.xs }}>
             <Text style={[typeScale.caption, { color: theme.heroMuted }]}>{t('smartpack.hero.eyebrow')}</Text>
-            <Text accessibilityRole="header" numberOfLines={2} style={[typeScale.displayM, { color: theme.heroInk }]}>
+            <Text accessibilityRole="header" style={[typeScale.displayM, { color: theme.heroInk }]}>
               {tripName}
             </Text>
             <Text style={[typeScale.small, { color: theme.heroMuted }]}>{meta}</Text>
