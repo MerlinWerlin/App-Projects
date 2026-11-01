@@ -276,7 +276,7 @@
         "starter"
       ],
       "spec": "the lane's docs/spec/i18n/{es,fr,de,ja}.json translate docs/spec/STRINGS.json keys, not the app catalogue; translate docs/spec/EN_CATALOGUE.json (export of src/i18n/en.ts, 465 keys) instead, then import with key + placeholder tests",
-      "note": "26 Oct lane i18n files still translate docs/spec/STRINGS.json keys (373; only 33 match the app catalogue), so they cannot be imported; the lane needs docs/spec/EN_CATALOGUE.json translated."
+      "note": "26 Oct lane i18n files still translate docs/spec/STRINGS.json keys (373; only 33 match the app catalogue), so they cannot be imported; the lane needs docs/spec/EN_CATALOGUE.json translated. Run 115: importer ready (src/i18n/localecheck.ts + tools/i18n/import-locale.mjs: key/placeholder/kept-word checks, chunk merge, 95% coverage gate, generates src/i18n/locales/<lang>.ts + catalogs.ts; tests) and docs/research/TRANSLATION_REQUEST.md; the full catalogue (6903 keys, 18 chunks of 400) is written to Desktop\\Apps\\satchel\\_spec\\i18n_request on each PC refresh. Stays todo until the lane drops _drops\\i18n\\<lang>\\ files (blocked on satchel-lanes-folder-access)."
     },
     {
       "id": "T22",

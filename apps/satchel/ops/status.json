@@ -1,19 +1,19 @@
 {
- "tests": 1840,
- "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
- "last_run": "2026-11-02 01:50",
- "stage": "owner-tested",
- "oversight_seen": 230,
- "headline": "Run 113: small release-prep follow-ups: no 'Plan this trip again' on sample trips, removing samples resets Include demo trips; over-the-air config fix confirmed on the PC",
- "next_for_owner": [
-  "When TestFlight shows a new Satchel build, tap Update (it carries run 111's reworded permission prompts plus run 112).",
-  "Try: Settings > Sample past trips (add, open one: no 'Plan this trip again'; remove: Include demo trips goes back off); the largest text size on Trips, Wallet and Spending.",
-  "Decide for release: the final name, a support email address, iPad yes/no (suggested: iPhone only) and whether Satchel Plus ships before city maps are live (see docs/RELEASE_CHECKLIST.md).",
-  "App Store Connect: create the non-consumable in-app purchase com.jared797.satchel.plus (steps in docs/PLUS.md).",
-  "Map tab > Offline city maps: downloads start once the App Factory runs the map publishing workflow.",
-  "Answer the yes/no questions DN, DL-DM (and DI-DK, DE-DH, DA-DD) in docs/TRIAL.md by commenting on this page.",
-  "Full install + tsc + expo export needs PC verification."
- ],
- "trial_kit": true,
- "next_stage": "release-prep"
+  "tests": 1845,
+  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
+  "last_run": "2026-11-02 03:50",
+  "stage": "owner-tested",
+  "oversight_seen": 231,
+  "headline": "Run 115: release prep: translation importer and lane request ready (es/fr/de/ja arrive when the OpenAI lanes can reach the PC); no app change",
+  "next_for_owner": [
+    "When TestFlight shows a new Satchel build, tap Update (it carries run 111's reworded permission prompts plus run 112).",
+    "Try: Settings > Sample past trips (add, open one: no 'Plan this trip again'; remove: Include demo trips goes back off); the largest text size on Trips, Wallet and Spending.",
+    "Decide for release: the final name, a support email address, iPad yes/no (suggested: iPhone only) and whether Satchel Plus ships before city maps are live (see docs/RELEASE_CHECKLIST.md).",
+    "App Store Connect: create the non-consumable in-app purchase com.jared797.satchel.plus (steps in docs/PLUS.md).",
+    "Map tab > Offline city maps: downloads start once the App Factory runs the map publishing workflow.",
+    "Answer the yes/no questions DN, DL-DM (and DI-DK, DE-DH, DA-DD) in docs/TRIAL.md by commenting on this page.",
+    "Full install + tsc + expo export needs PC verification."
+  ],
+  "trial_kit": true,
+  "next_stage": "release-prep"
 }
