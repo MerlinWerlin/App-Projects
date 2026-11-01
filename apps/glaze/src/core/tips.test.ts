@@ -35,7 +35,8 @@ test('the three T09 first-run tips keep their ids, order and meaning', () => {
   assert.match(getTip('icons-added').title, /added, not replaced/);
   assert.match(getTip('bulk-install').body, /one profile/);
   assert.match(getTip('live-lock').body, /Live Photo/);
-  assert.match(getTip('bulk-install').body, /Optional beta/);
+  assert.equal(getTip('bulk-install').title, 'Install all at once');
+  assert.doesNotMatch(getTip('bulk-install').title + getTip('bulk-install').body, /beta/i);
   assert.match(getTip('bulk-install').body, /Shortcuts method/);
 });
 
@@ -180,4 +181,18 @@ test('hiddenCount', () => {
   assert.equal(hiddenCount(null), 0);
   assert.equal(hiddenCount([]), 0);
   assert.equal(hiddenCount(['icons-added', 'live-loop']), 2);
+});
+
+// T217: Install all at once is the main way (T202); no "beta" bulk wording left in any locale.
+import { readFileSync, readdirSync } from 'node:fs';
+test('T217: no locale calls Install all at once a beta (tips, themeUi, plus)', () => {
+  const base = new URL('../i18n/ns/', import.meta.url);
+  for (const ns of ['tips', 'themeUi', 'plus']) {
+    for (const f of readdirSync(new URL(ns + '/', base))) {
+      if (f === 'index.ts') continue;
+      const src = readFileSync(new URL(ns + '/' + f, base), 'utf8');
+      const lines = src.split('\n').filter((l) => !/unavailable:/.test(l));
+      assert.doesNotMatch(lines.join('\n'), /beta|Beta|ベータ|베타|测试版|बीटा|تجريبي/, ns + '/' + f);
+    }
+  }
 });

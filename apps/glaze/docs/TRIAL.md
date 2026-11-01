@@ -2,6 +2,14 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (1 Nov, afternoon: owner-1101f brief)
+These need the **new TestFlight build** (the installed-app check is built into the app). In TestFlight, check the build number is newer than 1.0.1 (17), open Glaze, then answer yes / no:
+
+1. **No crash on wallpaper:** open a theme you saved before > **Wallpaper** > choose or keep your photo, drag and pinch it around (fast flings too), then save/apply it. Does Glaze stay open every time? yes / no
+2. **Apps found for you:** open the **Icons** tab. Does a line say Glaze found some of your apps on this iPhone, and are those apps (e.g. Instagram, WhatsApp, Spotify, Gmail, Google Maps, Uber if you have them) already ticked without you doing anything? If you untick one and reopen Glaze, does it stay unticked? yes / no
+3. **App Library list scan:** open the App Library, pull down to show the A-Z list, take 2-3 screenshots while scrolling, then **Scan my Home Screen** with those screenshots. Are the apps it recognised already ticked, so one tap on **Add selected apps** adds them all? yes / no
+4. **Family icons:** for an app Glaze doesn't know (e.g. your bank or a local app), does it now get a themed symbol for its kind of app (a card for finance, a cup for food, a map for travel...) instead of letters? yes / no
+
 ## New since your last test (1 Nov, midday: owner-1101e brief)
 These need the **new TestFlight build** (icon, startup and widget changes are built into the app; auto-ship sends it). In TestFlight, check the build number is newer than the one you last tested, open Glaze, then answer yes / no:
 

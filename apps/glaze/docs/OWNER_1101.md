@@ -58,3 +58,11 @@ He likes the new full-screen startup animation.
 | 3 | Downloaded packs must update when the catalogue packVersion is newer (v1 phones show only 3 pieces). | T222 | done (JS): background re-download into staging + atomic swap; "Update available" card with Update now / Try again |
 | 4 | Cloud Atelier's paper boat didn't fit: verify scaledToFit over blurred fill at every size, v2 options reach it, check the sheets. | T223 | done: path verified fit everywhere; fixed the fill path to fit when the real image's shape doesn't match its declared size; findings in docs/WIDGETS.md. Most likely he was on a build from before T201 |
 | - | TRIAL.md yes/no for 1-4. | - | done: docs/TRIAL.md "New since your last test (1 Nov, midday: owner-1101e brief)" |
+
+## owner-1101f brief (manual fire, 1 Nov 14:21-14:24 Sydney, run 216)
+Jared live; his chat ships this run's result straight away.
+1. Crash on TestFlight 1.0.1 (17), iOS 27.0.1, applying the wallpaper from a saved theme: JS exception in a Reanimated gesture worklet. -> T228 (docs/CRASH_1101.md): the photo crop editor's UI-thread maths no longer uses default parameters or module constants (likely ReferenceError under the newer worklets plugin), momentum only runs with finite numbers, every UI-thread gesture/scroll callback is wrapped in try/catch and recovers, the editor shows a still preview if sizes are not usable; guard test src/core/workletGuard.test.ts. Root cause not confirmed on a device.
+2. Automatic theming without effort -> T229: canOpenURL check of popular apps (LSApplicationQueriesSchemes via native-plugins/queryschemes.json, production-native only), on launch and after Use this theme; found apps are auto-ticked, unticks stick; Icons-tab note and Settings privacy line. 32 apps for now, not 50: only 32 non-Apple catalogue rows have verified schemes (follow-up T233).
+3. Scan accepts App Library list-view screenshots; every match pre-ticked, one tap adds -> T230.
+4. Apps with no icon get a themed family glyph per category (keyword rules + App Store search genre when online, cached) -> T231. Privacy page and REVIEW_NOTES updated.
+TRIAL.md 'New since your last test (1 Nov, afternoon: owner-1101f brief)' questions 1-4.

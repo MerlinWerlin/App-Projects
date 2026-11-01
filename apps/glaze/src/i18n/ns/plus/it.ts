@@ -12,7 +12,7 @@ export const it: NonNullable<LocaleMessages['plus']> = {
     loops: 'Clip a tema per Live Photo',
     free: 'Sempre gratis',
     freeIcons: 'Icone tue, senza limiti',
-    freeInstall: 'Installazione guidata con Comandi Rapidi (e beta in blocco)',
+    freeInstall: 'Installa tutto in una volta, o uno alla volta con Comandi Rapidi',
     freeLive: 'Creatore di Live Photo con il tuo video',
     oneMoment: 'Un momento…',
     unlock: 'Sblocca (in arrivo)',

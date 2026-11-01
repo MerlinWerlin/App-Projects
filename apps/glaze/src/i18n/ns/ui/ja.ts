@@ -39,6 +39,22 @@ export const ja: NonNullable<LocaleMessages['ui']> = {
     photoRemoveHint: '{size} 空きます。テーマからいつでも再ダウンロードできます。',
     photoRemoved: '{name} の写真を削除しました',
     photosTotalA11y: '宇宙の写真の合計: {size}',
+    // T225: one-line pack update status in Settings › Storage.
+    updates: {
+      upToDate: 'すべてのパックは最新です',
+      updated: {
+        other: '{count} 個のパックを更新しました',
+      },
+      updating: {
+        other: '{count} 個のパックを更新中…',
+      },
+      available: {
+        other: '{count} 個のパックにアップデートがあります',
+      },
+      failed: {
+        other: '{count} 個のパックを更新できませんでした。そのまま使えます。Glaze が後でもう一度試します。',
+      },
+    },
   },
   segmentedOptionA11y: '{group}：{option}',
   loadingIcons: 'アイコンを読み込み中',

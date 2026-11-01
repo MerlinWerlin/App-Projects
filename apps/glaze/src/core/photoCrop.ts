@@ -204,6 +204,11 @@ export function looksSoft(image: Size, target: Size, t: PhotoTransform): boolean
 // self-contained (no calls into the functions above) and marked 'worklet' so
 // reanimated can run them on the UI thread; Node ignores the directive. The saved
 // format is still PhotoTransform: convert with cropViewFor / transformForView.
+//
+// UI-thread rules (T228, docs/CRASH_1101.md; checked by src/core/workletGuard.test.ts):
+// a worklet here has NO default parameters and reads NO module constants (the limits are
+// written as literals: 1 / 5 zoom, 0.55 rubber, 0.5 stretch, equal to the exported
+// constants, which photoCrop.test.ts asserts), and only calls worklets declared above it.
 
 export type CropView = { zoom: number; x: number; y: number };
 export type CropBounds = { minX: number; maxX: number; minY: number; maxY: number };
@@ -242,8 +247,10 @@ export function cropBaseSize(image: Size, frame: Size): Size {
  */
 export function cropBounds(base: Size, frame: Size, zoom: number): CropBounds {
   'worklet';
-  const fx = frame.width - base.width * zoom;
-  const fy = frame.height - base.height * zoom;
+  // Always finite with min <= max (withDecay's clamp is built from these).
+  const z = okNum(zoom, 1);
+  const fx = okNum(frame.width - base.width * z, 0);
+  const fy = okNum(frame.height - base.height * z, 0);
   return {
     minX: fx < 0 ? fx : fx / 2,
     maxX: fx < 0 ? 0 : fx / 2,
@@ -257,8 +264,9 @@ export function cropBounds(base: Size, frame: Size, zoom: number): CropBounds {
  * further it goes and never more than `dimension` past (iOS-style). Same maths as
  * rubberClamp in src/core/motion.ts, as a worklet.
  */
-export function rubberInto(value: number, lo: number, hi: number, dimension: number, coefficient: number = CROP_RUBBER): number {
+export function rubberInto(value: number, lo: number, hi: number, dimension: number, coefficient?: number): number {
   'worklet';
+  const c = okNum(coefficient, 0.55); // CROP_RUBBER
   const v = okNum(value, lo);
   if (!(dimension > 0)) return between(v, lo, hi);
   let over: number;
@@ -274,16 +282,17 @@ export function rubberInto(value: number, lo: number, hi: number, dimension: num
   }
   const sign = over < 0 ? -1 : 1;
   const x = Math.abs(over);
-  return edge + sign * (1 - 1 / ((x * coefficient) / dimension + 1)) * dimension;
+  return edge + sign * (1 - 1 / ((x * c) / dimension + 1)) * dimension;
 }
 
 /** Displayed zoom for a raw pinch zoom: rubber-banded past 1x / 5x, or hard-clamped when reduced. */
 export function cropZoomShown(rawZoom: number, reduced: boolean): number {
   'worklet';
-  const z = okNum(rawZoom, MIN_ZOOM);
-  if (reduced) return between(z, MIN_ZOOM, MAX_ZOOM);
-  if (z < MIN_ZOOM) return rubberInto(z, MIN_ZOOM, MAX_ZOOM, MIN_ZOOM * ZOOM_STRETCH);
-  if (z > MAX_ZOOM) return rubberInto(z, MIN_ZOOM, MAX_ZOOM, MAX_ZOOM * ZOOM_STRETCH);
+  // MIN_ZOOM 1, MAX_ZOOM 5, ZOOM_STRETCH 0.5, CROP_RUBBER 0.55 (literals: see the note above).
+  const z = okNum(rawZoom, 1);
+  if (reduced) return between(z, 1, 5);
+  if (z < 1) return rubberInto(z, 1, 5, 1 * 0.5, 0.55);
+  if (z > 5) return rubberInto(z, 1, 5, 5 * 0.5, 0.55);
   return z;
 }
 
@@ -301,8 +310,8 @@ export function cropShown(raw: CropView, base: Size, frame: Size, reduced: boole
   if (reduced) return { zoom, x: between(x, b.minX, b.maxX), y: between(y, b.minY, b.maxY) };
   return {
     zoom,
-    x: rubberInto(x, b.minX, b.maxX, frame.width),
-    y: rubberInto(y, b.minY, b.maxY, frame.height),
+    x: rubberInto(x, b.minX, b.maxX, okNum(frame.width, 0), 0.55),
+    y: rubberInto(y, b.minY, b.maxY, okNum(frame.height, 0), 0.55),
   };
 }
 
@@ -315,7 +324,7 @@ export function cropPinchStep(raw: CropView, ratio: number, focal: Point, reduce
   'worklet';
   const r = okNum(ratio, 1);
   if (!(r > 0)) return raw;
-  const z0 = okNum(raw.zoom, MIN_ZOOM);
+  const z0 = okNum(raw.zoom, 1);
   const zoom = z0 * r;
   const before = cropZoomShown(z0, reduced);
   const after = cropZoomShown(zoom, reduced);
@@ -331,8 +340,8 @@ export function cropPinchStep(raw: CropView, ratio: number, focal: Point, reduce
  */
 export function cropSettle(shown: CropView, base: Size, frame: Size, focal?: Point): CropView {
   'worklet';
-  const z0 = okNum(shown.zoom, MIN_ZOOM);
-  const zoom = between(z0, MIN_ZOOM, MAX_ZOOM);
+  const z0 = okNum(shown.zoom, 1);
+  const zoom = between(z0, 1, 5);
   const fx = okNum(focal ? focal.x : undefined, frame.width / 2);
   const fy = okNum(focal ? focal.y : undefined, frame.height / 2);
   const k = z0 > 0 ? zoom / z0 : 1;
@@ -343,17 +352,18 @@ export function cropSettle(shown: CropView, base: Size, frame: Size, focal?: Poi
 }
 
 /** True when `v` is already settled (zoom in range and the photo covers the frame). */
-export function cropInBounds(v: CropView, base: Size, frame: Size, eps: number = 0.01): boolean {
+export function cropInBounds(v: CropView, base: Size, frame: Size, eps?: number): boolean {
   'worklet';
-  if (!(v.zoom >= MIN_ZOOM - 1e-6 && v.zoom <= MAX_ZOOM + 1e-6)) return false;
+  const e = okNum(eps, 0.01);
+  if (!(v.zoom >= 1 - 1e-6 && v.zoom <= 5 + 1e-6)) return false;
   const b = cropBounds(base, frame, v.zoom);
-  return v.x >= b.minX - eps && v.x <= b.maxX + eps && v.y >= b.minY - eps && v.y <= b.maxY + eps;
+  return v.x >= b.minX - e && v.x <= b.maxX + e && v.y >= b.minY - e && v.y <= b.maxY + e;
 }
 
 /** View for a saved transform (the same x/y as photoLayout). */
 export function cropViewFor(image: Size, frame: Size, t: Partial<PhotoTransform> | null | undefined): CropView {
   'worklet';
-  const zoom = between(okNum(t ? t.scale : undefined, 1), MIN_ZOOM, MAX_ZOOM);
+  const zoom = between(okNum(t ? t.scale : undefined, 1), 1, 5);
   const ox = between(okNum(t ? t.offsetX : undefined, 0), -1, 1);
   const oy = between(okNum(t ? t.offsetY : undefined, 0), -1, 1);
   const base = cropBaseSize(image, frame);
@@ -365,7 +375,7 @@ export function cropViewFor(image: Size, frame: Size, t: Partial<PhotoTransform>
 /** Saved transform for a view (clamped; the inverse of cropViewFor for settled views). */
 export function transformForView(image: Size, frame: Size, v: CropView): PhotoTransform {
   'worklet';
-  const zoom = between(okNum(v.zoom, 1), MIN_ZOOM, MAX_ZOOM);
+  const zoom = between(okNum(v.zoom, 1), 1, 5);
   const base = cropBaseSize(image, frame);
   const freeX = Math.max(0, base.width * zoom - frame.width);
   const freeY = Math.max(0, base.height * zoom - frame.height);

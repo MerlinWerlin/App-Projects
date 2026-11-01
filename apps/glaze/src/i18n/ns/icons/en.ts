@@ -28,6 +28,10 @@ export const en = {
   addPopular: 'Add popular apps',
   addPopularHint: 'Selects 16 common apps such as Messages, Camera and Photos',
   editHelp: 'Tap an icon to change it in {theme}: your own image, label, symbol or colours. A dot marks customised icons. Long-press or tap ✕ to remove it.',
+  installedFound: {
+    one: 'Glaze found {count} of your apps on this iPhone and added it. Untick it if you don’t want it.',
+    other: 'Glaze found {count} of your apps on this iPhone and added them. Untick any you don’t want.',
+  },
   ownStyle: 'your own style',
   editLabel: 'Edit {name}',
   editLabelCustomised: 'Edit {name}, customised',

@@ -1,0 +1,38 @@
+{
+  "infoPlist": {
+    "LSApplicationQueriesSchemes": [
+      "instagram",
+      "whatsapp",
+      "fb",
+      "fb-messenger",
+      "snapchat",
+      "spotify",
+      "googlegmail",
+      "twitter",
+      "comgooglemaps",
+      "uber",
+      "pinterest",
+      "ms-outlook",
+      "tg",
+      "zoomus",
+      "googlechrome",
+      "waze",
+      "twitch",
+      "slack",
+      "ms-word",
+      "ms-excel",
+      "lyft",
+      "ms-powerpoint",
+      "tumblr",
+      "firefox",
+      "onenote",
+      "skype",
+      "todoist",
+      "citymapper",
+      "obsidian",
+      "things",
+      "drafts",
+      "bear"
+    ]
+  }
+}

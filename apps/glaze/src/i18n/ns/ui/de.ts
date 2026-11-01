@@ -40,6 +40,26 @@ export const de: NonNullable<LocaleMessages['ui']> = {
     photoRemoveHint: 'Gibt {size} frei. Du kannst es im Theme erneut laden.',
     photoRemoved: 'Foto {name} entfernt',
     photosTotalA11y: 'Weltraumfotos belegen insgesamt {size}',
+    // T225: one-line pack update status in Settings › Storage.
+    updates: {
+      upToDate: 'Alle Pakete sind aktuell',
+      updated: {
+        one: '{count} Paket aktualisiert',
+        other: '{count} Pakete aktualisiert',
+      },
+      updating: {
+        one: '{count} Paket wird aktualisiert…',
+        other: '{count} Pakete werden aktualisiert…',
+      },
+      available: {
+        one: 'Update für {count} Paket verfügbar',
+        other: 'Updates für {count} Pakete verfügbar',
+      },
+      failed: {
+        one: '{count} Paket konnte nicht aktualisiert werden. Es funktioniert weiter; Glaze versucht es später erneut.',
+        other: '{count} Pakete konnten nicht aktualisiert werden. Sie funktionieren weiter; Glaze versucht es später erneut.',
+      },
+    },
   },
   segmentedOptionA11y: '{group}: {option}',
   loadingIcons: 'Symbole werden geladen',

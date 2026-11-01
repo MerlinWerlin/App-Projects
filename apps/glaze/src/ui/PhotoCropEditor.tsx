@@ -10,6 +10,13 @@
 // rubber band, no momentum, hard clamp and an instant settle. All maths is in
 // src/core/photoCrop.ts (tested); the zoom / reset buttons live on the hosting screen and
 // the adjustable accessibility actions below keep the crop usable without gestures.
+//
+// T228 (docs/CRASH_1101.md): an uncaught JS error inside a UI-thread gesture worklet aborts
+// the app on iOS (SIGABRT). Every gesture callback catches its own errors, hard-settles to a
+// clamped view and reports to JS (console.warn); withDecay only runs with a finite, ordered
+// clamp and a finite velocity; and the gestures are not mounted at all unless the photo and
+// frame sizes are positive finite numbers (a static preview is shown instead).
+// src/core/workletGuard.test.ts enforces the try/catch and the allowed calls.
 
 import { Feather } from '@expo/vector-icons';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -34,6 +41,7 @@ import {
   cropSettle,
   cropShown,
   cropViewFor,
+  isUsableSize,
   panBy,
   pinchBy,
   transformForView,
@@ -71,12 +79,50 @@ type Props = {
 type PreviewMode = 'lock' | 'home';
 const START_PREVIEW: PreviewMode = 'lock';
 
-/** withDecay deceleration (reanimated's default feel). */
-const DECELERATION = 0.998;
-/** Below this many points of spare photo an axis cannot move (no decay). */
-const MIN_TRAVEL = 0.5;
+// withDecay uses deceleration 0.998 (reanimated's default feel) and only runs when an axis has
+// at least 0.5 pt of spare photo; both are literals inside the worklets (T228).
 
-export function PhotoCropEditor({
+/** JS side of a caught UI-thread error (T228): log it, never rethrow. */
+function reportWorkletError(where: string, message: string): void {
+  console.warn(`[PhotoCropEditor] recovered from a UI-thread error in ${where}: ${message}`);
+}
+
+/**
+ * T228: the live editor only mounts its UI-thread gestures when the photo and frame sizes are
+ * positive finite numbers; otherwise a static, gesture-free preview is shown (the zoom / reset
+ * buttons on the hosting screen and saving still work).
+ */
+export function PhotoCropEditor(props: Props) {
+  const { photo, width, height } = props;
+  const image = { width: photo.imageW, height: photo.imageH };
+  const frame = { width, height };
+  const usable = isUsableSize(image) && isUsableSize(frame) && isUsableSize(cropBaseSize(image, frame));
+  return usable ? <LiveCropEditor {...props} /> : <StaticCropPreview {...props} />;
+}
+
+function StaticCropPreview({ photo, width, height, onImageError }: Props) {
+  const { t } = useT();
+  return (
+    <View
+      accessible
+      accessibilityRole="image"
+      accessibilityLabel={t('wallpaper.crop.a11y')}
+      style={[noMirror, styles.frame, { width, height, backgroundColor: photo.palette.bg }]}
+    >
+      <Animated.Image
+        source={{ uri: photo.uri }}
+        onError={onImageError}
+        resizeMode="cover"
+        fadeDuration={0}
+        style={StyleSheet.absoluteFill}
+      />
+      <ThemeOverlay overlay={photo.overlay} palette={photo.palette} width={width} height={height} maxGrain={400} />
+      <LockMock width={width} height={height} />
+    </View>
+  );
+}
+
+function LiveCropEditor({
   photo,
   width,
   height,
@@ -157,9 +203,62 @@ export function PhotoCropEditor({
   }, [photo.transform, image, frame, reduced]);
 
   const gesture = useMemo(() => {
+    // T228: every UI-thread callback below catches its own errors. Only plain numbers and the
+    // timing config are captured from this JS scope.
+    const safe = cropViewFor(image, frame, DEFAULT_TRANSFORM);
+    const safeZoom = safe.zoom;
+    const safeX = safe.x;
+    const safeY = safe.y;
+    const settleMs = timing.base.duration;
+    const settleEasing = timing.base.easing;
+
+    const hardSettle = () => {
+      'worklet';
+      // Last line of defence after an error: stop everything and jump to a clamped view.
+      try {
+        cancelAnimation(z);
+        cancelAnimation(x);
+        cancelAnimation(y);
+        touches.value = 0;
+        pending.value = 0;
+        const t = cropSettle({ zoom: z.value, x: x.value, y: y.value }, base, frame, { x: focalX.value, y: focalY.value });
+        const ok = Number.isFinite(t.zoom) && Number.isFinite(t.x) && Number.isFinite(t.y);
+        z.value = ok ? t.zoom : safeZoom;
+        x.value = ok ? t.x : safeX;
+        y.value = ok ? t.y : safeY;
+        rz.value = z.value;
+        rx.value = x.value;
+        ry.value = y.value;
+        runOnJS(notifyActive)(false);
+        runOnJS(commitView)(z.value, x.value, y.value);
+      } catch (_e) {
+        try {
+          z.value = safeZoom;
+          x.value = safeX;
+          y.value = safeY;
+          rz.value = safeZoom;
+          rx.value = safeX;
+          ry.value = safeY;
+          touches.value = 0;
+          pending.value = 0;
+        } catch (_e2) {
+          // Nothing more to do; never rethrow on the UI thread.
+        }
+      }
+    };
+    const fail = (where: string, e: unknown) => {
+      'worklet';
+      try {
+        runOnJS(reportWorkletError)(where, String(e));
+      } catch (_e) {
+        // Reporting is best effort.
+      }
+      hardSettle();
+    };
     const showRaw = () => {
       'worklet';
       const d = cropShown({ zoom: rz.value, x: rx.value, y: ry.value }, base, frame, reduced);
+      if (!(Number.isFinite(d.zoom) && Number.isFinite(d.x) && Number.isFinite(d.y))) return;
       z.value = d.zoom;
       x.value = d.x;
       y.value = d.y;
@@ -172,9 +271,26 @@ export function PhotoCropEditor({
     };
     const settled = (finished?: boolean) => {
       'worklet';
-      if (!finished) return; // interrupted by a new touch; that gesture commits instead
-      pending.value -= 1;
-      if (pending.value === 0) runOnJS(commitView)(z.value, x.value, y.value);
+      try {
+        if (!finished) return; // interrupted by a new touch; that gesture commits instead
+        pending.value -= 1;
+        if (pending.value === 0) runOnJS(commitView)(z.value, x.value, y.value);
+      } catch (e) {
+        fail('settled', e);
+      }
+    };
+    const glide = (from: number, to: number, lo: number, hi: number, v: number) => {
+      'worklet';
+      // Momentum only with a valid clamp (finite, lo < hi by at least 0.5 pt) and a finite
+      // velocity; otherwise ease to the settled position (or finish at once when already there).
+      if (Number.isFinite(lo) && Number.isFinite(hi) && hi - lo >= 0.5 && Number.isFinite(v)) {
+        return withDecay({ velocity: v, deceleration: 0.998, clamp: [lo, hi] }, settled);
+      }
+      if (Number.isFinite(to) && Math.abs(to - from) > 0.01) {
+        return withTiming(to, { duration: settleMs, easing: settleEasing }, settled);
+      }
+      settled(true);
+      return Number.isFinite(to) ? to : from;
     };
     const settle = () => {
       'worklet';
@@ -188,25 +304,17 @@ export function PhotoCropEditor({
         return;
       }
       const b = cropBounds(base, frame, t.zoom);
-      const springBack = !cropInBounds(d, base, frame);
+      const springBack = !cropInBounds(d, base, frame, 0.01);
       pending.value = 3;
-      if (Math.abs(t.zoom - d.zoom) > 1e-4) z.value = withTiming(t.zoom, timing.base, settled);
-      else {
+      if (Math.abs(t.zoom - d.zoom) > 1e-4) {
+        z.value = withTiming(t.zoom, { duration: settleMs, easing: settleEasing }, settled);
+      } else {
         z.value = t.zoom;
         settled(true);
       }
-      if (springBack || b.maxX - b.minX < MIN_TRAVEL) {
-        if (Math.abs(t.x - d.x) > 0.01) x.value = withTiming(t.x, timing.base, settled);
-        else settled(true);
-      } else {
-        x.value = withDecay({ velocity: vx.value, deceleration: DECELERATION, clamp: [b.minX, b.maxX] }, settled);
-      }
-      if (springBack || b.maxY - b.minY < MIN_TRAVEL) {
-        if (Math.abs(t.y - d.y) > 0.01) y.value = withTiming(t.y, timing.base, settled);
-        else settled(true);
-      } else {
-        y.value = withDecay({ velocity: vy.value, deceleration: DECELERATION, clamp: [b.minY, b.maxY] }, settled);
-      }
+      // Spring back eases (a zero-width range never decays); otherwise glide with momentum.
+      x.value = springBack ? glide(d.x, t.x, 0, 0, 0) : glide(d.x, t.x, b.minX, b.maxX, vx.value);
+      y.value = springBack ? glide(d.y, t.y, 0, 0, 0) : glide(d.y, t.y, b.minY, b.maxY, vy.value);
     };
     const touchDown = () => {
       'worklet';
@@ -234,47 +342,94 @@ export function PhotoCropEditor({
     };
 
     const pan = Gesture.Pan()
-      .onBegin(() => touchDown())
+      .onBegin(() => {
+        try {
+          touchDown();
+        } catch (e) {
+          fail('pan.begin', e);
+        }
+      })
       .onStart(() => {
-        lastPanX.value = 0;
-        lastPanY.value = 0;
+        try {
+          lastPanX.value = 0;
+          lastPanY.value = 0;
+        } catch (e) {
+          fail('pan.start', e);
+        }
       })
       .onUpdate((e) => {
-        rx.value += e.translationX - lastPanX.value;
-        ry.value += e.translationY - lastPanY.value;
-        lastPanX.value = e.translationX;
-        lastPanY.value = e.translationY;
-        vx.value = e.velocityX;
-        vy.value = e.velocityY;
-        showRaw();
+        try {
+          if (!(Number.isFinite(e.translationX) && Number.isFinite(e.translationY))) return;
+          rx.value += e.translationX - lastPanX.value;
+          ry.value += e.translationY - lastPanY.value;
+          lastPanX.value = e.translationX;
+          lastPanY.value = e.translationY;
+          vx.value = Number.isFinite(e.velocityX) ? e.velocityX : 0;
+          vy.value = Number.isFinite(e.velocityY) ? e.velocityY : 0;
+          showRaw();
+        } catch (err) {
+          fail('pan.update', err);
+        }
       })
       .onEnd((e) => {
-        vx.value = e.velocityX;
-        vy.value = e.velocityY;
+        try {
+          vx.value = Number.isFinite(e.velocityX) ? e.velocityX : 0;
+          vy.value = Number.isFinite(e.velocityY) ? e.velocityY : 0;
+        } catch (err) {
+          fail('pan.end', err);
+        }
       })
-      .onFinalize(() => touchUp());
+      .onFinalize(() => {
+        try {
+          touchUp();
+        } catch (e) {
+          fail('pan.finalize', e);
+        }
+      });
     const pinch = Gesture.Pinch()
-      .onBegin(() => touchDown())
+      .onBegin(() => {
+        try {
+          touchDown();
+        } catch (e) {
+          fail('pinch.begin', e);
+        }
+      })
       .onStart(() => {
-        lastScale.value = 1;
+        try {
+          lastScale.value = 1;
+        } catch (e) {
+          fail('pinch.start', e);
+        }
       })
       .onUpdate((e) => {
-        if (!(e.scale > 0) || !(lastScale.value > 0)) return;
-        const ratio = e.scale / lastScale.value;
-        lastScale.value = e.scale;
-        focalX.value = e.focalX;
-        focalY.value = e.focalY;
-        const next = cropPinchStep({ zoom: rz.value, x: rx.value, y: ry.value }, ratio, { x: e.focalX, y: e.focalY }, reduced);
-        rz.value = next.zoom;
-        rx.value = next.x;
-        ry.value = next.y;
-        showRaw();
+        try {
+          if (!(e.scale > 0) || !(lastScale.value > 0) || !Number.isFinite(e.scale)) return;
+          const ratio = e.scale / lastScale.value;
+          lastScale.value = e.scale;
+          const fx = Number.isFinite(e.focalX) ? e.focalX : focalX.value;
+          const fy = Number.isFinite(e.focalY) ? e.focalY : focalY.value;
+          focalX.value = fx;
+          focalY.value = fy;
+          const next = cropPinchStep({ zoom: rz.value, x: rx.value, y: ry.value }, ratio, { x: fx, y: fy }, reduced);
+          rz.value = next.zoom;
+          rx.value = next.x;
+          ry.value = next.y;
+          showRaw();
+        } catch (err) {
+          fail('pinch.update', err);
+        }
       })
-      .onFinalize(() => touchUp());
+      .onFinalize(() => {
+        try {
+          touchUp();
+        } catch (e) {
+          fail('pinch.finalize', e);
+        }
+      });
     return Gesture.Simultaneous(pan, pinch);
     // Shared values and the useCallback functions are stable.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [base, frame, reduced]);
+  }, [image, base, frame, reduced]);
 
   // The image is laid out at the last committed zoom (sharp after each commit) and the
   // live difference is a UI-thread transform (translate + scale about its centre).
@@ -283,6 +438,9 @@ export function PhotoCropEditor({
   const drawnH = base.height * layoutZoom;
   const imageStyle = useAnimatedStyle(() => {
     const s = z.value / layoutZoom;
+    if (!(Number.isFinite(s) && s > 0 && Number.isFinite(x.value) && Number.isFinite(y.value))) {
+      return { transform: [{ translateX: 0 }, { translateY: 0 }, { scale: 1 }] };
+    }
     return {
       transform: [
         { translateX: x.value + (drawnW * (s - 1)) / 2 },

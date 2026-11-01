@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze: your picked Prism figure as the app icon and in the startup, each widget can show its own art (Edit Widget > Art from My widget art), downloaded themes update to the full widget art",
+  "note": "Glaze: crash fix for applying a saved theme wallpaper, popular apps detected and ticked automatically, App Library screenshots in Scan my Home Screen, themed category symbols for unknown apps",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

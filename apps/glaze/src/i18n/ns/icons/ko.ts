@@ -26,6 +26,9 @@ export const ko: NonNullable<LocaleMessages['icons']> = {
   addPopular: "인기 앱 추가",
   addPopularHint: "메시지, 카메라, 사진 등 자주 쓰는 앱 16개를 선택합니다",
   editHelp: "아이콘을 탭하면 {theme}에서 바꿀 수 있습니다: 내 이미지, 이름, 기호 또는 색상. 점은 사용자화된 아이콘을 뜻합니다. 길게 누르거나 ✕를 탭해 제거하세요.",
+  installedFound: {
+    other: "Glaze가 이 iPhone에서 앱 {count}개를 찾아 추가했어요. 원하지 않는 앱은 선택을 해제하세요.",
+  },
   ownStyle: "나만의 스타일",
   editLabel: "{name} 편집",
   editLabelCustomised: "{name} 편집, 사용자화됨",

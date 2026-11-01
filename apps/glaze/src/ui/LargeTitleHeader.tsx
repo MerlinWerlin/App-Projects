@@ -16,6 +16,7 @@ import { Platform, StyleSheet, Text, View, type FlatListProps, type ListRenderIt
 import Animated, {
   Extrapolation,
   interpolate,
+  runOnJS,
   useAnimatedReaction,
   useAnimatedScrollHandler,
   useAnimatedStyle,
@@ -36,12 +37,22 @@ const BLOCK = sizeV2.largeTitleBlock;
 const RANGES = largeTitleRanges(BLOCK);
 const SNAP_AT = largeTitleSnapAt(BLOCK);
 
+/** JS side of a caught UI-thread error (T228, docs/CRASH_1101.md): log it, never rethrow. */
+function reportWorkletError(where: string, message: string): void {
+  console.warn(`[LargeTitleHeader] recovered from a UI-thread error in ${where}: ${message}`);
+}
+
 /** Scroll offset shared value + the handler to pass to an Animated.ScrollView / Animated.FlatList. */
 export function useLargeTitleScroll() {
   const scrollY = useSharedValue(0);
   const onScroll = useAnimatedScrollHandler({
     onScroll: (e) => {
-      scrollY.value = e.contentOffset.y;
+      try {
+        const y = e.contentOffset.y;
+        scrollY.value = Number.isFinite(y) ? y : 0;
+      } catch (err) {
+        runOnJS(reportWorkletError)('onScroll', String(err));
+      }
     },
   });
   return { scrollY, onScroll };
@@ -58,10 +69,23 @@ function useCollapse(scrollY: SharedValue<number>) {
   useEffect(() => {
     reducedSV.value = reduced ? 1 : 0;
   }, [reduced, reducedSV]);
+  const snapAt = SNAP_AT;
+  const fastMs = durations.fast;
   useAnimatedReaction(
-    () => (scrollY.value >= SNAP_AT ? 1 : 0),
+    () => {
+      try {
+        return scrollY.value >= snapAt ? 1 : 0;
+      } catch (_e) {
+        return 0;
+      }
+    },
     (now, prev) => {
-      if (now !== prev) snapped.value = withTiming(now, { duration: durations.fast });
+      try {
+        if (now !== prev) snapped.value = withTiming(now, { duration: fastMs });
+      } catch (err) {
+        snapped.value = now;
+        runOnJS(reportWorkletError)('snap', String(err));
+      }
     },
   );
   const bar = useDerivedValue(() =>

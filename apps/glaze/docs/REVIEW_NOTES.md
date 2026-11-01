@@ -17,6 +17,19 @@ Paste after the feature sections (release standard §3; same pattern as the othe
 5. Regional differences: none; works the same in all regions (only the purchase price is localised).
 6. Regulated industry / third-party material: not applicable. All icons, themes and art are original or licensed (licences in the app's records); no brand logos or third-party characters.
 
+## Installed-app check (LSApplicationQueriesSchemes, T229)
+
+Native builds only (`native-plugins/queryschemes.json`, merged when `GLAZE_NATIVE=1`; the plain `production` profile has none, and then the check finds nothing and does nothing).
+
+> Glaze declares 32 URL schemes of popular apps in LSApplicationQueriesSchemes (under Apple's limit of 50;
+> the list is generated from `src/core/installedProbe.ts`). It calls `canOpenURL` on these exact schemes only
+> to pre-select matching icons for those apps in the icon editor, so the user doesn't have to find them; the
+> user can untick any app and it is not added again. The answers are not stored beyond that selection, are not
+> used for anything else, and nothing leaves the phone (no network call, analytics or tracking).
+
+## App category lookup (T231)
+When Scan my Home Screen finds an app that isn't in Glaze's catalogue, Glaze may look up that app's name in Apple's public App Store search (itunes.apple.com) to choose a symbol for its kind of app, such as Finance or Food. Only the app name and your store's country code are sent, and only for apps Glaze doesn't already recognise. No screenshots, photos, other app names, identifiers or account details are sent, no sign-in or account is used, and answers are cached on the phone. Without a connection, Glaze picks the symbol on the phone from the app's name, and nothing is sent. (Read-only public search; no account, no tracking.)
+
 ## Icon install
 
 Since T202 (owner-1101d #5, supersedes T183) **"Install all at once"** (web clip profile served to Safari) is the main method whenever `PROFILE_INSTALL_ENABLED` is true; the guided Shortcuts method with the **"Open App"** action is only a small "Prefer Shortcuts? One icon at a time" link, and covers apps a profile can't open. The install screen says plainly, counted from the set, how many apps open via a quick Safari tap ("Open in <app>?"; web clips hold only a URL and Apple's WebClip payload has no key to launch an app by bundle id). Guideline 5.5: with the switch false the screen is Shortcuts-only and uses no profile at all, so a rejection costs one flag.

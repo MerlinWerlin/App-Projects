@@ -41,8 +41,8 @@ export const ko: NonNullable<LocaleMessages['tips']> = {
       body: 'iOS에서는 어떤 앱도 다른 앱의 아이콘을 바꿀 수 없습니다. Glaze는 실제 앱을 여는 테마 단축어를 추가합니다. 원래 아이콘은 앱 보관함으로 옮기세요.',
     },
     bulkInstall: {
-      title: '일괄 설치(선택형 베타)',
-      body: '선택형 베타: 프로필 하나로 세트 전체를 설정에서 한 번에 설치합니다. 안내형 단축어 방식이 기본이며 언제나 작동합니다.',
+      title: '한 번에 모두 설치',
+      body: '프로필 하나로 Safari와 설정을 거쳐 세트 전체를 한 번에 추가합니다. 하나씩 하고 싶다면 안내형 단축어 방식도 언제든 쓸 수 있습니다.',
     },
     liveLock: {
       title: 'Live Photo 만들기',

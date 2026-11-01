@@ -63,6 +63,8 @@ export const zhHans: NonNullable<LocaleMessages['settings']> = {
     title: '隐私',
     heading: '不收集数据',
     body: '没有账户、分析、广告或跟踪。你的照片和视频绝不会离开你的手机。主题包以普通文件的形式从 GitHub 下载，Glaze 不会发送任何个人数据、账户或标识符。',
+    installedTitle: "这台 iPhone 上的应用",
+    installedBody: "为了替你勾选应用，Glaze 只会询问 iOS 是否安装了 {count} 个特定的热门应用。结果只用于为这些应用设置主题，任何信息都不会离开你的手机。",
   },
   about: {
     title: '关于',

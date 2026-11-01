@@ -52,6 +52,7 @@ import {
 } from '../../src/core/studio';
 import { IconCanvas } from '../../src/render/IconCanvas';
 import { iconAccessibilityLabel } from '../../src/render/a11y';
+import { recordTick, recordUntick, useInstalledFound } from '../../src/store/installedProbe';
 import { studioSpecs, useStudio } from '../../src/store/studio';
 import { listLayout, staggerIn, useMotionReduced } from '../../src/theme/motion';
 import {
@@ -150,6 +151,7 @@ export default function IconsScreen() {
   const insets = useSafeAreaInsets();
   const { t, script, isRTL } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
+  const installedFound = useInstalledFound(); // T229
   const eyebrowCase = eyebrowCaseFor(script);
   const { width } = useWindowDimensions();
   const { scrollY, onScroll } = useLargeTitleScroll();
@@ -204,9 +206,12 @@ export default function IconsScreen() {
   const onToggle = useCallback(
     (id: string) => {
       selection();
+      // T229: remember removals so the installed-apps check never ticks them again.
+      if (selectedSet.has(id)) recordUntick(id);
+      else recordTick(id);
       update((st) => toggleApp(st, id));
     },
-    [update],
+    [update, selectedSet],
   );
   const onDelete = useCallback(
     (id: string) => {
@@ -228,6 +233,7 @@ export default function IconsScreen() {
     (id: string, long: boolean) => {
       if (long) haptic('warning');
       else selection();
+      recordUntick(id); // T229
       update((st) => removeApp(st, id));
     },
     [update],
@@ -401,6 +407,16 @@ export default function IconsScreen() {
           </View>
         </SquircleCard>
       ) : (
+        <>
+        {installedFound > 0 ? (
+          <Text
+            maxFontSizeMultiplier={fontScaleCap('footnote')}
+            style={[...ts('footnote'), styles.side, styles.foundNote, { color: c.inkSecondary }]}
+            accessibilityRole="text"
+          >
+            {t('icons.installedFound', { count: installedFound })}
+          </Text>
+        ) : null}
         <InsetGroup footer={t('icons.editHelp', { theme: themeName })}>
           <View style={styles.chips}>
             {specs.map((s, i) => (
@@ -417,6 +433,7 @@ export default function IconsScreen() {
             ))}
           </View>
         </InsetGroup>
+        </>
       )}
 
       {/* Add apps */}
@@ -908,6 +925,7 @@ const styles = StyleSheet.create({
   segmentLast: { borderBottomStartRadius: radiusV2.group, borderBottomEndRadius: radiusV2.group, overflow: 'hidden' },
   separator: { height: StyleSheet.hairlineWidth },
   side: { marginHorizontal: spaceV2.lg },
+  foundNote: { marginBottom: spaceV2.sm },
   centerText: { textAlign: 'center' },
   centerSelf: { alignSelf: 'center' },
   semibold: { fontWeight: '600' },

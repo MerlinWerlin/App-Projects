@@ -28,6 +28,11 @@ export const it: NonNullable<LocaleMessages['icons']> = {
   addPopular: "Aggiungi app popolari",
   addPopularHint: "Seleziona 16 app comuni come Messaggi, Fotocamera e Foto",
   editHelp: "Tocca un’icona per modificarla in {theme}: la tua immagine, nome, simbolo o colori. Un punto indica le icone personalizzate. Tieni premuto o tocca ✕ per rimuoverla.",
+  installedFound: {
+    one: "Glaze ha trovato {count} delle tue app su questo iPhone e l’ha aggiunta. Deselezionala se non la vuoi.",
+    many: "Glaze ha trovato {count} delle tue app su questo iPhone e le ha aggiunte. Deseleziona quelle che non vuoi.",
+    other: "Glaze ha trovato {count} delle tue app su questo iPhone e le ha aggiunte. Deseleziona quelle che non vuoi.",
+  },
   ownStyle: "il tuo stile",
   editLabel: "Modifica {name}",
   editLabelCustomised: "Modifica {name}, personalizzata",

@@ -62,6 +62,8 @@ export const en = {
     title: 'Privacy',
     heading: 'Data Not Collected',
     body: 'No accounts, analytics, ads or tracking. Your photos and videos never leave your phone. Theme packs download from GitHub as plain files; Glaze sends no personal data, account or identifier.',
+    installedTitle: 'Apps on this iPhone',
+    installedBody: 'To tick your apps for you, Glaze asks iOS only whether {count} specific popular apps are installed. The answer is used only to theme those apps, and nothing leaves your phone.',
   },
   about: {
     title: 'About',

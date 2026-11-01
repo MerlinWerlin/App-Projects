@@ -56,8 +56,8 @@ export const TIPS: readonly Tip[] = Object.freeze([
   },
   {
     id: 'bulk-install',
-    title: 'Bulk install (optional beta)',
-    body: 'Optional beta: one profile installs your whole set at once in Settings. The guided Shortcuts method is the default and always works.',
+    title: 'Install all at once',
+    body: 'Add your whole set at once with one profile, through Safari and then Settings. The guided Shortcuts method is always there if you prefer one at a time.',
     placement: 'first-run',
     order: 2,
     icon: 'layers',

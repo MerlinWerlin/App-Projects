@@ -40,6 +40,26 @@ export const hi: NonNullable<LocaleMessages['ui']> = {
     photoRemoveHint: '{size} खाली करता है। आप इसे थीम से फिर डाउनलोड कर सकते हैं।',
     photoRemoved: '{name} फ़ोटो हटा दी गई',
     photosTotalA11y: 'अंतरिक्ष फ़ोटो कुल {size} इस्तेमाल करती हैं',
+    // T225: one-line pack update status in Settings › Storage.
+    updates: {
+      upToDate: 'सभी पैक अप-टू-डेट हैं',
+      updated: {
+        one: '{count} पैक अपडेट हुआ',
+        other: '{count} पैक अपडेट हुए',
+      },
+      updating: {
+        one: '{count} पैक अपडेट हो रहा है…',
+        other: '{count} पैक अपडेट हो रहे हैं…',
+      },
+      available: {
+        one: '{count} पैक के लिए अपडेट उपलब्ध है',
+        other: '{count} पैक के लिए अपडेट उपलब्ध हैं',
+      },
+      failed: {
+        one: '{count} पैक अपडेट नहीं हो सका। यह काम करता रहेगा, और Glaze बाद में फिर कोशिश करेगा।',
+        other: '{count} पैक अपडेट नहीं हो सके। वे काम करते रहेंगे, और Glaze बाद में फिर कोशिश करेगा।',
+      },
+    },
   },
   segmentedOptionA11y: '{group}: {option}',
   loadingIcons: 'आइकन लोड हो रहे हैं',

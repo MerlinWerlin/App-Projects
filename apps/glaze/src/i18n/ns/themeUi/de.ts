@@ -64,8 +64,8 @@ export const de: NonNullable<LocaleMessages['themeUi']> = {
       body: 'iOS erlaubt keiner App, das Symbol einer anderen zu ändern. Glaze fügt eine gestaltete Verknüpfung hinzu, die die echte App öffnet; verschiebe die Originale in die App-Mediathek.',
     },
     'bulk-install': {
-      title: 'Sammelinstallation (optionale Beta)',
-      body: 'Optionale Beta: Ein Profil installiert dein ganzes Set auf einmal in den Einstellungen. Die geführte Kurzbefehle-Methode ist Standard und klappt immer.',
+      title: 'Alle auf einmal installieren',
+      body: 'Ein Profil fügt dein ganzes Set auf einmal hinzu, über Safari und dann die Einstellungen. Lieber einzeln: Die geführte Kurzbefehle-Methode ist immer da.',
     },
     'live-lock': {
       title: 'Live Photo erstellen',

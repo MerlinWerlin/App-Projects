@@ -26,6 +26,9 @@ export const ja: NonNullable<LocaleMessages['icons']> = {
   addPopular: "人気のアプリを追加",
   addPopularHint: "メッセージ、カメラ、写真など、よく使われる16個のアプリを選択します",
   editHelp: "アイコンをタップすると{theme}での見た目を変更できます（自分の画像、名前、シンボル、色）。カスタマイズ済みのアイコンには点が付きます。長押しか✕で削除します。",
+  installedFound: {
+    other: "GlazeはこのiPhoneにあるアプリを{count}個見つけて追加しました。不要なものはチェックを外してください。",
+  },
   ownStyle: "自分のスタイル",
   editLabel: "{name}を編集",
   editLabelCustomised: "{name}を編集、カスタマイズ済み",

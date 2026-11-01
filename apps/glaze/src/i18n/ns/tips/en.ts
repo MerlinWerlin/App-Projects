@@ -41,8 +41,8 @@ export const en = {
       body: 'iOS does not let any app change another app’s icon. Glaze adds a themed shortcut that opens the real app; move the originals to the App Library.',
     },
     bulkInstall: {
-      title: 'Bulk install (optional beta)',
-      body: 'Optional beta: one profile installs your whole set at once in Settings. The guided Shortcuts method is the default and always works.',
+      title: 'Install all at once',
+      body: 'Add your whole set at once with one profile, through Safari and then Settings. The guided Shortcuts method is always there if you prefer one at a time.',
     },
     liveLock: {
       title: 'Make a Live Photo',

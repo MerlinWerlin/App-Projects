@@ -43,8 +43,8 @@ export const ptBR: NonNullable<LocaleMessages['tips']> = {
       body: 'O iOS não deixa nenhum app mudar o ícone de outro. O Glaze adiciona um atalho temático que abre o app de verdade; mova os originais para a Biblioteca de Apps.',
     },
     bulkInstall: {
-      title: 'Instalação em lote (beta opcional)',
-      body: 'Beta opcional: um único perfil instala todo o seu conjunto de uma vez em Ajustes. O método guiado com Atalhos é o padrão e sempre funciona.',
+      title: 'Instalar tudo de uma vez',
+      body: 'Um único perfil adiciona todo o seu conjunto de uma vez, pelo Safari e depois Ajustes. Para um por um, o método guiado com Atalhos está sempre disponível.',
     },
     liveLock: {
       title: 'Crie uma Live Photo',

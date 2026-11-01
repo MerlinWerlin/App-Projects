@@ -39,6 +39,22 @@ export const ko: NonNullable<LocaleMessages['ui']> = {
     photoRemoveHint: '{size}를 확보합니다. 테마에서 다시 다운로드할 수 있습니다.',
     photoRemoved: '{name} 사진을 삭제했습니다',
     photosTotalA11y: '우주 사진이 총 {size}를 사용합니다',
+    // T225: one-line pack update status in Settings › Storage.
+    updates: {
+      upToDate: '모든 팩이 최신 상태입니다',
+      updated: {
+        other: '팩 {count}개를 업데이트했습니다',
+      },
+      updating: {
+        other: '팩 {count}개 업데이트 중…',
+      },
+      available: {
+        other: '팩 {count}개에 업데이트가 있습니다',
+      },
+      failed: {
+        other: '팩 {count}개를 업데이트하지 못했습니다. 계속 사용할 수 있으며 Glaze가 나중에 다시 시도합니다.',
+      },
+    },
   },
   segmentedOptionA11y: '{group}: {option}',
   loadingIcons: '아이콘 불러오는 중',

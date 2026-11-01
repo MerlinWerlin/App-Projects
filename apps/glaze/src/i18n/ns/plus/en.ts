@@ -11,7 +11,7 @@ export const en = {
     loops: 'Theme clips for Live Photos',
     free: 'Always free',
     freeIcons: 'Make-your-own icons, unlimited',
-    freeInstall: 'Guided Shortcuts install (and bulk beta)',
+    freeInstall: 'Install all at once, or one by one with Shortcuts',
     freeLive: 'Live Photo maker with your own video',
     oneMoment: 'One moment…',
     unlock: 'Unlock (coming soon)',

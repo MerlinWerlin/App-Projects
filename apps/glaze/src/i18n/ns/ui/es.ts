@@ -41,6 +41,30 @@ export const es: NonNullable<LocaleMessages['ui']> = {
     photoRemoveHint: 'Libera {size}. Puedes volver a descargarla desde el tema.',
     photoRemoved: 'Foto {name} eliminada',
     photosTotalA11y: 'Las fotos del espacio ocupan {size} en total',
+    // T225: one-line pack update status in Settings › Storage.
+    updates: {
+      upToDate: 'Todos los paquetes están al día',
+      updated: {
+        one: '{count} paquete actualizado',
+        many: '{count} de paquetes actualizados',
+        other: '{count} paquetes actualizados',
+      },
+      updating: {
+        one: 'Actualizando {count} paquete…',
+        many: 'Actualizando {count} de paquetes…',
+        other: 'Actualizando {count} paquetes…',
+      },
+      available: {
+        one: 'Actualización disponible para {count} paquete',
+        many: 'Actualizaciones disponibles para {count} de paquetes',
+        other: 'Actualizaciones disponibles para {count} paquetes',
+      },
+      failed: {
+        one: 'No se pudo actualizar {count} paquete. Sigue funcionando y Glaze lo volverá a intentar más tarde.',
+        many: 'No se pudieron actualizar {count} de paquetes. Siguen funcionando y Glaze lo volverá a intentar más tarde.',
+        other: 'No se pudieron actualizar {count} paquetes. Siguen funcionando y Glaze lo volverá a intentar más tarde.',
+      },
+    },
   },
   segmentedOptionA11y: '{group}: {option}',
   loadingIcons: 'Cargando iconos',

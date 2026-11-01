@@ -12,7 +12,7 @@ export const de: NonNullable<LocaleMessages['plus']> = {
     loops: 'Theme-Clips für Live Photos',
     free: 'Immer kostenlos',
     freeIcons: 'Eigene Symbole, unbegrenzt',
-    freeInstall: 'Geführte Kurzbefehle-Installation (und Sammel-Beta)',
+    freeInstall: 'Alle auf einmal installieren oder einzeln mit Kurzbefehlen',
     freeLive: 'Live-Photo-Maker mit deinem eigenen Video',
     oneMoment: 'Einen Moment…',
     unlock: 'Freischalten (bald)',

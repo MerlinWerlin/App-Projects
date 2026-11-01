@@ -63,6 +63,8 @@ export const ja: NonNullable<LocaleMessages['settings']> = {
     title: 'プライバシー',
     heading: 'データの収集なし',
     body: 'アカウント、分析、広告、トラッキングはありません。写真や動画がスマートフォンの外に出ることはありません。テーマパックはGitHubから通常のファイルとしてダウンロードされ、Glazeが個人データ、アカウント、識別子を送信することはありません。',
+    installedTitle: "このiPhoneのアプリ",
+    installedBody: "アプリを自動で選ぶため、Glazeは特定の人気アプリ{count}個がインストールされているかだけをiOSに確認します。結果はそのアプリのテーマ設定にのみ使われ、何も端末の外に送られません。",
   },
   about: {
     title: '情報',

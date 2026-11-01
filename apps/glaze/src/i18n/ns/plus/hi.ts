@@ -12,7 +12,7 @@ export const hi: NonNullable<LocaleMessages['plus']> = {
     loops: 'Live Photos के लिए थीम क्लिप',
     free: 'हमेशा मुफ़्त',
     freeIcons: 'अपने आइकन बनाना, असीमित',
-    freeInstall: 'गाइड वाला शॉर्टकट्स इंस्टॉल (और एक साथ बीटा)',
+    freeInstall: 'सभी एक साथ इंस्टॉल करें, या शॉर्टकट्स से एक-एक करके',
     freeLive: 'अपने वीडियो से Live Photo मेकर',
     oneMoment: 'एक पल…',
     unlock: 'अनलॉक करें (जल्द आ रहा है)',

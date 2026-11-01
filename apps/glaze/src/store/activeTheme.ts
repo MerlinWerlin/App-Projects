@@ -19,6 +19,7 @@ import {
 } from '../core/activeTheme';
 import type { Theme } from '../core/themes';
 import { averageColour } from '../core/wallpaper';
+import { runInstalledProbe } from './installedProbe';
 import { loadStudio, setStudioStyle } from './studio';
 import { applyWidgetTheme } from './widgetTheme';
 
@@ -55,6 +56,8 @@ export async function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
   } catch {
     icons = false;
   }
+  // T229: tick the popular apps that are on this iPhone (non-blocking; nothing in Expo Go).
+  void runInstalledProbe();
   const widgets = await applyWidgetTheme(theme);
   try {
     await AsyncStorage.setItem(ACTIVE_THEME_KEY, serializeActiveTheme({ themeId: theme.id, at: Date.now() }));

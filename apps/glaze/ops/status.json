@@ -1,19 +1,20 @@
 {
- "tests": "1588/1588 core tests green; core typecheck clean",
- "typecheck": "core only (registry unreachable)",
- "last_run": "2026-11-01 13:00 Sydney (run 212)",
- "stage": "owner-tested",
- "oversight_seen": "v224 (1793494209-f27f): no new directives (D211-1 open, followed), no patches.",
- "headline": "Owner brief 11:39 (owner-1101e): your picked Prism is the icon, splash and startup figure; each Seamless widget can show different art (Edit Widget > Art); downloaded packs update to v2 by themselves; paper boat fit checked. Needs the next native TestFlight build.",
- "next_for_owner": "1) When the new TestFlight build arrives (auto-ship, native build), open it and answer docs/TRIAL.md \"New since your last test (1 Nov, midday: owner-1101e brief)\" questions 1-4, then the older 1 Nov questions. 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud; the new widget Swift is uncompiled until the native build.)",
- "trial_kit": true,
- "trial_kit_commit": "f8fbd52",
- "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested",
- "slim_candidate": {
-  "state": "swapped in run 207",
-  "ship_base": "19a742e2dc1f7e84bf4519cb4407aa92d174024d",
-  "root": "301a9f0",
-  "full_history": "history/repo-full-2026-11-01.bundle.b64.txt",
-  "map": "docs/REPO_MAP.json"
- }
+  "tests": "1639/1639 core tests green; core + UI stub typecheck clean",
+  "typecheck": "core only (registry unreachable)",
+  "last_run": "2026-11-01 15:20 AEDT (run 216)",
+  "stage": "owner-tested",
+  "oversight_seen": "v225 (1793501369-891a): D225-2 (no new images until T227) and D225-3 (eye-check new Swift, no new native features until the held build) accepted; D211-1 followed; no patches.",
+  "headline": "Run 216 (owner-1101f): wallpaper crop crash fixed and crash-proofed; Glaze ticks your installed popular apps by itself; App Library list scans; family icons for unknown apps. Needs the new TestFlight build.",
+  "next_for_owner": "1) When the new TestFlight build arrives (auto-ship, native build), open it and answer docs/TRIAL.md \"New since your last test (1 Nov, midday: owner-1101e brief)\" questions 1-4, then the older 1 Nov questions. 2) Create the in-app purchase com.jared797.glaze.plus (docs/IAP_SANDBOX.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable from the cloud; the new widget Swift is uncompiled until the native build.)",
+  "trial_kit": true,
+  "trial_kit_commit": "413fc77",
+  "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested",
+  "slim_candidate": {
+    "state": "swapped in run 207",
+    "ship_base": "19a742e2dc1f7e84bf4519cb4407aa92d174024d",
+    "root": "301a9f0",
+    "full_history": "history/repo-full-2026-11-01.bundle.b64.txt",
+    "map": "docs/REPO_MAP.json"
+  },
+  "size_note": "bundle base64 ~15.47 MB of 15.6 MB guard (run 214); D225-2: text/code only until T227"
 }

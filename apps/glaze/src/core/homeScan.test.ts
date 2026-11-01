@@ -315,7 +315,7 @@ test('smoke: the real catalogue matches common system apps', () => {
 
 // ---------------------------------------------------------------- applying
 
-test('applyScan selects catalogue apps and adds names as monogram custom apps, in order, once', () => {
+test('applyScan selects catalogue apps and adds names as family-glyph custom apps, in order, once', () => {
   const s0 = defaultStudioState();
   const r = applyScan(s0, { catalogueIds: ['photos', 'camera', 'photos', 'not-a-real-id'], customNames: ['My Bank', 'my bank', '  ', 'Gym Pass…'] });
   assert.equal(r.addedCatalogue, 2);
@@ -324,7 +324,8 @@ test('applyScan selects catalogue apps and adds names as monogram custom apps, i
   assert.equal(r.state.customApps.length, 2);
   assert.deepEqual(r.state.customApps.map((c) => c.name), ['My Bank', 'Gym Pass']);
   const bank = findApp(r.state, r.state.customApps[0].id);
-  assert.equal(bank?.glyph, 'monogram', 'custom apps draw their initials');
+  assert.equal(bank?.glyph, 'credit-card', 'T231: an unknown bank gets the Finance family glyph, not letters');
+  assert.equal(r.state.customApps[1].glyph, 'heart', 'Gym -> Health');
   assert.ok(r.state.selected.includes(r.state.customApps[1].id));
   // Running the same scan again adds nothing new and makes no duplicate custom apps.
   const again = applyScan(r.state, { catalogueIds: ['photos'], customNames: ['MY BANK'] });

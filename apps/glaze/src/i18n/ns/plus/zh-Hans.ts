@@ -12,7 +12,7 @@ export const zhHans: NonNullable<LocaleMessages['plus']> = {
     loops: '用于实况照片的主题片段',
     free: '始终免费',
     freeIcons: '自制图标，不限数量',
-    freeInstall: '引导式快捷指令安装（以及批量测试版）',
+    freeInstall: '一次全部安装，或用快捷指令逐个安装',
     freeLive: '用你自己的视频制作实况照片',
     oneMoment: '请稍候…',
     unlock: '解锁（即将推出）',

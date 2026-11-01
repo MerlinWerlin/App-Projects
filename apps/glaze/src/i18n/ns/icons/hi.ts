@@ -27,6 +27,10 @@ export const hi: NonNullable<LocaleMessages['icons']> = {
   addPopular: "लोकप्रिय ऐप जोड़ें",
   addPopularHint: "Messages, Camera और Photos जैसे 16 आम ऐप चुनता है",
   editHelp: "{theme} में बदलने के लिए किसी आइकन पर टैप करें: अपनी इमेज, नाम, सिंबल या रंग। बिंदु कस्टमाइज़ किए गए आइकन दिखाता है। हटाने के लिए देर तक दबाएँ या ✕ पर टैप करें।",
+  installedFound: {
+    one: "Glaze को इस iPhone पर आपका {count} ऐप मिला और उसे जोड़ दिया गया। नहीं चाहिए तो उसका टिक हटा दें।",
+    other: "Glaze को इस iPhone पर आपके {count} ऐप मिले और उन्हें जोड़ दिया गया। जो नहीं चाहिए, उनका टिक हटा दें।",
+  },
   ownStyle: "आपकी अपनी स्टाइल",
   editLabel: "{name} संपादित करें",
   editLabelCustomised: "{name} संपादित करें, कस्टमाइज़ किया गया",

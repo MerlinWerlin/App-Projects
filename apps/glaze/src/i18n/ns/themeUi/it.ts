@@ -64,8 +64,8 @@ export const it: NonNullable<LocaleMessages['themeUi']> = {
       body: 'iOS non permette a un’app di cambiare l’icona di un’altra. Glaze aggiunge una scorciatoia a tema che apre l’app vera; sposta le originali nella Libreria app.',
     },
     'bulk-install': {
-      title: 'Installazione in blocco (beta facoltativa)',
-      body: 'Beta facoltativa: un solo profilo installa tutto il set in una volta in Impostazioni. Il metodo guidato con Comandi Rapidi è quello predefinito e funziona sempre.',
+      title: 'Installa tutto in una volta',
+      body: 'Un solo profilo aggiunge tutto il set in una volta, tramite Safari e poi Impostazioni. Per uno alla volta, il metodo guidato con Comandi Rapidi c’è sempre.',
     },
     'live-lock': {
       title: 'Crea una Live Photo',

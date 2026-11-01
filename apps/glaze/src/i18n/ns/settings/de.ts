@@ -63,6 +63,8 @@ export const de: NonNullable<LocaleMessages['settings']> = {
     title: 'Datenschutz',
     heading: 'Keine Daten erfasst',
     body: 'Keine Konten, Analysen, Werbung oder Tracking. Deine Fotos und Videos verlassen nie dein Telefon. Themenpakete werden als einfache Dateien von GitHub geladen; Glaze sendet keine persönlichen Daten, kein Konto und keine Kennung.',
+    installedTitle: "Apps auf diesem iPhone",
+    installedBody: "Um deine Apps für dich anzuhaken, fragt Glaze iOS nur, ob {count} bestimmte beliebte Apps installiert sind. Die Antwort dient nur dazu, diese Apps zu gestalten, und nichts verlässt dein Telefon.",
   },
   about: {
     title: 'Über',

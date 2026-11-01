@@ -12,7 +12,7 @@ export const ko: NonNullable<LocaleMessages['plus']> = {
     loops: 'Live Photo용 테마 클립',
     free: '항상 무료',
     freeIcons: '나만의 아이콘 만들기, 무제한',
-    freeInstall: '안내형 단축어 설치(일괄 설치는 베타)',
+    freeInstall: '한 번에 모두 설치하거나 단축어로 하나씩',
     freeLive: '내 동영상으로 만드는 Live Photo 메이커',
     oneMoment: '잠시만요…',
     unlock: '잠금 해제(곧 제공)',

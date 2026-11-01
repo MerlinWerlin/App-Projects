@@ -28,6 +28,11 @@ export const ptBR: NonNullable<LocaleMessages['icons']> = {
   addPopular: "Adicionar apps populares",
   addPopularHint: "Seleciona 16 apps comuns, como Mensagens, Câmera e Fotos",
   editHelp: "Toque em um ícone para mudá-lo em {theme}: sua imagem, nome, símbolo ou cores. Um ponto marca os ícones personalizados. Toque e segure ou toque em ✕ para remover.",
+  installedFound: {
+    one: "O Glaze encontrou {count} dos seus apps neste iPhone e o adicionou. Desmarque se não quiser.",
+    many: "O Glaze encontrou {count} dos seus apps neste iPhone e os adicionou. Desmarque os que não quiser.",
+    other: "O Glaze encontrou {count} dos seus apps neste iPhone e os adicionou. Desmarque os que não quiser.",
+  },
   ownStyle: "seu próprio estilo",
   editLabel: "Editar {name}",
   editLabelCustomised: "Editar {name}, personalizado",

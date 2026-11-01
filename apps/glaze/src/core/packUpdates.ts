@@ -136,3 +136,164 @@ export function packUpdateView(i: {
   if (i.failure && i.failure.toVersion === to) return { kind: 'failed', toVersion: to };
   return { kind: 'pending', toVersion: to };
 }
+
+// ------------------------------------------------------------ T225: persisted retry wait + summary
+// T225: the retry wait of a failed background update survives an app restart. The failure record
+// and its next-allowed-check time (`nextAt`) are saved next to the cache index, in
+// documentDirectory/packs/update-state.json (the same file-system storage the pack code already
+// uses; src/native/packs.ts does the I/O, this is the pure format). Before T225 a restart forgot
+// the failure, so a pack whose update kept failing was retried on every launch.
+//
+// T225 DECISION (overseer): packs already on the phone keep updating in the background whether or
+// not Glaze Plus is owned. An update only refreshes art the person already has and unlocks nothing
+// new, so no Plus gating is added to the background runner (packUpdatePlan never reads the
+// entitlement, and src/core must not). The manual Update button on the theme page keeps its
+// existing check (src/plus/usePackUpdate.ts). No pack's plus flag, price or paywall copy changes
+// (directive D211-1).
+
+/** On-disk format version of update-state.json. */
+export const PACK_UPDATE_STORE_VERSION = 1;
+/** "Updated N packs" shows in Settings › Storage for this long after the last successful update. */
+export const PACK_UPDATE_RECENT_MS = 24 * 60 * 60 * 1000;
+
+/** Packs updated recently: how many, and when the latest one finished. */
+export type PackUpdatedRecently = { at: number; count: number };
+
+export type PackUpdateStore = {
+  failures: Record<string, PackUpdateFailure>;
+  updated: PackUpdatedRecently | null;
+};
+
+/** The earliest time a background update may try `failure.toVersion` again. */
+export function nextUpdateCheckAt(failure: PackUpdateFailure): number {
+  return failure.at + updateBackoffMs(failure.attempts);
+}
+
+function finiteNum(x: unknown): x is number {
+  return typeof x === 'number' && Number.isFinite(x);
+}
+
+/**
+ * Tolerant read of update-state.json. Anything broken gives the empty store; a broken entry is
+ * dropped (that pack is simply due again). A saved next-check time further away than the longest
+ * backoff (clock moved backwards, hand-edited file) is not honoured: the entry is dropped so an
+ * update can never get stuck.
+ */
+export function parsePackUpdateStore(raw: string | null | undefined, now: number): PackUpdateStore {
+  const empty = (): PackUpdateStore => ({ failures: {}, updated: null });
+  if (!raw) return empty();
+  let data: unknown;
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    return empty();
+  }
+  if (!data || typeof data !== 'object' || Array.isArray(data)) return empty();
+  const d = data as Record<string, unknown>;
+  if (d.v !== PACK_UPDATE_STORE_VERSION) return empty();
+  const failures: Record<string, PackUpdateFailure> = {};
+  const rawFailures = d.failures;
+  if (rawFailures && typeof rawFailures === 'object' && !Array.isArray(rawFailures)) {
+    for (const [id, f] of Object.entries(rawFailures as Record<string, unknown>)) {
+      if (!id || !f || typeof f !== 'object') continue;
+      const r = f as Record<string, unknown>;
+      if (!finiteNum(r.at) || !posInt(r.attempts) || !posInt(r.toVersion)) continue;
+      const failure: PackUpdateFailure = { at: r.at, attempts: Math.min(r.attempts, 1000), toVersion: r.toVersion };
+      const nextAt = finiteNum(r.nextAt) ? r.nextAt : nextUpdateCheckAt(failure);
+      if (nextAt - now > PACK_UPDATE_RETRY_MAX_MS) continue;
+      if (failure.at > now) continue;
+      failures[id] = failure;
+    }
+  }
+  let updated: PackUpdatedRecently | null = null;
+  const u = d.updated;
+  if (u && typeof u === 'object') {
+    const r = u as Record<string, unknown>;
+    if (finiteNum(r.at) && posInt(r.count)) updated = { at: r.at, count: r.count };
+  }
+  return { failures, updated };
+}
+
+/** update-state.json content; each failure carries its next-allowed-check time (`nextAt`). */
+export function serializePackUpdateStore(s: PackUpdateStore): string {
+  const failures: Record<string, PackUpdateFailure & { nextAt: number }> = {};
+  for (const id of Object.keys(s.failures).sort()) {
+    const f = s.failures[id];
+    failures[id] = { at: f.at, attempts: f.attempts, toVersion: f.toVersion, nextAt: nextUpdateCheckAt(f) };
+  }
+  return JSON.stringify({ v: PACK_UPDATE_STORE_VERSION, failures, updated: s.updated ? { at: s.updated.at, count: s.updated.count } : null });
+}
+
+/**
+ * Failure records still worth keeping: the pack is on the phone and has not reached the version
+ * the failed attempt aimed at (removed or since-updated packs drop their record).
+ */
+export function prunePackUpdateFailures(
+  failures: Readonly<Record<string, PackUpdateFailure>>,
+  versions: Readonly<Record<string, number | null | undefined>>,
+): Record<string, PackUpdateFailure> {
+  const out: Record<string, PackUpdateFailure> = {};
+  for (const [id, f] of Object.entries(failures)) {
+    const have = versions[id];
+    if (!posInt(have) || have >= f.toVersion) continue;
+    out[id] = f;
+  }
+  return out;
+}
+
+/** After a pack updated successfully: one more within the recent window, else a fresh count of 1. */
+export function recordPackUpdated(prev: PackUpdatedRecently | null | undefined, now: number): PackUpdatedRecently {
+  if (prev && now >= prev.at && now - prev.at < PACK_UPDATE_RECENT_MS) return { at: now, count: prev.count + 1 };
+  return { at: now, count: 1 };
+}
+
+/**
+ * The one-line pack update status in Settings › Storage:
+ *  - none: no downloaded remote packs (or no catalogue yet): the line is hidden;
+ *  - updating: `count` downloaded packs are updating right now;
+ *  - failed: `count` updates failed (old versions keep working, tried again later);
+ *  - available: `count` packs have a newer version waiting for the background update;
+ *  - updated: every pack is current and `count` were updated in the last 24 h ("Updated 2 packs");
+ *  - upToDate: every downloaded pack is the catalogue's current version ("All packs up to date").
+ */
+export type PackUpdateSummary =
+  | { kind: 'none' }
+  | { kind: 'updating'; count: number }
+  | { kind: 'failed'; count: number }
+  | { kind: 'available'; count: number }
+  | { kind: 'updated'; count: number }
+  | { kind: 'upToDate' };
+
+export function packUpdateSummary(i: {
+  catalog: Pick<Catalog, 'packs'> | null;
+  versions: Readonly<Record<string, number | null | undefined>>;
+  busy?: Readonly<Record<string, unknown>>;
+  failures?: Readonly<Record<string, PackUpdateFailure | undefined>>;
+  updated?: PackUpdatedRecently | null;
+  now: number;
+}): PackUpdateSummary {
+  if (!i.catalog) return { kind: 'none' };
+  let downloaded = 0;
+  let updating = 0;
+  let failed = 0;
+  let available = 0;
+  const seen = new Set<string>();
+  for (const p of i.catalog.packs) {
+    if (seen.has(p.id)) continue;
+    seen.add(p.id);
+    const state = packUpdateState(p.packVersion, i.versions[p.id]);
+    if (state === 'not-downloaded') continue;
+    downloaded++;
+    if (state !== 'needs-update') continue;
+    if (i.busy && p.id in i.busy) updating++;
+    else if (i.failures?.[p.id]?.toVersion === p.packVersion) failed++;
+    else available++;
+  }
+  if (downloaded === 0) return { kind: 'none' };
+  if (updating > 0) return { kind: 'updating', count: updating };
+  if (failed > 0) return { kind: 'failed', count: failed };
+  if (available > 0) return { kind: 'available', count: available };
+  const u = i.updated;
+  if (u && posInt(u.count) && i.now >= u.at && i.now - u.at < PACK_UPDATE_RECENT_MS) return { kind: 'updated', count: u.count };
+  return { kind: 'upToDate' };
+}

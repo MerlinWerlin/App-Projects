@@ -41,8 +41,8 @@ export const zhHans: NonNullable<LocaleMessages['tips']> = {
       body: 'iOS 不允许任何应用更改其他应用的图标。Glaze 会添加一个带主题的快捷方式来打开真正的应用；把原图标移到 App 资源库即可。',
     },
     bulkInstall: {
-      title: '批量安装（可选测试版）',
-      body: '可选测试版：一个描述文件在“设置”中一次安装整套图标。引导式“快捷指令”方式是默认方式，始终可用。',
+      title: '一次全部安装',
+      body: '一个描述文件通过 Safari 和“设置”一次添加整套图标。想逐个安装，引导式“快捷指令”方式随时可用。',
     },
     liveLock: {
       title: '制作实况照片',

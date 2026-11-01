@@ -65,6 +65,7 @@ import { IconCanvas } from '../../src/render/IconCanvas';
 import { usePackTheme } from '../../src/render/usePackTheme';
 import { tickStoredChecklist } from '../../src/store/applyChecklist';
 import { applyThemeEverywhere, rememberWallpaperSaved, useActiveThemeId, wasWallpaperSaved } from '../../src/store/activeTheme';
+import { runInstalledProbe } from '../../src/store/installedProbe';
 import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { loadBackground } from '../../src/store/background';
 import { setThemeShape, themeShapeFor } from '../../src/core/studio';
@@ -524,6 +525,7 @@ function ThemeDetail({
       await studio.reload();
       void applyWidgetTheme(theme); // T125: also remembered for the launch re-write; never throws
       void tickStoredChecklist(theme.id, 'iconStyle');
+      void runInstalledProbe(); // T229: tick the popular apps on this iPhone; never throws
       // navigate, not push: push would stack a second copy of the tab navigator.
       router.navigate(destination);
     } catch {

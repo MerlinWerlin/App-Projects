@@ -64,8 +64,8 @@ export const es: NonNullable<LocaleMessages['themeUi']> = {
       body: 'iOS no deja que una app cambie el icono de otra. Glaze añade un atajo con el tema que abre la app real; mueve las originales a la Biblioteca de apps.',
     },
     'bulk-install': {
-      title: 'Instalación en bloque (beta opcional)',
-      body: 'Beta opcional: un solo perfil instala todo tu set de una vez en Ajustes. El método guiado con Atajos es el predeterminado y siempre funciona.',
+      title: 'Instalar todo de una vez',
+      body: 'Un solo perfil añade todo tu set de una vez, desde Safari y luego Ajustes. Si prefieres uno a uno, el método guiado con Atajos siempre está ahí.',
     },
     'live-lock': {
       title: 'Crea una Live Photo',

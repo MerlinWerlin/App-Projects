@@ -53,13 +53,25 @@ import {
 import { registerPackMotifs, unregisterPackMotifs } from '../core/packMotifs';
 import { restorePackMotifs } from '../core/packRestore';
 import { cacheEntryFor, cacheIndexAdd, cacheIndexRemove, cacheIndexSetPackVersion, parseCacheIndex, type PackCacheIndex, type PackContent } from '../core/themePack';
-import { downloadedPackVersion, packUpdatePlan, recordUpdateFailure, type PackUpdateFailure } from '../core/packUpdates';
+import {
+  downloadedPackVersion,
+  packUpdatePlan,
+  parsePackUpdateStore,
+  prunePackUpdateFailures,
+  recordPackUpdated,
+  recordUpdateFailure,
+  serializePackUpdateStore,
+  type PackUpdatedRecently,
+  type PackUpdateFailure,
+} from '../core/packUpdates';
 import type { Theme } from '../core/themes';
 import { t } from '../i18n';
 import * as fs from './fs';
 
 const ROOT = fs.documentDirectory ? `${fs.documentDirectory}packs/` : null;
 const INDEX = ROOT ? `${ROOT}index.json` : null;
+/** T225: failed-update retry waits (next-allowed-check times) + recent update count, across restarts. */
+const UPDATE_STATE = ROOT ? `${ROOT}update-state.json` : null;
 
 function uri(rel: string): string {
   if (!ROOT) throw new PackError('network', 'no documents folder on this device');
@@ -155,6 +167,8 @@ export type PackStoreState = {
   remoteArt: Record<string, RemoteArtManifest>;
   /** T222: last failed update attempt per pack id (the old version keeps working meanwhile). */
   updateFailures: Record<string, PackUpdateFailure>;
+  /** T225: packs updated in the last 24 h (Settings › Storage "Updated 2 packs"). */
+  updatedRecently: PackUpdatedRecently | null;
 };
 
 let state: PackStoreState = {
@@ -168,6 +182,7 @@ let state: PackStoreState = {
   catalogStatus: 'loading',
   remoteArt: {},
   updateFailures: {},
+  updatedRecently: null,
 };
 const listeners = new Set<() => void>();
 
@@ -260,9 +275,33 @@ export async function loadPackIndex(): Promise<void> {
   try {
     const info = await fs.getInfoAsync(INDEX);
     const raw = info.exists ? await fs.readAsStringAsync(INDEX) : null;
-    set({ index: parseCacheIndex(raw), loaded: true });
+    const updates = await readUpdateState();
+    set({ index: parseCacheIndex(raw), loaded: true, updateFailures: updates.failures, updatedRecently: updates.updated });
   } catch {
     set({ loaded: true });
+  }
+}
+
+/** T225: read update-state.json (missing or broken file = nothing remembered). Never rejects. */
+async function readUpdateState(): Promise<ReturnType<typeof parsePackUpdateStore>> {
+  try {
+    if (!UPDATE_STATE) return parsePackUpdateStore(null, Date.now());
+    const info = await fs.getInfoAsync(UPDATE_STATE);
+    const raw = info.exists ? await fs.readAsStringAsync(UPDATE_STATE) : null;
+    return parsePackUpdateStore(raw, Date.now());
+  } catch {
+    return parsePackUpdateStore(null, Date.now());
+  }
+}
+
+/** T225: persist the current failure records (with next-check times) and recent update count. */
+async function saveUpdateState(): Promise<void> {
+  if (!UPDATE_STATE || !ROOT) return;
+  try {
+    await fs.makeDirectoryAsync(ROOT, { intermediates: true }).catch(() => undefined);
+    await fs.writeAsStringAsync(UPDATE_STATE, serializePackUpdateStore({ failures: state.updateFailures, updated: state.updatedRecently }));
+  } catch {
+    // Session memory still has it; at worst a failed update is retried one launch early.
   }
 }
 
@@ -335,6 +374,7 @@ export async function removePackFromDevice(packId: string): Promise<void> {
   if (packId in state.updateFailures) {
     const { [packId]: _old, ...failures } = state.updateFailures;
     set({ updateFailures: failures });
+    void saveUpdateState();
   }
   unregisterPackMotifs(packId);
   try {
@@ -555,13 +595,22 @@ export async function downloadRemoteArtToDevice(id: string): Promise<string | nu
     // credits) re-derives from this new object: useRemoteArtTheme memoises on it.
     remoteCache.set(id, Promise.resolve(r.manifest));
     const { [id]: _fixed, ...failures } = state.updateFailures;
-    set({ remoteArt: { ...state.remoteArt, [id]: r.manifest }, updateFailures: failures });
+    set({
+      remoteArt: { ...state.remoteArt, [id]: r.manifest },
+      updateFailures: failures,
+      // T225: counted for Settings › Storage ("Updated 2 packs"); a first download is not an update.
+      ...(updating ? { updatedRecently: recordPackUpdated(state.updatedRecently, Date.now()) } : {}),
+    });
     await saveIndex(cacheIndexAdd(state.index, remoteArtCacheEntry(r.manifest, new Date())));
+    void saveUpdateState();
     return null;
   } catch (e) {
     const msg = messageFor(e);
-    if (updating) set({ updateFailures: { ...state.updateFailures, [id]: recordUpdateFailure(state.updateFailures[id], Date.now(), entry.packVersion) } });
-    else set({ errors: { ...state.errors, [id]: msg } });
+    if (updating) {
+      set({ updateFailures: { ...state.updateFailures, [id]: recordUpdateFailure(state.updateFailures[id], Date.now(), entry.packVersion) } });
+      // T225: the retry wait (next-allowed-check time) survives an app restart.
+      void saveUpdateState();
+    } else set({ errors: { ...state.errors, [id]: msg } });
     return msg;
   } finally {
     const { [id]: _done, ...rest } = state.busy;
@@ -611,6 +660,9 @@ let updatesRun: Promise<void> | null = null;
  * T222: update every downloaded remote pack the catalogue lists in a newer version, one at a time,
  * in the background. Packs inside a failure backoff wait for a later catalogue load. No request
  * when packs are disabled or nothing is outdated. Never rejects.
+ * T225: the backoff is persisted (update-state.json), so a restart does not retry early; and per
+ * the T225 decision this runs for Plus packs already on the phone whether or not Plus is owned
+ * (see src/core/packUpdates.ts "T225 DECISION").
  */
 export function runPackUpdates(): Promise<void> {
   if (!PACKS_ENABLED || !state.catalog) return Promise.resolve();
@@ -618,6 +670,12 @@ export function runPackUpdates(): Promise<void> {
   updatesRun = (async () => {
     try {
       await loadPackIndex();
+      // T225: forget persisted failures of packs since removed, delisted or already updated.
+      const pruned = prunePackUpdateFailures(state.updateFailures, await downloadedVersions());
+      if (Object.keys(pruned).length !== Object.keys(state.updateFailures).length) {
+        set({ updateFailures: pruned });
+        await saveUpdateState();
+      }
       const done = new Set<string>();
       for (;;) {
         const plan = packUpdatePlan({ catalog: state.catalog, versions: await downloadedVersions(), busy: state.busy, failures: state.updateFailures, now: Date.now() });

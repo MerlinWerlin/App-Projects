@@ -12,7 +12,7 @@ export const ptBR: NonNullable<LocaleMessages['plus']> = {
     loops: 'Clipes de tema para Live Photos',
     free: 'Sempre grátis',
     freeIcons: 'Ícones próprios, sem limite',
-    freeInstall: 'Instalação guiada por Atalhos (e beta em lote)',
+    freeInstall: 'Instalar tudo de uma vez, ou um por um com Atalhos',
     freeLive: 'Criador de Live Photo com seu próprio vídeo',
     oneMoment: 'Só um momento…',
     unlock: 'Desbloquear (em breve)',

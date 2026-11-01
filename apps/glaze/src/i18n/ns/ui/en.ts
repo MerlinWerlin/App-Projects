@@ -39,6 +39,26 @@ export const en = {
     photoRemoveHint: 'Frees {size}. You can download it again from the theme.',
     photoRemoved: '{name} photo removed',
     photosTotalA11y: 'Space photos use {size} in total',
+    // T225: one-line pack update status in Settings › Storage.
+    updates: {
+      upToDate: 'All packs up to date',
+      updated: {
+        one: 'Updated {count} pack',
+        other: 'Updated {count} packs',
+      },
+      updating: {
+        one: 'Updating {count} pack…',
+        other: 'Updating {count} packs…',
+      },
+      available: {
+        one: 'Update available for {count} pack',
+        other: 'Updates available for {count} packs',
+      },
+      failed: {
+        one: 'Couldn’t update {count} pack. It still works, and Glaze tries again later.',
+        other: 'Couldn’t update {count} packs. They still work, and Glaze tries again later.',
+      },
+    },
   },
   segmentedOptionA11y: '{group}: {option}',
   loadingIcons: 'Loading icons',

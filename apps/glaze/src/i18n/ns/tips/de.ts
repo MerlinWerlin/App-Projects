@@ -42,8 +42,8 @@ export const de: NonNullable<LocaleMessages['tips']> = {
       body: 'iOS lässt keine App das Symbol einer anderen ändern. Glaze fügt einen gestalteten Kurzbefehl hinzu, der die echte App öffnet; verschiebe die Originale in die App-Mediathek.',
     },
     bulkInstall: {
-      title: 'Sammelinstallation (optionale Beta)',
-      body: 'Optionale Beta: Ein Profil installiert dein ganzes Set auf einmal in den Einstellungen. Die geführte Kurzbefehle-Methode ist Standard und klappt immer.',
+      title: 'Alle auf einmal installieren',
+      body: 'Ein Profil fügt dein ganzes Set auf einmal hinzu, über Safari und dann die Einstellungen. Lieber einzeln: Die geführte Kurzbefehle-Methode ist immer da.',
     },
     liveLock: {
       title: 'Live Photo erstellen',

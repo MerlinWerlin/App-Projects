@@ -50,6 +50,56 @@ test('the owner 1 Nov apps have their exact public bundle ids', () => {
   for (const [id, bundle] of Object.entries(expect)) assert.equal(getById(id)?.bundleId, bundle, id);
 });
 
+test('T218: main rows filled from Apple lookup carry their exact ids; fewer nulls remain', () => {
+  const expect: Record<string, string> = {
+    'royal-match': 'com.dreamgames.royalmatch',
+    'monopoly-go': 'com.scopely.monopolygo',
+    'google-meet': 'com.google.Tachyon',
+    'google-classroom': 'com.google.Classroom',
+    fortnite: 'com.epicgames.FortniteGame',
+    wise: 'com.transferwise.Transferwise',
+    ticktick: 'com.TickTick.task',
+    accuweather: 'com.yourcompany.TestWithCustomTabs',
+    'pokemon-tcg-pocket': 'jp.pokemon.pokemontcgp',
+    dashlane: 'com.dashlane.dashlanephonefinal',
+  };
+  for (const [id, bundle] of Object.entries(expect)) assert.equal(getById(id)?.bundleId, bundle, id);
+  // T218 (continued): looked up by numeric App Store id; Apple returned the row's app.
+  const more: Record<string, string> = {
+    'block-blast': 'com.blockpuzzle.us.ios',
+    remini: 'com.bigwinepot.nwdn.international',
+    ring: 'com.ring',
+    vsco: 'co.visualsupply.cam',
+    hinge: 'co.hinge.mobile.ios',
+    'bbc-iplayer': 'uk.co.bbc.iplayer',
+    commbank: 'au.com.commbank.commbank',
+    shein: 'zzkko.com.ZZKKO',
+  };
+  for (const [id, bundle] of Object.entries(more)) assert.equal(getById(id)?.bundleId, bundle, id);
+  // T218 (third pass): more rows looked up by App Store id (AU / GB / US / IN store).
+  const third: Record<string, string> = {
+    kayo: 'au.com.streamotion.kayo',
+    '9now': 'au.com.ninemsn.jump-in',
+    mygov: 'com.humanservices.myGov',
+    'nhs-app': 'com.nhs.online',
+    natwest: 'com.monitise.matm.Monitise-iPhone-NatWest-EN-GB',
+    realestate: 'com.rea-group.reapa',
+    stockx: 'com.Campless.Campless',
+    swiggy: 'bundl.swiggy',
+    jetstar: 'com.jetstar',
+    session: 'com.loki-project.loki-messenger',
+  };
+  for (const [id, bundle] of Object.entries(third)) assert.equal(getById(id)?.bundleId, bundle, id);
+  // Not filled: Cronometer's Apple id is "CRONOMETER-GOLD" (not reverse-DNS); the Medicare app was
+  // retired and Real Racing 3 is no longer listed, so Apple's lookup returns nothing for them.
+  for (const id of ['cronometer', 'medicare', 'real-racing-3']) assert.equal(getById(id)?.bundleId, null, id);
+  // Apple's own ids that are not reverse-DNS (Pinterest is "pinterest", Runkeeper "RunKeeperPro")
+  // fail BUNDLE_ID_RE, so those rows stay null.
+  for (const id of ['pinterest', 'runkeeper']) assert.equal(getById(id)?.bundleId, null, id);
+  const nulls = CATALOGUE.filter((e) => e.bundleId === null).length;
+  assert.ok(nulls <= 18, `${nulls} entries without a bundle id`);
+});
+
 test('every non-null URL scheme is well-formed; the ones Safari rejected are gone', () => {
   for (const e of CATALOGUE) {
     if (e.urlScheme === null) {

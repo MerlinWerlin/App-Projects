@@ -11,6 +11,7 @@ import { router } from 'expo-router';
 import { useState, type ReactNode } from 'react';
 import { StyleSheet, Text, View, type TextStyle } from 'react-native';
 import type { IconShape } from '../../src/core/iconspec';
+import { PROBE_APPS } from '../../src/core/installedProbe';
 import { GLYPH_SIZES, setStyle, type StudioState } from '../../src/core/studio';
 import type { ReduceMotion } from '../../src/core/settings';
 import { PlusLockSheet } from '../../src/plus/PlusLockSheet';
@@ -266,6 +267,13 @@ export default function SettingsScreen() {
 
       <InsetGroup title={t('settings.privacy.title')}>
         <InsetRow icon="shield" iconTone="mint" title={t('settings.privacy.heading')} subtitle={t('settings.privacy.body')} />
+        {/* T229: the installed-apps check (LSApplicationQueriesSchemes), explained in plain words. */}
+        <InsetRow
+          icon="smartphone"
+          iconTone="mint"
+          title={t('settings.privacy.installedTitle')}
+          subtitle={t('settings.privacy.installedBody', { count: PROBE_APPS.length })}
+        />
       </InsetGroup>
 
       <InsetGroup title={t('settings.about.title')} footer={t('settings.about.credits')}>

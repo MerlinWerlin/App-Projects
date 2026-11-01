@@ -352,7 +352,7 @@ export function widgetCornerPx(device: SeamlessDevice): number {
 export const SEAMLESS_MAX_EDGE_PX = 1200;
 
 /** App Group file the bridge writes per widget family; keep in sync with SeamlessWidget.swift. */
-export function seamlessFileName(size: SeamlessSize): string {
+export function seamlessFileName(size: SeamlessSize): `seamless-${SeamlessSize}.png` {
   return `seamless-${size}.png`;
 }
 

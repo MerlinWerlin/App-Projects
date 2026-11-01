@@ -12,7 +12,7 @@ export const ja: NonNullable<LocaleMessages['plus']> = {
     loops: 'Live Photos 用のテーマクリップ',
     free: 'ずっと無料',
     freeIcons: '自作アイコン、無制限',
-    freeInstall: 'ガイド付きショートカットでのインストール（一括はベータ）',
+    freeInstall: 'すべてまとめてインストール、またはショートカットで 1 つずつ',
     freeLive: '自分の動画で作る Live Photos メーカー',
     oneMoment: 'お待ちください…',
     unlock: 'ロック解除（近日公開）',

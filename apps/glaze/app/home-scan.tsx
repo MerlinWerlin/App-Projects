@@ -1,22 +1,28 @@
 // T171 "Scan my Home Screen": iOS can't list installed apps, so the user picks screenshots of their
 // Home Screen pages, Vision reads the labels on the phone (modules/glaze-home-scan through
 // src/native/homeScan.ts), src/core/homeScan.ts matches the names to the catalogue, and the user
-// confirms the list. Found apps keep their glyph; unknown names become custom apps with a monogram.
+// confirms the list. Found apps keep their glyph; unknown names become custom apps drawn with their
+// category family's glyph (T231: keyword rules on the phone, refined by Apple's public App Store
+// search when online, src/native/appCategory.ts). T230: App Library list-view screenshots work too,
+// and everything found starts ticked so one tap on Add (pinned at the bottom) takes it all.
 // Screenshots are read on the device only and never uploaded. Without the native module (Expo Go,
 // Android, the plain production build) the screen offers manual picking in add-app instead.
 
 import { Feather } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { useRouter } from 'expo-router';
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ScrollView, StyleSheet, Text, View, type TextStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getById } from '../src/core/catalogue';
-import { MAX_SCREENSHOTS, applyScan, scanHomeScreens, type OcrObservation, type ScanResult } from '../src/core/homeScan';
+import type { AppFamily } from '../src/core/appCategory';
+import { keywordFamilies } from '../src/core/appCategoryOnline';
+import { MAX_SCREENSHOTS, applyScan, glyphForScannedName, pickedFromScan, scanHomeScreens, type OcrObservation, type ScanResult } from '../src/core/homeScan';
 import { previewMonogram } from '../src/core/iconspec';
 import { MONOGRAM_GLYPH } from '../src/core/monogram';
 import { getAnyTheme } from '../src/core/plusThemes';
 import { THEMES, type Theme } from '../src/core/themes';
+import { refineAppFamilies } from '../src/native/appCategory';
 import { homeScan } from '../src/native/homeScan';
 import { IconCanvas } from '../src/render/IconCanvas';
 import { openAppSettings } from '../src/render/saveWallpaper';
@@ -61,6 +67,9 @@ export default function HomeScanScreen() {
   const [result, setResult] = useState<ScanResult>({ matched: [], unmatched: [] });
   const [offIds, setOffIds] = useState<ReadonlySet<string>>(new Set());
   const [offNames, setOffNames] = useState<ReadonlySet<string>>(new Set());
+  const [families, setFamilies] = useState<Readonly<Record<string, AppFamily>>>({});
+  // Bumped per scan and on unmount, so a late App Store answer never lands on another scan.
+  const scanGen = useRef(0);
 
   useEffect(() => {
     let alive = true;
@@ -77,9 +86,17 @@ export default function HomeScanScreen() {
     };
   }, []);
 
+  useEffect(
+    () => () => {
+      scanGen.current++;
+    },
+    [],
+  );
+
   const theme: Theme = getAnyTheme(state?.themeId) ?? THEMES[0];
-  const ids = useMemo(() => result.matched.map((m) => m.catalogueId).filter((id) => !offIds.has(id)), [result, offIds]);
-  const names = useMemo(() => result.unmatched.filter((n) => !offNames.has(n)), [result, offNames]);
+  const picked = useMemo(() => pickedFromScan(result, { ids: offIds, names: offNames }), [result, offIds, offNames]);
+  const ids = picked.catalogueIds;
+  const names = picked.customNames;
   const chosen = ids.length + names.length;
 
   const pick = async () => {
@@ -126,6 +143,16 @@ export default function HomeScanScreen() {
     // Everything found starts ticked; the user unticks what they don't want.
     setOffIds(new Set());
     setOffNames(new Set());
+    // Families for unknown names: keyword rules now, App Store genres when they arrive (never blocks).
+    const gen = ++scanGen.current;
+    setFamilies(keywordFamilies(found.unmatched));
+    if (found.unmatched.length > 0) {
+      refineAppFamilies(found.unmatched)
+        .then((f) => {
+          if (scanGen.current === gen) setFamilies(f);
+        })
+        .catch(() => undefined);
+    }
     setPhase('confirm');
     haptic('success');
   };
@@ -152,7 +179,7 @@ export default function HomeScanScreen() {
 
   const addChosen = () => {
     if (!state || chosen === 0) return;
-    const r = applyScan(state, { catalogueIds: ids, customNames: names });
+    const r = applyScan(state, { catalogueIds: ids, customNames: names, families });
     const next = r.state;
     update(() => next);
     haptic('success');
@@ -262,11 +289,13 @@ export default function HomeScanScreen() {
             ) : null}
             {result.unmatched.length > 0 ? (
               <InsetGroup header={t('addApp.scan.customHeader', { count: result.unmatched.length })} footer={t('addApp.scan.customFooter')}>
-                {result.unmatched.map((n) => row(`name:${n}`, n, null, !offNames.has(n), icon(`custom-${n}`, n, MONOGRAM_GLYPH), () => toggleName(n)))}
+                {result.unmatched.map((n) => row(`name:${n}`, n, null, !offNames.has(n), icon(`custom-${n}`, n, glyphForScannedName(n, families[n])), () => toggleName(n)))}
               </InsetGroup>
             ) : null}
+            {result.unmatched.length > 0 ? (
+              <Text style={[...ts('footnote'), styles.side, { color: c.inkSecondary }]}>{t('addApp.scan.categoryNote')}</Text>
+            ) : null}
             <View style={[styles.side, styles.gap]}>
-              <PillButton label={t('addApp.scan.add', { count: chosen })} icon="plus" block disabled={chosen === 0 || !state} onPress={addChosen} />
               <PillButton
                 label={t('addApp.scan.again')}
                 icon="refresh-cw"
@@ -283,6 +312,11 @@ export default function HomeScanScreen() {
           </>
         ) : null}
       </ScrollView>
+      {phase === 'confirm' ? (
+        <View style={[styles.footer, { backgroundColor: c.bg, paddingBottom: insets.bottom + spaceV2.md }]}>
+          <PillButton label={t('addApp.scan.add', { count: chosen })} icon="plus" block disabled={chosen === 0 || !state} onPress={addChosen} />
+        </View>
+      ) : null}
     </View>
   );
 }
@@ -291,6 +325,7 @@ const styles = StyleSheet.create({
   root: { flex: 1 },
   scroll: { paddingTop: spaceV2.lg, gap: spaceV2.lg },
   side: { marginHorizontal: spaceV2.lg },
+  footer: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.md },
   gap: { gap: spaceV2.sm },
   flex: { flex: 1, flexShrink: 1 },
   card: { marginHorizontal: spaceV2.lg, borderRadius: radiusV2.group, padding: spaceV2.lg, gap: spaceV2.md },

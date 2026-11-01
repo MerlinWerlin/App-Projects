@@ -13,6 +13,7 @@ import { durations } from '../src/theme/motion';
 import { INTRO_MS, startupReady } from '../src/core/introGlaze';
 import { I18nProvider, loadLocaleOverride, useT } from '../src/i18n';
 import { restoreDownloadedPacks } from '../src/native/packs';
+import { runInstalledProbeOnLaunch } from '../src/store/installedProbe';
 import { syncWidgetThemeAtLaunch } from '../src/store/widgetTheme';
 import { textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
@@ -79,6 +80,10 @@ export default function RootLayout() {
     }, 1500);
     return () => clearTimeout(id);
   }, []);
+
+  // T229: once per launch, after the first render and off startup, tick the popular apps iOS says are on this
+  // iPhone (native builds only; Expo Go answers false and nothing changes).
+  useEffect(() => runInstalledProbeOnLaunch(2500), []);
 
   // Never an endless splash: go ahead after INTRO_MS.maxWait even if fonts or languages are still loading.
   const [timedOut, setTimedOut] = useState(false);

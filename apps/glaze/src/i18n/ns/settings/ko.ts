@@ -63,6 +63,8 @@ export const ko: NonNullable<LocaleMessages['settings']> = {
     title: '개인정보',
     heading: '수집하는 데이터 없음',
     body: '계정, 분석, 광고, 추적이 없습니다. 사진과 동영상은 휴대폰 밖으로 나가지 않습니다. 테마 팩은 GitHub에서 일반 파일로 내려받으며, Glaze는 개인 데이터, 계정, 식별자를 보내지 않습니다.',
+    installedTitle: "이 iPhone의 앱",
+    installedBody: "앱을 대신 선택하기 위해 Glaze는 특정 인기 앱 {count}개가 설치되어 있는지만 iOS에 확인합니다. 결과는 해당 앱의 테마에만 쓰이며 어떤 정보도 휴대폰 밖으로 나가지 않습니다.",
   },
   about: {
     title: '정보',

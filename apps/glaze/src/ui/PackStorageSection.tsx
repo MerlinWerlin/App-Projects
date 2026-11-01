@@ -5,14 +5,17 @@
 // Remove (no network; the theme goes back to its drawn wallpaper).
 // T173 (docs/PREMIUM_UI.md §3.7): editorial group titles, row icons in pastel circles, sizes in
 // inkSecondary, and while the on-phone index is being read the rows show Skeleton sizes (no spinner).
+// T225: a one-line pack update status above the total ("Updated 2 packs" / "All packs up to date").
 import { Feather } from '@expo/vector-icons';
 import { useState } from 'react';
 import { StyleSheet, Text, View, type TextStyle } from 'react-native';
+import type { PackUpdateSummary } from '../core/packUpdates';
 import { photoCreditParams } from '../core/photoPack';
 import { spaceThemeById } from '../core/spacePack';
 import { formatBytes } from '../core/themePack';
 import { PlusLockSheet } from '../plus/PlusLockSheet';
 import { usePackStorage } from '../plus/usePackAccess';
+import { usePackUpdateSummary } from '../plus/usePackUpdate';
 import { useT } from '../i18n';
 import { circleRadius, fontScaleCap, sizeV2, spaceV2, tabularV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
@@ -35,6 +38,8 @@ export function PackStorageSection() {
   const measuring = storage.measuring;
   const bytes = (n: number) => formatBytes(n, locale);
   const [plusOpen, setPlusOpen] = useState(false);
+  const updateSummary = usePackUpdateSummary();
+  const updateLine = packUpdateLine(updateSummary, t);
 
   const onRemove = async (id: string, name: string) => {
     await storage.remove(id);
@@ -133,6 +138,15 @@ export function PackStorageSection() {
             </View>
           );
         })}
+        {/* T225: one plain line about pack updates ("Updated 2 packs" / "All packs up to date"). */}
+        {!measuring && updateLine ? (
+          <View style={styles.row} accessible accessibilityLabel={updateLine.text}>
+            <Feather name={updateLine.icon} size={18} color={updateLine.warn ? c.warn : c.inkSecondary} />
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.flex, { color: updateLine.warn ? c.warn : c.inkSecondary }]}>
+              {updateLine.text}
+            </Text>
+          </View>
+        ) : null}
         <View style={styles.row}>
           <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), styles.flex, { color: c.ink }]}>
             {t('ui.storage.total')}
@@ -211,6 +225,26 @@ export function PackStorageSection() {
       <PlusLockSheet visible={plusOpen} onClose={() => setPlusOpen(false)} subject={t('ui.storage.plusSubject')} />
     </>
   );
+}
+
+type UpdateLine = { text: string; icon: 'check-circle' | 'refresh-cw' | 'alert-circle' | 'download-cloud'; warn: boolean };
+
+/** T225: the Storage status text for a PackUpdateSummary (null = no line). */
+function packUpdateLine(s: PackUpdateSummary, t: ReturnType<typeof useT>['t']): UpdateLine | null {
+  switch (s.kind) {
+    case 'upToDate':
+      return { text: t('ui.storage.updates.upToDate'), icon: 'check-circle', warn: false };
+    case 'updated':
+      return { text: t('ui.storage.updates.updated', { count: s.count }), icon: 'check-circle', warn: false };
+    case 'updating':
+      return { text: t('ui.storage.updates.updating', { count: s.count }), icon: 'refresh-cw', warn: false };
+    case 'available':
+      return { text: t('ui.storage.updates.available', { count: s.count }), icon: 'download-cloud', warn: false };
+    case 'failed':
+      return { text: t('ui.storage.updates.failed', { count: s.count }), icon: 'alert-circle', warn: true };
+    default:
+      return null;
+  }
 }
 
 const styles = StyleSheet.create({

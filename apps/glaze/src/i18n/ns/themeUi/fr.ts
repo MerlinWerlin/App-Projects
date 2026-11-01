@@ -64,8 +64,8 @@ export const fr: NonNullable<LocaleMessages['themeUi']> = {
       body: 'iOS ne permet à aucune app de changer l’icône d’une autre. Glaze ajoute un raccourci thématique qui ouvre la vraie app ; rangez les originales dans la bibliothèque d’apps.',
     },
     'bulk-install': {
-      title: 'Installation groupée (bêta facultative)',
-      body: 'Bêta facultative : un seul profil installe tout votre ensemble d’un coup dans Réglages. La méthode guidée avec Raccourcis est celle par défaut et marche toujours.',
+      title: 'Tout installer d’un coup',
+      body: 'Un seul profil ajoute tout votre ensemble d’un coup, via Safari puis Réglages. Pour un par un, la méthode guidée avec Raccourcis est toujours là.',
     },
     'live-lock': {
       title: 'Créer une Live Photo',

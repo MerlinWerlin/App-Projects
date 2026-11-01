@@ -102,6 +102,21 @@ export function setStudioStyle(
 }
 
 /**
+ * T229: apply a pure change to the saved state outside a screen (e.g. auto-select after the
+ * installed-apps check), save it and tell every mounted screen. Returns the state after the change.
+ */
+export function updateStudio(fn: (s: StudioState) => StudioState): Promise<StudioState> {
+  return serial(async () => {
+    const s = await read();
+    const next = fn(s);
+    if (next === s) return s;
+    await write(next);
+    emit(next);
+    return next;
+  });
+}
+
+/**
  * Studio state for a screen: loads on focus, `update` applies a pure change immediately
  * and persists it (writes are serialized, so rapid taps keep their order).
  */

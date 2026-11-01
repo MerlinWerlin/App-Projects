@@ -58,6 +58,11 @@ const YourLookPanelM = memo(YourLookPanel);
 /** Scroll offset (pt) at or above which the list counts as resting at the top (pull to refresh). */
 const TOP_SLOP = 1;
 
+/** JS side of a caught UI-thread error (T228, docs/CRASH_1101.md): log it, never rethrow. */
+function reportWorkletError(where: string, message: string): void {
+  console.warn(`[Themes] recovered from a UI-thread error in ${where}: ${message}`);
+}
+
 /** A v2 type role plus the script's line-height adjustment. */
 function typeFor(script: Script, role: TypeRoleV2): TextStyle[] {
   return [textV2[role], textStyleFor(script, textV2[role])];
@@ -267,11 +272,16 @@ export default function ThemesScreen() {
   const [atTop, setAtTop] = useState(true);
   const onScroll = useAnimatedScrollHandler({
     onScroll: (e) => {
-      scrollY.value = e.contentOffset.y;
-      const top = e.contentOffset.y <= TOP_SLOP ? 1 : 0;
-      if (top !== topFlag.value) {
-        topFlag.value = top;
-        runOnJS(setAtTop)(top === 1);
+      // T228 (docs/CRASH_1101.md): a UI-thread error is caught and logged, never rethrown.
+      try {
+        scrollY.value = Number.isFinite(e.contentOffset.y) ? e.contentOffset.y : 0;
+        const top = e.contentOffset.y <= TOP_SLOP ? 1 : 0;
+        if (top !== topFlag.value) {
+          topFlag.value = top;
+          runOnJS(setAtTop)(top === 1);
+        }
+      } catch (err) {
+        runOnJS(reportWorkletError)('themes.onScroll', String(err));
       }
     },
   });

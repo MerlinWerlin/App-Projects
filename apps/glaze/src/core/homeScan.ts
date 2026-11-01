@@ -10,10 +10,17 @@
 //              aliases: exact > alias > truncated prefix > edit-distance / word similarity
 //   4. dedupe  across every screenshot; reading order (page, row, column) is kept so apps are added
 //              in Home Screen order
+// T230: App Library LIST-VIEW screenshots work too (pull down in the App Library: one app per row,
+// alphabetical, single-letter section headers and an A–Z index, the "App Library" search field on
+// top). isListViewPage spots that layout; then single letters and the search chrome are junk, names
+// may be long (the list never truncates them) and a row is never split into several apps.
 // Nothing here touches images or the network: the OCR runs on the phone and only text reaches here.
 // Pure TypeScript (no React Native / Expo) so Node runs the tests.
 
 import { CATALOGUE, editDistance, type CatalogueEntry } from './catalogue.ts';
+import { categorizeAppName, familyGlyph, type AppFamily } from './appCategory.ts';
+import { isKnownGlyph } from './glyphnames.ts';
+import { MONOGRAM_GLYPH } from './monogram.ts';
 import { MAX_LABEL_LENGTH, addApps, addCustomApp, type StudioState } from './studio.ts';
 
 /**
@@ -47,6 +54,9 @@ export const MAX_SCREENSHOTS = 12;
 
 const MAX_LABEL_WORDS = 3;
 const MAX_LABEL_CHARS = 24;
+/** App Library list rows show the whole name (no ellipsis), so longer names are plausible there. */
+const MAX_LIST_LABEL_WORDS = 6;
+const MAX_LIST_LABEL_CHARS = MAX_LABEL_LENGTH;
 
 // ---------------------------------------------------------------- normalise
 
@@ -99,6 +109,14 @@ const DEGREES = /-?\d+\s*°/;
 const NUMERIC = /^[\d\s.,:;%°+\-–—/()]+$/;
 const DOTS = /^[\s•·.○●◦∙⋅oO]+$/;
 const SEARCH = /^(?:q|o|ⓠ|🔍)?\s*search$/i;
+/** The App Library search field's placeholder, in the app's locales (iOS shows the system language). */
+const APP_LIBRARY = /^(?:q|o|ⓠ|🔍)?\s*(?:app library|app-mediathek|biblioth[eè]que d['’]apps|biblioteca de apps|libreria app|appライブラリ|앱 보관함|app\s?资源库|ऐप लाइब्रेरी|مكتبة التطبيقات)$/iu;
+/** List-view chrome next to the search field. */
+const LIST_CHROME = /^(?:cancel|done|edit|suggestions|recently added)$/i;
+/** A section header / index letter in the App Library list ("A", "B", "#"). */
+const SECTION_LETTER = /^(?:[\p{Lu}]|#)$/u;
+/** Weekday initials of a calendar widget ("M T W T F S S") are not an alphabetical index. */
+const WEEKDAY_INITIALS = new Set(['M', 'T', 'W', 'F', 'S']);
 const WEEKDAY = /^(?:mon|tue|tues|wed|thu|thur|thurs|fri|sat|sun)(?:day|nesday|sday|urday|rsday)?\b,?\s+\d{1,2}\b/i;
 const MONTH_DAY = /^(?:\d{1,2}\s+)?(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+\d{1,2}\b|^\d{1,2}\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*$/i;
 const URLISH = /(?:https?:\/\/|www\.|\.com\b|@)/i;
@@ -116,7 +134,7 @@ export function isJunkLine(text: string): boolean {
   if (!t) return true;
   if (!/\p{L}/u.test(t)) return true; // no letters: numbers, badges, dots, symbols
   if (TIME.test(t) || PERCENT.test(t) || DEGREES.test(t) || NUMERIC.test(t) || DOTS.test(t)) return true;
-  if (SEARCH.test(t)) return true;
+  if (SEARCH.test(t) || APP_LIBRARY.test(t)) return true;
   if (WEEKDAY.test(t) || MONTH_DAY.test(t) || WIDGET_PHRASES.test(t)) return true;
   if (URLISH.test(t)) return true;
   const n = normalizeLabel(t);
@@ -128,13 +146,17 @@ export function isJunkLine(text: string): boolean {
   return false;
 }
 
-/** A label-shaped string: some letters, short, a few words (longer lines are widget sentences). */
-export function isPlausibleLabel(text: string): boolean {
-  const t = cleanDisplayName(text);
+/**
+ * A label-shaped string: some letters, short, a few words (longer lines are widget sentences).
+ * `list` (an App Library list row) allows whole long names but no single letters (section headers).
+ */
+export function isPlausibleLabel(text: string, opts: { list?: boolean } = {}): boolean {
+  const t = opts.list ? stripEllipsis(text).text.replace(/\s+/g, ' ').replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}+!)]+$/gu, '').trim() : cleanDisplayName(text);
   if (!t || !/\p{L}/u.test(t)) return false;
+  if (opts.list && compactLabel(t).length < 2) return false;
   if (compactLabel(t).length < 2 && !/^[\p{L}]$/u.test(t)) return false;
-  if (t.length > MAX_LABEL_CHARS) return false;
-  if (t.split(' ').length > MAX_LABEL_WORDS) return false;
+  if (t.length > (opts.list ? MAX_LIST_LABEL_CHARS : MAX_LABEL_CHARS)) return false;
+  if (t.split(' ').length > (opts.list ? MAX_LIST_LABEL_WORDS : MAX_LABEL_WORDS)) return false;
   if (/[.!?]\s+\p{L}/u.test(t)) return false; // sentence punctuation mid-line
   return true;
 }
@@ -339,27 +361,58 @@ export function filterByLayout(obs: readonly OcrObservation[]): OcrObservation[]
 
 // ---------------------------------------------------------------- whole scan
 
+/**
+ * True when one screenshot's OCR looks like the App Library LIST view rather than a Home Screen
+ * page: the "App Library" search field, an alphabetical index / section letters (3+ distinct single
+ * capitals that aren't a calendar widget's weekday initials), or, with boxes, 5+ label rows that are
+ * one per row and share the same left edge (a Home Screen grid has 4 columns).
+ */
+export function isListViewPage(obs: readonly OcrObservation[]): boolean {
+  const usable = (Array.isArray(obs) ? obs : []).filter((o): o is OcrObservation => !!o && typeof o.text === 'string');
+  const texts = usable.map((o) => o.text.replace(/\s+/g, ' ').trim());
+  if (texts.some((t) => APP_LIBRARY.test(t))) return true;
+  const letters = new Set(texts.flatMap((t) => splitOnGaps(t)).filter((t) => /^\p{Lu}$/u.test(t)));
+  if ([...letters].filter((l) => !WEEKDAY_INITIALS.has(l)).length >= 3) return true;
+  const rows = usable.filter((o) => hasBox(o) && !isJunkLine(o.text) && !SECTION_LETTER.test(o.text.trim()) && isPlausibleLabel(o.text, { list: true }));
+  if (rows.length < 5) return false;
+  const left = median(rows.map((o) => o.x!));
+  const aligned = rows.filter((o) => Math.abs(o.x! - left) <= 0.04);
+  if (aligned.length < 5 || aligned.length < rows.length * 0.8) return false;
+  // One label per row: no two aligned labels share a vertical centre.
+  const centres = aligned.map((o) => o.y! + o.h! / 2).sort((a, b) => a - b);
+  const h = median(aligned.map((o) => o.h!));
+  return centres.every((c, i) => i === 0 || c - centres[i - 1] > h * 0.8);
+}
+
 /** The label candidates found in one screenshot's OCR lines, in reading order. */
 export function labelsFromPage(obs: readonly OcrObservation[], catalogue: readonly CatalogueEntry[] = CATALOGUE): string[] {
   const usable = (Array.isArray(obs) ? obs : []).filter(
     (o): o is OcrObservation => !!o && typeof o.text === 'string' && (typeof o.confidence !== 'number' || o.confidence >= MIN_OCR_CONFIDENCE),
   );
+  const list = isListViewPage(usable);
   const lines = mergeAdjacent(filterByLayout(usable));
+  // List rows start right of their icon; section headers and the A–Z index sit elsewhere, so a
+  // one-letter app ("X") lined up with the rows is still an app.
+  const rowLeft = list ? median(lines.filter((o) => hasBox(o) && compactLabel(o.text).length >= 2 && !isJunkLine(o.text)).map((o) => o.x!)) : 0;
   const out: string[] = [];
   for (const line of lines) {
+    const onRow = list && rowLeft > 0 && hasBox(line) && Math.abs(line.x! - rowLeft) <= 0.03;
     for (const piece of splitOnGaps(line.text)) {
       if (isJunkLine(piece)) continue;
+      if (list && LIST_CHROME.test(piece.trim())) continue;
+      if (list && SECTION_LETTER.test(piece.trim()) && !(onRow && piece.trim() !== '#')) continue;
       const whole = matchLabel(piece, catalogue);
       if (whole) {
         out.push(piece);
         continue;
       }
-      const segs = segmentWords(piece, catalogue);
+      // A list row is one app: never split it into several catalogue names.
+      const segs = list ? null : segmentWords(piece, catalogue);
       if (segs) {
         out.push(...segs);
         continue;
       }
-      if (isPlausibleLabel(piece)) out.push(piece);
+      if (isPlausibleLabel(piece, { list })) out.push(piece);
     }
   }
   return out;
@@ -411,12 +464,40 @@ export function scanHomeScreens(
 export type ScanApplyResult = { state: StudioState; addedCatalogue: number; addedCustom: number };
 
 /**
+ * T230: what the confirm step adds. Everything found starts ticked (catalogue matches and unknown
+ * names alike), so one tap on Add takes them all; `off` holds what the user unticked.
+ */
+export function pickedFromScan(
+  result: ScanResult,
+  off: { ids?: ReadonlySet<string>; names?: ReadonlySet<string> } = {},
+): { catalogueIds: string[]; customNames: string[] } {
+  const ids = off.ids ?? new Set<string>();
+  const names = off.names ?? new Set<string>();
+  return {
+    catalogueIds: (result?.matched ?? []).map((m) => m.catalogueId).filter((id) => !ids.has(id)),
+    customNames: (result?.unmatched ?? []).filter((n) => !names.has(n)),
+  };
+}
+
+/**
+ * T231: the glyph a custom app made from a scanned name gets: its family's glyph (`family`, e.g.
+ * refined online, else the on-device keyword rules). The monogram is a last resort only when
+ * that glyph isn't one we ship.
+ */
+export function glyphForScannedName(name: string, family?: AppFamily | null): string {
+  const glyph = familyGlyph(family ?? categorizeAppName(name).family);
+  return isKnownGlyph(glyph) ? glyph : MONOGRAM_GLYPH;
+}
+
+/**
  * Adds the confirmed apps: catalogue ids are selected (keeping their glyph); each name becomes a
- * custom app with a monogram (or selects an existing custom app with the same name). Order is kept.
+ * custom app drawn with its category family's glyph (T231; see glyphForScannedName), or selects an
+ * existing custom app with the same name (one still showing a monogram gets the family glyph).
+ * Order is kept. `families` maps a name (as given in customNames) to its family.
  */
 export function applyScan(
   s: StudioState,
-  picked: { catalogueIds: readonly string[]; customNames: readonly string[] },
+  picked: { catalogueIds: readonly string[]; customNames: readonly string[]; families?: Readonly<Record<string, AppFamily>> },
 ): ScanApplyResult {
   const before = new Set(s.selected);
   let state = addApps(s, picked.catalogueIds ?? []);
@@ -428,14 +509,18 @@ export function applyScan(
     const key = compactLabel(name);
     if (!name || !key || done.has(key)) continue;
     done.add(key);
+    const glyph = glyphForScannedName(name, picked.families?.[raw] ?? picked.families?.[name]);
     const existing = state.customApps.find((c) => compactLabel(c.name) === key);
     if (existing) {
+      if (existing.glyph === MONOGRAM_GLYPH && glyph !== MONOGRAM_GLYPH) {
+        state = { ...state, customApps: state.customApps.map((c) => (c.id === existing.id ? { ...c, glyph } : c)) };
+      }
       const next = addApps(state, [existing.id]);
       if (next.selected.length > state.selected.length) addedCustom++;
       state = next;
       continue;
     }
-    const r = addCustomApp(state, { name });
+    const r = addCustomApp(state, { name, glyph });
     if (r.ok) {
       state = r.state;
       addedCustom++;

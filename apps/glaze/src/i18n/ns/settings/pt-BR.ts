@@ -63,6 +63,8 @@ export const ptBR: NonNullable<LocaleMessages['settings']> = {
     title: 'Privacidade',
     heading: 'Nenhum dado coletado',
     body: 'Sem contas, análises, anúncios ou rastreamento. Suas fotos e vídeos nunca saem do seu celular. Os pacotes de temas são baixados do GitHub como arquivos comuns; o Glaze não envia dados pessoais, conta nem identificador.',
+    installedTitle: "Apps neste iPhone",
+    installedBody: "Para marcar seus apps por você, o Glaze só pergunta ao iOS se {count} apps populares específicos estão instalados. A resposta é usada apenas para aplicar o tema nesses apps, e nada sai do seu telefone.",
   },
   about: {
     title: 'Sobre',

@@ -26,6 +26,9 @@ export const zhHans: NonNullable<LocaleMessages['icons']> = {
   addPopular: "添加热门应用",
   addPopularHint: "选择 16 个常用应用，例如信息、相机和照片",
   editHelp: "轻点图标即可在 {theme} 中更改：你自己的图片、名称、符号或颜色。圆点表示已自定义的图标。长按或轻点 ✕ 可移除。",
+  installedFound: {
+    other: "Glaze 在这台 iPhone 上找到了你的 {count} 个应用并已添加。不需要的可以取消勾选。",
+  },
   ownStyle: "你自己的风格",
   editLabel: "编辑 {name}",
   editLabelCustomised: "编辑 {name}，已自定义",

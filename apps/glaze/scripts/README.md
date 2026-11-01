@@ -25,3 +25,7 @@ substitute for the PC `TSC_REPORT.cmd` / `npm run typecheck` against the real `n
 - When a stub causes a false positive, fix the stub (not our code). When a new third-party import
   appears, add its module to the stubs or the run fails with TS2307.
 - `src/core/tscHarnessGuard.test.ts` keeps the config, the stubs and the npm script in place.
+
+## `node scripts/gen-query-schemes.mjs` (T229)
+
+Writes `native-plugins/queryschemes.json` (Info.plist LSApplicationQueriesSchemes) from `src/core/installedProbe.ts`. Run it after changing that list; `src/core/installedProbe.test.ts` fails while they differ.

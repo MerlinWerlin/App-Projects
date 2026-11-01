@@ -39,6 +39,22 @@ export const zhHans: NonNullable<LocaleMessages['ui']> = {
     photoRemoveHint: '释放 {size}。可随时在主题中重新下载。',
     photoRemoved: '已删除“{name}”照片',
     photosTotalA11y: '太空照片共占用 {size}',
+    // T225: one-line pack update status in Settings › Storage.
+    updates: {
+      upToDate: '所有主题包均为最新',
+      updated: {
+        other: '已更新 {count} 个主题包',
+      },
+      updating: {
+        other: '正在更新 {count} 个主题包…',
+      },
+      available: {
+        other: '{count} 个主题包有可用更新',
+      },
+      failed: {
+        other: '有 {count} 个主题包未能更新。它们仍可正常使用，Glaze 稍后会重试。',
+      },
+    },
   },
   segmentedOptionA11y: '{group}：{option}',
   loadingIcons: '正在加载图标',
