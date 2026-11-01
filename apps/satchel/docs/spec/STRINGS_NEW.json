@@ -6769,7 +6769,7 @@
  "demo2.add": "Add sample past trips",
  "demo2.addHint": "Adds two invented past trips marked Sample and turns on Include demo trips in Your travels",
  "demo2.remove": "Remove sample trips",
- "demo2.removeHint": "Deletes both sample past trips in one tap. Your own trips stay as they are.",
+ "demo2.removeHint": "Deletes both sample past trips in one tap and turns Include demo trips back off if adding them turned it on. Your own trips stay as they are.",
  "demo2.added": "Two sample past trips added. Remove them here at any time.",
  "demo2.removed": "Sample past trips removed.",
  "demo2.chip": "Sample",

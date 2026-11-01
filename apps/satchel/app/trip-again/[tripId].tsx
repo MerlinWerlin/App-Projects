@@ -8,6 +8,7 @@ import { formatDay, formatRange, formatTime, zoneCity } from '../../src/core/for
 import { newId, type Stamp, type Trip } from '../../src/core/model.ts';
 import { EMPTY_STORE, listFor, PACKING_KEY, putList, type PackStore } from '../../src/core/packing.ts';
 import { localDate } from '../../src/core/tz.ts';
+import { canPlanAgain } from '../../src/core/sampletravels.ts';
 import { isLocalDate } from '../../src/core/wallpicker.ts';
 import { ALL_PARTS, COPY_PARTS, copyPreview, copyTrip, nameForYear, partCounts, sameDayNextYear, type CopyPart, type CopyParts } from '../../src/core/tripcopy.ts';
 import { useApp } from '../../src/state/app.tsx';
@@ -30,7 +31,8 @@ export default function PlanAgainScreen() {
   const { t } = useApp();
   const { trips } = useTrips();
   const trip = trips.find((x) => x.id === tripId);
-  if (!trip) {
+  // T165: a sample trip can't be planned again (the button is hidden; a stale link lands here).
+  if (!trip || !canPlanAgain(trip)) {
     return (
       <Screen>
         <Stack.Screen options={{ title: t('tripcopy.route') }} />

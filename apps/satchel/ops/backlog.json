@@ -685,7 +685,7 @@
       ],
       "title": "Verify the satchel-maps-v1 release (catalog.json + city tars) once published; tune tile size/zoom from the owner's TestFlight answers; dark-style tiles",
       "accept": "catalog fetch OK; owner answers A yes",
-      "note": "Run 84: release satchel-maps-v1 still 404 (D211-2: keep the honest being-published state; do not publish map files from this task). Run 109: contract test (src/core/mapcontract.test.ts) + meta.json bytes fix (fab9163); packs need a rebuild to carry the new food/supermarket/embassy POI categories (T13); the phone does not check sha256 (would need a native hash)."
+      "note": "Run 84: release satchel-maps-v1 still 404 (D211-2: keep the honest being-published state; do not publish map files from this task). Run 109: contract test (src/core/mapcontract.test.ts) + meta.json bytes fix (fab9163); packs need a rebuild to carry the new food/supermarket/embassy POI categories (T13); the phone does not check sha256 (would need a native hash). Run 113: catalog.json still 404."
     },
     {
       "id": "T53",
@@ -2051,14 +2051,16 @@
     },
     {
       "id": "T165",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "follow-up",
         "release"
       ],
       "title": "Run-112 follow-ups: Plan this trip again on a sample trip should drop the sample mark cleanly or be hidden; removing samples could switch 'Include demo trips' back off if the samples turned it on; check react-native-maps draws the SVG lift glyph in a custom marker on a TestFlight build (DM); confirm 'npx expo config --type public' on the PC shows no android.intentFilters and the next OTA publishes (T162).",
-      "accept": "tests green; DECISIONS records"
+      "accept": "tests green; DECISIONS records",
+      "commit": "ce043b9",
+      "note": "Run 113 (ce043b9): Plan this trip again hidden on sample trips (button + stale-link screen, canPlanAgain); removing the samples turns Include demo trips back off when adding them turned it on (samplesTurnedDemoOn flag); PC check: npx expo config --type public on the refreshed PC copy shows no android.intentFilters and with-open-in in plugins, and the 1 Nov OTA (PR #197) published OK. Device check DM stays in satchel-trial."
     }
   ],
   "priority_note": "owner-1101s (docs/OWNER_1101s.md) is the latest owner direction (1 Nov 19:05 Sydney): the five features are done, so no new features; release prep only (store listing, screenshots, privacy, RELEASE_CHECKLIST, end-to-end pass) plus follow-ups and fixes to what is built. Run 111 noted that run 110's T156 was a new feature added against this; kept (merged and shipped) but no more."

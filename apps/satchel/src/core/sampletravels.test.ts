@@ -101,3 +101,26 @@ test('UI wiring: Settings mounts the row, the trip screen hides export, the pass
   assert.match(read('app/trip/[id].tsx'), /canExportTrip\(trip\) \? <TripExport trip=\{trip\} \/>/);
   assert.match(read('src/ui/TripPass.tsx'), /isSampleTravel\(trip\) \? t\('demo2\.chip'\)/);
 });
+
+test('T165: no Plan this trip again on a sample trip; real and demo trips keep it', async () => {
+  const { canPlanAgain } = await import('./sampletravels.ts');
+  for (const s of sampleTravels('2026-11-01')) assert.equal(canPlanAgain(s), false);
+  assert.equal(canPlanAgain({ id: 'abc' }), true);
+  assert.equal(canPlanAgain(demoTrip('2026-11-04', NOW)), true);
+  const btn = readFileSync(new URL('../ui/PlanAgainButton.tsx', import.meta.url), 'utf8');
+  assert.match(btn, /canPlanAgain\(trip\)/);
+  const screen = readFileSync(new URL('../../app/trip-again/[tripId].tsx', import.meta.url), 'utf8');
+  assert.match(screen, /!canPlanAgain\(trip\)/);
+});
+
+test('T165: removing the samples puts Include demo trips back only when the samples turned it on', async () => {
+  const { samplesTurnOnDemo, includeDemoAfterRemove } = await import('./sampletravels.ts');
+  assert.equal(samplesTurnOnDemo(false), true);
+  assert.equal(samplesTurnOnDemo(true), false);
+  assert.equal(includeDemoAfterRemove(true, true), false);
+  assert.equal(includeDemoAfterRemove(true, false), true);
+  assert.equal(includeDemoAfterRemove(false, false), false);
+  const ui = readFileSync(new URL('../ui/SampleTravels.tsx', import.meta.url), 'utf8');
+  assert.match(ui, /includeDemoAfterRemove\(includeDemo, turnedOn\)/);
+  assert.match(ui, /samplesTurnOnDemo\(includeDemo\)/);
+});
