@@ -342,6 +342,48 @@
       ],
       "note": "Docs in apps/roamlings/docs (PLAN.md); concept https://claude.ai/artifact/RhrtGb8BAep9D3UCJGDnBa. Kids are a target audience: keep posts parent-friendly. Turn on by setting stage to prelaunch.",
       "accent": "#6C5CE7"
+    },
+    {
+      "slug": "hollowhue",
+      "name": "Hollowhue",
+      "storeName": "",
+      "tagline": "Colour in, then zoom in: every scene hides another",
+      "stage": "building",
+      "nameLocked": false,
+      "ascAppId": "",
+      "appStoreUrl": "",
+      "testflightUrl": "",
+      "playUrl": "",
+      "pinSource": {
+        "kind": "screenshots"
+      },
+      "boards": [
+        "Adult Coloring Pages",
+        "Cozy Illustration",
+        "Mandala Art"
+      ],
+      "reddit": {
+        "queries": [
+          "coloring app ipad",
+          "adult coloring app no ads",
+          "zoom coloring app",
+          "apple pencil coloring app",
+          "relaxing coloring app"
+        ],
+        "subs": [
+          "ipad",
+          "AppleWhatShouldIBuy",
+          "Coloring",
+          "adultcoloring"
+        ]
+      },
+      "avoid": [
+        "any competitor app name",
+        "claims about anxiety or therapy",
+        "AI-generated art claims (all art is hand-authored)"
+      ],
+      "note": "Docs in apps/hollowhue/docs (PLAN.md). iPad-first infinite-zoom colouring; adults and kids. Turn on by setting stage to prelaunch.",
+      "accent": "#B5523B"
     }
   ]
 }
