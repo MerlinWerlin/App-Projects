@@ -61,8 +61,10 @@ enum NativeReviewCapture {
               records.append(["theme": id, "size": size, "fit": fit ? "fit" : "fill", "hour": hour, "minute": minute, "file": filename, "sha256": digest, "width": Int(image.size.width * image.scale), "height": Int(image.size.height * image.scale)])
             }
           }
-          guard hashes.count == times.count else {
-            throw NSError(domain: "GlazeReview", code: 5, userInfo: [NSLocalizedDescriptionKey: "Clock renders did not change across all four times for\(id)/\(size)"])
+          // Analog hands intentionally repeat after12 hours:11:59 and23:59 are identical.
+          let expectedStates = spec.clockStyle == "analog" ? 3 : times.count
+          guard hashes.count == expectedStates else {
+            throw NSError(domain: "GlazeReview", code: 5, userInfo: [NSLocalizedDescriptionKey: "Expected\(expectedStates) distinct clock states, got\(hashes.count) for\(id)/\(size)"])
           }
           }
         }
