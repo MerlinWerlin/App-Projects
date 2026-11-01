@@ -826,6 +826,7 @@ export const ptBR: Catalogue = {
   "app.cast.queueTitle": "Fila",
   "app.cast.queueCount": { one: "{count} item", other: "{count} itens" },
   "app.cast.clear": "Limpar tudo",
+  "app.cast.testPicture": "Enviar imagem de teste",
   "app.cast.clearHint": "Encerra a transmissão e esvazia a fila",
   "ui.cast.slideshowHeader": "Apresentação",
   "ui.cast.slideshow": "Mostrar fotos como apresentação",

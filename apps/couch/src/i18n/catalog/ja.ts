@@ -813,6 +813,7 @@ export const ja: Catalogue = {
   "app.cast.queueTitle": "キュー",
   "app.cast.queueCount": { other: "{count}件" },
   "app.cast.clear": "すべて消去",
+  "app.cast.testPicture": "テスト画像を送信",
   "app.cast.clearHint": "キャストを止めてキューを空にします",
   "ui.cast.slideshowHeader": "スライドショー",
   "ui.cast.slideshow": "写真をスライドショーで表示",

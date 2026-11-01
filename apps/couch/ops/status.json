@@ -1,12 +1,12 @@
 {
   "stage": "owner-tested",
   "trial_kit": true,
-  "oversight_seen": 225,
-  "tests": "1932 pass (bun, Jest-compatible)",
+  "oversight_seen": 227,
+  "tests": "1937 pass (bun, Jest-compatible)",
   "typecheck": "core clean; app/ and src/ui clean against offline stubs (new, D75-1); full app tsc with real types needs PC verification",
-  "last_run": "2026-11-01 14:10 Sydney (run 167)",
-  "headline": "Your later 1 Nov fixes are in the build (Bonjour discovery, Show AirPlay TVs, cast error reasons, Cast port from Bonjour), and a failed Google TV pairing now offers \"casting only\" instead of a dead end.",
-  "next_for_owner": "1) Restart Couch twice and answer docs/TRIAL.md \"1 Nov\" questions 1-8 with your TCL. 2) On the newest TestFlight build, try pairing the TCL as a remote. 3) For App Review: App Privacy ('Data Not Collected'), review contact, screen recording (docs/RELEASE_CHECKLIST.md). Full install/typecheck needs PC verification (npm registry unreachable from the cloud).",
+  "last_run": "2026-11-01 17:55 Sydney (run 169)",
+  "headline": "Your \"Send test picture\" button is in the build: on the Cast tab it shows a fixed picture on a Google TV, so you can tell whether a black screen is the TV or the link to your phone.",
+  "next_for_owner": "1) Restart Couch twice and answer docs/TRIAL.md \"1 Nov\" questions 1-12 with your TCL. 2) On the newest TestFlight build, try pairing the TCL as a remote. 3) For App Review: App Privacy ('Data Not Collected'), review contact, screen recording (docs/RELEASE_CHECKLIST.md). Full install/typecheck needs PC verification (npm registry unreachable from the cloud).",
   "screenshots": {
     "dir": "store/screenshots/publish",
     "size": "1320x2868",

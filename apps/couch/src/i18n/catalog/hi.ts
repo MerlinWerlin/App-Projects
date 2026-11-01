@@ -813,6 +813,7 @@ export const hi: Catalogue = {
   "app.cast.queueTitle": "कतार",
   "app.cast.queueCount": { one: "{count} आइटम", other: "{count} आइटम" },
   "app.cast.clear": "सब हटाएँ",
+  "app.cast.testPicture": "टेस्ट तस्वीर भेजें",
   "app.cast.clearHint": "कास्ट रोकता है और कतार खाली करता है",
   "ui.cast.slideshowHeader": "स्लाइडशो",
   "ui.cast.slideshow": "फ़ोटो को स्लाइडशो की तरह चलाएँ",

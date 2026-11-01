@@ -855,6 +855,7 @@ export const ar: Catalogue = {
   "app.cast.queueTitle": "قائمة الانتظار",
   "app.cast.queueCount": { zero: "لا عناصر", one: "عنصر واحد", two: "عنصران", few: "{count} عناصر", many: "{count} عنصرًا", other: "{count} عنصر" },
   "app.cast.clear": "مسح الكل",
+  "app.cast.testPicture": "إرسال صورة اختبار",
   "app.cast.clearHint": "يوقف البث ويفرغ قائمة الانتظار",
   "ui.cast.slideshowHeader": "عرض الشرائح",
   "ui.cast.slideshow": "تشغيل الصور كعرض شرائح",

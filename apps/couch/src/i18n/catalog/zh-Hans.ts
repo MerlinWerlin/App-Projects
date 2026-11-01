@@ -797,6 +797,7 @@ export const zhHans: Catalogue = {
   "app.cast.queueTitle": "队列",
   "app.cast.queueCount": { other: "{count} 项" },
   "app.cast.clear": "全部清除",
+  "app.cast.testPicture": "发送测试图片",
   "app.cast.clearHint": "停止投放并清空队列",
   "ui.cast.slideshowHeader": "幻灯片",
   "ui.cast.slideshow": "以幻灯片播放照片",

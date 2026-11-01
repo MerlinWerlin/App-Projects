@@ -326,6 +326,7 @@ export const appEn = {
   "app.cast.queueTitle": "Queue",
   "app.cast.queueCount": { one: "{count} item", other: "{count} items" },
   "app.cast.clear": "Clear all",
+  "app.cast.testPicture": "Send test picture",
   "app.cast.clearHint": "Stops casting and empties the queue",
   "app.cast.localOnly": "Files go straight from this phone to the TV on your Wi-Fi, only while casting.",
   // No-purchase copy (release standard 1-2, 25 Oct 2026)

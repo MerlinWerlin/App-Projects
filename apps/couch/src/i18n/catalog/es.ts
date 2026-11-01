@@ -814,6 +814,7 @@ export const es: Catalogue = {
   "app.cast.queueTitle": "Cola",
   "app.cast.queueCount": { one: "{count} elemento", other: "{count} elementos" },
   "app.cast.clear": "Borrar todo",
+  "app.cast.testPicture": "Enviar imagen de prueba",
   "app.cast.clearHint": "Detiene el envío y vacía la cola",
   "ui.cast.slideshowHeader": "Presentación",
   "ui.cast.slideshow": "Ver las fotos como presentación",
