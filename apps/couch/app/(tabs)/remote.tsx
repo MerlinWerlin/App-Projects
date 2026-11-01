@@ -50,6 +50,7 @@ import { SimpleRemote } from '../../src/ui/remote/SimpleRemote';
 import { Touchpad } from '../../src/ui/remote/Touchpad';
 import { TvHeader } from '../../src/ui/remote/TvHeader';
 import { useAnnounce } from '../../src/ui/useAnnounce';
+import { RemoteDesignProvider } from '../../src/ui/v2';
 
 /** Splits a `...Rich` message around its {slot} so the slot can be a nested styled element. */
 function splitRich(text: string, slot: string): [string, string] {
@@ -146,6 +147,9 @@ export default function RemoteScreen() {
   const [sentBefore, sentAfter] = splitRich(t('app.remote.sentRich'), '{key}');
 
   return (
+    // Design v2 (T79, docs/DESIGN_V2.md step 8): the header and every sheet opened here take the v2
+    // roles from the remote theme. Keys, d-pad, glow and textures still read the theme directly.
+    <RemoteDesignProvider theme={theme}>
     <View style={styles.root}>
       {/* The theme's stage behind everything (near-black while a glow is on), incl. the status-bar strip. */}
       <Screen bg={stage.bg}>
@@ -310,6 +314,7 @@ export default function RemoteScreen() {
       {/* Floating volume HUD (T39): outside the ScrollView so it floats over the screen, not the content. */}
       <VolumeHud />
     </View>
+    </RemoteDesignProvider>
   );
 }
 
