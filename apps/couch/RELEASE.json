@@ -1,5 +1,5 @@
 {
   "mode": "update",
-  "note": "Couch: if Google TV pairing fails you can still add the TV for casting only",
+  "note": "Couch: clearer cast error (says whether the TV announces Cast)",
   "ascAppId": "6826135134"
 }

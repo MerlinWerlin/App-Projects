@@ -58,7 +58,7 @@ describe('Google Cast port lookup (owner TCL C7K, 1 Nov 2026)', () => {
       throw new Error('Connection refused');
     };
     await expect(withCastPortLookup(refuse, async () => null)('192.168.4.52', 8009, { tls: true })).rejects.toThrow(
-      'port 8009: Connection refused · no Cast service announced',
+      'port 8009 (no Cast service announced): Connection refused',
     );
     await expect(withCastPortLookup(refuse, async () => 8012)('192.168.4.52', 8009, { tls: true })).rejects.toThrow('port 8012: Connection refused');
   });
@@ -75,5 +75,16 @@ describe('Google Cast port lookup (owner TCL C7K, 1 Nov 2026)', () => {
       throw new Error('x');
     })('192.168.4.52', 8009, { tls: true });
     expect(tried).toEqual([6466, 8009, 8009]);
+  });
+});
+
+describe('withCastPortLookup announced on the default port', () => {
+  it('says the TV announced Cast on 8009 when 8009 still refuses', async () => {
+    const refuse: TcpFactory = async () => {
+      throw new Error('Connection refused');
+    };
+    await expect(withCastPortLookup(refuse, async () => 8009)('192.168.4.52', 8009, { tls: true })).rejects.toThrow(
+      'port 8009 (Cast announced on 8009): Connection refused',
+    );
   });
 });

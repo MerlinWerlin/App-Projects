@@ -76,8 +76,9 @@ export function withCastPortLookup(tcp: TcpFactory, lookup: CastPortLookup): Tcp
     try {
       return await tcp(host, port, opts);
     } catch (e) {
-      // Say whether the TV announced a Cast port at all, so the on-screen reason tells them apart.
-      throw tagged(port, e instanceof Error ? new Error(`${e.message}${advertised === null ? ' · no Cast service announced' : ''}`) : e);
+      // Say whether the TV announced a Cast port at all, up front, so a shortened on-screen reason keeps it.
+      const note = advertised === null ? 'no Cast service announced' : `Cast announced on ${advertised}`;
+      throw new Error(`port ${port} (${note}): ${e instanceof Error ? e.message : String(e)}`);
     }
   };
 }
