@@ -5,6 +5,8 @@ import { CastQueue } from '../core/cast/queue';
 import { SYSTEM_TIMER } from '../core/cast/session';
 import { createCastDriver, findCastTargets, type CastEnv } from '../core/cast/targets';
 import { GOOGLE_CAST_ON } from '../core/cast/googleCast/switch';
+import { bonjourCastPortLookup, withCastPortLookup } from '../core/cast/googleCast/castPort';
+import { loadBonjour } from '../native/bonjour';
 import { loadLanTls } from '../native/lanTls';
 import { loadMediaServer } from '../native/mediaServer';
 import { loadUdpFactory } from '../native/udp';
@@ -24,7 +26,15 @@ function createController(): CastController {
   const udp = loadUdpFactory();
   // tcp: the lan-wss TLS socket for Google Cast (T106); null in Expo Go, builds without it and when
   // the Google Cast switch is off (src/core/cast/googleCast/switch.ts, oversight D147-1).
-  const tcp = GOOGLE_CAST_ON ? loadLanTls() : null;
+  const tls = GOOGLE_CAST_ON ? loadLanTls() : null;
+  // Owner 1 Nov 2026: the TCL Google TV refused port 8009; use the Cast port it announces over Bonjour.
+  let bonjour: ReturnType<typeof loadBonjour> = null;
+  try {
+    bonjour = loadBonjour();
+  } catch {
+    bonjour = null;
+  }
+  const tcp = tls && bonjour ? withCastPortLookup(tls, bonjourCastPortLookup(bonjour)) : tls;
   const env: CastEnv = { fetch: fetchAdapter, udp, tcp, timer: SYSTEM_TIMER };
   return new CastController({
     findTargets: (tvs) => findCastTargets(env, tvs),
