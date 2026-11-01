@@ -15,3 +15,7 @@ declare module 'expo-sensors' {
 declare module 'expo' {
   export function requireOptionalNativeModule<T = unknown>(name: string): T | null;
 }
+
+declare module 'expo-router' {
+  export function Redirect(props: { href: string }): any;
+}

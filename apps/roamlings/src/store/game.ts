@@ -26,6 +26,8 @@ const SETTINGS_KEY = 'roamlings.settings.v1';
 
 export interface Settings {
   haptics: boolean;
+  /** Seen the first-run welcome. */
+  onboarded: boolean;
 }
 
 function deviceRegion(): RegionId {
@@ -37,7 +39,7 @@ function deviceRegion(): RegionId {
 }
 
 let state: GameState = newGame(Date.now(), localDay(new Date()), deviceRegion());
-let settings: Settings = { haptics: true };
+let settings: Settings = { haptics: true, onboarded: false };
 let loaded = false;
 const listeners = new Set<() => void>();
 let saveTimer: ReturnType<typeof setTimeout> | null = null;
@@ -138,6 +140,11 @@ export const actions = {
   },
   setRegion(region: RegionId): void {
     set(setRegion(state, region));
+  },
+  setOnboarded(): void {
+    settings = { ...settings, onboarded: true };
+    emit();
+    AsyncStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)).catch(() => {});
   },
   setHaptics(on: boolean): void {
     settings = { ...settings, haptics: on };

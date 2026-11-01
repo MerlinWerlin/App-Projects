@@ -64,6 +64,7 @@ export default function RootLayout() {
       <WidgetSync />
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: c.bg }, animation: 'fade' }}>
         <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="welcome" options={{ animation: 'fade', gestureEnabled: false }} />
         <Stack.Screen name="hatch" options={{ presentation: 'fullScreenModal', animation: 'fade' }} />
         <Stack.Screen name="focus" options={{ presentation: 'modal' }} />
         <Stack.Screen name="pet/[id]" options={{ presentation: 'modal' }} />

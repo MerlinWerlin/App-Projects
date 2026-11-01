@@ -138,6 +138,17 @@ export const en = {
   'settings.version': 'Version {v}',
   'settings.privacy': 'No accounts, ads or tracking. Steps are read on your phone and never leave it.',
 
+  'welcome.1.title': 'Meet the Roamlings',
+  'welcome.1.body': 'Little creatures that grow when you do. Walk, focus and look after them to earn Spark.',
+  'welcome.2.title': 'Spark hatches eggs',
+  'welcome.2.body': 'Fill the egg meter to hatch a new Roamling. Some come in rare colours or with rare parts.',
+  'welcome.3.title': 'Raise them your way',
+  'welcome.3.body': 'Your buddy grows up into a different form depending on what you do together.',
+  'welcome.next': 'Next',
+  'welcome.go': 'Hatch my first egg',
+  'welcome.motion': 'Roamlings will ask to count your steps. Steps stay on your phone.',
+  'welcome.page': 'Page {n} of {total}',
+
   'widget.eggsReady': 'eggs ready',
   'widget.hatch': 'Open to hatch your egg',
 

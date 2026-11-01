@@ -1,5 +1,5 @@
 import { Feather } from '@expo/vector-icons';
-import { router, useFocusEffect } from 'expo-router';
+import { Redirect, router, useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState, Linking, Platform, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -8,7 +8,7 @@ import { type CareAction, DAILY_SPARK_CAP, EGG_COST, moodFor, stageProgress } fr
 import { getSpecies } from '../../src/core/species';
 import { petName, speciesName, t } from '../../src/i18n';
 import { type StepsStatus, stepsPermission, stepsToday, watchSteps } from '../../src/native/steps';
-import { actions, getGame, useGame } from '../../src/store/game';
+import { actions, getGame, useGame, useSettings } from '../../src/store/game';
 import { space, type as ty, useColors } from '../../src/theme/tokens';
 import { useHaptics } from '../../src/ui/haptics';
 import { Button, Card, Egg, Meter, RarityBadge, formatDuration, regionTint } from '../../src/ui/kit';
@@ -82,8 +82,10 @@ export default function Home() {
     return () => clearInterval(id);
   }, []);
 
+  const { onboarded } = useSettings();
   const pet = buddy(g);
   const mood = moodFor(g.happiness);
+  if (!onboarded && g.pets.length === 0) return <Redirect href="/welcome" />;
   const eggPct = g.eggSpark / EGG_COST;
   const tint = regionTint[g.region] ?? '#A08C5B';
 
