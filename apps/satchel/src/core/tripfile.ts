@@ -6,7 +6,8 @@
 // bytes sit in `journal_photos`, and photos that couldn't be read or didn't fit stay counted in photoCount. Older
 // files have no journal or no journal_photos and import as before.
 //
-// What never goes in: travel documents (the vault), the emergency card and medical notes. They are not part of a
+// What never goes in: travel documents (the vault), the emergency card and medical notes. T124: nor home Wi-Fi or
+// alarm codes (phone-only; stripPhoneOnly removes code-like keys from the leaving-home note on write and read). They are not part of a
 // Trip in the model, and buildTripFile only ever sees the one trip and its own packing list, so they cannot leak in.
 //
 // Importing never overwrites anything: the trip, every booking, place, packing row and attachment get new ids, so
@@ -37,6 +38,7 @@ import { checkFileSpending } from './spending.ts';
 import { cleanFileTogether } from './together.ts';
 import { cleanFileCash, importCash } from './cash.ts';
 import { importGifts, readFileGifts } from './gifts.ts';
+import { readFileLeavingHome, stripPhoneOnly } from './leavehome.ts';
 import { isLocalDateTime } from './tz.ts';
 
 export const TRIP_FILE_FORMAT = 'satchel-trip';
@@ -94,7 +96,10 @@ export type BuildOptions = {
 
 /** Builds the file for one trip. Only that trip, its items, places, packing list and attachments are read. */
 export function buildTripFile(trip: Trip, payloads: Payloads, opts: BuildOptions = {}): BuildResult {
-  const { items: _items, places: _places, journal: _journal, ...fields } = trip;
+  const { items: _items, places: _places, journal: _journal, leavingHome: rawLeaving, ...tripRest } = trip;
+  // T124: the leaving-home checklist and sitter note travel; Wi-Fi and alarm codes never do (stripPhoneOnly).
+  const leaving = rawLeaving === undefined ? undefined : stripPhoneOnly(rawLeaving);
+  const fields: typeof tripRest & { leavingHome?: Trip['leavingHome'] } = leaving === undefined ? tripRest : { ...tripRest, leavingHome: leaving };
   const attachments: FilePayload[] = [];
   let skipped = 0;
   const items: FileItem[] = (trip.items ?? []).map((item) => {
@@ -264,7 +269,7 @@ export function parseTripFile(data: unknown): ParseResult {
   }
   // T82: companions, payers, splits and settlements are optional; unreadable ones are dropped, never the trip.
   // T102: so are cash rows (cleanFileCash).
-  const { items: _i, places: _p, demo, journal: rawJournal, ideas: rawIdeas, cover: rawCover, todos: rawTodos, dayPlans: rawDayPlans, gifts: rawGifts, ...tripFields } = cleanFileCash(cleanFileTogether(t));
+  const { items: _i, places: _p, demo, journal: rawJournal, ideas: rawIdeas, cover: rawCover, todos: rawTodos, dayPlans: rawDayPlans, gifts: rawGifts, leavingHome: rawLeaving, ...tripFields } = cleanFileCash(cleanFileTogether(t));
   const journal = readFileJournal(rawJournal);
   // T81: ideas are optional (older files have none); unreadable rows are left out rather than refusing the file.
   const ideas = readFileIdeas(rawIdeas);
@@ -276,6 +281,8 @@ export function parseTripFile(data: unknown): ParseResult {
   const dayPlans = readFileDayPlans(rawDayPlans);
   // T107: gifts are optional; unreadable rows are left out.
   const gifts = readFileGifts(rawGifts);
+  // T124: the leaving-home checklist is optional; unreadable rows and any code-like key are left out.
+  const leavingHome = readFileLeavingHome(rawLeaving);
   const trip: FileTrip = {
     ...(tripFields as unknown as FileTrip),
     ...(journal ? { journal } : {}),
@@ -284,6 +291,7 @@ export function parseTripFile(data: unknown): ParseResult {
     ...(todos ? { todos } : {}),
     ...(dayPlans ? { dayPlans } : {}),
     ...(gifts ? { gifts } : {}),
+    ...(leavingHome ? { leavingHome } : {}),
     id: isStr(t.id) ? t.id : '',
     homeTz: isStr(t.homeTz) ? t.homeTz : 'UTC',
     createdAt: isStr(t.createdAt) ? t.createdAt : '',

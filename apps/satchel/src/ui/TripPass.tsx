@@ -18,6 +18,8 @@ import { IconBadge, ProgressBar, SectionCard, toneColours, type Tone } from './h
 import { KIND_ICON, KIND_TONE, kindKey } from './kinds.tsx';
 import { TripCover } from './TripCover.tsx';
 import { DriveSidePill } from './driving.tsx';
+import type { LeaveDue } from '../core/leavehome.ts';
+import { LeaveHomePill } from './leavehome.tsx';
 
 /** Short status for a trip: "In 12 days", "Tomorrow", "Starts today", "Day 3 of 9", "Finished". */
 export function countdownShort(t: T, c: Countdown): string {
@@ -63,8 +65,9 @@ const PHASE_TONE: Record<Countdown['kind'], Tone> = { upcoming: 'sea', today: 'a
  * The boarding-pass body of a trip row (the caller wraps it in its pressable and gives the spoken label).
  * T83: `cover` adds the trip's illustrated cover as a strip across the top.
  * T122: `driving` adds a "Drive on the LEFT / RIGHT" pill for trips with a car booking abroad.
+ * T124: `leaving` adds a "Lock up today / tomorrow" pill while the leaving-home checklist isn't finished.
  */
-export const TripPass = memo(function TripPass({ trip, today, cover, driving }: { trip: Trip; today: string; cover?: CoverId; driving?: readonly DrivingBanner[] }) {
+export const TripPass = memo(function TripPass({ trip, today, cover, driving, leaving }: { trip: Trip; today: string; cover?: CoverId; driving?: readonly DrivingBanner[]; leaving?: LeaveDue | null }) {
   const { theme, t, lang } = useApp();
   const c = countdown(trip, today);
   const route = tripRoute(trip);
@@ -126,6 +129,7 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving }: 
           </View>
         ) : null}
         {driving?.length && c.kind !== 'past' ? <DriveSidePill banners={driving} /> : null}
+        {leaving && c.kind !== 'past' ? <LeaveHomePill due={leaving} /> : null}
         {c.kind === 'active' ? <ProgressBar progress={c.progress} tone="ok" label={t('design.pass.progressA11y', { day: c.day, total: c.total })} /> : null}
       </View>
       {/* Perforation with a notch cut out of each edge, like a torn-off stub. */}

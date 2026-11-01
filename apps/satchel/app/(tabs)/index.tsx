@@ -30,7 +30,10 @@ import { LeavingSoonBanner } from '../../src/ui/ReadinessCard.tsx';
 import { RecapHeroCard } from '../../src/ui/RecapHeroCard.tsx';
 import { TravelsCard } from '../../src/ui/TravelsCard.tsx';
 import { TripImport } from '../../src/ui/TripImport.tsx';
+import { GamesEntryCard } from '../../src/ui/games.tsx';
 import { DRIVING_TABLE, driveSideA11y } from '../../src/ui/driving.tsx';
+import { leaveNudge } from '../../src/core/leavehome.ts';
+import { LeaveHomeHomeCard, leavePillA11y } from '../../src/ui/leavehome.tsx';
 import { useHomeCountry } from '../../src/ui/HomeCountryPicker.tsx';
 import { ClockCard, countdownHeadline, TodayCard, TripPass } from '../../src/ui/TripPass.tsx';
 import { BatteryBannerSlot } from '../../src/ui/slots/BatteryBannerSlot.tsx';
@@ -68,15 +71,17 @@ export default function TripsScreen() {
       // T122: "Drive on the LEFT / RIGHT" for car bookings abroad (not on past trips).
       const driving = phase === 'past' ? [] : tripDrivingBanners(trip, DRIVING_TABLE, homeCountryFor(trip, homeIso));
       const drivingLine = driveSideA11y(t, driving);
+      // T124: "Lock up today / tomorrow" while the leaving-home checklist isn't finished.
+      const leaving = phase === 'past' ? null : leaveNudge(trip, Date.now());
       return (
         <FadeInView delay={Math.min(index, 4) * 40}>
           <PressableScale
             accessibilityRole="button"
-            accessibilityLabel={[t('spec41.trips.rowA11y', { name: trip.name, phase: t(`trips.phase.${phase}`), range }), drivingLine].filter(Boolean).join('. ')}
+            accessibilityLabel={[t('spec41.trips.rowA11y', { name: trip.name, phase: t(`trips.phase.${phase}`), range }), drivingLine, leavePillA11y(t, leaving)].filter(Boolean).join('. ')}
             accessibilityHint={t('spec41.trips.rowHint')}
             onPress={() => router.push(`/trip/${trip.id}`)}
           >
-            <TripPass trip={trip} today={today} cover={tripCover(trip)} driving={driving} />
+            <TripPass trip={trip} today={today} cover={tripCover(trip)} driving={driving} leaving={leaving} />
           </PressableScale>
         </FadeInView>
       );
@@ -131,6 +136,8 @@ export default function TripsScreen() {
           <InflightHomeCard trips={list} />
           {/* T71: "Your day" sits above the other cards, only while a trip is on today. */}
           <DayBriefCard trips={trips} />
+          {/* T124: "You leave tomorrow" with the leaving-home checklist, when no Your day brief shows it. */}
+          <LeaveHomeHomeCard trips={trips} />
           {/* T95: the arrival card for the first trip in the list reaching a new country. */}
           <ArrivalHomeCard trips={list} />
           {trips.length ? (
@@ -146,6 +153,8 @@ export default function TripsScreen() {
           <TodayCard trips={trips} />
           {focus && dest ? <ClockCard destTz={dest} homeTz={focus.homeTz} /> : null}
           <EmergencyShortcutSlot />
+          {/* T125: Travel games for the wait. */}
+          {trips.length ? <GamesEntryCard trips={trips} /> : null}
           {list.length ? (
             <View accessibilityRole="header" style={{ marginTop: space.s }}>
               <Label>{t('trips.title')}</Label>

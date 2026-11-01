@@ -111,6 +111,14 @@ export default function InflightScreen() {
         </FadeInView>
       ) : null}
 
+      {/* T125: travel games for the flight (plane bingo, spot it, question cards), all offline. */}
+      <Button
+        label={t('games.fromInflight')}
+        hint={t('games.fromInflightHint')}
+        kind="secondary"
+        icon="game-controller-outline"
+        onPress={() => router.push({ pathname: '/games', params: { tripId: v.tripId, mode: 'air' } })}
+      />
       <Button label={t('inflight.trip')} hint={t('inflight.tripHint')} kind="quiet" icon="list-outline" onPress={() => router.push({ pathname: '/trip/[id]', params: { id: v.tripId } })} />
       <Body muted>{t('inflight.offline')}</Body>
     </Screen>

@@ -25,6 +25,10 @@ import { holidayTodayLine } from './HolidaysCard.tsx';
 import { currentStay } from '../core/staydetails.ts';
 import { StayBriefRow } from './stay.tsx';
 import { CallHomeBriefRow } from './callhome.tsx';
+import { carDueBack } from '../core/followups100.ts';
+import { RentalBriefRow } from './followups100.tsx';
+import { LeaveHomeBriefRow } from './leavehome.tsx';
+import { GamesBriefRow } from './games.tsx';
 
 export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[] }) {
   const { theme, t } = useApp();
@@ -38,6 +42,8 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
   if (!b) return null;
   // T109: stay details for the stay you're in right now on this trip (by real instants, across zones).
   const stay = currentStay([b.trip], now);
+  // T123: the rental car due back today (drop-off today where you are, not yet passed): its leave-by line.
+  const car = carDueBack(b.trip, b.zone, b.today, now);
 
   const at = (i: Item) => {
     const time = formatTime(i.start.local);
@@ -123,8 +129,18 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
           <StayBriefRow item={stay.item} />
         </>
       ) : null}
+      {car ? (
+        <>
+          <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.heroMuted, opacity: 0.6 }} />
+          <RentalBriefRow item={car} zone={b.zone} />
+        </>
+      ) : null}
       {/* T114: "Good time to call Mum until 21:00" (nothing with nobody saved). */}
       <CallHomeBriefRow trip={b.trip} />
+      {/* T124: "Before you lock the door: today · 3 of 12 left" on the day you leave. */}
+      <LeaveHomeBriefRow trip={b.trip} now={now} />
+      {/* T125: "Games for the wait", mode from the next (or first) booking today. */}
+      <GamesBriefRow trip={b.trip} kind={n?.item.kind ?? b.first?.kind} />
     </View>
   );
 });
