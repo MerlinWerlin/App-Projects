@@ -1,0 +1,17 @@
+{
+  "about": "Studio brand for every app's social posts (one palette, one type system; no per-app colours). Palette 'A. Olive & Burgundy' (owner leaning olive/brown + burgundy, 25 Oct 2026); swap values here and re-render to change every kit. Fonts: SIL OFL, in fonts/.",
+  "studioName": "",
+  "colours": {
+    "bg": "#EFE7D8", "card": "#E0D4BF", "line": "#C2B39A", "text": "#1C1814", "secondary": "#5E4F3F",
+    "olive": "#6B7340", "dark": "#3A3A22", "wash": "#E2E1C8", "pop": "#7A2537", "soft": "#C9909A"
+  },
+  "fonts": {
+    "title":   {"file": "DMSerifDisplay-Regular.ttf"},
+    "quote":   {"file": "DMSerifDisplay-Italic.ttf"},
+    "heading": {"file": "BricolageGrotesque.ttf", "axes": "opsz,wdth,wght", "opsz": 48, "wght": 700},
+    "label":   {"file": "DMSans.ttf", "axes": "opsz,wght", "opsz": 14, "wght": 700},
+    "body":    {"file": "DMSans.ttf", "axes": "opsz,wght", "opsz": 14, "wght": 400},
+    "caption": {"file": "DMSans.ttf", "axes": "opsz,wght", "opsz": 14, "wght": 500},
+    "button":  {"file": "DMSans.ttf", "axes": "opsz,wght", "opsz": 14, "wght": 600}
+  }
+}

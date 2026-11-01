@@ -152,9 +152,9 @@
     {
       "slug": "couch",
       "name": "Couch",
-      "storeName": "",
+      "storeName": "Couch: TV Remote",
       "tagline": "Every button free. No ads.",
-      "stage": "building",
+      "stage": "launching",
       "nameLocked": false,
       "ascAppId": "6826135134",
       "appStoreUrl": "",
@@ -185,9 +185,9 @@
     {
       "slug": "glaze",
       "name": "Glaze",
-      "storeName": "",
+      "storeName": "Glaze: Icon Themes & Widgets",
       "tagline": "Widgets, icons and wallpapers",
-      "stage": "building",
+      "stage": "launching",
       "nameLocked": false,
       "ascAppId": "6826415074",
       "appStoreUrl": "",
@@ -220,7 +220,7 @@
     {
       "slug": "cue",
       "name": "Cue",
-      "storeName": "Cue: Teleprompter",
+      "storeName": "Cue: Voice-Paced Prompter",
       "tagline": "A teleprompter that waits for you",
       "stage": "prelaunch",
       "nameLocked": false,
@@ -259,8 +259,8 @@
     {
       "slug": "backspin",
       "name": "Backspin",
-      "storeName": "",
-      "tagline": "Reverse singing, with a real score",
+      "storeName": "Backspin: Reverse Singing",
+      "tagline": "Backwards voice party game",
       "stage": "prelaunch",
       "nameLocked": false,
       "ascAppId": "",
