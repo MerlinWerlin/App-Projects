@@ -62,6 +62,8 @@ export interface CastControllerDeps {
   canGoogleCast?: boolean;
   /** Timer for the confirmation deadline (CONFIRM_TIMEOUT_MS). Default: the system timer. */
   timer?: CastTimer;
+  /** Optional self-check: the phone fetches its own served URL and returns a short result line. */
+  checkFile?: (url: string) => Promise<string>;
 }
 
 export interface CastControllerSnapshot {
@@ -94,6 +96,8 @@ export interface CastDelivery {
   tvHost: string;
   /** host:port the TV must fetch the file from (this phone). */
   fileHost: string;
+  /** Result of the phone fetching its own served URL (owner 1 Nov 2026: TCL showed a black screen). */
+  fileCheck?: string;
 }
 
 /** host:port of an http URL, or '' when it cannot be parsed. */
@@ -473,6 +477,15 @@ export class CastController {
         : null;
       // Shown while the TV is asked, so a request that fails or hangs still says where it went.
       if (delivery) this.set({ delivery });
+      if (delivery && this.deps.checkFile) {
+        const check = this.deps.checkFile;
+        void check(url)
+          .catch((e: unknown) => `phone check failed: ${e instanceof Error ? e.message : String(e)}`)
+          .then((fileCheck) => {
+            const d = this.snap.delivery;
+            if (gen === this.playGen && !this.disposed && d) this.set({ delivery: { ...d, fileCheck } });
+          });
+      }
       await driver.load(toCastMedia(item, url));
       if (real && gen === this.playGen) this.armConfirm(gen, driver);
     } catch (e) {
