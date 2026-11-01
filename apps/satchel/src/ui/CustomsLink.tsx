@@ -13,7 +13,7 @@ import { homeCountryFor } from '../core/arrival.ts';
 import { findCustoms, tripCustomsCountries, type CustomsTable } from '../core/customs.ts';
 import type { Trip } from '../core/model.ts';
 import { useApp } from '../state/app.tsx';
-import { radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
+import { elevated, radius, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { IconBadge } from './hero.tsx';
 import { useHomeCountry } from './HomeCountryPicker.tsx';
 import { PressableScale } from './kit.tsx';
@@ -41,10 +41,7 @@ export function CustomsLink({ iso2, tripId }: { iso2: string; tripId?: string })
         paddingHorizontal: space.l,
         paddingVertical: space.m,
         borderRadius: radius.l,
-        borderWidth: theme.dark ? 1 : 0,
-        borderColor: theme.line,
-        backgroundColor: theme.cardRaised,
-        ...shadowOf(theme, 'low'),
+        ...elevated(theme, 'low'),
       }}
     >
       <IconBadge name="people-outline" tone="teal" />

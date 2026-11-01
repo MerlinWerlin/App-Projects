@@ -95,6 +95,8 @@ function Shell() {
           <Stack.Screen name="convert" options={{ ...header, title: t('convert.route') }} />
           <Stack.Screen name="tipping" options={{ ...header, title: t('tipping.route') }} />
           <Stack.Screen name="customs/[iso2]" options={{ ...header, title: t('customs.route') }} />
+          <Stack.Screen name="driving/[iso2]" options={{ ...header, title: t('driving.route') }} />
+          <Stack.Screen name="rental/[itemId]" options={{ ...header, title: t('driving.rental.route') }} />
           <Stack.Screen name="units" options={{ ...header, title: t('units.route') }} />
           <Stack.Screen name="travels" options={{ ...header, title: t('travels.route') }} />
           <Stack.Screen name="passport" options={{ ...header, title: t('stamps.route') }} />
@@ -109,6 +111,9 @@ function Shell() {
           <Stack.Screen name="trouble/numbers" options={{ ...header, title: t('trouble.route.numbers') }} />
           <Stack.Screen name="phrase-card" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="menu-card" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
+          <Stack.Screen name="helpcards" options={{ ...header, title: t('helpcards.route') }} />
+          <Stack.Screen name="helpcard-edit" options={{ ...header, presentation: 'modal', title: t('helpcards.edit.route') }} />
+          <Stack.Screen name="helpcard" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="loyalty/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="loyalty-edit" options={{ ...header, presentation: 'modal', title: t('loyalty.edit.newTitle') }} />
           <Stack.Screen name="trip-again/[tripId]" options={{ ...header, title: t('tripcopy.route') }} />

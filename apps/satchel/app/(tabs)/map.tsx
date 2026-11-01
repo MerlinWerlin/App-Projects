@@ -53,8 +53,8 @@ import { mapAvailable, SatchelMap, type MapFocus, type MapLine, type MapPin } fr
 import { useNetworkStatus } from '../../src/native/network.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
-import { fonts, radius, space, typeScale } from '../../src/theme/tokens.ts';
-import { HeroHeader, IconBadge, ProgressBar, SectionCard } from '../../src/ui/hero.tsx';
+import { fonts, radius, rhythm, space, typeScale } from '../../src/theme/tokens.ts';
+import { HeroHeader, IconBadge, ProgressBar, SectionCard, SectionHeader } from '../../src/ui/hero.tsx';
 import { kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, Chip, Label, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
@@ -636,8 +636,10 @@ export default function MapScreen() {
     );
   }
 
+  // T120: grouped by SectionHeader with the tabs' rhythm (Find and get around, Your places, Nearby), like Wallet,
+  // Emergency and Toilets.
   const header = (
-    <View style={{ gap: space.l, paddingBottom: space.s }}>
+    <View style={{ gap: rhythm.section, paddingBottom: rhythm.tight }}>
       {scoped ? (
         <Card>
           <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink }}>{t('map.scoped', { trip: scoped.name })}</Text>
@@ -651,7 +653,8 @@ export default function MapScreen() {
           onBackToTrip={() => router.push(`/trip/${scoped.id}`)}
         />
       ) : null}
-      <View onLayout={(e) => (searchY.current = e.nativeEvent.layout.y)}>
+      <View onLayout={(e) => (searchY.current = e.nativeEvent.layout.y)} style={{ gap: rhythm.tight }}>
+        <SectionHeader title={t('f99.map.sectionFind')} icon="navigate-outline" tone="sea" />
         <MapSearch
           sets={SETS}
           reveal={reveal}
@@ -662,11 +665,11 @@ export default function MapScreen() {
             if (h) focusOn(h);
           }}
         />
+        <Body muted>{t('map.online')}</Body>
+        <OfflineMaps installed={installed} refreshInstalled={refreshInstalled} onShow={showCity} />
       </View>
-      <Body muted>{t('map.online')}</Body>
-      <OfflineMaps installed={installed} refreshInstalled={refreshInstalled} onShow={showCity} />
 
-      <View style={{ gap: space.s }}>
+      <View style={{ gap: rhythm.tight }}>
         <Button label={t('map.whereAmI')} hint={t('map.whereHint')} onPress={whereAmI} />
         <Button kind="secondary" icon="compass-outline" label={t('wayback.open')} hint={t('wayback.openHint')} onPress={() => router.push('/wayback')} />
         {/* T79: opens the Toilets tab and starts one "near me" search (the nonce makes each tap a new search). T80: the
@@ -717,6 +720,8 @@ export default function MapScreen() {
         </Card>
       ) : null}
 
+      <View style={{ gap: rhythm.tight }}>
+      <SectionHeader title={t('f99.map.sectionYours')} icon="bookmark-outline" tone="warn" />
       <SectionCard title={t('places.heading')} icon="bookmark-outline" tone="warn">
         {saved.length === 0 ? <Body muted>{t('places.none')}</Body> : null}
         {saved.map((s) => (
@@ -740,7 +745,10 @@ export default function MapScreen() {
           </PressableScale>
         ))}
       </SectionCard>
+      </View>
 
+      <View style={{ gap: rhythm.tight }}>
+      <SectionHeader title={t('f99.map.sectionNearby')} icon="location-outline" tone="sea" />
       {SETS.length > 1 ? (
         <View style={{ gap: space.s }}>
           <Label>{t('map.city')}</Label>
@@ -788,6 +796,7 @@ export default function MapScreen() {
       {bookings.length === 0 ? <Body muted>{t('map.noBookingPins')}</Body> : null}
 
       {set ? heading(fromYou ? t('map.nearbyFromYou') : t('map.nearbyFromCity', { city: set.city })) : null}
+      </View>
     </View>
   );
 

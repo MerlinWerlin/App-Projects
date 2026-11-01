@@ -64,6 +64,7 @@ import { radius, space, typeScale } from '../../src/theme/tokens.ts';
 import { bagName, useWeightUnit } from '../../src/ui/bags.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
 import { FadeInView, SectionCard } from '../../src/ui/hero.tsx';
+import { TripAccentBand } from '../../src/ui/TripAccentBand.tsx';
 import { Body, Button, Chip, EmptyState, Label, PressableScale, Screen, TextField, ToggleRow, Warning } from '../../src/ui/kit.tsx';
 import { PositionField } from '../../src/ui/PositionField.tsx';
 
@@ -196,6 +197,8 @@ function GiftsBody({ trip }: { trip: Trip }) {
       contentContainerStyle={{ paddingTop: insets.top + space.l, paddingBottom: insets.bottom + space.xxl, paddingHorizontal: space.l, gap: space.l }}
     >
       <Stack.Screen options={{ title: t('gifts.title') }} />
+      {/* T120: the trip's name in its own accent (from its cover), like the trip screen. */}
+      <TripAccentBand trip={trip} />
 
       <SectionCard title={t('gifts.summary.title')} subtitle={t('gifts.summary.sub')} icon="gift-outline" tone="accent">
         {summary.total ? (

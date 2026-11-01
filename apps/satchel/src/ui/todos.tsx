@@ -8,7 +8,7 @@ import { formatDay, zoneCity } from '../core/format.ts';
 import { daysLeft, isOpenNow, type TodoState, type TodoView } from '../core/todos.ts';
 import type { T } from '../i18n/core.ts';
 import { useApp } from '../state/app.tsx';
-import { radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
+import { elevated, radius, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { IconBadge, toneColours, type IconName, type Tone } from './hero.tsx';
 import { PressableScale } from './kit.tsx';
 import { countryName } from './useTravelStats.ts';
@@ -115,8 +115,8 @@ export const TodoRow = memo(function TodoRow({
   return (
     <View
       style={[
-        { backgroundColor: theme.cardRaised, borderRadius: radius.l, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line, padding: space.s, gap: space.xs },
-        shadowOf(theme, 'low'),
+        elevated(theme, 'low'),
+        { borderRadius: radius.l, padding: space.s, gap: space.xs },
       ]}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>

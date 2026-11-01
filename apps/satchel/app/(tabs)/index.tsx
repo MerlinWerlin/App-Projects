@@ -14,6 +14,8 @@ import type { Trip } from '../../src/core/model.ts';
 import { tripPhase } from '../../src/core/timeline.ts';
 import { orderTrips } from '../../src/core/trips.ts';
 import { daysBetween } from '../../src/core/tz.ts';
+import { homeCountryFor } from '../../src/core/arrival.ts';
+import { tripDrivingBanners } from '../../src/core/driving.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
 import { space } from '../../src/theme/tokens.ts';
@@ -28,6 +30,8 @@ import { LeavingSoonBanner } from '../../src/ui/ReadinessCard.tsx';
 import { RecapHeroCard } from '../../src/ui/RecapHeroCard.tsx';
 import { TravelsCard } from '../../src/ui/TravelsCard.tsx';
 import { TripImport } from '../../src/ui/TripImport.tsx';
+import { DRIVING_TABLE, driveSideA11y } from '../../src/ui/driving.tsx';
+import { useHomeCountry } from '../../src/ui/HomeCountryPicker.tsx';
 import { ClockCard, countdownHeadline, TodayCard, TripPass } from '../../src/ui/TripPass.tsx';
 import { BatteryBannerSlot } from '../../src/ui/slots/BatteryBannerSlot.tsx';
 import { EmergencyShortcutSlot } from '../../src/ui/slots/EmergencyShortcutSlot.tsx';
@@ -48,6 +52,7 @@ export default function TripsScreen() {
     if (!ok) AccessibilityInfo.announceForAccessibility(t('error.trips.loadStill'));
   };
   const router = useRouter();
+  const { homeIso } = useHomeCountry();
   const insets = useSafeAreaInsets();
   const today = todayIn(deviceZone());
   const list = useMemo(() => orderTrips(trips, today), [trips, today]);
@@ -60,20 +65,23 @@ export default function TripsScreen() {
     ({ item: trip, index }: { item: Trip; index: number }) => {
       const phase = tripPhase(trip, today);
       const range = t('trips.dates', { range: formatRange(trip.startDate, trip.endDate, lang), n: daysBetween(trip.startDate, trip.endDate) + 1 });
+      // T122: "Drive on the LEFT / RIGHT" for car bookings abroad (not on past trips).
+      const driving = phase === 'past' ? [] : tripDrivingBanners(trip, DRIVING_TABLE, homeCountryFor(trip, homeIso));
+      const drivingLine = driveSideA11y(t, driving);
       return (
         <FadeInView delay={Math.min(index, 4) * 40}>
           <PressableScale
             accessibilityRole="button"
-            accessibilityLabel={t('spec41.trips.rowA11y', { name: trip.name, phase: t(`trips.phase.${phase}`), range })}
+            accessibilityLabel={[t('spec41.trips.rowA11y', { name: trip.name, phase: t(`trips.phase.${phase}`), range }), drivingLine].filter(Boolean).join('. ')}
             accessibilityHint={t('spec41.trips.rowHint')}
             onPress={() => router.push(`/trip/${trip.id}`)}
           >
-            <TripPass trip={trip} today={today} cover={tripCover(trip)} />
+            <TripPass trip={trip} today={today} cover={tripCover(trip)} driving={driving} />
           </PressableScale>
         </FadeInView>
       );
     },
-    [t, lang, today, router],
+    [t, lang, today, router, homeIso],
   );
 
   const c = focus ? countdown(focus, today) : null;

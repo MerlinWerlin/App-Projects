@@ -19,7 +19,7 @@ export const MAP_LAYERS = ['route', 'dayplan', 'bookings', 'ideas', 'saved', 'gi
 export type MapLayerId = (typeof MAP_LAYERS)[number];
 
 /** Theme colour names a layer's pins use (the UI reads theme[tone]); route pins take their day's colour. */
-export type LayerTone = 'accent' | 'accentStrong' | 'accentInk' | 'sea' | 'teal' | 'warn' | 'ok' | 'ink' | 'danger';
+export type LayerTone = 'accent' | 'accentStrong' | 'accentInk' | 'sea' | 'teal' | 'warn' | 'ok' | 'ink' | 'danger' | 'mapPlan' | 'mapWayback';
 
 export type LayerSpec = {
   id: MapLayerId;
@@ -38,12 +38,12 @@ export type LayerSpec = {
 
 export const LAYER_SPECS: Readonly<Record<MapLayerId, LayerSpec>> = {
   route: { id: 'route', prefix: 'r:', icon: 'trail-sign-outline', tone: 'accentStrong', byDay: true, tripOnly: true },
-  dayplan: { id: 'dayplan', prefix: 'd:', icon: 'walk-outline', tone: 'danger' },
+  dayplan: { id: 'dayplan', prefix: 'd:', icon: 'walk-outline', tone: 'mapPlan' },
   bookings: { id: 'bookings', prefix: 'b:', icon: 'ticket-outline', tone: 'accent' },
   ideas: { id: 'ideas', prefix: 'i:', icon: 'bulb-outline', tone: 'accentInk' },
   saved: { id: 'saved', prefix: 's:', icon: 'bookmark-outline', tone: 'warn' },
   gifts: { id: 'gifts', prefix: 'g:', icon: 'gift-outline', tone: 'teal' },
-  wayback: { id: 'wayback', prefix: 'w:', icon: 'flag-outline', tone: 'ink', phone: true },
+  wayback: { id: 'wayback', prefix: 'w:', icon: 'flag-outline', tone: 'mapWayback', phone: true },
   toilets: { id: 'toilets', prefix: 't:', icon: 'male-female-outline', tone: 'ok', phone: true },
   pois: { id: 'pois', prefix: 'p:', icon: 'location-outline', tone: 'sea' },
 };

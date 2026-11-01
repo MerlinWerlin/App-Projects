@@ -17,7 +17,7 @@ export function OfflineBannerSlot() {
   const title = t('offline.title');
   const body = t('offline.body');
   return (
-    <Card style={{ borderColor: theme.sea }}>
+    <Card style={{ borderWidth: 1, borderColor: theme.sea }}>
       <View
         accessible
         accessibilityRole="summary"

@@ -750,7 +750,7 @@
       ],
       "title": "Run-84 follow-ups: verify country_essentials.json against live IEC World Plugs/ITU pages (via the OpenAI lane or a networked run) and resolve its nulls; native-speaker check of src/content/phrases.json (docs/research/PHRASES.md list); Traditional Chinese card for TW/HK/MO; allergen slot on the allergy card; home country also in Settings; sample spending on the demo trip",
       "accept": "tests green; DECISIONS records sources",
-      "note": "Run 85: worker takes the offline part (home country in Settings, allergen slot, Traditional Chinese card for TW/HK/MO, sample spending on the demo trip); live-source verification and the native-speaker check stay open. Offline part done in run 85 (bc17b5e); still open: live IEC/ITU verification of country_essentials nulls, native-speaker check of phrases.json incl. zh-Hant + allergens, optional Cantonese/Jyutping card."
+      "note": "Run 85: worker takes the offline part (home country in Settings, allergen slot, Traditional Chinese card for TW/HK/MO, sample spending on the demo trip); live-source verification and the native-speaker check stay open. Offline part done in run 85 (bc17b5e); still open: live IEC/ITU verification of country_essentials nulls, native-speaker check of phrases.json incl. zh-Hant + allergens, optional Cantonese/Jyutping card. Run 100: networked worker re-checks country_essentials nulls against IEC World Plugs / ITU pages and the Matariki 2031-2035 dates (NZ Te Kahui o Matariki Public Holiday Act 2022 schedule), recording each source in DECISIONS; native-speaker check stays open. Run 100 (28ab7c8): Matariki 2023-2035 verified against the Act's Schedule 1 (no change, pinned by test); 21 country_essentials nulls filled from IEC World Plugs pages, 12 rows spot-checked OK; still open: nulls for BQ MS PF SH WF GS PN EH (+EH calling code, RW/SO plugs, TV voltage), 41 rows where the older IEC pages differ, native-speaker check."
     },
     {
       "id": "T59",
@@ -1499,12 +1499,48 @@
     },
     {
       "id": "T120",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "follow-up"
       ],
       "title": "Run-99 follow-ups: Map layers: saved toilet pin opens the Toilets tab at that toilet, own map tokens for plan stops and way-back pins, confirm layers/trail-sign/scan glyphs on a device. Plan again: option to copy gift people names only; owner call on copying notes / day plans / rates. Design: per-trip accent on packing, spending, journal and other trip screens, SectionHeader rhythm on the Map tab, elevated() for kit.tsx Card and remaining hand-built cards, translations for look2.*. Still open from T116/T112: device checks (arc animation, icons, Hermes timing, insights, camera, CSV, gift scroll, Wi-Fi from paste), customs 43 recheck rows, native-speaker menu check, Matariki 2031-2035 and other holiday re-checks online.",
+      "accept": "tests green; DECISIONS records sources",
+      "note": "Run 100: worker takes the offline parts (saved toilet pin opens Toilets at that toilet, own map tokens for plan stops and way-back pins, Plan again copies gift people names only as an option, per-trip accent on packing/spending/journal/todos/gifts screens, SectionHeader rhythm on the Map tab, elevated() for kit.tsx Card and remaining hand-built cards). Device checks, translations of look2.* (T21), owner calls and online re-checks stay open.",
+      "commit": "1dd6194"
+    },
+    {
+      "id": "T121",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Help cards (owner-1031 D, deepen Emergency + phrases): show-a-local cards for the people you travel with. 'If I'm lost' card per companion or child (name, who to call with a tap-to-call number, hotel name/address from the current stay, meeting point, optional photo kept on this phone) shown big in the local language + English, with a share/print-friendly view to screenshot to the child's phone; an accessibility needs card (wheelchair / step-free access, deaf or hard of hearing, blind or low vision, service dog, needs to sit, other free text) in the local language. Languages: the phrases.json languages, every translated line marked to native-check. Pure TS core src/core/helpcards.ts (card model, language pick from the trip's country, hotel lookup, text for share) with tests; entries from Emergency tab, I'm safe and phrases; phone-only storage with a guard that cards never reach .satchel files.",
+      "accept": "helpcards tests; every string in src/i18n/en/helpcards.ts; tokens only; no new npm dependency",
+      "commit": "af4d8f5"
+    },
+    {
+      "id": "T122",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Driving abroad + rental car (owner-1031 D, deepen Trips + Wallet): per-country driving guide for the customs-guide countries (side of the road, speed unit km/h or mph, whether an International Driving Permit is commonly asked for as general guidance, seat-belt/child-seat and phone-use notes, fuel words in the local language, toll/vignette note) each row with source + checked date and 'verify locally', rows marked to re-check where unsure; rental car checklist on a car-rental booking (pick-up photos of every side via the camera kept on this phone, fuel level and km at pick-up and return, return time with a leave-by reminder line, rental desk phone, excess/insurance note) and a 'Drive on the LEFT/RIGHT' banner on the trip card for car bookings. Pure TS core src/core/driving.ts (lookup, checklist state, km/mph conversion) with tests.",
+      "accept": "driving tests; every string in src/i18n/en/driving.ts; content test that each row has side + unit + source; tokens only; no new npm dependency",
+      "commit": "2b44779"
+    },
+    {
+      "id": "T123",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-100 follow-ups: Help cards: clean up a copied photo when the edit sheet is dismissed unsaved; native-speaker check of the 180 helpcards.json lines. Driving: re-read the per-country GOV.UK road pages for the 39 recheck rows; driving guide in Low-battery essentials; leave-by line on Your day. Device checks: toilet hand-off scroll, mapPlan/mapWayback pin colours on the real map, trip accents on trip screens, light-mode Card edge, rental camera, help-card screenshot readability.",
       "accept": "tests green; DECISIONS records sources"
     }
   ],

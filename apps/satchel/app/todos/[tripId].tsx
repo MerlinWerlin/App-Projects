@@ -32,6 +32,7 @@ import { useTrips } from '../../src/state/trips.tsx';
 import { space, typeScale } from '../../src/theme/tokens.ts';
 import { DateField } from '../../src/ui/DateTimeField.tsx';
 import { FadeInView, HeroHeader } from '../../src/ui/hero.tsx';
+import { AccentStripe, useTripAccent } from '../../src/ui/TripAccentBand.tsx';
 import { Body, Button, Card, EmptyState, Screen, TextField } from '../../src/ui/kit.tsx';
 import { useMapsOnPhone } from '../../src/ui/ReadinessCard.tsx';
 import { TodoRow } from '../../src/ui/todos.tsx';
@@ -131,6 +132,8 @@ function Todos({ trip }: { trip: Trip }) {
   const { saveTrip } = useTrips();
   const insets = useSafeAreaInsets();
   const maps = useMapsOnPhone();
+  // T120: group headings in the trip's own accent (from its cover), like the trip screen's days.
+  const accent = useTripAccent(trip);
   const [now, setNow] = useState(() => Date.now());
   useFocusEffect(useCallback(() => setNow(Date.now()), []));
   const [editing, setEditing] = useState<string | null>(null);
@@ -169,8 +172,9 @@ function Todos({ trip }: { trip: Trip }) {
     ({ item }: { item: Row }) => {
       if (item.kind === 'head') {
         return (
-          <View accessible accessibilityRole="header" accessibilityLabel={`${item.title}. ${item.count}`} style={{ flexDirection: 'row', alignItems: 'baseline', gap: space.s, marginTop: space.m }}>
-            <Text style={[typeScale.title, { flex: 1, color: theme.ink }]}>{item.title}</Text>
+          <View accessible accessibilityRole="header" accessibilityLabel={`${item.title}. ${item.count}`} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, marginTop: space.m }}>
+            <AccentStripe accent={accent} height={22} />
+            <Text style={[typeScale.title, { flex: 1, color: accent.ink }]}>{item.title}</Text>
             <Text style={[typeScale.caption, { color: theme.muted, fontVariant: ['tabular-nums'] }]}>{item.count}</Text>
           </View>
         );
@@ -181,7 +185,7 @@ function Todos({ trip }: { trip: Trip }) {
         </FadeInView>
       );
     },
-    [theme, now, toggle, edit, hide, restore],
+    [theme, accent, now, toggle, edit, hide, restore],
   );
 
   const subtitle = [t('todos.summary', { open: counts.open, done: counts.done }), counts.overdue ? t('todos.summaryOverdue', { n: counts.overdue }) : null].filter(Boolean).join(' · ');

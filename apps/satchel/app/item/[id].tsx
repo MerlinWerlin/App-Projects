@@ -20,6 +20,7 @@ import { ItemAddressSlot } from '../../src/ui/slots/ItemAddressSlot.tsx';
 import { ItemLoyaltySlot } from '../../src/ui/slots/ItemLoyaltySlot.tsx';
 import { ItemTicketSlot } from '../../src/ui/slots/ItemTicketSlot.tsx';
 import { ItemStaySlot } from '../../src/ui/stay.tsx';
+import { ItemRentalSlot } from '../../src/ui/driving.tsx';
 
 export default function ItemScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -112,6 +113,8 @@ export default function ItemScreen() {
       <ItemLoyaltySlot item={item} />
       <ItemAddressSlot trip={trip} item={item} />
       <ItemStaySlot item={item} />
+      {/* T122: rental car checklist on car bookings (phone only). */}
+      <ItemRentalSlot item={item} />
       <Card>
         {row('item.from', item.from?.name)}
         {row('item.to', item.to?.name)}

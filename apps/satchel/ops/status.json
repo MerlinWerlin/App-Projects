@@ -1,16 +1,16 @@
 {
- "tests": 1302,
- "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
- "last_run": "2026-11-01 12:10",
- "stage": "owner-tested",
- "oversight_seen": 223,
- "headline": "Expanding + design pass: map layers with a legend, plan a trip again, illustrated tab headers with a colour per trip",
- "next_for_owner": [
-  "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
-  "Map tab > Layers; a past trip > Plan again; look at the new Wallet, Emergency, Toilets and Map headers in light and dark mode; I'm safe > Plan a call home.",
-  "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
-  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (BM-BP are new) by commenting on this page."
- ],
- "trial_kit": true,
- "next_stage": "release-prep"
+  "tests": 1354,
+  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
+  "last_run": "2026-11-01 13:05",
+  "stage": "owner-tested",
+  "oversight_seen": 224,
+  "headline": "Expanding: help cards for the people you travel with, driving abroad + rental car checklist, map and look tweaks",
+  "next_for_owner": [
+    "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
+    "Emergency tab > Help cards; add a car rental booking to a trip (driving banner + rental checklist); Map tab: tap a saved toilet pin.",
+    "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
+    "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (BQ-BS are new) by commenting on this page."
+  ],
+  "trial_kit": true,
+  "next_stage": "release-prep"
 }

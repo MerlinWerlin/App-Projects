@@ -39,7 +39,7 @@ import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { useVaultDocs } from '../../src/state/vaultLock.ts';
-import { fonts, radius, shadowOf, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
+import { elevated, fonts, radius, shadowOf, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
 import { callAndExplain } from '../../src/ui/EmergencyCardView.tsx';
 import { FadeInView, ProgressBar, toneColours, type IconName } from '../../src/ui/hero.tsx';
 import { Body, Button, EmptyState, PressableScale } from '../../src/ui/kit.tsx';
@@ -143,8 +143,8 @@ export default function TroubleGuideScreen() {
           <FadeInView key={s.id} delay={Math.min(i, 6) * 40}>
             <View
               style={[
-                { backgroundColor: theme.cardRaised, borderRadius: radius.l, padding: space.m, gap: space.m, borderWidth: 1, borderColor: done ? theme.ok : theme.dark ? theme.line : theme.cardRaised },
-                shadowOf(theme, 'low'),
+                elevated(theme, 'low'),
+                { borderRadius: radius.l, padding: space.m, gap: space.m, borderWidth: 1, borderColor: done ? theme.ok : theme.dark ? theme.line : theme.cardRaised },
               ]}
             >
               <PressableScale

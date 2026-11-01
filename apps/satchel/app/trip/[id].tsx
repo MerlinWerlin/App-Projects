@@ -39,6 +39,7 @@ import { PlannedIdeas } from '../../src/ui/ideas.tsx';
 import { SharePlan } from '../../src/ui/SharePlan.tsx';
 import { AddToCalendar } from '../../src/ui/AddToCalendar.tsx';
 import { ArrivalCard } from '../../src/ui/ArrivalCard.tsx';
+import { DriveSideBanner } from '../../src/ui/driving.tsx';
 import { InflightTripCard } from '../../src/ui/InflightCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
@@ -269,6 +270,8 @@ export default function TripScreen() {
             <Button label={t('paste.open')} hint={t('paste.openHint')} kind="quiet" icon="clipboard-outline" onPress={pasteBooking} />
             {/* T95: "Welcome to <country>" while a trip country is arriving, else the countries strip. */}
             {past ? null : <ArrivalCard trip={trip} />}
+            {/* T122: "Drive on the LEFT / RIGHT" for each country the trip has a car booking in. */}
+            {past ? null : <DriveSideBanner trip={trip} />}
             <ReadinessCard trip={trip} />
             {/* T93: the trip's to-do list (hidden once the trip has ended). */}
             <TripTodosSlot trip={trip} />

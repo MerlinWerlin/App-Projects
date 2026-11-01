@@ -9,13 +9,15 @@ import { formatRange, formatTime, zoneCity } from '../core/format.ts';
 import { agendaBesideBrief } from '../core/daybrief.ts';
 import { clockPair, countdown, formatOffset, tripDays, tripRoute, type Countdown } from '../core/glance.ts';
 import type { CoverId } from '../core/covers.ts';
+import type { DrivingBanner } from '../core/driving.ts';
 import type { Trip } from '../core/model.ts';
 import type { T } from '../i18n/core.ts';
 import { useApp } from '../state/app.tsx';
-import { radius, shadowOf, space, typeScale } from '../theme/tokens.ts';
+import { elevated, radius, space, typeScale } from '../theme/tokens.ts';
 import { IconBadge, ProgressBar, SectionCard, toneColours, type Tone } from './hero.tsx';
 import { KIND_ICON, KIND_TONE, kindKey } from './kinds.tsx';
 import { TripCover } from './TripCover.tsx';
+import { DriveSidePill } from './driving.tsx';
 
 /** Short status for a trip: "In 12 days", "Tomorrow", "Starts today", "Day 3 of 9", "Finished". */
 export function countdownShort(t: T, c: Countdown): string {
@@ -60,8 +62,9 @@ const PHASE_TONE: Record<Countdown['kind'], Tone> = { upcoming: 'sea', today: 'a
 /**
  * The boarding-pass body of a trip row (the caller wraps it in its pressable and gives the spoken label).
  * T83: `cover` adds the trip's illustrated cover as a strip across the top.
+ * T122: `driving` adds a "Drive on the LEFT / RIGHT" pill for trips with a car booking abroad.
  */
-export const TripPass = memo(function TripPass({ trip, today, cover }: { trip: Trip; today: string; cover?: CoverId }) {
+export const TripPass = memo(function TripPass({ trip, today, cover, driving }: { trip: Trip; today: string; cover?: CoverId; driving?: readonly DrivingBanner[] }) {
   const { theme, t, lang } = useApp();
   const c = countdown(trip, today);
   const route = tripRoute(trip);
@@ -75,8 +78,8 @@ export const TripPass = memo(function TripPass({ trip, today, cover }: { trip: T
       importantForAccessibility="no-hide-descendants"
       accessibilityElementsHidden
       style={[
-        { backgroundColor: theme.cardRaised, borderRadius: radius.l, opacity: c.kind === 'past' ? 0.78 : 1, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line },
-        shadowOf(theme, 'low'),
+        elevated(theme, 'low'),
+        { borderRadius: radius.l, opacity: c.kind === 'past' ? 0.78 : 1 },
       ]}
     >
       {cover ? (
@@ -122,6 +125,7 @@ export const TripPass = memo(function TripPass({ trip, today, cover }: { trip: T
             </View>
           </View>
         ) : null}
+        {driving?.length && c.kind !== 'past' ? <DriveSidePill banners={driving} /> : null}
         {c.kind === 'active' ? <ProgressBar progress={c.progress} tone="ok" label={t('design.pass.progressA11y', { day: c.day, total: c.total })} /> : null}
       </View>
       {/* Perforation with a notch cut out of each edge, like a torn-off stub. */}

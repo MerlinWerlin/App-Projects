@@ -22,9 +22,11 @@ import { mergeRecovered, parseStoredTrips, removeItem, removeTrip, upsertItem, u
 import { addDays } from '../core/tz.ts';
 import { documentDir, removeAppFiles } from '../native/files.ts';
 import { stayKeysToDrop } from '../core/followups97.ts';
+import { rentalKeysToDrop } from '../core/driving.ts';
 import { demoWithTicket, removeDemoExtras, seedDemoExtras } from './demoSeed.ts';
 import { readPersisted, setPersisted } from './persisted.ts';
 import { forgetStays } from './stay.ts';
+import { forgetRentals } from './rental.ts';
 
 const KEY = 'satchel.trips.v1';
 const UNREADABLE = `${KEY}.unreadable`;
@@ -181,6 +183,8 @@ function cleanUpTrip(id: string, trip: Trip | undefined, remaining: Trip[]): voi
     if (trip) removeAppFiles(tripFiles(trip)).catch(() => {});
     // T112: each booking's phone-only stay details go with the trip.
     if (trip) forgetStays(stayKeysToDrop(trip.items, remaining));
+    // T122: each car booking's phone-only rental checklist (and its pick-up photos) goes with the trip.
+    if (trip) forgetRentals(rentalKeysToDrop(trip.items, remaining));
     // Load the stored lists first so dropping one never overwrites the others with an empty store.
     readPersisted<PackStore>(PACKING_KEY, EMPTY_STORE)
       .then(() => setPersisted<PackStore>(PACKING_KEY, (s) => (s && typeof s === 'object' && !Array.isArray(s) ? dropList(s, id) : s), EMPTY_STORE))
@@ -197,6 +201,8 @@ function cleanUpItem(item: Item, remaining: Trip[]): void {
     removeAppFiles(itemFiles(item).filter((u) => !still.has(u))).catch(() => {});
     // T112: the booking's phone-only stay details (room, codes, Wi-Fi) go with it.
     forgetStays(stayKeysToDrop([item], remaining));
+    // T122: a car booking's rental checklist and pick-up photos go with it.
+    forgetRentals(rentalKeysToDrop([item], remaining));
   } catch {
     // never let clean-up break a delete
   }

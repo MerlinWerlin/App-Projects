@@ -48,6 +48,8 @@ function PlanAgain({ trip }: { trip: Trip }) {
   const autoName = nameForYear(trip.name, Number((validStart ? start : trip.startDate).slice(0, 4)));
   const [name, setName] = useState<string | null>(null);
   const [parts, setParts] = useState<CopyParts>(ALL_PARTS);
+  // T120: gift people's names only, off by default (gifts, prices and budgets never come along).
+  const [giftNames, setGiftNames] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saveFailed, setSaveFailed] = useState(false);
   const counts = useMemo(() => partCounts(trip, packing), [trip, packing]);
@@ -77,7 +79,7 @@ function PlanAgain({ trip }: { trip: Trip }) {
     setSaving(true);
     setSaveFailed(false);
     const chosen = Object.fromEntries(COPY_PARTS.map((p) => [p, parts[p] && shown.includes(p)])) as CopyParts;
-    const result = copyTrip(trip, packing, { startDate: start, parts: chosen, newId, name: name ?? autoName });
+    const result = copyTrip(trip, packing, { startDate: start, parts: chosen, newId, name: name ?? autoName, giftNames: giftNames && counts.giftPeople > 0 });
     const ok = await saveTrip(result.trip);
     if (!ok) {
       setSaving(false);
@@ -127,6 +129,12 @@ function PlanAgain({ trip }: { trip: Trip }) {
             <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t(`tripcopy.part.${p}Hint`)}</Text>
           </View>
         ))}
+        {counts.giftPeople > 0 ? (
+          <View style={{ gap: space.xs }}>
+            <ToggleRow label={t('f99.copy.giftNames', { n: counts.giftPeople })} hint={t('f99.copy.giftNamesHint')} value={giftNames} onChange={setGiftNames} />
+            <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('f99.copy.giftNamesHint')}</Text>
+          </View>
+        ) : null}
         <View style={{ gap: space.xs, borderTopWidth: 1, borderTopColor: theme.line, paddingTop: space.s }}>
           <Label>{t('tripcopy.never.title')}</Label>
           <Body muted>{t('tripcopy.never.body')}</Body>

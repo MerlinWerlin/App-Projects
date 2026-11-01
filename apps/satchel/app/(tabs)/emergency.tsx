@@ -10,6 +10,7 @@
 // T115: a Local customs row (app/customs/[iso2].tsx) right after it, for the same country.
 // T119: calm compass hero scene (entrance on every tab focus) and three sections with one rhythm: Numbers and your
 // card, Help and safety, Where you are.
+// T121: a Help cards row ("If I'm lost" and access needs cards; app/helpcards.tsx) right after I'm safe.
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
@@ -27,6 +28,7 @@ import { CountryEssentialsCard } from '../../src/ui/CountryEssentialsCard.tsx';
 import { CustomsLink } from '../../src/ui/CustomsLink.tsx';
 import { callAndExplain, EmergencyCardView } from '../../src/ui/EmergencyCardView.tsx';
 import { FocusEntrance, HeroHeader, IconBadge, SectionHeader } from '../../src/ui/hero.tsx';
+import { HelpCardsCard } from '../../src/ui/HelpCardsCard.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
 import { NearestHelpCard } from '../../src/ui/NearestHelpCard.tsx';
 import { SafeCheckCard } from '../../src/ui/SafeCheckCard.tsx';
@@ -170,6 +172,9 @@ export default function EmergencyScreen() {
         <FocusEntrance delay={120} style={{ gap: rhythm.stack }}>
           <SectionHeader title={t('look2.emergency.sectionHelp')} icon="shield-checkmark-outline" tone="teal" />
           <SafeCheckCard />
+
+          {/* T121: Help cards (app/helpcards.tsx). */}
+          <HelpCardsCard />
 
           {/* T101: Medicine times (app/meds.tsx). */}
           <MedTimesCard />

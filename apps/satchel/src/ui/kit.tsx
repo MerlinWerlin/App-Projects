@@ -9,7 +9,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { haptic } from '../native/device.ts';
 import { useApp } from '../state/app.tsx';
 import { duration, pressScale } from '../theme/motion.ts';
-import { fonts, radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
+import { elevated, fonts, radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { SpotArt, type SpotKind } from './illustrations/index.tsx';
 
 export function Screen({ children, scroll = true }: { children: ReactNode; scroll?: boolean }) {
@@ -43,15 +43,9 @@ export function Card({ children, style }: { children: ReactNode; style?: StylePr
   return (
     <View
       style={[
-        {
-          backgroundColor: theme.cardRaised,
-          borderRadius: radius.l,
-          borderWidth: 1,
-          borderColor: theme.dark ? theme.line : theme.paper,
-          padding: space.l,
-          gap: space.s,
-        },
-        shadowOf(theme, 'low'),
+        // T120: the shared elevation (raised surface, dark-mode hairline edge, light-mode shadow).
+        elevated(theme, 'low'),
+        { borderRadius: radius.l, padding: space.l, gap: space.s },
         style,
       ]}
     >

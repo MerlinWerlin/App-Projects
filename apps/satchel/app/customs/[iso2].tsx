@@ -21,6 +21,7 @@ import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
 import { radius, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
 import { CUSTOMS_TABLE } from '../../src/ui/CustomsLink.tsx';
+import { DrivingLink } from '../../src/ui/driving.tsx';
 import { FadeInView, HeroHeader, IconBadge, SectionCard, type IconName, type Tone } from '../../src/ui/hero.tsx';
 import { useHomeCountry } from '../../src/ui/HomeCountryPicker.tsx';
 import { Body, Button, Chip, EmptyState, Label, PressableScale, TextField } from '../../src/ui/kit.tsx';
@@ -95,6 +96,8 @@ export default function CustomsScreen() {
       {row ? (
         <FadeInView key={row.iso2} style={{ gap: space.l }}>
           <Guide row={row} />
+          {/* T122: driving notes for the same country. */}
+          <DrivingLink iso2={row.iso2} tripId={trip?.id} />
         </FadeInView>
       ) : (
         <EmptyState art="compass" title={t('customs.noCountry')} body={notCovered ? t('customs.notCovered') : t('customs.noCountryBody')} />

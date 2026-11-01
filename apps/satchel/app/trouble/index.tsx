@@ -13,7 +13,7 @@ import type { T } from '../../src/i18n/core.ts';
 import type { Key } from '../../src/i18n/en.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
-import { fonts, radius, shadowOf, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
+import { elevated, fonts, radius, shadowOf, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
 import { FadeInView, GradientFill, IconBadge, ProgressBar, toneColours, type IconName } from '../../src/ui/hero.tsx';
 import { PressableScale } from '../../src/ui/kit.tsx';
 
@@ -80,10 +80,7 @@ export default function TroubleListScreen() {
             paddingHorizontal: space.l,
             paddingVertical: space.m,
             borderRadius: radius.l,
-            borderWidth: theme.dark ? 1 : 0,
-            borderColor: theme.line,
-            backgroundColor: theme.cardRaised,
-            ...shadowOf(theme, 'low'),
+            ...elevated(theme, 'low'),
           }}
         >
           <IconBadge name="call-outline" tone="teal" />

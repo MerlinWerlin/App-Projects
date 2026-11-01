@@ -67,6 +67,7 @@ import { useTrips } from '../../src/state/trips.tsx';
 import { fonts, radius, space, TOUCH } from '../../src/theme/tokens.ts';
 import { useDiscardConfirm } from '../../src/ui/discardConfirm.ts';
 import { Body, Button, Card, EmptyState, Label, PressableScale, Screen, TextField, Title, ToggleRow } from '../../src/ui/kit.tsx';
+import { AccentHeading, useTripAccent } from '../../src/ui/TripAccentBand.tsx';
 import { PackHero, SharePackingList, suggestionLabel, SuggestionsCard, nightsText, useSmartData } from '../../src/ui/SmartPack.tsx';
 import { useTempUnit } from '../../src/ui/WeatherCard.tsx';
 import { BagBadge, BagFilterChips, BagHeaderCard, BagHintsCard, BagSettingsCard, ItemBagPicker, ItemWeightField, useWeightUnit } from '../../src/ui/bags.tsx';
@@ -265,6 +266,8 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
     AccessibilityInfo.announceForAccessibility(t('smartpack.suggest.dismissed'));
   };
   const tripName = trip.name;
+  // T120: category headings in the trip's own accent (from its cover), like the trip screen's days.
+  const accent = useTripAccent(trip);
   const [addingTemplate, setAddingTemplate] = useState(false);
   const insets = useSafeAreaInsets();
   const [draft, setDraft] = useState('');
@@ -329,13 +332,8 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
   const renderRow = useCallback(
     ({ item: row }: { item: Row }) =>
       row.type === 'header' ? (
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', paddingTop: space.l, paddingBottom: space.xs }}>
-          <View accessibilityRole="header">
-            <Label>{categoryName(t, row.category)}</Label>
-          </View>
-          <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted, fontVariant: ['tabular-nums'] }}>
-            {t('packing.categoryProgress', { done: row.done, total: row.total })}
-          </Text>
+        <View style={{ paddingTop: space.l, paddingBottom: space.xs }}>
+          <AccentHeading accent={accent} text={categoryName(t, row.category)} right={t('packing.categoryProgress', { done: row.done, total: row.total })} />
         </View>
       ) : (
         <PackRow
@@ -360,7 +358,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
           }}
         />
       ),
-    [t, theme, editing, update, qtyOf, suggestedOf, bagById, wUnit, list],
+    [t, accent, editing, update, qtyOf, suggestedOf, bagById, wUnit, list],
   );
 
   const header = (

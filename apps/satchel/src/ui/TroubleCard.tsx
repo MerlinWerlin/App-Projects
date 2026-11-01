@@ -8,7 +8,7 @@ import table from '../content/troubles.json';
 import { cleanProgress, guidesInProgress, TROUBLE_PROGRESS_KEY, type TroubleTable } from '../core/troubles.ts';
 import { useApp } from '../state/app.tsx';
 import { usePersisted } from '../state/persisted.ts';
-import { fonts, radius, shadowOf, space, TOUCH } from '../theme/tokens.ts';
+import { elevated, fonts, radius, space, TOUCH } from '../theme/tokens.ts';
 import { IconBadge } from './hero.tsx';
 import { PressableScale } from './kit.tsx';
 
@@ -35,10 +35,7 @@ export function TroubleCard() {
         paddingHorizontal: space.l,
         paddingVertical: space.m,
         borderRadius: radius.l,
-        borderWidth: theme.dark ? 1 : 0,
-        borderColor: theme.line,
-        backgroundColor: theme.cardRaised,
-        ...shadowOf(theme, 'low'),
+        ...elevated(theme, 'low'),
       }}
     >
       <IconBadge name="help-buoy-outline" tone="warn" />

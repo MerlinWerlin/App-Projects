@@ -36,7 +36,7 @@ export function BatteryBannerSlot() {
   const body = state.kind === 'offer' ? t('battery.lowBody') : t('battery.manualBody');
 
   return (
-    <Card style={{ borderColor: theme.warn }}>
+    <Card style={{ borderWidth: 1, borderColor: theme.warn }}>
       <View accessible accessibilityRole="summary" accessibilityLabel={`${title}. ${body}`} style={{ gap: space.xs }}>
         <Text style={{ fontFamily: fonts.displayMedium, fontSize: 18, color: theme.ink }}>{title}</Text>
         <Body muted>{body}</Body>

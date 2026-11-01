@@ -25,7 +25,7 @@ import { useApp } from '../src/state/app.tsx';
 import { stashPastedDraft } from '../src/state/pasteDraft.ts';
 import { usePersisted } from '../src/state/persisted.ts';
 import { useTrips } from '../src/state/trips.tsx';
-import { fonts, radius, shadowOf, space, TOUCH, typeScale } from '../src/theme/tokens.ts';
+import { elevated, fonts, radius, space, TOUCH, typeScale } from '../src/theme/tokens.ts';
 import { FadeInView, HeroHeader, IconBadge, SectionCard, toneColours } from '../src/ui/hero.tsx';
 import { KIND_ICON, KIND_TONE, kindKey } from '../src/ui/kinds.tsx';
 import { Body, Button, Chip, Label, ToggleRow } from '../src/ui/kit.tsx';
@@ -281,8 +281,8 @@ function BookingCard({
   return (
     <View
       style={[
-        { backgroundColor: theme.cardRaised, borderRadius: radius.l, overflow: 'hidden', borderWidth: theme.dark ? 1 : 0, borderColor: theme.line },
-        shadowOf(theme, 'low'),
+        elevated(theme, 'low'),
+        { borderRadius: radius.l, overflow: 'hidden' },
       ]}
     >
       {/* Kind-coloured stripe, like tickets and agenda rows. */}

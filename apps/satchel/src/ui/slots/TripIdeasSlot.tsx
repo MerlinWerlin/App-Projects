@@ -7,7 +7,7 @@ import { Text, View } from 'react-native';
 import { ideaStats, topIdeas } from '../../core/ideas.ts';
 import type { Trip } from '../../core/model.ts';
 import { useApp } from '../../state/app.tsx';
-import { radius, shadowOf, space, typeScale } from '../../theme/tokens.ts';
+import { elevated, radius, space, typeScale } from '../../theme/tokens.ts';
 import { IconBadge } from '../hero.tsx';
 import { categoryKey, IDEA_ICONS } from '../ideas.tsx';
 import { Button, PressableScale } from '../kit.tsx';
@@ -23,8 +23,8 @@ export function TripIdeasSlot({ trip }: { trip: Trip }) {
   return (
     <View
       style={[
-        { backgroundColor: theme.cardRaised, borderRadius: radius.l, padding: space.l, gap: space.s, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line },
-        shadowOf(theme, 'low'),
+        elevated(theme, 'low'),
+        { borderRadius: radius.l, padding: space.l, gap: space.s },
       ]}
     >
       <PressableScale

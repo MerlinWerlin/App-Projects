@@ -20,7 +20,7 @@ import { listInstalled, loadCachedCatalog } from '../native/cityMaps.ts';
 import { useApp } from '../state/app.tsx';
 import { usePersisted } from '../state/persisted.ts';
 import { useVaultDocs } from '../state/vaultLock.ts';
-import { radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
+import { elevated, radius, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { CustomsReadRows } from './CustomsLink.tsx';
 import { FadeInView, GradientFill, IconBadge, ProgressBar, toneColours, type IconName, type Tone } from './hero.tsx';
 import { PressableScale } from './kit.tsx';
@@ -180,8 +180,8 @@ export function ReadinessCard({ trip }: { trip: Trip }) {
     <FadeInView>
       <View
         style={[
-          { borderRadius: radius.l, overflow: 'hidden', backgroundColor: theme.cardRaised, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line },
-          shadowOf(theme, 'mid'),
+          elevated(theme, 'mid'),
+          { borderRadius: radius.l, overflow: 'hidden' },
         ]}
       >
         <View style={{ padding: space.l, gap: space.s, backgroundColor: theme.hero.trips[0] }}>

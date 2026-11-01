@@ -9,7 +9,8 @@ import { AA_LARGE, AA_TEXT, contrast, over, parseColour } from './contrast.ts';
 import { COVER_SCENES } from '../core/covers.ts';
 import { STAMP_INKS } from '../core/stamps.ts';
 import { coverScrim, dark, elevated, elevation, essentials, light, stampInks, stampPapers, surfaces, type HeroTone, type Theme } from './tokens.ts';
-import { tripAccent } from './tripAccent.ts';
+import { toHsl, tripAccent } from './tripAccent.ts';
+import { LAYER_SPECS, MAP_LAYERS } from '../core/maplayers.ts';
 
 type Pair = { fg: string; bg: string; min: number; what: string };
 type ColourKey = { [K in keyof Theme]: Theme[K] extends string ? K : never }[keyof Theme];
@@ -191,6 +192,45 @@ test('T119 per-trip accent: the same scene always gives the same accent; an unkn
   assert.notDeepEqual(tripAccent('coast', light), tripAccent('coast', dark));
   const odd = tripAccent('nowhere' as never, dark);
   assert.ok(contrast(odd.ink, dark.paper) >= AA_TEXT);
+});
+
+// A typical map ground under the pins (system map paper in light and dark mode), approximated.
+const MAP_GROUND = { light: ['#F5F2EC', '#FFFFFF', '#E8E4DA'], dark: ['#242733', '#1B1E27', '#30333D'] } as const;
+
+test('T120 map pin tokens: plan stops and way-back pins read on every surface and the map, carry card text, and stand apart', () => {
+  const fails: string[] = [];
+  const hueGap = (a: string, b: string) => {
+    const d = Math.abs(toHsl(a).h - toHsl(b).h) % 360;
+    return Math.min(d, 360 - d);
+  };
+  for (const th of [light, dark]) {
+    const name = th.dark ? 'dark' : 'light';
+    const grounds = [th.paper, th.card, th.cardRaised, ...Object.values(th.dark ? surfaces.dark : surfaces.light), ...MAP_GROUND[name]];
+    for (const key of ['mapPlan', 'mapWayback'] as const) {
+      const c = th[key];
+      assert.match(c, /^#[0-9A-F]{6}$/, `${name} ${key}`);
+      for (const bg of grounds) {
+        const r = contrast(c, bg);
+        if (r < AA_LARGE) fails.push(`${name} ${key} pin on ${bg}: ${r.toFixed(2)}`);
+      }
+      // the numbered badge and the legend swatch glyph are card-coloured on the pin colour
+      const on = contrast(th.card, c);
+      if (on < AA_TEXT) fails.push(`${name} card text on ${key}: ${on.toFixed(2)}`);
+      // its hue stands apart from every other layer's colour (route takes day colours, so its day-1 tone is checked)
+      for (const id of MAP_LAYERS) {
+        const other = th[LAYER_SPECS[id].tone];
+        if (LAYER_SPECS[id].tone === key) continue;
+        // a near-grey (ink) has no real hue: it only has to differ in lightness
+        if (toHsl(other).s < 0.25) continue;
+        const gap = hueGap(c, other);
+        if (gap < 25) fails.push(`${name} ${key} hue too close to ${id} (${LAYER_SPECS[id].tone}): ${gap.toFixed(0)}°`);
+      }
+    }
+    assert.notEqual(th.mapPlan, th.mapWayback);
+  }
+  assert.equal(LAYER_SPECS.dayplan.tone, 'mapPlan');
+  assert.equal(LAYER_SPECS.wayback.tone, 'mapWayback');
+  assert.deepEqual(fails, []);
 });
 
 test('low-battery essentials: white and grey text on pure black', () => {

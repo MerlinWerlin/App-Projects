@@ -8,7 +8,7 @@ import type { Trip } from '../../core/model.ts';
 import { showReadiness } from '../../core/readiness.ts';
 import { todoCounts, todoList } from '../../core/todos.ts';
 import { useApp } from '../../state/app.tsx';
-import { radius, shadowOf, space, typeScale } from '../../theme/tokens.ts';
+import { elevated, radius, space, typeScale } from '../../theme/tokens.ts';
 import { IconBadge } from '../hero.tsx';
 import { PressableScale } from '../kit.tsx';
 import { useMapsOnPhone } from '../ReadinessCard.tsx';
@@ -35,8 +35,8 @@ export function TripTodosSlot({ trip }: { trip: Trip }) {
       accessibilityHint={t('todos.slot.hint')}
       onPress={() => router.push(`/todos/${trip.id}`)}
       style={[
-        { backgroundColor: theme.cardRaised, borderRadius: radius.l, padding: space.l, gap: space.s, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line },
-        shadowOf(theme, 'low'),
+        elevated(theme, 'low'),
+        { borderRadius: radius.l, padding: space.l, gap: space.s },
       ]}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>

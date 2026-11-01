@@ -7,7 +7,8 @@
 // Never copied: booking references and seats (codes), attachments (tickets, vouchers), stay details (phone-only keys
 // per booking id, src/core/staydetails.ts: the copy has new booking ids, so it can never find them), receipts
 // (phone-only, keyed by expense id; no expense is copied), journal, spending (expenses, settlements, exchange rates),
-// cash and gifts, day plans (they point at the old days and ids) and the demo flag.
+// cash and gifts, day plans (they point at the old days and ids) and the demo flag. T120: the gift list's people can
+// come along by name only (CopyOptions.giftNames, off by default): new ids, no gifts, prices or budgets.
 //
 // The every-field guard: each table below is typed Record<keyof Required<X>, Rule>, so a field added to Trip, Item or
 // anything copied is a type error (sh ops/typecheck-core.sh) until it is given a rule here, and tripcopy.test.ts checks
@@ -20,6 +21,7 @@ import type { Idea } from './ideas.ts';
 import type { Todo } from './todos.ts';
 import type { PackItem, PackList } from './packing.ts';
 import type { Bag } from './bags.ts';
+import { readGifts, type GiftPerson } from './gifts.ts';
 import { addDays, checkWallTime, daysBetween, isLocalDateTime, isValidZone, wallMs, wallString } from './tz.ts';
 
 const DAY = 86_400_000;
@@ -59,6 +61,7 @@ export const TRIP_RULES: Rules<Trip> = {
   todos: { part: 'todos' },
   dayPlans: 'drop',
   cash: 'drop',
+  // The gifts themselves never come along; with the giftNames option only the people's names do (GIFT_PERSON_RULES).
   gifts: 'drop',
 };
 
@@ -105,6 +108,8 @@ export const IDEA_RULES: Rules<Idea> = {
 /** A suggestion's row that only held a tick is left out (ticks clear); a hidden suggestion stays hidden. */
 export const TODO_RULES: Rules<Todo> = { id: 'new', title: 'keep', due: 'shift', done: 'clear', suggestion: 'keep', dismissed: 'keep', createdAt: 'new', updatedAt: 'drop' };
 export const COMPANION_RULES: Rules<Companion> = { id: 'new', name: 'keep' };
+/** T120 gift people by name only (the giftNames option): a fresh id and date, an empty gift list, no budget. */
+export const GIFT_PERSON_RULES: Rules<GiftPerson> = { id: 'new', name: 'keep', budget: 'drop', gifts: 'clear', createdAt: 'new' };
 export const BUDGET_RULES: Rules<Budget> = { currency: 'keep', amount: 'keep' };
 export const PACK_LIST_RULES: Rules<PackList> = {
   tripId: 'new',
@@ -215,7 +220,7 @@ export function copyPreview(trip: Trip, newStart: LocalDate): CopyPreview {
 }
 
 /** How much each part would bring along (0 / false: nothing to copy, the screen hides that choice). */
-export type PartCounts = Record<Exclude<CopyPart, 'budget'>, number> & { budget: boolean };
+export type PartCounts = Record<Exclude<CopyPart, 'budget'>, number> & { budget: boolean; giftPeople: number };
 export function partCounts(trip: Trip, packing: PackList | null | undefined): PartCounts {
   const list = packing && packing.tripId === trip.id ? packing : null;
   return {
@@ -226,6 +231,7 @@ export function partCounts(trip: Trip, packing: PackList | null | undefined): Pa
     ideas: (trip.ideas?.length ?? 0) + (trip.places?.length ?? 0),
     todos: (trip.todos ?? []).filter((t) => !t.suggestion || t.dismissed).length,
     companions: trip.companions?.length ?? 0,
+    giftPeople: readGifts(trip).length,
     budget: !!trip.budget && typeof trip.budget.currency === 'string' && !!trip.budget.currency,
   };
 }
@@ -239,6 +245,8 @@ export type CopyOptions = {
   now?: string;
   /** The traveller's own name for the copy; absent or blank: nameForYear. */
   name?: string;
+  /** T120: bring the gift list's people by name only (no gifts, prices or budgets). Off unless set. */
+  giftNames?: boolean;
 };
 export type CopyResult = { trip: Trip; packing: PackList | null; days: number };
 
@@ -337,6 +345,10 @@ export function copyTrip(trip: Trip, packing: PackList | null | undefined, opts:
   if (parts.companions) {
     const companions = (trip.companions ?? []).map((c) => ({ ...kept(c, COMPANION_RULES), id: newId('comp') }) as Companion);
     if (companions.length) out.companions = companions;
+  }
+  if (opts.giftNames === true) {
+    const people = readGifts(trip).map((p) => ({ ...kept(p, GIFT_PERSON_RULES), id: newId('gp'), gifts: [], createdAt: now }) as GiftPerson);
+    if (people.length) out.gifts = people;
   }
   if (parts.budget && trip.budget) {
     const b = kept(trip.budget, BUDGET_RULES) as Budget;
