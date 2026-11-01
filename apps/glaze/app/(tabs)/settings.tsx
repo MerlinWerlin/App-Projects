@@ -8,7 +8,7 @@
 // Install all at once is the main way (T202) and shows the removal steps as a numbered sequence.
 import Constants from 'expo-constants';
 import { router } from 'expo-router';
-import { useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { StyleSheet, Text, View, type TextStyle } from 'react-native';
 import type { IconShape } from '../../src/core/iconspec';
 import { PROBE_APPS } from '../../src/core/installedProbe';
@@ -30,6 +30,8 @@ import { Sheet } from '../../src/ui/Sheet';
 import { ContextTip } from '../../src/ui/ContextTip';
 import { useToast } from '../../src/ui/Toast';
 import type { UpdateCheckOutcome } from '../../src/core/updates';
+import { formatDeferredDiagnostics, type StartupStepKey } from '../../src/core/startupDiagnostics';
+import { deferredIdle, deferredTimings } from '../../src/store/deferredWork';
 import { useT, type MessageKey, type Script } from '../../src/i18n';
 import { textStyleFor } from '../../src/ui/i18nLayout';
 import { BarIconButton, InsetGroup, InsetRow, LargeTitleScrollView, Skeleton, SwitchInsetRow } from '../../src/ui/v2';
@@ -55,6 +57,15 @@ const UPDATE_MESSAGE = {
   unavailable: 'settings.updates.unavailable',
   error: 'settings.updates.error',
 } as const satisfies Record<UpdateCheckOutcome, MessageKey>;
+
+// T257: plain-words names of the deferred launch steps (src/core/deferredWork.ts DEFERRED_STEPS).
+const STARTUP_STEP = {
+  packRestore: 'settings.about.startupSteps.packRestore',
+  widgetTheme: 'settings.about.startupSteps.widgetTheme',
+  themeArt: 'settings.about.startupSteps.themeArt',
+  installedProbe: 'settings.about.startupSteps.installedProbe',
+  packUpdates: 'settings.about.startupSteps.packUpdates',
+} as const satisfies Record<StartupStepKey, MessageKey>;
 
 // Same steps as removeGuide() in src/core/mobileconfig.ts, translated.
 const REMOVE_STEPS = [
@@ -285,6 +296,7 @@ export default function SettingsScreen() {
           accessibilityLabel={t('settings.about.version', { version })}
         />
         <UpdateRow />
+        <StartupRow />
       </InsetGroup>
 
       <PlusLockSheet visible={plusOpen} onClose={() => setPlusOpen(false)} />
@@ -352,6 +364,43 @@ function UpdateRow() {
       haptic={false}
     />
   );
+}
+
+// T257: one plain line about the last launch's background work (T250 deferred queue timings, kept on
+// the phone). Read on mount and again once the queue is idle; never throws.
+function StartupRow() {
+  const { t, formatNumber } = useT();
+  const read = (): readonly unknown[] => {
+    try {
+      return deferredTimings();
+    } catch {
+      return [];
+    }
+  };
+  const [timings, setTimings] = useState<readonly unknown[]>(read);
+  useEffect(() => {
+    let alive = true;
+    deferredIdle()
+      .then(() => {
+        if (alive) setTimings(read());
+      })
+      .catch(() => undefined);
+    return () => {
+      alive = false;
+    };
+  }, []);
+  const line = formatDeferredDiagnostics(timings, {
+    line: (v) => t('settings.about.startupLine', v),
+    failed: ({ count }) => t('settings.about.startupFailed', { n: formatNumber(count) }),
+    empty: t('settings.about.startupEmpty'),
+    duration: (d) =>
+      d.unit === 'ms'
+        ? t('settings.about.startupMs', { value: formatNumber(d.value) })
+        : t('settings.about.startupSeconds', { value: formatNumber(d.value, { maximumFractionDigits: 1 }) }),
+    step: (key, raw) => (key ? t(STARTUP_STEP[key]) : raw),
+  });
+  const title = t('settings.about.startupRow');
+  return <InsetRow icon="activity" iconTone="sky" title={title} subtitle={line} accessibilityLabel={[title, line].join(', ')} />;
 }
 
 function Para({ title, children }: { title: string; children?: ReactNode }) {

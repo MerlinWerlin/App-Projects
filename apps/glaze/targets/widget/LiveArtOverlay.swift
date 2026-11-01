@@ -101,6 +101,8 @@ enum LiveArtStore {
       return LiveArtSpec.parse(record["live"])
     }
     guard let name = SeamlessStore.familyName(family) else { return nil }
+    // T259: the plain background (no image) has no live value.
+    if WidgetArtStore.unpinnedShowsBackground(family) { return nil }
     let file = container.appendingPathComponent("seamless-\(name).png")
     guard
       let attrs = try? FileManager.default.attributesOfItem(atPath: file.path),

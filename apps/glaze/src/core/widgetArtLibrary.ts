@@ -12,6 +12,7 @@
 //                         widget timelines)
 // The widget extension reads index.json (newest first) for the Edit Widget picker. A widget with no
 // chosen piece, or whose piece was removed, shows the last applied image (seamless-<size>.png).
+// T259: unless index.json `unpinned` says otherwise for its size (after a theme swap): unpinnedChoice.
 //
 // Pure TS (Node runs it directly), tested in widgetArtLibrary.test.ts.
 // T237: a piece may carry `live` (src/core/liveArt.ts LiveArtSpec): the widget draws the live value
@@ -75,7 +76,19 @@ export type WidgetArtIndex = {
    * these ids show the current theme's piece of the same size + slot (WidgetArtStore.resolve).
    */
   retired?: Record<string, RetiredPiece>;
+  /**
+   * T259: what a widget with NO piece chosen in Edit Widget ("unpinned") shows, per size. A piece id
+   * (the current theme's first piece of that size; resolved like a chosen one if it goes), or null =
+   * the theme's plain background. A size not listed = the last applied image (seamless-<size>.png),
+   * the pre-T259 behaviour. Set for every size on a theme swap; a size is dropped again when the
+   * app writes seamless-<size>.png (pinLastApplied). See unpinnedChoice.
+   */
+  unpinned?: UnpinnedMap;
 };
+
+/** T259: per size, the piece an unpinned widget follows (null = the theme's plain background). */
+export type UnpinnedMap = Partial<Record<WidgetArtSize, string | null>>;
+export const WIDGET_ART_SIZES: readonly WidgetArtSize[] = Object.freeze(['small', 'medium', 'large'] as WidgetArtSize[]);
 
 export function emptyLibrary(): WidgetArtIndex {
   return { v: 1, pieces: [] };
@@ -188,12 +201,32 @@ export function parseLibrary(raw: string | null | undefined): WidgetArtIndex {
   return { ...lib, ...meta };
 }
 
-function readMeta(r: Record<string, unknown>): Pick<WidgetArtIndex, 'currentThemeId' | 'migrated' | 'retired'> {
-  const out: Pick<WidgetArtIndex, 'currentThemeId' | 'migrated' | 'retired'> = {};
+type IndexMeta = Pick<WidgetArtIndex, 'currentThemeId' | 'migrated' | 'retired' | 'unpinned'>;
+
+function readUnpinned(raw: unknown): UnpinnedMap | undefined {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return undefined;
+  const r = raw as Record<string, unknown>;
+  const out: UnpinnedMap = {};
+  let n = 0;
+  for (const size of WIDGET_ART_SIZES) {
+    if (!Object.prototype.hasOwnProperty.call(r, size)) continue;
+    const v = r[size];
+    if (v === null) out[size] = null;
+    else if (isValidPieceId(v)) out[size] = v;
+    else continue;
+    n++;
+  }
+  return n > 0 ? out : undefined;
+}
+
+function readMeta(r: Record<string, unknown>): IndexMeta {
+  const out: IndexMeta = {};
   if (typeof r.currentThemeId === 'string' && r.currentThemeId.length > 0) out.currentThemeId = r.currentThemeId.slice(0, 120);
   if (typeof r.migrated === 'number' && Number.isFinite(r.migrated) && r.migrated > 0) out.migrated = Math.floor(r.migrated);
   const retired = readRetired(r.retired);
   if (retired) out.retired = retired;
+  const unpinned = readUnpinned(r.unpinned);
+  if (unpinned) out.unpinned = unpinned;
   return out;
 }
 
@@ -277,7 +310,9 @@ export function replaceThemeArt(lib: WidgetArtIndex, themeId: string | null): Cl
   const retired = retire(lib.retired, lib.pieces.filter((p) => remove.includes(p.id)), next.pieces);
   if (retired) next.retired = retired;
   else delete next.retired;
-  return { lib: next, keep: next.pieces.map((p) => p.id), remove };
+  // T259: a swap makes widgets with no chosen piece follow the new theme.
+  const followed = followTheme(lib, next);
+  return { lib: followed, keep: followed.pieces.map((p) => p.id), remove };
 }
 
 /**
@@ -315,7 +350,11 @@ export function migrateLibrary(lib: WidgetArtIndex, currentThemeId: string | nul
   const newestTheme = listPieces(lib).find((p) => !isUserPiece(p) && p.themeId)?.themeId ?? null;
   const current = currentThemeId || lib.currentThemeId || newestTheme;
   const r = replaceThemeArt(lib, current);
-  return { ...r, lib: { ...r.lib, migrated: version }, ran: true };
+  // T259: a clean-up is not a theme swap: unpinned widgets keep what they showed.
+  const migrated: WidgetArtIndex = { ...r.lib, migrated: version };
+  if (lib.unpinned) migrated.unpinned = lib.unpinned;
+  else delete migrated.unpinned;
+  return { ...r, lib: migrated, ran: true };
 }
 
 /** Manage > Delete selected. Unknown ids are ignored. */
@@ -393,5 +432,75 @@ export function resolveWidgetPiece(lib: WidgetArtIndex, id: string | null | unde
   const sameSize = want ? mine.filter((p) => p.size === want) : [];
   const sameSlot = r && r.slot !== null ? sameSize.find((p) => p.slot === r.slot) : undefined;
   return (sameSlot ?? sameSize[0] ?? mine[0]).id;
+}
+
+// ---------------------------------------------------------------- T259 (owner-1101i)
+// A widget with no piece chosen ("unpinned") showed the last applied image after a theme swap, which
+// can be the OLD theme's art. Now unpinned widgets follow the theme: after a swap they show the new
+// theme's first piece for their size (shelf order), or the theme's plain background when it has none
+// of that size. A widget where the person picked a piece in Edit Widget keeps it (T252's removed-piece
+// remap still applies). The app works this out here and writes it to index.json (`unpinned`); the
+// widget extension only reads it (WidgetArtSnapshot.unpinnedChoice in WidgetArtLibrary.swift
+// mirrors unpinnedChoice EXACTLY; keep the two in sync).
+
+/** T259: per size, the current theme's first piece (byShelf) of that size, else null. */
+export function unpinnedPlan(lib: WidgetArtIndex): Record<WidgetArtSize, string | null> {
+  const mine = currentThemePieces(lib);
+  const first = (size: WidgetArtSize): string | null => mine.find((p) => p.size === size)?.id ?? null;
+  return { small: first('small'), medium: first('medium'), large: first('large') };
+}
+
+/**
+ * T259: `next` (an edit of `prev` that may change the current theme) with `unpinned` kept right:
+ * - the current theme changed (a swap): every size follows the new theme (unpinnedPlan);
+ * - same theme (re-apply, a resumed run, a piece added): sizes already following are refreshed (the
+ *   theme's pieces may have changed); sizes showing the last applied image stay that way.
+ */
+export function followTheme(prev: WidgetArtIndex, next: WidgetArtIndex): WidgetArtIndex {
+  const before = prev.currentThemeId ?? null;
+  const after = next.currentThemeId ?? null;
+  const plan = unpinnedPlan(next);
+  const out: UnpinnedMap = {};
+  if (after !== null && after !== before) {
+    for (const size of WIDGET_ART_SIZES) out[size] = plan[size];
+  } else {
+    const was = prev.unpinned ?? {};
+    for (const size of WIDGET_ART_SIZES) if (size in was) out[size] = plan[size];
+  }
+  const res: WidgetArtIndex = { ...next };
+  if (Object.keys(out).length > 0) res.unpinned = out;
+  else delete res.unpinned;
+  return res;
+}
+
+/**
+ * T259: the app just wrote seamless-<size>.png itself (Use on my widget, Seamless setup), so unpinned
+ * widgets of that size show that image again. null = nothing to change (no index write needed).
+ */
+export function pinLastApplied(lib: WidgetArtIndex, size: WidgetArtSize | null | undefined): WidgetArtIndex | null {
+  if (!size || !lib.unpinned || !(size in lib.unpinned)) return null;
+  const rest: UnpinnedMap = { ...lib.unpinned };
+  delete rest[size];
+  const res: WidgetArtIndex = { ...lib };
+  if (Object.keys(rest).length > 0) res.unpinned = rest;
+  else delete res.unpinned;
+  return res;
+}
+
+/** T259: what an unpinned widget of one size shows. */
+export type UnpinnedChoice = { show: 'lastApplied' } | { show: 'background' } | { show: 'piece'; id: string };
+
+/**
+ * T259 (mirrored by WidgetArtSnapshot.unpinnedChoice in Swift): size not listed in `unpinned` → the
+ * last applied image (seamless-<size>.png, pre-T259); null → the theme's plain background; a piece
+ * id → resolved like a chosen piece (resolveWidgetPiece: itself, else the current theme's same size
+ * and slot), else the plain background. Never the previous theme's last applied image.
+ */
+export function unpinnedChoice(lib: WidgetArtIndex, size: WidgetArtSize | null): UnpinnedChoice {
+  if (!size || !lib.unpinned || !(size in lib.unpinned)) return { show: 'lastApplied' };
+  const want = lib.unpinned[size];
+  if (!want) return { show: 'background' };
+  const id = resolveWidgetPiece(lib, want, size);
+  return id ? { show: 'piece', id } : { show: 'background' };
 }
 

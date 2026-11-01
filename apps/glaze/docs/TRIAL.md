@@ -2,6 +2,14 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (1 Nov, late: run 222)
+Needs a TestFlight build **newer than 1.0.1 (20)** (the widget part is built into the app). Answer yes / no:
+
+1. **Icon install guide:** Install tab > one profile for all icons > open in Safari. Do the numbered steps (Close in Safari, then Settings > **More for Your iPhone** > **View Profile** > **Install**) match what your iPhone shows, and do the small drawn pictures next to each step look right? yes / no
+2. **Unpicked widgets follow the theme:** put a Glaze widget on the Home Screen without picking any art, then apply a different theme. Does the widget switch to the new theme's art (or its plain background if the theme has no art for that size), never the old theme's picture? A widget where you picked a piece yourself should keep it. yes / no
+3. **After a restart:** apply a theme, fully close Glaze straight away, reopen it. Does Edit Widget > Art still list all the new theme's pieces? yes / no
+4. **Startup line:** Settings > About > **Startup**: does it show a short line (e.g. "background work done in 190 ms") rather than an error? yes / no
+
 ## New since your last test (1 Nov, night: owner-1101h brief)
 These need the **new TestFlight build** (newer than 1.0.1 (19)): the widget changes are built into the app. Open Glaze, then answer yes / no:
 

@@ -182,6 +182,12 @@ function Art({ kind, c }: { kind: Illustration; c: PaletteV2 }) {
         </Phone>
       );
     }
+    case 'profile-downloaded':
+    case 'settings-more':
+    case 'more-view-profile':
+    case 'install-profile-sheet':
+      // T262: drawn full width by ProfileGuideArt; no small schematic.
+      return null;
     case 'remove-profile': {
       return (
         <Phone c={c}>

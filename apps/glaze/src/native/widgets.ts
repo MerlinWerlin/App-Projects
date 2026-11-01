@@ -19,6 +19,7 @@ import {
   listPieces,
   migrateLibrary,
   parseLibrary,
+  pinLastApplied,
   removeMany,
   removePiece,
   replaceThemeArt,
@@ -26,6 +27,7 @@ import {
   WIDGET_ART_SOURCES,
   type WidgetArtIndex,
   type WidgetArtPiece,
+  type WidgetArtSize,
   type WidgetArtSourceFile,
 } from '../core/widgetArtLibrary';
 import { commitThemeArt, type PlannedThemePiece } from '../core/themeArtSync';
@@ -418,6 +420,25 @@ async function editArtIndexNow(edit: (lib: WidgetArtIndex) => WidgetArtIndex | n
   }
 }
 
+/** T259: 'seamless-medium.png' → 'medium'; anything else (the photo file) → null. */
+function seamlessFileSize(from: string): WidgetArtSize | null {
+  const m = /^seamless-(small|medium|large)\.png$/.exec(from);
+  return m ? (m[1] as WidgetArtSize) : null;
+}
+
+/**
+ * T259: the app just wrote seamless-<size>.png itself, so widgets with no chosen piece show it again
+ * (drops `size` from index.json `unpinned`; no write when it is not there, e.g. no swap since). Best
+ * effort: never throws, never fails the write that called it.
+ */
+async function showLastApplied(size: WidgetArtSize): Promise<void> {
+  try {
+    await editArtIndex((lib) => pinLastApplied(lib, size));
+  } catch {
+    // The image is written; at worst unpinned widgets keep following the theme's own piece.
+  }
+}
+
 /** T221: the bridge with the library functions, or why not. */
 async function artBridge(): Promise<{ mod: NativeBridge | null; reason: WidgetsReason }> {
   const status = await isAvailable();
@@ -450,7 +471,10 @@ async function addToArtLibraryNow(piece: Omit<WidgetArtPiece, 'file'>, from: Wid
     let next = addPiece(lib, piece);
     // T238: adding a theme's art replaces the previous theme's auto-added art.
     if (piece.source !== 'photo' && piece.themeId) next = { ...next, lib: replaceThemeArt(next.lib, piece.themeId).lib };
-    const ok = (await mod.setWidgetArtIndex?.(serializeLibrary(next.lib))) === true;
+    // T259: the piece came from the seamless-<size>.png just written: unpinned widgets show it.
+    const size = seamlessFileSize(from);
+    const pinned = size ? pinLastApplied(next.lib, size) : null;
+    const ok = (await mod.setWidgetArtIndex?.(serializeLibrary(pinned ?? next.lib))) === true;
     return { available: true, ok, reason: ok ? null : 'failed' };
   } catch {
     return { available: true, ok: false, reason: 'failed' };
@@ -491,9 +515,11 @@ async function setWidgetArt(input: WidgetArtInput): Promise<WidgetsResult> {
     if (!mod) return { available: false, ok: false, reason: status.reason };
     if (typeof mod.setWidgetArt !== 'function') return { available: false, ok: false, reason: 'not-built' };
     if (!validWidgetArtInput(input)) return { available: true, ok: false, reason: 'failed' };
-    return run((m) =>
+    const res = await run((m) =>
       m.setWidgetArt?.(input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.background, input.colour, input.fit, input.size),
     );
+    if (res.ok) await showLastApplied(input.size);
+    return res;
   } catch {
     return { available: true, ok: false, reason: 'failed' };
   }
@@ -523,7 +549,7 @@ async function setSeamless(input: SeamlessInput): Promise<WidgetsResult> {
     if (typeof mod.setSeamless !== 'function') return { available: false, ok: false, reason: 'not-built' };
     if (!validSeamlessInput(input)) return { available: true, ok: false, reason: 'failed' };
     const c = input.cropPx;
-    return run((m) =>
+    const res = await run((m) =>
       m.setSeamless?.(
         input.wallpaperUri,
         Math.round(c.x),
@@ -534,6 +560,8 @@ async function setSeamless(input: SeamlessInput): Promise<WidgetsResult> {
         input.size,
       ),
     );
+    if (res.ok) await showLastApplied(input.size);
+    return res;
   } catch {
     return { available: true, ok: false, reason: 'failed' };
   }

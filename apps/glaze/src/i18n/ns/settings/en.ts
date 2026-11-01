@@ -70,6 +70,20 @@ export const en = {
     version: 'Glaze {version}',
     versionRow: 'Version',
     credits: 'Built with original art; app names belong to their owners.',
+    // T257: the startup diagnostics line (timings stay on the phone).
+    startupRow: 'Startup',
+    startupLine: 'Last launch: background work done in {total} · slowest step: {step}, {time}',
+    startupFailed: 'Steps that didn’t finish: {n}',
+    startupEmpty: 'No startup data yet',
+    startupMs: '{value} ms',
+    startupSeconds: '{value} s',
+    startupSteps: {
+      packRestore: 'theme packs',
+      widgetTheme: 'widget theme',
+      themeArt: 'widget art',
+      installedProbe: 'installed-apps check',
+      packUpdates: 'pack updates',
+    },
   },
   updates: {
     check: 'Check for updates',

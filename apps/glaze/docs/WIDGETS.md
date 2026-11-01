@@ -633,11 +633,32 @@ theme's (own photos stay); changing a widget's art "bugged out" after a swap.
   removed shows the current theme's piece of the same size + slot, else that size's first, else
   the theme's first (`resolveWidgetPiece` ⇄ `WidgetArtSnapshot.resolve`), else the last applied
   image, else the theme background; `entities(for:)` returns the removed id with the
-  replacement's name so the widget keeps its configuration. A widget with no piece chosen still
-  shows the last applied image (unchanged).
+  replacement's name so the widget keeps its configuration. A widget with no piece chosen: see
+  T259 below.
 - **Not compiled or device-tested here.** VERIFY on a dev build: apply theme A, place two Seamless
   widgets on A's pieces, apply theme B: Edit Widget > Art lists B's pieces first at once, both
   widgets show B's pieces in the same slots, own photos still listed.
+- **T260 (resumed step)**: the deferred 'themeArt' step resumed on the next launch (no Theme in
+  memory) looks the stored theme in use up by id (`src/store/themeLookup.ts`: bundled
+  `getAnyTheme`, the in-memory remote catalogue, then downloaded packs: a remote art pack's
+  manifest or a theme pack's themes; never a network fetch) and runs the same full
+  `syncThemeWidgetArt`. Only a theme found nowhere falls back to `replaceThemeArt` by id.
+- **T259 (unpinned widgets follow the theme)**: a widget with no piece chosen in Edit Widget used
+  to keep showing `seamless-<size>.png` after a swap (often the old theme's art). The app now
+  writes index `unpinned` (`{ small|medium|large: <id> | null }`, `followTheme` in
+  `src/core/widgetArtLibrary.ts`, set for every size by `commitThemeArt` / `replaceThemeArt` when
+  the current theme changes): the new theme's first piece for that size (shelf order), or null =
+  the theme's plain background (no "Set up in Glaze" hint). A size not listed = the last applied
+  image, as before (older indexes, the one-time clean-up). When the app writes
+  `seamless-<size>.png` itself (Use on my widget, Seamless setup: `setSeamless` / `setWidgetArt` /
+  `addToArtLibrary` from that file) the size is dropped again (`pinLastApplied`), so that image
+  shows. A piece picked in Edit Widget is untouched (removed → the T252 remap). Extension:
+  `WidgetArtSnapshot.unpinnedChoice` mirrors `unpinnedChoice`; `resolvedID` returns the followed
+  piece for a widget with no choice (image, Fit art and live value all come from it), and
+  `SeamlessStore.load` / `loadArt` / `LiveArtStore.spec` return nil when it is the plain
+  background. VERIFY on a dev build: unconfigured Seamless small + medium on theme A, apply theme B
+  with small art only: the small shows B's first small piece, the medium shows B's plain
+  background; "Use on my widget" for a B medium then shows it on the medium.
 
 ### Paper boat fit check (T223, owner-1101e)
 

@@ -23,11 +23,13 @@ import {
   serializeSavedWallpapers,
 } from '../core/activeTheme';
 import { DEFERRED_STEPS } from '../core/deferredWork';
+import { themeArtResumePlan } from '../core/themeArtResume';
 import type { Theme } from '../core/themes';
 import { averageColour } from '../core/wallpaper';
 import { widgets as nativeWidgets } from '../native/widgets';
 import { registerDeferred, requestDeferred } from './deferredWork';
 import { applyThemeIcons, loadStudio } from './studio';
+import { findAnyThemeById } from './themeLookup';
 import { syncThemeWidgetArt } from './themeWidgetArt';
 import { rememberWidgetTheme } from './widgetTheme';
 
@@ -88,9 +90,27 @@ export async function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
  * No-op in Expo Go / Android. A failed bridge write throws, so the queue retries it next launch.
  * T252 owns what this does to the library (src/native/widgets.ts / src/core/widgetArtLibrary.ts);
  * extra per-theme art work belongs in this step, not in applyThemeEverywhere.
+ * T260: resumed, it looks the stored theme up by id (src/store/themeLookup.ts: bundled, remote
+ * catalogue in memory, downloaded packs; no network) and runs the same full T252 sync; only a theme
+ * found nowhere falls back to replaceThemeArt by id. Runs in the queue (after the first screen,
+ * try/catch per step), so nothing here touches launch.
  */
 async function themeArtStep(arg: unknown): Promise<void> {
-  const theme = arg && typeof arg === 'object' && typeof (arg as Theme).id === 'string' ? (arg as Theme) : null;
+  let theme = arg && typeof arg === 'object' && typeof (arg as Theme).id === 'string' ? (arg as Theme) : null;
+  let fallbackId: string | null = null;
+  if (!theme) {
+    const id = await loadActiveThemeId();
+    let found: Theme | null = null;
+    try {
+      found = await findAnyThemeById(id);
+    } catch {
+      found = null;
+    }
+    const plan = themeArtResumePlan(id, found);
+    if (plan.kind === 'none') return;
+    if (plan.kind === 'sync') theme = plan.theme;
+    else fallbackId = plan.themeId;
+  }
   let res;
   if (theme) {
     // T252 (owner-1101h #3): ALL of this theme's widget art is added to My widget art and the previous
@@ -98,10 +118,11 @@ async function themeArtStep(arg: unknown): Promise<void> {
     const r = await syncThemeWidgetArt(theme);
     if (r.superseded || !r.available) return;
     res = { available: r.available, ok: r.ok };
+  } else if (fallbackId) {
+    // T238: the theme is unknown here (e.g. a removed pack): at least drop the other themes' art.
+    res = await nativeWidgets.replaceThemeArt(fallbackId);
   } else {
-    const id = await loadActiveThemeId();
-    if (!id) return;
-    res = await nativeWidgets.replaceThemeArt(id);
+    return;
   }
   if (res.available && !res.ok) throw new Error('widget art index write failed');
 }

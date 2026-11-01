@@ -221,18 +221,22 @@ test('choiceExplicit persists only when set', () => {
 
 // ---- steps on screen ----
 
-test('Safari route shows the four exact steps, in order, then the shared cards', () => {
+test('Safari route shows the six exact steps, in order, then the shared cards', () => {
   const cards = profileStepCards(1, 'safari');
-  assert.deepEqual(cards.map((c) => c.id), ['safari', 'allow', 'settings', 'home', 'not-verified', 'hide-old', 'remove']);
-  assert.deepEqual(cards.slice(0, 4).map((c) => c.body), [...SAFARI_PROFILE_STEPS]);
+  assert.deepEqual(cards.map((c) => c.id), ['safari', 'allow', 'more', 'view', 'settings', 'home', 'not-verified', 'hide-old', 'remove']);
+  assert.deepEqual(cards.slice(0, 6).map((c) => c.body), [...SAFARI_PROFILE_STEPS]);
   // T156: Safari may ask for the download before Install is tapped (the page auto-requests it).
   assert.equal(SAFARI_PROFILE_STEPS[0], 'Safari opens the Glaze page and may ask to download the profile straight away. If it doesn’t, tap Install.');
-  assert.equal(SAFARI_PROFILE_STEPS[1], 'Safari asks to allow a configuration profile download, sometimes before you tap Install: tap Allow, then Close.');
-  assert.match(SAFARI_PROFILE_STEPS[2], /^Open Settings: tap “Profile Downloaded” near the top \(or General > VPN & Device Management\), tap Install, enter your passcode, Install\.$/);
-  assert.equal(SAFARI_PROFILE_STEPS[3], 'Your icons appear on the Home Screen.');
+  // T262 (owner-1101i, iOS 27): Profile Downloaded -> Close; More for Your iPhone; View Profile; Install sheet.
+  assert.match(SAFARI_PROFILE_STEPS[1], /tap Allow\. Safari then says “Profile Downloaded”: tap Close\.$/);
+  assert.match(SAFARI_PROFILE_STEPS[2], /under your Apple Account, tap “More for Your iPhone”/);
+  assert.match(SAFARI_PROFILE_STEPS[2], /Not there\? Look for “Profile Downloaded” near the top of Settings, or General > VPN & Device Management\.$/);
+  assert.equal(SAFARI_PROFILE_STEPS[3], 'On the “Profile Downloaded” card, tap View Profile.');
+  assert.match(SAFARI_PROFILE_STEPS[4], /Tap Install \(top right\), enter your passcode, then tap Install again\.$/);
+  assert.equal(SAFARI_PROFILE_STEPS[5], 'Your icons appear on the Home Screen.');
   // The English catalogue the screen renders says the same.
   const c = en.install.safari.cards;
-  assert.deepEqual([c.safari.body, c.allow.body, c.settings.body, c.home.body], [...SAFARI_PROFILE_STEPS]);
+  assert.deepEqual([c.safari.body, c.allow.body, c.more.body, c.view.body, c.settings.body, c.home.body], [...SAFARI_PROFILE_STEPS]);
   // The share route keeps its own first steps.
   assert.deepEqual(profileStepCards(1).slice(0, 3).map((x) => x.id), ['save', 'open', 'install']);
   assert.deepEqual(profileStepCards(1, 'share').map((x) => x.id), profileStepCards(1).map((x) => x.id));
@@ -240,7 +244,7 @@ test('Safari route shows the four exact steps, in order, then the shared cards',
 
 test('every Safari card id has catalogue keys on the screen', () => {
   const screen = read('app/install.tsx');
-  for (const id of ['safari', 'allow', 'settings', 'home']) {
+  for (const id of ['safari', 'allow', 'more', 'view', 'settings', 'home']) {
     assert.ok(screen.includes(`install.safari.cards.${id}.title`), id);
     assert.ok(screen.includes(`install.safari.cards.${id}.body`), id);
   }

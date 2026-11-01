@@ -8,6 +8,9 @@
 // its own piece from "My widget art" (long-press > Edit Widget > Art); with no piece chosen, or one
 // removed from the library, it shows the last applied image for its size as before. Same kind
 // ("GlazeSeamless"), so widgets already on the Home Screen keep working.
+// T259: after a theme swap a widget with no piece chosen follows the new theme (index.json
+// `unpinned`, written by the app): the theme's first piece for its size (ArtProvider resolves it),
+// else the theme's plain background; the app writing seamless-<size>.png again restores that image.
 // T223: every family (small, medium, large, extra large) and every source (chosen piece or the
 // per-size file) goes through the one view below.
 // T236 (owner-1101g #1): Edit Widget > Layout. Fill (default): the composed image, which the bridge
@@ -37,7 +40,10 @@ enum SeamlessStore {
   }
 
   /// The composed image for this family, if the app has written one.
+  /// T259: nil after a swap to a theme with no piece of this size (index `unpinned`), so a widget
+  /// with no chosen piece shows the theme's plain background, never the old theme's art.
   static func load(_ family: WidgetFamily) -> UIImage? {
+    if WidgetArtStore.unpinnedShowsBackground(family) { return nil }
     guard
       let name = familyName(family),
       let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GlazeShared.appGroup)
@@ -50,6 +56,7 @@ enum SeamlessStore {
   /// T236: the raw art behind this family's composed image (seamless-<family>-art.png, written by
   /// setWidgetArt, removed by setSeamless), for the Fit layout. nil = fit the composed image.
   static func loadArt(_ family: WidgetFamily) -> UIImage? {
+    if WidgetArtStore.unpinnedShowsBackground(family) { return nil }
     guard
       let name = familyName(family),
       let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GlazeShared.appGroup)
@@ -92,7 +99,8 @@ struct SeamlessWidgetView: View {
     // Not loaded for Fill (widget memory budget).
     let raw: UIImage? = fit ? (WidgetArtStore.has(pieceID) ? WidgetArtStore.loadArt(pieceID) : SeamlessStore.loadArt(family)) : nil
     ZStack(alignment: .bottomLeading) {
-      if image == nil {
+      // T259: following a theme with no piece of this size = its plain background, no hint.
+      if image == nil && !WidgetArtStore.unpinnedShowsBackground(family) {
         VStack(alignment: .leading, spacing: 4) {
           Image(systemName: "sparkles")
             .font(.system(size: 18, weight: .semibold))

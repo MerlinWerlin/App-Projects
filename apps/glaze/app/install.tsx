@@ -43,6 +43,7 @@ import {
   buildInstallProfiles,
   checklistCount,
   iconFilename,
+  isGuideArt,
   isProfileStepDone,
   joinPath,
   overallProgress,
@@ -106,6 +107,7 @@ import { useColorsV2 } from '../src/theme/useTokens';
 import { ProgressBar } from '../src/ui/ProgressBar';
 import { IconGridSkeleton } from '../src/ui/Skeleton';
 import { StepIllustration } from '../src/ui/StepCard';
+import { ProfileGuideArt } from '../src/ui/ProfileGuideArt';
 import { ContextTip } from '../src/ui/ContextTip';
 import { haptic } from '../src/ui/haptics';
 import { PressableScale } from '../src/ui/PressableScale';
@@ -128,6 +130,9 @@ const CARD_KEYS = {
   // T126: Safari route.
   safari: { titleKey: 'install.safari.cards.safari.title', bodyKey: 'install.safari.cards.safari.body' },
   allow: { titleKey: 'install.safari.cards.allow.title', bodyKey: 'install.safari.cards.allow.body' },
+  // T262 (owner-1101i): iOS 27 "More for Your iPhone" and View Profile steps.
+  more: { titleKey: 'install.safari.cards.more.title', bodyKey: 'install.safari.cards.more.body' },
+  view: { titleKey: 'install.safari.cards.view.title', bodyKey: 'install.safari.cards.view.body' },
   settings: { titleKey: 'install.safari.cards.settings.title', bodyKey: 'install.safari.cards.settings.body' },
   home: { titleKey: 'install.safari.cards.home.title', bodyKey: 'install.safari.cards.home.body' },
 } as const;
@@ -1381,6 +1386,7 @@ function StepRow({
     on.value = withTiming(current ? 1 : 0, fadeTiming(reduced));
   }, [current, reduced, on]);
   const glow = useAnimatedStyle(() => ({ opacity: on.value }));
+  const guideArt = isGuideArt(illustration);
   const tileFill = done ? c.pastels.mint.fill : current ? c.tint : c.fill;
   const tileInk = done ? c.pastels.mint.ink : current ? c.onTint : c.inkSecondary;
   const label = current
@@ -1419,8 +1425,14 @@ function StepRow({
           </Text>
           <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: current ? c.ink : c.inkSecondary }]}>{body}</Text>
         </View>
-        <StepIllustration kind={illustration} />
+        {guideArt ? null : <StepIllustration kind={illustration} />}
       </View>
+      {/* T262: the redrawn iOS 27 screen for this step, full width under its text. */}
+      {guideArt ? (
+        <View style={styles.guideArt}>
+          <ProfileGuideArt kind={illustration} />
+        </View>
+      ) : null}
       <Pressable
         onPress={() => {
           haptic('select');
@@ -1578,6 +1590,7 @@ const styles = StyleSheet.create({
   stepRow: { paddingHorizontal: spaceV2.md, paddingTop: spaceV2.md, gap: spaceV2.xs },
   stepGlow: { borderRadius: radiusV2.control },
   stepTop: { flexDirection: 'row', alignItems: 'flex-start', gap: spaceV2.md },
+  guideArt: { paddingVertical: spaceV2.xs },
   numTile: { width: sizeV2.rowIcon, height: sizeV2.rowIcon, alignItems: 'center', justifyContent: 'center' },
   doneRow: {
     flexDirection: 'row',

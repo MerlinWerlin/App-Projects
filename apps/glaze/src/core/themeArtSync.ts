@@ -20,6 +20,7 @@ import type { WidgetOption, HomeOptionSize } from './widgetOptions.ts';
 import { shelfOptions } from './widgetOptions.ts';
 import {
   WIDGET_ART_LIBRARY_CAP,
+  followTheme,
   isUserPiece,
   listPieces,
   pieceFileName,
@@ -137,5 +138,6 @@ export function commitThemeArt(
   const retired = retire(lib.retired, gone, pieces);
   if (retired) next.retired = retired;
   else delete next.retired;
-  return { lib: next, keep: pieces.map((p) => p.id), remove: gone.map((p) => p.id) };
+  // T259: a swap makes widgets with no chosen piece follow the new theme (`unpinned`, per size).
+  return { lib: followTheme(lib, next), keep: pieces.map((p) => p.id), remove: gone.map((p) => p.id) };
 }
