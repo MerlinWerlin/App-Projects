@@ -775,6 +775,7 @@ export const fr: Catalogue = {
   "app.airplay.step2": "Touchez Recopie de l’écran.",
   "app.airplay.step3": "Choisissez votre téléviseur. Il doit prendre en charge AirPlay ; c’est le cas de nombreux téléviseurs récents. S’il n’apparaît pas, cherchez AirPlay dans les réglages du téléviseur.",
   "app.airplay.stepLabel": "Étape {n} sur {total} : {text}",
+  'app.airplay.openList': 'Afficher les TV AirPlay',
   "app.airplay.wifi": "Le téléphone et le téléviseur doivent être sur le même Wi-Fi.",
   "app.airplay.notOnTv": "Pas sur votre téléviseur ? Vous pouvez toujours envoyer photos et vidéos depuis l’onglet Caster.",
   "app.airplay.done": "OK",

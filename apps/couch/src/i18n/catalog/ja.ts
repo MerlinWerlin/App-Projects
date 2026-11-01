@@ -760,6 +760,7 @@ export const ja: Catalogue = {
   "app.airplay.step2": "「画面ミラーリング」をタップします。",
   "app.airplay.step3": "テレビを選びます。AirPlay対応である必要があります（最近の多くのテレビは対応しています）。一覧にない場合は、テレビの設定でAirPlayを探してください。",
   "app.airplay.stepLabel": "ステップ {n}/{total}：{text}",
+  'app.airplay.openList': 'AirPlay対応テレビを表示',
   "app.airplay.wifi": "スマートフォンとテレビは同じWi-Fiに接続してください。",
   "app.airplay.notOnTv": "テレビに表示されない場合も、「キャスト」タブから写真やビデオを送れます。",
   "app.airplay.done": "完了",

@@ -292,6 +292,7 @@ export const appEn = {
   "app.airplay.step2": "Tap Screen Mirroring.",
   "app.airplay.step3": "Choose your TV. It must support AirPlay; many recent TVs do. If yours isn’t listed, look for AirPlay in the TV’s settings.",
   "app.airplay.stepLabel": "Step {n} of {total}: {text}",
+  'app.airplay.openList': 'Show AirPlay TVs',
   "app.airplay.wifi": "Your phone and TV must be on the same Wi-Fi.",
   "app.airplay.notOnTv": "Not on your TV? You can still cast photos and videos from the Cast tab.",
   "app.airplay.done": "Done",

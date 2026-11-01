@@ -744,6 +744,7 @@ export const zhHans: Catalogue = {
   "app.airplay.step2": "轻点“屏幕镜像”。",
   "app.airplay.step3": "选择你的电视。电视必须支持 AirPlay，许多新款电视都支持。如果列表中没有，请在电视的设置中查找 AirPlay。",
   "app.airplay.stepLabel": "第 {n} 步，共 {total} 步：{text}",
+  'app.airplay.openList': '显示 AirPlay 电视',
   "app.airplay.wifi": "手机和电视必须连接同一个 Wi-Fi。",
   "app.airplay.notOnTv": "电视上没有？你仍可以在“投放”标签页中投放照片和视频。",
   "app.airplay.done": "完成",

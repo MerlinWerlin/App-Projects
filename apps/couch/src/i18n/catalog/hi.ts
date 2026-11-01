@@ -760,6 +760,7 @@ export const hi: Catalogue = {
   "app.airplay.step2": "स्क्रीन मिररिंग पर टैप करें।",
   "app.airplay.step3": "अपना टीवी चुनें। उसमें AirPlay होना चाहिए; कई नए टीवी में होता है। अगर आपका टीवी सूची में नहीं है, तो टीवी की सेटिंग में AirPlay देखें।",
   "app.airplay.stepLabel": "चरण {n} / {total}: {text}",
+  'app.airplay.openList': 'AirPlay TV दिखाएँ',
   "app.airplay.wifi": "फ़ोन और टीवी एक ही वाई-फ़ाई पर होने चाहिए।",
   "app.airplay.notOnTv": "आपके टीवी पर नहीं दिख रहा? आप अब भी कास्ट टैब से फ़ोटो और वीडियो भेज सकते हैं।",
   "app.airplay.done": "हो गया",

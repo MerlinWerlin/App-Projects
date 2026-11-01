@@ -802,6 +802,7 @@ export const ar: Catalogue = {
   "app.airplay.step2": "اضغط على النسخ المطابق للشاشة.",
   "app.airplay.step3": "اختر التلفزيون. يجب أن يدعم AirPlay، وكثير من أجهزة التلفزيون الحديثة تدعمه. إذا لم يظهر تلفزيونك، فابحث عن AirPlay في إعدادات التلفزيون.",
   "app.airplay.stepLabel": "الخطوة {n} من {total}: {text}",
+  'app.airplay.openList': 'عرض أجهزة التلفزيون بتقنية AirPlay',
   "app.airplay.wifi": "يجب أن يكون الهاتف والتلفزيون على شبكة Wi-Fi نفسها.",
   "app.airplay.notOnTv": "لا يظهر على تلفزيونك؟ لا يزال بإمكانك إرسال الصور والفيديوهات من علامة تبويب البث.",
   "app.airplay.done": "تم",
