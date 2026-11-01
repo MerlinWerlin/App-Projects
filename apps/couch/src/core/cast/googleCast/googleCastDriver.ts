@@ -112,11 +112,21 @@ export function gcastError(e: unknown, phase: Phase): DriverError {
       if (phase === 'load') return driverError('timeout', 'core.driver.cast.loadTimeout');
       return driverError('timeout', 'core.driver.cast.gcast.lost');
     }
-    if (phase === 'connect') return driverError('network', 'core.driver.cast.gcast.connectFailed');
-    return driverError('network', 'core.driver.cast.gcast.lost');
+    if (phase === 'connect') return withDetail(driverError('network', 'core.driver.cast.gcast.connectFailed'), e.message);
+    return withDetail(driverError('network', 'core.driver.cast.gcast.lost'), e.message);
   }
-  if (phase === 'connect') return driverError('network', 'core.driver.cast.gcast.connectFailed');
-  return driverError('network', 'core.driver.cast.gcast.lost');
+  const detail = e instanceof Error ? e.message : String(e);
+  if (phase === 'connect') return withDetail(driverError('network', 'core.driver.cast.gcast.connectFailed'), detail);
+  return withDetail(driverError('network', 'core.driver.cast.gcast.lost'), detail);
+}
+
+/**
+ * Appends the socket's own reason in brackets (owner 1 Nov 2026: the TCL Google TV refused the cast
+ * connection and the message gave no clue why). Kept short; empty reasons add nothing.
+ */
+function withDetail(err: DriverError, detail: string): DriverError {
+  const d = detail.replace(/\s+/g, ' ').trim().slice(0, 140);
+  return d ? new DriverError(err.code, `${err.message} (${d})`) : err;
 }
 
 export interface GoogleCastOptions {
