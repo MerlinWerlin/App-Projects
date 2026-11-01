@@ -116,6 +116,7 @@ export const fr: Catalogue = {
   'core.addTv.pskRejected': "Cette clé n'a pas fonctionné. Vérifiez la clé pré-partagée sur la TV.",
   'core.addTv.enterCode': 'Saisissez le code affiché sur votre TV.',
   'core.addTv.enterPin': 'Saisissez le PIN affiché sur votre TV.',
+  'core.addTv.castOnlyIntro': "La télécommande pour Google TV arrive dans la prochaine mise à jour. Vous pouvez déjà utiliser cette TV pour diffuser des photos et des vidéos.",
   'core.addTv.comingSoon': "Le contrôle des TV {platform} arrive bientôt. Nous l'avons trouvée, mais ne pouvons pas encore la contrôler.",
   'core.addTv.platformTv': 'TV {platform}',
   'core.addTv.noAnswer': "Aucune TV n'a répondu à cette adresse. Vérifiez qu'elle est allumée et sur le même Wi-Fi.",
@@ -257,6 +258,9 @@ export const fr: Catalogue = {
   'core.driver.androidtv.noTyping': "La saisie de texte n'est pas encore disponible sur cette TV.",
   'core.driver.androidtv.noLink': "Aucun lien d'app fourni.",
   'core.driver.androidtv.codeFormat': 'Le code comporte {length} caractères, 0-9 et A-F.',
+  'core.driver.androidtv.identity': "Impossible de configurer la clé d'association de ce téléphone. Réessayez.",
+  'core.driver.castOnly.comingSoon': "La télécommande pour Google TV arrive dans la prochaine mise à jour. Vous pouvez déjà diffuser des photos et des vidéos sur cette TV depuis l'onglet Caster.",
+  'core.driver.castOnly.addAgain': "Cette TV est enregistrée pour la diffusion uniquement. Pour l'utiliser comme télécommande, ajoutez-la à nouveau et saisissez le code affiché sur la TV.",
   'core.driver.androidtv.codeMismatch': 'Ce code ne correspond pas à celui de la TV. Vérifiez-le et réessayez.',
 
   'core.driver.firetv.vegaOs': 'Cette Fire TV fonctionne sous Vega OS, que Couch ne peut pas encore contrôler.',
@@ -533,6 +537,11 @@ export const fr: Catalogue = {
   'app.addTv.allowIfAsks': '{message} si elle le demande : choisissez Autoriser avec la télécommande de la TV.',
   'app.addTv.save': 'Enregistrer',
   'app.addTv.nowControlling': "C'est maintenant la TV que vous contrôlez.",
+  'app.addTv.castOnlyUse': "Utiliser pour diffuser photos et vidéos",
+  'app.addTv.castOnlySaved': "Prête pour la diffusion. La télécommande pour Google TV arrive dans la prochaine mise à jour.",
+  'app.addTv.openCast': "Aller à Caster",
+  'app.addTv.atvStarting': "Demande d'affichage d'un code sur la TV…",
+  'app.addTv.atvRetry': "Afficher à nouveau le code",
   'app.addTv.useRemote': 'Utiliser la télécommande',
   'app.addTv.addAnother': 'Ajouter une autre TV',
 
@@ -561,6 +570,7 @@ export const fr: Catalogue = {
   'app.remote.errorLabel': '{message} Touchez pour fermer.',
   'app.remote.sentRich': '{key} envoyé',
   'app.remote.ms': '{ms} ms',
+  'app.remote.castOnlyOpen': "Ouvrir Caster",
   'app.remote.ready': 'Prêt',
 
   // Apps tab (app/(tabs)/apps.tsx)
@@ -672,6 +682,7 @@ export const fr: Catalogue = {
   'app.settings.groupGeneral': "Général",
   'app.settings.groupHelp': "Aide",
   'app.tvs.add': "Ajouter",
+  'app.tvs.detailCastOnly': "{detail} · {platform} · Diffusion uniquement",
   'app.tvs.detailPlatform': "{detail} · {platform}",
   // T73 (run 42): editable app shortcuts (favourites)
   'app.apps.fav.title': "Favoris",

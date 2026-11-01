@@ -61,6 +61,7 @@ function cleanTv(t: SavedTv): SavedTv {
   const out: SavedTv = { ...t, addedAt: typeof t.addedAt === 'number' ? t.addedAt : 0 };
   if (out.irBrand !== undefined && typeof out.irBrand !== 'string') delete out.irBrand;
   if (out.irSet !== undefined && (typeof out.irSet !== 'number' || !Number.isInteger(out.irSet))) delete out.irSet;
+  if (out.castOnly !== undefined && out.castOnly !== true) delete out.castOnly;
   return out;
 }
 

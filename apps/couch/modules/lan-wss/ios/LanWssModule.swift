@@ -15,6 +15,7 @@ public class LanWssModule: Module {
   private lazy var client = LanWssClient(module: self)
   private lazy var fetchClient = LanFetchClient()
   private lazy var tlsClient = LanTlsClient(module: self)
+  private lazy var atvClient = LanAtvClient(module: self)
 
   public func definition() -> ModuleDefinition {
     Name("LanWss")
@@ -59,10 +60,37 @@ public class LanWssModule: Module {
       self.tlsClient.close(id: id)
     }
 
+    // Google TV remote (Android TV Remote v2): Keychain client identity + mutual-TLS socket,
+    // RFC 1918 IPv4 hosts only (see LanAtv.swift). Data / close reuse onTlsData / onTlsClose.
+    AsyncFunction("atvKey") { (promise: Promise) in
+      self.atvClient.key(promise: promise)
+    }
+
+    AsyncFunction("atvSign") { (dataBase64: String, promise: Promise) in
+      self.atvClient.sign(dataBase64: dataBase64, promise: promise)
+    }
+
+    AsyncFunction("atvSetCertificate") { (certBase64: String, promise: Promise) in
+      self.atvClient.setCertificate(certBase64: certBase64, promise: promise)
+    }
+
+    AsyncFunction("atvConnect") { (id: String, host: String, port: Int, timeoutMs: Double, promise: Promise) in
+      self.atvClient.connect(id: id, host: host, port: port, timeoutMs: timeoutMs, promise: promise)
+    }
+
+    Function("atvWrite") { (id: String, base64: String) -> Bool in
+      return self.atvClient.write(id: id, base64: base64)
+    }
+
+    Function("atvClose") { (id: String) in
+      self.atvClient.close(id: id)
+    }
+
     OnDestroy {
       self.client.closeAll()
       self.fetchClient.cancelAll()
       self.tlsClient.closeAll()
+      self.atvClient.closeAll()
     }
   }
 

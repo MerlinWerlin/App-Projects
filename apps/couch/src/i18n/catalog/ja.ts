@@ -197,6 +197,9 @@ export const ja: Catalogue = {
   'core.driver.androidtv.noTyping': 'このテレビではまだ文字入力を使用できません。',
   'core.driver.androidtv.noLink': 'アプリのリンクが指定されていません。',
   'core.driver.androidtv.codeFormat': 'コードは{length}文字で、0-9とA-Fを使います。',
+  'core.driver.androidtv.identity': "このスマートフォンのペアリング用キーを設定できませんでした。もう一度お試しください。",
+  'core.driver.castOnly.comingSoon': "Google TV のリモコン操作は次のアップデートで対応予定です。写真や動画は今すぐ「キャスト」タブからこのテレビに送れます。",
+  'core.driver.castOnly.addAgain': "このテレビはキャスト専用として保存されています。リモコンとして使うには、もう一度追加してテレビに表示されたコードを入力してください。",
   'core.driver.androidtv.codeMismatch': 'コードがテレビに表示されているものと一致しません。確認してもう一度お試しください。',
 
   'core.driver.firetv.vegaOs': 'このFire TVはVega OSで動作しており、Couchではまだ操作できません。',
@@ -255,6 +258,7 @@ export const ja: Catalogue = {
   'core.addTv.pskRejected': 'このキーは使えませんでした。テレビの事前共有キーを確認してください。',
   'core.addTv.enterCode': 'テレビに表示されているコードを入力してください。',
   'core.addTv.enterPin': 'テレビに表示されているPINを入力してください。',
+  'core.addTv.castOnlyIntro': "Google TV のリモコン操作は次のアップデートで対応予定です。このテレビには今すぐ写真や動画をキャストできます。",
   'core.addTv.comingSoon': '{platform}テレビの操作は近日対応予定です。テレビは見つかりましたが、まだ操作できません。',
   'core.addTv.platformTv': '{platform}テレビ',
   'core.addTv.noAnswer': 'このアドレスで応答するテレビはありませんでした。テレビの電源が入っていて同じWi-Fiにあるか確認してください。',
@@ -518,6 +522,11 @@ export const ja: Catalogue = {
   'app.addTv.allowIfAsks': '{message}。確認画面が出たら、テレビのリモコンで「許可」を選んでください。',
   'app.addTv.save': '保存',
   'app.addTv.nowControlling': 'このテレビを操作中です。',
+  'app.addTv.castOnlyUse': "写真や動画のキャストに使う",
+  'app.addTv.castOnlySaved': "キャストの準備ができました。Google TV のリモコン操作は次のアップデートで対応予定です。",
+  'app.addTv.openCast': "キャストへ",
+  'app.addTv.atvStarting': "テレビにコードを表示しています…",
+  'app.addTv.atvRetry': "コードをもう一度表示",
   'app.addTv.useRemote': 'リモコンを使う',
   'app.addTv.addAnother': '別のテレビを追加',
 
@@ -546,6 +555,7 @@ export const ja: Catalogue = {
   'app.remote.errorLabel': '{message} タップして閉じる。',
   'app.remote.sentRich': '{key}を送信',
   'app.remote.ms': '{ms} ms',
+  'app.remote.castOnlyOpen': "キャストを開く",
   'app.remote.ready': '準備完了',
 
   // Apps tab (app/(tabs)/apps.tsx)
@@ -657,6 +667,7 @@ export const ja: Catalogue = {
   'app.settings.groupGeneral': "一般",
   'app.settings.groupHelp': "ヘルプ",
   'app.tvs.add': "追加",
+  'app.tvs.detailCastOnly': "{detail}・{platform}・キャスト専用",
   'app.tvs.detailPlatform': "{detail}・{platform}",
   // T73 (run 42): editable app shortcuts (favourites)
   'app.apps.fav.title': "お気に入り",

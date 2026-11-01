@@ -4,15 +4,20 @@ import { ActivityIndicator, Platform, ScrollView, StyleSheet, View } from 'react
 import {
   ADD_TV_IR_ROUTE,
   addTvReducer,
+  androidTvPairingDriver,
   createAddTvState,
   demoScan,
   finishAddTv,
   foundLabel,
   irSetupOffered,
+  isCodeComplete,
   routeFor,
+  startAndroidTvPairing,
+  submitAndroidTvCode,
   type AddCandidate,
   type AddTvState,
 } from '../src/core/addTv';
+import type { AndroidTvDriver } from '../src/core/drivers/androidtv/driver';
 import { discoverTvs } from '../src/core/discoveryService';
 import { candidateNotice, lostRemoteHelp, platformList, type PairingNotice } from '../src/core/pairingNotice';
 import { probeHost } from '../src/core/probe';
@@ -47,6 +52,9 @@ import { Card, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } 
  * Pre-Shared Key set on the TV; a wrong key brings the user back to that step with the error.
  * Lost remote (T71): before pairing a TV that asks for something on screen, a card says what it will
  * ask (src/core/pairingNotice.ts); "Lost your remote?" opens a sheet with what works without it.
+ * Google TV: with the native remote socket the pair step asks the TV to show its code and checks it
+ * (the paired driver goes to finishAddTv); without it the "coming soon" step offers "Use for casting
+ * photos and videos", which saves the TV cast-only and ends on "Go to Cast".
  */
 export default function AddTvScreen() {
   const p = useDesign();
@@ -60,6 +68,11 @@ export default function AddTvScreen() {
   const alive = useRef<boolean>(true);
   const demo = snap.demo;
   const [lostOpen, setLostOpen] = useState(false);
+  // Google TV pairing (real TVs only): the driver that shows the code on the TV, and its phase.
+  const atvRef = useRef<AndroidTvDriver | null>(null);
+  const [atvPhase, setAtvPhase] = useState<'starting' | 'ready' | 'failed'>('starting');
+  const [atvRun, setAtvRun] = useState(0);
+  const [atvBusy, setAtvBusy] = useState(false);
   const lostLink = (
     <PillButton variant="plain" label={t('app.addTv.lostRemote')} accessibilityLabel={t('app.addTv.lostRemote')} onPress={() => setLostOpen(true)} />
   );
@@ -136,11 +149,61 @@ export default function AddTvScreen() {
       });
   }, [probeIp]);
 
+  // Google TV pair step: ask the TV to show its code (again on "Show the code again").
+  const atvHost = s.step === 'pair' && s.candidate.platform === 'androidtv' && s.candidate.pairAs === undefined ? s.candidate.host : null;
+  useEffect(() => {
+    if (atvHost === null || s.step !== 'pair') return;
+    const d = androidTvPairingDriver(s.candidate, transport);
+    if (!d) return;
+    atvRef.current = d;
+    setAtvPhase('starting');
+    setAtvBusy(false);
+    let cancelled = false;
+    void startAndroidTvPairing(d).then((ev) => {
+      if (cancelled || !alive.current) return;
+      if (ev) {
+        setAtvPhase('failed');
+        dispatch(ev);
+      } else setAtvPhase('ready');
+    });
+    return () => {
+      cancelled = true;
+      if (d.pairingState !== 'paired') d.cancelPairing();
+    };
+    // Runs per Google TV pair step (and retry); `s` is read when it starts.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [atvHost, atvRun, transport]);
+
+  const pairPress = (): void => {
+    if (s.step !== 'pair') return;
+    const d = atvRef.current;
+    if (atvHost === null || s.pair.kind !== 'code') {
+      dispatch({ type: 'paired' });
+      return;
+    }
+    // Google TV: only once the TV shows its code (the keyboard's return key bypasses `disabled`).
+    if (!d || atvPhase !== 'ready' || atvBusy) return;
+    // An incomplete code gets the reducer's "enter all 6 characters" error, without asking the TV.
+    if (!isCodeComplete(s.code, s.pair)) {
+      dispatch({ type: 'paired' });
+      return;
+    }
+    setAtvBusy(true);
+    void submitAndroidTvCode(d, s.code).then((ev) => {
+      if (!alive.current) return;
+      setAtvBusy(false);
+      // A typo keeps pairing open; anything else needs a new code.
+      if (ev.type === 'pairFailed' && d.pairingState !== 'awaiting_code') setAtvPhase('failed');
+      dispatch(ev);
+    });
+  };
+
   // Name step: connect, save and make it the active TV.
   const saving = s.step === 'name' && s.saving;
   useEffect(() => {
     if (!saving || s.step !== 'name') return;
-    finishAddTv(s, { transport, session, store: savedTvStore, addToSession: addTv })
+    const paired = s.candidate.platform === 'androidtv' && !s.castOnly ? atvRef.current : null;
+    finishAddTv(s, { transport, session, store: savedTvStore, addToSession: addTv, driver: paired })
       .then((ev) => {
         if (alive.current) dispatch(ev);
       })
@@ -157,6 +220,10 @@ export default function AddTvScreen() {
   // Dismiss every modal in the stack (add-tv, add-tv-ir) back to the remote tab (QA run 3).
   const goRemote = (): void => {
     router.dismissTo('/remote');
+  };
+  // A Google TV saved for casting: straight to the Cast tab.
+  const goCast = (): void => {
+    router.dismissTo('/cast');
   };
 
   const candidateRow = (c: AddCandidate) => {
@@ -255,6 +322,9 @@ export default function AddTvScreen() {
         <View style={[styles.block, styles.gap]}>
           <StepTitle>{s.candidate.model ?? s.candidate.name ?? PLATFORM_LABEL[s.candidate.platform]}</StepTitle>
           <StepText>{s.message}</StepText>
+          {s.castOnly ? (
+            <PillButton stretch label={t('app.addTv.castOnlyUse')} onPress={() => dispatch({ type: 'castOnly' })} />
+          ) : null}
           {back()}
         </View>
       );
@@ -298,6 +368,12 @@ export default function AddTvScreen() {
               </>
             ) : pr.kind === 'code' ? (
               <>
+                {atvHost !== null && atvPhase === 'starting' ? (
+                  <View style={styles.scan}>
+                    <ActivityIndicator color={p.tint} />
+                    <Text style={[textStyle('subheadline'), styles.flex, { color: p.label }]}>{t('app.addTv.atvStarting')}</Text>
+                  </View>
+                ) : null}
                 <StepText>{pr.message}</StepText>
                 <StepField
                   accessibilityLabel={pr.charset === 'hex' ? t('app.addTv.pairingCode') : t('app.addTv.pin')}
@@ -309,9 +385,17 @@ export default function AddTvScreen() {
                   autoCorrect={false}
                   keyboardType={pr.charset === 'digits' ? 'number-pad' : 'default'}
                   placeholder={pr.charset === 'hex' ? 'A1B2C3' : '1234'}
-                  onSubmitEditing={() => dispatch({ type: 'paired' })}
+                  onSubmitEditing={pairPress}
                 />
-                <PillButton stretch label={t('app.addTv.pair')} onPress={() => dispatch({ type: 'paired' })} />
+                <PillButton
+                  stretch
+                  label={atvBusy ? t('app.common.connecting') : t('app.addTv.pair')}
+                  disabled={atvHost !== null && (atvPhase !== 'ready' || atvBusy)}
+                  onPress={pairPress}
+                />
+                {atvHost !== null && atvPhase === 'failed' ? (
+                  <PillButton stretch variant="tinted" label={t('app.addTv.atvRetry')} onPress={() => setAtvRun((n) => n + 1)} />
+                ) : null}
               </>
             ) : (
               <>
@@ -366,10 +450,14 @@ export default function AddTvScreen() {
         <>
           <Card style={styles.card}>
             <StepTitle live>{t('app.common.added', { name: s.tv.name })}</StepTitle>
-            <StepText tone="secondary">{t('app.addTv.nowControlling')}</StepText>
+            <StepText tone="secondary">{s.tv.castOnly ? t('app.addTv.castOnlySaved') : t('app.addTv.nowControlling')}</StepText>
           </Card>
           <View style={[styles.block, styles.gap]}>
-            <PillButton stretch label={t('app.addTv.useRemote')} onPress={goRemote} />
+            {s.tv.castOnly ? (
+              <PillButton stretch label={t('app.addTv.openCast')} onPress={goCast} />
+            ) : (
+              <PillButton stretch label={t('app.addTv.useRemote')} onPress={goRemote} />
+            )}
             <PillButton stretch variant="tinted" label={t('app.addTv.addAnother')} onPress={() => dispatch({ type: 'rescan' })} />
           </View>
         </>

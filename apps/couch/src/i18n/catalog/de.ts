@@ -117,6 +117,7 @@ export const de: Catalogue = {
   'core.addTv.pskRejected': 'Dieser Key hat nicht funktioniert. Prüfe den Pre-Shared Key am Fernseher.',
   'core.addTv.enterCode': 'Gib den Code ein, der auf deinem Fernseher angezeigt wird.',
   'core.addTv.enterPin': 'Gib die PIN ein, die auf deinem Fernseher angezeigt wird.',
+  'core.addTv.castOnlyIntro': "Die Fernbedienung für Google TV kommt mit dem nächsten Update. Du kannst diesen Fernseher schon jetzt für Fotos und Videos nutzen.",
   'core.addTv.comingSoon':
     'Steuerung für {platform}-Fernseher kommt bald. Wir haben ihn gefunden, können ihn aber noch nicht steuern.',
   'core.addTv.platformTv': '{platform}-Fernseher',
@@ -259,6 +260,9 @@ export const de: Catalogue = {
   'core.driver.androidtv.noTyping': 'Texteingabe ist auf diesem Fernseher noch nicht verfügbar.',
   'core.driver.androidtv.noLink': 'Kein App-Link angegeben.',
   'core.driver.androidtv.codeFormat': 'Der Code hat {length} Zeichen, 0-9 und A-F.',
+  'core.driver.androidtv.identity': "Der Kopplungsschlüssel dieses Handys konnte nicht eingerichtet werden. Versuch es noch mal.",
+  'core.driver.castOnly.comingSoon': "Die Fernbedienung für Google TV kommt mit dem nächsten Update. Fotos und Videos kannst du schon jetzt über den Tab „Streamen“ an diesen Fernseher senden.",
+  'core.driver.castOnly.addAgain': "Dieser Fernseher ist nur zum Streamen gespeichert. Füge ihn erneut hinzu und gib den Code vom Fernseher ein, um ihn als Fernbedienung zu nutzen.",
   'core.driver.androidtv.codeMismatch':
     'Dieser Code stimmt nicht mit dem auf dem Fernseher überein. Prüfe ihn und versuch es noch mal.',
 
@@ -535,6 +539,11 @@ export const de: Catalogue = {
   'app.addTv.allowIfAsks': '{message}, falls er fragt: Wähle mit der Fernbedienung des Fernsehers „Zulassen“.',
   'app.addTv.save': 'Speichern',
   'app.addTv.nowControlling': 'Diesen Fernseher steuerst du jetzt.',
+  'app.addTv.castOnlyUse': "Für Fotos und Videos nutzen",
+  'app.addTv.castOnlySaved': "Bereit zum Streamen. Die Fernbedienung für Google TV kommt mit dem nächsten Update.",
+  'app.addTv.openCast': "Zu Streamen",
+  'app.addTv.atvStarting': "Fernseher wird gebeten, einen Code anzuzeigen …",
+  'app.addTv.atvRetry': "Code erneut anzeigen",
   'app.addTv.useRemote': 'Fernbedienung nutzen',
   'app.addTv.addAnother': 'Weiteren Fernseher hinzufügen',
 
@@ -563,6 +572,7 @@ export const de: Catalogue = {
   'app.remote.errorLabel': '{message} Zum Schließen tippen.',
   'app.remote.sentRich': '{key} gesendet',
   'app.remote.ms': '{ms} ms',
+  'app.remote.castOnlyOpen': "Streamen öffnen",
   'app.remote.ready': 'Bereit',
 
   // Apps tab (app/(tabs)/apps.tsx)
@@ -674,6 +684,7 @@ export const de: Catalogue = {
   'app.settings.groupGeneral': "Allgemein",
   'app.settings.groupHelp': "Hilfe",
   'app.tvs.add': "Hinzufügen",
+  'app.tvs.detailCastOnly': "{detail} · {platform} · Nur Streamen",
   'app.tvs.detailPlatform': "{detail} · {platform}",
   // T73 (run 42): editable app shortcuts (favourites)
   'app.apps.fav.title': "Favoriten",

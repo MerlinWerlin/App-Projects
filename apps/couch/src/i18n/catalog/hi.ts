@@ -125,6 +125,7 @@ export const hi: Catalogue = {
   'core.addTv.pskRejected': 'यह की काम नहीं आई। TV पर प्री-शेयर्ड की जाँचें।',
   'core.addTv.enterCode': 'अपने TV पर दिख रहा कोड डालें।',
   'core.addTv.enterPin': 'अपने TV पर दिख रहा PIN डालें।',
+  'core.addTv.castOnlyIntro': "Google TV के लिए रिमोट कंट्रोल अगले अपडेट में आ रहा है। आप अभी से इस TV पर फ़ोटो और वीडियो कास्ट कर सकते हैं।",
   'core.addTv.comingSoon': '{platform} TV का कंट्रोल जल्द आ रहा है। TV मिल गया, पर अभी उसे कंट्रोल नहीं कर सकते।',
   'core.addTv.platformTv': '{platform} TV',
   'core.addTv.noAnswer': 'उस पते पर किसी TV ने जवाब नहीं दिया। देखें कि TV चालू है और उसी Wi-Fi पर है।',
@@ -254,6 +255,9 @@ export const hi: Catalogue = {
   'core.driver.androidtv.noTyping': 'इस TV पर अभी टाइप करना उपलब्ध नहीं है।',
   'core.driver.androidtv.noLink': 'कोई ऐप लिंक नहीं दिया गया।',
   'core.driver.androidtv.codeFormat': 'कोड {length} अक्षरों का होता है, 0-9 और A-F।',
+  'core.driver.androidtv.identity': "इस फ़ोन की पेयरिंग कुंजी सेट नहीं हो सकी। फिर से कोशिश करें।",
+  'core.driver.castOnly.comingSoon': "Google TV के लिए रिमोट कंट्रोल अगले अपडेट में आ रहा है। अभी आप कास्ट टैब से इस TV पर फ़ोटो और वीडियो भेज सकते हैं।",
+  'core.driver.castOnly.addAgain': "यह TV सिर्फ़ कास्टिंग के लिए सेव है। इसे रिमोट की तरह इस्तेमाल करने के लिए इसे फिर से जोड़ें और TV पर दिख रहा कोड डालें।",
   'core.driver.androidtv.codeMismatch': 'यह कोड TV पर दिख रहे कोड से मेल नहीं खाता। जाँचें और फिर से कोशिश करें।',
   'core.driver.firetv.vegaOs': 'यह Fire TV Vega OS पर चलता है, जिसे Couch अभी कंट्रोल नहीं कर सकता।',
   'core.driver.firetv.noRemoteService':
@@ -518,6 +522,11 @@ export const hi: Catalogue = {
   'app.addTv.allowIfAsks': '{message}, अगर पूछे तो: TV के रिमोट से Allow चुनें।',
   'app.addTv.save': 'सेव करें',
   'app.addTv.nowControlling': 'अब आप इसी TV को कंट्रोल कर रहे हैं।',
+  'app.addTv.castOnlyUse': "फ़ोटो और वीडियो कास्ट करने के लिए इस्तेमाल करें",
+  'app.addTv.castOnlySaved': "कास्टिंग के लिए तैयार। Google TV के लिए रिमोट कंट्रोल अगले अपडेट में आ रहा है।",
+  'app.addTv.openCast': "कास्ट पर जाएँ",
+  'app.addTv.atvStarting': "TV से कोड दिखाने को कहा जा रहा है…",
+  'app.addTv.atvRetry': "कोड फिर से दिखाएँ",
   'app.addTv.useRemote': 'रिमोट इस्तेमाल करें',
   'app.addTv.addAnother': 'एक और TV जोड़ें',
 
@@ -546,6 +555,7 @@ export const hi: Catalogue = {
   'app.remote.errorLabel': '{message} हटाने के लिए टैप करें।',
   'app.remote.sentRich': '{key} भेजा गया',
   'app.remote.ms': '{ms} ms',
+  'app.remote.castOnlyOpen': "कास्ट खोलें",
   'app.remote.ready': 'तैयार',
 
   // Apps tab (app/(tabs)/apps.tsx)
@@ -657,6 +667,7 @@ export const hi: Catalogue = {
   'app.settings.groupGeneral': "सामान्य",
   'app.settings.groupHelp': "सहायता",
   'app.tvs.add': "जोड़ें",
+  'app.tvs.detailCastOnly': "{detail} · {platform} · सिर्फ़ कास्टिंग",
   'app.tvs.detailPlatform': "{detail} · {platform}",
   // T73 (run 42): editable app shortcuts (favourites)
   'app.apps.fav.title': "पसंदीदा",

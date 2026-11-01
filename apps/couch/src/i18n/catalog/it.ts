@@ -116,6 +116,7 @@ export const it: Catalogue = {
   'core.addTv.pskRejected': 'Questa chiave non ha funzionato. Controlla la chiave precondivisa sulla TV.',
   'core.addTv.enterCode': 'Inserisci il codice mostrato sulla TV.',
   'core.addTv.enterPin': 'Inserisci il PIN mostrato sulla TV.',
+  'core.addTv.castOnlyIntro': "Il telecomando per Google TV arriverà con il prossimo aggiornamento. Puoi già usare questa TV per trasmettere foto e video.",
   'core.addTv.comingSoon': "Il controllo delle TV {platform} arriverà presto. L'abbiamo trovata, ma non possiamo ancora controllarla.",
   'core.addTv.platformTv': 'TV {platform}',
   'core.addTv.noAnswer': 'Nessuna TV ha risposto a questo indirizzo. Controlla che sia accesa e sullo stesso Wi-Fi.',
@@ -252,6 +253,9 @@ export const it: Catalogue = {
   'core.driver.androidtv.noTyping': 'La digitazione non è ancora disponibile su questa TV.',
   'core.driver.androidtv.noLink': "Nessun link dell'app fornito.",
   'core.driver.androidtv.codeFormat': 'Il codice ha {length} caratteri, 0-9 e A-F.',
+  'core.driver.androidtv.identity': "Impossibile configurare la chiave di associazione di questo telefono. Riprova.",
+  'core.driver.castOnly.comingSoon': "Il telecomando per Google TV arriverà con il prossimo aggiornamento. Puoi già trasmettere foto e video a questa TV dalla scheda Trasmetti.",
+  'core.driver.castOnly.addAgain': "Questa TV è salvata solo per la trasmissione. Per usarla come telecomando, aggiungila di nuovo e inserisci il codice mostrato sulla TV.",
   'core.driver.androidtv.codeMismatch': 'Il codice non corrisponde a quello sulla TV. Controllalo e riprova.',
 
   'core.driver.firetv.vegaOs': 'Questa Fire TV usa Vega OS, che Couch non può ancora controllare.',
@@ -527,6 +531,11 @@ export const it: Catalogue = {
   'app.addTv.allowIfAsks': '{message} se lo chiede: scegli Consenti con il telecomando della TV.',
   'app.addTv.save': 'Salva',
   'app.addTv.nowControlling': 'Ora è la TV che stai controllando.',
+  'app.addTv.castOnlyUse': "Usa per trasmettere foto e video",
+  'app.addTv.castOnlySaved': "Pronta per la trasmissione. Il telecomando per Google TV arriverà con il prossimo aggiornamento.",
+  'app.addTv.openCast': "Vai a Trasmetti",
+  'app.addTv.atvStarting': "Chiedo alla TV di mostrare un codice…",
+  'app.addTv.atvRetry': "Mostra di nuovo il codice",
   'app.addTv.useRemote': 'Usa il telecomando',
   'app.addTv.addAnother': "Aggiungi un'altra TV",
 
@@ -555,6 +564,7 @@ export const it: Catalogue = {
   'app.remote.errorLabel': '{message} Tocca per chiudere.',
   'app.remote.sentRich': '{key} inviato',
   'app.remote.ms': '{ms} ms',
+  'app.remote.castOnlyOpen': "Apri Trasmetti",
   'app.remote.ready': 'Pronto',
 
   // Apps tab (app/(tabs)/apps.tsx)
@@ -666,6 +676,7 @@ export const it: Catalogue = {
   'app.settings.groupGeneral': "Generali",
   'app.settings.groupHelp': "Aiuto",
   'app.tvs.add': "Aggiungi",
+  'app.tvs.detailCastOnly': "{detail} · {platform} · Solo trasmissione",
   'app.tvs.detailPlatform': "{detail} · {platform}",
   // T73 (run 42): editable app shortcuts (favourites)
   'app.apps.fav.title': "Preferiti",

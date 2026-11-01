@@ -8,6 +8,8 @@
  *   (e.g. Samsung without the lan-wss module, an IR TV on a phone without an emitter, a platform
  *   that is "coming soon") is SKIPPED for this session: the session only holds TVs it can control.
  *   It is never removed from the store, so it comes back on a build that has the transport.
+ *   (A Google TV always has a driver: without the remote socket, or when saved for casting only,
+ *   driverFor gives a CastOnlyDriver, so it stays listed and castable.)
  * - Never throws: a store that fails to read restores nothing (the app then shows demo mode).
  * - Drivers are returned unconnected; call connectRestored() (best effort, not awaited by the UI)
  *   so an offline TV never delays start-up.

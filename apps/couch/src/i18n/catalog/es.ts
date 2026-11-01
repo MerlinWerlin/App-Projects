@@ -116,6 +116,7 @@ export const es: Catalogue = {
   'core.addTv.pskRejected': 'Esa clave no ha funcionado. Revisa la clave precompartida en el TV.',
   'core.addTv.enterCode': 'Introduce el código que aparece en tu TV.',
   'core.addTv.enterPin': 'Introduce el PIN que aparece en tu TV.',
+  'core.addTv.castOnlyIntro': "El control remoto para Google TV llegará en la próxima actualización. Ya puedes usar este TV para enviar fotos y vídeos.",
   'core.addTv.comingSoon': 'El control de TV {platform} llegará pronto. Lo hemos encontrado, pero aún no podemos controlarlo.',
   'core.addTv.platformTv': 'TV {platform}',
   'core.addTv.noAnswer': 'Ningún TV ha respondido en esa dirección. Comprueba que esté encendido y en la misma Wi-Fi.',
@@ -252,6 +253,9 @@ export const es: Catalogue = {
   'core.driver.androidtv.noTyping': 'Escribir aún no está disponible en este TV.',
   'core.driver.androidtv.noLink': 'No se indicó ningún enlace de app.',
   'core.driver.androidtv.codeFormat': 'El código tiene {length} caracteres, 0-9 y A-F.',
+  'core.driver.androidtv.identity': "No se pudo configurar la clave de vinculación de este teléfono. Inténtalo de nuevo.",
+  'core.driver.castOnly.comingSoon': "El control remoto para Google TV llegará en la próxima actualización. Ya puedes enviar fotos y vídeos a este TV desde la pestaña Enviar.",
+  'core.driver.castOnly.addAgain': "Este TV está guardado solo para enviar contenido. Para usarlo como mando, añádelo de nuevo e introduce el código que aparece en el TV.",
   'core.driver.androidtv.codeMismatch': 'Ese código no coincide con el del TV. Revísalo e inténtalo de nuevo.',
 
   'core.driver.firetv.vegaOs': 'Este Fire TV usa Vega OS, que Couch aún no puede controlar.',
@@ -519,6 +523,11 @@ export const es: Catalogue = {
   'app.addTv.allowIfAsks': '{message} si lo pide: elige Permitir con el mando del TV.',
   'app.addTv.save': 'Guardar',
   'app.addTv.nowControlling': 'Ahora es el TV que controlas.',
+  'app.addTv.castOnlyUse': "Usar para enviar fotos y vídeos",
+  'app.addTv.castOnlySaved': "Listo para enviar contenido. El control remoto para Google TV llegará en la próxima actualización.",
+  'app.addTv.openCast': "Ir a Enviar",
+  'app.addTv.atvStarting': "Pidiendo al TV que muestre un código…",
+  'app.addTv.atvRetry': "Mostrar el código otra vez",
   'app.addTv.useRemote': 'Usar el mando',
   'app.addTv.addAnother': 'Añadir otro TV',
 
@@ -547,6 +556,7 @@ export const es: Catalogue = {
   'app.remote.errorLabel': '{message} Toca para cerrar.',
   'app.remote.sentRich': 'enviado {key}',
   'app.remote.ms': '{ms} ms',
+  'app.remote.castOnlyOpen': "Abrir Enviar",
   'app.remote.ready': 'Listo',
 
   // Apps tab (app/(tabs)/apps.tsx)
@@ -658,6 +668,7 @@ export const es: Catalogue = {
   'app.settings.groupGeneral': "General",
   'app.settings.groupHelp': "Ayuda",
   'app.tvs.add': "Añadir",
+  'app.tvs.detailCastOnly': "{detail} · {platform} · Solo envío",
   'app.tvs.detailPlatform': "{detail} · {platform}",
   // T73 (run 42): editable app shortcuts (favourites)
   'app.apps.fav.title': "Favoritos",

@@ -1,3 +1,4 @@
+import type { ClientIdentity, TlsClientFactory } from './drivers/androidtv/driver';
 import type { IrTransmitter } from './ir/transmitter';
 import type { Key } from './keys';
 import type { Capability, ConnectionState, Platform, TvApp, TvInput } from './types';
@@ -50,6 +51,18 @@ export interface Transport {
   ir?: IrTransmitter;
   /** Self-signed-tolerant fetch for RFC 1918 https (lan-wss module, dev builds only): Vizio, Philips, Fire TV. */
   lanFetch?: FetchLike;
+  /**
+   * Google TV remote (Android TV Remote v2): mutual-TLS sockets presenting this phone's client
+   * identity (lan-wss LanAtv, iOS builds that include it). Absent in Expo Go and older builds, where
+   * Google TVs are cast-only.
+   */
+  androidTv?: AndroidTvTransport;
+}
+
+export interface AndroidTvTransport {
+  tls: TlsClientFactory;
+  /** The phone's client identity, created (once) and kept by the native layer. */
+  identity: () => Promise<ClientIdentity>;
 }
 
 export type DriverEvent =

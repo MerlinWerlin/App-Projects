@@ -133,6 +133,7 @@ export const ar: Catalogue = {
   'core.addTv.pskRejected': 'لم ينجح هذا المفتاح. تحقق من المفتاح المشترك مسبقًا على التلفزيون.',
   'core.addTv.enterCode': 'أدخل الرمز الظاهر على تلفزيونك.',
   'core.addTv.enterPin': 'أدخل رمز PIN الظاهر على تلفزيونك.',
+  'core.addTv.castOnlyIntro': "التحكم عن بُعد في Google TV قادم في التحديث القادم. يمكنك الآن استخدام هذا التلفزيون لبث الصور ومقاطع الفيديو.",
   'core.addTv.comingSoon': 'التحكم بأجهزة تلفزيون {platform} قادم قريبًا. عثرنا عليه، لكن لا يمكننا التحكم به بعد.',
   'core.addTv.platformTv': 'تلفزيون {platform}',
   'core.addTv.noAnswer': 'لم يستجب أي تلفزيون على هذا العنوان. تأكد من أن التلفزيون يعمل وعلى شبكة Wi-Fi نفسها.',
@@ -284,6 +285,9 @@ export const ar: Catalogue = {
   'core.driver.androidtv.noTyping': 'الكتابة غير متاحة على هذا التلفزيون بعد.',
   'core.driver.androidtv.noLink': 'لم يُقدَّم رابط تطبيق.',
   'core.driver.androidtv.codeFormat': 'طول الرمز: {length}، ويتكون من 0-9 وA-F.',
+  'core.driver.androidtv.identity': "تعذّر إعداد مفتاح الاقتران لهذا الهاتف. حاول مرة أخرى.",
+  'core.driver.castOnly.comingSoon': "التحكم عن بُعد في Google TV قادم في التحديث القادم. يمكنك الآن بث الصور ومقاطع الفيديو إلى هذا التلفزيون من علامة تبويب البث.",
+  'core.driver.castOnly.addAgain': "هذا التلفزيون محفوظ للبث فقط. لاستخدامه كجهاز تحكم، أضفه مرة أخرى وأدخل الرمز الظاهر على التلفزيون.",
   'core.driver.androidtv.codeMismatch': 'هذا الرمز لا يطابق الرمز الظاهر على التلفزيون. تحقق منه وحاول مجددًا.',
   'core.driver.firetv.vegaOs': 'يعمل جهاز Fire TV هذا بنظام Vega OS، الذي لا يستطيع Couch التحكم به بعد.',
   'core.driver.firetv.noRemoteService':
@@ -560,6 +564,11 @@ export const ar: Catalogue = {
   'app.addTv.allowIfAsks': '{message} إذا طلب ذلك: استخدم جهاز تحكم التلفزيون لاختيار "سماح".',
   'app.addTv.save': 'حفظ',
   'app.addTv.nowControlling': 'أصبح الآن التلفزيون الذي تتحكم فيه.',
+  'app.addTv.castOnlyUse': "استخدامه لبث الصور ومقاطع الفيديو",
+  'app.addTv.castOnlySaved': "جاهز للبث. التحكم عن بُعد في Google TV قادم في التحديث القادم.",
+  'app.addTv.openCast': "الانتقال إلى البث",
+  'app.addTv.atvStarting': "جارٍ طلب عرض رمز على التلفزيون…",
+  'app.addTv.atvRetry': "عرض الرمز مرة أخرى",
   'app.addTv.useRemote': 'استخدام جهاز التحكم',
   'app.addTv.addAnother': 'إضافة تلفزيون آخر',
 
@@ -588,6 +597,7 @@ export const ar: Catalogue = {
   'app.remote.errorLabel': '{message} اضغط للإغلاق.',
   'app.remote.sentRich': 'تم إرسال {key}',
   'app.remote.ms': '{ms} ms',
+  'app.remote.castOnlyOpen': "فتح البث",
   'app.remote.ready': 'جاهز',
 
   // Apps tab (app/(tabs)/apps.tsx)
@@ -699,6 +709,7 @@ export const ar: Catalogue = {
   'app.settings.groupGeneral': "عام",
   'app.settings.groupHelp': "المساعدة",
   'app.tvs.add': "إضافة",
+  'app.tvs.detailCastOnly': "{detail} · {platform} · للبث فقط",
   'app.tvs.detailPlatform': "{detail} · {platform}",
   // T73 (run 42): editable app shortcuts (favourites)
   'app.apps.fav.title': "المفضلة",

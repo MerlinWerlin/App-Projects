@@ -11,6 +11,12 @@
  * port 8009). It only connects to literal RFC 1918 IPv4 hosts and accepts their self-signed
  * certificate (Cast devices present one); every other host is refused.
  *
+ * And the Google TV remote (Android TV Remote v2, iOS only): `atvKey` / `atvSign` /
+ * `atvSetCertificate` keep this phone's RSA-2048 client identity in the Keychain (the certificate is
+ * built in TS, src/core/drivers/androidtv/x509.ts), and `atvConnect` / `atvWrite` / `atvClose` open a
+ * mutual-TLS socket presenting it, RFC 1918 hosts only, reusing the onTlsData / onTlsClose events.
+ * src/native/androidTvTls.ts wraps them.
+ *
  * UNVERIFIED: not compiled yet (needs a dev build). See README.md.
  *
  * Events (all carry the caller-chosen socket id):
@@ -94,6 +100,27 @@ export interface LanWssNativeModule {
   tlsWrite?(id: string, base64: string): boolean;
   /** Closes the socket; onTlsClose follows. */
   tlsClose?(id: string): void;
+  /**
+   * Google TV remote identity (iOS, LanAtv.swift). Returns this phone's Keychain RSA public key as
+   * PKCS#1 DER (base64), creating the key pair on first call, and the stored client certificate
+   * (DER, base64), or '' when none is stored or the Keychain does not pair it with the key as an
+   * identity. Optional: absent on Android and older builds.
+   */
+  atvKey?(): Promise<{ publicKeyBase64: string; certBase64: string }>;
+  /** Signs bytes with the Keychain private key (RSA PKCS#1 v1.5, SHA-256); base64 in and out. */
+  atvSign?(dataBase64: string): Promise<string>;
+  /** Stores the client certificate (DER, base64) for the key; resolves true once the identity is usable. */
+  atvSetCertificate?(certBase64: string): Promise<boolean>;
+  /**
+   * Mutual TLS socket presenting the Keychain identity, RFC 1918 IPv4 hosts only (ERR_ATV_TLS_HOST
+   * otherwise). Resolves after the handshake with the TV certificate's RSA public key (PKCS#1 DER,
+   * base64; '' when unreadable). Rejects with ERR_ATV_TLS_AUTH when the TV refused the client
+   * certificate, ERR_ATV_TLS_IDENTITY without an identity, ERR_ATV_TLS_CONNECT / ERR_ATV_TLS_TIMEOUT.
+   * Data and close arrive as onTlsData / onTlsClose with this id.
+   */
+  atvConnect?(id: string, host: string, port: number, timeoutMs: number): Promise<{ peerKeyBase64: string }>;
+  atvWrite?(id: string, base64: string): boolean;
+  atvClose?(id: string): void;
   addListener(event: 'onMessage', cb: (e: LanWssMessageEvent) => void): LanWssSubscription;
   addListener(event: 'onClose', cb: (e: LanWssCloseEvent) => void): LanWssSubscription;
   addListener(event: 'onError', cb: (e: LanWssErrorEvent) => void): LanWssSubscription;
