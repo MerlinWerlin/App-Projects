@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash, randomBytes } from 'node:crypto';
 import { gzipSync } from 'node:zlib';
-import { Sha256, base64Decode, base64Encode, concatBytes, isSha256Hex, sha256Hex, utf8Decode, utf8Encode } from './bytes.ts';
+import { Sha256, base64Decode, base64Encode, concatBytes, isSha256Hex, sha256Hex, sha256HexChunked, utf8Decode, utf8Encode } from './bytes.ts';
 import { crc32, gunzip } from './inflate.ts';
 
 const SIZES = [0, 1, 55, 56, 63, 64, 65, 1000, 70000];
@@ -54,4 +54,17 @@ test('gunzip rejects junk, truncation and corruption', () => {
   const bad = Buffer.from(z);
   bad[bad.length - 6] ^= 0xff; // CRC byte
   assert.throws(() => gunzip(bad), /checksum/);
+});
+
+test('T258: sha256HexChunked matches sha256Hex and yields between slices', async () => {
+  const data = new Uint8Array(200_003);
+  for (let i = 0; i < data.length; i++) data[i] = (i * 31 + 7) & 0xff;
+  let pauses = 0;
+  const pause = async () => {
+    pauses++;
+  };
+  assert.equal(await sha256HexChunked(data, 65_536, pause), sha256Hex(data));
+  assert.equal(pauses, 3);
+  assert.equal(await sha256HexChunked(new Uint8Array(0)), sha256Hex(new Uint8Array(0)));
+  assert.equal(await sha256HexChunked(data.subarray(0, 100), 1), sha256Hex(data.subarray(0, 100)));
 });

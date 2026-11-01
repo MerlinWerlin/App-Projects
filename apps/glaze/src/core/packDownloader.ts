@@ -5,7 +5,7 @@
 // last, so a pack only counts as downloaded once every file is verified.
 // It never decides entitlement (src/plus does) and makes no request when the base URL is empty.
 
-import { concatBytes, sha256Hex, utf8Decode, utf8Encode } from './bytes.ts';
+import { concatBytes, sha256HexChunked, utf8Decode, utf8Encode } from './bytes.ts';
 import {
   MANIFEST_FILE,
   packFileUrl,
@@ -13,7 +13,7 @@ import {
   planDownload,
   supportsApp,
   packContentFromFiles,
-  verifyAsset,
+  verifyAssetAsync,
   type HaveFile,
   type PackAsset,
   type PackContent,
@@ -184,7 +184,7 @@ async function inventoryOf(transport: Transport, localDir: string, assets: reado
   for (const a of assets) {
     const b = await transport.readFile(localPath(localDir, a.path));
     if (!b) continue;
-    have.push(b.length === a.bytes ? { path: a.path, bytes: b.length, sha256: sha256Hex(b) } : { path: a.path, bytes: b.length });
+    have.push(b.length === a.bytes ? { path: a.path, bytes: b.length, sha256: await sha256HexChunked(b) } : { path: a.path, bytes: b.length });
   }
   return have;
 }
@@ -248,7 +248,7 @@ async function fetchAndVerifyAssets(o: AssetRunOptions): Promise<AssetRunResult>
 
   const verifyLocal = async (asset: PackAsset): Promise<boolean> => {
     const bytes = await t.readFile(localPath(o.localDir, asset.path));
-    return !!bytes && verifyAsset(asset, bytes).ok;
+    return !!bytes && (await verifyAssetAsync(asset, bytes)).ok;
   };
 
   const steps = [...plan.fetch, ...plan.verify.map((path) => ({ path, start: -1, bytes: byPath.get(path)!.bytes }))];
@@ -321,7 +321,7 @@ export async function loadPackContent(transport: Transport, packId: string): Pro
   for (const d of manifest.themes) {
     const asset = manifest.assets.find((a) => a.path === d.artAsset);
     const bytes = asset ? await transport.readFile(localPath(packId, asset.path)) : null;
-    if (asset && bytes && verifyAsset(asset, bytes).ok) files.set(asset.path, bytes);
+    if (asset && bytes && (await verifyAssetAsync(asset, bytes)).ok) files.set(asset.path, bytes);
   }
   return packContentFromFiles(manifest, (p) => files.get(p));
 }
@@ -549,9 +549,9 @@ async function seedFromOld(t: Transport, id: string, old: RemoteArtManifest, ass
     if (!prev) continue;
     const dest = localPath(stage, a.path);
     const have = await t.readFile(dest);
-    if (have && verifyAsset(a, have).ok) continue;
+    if (have && (await verifyAssetAsync(a, have)).ok) continue;
     const bytes = await t.readFile(localPath(id, a.path));
-    if (!bytes || !verifyAsset(a, bytes).ok) continue;
+    if (!bytes || !(await verifyAssetAsync(a, bytes)).ok) continue;
     await t.remove(dest);
     await t.writeAppend(dest, bytes);
   }
@@ -583,10 +583,10 @@ async function swapInStaged(t: Transport, id: string, local: RemoteArtManifest):
   const keep = new Set(local.assets.map((a) => a.path));
   for (const a of local.assets) {
     const bytes = await t.readFile(localPath(stage, a.path));
-    if (!bytes || !verifyAsset(a, bytes).ok) throw new PackError('integrity', `${a.path} failed its integrity check`);
+    if (!bytes || !(await verifyAssetAsync(a, bytes)).ok) throw new PackError('integrity', `${a.path} failed its integrity check`);
     const dest = localPath(id, a.path);
     const have = await t.readFile(dest);
-    if (have && verifyAsset(a, have).ok) continue;
+    if (have && (await verifyAssetAsync(a, have)).ok) continue;
     await t.remove(dest);
     await t.writeAppend(dest, bytes);
   }
@@ -629,7 +629,7 @@ export async function loadRemoteArt(transport: Transport, id: string): Promise<R
   if (!m) return null;
   for (const a of m.assets) {
     const bytes = await transport.readFile(localPath(id, a.path));
-    if (!bytes || !verifyAsset(a, bytes).ok) return null;
+    if (!bytes || !(await verifyAssetAsync(a, bytes)).ok) return null;
   }
   return m;
 }

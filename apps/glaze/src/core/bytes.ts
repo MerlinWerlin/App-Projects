@@ -110,6 +110,30 @@ export function sha256Hex(data: Uint8Array | string): string {
   return new Sha256().update(typeof data === 'string' ? utf8Encode(data) : data).hex();
 }
 
+/** T258: default slice for sha256HexChunked (64 KB ≈ a few ms of JS hashing on an older iPhone). */
+export const SHA_CHUNK_BYTES = 64 * 1024;
+
+/** Gives the JS thread back between slices (touches, animations, timers run in between). */
+export const yieldToEventLoop = (): Promise<void> => new Promise((resolve) => setTimeout(resolve, 0));
+
+/**
+ * T258: SHA-256 of bytes hashed in slices of `chunkBytes`, awaiting `pause` between slices so a
+ * multi-MB pack file never blocks the UI thread for the whole hash. Same result as sha256Hex.
+ */
+export async function sha256HexChunked(
+  data: Uint8Array,
+  chunkBytes: number = SHA_CHUNK_BYTES,
+  pause: () => Promise<void> = yieldToEventLoop,
+): Promise<string> {
+  const step = Math.max(64, Math.floor(chunkBytes));
+  const h = new Sha256();
+  for (let i = 0; i < data.length; i += step) {
+    if (i > 0) await pause();
+    h.update(data.subarray(i, Math.min(data.length, i + step)));
+  }
+  return h.hex();
+}
+
 export function isSha256Hex(v: unknown): v is string {
   return typeof v === 'string' && /^[0-9a-f]{64}$/.test(v);
 }

@@ -3351,7 +3351,7 @@
     },
     {
       "id": "T258",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "follow-up",
@@ -3359,7 +3359,9 @@
         "perf"
       ],
       "source": "run 221",
-      "title": "Pack download/update SHA-256 still runs in JS one file at a time (queued, off launch); move hashing native or chunk it (T250 follow-up)"
+      "title": "Pack download/update SHA-256 still runs in JS one file at a time (queued, off launch); move hashing native or chunk it (T250 follow-up)",
+      "commit": "d36529a",
+      "note": "run 224 d36529a: sha256HexChunked (64 KB slices, setTimeout yield between) used for every pack/remote-art inventory + verify; still JS (native hashing not needed for the freeze)."
     },
     {
       "id": "T259",
