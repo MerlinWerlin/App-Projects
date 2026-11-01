@@ -66,6 +66,10 @@ export interface DiscoveryResult {
   methods: DiscoveryMethod[];
   /** Non-fatal problems (socket failed, etc.) for diagnostics. */
   errors: string[];
+  /** For the Add TV scan report: the phone address used, how many hosts were probed, and whether the Cast TLS check ran. */
+  localIp?: string | null;
+  probed?: number;
+  tlsCheck?: boolean;
 }
 
 const defaultSleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
@@ -157,8 +161,10 @@ export async function discoverTvs(deps: DiscoveryDeps, opts: DiscoveryOptions = 
   const netmask = deps.localIp ? (deps.netmask ?? '255.255.255.0') : '255.255.255.0';
   const alwaysProbe = opts.alwaysProbe ?? (!deps.localIp && phoneIp !== null);
   const needProbe = alwaysProbe || !socket || (found.length === 0 && opts.probeIfEmpty !== false);
+  let probed = 0;
   if (needProbe && localIp && !opts.isCancelled?.()) {
     const hosts = subnetHosts(localIp, netmask).filter((h) => !seen.has(h));
+    probed = hosts.length;
     if (hosts.length > 0) {
       methods.push('probe');
       const probeOpts: Parameters<typeof probeSubnet>[2] = { onFound: (c) => add(c) };
@@ -170,5 +176,5 @@ export async function discoverTvs(deps: DiscoveryDeps, opts: DiscoveryOptions = 
     }
   }
 
-  return { candidates: dedupeCandidates(found), methods, errors };
+  return { candidates: dedupeCandidates(found), methods, errors, localIp: localIp ?? null, probed, tlsCheck: !!deps.tlsCheck };
 }

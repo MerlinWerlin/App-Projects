@@ -108,7 +108,7 @@ describe('discoverTvs', () => {
 
   it('skips the probe without a local IP and does not re-probe hosts already found', async () => {
     const r = await discoverTvs({ fetch: noFetch, sleep });
-    expect(r).toEqual({ candidates: [], methods: [], errors: [] });
+    expect(r).toEqual({ candidates: [], methods: [], errors: [], localIp: null, probed: 0, tlsCheck: false });
 
     const probedHosts = new Set<string>();
     const f: FetchLike = async (url) => {
