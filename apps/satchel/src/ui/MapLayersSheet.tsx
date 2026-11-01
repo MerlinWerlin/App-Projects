@@ -3,16 +3,20 @@
 // colours, "Show all trips" / "Only this trip", and "Fit to visible pins". Choices are kept on this phone by
 // src/ui/useMapLayers.ts. T13: a "Kinds of place" section with a switch per place category (the same choice as the
 // chips above Nearby, kept on this phone, every kind on at first open) and the OSM / ODbL line. The sheet slides (or fades with Reduce Motion): timed, never a spring.
+// T157: each kind-of-place row now leads with the same swatch as the layer rows (its pin colour and glyph, from
+// src/core/poipins.ts); the Lifts row uses its own original drawing (LiftGlyph, src/ui/stepfreeIcons.tsx).
 import { Ionicons } from '@expo/vector-icons';
 import type { ComponentProps } from 'react';
 import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { hiddenCount, isShown, LAYER_SPECS, MAP_LAYERS, type LayerCounts, type LayerPrefs, type MapLayerId, type MapScope } from '../core/maplayers.ts';
 import type { OfferedCategory } from '../core/packpois.ts';
+import { poiPinStyle } from '../core/poipins.ts';
 import type { Key } from '../i18n/en.ts';
 import { useApp } from '../state/app.tsx';
 import { fonts, radius, space, typeScale } from '../theme/tokens.ts';
 import { Body, Button, Chip, Label, PressableScale } from './kit.tsx';
+import { LiftGlyph } from './stepfreeIcons.tsx';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
@@ -35,7 +39,7 @@ export function MapLayersButton({ prefs, onPress }: { prefs: LayerPrefs; onPress
 }
 
 /** A disc in the pins' colour with the family's icon, as on the legend. Decorative (the row's label says it all). */
-function Swatch({ colour, icon }: { colour: string; icon?: IconName }) {
+function Swatch({ colour, icon, lift }: { colour: string; icon?: IconName; lift?: boolean }) {
   const { theme } = useApp();
   return (
     <View
@@ -43,7 +47,7 @@ function Swatch({ colour, icon }: { colour: string; icon?: IconName }) {
       importantForAccessibility="no-hide-descendants"
       style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: colour, alignItems: 'center', justifyContent: 'center' }}
     >
-      {icon ? <Ionicons name={icon} size={16} color={theme.card} /> : null}
+      {lift ? <LiftGlyph size={18} color={theme.card} /> : icon ? <Ionicons name={icon} size={16} color={theme.card} /> : null}
     </View>
   );
 }
@@ -168,6 +172,7 @@ export function MapLayersSheet({
                   const on = places.on[id];
                   const name = places.label(id);
                   const count = countText(places.counts[id]);
+                  const look = poiPinStyle(id);
                   return (
                     <PressableScale
                       key={id}
@@ -178,6 +183,7 @@ export function MapLayersSheet({
                       onPress={() => places.onToggle(id)}
                       style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, minHeight: 48, borderTopWidth: 1, borderTopColor: theme.line }}
                     >
+                      <Swatch colour={on ? theme[look.tone] : theme.muted} icon={look.icon as IconName} lift={id === 'lift'} />
                       <Text style={[typeScale.bodyStrong, { flex: 1, color: on ? theme.ink : theme.muted }]}>{name}</Text>
                       <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted, fontVariant: ['tabular-nums'] }}>{count}</Text>
                       <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: on ? theme.ok : theme.muted, minWidth: 36, textAlign: 'right' }}>{t(on ? 'common.on' : 'common.off')}</Text>

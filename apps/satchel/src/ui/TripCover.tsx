@@ -251,7 +251,7 @@ export function TripCoverHero({ scene, photo, title, subtitle, children }: { sce
           <CoverScrim dark={theme.dark} />
         </View>
         <View pointerEvents="box-none" style={{ flex: 1, justifyContent: 'flex-end', padding: space.l, gap: space.xs }}>
-          <Text accessibilityRole="header" numberOfLines={2} style={[typeScale.displayM, { color: theme.heroInk }]}>
+          <Text accessibilityRole="header" numberOfLines={2} adjustsFontSizeToFit minimumFontScale={0.6} style={[typeScale.displayM, { color: theme.heroInk }]}>
             {title}
           </Text>
           {subtitle ? <Text style={[typeScale.bodyStrong, { color: theme.heroMuted, fontVariant: ['tabular-nums'] }]}>{subtitle}</Text> : null}

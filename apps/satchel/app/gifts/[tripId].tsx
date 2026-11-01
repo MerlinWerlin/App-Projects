@@ -54,7 +54,7 @@ import { EMPTY_STORE, listFor, PACKING_KEY, type PackStore } from '../../src/cor
 import { encodePos, roundPos } from '../../src/core/position.ts';
 import { cleanCurrency, currencyChoices, currencyDigits, defaultDay, expenseFromDraft, formatMoney, isCurrency, readSpending, suggestCurrency, type Money } from '../../src/core/spending.ts';
 import type { Key } from '../../src/i18n/en.ts';
-import { haptic } from '../../src/native/device.ts';
+import { haptic, openSettings } from '../../src/native/device.ts';
 import { locateOnce } from '../../src/native/location.ts';
 import { shareText } from '../../src/native/share.ts';
 import { useApp } from '../../src/state/app.tsx';
@@ -473,6 +473,8 @@ function GiftEditor({
   const bags = giftBagChoices(listFor(store, trip.id));
   const [locating, setLocating] = useState(false);
   const [hereNote, setHereNote] = useState<string | null>(null);
+  // T160: a refusal only Settings can undo gets an Open Settings button, not just words.
+  const [hereBlocked, setHereBlocked] = useState(false);
   const d = form.draft;
   const set = (patch: Partial<GiftDraft>) => setForm({ ...form, draft: { ...d, ...patch } });
   const err = (e: GiftError) => form.errors.includes(e);
@@ -484,12 +486,14 @@ function GiftEditor({
     if (locating) return;
     setLocating(true);
     setHereNote(null);
+    setHereBlocked(false);
     AccessibilityInfo.announceForAccessibility(t('gifts.gift.locating'));
     const r = await locateOnce();
     setLocating(false);
     if (!r.ok) {
       const note = r.reason === 'denied' ? t('gifts.gift.hereDenied') : t('gifts.gift.hereFailed');
       setHereNote(note);
+      setHereBlocked(r.reason === 'denied' ? r.state !== 'ask' : r.servicesOff);
       AccessibilityInfo.announceForAccessibility(note);
       return;
     }
@@ -572,6 +576,7 @@ function GiftEditor({
         <PositionField label={t('gifts.gift.spot')} value={d.pos} trip={trip} onChange={(pos, name) => set({ pos, spotName: pos ? (name ?? '') : '' })} />
         <Button kind="quiet" icon="locate-outline" label={locating ? t('gifts.gift.locating') : t('gifts.gift.here')} hint={t('gifts.gift.hereHint')} onPress={here} />
         {hereNote ? <Body muted>{hereNote}</Body> : null}
+        {hereBlocked ? <Button kind="quiet" label={t('common.openSettings')} hint={t('permissions.openSettingsHint')} onPress={openSettings} /> : null}
         {err('pos') ? <Warning text={t('gifts.err.pos')} /> : null}
         <View style={{ gap: space.s }}>
           <Label>{t('gifts.gift.bag')}</Label>

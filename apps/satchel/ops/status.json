@@ -1,17 +1,18 @@
 {
-  "tests": 1809,
+  "tests": 1829,
   "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
-  "last_run": "2026-11-01 23:05",
+  "last_run": "2026-11-01 23:55",
   "stage": "owner-tested",
   "oversight_seen": 229,
-  "headline": "Run 110: step-free travel (accessible toilets first, wheelchair access on map places, assistance reminders), Vault crop + PDF view, place pin icons, postcards nudge + check-out reminder",
+  "headline": "Run 111: release prep (no new features): store listing, privacy + support pages, permission prompts reworded, accessibility pass; accessible-toilet pins and a 'Where is the lift?' card",
   "next_for_owner": [
-    "Close Satchel fully and open it again from TestFlight (twice if needed) to get the run-110 update; if a new TestFlight build is still pending from runs 108-109, tap Update when it appears.",
-    "Try: Settings > Step-free travel, then Toilets > Find toilets near me; a flight booking's Access notes; Vault > a document > Crop to the code.",
-    "App Store Connect: create the non-consumable in-app purchase com.jared797.satchel.plus (steps in docs/PLUS.md) so Satchel Plus can show a price.",
-    "Map tab > Offline city maps: downloads start once the App Factory runs the map publishing workflow (question DA has the exact test).",
-    "Answer the yes/no questions DE-DH (and DA-DD, CV-CZ) under 'New since your last test' in docs/TRIAL.md by commenting on this page.",
-    "Full install + tsc + expo export needs PC verification (react-native-webview 13.16.1 from run 109)."
+    "When TestFlight shows a new Satchel build, tap Update (run 111 rewords the iPhone permission prompts, so it comes as a build, not an over-the-air update).",
+    "Try: Toilets > Find toilets near me > map (blue pins = wheelchair accessible); Step-free > Ask for a lift; the largest text size.",
+    "Decide for release: the final name, a support email address, iPad yes/no (suggested: iPhone only) and whether Satchel Plus ships before city maps are live (see docs/RELEASE_CHECKLIST.md).",
+    "App Store Connect: create the non-consumable in-app purchase com.jared797.satchel.plus (steps in docs/PLUS.md).",
+    "Map tab > Offline city maps: downloads start once the App Factory runs the map publishing workflow.",
+    "Answer the yes/no questions DI-DK (and DE-DH, DA-DD, CV-CZ) in docs/TRIAL.md by commenting on this page.",
+    "Full install + tsc + expo export needs PC verification."
   ],
   "trial_kit": true,
   "next_stage": "release-prep"

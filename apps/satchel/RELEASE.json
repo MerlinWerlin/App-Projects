@@ -1,6 +1,6 @@
 {
-  "mode": "build",
-  "note": "Satchel: step-free travel (access needs, wheelchair tags, lifts), in-app PDF viewer and QR crop, offline map points of interest with per-category pins, open backups from Files",
+  "mode": "update",
+  "note": "Satchel: accessible-toilet pins with a map legend, a full-screen \"Where is the lift?\" card, Lifts icon in Layers, accessibility and wording fixes",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

@@ -1,7 +1,7 @@
 {
  "version": 1,
  "checked": "2026-11-01",
- "note": "T156 step-free travel: access-needs card lines that src/content/helpcards.json does not already have (wheelchair, step-free and 'I need to sit down' are reused from there). Same languages as helpcards.json. Written by the model (not a native speaker): every line is marked \"check\": true until a native speaker has read it. Simple, polite, gender-neutral wording; pt reads in both Portugal and Brazil; zh-Hant uses Taiwan wording.",
+ "note": "T156 step-free travel: access-needs card lines that src/content/helpcards.json does not already have (wheelchair, step-free and 'I need to sit down' are reused from there). Same languages as helpcards.json. Written by the model (not a native speaker): every line is marked \"check\": true until a native speaker has read it. Simple, polite, gender-neutral wording; pt reads in both Portugal and Brazil; zh-Hant uses Taiwan wording. T157: the liftAsk line also opens as a full-screen phrase card ('Where is the lift?'); non-Latin languages carry a 'roman' guide in the phrases.json style (Hepburn, Hanyu Pinyin, Revised Romanization, simple RTGS), also written by the model and covered by the same check flag.",
  "sentences": [
   {
    "id": "pram",
@@ -30,6 +30,7 @@
     },
     "liftAsk": {
      "text": "エレベーターはどこですか？",
+     "roman": "Erebētā wa doko desu ka?",
      "check": true
     }
    }
@@ -47,6 +48,7 @@
     },
     "liftAsk": {
      "text": "电梯在哪里？",
+     "roman": "Diàntī zài nǎlǐ?",
      "check": true
     }
    }
@@ -64,6 +66,7 @@
     },
     "liftAsk": {
      "text": "電梯在哪裡？",
+     "roman": "Diàntī zài nǎlǐ?",
      "check": true
     }
    }
@@ -81,6 +84,7 @@
     },
     "liftAsk": {
      "text": "엘리베이터가 어디에 있나요?",
+     "roman": "Ellibeiteoga eodie innayo?",
      "check": true
     }
    }
@@ -98,6 +102,7 @@
     },
     "liftAsk": {
      "text": "ลิฟต์อยู่ที่ไหน",
+     "roman": "Lip yu thi nai?",
      "check": true
     }
    }

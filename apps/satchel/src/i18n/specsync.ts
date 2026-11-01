@@ -122,6 +122,8 @@ export const SPEC_SYNC_PREFIXES = [
   'f107.',
   'f109.',
   'stepfree.',
+  'f110.',
+  'e2e.',
   'f98.',
   'helpcards.',
   'driving.',

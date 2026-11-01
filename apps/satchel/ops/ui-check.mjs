@@ -3,6 +3,8 @@
 // 2) Checks every relative import resolves to a file and every named import is exported by it.
 // 3) Hermes Intl gaps. 4) Touchables have accessibilityLabel/Role (+ State for tab/radio/switch/checkbox).
 // 5) No raw colours on the themed (non-camera) screens.
+// 7-12) T160 release pass: TextInput / Switch labels, touch targets, images / SVGs named or hidden, header text that
+//    clips under Dynamic Type, developer wording in the English catalogue, and Reduce Motion around every animation.
 // Usage: node ops/ui-check.mjs   (needs the `typescript` package somewhere: local node_modules or global)
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -178,6 +180,79 @@ for (const f of files) {
       problems++;
     }
   });
+}
+
+// 7) T160: every TextInput / Switch names itself (VoiceOver reads the label, not the placeholder).
+const LABELLED_INPUTS = new Set(['TextInput', 'Switch']);
+// 8) T160 touch targets: a raw Pressable / Touchable* needs hitSlop, a minHeight, or flex: 1 (a full-screen scrim);
+//    PressableScale already gives minHeight TOUCH + hitSlop 8, so its style must not shrink that below 48 pt.
+// 9) T160: an <Image> / <Svg> carries its own label or hiding, or sits inside an element that does (or a touchable,
+//    which VoiceOver reads as one element). Checked lexically within a file.
+// 10) T160 Dynamic Type: a header with numberOfLines must shrink to fit (adjustsFontSizeToFit), never clip.
+const COVERING = ['accessibilityLabel', 'accessible', 'accessibilityElementsHidden', 'importantForAccessibility', 'aria-label', 'aria-hidden'];
+for (const [f, sf] of parsed) {
+  if (!f.endsWith('.tsx')) continue;
+  const rel = f.replace(root + '/', '');
+  const opening = (n) => (ts.isJsxElement(n) ? n.openingElement : ts.isJsxSelfClosingElement(n) ? n : null);
+  const attrOf = (o, name) => o.attributes.properties.find((p) => ts.isJsxAttribute(p) && p.name.getText(sf) === name);
+  const spreads = (o) => o.attributes.properties.some((p) => ts.isJsxSpreadAttribute(p));
+  const report = (o, msg) => {
+    const { line } = sf.getLineAndCharacterOfPosition(o.getStart(sf));
+    console.log(`${msg[0]} ${rel}:${line + 1} ${msg[1]}`);
+    problems++;
+  };
+  const visit = (n, covered) => {
+    const o = opening(n);
+    let cov = covered;
+    if (o) {
+      const tag = o.tagName.getText(sf);
+      const touchable = TOUCHABLES.has(tag);
+      if (LABELLED_INPUTS.has(tag) && !spreads(o) && !attrOf(o, 'accessibilityLabel')) report(o, ['A11Y', `<${tag}> has no accessibilityLabel`]);
+      if (touchable && !spreads(o)) {
+        const style = attrOf(o, 'style')?.getText(sf) ?? '';
+        if (tag !== 'PressableScale' && !attrOf(o, 'hitSlop') && !/\bminHeight\s*:|\bflex\s*:\s*1\b/.test(style)) report(o, ['TOUCH', `<${tag}> needs hitSlop or minHeight (48 pt targets)`]);
+        if (tag === 'PressableScale') {
+          for (const m of style.matchAll(/\b(minHeight|height)\s*:\s*(\d+)\b/g)) if (Number(m[2]) < 48) report(o, ['TOUCH', `<${tag}> ${m[1]} ${m[2]} is under 48 pt`]);
+        }
+      }
+      if ((tag === 'Image' || tag === 'Svg') && !covered && !COVERING.some((a) => attrOf(o, a))) report(o, ['A11Y', `<${tag}> needs a label, or accessibilityElementsHidden + importantForAccessibility="no-hide-descendants"`]);
+      if (tag === 'Text' && /['"]header['"]/.test(attrOf(o, 'accessibilityRole')?.getText(sf) ?? '') && attrOf(o, 'numberOfLines') && !attrOf(o, 'adjustsFontSizeToFit'))
+        report(o, ['TYPE', 'header clips with numberOfLines; drop it or add adjustsFontSizeToFit']);
+      cov = covered || touchable || COVERING.some((a) => attrOf(o, a));
+    }
+    ts.forEachChild(n, (k) => visit(k, cov));
+  };
+  visit(sf, false);
+}
+
+// 11) T160: no developer wording in what the user reads. Checks the string values of the English catalogue.
+const DEV_WORDS = /\b(Expo Go|full build|dev(elopment)? build|this build|test build|TODO|FIXME|lorem ipsum|placeholder text|simulator|debug)\b/i;
+for (const f of files) {
+  const rel = f.replace(root + '/', '');
+  if (!/^src\/i18n\/(en\/[^/]+|en)\.ts$/.test(rel)) continue;
+  const sf = parsed.get(f);
+  const visit = (n) => {
+    if (ts.isPropertyAssignment(n) && (ts.isStringLiteral(n.initializer) || ts.isNoSubstitutionTemplateLiteral(n.initializer)) && DEV_WORDS.test(n.initializer.text)) {
+      const { line } = sf.getLineAndCharacterOfPosition(n.getStart(sf));
+      console.log(`COPY ${rel}:${line + 1} developer wording in a UI string: ${n.initializer.text.match(DEV_WORDS)[0]}`);
+      problems++;
+    }
+    ts.forEachChild(n, visit);
+  };
+  visit(sf);
+}
+
+// 12) T160 motion: springs are banned by src/theme/motion.test.ts; here, any file that animates must read Reduce Motion.
+const ANIMATES = /\bAnimated\s*\.\s*(timing|sequence|parallel|loop|decay)\s*\(|\b(timed|fadeIn|fadeOut|useFadeRise|useFocusEntrance)\s*\(|\bLayoutAnimation\s*\.\s*configureNext\b|\bwith(Timing|Repeat|Sequence)\s*\(/;
+for (const f of files) {
+  const rel = f.replace(root + '/', '');
+  if (!f.endsWith('.tsx') || /\.test\.tsx?$/.test(f)) continue;
+  const text = readFileSync(f, 'utf8');
+  const code = text.split('\n').filter((l) => !/^\s*(\/\/|\*)/.test(l)).join('\n');
+  if (ANIMATES.test(code) && !/reduceMotion|ReduceMotion|useReducedMotion/.test(code)) {
+    console.log(`MOTION ${rel} animates without reading Reduce Motion (useApp().reduceMotion)`);
+    problems++;
+  }
 }
 
 console.log(`ui-check: ${files.length} files, ${problems} problem(s)`);

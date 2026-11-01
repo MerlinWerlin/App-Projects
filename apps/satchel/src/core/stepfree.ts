@@ -234,7 +234,14 @@ export function airportAssistance(item: Item, prefs: StepFreePrefs | null | unde
 
 export const SF_LINE_IDS = ['pram', 'walkLimited', 'liftAsk'] as const;
 export type SfLineId = (typeof SF_LINE_IDS)[number];
-export type StepFreeTable = { version: number; checked?: string; note?: string; sentences: { id: string; en: string }[]; languages: HelpLanguage[] };
+/** T157: a line may carry `roman` (how to say it, non-Latin scripts) for the full-screen lift card (liftcard.ts). */
+export type StepFreeTable = {
+  version: number;
+  checked?: string;
+  note?: string;
+  sentences: { id: string; en: string }[];
+  languages: (HelpLanguage & { lines: Record<string, HelpLanguage['lines'][string] & { roman?: string }> })[];
+};
 
 type LineRef = { from: 'help'; id: LineId } | { from: 'sf'; id: SfLineId };
 /** Each need's sentences: help-card lines where helpcards.json already says it, our own lines otherwise. */

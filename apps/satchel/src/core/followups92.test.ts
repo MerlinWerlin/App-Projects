@@ -44,16 +44,15 @@ test('f92 strings: all in followups92.ts', () => {
   for (const k of keys) assert.ok(src.includes(`'${k}'`), `${k} lives in followups92.ts`);
 });
 
-test('camera permission: app.json already declares it in both places; the card wording waits for the native build', () => {
+test('camera permission: app.json declares it in both places and names membership cards (applied in T159)', () => {
   const app = JSON.parse(readFileSync(`${root}app.json`, 'utf8'));
   const plist: string = app.expo.ios.infoPlist.NSCameraUsageDescription;
   const plugin = app.expo.plugins.find((p: unknown) => Array.isArray(p) && p[0] === 'expo-image-picker');
   assert.ok(plist && plist.length > 20, 'NSCameraUsageDescription');
   assert.ok(plugin, 'expo-image-picker plugin');
   assert.equal(plugin[1].cameraPermission, plist);
-  // The wording that names membership cards is queued with the other Info.plist changes for the next build.
-  const checklist = readFileSync(`${root}docs/RELEASE_CHECKLIST.md`, 'utf8');
-  assert.match(checklist, /`cameraPermission`: "[^"]*membership card/);
+  // T159 applied the queued wording (docs/RELEASE_CHECKLIST.md "Next native build"; docs/APP_PRIVACY.md).
+  assert.match(plist, /membership card/);
 });
 
 test('card editor offers both the library and the camera', () => {
