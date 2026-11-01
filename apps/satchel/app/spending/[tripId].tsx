@@ -4,17 +4,23 @@
 // how old the rate is.
 // T102: a "Paid in cash" switch on the expense form (src/core/cash.ts) and the Cash card under the summary.
 // T105: a "Work out a tip" button on the expense form opens app/tipping.tsx with the trip, category and currency.
+// T111: an Insights section (budget pace, day-by-day bars, category ring, biggest days, cash vs card; src/ui/insights.tsx),
+// a receipt photo per expense (phone-only map, never in .satchel files; thumbnail on the row, full-screen view,
+// deleted with the expense) and "Export spending" as a CSV through the share sheet.
 // Rates are typed by the traveller; spending in a currency with no rate is shown in its own currency and left out of
 // the home total with an "add a rate" prompt, never converted with a guessed rate.
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { memo, useCallback, useMemo, useRef, useState } from 'react';
-import { AccessibilityInfo, Alert, FlatList, Text, View } from 'react-native';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { AccessibilityInfo, Alert, FlatList, Image, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { applyTipFill } from '../../src/core/tipping.ts';
+import { clearTipFill, newTipFillToken, useTipFill } from '../../src/state/tipFill.ts';
 import { cashPaidIds, isPaidInCash, setPaidInCash } from '../../src/core/cash.ts';
 import { setRateOn } from '../../src/core/convert.ts';
 import { deviceZone, formatDay, todayIn } from '../../src/core/format.ts';
-import { EXPENSE_CATEGORIES, newId, type Expense, type ExpenseCategory, type Trip } from '../../src/core/model.ts';
+import { cleanReceipts, csvFileName, RECEIPTS_KEY, spendingCsv, staleReceipts, withoutReceipt, withReceipt, type CsvLabels, type Receipts } from '../../src/core/insights.ts';
+import { EXPENSE_CATEGORIES, newId, type Expense, type Trip } from '../../src/core/model.ts';
 import {
   budgetStatus,
   cleanCurrency,
@@ -63,35 +69,25 @@ import {
 } from '../../src/core/together.ts';
 import { addDays } from '../../src/core/tz.ts';
 import type { Key } from '../../src/i18n/en.ts';
-import { phoneCurrency } from '../../src/native/device.ts';
+import { openSettings, phoneCurrency } from '../../src/native/device.ts';
+import { appPath } from '../../src/native/files.ts';
+import { pickReceipt, removeReceiptFiles, shareCsvFile } from '../../src/native/receipts.ts';
 import { useApp } from '../../src/state/app.tsx';
+import { setPersisted, usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { fonts, radius, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
-import { FadeInView, IconBadge, ProgressBar, type IconName, type Tone } from '../../src/ui/hero.tsx';
+import { FadeInView, IconBadge, ProgressBar, type Tone } from '../../src/ui/hero.tsx';
+import { CATEGORY_ICONS, CATEGORY_KEYS, CATEGORY_TONES, ReceiptThumb, ReceiptViewer, SpendingInsights } from '../../src/ui/insights.tsx';
 import { CashCard } from '../../src/ui/CashCard.tsx';
 import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, Screen, TextField, ToggleRow, Warning } from '../../src/ui/kit.tsx';
 import { expenseTogetherLine, PayerSplitFields, TogetherSection, usePeople, type People } from '../../src/ui/together.tsx';
 
-const CATEGORY_KEYS: Record<ExpenseCategory, Key> = {
-  food: 'spending.cat.food',
-  transport: 'spending.cat.transport',
-  stay: 'spending.cat.stay',
-  activities: 'spending.cat.activities',
-  shopping: 'spending.cat.shopping',
-  other: 'spending.cat.other',
-};
-const CATEGORY_ICONS: Record<ExpenseCategory, IconName> = {
-  food: 'restaurant-outline',
-  transport: 'bus-outline',
-  stay: 'bed-outline',
-  activities: 'ticket-outline',
-  shopping: 'bag-handle-outline',
-  other: 'ellipsis-horizontal-circle-outline',
-};
-const CATEGORY_TONES: Record<ExpenseCategory, Tone> = { food: 'accent', transport: 'sea', stay: 'teal', activities: 'ok', shopping: 'warn', other: 'ink' };
-
 // T82: `together` holds the paid-by / split fields (used when the trip has companions).
-type Form = { prev?: Expense; draft: ExpenseDraft; errors: ExpenseError[]; together: TogetherDraft; togetherErrors: TogetherError[]; cash: boolean };
+// T111: `receipt` is the photo shown on the form (null: none); `picked` lists photo copies made while it was open, so
+// the ones not kept are deleted on save or cancel.
+type ReceiptPhoto = { uri: string; mime: string };
+type Form = { prev?: Expense; draft: ExpenseDraft; errors: ExpenseError[]; together: TogetherDraft; togetherErrors: TogetherError[]; cash: boolean; receipt: ReceiptPhoto | null; picked: string[] };
+const NO_RECEIPTS: Receipts = {};
 
 export default function SpendingScreen() {
   const { tripId } = useLocalSearchParams<{ tripId: string }>();
@@ -123,6 +119,20 @@ function SpendingBody({ trip }: { trip: Trip }) {
   const people = usePeople(trip);
   // T104: the "Cash" marker on rows paid in cash.
   const cashIds = useMemo(() => cashPaidIds(trip), [trip]);
+  // T111: receipt photos, phone only.
+  const { trips } = useTrips();
+  const [rawReceipts, , receiptsLoaded] = usePersisted<Receipts>(RECEIPTS_KEY, NO_RECEIPTS);
+  const receipts = useMemo(() => cleanReceipts(rawReceipts), [rawReceipts]);
+  const [viewing, setViewing] = useState<Expense | null>(null);
+  const today = todayIn(deviceZone());
+  // A receipt whose expense or trip was deleted elsewhere (a gift, the trip list) goes with it.
+  useEffect(() => {
+    if (!receiptsLoaded) return;
+    const stale = staleReceipts(receipts, trips);
+    if (!stale.length) return;
+    removeReceiptFiles(stale.map((id) => receipts[id].uri));
+    setPersisted<Receipts>(RECEIPTS_KEY, (old) => stale.reduce((m, id) => withoutReceipt(m, id).map, cleanReceipts(old)), NO_RECEIPTS);
+  }, [receiptsLoaded, receipts, trips]);
 
   /** Stores the changed trip; says so when the phone couldn't save it. */
   const save = async (next: Trip): Promise<boolean> => {
@@ -132,15 +142,15 @@ function SpendingBody({ trip }: { trip: Trip }) {
   };
 
   const openNew = () => {
-    setForm({ draft: newExpenseDraft(defaultDay(trip, todayIn(deviceZone())), suggestCurrency(s, phoneCurrency())), errors: [], together: newTogetherDraft(trip), togetherErrors: [], cash: false });
+    setForm({ draft: newExpenseDraft(defaultDay(trip, todayIn(deviceZone())), suggestCurrency(s, phoneCurrency())), errors: [], together: newTogetherDraft(trip), togetherErrors: [], cash: false, receipt: null, picked: [] });
     list.current?.scrollToOffset({ offset: 0, animated: !reduceMotion });
   };
   const openEdit = useCallback(
     (e: Expense) => {
-      setForm({ prev: e, draft: draftFromExpense(e), errors: [], together: togetherDraftFromExpense(trip, e), togetherErrors: [], cash: isPaidInCash(trip, e.id) });
+      setForm({ prev: e, draft: draftFromExpense(e), errors: [], together: togetherDraftFromExpense(trip, e), togetherErrors: [], cash: isPaidInCash(trip, e.id), receipt: receipts[e.id] ? { uri: receipts[e.id].uri, mime: receipts[e.id].mime } : null, picked: [] });
       list.current?.scrollToOffset({ offset: 0, animated: !reduceMotion });
     },
-    [reduceMotion, trip],
+    [reduceMotion, trip, receipts],
   );
   const toRates = () => list.current?.scrollToEnd({ animated: !reduceMotion });
 
@@ -161,9 +171,22 @@ function SpendingBody({ trip }: { trip: Trip }) {
     const plain = expenseFromDraft(form.draft, newId('exp'), form.prev);
     const e = keepUnknown(form.prev, shared ? withSplit(plain, tg.paidBy, splitFromDraft(tg, plain.currency)) : withSplit(plain, ME, null));
     if (await save(setPaidInCash(upsertExpense(trip, e), e.id, form.cash))) {
+      const keep = form.receipt?.uri ?? null;
+      const prev = receipts[e.id]?.uri ?? null;
+      if (keep !== prev) {
+        const next = form.receipt ? withReceipt(receipts, e.id, { tripId: trip.id, uri: form.receipt.uri, mime: form.receipt.mime, addedAt: new Date().toISOString() }).map : withoutReceipt(receipts, e.id).map;
+        setPersisted<Receipts>(RECEIPTS_KEY, next, NO_RECEIPTS);
+      }
+      removeReceiptFiles([...form.picked, ...(prev && prev !== keep ? [prev] : [])].filter((u) => u !== keep));
       setForm(null);
       AccessibilityInfo.announceForAccessibility(t('spending.form.saved'));
     }
+  };
+
+  /** Closes the form; photos picked for it but never saved are deleted. */
+  const cancelForm = () => {
+    if (form) removeReceiptFiles(form.picked);
+    setForm(null);
   };
 
   const describe = useCallback((e: Expense) => ({ amount: money(e.amount, e.currency), category: t(CATEGORY_KEYS[e.category]), day: formatDay(e.day, lang) }), [money, t, lang]);
@@ -178,7 +201,16 @@ function SpendingBody({ trip }: { trip: Trip }) {
           style: 'destructive',
           onPress: async () => {
             if (await save(setPaidInCash(removeExpense(trip, e.id), e.id, false))) {
-              setForm((f) => (f?.prev?.id === e.id ? null : f));
+              // T111: the receipt photo goes with its expense.
+              const gone = withoutReceipt(receipts, e.id);
+              if (gone.removed) {
+                setPersisted<Receipts>(RECEIPTS_KEY, gone.map, NO_RECEIPTS);
+                removeReceiptFiles([gone.removed]);
+              }
+              setForm((f) => {
+                if (f?.prev?.id === e.id) removeReceiptFiles(f.picked);
+                return f?.prev?.id === e.id ? null : f;
+              });
               AccessibilityInfo.announceForAccessibility(t('spending.deleted'));
             }
           },
@@ -186,7 +218,7 @@ function SpendingBody({ trip }: { trip: Trip }) {
       ]);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [trip, describe, t],
+    [trip, describe, t, receipts],
   );
 
   const renderItem = useCallback(
@@ -200,9 +232,11 @@ function SpendingBody({ trip }: { trip: Trip }) {
         onDelete={confirmDelete}
         togetherLine={togetherLine(item, people, t)}
         cash={cashIds.has(item.id)}
+        receipt={receipts[item.id]?.uri ?? null}
+        onReceipt={setViewing}
       />
     ),
-    [sorted, home, s.rates, openEdit, confirmDelete, people, t, cashIds],
+    [sorted, home, s.rates, openEdit, confirmDelete, people, t, cashIds, receipts],
   );
 
   const header = (
@@ -210,7 +244,7 @@ function SpendingBody({ trip }: { trip: Trip }) {
       <Summary s={s} sum={sum} home={home} onRates={toRates} onBudget={() => { setEditingBudget(true); toRates(); }} />
       {form ? (
         <FadeInView>
-          <ExpenseForm trip={trip} s={s} form={form} setForm={setForm} onSave={submit} />
+          <ExpenseForm trip={trip} s={s} form={form} setForm={setForm} onSave={submit} onCancel={cancelForm} />
         </FadeInView>
       ) : (
         <Button label={t('spending.add')} hint={t('spending.addHint')} icon="add" onPress={openNew} />
@@ -229,7 +263,9 @@ function SpendingBody({ trip }: { trip: Trip }) {
 
   const footer = (
     <View style={{ gap: space.m, marginTop: space.m }}>
+      <SpendingInsights trip={trip} s={s} cashIds={cashIds} today={today} />
       {sorted.length ? <Breakdowns s={s} home={home} sumHome={sum.home} /> : null}
+      {sorted.length ? <ExportCard trip={trip} cashIds={cashIds} /> : null}
       <Rates trip={trip} s={s} home={home} save={save} />
       <BudgetCard trip={trip} s={s} editing={editingBudget} setEditing={setEditingBudget} save={save} />
       <Body muted>{t('spending.offline')}</Body>
@@ -250,6 +286,11 @@ function SpendingBody({ trip }: { trip: Trip }) {
         ListFooterComponent={footer}
         keyboardShouldPersistTaps="handled"
         automaticallyAdjustKeyboardInsets
+      />
+      <ReceiptViewer
+        uri={viewing ? (receipts[viewing.id]?.uri ?? null) : null}
+        label={viewing ? t('insights.receipt.imageA11y', describe(viewing)) : ''}
+        onClose={() => setViewing(null)}
       />
     </>
   );
@@ -319,6 +360,8 @@ const ExpenseRow = memo(function ExpenseRow({
   onDelete,
   togetherLine,
   cash,
+  receipt,
+  onReceipt,
 }: {
   expense: Expense;
   firstOfDay: boolean;
@@ -330,6 +373,9 @@ const ExpenseRow = memo(function ExpenseRow({
   togetherLine?: string | null;
   /** T104: marked "paid in cash". */
   cash?: boolean;
+  /** T111: the receipt photo's file, if any. */
+  receipt?: string | null;
+  onReceipt?: (e: Expense) => void;
 }) {
   const { t, theme, lang } = useApp();
   const amount = formatMoney(e.amount, e.currency, lang);
@@ -358,7 +404,7 @@ const ExpenseRow = memo(function ExpenseRow({
       >
         <PressableScale
           accessibilityRole="button"
-          accessibilityLabel={[a11y, cash ? t('f95.cash.a11y') : '', approx, togetherLine].filter(Boolean).join(', ')}
+          accessibilityLabel={[a11y, cash ? t('f95.cash.a11y') : '', receipt ? t('insights.receipt.row') : '', approx, togetherLine].filter(Boolean).join(', ')}
           accessibilityHint={t('spending.row.hint')}
           onPress={() => onEdit(e)}
           style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.s }}
@@ -389,6 +435,7 @@ const ExpenseRow = memo(function ExpenseRow({
           </View>
           {approx ? <Text style={[typeScale.small, { color: theme.muted, fontVariant: ['tabular-nums'] }]}>{approx}</Text> : null}
         </PressableScale>
+        {receipt && onReceipt ? <ReceiptThumb uri={receipt} label={t('insights.receipt.thumbA11y', { amount })} onPress={() => onReceipt(e)} /> : null}
         <PressableScale
           accessibilityRole="button"
           accessibilityLabel={t('spending.deleteA11y', { amount, category })}
@@ -403,7 +450,7 @@ const ExpenseRow = memo(function ExpenseRow({
   );
 });
 
-function ExpenseForm({ trip, s, form, setForm, onSave }: { trip: Trip; s: Spending; form: Form; setForm: (f: Form | null) => void; onSave: () => void }) {
+function ExpenseForm({ trip, s, form, setForm, onSave, onCancel }: { trip: Trip; s: Spending; form: Form; setForm: (f: Form | null) => void; onSave: () => void; onCancel: () => void }) {
   const { t, theme, lang } = useApp();
   const router = useRouter();
   const d = form.draft;
@@ -419,6 +466,16 @@ function ExpenseForm({ trip, s, form, setForm, onSave }: { trip: Trip; s: Spendi
       : t('spending.err.amountNoCode')
     : undefined;
   const dayLabel = formatDay(d.day, lang);
+  // T108: "Work out a tip" comes back with the tip-included total for this form (one token per form).
+  const fillToken = useRef<string | null>(null);
+  if (fillToken.current === null) fillToken.current = newTipFillToken();
+  const fill = useTipFill(fillToken.current);
+  useEffect(() => {
+    if (!fill || !fillToken.current) return;
+    setForm({ ...form, draft: applyTipFill(form.draft, fill), errors: form.errors.filter((e) => e !== 'amount' && e !== 'currency') });
+    clearTipFill(fillToken.current);
+    AccessibilityInfo.announceForAccessibility(t('f96.tip.filled', { amount: fill.amount, code: fill.currency }));
+  }, [fill, form, setForm, t]);
   return (
     <Card style={{ gap: space.m }}>
       <Text accessibilityRole="header" style={[typeScale.title, { color: theme.ink }]}>
@@ -498,16 +555,103 @@ function ExpenseForm({ trip, s, form, setForm, onSave }: { trip: Trip; s: Spendi
       <ToggleRow label={t('cash.paidInCash')} hint={t('cash.paidInCashHint')} value={form.cash} onChange={(cash) => setForm({ ...form, cash })} />
 
       <TextField label={t('spending.form.note')} value={d.note} onChange={(v) => set({ note: v })} placeholder={t('spending.form.notePlaceholder')} />
-      {/* T105: the tip calculator, filed under this form's category and currency; it saves its own expense. */}
+      <ReceiptField form={form} setForm={setForm} />
+      {/* T105 / T108: the tip calculator, in this form's category and currency; its total comes back into this form. */}
       <Button
         kind="secondary"
         icon="happy-outline"
         label={t('tipping.fromExpense')}
-        hint={t('tipping.fromExpenseHint')}
-        onPress={() => router.push({ pathname: '/tipping', params: { tripId: trip.id, category: d.category, ...(isCurrency(code) ? { currency: code } : {}) } })}
+        hint={t('f96.tip.fromExpenseHint')}
+        onPress={() => router.push({ pathname: '/tipping', params: { tripId: trip.id, category: d.category, fill: fillToken.current ?? '', ...(isCurrency(code) ? { currency: code } : {}) } })}
       />
       <Button label={t('spending.form.save')} hint={t('spending.form.saveHint')} icon="checkmark" onPress={onSave} />
-      <Button label={t('common.cancel')} hint={t('spending.form.cancelHint')} kind="quiet" onPress={() => setForm(null)} />
+      <Button label={t('common.cancel')} hint={t('spending.form.cancelHint')} kind="quiet" onPress={onCancel} />
+    </Card>
+  );
+}
+
+/** T111: add, replace or remove the expense's receipt photo (camera or Photos, kept on this phone). */
+function ReceiptField({ form, setForm }: { form: Form; setForm: (f: Form | null) => void }) {
+  const { t, theme } = useApp();
+  const add = async (source: 'camera' | 'photos') => {
+    const r = await pickReceipt(source);
+    if (r.ok) {
+      setForm({ ...form, receipt: { uri: r.uri, mime: r.mime }, picked: [...form.picked, r.uri] });
+      AccessibilityInfo.announceForAccessibility(t('insights.receipt.attached'));
+      return;
+    }
+    if (r.reason === 'canceled') return;
+    const body = t(`insights.receipt.err.${r.reason}` as Key);
+    Alert.alert(
+      t('insights.receipt.errTitle'),
+      body,
+      r.reason === 'denied' && r.permission !== 'ask' ? [{ text: t('common.cancel'), style: 'cancel' }, { text: t('insights.receipt.openSettings'), onPress: openSettings }] : undefined,
+    );
+  };
+  const choose = () =>
+    Alert.alert(t('insights.receipt.sourceTitle'), undefined, [
+      { text: t('insights.receipt.camera'), onPress: () => add('camera') },
+      { text: t('insights.receipt.photos'), onPress: () => add('photos') },
+      { text: t('common.cancel'), style: 'cancel' },
+    ]);
+  return (
+    <View style={{ gap: space.s }}>
+      {form.receipt ? (
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
+          <Image
+            accessible
+            accessibilityLabel={t('insights.receipt.attached')}
+            source={{ uri: appPath(form.receipt.uri) }}
+            resizeMode="cover"
+            style={{ width: 64, height: 64, borderRadius: radius.m, borderWidth: 1, borderColor: theme.line, backgroundColor: theme.seaSoft }}
+          />
+          <View style={{ flex: 1, gap: space.xs }}>
+            <Button kind="secondary" icon="camera-outline" label={t('insights.receipt.replace')} hint={t('insights.receipt.addHint')} onPress={choose} />
+            <Button kind="quiet" label={t('insights.receipt.remove')} hint={t('insights.receipt.removeHint')} onPress={() => setForm({ ...form, receipt: null })} />
+          </View>
+        </View>
+      ) : (
+        <Button kind="secondary" icon="receipt-outline" label={t('insights.receipt.add')} hint={t('insights.receipt.addHint')} onPress={choose} />
+      )}
+      <Text style={[typeScale.small, { color: theme.muted }]}>{t('insights.receipt.local')}</Text>
+    </View>
+  );
+}
+
+/** T111: "Export spending" as a CSV file through the share sheet. */
+function ExportCard({ trip, cashIds }: { trip: Trip; cashIds: ReadonlySet<string> }) {
+  const { t, theme } = useApp();
+  const [busy, setBusy] = useState(false);
+  const run = async () => {
+    if (busy) return;
+    setBusy(true);
+    const labels: CsvLabels = {
+      date: t('insights.csv.date'),
+      category: t('insights.csv.category'),
+      note: t('insights.csv.note'),
+      amount: t('insights.csv.amount'),
+      currency: t('insights.csv.currency'),
+      cash: t('insights.csv.cash'),
+      home: t('insights.csv.home'),
+      homeCurrency: t('insights.csv.homeCurrency'),
+      yes: t('insights.csv.yes'),
+      no: t('insights.csv.no'),
+      categories: Object.fromEntries(EXPENSE_CATEGORIES.map((c) => [c, t(CATEGORY_KEYS[c])])) as CsvLabels['categories'],
+    };
+    const r = await shareCsvFile(csvFileName(trip.name), spendingCsv(trip, cashIds, labels), t('insights.export.dialog', { trip: trip.name }));
+    setBusy(false);
+    if (r !== 'shared') Alert.alert(t('insights.export.errTitle'), t(`insights.export.err.${r}` as Key));
+  };
+  return (
+    <Card style={{ gap: space.m }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
+        <IconBadge name="document-text-outline" tone="teal" />
+        <Text accessibilityRole="header" style={[typeScale.title, { flex: 1, color: theme.ink }]}>
+          {t('insights.export')}
+        </Text>
+      </View>
+      <Body muted>{t('insights.exportBody')}</Body>
+      <Button kind="secondary" icon="share-outline" label={t('insights.export')} hint={t('insights.exportHint')} onPress={run} />
     </Card>
   );
 }

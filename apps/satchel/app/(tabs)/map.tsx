@@ -20,6 +20,7 @@ import tagData from '../../src/content/osm_poi_tags.json';
 import tokyoData from '../../src/content/demo_pois_tokyo.json';
 import { formatSize, overallProgress, pickCityFor, regionForCity, type CityCatalog, type CityMap } from '../../src/core/citymaps.ts';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
+import { giftPins, giftPinTarget } from '../../src/core/gifts.ts';
 import type { PermissionState } from '../../src/core/permissions.ts';
 import { activeTrip, addPlace, ALL_TRIPS, removePlace, SAME_SPOT_M, scopeParam, savedPins, saveTargets, scopeTrips, type PlaceError, type SavedPin } from '../../src/core/places.ts';
 import {
@@ -306,6 +307,8 @@ export default function MapScreen() {
   const targets = useMemo(() => (scoped ? [scoped] : saveTargets(trips, today)), [scoped, trips, today]);
   const bookings = useMemo(() => bookingPins(scope.trips), [scope]);
   const saved = useMemo(() => savedPins(scope.trips), [scope]);
+  // T108: gifts with a map spot (Gifts screen), on the trips the map shows; a tap opens the gift.
+  const gifts = useMemo(() => giftPins(scope.trips), [scope]);
   const savedSpots = useMemo(() => new Set(saved.map(coordKey)), [saved]);
   const shownPois = useMemo(() => (set ? filterByCategories(set.pois, on) : []), [set, on]);
   const here = loc.s === 'here' ? loc.coords : null;
@@ -333,6 +336,9 @@ export default function MapScreen() {
     for (const s of saved) {
       out.push({ id: `s:${s.id}`, lat: s.lat, lon: s.lon, title: s.name, subtitle: t('places.savedTo', { trip: s.tripName }), color: theme.warn, a11y: t('places.pinA11y', { name: s.name }) });
     }
+    for (const g of gifts) {
+      out.push({ id: g.id, lat: g.lat, lon: g.lon, title: g.what, subtitle: t('f96.gift.pinSub', { name: g.person }), color: theme.teal, a11y: t('f96.gift.pinA11y', { what: g.what, name: g.person }) });
+    }
     for (const p of shownPois) {
       if (savedSpots.has(coordKey(p))) continue; // the saved pin stands in for it
       out.push({ id: `p:${p.id}`, lat: p.lat, lon: p.lon, title: p.name, subtitle: catLabel(p.category), color: theme.sea, a11y: t('map.pinPoi', { category: catLabel(p.category), name: p.name }) });
@@ -343,7 +349,7 @@ export default function MapScreen() {
     if (found) out.push({ id: SEARCH_PIN_ID, lat: found.lat, lon: found.lon, title: found.name, color: theme.accentStrong, a11y: t('mapsearch.pinA11y', { name: found.name }) });
     if (here) out.push({ id: 'me', lat: here.lat, lon: here.lon, title: t('map.here'), color: theme.ok, a11y: t('map.here') });
     return out;
-  }, [bookings, saved, savedSpots, shownPois, selected, found, here, theme, t, catLabel, scoped, layer.pins, layer.showsItem, layer.coversPin]);
+  }, [bookings, saved, gifts, savedSpots, shownPois, selected, found, here, theme, t, catLabel, scoped, layer.pins, layer.showsItem, layer.coversPin]);
 
   // The map only reads its first region; later moves go through `focus`.
   const [initialRegion] = useState<Region>(() => (set ? regionFor([set.center, ...set.pois]) : regionFor(bookings)) ?? FALLBACK_REGION);
@@ -387,6 +393,9 @@ export default function MapScreen() {
         const pin = bookings.find((b) => b.id === key);
         if (pin) select({ type: 'booking', pin });
         else router.push(`/item/${key.slice(0, key.lastIndexOf(':'))}`); // same spot as an earlier booking: open it directly
+      } else if (id.startsWith('g:')) {
+        const g = giftPinTarget(gifts, id);
+        if (g) router.push({ pathname: `/gifts/${g.tripId}`, params: { personId: g.personId, giftId: g.giftId, open: String(Date.now()) } });
       } else if (id.startsWith('s:')) {
         select({ type: 'saved', id: id.slice(2) });
       } else if (id.startsWith('p:')) {
@@ -397,7 +406,7 @@ export default function MapScreen() {
         }
       }
     },
-    [bookings, set, savedAt, select, router, found, reveal, reduceMotion],
+    [bookings, gifts, set, savedAt, select, router, found, reveal, reduceMotion],
   );
 
   const onMapPress = useCallback(

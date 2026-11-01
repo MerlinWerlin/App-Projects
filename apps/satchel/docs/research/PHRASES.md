@@ -81,3 +81,32 @@ Allergens: peanuts, tree nuts, shellfish, fish, milk, egg, wheat / gluten, soy, 
 | pt | tree nuts | Castanhas e nozes | Portugal's label term is frutos de casca rija. |
 | id | tree nuts | Kacang almond, kenari, mete | Examples rather than a single word; check a native speaker's preferred term. |
 | id | shellfish | Udang, kepiting, kerang | Spelled out. |
+
+## T110 menu words (run 97): TO NATIVE-CHECK
+
+`src/content/menu.json` (menu helper, `app/menu.tsx`) was **written by the model (Claude), not by a native speaker. Check every word with a native speaker before calling it verified.** The screen says so under the list and shows "General guidance only - always tell staff about allergies" at the top and on every word card.
+
+- 131 concepts; words per language: ja 127, zh-Hans 124, ko 123, th 119, vi 121, fr 122, it 121, es 122, de 122, pt 121. Where I was not confident of a word in a language it was left out rather than guessed (e.g. th pistachio / hazelnut / pasta, vi mayonnaise / shellfish, ko beans, roasted in zh / ko).
+- Categories: meat, fish and seafood, eggs and dairy, nuts / soy / wheat and other allergens, vegetables and fruit, rice / noodles / dishes, cooking methods, spice level and taste, drinks, diet words (vegetarian, vegan, halal, gluten-free, no meat; Thai เจ).
+- `flags` say what a food **usually** contains (pork, beef, poultry, fish, shellfish, egg, dairy, peanuts, tree nuts, gluten, soy, sesame, alcohol, honey); pork, beef and poultry imply meat. Dishes vary, so the flags are prompts to ask, not a guarantee.
+- Romanisation as for the phrase cards: Hepburn with long-vowel marks (ja), Hanyu Pinyin with tone marks (zh-Hans, dictionary tones: 不辣 bù là), Revised Romanization (ko), simple RTGS without tone marks (th). Vietnamese stays in its own Latin script with diacritics. Regional alternatives are in brackets (es Spain / Latin America, pt Brazil / Portugal, vi North / South).
+- No Traditional Chinese (TW / HK / MO) or Indonesian menu words yet; links there are hidden.
+
+| Lang | Word | Text | Doubt |
+|---|---|---|---|
+| ja | cooking methods | 焼き / 蒸し / 茹で / 炒め | Menu fragments (as in 焼き魚, 野菜炒め) rather than standalone words. |
+| ja | MSG | 化学調味料 | Seen as "化学調味料不使用"; うま味調味料 is the newer label word. |
+| zh-Hans | almonds | 杏仁 | Also means apricot kernel (杏仁豆腐); 扁桃仁 / 巴旦木 is the strict word. |
+| zh-Hans | cream | 奶油 | Also used for butter-cream; 淡奶油 is whipping cream. |
+| ko | soy | 대두 | Label word; everyday 콩 also means beans in general. |
+| ko | kimchi | 김치 | Flagged fish / shellfish because most recipes use fish sauce or salted shrimp; check per restaurant. |
+| th | noodles | ก๋วยเตี๋ยว | Listed under rice noodles (usually rice); egg noodles are บะหมี่ (not included). |
+| th | vegetarian / jay | มังสวิรัติ / เจ | เจ (yellow flag) is stricter: no meat, dairy, eggs, garlic or onion. |
+| vi | butter | bơ | Also avocado (quả bơ); context makes it clear on a menu. |
+| vi | vegetarian | chay | Also covers vegan-style Buddhist food; thuần chay is strict vegan. |
+| fr | bacon | lardons (bacon) | Lardons are bacon pieces; "bacon" in France is often cured loin. |
+| es | beef | ternera (res) | Spain ternera, Latin America res / carne de res. |
+| de | roasted | gebraten | Also "fried"; gebacken / im Ofen for baked. |
+| de | crab | Krabbe | In northern Germany Krabben are often brown shrimp. |
+| pt | ham | presunto | Brazil: cooked ham; Portugal: cured ham (fiambre = cooked). |
+| it | rice noodles | spaghetti di riso | Also "noodles di riso" on menus. |

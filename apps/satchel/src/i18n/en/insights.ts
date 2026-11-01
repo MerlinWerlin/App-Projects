@@ -1,0 +1,93 @@
+// Strings for insights (run 97, T111 "Spending insights + receipts": Spending screen insights, receipts, CSV export). Every UI string lives in the catalogue.
+export const insights = {
+  'insights.title': 'Insights',
+  'insights.noBase': 'Set a home currency below to see charts for spending in more than one currency.',
+  'insights.noData': 'Charts appear here once there’s spending with a saved rate.',
+
+  // Budget pace
+  'insights.pace.title': 'Budget pace',
+  'insights.pace.on-track': 'On track',
+  'insights.pace.ahead': 'Ahead of plan',
+  'insights.pace.over': 'Over budget',
+  'insights.pace.body.on-track': 'You’ve spent {spent} of the {planned} your budget allows so far.',
+  'insights.pace.body.ahead': 'You’ve spent {spent}, more than the {planned} your budget allows so far.',
+  'insights.pace.body.over': 'You’ve spent {spent}, {amount} over your {budget} budget.',
+  'insights.pace.perDay': 'About {amount} a day is left for the {n} days to come.',
+  'insights.pace.perDayOne': 'About {amount} is left for the last day.',
+  'insights.pace.partial': 'Some spending has no rate yet, so the real figure is higher.',
+  'insights.pace.noBudget': 'Add a budget amount below to see whether you’re on track.',
+  'insights.pace.a11y': 'Budget pace: {state}. {body}',
+
+  // Day by day
+  'insights.days.title': 'Day by day',
+  'insights.days.summary': 'Spending on {n} of {days} days, {total} in all. Biggest day: {day}, {amount}.',
+  'insights.days.summaryNone': 'No spending with a rate on any day yet.',
+  'insights.days.a11y': 'Bar chart of spending per day. {summary}',
+  'insights.days.missing': 'Left out for lack of a rate: {n} expenses.',
+  'insights.days.first': 'First day: {day}',
+  'insights.days.last': 'Last day: {day}',
+  'insights.biggest.title': 'Biggest days',
+  'insights.biggest.a11y': 'Number {rank}: {day}, {amount}, {count}',
+  'insights.biggest.countOne': '1 expense',
+  'insights.biggest.countMany': '{n} expenses',
+
+  // Categories
+  'insights.cat.title': 'Where it went',
+  'insights.cat.a11y': 'Ring chart of spending by category. {summary}',
+  'insights.cat.item': '{category} {percent}%, {amount}',
+  'insights.cat.centre': 'in all',
+
+  // Cash and card
+  'insights.pay.title': 'Cash and card',
+  'insights.pay.cash': 'Cash',
+  'insights.pay.card': 'Card and other',
+  'insights.pay.row': '{percent}% · {amount}',
+  'insights.pay.a11y': 'Paid in cash {cash}%, {cashAmount}. Card and other {card}%, {cardAmount}.',
+
+  // Receipts
+  'insights.receipt.add': 'Add receipt photo',
+  'insights.receipt.addHint': 'Take a photo or choose one from Photos. It stays on this phone.',
+  'insights.receipt.replace': 'Replace receipt photo',
+  'insights.receipt.remove': 'Remove receipt',
+  'insights.receipt.removeHint': 'Takes the photo off this expense when you save.',
+  'insights.receipt.sourceTitle': 'Receipt photo',
+  'insights.receipt.camera': 'Take photo',
+  'insights.receipt.photos': 'Choose from Photos',
+  'insights.receipt.attached': 'Receipt photo attached',
+  'insights.receipt.thumbA11y': 'Receipt photo for {amount}',
+  'insights.receipt.thumbHint': 'Opens the receipt full screen.',
+  'insights.receipt.view': 'Receipt',
+  'insights.receipt.close': 'Close',
+  'insights.receipt.closeHint': 'Back to Spending.',
+  'insights.receipt.imageA11y': 'Receipt photo for {amount}, {category}, {day}',
+  'insights.receipt.local': 'Receipt photos stay on this phone. They aren’t included when you share a trip file, and they’re deleted with their expense.',
+  'insights.receipt.errTitle': 'No receipt added',
+  'insights.receipt.err.denied': 'Satchel needs access to take or choose a receipt photo. You can allow it in Settings.',
+  'insights.receipt.err.unavailable': 'There’s no camera available here. Choose a photo instead.',
+  'insights.receipt.err.storage': 'The photo couldn’t be saved. Your phone may be full.',
+  'insights.receipt.err.unreadable': 'That photo couldn’t be read. Try another one.',
+  'insights.receipt.openSettings': 'Open Settings',
+  'insights.receipt.row': 'Has a receipt photo',
+
+  // Export
+  'insights.export': 'Export spending',
+  'insights.exportHint': 'Shares a CSV spreadsheet file of this trip’s spending.',
+  'insights.exportBody': 'A spreadsheet file with every expense. Home amounts are filled only where a rate is saved.',
+  'insights.export.dialog': 'Spending for {trip}',
+  'insights.export.errTitle': 'Couldn’t export',
+  'insights.export.err.write': 'The file couldn’t be written on this phone.',
+  'insights.export.err.unavailable': 'Sharing isn’t available on this phone.',
+  'insights.export.err.failed': 'The share sheet didn’t open. Try again.',
+
+  // CSV columns
+  'insights.csv.date': 'Date',
+  'insights.csv.category': 'Category',
+  'insights.csv.note': 'Note',
+  'insights.csv.amount': 'Amount',
+  'insights.csv.currency': 'Currency',
+  'insights.csv.cash': 'Paid in cash',
+  'insights.csv.home': 'Home amount',
+  'insights.csv.homeCurrency': 'Home currency',
+  'insights.csv.yes': 'Yes',
+  'insights.csv.no': 'No',
+} as const;

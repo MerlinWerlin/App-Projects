@@ -48,8 +48,6 @@ export const meds = {
   'meds.form.modeHint': 'Chooses how the times are set.',
   'meds.form.times': 'Times at home',
   'meds.form.timeField': 'Add a time (24-hour, like 08:00)',
-  'meds.form.addTime': 'Add time',
-  'meds.form.addTimeHint': 'Adds the typed time to the list.',
   'meds.form.removeTime': 'Remove {time}',
   'meds.form.removeTimeHint': 'Takes this time off the list.',
   'meds.form.timeBad': 'Type a time like 08:00 or 20:30.',

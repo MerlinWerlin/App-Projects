@@ -79,6 +79,11 @@ export const SPEC_SYNC_PREFIXES = [
   'holidays.',
   'gifts.',
   'f95.',
+  // Run 97: T109 stay details, T110 menu helper, T111 spending insights, T108 follow-ups.
+  'stay.',
+  'menu.',
+  'insights.',
+  'f96.',
 ] as const;
 
 /** Single keys mirrored as well: map.online, the T48 emergency fallback wording, the Toilets tab, home country. */

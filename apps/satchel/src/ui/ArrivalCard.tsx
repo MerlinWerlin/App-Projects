@@ -1,7 +1,7 @@
 // T95 Arrival card: a colourful "Welcome to <country>" hero (theme.hero gradient per country) for the trip screen
 // and the Trips tab, from src/core/arrival.ts: local time vs home, the traveller's own saved rate with 10 / 50 / 100,
 // plugs / voltage / driving side and emergency numbers (both "verify locally"), hello / thank you phrase cards, and
-// nearest-toilet and way-back-to-hotel shortcuts. "Hide for <country>" is remembered per country per trip on this
+// nearest-toilet, menu-words (T110, language from the stop's country) and way-back-to-hotel shortcuts. "Hide for <country>" is remembered per country per trip on this
 // phone only (usePersisted). The "Countries on this trip" strip draws regional-indicator flags (decorative; each
 // chip is labelled with the country name). Text on the gradient sits on heroChip glass (AA in both themes); timed
 // fade only (FadeInView), no springs. Missing data shows a plain line, never a blank or a guess.
@@ -16,6 +16,7 @@ import { lineLabelServices, type EmergencyTable, type NumberLine, type Service }
 import type { EssentialsTable } from '../core/essentials.ts';
 import { deviceZone, formatDay, zoneCity } from '../core/format.ts';
 import { formatOffset } from '../core/glance.ts';
+import { menuLangForCountry } from '../core/menu.ts';
 import { currencyName } from '../core/countrycurrency.ts';
 import type { Trip } from '../core/model.ts';
 import { formatMoney, rateToText } from '../core/spending.ts';
@@ -263,6 +264,14 @@ function ArrivalHero({ view: v, onDismiss }: { view: ArrivalView; onDismiss: () 
 
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
             <HeroButton label={t('arrival.toilet')} hint={t('arrival.toiletHint')} icon="male-female-outline" onPress={() => router.navigate({ pathname: '/toilets', params: { find: requestNearestToilet() } })} />
+            {menuLangForCountry(PHRASE_TABLE, v.iso2) ? (
+              <HeroButton
+                label={t('menu.openFromArrival')}
+                hint={t('menu.openFromArrivalHint')}
+                icon="restaurant-outline"
+                onPress={() => router.push({ pathname: '/menu', params: { lang: menuLangForCountry(PHRASE_TABLE, v.iso2) ?? '' } })}
+              />
+            ) : null}
             {v.hotelTarget ? (
               <HeroButton label={t('arrival.wayback')} hint={t('arrival.waybackHint')} icon="compass-outline" onPress={() => router.push({ pathname: '/wayback', params: { target: v.hotelTarget ?? '' } })} />
             ) : null}

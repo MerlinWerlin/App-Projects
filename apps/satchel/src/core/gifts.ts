@@ -148,6 +148,32 @@ export const findPerson = (trip: Trip, personId: string): GiftPerson | undefined
 export const findGift = (trip: Trip, personId: string, giftId: string): Gift | undefined => findPerson(trip, personId)?.gifts.find((g) => g.id === giftId);
 export const giftSpot = (g: Gift): LatLon | null => (validLatLon(g.lat, g.lon) ? { lat: g.lat as number, lon: g.lon as number } : null);
 export const hasPrice = (g: Gift): g is Gift & { price: number; currency: string } => isMinor(g.price) && isCurrency(g.currency);
+
+/** T108: a gift with a map spot, as a pin on the Map tab (for the trips it shows). `id` is unique across trips. */
+export type GiftPin = { id: string; tripId: string; personId: string; giftId: string; lat: number; lon: number; what: string; person: string; status: GiftStatus };
+
+/** Gifts with a map spot on these trips, as pins; a tap opens the gift (giftPinTarget). */
+export function giftPins(trips: readonly Pick<Trip, 'id' | 'gifts'>[]): GiftPin[] {
+  const out: GiftPin[] = [];
+  for (const trip of trips) {
+    for (const p of readGifts(trip)) {
+      for (const g of p.gifts) {
+        const at = giftSpot(g);
+        if (!at) continue;
+        out.push({ id: `g:${trip.id}/${p.id}/${g.id}`, tripId: trip.id, personId: p.id, giftId: g.id, lat: at.lat, lon: at.lon, what: g.what, person: p.name, status: g.status });
+      }
+    }
+  }
+  return out;
+}
+
+/** Where a tapped map pin id leads: the gift's trip, person and gift; null when it is not a gift pin we drew. */
+export function giftPinTarget(pins: readonly GiftPin[], id: string): { tripId: string; personId: string; giftId: string } | null {
+  if (!id.startsWith('g:')) return null;
+  const pin = pins.find((x) => x.id === id);
+  return pin ? { tripId: pin.tripId, personId: pin.personId, giftId: pin.giftId } : null;
+}
+
 /** Bought or packed: the gift is in hand. */
 export const isGot = (g: Pick<Gift, 'status'>) => g.status === 'bought' || g.status === 'packed';
 

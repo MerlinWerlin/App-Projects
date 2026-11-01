@@ -6,7 +6,7 @@
 // list (no prices unless switched on). Logic in src/core/gifts.ts; stored on the trip (Trip.gifts) and in .satchel files.
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo, Alert, Text, View } from 'react-native';
 import { formatWeight } from '../../src/core/bags.ts';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
@@ -95,6 +95,20 @@ function GiftsBody({ trip }: { trip: Trip }) {
   const [personForm, setPersonForm] = useState<PersonForm | null>(null);
   const [giftForm, setGiftForm] = useState<GiftForm | null>(null);
   const money = (m: Money) => formatMoney(m.amount, m.currency, lang);
+  const unit = useWeightUnit();
+
+  // T108: a gift pin tapped on the Map tab opens that gift's editor (once per tap; ?open changes each time).
+  const params = useLocalSearchParams<{ personId?: string; giftId?: string; open?: string }>();
+  const opened = useRef<string | null>(null);
+  useEffect(() => {
+    const { personId, giftId, open } = params;
+    if (typeof personId !== 'string' || typeof giftId !== 'string' || !giftId || opened.current === `${open ?? ''}:${giftId}`) return;
+    opened.current = `${open ?? ''}:${giftId}`;
+    const g = people.find((p) => p.id === personId)?.gifts.find((x) => x.id === giftId);
+    if (!g) return;
+    setGiftForm({ personId, prev: g, draft: draftFromGift(g, unit, lang), errors: [] });
+    AccessibilityInfo.announceForAccessibility(t('f96.gift.opened', { what: g.what }));
+  }, [params, people, unit, lang, t]);
 
   const save = async (next: Trip): Promise<boolean> => {
     const ok = await saveTrip(next);

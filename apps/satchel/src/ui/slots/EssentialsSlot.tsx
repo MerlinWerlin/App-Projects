@@ -20,6 +20,7 @@ import { AddressCardView } from '../AddressCardView.tsx';
 import { callAndExplain, EmergencyCardView } from '../EmergencyCardView.tsx';
 import { KindIcon, kindKey } from '../kinds.tsx';
 import { EssentialsLoyalty } from './EssentialsLoyalty.tsx';
+import { EssentialsStay } from './EssentialsStay.tsx';
 
 const TABLE = table as EmergencyTable;
 const NO_PICK: string | null = null;
@@ -161,6 +162,8 @@ export function EssentialsSlot() {
     <View style={{ gap: space.xl }}>
       <Section title={t('battery.ticketHeading')}>{ticketBody}</Section>
       <Section title={t('battery.hotelHeading')}>{hotelBody}</Section>
+      {/* T109: room, masked codes and Wi-Fi for the stay you're in now. */}
+      <EssentialsStay now={now} />
       <Section title={t('battery.emergencyHeading')}>
         {!display ? <Line muted>{t('battery.emergencyNoCountry')}</Line> : null}
         {cardStatus(card).empty ? (

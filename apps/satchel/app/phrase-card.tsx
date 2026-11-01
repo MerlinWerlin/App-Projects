@@ -24,6 +24,7 @@ import {
   type AllergenId,
   type PhraseId,
 } from '../src/core/phrases.ts';
+import { menuLangFor } from '../src/core/menu.ts';
 import type { Key } from '../src/i18n/en.ts';
 import { useScreenAwake } from '../src/native/keepAwake.ts';
 import { useApp } from '../src/state/app.tsx';
@@ -61,6 +62,8 @@ export default function PhraseCardScreen() {
   };
   const close = () => (router.canGoBack() ? router.back() : router.replace('/phrases'));
   const language = t(LANG_KEY[lang]);
+  // T110: food words in this language (allergens marked by the diet chosen there), when we carry them.
+  const menuLang = menuLangFor(lang);
   const size = card ? cardFontSize(card.text) : 32;
 
   const label = (s: string) => <Text style={[typeScale.caption, { fontSize: 13, color: theme.muted }]}>{s}</Text>;
@@ -169,6 +172,15 @@ export default function PhraseCardScreen() {
               </View>
             ) : null}
             <Text style={[typeScale.small, { color: theme.muted }]}>{t('phrases.allergens.check')}</Text>
+            {menuLang ? (
+              <Button
+                kind="secondary"
+                icon="restaurant-outline"
+                label={t('menu.openFromAllergy')}
+                hint={t('menu.openFromAllergyHint')}
+                onPress={() => router.push({ pathname: '/menu', params: { lang: menuLang } })}
+              />
+            ) : null}
           </View>
         ) : null}
       </ScrollView>
