@@ -1,0 +1,29 @@
+# One-off helper: fetch the studio brand fonts (SIL OFL) into marketing/brand/fonts so renderers can use them offline.
+name: brand-fonts
+on:
+  push:
+    paths: ['marketing/brand/FONTS_REQUEST']
+  workflow_dispatch:
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          set -e
+          mkdir -p marketing/brand/fonts && cd marketing/brand/fonts
+          G=https://github.com/google/fonts/raw/main/ofl
+          curl -fsSL -o DMSerifDisplay-Regular.ttf "$G/dmserifdisplay/DMSerifDisplay-Regular.ttf"
+          curl -fsSL -o DMSerifDisplay-Italic.ttf "$G/dmserifdisplay/DMSerifDisplay-Italic.ttf"
+          curl -fsSL -o BricolageGrotesque.ttf "$G/bricolagegrotesque/BricolageGrotesque%5Bopsz%2Cwdth%2Cwght%5D.ttf"
+          curl -fsSL -o DMSans.ttf "$G/dmsans/DMSans%5Bopsz%2Cwght%5D.ttf"
+          curl -fsSL -o DMSans-Italic.ttf "$G/dmsans/DMSans-Italic%5Bopsz%2Cwght%5D.ttf"
+          curl -fsSL -o OFL-dmserifdisplay.txt "$G/dmserifdisplay/OFL.txt"
+          curl -fsSL -o OFL-bricolagegrotesque.txt "$G/bricolagegrotesque/OFL.txt"
+          curl -fsSL -o OFL-dmsans.txt "$G/dmsans/OFL.txt"
+          ls -la
+      - run: |
+          git config user.name brand-fonts; git config user.email brand-fonts@users.noreply.github.com
+          git add marketing/brand/fonts && git commit -m "Brand fonts (SIL OFL): DM Serif Display, Bricolage Grotesque, DM Sans" && git push
