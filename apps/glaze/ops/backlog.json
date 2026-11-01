@@ -3189,25 +3189,29 @@
     },
     {
       "id": "T245",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1101g",
         "follow-up"
       ],
       "source": "run 218",
-      "title": "Countdown art pieces (dune-countdown, rehearsal-countdown): let the person set a target day so they go live (T237 left them as Art)"
+      "title": "Countdown art pieces (dune-countdown, rehearsal-countdown): let the person set a target day so they go live (T237 left them as Art)",
+      "commit": "5b275bc",
+      "note": "run 225 5b275bc: per-piece target day (YYYY-MM-DD field, AsyncStorage), live.target in the spec; no day = stays Art. Pieces already on widgets pick up a new day after Use on my widget / next theme sync."
     },
     {
       "id": "T246",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1101g",
         "follow-up"
       ],
       "source": "run 218",
-      "title": "Live values in the Fit layout too (map the plate rect onto the inset raw art); today live plates show in Fill only"
+      "title": "Live values in the Fit layout too (map the plate rect onto the inset raw art); today live plates show in Fill only",
+      "commit": "31379eb",
+      "note": "run 225 31379eb: app side done (src/core/liveArtFit.ts geometry + art rect in spec, Fill-only note in Widgets tab). Widget still draws live values in Fill only; native change tracked in T271."
     },
     {
       "id": "T247",
@@ -3492,7 +3496,8 @@
         "release"
       ],
       "source": "run 223 T266",
-      "title": "Plus sheet promises 'Extra widget styles' / 'Curated symbol sets' a user can't reach (3.1.1 risk): once the owner picks Plus option A/B/C (RELEASE_CHECKLIST §2b), trim the sheet to built features; also drop 'a loop' from the Themes tab subtitle"
+      "title": "Plus sheet promises 'Extra widget styles' / 'Curated symbol sets' a user can't reach (3.1.1 risk): once the owner picks Plus option A/B/C (RELEASE_CHECKLIST §2b), trim the sheet to built features; also drop 'a loop' from the Themes tab subtitle",
+      "note": " | run 225 ac7b420: Themes tab subtitle no longer says \"a loop\" (11 locales). Plus sheet trim still waits on the owner pick."
     },
     {
       "id": "T270",
@@ -3504,6 +3509,19 @@
       ],
       "source": "run 223 T266",
       "title": "src/config/feedback.ts still sends in-app feedback to the owner's personal Gmail; switch to the support address once the owner picks one (SUPPORT_EMAIL in docs/site/index.html)"
+    },
+    {
+      "id": "T271",
+      "status": "todo",
+      "deps": [
+        "T246"
+      ],
+      "tags": [
+        "follow-up",
+        "native"
+      ],
+      "source": "run 225 T246",
+      "title": "Native: draw live values in Fit in targets/widget/SeamlessWidget.swift (read spec art rect, fit raw art inset min(w,h)*0.06, place plate; flip FIT_LAYOUT_LIVE_IN_WIDGET with it; steps in docs/WIDGETS.md). Held by D225-3 until a native build result allows new Swift."
     }
   ],
   "priority_order": {

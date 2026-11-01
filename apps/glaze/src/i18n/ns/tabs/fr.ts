@@ -44,6 +44,9 @@ export const fr: NonNullable<LocaleMessages['tabs']> = {
       artBadge: 'Illustration',
       liveOnArt: 'Fonctionne sur l’écran d’accueil : le widget Glaze affiche la vraie valeur sur cette illustration.',
       focusNote: 'Touchez Démarrer sur le widget pour 25 minutes de concentration ; touchez à nouveau pour mettre en pause.',
+      countdownNote: 'Choisissez un jour ci-dessus, puis touchez Utiliser sur mon widget : le widget affiche le compte à rebours sur cette illustration. Sans jour, elle reste une image.',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: 'Les valeurs en direct s’affichent avec la disposition « Remplir » (appui long sur le widget, Modifier le widget, Disposition). « Ajuster » montre seulement l’illustration pour l’instant.',
       heroNames: { small: 'Petite pièce', medium: 'Pièce large', large: 'Grande pièce' },
       download: 'Télécharge ce thème sur sa page pour voir ici toutes ses illustrations de widget.',
       kinds: { art: 'Illustrations', clock: 'Horloges', date: 'Dates', calendar: 'Calendriers', countdown: 'Comptes à rebours', habits: 'Habitudes', battery: 'Batterie', photo: 'Photos', quote: 'Citations', focus: 'Concentration' },

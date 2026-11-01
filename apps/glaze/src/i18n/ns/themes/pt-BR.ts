@@ -2,7 +2,7 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ptBR: NonNullable<LocaleMessages['themes']> = {
-  subtitle: 'Visuais completos: papel de parede, ícones, widgets e um loop.',
+  subtitle: 'Visuais completos: papel de parede, ícones e widgets combinando.',
   tipsA11y: 'Dicas',
   dismissTip: 'Dispensar dica: {title}',
   makeWallpaper: {

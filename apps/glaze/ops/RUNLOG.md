@@ -591,3 +591,10 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - T258 (me, d36529a): pack/remote-art inventory and verify hash in 64 KB slices with an event-loop yield between (sha256HexChunked, verifyAssetAsync); +1 test. Other eligible tasks wait on the owner, the PC or a native build result (D225-3).
 - JS only (rides with the next build). 1815/1815 core tests green, core + UI stub typecheck clean. Nothing device-tested.
 - Bundle base64 ~14.74 MB (guard 15.6 MB). Trial kit rebuilt from 1fa8297.
+
+## 2026-11-01 21:50 AEDT, run 225 (scheduled)
+- Restored build page v1793524619-4941; synced App-Projects ab22f08 (85 new pack versions) and bcfedc7 (ASC_REQUEST) as ffd7437. Oversight still v228: no new directives or patches; no owner comments. Registry unreachable: core-only checks.
+- T245 (worker, 5b275bc): countdown art pieces take a per-piece target day; without one they stay Art. Uses T237's existing live.target path in Swift (no new Swift, D225-3).
+- T246 (worker, 31379eb): Fit-layout plate geometry (src/core/liveArtFit.ts) + art rect in the live spec; widget still draws live values in Fill only (SeamlessWidget.swift skips Fit), so the Widgets tab says so; native follow-up T271. Merge conflicts in tabs i18n + ThemeWidgetArt resolved (both kept).
+- T269 part (me, ac7b420): Themes tab subtitle drops "a loop" in 11 locales.
+- 1829/1829 core tests green; UI stub typecheck clean. Nothing device-tested. Full install + tsc + expo export needs PC verification.

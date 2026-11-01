@@ -44,6 +44,9 @@ export const ko: NonNullable<LocaleMessages['tabs']> = {
       artBadge: '아트',
       liveOnArt: '홈 화면에서 작동합니다: Glaze 위젯이 이 아트 위에 실제 값을 보여 줍니다.',
       focusNote: '위젯에서 시작을 탭하면 25분 집중 세션이 시작되고, 다시 탭하면 일시정지됩니다.',
+      countdownNote: '위에서 날짜를 고른 뒤 내 위젯에 사용을 탭하세요. 위젯이 이 아트 위에 그날까지 남은 날을 보여 줍니다. 날짜가 없으면 그림으로 남습니다.',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: '실제 값은 ‘채우기’ 레이아웃에서 표시됩니다(위젯을 길게 누르고 위젯 편집, 레이아웃). ‘맞추기’에서는 현재 아트만 보입니다.',
       heroNames: { small: '작은 아트', medium: '와이드 아트', large: '큰 아트' },
       download: '테마 페이지에서 다운로드하면 여기서 모든 위젯 아트를 볼 수 있어요.',
       kinds: { art: '아트', clock: '시계', date: '날짜', calendar: '캘린더', countdown: '카운트다운', habits: '습관', battery: '배터리', photo: '사진', quote: '명언', focus: '집중' },

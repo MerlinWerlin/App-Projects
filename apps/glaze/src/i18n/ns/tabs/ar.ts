@@ -44,6 +44,9 @@ export const ar: NonNullable<LocaleMessages['tabs']> = {
       artBadge: 'فن',
       liveOnArt: 'يعمل على الشاشة الرئيسية: تعرض أداة Glaze القيمة الحقيقية فوق هذا الرسم.',
       focusNote: 'اضغط «ابدأ» في الأداة لجلسة تركيز مدتها 25 دقيقة، واضغط مجددًا للإيقاف المؤقت.',
+      countdownNote: 'اختر يومًا أعلاه، ثم اضغط «استخدمها على أداتي»: تعدّ الأداة الأيام المتبقية فوق هذا الرسم. بدون يوم تبقى صورة فقط.',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: 'تظهر القيم الحية في تخطيط «ملء» (اضغط مطولًا على الأداة، ثم تعديل الأداة، ثم التخطيط). يعرض «احتواء» الرسم فقط حاليًا.',
       heroNames: { small: 'رسم صغير', medium: 'رسم عريض', large: 'رسم كبير' },
       download: 'نزّل هذا الثيم من صفحته لترى هنا كل رسومات أدواته.',
       kinds: { art: 'رسومات', clock: 'ساعات', date: 'تواريخ', calendar: 'تقاويم', countdown: 'عدّ تنازلي', habits: 'عادات', battery: 'البطارية', photo: 'صور', quote: 'اقتباسات', focus: 'تركيز' },

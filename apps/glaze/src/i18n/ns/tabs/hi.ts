@@ -44,6 +44,9 @@ export const hi: NonNullable<LocaleMessages['tabs']> = {
       artBadge: 'आर्ट',
       liveOnArt: 'होम स्क्रीन पर काम करता है: Glaze विजेट इस आर्ट पर असली मान दिखाता है।',
       focusNote: '25 मिनट के फ़ोकस सेशन के लिए विजेट पर शुरू करें टैप करें; रोकने के लिए फिर टैप करें।',
+      countdownNote: 'ऊपर एक दिन चुनें, फिर मेरे विजेट पर लगाएँ टैप करें: विजेट इस आर्ट पर उस दिन तक की उलटी गिनती दिखाएगा। दिन के बिना यह सिर्फ़ तस्वीर रहेगी।',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: 'असली मान “भरें” लेआउट में दिखते हैं (विजेट को दबाकर रखें, विजेट संपादित करें, लेआउट)। “फ़िट करें” में अभी सिर्फ़ आर्ट दिखता है।',
       heroNames: { small: 'छोटा आर्ट', medium: 'चौड़ा आर्ट', large: 'बड़ा आर्ट' },
       download: 'इसकी सारी विजेट आर्ट यहाँ देखने के लिए थीम को उसके पेज से डाउनलोड करें।',
       kinds: { art: 'आर्ट', clock: 'घड़ियाँ', date: 'तारीख', calendar: 'कैलेंडर', countdown: 'काउंटडाउन', habits: 'आदतें', battery: 'बैटरी', photo: 'फ़ोटो', quote: 'उद्धरण', focus: 'फ़ोकस' },
