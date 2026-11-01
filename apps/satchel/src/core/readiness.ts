@@ -6,6 +6,7 @@
 import { bboxContains, type CityCatalog, type CityMap } from './citymaps.ts';
 import { cardStatus, fold } from './emergency.ts';
 import { destinationZone } from './glance.ts';
+import type { GapAdd } from './gaps.ts';
 import type { EmergencyCard, Item, LocalDate, Trip, TravelDoc } from './model.ts';
 import { progress, type PackList } from './packing.ts';
 import { sortItems, span, tripPhase, zonesReadable } from './timeline.ts';
@@ -18,7 +19,7 @@ import { addMonths, isLocalDate, PASSPORT_MONTHS } from './vault.ts';
  * shown honestly and never counted against the score.
  */
 export type CheckStatus = 'pass' | 'warn' | 'fail' | 'missing' | 'unknown';
-export type CheckId = 'passport' | 'visa' | 'packing' | 'emergency' | 'hotels' | 'map' | 'todos' | 'connections';
+export type CheckId = 'passport' | 'visa' | 'packing' | 'emergency' | 'hotels' | 'map' | 'todos' | 'connections' | 'gaps';
 export const CHECK_ORDER: readonly CheckId[] = ['passport', 'visa', 'packing', 'emergency', 'hotels', 'map'];
 
 /** Where the one-tap fix goes. */
@@ -29,7 +30,9 @@ export type Fix =
   | { kind: 'address'; itemId: string }
   | { kind: 'map'; tripId: string }
   | { kind: 'todos'; tripId: string }
-  | { kind: 'connection'; itemId: string };
+  | { kind: 'connection'; itemId: string }
+  // T135: the first trip gap: its add form (prefilled) or its first booking.
+  | { kind: 'gap'; tripId: string; add?: GapAdd; itemId?: string };
 
 /**
  * Why a row has its status (the UI turns it into words). Only dates, counts and city names, never document data.
@@ -66,7 +69,9 @@ export type Reason =
   | 'dueSoon'
   | 'onTrack'
   // T131 connections row (src/core/layovers.ts connectionsCheck): tight | ok
-  | 'tight';
+  | 'tight'
+  // T135 gaps row (src/core/gaps.ts gapsCheck): found | ok
+  | 'found';
 
 export type Check = {
   id: CheckId;
@@ -111,6 +116,8 @@ export type ReadinessInput = {
   todos?: Check | null;
   /** T131: the trip's connections row (src/core/layovers.ts connectionsCheck), after the map row; null: no connections. */
   connections?: Check | null;
+  /** T135: the trip's gaps row (src/core/gaps.ts gapsCheck), after connections; null: no journeys or stays yet. */
+  gaps?: Check | null;
 };
 
 // ------------------------------------------------------------------ dates
@@ -269,6 +276,7 @@ export function readiness(input: ReadinessInput): Readiness {
     hotelsCheck(trip),
     mapCheck(trip, catalog, installed),
     ...(input.connections ? [input.connections] : []),
+    ...(input.gaps ? [input.gaps] : []),
     ...(input.todos ? [input.todos] : []),
   ];
   const judged = checks.filter((c) => c.status !== 'unknown');
@@ -279,8 +287,9 @@ export function readiness(input: ReadinessInput): Readiness {
   return { checks, passed, scored, score: scored ? passed / scored : 0, overall, today, tripEnd: end };
 }
 
-/** Card order; the T131 connections row, then the T93 to-dos row, come last. */
-const order = (id: CheckId) => (id === 'connections' ? CHECK_ORDER.length : id === 'todos' ? CHECK_ORDER.length + 1 : CHECK_ORDER.indexOf(id));
+/** Card order; the T131 connections row, the T135 gaps row, then the T93 to-dos row come last. */
+const order = (id: CheckId) =>
+  id === 'connections' ? CHECK_ORDER.length : id === 'gaps' ? CHECK_ORDER.length + 1 : id === 'todos' ? CHECK_ORDER.length + 2 : CHECK_ORDER.indexOf(id);
 
 /** The rows that still want something done, worst first (fail, missing, warn), then card order. */
 export function toFix(r: Readiness): Check[] {

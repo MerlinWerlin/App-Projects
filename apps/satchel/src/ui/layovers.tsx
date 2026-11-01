@@ -7,6 +7,9 @@
 // - connectionsDetail: the readiness row's sentence.
 // - useLegInfoForm + LegInfoFields: the journey form's terminal / gate fields; LegInfoLines: the journey detail.
 // - LayoverSettings: the traveller's limits in Settings.
+// - T134: OwnLimits on the connection card (this change's own tight / long limits, or "Use my usual limits"; stored
+//   on this phone, LAYOVER_OVERRIDE_KEY), and the long-layover ideas' "Arrival card for <country>" button (the trip
+//   screen opens that stop's arrival card at the top of the list).
 // Tokens only, 48 pt targets, every control labelled.
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -20,6 +23,7 @@ import {
   DEFAULT_LAYOVER_PREFS,
   departureGate,
   departureTerminal,
+  LAYOVER_OVERRIDE_KEY,
   LAYOVER_PREFS_KEY,
   LAYOVER_STEP,
   legInfoDraft,
@@ -29,6 +33,7 @@ import {
   MIN_LONG,
   normaliseLayoverPrefs,
   sameLayoverPrefs,
+  setLayoverOverride,
   splitMinutes,
   terminalLabel,
   terminalNote,
@@ -53,6 +58,17 @@ import { FadeInView, IconBadge, toneColours, type IconName, type Tone } from './
 import { Body, Button, Card, Label, PressableScale, TextField } from './kit.tsx';
 
 // ------------------------------------------------------------------ prefs and words
+
+const NO_OVERRIDES: unknown = [];
+
+/**
+ * T134: every change's own limits (raw stored rows; the core normalises them on each read) and a setter for one
+ * change: null removes its row ("Use my usual limits").
+ */
+export function useLayoverOverrides(): [unknown, (tripId: string, c: Connection, p: Partial<LayoverPrefs> | null, usual: LayoverPrefs) => void] {
+  const [stored, setStored] = usePersisted<unknown>(LAYOVER_OVERRIDE_KEY, NO_OVERRIDES);
+  return [stored, (tripId, c, p, usual) => setStored((old: unknown) => setLayoverOverride(old, tripId, c.arrive.id, c.depart.id, p, usual))];
+}
 
 /** The traveller's limits from Settings, always complete and valid. */
 export function useLayoverPrefs(): [LayoverPrefs, (p: Partial<LayoverPrefs>) => void] {
@@ -125,10 +141,27 @@ function IdeaRow({ idea }: { idea: LongIdea }) {
 }
 
 /** The card between the arriving and the departing leg on the trip timeline. */
-export const ConnectionCard = memo(function ConnectionCard({ c, tripId }: { c: Connection; tripId: string }) {
+/**
+ * `arrival`: the change country's arrival card can open for this stop (trip screen; T134), with `onArrival` doing it.
+ * `usual`: the traveller's limits from Settings, the starting point for this change's own ones.
+ */
+export const ConnectionCard = memo(function ConnectionCard({
+  c,
+  tripId,
+  usual,
+  arrival,
+  onArrival,
+}: {
+  c: Connection;
+  tripId: string;
+  usual: LayoverPrefs;
+  arrival?: { iso2: string; country: string } | null;
+  onArrival?: (iso2: string) => void;
+}) {
   const { t, theme } = useApp();
   const router = useRouter();
   const [ideas, setIdeas] = useState(false);
+  const [limits, setLimits] = useState(false);
   const tone = STATUS_TONE[c.status];
   const { fg, bg } = toneColours(theme, tone);
   const title = c.place ? t('layover.card.title', { place: c.place }) : t('layover.card.titleNoPlace');
@@ -176,12 +209,33 @@ export const ConnectionCard = memo(function ConnectionCard({ c, tripId }: { c: C
                 {LONG_IDEAS.map((i) => (
                   <IdeaRow key={i} idea={i} />
                 ))}
+                {arrival && onArrival ? (
+                  <Button
+                    label={t('f103.arrival.open', { country: arrival.country })}
+                    hint={t('f103.arrival.openHint', { country: arrival.country })}
+                    kind="secondary"
+                    icon="earth-outline"
+                    onPress={() => onArrival(arrival.iso2)}
+                  />
+                ) : null}
                 {c.country ? <CustomsLink iso2={c.country} tripId={tripId} /> : null}
                 <Text style={[typeScale.small, { color: theme.muted }]}>{t('layover.ideas.general')}</Text>
               </View>
             </FadeInView>
           ) : null}
         </>
+      ) : null}
+      <Button
+        label={limits ? t('f103.limits.close') : t('f103.limits.open')}
+        hint={limits ? t('f103.limits.closeHint') : t('f103.limits.openHint')}
+        kind="quiet"
+        icon={limits ? 'chevron-up' : 'options-outline'}
+        onPress={() => setLimits((v) => !v)}
+      />
+      {limits ? (
+        <FadeInView>
+          <OwnLimits c={c} tripId={tripId} usual={usual} />
+        </FadeInView>
       ) : null}
       {unknownTerminals ? (
         <Button
@@ -196,6 +250,45 @@ export const ConnectionCard = memo(function ConnectionCard({ c, tripId }: { c: C
   );
 });
 
+/**
+ * T134: this change's own limits. Shows the tight limit that applies to it (between countries or not) and the long
+ * one; the first step starts from the usual limits. "Use my usual limits" removes the row.
+ */
+function OwnLimits({ c, tripId, usual }: { c: Connection; tripId: string; usual: LayoverPrefs }) {
+  const { t, theme } = useApp();
+  const [, setOwn] = useLayoverOverrides();
+  const p = c.prefs;
+  const tightKey = c.crossBorder ? 'tightCrossMin' : 'tightMin';
+  return (
+    <View style={{ gap: space.xs, borderTopWidth: 1, borderColor: theme.line, paddingTop: space.s }}>
+      <View accessibilityRole="header">
+        <Label>{t('f103.limits.title')}</Label>
+      </View>
+      <Text accessibilityLiveRegion="polite" style={[typeScale.small, { color: c.own ? theme.ink : theme.muted }]}>
+        {t(c.own ? 'f103.limits.own' : 'f103.limits.usual')}
+      </Text>
+      <MinutesRow
+        label={t('f103.limits.tightLabel')}
+        shown={t('f103.limits.tight', { min: p[tightKey] })}
+        value={p[tightKey]}
+        step={LAYOVER_STEP}
+        max={MAX_TIGHT}
+        onChange={(m) => setOwn(tripId, c, { [tightKey]: m }, usual)}
+      />
+      <MinutesRow
+        label={t('f103.limits.longLabel')}
+        shown={t('f103.limits.long', { d: durationText(t, p.longMin) })}
+        value={p.longMin}
+        step={LAYOVER_STEP}
+        max={MAX_LONG}
+        onChange={(m) => setOwn(tripId, c, { longMin: Math.max(MIN_LONG, m) }, usual)}
+      />
+      <Text style={[typeScale.small, { color: theme.muted }]}>{t('f103.limits.body')}</Text>
+      {c.own ? <Button label={t('f103.limits.reset')} hint={t('f103.limits.resetHint')} kind="quiet" icon="refresh" onPress={() => setOwn(tripId, c, null, usual)} /> : null}
+    </View>
+  );
+}
+
 // ------------------------------------------------------------------ Your day
 
 /** "Change at Singapore: 1 h 25 min, terminal 1 to 3" on the day of a change, until the next leg leaves. */
@@ -203,7 +296,8 @@ export function LayoverBriefRow({ trip, zone, today, now }: { trip: Trip; zone: 
   const { t, theme } = useApp();
   const router = useRouter();
   const [prefs] = useLayoverPrefs();
-  const list = briefConnections(trip, zone, today, now, prefs);
+  const [own] = useLayoverOverrides();
+  const list = briefConnections(trip, zone, today, now, prefs, own);
   if (!list.length) return null;
   return (
     <>

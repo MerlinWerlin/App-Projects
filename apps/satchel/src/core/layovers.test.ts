@@ -28,6 +28,14 @@ import {
   terminalLabel,
   terminalNote,
   withLegInfo,
+  applyLayoverOverrides,
+  dropLayoverOverrides,
+  LAYOVER_OVERRIDE_KEY,
+  MAX_OVERRIDES,
+  MIN_LONG,
+  normaliseLayoverOverrides,
+  overrideFor,
+  setLayoverOverride,
 } from './layovers.ts';
 import { overlaps } from './timeline.ts';
 import { readiness, toFix } from './readiness.ts';
@@ -391,6 +399,84 @@ test('briefConnections: on the day of the change, until the next leg leaves', ()
   // In a zone where the change falls on another date.
   assert.equal(briefConnections(trip, 'Pacific/Kiritimati', '2027-03-02', at('2027-03-01T09:00:00Z')).length, 1);
   assert.equal(toUtc(trip.items[1].start), at('2027-03-01T11:25:00Z'));
+});
+
+// ---------------------------------------------------------------- T134: one connection's own limits
+
+test('own limits: stored per trip + leg pair, normalised on read, last row wins, capped', () => {
+  assert.equal(LAYOVER_OVERRIDE_KEY, 'satchel.layovers.override.v1');
+  assert.deepEqual(normaliseLayoverOverrides(null), []);
+  assert.deepEqual(normaliseLayoverOverrides({ tripId: 'tr' }), []);
+  const rows = normaliseLayoverOverrides([
+    { tripId: 'tr', arriveId: 'in', departId: 'out', tightMin: 45, tightCrossMin: 'x', longMin: 20 },
+    { tripId: '', arriveId: 'in', departId: 'out', tightMin: 10 },
+    { tripId: 'tr', arriveId: 'in' },
+    'junk',
+    { tripId: 'tr2', arriveId: 'a>b|c', departId: 'd', tightMin: 30, tightCrossMin: 30, longMin: 600 },
+    { tripId: 'tr', arriveId: 'in', departId: 'out', tightMin: 50, tightCrossMin: 75, longMin: 480 },
+  ]);
+  assert.deepEqual(rows, [
+    { tripId: 'tr2', arriveId: 'a>b|c', departId: 'd', tightMin: 30, tightCrossMin: 30, longMin: 600 },
+    { tripId: 'tr', arriveId: 'in', departId: 'out', tightMin: 50, tightCrossMin: 75, longMin: 480 },
+  ]);
+  // Bad values fall back to the defaults (long under its minimum, a non-number).
+  assert.deepEqual(overrideFor([{ tripId: 'tr', arriveId: 'in', departId: 'out', tightMin: 45, tightCrossMin: 'x', longMin: 20 }], 'tr', 'in', 'out'), { tightMin: 45, tightCrossMin: 90, longMin: 300 });
+  assert.equal(overrideFor(rows, 'tr', 'out', 'in'), null);
+  const many = Array.from({ length: MAX_OVERRIDES + 5 }, (_, i) => ({ tripId: 't', arriveId: `a${i}`, departId: 'b', ...DEFAULT_LAYOVER_PREFS }));
+  const kept = normaliseLayoverOverrides(many);
+  assert.equal(kept.length, MAX_OVERRIDES);
+  assert.equal(kept[0].arriveId, 'a5', 'the oldest go first');
+});
+
+test('own limits: set starts from the usual limits, changes one field, "use my usual limits" removes it', () => {
+  const usual = { tightMin: 40, tightCrossMin: 80, longMin: 360 };
+  let s = setLayoverOverride(undefined, 'tr', 'in', 'out', { tightCrossMin: 45 }, usual);
+  assert.deepEqual(overrideFor(s, 'tr', 'in', 'out'), { tightMin: 40, tightCrossMin: 45, longMin: 360 });
+  s = setLayoverOverride(s, 'tr', 'in', 'out', { longMin: 600 }, DEFAULT_LAYOVER_PREFS);
+  assert.deepEqual(overrideFor(s, 'tr', 'in', 'out'), { tightMin: 40, tightCrossMin: 45, longMin: 600 }, 'an existing row keeps its own values');
+  s = setLayoverOverride(s, 'tr', 'x', 'y', { tightMin: 15 });
+  assert.equal(s.length, 2);
+  s = setLayoverOverride(s, 'tr', 'in', 'out', null);
+  assert.equal(overrideFor(s, 'tr', 'in', 'out'), null);
+  assert.equal(s.length, 1);
+  // Out-of-range input is clamped by the normaliser (invalid -> default).
+  assert.equal(overrideFor(setLayoverOverride([], 'tr', 'in', 'out', { longMin: 5 }), 'tr', 'in', 'out')?.longMin, DEFAULT_LAYOVER_PREFS.longMin);
+});
+
+test('own limits: dropped with the trip, or with either leg', () => {
+  const s = [
+    { tripId: 'tr', arriveId: 'in', departId: 'out', ...DEFAULT_LAYOVER_PREFS },
+    { tripId: 'tr', arriveId: 'out', departId: 'last', ...DEFAULT_LAYOVER_PREFS },
+    { tripId: 'other', arriveId: 'in', departId: 'out', ...DEFAULT_LAYOVER_PREFS },
+  ];
+  assert.deepEqual(dropLayoverOverrides(s, 'tr').map((o) => o.tripId), ['other']);
+  assert.deepEqual(dropLayoverOverrides(s, 'tr', ['in']).map((o) => `${o.tripId}:${o.arriveId}`), ['tr:out', 'other:in']);
+  assert.deepEqual(dropLayoverOverrides(s, 'tr', ['out']).map((o) => o.tripId), ['other'], 'a leg in the middle ends both changes');
+  assert.equal(dropLayoverOverrides(s, 'tr', ['zzz']).length, 3);
+});
+
+test('own limits decide the status of that change only: connections, readiness and Your day', () => {
+  const trip = tripWith('2027-03-01T11:00'); // 60 min across a border: tight under the usual 90
+  const own = setLayoverOverride([], 'tr', 'in', 'out', { tightCrossMin: 45 });
+  const [plain] = connections(trip.items);
+  assert.deepEqual([plain.status, plain.own, plain.limit], ['tight', false, 90]);
+  const [mine] = connections(trip.items, DEFAULT_LAYOVER_PREFS, { tripId: 'tr', overrides: own });
+  assert.deepEqual([mine.status, mine.own, mine.limit, mine.prefs.tightCrossMin], ['ok', true, 45, 45]);
+  // Another trip's row (or another pair) does nothing.
+  assert.equal(connections(trip.items, DEFAULT_LAYOVER_PREFS, { tripId: 'other', overrides: own })[0].own, false);
+  // Its own long limit: exactly 60 min against a 60 min limit is OK, 75 min is long; the usual limits don't count.
+  const longer = setLayoverOverride([], 'tr', 'in', 'out', { tightCrossMin: 0, longMin: 60 });
+  assert.equal(connections(trip.items, { tightMin: 360, tightCrossMin: 360, longMin: 1440 }, { tripId: 'tr', overrides: longer })[0].status, 'ok');
+  const longest = setLayoverOverride([], 'tr', 'in', 'out', { tightCrossMin: 0, longMin: MIN_LONG });
+  assert.equal(connections(tripWith('2027-03-01T11:15').items, DEFAULT_LAYOVER_PREFS, { tripId: 'tr', overrides: longest })[0].status, 'long');
+  // applyLayoverOverrides re-judges a list found with the usual limits the same way.
+  assert.deepEqual(applyLayoverOverrides([plain], 'tr', own)[0], mine);
+  assert.equal(applyLayoverOverrides([plain], 'tr', [])[0], plain);
+  // Readiness and Your day use them when given.
+  assert.equal(connectionsCheck(trip)?.status, 'warn');
+  assert.equal(connectionsCheck(trip, DEFAULT_LAYOVER_PREFS, own)?.status, 'pass');
+  assert.equal(briefConnections(trip, 'Europe/London', '2027-03-01', Date.parse('2027-03-01T07:00:00Z'), DEFAULT_LAYOVER_PREFS, own)[0].status, 'ok');
+  assert.equal(briefConnections(trip, 'Europe/London', '2027-03-01', Date.parse('2027-03-01T07:00:00Z'))[0].status, 'tight');
 });
 
 // ---------------------------------------------------------------- strings

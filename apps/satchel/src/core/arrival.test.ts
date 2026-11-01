@@ -10,6 +10,7 @@ import {
   DISMISS_MAX,
   dismissArrival,
   flagEmoji,
+  focusCountry,
   homeCountryFor,
   isDismissed,
   normaliseDismissed,
@@ -249,4 +250,29 @@ test('unreadable zones and notes never throw or count', () => {
   const odd = trip(SYD, [item('note', ['2026-12-02T09:00', TYO]), item('hotel', ['2026-12-02T09:00', 'Mars/Base'], ['2026-12-03T09:00', 'Mars/Base'])]);
   assert.deepEqual(tripCountries(odd, 'AU'), []);
   assert.equal(arrivalView(odd, opts(at('2026-12-02T10:00', TYO))), null);
+});
+
+test('T134 opened for one stop: that country\'s card whether or not it is arriving or hidden; strip keeps the real now', () => {
+  const euro = trip(LON, [
+    item('flight', ['2026-12-01T08:00', LON], ['2026-12-01T10:20', PAR]),
+    item('hotel', ['2026-12-01T14:00', PAR], ['2026-12-04T10:00', PAR]),
+    item('train', ['2026-12-04T11:00', PAR], ['2026-12-04T15:00', ZRH]),
+    item('hotel', ['2026-12-04T16:00', ZRH], ['2026-12-07T10:00', ZRH]),
+    item('flight', ['2026-12-07T12:00', ZRH], ['2026-12-07T13:00', LON]),
+  ]);
+  const now = at('2026-12-02T09:00', PAR); // in France
+  const v = arrivalView(euro, { now, phoneZone: LON, tables, focusIso2: 'ch' });
+  assert.equal(v?.iso2, 'CH');
+  assert.equal(v?.when, 'stop');
+  assert.equal(v?.zone, ZRH);
+  assert.deepEqual(v?.countries.map((s) => [s.iso2, s.state]), [['FR', 'now'], ['CH', 'ahead']]);
+  // Weeks before the trip, and with Switzerland hidden: still opens on request.
+  assert.equal(arrivalView(euro, { now: at('2026-11-01T09:00', LON), phoneZone: LON, tables, focusIso2: 'CH', dismissed: dismissArrival([], 't1', 'CH') })?.iso2, 'CH');
+  // Not on the trip, home, or junk: the usual card (France now; nothing weeks before).
+  assert.equal(arrivalView(euro, { now, phoneZone: LON, tables, focusIso2: 'JP' })?.when, 'here');
+  assert.equal(arrivalView(euro, { now, phoneZone: LON, tables, focusIso2: 'GB' })?.iso2, 'FR');
+  assert.equal(arrivalView(euro, { now: at('2026-11-01T09:00', LON), phoneZone: LON, tables, focusIso2: 'XYZ' }), null);
+  assert.equal(focusCountry(euro, 'fr', 'GB')?.zone, PAR);
+  assert.equal(focusCountry(euro, 'GB', 'GB'), null);
+  assert.equal(focusCountry(euro, undefined, 'GB'), null);
 });

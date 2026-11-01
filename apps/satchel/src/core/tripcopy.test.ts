@@ -10,6 +10,7 @@ import type { Todo } from './todos.ts';
 import type { PackItem, PackList } from './packing.ts';
 import type { Bag } from './bags.ts';
 import type { ComeRow, ComingHome } from './comehome.ts';
+import type { OutfitDay, OutfitExtra, TripOutfits } from './outfits.ts';
 import type { LeaveRow, LeavingHome, SitterNote, SitterTask } from './leavehome.ts';
 import { stayKey } from './staydetails.ts';
 import { toUtc } from './tz.ts';
@@ -19,6 +20,9 @@ import {
   ALL_PARTS,
   BAG_RULES,
   BUDGET_RULES,
+  OUTFITS_RULES,
+  OUTFIT_DAY_RULES,
+  OUTFIT_EXTRA_RULES,
   COMING_HOME_RULES,
   COME_ROW_RULES,
   COMPANION_RULES,
@@ -145,6 +149,7 @@ const fullTrip = (): Required<Trip> =>
     gifts: [{ id: 'gp_mum', name: 'Mum', gifts: [{ id: 'gift_1', what: 'Tea towel', status: 'packed', createdAt: NOW }], createdAt: NOW }],
     leavingHome: { rows: [{ id: 'lh_1', tpl: 'bins', done: true }], note: { address: '1 Home St', bins: 'Tuesday night' }, updatedAt: NOW },
     comingHome: { rows: [{ id: 'ch_1', list: 'before', tpl: 'keys', done: true }], rating: 5, updatedAt: NOW },
+    outfits: { extras: [{ id: 'of_1', label: 'Silk scarf', cat: 'accessory' }], cats: { 'p:adapter': 'shoes' }, days: [{ date: '2027-04-02', day: ['of_1'], evening: ['of_1'], laundry: true }], updatedAt: '2026-10-30T09:00:00.000Z' },
   } as Required<Trip>);
 
 const ownBag: Required<Bag> = { id: 'bag_cam', kind: 'own', name: 'Camera bag', colour: 'plum', hold: true, limitG: 8000 };
@@ -218,7 +223,7 @@ test('T118 guard: every field of every copied type has exactly one rule (copied,
   assert.deepEqual(keys(PACK_ITEM_RULES), keys(packItem));
   assert.deepEqual(keys(BAG_RULES), keys(ownBag));
   // Same Trip / Item key list the T85 round-trip guard pins today (a new field must be ruled on in both).
-  assert.deepEqual(keys(TRIP_RULES), ['budget', 'cash', 'comingHome', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'leavingHome', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos']);
+  assert.deepEqual(keys(TRIP_RULES), ['budget', 'cash', 'comingHome', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'leavingHome', 'name', 'outfits', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos']);
   assert.deepEqual(keys(ITEM_RULES), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'legInfo', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
   // Phone-only and money data is never a part the traveller can switch on.
   for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo', 'leavingHome', 'comingHome'] as const) assert.equal(TRIP_RULES[k], 'drop', k);
@@ -294,6 +299,10 @@ test('T118 every rule holds on a trip with every field set (all parts on)', () =
       },
       companions: each<Companion>(COMPANION_RULES, (s, o, p) => checkRules(s as unknown as Record<string, unknown>, o as unknown as Record<string, unknown>, COMPANION_RULES as Record<string, Rule>, p)),
       budget: placeCheck(BUDGET_RULES),
+      outfits: (s, o, p) =>
+        checkRules(s as Record<string, unknown>, o as Record<string, unknown>, OUTFITS_RULES as Record<string, Rule>, p, {
+          nested: { extras: each<OutfitExtra>(OUTFIT_EXTRA_RULES, (a, b, q) => checkRules(a as unknown as Record<string, unknown>, b as unknown as Record<string, unknown>, OUTFIT_EXTRA_RULES as Record<string, Rule>, q)) },
+        }),
     },
   });
   assert.equal(trip.createdAt, NOW);
@@ -318,7 +327,7 @@ test('T118 with every part off: dates, name, home zone and cover only; no packin
 });
 
 test('T118 each part on its own brings only its own fields', () => {
-  const tripFields: Record<string, string[]> = { bookings: ['items'], packing: [], bags: [], ideas: ['ideas', 'places'], todos: ['todos'], companions: ['companions'], budget: ['budget'] };
+  const tripFields: Record<string, string[]> = { bookings: ['items'], packing: ['outfits'], bags: [], ideas: ['ideas', 'places'], todos: ['todos'], companions: ['companions'], budget: ['budget'] };
   const base = ['cover', 'createdAt', 'endDate', 'homeTz', 'id', 'items', 'name', 'startDate'];
   for (const part of COPY_PARTS) {
     const { trip, packing } = copy({ ...none, [part]: true });
@@ -648,4 +657,30 @@ test('T130 Coming home copy: unknown fields and broken rows never come; a rating
   assert.equal(copyTrip(rated, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, comingHome: true }).trip.comingHome, undefined);
   const bare = { ...fullTrip(), comingHome: undefined };
   assert.equal(copyTrip(bare, null, { startDate: '2027-10-01', parts: none, newId, now: NOW, comingHome: true }).trip.comingHome, undefined);
+});
+
+test('T136 outfit plan: the wardrobe comes with the packing part, planned days never do', () => {
+  const src = fullTrip();
+  const outfits = src.outfits as Required<TripOutfits>;
+  assert.deepEqual(keys(OUTFITS_RULES), keys(outfits));
+  assert.deepEqual(keys(OUTFIT_EXTRA_RULES), keys(outfits.extras[0]));
+  assert.deepEqual(keys(OUTFIT_DAY_RULES), keys(outfits.days[0] as Required<OutfitDay>));
+  for (const r of Object.values(OUTFIT_DAY_RULES)) assert.equal(r, 'drop');
+  const none = { bookings: false, packing: false, bags: false, ideas: false, todos: false, companions: false, budget: false } as const;
+  assert.equal(copyTrip(src, null, { startDate: '2027-10-01', parts: none, newId, now: NOW }).trip.outfits, undefined, 'off without packing');
+  const { trip } = copyTrip(src, null, { startDate: '2027-10-01', parts: { ...none, packing: true }, newId, now: NOW });
+  const id = trip.outfits?.extras?.[0].id ?? '';
+  assert.match(id, /^of_new/);
+  assert.deepEqual(trip.outfits, { extras: [{ id, label: 'Silk scarf', cat: 'accessory' }], cats: { 'p:adapter': 'shoes' }, updatedAt: NOW });
+  // A category choice for an own piece follows its new id; one for a piece that has gone is left behind.
+  const withCats = { ...fullTrip(), outfits: { ...outfits, cats: { of_1: 'shoes', of_gone: 'top', 'p:hat': 'accessory' } } } as Trip;
+  const c = copyTrip(withCats, null, { startDate: '2027-10-01', parts: { ...none, packing: true }, newId, now: NOW }).trip.outfits;
+  assert.deepEqual(c?.cats, { [c?.extras?.[0].id ?? '']: 'shoes', 'p:hat': 'accessory' });
+  // Only days: nothing to bring.
+  const daysOnly = { ...fullTrip(), outfits: { days: outfits.days } };
+  assert.equal(copyTrip(daysOnly, null, { startDate: '2027-10-01', parts: { ...none, packing: true }, newId, now: NOW }).trip.outfits, undefined);
+  // Unknown fields and broken rows never come.
+  const junk = { ...fullTrip(), outfits: { extras: [{ id: 'of_9', label: 'Hat', cat: 'accessory', secret: 1 }, { id: 3 }], wifi: 'x' } } as unknown as Trip;
+  const j = copyTrip(junk, null, { startDate: '2027-10-01', parts: { ...none, packing: true }, newId, now: NOW }).trip.outfits;
+  assert.deepEqual(j, { extras: [{ id: j?.extras?.[0].id, label: 'Hat', cat: 'accessory' }], updatedAt: NOW });
 });

@@ -47,7 +47,7 @@ import { Body, Button, Chip, EmptyState, Label, Screen, TextField, Warning } fro
 import { ZoneField } from '../src/ui/ZonePicker.tsx';
 
 export default function ItemEditScreen() {
-  const params = useLocalSearchParams<{ tripId: string; id?: string; kind?: string; date?: string; paste?: string }>();
+  const params = useLocalSearchParams<{ tripId: string; id?: string; kind?: string; date?: string; paste?: string; until?: string; tz?: string }>();
   const { t, theme, lang } = useApp();
   const { trips, saveItem } = useTrips();
   const router = useRouter();
@@ -58,7 +58,11 @@ export default function ItemEditScreen() {
   const [initial] = useState<ItemDraft>(() => {
     if (prev) return draftFromItem(prev);
     const kind = (ITEM_KINDS as readonly string[]).includes(params.kind ?? '') ? (params.kind as ItemKind) : 'activity';
-    return newItemDraft(kind, params.date ?? trip?.startDate ?? '', lastTz ?? deviceZone());
+    // T135: Trip gaps opens this with the zone and, for a stay, the check-out date filled in.
+    const tz = params.tz && isValidZone(params.tz) ? params.tz : lastTz ?? deviceZone();
+    const draft = newItemDraft(kind, params.date ?? trip?.startDate ?? '', tz);
+    const until = params.until ?? '';
+    return hasEnd(kind) && /^\d{4}-\d{2}-\d{2}$/.test(until) && until > draft.startDate ? { ...draft, endDate: until } : draft;
   });
   // A pasted draft counts as unsaved from the start, so leaving without Save always asks.
   const [d, setD] = useState<ItemDraft>(() => (pasted ? { ...pasted.draft } : initial));

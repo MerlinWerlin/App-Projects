@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
-import { comeDue, comeNudge, homeAgainNudge, lastCheckout, nextComeNudge, readComingHome, type ComeDue } from '../core/comehome.ts';
+import { comeBriefRow, comeDue, lastCheckout, nextComeNudge, readComingHome, type ComeDue } from '../core/comehome.ts';
 import { formatDay, zoneCity } from '../core/format.ts';
 import type { Trip } from '../core/model.ts';
 import type { T } from '../i18n/core.ts';
@@ -119,14 +119,17 @@ export function ComeHomeTripCard({ trip }: { trip: Trip }) {
 }
 
 /** Your day: "Before you head home: today · 3 of 6 left", or "Home again · 2 of 6 left" (nothing otherwise). */
-export function ComeHomeBriefRow({ trip, now }: { trip: Trip; now: number }) {
+/**
+ * T134: `trips` is the list the Trips tab's Heading home card reads (ComeHomeHomeCard), so the before-you-head-home
+ * row is left out while that card shows this same trip (src/core/comehome.ts comeBriefRow).
+ */
+export function ComeHomeBriefRow({ trip, trips, now }: { trip: Trip; trips: readonly Trip[]; now: number }) {
   const { t, theme } = useApp();
   const router = useRouter();
-  const heading = comeNudge(trip, now);
-  const back = heading ? null : homeAgainNudge(trip, now);
-  const due = heading ?? back;
-  if (!due) return null;
-  const line = heading ? t('comehome.brief.line', { when: whenWord(t, heading), left: comeLeftLine(t, heading, 'before') }) : t('comehome.brief.homeLine', { left: comeLeftLine(t, due, 'after') });
+  const row = comeBriefRow(trip, trips, now);
+  if (!row) return null;
+  const due = row.due;
+  const line = row.kind === 'heading' ? t('comehome.brief.line', { when: whenWord(t, due), left: comeLeftLine(t, due, 'before') }) : t('comehome.brief.homeLine', { left: comeLeftLine(t, due, 'after') });
   return (
     <>
       <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.heroMuted, opacity: 0.6 }} />

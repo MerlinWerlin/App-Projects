@@ -12,6 +12,7 @@ import type { GiftPerson } from './gifts.ts';
 import type { LeavingHome } from './leavehome.ts';
 import type { ComingHome } from './comehome.ts';
 import type { LegInfo } from './layovers.ts';
+import type { TripOutfits } from './outfits.ts';
 
 /** Wall-clock local time, minute precision: 'YYYY-MM-DDTHH:mm'. */
 export type LocalDateTime = string;
@@ -119,6 +120,8 @@ export type Trip = {
   leavingHome?: LeavingHome;
   /** T128 coming home: the "Before you head home" and "Home again" lists and the trip rating (absent on older trips). Read defensively in src/core/comehome.ts. */
   comingHome?: ComingHome;
+  /** T136 outfit planner: own extra pieces, category choices and what to wear each day (absent on older trips). Read defensively in src/core/outfits.ts. */
+  outfits?: TripOutfits;
 };
 
 export const EXPENSE_CATEGORIES = ['food', 'transport', 'stay', 'activities', 'shopping', 'other'] as const;

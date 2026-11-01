@@ -172,7 +172,8 @@ export type ArrivalView = {
   country: string;
   flag: string | null;
   zone: string;
-  when: 'here' | 'today';
+  /** 'stop': opened for one stop on request (T134, from a long layover), whether or not it is arriving now. */
+  when: 'here' | 'today' | 'stop';
   tone: ArrivalTone;
   clock: { time: string; homeTime: string; homeZone: string; diffMinutes: number } | null;
   money: ArrivalMoney | null;
@@ -250,11 +251,15 @@ function hotelIn(trip: Trip, iso2: string, now: number): string | null {
 /** Everything the card shows for one trip, or null when nothing is arriving, it was dismissed, or it is a home trip. */
 export function arrivalView(
   trip: Trip,
-  opts: { now: number; homeIso2?: string | null; phoneZone: string; dismissed?: unknown; tables: ArrivalTables },
+  opts: { now: number; homeIso2?: string | null; phoneZone: string; dismissed?: unknown; tables: ArrivalTables; focusIso2?: string | null },
 ): ArrivalView | null {
   const home = homeCountryFor(trip, opts.homeIso2);
-  const a = arrivingCountry(trip, opts.now, home);
-  if (!a || isDismissed(opts.dismissed, trip.id, a.iso2)) return null;
+  // T134: opened for one stop (a long layover's "Arrival card for <country>"): that country's card, even when it is
+  // not arriving now or was hidden; a country the trip doesn't visit (or home) falls back to the usual card.
+  const focus = focusCountry(trip, opts.focusIso2, home);
+  const arriving = arrivingCountry(trip, opts.now, home);
+  const a: { iso2: string; zone: string; when: ArrivalView['when'] } | null = focus ? { iso2: focus.iso2, zone: focus.zone, when: 'stop' } : arriving;
+  if (!a || (!focus && isDismissed(opts.dismissed, trip.id, a.iso2))) return null;
   const countries = tripCountries(trip, home);
   const c = countries.find((x) => x.iso2 === a.iso2);
   const { tables } = opts;
@@ -297,8 +302,15 @@ export function arrivalView(
     emergency,
     phrases: lang && cards.length ? { lang, cards } : null,
     hotelTarget: hotelIn(trip, a.iso2, opts.now),
-    countries: countryStrip(trip, opts.now, home, tables, a.iso2),
+    countries: countryStrip(trip, opts.now, home, tables, focus ? (arriving?.iso2 ?? null) : a.iso2),
   };
+}
+
+/** T134: the trip country a stop's arrival card can open for (not home, on the trip's bookings), or null. */
+export function focusCountry(trip: Pick<Trip, 'items'>, iso2: string | null | undefined, home: string | null): TripCountry | null {
+  const want = typeof iso2 === 'string' ? iso2.trim().toUpperCase() : '';
+  if (!/^[A-Z]{2}$/.test(want) || want === home) return null;
+  return tripCountries(trip, home).find((c) => c.iso2 === want) ?? null;
 }
 
 /** The "Countries on this trip" strip: every trip country in order, marked been / now / ahead. */

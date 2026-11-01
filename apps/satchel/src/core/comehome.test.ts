@@ -10,6 +10,7 @@ import {
   allowanceHost,
   COME_LINKS,
   COME_TEMPLATE,
+  comeBriefRow,
   comeDue,
   comeNudge,
   comeProgress,
@@ -312,4 +313,27 @@ test('.satchel: comingHome travels in the file and imports cleaned; older files 
   delete (older.trip as { comingHome?: unknown }).comingHome;
   const p2 = parseTripFileText(JSON.stringify(older));
   assert.ok(p2.ok && p2.file.trip.comingHome === undefined);
+});
+
+test('T134 comeBriefRow: Your day drops the heading-home row while the Trips tab card shows the same trip', () => {
+  const morning = at('2027-04-07T08:00', 'Asia/Tokyo');
+  // Only trip: the card shows it, so Your day leaves the row out.
+  assert.equal(comeBriefRow(trip(), [trip()], morning), null);
+  // The card shows another trip (sooner departure): this trip's row stays.
+  const sooner = item({ id: 'f3', tripId: 't2', kind: 'train', title: 'Kyoto to Tokyo', start: { local: '2027-04-07T12:00', tz: 'Asia/Tokyo' }, end: { local: '2027-04-07T14:15', tz: 'Asia/Tokyo' } });
+  const other = trip({ id: 't2', name: 'Kyoto', items: [sooner] });
+  assert.equal(comeBriefRow(trip(), [trip(), other], morning)?.kind, 'heading');
+  assert.equal(comeBriefRow(trip(), [trip(), other], morning)?.due.when, 'today');
+  assert.equal(comeBriefRow(other, [trip(), other], morning), null);
+  // The brief's trip not in the card's list (no card for it): the row stays.
+  assert.equal(comeBriefRow(trip(), [], morning)?.kind, 'heading');
+  // Before list all ticked: no card and no row.
+  let t = startComingHome(trip(), newId, NOW_ISO);
+  for (const r of rowsOf(readComingHome(t), 'before')) t = setRowDone(t, r.id, true, NOW_ISO);
+  assert.equal(comeBriefRow(t, [t], morning), null);
+  // Home again day: never on the card, so the row stays.
+  const day = at('2027-04-09T09:00', 'Australia/Sydney');
+  assert.equal(comeBriefRow(t, [t], day)?.kind, 'home');
+  // Further out: nothing.
+  assert.equal(comeBriefRow(trip(), [trip()], at('2027-04-04T09:00', 'Asia/Tokyo')), null);
 });

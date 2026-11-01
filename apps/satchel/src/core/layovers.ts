@@ -4,7 +4,9 @@
 // OK or long by the traveller's own limits (Settings; defaults: tight under 60 min, or 90 min when the change crosses
 // a border; long over 5 h). Legs that overlap in time are a clash (timeline.overlaps), never a layover.
 // Also: the optional arrival / departure terminal and gate typed on a journey (Item.legInfo, carried in .satchel
-// files), the readiness row for tight connections and the Your day pick. Pure TypeScript, offline, Node runs it.
+// files), the readiness row for tight connections and the Your day pick. T134: one change's own limits (set on its
+// card, stored on this phone per trip + leg pair) override the usual ones for that change only. Pure TypeScript,
+// offline, Node runs it.
 import { airportByCode } from './airports.ts';
 import { countryForZone, fold } from './emergency.ts';
 import { isTransport, type Item, type LocalDate, type Place, type Trip } from './model.ts';
@@ -116,6 +118,68 @@ export function normaliseLayoverPrefs(raw: unknown): LayoverPrefs {
 
 export const sameLayoverPrefs = (a: LayoverPrefs, b: LayoverPrefs) => a.tightMin === b.tightMin && a.tightCrossMin === b.tightCrossMin && a.longMin === b.longMin;
 
+// ------------------------------------------------------------------ T134: one connection's own limits (this phone)
+
+/**
+ * The traveller's own limits for one change, set on its connection card ("Use my usual limits" removes the row).
+ * Stored on this phone only, never on the Trip or in a .satchel file, as a list under LAYOVER_OVERRIDE_KEY: the trip
+ * and the two legs' ids (arriving, departing) with complete limits. Ids are kept apart (not joined into one key), so
+ * any character in an id is safe.
+ */
+export type LayoverOverride = { tripId: string; arriveId: string; departId: string } & LayoverPrefs;
+export const LAYOVER_OVERRIDE_KEY = 'satchel.layovers.override.v1';
+/** Most rows kept; the oldest go first. */
+export const MAX_OVERRIDES = 300;
+
+const idIn = (v: unknown): string | undefined => (typeof v === 'string' && v.trim() ? v : undefined);
+const sameLeg = (o: Pick<LayoverOverride, 'tripId' | 'arriveId' | 'departId'>, tripId: string, arriveId: string, departId: string) =>
+  o.tripId === tripId && o.arriveId === arriveId && o.departId === departId;
+
+/** Stored rows from any build (or damaged storage): bad rows dropped, limits made valid, one row per change (the last wins). */
+export function normaliseLayoverOverrides(raw: unknown): LayoverOverride[] {
+  if (!Array.isArray(raw)) return [];
+  const out: LayoverOverride[] = [];
+  for (const r of raw) {
+    if (!isObj(r)) continue;
+    const tripId = idIn(r.tripId);
+    const arriveId = idIn(r.arriveId);
+    const departId = idIn(r.departId);
+    if (!tripId || !arriveId || !departId) continue;
+    const at = out.findIndex((o) => sameLeg(o, tripId, arriveId, departId));
+    if (at >= 0) out.splice(at, 1);
+    out.push({ tripId, arriveId, departId, ...normaliseLayoverPrefs(r) });
+  }
+  return out.slice(-MAX_OVERRIDES);
+}
+
+/** This change's own limits, or null (it uses the usual ones). */
+export function overrideFor(raw: unknown, tripId: string, arriveId: string, departId: string): LayoverPrefs | null {
+  const o = normaliseLayoverOverrides(raw).find((x) => sameLeg(x, tripId, arriveId, departId));
+  return o ? { tightMin: o.tightMin, tightCrossMin: o.tightCrossMin, longMin: o.longMin } : null;
+}
+
+/** The stored list with this change's limits set (moved to the end, newest), or removed when `prefs` is null. */
+export function setLayoverOverride(raw: unknown, tripId: string, arriveId: string, departId: string, prefs: Partial<LayoverPrefs> | null, usual: LayoverPrefs = DEFAULT_LAYOVER_PREFS): LayoverOverride[] {
+  const list = normaliseLayoverOverrides(raw);
+  const old = list.find((x) => sameLeg(x, tripId, arriveId, departId));
+  const rest = list.filter((x) => !sameLeg(x, tripId, arriveId, departId));
+  if (!prefs) return rest;
+  const base = old ?? normaliseLayoverPrefs(usual);
+  const next = normaliseLayoverPrefs({ tightMin: base.tightMin, tightCrossMin: base.tightCrossMin, longMin: base.longMin, ...prefs });
+  return [...rest, { tripId, arriveId, departId, ...next }].slice(-MAX_OVERRIDES);
+}
+
+/**
+ * Rows to keep after a delete: every row of `tripId` goes when no item ids are given (the trip was deleted), else
+ * the rows of that trip whose arriving or departing leg is one of `itemIds`.
+ */
+export function dropLayoverOverrides(raw: unknown, tripId: string, itemIds?: readonly string[]): LayoverOverride[] {
+  return normaliseLayoverOverrides(raw).filter((o) => o.tripId !== tripId || (itemIds !== undefined && !itemIds.includes(o.arriveId) && !itemIds.includes(o.departId)));
+}
+
+/** Which own limits apply when finding a trip's connections. */
+export type OwnLimits = { tripId: string; overrides: unknown };
+
 // ------------------------------------------------------------------ same or nearby place
 
 /** Positions this close are the same stop (an airport's terminals, a station's entrances). */
@@ -207,6 +271,9 @@ export type Connection = {
   gate: { from?: string; to?: string };
   arriveUtc: number;
   departUtc: number;
+  /** T134: the limits that decided `status`; `own` when this change has its own (set on its card). */
+  prefs: LayoverPrefs;
+  own: boolean;
 };
 
 /** Two journeys that overlap in time: a clash to fix (shown by the timeline), never a layover. */
@@ -241,7 +308,8 @@ export function crossesBorder(a: Item, b: Item): boolean {
  * that and within 24 h, and the arrival and departure places match (placeMatch). A journey that overlaps another
  * journey forms no connection at all: the trip shows the clash instead.
  */
-export function findConnections(items: readonly Item[], prefs: LayoverPrefs = DEFAULT_LAYOVER_PREFS): { connections: Connection[]; clashes: LegClash[] } {
+export function findConnections(items: readonly Item[], prefs: LayoverPrefs = DEFAULT_LAYOVER_PREFS, own?: OwnLimits): { connections: Connection[]; clashes: LegClash[] } {
+  const overrides = own ? normaliseLayoverOverrides(own.overrides) : [];
   const legs = journeys(items);
   const clashes: LegClash[] = [];
   const clashing = new Set<string>();
@@ -270,7 +338,9 @@ export function findConnections(items: readonly Item[], prefs: LayoverPrefs = DE
     const match = placeMatch(a.to, b.from);
     if (!match) continue;
     const crossBorder = crossesBorder(a, b);
-    const { status, limit } = classify(minutes, crossBorder, prefs);
+    const mine = own ? overrides.find((o) => sameLeg(o, own.tripId, a.id, b.id)) : undefined;
+    const used = normaliseLayoverPrefs(mine ?? prefs);
+    const { status, limit } = classify(minutes, crossBorder, used);
     const from = arrivalTerminal(a);
     const to = departureTerminal(b);
     out.push({
@@ -288,12 +358,28 @@ export function findConnections(items: readonly Item[], prefs: LayoverPrefs = DE
       gate: { ...(arrivalGate(a) ? { from: arrivalGate(a) } : {}), ...(departureGate(b) ? { to: departureGate(b) } : {}) },
       arriveUtc,
       departUtc,
+      prefs: used,
+      own: !!mine,
     });
   }
   return { connections: out, clashes };
 }
 
-export const connections = (items: readonly Item[], prefs: LayoverPrefs = DEFAULT_LAYOVER_PREFS): Connection[] => findConnections(items, prefs).connections;
+export const connections = (items: readonly Item[], prefs: LayoverPrefs = DEFAULT_LAYOVER_PREFS, own?: OwnLimits): Connection[] => findConnections(items, prefs, own).connections;
+
+/**
+ * T134: a list found with the usual limits, re-judged with each change's own limits from `overrides` (stored rows).
+ * Changes without their own limits come back as they were.
+ */
+export function applyLayoverOverrides(list: readonly Connection[], tripId: string, overrides: unknown): Connection[] {
+  const rows = normaliseLayoverOverrides(overrides);
+  return list.map((c) => {
+    const o = rows.find((x) => sameLeg(x, tripId, c.arrive.id, c.depart.id));
+    if (!o) return c;
+    const prefs = normaliseLayoverPrefs(o);
+    return { ...c, ...classify(c.minutes, c.crossBorder, prefs), prefs, own: true };
+  });
+}
 
 /** The connection that starts when this journey lands, by the arriving leg's id. */
 export function connectionAfter(list: readonly Connection[], arriveId: string): Connection | undefined {
@@ -330,8 +416,8 @@ export type LongIdea = (typeof LONG_IDEAS)[number];
  * shortest), pass when every connection is OK or long. Null when the trip has no connections (no row at all).
  * The fix opens the departing leg of the first tight change.
  */
-export function connectionsCheck(trip: Pick<Trip, 'items'>, prefs: LayoverPrefs = DEFAULT_LAYOVER_PREFS): Check | null {
-  const list = connections(trip.items ?? [], prefs);
+export function connectionsCheck(trip: Pick<Trip, 'items'> & { id?: string }, prefs: LayoverPrefs = DEFAULT_LAYOVER_PREFS, overrides?: unknown): Check | null {
+  const list = connections(trip.items ?? [], prefs, trip.id && overrides !== undefined ? { tripId: trip.id, overrides } : undefined);
   if (!list.length) return null;
   const tight = list.filter((c) => c.status === 'tight');
   if (!tight.length) return { id: 'connections', status: 'pass', reason: 'ok', done: list.length, total: list.length, fix: null };
@@ -352,6 +438,7 @@ export function connectionsCheck(trip: Pick<Trip, 'items'>, prefs: LayoverPrefs 
  * Connections for the Your day card: the next leg has not left yet, and the landing or the leaving falls on `today`
  * in `zone` (the zone the traveller is in).
  */
-export function briefConnections(trip: Pick<Trip, 'items'>, zone: string, today: LocalDate, now: number, prefs: LayoverPrefs = DEFAULT_LAYOVER_PREFS): Connection[] {
-  return connections(trip.items ?? [], prefs).filter((c) => c.departUtc > now && (localDate(fromUtc(c.arriveUtc, zone)) === today || localDate(fromUtc(c.departUtc, zone)) === today));
+export function briefConnections(trip: Pick<Trip, 'items'> & { id?: string }, zone: string, today: LocalDate, now: number, prefs: LayoverPrefs = DEFAULT_LAYOVER_PREFS, overrides?: unknown): Connection[] {
+  const own = trip.id && overrides !== undefined ? { tripId: trip.id, overrides } : undefined;
+  return connections(trip.items ?? [], prefs, own).filter((c) => c.departUtc > now && (localDate(fromUtc(c.arriveUtc, zone)) === today || localDate(fromUtc(c.departUtc, zone)) === today));
 }

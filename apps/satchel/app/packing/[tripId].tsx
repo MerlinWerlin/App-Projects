@@ -414,6 +414,7 @@ function PackingList({ trip, list, update }: { trip: Trip; list: PackList; updat
       )}
       {p.total > 0 ? <SharePackingList tripName={tripName} list={list} qtyOf={qtyOf} laundry={laundry} categoryName={(c) => categoryName(t, c)} /> : null}
       {/* T107: gifts and souvenirs (packed gifts count in their bag's weight). */}
+      <Button label={t('outfits.packing.open')} hint={t('outfits.packing.openHint')} kind="secondary" icon="shirt-outline" onPress={() => router.push({ pathname: '/outfits/[tripId]', params: { tripId: trip.id } })} />
       <Button label={t('gifts.packing.open')} hint={t('gifts.packing.openHint')} kind="quiet" icon="gift-outline" onPress={() => router.push(`/gifts/${trip.id}`)} />
       {p.done > 0 ? <Button label={t('smartpack.repack')} hint={t('smartpack.repackHint')} kind="quiet" icon="refresh-outline" onPress={confirmReset} /> : null}
     </View>
