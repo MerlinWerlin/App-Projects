@@ -22,6 +22,7 @@ import { zoneCity } from './format.ts';
 import type { Item, LocalDate, Stamp, Trip } from './model.ts';
 import { destinationPoints, type Check } from './readiness.ts';
 import { sortItems, zonesReadable } from './timeline.ts';
+import { readCheckin } from './checkin.ts';
 import { addDays, daysBetween, fromUtc, isLocalDateTime, isValidZone, localDate, localTime, toUtc } from './tz.ts';
 
 export const MAX_TODO_TITLE = 200;
@@ -107,9 +108,9 @@ export type Due = { date: LocalDate; tz: string; time?: string; late?: number };
 /** The departure-zone day `days` before departure. */
 export const dueBefore = (dep: Stamp, days: number): Due => ({ date: addDays(localDate(dep.local), -days), tz: dep.tz });
 
-/** Check-in opens about 24 h before the flight, on the flight's departure clock (general guidance). */
+/** Check-in opens about 24 h before the flight (T143: or the booking's own opening offset), on the flight's departure clock (general guidance). */
 export function checkinDue(flight: Item): Due {
-  const at = toUtc(flight.start) - CHECKIN_OPENS_HOURS * HOUR;
+  const at = toUtc(flight.start) - (readCheckin(flight.checkin)?.opensH ?? CHECKIN_OPENS_HOURS) * HOUR;
   const wall = fromUtc(at, flight.start.tz);
   return { date: localDate(wall), time: localTime(wall), tz: flight.start.tz, late: toUtc(flight.start) };
 }

@@ -13,6 +13,8 @@ import type { LeavingHome } from './leavehome.ts';
 import type { ComingHome } from './comehome.ts';
 import type { LegInfo } from './layovers.ts';
 import type { TripOutfits } from './outfits.ts';
+import type { PlanSetting } from './plansetting.ts';
+import type { CheckinInfo } from './checkin.ts';
 
 /** Wall-clock local time, minute precision: 'YYYY-MM-DDTHH:mm'. */
 export type LocalDateTime = string;
@@ -41,7 +43,15 @@ export type Place = {
  * A place the user kept with a trip from the map (FLOWS §11.2). Coordinates are required. `category` is the map
  * category id it was saved from (absent for a dropped pin); `sample` marks a bundled demo point, so it stays labelled.
  */
-export type SavedPlace = Place & { lat: number; lon: number; category?: string; sample?: boolean; savedAt: string };
+export type SavedPlace = Place & {
+  lat: number;
+  lon: number;
+  category?: string;
+  sample?: boolean;
+  savedAt: string;
+  /** T142: the traveller's indoor / outdoor mark (rainy-day plan B). Absent: guessed from the name. */
+  setting?: PlanSetting;
+};
 
 export type Attachment = {
   id: string;
@@ -76,6 +86,10 @@ export type Item = {
   airport?: AirportInfo;
   /** T131 journeys only: arrival / departure terminal and gate as typed (a flight's departure ones live in `airport`). Read defensively in src/core/layovers.ts. */
   legInfo?: LegInfo;
+  /** T140 activities: the traveller's indoor / outdoor mark (rainy-day plan B). Absent: guessed from the name. Read defensively in src/core/plansetting.ts. */
+  setting?: PlanSetting;
+  /** T143 check-in times: own opening / closing offsets, bag-drop minutes, car desk hours and the "Mark checked in" tick. Read defensively in src/core/checkin.ts. */
+  checkin?: CheckinInfo;
   attachments: Attachment[];
 };
 

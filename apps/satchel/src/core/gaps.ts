@@ -1,7 +1,8 @@
 // T135 trip gaps: holes and clashes in a trip, found offline from its bookings.
 //  - night:       nights with no stay booked, between the first arrival and the last departure, by each night's own
 //                 local date (a night is the date you go to sleep on; consecutive nights form one gap)
-//  - move:        the trip changes city / country with no journey between two places
+//  - move:        the trip changes city / country with no journey between two places (T138: two stays in one
+//                 country with no positions also count by the city their address / name / title names, or by zone)
 //  - stayClash:   two stays that overlap (timeline.overlaps, the same rule as the timeline's clash warning)
 //  - legClash:    two journeys that overlap in time (layovers.findConnections clashes, never duplicated here)
 //  - checkInLate: a stay's check-in comes after the journey that takes you on from there has left
@@ -10,6 +11,7 @@
 // Every time is read on its own item's IANA zone (tz.ts toUtc / local dates), so DST, half-hour zones and the date
 // line are handled; items whose zone this phone can't read are skipped. Dismissed gaps (ids kept per trip on the
 // phone, never in the trip or its .satchel file) are left out. Pure TypeScript, offline, Node runs it.
+import { zoneFromCity } from './airports.ts';
 import { countryForZone } from './emergency.ts';
 import { findConnections, NEARBY_M, placeMatch } from './layovers.ts';
 import { isTransport, type Item, type ItemKind, type LocalDate, type Place, type Trip } from './model.ts';
@@ -161,6 +163,38 @@ export function farApart(a: { place?: Place; tz: string }, b: { place?: Place; t
   return !!ca && !!cb && ca !== cb;
 }
 
+/**
+ * T138: the city a stay names (address first, then the place name, then the booking title), folded; null when none.
+ * A city in another country than the stay's own zone is not taken ("Hotel Paris Rooms" on a London stay is a hotel name).
+ */
+export function stayCity(item: Pick<Item, 'place' | 'title' | 'start'>): string | null {
+  const own = countryForZone(item.start.tz);
+  for (const text of [item.place?.address, item.place?.name, item.title]) {
+    const c = typeof text === 'string' && text.trim() ? zoneFromCity(text) : undefined;
+    if (c && (!own || countryForZone(c.tz) === own)) return c.city.toLowerCase();
+  }
+  return null;
+}
+
+const hasPos = (p?: Place) => !!p && validLatLon(p.lat, p.lon);
+
+/**
+ * T138: two back-to-back stays in one country with no saved positions on one or both (so farApart can't tell): apart
+ * when each names a known city and the cities differ ("Tokyo" then "Kyoto"), else when their zones differ
+ * (Australia/Sydney then Australia/Perth). Two hotels in one city, or names with no known city, are not apart.
+ * Only stay to stay: an airport or station often carries a nearby city's name, so journey ends never count by name.
+ */
+export function staysApartByName(a: Pick<Item, 'place' | 'title' | 'start'>, b: Pick<Item, 'place' | 'title' | 'start'>): boolean {
+  if (hasPos(a.place) && hasPos(b.place)) return false;
+  const ca = countryForZone(a.start.tz);
+  const cb = countryForZone(b.start.tz);
+  if (ca && cb && ca !== cb) return false; // a change of country is farApart's.
+  const na = stayCity(a);
+  const nb = stayCity(b);
+  if (na && nb) return na !== nb;
+  return a.start.tz !== b.start.tz;
+}
+
 function moveGaps(items: readonly Item[]): Gap[] {
   const { usable, legs, stays } = parts(items);
   const cars = usable.filter((i) => i.kind === 'car');
@@ -183,7 +217,8 @@ function moveGaps(items: readonly Item[]): Gap[] {
     const cur = anchors[i];
     // Leaving on a journey: in transit until it lands (a journey without an arrival time is taken at its word).
     if (prev.at === 'dep' || prev.item === cur.item) continue;
-    if (!farApart(prev, cur) || driven(prev.t, cur.t)) continue;
+    const apart = farApart(prev, cur) || (prev.at === 'stay' && cur.at === 'stay' && staysApartByName(prev.item, cur.item));
+    if (!apart || driven(prev.t, cur.t)) continue;
     const abroad = !!countryForZone(prev.tz) && !!countryForZone(cur.tz) && countryForZone(prev.tz) !== countryForZone(cur.tz);
     out.push({
       id: `move:${prev.item.id}>${cur.item.id}`,

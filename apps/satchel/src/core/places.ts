@@ -59,6 +59,8 @@ export function addPlace(trip: Trip, d: PlaceDraft, now = new Date().toISOString
   if (d.sample ?? existing?.sample) place.sample = true;
   const address = d.address?.trim() || existing?.address;
   if (address) place.address = address;
+  // T142: saving the same spot again keeps the traveller's indoor / outdoor mark.
+  if (existing?.setting) place.setting = existing.setting;
   const list = savedPlaces(trip);
   const places = existing ? list.map((p) => (p.id === existing.id ? place : p)) : [...list, place];
   return { ok: true, trip: { ...trip, places }, place, updated: !!existing };

@@ -7,10 +7,11 @@
 // respected there); colours from theme tokens; original garment art (src/ui/garments.tsx).
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
-import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { formatDay } from '../../src/core/format.ts';
+import { outfitTodayIndex } from '../../src/core/followups104.ts';
 import { newId, type LocalDate, type Trip } from '../../src/core/model.ts';
 import {
   addExtra,
@@ -121,6 +122,17 @@ function Outfits({ trip }: { trip: Trip }) {
   const weather = useCachedWeather(trip, now);
   const [unit] = useTempUnit();
   const [open, setOpen] = useState<LocalDate | null>(null);
+  // T138: on open, scroll to today's card while the trip is on (once; not again when the day ticks over).
+  const listRef = useRef<FlatList<LocalDate>>(null);
+  const todayIndex = outfitTodayIndex(dates, today);
+  const scrolled = useRef(false);
+  const retries = useRef(0);
+  useEffect(() => {
+    if (todayIndex === null || scrolled.current) return;
+    scrolled.current = true;
+    const id = setTimeout(() => listRef.current?.scrollToIndex({ index: todayIndex, animated: false, viewOffset: space.l }), 0);
+    return () => clearTimeout(id);
+  }, [todayIndex]);
 
   const header = (
     <View style={{ gap: space.l, paddingBottom: space.l }}>
@@ -147,6 +159,7 @@ function Outfits({ trip }: { trip: Trip }) {
 
   return (
     <FlatList
+      ref={listRef}
       style={{ flex: 1, backgroundColor: theme.paper }}
       contentContainerStyle={{ paddingTop: space.l, paddingBottom: insets.bottom + space.xxl, paddingHorizontal: space.l }}
       keyboardShouldPersistTaps="handled"
@@ -154,6 +167,14 @@ function Outfits({ trip }: { trip: Trip }) {
       keyExtractor={(d) => d}
       ListHeaderComponent={header}
       ItemSeparatorComponent={Gap}
+      initialNumToRender={Math.max(10, (todayIndex ?? 0) + 1)}
+      onScrollToIndexFailed={(info) => {
+        // Cards above today aren't measured yet: jump near it, then try again once they are.
+        if (retries.current >= 3) return;
+        retries.current += 1;
+        listRef.current?.scrollToOffset({ offset: info.averageItemLength * info.index, animated: false });
+        setTimeout(() => listRef.current?.scrollToIndex({ index: info.index, animated: false, viewOffset: space.l }), 100);
+      }}
       renderItem={({ item: date, index }) => (
         <DayCard
           trip={trip}

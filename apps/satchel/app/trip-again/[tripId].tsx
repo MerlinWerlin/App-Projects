@@ -153,7 +153,7 @@ function PlanAgain({ trip }: { trip: Trip }) {
         ) : null}
         <View style={{ gap: space.xs, borderTopWidth: 1, borderTopColor: theme.line, paddingTop: space.s }}>
           <Label>{t('tripcopy.never.title')}</Label>
-          <Body muted>{t('f102.copy.neverBody')}</Body>
+          <Body muted>{t('f104.copy.neverBody')}</Body>
         </View>
       </Card>
 
