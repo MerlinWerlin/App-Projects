@@ -20,6 +20,24 @@ export const hasSampleTravels = (trips: readonly { id?: unknown }[]): boolean =>
 /** Sample trips never leave the phone as a .satchel file. */
 export const canExportTrip = (t: { id?: unknown }): boolean => !isSampleTravel(t);
 
+/**
+ * T165: "Plan this trip again" is not offered on a sample trip: a copy would carry invented bookings into a real
+ * trip with no Sample mark (the copy drops the demo flag and gets a new id), so the button and screen stay away.
+ */
+export const canPlanAgain = (t: { id?: unknown }): boolean => !isSampleTravel(t);
+
+/**
+ * T165: whether adding the samples is the thing that turned Your travels' "Include demo trips" on. Only true when
+ * the switch was off before (so removing the samples can put it back the way the traveller had it).
+ */
+export const samplesTurnOnDemo = (includeDemoBefore: boolean): boolean => !includeDemoBefore;
+
+/**
+ * T165: the "Include demo trips" value after the samples are removed: back off when the samples turned it on,
+ * otherwise left as the traveller set it.
+ */
+export const includeDemoAfterRemove = (includeDemo: boolean, turnedOnBySamples: boolean): boolean => (turnedOnBySamples ? false : includeDemo);
+
 const SYD: Place = { id: 'syd', name: 'Sydney Airport T1', lat: -33.9366, lon: 151.1658 };
 const LIS: Place = { id: 'lis', name: 'Lisbon Airport T1', lat: 38.7742, lon: -9.1342 };
 const LISS: Place = { id: 'lis-st', name: 'Lisbon Oriente Station', lat: 38.7679, lon: -9.0991 };
