@@ -131,6 +131,7 @@ const fullTrip = (): Required<Trip> =>
     dayPlans: [{ day: '2027-04-04', places: [{ placeId: 'sp_1' }], updatedAt: NOW }],
     cash: { start: [{ currency: 'JPY', amount: 20000 }], moves: [], paid: [{ expenseId: 'exp_1' }], leftover: { JPY: 'keep' }, local: 'JPY' },
     gifts: [{ id: 'gp_mum', name: 'Mum', gifts: [{ id: 'gift_1', what: 'Tea towel', status: 'packed', createdAt: NOW }], createdAt: NOW }],
+    leavingHome: { rows: [{ id: 'lh_1', tpl: 'bins', done: true }], note: { address: '1 Home St', bins: 'Tuesday night' }, updatedAt: NOW },
   } as Required<Trip>);
 
 const ownBag: Required<Bag> = { id: 'bag_cam', kind: 'own', name: 'Camera bag', colour: 'plum', hold: true, limitG: 8000 };
@@ -203,10 +204,10 @@ test('T118 guard: every field of every copied type has exactly one rule (copied,
   assert.deepEqual(keys(PACK_ITEM_RULES), keys(packItem));
   assert.deepEqual(keys(BAG_RULES), keys(ownBag));
   // Same Trip / Item key list the T85 round-trip guard pins today (a new field must be ruled on in both).
-  assert.deepEqual(keys(TRIP_RULES), ['budget', 'cash', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos']);
+  assert.deepEqual(keys(TRIP_RULES), ['budget', 'cash', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'leavingHome', 'name', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos']);
   assert.deepEqual(keys(ITEM_RULES), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
   // Phone-only and money data is never a part the traveller can switch on.
-  for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo'] as const) assert.equal(TRIP_RULES[k], 'drop', k);
+  for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo', 'leavingHome'] as const) assert.equal(TRIP_RULES[k], 'drop', k);
   for (const k of ['ref', 'seat', 'attachments'] as const) assert.equal(ITEM_RULES[k], 'drop', k);
 });
 
@@ -423,7 +424,7 @@ test('T118 no phone-only data: no codes, seats, files, gate, stay keys, receipts
   // Stay details are keyed by booking id on this phone: the copy's bookings can never read the old ones.
   const oldKeys = new Set(fullTrip().items.map((i) => stayKey(i.id)));
   for (const i of trip.items) assert.ok(!oldKeys.has(stayKey(i.id)));
-  for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo'] as const) assert.equal(trip[k], undefined, k);
+  for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo', 'leavingHome'] as const) assert.equal(trip[k], undefined, k);
 });
 
 test('T118 a packing list of another trip is never copied', () => {

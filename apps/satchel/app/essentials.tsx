@@ -1,5 +1,6 @@
 // Low-battery essentials (T07, docs/spec/FLOWS.md §9): pure black, white text, no animation, no map. Next ticket,
-// hotel address card and emergency card (EssentialsSlot), the manual "keep on" switch, and Exit at the bottom.
+// hotel address card and emergency card (EssentialsSlot), T123 driving lines when the trip has a car abroad
+// (EssentialsDriving), the manual "keep on" switch, and Exit at the bottom.
 // Opened only by the user (home banner or the Essentials button); never auto-navigated to.
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -10,6 +11,7 @@ import { useBattery } from '../src/native/battery.ts';
 import { useApp } from '../src/state/app.tsx';
 import { usePersisted } from '../src/state/persisted.ts';
 import { essentials, fonts, radius, space, TOUCH } from '../src/theme/tokens.ts';
+import { EssentialsDriving } from '../src/ui/followups100.tsx';
 import { EssentialsButton, EssentialsSlot } from '../src/ui/slots/EssentialsSlot.tsx';
 
 export default function EssentialsScreen() {
@@ -67,6 +69,7 @@ export default function EssentialsScreen() {
         </Pressable>
 
         <EssentialsSlot />
+        <EssentialsDriving />
       </ScrollView>
       <View style={{ paddingHorizontal: space.l, paddingTop: space.s, paddingBottom: insets.bottom + space.l, borderTopWidth: 1, borderTopColor: essentials.line, backgroundColor: essentials.bg }}>
         <EssentialsButton strong label={t('battery.exit')} hint={t('battery.exitHint')} onPress={close} />

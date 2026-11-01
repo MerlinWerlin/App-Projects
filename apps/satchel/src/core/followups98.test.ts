@@ -44,6 +44,8 @@ const CHECKED = new Set([
   'checkbox', 'square-outline',
   // T121 (run 100): the Help cards button on I'm safe (same glyph as the Trouble card).
   'help-buoy-outline',
+  // T125 (run 101): the Travel games button on the in-flight screen.
+  'game-controller-outline',
 ]);
 
 function iconNames(src: string): string[] {

@@ -8,7 +8,7 @@
       "country": "United Arab Emirates",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -16,13 +16,13 @@
         "diesel": "Diesel (ديزل)"
       },
       "tolls": "Dubai has electronic toll gates billed to the number plate; rental companies pass the charges on.",
-      "note": null,
+      "note": "Zero alcohol limit for drivers; police can impound a car for minor offences.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/united-arab-emirates",
+        "https://www.gov.uk/foreign-travel-advice/united-arab-emirates/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "AR",
@@ -39,11 +39,11 @@
       "tolls": "Some highways have toll booths (peajes).",
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/argentina",
+        "https://www.gov.uk/foreign-travel-advice/argentina/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "AT",
@@ -136,7 +136,7 @@
       "country": "Brazil",
       "side": "right",
       "speed": "kmh",
-      "idp": "often",
+      "idp": "not_usually",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -146,11 +146,11 @@
       "tolls": "Many highways have toll booths (pedágio); keep cash or a card handy.",
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/brazil",
+        "https://www.gov.uk/foreign-travel-advice/brazil/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "CA",
@@ -167,11 +167,11 @@
       "tolls": "A few toll roads, such as the 407 near Toronto, are cashless and bill the number plate.",
       "note": "Turning right on a red light after stopping is allowed in most provinces, not on the island of Montreal.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/canada",
+        "https://www.gov.uk/foreign-travel-advice/canada/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "CH",
@@ -200,7 +200,7 @@
       "country": "Chile",
       "side": "right",
       "speed": "kmh",
-      "idp": "often",
+      "idp": "not_usually",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -210,11 +210,11 @@
       "tolls": "Santiago's urban motorways are electronic toll roads; rental cars usually carry a tag. Other highways have booths.",
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/chile",
+        "https://www.gov.uk/foreign-travel-advice/chile/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "CN",
@@ -242,7 +242,7 @@
       "country": "Colombia",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -252,7 +252,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/colombia",
+        "https://www.gov.uk/foreign-travel-advice/colombia/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -271,9 +271,9 @@
         "diesel": "Diésel"
       },
       "tolls": null,
-      "note": null,
+      "note": "San José limits private cars on some weekdays by the last digit of the number plate.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/costa-rica",
+        "https://www.gov.uk/foreign-travel-advice/costa-rica/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -369,7 +369,7 @@
       "country": "Dominican Republic",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Wear a seat belt in every seat; book a child seat in advance.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -379,7 +379,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/dominican-republic",
+        "https://www.gov.uk/foreign-travel-advice/dominican-republic/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -390,7 +390,7 @@
       "country": "Ecuador",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -400,7 +400,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/ecuador",
+        "https://www.gov.uk/foreign-travel-advice/ecuador/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -433,7 +433,7 @@
       "side": "right",
       "speed": "kmh",
       "idp": "often",
-      "seatbelts": "Wear a seat belt in every seat; book a child seat in advance.",
+      "seatbelts": "Drivers and front-seat passengers must wear seat belts.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
         "petrol": "بنزين (banzeen)",
@@ -442,7 +442,7 @@
       "tolls": null,
       "note": "Many visitors hire a car with a driver.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/egypt",
+        "https://www.gov.uk/foreign-travel-advice/egypt/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -495,7 +495,7 @@
       "country": "Fiji",
       "side": "left",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Wear a seat belt in every seat; book a child seat in advance.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -505,7 +505,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/fiji",
+        "https://www.gov.uk/foreign-travel-advice/fiji/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -579,7 +579,7 @@
       "country": "Guatemala",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Wear a seat belt in every seat; book a child seat in advance.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -589,7 +589,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/guatemala",
+        "https://www.gov.uk/foreign-travel-advice/guatemala/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -610,11 +610,11 @@
       "tolls": "Several tunnels and some roads charge tolls.",
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/hong-kong",
+        "https://www.gov.uk/foreign-travel-advice/hong-kong/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "HR",
@@ -706,7 +706,7 @@
       "country": "Israel",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "often",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -716,7 +716,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/israel",
+        "https://www.gov.uk/foreign-travel-advice/israel/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -790,8 +790,8 @@
       "country": "Jamaica",
       "side": "left",
       "speed": "kmh",
-      "idp": null,
-      "seatbelts": "Wear a seat belt in every seat; book a child seat in advance.",
+      "idp": "not_usually",
+      "seatbelts": "Drivers and front-seat passengers must wear seat belts; hire cars may lack rear belts.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
         "petrol": "Gas / Petrol",
@@ -800,7 +800,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/jamaica",
+        "https://www.gov.uk/foreign-travel-advice/jamaica/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -811,7 +811,7 @@
       "country": "Jordan",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "often",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -819,9 +819,9 @@
         "diesel": "ديزل (diesel)"
       },
       "tolls": null,
-      "note": null,
+      "note": "Every car must carry a fire extinguisher and a warning triangle.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/jordan",
+        "https://www.gov.uk/foreign-travel-advice/jordan/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -853,7 +853,7 @@
       "country": "Kenya",
       "side": "left",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Wear a seat belt in every seat; book a child seat in advance.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -863,7 +863,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/kenya",
+        "https://www.gov.uk/foreign-travel-advice/kenya/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -884,7 +884,7 @@
       "tolls": null,
       "note": "Many visitors hire a car with a driver.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/cambodia",
+        "https://www.gov.uk/foreign-travel-advice/cambodia/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -903,13 +903,13 @@
         "diesel": "경유 (gyeongyu)"
       },
       "tolls": "Expressways are toll roads paid at booths or electronically.",
-      "note": null,
+      "note": "The drink-drive limit is much lower than in the UK.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/south-korea",
+        "https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "LK",
@@ -923,14 +923,15 @@
         "petrol": "Petrol",
         "diesel": "Diesel"
       },
-      "tolls": null,
-      "note": "Many visitors hire a car with a driver.",
+      "tolls": "Expressways charge tolls, paid in cash or by card at the booths.",
+      "note": "You also need a local recognition permit to drive a hire car; many visitors hire a car with a driver.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/sri-lanka",
-        "https://www.gov.uk/driving-abroad"
+        "https://www.gov.uk/foreign-travel-advice/sri-lanka/safety-and-security",
+        "https://www.gov.uk/driving-abroad",
+        "https://exway.rda.gov.lk/"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "LT",
@@ -947,7 +948,7 @@
       "tolls": null,
       "note": "Dipped headlights on at all times.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/lithuania",
+        "https://www.gov.uk/foreign-travel-advice/lithuania/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -1000,7 +1001,7 @@
       "country": "Morocco",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "often",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -1008,9 +1009,9 @@
         "diesel": "Gasoil (gazoil)"
       },
       "tolls": null,
-      "note": null,
+      "note": "Carry the 1968 International Driving Permit; the 1949 version is no longer accepted.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/morocco",
+        "https://www.gov.uk/foreign-travel-advice/morocco/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -1052,18 +1053,18 @@
       "tolls": "Toll motorways (cuotas) are usually faster and safer than free roads; keep cash for the booths.",
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/mexico",
+        "https://www.gov.uk/foreign-travel-advice/mexico/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "MY",
       "country": "Malaysia",
       "side": "left",
       "speed": "kmh",
-      "idp": null,
+      "idp": "often",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -1073,11 +1074,11 @@
       "tolls": "Most expressways are cashless toll roads; ask the rental desk about the toll card.",
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/malaysia",
+        "https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "NL",
@@ -1126,8 +1127,8 @@
       "country": "Nepal",
       "side": "left",
       "speed": "kmh",
-      "idp": null,
-      "seatbelts": "Wear a seat belt where fitted; book a child seat in advance.",
+      "idp": "often",
+      "seatbelts": "The law requires a seat belt for the driver; wear one wherever fitted.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
         "petrol": "पेट्रोल (petrol)",
@@ -1136,7 +1137,7 @@
       "tolls": null,
       "note": "Mountain roads are narrow; many visitors hire a car with a driver.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/nepal",
+        "https://www.gov.uk/foreign-travel-advice/nepal/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -1169,16 +1170,16 @@
       "side": "right",
       "speed": "kmh",
       "idp": "not_usually",
-      "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
+      "seatbelts": "Drivers and front-seat passengers must wear seat belts; children 4 and under ride in the back in a child seat.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
         "petrol": "Gasolina",
         "diesel": "Diésel"
       },
       "tolls": null,
-      "note": null,
+      "note": "Paper licences are not accepted; carry a copy of your passport entry stamp.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/panama",
+        "https://www.gov.uk/foreign-travel-advice/panama/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -1189,7 +1190,7 @@
       "country": "Peru",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -1199,7 +1200,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/peru",
+        "https://www.gov.uk/foreign-travel-advice/peru/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -1210,7 +1211,7 @@
       "country": "Philippines",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Wear a seat belt in every seat; children ride in a child seat.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -1220,7 +1221,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/philippines",
+        "https://www.gov.uk/foreign-travel-advice/philippines/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -1273,8 +1274,8 @@
       "country": "Qatar",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
-      "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
+      "idp": "often",
+      "seatbelts": "The driver and front-seat passenger must wear seat belts at all times.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
         "petrol": "Petrol (بنزين)",
@@ -1283,7 +1284,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/qatar",
+        "https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -1316,7 +1317,7 @@
       "country": "Saudi Arabia",
       "side": "right",
       "speed": "kmh",
-      "idp": "often",
+      "idp": "not_usually",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -1326,7 +1327,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/saudi-arabia",
+        "https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -1358,7 +1359,7 @@
       "country": "Singapore",
       "side": "left",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -1366,13 +1367,13 @@
         "diesel": "Diesel"
       },
       "tolls": "Electronic road pricing (ERP) charges apply on busy roads; rental cars carry an in-vehicle unit.",
-      "note": null,
+      "note": "A UK licence alone is accepted for 30 days; after that you also need a 1949 International Driving Permit.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/singapore",
+        "https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "SI",
@@ -1444,7 +1445,7 @@
       "country": "Tunisia",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "often",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -1454,7 +1455,7 @@
       "tolls": null,
       "note": null,
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/tunisia",
+        "https://www.gov.uk/foreign-travel-advice/tunisia/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -1465,7 +1466,7 @@
       "country": "Türkiye",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
+      "idp": "often",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -1473,13 +1474,13 @@
         "diesel": "Motorin (dizel)"
       },
       "tolls": "Motorways and big bridges charge tolls electronically (HGS); rental cars usually carry a tag.",
-      "note": null,
+      "note": "Carry the 1968 International Driving Permit; the 1949 version is no longer accepted.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/turkey",
+        "https://www.gov.uk/foreign-travel-advice/turkey/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "TW",
@@ -1494,20 +1495,20 @@
         "diesel": "柴油 (cháiyóu)"
       },
       "tolls": "Freeways charge tolls electronically by distance; rental cars usually carry a tag.",
-      "note": null,
+      "note": "Validate your International Driving Permit at a local motor vehicles office after you arrive.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/taiwan",
+        "https://www.gov.uk/foreign-travel-advice/taiwan/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "TZ",
       "country": "Tanzania",
       "side": "left",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Wear a seat belt in every seat; book a child seat in advance.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -1515,9 +1516,9 @@
         "diesel": "Dizeli"
       },
       "tolls": null,
-      "note": null,
+      "note": "Zanzibar also needs a local driving permit; hire companies can arrange it.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/tanzania",
+        "https://www.gov.uk/foreign-travel-advice/tanzania/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -1538,32 +1539,32 @@
       "tolls": "Many toll roads are cashless and bill the number plate; ask the rental desk how tolls are charged.",
       "note": "Turning right on a red light after stopping is allowed in most places unless a sign says not.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/usa",
+        "https://www.gov.uk/foreign-travel-advice/usa/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "UY",
       "country": "Uruguay",
       "side": "right",
       "speed": "kmh",
-      "idp": null,
-      "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
+      "idp": "not_usually",
+      "seatbelts": "Seat belts front and back; children under 12 ride in a child or booster seat.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
         "petrol": "Nafta",
         "diesel": "Gasoil"
       },
-      "tolls": null,
-      "note": null,
+      "tolls": "Tolls are electronic-tag only; rental cars carry a tag and the company bills the charges.",
+      "note": "Dipped headlights on during the day; carry a first aid kit.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/uruguay",
+        "https://www.gov.uk/foreign-travel-advice/uruguay/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     },
     {
       "iso2": "VN",
@@ -1580,7 +1581,7 @@
       "tolls": null,
       "note": "Traffic is heavy with many motorbikes; many visitors hire a car with a driver.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/vietnam",
+        "https://www.gov.uk/foreign-travel-advice/vietnam/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
@@ -1591,7 +1592,7 @@
       "country": "South Africa",
       "side": "left",
       "speed": "kmh",
-      "idp": null,
+      "idp": "not_usually",
       "seatbelts": "Seat belts for everyone; children ride in a child seat suited to their height and weight.",
       "phone": "Hand-held phone use while driving is not allowed; hands-free only.",
       "fuel": {
@@ -1599,13 +1600,13 @@
         "diesel": "Diesel"
       },
       "tolls": "Some national roads have toll plazas; parts of Gauteng use electronic tolling.",
-      "note": null,
+      "note": "At four-way stops the first car to arrive goes first.",
       "sources": [
-        "https://www.gov.uk/foreign-travel-advice/south-africa",
+        "https://www.gov.uk/foreign-travel-advice/south-africa/safety-and-security",
         "https://www.gov.uk/driving-abroad"
       ],
       "checked": "2026-11-01",
-      "recheck": true
+      "recheck": false
     }
   ]
 }

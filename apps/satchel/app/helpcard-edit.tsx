@@ -2,12 +2,15 @@
 // optional photo (camera or Photos, copied into Satchel and kept on this phone only) and their access needs (six
 // ticks plus free text). The hotel is not typed here: the card reads it from the current stay booking.
 // Params: ?id= edits that person; ?companionId=&tripId= starts a new card from a companion's name.
-// Photos picked and then not saved are deleted again; a replaced or removed photo is deleted once the save succeeds.
+// Photos picked and then not saved are deleted again (Cancel, and T123: any other way the sheet goes away unsaved,
+// such as a swipe down or the back gesture); a replaced or removed photo is deleted once the save succeeds. The saved
+// card's own photo is never deleted on a dismiss (src/core/followups100.ts unsavedHelpPhotos).
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Alert, Image, Text, View } from 'react-native';
 import { draftForCompanion, draftOf, EMPTY_DRAFT, NEED_IDS, parseIdParam, removePerson, savePerson, toggleNeed, type NeedId, type PersonDraft } from '../src/core/helpcards.ts';
+import { unsavedHelpPhotos } from '../src/core/followups100.ts';
 import { newId } from '../src/core/model.ts';
 import { readCompanions } from '../src/core/together.ts';
 import type { Key } from '../src/i18n/en.ts';
@@ -35,6 +38,21 @@ export default function HelpCardEditScreen() {
   const [error, setError] = useState<string | null>(null);
   const picked = useRef<string[]>([]);
   const busy = useRef(false);
+  // T123: what a dismiss must keep (the saved card's photo, and the one a save in flight is writing).
+  const savedPhoto = useRef<string | null>(null);
+  savedPhoto.current = existing?.photoUri ?? null;
+  const writing = useRef<string | null>(null);
+  const mounted = useRef(true);
+  useEffect(
+    () => () => {
+      mounted.current = false;
+      const gone = unsavedHelpPhotos(picked.current, [savedPhoto.current, writing.current]);
+      // A save still writing keeps its photo in the list, so a failed save can delete it afterwards.
+      picked.current = picked.current.filter((u) => u === writing.current);
+      if (gone.length) Promise.all(gone.map((u) => removeHelpPhoto(u))).catch(() => {});
+    },
+    [],
+  );
 
   // The form starts once the store has loaded (an edit needs the saved person).
   let form = draft;
@@ -77,9 +95,17 @@ export default function HelpCardEditScreen() {
       return;
     }
     busy.current = true;
+    writing.current = r.person.photoUri ?? null;
     const ok = await saveHelpPeople(() => r.list);
     busy.current = false;
+    writing.current = null;
     if (!ok) {
+      if (!mounted.current) {
+        // The sheet went away while this save was failing: its photo was never kept, so it goes too.
+        await Promise.all(unsavedHelpPhotos(picked.current, [savedPhoto.current]).map((u) => removeHelpPhoto(u)));
+        picked.current = [];
+        return;
+      }
       setError(t('helpcards.edit.err.save'));
       return;
     }

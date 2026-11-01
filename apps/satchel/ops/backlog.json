@@ -1535,12 +1535,48 @@
     },
     {
       "id": "T123",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "follow-up"
       ],
       "title": "Run-100 follow-ups: Help cards: clean up a copied photo when the edit sheet is dismissed unsaved; native-speaker check of the 180 helpcards.json lines. Driving: re-read the per-country GOV.UK road pages for the 39 recheck rows; driving guide in Low-battery essentials; leave-by line on Your day. Device checks: toilet hand-off scroll, mapPlan/mapWayback pin colours on the real map, trip accents on trip screens, light-mode Card edge, rental camera, help-card screenshot readability.",
+      "accept": "tests green; DECISIONS records sources",
+      "note": "Run 101: offline worker takes help-card photo cleanup on unsaved dismiss, driving guide in Low-battery essentials, leave-by line on Your day; networked worker re-reads the GOV.UK driving pages for the 39 recheck rows (sources in DECISIONS). Native-speaker check of helpcards.json and device checks stay open. Done in run 101: 30ca12e (photo cleanup on any dismiss, driving lines in Low-battery essentials, leave-by row on Your day) and 1d2d6f1 (39 GOV.UK pages re-read: 16 rows confirmed and cleared, 23 corrected but still flagged for tolls). Leftovers moved to T126.",
+      "commit": "30ca12e"
+    },
+    {
+      "id": "T124",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Leaving home (owner-1031 D, deepen Trips + Packing): a 'before you lock the door' checklist per trip (bins, plants, fridge, heating/cooling, windows, chargers unplugged, hold mail/deliveries, pets, spare key, timer lights, valuables, travel docs and cards in the bag) built from a template with own items, timed to the first departure (show 'tomorrow'/'today' on the trip card and Your day), plus a house-sitter / neighbour note (address, sitter tasks per day, pet feeding, plants, bins day, Wi-Fi, who to call, trip dates and where you'll be by stop) shared as plain text through the share sheet. Optional Trip.leavingHome in .satchel files with the every-field guard updated; Wi-Fi/alarm codes phone-only with a guard. Pure TS core src/core/leavehome.ts (template, due-time from the first journey across zones, share text) with tests.",
+      "accept": "leavehome tests; every string in src/i18n/en/leavehome.ts; tokens only; timed transitions, no springs; no new npm dependency",
+      "commit": "a38c5f5"
+    },
+    {
+      "id": "T125",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Travel games for the wait (owner-1031 D, less bland, deepen In-flight + Trips): offline games for queues, flights, trains and car trips, for two or a family: travel bingo (5x5 cards drawn from original SVG icon tiles by mode: plane/airport, train, road trip, city walk; deterministic shuffle by seed, tap to mark, bingo line detection, timed highlight, Reduce Motion), I-spy / spot-it lists by mode, a question deck (family-friendly 'would you rather', 'tell me about', trip memory prompts that can save to the journal), and a tiny score keeper for players (companions prefilled). Pure TS core src/core/games.ts (seeded shuffle, card build, line check, deck draw without repeats) with tests; entries from In-flight mode, Your day and the Trips tab; all content original, in src/content/games.json with a content test.",
+      "accept": "games tests; every string in src/i18n/en/games.ts; content original and family-friendly; tokens only; timed transitions, no springs; no new npm dependency",
+      "commit": "6d42b07"
+    },
+    {
+      "id": "T126",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-101 follow-ups: official national toll sources for the 23 driving rows still flagged (MA EG DO JM IL VN LT CR SA QA PH JO PE CO KE KH TN EC FJ GT NP PA TZ) and Cambodia's IDP answer; Plan this trip again option to copy own leaving-home items (no ticks or dated tasks); bingo keeps marks per mode; native-speaker check of helpcards.json; device checks: lock-up pill, sitter note share text and keyboard, leave-by row, essentials driving line, bingo glyphs and 10pt tile labels on a small screen, help-card photo cleanup on swipe-down.",
       "accept": "tests green; DECISIONS records sources"
     }
   ],

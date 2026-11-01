@@ -40,6 +40,7 @@ import { SharePlan } from '../../src/ui/SharePlan.tsx';
 import { AddToCalendar } from '../../src/ui/AddToCalendar.tsx';
 import { ArrivalCard } from '../../src/ui/ArrivalCard.tsx';
 import { DriveSideBanner } from '../../src/ui/driving.tsx';
+import { LeaveHomeTripCard } from '../../src/ui/leavehome.tsx';
 import { InflightTripCard } from '../../src/ui/InflightCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
@@ -272,6 +273,8 @@ export default function TripScreen() {
             {past ? null : <ArrivalCard trip={trip} />}
             {/* T122: "Drive on the LEFT / RIGHT" for each country the trip has a car booking in. */}
             {past ? null : <DriveSideBanner trip={trip} />}
+            {/* T124: before you lock the door, timed to the first departure (hidden once you've left). */}
+            {past ? null : <LeaveHomeTripCard trip={trip} />}
             <ReadinessCard trip={trip} />
             {/* T93: the trip's to-do list (hidden once the trip has ended). */}
             <TripTodosSlot trip={trip} />

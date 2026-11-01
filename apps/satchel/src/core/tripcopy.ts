@@ -63,6 +63,8 @@ export const TRIP_RULES: Rules<Trip> = {
   cash: 'drop',
   // The gifts themselves never come along; with the giftNames option only the people's names do (GIFT_PERSON_RULES).
   gifts: 'drop',
+  // T124: the leaving-home checklist and sitter note are tied to the old dates (ticks, tasks by date): not copied.
+  leavingHome: 'drop',
 };
 
 /** Item.attachments is required by the model, so 'drop' leaves it an empty list. */
