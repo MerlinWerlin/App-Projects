@@ -27,7 +27,9 @@
         "NSPrivacyAccessedAPITypes": [
           {
             "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
-            "NSPrivacyAccessedAPITypeReasons": ["CA92.1"]
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ]
           }
         ]
       }
@@ -38,8 +40,9 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FBF7F0"
       },
-      "edgeToEdgeEnabled": true,
-      "permissions": ["android.permission.ACTIVITY_RECOGNITION"]
+      "permissions": [
+        "android.permission.ACTIVITY_RECOGNITION"
+      ]
     },
     "plugins": [
       "expo-router",
