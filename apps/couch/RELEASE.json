@@ -1,5 +1,5 @@
 {
   "mode": "update",
-  "note": "Couch: Send test picture button now translated in every language; Google Cast test picture checks",
+  "note": "Couch: remote screen header and sheets now use the new Design v2 look (d-pad and keys unchanged)",
   "ascAppId": "6826135134"
 }
