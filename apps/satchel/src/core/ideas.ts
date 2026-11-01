@@ -10,6 +10,7 @@ import { defaultJournalDay } from './journal.ts';
 import type { LocalDate, Trip } from './model.ts';
 import { validLatLon, type LatLon } from './poi.ts';
 import { decodePos, encodePos } from './position.ts';
+import { readPlanSetting, type PlanSetting } from './plansetting.ts';
 import { groupByDay } from './timeline.ts';
 import { daysBetween, isLocalDateTime } from './tz.ts';
 
@@ -43,6 +44,8 @@ export type Idea = {
    * day without one follow the ordered ones, in the order they were added. Cleared when the idea changes day.
    */
   rank?: number;
+  /** T140: the traveller's indoor / outdoor mark (rainy-day plan B). Absent: guessed from the name and category. */
+  setting?: PlanSetting;
   createdAt: string;
   updatedAt?: string;
 };
@@ -56,7 +59,7 @@ const isDate = (x: unknown): x is LocalDate => isStr(x) && /^\d{4}-\d{2}-\d{2}$/
 /** A stored row as an Idea, or null when it can't be read. Fields this build doesn't know are kept as they are. */
 function readIdea(x: unknown): Idea | null {
   if (!isObj(x) || !isStr(x.id) || !x.id || !isStr(x.name)) return null;
-  const { note, link, lat, lon, spotName, day, done, updatedAt, rank, ...rest } = x;
+  const { note, link, lat, lon, spotName, day, done, updatedAt, rank, setting, ...rest } = x;
   const out = { ...rest, id: x.id, name: x.name.slice(0, MAX_IDEA_NAME), category: isIdeaCategory(x.category) ? x.category : 'other', createdAt: isStr(x.createdAt) ? x.createdAt : '' } as Idea;
   if (isStr(note) && note) out.note = note.slice(0, MAX_IDEA_NOTE);
   if (isStr(link) && link.trim()) out.link = link.trim().slice(0, MAX_IDEA_LINK);
@@ -68,6 +71,8 @@ function readIdea(x: unknown): Idea | null {
   if (isDate(day)) out.day = day;
   if (done === true) out.done = true;
   if (out.day && isRank(rank)) out.rank = rank;
+  const s = readPlanSetting(setting);
+  if (s) out.setting = s;
   if (isStr(updatedAt)) out.updatedAt = updatedAt;
   return out;
 }
@@ -120,17 +125,17 @@ export function ideaDayNumber(trip: Trip, day: LocalDate): number | null {
 // ---- editing ----
 
 /** The form keeps text only (the "unsaved changes" check stays a plain compare). `pos` is "lat,lon" or ''. */
-export type IdeaDraft = { name: string; category: IdeaCategory; note: string; link: string; pos: string; spotName: string; day: LocalDate | ''; done: boolean };
+export type IdeaDraft = { name: string; category: IdeaCategory; note: string; link: string; pos: string; spotName: string; day: LocalDate | ''; done: boolean; setting?: PlanSetting | '' };
 export type IdeaError = 'name' | 'day' | 'pos';
 
 export const newIdeaDraft = (day: LocalDate | '' = '', category: IdeaCategory = 'see'): IdeaDraft => ({ name: '', category, note: '', link: '', pos: '', spotName: '', day, done: false });
 
 export function draftFromIdea(i: Idea): IdeaDraft {
-  return { name: i.name, category: i.category, note: i.note ?? '', link: i.link ?? '', pos: encodePos(i), spotName: i.spotName ?? '', day: i.day ?? '', done: i.done === true };
+  return { name: i.name, category: i.category, note: i.note ?? '', link: i.link ?? '', pos: encodePos(i), spotName: i.spotName ?? '', day: i.day ?? '', done: i.done === true, setting: i.setting ?? '' };
 }
 
 export const sameIdeaDraft = (a: IdeaDraft, b: IdeaDraft) =>
-  a.name === b.name && a.category === b.category && a.note === b.note && a.link === b.link && a.pos === b.pos && a.spotName === b.spotName && a.day === b.day && a.done === b.done;
+  a.name === b.name && a.category === b.category && a.note === b.note && a.link === b.link && a.pos === b.pos && a.spotName === b.spotName && a.day === b.day && a.done === b.done && (a.setting ?? '') === (b.setting ?? '');
 
 /** Problems with a draft: it needs a name; a day, when set, must be a real date; a spot, when set, must read. */
 export function validateIdea(d: IdeaDraft): IdeaError[] {
@@ -143,7 +148,7 @@ export function validateIdea(d: IdeaDraft): IdeaError[] {
 
 /** The idea a draft saves as (new when `prev` is absent). Fields of `prev` this build doesn't know are kept. */
 export function ideaFromDraft(d: IdeaDraft, newId: (prefix: string) => string, prev?: Idea, now = new Date().toISOString()): Idea {
-  const { note: _n, link: _l, lat: _a, lon: _o, spotName: _s, day: _d, done: _x, updatedAt: _u, ...kept } = prev ?? ({} as Partial<Idea>);
+  const { note: _n, link: _l, lat: _a, lon: _o, spotName: _s, day: _d, done: _x, updatedAt: _u, setting: _m, ...kept } = prev ?? ({} as Partial<Idea>);
   const out = { ...kept, id: prev?.id ?? newId('idea'), name: d.name.trim().slice(0, MAX_IDEA_NAME), category: isIdeaCategory(d.category) ? d.category : 'other', createdAt: prev?.createdAt ?? now } as Idea;
   if (prev) out.updatedAt = now;
   const note = d.note.trim();
@@ -158,6 +163,9 @@ export function ideaFromDraft(d: IdeaDraft, newId: (prefix: string) => string, p
   }
   if (d.day && isDate(d.day)) out.day = d.day;
   if (d.done) out.done = true;
+  // T140: a draft without the field (older callers) keeps the idea's mark.
+  const mark = d.setting === undefined ? prev?.setting : readPlanSetting(d.setting);
+  if (mark) out.setting = mark;
   // T84: a day's order only means something on that day.
   if (out.rank !== undefined && (!out.day || out.day !== prev?.day)) delete out.rank;
   return out;

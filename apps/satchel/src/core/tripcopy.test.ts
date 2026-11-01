@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import type { Budget, Companion, Item, Place, SavedPlace, Trip } from './model.ts';
 import type { AirportInfo } from './leaveby.ts';
 import type { LegInfo } from './layovers.ts';
+import type { CheckinInfo } from './checkin.ts';
 import type { Idea } from './ideas.ts';
 import type { Todo } from './todos.ts';
 import type { PackItem, PackList } from './packing.ts';
@@ -17,6 +18,7 @@ import { toUtc } from './tz.ts';
 import {
   AIRPORT_RULES,
   LEG_INFO_RULES,
+  CHECKIN_RULES,
   ALL_PARTS,
   BAG_RULES,
   BUDGET_RULES,
@@ -57,6 +59,7 @@ const NOW = '2026-11-01T09:00:00.000Z';
 
 const place = (id: string, name: string, lat: number, lon: number): Required<Place> => ({ id, name, address: `${name} street 1`, localAddress: `${name} 1丁目`, lat, lon, phone: '+81 3 1234 5678' });
 const airport: Required<AirportInfo> = { terminal: 'T1', gate: '52', boarding: '20:30', bagDrop: '19:45', scope: 'international', bufferMin: 150, travelMin: 45 };
+const checkin: Required<CheckinInfo> = { opensH: 30, closesMin: 50, bagDropMin: 70, deskFrom: '08:00', deskTo: '18:30', doneAt: '2027-03-31T10:00:00.000Z' };
 const legInfo: Required<LegInfo> = { depTerminal: 'T1', depGate: '52', arrTerminal: 'T3', arrGate: '114' };
 const flight: Required<Item> = {
   id: 'item_flight',
@@ -75,6 +78,9 @@ const flight: Required<Item> = {
   notes: 'Vegetarian meal',
   airport,
   legInfo,
+  // T140: the indoor / outdoor mark (activities use it; set here so every path is checked with it).
+  setting: 'outdoor',
+  checkin,
   attachments: [{ id: 'att_1', uri: 'file:///docs/attachments/att_1-boarding.pdf', name: 'boarding.pdf', mime: 'application/pdf', role: 'ticket', qrCropUri: 'file:///docs/attachments/att_1-crop.png' }],
 };
 const hotel: Required<Item> = {
@@ -91,7 +97,7 @@ const hotel: Required<Item> = {
   seat: 'n/a',
   attachments: [{ id: 'att_2', uri: 'file:///docs/attachments/att_2-voucher.png', name: 'voucher.png', mime: 'image/png', role: 'booking', qrCropUri: 'file:///docs/attachments/att_2-voucher.png' }],
 };
-const savedPlace: Required<SavedPlace> = { ...place('sp_1', 'Senso-ji', 35.7148, 139.7967), category: 'see', sample: true, savedAt: '2027-03-01T10:00:00.000Z' };
+const savedPlace: Required<SavedPlace> = { ...place('sp_1', 'Senso-ji', 35.7148, 139.7967), category: 'see', sample: true, savedAt: '2027-03-01T10:00:00.000Z', setting: 'indoor' }; // T142: the place's own indoor / outdoor mark
 const idea: Required<Idea> = {
   id: 'idea_1',
   name: 'Ramen alley',
@@ -104,6 +110,8 @@ const idea: Required<Idea> = {
   day: '2027-04-04',
   done: true,
   rank: 0,
+  // T140: indoor / outdoor mark.
+  setting: 'indoor',
   createdAt: '2027-03-02T09:00:00.000Z',
   updatedAt: '2027-03-03T09:00:00.000Z',
 };
@@ -215,6 +223,8 @@ test('T118 guard: every field of every copied type has exactly one rule (copied,
   assert.deepEqual(keys(SAVED_PLACE_RULES), keys(savedPlace));
   assert.deepEqual(keys(AIRPORT_RULES), keys(airport));
   assert.deepEqual(keys(LEG_INFO_RULES), keys(legInfo));
+  assert.deepEqual(keys(CHECKIN_RULES), keys(checkin));
+  assert.equal(CHECKIN_RULES.doneAt, 'drop');
   assert.deepEqual(keys(IDEA_RULES), keys(idea));
   assert.deepEqual(keys(TODO_RULES), keys(todo));
   assert.deepEqual(keys(COMPANION_RULES), keys(companion));
@@ -224,7 +234,7 @@ test('T118 guard: every field of every copied type has exactly one rule (copied,
   assert.deepEqual(keys(BAG_RULES), keys(ownBag));
   // Same Trip / Item key list the T85 round-trip guard pins today (a new field must be ruled on in both).
   assert.deepEqual(keys(TRIP_RULES), ['budget', 'cash', 'comingHome', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'leavingHome', 'name', 'outfits', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos']);
-  assert.deepEqual(keys(ITEM_RULES), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'legInfo', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
+  assert.deepEqual(keys(ITEM_RULES), ['airport', 'attachments', 'carrier', 'checkin', 'end', 'from', 'id', 'kind', 'legInfo', 'notes', 'number', 'place', 'ref', 'seat', 'setting', 'start', 'title', 'to', 'tripId']);
   // Phone-only and money data is never a part the traveller can switch on.
   for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo', 'leavingHome', 'comingHome'] as const) assert.equal(TRIP_RULES[k], 'drop', k);
   for (const k of ['ref', 'seat', 'attachments'] as const) assert.equal(ITEM_RULES[k], 'drop', k);
@@ -286,7 +296,7 @@ test('T118 every rule holds on a trip with every field set (all parts on)', () =
       items: each<Item>(ITEM_RULES, (s, o, p) =>
         checkRules(s as unknown as Record<string, unknown>, o as unknown as Record<string, unknown>, ITEM_RULES as Record<string, Rule>, p, {
           shifted: { start: shiftStamp(s.start, 183), end: shiftStamp(s.end!, 183) },
-          nested: { from: placeCheck(PLACE_RULES), to: placeCheck(PLACE_RULES), place: placeCheck(PLACE_RULES), airport: placeCheck(AIRPORT_RULES), legInfo: placeCheck(LEG_INFO_RULES) },
+          nested: { from: placeCheck(PLACE_RULES), to: placeCheck(PLACE_RULES), place: placeCheck(PLACE_RULES), airport: placeCheck(AIRPORT_RULES), legInfo: placeCheck(LEG_INFO_RULES), checkin: placeCheck(CHECKIN_RULES) },
         }),
       ),
       places: each<SavedPlace>(SAVED_PLACE_RULES, (s, o, p) => checkRules(s as unknown as Record<string, unknown>, o as unknown as Record<string, unknown>, SAVED_PLACE_RULES as Record<string, Rule>, p)),

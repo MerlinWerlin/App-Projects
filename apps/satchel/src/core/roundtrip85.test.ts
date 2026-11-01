@@ -24,6 +24,7 @@ import { draftFromExpense, expenseFromDraft } from './spending.ts';
 import { keepUnknown, splitFromDraft, togetherDraftFromExpense, withSplit } from './together.ts';
 import type { AirportInfo } from './leaveby.ts';
 import type { LegInfo } from './layovers.ts';
+import type { CheckinInfo } from './checkin.ts';
 import { legInfoDraft, withLegInfo } from './layovers.ts';
 import { airportDraft, withAirport } from './leaveby.ts';
 import type { PackItem, PackList } from './packing.ts';
@@ -68,6 +69,9 @@ const airport: Required<AirportInfo> = {
 };
 
 // T131: arrival / departure terminal and gate typed on a journey.
+// T143: check-in offsets, bag-drop minutes, car desk hours and the tick.
+const checkin: Required<CheckinInfo> = { opensH: 30, closesMin: 50, bagDropMin: 70, deskFrom: '08:00', deskTo: '18:30', doneAt: '2027-03-31T10:00:00.000Z' };
+
 const legInfo: Required<LegInfo> = { depTerminal: 'T1', depGate: '52', arrTerminal: 'Terminal 3', arrGate: '114' };
 
 const flight: Required<Item> = {
@@ -89,6 +93,9 @@ const flight: Required<Item> = {
   notes: 'Window seat, vegetarian meal',
   airport,
   legInfo,
+  // T140: the indoor / outdoor mark (activities use it; set here so every path is checked with it).
+  setting: 'outdoor',
+  checkin,
   attachments: [attachment],
 };
 
@@ -109,10 +116,13 @@ const hotel: Required<Item> = {
   notes: 'Late check-in agreed',
   airport,
   legInfo,
+  // T140: the indoor / outdoor mark (activities use it; set here so every path is checked with it).
+  setting: 'outdoor',
+  checkin,
   attachments: [{ id: 'att_2', uri: `${DOCS}attachments/att_2-voucher.png`, name: 'voucher.png', mime: 'image/png', role: 'booking', qrCropUri: `${DOCS}attachments/att_2-voucher.png` }],
 };
 
-const savedPlace: Required<SavedPlace> = { ...place('sp_1', 'Senso-ji', 35.7148, 139.7967), category: 'see', sample: true, savedAt: '2027-03-01T10:00:00.000Z' };
+const savedPlace: Required<SavedPlace> = { ...place('sp_1', 'Senso-ji', 35.7148, 139.7967), category: 'see', sample: true, savedAt: '2027-03-01T10:00:00.000Z', setting: 'indoor' }; // T142: the place's own indoor / outdoor mark
 
 const photo: Required<JournalPhoto> = { id: 'jph_1', uri: `${DOCS}attachments/jph_1.jpg`, name: 'temple.jpg', mime: 'image/jpeg', size: 123456 };
 
@@ -140,6 +150,8 @@ const idea: Required<Idea> = {
   day: '2027-04-04',
   done: true,
   rank: 0,
+  // T140: indoor / outdoor mark.
+  setting: 'indoor',
   createdAt: '2027-03-02T09:00:00.000Z',
   updatedAt: '2027-03-03T09:00:00.000Z',
 };
@@ -360,7 +372,11 @@ test('T85 fixture: every Trip and Item field is set (Required<> typing + no unde
   // T107: Gift / GiftPerson keys today.
   assert.deepEqual(Object.keys(gift).sort(), ['bag', 'createdAt', 'currency', 'expenseId', 'id', 'lat', 'lon', 'price', 'spotName', 'status', 'updatedAt', 'weightG', 'what', 'where']);
   assert.deepEqual(Object.keys(giftPerson).sort(), ['budget', 'createdAt', 'gifts', 'id', 'name']);
-  assert.deepEqual(Object.keys(flight).sort(), ['airport', 'attachments', 'carrier', 'end', 'from', 'id', 'kind', 'legInfo', 'notes', 'number', 'place', 'ref', 'seat', 'start', 'title', 'to', 'tripId']);
+  assert.deepEqual(Object.keys(flight).sort(), ['airport', 'attachments', 'carrier', 'checkin', 'end', 'from', 'id', 'kind', 'legInfo', 'notes', 'number', 'place', 'ref', 'seat', 'setting', 'start', 'title', 'to', 'tripId']);
+  // T142: SavedPlace keys today (setting added).
+  assert.deepEqual(Object.keys(savedPlace).sort(), ['address', 'category', 'id', 'lat', 'localAddress', 'lon', 'name', 'phone', 'sample', 'savedAt', 'setting']);
+  // T143: CheckinInfo keys today.
+  assert.deepEqual(Object.keys(checkin).sort(), ['bagDropMin', 'closesMin', 'deskFrom', 'deskTo', 'doneAt', 'opensH']);
   // T131: LegInfo keys today.
   assert.deepEqual(Object.keys(legInfo).sort(), ['arrGate', 'arrTerminal', 'depGate', 'depTerminal']);
 });

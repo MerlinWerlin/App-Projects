@@ -34,8 +34,12 @@ import { useDiscardConfirm } from '../src/ui/discardConfirm.ts';
 import { ErrorNotice } from '../src/ui/ErrorNotice.tsx';
 import { CATEGORIES, categoryKey, IDEA_ICONS } from '../src/ui/ideas.tsx';
 import { IconChips } from '../src/ui/journal.tsx';
+import { PlanSettingChips } from '../src/ui/rainplan.tsx';
+import { ideaMark } from '../src/core/rainplan.ts';
 import { Body, Button, Card, Chip, EmptyState, Label, Screen, TextField, ToggleRow, Warning } from '../src/ui/kit.tsx';
 import { PositionField } from '../src/ui/PositionField.tsx';
+import { decodePos } from '../src/core/position.ts';
+import { SpotLightLine } from '../src/ui/photolight.tsx';
 
 const ERR_KEYS: Record<IdeaError, Key> = { name: 'ideas.edit.err.name', day: 'ideas.edit.err.day', pos: 'ideas.edit.err.pos' };
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -146,6 +150,15 @@ export default function IdeaEditScreen() {
         />
       </Card>
 
+      {/* T140: indoors / outdoors, for rainy-day plan B. */}
+      <Card style={{ gap: space.m }}>
+        <PlanSettingChips
+          value={d.setting || undefined}
+          guess={ideaMark({ name: d.name, spotName: d.spotName, category: d.category })}
+          onChange={(v) => setD((o) => ({ ...o, setting: v ?? '' }))}
+        />
+      </Card>
+
       <TextField label={t('ideas.edit.note')} value={d.note} onChange={(note) => setD((o) => ({ ...o, note }))} placeholder={t('ideas.edit.notePlaceholder')} multiline />
 
       <View style={{ gap: space.xs }}>
@@ -161,6 +174,8 @@ export default function IdeaEditScreen() {
           onChange={(pos, name) => setD((o) => ({ ...o, pos, spotName: pos ? (name ?? '') : '', name: o.name.trim() || !name ? o.name : name }))}
         />
         {err('pos') ? <Warning text={err('pos')!} /> : null}
+        {/* T139: golden and blue hour at the spot, on its planned day (else today / the trip's first day). */}
+        <SpotLightLine trip={trip} at={decodePos(d.pos)} date={d.day || null} />
         <Body muted>{t('ideas.edit.spotNote')}</Body>
       </Card>
 

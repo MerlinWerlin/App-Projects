@@ -91,6 +91,7 @@ function Shell() {
           <Stack.Screen name="licences" options={{ ...header, title: t('licences.title') }} />
           <Stack.Screen name="phrases" options={{ ...header, title: t('phrases.title') }} />
           <Stack.Screen name="menu" options={{ ...header, title: t('menu.title') }} />
+          <Stack.Screen name="signs" options={{ ...header, title: t('signs.route') }} />
           <Stack.Screen name="help" options={{ ...header, title: t('help.title') }} />
           <Stack.Screen name="convert" options={{ ...header, title: t('convert.route') }} />
           <Stack.Screen name="tipping" options={{ ...header, title: t('tipping.route') }} />

@@ -31,6 +31,7 @@
 import type { Budget, Companion, Item, LocalDate, Place, SavedPlace, Stamp, Trip } from './model.ts';
 import type { AirportInfo } from './leaveby.ts';
 import type { LegInfo } from './layovers.ts';
+import type { CheckinInfo } from './checkin.ts';
 import { readOutfits, type OutfitDay, type OutfitExtra, type TripOutfits } from './outfits.ts';
 import type { Idea } from './ideas.ts';
 import type { Todo } from './todos.ts';
@@ -109,15 +110,21 @@ export const ITEM_RULES: Rules<Item> = {
   notes: 'keep',
   airport: 'keep',
   legInfo: 'keep',
+  // T140: the indoor / outdoor mark is about the activity itself, not its day.
+  setting: 'keep',
+  // T143: own check-in offsets and desk hours come along; the "Mark checked in" tick doesn't (CHECKIN_RULES).
+  checkin: 'keep',
   attachments: 'drop',
 };
 
 /** A booking's places get new ids (like a .satchel import); the place's own phone is public info and stays. */
 export const PLACE_RULES: Rules<Place> = { id: 'new', name: 'keep', address: 'keep', localAddress: 'keep', lat: 'keep', lon: 'keep', phone: 'keep' };
-export const SAVED_PLACE_RULES: Rules<SavedPlace> = { ...PLACE_RULES, lat: 'keep', lon: 'keep', category: 'keep', sample: 'keep', savedAt: 'new' };
+export const SAVED_PLACE_RULES: Rules<SavedPlace> = { ...PLACE_RULES, lat: 'keep', lon: 'keep', category: 'keep', sample: 'keep', savedAt: 'new', setting: 'keep' };
 /** The gate is this flight's, on that day; terminal and the usual times and buffers come along. */
 /** T131: terminals come along like the airport terminal; gates are that day's. */
 export const LEG_INFO_RULES: Rules<LegInfo> = { depTerminal: 'keep', depGate: 'drop', arrTerminal: 'keep', arrGate: 'drop' };
+/** T143: offsets and desk hours keep; the tick is that trip's. */
+export const CHECKIN_RULES: Rules<CheckinInfo> = { opensH: 'keep', closesMin: 'keep', bagDropMin: 'keep', deskFrom: 'keep', deskTo: 'keep', doneAt: 'drop' };
 export const AIRPORT_RULES: Rules<AirportInfo> = { terminal: 'keep', gate: 'drop', boarding: 'keep', bagDrop: 'keep', scope: 'keep', bufferMin: 'keep', travelMin: 'keep' };
 export const IDEA_RULES: Rules<Idea> = {
   id: 'new',
@@ -131,6 +138,8 @@ export const IDEA_RULES: Rules<Idea> = {
   day: 'shift',
   done: 'clear',
   rank: 'keep',
+  // T140: the indoor / outdoor mark comes along with the idea.
+  setting: 'keep',
   createdAt: 'new',
   updatedAt: 'drop',
 };
@@ -333,6 +342,11 @@ function copyItem(item: Item, tripId: string, days: number, newId: (prefix: stri
     const a = kept(item.airport, AIRPORT_RULES);
     if (Object.keys(a).length) out.airport = a;
     else delete out.airport;
+  }
+  if (item.checkin) {
+    const c = kept(item.checkin, CHECKIN_RULES);
+    if (Object.keys(c).length) out.checkin = c;
+    else delete out.checkin;
   }
   if (item.legInfo) {
     const l = kept(item.legInfo, LEG_INFO_RULES);

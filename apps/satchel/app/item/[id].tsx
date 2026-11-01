@@ -22,6 +22,8 @@ import { ItemTicketSlot } from '../../src/ui/slots/ItemTicketSlot.tsx';
 import { ItemStaySlot } from '../../src/ui/stay.tsx';
 import { ItemRentalSlot } from '../../src/ui/driving.tsx';
 import { LegInfoLines } from '../../src/ui/layovers.tsx';
+import { ItemSettingSlot } from '../../src/ui/rainplan.tsx';
+import { ItemCheckinSlot } from '../../src/ui/checkin.tsx';
 
 export default function ItemScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -110,6 +112,8 @@ export default function ItemScreen() {
         <LegInfoLines item={item} />
       </Card>
       <AirportPanel item={item} framed />
+      {/* T143: check-in opens / closes, Mark checked in, Calendar reminder and per-booking times. */}
+      <ItemCheckinSlot item={item} />
       {readable ? null : <Warning text={t('t43.item.zoneUnreadable')} />}
       {clashTitles ? <Warning text={t('spec41.item.overlaps', { titles: clashTitles })} /> : null}
       <ItemTicketSlot trip={trip} item={item} />
@@ -118,6 +122,8 @@ export default function ItemScreen() {
       <ItemStaySlot item={item} />
       {/* T122: rental car checklist on car bookings (phone only). */}
       <ItemRentalSlot item={item} />
+      {/* T140: indoors / outdoors, for rainy-day plan B (activities only). */}
+      <ItemSettingSlot item={item} />
       <Card>
         {row('item.from', item.from?.name)}
         {row('item.to', item.to?.name)}

@@ -26,6 +26,8 @@ import { formatSize, overallProgress, pickCityFor, regionForCity, type CityCatal
 import { deviceZone, todayIn } from '../../src/core/format.ts';
 import { giftPins, giftPinTarget } from '../../src/core/gifts.ts';
 import type { PermissionState } from '../../src/core/permissions.ts';
+import { SpotLightLine } from '../../src/ui/photolight.tsx';
+import { PlaceSettingSlot } from '../../src/ui/rainplan.tsx';
 import { activeTrip, addPlace, ALL_TRIPS, removePlace, SAME_SPOT_M, scopeParam, savedPins, saveTargets, scopeTrips, type PlaceError, type SavedPin } from '../../src/core/places.ts';
 import {
   bookingPins,
@@ -625,12 +627,17 @@ export default function MapScreen() {
     );
   } else if (selectedSaved) {
     const s = selectedSaved;
+    const selectedTrip = trips.find((x) => x.id === s.tripId);
     card = (
       <>
         {heading(s.name)}
         <Body muted>{[s.category ? catLabel(s.category) : null, t('places.savedTo', { trip: s.tripName })].filter(Boolean).join(' · ')}</Body>
         {here ? <Body muted>{dist(haversineMeters(here, s), 'map.fromHere')}</Body> : null}
         {s.sample ? <Body muted>{t('map.sample')}</Body> : null}
+        {/* T139: golden and blue hour at this place (today while the trip is on, else its first day). */}
+        {selectedTrip ? <SpotLightLine trip={selectedTrip} at={s} /> : null}
+        {/* T142: the place's own indoor / outdoor mark for rainy-day plan B. */}
+        {selectedTrip ? <PlaceSettingSlot trip={selectedTrip} placeId={s.placeId} /> : null}
         <Button kind="secondary" icon="compass-outline" label={t('wayback.openTo')} hint={t('wayback.openToHint', { name: s.name })} onPress={() => router.push({ pathname: '/wayback', params: { target: placeKey(s.tripId, s.placeId) } })} />
         <Button label={t('places.remove')} hint={t('places.removeHint')} kind="quiet" onPress={() => confirmRemove(s)} />
       </>

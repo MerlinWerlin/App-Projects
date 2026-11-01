@@ -1,0 +1,1867 @@
+{
+ "version": 1,
+ "checked": null,
+ "note": "T144 sign reader. Written by the model (not a native speaker): every line is native_check: true until a fluent speaker confirms it. Common standard sign wording; null where the model was not confident of the usual wording (shown as 'not written yet'). 'roman' follows phrases.json: Hepburn (ja), Hanyu Pinyin (zh-Hans, zh-Hant: Mandarin), Revised Romanization (ko), simple RTGS without tone marks (th). Regional picks: es Spain wording, pt Brazilian wording, zh-Hant Taiwan wording. English names and meanings are UI strings (signs.sign.* / signs.meaning.*); 'also' are extra English search words.",
+ "signs": [
+  {
+   "id": "exit",
+   "category": "way",
+   "also": [
+    "way out"
+   ]
+  },
+  {
+   "id": "entrance",
+   "category": "way",
+   "also": []
+  },
+  {
+   "id": "push",
+   "category": "way",
+   "also": []
+  },
+  {
+   "id": "pull",
+   "category": "way",
+   "also": []
+  },
+  {
+   "id": "open",
+   "category": "way",
+   "also": []
+  },
+  {
+   "id": "closed",
+   "category": "way",
+   "also": []
+  },
+  {
+   "id": "lift",
+   "category": "way",
+   "also": [
+    "elevator"
+   ]
+  },
+  {
+   "id": "stairs",
+   "category": "way",
+   "also": []
+  },
+  {
+   "id": "toilets",
+   "category": "toilets",
+   "also": [
+    "toilet",
+    "restroom",
+    "bathroom",
+    "wc",
+    "washroom",
+    "loo"
+   ]
+  },
+  {
+   "id": "men",
+   "category": "toilets",
+   "also": [
+    "gents",
+    "male"
+   ]
+  },
+  {
+   "id": "women",
+   "category": "toilets",
+   "also": [
+    "ladies",
+    "female"
+   ]
+  },
+  {
+   "id": "accessibleToilet",
+   "category": "toilets",
+   "also": [
+    "disabled toilet",
+    "wheelchair toilet"
+   ]
+  },
+  {
+   "id": "platform",
+   "category": "transport",
+   "also": [
+    "track"
+   ]
+  },
+  {
+   "id": "departures",
+   "category": "transport",
+   "also": [
+    "departure"
+   ]
+  },
+  {
+   "id": "arrivals",
+   "category": "transport",
+   "also": [
+    "arrival"
+   ]
+  },
+  {
+   "id": "ticketOffice",
+   "category": "transport",
+   "also": [
+    "tickets",
+    "box office"
+   ]
+  },
+  {
+   "id": "lockers",
+   "category": "transport",
+   "also": [
+    "left luggage",
+    "coin locker"
+   ]
+  },
+  {
+   "id": "taxi",
+   "category": "transport",
+   "also": [
+    "taxi rank",
+    "cab"
+   ]
+  },
+  {
+   "id": "busStop",
+   "category": "transport",
+   "also": [
+    "bus"
+   ]
+  },
+  {
+   "id": "noEntry",
+   "category": "rules",
+   "also": []
+  },
+  {
+   "id": "keepOut",
+   "category": "rules",
+   "also": [
+    "staff only",
+    "private"
+   ]
+  },
+  {
+   "id": "cashOnly",
+   "category": "rules",
+   "also": [
+    "cash"
+   ]
+  },
+  {
+   "id": "noPhotos",
+   "category": "rules",
+   "also": [
+    "no photography",
+    "no cameras"
+   ]
+  },
+  {
+   "id": "noSmoking",
+   "category": "rules",
+   "also": []
+  },
+  {
+   "id": "danger",
+   "category": "safety",
+   "also": [
+    "warning"
+   ]
+  },
+  {
+   "id": "emergencyExit",
+   "category": "safety",
+   "also": [
+    "fire exit"
+   ]
+  },
+  {
+   "id": "wetFloor",
+   "category": "safety",
+   "also": [
+    "slippery"
+   ]
+  },
+  {
+   "id": "pharmacy",
+   "category": "services",
+   "also": [
+    "chemist",
+    "drugstore"
+   ]
+  },
+  {
+   "id": "hospital",
+   "category": "services",
+   "also": []
+  },
+  {
+   "id": "information",
+   "category": "services",
+   "also": [
+    "info",
+    "help desk"
+   ]
+  }
+ ],
+ "languages": [
+  {
+   "code": "ja",
+   "latin": false,
+   "lines": {
+    "exit": {
+     "text": "出口",
+     "roman": "deguchi",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "入口",
+     "roman": "iriguchi",
+     "native_check": true
+    },
+    "push": {
+     "text": "押す",
+     "roman": "osu",
+     "native_check": true
+    },
+    "pull": {
+     "text": "引く",
+     "roman": "hiku",
+     "native_check": true
+    },
+    "open": {
+     "text": "営業中",
+     "roman": "eigyōchū",
+     "native_check": true
+    },
+    "closed": {
+     "text": "休業中",
+     "roman": "kyūgyōchū",
+     "native_check": true
+    },
+    "lift": {
+     "text": "エレベーター",
+     "roman": "erebētā",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "階段",
+     "roman": "kaidan",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "トイレ",
+     "roman": "toire",
+     "native_check": true
+    },
+    "men": {
+     "text": "男性",
+     "roman": "dansei",
+     "native_check": true
+    },
+    "women": {
+     "text": "女性",
+     "roman": "josei",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "多目的トイレ",
+     "roman": "tamokuteki toire",
+     "native_check": true
+    },
+    "platform": {
+     "text": "のりば",
+     "roman": "noriba",
+     "native_check": true
+    },
+    "departures": {
+     "text": "出発",
+     "roman": "shuppatsu",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "到着",
+     "roman": "tōchaku",
+     "native_check": true
+    },
+    "ticketOffice": {
+     "text": "切符売り場",
+     "roman": "kippu uriba",
+     "native_check": true
+    },
+    "lockers": {
+     "text": "コインロッカー",
+     "roman": "koin rokkā",
+     "native_check": true
+    },
+    "taxi": {
+     "text": "タクシー乗り場",
+     "roman": "takushī noriba",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "バス停",
+     "roman": "basutei",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "立入禁止",
+     "roman": "tachiiri kinshi",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "関係者以外立入禁止",
+     "roman": "kankeisha igai tachiiri kinshi",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "現金のみ",
+     "roman": "genkin nomi",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "撮影禁止",
+     "roman": "satsuei kinshi",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "禁煙",
+     "roman": "kin'en",
+     "native_check": true
+    },
+    "danger": {
+     "text": "危険",
+     "roman": "kiken",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "非常口",
+     "roman": "hijōguchi",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "スリップ注意",
+     "roman": "surippu chūi",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "薬局",
+     "roman": "yakkyoku",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "病院",
+     "roman": "byōin",
+     "native_check": true
+    },
+    "information": {
+     "text": "案内所",
+     "roman": "annaijo",
+     "native_check": true
+    }
+   }
+  },
+  {
+   "code": "zh-Hans",
+   "latin": false,
+   "lines": {
+    "exit": {
+     "text": "出口",
+     "roman": "chūkǒu",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "入口",
+     "roman": "rùkǒu",
+     "native_check": true
+    },
+    "push": {
+     "text": "推",
+     "roman": "tuī",
+     "native_check": true
+    },
+    "pull": {
+     "text": "拉",
+     "roman": "lā",
+     "native_check": true
+    },
+    "open": {
+     "text": "营业中",
+     "roman": "yíngyè zhōng",
+     "native_check": true
+    },
+    "closed": {
+     "text": "暂停营业",
+     "roman": "zàntíng yíngyè",
+     "native_check": true
+    },
+    "lift": {
+     "text": "电梯",
+     "roman": "diàntī",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "楼梯",
+     "roman": "lóutī",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "卫生间",
+     "roman": "wèishēngjiān",
+     "native_check": true
+    },
+    "men": {
+     "text": "男",
+     "roman": "nán",
+     "native_check": true
+    },
+    "women": {
+     "text": "女",
+     "roman": "nǚ",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "无障碍卫生间",
+     "roman": "wúzhàng'ài wèishēngjiān",
+     "native_check": true
+    },
+    "platform": {
+     "text": "站台",
+     "roman": "zhàntái",
+     "native_check": true
+    },
+    "departures": {
+     "text": "出发",
+     "roman": "chūfā",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "到达",
+     "roman": "dàodá",
+     "native_check": true
+    },
+    "ticketOffice": {
+     "text": "售票处",
+     "roman": "shòupiàochù",
+     "native_check": true
+    },
+    "lockers": {
+     "text": "寄存柜",
+     "roman": "jìcúnguì",
+     "native_check": true
+    },
+    "taxi": {
+     "text": "出租车",
+     "roman": "chūzūchē",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "公交车站",
+     "roman": "gōngjiāo chēzhàn",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "禁止入内",
+     "roman": "jìnzhǐ rùnèi",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "闲人免进",
+     "roman": "xiánrén miǎn jìn",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "只收现金",
+     "roman": "zhǐ shōu xiànjīn",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "禁止拍照",
+     "roman": "jìnzhǐ pāizhào",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "禁止吸烟",
+     "roman": "jìnzhǐ xīyān",
+     "native_check": true
+    },
+    "danger": {
+     "text": "危险",
+     "roman": "wēixiǎn",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "安全出口",
+     "roman": "ānquán chūkǒu",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "小心地滑",
+     "roman": "xiǎoxīn dì huá",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "药店",
+     "roman": "yàodiàn",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "医院",
+     "roman": "yīyuàn",
+     "native_check": true
+    },
+    "information": {
+     "text": "问询处",
+     "roman": "wènxúnchù",
+     "native_check": true
+    }
+   }
+  },
+  {
+   "code": "zh-Hant",
+   "latin": false,
+   "lines": {
+    "exit": {
+     "text": "出口",
+     "roman": "chūkǒu",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "入口",
+     "roman": "rùkǒu",
+     "native_check": true
+    },
+    "push": {
+     "text": "推",
+     "roman": "tuī",
+     "native_check": true
+    },
+    "pull": {
+     "text": "拉",
+     "roman": "lā",
+     "native_check": true
+    },
+    "open": {
+     "text": "營業中",
+     "roman": "yíngyè zhōng",
+     "native_check": true
+    },
+    "closed": {
+     "text": "休息中",
+     "roman": "xiūxi zhōng",
+     "native_check": true
+    },
+    "lift": {
+     "text": "電梯",
+     "roman": "diàntī",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "樓梯",
+     "roman": "lóutī",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "洗手間",
+     "roman": "xǐshǒujiān",
+     "native_check": true
+    },
+    "men": {
+     "text": "男",
+     "roman": "nán",
+     "native_check": true
+    },
+    "women": {
+     "text": "女",
+     "roman": "nǚ",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "無障礙廁所",
+     "roman": "wúzhàng'ài cèsuǒ",
+     "native_check": true
+    },
+    "platform": {
+     "text": "月台",
+     "roman": "yuètái",
+     "native_check": true
+    },
+    "departures": {
+     "text": "出發",
+     "roman": "chūfā",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "抵達",
+     "roman": "dǐdá",
+     "native_check": true
+    },
+    "ticketOffice": {
+     "text": "售票處",
+     "roman": "shòupiàochù",
+     "native_check": true
+    },
+    "lockers": {
+     "text": "置物櫃",
+     "roman": "zhìwùguì",
+     "native_check": true
+    },
+    "taxi": {
+     "text": "計程車",
+     "roman": "jìchéngchē",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "公車站",
+     "roman": "gōngchē zhàn",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "禁止進入",
+     "roman": "jìnzhǐ jìnrù",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "閒人勿進",
+     "roman": "xiánrén wù jìn",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "只收現金",
+     "roman": "zhǐ shōu xiànjīn",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "禁止拍照",
+     "roman": "jìnzhǐ pāizhào",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "禁止吸菸",
+     "roman": "jìnzhǐ xīyān",
+     "native_check": true
+    },
+    "danger": {
+     "text": "危險",
+     "roman": "wēixiǎn",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "緊急出口",
+     "roman": "jǐnjí chūkǒu",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "小心地滑",
+     "roman": "xiǎoxīn dì huá",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "藥局",
+     "roman": "yàojú",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "醫院",
+     "roman": "yīyuàn",
+     "native_check": true
+    },
+    "information": {
+     "text": "詢問處",
+     "roman": "xúnwènchù",
+     "native_check": true
+    }
+   }
+  },
+  {
+   "code": "ko",
+   "latin": false,
+   "lines": {
+    "exit": {
+     "text": "출구",
+     "roman": "chulgu",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "입구",
+     "roman": "ipgu",
+     "native_check": true
+    },
+    "push": {
+     "text": "미세요",
+     "roman": "miseyo",
+     "native_check": true
+    },
+    "pull": {
+     "text": "당기세요",
+     "roman": "danggiseyo",
+     "native_check": true
+    },
+    "open": {
+     "text": "영업 중",
+     "roman": "yeongeop jung",
+     "native_check": true
+    },
+    "closed": {
+     "text": "영업 종료",
+     "roman": "yeongeop jongnyo",
+     "native_check": true
+    },
+    "lift": {
+     "text": "엘리베이터",
+     "roman": "ellibeiteo",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "계단",
+     "roman": "gyedan",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "화장실",
+     "roman": "hwajangsil",
+     "native_check": true
+    },
+    "men": {
+     "text": "남자",
+     "roman": "namja",
+     "native_check": true
+    },
+    "women": {
+     "text": "여자",
+     "roman": "yeoja",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "장애인 화장실",
+     "roman": "jangaein hwajangsil",
+     "native_check": true
+    },
+    "platform": {
+     "text": "타는 곳",
+     "roman": "taneun got",
+     "native_check": true
+    },
+    "departures": {
+     "text": "출발",
+     "roman": "chulbal",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "도착",
+     "roman": "dochak",
+     "native_check": true
+    },
+    "ticketOffice": {
+     "text": "매표소",
+     "roman": "maepyoso",
+     "native_check": true
+    },
+    "lockers": {
+     "text": "물품보관함",
+     "roman": "mulpum bogwanham",
+     "native_check": true
+    },
+    "taxi": {
+     "text": "택시 승강장",
+     "roman": "taeksi seunggangjang",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "버스 정류장",
+     "roman": "beoseu jeongnyujang",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "출입금지",
+     "roman": "churip geumji",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "관계자 외 출입금지",
+     "roman": "gwangyeja oe churip geumji",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "현금만 가능",
+     "roman": "hyeongeumman ganeung",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "촬영 금지",
+     "roman": "chwaryeong geumji",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "금연",
+     "roman": "geumyeon",
+     "native_check": true
+    },
+    "danger": {
+     "text": "위험",
+     "roman": "wiheom",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "비상구",
+     "roman": "bisanggu",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "미끄럼 주의",
+     "roman": "mikkeureom juui",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "약국",
+     "roman": "yakguk",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "병원",
+     "roman": "byeongwon",
+     "native_check": true
+    },
+    "information": {
+     "text": "안내소",
+     "roman": "annaeso",
+     "native_check": true
+    }
+   }
+  },
+  {
+   "code": "th",
+   "latin": false,
+   "lines": {
+    "exit": {
+     "text": "ทางออก",
+     "roman": "thang ok",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "ทางเข้า",
+     "roman": "thang khao",
+     "native_check": true
+    },
+    "push": {
+     "text": "ผลัก",
+     "roman": "phlak",
+     "native_check": true
+    },
+    "pull": {
+     "text": "ดึง",
+     "roman": "dueng",
+     "native_check": true
+    },
+    "open": {
+     "text": "เปิด",
+     "roman": "poet",
+     "native_check": true
+    },
+    "closed": {
+     "text": "ปิด",
+     "roman": "pit",
+     "native_check": true
+    },
+    "lift": {
+     "text": "ลิฟต์",
+     "roman": "lif",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "บันได",
+     "roman": "bandai",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "ห้องน้ำ",
+     "roman": "hong nam",
+     "native_check": true
+    },
+    "men": {
+     "text": "ชาย",
+     "roman": "chai",
+     "native_check": true
+    },
+    "women": {
+     "text": "หญิง",
+     "roman": "ying",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "ห้องน้ำผู้พิการ",
+     "roman": "hong nam phu phikan",
+     "native_check": true
+    },
+    "platform": {
+     "text": "ชานชาลา",
+     "roman": "chanchala",
+     "native_check": true
+    },
+    "departures": {
+     "text": "ขาออก",
+     "roman": "kha ok",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "ขาเข้า",
+     "roman": "kha khao",
+     "native_check": true
+    },
+    "ticketOffice": null,
+    "lockers": null,
+    "taxi": {
+     "text": "แท็กซี่",
+     "roman": "thaeksi",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "ป้ายรถเมล์",
+     "roman": "pai rot me",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "ห้ามเข้า",
+     "roman": "ham khao",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "เฉพาะเจ้าหน้าที่",
+     "roman": "chapho chaonathi",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "รับเฉพาะเงินสด",
+     "roman": "rap chapho ngoen sot",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "ห้ามถ่ายรูป",
+     "roman": "ham thai rup",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "ห้ามสูบบุหรี่",
+     "roman": "ham sup buri",
+     "native_check": true
+    },
+    "danger": {
+     "text": "อันตราย",
+     "roman": "antarai",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "ทางออกฉุกเฉิน",
+     "roman": "thang ok chukchoen",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "ระวังพื้นลื่น",
+     "roman": "rawang phuen luen",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "ร้านขายยา",
+     "roman": "ran khai ya",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "โรงพยาบาล",
+     "roman": "rongphayaban",
+     "native_check": true
+    },
+    "information": {
+     "text": "ประชาสัมพันธ์",
+     "roman": "prachasamphan",
+     "native_check": true
+    }
+   }
+  },
+  {
+   "code": "vi",
+   "latin": true,
+   "lines": {
+    "exit": {
+     "text": "Lối ra",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "Lối vào",
+     "native_check": true
+    },
+    "push": {
+     "text": "Đẩy",
+     "native_check": true
+    },
+    "pull": {
+     "text": "Kéo",
+     "native_check": true
+    },
+    "open": {
+     "text": "Mở cửa",
+     "native_check": true
+    },
+    "closed": {
+     "text": "Đóng cửa",
+     "native_check": true
+    },
+    "lift": {
+     "text": "Thang máy",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "Cầu thang",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "Nhà vệ sinh",
+     "native_check": true
+    },
+    "men": {
+     "text": "Nam",
+     "native_check": true
+    },
+    "women": {
+     "text": "Nữ",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "Nhà vệ sinh cho người khuyết tật",
+     "native_check": true
+    },
+    "platform": {
+     "text": "Sân ga",
+     "native_check": true
+    },
+    "departures": {
+     "text": "Ga đi",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "Ga đến",
+     "native_check": true
+    },
+    "ticketOffice": {
+     "text": "Quầy bán vé",
+     "native_check": true
+    },
+    "lockers": {
+     "text": "Tủ gửi đồ",
+     "native_check": true
+    },
+    "taxi": {
+     "text": "Taxi",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "Trạm xe buýt",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "Cấm vào",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "Không phận sự miễn vào",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "Chỉ nhận tiền mặt",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "Cấm chụp ảnh",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "Cấm hút thuốc",
+     "native_check": true
+    },
+    "danger": {
+     "text": "Nguy hiểm",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "Lối thoát hiểm",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "Cẩn thận sàn trơn",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "Nhà thuốc",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "Bệnh viện",
+     "native_check": true
+    },
+    "information": {
+     "text": "Quầy thông tin",
+     "native_check": true
+    }
+   }
+  },
+  {
+   "code": "es",
+   "latin": true,
+   "lines": {
+    "exit": {
+     "text": "Salida",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "Entrada",
+     "native_check": true
+    },
+    "push": {
+     "text": "Empujar",
+     "native_check": true
+    },
+    "pull": {
+     "text": "Tirar",
+     "native_check": true
+    },
+    "open": {
+     "text": "Abierto",
+     "native_check": true
+    },
+    "closed": {
+     "text": "Cerrado",
+     "native_check": true
+    },
+    "lift": {
+     "text": "Ascensor",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "Escaleras",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "Baños",
+     "native_check": true
+    },
+    "men": {
+     "text": "Caballeros",
+     "native_check": true
+    },
+    "women": {
+     "text": "Damas",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "Baño accesible",
+     "native_check": true
+    },
+    "platform": {
+     "text": "Andén",
+     "native_check": true
+    },
+    "departures": {
+     "text": "Salidas",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "Llegadas",
+     "native_check": true
+    },
+    "ticketOffice": {
+     "text": "Taquilla",
+     "native_check": true
+    },
+    "lockers": {
+     "text": "Consigna",
+     "native_check": true
+    },
+    "taxi": {
+     "text": "Parada de taxis",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "Parada de autobús",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "Prohibido el paso",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "Solo personal autorizado",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "Solo efectivo",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "Prohibido fotografiar",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "Prohibido fumar",
+     "native_check": true
+    },
+    "danger": {
+     "text": "Peligro",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "Salida de emergencia",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "Suelo mojado",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "Farmacia",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "Hospital",
+     "native_check": true
+    },
+    "information": {
+     "text": "Información",
+     "native_check": true
+    }
+   }
+  },
+  {
+   "code": "fr",
+   "latin": true,
+   "lines": {
+    "exit": {
+     "text": "Sortie",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "Entrée",
+     "native_check": true
+    },
+    "push": {
+     "text": "Poussez",
+     "native_check": true
+    },
+    "pull": {
+     "text": "Tirez",
+     "native_check": true
+    },
+    "open": {
+     "text": "Ouvert",
+     "native_check": true
+    },
+    "closed": {
+     "text": "Fermé",
+     "native_check": true
+    },
+    "lift": {
+     "text": "Ascenseur",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "Escalier",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "Toilettes",
+     "native_check": true
+    },
+    "men": {
+     "text": "Hommes",
+     "native_check": true
+    },
+    "women": {
+     "text": "Femmes",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "Toilettes accessibles",
+     "native_check": true
+    },
+    "platform": {
+     "text": "Quai",
+     "native_check": true
+    },
+    "departures": {
+     "text": "Départs",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "Arrivées",
+     "native_check": true
+    },
+    "ticketOffice": {
+     "text": "Billetterie",
+     "native_check": true
+    },
+    "lockers": {
+     "text": "Consigne",
+     "native_check": true
+    },
+    "taxi": {
+     "text": "Taxis",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "Arrêt de bus",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "Entrée interdite",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "Accès réservé au personnel",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "Espèces uniquement",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "Photos interdites",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "Interdit de fumer",
+     "native_check": true
+    },
+    "danger": {
+     "text": "Danger",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "Sortie de secours",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "Sol glissant",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "Pharmacie",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "Hôpital",
+     "native_check": true
+    },
+    "information": {
+     "text": "Informations",
+     "native_check": true
+    }
+   }
+  },
+  {
+   "code": "de",
+   "latin": true,
+   "lines": {
+    "exit": {
+     "text": "Ausgang",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "Eingang",
+     "native_check": true
+    },
+    "push": {
+     "text": "Drücken",
+     "native_check": true
+    },
+    "pull": {
+     "text": "Ziehen",
+     "native_check": true
+    },
+    "open": {
+     "text": "Geöffnet",
+     "native_check": true
+    },
+    "closed": {
+     "text": "Geschlossen",
+     "native_check": true
+    },
+    "lift": {
+     "text": "Aufzug",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "Treppe",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "Toiletten",
+     "native_check": true
+    },
+    "men": {
+     "text": "Herren",
+     "native_check": true
+    },
+    "women": {
+     "text": "Damen",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "Barrierefreies WC",
+     "native_check": true
+    },
+    "platform": {
+     "text": "Gleis",
+     "native_check": true
+    },
+    "departures": {
+     "text": "Abfahrt",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "Ankunft",
+     "native_check": true
+    },
+    "ticketOffice": {
+     "text": "Fahrkarten",
+     "native_check": true
+    },
+    "lockers": {
+     "text": "Schließfächer",
+     "native_check": true
+    },
+    "taxi": {
+     "text": "Taxi",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "Bushaltestelle",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "Kein Zutritt",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "Zutritt nur für Personal",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "Nur Barzahlung",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "Fotografieren verboten",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "Rauchen verboten",
+     "native_check": true
+    },
+    "danger": {
+     "text": "Gefahr",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "Notausgang",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "Rutschgefahr",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "Apotheke",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "Krankenhaus",
+     "native_check": true
+    },
+    "information": {
+     "text": "Information",
+     "native_check": true
+    }
+   }
+  },
+  {
+   "code": "it",
+   "latin": true,
+   "lines": {
+    "exit": {
+     "text": "Uscita",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "Ingresso",
+     "native_check": true
+    },
+    "push": {
+     "text": "Spingere",
+     "native_check": true
+    },
+    "pull": {
+     "text": "Tirare",
+     "native_check": true
+    },
+    "open": {
+     "text": "Aperto",
+     "native_check": true
+    },
+    "closed": {
+     "text": "Chiuso",
+     "native_check": true
+    },
+    "lift": {
+     "text": "Ascensore",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "Scale",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "Bagni",
+     "native_check": true
+    },
+    "men": {
+     "text": "Uomini",
+     "native_check": true
+    },
+    "women": {
+     "text": "Donne",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "Bagno per disabili",
+     "native_check": true
+    },
+    "platform": {
+     "text": "Binario",
+     "native_check": true
+    },
+    "departures": {
+     "text": "Partenze",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "Arrivi",
+     "native_check": true
+    },
+    "ticketOffice": {
+     "text": "Biglietteria",
+     "native_check": true
+    },
+    "lockers": {
+     "text": "Armadietti",
+     "native_check": true
+    },
+    "taxi": {
+     "text": "Taxi",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "Fermata autobus",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "Vietato l’accesso",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "Accesso riservato al personale",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "Solo contanti",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "Vietato fotografare",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "Vietato fumare",
+     "native_check": true
+    },
+    "danger": {
+     "text": "Pericolo",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "Uscita di emergenza",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "Pavimento bagnato",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "Farmacia",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "Ospedale",
+     "native_check": true
+    },
+    "information": {
+     "text": "Informazioni",
+     "native_check": true
+    }
+   }
+  },
+  {
+   "code": "pt",
+   "latin": true,
+   "lines": {
+    "exit": {
+     "text": "Saída",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "Entrada",
+     "native_check": true
+    },
+    "push": {
+     "text": "Empurre",
+     "native_check": true
+    },
+    "pull": {
+     "text": "Puxe",
+     "native_check": true
+    },
+    "open": {
+     "text": "Aberto",
+     "native_check": true
+    },
+    "closed": {
+     "text": "Fechado",
+     "native_check": true
+    },
+    "lift": {
+     "text": "Elevador",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "Escada",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "Sanitários",
+     "native_check": true
+    },
+    "men": {
+     "text": "Masculino",
+     "native_check": true
+    },
+    "women": {
+     "text": "Feminino",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "Sanitário acessível",
+     "native_check": true
+    },
+    "platform": {
+     "text": "Plataforma",
+     "native_check": true
+    },
+    "departures": {
+     "text": "Partidas",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "Chegadas",
+     "native_check": true
+    },
+    "ticketOffice": {
+     "text": "Bilheteria",
+     "native_check": true
+    },
+    "lockers": null,
+    "taxi": {
+     "text": "Táxi",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "Ponto de ônibus",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "Entrada proibida",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "Acesso restrito",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "Somente dinheiro",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "Proibido fotografar",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "Proibido fumar",
+     "native_check": true
+    },
+    "danger": {
+     "text": "Perigo",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "Saída de emergência",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "Piso molhado",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "Farmácia",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "Hospital",
+     "native_check": true
+    },
+    "information": {
+     "text": "Informações",
+     "native_check": true
+    }
+   }
+  },
+  {
+   "code": "id",
+   "latin": true,
+   "lines": {
+    "exit": {
+     "text": "Keluar",
+     "native_check": true
+    },
+    "entrance": {
+     "text": "Masuk",
+     "native_check": true
+    },
+    "push": {
+     "text": "Dorong",
+     "native_check": true
+    },
+    "pull": {
+     "text": "Tarik",
+     "native_check": true
+    },
+    "open": {
+     "text": "Buka",
+     "native_check": true
+    },
+    "closed": {
+     "text": "Tutup",
+     "native_check": true
+    },
+    "lift": {
+     "text": "Lift",
+     "native_check": true
+    },
+    "stairs": {
+     "text": "Tangga",
+     "native_check": true
+    },
+    "toilets": {
+     "text": "Toilet",
+     "native_check": true
+    },
+    "men": {
+     "text": "Pria",
+     "native_check": true
+    },
+    "women": {
+     "text": "Wanita",
+     "native_check": true
+    },
+    "accessibleToilet": {
+     "text": "Toilet difabel",
+     "native_check": true
+    },
+    "platform": {
+     "text": "Peron",
+     "native_check": true
+    },
+    "departures": {
+     "text": "Keberangkatan",
+     "native_check": true
+    },
+    "arrivals": {
+     "text": "Kedatangan",
+     "native_check": true
+    },
+    "ticketOffice": {
+     "text": "Loket tiket",
+     "native_check": true
+    },
+    "lockers": {
+     "text": "Loker",
+     "native_check": true
+    },
+    "taxi": {
+     "text": "Taksi",
+     "native_check": true
+    },
+    "busStop": {
+     "text": "Halte bus",
+     "native_check": true
+    },
+    "noEntry": {
+     "text": "Dilarang masuk",
+     "native_check": true
+    },
+    "keepOut": {
+     "text": "Khusus petugas",
+     "native_check": true
+    },
+    "cashOnly": {
+     "text": "Hanya tunai",
+     "native_check": true
+    },
+    "noPhotos": {
+     "text": "Dilarang memotret",
+     "native_check": true
+    },
+    "noSmoking": {
+     "text": "Dilarang merokok",
+     "native_check": true
+    },
+    "danger": {
+     "text": "Bahaya",
+     "native_check": true
+    },
+    "emergencyExit": {
+     "text": "Pintu darurat",
+     "native_check": true
+    },
+    "wetFloor": {
+     "text": "Lantai basah",
+     "native_check": true
+    },
+    "pharmacy": {
+     "text": "Apotek",
+     "native_check": true
+    },
+    "hospital": {
+     "text": "Rumah sakit",
+     "native_check": true
+    },
+    "information": {
+     "text": "Informasi",
+     "native_check": true
+    }
+   }
+  }
+ ]
+}

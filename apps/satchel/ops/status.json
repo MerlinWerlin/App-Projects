@@ -1,16 +1,16 @@
 {
-  "tests": 1533,
-  "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
-  "last_run": "2026-11-01 16:54",
-  "stage": "owner-tested",
-  "oversight_seen": 226,
-  "headline": "Expanding: Trip gaps, Outfit planner, per-connection limits, Getting around in all 40 countries",
-  "next_for_owner": [
-    "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
-    "Open the demo trip and delete the Kyoto hotel to see the Trip gaps card; Packing > Plan outfits for the outfit planner; a connection card > Limits for this change.",
-    "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
-    "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (CF-CI are new) by commenting on this page."
-  ],
-  "trial_kit": true,
-  "next_stage": "release-prep"
+ "tests": 1609,
+ "typecheck": "core + typecheck:ui clean against stubs (registry unreachable here); full install + tsc + expo export needs PC verification",
+ "last_run": "2026-11-01 18:55",
+ "stage": "owner-tested",
+ "oversight_seen": 227,
+ "headline": "Expanding: Check-in times, Sign reader, dismissable Plan B, late photo light",
+ "next_for_owner": [
+  "Open Satchel from TestFlight, close it fully and open it again (twice if needed) to get the newest over-the-air update.",
+  "Open a flight on the demo trip: the new Check-in card shows when online check-in opens and closes; Phrases > Read signs opens the Sign reader.",
+  "Map tab > Offline city maps: the city list appears once the App Factory has run the map publishing workflow; until then it says the maps are being published.",
+  "Answer the yes/no questions under 'New since your last test' in docs/TRIAL.md (CN-CQ are new) by commenting on this page."
+ ],
+ "trial_kit": true,
+ "next_stage": "release-prep"
 }

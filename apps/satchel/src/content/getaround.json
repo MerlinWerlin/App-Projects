@@ -85,7 +85,7 @@
       "transit": "In São Paulo, buy single Metrô tickets at station ticket offices. The Bilhete Único (from SPTrans) covers bus and Metrô transfers but needs a Brazilian CPF number.",
       "tickets": ["Single ticket", "Bilhete Único", "Cartão TOP"],
       "contactless": "some",
-      "contactless_note": "Contactless Visa, Mastercard and Elo cards work at dedicated turnstiles in Metrô lines 1, 2, 3 and 15 stations (a pilot); phones and watches on lines 1 to 3. No bus integration.",
+      "contactless_note": "Contactless Visa, Mastercard and Elo cards, physical or on a phone or watch, open every turnstile at Metrô lines 1, 2, 3 and 15 stations. Other lines and buses are not covered, and there are no fare transfers.",
       "hours": "Metrô runs daily from 4:40am to midnight.",
       "taxi": "At GRU airport, the official taxi cooperative has service desks in Terminals 1, 2 and 3, with standard rates and bilingual staff.",
       "rides": null,
@@ -94,12 +94,13 @@
         "https://www.metro.sp.gov.br/sua-viagem/turismetro/",
         "https://www.metro.sp.gov.br/pt_BR/2025/12/04/pagamento-por-aproximacao-disponivel-em-todas-as-estacoes-do-metro/",
         "https://www.metro.sp.gov.br/2026/04/09/metro-passa-a-aceitar-cartoes-virtuais-nas-catracas/",
+        "https://semil.sp.gov.br/ambientenet/?p=9203",
         "https://www.gru.com.br/en/passenger/to-from-gru-airport/train",
         "https://www.gru.com.br/en/passenger/to-from-gru-airport/taxi"
       ],
       "checked": "2026-11-01",
-      "recheck": true,
-      "recheck_reason": "Taxis were only checked at the airport; Metrô bank-card tapping is a pilot."
+      "recheck": false,
+      "recheck_reason": null
     },
     {
       "iso2": "CA",
@@ -211,22 +212,25 @@
       "iso2": "EG",
       "country": "Egypt",
       "area": "Cairo",
-      "transit": "Cairo has three metro lines; Line 1 runs Helwan to New El Marg, Line 2 Shubra El Kheima to El Mounib, with interchanges at Sadat and Al Shohadaa. Single tickets are priced by number of stations.",
+      "transit": "Cairo has three metro lines; Line 1 runs Helwan to New El Marg, Line 2 Shubra El Kheima to El Mounib. Single tickets are priced by number of stations; ticket booths on Lines 1 and 2 take Visa cards.",
       "tickets": ["Single-trip ticket", "Metro smart card"],
       "contactless": null,
       "contactless_note": null,
-      "hours": null,
+      "hours": "Metro runs from 5am to midnight (first trains from the Line 1 and 2 terminals about 5:15am); later during Ramadan.",
       "taxi": "White taxis have meters; old black-and-white taxis usually do not, so agree the price first. At the airport, ignore freelance drivers in the arrival hall.",
       "rides": null,
       "airport": "Cairo Airport: limousines with fixed fares by destination wait at the kerb; city buses leave from the bus station in front of Terminal 1 only.",
       "sources": [
         "https://cairo.gov.eg/en/governorate-services/transportation-services/metro/",
         "https://www.cairo.gov.eg/en/governorate-services/transportation-services/metro/metro-tickets/",
-        "https://www.cairo-airport.com/en-us/Services/Passenger-Guide/Move-From-To-Airport"
+        "https://www.cairo-airport.com/en-us/Services/Passenger-Guide/Move-From-To-Airport",
+        "https://cairometro.gov.eg/en/passengers/1",
+        "https://cairo.gov.eg/en/news/news-eng/2025/12bba1e97acd41668d2fdde412276180",
+        "https://cairo.gov.eg/en/news/news-eng/2025/77df251f8e10419da8254b71821c5855"
       ],
       "checked": "2026-11-01",
       "recheck": true,
-      "recheck_reason": "Bank-card tapping and hours were not on the official pages read; the state information service page could not be read."
+      "recheck_reason": "Tapping a bank card at the gates was not on the official pages read (Visa is confirmed only for buying tickets at booths); the state information service page could not be read."
     },
     {
       "iso2": "ES",
@@ -234,16 +238,20 @@
       "area": "Madrid",
       "transit": "Madrid has 12 metro lines, three Metro Ligero tram lines and a short Ramal line. Pay-per-ride tickets are loaded onto the Tarjeta Multi, a contactless, transferable smart card; the Tourist Travel Pass gives unlimited travel.",
       "tickets": ["Tarjeta Multi", "Tourist Travel Pass"],
-      "contactless": null,
-      "contactless_note": null,
+      "contactless": "yes",
+      "contactless_note": "Since 1 June 2026, contactless credit or debit cards (physical, or on a phone or smartwatch) open the Metro turnstiles across the network, for single journeys only; at stations with older turnstiles, at least two take cards.",
       "hours": "Metro runs from 6am to 1:30am, every 2 minutes at rush hour and every 15 minutes after midnight; works close parts of some lines.",
       "taxi": "At the airport, take a taxi from the rank; there is a fixed flat fare to the centre inside the M-30 ring road.",
       "rides": null,
       "airport": "Barajas: Metro Line 8 runs to Nuevos Ministerios (an airport fee is added); the Airport Express bus runs 24 hours to Cibeles and Atocha; Cercanías C-1 runs from T4 about every 20 minutes.",
-      "sources": ["https://www.esmadrid.com/en/getting-around-madrid-metro", "https://www.esmadrid.com/en/getting-madrid-plane"],
+      "sources": [
+        "https://www.esmadrid.com/en/getting-around-madrid-metro",
+        "https://www.esmadrid.com/en/getting-madrid-plane",
+        "https://www.comunidad.madrid/node/114673"
+      ],
       "checked": "2026-11-01",
-      "recheck": true,
-      "recheck_reason": "Bank-card tapping was not on the official pages read; only Madrid was checked (Barcelona and other cities differ)."
+      "recheck": false,
+      "recheck_reason": null
     },
     {
       "iso2": "FR",
@@ -453,7 +461,7 @@
       "iso2": "KR",
       "country": "South Korea",
       "area": "Seoul",
-      "transit": "In Seoul, a T-money card pays on buses, the subway and taxis. Subway transfers happen inside stations; bus-subway transfers are free with T-money if you tap when you get off.",
+      "transit": "In Seoul, a T-money card pays on buses, the subway and taxis; bus-subway transfers are free with T-money if you tap when you get off. Since 17 March 2026, ticket machines at 273 stations on subway lines 1 to 8 take overseas Visa and Mastercard cards.",
       "tickets": ["T-money card", "T-money Mpass"],
       "contactless": null,
       "contactless_note": null,
@@ -463,18 +471,19 @@
       "airport": "Incheon: AREX express trains run non-stop to Seoul Station (about 43 minutes from T1); all-stop trains take about an hour. Buy limousine bus tickets before boarding. Standard and deluxe taxis wait at the taxi platform at both terminals.",
       "sources": [
         "https://english.visitseoul.net/essential-Info-article/Getting-Around_/211",
-        "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140654"
+        "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140654",
+        "https://www.korea.net/NewsFocus/Society/view?articleId=289001"
       ],
       "checked": "2026-11-01",
       "recheck": true,
-      "recheck_reason": "Tapping a foreign bank card on the subway and buses was not on the official pages read."
+      "recheck_reason": "Tapping a foreign bank card at subway gates or on buses was not on the official pages read (overseas cards are confirmed only at ticket machines); the city's open-loop page could not be read."
     },
     {
       "iso2": "MA",
       "country": "Morocco",
       "area": "Casablanca",
-      "transit": "Casablanca has four tram lines and two busway lines on dedicated lanes.",
-      "tickets": null,
+      "transit": "Casablanca has four tram lines and two busway lines on dedicated lanes, one network with the same ticket or subscription. Single tickets are sold by station machines, sales agencies and approved resellers; top up cards online, at station machines or agencies.",
+      "tickets": ["Ticket unitaire", "Carte rechargeable", "Carte d'abonnement"],
       "contactless": null,
       "contactless_note": null,
       "hours": null,
@@ -483,11 +492,13 @@
       "airport": "Mohammed V Airport: the train station is reached from the arrivals hall, with ticket offices and machines; taxis run to Casablanca and other cities.",
       "sources": [
         "https://visitcasablanca.ma/en/mice-informations-pratiques/",
-        "https://www.onda.ma/en/Our-Airports/Casablanca-Mohammed-V-Airport/Access-Facilitations/Arrival"
+        "https://www.onda.ma/en/Our-Airports/Casablanca-Mohammed-V-Airport/Access-Facilitations/Arrival",
+        "https://www.casatramway.ma/",
+        "https://www.casatramway.ma/propos/foire-aux-questions"
       ],
       "checked": "2026-11-01",
       "recheck": true,
-      "recheck_reason": "Ticket names, bank-card tapping and hours were not on the official pages read; the tram operator's site could not be read."
+      "recheck_reason": "Bank-card tapping and service hours were not on the official pages read (bank cards are mentioned only for top-ups at station machines); the operator's tickets and contactless news pages could not be read."
     },
     {
       "iso2": "MX",
@@ -495,20 +506,22 @@
       "area": "Mexico City",
       "transit": "In Mexico City, the MI card (Tarjeta de Movilidad Integrada) is the way in on the Metro, Metrobús, Cablebús, Tren Ligero, trolleybuses, RTP buses and the El Insurgente train. Buy and top it up with cash at Metro ticket offices or Metrobús machines.",
       "tickets": ["Tarjeta de Movilidad Integrada (MI)"],
-      "contactless": null,
-      "contactless_note": null,
-      "hours": null,
+      "contactless": "some",
+      "contactless_note": "The city's tourism site says contactless credit or debit cards and phone or watch wallets now pay at Metro and Metrobús turnstiles, but its FAQ still says the MI card only and it does not say which stations; carry an MI card too.",
+      "hours": "Metro runs Monday to Friday 5am to midnight, Saturdays 6am to midnight, Sundays and holidays 7am to midnight. Metrobús runs Monday to Saturday 4:30am to midnight, Sundays and holidays 5am to midnight.",
       "taxi": "Only use street taxis in the current pink and white livery: the plate should start with A or B and match the number painted on the car, and the driver's ID should be on display. Radio taxis are safer.",
       "rides": "available",
       "airport": "AICM: buy official taxi tickets at the marked counters inside the terminals. Metrobús Line 4 runs from the terminals to the Historic Centre; Metro Line 5's Terminal Aérea station is by Terminal 1 (hard with heavy bags).",
       "sources": [
         "https://mexicocity.cdmx.gob.mx/e/getting-around/mexico-city-metro-card",
         "https://mexicocity.cdmx.gob.mx/e/getting-around/taxis-taxi-apps/?lang=en",
-        "https://mexicocity.cdmx.gob.mx/venues/aeropuerto-internacional-de-la-ciudad-de-mexico-aicm/?lang=en"
+        "https://mexicocity.cdmx.gob.mx/venues/aeropuerto-internacional-de-la-ciudad-de-mexico-aicm/?lang=en",
+        "https://mexicocity.cdmx.gob.mx/e/getting-around/using-the-metro/?lang=en",
+        "https://mexicocity.cdmx.gob.mx/e/getting-around/metrobus/?lang=en"
       ],
       "checked": "2026-11-01",
       "recheck": true,
-      "recheck_reason": "Bank-card tapping and service hours were not on the official pages read."
+      "recheck_reason": "Bank-card tapping: the tourism pages contradict themselves and do not say which stations take cards; the Metro operator's own card-payment pages could not be read."
     },
     {
       "iso2": "MY",
@@ -590,19 +603,21 @@
       "area": "Metro Manila",
       "transit": "In Metro Manila, the beep stored-value card works at all LRT-1, LRT-2 and MRT-3 stations. On LRT-2, single journey tickets are sold at ticket machines and teller booths.",
       "tickets": ["beep card", "Single Journey Ticket (LRT-2)"],
-      "contactless": null,
-      "contactless_note": null,
-      "hours": null,
+      "contactless": "some",
+      "contactless_note": "Since July 2026, Fast Lane gates at LRT-2 stations take contactless Visa or Mastercard debit, credit and prepaid cards and phone wallets; the page does not say if foreign cards work.",
+      "hours": "LRT-2 stations open daily at 4:50am, weekends and holidays included.",
       "taxi": null,
       "rides": "available",
       "airport": "NAIA Terminal 3 has a central hub for metered taxis and app-based rides.",
       "sources": [
         "https://www.lrta.gov.ph/tickets-and-fares/",
-        "https://newnaia.com.ph/about-us/news/centralized-ride-hailing-and-taxi-hub-now-fully-operational-at-naia-t3"
+        "https://newnaia.com.ph/about-us/news/centralized-ride-hailing-and-taxi-hub-now-fully-operational-at-naia-t3",
+        "https://www.lrta.gov.ph/railway-operations/",
+        "https://www.lrta.gov.ph/train-operating-schedule/"
       ],
       "checked": "2026-11-01",
       "recheck": true,
-      "recheck_reason": "Bank-card tapping, hours and city taxis were not on the official pages read; the transport department's MRT-3 page could not be read."
+      "recheck_reason": "City taxis were not on the official pages read; bank-card tapping is confirmed only on LRT-2 (the transport department's MRT-3 card page could not be read)."
     },
     {
       "iso2": "PT",
@@ -648,37 +663,39 @@
       "area": "Bangkok",
       "transit": "From 1 June 2026, Bangkok's MRT lines take contactless bank cards; one card works on all four MRT lines. The BTS Skytrain sells single journey cards and One-Day Passes at ticket offices and machines, and uses Rabbit stored-value cards.",
       "tickets": ["Rabbit card", "BTS Single Journey Card", "BTS One-Day Pass"],
-      "contactless": "yes",
-      "contactless_note": "EMV contactless cards with the contactless symbol, Thai or foreign (Visa, Mastercard and others), pay the adult fare on the MRT.",
-      "hours": null,
-      "taxi": null,
+      "contactless": "some",
+      "contactless_note": "EMV contactless cards, Thai or foreign (Visa, Mastercard and others), pay the adult fare on the MRT; since 8 November 2025 any contactless credit or debit card works at all Airport Rail Link stations. BTS gates take only BTS tickets and Rabbit cards.",
+      "hours": "The Airport Rail Link runs from 5:30am to midnight.",
+      "taxi": "At Suvarnabhumi, public taxis run 24 hours from Level 1, between Gates 4 and 7 (inner kerb); take a queue ticket first.",
       "rides": null,
-      "airport": null,
+      "airport": "Suvarnabhumi: the Airport Rail Link (eight stations) runs from level B1 of the terminal to Phaya Thai in central Bangkok. Public buses and vans leave from the airport bus terminal, and limousines are booked at the counter.",
       "sources": [
         "https://www.mrta.co.th/en/news-release/33436",
         "https://metro.bemplc.co.th/EMV-Contactless-Terms?lang=en",
-        "https://www.bts.co.th/eng/library/system-tickets.html"
+        "https://www.bts.co.th/eng/library/system-tickets.html",
+        "https://thailand.prd.go.th/en/content/category/detail/id/2078/iid/439307",
+        "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK"
       ],
       "checked": "2026-11-01",
-      "recheck": true,
-      "recheck_reason": "Bank-card tapping on the BTS Skytrain, taxis and airport links were not on the official pages read."
+      "recheck": false,
+      "recheck_reason": null
     },
     {
       "iso2": "TR",
       "country": "Türkiye",
       "area": "Istanbul",
-      "transit": "In Istanbul, Istanbulkart is the city's official smart card for public transport, run by the municipality; cards are issued at application centres and can be managed in the official app.",
+      "transit": "In Istanbul, Istanbulkart is the city's official smart card for public transport, run by the municipality. It works across the Metro Istanbul rail network (metro, tram, funicular and cable car); get one at Biletmatik machines.",
       "tickets": ["Istanbulkart"],
       "contactless": null,
       "contactless_note": null,
-      "hours": null,
-      "taxi": null,
+      "hours": "Metro Istanbul lines run from about 6am to midnight (times vary by line); the operator lists all-night service every 20 minutes on lines M1A, M1B, M2, M4, M5, M6 and M7 on Fridays, Saturdays and public holidays.",
+      "taxi": "Istanbul taxis are colour-coded by the municipality: yellow for standard cars, turquoise for larger cars and 8-seat vans, black for premium cars and vans.",
       "rides": null,
       "airport": "Istanbul Airport: IETT H-line city buses run to Mahmutbey Metro, Mecidiyeköy, Halkalı and Hacıosman, and HAVAİST shuttles serve the city. Sabiha Gökçen: IETT buses run to Kadıköy, Taksim, 4. Levent Metro and Bostancı.",
-      "sources": ["https://www.istanbulkart.istanbul/", "https://iett.istanbul/icerik/Access-to-Airports"],
+      "sources": ["https://www.istanbulkart.istanbul/", "https://iett.istanbul/icerik/Access-to-Airports", "https://www.metro.istanbul/en/Home/SikcaSorulanSorular", "https://tuhim.ibb.gov.tr/taksiler"],
       "checked": "2026-11-01",
       "recheck": true,
-      "recheck_reason": "Bank-card tapping, which lines take Istanbulkart, hours and taxis were not on the official pages read; the metro operator's site could not be read."
+      "recheck_reason": "Tapping a bank card was not on the official pages read (the Metro Istanbul FAQ names only Istanbulkart; card tapping appears only in news); the IETT transport overview page could not be read."
     },
     {
       "iso2": "TW",

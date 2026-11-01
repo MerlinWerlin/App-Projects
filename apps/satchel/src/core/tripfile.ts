@@ -35,6 +35,8 @@ import { cleanBagData } from './bags.ts';
 import { readCover } from './covers.ts';
 import { readAirport } from './leaveby.ts';
 import { readLegInfo } from './layovers.ts';
+import { readPlanSetting } from './plansetting.ts';
+import { readCheckin } from './checkin.ts';
 import { checkFileSpending } from './spending.ts';
 import { cleanFileTogether } from './together.ts';
 import { cleanFileCash, importCash } from './cash.ts';
@@ -228,6 +230,30 @@ function fileLegInfo(item: FileItem): FileItem {
   return clean ? { ...rest, legInfo: clean } : rest;
 }
 
+/** T140: an activity's indoor / outdoor mark is optional; any other value is dropped (never refusing the file). */
+function fileSetting(item: FileItem): FileItem {
+  if (!('setting' in item)) return item;
+  const { setting, ...rest } = item as FileItem & { setting?: unknown };
+  const s = readPlanSetting(setting);
+  return (s ? { ...rest, setting: s } : rest) as FileItem;
+}
+
+/** T142: a saved place's indoor / outdoor mark, the same way (dropped when unreadable, never refusing the file). */
+function filePlaceSetting(p: SavedPlace): SavedPlace {
+  if (!('setting' in p)) return p;
+  const { setting, ...rest } = p as SavedPlace & { setting?: unknown };
+  const s = readPlanSetting(setting);
+  return s ? { ...rest, setting: s } : rest;
+}
+
+/** T143: a booking's check-in settings and tick are optional; bad values are dropped (never refusing the file). */
+function fileCheckin(item: FileItem): FileItem {
+  if (!('checkin' in item)) return item;
+  const { checkin, ...rest } = item as FileItem & { checkin?: unknown };
+  const c = readCheckin(checkin);
+  return (c ? { ...rest, checkin: c } : rest) as FileItem;
+}
+
 const damaged = (detail: string): ParseResult => ({ ok: false, error: 'damaged', detail });
 
 /** Checks a decoded JSON value in full. Nothing about it is trusted until this says ok. */
@@ -321,8 +347,8 @@ export function parseTripFile(data: unknown): ParseResult {
       version: TRIP_FILE_VERSION,
       exported_at: isStr(data.exported_at) ? data.exported_at : '',
       trip,
-      items: (data.items as FileItem[]).map((i) => fileLegInfo(fileAirport(i))),
-      places: places as SavedPlace[],
+      items: (data.items as FileItem[]).map((i) => fileCheckin(fileSetting(fileLegInfo(fileAirport(i))))),
+      places: (places as SavedPlace[]).map(filePlaceSetting),
       ...(packing ? { packing } : {}),
       attachments: data.attachments as FilePayload[],
       ...(journalPhotoData.length ? { journal_photos: journalPhotoData as FilePayload[] } : {}),

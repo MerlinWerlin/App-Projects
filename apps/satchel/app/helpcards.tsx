@@ -95,6 +95,7 @@ export default function HelpCardsScreen() {
         <Text style={[typeScale.small, { color: theme.muted }]}>{t('helpcards.check')}</Text>
       </View>
       <Button kind="quiet" icon="language-outline" label={t('helpcards.phrases')} hint={t('helpcards.phrasesHint')} onPress={() => router.push({ pathname: '/phrases', params: { lang } })} />
+      <Button kind="quiet" icon="image-outline" label={t('signs.fromHelpcards')} hint={t('signs.fromHelpcardsHint')} onPress={() => router.push({ pathname: '/signs', params: { lang } })} />
     </Screen>
   );
 }

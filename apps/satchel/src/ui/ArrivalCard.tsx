@@ -7,8 +7,8 @@
 // fade only (FadeInView), no springs. Missing data shows a plain line, never a blank or a guess.
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useCallback, useMemo, type ReactNode } from 'react';
-import { Text, View } from 'react-native';
+import { useCallback, useMemo, type ReactNode, type RefObject } from 'react';
+import { Text, View, type LayoutChangeEvent } from 'react-native';
 import emergencyTable from '../content/emergency_numbers.json';
 import essentialsTable from '../content/country_essentials.json';
 import { ARRIVAL_DISMISS_KEY, arrivalForTrips, arrivalView, countryNameFrom, countryStrip, dismissArrival, focusCountry, homeCountryFor, type ArrivalTables, type ArrivalView, type StripCountry } from '../core/arrival.ts';
@@ -63,8 +63,22 @@ function useDismissed() {
  * Trip screen: the welcome card while a country is arriving, else just the countries strip (nothing on a home trip).
  * T134 `focusIso2`: opened for one stop (a long layover's "Arrival card for <country>"): that country's card, closed
  * with `onCloseFocus`.
+ * T138 `onLayout` sits on the card itself (no wrapper on the screen, so nothing adds a gap when the card is hidden);
+ * `stopHeadingRef` is the stop card's heading, for moving VoiceOver focus to it after the jump.
  */
-export function ArrivalCard({ trip, focusIso2, onCloseFocus }: { trip: Trip; focusIso2?: string | null; onCloseFocus?: () => void }) {
+export function ArrivalCard({
+  trip,
+  focusIso2,
+  onCloseFocus,
+  onLayout,
+  stopHeadingRef,
+}: {
+  trip: Trip;
+  focusIso2?: string | null;
+  onCloseFocus?: () => void;
+  onLayout?: (e: LayoutChangeEvent) => void;
+  stopHeadingRef?: RefObject<View | null>;
+}) {
   const { homeIso } = useHomeCountry();
   const { dismissed, loaded, dismiss } = useDismissed();
   const now = useMinute();
@@ -75,8 +89,12 @@ export function ArrivalCard({ trip, focusIso2, onCloseFocus }: { trip: Trip; foc
   const strip = useMemo(() => countryStrip(trip, now, homeCountryFor(trip, homeIso), TABLES), [trip, now, homeIso]);
   const stay = useMemo(() => arrivalStay(trip, now), [trip, now]);
   if (!loaded) return null;
-  if (view) return <ArrivalHero view={view} stay={stay} onDismiss={() => (view.when === 'stop' ? onCloseFocus?.() : dismiss(view.tripId, view.iso2))} />;
-  return strip.length ? <CountriesCard countries={strip} /> : null;
+  const card = view ? (
+    <ArrivalHero view={view} stay={stay} headingRef={view.when === 'stop' ? stopHeadingRef : undefined} onDismiss={() => (view.when === 'stop' ? onCloseFocus?.() : dismiss(view.tripId, view.iso2))} />
+  ) : strip.length ? (
+    <CountriesCard countries={strip} />
+  ) : null;
+  return card && onLayout ? <View onLayout={onLayout}>{card}</View> : card;
 }
 
 /**
@@ -147,7 +165,7 @@ function HeroButton({ label, hint, icon, onPress, a11yLabel }: { label: string; 
   );
 }
 
-function ArrivalHero({ view: v, stay, onDismiss }: { view: ArrivalView; stay: CurrentStay | null; onDismiss: () => void }) {
+function ArrivalHero({ view: v, stay, onDismiss, headingRef }: { view: ArrivalView; stay: CurrentStay | null; onDismiss: () => void; headingRef?: RefObject<View | null> }) {
   const { t, theme, lang } = useApp();
   const router = useRouter();
   const when = v.when === 'here' ? t('arrival.whenHere') : v.when === 'stop' ? t('f103.arrival.whenStop') : t('arrival.whenToday');
@@ -175,7 +193,7 @@ function ArrivalHero({ view: v, stay, onDismiss }: { view: ArrivalView; stay: Cu
         <GradientFill tone={v.tone} />
         <View style={{ padding: space.l, gap: space.m }}>
           {/* Heading: the flag is decorative; the title names the country. */}
-          <View accessible accessibilityRole="header" accessibilityLabel={t('arrival.a11y', { country: v.country, when, trip: v.tripName })} style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
+          <View ref={headingRef} accessible accessibilityRole="header" accessibilityLabel={t('arrival.a11y', { country: v.country, when, trip: v.tripName })} style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
             {v.flag ? (
               <Text accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ fontSize: 44, lineHeight: 52 }}>
                 {v.flag}
@@ -320,6 +338,15 @@ function ArrivalHero({ view: v, stay, onDismiss }: { view: ArrivalView; stay: Cu
                 hint={t('menu.openFromArrivalHint')}
                 icon="restaurant-outline"
                 onPress={() => router.push({ pathname: '/menu', params: { lang: menuLangForCountry(PHRASE_TABLE, v.iso2) ?? '' } })}
+              />
+            ) : null}
+            {/* T144: common signs with pictures in this country's language. */}
+            {v.phrases ? (
+              <HeroButton
+                label={t('signs.fromArrival')}
+                hint={t('signs.fromArrivalHint', { country: v.country })}
+                icon="image-outline"
+                onPress={() => router.push({ pathname: '/signs', params: { lang: v.phrases?.lang ?? '', country: v.iso2 } })}
               />
             ) : null}
             {/* T112: room, door codes and Wi-Fi for the stay you're in (or checking in to today). */}

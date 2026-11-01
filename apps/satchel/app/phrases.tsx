@@ -84,6 +84,9 @@ export default function PhrasesScreen() {
         </View>
       ) : null}
       <View style={{ flexDirection: 'row' }}>
+        <Button kind="secondary" icon="image-outline" label={t('signs.fromPhrases')} hint={t('signs.fromPhrasesHint')} onPress={() => router.push({ pathname: '/signs', params: { lang } })} />
+      </View>
+      <View style={{ flexDirection: 'row' }}>
         <Button
           kind="secondary"
           icon="help-buoy-outline"

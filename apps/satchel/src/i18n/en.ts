@@ -101,6 +101,12 @@ import { followups102 } from './en/followups102.ts';
 import { gaps } from './en/gaps.ts';
 import { outfits } from './en/outfits.ts';
 import { followups103 } from './en/followups103.ts';
+import { photolight } from './en/photolight.ts';
+import { rainplan } from './en/rainplan.ts';
+import { followups104 } from './en/followups104.ts';
+import { checkin } from './en/checkin.ts';
+import { signs } from './en/signs.ts';
+import { followups105 } from './en/followups105.ts';
 import { followups89 } from './en/followups89.ts';
 
 const base = {
@@ -279,6 +285,6 @@ const base = {
   'itemEdit.attachmentFromPhotos': 'Choose from Photos',
 } as const;
 
-export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile, ...citymaps, ...toilets, ...design, ...privacy, ...essentials, ...phrases, ...spending, ...help, ...readiness, ...convert, ...followups85, ...travels, ...jetlag, ...journal, ...followups86, ...triproute, ...weather, ...plan, ...position, ...licences, ...wayback, ...airport, ...smartpack, ...pastebooking, ...troubles, ...toiletplus, ...followups88, ...ideas, ...together, ...covers, ...followups89, ...recap, ...loyalty, ...followups90, ...calendar, ...units, ...look, ...followups91, ...todos, ...mapsearch, ...arrival, ...followups92, ...safecheck, ...dayplan, ...bags, ...followups93, ...meds, ...cash, ...stamps, ...followups94, ...tipping, ...holidays, ...gifts, ...followups95, ...stay, ...menu, ...insights, ...followups96, ...inflight, ...callhome, ...customs, ...followups97, ...maplayers, ...tripcopy, ...look2, ...followups98, ...helpcards, ...driving, ...followups99, ...leavehome, ...games, ...followups100, ...lostbag, ...comehome, ...followups101, ...layovers, ...getaround, ...followups102, ...gaps, ...outfits, ...followups103 } as const;
+export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile, ...citymaps, ...toilets, ...design, ...privacy, ...essentials, ...phrases, ...spending, ...help, ...readiness, ...convert, ...followups85, ...travels, ...jetlag, ...journal, ...followups86, ...triproute, ...weather, ...plan, ...position, ...licences, ...wayback, ...airport, ...smartpack, ...pastebooking, ...troubles, ...toiletplus, ...followups88, ...ideas, ...together, ...covers, ...followups89, ...recap, ...loyalty, ...followups90, ...calendar, ...units, ...look, ...followups91, ...todos, ...mapsearch, ...arrival, ...followups92, ...safecheck, ...dayplan, ...bags, ...followups93, ...meds, ...cash, ...stamps, ...followups94, ...tipping, ...holidays, ...gifts, ...followups95, ...stay, ...menu, ...insights, ...followups96, ...inflight, ...callhome, ...customs, ...followups97, ...maplayers, ...tripcopy, ...look2, ...followups98, ...helpcards, ...driving, ...followups99, ...leavehome, ...games, ...followups100, ...lostbag, ...comehome, ...followups101, ...layovers, ...getaround, ...followups102, ...gaps, ...outfits, ...followups103, ...photolight, ...rainplan, ...followups104, ...checkin, ...signs, ...followups105 } as const;
 
 export type Key = keyof typeof en;

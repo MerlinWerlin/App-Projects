@@ -989,6 +989,8 @@ export interface AccessibilityInfoStatic {
   getRecommendedTimeoutMillis(originalTimeout: number): Promise<number>;
 }
 export const AccessibilityInfo: AccessibilityInfoStatic;
+/** T138: the native tag of a mounted component (for AccessibilityInfo.setAccessibilityFocus). */
+export function findNodeHandle(componentOrHandle: null | number | React.Component<any, any> | React.ComponentClass<any>): null | number;
 
 export interface AlertButton {
   text?: string | undefined;
