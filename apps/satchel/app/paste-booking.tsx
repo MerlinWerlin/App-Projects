@@ -7,6 +7,8 @@
 // T80: the day/month choice for dates like 03/04/2027 is remembered on this phone, and a card saved into the chosen
 // trip from a paste shows "Saved" (its main button becomes a quiet "Add it again anyway") so one paste isn't saved
 // twice by accident.
+// T112: Wi-Fi network / password lines in a hotel confirmation are shown on its card with a switch (on by default);
+// after Save in the booking form they fill that booking's empty Stay details fields (phone-only, never the booking).
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
@@ -15,6 +17,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { deviceZone, formatDay, todayIn, zoneCity } from '../src/core/format.ts';
 import type { ItemKind } from '../src/core/model.ts';
 import { alreadyInTrip, draftForForm, foundFields, needsCheck, parseBookings, suggestTrip, type FoundField, type PasteBooking, type PasteField } from '../src/core/pasteparse.ts';
+import type { PastedWifi } from '../src/core/pastewifi.ts';
 import type { Key } from '../src/i18n/en.ts';
 import { DEFAULT_DATE_ORDER, parseDateOrder, PASTE_DATE_ORDER_KEY, PASTE_SAVED_KEY, parseSavedPastes, pasteFingerprint, pasteSavedIn } from '../src/core/followups89.ts';
 import { readText } from '../src/native/clipboard.ts';
@@ -22,10 +25,10 @@ import { useApp } from '../src/state/app.tsx';
 import { stashPastedDraft } from '../src/state/pasteDraft.ts';
 import { usePersisted } from '../src/state/persisted.ts';
 import { useTrips } from '../src/state/trips.tsx';
-import { fonts, radius, shadowOf, space, typeScale } from '../src/theme/tokens.ts';
+import { fonts, radius, shadowOf, space, TOUCH, typeScale } from '../src/theme/tokens.ts';
 import { FadeInView, HeroHeader, IconBadge, SectionCard, toneColours } from '../src/ui/hero.tsx';
 import { KIND_ICON, KIND_TONE, kindKey } from '../src/ui/kinds.tsx';
-import { Body, Button, Chip, Label } from '../src/ui/kit.tsx';
+import { Body, Button, Chip, Label, ToggleRow } from '../src/ui/kit.tsx';
 
 const NO_SAVED: unknown[] = [];
 const NUMERIC_DATE = /\b\d{1,2}[/.]\d{1,2}[/.]\d{2,4}\b/;
@@ -82,13 +85,15 @@ export default function PasteBookingScreen() {
     AccessibilityInfo.announceForAccessibility(n === 0 ? t('paste.none.title') : n === 1 ? t('paste.found.one') : t('paste.found.many', { n }));
   };
 
-  const review = (b: PasteBooking) => {
+  const review = (b: PasteBooking, withWifi: boolean) => {
     if (!trip) {
       AccessibilityInfo.announceForAccessibility(t('paste.trip.choose'));
       return;
     }
     const draft = draftForForm(b, t(`paste.defaultTitle.${b.kind}` as Key), (place) => t('paste.dropOffNote', { place }));
-    const key = stashPastedDraft({ draft, airport: b.airport, fingerprint: pasteFingerprint(b) });
+    // T112: Wi-Fi found in a hotel confirmation goes to the booking's Stay details after Save (when left switched on).
+    const wifi = withWifi && b.kind === 'hotel' ? b.wifi : undefined;
+    const key = stashPastedDraft({ draft, airport: b.airport, fingerprint: pasteFingerprint(b), wifi });
     router.push({ pathname: '/item-edit', params: { tripId: trip.id, kind: b.kind, date: draft.startDate || trip.startDate, paste: key } });
   };
 
@@ -216,7 +221,7 @@ export default function PasteBookingScreen() {
                 inTrip={alreadyInTrip(b, trip)}
                 saved={pasteSavedIn(savedPastes, pasteFingerprint(b), trip)}
                 canReview={!!trip}
-                onReview={() => review(b)}
+                onReview={(withWifi) => review(b, withWifi)}
                 onOpenTrip={() => trip && router.push(`/trip/${trip.id}`)}
               />
             </FadeInView>
@@ -262,10 +267,12 @@ function BookingCard({
   /** T80: saved into this trip from a paste (and still there). */
   saved: boolean;
   canReview: boolean;
-  onReview: () => void;
+  onReview: (withWifi: boolean) => void;
   onOpenTrip: () => void;
 }) {
   const { t, theme } = useApp();
+  const [withWifi, setWithWifi] = useState(true);
+  const review = () => onReview(withWifi);
   const tone = KIND_TONE[b.kind];
   const fields = foundFields(b).filter((f) => f.field !== 'title');
   const check = needsCheck(b);
@@ -334,16 +341,43 @@ function BookingCard({
         ) : check.includes('zone') && !b.draft.startTz ? (
           <Body muted>{t('paste.noZone')}</Body>
         ) : null}
+        {b.kind === 'hotel' && b.wifi ? <WifiFound wifi={b.wifi} on={withWifi} onChange={setWithWifi} /> : null}
         {canReview && saved ? (
           <>
             <Button label={t('f89.paste.openTrip')} hint={t('f89.paste.openTripHint')} icon="briefcase-outline" kind="secondary" onPress={onOpenTrip} />
-            <Button label={t('f89.paste.addAgain')} hint={t('f89.paste.addAgainHint')} icon="copy-outline" kind="quiet" onPress={onReview} />
+            <Button label={t('f89.paste.addAgain')} hint={t('f89.paste.addAgainHint')} icon="copy-outline" kind="quiet" onPress={review} />
           </>
         ) : canReview ? (
-          <Button label={t('paste.review')} hint={t('paste.reviewHint')} icon="create-outline" kind={inTrip ? 'quiet' : 'primary'} onPress={onReview} />
+          <Button label={t('paste.review')} hint={t('paste.reviewHint')} icon="create-outline" kind={inTrip ? 'quiet' : 'primary'} onPress={review} />
         ) : (
           <Body muted>{t('paste.trip.choose')}</Body>
         )}
+      </View>
+    </View>
+  );
+}
+
+/** T112: the Wi-Fi lines found in a hotel confirmation, with a switch to add them to the booking's Stay details. */
+function WifiFound({ wifi, on, onChange }: { wifi: PastedWifi; on: boolean; onChange: (v: boolean) => void }) {
+  const { t, theme } = useApp();
+  const lines = [wifi.name ? t('f97.paste.wifiNetwork', { name: wifi.name }) : '', wifi.password ? t('f97.paste.wifiPassword', { password: wifi.password }) : ''].filter(Boolean);
+  return (
+    <View style={{ gap: space.s, padding: space.m, borderRadius: radius.m, backgroundColor: theme.tealSoft }}>
+      <View accessible accessibilityLabel={[t('f97.paste.wifiTitle'), ...lines].join('. ')} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: space.s }}>
+        <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ paddingTop: 2 }}>
+          <Ionicons name="wifi-outline" size={18} color={theme.ink} />
+        </View>
+        <View style={{ flex: 1, gap: 2 }}>
+          <Text style={[typeScale.bodyStrong, { color: theme.ink }]}>{t('f97.paste.wifiTitle')}</Text>
+          {lines.map((l) => (
+            <Text key={l} style={[typeScale.small, { color: theme.ink }]}>
+              {l}
+            </Text>
+          ))}
+        </View>
+      </View>
+      <View style={{ minHeight: TOUCH, justifyContent: 'center' }}>
+        <ToggleRow label={t('f97.paste.wifiSave')} hint={t('f97.paste.wifiSaveHint')} value={on} onChange={onChange} />
       </View>
     </View>
   );

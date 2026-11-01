@@ -7,6 +7,9 @@
 // T78: a When things go wrong card (offline step-by-step guides; app/trouble/) right after Nearest help.
 // T97: an I'm safe / Share where I am card (app/safe.tsx) right after the numbers card, before Nearest help.
 // T55: the country essentials card (plugs, power, driving side, calling code, Bring an adapter?) for the same country.
+// T115: a Local customs row (app/customs/[iso2].tsx) right after it, for the same country.
+// T119: calm compass hero scene (entrance on every tab focus) and three sections with one rhythm: Numbers and your
+// card, Help and safety, Where you are.
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
@@ -19,10 +22,11 @@ import type { EmergencyCard } from '../../src/core/model.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
-import { fonts, radius, shadowOf, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
+import { elevated, fonts, radius, rhythm, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
 import { CountryEssentialsCard } from '../../src/ui/CountryEssentialsCard.tsx';
+import { CustomsLink } from '../../src/ui/CustomsLink.tsx';
 import { callAndExplain, EmergencyCardView } from '../../src/ui/EmergencyCardView.tsx';
-import { FadeInView, HeroHeader, IconBadge } from '../../src/ui/hero.tsx';
+import { FocusEntrance, HeroHeader, IconBadge, SectionHeader } from '../../src/ui/hero.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
 import { NearestHelpCard } from '../../src/ui/NearestHelpCard.tsx';
 import { SafeCheckCard } from '../../src/ui/SafeCheckCard.tsx';
@@ -73,7 +77,7 @@ export default function EmergencyScreen() {
   if (!loaded) {
     return (
       <Screen>
-        <HeroHeader tone="emergency" illustration="cross" title={t('emergency.title')} subtitle={t('emergency.loading')} />
+        <HeroHeader scene="emergency" title={t('emergency.title')} subtitle={t('emergency.loading')} />
       </Screen>
     );
   }
@@ -82,18 +86,16 @@ export default function EmergencyScreen() {
 
   return (
     <Screen>
-      <FadeInView>
-        <HeroHeader tone="emergency" illustration="cross" title={t('emergency.title')}>
-          {display ? (
-            <View style={{ gap: space.xs }}>
-              <Text accessibilityRole="header" style={[typeScale.title, { color: theme.heroInk, maxWidth: '82%' }]}>
-                {t('emergency.numbersFor', { country: display.country })}
-              </Text>
-              {origin ? <Text style={[typeScale.small, { color: theme.heroMuted, maxWidth: '82%' }]}>{origin}</Text> : null}
-            </View>
-          ) : null}
-        </HeroHeader>
-      </FadeInView>
+      <HeroHeader scene="emergency" title={t('emergency.title')}>
+        {display ? (
+          <View style={{ gap: space.xs }}>
+            <Text accessibilityRole="header" style={[typeScale.title, { color: theme.heroInk, maxWidth: '64%' }]}>
+              {t('emergency.numbersFor', { country: display.country })}
+            </Text>
+            {origin ? <Text style={[typeScale.small, { color: theme.heroMuted, maxWidth: '64%' }]}>{origin}</Text> : null}
+          </View>
+        ) : null}
+      </HeroHeader>
 
       {display ? (
         <Button
@@ -143,65 +145,77 @@ export default function EmergencyScreen() {
         </View>
       ) : null}
 
-      {cardStatus(card).empty ? (
-        <EmptyState
-          art="compass"
-          title={t('emergency.cardEmptyTitle')}
-          body={t('emergency.cardEmptyBody')}
-          action={<Button label={t('emergency.editCard')} hint={t('emergency.editCardHint')} onPress={() => router.push('/emergency-edit')} />}
-        />
-      ) : null}
+      <View style={{ gap: rhythm.section }}>
+        <FocusEntrance style={{ gap: rhythm.stack }}>
+          <SectionHeader title={t('look2.emergency.sectionCard')} icon="call-outline" tone="danger" />
+          {cardStatus(card).empty ? (
+            <EmptyState
+              art="compass"
+              title={t('emergency.cardEmptyTitle')}
+              body={t('emergency.cardEmptyBody')}
+              action={<Button label={t('emergency.editCard')} hint={t('emergency.editCardHint')} onPress={() => router.push('/emergency-edit')} />}
+            />
+          ) : null}
 
-      <EmergencyCardView
-        variant="themed"
-        row={display}
-        card={card}
-        onCall={(n) => callAndExplain(n, t)}
-        medicalShown={medicalShown}
-        onToggleMedical={() => setMedicalShown(!medicalShown)}
-      />
+          <EmergencyCardView
+            variant="themed"
+            row={display}
+            card={card}
+            onCall={(n) => callAndExplain(n, t)}
+            medicalShown={medicalShown}
+            onToggleMedical={() => setMedicalShown(!medicalShown)}
+          />
+        </FocusEntrance>
 
-      <SafeCheckCard />
+        <FocusEntrance delay={120} style={{ gap: rhythm.stack }}>
+          <SectionHeader title={t('look2.emergency.sectionHelp')} icon="shield-checkmark-outline" tone="teal" />
+          <SafeCheckCard />
 
-      {/* T101: Medicine times (app/meds.tsx). */}
-      <MedTimesCard />
+          {/* T101: Medicine times (app/meds.tsx). */}
+          <MedTimesCard />
 
-      <NearestHelpCard />
+          <NearestHelpCard />
 
-      <TroubleCard />
+          <TroubleCard />
+        </FocusEntrance>
 
-      {display ? <CountryEssentialsCard iso2={display.iso2} /> : null}
+        <FocusEntrance delay={180} style={{ gap: rhythm.stack }}>
+          {display || hotel?.hasAddress ? <SectionHeader title={t('look2.emergency.sectionLocal')} icon="location-outline" tone="sea" /> : null}
+          {display ? <CountryEssentialsCard iso2={display.iso2} /> : null}
 
-      {hotel?.hasAddress ? (
-        <PressableScale
-          accessibilityRole="button"
-          accessibilityLabel={t('emergency.hotelShortcut')}
-          accessibilityHint={t('emergency.hotelShortcutHint', { name: hotelName })}
-          onPress={() => router.push({ pathname: '/address/[id]', params: { id: hotel.item.id } })}
-          style={{
-            minHeight: TOUCH,
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: space.m,
-            paddingHorizontal: space.l,
-            paddingVertical: space.s,
-            borderRadius: radius.l,
-            borderWidth: theme.dark ? 1 : 0,
-            borderColor: theme.line,
-            backgroundColor: theme.cardRaised,
-            ...shadowOf(theme, 'low'),
-          }}
-        >
-          <IconBadge name="bed-outline" tone="accent" />
-          <View style={{ flex: 1, gap: 2 }}>
-            <Text style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}>{t('emergency.hotelShortcut')}</Text>
-            <Text numberOfLines={2} style={{ fontFamily: fonts.body, fontSize: 15, color: theme.muted }}>
-              {t(hotel.state === 'now' ? 'emergency.hotelShortcutNow' : 'emergency.hotelShortcutNext', { name: hotelName })}
-            </Text>
-          </View>
-          <Ionicons name="chevron-forward" size={20} color={theme.muted} />
-        </PressableScale>
-      ) : null}
+          {/* T115: local customs for the same country (nothing when the guide doesn't cover it). */}
+          {display ? <CustomsLink iso2={display.iso2} /> : null}
+
+          {hotel?.hasAddress ? (
+            <PressableScale
+              accessibilityRole="button"
+              accessibilityLabel={t('emergency.hotelShortcut')}
+              accessibilityHint={t('emergency.hotelShortcutHint', { name: hotelName })}
+              onPress={() => router.push({ pathname: '/address/[id]', params: { id: hotel.item.id } })}
+              style={{
+                minHeight: TOUCH,
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: space.m,
+                paddingHorizontal: space.l,
+                paddingVertical: space.s,
+                borderRadius: radius.l,
+                ...elevated(theme, 'low'),
+              }}
+            >
+              <IconBadge name="bed-outline" tone="accent" />
+              <View style={{ flex: 1, gap: rhythm.hair }}>
+                <Text style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}>{t('emergency.hotelShortcut')}</Text>
+                <Text numberOfLines={2} style={{ fontFamily: fonts.body, fontSize: 15, color: theme.muted }}>
+                  {t(hotel.state === 'now' ? 'emergency.hotelShortcutNow' : 'emergency.hotelShortcutNext', { name: hotelName })}
+                </Text>
+              </View>
+              <Ionicons name="chevron-forward" size={20} color={theme.muted} />
+            </PressableScale>
+          ) : null}
+
+        </FocusEntrance>
+      </View>
 
       <Button label={t('emergency.editCard')} hint={t('emergency.editCardHint')} onPress={() => router.push('/emergency-edit')} />
       <Body muted>{t('emergency.freeForever')}</Body>

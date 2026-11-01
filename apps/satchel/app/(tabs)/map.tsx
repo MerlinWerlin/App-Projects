@@ -12,6 +12,10 @@
 // dashed line, filtered by day chips under the map, with a summary card (src/ui/TripRouteLayer.tsx).
 // T73: "Find my way back" (the offline compass, app/wayback.tsx) under Where am I?, and for a selected saved place.
 // T94: Search the map (src/ui/MapSearch.tsx) at the top of the list; a picked result is centred with its own pin.
+// T117: a Layers button under the map opens src/ui/MapLayersSheet.tsx (a switch + count + legend swatch per pin
+// family, Show all trips / Only this trip, Fit to visible pins); choices stay on this phone (src/ui/useMapLayers.ts,
+// which also adds ideas with a spot, your way-back pins, saved toilets and today's plan stops). Every pin goes
+// through its filter (src/core/maplayers.ts visiblePins), which also lets a saved place stand in for its sample point.
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
@@ -45,12 +49,12 @@ import {
 import type { Key } from '../../src/i18n/en.ts';
 import { deleteCity, downloadCity, fetchCatalog, listInstalled, offlineTilesFor, type CatalogFailure, type DownloadJob, type DownloadPhase } from '../../src/native/cityMaps.ts';
 import { locateOnce, type Coords } from '../../src/native/location.ts';
-import { mapAvailable, SatchelMap, type MapFocus, type MapPin } from '../../src/native/maps.tsx';
+import { mapAvailable, SatchelMap, type MapFocus, type MapLine, type MapPin } from '../../src/native/maps.tsx';
 import { useNetworkStatus } from '../../src/native/network.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
 import { fonts, radius, space, typeScale } from '../../src/theme/tokens.ts';
-import { FadeInView, HeroHeader, IconBadge, ProgressBar, SectionCard } from '../../src/ui/hero.tsx';
+import { HeroHeader, IconBadge, ProgressBar, SectionCard } from '../../src/ui/hero.tsx';
 import { kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, Chip, Label, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
@@ -62,10 +66,15 @@ import { requestNearestToilet } from '../../src/state/nearestToilet.ts';
 import type { SearchHit } from '../../src/core/mapsearch.ts';
 import { SEARCH_PIN_ID, searchPinTap } from '../../src/core/followups93.ts';
 import { MapSearch } from '../../src/ui/MapSearch.tsx';
+import { fitRegion, isShown, layerCounts, MAP_LAYERS, startScope, type MapScope } from '../../src/core/maplayers.ts';
+import { focusTrip } from '../../src/core/wayback.ts';
+import { MapLayersButton, MapLayersSheet } from '../../src/ui/MapLayersSheet.tsx';
+import { useMapLayers } from '../../src/ui/useMapLayers.ts';
 
 const CATS = parsePoiCategories(tagData);
 const SETS: PoiSet[] = [parsePoiSet(tokyoData, CATS), parsePoiSet(kyotoData, CATS)].filter((s): s is PoiSet => s !== null);
 const MAP_HEIGHT = 280;
+const NO_LINES: MapLine[] = [];
 /** "Nearest to you" only when you're actually in that city; otherwise distances are from the city's middle. */
 const NEAR_CITY_M = 50_000;
 const FALLBACK_REGION: Region = { latitude: 35.68, longitude: 139.76, latitudeDelta: 0.2, longitudeDelta: 0.2 };
@@ -85,7 +94,6 @@ type Selected =
 type SaveForm = { name: string; tripId: string | null; errors: (PlaceError | 'trip')[] };
 
 const catKey = (id: MapCategory): Key => `map.cat.${id}`;
-const coordKey = (p: LatLon) => `${p.lat.toFixed(5)},${p.lon.toFixed(5)}`;
 
 // ---- Offline city maps (T47) ----
 
@@ -273,6 +281,7 @@ export default function MapScreen() {
   const [found, setFound] = useState<SearchHit | null>(null);
   // T96: tapping the search pin opens its result card (MapSearch) and scrolls the list to it.
   const [reveal, setReveal] = useState(0);
+  const [layersOpen, setLayersOpen] = useState(false);
   const searchY = useRef(0);
   const net = useNetworkStatus();
   const [installed, setInstalled] = useState<CityMap[]>([]);
@@ -297,7 +306,6 @@ export default function MapScreen() {
   // next "Trip map" for the same trip is still a change that scopes the map again.
   const params = useLocalSearchParams<{ tripId?: string; placeId?: string }>();
   const [scopeId, setScopeId] = useState<string | null>(scopeParam(params.tripId));
-  useEffect(() => setScopeId(scopeParam(params.tripId)), [params.tripId]);
   const scope = useMemo(() => scopeTrips(trips, scopeId), [trips, scopeId]);
   const scoped = scope.scoped;
   const layer = useTripRoute(scoped);
@@ -305,11 +313,15 @@ export default function MapScreen() {
   const today = todayIn(deviceZone());
   const active = useMemo(() => scoped ?? activeTrip(trips, today), [scoped, trips, today]);
   const targets = useMemo(() => (scoped ? [scoped] : saveTargets(trips, today)), [scoped, trips, today]);
+  // T117: the layer choices; with no ?tripId the stored "Only this trip" scopes to the trip on now (else the next).
+  const layers = useMapLayers({ trips: scope.trips, planTrip: active, today });
+  const scopeTrip = useMemo(() => scoped ?? focusTrip(trips, today), [scoped, trips, today]);
+  const focusId = focusTrip(trips, today)?.id ?? null;
+  useEffect(() => setScopeId(startScope(params.tripId, layers.prefs, focusId)), [params.tripId, layers.loaded, focusId]); // eslint-disable-line react-hooks/exhaustive-deps
   const bookings = useMemo(() => bookingPins(scope.trips), [scope]);
   const saved = useMemo(() => savedPins(scope.trips), [scope]);
   // T108: gifts with a map spot (Gifts screen), on the trips the map shows; a tap opens the gift.
   const gifts = useMemo(() => giftPins(scope.trips), [scope]);
-  const savedSpots = useMemo(() => new Set(saved.map(coordKey)), [saved]);
   const shownPois = useMemo(() => (set ? filterByCategories(set.pois, on) : []), [set, on]);
   const here = loc.s === 'here' ? loc.coords : null;
   const origin: LatLon | null = set ? (here && haversineMeters(here, set.center) < NEAR_CITY_M ? here : set.center) : null;
@@ -319,7 +331,7 @@ export default function MapScreen() {
   const selectedSaved = selected?.type === 'saved' ? (saved.find((p) => p.id === selected.id) ?? null) : null;
   const savedAt = useCallback((at: LatLon) => saved.find((p) => haversineMeters(p, at) <= SAME_SPOT_M) ?? null, [saved]);
 
-  const pins = useMemo<MapPin[]>(() => {
+  const allPins = useMemo<MapPin[]>(() => {
     // Scoped to a trip, a booking's own place is its numbered stop, and so are a journey's from / to while the
     // stations chip is on (T72); its other pins follow the day chips.
     const shownBookings = scoped ? bookings.filter((b) => !layer.coversPin(b.id) && layer.showsItem(b.itemId)) : bookings;
@@ -339,8 +351,8 @@ export default function MapScreen() {
     for (const g of gifts) {
       out.push({ id: g.id, lat: g.lat, lon: g.lon, title: g.what, subtitle: t('f96.gift.pinSub', { name: g.person }), color: theme.teal, a11y: t('f96.gift.pinA11y', { what: g.what, name: g.person }) });
     }
+    out.push(...layers.extra);
     for (const p of shownPois) {
-      if (savedSpots.has(coordKey(p))) continue; // the saved pin stands in for it
       out.push({ id: `p:${p.id}`, lat: p.lat, lon: p.lon, title: p.name, subtitle: catLabel(p.category), color: theme.sea, a11y: t('map.pinPoi', { category: catLabel(p.category), name: p.name }) });
     }
     if (selected?.type === 'spot') {
@@ -349,7 +361,15 @@ export default function MapScreen() {
     if (found) out.push({ id: SEARCH_PIN_ID, lat: found.lat, lon: found.lon, title: found.name, color: theme.accentStrong, a11y: t('mapsearch.pinA11y', { name: found.name }) });
     if (here) out.push({ id: 'me', lat: here.lat, lon: here.lon, title: t('map.here'), color: theme.ok, a11y: t('map.here') });
     return out;
-  }, [bookings, saved, gifts, savedSpots, shownPois, selected, found, here, theme, t, catLabel, scoped, layer.pins, layer.showsItem, layer.coversPin]);
+  }, [bookings, saved, gifts, layers.extra, shownPois, selected, found, here, theme, t, catLabel, scoped, layer.pins, layer.showsItem, layer.coversPin]);
+  // Hidden layers leave the map; on a shared spot the higher family stands in (a saved place for its sample point).
+  const filterPins = layers.filter;
+  const pins = useMemo(() => filterPins(allPins), [filterPins, allPins]);
+  const counts = useMemo(() => layerCounts(allPins), [allPins]);
+  const fitVisible = () => {
+    const region = fitRegion(pins);
+    if (region) setFocus({ region, key: Date.now() });
+  };
 
   // The map only reads its first region; later moves go through `focus`.
   const [initialRegion] = useState<Region>(() => (set ? regionFor([set.center, ...set.pois]) : regionFor(bookings)) ?? FALLBACK_REGION);
@@ -374,6 +394,7 @@ export default function MapScreen() {
     setSaveFailed(false);
   }, []);
 
+  const layerPress = layers.onPress;
   const onPinPress = useCallback(
     (id: string) => {
       setNotice(null);
@@ -384,6 +405,7 @@ export default function MapScreen() {
         listRef.current?.scrollToOffset({ offset: searchY.current, animated: !reduceMotion });
         return;
       }
+      if (layerPress(id)) return;
       if (id.startsWith('b:')) {
         const pin = bookings.find((b) => `b:${b.id}` === id);
         if (pin) select({ type: 'booking', pin });
@@ -406,7 +428,7 @@ export default function MapScreen() {
         }
       }
     },
-    [bookings, gifts, set, savedAt, select, router, found, reveal, reduceMotion],
+    [bookings, gifts, set, savedAt, select, router, found, reveal, reduceMotion, layerPress],
   );
 
   const onMapPress = useCallback(
@@ -463,9 +485,19 @@ export default function MapScreen() {
   }, [scoped?.id, params.placeId]);
 
   const showAll = () => {
+    layers.setScope('all');
     setScopeId(null);
     select(null);
     router.setParams({ tripId: ALL_TRIPS, placeId: '' });
+  };
+
+  const chooseScope = (s: MapScope) => {
+    if (s === 'all') return showAll();
+    if (!scopeTrip) return;
+    layers.setScope('trip');
+    setScopeId(scopeTrip.id);
+    select(null);
+    router.setParams({ tripId: scopeTrip.id, placeId: '' });
   };
 
   // ---- Save / remove (FLOWS §11.2) ----
@@ -761,9 +793,7 @@ export default function MapScreen() {
 
   return (
     <Screen scroll={false}>
-      <FadeInView>
-        <HeroHeader compact tone="map" illustration="map" title={t('map.title')} />
-      </FadeInView>
+      <HeroHeader compact scene="map" title={t('map.title')} />
       <View style={{ gap: space.xs }}>
         <SatchelMap
           pins={pins}
@@ -778,10 +808,26 @@ export default function MapScreen() {
           offlineTiles={offlineTiles}
           limitZoom={net === 'offline'}
           onRegionChange={(r) => setView({ lat: r.latitude, lon: r.longitude })}
-          lines={layer.lines}
+          lines={isShown(layers.prefs, 'route') ? layer.lines : NO_LINES}
           fit={layer.fit}
         />
         {scoped ? <TripRouteDays layer={layer} /> : null}
+        <MapLayersButton prefs={layers.prefs} onPress={() => setLayersOpen(true)} />
+        {layers.prefs.hidden.length === MAP_LAYERS.length ? <Body muted>{t('maplayers.allOff')}</Body> : null}
+        <MapLayersSheet
+          open={layersOpen}
+          onClose={() => setLayersOpen(false)}
+          prefs={layers.prefs}
+          counts={counts}
+          colour={layers.colour}
+          onToggle={layers.toggle}
+          onShowAll={layers.showAll}
+          scope={scoped ? 'trip' : 'all'}
+          scopeTripName={scopeTrip?.name ?? null}
+          onScope={chooseScope}
+          canFit={pins.length > 0}
+          onFit={fitVisible}
+        />
         {offlineCity && offlineTiles ? (
           <View
             accessible

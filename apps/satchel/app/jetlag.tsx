@@ -9,6 +9,7 @@ import { space, typeScale } from '../src/theme/tokens.ts';
 import { FadeInView, SectionCard } from '../src/ui/hero.tsx';
 import { CallFinder, ClockPair, Disclaimer, PlanSection, useJetLag } from '../src/ui/JetLagCard.tsx';
 import { Body, EmptyState, Screen } from '../src/ui/kit.tsx';
+import { CallHomeButton } from '../src/ui/callhome.tsx';
 
 export default function JetLagScreen() {
   const { tripId } = useLocalSearchParams<{ tripId: string }>();
@@ -51,6 +52,8 @@ export default function JetLagScreen() {
           <CallFinder view={view} now={now} />
         </FadeInView>
       ) : null}
+      {/* T114: people back home, each with their own zone and awake hours. */}
+      <CallHomeButton tripId={trip.id} />
       <FadeInView delay={120}>
         <SectionCard title={t('jetlag.plan.title')} icon="moon-outline" tone="accent">
           {view.plans.length ? (

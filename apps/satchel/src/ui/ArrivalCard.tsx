@@ -1,7 +1,7 @@
 // T95 Arrival card: a colourful "Welcome to <country>" hero (theme.hero gradient per country) for the trip screen
 // and the Trips tab, from src/core/arrival.ts: local time vs home, the traveller's own saved rate with 10 / 50 / 100,
 // plugs / voltage / driving side and emergency numbers (both "verify locally"), hello / thank you phrase cards, and
-// nearest-toilet, menu-words (T110, language from the stop's country) and way-back-to-hotel shortcuts. "Hide for <country>" is remembered per country per trip on this
+// nearest-toilet, menu-words (T110, language from the stop's country), Stay details (T112) and way-back-to-hotel shortcuts. "Hide for <country>" is remembered per country per trip on this
 // phone only (usePersisted). The "Countries on this trip" strip draws regional-indicator flags (decorative; each
 // chip is labelled with the country name). Text on the gradient sits on heroChip glass (AA in both themes); timed
 // fade only (FadeInView), no springs. Missing data shows a plain line, never a blank or a guess.
@@ -28,11 +28,15 @@ import { radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { callAndExplain } from './EmergencyCardView.tsx';
 import { FadeInView, GradientFill, SectionCard, type IconName } from './hero.tsx';
 import { useHomeCountry } from './HomeCountryPicker.tsx';
+import { hasCustoms } from '../core/customs.ts';
+import { CUSTOMS_TABLE } from './CustomsLink.tsx';
 import { PressableScale } from './kit.tsx';
 import { PHRASE_TABLE } from './phrases.ts';
 import { useMinute } from './TripPass.tsx';
 import { holidayTodayIn } from '../core/holidays.ts';
 import { holidayTodayLine } from './HolidaysCard.tsx';
+import { arrivalStay } from '../core/followups97.ts';
+import type { CurrentStay } from '../core/staydetails.ts';
 
 const TABLES: ArrivalTables = { essentials: essentialsTable as EssentialsTable, emergency: emergencyTable as unknown as EmergencyTable, phrases: PHRASE_TABLE };
 const NO_DISMISSED: unknown = [];
@@ -61,8 +65,9 @@ export function ArrivalCard({ trip }: { trip: Trip }) {
     [trip, now, homeIso, dismissed, loaded],
   );
   const strip = useMemo(() => countryStrip(trip, now, homeCountryFor(trip, homeIso), TABLES), [trip, now, homeIso]);
+  const stay = useMemo(() => arrivalStay(trip, now), [trip, now]);
   if (!loaded) return null;
-  if (view) return <ArrivalHero view={view} onDismiss={() => dismiss(view.tripId, view.iso2)} />;
+  if (view) return <ArrivalHero view={view} stay={stay} onDismiss={() => dismiss(view.tripId, view.iso2)} />;
   return strip.length ? <CountriesCard countries={strip} /> : null;
 }
 
@@ -75,7 +80,9 @@ export function ArrivalHomeCard({ trips }: { trips: Trip[] }) {
     () => (loaded ? arrivalForTrips(trips, { now, homeIso2: homeIso, phoneZone: deviceZone(), dismissed, tables: TABLES }) : null),
     [trips, now, homeIso, dismissed, loaded],
   );
-  return view ? <ArrivalHero view={view} onDismiss={() => dismiss(view.tripId, view.iso2)} /> : null;
+  const trip = view ? trips.find((x) => x.id === view.tripId) : undefined;
+  const stay = useMemo(() => (trip ? arrivalStay(trip, now) : null), [trip, now]);
+  return view ? <ArrivalHero view={view} stay={stay} onDismiss={() => dismiss(view.tripId, view.iso2)} /> : null;
 }
 
 /** Glass panel on the gradient with a small-caps heading. */
@@ -116,7 +123,7 @@ function HeroButton({ label, hint, icon, onPress, a11yLabel }: { label: string; 
   );
 }
 
-function ArrivalHero({ view: v, onDismiss }: { view: ArrivalView; onDismiss: () => void }) {
+function ArrivalHero({ view: v, stay, onDismiss }: { view: ArrivalView; stay: CurrentStay | null; onDismiss: () => void }) {
   const { t, theme, lang } = useApp();
   const router = useRouter();
   const when = v.when === 'here' ? t('arrival.whenHere') : t('arrival.whenToday');
@@ -202,6 +209,12 @@ function ArrivalHero({ view: v, onDismiss }: { view: ArrivalView; onDismiss: () 
             <View style={{ flexDirection: 'row' }}>
               <HeroButton label={t('tipping.fromArrival')} hint={t('tipping.fromArrivalHint', { country: v.country })} icon="happy-outline" onPress={() => router.push({ pathname: '/tipping', params: { tripId: v.tripId, country: v.iso2 } })} />
             </View>
+            {/* T115: local customs (greetings, dress, photos, tap water...) when the guide covers the country. */}
+            {hasCustoms(CUSTOMS_TABLE, v.iso2) ? (
+              <View style={{ flexDirection: 'row' }}>
+                <HeroButton label={t('customs.fromArrival')} hint={t('customs.fromArrivalHint', { country: v.country })} icon="people-outline" onPress={() => router.push({ pathname: '/customs/[iso2]', params: { iso2: v.iso2, tripId: v.tripId } })} />
+              </View>
+            ) : null}
           </Panel>
 
           <Panel title={t('arrival.powerLabel')} icon="flash-outline">
@@ -270,6 +283,16 @@ function ArrivalHero({ view: v, onDismiss }: { view: ArrivalView; onDismiss: () 
                 hint={t('menu.openFromArrivalHint')}
                 icon="restaurant-outline"
                 onPress={() => router.push({ pathname: '/menu', params: { lang: menuLangForCountry(PHRASE_TABLE, v.iso2) ?? '' } })}
+              />
+            ) : null}
+            {/* T112: room, door codes and Wi-Fi for the stay you're in (or checking in to today). */}
+            {stay ? (
+              <HeroButton
+                label={t('f97.arrival.stay')}
+                a11yLabel={t('f97.arrival.stayA11y', { name: stay.item.place?.name?.trim() || stay.item.title })}
+                hint={t('f97.arrival.stayHint')}
+                icon="key-outline"
+                onPress={() => router.push({ pathname: '/stay/[itemId]', params: { itemId: stay.item.id } })}
               />
             ) : null}
             {v.hotelTarget ? (

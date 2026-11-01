@@ -12,14 +12,19 @@
 //   FadeInView   fades and rises 12 pt on mount (timed); nothing moves with Reduce Motion
 //   toneColours  { fg, bg } pair for a tone, for anything custom
 //   tabIcon      tab bar icon factory (filled glyph in a tinted pill when focused)
+// T119 design pass 2: HeroHeader `scene` draws a tab's hero scene (src/ui/scenes.tsx) and plays a timed entrance each
+// time the tab comes into focus; FocusEntrance / useFocusEntrance do the same for any section (static with Reduce
+// Motion). Cards take their surface, edge and shadow from `elevated` (tokens.ts, audited for dark mode).
 import { Ionicons } from '@expo/vector-icons';
-import { memo, useEffect, useId, useRef, useState, type ComponentProps, type ReactNode } from 'react';
+import { useFocusEffect } from 'expo-router';
+import { memo, useCallback, useEffect, useId, useRef, useState, type ComponentProps, type ReactNode } from 'react';
 import { Animated, Text, View, type ColorValue, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Defs, G, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 import { useApp } from '../state/app.tsx';
-import { duration, easeOut, timed, useFadeRise } from '../theme/motion.ts';
-import { radius, shadowOf, space, TOUCH, typeScale, type HeroTone, type Theme } from '../theme/tokens.ts';
+import { duration, easeOut, RISE, timed, useFadeRise } from '../theme/motion.ts';
+import { elevated, radius, shadowOf, space, TOUCH, typeScale, type HeroTone, type Theme } from '../theme/tokens.ts';
 import { PressableScale } from './kit.tsx';
+import { SCENE_TONE, TabScene, type SceneKind } from './scenes.tsx';
 
 export type IconName = ComponentProps<typeof Ionicons>['name'];
 export type Tone = 'sea' | 'teal' | 'ok' | 'warn' | 'danger' | 'accent' | 'ink';
@@ -81,6 +86,35 @@ export function FadeInView({ children, delay = 0, style }: { children: ReactNode
   const { reduceMotion } = useApp();
   const anim = useFadeRise(reduceMotion, delay);
   return <Animated.View style={[anim, style]}>{children}</Animated.View>;
+}
+
+/**
+ * T119: a 0 -> 1 progress that replays (timed, ease-out, no overshoot) every time the screen comes into focus, after
+ * `delay` ms. With Reduce Motion it stays at 1 and nothing moves.
+ */
+export function useFocusEntrance(reduceMotion: boolean, delay = 0, ms: number = duration.slow) {
+  const progress = useRef(new Animated.Value(reduceMotion ? 1 : 0)).current;
+  useFocusEffect(
+    useCallback(() => {
+      if (reduceMotion) {
+        progress.setValue(1);
+        return;
+      }
+      progress.setValue(0);
+      const a = timed(progress, 1, ms, false, delay);
+      a.start();
+      return () => a.stop();
+    }, [progress, reduceMotion, delay, ms]),
+  );
+  return progress;
+}
+
+/** Fade + rise (or slide in from the right with `from="right"`) on every tab focus. Static with Reduce Motion. */
+export function FocusEntrance({ children, delay = 0, from = 'below', style }: { children: ReactNode; delay?: number; from?: 'below' | 'right'; style?: StyleProp<ViewStyle> }) {
+  const { reduceMotion } = useApp();
+  const p = useFocusEntrance(reduceMotion, delay);
+  const shift = p.interpolate({ inputRange: [0, 1], outputRange: [from === 'right' ? RISE * 2 : RISE, 0] });
+  return <Animated.View style={[{ opacity: p, transform: [from === 'right' ? { translateX: shift } : { translateY: shift }] }, style]}>{children}</Animated.View>;
 }
 
 /** Original vector art for hero banners: simple shapes in white wash with one warm highlight. viewBox 160 x 120. */
@@ -232,7 +266,8 @@ export const GradientFill = memo(function GradientFill({ tone }: { tone: HeroTon
  * The title is the screen's header for screen readers.
  */
 export function HeroHeader({
-  tone,
+  tone: toneProp,
+  scene,
   title,
   subtitle,
   eyebrow,
@@ -242,7 +277,10 @@ export function HeroHeader({
   children,
   style,
 }: {
-  tone: HeroTone;
+  /** The gradient; optional when `scene` is given (each scene has its own tone). */
+  tone?: HeroTone;
+  /** T119: a tab hero scene instead of the small illustration, with a timed entrance on every tab focus. */
+  scene?: SceneKind;
   title: string;
   subtitle?: string;
   eyebrow?: string;
@@ -254,19 +292,33 @@ export function HeroHeader({
   style?: StyleProp<ViewStyle>;
 }) {
   const { theme } = useApp();
+  const tone: HeroTone = toneProp ?? (scene ? SCENE_TONE[scene] : 'trips');
   const pad = compact ? space.l : space.xl;
+  const text = (
+    <>
+      {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted }]}>{eyebrow}</Text> : null}
+      <Text accessibilityRole="header" style={[compact ? typeScale.displayM : typeScale.displayL, { color: theme.heroInk, maxWidth: scene ? '64%' : '78%' }]}>
+        {title}
+      </Text>
+      {subtitle ? <Text style={[typeScale.body, { color: theme.heroMuted, maxWidth: scene ? '66%' : '82%' }]}>{subtitle}</Text> : null}
+    </>
+  );
   return (
     <View style={[{ borderRadius: radius.xl, overflow: 'hidden', backgroundColor: theme.hero[tone][0] }, shadowOf(theme, 'mid'), style]}>
       <GradientFill tone={tone} />
-      <View pointerEvents="none" style={{ position: 'absolute', right: -8, top: topInset + space.s, opacity: 0.95 }}>
-        <HeroIllustration kind={illustration} width={compact ? 120 : 160} height={compact ? 90 : 120} />
-      </View>
+      {scene ? (
+        <View pointerEvents="none" style={{ position: 'absolute', right: -space.xs, bottom: 0, top: topInset, justifyContent: compact ? 'center' : 'flex-end' }}>
+          <FocusEntrance from="right" delay={duration.fast}>
+            <TabScene kind={scene} width={compact ? 92 : 176} />
+          </FocusEntrance>
+        </View>
+      ) : (
+        <View pointerEvents="none" style={{ position: 'absolute', right: -8, top: topInset + space.s, opacity: 0.95 }}>
+          <HeroIllustration kind={illustration} width={compact ? 120 : 160} height={compact ? 90 : 120} />
+        </View>
+      )}
       <View style={{ paddingTop: topInset + pad, paddingBottom: pad, paddingHorizontal: space.l, gap: compact ? space.xs : space.s }}>
-        {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted }]}>{eyebrow}</Text> : null}
-        <Text accessibilityRole="header" style={[compact ? typeScale.displayM : typeScale.displayL, { color: theme.heroInk, maxWidth: '78%' }]}>
-          {title}
-        </Text>
-        {subtitle ? <Text style={[typeScale.body, { color: theme.heroMuted, maxWidth: '82%' }]}>{subtitle}</Text> : null}
+        {scene ? <FocusEntrance style={{ gap: compact ? space.xs : space.s }}>{text}</FocusEntrance> : text}
         {children ? <View style={{ marginTop: space.s, gap: space.s }}>{children}</View> : null}
       </View>
     </View>
@@ -310,8 +362,8 @@ export const StatTile = memo(function StatTile({
       accessible
       accessibilityLabel={t('design.stats.a11y', { label, n: value })}
       style={[
-        { flex: 1, minWidth: 96, backgroundColor: theme.cardRaised, borderRadius: radius.l, padding: space.m, gap: space.xs, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line },
-        shadowOf(theme, 'low'),
+        { flex: 1, minWidth: 96, borderRadius: radius.l, padding: space.m, gap: space.xs },
+        elevated(theme, 'low'),
         style,
       ]}
     >
@@ -349,8 +401,8 @@ export function SectionCard({
   return (
     <View
       style={[
-        { backgroundColor: theme.cardRaised, borderRadius: radius.l, padding: space.l, gap: space.m, borderWidth: theme.dark ? 1 : 0, borderColor: theme.line },
-        shadowOf(theme, 'low'),
+        { borderRadius: radius.l, padding: space.l, gap: space.m },
+        elevated(theme, 'low'),
         style,
       ]}
     >
@@ -407,12 +459,9 @@ export const QuickAction = memo(function QuickAction({
             paddingHorizontal: space.xs,
             minHeight: TOUCH + space.xl,
             borderRadius: radius.l,
-            backgroundColor: theme.cardRaised,
-            borderWidth: theme.dark ? 1 : 0,
-            borderColor: theme.line,
             opacity: disabled ? 0.5 : 1,
           },
-          shadowOf(theme, 'low'),
+          elevated(theme, 'low'),
         ]}
       >
         <IconBadge name={icon} tone={tone} />

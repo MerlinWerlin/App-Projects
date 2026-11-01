@@ -197,16 +197,22 @@ test('diet list: normalise and toggle keep known ids in the fixed order', () => 
 test('language: from the route param, the trip country, the last used, the phone, else Japanese', () => {
   assert.equal(parseMenuLangParam('th'), 'th');
   assert.equal(parseMenuLangParam(['vi', 'ja']), 'vi');
-  assert.equal(parseMenuLangParam('zh-Hant'), null);
-  assert.equal(menuLangFor('zh-Hant'), null);
-  assert.equal(menuLangFor('id'), null);
+  // T112: Traditional Chinese and Indonesian have menu words now.
+  assert.equal(parseMenuLangParam('zh-Hant'), 'zh-Hant');
+  assert.equal(parseMenuLangParam('en'), null);
+  assert.equal(menuLangFor('zh-Hant'), 'zh-Hant');
+  assert.equal(menuLangFor('id'), 'id');
   assert.equal(menuLangFor('ko'), 'ko');
   assert.equal(menuLangForCountry(phrases, 'TH'), 'th');
   assert.equal(menuLangForCountry(phrases, 'mx'), 'es');
-  assert.equal(menuLangForCountry(phrases, 'TW'), null);
+  assert.equal(menuLangForCountry(phrases, 'TW'), 'zh-Hant');
+  assert.equal(menuLangForCountry(phrases, 'HK'), 'zh-Hant');
+  assert.equal(menuLangForCountry(phrases, 'ID'), 'id');
+  assert.equal(menuLangForCountry(phrases, 'US'), null);
   assert.equal(menuLangForCountry(phrases, null), null);
   assert.deepEqual(pickMenuLang(phrases, { tripCountry: 'VN', lastUsed: 'fr' }), { lang: 'vi', from: 'trip' });
-  assert.deepEqual(pickMenuLang(phrases, { tripCountry: 'TW', lastUsed: 'fr' }), { lang: 'fr', from: 'last' });
+  assert.deepEqual(pickMenuLang(phrases, { tripCountry: 'TW', lastUsed: 'fr' }), { lang: 'zh-Hant', from: 'trip' });
+  assert.deepEqual(pickMenuLang(phrases, { tripCountry: 'US', lastUsed: 'fr' }), { lang: 'fr', from: 'last' });
   assert.deepEqual(pickMenuLang(phrases, { lastUsed: 'nope', phoneCountry: 'DE' }), { lang: 'de', from: 'phone' });
   assert.deepEqual(pickMenuLang(phrases, {}), { lang: 'ja', from: 'default' });
 });

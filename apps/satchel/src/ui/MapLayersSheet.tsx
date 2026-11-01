@@ -1,0 +1,185 @@
+// T117 Map layers + legend: the Layers button under the map and its sheet. One row per pin family the map draws
+// (a switch with its count, and the colour + icon its pins use, so the list is also the legend), the other pins'
+// colours, "Show all trips" / "Only this trip", and "Fit to visible pins". Choices are kept on this phone by
+// src/ui/useMapLayers.ts. The sheet slides (or fades with Reduce Motion): timed, never a spring.
+import { Ionicons } from '@expo/vector-icons';
+import type { ComponentProps } from 'react';
+import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { hiddenCount, isShown, LAYER_SPECS, MAP_LAYERS, type LayerCounts, type LayerPrefs, type MapLayerId, type MapScope } from '../core/maplayers.ts';
+import type { Key } from '../i18n/en.ts';
+import { useApp } from '../state/app.tsx';
+import { fonts, radius, space, typeScale } from '../theme/tokens.ts';
+import { Body, Button, Chip, Label, PressableScale } from './kit.tsx';
+
+type IconName = ComponentProps<typeof Ionicons>['name'];
+
+const layerKey = (id: MapLayerId): Key => `maplayers.layer.${id}`;
+const descKey = (id: MapLayerId): Key => `maplayers.layer.${id}.desc`;
+
+/** The Layers button under the map; says how many layers are off. */
+export function MapLayersButton({ prefs, onPress }: { prefs: LayerPrefs; onPress: () => void }) {
+  const { t } = useApp();
+  const off = hiddenCount(prefs);
+  return (
+    <Button
+      kind="secondary"
+      icon="layers-outline"
+      label={off ? t('maplayers.openHidden', { n: off }) : t('maplayers.open')}
+      hint={t('maplayers.openHint')}
+      onPress={onPress}
+    />
+  );
+}
+
+/** A disc in the pins' colour with the family's icon, as on the legend. Decorative (the row's label says it all). */
+function Swatch({ colour, icon }: { colour: string; icon?: IconName }) {
+  const { theme } = useApp();
+  return (
+    <View
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: colour, alignItems: 'center', justifyContent: 'center' }}
+    >
+      {icon ? <Ionicons name={icon} size={16} color={theme.card} /> : null}
+    </View>
+  );
+}
+
+export function MapLayersSheet({
+  open,
+  onClose,
+  prefs,
+  counts,
+  colour,
+  onToggle,
+  onShowAll,
+  scope,
+  scopeTripName,
+  onScope,
+  canFit,
+  onFit,
+}: {
+  open: boolean;
+  onClose: () => void;
+  prefs: LayerPrefs;
+  counts: LayerCounts;
+  colour: (id: MapLayerId) => string;
+  onToggle: (id: MapLayerId) => void;
+  onShowAll: () => void;
+  /** What the map shows now. */
+  scope: MapScope;
+  /** The trip "Only this trip" means (the scoped one, else the one on now or next); null: no trip to offer. */
+  scopeTripName: string | null;
+  onScope: (scope: MapScope) => void;
+  canFit: boolean;
+  onFit: () => void;
+}) {
+  const { t, theme, reduceMotion } = useApp();
+  const insets = useSafeAreaInsets();
+  const countText = (n: number) => (n === 0 ? t('maplayers.countNone') : n === 1 ? t('maplayers.countOne') : t('maplayers.count', { n }));
+
+  return (
+    <Modal visible={open} transparent animationType={reduceMotion ? 'fade' : 'slide'} onRequestClose={onClose}>
+      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={t('maplayers.done')}
+          accessibilityHint={t('maplayers.scrimHint')}
+          onPress={onClose}
+          style={{ flex: 1, minHeight: 48, backgroundColor: theme.scrim }}
+        />
+        <View
+          accessibilityViewIsModal
+          style={{ maxHeight: '88%', backgroundColor: theme.card, borderTopLeftRadius: radius.l, borderTopRightRadius: radius.l, borderWidth: 1, borderColor: theme.line }}
+        >
+          <ScrollView contentContainerStyle={{ paddingHorizontal: space.l, paddingTop: space.l, paddingBottom: insets.bottom + space.l, gap: space.m }}>
+            <Text accessibilityRole="header" style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}>
+              {t('maplayers.title')}
+            </Text>
+            <Body muted>{t('maplayers.body')}</Body>
+
+            <Label>{t('maplayers.scope.label')}</Label>
+            {scopeTripName ? (
+              <View accessibilityRole="radiogroup" accessibilityLabel={t('maplayers.scope.label')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
+                <Chip label={t('maplayers.scope.all')} hint={t('maplayers.scope.allHint')} selected={scope === 'all'} onPress={() => onScope('all')} />
+                <Chip
+                  label={t('maplayers.scope.trip')}
+                  a11yLabel={t('maplayers.scope.tripNamed', { trip: scopeTripName })}
+                  hint={t('maplayers.scope.tripHint')}
+                  selected={scope === 'trip'}
+                  onPress={() => onScope('trip')}
+                />
+              </View>
+            ) : (
+              <Body muted>{t('maplayers.scope.none')}</Body>
+            )}
+            {scope === 'trip' && scopeTripName ? <Body muted>{t('maplayers.scope.tripNamed', { trip: scopeTripName })}</Body> : null}
+
+            <Label>{t('maplayers.layers')}</Label>
+            {MAP_LAYERS.map((id) => {
+              const spec = LAYER_SPECS[id];
+              const on = isShown(prefs, id);
+              const name = t(layerKey(id));
+              const count = countText(counts[id]);
+              const notes = [t(descKey(id)), spec.byDay ? t('maplayers.byDay') : null, spec.phone ? t('maplayers.phoneOnly') : null].filter(Boolean).join(' ');
+              return (
+                <PressableScale
+                  key={id}
+                  accessibilityRole="switch"
+                  accessibilityLabel={t('maplayers.toggleA11y', { layer: name, count, state: t(on ? 'maplayers.shown' : 'maplayers.hidden') })}
+                  accessibilityHint={`${t('maplayers.toggleHint')} ${notes}`}
+                  accessibilityState={{ checked: on }}
+                  onPress={() => onToggle(id)}
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.xs, borderTopWidth: 1, borderTopColor: theme.line }}
+                >
+                  <Swatch colour={on ? colour(id) : theme.muted} icon={spec.icon as IconName} />
+                  <View style={{ flex: 1 }}>
+                    <Text style={[typeScale.bodyStrong, { color: on ? theme.ink : theme.muted }]}>{name}</Text>
+                    <Text style={[typeScale.small, { color: theme.muted }]}>{notes}</Text>
+                  </View>
+                  <View style={{ alignItems: 'flex-end' }}>
+                    <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: on ? theme.ok : theme.muted }}>{t(on ? 'common.on' : 'common.off')}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted, fontVariant: ['tabular-nums'] }}>{count}</Text>
+                  </View>
+                </PressableScale>
+              );
+            })}
+            {hiddenCount(prefs) > 0 ? <Button kind="quiet" label={t('maplayers.showEvery')} hint={t('maplayers.showEveryHint')} onPress={onShowAll} /> : null}
+
+            <Label>{t('maplayers.other')}</Label>
+            {(
+              [
+                ['maplayers.other.me', theme.ok],
+                ['maplayers.other.search', theme.accentStrong],
+                ['maplayers.other.spot', theme.muted],
+              ] as const
+            ).map(([key, c]) => (
+              <View key={key} accessible accessibilityLabel={t(key)} style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
+                <Swatch colour={c} />
+                <Text style={[typeScale.small, { flex: 1, color: theme.ink }]}>{t(key)}</Text>
+              </View>
+            ))}
+
+            {canFit ? (
+              <Button
+                icon="scan-outline"
+                label={t('maplayers.fit')}
+                hint={t('maplayers.fitHint')}
+                onPress={() => {
+                  onFit();
+                  onClose();
+                }}
+              />
+            ) : (
+              <Text accessibilityLiveRegion="polite" style={[typeScale.small, { color: theme.muted }]}>
+                {t('maplayers.fitNone')}
+              </Text>
+            )}
+            <Button kind="quiet" label={t('maplayers.done')} hint={t('maplayers.doneHint')} onPress={onClose} />
+          </ScrollView>
+        </View>
+      </View>
+    </Modal>
+  );
+}

@@ -70,6 +70,7 @@ function Shell() {
           <Stack.Screen name="ticket/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="address/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="stay/[itemId]" options={{ ...header, title: t('stay.route') }} />
+          <Stack.Screen name="inflight/[itemId]" options={{ ...header, title: t('inflight.route') }} />
           <Stack.Screen name="emergency-edit" options={{ ...header, presentation: 'modal', title: t('route.emergencyEdit') }} />
           <Stack.Screen name="vault" options={{ ...header, title: t('route.vault') }} />
           <Stack.Screen name="doc/[id]" options={{ ...header, title: t('route.doc') }} />
@@ -93,10 +94,12 @@ function Shell() {
           <Stack.Screen name="help" options={{ ...header, title: t('help.title') }} />
           <Stack.Screen name="convert" options={{ ...header, title: t('convert.route') }} />
           <Stack.Screen name="tipping" options={{ ...header, title: t('tipping.route') }} />
+          <Stack.Screen name="customs/[iso2]" options={{ ...header, title: t('customs.route') }} />
           <Stack.Screen name="units" options={{ ...header, title: t('units.route') }} />
           <Stack.Screen name="travels" options={{ ...header, title: t('travels.route') }} />
           <Stack.Screen name="passport" options={{ ...header, title: t('stamps.route') }} />
           <Stack.Screen name="jetlag" options={{ ...header, title: t('jetlag.route') }} />
+          <Stack.Screen name="callhome" options={{ ...header, title: t('callhome.route') }} />
           <Stack.Screen name="safe" options={{ ...header, title: t('safe.route') }} />
           <Stack.Screen name="meds" options={{ ...header, title: t('meds.route') }} />
           <Stack.Screen name="wayback" options={{ ...header, title: t('wayback.route') }} />
@@ -108,6 +111,7 @@ function Shell() {
           <Stack.Screen name="menu-card" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="loyalty/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="loyalty-edit" options={{ ...header, presentation: 'modal', title: t('loyalty.edit.newTitle') }} />
+          <Stack.Screen name="trip-again/[tripId]" options={{ ...header, title: t('tripcopy.route') }} />
           <Stack.Screen name="essentials" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'none' }} />
         </Stack>
       ) : null}

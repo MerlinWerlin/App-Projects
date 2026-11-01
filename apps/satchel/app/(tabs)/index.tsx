@@ -20,6 +20,7 @@ import { space } from '../../src/theme/tokens.ts';
 import { ArrivalHomeCard } from '../../src/ui/ArrivalCard.tsx';
 import { DayBriefCard } from '../../src/ui/DayBriefCard.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
+import { InflightHomeCard } from '../../src/ui/InflightCard.tsx';
 import { FadeInView, HeroHeader, ProgressBar, StatTile } from '../../src/ui/hero.tsx';
 import { Button, EmptyState, Label, PressableScale } from '../../src/ui/kit.tsx';
 import { NextUpCard } from '../../src/ui/NextUpCard.tsx';
@@ -118,6 +119,8 @@ export default function TripsScreen() {
           <WelcomeSlot />
           <BatteryBannerSlot />
           <LeavingSoonBanner trips={trips} />
+          {/* T113: "In the air" while a flight is under way (24 h before, 6 h after). */}
+          <InflightHomeCard trips={list} />
           {/* T71: "Your day" sits above the other cards, only while a trip is on today. */}
           <DayBriefCard trips={trips} />
           {/* T95: the arrival card for the first trip in the list reaching a new country. */}

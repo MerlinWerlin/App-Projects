@@ -30,6 +30,8 @@ import {
 import { checkWallTime, isLocalDateTime, isValidZone } from '../src/core/tz.ts';
 import { removeAppFiles } from '../src/native/files.ts';
 import { markPasteSaved, pastedDraft } from '../src/state/pasteDraft.ts';
+import { isStay } from '../src/core/staydetails.ts';
+import { fillStayWifi } from '../src/state/stay.ts';
 import { useApp } from '../src/state/app.tsx';
 import { findItem, useTrips } from '../src/state/trips.tsx';
 import { space } from '../src/theme/tokens.ts';
@@ -122,6 +124,10 @@ export default function ItemEditScreen() {
     committed.current = true;
     // T80: Paste a booking shows this card as "Saved" from now on.
     if (pasted?.fingerprint) markPasteSaved(pasted.fingerprint, trip.id, item.id);
+    // T112: Wi-Fi from the pasted hotel confirmation fills this booking's empty Stay details fields.
+    if (pasted?.wifi && isStay(item)) {
+      void fillStayWifi(item.id, pasted.wifi).then((filled) => filled && AccessibilityInfo.announceForAccessibility(t('f97.paste.wifiFilled')));
+    }
     removeAppFiles(droppedFiles([...initialFiles, ...addedFiles.current], files));
     leaving();
     router.back();

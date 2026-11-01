@@ -1,0 +1,1840 @@
+{
+ "version": 1,
+ "checked": "2026-11-01",
+ "rule": "General guidance only, written by the build from well-known public pages (government travel advice 'Local laws and customs' sections, official tourism boards, CDC destination pages) on the checked date. Customs vary by place, community and person and change over time, so always verify locally. Not legal advice. A null section means the build was not sure, and the app says so. Rows with recheck: true are the least certain.",
+ "sections": [
+  "greetings",
+  "shoes",
+  "dress",
+  "photos",
+  "gestures",
+  "public",
+  "alcohol",
+  "water",
+  "good_to_know"
+ ],
+ "countries": [
+  {
+   "iso2": "AE",
+   "country": "United Arab Emirates",
+   "greetings": "A handshake between men; wait for a woman to offer her hand. \"As-salamu alaykum\" is welcome.",
+   "shoes": "Shoes come off in homes and mosques.",
+   "dress": "Dress modestly in public places like malls (shoulders and knees covered); mosques have stricter dress rules and often lend robes.",
+   "photos": "Do not photograph people without permission, especially women; do not photograph government or military sites.",
+   "gestures": "Avoid rude hand gestures entirely; some are treated as offences. Use your right hand to give and receive.",
+   "public": "Public displays of affection are frowned on; women-only areas exist on the metro.",
+   "alcohol": "Alcohol is served in licensed places; drinking or being drunk in public is not allowed. Smoking is allowed only in set areas.",
+   "water": "varies",
+   "water_note": "Tap water is desalinated and treated, but most people drink bottled or filtered water.",
+   "good_to_know": [
+    "During Ramadan, avoid eating, drinking or smoking in public in daytime.",
+    "The weekend is Saturday-Sunday, with a short Friday.",
+    "Rules are strict: check what is allowed before you go."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/united-arab-emirates",
+    "https://www.visitdubai.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "AR",
+   "country": "Argentina",
+   "greetings": "A handshake for first meetings; one kiss on the cheek is common, including between men who know each other.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly in churches.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "People queue in order; dinner is often late, from about 21:00.",
+   "alcohol": "Drinking in public streets is restricted in some cities; smoking is banned in enclosed public places.",
+   "water": "varies",
+   "water_note": "Tap water is treated in Buenos Aires and most cities; in remote areas drink bottled water.",
+   "good_to_know": [
+    "Sharing mate tea is a social ritual: the person serving refills and passes it round.",
+    "Meal times are late compared with many countries."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/argentina",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "AT",
+   "country": "Austria",
+   "greetings": "A handshake and \"Grüß Gott\" or \"Servus\" are usual; use titles and surnames until invited otherwise.",
+   "shoes": "Shoes usually come off in homes; hosts may offer slippers.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Keep voices down on transport; Sundays and holidays are quiet days.",
+   "alcohol": "Drinking outdoors is allowed in many places, but some towns ban it in certain streets or on transport; smoking is not allowed in most indoor public places.",
+   "water": "yes",
+   "water_note": "Tap water is excellent and safe to drink.",
+   "good_to_know": [
+    "Most shops close on Sundays.",
+    "Coffee houses expect you to linger: the bill comes when you ask."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/austria",
+    "https://www.austria.info",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "AU",
+   "country": "Australia",
+   "greetings": "A handshake and \"g’day\" or \"hi\" are usual; first names are normal.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people; some Aboriginal sites ask visitors not to take photos.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "People queue in order; stand on the left on escalators in most cities.",
+   "alcohol": "Drinking in public is banned in many areas by local rules; smoking is not allowed in enclosed public places and many outdoor areas.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe in towns and cities.",
+   "good_to_know": [
+    "Traffic drives on the left.",
+    "Swim between the red and yellow flags at patrolled beaches.",
+    "Sun is strong: use sun cream and a hat."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/australia",
+    "https://www.australia.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "BE",
+   "country": "Belgium",
+   "greetings": "A handshake for first meetings; one or three light kisses on the cheek among friends. Greet in French or Dutch depending on the region.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "People queue in order and keep voices down on public transport; let others off before boarding.",
+   "alcohol": "Drinking outdoors is allowed in many places, but some towns ban it in certain streets or on transport; smoking is not allowed in most indoor public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink.",
+   "good_to_know": [
+    "Dutch is spoken in the north, French in the south and German in the east: use the local language for greetings.",
+    "Many shops close on Sundays."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/belgium",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "BG",
+   "country": "Bulgaria",
+   "greetings": "A handshake is usual; friends greet with kisses on the cheek.",
+   "shoes": "Shoes usually come off in homes.",
+   "dress": "Cover shoulders and knees in Orthodox churches and monasteries.",
+   "photos": "Photos are often not allowed inside churches and monasteries; ask before photographing people.",
+   "gestures": "A nod can mean \"no\" and a head shake can mean \"yes\": confirm with words.",
+   "public": "People queue in order and keep voices down on public transport; let others off before boarding.",
+   "alcohol": "Drinking in some public places is restricted; smoking is not allowed in enclosed public places.",
+   "water": "varies",
+   "water_note": "Tap water is treated in cities, but many people drink bottled water.",
+   "good_to_know": [
+    "The Cyrillic alphabet is used on most signs.",
+    "Carry some cash for small shops and rural areas."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/bulgaria",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "BR",
+   "country": "Brazil",
+   "greetings": "A handshake is usual; friends often greet with one or two kisses on the cheek, varying by region.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Cover shoulders and knees in churches.",
+   "photos": "Ask before photographing people; keep phones and cameras out of sight in busy streets.",
+   "gestures": "The circle made with thumb and finger (\"OK\") can be rude; use a thumbs-up instead.",
+   "public": "A warm, chatty manner is usual; priority seats and queues for older people and pregnant women are respected.",
+   "alcohol": "Drinking outdoors is common, but some cities restrict it in places or at certain times; smoking is banned in enclosed public places.",
+   "water": "varies",
+   "water_note": "Many cities treat their water, but most people drink filtered or bottled water.",
+   "good_to_know": [
+    "Portuguese is the language: a few words go a long way.",
+    "Toilet paper often goes in the bin, not the toilet: follow signs.",
+    "Avoid showing valuables on beaches and busy streets."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/brazil",
+    "https://visitbrasil.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "CA",
+   "country": "Canada",
+   "greetings": "A handshake is usual; in Quebec a light kiss on each cheek is common among friends.",
+   "shoes": "Shoes usually come off at the door in homes, especially in winter.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people, including at Indigenous ceremonies and sites.",
+   "gestures": "Gestures rarely cause trouble; avoid pointing at people.",
+   "public": "People queue politely and keep quiet on transport; eating while walking is common.",
+   "alcohol": "Drinking in public is not allowed in most places; smoking is banned in most indoor public places and near entrances.",
+   "water": "yes",
+   "water_note": "Tap water is treated and generally safe to drink.",
+   "good_to_know": [
+    "French is the main language in Quebec: a greeting in French is appreciated.",
+    "Sales tax is usually added at the till.",
+    "Winters are very cold in most regions: plan clothing for the season."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/canada",
+    "https://travel.destinationcanada.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "CH",
+   "country": "Switzerland",
+   "greetings": "A handshake for first meetings; friends often greet with three kisses on the cheek. Greet in the local language.",
+   "shoes": "Shoes usually come off in homes.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Punctuality matters; keep voices down on transport and avoid noise on Sundays and late evenings.",
+   "alcohol": "Drinking outdoors is allowed in many places, but some towns ban it in certain streets or on transport; smoking is not allowed in most indoor public places.",
+   "water": "yes",
+   "water_note": "Tap water is excellent and safe; public fountains are usually drinkable unless marked otherwise.",
+   "good_to_know": [
+    "German, French, Italian and Romansh are spoken in different regions.",
+    "Recycling rules are strict: follow bin labels.",
+    "Most shops close on Sundays."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/switzerland",
+    "https://www.myswitzerland.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "CL",
+   "country": "Chile",
+   "greetings": "A handshake for first meetings; one kiss on the cheek is common between friends.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly in churches.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "People queue in order and keep quiet on the metro.",
+   "alcohol": "Drinking in public streets is not allowed; smoking is banned in enclosed public places.",
+   "water": "varies",
+   "water_note": "Tap water is treated in most cities; some visitors prefer bottled water at first.",
+   "good_to_know": [
+    "Many shops close for a longer break at midday outside big cities.",
+    "The country is long and climates vary widely: pack for each region."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/chile",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "CN",
+   "country": "China",
+   "greetings": "A handshake or a nod is usual; older people are greeted first.",
+   "shoes": "Shoes often come off in homes; hosts may offer slippers.",
+   "dress": "Dress modestly at temples.",
+   "photos": "Ask before photographing people; do not photograph military or police sites; some temples ban photos.",
+   "gestures": "Pointing with one finger at people is impolite; use both hands to give business cards.",
+   "public": "Queues can be crowded; keep calm and patient.",
+   "alcohol": "Drinking in public is generally allowed; smoking is banned in enclosed public places in many cities.",
+   "water": "no",
+   "water_note": "Drink bottled or boiled water.",
+   "good_to_know": [
+    "Many payments are made by phone; carry some cash as a back-up.",
+    "Many websites and apps you use at home may not work.",
+    "Sticking chopsticks upright in rice is avoided."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/china",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "CO",
+   "country": "Colombia",
+   "greetings": "A handshake is usual; friends often greet with one light kiss on the cheek. Polite greetings come first.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly in churches; cover shoulders and knees.",
+   "photos": "Ask before photographing people; keep phones and cameras out of sight in busy streets.",
+   "gestures": "Avoid measuring height with your palm down when talking about people.",
+   "public": "Greet staff and drivers; queueing is usual at banks and stops.",
+   "alcohol": "Drinking in public spaces is restricted in many cities; smoking is banned in most enclosed public places.",
+   "water": "varies",
+   "water_note": "Tap water is treated in Bogotá and some big cities; elsewhere drink bottled water.",
+   "good_to_know": [
+    "Courtesy matters: \"con gusto\" and \"a la orden\" are common polite phrases.",
+    "Altitude in Bogotá can tire you on the first days.",
+    "Avoid showing valuables in busy areas."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/colombia",
+    "https://colombia.travel",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "CR",
+   "country": "Costa Rica",
+   "greetings": "A handshake is usual; friends often greet with a light kiss on the cheek.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly in churches.",
+   "photos": "Ask before photographing people; do not use flash near wildlife.",
+   "gestures": null,
+   "public": "A relaxed, friendly manner is valued; keep to marked trails in parks.",
+   "alcohol": "Drinking in public streets is restricted in many towns; smoking is banned in most public places.",
+   "water": "varies",
+   "water_note": "Tap water is generally treated in towns and cities; in rural and coastal areas many travellers drink bottled water.",
+   "good_to_know": [
+    "\"Pura vida\" is used as a greeting, a thanks and a goodbye.",
+    "Addresses often use landmarks rather than street numbers.",
+    "Rainy season brings heavy afternoon showers: plan outdoor trips for mornings."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/costa-rica",
+    "https://www.visitcostarica.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "CY",
+   "country": "Cyprus",
+   "greetings": "A handshake for first meetings; friends greet with kisses on the cheek.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Cover shoulders and knees at churches and monasteries.",
+   "photos": "Do not photograph military areas or the buffer zone; ask before photographing people.",
+   "gestures": null,
+   "public": "A relaxed pace is normal; dress tidily away from the beach.",
+   "alcohol": "Drinking outdoors is allowed in many places, but some towns ban it in certain streets or on transport; smoking is not allowed in most indoor public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated, but many people drink bottled water for the taste.",
+   "good_to_know": [
+    "Traffic drives on the left.",
+    "Crossing between the north and south has its own checkpoints and rules."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/cyprus",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "CZ",
+   "country": "Czechia",
+   "greetings": "A handshake and \"dobrý den\" are usual; use surnames until invited otherwise.",
+   "shoes": "Shoes usually come off in homes; hosts may offer slippers.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Keep voices down on trams and the metro; give seats to older people.",
+   "alcohol": "Drinking outdoors is banned in some city areas; smoking is not allowed in restaurants and bars.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink.",
+   "good_to_know": [
+    "Validate paper public transport tickets when you board.",
+    "Check exchange rates carefully at exchange offices."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/czech-republic",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "DE",
+   "country": "Germany",
+   "greetings": "A firm handshake and a greeting are usual; use surnames and \"Sie\" until invited to use first names.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; people care a lot about privacy, so avoid filming strangers.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Wait for the green signal at crossings; keep voices down on trains; Sundays are quiet days.",
+   "alcohol": "Drinking outdoors is legal in most places but banned in some areas; smoking rules vary by state, and most indoor public places are smoke-free.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink; restaurants usually serve bottled water.",
+   "good_to_know": [
+    "Most shops close on Sundays.",
+    "Keep out of bike lanes.",
+    "Card is widely taken, but carry some cash for small places."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/germany",
+    "https://www.germany.travel",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "DK",
+   "country": "Denmark",
+   "greetings": "A handshake for first meetings; first names are normal.",
+   "shoes": "Shoes usually come off in homes.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Keep out of bike lanes; keep voices down on trains, especially in quiet zones.",
+   "alcohol": "Drinking outdoors is legal in most public places; smoking is not allowed in most enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is excellent and safe to drink.",
+   "good_to_know": [
+    "Card is taken almost everywhere.",
+    "Cyclists have right of way in bike lanes: look before stepping in."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/denmark",
+    "https://www.visitdenmark.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "DO",
+   "country": "Dominican Republic",
+   "greetings": "A handshake is usual; friends often greet with a light kiss on the cheek. Greet before asking a question.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Cover shoulders and knees in churches; beachwear in town is frowned on.",
+   "photos": "Ask before photographing people.",
+   "gestures": null,
+   "public": "A friendly greeting matters; music and lively conversation are common in public.",
+   "alcohol": "Drinking in public places is restricted in some areas and at certain hours; smoking is banned in many enclosed public places.",
+   "water": "no",
+   "water_note": "Drink bottled water; most hotels provide it.",
+   "good_to_know": [
+    "Dress tidily away from the beach.",
+    "Agree taxi fares before you set off where there is no meter."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/dominican-republic",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "EC",
+   "country": "Ecuador",
+   "greetings": "A handshake is usual; friends often greet with a light kiss on the cheek.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly in churches.",
+   "photos": "Ask before photographing people, especially at markets and in Indigenous communities.",
+   "gestures": null,
+   "public": "Polite greetings matter; keep to marked paths in protected areas.",
+   "alcohol": "Drinking in public spaces is restricted; smoking is banned in enclosed public places.",
+   "water": "no",
+   "water_note": "Drink bottled or boiled water.",
+   "good_to_know": [
+    "The US dollar is the currency.",
+    "The Galápagos Islands have strict visitor rules: follow your guide and park signs."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/ecuador",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "EE",
+   "country": "Estonia",
+   "greetings": "A handshake for first meetings; small talk is short and personal space valued.",
+   "shoes": "Shoes usually come off in homes.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": null,
+   "public": "Keep voices down on transport; people keep personal space.",
+   "alcohol": "Drinking in public places is generally not allowed; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink.",
+   "good_to_know": [
+    "Card and digital payment are taken almost everywhere.",
+    "Sauna is a common part of life."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/estonia",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "EG",
+   "country": "Egypt",
+   "greetings": "A handshake between men; wait for a woman to offer her hand.",
+   "shoes": "Shoes come off in mosques and often in homes.",
+   "dress": "Dress modestly away from resorts; in mosques cover shoulders and knees, and women cover their hair.",
+   "photos": "Some sites charge for or ban photos inside tombs; do not photograph military or police sites; ask before photographing people.",
+   "gestures": "Avoid showing the sole of your foot; use your right hand to eat and to give and receive.",
+   "public": "Public displays of affection are frowned on; bargaining is normal at markets.",
+   "alcohol": "Alcohol is served in licensed places; drinking in public is frowned on. Smoking is common.",
+   "water": "no",
+   "water_note": "Drink bottled water.",
+   "good_to_know": [
+    "During Ramadan, avoid eating, drinking or smoking in public in daytime.",
+    "Agree prices for rides, guides and camel rides before you start.",
+    "Friday is the main day of rest."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/egypt",
+    "https://www.egypt.travel",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "ES",
+   "country": "Spain",
+   "greetings": "A handshake for first meetings; friends greet with two light kisses on the cheek.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Meal times are late; keep noise down in residential streets at night.",
+   "alcohol": "Drinking in the street is banned in many cities; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is safe to drink in most places, though taste varies; some prefer bottled.",
+   "good_to_know": [
+    "Lunch is often 14:00-16:00 and dinner from 21:00.",
+    "Some small shops close in the afternoon.",
+    "Beachwear away from the beach is not allowed in some towns."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/spain",
+    "https://www.spain.info",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "FI",
+   "country": "Finland",
+   "greetings": "A handshake and eye contact are usual; small talk is short, and silence is comfortable.",
+   "shoes": "Shoes come off in homes; this is expected.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "People keep personal space and voices down on transport.",
+   "alcohol": "Strong drinks are sold mainly in state shops; drinking outdoors is allowed in many parks but not everywhere; smoking is restricted in most public places.",
+   "water": "yes",
+   "water_note": "Tap water is excellent and safe to drink.",
+   "good_to_know": [
+    "Sauna is usually done without swimwear in single-sex sessions; ask what is usual where you are.",
+    "Many places are cashless."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/finland",
+    "https://www.visitfinland.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "FJ",
+   "country": "Fiji",
+   "greetings": "\"Bula\" is a friendly greeting; a handshake is usual.",
+   "shoes": "Shoes come off in homes and village houses.",
+   "dress": "Cover shoulders and knees in villages; wear a sulu (wrap) if asked; remove hats in villages.",
+   "photos": "Ask before photographing people and in villages.",
+   "gestures": "Touching someone’s head is impolite.",
+   "public": "When visiting a village, a gift of kava root (sevusevu) is customary; follow your host.",
+   "alcohol": "Smoking is banned in many enclosed public places; follow local rules on drinking.",
+   "water": "varies",
+   "water_note": "Tap water is treated in some towns and resorts; elsewhere drink bottled or boiled water.",
+   "good_to_know": [
+    "Sunday is a quiet day in many areas.",
+    "Ask before entering a village."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/fiji",
+    "https://www.fiji.travel",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "FR",
+   "country": "France",
+   "greetings": "Say \"bonjour\" when entering a shop and \"au revoir\" when leaving; friends often greet with light kisses on the cheeks.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Keep voices down on public transport and in restaurants; eating while walking is fine with snacks.",
+   "alcohol": "Drinking outdoors is allowed in many places but some towns ban it locally; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is safe to drink; ask for \"une carafe d’eau\" for free water with a meal.",
+   "good_to_know": [
+    "Always greet before asking a question: it is seen as basic politeness.",
+    "Many small shops close for lunch and on Sundays outside big cities.",
+    "Restaurants usually wait for you to ask for the bill."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/france",
+    "https://www.france.fr",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "GB",
+   "country": "United Kingdom",
+   "greetings": "A handshake for first meetings; \"hello\" or \"hiya\" among friends. Please and thank you are used a lot.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Modest clothing is appreciated at places of worship; remove hats in churches.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos.",
+   "gestures": "A V sign with the palm facing you is rude; face the palm outward if you mean \"two\".",
+   "public": "Queueing is taken seriously; stand on the right on escalators in cities and keep voices down on trains.",
+   "alcohol": "Drinking outdoors is allowed in many places, but some areas ban it and it is not allowed on some transport; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink; restaurants will usually bring it free on request.",
+   "good_to_know": [
+    "Traffic drives on the left: look right first when crossing.",
+    "Pubs usually take orders at the bar.",
+    "Weather changes quickly: carry a light layer."
+   ],
+   "sources": [
+    "https://www.visitbritain.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "GR",
+   "country": "Greece",
+   "greetings": "A handshake for first meetings; friends greet with kisses on the cheek.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Cover shoulders and knees at churches and monasteries; some monasteries require skirts for women.",
+   "photos": "Photos are often not allowed inside churches and monasteries; ask before photographing people.",
+   "gestures": "An open palm pushed towards someone is rude; avoid it.",
+   "public": "A relaxed pace is normal; meals are long and shared.",
+   "alcohol": "Drinking outdoors is common in many places; smoking is not allowed in enclosed public places.",
+   "water": "varies",
+   "water_note": "Tap water is safe in Athens and most mainland towns; on many islands drink bottled water.",
+   "good_to_know": [
+    "Toilet paper often goes in the bin, not the toilet, especially on islands.",
+    "Many archaeological sites close early in winter.",
+    "A nod up can mean \"no\"."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/greece",
+    "https://www.visitgreece.gr",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "GT",
+   "country": "Guatemala",
+   "greetings": "A handshake and \"buenos días\" are usual; take time over greetings.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly in churches; cover shoulders and knees.",
+   "photos": "Always ask before photographing people, especially Indigenous people and children; some will decline.",
+   "gestures": null,
+   "public": "A calm, polite manner is valued; greet people when entering shops or small buses.",
+   "alcohol": "Drinking in public spaces is not allowed in many places; smoking is banned in enclosed public places.",
+   "water": "no",
+   "water_note": "Drink bottled or purified water.",
+   "good_to_know": [
+    "Many people speak Mayan languages as well as Spanish.",
+    "Some churches mix Catholic and Mayan traditions: watch quietly and follow local cues."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/guatemala",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "HK",
+   "country": "Hong Kong",
+   "greetings": "A handshake or a nod is usual.",
+   "shoes": "Shoes often come off in homes.",
+   "dress": "Dress modestly at temples.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Pointing at people is impolite.",
+   "public": "Stand on the right on escalators; eating and drinking on the MTR is not allowed.",
+   "alcohol": "Smoking is banned in many indoor and outdoor public places; drinking in public is generally allowed.",
+   "water": "yes",
+   "water_note": "Tap water meets drinking standards, but many people boil or filter it because of old building pipes.",
+   "good_to_know": [
+    "Fines apply for littering and for eating or drinking on the MTR.",
+    "Cantonese and English are widely used."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/hong-kong",
+    "https://www.discoverhongkong.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "HR",
+   "country": "Croatia",
+   "greetings": "A handshake for first meetings; friends greet with kisses on the cheek.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Walking around towns in swimwear or shirtless is banned in some places, such as parts of Split and Dubrovnik.",
+   "alcohol": "Drinking outdoors is banned in some old towns; smoking is restricted in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe in most places.",
+   "good_to_know": [
+    "Many old town streets are polished stone: wear good shoes.",
+    "Coastal towns are crowded in summer: book ahead."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/croatia",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "HU",
+   "country": "Hungary",
+   "greetings": "A handshake for first meetings; friends greet with two kisses on the cheek.",
+   "shoes": "Shoes usually come off in homes.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Some people avoid clinking beer glasses; follow the lead of those around you.",
+   "public": "People queue in order and keep voices down on public transport; let others off before boarding.",
+   "alcohol": "Drinking in public places is banned in some city areas; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink.",
+   "good_to_know": [
+    "At thermal baths, check whether swimwear and caps are needed.",
+    "Most shops close on Sundays."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/hungary",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "ID",
+   "country": "Indonesia",
+   "greetings": "A light handshake, sometimes followed by touching the heart; wait for a woman to offer her hand.",
+   "shoes": "Shoes come off in homes, mosques and temples.",
+   "dress": "Cover shoulders and knees at temples and mosques; in Bali a sarong and sash are required at temples.",
+   "photos": "Ask before photographing people and ceremonies.",
+   "gestures": "Use your right hand to give and receive; point with your right thumb, not a finger.",
+   "public": "Public displays of affection are frowned on; speak calmly.",
+   "alcohol": "Alcohol is sold in licensed places in many areas but restricted in some regions; smoking is common but banned in some places.",
+   "water": "no",
+   "water_note": "Drink bottled or filtered water.",
+   "good_to_know": [
+    "During Ramadan, be discreet with food and drink in daytime.",
+    "Bali has a day of silence (Nyepi) when everyone stays indoors.",
+    "Customs vary between islands: follow local guidance."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/indonesia",
+    "https://www.indonesia.travel",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "IE",
+   "country": "Ireland",
+   "greetings": "A handshake for first meetings; friendly small talk is common.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble; a V sign with the palm facing you is rude.",
+   "public": "People queue in order; at the pub, orders are usually made at the bar.",
+   "alcohol": "Drinking in the street is banned in many towns by local rules; smoking is not allowed in enclosed workplaces, pubs and restaurants.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink in most places.",
+   "good_to_know": [
+    "Traffic drives on the left: look right first when crossing.",
+    "Buying drinks in rounds is a common custom in groups."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/ireland",
+    "https://www.ireland.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "IL",
+   "country": "Israel",
+   "greetings": "A handshake is usual; \"shalom\" is a common greeting. Some religious people do not shake hands with the opposite sex.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Cover shoulders and knees at religious sites of all faiths; some ask men to cover their heads.",
+   "photos": "Do not photograph people praying or religious Jewish people on the Sabbath; do not photograph military sites.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Public transport is limited from Friday afternoon to Saturday evening in many places.",
+   "alcohol": "Drinking outdoors is allowed in many places, but some areas restrict it; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink.",
+   "good_to_know": [
+    "The weekend is Friday-Saturday; many places close for the Sabbath.",
+    "Security checks are common at malls and stations.",
+    "Some neighbourhoods are religious: dress modestly there."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/israel",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "IN",
+   "country": "India",
+   "greetings": "Namaste (palms together) is a respectful greeting; handshakes are common between men.",
+   "shoes": "Shoes come off in homes, temples, mosques and gurdwaras.",
+   "dress": "Cover shoulders and knees at religious sites; heads are covered in gurdwaras and some mosques.",
+   "photos": "Ask before photographing people; some temples ban photos, and some sites charge for cameras.",
+   "gestures": "Use your right hand to eat and to give and receive; avoid pointing your feet at people.",
+   "public": "Public displays of affection are frowned on; dress modestly in most places.",
+   "alcohol": "Alcohol rules vary by state, and some states ban it; smoking in public places is banned.",
+   "water": "no",
+   "water_note": "Drink bottled or filtered water.",
+   "good_to_know": [
+    "Customs vary widely between regions and religions: follow your host.",
+    "Agree prices before rides where there is no meter."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/india",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "IS",
+   "country": "Iceland",
+   "greetings": "A handshake for first meetings; first names are normal.",
+   "shoes": "Shoes come off in homes, and often in guesthouses and pools.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people; do not stop on roads or leave paths for photos.",
+   "gestures": null,
+   "public": "At public pools, showering without swimwear before entering is expected; follow the signs.",
+   "alcohol": "Strong drinks are sold only in state shops; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is excellent; hot water may smell of sulphur, but cold water does not.",
+   "good_to_know": [
+    "Weather and road conditions change fast: check before driving.",
+    "Keep to marked paths: moss and ground are fragile.",
+    "Off-road driving is banned."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/iceland",
+    "https://www.visiticeland.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "IT",
+   "country": "Italy",
+   "greetings": "A handshake for first meetings; friends greet with two light kisses on the cheek. Say \"buongiorno\" when entering a shop.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Covered shoulders and knees are required at many churches, including major basilicas; carry a scarf.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Avoid hand gestures you do not know well; some common ones carry rude meanings.",
+   "public": "Keep voices down on trains; sitting or eating on the steps of some monuments is not allowed.",
+   "alcohol": "Drinking outdoors is allowed in many places but banned in some city areas and at night; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is generally safe; many public fountains are drinkable unless marked \"non potabile\".",
+   "good_to_know": [
+    "Validate regional train tickets before boarding where machines are provided.",
+    "Many places close for a midday break outside big cities.",
+    "Standing at the bar is often cheaper than sitting at a table."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/italy",
+    "https://www.italia.it",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "JM",
+   "country": "Jamaica",
+   "greetings": "A handshake and a friendly \"good morning\" or \"good afternoon\" are expected before any question.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly at churches; cover up away from the beach.",
+   "photos": "Ask before photographing people; some may ask for a small payment.",
+   "gestures": null,
+   "public": "Greetings come first; a relaxed pace is normal.",
+   "alcohol": "Smoking is banned in many enclosed public places; follow local rules on drinking outdoors.",
+   "water": "varies",
+   "water_note": "Tap water is treated in many towns and resorts; elsewhere many travellers drink bottled water.",
+   "good_to_know": [
+    "Agree taxi fares before you set off where there is no meter.",
+    "Dress tidily in towns and when visiting offices."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/jamaica",
+    "https://www.visitjamaica.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "JO",
+   "country": "Jordan",
+   "greetings": "A handshake between men; wait for a woman to offer her hand. \"As-salamu alaykum\" is a warm greeting.",
+   "shoes": "Shoes come off in homes and mosques.",
+   "dress": "Dress modestly in public, covering shoulders and knees; women cover their hair in mosques.",
+   "photos": "Ask before photographing people, especially women; do not photograph military sites.",
+   "gestures": "Avoid showing the sole of your foot or pointing with it; use your right hand to give and receive.",
+   "public": "Public displays of affection are frowned on; give seats to older people.",
+   "alcohol": "Alcohol is sold in licensed places; drinking in public is frowned on. Smoking is common but banned in some indoor places.",
+   "water": "no",
+   "water_note": "Drink bottled or filtered water.",
+   "good_to_know": [
+    "During Ramadan, avoid eating, drinking or smoking in public in daytime.",
+    "Accepting tea or coffee when offered is polite.",
+    "Friday is the main day of rest."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/jordan",
+    "https://www.visitjordan.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "JP",
+   "country": "Japan",
+   "greetings": "A small bow is the usual greeting; a handshake is fine with visitors. Use surnames with \"-san\".",
+   "shoes": "Shoes come off in homes, ryokan, many temples, some restaurants and fitting rooms: look for a raised step or slippers.",
+   "dress": "Dress neatly at shrines and temples; swimwear and very revealing clothing are out of place.",
+   "photos": "Some temples, shrines and shops do not allow photos; always ask before photographing people, including geiko and maiko in Kyoto.",
+   "gestures": "Pointing at people is impolite; beckon with the palm facing down.",
+   "public": "Queue in lines at platforms; keep quiet on trains and do not take phone calls; eating while walking is frowned on in many places.",
+   "alcohol": "Drinking outdoors is generally allowed, but some areas restrict it; smoking is often allowed only in marked smoking areas, including outdoors.",
+   "water": "yes",
+   "water_note": "Tap water is safe to drink throughout the country.",
+   "good_to_know": [
+    "Bins are rare in public: carry your rubbish.",
+    "Tattoos may not be allowed at some baths and pools.",
+    "Cash is still used in many small places."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/japan",
+    "https://www.japan.travel/en/",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "KE",
+   "country": "Kenya",
+   "greetings": "A handshake is usual and greetings take time; \"jambo\" or \"habari\" are friendly openers.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly, especially on the coast and in Muslim areas; cover up in mosques.",
+   "photos": "Always ask before photographing people; do not photograph government buildings or officials.",
+   "gestures": "Use your right hand to give and receive.",
+   "public": "Greetings matter before any question; stay in vehicles in parks unless allowed.",
+   "alcohol": "Smoking in public places is banned; drinking in public is not allowed.",
+   "water": "no",
+   "water_note": "Drink bottled or boiled water.",
+   "good_to_know": [
+    "Traffic drives on the left.",
+    "Single-use plastic bags are banned.",
+    "Follow your guide’s rules on safari."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/kenya",
+    "https://magicalkenya.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "KH",
+   "country": "Cambodia",
+   "greetings": "The \"sampeah\" (palms together, small bow) is the usual greeting.",
+   "shoes": "Shoes come off in homes and temples.",
+   "dress": "Cover shoulders and knees at temples, including Angkor Wat.",
+   "photos": "Ask before photographing people and monks.",
+   "gestures": "Do not touch people’s heads or point your feet at people or Buddha images.",
+   "public": "Speak calmly; women should not touch monks.",
+   "alcohol": "Drinking in public is generally allowed; smoking is banned in some public places.",
+   "water": "no",
+   "water_note": "Drink bottled water.",
+   "good_to_know": [
+    "US dollars are widely used alongside riel.",
+    "Mines may remain in remote rural areas: stay on marked paths."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/cambodia",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "KR",
+   "country": "South Korea",
+   "greetings": "A small bow with \"annyeong haseyo\" is usual; a handshake with a slight bow is common.",
+   "shoes": "Shoes come off in homes and in some restaurants with floor seating.",
+   "dress": "Dress modestly at temples.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Beckon with the palm facing down; use both hands, or right hand with left supporting, to give and receive.",
+   "public": "Keep quiet on public transport; priority seats are kept free for those who need them.",
+   "alcohol": "Drinking outdoors is common, but some parks restrict it; smoking is not allowed in many public places, including some streets.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe, but many people drink filtered or bottled water.",
+   "good_to_know": [
+    "Pour drinks for others, not yourself; older people are served first.",
+    "Writing someone’s name in red ink is avoided."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/south-korea",
+    "https://english.visitkorea.or.kr",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "LK",
+   "country": "Sri Lanka",
+   "greetings": "Palms together with \"ayubowan\" is a respectful greeting; handshakes are common.",
+   "shoes": "Shoes come off in homes and temples; hats too in temples.",
+   "dress": "Cover shoulders and knees at temples; white clothing is common for visits.",
+   "photos": "Do not pose with your back to a Buddha image; ask before photographing people.",
+   "gestures": "Use your right hand to give and receive.",
+   "public": "Public displays of affection are frowned on.",
+   "alcohol": "Alcohol sales stop on full moon (Poya) days; drinking in public is frowned on.",
+   "water": "no",
+   "water_note": "Drink bottled or boiled water.",
+   "good_to_know": [
+    "Buddha images on tattoos or clothing can cause offence.",
+    "Traffic drives on the left."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/sri-lanka",
+    "https://www.srilanka.travel",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "LT",
+   "country": "Lithuania",
+   "greetings": "A handshake for first meetings; do not shake hands across a doorway.",
+   "shoes": "Shoes usually come off in homes.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": null,
+   "public": "Keep voices down on transport; give seats to older people.",
+   "alcohol": "Drinking in public places is generally not allowed; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink.",
+   "good_to_know": [
+    "Flowers as a gift are given in odd numbers; even numbers are for funerals.",
+    "Card is widely taken."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/lithuania",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "LU",
+   "country": "Luxembourg",
+   "greetings": "A handshake for first meetings; friends often greet with three kisses on the cheek.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": null,
+   "public": "People queue in order and keep voices down on public transport; let others off before boarding.",
+   "alcohol": "Drinking outdoors is allowed in many places, but some towns ban it in certain streets or on transport; smoking is not allowed in most indoor public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink.",
+   "good_to_know": [
+    "Luxembourgish, French and German are all used: a greeting in any is welcome.",
+    "Public transport is free nationwide (first class excepted)."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/luxembourg",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "LV",
+   "country": "Latvia",
+   "greetings": "A handshake for first meetings; reserved manners are common.",
+   "shoes": "Shoes usually come off in homes.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": null,
+   "public": "Keep voices down on transport; give seats to older people.",
+   "alcohol": "Drinking in public places is generally not allowed; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated, but many people drink bottled or filtered water.",
+   "good_to_know": [
+    "Flowers as a gift are given in odd numbers; even numbers are for funerals.",
+    "Card is widely taken."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/latvia",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "MA",
+   "country": "Morocco",
+   "greetings": "A handshake is usual; \"salam\" is a common greeting. Wait for a woman to offer her hand.",
+   "shoes": "Shoes come off in homes and mosques.",
+   "dress": "Dress modestly away from beaches. Most mosques are closed to non-Muslims; a few welcome visitors.",
+   "photos": "Always ask before photographing people; some may ask for a small payment.",
+   "gestures": "Use your right hand to eat and to give and receive.",
+   "public": "Bargaining is normal in souks; public displays of affection are frowned on.",
+   "alcohol": "Alcohol is sold in licensed places; drinking in public is not allowed.",
+   "water": "no",
+   "water_note": "Many travellers drink bottled water.",
+   "good_to_know": [
+    "During Ramadan, avoid eating, drinking or smoking in public in daytime.",
+    "Mint tea is a sign of welcome: accepting is polite.",
+    "In medinas, agree a price before accepting a guide."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/morocco",
+    "https://www.visitmorocco.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "MT",
+   "country": "Malta",
+   "greetings": "A handshake for first meetings; friends greet with a kiss on each cheek.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Covered shoulders and knees are expected in churches; some provide wraps.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": null,
+   "public": "Dress tidily away from the beach; keep voices down near churches.",
+   "alcohol": "Drinking outdoors is allowed in many places, but some towns ban it in certain streets or on transport; smoking is not allowed in most indoor public places.",
+   "water": "yes",
+   "water_note": "Tap water is safe but often desalinated and tastes of it; many people drink bottled water.",
+   "good_to_know": [
+    "Traffic drives on the left.",
+    "English and Maltese are both official languages."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/malta",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "MX",
+   "country": "Mexico",
+   "greetings": "A handshake is usual; friends often greet with one light kiss on the cheek. Say \"buenos días\" when entering a shop.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Cover shoulders and avoid short shorts in churches; remove hats inside.",
+   "photos": "Ask before photographing people, especially in Indigenous communities; some churches do not allow photos.",
+   "gestures": "Avoid measuring height with your palm down when talking about people; it is used for animals in some regions.",
+   "public": "Greet staff before asking for things; transport can be lively and eating street food while standing is common.",
+   "alcohol": "Drinking alcohol in the street is not allowed in many cities; smoking is banned in most indoor public places.",
+   "water": "no",
+   "water_note": "Drink bottled or filtered water; many hotels and restaurants provide it.",
+   "good_to_know": [
+    "Meal times are often later than in many countries, especially lunch.",
+    "Carry small notes and coins for markets and street stalls.",
+    "Altitude in Mexico City and the highlands can tire you on the first days."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/mexico",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "MY",
+   "country": "Malaysia",
+   "greetings": "A light handshake is usual between men; wait for a woman to offer her hand. Some touch their heart after.",
+   "shoes": "Shoes come off in homes and in temples and mosques.",
+   "dress": "Cover shoulders and knees at temples and mosques; robes may be provided.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Point with your right thumb, not a finger; use your right hand to give and receive.",
+   "public": "Public displays of affection are frowned on.",
+   "alcohol": "Alcohol is sold in licensed places; drinking in public is frowned on in many areas. Smoking is banned in many public places.",
+   "water": "no",
+   "water_note": "Tap water is treated, but most people boil or filter it; drink bottled water.",
+   "good_to_know": [
+    "During Ramadan, be discreet with food and drink in daytime.",
+    "Different communities have different customs: follow your host."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/malaysia",
+    "https://www.malaysia.travel",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "NL",
+   "country": "Netherlands",
+   "greetings": "A handshake for first meetings; friends often greet with three kisses on the cheek. Direct speech is normal, not rude.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Keep out of bike lanes, which are busy and fast; keep voices down on trains, especially in quiet carriages.",
+   "alcohol": "Drinking outdoors is banned in some city areas; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and among the best in Europe.",
+   "good_to_know": [
+    "Bike lanes are often red: check before stepping onto them.",
+    "Many places prefer card over cash."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/netherlands",
+    "https://www.holland.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "NO",
+   "country": "Norway",
+   "greetings": "A handshake for first meetings; first names are normal.",
+   "shoes": "Shoes come off in homes; this is expected.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Keep voices down on transport; personal space is valued.",
+   "alcohol": "Alcohol is expensive and strong drinks are sold only in state shops; drinking outdoors is not allowed in many public places.",
+   "water": "yes",
+   "water_note": "Tap water is excellent and safe to drink.",
+   "good_to_know": [
+    "Many places are cashless.",
+    "Weather in the mountains changes fast: check before hiking.",
+    "The right to roam lets you walk in nature: leave no trace."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/norway",
+    "https://www.visitnorway.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "NP",
+   "country": "Nepal",
+   "greetings": "Namaste (palms together) is the usual greeting.",
+   "shoes": "Shoes come off in homes and temples.",
+   "dress": "Cover shoulders and knees at temples; some Hindu temples are closed to non-Hindus.",
+   "photos": "Ask before photographing people and ceremonies, including cremations.",
+   "gestures": "Walk clockwise around stupas; do not touch heads or point your feet at people.",
+   "public": "Public displays of affection are frowned on.",
+   "alcohol": "Drinking in public is frowned on; smoking in public places is banned.",
+   "water": "no",
+   "water_note": "Drink bottled, boiled or filtered water.",
+   "good_to_know": [
+    "Altitude can make you unwell on treks: ascend slowly.",
+    "Trekking areas may need permits."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/nepal",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "NZ",
+   "country": "New Zealand",
+   "greetings": "A handshake and \"kia ora\" or \"hi\" are usual; at a marae, a hongi (pressing noses) may be offered.",
+   "shoes": "Shoes usually come off in homes and on a marae meeting house.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people and inside a marae meeting house.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "People queue in order; freedom camping has rules: check signs.",
+   "alcohol": "Drinking in public is banned in many areas by local rules; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe in towns and cities.",
+   "good_to_know": [
+    "Traffic drives on the left.",
+    "Biosecurity at the border is strict: declare food and outdoor gear.",
+    "Weather in the mountains changes fast."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/new-zealand",
+    "https://www.newzealand.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "PA",
+   "country": "Panama",
+   "greetings": "A handshake is usual; a greeting before any question is polite.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly in churches.",
+   "photos": "Ask before photographing people, especially in Indigenous communities, where a fee may be asked.",
+   "gestures": null,
+   "public": "Polite greetings matter; dress tidily in the city, as beachwear in town is frowned on.",
+   "alcohol": "Drinking in public streets is restricted in many areas; smoking is banned in enclosed public places.",
+   "water": "varies",
+   "water_note": "Tap water is treated in Panama City and many towns; in remote areas drink bottled water.",
+   "good_to_know": [
+    "The US dollar is used alongside the local balboa.",
+    "Indigenous territories may have their own rules for visitors."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/panama",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "PE",
+   "country": "Peru",
+   "greetings": "A handshake is usual; friends often greet with a light kiss on the cheek.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly in churches; photos inside are often not allowed.",
+   "photos": "Ask before photographing people; some people in traditional dress may ask for a small payment.",
+   "gestures": null,
+   "public": "Greet people when entering shops; meal times are relaxed, so ask for the bill when ready.",
+   "alcohol": "Drinking in public streets is not allowed in many cities; smoking is banned in enclosed public places.",
+   "water": "no",
+   "water_note": "Drink bottled or boiled water.",
+   "good_to_know": [
+    "Altitude in Cusco and the Andes can make you unwell: take the first days slowly.",
+    "Some ancient sites need timed tickets booked ahead.",
+    "Toilet paper often goes in the bin, not the toilet: follow signs."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/peru",
+    "https://www.peru.travel",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "PH",
+   "country": "Philippines",
+   "greetings": "A handshake is usual; older people may be greeted with a respectful gesture by locals.",
+   "shoes": "Shoes often come off in homes.",
+   "dress": "Dress modestly in churches and mosques.",
+   "photos": "Ask before photographing people.",
+   "gestures": "Avoid beckoning with a finger; use your whole hand, palm down.",
+   "public": "Speak calmly; queueing is usual.",
+   "alcohol": "Drinking in public is restricted in many cities; smoking is banned in public places nationwide.",
+   "water": "no",
+   "water_note": "Drink bottled or filtered water.",
+   "good_to_know": [
+    "English is widely spoken.",
+    "Many islands have their own rules for visitors: check before you go."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/philippines",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "PL",
+   "country": "Poland",
+   "greetings": "A handshake is usual; men often shake hands with everyone in a group.",
+   "shoes": "Shoes usually come off in homes; hosts may offer slippers.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "People queue in order and keep voices down on public transport; let others off before boarding.",
+   "alcohol": "Drinking alcohol in public places is generally not allowed; smoking is not allowed in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe in most cities, though many people prefer bottled or filtered water.",
+   "good_to_know": [
+    "Many shops close on most Sundays.",
+    "Validate paper public transport tickets when you board."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/poland",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "PT",
+   "country": "Portugal",
+   "greetings": "A handshake for first meetings; friends greet with two light kisses on the cheek.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "People queue in order and keep voices down on public transport; let others off before boarding.",
+   "alcohol": "Drinking outdoors is allowed in many places, but some towns ban it in certain streets or on transport; smoking is not allowed in most indoor public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink in most places.",
+   "good_to_know": [
+    "Bread and starters put on the table may be charged if eaten.",
+    "Pavements can be slippery and hilly: wear good shoes."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/portugal",
+    "https://www.visitportugal.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "QA",
+   "country": "Qatar",
+   "greetings": "A handshake between men; wait for a woman to offer her hand.",
+   "shoes": "Shoes come off in homes and mosques.",
+   "dress": "Dress modestly in public, covering shoulders and knees; mosques have stricter dress rules.",
+   "photos": "Do not photograph people without permission, especially women; do not photograph government sites.",
+   "gestures": "Avoid showing the sole of your foot; use your right hand to give and receive.",
+   "public": "Public displays of affection are frowned on.",
+   "alcohol": "Alcohol is only served in licensed hotel venues; drinking or being drunk in public is not allowed.",
+   "water": "varies",
+   "water_note": "Tap water is desalinated and treated, but most people drink bottled water.",
+   "good_to_know": [
+    "During Ramadan, avoid eating, drinking or smoking in public in daytime.",
+    "Friday is the main day of rest."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/qatar",
+    "https://www.visitqatar.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "RO",
+   "country": "Romania",
+   "greetings": "A handshake is usual; friends greet with kisses on the cheek.",
+   "shoes": "Shoes usually come off in homes.",
+   "dress": "Cover shoulders and knees in Orthodox churches; women may be asked to cover their hair at monasteries.",
+   "photos": "Photos are often not allowed or charged inside churches and monasteries; ask before photographing people.",
+   "gestures": null,
+   "public": "People queue in order and keep voices down on public transport; let others off before boarding.",
+   "alcohol": "Drinking in public places is restricted in many cities; smoking is not allowed in enclosed public places.",
+   "water": "varies",
+   "water_note": "Tap water is treated in cities, but many people drink bottled water; in rural areas drink bottled.",
+   "good_to_know": [
+    "Validate paper tickets on city transport.",
+    "Carry some cash for rural areas."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/romania",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "SA",
+   "country": "Saudi Arabia",
+   "greetings": "A handshake between men; wait for a woman to offer her hand. \"As-salamu alaykum\" is welcome.",
+   "shoes": "Shoes come off in homes and mosques.",
+   "dress": "Dress modestly in public: loose clothing covering shoulders and knees. Non-Muslims cannot enter the holy cities of Mecca and parts of Medina.",
+   "photos": "Do not photograph people without permission, especially women; do not photograph government, military or religious sites.",
+   "gestures": "Avoid showing the sole of your foot; use your right hand to give and receive.",
+   "public": "Public displays of affection are not acceptable; some places have separate family and single sections.",
+   "alcohol": "Alcohol is not available to the public; do not bring it. Smoking is banned in many enclosed public places.",
+   "water": "varies",
+   "water_note": "Tap water is desalinated and treated, but most people drink bottled water.",
+   "good_to_know": [
+    "During Ramadan, avoid eating, drinking or smoking in public in daytime.",
+    "Shops may close briefly at prayer times.",
+    "Rules change often: check current guidance before you go."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/saudi-arabia",
+    "https://www.visitsaudi.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "SE",
+   "country": "Sweden",
+   "greetings": "A handshake for first meetings; first names are normal. Personal space is valued.",
+   "shoes": "Shoes come off in homes; this is expected.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Queues often use number tickets; keep voices down on transport.",
+   "alcohol": "Strong drinks are sold only in state shops; drinking outdoors is banned in some city areas; smoking is not allowed in many outdoor serving areas.",
+   "water": "yes",
+   "water_note": "Tap water is excellent and safe to drink.",
+   "good_to_know": [
+    "Many places are cashless and take only cards.",
+    "The right of public access lets you walk in nature, with responsibilities: leave no trace."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/sweden",
+    "https://visitsweden.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "SG",
+   "country": "Singapore",
+   "greetings": "A handshake is usual; a nod or a small bow is also common.",
+   "shoes": "Shoes come off in homes and in temples and mosques.",
+   "dress": "Cover shoulders and knees at temples and mosques; robes may be provided.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Use your right hand to give and receive; avoid pointing with your finger.",
+   "public": "Eating and drinking on the MRT is not allowed; rules on littering and jaywalking are strictly enforced.",
+   "alcohol": "Drinking in public places is not allowed late at night; smoking is allowed only in marked areas.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink.",
+   "good_to_know": [
+    "Chewing gum is not sold.",
+    "Hawker centres: tissue packets on seats mean a table is taken."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/singapore",
+    "https://www.visitsingapore.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "SI",
+   "country": "Slovenia",
+   "greetings": "A handshake is usual; friends may greet with kisses on the cheek.",
+   "shoes": "Shoes usually come off in homes; hosts may offer slippers.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": null,
+   "public": "People queue in order and keep voices down on public transport; let others off before boarding.",
+   "alcohol": "Drinking outdoors is allowed in many places, but some towns ban it in certain streets or on transport; smoking is not allowed in most indoor public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink.",
+   "good_to_know": [
+    "Most shops close on Sundays.",
+    "Mountain huts have their own house rules: follow them."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/slovenia",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "SK",
+   "country": "Slovakia",
+   "greetings": "A handshake and a greeting are usual; use surnames until invited otherwise.",
+   "shoes": "Shoes usually come off in homes.",
+   "dress": "Covered shoulders and knees are expected in many churches and cathedrals; men usually remove hats.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": null,
+   "public": "People queue in order and keep voices down on public transport; let others off before boarding.",
+   "alcohol": "Drinking outdoors is allowed in many places, but some towns ban it in certain streets or on transport; smoking is not allowed in most indoor public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and safe to drink.",
+   "good_to_know": [
+    "Validate paper public transport tickets when you board.",
+    "Most shops have shorter hours on Sundays."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/slovakia",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "TH",
+   "country": "Thailand",
+   "greetings": "The \"wai\" (palms together, small bow) is the usual greeting; a smile goes a long way.",
+   "shoes": "Shoes come off in homes, temples and some shops: look for shoes at the door.",
+   "dress": "Cover shoulders and knees at temples and the Grand Palace.",
+   "photos": "Ask before photographing people and monks; some temples ban photos inside.",
+   "gestures": "The head is respected and the feet are not: do not touch heads or point feet at people or Buddha images.",
+   "public": "Speak calmly; losing your temper is frowned on. Women should not touch monks.",
+   "alcohol": "Alcohol sales are limited to certain hours and banned on some religious holidays; smoking and vaping rules are strict, and vaping devices are banned.",
+   "water": "no",
+   "water_note": "Drink bottled or filtered water.",
+   "good_to_know": [
+    "Show respect to the monarchy at all times.",
+    "Stand when the royal anthem plays, for example in cinemas."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/thailand",
+    "https://www.tourismthailand.org",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "TN",
+   "country": "Tunisia",
+   "greetings": "A handshake is usual; wait for a woman to offer her hand.",
+   "shoes": "Shoes come off in homes and mosques.",
+   "dress": "Dress modestly away from resorts. Many mosques are closed to non-Muslims, except some courtyards.",
+   "photos": "Ask before photographing people; do not photograph military or police sites.",
+   "gestures": "Use your right hand to eat and to give and receive.",
+   "public": "Bargaining is normal in souks; public displays of affection are frowned on.",
+   "alcohol": "Alcohol is sold in licensed places; drinking in public is frowned on.",
+   "water": "no",
+   "water_note": "Many travellers drink bottled water.",
+   "good_to_know": [
+    "During Ramadan, avoid eating, drinking or smoking in public in daytime.",
+    "French and Arabic are widely spoken."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/tunisia",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "TR",
+   "country": "Türkiye",
+   "greetings": "A handshake is usual; friends may greet with kisses on both cheeks. Wait for a woman to offer her hand.",
+   "shoes": "Shoes come off in homes and in mosques.",
+   "dress": "In mosques, cover shoulders and knees; women cover their hair (scarves are often provided). Avoid prayer times.",
+   "photos": "Ask before photographing people; do not photograph military areas; do not photograph people praying.",
+   "gestures": "Avoid the \"OK\" sign and showing the sole of your foot to people.",
+   "public": "Give seats to older people; dress is more conservative away from coastal resorts.",
+   "alcohol": "Drinking in some public places is restricted, and shops stop selling alcohol late at night; smoking is not allowed in enclosed public places.",
+   "water": "varies",
+   "water_note": "Tap water is treated in cities, but most people drink bottled water.",
+   "good_to_know": [
+    "Tea is offered often: accepting is polite.",
+    "Bargaining is normal at bazaars, not in shops with prices.",
+    "During Ramadan, avoid eating in public in conservative areas."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/turkey",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "TW",
+   "country": "Taiwan",
+   "greetings": "A handshake or a nod is usual.",
+   "shoes": "Shoes come off in homes.",
+   "dress": "Dress modestly at temples.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": "Pointing at people is impolite.",
+   "public": "Eating and drinking on the MRT is not allowed; priority seats are kept free.",
+   "alcohol": "Drinking in public is generally allowed; smoking is banned in many public places.",
+   "water": "no",
+   "water_note": "Tap water is treated, but most people boil or filter it before drinking.",
+   "good_to_know": [
+    "Rubbish is collected by trucks at set times, and public bins are rare.",
+    "Fines apply for eating or drinking on the MRT."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/taiwan",
+    "https://eng.taiwan.net.tw",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "TZ",
+   "country": "Tanzania",
+   "greetings": "Greetings are important and take time; \"jambo\" or \"habari\" are friendly openers. Older people are greeted first.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly, especially on Zanzibar and the coast: cover shoulders and knees away from the beach.",
+   "photos": "Always ask before photographing people, especially Maasai communities; do not photograph government buildings.",
+   "gestures": "Use your right hand to give and receive.",
+   "public": "Public displays of affection are frowned on; take time over greetings.",
+   "alcohol": "Drinking in public is frowned on, especially on Zanzibar; smoking in public places is restricted.",
+   "water": "no",
+   "water_note": "Drink bottled or boiled water.",
+   "good_to_know": [
+    "Traffic drives on the left.",
+    "Single-use plastic bags are banned.",
+    "During Ramadan, be discreet with food and drink in daytime on Zanzibar."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/tanzania",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "US",
+   "country": "United States",
+   "greetings": "A firm handshake and eye contact are usual; first names are used quickly.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Modest clothing is appreciated at places of worship; remove hats inside.",
+   "photos": "Ask before photographing people; avoid filming in government buildings and airport security areas.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "People queue and keep personal space; eating while walking is common.",
+   "alcohol": "Drinking alcohol in the street is not allowed in most places, and the drinking age is 21; smoking rules vary by state and city.",
+   "water": "yes",
+   "water_note": "Tap water is treated and generally safe to drink.",
+   "good_to_know": [
+    "Sales tax is usually added at the till, so shelf prices are lower than what you pay.",
+    "Distances are large: check travel times between cities before planning.",
+    "Rules differ from state to state; check local signs."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/usa",
+    "https://www.gousa.com",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": false
+  },
+  {
+   "iso2": "UY",
+   "country": "Uruguay",
+   "greetings": "A handshake for first meetings; one kiss on the cheek is common, including between men who know each other.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Dress modestly in churches.",
+   "photos": "Ask before photographing people; some museums and churches do not allow photos or flash.",
+   "gestures": null,
+   "public": "A calm, polite manner is usual; people queue in order.",
+   "alcohol": "Drinking in public is restricted in some places; smoking is banned in enclosed public places.",
+   "water": "yes",
+   "water_note": "Tap water is treated and generally safe in Montevideo and most towns.",
+   "good_to_know": [
+    "Sharing mate tea is part of daily life.",
+    "Dinner is often late in the evening."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/uruguay",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "VN",
+   "country": "Vietnam",
+   "greetings": "A handshake or a nod is usual; older people are greeted first.",
+   "shoes": "Shoes come off in homes and often in temples.",
+   "dress": "Cover shoulders and knees at temples and pagodas.",
+   "photos": "Ask before photographing people; do not photograph military sites.",
+   "gestures": "Beckon with the palm facing down; do not touch people’s heads.",
+   "public": "Public displays of affection are frowned on; speak calmly.",
+   "alcohol": "Drinking in public is generally allowed; smoking is banned in many indoor public places.",
+   "water": "no",
+   "water_note": "Drink bottled or filtered water.",
+   "good_to_know": [
+    "Crossing the road: walk at a steady pace so traffic can flow around you.",
+    "Carry small notes for markets."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/vietnam",
+    "https://vietnam.travel",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  },
+  {
+   "iso2": "ZA",
+   "country": "South Africa",
+   "greetings": "A handshake is usual and may be held longer than you expect; greet before getting to business.",
+   "shoes": "Shoes usually stay on indoors; in some homes hosts prefer them off, so follow their lead.",
+   "dress": "Modest clothing is appreciated at places of worship.",
+   "photos": "Ask before photographing people; follow park rules on wildlife photos.",
+   "gestures": "Gestures rarely cause trouble, but avoid pointing at people.",
+   "public": "Keep valuables out of sight; in parks, stay in your vehicle unless signs allow otherwise.",
+   "alcohol": "Drinking in public places is not allowed; smoking is not allowed in enclosed public places.",
+   "water": "varies",
+   "water_note": "Tap water is treated in the main cities; in rural areas, and during supply problems, drink bottled water.",
+   "good_to_know": [
+    "Traffic drives on the left.",
+    "Load-shedding (planned power cuts) can affect lights and shops: check schedules.",
+    "Eleven official languages: a greeting in the local one is welcome."
+   ],
+   "sources": [
+    "https://www.gov.uk/foreign-travel-advice/south-africa",
+    "https://www.southafrica.net",
+    "https://wwwnc.cdc.gov/travel/destinations/list"
+   ],
+   "checked": "2026-11-01",
+   "recheck": true
+  }
+ ]
+}

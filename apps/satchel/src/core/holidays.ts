@@ -207,17 +207,40 @@ const EPIPHANY = 'Epiphany';
 const MAUNDY = 'Maundy Thursday';
 const CHRISTMAS_EVE = 'Christmas Eve';
 
-/** New Zealand's Matariki, set in law year by year (Te Kāhui o Matariki Public Holiday Act 2022 schedule). */
-const MATARIKI: Record<number, string> = { 2023: '07-14', 2024: '06-28', 2025: '06-20', 2026: '07-10', 2027: '06-25', 2028: '07-14', 2029: '07-06', 2030: '06-21' };
+/**
+ * New Zealand's Matariki, set in law year by year (Te Kāhui o Matariki Public Holiday Act 2022 schedule). T112: 2031-2035
+ * added from the same schedule; each is a Friday within four days of the Pipiri last-quarter moon (checked offline in
+ * holidays.test.ts). Re-check against the published schedule online.
+ */
+const MATARIKI: Record<number, string> = {
+  2023: '07-14',
+  2024: '06-28',
+  2025: '06-20',
+  2026: '07-10',
+  2027: '06-25',
+  2028: '07-14',
+  2029: '07-06',
+  2030: '06-21',
+  2031: '07-11',
+  2032: '07-02',
+  2033: '06-24',
+  2034: '07-07',
+  2035: '06-29',
+};
 
 /** Ireland's St Brigid's Day: the first Monday in February, or 1 February when that is a Friday (from 2023). */
 const stBrigid = (y: number): LocalDate => (weekdayOf(ymd(y, 2, 1)) === FRI ? ymd(y, 2, 1) : nthWeekday(y, 2, MON, 1));
 
-/** Greece: May Day stands unless it falls in the fortnight around Orthodox Easter, when the date is set by decree. */
+/**
+ * Greece: May Day stands unless it falls in Orthodox Holy Week (Holy Monday to Holy Saturday) or on Easter Sunday or
+ * Monday; then the Labour ministry moves it by decision (in recent years to the Tuesday after Easter: 2013, 2016, 2021,
+ * 2024), so it is left out (note grMayDay). T112: the window was a whole fortnight either side; 1 May in the rest of
+ * Bright Week or on Palm / Thomas Sunday is kept (as in 2008 and 2019).
+ */
 const grMayDay = (y: number): LocalDate | null => {
   const may1 = ymd(y, 5, 1);
   const e = orthodoxEaster(y);
-  return may1 >= shiftDate(e, -7) && may1 <= shiftDate(e, 7) ? null : may1;
+  return may1 >= shiftDate(e, -6) && may1 <= shiftDate(e, 1) ? null : may1;
 };
 
 // ------------------------------------------------------------------ the table

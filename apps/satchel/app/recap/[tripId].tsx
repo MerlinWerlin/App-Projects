@@ -27,6 +27,7 @@ import { IDEA_ICONS, IDEA_TONES } from '../../src/ui/ideas.tsx';
 import { MOOD_ICONS, moodKey, PhotoThumb } from '../../src/ui/journal.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen, ToggleRow } from '../../src/ui/kit.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
+import { PlanAgainButton } from '../../src/ui/PlanAgainButton.tsx';
 import { RecapStamps } from '../../src/ui/PassportCard.tsx';
 import { countryName, displayCountryName, formatInt } from '../../src/ui/useTravelStats.ts';
 
@@ -115,6 +116,8 @@ function RecapView({ trip }: { trip: Trip }) {
             <EmptyState art="clock" title={t('recap.upcoming.title')} body={t('recap.upcoming.body')} />
           </FadeInView>
         )}
+        {/* T118: go again, on new dates. */}
+        <PlanAgainButton trip={trip} card />
         <Body muted>{t('recap.offline')}</Body>
       </ScrollView>
     </>
