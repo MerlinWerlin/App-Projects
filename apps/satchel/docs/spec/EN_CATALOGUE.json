@@ -6471,5 +6471,15 @@
  "f110.toilets.pinAccessibleA11y": "{name}, wheelchair accessible toilet",
  "f110.lift.ask": "Ask for a lift",
  "f110.lift.askHint": "Shows “Where is the lift?” in the local language, full screen",
- "f110.lift.check": "Not yet checked by a native speaker. If someone looks puzzled, show them the English too."
+ "f110.lift.check": "Not yet checked by a native speaker. If someone looks puzzled, show them the English too.",
+ "demo2.title": "Sample past trips",
+ "demo2.body": "Adds two made-up past trips, marked Sample, so Your travels and the passport stamps have something to show, for example in screenshots. They are never put in backups or exported trip files.",
+ "demo2.add": "Add sample past trips",
+ "demo2.addHint": "Adds two invented past trips marked Sample and turns on Include demo trips in Your travels",
+ "demo2.remove": "Remove sample trips",
+ "demo2.removeHint": "Deletes both sample past trips in one tap. Your own trips stay as they are.",
+ "demo2.added": "Two sample past trips added. Remove them here at any time.",
+ "demo2.removed": "Sample past trips removed.",
+ "demo2.chip": "Sample",
+ "demo2.noExport": "Sample trips can’t be exported. Remove them in Settings when you’re done."
 }

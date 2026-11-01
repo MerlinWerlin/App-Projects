@@ -140,7 +140,7 @@ export default function OpenInAddScreen() {
                   >
                     <Ionicons name={selected ? 'radio-button-on' : 'radio-button-off'} size={22} color={selected ? theme.accentInk : theme.muted} />
                     <View style={{ flex: 1 }}>
-                      <Text style={[typeScale.body, { color: selected ? theme.accentInk : theme.ink, fontFamily: fonts.bodyBold }]} numberOfLines={1}>
+                      <Text style={[typeScale.body, { color: selected ? theme.accentInk : theme.ink, fontFamily: fonts.bodyBold }]} numberOfLines={2}>
                         {x.name}
                       </Text>
                       <Text style={[typeScale.small, { color: theme.muted }]}>{dates}</Text>

@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { AA_LARGE, contrast } from '../theme/contrast.ts';
 import { dark, light } from '../theme/tokens.ts';
 import { OFFERED_POI_CATEGORIES } from './packpois.ts';
-import { POI_PIN_FALLBACK, POI_PIN_STYLES, poiPinStyle } from './poipins.ts';
+import { PIN_SVG_GLYPHS, POI_PIN_FALLBACK, POI_PIN_STYLES, poiPinStyle } from './poipins.ts';
 
 test('every offered category has its own glyph and a theme tone', () => {
   const icons = OFFERED_POI_CATEGORIES.map((c) => POI_PIN_STYLES[c].icon);
@@ -40,4 +40,19 @@ test('pin colours read on the map and the page, and the card-coloured glyph read
     }
   }
   assert.deepEqual(fails, []);
+});
+
+test('T164: lift pins draw the original lift SVG glyph, card-coloured on teal at 3:1 (light + dark)', () => {
+  const look = poiPinStyle('lift');
+  assert.equal(look.svg, 'lift');
+  assert.equal(look.tone, 'teal');
+  assert.ok(PIN_SVG_GLYPHS.includes(look.svg));
+  // Only lifts use an SVG glyph today; every other category keeps its Ionicons glyph.
+  for (const c of OFFERED_POI_CATEGORIES) if (c !== 'lift') assert.equal(POI_PIN_STYLES[c].svg, undefined, c);
+  assert.equal(POI_PIN_FALLBACK.svg, undefined);
+  for (const th of [light, dark]) {
+    const fill: string = th[look.tone];
+    assert.ok(contrast(th.card, fill) >= AA_LARGE, `${th.dark ? 'dark' : 'light'} lift glyph on pin`);
+    for (const bg of [th.paper, th.card, ...GROUND[th.dark ? 'dark' : 'light']]) assert.ok(contrast(fill, bg) >= AA_LARGE, `lift pin on ${bg}`);
+  }
 });

@@ -45,7 +45,7 @@ function BagRow({ trip, bag, report }: { trip: Trip; bag: Bag; report: boolean }
         <Ionicons name={BAG_ICON[bag.kind]} size={20} color={paint.ink} />
       </View>
       <View style={{ flex: 1, gap: 2 }}>
-        <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: paint.ink }]}>
+        <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: paint.ink }]}>
           {name}
         </Text>
         <Text numberOfLines={2} style={[typeScale.small, { color: paint.muted }]}>

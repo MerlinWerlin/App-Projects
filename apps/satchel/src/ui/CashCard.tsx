@@ -57,7 +57,7 @@ export function CashCard({ trip, showTrip }: { trip: Trip | null; showTrip?: boo
       <View style={{ flex: 1, gap: 2 }}>
         <Text style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}>{title}</Text>
         {sub ? (
-          <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>
+          <Text numberOfLines={2} style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>
             {sub}
           </Text>
         ) : null}

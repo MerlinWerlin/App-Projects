@@ -38,7 +38,7 @@ export function RecapList({ includeDemo }: { includeDemo: boolean }) {
           >
             <TripCover scene={tripCover(trip)} aspectRatio={1.4} rounded={radius.s} label={null} style={{ width: 56 }} />
             <View style={{ flex: 1 }}>
-              <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: theme.ink }]}>
+              <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.ink }]}>
                 {trip.name}
               </Text>
               <Text style={[typeScale.small, { color: theme.muted }]}>{dates}</Text>

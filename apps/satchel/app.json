@@ -152,43 +152,6 @@
       ],
       "blockedPermissions": [
         "android.permission.ACCESS_BACKGROUND_LOCATION"
-      ],
-      "intentFilters": [
-        {
-          "action": "VIEW",
-          "category": [
-            "DEFAULT"
-          ],
-          "data": [
-            {
-              "scheme": "content"
-            },
-            {
-              "scheme": "file"
-            },
-            {
-              "mimeType": "application/pdf"
-            },
-            {
-              "mimeType": "image/*"
-            },
-            {
-              "mimeType": "text/plain"
-            },
-            {
-              "mimeType": "message/rfc822"
-            },
-            {
-              "mimeType": "application/json"
-            },
-            {
-              "mimeType": "application/vnd.satchel.trip+json"
-            },
-            {
-              "mimeType": "application/vnd.satchel.backup+json"
-            }
-          ]
-        }
       ]
     },
     "plugins": [
@@ -228,7 +191,8 @@
           "microphonePermission": false
         }
       ],
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      "./plugins/with-open-in"
     ],
     "experiments": {
       "typedRoutes": false

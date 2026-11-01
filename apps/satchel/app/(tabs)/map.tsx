@@ -427,8 +427,9 @@ export default function MapScreen() {
     out.push(...layers.extra);
     for (const p of shownPois) {
       // T155: each category its own glyph and theme colour (src/core/poipins.ts); T156: wheelchair tag in subtitle + label.
+      // T164: lifts draw the original LiftGlyph SVG (look.svg) like their Layers-sheet row, not the Ionicons stand-in.
       const look = poiPinStyle(p.category);
-      out.push({ id: `p:${p.id}`, lat: p.lat, lon: p.lon, title: p.name, subtitle: [catLabel(p.category), wheelchairText(t, p.wheelchair)].filter(Boolean).join(' · '), color: theme[look.tone], glyph: look.icon as MapPin['glyph'], a11y: [t('map.pinPoi', { category: catLabel(p.category), name: p.name }), wheelchairText(t, p.wheelchair)].filter(Boolean).join('. ') });
+      out.push({ id: `p:${p.id}`, lat: p.lat, lon: p.lon, title: p.name, subtitle: [catLabel(p.category), wheelchairText(t, p.wheelchair)].filter(Boolean).join(' · '), color: theme[look.tone], glyph: look.icon as MapPin['glyph'], svgGlyph: look.svg, a11y: [t('map.pinPoi', { category: catLabel(p.category), name: p.name }), wheelchairText(t, p.wheelchair)].filter(Boolean).join('. ') });
     }
     if (selected?.type === 'spot') {
       out.push({ id: 'spot', lat: selected.at.lat, lon: selected.at.lon, title: t('places.dropped'), color: theme.muted, a11y: t('places.dropped') });

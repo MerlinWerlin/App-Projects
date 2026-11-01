@@ -56,7 +56,7 @@ function RecapHeroInner({ trip }: { trip: Trip }) {
               <Ionicons name="sparkles" size={14} color={theme.heroAccent} />
               <Text style={[typeScale.caption, { color: theme.heroMuted }]}>{r.demo ? t('f91.home.eyebrowSample') : t('f91.home.eyebrow')}</Text>
             </View>
-            <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: theme.heroInk }]}>
+            <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.heroInk }]}>
               {trip.name}
             </Text>
             <Text style={[typeScale.small, { color: theme.heroInk }]}>{body}</Text>

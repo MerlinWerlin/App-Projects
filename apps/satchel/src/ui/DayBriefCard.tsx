@@ -126,7 +126,7 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
             style={{ paddingHorizontal: space.l, paddingVertical: space.s, flexDirection: 'row', alignItems: 'center', gap: space.s }}
           >
             <KindIcon kind="hotel" color={theme.heroAccent} size={18} />
-            <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: theme.heroInk, flex: 1 }]}>
+            <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.heroInk, flex: 1 }]}>
               {tonight}
             </Text>
           </PressableScale>

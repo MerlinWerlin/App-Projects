@@ -311,7 +311,7 @@ export function CoverPicker({ value, auto, onChange }: { value: string | undefin
             }}
           >
             <TripCover scene={o.scene} aspectRatio={1.5} rounded={radius.s} label={null} />
-            <Text numberOfLines={1} style={[typeScale.small, { color: o.selected ? theme.accentInk : theme.ink, textAlign: 'center', paddingBottom: 2 }]}>
+            <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={[typeScale.small, { color: o.selected ? theme.accentInk : theme.ink, textAlign: 'center', paddingBottom: 2 }]}>
               {o.label}
             </Text>
           </PressableScale>

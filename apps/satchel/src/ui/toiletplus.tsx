@@ -295,7 +295,7 @@ function PlainRow({ icon, tone, title, sub, a11y, hint, onPress }: { icon: IconN
     >
       <IconBadge name={icon} tone={tone} size="s" />
       <View style={{ flex: 1 }}>
-        <Text style={[typeScale.bodyStrong, { color: theme.ink }]} numberOfLines={1}>
+        <Text style={[typeScale.bodyStrong, { color: theme.ink }]} numberOfLines={2}>
           {title}
         </Text>
         {sub ? (

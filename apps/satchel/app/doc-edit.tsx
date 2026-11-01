@@ -184,7 +184,7 @@ function DocEditForm() {
             style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, borderWidth: 1, borderColor: theme.line, borderRadius: radius.s, paddingLeft: space.m, backgroundColor: theme.card }}
           >
             <Ionicons name={isImage(a) ? 'image-outline' : 'document-outline'} size={20} color={theme.ink} />
-            <Text style={{ fontFamily: fonts.body, fontSize: 15, color: theme.ink, flex: 1 }} numberOfLines={1}>
+            <Text style={{ fontFamily: fonts.body, fontSize: 15, color: theme.ink, flex: 1 }} numberOfLines={2}>
               {a.name}
             </Text>
             <PressableScale

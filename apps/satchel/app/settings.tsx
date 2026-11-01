@@ -30,6 +30,7 @@ import { useTempUnit } from '../src/ui/WeatherCard.tsx';
 import { FadeInView, HeroHeader, SectionHeader, type IconName, type Tone } from '../src/ui/hero.tsx';
 import { Body, Button, Card, Chip, PressableScale, Screen, ToggleRow } from '../src/ui/kit.tsx';
 import { StepFreeEntry } from '../src/ui/stepfree.tsx';
+import { SampleTravelsSection } from '../src/ui/SampleTravels.tsx';
 
 const LIST_DATE = typeof (table as { imported?: unknown }).imported === 'string' ? (table as { imported: string }).imported : null;
 
@@ -236,6 +237,9 @@ export default function SettingsScreen() {
         <Body muted>{t('backup.settingsBody')}</Body>
         <Button label={t('backup.settingsOpen')} hint={t('backup.settingsOpenHint')} kind="secondary" icon="cloud-upload-outline" onPress={() => router.push('/backup')} />
       </Section>
+
+      {/* T163: invented past trips for screenshots of Your travels and the passport stamps. */}
+      <SampleTravelsSection />
 
       <Section title={t('settings.privacy')} icon="shield-checkmark-outline" tone="ok">
         <Text accessibilityRole="header" style={{ fontFamily: fonts.displayMedium, fontSize: 20, color: theme.ink }}>

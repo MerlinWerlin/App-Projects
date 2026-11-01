@@ -2009,6 +2009,55 @@
         "release"
       ],
       "title": "Run-111 follow-ups: put SUPPORT_EMAIL into privacy.html/support.html once Jared gives the address; decide with Jared whether the Satchel Plus purchase ships with 0.1.0 before city maps are live (a reviewer can't see what it unlocks); add one or two invented past demo trips (opt-in) for the Your travels screenshot; lift pins on the map use the new SVG glyph (pins only take Ionicons today); check about 100 secondary numberOfLines uses at the largest text size; device checks DI-DK.",
+      "accept": "tests green; DECISIONS records",
+      "note": "Run 112: offline parts split to T163 (demo past trips for the Your travels screenshot) and T164 (lift pins on the SVG glyph + largest-text numberOfLines audit); SUPPORT_EMAIL, the Plus decision and device checks DI-DK stay here waiting on Jared (satchel-release-decisions, satchel-trial)."
+    },
+    {
+      "id": "T162",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "release",
+        "owner"
+      ],
+      "title": "OTA publish fix: Expo rejects the resolved config with 'android/intentFilters must NOT have duplicate items' (ship run 41311019053, PR #196). Move the Android VIEW filter out of app.json into a local config plugin (plugins/with-open-in.js, manifest mod, idempotent) so the public config carries no intentFilters; tests read the plugin's filter.",
+      "accept": "app.json has no android.intentFilters; plugin adds the same VIEW filter once even if run twice; openin tests green",
+      "commit": "2a40b44"
+    },
+    {
+      "id": "T163",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "release",
+        "follow-up"
+      ],
+      "title": "Screenshot demo travels (from T161): one or two invented past demo trips, opt-in from Settings, so the Your travels / passport stamps screenshot isn't empty; removable in one tap; never mixed into backups or .satchel exports unless the user keeps them",
+      "accept": "tests green; strings in en.ts; DECISIONS records",
+      "commit": "8babe08"
+    },
+    {
+      "id": "T164",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "release",
+        "follow-up",
+        "a11y"
+      ],
+      "title": "Lift pins + largest text (from T161): map lift pins use the original lift SVG glyph instead of an Ionicons stand-in; audit secondary numberOfLines uses so text at the largest Dynamic Type sizes wraps or shrinks instead of clipping key info; ui-check rule for the pattern",
+      "accept": "tests + ui-check green; DECISIONS records",
+      "commit": "b4bfb82"
+    },
+    {
+      "id": "T165",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "follow-up",
+        "release"
+      ],
+      "title": "Run-112 follow-ups: Plan this trip again on a sample trip should drop the sample mark cleanly or be hidden; removing samples could switch 'Include demo trips' back off if the samples turned it on; check react-native-maps draws the SVG lift glyph in a custom marker on a TestFlight build (DM); confirm 'npx expo config --type public' on the PC shows no android.intentFilters and the next OTA publishes (T162).",
       "accept": "tests green; DECISIONS records"
     }
   ],

@@ -1,7 +1,11 @@
 // T14 Open in / Copy to Satchel: incoming-file router (kind, route, redirect) and .eml / text extraction.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { test } from 'node:test';
+
+type OpenInFilter = { action: string; category: string[]; data: { mimeType?: string; scheme?: string }[] };
+const OPEN_IN_FILTER = JSON.parse(readFileSync(new URL('../../plugins/open-in-filter.json', import.meta.url), 'utf8')) as OpenInFilter;
 import {
   base64ToBytes,
   classifyFile,
@@ -248,7 +252,7 @@ test('app.json declares the document types, the exported trip UTI and Android VI
   assert.deepEqual(exported.UTTypeConformsTo, ['public.json', 'public.data']);
   assert.deepEqual(exported.UTTypeTagSpecification['public.filename-extension'], ['satchel']);
   assert.equal(plist.LSSupportsOpeningDocumentsInPlace, false);
-  const filters = app.expo.android.intentFilters ?? [];
+  const filters = [OPEN_IN_FILTER];
   const mimes = filters.filter((f) => f.action === 'VIEW').flatMap((f) => f.data.map((d) => d.mimeType));
   for (const m of ['application/pdf', 'image/*', 'text/plain', 'message/rfc822', 'application/json']) assert.ok(mimes.includes(m), m);
 });
@@ -259,7 +263,7 @@ test('app.json Android VIEW filter carries the trip and backup MIME types', asyn
   const app = JSON.parse(readFileSync(new URL('../../app.json', import.meta.url), 'utf8')) as {
     expo: { ios: { infoPlist: { UTExportedTypeDeclarations: { UTTypeTagSpecification: Record<string, string[]> }[] } }; android: { intentFilters: { action: string; category: string[]; data: { mimeType?: string }[] }[] } };
   };
-  const view = app.expo.android.intentFilters.filter((f) => f.action === 'VIEW');
+  const view = [OPEN_IN_FILTER].filter((f) => f.action === 'VIEW');
   const mimes = view.flatMap((f) => f.data.map((d) => d.mimeType)).filter(Boolean);
   // the same MIME types the iOS exported types declare
   const exported = app.expo.ios.infoPlist.UTExportedTypeDeclarations.flatMap((u) => u.UTTypeTagSpecification['public.mime-type'] ?? []);
@@ -303,4 +307,30 @@ test('app.json declares and exports app.satchel.backup (.satchelbackup) next to 
   assert.ok(b.UTTypeConformsTo.includes('public.data'));
   assert.deepEqual(b.UTTypeTagSpecification['public.filename-extension'], ['satchelbackup']);
   assert.deepEqual(b.UTTypeTagSpecification['public.mime-type'], ['application/vnd.satchel.backup+json']);
+});
+
+// T162 (run 112): Expo's update publish rejected app.json's android.intentFilters as duplicated
+// in the resolved config, so the VIEW filter moved to plugins/with-open-in.js (manifest mod).
+test('app.json carries no android.intentFilters; the local plugin adds the VIEW filter exactly once', () => {
+  const app = JSON.parse(readFileSync(new URL('../../app.json', import.meta.url), 'utf8')) as {
+    expo: { android: Record<string, unknown>; plugins: (string | unknown[])[] };
+  };
+  assert.equal(app.expo.android.intentFilters, undefined, 'no intentFilters in the public config');
+  assert.ok(app.expo.plugins.includes('./plugins/with-open-in'), 'plugin registered');
+  const req = createRequire(import.meta.url);
+  const plugin = req('../../plugins/with-open-in.js') as {
+    toManifestFilter: (f: unknown) => { action: { $: Record<string, string> }[]; category: { $: Record<string, string> }[]; data: { $: Record<string, string> }[] };
+    addFilter: (list: unknown, f: unknown) => unknown[];
+  };
+  const mf = plugin.toManifestFilter(OPEN_IN_FILTER);
+  assert.equal(mf.action[0].$['android:name'], 'android.intent.action.VIEW');
+  assert.equal(mf.category[0].$['android:name'], 'android.intent.category.DEFAULT');
+  assert.ok(mf.data.some((d) => d.$['android:mimeType'] === 'application/vnd.satchel.backup+json'));
+  assert.ok(mf.data.some((d) => d.$['android:scheme'] === 'content'));
+  const deepLink = { action: [{ $: { 'android:name': 'android.intent.action.MAIN' } }] };
+  const once = plugin.addFilter([deepLink], mf);
+  const twice = plugin.addFilter(once, plugin.toManifestFilter(OPEN_IN_FILTER));
+  assert.equal(once.length, 2);
+  assert.equal(twice.length, 2, 'running the mod twice adds no duplicate');
+  assert.equal(plugin.addFilter(undefined, mf).length, 1);
 });

@@ -12,6 +12,7 @@ Nothing here was run on a device: the right-hand column lists what the owner sho
 | A11Y images | every `Image` / `Svg` has a label or is hidden (accessibilityElementsHidden + importantForAccessibility), or sits inside an element in the same file that labels/hides it or inside a touchable | T160 |
 | TOUCH | raw Pressable / Touchable* need hitSlop, minHeight or flex: 1; PressableScale (minHeight 48 + hitSlop 8) must not set a literal height / minHeight under 48 | T160 |
 | TYPE | a `Text` with accessibilityRole="header" and numberOfLines must use adjustsFontSizeToFit (headers never clip under Dynamic Type) | T160 |
+| TYPE | a `Text numberOfLines={1}` inside a touchable (button / row / control, same file) must use adjustsFontSizeToFit, or wrap | T164 |
 | COLOUR | no raw hex / rgb() / 'white' / 'black' in app/ or src/ui (tokens only, light + dark) | T59 |
 | COPY | no developer wording (Expo Go, full / dev / test build, this build, TODO, FIXME, simulator, debug, lorem ipsum) in English catalogue values | T160 |
 | MOTION | any .tsx that animates (Animated.timing / sequence / parallel / loop, timed / fadeIn / fadeOut, LayoutAnimation, withTiming…) reads Reduce Motion; springs / bounce are banned by `src/theme/motion.test.ts` | T160 (+T91) |
@@ -19,6 +20,25 @@ Nothing here was run on a device: the right-hand column lists what the owner sho
 Not automated (reviewed by hand, see table): truncation of non-header text (`numberOfLines` appears ~100 times, almost all
 secondary lines inside a labelled row that opens the full text; VoiceOver always reads the whole string), permission-denied
 / offline / empty states (behaviour, not syntax).
+
+## Largest-text audit (T164, run 112)
+
+Every `numberOfLines` in app/, src/ui and src/native (99 uses) read for the largest Dynamic Type sizes.
+
+| | Before | After |
+|---|---|---|
+| `numberOfLines` uses | 99 | 99 |
+| …of them `numberOfLines={1}` | 56 | 21 |
+| …with adjustsFontSizeToFit (on the same line) | 7 | 17 |
+| one-line text inside a control without shrink-to-fit (new ui-check rule) | 29 | 0 |
+
+- 35 raised from 1 to 2 lines so names, places, addresses and sub-lines wrap instead of clipping: trip / bag / card / contact /
+  idea / attachment names, wallet rows, spending lines, pin list titles, hero-card sub-lines, weather and jet-lag city.
+- 10 numbers and short labels in fixed slots now shrink to fit (minimumFontScale 0.5–0.7): boarding-pass cities and stat values,
+  Your travels numbers + captions, cover-style chips, photo-light time, loyalty number + member name, hero tile button labels.
+- Left alone (decorative or bounded on purpose): postcard preview, idea link URL, bingo FREE cell, loyalty card-face kind / tier /
+  note; the 2–6 line caps on secondary text inside rows that open the full text (VoiceOver reads the whole string).
+- Owner TestFlight check: at AX5, Trips list (trip pass), Wallet, Spending and the trip hero cards; rows grow taller, nothing clipped.
 
 ## Findings and fixes
 

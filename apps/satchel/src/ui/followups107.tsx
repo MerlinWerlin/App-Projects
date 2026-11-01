@@ -39,7 +39,7 @@ export function PostcardsBriefRow({ trip, today, zone, now }: { trip: Trip; toda
           <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.heroInk }]}>
             {line}
           </Text>
-          <Text numberOfLines={1} style={[typeScale.small, { color: theme.heroMuted }]}>
+          <Text numberOfLines={2} style={[typeScale.small, { color: theme.heroMuted }]}>
             {sub}
           </Text>
         </View>

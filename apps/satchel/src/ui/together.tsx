@@ -200,7 +200,7 @@ function CompanionsCard({ trip, save, people }: { trip: Trip; save: Save; people
           ) : (
             <View key={c.id} style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, borderTopWidth: 1, borderTopColor: theme.line }}>
               <Avatar name={c.name} tone={people.tone(c.id)} />
-              <Text style={[typeScale.bodyStrong, { flex: 1, color: theme.ink }]} numberOfLines={1}>
+              <Text style={[typeScale.bodyStrong, { flex: 1, color: theme.ink }]} numberOfLines={2}>
                 {c.name}
               </Text>
               <PressableScale
@@ -252,7 +252,7 @@ function BalanceRow({ person, amount, code, people }: { person: string; amount: 
   return (
     <View accessible accessibilityLabel={`${name}, ${text}`} style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, minHeight: TOUCH }}>
       <Avatar name={name} tone={people.tone(person)} />
-      <Text style={[typeScale.bodyStrong, { flex: 1, color: theme.ink }]} numberOfLines={1}>
+      <Text style={[typeScale.bodyStrong, { flex: 1, color: theme.ink }]} numberOfLines={2}>
         {name}
       </Text>
       <Text style={[typeScale.bodyStrong, { color: colour, fontVariant: ['tabular-nums'] }]}>{text}</Text>
