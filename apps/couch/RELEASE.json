@@ -1,5 +1,5 @@
 {
   "mode": "update",
-  "note": "Couch 1.0.2: scan report on Add TV",
+  "note": "Couch 1.0.2: finds Google TVs (TCL) with Bonjour, like AirPlay does; Google TV pairing",
   "ascAppId": "6826135134"
 }
