@@ -1,5 +1,5 @@
 {
   "mode": "update",
-  "note": "Couch 1.0.2: also finds Google TVs (e.g. TCL) from their casting description",
+  "note": "Couch 1.0.2: finds Google TVs (e.g. TCL) through the Cast port when their web ports are shut",
   "ascAppId": "6826135134"
 }
