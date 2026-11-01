@@ -264,9 +264,16 @@ const HERO_ROLE: Readonly<Record<HeroSize, RemoteArtRole>> = { small: 'widget-sm
 export function remoteArtFiles(m: Pick<RemoteArtManifest, 'assets'> & { widgets?: RemoteArtManifest['widgets'] }): RemoteArtFiles {
   const find = (role: RemoteArtRole) => m.assets.find((a) => a.role === role)?.path ?? null;
   const heroes: Partial<Record<HeroSize, string>> = {};
+  // T201 (owner-1101d #4, the cropped Firefly Grove fox): a v2 pack's own art options come FIRST.
+  // A v1 widget-medium / widget-large file may be a pre-cropped strip of square art; the v2 list
+  // has the whole piece (fitted later). Order: a v2 `art` option suggested for the size (one over
+  // the wallpaper first), then the v1 role file, then any v2 option for the size.
+  const own = (m.widgets ?? []).filter((o) => !o.derived);
   for (const s of HERO_SIZES) {
-    // T187: a v2 pack may ship no widget-<size> file; its first option for the size stands in.
-    const p = find(HERO_ROLE[s]) ?? (m.widgets ?? []).find((o) => o.sizes.includes(s))?.image ?? null;
+    const forSize = own.filter((o) => o.sizes.includes(s));
+    const art = forSize.filter((o) => o.kind === 'art');
+    const p =
+      (art.find((o) => o.background === 'wallpaper') ?? art[0])?.image ?? find(HERO_ROLE[s]) ?? forSize[0]?.image ?? null;
     if (p) heroes[s] = p;
   }
   return { wallpaper: find('wallpaper'), thumb: find('thumb'), heroes };

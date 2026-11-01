@@ -40,8 +40,9 @@
 // one virtualised list of memoised rows, with the ~16 pt spacer above the first section (T166).
 // T187 (owner-1101 #5): above the grid, the theme's own widget art menu (src/ui/ThemeWidgetArt.tsx):
 // every widget art piece of the theme for the chosen size, fitted (never cropped), grouped per kind.
+// T201 (owner-1101d #4): shelf order (src/core/widgetOptions.ts widgetShelf): practical pieces, then
+// art, then the standard widgets of the grid below, drawn in the theme's palette.
 import { Feather } from '@expo/vector-icons';
-import { IslandPetArt } from '../../src/ui/IslandPetArt';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions, type AccessibilityActionEvent, type ListRenderItem, type StyleProp, type ViewStyle } from 'react-native';
@@ -612,24 +613,6 @@ export default function WidgetsTab() {
 
   const header = (
     <>
-      <Pressable
-        onPress={() => router.push('/pets')}
-        accessibilityRole="button"
-        accessibilityLabel={t('pets.title')}
-        accessibilityHint={t('pets.intro')}
-        style={[styles.pets, continuous, { backgroundColor: c.fill }]}
-      >
-        <IslandPetArt pet="cat" mood="happy" size={48} />
-        <View style={styles.petsText}>
-          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...label('headline'), { color: c.ink }]}>
-            {t('pets.title')}
-          </Text>
-          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
-            {t('pets.intro')}
-          </Text>
-        </View>
-        <Feather name="chevron-right" size={20} color={c.inkSecondary} />
-      </Pressable>
       <Text maxFontSizeMultiplier={fontScaleCap('footnote')} accessibilityRole="header" style={[...label('footnote'), styles.section, { color: c.inkSecondary }]}>
         {t('tabs.widgetsTab.themes')}
       </Text>
@@ -802,9 +785,6 @@ const styles = StyleSheet.create({
   note: { paddingHorizontal: GUTTER, marginTop: spaceV2.md },
   // T187: the theme widget art menu sits in the side gutters, a section's space below the size tabs.
   art: { paddingHorizontal: GUTTER, marginTop: spaceV2.xl },
-  // Pets entry card (T162: was an inline style object). T173: tokens only (spacing grid, card radius).
-  pets: { margin: GUTTER, padding: spaceV2.lg, borderRadius: chromeRadiusV2.card, flexDirection: 'row', alignItems: 'center', gap: spaceV2.md },
-  petsText: { flex: 1, gap: spaceV2.xs },
   // T91: one row of the grid; cells stretch to the tallest one. T162: rows are list items, so each
   // row carries the grid's side gutter and the gap below it.
   row: { flexDirection: 'row', alignItems: 'stretch', gap: GAP, paddingHorizontal: GUTTER, marginBottom: GAP },

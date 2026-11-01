@@ -11,7 +11,6 @@ export const tipping = {
   'tipping.fromArrival': 'Tipping guide',
   'tipping.fromArrivalHint': 'Opens what’s usual for tipping in {country}, with a tip calculator.',
   'tipping.fromExpense': 'Work out a tip',
-  'tipping.fromExpenseHint': 'Opens the tip calculator. Adding from there saves a new expense with the tip included.',
 
   // Country
   'tipping.country': 'Country',

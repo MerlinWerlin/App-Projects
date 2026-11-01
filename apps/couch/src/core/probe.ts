@@ -16,6 +16,11 @@ export const SONY_API_PORT = 80;
 export const CAST_SETUP_PORT = 8008;
 /** LG webOS SSAP plain WebSocket port; a plain HTTP GET there answers "Hello world". */
 export const WEBOS_PROBE_PORT = 3000;
+/** Google Cast (CASTV2) TLS port: open on every Chromecast built-in / Google TV, even when :8008 is shut. */
+export const CAST_TLS_PORT = 8009;
+
+/** True when a TLS connection to host:port completes (native socket; injected, absent in Expo Go/tests). */
+export type TlsPortCheck = (host: string, port: number) => Promise<boolean>;
 export const DEFAULT_PROBE_TIMEOUT_MS = 800;
 
 function toInt(ip: string): number | null {
@@ -180,6 +185,24 @@ export function parseCastEurekaInfo(body: string, host: string): TvCandidate | n
   return c;
 }
 
+/**
+ * Maps the DIAL device description (GET :8008/ssdp/device-desc.xml, served by Chromecast built-in for
+ * casting from phone apps) to a Google TV candidate. A second chance when eureka_info is restricted.
+ */
+export function parseCastDeviceDesc(xml: string, host: string): TvCandidate | null {
+  if (!/<root[\s>]/i.test(xml) || !/<device>/i.test(xml)) return null;
+  const manufacturer = xmlTag(xml, 'manufacturer') ?? '';
+  const modelName = xmlTag(xml, 'modelName') ?? '';
+  if (!/google/i.test(manufacturer) && !/chromecast|eureka|google/i.test(modelName)) return null;
+  const c: TvCandidate = { platform: 'androidtv', host, port: CAST_SETUP_PORT, source: 'probe' };
+  const name = xmlTag(xml, 'friendlyName');
+  if (name) c.name = name;
+  const udn = xmlTag(xml, 'UDN');
+  if (udn) c.usn = udn;
+  c.location = `http://${host}:${CAST_SETUP_PORT}/ssdp/device-desc.xml`;
+  return c;
+}
+
 /** LG webOS answers a plain HTTP GET on its SSAP port with "Hello world". */
 export function parseWebosHello(body: string, host: string): TvCandidate | null {
   if (!/hello world/i.test(body)) return null;
@@ -195,6 +218,16 @@ async function tryGet(fetch: FetchLike, url: string, timeoutMs: number): Promise
     const res = await fetch(url, { method: 'GET', timeoutMs });
     if (!res.ok) return null;
     return await res.text();
+  } catch {
+    return null;
+  }
+}
+
+/** Any HTTP answer (even 403/404) as { ok, body }; null when refused or timed out. */
+async function tryAny(fetch: FetchLike, url: string, timeoutMs: number): Promise<{ ok: boolean; body: string } | null> {
+  try {
+    const res = await fetch(url, { method: 'GET', timeoutMs });
+    return { ok: res.ok, body: res.ok ? await res.text() : '' };
   } catch {
     return null;
   }
@@ -221,23 +254,36 @@ const SONY_INTERFACE_INFO = JSON.stringify({ method: 'getInterfaceInformation', 
 export async function probeHost(
   fetch: FetchLike,
   host: string,
-  opts: { timeoutMs?: number } = {},
+  opts: { timeoutMs?: number; tlsCheck?: TlsPortCheck } = {},
 ): Promise<TvCandidate | null> {
   const timeoutMs = opts.timeoutMs ?? DEFAULT_PROBE_TIMEOUT_MS;
   const [roku, samsung, sony, cast, webos] = await Promise.all([
     tryGet(fetch, `http://${host}:${ROKU_ECP_PORT}/query/device-info`, timeoutMs),
     tryGet(fetch, `http://${host}:${SAMSUNG_API_PORT}/api/v2/`, timeoutMs),
     tryPostJson(fetch, `http://${host}/sony/system`, SONY_INTERFACE_INFO, timeoutMs),
-    tryGet(fetch, `http://${host}:${CAST_SETUP_PORT}/setup/eureka_info`, timeoutMs),
+    tryAny(fetch, `http://${host}:${CAST_SETUP_PORT}/setup/eureka_info`, timeoutMs),
     tryGet(fetch, `http://${host}:${WEBOS_PROBE_PORT}/`, timeoutMs),
   ]);
-  return (
+  const found =
     (roku !== null ? parseRokuDeviceInfo(roku, host) : null) ??
     (samsung !== null ? parseSamsungApiV2(samsung, host) : null) ??
     (sony !== null ? parseSonyInterfaceInfo(sony, host) : null) ??
-    (cast !== null ? parseCastEurekaInfo(cast, host) : null) ??
-    (webos !== null ? parseWebosHello(webos, host) : null)
-  );
+    (cast?.ok ? parseCastEurekaInfo(cast.body, host) : null) ??
+    (webos !== null ? parseWebosHello(webos, host) : null);
+  if (found) return found;
+  // Google TV whose eureka_info is restricted: a host that answered on :8008 at all (even 403/404)
+  // gets one more look at the DIAL device description. Hosts with :8008 closed cost nothing extra.
+  if (cast !== null) {
+    const desc = await tryGet(fetch, `http://${host}:${CAST_SETUP_PORT}/ssdp/device-desc.xml`, timeoutMs);
+    const viaDesc = desc !== null ? parseCastDeviceDesc(desc, host) : null;
+    if (viaDesc) return viaDesc;
+  }
+  // Newer Google TVs (e.g. TCL, owner 1 Nov 2026) close the plain-HTTP ports; the Cast TLS port stays
+  // open. Only builds with the native TLS socket can check it.
+  if (opts.tlsCheck && (await opts.tlsCheck(host, CAST_TLS_PORT).catch(() => false))) {
+    return { platform: 'androidtv', host, port: CAST_TLS_PORT, source: 'probe' };
+  }
+  return null;
 }
 
 export interface ProbeSubnetOptions {
@@ -246,6 +292,8 @@ export interface ProbeSubnetOptions {
   onFound?: (c: TvCandidate) => void;
   /** Checked between hosts; return true to stop early (sheet closed). */
   isCancelled?: () => boolean;
+  /** Google Cast TLS port check (native builds only); see probeHost. */
+  tlsCheck?: TlsPortCheck;
 }
 
 /** Probes hosts with a bounded worker pool. Results are returned in input order. */
@@ -263,8 +311,9 @@ export async function probeSubnet(
       const i = next++;
       const host = hosts[i];
       if (host === undefined) continue;
-      const opt: { timeoutMs?: number } = {};
+      const opt: { timeoutMs?: number; tlsCheck?: TlsPortCheck } = {};
       if (opts.timeoutMs !== undefined) opt.timeoutMs = opts.timeoutMs;
+      if (opts.tlsCheck) opt.tlsCheck = opts.tlsCheck;
       const c = await probeHost(fetch, host, opt);
       if (c) {
         results[i] = c;

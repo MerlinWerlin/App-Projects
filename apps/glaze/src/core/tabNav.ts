@@ -1,6 +1,7 @@
 // Bottom tab bar and Widgets tab model (T70, docs/MARKET.md "Owner screenshots 18 Oct" L1).
 //
-// Tab order (owner-1101 #4, T186): Themes / Widgets / Icons / Pets / Wallpapers. Live is no longer
+// Tab order (owner-1101d #1, T198): Themes / Widgets / Icons / Wallpapers. Pets were cut (parked in
+// docs/future/pets-game). Live is no longer
 // a tab: the Live Photo maker is a stack screen at /live (app/live/index.tsx), opened from the
 // Wallpapers tab. Settings stays a route inside the tab group (so old /settings links still open
 // it) but is hidden from the bar and reached from a gear button on Themes.
@@ -21,7 +22,7 @@ import { WIDGET_KINDS, widgetKindKey, widgetSizeKey, type WidgetKind, type Widge
 
 // ---------------------------------------------------------------------------------- tab bar
 
-export const TAB_ORDER = Object.freeze(['themes', 'widgets', 'icons', 'pets', 'wallpapers'] as const);
+export const TAB_ORDER = Object.freeze(['themes', 'widgets', 'icons', 'wallpapers'] as const);
 export type TabId = (typeof TAB_ORDER)[number];
 
 /** The Live Photo maker's route (a stack screen since T186, opened from the Wallpapers tab). */

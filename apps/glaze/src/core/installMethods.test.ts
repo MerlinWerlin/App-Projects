@@ -10,8 +10,8 @@ import {
   installSummary,
   isCurrentPick,
   recommendedMethod,
-  showBulkCard,
   showMethodPicker,
+  showShortcutsFallback,
   tipsForInstallMode,
 } from './installMethods.ts';
 import { PROFILE_INSTALL_ENABLED } from '../config/install.ts';
@@ -26,17 +26,20 @@ test('switch is a boolean exported from src/config/install.ts', () => {
   assert.equal(typeof PROFILE_INSTALL_ENABLED, 'boolean');
 });
 
-test('T183 (owner 1 Nov, supersedes 25 Oct): Shortcuts / Open App first and recommended; Bulk an optional second method', () => {
-  assert.deepEqual(availableMethods({ profileEnabled: true, profileCount: 3 }), ['shortcuts', 'bulk']);
-  assert.equal(showMethodPicker({ profileEnabled: true, profileCount: 3 }), true);
-  assert.equal(showBulkCard({ profileEnabled: true, profileCount: 3 }), true);
-  assert.equal(recommendedMethod({ profileEnabled: true, profileCount: 3 }), 'shortcuts');
+test('T202 (owner-1101d #5, supersedes T183): Install all at once is the main method; Shortcuts only a fallback link', () => {
+  assert.deepEqual(availableMethods({ profileEnabled: true, profileCount: 3 }), ['bulk', 'shortcuts']);
+  assert.equal(recommendedMethod({ profileEnabled: true, profileCount: 3 }), 'bulk');
+  assert.equal(recommendedMethod({ profileEnabled: true, profileCount: 3, profileServer: false }), 'bulk');
+  // No picker any more, just the small fallback link.
+  assert.equal(showMethodPicker({ profileEnabled: true, profileCount: 3 }), false);
+  assert.equal(showShortcutsFallback({ profileEnabled: true, profileCount: 3 }), true);
+  assert.equal(showShortcutsFallback({ profileEnabled: true, profileCount: 0 }), false);
+  assert.equal(showShortcutsFallback({ profileEnabled: false, profileCount: 3 }), false);
   assert.deepEqual(availableMethods({ profileEnabled: true, profileCount: 0 }), ['shortcuts']);
-  assert.equal(showBulkCard({ profileEnabled: false, profileCount: 3 }), false);
   assert.deepEqual(availableMethods({ profileEnabled: false, profileCount: 3 }), ['shortcuts']);
-  assert.equal(showMethodPicker({ profileEnabled: false, profileCount: 3 }), false);
-  assert.equal(DEFAULT_INSTALL_METHOD, 'shortcuts');
-  assert.equal(defaultInstallState().choice, 'shortcuts');
+  assert.equal(recommendedMethod({ profileEnabled: false, profileCount: 3 }), 'shortcuts');
+  assert.equal(DEFAULT_INSTALL_METHOD, 'bulk');
+  assert.equal(defaultInstallState().choice, 'bulk');
 });
 
 test('bulk selectable only when enabled and some app has a link', () => {
@@ -45,13 +48,15 @@ test('bulk selectable only when enabled and some app has a link', () => {
   assert.equal(bulkSelectable({ profileEnabled: false, profileCount: 5 }), false);
 });
 
-test('effectiveChoice: Shortcuts unless Bulk was explicitly picked since the 1 Nov switch', () => {
+test('effectiveChoice: the profile unless the Shortcuts fallback was explicitly taken since the T202 switch', () => {
   const on = { profileEnabled: true, profileCount: 2 };
   assert.equal(effectiveChoice('bulk', on, true), 'bulk');
-  assert.equal(effectiveChoice('bulk', on, false), 'shortcuts');
+  assert.equal(effectiveChoice('bulk', on, false), 'bulk');
   assert.equal(effectiveChoice('shortcuts', on, true), 'shortcuts');
+  assert.equal(effectiveChoice('shortcuts', on, false), 'bulk', 'an old (T183-era) Shortcuts pick no longer wins');
   assert.equal(effectiveChoice('bulk', { profileEnabled: false, profileCount: 2 }, true), 'shortcuts');
   assert.equal(effectiveChoice('bulk', { profileEnabled: true, profileCount: 0 }, true), 'shortcuts');
+  assert.equal(CHOICE_EPOCH, 3);
   // A pick saved before the switch (no or an older epoch) no longer counts.
   assert.equal(isCurrentPick({ choiceExplicit: true }), false);
   assert.equal(isCurrentPick({ choiceExplicit: true, choiceEpoch: CHOICE_EPOCH - 1 }), false);
@@ -87,7 +92,15 @@ test('install screen and tips read the switch and the method helpers', () => {
   assert.match(screen, /effectiveChoice\(/);
   assert.match(screen, /isCurrentPick\(install\.state\)/);
   assert.match(screen, /choiceEpoch: CHOICE_EPOCH/);
-  assert.match(screen, /showMethodPicker\(/);
+  assert.match(screen, /showShortcutsFallback\(/);
+  // T202: no method cards / radio group, no "Recommended" Shortcuts badge; the fallback link and
+  // the computed Safari-tap line are on screen.
+  assert.ok(!screen.includes('MethodCard') && !screen.includes('radiogroup'));
+  assert.ok(!screen.includes("install.method.recommended"));
+  assert.ok(screen.includes("t('install.method.shortcutsFallback')"));
+  assert.ok(screen.includes("t('install.method.backToBulk')"));
+  assert.match(screen, /safariTapCount\(plan\.profile\)/);
+  assert.ok(screen.includes("t('install.method.safariTapAll'") && screen.includes("t('install.method.safariTap'"));
   // fb-1022 G1: the first-run hints moved from the Themes screen into theme detail.
   const detail = readFileSync(new URL('../../app/theme/[id].tsx', import.meta.url), 'utf8');
   assert.match(detail, /tipsForInstallMode\(/);

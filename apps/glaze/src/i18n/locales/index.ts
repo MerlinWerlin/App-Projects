@@ -3,7 +3,6 @@
 // <locale>.ts typed as LocaleMessages, and register it here (docs/I18N.md).
 import type { CatalogueSet } from '../../core/i18n.ts';
 import type { LocaleMessages } from '../catalogue.ts';
-import { PET_COPY } from '../pets.ts';
 import { ar } from './ar.ts';
 import { de } from './de.ts';
 import { en } from './en.ts';
@@ -18,16 +17,16 @@ import { zhHans } from './zh-Hans.ts';
 
 /** Non-English catalogues, each a deep-partial of Messages. */
 export const TRANSLATIONS: Readonly<Record<'es' | 'fr' | 'de' | 'it' | 'pt-BR' | 'ja' | 'ko' | 'zh-Hans' | 'hi' | 'ar', LocaleMessages>> = {
-  es: { ...es, pets: PET_COPY.es },
-  fr: { ...fr, pets: PET_COPY.fr },
-  de: { ...de, pets: PET_COPY.de },
-  it: { ...it, pets: PET_COPY.it },
-  'pt-BR': { ...ptBR, pets: PET_COPY['pt-BR'] },
-  ja: { ...ja, pets: PET_COPY.ja },
-  ko: { ...ko, pets: PET_COPY.ko },
-  'zh-Hans': { ...zhHans, pets: PET_COPY['zh-Hans'] },
-  hi: { ...hi, pets: PET_COPY.hi },
-  ar: { ...ar, pets: PET_COPY.ar },
+  es,
+  fr,
+  de,
+  it,
+  'pt-BR': ptBR,
+  ja,
+  ko,
+  'zh-Hans': zhHans,
+  hi,
+  ar,
 };
 
 /** All catalogues in the shape translate() expects. */

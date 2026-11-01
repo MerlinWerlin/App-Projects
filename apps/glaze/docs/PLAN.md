@@ -100,3 +100,5 @@ Glaze ships around themes, matching icons, themed widgets and wallpaper packs; o
 **30 Oct evening (owner-1030b):** Glaze is the App Factory's premium flagship. Interface direction and per-screen plan: [docs/PREMIUM_UI.md](PREMIUM_UI.md). Theme packs are hosted as GitHub Release assets: [docs/PACK_HOSTING.md](PACK_HOSTING.md). Status: [docs/OWNER_1030.md](OWNER_1030.md).
 
 **1 Nov (owner-1101):** icons open apps with no Safari hop (Shortcuts Open App default), apply-a-theme switches every tab, theme page with three separate entry points, 5 tabs (Themes · Widgets · Icons · Pets · Wallpapers), pack format v2 with every widget art piece, live Island pets, bigger app catalogue, prism creature mascot + calm startup. Status: [docs/OWNER_1101.md](OWNER_1101.md).
+
+**1 Nov (owner-1101d #1, T198):** pets are cut. No Pets tab, no Island pets, no Live Activity / Dynamic Island; tabs are Themes · Widgets · Icons · Wallpapers. Parked notes and art (maybe a separate game much later): [docs/future/pets-game/README.md](future/pets-game/README.md).

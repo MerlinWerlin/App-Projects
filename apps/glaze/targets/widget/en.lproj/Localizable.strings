@@ -65,19 +65,3 @@
 "Seamless" = "Seamless";
 "Art that floats on your wallpaper. Set it up in Glaze." = "Art that floats on your wallpaper. Set it up in Glaze.";
 "Set up in Glaze" = "Set up in Glaze";
-
-/* Island pets: generated from src/i18n/pets.ts */
-"pet.open" = "Tap to visit your pet";
-"pet.happy" = "Happy";
-"pet.playful" = "Playful";
-"pet.sleepy" = "Sleepy";
-"pet.content" = "Content";
-"pet.hungry" = "Hungry";
-"pet.lifeSleeping" = "Fast asleep";
-"pet.lifeStir" = "Stirs, then dozes off";
-"pet.lifeWaking" = "Waking up with a big stretch";
-"pet.lifeIdle" = "Sitting quietly";
-"pet.lifeEating" = "Having a snack";
-"pet.lifePlaying" = "Playing";
-"pet.lifeWandering" = "Out for a little wander";
-"pet.lifeHappy" = "Loves that!";

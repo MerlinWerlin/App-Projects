@@ -7,20 +7,26 @@ import {
   FILL_ASPECT_TOLERANCE,
   MAX_WIDGET_OPTIONS,
   OPTION_SIZE_POINTS,
+  PRACTICAL_KINDS,
   WIDGET_ART_PADDING,
   WIDGET_OPTION_KINDS,
+  WIDGET_SHELF_KINDS,
+  WIDGET_SHELF_ORDER,
   aspectMatch,
+  isPracticalKind,
   liveKindOf,
   liveStudioHref,
   optionsForSize,
   parseWidgetOptions,
   placeArt,
   selectedOption,
+  shelfOptions,
   validateWidgetOptions,
   widgetOptionKindKey,
   widgetOptionSections,
   widgetOptionsFromV1,
   widgetOptionsOfPack,
+  widgetShelf,
   type OptionAsset,
 } from './widgetOptions.ts';
 import { parseRemoteArtManifest } from './packCatalog.ts';
@@ -282,7 +288,7 @@ test('the option boxes have the same aspect as the real widget sizes', () => {
 
 // ------------------------------------------------------------------ menu
 
-test('sections: one per kind with options for that size, in kind order', () => {
+test('sections: one per kind, practical kinds first (shelf order), art last; every piece in every Home size', () => {
   const r = parseWidgetOptions(
     [
       { id: 'c1', kind: 'clock', image: 'widget-clock.22222222.webp', sizes: ['small'] },
@@ -292,11 +298,72 @@ test('sections: one per kind with options for that size, in kind order', () => {
     ],
     ASSETS,
   );
-  const small = widgetOptionSections(r.options, 'small');
-  assert.deepEqual(small.map((s) => s.kind), ['art', 'clock', 'battery']);
-  assert.deepEqual(small[0].options.map((o) => o.id), ['a1']);
-  assert.deepEqual(widgetOptionSections(r.options, 'medium').map((s) => [s.kind, s.options.map((o) => o.id)]), [['art', ['a1', 'a2']]]);
-  assert.deepEqual(widgetOptionSections(r.options, 'large'), []);
+  const ids = (size: 'small' | 'medium' | 'large') => widgetOptionSections(r.options, size).map((s) => [s.kind, s.options.map((o) => o.id)]);
+  // a2 is only suggested for medium, but small offers it too (fitted), after the suggested a1.
+  assert.deepEqual(ids('small'), [['clock', ['c1']], ['battery', ['b1']], ['art', ['a1', 'a2']]]);
+  assert.deepEqual(ids('medium'), [['clock', ['c1']], ['battery', ['b1']], ['art', ['a1', 'a2']]]);
+  // Nothing is suggested for large: still every piece, the best aspect match first.
+  assert.deepEqual(ids('large'), [['clock', ['c1']], ['battery', ['b1']], ['art', ['a1', 'a2']]]);
+  assert.deepEqual(widgetOptionSections(r.options, 'lock'), []);
+});
+
+test('T201 widgetShelf: practical (habits, countdown, calendar, date, clock, battery…), then art, then standard', () => {
+  assert.deepEqual(WIDGET_SHELF_ORDER, ['practical', 'art', 'standard']);
+  assert.deepEqual(PRACTICAL_KINDS.slice(0, 6), ['habits', 'countdown', 'calendar', 'date', 'clock', 'battery']);
+  assert.deepEqual([...WIDGET_SHELF_KINDS].sort(), [...WIDGET_OPTION_KINDS].sort(), 'every kind has a shelf place');
+  assert.equal(WIDGET_SHELF_KINDS[WIDGET_SHELF_KINDS.length - 1], 'art');
+  assert.ok(PRACTICAL_KINDS.every(isPracticalKind) && !isPracticalKind('art'));
+  const img = 'widget-boat.11111111.webp';
+  const r = parseWidgetOptions(
+    [
+      { id: 'fox', kind: 'art', image: img, sizes: ['small', 'medium', 'large'] },
+      { id: 'clock', kind: 'clock', image: img, sizes: ['small'] },
+      { id: 'cal', kind: 'calendar', image: img, sizes: ['medium'] },
+      { id: 'water', kind: 'habits', image: img, sizes: ['small', 'medium'] },
+      { id: 'trip', kind: 'countdown', image: img, sizes: ['large'] },
+      { id: 'owl', kind: 'art', image: 'widget-wide.33333333.webp', sizes: ['medium'] },
+      { id: 'lockonly', kind: 'date', image: img, sizes: ['lock'] },
+    ],
+    ASSETS,
+  );
+  assert.equal(r.errors.length, 0);
+  const standard = ['analogClock', 'battery', 'date', 'monthCalendar'];
+  const shelf = widgetShelf(r.options, 'small', standard);
+  assert.deepEqual(shelf.map((b) => b.group), ['practical', 'art', 'standard']);
+  const flat = shelf.flatMap((b) =>
+    b.group === 'practical' ? b.sections.flatMap((s) => s.options.map((o) => o.id)) : b.group === 'art' ? b.options.map((o) => o.id) : b.items,
+  );
+  assert.deepEqual(flat, ['water', 'trip', 'cal', 'clock', 'fox', 'owl', ...standard]);
+  assert.deepEqual(shelfOptions(r.options, 'small').map((o) => o.id), ['water', 'trip', 'cal', 'clock', 'fox', 'owl']);
+  // The first thing on the shelf is what a fresh menu selects.
+  assert.equal(selectedOption(r.options, 'small', null)?.id, 'water');
+  assert.equal(selectedOption(r.options, 'small', 'owl')?.id, 'owl', 'a medium-only piece can be picked for small');
+  // Lock: only lock pieces; empty groups are left out.
+  assert.deepEqual(widgetShelf(r.options, 'lock').map((b) => b.group), ['practical']);
+  assert.deepEqual(widgetShelf([], 'small', standard).map((b) => b.group), ['standard']);
+  assert.deepEqual(widgetShelf([], 'small'), []);
+});
+
+test('T201: any art piece is offered in every Home Screen size, suggested sizes first', () => {
+  const r = parseWidgetOptions(
+    [
+      { id: 'banner', kind: 'art', image: 'widget-wide.33333333.webp', sizes: ['medium'], fit: 'fill' },
+      { id: 'fox', kind: 'art', image: 'widget-boat.11111111.webp', sizes: ['small'] },
+    ],
+    ASSETS,
+  );
+  for (const size of ['small', 'medium', 'large'] as const) {
+    assert.deepEqual(optionsForSize(r.options, size).map((o) => o.id).sort(), ['banner', 'fox'], size);
+  }
+  assert.deepEqual(optionsForSize(r.options, 'medium').map((o) => o.id), ['banner', 'fox']);
+  assert.deepEqual(optionsForSize(r.options, 'small').map((o) => o.id), ['fox', 'banner']);
+  assert.deepEqual(optionsForSize(r.options, 'large').map((o) => o.id), ['fox', 'banner'], 'square fits large better');
+  // And it is never cropped there: a wide `fill` banner in a small box is fitted whole.
+  const banner = r.options[0];
+  const p = placeArt({ w: banner.width, h: banner.height }, OPTION_SIZE_POINTS.small, banner.fit);
+  assert.equal(p.mode, 'fit');
+  assert.ok(p.rect.w <= OPTION_SIZE_POINTS.small.w && p.rect.h <= OPTION_SIZE_POINTS.small.h);
+  assert.ok(Math.abs(p.rect.w / p.rect.h - banner.width / banner.height) < 1e-9, 'own aspect kept');
 });
 
 test('selectedOption: remembered id when still offered, else the first', () => {
@@ -327,6 +394,30 @@ test('remoteArtFiles: a v2 pack with no widget-<size> file uses its first option
   assert.deepEqual(remoteArtFiles({ assets }).heroes, {});
 });
 
+test('T201 remoteArtFiles: a v2 art option beats a (possibly pre-cropped) v1 widget-<size> file; v1 packs unchanged', () => {
+  const assets = [
+    { path: 'wallpaper-2796.aaaaaaaa.webp', role: 'wallpaper' as const },
+    { path: 'widget-medium.22222222.webp', role: 'widget-medium' as const },
+    { path: 'widget-fox.11111111.webp', role: 'widget-art' as const },
+    { path: 'widget-habits.33333333.webp', role: 'widget-art' as const },
+  ].map((a) => ({ ...a, width: 10, height: 10, bytes: 1, sha256: 'a'.repeat(64), mime: 'image/webp' as const }));
+  const widgets = parseWidgetOptions(
+    [
+      { id: 'water', kind: 'habits', image: 'widget-habits.33333333.webp', sizes: ['small', 'medium', 'large'] },
+      { id: 'fox', kind: 'art', image: 'widget-fox.11111111.webp', sizes: ['small', 'medium', 'large'], background: 'blur' },
+    ],
+    assets,
+  ).options;
+  const heroes = remoteArtFiles({ assets, widgets }).heroes;
+  assert.deepEqual(heroes, { small: 'widget-fox.11111111.webp', medium: 'widget-fox.11111111.webp', large: 'widget-fox.11111111.webp' }, 'the whole art piece, never the habits picture');
+  // Only practical options: the v1 file is still preferred over a habits picture.
+  const practical = widgets.filter((o) => o.kind !== 'art');
+  assert.equal(remoteArtFiles({ assets, widgets: practical }).heroes.medium, 'widget-medium.22222222.webp');
+  // v1 (derived options): the v1 role files as before.
+  const v1 = widgetOptionsFromV1(assets);
+  assert.deepEqual(remoteArtFiles({ assets, widgets: v1 }).heroes, { medium: 'widget-medium.22222222.webp' });
+});
+
 test('docs/THEME_PACKS.md: the v2 example manifest parses and validates strictly', () => {
   const doc = read('docs', 'THEME_PACKS.md');
   const at = doc.indexOf('### Example v2 manifest');
@@ -339,7 +430,7 @@ test('docs/THEME_PACKS.md: the v2 example manifest parses and validates strictly
   assert.deepEqual(validateWidgetOptions(raw.widgets, raw.assets), []);
   if (r.ok) {
     assert.equal(r.value.widgets.length, 5);
-    assert.deepEqual(optionsForSize(r.value.widgets, 'medium').map((o) => o.id), ['paper-boat', 'cloud-banner', 'rain-habits']);
+    assert.deepEqual(optionsForSize(r.value.widgets, 'medium').map((o) => o.id), ['paper-boat', 'cloud-banner', 'rain-habits', 'hot-air-balloon', 'cloud-clock']);
   }
   // Every field name the table documents is a field the parser reads.
   for (const f of ['`id`', '`kind`', '`image`', '`sizes`', '`fit`', '`background`', '`label`']) assert.ok(doc.includes(`| ${f} |`), f);

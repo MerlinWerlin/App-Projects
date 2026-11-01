@@ -69,6 +69,7 @@ function Shell() {
           <Stack.Screen name="item-edit" options={{ ...header, presentation: 'modal', title: t('itemEdit.newTitle') }} />
           <Stack.Screen name="ticket/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="address/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
+          <Stack.Screen name="stay/[itemId]" options={{ ...header, title: t('stay.route') }} />
           <Stack.Screen name="emergency-edit" options={{ ...header, presentation: 'modal', title: t('route.emergencyEdit') }} />
           <Stack.Screen name="vault" options={{ ...header, title: t('route.vault') }} />
           <Stack.Screen name="doc/[id]" options={{ ...header, title: t('route.doc') }} />
@@ -88,6 +89,7 @@ function Shell() {
           <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
           <Stack.Screen name="licences" options={{ ...header, title: t('licences.title') }} />
           <Stack.Screen name="phrases" options={{ ...header, title: t('phrases.title') }} />
+          <Stack.Screen name="menu" options={{ ...header, title: t('menu.title') }} />
           <Stack.Screen name="help" options={{ ...header, title: t('help.title') }} />
           <Stack.Screen name="convert" options={{ ...header, title: t('convert.route') }} />
           <Stack.Screen name="tipping" options={{ ...header, title: t('tipping.route') }} />
@@ -103,6 +105,7 @@ function Shell() {
           <Stack.Screen name="trouble/[id]" options={{ ...header, title: t('trouble.route.guide') }} />
           <Stack.Screen name="trouble/numbers" options={{ ...header, title: t('trouble.route.numbers') }} />
           <Stack.Screen name="phrase-card" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
+          <Stack.Screen name="menu-card" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="loyalty/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="loyalty-edit" options={{ ...header, presentation: 'modal', title: t('loyalty.edit.newTitle') }} />
           <Stack.Screen name="essentials" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'none' }} />

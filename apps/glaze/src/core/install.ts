@@ -16,11 +16,14 @@ export const SHORTCUTS_URL = 'shortcuts://';
 export type InstallChoice = 'bulk' | 'shortcuts';
 
 /**
- * T183 (owner 1 Nov): the default and recommended method. A Home Screen shortcut that runs the
- * Shortcuts "Open App" action opens the app directly: no Safari, no "Open in <app>?" prompt. Web
- * clips from the Bulk profile only hold a URL, so iOS hops through Safari and asks every time.
+ * T202 (owner 1 Nov 10:31, owner-1101d #5, supersedes T183): "Install all at once" (the web clip
+ * profile) is ALWAYS the main method whenever it can be used (PROFILE_INSTALL_ENABLED and some
+ * picked app has a link). Shortcuts "Open App" (one icon at a time, no Safari hop) stays only as a
+ * small fallback link, and covers the apps a profile can't open. Profile icons open their app
+ * through a quick Safari tap ("Open in <app>?"): an iOS limitation the install screen states with
+ * the count (safariTapCount).
  */
-export const DEFAULT_INSTALL_METHOD: InstallChoice = 'shortcuts';
+export const DEFAULT_INSTALL_METHOD: InstallChoice = 'bulk';
 /** The Shortcuts action every guided shortcut uses (the app is picked from the list, no URL). */
 export const SHORTCUT_ACTION = 'Open App';
 
@@ -65,7 +68,7 @@ export type ShortcutItem ={ spec: IconSpec; url: string | null; reason: Shortcut
 
 /**
  * Apps listed on the Shortcuts path for a choice. With 'bulk' only apps without a scheme (the
- * profile can't carry them); with 'shortcuts' (the default) every app. `url` is informational
+ * profile can't carry them); with 'shortcuts' (the fallback link) every app. `url` is informational
  * only: every shortcut uses Open App (T183).
  */
 export function shortcutItems(specs: readonly IconSpec[], choice: InstallChoice): ShortcutItem[] {
@@ -116,9 +119,34 @@ export function webClipIcons(
   for (const s of specs) {
     const url = shortcutUrl(s);
     const png = byId.get(s.appId);
-    if (url && png) out.push({ label: s.label, url, pngBase64: png });
+    // T202: the app id keys the web clip's stable payload ids (never the theme or the position).
+    if (url && png) out.push({ label: s.label, url, pngBase64: png, key: s.appId });
   }
   return out;
+}
+
+/** True when a web clip URL is an app's own scheme (iOS hands it over through Safari's "Open in…?"). */
+export function opensViaSafariTap(url: string): boolean {
+  const m = /^([a-z][a-z0-9+.-]*):/i.exec(url.trim());
+  return m !== null && !/^https?$/i.test(m[1]);
+}
+
+/**
+ * T202: how many of the profile's apps open with a quick Safari tap. Web clips only hold a URL, and
+ * iOS hands an app-scheme URL over with an "Open in <app>?" tap (Apple's WebClip payload has no key
+ * that launches an app by bundle id without MDM). Computed from the data so the screen says it
+ * plainly.
+ */
+export function safariTapCount(profileSpecs: readonly { urlScheme: string | null }[]): { tap: number; total: number } {
+  let tap = 0;
+  let total = 0;
+  for (const s of profileSpecs) {
+    const url = shortcutUrl(s);
+    if (!url) continue;
+    total++;
+    if (opensViaSafariTap(url)) tap++;
+  }
+  return { tap, total };
 }
 
 /** Theme name for the profile: the applied theme's name, else "Custom". */
@@ -362,7 +390,8 @@ export type InstallState = {
   choiceExplicit?: true;
   /**
    * T183: the method-choice generation the explicit pick was made in. Picks from before the
-   * 1 Nov switch (absent or older) are ignored, so everyone starts on Shortcuts / Open App.
+   * latest switch (absent or older; T202 bumped it) are ignored, so everyone starts on Install all
+   * at once.
    */
   choiceEpoch?: number;
 };

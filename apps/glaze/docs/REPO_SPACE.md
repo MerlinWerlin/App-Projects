@@ -57,3 +57,7 @@ gives the same ids every run. Published on the build page as
 The swap to `repo.bundle.b64.txt` happens in the first build run that sees SHIP_BASE name a new
 id from the map. If auto-ship advances SHIP_BASE before the re-pin, the next rebuild uses that
 commit as root and publishes a new map.
+
+## Swapped (run 207, 1 Nov 2026)
+
+The App Factory chat re-pinned SHIP_BASE to `19a742e` (App-Projects `1db00f2`), the slim id of our old tip `80c783e`. Run 207 made the slim history the live `repo.bundle.b64.txt` (about 7.9 MB base64). Old commit ids map to new ones in `docs/REPO_MAP.json`; anything before `301a9f0` lives in `history/repo-full-2026-11-01.bundle.b64.txt`.

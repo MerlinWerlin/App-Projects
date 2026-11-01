@@ -2,12 +2,16 @@
 // preview with a Home / Lock toggle and ONE primary button in a sticky glass bar at the bottom.
 // T185 (owner-1101 item 3): the button is "Use this theme" (the base for every tab; "In use ✓"
 // when it already is), and Wallpaper, Icons and Widgets are three separate entry points, each its
-// own clean screen: /theme/[id]?step=wallpaper, /theme/[id]?step=icons and Widget Studio.
+// own clean screen: /theme/[id]?step=wallpaper, /theme/[id]?step=icons and (T201)
+// /theme/[id]?step=widgets (practical pieces, then art, then the standard set → Widget Studio).
 // The old one-run Apply checklist is gone.
 // T173 premium slice (docs/PREMIUM_UI.md §3.3): the hero phone sits large and centred on a soft
 // surface with a quiet Home / Lock pill under it; the rest reads as editorial blocks (eyebrow +
-// title via SectionHeader: What's inside, Icons, Widgets, Wallpaper, Credits); the glass bar holds
+// title via SectionHeader: Icons, Widgets, Wallpaper, Credits); the glass bar holds
 // one primary pill; every Text has a Dynamic Type cap; motion stays timed ease-out (no spring).
+// T200 (owner-1101d #3): "Set it up" is a bold section header (title1 + one-line subtitle) above
+// the three entry cards; the old "What's inside" block (palette + style) is gone, and the palette
+// sits in the matching-widgets block ("These widgets are made from this palette").
 import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
 import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
@@ -32,7 +36,6 @@ import { isThemeInUse, themeStepOf, wallpaperSaveView, type ThemeStep } from '..
 import { contrastRatio, mix } from '../../src/core/colour';
 import { DEFAULT_OVERLAY, defaultBackground, usesPhoto, type ThemeBackground } from '../../src/core/background';
 import { photoCreditParams, wallpaperSourceFor, type WallpaperSource } from '../../src/core/photoPack';
-import type { IconStyle } from '../../src/core/iconspec';
 import { DEFAULT_TRANSFORM } from '../../src/core/photoCrop';
 import { canApplyFromDetail, packDetailView, showsPackCard, wantsPackArtwork, type PackDetailView } from '../../src/core/packDetail';
 import { getAnyTheme, packOf } from '../../src/core/plusThemes';
@@ -111,6 +114,9 @@ import { haptic } from '../../src/ui/haptics';
 import { noMirror, textStyleFor } from '../../src/ui/i18nLayout';
 import { GlassBar, InsetGroup, InsetRow, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
+import { ThemeWidgetArt } from '../../src/ui/ThemeWidgetArt';
+import { widgetTabSizeKey } from '../../src/core/tabNav';
+import type { HomeOptionSize } from '../../src/core/widgetOptions';
 
 /** Outer width of the phone preview for a window width: large, but leaves the toggle and bar room. */
 function previewWidthFor(windowW: number): number {
@@ -152,21 +158,6 @@ function headerTint(page: string, accent: string, ink: string, muted: string): s
     if (contrastRatio(ink, tint) >= 4.5 && contrastRatio(muted, tint) >= 4.5) return tint;
   }
   return page;
-}
-
-function styleSummary(t: TFunction, s: IconStyle): string {
-  const background =
-    s.background.kind === 'solid'
-      ? t('theme.summary.solid')
-      : s.background.kind === 'gradient'
-        ? t('theme.summary.gradient')
-        : t('theme.summary.glass');
-  return t('theme.summary.line', {
-    shape: t(`themeUi.shape.names.${s.shape}`),
-    background,
-    glyphs: s.glyphSet === 'glaze' ? t('theme.summary.glazeGlyphs') : t('theme.summary.lineGlyphs'),
-    labels: s.showLabel ? t('theme.summary.labelsOn') : t('theme.summary.labelsOff'),
-  });
 }
 
 type SaveState = 'idle' | 'saved' | 'denied' | 'error';
@@ -433,10 +424,8 @@ function ThemeDetail({
       setLockOpen(true);
       return;
     }
-    if (part === 'widgets') {
-      router.push({ pathname: '/widget-studio', params: { theme: theme.id } });
-      return;
-    }
+    // T201: Widgets is the theme's own widgets screen (practical, art, then the standard set, which
+    // still opens Widget Studio), not Widget Studio directly.
     router.push({ pathname: '/theme/[id]', params: { id: theme.id, step: part } });
   };
 
@@ -564,7 +553,13 @@ function ThemeDetail({
   const saving = saver.saving || photoSaver.saving;
   const saveView = wallpaperSaveView(savedBefore || saveState === 'saved', saving);
   const title =
-    step === 'wallpaper' ? t('theme.parts.wallpaper') : step === 'icons' ? t('theme.parts.icons') : theme.name;
+    step === 'wallpaper'
+      ? t('theme.parts.wallpaper')
+      : step === 'icons'
+        ? t('theme.parts.icons')
+        : step === 'widgets'
+          ? t('theme.parts.widgets')
+          : theme.name;
 
   return (
     <View style={[styles.root, { backgroundColor: c.bg }]}>
@@ -595,7 +590,13 @@ function ThemeDetail({
               {theme.name}
             </Text>
             <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>
-              {overview ? theme.tagline : step === 'wallpaper' ? t('theme.parts.wallpaperSub') : t('theme.parts.iconsSub')}
+              {overview
+                ? theme.tagline
+                : step === 'wallpaper'
+                  ? t('theme.parts.wallpaperSub')
+                  : step === 'widgets'
+                    ? t('theme.parts.widgetsSub')
+                    : t('theme.parts.iconsSub')}
             </Text>
             {theme.plus ? <PlusBadge /> : null}
           </View>
@@ -679,7 +680,17 @@ function ThemeDetail({
         {/* T185 (owner-1101 item 3): three clear, separate entry points, each its own clean screen. */}
         {overview && canApply ? (
           <View style={styles.block}>
-            <SectionHeader eyebrow={t('theme.parts.eyebrow')} title={t('theme.parts.title')} style={styles.sectionHead} />
+            {/* T200 (owner-1101d #3): a bold section header (title1, one heading for VoiceOver) with
+                a one-line subtitle, so the eye lands on it before the three cards. */}
+            <View style={styles.setUpHead} accessible accessibilityRole="header" accessibilityLabel={[t('theme.parts.title'), t('theme.parts.subtitle')].join(', ')}>
+              <View style={[styles.setUpRule, { backgroundColor: c.tint }]} />
+              <Text maxFontSizeMultiplier={fontScaleCap('title1')} style={[...ts('title1'), styles.setUpTitle, { color: c.ink }]}>
+                {t('theme.parts.title')}
+              </Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>
+                {t('theme.parts.subtitle')}
+              </Text>
+            </View>
             <InsetGroup>
               <InsetRow
                 title={t('theme.parts.wallpaper')}
@@ -842,42 +853,7 @@ function ThemeDetail({
 
         {/* T173 (PREMIUM_UI §3.3): editorial blocks, each one eyebrow + title (SectionHeader reads
             them as one heading), quiet cards and inset rows under it, so "Use this theme" stays the
-            one primary action. Order: What's inside, Icons, Widgets, Wallpaper, Credits. */}
-        {overview ? (
-          <View style={styles.block}>
-            <SectionHeader eyebrow={t('theme.section.inside.eyebrow')} title={t('theme.section.inside.title')} style={styles.sectionHead} />
-            <SquircleCard style={styles.side}>
-              <View style={styles.stack}>
-                <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
-                  {t('theme.palette.title')}
-                </Text>
-                <View style={styles.dots}>
-                  {palette.map(([name, hex]) => (
-                    <View key={name} style={styles.dotItem} accessible accessibilityLabel={t('theme.a11y.swatch', { name, hex })}>
-                      <View style={[styles.dot, { backgroundColor: hex, borderColor: c.separator }]} />
-                      <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...ts('caption1'), styles.dotLabel, { color: c.inkSecondary }]}>
-                        {name}
-                      </Text>
-                    </View>
-                  ))}
-                </View>
-                <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
-                  {t('theme.iconStyle')}
-                </Text>
-                <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>
-                  {styleSummary(t, { ...theme.iconStyle, shape })}
-                </Text>
-                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
-                  {t('theme.widgets.line', {
-                    style: t(`theme.widgets.${theme.widget.style}`),
-                    font: t(theme.widget.font === 'display' ? 'theme.widgets.display' : 'theme.widgets.body'),
-                  })}
-                </Text>
-              </View>
-            </SquircleCard>
-          </View>
-        ) : null}
-
+            one primary action. Order: Icons, Widgets, Wallpaper, Credits (T200: no "What's inside"). */}
         {/* T26 + fb-1022 G2: the icon shape picker sits behind one collapsed "Shape" row (on the Icons
             screen since T185), with the "How it looks on iPhone" switch inside. */}
         {step === 'icons' ? (
@@ -916,7 +892,15 @@ function ThemeDetail({
           </View>
         ) : null}
 
-        {overview ? (
+        {/* T201 (owner-1101d #4): the Widgets screen, in the shelf order every widgets screen uses
+            (src/core/widgetOptions.ts widgetShelf / WIDGET_SHELF_ORDER): (a) the theme's practical
+            pieces (habits, countdown, calendar, clock, battery… with Make it live), (b) its art
+            pieces (any piece in any size, fitted), then (c) the standard widgets in its palette.
+            The overview keeps only (c) as a teaser; the Widgets card opens this screen. */}
+        {step === 'widgets' ? <ThemeWidgetsShelf theme={theme} /> : null}
+        {/* T133: the Seamless widget (wallpaper crop + floating art), art-pack themes only: part of (b). */}
+        {step === 'widgets' && artPack ? <SeamlessCard artPackId={artPack.artPack.id} theme={theme} wallpaperUri={remoteWallpaperUri} heroUris={remoteHeroUris} /> : null}
+        {overview || step === 'widgets' ? (
           <View style={styles.block}>
             <SectionHeader
               eyebrow={t('theme.section.widgets.eyebrow')}
@@ -924,9 +908,7 @@ function ThemeDetail({
               body={t('theme.widgetPreviews.body')}
               style={styles.sectionHead}
             />
-            <WidgetPreviews theme={theme} />
-            {/* T133: the Seamless widget (wallpaper crop + floating art) for art-pack themes only. */}
-            {artPack ? <SeamlessCard artPackId={artPack.artPack.id} theme={theme} wallpaperUri={remoteWallpaperUri} heroUris={remoteHeroUris} /> : null}
+            <WidgetPreviews theme={theme} palette={palette} />
           </View>
         ) : null}
 
@@ -1036,7 +1018,7 @@ function ThemeDetail({
  * they work in Expo Go. Tapping one opens Widget Studio on that widget. Kinds come from the
  * generated set, so new widget kinds appear here automatically.
  */
-function WidgetPreviews({ theme }: { theme: Theme }) {
+function WidgetPreviews({ theme, palette }: { theme: Theme; palette: readonly (readonly [string, string])[] }) {
   const { c } = useColorsV2();
   const router = useRouter();
   const { t, script } = useT();
@@ -1067,6 +1049,20 @@ function WidgetPreviews({ theme }: { theme: Theme }) {
     <SquircleCard style={styles.side}>
       <View style={styles.stack}>
         {/* T173: the title and body moved into the Widgets block's SectionHeader. */}
+        {/* T200: the theme's palette lives here, with the widgets it colours. */}
+        <View style={styles.paletteRow}>
+          {palette.map(([name, hex]) => (
+            <View
+              key={name}
+              accessible
+              accessibilityLabel={t('theme.a11y.swatch', { name, hex })}
+              style={[styles.paletteDot, { backgroundColor: hex, borderColor: c.separator }]}
+            />
+          ))}
+        </View>
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>
+          {t('theme.widgetPreviews.palette')}
+        </Text>
         <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.widgetRow}>
           {items.map(({ spec, photoUri }) => (
             <Pressable
@@ -1087,6 +1083,33 @@ function WidgetPreviews({ theme }: { theme: Theme }) {
         <PillButton label={t('theme.widgetPreviews.open')} icon="edit-3" variant="tinted" size="small" onPress={() => open()} />
       </View>
     </SquircleCard>
+  );
+}
+
+const SHELF_SIZES: readonly HomeOptionSize[] = ['small', 'medium', 'large'];
+
+/**
+ * T201: the theme's practical pieces then its art pieces (ThemeWidgetArt → WidgetArtMenu, ordered by
+ * src/core/widgetOptions.ts widgetShelf), for a Home Screen size picked here. Every piece is offered
+ * in every size, fitted. "Use on my widget" writes the App Group and reloads the widgets (bridge).
+ * Draws nothing for a theme with no widget art (its standard widgets follow below).
+ */
+function ThemeWidgetsShelf({ theme }: { theme: Theme }) {
+  const { t } = useT();
+  const tl = t as unknown as (key: string) => string;
+  const window = useWindowDimensions();
+  const [size, setSize] = useState<HomeOptionSize>('small');
+  const width = window.width - spaceV2.lg * 2;
+  return (
+    <View style={[styles.side, styles.shelf]}>
+      <Segmented<HomeOptionSize>
+        label={t('tabs.widgetsTab.sizes')}
+        options={SHELF_SIZES.map((s) => ({ value: s, label: tl(widgetTabSizeKey(s)) }))}
+        value={size}
+        onChange={setSize}
+      />
+      <ThemeWidgetArt theme={theme} size={size} width={width} />
+    </View>
   );
 }
 
@@ -1496,6 +1519,7 @@ const styles = StyleSheet.create({
   content: { gap: spaceV2.lg },
   missing: { flex: 1, padding: spaceV2.inset, gap: spaceV2.md, justifyContent: 'center' },
   side: { marginHorizontal: spaceV2.lg },
+  shelf: { gap: spaceV2.lg, paddingTop: spaceV2.lg },
   headWrap: {
     paddingHorizontal: spaceV2.inset,
     paddingTop: spaceV2.lg,
@@ -1508,16 +1532,17 @@ const styles = StyleSheet.create({
   // between the header and its cards and between cards in a block.
   block: { gap: editorialV2.sectionBottom },
   sectionHead: { marginHorizontal: spaceV2.lg, paddingTop: editorialV2.sectionTop - spaceV2.lg, paddingBottom: 0 },
+  setUpHead: { marginHorizontal: spaceV2.lg, paddingTop: editorialV2.sectionTop, gap: spaceV2.xs },
+  setUpRule: { width: spaceV2.xxl, height: spaceV2.xs, borderRadius: circleRadius(spaceV2.xs), marginBottom: spaceV2.xs },
+  setUpTitle: { fontWeight: '800' },
+  paletteRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.sm, alignItems: 'center' },
+  paletteDot: { width: 28, height: 28, borderRadius: circleRadius(28), borderWidth: StyleSheet.hairlineWidth },
   modeToggle: { alignSelf: 'center' },
   previewCol: { alignItems: 'center', gap: spaceV2.lg },
   phone: { alignSelf: 'center' },
   frame: { position: 'relative' },
   layer: { position: 'absolute', top: 0, start: 0, end: 0, alignItems: 'center' },
   screen: { overflow: 'hidden' },
-  dots: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.md },
-  dotItem: { alignItems: 'center', gap: spaceV2.xs, minWidth: sizeV2.touch },
-  dot: { width: 40, height: 40, borderRadius: circleRadius(40), borderWidth: StyleSheet.hairlineWidth },
-  dotLabel: { textAlign: 'center' },
   progressRow: { flexDirection: 'row', gap: spaceV2.xs },
   progressSeg: { flex: 1, height: 6, borderRadius: circleRadius(6) },
   note: { flexDirection: 'row', gap: spaceV2.sm, padding: spaceV2.md, borderRadius: radiusV2.control, alignItems: 'flex-start' },

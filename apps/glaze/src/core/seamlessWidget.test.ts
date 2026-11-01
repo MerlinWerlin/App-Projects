@@ -255,15 +255,16 @@ test('Swift: SeamlessWidget.swift exists, kind GlazeSeamless, edge to edge, regi
   assert.match(bundle, /^\s*SeamlessWidget\(\)\s*$/m);
 });
 
-test('Swift bridge: setSeamless crops, composes, caps and reloads GlazeSeamless', () => {
+test('Swift bridge: setSeamless crops, composes, caps and reloads every timeline (GlazeSeamless included)', () => {
   const src = read('modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift');
   assert.match(src, /AsyncFunction\("setSeamless"\)/);
   assert.match(src, /\.cropping\(to:/);
   assert.match(src, /UIGraphicsImageRenderer/);
-  assert.match(src, /reloadTimelines\(ofKind: "GlazeSeamless"\)/);
   assert.match(src, /"seamless-\\\(/);
   assert.match(src, /longest > 1200 \? 1200 \/ longest : 1/);
-  assert.match(src, /reloadTimelines\(ofKind: "GlazeSeamless"\)\s*\n\s*\}\s*\n\s*return true/);
+  // T201: after the write, reloadWidgets() (WidgetCenter.shared.reloadAllTimelines()) right before `return true`.
+  const fn = src.slice(src.indexOf('AsyncFunction("setSeamless")'), src.indexOf('AsyncFunction("setWidgetArt")'));
+  assert.match(fn, /try data\.write\(to: container\.appendingPathComponent\("seamless-\\\(family\)\.png"\)[\s\S]*GlazeWidgetBridgeModule\.reloadWidgets\(\)\s*\n\s*return true/);
   assert.match(src, /pngData\(\)/);
   // Families accepted are exactly small / medium / large.
   assert.match(src, /\["small", "medium", "large"\]\.contains\(family\)/);

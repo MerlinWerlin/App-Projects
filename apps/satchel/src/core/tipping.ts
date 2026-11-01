@@ -22,7 +22,7 @@
 import { apportion, ME, withSplit } from './together.ts';
 import { denominationsFor } from './cash.ts';
 import { convertFor } from './convert.ts';
-import { currencyDigits, isCategory, isCurrency, MAX_MINOR } from './spending.ts';
+import { currencyDigits, isCategory, isCurrency, MAX_MINOR, minorToText } from './spending.ts';
 import type { Expense, ExpenseCategory, LocalDate } from './model.ts';
 
 export const TIPPING_CHECKED = '2026-10-31';
@@ -263,6 +263,20 @@ const ROUND_STEPS: Readonly<Record<string, number>> = {
 };
 
 /**
+ * T108: curated steps written from general knowledge, not checked against the issuing central bank's current notes
+ * and coins (no cash-table row for them yet). The screen says "check this step locally" next to the round-up switch.
+ * Take a code out only once its step has been checked against the central bank's published denominations.
+ */
+export const ROUND_STEP_RECHECK: readonly string[] = ['BRL', 'HUF', 'IDR', 'VND'];
+
+/** True when roundStep(currency) is a curated step still marked to re-check (and the cash table doesn't settle it). */
+export function roundStepNeedsRecheck(currency: string): boolean {
+  if (!ROUND_STEP_RECHECK.includes(currency)) return false;
+  const denoms = denominationsFor(currency);
+  return !(denoms && denoms.some((d) => d.value === roundStep(currency)));
+}
+
+/**
  * The round-up step for a currency: the curated step when it is one of the currency's listed notes or coins (or the
  * table has none for it), else the smallest listed note; with no curated step, one whole unit (100 for currencies
  * without decimals, where one unit is usually worth very little).
@@ -426,6 +440,24 @@ export function tipExpense(r: TipResult, o: TipExpenseOpts): Expense {
     return withSplit(base, ME, { mode: 'equal', parts: people.map((person) => ({ person, value: 1 })) });
   }
   return base;
+}
+
+// ---------------------------------------------------------------- back to an open expense form (T108)
+
+/** What "Use this total" hands back to the expense form that opened the calculator. */
+export type TipFill = { amount: string; currency: string };
+
+/** The tip-included total (or your share of it) as the expense form's amount text, in the calculator's currency. */
+export function tipFill(r: TipResult, currency: string, which: 'total' | 'mine' = 'total'): TipFill | null {
+  if (!isCurrency(currency)) return null;
+  const minor = which === 'mine' ? r.shares[0] : r.total;
+  if (!(typeof minor === 'number' && Number.isSafeInteger(minor) && minor > 0)) return null;
+  return { amount: minorToText(minor, currency), currency };
+}
+
+/** The open form's draft with the filled amount and currency; category, day and note stay as the traveller left them. */
+export function applyTipFill<D extends { amount: string; currency: string }>(draft: D, fill: TipFill): D {
+  return { ...draft, amount: fill.amount, currency: fill.currency };
 }
 
 // ---------------------------------------------------------------- which country

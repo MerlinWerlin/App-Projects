@@ -19,6 +19,7 @@ import { Body, Button, Card, EmptyState, Label, Screen, Warning } from '../../sr
 import { ItemAddressSlot } from '../../src/ui/slots/ItemAddressSlot.tsx';
 import { ItemLoyaltySlot } from '../../src/ui/slots/ItemLoyaltySlot.tsx';
 import { ItemTicketSlot } from '../../src/ui/slots/ItemTicketSlot.tsx';
+import { ItemStaySlot } from '../../src/ui/stay.tsx';
 
 export default function ItemScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -110,6 +111,7 @@ export default function ItemScreen() {
       <ItemTicketSlot trip={trip} item={item} />
       <ItemLoyaltySlot item={item} />
       <ItemAddressSlot trip={trip} item={item} />
+      <ItemStaySlot item={item} />
       <Card>
         {row('item.from', item.from?.name)}
         {row('item.to', item.to?.name)}

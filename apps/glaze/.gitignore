@@ -14,3 +14,4 @@ coverage/
 trial-log.txt
 .trial-status
 tsc-report.txt
+.cache/

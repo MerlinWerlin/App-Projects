@@ -1,15 +1,14 @@
 // /install: add the Icon Studio set to the Home Screen.
-// Bulk: render icons -> one web clip .mobileconfig -> served to Safari from 127.0.0.1 on this
-// iPhone (T126, src/native/profileServer.ts) -> Allow -> Settings. Builds without the native
-// server (Expo Go, old builds) fall back to the share sheet and recommend Shortcuts.
-// Shortcuts (T183, owner 1 Nov: the DEFAULT and recommended method): save icons to a "Glaze icons"
-// Photos album (all at once, or one app's icon from its row) -> one app at a time, a Home Screen
-// shortcut with the "Open App" action (the app picked from the list; no URL, so no Safari hop and no
-// "Open in <app>?" prompt). Bulk is an optional second method while PROFILE_INSTALL_ENABLED, with a
-// plain warning that its web clips open through Safari and ask every time.
+// Install all at once (T202, owner-1101d #5: ALWAYS the main method): render icons -> one web clip
+// .mobileconfig -> served to Safari from 127.0.0.1 on this iPhone (T126, src/native/profileServer.ts)
+// -> Allow -> Settings. Builds without the native server (Expo Go, old builds) use the share sheet.
+// One stable profile id per install (src/store/installId.ts), so a new theme's profile replaces
+// the old one. The screen says plainly how many apps open via a quick Safari tap (safariTapCount).
+// Shortcuts: only a small "Prefer Shortcuts? One icon at a time" fallback link, plus the apps a
+// profile can't open: save icons to a "Glaze icons" Photos album -> one app at a time, a Home
+// Screen shortcut with the "Open App" action (no URL, so no Safari hop).
 // Delivery path chosen in docs/SPIKE_PROFILE.md. Free feature: nothing here reads Plus.
-// Design v2 (docs/DESIGN_V2.md §9, T55): method choice as two squircle cards (the recommended one
-// raised with a "Recommended" pill), steps and the Shortcuts checklist in inset groups with
+// Design v2 (docs/DESIGN_V2.md §9, T55): steps and the Shortcuts checklist in inset groups with
 // numbered pastel tiles, every button a PillButton.
 // T173 premium (docs/PREMIUM_UI.md §3.5): editorial SectionHeaders as the headings; the profile
 // steps as a calm numbered sequence on one lifted card (no separators) where the first step not
@@ -45,6 +44,7 @@ import {
   planInstall,
   profileStepCards,
   profileThemeName,
+  safariTapCount,
   shortcutItems,
   toggleProfileStep,
   toggleShortcutDone,
@@ -56,14 +56,11 @@ import {
 import {
   CHOICE_EPOCH,
   SHORTCUT_UNDO_STEPS,
-  availableMethods,
   bulkSelectable,
   effectiveChoice,
   installSummary,
   isCurrentPick,
-  recommendedMethod,
-  showBulkCard,
-  showMethodPicker,
+  showShortcutsFallback,
 } from '../src/core/installMethods';
 import { profileRoute } from '../src/core/profileServer';
 import { profileServer } from '../src/native/profileServer';
@@ -93,7 +90,6 @@ import {
   fontScaleCap,
   iconTileRadius,
   radiusV2,
-  shadowV2,
   sizeV2,
   spaceV2,
   textV2,
@@ -270,8 +266,8 @@ export default function InstallScreen() {
     profileCount: plan.profile.length,
     profileServer: serverAvailable,
   };
-  // T183 (owner 1 Nov): Shortcuts / Open App unless Bulk was explicitly picked since the switch
-  // (choiceExplicit + choiceEpoch, src/core/installMethods.ts isCurrentPick).
+  // T202 (owner-1101d #5): Install all at once unless the Shortcuts fallback was explicitly taken
+  // since the switch (choiceExplicit + choiceEpoch, src/core/installMethods.ts isCurrentPick).
   const choice: InstallChoice = effectiveChoice(install.state.choice, methodOpts, isCurrentPick(install.state));
   const items: ShortcutItem[] = useMemo(() => shortcutItems(specs, choice), [specs, choice]);
   const profileKey = `profile:${themeName}`;
@@ -573,7 +569,8 @@ export default function InstallScreen() {
     if (next === choice || busy) return;
     install.update((s) => ({ ...s, choice: next, choiceExplicit: true, choiceEpoch: CHOICE_EPOCH }));
   };
-  const recommended = recommendedMethod(methodOpts);
+  // T202: how many profile apps open with a quick Safari tap (computed from the URLs).
+  const tapInfo = safariTapCount(plan.profile);
   // Guided Shortcuts (T126): one icon at a time, the first app not ticked off yet is "next".
   const nextItem = items.find((i) => !install.state.shortcutsDone.includes(i.spec.appId)) ?? null;
   const toggleShortcut = (appId: string) => {
@@ -674,55 +671,46 @@ export default function InstallScreen() {
           ) : null}
         </View>
 
-        {/* Method (T183, owner 1 Nov): Shortcuts / Open App first and recommended; Bulk only as an
-            optional second card while the switch is on, with a plain Safari warning. Without Bulk,
-            one line of Shortcuts text instead of a picker. */}
-        <SectionHeader title={t('install.method.heading')} style={[styles.sideText, styles.headerTight]} />
-        {!showMethodPicker(methodOpts) && !showBulkCard(methodOpts) ? (
-          <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.sideText, { color: c.ink }]}>{t('install.method.shortcutsOnly')}</Text>
-        ) : (
-        <View accessibilityRole="radiogroup" accessibilityLabel={t('install.method.groupLabel')} style={[styles.methods, styles.side]}>
-          {availableMethods(methodOpts).map((m) =>
-            m === 'bulk' ? (
-              <MethodCard
-                key="bulk"
-                selected={choice === 'bulk'}
-                disabled={!bulkSelectable(methodOpts) || busy}
-                icon="layers"
-                title={t('install.method.bulk')}
-                badge={recommended === 'bulk' ? t('install.method.recommended') : undefined}
-                body={
-                  plan.profile.length === 0
-                    ? t('install.method.bulkNone')
-                    : `${t('install.method.bulkBody', { count: plan.profile.length })} ${t('install.method.bulkWarning')}`
-                }
-                onPress={() => pickChoice('bulk')}
-              />
-            ) : (
-              <MethodCard
-                key="shortcuts"
-                selected={choice === 'shortcuts'}
-                disabled={busy}
-                icon="command"
-                title={t('install.method.shortcuts')}
-                badge={recommended === 'shortcuts' ? t('install.method.recommended') : undefined}
-                body={t('install.method.shortcutsBody')}
-                onPress={() => pickChoice('shortcuts')}
-              />
-            ),
-          )}
-        </View>
-        )}
+        {/* Method (T202, owner-1101d #5): Install all at once is ALWAYS the main method. No picker:
+            Shortcuts is one small fallback link inside the profile card. When the profile can't be
+            used (switch off, or no picked app has a link), one line of Shortcuts text. When the
+            fallback was taken, a link back to Install all at once. */}
+        {!bulkSelectable(methodOpts) ? (
+          <>
+            <SectionHeader title={t('install.method.heading')} style={[styles.sideText, styles.headerTight]} />
+            <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.sideText, { color: c.ink }]}>{t('install.method.shortcutsOnly')}</Text>
+          </>
+        ) : null}
+        {bulkSelectable(methodOpts) && choice !== 'bulk' ? (
+          <View style={[styles.side, styles.btnRow]}>
+            <PillButton
+              label={t('install.method.backToBulk')}
+              icon="layers"
+              variant="tinted"
+              size="small"
+              disabled={busy}
+              onPress={() => pickChoice('bulk')}
+              accessibilityHint={t('install.method.backToBulkHint')}
+            />
+          </View>
+        ) : null}
 
         {choice === 'bulk' ? (
           <View style={styles.section}>
             <SectionHeader title={t('install.method.bulk')} style={[styles.sideText, styles.headerTight]} />
             <SquircleCard style={styles.side}>
               <View style={styles.stack}>
-                {/* T183: say plainly what profile icons do before anything is made. */}
-                <Notice tone="warn" icon="alert-triangle">
-                  <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.ink }]}>{t('install.method.bulkWarning')}</Text>
-                </Notice>
+                <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
+                  {t('install.method.bulkBody', { count: plan.profile.length })}
+                </Text>
+                {/* T202: say plainly, from the data, how many apps still need a quick Safari tap. */}
+                {tapInfo.tap > 0 ? (
+                  <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
+                    {tapInfo.tap === tapInfo.total
+                      ? t('install.method.safariTapAll', { count: tapInfo.tap })
+                      : t('install.method.safariTap', { count: tapInfo.tap, total: tapInfo.total })}
+                  </Text>
+                ) : null}
                 <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
                   {route === 'safari' ? t('install.safari.intro') : t('install.bulk.intro')}
                 </Text>
@@ -838,6 +826,18 @@ export default function InstallScreen() {
                     size="small"
                     disabled={busy}
                     onPress={() => shareAgain(profiles[0])}
+                  />
+                ) : null}
+                {/* T202: Shortcuts only as a small fallback link. */}
+                {showShortcutsFallback(methodOpts) ? (
+                  <PillButton
+                    label={t('install.method.shortcutsFallback')}
+                    icon="command"
+                    variant="plain"
+                    size="small"
+                    disabled={busy}
+                    onPress={() => pickChoice('shortcuts')}
+                    accessibilityHint={t('install.method.shortcutsFallbackHint')}
                   />
                 ) : null}
               </View>
@@ -1169,75 +1169,6 @@ function CheckBox({ checked, label, onPress, size = 22 }: { checked: boolean; la
   );
 }
 
-/**
- * Install method choice as a squircle card (radio). The recommended method sits raised with a
- * "Recommended" pill; the selected card gets the tint ring.
- */
-function MethodCard({
-  selected,
-  disabled,
-  icon,
-  title,
-  badge,
-  body,
-  onPress,
-}: {
-  selected: boolean;
-  disabled: boolean;
-  icon: 'layers' | 'command';
-  title: string;
-  badge?: string;
-  body: string;
-  onPress: () => void;
-}) {
-  const { c, scheme } = useColorsV2();
-  const { t, script } = useT();
-  const raised = Boolean(badge);
-  return (
-    <PressableScale
-      onPress={onPress}
-      disabled={disabled}
-      haptic="select"
-      accessibilityRole="radio"
-      accessibilityLabel={badge ? t('install.method.a11y', { title, badge, body }) : t('install.method.a11yNoBadge', { title, body })}
-      accessibilityState={{ selected, checked: selected, disabled }}
-      style={[
-        styles.method,
-        continuous,
-        shadowV2(raised ? 'raised' : 'card', scheme),
-        {
-          backgroundColor: raised ? c.surfaceRaised : c.surface,
-          borderColor: selected ? c.tint : scheme === 'dark' ? c.separator : 'transparent',
-          borderWidth: selected ? 2 : StyleSheet.hairlineWidth,
-        },
-        disabled && !selected ? styles.dim : null,
-      ]}
-    >
-      <Feather name={selected ? 'check-circle' : 'circle'} size={22} color={selected ? c.tint : c.inkTertiary} />
-      <View style={styles.flex}>
-        <View style={styles.methodTitle}>
-          <View
-            style={[
-              styles.methodTile,
-              continuous,
-              { borderRadius: iconTileRadius(sizeV2.rowIcon), backgroundColor: c.pastels[icon === 'layers' ? 'lilac' : 'sky'].fill },
-            ]}
-          >
-            <Feather name={icon} size={16} color={c.pastels[icon === 'layers' ? 'lilac' : 'sky'].ink} />
-          </View>
-          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), styles.shrink, { color: c.ink }]}>{title}</Text>
-          {badge ? (
-            <View style={[styles.badge, continuous, { backgroundColor: c.tint }]}>
-              <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...typeFor(script, 'caption1'), styles.badgeText, { color: c.onTint }]}>{badge}</Text>
-            </View>
-          ) : null}
-        </View>
-        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>{body}</Text>
-      </View>
-    </PressableScale>
-  );
-}
-
 /** Soft notice box (warning tint) with an icon and free content. */
 function Notice({ tone, icon, children }: { tone: 'warn'; icon: 'lock' | 'alert-triangle' | 'trash-2'; children?: ReactNode }) {
   const { c } = useColorsV2();
@@ -1560,22 +1491,10 @@ const styles = StyleSheet.create({
   stack: { gap: spaceV2.md },
   strip: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm, flexWrap: 'wrap' },
   section: { gap: spaceV2.md },
-  methods: { gap: spaceV2.md },
-  method: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: spaceV2.md,
-    padding: spaceV2.lg,
-    borderRadius: radiusV2.card,
-    minHeight: sizeV2.touch,
-  },
-  methodTitle: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm, flexWrap: 'wrap', marginBottom: spaceV2.xs },
-  methodTile: { width: sizeV2.rowIcon, height: sizeV2.rowIcon, alignItems: 'center', justifyContent: 'center' },
   badge: { borderRadius: radiusV2.pill, paddingHorizontal: spaceV2.sm, paddingVertical: spaceV2.xxs },
   badgeText: { fontWeight: '700' },
   coverageRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm },
   flex: { flex: 1 },
-  shrink: { flexShrink: 1 },
   dim: { opacity: 0.45 },
   fileRow: {
     flexDirection: 'row',

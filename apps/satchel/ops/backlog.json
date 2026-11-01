@@ -1355,12 +1355,60 @@
   },
   {
    "id": "T108",
-   "status": "todo",
+   "status": "done",
    "deps": [],
    "tags": [
     "follow-up"
    ],
    "title": "Run-96 follow-ups: Tipping: re-check the 37 rows marked less certain and the round-up steps for currencies not in the cash table (BRL, HUF, IDR, VND...); 'Work out a tip' fills the open expense form on return. Holidays: Italy 4 Oct (St Francis) from 2026, Argentina movable/bridge days, Chile moved days, Thai substitute days, Greek May Day near Orthodox Easter, NZ Matariki after 2030, regional days, lunar-calendar days via a published table. Gifts: gift map spots as pins on the trip map. Meds: drop unused meds.form.addTime keys. Still open from T104: central-bank denomination check, ISO 4217 online check, stamp image sharing (needs a TestFlight build), device checks, Ionicons glyphs, .ics share sheet, PC licence check",
+   "accept": "tests green; DECISIONS records sources",
+   "note": "Run 97: worker takes the offline parts: gift map spots as trip-map pins, 'Work out a tip' fills the open expense form on return, drop unused meds.form.addTime keys, holiday rules only where the published law is certain (Italy 4 Oct from 2026, Greek May Day moved when it falls in Holy Week/Easter week per the published decision if certain, else note), round-up steps for BRL/HUF/IDR/VND marked to re-check. Online re-checks, device checks and the PC licence check stay open. Done in run 97 (offline parts): gift pins on the Map tab, tip total back into the open expense form, Italy 4 Oct from 2026, BRL/HUF/IDR/VND round-up steps marked to re-check; unused keys removed at integration. Remaining items carried to T112.",
+   "commit": "6a64741"
+  },
+  {
+   "id": "T109",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Stay details + join Wi-Fi (owner-1031 D, deepen Trips + Wallet): on every stay booking a 'Stay details' card and screen app/stay/[itemId].tsx with room number, door / key-box / gate codes (masked until tapped, Face ID optional via the existing vault auth helper when present), Wi-Fi network + password with a 'Join this Wi-Fi' QR code built by the existing offline QR encoder (WIFI:T:WPA;S:...;P:...;; with escaping of \\ ; , : \"), copy password, reception / host phone with tap-to-call and an Apple Maps link to the address, check-in / check-out times from the booking, house rules / quiet hours / bins / parking notes, and a 'Show to a taxi' address shortcut to the existing address card. Stored on this phone only (own AsyncStorage key per item, never in .satchel files; guard test). Shown on the timeline item, the trip's current stay on Your day / arrival card, and in Low-battery essentials (codes stay masked). Pure TS core src/core/staydetails.ts with tests.",
+   "accept": "staydetails tests (Wi-Fi QR payload escaping incl. hidden networks and open networks, masking, phone-only storage guard that the key never reaches tripfile export, current-stay pick across zones); every string in src/i18n/en/stay.ts; no new npm dependency",
+   "commit": "9c0cf98"
+  },
+  {
+   "id": "T110",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Menu helper (owner-1031 D, deepen Emergency/allergy + Wallet): offline food-word dictionary app/menu.tsx for ja, zh-Hans, ko, th, vi, fr, it, es, de, pt (about 120 entries each: meats, fish and seafood, eggs/dairy, nuts and other common allergens, vegetables, cooking methods, spice level, drinks, 'vegetarian'/'vegan'/'halal'-style markers), with romanisation where the script is not Latin, searchable both ways (accent and width insensitive), flags such as 'contains pork / shellfish / nuts / alcohol' and a 'my diet' filter that highlights words to watch for (diet chosen in the screen, kept on this phone). Links from the allergy card, the phrases screen and the arrival card (language from the stop's country). Content in src/content/menu.json written here, marked 'to native-check' like phrases.json and listed in docs/research/PHRASES.md; label 'General guidance only - always tell staff about allergies'. Pure TS search + flags in src/core/menu.ts with tests.",
+   "accept": "menu tests (every entry has en + local + flags, romanisation present for non-Latin scripts, search both ways incl. accents and katakana/hiragana width, diet filter flags); every string in src/i18n/en/menu.ts; no new npm dependency",
+   "commit": "4c2e593"
+  },
+  {
+   "id": "T111",
+   "status": "done",
+   "deps": [],
+   "tags": [
+    "owner-1031",
+    "D"
+   ],
+   "title": "Spending insights + receipts (owner-1031 D, less bland, deepen Spending): on the trip's Spending screen an Insights section: per-day bars (react-native-svg, tokens, accessible summary text), category breakdown ring with legend, daily budget pace ('on track / ahead / over' against an optional trip budget), biggest days, cash vs card share; a receipt photo on any expense (camera or Photos via the existing helpers, saved in the app's documents folder on this phone only, thumbnail on the row, full-screen view, removed with the expense) and 'Export spending' as a CSV file shared through expo-sharing (expo-file-system write; RFC 4180 quoting, amounts in major units with currency code, home value only with a saved rate). Pure TS core src/core/insights.ts (+ csv) with tests; all amounts in integer minor units.",
+   "accept": "insights tests (daily totals across time zones by the expense's own day, category shares sum to 100 with largest-remainder rounding, pace states, CSV quoting of commas/quotes/newlines and 0- and 3-decimal currencies, receipt files never in .satchel exports); every string in src/i18n/en/insights.ts; no new npm dependency",
+   "commit": "c7aad67"
+  },
+  {
+   "id": "T112",
+   "status": "todo",
+   "deps": [],
+   "tags": [
+    "follow-up"
+   ],
+   "title": "Run-97 follow-ups: Stay details: delete the stay key when its booking is deleted, arrival-card entry point, fill Wi-Fi from Paste a booking. Menu helper: native-speaker check of menu.json (docs/research/PHRASES.md doubts table), zh-Hant and Indonesian words, check the new Ionicons names against the real set. Insights: device check of charts, camera, CSV share sheet. Gift pin opens and scrolls to the gift. Still open from T108: Greek May Day, Thai substitutes, Argentina/Chile moved days, NZ Matariki after 2030, lunar days via a published table; re-check the 37 tipping rows and BRL/HUF/IDR/VND steps online; central-bank denominations, ISO 4217 online check, stamp image sharing, .ics share sheet, PC licence check",
    "accept": "tests green; DECISIONS records sources"
   }
  ],

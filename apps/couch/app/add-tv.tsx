@@ -140,7 +140,7 @@ export default function AddTvScreen() {
   const probeIp = s.step === 'manual' && s.probing ? s.ip : null;
   useEffect(() => {
     if (probeIp === null) return;
-    probeHost(fetchAdapter, probeIp, { timeoutMs: 2500 })
+    probeHost(fetchAdapter, probeIp, { timeoutMs: 2500, tlsCheck: appDiscoveryDeps().tlsCheck ?? undefined })
       .then((c) => {
         if (alive.current) dispatch({ type: 'probeResult', candidate: c });
       })

@@ -6,6 +6,7 @@
  */
 import type { DiscoveryDeps } from '../core/discoveryService';
 import { fetchAdapter } from '../state/tvs';
+import { loadTlsPortCheck } from './lanTls';
 import { loadPhoneIp } from './network';
 import { loadUdpFactory } from './udp';
 import { loadZeroconf } from './zeroconf';
@@ -26,6 +27,8 @@ export function appDiscoveryDeps(): DiscoveryDeps {
   if (mdns) deps.mdns = mdns;
   const phoneIp = safe(loadPhoneIp);
   if (phoneIp) deps.phoneIp = phoneIp;
+  const tlsCheck = safe(loadTlsPortCheck);
+  if (tlsCheck) deps.tlsCheck = tlsCheck;
   return deps;
 }
 

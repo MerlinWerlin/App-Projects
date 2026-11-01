@@ -1,7 +1,7 @@
 // Bottom tab bar (T70, docs/MARKET.md L1; order in src/core/tabNav.ts): Themes / Widgets / Icons /
-// Pets / Wallpapers on the v2 `bar` glass material (docs/DESIGN_V2.md §9). T186 (owner-1101 #4):
-// Pets joined, and Live left the bar (the Live Photo maker is /live, opened from Wallpapers). Settings keeps its
-// route so /settings links still open it, but it has no tab button: Themes has a gear for it.
+// Wallpapers on the v2 `bar` glass material (docs/DESIGN_V2.md §9). T186: Live left the bar (the Live
+// Photo maker is /live, opened from Wallpapers). T198 (owner-1101d #1): Pets were cut (docs/future/pets-game).
+// Settings keeps its route so /settings links still open it, but it has no tab button: Themes has a gear for it.
 import { Feather } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
@@ -71,17 +71,6 @@ export default function TabsLayout() {
       <Tabs.Screen name="themes" options={tab(t('tabs.themes'), 'layers')} />
       <Tabs.Screen name="widgets" options={tab(t('tabs.widgets'), 'layout')} />
       <Tabs.Screen name="icons" options={tab(t('tabs.icons'), 'grid')} />
-      {/* T186: the pets screen (app/pets.tsx) has no title of its own, so this tab shows a plain header. */}
-      <Tabs.Screen
-        name="pets"
-        options={{
-          ...tab(t('tabs.pets'), 'smile'),
-          headerShown: true,
-          headerStyle: { backgroundColor: c.bg },
-          headerTintColor: c.ink,
-          headerShadowVisible: false,
-        }}
-      />
       <Tabs.Screen name="wallpapers" options={tab(t('tabs.wallpapers'), 'image')} />
       {/* Reached from the gear on Themes; href null hides the button but keeps /settings working. */}
       <Tabs.Screen name="settings" options={{ title: t('tabs.settings'), href: null }} />

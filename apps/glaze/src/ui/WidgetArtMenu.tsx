@@ -3,6 +3,9 @@
 // grid of large rounded previews grouped under a header per kind, with a clear selected state (tint
 // ring + check badge, accessibilityState.selected). Art is FITTED inside each preview, never cropped
 // (placeArt), over its background: the theme colour, a blurred copy of the art, or the wallpaper.
+// T201 (owner-1101d #4): sections come in shelf order (src/core/widgetOptions.ts widgetShelf): the
+// practical kinds (habits, countdown, calendar, date, clock, battery…) first, then plain art; every
+// piece is offered in every Home Screen size (fitted).
 // Only tokens for chrome; the theme colour and the art are theme data. No motion. Works in Expo Go
 // (expo-image is already used across the app).
 import { Feather } from '@expo/vector-icons';

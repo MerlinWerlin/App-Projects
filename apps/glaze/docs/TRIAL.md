@@ -2,6 +2,16 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (1 Nov, late morning: owner-1101d)
+This needs the **new TestFlight build** (pets removed, new icon and intro, widget refresh fixes are built into the app; auto-ship sends it). Delete nothing first. Open the newest Glaze build from TestFlight, then answer yes / no:
+
+1. **Pets gone:** is the tab bar now **Themes · Widgets · Icons · Wallpapers**, with no Pets tab and nothing in the Dynamic Island when you open Glaze? yes / no
+2. **Icon + intro:** is the Home Screen icon back to the Prism gem with the light beam splitting into colours? When Glaze opens, does a light beam sweep across the dark full screen, light up the gem and fan out into six colours, then fade into Themes, in about 1.5 s and with no bounce? yes / no
+3. **Theme page:** on a theme page, does the bold **Set it up** heading catch your eye before the Wallpaper / Icons / Widgets cards? Is the "What's inside / Palette / Style" part gone, with the colour swatches now under the matching widgets? yes / no
+4. **Widgets order:** theme page > **Widgets**: do you now see the practical pieces first (habits, countdown, date, clock, battery, with **Make it live**), then the art, then the standard widgets in the theme's colours? Can you pick any art piece for Small, Medium and Large? After you apply one, does the widget on your Home Screen change within a few seconds? Is Firefly Grove's sleeping fox whole, not cropped? yes / no
+5. **Icons replace the old ones:** Icons > Install icons: does it open straight on **Install all at once**, with only a small "Prefer Shortcuts?" link? Install one theme's icons, then another theme's: does iOS replace the Glaze profile so the old icons go away and nothing doubles up? (A profile from a build before 1 Nov still needs removing once: Icons > Clean up old icons.) yes / no
+6. **Widget check pictures:** nothing to do. Glaze's build now draws every widget of every theme at every size and checks them (docs/widget_snapshots/). Medium widgets show square art in the middle with a soft blurred fill on the sides. Is that look fine for now? yes / no
+
 ## New since your last test (1 Nov: owner-1101)
 This needs the **new TestFlight build** (new app icon, Island pets and widget art changes are built into the app; auto-ship sends it). Open the newest Glaze build from TestFlight, then answer yes / no:
 

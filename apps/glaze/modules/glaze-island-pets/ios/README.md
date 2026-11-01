@@ -1,1 +1,0 @@
-Swift ActivityKit bridge for APPS A2 Glaze TestFlight. Codex maintains the Expo module and serialized session lifecycle here; `GlazePetAttributes.swift` is copied exactly into the WidgetKit extension by `scripts/island-pets-contract.mjs --write`. All data stays on the phone. Native device behavior is verified separately from compiler and contract checks.

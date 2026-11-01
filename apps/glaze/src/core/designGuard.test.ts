@@ -25,7 +25,6 @@ const ART_ALLOWLIST: Record<string, string> = {
   'src/ui/CatalogueWidgetPreview.tsx': 'draws a catalogue widget in the theme\'s own colours and shapes',
   'src/ui/HomeMock.tsx': 'phone mock: status bar and dock drawn over the theme wallpaper',
   'src/ui/IntroGlaze.tsx': 'generated intro artwork (gloss gradients, sparkle)',
-  'src/ui/IslandPetArt.tsx': 'pixel-art pet palette',
   'src/ui/LockMock.tsx': 'phone mock: lock-screen clock and controls over the wallpaper',
   'src/ui/PhoneFrame.tsx': 'device frame artwork (black glass, rim, island, glare)',
   'src/ui/SeamlessWidgetPreview.tsx': 'phone mock for seamless widgets (device black, dock glass)',
@@ -38,7 +37,6 @@ const ART_ALLOWLIST: Record<string, string> = {
 const BASELINE: Record<string, Counts> = {
   'app/(tabs)/_layout.tsx': { fontSize: 1 },
   'app/collage.tsx': { radius: 2 },
-  'app/pets.tsx': { colour: 2, radius: 1 },
   'src/ui/HeartButton.tsx': { colour: 1 },
   'src/ui/LivePhotoGuide.tsx': { colour: 6, fontSize: 1 },
   'src/ui/PhotoCropEditor.tsx': { colour: 1 },

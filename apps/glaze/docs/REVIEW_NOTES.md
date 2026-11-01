@@ -4,20 +4,22 @@ Text to paste into App Store Connect > App Review Information > Notes, one secti
 Keep each section true to the build being submitted. Background and sources are in `docs/MARKET.md`
 ("Risk found").
 
+Glaze has no Live Activities and no Dynamic Island content: the Island pets feature and `NSSupportsLiveActivities` were removed on 1 Nov 2026 (T198). Do not describe pets in review notes.
+
 ## App Review information (Apple's new-developer questions)
 
 Paste after the feature sections (release standard §3; same pattern as the other App Factory apps).
 
 1. Screen recording: supplied with the reply (physical iPhone, latest iOS): launch, pick a theme, make and install an icon with Shortcuts, add a Glaze widget, save a wallpaper, Plus Unlock and Restore.
 2. Purpose and audience: a home-screen customisation app for anyone who wants a matching look. It offers original themes with matching icons, themed widgets and wallpaper packs, plus a Live Photo maker from the user's own clip.
-3. Setup: no account, login or sample files needed; the starter themes are bundled and further theme packs download on demand (item 4). Icons are installed one app at a time with Apple's Shortcuts app, guided step by step in Glaze.
+3. Setup: no account, login or sample files needed; the starter themes are bundled and further theme packs download on demand (item 4). Icons are installed all at once with a web clip profile the user installs in Settings (or, with the switch off or as a fallback, one app at a time with Apple's Shortcuts app), guided step by step in Glaze.
 4. External services: none for core functionality. Only Apple In-App Purchase (StoreKit) for the one-time Glaze Plus unlock (non-consumable `com.jared797.glaze.plus`; Restore purchases is on the Plus sheet and in Settings). No server of our own, accounts, analytics, ads or AI; app fixes arrive through Expo's update service (EAS Update, `u.expo.dev`), whose library sends the app version and a random per-install ID (not a device or account identifier, not used for tracking); photos and videos never leave the device. The theme-pack catalogue and art packs are downloaded from GitHub (public GitHub Releases on `MerlinWerlin/App-Projects`) as plain files over HTTPS; no personal data, account or identifier is sent with these requests, each file is checked against the SHA-256 in its pack manifest, and without a connection the app keeps working with its bundled and already downloaded themes.
 5. Regional differences: none; works the same in all regions (only the purchase price is localised).
 6. Regulated industry / third-party material: not applicable. All icons, themes and art are original or licensed (licences in the app's records); no brand logos or third-party characters.
 
 ## Icon install
 
-Since T183 (owner 1 Nov) the guided Shortcuts method with the **"Open App"** action (the app chosen from Apple's list, no URL) is the default and Recommended for every app in every build: it opens the app directly, with no Safari hop and no "Open in <app>?" prompt. Bulk install (web clip profile served to Safari) is an optional second card, shown only while `PROFILE_INSTALL_ENABLED` is true, with a plain warning that its icons open through Safari, iOS asks "Open in <app>?" each time, and some apps can't open that way (web clips hold only a URL; Apple's WebClip payload has no key to launch an app by bundle id). Guideline 5.5: the Shortcuts method uses no profile at all, so the first App Store submission can set the switch to false and lose nothing that matters.
+Since T202 (owner-1101d #5, supersedes T183) **"Install all at once"** (web clip profile served to Safari) is the main method whenever `PROFILE_INSTALL_ENABLED` is true; the guided Shortcuts method with the **"Open App"** action is only a small "Prefer Shortcuts? One icon at a time" link, and covers apps a profile can't open. The install screen says plainly, counted from the set, how many apps open via a quick Safari tap ("Open in <app>?"; web clips hold only a URL and Apple's WebClip payload has no key to launch an app by bundle id). Guideline 5.5: with the switch false the screen is Shortcuts-only and uses no profile at all, so a rejection costs one flag.
 
 Pick the version that matches `PROFILE_INSTALL_ENABLED` in `src/config/install.ts` for this build.
 
@@ -31,9 +33,9 @@ Pick the version that matches `PROFILE_INSTALL_ENABLED` in `src/config/install.t
 > remove the shortcuts and bring back the original icons. There are no accounts, the icon flow makes no network
 > calls, and photos stay on the device.
 
-**Switch ON (TestFlight, or if the owner chooses to submit with it):**
+**Switch ON (TestFlight, and the owner's choice for submission since T202):**
 
-> Besides the Shortcuts method above, Glaze offers an optional "Bulk install". The app builds a
+> Glaze's main install method is "Install all at once" (the Shortcuts method above stays as a fallback). The app builds a
 > standard configuration profile on the device. It contains only Home Screen web clips
 > (`com.apple.webClip.managed`), one per selected app, and each one opens that app's public URL
 > scheme. Glaze doesn't install the profile itself. It opens the file in Safari from a short-lived
@@ -47,7 +49,7 @@ Pick the version that matches `PROFILE_INSTALL_ENABLED` in `src/config/install.t
 Facts behind the notes (check before each submission):
 - Payload builder: `src/core/mobileconfig.ts` (`IsRemovable` true, `PayloadRemovalDisallowed` false,
   `FullScreen` false). Delivery (T126): served to Safari from 127.0.0.1 by `modules/glaze-profile-server` through `src/native/profileServer.ts`; share sheet fallback when the module is absent (`app/install.tsx`, `docs/OWNER_1024E.md (part B)`).
-- T194: every profile from one Glaze install has the same PayloadIdentifier (`com.jared797.glaze.icons.<installId>`, a random id made on the device and stored only locally, `src/store/installId.ts`) and stable per-slot web clip ids, so a new theme's profile replaces the previous Glaze profile instead of adding another; the id is not sent anywhere except inside the profile the user installs.
+- T194: every profile from one Glaze install has the same PayloadIdentifier (`com.jared797.glaze.icons.<installId>`, a random id made on the device and stored only locally, `src/store/installId.ts`) and stable web clip ids, so a new theme's profile replaces the previous Glaze profile instead of adding another; the id is not sent anywhere except inside the profile the user installs. T202: the top-level PayloadUUID is stable per install too, and each web clip's PayloadIdentifier / PayloadUUID (name-based v5 UUID) derive only from the install id + the app id (not the theme, position or time), so the clips are updated in place.
 - The method switch lives in `src/config/install.ts`. Availability logic is in
   `src/core/installMethods.ts`, with tests.
 - This text describes the code, not a device test. The flow hasn't been checked on a device for this

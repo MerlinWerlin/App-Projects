@@ -9,7 +9,7 @@
 //   companions, home value only at a saved rate, and "Add to spending" (tip included, category from context).
 // Free feature. Tokens only, timed motion only, 48 pt targets, every control labelled.
 import { Ionicons } from '@expo/vector-icons';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { AccessibilityInfo, Alert, ScrollView, Text, View, type AccessibilityActionEvent } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -38,8 +38,10 @@ import {
   pickTipCountry,
   presetsFor,
   roundStep,
+  roundStepNeedsRecheck,
   SERVICES,
   tipExpense,
+  tipFill,
   tipHome,
   type Norm,
   type TipMode,
@@ -48,6 +50,7 @@ import {
 } from '../src/core/tipping.ts';
 import type { Key } from '../src/i18n/en.ts';
 import { useApp } from '../src/state/app.tsx';
+import { deliverTipFill } from '../src/state/tipFill.ts';
 import { useTrips } from '../src/state/trips.tsx';
 import { radius, shadowOf, space, TOUCH, typeScale } from '../src/theme/tokens.ts';
 import { FadeInView, HeroHeader, SectionCard } from '../src/ui/hero.tsx';
@@ -73,7 +76,7 @@ const SOURCE_KEYS: Record<Source, Key> = { param: 'tipping.countryFrom.param', s
 const one = (v: string | string[] | undefined) => (typeof v === 'string' ? v : undefined);
 
 export default function TippingScreen() {
-  const params = useLocalSearchParams<{ tripId?: string; country?: string; category?: string; currency?: string; service?: string }>();
+  const params = useLocalSearchParams<{ tripId?: string; country?: string; category?: string; currency?: string; service?: string; fill?: string }>();
   const { t, theme } = useApp();
   const { trips } = useTrips();
   const { homeIso } = useHomeCountry();
@@ -141,6 +144,7 @@ export default function TippingScreen() {
             initialService={initialService}
             passedCurrency={one(params.currency)}
             contextCategory={one(params.category)}
+            fillToken={one(params.fill) || undefined}
             today={today}
           />
         </>
@@ -314,6 +318,7 @@ function Calculator({
   initialService,
   passedCurrency,
   contextCategory,
+  fillToken,
   today,
 }: {
   row: TipRow;
@@ -321,9 +326,12 @@ function Calculator({
   initialService: TipService;
   passedCurrency?: string;
   contextCategory?: string;
+  /** T108: opened from an open expense form; "Use this total" fills that form instead of adding an expense. */
+  fillToken?: string;
   today: string;
 }) {
   const { t, theme, lang } = useApp();
+  const router = useRouter();
   const { saveTrip } = useTrips();
   const s = useMemo(() => (trip ? readSpending(trip) : null), [trip]);
   const home = s?.budget?.currency ?? null;
@@ -388,6 +396,14 @@ function Calculator({
     }
   };
 
+  const fillForm = (which: 'total' | 'mine') => {
+    if (!fillToken || !result || !code) return;
+    const f = tipFill(result, code, which);
+    if (!f) return;
+    deliverTipFill(fillToken, f);
+    if (router.canGoBack()) router.back();
+  };
+
   const showErr = amount.trim() !== '' && res != null && !res.ok;
   const billErr = showErr && code && res && !res.ok && res.errors.includes('amount') ? t('tipping.calc.billErr', { code, n: currencyDigits(code) }) : undefined;
   const customErr = mode === 'custom' && customText.trim() !== '' && custom == null ? t('tipping.calc.customErr') : undefined;
@@ -432,6 +448,7 @@ function Calculator({
 
       <ToggleRow label={t('tipping.calc.included')} hint={t('tipping.calc.includedHint')} value={included} onChange={setIncluded} />
       {mode !== 'roundup' && mode !== 'none' && code ? <ToggleRow label={t('tipping.calc.roundUp')} hint={t('tipping.calc.roundUpHint', { step: stepText })} value={roundUp} onChange={setRoundUp} /> : null}
+      {code && (mode === 'roundup' || roundUp) && roundStepNeedsRecheck(code) ? <Text style={[typeScale.small, { color: theme.muted }]}>{t('f96.tip.stepRecheck', { step: stepText, code })}</Text> : null}
 
       <Label>{t('tipping.split.label')}</Label>
       {shared ? (
@@ -490,7 +507,14 @@ function Calculator({
               {homeVal ? t('tipping.res.home', { tip: money(homeVal.tip, home), total: money(homeVal.total, home) }) : t('tipping.res.noRate', { code, home })}
             </Text>
           ) : null}
-          {trip ? (
+          {fillToken ? (
+            <>
+              <Button label={t('f96.tip.useTotal')} hint={t('f96.tip.useTotalHint', { amount: money(result.total, code) })} icon="return-down-back-outline" onPress={() => fillForm('total')} />
+              {splitMode === 'people' && result.shares.length > 1 ? (
+                <Button kind="quiet" label={t('f96.tip.useMine')} hint={t('f96.tip.useMineHint', { amount: money(big, code) })} onPress={() => fillForm('mine')} />
+              ) : null}
+            </>
+          ) : trip ? (
             <>
               <Button
                 label={t('tipping.add')}

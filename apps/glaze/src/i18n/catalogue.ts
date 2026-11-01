@@ -59,8 +59,14 @@ type NamesFor<K extends MessageKey> =
 /** Params object for key K (placeholder names from the English string). */
 export type ParamsFor<K extends MessageKey> = { [N in NamesFor<K>]: N extends 'count' ? number : string | number };
 
-/** Rest-args tuple for `t(key, ...args)`: params required only when the message has placeholders. */
-export type TArgs<K extends MessageKey> = [NamesFor<K>] extends [never] ? [params?: Params] : [params: ParamsFor<K> & Params];
+/**
+ * Rest-args tuple for `t(key, ...args)`: params required only when the message has placeholders.
+ * Distributes over K, so a key typed as a union (e.g. `MessageKey` from a table of keys) accepts
+ * whatever any member accepts. Until T198 this leniency came by accident from the untyped pets copy.
+ */
+export type TArgs<K extends MessageKey> = K extends MessageKey
+  ? [NamesFor<K>] extends [never] ? [params?: Params] : [params: ParamsFor<K> & Params]
+  : never;
 
 /** The `t()` signature shared by the hook and the singleton. */
 export type TFunction = <K extends MessageKey>(key: K, ...args: TArgs<K>) => string;

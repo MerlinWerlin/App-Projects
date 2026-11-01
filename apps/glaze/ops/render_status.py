@@ -57,14 +57,14 @@ MASCOTS = [("1", "Tessel", "a porcelain tile with a pink glaze drip; the drip sl
            ("2", "Latchling", "a frosted-glass padlock with a glowing keyhole; the glow breathes and it blinks"),
            ("3", "Vitri", "a stained-glass sun-catcher; it sways gently and sparkles now and then")]
 def mascot_block():
-    # owner-1101 item 8 (T190, 1 Nov): the icon and mascot are Prism, the little prism creature. The SVG is
-    # generated from src/core/introGlaze.ts by scripts/brand/build-brand.mjs (same drawing as assets/brand/icon.svg).
-    f = root / "docs/mascot/prism-icon.svg"
+    # T199 (owner-1101d #2, 1 Nov): the creature was rejected; the icon is the 25 Oct Prism diamond again
+    # (assets/brand/icon.svg, copied from docs/mascot/previous-prism-diamond/).
+    f = root / "assets/brand/icon.svg"
     if not f.exists():
         return ""
     uri = "data:image/svg+xml;base64," + base64.b64encode(f.read_bytes()).decode()
-    return ('<section><h2>New app icon + mascot: Prism the prism creature</h2><p class="small">Your 1 Nov ask: the cute prism creature instead of the plain diamond, with a short calm opening animation (it wakes up, floats, blinks). Redrawn from your description (the picture you picked was never in the build files), so say if it isn\'t the one. Needs a new TestFlight build to show on the Home Screen. Details in docs/MASCOT.md.</p>'
-            f'<figure style="margin:10px 0 0;max-width:180px"><img src="{uri}" alt="Prism app icon: a cute lilac crystal creature with big eyes, blush, little arms and feet, under a rainbow arch" style="width:100%;height:auto;border-radius:40px"></figure></section>')
+    return ('<section><h2>App icon: back to the Prism diamond</h2><p class="small">Your 1 Nov 10:31 ask: the creature is gone; the icon is the diamond with the light beam again, and the opening animation is now full screen (a beam of light passes through the diamond and splits into the six colours, about 1.5 s). If you find the Prism picture you picked, add it as docs/mascot/picked-prism.png and the icon gets redrawn from it. Needs a new TestFlight build to show on the Home Screen. Details in docs/MASCOT.md.</p>'
+            f'<figure style="margin:10px 0 0;max-width:180px"><img src="{uri}" alt="Prism app icon: a faceted crystal on deep indigo with a beam of light entering from above and a fan of six colours leaving its point" style="width:100%;height:auto;border-radius:40px"></figure></section>')
 
 page = f"""<title>Glaze Build</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
