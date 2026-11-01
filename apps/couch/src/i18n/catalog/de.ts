@@ -830,6 +830,7 @@ export const de: Catalogue = {
   "app.cast.queueTitle": "Warteschlange",
   "app.cast.queueCount": { one: "{count} Objekt", other: "{count} Objekte" },
   "app.cast.clear": "Alle entfernen",
+  "app.cast.testPicture": "Testbild senden",
   "app.cast.clearHint": "Beendet das Streamen und leert die Warteschlange",
   "ui.cast.slideshowHeader": "Diashow",
   "ui.cast.slideshow": "Fotos als Diashow zeigen",

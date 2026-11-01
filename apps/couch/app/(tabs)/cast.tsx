@@ -153,7 +153,7 @@ export default function CastScreen() {
               </Text>
             ) : null}
             {snap.delivery?.via === 'googlecast' ? (
-              <PillButton variant="plain" label="Send test picture" onPress={() => void cast.sendTestPicture()} />
+              <PillButton variant="plain" label={t('app.cast.testPicture')} onPress={() => void cast.sendTestPicture()} />
             ) : null}
             {queue.items.length > 0 ? (
               <PillButton variant="tinted" stretch label={t('app.cast.airplayShow')} onPress={() => router.push('/airplay-show')} />

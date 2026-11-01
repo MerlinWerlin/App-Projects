@@ -8,7 +8,7 @@ import { FakeTimer, flush } from '../__tests__/fakes';
 import { FakeCastDevice, NS_CONN, NS_MEDIA, NS_RCV, SESSION, TRANSPORT } from '../__tests__/fakeCastDevice';
 import type { CastMedia } from '../didl';
 import type { CastTarget } from '../driver';
-import { buildLoadPayload, createGoogleCast, findReceiverApp } from './googleCastDriver';
+import { buildLoadPayload, CAST_TEST_IMAGE_URL, createGoogleCast, findReceiverApp } from './googleCastDriver';
 
 setLocale('en');
 
@@ -152,6 +152,22 @@ describe('createGoogleCast: loading', () => {
     dev.loadMode = 'photo-idle';
     await driver.load(PHOTO);
     expect(driver.snapshot()).toMatchObject({ state: 'playing', confirmed: true });
+    driver.dispose();
+  });
+});
+
+describe('createGoogleCast: test picture (owner #177)', () => {
+  it('loads the fixed test picture from the web even though it is not a phone-served URL', async () => {
+    const { dev, driver } = setup();
+    await driver.load({ url: CAST_TEST_IMAGE_URL, title: 'Couch test picture', mime: 'image/jpeg', kind: 'photo' });
+    const load = dev.commands.find((m) => m.payload['type'] === 'LOAD')!;
+    expect(load.payload).toMatchObject({ media: { contentId: CAST_TEST_IMAGE_URL, contentType: 'image/jpeg' } });
+    driver.dispose();
+  });
+
+  it('still refuses any other non-LAN URL', async () => {
+    const { driver } = setup();
+    await rejection(driver.load({ ...PHOTO, url: 'https://example.com/a.jpg' }));
     driver.dispose();
   });
 });

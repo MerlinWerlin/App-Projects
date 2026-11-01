@@ -828,6 +828,7 @@ export const fr: Catalogue = {
   "app.cast.queueTitle": "File d’attente",
   "app.cast.queueCount": { one: "{count} élément", other: "{count} éléments" },
   "app.cast.clear": "Tout effacer",
+  "app.cast.testPicture": "Envoyer une image test",
   "app.cast.clearHint": "Arrête le cast et vide la file",
   "ui.cast.slideshowHeader": "Diaporama",
   "ui.cast.slideshow": "Afficher les photos en diaporama",

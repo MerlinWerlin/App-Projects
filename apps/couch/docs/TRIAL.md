@@ -18,6 +18,11 @@ Later on 1 Nov (your chats #159-#168, now in the build too):
 6. Cast > AirPlay > Screen Mirroring page: is there a "Show AirPlay TVs" button that opens the iPhone's AirPlay list? yes / no
 7. Cast a photo to the TCL: does it now reach the TV? If not, does the red line end with the reason in brackets? (screenshot it) yes / no
 8. On the newest TestFlight build (Bonjour discovery): pair the TCL with the code it shows. If pairing fails, is there a "Use for casting photos and videos" button under the error, and does it save the TV as "Casting only"? yes / no
+Afternoon of 1 Nov (your chats #173-#175, now in the build too):
+9. Apps tab with the TCL connected: is there a list of common apps (names only), and does tapping one you have installed open it on the TV? yes / no
+10. Cast a photo to the TCL. If it fails, does the red line start with "port … (Cast announced on …)" or "(no Cast service announced)"? (screenshot it) yes / no
+11. If the TV shows a black screen while casting: does the "from this phone at …" line now end with a short phone check result in brackets? (screenshot it) yes / no
+12. Cast tab while casting to the TCL: tap "Send test picture". Does a picture of the Couch remote appear on the TV? (yes = the TV can show pictures but can't reach your phone; black = the TV's cast viewer is at fault) yes / no
 
 ## New since your last test (25 Oct late): your TCL Google TV
 Thanks for the TV model. Two fixes. The first is over the air. The second needs TestFlight 1.0.2, which is building now (sent 26 Oct 11:26 Sydney).

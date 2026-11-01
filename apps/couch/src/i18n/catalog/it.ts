@@ -822,6 +822,7 @@ export const it: Catalogue = {
   "app.cast.queueTitle": "Coda",
   "app.cast.queueCount": { one: "{count} elemento", other: "{count} elementi" },
   "app.cast.clear": "Cancella tutto",
+  "app.cast.testPicture": "Invia immagine di prova",
   "app.cast.clearHint": "Interrompe la trasmissione e svuota la coda",
   "ui.cast.slideshowHeader": "Presentazione",
   "ui.cast.slideshow": "Mostra le foto come presentazione",

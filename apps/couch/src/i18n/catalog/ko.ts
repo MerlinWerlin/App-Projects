@@ -813,6 +813,7 @@ export const ko: Catalogue = {
   "app.cast.queueTitle": "대기열",
   "app.cast.queueCount": { other: "{count}개" },
   "app.cast.clear": "모두 지우기",
+  "app.cast.testPicture": "테스트 사진 보내기",
   "app.cast.clearHint": "전송을 멈추고 대기열을 비웁니다",
   "ui.cast.slideshowHeader": "슬라이드쇼",
   "ui.cast.slideshow": "사진을 슬라이드쇼로 재생",
