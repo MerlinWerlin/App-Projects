@@ -1,6 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
+  MDNS_ALIAS_TYPES,
+  MDNS_BROWSE_TYPES,
+  MDNS_TYPES,
   SEARCH_TARGETS,
   buildMSearch,
   dedupeCandidates,
@@ -131,6 +134,50 @@ describe('mdnsToCandidate', () => {
   it('rejects unknown types and IPv6-only records', () => {
     expect(mdnsToCandidate({ type: '_http._tcp', addresses: ['192.168.1.2'] })).toBeNull();
     expect(mdnsToCandidate({ type: '_androidtvremote2._tcp', addresses: ['fe80::1'] })).toBeNull();
+  });
+  it('Google Cast (Google TV with Chromecast built in): fn is the name, md the model', () => {
+    expect(
+      mdnsToCandidate({
+        type: '_googlecast._tcp',
+        name: 'Google-TV-0a1b2c3d4e5f60718293a4b5c6d7e8f9',
+        fullName: 'Google-TV-0a1b2c3d4e5f60718293a4b5c6d7e8f9._googlecast._tcp.local.',
+        addresses: ['192.168.1.70'],
+        port: 8009,
+        txt: { id: '0a1b2c3d4e5f60718293a4b5c6d7e8f9', md: 'C7K', fn: 'Living Room TV', ca: '463365', rs: '' },
+      }),
+    ).toEqual({
+      platform: 'androidtv',
+      host: '192.168.1.70',
+      port: 8009,
+      name: 'Living Room TV',
+      model: 'C7K',
+      usn: 'Google-TV-0a1b2c3d4e5f60718293a4b5c6d7e8f9._googlecast._tcp.local.',
+      source: 'mdns',
+    });
+    // trailing-dot / .local forms and no fn: falls back to the instance name
+    expect(mdnsToCandidate({ type: '_googlecast._tcp.local.', name: 'Den', addresses: ['192.168.1.71'], txt: { fn: '' } })).toMatchObject({
+      platform: 'androidtv',
+      name: 'Den',
+    });
+  });
+  it('Google Cast: speakers and speaker groups (no video-out capability) are skipped', () => {
+    expect(mdnsToCandidate({ type: '_googlecast._tcp', addresses: ['192.168.1.72'], txt: { fn: 'Kitchen speaker', md: 'Google Nest Mini', ca: '199172' } })).toBeNull();
+    expect(mdnsToCandidate({ type: '_googlecast._tcp', addresses: ['192.168.1.73'], txt: { fn: 'Whole house', md: 'Google Cast Group', ca: '2084' } })).toBeNull();
+    // Chromecast dongle (ca has the video-out bit) and a record without ca are kept
+    expect(mdnsToCandidate({ type: '_googlecast._tcp', addresses: ['192.168.1.74'], txt: { fn: 'Bedroom', ca: '4101' } })?.platform).toBe('androidtv');
+    expect(mdnsToCandidate({ type: '_googlecast._tcp', addresses: ['192.168.1.75'], txt: { fn: 'Office', ca: 'junk' } })?.platform).toBe('androidtv');
+  });
+  it('the Cast and remote records of one Google TV merge into one candidate', () => {
+    const cast = mdnsToCandidate({ type: '_googlecast._tcp', name: 'Google-TV-x', addresses: ['192.168.1.70'], port: 8009, txt: { fn: 'Living Room TV', md: 'C7K' } })!;
+    const remote = mdnsToCandidate({ type: '_androidtvremote2._tcp', name: 'Living Room TV', addresses: ['192.168.1.70'], port: 6466 })!;
+    const merged = dedupeCandidates([remote, cast]);
+    expect(merged).toHaveLength(1);
+    expect(merged[0]).toMatchObject({ platform: 'androidtv', host: '192.168.1.70', name: 'Living Room TV', model: 'C7K' });
+  });
+  it('browses every primary and alias type', () => {
+    expect(MDNS_BROWSE_TYPES).toEqual(expect.arrayContaining([...Object.values(MDNS_TYPES), '_googlecast._tcp']));
+    expect(MDNS_ALIAS_TYPES['_googlecast._tcp']).toBe('androidtv');
+    expect(MDNS_TYPES.androidtv).toBe('_androidtvremote2._tcp');
   });
 });
 

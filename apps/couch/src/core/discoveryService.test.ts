@@ -93,7 +93,7 @@ describe('discoverTvs', () => {
     const rec: MdnsRecord = { type: '_androidtvremote2._tcp', name: 'Bedroom TV', addresses: ['192.168.1.60'], port: 6466 };
     const mdns: MdnsLike = {
       browse(types, on) {
-        expect(types).toEqual(['_androidtvremote2._tcp', '_amzn-wplay._tcp', '_viziocast._tcp']);
+        expect(types).toEqual(['_androidtvremote2._tcp', '_amzn-wplay._tcp', '_viziocast._tcp', '_googlecast._tcp']);
         on(rec);
         on({ type: '_http._tcp', addresses: ['192.168.1.2'] });
         return () => (stopped = true);

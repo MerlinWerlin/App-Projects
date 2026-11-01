@@ -38,9 +38,11 @@ describe('lan-wss native sources', () => {
   });
 
   it('both platforms expose the JS contract (name, events, functions)', () => {
+    // iOS adds onBonjourService (LanBonjour.swift); Android has no Bonjour browser.
+    expect(read(SWIFT)).toContain('Events("onMessage", "onClose", "onError", "onTlsData", "onTlsClose", "onBonjourService")');
+    expect(read(KOTLIN)).toContain('Events("onMessage", "onClose", "onError", "onTlsData", "onTlsClose")');
     for (const src of [read(SWIFT), read(KOTLIN)]) {
       expect(src).toContain('Name("LanWss")');
-      expect(src).toContain('Events("onMessage", "onClose", "onError", "onTlsData", "onTlsClose")');
       expect(src).toContain('AsyncFunction("connect")');
       expect(src).toContain('Function("send")');
       expect(src).toContain('Function("close")');

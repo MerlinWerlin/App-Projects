@@ -16,11 +16,12 @@ public class LanWssModule: Module {
   private lazy var fetchClient = LanFetchClient()
   private lazy var tlsClient = LanTlsClient(module: self)
   private lazy var atvClient = LanAtvClient(module: self)
+  private lazy var bonjourClient = LanBonjourClient(module: self)
 
   public func definition() -> ModuleDefinition {
     Name("LanWss")
 
-    Events("onMessage", "onClose", "onError", "onTlsData", "onTlsClose")
+    Events("onMessage", "onClose", "onError", "onTlsData", "onTlsClose", "onBonjourService")
 
     AsyncFunction("connect") { (id: String, url: String, allowSelfSignedLan: Bool, promise: Promise) in
       self.client.connect(id: id, urlString: url, allowSelfSignedLan: allowSelfSignedLan, promise: promise)
@@ -86,11 +87,26 @@ public class LanWssModule: Module {
       self.atvClient.close(id: id)
     }
 
+    // Bonjour (DNS-SD) browse + resolve with Network.framework (see LanBonjour.swift). Types must be
+    // listed in NSBonjourServices. Found services arrive as onBonjourService { id, type, name, txt }.
+    Function("bonjourBrowse") { (id: String, types: [String], timeoutMs: Double) -> Bool in
+      return self.bonjourClient.browse(id: id, types: types, timeoutMs: timeoutMs)
+    }
+
+    Function("bonjourStop") { (id: String) in
+      self.bonjourClient.stop(id: id)
+    }
+
+    AsyncFunction("bonjourResolve") { (type: String, name: String, timeoutMs: Double, promise: Promise) in
+      self.bonjourClient.resolve(type: type, name: name, timeoutMs: timeoutMs, promise: promise)
+    }
+
     OnDestroy {
       self.client.closeAll()
       self.fetchClient.cancelAll()
       self.tlsClient.closeAll()
       self.atvClient.closeAll()
+      self.bonjourClient.stopAll()
     }
   }
 

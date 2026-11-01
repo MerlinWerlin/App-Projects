@@ -5,7 +5,7 @@
 import type { FetchLike, UdpLike } from './driver';
 import type { MdnsRecord, TvCandidate } from './discovery';
 import {
-  MDNS_TYPES,
+  MDNS_BROWSE_TYPES,
   SEARCH_TARGETS,
   SSDP_ADDRESS,
   SSDP_PORT,
@@ -111,7 +111,7 @@ export async function discoverTvs(deps: DiscoveryDeps, opts: DiscoveryOptions = 
   let stopMdns: (() => void) | null = null;
   if (deps.mdns) {
     try {
-      stopMdns = deps.mdns.browse(Object.values(MDNS_TYPES), (rec) => add(mdnsToCandidate(rec)));
+      stopMdns = deps.mdns.browse(MDNS_BROWSE_TYPES, (rec) => add(mdnsToCandidate(rec)));
       methods.push('mdns');
     } catch (e) {
       errors.push(`mdns: ${String(e)}`);

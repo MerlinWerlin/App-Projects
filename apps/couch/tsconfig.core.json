@@ -31,6 +31,7 @@
     "src/native/mediaServer.ts",
     "src/native/lanTls.ts",
     "src/native/androidTvTls.ts",
+    "src/native/bonjour.ts",
     "src/native/mediaPicker.ts",
     "src/native/widgetBridge.ts",
     "src/ui/widget/linkHandler.ts",

@@ -14,7 +14,8 @@
         "NSBonjourServices": [
           "_androidtvremote2._tcp",
           "_amzn-wplay._tcp",
-          "_viziocast._tcp"
+          "_viziocast._tcp",
+          "_googlecast._tcp"
         ],
         "NSAppTransportSecurity": {
           "NSAllowsLocalNetworking": true
