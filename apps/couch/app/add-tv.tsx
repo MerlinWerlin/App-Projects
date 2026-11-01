@@ -5,6 +5,7 @@ import {
   ADD_TV_IR_ROUTE,
   addTvReducer,
   androidTvPairingDriver,
+  castOnlyOffered,
   createAddTvState,
   demoScan,
   finishAddTv,
@@ -402,6 +403,9 @@ export default function AddTvScreen() {
                 />
                 {atvHost !== null && atvPhase === 'failed' ? (
                   <PillButton stretch variant="tinted" label={t('app.addTv.atvRetry')} onPress={() => setAtvRun((n) => n + 1)} />
+                ) : null}
+                {atvHost !== null && atvPhase === 'failed' && s.error !== null && castOnlyOffered(c) ? (
+                  <PillButton stretch variant="tinted" label={t('app.addTv.castOnlyUse')} onPress={() => dispatch({ type: 'castOnly' })} />
                 ) : null}
               </>
             ) : (

@@ -225,7 +225,7 @@
       "title": "Phone Wi-Fi IP via expo-network getIpAddressAsync for the subnet probe; Wake button using sendWol when UDP + MAC available",
       "accept": "probe runs automatically when IP known; tests with fakes",
       "commit": "4c37e4c",
-      "note": "expo-network phone IP (guarded) \u2192 automatic subnet probe; Wake button when MAC + UDP (dev build)."
+      "note": "expo-network phone IP (guarded) → automatic subnet probe; Wake button when MAC + UDP (dev build)."
     },
     {
       "id": "T22",
@@ -355,7 +355,7 @@
       ],
       "title": "Google TV native side: TLS client socket with client cert exposing peer RSA key (Expo module or react-native-tcp-socket), per-install RSA-2048 identity, mDNS _androidtvremote2._tcp discovery, wire AndroidTvDriver with code pair step",
       "accept": "dev build pairs with a Google TV (owner test)",
-      "note": "Freeze D6-1 lifted in run 35: the owner tested in Expo Go on 17 Oct (fb-1017b). Still needs T18 (PC) for native modules. Held again by oversight D65-2 (run 36): no breadth until the owner retests H1-H3.",
+      "note": "Freeze D6-1 lifted in run 35: the owner tested in Expo Go on 17 Oct (fb-1017b). Still needs T18 (PC) for native modules. Held again by oversight D65-2 (run 36): no breadth until the owner retests H1-H3. Run 166: the owner's chats (App-Projects #155, synced 1 Nov) landed most of this: LanAtv.swift mutual TLS with a Keychain RSA-2048 identity, x509.ts, src/native/androidTvTls.ts, pair step in add-TV. Remaining: owner test on the next native TestFlight build with the TCL C7K; hold stays until then.",
       "hold": "D65-2"
     },
     {
@@ -388,7 +388,7 @@
         "T16",
         "T32"
       ],
-      "title": "Wire Vizio, Philips and Fire TV (beta) into add-TV: PIN pair steps calling startPairing/finishPairing, driverFor via transport.lanFetch (null \u2192 coming soon), tokens saved",
+      "title": "Wire Vizio, Philips and Fire TV (beta) into add-TV: PIN pair steps calling startPairing/finishPairing, driverFor via transport.lanFetch (null → coming soon), tokens saved",
       "accept": "addTv + factory tests with fake lanFetch",
       "note": "Freeze D6-1 lifted in run 35: the owner tested in Expo Go on 17 Oct (fb-1017b).  Held again by oversight D65-2 (run 36): no breadth until the owner retests H1-H3.",
       "hold": "D65-2"
@@ -908,7 +908,7 @@
         "M2"
       ],
       "priority": 1,
-      "note": "MARKET.md 'What users hate' #5: drops when the phone sleeps/switches apps \u2014 top functional complaint; cheap (reconnect.ts exists).",
+      "note": "MARKET.md 'What users hate' #5: drops when the phone sleeps/switches apps — top functional complaint; cheap (reconnect.ts exists).",
       "commit": "f1b619e"
     },
     {
@@ -1112,7 +1112,7 @@
     },
     {
       "id": "T87",
-      "title": "fb-1022e: Stan icon vanished \u2014 store icon lookups queued one at a time (Apple ~20/min limit), favourites first, kept on the phone 30 days, not subject to the 8 s TV-icon timeout; TESTFLIGHT_COUCH.cmd",
+      "title": "fb-1022e: Stan icon vanished — store icon lookups queued one at a time (Apple ~20/min limit), favourites first, kept on the phone 30 days, not subject to the 8 s TV-icon timeout; TESTFLIGHT_COUCH.cmd",
       "status": "done",
       "done": "2026-10-22 live session"
     },
@@ -1422,7 +1422,7 @@
     "Final name",
     {
       "id": "G-price-1018",
-      "text": "Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (docs/MARKET.md Pricing proposal) \u2014 owner decides"
+      "text": "Couch Plus price: proposal US$4.99 / A$7.99 one-time with Family Sharing (docs/MARKET.md Pricing proposal) — owner decides"
     }
   ]
 }

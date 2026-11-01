@@ -422,7 +422,9 @@ export function addTvReducer(s: AddTvState, e: AddTvEvent): AddTvState {
     case 'pairFailed':
       return s.step === 'pair' ? { ...s, error: e.message } : s;
     case 'castOnly':
-      if (s.step !== 'unsupported' || !s.castOnly) return s;
+      // Offered on the "coming soon" step, and (oversight D225-1) as the fallback on a Google TV
+      // pair step after pairing failed, so a pairing failure never strands the TV.
+      if (!(s.step === 'unsupported' && s.castOnly) && !(s.step === 'pair' && s.error !== null && castOnlyOffered(s.candidate))) return s;
       return {
         ...base(s),
         step: 'name',
@@ -573,8 +575,12 @@ export async function finishAddTv(s: Extract<AddTvState, { step: 'name' }>, deps
  */
 export function androidTvPairingDriver(c: AddCandidate, transport: Transport): AndroidTvDriver | null {
   if (c.platform !== 'androidtv' || c.pairAs !== undefined || !transport.androidTv) return null;
-  const d = driverFor({ platform: 'androidtv', host: c.host }, transport);
-  return d instanceof AndroidTvDriver ? d : null;
+  try {
+    const d = driverFor({ platform: 'androidtv', host: c.host }, transport);
+    return d instanceof AndroidTvDriver ? d : null;
+  } catch {
+    return null; // never throws (oversight D225-1): no pairing driver means cast-only
+  }
 }
 
 const errText = (e: unknown): string => (e instanceof Error ? e.message : String(e));

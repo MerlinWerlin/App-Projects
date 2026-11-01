@@ -23,6 +23,7 @@ import {
   type AddTvState,
 } from './addTv';
 import { findCastTargets } from './cast/targets';
+import { probeHost } from './probe';
 import type { AndroidTvTransport, FetchLike, Transport } from './driver';
 import { AndroidTvDriver, type ClientIdentity, type TlsSocketLike } from './drivers/androidtv/driver';
 import type { RsaPublicKey } from './drivers/androidtv/pairing';
@@ -301,5 +302,66 @@ describe('Google TV pairing with the remote socket', () => {
     };
     const d = androidTvPairingDriver(GOOGLE_TV, { androidTv: atv })!;
     expect(await startAndroidTvPairing(d)).toEqual({ type: 'pairFailed', message: t('core.driver.androidtv.identity') });
+  });
+});
+
+// ---------------------------------------------------------------- oversight D225-1
+
+describe('Google TV remote switch off / pairing failure falls back to cast-only (D225-1)', () => {
+  const DESC =
+    '<?xml version="1.0"?><root xmlns="urn:schemas-upnp-org:device-1-0"><device><deviceType>urn:dial-multiscreen-org:device:dial:1</deviceType><friendlyName>TCL C7K</friendlyName><manufacturer>Google Inc.</manufacturer><modelName>Smart TV Pro</modelName><UDN>uuid:tcl</UDN></device></root>';
+  const dialFetch: FetchLike = async (url) => {
+    if (url === `http://${HOST}:8008/ssdp/device-desc.xml`) return { ok: true, status: 200, text: async () => DESC } as Awaited<ReturnType<FetchLike>>;
+    return { ok: false, status: 403, text: async () => '' } as Awaited<ReturnType<FetchLike>>;
+  };
+
+  it('switch off (no transport.androidTv): a TCL found by DIAL or the Cast TLS port is still listed and offered cast-only', async () => {
+    const byDial = await probeHost(dialFetch, HOST);
+    const byTls = await probeHost(fetchDown, HOST, { tlsCheck: async (h, p) => h === HOST && p === 8009 });
+    for (const c of [byDial, byTls]) {
+      expect(c?.platform).toBe('androidtv');
+      const cand: AddCandidate = { ...c!, source: 'probe' };
+      const transport: Transport = { fetch: fetchDown }; // what ANDROIDTV_NATIVE_ON = false yields
+      const listed = run(createAddTvState({ transport }), { type: 'found', candidate: cand }, { type: 'scanDone' });
+      expect(listed.step).toBe('list');
+      expect(listed.candidates.map((x) => x.host)).toEqual([HOST]);
+      const picked = addTvReducer(listed, { type: 'pick', host: HOST });
+      expect(picked).toMatchObject({ step: 'unsupported', castOnly: true });
+      expect(androidTvPairingDriver(cand, transport)).toBeNull();
+      expect(isCastOnlyDriver(driverFor({ platform: 'androidtv', host: HOST }, transport))).toBe(true);
+      expect(addTvReducer(picked, { type: 'castOnly' })).toMatchObject({ step: 'name', castOnly: true });
+    }
+  });
+
+  it('a failed pairing offers cast-only from the pair step; without an error it does not', async () => {
+    const { atv } = fakeAndroidTv({ refuse: true });
+    const s = found(GOOGLE_TV, { androidTv: atv });
+    expect(s.step).toBe('pair');
+    expect(addTvReducer(s, { type: 'castOnly' })).toBe(s);
+    const ev = await startAndroidTvPairing(androidTvPairingDriver(GOOGLE_TV, { androidTv: atv })!);
+    const failed = addTvReducer(s, ev!);
+    const named = addTvReducer(failed, { type: 'castOnly' });
+    expect(named).toMatchObject({ step: 'name', castOnly: true, pair: { kind: 'none' } });
+    // A demo candidate walking the Google TV pair step is never offered it.
+    const demo = found({ ...GOOGLE_TV, platform: 'mock', pairAs: 'androidtv' });
+    const demoFailed = addTvReducer(demo, { type: 'pairFailed', message: 'x' });
+    expect(addTvReducer(demoFailed, { type: 'castOnly' })).toBe(demoFailed);
+  });
+
+  it('a driver factory that throws never crashes the pair step', () => {
+    const atv = {
+      get identity(): never {
+        throw new Error('boom');
+      },
+      tls: async () => {
+        throw new Error('unused');
+      },
+    } as unknown as AndroidTvTransport;
+    expect(() => androidTvPairingDriver(GOOGLE_TV, { androidTv: atv })).not.toThrow();
+  });
+
+  it('the Add TV screen shows the cast-only fallback after a failed Google TV pairing', () => {
+    const src = readFileSync(join(__dirname, '..', '..', 'app', 'add-tv.tsx'), 'utf8');
+    expect(src).toMatch(/atvPhase === 'failed' && s\.error !== null && castOnlyOffered\(c\)/);
   });
 });

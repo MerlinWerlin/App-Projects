@@ -1,5 +1,5 @@
 {
   "mode": "update",
-  "note": "Couch 1.0.2: cast to the port the TV announces",
+  "note": "Couch: if Google TV pairing fails you can still add the TV for casting only",
   "ascAppId": "6826135134"
 }

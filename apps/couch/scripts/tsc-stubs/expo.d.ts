@@ -24,8 +24,17 @@ declare module 'expo-router' {
   export function useNavigation(): any;
   type ScreenProps = { name?: string; options?: Record<string, any> | ((props: any) => Record<string, any>); redirect?: boolean; initialParams?: Record<string, any>; listeners?: any };
   type NavigatorProps = { children?: ReactNode; screenOptions?: Record<string, any> | ((props: any) => Record<string, any>); initialRouteName?: string; tabBar?: (props: any) => ReactNode; [key: string]: any };
+  /** Subset of @react-navigation/bottom-tabs BottomTabBarProps (state.routes, descriptors, navigation.emit/navigate). */
+  type TabRoute = { key: string; name: string; params?: object };
+  type BottomTabBarProps = {
+    state: { index: number; routes: TabRoute[]; key: string };
+    descriptors: Record<string, { options: Record<string, any> & { title?: string; tabBarLabel?: any; tabBarAccessibilityLabel?: string; tabBarTestID?: string } }>;
+    navigation: { emit(event: { type: string; target?: string; canPreventDefault?: boolean }): { defaultPrevented: boolean }; navigate(name: string, params?: object): void; [key: string]: any };
+    insets: { top: number; right: number; bottom: number; left: number };
+  };
+  type TabsProps = Omit<NavigatorProps, 'tabBar'> & { tabBar?: (props: BottomTabBarProps) => ReactNode };
   export const Stack: ComponentType<NavigatorProps> & { Screen: ComponentType<ScreenProps> };
-  export const Tabs: ComponentType<NavigatorProps> & { Screen: ComponentType<ScreenProps> };
+  export const Tabs: ComponentType<TabsProps> & { Screen: ComponentType<ScreenProps> };
   export const Redirect: ComponentType<{ href: Href }>;
   export const Link: ComponentType<{ href: Href; asChild?: boolean; children?: ReactNode; [key: string]: any }>;
   export const Slot: ComponentType<{}>;
