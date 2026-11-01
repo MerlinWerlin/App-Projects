@@ -25,6 +25,7 @@
  *   onError    { id, message }   followed by onClose
  *   onTlsData  { id, base64 }   bytes received on a TLS socket
  *   onTlsClose { id, message }  TLS socket closed (by either side; message empty for a clean close)
+ *   onBonjourService { id, type, name, txt }  service found by bonjourBrowse (iOS)
  */
 import { requireOptionalNativeModule } from 'expo-modules-core';
 
@@ -59,6 +60,17 @@ export interface LanTlsDataEvent {
 export interface LanTlsCloseEvent {
   id: string;
   message: string;
+}
+
+export interface LanBonjourServiceEvent {
+  /** The bonjourBrowse id. */
+  id: string;
+  /** The browsed type, normalised ("_googlecast._tcp"). */
+  type: string;
+  /** Bonjour instance name. */
+  name: string;
+  /** TXT record entries (bounded; values are UTF-8 text). */
+  txt: Record<string, string>;
 }
 
 export interface LanWssSubscription {
@@ -121,6 +133,18 @@ export interface LanWssNativeModule {
   atvConnect?(id: string, host: string, port: number, timeoutMs: number): Promise<{ peerKeyBase64: string }>;
   atvWrite?(id: string, base64: string): boolean;
   atvClose?(id: string): void;
+  /**
+   * Bonjour browse (iOS, LanBonjour.swift, Network.framework NWBrowser) under the caller-chosen `id`.
+   * One browser per type (e.g. "_googlecast._tcp"; each must be in NSBonjourServices); every found
+   * service arrives as onBonjourService (again only when its TXT changes). Stops by itself after
+   * timeoutMs (clamped 0.5-60 s) or on bonjourStop. False when no type is valid. Optional: absent on
+   * Android and older builds (src/native/bonjour.ts checks).
+   */
+  bonjourBrowse?(id: string, types: string[], timeoutMs: number): boolean;
+  bonjourStop?(id: string): void;
+  /** Resolves a browsed service to an IPv4 host + port; null on timeout, failure or IPv6 only. */
+  bonjourResolve?(type: string, name: string, timeoutMs: number): Promise<{ host: string; port: number } | null>;
+  addListener(event: 'onBonjourService', cb: (e: LanBonjourServiceEvent) => void): LanWssSubscription;
   addListener(event: 'onMessage', cb: (e: LanWssMessageEvent) => void): LanWssSubscription;
   addListener(event: 'onClose', cb: (e: LanWssCloseEvent) => void): LanWssSubscription;
   addListener(event: 'onError', cb: (e: LanWssErrorEvent) => void): LanWssSubscription;

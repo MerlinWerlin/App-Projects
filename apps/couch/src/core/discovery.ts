@@ -152,6 +152,20 @@ export const MDNS_TYPES = {
   vizio: '_viziocast._tcp',
 } as const satisfies Partial<Record<Platform, string>>;
 
+/** Google Cast. Google TVs / Android TVs with Chromecast built in advertise it (TXT fn = friendly name, md = model). */
+export const MDNS_GOOGLECAST = '_googlecast._tcp';
+
+/** Extra service types that also identify a platform (MDNS_TYPES holds one primary type per platform). */
+export const MDNS_ALIAS_TYPES: Readonly<Record<string, Platform>> = {
+  [MDNS_GOOGLECAST]: 'androidtv',
+};
+
+/** Every service type discovery browses (must also be listed in app.json NSBonjourServices on iOS). */
+export const MDNS_BROWSE_TYPES: readonly string[] = [...Object.values(MDNS_TYPES), ...Object.keys(MDNS_ALIAS_TYPES)];
+
+/** Cast TXT `ca` capability bit for video output; speakers and speaker groups lack it. */
+const CAST_CAP_VIDEO_OUT = 1;
+
 const IPV4 = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/;
 
 export function isIpv4(s: string): boolean {
@@ -169,7 +183,16 @@ export function mdnsToCandidate(rec: MdnsRecord): TvCandidate | null {
   const type = normaliseType(rec.type);
   let platform: Platform | null = null;
   for (const [p, t] of Object.entries(MDNS_TYPES)) if (t === type) platform = p as Platform;
+  if (!platform) platform = MDNS_ALIAS_TYPES[type] ?? null;
   if (!platform) return null;
+  const isCast = type === MDNS_GOOGLECAST;
+  const txt = rec.txt ?? {};
+  if (isCast) {
+    // Speakers (Nest / Google Home) and speaker groups also advertise Cast; keep video-capable devices
+    // only. A missing or unparseable `ca` keeps the record (best-effort, not verified on hardware).
+    const ca = txt['ca'];
+    if (ca !== undefined && /^\d{1,10}$/.test(ca.trim()) && (Number(ca.trim()) & CAST_CAP_VIDEO_OUT) === 0) return null;
+  }
 
   const addrs = rec.addresses ?? [];
   const host =
@@ -178,9 +201,9 @@ export function mdnsToCandidate(rec: MdnsRecord): TvCandidate | null {
 
   const c: TvCandidate = { platform, host, source: 'mdns' };
   if (rec.port !== undefined && rec.port > 0 && rec.port < 65536) c.port = rec.port;
-  const txt = rec.txt ?? {};
-  // TXT keys vary by device; 'n'/'fn'/'name' are best-effort (not verified on hardware).
-  const name = rec.name ?? txt['fn'] ?? txt['n'] ?? txt['name'];
+  // TXT keys vary by device; 'n'/'fn'/'name' are best-effort (not verified on hardware). A Cast
+  // instance name is an id ("Google-TV-<hex>"), so for Cast the TXT friendly name wins.
+  const name = isCast ? (txt['fn'] ? txt['fn'] : rec.name) : (rec.name ?? txt['fn'] ?? txt['n'] ?? txt['name']);
   if (name) c.name = name;
   const model = txt['md'] ?? txt['mdl'] ?? txt['model'];
   if (model) c.model = model;

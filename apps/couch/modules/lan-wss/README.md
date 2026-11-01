@@ -74,6 +74,15 @@ cover them (`tests/lan-wss-sources.test.ts`). Treat it as unverified until a dev
   `SSLContext` whose trust manager accepts the presented chain, built only for RFC 1918 hosts.
   The handshake is bounded by `soTimeout = timeoutMs`; reads run on a background thread, writes
   on a per-socket single-thread executor.
+- `ios/LanBonjour.swift` (iOS only) — Bonjour discovery with Network.framework, all on one private
+  serial queue. `bonjourBrowse(id, types, timeoutMs) -> Bool` starts one `NWBrowser` per type
+  (`.bonjourWithTXTRecord(type:domain: "local.")`) and emits `onBonjourService {id, type, name,
+  txt}` once per service (again if its TXT changes); it stops itself after `timeoutMs` or on
+  `bonjourStop(id)`. `bonjourResolve(type, name, timeoutMs)` opens an IPv4-only `NWConnection` to
+  the `.service` endpoint, reads `currentPath.remoteEndpoint` on `.ready`, cancels, and resolves
+  `{host, port}` or null. Types must be in `NSBonjourServices` (app.json); no multicast
+  entitlement needed. Off-switch: `src/core/bonjour/switch.ts` (`BONJOUR_NATIVE_ON = false` makes
+  the podspec set `COUCH_NO_BONJOUR`, compiling a stub). JS adapter: `src/native/bonjour.ts`.
 
 ## Not wired in yet (on purpose)
 
@@ -106,4 +115,7 @@ cover them (`tests/lan-wss-sources.test.ts`). Treat it as unverified until a dev
 - Kotlin: `AsyncFunction` with a trailing `expo.modules.kotlin.Promise`, and `promise.reject(code,
   message, cause)` signature.
 - iOS Local Network permission prompt appears (`NSLocalNetworkUsageDescription` is in app.json).
+- Bonjour: `NWTXTRecord.dictionary`, the `.service(name, _, _, _)` / `.hostPort` / `.ipv4` enum
+  patterns, `Function` with a `[String]` argument, and that the resolve connection reaches `.ready`
+  on the TV's Cast port 8009 (a TV that refuses TCP there would only resolve via a different type).
 - Android: no `network_security_config` change is needed (the trust decision is in code).

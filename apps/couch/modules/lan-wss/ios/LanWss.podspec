@@ -11,6 +11,12 @@ androidtv_switch = File.join(__dir__ || '.', '..', '..', '..', 'src', 'core', 'd
 androidtv_on = !(File.exist?(androidtv_switch) &&
                  File.read(androidtv_switch) =~ /^export const ANDROIDTV_NATIVE_ON\s*=\s*false\s*;/m)
 
+# Bonjour switch: the single source is src/core/bonjour/switch.ts. When it says
+# BONJOUR_NATIVE_ON = false, LanBonjour.swift compiles only its stub (COUCH_NO_BONJOUR).
+bonjour_switch = File.join(__dir__ || '.', '..', '..', '..', 'src', 'core', 'bonjour', 'switch.ts')
+bonjour_on = !(File.exist?(bonjour_switch) &&
+               File.read(bonjour_switch) =~ /^export const BONJOUR_NATIVE_ON\s*=\s*false\s*;/m)
+
 Pod::Spec.new do |s|
   s.name           = 'LanWss'
   s.version        = '0.1.0'
@@ -33,6 +39,7 @@ Pod::Spec.new do |s|
   conditions = []
   conditions << 'COUCH_NO_GOOGLE_CAST' unless google_cast_on
   conditions << 'COUCH_NO_ANDROIDTV_TLS' unless androidtv_on
+  conditions << 'COUCH_NO_BONJOUR' unless bonjour_on
   xcconfig['SWIFT_ACTIVE_COMPILATION_CONDITIONS'] = (['$(inherited)'] + conditions).join(' ') unless conditions.empty?
   s.pod_target_xcconfig = xcconfig
 

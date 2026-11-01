@@ -1,6 +1,7 @@
 /** T12: the app config carries the local-network keys every driver depends on. */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { MDNS_BROWSE_TYPES } from '../src/core/discovery';
 
 const root = join(__dirname, '..');
 const app = JSON.parse(readFileSync(join(root, 'app.json'), 'utf8')).expo;
@@ -14,8 +15,12 @@ describe('app config', () => {
 
   it('lists every mDNS service type the drivers browse', () => {
     expect(app.ios.infoPlist.NSBonjourServices).toEqual(
-      expect.arrayContaining(['_androidtvremote2._tcp', '_amzn-wplay._tcp', '_viziocast._tcp']),
+      expect.arrayContaining(['_androidtvremote2._tcp', '_amzn-wplay._tcp', '_viziocast._tcp', '_googlecast._tcp']),
     );
+    // iOS only lets NWBrowser browse types listed here, so every type discovery browses must be in it.
+    expect(app.ios.infoPlist.NSBonjourServices).toEqual(expect.arrayContaining([...MDNS_BROWSE_TYPES]));
+    // AirPlay is the system route picker's job; Couch does not browse it.
+    expect(app.ios.infoPlist.NSBonjourServices).not.toContain('_airplay._tcp');
   });
 
   it('wires the LAN access plugin', () => {

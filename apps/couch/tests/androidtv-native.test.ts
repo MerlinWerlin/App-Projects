@@ -139,8 +139,9 @@ describe('LanWssModule registers the Google TV API', () => {
     expect(mod).toContain('Function("atvWrite") { (id: String, base64: String) -> Bool in');
     expect(mod).toContain('Function("atvClose") { (id: String) in');
     expect(mod).toContain('self.atvClient.closeAll()');
-    // no new events: the mutual-TLS socket reuses onTlsData / onTlsClose
-    expect(mod).toContain('Events("onMessage", "onClose", "onError", "onTlsData", "onTlsClose")');
+    // no new events for the remote: the mutual-TLS socket reuses onTlsData / onTlsClose
+    // (onBonjourService belongs to LanBonjour.swift, tests/bonjour-native.test.ts)
+    expect(mod).toContain('Events("onMessage", "onClose", "onError", "onTlsData", "onTlsClose", "onBonjourService")');
   });
 
   it('the JS types list the optional functions', () => {
