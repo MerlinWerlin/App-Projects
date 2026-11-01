@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
   top: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
   },
   tip: {
     position: 'absolute',
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     bottom: 0,
     paddingHorizontal: space.md,
     paddingTop: space.md,
