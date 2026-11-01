@@ -573,9 +573,15 @@ function StepButton({ icon, label, hint, enabled, onPress }: { icon: 'add' | 're
   );
 }
 
-/** T90: the offline units and sizes converter (app/units.tsx), which needs no trip or rates. */
+/** T90: the offline units and sizes converter (app/units.tsx), which needs no trip or rates; T148 the numbers trainer. */
 function UnitsLink() {
   const { t } = useApp();
   const router = useRouter();
-  return <Button kind="secondary" icon="speedometer-outline" label={t('units.fromConvert')} hint={t('units.fromConvertHint')} onPress={() => router.push('/units')} />;
+  return (
+    <>
+      <Button kind="secondary" icon="speedometer-outline" label={t('units.fromConvert')} hint={t('units.fromConvertHint')} onPress={() => router.push('/units')} />
+      {/* T148: prices written and said the local way, plus the numbers quiz. */}
+      <Button kind="secondary" icon="pricetag-outline" label={t('numbers.fromConvert')} hint={t('numbers.fromConvertHint')} onPress={() => router.push({ pathname: '/numbers', params: { section: 'till' } })} />
+    </>
+  );
 }

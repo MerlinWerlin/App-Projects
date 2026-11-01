@@ -46,6 +46,8 @@ import { LeaveHomeTripCard } from '../../src/ui/leavehome.tsx';
 import { GetaroundTripCard } from '../../src/ui/getaround.tsx';
 import { ComeHomeTripCard } from '../../src/ui/comehome.tsx';
 import { OutfitsTripCard } from '../../src/ui/outfits.tsx';
+import { PostcardsTripCard } from '../../src/ui/postcards.tsx';
+import { KidsTripCard } from '../../src/ui/kids.tsx';
 import { InflightTripCard } from '../../src/ui/InflightCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
 import { TripExport } from '../../src/ui/TripExport.tsx';
@@ -354,6 +356,10 @@ export default function TripScreen() {
             <ComeHomeTripCard trip={trip} />
             {/* T136: what to wear each day, from the packing list's clothes. */}
             {past ? null : <OutfitsTripCard trip={trip} />}
+            {/* T147: people to send a postcard to, "3 of 5 sent" (kept after the trip, for the stragglers). */}
+            <PostcardsTripCard trip={trip} />
+            {/* T149: travelling with kids (who is coming, lost card, packing rows, journey reminders). */}
+            {past ? null : <KidsTripCard trip={trip} />}
             <ReadinessCard trip={trip} />
             {/* T143: when check-in opens and closes for the next bookings (each on its own clock). */}
             {past ? null : <CheckinTripCard trip={trip} />}

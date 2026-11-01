@@ -59,7 +59,7 @@ const NOW = '2026-11-01T09:00:00.000Z';
 
 const place = (id: string, name: string, lat: number, lon: number): Required<Place> => ({ id, name, address: `${name} street 1`, localAddress: `${name} 1丁目`, lat, lon, phone: '+81 3 1234 5678' });
 const airport: Required<AirportInfo> = { terminal: 'T1', gate: '52', boarding: '20:30', bagDrop: '19:45', scope: 'international', bufferMin: 150, travelMin: 45 };
-const checkin: Required<CheckinInfo> = { opensH: 30, closesMin: 50, bagDropMin: 70, deskFrom: '08:00', deskTo: '18:30', doneAt: '2027-03-31T10:00:00.000Z' };
+const checkin: Required<CheckinInfo> = { opensH: 30, closesMin: 50, bagDropMin: 70, deskFrom: '08:00', deskTo: '18:30', doneAt: '2027-03-31T10:00:00.000Z', outAt: '2027-04-04T09:30:00.000Z' };
 const legInfo: Required<LegInfo> = { depTerminal: 'T1', depGate: '52', arrTerminal: 'T3', arrGate: '114' };
 const flight: Required<Item> = {
   id: 'item_flight',
@@ -225,6 +225,7 @@ test('T118 guard: every field of every copied type has exactly one rule (copied,
   assert.deepEqual(keys(LEG_INFO_RULES), keys(legInfo));
   assert.deepEqual(keys(CHECKIN_RULES), keys(checkin));
   assert.equal(CHECKIN_RULES.doneAt, 'drop');
+  assert.equal(CHECKIN_RULES.outAt, 'drop');
   assert.deepEqual(keys(IDEA_RULES), keys(idea));
   assert.deepEqual(keys(TODO_RULES), keys(todo));
   assert.deepEqual(keys(COMPANION_RULES), keys(companion));

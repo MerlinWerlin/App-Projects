@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "checked": "",
+  "note": "T149 'If I am lost' lines for a child's card. Written for Satchel, not yet checked by a fluent speaker (native_check true on every line). The card reuses the help-card title, name and hotel lines from helpcards.json.",
+  "sentences": [
+    {
+      "id": "callParent",
+      "en": "Please call my parent."
+    },
+    {
+      "id": "labelParent",
+      "en": "My parent's phone"
+    }
+  ],
+  "languages": [
+    {
+      "code": "ja",
+      "lines": {
+        "callParent": {
+          "text": "私の親に電話してください。",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "親の電話番号",
+          "native_check": true
+        }
+      }
+    },
+    {
+      "code": "zh-Hans",
+      "lines": {
+        "callParent": {
+          "text": "请给我的爸爸妈妈打电话。",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "爸爸妈妈的电话",
+          "native_check": true
+        }
+      }
+    },
+    {
+      "code": "zh-Hant",
+      "lines": {
+        "callParent": {
+          "text": "請打電話給我的爸爸媽媽。",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "爸爸媽媽的電話",
+          "native_check": true
+        }
+      }
+    },
+    {
+      "code": "ko",
+      "lines": {
+        "callParent": {
+          "text": "우리 부모님께 전화해 주세요.",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "부모님 전화번호",
+          "native_check": true
+        }
+      }
+    },
+    {
+      "code": "th",
+      "lines": {
+        "callParent": {
+          "text": "กรุณาโทรหาพ่อแม่ของฉันด้วย",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "เบอร์โทรพ่อแม่",
+          "native_check": true
+        }
+      }
+    },
+    {
+      "code": "vi",
+      "lines": {
+        "callParent": {
+          "text": "Xin hãy gọi cho bố mẹ của tôi.",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "Số điện thoại của bố mẹ",
+          "native_check": true
+        }
+      }
+    },
+    {
+      "code": "es",
+      "lines": {
+        "callParent": {
+          "text": "Por favor, llame a mi madre o a mi padre.",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "Teléfono de mis padres",
+          "native_check": true
+        }
+      }
+    },
+    {
+      "code": "fr",
+      "lines": {
+        "callParent": {
+          "text": "Appelez mes parents, s'il vous plaît.",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "Téléphone de mes parents",
+          "native_check": true
+        }
+      }
+    },
+    {
+      "code": "de",
+      "lines": {
+        "callParent": {
+          "text": "Bitte rufen Sie meine Eltern an.",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "Telefon meiner Eltern",
+          "native_check": true
+        }
+      }
+    },
+    {
+      "code": "it",
+      "lines": {
+        "callParent": {
+          "text": "Per favore, chiami i miei genitori.",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "Telefono dei miei genitori",
+          "native_check": true
+        }
+      }
+    },
+    {
+      "code": "pt",
+      "lines": {
+        "callParent": {
+          "text": "Por favor, ligue para os meus pais.",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "Telefone dos meus pais",
+          "native_check": true
+        }
+      }
+    },
+    {
+      "code": "id",
+      "lines": {
+        "callParent": {
+          "text": "Tolong telepon orang tua saya.",
+          "native_check": true
+        },
+        "labelParent": {
+          "text": "Nomor telepon orang tua",
+          "native_check": true
+        }
+      }
+    }
+  ]
+}

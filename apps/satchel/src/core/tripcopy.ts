@@ -124,7 +124,7 @@ export const SAVED_PLACE_RULES: Rules<SavedPlace> = { ...PLACE_RULES, lat: 'keep
 /** T131: terminals come along like the airport terminal; gates are that day's. */
 export const LEG_INFO_RULES: Rules<LegInfo> = { depTerminal: 'keep', depGate: 'drop', arrTerminal: 'keep', arrGate: 'drop' };
 /** T143: offsets and desk hours keep; the tick is that trip's. */
-export const CHECKIN_RULES: Rules<CheckinInfo> = { opensH: 'keep', closesMin: 'keep', bagDropMin: 'keep', deskFrom: 'keep', deskTo: 'keep', doneAt: 'drop' };
+export const CHECKIN_RULES: Rules<CheckinInfo> = { opensH: 'keep', closesMin: 'keep', bagDropMin: 'keep', deskFrom: 'keep', deskTo: 'keep', doneAt: 'drop', outAt: 'drop' };
 export const AIRPORT_RULES: Rules<AirportInfo> = { terminal: 'keep', gate: 'drop', boarding: 'keep', bagDrop: 'keep', scope: 'keep', bufferMin: 'keep', travelMin: 'keep' };
 export const IDEA_RULES: Rules<Idea> = {
   id: 'new',

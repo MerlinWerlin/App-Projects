@@ -92,6 +92,7 @@ function Shell() {
           <Stack.Screen name="phrases" options={{ ...header, title: t('phrases.title') }} />
           <Stack.Screen name="menu" options={{ ...header, title: t('menu.title') }} />
           <Stack.Screen name="signs" options={{ ...header, title: t('signs.route') }} />
+          <Stack.Screen name="numbers" options={{ ...header, title: t('numbers.route') }} />
           <Stack.Screen name="help" options={{ ...header, title: t('help.title') }} />
           <Stack.Screen name="convert" options={{ ...header, title: t('convert.route') }} />
           <Stack.Screen name="tipping" options={{ ...header, title: t('tipping.route') }} />
@@ -102,8 +103,12 @@ function Shell() {
           <Stack.Screen name="leavehome/[tripId]" options={{ ...header, title: t('leavehome.route') }} />
           <Stack.Screen name="lostbag/index" options={{ ...header, title: t('lostbag.route') }} />
           <Stack.Screen name="lostbag/[tripId]" options={{ ...header, title: t('lostbag.route') }} />
+          <Stack.Screen name="kids/[tripId]" options={{ ...header, title: t('kids.route') }} />
+          <Stack.Screen name="kids/lost" options={{ headerShown: false, title: t('kids.lost.route'), presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="comehome/[tripId]" options={{ ...header, title: t('comehome.route') }} />
           <Stack.Screen name="outfits/[tripId]" options={{ ...header, title: t('outfits.route') }} />
+          <Stack.Screen name="postcards/[tripId]" options={{ ...header, title: t('postcards.route') }} />
+          <Stack.Screen name="postcards/address" options={{ ...header, title: t('postcards.bigRoute') }} />
           <Stack.Screen name="units" options={{ ...header, title: t('units.route') }} />
           <Stack.Screen name="travels" options={{ ...header, title: t('travels.route') }} />
           <Stack.Screen name="passport" options={{ ...header, title: t('stamps.route') }} />

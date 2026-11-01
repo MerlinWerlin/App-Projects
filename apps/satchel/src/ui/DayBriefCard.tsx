@@ -35,7 +35,8 @@ import { GapsBriefRow } from './gaps.tsx';
 import { OutfitBriefRow } from './outfits.tsx';
 import { PhotoLightBriefRow } from './photolight.tsx';
 import { RainBriefRow } from './rainplan.tsx';
-import { CheckinBriefRow } from './checkin.tsx';
+import { CheckinBriefRow, CheckoutBriefRow } from './checkin.tsx';
+import { KidsBriefRow } from './kids.tsx';
 
 export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[] }) {
   const { theme, t } = useApp();
@@ -152,6 +153,10 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
       <RainBriefRow trip={b.trip} today={b.today} now={now} />
       {/* T143: "Online check-in for EA 25 opens 09:15 today" (open now / closed and not ticked). */}
       <CheckinBriefRow trip={b.trip} now={now} />
+      {/* T146: "Check out of Hotel Gracery by 11:00 today" on a stay's last morning, until ticked. */}
+      <CheckoutBriefRow trip={b.trip} now={now} />
+      {/* T149: "Kids: Train to Kyoto at 11:00, 2h 15m" with snacks / sleep (nothing without children on the trip). */}
+      <KidsBriefRow trip={b.trip} now={now} />
       {/* T131: "Change at Singapore: 1 h 25 min, terminal 1 to 3" on the day of a change. */}
       <LayoverBriefRow trip={b.trip} zone={b.zone} today={b.today} now={now} />
       {/* T114: "Good time to call Mum until 21:00" (nothing with nobody saved). */}

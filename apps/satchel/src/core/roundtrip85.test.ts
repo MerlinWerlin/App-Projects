@@ -70,7 +70,7 @@ const airport: Required<AirportInfo> = {
 
 // T131: arrival / departure terminal and gate typed on a journey.
 // T143: check-in offsets, bag-drop minutes, car desk hours and the tick.
-const checkin: Required<CheckinInfo> = { opensH: 30, closesMin: 50, bagDropMin: 70, deskFrom: '08:00', deskTo: '18:30', doneAt: '2027-03-31T10:00:00.000Z' };
+const checkin: Required<CheckinInfo> = { opensH: 30, closesMin: 50, bagDropMin: 70, deskFrom: '08:00', deskTo: '18:30', doneAt: '2027-03-31T10:00:00.000Z', outAt: '2027-04-04T09:30:00.000Z' };
 
 const legInfo: Required<LegInfo> = { depTerminal: 'T1', depGate: '52', arrTerminal: 'Terminal 3', arrGate: '114' };
 
@@ -376,7 +376,7 @@ test('T85 fixture: every Trip and Item field is set (Required<> typing + no unde
   // T142: SavedPlace keys today (setting added).
   assert.deepEqual(Object.keys(savedPlace).sort(), ['address', 'category', 'id', 'lat', 'localAddress', 'lon', 'name', 'phone', 'sample', 'savedAt', 'setting']);
   // T143: CheckinInfo keys today.
-  assert.deepEqual(Object.keys(checkin).sort(), ['bagDropMin', 'closesMin', 'deskFrom', 'deskTo', 'doneAt', 'opensH']);
+  assert.deepEqual(Object.keys(checkin).sort(), ['bagDropMin', 'closesMin', 'deskFrom', 'deskTo', 'doneAt', 'opensH', 'outAt']);
   // T131: LegInfo keys today.
   assert.deepEqual(Object.keys(legInfo).sort(), ['arrGate', 'arrTerminal', 'depGate', 'depTerminal']);
 });
