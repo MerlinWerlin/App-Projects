@@ -7,6 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { t } from '../src/i18n';
 import { loadGame } from '../src/store/game';
 import { type as ty, useColors } from '../src/theme/tokens';
+import { WidgetSync } from '../src/ui/WidgetSync';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
@@ -60,6 +61,7 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <StatusBar style={dark ? 'light' : 'dark'} />
+      <WidgetSync />
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: c.bg }, animation: 'fade' }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="hatch" options={{ presentation: 'fullScreenModal', animation: 'fade' }} />

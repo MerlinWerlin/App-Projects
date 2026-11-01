@@ -138,6 +138,9 @@ export const en = {
   'settings.version': 'Version {v}',
   'settings.privacy': 'No accounts, ads or tracking. Steps are read on your phone and never leave it.',
 
+  'widget.eggsReady': 'eggs ready',
+  'widget.hatch': 'Open to hatch your egg',
+
   'a11y.pet': '{name}, {species}, {rarity}, {stage}, feeling {mood}',
   'a11y.egg': 'Egg',
   'a11y.meter': 'Next egg, {pct} percent full',

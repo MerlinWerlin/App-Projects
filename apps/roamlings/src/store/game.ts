@@ -19,6 +19,7 @@ import {
 } from '../core/game';
 import type { CareAction } from '../core/growth';
 import { type RegionId, regionForCountry } from '../core/region';
+import { type WidgetTap, applyTaps } from '../core/widget';
 
 const KEY = 'roamlings.game.v1';
 const SETTINGS_KEY = 'roamlings.settings.v1';
@@ -130,6 +131,10 @@ export const actions = {
   },
   rename(id: string, name: string): void {
     set(renamePet(state, id, name));
+  },
+  applyWidgetTaps(taps: WidgetTap[]): void {
+    const [now, day] = nowAndDay();
+    set(applyTaps(tick(state, now, day), taps, (ms) => localDay(new Date(ms))));
   },
   setRegion(region: RegionId): void {
     set(setRegion(state, region));

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "expo start",
     "test": "node --test \"src/core/*.test.ts\" \"src/*.test.ts\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "eas-build-post-install": "node scripts/eas-native-deps.js"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",

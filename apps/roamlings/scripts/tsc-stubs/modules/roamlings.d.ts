@@ -11,3 +11,7 @@ declare module 'expo-sensors' {
     watchStepCount(callback: (result: PedometerResult) => void): Subscription;
   };
 }
+
+declare module 'expo' {
+  export function requireOptionalNativeModule<T = unknown>(name: string): T | null;
+}

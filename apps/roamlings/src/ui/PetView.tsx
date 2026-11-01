@@ -1,6 +1,6 @@
 // Draws any pet from its species parts + colourway + stage, as layered vector shapes.
 // One renderer covers every variant, so new colourways and parts need no new art files.
-import { memo, useEffect, useRef } from 'react';
+import { type Ref, memo, useEffect, useRef } from 'react';
 import { AccessibilityInfo, Animated, Easing, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Polygon } from 'react-native-svg';
 import type { Mood } from '../core/growth';
@@ -319,9 +319,13 @@ export interface PetViewProps {
   animate?: boolean;
   /** Draw as a dark silhouette (unknown Dex entry). */
   silhouette?: boolean;
+  /** Ref to the pet's Svg (no shadow), for exporting a PNG with toDataURL (widget images). */
+  svgRef?: Ref<Svg>;
+  /** Leave out the ground shadow (widget images). */
+  noShadow?: boolean;
 }
 
-function PetViewInner({ pet, size, mood = 'happy', animate = false, silhouette = false }: PetViewProps) {
+function PetViewInner({ pet, size, mood = 'happy', animate = false, silhouette = false, svgRef, noShadow = false }: PetViewProps) {
   const species = getSpecies(pet.speciesId);
   const parts = petParts(pet);
   const realPal = petPalette(pet);
@@ -356,11 +360,13 @@ function PetViewInner({ pet, size, mood = 'happy', animate = false, silhouette =
 
   return (
     <View style={{ width: size, height: size }} pointerEvents="none">
-      <Svg width={size} height={size} viewBox="0 0 200 200" style={{ position: 'absolute' }}>
-        <Ellipse cx={100} cy={190} rx={52 * scale} ry={7} fill="#000000" opacity={0.12} />
-      </Svg>
+      {noShadow ? null : (
+        <Svg width={size} height={size} viewBox="0 0 200 200" style={{ position: 'absolute' }}>
+          <Ellipse cx={100} cy={190} rx={52 * scale} ry={7} fill="#000000" opacity={0.12} />
+        </Svg>
+      )}
       <Animated.View style={{ width: size, height: size, transform: [{ translateY }] }}>
-        <Svg width={size} height={size} viewBox="0 0 200 200">
+        <Svg ref={svgRef} width={size} height={size} viewBox="0 0 200 200">
           {shiny ? <Sparkles color={realPal.accent} /> : null}
           <G transform={`translate(100 190) scale(${scale}) translate(-100 -190)`}>
             <TailView kind={parts.tail} a={a} pal={pal} />
