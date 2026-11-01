@@ -9,7 +9,7 @@
 // minor units of its own currency (spending.ts currencyDigits), totals never mix currencies. Words come in through a
 // `w` function (the UI passes the lostbag.* catalogue), so this file holds no UI text.
 import type { Item, LocalDate, Place, Trip } from './model.ts';
-import { formatMoney, isCurrency, parseAmount } from './spending.ts';
+import { formatMoney, isCurrency, minorToText, parseAmount } from './spending.ts';
 import { span, zonesReadable } from './timeline.ts';
 import { localDate } from './tz.ts';
 
@@ -176,19 +176,43 @@ export type RowError = 'empty' | 'value' | 'currency' | 'full';
  * `currency` (spending.ts parseAmount: '.' or ',' decimal mark, no more decimals than the currency has).
  */
 export function addContent(b: LostBag, label: string, valueText: string, currency: string, id: string): { next: LostBag; error?: RowError } {
-  const name = label.trim().replace(/\s+/g, ' ').slice(0, LIMITS.label);
-  if (!name) return { next: b, error: 'empty' };
+  const r = readRow(label, valueText, currency, id);
+  if ('error' in r) return { next: b, error: r.error };
   if (b.contents.length >= LIMITS.contents) return { next: b, error: 'full' };
+  return { next: { ...b, contents: [...b.contents, r.row], currency: r.row.value === null ? b.currency : r.row.currency } };
+}
+
+/** The typed words, value and currency as a row (same rules for adding and editing). */
+function readRow(label: string, valueText: string, currency: string, id: string): { row: ContentRow } | { error: RowError } {
+  const name = label.trim().replace(/\s+/g, ' ').slice(0, LIMITS.label);
+  if (!name) return { error: 'empty' };
   const cur = currency.trim().toUpperCase();
   let value: number | null = null;
   if (valueText.trim()) {
-    if (!isCurrency(cur)) return { next: b, error: 'currency' };
+    if (!isCurrency(cur)) return { error: 'currency' };
     value = parseAmount(valueText, cur);
     if (value === null && /^[\s0.,]+$/.test(valueText)) value = 0;
-    if (value === null || cleanValue(value) === null) return { next: b, error: 'value' };
+    if (value === null || cleanValue(value) === null) return { error: 'value' };
   }
-  const row: ContentRow = { id, label: name, value, currency: value === null ? '' : cur };
-  return { next: { ...b, contents: [...b.contents, row], currency: value === null ? b.currency : cur } };
+  return { row: { id, label: name, value, currency: value === null ? '' : cur } };
+}
+
+/**
+ * T130: changes one contents row in place (label, value, currency), keeping its id and its place in the list. Same
+ * rules as addContent; an empty value clears it. A row that is no longer there leaves the kit as it was.
+ */
+export function editContent(b: LostBag, id: string, label: string, valueText: string, currency: string): { next: LostBag; error?: RowError } {
+  const at = b.contents.findIndex((r) => r.id === id);
+  if (at < 0) return { next: b };
+  const r = readRow(label, valueText, currency, id);
+  if ('error' in r) return { next: b, error: r.error };
+  const contents = b.contents.map((x, i) => (i === at ? r.row : x));
+  return { next: { ...b, contents, currency: r.row.value === null ? b.currency : r.row.currency } };
+}
+
+/** T130: the fields of the edit form for a row (value as typed text in its own currency, '' when it has none). */
+export function rowDraft(r: ContentRow, fallbackCurrency: string): { label: string; value: string; currency: string } {
+  return r.value === null ? { label: r.label, value: '', currency: fallbackCurrency } : { label: r.label, value: minorToText(r.value, r.currency), currency: r.currency };
 }
 
 export const removeContent = (b: LostBag, id: string): LostBag => ({ ...b, contents: b.contents.filter((r) => r.id !== id) });

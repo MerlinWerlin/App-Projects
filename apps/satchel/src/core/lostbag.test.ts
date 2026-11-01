@@ -14,6 +14,7 @@ import {
   cleanValue,
   descriptionProgress,
   descriptionText,
+  editContent,
   EMPTY_LOST_BAG,
   flightName,
   flightRoute,
@@ -29,6 +30,7 @@ import {
   removeLogEntry,
   reportFlight,
   reportText,
+  rowDraft,
   stayLines,
   TEXT_KEYS,
   totalsText,
@@ -170,6 +172,43 @@ test('addContent: label required, value optional, read in the currency’s own d
   assert.equal(addContent(fresh(), 'Car', '99999999', 'USD', 'z').error, 'value');
   assert.equal(cleanValue(-1), null);
   assert.equal(cleanValue(0), 0);
+});
+
+test('T130 editContent: a row changes in place (words, value, currency), keeping its id and place', () => {
+  let b = fresh();
+  b = addContent(b, 'Rain jacket', '45.50', 'EUR', 'a').next;
+  b = addContent(b, 'Camera', '12000', 'JPY', 'b').next;
+  b = addContent(b, 'Socks', '', '', 'c').next;
+  const e = editContent(b, 'b', '  Camera   body ', '350', 'usd');
+  assert.equal(e.error, undefined);
+  assert.deepEqual(e.next.contents, [
+    { id: 'a', label: 'Rain jacket', value: 4550, currency: 'EUR' },
+    { id: 'b', label: 'Camera body', value: 35000, currency: 'USD' },
+    { id: 'c', label: 'Socks', value: null, currency: '' },
+  ]);
+  assert.equal(e.next.currency, 'USD', 'the currency just used is remembered');
+  // Clearing the value drops it (and its currency); a value added to a row without one reads in the typed currency.
+  const cleared = editContent(e.next, 'a', 'Rain jacket', '', 'EUR').next;
+  assert.deepEqual(cleared.contents[0], { id: 'a', label: 'Rain jacket', value: null, currency: '' });
+  assert.equal(cleared.currency, 'USD');
+  assert.deepEqual(editContent(cleared, 'c', 'Socks', '1,500', 'KWD').next.contents[2], { id: 'c', label: 'Socks', value: 1500, currency: 'KWD' });
+  // Same errors as adding; the kit stays as it was.
+  assert.equal(editContent(b, 'a', ' ', '', 'EUR').error, 'empty');
+  assert.equal(editContent(b, 'a', 'Hat', '12', 'EU').error, 'currency');
+  assert.equal(editContent(b, 'a', 'Hat', '1.5', 'JPY').error, 'value');
+  assert.equal(editContent(b, 'a', 'Hat', '99999999', 'USD').error, 'value');
+  assert.equal(editContent(b, 'a', ' ', '', 'EUR').next, b);
+  // A row that is gone (removed meanwhile) changes nothing; a full list can still be edited.
+  assert.equal(editContent(b, 'zz', 'Hat', '', '').next, b);
+  let full = fresh();
+  for (let i = 0; i < 60; i++) full = addContent(full, `Thing ${i}`, '', '', `r${i}`).next;
+  assert.equal(editContent(full, 'r59', 'Last thing', '', '').next.contents[59].label, 'Last thing');
+  // The edit form starts from the row: value as plain text in its own currency's decimals.
+  assert.deepEqual(rowDraft(b.contents[0], 'GBP'), { label: 'Rain jacket', value: '45.50', currency: 'EUR' });
+  assert.deepEqual(rowDraft(b.contents[1], 'GBP'), { label: 'Camera', value: '12000', currency: 'JPY' });
+  assert.deepEqual(rowDraft(b.contents[2], 'GBP'), { label: 'Socks', value: '', currency: 'GBP' });
+  const back = editContent(b, 'a', ...(Object.values(rowDraft(b.contents[0], 'GBP')) as [string, string, string]));
+  assert.deepEqual(back.next.contents, b.contents, 'saving an unchanged form changes nothing');
 });
 
 test('addContent: the list has a limit', () => {

@@ -24,6 +24,7 @@ import {
   cleanLostBag,
   descriptionProgress,
   descriptionText,
+  editContent,
   flightDay,
   flightName,
   flightRoute,
@@ -33,6 +34,7 @@ import {
   removeLogEntry,
   reportFlight,
   reportText,
+  rowDraft,
   stayLines,
   totalsText,
   valueTotals,
@@ -88,6 +90,8 @@ export default function LostBagScreen() {
   const [shareFailed, setShareFailed] = useState(false);
   const [row, setRow] = useState({ label: '', value: '', currency: '' });
   const [rowError, setRowError] = useState<RowError | null>(null);
+  // T130: the contents row being edited in place (the form below holds its words), or null when adding.
+  const [editing, setEditing] = useState<string | null>(null);
   const [logDate, setLogDate] = useState(() => todayIn(deviceZone()));
   const [logNote, setLogNote] = useState('');
   const [logError, setLogError] = useState(false);
@@ -190,6 +194,41 @@ export default function LostBagScreen() {
     if (await update(() => r.next)) {
       setRow({ label: '', value: '', currency: r.next.currency });
       AccessibilityInfo.announceForAccessibility(t('lostbag.contents.added', { label }));
+    }
+  };
+
+  const startEdit = (id: string) => {
+    const r = latest.current.contents.find((x) => x.id === id);
+    if (!r) return;
+    setEditing(id);
+    setRowError(null);
+    setRow(rowDraft(r, latest.current.currency));
+    AccessibilityInfo.announceForAccessibility(t('f102.lostbag.editing', { label: r.label }));
+  };
+
+  const cancelEdit = () => {
+    setEditing(null);
+    setRowError(null);
+    setRow({ label: '', value: '', currency: latest.current.currency });
+  };
+
+  const saveEdit = async () => {
+    if (!editing) return;
+    if (!latest.current.contents.some((x) => x.id === editing)) {
+      cancelEdit();
+      return;
+    }
+    const r = editContent(latest.current, editing, row.label, row.value, row.currency || stored.currency);
+    if (r.error) {
+      setRowError(r.error);
+      return;
+    }
+    setRowError(null);
+    const label = r.next.contents.find((x) => x.id === editing)?.label ?? row.label;
+    if (await update(() => r.next)) {
+      setEditing(null);
+      setRow({ label: '', value: '', currency: r.next.currency });
+      AccessibilityInfo.announceForAccessibility(t('f102.lostbag.saved', { label }));
     }
   };
 
@@ -317,14 +356,37 @@ export default function LostBagScreen() {
           >
             {stored.contents.length === 0 ? <Body muted>{t('lostbag.contents.empty')}</Body> : null}
             {stored.contents.map((r) => (
-              <View key={r.id} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
-                <Text style={[typeScale.body, { flex: 1, color: theme.ink }]}>{r.label}</Text>
-                {r.value !== null ? <Text style={[typeScale.bodyStrong, { color: theme.ink, fontVariant: ['tabular-nums'] }]}>{formatMoney(r.value, r.currency, lang)}</Text> : null}
+              <View
+                key={r.id}
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: space.s,
+                  borderRadius: radius.m,
+                  paddingLeft: space.xs,
+                  backgroundColor: editing === r.id ? theme.accentSoft : 'transparent',
+                }}
+              >
+                <PressableScale
+                  accessibilityRole="button"
+                  accessibilityLabel={t('f102.lostbag.editA11y', { label: r.label })}
+                  accessibilityHint={t('f102.lostbag.editHint')}
+                  accessibilityState={{ selected: editing === r.id }}
+                  onPress={() => startEdit(r.id)}
+                  style={{ flex: 1, minHeight: TOUCH, flexDirection: 'row', alignItems: 'center', gap: space.s }}
+                >
+                  <Text style={[typeScale.body, { flex: 1, color: theme.ink }]}>{r.label}</Text>
+                  {r.value !== null ? <Text style={[typeScale.bodyStrong, { color: theme.ink, fontVariant: ['tabular-nums'] }]}>{formatMoney(r.value, r.currency, lang)}</Text> : null}
+                  <Ionicons name="create-outline" size={20} color={theme.muted} />
+                </PressableScale>
                 <PressableScale
                   accessibilityRole="button"
                   accessibilityLabel={t('lostbag.contents.removeA11y', { label: r.label })}
                   onPress={async () => {
-                    if (await update((b) => removeContent(b, r.id))) AccessibilityInfo.announceForAccessibility(t('lostbag.contents.removed', { label: r.label }));
+                    if (await update((b) => removeContent(b, r.id))) {
+                      if (editing === r.id) cancelEdit();
+                      AccessibilityInfo.announceForAccessibility(t('lostbag.contents.removed', { label: r.label }));
+                    }
                   }}
                   style={{ width: TOUCH, height: TOUCH, alignItems: 'center', justifyContent: 'center' }}
                 >
@@ -337,6 +399,7 @@ export default function LostBagScreen() {
                 {t('lostbag.contents.total', { total: totalsText(totals, lang) })}
               </Text>
             ) : null}
+            {editing ? <Label>{t('f102.lostbag.editTitle')}</Label> : null}
             <TextField label={t('lostbag.contents.thing')} value={row.label} onChange={(v) => setRow((x) => ({ ...x, label: v }))} placeholder={t('lostbag.contents.thingPlaceholder')} />
             <View style={{ flexDirection: 'row', gap: space.s }}>
               <View style={{ flex: 2 }}>
@@ -353,8 +416,15 @@ export default function LostBagScreen() {
               </View>
             </View>
             {rowError ? <Warning text={t(ROW_ERR[rowError])} /> : null}
-            <Button icon="add" label={t('lostbag.contents.add')} hint={t('lostbag.contents.addHint')} onPress={addRow} />
-            {packedCount ? <Button kind="secondary" icon="file-tray-stacked-outline" label={t('lostbag.contents.fromPacking')} hint={t('lostbag.contents.fromPackingHint')} onPress={addPacked} /> : null}
+            {editing ? (
+              <View style={{ gap: space.s }}>
+                <Button icon="checkmark" label={t('f102.lostbag.save')} hint={t('f102.lostbag.saveHint')} onPress={saveEdit} />
+                <Button kind="quiet" icon="close" label={t('f102.lostbag.cancel')} hint={t('f102.lostbag.cancelHint')} onPress={cancelEdit} />
+              </View>
+            ) : (
+              <Button icon="add" label={t('lostbag.contents.add')} hint={t('lostbag.contents.addHint')} onPress={addRow} />
+            )}
+            {packedCount && !editing ? <Button kind="secondary" icon="file-tray-stacked-outline" label={t('lostbag.contents.fromPacking')} hint={t('lostbag.contents.fromPackingHint')} onPress={addPacked} /> : null}
             <Text style={[typeScale.small, { color: theme.muted }]}>{t('lostbag.contents.foot')}</Text>
           </SectionCard>
 

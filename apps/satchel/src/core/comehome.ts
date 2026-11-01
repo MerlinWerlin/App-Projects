@@ -272,6 +272,19 @@ export function comeNudge(trip: Trip, now: number): ComeDue | null {
   return d;
 }
 
+/**
+ * T130: the soonest "heading home" nudge across trips (the Trips tab hero card), with its trip: the earliest final
+ * departure among trips whose before-you-head-home list is due today or tomorrow and not finished.
+ */
+export function nextComeNudge(trips: readonly Trip[], now: number): { trip: Trip; due: ComeDue } | null {
+  let best: { trip: Trip; due: ComeDue } | null = null;
+  for (const trip of trips) {
+    const due = comeNudge(trip, now);
+    if (due && (!best || due.dep.at < best.due.dep.at)) best = { trip, due };
+  }
+  return best;
+}
+
 /** The "Home again" nudge: the day after you get back, while that list isn't finished. */
 export function homeAgainNudge(trip: Trip, now: number): ComeDue | null {
   const d = comeDue(trip, now);

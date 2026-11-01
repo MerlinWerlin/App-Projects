@@ -58,6 +58,7 @@ import { HeroHeader, IconBadge, ProgressBar, SectionCard, SectionHeader } from '
 import { kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, Chip, Label, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
+import { GetaroundMapButton } from '../../src/ui/getaround.tsx';
 import { PermissionNotice } from '../../src/ui/PermissionNotice.tsx';
 import { TripRouteDays, TripRoutePanel, useTripRoute } from '../../src/ui/TripRouteLayer.tsx';
 import { DaylightLine } from '../../src/ui/WeatherCard.tsx';
@@ -672,6 +673,8 @@ export default function MapScreen() {
       <View style={{ gap: rhythm.tight }}>
         <Button label={t('map.whereAmI')} hint={t('map.whereHint')} onPress={whereAmI} />
         <Button kind="secondary" icon="compass-outline" label={t('wayback.open')} hint={t('wayback.openHint')} onPress={() => router.push('/wayback')} />
+        {/* T132: how to get around the country of the trip on now (else the next, or the map's trip). */}
+        <GetaroundMapButton trip={scopeTrip ?? null} />
         {/* T79: opens the Toilets tab and starts one "near me" search (the nonce makes each tap a new search). T80: the
             nonce also goes through src/state/nearestToilet.ts, so it works when the Toilets tab is already open. */}
         <Button kind="secondary" icon="male-female-outline" label={t('toiletplus.nearestToilet')} hint={t('toiletplus.nearestToiletHint')} onPress={() => router.navigate({ pathname: '/toilets', params: { find: requestNearestToilet() } })} />

@@ -1,0 +1,70 @@
+// Strings for getaround (run 103, T132 "Getting around"). Every UI string lives in the catalogue.
+export const getaround = {
+  'getaround.route': 'Getting around',
+  'getaround.title': 'Getting around',
+  'getaround.subtitle': 'Local transport, offline: transit cards, tapping your bank card, taxis and the airport.',
+  'getaround.disclaimer': 'General guidance from official transport and tourism pages. No fares or prices. Systems change, so verify locally.',
+
+  // Country switcher
+  'getaround.country': 'Country',
+  'getaround.onThisTrip': 'On this trip',
+  'getaround.tripCountryA11y': '{country}, on this trip',
+  'getaround.tripCountryHint': 'Shows how to get around {country}.',
+  'getaround.change': 'Change country',
+  'getaround.changeHint': 'Opens a searchable list of the countries in the guide.',
+  'getaround.listDone': 'Close list',
+  'getaround.search': 'Search countries',
+  'getaround.searchPlaceholder': 'Name, city or 2-letter code',
+  'getaround.pickHint': 'Shows how to get around {country}.',
+  'getaround.noMatch': 'No country in the guide matches “{q}”.',
+  'getaround.more': 'Showing {n} of {total}. Keep typing to narrow the list.',
+  'getaround.noCountry': 'Pick a country',
+  'getaround.noCountryBody': 'Choose a country to read how its local transport works.',
+  'getaround.notCovered': 'The guide doesn’t cover this country yet. Pick another, or check the local transport operator’s website.',
+  'getaround.notYet': '{country} isn’t in the guide yet: we couldn’t check an official source. Ask locally or look at the transport operator’s own website.',
+
+  // Sections
+  'getaround.area': 'Checked for {area}',
+  'getaround.section.transit': 'How public transport works',
+  'getaround.section.tickets': 'Transit cards and tickets',
+  'getaround.section.contactless': 'Tap your bank card',
+  'getaround.section.hours': 'Typical hours',
+  'getaround.section.taxi': 'Taxis',
+  'getaround.section.rides': 'App-based rides',
+  'getaround.section.airport': 'Airport to the city',
+  'getaround.contactless.yes': 'Yes - contactless cards and phones work',
+  'getaround.contactless.some': 'In some places only',
+  'getaround.contactless.no': 'No - buy a card or ticket',
+  'getaround.rides.available': 'App-based rides are available here. Use official pick-up points.',
+  'getaround.notSure': 'Not sure - check locally.',
+  'getaround.sectionA11y': '{title}: {text}',
+  'getaround.recheck': 'Less certain - re-check locally. {reason}',
+  'getaround.checked': 'Written from {hosts} on {date}.',
+  'getaround.verify': 'Other cities in the same country can work differently. Station staff and the operator’s own signs have the final word.',
+
+  // Links on the country screen
+  'getaround.tipping': 'Tipping taxi drivers',
+  'getaround.tippingHint': 'Opens what’s usual for tipping in {country}.',
+  'getaround.words': 'Useful words',
+  'getaround.wordsBody': 'Show a local in {lang}:',
+  'getaround.word.station': 'Where is the station?',
+  'getaround.word.address': 'Please take me to this address.',
+  'getaround.wordHint': 'Opens this phrase card in {lang}.',
+
+  // Summary lines (entry cards)
+  'getaround.summary.tickets': 'Cards: {names}',
+  'getaround.summary.contactless.yes': 'Tap your bank card: yes',
+  'getaround.summary.contactless.some': 'Tap your bank card: some places',
+  'getaround.summary.contactless.no': 'Tap your bank card: no',
+  'getaround.summary.rides': 'App-based rides available',
+
+  // Entry points
+  'getaround.fromArrival': 'Getting around',
+  'getaround.fromArrivalHint': 'Opens the local transport guide for {country}.',
+  'getaround.tripTitle': 'Getting around',
+  'getaround.tripSubtitle': 'Local transport in your trip’s countries.',
+  'getaround.rowFor': 'Getting around {country}',
+  'getaround.rowHint': 'Opens the local transport guide for {country}.',
+  'getaround.mapButton': 'Getting around {country}',
+  'getaround.mapButtonHint': 'Opens the local transport guide for {country}: transit cards, taxis and the airport.',
+} as const;

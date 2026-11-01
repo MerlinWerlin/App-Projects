@@ -35,7 +35,7 @@ import { DRIVING_TABLE, driveSideA11y } from '../../src/ui/driving.tsx';
 import { leaveNudge } from '../../src/core/leavehome.ts';
 import { LeaveHomeHomeCard, leavePillA11y } from '../../src/ui/leavehome.tsx';
 import { comeNudge } from '../../src/core/comehome.ts';
-import { comePillA11y } from '../../src/ui/comehome.tsx';
+import { ComeHomeHomeCard, comePillA11y } from '../../src/ui/comehome.tsx';
 import { useHomeCountry } from '../../src/ui/HomeCountryPicker.tsx';
 import { ClockCard, countdownHeadline, TodayCard, TripPass } from '../../src/ui/TripPass.tsx';
 import { BatteryBannerSlot } from '../../src/ui/slots/BatteryBannerSlot.tsx';
@@ -142,6 +142,8 @@ export default function TripsScreen() {
           <DayBriefCard trips={trips} />
           {/* T124: "You leave tomorrow" with the leaving-home checklist, when no Your day brief shows it. */}
           <LeaveHomeHomeCard trips={trips} />
+          {/* T130: "You head home tomorrow" with the before-you-head-home list, while it's due and unfinished. */}
+          <ComeHomeHomeCard trips={trips} />
           {/* T95: the arrival card for the first trip in the list reaching a new country. */}
           <ArrivalHomeCard trips={list} />
           {trips.length ? (

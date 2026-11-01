@@ -30,6 +30,7 @@ import { RentalBriefRow } from './followups100.tsx';
 import { LeaveHomeBriefRow } from './leavehome.tsx';
 import { ComeHomeBriefRow } from './comehome.tsx';
 import { GamesBriefRow } from './games.tsx';
+import { LayoverBriefRow } from './layovers.tsx';
 
 export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[] }) {
   const { theme, t } = useApp();
@@ -136,6 +137,8 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
           <RentalBriefRow item={car} zone={b.zone} />
         </>
       ) : null}
+      {/* T131: "Change at Singapore: 1 h 25 min, terminal 1 to 3" on the day of a change. */}
+      <LayoverBriefRow trip={b.trip} zone={b.zone} today={b.today} now={now} />
       {/* T114: "Good time to call Mum until 21:00" (nothing with nobody saved). */}
       <CallHomeBriefRow trip={b.trip} />
       {/* T124: "Before you lock the door: today · 3 of 12 left" on the day you leave. */}

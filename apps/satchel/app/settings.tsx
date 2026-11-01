@@ -21,6 +21,7 @@ import { useApp } from '../src/state/app.tsx';
 import { usePersisted } from '../src/state/persisted.ts';
 import { fonts, radius, space, TOUCH } from '../src/theme/tokens.ts';
 import { AirportSettings } from '../src/ui/AirportFields.tsx';
+import { LayoverSettings } from '../src/ui/layovers.tsx';
 import { HomeCountryPicker, useHomeCountry } from '../src/ui/HomeCountryPicker.tsx';
 import { TEMP_UNITS } from '../src/core/weather.ts';
 import { useTempUnit } from '../src/ui/WeatherCard.tsx';
@@ -213,6 +214,8 @@ export default function SettingsScreen() {
       </Section>
 
       <AirportSettings />
+      {/* T131: tight / long limits for a change between journeys. */}
+      <LayoverSettings />
 
       <Section title={t('settings.privacy')} icon="shield-checkmark-outline" tone="ok">
         <Text accessibilityRole="header" style={{ fontFamily: fonts.displayMedium, fontSize: 20, color: theme.ink }}>

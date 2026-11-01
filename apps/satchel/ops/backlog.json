@@ -1619,12 +1619,61 @@
     },
     {
       "id": "T130",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "follow-up"
       ],
       "title": "Run-102 follow-ups: official toll sources for the 9 rows still flagged (EG PE PA GT SA QA JO FJ NP); Trips-tab 'heading home' hero card like the leave-tomorrow card; Plan this trip again can copy own coming-home rows; edit a lost-bag contents row in place; tripcopy 'never copied' text mentions dated sitter tasks; device checks: lost-bag photos and permission denial, report share text, coming-home pill and rating stars with VoiceOver, bingo per-mode marks after relaunch.",
+      "accept": "tests green; DECISIONS records sources",
+      "note": "Run 103: split. T130 (this task) = offline parts (Trips-tab heading-home hero card, Plan this trip again copies own coming-home rows, edit a lost-bag contents row in place, tripcopy 'never copied' text mentions dated sitter tasks). T133 = online toll sources. Device checks stay owner TestFlight items.",
+      "commit": "b098895"
+    },
+    {
+      "id": "T131",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Connections and layovers (owner-1031 D, deepen Trips): detect back-to-back journeys on a trip (flight/train/ferry/bus arriving then departing within 24 h, same or nearby place by name/code or saved position), compute the connection time minute-exact across each leg's own IANA zone (DST-safe), classify tight / OK / long with traveller-adjustable thresholds (defaults: tight under 60 min, or 90 min when the two legs are in different countries; long over 5 h), optional arrival/departure terminal and gate fields on journeys (typed by the traveller, carried in .satchel with the every-field guard), a connection card between the legs on the trip timeline and a Your day row ('Change at <place>: 1 h 25 min, terminal 1 to 2'), tight connections listed on the readiness check, a long-layover card with generic ideas (rest, eat, walk; leaving the airport only if your entry rules allow, link to arrival card / customs). Pure TS core src/core/layovers.ts with tests (zones, midnight, DST, missing ends, overlapping legs = clash not layover).",
+      "accept": "layovers tests; every string in src/i18n/en/layovers.ts (prefix layover.); tokens only; timed transitions, no springs; no new npm dependency; every-field guard updated",
+      "commit": "6553ac5"
+    },
+    {
+      "id": "T132",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Getting around (owner-1031 D, deepen Trips + Map): a per-country local transport guide for the 40 countries most visited by the app's countries list (start with JP AU NZ GB IE US CA FR IT ES DE NL PT GR TH VN ID SG MY KR CN HK TW AE TR MX BR AR CL ZA EG MA IN PH CH AT CZ HR IS NO): how public transport works in the main cities (transit card or ticket names as official operators call them, paying by contactless card where the operator says so, typical hours), taxis (meter, how to hail, tip customs link), ride-hailing (generic: 'app-based rides are common' only, never app brand names), airport-to-city options in general terms, and two to four useful words (ticket, station, stop) linked to phrases. Every country row carries https source URLs from official transport operators, government or national tourism board pages and an ISO checked date; rows without an official source are marked to re-check; null for unknown, never invented fares. Content src/content/getaround.json + content test; pure TS core src/core/getaround.ts (lookup by country, trip countries in order, summary lines) with tests; screen app/getaround/[country].tsx with entries from the arrival card, the trip screen and the Map tab; works offline.",
+      "accept": "getaround tests incl. source URL + date per row and no brand names of ride apps; every string in src/i18n/en/getaround.ts (prefix getaround.); tokens only; timed transitions, no springs; no new npm dependency; DECISIONS records sources",
+      "commit": "763f4cd"
+    },
+    {
+      "id": "T133",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "follow-up",
+        "content"
+      ],
+      "title": "Run-102 online follow-ups: official national toll / road authority sources for the 9 driving rows still flagged (EG PE PA GT SA QA JO FJ NP); clear a flag only with an official government or toll-operator https source and ISO checked date, keep the rest flagged with a reason.",
+      "accept": "driving tests green; DECISIONS records each source",
+      "commit": "880fd6e",
+      "note": "Run 103: no official source reachable for any of the 9 rows (gov pages block automated fetching or say nothing about tolls); all stay flagged with reasons in DECISIONS. A browser-read is the next step; carried into T134."
+    },
+    {
+      "id": "T134",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-103 follow-ups: Getting around for KR TR MX BR VN PH CN EG MA (official sources only) and the taxi/airport gaps on 27 re-check rows (Madrid row, Bangkok BTS); toll rows EG PE PA GT SA QA JO FJ NP need a browser-read of gob.pe / ositran / ena.com.pa / sis.gov.eg; drop Your day's coming-home row while the Heading home card shows; per-connection limit override; long-layover link to the arrival card; device checks: connection card, terminal fields, Getting around screen, Heading home card, lost-bag row edit with VoiceOver.",
       "accept": "tests green; DECISIONS records sources"
     }
   ],

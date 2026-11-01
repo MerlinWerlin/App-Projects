@@ -169,10 +169,12 @@ export function itemFromDraft(d: ItemDraft, tripId: string, prev?: Item): Item {
     transport && (name.trim() || pos.trim()) ? withPos({ ...(old ?? {}), id: old?.id ?? newId('pl'), name: name.trim() || d.title.trim() }, pos) : undefined;
   // T85: start from the previous booking so fields the form doesn't show (and any added to Item later) are kept;
   // the airport fields belong to flights only (the form sets them with withAirport, src/core/leaveby.ts).
-  const { airport: _airport, ...kept } = prev ?? ({} as Partial<Item>);
+  // T131: terminal / gate fields belong to journeys only (the form sets them with withLegInfo, src/core/layovers.ts).
+  const { airport: _airport, legInfo: _legInfo, ...kept } = prev ?? ({} as Partial<Item>);
   return {
     ...kept,
     ...(d.kind === 'flight' && prev?.airport !== undefined ? { airport: prev.airport } : {}),
+    ...(transport && prev?.legInfo !== undefined ? { legInfo: prev.legInfo } : {}),
     id: prev?.id ?? newId('it'),
     tripId,
     kind: d.kind,

@@ -11,6 +11,7 @@ import type { TripCash } from './cash.ts';
 import type { GiftPerson } from './gifts.ts';
 import type { LeavingHome } from './leavehome.ts';
 import type { ComingHome } from './comehome.ts';
+import type { LegInfo } from './layovers.ts';
 
 /** Wall-clock local time, minute precision: 'YYYY-MM-DDTHH:mm'. */
 export type LocalDateTime = string;
@@ -72,6 +73,8 @@ export type Item = {
   notes?: string;
   /** T74 flights only: terminal, gate, boarding and bag-drop times (departure airport's clock), airport buffer and travel time. Read defensively in src/core/leaveby.ts. */
   airport?: AirportInfo;
+  /** T131 journeys only: arrival / departure terminal and gate as typed (a flight's departure ones live in `airport`). Read defensively in src/core/layovers.ts. */
+  legInfo?: LegInfo;
   attachments: Attachment[];
 };
 

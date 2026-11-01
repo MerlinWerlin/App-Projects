@@ -40,6 +40,7 @@ import { AttachmentsField } from '../src/ui/AttachmentsField.tsx';
 import { useDiscardConfirm } from '../src/ui/discardConfirm.ts';
 import { ErrorNotice } from '../src/ui/ErrorNotice.tsx';
 import { KindIcon, carrierKey, formTitleKey, kindKey, numberKey, titleKey } from '../src/ui/kinds.tsx';
+import { LegInfoFields, useLegInfoForm } from '../src/ui/layovers.tsx';
 import { PositionField } from '../src/ui/PositionField.tsx';
 import { DateField, TimeField } from '../src/ui/DateTimeField.tsx';
 import { Body, Button, Chip, EmptyState, Label, Screen, TextField, Warning } from '../src/ui/kit.tsx';
@@ -67,6 +68,8 @@ export default function ItemEditScreen() {
   const [initialFiles] = useState<Attachment[]>(() => prev?.attachments ?? []);
   const [files, setFiles] = useState<Attachment[]>(initialFiles);
   const airport = useAirportForm(prev, pasted?.airport);
+  // T131: arrival / departure terminal and gate on a journey.
+  const legInfo = useLegInfoForm(prev);
   const savedIds = useMemo(() => new Set(initialFiles.map((a) => a.id)), [initialFiles]);
   // Every file copied in by this form, and whether the booking was saved: on leaving unsaved, those copies go.
   const addedFiles = useRef<Attachment[]>([]);
@@ -77,7 +80,7 @@ export default function ItemEditScreen() {
     },
     [initialFiles],
   );
-  const { leaving, gestureEnabled } = useDiscardConfirm(draftChanged(initial, d) || !sameAttachments(initialFiles, files) || airport.changed);
+  const { leaving, gestureEnabled } = useDiscardConfirm(draftChanged(initial, d) || !sameAttachments(initialFiles, files) || airport.changed || legInfo.changed);
   const set = (k: keyof ItemDraft) => (v: string) => setD((o) => ({ ...o, [k]: v }));
   // A position taken from one of the trip's places also fills its name field when that is still empty.
   const setPos = (k: 'placePos' | 'fromPos' | 'toPos', nameKey: 'placeName' | 'fromName' | 'toName') => (v: string, name?: string) =>
@@ -112,7 +115,7 @@ export default function ItemEditScreen() {
     if (saving) return;
     setSaving(true);
     setSaveFailed(false);
-    const item = { ...airport.apply(itemFromDraft(d, trip.id, prev)), attachments: files };
+    const item = { ...legInfo.apply(airport.apply(itemFromDraft(d, trip.id, prev))), attachments: files };
     const ok = await saveItem(item);
     setSaving(false);
     if (!ok) {
@@ -205,6 +208,7 @@ export default function ItemEditScreen() {
         </>
       ) : null}
       {d.kind === 'flight' ? <AirportFields form={airport} start={{ date: d.startDate, time: d.startTime, tz: d.startTz }} endTz={d.endTz} /> : null}
+      <LegInfoFields form={legInfo} kind={d.kind} />
       {hasRef(d.kind) ? <TextField label={t('item.ref')} value={d.ref} onChange={set('ref')} autoCapitalize="none" /> : null}
       <TextField label={t('item.notes')} value={d.notes} onChange={set('notes')} multiline />
       <AttachmentsField

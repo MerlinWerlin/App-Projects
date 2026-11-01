@@ -15,6 +15,7 @@ import {
   comeProgress,
   finalDeparture,
   homeAgainNudge,
+  nextComeNudge,
   lastCheckout,
   missingTemplate,
   readComingHome,
@@ -258,6 +259,23 @@ test('nudges: heading home today/tomorrow until the before list is all ticked; h
   assert.equal(homeAgainNudge(t, day)!.when, 'home');
   for (const r of rowsOf(readComingHome(t), 'after')) t = setRowDone(t, r.id, true, NOW_ISO);
   assert.equal(homeAgainNudge(t, day), null);
+});
+
+test('T130 nextComeNudge: the soonest unfinished heading-home list across trips (the Trips tab card)', () => {
+  const morning = at('2027-04-07T08:00', 'Asia/Tokyo');
+  const sooner = item({ id: 'f3', tripId: 't2', kind: 'train', title: 'Kyoto to Tokyo', start: { local: '2027-04-07T12:00', tz: 'Asia/Tokyo' }, end: { local: '2027-04-07T14:15', tz: 'Asia/Tokyo' } });
+  const other = trip({ id: 't2', name: 'Kyoto', items: [sooner] });
+  assert.equal(nextComeNudge([trip(), other], morning)?.trip.id, 't2');
+  assert.equal(nextComeNudge([trip(), other], morning)?.due.when, 'today');
+  // Finishing the sooner trip's before list hands the card to the other trip.
+  let done = startComingHome(other, newId, NOW_ISO);
+  for (const r of rowsOf(readComingHome(done), 'before')) done = setRowDone(done, r.id, true, NOW_ISO);
+  assert.equal(nextComeNudge([trip(), done], morning)?.trip.id, 't1');
+  // The day before counts ('tomorrow'); further out, after leaving, or no trips: nothing.
+  assert.equal(nextComeNudge([trip()], at('2027-04-06T09:00', 'Asia/Tokyo'))?.due.when, 'tomorrow');
+  assert.equal(nextComeNudge([trip()], at('2027-04-04T09:00', 'Asia/Tokyo')), null);
+  assert.equal(nextComeNudge([trip()], at('2027-04-08T09:00', 'Australia/Sydney')), null);
+  assert.equal(nextComeNudge([], morning), null);
 });
 
 test('checkout: the last stay that ends by the final departure, on its own clock', () => {
