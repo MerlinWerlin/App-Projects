@@ -1,0 +1,16 @@
+{
+  "app": "hollowhue",
+  "note": "Owner feedback (TestFlight notes, chat) outranks this order. Phase numbers match docs/PLAN.md.",
+  "tasks": [
+    { "id": "H01", "phase": 1, "title": "Core: path parsing + hit testing, nested level layout, camera maths, progress/undo/redo, tests", "status": "done" },
+    { "id": "H02", "phase": 1, "title": "Bookshop Lane (4 levels), Endless Mandala (3), Café Window, Dinosaur Jungle", "status": "done" },
+    { "id": "H03", "phase": 1, "title": "Canvas: pinch/pan, tap-fill, pencil/marker/rubber, stay inside the lines, Look closer flight", "status": "done" },
+    { "id": "H04", "phase": 1, "title": "Gallery with progress thumbnails and filters, Settings, language line, icon + splash", "status": "done" },
+    { "id": "H05", "phase": 1, "title": "First TestFlight build", "status": "in progress" },
+    { "id": "H06", "phase": 2, "title": "Pencil-only drawing option (finger pans), pressure-sensitive pencil", "status": "todo" },
+    { "id": "H07", "phase": 2, "title": "Library scene (shelf -> open book -> illustration) and Forest scene (tree -> owl hollow)", "status": "todo" },
+    { "id": "H08", "phase": 2, "title": "Custom colour picker and recent colours", "status": "todo" },
+    { "id": "H09", "phase": 2, "title": "Share/export the finished picture", "status": "todo" },
+    { "id": "H10", "phase": 3, "title": "Scene packs + lifetime Plus via expo-iap (RELEASE_STANDARD section 2)", "status": "todo" }
+  ]
+}

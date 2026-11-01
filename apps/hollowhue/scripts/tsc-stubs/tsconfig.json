@@ -1,0 +1,31 @@
+{
+  // Offline strict typecheck of app/ and src/ against hand-written stubs (see README.md).
+  // Run with: npm run typecheck:ui
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": true,
+    "allowJs": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    // Stubs win over anything in node_modules, so the result is the same offline and on the PC.
+    "paths": {
+      "react": ["./react/index.d.ts"],
+      "react/jsx-runtime": ["./react/jsx-runtime.d.ts"],
+      "react-native": ["./react-native.d.ts"]
+    },
+    // @types/node for the node:test suites and require(): the project's own copy if installed,
+    // otherwise the copy preinstalled on the cloud box.
+    "typeRoots": ["../../node_modules/@types", "/opt/npm-tools/node_modules/@types"],
+    "types": ["node"]
+  },
+  "include": ["../../app/**/*.ts", "../../app/**/*.tsx", "../../src/**/*.ts", "../../src/**/*.tsx", "./modules/*.d.ts"]
+}

@@ -1,0 +1,8 @@
+{
+  "app": "hollowhue",
+  "stage": "build",
+  "headline": "Phase 1 built 1 Nov: four scenes (Bookshop Lane zooms 4 levels deep), tap-fill and freehand drawing.",
+  "next_for_owner": [
+    "Open the Hollowhue build in TestFlight on the iPad when Apple emails you and answer docs/TRIAL.md"
+  ]
+}
