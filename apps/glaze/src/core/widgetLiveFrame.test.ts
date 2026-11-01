@@ -19,6 +19,7 @@ test('a clean source face carries its safe live area through every widget compos
       const spec = liveArtSpec(plan, { w: 1024, h: 1024 }, size, fit, { bg: '#102030', ink: '#F0E0D0' });
       assert.ok(spec);
       assert.deepEqual(parseLiveArtSpec(spec), spec);
+      assert.equal(spec.cleanFace, true);
       const [x, y, w, h] = spec.rect;
       assert.ok(x >= 0 && y >= 0 && w > 0 && h > 0 && x + w <= 1 && y + h <= 1);
     }
@@ -44,4 +45,11 @@ test('painted, malformed, empty and off-canvas source areas never become live op
     assert.equal(parsed.errors.length, 1);
   }
   assert.equal(liveArtPlan('unknown', { id: 'unreviewed-clock', kind: 'clock' }), null);
+});
+
+test('painted value covers cannot opt out of their background with a cleanFace flag', () => {
+  const painted = parseLiveArtSpec({ kind: 'clock', rect: [.1,.1,.8,.8], shape: 'circle', cover: true, cleanFace: true, plate: '#102030', ink: '#FFFFFF' });
+  assert.ok(painted);
+  assert.equal(painted.cleanFace, undefined);
+  assert.equal(painted.cover, true);
 });

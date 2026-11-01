@@ -34,6 +34,7 @@ struct LiveArtSpec {
   let rect: CGRect
   let circle: Bool
   let cover: Bool
+  let cleanFace: Bool
   let plate: String
   let ink: String
   /// Countdown target (start of that day, current calendar).
@@ -62,6 +63,7 @@ struct LiveArtSpec {
       rect: CGRect(x: v[0], y: v[1], width: v[2], height: v[3]),
       circle: (r["shape"] as? String) == "circle",
       cover: (r["cover"] as? Bool) == true,
+      cleanFace: (r["cleanFace"] as? Bool) == true && (r["cover"] as? Bool) != true,
       plate: plate,
       ink: ink,
       target: target
@@ -214,7 +216,7 @@ struct LiveArtValueView: View {
     GeometryReader { geo in
       let s = min(geo.size.width, geo.size.height)
       ZStack {
-        plate
+        if !spec.cleanFace { plate }
         content(s: s)
           .foregroundStyle(ink)
           .shadow(color: Color.black.opacity(0.25), radius: 2, y: 1)
@@ -244,13 +246,13 @@ struct LiveArtValueView: View {
     case .clock:
       ZStack {
         LiveClockHands(date: date, ink: ink)
-          .frame(width: s * 0.86, height: s * 0.86)
+          .frame(width: s * 0.70, height: s * 0.70)
         Text(date, style: .time)
           .font(theme.typeface(size: max(9, s * 0.1), weight: .semibold))
           .monospacedDigit()
           .lineLimit(1)
           .minimumScaleFactor(0.5)
-          .offset(y: s * 0.27)
+          .offset(y: s * 0.39)
       }
     case .date:
       VStack(spacing: s * 0.02) {

@@ -10,4 +10,8 @@ The widget exports add a clean clock face to each theme and additional date, foc
 
 Live Fit now retains the composed image and applies the same 6% inset to the image and value layer. Plain decorative Fit still uses its raw artwork. Known painted sample values receive fully opaque covers. Swift rejects off-canvas live rectangles just as the TypeScript reader does.
 
+Curated `liveFrame` regions on number-free faces derive `cleanFace: true` in the stored live spec. Native values then draw directly on that prepared background, without a second disc or shadow. Known painted covers never accept that flag. Clock hands leave a clear band for the digital label at6:30, as checked in the native capture pass.
+
+`scripts/prepare-reviewed-packs.mjs --reviews <folder> --out <new local candidate root>` compresses the available artwork and clean faces into validated remote-art v2 candidates. It checks at least six options and a live clock plan for every theme, keeps source hashes and reference credits, and writes a local catalogue. It does not publish, approve pricing or clear source-specific rights notes.
+
 Validation: run the focused live-art, widget-option and live-frame tests, then the Glaze widget contract workflow for Swift decoding and iOS SDK typechecking. Physical device checks must cover independent widget choices, Fill/Fit, theme swaps, midnight/timezone transitions and focus interaction. Browser previews and successful SDK typechecking do not establish those device results.

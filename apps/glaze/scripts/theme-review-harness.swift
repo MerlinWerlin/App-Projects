@@ -35,7 +35,7 @@ enum NativeReviewCapture {
           throw NSError(domain: "GlazeReview", code: 2)
         }
         var theme = WidgetTheme(); theme.themeId = id; theme.bg = [bg]; theme.surface = bg; theme.ink = ink; theme.accent = ink
-        guard let spec = LiveArtSpec.parse(["kind": "clock", "rect": [0, 0, 1, 1], "shape": "circle", "cover": false, "plate": bg, "ink": ink]) else {
+        guard let spec = LiveArtSpec.parse(["kind": "clock", "rect": [0, 0, 1, 1], "shape": "circle", "cover": false, "cleanFace": true, "plate": bg, "ink": ink]) else {
           throw NSError(domain: "GlazeReview", code: 3)
         }
         for (size, width, height) in sizes {
