@@ -15,6 +15,11 @@
 // each rule at runtime on a trip with every field set. Copying reads only the fields the tables list ('keep' and the
 // others), so an unknown field is never carried by accident. New ids everywhere; the cover is kept; the name gets the
 // new year. Pure TypeScript, no React Native imports.
+//
+// T126: the Leaving home checklist can come along too (CopyOptions.leavingHome, off by default like giftNames): every
+// row as the traveller left it (own rows, renamed and removed template rows), all ticks cleared, new ids; the sitter
+// note's words and its daily tasks come along, dated tasks never do (they belong to the old days). Codes are
+// phone-only and never on a Trip.
 import type { Budget, Companion, Item, LocalDate, Place, SavedPlace, Stamp, Trip } from './model.ts';
 import type { AirportInfo } from './leaveby.ts';
 import type { Idea } from './ideas.ts';
@@ -22,6 +27,7 @@ import type { Todo } from './todos.ts';
 import type { PackItem, PackList } from './packing.ts';
 import type { Bag } from './bags.ts';
 import { readGifts, type GiftPerson } from './gifts.ts';
+import { readLeavingHome, type LeaveRow, type LeavingHome, type SitterNote, type SitterTask } from './leavehome.ts';
 import { addDays, checkWallTime, daysBetween, isLocalDateTime, isValidZone, wallMs, wallString } from './tz.ts';
 
 const DAY = 86_400_000;
@@ -34,9 +40,10 @@ export const ALL_PARTS: CopyParts = Object.freeze({ bookings: true, packing: tru
 
 /**
  * keep: copied as it is. new: a fresh id / timestamp. shift: moved by the trip's day shift (wall clock kept).
- * clear: ticks reset. drop: never copied. rename: the name with the new year. A part: copied only when chosen.
+ * clear: ticks reset. drop: never copied. rename: the name with the new year. undated: only what is not tied to a
+ * date comes along (T126: a sitter task 'daily' comes, a dated one does not). A part: copied only when chosen.
  */
-export type Rule = 'keep' | 'new' | 'shift' | 'clear' | 'drop' | 'rename' | { part: CopyPart };
+export type Rule = 'keep' | 'new' | 'shift' | 'clear' | 'drop' | 'rename' | 'undated' | { part: CopyPart };
 type Rules<T> = { readonly [K in keyof Required<T>]: Rule };
 
 export const TRIP_RULES: Rules<Trip> = {
@@ -63,8 +70,11 @@ export const TRIP_RULES: Rules<Trip> = {
   cash: 'drop',
   // The gifts themselves never come along; with the giftNames option only the people's names do (GIFT_PERSON_RULES).
   gifts: 'drop',
-  // T124: the leaving-home checklist and sitter note are tied to the old dates (ticks, tasks by date): not copied.
+  // T124: the trip's own checklist (ticks, tasks by date) never comes as it is. T126: with the leavingHome option a
+  // fresh copy comes instead, by LEAVING_HOME_RULES (ticks cleared, no dated tasks).
   leavingHome: 'drop',
+  // T128: the coming-home ticks and rating belong to the old trip: not copied.
+  comingHome: 'drop',
 };
 
 /** Item.attachments is required by the model, so 'drop' leaves it an empty list. */
@@ -112,6 +122,22 @@ export const TODO_RULES: Rules<Todo> = { id: 'new', title: 'keep', due: 'shift',
 export const COMPANION_RULES: Rules<Companion> = { id: 'new', name: 'keep' };
 /** T120 gift people by name only (the giftNames option): a fresh id and date, an empty gift list, no budget. */
 export const GIFT_PERSON_RULES: Rules<GiftPerson> = { id: 'new', name: 'keep', budget: 'drop', gifts: 'clear', createdAt: 'new' };
+/** T126 Leaving home (the leavingHome option): rows by LEAVE_ROW_RULES, the note by SITTER_NOTE_RULES, a new date. */
+export const LEAVING_HOME_RULES: Rules<LeavingHome> = { rows: 'keep', note: 'undated', updatedAt: 'new' };
+/** Own rows, renamed and template rows as the traveller left them (removed template rows stay removed); ticks clear. */
+export const LEAVE_ROW_RULES: Rules<LeaveRow> = { id: 'new', tpl: 'keep', label: 'keep', done: 'clear' };
+export const SITTER_NOTE_RULES: Rules<SitterNote> = {
+  address: 'keep',
+  tasks: 'undated',
+  pets: 'keep',
+  plants: 'keep',
+  bins: 'keep',
+  contactName: 'keep',
+  contactPhone: 'keep',
+  extra: 'keep',
+};
+/** A daily task comes along with a new id; a task on a date of the old trip does not. */
+export const SITTER_TASK_RULES: Rules<SitterTask> = { id: 'new', when: 'undated', text: 'keep' };
 export const BUDGET_RULES: Rules<Budget> = { currency: 'keep', amount: 'keep' };
 export const PACK_LIST_RULES: Rules<PackList> = {
   tripId: 'new',
@@ -222,7 +248,7 @@ export function copyPreview(trip: Trip, newStart: LocalDate): CopyPreview {
 }
 
 /** How much each part would bring along (0 / false: nothing to copy, the screen hides that choice). */
-export type PartCounts = Record<Exclude<CopyPart, 'budget'>, number> & { budget: boolean; giftPeople: number };
+export type PartCounts = Record<Exclude<CopyPart, 'budget'>, number> & { budget: boolean; giftPeople: number; leavingHome: number };
 export function partCounts(trip: Trip, packing: PackList | null | undefined): PartCounts {
   const list = packing && packing.tripId === trip.id ? packing : null;
   return {
@@ -234,6 +260,8 @@ export function partCounts(trip: Trip, packing: PackList | null | undefined): Pa
     todos: (trip.todos ?? []).filter((t) => !t.suggestion || t.dismissed).length,
     companions: trip.companions?.length ?? 0,
     giftPeople: readGifts(trip).length,
+    // T126: checklist rows (a note with no rows has nothing to tick, but its words can still come: count it as one).
+    leavingHome: leavingHomeCount(trip),
     budget: !!trip.budget && typeof trip.budget.currency === 'string' && !!trip.budget.currency,
   };
 }
@@ -249,6 +277,8 @@ export type CopyOptions = {
   name?: string;
   /** T120: bring the gift list's people by name only (no gifts, prices or budgets). Off unless set. */
   giftNames?: boolean;
+  /** T126: bring the Leaving home checklist (ticks cleared) and the sitter note without dated tasks. Off unless set. */
+  leavingHome?: boolean;
 };
 export type CopyResult = { trip: Trip; packing: PackList | null; days: number };
 
@@ -290,6 +320,32 @@ function copyTodo(t: Todo, days: number, newId: (prefix: string) => string, now:
   const due = shiftDay(t.due, days);
   if (due) out.due = due;
   return out;
+}
+
+function leavingHomeCount(trip: Trip): number {
+  const lh = readLeavingHome(trip);
+  if (!lh) return 0;
+  return lh.rows.length || (copyNote(lh.note, () => '') ? 1 : 0);
+}
+
+function copyNote(note: SitterNote | undefined, newId: (prefix: string) => string): SitterNote | undefined {
+  if (!isObj(note)) return undefined;
+  const out = kept(note, SITTER_NOTE_RULES);
+  const tasks = (note.tasks ?? [])
+    .filter((t) => t.when === 'daily')
+    .map((t) => ({ ...kept(t, SITTER_TASK_RULES), id: newId('lht'), when: 'daily' }) as SitterTask);
+  if (tasks.length) out.tasks = tasks;
+  return Object.keys(out).length ? out : undefined;
+}
+
+/** T126: a fresh Leaving home for the copy (read through readLeavingHome, so codes and broken rows never come). */
+export function copyLeavingHome(trip: Trip, newId: (prefix: string) => string, now: string): LeavingHome | undefined {
+  const lh = readLeavingHome(trip);
+  if (!lh) return undefined;
+  const rows = lh.rows.map((r) => ({ ...kept(r, LEAVE_ROW_RULES), id: newId('lh'), done: false }) as LeaveRow);
+  const note = copyNote(lh.note, newId);
+  if (!rows.length && !note) return undefined;
+  return { rows, ...(note ? { note } : {}), updatedAt: now };
 }
 
 function copyPacking(list: PackList, tripId: string, parts: CopyParts, newId: (prefix: string) => string): PackList | null {
@@ -351,6 +407,10 @@ export function copyTrip(trip: Trip, packing: PackList | null | undefined, opts:
   if (opts.giftNames === true) {
     const people = readGifts(trip).map((p) => ({ ...kept(p, GIFT_PERSON_RULES), id: newId('gp'), gifts: [], createdAt: now }) as GiftPerson);
     if (people.length) out.gifts = people;
+  }
+  if (opts.leavingHome === true) {
+    const lh = copyLeavingHome(trip, newId, now);
+    if (lh) out.leavingHome = lh;
   }
   if (parts.budget && trip.budget) {
     const b = kept(trip.budget, BUDGET_RULES) as Budget;

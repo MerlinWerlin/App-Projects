@@ -39,6 +39,7 @@ import { cleanFileTogether } from './together.ts';
 import { cleanFileCash, importCash } from './cash.ts';
 import { importGifts, readFileGifts } from './gifts.ts';
 import { readFileLeavingHome, stripPhoneOnly } from './leavehome.ts';
+import { readFileComingHome } from './comehome.ts';
 import { isLocalDateTime } from './tz.ts';
 
 export const TRIP_FILE_FORMAT = 'satchel-trip';
@@ -269,7 +270,7 @@ export function parseTripFile(data: unknown): ParseResult {
   }
   // T82: companions, payers, splits and settlements are optional; unreadable ones are dropped, never the trip.
   // T102: so are cash rows (cleanFileCash).
-  const { items: _i, places: _p, demo, journal: rawJournal, ideas: rawIdeas, cover: rawCover, todos: rawTodos, dayPlans: rawDayPlans, gifts: rawGifts, leavingHome: rawLeaving, ...tripFields } = cleanFileCash(cleanFileTogether(t));
+  const { items: _i, places: _p, demo, journal: rawJournal, ideas: rawIdeas, cover: rawCover, todos: rawTodos, dayPlans: rawDayPlans, gifts: rawGifts, leavingHome: rawLeaving, comingHome: rawComing, ...tripFields } = cleanFileCash(cleanFileTogether(t));
   const journal = readFileJournal(rawJournal);
   // T81: ideas are optional (older files have none); unreadable rows are left out rather than refusing the file.
   const ideas = readFileIdeas(rawIdeas);
@@ -283,6 +284,8 @@ export function parseTripFile(data: unknown): ParseResult {
   const gifts = readFileGifts(rawGifts);
   // T124: the leaving-home checklist is optional; unreadable rows and any code-like key are left out.
   const leavingHome = readFileLeavingHome(rawLeaving);
+  // T128: the coming-home lists and rating are optional; unreadable rows are left out.
+  const comingHome = readFileComingHome(rawComing);
   const trip: FileTrip = {
     ...(tripFields as unknown as FileTrip),
     ...(journal ? { journal } : {}),
@@ -292,6 +295,7 @@ export function parseTripFile(data: unknown): ParseResult {
     ...(dayPlans ? { dayPlans } : {}),
     ...(gifts ? { gifts } : {}),
     ...(leavingHome ? { leavingHome } : {}),
+    ...(comingHome ? { comingHome } : {}),
     id: isStr(t.id) ? t.id : '',
     homeTz: isStr(t.homeTz) ? t.homeTz : 'UTC',
     createdAt: isStr(t.createdAt) ? t.createdAt : '',

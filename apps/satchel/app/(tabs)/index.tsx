@@ -34,6 +34,8 @@ import { GamesEntryCard } from '../../src/ui/games.tsx';
 import { DRIVING_TABLE, driveSideA11y } from '../../src/ui/driving.tsx';
 import { leaveNudge } from '../../src/core/leavehome.ts';
 import { LeaveHomeHomeCard, leavePillA11y } from '../../src/ui/leavehome.tsx';
+import { comeNudge } from '../../src/core/comehome.ts';
+import { comePillA11y } from '../../src/ui/comehome.tsx';
 import { useHomeCountry } from '../../src/ui/HomeCountryPicker.tsx';
 import { ClockCard, countdownHeadline, TodayCard, TripPass } from '../../src/ui/TripPass.tsx';
 import { BatteryBannerSlot } from '../../src/ui/slots/BatteryBannerSlot.tsx';
@@ -73,15 +75,17 @@ export default function TripsScreen() {
       const drivingLine = driveSideA11y(t, driving);
       // T124: "Lock up today / tomorrow" while the leaving-home checklist isn't finished.
       const leaving = phase === 'past' ? null : leaveNudge(trip, Date.now());
+      // T128: "Heading home today / tomorrow" while the before-you-head-home list isn't finished.
+      const coming = phase === 'past' ? null : comeNudge(trip, Date.now());
       return (
         <FadeInView delay={Math.min(index, 4) * 40}>
           <PressableScale
             accessibilityRole="button"
-            accessibilityLabel={[t('spec41.trips.rowA11y', { name: trip.name, phase: t(`trips.phase.${phase}`), range }), drivingLine, leavePillA11y(t, leaving)].filter(Boolean).join('. ')}
+            accessibilityLabel={[t('spec41.trips.rowA11y', { name: trip.name, phase: t(`trips.phase.${phase}`), range }), drivingLine, leavePillA11y(t, leaving), comePillA11y(t, coming)].filter(Boolean).join('. ')}
             accessibilityHint={t('spec41.trips.rowHint')}
             onPress={() => router.push(`/trip/${trip.id}`)}
           >
-            <TripPass trip={trip} today={today} cover={tripCover(trip)} driving={driving} leaving={leaving} />
+            <TripPass trip={trip} today={today} cover={tripCover(trip)} driving={driving} leaving={leaving} coming={coming} />
           </PressableScale>
         </FadeInView>
       );

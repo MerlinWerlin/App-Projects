@@ -134,6 +134,11 @@ export default function TroubleGuideScreen() {
         <Text style={[typeScale.small, { flex: 1, color: theme.ink }]}>{t('trouble.guidance')}</Text>
       </View>
 
+      {/* T127: Lost luggage opens the lost-bag kit (description, flight, what to ask, share). */}
+      {guide.id === 'bag' ? (
+        <Button icon="briefcase-outline" label={t('lostbag.entry.trouble')} hint={t('lostbag.entry.troubleHint')} onPress={() => router.push({ pathname: '/lostbag', params: { mode: 'report' } })} />
+      ) : null}
+
       {guide.steps.map((s, i) => {
         const done = isTicked(progress, guide.id, s.id);
         const stepTitle = t(stepTitleKey(guide, s) as Key);

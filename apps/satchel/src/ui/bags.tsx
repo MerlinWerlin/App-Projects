@@ -2,6 +2,7 @@
 // Carry-on only switch and "Manage bags" (own bags, colours, cabin / hold, weight limits), and the bag picker and
 // weight field in a row's edit card. Logic lives in src/core/bags.ts; strings in src/i18n/en/bags.ts.
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { memo, useState } from 'react';
 import { AccessibilityInfo, Alert, ScrollView, Text, View } from 'react-native';
 import {
@@ -221,6 +222,7 @@ export function BagHeaderCard({
   gifts?: Record<string, GiftBagLoad>;
 }) {
   const { t, theme, lang } = useApp();
+  const router = useRouter();
   const unit = useWeightUnit();
   const base = bagSummaries(list, qtyOf);
   const s = { ...base, bags: base.bags.map(({ bag, tally }) => ({ bag, tally: withGiftWeight(tally, gifts?.[bag.id]?.grams ?? 0) })) };
@@ -233,8 +235,16 @@ export function BagHeaderCard({
   const one = s.bags.find((b) => b.bag.id === filter);
   if (one) {
     return (
-      <FadeInView>
+      <FadeInView style={{ gap: space.s }}>
         <BagCard bag={one.bag} tally={one.tally} unit={unit} lang={lang} gifts={gifts?.[one.bag.id]} />
+        {/* T127: this bag's lost-bag kit (description card, "My bag didn't arrive"). */}
+        <Button
+          kind="secondary"
+          icon="search-outline"
+          label={t('lostbag.entry.bag')}
+          hint={t('lostbag.entry.bagHint')}
+          onPress={() => router.push({ pathname: '/lostbag/[tripId]', params: { tripId: list.tripId, bag: one.bag.id } })}
+        />
       </FadeInView>
     );
   }

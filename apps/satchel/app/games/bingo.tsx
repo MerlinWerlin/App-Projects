@@ -14,9 +14,13 @@ import {
   cleanMarks,
   FREE,
   FREE_INDEX,
+  bingoFor,
   isFullCard,
   newLines,
   newSeed,
+  putBingo,
+  setBingoMarks,
+  showBingo,
   toggleMark,
   type BingoLine,
   type BingoTile,
@@ -45,13 +49,14 @@ export default function BingoScreen() {
   const flash = useRef(new Animated.Value(0)).current;
   const [glow, setGlow] = useState<Set<number>>(new Set());
 
-  // A card for the mode: keep the saved one when it is for this mode, else deal a fresh one.
+  // T126: each mode keeps its own card and marks: switching back brings that mode's card back; a mode with none yet
+  // gets a fresh one. The mode shown becomes the current one, so the screen reopens on it.
   useEffect(() => {
     if (!loaded) return;
-    if (!state.bingo || state.bingo.mode !== mode) saveGames((g) => ({ ...g, bingo: { mode, seed: newSeed(Date.now()), marks: cleanMarks([]) } }));
-  }, [loaded, mode, state.bingo]);
+    if (!state.bingo || state.bingo.mode !== mode || !state.bingoCards?.[mode]) saveGames((g) => showBingo(g, mode, newSeed(Date.now())));
+  }, [loaded, mode, state.bingo, state.bingoCards]);
 
-  const bingo = state.bingo && state.bingo.mode === mode ? state.bingo : null;
+  const bingo = bingoFor(state, mode);
   const tiles = GAMES.bingo[mode];
   const byId = useMemo(() => new Map<string, BingoTile>(tiles.map((x) => [x.id, x])), [tiles]);
   const card = useMemo(() => (bingo ? buildCard(tiles, mode, bingo.seed) : null), [tiles, mode, bingo?.seed]);
@@ -80,20 +85,20 @@ export default function BingoScreen() {
   const tap = (i: number) => {
     if (!bingo) return;
     const after = toggleMark(marks, i);
-    saveGames((g) => (g.bingo && g.bingo.mode === mode ? { ...g, bingo: { ...g.bingo, marks: after } } : g));
+    saveGames((g) => setBingoMarks(g, mode, after));
     const fresh = newLines(marks, after);
     if (fresh.length) celebrate(fresh, after);
   };
 
   const deal = () => {
-    const doIt = () => saveGames((g) => ({ ...g, bingo: { mode, seed: newSeed(Date.now()), marks: cleanMarks([]) } }));
+    const doIt = () => saveGames((g) => putBingo(g, { mode, seed: newSeed(Date.now()), marks: cleanMarks([]) }));
     if (marks.length <= 1) return doIt();
     Alert.alert(t('games.bingo.newTitle'), t('games.bingo.newBody'), [
       { text: t('games.cancel'), style: 'cancel' },
       { text: t('games.bingo.newConfirm'), onPress: doIt },
     ]);
   };
-  const clear = () => saveGames((g) => (g.bingo ? { ...g, bingo: { ...g.bingo, marks: cleanMarks([]) } } : g));
+  const clear = () => saveGames((g) => setBingoMarks(g, mode, cleanMarks([])));
 
   const status = isFullCard(marks)
     ? t('games.bingo.fullCard')
@@ -107,6 +112,7 @@ export default function BingoScreen() {
     <Screen>
       <ModePicker mode={mode} onChange={setMode} />
       <Body muted>{t('games.bingo.howTo', { mode: t(MODE_KEY[mode]) })}</Body>
+      <Body muted>{t('f101.bingo.perMode')}</Body>
 
       <View accessibilityLabel={t('games.bingo.cardA11y')} style={{ gap: GAP, alignSelf: 'center' }}>
         {card

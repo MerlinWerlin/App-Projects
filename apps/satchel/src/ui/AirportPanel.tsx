@@ -1,6 +1,7 @@
 // T74 airport day, the showing side: the ticket / boarding-pass block for a flight (terminal, gate and boarding big,
 // bag drop, the countdown to the next step, "Leave by" always labelled as general guidance, and any warnings) and the
 // Your day card's leave-by line. Times are on the departure airport's clock. Logic in src/core/leaveby.ts.
+import { useRouter } from 'expo-router';
 import { Text, View } from 'react-native';
 import { formatDuration, zoneCity } from '../core/format.ts';
 import { airportCountdown, airportPlan, flightToday, readAirport, type AirportStep } from '../core/leaveby.ts';
@@ -10,7 +11,7 @@ import type { T } from '../i18n/core.ts';
 import { useApp } from '../state/app.tsx';
 import { fonts, radius, space, typeScale } from '../theme/tokens.ts';
 import { leaveText, useAirportPrefs, warningTexts } from './AirportFields.tsx';
-import { Body, Card, Label, Warning } from './kit.tsx';
+import { Body, Button, Card, Label, Warning } from './kit.tsx';
 import { useMinute } from './TripPass.tsx';
 
 const COUNT_KEY: Record<AirportStep, Key> = {
@@ -24,6 +25,7 @@ const COUNT_KEY: Record<AirportStep, Key> = {
 /** `framed` wraps it in a card (the booking detail screen); the ticket view puts it inside its own card. */
 export function AirportPanel({ item, framed }: { item: Item; framed?: boolean }) {
   const { t, theme } = useApp();
+  const router = useRouter();
   const [prefs] = useAirportPrefs();
   const now = useMinute();
   const plan = airportPlan(item, prefs);
@@ -72,6 +74,14 @@ export function AirportPanel({ item, framed }: { item: Item; framed?: boolean })
       {warningTexts(plan, t).map((w) => (
         <Warning key={w} text={w} />
       ))}
+      {/* T127: straight to the lost-bag report for this trip's bags. */}
+      <Button
+        kind="quiet"
+        icon="briefcase-outline"
+        label={t('lostbag.entry.airport')}
+        hint={t('lostbag.entry.airportHint')}
+        onPress={() => router.push({ pathname: '/lostbag', params: { tripId: item.tripId, mode: 'report' } })}
+      />
     </View>
   );
   return framed ? <Card>{body}</Card> : body;

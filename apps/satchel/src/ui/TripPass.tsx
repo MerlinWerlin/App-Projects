@@ -20,6 +20,8 @@ import { TripCover } from './TripCover.tsx';
 import { DriveSidePill } from './driving.tsx';
 import type { LeaveDue } from '../core/leavehome.ts';
 import { LeaveHomePill } from './leavehome.tsx';
+import type { ComeDue } from '../core/comehome.ts';
+import { ComeHomePill } from './comehome.tsx';
 
 /** Short status for a trip: "In 12 days", "Tomorrow", "Starts today", "Day 3 of 9", "Finished". */
 export function countdownShort(t: T, c: Countdown): string {
@@ -66,8 +68,9 @@ const PHASE_TONE: Record<Countdown['kind'], Tone> = { upcoming: 'sea', today: 'a
  * T83: `cover` adds the trip's illustrated cover as a strip across the top.
  * T122: `driving` adds a "Drive on the LEFT / RIGHT" pill for trips with a car booking abroad.
  * T124: `leaving` adds a "Lock up today / tomorrow" pill while the leaving-home checklist isn't finished.
+ * T128: `coming` adds a "Heading home today / tomorrow" pill while the before-you-head-home list isn't finished.
  */
-export const TripPass = memo(function TripPass({ trip, today, cover, driving, leaving }: { trip: Trip; today: string; cover?: CoverId; driving?: readonly DrivingBanner[]; leaving?: LeaveDue | null }) {
+export const TripPass = memo(function TripPass({ trip, today, cover, driving, leaving, coming }: { trip: Trip; today: string; cover?: CoverId; driving?: readonly DrivingBanner[]; leaving?: LeaveDue | null; coming?: ComeDue | null }) {
   const { theme, t, lang } = useApp();
   const c = countdown(trip, today);
   const route = tripRoute(trip);
@@ -130,6 +133,7 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
         ) : null}
         {driving?.length && c.kind !== 'past' ? <DriveSidePill banners={driving} /> : null}
         {leaving && c.kind !== 'past' ? <LeaveHomePill due={leaving} /> : null}
+        {coming ? <ComeHomePill due={coming} /> : null}
         {c.kind === 'active' ? <ProgressBar progress={c.progress} tone="ok" label={t('design.pass.progressA11y', { day: c.day, total: c.total })} /> : null}
       </View>
       {/* Perforation with a notch cut out of each edge, like a torn-off stub. */}

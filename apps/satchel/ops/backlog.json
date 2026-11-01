@@ -1571,12 +1571,60 @@
     },
     {
       "id": "T126",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "follow-up"
       ],
       "title": "Run-101 follow-ups: official national toll sources for the 23 driving rows still flagged (MA EG DO JM IL VN LT CR SA QA PH JO PE CO KE KH TN EC FJ GT NP PA TZ) and Cambodia's IDP answer; Plan this trip again option to copy own leaving-home items (no ticks or dated tasks); bingo keeps marks per mode; native-speaker check of helpcards.json; device checks: lock-up pill, sitter note share text and keyboard, leave-by row, essentials driving line, bingo glyphs and 10pt tile labels on a small screen, help-card photo cleanup on swipe-down.",
+      "accept": "tests green; DECISIONS records sources",
+      "note": "Run 102: split. T126 (this task) = offline parts (Plan this trip again copies own leaving-home items without ticks or dated tasks; bingo keeps marks per mode). T129 = online toll sources + Cambodia IDP. helpcards native check + device checks stay as owner/lane items.",
+      "commit": "08ce22c"
+    },
+    {
+      "id": "T127",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Lost-bag kit (owner-1031 D, deepen Packing + When things go wrong): per bag a description card (type, colour, size, material, distinctive marks, tag/bag-tag number, photos of outside and contents, a contents list with rough values and currency), and a 'My bag didn't arrive' flow from the bag, the When things go wrong card and the airport day: a ready-to-show description with the flight booking details from the trip, total declared value, what to ask at the desk (file reference, delivery address = current stay from the trip, daily essentials allowance per the airline's own policy; generic, no legal claims), a reference-number field and a follow-up log with dates, and share as plain text. Pure TS core src/core/lostbag.ts (description text, value totals per currency in minor units, follow-up log normaliser, report text) with tests; bag photos and values phone-only (never in .satchel exports) with a guard test like the stay/rental guards.",
+      "accept": "lostbag tests; every string in src/i18n/en/lostbag.ts; tokens only; timed transitions, no springs; no new npm dependency; phone-only guard test",
+      "commit": "17c0107"
+    },
+    {
+      "id": "T128",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "owner-1031",
+        "D"
+      ],
+      "title": "Coming home (owner-1031 D, deepen Trips): a mirror of Leaving home for the last day: 'Before you head home' list due on the final departure's clock (check out by, hand back keys/cards, find passports and chargers, change leftover coins or keep for next time (links to Cash on hand), duty-free and customs allowance reminder for the home country set in Settings with an official source link for AU, NZ, GB, IE, US, CA and the EU general page, each with checked date and 'verify before you fly'), a 'Home again' list for the day after (unpack, laundry, back up photos, close out spending and settle up (links), write the recap, rate the trip), own items addable; a 'Heading home tomorrow' pill + Your day row; optional Trip.comingHome in .satchel with the every-field guard updated. Pure TS core src/core/comehome.ts with tests; content in src/content/comehome.json with source URL + checked date per allowance row and a content test.",
+      "accept": "comehome tests incl. due times across zones; every string in src/i18n/en/comehome.ts; allowance rows sourced (https + ISO date) and marked verify; tokens only; timed transitions, no springs; no new npm dependency",
+      "commit": "8fa3c93"
+    },
+    {
+      "id": "T129",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "follow-up",
+        "content"
+      ],
+      "title": "Run-101 online follow-ups: official national toll / road authority sources for the 23 driving rows still flagged (MA EG DO JM IL VN LT CR SA QA PH JO PE CO KE KH TN EC FJ GT NP PA TZ) and Cambodia's IDP answer; clear a flag only with an official government or toll-operator source, keep the rest flagged with a reason.",
+      "accept": "driving tests green; DECISIONS records each source; no row cleared without an official https source and ISO checked date",
+      "commit": "967d416"
+    },
+    {
+      "id": "T130",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "follow-up"
+      ],
+      "title": "Run-102 follow-ups: official toll sources for the 9 rows still flagged (EG PE PA GT SA QA JO FJ NP); Trips-tab 'heading home' hero card like the leave-tomorrow card; Plan this trip again can copy own coming-home rows; edit a lost-bag contents row in place; tripcopy 'never copied' text mentions dated sitter tasks; device checks: lost-bag photos and permission denial, report share text, coming-home pill and rating stars with VoiceOver, bingo per-mode marks after relaunch.",
       "accept": "tests green; DECISIONS records sources"
     }
   ],

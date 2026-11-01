@@ -6,6 +6,7 @@
 //   - Question deck: family-friendly "would you rather", "tell me about" and trip memory prompts, drawn without
 //     repeats until the deck runs out (then a fresh round). Memory answers can be saved to the trip journal.
 //   - Score keeper: You plus the trip's companions, a point up or down each.
+// T126: bingo keeps a card and its marks per mode (bingoCards), so switching mode and back restores that mode's card.
 // Game state lives on this phone only (GAMES_KEY), never in a trip or a trip file. Pure TypeScript; Node runs it.
 import type { Companion, ItemKind } from './model.ts';
 
@@ -273,8 +274,13 @@ export function memoryNote(prompt: string, answer: string): string {
 // ---------------------------------------------------------------- stored state (this phone only)
 
 export type BingoState = { mode: GameMode; seed: number; marks: number[] };
+/** One mode's saved card: its seed and marks. */
+export type BingoSaved = { seed: number; marks: number[] };
 export type GamesState = {
+  /** The card played last (the screen opens on its mode). Always the same as bingoCards[bingo.mode]. */
   bingo?: BingoState;
+  /** T126: each mode's card and marks, kept when the traveller switches mode. */
+  bingoCards?: Partial<Record<GameMode, BingoSaved>>;
   spy: Partial<Record<GameMode, string[]>>;
   seen: Partial<Record<DeckId, string[]>>;
   deckSeed: number;
@@ -283,15 +289,60 @@ export type GamesState = {
 
 export const emptyGames = (): GamesState => ({ spy: {}, seen: {}, deckSeed: 1, players: [] });
 
+function cleanSaved(x: unknown): BingoSaved | null {
+  if (!x || typeof x !== 'object') return null;
+  const c = x as Record<string, unknown>;
+  if (typeof c.seed !== 'number' || !Number.isFinite(c.seed)) return null;
+  return { seed: c.seed >>> 0, marks: cleanMarks(Array.isArray(c.marks) ? c.marks : []) };
+}
+
+/** T126: the saved card for a mode (null when that mode has none yet). */
+export function bingoFor(g: GamesState, mode: GameMode): BingoState | null {
+  const c = g.bingoCards?.[mode];
+  if (c) return { mode, seed: c.seed, marks: cleanMarks(c.marks) };
+  return g.bingo && g.bingo.mode === mode ? { ...g.bingo, marks: cleanMarks(g.bingo.marks) } : null;
+}
+
+/** T126: saves a mode's card (seed and marks) and makes it the current one; other modes' cards are untouched. */
+export function putBingo(g: GamesState, b: BingoState): GamesState {
+  const c: BingoSaved = { seed: b.seed >>> 0, marks: cleanMarks(b.marks) };
+  return { ...g, bingo: { mode: b.mode, ...c }, bingoCards: { ...(g.bingoCards ?? {}), [b.mode]: c } };
+}
+
+/** T126: switches to a mode: its saved card comes back with its marks, else a fresh card is dealt with `seed`. */
+export function showBingo(g: GamesState, mode: GameMode, seed: number): GamesState {
+  return putBingo(g, bingoFor(g, mode) ?? { mode, seed, marks: [] });
+}
+
+/** T126: marks for a mode's card (unchanged when that mode has no card). */
+export function setBingoMarks(g: GamesState, mode: GameMode, marks: readonly number[]): GamesState {
+  const b = bingoFor(g, mode);
+  return b ? putBingo(g, { ...b, marks: [...marks] }) : g;
+}
+
 /** The stored value, cleaned on every read: unknown fields dropped, bad values reset. */
 export function cleanGames(raw: unknown): GamesState {
   const out = emptyGames();
   if (!raw || typeof raw !== 'object') return out;
   const r = raw as Record<string, unknown>;
   const b = r.bingo as Record<string, unknown> | undefined;
-  if (b && isGameMode(b.mode) && typeof b.seed === 'number' && Number.isFinite(b.seed)) {
-    out.bingo = { mode: b.mode, seed: b.seed >>> 0, marks: cleanMarks(Array.isArray(b.marks) ? b.marks : []) };
+  const cards: Partial<Record<GameMode, BingoSaved>> = {};
+  const saved = r.bingoCards as Record<string, unknown> | undefined;
+  if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
+    for (const m of GAME_MODES) {
+      const c = cleanSaved(saved[m]);
+      if (c) cards[m] = c;
+    }
   }
+  if (b && isGameMode(b.mode)) {
+    const c = cleanSaved(b);
+    if (c) {
+      out.bingo = { mode: b.mode, ...c };
+      // The last card played is the newest copy of its mode's card (and fills it in for state saved before T126).
+      cards[b.mode] = c;
+    }
+  }
+  if (Object.keys(cards).length) out.bingoCards = cards;
   const spy = r.spy as Record<string, unknown> | undefined;
   if (spy && typeof spy === 'object') {
     for (const m of GAME_MODES) {
