@@ -34,6 +34,7 @@ struct LiveArtSpec {
   let rect: CGRect
   let circle: Bool
   let cover: Bool
+  let cleanFace: Bool
   let plate: String
   let ink: String
   /// Countdown target (start of that day, current calendar).
@@ -49,6 +50,7 @@ struct LiveArtSpec {
     else { return nil }
     let v = list.map { $0.doubleValue }
     guard v.allSatisfy({ $0.isFinite && $0 >= 0 && $0 <= 1 }), v[2] > 0, v[3] > 0 else { return nil }
+    guard v[0] + v[2] <= 1.0001, v[1] + v[3] <= 1.0001 else { return nil }
     var target: Date? = nil
     if kind == .countdown {
       guard let day = r["target"] as? String, let d = LiveArtSpec.day(day) else { return nil }
@@ -61,6 +63,7 @@ struct LiveArtSpec {
       rect: CGRect(x: v[0], y: v[1], width: v[2], height: v[3]),
       circle: (r["shape"] as? String) == "circle",
       cover: (r["cover"] as? Bool) == true,
+      cleanFace: (r["cleanFace"] as? Bool) == true && (r["cover"] as? Bool) != true,
       plate: plate,
       ink: ink,
       target: target
@@ -166,11 +169,15 @@ struct LiveArtLayer: View {
   let imageSize: CGSize
   let theme: WidgetTheme
   let date: Date
+  /// Fit uses the composed image, inset by the same fraction as its background view.
+  var insetFraction: CGFloat = 0
 
   var body: some View {
     if let spec = LiveArtStore.spec(pieceID: pieceID, family: family) {
       GeometryReader { geo in
-        let frame = LiveArtLayer.fitted(imageSize, in: geo.size)
+        let inset = min(geo.size.width, geo.size.height) * insetFraction
+        let box = CGSize(width: max(0, geo.size.width - 2 * inset), height: max(0, geo.size.height - 2 * inset))
+        let frame = LiveArtLayer.fitted(imageSize, in: box).offsetBy(dx: inset, dy: inset)
         let r = CGRect(
           x: frame.minX + spec.rect.minX * frame.width,
           y: frame.minY + spec.rect.minY * frame.height,
@@ -209,7 +216,7 @@ struct LiveArtValueView: View {
     GeometryReader { geo in
       let s = min(geo.size.width, geo.size.height)
       ZStack {
-        plate
+        if !spec.cleanFace { plate }
         content(s: s)
           .foregroundStyle(ink)
           .shadow(color: Color.black.opacity(0.25), radius: 2, y: 1)
@@ -218,9 +225,9 @@ struct LiveArtValueView: View {
     }
   }
 
-  /// Nearly opaque over a painted value (it must vanish), lighter as a badge on number-free art.
+  /// Opaque over a painted value; translucent only on a verified number-free face.
   @ViewBuilder private var plate: some View {
-    let fill = Color(hex: spec.plate).opacity(spec.cover ? 0.94 : 0.72)
+    let fill = Color(hex: spec.plate).opacity(spec.cover ? 1 : 0.72)
     if spec.circle {
       Circle()
         .fill(fill)
@@ -239,13 +246,13 @@ struct LiveArtValueView: View {
     case .clock:
       ZStack {
         LiveClockHands(date: date, ink: ink)
-          .frame(width: s * 0.86, height: s * 0.86)
+          .frame(width: s * 0.70, height: s * 0.70)
         Text(date, style: .time)
           .font(theme.typeface(size: max(9, s * 0.1), weight: .semibold))
           .monospacedDigit()
           .lineLimit(1)
           .minimumScaleFactor(0.5)
-          .offset(y: s * 0.27)
+          .offset(y: s * 0.39)
       }
     case .date:
       VStack(spacing: s * 0.02) {

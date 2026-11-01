@@ -175,7 +175,7 @@ test('Swift guards: interactive focus, live timer, battery guard, no fake number
   assert.doesNotMatch(focus, /ActivityKit|Activity</);
   // Wired into the Seamless widget and its timeline.
   const seamless = strip(read('targets/widget/SeamlessWidget.swift'));
-  assert.match(seamless, /LiveArtLayer\(pieceID: pieceID, imageSize: image\.size, theme: t, date: date\)/);
+  assert.match(seamless, /LiveArtLayer\(pieceID: pieceID, imageSize: image\.size, theme: t, date: date, insetFraction: fit \? 0\.06 : 0\)/);
   assert.match(seamless, /SeamlessWidgetView\(theme: entry\.theme, pieceID: entry\.pieceID, (layout: entry\.layout, )?date: entry\.date/);
   assert.match(strip(read('targets/widget/WidgetArtLibrary.swift')), /LiveArtSchedule\.plan\(pieceID:/);
 });

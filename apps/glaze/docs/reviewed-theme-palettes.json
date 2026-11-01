@@ -1,0 +1,532 @@
+{
+  "schema": "GLAZE_NATIVE_RENDER_PALETTES_V1",
+  "date": "2026-11-01",
+  "scope": "Reviewed105-theme palette snapshot; native rendering harness, not original artwork or device validation",
+  "themes": [
+    {
+      "id": "001-alpine-starlight",
+      "bg": "#0f1217",
+      "ink": "#d8d9d5"
+    },
+    {
+      "id": "002-obsidian-tide",
+      "bg": "#2a2e31",
+      "ink": "#e7e6df"
+    },
+    {
+      "id": "003-fern-and-brass",
+      "bg": "#030e0c",
+      "ink": "#d9bd74"
+    },
+    {
+      "id": "004-desert-afterglow",
+      "bg": "#5c3734",
+      "ink": "#f0dbc2"
+    },
+    {
+      "id": "005-rainlight",
+      "bg": "#05050a",
+      "ink": "#c8b9ff"
+    },
+    {
+      "id": "006-porcelain-tide",
+      "bg": "#f6f4ef",
+      "ink": "#234e78"
+    },
+    {
+      "id": "007-velvet-observatory",
+      "bg": "#230002",
+      "ink": "#dcc18a"
+    },
+    {
+      "id": "008-firefly-grove",
+      "bg": "#0e1817",
+      "ink": "#e1be68"
+    },
+    {
+      "id": "009-cloud-atelier",
+      "bg": "#fdbfb1",
+      "ink": "#62475f"
+    },
+    {
+      "id": "010-midnight-conservatory",
+      "bg": "#11262d",
+      "ink": "#bdd8d3"
+    },
+    {
+      "id": "011-amber-archive",
+      "bg": "#dcba91",
+      "ink": "#65472d"
+    },
+    {
+      "id": "012-opal-abyss",
+      "bg": "#000b22",
+      "ink": "#c6d9f2"
+    },
+    {
+      "id": "013-crimson-reverie",
+      "bg": "#0c0c0d",
+      "ink": "#e1d8c5"
+    },
+    {
+      "id": "014-frostglass-passage",
+      "bg": "#d9e1ec",
+      "ink": "#4d6377"
+    },
+    {
+      "id": "015-verdigris-voyage",
+      "bg": "#c6d1bd",
+      "ink": "#45594e"
+    },
+    {
+      "id": "016-neon-monsoon",
+      "bg": "#0b0913",
+      "ink": "#c5b7fa"
+    },
+    {
+      "id": "017-rosewater-reverie",
+      "bg": "#e0c3c1",
+      "ink": "#6b4c49"
+    },
+    {
+      "id": "018-ember-workshop",
+      "bg": "#161311",
+      "ink": "#e7bf8b"
+    },
+    {
+      "id": "019-prism-orchard",
+      "bg": "#ccc6d7",
+      "ink": "#5d4c66"
+    },
+    {
+      "id": "020-saffron-courtyard",
+      "bg": "#f6e0c7",
+      "ink": "#805039"
+    },
+    {
+      "id": "021-indigo-current",
+      "bg": "#0d1f3e",
+      "ink": "#d9d4c7"
+    },
+    {
+      "id": "022-midnight-matinee",
+      "bg": "#050000",
+      "ink": "#dfc598"
+    },
+    {
+      "id": "023-apricot-fm",
+      "bg": "#f5dbb8",
+      "ink": "#825238"
+    },
+    {
+      "id": "024-jade-meridian",
+      "bg": "#182a1c",
+      "ink": "#dddcc2"
+    },
+    {
+      "id": "025-lavender-nocturne",
+      "bg": "#281521",
+      "ink": "#dfc9a4"
+    },
+    {
+      "id": "026-carbon-velocity",
+      "bg": "#141718",
+      "ink": "#d2d5d0"
+    },
+    {
+      "id": "027-lemon-lagoon",
+      "bg": "#f6e8b5",
+      "ink": "#204b9a"
+    },
+    {
+      "id": "028-cobalt-caravan",
+      "bg": "#01154f",
+      "ink": "#e4c991"
+    },
+    {
+      "id": "029-cherry-arcade",
+      "bg": "#f5ddd6",
+      "ink": "#a52e35"
+    },
+    {
+      "id": "030-silver-orchard",
+      "bg": "#2d2926",
+      "ink": "#d4cdba"
+    },
+    {
+      "id": "031-honeywood",
+      "bg": "#f5daac",
+      "ink": "#79552f"
+    },
+    {
+      "id": "032-disco-drift",
+      "bg": "#d8d9f6",
+      "ink": "#60425f"
+    },
+    {
+      "id": "033-fossil-cove",
+      "bg": "#cdd6cd",
+      "ink": "#375e56"
+    },
+    {
+      "id": "034-match-point",
+      "bg": "#b2360b",
+      "ink": "#fff0cb"
+    },
+    {
+      "id": "035-blueprint-bureau",
+      "bg": "#0f4e6c",
+      "ink": "#d5e4d6"
+    },
+    {
+      "id": "036-espresso-hour",
+      "bg": "#321e14",
+      "ink": "#dbbc91"
+    },
+    {
+      "id": "037-signal-yellow",
+      "bg": "#c0b8af",
+      "ink": "#343c3a"
+    },
+    {
+      "id": "039-gambit-house",
+      "bg": "#ebddcb",
+      "ink": "#5e4232"
+    },
+    {
+      "id": "040-airmail-daydream",
+      "bg": "#c5dde9",
+      "ink": "#345a72"
+    },
+    {
+      "id": "041-olive-outpost",
+      "bg": "#30331e",
+      "ink": "#e0c88d"
+    },
+    {
+      "id": "042-chromatic-lab",
+      "bg": "#c6ccd6",
+      "ink": "#2f4977"
+    },
+    {
+      "id": "043-pistachio-parlour",
+      "bg": "#dfe2c8",
+      "ink": "#665d36"
+    },
+    {
+      "id": "044-nebula-veil",
+      "bg": "#090a19",
+      "ink": "#cdc8e9"
+    },
+    {
+      "id": "045-aurora-haven",
+      "bg": "#04222d",
+      "ink": "#b7e6db"
+    },
+    {
+      "id": "046-tempest-noir",
+      "bg": "#131522",
+      "ink": "#d8c0a0"
+    },
+    {
+      "id": "047-event-horizon",
+      "bg": "#000000",
+      "ink": "#e8c191"
+    },
+    {
+      "id": "048-sonata-house",
+      "bg": "#e3d7c4",
+      "ink": "#71533e"
+    },
+    {
+      "id": "049-lumen-mosaic",
+      "bg": "#e7c6ae",
+      "ink": "#305c4f"
+    },
+    {
+      "id": "050-stellar-cradle",
+      "bg": "#010816",
+      "ink": "#c0d5e5"
+    },
+    {
+      "id": "051-saddlewood",
+      "bg": "#d7dccb",
+      "ink": "#70553b"
+    },
+    {
+      "id": "052-jellylight",
+      "bg": "#00213b",
+      "ink": "#bcdff0"
+    },
+    {
+      "id": "053-emerald-curio",
+      "bg": "#221522",
+      "ink": "#d8c29a"
+    },
+    {
+      "id": "054-spare-time",
+      "bg": "#cfe4eb",
+      "ink": "#345a70"
+    },
+    {
+      "id": "055-summit-line",
+      "bg": "#162829",
+      "ink": "#cdd7c9"
+    },
+    {
+      "id": "056-plume-court",
+      "bg": "#e0cdb4",
+      "ink": "#3c5e61"
+    },
+    {
+      "id": "057-regatta-blue",
+      "bg": "#213b59",
+      "ink": "#e2cf9d"
+    },
+    {
+      "id": "058-saguaro-siesta",
+      "bg": "#efd8ba",
+      "ink": "#8a4a32"
+    },
+    {
+      "id": "059-paper-carnival",
+      "bg": "#f3e4d0",
+      "ink": "#4b5b68"
+    },
+    {
+      "id": "061-mochi-sleepover",
+      "bg": "#eae0fd",
+      "ink": "#705895"
+    },
+    {
+      "id": "062-froggy-picnic",
+      "bg": "#e0f0e4",
+      "ink": "#456b46"
+    },
+    {
+      "id": "063-boba-bear-club",
+      "bg": "#fae7d4",
+      "ink": "#925735"
+    },
+    {
+      "id": "064-moonpatch",
+      "bg": "#111322",
+      "ink": "#ddc499"
+    },
+    {
+      "id": "065-matcha-mews",
+      "bg": "#f8f1df",
+      "ink": "#5b673b"
+    },
+    {
+      "id": "066-matcha-riso-garden",
+      "bg": "#f6efdc",
+      "ink": "#596539"
+    },
+    {
+      "id": "067-mosswick",
+      "bg": "#bbb7a0",
+      "ink": "#54452b"
+    },
+    {
+      "id": "068-cloudwash",
+      "bg": "#f1e7d8",
+      "ink": "#325d8b"
+    },
+    {
+      "id": "069-yuzu-soak",
+      "bg": "#feefcb",
+      "ink": "#80532c"
+    },
+    {
+      "id": "070-dewdrop-den",
+      "bg": "#bcaacb",
+      "ink": "#4a3c5a"
+    },
+    {
+      "id": "071-peach-puddle",
+      "bg": "#fbe2d7",
+      "ink": "#9c523c"
+    },
+    {
+      "id": "072-wickling-hollow",
+      "bg": "#032535",
+      "ink": "#e2c58f"
+    },
+    {
+      "id": "073-berry-stitch",
+      "bg": "#dbe8d9",
+      "ink": "#78513a"
+    },
+    {
+      "id": "074-bellbat-bloom",
+      "bg": "#c2ae9f",
+      "ink": "#5a3848"
+    },
+    {
+      "id": "075-pocket-pup",
+      "bg": "#daeafc",
+      "ink": "#7d5639"
+    },
+    {
+      "id": "076-curlfin-cove",
+      "bg": "#c5dbce",
+      "ink": "#31665e"
+    },
+    {
+      "id": "077-crumbkin",
+      "bg": "#f1e0cd",
+      "ink": "#89512f"
+    },
+    {
+      "id": "078-pebblekin-grove",
+      "bg": "#a7a691",
+      "ink": "#343b32"
+    },
+    {
+      "id": "079-moonmallow",
+      "bg": "#2c2a40",
+      "ink": "#e0c9ad"
+    },
+    {
+      "id": "080-meadowglow",
+      "bg": "#faecdd",
+      "ink": "#5d6537"
+    },
+    {
+      "id": "081-clover-nap",
+      "bg": "#f7f0e3",
+      "ink": "#5b693b"
+    },
+    {
+      "id": "082-rainleaf",
+      "bg": "#0b160e",
+      "ink": "#c6d5ad"
+    },
+    {
+      "id": "083-cherry-ribbon",
+      "bg": "#eee6d9",
+      "ink": "#973b43"
+    },
+    {
+      "id": "084-birchlight",
+      "bg": "#d6d5d5",
+      "ink": "#60553c"
+    },
+    {
+      "id": "085-wisteria-hush",
+      "bg": "#e4dbf4",
+      "ink": "#684e86"
+    },
+    {
+      "id": "086-ochre-bend",
+      "bg": "#fbe6d3",
+      "ink": "#875334"
+    },
+    {
+      "id": "087-lotus-drift",
+      "bg": "#354e64",
+      "ink": "#f2c7ca"
+    },
+    {
+      "id": "088-glacier-quiet",
+      "bg": "#c6d4e5",
+      "ink": "#405d77"
+    },
+    {
+      "id": "089-sea-glass-sunday",
+      "bg": "#efe5d9",
+      "ink": "#35665f"
+    },
+    {
+      "id": "091-bluewing",
+      "bg": "#162130",
+      "ink": "#bad6f1"
+    },
+    {
+      "id": "092-saltveil",
+      "bg": "#daa2a3",
+      "ink": "#60363f"
+    },
+    {
+      "id": "093-peachskin",
+      "bg": "#f8e1d0",
+      "ink": "#974b2f"
+    },
+    {
+      "id": "095-juniper-mist",
+      "bg": "#d8e1db",
+      "ink": "#36584f"
+    },
+    {
+      "id": "097-ginkgo-hour",
+      "bg": "#f5ece0",
+      "ink": "#5e6338"
+    },
+    {
+      "id": "098-ember-rift",
+      "bg": "#181e26",
+      "ink": "#d2d4cf"
+    },
+    {
+      "id": "099-kingfisher-blue",
+      "bg": "#d1e7f5",
+      "ink": "#214e73"
+    },
+    {
+      "id": "100-dunesilk",
+      "bg": "#f0dec9",
+      "ink": "#785736"
+    },
+    {
+      "id": "101-sundew-ember",
+      "bg": "#1a121a",
+      "ink": "#efad97"
+    },
+    {
+      "id": "102-magnolia-veil",
+      "bg": "#e2dcda",
+      "ink": "#755465"
+    },
+    {
+      "id": "103-labradorite-hush",
+      "bg": "#262d34",
+      "ink": "#c3d9e5"
+    },
+    {
+      "id": "104-cicada-linen",
+      "bg": "#dbdccd",
+      "ink": "#4c583d"
+    },
+    {
+      "id": "105-heirloom-rouge",
+      "bg": "#ede2d5",
+      "ink": "#a43b2d"
+    },
+    {
+      "id": "106-manta-silk",
+      "bg": "#c9e8e7",
+      "ink": "#225a6a"
+    },
+    {
+      "id": "107-protea-blush",
+      "bg": "#ede0e0",
+      "ink": "#773849"
+    },
+    {
+      "id": "108-heron-reed",
+      "bg": "#e8e7df",
+      "ink": "#56644e"
+    },
+    {
+      "id": "109-fig-nocturne",
+      "bg": "#1d1720",
+      "ink": "#e3b5bf"
+    },
+    {
+      "id": "110-bamboo-ink",
+      "bg": "#eae2d2",
+      "ink": "#343b32"
+    }
+  ]
+}

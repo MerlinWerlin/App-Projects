@@ -423,7 +423,7 @@ test('docs/THEME_PACKS.md: the v2 example manifest parses and validates strictly
   const doc = read('docs', 'THEME_PACKS.md');
   const at = doc.indexOf('### Example v2 manifest');
   assert.ok(at > 0);
-  const block = /```json\n([\s\S]*?)\n```/.exec(doc.slice(at));
+  const block = /```json\r?\n([\s\S]*?)\r?\n```/.exec(doc.slice(at));
   assert.ok(block);
   const raw = JSON.parse(block[1].replaceAll('<64 hex>', 'a'.repeat(64)));
   const r = parseRemoteArtManifest(raw, 'cloud-atelier');

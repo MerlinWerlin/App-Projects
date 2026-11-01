@@ -1,0 +1,61 @@
+name: Glaze reviewed clock rendering
+on:
+  push:
+    branches: ['codex/glaze-theme-release-20261101']
+    paths: ['apps/glaze/scripts/theme-review-harness.swift', 'apps/glaze/docs/reviewed-theme-palettes.json', 'apps/glaze/targets/widget/**', '.github/workflows/glaze-reviewed-clock-capture.yml']
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: macos-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile the native view in an isolated simulator host
+        working-directory: apps/glaze
+        run: |
+          set -euo pipefail
+          APP="$RUNNER_TEMP/GlazeReview.app"
+          mkdir -p "$APP"
+          SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
+          ARCH=$(uname -m)
+          SOURCES=()
+          for FILE in targets/widget/*.swift; do
+            if [[ "$FILE" != "targets/widget/GlazeWidgetsBundle.swift" ]]; then SOURCES+=("$FILE"); fi
+          done
+          xcrun swiftc -parse-as-library -sdk "$SDK" -target "$ARCH-apple-ios17.0-simulator" "${SOURCES[@]}" scripts/theme-review-harness.swift -o "$APP/GlazeReview" > "$RUNNER_TEMP/glaze-native-compile.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-native-compile.log"; exit 1; }
+          cp docs/reviewed-theme-palettes.json "$APP/"
+          python3 - <<'PY'
+          import os,plistlib,pathlib
+          app=pathlib.Path(os.environ['RUNNER_TEMP'])/'GlazeReview.app'
+          info={'CFBundleIdentifier':'com.glaze.review-harness','CFBundleExecutable':'GlazeReview','CFBundleName':'GlazeReview','CFBundlePackageType':'APPL','CFBundleVersion':'1','CFBundleShortVersionString':'1.0','MinimumOSVersion':'17.0','UIDeviceFamily':[1],'LSRequiresIPhoneOS':True,'UILaunchScreen':{},'UIApplicationSceneManifest':{'UIApplicationSupportsMultipleScenes':False},'ReviewSourceSHA':os.environ['GITHUB_SHA']}
+          (app/'Info.plist').write_bytes(plistlib.dumps(info))
+          PY
+          codesign --force --sign - "$APP"
+      - name: Render every palette and clock state in iOS Simulator
+        run: |
+          set -euo pipefail
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["udid"] for xs in d["devices"].values() for x in xs if "iPhone" in x["name"]))')
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl install "$DEVICE" "$RUNNER_TEMP/GlazeReview.app"
+          xcrun simctl launch "$DEVICE" com.glaze.review-harness
+          DATA=$(xcrun simctl get_app_container "$DEVICE" com.glaze.review-harness data)
+          SOURCE="$DATA/Library/Caches/GlazeNativeReview"
+          for TRY in $(seq 1 60); do
+            if [[ -f "$SOURCE/_SUCCESS.json" || -f "$SOURCE/_ERROR.txt" ]]; then break; fi
+            sleep 2
+          done
+          mkdir -p "$RUNNER_TEMP/glaze-native-review"
+          if [[ -d "$SOURCE" ]]; then cp -R "$SOURCE/." "$RUNNER_TEMP/glaze-native-review/"; fi
+          if [[ -f "$SOURCE/_ERROR.txt" ]]; then cat "$SOURCE/_ERROR.txt"; exit 1; fi
+          test -f "$SOURCE/_SUCCESS.json"
+          python3 -c 'import json,os,pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"])/"glaze-native-review/_SUCCESS.json"; r=json.loads(p.read_text()); assert r["themes"]==105 and r["renders"]==1260; print("Verified",r["renders"],"native clock renders; physical device and installed widget tests remain unverified")'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: glaze-native-clock-review
+          path: |
+            ${{ runner.temp }}/glaze-native-review
+            ${{ runner.temp }}/glaze-native-compile.log
+          retention-days: 14
