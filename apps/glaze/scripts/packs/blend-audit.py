@@ -37,6 +37,8 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
+_OV = os.path.join(ROOT, 'scripts', 'packs', 'blend-overrides.json')
+OVERRIDES = {k: v for k, v in (json.load(open(_OV)) if os.path.exists(_OV) else {}).items() if not k.startswith('_')}
 RELEASES = {
     'production': 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1',
     'staging': 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-staging',
@@ -213,8 +215,12 @@ def distance_to(mask, limit):
         return d
 
 
-def apply_blend(rgba, d):
-    """artBlend.ts applyArtBlend: straight uint8 RGBA in, straight uint8 RGBA out."""
+def apply_blend(rgba, d, fill_interior=False):
+    """artBlend.ts applyArtBlend: straight uint8 RGBA in, straight uint8 RGBA out.
+
+    fill_interior (T272, re-ship only, not mirrored on the phone): keyed art keeps EVERYTHING inside the
+    subject opaque, so a key colour that also appears in the subject (a cream bird on a cream backdrop)
+    never punches holes; enclosed key-colour gaps (a clock dial) stay filled with the backdrop colour."""
     if d['mode'] == 'transparent':
         return rgba.copy()
     h, w = rgba.shape[:2]
@@ -227,6 +233,8 @@ def apply_blend(rgba, d):
         rim = BLEND_KEY_RIM_SHARE * min(w, h)
         to_bg = distance_to(key_background(t), rim)
         k = np.maximum(t, smoothstep(rim * 0.5, rim, to_bg) * smoothstep(BLEND_KEY_HOLD_LO, BLEND_KEY_HOLD_HI, t))
+        if fill_interior:
+            k = np.maximum(k, smoothstep(rim * 0.5, rim, to_bg))
         safe = np.where(k > 1 / 255, k, 1.0)
         fg = np.clip(key + (rgb - key) / safe[..., None], 0, 255)
         rgb = np.where((k > 1 / 255)[..., None], np.round(fg), 0)
@@ -417,7 +425,7 @@ def round_mask(w, h, radius):
     return m
 
 
-def audit_piece(theme, piece, wall_img, crops, fix_dir):
+def audit_piece(theme, piece, wall_img, crops, fix_dir, keep_holes=False):
     rgba = load_rgba(piece['file'])
     stats = measure(rgba)
     flags = []
@@ -430,6 +438,11 @@ def audit_piece(theme, piece, wall_img, crops, fix_dir):
         wall_mean = tuple(float(v) for v in sub.reshape(-1, 3).mean(0))
     d = decide(stats, wall_mean)
     blended = apply_blend(rgba, d)
+    ship_d = d
+    ov = OVERRIDES.get(f"{theme['id']}/{piece['id']}") or OVERRIDES.get(theme['id'])
+    if fix_dir and ov == 'feather' and d['mode'] == 'key':
+        ship_d = {'mode': 'feather', 'band': BLEND_FEATHER_SHARE, 'edge': d['key'], 'boxDistance': d.get('boxDistance')}
+    shipped = apply_blend(rgba, ship_d, fill_interior=not keep_holes) if fix_dir else blended
 
     fc = frame_check(rgba, stats['ring'])
     if fc and fc[0] > FRAME_DISTANCE and fc[1] < FRAME_MAX_SPREAD:
@@ -486,7 +499,7 @@ def audit_piece(theme, piece, wall_img, crops, fix_dir):
         stem = stem.split('.')[0]  # drop the content hash: the pack build adds a new one
         dest = os.path.join(fix_dir, theme['id'], f'{stem}.png')
         os.makedirs(os.path.dirname(dest), exist_ok=True)
-        Image.fromarray(blended, 'RGBA').save(dest, optimize=True)
+        Image.fromarray(shipped, 'RGBA').save(dest, optimize=True)
         fixed = dest
 
     # Remove duplicate flag codes per size: keep them (they name the size), but dedupe exact repeats.
@@ -590,6 +603,7 @@ def main():
     ap.add_argument('--report', default='', help='write the markdown report here')
     ap.add_argument('--json', default='', help='write the findings JSON here')
     ap.add_argument('--no-sheets', action='store_true')
+    ap.add_argument('--keep-holes', action='store_true', help='--fix: key enclosed key-colour areas out too (the phone maths); default fills them (T272)')
     args = ap.parse_args()
     if os.path.abspath(args.out).startswith(ROOT + os.sep) and not args.no_sheets:
         print('refusing to write contact sheets inside the repo (bundle size guard); use --out outside it', file=sys.stderr)
@@ -604,7 +618,7 @@ def main():
         crops = crops_for(*wall_img.size) if wall_img is not None else {}
         rows, pieces = [], []
         for p in t['pieces']:
-            res, renders = audit_piece(t, p, wall_img, crops, args.fix)
+            res, renders = audit_piece(t, p, wall_img, crops, args.fix, args.keep_holes)
             pieces.append(res)
             rows.append((res, renders))
         sheet = None if args.no_sheets else sheet_for(t, rows, args.out)

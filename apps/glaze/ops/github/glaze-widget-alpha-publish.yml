@@ -1,0 +1,128 @@
+# Glaze remote widget art -> straight alpha (T256 / D229-1), uploaded to the glaze-packs-v1 release.
+# INSTALL: copy this file to .github/workflows/glaze-widget-alpha-publish.yml in MerlinWerlin/App-Projects (the Glaze
+# build task can't write App-Projects), then run it from the Actions tab (workflow_dispatch, defaults are fine).
+# Free: only the built-in GITHUB_TOKEN, no accounts, no secrets.
+# What it does:
+#   1. downloads the live catalogue + every pack's manifest and files (scripts/packs/blend-audit.py --download)
+#      and writes a blended PNG (straight alpha, no box/frame) for every opaque widget piece;
+#   2. builds a NEW version of each pack that has such pieces (scripts/packs/rebuild_widget_alpha.mjs): same files,
+#      the widget images swapped for WebP-with-alpha, every widget option background "wallpaper";
+#      nothing already on the release is overwritten (new version folders, content-hashed names);
+#   3. in batches of `batch` packs: flattens names, uploads pack files, then manifests, then catalog.json LAST
+#      (a phone never sees a catalogue entry whose files are missing), checks catalog.json downloads, then deletes
+#      the superseded version folders of that batch (the release limit is 1000 assets; ~845 are live today).
+# Keyed art keeps its interior opaque (T272); scripts/packs/blend-overrides.json forces feather where keying still
+# eats into the subject (yuzu-soak). A phone in the middle of downloading an old version when it is deleted just
+# retries on the next catalogue check.
+# dry_run=true (default false) stops after step 2 and only keeps the build as a workflow artifact.
+# Afterwards: download the "glaze-widget-alpha" artifact and commit its versions.json over
+# apps/glaze/scripts/packs/versions.json, and its fix/<theme>/*.png over the opaque widget images in the PC theme
+# sources, so a later full pack build does not bring the opaque art back.
+name: glaze-widget-alpha-publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (PACK release the app reads, src/config/packs.ts)'
+        required: true
+        default: 'glaze-packs-v1'
+        type: string
+      batch:
+        description: 'Packs per batch (each adds ~10 assets before the old version is deleted)'
+        required: true
+        default: '8'
+        type: string
+      dry_run:
+        description: 'Build only, upload nothing to the release'
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      R: ${{ github.repository }}
+      TAG: ${{ inputs.tag }}
+      W: /tmp/glaze-alpha
+      BATCH: ${{ inputs.batch }}
+    defaults:
+      run:
+        working-directory: apps/glaze
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pillow + numpy
+        run: pip install pillow numpy
+      - name: 1. Download packs + blend opaque widget pieces
+        run: |
+          [ "$TAG" = "glaze-packs-v1" ] && ENV=production || ENV=staging
+          echo "ENV=$ENV" >> "$GITHUB_ENV"
+          python3 scripts/packs/blend-audit.py --download --env "$ENV" --cache "$W/cache" --fix "$W/fix" --no-sheets --report "$W/BLEND_AUDIT.md" | tee "$W-audit.txt"
+          n=$(find "$W/fix" -name '*.png' | wc -l)
+          echo "blended pieces: $n" | tee -a "$GITHUB_STEP_SUMMARY"
+          [ "$n" -gt 0 ] || { echo "nothing to fix (every piece already has alpha)"; exit 1; }
+      - name: 2. Dry run (build every pack, upload nothing)
+        if: ${{ inputs.dry_run }}
+        run: |
+          cp scripts/packs/versions.json "$W/versions.json"
+          node scripts/packs/rebuild_widget_alpha.mjs --cache "$W/cache/$ENV" --fix "$W/fix" --out "$W/out" --versions "$W/versions.json" \
+            --download "https://github.com/$R/releases/download/$TAG" | tail -3 | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: 3. Publish in batches (GitHub allows 1000 assets per release)
+        if: ${{ !inputs.dry_run }}
+        run: |
+          # Each batch: new versions of BATCH packs -> upload files, manifests, catalog.json LAST -> verify the
+          # live catalogue -> delete the superseded version folders of those packs (nothing points at them now).
+          cp scripts/packs/versions.json "$W/versions.json"
+          cp "$W/cache/$ENV/catalog.json" "$W/catalog.json"
+          ls "$W/fix" | split -l "$BATCH" - "$W/batch-"
+          up() {
+            for try in 1 2 3 4 5 6; do
+              if gh release upload "$TAG" -R "$R" --clobber "$1"; then sleep 1; return 0; fi
+              echo "retry $try for $1"; sleep $((try * 30))
+            done
+            return 1
+          }
+          for b in "$W"/batch-*; do
+            only=$(paste -sd, "$b")
+            echo "batch: $only" | tee -a "$GITHUB_STEP_SUMMARY"
+            node scripts/packs/rebuild_widget_alpha.mjs --cache "$W/cache/$ENV" --catalog "$W/catalog.json" --only "$only" \
+              --fix "$W/fix" --out "$W/out" --versions "$W/versions.json" --download "https://github.com/$R/releases/download/$TAG"
+            gh release view "$TAG" -R "$R" --json assets > "$W/existing.json"
+            node scripts/packs/release_assets.mjs --dir "$W/out" --out "$W/release" --existing "$W/existing.json"
+            ( cd "$W/release/assets"
+              for list in upload-1-files.txt upload-2-manifests.txt upload-3-catalog.txt; do
+                [ -s "../$list" ] || continue
+                while IFS= read -r f; do [ -n "$f" ] && up "$f"; done < "../$list"
+              done )
+            want=$(sha256sum "$W/out/catalog.json" | cut -d' ' -f1)
+            got=$(curl -fsSL "https://github.com/$R/releases/download/$TAG/catalog.json" | sha256sum | cut -d' ' -f1)
+            echo "catalog sha256 want $want got $got" | tee -a "$GITHUB_STEP_SUMMARY"
+            [ "$want" = "$got" ]
+            cp "$W/out/catalog.json" "$W/catalog.json"
+            gh release view "$TAG" -R "$R" --json assets -q '.assets[].name' > "$W/names.txt"
+            while IFS= read -r folder; do
+              [ -n "$folder" ] || continue
+              prefix="$(echo "$folder" | sed 's#/#__#g')__"
+              grep -F "$prefix" "$W/names.txt" | grep "^$prefix" | while IFS= read -r n; do gh release delete-asset "$TAG" "$n" -R "$R" -y; done
+            done < "$W/out/superseded.txt"
+          done
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: glaze-widget-alpha
+          path: |
+            /tmp/glaze-alpha/fix
+            /tmp/glaze-alpha/versions.json
+            /tmp/glaze-alpha/catalog.json
+            /tmp/glaze-alpha/BLEND_AUDIT.md

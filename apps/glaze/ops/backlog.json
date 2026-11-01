@@ -3331,7 +3331,7 @@
     },
     {
       "id": "T256",
-      "status": "todo",
+      "status": "blocked",
       "deps": [],
       "tags": [
         "follow-up",
@@ -3339,7 +3339,8 @@
         "packs"
       ],
       "source": "run 221",
-      "title": "Pack release: re-ship all 54 remote widget art pieces with transparency (python3 scripts/packs/blend-audit.py --download --fix <dir>, set background 'wallpaper'); needs the owner's chat (pack publishing). Until then the native blend does it on the phone. See docs/widget_snapshots/BLEND_AUDIT_1101H.md"
+      "title": "Pack release: re-ship all 54 remote widget art pieces with transparency (python3 scripts/packs/blend-audit.py --download --fix <dir>, set background 'wallpaper'); needs the owner's chat (pack publishing). Until then the native blend does it on the phone. See docs/widget_snapshots/BLEND_AUDIT_1101H.md",
+      "note": "run 226 (D229-1): ready-to-install workflow ops/github/glaze-widget-alpha-publish.yml + scripts/packs/rebuild_widget_alpha.mjs (+test). Live audit 1 Nov: 95 packs, 369 pieces (key 104, feather 265, transparent 9) - all of them, not 54. New pack versions in batches with superseded versions pruned (release limit 1000; full copy would need ~1689). Remaining step: install + run the workflow (Workboard glaze-widget-art-alpha)."
     },
     {
       "id": "T257",
@@ -3522,6 +3523,32 @@
       ],
       "source": "run 225 T246",
       "title": "Native: draw live values in Fit in targets/widget/SeamlessWidget.swift (read spec art rect, fit raw art inset min(w,h)*0.06, place plate; flip FIT_LAYOUT_LIVE_IN_WIDGET with it; steps in docs/WIDGETS.md). Held by D225-3 until a native build result allows new Swift."
+    },
+    {
+      "id": "T272",
+      "status": "done",
+      "deps": [],
+      "tags": [
+        "follow-up",
+        "packs",
+        "D229-1"
+      ],
+      "source": "run 226",
+      "title": "Re-ship blend: keyed art with the backdrop colour inside the subject (yuzu-soak) got see-through holes. --fix now keeps the keyed subject's interior opaque (fill_interior) and scripts/packs/blend-overrides.json forces feather for yuzu-soak. Checked by eye on a contact sheet."
+    },
+    {
+      "id": "T273",
+      "status": "todo",
+      "deps": [
+        "T256"
+      ],
+      "tags": [
+        "follow-up",
+        "native",
+        "later"
+      ],
+      "source": "run 226",
+      "title": "Phone-side GlazeArtBlend (Swift) has the same interior-hole behaviour for still-opaque art (cream-on-cream keying). After T256 ships every remote piece with alpha (mode transparent on the phone) this only affects user art; then mirror fill_interior in artBlend.ts + Swift, one native change per build (D130-2/D225-3)."
     }
   ],
   "priority_order": {

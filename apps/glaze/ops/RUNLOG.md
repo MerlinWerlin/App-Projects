@@ -598,3 +598,9 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - T246 (worker, 31379eb): Fit-layout plate geometry (src/core/liveArtFit.ts) + art rect in the live spec; widget still draws live values in Fill only (SeamlessWidget.swift skips Fit), so the Widgets tab says so; native follow-up T271. Merge conflicts in tabs i18n + ThemeWidgetArt resolved (both kept).
 - T269 part (me, ac7b420): Themes tab subtitle drops "a loop" in 11 locales.
 - 1829/1829 core tests green; UI stub typecheck clean. Nothing device-tested. Full install + tsc + expo export needs PC verification.
+
+## 2026-11-01 22:30 AEDT, run 226 (scheduled)
+- Restored build page v1793528900-a951. App-Projects bab67b4 is the ship of run 224 (T258, already here): nothing to sync. Oversight v229: new D229-1 (T256 prep); no patches; no page comments. Registry not retried (core-only).
+- D229-1 (me): release downloads reachable, so ran blend-audit --download --fix on the live catalogue: 95 packs, 369 widget pieces (key 104, feather 265, transparent 9). Added scripts/packs/rebuild_widget_alpha.mjs (+3 tests): new pack version per pack, widget images as WebP with alpha, every option background 'wallpaper', catalogue last, superseded folders listed. Ready-to-install workflow ops/github/glaze-widget-alpha-publish.yml (batches + prune: a full copy would put ~1689 assets on a 1000-asset release; dry_run option). Locally all 95 packs rebuild and parse; nothing uploaded, no PNGs committed.
+- T272 (me): eye check found keying punching holes in yuzu-soak (cream subject on cream backdrop). --fix now keeps keyed interiors opaque; blend-overrides.json forces feather for yuzu-soak. Follow-up T273 (same fix phone-side, later, native).
+- No app code change (scripts + docs only). 1829/1829 core tests + 18 pack-script tests green. Nothing device-tested.
