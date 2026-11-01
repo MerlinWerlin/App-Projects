@@ -42,7 +42,7 @@ import {
 } from './artBlend.ts';
 
 const root = join(import.meta.dirname, '..', '..');
-const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
+const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8').replace(/\r\n/g, '\n');
 const strip = (s: string) => s.replace(/\/\/.*$/gm, '');
 
 /** A w×h straight-RGBA image: `bg` everywhere, `fg` in a centred disc of radius r (a moon). */
