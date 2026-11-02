@@ -97,7 +97,7 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, selected,
   const live = showsLiveBadge(option);
   const sizeName = tl(widgetTabSizeKey(size));
   const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
-  const wallStyle: StyleProp<ViewStyle> = wall ? { position: 'absolute', left: wall.x, top: wall.y, width: wall.w, height: wall.h } : null;
+  const wallStyle = wall ? { position: 'absolute' as const, left: wall.x, top: wall.y, width: wall.w, height: wall.h } : undefined;
   return (
     <Pressable
       onPress={() => onSelect(option.id)}

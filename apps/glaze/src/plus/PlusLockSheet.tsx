@@ -226,7 +226,7 @@ function PlusHero() {
         const h = i === mid ? HERO_MIDDLE : HERO_SIDE;
         return (
           <View key={i} style={[styles.heroTile, continuous, { height: h }, i === mid ? shadowV2('card', scheme) : null]}>
-            <ExpoImage source={src} contentFit="cover" cachePolicy="memory-disk" transition={0} style={[styles.heroImage, continuous]} />
+            <ExpoImage source={src} contentFit="cover" cachePolicy="memory-disk" transition={0} style={styles.heroImage} />
           </View>
         );
       })}

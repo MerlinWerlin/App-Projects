@@ -23,7 +23,7 @@ jobs:
           for FILE in targets/widget/*.swift; do
             if [[ "$FILE" != "targets/widget/GlazeWidgetsBundle.swift" ]]; then SOURCES+=("$FILE"); fi
           done
-          xcrun swiftc -parse-as-library -sdk "$SDK" -target "$ARCH-apple-ios17.0-simulator" "${SOURCES[@]}" modules/glaze-widget-bridge/ios/ClockArtRenderer.swift scripts/theme-review-harness.swift -o "$APP/GlazeReview" > "$RUNNER_TEMP/glaze-native-compile.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-native-compile.log"; exit 1; }
+          xcrun swiftc -parse-as-library -sdk "$SDK" -target "$ARCH-apple-ios17.0-simulator" "${SOURCES[@]}" modules/glaze-widget-bridge/ios/ClockArtRenderer.swift scripts/native-component-contract.swift scripts/native-component-review.swift scripts/theme-review-harness.swift -o "$APP/GlazeReview" > "$RUNNER_TEMP/glaze-native-compile.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-native-compile.log"; exit 1; }
           cp docs/themed-clock-profiles.json "$APP/"
           cp -R docs/themed-clock-fixtures "$APP/"
           python3 - <<'PY'

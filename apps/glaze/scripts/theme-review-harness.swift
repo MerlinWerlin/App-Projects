@@ -22,6 +22,10 @@ enum NativeReviewCapture {
     let folder = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("GlazeNativeReview")
     do {
       try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+      if Bundle.main.object(forInfoDictionaryKey:"ReviewComponents") as? Bool == true {
+        try NativeComponentCapture.run(folder:folder)
+        return
+      }
       guard let url = Bundle.main.url(forResource: "themed-clock-profiles", withExtension: "json"),
             let root = try JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any],
             let themes = root["themes"] as? [[String: Any]], themes.count == 105 else {

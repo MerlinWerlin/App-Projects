@@ -36,6 +36,7 @@ struct LiveArtSpec {
   let cover: Bool
   let cleanFace: Bool
   let clockStyle: String
+  let compact: Bool
   let plate: String
   let ink: String
   /// Countdown target (start of that day, current calendar).
@@ -66,6 +67,7 @@ struct LiveArtSpec {
       cover: (r["cover"] as? Bool) == true,
       cleanFace: (r["cleanFace"] as? Bool) == true && (r["cover"] as? Bool) != true,
       clockStyle: ["analog", "digital", "stacked"].contains(r["clockStyle"] as? String ?? "") ? (r["clockStyle"] as! String) : "legacy",
+      compact: (r["valueStyle"] as? String) == "compact" && [.date,.focus,.battery].contains(kind),
       plate: plate,
       ink: ink,
       target: target
@@ -158,7 +160,11 @@ enum LiveBattery {
   static func percent() -> Int? {
     UIDevice.current.isBatteryMonitoringEnabled = true
     let level = UIDevice.current.batteryLevel
-    guard level >= 0, level <= 1 else { return nil }
+    return percent(level: level)
+  }
+
+  static func percent(level: Float) -> Int? {
+    guard level.isFinite, level >= 0, level <= 1 else { return nil }
     return Int((Double(level) * 100).rounded())
   }
 }
@@ -253,13 +259,25 @@ struct LiveArtValueView: View {
     case .clock:
       clock(s: s)
     case .date:
-      dateContent(s: s)
+      if spec.compact {
+        Text(verbatim: date.formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated)))
+          .font(theme.typeface(size: max(10,s * 0.6),weight:.medium))
+          .lineLimit(1).minimumScaleFactor(0.4)
+      } else { dateContent(s: s) }
     case .countdown:
       countdownContent(s: s)
     case .battery:
-      batteryContent(s: s)
+      if spec.compact {
+        HStack(spacing:s * 0.12) {
+          Image(systemName:"battery.100")
+          if let pct=LiveBattery.percent() { Text(verbatim:"\(pct)%").monospacedDigit() }
+          else { Text(verbatim:"–").accessibilityLabel("Battery unavailable") }
+        }
+        .font(theme.typeface(size:max(10,s * 0.6),weight:.semibold))
+        .lineLimit(1).minimumScaleFactor(0.4)
+      } else { batteryContent(s: s) }
     case .focus:
-      LiveFocusButton(date: date, theme: theme, s: s)
+      LiveFocusButton(date: date, theme: theme, s: s, compact: spec.compact)
     }
   }
 
@@ -349,9 +367,30 @@ struct LiveFocusButton: View {
   let date: Date
   let theme: WidgetTheme
   let s: CGFloat
+  var compact: Bool = false
 
   var body: some View {
     Button(intent: ToggleFocusIntent()) {
+      if compact {
+        HStack(spacing:s * 0.15) {
+          switch FocusStore.phase(at:date) {
+          case .running(let end):
+            Image(systemName:"pause.circle.fill")
+            Text(timerInterval:min(date,end)...end,countsDown:true).monospacedDigit()
+          case .paused(let remaining):
+            Image(systemName:"play.circle.fill")
+            Text(verbatim:FocusStore.clock(remaining)).monospacedDigit()
+          case .idle:
+            Image(systemName:"play.circle.fill")
+            Text(verbatim:FocusStore.clock(FocusStore.length)).monospacedDigit()
+          }
+        }
+        .font(theme.typeface(size:max(10,s * 0.65),weight:.semibold))
+        .lineLimit(1).minimumScaleFactor(0.4)
+        .frame(maxWidth:.infinity,maxHeight:.infinity)
+        .contentShape(Rectangle())
+        .accessibilityLabel("Start or pause focus")
+      } else {
       VStack(spacing: s * 0.03) {
         switch FocusStore.phase(at: date) {
         case .running(let end):
@@ -380,6 +419,7 @@ struct LiveFocusButton: View {
       .padding(s * 0.08)
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .contentShape(Rectangle())
+      }
     }
     .buttonStyle(.plain)
   }

@@ -95,6 +95,7 @@ export function validTargetDay(day: unknown): string | null {
 }
 
 export type LiveArtPlan = {
+  valueStyle?: 'compact';
   clockStyle?: 'analog' | 'digital' | 'stacked';
   ink?: string;
   kind: LiveArtKind;
@@ -132,6 +133,7 @@ export function liveArtPlan(
         plan = { kind, rect: { x, y, w, h }, shape: f.shape, cover: false, cleanFace: true };
         if (kind === 'clock' && f.clockStyle) plan.clockStyle = f.clockStyle;
         if (f.ink) plan.ink = f.ink;
+        if (f.valueStyle === 'compact' && ['date','focus','battery'].includes(kind)) plan.valueStyle = 'compact';
       } else plan = { kind, rect: { ...DEFAULT_BADGE_RECT }, shape: 'plate', cover: false };
     }
   }
@@ -168,6 +170,7 @@ const clamp01 = (n: number): number => (n < 0 ? 0 : n > 1 ? 1 : n);
 
 /** Stored with the piece (widget-art/index.json `live`); read by LiveArtOverlay.swift. */
 export type LiveArtSpec = {
+  valueStyle?: 'compact';
   clockStyle?: 'analog' | 'digital' | 'stacked';
   kind: LiveArtKind;
   /** [x, y, w, h], 0..1 of the composed image the widget shows. */
@@ -206,6 +209,7 @@ export function liveArtSpec(plan: LiveArtPlan, art: Box, composed: Box, fit: Wid
     ink: hex(plan.ink) ?? hex(palette.ink) ?? '#FFFFFF',
   };
   if (plan.kind === 'clock' && plan.clockStyle) spec.clockStyle = plan.clockStyle;
+  if (plan.valueStyle) spec.valueStyle = plan.valueStyle;
   if (plan.target) spec.target = plan.target;
   if (plan.cleanFace === true && !plan.cover) spec.cleanFace = true;
   if (plan.kind === 'focus') spec.minutes = FOCUS_MINUTES;
@@ -230,6 +234,7 @@ export function parseLiveArtSpec(raw: unknown): LiveArtSpec | null {
     ink: hex(r.ink) ?? '#FFFFFF',
   };
   if (r.cleanFace === true && !spec.cover) spec.cleanFace = true;
+  if (r.valueStyle === 'compact' && ['date','focus','battery'].includes(kind)) spec.valueStyle = 'compact';
   if (kind === 'clock' && ['analog', 'digital', 'stacked'].includes(String(r.clockStyle))) spec.clockStyle = r.clockStyle as 'analog' | 'digital' | 'stacked';
   if (kind === 'countdown') {
     const t = validTargetDay(r.target);

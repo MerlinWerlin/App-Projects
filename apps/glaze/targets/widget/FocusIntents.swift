@@ -31,6 +31,11 @@ enum FocusStore {
   /// The phase at `now`. A session whose end has passed is over (idle again).
   static func phase(at now: Date) -> GlazeFocusPhase {
     guard let d = defaults else { return .idle }
+    return phase(in: d, at: now)
+  }
+
+  /// Explicit store makes persistence/state transitions testable without the real App Group.
+  static func phase(in d: UserDefaults, at now: Date) -> GlazeFocusPhase {
     let end = d.double(forKey: endKey)
     if end > now.timeIntervalSince1970 {
       return .running(end: Date(timeIntervalSince1970: end))
@@ -45,7 +50,11 @@ enum FocusStore {
   /// Start (idle), pause (running) or resume (paused).
   static func toggle(now: Date) {
     guard let d = defaults else { return }
-    switch phase(at: now) {
+    toggle(in: d, now: now)
+  }
+
+  static func toggle(in d: UserDefaults, now: Date) {
+    switch phase(in: d, at: now) {
     case .idle:
       d.set(now.addingTimeInterval(length).timeIntervalSince1970, forKey: endKey)
       d.removeObject(forKey: remainingKey)

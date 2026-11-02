@@ -47,6 +47,13 @@ for(const t of catalogue.themes){
   const asset=await image(profile.option.image,'widget-art','widget-themed-live-clock',{width:1024,height:1024,fit:'inside',withoutEnlargement:true});
   widgets.unshift({...profile.option,image:asset.path});
  }
+ const componentProfile=join(folder,'widgets/themed-components-20261102.json');
+ if(existsSync(componentProfile)){
+  const profile=JSON.parse(readFileSync(componentProfile,'utf8'));
+  // One shared artwork asset backs all three live native values.
+  const asset=await image(profile.components[0].option.image,'widget-art','widget-themed-components',{width:1024,height:1024,fit:'inside',withoutEnlargement:true});
+  widgets.splice(1,0,...profile.components.map(c=>({...c.option,image:asset.path})));
+ }
  if(widgets.length<6)throw Error(id+' has fewer than six candidate designs');
  const palette={bg:t.background,tile:t.background,glyph:t.foreground,accent:t.foreground,text:t.foreground};
  const name=String(source.set??t.id).replace(/^\d{3}[- ]/,'').replaceAll('-',' ').slice(0,60);
