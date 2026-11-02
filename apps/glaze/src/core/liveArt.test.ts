@@ -163,7 +163,7 @@ test('Swift guards: interactive focus, live timer, battery guard, no fake number
   assert.match(overlay, /Text\(timerInterval:/);
   assert.match(overlay, /Text\(date, style: \.time\)/);
   assert.match(overlay, /isBatteryMonitoringEnabled = true/);
-  assert.match(overlay, /guard level >= 0/);
+  assert.match(overlay, /guard level.isFinite, level >= 0/);
   assert.match(overlay, /@available\(iOS 17\.0, \*\)\s*struct LiveArtLayer/);
   // No value is hard-coded: digits only come from the date, the store or the battery.
   assert.doesNotMatch(overlay, /"\d+%"|"\d{1,2}:\d{2}"|"\d+ ?(days|DAYS)"/);

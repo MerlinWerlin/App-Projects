@@ -300,7 +300,8 @@ test('guard: Swift art paths draw no border, shadow, blur, material panel or out
 test('guard: in-app preview blends art on the wallpaper crop, never on a blurred copy or a box', () => {
   const menu = read('src', 'ui', 'WidgetArtMenu.tsx');
   assert.doesNotMatch(strip(menu), /blurRadius|blurBackdrop\(|shadow|borderWidth: 1/);
-  assert.match(menu, /const wall = wallpaper \? wallpaperUnderSlot\(/, 'every option over the wallpaper crop when there is one');
+  assert.match(menu, /const wall = wallpaper && !preserveArtwork \? wallpaperUnderSlot\(/, 'legacy art blends; curated live art retains its background');
+  assert.match(menu, /preserveArtwork \? \(/);
   const blended = read('src', 'ui', 'BlendedArt.tsx');
   assert.match(blended, /mixBlendMode: 'screen'/);
   assert.match(blended, /mixBlendMode: 'multiply'/);

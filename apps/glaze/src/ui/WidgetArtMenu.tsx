@@ -81,6 +81,7 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, selected,
   const { t, script } = useT();
   const tl = t as unknown as LooseT;
   const { option, source } = item;
+  const preserveArtwork = option.numberFree === true && !!option.liveFrame && (option.kind === 'clock' && !!option.liveFrame.clockStyle || !!option.liveFrame.valueStyle);
   const box = OPTION_SIZE_POINTS[size];
   const w = Math.max(1, width - RING * 4);
   const h = Math.max(1, Math.round((w * box.h) / box.w));
@@ -88,7 +89,7 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, selected,
   // under the widget's slot with the art inset on it (placeArt, like setSeamless), or, for a theme
   // without a wallpaper, the theme colour with the art full bleed (fullBleedArt, like setWidgetArt).
   // The art is blended (BlendedArt: keyed / feathered), never on a blurred copy of itself.
-  const wall = wallpaper ? wallpaperUnderSlot(wallpaper.px, wallpaper.crop, { w, h }) : null;
+  const wall = wallpaper && !preserveArtwork ? wallpaperUnderSlot(wallpaper.px, wallpaper.crop, { w, h }) : null;
   const place = wall
     ? placeArt({ w: option.width, h: option.height }, { w, h }, option.fit)
     : { rect: fullBleedArt({ w: option.width, h: option.height }, { w, h }).rect };
@@ -112,7 +113,9 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, selected,
           {/* The whole wallpaper at the crop's scale and offset: the clipped card shows only the crop. */}
           {wall && wallpaper ? <ExpoImage source={wallpaper.source} style={wallStyle} contentFit="fill" cachePolicy="memory-disk" transition={0} /> : null}
           {/* The art itself: always whole (contain inside its fitted rectangle), blended (T251). */}
-          <BlendedArt source={source} rect={place.rect} blend={blend} />
+          {preserveArtwork ? (
+            <ExpoImage source={source} style={{ position:'absolute',left:place.rect.x,top:place.rect.y,width:place.rect.w,height:place.rect.h }} contentFit="contain" cachePolicy="memory-disk" transition={0} />
+          ) : <BlendedArt source={source} rect={place.rect} blend={blend} />}
           {selected ? (
             <View style={[styles.check, { backgroundColor: c.tint }]}>
               <Feather name="check" size={16} color={c.onTint} />
