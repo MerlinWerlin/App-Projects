@@ -60,13 +60,14 @@ struct LiveArtSpec {
     }
     let plate = (r["plate"] as? String).flatMap { Color.isHex($0) ? $0 : nil } ?? "#000000"
     let ink = (r["ink"] as? String).flatMap { Color.isHex($0) ? $0 : nil } ?? "#FFFFFF"
+    let clockStyle = r["clockStyle"] as? String ?? "legacy"
     return LiveArtSpec(
       kind: kind,
       rect: CGRect(x: v[0], y: v[1], width: v[2], height: v[3]),
       circle: (r["shape"] as? String) == "circle",
       cover: (r["cover"] as? Bool) == true,
       cleanFace: (r["cleanFace"] as? Bool) == true && (r["cover"] as? Bool) != true,
-      clockStyle: ["analog", "digital", "stacked"].contains(r["clockStyle"] as? String ?? "") ? (r["clockStyle"] as! String) : "legacy",
+      clockStyle: ["analog", "digital", "stacked"].contains(clockStyle) ? clockStyle : "legacy",
       compact: (r["valueStyle"] as? String) == "compact" && [.date,.focus,.battery].contains(kind),
       plate: plate,
       ink: ink,

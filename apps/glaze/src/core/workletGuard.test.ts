@@ -220,7 +220,7 @@ function importsFrom(src: string, fromFile: string, moduleFile: string): string[
   for (const m of src.matchAll(/import\s*(?:type\s*)?\{([^}]*)\}\s*from\s*['"]([^'"]+)['"]/g)) {
     const spec = m[2];
     if (!spec.startsWith('.')) continue;
-    const resolved = relative(root, join(root, fromFile, '..', spec)).replace(/\.tsx?$/, '');
+    const resolved = relative(root, join(root, fromFile, '..', spec)).replaceAll('\\', '/').replace(/\.tsx?$/, '');
     if (resolved !== moduleFile.replace(/\.tsx?$/, '')) continue;
     for (const part of m[1].split(',')) {
       const n = part.trim();
@@ -231,7 +231,7 @@ function importsFrom(src: string, fromFile: string, moduleFile: string): string[
   return names;
 }
 
-const files = [...walk(join(root, 'src')), ...walk(join(root, 'app'))].map((p) => relative(root, p));
+const files = [...walk(join(root, 'src')), ...walk(join(root, 'app'))].map((p) => relative(root, p).replaceAll('\\', '/'));
 const sources = new Map(files.map((f) => [f, stripComments(readFileSync(join(root, f), 'utf8'))]));
 const moduleWorklets = new Map<string, Set<string>>();
 for (const mod of Object.keys(WORKLET_MODULES)) {

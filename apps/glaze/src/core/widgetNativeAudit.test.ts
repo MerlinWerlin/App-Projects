@@ -10,7 +10,7 @@ import { WIDGET_APP_GROUP, WIDGET_THEME_FILE, WIDGET_THEME_KEY } from './widgetT
 import { PROFILE_MIME, PROFILE_SERVER_PATH } from './profileServer.ts';
 
 const ROOT = process.cwd();
-const read = (rel: string): string => readFileSync(join(ROOT, rel), 'utf8');
+const read = (rel: string): string => readFileSync(join(ROOT, rel), 'utf8').replace(/\r\n/g, '\n');
 const WIDGET_DIR = 'targets/widget';
 const widgetSwift = (): string[] => readdirSync(join(ROOT, WIDGET_DIR)).filter((f) => f.endsWith('.swift'));
 const BRIDGE = 'modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift';
