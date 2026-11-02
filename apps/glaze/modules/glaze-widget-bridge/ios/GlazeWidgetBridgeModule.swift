@@ -155,6 +155,38 @@ public class GlazeWidgetBridgeModule: Module {
     /// frame round a black square). `background` / `fit` are kept for the JS signature. Caps the long
     /// edge at 1200 px, writes seamless-<family>.png plus the blended art as seamless-<family>-art.png
     /// (for Edit Widget > Layout > Fit), and reloads the timelines.
+    // Curated clock backgrounds retain their full material; older callers keep the blend path.
+    AsyncFunction("setClockArt") { (artUri: String, w: Double, h: Double, colour: String, family: String) -> Bool in
+      guard ["small","medium","large"].contains(family),w>=1,h>=1,
+            let container=FileManager.default.containerURL(forSecurityApplicationGroupIdentifier:appGroup),
+            let image=GlazeWidgetBridgeModule.loadImage(artUri),image.size.width>0,image.size.height>0 else { return false }
+      let composed=ClockArtRenderer.render(image:image,width:w,height:h,colour:colour)
+      guard let data=composed.pngData() else { return false }
+      do {
+        try data.write(to:container.appendingPathComponent("seamless-\(family).png"),options:.atomic)
+        if let raw=GlazeWidgetBridgeModule.downscale(image,maxEdge:1200).pngData() {
+          try raw.write(to:container.appendingPathComponent("seamless-\(family)-art.png"),options:.atomic)
+        }
+        GlazeWidgetBridgeModule.reloadWidgets();return true
+      } catch { return false }
+    }
+
+    AsyncFunction("composeClockArtPiece") { (id: String, artUri: String, w: Double, h: Double, colour: String, skipIfPresent: Bool) -> Bool in
+      guard GlazeWidgetBridgeModule.validArtId(id),w>=1,h>=1,
+            let container=FileManager.default.containerURL(forSecurityApplicationGroupIdentifier:appGroup) else { return false }
+      let dir=container.appendingPathComponent(artDir,isDirectory:true),dest=dir.appendingPathComponent("\(id).jpg")
+      if skipIfPresent && FileManager.default.fileExists(atPath:dest.path) { return true }
+      return autoreleasepool {
+        guard let image=GlazeWidgetBridgeModule.loadImage(artUri),image.size.width>0,image.size.height>0,
+              let data=ClockArtRenderer.render(image:image,width:w,height:h,colour:colour).jpegData(compressionQuality:0.88) else { return false }
+        do {
+          try FileManager.default.createDirectory(at:dir,withIntermediateDirectories:true)
+          if let raw=GlazeWidgetBridgeModule.downscale(image,maxEdge:1200).pngData() { try raw.write(to:dir.appendingPathComponent("\(id)-art.png"),options:.atomic) }
+          try data.write(to:dest,options:.atomic);return true
+        } catch { return false }
+      }
+    }
+
     AsyncFunction("setWidgetArt") { (artUri: String, w: Double, h: Double, background: String, colour: String, fit: String, family: String) -> Bool in
       guard ["small", "medium", "large"].contains(family), w >= 1, h >= 1 else { return false }
       guard

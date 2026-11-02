@@ -11,11 +11,11 @@
 // plate (0..1 of the art: LiveArtSpec.art, the plan rect) on that contained rect. The result is 0..1
 // of the widget, the same unit LiveArtLayer multiplies by the widget size.
 //
-// Native status: LiveArtOverlay.swift / SeamlessWidget.swift do NOT draw live values in Fit yet
-// (SeamlessWidget.swift `if let image = image, !fit`), and new Swift is held (overseer D225-3). So
-// FIT_LAYOUT_LIVE_IN_WIDGET is false and the app says live values show in Fill only. When a native
-// build draws them in Fit (read `art` from the record, place it with fitLayoutPlate's geometry: the
-// same as LiveArtLayer.fitted on a box inset by FIT_LAYOUT_INSET), flip the flag. docs/WIDGETS.md.
+// Native status (owner-1102a, Codex PR #190 merged in run 239): a piece WITH a live spec now keeps
+// its composed image in Fit too (SeamlessWidget.swift loads no raw art when `live`), inset by 6 %,
+// and LiveArtLayer gets the same inset (insetFraction 0.06). So FIT_LAYOUT_LIVE_IN_WIDGET is true;
+// for a live piece the native Fit path is the "no raw art file" branch of fitLayoutPlateForSpec
+// (pass rawArt: null). Plain decorative pieces still use their raw art in Fit. docs/WIDGETS.md.
 //
 // Pure TS (Node runs it directly), tested in liveArtFit.test.ts.
 
@@ -29,10 +29,10 @@ export const FIT_LAYOUT_INSET = WIDGET_ART_PADDING;
 export type WidgetArtLayout = 'fill' | 'fit';
 
 /**
- * Whether the installed widget draws live values in the Fit layout. false: SeamlessWidget.swift
- * skips LiveArtLayer in Fit and D225-3 holds new Swift. Flip only with the native change.
+ * Whether the installed widget draws live values in the Fit layout. true since run 239 (PR #190:
+ * SeamlessWidget.swift draws LiveArtLayer in Fit over the inset composed image).
  */
-export const FIT_LAYOUT_LIVE_IN_WIDGET = false;
+export const FIT_LAYOUT_LIVE_IN_WIDGET = true;
 
 /** Whether the widget shows a piece's live value in this layout (Fill always does). */
 export function liveValueShowsIn(layout: WidgetArtLayout): boolean {

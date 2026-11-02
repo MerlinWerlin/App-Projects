@@ -13,7 +13,7 @@
 // an env var in an app.config), read in src/native/packs.ts; missing or anything else = production.
 // Pure data + the URL helpers: no React Native / Expo imports, so src/core tests can read it too.
 
-export { flatAssetName, packHostKind, packObjectUrl, type PackHostKind } from '../core/packHost.ts';
+export { flatAssetName, isPackReleaseTag, packHostKind, packObjectUrl, packReleaseBase, type PackHostKind } from '../core/packHost.ts';
 
 export type PackEnv = 'staging' | 'production';
 
@@ -24,6 +24,8 @@ export const PACK_RELEASE_TAGS: Readonly<Record<PackEnv, string>> = Object.freez
   staging: 'glaze-packs-staging',
   production: 'glaze-packs-v1',
 });
+// T274: production packs may also live in glaze-packs-v2, -v3, ... (a catalogue entry's `release`);
+// catalog.json is always on PACK_RELEASE_TAGS.production. See packReleaseBase.
 
 /** The download base of a release: https://github.com/<repo>/releases/download/<tag>. */
 export function githubReleaseBase(repo: string, tag: string): string {

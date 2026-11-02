@@ -32,7 +32,7 @@ import {
   type RemoteArtAsset,
   type RemoteArtManifest,
 } from './packCatalog.ts';
-import { packObjectUrl } from './packHost.ts';
+import { packObjectUrl, packReleaseBase } from './packHost.ts';
 
 /** Result of a (possibly ranged) GET. `offset` is where the body starts: `start` for a 206, 0 when the server ignored Range. */
 export type RangeResponse = { offset: number; chunks: AsyncIterable<Uint8Array> };
@@ -452,6 +452,11 @@ export type RemoteArtDownloadOptions = {
   /** Pack id and version, from the catalogue entry. */
   id: string;
   packVersion: number;
+  /**
+   * T274: the catalogue entry's release ("glaze-packs-v2"); absent = the base's own release. The
+   * manifest and every asset come from packReleaseBase(baseUrl, release).
+   */
+  release?: string;
   transport: Transport;
   appVersion: string;
   /** The phone's screen long edge in pixels (picks the wallpaper size class). */
@@ -491,8 +496,9 @@ const STAGING_MARK = 'staging-version.txt';
  * attempt resumes the staged files.
  */
 export async function downloadRemoteArtPack(opts: RemoteArtDownloadOptions): Promise<RemoteArtDownloadResult> {
-  const base = resolvePackBaseUrl(opts.baseUrl);
-  if (base === null) throw new PackError('disabled', 'theme packs are not available yet');
+  const resolved = resolvePackBaseUrl(opts.baseUrl);
+  if (resolved === null) throw new PackError('disabled', 'theme packs are not available yet');
+  const base = packReleaseBase(resolved, opts.release);
   const { transport: t, id } = opts;
   if (opts.isCancelled?.()) throw new PackError('cancelled', 'download cancelled');
   const manifest = await fetchRemoteArtManifest(t, base, id, opts.packVersion);

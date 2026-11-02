@@ -293,7 +293,7 @@ T159 (owner-1030 A2-A3), T169. Theme folders (`themes/<id>/`, the art-pack forma
 **Layout** (logical paths; `dist/packs/` is gitignored). On the GitHub release each path is one flat asset with `/` replaced by `__` (`art__<id>__v<n>__<file>`; `scripts/packs/release_assets.mjs` writes them to `dist/release/assets/`):
 
 ```
-catalog.json                                          every pack: id, name, packVersion, plus, bytes, manifest, thumb, thumbhash, palette, tags, mood, addedAt, category (optional, T253)
+catalog.json                                          every pack: id, name, packVersion, plus, bytes, manifest, thumb, thumbhash, palette, tags, mood, addedAt, category (optional, T253), release (optional, T274: glaze-packs-v<n> holding the pack's files; docs/PACK_HOSTING.md)
 art/<id>/v<packVersion>/manifest.json                 assets with role, size, bytes, sha256, mime; written LAST in the folder
 art/<id>/v<packVersion>/wallpaper-2796.<sha8>.webp    1290x2796   (also -2556: 1179x2556, -1334: 750x1334, centre-cropped)
 art/<id>/v<packVersion>/widget-small|medium|large.<sha8>.webp   hero art with alpha, source size capped at the reference size
@@ -411,7 +411,7 @@ Unknown extra fields are ignored. At most **32** options per pack (more are igno
 
 - **v1 packs keep working unchanged.** `widgetOptionsFromV1` turns each `widget-small` / `widget-medium` / `widget-large` asset into an `art` option (`background: "wallpaper"`, `fit: "fit"`), offered in **every** Home Screen size with its own size listed first, so the square small art also appears whole in medium and large.
 - A v2 pack doesn't need the v1 widget roles: the theme page's Seamless card uses the first option for each size when there is no `widget-<size>` file (`remoteArtFiles`).
-- Apps from before T187 reject `"version": 2` manifests (the download shows the calm "try again" line). Publish v2 packs only once the T187 update is on the phones (it is JavaScript, so it arrives as an over-the-air update). `scripts/packs/build_packs.mjs` in this repo still writes v1 from `themes/<id>/` folders.
+- Apps from before T187 reject `"version": 2` manifests (the download shows the calm "try again" line). Publish v2 packs only once the T187 update is on the phones (it is JavaScript, so it arrives as an over-the-air update). `scripts/packs/build_packs.mjs` writes v1 from plain `themes/<id>/` folders. It writes v2 (with a `widgets` list) only for a theme folder with clock-edition / widget exports in `widgets/`, or for a Codex review folder (T275, T275b; `docs/PACK_HOSTING.md` "Clock editions (owner-1102a)").
 
 ### On the phone
 

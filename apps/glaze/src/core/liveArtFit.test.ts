@@ -143,11 +143,11 @@ test('fitLayoutPlateForSpec: raw art uses the art rect; no raw art fits the comp
   assert.equal(fitLayoutPlateForSpec(old, { rawArt: SQUARE, composed, widget }, force), null);
 });
 
-test('the widget does not draw live values in Fit yet, so the app must not claim it', () => {
-  // SeamlessWidget.swift skips LiveArtLayer in Fit (D225-3: no new Swift). If a native change lands,
-  // flip FIT_LAYOUT_LIVE_IN_WIDGET together with it.
+test('the app claims live values in Fit exactly when the widget draws them there', () => {
+  // Run 239 (PR #190): SeamlessWidget.swift draws LiveArtLayer in Fit with the 6 % inset, so the flag is true.
   const swift = read('targets', 'widget', 'SeamlessWidget.swift');
   const fitSkipped = /if let image = image, !fit \{/.test(swift);
+  assert.match(swift, /insetFraction: fit \? 0\.06 : 0/);
   assert.equal(FIT_LAYOUT_LIVE_IN_WIDGET, !fitSkipped);
   assert.equal(liveValueShowsIn('fill'), true);
   assert.equal(liveValueShowsIn('fit'), FIT_LAYOUT_LIVE_IN_WIDGET);

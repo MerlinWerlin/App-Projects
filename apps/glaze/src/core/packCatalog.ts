@@ -15,6 +15,7 @@
 // Pure TS, no React Native / Expo imports.
 
 import { isArtPackId, PALETTE_KEYS, type ArtMeta, type ArtPalette } from './artPack.ts';
+import { isPackReleaseTag } from './packHost.ts';
 import { widgetOptionsOfPack, type WidgetOption } from './widgetOptions.ts';
 
 export const CATALOG_FORMAT = 'glaze-catalog';
@@ -92,6 +93,12 @@ export type CatalogPack = {
    * catalog.json; matched tolerantly (src/core/themeBrowse.ts parseBrowseCategory, unknown → More).
    */
   category: string;
+  /**
+   * T274: the GitHub release holding this pack's files ("glaze-packs-v2"), absent = the catalogue's
+   * own release (glaze-packs-v1). Only /^glaze-packs-v\d+$/ is kept; anything else is dropped (the
+   * pack still lists). URLs: packReleaseBase(base, release) (src/core/packHost.ts).
+   */
+  release?: string;
 };
 
 export type Catalog = {
@@ -172,6 +179,7 @@ export function parseCatalog(raw: unknown): ParseResult<Catalog> {
     if (p.bytes > REMOTE_ART_MAX_BYTES) continue;
     const tags = Array.isArray(p.tags) ? p.tags.filter((t): t is string => str(t, 40)).slice(0, 20) : [];
     seen.add(id);
+    const release = isPackReleaseTag(p.release) && p.release !== 'glaze-packs-v1' ? { release: p.release } : {};
     packs.push({
       id,
       name: p.name,
@@ -186,6 +194,7 @@ export function parseCatalog(raw: unknown): ParseResult<Catalog> {
       mood: typeof p.mood === 'string' ? p.mood.slice(0, 200) : '',
       addedAt: typeof p.addedAt === 'string' ? p.addedAt.slice(0, 10) : '',
       category: catalogCategory(p.category),
+      ...release,
     });
   }
   return { ok: true, value: { format: CATALOG_FORMAT, version: 1, generatedAt: raw.generatedAt, packs } };

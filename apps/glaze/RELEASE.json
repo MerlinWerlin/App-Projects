@@ -1,6 +1,6 @@
 {
-  "mode": "update",
-  "note": "Glaze: live values in the Fit layout, countdown art pieces take a target day, Themes tab subtitle fix",
+  "mode": "build",
+  "note": "Glaze: native art clocks for 105 themes, every clock date countdown focus and battery piece live, second theme download set for new themes",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

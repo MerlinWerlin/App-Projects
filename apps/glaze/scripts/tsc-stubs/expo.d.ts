@@ -730,7 +730,9 @@ declare module 'expo-image' {
     recyclingKey?: string | null;
     allowDownscaling?: boolean;
     autoplay?: boolean;
-    style?: StyleProp<ImageStyle | ViewStyle>;
+    // T276: as expo-image (Image.types.ts): ImageStyle only. A ViewStyle (overflow 'scroll') is not
+    // assignable, which the real typecheck reported in PlusLockSheet / WidgetArtMenu.
+    style?: StyleProp<ImageStyle>;
     responsivePolicy?: 'live' | 'initial' | 'static';
     enableLiveTextInteraction?: boolean;
     alt?: string;

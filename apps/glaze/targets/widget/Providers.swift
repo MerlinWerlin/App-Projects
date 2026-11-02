@@ -32,7 +32,7 @@ struct MinuteProvider: TimelineProvider {
   }
 }
 
-/// One entry now, refreshed just after midnight (for date-only widgets).
+/// One entry now and one at midnight, refreshed just after (for date-only widgets).
 struct DayProvider: TimelineProvider {
   func placeholder(in context: Context) -> GlazeEntry {
     GlazeEntry(date: Date(), theme: ThemeStore.load())
@@ -46,8 +46,10 @@ struct DayProvider: TimelineProvider {
     let now = Date()
     let cal = Calendar.current
     let tomorrow = cal.date(byAdding: .day, value: 1, to: cal.startOfDay(for: now)) ?? now.addingTimeInterval(3600)
-    let entry = GlazeEntry(date: now, theme: ThemeStore.load())
-    completion(Timeline(entries: [entry], policy: .after(tomorrow.addingTimeInterval(5))))
+    let theme = ThemeStore.load()
+    // T276: a second entry AT midnight, so the date rolls over even if the reload is late.
+    let entries = [GlazeEntry(date: now, theme: theme), GlazeEntry(date: tomorrow, theme: theme)]
+    completion(Timeline(entries: entries, policy: .after(tomorrow.addingTimeInterval(5))))
   }
 }
 

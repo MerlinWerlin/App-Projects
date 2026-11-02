@@ -26,6 +26,7 @@ import { pathToFileURL } from 'node:url';
 
 process.removeAllListeners('warning');
 const cat = await import('../../src/core/packCatalog.ts');
+const host = await import('../../src/core/packHost.ts');
 
 const sha256 = (b) => createHash('sha256').update(b).digest('hex');
 
@@ -140,7 +141,7 @@ export function rebuild({ cache, fix, out, encoder = 'pillow', versionsFile = ''
           continue;
         }
         const src = join(cache, oldFolder, a.path);
-        if (baseUrl && (!existsSync(src) || sha256(readFileSync(src)) !== a.sha256)) fetchFlat(baseUrl, `${oldFolder}/${a.path}`, src);
+        if (baseUrl && (!existsSync(src) || sha256(readFileSync(src)) !== a.sha256)) fetchFlat(host.packReleaseBase(baseUrl, p.release), `${oldFolder}/${a.path}`, src); // T274: the pack's own release
         if (!existsSync(src) || sha256(readFileSync(src)) !== a.sha256) throw new Error(`${a.path} missing or changed in the cache (run blend-audit --download)`);
         copyFileSync(src, join(dir, a.path));
       }

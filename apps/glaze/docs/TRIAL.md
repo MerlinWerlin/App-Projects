@@ -2,6 +2,18 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (2 Nov, owner-1102a: native art clocks, run 239)
+Native: needs the TestFlight build made from this run (Jared's chat ships it). Answer yes / no:
+
+1. **Art clocks:** after the new theme packs are published, Widgets tab > a theme > is there an **Art clock** piece first? Add it to a widget: does the theme's own art stay whole, with a live time on it (hands on a painted dial, a digital time, or two-row 24 h hours/minutes), and does it change every minute? yes / no
+2. **Plain clock fallback:** is the plain clock face labelled **Plain clock (fallback)**, and is it live too? yes / no
+3. **Fit layout:** long-press a widget with a live clock > Edit Widget > Layout > **Fit**: does the time still show and keep moving (it used to show only in Fill)? yes / no
+4. **Midnight:** leave a live date or countdown widget on your Home Screen overnight: does it show the new day (or one day fewer) right after midnight, without opening Glaze? yes / no
+5. **Focus and battery:** on a focus piece, does Start start a 25-minute countdown and Pause stop it? On a battery piece, is the level your real battery (within 15 minutes)? yes / no
+6. **New themes (101-146):** when they appear in the gallery, do their clock, date, focus and battery pieces all show live values (none with a made-up number)? yes / no
+
+(Run 225 question 2 is out of date: live values now show in Fit too.)
+
 ## New since your last test (1 Nov, run 225)
 JS only: shows in the next TestFlight build (or Expo Go). Answer yes / no:
 

@@ -44,6 +44,17 @@ RELEASES = {
     'staging': 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-staging',
 }
 
+
+def pack_base(base, release):
+    """T274: a pack's files live on its catalogue `release` (glaze-packs-v<n>) of the same repo;
+    mirrors src/core/packHost.ts packReleaseBase (staging and bad values: the base unchanged)."""
+    import re
+    tag = re.compile(r'^glaze-packs-v\d+$')
+    if not isinstance(release, str) or not tag.match(release):
+        return base
+    head, _, cur = base.rstrip('/').rpartition('/')
+    return f'{head}/{release}' if tag.match(cur) and head.endswith('/releases/download') else base
+
 # ---------------------------------------------------------------- src/core/artBlend.ts mirror
 BLEND_RING_SHARE = 0.03
 BLEND_RING_MIN_PX = 2
@@ -333,12 +344,13 @@ def remote_themes(cache, env, download, only):
         if only and p['id'] not in only:
             continue
         mrel = p['manifest']
+        pbase = pack_base(base, p.get('release'))
         mfile = os.path.join(root, mrel)
         try:
             if not os.path.exists(mfile):
                 if not download:
                     raise FileNotFoundError('manifest not cached')
-                fetch(f"{base}/{mrel.replace('/', '__')}", mfile)
+                fetch(f"{pbase}/{mrel.replace('/', '__')}", mfile)
             m = json.load(open(mfile))
             folder = f"art/{p['id']}/v{p['packVersion']}"
             by_path = {a['path']: a for a in m.get('assets', [])}
@@ -350,7 +362,7 @@ def remote_themes(cache, env, download, only):
                 if not download:
                     return None
                 # A release stores flat names (src/core/packHost.ts flatAssetName: '/' -> '__').
-                fetch(f"{base}/{(folder + '/' + asset['path']).replace('/', '__')}", dest)
+                fetch(f"{pbase}/{(folder + '/' + asset['path']).replace('/', '__')}", dest)
                 if sha256(dest) != asset['sha256']:
                     os.remove(dest)
                     raise ValueError(f"sha256 mismatch: {asset['path']}")

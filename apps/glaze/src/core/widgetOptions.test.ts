@@ -423,7 +423,7 @@ test('docs/THEME_PACKS.md: the v2 example manifest parses and validates strictly
   const doc = read('docs', 'THEME_PACKS.md');
   const at = doc.indexOf('### Example v2 manifest');
   assert.ok(at > 0);
-  const block = /```json\n([\s\S]*?)\n```/.exec(doc.slice(at));
+  const block = /```json\r?\n([\s\S]*?)\r?\n```/.exec(doc.slice(at));
   assert.ok(block);
   const raw = JSON.parse(block[1].replaceAll('<64 hex>', 'a'.repeat(64)));
   const r = parseRemoteArtManifest(raw, 'cloud-atelier');
@@ -451,7 +451,8 @@ test('Widgets tab shows the theme widget art menu above the grid', () => {
   assert.match(art, /widgets\.setWidgetArt\(/);
   assert.match(art, /widgets\.setSeamless\(/);
   // T251: every piece tries the wallpaper crop first; setWidgetArt only when there is no wallpaper file.
-  assert.match(art, /ok = await seamless\(artUri\);\s*if \(ok === false && option\.background !== 'wallpaper'\)/);
+  assert.match(art, /ok = preserveArtwork \? false : await seamless\(artUri\);\s*if \(ok === false && option\.background !== 'wallpaper'\)/);
+  assert.match(art, /option\.kind === 'clock' && option\.numberFree === true && !!option\.liveFrame\?\.clockStyle/);
 });
 
 test('menu previews fit the art (never crop): placeArt / fullBleedArt rectangle + contain; T251 no blurred copy', () => {

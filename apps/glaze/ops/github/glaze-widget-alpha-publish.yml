@@ -86,10 +86,12 @@ jobs:
           cp scripts/packs/versions.json "$W/versions.json"
           cp "$W/cache/$ENV/catalog.json" "$W/catalog.json"
           ls "$W/fix" | split -l "$BATCH" - "$W/batch-"
+          # T274: on production a pack may live on glaze-packs-v2+ (its catalogue `release`); catalog.json is
+          # always on $TAG (glaze-packs-v1). release_assets.mjs writes one upload set per tag, v1 last.
           up() {
             for try in 1 2 3 4 5 6; do
-              if gh release upload "$TAG" -R "$R" --clobber "$1"; then sleep 1; return 0; fi
-              echo "retry $try for $1"; sleep $((try * 30))
+              if gh release upload "$1" -R "$R" --clobber "$2"; then sleep 1; return 0; fi
+              echo "retry $try for $1/$2"; sleep $((try * 30))
             done
             return 1
           }
@@ -98,24 +100,47 @@ jobs:
             echo "batch: $only" | tee -a "$GITHUB_STEP_SUMMARY"
             node scripts/packs/rebuild_widget_alpha.mjs --cache "$W/cache/$ENV" --catalog "$W/catalog.json" --only "$only" \
               --fix "$W/fix" --out "$W/out" --versions "$W/versions.json" --download "https://github.com/$R/releases/download/$TAG"
-            gh release view "$TAG" -R "$R" --json assets > "$W/existing.json"
-            node scripts/packs/release_assets.mjs --dir "$W/out" --out "$W/release" --existing "$W/existing.json"
-            ( cd "$W/release/assets"
-              for list in upload-1-files.txt upload-2-manifests.txt upload-3-catalog.txt; do
-                [ -s "../$list" ] || continue
-                while IFS= read -r f; do [ -n "$f" ] && up "$f"; done < "../$list"
-              done )
+            rm -rf "$W/existing" && mkdir -p "$W/existing"
+            if [ "$TAG" = "glaze-packs-v1" ]; then
+              node -e 'const c=require(process.argv[1]);const t=new Set(["glaze-packs-v1"]);for(const p of c.packs) if(p.release) t.add(p.release);console.log([...t].join("\n"))' "$W/out/catalog.json" > "$W/tags-wanted.txt"
+            else
+              echo "$TAG" > "$W/tags-wanted.txt"
+            fi
+            while IFS= read -r tag; do
+              [ -n "$tag" ] || continue
+              gh release view "$tag" -R "$R" --json assets > "$W/existing/$tag.json" 2>/dev/null || echo '{"assets":[]}' > "$W/existing/$tag.json"
+            done < "$W/tags-wanted.txt"
+            if [ "$TAG" = "glaze-packs-v1" ]; then
+              node scripts/packs/release_assets.mjs --dir "$W/out" --out "$W/release" --existing-dir "$W/existing"
+            else
+              node scripts/packs/release_assets.mjs --single --dir "$W/out" --out "$W/release/$TAG" --existing "$W/existing/$TAG.json"
+              echo "$TAG" > "$W/release/tags.txt"
+            fi
+            while IFS= read -r tag; do
+              [ -n "$tag" ] || continue
+              gh release view "$tag" -R "$R" > /dev/null 2>&1 || gh release create "$tag" -R "$R" --target "$GITHUB_SHA" \
+                --title "Glaze theme packs ($tag)" --notes "Theme art packs for the Glaze app (do not edit by hand)." --latest=false
+              ( cd "$W/release/$tag/assets"
+                for list in upload-1-files.txt upload-2-manifests.txt upload-3-catalog.txt; do
+                  [ -s "../$list" ] || continue
+                  while IFS= read -r f; do [ -n "$f" ] && up "$tag" "$f"; done < "../$list"
+                done )
+            done < "$W/release/tags.txt"
             want=$(sha256sum "$W/out/catalog.json" | cut -d' ' -f1)
             got=$(curl -fsSL "https://github.com/$R/releases/download/$TAG/catalog.json" | sha256sum | cut -d' ' -f1)
             echo "catalog sha256 want $want got $got" | tee -a "$GITHUB_STEP_SUMMARY"
             [ "$want" = "$got" ]
             cp "$W/out/catalog.json" "$W/catalog.json"
-            gh release view "$TAG" -R "$R" --json assets -q '.assets[].name' > "$W/names.txt"
-            while IFS= read -r folder; do
-              [ -n "$folder" ] || continue
-              prefix="$(echo "$folder" | sed 's#/#__#g')__"
-              grep -F "$prefix" "$W/names.txt" | grep "^$prefix" | while IFS= read -r n; do gh release delete-asset "$TAG" "$n" -R "$R" -y; done
-            done < "$W/out/superseded.txt"
+            # Superseded folders are pruned from whichever release holds them.
+            while IFS= read -r tag; do
+              [ -n "$tag" ] || continue
+              gh release view "$tag" -R "$R" --json assets -q '.assets[].name' > "$W/names.txt"
+              while IFS= read -r folder; do
+                [ -n "$folder" ] || continue
+                prefix="$(echo "$folder" | sed 's#/#__#g')__"
+                grep -F "$prefix" "$W/names.txt" | grep "^$prefix" | while IFS= read -r n; do gh release delete-asset "$tag" "$n" -R "$R" -y; done
+              done < "$W/out/superseded.txt"
+            done < "$W/release/tags.txt"
           done
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}

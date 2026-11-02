@@ -699,6 +699,8 @@ Widget > Layout: Fill (default; full bleed) or Fit (raw art inset on the theme).
 `fullBleedArt` (`src/core/widgetPreview.ts`). Not device-tested. Follow-up: pre-sized pack images
 per widget size (deferred, no new images now); pieces saved before T236 keep their old frame until re-applied.
 ### Live values over art (T237, owner-1101g #2)
+
+Reviewed number-free faces may declare a validated `liveFrame` in source-image coordinates; see [REVIEWED_THEME_EXPORTS.md](REVIEWED_THEME_EXPORTS.md). Live pieces now retain their composed image in both Fill and Fit, with the same inset applied to the value layer in Fit. Decorative pieces still use raw-art Fit. Switching layout does not remove a live clock, and opaque covers completely hide painted sample values.
 Rule: a piece that looks like a clock, date, battery, countdown or focus timer must work, or be labelled
 **Art**. `src/core/liveArt.ts` decides; the piece's `live` spec is saved in widget-art/index.json and
 `targets/widget/LiveArtOverlay.swift` draws it (clock: hands + time, minute timeline; date: today;

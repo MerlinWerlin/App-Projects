@@ -97,12 +97,16 @@ export function validTargetDay(day: unknown): string | null {
 }
 
 export type LiveArtPlan = {
+  clockStyle?: 'analog' | 'digital' | 'stacked';
+  ink?: string;
   kind: LiveArtKind;
   /** 0..1 of the art. */
   rect: NRect;
   shape: LiveArtShape;
   /** true: the plate hides a value painted into the art; false: a badge on a number-free piece. */
   cover: boolean;
+  /** Curated number-free liveFrame: the source already provides its readable background. */
+  cleanFace?: boolean;
   /** Countdown target day (YYYY-MM-DD). */
   target?: string;
 };
@@ -195,7 +199,7 @@ export function countdownArtDays(target: string | null | undefined, now: Date, u
  */
 export function liveArtPlan(
   themeId: string,
-  option: Pick<WidgetOption, 'id' | 'kind' | 'numberFree'>,
+  option: Pick<WidgetOption, 'id' | 'kind' | 'numberFree' | 'liveFrame'>,
   opts: LiveArtOpts = {},
 ): LiveArtPlan | null {
   const known = KNOWN_LIVE_PIECES[`${themeId}/${option.id}`];
@@ -204,7 +208,16 @@ export function liveArtPlan(
     plan = { kind: known.kind, rect: { ...known.rect }, shape: known.shape, cover: true };
   } else if (option.numberFree === true) {
     const kind = liveArtKindOf(option.kind);
-    if (kind) plan = { kind, rect: { ...DEFAULT_BADGE_RECT }, shape: 'plate', cover: false };
+    if (kind) {
+      const f = option.liveFrame;
+      if (f) {
+        const [x, y, w, h] = f.rect;
+        if (![x, y, w, h].every((v) => Number.isFinite(v) && v >= 0 && v <= 1) || w <= 0 || h <= 0 || x + w > 1 || y + h > 1) return null;
+        plan = { kind, rect: { x, y, w, h }, shape: f.shape, cover: false, cleanFace: true };
+        if (kind === 'clock' && f.clockStyle) plan.clockStyle = f.clockStyle;
+        if (f.ink) plan.ink = f.ink;
+      } else plan = { kind, rect: { ...DEFAULT_BADGE_RECT }, shape: 'plate', cover: false };
+    }
   }
   if (!plan) return null;
   if (plan.kind === 'countdown') {
@@ -220,7 +233,7 @@ export function liveArtPlan(
  * `liveArt` and listed under its live kind (harbour-focus becomes a `focus` piece); every other
  * option is returned unchanged (and is shown as Art when it has values painted in: fixedValues).
  */
-export function withLiveArt<T extends Pick<WidgetOption, 'id' | 'kind' | 'numberFree'>>(themeId: string, options: readonly T[], opts: LiveArtOpts = {}): T[] {
+export function withLiveArt<T extends Pick<WidgetOption, 'id' | 'kind' | 'numberFree' | 'liveFrame'>>(themeId: string, options: readonly T[], opts: LiveArtOpts = {}): T[] {
   return options.map((o) => {
     const plan = liveArtPlan(themeId, o, opts);
     if (!plan) return o;
@@ -239,6 +252,7 @@ const clamp01 = (n: number): number => (n < 0 ? 0 : n > 1 ? 1 : n);
 
 /** Stored with the piece (widget-art/index.json `live`); read by LiveArtOverlay.swift. */
 export type LiveArtSpec = {
+  clockStyle?: 'analog' | 'digital' | 'stacked';
   kind: LiveArtKind;
   /** [x, y, w, h], 0..1 of the composed image the widget shows (Fill layout). */
   rect: [number, number, number, number];
@@ -250,6 +264,7 @@ export type LiveArtSpec = {
   art?: [number, number, number, number];
   shape: LiveArtShape;
   cover: boolean;
+  cleanFace?: boolean;
   /** Plate and text colours (#RRGGBB) from the piece's theme. */
   plate: string;
   ink: string;
@@ -278,14 +293,16 @@ export function liveArtSpec(plan: LiveArtPlan, art: Box, composed: Box, fit: Wid
     shape: plan.shape,
     cover: plan.cover,
     plate: hex(palette.bg) ?? '#000000',
-    ink: hex(palette.ink) ?? '#FFFFFF',
+    ink: hex(plan.ink) ?? hex(palette.ink) ?? '#FFFFFF',
   };
   const ax = clamp01(plan.rect.x);
   const ay = clamp01(plan.rect.y);
   const aw = Math.min(clamp01(plan.rect.w), 1 - ax);
   const ah = Math.min(clamp01(plan.rect.h), 1 - ay);
   if (aw > 0 && ah > 0) spec.art = [r4(ax), r4(ay), r4(aw), r4(ah)];
+  if (plan.kind === 'clock' && plan.clockStyle) spec.clockStyle = plan.clockStyle;
   if (plan.target) spec.target = plan.target;
+  if (plan.cleanFace === true && !plan.cover) spec.cleanFace = true;
   if (plan.kind === 'focus') spec.minutes = FOCUS_MINUTES;
   return spec;
 }
@@ -317,6 +334,8 @@ export function parseLiveArtSpec(raw: unknown): LiveArtSpec | null {
   // T246: a broken art rect is dropped on its own (the Fill rect still works).
   const art = unitRect(r.art);
   if (art) spec.art = art;
+  if (r.cleanFace === true && !spec.cover) spec.cleanFace = true;
+  if (kind === 'clock' && ['analog', 'digital', 'stacked'].includes(String(r.clockStyle))) spec.clockStyle = r.clockStyle as 'analog' | 'digital' | 'stacked';
   if (kind === 'countdown') {
     const t = validTargetDay(r.target);
     if (!t) return null;

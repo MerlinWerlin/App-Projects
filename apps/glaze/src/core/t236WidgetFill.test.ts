@@ -9,7 +9,7 @@ import { OPTION_SIZE_POINTS } from './widgetOptions.ts';
 import { fullBleedArt, SEAMLESS_FILL_MIN_ASPECT_MATCH } from './widgetPreview.ts';
 
 const root = process.cwd();
-const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
+const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8').replace(/\r\n/g, '\n');
 const close = (a: number, b: number, eps = 1e-6) => assert.ok(Math.abs(a - b) <= eps, `${a} ≈ ${b}`);
 const area = (r: { w: number; h: number }) => r.w * r.h;
 
