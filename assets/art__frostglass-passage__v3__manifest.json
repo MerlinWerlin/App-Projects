@@ -1,0 +1,326 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "frostglass-passage",
+  "packVersion": 3,
+  "name": "Frostglass Passage",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D3DCE8",
+    "tile": "#B9C1CB",
+    "glyph": "#1C1816",
+    "accent": "#B6C2D3",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Frostglass Passage",
+    "mood": "Pale silver-blue mist and snowy peaks with quiet slate outline icons, crystal cabin, frost-ring Arctic fox.",
+    "tags": [
+      "frostglass",
+      "passage",
+      "pale",
+      "silver",
+      "blue",
+      "mist",
+      "snowy",
+      "peaks",
+      "with",
+      "quiet",
+      "slate",
+      "outline",
+      "icons",
+      "crystal",
+      "cabin",
+      "frost",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Master Unknown (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Seasonal"
+  },
+  "thumbhash": "c+cFAwAlvxl3iIeGBqlBkAs=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2bb274af.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 144384,
+      "sha256": "2bb274af8a2d2687951a89366395b1c4c1f4ba5c29a144523331a71ffe2882bf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.399e8bbc.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 132290,
+      "sha256": "399e8bbc4192c26bc9ba32119e58b6601a73314e80946708a925304789026219",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.ae4be3ef.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 58574,
+      "sha256": "ae4be3ef31a01384748848b38492be23ed671d7dc895924a7de2c64e278d4e1a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.460634e4.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 73476,
+      "sha256": "460634e4d3efb61cbf976b561974e7c8bb746d8e97c539cec3891e6d97993854",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.1a0de2d7.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 105708,
+      "sha256": "1a0de2d74aba5f3b567d8380a9fd23edd87abfb7db3ceabc06255f49335465f8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.796dc833.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 171814,
+      "sha256": "796dc8336d639d84824c36e69b9e0cc41ce7d682e49d033f24ddee9885d46269",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.4606cfe3.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11886,
+      "sha256": "4606cfe3663d28183554d05af7a8da9cf8fcf6d09d10e80edd90a18ebc74afd7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.ee1b9f13.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 205164,
+      "sha256": "ee1b9f13324e4b9b249a1be57ad46e5b055d92cef0c38c14a6f84db9b6fe2b9e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-glacial-clock.e9d28c28.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 211676,
+      "sha256": "e9d28c283b119ae3d874a494d2f9aa7b28a9b52fc8b89dc5c3e07a1fab68d69e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-frost-focus.7f24e4a2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 124596,
+      "sha256": "7f24e4a2d8ceb7231101a9a3678d22d2df1d6ef6be70f9b59ddd9d9b807bb37a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glacier-pebble.c0d83cc8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 130852,
+      "sha256": "c0d83cc89a81abbf41f51fcf97f40eab0d29d3557de4761e4264214940123b9b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ice-lantern.5985bcd1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 151074,
+      "sha256": "5985bcd1aee7e5644dcbcb249246c721be7d32277245008e1a4c40bf017735a0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-frost-fox.a661798b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 146740,
+      "sha256": "a661798bc3b09c1a2886c26ee7a7741a87d88f62895bbb0929b278812b62f976",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.dec242b9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6028,
+      "sha256": "dec242b99bd7cbce947060e8d0655bca284f8bae150fd7e1d495c8f40ab2c93e",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1674262,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-themed-live-clock.ee1b9f13.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "audit-20261101-glacial-clock",
+      "kind": "clock",
+      "image": "widget-audit-20261101-glacial-clock.e9d28c28.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 glacial clock"
+    },
+    {
+      "id": "frost-focus",
+      "kind": "focus",
+      "image": "widget-frost-focus.7f24e4a2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Frost focus"
+    },
+    {
+      "id": "glacier-pebble",
+      "kind": "art",
+      "image": "widget-glacier-pebble.c0d83cc8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glacier pebble"
+    },
+    {
+      "id": "ice-lantern",
+      "kind": "art",
+      "image": "widget-ice-lantern.5985bcd1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ice lantern"
+    },
+    {
+      "id": "frost-fox",
+      "kind": "art",
+      "image": "widget-frost-fox.a661798b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Frost fox"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.dec242b9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.460634e4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.1a0de2d7.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.796dc833.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "heirloom-rouge",
+  "packVersion": 1,
+  "name": "Heirloom Rouge",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#EDE2D5",
+    "tile": "#D0C6BA",
+    "glyph": "#1C1816",
+    "accent": "#913D24",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Heirloom Rouge",
+    "mood": "Heirloom fruit in deep, rich rouge tones.",
+    "tags": [
+      "heirloom",
+      "rouge",
+      "fruit",
+      "deep",
+      "rich",
+      "tones",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original Glaze HEIRLOOM ROUGE iPhone wallpaper, tall9:19.5 portrait. Fine-art editorial botanical food PHOTOGRAPH style, warm quiet OAT #EFE7DB seamless background absolutely empty across upper73percent for icons. At very bottom-right one small natural tomato-vine cluster: ONE modest irregular ribbed ripe RED heirloom tomato and TWO smaller red cherry tomatoes attached to delicate vine with a few muted sage-green serrated leaves. Cluster occupies only lower27percent and about50percentwidth, vine loosely curls along bottom edge, no floating produce. Beautiful real-looking matte-waxy tomato skin with subtle natural imperfections, ripe rich tomato red #AF372E, muted olive #5A6A45, soft morning window light, tiny grounded shadows. Refined farmers-market still life, not rustic clutter. No basket, bowl, cutting board, tableware, kitchen, water spray, food labels, people, insects, red texture behind icon area, phone, clock, UI, borders, text or watermark. Original generated fictional produce photographic-style scene, no external photo input.",
+    "addedAt": "2026-11-01",
+    "category": "Sweets & Treats"
+  },
+  "thumbhash": "8igKCwSLX1eIlVyjY6A6Brs=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.aa152321.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 91328,
+      "sha256": "aa1523216eab48b16704b342c5231ba01eb2880a162ff27d66157f6f1fc58ec7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.5ebd6341.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 81818,
+      "sha256": "5ebd634107d11227e61b0a34d7864e72c34fa643b35f22e1df8f27986422e5a1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.10de5c0d.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 43870,
+      "sha256": "10de5c0dba1c15ac429925be80c9f45564e3cd17cab1d74468b468e42cfd794b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.209d17cc.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 25108,
+      "sha256": "209d17cc24c630c4e97bec912deeaa96955509599955bc840c4dcc70aa5d6e69",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.d88d6392.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 119912,
+      "sha256": "d88d639291b4633155c9efe0ecc1b9ac2d19f531555fc0dc345d4a0d8b186d81",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.fcd78083.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 131326,
+      "sha256": "fcd7808329e0ff8adb9255555b1f824f8d9d651b73b8254c7849e9014e17f113",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.1339bdfc.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7548,
+      "sha256": "1339bdfc1f7828dc4cd22833d42cd03f61ff68707d742f7d124d075814675814",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.b1fbf694.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 87226,
+      "sha256": "b1fbf6948ba2c878948f1c6fa5bac67ce157390510cfea5572cca2a48a17d7fa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-daily-date.357fd5b8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 25730,
+      "sha256": "357fd5b81fa2598ac387b8b9e4b637006bdac728478da81718059514ec192afd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-harvest-clock.40e8d146.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 38674,
+      "sha256": "40e8d146b0ae41a487a71225a2e985e5cc9546b31186b0ccd42df2da2736b6c9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pomodoro-focus.21a32439.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 27512,
+      "sha256": "21a324394d3c29f037991ac4464a3842961be634778faf0033a57bd8a8477ad3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-seed-crosscut.0a1c7c63.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 157706,
+      "sha256": "0a1c7c63b2c0358e5451cb23e16da7601d1d11fe065eda5137b123ab1acae743",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-vine-trio.3f107c3e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 96610,
+      "sha256": "3f107c3e2885f1012f8d27ca9ef1e86161f0a5a41647113fd39f5226588af9dd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.80905608.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7586,
+      "sha256": "809056086f87095075af91d481a983d9283f2975d94bd3447801627e77cc62f7",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 941954,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-themed-live-clock.b1fbf694.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "daily-date",
+      "kind": "calendar",
+      "image": "widget-daily-date.357fd5b8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Daily date"
+    },
+    {
+      "id": "harvest-clock",
+      "kind": "clock",
+      "image": "widget-harvest-clock.40e8d146.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Harvest clock"
+    },
+    {
+      "id": "pomodoro-focus",
+      "kind": "focus",
+      "image": "widget-pomodoro-focus.21a32439.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pomodoro focus"
+    },
+    {
+      "id": "seed-crosscut",
+      "kind": "art",
+      "image": "widget-seed-crosscut.0a1c7c63.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Seed crosscut"
+    },
+    {
+      "id": "vine-trio",
+      "kind": "art",
+      "image": "widget-vine-trio.3f107c3e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Vine trio"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.80905608.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.209d17cc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.d88d6392.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.fcd78083.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

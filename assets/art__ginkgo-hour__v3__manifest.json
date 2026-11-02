@@ -1,0 +1,324 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "ginkgo-hour",
+  "packVersion": 3,
+  "name": "Ginkgo Hour",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F5ECE0",
+    "tile": "#D7CEC4",
+    "glyph": "#1C1816",
+    "accent": "#D59625",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Ginkgo Hour",
+    "mood": "Golden ginkgo leaves in late-afternoon light.",
+    "tags": [
+      "ginkgo",
+      "hour",
+      "golden",
+      "leaves",
+      "late",
+      "afternoon",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: photorealistic-natural. Create an ORIGINAL portrait iPhone wallpaper, 9:19.5 aspect ratio, named GINKGO HOUR. Fine-art botanical still-life photography aesthetic. Seamless warm rice-ivory background #F5F0E5, smooth and quiet. UPPER 70% is genuinely empty warm ivory negative space for readable app icons, only extremely faint natural tonal depth. In the BOTTOM 27% place one small elegant GINKGO twig, two slender warm-brown stems and THREE unmistakable broad fan-shaped golden-yellow ginkgo leaves with radiating fine veins and soft irregular bilobed edges. A fourth fallen fan leaf lies low at the right. A natural autumn botanical specimen, beautifully detailed fine radial veins, buttery golden ochre translucent edges, realistic organic imperfections. Entire composition occupies about 62% canvas width and stays low with generous clear margins. Soft late-afternoon side light and delicate diffused shadows, luxurious calm editorial macro photography; palette warm ivory, golden ochre, muted olive, pale honey. No tree landscape, no birch, no berries or flowers, no vase, no ribbon, no paper craft, no jewelry, no faces or characters, no phone frame, no UI, no lettering or watermark. Original generated botanical imagery, no external photo.",
+    "addedAt": "2026-11-01",
+    "category": "Seasonal"
+  },
+  "thumbhash": "NikGGwKnf4Zoc3laRpBkBWk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.229ca5cc.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 86408,
+      "sha256": "229ca5cc5b469808e245e486c7c4d70a60f08144b64b701d7d3a880536d7df7d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.a9eb3359.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 78216,
+      "sha256": "a9eb33596ffd27472360998189a6bf5712bed828578dad62f2693bf26af7f074",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.75091447.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 41234,
+      "sha256": "7509144720f68c8cdce74bd0d65597cd75f881e3f131e194da356552768b58cf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.ec1cc0f6.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 29316,
+      "sha256": "ec1cc0f6af82651c53af27f472b6d79b5fdabcef002ff0c6c25adcfac376d8dc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.137b5ea9.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 12640,
+      "sha256": "137b5ea92902d72d4fc3867c5cc5fba041f8fad9d5ed2232455f7b0e0534afc5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.02cc9b75.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 103072,
+      "sha256": "02cc9b75a40dabea753ff34626d596ea8a183c7add6204e02f0bfaf7e7521fdc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.01e8900d.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7082,
+      "sha256": "01e8900dcb330a4dacde6fa2cc54be68bd2dc057330130d9d75fd0c202444539",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.c4fbd753.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 121884,
+      "sha256": "c4fbd75313e23c72e966d327f598fb32a8fc36f5569316c7a34535302231b893",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-production-20261101-fan-leaf.b123eb23.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 107208,
+      "sha256": "b123eb23f7e170ea6ab60dea5c6417e47e5cf8116f098b1b5ddf0924e2483503",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.64a9a3ad.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6510,
+      "sha256": "64a9a3ad54fbd3d4dda7e66c99c4a0cf973fffb984b7a0df1f406920c90ca1f5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.461fd52b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2972,
+      "sha256": "461fd52ba3c6426933754a99c9ee7aa73f6b733740276181f13d5d6025a12918",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.9717bf3c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6342,
+      "sha256": "9717bf3c55b9f5be9ca110de8ef8d5db2afbe4a8bbc0d6da4eba73ac6f1308bd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-battery.5b4b731b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2708,
+      "sha256": "5b4b731bf65d3d6e78d032845425f1f63716e8be57ec3db1b9653fe6658ebf88",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 605592,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-themed-live-clock.c4fbd753.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "production-20261101-fan-leaf",
+      "kind": "art",
+      "image": "widget-production-20261101-fan-leaf.b123eb23.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Production 20261101 fan leaf"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.64a9a3ad.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.461fd52b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.9717bf3c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-battery",
+      "kind": "battery",
+      "image": "widget-live-battery.5b4b731b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Battery level",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.22,
+          0.27,
+          0.56,
+          0.46
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.ec1cc0f6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.137b5ea9.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.02cc9b75.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

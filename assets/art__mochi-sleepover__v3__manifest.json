@@ -1,0 +1,318 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "mochi-sleepover",
+  "packVersion": 3,
+  "name": "Mochi Sleepover",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#EAE0FC",
+    "tile": "#CDC4DC",
+    "glyph": "#1C1816",
+    "accent": "#D2A2C1",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Mochi Sleepover",
+    "mood": "Milky lilac, strawberry pink and marshmallow-cream kawaii sleepover theme.",
+    "tags": [
+      "mochi",
+      "sleepover",
+      "milky",
+      "lilac",
+      "strawberry",
+      "pink",
+      "marshmallow",
+      "cream",
+      "kawaii",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: adorable original kawaii character illustration rendered as premium soft pastel3D clay/plush. Portrait iPhone wallpaper9:19.5 MOCHI SLEEPOVER. Overall pale milky LILAC #EEE7FA, strawberry-milk pink, marshmallow cream and tiny soft buttery-yellow accents. Upper62percent completely clean pale milky lilac with very subtle soft paper-like finish, no objects lettering stars or patterns there, practical quiet space for future cute icons. LOWER38percent an unbelievably cute small sleepover cuddle pile on ONE pillowy lilac cloud: CHUBBY CREAM BUNNY with stubby round ears/round little feet holding a strawberry-pink HEART PILLOW, SQUISHY WHITE KITTEN with tiny triangle ears and tiny paws sleeping cheek-to-cheek beside bunny, and a very small round lavender sleepy bear tucked behind them under a fluffy pink blanket. All characters have tiny dark brown bead eyes or curved sleeping eyes, tiny peach blush cheeks, tiny simple smiles, soft round marshmallow bodies, NO realistic fur anatomy, no creepy teeth or long limbs. One tiny butter-yellow plush star and two very small matte pink heart charms nestled beside cloud, nothing floating high above. Cloud and entire characters safely contained in bottom38percent with breathing room left/right, soft warm ambient lighting and delicate shadows, irresistibly sweet Japanese-inspired kawaii stationery aesthetic, high quality tasteful gentle pastel3D, cute collectible plush/slime softness. No text logos UI phone frames borders watermark, no realistic rooms furniture machines typewriters jewellery bugs, no dramatic scenery or actual cosmic astronomy. Full bleed portrait.",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "uCcGCwR2j1iHd4l3eIB1B5g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.9f81d70c.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 66058,
+      "sha256": "9f81d70cd4e75a2226f89873d7e1425b2a0ea8254c04ccf5207575c14a1704f9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.d990629b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 57756,
+      "sha256": "d990629b6c6094151c1454a8816072d72b032c83dae461aab7e324d71bf864b8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.4a49400e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 27092,
+      "sha256": "4a49400e78e5e44b7fad66968a12dba2b8c1beb2b50ca61a1086f8ef0b84d02d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.6a5e342c.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 13372,
+      "sha256": "6a5e342c50b80d2032aa4a4c5ab4b9fa6007d9540b3a1a87110a8e365c031dee",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.17346590.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 43412,
+      "sha256": "17346590cd05f6b85c44c473f0b6781a19e6a3891521557f3c7ae87979a2e9c1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.95c7082a.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 70396,
+      "sha256": "95c7082a86b3c20cc52d92916738f5b29dc326a28e81c13ab0fca39d6cf9a5c0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.91843d6f.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5600,
+      "sha256": "91843d6fc4f04b96dbae1d267ea5900d8e06fe5cb235a09ccff963ecc7c8dea8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.8e31472c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 31856,
+      "sha256": "8e31472c1489f465dc80fe7d8e26d3cc1ec397587fcb8ea3e9c2c9e01a9610a7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sleepover-habits.42952e43.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 43782,
+      "sha256": "42952e4379f13737dc581a0fda85fe309b595d3e68eb406f1b4477480ad0d3cc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-star-hot-water-bottle.0c51b022.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 42252,
+      "sha256": "0c51b0227afa3780d62cb29e3f79ead6f3721a6081b15b34bad7ff32db3c1e3b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.3a0e9b35.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6050,
+      "sha256": "3a0e9b35c81309156b0792e0d21353248844c7dfe72c98977f3edabfcf57779d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.c9d9fe07.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3078,
+      "sha256": "c9d9fe07cadbbbd0ee8fe658eb0d34a59d8fe72870740d55141e9bace7e9b84b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.5992c06b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5944,
+      "sha256": "5992c06beef42033e135b545c7bc641d4dca0c1bae252efcd02e660ba8fa2867",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 416648,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-themed-live-clock.8e31472c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "sleepover-habits",
+      "kind": "habits",
+      "image": "widget-sleepover-habits.42952e43.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sleepover habits"
+    },
+    {
+      "id": "star-hot-water-bottle",
+      "kind": "art",
+      "image": "widget-star-hot-water-bottle.0c51b022.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Star hot water bottle"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.3a0e9b35.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.c9d9fe07.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.5992c06b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.6a5e342c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.17346590.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.95c7082a.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

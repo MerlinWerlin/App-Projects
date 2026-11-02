@@ -1,0 +1,270 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "millrace-mist",
+  "packVersion": 1,
+  "name": "Millrace Mist",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D8E1E0",
+    "tile": "#BEC5C4",
+    "glyph": "#1C1816",
+    "accent": "#D8E2E0",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Millrace Mist",
+    "mood": "An old millrace in soft river mist.",
+    "tags": [
+      "millrace",
+      "mist",
+      "soft",
+      "river",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 Glaze wallpaper MILLRACE MIST. Upper74percent COMPLETELY EMPTY pale river-mist #DDE6E3 matte studio field, subtle fine grain only, no scenery or objects behind icons. Bottom22percent ONE SMALL original tabletop miniature: oak waterwheel upright on two slim timber supports fixed to a tiny mossy-grey stone base, a quiet shallow blue ceramic-water pool at its foot and small timber bucket beside. Whole vignette at most42percent canvas width and19percent total canvas height, centered LOW with broad side and bottom margins. Fine weathered oak grain, moss green #78886D, soft grey stone and muted blue #7DABBA, restrained realistic handcrafted diorama, gentle studio shadow. Every wheel blade, support, base and bucket fully contained. No house, people, landscape, waterfall, steam, lettering, brand, phone, UI or border.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "9PcFCwDnj2OXdY2yCHCJAKc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.a78a4678.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 78720,
+      "sha256": "a78a46787b273d924c661c8f212e57f36ac8bb22417dc1d7196419e0f86e4d8a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.fb0871d8.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 70546,
+      "sha256": "fb0871d8c0e952735d78c8b86f6739d4e1a51958ec7be527708ec0504cef6b60",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.54e3ed3a.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 38044,
+      "sha256": "54e3ed3a824a668bd89254ad8314e44ac3ab1e4a5b15254bcbce77d83d168849",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.8528d3d0.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 39590,
+      "sha256": "8528d3d0c4f528edead322942501e98860cbba6f3b23ca68cfab31fc61a783e5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.83904152.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 87258,
+      "sha256": "839041529fa10064dbd06938b4d8e73cfa53d0baaaf405af90305e87f888ecea",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.fa035cfd.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 108142,
+      "sha256": "fa035cfd0983ca7c8b672498d351fecbb7e852695ac7a833b535dc4fd732369b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.551fc5c4.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5354,
+      "sha256": "551fc5c467ca4ce44bebadc12d98594c0d5bc6b621ea86f7401c74ec75428c28",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-flow-focus.44fac6ee.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 96260,
+      "sha256": "44fac6ee220e6ca8490f3241cad28188c46b7f6543192869f34c7c3cba5b4903",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mill-clock.10fda091.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 99284,
+      "sha256": "10fda09147554563d53dcd6bbbe87220f41a734dc6794b0e50576ccccde4438a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-oak-waterwheel.ee8cd38a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 137300,
+      "sha256": "ee8cd38abbc6d61b94992dcadb2eb01583b53a50823475f91aa8c66acd10c967",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ripple-study.dbc4f5e0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 95688,
+      "sha256": "dbc4f5e0c48f6a22e17969fbb8014523ac6b8b12ca7f2c2f2fc580b25616ef44",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-river-date.0219bbfb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 88568,
+      "sha256": "0219bbfbf69c0f78b5342ddcc08e14002dc905fefe736cbff8768223f2536c92",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-timber-bucket.e049dcb2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 79498,
+      "sha256": "e049dcb27bd66c451799f89de376d83e23dc74e796bd524dbe492e05b85efb0b",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1024252,
+  "widgets": [
+    {
+      "id": "flow-focus",
+      "kind": "focus",
+      "image": "widget-flow-focus.44fac6ee.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Flow focus"
+    },
+    {
+      "id": "mill-clock",
+      "kind": "clock",
+      "image": "widget-mill-clock.10fda091.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mill clock"
+    },
+    {
+      "id": "oak-waterwheel",
+      "kind": "art",
+      "image": "widget-oak-waterwheel.ee8cd38a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Oak waterwheel"
+    },
+    {
+      "id": "ripple-study",
+      "kind": "art",
+      "image": "widget-ripple-study.dbc4f5e0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ripple study"
+    },
+    {
+      "id": "river-date",
+      "kind": "calendar",
+      "image": "widget-river-date.0219bbfb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "River date"
+    },
+    {
+      "id": "timber-bucket",
+      "kind": "art",
+      "image": "widget-timber-bucket.e049dcb2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Timber bucket"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.8528d3d0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.83904152.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.fa035cfd.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

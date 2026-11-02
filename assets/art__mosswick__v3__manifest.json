@@ -1,0 +1,299 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "mosswick",
+  "packVersion": 3,
+  "name": "Mosswick",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#BBB7A1",
+    "tile": "#A5A18E",
+    "glyph": "#1C1816",
+    "accent": "#977341",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Mosswick",
+    "mood": "A cork snail cottage with tufted moss, paper backgrounds, cocoa icons.",
+    "tags": [
+      "mosswick",
+      "cork",
+      "snail",
+      "cottage",
+      "with",
+      "tufted",
+      "moss",
+      "paper",
+      "backgrounds",
+      "cocoa",
+      "icons",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "JhkKEwKZbzd4iWd3aHB8BLg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.92d0dc34.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 427956,
+      "sha256": "92d0dc343bd96bd7514fddf0c823d9aeabd01d713bb74a0f4604a50887dfa937",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c2133b7e.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 388398,
+      "sha256": "c2133b7eb78c16d8429cec2241faa99623be9984dd111aebaa858c8f87341fe1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.3c713185.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 176000,
+      "sha256": "3c7131851793cf769965e74fea1a5244e3601966a46f6e12dfa1c089d336a2d1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.d11ebbc6.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 54990,
+      "sha256": "d11ebbc63971c7de9fcb262f794b36a2b1d0c7e39abc6ba4badffc91a59f831b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.d9496215.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 149194,
+      "sha256": "d9496215a21d1ec67c3d0c7da7d1d90e4619fb455794902af05488a61601eb35",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.40dac4cc.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 318812,
+      "sha256": "40dac4ccbe468bb66a8890c19e660bd90ff059b39baefbad37046f6ef6afa12f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.22d7162b.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 21298,
+      "sha256": "22d7162b0f6cd0d854f4f845eb1de6546985b21e02b64d7fea545db434c2cea3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.738e9239.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 224288,
+      "sha256": "738e9239e29668f304966678bef77636fa2d2db862556997bc2cff4a9388c6f7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bark-snail.06eb2ab1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 234824,
+      "sha256": "06eb2ab1889f8778f84c7fdd9a9762303b64f80fd196fd91555d45aa747026bc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-moss-habits.fe8272ab.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 258394,
+      "sha256": "fe8272abed0590b81d8ac5c207f31daab9d82f821ef9f367a8f7ec8fc9db9ebd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-moss-tower.462a4a4b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 188804,
+      "sha256": "462a4a4b03dce6059bb4dce3b33644ef2dd8c6ff19e65504ba233c83de87887a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-travelling-cottage.8f26df1d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 226858,
+      "sha256": "8f26df1d8a1a583e4ab535dc7f9225ff8a2c8613ecf9d46da924c6ad2d6dcec0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.5d26fdf0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5576,
+      "sha256": "5d26fdf0a007f453f50113bb2f5c9c0f1a43d8ee8ae3c486d3c25dbc5a559f67",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2675392,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-themed-live-clock.738e9239.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "bark-snail",
+      "kind": "art",
+      "image": "widget-bark-snail.06eb2ab1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bark snail"
+    },
+    {
+      "id": "moss-habits",
+      "kind": "habits",
+      "image": "widget-moss-habits.fe8272ab.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Moss habits"
+    },
+    {
+      "id": "moss-tower",
+      "kind": "art",
+      "image": "widget-moss-tower.462a4a4b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Moss tower"
+    },
+    {
+      "id": "travelling-cottage",
+      "kind": "art",
+      "image": "widget-travelling-cottage.8f26df1d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Travelling cottage"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.5d26fdf0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.d11ebbc6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.d9496215.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.40dac4cc.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
