@@ -122,6 +122,7 @@ test('catalogue packs become art-pack gallery themes; bundled ids win; disabled 
   assert.equal(free.packId, undefined, 'not a bundled-Plus theme pack');
   assert.equal(free.iconStyle.background.kind, 'solid');
   assert.equal(free.palette.bg, palette.bg);
+  assert.ok(free.categories);
   assert.ok(free.categories.includes('nature') && free.categories.includes('dark'));
   assert.equal(free.addedAt, '2026-10-29');
   assert.equal(isRemoteArtTheme(ART_PACK_THEMES[0]), false);
