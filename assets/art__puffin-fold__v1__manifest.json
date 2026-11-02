@@ -1,0 +1,273 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "puffin-fold",
+  "packVersion": 1,
+  "name": "Puffin Fold",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D9DDD8",
+    "tile": "#BFC1BD",
+    "glyph": "#1C1816",
+    "accent": "#B2C0C3",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Puffin Fold",
+    "mood": "A paper-folded puffin on soft grey-green.",
+    "tags": [
+      "puffin",
+      "fold",
+      "paper",
+      "folded",
+      "soft",
+      "grey",
+      "green",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 iPhone wallpaper PUFFIN FOLD. Pale grey-green paper #E8ECE7, upper TWO THIRDS entirely empty uniform quiet background with fine paper fiber. Bottomthird one charming sophisticated LAYERED CUT-PAPER PUFFIN perched on a small charcoal paper coastal ledge, two restrained softblue wave layers lowbehind. Recognizable black/charcoal back, white face/belly, orange folded triangular bill with grey band, tiny orange webbed feet, calm darkeye. Crisp handcut paper edges and shallow layer shadows, tactile folded-paper craft sculpture, grown-up playful minimal design. Whole bird comfortably low with margins. No felt, fur, calligraphy, text, labels, logos, UI, phone orframe. Original fictional paperart.",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "L/gNCwCWnzd3ioZ5K0/BoEI=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.da74a868.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 250630,
+      "sha256": "da74a868ae3d34fed78b5d1364946842f5fa18f0d9504802832b9542b2d4b41e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.3addb055.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 223572,
+      "sha256": "3addb055ae1dc803e31f89230cf0040c2b7f9e481db81a4af23d719584f0d84f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.5f116e72.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 76840,
+      "sha256": "5f116e7218099ec054e39f5e0a21bf6662fed7a604389ac8d4ffd1f41821812a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.45d21385.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 47670,
+      "sha256": "45d213859586adc86e3be4e9e5eabc8310671aa2ccde6dea28f6399b542c5e7d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.d9ffcf68.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 102578,
+      "sha256": "d9ffcf68bde095b5d7f1d008293821ea29165f45088713982124c5a09e5ca68e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.6362c6d6.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 240972,
+      "sha256": "6362c6d6aa96952c0c2d9537f06fbd34ea16c2023cf386c341f65ccfc9bf41c0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.9e544b8f.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6910,
+      "sha256": "9e544b8fb332e0b3df75449ea0203ec73146840f45016223f30f98289c76d06f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-beak-clock.86aaa90e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 115748,
+      "sha256": "86aaa90ededf8cdba9b10d0e6367ccea9f739fbdb6956050a66e989b418692c3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cliff-strata.3514833f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 259740,
+      "sha256": "3514833fde31a0f69b513a2c4c405cc45f64f2096d416eea295a735c5a096e74",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-coast-date.35033c1e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 121920,
+      "sha256": "35033c1e2d7b6d4688d6a23c553924e708a2410732664171f2a7b7825da7aa87",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-egg-progress.2145988c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 104876,
+      "sha256": "2145988cb3575a69960d87e612bfd94888152675908b6eb0d4ec4cbe48d5d6a4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-flight.310ee665.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 189650,
+      "sha256": "310ee66592fd1074a62f4ac3d414c3187137f80b535dda039379de4773130b63",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-puffin-perch.3993576f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 151528,
+      "sha256": "3993576fbf0bbd689bd40988a615fb70b33d2f1b0a7224502230c6dbcbca6b5a",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1892634,
+  "widgets": [
+    {
+      "id": "beak-clock",
+      "kind": "clock",
+      "image": "widget-beak-clock.86aaa90e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Beak clock"
+    },
+    {
+      "id": "cliff-strata",
+      "kind": "art",
+      "image": "widget-cliff-strata.3514833f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cliff strata"
+    },
+    {
+      "id": "coast-date",
+      "kind": "calendar",
+      "image": "widget-coast-date.35033c1e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Coast date"
+    },
+    {
+      "id": "egg-progress",
+      "kind": "art",
+      "image": "widget-egg-progress.2145988c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Egg progress"
+    },
+    {
+      "id": "paper-flight",
+      "kind": "art",
+      "image": "widget-paper-flight.310ee665.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Paper flight"
+    },
+    {
+      "id": "puffin-perch",
+      "kind": "art",
+      "image": "widget-puffin-perch.3993576f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Puffin perch"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.45d21385.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.d9ffcf68.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.6362c6d6.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

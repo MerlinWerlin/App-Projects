@@ -1,0 +1,315 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "yuzu-soak",
+  "packVersion": 3,
+  "name": "Yuzu Soak",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#FEEFCA",
+    "tile": "#DED1B1",
+    "glyph": "#1C1816",
+    "accent": "#BA8553",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Yuzu Soak",
+    "mood": "A ceramic capybara soaking in a warm yuzu bath.",
+    "tags": [
+      "yuzu",
+      "soak",
+      "ceramic",
+      "capybara",
+      "soaking",
+      "warm",
+      "bath",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Create original portrait iPhone wallpaper 9:19.5 for YUZU SOAK, a very cute kawaii fantasy made from hand-sculpted glossy NERIKOMI MARBLED STONEWARE pottery. Warm pale butter-ivory background #FFF3D7. Upper 68 percent EMPTY plain ivory, only faint ceramic-like surface softness, no patterns lettering UI or decoration. Bottom 32 percent: a small rounded apricot ceramic soaking tub on three stubby feet, marbled bands of pale peach and lilac clay visible through translucent glaze. ONE adorable chubby caramel CAPYBARA with tiny round ears, dot eyes closed contentedly, rosy cheeks, blunt rounded muzzle, tiny paws resting on tub rim, submerged in milky water. A single small yellow YUZU citrus balances on its head with two green leaves. Two little glazed yuzu fruits by the tub, one tiny ceramic folded lilac towel. The whole tub is small around 58 percent canvas width, located low with full safe margins, capybara only 12 percent canvas height. Charming handcrafted miniature collectible with slight irregular clay edges, delicate ceramic glaze pinpricks, beautiful tactile light, sculptural nerikomi rather than plush or plastic. Cozy whimsical sweetness, refined restrained composition, butter yellow/apricot/lavender palette. No ghosts laundry clouds snails kittens matcha tea astronaut typewriter or logos. No text phone mockups frames UI watermark.",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "tikGCwK2j2V3dIyUW1CJBJc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.5d1ea986.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 62522,
+      "sha256": "5d1ea9868c278ddc7593e78a7a3238edd5e0005188d943d83e16e9491bae99e7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.33bee64d.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 55704,
+      "sha256": "33bee64db0797a9dd2dc72be86eeef4f231163296b496152a72c69706b94598c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.00b4f400.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 29358,
+      "sha256": "00b4f40031c5d6a08d5e558286d3ffe6fd8a6864e5d9a4ab6d074a2179f64f0f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.729961e5.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 18646,
+      "sha256": "729961e5f925c042250868bb8be7b9754bdb0b3597f0f0fbe25f280759f0ac52",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.e8b7a641.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 36998,
+      "sha256": "e8b7a641805b65f7b02c244df7c7aece28f34083a1637a7f804d50236caeead1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.9a5dbccc.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 66740,
+      "sha256": "9a5dbcccd6230083bdf5030a607e3a6d04e7717f45b61932d42f68cc090d9f66",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.8723d567.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5346,
+      "sha256": "8723d567d0d2164723ee314586389e52ece407f322ce342d4bca4e554cffd099",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.5aea5110.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 43654,
+      "sha256": "5aea511055424ee76aa14aa4034273fcb9432170098460a935d62475c83ca859",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-soak-focus.803ca19e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 61278,
+      "sha256": "803ca19e338bd6d194bf435f0b65b0be252da2eb5d6743f349543d1159330c49",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-yuzu-pond-bowl.0c88e614.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 36496,
+      "sha256": "0c88e6147402df781800ea7168d8a566489a6bd598fbf1c44e8531a85f94e427",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.74852a36.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6612,
+      "sha256": "74852a36e2dfd574f26970b195b15017fb87b985510d3fc965103f265db78c77",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.483ac987.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3436,
+      "sha256": "483ac987e8a007140c92d90e7ee63d59a8756256baf527e8dcb63f2c4dc9bc7a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.367ee2be.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6478,
+      "sha256": "367ee2be313aafe630f74f467c978f0fc95229bbff7bd4719d77f9b027cd3811",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 433268,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-themed-live-clock.5aea5110.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "soak-focus",
+      "kind": "focus",
+      "image": "widget-soak-focus.803ca19e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Soak focus"
+    },
+    {
+      "id": "yuzu-pond-bowl",
+      "kind": "art",
+      "image": "widget-yuzu-pond-bowl.0c88e614.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Yuzu pond bowl"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.74852a36.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.483ac987.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.367ee2be.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.729961e5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.e8b7a641.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.9a5dbccc.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

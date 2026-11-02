@@ -1,0 +1,317 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "prism-orchard",
+  "packVersion": 3,
+  "name": "Prism Orchard",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#CDC6D7",
+    "tile": "#B4AEBC",
+    "glyph": "#1C1816",
+    "accent": "#DCBDB7",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Prism Orchard",
+    "mood": "Lilac mist and an orchard inside a glass pear.",
+    "tags": [
+      "prism",
+      "orchard",
+      "lilac",
+      "mist",
+      "inside",
+      "glass",
+      "pear",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Bobby (@thapapawan) (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Dreamy & Pastel"
+  },
+  "thumbhash": "MRgGGwRXX5mJdYl3iIB4CZg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2de89fc2.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 228872,
+      "sha256": "2de89fc23ce5da4b333bf88c4067754d246ba826f8474357c7e50d243224ee4d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.67547ca5.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 208534,
+      "sha256": "67547ca5de43b6b8a946a09ab37c08e3f5a285ec7148c6bb1826dc86848706a5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.c98212c8.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 107464,
+      "sha256": "c98212c84cd5a62db7bb0e36d5e42c0de96bffb0c4c18fcaba527de565cf1f07",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.f909d144.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 70338,
+      "sha256": "f909d1442ccc4efbae53946274a26c33bc99b538da67099eeee19df8ffa06f7d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.5153effa.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 94416,
+      "sha256": "5153effaf3b466bb04e9befb4e698136c710d206e8b89679432538e58c6122a7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.dac3e94b.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 197974,
+      "sha256": "dac3e94b699bcc4d438ca8d5e12cd4bf43ac978d917f7052d6180d45c24fb14b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.e791d81b.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 20138,
+      "sha256": "e791d81b812666ad2e910438aea6c6942d9c3dfb09543c0cc83787a1d970419c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.09603efc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 183084,
+      "sha256": "09603efc1b075d524abeb850f412443c1a5f024bbd8aff7415c9712fa256271d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-quartz-sundial.156463f4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 186058,
+      "sha256": "156463f4e4b189bfdb991c4bb1677d1a1edd12fa9a5cc6c92d63c1c4541860c4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glass-plum.df948b64.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 149628,
+      "sha256": "df948b647b05e17044f06ca92bbab84594235cbdd28704213e3e6dfeb297d51f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-opal-tree-frog.87be490c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 104126,
+      "sha256": "87be490cd80633af054b45a06aa8ceb6a32fdb525ceff5160ff388e0ad9407a3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-orchard-habits.856578e1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 114844,
+      "sha256": "856578e150bb2d9451de61286ea429e59717272a3c98ac2d60947d89f0573337",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-petal-hummingbird.2e0c34fc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 130454,
+      "sha256": "2e0c34fc637a1eedad6ca0f7a77c4e067ced252725b4e9a1a99b78f1a08cd085",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.ead4fdcd.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5542,
+      "sha256": "ead4fdcde65fcafb0e3671e6bba158ee2f6cab1897183f1d725a277d5fe943ce",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1801472,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-themed-live-clock.09603efc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "audit-20261101-quartz-sundial",
+      "kind": "clock",
+      "image": "widget-audit-20261101-quartz-sundial.156463f4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 quartz sundial"
+    },
+    {
+      "id": "glass-plum",
+      "kind": "art",
+      "image": "widget-glass-plum.df948b64.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glass plum"
+    },
+    {
+      "id": "opal-tree-frog",
+      "kind": "art",
+      "image": "widget-opal-tree-frog.87be490c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Opal tree frog"
+    },
+    {
+      "id": "orchard-habits",
+      "kind": "habits",
+      "image": "widget-orchard-habits.856578e1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Orchard habits"
+    },
+    {
+      "id": "petal-hummingbird",
+      "kind": "art",
+      "image": "widget-petal-hummingbird.2e0c34fc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Petal hummingbird"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.ead4fdcd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.f909d144.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.5153effa.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.dac3e94b.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

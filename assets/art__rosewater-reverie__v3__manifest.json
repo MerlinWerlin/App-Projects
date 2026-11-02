@@ -1,0 +1,318 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "rosewater-reverie",
+  "packVersion": 3,
+  "name": "Rosewater Reverie",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DFC0BD",
+    "tile": "#C4A8A6",
+    "glyph": "#1C1816",
+    "accent": "#AD7973",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Rosewater Reverie",
+    "mood": "Dusty rose satin, a bottled ballet and a satin swan.",
+    "tags": [
+      "rosewater",
+      "reverie",
+      "dusty",
+      "rose",
+      "satin",
+      "bottled",
+      "ballet",
+      "swan",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Tamanna Rumee (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-10-31",
+    "category": "Dreamy & Pastel"
+  },
+  "thumbhash": "r0gGCwJXb3iHlWlXhKB4CYk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.bbb0961d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 159894,
+      "sha256": "bbb0961d660a66c9b4a532f7c4c45b327c47c7ece841cbd4598999d14b5c03dd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.db0b4456.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 139944,
+      "sha256": "db0b44560e39be1c0664d3d2d58dc70105a89e44ac9ea2d3f9123d2dfa80695e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.e2b26417.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 50202,
+      "sha256": "e2b2641721fd378d003803e72182bb97a5fc6dee260da485024516f687135f1e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.66b748a9.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 54912,
+      "sha256": "66b748a9a3344c961f74bd8bc1d1dd45a4a28e1ce5624026f0a14b18e41fe215",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.a237e3b0.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 110896,
+      "sha256": "a237e3b0e3baa0d0033c6bc149dc796af3a7a65fd76d2672d7930ea1a1a89ff4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.d794d22e.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 210498,
+      "sha256": "d794d22e57ad339e23f3d41f7007083ae95ca11a1a5f3dd6feb1b017f6989a0c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.203e0eb4.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6568,
+      "sha256": "203e0eb4f7ca9e3051a9b3ac0886b593310fd47ade40dfe8e773317ab87eb530",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.c47a7c6c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 154458,
+      "sha256": "c47a7c6ce94eb3bd6fac3631be482ad698a1202bb1d3c1ddbe11372638e58da8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-pearl-pendulum.6df4365d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 99236,
+      "sha256": "6df4365d98c76679d2a2f4de715a84efe0aabb0ee82287a20eb77ba6329550c9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glass-rose.fff58ab0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 128356,
+      "sha256": "fff58ab0f179a0a54f05ec5bbf5877539880e468e05ab0c7dd2aff08f059d116",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pearl-ballet-brooch.6dfadda6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 140600,
+      "sha256": "6dfadda6d978ac65491075b23245d212c02df20ceeb6ff4f7142dc2adcba89c8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rehearsal-countdown.4eff6fe3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 89896,
+      "sha256": "4eff6fe3350ef0edacfcfe373e7645799f6253d92c466dc4a8cfb41b673b71e2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-satin-swan.15bca733.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 126900,
+      "sha256": "15bca7331b9b80525ac751a0db902fb8537c311f523009e2ae35ac5044823299",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.2708a619.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5558,
+      "sha256": "2708a61919adcb88df33a949409b4b4efc5acd5e9289b655c6c39be0b7b15e76",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1477918,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-themed-live-clock.c47a7c6c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "audit-20261101-pearl-pendulum",
+      "kind": "art",
+      "image": "widget-audit-20261101-pearl-pendulum.6df4365d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 pearl pendulum"
+    },
+    {
+      "id": "glass-rose",
+      "kind": "art",
+      "image": "widget-glass-rose.fff58ab0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glass rose"
+    },
+    {
+      "id": "pearl-ballet-brooch",
+      "kind": "art",
+      "image": "widget-pearl-ballet-brooch.6dfadda6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pearl ballet brooch"
+    },
+    {
+      "id": "rehearsal-countdown",
+      "kind": "countdown",
+      "image": "widget-rehearsal-countdown.4eff6fe3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rehearsal countdown"
+    },
+    {
+      "id": "satin-swan",
+      "kind": "art",
+      "image": "widget-satin-swan.15bca733.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Satin swan"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.2708a619.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.66b748a9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.a237e3b0.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.d794d22e.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
