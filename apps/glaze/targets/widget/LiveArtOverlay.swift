@@ -127,8 +127,15 @@ enum LiveArtStore {
 /// Timeline entry dates and reload policy for a Seamless widget, from what it shows live.
 enum LiveArtSchedule {
   static func plan(pieceID: String?, family: WidgetFamily, from now: Date) -> (dates: [Date], policy: TimelineReloadPolicy) {
-    guard let spec = LiveArtStore.spec(pieceID: pieceID, family: family) else { return ([now], .never) }
-    let cal = Calendar.current
+    plan(spec:LiveArtStore.spec(pieceID:pieceID,family:family),from:now)
+  }
+
+  static func nextMidnight(from now:Date,calendar:Calendar) -> Date {
+    calendar.date(byAdding:.day,value:1,to:calendar.startOfDay(for:now)) ?? now.addingTimeInterval(3600)
+  }
+
+  static func plan(spec:LiveArtSpec?,from now:Date,calendar cal:Calendar = .current) -> (dates:[Date],policy:TimelineReloadPolicy) {
+    guard let spec=spec else {return ([now],.never)}
     switch spec.kind {
     case .clock:
       // One entry per minute for the next hour, then a new timeline.
@@ -139,7 +146,7 @@ enum LiveArtSchedule {
       }
       return (dates, .atEnd)
     case .date, .countdown:
-      let tomorrow = cal.date(byAdding: .day, value: 1, to: cal.startOfDay(for: now)) ?? now.addingTimeInterval(3600)
+      let tomorrow = nextMidnight(from:now,calendar:cal)
       return ([now], .after(tomorrow))
     case .battery:
       return ([now], .after(now.addingTimeInterval(15 * 60)))

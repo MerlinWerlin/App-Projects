@@ -45,6 +45,19 @@ enum NativeComponentContract {
       try check(spec?.compact==true,"compact native parse \(kind)")
     }
     try check(LiveArtSpec.parse(["kind":"clock","rect":[0,0,1,1],"valueStyle":"compact"])?.compact==false,"clock cannot use value compact")
+    for (zone,month,day,hours) in [("America/New_York",3,8,23),("America/New_York",11,1,25),("Australia/Sydney",10,4,23),("Australia/Sydney",4,5,25)] {
+      var cal=Calendar(identifier:.gregorian);cal.timeZone=TimeZone(identifier:zone)!
+      let midnight=cal.date(from:DateComponents(year:2026,month:month,day:day))!
+      let next=LiveArtSchedule.nextMidnight(from:midnight,calendar:cal)
+      try check(next.timeIntervalSince(midnight)==Double(hours*3600),"DST midnight \(zone) \(month)")
+      try check(cal.component(.hour,from:next)==0,"calendar midnight hour")
+    }
+    let clockSpec=LiveArtSpec.parse(["kind":"clock","rect":[0,0,1,1]])!
+    let scheduled=LiveArtSchedule.plan(spec:clockSpec,from:start.addingTimeInterval(17))
+    try check(scheduled.dates.count==61,"clock timeline61 entries")
+    try check(zip(scheduled.dates,scheduled.dates.dropFirst()).allSatisfy{$0.0<$0.1},"clock increasing timeline")
+    let dateSpec=LiveArtSpec.parse(["kind":"date","rect":[0,0,1,1]])!
+    try check(LiveArtSchedule.plan(spec:dateSpec,from:start).dates==[start],"date current entry")
     return ["checks":checks,"focusPersistenceAndTransitions":true,"batteryUnknownHandling":true,"nativeMetadata":true,"realAppGroupTouched":false,"physicalDeviceTest":false]
   }
 }
