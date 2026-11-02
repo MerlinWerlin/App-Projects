@@ -57,7 +57,7 @@ export const ko: NonNullable<LocaleMessages['tabs']> = {
     open: '{kind}, {size}. 위젯 스튜디오를 엽니다.',
     soon: '곧 출시',
     soonA11y: '{kind}, {size}. 곧 출시.',
-    lockNote: '잠금 화면 위젯은 아직 준비 중이에요. 다음 위젯이 곧 나옵니다.',
+    lockNote: 'Glaze 잠금 화면 위젯(시계, 날짜, 배터리, 카운트다운, 달)은 잠금 화면에서 추가해요: 잠금 화면을 길게 누르고 사용자화 > 잠금 화면 > 위젯 영역을 탭한 다음 Glaze를 고르세요. 글꼴은 테마를 따르고 색상은 iOS가 정해요.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
       ok: '홈 화면 위젯이 연결됐어요',

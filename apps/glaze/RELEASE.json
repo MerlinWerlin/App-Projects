@@ -1,6 +1,6 @@
 {
-  "mode": "build",
-  "note": "Glaze: new widgets - moon phase, word clock and big clock, Lock Screen date battery countdown moon, next calendar event, weather, photo frame, daily line, streaks",
+  "mode": "update",
+  "note": "Glaze: Lock tab now explains how to add the new Lock Screen widgets (11 languages)",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

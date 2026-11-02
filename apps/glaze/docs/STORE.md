@@ -39,7 +39,7 @@ Tabs are Themes · Widgets · Icons · Wallpapers.
   aesthetic, home, screen, makeover, glaze). Singular forms only (Apple matches plurals). No brand or app names.
 - **Promotional text** can be changed at any time without a new review.
 
-### Description (1,736 characters; limit 4,000)
+### Description (1,865 characters; limit 4,000)
 
 <!-- description:start -->
 ```text
@@ -58,6 +58,7 @@ MATCHING ICONS
 WIDGETS THAT WORK
 - Clock, calendar, photo, countdown, quote and battery widgets in small, medium and large.
 - Use the theme's art, or make a widget your own in the Widget Studio with your photo, colours and fonts.
+- Moon phase, word clock, big clock and habit streak widgets, plus Lock Screen clock, date, battery, countdown and moon widgets.
 - Next event and weather widgets in your theme. They ask for calendar or location access only when you set them up. Weather data by Open-Meteo.com.
 
 WALLPAPERS

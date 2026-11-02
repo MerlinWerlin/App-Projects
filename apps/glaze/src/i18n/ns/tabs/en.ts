@@ -57,7 +57,7 @@ export const en = {
     open: '{kind}, {size}. Opens Widget Studio.',
     soon: 'Coming soon',
     soonA11y: '{kind}, {size}. Coming soon.',
-    lockNote: 'Lock Screen widgets aren’t ready yet. These are on the way.',
+    lockNote: 'Glaze Lock Screen widgets (clock, date, battery, countdown, moon) are added on the Lock Screen itself: touch and hold it, tap Customise > Lock Screen > the widget area, then pick Glaze. They use your theme’s font; iOS picks their colour.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
       ok: 'Home Screen widgets linked',
