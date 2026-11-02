@@ -57,7 +57,7 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
     open: '{kind}，{size}。打开小组件工作室。',
     soon: '即将推出',
     soonA11y: '{kind}，{size}。即将推出。',
-    lockNote: '锁定屏幕小组件尚未就绪。以下小组件即将推出。',
+    lockNote: 'Glaze 锁定屏幕小组件（时钟、日期、电池、倒计时、月相）需在锁定屏幕上添加：长按锁定屏幕，轻点“自定”>“锁定屏幕”> 小组件区域，然后选择 Glaze。它们使用主题字体，颜色由 iOS 决定。',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
       ok: '主屏幕小组件已连接',

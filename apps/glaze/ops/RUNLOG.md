@@ -679,3 +679,9 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - 1888/1888 core tests green, core typecheck clean. Swift reviewed by eye only (no Mac): needs a TestFlight build (T287 for compile fixes). Nothing device-tested. Full install + tsc + expo export needs PC verification.
 - New: T288 (Open-Meteo free tier is non-commercial; Glaze sells Plus: owner decision before release), T289 (native review of new strings).
 - Trial kit not rebuilt: base64 would be 16.7 MB (over the artifact's 16 MB file limit); TestFlight is the test path. Bundle base64 15.05 MB.
+
+## 2026-11-02 15:37-15:55 AEDT, run 241 (manual fire: owner-1102b brief)
+- Same session as run 240; build page v247 (1793594171-38a5) is this session's own publish. The fired brief owner-1102b is part B, already built in run 240 (T277-T284 done): no re-import needed.
+- App-Projects: f59d663 (Jared chat ship of run 239) differs only in PC-only package pins: skipped. 79f0efd (pack versions + release tags for 141 themes, glaze-packs-v2..v4) 3-way applied (278514d). Oversight still v233. No page comments. Registry unreachable: core-only.
+- Gap fill (edab295): Widgets tab Lock note no longer says "not ready yet"; it says how to add the Glaze Lock Screen widgets (11 languages). STORE.md description lists the new widgets (1,865 chars).
+- 1888/1888 core tests green; 11 pack release tests green. Nothing device-tested; Swift not compiled.

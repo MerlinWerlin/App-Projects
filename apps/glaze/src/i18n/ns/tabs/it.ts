@@ -57,7 +57,7 @@ export const it: NonNullable<LocaleMessages['tabs']> = {
     open: '{kind}, {size}. Apre lo Studio widget.',
     soon: 'In arrivo',
     soonA11y: '{kind}, {size}. In arrivo.',
-    lockNote: 'I widget della schermata di blocco non sono ancora pronti. Questi arriveranno presto.',
+    lockNote: 'I widget Glaze per la schermata di blocco (orologio, data, batteria, conto alla rovescia, luna) si aggiungono dalla schermata di blocco: tienila premuta, tocca Personalizza > Schermata di blocco > l’area dei widget e scegli Glaze. Usano il font del tuo tema; il colore lo sceglie iOS.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
       ok: 'Widget della schermata Home collegati',

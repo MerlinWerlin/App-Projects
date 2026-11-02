@@ -57,7 +57,7 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
     open: '{kind}, {size}. Öffnet das Widget-Studio.',
     soon: 'Bald verfügbar',
     soonA11y: '{kind}, {size}. Bald verfügbar.',
-    lockNote: 'Sperrbildschirm-Widgets sind noch nicht fertig. Diese kommen bald.',
+    lockNote: 'Glaze-Sperrbildschirm-Widgets (Uhr, Datum, Batterie, Countdown, Mond) fügst du direkt auf dem Sperrbildschirm hinzu: lange drücken, Anpassen > Sperrbildschirm > Widget-Bereich tippen, dann Glaze wählen. Sie nutzen die Schrift deines Themes; die Farbe legt iOS fest.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
       ok: 'Home-Bildschirm-Widgets verbunden',
