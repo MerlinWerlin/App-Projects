@@ -52,7 +52,7 @@ jobs:
           if [[ -d "$SOURCE" ]]; then cp -R "$SOURCE/." "$RUNNER_TEMP/glaze-native-review/"; fi
           if [[ -f "$SOURCE/_ERROR.txt" ]]; then cat "$SOURCE/_ERROR.txt"; exit 1; fi
           test -f "$SOURCE/_COMPONENT_SUCCESS.json"
-          python3 -c 'import json,os,pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"])/"glaze-native-review/_SUCCESS.json"; r=json.loads(p.read_text()); assert r["themes"]==105 and r["renders"]==1890; print("Verified",r["renders"],"native art component renders; physical device and installed widget tests remain unverified")'
+          python3 -c 'import json,os,pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"])/"glaze-native-review/_COMPONENT_SUCCESS.json"; r=json.loads(p.read_text()); assert r["themes"]==105 and r["renders"]==1890; print("Verified",r["renders"],"native art component renders; physical device and installed widget tests remain unverified")'
       - uses: actions/upload-artifact@v4
         if: always()
         with:

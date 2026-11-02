@@ -33,6 +33,11 @@ enum NativeComponentContract {
     if case .idle=FocusStore.phase(in:reopened,at:start.addingTimeInterval(3375)) { checks+=1 } else { throw Failure.assertion("completion idle") }
     try check(FocusStore.clock(1375)=="22:55","paused display")
     try check(FocusStore.clock(-10)=="0:00","negative clock clamp")
+    try check(FocusStore.clock(.infinity)=="0:00","nonfinite clock safe")
+    try check(FocusStore.clock(.nan)=="0:00","NaN clock safe")
+    store.set(Double.infinity,forKey:"glaze.focus.v1.end")
+    store.set(Double.nan,forKey:"glaze.focus.v1.remaining")
+    if case .idle=FocusStore.phase(in:store,at:start) {checks+=1} else {throw Failure.assertion("corrupt focus idle")}
     for (value,expected) in [(Float(0),0),(Float(0.5),50),(Float(1),100)] { try check(LiveBattery.percent(level:value)==expected,"valid battery") }
     for value in [Float(-1),Float(1.1),Float.nan,Float.infinity] { try check(LiveBattery.percent(level:value)==nil,"unknown battery never fabricated") }
     for kind in ["date","focus","battery"] {

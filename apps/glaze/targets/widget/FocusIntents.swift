@@ -37,11 +37,11 @@ enum FocusStore {
   /// Explicit store makes persistence/state transitions testable without the real App Group.
   static func phase(in d: UserDefaults, at now: Date) -> GlazeFocusPhase {
     let end = d.double(forKey: endKey)
-    if end > now.timeIntervalSince1970 {
+    if end.isFinite && end > now.timeIntervalSince1970 {
       return .running(end: Date(timeIntervalSince1970: end))
     }
     let remaining = d.double(forKey: remainingKey)
-    if remaining > 0 && remaining <= length {
+    if remaining.isFinite && remaining > 0 && remaining <= length {
       return .paused(remaining: remaining)
     }
     return .idle
@@ -69,7 +69,7 @@ enum FocusStore {
 
   /// "mm:ss" for a paused or idle session (digits only, no words).
   static func clock(_ seconds: TimeInterval) -> String {
-    let s = max(0, Int(seconds.rounded(.up)))
+    let s = seconds.isFinite ? Int(min(length,max(0,seconds)).rounded(.up)) : 0
     return String(format: "%d:%02d", s / 60, s % 60)
   }
 }

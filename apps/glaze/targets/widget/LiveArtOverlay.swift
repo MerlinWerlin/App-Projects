@@ -269,9 +269,13 @@ struct LiveArtValueView: View {
     case .battery:
       if spec.compact {
         HStack(spacing:s * 0.12) {
-          Image(systemName:"battery.100")
-          if let pct=LiveBattery.percent() { Text(verbatim:"\(pct)%").monospacedDigit() }
-          else { Text(verbatim:"–").accessibilityLabel("Battery unavailable") }
+          if let pct=LiveBattery.percent() {
+            Image(systemName:pct<=10 ? "battery.0" : pct<=35 ? "battery.25" : pct<=60 ? "battery.50" : pct<=85 ? "battery.75" : "battery.100")
+            Text(verbatim:"\(pct)%").monospacedDigit()
+          } else {
+            Image(systemName:"battery.0")
+            Text(verbatim:"–").accessibilityLabel("Battery unavailable")
+          }
         }
         .font(theme.typeface(size:max(10,s * 0.6),weight:.semibold))
         .lineLimit(1).minimumScaleFactor(0.4)
