@@ -1,0 +1,272 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "calla-obscura",
+  "packVersion": 1,
+  "name": "Calla Obscura",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#242627",
+    "tile": "#424343",
+    "glyph": "#FAF8F2",
+    "accent": "#7E7D63",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Calla Obscura",
+    "mood": "A white calla lily against dark graphite.",
+    "tags": [
+      "calla",
+      "obscura",
+      "white",
+      "lily",
+      "against",
+      "dark",
+      "graphite"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait premium original Glaze wallpaper Calla Obscura. Completely quiet matte GRAPHITE background #222728 across upper TWO THIRDS, no pattern or glow. LOWER THIRD small elegant white CALLA flowers: two ivory sculptural funnel-shaped blooms with pale chartreuse spadices, two dark sage arrow-shaped leaves and slender green stems crossing low. Entire arrangement fits60percentcanvaswidth25percentheight, all tips/stems visible within margins. Photoreal fine-art botanical still-life, delicate satin petal folds, subtle edge light, restrained soft shadows, deep graphite single-color surroundings. Calm sophisticated high contrast, no vase here, no roses/lilies of other shapes, no text/icons/device/brand.",
+    "addedAt": "2026-11-01",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "DPgFCwBWlQinb5iTJ4Bicgg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.8f228f7a.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 59798,
+      "sha256": "8f228f7ac603f2ffc3c117e08d98804f18dae60b54eb64b098d02ffae2d0a00d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.ef6073e8.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 53628,
+      "sha256": "ef6073e81b28cddf88665d1cb3fccdaf961a8a692973b9c8ef26733d265f4e0f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.4418473d.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 29172,
+      "sha256": "4418473d688de265cbc3083b5a0ad94d3f60a89b957a785e478fbe693735a961",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.3dfc200a.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 15730,
+      "sha256": "3dfc200a509824b75fe72430321ea2d11de4acacd058ec446a93cd0797513be6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.5611e169.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 56292,
+      "sha256": "5611e169e37032ea85193fc4385715753521122f7556903014fdf5b5a3b00541",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.72222466.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 31010,
+      "sha256": "7222246657c44899c344f33ec02f8a09ff698584fffd4388a583c4ba0b63b0fd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.b0e762a6.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5616,
+      "sha256": "b0e762a6ae8cf20c987b71cda6c7d78b2b8accb1f8974b7fd02d1c408f9595ed",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-calla-date.3324ba6a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 16272,
+      "sha256": "3324ba6af049d264fd4fdbaf4cb94f607dcb536fce05fac8d6accc2f77df92e9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-calla-pair.39444fb9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 29454,
+      "sha256": "39444fb9365d12ca85c2fd91f4a6ddf126ca953922105254a973d4a9d8c7d31d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dew-leaf.c4995fe9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 54320,
+      "sha256": "c4995fe9adc0509023baf5b48c21ae42f0b1340a93ebdda22a245dd2d11461be",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pearl-vase.88208682.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 22510,
+      "sha256": "882086827160eedd4da30e8a5f2ffebdbb0b7298d2372bce3ac9527a9835289b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-quiet-focus.55fc1f58.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 28704,
+      "sha256": "55fc1f58ac6305cd84a5f210aa76f8dfc140a7f6b6088069941ac9a9612ab97d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-silver-clock.8e0784ad.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 18042,
+      "sha256": "8e0784ad0286c3cab8f7a1d80a92e48f863242c87e9ed97b2182e4b04bf311bf",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 420548,
+  "widgets": [
+    {
+      "id": "calla-date",
+      "kind": "calendar",
+      "image": "widget-calla-date.3324ba6a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Calla date"
+    },
+    {
+      "id": "calla-pair",
+      "kind": "art",
+      "image": "widget-calla-pair.39444fb9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Calla pair"
+    },
+    {
+      "id": "dew-leaf",
+      "kind": "art",
+      "image": "widget-dew-leaf.c4995fe9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dew leaf"
+    },
+    {
+      "id": "pearl-vase",
+      "kind": "art",
+      "image": "widget-pearl-vase.88208682.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pearl vase"
+    },
+    {
+      "id": "quiet-focus",
+      "kind": "focus",
+      "image": "widget-quiet-focus.55fc1f58.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Quiet focus"
+    },
+    {
+      "id": "silver-clock",
+      "kind": "clock",
+      "image": "widget-silver-clock.8e0784ad.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Silver clock"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.3dfc200a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.5611e169.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.72222466.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

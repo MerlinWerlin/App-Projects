@@ -1,0 +1,319 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "amber-archive",
+  "packVersion": 3,
+  "name": "Amber Archive",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DBB88E",
+    "tile": "#C0A27D",
+    "glyph": "#1C1816",
+    "accent": "#82471D",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Amber Archive",
+    "mood": "Warm parchment and a tiny bookshop inside curled pages.",
+    "tags": [
+      "amber",
+      "archive",
+      "warm",
+      "parchment",
+      "tiny",
+      "bookshop",
+      "inside",
+      "curled",
+      "pages",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Kiwihug (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "40kSCwJ3f0h4eIh4ZZlQBzo=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.b55d69ce.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 341336,
+      "sha256": "b55d69ce5255b2af915b322373b3093e826107d049591bcf13ab6e93ac2cea45",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.14e6da74.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 306824,
+      "sha256": "14e6da74e073350b16d81ccf77a5863f361932f1d0db7acc16181741aaccb477",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.ef75b25f.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 145334,
+      "sha256": "ef75b25f9c79bf9b1e32031e0ea48bee475c3d36f182a7b6802ccbaa053838bf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.bce73cf5.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 64010,
+      "sha256": "bce73cf57756eee87c6bb5f7b9bc73e072b19396bd74f73be8448d68842fa10d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.ce860019.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 118648,
+      "sha256": "ce86001991d3d6fcfdd54a1818407d5e66d84f8a31889c349863ba57f706cc4f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.3c9eb28b.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 319746,
+      "sha256": "3c9eb28b3ca5c076bdfafe9e2252f4ff6c9916e26a57eb7737a89bbe5a447a98",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.cca9d273.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14564,
+      "sha256": "cca9d27388b7dbfd02604c5a350c9ce49b3946c547ce8614ab94f58f96db9ad1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.a255d2b8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 185106,
+      "sha256": "a255d2b8d53e603ca729c7c8d9b872f50f95eadc04a7b56020006b2326f67607",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-library-clock.4a888437.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 237068,
+      "sha256": "4a88843774c3caca9da0e7d058099a22f064131025512a5fc99de2a139a7aa36",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-archive-wax-seal.253a57d2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 196280,
+      "sha256": "253a57d26fed6fe10a7b356a7b9ffbbd54c8b9721ccd29c1cada7db277b2dca5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pressed-leaf-bookmark.32eb52eb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 194352,
+      "sha256": "32eb52ebaa83d55fde3c3db162d5a8eb959248b50ec47a9e67cc8d2b95ec6c5f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-reading-chapters.c656e045.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 139102,
+      "sha256": "c656e0458497a1778f54a9119e8c01a0b1b4b27046cede3765a1e58ea1382c8d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-owl.a1aa6a2f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 146122,
+      "sha256": "a1aa6a2f0291000118bf6ac3ff7ea0fd63aa340c535909c6e86328e027a66306",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.16cd5b2a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5570,
+      "sha256": "16cd5b2a547efb9672eb32174b3738dc0a4b7975e57573408008f86e881a8014",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2414062,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-themed-live-clock.a255d2b8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "audit-20261101-library-clock",
+      "kind": "clock",
+      "image": "widget-audit-20261101-library-clock.4a888437.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 library clock"
+    },
+    {
+      "id": "archive-wax-seal",
+      "kind": "art",
+      "image": "widget-archive-wax-seal.253a57d2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Archive wax seal"
+    },
+    {
+      "id": "pressed-leaf-bookmark",
+      "kind": "art",
+      "image": "widget-pressed-leaf-bookmark.32eb52eb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pressed leaf bookmark"
+    },
+    {
+      "id": "reading-chapters",
+      "kind": "art",
+      "image": "widget-reading-chapters.c656e045.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Reading chapters"
+    },
+    {
+      "id": "paper-owl",
+      "kind": "art",
+      "image": "widget-paper-owl.a1aa6a2f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Paper owl"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.16cd5b2a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.bce73cf5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.ce860019.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.3c9eb28b.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "airmail-daydream",
+  "packVersion": 3,
+  "name": "Airmail Daydream",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#C5DCE9",
+    "tile": "#ADC1CB",
+    "glyph": "#1C1816",
+    "accent": "#C2DBE8",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Airmail Daydream",
+    "mood": "Sky blue, coral and cream, balloon post office, sealed letters and postmark clock.",
+    "tags": [
+      "airmail",
+      "daydream",
+      "blue",
+      "coral",
+      "cream",
+      "balloon",
+      "post",
+      "office",
+      "sealed",
+      "letters",
+      "postmark",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for AIRMAIL DAYDREAM. Upper76percent quiet nearly uniform pale powder-blue matte paper #DDEBF0, extremely subtle fibres, no clouds objects writing stripes patterns or icons behind future apps. Bottom24percent exquisite tactile postal still life: two small ivory airmail envelopes with tiny coral/navy striped edges, a round coral wax seal with simple unlettered hot-air-balloon symbol, one delicate folded paper plane hovering just above the lower envelope with a fine natural shadow. Envelopes have NO handwriting, address, letters or legible text. Soft warm daylight, sophisticated handmade paper stationery photography, sky-blue/cream/navy/coral palette, playful restrained travel-mail mood. Entire objects low and contained, ample empty blue space above, no actual postage values, brand logos, people, phone, UI, border, stamps near upper field or stars. Full bleed portrait wallpaper.",
+    "addedAt": "2026-11-01",
+    "category": "Dreamy & Pastel"
+  },
+  "thumbhash": "dNcFCwKWnzaXeoemVpBrBbk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2aa9cbfb.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 171392,
+      "sha256": "2aa9cbfb9133ead3716c5098b679140b9c8350f39ebe2e628ae3c6a1a3e5701e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.64b6c04e.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 150562,
+      "sha256": "64b6c04e4c8ca120138e925d1d85ba39e943c4cf299467c56e52b1440fd2c104",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.8b1c65fc.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 57826,
+      "sha256": "8b1c65fcec00370a8899bc8e821e2704d31e9973f85162c1292587feb0931119",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.087506d0.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 16974,
+      "sha256": "087506d00565195a1504a03201f466e70a01d2baf4852a7d0448b63d7b1db192",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.78faf380.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 64284,
+      "sha256": "78faf3802ade590b11edd2155de52e288b3e0926fafaa10d479b4dc8cfb2d3f5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.fb281734.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 184616,
+      "sha256": "fb2817347d688bcfb27ffe9db3f68f5ba3060c3ac5d7ba2e989567927820910b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.9040b1c9.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5576,
+      "sha256": "9040b1c92e40bd32c8d91845b3a46bacaf01f12f3e7bebcebee730c7726a995f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.f0e3d4c1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 56298,
+      "sha256": "f0e3d4c1c6ceccd0b580bad4a2407c0e0acfde27c6ddae7ba875dcc8f029fae5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-airmail-countdown.d94779b9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 117350,
+      "sha256": "d94779b9e811138f28bd2ba521f2ff9f987faa0c64452427d937a1ead44b5b6c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-stamp-terrarium.2ed43af0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 103422,
+      "sha256": "2ed43af07cb5ab470e4c4f1a007c99208e51c7735d92752c540161cd3f6878cb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.115d1706.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6150,
+      "sha256": "115d1706f5406173483880b3532cad6c3b01ea379b49fde5883208ee6c81ed6e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.fae6c0d7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3084,
+      "sha256": "fae6c0d7297488a44fd9d3e788b89f96decb76f25a0c755191705d8e0d43008c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.17287f77.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6018,
+      "sha256": "17287f77075bb3dda040066e3bfb0fb4c0716b7ccba44007a0951a4e7748ebd9",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 943552,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-themed-live-clock.f0e3d4c1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "airmail-countdown",
+      "kind": "countdown",
+      "image": "widget-airmail-countdown.d94779b9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Airmail countdown"
+    },
+    {
+      "id": "stamp-terrarium",
+      "kind": "art",
+      "image": "widget-stamp-terrarium.2ed43af0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Stamp terrarium"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.115d1706.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.fae6c0d7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.17287f77.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.087506d0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.78faf380.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.fb281734.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

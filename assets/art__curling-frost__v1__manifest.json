@@ -1,0 +1,272 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "curling-frost",
+  "packVersion": 1,
+  "name": "Curling Frost",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#CCDFED",
+    "tile": "#B3C3CF",
+    "glyph": "#1C1816",
+    "accent": "#C8DBEB",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Curling Frost",
+    "mood": "Curling stones gliding across icy blue.",
+    "tags": [
+      "curling",
+      "frost",
+      "stones",
+      "gliding",
+      "across",
+      "blue",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 iPhone wallpaper CURLING FROST. Quiet icy blue #DDE8ED matte background, upper70percent EMPTY almost uniform softly textured ice, no objects, rings or marks behind icons. In bottom25percent one small complete beautiful grey granite CURLING STONE, low oblate circular form with polished speckled body, pine-green curved handle fixed at top, very thin ochre fitting and soft frost at base. Entire stone within generous margins, centered low, only45percent canvas width and16percent canvas height. Gentle studio shadows on matching icy-blue floor, sophisticated tactile sports still life, slight three-quarter view, precision real-looking granite. No team logos, lettering, score, people, stadium, phone, UI or frame. Original unbranded stone design.",
+    "addedAt": "2026-11-01",
+    "category": "Seasonal"
+  },
+  "thumbhash": "dNcFAwDof1OYdX2yGlCXCNY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.390995de.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 98956,
+      "sha256": "390995de79586a4b245342dc8becdc852d81f6a5f728dd4f78e81ed903f07510",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.599711fa.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 89238,
+      "sha256": "599711fab0e96cbc8fb31f53c7849b2f67c538d0158eee6d7daa51a62344c9cf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.c0e5fcd8.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 45952,
+      "sha256": "c0e5fcd842d463f5a69c18d8c52bc7a66d84fe8f8907d158b9d233e1ea911026",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.0d8c8f6b.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 46702,
+      "sha256": "0d8c8f6b3b8358a3d210feab1cde73593fd1b64f3b719ddf16437c9c0a79cee4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.b6d2d57b.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 145264,
+      "sha256": "b6d2d57b66a7ec3804206537b303cb182c0b4431d7bb0bc73de845627f62e0bd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.964896d0.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 268340,
+      "sha256": "964896d0d7a6b5aa9bdea4a790131c8240d0a94ee07ee1a618d5b54676ab2c4b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.f519950a.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6922,
+      "sha256": "f519950a840e1ac7724a147c2c5086f213310c282994d1d52a6f50c0faf0e196",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-end-clock.731600b5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 216638,
+      "sha256": "731600b54a760cfdc2d4bcc66e1a1d566d9488436dc7b0d8df7acaa65c5bb76e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-granite-stone.55a7234e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 154312,
+      "sha256": "55a7234e7ad8f85ad5ae34246e9de05611aeb0afddaff80915a632ae39a37b90",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-house-rings.cf9a43ae.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 246958,
+      "sha256": "cf9a43aed5971a8fad95e64fd9ad2a4517c9cee76ec3babbbc6f735a99e87671",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rink-date.8236c696.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 103894,
+      "sha256": "8236c696af5eba240bbb17015a12c293cb001f8394b473289433eb1ab9449fd0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sweep-brush.5bdf00a2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 228282,
+      "sha256": "5bdf00a2f8b356b6409b955a39d98629d105a7f6d1355d4819a1685a05ae8dbb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sweep-focus.ac268860.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 133726,
+      "sha256": "ac26886030942a38ad221abef5e17f71686670c028e0d0eff229906dbcbe9439",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1785184,
+  "widgets": [
+    {
+      "id": "end-clock",
+      "kind": "clock",
+      "image": "widget-end-clock.731600b5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "End clock"
+    },
+    {
+      "id": "granite-stone",
+      "kind": "art",
+      "image": "widget-granite-stone.55a7234e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Granite stone"
+    },
+    {
+      "id": "house-rings",
+      "kind": "art",
+      "image": "widget-house-rings.cf9a43ae.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "House rings"
+    },
+    {
+      "id": "rink-date",
+      "kind": "calendar",
+      "image": "widget-rink-date.8236c696.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rink date"
+    },
+    {
+      "id": "sweep-brush",
+      "kind": "art",
+      "image": "widget-sweep-brush.5bdf00a2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sweep brush"
+    },
+    {
+      "id": "sweep-focus",
+      "kind": "focus",
+      "image": "widget-sweep-focus.ac268860.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sweep focus"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.0d8c8f6b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.b6d2d57b.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.964896d0.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

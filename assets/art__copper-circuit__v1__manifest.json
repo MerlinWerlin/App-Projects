@@ -1,0 +1,272 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "copper-circuit",
+  "packVersion": 1,
+  "name": "Copper Circuit",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#0E252B",
+    "tile": "#2F4347",
+    "glyph": "#FAF8F2",
+    "accent": "#092126",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Copper Circuit",
+    "mood": "Copper circuit traces on deep matte teal.",
+    "tags": [
+      "copper",
+      "circuit",
+      "traces",
+      "deep",
+      "matte",
+      "teal",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original vertical9:19.5 iPhone wallpaper COPPER CIRCUIT. Upper TWO THIRDS empty almost-uniform deep matte teal #17262B, no traces, patterns, objects or glows behind future icons. Bottom third a refined miniature abstract electronics island: one charcoal microchip on dark teal board, fine copper #CE9470 tracks flowing into small circular pads and one elegant copper-wire coil at side, tiny muted sage accents. Cinematic macro material photography look, precise copper edges, subtle warm metal light, restrained details, no actual board labels, logos, voltage data or functional circuit claim. Low composition with room around, premium quiet tech aesthetic. No UI, text, phone, frame, racing track or neon city.",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "idcBCwJMUrl6e3Btd4BpCJg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.725d276f.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 121762,
+      "sha256": "725d276f5c4e1e905cadd9245891df7e3e92df23b584380cd4841a3d4996f60e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.e7d05ff9.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 109320,
+      "sha256": "e7d05ff9e7f003c0e3729a3c8fe99d03c5f9bf3162002ab0fcf194b70180595d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.4e020779.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 59600,
+      "sha256": "4e020779a0b70fbc9ab69eed7767452451297b202e9688536c4797f98c5ba104",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.da030161.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 73566,
+      "sha256": "da030161d5f1cae90297bc6c68bd33946164acd3cd2267d91648d596efd661bc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.7c90856d.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 64638,
+      "sha256": "7c90856d3fca4e78b7e1b29431d471946d22353a89cdf7bd472dcb874468746e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.3e06e3eb.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 228894,
+      "sha256": "3e06e3eb9b683665970074e973de933dcf12a83862015fafaa58d3fd4edf4743",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.4f73073f.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11444,
+      "sha256": "4f73073f625e11988722e7e111ecd6ef68552c726c930afe5a949b8c663021e2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-chip-island.f7acf499.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 197754,
+      "sha256": "f7acf499165e27f98510769f261f9c9c60ed8eaf8d90f4b2df84ef6b71704ff1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-copper-coil.1bfbbc83.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75284,
+      "sha256": "1bfbbc8320a7602745f53394cf771ff7ddb764d877ce700f8969903ba6bc3b74",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-segment-clock.b52e1e12.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 62348,
+      "sha256": "b52e1e12f79c9b560bb753f1f0610c679346dc5d2c5a4956677cc32e93b72169",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-signal-date.c41f0eca.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 103170,
+      "sha256": "c41f0eca2e7ba019e99ad0358090f628e65d88ed4c4f3493c60cbfd49b890888",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-trace-flow.d2daad37.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 185194,
+      "sha256": "d2daad37a0428536efd42075bb6f27c6ac558cbd426626ba7d98017f6f31fc01",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-trace-focus.8bed5194.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 100060,
+      "sha256": "8bed5194306045830f8c8342a931597690663879495a25c2307d6c7d9c3839b3",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1393034,
+  "widgets": [
+    {
+      "id": "chip-island",
+      "kind": "art",
+      "image": "widget-chip-island.f7acf499.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Chip island"
+    },
+    {
+      "id": "copper-coil",
+      "kind": "art",
+      "image": "widget-copper-coil.1bfbbc83.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Copper coil"
+    },
+    {
+      "id": "segment-clock",
+      "kind": "clock",
+      "image": "widget-segment-clock.b52e1e12.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Segment clock"
+    },
+    {
+      "id": "signal-date",
+      "kind": "calendar",
+      "image": "widget-signal-date.c41f0eca.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Signal date"
+    },
+    {
+      "id": "trace-flow",
+      "kind": "art",
+      "image": "widget-trace-flow.d2daad37.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Trace flow"
+    },
+    {
+      "id": "trace-focus",
+      "kind": "focus",
+      "image": "widget-trace-focus.8bed5194.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Trace focus"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.da030161.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.7c90856d.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.3e06e3eb.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

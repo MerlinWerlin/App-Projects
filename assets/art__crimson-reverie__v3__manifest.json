@@ -1,0 +1,324 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "crimson-reverie",
+  "packVersion": 3,
+  "name": "Crimson Reverie",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#0C0C0D",
+    "tile": "#2D2D2D",
+    "glyph": "#FAF8F2",
+    "accent": "#6C040C",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Crimson Reverie",
+    "mood": "Charcoal silk, ruby folds, ivory line icons with tiny crimson inlays, silk dragon, lantern-lit moon gate.",
+    "tags": [
+      "crimson",
+      "reverie",
+      "charcoal",
+      "silk",
+      "ruby",
+      "folds",
+      "ivory",
+      "line",
+      "icons",
+      "with",
+      "tiny",
+      "inlays",
+      "dragon",
+      "lantern",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Tamanna Rumee (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "RDgCEwhqkIlkmoZoiYCYB4c=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2968d001.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 194296,
+      "sha256": "2968d001e16746d213f2fcf0801402f4b9b40407c26f496dc67796abdef34013",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.0811dca6.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 171916,
+      "sha256": "0811dca6b7bf7c01dd339bd5af764101dc7a38cf1a00cb1769c0b1135b3d2a81",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.c94fe88f.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 65422,
+      "sha256": "c94fe88f79e5c076e343fdc6091d65c286d992324290f24e9bc666c3fb9a72e3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.767e4b93.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 49190,
+      "sha256": "767e4b934f2c01a01e526e91db4fead2af01bd9f45ab4ef81b4411f3e34f9f8c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.9fc70ef9.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 80632,
+      "sha256": "9fc70ef928065863a8e3e477362442243f7bd6099a38931e0775375124f89e44",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.f106d4d1.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 164284,
+      "sha256": "f106d4d199f1bbb02697e8b038606231421958b2033c31b575d830e7bc02ccba",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.b52e2af3.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6208,
+      "sha256": "b52e2af3f4783aecb1f44555810c16a2834c978aae7571e09027fb32ecd36027",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.df7f7bb2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 152246,
+      "sha256": "df7f7bb2b16a3928ab601990b4fbd4aa6ff36851edf2106913d914bac34569ce",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-lacquer-clock.396c12c2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 130698,
+      "sha256": "396c12c23602689347df19137180c0507538273f77c3e5d23e40652b12ab5c5e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-crimson-fan.ed2ff03b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 125330,
+      "sha256": "ed2ff03b19fd5e4188a1f01dd0386151a39048add7fff3df79c2ec18010f26dc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lacquer-date.6545ce4d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 116118,
+      "sha256": "6545ce4d65128ebfbfed88a6948fe49116b10ca7ede5eb74dda78685b8d0951c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-silk-crane.cc874af2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 98346,
+      "sha256": "cc874af2f71d423a92388394e306bf94f609dc71420399f90db9ca80aa0746b5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-silk-dragon.2b6c968b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 127554,
+      "sha256": "2b6c968b4a63e1f72d74e2db339d8915b9325d857be862687bfc5ed6a47b4819",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.b749ea95.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7420,
+      "sha256": "b749ea9594bd4170dcd7fddcc9d910accd098c559d8582eb573c6617cef2754d",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1489660,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-themed-live-clock.df7f7bb2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "audit-20261101-lacquer-clock",
+      "kind": "clock",
+      "image": "widget-audit-20261101-lacquer-clock.396c12c2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 lacquer clock"
+    },
+    {
+      "id": "crimson-fan",
+      "kind": "art",
+      "image": "widget-crimson-fan.ed2ff03b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Crimson fan"
+    },
+    {
+      "id": "lacquer-date",
+      "kind": "calendar",
+      "image": "widget-lacquer-date.6545ce4d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lacquer date"
+    },
+    {
+      "id": "silk-crane",
+      "kind": "art",
+      "image": "widget-silk-crane.cc874af2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Silk crane"
+    },
+    {
+      "id": "silk-dragon",
+      "kind": "art",
+      "image": "widget-silk-dragon.2b6c968b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Silk dragon"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.b749ea95.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.767e4b93.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.9fc70ef9.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.f106d4d1.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
