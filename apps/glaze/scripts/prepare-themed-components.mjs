@@ -19,7 +19,8 @@ for(const clock of clocks.themes){
    art.image='components-'+clock.id+'.jpg';
    await sharp(join(root,art.source)).resize({width:512,height:512,fit:'inside'}).jpeg({quality:85}).toFile(join('docs/themed-clock-fixtures',art.image));
  }
- const frame=clock.option.liveFrame.clockStyle==='digital'?clock.option.liveFrame:{rect:[.12,.025,.76,.14],ink:clock.ink};
+ const frame={...(clock.option.liveFrame.clockStyle==='digital'?clock.option.liveFrame:{rect:[.12,.025,.76,.14],ink:clock.ink})};
+ if(['017','019','030'].includes(clock.id.slice(0,3)))frame.rect=[.12,.83,.76,.14];
  const components=[];
  for(const kind of ['date','focus','battery']){
    const liveFrame={rect:frame.rect,shape:'plate',valueStyle:'compact',ink:frame.ink};

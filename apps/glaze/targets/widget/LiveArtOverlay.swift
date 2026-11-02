@@ -227,7 +227,7 @@ struct LiveArtValueView: View {
 
   private var ink: Color { Color(hex: spec.ink) }
   private var valueShadow: Color {
-    guard spec.kind == .clock, let rgb = UInt32(spec.ink.dropFirst(), radix:16) else { return Color.black.opacity(0.25) }
+    guard spec.kind == .clock || spec.compact, let rgb = UInt32(spec.ink.dropFirst(), radix:16) else { return Color.black.opacity(0.25) }
     let lightness = (0.2126 * Double((rgb>>16)&255) + 0.7152 * Double((rgb>>8)&255) + 0.0722 * Double(rgb&255)) / 255
     return (lightness < 0.5 ? Color.white : Color.black).opacity(0.65)
   }
@@ -239,7 +239,7 @@ struct LiveArtValueView: View {
         if !spec.cleanFace { plate }
         content(s: s)
           .foregroundStyle(ink)
-          .shadow(color: valueShadow, radius: spec.kind == .clock ? 1.2 : 2, y: spec.kind == .clock ? 0 : 1)
+          .shadow(color: valueShadow, radius: spec.kind == .clock || spec.compact ? 1.2 : 2, y: spec.kind == .clock || spec.compact ? 0 : 1)
       }
       .frame(width: geo.size.width, height: geo.size.height)
     }
