@@ -4,6 +4,8 @@
 // adds it to the extension). Keep the ids below in sync with src/core/widgetTheme.ts and
 // targets/widget/ThemeStore.swift.
 import CoreImage
+import CoreLocation
+import EventKit
 import ExpoModulesCore
 import Foundation
 import UIKit
@@ -21,7 +23,7 @@ private let themeFile = "theme.json"
 /// (written by the widget extension's App Intents, src/core/habitLog.ts HABIT_LOG_KEY).
 private let habitsKey = "glaze.habits.v1"
 private let habitLogKey = "glaze.habitLog.v1"
-private let habitWidgetKinds = ["GlazeHabitWater", "GlazeHabitMood", "GlazeHabitSleep", "GlazeHabitSteps"]
+private let habitWidgetKinds = ["GlazeHabitWater", "GlazeHabitMood", "GlazeHabitSleep", "GlazeHabitSteps", "GlazeHabitStreak"]
 /// T146: written by the widget extension on every theme load (targets/widget/ThemeStore.swift,
 /// src/core/widgetLink.ts WIDGET_LAST_READ_KEY); the app only reads it.
 private let lastReadKey = "glaze.widget.lastRead.v1"
@@ -415,6 +417,35 @@ public class GlazeWidgetBridgeModule: Module {
       }
       return ok
     }
+
+    // owner-1102b T280 / T281: access for the Next event and Weather widgets. Asked only from the
+    // widget-access screen (app/widget-access.tsx), which the widgets open when tapped. Results:
+    // "granted" | "denied" | "restricted" | "notDetermined" | "writeOnly" (calendar, iOS 17).
+    AsyncFunction("calendarAccessStatus") { () -> String in
+      GlazeDataAccess.calendarStatus()
+    }
+
+    AsyncFunction("requestCalendarAccess") { (promise: Promise) in
+      GlazeDataAccess.requestCalendar { status in
+        promise.resolve(status)
+      }
+    }
+
+    AsyncFunction("locationAccessStatus") { (promise: Promise) in
+      DispatchQueue.main.async {
+        promise.resolve(GlazeDataAccess.locationStatus(CLLocationManager().authorizationStatus))
+      }
+    }
+
+    /// When-In-Use only. On "granted" one location fix is taken and stored ROUNDED to 2 decimals
+    /// (about 1 km) in the App Group for the Weather widget; it is never sent anywhere by the app.
+    AsyncFunction("requestLocationAccess") { (promise: Promise) in
+      DispatchQueue.main.async {
+        GlazeLocationAsker.shared.request { status in
+          promise.resolve(status)
+        }
+      }
+    }
   }
 
   /// T221: same rule as WIDGET_ART_ID_RE in src/core/widgetArtLibrary.ts (^[A-Za-z0-9_-]{1,64}$).
@@ -793,5 +824,108 @@ enum GlazeArtBlend {
     }
     guard let out = ctx.makeImage() else { return image }
     return UIImage(cgImage: out)
+  }
+}
+
+// MARK: - owner-1102b T280 / T281: calendar and location access for the data widgets
+
+/// App Group key the Weather widget reads (targets/widget/WeatherWidget.swift GlazeWeatherStore.coordsKey).
+private let weatherCoordsKey = "glaze.weather.coords.v1"
+private let calendarWidgetKind = "GlazeCalendarEvent"
+private let weatherWidgetKind = "GlazeWeather"
+
+enum GlazeDataAccess {
+  /// Kept alive while the permission prompt is up.
+  private static let eventStore = EKEventStore()
+
+  static func calendarStatus() -> String {
+    let status = EKEventStore.authorizationStatus(for: .event)
+    if #available(iOS 17.0, *) {
+      if status == .fullAccess { return "granted" }
+      if status == .writeOnly { return "writeOnly" }
+    } else if status.rawValue == 3 {
+      // .authorized before iOS 17 (same raw value as .fullAccess).
+      return "granted"
+    }
+    if status == .notDetermined { return "notDetermined" }
+    if status == .restricted { return "restricted" }
+    return "denied"
+  }
+
+  static func requestCalendar(_ done: @escaping (String) -> Void) {
+    let finish: () -> Void = {
+      if #available(iOS 14.0, *) {
+        WidgetCenter.shared.reloadTimelines(ofKind: calendarWidgetKind)
+      }
+      done(calendarStatus())
+    }
+    if #available(iOS 17.0, *) {
+      eventStore.requestFullAccessToEvents { _, _ in finish() }
+    } else {
+      eventStore.requestAccess(to: .event) { _, _ in finish() }
+    }
+  }
+
+  static func locationStatus(_ status: CLAuthorizationStatus) -> String {
+    switch status {
+    case .authorizedWhenInUse, .authorizedAlways: return "granted"
+    case .notDetermined: return "notDetermined"
+    case .restricted: return "restricted"
+    case .denied: return "denied"
+    @unknown default: return "denied"
+    }
+  }
+}
+
+/// One CLLocationManager on the main thread; answers every waiting request when the user decides.
+final class GlazeLocationAsker: NSObject, CLLocationManagerDelegate {
+  static let shared = GlazeLocationAsker()
+
+  private let manager = CLLocationManager()
+  private var waiting: [(String) -> Void] = []
+
+  override init() {
+    super.init()
+    manager.delegate = self
+    manager.desiredAccuracy = kCLLocationAccuracyKilometer
+  }
+
+  /// Call on the main queue.
+  func request(_ done: @escaping (String) -> Void) {
+    let status = manager.authorizationStatus
+    if status == .notDetermined {
+      waiting.append(done)
+      manager.requestWhenInUseAuthorization()
+      return
+    }
+    if status == .authorizedWhenInUse || status == .authorizedAlways { manager.requestLocation() }
+    done(GlazeDataAccess.locationStatus(status))
+  }
+
+  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+    let status = manager.authorizationStatus
+    // Also called once when the delegate is set; nothing to answer until the user decides.
+    if status == .notDetermined { return }
+    if status == .authorizedWhenInUse || status == .authorizedAlways { manager.requestLocation() }
+    let answer = GlazeDataAccess.locationStatus(status)
+    let pending = waiting
+    waiting = []
+    for done in pending { done(answer) }
+    if #available(iOS 14.0, *) {
+      WidgetCenter.shared.reloadTimelines(ofKind: weatherWidgetKind)
+    }
+  }
+
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    guard let loc = locations.last else { return }
+    let value = String(format: "%.2f,%.2f", loc.coordinate.latitude, loc.coordinate.longitude)
+    UserDefaults(suiteName: appGroup)?.set(value, forKey: weatherCoordsKey)
+    if #available(iOS 14.0, *) {
+      WidgetCenter.shared.reloadTimelines(ofKind: weatherWidgetKind)
+    }
+  }
+
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    // No fix this time: the widget keeps its last coordinates (or its "Open Glaze" state).
   }
 }

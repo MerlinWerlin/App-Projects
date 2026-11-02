@@ -1,0 +1,20 @@
+[
+  { "hour": 10, "minute": 30, "text": "IT'S HALF PAST TEN" },
+  { "hour": 17, "minute": 40, "text": "IT'S TWENTY TO SIX" },
+  { "hour": 0, "minute": 0, "text": "IT'S TWELVE O'CLOCK" },
+  { "hour": 12, "minute": 2, "text": "IT'S TWELVE O'CLOCK" },
+  { "hour": 9, "minute": 3, "text": "IT'S FIVE PAST NINE" },
+  { "hour": 9, "minute": 7, "text": "IT'S FIVE PAST NINE" },
+  { "hour": 9, "minute": 8, "text": "IT'S TEN PAST NINE" },
+  { "hour": 14, "minute": 15, "text": "IT'S QUARTER PAST TWO" },
+  { "hour": 14, "minute": 22, "text": "IT'S TWENTY PAST TWO" },
+  { "hour": 14, "minute": 25, "text": "IT'S TWENTY-FIVE PAST TWO" },
+  { "hour": 14, "minute": 35, "text": "IT'S TWENTY-FIVE TO THREE" },
+  { "hour": 20, "minute": 45, "text": "IT'S QUARTER TO NINE" },
+  { "hour": 20, "minute": 50, "text": "IT'S TEN TO NINE" },
+  { "hour": 11, "minute": 55, "text": "IT'S FIVE TO TWELVE" },
+  { "hour": 11, "minute": 58, "text": "IT'S TWELVE O'CLOCK" },
+  { "hour": 23, "minute": 57, "text": "IT'S FIVE TO TWELVE" },
+  { "hour": 23, "minute": 59, "text": "IT'S TWELVE O'CLOCK" },
+  { "hour": 6, "minute": 0, "text": "IT'S SIX O'CLOCK" }
+]

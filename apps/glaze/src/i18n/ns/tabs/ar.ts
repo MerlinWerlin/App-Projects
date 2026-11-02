@@ -120,4 +120,18 @@ export const ar: NonNullable<LocaleMessages['tabs']> = {
       kind: { collage: 'صورة مجمّعة', theme: 'خلفية', live: 'لقطة من صورة Live' },
     },
   },
+  widgetAccess: {
+    title: "وصول الأدوات",
+    calendarTitle: "أداة الحدث التالي",
+    calendarBody: "تعرض أداة الحدث التالي حدث التقويم القادم بألوان سِمتك. يقرأ Glaze تقاويمك على هذا الـ iPhone فقط ولا يرسلها إلى أي مكان.",
+    calendarAllow: "السماح بالوصول إلى التقويم",
+    weatherTitle: "أداة الطقس",
+    weatherBody: "تعرض أداة الطقس حالة الطقس في مكانك. يُرسل موقعك التقريبي (مقرّبًا إلى نحو 1 كم) إلى Open-Meteo فقط للحصول على التوقعات. لا يستلمه Glaze أبدًا ولا يحفظه على أي خادم.",
+    weatherAllow: "السماح بالموقع أثناء استخدام Glaze",
+    granted: "الوصول مفعّل. ستتحدث الأداة خلال دقائق.",
+    denied: "الوصول متوقف. يمكنك تفعيله من الإعدادات > Glaze.",
+    openSettings: "فتح الإعدادات",
+    unavailable: "طلب الوصول يحتاج إلى نسخة Glaze من App Store أو TestFlight.",
+    credit: "بيانات الطقس من Open-Meteo.com (CC BY 4.0)",
+  },
 };

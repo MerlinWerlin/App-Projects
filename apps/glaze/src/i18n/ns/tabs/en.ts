@@ -120,4 +120,19 @@ export const en = {
       kind: { collage: 'Collage', theme: 'Wallpaper', live: 'Live Photo still' },
     },
   },
+  // owner-1102b T280/T281: app/widget-access.tsx (Next event and Weather widget access).
+  widgetAccess: {
+    title: "Widget access",
+    calendarTitle: "Next event widget",
+    calendarBody: "The Next event widget shows your next calendar event in your theme. Glaze reads your calendars on this iPhone only and never sends them anywhere.",
+    calendarAllow: "Allow calendar access",
+    weatherTitle: "Weather widget",
+    weatherBody: "The Weather widget shows the weather where you are. Your approximate location (rounded to about 1 km) is sent only to Open-Meteo to get the forecast. Glaze never receives or stores it on a server.",
+    weatherAllow: "Allow location while using Glaze",
+    granted: "Access is on. The widget updates within a few minutes.",
+    denied: "Access is off. You can turn it on in Settings > Glaze.",
+    openSettings: "Open Settings",
+    unavailable: "Asking for access needs the App Store or TestFlight version of Glaze.",
+    credit: "Weather data by Open-Meteo.com (CC BY 4.0)",
+  },
 } as const;

@@ -19,6 +19,12 @@ Notes:
 - Builds older than this one list a v2-release pack but can't load its thumbnail or download it (calm error, no crash). Publish v2 packs once this build is on the phone.
 - The staging release still holds every pack in one release.
 
-## Part B (next run, tagged owner-1102b): to do
+## Part B (run 240, tagged owner-1102b): done (T277-T284)
+
+Built: Moon (GlazeMoon, drawn lit disc, % lit, days to full, next 7 nights), Word clock (GlazeWordClock, English; other languages show big digits) and Big clock (GlazeBigClock, StandBy-friendly), Lock Screen: GlazeLockAccessory kept + GlazeLockDate / Battery / Countdown / Moon (circular, rectangular, inline), Clock widget bigger white numerals in StandBy, Next event (GlazeCalendarEvent, EventKit, asks only from glaze://widget-access after you add it), Weather (GlazeWeather, Open-Meteo, location asked the same way, ~2-decimal coordinates only to Open-Meteo, credit shown), Photo frame (theme mat + accent border, date caption, tap opens Widget Studio), Little Line now daily from 64 original lines, Streaks (GlazeHabitStreak, last 7 days, tap to tick). Store text, privacy pages, review notes and licences updated. Not compiled (no Mac) and not device-tested.
+
+Open decisions: Open-Meteo's free API is for non-commercial use and Glaze sells Plus (T288); App Privacy answer for rounded location (docs/RELEASE_CHECKLIST.md 3a).
+
+Original brief:
 
 New native themed widget kinds, each in the theme's colours/art, small/medium/large where sensible: (a) moon phase (computed on-device), (b) word clock + big digital clock, (c) Lock Screen widgets (circular/rectangular/inline: clock, date, battery, countdown, moon) + StandBy-friendly large clock, (d) next calendar event (EventKit; permission only when added), (e) weather via Open-Meteo (free, no key; location only when added; privacy docs), (f) photo frame, (g) daily quote/affirmation (original lines), (h) habit/streak ticks (AppIntent buttons). Update store text, privacy answers and review notes for any permission added. Backlog T277-T284 (T285 = the PR #190 sync).

@@ -1,7 +1,7 @@
 {
   "app": "glaze",
   "title": "Glaze (icon themes, matching widgets and wallpaper packs, working title)",
-  "updated": "2026-11-01 run 218",
+  "updated": "2026-11-02",
   "milestones": {
     "TRIAL": [
       "T01",
@@ -3608,91 +3608,135 @@
     },
     {
       "id": "T277",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1102b",
         "native"
       ],
       "source": "owner-1102a part B (2 Nov)",
-      "title": "Moon phase widget (tonight's real phase computed on-device), theme colours/art, S/M/L"
+      "title": "Moon phase widget (tonight's real phase computed on-device), theme colours/art, S/M/L",
+      "commit": "97f5a9e"
     },
     {
       "id": "T278",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1102b",
         "native"
       ],
       "source": "owner-1102a part B (2 Nov)",
-      "title": "Word clock and big digital clock widget styles, theme colours/art"
+      "title": "Word clock and big digital clock widget styles, theme colours/art",
+      "commit": "97f5a9e"
     },
     {
       "id": "T279",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1102b",
         "native"
       ],
       "source": "owner-1102a part B (2 Nov)",
-      "title": "Lock Screen widgets (accessoryCircular/Rectangular/Inline: clock, date, battery, countdown, moon) + StandBy-friendly large clock"
+      "title": "Lock Screen widgets (accessoryCircular/Rectangular/Inline: clock, date, battery, countdown, moon) + StandBy-friendly large clock",
+      "commit": "63f6d1e"
     },
     {
       "id": "T280",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1102b",
         "native"
       ],
       "source": "owner-1102a part B (2 Nov)",
-      "title": "Next calendar event widget (EventKit; permission asked only when the user adds it); privacy/review/store text"
+      "title": "Next calendar event widget (EventKit; permission asked only when the user adds it); privacy/review/store text",
+      "commit": "cd231a7"
     },
     {
       "id": "T281",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1102b",
         "native"
       ],
       "source": "owner-1102a part B (2 Nov)",
-      "title": "Weather widget via Open-Meteo (free, no key; location only when added); privacy docs"
+      "title": "Weather widget via Open-Meteo (free, no key; location only when added); privacy docs",
+      "commit": "cd231a7"
     },
     {
       "id": "T282",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1102b",
         "native"
       ],
       "source": "owner-1102a part B (2 Nov)",
-      "title": "Photo frame widget (user's own photo in a theme frame)"
+      "title": "Photo frame widget (user's own photo in a theme frame)",
+      "commit": "49dd02e"
     },
     {
       "id": "T283",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1102b",
         "native"
       ],
       "source": "owner-1102a part B (2 Nov)",
-      "title": "Daily quote/affirmation widget (bundled original lines)"
+      "title": "Daily quote/affirmation widget (bundled original lines)",
+      "commit": "49dd02e"
     },
     {
       "id": "T284",
-      "status": "todo",
+      "status": "done",
       "deps": [],
       "tags": [
         "owner-1102b",
         "native"
       ],
       "source": "owner-1102a part B (2 Nov)",
-      "title": "Habits/streak ticks widget (AppIntent buttons)"
+      "title": "Habits/streak ticks widget (AppIntent buttons)",
+      "commit": "49dd02e"
+    },
+    {
+      "id": "T287",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "owner-1102b",
+        "follow-up",
+        "native"
+      ],
+      "source": "run 240",
+      "title": "After the next native build: if the widget extension fails to compile on owner-1102b code (MoonWidget, ClockStyleWidgets, LockAccessoryWidget nested bundle, CalendarEventWidget/WeatherWidget, HabitStreakWidget TickHabitIntent, bridge calendar/location methods, String(localized:defaultValue:) interpolation), fix the exact errors from the build log"
+    },
+    {
+      "id": "T288",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "owner-1102b",
+        "release",
+        "decision"
+      ],
+      "source": "run 240",
+      "title": "Open-Meteo free API is for non-commercial use; Glaze sells Plus. Before App Store release: owner confirms terms / picks keep (paid plan is a spend: owner only), drop weather (remove WeatherWidget() from DataWidgetsBundle.swift) or another free commercial-OK source; also confirm the App Privacy answer for rounded location (RELEASE_CHECKLIST 3a)"
+    },
+    {
+      "id": "T289",
+      "status": "todo",
+      "deps": [],
+      "tags": [
+        "owner-1102b",
+        "follow-up",
+        "i18n"
+      ],
+      "source": "run 240",
+      "title": "Native-speaker review of the owner-1102b widget strings in 10 languages (moon phases, lock, calendar/weather, streaks); daily quote lines are English only"
     }
   ],
   "priority_order": {

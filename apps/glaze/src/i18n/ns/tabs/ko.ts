@@ -120,4 +120,18 @@ export const ko: NonNullable<LocaleMessages['tabs']> = {
       kind: { collage: '콜라주', theme: '배경화면', live: '라이브 포토 정지 화면' },
     },
   },
+  widgetAccess: {
+    title: "위젯 접근",
+    calendarTitle: "다음 일정 위젯",
+    calendarBody: "다음 일정 위젯은 다음 캘린더 일정을 테마에 맞춰 보여 줍니다. Glaze는 이 iPhone에서만 캘린더를 읽으며 어디에도 보내지 않습니다.",
+    calendarAllow: "캘린더 접근 허용",
+    weatherTitle: "날씨 위젯",
+    weatherBody: "날씨 위젯은 현재 위치의 날씨를 보여 줍니다. 대략적인 위치(약 1km로 반올림)는 예보를 가져오기 위해 Open-Meteo에만 전송됩니다. Glaze는 이를 받거나 서버에 저장하지 않습니다.",
+    weatherAllow: "Glaze 사용 중 위치 허용",
+    granted: "접근이 켜져 있습니다. 몇 분 안에 위젯이 업데이트됩니다.",
+    denied: "접근이 꺼져 있습니다. 설정 > Glaze에서 켤 수 있습니다.",
+    openSettings: "설정 열기",
+    unavailable: "접근을 요청하려면 App Store 또는 TestFlight 버전의 Glaze가 필요합니다.",
+    credit: "날씨 데이터: Open-Meteo.com (CC BY 4.0)",
+  },
 };

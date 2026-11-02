@@ -25,6 +25,18 @@ ever requested. Users may fill any icon with their own photo; that image never l
 | Mascot concepts (Tessel, Latchling, Vitri; fb-1023 D, concept only, not bundled) | `docs/mascot/*.svg`, `docs/mascot/*.png`, `docs/MASCOT.md` | Original hand-written SVG drawn for Glaze; no traced or reference artwork, no existing characters or brands | Original, owned by the Glaze project, all rights reserved |
 | App icon, splash tile and opening animation art (faceless glaze-pour tile) | `assets/brand/*`, drawn at runtime by `src/ui/IntroGlaze.tsx` | Original geometry generated from `src/core/introGlaze.ts` by `scripts/brand/build-brand.mjs`; plain shapes and gradients, no text, no traced or reference artwork, no existing brands | Original, owned by the Glaze project, all rights reserved |
 
+## Weather data (owner-1102b T281)
+
+| Data | Where it is used | Source | Licence |
+| --- | --- | --- | --- |
+| Current temperature, weather code, today's high/low, hourly forecast | Weather widget (`targets/widget/WeatherWidget.swift`); fetched by the widget extension only | Open-Meteo, https://open-meteo.com (`api.open-meteo.com/v1/forecast`, no key) | CC BY 4.0. Credit "Weather data by Open-Meteo.com" is shown on the medium and large widget and on the widget-access screen (`app/widget-access.tsx`, links to open-meteo.com). The weather code is shown as an SF Symbol (`src/core/weatherCodes.ts`); the numbers are only rounded, not otherwise modified. |
+
+**Owner check (commercial use):** Open-Meteo's free API is offered for non-commercial use; Glaze sells
+Glaze Plus, which Open-Meteo's terms may count as commercial (docs/WIDGETS.md "Options"). Before the
+App Store release, confirm on https://open-meteo.com/en/pricing whether Glaze needs the paid API
+(a different host and an API key), or switch the widget off by removing `WeatherWidget()` from
+`targets/widget/DataWidgetsBundle.swift`.
+
 ## Space (Webb) photos (T103)
 
 Not bundled: each photo is downloaded from the official host only when the person taps Download on

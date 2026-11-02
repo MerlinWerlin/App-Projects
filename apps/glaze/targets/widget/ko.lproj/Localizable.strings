@@ -49,7 +49,7 @@
 "A photo you pick in Glaze." = "Glaze에서 고른 사진.";
 "Choose a photo in Glaze" = "Glaze에서 사진을 고르세요";
 "Little Line" = "한 줄";
-"A short, gentle line that changes every hour." = "매시간 바뀌는 짧고 다정한 한 줄.";
+"A short, gentle line that changes every day." = "매일 바뀌는 짧고 다정한 한 줄.";
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "심리스";
@@ -71,3 +71,71 @@
 "Pause" = "일시정지";
 "Resume" = "계속";
 "Days" = "일";
+
+/* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
+   The word clock's phrase is English only by design; other languages show a big digital time. */
+"widgets.moon.new" = "삭";
+"widgets.moon.waxingCrescent" = "초승달";
+"widgets.moon.firstQuarter" = "상현달";
+"widgets.moon.waxingGibbous" = "차오르는 달";
+"widgets.moon.full" = "보름달";
+"widgets.moon.waningGibbous" = "기우는 달";
+"widgets.moon.lastQuarter" = "하현달";
+"widgets.moon.waningCrescent" = "그믐달";
+"widgets.moon.lit" = "%1$@ 밝음";
+"widgets.moon.fullTonight" = "오늘 밤 보름달";
+"widgets.moon.fullTomorrow" = "내일 보름달";
+"widgets.moon.fullIn" = "%1$@일 후 보름달";
+"widgets.moon.nextNights" = "앞으로 7일 밤";
+"Moon" = "달";
+"Tonight's moon phase, worked out on your phone, in your Glaze theme." = "오늘 밤의 달 위상을 휴대폰에서 계산해 Glaze 테마로 보여줍니다.";
+"Word clock" = "단어 시계";
+"The time in words, in your Glaze theme." = "시간을 단어로, Glaze 테마로 보여줍니다.";
+"Big clock" = "큰 시계";
+"Big, bold numerals in your Glaze theme. Made for StandBy." = "크고 굵은 숫자를 Glaze 테마로. 스탠바이에 딱 맞아요.";
+/* Lock Screen widgets: clock, date, battery, countdown, moon (LockAccessoryWidget.swift, T279) */
+"Glaze Lock" = "Glaze Lock";
+"Lock Screen date" = "날짜(잠금 화면)";
+"The weekday and date for your Lock Screen." = "잠금 화면용 요일과 날짜.";
+"Lock Screen battery" = "배터리(잠금 화면)";
+"Your battery level for your Lock Screen." = "잠금 화면용 배터리 잔량.";
+"Lock Screen countdown" = "카운트다운(잠금 화면)";
+"Days left to the date you choose in Glaze." = "Glaze에서 고른 날짜까지 남은 일수.";
+"Lock Screen moon" = "달(잠금 화면)";
+"Tonight's moon and the days to the next full moon." = "오늘 밤의 달과 다음 보름달까지 남은 일수.";
+"Choose a date in Glaze" = "Glaze에서 날짜를 고르세요";
+"lock.battery" = "배터리";
+"lock.moon" = "달";
+"lock.moon.fullToday" = "오늘 보름달";
+"lock.countdown.days" = "%1$@일";
+"lock.moon.fullIn" = "보름달까지 %1$@일";
+"lock.moon.lit" = "%1$@ 밝음";
+/* Next event and Weather widgets (CalendarEventWidget.swift, WeatherWidget.swift; owner-1102b T280/T281) */
+"Next event" = "다음 일정";
+"Your next calendar event, in your Glaze theme." = "다음 캘린더 일정을 Glaze 테마로.";
+"Open Glaze to show your next event" = "Glaze를 열어 다음 일정 표시";
+"No events in the next 7 days" = "앞으로 7일 동안 일정 없음";
+"All day" = "하루 종일";
+"Now" = "지금";
+"Tomorrow" = "내일";
+"calendar.untitled" = "일정";
+"calendar.sample.1" = "샘과 커피";
+"calendar.sample.2" = "팀 미팅";
+"calendar.sample.3" = "요가";
+"Weather" = "날씨";
+"The weather where you are, in your Glaze theme." = "현재 위치의 날씨를 Glaze 테마로.";
+"Open Glaze to set weather" = "Glaze를 열어 날씨 설정";
+"Updated %@" = "%@ 업데이트";
+"H:%@ L:%@" = "최고:%1$@ 최저:%2$@";
+"Weather data by Open-Meteo.com" = "날씨 데이터: Open-Meteo.com";
+/* Streak widget (HabitStreakWidget.swift, TickHabitIntent, T284). habit.a11y.*: 1 = days / habit name */
+"habit.streak.caption" = "연속";
+"habit.streak.tick" = "오늘 체크";
+"habit.streak.done" = "오늘 완료";
+"habit.streak.name" = "연속 기록";
+"habit.streak.desc" = "매일 습관을 체크하고 연속 기록을 늘려 보세요.";
+"habit.a11y.streak" = "%1$@일 연속";
+"habit.a11y.tick" = "오늘의 %1$@ 체크";
+"Tick a habit" = "습관 체크";
+"Streak habit" = "연속 기록 습관";
+"Choose the habit this streak widget follows." = "이 연속 기록 위젯이 따라갈 습관을 고르세요.";

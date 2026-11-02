@@ -59,7 +59,7 @@
 "A photo you pick in Glaze." = "A photo you pick in Glaze.";
 "Choose a photo in Glaze" = "Choose a photo in Glaze";
 "Little Line" = "Little Line";
-"A short, gentle line that changes every hour." = "A short, gentle line that changes every hour.";
+"A short, gentle line that changes every day." = "A short, gentle line that changes every day.";
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "Seamless";
@@ -81,3 +81,71 @@
 "Pause" = "Pause";
 "Resume" = "Resume";
 "Days" = "Days";
+
+/* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
+   The word clock's phrase is English only by design; other languages show a big digital time. */
+"widgets.moon.new" = "New moon";
+"widgets.moon.waxingCrescent" = "Waxing crescent";
+"widgets.moon.firstQuarter" = "First quarter";
+"widgets.moon.waxingGibbous" = "Waxing gibbous";
+"widgets.moon.full" = "Full moon";
+"widgets.moon.waningGibbous" = "Waning gibbous";
+"widgets.moon.lastQuarter" = "Last quarter";
+"widgets.moon.waningCrescent" = "Waning crescent";
+"widgets.moon.lit" = "%1$@ lit";
+"widgets.moon.fullTonight" = "Full moon tonight";
+"widgets.moon.fullTomorrow" = "Full moon tomorrow";
+"widgets.moon.fullIn" = "Full moon in %1$@ days";
+"widgets.moon.nextNights" = "Next 7 nights";
+"Moon" = "Moon";
+"Tonight's moon phase, worked out on your phone, in your Glaze theme." = "Tonight's moon phase, worked out on your phone, in your Glaze theme.";
+"Word clock" = "Word clock";
+"The time in words, in your Glaze theme." = "The time in words, in your Glaze theme.";
+"Big clock" = "Big clock";
+"Big, bold numerals in your Glaze theme. Made for StandBy." = "Big, bold numerals in your Glaze theme. Made for StandBy.";
+/* Lock Screen widgets: clock, date, battery, countdown, moon (LockAccessoryWidget.swift, T279) */
+"Glaze Lock" = "Glaze Lock";
+"Lock Screen date" = "Lock Screen date";
+"The weekday and date for your Lock Screen." = "The weekday and date for your Lock Screen.";
+"Lock Screen battery" = "Lock Screen battery";
+"Your battery level for your Lock Screen." = "Your battery level for your Lock Screen.";
+"Lock Screen countdown" = "Lock Screen countdown";
+"Days left to the date you choose in Glaze." = "Days left to the date you choose in Glaze.";
+"Lock Screen moon" = "Lock Screen moon";
+"Tonight's moon and the days to the next full moon." = "Tonight's moon and the days to the next full moon.";
+"Choose a date in Glaze" = "Choose a date in Glaze";
+"lock.battery" = "Battery";
+"lock.moon" = "Moon";
+"lock.moon.fullToday" = "Full moon today";
+"lock.countdown.days" = "%1$@ days";
+"lock.moon.fullIn" = "Full in %1$@ days";
+"lock.moon.lit" = "%1$@ lit";
+/* Next event and Weather widgets (CalendarEventWidget.swift, WeatherWidget.swift; owner-1102b T280/T281) */
+"Next event" = "Next event";
+"Your next calendar event, in your Glaze theme." = "Your next calendar event, in your Glaze theme.";
+"Open Glaze to show your next event" = "Open Glaze to show your next event";
+"No events in the next 7 days" = "No events in the next 7 days";
+"All day" = "All day";
+"Now" = "Now";
+"Tomorrow" = "Tomorrow";
+"calendar.untitled" = "Event";
+"calendar.sample.1" = "Coffee with Sam";
+"calendar.sample.2" = "Team check-in";
+"calendar.sample.3" = "Yoga";
+"Weather" = "Weather";
+"The weather where you are, in your Glaze theme." = "The weather where you are, in your Glaze theme.";
+"Open Glaze to set weather" = "Open Glaze to set weather";
+"Updated %@" = "Updated %@";
+"H:%@ L:%@" = "H:%1$@ L:%2$@";
+"Weather data by Open-Meteo.com" = "Weather data by Open-Meteo.com";
+/* Streak widget (HabitStreakWidget.swift, TickHabitIntent, T284). habit.a11y.*: 1 = days / habit name */
+"habit.streak.caption" = "Streak";
+"habit.streak.tick" = "Tick today";
+"habit.streak.done" = "Done today";
+"habit.streak.name" = "Streaks";
+"habit.streak.desc" = "Tick a habit off each day and watch the streak grow.";
+"habit.a11y.streak" = "%1$@-day streak";
+"habit.a11y.tick" = "Tick off %1$@ for today";
+"Tick a habit" = "Tick a habit";
+"Streak habit" = "Streak habit";
+"Choose the habit this streak widget follows." = "Choose the habit this streak widget follows.";

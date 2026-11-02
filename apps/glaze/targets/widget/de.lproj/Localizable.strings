@@ -49,7 +49,7 @@
 "A photo you pick in Glaze." = "Ein Foto, das du in Glaze auswählst.";
 "Choose a photo in Glaze" = "Wähle ein Foto in Glaze";
 "Little Line" = "Kleine Zeile";
-"A short, gentle line that changes every hour." = "Eine kurze, sanfte Zeile, die sich jede Stunde ändert.";
+"A short, gentle line that changes every day." = "Eine kurze, sanfte Zeile, die sich jeden Tag ändert.";
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "Nahtlos";
@@ -71,3 +71,71 @@
 "Pause" = "Pause";
 "Resume" = "Weiter";
 "Days" = "Tage";
+
+/* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
+   The word clock's phrase is English only by design; other languages show a big digital time. */
+"widgets.moon.new" = "Neumond";
+"widgets.moon.waxingCrescent" = "Zunehmende Sichel";
+"widgets.moon.firstQuarter" = "Erstes Viertel";
+"widgets.moon.waxingGibbous" = "Zunehmender Mond";
+"widgets.moon.full" = "Vollmond";
+"widgets.moon.waningGibbous" = "Abnehmender Mond";
+"widgets.moon.lastQuarter" = "Letztes Viertel";
+"widgets.moon.waningCrescent" = "Abnehmende Sichel";
+"widgets.moon.lit" = "%1$@ beleuchtet";
+"widgets.moon.fullTonight" = "Heute Nacht Vollmond";
+"widgets.moon.fullTomorrow" = "Morgen Vollmond";
+"widgets.moon.fullIn" = "Vollmond in %1$@ Tagen";
+"widgets.moon.nextNights" = "Nächste 7 Nächte";
+"Moon" = "Mond";
+"Tonight's moon phase, worked out on your phone, in your Glaze theme." = "Die heutige Mondphase, auf deinem iPhone berechnet, in deinem Glaze-Theme.";
+"Word clock" = "Wortuhr";
+"The time in words, in your Glaze theme." = "Die Uhrzeit in Worten, in deinem Glaze-Theme.";
+"Big clock" = "Große Uhr";
+"Big, bold numerals in your Glaze theme. Made for StandBy." = "Große, kräftige Ziffern in deinem Glaze-Theme. Ideal für StandBy.";
+/* Lock Screen widgets: clock, date, battery, countdown, moon (LockAccessoryWidget.swift, T279) */
+"Glaze Lock" = "Glaze Lock";
+"Lock Screen date" = "Datum (Sperrbildschirm)";
+"The weekday and date for your Lock Screen." = "Wochentag und Datum für deinen Sperrbildschirm.";
+"Lock Screen battery" = "Batterie (Sperrbildschirm)";
+"Your battery level for your Lock Screen." = "Dein Akkustand für den Sperrbildschirm.";
+"Lock Screen countdown" = "Countdown (Sperrbildschirm)";
+"Days left to the date you choose in Glaze." = "Tage bis zu dem Datum, das du in Glaze wählst.";
+"Lock Screen moon" = "Mond (Sperrbildschirm)";
+"Tonight's moon and the days to the next full moon." = "Der Mond heute Nacht und die Tage bis zum nächsten Vollmond.";
+"Choose a date in Glaze" = "Wähle ein Datum in Glaze";
+"lock.battery" = "Batterie";
+"lock.moon" = "Mond";
+"lock.moon.fullToday" = "Heute Vollmond";
+"lock.countdown.days" = "%1$@ Tage";
+"lock.moon.fullIn" = "Vollmond in %1$@ Tagen";
+"lock.moon.lit" = "%1$@ beleuchtet";
+/* Next event and Weather widgets (CalendarEventWidget.swift, WeatherWidget.swift; owner-1102b T280/T281) */
+"Next event" = "Nächster Termin";
+"Your next calendar event, in your Glaze theme." = "Dein nächster Kalendertermin in deinem Glaze-Theme.";
+"Open Glaze to show your next event" = "Öffne Glaze, um deinen nächsten Termin zu sehen";
+"No events in the next 7 days" = "Keine Termine in den nächsten 7 Tagen";
+"All day" = "Ganztägig";
+"Now" = "Jetzt";
+"Tomorrow" = "Morgen";
+"calendar.untitled" = "Termin";
+"calendar.sample.1" = "Kaffee mit Sam";
+"calendar.sample.2" = "Team-Abstimmung";
+"calendar.sample.3" = "Yoga";
+"Weather" = "Wetter";
+"The weather where you are, in your Glaze theme." = "Das Wetter an deinem Ort in deinem Glaze-Theme.";
+"Open Glaze to set weather" = "Öffne Glaze, um das Wetter einzurichten";
+"Updated %@" = "Aktualisiert %@";
+"H:%@ L:%@" = "H:%1$@ T:%2$@";
+"Weather data by Open-Meteo.com" = "Wetterdaten von Open-Meteo.com";
+/* Streak widget (HabitStreakWidget.swift, TickHabitIntent, T284). habit.a11y.*: 1 = days / habit name */
+"habit.streak.caption" = "Serie";
+"habit.streak.tick" = "Heute abhaken";
+"habit.streak.done" = "Heute erledigt";
+"habit.streak.name" = "Serien";
+"habit.streak.desc" = "Hake jeden Tag eine Gewohnheit ab und sieh deine Serie wachsen.";
+"habit.a11y.streak" = "%1$@-Tage-Serie";
+"habit.a11y.tick" = "%1$@ für heute abhaken";
+"Tick a habit" = "Gewohnheit abhaken";
+"Streak habit" = "Serien-Gewohnheit";
+"Choose the habit this streak widget follows." = "Wähle die Gewohnheit, der dieses Serien-Widget folgt.";

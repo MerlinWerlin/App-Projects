@@ -2,6 +2,18 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (2 Nov, owner-1102b: more themed widgets, run 240)
+Native: needs the TestFlight build made from this run. Long-press the Home Screen > + > Glaze. Answer yes / no:
+
+1. **Moon:** is there a **Moon** widget showing tonight's phase as a drawn moon in your theme's colours (medium: % lit and days to full moon; large: next 7 nights)? yes / no
+2. **Word clock and Big clock:** does **Word clock** read the time in words (e.g. "IT'S TWENTY PAST TEN") and **Big clock** show huge numbers, both in your theme? In StandBy (charging, sideways), are the Big clock and Clock numbers big and readable on black? yes / no
+3. **Lock Screen:** Lock Screen > Customise > add widgets > Glaze: are there clock, date, battery, countdown and moon widgets in round, rectangle and one-line sizes? Is the battery your real level? yes / no
+4. **Next event:** add **Next event**, tap it: does Glaze open a screen asking for calendar access, and after Allow does the widget show your next event within a few minutes? yes / no
+5. **Weather:** add **Weather**, tap it, allow location: does it show your temperature (°C), today's high/low and the Open-Meteo credit? yes / no
+6. **Photo frame:** does the Photo widget show your photo inside a theme-coloured frame, and does tapping it with no photo open Widget Studio? yes / no
+7. **Little Line:** does the quote widget keep one line all day and change after midnight? yes / no
+8. **Streaks:** add **Streaks**: does it show the last 7 days as dots and a streak count, and does the tick button mark today done? yes / no
+
 ## New since your last test (2 Nov, owner-1102a: native art clocks, run 239)
 Native: needs the TestFlight build made from this run (Jared's chat ships it). Answer yes / no:
 

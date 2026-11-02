@@ -120,4 +120,18 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
       kind: { collage: 'Collage', theme: 'Fondo', live: 'Fotograma de Live Photo' },
     },
   },
+  widgetAccess: {
+    title: "Acceso de widgets",
+    calendarTitle: "Widget Próximo evento",
+    calendarBody: "El widget Próximo evento muestra tu siguiente evento del calendario con tu tema. Glaze lee tus calendarios solo en este iPhone y nunca los envía a ningún sitio.",
+    calendarAllow: "Permitir acceso al calendario",
+    weatherTitle: "Widget Tiempo",
+    weatherBody: "El widget Tiempo muestra el tiempo donde estás. Tu ubicación aproximada (redondeada a 1 km) solo se envía a Open-Meteo para obtener el pronóstico. Glaze nunca la recibe ni la guarda en un servidor.",
+    weatherAllow: "Permitir ubicación mientras uso Glaze",
+    granted: "Acceso activado. El widget se actualiza en unos minutos.",
+    denied: "Acceso desactivado. Puedes activarlo en Ajustes > Glaze.",
+    openSettings: "Abrir Ajustes",
+    unavailable: "Para pedir acceso necesitas la versión de Glaze de la App Store o TestFlight.",
+    credit: "Datos meteorológicos de Open-Meteo.com (CC BY 4.0)",
+  },
 };

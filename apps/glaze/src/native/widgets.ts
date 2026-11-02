@@ -232,6 +232,12 @@ type NativeBridge = {
   composeWidgetArtPiece?(id: string, artUri: string, w: number, h: number, colour: string, skipIfPresent: boolean): Promise<boolean>;
   /** T252: the wallpaper-backed twin; crop = [x, y, w, h] in wallpaper pixels. */
   composeSeamlessPiece?(id: string, wallpaperUri: string, crop: number[], heroUri: string, skipIfPresent: boolean): Promise<boolean>;
+  /** owner-1102b T280: calendar access for the Next event widget. */
+  calendarAccessStatus?(): Promise<string>;
+  requestCalendarAccess?(): Promise<string>;
+  /** owner-1102b T281: When-In-Use location for the Weather widget (rounded coords stored in the App Group). */
+  locationAccessStatus?(): Promise<string>;
+  requestLocationAccess?(): Promise<string>;
 };
 
 function isExpoGo(): boolean {
@@ -572,3 +578,37 @@ async function setSeamless(input: SeamlessInput): Promise<WidgetsResult> {
     return { available: true, ok: false, reason: 'failed' };
   }
 }
+
+// ---- owner-1102b T280 / T281: access for the Next event and Weather widgets ----
+
+/** What the widget-access screen shows. 'unavailable' = Expo Go, Android or a build without the bridge method. */
+export type DataWidgetAccess = 'granted' | 'denied' | 'restricted' | 'notDetermined' | 'writeOnly' | 'unavailable';
+export type DataWidgetKind = 'calendar' | 'weather';
+
+const ACCESS_VALUES: readonly DataWidgetAccess[] = ['granted', 'denied', 'restricted', 'notDetermined', 'writeOnly'];
+
+function asAccess(value: unknown): DataWidgetAccess {
+  return typeof value === 'string' && (ACCESS_VALUES as readonly string[]).includes(value) ? (value as DataWidgetAccess) : 'unavailable';
+}
+
+/**
+ * Read (request = false) or ask for (request = true) the access a data widget needs. Calendar: full
+ * access to events (EKEventStore.requestFullAccessToEvents on iOS 17). Weather: When-In-Use location.
+ * Never throws; Expo Go / Android / an older build: 'unavailable', and nothing is asked.
+ */
+export async function dataWidgetAccess(kind: DataWidgetKind, request: boolean): Promise<DataWidgetAccess> {
+  try {
+    const status = await isAvailable();
+    const mod = status.available ? loadNative() : null;
+    if (!mod) return 'unavailable';
+    const call =
+      kind === 'calendar'
+        ? request ? mod.requestCalendarAccess : mod.calendarAccessStatus
+        : request ? mod.requestLocationAccess : mod.locationAccessStatus;
+    if (typeof call !== 'function') return 'unavailable';
+    return asAccess(await call.call(mod));
+  } catch {
+    return 'unavailable';
+  }
+}
+

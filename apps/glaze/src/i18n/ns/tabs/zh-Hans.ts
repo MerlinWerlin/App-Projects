@@ -120,4 +120,18 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
       kind: { collage: '拼贴', theme: '壁纸', live: '实况照片静帧' },
     },
   },
+  widgetAccess: {
+    title: "小组件权限",
+    calendarTitle: "“下一个日程”小组件",
+    calendarBody: "“下一个日程”小组件以你的主题显示下一个日历日程。Glaze 只在这台 iPhone 上读取你的日历，绝不会发送到任何地方。",
+    calendarAllow: "允许访问日历",
+    weatherTitle: "天气小组件",
+    weatherBody: "天气小组件显示你所在地的天气。你的大致位置（约精确到 1 公里）只会发送给 Open-Meteo 以获取预报。Glaze 从不接收，也不会在服务器上保存。",
+    weatherAllow: "允许在使用 Glaze 期间获取位置",
+    granted: "权限已开启。小组件将在几分钟内更新。",
+    denied: "权限已关闭。你可以在“设置”>“Glaze”中开启。",
+    openSettings: "打开设置",
+    unavailable: "需要 App Store 或 TestFlight 版 Glaze 才能请求权限。",
+    credit: "天气数据来自 Open-Meteo.com（CC BY 4.0）",
+  },
 };

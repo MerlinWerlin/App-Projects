@@ -120,4 +120,18 @@ export const hi: NonNullable<LocaleMessages['tabs']> = {
       kind: { collage: 'कोलाज', theme: 'वॉलपेपर', live: 'लाइव फ़ोटो की स्टिल' },
     },
   },
+  widgetAccess: {
+    title: "विजेट एक्सेस",
+    calendarTitle: "अगला इवेंट विजेट",
+    calendarBody: "अगला इवेंट विजेट आपकी थीम में आपका अगला कैलेंडर इवेंट दिखाता है। Glaze आपके कैलेंडर सिर्फ़ इसी iPhone पर पढ़ता है और उन्हें कहीं नहीं भेजता।",
+    calendarAllow: "कैलेंडर एक्सेस दें",
+    weatherTitle: "मौसम विजेट",
+    weatherBody: "मौसम विजेट आपकी जगह का मौसम दिखाता है। आपकी अनुमानित लोकेशन (लगभग 1 किमी तक गोल की गई) पूर्वानुमान के लिए सिर्फ़ Open-Meteo को भेजी जाती है। Glaze इसे कभी नहीं पाता और न किसी सर्वर पर रखता है।",
+    weatherAllow: "Glaze इस्तेमाल करते समय लोकेशन दें",
+    granted: "एक्सेस चालू है। विजेट कुछ मिनटों में अपडेट होगा।",
+    denied: "एक्सेस बंद है। आप इसे सेटिंग्स > Glaze में चालू कर सकते हैं।",
+    openSettings: "सेटिंग्स खोलें",
+    unavailable: "एक्सेस माँगने के लिए Glaze का App Store या TestFlight वर्शन चाहिए।",
+    credit: "मौसम डेटा: Open-Meteo.com (CC BY 4.0)",
+  },
 };

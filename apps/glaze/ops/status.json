@@ -1,18 +1,18 @@
 {
-  "tests": "1849/1849 core tests green + 29 pack-script tests; core + UI stub typecheck clean",
-  "typecheck": "core only (registry unreachable)",
-  "last_run": "2026-11-02 15:00 AEDT (run 239)",
-  "stage": "release-prep",
-  "oversight_seen": "v233 (1793558948-7f71): no new directives; no patches. v232 handled earlier.",
-  "headline": "Run 239 (owner-1102a): native art clocks from Codex PR #190, clock editions in packs, packs on more than one release, every practical widget piece live. Needs a TestFlight build.",
-  "next_for_owner": "1) Your Glaze chat ships run 239 to TestFlight and publishes the clock-edition packs (docs/PACK_HOSTING.md). 2) On that build answer docs/TRIAL.md '2 Nov owner-1102a' 1-6. 3) Pick what Glaze Plus unlocks: option A, B or C. (Full install + tsc + expo export needs PC verification: npm registry unreachable.)",
-  "trial_kit": true,
-  "trial_kit_commit": "cbe1f96",
-  "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested",
-  "slim_candidate": {
-    "state": "swapped run 220",
-    "root": "859241058f433be25f35ec1c618396837158dbf2",
-    "full_history": "history/repo-full-2026-11-01b.bundle.b64.txt (plus the older history/repo-full-2026-11-01.bundle.b64.txt)"
-  },
-  "size_note": "run 225: bundle base64 ~14.77 MB"
+ "tests": "1888/1888 core tests green + 29 pack-script tests; core typecheck clean",
+ "typecheck": "core only (registry unreachable)",
+ "last_run": "2026-11-02 15:40 AEDT (run 240)",
+ "stage": "release-prep",
+ "oversight_seen": "v233 (1793558948-7f71): no new directives; no patches (rechecked run 240).",
+ "headline": "Run 240 (owner-1102b): new themed widgets: moon phase, word clock, big clock, 5 Lock Screen widgets, next calendar event, weather, photo frame, daily line, habit streaks. Needs a TestFlight build.",
+ "next_for_owner": "1) Your Glaze chat ships run 240 to TestFlight. 2) On that build answer docs/TRIAL.md '2 Nov owner-1102b' 1-8 (and owner-1102a 1-6). 3) Before release: decide on the weather source (Open-Meteo free tier is non-commercial) and pick what Glaze Plus unlocks. (Full install + tsc + expo export needs PC verification: npm registry unreachable.)",
+ "trial_kit": true,
+ "trial_kit_commit": "cbe1f96",
+ "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested",
+ "slim_candidate": {
+  "state": "swapped run 220",
+  "root": "859241058f433be25f35ec1c618396837158dbf2",
+  "full_history": "history/repo-full-2026-11-01b.bundle.b64.txt (plus the older history/repo-full-2026-11-01.bundle.b64.txt)"
+ },
+ "size_note": "run 240: bundle base64 ~15.05 MB; trial kit not rebuilt (16.7 MB base64, over the 16 MB file limit; owner tests on TestFlight)"
 }

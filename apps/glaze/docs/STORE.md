@@ -39,7 +39,7 @@ Tabs are Themes · Widgets · Icons · Wallpapers.
   aesthetic, home, screen, makeover, glaze). Singular forms only (Apple matches plurals). No brand or app names.
 - **Promotional text** can be changed at any time without a new review.
 
-### Description (1,588 characters; limit 4,000)
+### Description (1,736 characters; limit 4,000)
 
 <!-- description:start -->
 ```text
@@ -58,6 +58,7 @@ MATCHING ICONS
 WIDGETS THAT WORK
 - Clock, calendar, photo, countdown, quote and battery widgets in small, medium and large.
 - Use the theme's art, or make a widget your own in the Widget Studio with your photo, colours and fonts.
+- Next event and weather widgets in your theme. They ask for calendar or location access only when you set them up. Weather data by Open-Meteo.com.
 
 WALLPAPERS
 - Still wallpapers and matching Lock Screen and Home Screen pairs.
@@ -154,3 +155,5 @@ image text, not a listing field, so there is no character limit; keep them on tw
 Checked on 1 Nov 2026 against `ops/CONVENTIONS.md`: no competitor names in this file (guarded by
 `src/core/t266Release.test.ts`), no ratings, ranks, download counts, laurels or "#1", no invented numbers, no
 live-wallpaper promise, no pets or Live Activities.
+
+**Calendar and weather widgets (owner-1102b T280/T281):** the description line above names them; the Next event widget reads calendars on the device only and the Weather widget sends a location rounded to about 1 km to Open-Meteo only (docs/privacy.html). Weather is CC BY 4.0 data, credited in the widget, and Open-Meteo's commercial terms are an owner check (docs/LICENSES.md).
