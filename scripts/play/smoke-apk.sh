@@ -13,6 +13,17 @@ package=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["androi
 [[ "$package" == *.playtest ]]
 sdkmanager 'system-images;android-35;google_apis;x86_64' > "$output/emulator-setup.txt" 2>&1
 echo no | avdmanager create avd --name play-smoke --path "$ANDROID_AVD_HOME/play-smoke.avd" --package 'system-images;android-35;google_apis;x86_64' --force >> "$output/emulator-setup.txt" 2>&1
+python - <<'PY'
+from pathlib import Path
+import os
+p=Path(os.environ['ANDROID_AVD_HOME'])/'play-smoke.avd/config.ini'
+values={}
+for line in p.read_text().splitlines():
+    if '=' in line:
+        k,v=line.split('=',1);values[k]=v
+values.update({'hw.audioInput':'yes','hw.audioOutput':'yes','hw.lcd.width':'1080','hw.lcd.height':'1920','hw.lcd.density':'420'})
+p.write_text(''.join(k+'='+v+'\n' for k,v in values.items()))
+PY
 "$ANDROID_HOME/emulator/emulator" -list-avds | tee "$output/avds.txt" | grep -qx play-smoke
 sudo chmod 666 /dev/kvm
 if [[ "${APP:-}" == backspin ]]; then
@@ -24,7 +35,7 @@ if [[ "${APP:-}" == backspin ]]; then
   ffmpeg -hide_banner -loglevel error -re -f lavfi -i 'sine=frequency=440:sample_rate=44100' -f s16le -ac 1 -ar 44100 - | pacat --playback --device=backspin_input --raw --format=s16le --rate=44100 --channels=1 &
   pactl info > "$output/host-audio.txt"
 fi
-"$ANDROID_HOME/emulator/emulator" -avd play-smoke -no-window -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory 2048 > "$output/emulator.txt" 2>&1 &
+"$ANDROID_HOME/emulator/emulator" -avd play-smoke -no-window -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory 2048 > "$output/emulator.txt" 2>&1 &
 trap 'adb emu kill || true' EXIT
 timeout 180 adb wait-for-device
 for i in $(seq 1 90); do
@@ -32,6 +43,10 @@ for i in $(seq 1 90); do
   sleep 2
 done
 [[ "$(adb shell getprop sys.boot_completed | tr -d '\r')" == 1 ]]
+if [[ "${APP:-}" == backspin ]]; then
+  adb emu avd hostmicon | tee "$output/emulator-microphone.txt"
+  grep -q OK "$output/emulator-microphone.txt"
+fi
 adb shell input keyevent 82
 adb install "$apk" | tee "$output/install.txt"
 adb logcat -c
