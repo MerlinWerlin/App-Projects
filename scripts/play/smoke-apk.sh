@@ -47,6 +47,9 @@ diagnostics() {
   result=$?
   trap - EXIT
   if [[ "${APP:-}" == linework ]]; then
+    # Keep native camera/media diagnostics from the complete functional run,
+    # including app restarts; the earlier launch-only log cannot cover them.
+    timeout 15 adb logcat -d > "$output/runtime-logcat.txt" 2> "$output/runtime-logcat-stderr.txt" || true
     {
       date -u --iso-8601=seconds
       printf 'script_exit=%s emulator_pid=%s\n' "$result" "$emulator_pid"
@@ -110,7 +113,7 @@ if [[ "${APP:-}" == linework ]]; then
   scheme=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["scheme"])' "$output/config.json")
   python scripts/play/linework-smoke.py "$output" "$package" "$scheme"
 fi
-printf 'Installed and alive 20 seconds after launch on API 35 x86_64. Feature/device QA still required.\n' > "$output/smoke-result.txt"
+printf 'Installed and alive 20 seconds after launch on %s. Completed feature checks are recorded separately; physical-device QA still required.\n' "$system_image" > "$output/smoke-result.txt"
 if [[ "${APP:-}" == backspin ]]; then
   (cd apps/backspin/android && ./gradlew :backspin-pcm:connectedDebugAndroidTest --no-daemon --max-workers=2 -PreactNativeArchitectures=x86_64 -Dorg.gradle.jvmargs=-Xmx3g) 2>&1 | tee "$output/pcm-instrumentation.txt"
 fi
