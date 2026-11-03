@@ -102,11 +102,13 @@ try:
     find(r'^Start free trial$', tap=True, scroll=True)
     find(r'^Free trial: 14 days left$', scroll=True, direction='up')
     capture('linework-android-trial')
+    checks.append('Android local trial starts without Apple product; exact 14-day status visible; no purchase performed')
     adb('shell', 'am', 'force-stop', package)
     adb('shell', 'am', 'start', '-W', '-n', package + '/.MainActivity')
     route('plus')
     find(r'^Free trial: 14 days left$', scroll=True, direction='up')
-    checks.append('Android local trial starts without Apple product and survives process restart; no purchase performed')
+    capture('linework-android-trial-restarted')
+    checks.append('Android local trial retains 14-day status after process restart')
     result = 'PASS'
 except Exception as error:
     result = 'FAIL'
