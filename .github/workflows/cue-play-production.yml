@@ -30,6 +30,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
       - name: Check existing Expo connection
         run: test -n "$EXPO_TOKEN"
       - uses: expo/expo-github-action@v8
@@ -42,16 +46,15 @@ jobs:
           git rev-parse HEAD > ../../cue-play-production-output/source-commit.txt
       - name: Install source
         run: npm ci --no-audit --no-fund
+      - name: Link existing Expo project
+        run: |
+          set -o pipefail
+          eas init --id 6a599954-54e2-4010-b7ff-54640715ff1a --non-interactive --force 2>&1 | tee ../../cue-play-production-output/project-link.txt
       - name: Inspect existing EAS build
         if: inputs.build_id != ''
         run: |
           [[ "$BUILD_ID" =~ ^[0-9a-fA-F-]{36}$ ]]
           eas build:view "$BUILD_ID" --json > ../../cue-play-production-output/build.json
-      - name: Link existing Expo project
-        if: inputs.build_id == ''
-        run: |
-          set -o pipefail
-          eas init --non-interactive --force 2>&1 | tee ../../cue-play-production-output/project-link.txt
       - name: Verify production configuration
         if: inputs.build_id == ''
         run: |
@@ -60,6 +63,9 @@ jobs:
       - name: Queue Android production AAB without submitting
         if: inputs.build_id == ''
         run: eas build --platform android --profile play-production --non-interactive --no-wait --json --message "Cue Android production candidate; no store submission" > ../../cue-play-production-output/build.json
+      - name: Validate finished production bundle
+        if: inputs.build_id != ''
+        run: python ../../scripts/play/verify_aab.py ../../cue-play-production-output
       - uses: actions/upload-artifact@v4
         if: always()
         with:
