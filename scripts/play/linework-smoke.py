@@ -73,7 +73,7 @@ def find(pattern, tap=False, attempts=8, scroll=False, direction='down', camera=
             label = node.get('content-desc') or node.get('text') or ''
             bounds = [int(n) for n in re.findall(r'\d+', node.get('bounds', ''))]
             if re.search(pattern, label) and len(bounds) == 4:
-                if interactive and node.get('clickable') != 'true':
+                if interactive and (node.get('clickable') != 'true' or node.get('enabled') == 'false'):
                     continue
                 x1, y1, x2, y2 = bounds
                 if x2 <= x1 or y2 <= y1:
@@ -258,8 +258,13 @@ try:
     # The progress heading is also named Outline; select the actual mode tab.
     find(r'^Outline$', tap=True, scroll=True, interactive=True)
     find(r'^Outline preview$', attempts=20)
+    # The preview's accessible name also exists while its placeholder is
+    # processing. Wait for the enabled parent button, not its enabled child
+    # text inside a disabled Pressable, before accepting the finished result.
+    find(r'^Start tracing$', attempts=30, interactive=True)
+    time.sleep(1)
     capture('linework-imported-outline')
-    find(r'^Start tracing$', tap=True, attempts=20, scroll=True)
+    find(r'^Start tracing$', tap=True, attempts=20, interactive=True)
     find(r'^Image to trace$', attempts=16, camera=True)
     capture('linework-imported-outline-trace')
     checks.append('owned PNG selected through Android system picker, imported, converted to an outline and opened in camera tracing without broad photo permission')
