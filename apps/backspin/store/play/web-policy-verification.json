@@ -1,0 +1,22 @@
+{
+  "pages": [
+    {
+      "url": "https://merlinwerlin.github.io/App-Projects/backspin/support-android.html",
+      "status": 200,
+      "sha256": "7fe6fcf11ceeb42a1f0101b7d59e400a64ebc7877ef120a7bfeda9703724c84d",
+      "canonicalGitSourceSha256": "7fe6fcf11ceeb42a1f0101b7d59e400a64ebc7877ef120a7bfeda9703724c84d",
+      "matchesGitSource": true
+    },
+    {
+      "url": "https://merlinwerlin.github.io/App-Projects/backspin/privacy-android.html",
+      "status": 200,
+      "sha256": "a2f7cb857edc64340e3ae5218efb5a2a146a1ad3eb1816748f211b23d7ad6831",
+      "canonicalGitSourceSha256": "a2f7cb857edc64340e3ae5218efb5a2a146a1ad3eb1816748f211b23d7ad6831",
+      "matchesGitSource": true
+    }
+  ],
+  "supportMainCommit": "953212aa9073c92ebe7e66010d3813df7a3849c9",
+  "privacyFooterMainCommit": "0bce58642d3891ff930490e8b1563d2085d624f3",
+  "iosPagesUnchanged": true,
+  "storeSubmission": false
+}
