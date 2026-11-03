@@ -1,0 +1,86 @@
+name: Glaze installed Widgets link
+on:
+  workflow_dispatch:
+    inputs:
+      simulator_run:
+        description: 'Full native simulator run containing glaze-simulator-installable'
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  link:
+    runs-on: macos-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve the exact previously built simulator app
+        run: |
+          set -euo pipefail
+          RUN='${{ inputs.simulator_run }}'
+          [[ "$RUN" =~ ^[0-9]+$ ]]
+          gh run download "$RUN" --repo "$GITHUB_REPOSITORY" -n glaze-simulator-installable -D "$RUNNER_TEMP/installable"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN" --jq .head_sha > "$RUNNER_TEMP/installable/run-source.txt"
+          python3 - <<'PY'
+          import os,pathlib,json
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'installable'
+          receipt=json.loads((root/'simulator-app-source.json').read_text())
+          assert receipt['sourceSHA']==(root/'run-source.txt').read_text().strip()
+          assert receipt['bundleId']=='com.jared797.glaze' and receipt['bundledJavaScript'] and receipt['unsignedSimulatorOnly']
+          PY
+          ditto -x -k "$RUNNER_TEMP/installable/glaze-simulator-app.zip" "$RUNNER_TEMP/installable"
+      - name: Build a small XCTest runner without rebuilding Expo
+        working-directory: apps/glaze
+        run: |
+          set -euo pipefail
+          ruby scripts/prepare-native-link-test.rb "$RUNNER_TEMP/GlazeLinkCheck"
+          xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/link-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build-for-testing > "$RUNNER_TEMP/glaze-link-build.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-link-build.log"; exit 1; }
+      - name: Install the real app and verify the Widgets route through the system prompt
+        run: |
+          set -euo pipefail
+          APP=$(find "$RUNNER_TEMP/installable" -maxdepth 1 -name '*.app' -print -quit)
+          test -n "$APP"
+          codesign --force --deep --sign - "$APP"
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["udid"] for xs in d["devices"].values() for x in xs if "iPhone" in x["name"]))')
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl install "$DEVICE" "$APP"
+          xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -destination "platform=iOS Simulator,id=$DEVICE" -derivedDataPath "$RUNNER_TEMP/link-build" -resultBundlePath "$RUNNER_TEMP/glaze-link.xcresult" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO -only-testing:GlazeLinkUITests/GlazeDeepLinkTests/testWidgetLinkReachesWidgets test-without-building > "$RUNNER_TEMP/glaze-link-test.log" 2>&1 &
+          LINK_PID=$!
+          READY=0
+          for TRY in $(seq 1 180); do
+            if grep -q GLAZE_DEEPLINK_READY "$RUNNER_TEMP/glaze-link-test.log"; then READY=1; break; fi
+            if ! kill -0 "$LINK_PID" 2>/dev/null; then break; fi
+            sleep 1
+          done
+          if [[ "$READY" != 1 ]]; then wait "$LINK_PID" || true; tail -120 "$RUNNER_TEMP/glaze-link-test.log"; exit 1; fi
+          xcrun simctl openurl "$DEVICE" glaze://widgets
+          if ! wait "$LINK_PID"; then tail -160 "$RUNNER_TEMP/glaze-link-test.log"; exit 1; fi
+          grep -F GLAZE_WIDGETS_ROUTE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
+          grep -F '** TEST SUCCEEDED **' "$RUNNER_TEMP/glaze-link-test.log"
+      - name: Export original XCTest attachments and source receipt
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/glaze-native-link-review"
+          if [[ -d "$RUNNER_TEMP/glaze-link.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-link.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/attachments"; fi
+          cp "$RUNNER_TEMP/installable/simulator-app-source.json" "$RUNNER_TEMP/glaze-native-link-review/" || true
+          python3 - <<'PY'
+          import os,json,pathlib
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-native-link-review'
+          log=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-link-test.log'
+          text=log.read_text() if log.exists() else ''
+          receipt={'harnessSourceSHA':os.environ['GITHUB_SHA'],'simulatorRun':'${{ inputs.simulator_run }}','routeTestPassed':'GLAZE_WIDGETS_ROUTE_VERIFIED' in text and '** TEST SUCCEEDED **' in text,'installedWidgetTapTest':False,'physicalDeviceTest':False,'scope':'Real installed Expo app, URL open, system confirmation and unique Widgets subtitle. Not a SpringBoard widget tap or full habit bridge test.'}
+          (root/'link-receipt.json').write_text(json.dumps(receipt,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: glaze-native-link-review
+          path: |
+            ${{ runner.temp }}/glaze-native-link-review
+            ${{ runner.temp }}/glaze-link-build.log
+            ${{ runner.temp }}/glaze-link-test.log
+          retention-days: 14

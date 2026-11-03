@@ -1,5 +1,5 @@
 name: Glaze full native simulator app
-# Current qualification includes version3 Lock Screen habits and their Widgets deep link.
+# Full integration plus a reusable simulator-only app for the separate XCTest link check.
 on:
   workflow_dispatch:
   push:
@@ -49,6 +49,27 @@ jobs:
           WORKSPACE=$(python3 -c 'from pathlib import Path; print(next(Path("ios").glob("*.xcworkspace")))')
           SCHEME=$(basename "$WORKSPACE" .xcworkspace)
           xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/glaze-full-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build > "$RUNNER_TEMP/glaze-full-build.log" 2>&1 || { tail -160 "$RUNNER_TEMP/glaze-full-build.log"; exit 1; }
+      - name: Package the unsigned simulator app for isolated route testing
+        run: |
+          set -euo pipefail
+          APP=$(python3 -c 'import os; from pathlib import Path; print(next((Path(os.environ["RUNNER_TEMP"])/"glaze-full-build/Build/Products/Release-iphonesimulator").glob("*.app")))')
+          export APP
+          ditto -c -k --keepParent "$APP" "$RUNNER_TEMP/glaze-simulator-app.zip"
+          python3 - <<'PY'
+          import os,json,pathlib,plistlib
+          app=pathlib.Path(os.environ['APP'])
+          info=plistlib.loads((app/'Info.plist').read_bytes())
+          assert (app/'main.jsbundle').exists() and (app/'PlugIns/GlazeWidgets.appex').exists()
+          receipt={'sourceSHA':os.environ['GITHUB_SHA'],'bundleId':info['CFBundleIdentifier'],'bundledJavaScript':True,'unsignedSimulatorOnly':True,'signedReleaseArchive':False}
+          (pathlib.Path(os.environ['RUNNER_TEMP'])/'simulator-app-source.json').write_text(json.dumps(receipt,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: glaze-simulator-installable
+          path: |
+            ${{ runner.temp }}/glaze-simulator-app.zip
+            ${{ runner.temp }}/simulator-app-source.json
+          retention-days: 14
       - name: Install and launch the app on iOS Simulator
         run: |
           set -euo pipefail
