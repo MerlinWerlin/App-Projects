@@ -98,7 +98,7 @@ struct HabitAccessoryView: View {
         Image(systemName: entry.habit.accessorySymbol).font(.system(size: 22, weight: .semibold))
       }
       VStack(alignment: .leading, spacing: 2) {
-        Text(title).font(.system(size: 11, weight: .semibold)).foregroundStyle(.secondary)
+        Text(title).font(.system(size: 11, weight: .semibold)).foregroundStyle(Color.primary.opacity(0.85))
           .lineLimit(1).minimumScaleFactor(0.75)
         if entry.habit == .mood {
           Text(HabitText.mood(Int(value))).font(entry.theme.typeface(size: 16, weight: .bold))
