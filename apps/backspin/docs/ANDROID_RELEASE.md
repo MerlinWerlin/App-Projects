@@ -18,11 +18,13 @@ Private upload key/password remain outside Git/public artifacts. Signed AAB and 
 
 ## 16 KB and physical-audio limitations
 
-The identical APK installed and launched on a device reporting 16384-byte pages. Run 41704766267 stopped at the microphone dialog because the test waited too briefly. Corrected run 41705876794 passed permission handling but rejected a silent original recording despite nonzero host input. No full16KB gameplay pass is claimed; the emulator route versus app behavior remains unresolved.
+The identical APK installed and launched on verified 16384-byte-page devices running API 35 and API 36. Both native decoder tests passed on both versions. Full microphone gameplay remains UNQUALIFIED.
 
-Diagnostic run 41710351145 stopped on an unrelated Google Search process crash. The crash checker was repaired to attribute failures to the tested app; Java/native detection checks pass. Run 41711341099 then passed both native decoder tests on the verified 16 KB device, but Android system services restarted during the copy recording. Its failure screenshot shows the launcher, and logs report DeadSystemException. Root cause remains unresolved; no complete gameplay pass is claimed.
+API 35 run 41711341099 reached copy recording before Android system services restarted. API 36 run 41713732204 reached reversed playback before its screenshot RPC disconnected; logs recorded 52 low-memory process kills. Test screenshots now use ADB independently. Run 41715297715 verified 6,072,516 KiB of guest memory, passed both decoder tests, and recorded only three background low-memory kills with no DeadSystemException or Backspin fatal-process line. It still rejected the original take as too short. The microphone-signal cause is unresolved; passing codec tests do not substitute for a full round.
 
-[Run 41713732204](https://github.com/MerlinWerlin/App-Projects/actions/runs/41713732204) tests the identical APK on the official Android 16/API 36, 16 KB image. This changes the test environment, not the application. See store/play/diagnostics-16k-api35.json for the bounded API 35 result.
+An alternative authenticated SDK injectAudio experiment caused the emulator process to segfault before Backspin was installed in runs 41717696727 and 41718822479, including paced stereo delivery. Those are simulator/prototype failures, not app results. The prototype is preserved under scripts/play/archive_20261104_grpc_emulator_segfault and disconnected from the release workflow. Run 41715067110 was cancelled before emulator testing to replace the undersized configuration. No Android test run remains active.
+
+Public bounded diagnostics are store/play/diagnostics-16k-api35.json, store/play/diagnostics-16k-api36.json and store/play/microphone-sdk-experiment.json. Complete logs/screenshots are retained locally and in the corresponding CI artifacts.
 
 Human voice quality and physical phone routes/interruptions remain unverified. Jared has no Android phone or paid testers. Do not invent those results or purchase testers. Earlier failures and screenshots remain retained, including Pixel Launcher ANR/ADB loss, silent constant-tone input and an offscreen save assertion. Actual cramped audio controls were repaired and visually rechecked.
 
@@ -34,7 +36,7 @@ Settings opens the full platform-specific policy. The [Android privacy page](htt
 
 ## Remaining store gates
 
-1. Obtain organization/identity approval, then both phone verifications. Google currently disables phone verification and app creation. Original emails, expired certificate-link evidence and current public ABR record are saved privately; no original current registration PDF was recovered. A public lookup is not claimed as that certificate. No government-ID upload or approval occurred.
+1. Obtain organization/identity approval, then both phone verifications. Google currently disables phone verification and app creation. Original emails, expired certificate-link evidence and the public ABR record are saved privately. Targeted email, local-folder and connected-Drive searches recovered no current original registration PDF; the private source index now covers 14 files. A replacement confirmation letter can be requested through the official ABR paper-copy process. A public lookup is not claimed as that certificate. No government-ID upload or approval occurred.
 2. Create the app with the stable package, register the upload certificate with Play App Signing, and preserve an owner-controlled recoverable key/password backup before upload. A signed bundle alone is not Google registration or approval.
 3. Configure Plus com.jared797.backspin.plus: 10 scored goes free, then authorized A$1.99 lifetime purchase, no ads/subscription. Test actual Play-installed purchase, cancellation and restore. Standalone guards prohibit fake paid unlocks.
 4. Resolve or explicitly qualify the16KB microphone result; complete app access, target audience, content rating, ads and Data safety declarations from actual behavior.

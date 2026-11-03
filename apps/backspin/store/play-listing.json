@@ -34,6 +34,13 @@
     "gameplay4KB": "PASS",
     "nativeDecoderTests": 2,
     "signedProductionAabSha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa",
-    "storeSubmission": false
+    "storeSubmission": false,
+    "runtime16KB": {
+      "api35_decoder_tests": "2 PASS",
+      "api36_decoder_tests": "2 PASS",
+      "full_microphone_gameplay": "UNQUALIFIED",
+      "latest_host_run": 41715297715,
+      "sdk_injection_experiment": "Archived after pre-install emulator crashes"
+    }
   }
 }

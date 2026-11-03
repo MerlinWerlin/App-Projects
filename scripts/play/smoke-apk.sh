@@ -65,10 +65,8 @@ fi
 # headless binary can provide stub PulseAudio calls despite a working host source.
 memory=3072
 if [[ "${ANDROID_PAGE_SIZE:-4096}" == 16384 ]]; then memory=6144; fi
-grpc_args=()
-if [[ "${BACKSPIN_AUDIO_MODE:-host}" == grpc ]]; then grpc_args=(-grpc-use-token); fi
 free -m > "$output/host-memory.txt"
-xvfb-run -a -s '-screen 0 1080x1920x24' "$ANDROID_HOME/emulator/emulator" -avd play-smoke -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory "$memory" "${grpc_args[@]}" > "$output/emulator.txt" 2>&1 &
+xvfb-run -a -s '-screen 0 1080x1920x24' "$ANDROID_HOME/emulator/emulator" -avd play-smoke -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory "$memory" > "$output/emulator.txt" 2>&1 &
 trap 'adb emu kill || true' EXIT
 timeout 180 adb wait-for-device
 for i in $(seq 1 90); do
@@ -85,23 +83,7 @@ if [[ "${ANDROID_PAGE_SIZE:-4096}" == 16384 ]]; then
   [[ "$(awk '{print $2}' "$output/device-memory.txt")" -ge 4194304 ]]
 fi
 if [[ "${APP:-}" == backspin ]]; then
-  if [[ "${BACKSPIN_AUDIO_MODE:-host}" == grpc ]]; then
-    adb emu avd hostmicoff | tee "$output/emulator-microphone.txt"
-    export BACKSPIN_GRPC_MODULES="$RUNNER_TEMP/backspin-grpc"
-    mkdir -p "$BACKSPIN_GRPC_MODULES"
-    proto="$ANDROID_HOME/emulator/lib/emulator_controller.proto"
-    wellknown=$(python -c 'import grpc_tools,pathlib; print(pathlib.Path(grpc_tools.__file__).parent/"_proto")')
-    python -m grpc_tools.protoc -I "$ANDROID_HOME/emulator/lib" -I "$wellknown" --python_out="$BACKSPIN_GRPC_MODULES" --grpc_python_out="$BACKSPIN_GRPC_MODULES" "$proto"
-    sha256sum "$proto" > "$output/grpc-controller-proto-sha256.txt"
-    ffmpeg -nostdin -hide_banner -loglevel error -i "$RUNNER_TEMP/backspin-speech.wav" -ac 2 -ar 44100 -c:a pcm_s16le "$RUNNER_TEMP/backspin-grpc-speech.wav"
-    python scripts/play/backspin-grpc-microphone.py --wave "$RUNNER_TEMP/backspin-grpc-speech.wav" --output "$output/grpc-microphone.json" --modules "$BACKSPIN_GRPC_MODULES" > "$output/grpc-audio-client.txt" 2>&1 &
-    grpc_pid=$!
-    sleep 2
-    kill -0 "$grpc_pid"
-    python -c 'import json,sys; assert json.load(open(sys.argv[1]))["status"]=="STREAMING_REQUEST_ACTIVE"' "$output/grpc-microphone.json"
-  else
-    adb emu avd hostmicon | tee "$output/emulator-microphone.txt"
-  fi
+  adb emu avd hostmicon | tee "$output/emulator-microphone.txt"
   grep -q OK "$output/emulator-microphone.txt"
   if grep -q 'Could not init.*audio driver' "$output/emulator.txt"; then
     pactl list short sources > "$output/host-sources.txt"

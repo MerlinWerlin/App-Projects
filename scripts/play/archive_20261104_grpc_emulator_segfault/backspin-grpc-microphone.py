@@ -1,4 +1,4 @@
-"""Stream synthetic speech into the SDK emulator's authenticated virtual microphone.
+"""Archived unsuccessful SDK microphone-injection prototype; not a release test.
 
 Uses the installed Google emulator_controller.proto, not an app recording override.
 Never print or persist the emulator's authentication token.
