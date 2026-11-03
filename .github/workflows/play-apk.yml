@@ -135,6 +135,7 @@ jobs:
             apk-output/*.json
             apk-output/*.png
             apk-output/*.xml
+            apk-output/microphone-diagnostics/
           if-no-files-found: ignore
           retention-days: 30
       - name: Prepare unsigned production bundle after verified gameplay

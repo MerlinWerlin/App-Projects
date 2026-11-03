@@ -128,6 +128,8 @@ if [[ "${APP:-}" == backspin ]]; then
   pactl list source-outputs > "$output/gameplay-audio-clients.txt"
   adb shell dumpsys media.audio_flinger > "$output/gameplay-audio-flinger.txt"
   adb shell dumpsys media.audio_policy > "$output/gameplay-audio-policy.txt"
+  python scripts/play/inspect-backspin-recordings.py --self-test
+  python scripts/play/inspect-backspin-recordings.py "$output"
   # Decoder instrumentation is independent evidence, not a substitute gameplay pass.
   (cd apps/backspin/android && ./gradlew :backspin-pcm:connectedDebugAndroidTest --no-daemon --max-workers=2 -PreactNativeArchitectures=x86_64 -Dorg.gradle.jvmargs=-Xmx3g) 2>&1 | tee "$output/pcm-instrumentation.txt"
   [[ "$gameplay_status" == 0 ]]
