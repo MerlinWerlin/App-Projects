@@ -86,7 +86,7 @@ struct HabitWidgetView: View {
     let fraction = goal > 0 ? min(1, entry.value / goal) : 0
     let valueText = HabitStore.format(entry.value, decimals: def.decimals)
     let goalText = HabitStore.format(goal, decimals: def.decimals)
-    return VStack(alignment: .leading, spacing: 6) {
+    return VStack(alignment: .leading, spacing: 4) {
       Text(def.name.uppercased(with: .current))
         .font(t.typeface(size: 11, weight: .bold))
         .foregroundStyle(t.accentColor)
@@ -196,7 +196,7 @@ private struct HabitButtonLabel: View {
       .foregroundStyle(theme.inkColor)
       .lineLimit(1)
       .minimumScaleFactor(0.6)
-      .frame(maxWidth: .infinity, minHeight: 36)
+      .frame(maxWidth: .infinity, minHeight: 44)
       .background(Capsule().fill(theme.inkColor.opacity(0.12)))
       .overlay(Capsule().strokeBorder(theme.inkColor.opacity(0.35), lineWidth: 1))
   }
