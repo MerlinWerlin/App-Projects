@@ -142,7 +142,7 @@ test('assets/templates/<id>.svg files match toSvgString and belong to a template
   for (const f of files) {
     const t = byId.get(f.slice(0, -4));
     assert.ok(t, `stray SVG ${f}`);
-    assert.equal(readFileSync(join(ASSETS, f), 'utf8'), toSvgString(t), `${f} is stale — run node scripts/export-templates.ts`);
+    assert.equal(readFileSync(join(ASSETS, f), 'utf8').replace(/\r\n/g, '\n'), toSvgString(t), `${f} is stale — run node scripts/export-templates.ts`);
   }
 });
 

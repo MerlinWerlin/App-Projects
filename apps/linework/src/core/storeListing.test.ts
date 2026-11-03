@@ -13,6 +13,8 @@ type Field = { title: string; limit: number; stated: string; text: string };
 
 /** Every "### Title (≤N) [count]" heading followed by a ```text block. */
 function limitedFields(md: string): Field[] {
+  // Git may check text out with CRLF on Windows; field contents/counts use LF.
+  md = md.replace(/\r\n/g, '\n');
   const re = /^### (.+?) \(≤(\d+)\) \[(\w+)\]\n(?:(?!###)[^\n]*\n)*?```text\n([\s\S]*?)\n```/gm;
   const out: Field[] = [];
   for (const m of md.matchAll(re)) out.push({ title: m[1], limit: Number(m[2]), stated: m[3], text: m[4] });
