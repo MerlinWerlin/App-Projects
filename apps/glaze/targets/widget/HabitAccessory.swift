@@ -71,7 +71,7 @@ struct HabitAccessoryView: View {
         VStack(spacing: 1) {
           MoodFace(level: value > 0 ? Int(value) : 3, selected: value > 0, theme: entry.theme, monochrome: true)
             .frame(width: 37, height: 37)
-          Text(value > 0 ? "\(valueText) / 5" : "—")
+          Text(value > 0 ? "\(valueText) / \(HabitStore.format(5, decimals: 0))" : "—")
             .font(.system(size: 11, weight: .semibold))
         }
       } else {

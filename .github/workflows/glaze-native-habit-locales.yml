@@ -2,7 +2,7 @@ name: Glaze native habit languages
 on:
   push:
     branches: ['codex/glaze-theme-release-20261101']
-    paths: ['apps/glaze/scripts/native-habit-locale-review.swift', '.github/workflows/glaze-native-habit-locales.yml']
+    paths: ['apps/glaze/scripts/native-habit-locale-review.swift', 'apps/glaze/targets/widget/Habit*.swift', 'apps/glaze/targets/widget/*.lproj/Localizable.strings', '.github/workflows/glaze-native-habit-locales.yml']
   workflow_dispatch:
 permissions:
   contents: read
