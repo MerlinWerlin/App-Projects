@@ -69,7 +69,8 @@ jobs:
           xcrun simctl openurl "$DEVICE" glaze://widgets
           if ! wait "$LINK_PID"; then tail -160 "$RUNNER_TEMP/glaze-link-test.log"; exit 1; fi
           grep -F GLAZE_WIDGETS_ROUTE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
-          grep -F '** TEST SUCCEEDED **' "$RUNNER_TEMP/glaze-link-test.log"
+          grep -F '** TEST EXECUTE SUCCEEDED **' "$RUNNER_TEMP/glaze-link-test.log"
+          grep -F 'Executed 1 test, with 0 failures' "$RUNNER_TEMP/glaze-link-test.log"
       - name: Export original XCTest attachments and source receipt
         if: always()
         run: |
@@ -82,7 +83,10 @@ jobs:
           log=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-link-test.log'
           text=log.read_text() if log.exists() else ''
           package=pathlib.Path(os.environ['RUNNER_TEMP'])/'installable/glaze-simulator-app.zip'
-          receipt={'harnessSourceSHA':os.environ['GITHUB_SHA'],'simulatorRun':os.environ.get('GLAZE_SIMULATOR_RUN',''),'simulatorZipSHA256':hashlib.sha256(package.read_bytes()).hexdigest() if package.exists() else None,'routeTestPassed':'GLAZE_WIDGETS_ROUTE_VERIFIED' in text and '** TEST SUCCEEDED **' in text,'installedWidgetTapTest':False,'physicalDeviceTest':False,'scope':'Real installed Expo app, URL open, system confirmation and unique Widgets subtitle. Not a SpringBoard widget tap or full habit bridge test.'}
+          execute_ok=any(marker in text for marker in ['** TEST SUCCEEDED **','** TEST EXECUTE SUCCEEDED **'])
+          routed='GLAZE_WIDGETS_ROUTE_VERIFIED' in text and execute_ok and 'Executed 1 test, with 0 failures' in text
+          supplied=bool(os.environ.get('GLAZE_SIMULATOR_RUN',''))
+          receipt={'harnessSourceSHA':os.environ['GITHUB_SHA'],'simulatorRun':os.environ.get('GLAZE_SIMULATOR_RUN',''),'simulatorZipSHA256':hashlib.sha256(package.read_bytes()).hexdigest() if package.exists() else None,'runnerBuildOnly':not supplied,'routeTestPassed':supplied and routed,'installedWidgetTapTest':False,'physicalDeviceTest':False,'scope':'Real installed Expo app, URL open, system confirmation and unique Widgets subtitle. Not a SpringBoard widget tap or full habit bridge test.' if supplied else 'Compile-only XCTest runner; no installed app or route test performed.'}
           (root/'link-receipt.json').write_text(json.dumps(receipt,indent=2))
           PY
       - uses: actions/upload-artifact@v4
