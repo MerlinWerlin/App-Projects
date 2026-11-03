@@ -41,12 +41,12 @@ for base in bases:
 assert discovery, 'No token-protected local emulator discovery file; refusing unauthenticated fallback'
 
 with wave.open(str(a.wave), 'rb') as w:
-    assert w.getnchannels() == 1 and w.getsampwidth() == 2 and w.getframerate() == 44100
+    assert w.getnchannels() == 2 and w.getsampwidth() == 2 and w.getframerate() == 44100
     pcm = w.readframes(w.getnframes())
 samples = struct.unpack('<' + 'h' * (len(pcm) // 2), pcm)
 rms = (sum(v * v for v in samples) / len(samples)) ** .5
 assert rms > 100, 'Synthetic speech fixture is silent'
-fmt = control.AudioFormat(samplingRate=44100, channels=control.AudioFormat.Mono,
+fmt = control.AudioFormat(samplingRate=44100, channels=control.AudioFormat.Stereo,
                           format=control.AudioFormat.AUD_FMT_S16,
                           mode=control.AudioFormat.MODE_UNSPECIFIED)
 state = dict(status='STARTING', source='SDK gRPC injectAudio into Android virtual microphone',
@@ -59,12 +59,15 @@ def save():
     temp.replace(a.output)
 
 def packets():
-    # The SDK's blocking delivery mode provides backpressure when the guest is
-    # not reading. No real-time queue overwrites or host capture clock are used.
+    # Keep the SDK's blocking mode and also pace 20ms packets. The installed
+    # emulator crashed on an unpaced burst before the app had been installed.
     offset = 0
+    next_packet = time.monotonic()
     while True:
-        chunk = pcm[offset:offset + 1764]
+        time.sleep(max(0, next_packet - time.monotonic()))
+        chunk = pcm[offset:offset + 3528]
         offset = (offset + len(chunk)) % len(pcm)
+        next_packet = time.monotonic() + len(chunk) / (44100 * 2 * 2)
         state['packets'] += 1
         yield control.AudioPacket(format=fmt, timestamp=time.time_ns() // 1000, audio=chunk)
 
@@ -74,7 +77,7 @@ stub = service.EmulatorControllerStub(channel)
 call = stub.injectAudio.future(packets(), metadata=(('authorization', 'Bearer ' + discovery['grpc.token']),), timeout=900)
 state['status'] = 'STREAMING_REQUEST_ACTIVE'
 save()
-print('Authenticated SDK virtual-microphone stream started; synthetic mono PCM16/44100Hz', flush=True)
+print('Authenticated SDK virtual-microphone stream started; paced synthetic stereo PCM16/44100Hz', flush=True)
 while not call.done():
     time.sleep(1)
     save()

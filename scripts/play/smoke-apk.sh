@@ -93,7 +93,7 @@ if [[ "${APP:-}" == backspin ]]; then
     wellknown=$(python -c 'import grpc_tools,pathlib; print(pathlib.Path(grpc_tools.__file__).parent/"_proto")')
     python -m grpc_tools.protoc -I "$ANDROID_HOME/emulator/lib" -I "$wellknown" --python_out="$BACKSPIN_GRPC_MODULES" --grpc_python_out="$BACKSPIN_GRPC_MODULES" "$proto"
     sha256sum "$proto" > "$output/grpc-controller-proto-sha256.txt"
-    ffmpeg -nostdin -hide_banner -loglevel error -i "$RUNNER_TEMP/backspin-speech.wav" -ac 1 -ar 44100 -c:a pcm_s16le "$RUNNER_TEMP/backspin-grpc-speech.wav"
+    ffmpeg -nostdin -hide_banner -loglevel error -i "$RUNNER_TEMP/backspin-speech.wav" -ac 2 -ar 44100 -c:a pcm_s16le "$RUNNER_TEMP/backspin-grpc-speech.wav"
     python scripts/play/backspin-grpc-microphone.py --wave "$RUNNER_TEMP/backspin-grpc-speech.wav" --output "$output/grpc-microphone.json" --modules "$BACKSPIN_GRPC_MODULES" > "$output/grpc-audio-client.txt" 2>&1 &
     grpc_pid=$!
     sleep 2
