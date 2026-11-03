@@ -7,6 +7,7 @@ import Foundation
 
 @MainActor enum NativeGroupSmoke {
   static var started = false
+  static var context: [String: Any] = [:]
   static func run() async {
     guard !started else { return }; started = true
     let mode = ProcessInfo.processInfo.arguments.last ?? "clock"
@@ -21,21 +22,28 @@ import Foundation
         "groupContainer": container.path, "bundleID": Bundle.main.bundleIdentifier ?? "unknown",
         "sourceSHA": Bundle.main.object(forInfoDictionaryKey: "ReviewSourceSHA") as? String ?? "unknown",
         "physicalDeviceTest": false, "productionAppUsed": false, "installedWidgetInstance": false]
+      context = result
+      let probe = container.appendingPathComponent("glaze-group-smoke-run.txt")
       if mode == "clock" {
         let now = Date()
         result["now"] = Int64(now.timeIntervalSince1970 * 1000)
         result["offsetMinutes"] = TimeZone.current.secondsFromGMT(for: now) / 60
       } else if mode == "write" {
         // Never overwrite an existing Glaze tracker/log. These hosts run only on a fresh CI simulator.
-        guard store.string(forKey: HabitStore.habitsKey) == nil, store.string(forKey: HabitStore.logKey) == nil else { throw failure("Refusing existing simulator habit data") }
+        guard store.string(forKey: HabitStore.habitsKey) == nil, store.string(forKey: HabitStore.logKey) == nil, !fm.fileExists(atPath: probe.path) else { throw failure("Refusing existing simulator habit data") }
         let input = fm.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("group-fixture.json")
         let raw = try JSONSerialization.jsonObject(with: Data(contentsOf: input)) as! [String: Any]
         let habits = raw["habitsRaw"] as! String
         store.set(runID, forKey: "glaze.groupSmoke.runID")
         store.set(habits, forKey: HabitStore.habitsKey)
+        try Data(runID.utf8).write(to: probe, options: .atomic)
         result["habitsRaw"] = habits
       } else {
-        guard store.string(forKey: "glaze.groupSmoke.runID") == runID else { throw failure("Independent process could not read writer marker") }
+        context["observedSharedFileMarker"] = (try? String(contentsOf: probe, encoding: .utf8)) ?? "missing"
+        context["observedPreferenceMarker"] = store.string(forKey: "glaze.groupSmoke.runID") ?? "missing"
+        context["observedHabitsRaw"] = store.string(forKey: HabitStore.habitsKey) ?? "missing"
+        guard (try? String(contentsOf: probe, encoding: .utf8)) == runID else { throw failure("Independent process could not read shared-container marker") }
+        guard store.string(forKey: "glaze.groupSmoke.runID") == runID else { throw failure("Independent process could not read writer preference marker") }
         if mode == "intents" {
           _ = try await StepHabitIntent(habit: .water, direction: 1).perform()
           _ = try await StepHabitIntent(habit: .sleep, direction: 1).perform()
@@ -50,10 +58,12 @@ import Foundation
         result["logRaw"] = store.string(forKey: HabitStore.logKey) ?? ""
         result["todayValues"] = Dictionary(uniqueKeysWithValues: HabitKindID.allCases.map { ($0.rawValue, HabitStore.todayValue($0, now: now)) })
       }
+      result["sharedFileMarker"] = (try? String(contentsOf: probe, encoding: .utf8)) ?? ""
       // No synchronize() call: exercise the production UserDefaults write/read path.
       try JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys]).write(to: folder.appendingPathComponent(mode + ".json"), options: .atomic)
     } catch {
-      try? JSONSerialization.data(withJSONObject: ["mode": mode, "error": String(describing: error)], options: [.prettyPrinted]).write(to: folder.appendingPathComponent("_ERROR.json"))
+      context["mode"] = mode; context["error"] = String(describing: error)
+      try? JSONSerialization.data(withJSONObject: context, options: [.prettyPrinted]).write(to: folder.appendingPathComponent("_ERROR.json"))
     }
   }
   static func failure(_ text: String) -> NSError { NSError(domain: "GlazeGroupSmoke", code: 1, userInfo: [NSLocalizedDescriptionKey: text]) }

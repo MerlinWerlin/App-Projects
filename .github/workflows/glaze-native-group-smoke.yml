@@ -29,20 +29,28 @@ jobs:
           for FILE in targets/widget/*.swift; do
             if [[ "$FILE" != "targets/widget/GlazeWidgetsBundle.swift" ]]; then SOURCES+=("$FILE"); fi
           done
-          xcrun swiftc -parse-as-library -sdk "$SDK" -target "$ARCH-apple-ios17.0-simulator" "${SOURCES[@]}" scripts/native-group-smoke.swift -o "$RUNNER_TEMP/GlazeGroupSmoke" > "$OUT/compile.log" 2>&1 || { tail -100 "$OUT/compile.log"; exit 1; }
           python3 - <<'PY'
           import os,pathlib,plistlib,shutil
           base=pathlib.Path(os.environ['RUNNER_TEMP'])
           for role in ['writer','intents','reader']:
               app=base/f'GlazeGroup-{role}.app';app.mkdir()
-              shutil.copy(base/'GlazeGroupSmoke',app/'GlazeGroupSmoke')
               for resource in pathlib.Path('targets/widget').glob('*.lproj'):shutil.copytree(resource,app/resource.name)
               info={'CFBundleIdentifier':f'com.glaze.group-{role}','CFBundleExecutable':'GlazeGroupSmoke','CFBundleName':f'GlazeGroup-{role}','CFBundlePackageType':'APPL','CFBundleVersion':'1','CFBundleShortVersionString':'1.0','MinimumOSVersion':'17.0','UIDeviceFamily':[1],'LSRequiresIPhoneOS':True,'UILaunchScreen':{},'UIApplicationSceneManifest':{'UIApplicationSupportsMultipleScenes':False},'ReviewSourceSHA':os.environ['GITHUB_SHA'],'ReviewRunID':os.environ['GITHUB_RUN_ID']}
               (app/'Info.plist').write_bytes(plistlib.dumps(info))
-          (base/'group-entitlements.plist').write_bytes(plistlib.dumps({'com.apple.security.application-groups':['group.com.jared797.glaze']}))
+              simulated={'com.apple.security.application-groups':['group.com.jared797.glaze'],'application-identifier':f'GLAZETEST0.com.glaze.group-{role}','com.apple.developer.team-identifier':'GLAZETEST0','get-task-allow':True}
+              (base/f'group-entitlements-{role}.plist').write_bytes(plistlib.dumps(simulated))
           PY
           for ROLE in writer intents reader; do
-            codesign --force --sign - --entitlements "$RUNNER_TEMP/group-entitlements.plist" "$RUNNER_TEMP/GlazeGroup-$ROLE.app"
+            ENT="$RUNNER_TEMP/group-entitlements-$ROLE.plist"
+            /usr/bin/derq query -f xml -i "$ENT" -o "$ENT.der" --raw
+            # Simulator entitlements live in Mach-O XML/DER sections, not only the ad-hoc signature.
+            xcrun swiftc -parse-as-library -sdk "$SDK" -target "$ARCH-apple-ios17.0-simulator" "${SOURCES[@]}" scripts/native-group-smoke.swift \
+              -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker "$ENT" \
+              -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker "$ENT.der" \
+              -o "$RUNNER_TEMP/GlazeGroup-$ROLE.app/GlazeGroupSmoke" > "$OUT/compile-$ROLE.log" 2>&1 || { tail -100 "$OUT/compile-$ROLE.log"; exit 1; }
+            codesign --force --sign - "$RUNNER_TEMP/GlazeGroup-$ROLE.app"
+            cp "$ENT" "$OUT/simulator-entitlements-$ROLE.plist"
+            xcrun otool -l "$RUNNER_TEMP/GlazeGroup-$ROLE.app/GlazeGroupSmoke" > "$OUT/macho-sections-$ROLE.txt"
           done
       - name: Exercise real shared storage and actual intent methods across installed processes
         run: |

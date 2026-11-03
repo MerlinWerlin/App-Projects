@@ -12,6 +12,7 @@ if(process.argv[2]==='prepare'){
  const fixture=read(process.argv[3]),writer=read(process.argv[4]),intents=read(process.argv[5]),reader=read(process.argv[6]);
  assert.equal(writer.habitsRaw,fixture.habitsRaw);assert.equal(reader.habitsRaw,fixture.habitsRaw,'native intents must not rewrite app tracker bytes');
  assert.equal(writer.runID,intents.runID);assert.equal(writer.runID,reader.runID);
+ for(const r of [writer,intents,reader])assert.equal(r.sharedFileMarker,writer.runID,'App Group file access shared as well as preferences');
  assert.equal(writer.groupContainer,intents.groupContainer);assert.equal(writer.groupContainer,reader.groupContainer);
  assert.equal(new Set([writer.bundleID,intents.bundleID,reader.bundleID]).size,3,'three independently installed app processes');
  assert.equal(intents.actualIntentMethodsCalled,4);
