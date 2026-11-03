@@ -30,13 +30,19 @@ The pinned36.6.11 run41728835831 completed the entire16KB UI flow and both decod
 
 Public bounded diagnostics are store/play/diagnostics-16k-api35.json, store/play/diagnostics-16k-api36.json and store/play/microphone-sdk-experiment.json. Complete logs/screenshots are retained locally and in the corresponding CI artifacts.
 
+Live-source4KB run41731776160 completed the UI flow and both decoder tests but failed sustained input: the first/copy active spans were0.26/4.84 seconds. PulseAudio input was uncorked/unmuted, and host probes during actual recording measured2976.94/2696.05 PCM16 RMS. This narrows the observed cold-input problem downstream of a valid live host signal, without proving a physical-device defect.
+
+The official Ranchu HAL has a separate300Hz test-input fixture. Run41734690127 verified its actual boot property, full16KB UI flow and both decoder tests; two AAC captures had4.74/4.44-second active spans, RMS0.689/0.688 and measured298Hz. A later evidence-collection error on a spaced shared filename caused the job to fail and prevented AAB preparation; that quoting bug is repaired. Clean rerun41736838929 is running. This fixture tests native simulation, not host speech or physical/human voice. Earlier boot-option/diagnostic failures are retained in store/play/microphone-hal-tone-experiment.json.
+
 Human voice quality and physical phone routes/interruptions remain unverified. Jared has no Android phone or paid testers. Do not invent those results or purchase testers. Earlier failures and screenshots remain retained, including Pixel Launcher ANR/ADB loss, silent constant-tone input and an offscreen save assertion. Actual cramped audio controls were repaired and visually rechecked.
 
 ## Website and privacy
 
 Play Console website ownership is VERIFIED through Search Console. Preserve the homepage tag from [commit21e9e0c](https://github.com/MerlinWerlin/App-Projects/commit/21e9e0cd0b65e5d0acb5299437eed77e25e2d600).
 
-Settings opens the full platform-specific policy. The [Android privacy page](https://merlinwerlin.github.io/App-Projects/backspin/privacy-android.html) was published by [commitff7f742](https://github.com/MerlinWerlin/App-Projects/commit/ff7f742023a6b5744c439fc3a1832c3439f61d77); HTTPS200 and exact source hash verified. Existing iOS policy is unchanged. Android OTA updates are disabled; do not copy Apple's update-service disclosures without checking the Android binary/SDK behavior.
+Settings opens the full platform-specific policy. Android-specific [support](https://merlinwerlin.github.io/App-Projects/backspin/support-android.html) is published by commit953212aa9073c92ebe7e66010d3813df7a3849c9 and HTTP200/exact hash verified. The Play listing points to it, including Google Play restore/refund and Android microphone instructions; iPhone support is unchanged. The Android policy footer links to it via commit0bce58642d3891ff930490e8b1563d2085d624f3; its new deployment hash is being checked.
+
+The [Android privacy page](https://merlinwerlin.github.io/App-Projects/backspin/privacy-android.html) was published by [commitff7f742](https://github.com/MerlinWerlin/App-Projects/commit/ff7f742023a6b5744c439fc3a1832c3439f61d77); HTTPS200 and exact source hash verified. Existing iOS policy is unchanged. Android OTA updates are disabled; do not copy Apple's update-service disclosures without checking the Android binary/SDK behavior.
 
 ## Remaining store gates
 

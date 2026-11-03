@@ -21,8 +21,22 @@
     },
     {
       "run": 41734690127,
+      "status": "APP_FLOW_AND_NATIVE_TESTS_PASS_DIAGNOSTIC_ERROR",
+      "method": "Launcher-preserved kernel append androidboot.audio.tinyalsa.simulate_input=1; optional command-line diagnostics cannot mask mandatory property and signal checks.",
+      "bootProperty": "1",
+      "nativeDecoderTests": "2 PASS",
+      "originalActiveSeconds": 4.74,
+      "copyActiveSeconds": 4.44,
+      "measuredHz": [
+        297.7017597087379,
+        298.3408557318653
+      ],
+      "reason": "Original/shared WAV diagnostic stat mishandled the space in Backspin80 share filename; job FAILED/no AAB. Raw AAC checks independently satisfy the unchanged sustained-tone criteria."
+    },
+    {
+      "run": 41736838929,
       "status": "RUNNING",
-      "method": "Launcher-preserved kernel append androidboot.audio.tinyalsa.simulate_input=1; optional command-line diagnostics cannot mask mandatory property and signal checks."
+      "method": "Same verified native tone input with correctly quoted remote filenames; all qualification gates unchanged."
     }
   ],
   "production_bundle_replay": "Prepared as callable workflow through existing play-apk.yml; not run."
