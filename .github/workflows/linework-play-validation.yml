@@ -2,6 +2,11 @@ name: Linework Play production export
 
 on:
   workflow_dispatch:
+  push:
+    branches: [codex/google-play-prep]
+    paths:
+      - '.github/workflows/linework-play-validation.yml'
+      - 'apps/linework/**'
   pull_request:
     paths:
       - '.github/workflows/linework-play-validation.yml'
