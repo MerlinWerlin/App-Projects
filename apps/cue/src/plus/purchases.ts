@@ -48,7 +48,7 @@ export function accessFromPurchases(list: StorePurchase[], now: number): StoreAc
   const dates = list.filter(p => matches(p, TRIAL_PRODUCT_ID)).map(p => trialStartFromPurchase(p, now)).filter((x): x is number => x !== null);
   return { plus: list.some(p => matches(p, PLUS_PRODUCT_ID)), trialStart: dates.length ? Math.min(...dates) : null };
 }
-export function createPurchaseProvider(module?: IapApi | null, now: () => number = Date.now, skus: readonly string[] = SKUS): PurchaseProvider {
+export function createPurchaseProvider(module?: IapApi | null, now: () => number = Date.now, skus: readonly string[] = SKUS, platform: 'ios' | 'android' = 'ios'): PurchaseProvider {
   const iap = module === undefined ? loadIap() : module;
   let connection: Promise<boolean> | null = null;
   let busy = false;
@@ -147,7 +147,7 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
         const currency = product.currency?.toUpperCase();
         // TestFlight may return USD metadata while its purchase sheet uses the Australian store.
         // Never infer the purchase country from the phone's language or convert a foreign price.
-        if (['AU', 'AUS'].includes(storefront?.trim().toUpperCase() ?? '') && currency && currency !== 'AUD') return PLUS_AUSTRALIA_PRICE;
+        if (platform === 'ios' && ['AU', 'AUS'].includes(storefront?.trim().toUpperCase() ?? '') && currency && currency !== 'AUD') return PLUS_AUSTRALIA_PRICE;
         if (currency === 'AUD') return product.displayPrice.replace(/^\$/, 'A$');
         return currency && !product.displayPrice.includes(currency) ? `${currency} ${product.displayPrice}` : product.displayPrice;
       } catch { return null; }

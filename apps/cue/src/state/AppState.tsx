@@ -42,7 +42,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const [kv] = useState(() => loadKv());
   const [secure] = useState(() => loadSecureStore());
   const [purchases] = useState<PurchaseProvider>(() => Platform.OS === 'android'
-    ? createAndroidPurchaseProvider(createPurchaseProvider(undefined, Date.now, [PLUS_PRODUCT_ID]), kv, secure)
+    ? createAndroidPurchaseProvider(createPurchaseProvider(undefined, Date.now, [PLUS_PRODUCT_ID], 'android'), kv, secure)
     : createPurchaseProvider());
   const accessRevision = useRef(0);
   const [loaded, setLoaded] = useState(false);

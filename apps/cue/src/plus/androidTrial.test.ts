@@ -82,9 +82,17 @@ test('Android product query contains Plus only and never requests Apple trial', 
     getAvailablePurchases: async () => [],
     requestPurchase: jest.fn(),
   } as unknown as IapApi;
-  const store = createPurchaseProvider(api, () => NOW, [PLUS_PRODUCT_ID]);
+  const store = createPurchaseProvider(api, () => NOW, [PLUS_PRODUCT_ID], 'android');
   expect(await store.price()).toBe('A$2.99');
   expect(api.fetchProducts).toHaveBeenCalledWith({ skus: [PLUS_PRODUCT_ID], type: 'in-app' });
   expect(await store.startTrial()).toMatchObject({ ok: false, reason: 'unavailable' });
   expect(api.requestPurchase).not.toHaveBeenCalled();
+});
+test('Google price is never replaced by the Australian TestFlight workaround', async () => {
+  const api = {
+    initConnection: async () => true,
+    getStorefront: async () => 'AU',
+    fetchProducts: async () => [{ id: PLUS_PRODUCT_ID, displayPrice: '$1.99', currency: 'USD' }],
+  } as unknown as IapApi;
+  expect(await createPurchaseProvider(api, () => NOW, [PLUS_PRODUCT_ID], 'android').price()).toBe('USD $1.99');
 });
