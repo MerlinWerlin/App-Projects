@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 import zipfile
 
 output = Path(sys.argv[1])
-config = json.loads((output / 'config.json').read_text())
+config = json.loads((output / 'config.json').read_text(encoding='utf-8'))
 android = '{http://schemas.android.com/apk/res/android}'
 tools_namespace = '{http://schemas.android.com/tools}'
 manifest_input = ET.parse(output / 'android-manifest-input.xml').getroot()
@@ -18,11 +18,11 @@ scanner_hints = [n for n in manifest_input.find('application').findall('meta-dat
 assert len(scanner_hints) == 1 and scanner_hints[0].get(tools_namespace+'node') == 'remove', 'Unused barcode model-download hint not removed'
 camera_plugin = next(p for p in config['plugins'] if isinstance(p, list) and p[0] == 'expo-camera')
 assert camera_plugin[1]['barcodeScannerEnabled'] is False, 'Unused barcode SDK not disabled'
-gradle_properties = (output / 'gradle-properties.txt').read_text()
+gradle_properties = (output / 'gradle-properties.txt').read_text(encoding='utf-8')
 assert re.search(r'^expo\.camera\.barcode-scanner-enabled=false\s*$', gradle_properties, re.M), 'Native barcode flag missing'
-autolinking = json.loads((output / 'autolinking-android.json').read_text())
+autolinking = json.loads((output / 'autolinking-android.json').read_text(encoding='utf-8'))
 assert 'expo-camera' in autolinking['configuration']['buildFromSource'], 'Camera must use source instead of the default-option AAR'
-runtime_dependencies = (output / 'runtime-dependencies.txt').read_text()
+runtime_dependencies = (output / 'runtime-dependencies.txt').read_text(encoding='utf-8')
 assert 'project :expo-camera' in runtime_dependencies, 'Camera source project not selected'
 assert 'com.google.mlkit:' not in runtime_dependencies, 'ML Kit runtime dependency remains'
 assert 'play-services-code-scanner' not in runtime_dependencies, 'Code-scanner runtime dependency remains'
@@ -30,7 +30,7 @@ if sys.argv[2] == '--dependencies-only':
     (output / 'dependencies-verification.json').write_text(json.dumps({
         'status': 'RUNTIME_DEPENDENCIES_PREFLIGHT_PASS', 'cameraBuildFromSource': True,
         'barcodeScannerEnabled': False, 'mlkitRuntimeAbsent': True,
-    }, indent=2) + '\n')
+    }, indent=2) + '\n', encoding='utf-8', newline='\n')
     print('Runtime dependency preflight PASS; signed-bundle and native tests still required')
     sys.exit(0)
 expected_certificate = sys.argv[2].replace(':', '').upper()
@@ -51,10 +51,10 @@ providers = [n.get(android + 'name') for n in manifest.find('application').finda
 assert 'com.google.mlkit.common.internal.MlKitInitProvider' not in providers, 'ML Kit initializer still packaged'
 assert not any(n.get(android+'name') == 'com.google.mlkit.vision.DEPENDENCIES'
                for n in manifest.find('application').findall('meta-data')), 'Unused barcode model-download hint still packaged'
-certificate = (output / 'certificate.txt').read_text()
+certificate = (output / 'certificate.txt').read_text(encoding='utf-8')
 match = re.search(r'SHA256:\s*([A-Fa-f0-9:]+)', certificate)
 assert match and match.group(1).replace(':', '').upper() == expected_certificate, 'Wrong upload certificate'
-assert 'jar verified.' in (output / 'signature.txt').read_text(), 'AAB signature not verified'
+assert 'jar verified.' in (output / 'signature.txt').read_text(encoding='utf-8'), 'AAB signature not verified'
 libraries = []
 with zipfile.ZipFile(bundle) as archive:
     assert archive.getinfo('base/assets/index.android.bundle').file_size > 100_000
@@ -75,11 +75,11 @@ assert any('/x86_64/' in n['name'] for n in libraries)
 assert not any('barhopper' in n['name'].lower() for n in libraries), 'Barcode native runtime remains'
 receipt = {'status': 'SIGNED_AAB_STATIC_PASS', 'package': 'com.jared797.linework', 'targetSdk': target,
            'versionCode': manifest.get(android + 'versionCode'),
-           'sourceCommit': (output / 'source-commit.txt').read_text().strip(),
+           'sourceCommit': (output / 'source-commit.txt').read_text(encoding='utf-8').strip(),
            'certificateSha256': expected_certificate, 'permissions': permissions,
            'barcodeRuntimeExcluded': True, 'providers': providers,
            'nativeLibraries': libraries, 'sha256': hashlib.sha256(bundle.read_bytes()).hexdigest(),
            'bytes': bundle.stat().st_size,
            'boundary': 'Upload-key signed candidate; no Google registration/upload, Play Billing or store approval implied.'}
-(output / 'bundle-verification.json').write_text(json.dumps(receipt, indent=2) + '\n')
+(output / 'bundle-verification.json').write_text(json.dumps(receipt, indent=2) + '\n', encoding='utf-8', newline='\n')
 print(json.dumps({k: v for k, v in receipt.items() if k != 'nativeLibraries'}))

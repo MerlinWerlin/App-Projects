@@ -61,7 +61,7 @@ def snapshot(name='linework-current'):
     return ET.fromstring(xml)
 
 
-def find(pattern, tap=False, attempts=8, scroll=False, direction='down', camera=False):
+def find(pattern, tap=False, attempts=8, scroll=False, direction='down', camera=False, interactive=False):
     for _ in range(attempts):
         if camera:
             # Trace deliberately hides controls after three idle seconds.
@@ -73,6 +73,8 @@ def find(pattern, tap=False, attempts=8, scroll=False, direction='down', camera=
             label = node.get('content-desc') or node.get('text') or ''
             bounds = [int(n) for n in re.findall(r'\d+', node.get('bounds', ''))]
             if re.search(pattern, label) and len(bounds) == 4:
+                if interactive and node.get('clickable') != 'true':
+                    continue
                 x1, y1, x2, y2 = bounds
                 if x2 <= x1 or y2 <= y1:
                     continue
@@ -253,7 +255,8 @@ try:
     assert selected, 'Seed image not selectable in the actual system photo picker'
     find(r'^Image preview$', attempts=16)
     capture('linework-imported-photo')
-    find(r'^Outline$', tap=True, scroll=True)
+    # The progress heading is also named Outline; select the actual mode tab.
+    find(r'^Outline$', tap=True, scroll=True, interactive=True)
     find(r'^Outline preview$', attempts=20)
     capture('linework-imported-outline')
     find(r'^Start tracing$', tap=True, attempts=20, scroll=True)
