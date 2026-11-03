@@ -61,6 +61,15 @@ struct HabitWidgetView: View {
   @Environment(\.widgetFamily) private var family
   let entry: HabitEntry
 
+  var body: some View { HabitWidgetContent(entry: entry, family: family) }
+}
+
+/// The actual widget content accepts its WidgetKit family explicitly for native layout review.
+@available(iOS 17.0, *)
+struct HabitWidgetContent: View {
+  let entry: HabitEntry
+  let family: WidgetFamily
+
   private var def: HabitDef { HabitDef.of(entry.habit) }
   private var stepText: String { HabitStore.format(entry.step, decimals: def.decimals) }
 
@@ -68,7 +77,7 @@ struct HabitWidgetView: View {
     let t = savedHabitTheme(entry.theme, kind: entry.habit.designKind, family: family)
     Group {
       if entry.habit == .mood {
-        MoodBody(entry: entry, medium: family == .systemMedium)
+        MoodBody(entry: entry, medium: family == .systemMedium, family: family)
       } else {
         countBody(t)
       }
@@ -128,9 +137,9 @@ struct HabitWidgetView: View {
 
 @available(iOS 17.0, *)
 private struct MoodBody: View {
-  @Environment(\.widgetFamily) private var family
   let entry: HabitEntry
   let medium: Bool
+  let family: WidgetFamily
 
   var body: some View {
     let t = savedHabitTheme(entry.theme, kind: entry.habit.designKind, family: family)

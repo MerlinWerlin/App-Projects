@@ -31,8 +31,8 @@ import CryptoKit
               let entry=HabitEntry(date:date,theme:theme,habit:kind,value:value,goal:goal,step:step)
               // WidgetKit supplies content margins on a real Home Screen widget. Model16pt here;
               // the explicit background also paints them in this isolated SwiftUI host.
-              let view=HabitWidgetView(entry:entry).padding(16).frame(width:width,height:170)
-                .background(GlazeBackground(theme:theme)).environment(\.widgetFamily,family)
+              let view=HabitWidgetContent(entry:entry,family:family).padding(16).frame(width:width,height:170)
+                .background(GlazeBackground(theme:theme))
                 .environment(\.colorScheme,.light).environment(\.locale,Locale(identifier:"en_US"))
               let renderer=ImageRenderer(content:view);renderer.scale=2
               guard let image=renderer.uiImage,let data=image.jpegData(compressionQuality:0.94) else {throw failure("native image")}
@@ -44,7 +44,7 @@ import CryptoKit
         }
       }
       guard records.count==2520 else {throw failure("expected2520 captures")}
-      let receipt:[String:Any]=["schema":"GLAZE_NATIVE_HABIT_LAYOUT_V1","sourceSHA":Bundle.main.object(forInfoDictionaryKey:"ReviewSourceSHA") as? String ?? "unknown","themes":105,"renders":records.count,"records":records,"physicalDeviceTest":false,"installedWidgetTapTest":false,"scope":"Actual native HabitWidgetView and app-derived theme palettes. Four trackers, two supported Home Screen sizes and three injected value states;16pt content-margin simulation. WidgetKit delivery, touches, Dynamic Type and tinted modes need device checks."]
+      let receipt:[String:Any]=["schema":"GLAZE_NATIVE_HABIT_LAYOUT_V1","sourceSHA":Bundle.main.object(forInfoDictionaryKey:"ReviewSourceSHA") as? String ?? "unknown","themes":105,"renders":records.count,"records":records,"physicalDeviceTest":false,"installedWidgetTapTest":false,"scope":"Actual shared HabitWidgetContent from HabitWidgetView and app-derived theme palettes. Four trackers, two supported Home Screen sizes and three injected value states;16pt content-margin simulation. WidgetKit delivery, touches, Dynamic Type and tinted modes need device checks."]
       try JSONSerialization.data(withJSONObject:receipt,options:[.prettyPrinted,.sortedKeys]).write(to:folder.appendingPathComponent("_HABIT_SUCCESS.json"))
     } catch {try? Data(String(describing:error).utf8).write(to:folder.appendingPathComponent("_ERROR.txt"))}
   }
