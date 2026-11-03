@@ -193,10 +193,21 @@ try:
     after = adb('shell', 'content', 'query', '--uri', 'content://media/external/video/media',
                 '--projection', '_id:_display_name:_size:duration:mime_type').decode(errors='replace')
     (output / 'video-store-after.txt').write_text(after)
-    assert after.count('Row:') > before.count('Row:'), 'No new MediaStore video'
-    rows = [x for x in after.splitlines() if '_size=' in x]
-    assert any(int(re.search(r'_size=(\d+)', x).group(1)) > 1024 and 'video/' in x for x in rows)
+    before_ids = set(re.findall(r'\b_id=(\d+)', before))
+    rows = [dict(re.findall(r'(\w+)=([^,\n]+)', line)) for line in after.splitlines() if '_size=' in line]
+    new_videos = [row for row in rows if row['_id'] not in before_ids
+                  and int(row['_size']) > 1024 and row.get('mime_type', '').startswith('video/')]
+    assert len(new_videos) == 1, 'Expected one new nonempty MediaStore video'
     checks.append('virtual-camera clip records/stops and saves a new nonempty native MediaStore video with CAMERA-only grant')
+    ready = ET.parse(output / 'linework-native-video-ready.xml')
+    lengths = [re.fullmatch(r'Length (\d+) s', n.get('text', '')) for n in ready.iter('node')]
+    displayed_seconds = int(next(m.group(1) for m in lengths if m))
+    native_seconds = int(new_videos[0]['duration']) / 1000
+    duration_check = {'displayedSeconds': displayed_seconds, 'nativeSeconds': native_seconds,
+                      'toleranceSeconds': 2, 'mediaId': new_videos[0]['_id']}
+    (output / 'video-duration-verification.json').write_text(json.dumps(duration_check, indent=2) + '\n')
+    assert native_seconds > 0 and abs(displayed_seconds-native_seconds) <= 2, duration_check
+    checks.append('displayed clip length excludes camera preparation and agrees with native video duration within two seconds')
     result = 'PASS'
 except Exception as error:
     result = 'FAIL'

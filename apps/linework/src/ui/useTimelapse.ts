@@ -128,7 +128,7 @@ export function useTimelapse(onMessage: (text: string) => void): TimelapseContro
     busyRef.current = true;
     tap();
     const at = Date.now();
-    dispatch({ type: 'start', at });
+    dispatch({ type: 'start', at: Platform.OS === 'android' ? null : at });
     setNow(at);
     try {
       await switchToVideo();
@@ -142,6 +142,11 @@ export function useTimelapse(onMessage: (text: string) => void): TimelapseContro
       if (Platform.OS === 'android' && !readyRef.current) {
         dispatch({ type: 'failed', message: t('trace.timelapse.cameraStarting') });
         return;
+      }
+      if (Platform.OS === 'android') {
+        const captureAt = Date.now();
+        dispatch({ type: 'captureStarted', at: captureAt });
+        setNow(captureAt);
       }
       msgRef.current(t('trace.timelapse.recordingNotice'));
       // Resolves when stopRecording() is called or maxDuration is reached.
