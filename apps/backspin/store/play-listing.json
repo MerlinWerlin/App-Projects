@@ -27,7 +27,7 @@
     "featureGraphic": "store/play/feature-1024x500.png",
     "phoneScreenshots": "store/play/screenshots"
   },
-  "accountStatus": "Website verified in Play Console; identity/organization documents remain pending, and phone verification is disabled until approval. Last signed-in observation 3 Nov 2026.",
+  "accountStatus": "4 Nov shared verification checkpoint confirmed against Lane 4: Organization Submitted; Authorized representative In review. Website verified. Await Google approval before phone verification and app creation; no current request for a replacement ABN letter.",
   "buildEvidence": {
     "runtimeSource": "155a67047b63dcc4655c5de65963145c75dba951",
     "run": 41701424210,
