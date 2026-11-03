@@ -25,8 +25,17 @@ def check_system_dialog():
         time.sleep(.5)
 
 def capture(name):
-    d.screenshot(str(out / (name + '.png')))
-    (out / (name + '.xml')).write_text(d.dump_hierarchy(), encoding='utf-8')
+    # API36 can close UIAutomator's screenshot RPC connection. ADB captures the
+    # actual display independently, without changing the app or its input state.
+    shot = subprocess.run(['adb', 'exec-out', 'screencap', '-p'], check=True,
+                          capture_output=True, timeout=20).stdout
+    assert shot.startswith(b'\x89PNG\r\n\x1a\n'), 'Device screenshot is not a PNG'
+    (out / (name + '.png')).write_bytes(shot)
+    try:
+        (out / (name + '.xml')).write_text(d.dump_hierarchy(), encoding='utf-8')
+    except Exception:
+        # XML is supplementary; functional state checks remain mandatory.
+        (out / (name + '-xml-error.txt')).write_text(traceback.format_exc())
 
 def find(label):
     for _ in range(7):
