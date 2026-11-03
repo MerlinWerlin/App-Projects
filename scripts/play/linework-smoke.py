@@ -26,6 +26,8 @@ def adb(*args):
     try:
         result = subprocess.run(['adb', *args], capture_output=True, timeout=35)
         record.update(returncode=result.returncode, stderr=result.stderr.decode(errors='replace')[-4000:])
+        if 'uiautomator' in args:
+            record['dump_response'] = result.stdout.decode(errors='replace')[-2000:]
         result.check_returncode()
         return result.stdout
     except subprocess.TimeoutExpired:
@@ -38,7 +40,10 @@ def adb(*args):
 
 
 def snapshot(name='linework-current'):
-    adb('shell', 'uiautomator', 'dump', '/sdcard/linework.xml')
+    # Never accept a previous screen when an animated screen cannot reach idle.
+    adb('shell', 'rm', '-f', '/sdcard/linework.xml')
+    response = adb('shell', 'uiautomator', 'dump', '/sdcard/linework.xml')
+    assert b'dumped to' in response, 'Fresh UI hierarchy unavailable: ' + response.decode(errors='replace')
     xml = adb('shell', 'cat', '/sdcard/linework.xml')
     (output / (name + '.xml')).write_bytes(xml)
     return ET.fromstring(xml)
@@ -75,8 +80,8 @@ def find(pattern, tap=False, attempts=8, scroll=False, direction='down', camera=
 
 
 def capture(name):
-    snapshot(name)
     (output / (name + '.png')).write_bytes(adb('exec-out', 'screencap', '-p'))
+    snapshot(name)
 
 
 def route(path):

@@ -18,7 +18,7 @@ permissions:
   actions: read
 
 concurrency:
-  group: linework-production-bundle
+  group: linework-production-${{ inputs.artifactRun || 'build' }}-${{ inputs.artifactRun && inputs.pageSize || 'signing' }}
   cancel-in-progress: false
 
 jobs:
