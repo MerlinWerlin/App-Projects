@@ -34,9 +34,15 @@ export const settings = {
   'settings.free.body': 'Every tracing tool in Linework is free: camera tracing, opacity, lock, flashlight, grid, mirror, touch-lock, lightbox, outline mode and your own photos. No ads, no trial, no weekly subscription.',
   'settings.free.plusLink': 'Linework Plus and tip jar',
   'settings.free.plusHint': 'Optional one-time extras. Never gates a tracing tool.',
+  'settings.free.playBody': 'Camera tracing, your own photos, tracing controls and {count} starter templates stay free. The optional 14-day trial includes the full template library and photo-to-outline. Plus keeps those extras unlocked with a one-time purchase.',
+  'settings.free.playPlusLink': 'Linework Plus',
+  'settings.free.playPlusHint': 'Optional one-time unlock for the full template library and photo-to-outline',
 
   'settings.privacy.title': 'Privacy',
   'settings.privacy.body': 'Data Not Collected. Linework has no accounts, no analytics and no ads. Your photos stay on this phone and are never uploaded; outlines are made on the device.',
+  'settings.privacy.playBody': 'Images are processed on this device. Google’s billing library sends technical diagnostics to Google. No ads or app account. Tap to read the privacy policy.',
+  'settings.privacy.openHint': 'Open the Linework privacy policy in your browser',
+  'settings.privacy.openFailed': 'Could not open the browser. Privacy policy: {url}',
 
   'settings.about.title': 'About',
   'settings.about.body': 'Linework {version}. Templates are original line art made for Linework.',

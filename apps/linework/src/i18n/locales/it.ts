@@ -506,9 +506,15 @@ export const it: Translation = {
   'settings.free.body': 'Ogni strumento di ricalco di Linework è gratuito: ricalco con fotocamera, opacità, blocco, torcia, griglia, specchio, blocco tocco, tavolo luminoso, modalità contorni e le tue foto. Niente pubblicità, niente prova, niente abbonamento settimanale.',
   'settings.free.plusLink': 'Linework Plus e mance',
   'settings.free.plusHint': 'Extra facoltativi con acquisto singolo. Non blocca mai uno strumento di ricalco.',
+  'settings.free.playBody': "Il ricalco con fotocamera, le tue foto, i controlli e {count} modelli iniziali restano gratuiti. La prova facoltativa di 14 giorni include tutta la libreria e i contorni delle foto. Plus mantiene sbloccati questi extra con un acquisto unico.",
+  'settings.free.playPlusLink': "Linework Plus",
+  'settings.free.playPlusHint': "Acquisto unico facoltativo per tutta la libreria e i contorni delle foto",
 
   'settings.privacy.title': 'Privacy',
   'settings.privacy.body': 'Dati non raccolti. Linework non ha account, statistiche né pubblicità. Le tue foto restano su questo telefono e non vengono mai caricate; i contorni sono creati sul dispositivo.',
+  'settings.privacy.playBody': "Le immagini vengono elaborate su questo dispositivo. La libreria di fatturazione di Google invia dati diagnostici tecnici a Google. Nessuna pubblicità o account nell’app. Tocca per leggere l’informativa sulla privacy.",
+  'settings.privacy.openHint': "Apri l’informativa sulla privacy di Linework nel browser",
+  'settings.privacy.openFailed': "Impossibile aprire il browser. Informativa sulla privacy: {url}",
 
   'settings.about.title': 'Info',
   'settings.about.body': 'Linework {version}. I modelli sono disegni a tratto originali creati per Linework.',

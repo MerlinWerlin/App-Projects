@@ -80,3 +80,21 @@ test('T57: privacy page says Data Not Collected; privacy and support pages are s
     assert.match(html, /jaredbradley272@gmail\.com/, `${f} shows the support email (owner 22 Oct 2026)`);
   }
 });
+
+test('Google Play privacy policy matches its in-app link and listing, and covers the actual billing diagnostics', () => {
+  const policy = readFileSync(docs('play-privacy.html'), 'utf8');
+  const publishedSource = readFileSync(join(root, '..', '..', 'docs', 'linework', 'play-privacy.html'), 'utf8');
+  const listing = JSON.parse(readFileSync(join(root, 'store', 'play-listing.json'), 'utf8'));
+  const settings = readFileSync(join(root, 'app', '(tabs)', 'settings.tsx'), 'utf8');
+  assert.equal(policy, publishedSource, 'app and hosting policy copies stay identical');
+  assert.match(policy, /com\.jared797\.linework/);
+  assert.match(policy, /Astro Labs AU/);
+  assert.match(policy, /technical diagnostics to Google/);
+  assert.match(policy, /random billing-client session identifier/);
+  assert.match(policy, /backups/);
+  assert.match(policy, /jaredbradley272@gmail\.com/);
+  assert.doesNotMatch(policy, /Data Not Collected|<script\b|<link\b|\bsrc\s*=/i);
+  assert.equal(listing.appContent.privacyPolicyUrl, 'https://merlinwerlin.github.io/App-Projects/linework/play-privacy.html');
+  assert.ok(settings.includes(listing.appContent.privacyPolicyUrl));
+  assert.match(settings, /Linking\.openURL\(PLAY_PRIVACY_URL\)/);
+});

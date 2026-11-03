@@ -490,9 +490,15 @@ export const ja: Translation = {
   'settings.free.body': 'Lineworkのトレース機能はすべて無料です：カメラトレース、不透明度、ロック、ライト、グリッド、左右反転、タッチロック、ライトボックス、線画モード、自分の写真。広告なし、お試し期間なし、週額サブスクリプションなし。',
   'settings.free.plusLink': 'Linework Plusとチップ',
   'settings.free.plusHint': '任意の買い切り特典です。トレース機能が制限されることはありません。',
+  'settings.free.playBody': "カメラでのトレース、自分の写真、トレース機能、{count}個の入門テンプレートは引き続き無料です。任意の14日間トライアルでは、全テンプレートと写真の線画変換を利用できます。Plusを一度購入すると、これらの追加機能を継続して利用できます。",
+  'settings.free.playPlusLink': "Linework Plus",
+  'settings.free.playPlusHint': "全テンプレートと写真の線画変換を、任意の買い切り購入で解除",
 
   'settings.privacy.title': 'プライバシー',
   'settings.privacy.body': 'データの収集なし。Lineworkにはアカウント、分析、広告がありません。写真はこの端末内に保存され、アップロードされることはありません。線画は端末上で作成されます。',
+  'settings.privacy.playBody': "画像はこの端末で処理されます。Google の課金ライブラリは技術的な診断データを Google に送信します。広告やアプリのアカウントはありません。タップしてプライバシーポリシーをお読みください。",
+  'settings.privacy.openHint': "Linework のプライバシーポリシーをブラウザで開く",
+  'settings.privacy.openFailed': "ブラウザを開けませんでした。プライバシーポリシー：{url}",
 
   'settings.about.title': '情報',
   'settings.about.body': 'Linework {version}。テンプレートはLineworkのために制作されたオリジナルの線画です。',

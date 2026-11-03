@@ -112,6 +112,19 @@ try:
     capture('linework-home')
     checks.append('onboarding dismissed; real home renders')
 
+    route('settings')
+    find(r'24 starter templates stay free', scroll=True, attempts=12)
+    capture('linework-settings-free')
+    find(r'Images are processed on this device.*technical diagnostics to Google',
+         scroll=True, attempts=12, interactive=True)
+    # Put the last Settings row above the tab bar before capturing its copy.
+    adb('shell', 'input', 'swipe', '160', '500', '160', '210', '350')
+    find(r'technical diagnostics to Google', interactive=True)
+    capture('linework-settings-privacy')
+    labels = [n.get('content-desc') or n.get('text') or '' for n in snapshot().iter('node')]
+    assert not any('Data Not Collected' in label or 'No ads, no trial' in label for label in labels)
+    checks.append('Android Settings states the free/Plus boundary and exposes a clickable Google billing diagnostics/privacy disclosure')
+
     route('trace?template=cat-sitting')
     find(r'^Camera needed to trace$')
     find(r'^Allow camera$', tap=True)

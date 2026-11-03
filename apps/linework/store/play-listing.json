@@ -19,7 +19,7 @@
     ],
     "status": "prepared_not_uploaded"
   },
-  "privacy": "Draft policy reconciles Android OTA-off, OS backup and operator. Barcode removal is verified, but required Billing9.1.0 includes CCT transport and the actual app process logs a successful logging request. Payload and exact caller are unverified. Final SDK/technical-data mapping must be reconciled before privacy publication or any blanket no-data declaration; Data safety form not submitted. See apk-output/LINEWORK_BILLING_SDK_DISCLOSURE_REVIEW_20261104.json.",
+  "privacy": "Dedicated Google Play policy covers local images, backups, store purchases and Google billing diagnostics including random session identifiers. Android Settings now opens that policy with localized disclosure in all11 languages. Provider-source audit and draft Data safety mapping are in apk-output/linework-billing-disclosure-20261104. Publication and actual Play transaction checks remain pending; do not submit a blanket no-data declaration.",
   "inAppProducts": [
     {
       "productId": "com.jared797.linework.plus",
@@ -40,7 +40,7 @@
     "ads": false,
     "appLoginRequired": false,
     "audience": "General audience; not specifically designed or marketed for children or families, per owner clarification. Answer actual age/content questionnaires after artwork review.",
-    "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/linework/privacy.html",
+    "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/linework/play-privacy.html",
     "supportUrl": "https://merlinwerlin.github.io/App-Projects/linework/support.html",
     "supportEmail": "jaredbradley272@gmail.com"
   },
@@ -55,6 +55,43 @@
       41733246748
     ],
     "nativeChecksPerRun": 11,
-    "status": "ready_for_play_testing_not_uploaded"
+    "status": "retained_native_qualification_superseded_for_upload_by_privacy_wording_repair"
+  },
+  "dataSafetyDraft": {
+    "status": "prepared_not_submitted_actual_console_fields_and_live_transactions_pending",
+    "providerEvidence": "apk-output/linework-billing-disclosure-20261104/FINDINGS.json",
+    "collectsOrSharesRequiredDataTypes": true,
+    "technicalData": [
+      {
+        "category": "App info and performance / Diagnostics",
+        "collected": true,
+        "sharedWith": "Google",
+        "purposes": [
+          "App functionality",
+          "Analytics (SDK performance/error support)"
+        ],
+        "optional": false,
+        "encryptedInTransit": true,
+        "basis": "Automatic billing API/connection diagnostics and app/device metadata, including without a purchase."
+      },
+      {
+        "category": "Device or other IDs",
+        "collected": true,
+        "sharedWith": "Google",
+        "purposes": [
+          "App functionality",
+          "Analytics (SDK performance/error support)"
+        ],
+        "optional": false,
+        "encryptedInTransit": true,
+        "basis": "Random billing-client session ID correlates requests within an app client instance. It resets with a new client; not an advertising ID or hardware serial. Category mapping is a reasoned interpretation of the app-instance-ID definition."
+      }
+    ],
+    "sharingBasis": "Do not assume an exception for service-provider-only processing; Google documents its own SDK improvement purpose. Use the disclosed Google diagnostic transfer when completing the form.",
+    "purchaseData": "Google handles purchases under its own payment terms. App receives product/status/token information for acknowledgement and restoration, caching entitlement locally. Do not declare receipt of card details. Validate the limited purchase-history question against actual Play transactions before final form submission.",
+    "photosAndVideos": "No app/SDK upload path for user images or recordings; OS backups and user-chosen exports are explained separately.",
+    "deletion": "Developer holds no remote app-content or diagnostic database. Google controls its own records; do not promise developer deletion of Google SDK logs.",
+    "appAccountCreation": false,
+    "limits": "Draft classifications reflect source and runtime evidence; no Data safety form, purchase or provider-retention/deletion guarantee has been submitted."
   }
 }
