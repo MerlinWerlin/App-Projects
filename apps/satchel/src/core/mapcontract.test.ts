@@ -40,6 +40,13 @@ const build = read('../../tools/maps/build.mjs');
 const workflow = read('../../ops/github/satchel-maps-publish.yml');
 const REPO = 'MerlinWerlin/App-Projects';
 
+test('map publisher is installed as an Actions workflow, with preview builds separated from publishing', () => {
+  const installed = read('../../../../.github/workflows/satchel-maps-publish.yml');
+  assert.equal(installed, workflow);
+  assert.ok(installed.includes('node verify.mjs out'));
+  assert.ok(installed.includes("github.ref == 'refs/heads/main' && inputs.publish"));
+});
+
 // ---- mirrors of build.mjs (kept honest by the text checks below) ----
 
 const lon2x = (lon: number, z: number) => Math.floor(((lon + 180) / 360) * 2 ** z);

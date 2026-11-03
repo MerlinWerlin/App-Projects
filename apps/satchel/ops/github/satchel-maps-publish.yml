@@ -1,36 +1,56 @@
-# Satchel offline city map packs -> GitHub release assets on this repo (free, no accounts, no secrets).
-# INSTALL: copy this file to .github/workflows/satchel-maps-publish.yml in MerlinWerlin/App-Projects (the Satchel
-# build task can't write App-Projects), then run it from the Actions tab (workflow_dispatch, defaults are fine).
-# It builds every city in apps/satchel/tools/maps/cities.json, uploads <city>.tar files first and catalog.json LAST
-# (the app only lists cities that are in catalog.json), then checks the catalog downloads.
-# Data: © OpenStreetMap contributors (ODbL) via the Protomaps daily build and the Overpass API; style: Protomaps
-# basemaps (BSD-3). See apps/satchel/docs/THIRD_PARTY.md.
+# MerlinWerlin/App-Projects: branch builds are previews; publishing requires an explicit main-branch dispatch.
 name: satchel-maps-publish
 
 on:
+  push:
+    branches: ['codex/satchel-map-system-*']
+    paths: ['apps/satchel/tools/maps/**', '.github/workflows/satchel-maps-publish.yml']
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Release tag (must match MAPS_RELEASE in apps/satchel/src/core/citymaps.ts)'
+        description: 'Release tag (must match the app)'
         required: true
         default: 'satchel-maps-v1'
         type: string
       ratio:
-        description: 'Pixel ratio of the rendered tiles (2 = sharp on iPhone)'
+        description: 'Pixel ratio (2 = sharp on iPhone)'
         required: true
         default: '2'
-        type: string
+        type: choice
+        options: ['1', '2']
+      publish:
+        description: 'Publish verified packs for app downloads (main only)'
+        default: false
+        type: boolean
+
+concurrency:
+  group: satchel-maps-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  build:
+  app-contract:
     runs-on: ubuntu-24.04
-    timeout-minutes: 300
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: App tests (includes real pack and demo-place regressions)
+        working-directory: apps/satchel
+        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test --test-concurrency=4 'src/**/*.test.ts'
+  build:
+    needs: app-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
     permissions:
       contents: write
     env:
       GH_TOKEN: ${{ github.token }}
       R: ${{ github.repository }}
-      TAG: ${{ inputs.tag }}
+      TAG: ${{ inputs.tag || 'satchel-maps-v1' }}
+      RATIO: ${{ inputs.ratio || '2' }}
     defaults:
       run:
         working-directory: apps/satchel/tools/maps
@@ -38,35 +58,48 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
-      - name: System libraries for MapLibre Native (headless GL under xvfb)
+          node-version: '24'
+      - name: Validate release contract
+        run: |
+          node --input-type=module -e "import {MAPS_RELEASE} from '../../src/core/citymaps.ts'; if (process.env.TAG !== MAPS_RELEASE) throw Error('Tag must match the app');"
+      - name: System libraries for MapLibre Native
         run: |
           sudo apt-get update
           sudo apt-get install -y xvfb libcurl4 libglfw3 libuv1 libpng16-16 libicu74 libjpeg-turbo8 libwebp7 libopengl0 libegl1 libgles2 mesa-utils
-      - name: pmtiles CLI (go-pmtiles, latest release)
+      - name: Install pmtiles CLI
         run: |
           gh release download -R protomaps/go-pmtiles --pattern '*Linux_x86_64.tar.gz' -D /tmp/pmt
           tar -xzf /tmp/pmt/*.tar.gz -C /tmp/pmt
           sudo install /tmp/pmt/pmtiles /usr/local/bin/pmtiles
-          pmtiles version || true
-      - name: Install build deps
-        run: npm install --no-audit --no-fund
-      - name: Build city packs
-        run: xvfb-run -a -s "-screen 0 1024x768x24" node build.mjs --ratio "${{ inputs.ratio }}" --out out
-      - name: Create the release if missing
+          pmtiles --version
+      - name: Install build dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Build real city packs
+        run: xvfb-run -a -s "-screen 0 1024x768x24" node build.mjs --ratio "$RATIO" --out out
+      - name: Verify packs with the app parsers and render review images
+        run: node verify.mjs out "$RATIO"
+      - name: Keep packs and visual review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: satchel-city-maps-${{ github.run_id }}
+          path: |
+            apps/satchel/tools/maps/out/*.tar
+            apps/satchel/tools/maps/out/catalog.json
+            apps/satchel/tools/maps/out/*preview.png
+            apps/satchel/tools/maps/out/verification.json
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: Publish verified packs, then catalog.json last
+        if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.publish
         run: |
           gh release view "$TAG" -R "$R" >/dev/null 2>&1 || \
             gh release create "$TAG" -R "$R" --title "Satchel offline city maps ($TAG)" --latest=false \
-              --notes "Offline city map packs for the Satchel app. Map data © OpenStreetMap contributors, available under the Open Database Licence (ODbL), via Protomaps. Style: Protomaps basemaps (BSD-3)."
-      - name: Upload packs, then catalog.json last
-        run: |
+              --notes "Map data © OpenStreetMap contributors (ODbL), via Protomaps. Style: Protomaps basemaps (BSD-3). POI extracts in each pack are available under ODbL."
           cd out
           xargs -a upload-1-packs.txt -d '\n' -n 10 gh release upload "$TAG" -R "$R" --clobber
           gh release upload "$TAG" -R "$R" --clobber catalog.json
-      - name: Verify
-        run: |
-          want=$(sha256sum out/catalog.json | cut -d' ' -f1)
-          got=$(curl -fsSL "https://github.com/$R/releases/download/$TAG/catalog.json" | sha256sum | cut -d' ' -f1)
-          echo "catalog sha256 want $want got $got" | tee -a "$GITHUB_STEP_SUMMARY"
-          jq -r '.cities[] | "\(.id): \(.tiles) tiles, \(.pois) POIs, \(.bytes) bytes"' out/catalog.json | tee -a "$GITHUB_STEP_SUMMARY"
+          want=$(sha256sum catalog.json | cut -d' ' -f1)
+          got=$(curl --retry 5 --retry-delay 5 -fsSL "https://github.com/$R/releases/download/$TAG/catalog.json" | sha256sum | cut -d' ' -f1)
           [ "$want" = "$got" ]
+          echo "Published and verified $TAG catalog ($want)" >> "$GITHUB_STEP_SUMMARY"

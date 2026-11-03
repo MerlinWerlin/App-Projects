@@ -6481,5 +6481,9 @@
  "demo2.added": "Two sample past trips added. Remove them here at any time.",
  "demo2.removed": "Sample past trips removed.",
  "demo2.chip": "Sample",
- "demo2.noExport": "Sample trips can’t be exported. Remove them in Settings when you’re done."
+ "demo2.noExport": "Sample trips can’t be exported. Remove them in Settings when you’re done.",
+ "packpois.showSamples": "Show sample places",
+ "packpois.hideSamples": "Hide sample places",
+ "packpois.samplesHint": "Fictional places for trying the map. These are not real destinations.",
+ "packpois.noCityHere": "Download a city map, then tap Show on map to see its real places here. Your bookings and saved places stay on the map."
 }

@@ -1,5 +1,34 @@
 # Offline city map packs (T47, owner-1031 A)
 
+## Owner feedback, 3 November 2026
+
+Jared reports Satchel looks good with no issues found in his phone check. PDF import is still untested because
+he had no PDF; a clearly fictional sample booking is supplied by this lane. The next priority is real maps,
+because the existing map still shows demo places. This is not confirmation of map download or flight-mode rendering.
+
+The publisher was only a template under `ops/github/`, so GitHub never offered it as an Actions workflow.
+It is now also installed at `.github/workflows/satchel-maps-publish.yml`. Branch pushes build real Kyoto,
+central Tokyo and Sydney packs as review artifacts, with checks using the phone's actual catalog, tar and POI
+parsers, PNG dimensions, complete tile coverage, archive hashes and a downtown preview mosaic per city.
+These are build checks; actual iPhone installation and offline drawing still need the test below.
+
+Sample POIs now require **Show sample places**; they are off on every fresh Map screen. Search follows the same
+choice. Downloaded POIs automatically follow the visible downloaded city instead of falling back to the first
+pack stored on the phone. Bookings and saved places remain available.
+
+### Shipping and publishing
+
+1. Review the branch artifacts and merge the scoped pull request (the existing release approval mechanism).
+2. In GitHub Actions, run **satchel-maps-publish** on **main**, leave the tag `satchel-maps-v1` and ratio `2`,
+   and enable **Publish verified packs**. This builds and verifies every city before uploading packs and the catalog last.
+   Branch runs and dispatches with Publish off only make review artifacts. No hosting account or map key is needed.
+3. On TestFlight, update if offered; close and reopen Satchel twice for the JS update. Sample places should be off.
+4. Online: Map > Offline city maps > Kyoto > Download > Show on map. Turn on flight mode, close and reopen
+   Satchel, then zoom into Kyoto. Check streets and labels, and real toilets/places. Repeat with Sydney if useful.
+   Report download time, errors and missing labels. The three packs cover the configured city areas, not whole countries.
+
+Run results are linked in the pull request. No downloaded-city or real-phone success is claimed until evidenced.
+
 **What the app does.** Map tab > Offline city maps lists the cities in
 `https://github.com/MerlinWerlin/App-Projects/releases/download/satchel-maps-v1/catalog.json`.
 Download fetches `<city>.tar`, unpacks it into the app's documents folder (`maps/<id>/meta.json`, `pois.json`,

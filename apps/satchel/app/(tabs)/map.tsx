@@ -19,7 +19,7 @@
 // T13 offline POI layers: a downloaded city's own places (its pack's pois.json: toilets, water, food, supermarkets,
 // pharmacies, hospitals, police, embassies, ATMs, transport, fuel) are the Nearby list and the place pins for that
 // city, read from the phone (src/native/packPois.ts, parsed by src/core/packpois.ts), so they work offline; the
-// sample points stay for the demo cities. Per-category chips here and in the Layers sheet share one choice kept on
+// sample points require an explicit opt-in. Per-category chips here and in the Layers sheet share one choice kept on
 // this phone (every category on at first open); the nearest POI_MARKER_LIMIT are drawn; the OSM / ODbL line shows
 // whenever places are on screen; a filtered list that comes out empty keeps its Show all button.
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -125,7 +125,7 @@ type SaveForm = { name: string; tripId: string | null; errors: (PlaceError | 'tr
 /** A category's label key: the Map v0 ones under map.cat., the ones T13 added under packpois.cat. */
 // T156: lifts' label lives with the step-free strings.
 const catKey = (id: OfferedCategory): Key => (id === 'lift' ? 'stepfree.cat.lift' : isMapCategory(id) ? `map.cat.${id}` : `packpois.cat.${id as 'supermarket' | 'police' | 'embassy'}`);
-const setKey = (s: PoiSet) => `${s.source}|${s.city}`;
+import { availablePoiSets, poiSetKey as setKey, selectPoiSet } from '../../src/core/mapsets.ts';
 const NO_TOGGLES: unknown = null;
 
 // ---- Offline city maps (T47) ----
@@ -308,6 +308,7 @@ export default function MapScreen() {
   const router = useRouter();
   const { trips, saveTrip } = useTrips();
   const [cityKey, setCityKey] = useState<string | null>(null);
+  const [showSamples, setShowSamples] = useState(false);
   // T13: per-category toggles kept on this phone; nothing stored = every offered category on (release standard §1).
   const [rawToggles, setRawToggles] = usePersisted<unknown>(POI_TOGGLES_KEY, NO_TOGGLES);
   const on = useMemo(() => parsePoiToggles(rawToggles), [rawToggles]);
@@ -345,16 +346,11 @@ export default function MapScreen() {
     };
   }, [installed]);
   const packSets = useMemo(() => cityPois.filter((c) => c.pois.length > 0).map((c) => packPoiSet(c.city, c.pois, (cat) => t(catKey(cat)))), [cityPois, t]);
-  const sets = useMemo(() => [...packSets, ...SETS], [packSets]);
-  // The chosen city; until one is chosen, the downloaded city the map is over (else the first downloaded, else a sample).
+  const sets = useMemo(() => availablePoiSets(packSets, SETS, showSamples), [packSets, showSamples]);
+  // Do not substitute fictional places or a pack for another city when no real places cover this view.
   const set = useMemo<PoiSet | null>(
-    () =>
-      sets.find((s) => setKey(s) === cityKey) ??
-      (offlineCity ? packSets.find((s) => s.source === `pack:${offlineCity.id}`) : undefined) ??
-      packSets[0] ??
-      sets[0] ??
-      null,
-    [sets, cityKey, offlineCity, packSets],
+    () => selectPoiSet(sets, cityKey, offlineCity?.id),
+    [sets, cityKey, offlineCity],
   );
   const dist = useCallback(
     (m: number, key: 'map.away' | 'map.fromHere' = 'map.away') => {
@@ -734,7 +730,8 @@ export default function MapScreen() {
       <View onLayout={(e) => (searchY.current = e.nativeEvent.layout.y)} style={{ gap: rhythm.tight }}>
         <SectionHeader title={t('f99.map.sectionFind')} icon="navigate-outline" tone="sea" />
         <MapSearch
-          sets={SETS}
+          key={showSamples ? 'sample-search' : 'real-search'}
+          sets={showSamples ? SETS : []}
           reveal={reveal}
           from={here}
           installedKey={installed.map((c) => c.id).join(',')}
@@ -829,6 +826,19 @@ export default function MapScreen() {
 
       <View style={{ gap: rhythm.tight }}>
       <SectionHeader title={t('f99.map.sectionNearby')} icon="location-outline" tone="sea" />
+      <Button
+        kind="secondary"
+        label={t(showSamples ? 'packpois.hideSamples' : 'packpois.showSamples')}
+        hint={t('packpois.samplesHint')}
+        onPress={() => {
+          setShowSamples((value) => !value);
+          setCityKey(null);
+          setSelected(null);
+          setFound(null);
+          setForm(null);
+        }}
+      />
+      {!set ? <Body muted>{t('packpois.noCityHere')}</Body> : null}
       {sets.length > 1 ? (
         <View style={{ gap: space.s }}>
           <Label>{t(packSets.length ? 'packpois.city' : 'map.city')}</Label>
@@ -836,7 +846,7 @@ export default function MapScreen() {
             {sets.map((s) => (
               <Chip
                 key={setKey(s)}
-                label={s.sample && packSets.length ? t('packpois.sampleChip', { city: s.city }) : s.city}
+                label={s.sample ? t('packpois.sampleChip', { city: s.city }) : s.city}
                 selected={!!set && setKey(s) === setKey(set)}
                 onPress={() => chooseCity(s)}
               />
