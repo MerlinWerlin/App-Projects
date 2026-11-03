@@ -6,11 +6,13 @@
   "fullDescription": "Read your next take with Cue. Write or import a script, choose a comfortable text size and scrolling speed, and keep your words close to the camera.\n\nFREE TELEPROMPTER AND RECORDING\nKeep unlimited scripts, scroll steadily, mirror or flip the text for a teleprompter rig, use a countdown, and record without a watermark. Your scripts and steady-scroll tools stay available when a trial ends.\n\nOPTIONAL CUE PLUS\nPlus adds Voice Pace, Voice Follow, caption-file export, prompter colours, Word document import and rehearsal stats. Start a free seven-day trial when you choose. Plus is a separate one-time purchase at the price shown in the app; the trial does not charge automatically. The Android trial is stored on your device. Clearing app data or reinstalling can lose its record.\n\nVoice features need microphone permission. Voice Follow also needs compatible on-device speech recognition and installed language resources; availability varies by device and language.\n\nCue uses the system file picker for imports and the system share sheet for exports. Camera and microphone permission are needed to record a take.",
   "releaseBlockers": [
     "On-device speech availability/fallback QA",
-    "Camera and microphone interruption/save QA",
+    "Camera and microphone interruption QA",
     "Play Billing purchase and restore verification",
     "Complete identity and phone verification before Play enables app creation",
-    "Finish 4 KB and 16 KB runtime checks on the SDK-aligned production candidate"
+    "Build and sign the production AAB with a durable upload key",
+    "Complete final SDK/network Data safety review and publish the prepared privacy copy"
   ],
-  "assets": "Android device screenshots, 512px store icon and 1024x500 feature graphic still require verification",
+  "assets": "Four inspected 1080x1920 Android UI screenshots, 512px existing-brand icon and 1024x500 feature graphic are prepared under assets; not uploaded",
+  "assetManifest": "assets/MANIFEST.json",
   "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
 }

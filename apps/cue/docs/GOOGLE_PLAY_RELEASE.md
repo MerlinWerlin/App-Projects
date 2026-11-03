@@ -176,6 +176,12 @@ configure Play App Signing and a durable upload key, build the production AAB,
 and prepare the listing, Android screenshots, content rating and Data safety
 from the final binary and SDK behaviour.
 
+The English listing assets are now prepared and visually inspected in
+`store/assets`: four actual 1080×1920 Android UI captures, the existing-brand
+512×512 icon and a 1024×500 feature graphic. Capture run 41732019758 passed on
+the same APK. MANIFEST.json records source/hashes and lossless screenshot
+pixel provenance; VISUAL_REVIEW.md records inspection. These remain unuploaded.
+
 GOOGLE_PLAY_BILLING_QA.md contains the licensed, one-time purchase rehearsal;
 every case is explicitly unexecuted. Baseline simulation archives, source-bound
 receipts and the guest-memory failure log are preserved in
