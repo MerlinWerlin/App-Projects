@@ -20,6 +20,7 @@ jobs:
     timeout-minutes: 25
     env:
       GH_TOKEN: ${{ github.token }}
+      GLAZE_SIMULATOR_RUN: ${{ inputs.simulator_run }}
     steps:
       - uses: actions/checkout@v4
       - name: Build a small XCTest runner without rebuilding Expo
@@ -32,7 +33,7 @@ jobs:
         if: inputs.simulator_run != ''
         run: |
           set -euo pipefail
-          RUN='${{ inputs.simulator_run }}'
+          RUN="$GLAZE_SIMULATOR_RUN"
           [[ "$RUN" =~ ^[0-9]+$ ]]
           gh run download "$RUN" --repo "$GITHUB_REPOSITORY" -n glaze-simulator-installable -D "$RUNNER_TEMP/installable"
           gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN" --jq .head_sha > "$RUNNER_TEMP/installable/run-source.txt"
@@ -76,11 +77,12 @@ jobs:
           if [[ -d "$RUNNER_TEMP/glaze-link.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-link.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/attachments"; fi
           cp "$RUNNER_TEMP/installable/simulator-app-source.json" "$RUNNER_TEMP/glaze-native-link-review/" || true
           python3 - <<'PY'
-          import os,json,pathlib
+          import os,json,pathlib,hashlib
           root=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-native-link-review'
           log=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-link-test.log'
           text=log.read_text() if log.exists() else ''
-          receipt={'harnessSourceSHA':os.environ['GITHUB_SHA'],'simulatorRun':'${{ inputs.simulator_run }}','routeTestPassed':'GLAZE_WIDGETS_ROUTE_VERIFIED' in text and '** TEST SUCCEEDED **' in text,'installedWidgetTapTest':False,'physicalDeviceTest':False,'scope':'Real installed Expo app, URL open, system confirmation and unique Widgets subtitle. Not a SpringBoard widget tap or full habit bridge test.'}
+          package=pathlib.Path(os.environ['RUNNER_TEMP'])/'installable/glaze-simulator-app.zip'
+          receipt={'harnessSourceSHA':os.environ['GITHUB_SHA'],'simulatorRun':os.environ.get('GLAZE_SIMULATOR_RUN',''),'simulatorZipSHA256':hashlib.sha256(package.read_bytes()).hexdigest() if package.exists() else None,'routeTestPassed':'GLAZE_WIDGETS_ROUTE_VERIFIED' in text and '** TEST SUCCEEDED **' in text,'installedWidgetTapTest':False,'physicalDeviceTest':False,'scope':'Real installed Expo app, URL open, system confirmation and unique Widgets subtitle. Not a SpringBoard widget tap or full habit bridge test.'}
           (root/'link-receipt.json').write_text(json.dumps(receipt,indent=2))
           PY
       - uses: actions/upload-artifact@v4
