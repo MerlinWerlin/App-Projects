@@ -7,6 +7,7 @@ import Darwin
     let glaze = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     glaze.launch()
     XCTAssertTrue(glaze.wait(for: .runningForeground, timeout: 20))
+    XCTAssertTrue(glaze.staticTexts["Whole looks: wallpaper, icons, widgets and a loop."].waitForExistence(timeout: 30))
     let ready = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
       .appendingPathComponent("glaze-deeplink-ready")
     try FileManager.default.createDirectory(at: ready.deletingLastPathComponent(), withIntermediateDirectories: true)
