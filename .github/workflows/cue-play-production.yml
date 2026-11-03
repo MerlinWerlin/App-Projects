@@ -40,14 +40,13 @@ jobs:
         run: |
           mkdir -p ../../cue-play-production-output
           git rev-parse HEAD > ../../cue-play-production-output/source-commit.txt
+      - name: Install source
+        run: npm ci --no-audit --no-fund
       - name: Inspect existing EAS build
         if: inputs.build_id != ''
         run: |
           [[ "$BUILD_ID" =~ ^[0-9a-fA-F-]{36}$ ]]
           eas build:view "$BUILD_ID" --json > ../../cue-play-production-output/build.json
-      - name: Install source
-        if: inputs.build_id == ''
-        run: npm ci --no-audit --no-fund
       - name: Link existing Expo project
         if: inputs.build_id == ''
         run: |
