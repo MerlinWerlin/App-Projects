@@ -25,6 +25,13 @@ forbidden = {'android.permission.SYSTEM_ALERT_WINDOW', 'android.permission.RECOR
              'android.permission.READ_MEDIA_AUDIO', 'android.permission.READ_MEDIA_IMAGES',
              'android.permission.READ_MEDIA_VIDEO', 'android.permission.READ_MEDIA_VISUAL_USER_SELECTED'}
 assert not forbidden.intersection(permissions), forbidden.intersection(permissions)
+camera_plugin = next(p for p in config['plugins'] if isinstance(p, list) and p[0] == 'expo-camera')
+assert camera_plugin[1]['barcodeScannerEnabled'] is False, 'Unused barcode SDK not disabled'
+providers = [n.get(android + 'name') for n in manifest.find('application').findall('provider')]
+assert 'com.google.mlkit.common.internal.MlKitInitProvider' not in providers, 'ML Kit initializer still packaged'
+runtime_dependencies = (output / 'runtime-dependencies.txt').read_text()
+assert 'com.google.mlkit:' not in runtime_dependencies, 'ML Kit runtime dependency remains'
+assert 'play-services-code-scanner' not in runtime_dependencies, 'Code-scanner runtime dependency remains'
 certificate = (output / 'certificate.txt').read_text()
 match = re.search(r'SHA256:\s*([A-Fa-f0-9:]+)', certificate)
 assert match and match.group(1).replace(':', '').upper() == expected_certificate, 'Wrong upload certificate'
@@ -46,10 +53,12 @@ with zipfile.ZipFile(bundle) as archive:
         libraries.append({'name': name, 'loadAlignments': aligns})
 assert any('/arm64-v8a/' in n['name'] for n in libraries)
 assert any('/x86_64/' in n['name'] for n in libraries)
+assert not any('barhopper' in n['name'].lower() for n in libraries), 'Barcode native runtime remains'
 receipt = {'status': 'SIGNED_AAB_STATIC_PASS', 'package': 'com.jared797.linework', 'targetSdk': target,
            'versionCode': manifest.get(android + 'versionCode'),
            'sourceCommit': (output / 'source-commit.txt').read_text().strip(),
            'certificateSha256': expected_certificate, 'permissions': permissions,
+           'barcodeRuntimeExcluded': True, 'providers': providers,
            'nativeLibraries': libraries, 'sha256': hashlib.sha256(bundle.read_bytes()).hexdigest(),
            'bytes': bundle.stat().st_size,
            'boundary': 'Upload-key signed candidate; no Google registration/upload, Play Billing or store approval implied.'}

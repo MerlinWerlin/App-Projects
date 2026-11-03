@@ -25,7 +25,12 @@ for (const app of apps) {
       packages.add(c.android.package);
       assert.deepEqual(c.ios, base.ios);
       assert.deepEqual(c.android.adaptiveIcon, base.android.adaptiveIcon);
-      assert.deepEqual(c.plugins, base.plugins);
+      if (app === 'linework') {
+        assert.deepEqual(c.plugins, base.plugins.map((p) => Array.isArray(p) && p[0] === 'expo-camera'
+          ? [p[0], { ...p[1], barcodeScannerEnabled: false }] : p));
+      } else {
+        assert.deepEqual(c.plugins, base.plugins);
+      }
       assert.deepEqual(c.platforms, ['android']);
       assert.equal(c.updates.enabled, false);
       assert.equal(c.extra.eas?.projectId, base.extra?.eas?.projectId);
