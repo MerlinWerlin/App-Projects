@@ -59,6 +59,7 @@ struct HabitProvider: TimelineProvider {
 @available(iOS 17.0, *)
 struct HabitWidgetView: View {
   @Environment(\.widgetFamily) private var family
+  @Environment(\.widgetContentMargins) private var margins
   let entry: HabitEntry
 
   var body: some View {
@@ -66,7 +67,7 @@ struct HabitWidgetView: View {
     if family == .accessoryCircular || family == .accessoryRectangular || family == .accessoryInline {
       HabitAccessoryView(entry: entry, family: family, design: design)
     } else {
-      HabitWidgetContent(entry: entry, family: family, design: design)
+      HabitWidgetContent(entry: entry, family: family, design: design).padding(margins)
     }
   }
 }
@@ -309,6 +310,7 @@ private func habitConfiguration(_ habit: HabitKindID, name: String, description:
   .configurationDisplayName(name)
   .description(description)
   .supportedFamilies(habit.widgetFamilies)
+  .contentMarginsDisabled()
 }
 
 @available(iOS 17.0, *)
