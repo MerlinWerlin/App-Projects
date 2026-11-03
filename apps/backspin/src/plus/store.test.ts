@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { createStore, PLUS_SKU, testStore } from './store.ts';
+import { createStore, PLUS_KEY, PLUS_SKU, testStore } from './store.ts';
 
 const mem = () => {
   const m = new Map<string, string>();
@@ -114,4 +114,111 @@ test('StoreKit cancellation event clears the pending purchase and subscriptions'
   });
   assert.equal((await s.buy()).status, 'cancelled');
   assert.equal(removed, 1);
+});
+
+const paidAndroid = { productId: PLUS_SKU, purchaseState: 'purchased', purchaseToken: 'synthetic-test-token' };
+
+test('Android pending, unknown and incomplete purchases never grant or acknowledge Plus', async () => {
+  for (const purchase of [
+    { ...paidAndroid, purchaseState: 'pending' },
+    { ...paidAndroid, purchaseState: 'unknown' },
+    { ...paidAndroid, purchaseState: undefined },
+    { ...paidAndroid, purchaseToken: null },
+    { ...paidAndroid, productId: 'another.product' },
+    { id: PLUS_SKU, purchaseState: 'purchased', purchaseToken: 'token' },
+  ]) {
+    let acknowledgements = 0;
+    const storage = mem();
+    const store = createStore(storage, {
+      initConnection: async () => true,
+      getAvailablePurchases: async () => [purchase],
+      finishTransaction: async () => acknowledgements++,
+    }, 'android');
+    assert.equal(await store.owned(), false);
+    assert.equal(await store.restore(), false);
+    assert.equal(await storage.get(PLUS_KEY), '0');
+    assert.equal(acknowledgements, 0);
+  }
+});
+
+test('Android pending listener and request wait for the completed payment event', async () => {
+  let updated!: (purchase: object) => void;
+  let acknowledge = 0;
+  let sent!: () => void;
+  const requested = new Promise<void>((resolve) => { sent = resolve; });
+  const storage = mem();
+  const pending = { ...paidAndroid, purchaseState: 'pending' };
+  const store = createStore(storage, {
+    initConnection: async () => true,
+    getAvailablePurchases: async () => [pending],
+    purchaseUpdatedListener: (callback: typeof updated) => { updated = callback; return { remove() {} }; },
+    requestPurchase: async () => { updated(pending); sent(); return pending; },
+    finishTransaction: async () => { acknowledge++; },
+  }, 'android');
+  let resolved = false;
+  const buying = store.buy().then((r) => { resolved = true; return r; });
+  await requested;
+  await new Promise<void>((r) => setImmediate(r));
+  assert.equal(resolved, false);
+  assert.equal(acknowledge, 0);
+  assert.notEqual(await storage.get(PLUS_KEY), '1');
+  updated(paidAndroid);
+  assert.equal((await buying).status, 'owned');
+  assert.equal(acknowledge, 1);
+  assert.equal(await storage.get(PLUS_KEY), '1');
+});
+
+test('Android failed acknowledgement is retried even with locally cached ownership', async () => {
+  const storage = mem();
+  let tries = 0;
+  const store = createStore(storage, {
+    initConnection: async () => true,
+    getAvailablePurchases: async () => [paidAndroid],
+    requestPurchase: async () => paidAndroid,
+    finishTransaction: async () => { if (++tries === 1) throw new Error('temporary connection loss'); },
+  }, 'android');
+  assert.equal((await store.buy()).status, 'owned');
+  await new Promise<void>((r) => setImmediate(r));
+  assert.equal(tries, 1);
+  assert.equal(await store.owned(), true);
+  assert.equal(tries, 2);
+  assert.equal(await store.restore(), true);
+  assert.equal(tries, 2);
+});
+
+test('Android startup acknowledges completed unacknowledged payments without another purchase', async () => {
+  let tries = 0;
+  const storage = mem();
+  await storage.set(PLUS_KEY, '1');
+  const store = createStore(storage, {
+    initConnection: async () => true,
+    getAvailablePurchases: async () => [paidAndroid],
+    finishTransaction: async ({ isConsumable }: { isConsumable: boolean }) => { assert.equal(isConsumable, false); tries++; },
+  }, 'android');
+  assert.equal(await store.owned(), true);
+  assert.equal(tries, 1);
+});
+
+test('Android trusts successful current ownership queries and preserves paid access during outages', async () => {
+  const storage = mem();
+  await storage.set(PLUS_KEY, '1');
+  let unavailable = true;
+  const store = createStore(storage, {
+    initConnection: async () => true,
+    getAvailablePurchases: async () => { if (unavailable) throw new Error('offline'); return []; },
+  }, 'android');
+  assert.equal(await store.owned(), true);
+  assert.equal(await storage.get(PLUS_KEY), '1');
+  unavailable = false;
+  assert.equal(await store.owned(), false);
+  assert.equal(await storage.get(PLUS_KEY), '0');
+});
+
+test('Android restore skips payments Google already acknowledged', async () => {
+  const store = createStore(mem(), {
+    initConnection: async () => true,
+    getAvailablePurchases: async () => [{ ...paidAndroid, isAcknowledgedAndroid: true }],
+    finishTransaction: async () => assert.fail('already acknowledged'),
+  }, 'android');
+  assert.equal(await store.restore(), true);
 });

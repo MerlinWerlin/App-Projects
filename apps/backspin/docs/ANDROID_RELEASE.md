@@ -4,6 +4,8 @@ Jared authorized Backspin Android simulation and Google Play review/release. Liv
 
 ## Verified results
 
+The signed runtime155a670 bundle below is retained as the previous candidate. A subsequent Android billing audit found that pending/unknown Plus payments could grant access and that a failed acknowledgement could be skipped by cached ownership. The source now requires purchased state and a token on Android, reconciles ownership on foreground, and retries unacknowledged completed payments on queries, Restore and startup. Six additional regression tests pass (39 app tests total), with TypeScript, five configuration checks and a fresh iOS export. The existing iOS transaction path is preserved. A fresh native candidate and gameplay checks are required before using the repaired source for release; the old bundle does not contain this repair. Real Play transactions remain untested.
+
 [Run 41701424210](https://github.com/MerlinWerlin/App-Projects/actions/runs/41701424210) completed successfully with runtime source 155a67047b63dcc4655c5de65963145c75dba951.
 
 - Full API 35/x86_64 gameplay on 4096-byte pages PASS: onboarding, actual microphone permission, original recording, AAC decoding, reverse playback, copy recording, scoring, save, Android share sheet, exactly one free go consumed, and persistence after process restart. Input was synthetic speech through the host microphone.

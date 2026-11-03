@@ -47,7 +47,7 @@ async function remember(storage: Storage, on: boolean) {
   }
 }
 
-export function createStore(storage: Storage, module?: Iap | null): PlusStore {
+export function createStore(storage: Storage, module?: Iap | null, platform = 'ios'): PlusStore {
   const iap = module === undefined ? loadIap() : module;
   if (!iap) return testStore(storage);
   let connected: Promise<boolean> | null = null;
@@ -59,21 +59,48 @@ export function createStore(storage: Storage, module?: Iap | null): PlusStore {
         connected = null;
         return false;
       }));
-  const ownedList = async (): Promise<Purchase[]> => {
+  const qualifies = (p: Purchase | null | undefined) => isPlus(p) && (platform !== 'android' ||
+    (p?.productId === PLUS_SKU && p.purchaseState === 'purchased' &&
+     typeof p.purchaseToken === 'string' && p.purchaseToken.length > 0));
+  const acknowledged = new Set<string>();
+  const acknowledging = new Map<string, Promise<void>>();
+  // Failed acknowledgements remain eligible on the next query/Restore/startup.
+  // Do not acknowledge pending payments or let a cached entitlement skip this work.
+  const acknowledge = (purchase: Purchase): Promise<void> => {
+    if (platform !== 'android') return Promise.resolve().then(() => iap.finishTransaction?.({ purchase, isConsumable: false })).then(() => {});
+    if (!qualifies(purchase) || purchase.isAcknowledgedAndroid === true) return Promise.resolve();
+    const token = purchase.purchaseToken as string;
+    if (acknowledged.has(token)) return Promise.resolve();
+    const existing = acknowledging.get(token);
+    if (existing) return existing;
+    const task = Promise.resolve().then(async () => {
+      const result = await iap.finishTransaction({ purchase, isConsumable: false });
+      if (result === false) throw new Error('Purchase acknowledgement failed');
+      acknowledged.add(token);
+    }).finally(() => { acknowledging.delete(token); });
+    acknowledging.set(token, task);
+    return task;
+  };
+  const ownedList = async (): Promise<Purchase[] | null> => {
     try {
       const l = await iap.getAvailablePurchases();
-      return Array.isArray(l) ? l : [];
+      return Array.isArray(l) ? l : null;
     } catch {
-      return [];
+      return null;
     }
   };
   return {
     kind: 'store',
     async owned() {
-      if ((await storage.get(PLUS_KEY).catch(() => null)) === '1') return true;
-      if (!(await connect())) return false;
-      const yes = (await ownedList()).some(isPlus);
-      if (yes) await remember(storage, true);
+      const cached = (await storage.get(PLUS_KEY).catch(() => null)) === '1';
+      if (cached && platform !== 'android') return true;
+      if (!(await connect())) return cached;
+      const list = await ownedList();
+      if (!list) return platform === 'android' && cached;
+      const purchase = list.find(qualifies);
+      const yes = !!purchase;
+      if (purchase && platform === 'android') await acknowledge(purchase).catch(() => {});
+      if (yes || platform === 'android') await remember(storage, yes);
       return yes;
     },
     async price() {
@@ -115,9 +142,8 @@ export function createStore(storage: Storage, module?: Iap | null): PlusStore {
           resolve(r);
         };
         const accept = (purchase: Purchase | undefined) => {
-          if (done || !isPlus(purchase)) return;
-          // Ownership does not depend on acknowledgement succeeding; StoreKit redelivers it if needed.
-          void Promise.resolve().then(() => iap.finishTransaction?.({ purchase, isConsumable: false })).catch(() => {});
+          if (done || !qualifies(purchase)) return;
+          void acknowledge(purchase!).catch(() => {});
           finish({ status: 'owned' });
         };
         const onError = (e: unknown) => {
@@ -128,7 +154,7 @@ export function createStore(storage: Storage, module?: Iap | null): PlusStore {
         const reconcile = async () => {
           if (done || pending || polling) return;
           polling = true;
-          const got = (await ownedList()).find(isPlus);
+          const got = (await ownedList())?.find(qualifies);
           polling = false;
           if (done) return;
           if (got) return accept(got);
@@ -158,7 +184,7 @@ export function createStore(storage: Storage, module?: Iap | null): PlusStore {
               request: { ios: { sku: PLUS_SKU }, android: { skus: [PLUS_SKU] }, apple: { sku: PLUS_SKU }, google: { skus: [PLUS_SKU] } },
               type: 'in-app',
             });
-            accept((Array.isArray(r) ? r : r ? [r] : []).find(isPlus));
+            accept((Array.isArray(r) ? r : r ? [r] : []).find(qualifies));
           } catch (e) {
             onError(e);
           } finally {
@@ -177,8 +203,11 @@ export function createStore(storage: Storage, module?: Iap | null): PlusStore {
       } catch {
         // fall through to the list
       }
-      const yes = (await ownedList()).some(isPlus);
-      if (yes) await remember(storage, true);
+      const list = await ownedList();
+      const purchase = list?.find(qualifies);
+      const yes = !!purchase;
+      if (purchase && platform === 'android') await acknowledge(purchase).catch(() => {});
+      if (yes || (platform === 'android' && list)) await remember(storage, yes);
       return yes;
     },
   };
