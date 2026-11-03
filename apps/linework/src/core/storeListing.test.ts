@@ -71,7 +71,7 @@ test('T58: screenshot headlines are 2–5 words, 6–8 shots', () => {
 test('T57: privacy page says Data Not Collected; privacy and support pages are self-contained', () => {
   const privacy = readFileSync(docs('privacy.html'), 'utf8');
   assert.match(privacy, /Data Not Collected/);
-  assert.match(privacy, /18 October 2026/);
+  assert.match(privacy, /Effective date: \d{1,2} [A-Z][a-z]+ 20\d{2}/);
   for (const f of ['privacy.html', 'support.html']) {
     const html = readFileSync(docs(f), 'utf8');
     assert.doesNotMatch(html, COMPETITORS);

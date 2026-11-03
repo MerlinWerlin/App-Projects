@@ -76,6 +76,15 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
   const skus = platform === 'android' ? [PLUS_SKU] : SKUS;
   const purchasedPlus = (p: Purchase | null | undefined) =>
     isPlus(p) && (platform !== 'android' || p?.purchaseState === 'purchased');
+  const acknowledgePlayPlus = async (p: Purchase): Promise<void> => {
+    if (platform !== 'android' || p.isAcknowledgedAndroid === true) return;
+    try {
+      await iap.finishTransaction({ purchase: p, isConsumable: false });
+    } catch {
+      // Keep a completed purchase usable. A later refresh/restore retries the
+      // acknowledgement, including after interruption or a pending payment.
+    }
+  };
   let connected: Promise<boolean> | null = null;
   const connect = () => {
     connected ??= Promise.resolve()
@@ -226,13 +235,25 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
     if (list) {
       const trial = trialIn(list);
       if (trial) await saveTrial(trial);
-      if (list.some(purchasedPlus)) return saveOwned();
+      const plus = list.find(purchasedPlus);
+      if (plus) {
+        await acknowledgePlayPlus(plus);
+        return saveOwned();
+      }
+      // A successful Play query is authoritative after a refund/revocation.
+      // A failed query still preserves the last known offline entitlement.
+      if (platform === 'android') {
+        if ((await readSaved()).owned) {
+          try { await storage.set(PLUS_STORAGE_KEY, JSON.stringify(NOT_OWNED)); } catch { /* this session still locks */ }
+        }
+        return { ...NOT_OWNED };
+      }
     }
     return readSaved();
   };
 
   return {
-    getState: readSaved,
+    getState: platform === 'android' ? restore : readSaved,
     restore,
     async price() {
       if (!(await connect())) return null;
@@ -248,7 +269,11 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
       // A failed request can still mean it's owned already (bought before, or delivered late): check the store.
       if (r.status === 'failed') {
         const list = await owned();
-        if (list?.some(purchasedPlus)) return saveOwned();
+        const plus = list?.find(purchasedPlus);
+        if (plus) {
+          await acknowledgePlayPlus(plus);
+          return saveOwned();
+        }
       }
       return saved;
     },

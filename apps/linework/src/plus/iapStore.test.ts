@@ -67,6 +67,72 @@ test('Play completed purchase requests the lifetime SKU and acknowledges non-con
   assert.equal(finish.isConsumable, false);
 });
 
+test('Play launch and restore retry an interrupted acknowledgement without charging again', async () => {
+  const purchase = { productId: PLUS_SKU, purchaseState: 'purchased', purchaseToken: 'recovered', isAcknowledgedAndroid: false };
+  const iap = fakeIap({ owned: [purchase] });
+  const storage = memoryStorage();
+  let attempts = 0;
+  iap.finishTransaction = async (arg: unknown) => {
+    iap.calls.push({ fn: 'finishTransaction', arg });
+    if (++attempts === 1) throw new Error('connection interrupted');
+    purchase.isAcknowledgedAndroid = true;
+  };
+  assert.equal((await createIapStore(storage, () => NOW, iap, 'android')!.getState()).owned, true);
+  const restarted = createIapStore(storage, () => NOW, iap, 'android')!;
+  assert.equal((await restarted.getState()).owned, true);
+  assert.equal((await restarted.restore()).owned, true);
+  assert.equal(attempts, 2);
+  assert.equal(iap.calls.some(c => c.fn === 'requestPurchase'), false);
+});
+
+test('Play already acknowledged ownership restores without finishing the transaction again', async () => {
+  const iap = fakeIap({ owned: [{ productId: PLUS_SKU, purchaseState: 'purchased', isAcknowledgedAndroid: true }] });
+  assert.equal((await createIapStore(memoryStorage(), () => NOW, iap, 'android')!.restore()).owned, true);
+  assert.equal(iap.calls.some(c => c.fn === 'finishTransaction'), false);
+});
+
+test('Play pending or unknown ownership is never acknowledged by refresh', async () => {
+  for (const purchaseState of ['pending', 'unknown', undefined]) {
+    const iap = fakeIap({ owned: [{ productId: PLUS_SKU, purchaseState, isAcknowledgedAndroid: false }] });
+    assert.equal((await createIapStore(memoryStorage(), () => NOW, iap, 'android')!.getState()).owned, false);
+    assert.equal(iap.calls.some(c => c.fn === 'finishTransaction'), false);
+  }
+});
+
+test('Play late completed purchase after a failed request is acknowledged before recovery', async () => {
+  const purchase = { productId: PLUS_SKU, purchaseState: 'purchased', purchaseToken: 'late' };
+  const iap = fakeIap({ owned: [purchase], buy: () => { throw new Error('store request failed'); } });
+  assert.equal((await createIapStore(memoryStorage(), () => NOW, iap, 'android')!.purchase()).owned, true);
+  const finish = iap.calls.find(c => c.fn === 'finishTransaction')?.arg;
+  assert.deepEqual(finish, { purchase, isConsumable: false });
+});
+
+test('Play successful empty query removes cached ownership after refund or revocation', async () => {
+  const storage = memoryStorage({ [PLUS_STORAGE_KEY]: JSON.stringify({ owned: true, source: 'store', since: NOW }) });
+  const store = createIapStore(storage, () => NOW, fakeIap({ owned: [] }), 'android')!;
+  assert.equal((await store.getState()).owned, false);
+  assert.equal(JSON.parse(storage.data.get(PLUS_STORAGE_KEY)!).owned, false);
+});
+
+test('Play unavailable connection or failed ownership query preserves the cached offline unlock', async () => {
+  for (const disconnect of [true, false]) {
+    const storage = memoryStorage({ [PLUS_STORAGE_KEY]: JSON.stringify({ owned: true, source: 'store', since: NOW }) });
+    const iap = fakeIap({ connect: !disconnect });
+    if (!disconnect) iap.getAvailablePurchases = async () => { throw new Error('offline'); };
+    assert.equal((await createIapStore(storage, () => NOW, iap, 'android')!.getState()).owned, true);
+    assert.equal(JSON.parse(storage.data.get(PLUS_STORAGE_KEY)!).owned, true);
+  }
+});
+
+test('Apple cached read and restore retain their existing transaction behaviour', async () => {
+  const iap = fakeIap({ owned: [{ productId: PLUS_SKU }] });
+  const store = createIapStore(memoryStorage(), () => NOW, iap, 'ios')!;
+  assert.equal((await store.getState()).owned, false);
+  assert.equal(iap.calls.length, 0);
+  assert.equal((await store.restore()).owned, true);
+  assert.equal(iap.calls.some(c => c.fn === 'finishTransaction'), false);
+});
+
 function memoryStorage(initial: Record<string, string> = {}): PlusStorage & { data: Map<string, string> } {
   const data = new Map(Object.entries(initial));
   return {
