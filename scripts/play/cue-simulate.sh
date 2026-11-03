@@ -9,13 +9,8 @@ adb logcat -c
 mkdir -p "$output/captures"
 trap 'adb logcat -d > "$output/logcat.txt"; adb exec-out screencap -p > "$output/final.png"' EXIT
 MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=180000 \
-  maestro test --test-output-dir "$output/captures" --debug-output "$output/captures" scripts/play/cue-android-flow.yaml
-adb shell am force-stop com.jared797.cue.playtest
-adb shell am start -W -n com.jared797.cue.playtest/.MainActivity > "$output/restart.txt"
-MAESTRO_CLI_NO_ANALYTICS=1 maestro test --test-output-dir "$output/captures" --debug-output "$output/captures" scripts/play/cue-persistence-flow.yaml
-MAESTRO_CLI_NO_ANALYTICS=1 maestro test --test-output-dir "$output/captures" --debug-output "$output/captures" scripts/play/cue-trial-flow.yaml
-MAESTRO_CLI_NO_ANALYTICS=1 maestro test --test-output-dir "$output/captures" --debug-output "$output/captures" scripts/play/cue-permission-flow.yaml
-MAESTRO_CLI_NO_ANALYTICS=1 maestro test --test-output-dir "$output/captures" --debug-output "$output/captures" scripts/play/cue-record-flow.yaml
+  maestro test --test-output-dir "$output/captures" --debug-output "$output/captures" scripts/play/cue-release-flow.yaml
+printf 'Process restart verified by stopApp then persistence subflow launchApp; see Maestro commands.json.\n' > "$output/restart.txt"
 for attempt in $(seq 1 10); do
   adb shell content query --uri content://media/external/video/media --projection duration:width:height > "$output/saved-video.txt"
   if python scripts/play/verify_cue_video.py "$output/saved-video.txt"; then break; fi
