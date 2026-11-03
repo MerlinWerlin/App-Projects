@@ -11,7 +11,7 @@
     "Actual Play Billing purchase/cancellation/restore",
     "Final permissions and Data safety/content-rating declarations"
   ],
-  "assets": "Android device screenshots, 512px store icon and 1024x500 feature graphic still require verification",
+  "assets": "512px store icon and 1024x500 feature graphic generated and visually inspected; final gameplay screenshots pending.",
   "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted",
   "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/backspin/privacy.html",
   "supportUrl": "https://merlinwerlin.github.io/App-Projects/backspin/support.html",
@@ -28,5 +28,5 @@
     "featureGraphic": "store/play/feature-1024x500.png",
     "phoneScreenshots": "pending_actual_emulator_run"
   },
-  "accountStatus": "Create app disabled pending identity, organization website and phone verification; signed-in observation 3 Nov 2026"
+  "accountStatus": "Website verified in Play Console; identity/organization documents remain pending, and phone verification is disabled until approval. Last signed-in observation 3 Nov 2026."
 }

@@ -8,8 +8,12 @@ Jared authorized Android simulation and Google Play review/release for **Backspi
 - Native AAC-to-PCM module and separate Android profiles retained from PR106. [Run 41612177418](https://github.com/MerlinWerlin/App-Projects/actions/runs/41612177418) compiled, verified, installed and launched the APK. Its first gameplay attempt rejected silent emulator input. A later harness attempt encountered a captured Pixel Launcher ANR; neither is reported as gameplay success. Host audio activation and a narrowly scoped launcher-dialog recovery are now explicit. [Run 41617261644](https://github.com/MerlinWerlin/App-Projects/actions/runs/41617261644) builds the final foreground-only, restricted-permission configuration and gates the unsigned production AAB on gameplay success.
 - New emulator flow exercises onboarding, the microphone prompt, actual recording/decoding, reverse playback, copy recording, score, save, Android share sheet, free-go accounting and persistence after process restart. A synthetic host microphone supplies the sound. A test script's presence is not a passing test result; read the run receipt.
 - Preview package: `com.jared797.backspin.playtest`, embedded JS, OTA disabled, generated test signing key. **Do not upload the preview APK to Play.**
-- Intended store package: `com.jared797.backspin`, AAB via `play-production`. A production signing key and signed store bundle are not yet established by this checkout.
+- Intended store package: `com.jared797.backspin`, AAB via `play-production`. A durable RSA4096 upload key and public certificate were generated and read back successfully outside Git, with a Windows-user DPAPI password record. Certificate SHA256: `1E87EC4C603A4B12721ADD35C75D2753A37A5FC6EDC59357E226CE4F03BB3DB8`. No signed production bundle or Google key registration is claimed.
 - Original iOS release profile and RELEASE.json are unchanged. No Apple resubmission is part of this work.
+
+## 4 November continuation
+
+The final restricted-permission APK from run41617261644 is downloaded and independently hash-verified: SHA256 `89e4f6575ee9f28f24e737b1c5bd7886414cf679e6ab5e0b09a9e8659da6bfc0`. Native build, signature, embedded bundle and static 16KB alignment passed. Run41622116518 completed original recording, AAC decoding and reversed playback but rejected the copy recording as too short. Recording screenshots show multiple elapsed seconds and transient sound; this is not a completed gameplay pass. Run41698872892 reuses the identical APK with synthetic speech instead of a constant sine, plus complete gameplay logs, to investigate possible microphone signal suppression. Production AAB remains gated on gameplay success.
 
 ## Confirmed submission blocker
 
