@@ -71,8 +71,17 @@ struct HabitAccessoryView: View {
         VStack(spacing: 1) {
           MoodFace(level: value > 0 ? Int(value) : 3, selected: value > 0, theme: entry.theme, monochrome: true)
             .frame(width: 37, height: 37)
-          Text(value > 0 ? "\(valueText) / \(HabitStore.format(5, decimals: 0))" : "—")
-            .font(.system(size: 11, weight: .semibold))
+          Group {
+            if value > 0 {
+              HStack(spacing: 2) {
+                Text(valueText)
+                Text("/")
+                Text(HabitStore.format(5, decimals: 0))
+              }
+              // Keep numerator/denominator in mathematical order in RTL, with native digits.
+              .environment(\.layoutDirection, .leftToRight)
+            } else { Text("—") }
+          }.font(.system(size: 11, weight: .semibold))
         }
       } else {
         Circle().stroke(Color.primary.opacity(0.22), lineWidth: 4)
