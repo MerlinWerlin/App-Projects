@@ -188,3 +188,12 @@ test('app: the menu labels every non-live card "Art" and saves the live spec wit
   assert.match(art, /liveArtSpec\(plan/);
   assert.match(art, /\.\.\.\(live \? \{ live \} : \{\}\)/);
 });
+
+
+test('countdown civil days reject year zero and malformed separators', () => {
+  assert.equal(validTargetDay('0000-01-01'), null);
+  assert.equal(validTargetDay('2026--11-02'), null);
+  assert.equal(validTargetDay('2026-11-02\n'), null);
+  assert.equal(validTargetDay('2024-02-29'), '2024-02-29');
+  assert.equal(validTargetDay('2026-02-29'), null);
+});

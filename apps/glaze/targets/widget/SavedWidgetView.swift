@@ -180,9 +180,8 @@ private struct SavedWidgetRegion: View {
     case "monthProgress", "yearProgress": return "\(period.day)/\(period.total)"
     case "progressPercent": return (floor(period.fraction * 100) / 100).formatted(.percent.precision(.fractionLength(0)))
     case "countdown":
-      let formatter = DateFormatter(); formatter.locale = Locale(identifier: "en_US_POSIX"); formatter.dateFormat = "yyyy-MM-dd"; formatter.isLenient = false
-      guard let target = formatter.date(from: string(design.raw, "countdownTo")) else { return "—" }
-      return (cal.dateComponents([.day], from: cal.startOfDay(for: date), to: cal.startOfDay(for: target)).day ?? 0).formatted()
+      guard let days = WidgetDay.distance(to: string(design.raw, "countdownTo"), from: date, calendar: cal) else { return "—" }
+      return days.formatted()
     default: return string(text, "userText", design.texts[string(region, "id")] ?? "")
     }
   }

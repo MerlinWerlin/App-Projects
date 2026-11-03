@@ -75,19 +75,9 @@ struct LiveArtSpec {
     )
   }
 
-  /// "YYYY-MM-DD" → the start of that day in the current calendar, or nil.
-  static func day(_ s: String) -> Date? {
-    let parts = s.split(separator: "-").compactMap { Int($0) }
-    guard parts.count == 3 else { return nil }
-    var c = DateComponents()
-    c.year = parts[0]
-    c.month = parts[1]
-    c.day = parts[2]
-    guard let d = Calendar.current.date(from: c) else { return nil }
-    let back = Calendar.current.dateComponents([.year, .month, .day], from: d)
-    guard back.year == parts[0], back.month == parts[1], back.day == parts[2] else { return nil }
-    return Calendar.current.startOfDay(for: d)
-  }
+  /// Gregorian civil day in the widget's current time zone.
+  static func day(_ s: String) -> Date? { WidgetDay.parse(s) }
+
 }
 
 enum LiveArtStore {

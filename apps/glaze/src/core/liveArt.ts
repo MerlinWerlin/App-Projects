@@ -83,13 +83,13 @@ const DAY = /^(\d{4})-(\d{2})-(\d{2})$/;
 
 /** A valid calendar day `YYYY-MM-DD`, or null. */
 export function validTargetDay(day: unknown): string | null {
-  if (typeof day !== 'string') return null;
+  if (typeof day !== 'string' || day.length !== 10) return null;
   const m = DAY.exec(day);
   if (!m) return null;
   const y = Number(m[1]);
   const mo = Number(m[2]);
   const d = Number(m[3]);
-  if (mo < 1 || mo > 12 || d < 1) return null;
+  if (y < 1 || mo < 1 || mo > 12 || d < 1) return null;
   const days = new Date(Date.UTC(y, mo, 0)).getUTCDate();
   return d <= days ? day : null;
 }
