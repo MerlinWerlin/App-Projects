@@ -28,6 +28,9 @@ test('production keeps the stable package and uses the AAB profile', () => {
   assert.equal(profiles.build['play-production'].android.buildType, 'app-bundle');
   assert.equal(profiles.build['play-production'].distribution, 'store');
   assert.equal(profiles.build['play-production'].autoIncrement, true);
+  for (const p of ['SYSTEM_ALERT_WINDOW', 'READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE', 'FOREGROUND_SERVICE']) {
+    assert.ok(c.android.blockedPermissions.includes('android.permission.' + p));
+  }
 });
 
 test('invalid profile/platform combinations stop before a build', () => {

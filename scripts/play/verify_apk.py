@@ -16,6 +16,13 @@ assert "application-debuggable" not in badging, "Release build must not require 
 target = int(re.search(r"targetSdkVersion:'(\d+)'", badging).group(1))
 assert target >= 36, target
 assert config["updates"]["enabled"] is False
+permissions = re.findall(r"uses-permission: name='([^']+)'", badging)
+for blocked in config['android'].get('blockedPermissions', []):
+    assert blocked not in permissions, f"Blocked permission leaked into compiled APK: {blocked}"
+audio = next((p[1] for p in config.get('plugins', []) if isinstance(p, list) and p[0] == 'expo-audio'), {})
+if audio.get('enableBackgroundPlayback') is False:
+    assert 'android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK' not in permissions
+    assert 'expo.modules.audio.service.AudioControlsService' not in (output / 'manifest.txt').read_text()
 libraries = []
 with zipfile.ZipFile(apk) as archive:
     assert archive.getinfo("assets/index.android.bundle").file_size > 100_000, "Missing embedded JS"
@@ -46,6 +53,7 @@ receipt = {
     "sourceCommit": (output / "source-commit.txt").read_text().strip(),
     "signing": "Expo generated Android test key; not a Google Play upload key",
     "embeddedBundle": True,
+    "permissions": permissions,
     "nativeLibraries": libraries,
     "deviceTest": "Recorded separately by smoke-apk.sh; static checks alone do not prove runtime behavior",
 }
