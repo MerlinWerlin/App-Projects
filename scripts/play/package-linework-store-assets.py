@@ -6,7 +6,7 @@ import json
 
 root = Path(__file__).resolve().parents[2]
 out = root / "apps/linework/store/play"
-source = root / "apk-output/linework-v11-4kb-settled-qualified-20261104"
+source = root / "apk-output/linework-v19-4kb-qualified-20261104"
 feature = out / "feature.png"
 Image.open(feature).convert("RGB").save(feature)
 assets = []
@@ -38,7 +38,7 @@ for asset in assets:
     "status": "prepared_not_uploaded",
     "rules": "https://support.google.com/googleplay/android-developer/answer/9866151?hl=en",
     "renderer": "@resvg/resvg-js2.6.2; Pillow format conversion",
-    "captureSource": "Signed v11/source4828362, run41726267099; UI layout unchanged by payment recovery2014ef0. The v11 binary is superseded for upload; captures retained.",
+    "captureSource": "Signed v19/source2014ef0, run41730441054. Actual current-candidate Android UI captures.",
     "assets": assets,
 }, indent=2) + "\n", encoding="utf-8")
 print(json.dumps({"assetsValidated": len(assets), "screenshotPixelsUnchanged": True}))
