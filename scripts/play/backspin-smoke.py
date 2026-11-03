@@ -56,8 +56,22 @@ def wait(label, timeout=30):
 
 def record():
     button = find('Hold to record')
-    # Real press-in/out invokes the shipping recorder, AAC decoder and DSP.
-    button.long_click(duration=3)
+    # Hold through actual preparation, then record three seconds of sound.
+    # A fixed press duration incorrectly counts cold emulator setup as recording.
+    b = button.info['bounds']
+    x, y = (b['left'] + b['right']) // 2, (b['top'] + b['bottom']) // 2
+    began = time.monotonic()
+    d.touch.down(x, y)
+    try:
+        until = began + 30
+        while not (d(descriptionMatches='Recording.*').exists or d(textMatches='Recording.*').exists):
+            assert time.monotonic() < until, 'Recorder never entered its recording state'
+            time.sleep(.2)
+        steps.append('Recorder prepared after %.2fs' % (time.monotonic() - began))
+        time.sleep(3)
+        capture('recording-%d' % len(steps))
+    finally:
+        d.touch.up(x, y)
     time.sleep(2)
 
 try:
