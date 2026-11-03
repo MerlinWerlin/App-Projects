@@ -1,5 +1,20 @@
 # Google Play release preparation
 
+## Linework continuation, 3 November 2026
+
+Jared selected Linework for Android simulation and Google Play release preparation. Astro Labs AU now exists as a Google Play **organisation** account, but the signed-in Console disables Create app pending identity/organisation documents, Search Console website ownership and subsequent phone verification. No app listing, store upload or production rollout was performed.
+
+Linework validation at `43aef36`:
+
+- All **808 Node tests pass**, run with `node --test --test-concurrency=1` across the four existing test globs. Full TypeScript check passes. Earlier failed logs are retained under ignored `apk-output/`; CRLF-sensitive assertions were corrected in three test files. The one-second catalogue-import requirement was kept and passed; no app feature or threshold was changed to make it pass.
+- [Expanded Android emulator run 41611634188](https://github.com/MerlinWerlin/App-Projects/actions/runs/41611634188) **PASS**, test-harness commit `378c899`. Actual APK UI checks cover onboarding dismissal, native camera-permission denial, a Sitting Cat template in the Lightbox fallback, lock/unlock/reset/exit, onboarding dismissal after process restart and recoverable empty-Lightbox handling. Captured screenshots and XML are in `apk-output/linework-20261103-functional/`.
+- This reused the exact original APK from run `40282931115`, compiled from `fd6fe4134dc6847f196d995cfb11d4f9b7532f13`, SHA256 `0123990b455d4a9cce23262c562d1d48b45f73d323c6e5b321b5f69e3bb85d92`. It is package `com.jared797.linework.playtest`, target SDK36, signed with the generated **test key**. It is not a production bundle. Compared with that source, current Linework has a type-only keyboard-event annotation, test portability corrections and run-log text; no additional runtime feature is claimed tested.
+- Earlier current-day launch-only run `41610801703` passed. Run `41611554565` was accidentally dispatched after a commit failed for missing author configuration; it was cancelled rather than counted as new validation. Commit author was supplied per command, without changing global Git configuration.
+
+**Still required:** a Google-compatible 14-day trial/lifetime-purchase implementation and real Play Billing purchase/cancel/pending/restore/acknowledgement tests; photo-picker/outline/timelapse/interruption validation; 16KB runtime testing; stable production upload signing and AAB; final permissions/SDK/Data safety audit and Android listing assets. The existing free Apple trial SKU must not be assumed to work on Google Play. Account verification and remaining binary/feature checks must pass before submission. Existing Apple submissions and pricing decisions are preserved.
+
+Evidence index: `apk-output/linework-20261103-validation.json`.
+
 Updated 26 October 2026 in `codex/google-play-prep`, based on main `5a6185f`, draft PR #106. This is the Android implementation and release reference; the master roadmap remains the only work queue. Existing iOS upgrades remain on main. Standalone test APKs now exist. No Play application, production credentials, price, purchase product or store release was created.
 
 **Rowlight APK delivered:** local file `apk-output/rowlight/crochet-play-test.apk`, 79,002,357 bytes, package `com.jared797.rowlight.playtest`, version 0.1.0. [Native build 40281240062](https://github.com/MerlinWerlin/App-Projects/actions/runs/40281240062) produced it from `5584b2589549ba8853a7e82c3cbbd1378629ac5f`. SHA-256: `facba8ed50ef9284484f45b4c634aabbfdfe9cd5d5c663dc2e757ed80643e733`. [Emulator run 40284137704](https://github.com/MerlinWerlin/App-Projects/actions/runs/40284137704) installed this same APK, opened it, created Little Sprout, incremented to row 3, force-stopped the process, reopened it and verified row 3 persisted. Screenshot/XML and receipt are in `apk-output/rowlight-tested/`. Real-phone, TalkBack, import/share and Play Billing tests remain outstanding.
