@@ -11,10 +11,17 @@ on:
       - 'scripts/play/**'
       - '.github/workflows/cue-play-validation.yml'
   workflow_dispatch:
+    inputs:
+      apk_run_id:
+        description: Reuse a verified APK only when app source is identical
+        type: string
+        default: ''
 permissions:
   contents: read
+  actions: read
 jobs:
   build:
+    if: github.event_name != 'workflow_dispatch' || inputs.apk_run_id == ''
     runs-on: ubuntu-latest
     timeout-minutes: 50
     env:
@@ -73,6 +80,7 @@ jobs:
           retention-days: 14
   simulate:
     needs: build
+    if: always() && !cancelled() && (needs.build.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.apk_run_id != ''))
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
@@ -93,6 +101,16 @@ jobs:
         with:
           name: cue-android-current-apk
           path: cue-android-output
+          run-id: ${{ inputs.apk_run_id || github.run_id }}
+          github-token: ${{ github.token }}
+      - name: Bind APK app source and simulation source
+        run: |
+          source=$(cat cue-android-output/source-commit.txt)
+          [[ "$source" =~ ^[0-9a-f]{40}$ ]]
+          git fetch origin "$source"
+          git diff --exit-code "$source" "$GITHUB_SHA" -- apps/cue ':!apps/cue/docs/**' ':!apps/cue/store/**'
+          printf '%s\n' "$GITHUB_SHA" > cue-android-output/simulation-workflow-source.txt
+          python scripts/play/verify_apk.py cue-android-output/cue-play-test.apk cue-android-output
       - name: Install checksum-verified Maestro
         run: |
           curl -fLsS https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.12.0/maestro.zip -o "$RUNNER_TEMP/maestro.zip"

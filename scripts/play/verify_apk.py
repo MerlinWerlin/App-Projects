@@ -16,6 +16,13 @@ assert "application-debuggable" not in badging, "Release build must not require 
 target = int(re.search(r"targetSdkVersion:'(\d+)'", badging).group(1))
 assert target >= 36, target
 assert config["updates"]["enabled"] is False
+for permission in [
+    "READ_MEDIA_IMAGES", "READ_MEDIA_VIDEO", "READ_MEDIA_AUDIO",
+    "READ_MEDIA_VISUAL_USER_SELECTED", "READ_EXTERNAL_STORAGE",
+    "ACCESS_MEDIA_LOCATION", "SYSTEM_ALERT_WINDOW",
+    "FOREGROUND_SERVICE", "FOREGROUND_SERVICE_MEDIA_PLAYBACK", "FOREGROUND_SERVICE_MICROPHONE",
+]:
+    assert f"name='android.permission.{permission}'" not in badging, f"Unexpected media/overlay access: {permission}"
 libraries = []
 with zipfile.ZipFile(apk) as archive:
     assert archive.getinfo("assets/index.android.bundle").file_size > 100_000, "Missing embedded JS"
