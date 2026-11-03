@@ -78,7 +78,7 @@ export default function Settings() {
           small
           title={t('settings.restore')}
           style={{ marginTop: SP(3) }}
-          onPress={async () => setMsg((await restorePlus()) ? t('settings.restored') : t('settings.nothingToRestore'))}
+          onPress={async () => setMsg((await restorePlus()) ? t('settings.restored') : t(Platform.OS === 'android' ? 'settings.nothingToRestoreAndroid' : 'settings.nothingToRestore'))}
         />
         <Toastish text={msg} />
       </Card>

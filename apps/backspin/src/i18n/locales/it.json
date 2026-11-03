@@ -209,5 +209,9 @@
 "home.freeLeft": "Ti restano {n} partite gratis",
 "home.freeDone": "Hai esaurito le partite gratis. Sblocca Backspin per sempre.",
 "round.outOfGoes": "Hai usato tutte e 10 le partite gratis! Sblocca Backspin per sempre e continua a giocare.",
-"settings.look": "Stile"
+"settings.look": "Stile",
+"plus.pendingAndroid": "Il pagamento è in sospeso su Google Play. Completalo lì, poi tocca Ripristina acquisto.",
+"plus.unavailableAndroid": "Google Play non è raggiungibile. Riprova più tardi.",
+"plus.failedAndroid": "Non è stato possibile confermare questo acquisto. Controlla Google Play prima di riprovare. ({detail})",
+"settings.nothingToRestoreAndroid": "Nessun acquisto Plus completato trovato per questo account Google Play."
 }

@@ -209,5 +209,9 @@
 "home.freeLeft": "Il te reste {n} manches gratuites",
 "home.freeDone": "Tu as utilisé tes manches gratuites. Débloque Backspin pour toujours.",
 "round.outOfGoes": "Tu as utilisé tes 10 manches gratuites ! Débloque Backspin pour toujours et continue à jouer.",
-"settings.look": "Style"
+"settings.look": "Style",
+"plus.pendingAndroid": "Le paiement est en attente dans Google Play. Terminez-le, puis touchez Restaurer l’achat.",
+"plus.unavailableAndroid": "Google Play est inaccessible. Réessayez plus tard.",
+"plus.failedAndroid": "Nous n’avons pas pu confirmer cet achat. Vérifiez Google Play avant de réessayer. ({detail})",
+"settings.nothingToRestoreAndroid": "Aucun achat Plus finalisé trouvé pour ce compte Google Play."
 }

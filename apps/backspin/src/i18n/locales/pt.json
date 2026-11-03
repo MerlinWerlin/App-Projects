@@ -209,5 +209,9 @@
 "home.freeLeft": "Restam {n} rodadas grátis",
 "home.freeDone": "Você usou suas rodadas grátis. Libere o Backspin para sempre.",
 "round.outOfGoes": "Você usou suas 10 rodadas grátis! Libere o Backspin para sempre e continue jogando.",
-"settings.look": "Visual"
+"settings.look": "Visual",
+"plus.pendingAndroid": "O pagamento está pendente no Google Play. Conclua-o lá e depois toque em Restaurar compra.",
+"plus.unavailableAndroid": "Não foi possível acessar o Google Play. Tente novamente mais tarde.",
+"plus.failedAndroid": "Não foi possível confirmar esta compra. Verifique o Google Play antes de tentar novamente. ({detail})",
+"settings.nothingToRestoreAndroid": "Nenhuma compra Plus concluída foi encontrada para esta conta do Google Play."
 }

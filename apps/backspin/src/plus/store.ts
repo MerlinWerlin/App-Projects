@@ -7,7 +7,7 @@ export const PLUS_SKU = 'com.jared797.backspin.plus';
 export const PLUS_KEY = 'backspin.plus.v1';
 
 export type Storage = { get(k: string): Promise<string | null>; set(k: string, v: string): Promise<void> };
-export type BuyResult = { status: 'owned' } | { status: 'cancelled' } | { status: 'unavailable' } | { status: 'failed'; detail?: string };
+export type BuyResult = { status: 'owned' } | { status: 'pending' } | { status: 'cancelled' } | { status: 'unavailable' } | { status: 'failed'; detail?: string };
 export type PlusStore = {
   kind: 'store' | 'test';
   owned(): Promise<boolean>;
@@ -62,6 +62,7 @@ export function createStore(storage: Storage, module?: Iap | null, platform = 'i
   const qualifies = (p: Purchase | null | undefined) => isPlus(p) && (platform !== 'android' ||
     (p?.productId === PLUS_SKU && p.purchaseState === 'purchased' &&
      typeof p.purchaseToken === 'string' && p.purchaseToken.length > 0));
+  const isPending = (p: Purchase | undefined) => platform === 'android' && p?.productId === PLUS_SKU && p.purchaseState === 'pending';
   const acknowledged = new Set<string>();
   const acknowledging = new Map<string, Promise<void>>();
   // Failed acknowledgements remain eligible on the next query/Restore/startup.
@@ -142,19 +143,22 @@ export function createStore(storage: Storage, module?: Iap | null, platform = 'i
           resolve(r);
         };
         const accept = (purchase: Purchase | undefined) => {
-          if (done || !qualifies(purchase)) return;
+          if (done) return;
+          if (isPending(purchase)) return finish({ status: 'pending' });
+          if (!qualifies(purchase)) return;
           void acknowledge(purchase!).catch(() => {});
           finish({ status: 'owned' });
         };
         const onError = (e: unknown) => {
           if (isCancel(e)) return finish({ status: 'cancelled' });
+          if (platform === 'android' && ['pending', 'deferred-payment'].includes(String((e as { code?: string })?.code))) return finish({ status: 'pending' });
           error = errDetail(e);
           // A listener error can precede the request's successful return. Reconcile before failing.
         };
         const reconcile = async () => {
           if (done || pending || polling) return;
           polling = true;
-          const got = (await ownedList())?.find(qualifies);
+          const got = (await ownedList())?.find((p) => qualifies(p) || isPending(p));
           polling = false;
           if (done) return;
           if (got) return accept(got);
@@ -184,7 +188,7 @@ export function createStore(storage: Storage, module?: Iap | null, platform = 'i
               request: { ios: { sku: PLUS_SKU }, android: { skus: [PLUS_SKU] }, apple: { sku: PLUS_SKU }, google: { skus: [PLUS_SKU] } },
               type: 'in-app',
             });
-            accept((Array.isArray(r) ? r : r ? [r] : []).find(qualifies));
+            accept((Array.isArray(r) ? r : r ? [r] : []).find((p) => qualifies(p) || isPending(p)));
           } catch (e) {
             onError(e);
           } finally {

@@ -141,16 +141,17 @@ test('Android pending, unknown and incomplete purchases never grant or acknowled
   }
 });
 
-test('Android pending listener and request wait for the completed payment event', async () => {
+test('Android pending payments report pending and unlock only after a later completed query', async () => {
   let updated!: (purchase: object) => void;
   let acknowledge = 0;
   let sent!: () => void;
   const requested = new Promise<void>((resolve) => { sent = resolve; });
   const storage = mem();
   const pending = { ...paidAndroid, purchaseState: 'pending' };
+  let purchases = [pending];
   const store = createStore(storage, {
     initConnection: async () => true,
-    getAvailablePurchases: async () => [pending],
+    getAvailablePurchases: async () => purchases,
     purchaseUpdatedListener: (callback: typeof updated) => { updated = callback; return { remove() {} }; },
     requestPurchase: async () => { updated(pending); sent(); return pending; },
     finishTransaction: async () => { acknowledge++; },
@@ -159,13 +160,27 @@ test('Android pending listener and request wait for the completed payment event'
   const buying = store.buy().then((r) => { resolved = true; return r; });
   await requested;
   await new Promise<void>((r) => setImmediate(r));
-  assert.equal(resolved, false);
+  assert.equal(resolved, true);
+  assert.equal((await buying).status, 'pending');
   assert.equal(acknowledge, 0);
   assert.notEqual(await storage.get(PLUS_KEY), '1');
-  updated(paidAndroid);
-  assert.equal((await buying).status, 'owned');
+  purchases = [paidAndroid];
+  assert.equal(await store.owned(), true);
   assert.equal(acknowledge, 1);
   assert.equal(await storage.get(PLUS_KEY), '1');
+});
+
+test('Android SDK pending/deferred errors are pending, never failed or paid', async () => {
+  for (const code of ['pending', 'deferred-payment']) {
+    const storage = mem();
+    const store = createStore(storage, {
+      initConnection: async () => true,
+      requestPurchase: async () => { throw { code }; },
+      finishTransaction: async () => assert.fail('pending payment acknowledged'),
+    }, 'android');
+    assert.equal((await store.buy()).status, 'pending');
+    assert.notEqual(await storage.get(PLUS_KEY), '1');
+  }
 });
 
 test('Android failed acknowledgement is retried even with locally cached ownership', async () => {

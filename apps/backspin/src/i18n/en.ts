@@ -195,6 +195,10 @@ export const en = {
   'plus.expoGo': 'Test mode (Expo Go): this unlock is pretend and only on this phone.',
   'plus.failed': "The purchase didn't go through, and nothing was charged. ({detail})",
   'plus.cancelled': 'Purchase cancelled.',
+  "plus.pendingAndroid": "Payment is pending in Google Play. Complete it there, then tap Restore purchase.",
+  "plus.unavailableAndroid": "Google Play is not reachable. Try again later.",
+  "plus.failedAndroid": "We could not confirm this purchase. Check Google Play before trying again. ({detail})",
+  "settings.nothingToRestoreAndroid": "No completed Plus purchase found for this Google Play account.",
   'plus.unavailable': "The App Store isn't reachable right now, so nothing was charged. Try again later.",
 
   'intro.1.title': 'Say it',

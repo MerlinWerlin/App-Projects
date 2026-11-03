@@ -2,7 +2,7 @@
 // nothing is pre-ticked, there is no timer, and the free game stays complete without it.
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { haptic } from '../src/native/device.ts';
 import { useApp } from '../src/state/app.tsx';
 import { Button, Card, Disc, Screen, T, Toastish } from '../src/ui/kit.tsx';
@@ -22,8 +22,9 @@ export default function Plus() {
       haptic.success();
       setMsg(t('plus.owned'));
     } else if (r.status === 'cancelled') setMsg(t('plus.cancelled'));
-    else if (r.status === 'unavailable') setMsg(t('plus.unavailable'));
-    else setMsg(t('plus.failed', { detail: r.detail || 'E_UNKNOWN' }));
+    else if (r.status === 'pending') setMsg(t('plus.pendingAndroid'));
+    else if (r.status === 'unavailable') setMsg(t(Platform.OS === 'android' ? 'plus.unavailableAndroid' : 'plus.unavailable'));
+    else setMsg(t(Platform.OS === 'android' ? 'plus.failedAndroid' : 'plus.failed', { detail: r.detail || 'E_UNKNOWN' }));
   };
 
   return (
@@ -63,7 +64,7 @@ export default function Plus() {
           {t('plus.expoGo')}
         </T>
       ) : null}
-      <Button kind="ghost" small title={t('plus.restore')} style={{ marginTop: SP(5) }} onPress={async () => setMsg((await restorePlus()) ? t('settings.restored') : t('settings.nothingToRestore'))} />
+      <Button kind="ghost" small title={t('plus.restore')} style={{ marginTop: SP(5) }} onPress={async () => setMsg((await restorePlus()) ? t('settings.restored') : t(Platform.OS === 'android' ? 'settings.nothingToRestoreAndroid' : 'settings.nothingToRestore'))} />
       <Button kind="quiet" small title={t('common.close')} style={{ marginTop: SP(3) }} onPress={() => router.back()} />
       <Toastish text={msg} />
     </Screen>
