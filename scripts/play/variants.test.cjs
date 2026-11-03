@@ -27,7 +27,7 @@ for (const app of apps) {
       assert.deepEqual(c.android.adaptiveIcon, base.android.adaptiveIcon);
       if (app === 'linework') {
         assert.deepEqual(c.plugins, base.plugins.map((p) => Array.isArray(p) && p[0] === 'expo-camera'
-          ? [p[0], { ...p[1], barcodeScannerEnabled: false }] : p));
+          ? [p[0], { ...p[1], barcodeScannerEnabled: false }] : p).concat(['./ops/play-android-manifest.cjs']));
       } else {
         assert.deepEqual(c.plugins, base.plugins);
       }

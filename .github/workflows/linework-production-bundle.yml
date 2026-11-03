@@ -56,9 +56,13 @@ jobs:
           mkdir -p ../../bundle-output
           npx expo config --type public --json > ../../bundle-output/config.json
           git rev-parse HEAD > ../../bundle-output/source-commit.txt
+          cp android/gradle.properties ../../bundle-output/gradle-properties.txt
+          cp android/app/src/main/AndroidManifest.xml ../../bundle-output/android-manifest-input.xml
+          npx expo-modules-autolinking resolve --platform android --json > ../../bundle-output/autolinking-android.json
           # Public dependency receipt: compile-only barcode APIs must not enter
           # the shipped runtime after the Android-only scanner exclusion.
           (cd android && ./gradlew :app:dependencies --configuration releaseRuntimeClasspath --console=plain --no-daemon --max-workers=2) > ../../bundle-output/runtime-dependencies.txt
+          python ../../scripts/play/verify_linework_aab.py ../../bundle-output --dependencies-only
           cat >> android/app/build.gradle <<'GRADLE'
 
           // Explicit upload signing; no generated/debug key may sign this bundle.

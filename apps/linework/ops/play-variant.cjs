@@ -23,13 +23,13 @@ module.exports = function withPlayVariant(config, env = process.env) {
     platforms: ['android'],
     // Linework does not scan barcodes. Exclude the optional ML Kit runtime
     // and its automatic provider from Android; leave the base/iOS config intact.
-    plugins: config.plugins?.map((plugin) => {
+    plugins: (config.plugins || []).map((plugin) => {
       if (plugin === 'expo-camera') return ['expo-camera', { barcodeScannerEnabled: false }];
       if (Array.isArray(plugin) && plugin[0] === 'expo-camera') {
         return [plugin[0], { ...plugin[1], barcodeScannerEnabled: false }];
       }
       return plugin;
-    }),
+    }).concat(['./ops/play-android-manifest.cjs']),
     runtimeVersion: String(config.version) + '-play-v1',
     android: {
       ...config.android,
