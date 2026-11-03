@@ -73,16 +73,18 @@ struct HabitWidgetContent: View {
   let family: WidgetFamily
   var design: SavedWidgetDesign? = nil
 
+  private func field(_ raw: [String: Any], _ key: String) -> String { raw[key] as? String ?? "" }
+
   private var validFill: [String: Any]? {
     guard let raw = design?.background else { return nil }
-    if string(raw, "kind") == "gradient", Color.isHex(string(raw, "from")), Color.isHex(string(raw, "to")) { return raw }
-    if string(raw, "kind") == "colour", Color.isHex(string(raw, "colour")) { return raw }
+    if field(raw, "kind") == "gradient", Color.isHex(field(raw, "from")), Color.isHex(field(raw, "to")) { return raw }
+    if field(raw, "kind") == "colour", Color.isHex(field(raw, "colour")) { return raw }
     return nil
   }
   private var stops: [String] {
     guard let raw = validFill else { return entry.theme.backgroundHexes }
-    if string(raw, "kind") == "gradient" { return [string(raw, "from"), string(raw, "to")] }
-    let colour = string(raw, "colour")
+    if field(raw, "kind") == "gradient" { return [field(raw, "from"), field(raw, "to")] }
+    let colour = field(raw, "colour")
     return [colour, colour]
   }
   private var controlTheme: WidgetTheme {
@@ -132,12 +134,12 @@ struct HabitWidgetContent: View {
           .invalidatableContent()
         Text(def.unit)
           .font(t.typeface(size: 13, weight: .medium))
-          .foregroundStyle(t.inkColor.opacity(0.75))
+          .foregroundStyle(t.inkColor.opacity(0.85))
           .lineLimit(1)
       }
       Text(HabitText.goalOf(goalText, unit: def.unit))
         .font(t.typeface(size: 12, weight: .medium))
-        .foregroundStyle(t.inkColor.opacity(0.75))
+        .foregroundStyle(t.inkColor.opacity(0.85))
         .lineLimit(1)
       ProgressMeter(fraction: fraction, theme: t)
       Spacer(minLength: 0)

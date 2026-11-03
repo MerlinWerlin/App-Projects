@@ -211,6 +211,7 @@ extension HabitKindID {
 }
 
 /// Keeps all existing interactive habit actions while applying the saved colours/gradient per size.
+// Pure palette adaptation; the caller loads its saved design once per render.
 func savedHabitTheme(_ theme: WidgetTheme, design: SavedWidgetDesign?) -> WidgetTheme {
   guard let design else { return theme }
   var changed = theme

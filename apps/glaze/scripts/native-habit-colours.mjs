@@ -7,7 +7,7 @@ for(const p of result.palettes){
  const samples=Array.from({length:21},(_,i)=>mix(p.stops[0],p.stops.at(-1),i/20));
  const min=f=>Math.min(...samples.map(f));
  const r={theme:p.theme,ink:p.ink,accent:p.accent,backgroundStops:p.stops,
-  primary:min(bg=>contrastRatio(p.ink,bg)),secondary:min(bg=>contrastRatio(mix(bg,p.ink,.75),bg)),
+  primary:min(bg=>contrastRatio(p.ink,bg)),secondary:min(bg=>contrastRatio(mix(bg,p.ink,.85),bg)),
   button:min(bg=>contrastRatio(p.ink,mix(bg,p.ink,.12))),title:min(bg=>contrastRatio(p.accent,bg)),
   moodOutline:min(bg=>contrastRatio(mix(bg,p.ink,.6),bg)),selectedMood:min(bg=>contrastRatio(p.accent,mix(bg,p.accent,.15))),
   inkChanged:p.ink.toUpperCase()!==p.preferredInk.toUpperCase(),accentChanged:p.accent.toUpperCase()!==p.preferredAccent.toUpperCase()};

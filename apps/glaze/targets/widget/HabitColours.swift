@@ -37,7 +37,7 @@ enum HabitColours {
   }
   static func inkScore(_ ink: String, backgrounds: [String]) -> Double {
     backgrounds.map { bg in
-      min(contrast(ink,bg),contrast(mix(bg,ink,0.75),bg),contrast(ink,mix(bg,ink,0.12)),contrast(mix(bg,ink,0.6),bg)*1.5)
+      min(contrast(ink,bg),contrast(mix(bg,ink,0.85),bg),contrast(ink,mix(bg,ink,0.12)),contrast(mix(bg,ink,0.6),bg)*1.5)
     }.min() ?? 21
   }
   static func accentScore(_ accent: String, backgrounds: [String]) -> Double {
