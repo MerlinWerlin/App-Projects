@@ -11,7 +11,8 @@ export async function startTrialWithAlerts(plus: Pick<UsePlus, 'startTrial'>): P
   const r = await plus.startTrial();
   if (r.status === 'cancelled') return;
   if (r.status === 'unavailable') {
-    Alert.alert(t('plus.trialFailedTitle'), t('plus.trialNotReady'));
+    Alert.alert(t('plus.trialFailedTitle'), Platform.OS === 'android'
+      ? t('plus.trialFailed') : t('plus.trialNotReady'));
     return;
   }
   if (r.status === 'failed' || r.start === null) {
