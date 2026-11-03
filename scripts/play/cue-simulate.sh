@@ -7,6 +7,7 @@ mkdir -p "$output/captures"
 capture_diagnostics() {
   adb devices -l > "$output/adb-devices-final.txt" 2>&1 || true
   adb logcat -d > "$output/logcat.txt" 2>&1 || true
+  adb shell cat /proc/meminfo > "$output/guest-memory.txt" 2>&1 || true
   adb exec-out screencap -p > "$output/final.png" 2>/dev/null || true
   free -m > "$output/host-memory.txt" || true
   ps -eo pid,ppid,rss,args --sort=-rss | head -n 20 > "$output/host-processes.txt" || true
