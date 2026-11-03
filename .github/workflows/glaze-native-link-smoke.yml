@@ -1,23 +1,35 @@
 name: Glaze installed Widgets link
 on:
+  push:
+    branches: ['codex/glaze-theme-release-20261101']
+    paths: ['.github/workflows/glaze-native-link-smoke.yml']
   workflow_dispatch:
     inputs:
       simulator_run:
-        description: 'Full native simulator run containing glaze-simulator-installable'
-        required: true
+        description: 'Full native run containing glaze-simulator-installable; blank compiles the test runner only'
+        required: false
+        default: ''
         type: string
 permissions:
   contents: read
   actions: read
 jobs:
   link:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: macos-latest
     timeout-minutes: 25
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
+      - name: Build a small XCTest runner without rebuilding Expo
+        working-directory: apps/glaze
+        run: |
+          set -euo pipefail
+          ruby scripts/prepare-native-link-test.rb "$RUNNER_TEMP/GlazeLinkCheck"
+          xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/link-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build-for-testing > "$RUNNER_TEMP/glaze-link-build.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-link-build.log"; exit 1; }
       - name: Retrieve the exact previously built simulator app
+        if: inputs.simulator_run != ''
         run: |
           set -euo pipefail
           RUN='${{ inputs.simulator_run }}'
@@ -32,13 +44,8 @@ jobs:
           assert receipt['bundleId']=='com.jared797.glaze' and receipt['bundledJavaScript'] and receipt['unsignedSimulatorOnly']
           PY
           ditto -x -k "$RUNNER_TEMP/installable/glaze-simulator-app.zip" "$RUNNER_TEMP/installable"
-      - name: Build a small XCTest runner without rebuilding Expo
-        working-directory: apps/glaze
-        run: |
-          set -euo pipefail
-          ruby scripts/prepare-native-link-test.rb "$RUNNER_TEMP/GlazeLinkCheck"
-          xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/link-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build-for-testing > "$RUNNER_TEMP/glaze-link-build.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-link-build.log"; exit 1; }
       - name: Install the real app and verify the Widgets route through the system prompt
+        if: inputs.simulator_run != ''
         run: |
           set -euo pipefail
           APP=$(find "$RUNNER_TEMP/installable" -maxdepth 1 -name '*.app' -print -quit)
