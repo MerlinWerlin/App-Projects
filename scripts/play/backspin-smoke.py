@@ -126,8 +126,9 @@ try:
                   checked=['onboarding', 'microphone permission', 'record original', 'AAC to PCM',
                            'reverse playback', 'record copy', 'score', 'save', 'share sheet',
                            'free-go consumption', 'process-restart persistence'],
+                  device_page_size=int((out / 'device-page-size.txt').read_text()),
                   not_checked=['human voice quality', 'physical phone routes and interruptions',
-                               'Play Billing transaction and restore', '16 KB runtime'])
+                               'Play Billing transaction and restore'])
     (out / 'backspin-gameplay.json').write_text(json.dumps(result, indent=2))
 except Exception:
     capture('failure')

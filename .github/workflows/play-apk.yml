@@ -20,6 +20,11 @@ on:
         description: Also prepare an unsigned production-package AAB after gameplay passes (not uploadable until signed)
         type: boolean
         default: false
+      pageSize:
+        description: Emulator memory page size (verify the actual device value)
+        type: choice
+        default: '4096'
+        options: ['4096', '16384']
 
 permissions:
   contents: read
@@ -35,6 +40,7 @@ jobs:
       EAS_BUILD_PLATFORM: android
       GLAZE_NATIVE: '1'
       CI: '1'
+      ANDROID_PAGE_SIZE: ${{ inputs.pageSize || '4096' }}
     steps:
       - uses: actions/checkout@v4
         with:

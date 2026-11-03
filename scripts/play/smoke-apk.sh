@@ -11,8 +11,13 @@ apk=$(realpath "$1")
 output=$(realpath "$2")
 package=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["android"]["package"])' "$output/config.json")
 [[ "$package" == *.playtest ]]
-sdkmanager 'system-images;android-35;google_apis;x86_64' > "$output/emulator-setup.txt" 2>&1
-echo no | avdmanager create avd --name play-smoke --path "$ANDROID_AVD_HOME/play-smoke.avd" --package 'system-images;android-35;google_apis;x86_64' --force >> "$output/emulator-setup.txt" 2>&1
+case "${ANDROID_PAGE_SIZE:-4096}" in
+  4096) image='system-images;android-35;google_apis;x86_64';;
+  16384) image='system-images;android-35;google_apis_ps16k;x86_64';;
+  *) echo 'Unsupported page size' >&2; exit 2;;
+esac
+sdkmanager "$image" > "$output/emulator-setup.txt" 2>&1
+echo no | avdmanager create avd --name play-smoke --path "$ANDROID_AVD_HOME/play-smoke.avd" --package "$image" --force >> "$output/emulator-setup.txt" 2>&1
 python - <<'PY'
 from pathlib import Path
 import os
@@ -65,6 +70,8 @@ for i in $(seq 1 90); do
   sleep 2
 done
 [[ "$(adb shell getprop sys.boot_completed | tr -d '\r')" == 1 ]]
+adb shell getconf PAGE_SIZE | tr -d '\r' > "$output/device-page-size.txt"
+[[ "$(cat "$output/device-page-size.txt")" == "${ANDROID_PAGE_SIZE:-4096}" ]]
 if [[ "${APP:-}" == backspin ]]; then
   adb emu avd hostmicon | tee "$output/emulator-microphone.txt"
   grep -q OK "$output/emulator-microphone.txt"
