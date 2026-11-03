@@ -23,6 +23,10 @@ on:
         type: choice
         default: standard
         options: ['standard', 'low-load']
+      microphoneSource:
+        type: choice
+        default: host-speech
+        options: ['host-speech', 'hal-tone']
 
 permissions:
   contents: read
@@ -40,6 +44,7 @@ jobs:
       ANDROID_API_LEVEL: ${{ inputs.apiLevel }}
       EMULATOR_VERSION: ${{ inputs.emulatorVersion }}
       ANDROID_EMULATOR_PROFILE: ${{ inputs.emulatorProfile }}
+      BACKSPIN_MICROPHONE_SOURCE: ${{ inputs.microphoneSource }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4

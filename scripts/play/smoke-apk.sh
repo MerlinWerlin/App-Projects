@@ -11,6 +11,9 @@ apk=$(realpath "$1")
 output=$(realpath "$2")
 package=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["android"]["package"])' "$output/config.json")
 [[ "$package" == *.playtest || ( "$package" == com.jared797.backspin && "${CI:-}" == 1 && "${BACKSPIN_PRODUCTION_REPLAY:-}" == 1 ) ]]
+microphone_source="${BACKSPIN_MICROPHONE_SOURCE:-host-speech}"
+case "$microphone_source" in host-speech) ;; hal-tone) [[ "${CI:-}" == 1 && "${APP:-}" == backspin ]];; *) exit 2;; esac
+echo "$microphone_source" > "$output/microphone-source.txt"
 case "${ANDROID_API_LEVEL:-35}" in 35|36) ;; *) exit 2;; esac
 case "${ANDROID_PAGE_SIZE:-4096}" in
   4096) image="system-images;android-${ANDROID_API_LEVEL:-35};google_apis;x86_64";;
@@ -35,7 +38,7 @@ p.write_text(''.join(k+'='+v+'\n' for k,v in values.items()))
 PY
 "$ANDROID_HOME/emulator/emulator" -list-avds | tee "$output/avds.txt" | grep -qx play-smoke
 sudo chmod 666 /dev/kvm
-if [[ "${APP:-}" == backspin ]]; then
+if [[ "${APP:-}" == backspin && "$microphone_source" == host-speech ]]; then
   pulseaudio --start --exit-idle-time=-1
   pactl load-module module-null-sink sink_name=backspin_input > "$output/audio-input-module.txt"
   pactl load-module module-null-sink sink_name=backspin_output > "$output/audio-output-module.txt"
@@ -65,11 +68,27 @@ assert rms>100, 'Synthetic host microphone is silent before emulator startup'
 PY
 fi
 # Use the GUI-enabled binary under a private virtual display. The SDK's
+if [[ "$microphone_source" == hal-tone ]]; then
+  # Keep a working host output sink for reverse playback. Input comes explicitly
+  # from the emulator HAL fixture, not a claimed physical/host microphone.
+  pulseaudio --start --exit-idle-time=-1
+  pactl load-module module-null-sink sink_name=backspin_output > "$output/audio-output-module.txt"
+  export PULSE_SINK=backspin_output QEMU_AUDIO_DRV=pa
+  export PULSE_SERVER="unix:$(pactl info | sed -n 's/^Server String: //p')"
+  export QEMU_PA_SERVER="$PULSE_SERVER" QEMU_PA_SINK="$PULSE_SINK"
+fi
+# Use the GUI-enabled binary under a private virtual display. The SDK's
 # headless binary can provide stub PulseAudio calls despite a working host source.
 memory=3072
 if [[ "${ANDROID_PAGE_SIZE:-4096}" == 16384 ]]; then memory=6144; fi
 free -m > "$output/host-memory.txt"
-xvfb-run -a -s '-screen 0 1080x1920x24' "$ANDROID_HOME/emulator/emulator" -avd play-smoke -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory "$memory" > "$output/emulator.txt" 2>&1 &
+extra_emulator_args=()
+if [[ "$microphone_source" == hal-tone ]]; then
+  # Official Ranchu HAL test input; app code/guards and permissions are unchanged.
+  # https://android.googlesource.com/device/generic/goldfish/+/refs/heads/android14-dev/audio/device_port_source.cpp
+  extra_emulator_args=(-prop ro.boot.audio.tinyalsa.simulate_input=1)
+fi
+xvfb-run -a -s '-screen 0 1080x1920x24' "$ANDROID_HOME/emulator/emulator" -avd play-smoke -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory "$memory" "${extra_emulator_args[@]}" > "$output/emulator.txt" 2>&1 &
 trap 'adb emu kill || true' EXIT
 timeout 180 adb wait-for-device
 for i in $(seq 1 90); do
@@ -90,7 +109,11 @@ adb shell wm density >> "$output/device-display.txt"
 if [[ "${ANDROID_PAGE_SIZE:-4096}" == 16384 ]]; then
   [[ "$(awk '{print $2}' "$output/device-memory.txt")" -ge 4194304 ]]
 fi
-if [[ "${APP:-}" == backspin ]]; then
+if [[ "$microphone_source" == hal-tone ]]; then
+  adb shell getprop ro.boot.audio.tinyalsa.simulate_input | tr -d '\r' > "$output/hal-tone-property.txt"
+  [[ "$(cat "$output/hal-tone-property.txt")" == 1 ]]
+fi
+if [[ "${APP:-}" == backspin && "$microphone_source" == host-speech ]]; then
   adb emu avd hostmicon | tee "$output/emulator-microphone.txt"
   grep -q OK "$output/emulator-microphone.txt"
   if grep -q 'Could not init.*audio driver' "$output/emulator.txt"; then
@@ -133,7 +156,9 @@ if [[ "${APP:-}" == backspin ]]; then
   gameplay_status=0
   python scripts/play/backspin-smoke.py "$output" || gameplay_status=$?
   adb logcat -d > "$output/gameplay-logcat.txt"
-  pactl list source-outputs > "$output/gameplay-audio-clients.txt"
+  if [[ "$microphone_source" == host-speech ]]; then
+    pactl list source-outputs > "$output/gameplay-audio-clients.txt"
+  fi
   adb shell dumpsys media.audio_flinger > "$output/gameplay-audio-flinger.txt"
   adb shell dumpsys media.audio_policy > "$output/gameplay-audio-policy.txt"
   python scripts/play/inspect-backspin-recordings.py --self-test

@@ -19,6 +19,7 @@ def statistics(values, rate=44100):
     return dict(samples=len(values), duration_seconds=len(values)/rate,
                 peak=max((abs(x) for x in values), default=0),
                 rms=math.sqrt(sum(x*x for x in values)/len(values)) if values else 0,
+                positive_zero_crossings_hz=sum(a <= 0 < b for a,b in zip(values,values[1:]))*rate/len(values) if values else 0,
                 active_windows=len(active), total_windows=len(windows),
                 active_span_seconds=(active[-1]-active[0]+1)*size/rate if active else 0)
 

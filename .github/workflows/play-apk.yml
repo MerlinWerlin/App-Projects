@@ -40,6 +40,11 @@ on:
         type: choice
         default: standard
         options: ['standard', 'low-load']
+      microphoneSource:
+        description: Test input; HAL tone qualifies native simulation only, not host speech or physical voice
+        type: choice
+        default: host-speech
+        options: ['host-speech', 'hal-tone']
 
 permissions:
   contents: read
@@ -58,6 +63,7 @@ jobs:
       ANDROID_PAGE_SIZE: ${{ inputs.pageSize || '4096' }}
       ANDROID_API_LEVEL: ${{ inputs.apiLevel || '35' }}
       ANDROID_EMULATOR_PROFILE: ${{ inputs.emulatorProfile || 'standard' }}
+      BACKSPIN_MICROPHONE_SOURCE: ${{ inputs.microphoneSource || 'host-speech' }}
     steps:
       - uses: actions/checkout@v4
         with:

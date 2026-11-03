@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import sys
+import os
 
 
 def sustained(pcm):
@@ -29,7 +30,11 @@ else:
     recordings=[f for f in data['files'] if '/cache/Audio/' in f['app_cache_path'] and f['file'].endswith('.m4a')]
     checks=[dict(file=f['file'],pcm=f['independent_pcm'],sustained=sustained(f['independent_pcm'])) for f in recordings]
     passed=data['status']=='CAPTURED' and len(checks)==2 and all(x['sustained'] for x in checks)
-    result=dict(status='PASS' if passed else 'FAIL', scope='Synthetic sustained CI microphone input, independently decoded AAC',
+    mode=os.environ.get('BACKSPIN_MICROPHONE_SOURCE','host-speech')
+    if mode=='hal-tone':
+        passed=passed and all(abs(x['pcm'].get('positive_zero_crossings_hz',0)-300)<10 and x['pcm']['rms']>.1 for x in checks)
+    result=dict(status='PASS' if passed else 'FAIL', scope='Sustained synthetic CI input, independently decoded AAC',
+                input_mode=mode, host_speech_qualified=passed and mode=='host-speech',
                 expected_recordings=2, recordings=checks,
                 not_proven=['human voice quality','physical phone routes','actual Play purchase'])
     (out/'sustained-microphone-qualification.json').write_text(json.dumps(result,indent=2)+'\n')

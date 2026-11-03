@@ -6,6 +6,7 @@ import sys
 import time
 import traceback
 import math
+import os
 import struct
 import uiautomator2 as u2
 from backspin_test_scope import assert_backspin_test_package
@@ -80,26 +81,29 @@ def record():
             assert time.monotonic() < until, 'Recorder never entered its recording state'
             time.sleep(.2)
         steps.append('Recorder prepared after %.2fs' % (time.monotonic() - began))
-        # Observe the host stream while Android is actually recording. A probe
-        # taken only before boot cannot establish that input remains available.
-        tag='recording-live-%d' % len(steps)
-        for label,command in [('pulse-source-outputs',['pactl','list','source-outputs']),
-                              ('pulse-sink-inputs',['pactl','list','sink-inputs']),
-                              ('audio-flinger',['adb','shell','dumpsys','media.audio_flinger'])]:
-            result=subprocess.run(command,capture_output=True,timeout=20)
-            (out/(tag+'-'+label+'.txt')).write_bytes(result.stdout+result.stderr)
-        probe=subprocess.Popen(['parec','--device=backspin_input.monitor','--raw','--latency-msec=20',
-                                '--format=s16le','--rate=44100','--channels=1'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-        try:
-            raw,error=probe.communicate(timeout=1.5)
-        except subprocess.TimeoutExpired:
-            probe.kill();raw,error=probe.communicate()
-        samples=struct.unpack('<'+'h'*(len(raw)//2),raw[:len(raw)//2*2])
-        rms=math.sqrt(sum(v*v for v in samples)/len(samples)) if samples else 0
-        (out/(tag+'-host-probe.json')).write_text(json.dumps(dict(samples=len(samples),rms_pcm16=rms,
-                                                               source='backspin_input.monitor',during_recording=True),indent=2))
-        (out/(tag+'-host-probe-stderr.txt')).write_bytes(error)
-        assert rms>100, 'Synthetic host source is silent during the actual Android recording'
+        if os.environ.get('BACKSPIN_MICROPHONE_SOURCE','host-speech') == 'host-speech':
+            # Observe the host stream while Android is actually recording. A probe
+            # taken only before boot cannot establish that input remains available.
+            tag='recording-live-%d' % len(steps)
+            for label,command in [('pulse-source-outputs',['pactl','list','source-outputs']),
+                                  ('pulse-sink-inputs',['pactl','list','sink-inputs']),
+                                  ('audio-flinger',['adb','shell','dumpsys','media.audio_flinger'])]:
+                result=subprocess.run(command,capture_output=True,timeout=20)
+                (out/(tag+'-'+label+'.txt')).write_bytes(result.stdout+result.stderr)
+            probe=subprocess.Popen(['parec','--device=backspin_input.monitor','--raw','--latency-msec=20',
+                                    '--format=s16le','--rate=44100','--channels=1'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            try:
+                raw,error=probe.communicate(timeout=1.5)
+            except subprocess.TimeoutExpired:
+                probe.kill();raw,error=probe.communicate()
+            samples=struct.unpack('<'+'h'*(len(raw)//2),raw[:len(raw)//2*2])
+            rms=math.sqrt(sum(v*v for v in samples)/len(samples)) if samples else 0
+            (out/(tag+'-host-probe.json')).write_text(json.dumps(dict(samples=len(samples),rms_pcm16=rms,
+                                                                   source='backspin_input.monitor',during_recording=True),indent=2))
+            (out/(tag+'-host-probe-stderr.txt')).write_bytes(error)
+            assert rms>100, 'Synthetic host source is silent during the actual Android recording'
+        else:
+            steps.append('Explicit Ranchu HAL 300Hz test input; host/physical speech not qualified')
         time.sleep(3)
         capture('recording-%d' % len(steps))
     finally:
@@ -153,7 +157,9 @@ try:
     assert not d(text='No takes yet').exists, 'Saved take was lost on process restart'
     capture('09-persisted-takes')
     result = dict(status='PASS', package=package, steps=steps,
-                  audio='Synthetic speech routed through host microphone into real Android recording',
+                  audio=('Ranchu HAL 300Hz test tone through real Android recording; host/physical speech not qualified'
+                         if os.environ.get('BACKSPIN_MICROPHONE_SOURCE')=='hal-tone' else
+                         'Synthetic speech routed through host microphone into real Android recording'),
                   checked=['onboarding', 'microphone permission', 'record original', 'AAC to PCM',
                            'reverse playback', 'record copy', 'score', 'save', 'share sheet',
                            'free-go consumption', 'process-restart persistence'],
