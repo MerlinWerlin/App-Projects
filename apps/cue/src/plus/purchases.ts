@@ -48,7 +48,7 @@ export function accessFromPurchases(list: StorePurchase[], now: number): StoreAc
   const dates = list.filter(p => matches(p, TRIAL_PRODUCT_ID)).map(p => trialStartFromPurchase(p, now)).filter((x): x is number => x !== null);
   return { plus: list.some(p => matches(p, PLUS_PRODUCT_ID)), trialStart: dates.length ? Math.min(...dates) : null };
 }
-export function createPurchaseProvider(module?: IapApi | null, now: () => number = Date.now): PurchaseProvider {
+export function createPurchaseProvider(module?: IapApi | null, now: () => number = Date.now, skus: readonly string[] = SKUS): PurchaseProvider {
   const iap = module === undefined ? loadIap() : module;
   let connection: Promise<boolean> | null = null;
   let busy = false;
@@ -75,7 +75,8 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
       const access = accessFromPurchases(prior, now());
       return sku === TRIAL_PRODUCT_ID && access.trialStart === null ? failure('E_TRIAL_DATE') : { ok: true, access };
     }
-    const products = await bounded(iap.fetchProducts({ skus: SKUS, type: 'in-app' }), 15_000);
+    if (!skus.includes(sku)) return unavailable();
+    const products = await bounded(iap.fetchProducts({ skus: [...skus], type: 'in-app' }), 15_000);
     if (!products.some(p => p.id === sku || p.productId === sku)) return unavailable();
     return new Promise<PurchaseResult>(resolve => {
       let done = false, pendingRequest = true, polling = false, failureChecks = 0;
@@ -89,6 +90,10 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
         resolve(result);
       };
       const accept = (purchase: StorePurchase) => {
+        if (!done && purchase.productId === sku && purchase.purchaseState === 'pending') {
+          finish({ ok: false, reason: 'pending', message: t('plus.pending') });
+          return;
+        }
         if (done || !matches(purchase, sku)) return;
         const access = accessFromPurchases([...(prior ?? []), purchase], now());
         if (sku === TRIAL_PRODUCT_ID && access.trialStart === null) { error = 'E_TRIAL_DATE'; return; }
@@ -134,7 +139,7 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
       if (!(await connect()) || !iap) return null;
       try {
         const [products, storefront] = await Promise.all([
-          bounded(iap.fetchProducts({ skus: SKUS, type: 'in-app' }), 15_000),
+          bounded(iap.fetchProducts({ skus: [...skus], type: 'in-app' }), 15_000),
           iap.getStorefront ? bounded(iap.getStorefront(), 5000).catch(() => null) : null,
         ]);
         const product = products.find(p => p.id === PLUS_PRODUCT_ID || p.productId === PLUS_PRODUCT_ID);

@@ -13,6 +13,7 @@ MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=180000 \
 adb shell am force-stop com.jared797.cue.playtest
 adb shell am start -W -n com.jared797.cue.playtest/.MainActivity > "$output/restart.txt"
 MAESTRO_CLI_NO_ANALYTICS=1 maestro test --test-output-dir "$output/captures" --debug-output "$output/captures" scripts/play/cue-persistence-flow.yaml
+MAESTRO_CLI_NO_ANALYTICS=1 maestro test --test-output-dir "$output/captures" --debug-output "$output/captures" scripts/play/cue-trial-flow.yaml
 adb logcat -d > "$output/logcat.txt"
 if grep -E 'FATAL EXCEPTION|Fatal signal|ReactNativeJS:.*(Error:|Exception)' "$output/logcat.txt"; then exit 1; fi
-printf 'Library/edit/prompter and process-restart persistence passed on API35, page size %s. No Play purchase, physical microphone or production signing claim.\n' "$actual" > "$output/result.txt"
+printf 'Library/edit/prompter/script persistence and user-started Android trial/restart persistence passed on API35, page size %s. No Play purchase, physical microphone or production signing claim.\n' "$actual" > "$output/result.txt"

@@ -65,9 +65,11 @@ jobs:
           "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 cue-android-output/cue-play-test.apk > cue-android-output/zipalign.txt
           python scripts/play/verify_apk.py cue-android-output/cue-play-test.apk cue-android-output
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: cue-android-current-apk
           path: cue-android-output/
+          if-no-files-found: ignore
           retention-days: 14
   simulate:
     needs: build
@@ -113,5 +115,9 @@ jobs:
         if: always()
         with:
           name: cue-android-simulation-${{ matrix.page }}
-          path: cue-android-output/
+          path: |
+            cue-android-output/captures/
+            cue-android-output/*.txt
+            cue-android-output/*.json
+            cue-android-output/*.png
           retention-days: 14

@@ -54,6 +54,14 @@ test('purchase failure shows error code after reconciliation and removes listene
 test('cancel and pending approval never unlock',async()=>{
   for(const code of ['user-cancelled','deferred-payment']){const f=fake();f.api.requestPurchase=async()=>{f.error({code});};expect(await createPurchaseProvider(f.api).buy()).toMatchObject({ok:false,reason:code==='user-cancelled'?'cancelled':'pending'});expect(f.removed).toHaveBeenCalledTimes(2);}
 });
+
+test('listener-only pending Google purchase settles as pending without acknowledgement or unlock', async () => {
+  const f = fake();
+  f.api.requestPurchase = async () => { f.update({ productId: PLUS, purchaseState: 'pending' }); };
+  expect(await createPurchaseProvider(f.api).buy()).toMatchObject({ ok: false, reason: 'pending' });
+  expect(f.api.finishTransaction).not.toHaveBeenCalled();
+  expect(f.removed).toHaveBeenCalledTimes(2);
+});
 test('trial never grants permanent Plus; restore does not restart its clock',async()=>{
   const f=fake();f.api.requestPurchase=async()=>({productId:TRIAL,transactionDate:NOW});
   expect(await createPurchaseProvider(f.api,()=>NOW).startTrial()).toEqual({ok:true,access:{plus:false,trialStart:NOW}});

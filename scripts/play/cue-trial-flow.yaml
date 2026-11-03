@@ -1,0 +1,30 @@
+appId: com.jared797.cue.playtest
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- tapOn: Settings
+- tapOn:
+    text: Cue Plus
+    index: 1
+- scrollUntilVisible:
+    element:
+      text: Start free 7-day trial
+    direction: DOWN
+    timeout: 20000
+- tapOn: Start free 7-day trial
+- assertVisible: Your seven-day Plus trial is active.
+- tapOn: OK
+- assertVisible: 'Plus trial: 7 days left'
+- takeScreenshot: 05-android-trial
+- stopApp
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- tapOn: Settings
+- assertVisible: 'Plus trial: 7 days left'
+- takeScreenshot: 06-persisted-trial
