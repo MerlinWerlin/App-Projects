@@ -37,6 +37,9 @@ for(const t of cat.themes){
    }
    rect=best.rect;ink=best.ink;
  }
+ // State/locale review: the whale's raised tail crosses the full-width top band.
+ // Keep every live value in the quiet upper-left paper rather than covering the subject.
+ if(t.id.startsWith('021-'))rect=[.045,.025,.52,.11];
  const bytes=readFileSync(source),meta=await sharp(bytes).metadata();
  const liveFrame={rect,shape:style==='analog'?'circle':'plate',clockStyle:style,ink};
  const option={id:'themed-live-clock',kind:'clock',image:'clock-background.jpg',sizes:['small','medium','large'],fit:'fit',background:'blur',label:style==='stacked'?'After Hours · live':'Art clock · live',numberFree:true,liveFrame};
