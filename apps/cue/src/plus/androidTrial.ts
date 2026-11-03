@@ -21,9 +21,15 @@ export function createAndroidPurchaseProvider(
     return stamps.length ? Math.min(...stamps) : null;
   };
   const merge = async (access: StoreAccess): Promise<StoreAccess> => {
-    const local = await read();
-    const stamps = [local, access.trialStart].filter((value): value is number => value !== null);
-    return { plus: access.plus, trialStart: stamps.length ? Math.min(...stamps) : null };
+    try {
+      const local = await read();
+      const stamps = [local, access.trialStart].filter((value): value is number => value !== null);
+      return { plus: access.plus, trialStart: stamps.length ? Math.min(...stamps) : null };
+    } catch {
+      // A broken local trial must not defeat verified purchase/revocation.
+      // AppState never clears an Android trial record on a null store date.
+      return access;
+    }
   };
   const transact = async (kind: 'buy' | 'restore'): Promise<PurchaseResult> => {
     const result = await store[kind]();
@@ -36,7 +42,7 @@ export function createAndroidPurchaseProvider(
     async refresh() {
       const access = await store.refresh();
       if (!access) return null;
-      try { return await merge(access); } catch { return null; }
+      return merge(access);
     },
     startTrial() {
       if (pending) return pending;

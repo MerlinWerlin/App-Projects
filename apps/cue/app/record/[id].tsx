@@ -205,7 +205,7 @@ export default function RecordScreen() {
             </Text>
           </Glass>
         </Pressable>
-        <Pressable onPress={toggle} accessibilityRole="button" accessibilityLabel={recording ? t('record.stop') : t('record.start')} style={({ pressed }) => [st.shutter, { transform: [{ scale: pressed ? 0.94 : 1 }] }]}>
+        <Pressable onPress={toggle} disabled={!ready} accessibilityRole="button" accessibilityLabel={recording ? t('record.stop') : t('record.start')} style={({ pressed }) => [st.shutter, { transform: [{ scale: pressed ? 0.94 : 1 }] }]}>
           <View style={[st.shutterInner, recording && st.shutterStop]} />
         </Pressable>
         <View style={{ width: 120, alignItems: 'center' }}>

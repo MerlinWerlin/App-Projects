@@ -135,7 +135,9 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     setTrialStart(access.trialStart);
     await Promise.all([
       kv.setItem(ENTITLEMENT_KEY, JSON.stringify({ version: 1, tier: access.plus ? 'plus' : 'free', source: access.plus ? source : 'none', updatedAt: Date.now() })).catch(() => undefined),
-      saveStoredTrial(kv, secure, access.trialStart),
+      Platform.OS === 'android' && access.trialStart === null
+        ? Promise.resolve()
+        : saveStoredTrial(kv, secure, access.trialStart),
     ]);
   }, [kv, secure]);
 

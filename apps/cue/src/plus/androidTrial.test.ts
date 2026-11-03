@@ -67,6 +67,14 @@ test('store outage preserves last verified state and restore errors are not fabr
   expect(await provider.refresh()).toBeNull();
   expect(await provider.restore()).toMatchObject({ ok: false, reason: 'empty' });
 });
+test('corrupt trial cannot block verified permanent purchase or revocation and is not reset', async () => {
+  const kv = new MemoryKv(), store = base(); await kv.setItem(TRIAL_KEY, 'broken');
+  const provider = createAndroidPurchaseProvider(store, kv, null, () => NOW);
+  expect(await provider.buy()).toEqual({ ok: true, access: { plus: true, trialStart: null } });
+  expect(await provider.refresh()).toEqual({ plus: false, trialStart: null });
+  expect(kv.data.get(TRIAL_KEY)).toBe('broken');
+  expect(await provider.startTrial()).toMatchObject({ ok: false });
+});
 test('Android product query contains Plus only and never requests Apple trial', async () => {
   const api = {
     initConnection: async () => true,
