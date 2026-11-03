@@ -35,7 +35,10 @@ if [[ "${APP:-}" == backspin ]]; then
   # QEMU's bundled PulseAudio client must use the explicit private Unix socket.
   export PULSE_SERVER="unix:$(pactl info | sed -n 's/^Server String: //p')"
   export QEMU_PA_SERVER="$PULSE_SERVER" QEMU_PA_SOURCE="$PULSE_SOURCE" QEMU_PA_SINK="$PULSE_SINK"
-  ffmpeg -nostdin -hide_banner -loglevel error -re -f lavfi -i 'sine=frequency=440:sample_rate=44100' -f s16le -ac 1 -ar 44100 - 2>"$output/tone-generator.txt" | pacat --playback --device=backspin_input --raw --latency-msec=20 --format=s16le --rate=44100 --channels=1 2>"$output/tone-playback.txt" &
+  # Speech varies in time and frequency; a constant sine can be removed by
+  # Android microphone noise suppression after its initial transient.
+  espeak-ng -s 155 -w "$RUNNER_TEMP/backspin-speech.wav" 'A penguin waddles, plip plop. Say the sound, reverse the voice. Backspin recording test.'
+  ffmpeg -nostdin -hide_banner -loglevel error -re -stream_loop -1 -i "$RUNNER_TEMP/backspin-speech.wav" -f s16le -ac 1 -ar 44100 - 2>"$output/tone-generator.txt" | pacat --playback --device=backspin_input --raw --latency-msec=20 --format=s16le --rate=44100 --channels=1 2>"$output/tone-playback.txt" &
   pactl info > "$output/host-audio.txt"
   python - "$output" <<'PY'
 import subprocess,struct,math,json,sys
@@ -97,6 +100,12 @@ if [[ "${APP:-}" == linework ]]; then
 fi
 printf 'Installed and alive 20 seconds after launch on API 35 x86_64. Feature/device QA still required.\n' > "$output/smoke-result.txt"
 if [[ "${APP:-}" == backspin ]]; then
-  python scripts/play/backspin-smoke.py "$output"
+  # Capture the complete gameplay log even if a later assertion fails.
+  if ! python scripts/play/backspin-smoke.py "$output"; then
+    adb logcat -d > "$output/gameplay-logcat.txt"
+    pactl list short source-outputs > "$output/gameplay-audio-clients.txt"
+    exit 1
+  fi
+  adb logcat -d > "$output/gameplay-logcat.txt"
   (cd apps/backspin/android && ./gradlew :backspin-pcm:connectedDebugAndroidTest --no-daemon --max-workers=2 -PreactNativeArchitectures=x86_64 -Dorg.gradle.jvmargs=-Xmx3g) 2>&1 | tee "$output/pcm-instrumentation.txt"
 fi

@@ -63,7 +63,7 @@ jobs:
           if [ "$APP" = glaze ]; then node scripts/native-link.mjs; fi
           if [ "$APP" = backspin ]; then
             sudo apt-get update -qq
-            sudo apt-get install -y -qq ffmpeg pulseaudio pulseaudio-utils xvfb xauth libxcb-cursor0 libxkbcommon-x11-0
+            sudo apt-get install -y -qq ffmpeg espeak-ng pulseaudio pulseaudio-utils xvfb xauth libxcb-cursor0 libxkbcommon-x11-0
             python -m pip install 'uiautomator2==3.4.2'
             mkdir -p modules/backspin-pcm/android/src/androidTest/assets
             ffmpeg -hide_banner -loglevel error -f lavfi -i 'sine=frequency=440:duration=0.25:sample_rate=44100' -ac 1 -c:a aac modules/backspin-pcm/android/src/androidTest/assets/tone.m4a

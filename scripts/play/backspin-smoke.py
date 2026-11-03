@@ -122,7 +122,7 @@ try:
     assert not d(text='No takes yet').exists, 'Saved take was lost on process restart'
     capture('09-persisted-takes')
     result = dict(status='PASS', package=package, steps=steps,
-                  audio='Synthetic tone routed through host microphone into real Android recording',
+                  audio='Synthetic speech routed through host microphone into real Android recording',
                   checked=['onboarding', 'microphone permission', 'record original', 'AAC to PCM',
                            'reverse playback', 'record copy', 'score', 'save', 'share sheet',
                            'free-go consumption', 'process-restart persistence'],
