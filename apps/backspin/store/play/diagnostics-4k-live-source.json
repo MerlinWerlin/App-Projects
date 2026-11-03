@@ -1,0 +1,66 @@
+{
+  "run": 41731776160,
+  "runtime_source": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
+  "api": 35,
+  "page_size": 4096,
+  "display": "540x960/density210",
+  "emulator": "36.6.11.0",
+  "ui_gameplay": "PASS",
+  "native_decoder_tests": "2 PASS",
+  "sustained_audio": {
+    "status": "FAIL",
+    "scope": "Synthetic sustained CI microphone input, independently decoded AAC",
+    "expected_recordings": 2,
+    "recordings": [
+      {
+        "file": "00.m4a",
+        "pcm": {
+          "samples": 239616,
+          "duration_seconds": 5.433469387755102,
+          "peak": 0.5860797166824341,
+          "rms": 0.026698820611994814,
+          "active_windows": 11,
+          "total_windows": 272,
+          "active_span_seconds": 0.26
+        },
+        "sustained": false
+      },
+      {
+        "file": "01.m4a",
+        "pcm": {
+          "samples": 216064,
+          "duration_seconds": 4.899410430839002,
+          "peak": 1.0249934196472168,
+          "rms": 0.15774910318350052,
+          "active_windows": 153,
+          "total_windows": 245,
+          "active_span_seconds": 4.84
+        },
+        "sustained": true
+      }
+    ],
+    "not_proven": [
+      "human voice quality",
+      "physical phone routes",
+      "actual Play purchase"
+    ]
+  },
+  "live_host_probes": [
+    {
+      "samples": 66149,
+      "rms_pcm16": 2976.9435819400865,
+      "source": "backspin_input.monitor",
+      "during_recording": true
+    },
+    {
+      "samples": 66062,
+      "rms_pcm16": 2696.046703415179,
+      "source": "backspin_input.monitor",
+      "during_recording": true
+    }
+  ],
+  "qemu_live_input": "Uncorked/unmuted source1, stereo44100",
+  "hal_pcm_read_errors": 49,
+  "hal_silence_insertions": 326,
+  "scope": "First capture fragmented despite valid live host source; copy is sustained. Cold-input cause unresolved; no production AAB generated."
+}

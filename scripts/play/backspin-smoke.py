@@ -156,6 +156,32 @@ try:
     wait('Saved takes')
     assert not d(text='No takes yet').exists, 'Saved take was lost on process restart'
     capture('09-persisted-takes')
+    if os.environ.get('BACKSPIN_PRODUCTION_REPLAY') == '1':
+        # This is an unavailable-store check on a fresh google_apis image, not a
+        # simulated successful payment. Never tap Buy if the real store exists.
+        installed_store=subprocess.check_output(['adb','shell','pm','list','packages','com.android.vending'],timeout=20).decode().strip()
+        assert not installed_store, 'Unavailable-store check requires an image without Google Play Store'
+        click('Settings')
+        click('Unlock Backspin Plus')
+        wait('One payment. Yours for life.')
+        click('Unlock Backspin Plus')
+        until=time.monotonic()+45
+        while not (d(text='Google Play is not reachable. Try again later.').exists or
+                   d(textStartsWith='We could not confirm this purchase. Check Google Play before trying again.').exists):
+            assert time.monotonic()<until, 'Android purchase error did not show the Google Play message'
+            time.sleep(.3)
+        assert not d(textContains='nothing was charged').exists
+        assert not d(textContains='Test mode (Expo Go)').exists
+        capture('10-google-play-unavailable')
+        click('Restore purchase')
+        wait('No completed Plus purchase found for this Google Play account.')
+        capture('11-google-play-restore-unavailable')
+        d.press('back')
+        click('Play')
+        wait('Quick play')
+        assert d(description='9 free goes left').exists or d(textContains='9 free goes left').exists, 'Unavailable billing granted Plus or changed free goes'
+        capture('12-no-fake-plus-unlock')
+        steps.append('Production native unavailable-store/Restore messages verified; no payment or Plus unlock')
     result = dict(status='PASS', package=package, steps=steps,
                   audio=('Ranchu HAL 300Hz test tone through real Android recording; host/physical speech not qualified'
                          if os.environ.get('BACKSPIN_MICROPHONE_SOURCE')=='hal-tone' else
