@@ -63,7 +63,10 @@ PY
 fi
 # Use the GUI-enabled binary under a private virtual display. The SDK's
 # headless binary can provide stub PulseAudio calls despite a working host source.
-xvfb-run -a -s '-screen 0 1080x1920x24' "$ANDROID_HOME/emulator/emulator" -avd play-smoke -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory 3072 > "$output/emulator.txt" 2>&1 &
+memory=3072
+if [[ "${ANDROID_PAGE_SIZE:-4096}" == 16384 ]]; then memory=6144; fi
+free -m > "$output/host-memory.txt"
+xvfb-run -a -s '-screen 0 1080x1920x24' "$ANDROID_HOME/emulator/emulator" -avd play-smoke -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory "$memory" > "$output/emulator.txt" 2>&1 &
 trap 'adb emu kill || true' EXIT
 timeout 180 adb wait-for-device
 for i in $(seq 1 90); do
@@ -75,6 +78,10 @@ adb shell getconf PAGE_SIZE | tr -d '\r' > "$output/device-page-size.txt"
 [[ "$(cat "$output/device-page-size.txt")" == "${ANDROID_PAGE_SIZE:-4096}" ]]
 adb shell getprop ro.build.version.sdk | tr -d '\r' > "$output/device-api-level.txt"
 [[ "$(cat "$output/device-api-level.txt")" == "${ANDROID_API_LEVEL:-35}" ]]
+adb shell grep MemTotal /proc/meminfo | tr -d '\r' > "$output/device-memory.txt"
+if [[ "${ANDROID_PAGE_SIZE:-4096}" == 16384 ]]; then
+  [[ "$(awk '{print $2}' "$output/device-memory.txt")" -ge 4194304 ]]
+fi
 if [[ "${APP:-}" == backspin ]]; then
   adb emu avd hostmicon | tee "$output/emulator-microphone.txt"
   grep -q OK "$output/emulator-microphone.txt"
