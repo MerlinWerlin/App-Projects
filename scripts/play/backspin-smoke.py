@@ -83,11 +83,10 @@ try:
     capture('02-microphone-explanation')
     click('Allow microphone')
     # Android system dialog, not an app permission bypass.
-    for rid in ['com.android.permissioncontroller:id/permission_allow_foreground_only_button',
-                'com.android.permissioncontroller:id/permission_allow_one_time_button']:
-        if d(resourceId=rid).exists(timeout=3):
-            d(resourceId=rid).click()
-            break
+    allow = d(resourceIdMatches='.*:id/permission_allow_foreground_only_button')
+    assert allow.exists(timeout=30), 'Android microphone permission dialog did not appear'
+    capture('02-android-microphone-permission')
+    allow.click()
     wait('Quick play')
     capture('03-home')
     click('Quick play')
