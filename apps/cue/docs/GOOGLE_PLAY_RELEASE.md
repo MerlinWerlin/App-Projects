@@ -155,6 +155,12 @@ configure Play App Signing and a durable upload key, build the production AAB,
 and prepare the listing, Android screenshots, content rating and Data safety
 from the final binary and SDK behaviour.
 
+GOOGLE_PLAY_BILLING_QA.md contains the licensed, one-time purchase rehearsal;
+every case is explicitly unexecuted. Baseline simulation archives, source-bound
+receipts and the guest-memory failure log are preserved in
+`C:/Users/jared/Documents/ChatGPT/Apps/outputs/cue-google-play-20261104`.
+Open its README.md and INDEX.json for scope, hashes and source runs.
+
 Verify camera/microphone interruption and video save, on-device recognition
 availability and its truthful fallback, and real Play Billing purchase,
 pending/cancel, acknowledgement, revocation and restore using a licensed tester.
