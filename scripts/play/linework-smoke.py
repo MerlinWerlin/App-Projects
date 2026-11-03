@@ -44,8 +44,13 @@ def snapshot(name='linework-current'):
     return ET.fromstring(xml)
 
 
-def find(pattern, tap=False, attempts=8, scroll=False, direction='down'):
+def find(pattern, tap=False, attempts=8, scroll=False, direction='down', camera=False):
     for _ in range(attempts):
+        if camera:
+            # Trace deliberately hides controls after three idle seconds.
+            # UIAutomator's idle wait can consume that window, so behave like
+            # a user: wake the controls before observing and before tapping.
+            adb('shell', 'input', 'tap', '160', '250')
         tree = snapshot()
         for node in tree.iter('node'):
             label = node.get('content-desc') or node.get('text') or ''
@@ -55,6 +60,8 @@ def find(pattern, tap=False, attempts=8, scroll=False, direction='down'):
                 if x2 <= x1 or y2 <= y1:
                     continue
                 if tap:
+                    if camera:
+                        adb('shell', 'input', 'tap', '160', '250')
                     adb('shell', 'input', 'tap', str((x1+x2)//2), str((y1+y2)//2))
                     time.sleep(0.8)
                 return label
@@ -141,11 +148,12 @@ try:
     (output / 'video-store-before.txt').write_text(before)
     route('trace?template=cat-sitting')
     adb('shell', 'input', 'tap', '160', '250')  # wake focus-mode controls
-    find(r'^Record timelapse$', tap=True)
-    find(r'^Stop recording$')
+    find(r'^Record timelapse$', tap=True, camera=True)
+    capture('linework-native-record-requested')
+    find(r'^Stop recording$', camera=True)
     time.sleep(4)
     adb('shell', 'input', 'tap', '160', '250')
-    find(r'^Stop recording$', tap=True)
+    find(r'^Stop recording$', tap=True, camera=True)
     find(r'^Timelapse ready$', attempts=12)
     capture('linework-native-video-ready')
     find(r'^Save to Photos$', tap=True)
