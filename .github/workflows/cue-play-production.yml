@@ -44,6 +44,8 @@ jobs:
         run: |
           mkdir -p ../../cue-play-production-output
           git rev-parse HEAD > ../../cue-play-production-output/source-commit.txt
+      - name: Check production validation gates
+        run: python -B -m unittest discover -s ../../scripts/play -p test_verify_aab.py
       - name: Install source
         run: npm ci --no-audit --no-fund
       - name: Link existing Expo project
