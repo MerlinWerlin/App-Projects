@@ -129,6 +129,35 @@ try:
     find(r'^Free trial: 14 days left$', scroll=True, direction='up')
     capture('linework-android-trial-restarted')
     checks.append('Android local trial retains 14-day status after process restart')
+
+    # Real native CameraView -> MediaStore path on a disposable virtual camera.
+    # Grant only CAMERA; modern photo/audio/video reads stay ungranted.
+    adb('shell', 'pm', 'grant', package, 'android.permission.CAMERA')
+    adb('shell', 'am', 'force-stop', package)
+    adb('shell', 'am', 'start', '-W', '-n', package + '/.MainActivity')
+    find(r'^Trace a photo$')
+    before = adb('shell', 'content', 'query', '--uri', 'content://media/external/video/media',
+                 '--projection', '_id:_display_name:_size:duration:mime_type').decode(errors='replace')
+    (output / 'video-store-before.txt').write_text(before)
+    route('trace?template=cat-sitting')
+    adb('shell', 'input', 'tap', '160', '250')  # wake focus-mode controls
+    find(r'^Record timelapse$', tap=True)
+    find(r'^Stop recording$')
+    time.sleep(4)
+    adb('shell', 'input', 'tap', '160', '250')
+    find(r'^Stop recording$', tap=True)
+    find(r'^Timelapse ready$', attempts=12)
+    capture('linework-native-video-ready')
+    find(r'^Save to Photos$', tap=True)
+    find(r'^Saved to Photos$', attempts=12)
+    capture('linework-native-video-saved')
+    after = adb('shell', 'content', 'query', '--uri', 'content://media/external/video/media',
+                '--projection', '_id:_display_name:_size:duration:mime_type').decode(errors='replace')
+    (output / 'video-store-after.txt').write_text(after)
+    assert after.count('Row:') > before.count('Row:'), 'No new MediaStore video'
+    rows = [x for x in after.splitlines() if '_size=' in x]
+    assert any(int(re.search(r'_size=(\d+)', x).group(1)) > 1024 and 'video/' in x for x in rows)
+    checks.append('virtual-camera clip records/stops and saves a new nonempty native MediaStore video with CAMERA-only grant')
     result = 'PASS'
 except Exception as error:
     result = 'FAIL'
@@ -142,5 +171,5 @@ finally:
         'status': result,
         'package': package,
         'checks': checks,
-        'scope': 'API35 emulator, test APK; physical camera, photo import, timelapse, billing and 16KB runtime remain unverified',
+        'scope': 'Disposable emulator; actual image/page size recorded separately. Virtual camera and native video save tested when completed; physical camera, photo import and real Play Billing remain unverified.',
     }, indent=2) + '\n')

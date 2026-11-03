@@ -1,7 +1,9 @@
 // Save-to-Photos adapter for timelapse clips (T09). Asks for write-only ("add photos") access, never read access.
 // Never throws: every outcome comes back as a SaveResult so the UI can explain it (in the user's language;
 // `detail` is the system's technical error text, if any).
-import * as MediaLibrary from 'expo-media-library';
+// SDK57 keeps these function-style APIs at /legacy; the root export throws
+// from saveToLibraryAsync. Credit Cue's native integration repair f572a10.
+import * as MediaLibrary from 'expo-media-library/legacy';
 import { Linking } from 'react-native';
 import { permissionStep } from '../core/timelapse';
 

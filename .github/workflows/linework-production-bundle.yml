@@ -36,6 +36,7 @@ jobs:
       LINEWORK_PRODUCTION_QA: '1'
       LINEWORK_PAGE_SIZE: ${{ inputs.pageSize || '4k' }}
       CI: '1'
+      LINEWORK_VERSION_CODE: ${{ github.run_number }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -116,12 +117,12 @@ jobs:
           git rev-parse HEAD > bundle-output/harness-commit.txt
           python scripts/play/verify_linework_aab.py bundle-output "$LINEWORK_CERT_SHA256"
       - uses: actions/upload-artifact@v4
-        if: inputs.artifactRun == ''
+        if: always() && inputs.artifactRun == ''
         with:
           name: linework-signed-production-bundle
           path: bundle-output/
           retention-days: 90
-          if-no-files-found: error
+          if-no-files-found: warn
       - uses: android-actions/setup-android@v4
         with:
           packages: 'platform-tools emulator'

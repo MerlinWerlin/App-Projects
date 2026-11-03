@@ -11,6 +11,11 @@ module.exports = function withPlayVariant(config, env = process.env) {
   if (!config.android?.package) throw new Error('An explicit Android package is required.');
   const preview = variant === 'preview';
   const channel = 'play-' + variant;
+  const versionCode = !preview && env.LINEWORK_VERSION_CODE
+    ? Number(env.LINEWORK_VERSION_CODE) : config.android.versionCode || 1;
+  if (!Number.isSafeInteger(versionCode) || versionCode < 1 || versionCode > 2100000000) {
+    throw new Error('Invalid Play versionCode');
+  }
   return {
     ...config,
     name: config.name + (preview ? ' Play Test' : ''),
@@ -20,7 +25,7 @@ module.exports = function withPlayVariant(config, env = process.env) {
     android: {
       ...config.android,
       package: config.android.package + (preview ? '.playtest' : ''),
-      versionCode: config.android.versionCode || 1,
+      versionCode,
       // System photo picking and write-only clip saving need no broad modern
       // media reads or overlay window permission. Keep the Apple config intact.
       blockedPermissions: [...new Set([...(config.android.blockedPermissions || []),

@@ -22,7 +22,7 @@ guest_memory=2048
 if [[ "${APP:-}" == linework ]]; then
   case "${LINEWORK_PAGE_SIZE:-4k}" in
     4k) ;;
-    16k) system_image='system-images;android-35;google_apis_ps16k;x86_64'; expected_pages=16384; guest_memory=4096 ;;
+    16k) system_image='system-images;android-36;google_apis_ps16k;x86_64'; expected_pages=16384; guest_memory=4096 ;;
     *) exit 2 ;;
   esac
 fi
@@ -66,6 +66,7 @@ for i in $(seq 1 90); do
 done
 [[ "$(adb shell getprop sys.boot_completed | tr -d '\r')" == 1 ]]
 if [[ "${APP:-}" == linework ]]; then
+  adb shell getprop ro.build.version.sdk | tr -d '\r' > "$output/emulator-api-level.txt"
   adb shell getconf PAGE_SIZE | tr -d '\r' > "$output/emulator-page-size.txt"
   [[ "$(cat "$output/emulator-page-size.txt")" == "$expected_pages" ]]
 fi

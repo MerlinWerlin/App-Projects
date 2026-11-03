@@ -70,3 +70,21 @@ test('Glaze Android native hook exits without installing Apple build tooling', (
   assert.equal(result.status,0,result.stderr);
   assert.match(result.stdout,/Apple widget tooling is not required/);
 });
+
+test('Linework production version is explicit while preview and Apple keep their identities', () => {
+  const folder = path.join(root, 'apps/linework');
+  const base = JSON.parse(fs.readFileSync(path.join(folder, 'app.json'))).expo;
+  const overlay = require(path.join(folder, 'ops/play-variant.cjs'));
+  assert.equal(overlay(base, { PLAY_VARIANT: 'production', LINEWORK_VERSION_CODE: '3' }).android.versionCode, 3);
+  assert.equal(overlay(base, { PLAY_VARIANT: 'preview', LINEWORK_VERSION_CODE: '3' }).android.versionCode, base.android.versionCode || 1);
+  assert.equal(overlay(base, { LINEWORK_VERSION_CODE: '3' }), base);
+});
+
+test('Linework rejects invalid production version codes before building', () => {
+  const folder = path.join(root, 'apps/linework');
+  const base = JSON.parse(fs.readFileSync(path.join(folder, 'app.json'))).expo;
+  const overlay = require(path.join(folder, 'ops/play-variant.cjs'));
+  for (const value of ['0', '-1', '1.5', 'NaN', '2100000001']) {
+    assert.throws(() => overlay(base, { PLAY_VARIANT: 'production', LINEWORK_VERSION_CODE: value }), /versionCode/);
+  }
+});

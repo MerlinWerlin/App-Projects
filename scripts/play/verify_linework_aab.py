@@ -16,6 +16,7 @@ manifest = ET.parse(output / 'bundle-manifest.xml').getroot()
 config = json.loads((output / 'config.json').read_text())
 assert manifest.attrib['package'] == config['android']['package'] == 'com.jared797.linework'
 assert config['extra']['playVariant'] == 'production' and config['updates']['enabled'] is False
+assert manifest.get(android + 'versionCode') == str(config['android']['versionCode'])
 assert manifest.find('application').get(android + 'debuggable', 'false') == 'false'
 target = int(manifest.find('uses-sdk').get(android + 'targetSdkVersion'))
 assert target >= 36
