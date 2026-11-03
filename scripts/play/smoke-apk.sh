@@ -32,8 +32,24 @@ if [[ "${APP:-}" == backspin ]]; then
   pactl load-module module-null-sink sink_name=backspin_output > "$output/audio-output-module.txt"
   pactl set-default-source backspin_input.monitor
   export PULSE_SOURCE=backspin_input.monitor PULSE_SINK=backspin_output QEMU_AUDIO_DRV=pa
+  # QEMU's bundled PulseAudio client must use the explicit private Unix socket.
+  export PULSE_SERVER="unix:$(pactl info | sed -n 's/^Server String: //p')"
+  export QEMU_PA_SERVER="$PULSE_SERVER" QEMU_PA_SOURCE="$PULSE_SOURCE" QEMU_PA_SINK="$PULSE_SINK"
   ffmpeg -hide_banner -loglevel error -re -f lavfi -i 'sine=frequency=440:sample_rate=44100' -f s16le -ac 1 -ar 44100 - | pacat --playback --device=backspin_input --raw --format=s16le --rate=44100 --channels=1 &
   pactl info > "$output/host-audio.txt"
+  python - "$output" <<'PY'
+import subprocess,struct,math,json,sys
+from pathlib import Path
+p=subprocess.Popen(['parec','--device=backspin_input.monitor','--raw','--format=s16le','--rate=44100','--channels=1'],stdout=subprocess.PIPE)
+try:
+    data,_=p.communicate(timeout=2)
+except subprocess.TimeoutExpired:
+    p.kill();data,_=p.communicate()
+values=struct.unpack('<'+'h'*(len(data)//2),data[:len(data)//2*2])
+rms=math.sqrt(sum(v*v for v in values)/len(values)) if values else 0
+Path(sys.argv[1],'host-microphone-probe.json').write_text(json.dumps({'samples':len(values),'rms_pcm16':rms,'source':'synthetic tone monitor'},indent=2))
+assert rms>100, 'Synthetic host microphone is silent before emulator startup'
+PY
 fi
 "$ANDROID_HOME/emulator/emulator" -avd play-smoke -no-window -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory 3072 > "$output/emulator.txt" 2>&1 &
 trap 'adb emu kill || true' EXIT
@@ -46,6 +62,12 @@ done
 if [[ "${APP:-}" == backspin ]]; then
   adb emu avd hostmicon | tee "$output/emulator-microphone.txt"
   grep -q OK "$output/emulator-microphone.txt"
+  if grep -q 'Could not init.*audio driver' "$output/emulator.txt"; then
+    pactl list short sources > "$output/host-sources.txt"
+    pactl list short source-outputs > "$output/host-source-outputs.txt"
+    echo 'Emulator audio backend failed; refusing to label silent audio as app behavior.' >&2
+    exit 1
+  fi
 fi
 adb shell input keyevent 82
 adb install "$apk" | tee "$output/install.txt"
