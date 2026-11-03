@@ -58,6 +58,23 @@ enum NativeComponentContract {
     try check(zip(scheduled.dates,scheduled.dates.dropFirst()).allSatisfy{$0.0<$0.1},"clock increasing timeline")
     let dateSpec=LiveArtSpec.parse(["kind":"date","rect":[0,0,1,1]])!
     try check(LiveArtSchedule.plan(spec:dateSpec,from:start).dates==[start],"date current entry")
+    let utc = TimeZone(secondsFromGMT: 0)!
+    var gregorian = Calendar(identifier: .gregorian); gregorian.timeZone = utc
+    let boundary = gregorian.date(from: DateComponents(year: 2026,month: 11,day: 2,hour: 0,minute: 15))!
+    func text(_ locale: String, _ zone: TimeZone? = nil, _ template: String = "EEE d MMM") -> String {
+      LiveDateText.format(boundary,template:template,locale:Locale(identifier:locale),calendar:gregorian,timeZone:zone ?? utc)
+    }
+    try check(text("en_US").contains("Mon") && text("en_US").contains("Nov"),"English compact date")
+    try check(text("fr_FR").contains("lun") && text("fr_FR").contains("nov"),"French compact date")
+    try check(text("ja_JP").contains("月") && text("ja_JP").contains("2"),"Japanese compact date")
+    try check(text("de_DE").contains("Mo"),"German weekday")
+    try check(text("en_US",utc,"d")=="2","UTC day at boundary")
+    try check(text("en_US",TimeZone(identifier:"America/Los_Angeles")!,"d")=="1","widget time zone previous day")
+    try check(text("ar_SA") != text("en_US"),"Arabic locale is honored")
+    try check(LiveArtReadings.snapshot(focus:.idle,battery:-1).battery==nil,"snapshot rejects negative level")
+    try check(LiveArtReadings.snapshot(focus:.idle,battery:101).battery==nil,"snapshot rejects oversized level")
+    try check(LiveArtReadings.snapshot(focus:.idle,battery:0).battery==0,"empty battery is valid")
+    try check(LiveArtReadings.snapshot(focus:.idle,battery:100).battery==100,"full battery is valid")
     return ["checks":checks,"focusPersistenceAndTransitions":true,"batteryUnknownHandling":true,"nativeMetadata":true,"realAppGroupTouched":false,"physicalDeviceTest":false]
   }
 }

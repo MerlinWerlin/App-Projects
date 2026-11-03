@@ -177,6 +177,34 @@ enum LiveBattery {
   }
 }
 
+/// Explicit preview readings never write to the shared store. Widget entry points use `.device`.
+enum LiveArtReadings {
+  case device
+  case snapshot(focus: GlazeFocusPhase, battery: Int?)
+
+  func focus(at date: Date) -> GlazeFocusPhase {
+    switch self { case .device: return FocusStore.phase(at: date); case .snapshot(let phase, _): return phase }
+  }
+  var battery: Int? {
+    switch self {
+    case .device: return LiveBattery.percent()
+    case .snapshot(_, let value): return value.flatMap { (0...100).contains($0) ? $0 : nil }
+    }
+  }
+}
+
+/// Respect SwiftUI's locale, calendar and time zone, including previews and widget overrides.
+enum LiveDateText {
+  static func format(_ date: Date, template: String, locale: Locale, calendar: Calendar, timeZone: TimeZone) -> String {
+    let formatter = DateFormatter()
+    formatter.locale = locale
+    formatter.calendar = calendar
+    formatter.timeZone = timeZone
+    formatter.setLocalizedDateFormatFromTemplate(template)
+    return formatter.string(from: date)
+  }
+}
+
 /// The live value over the art, placed on the composed image (fitted whole in the widget).
 @available(iOS 17.0, *)
 struct LiveArtLayer: View {
@@ -222,10 +250,17 @@ struct LiveArtLayer: View {
 
 @available(iOS 17.0, *)
 struct LiveArtValueView: View {
+  @Environment(\.locale) private var locale
+  @Environment(\.calendar) private var calendar
+  @Environment(\.timeZone) private var timeZone
   let spec: LiveArtSpec
   let theme: WidgetTheme
   let date: Date
+  var readings: LiveArtReadings = .device
 
+  private func formattedDate(_ template: String) -> String {
+    LiveDateText.format(date, template: template, locale: locale, calendar: calendar, timeZone: timeZone)
+  }
   private var ink: Color { Color(hex: spec.ink) }
   private var valueShadow: Color {
     guard spec.kind == .clock || spec.compact, let rgb = UInt32(spec.ink.dropFirst(), radix:16) else { return Color.black.opacity(0.25) }
@@ -268,7 +303,7 @@ struct LiveArtValueView: View {
       clock(s: s)
     case .date:
       if spec.compact {
-        Text(verbatim: date.formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated)))
+        Text(verbatim: formattedDate("EEE d MMM"))
           .font(theme.typeface(size: max(10,s * 0.6),weight:.medium))
           .lineLimit(1).minimumScaleFactor(0.4)
       } else { dateContent(s: s) }
@@ -277,7 +312,7 @@ struct LiveArtValueView: View {
     case .battery:
       if spec.compact {
         HStack(spacing:s * 0.12) {
-          if let pct=LiveBattery.percent() {
+          if let pct=readings.battery {
             Image(systemName:pct<=10 ? "battery.0" : pct<=35 ? "battery.25" : pct<=60 ? "battery.50" : pct<=85 ? "battery.75" : "battery.100")
             Text(verbatim:"\(pct)%").monospacedDigit()
           } else {
@@ -289,7 +324,7 @@ struct LiveArtValueView: View {
         .lineLimit(1).minimumScaleFactor(0.4)
       } else { batteryContent(s: s) }
     case .focus:
-      LiveFocusButton(date: date, theme: theme, s: s, compact: spec.compact)
+      LiveFocusButton(date: date, theme: theme, s: s, compact: spec.compact, phase: readings.focus(at: date))
     }
   }
 
@@ -328,11 +363,11 @@ struct LiveArtValueView: View {
 
   private func dateContent(s: CGFloat) -> some View {
       VStack(spacing: s * 0.02) {
-        Text(verbatim: date.formatted(.dateTime.weekday(.abbreviated)).uppercased())
+        Text(verbatim: formattedDate("EEE").uppercased(with: locale))
           .font(theme.typeface(size: max(9, s * 0.13), weight: .semibold))
-        Text(verbatim: date.formatted(.dateTime.day()))
+        Text(verbatim: formattedDate("d"))
           .font(theme.typeface(size: max(18, s * 0.42), weight: .bold))
-        Text(verbatim: date.formatted(.dateTime.month(.abbreviated)).uppercased())
+        Text(verbatim: formattedDate("MMM").uppercased(with: locale))
           .font(theme.typeface(size: max(9, s * 0.13), weight: .semibold))
       }
       .lineLimit(1)
@@ -358,7 +393,7 @@ struct LiveArtValueView: View {
   }
 
   @ViewBuilder private func batteryContent(s: CGFloat) -> some View {
-      if let pct = LiveBattery.percent() {
+      if let pct = readings.battery {
         Text(verbatim: "\(pct)%")
           .font(theme.typeface(size: max(14, s * 0.3), weight: .bold))
           .monospacedDigit()
@@ -380,12 +415,18 @@ struct LiveFocusButton: View {
   let theme: WidgetTheme
   let s: CGFloat
   var compact: Bool = false
+  var phase: GlazeFocusPhase? = nil
+
+  private var currentPhase: GlazeFocusPhase { phase ?? FocusStore.phase(at: date) }
+  private var actionLabel: LocalizedStringKey {
+    switch currentPhase { case .running: return "Pause"; case .paused: return "Resume"; case .idle: return "Start" }
+  }
 
   var body: some View {
     Button(intent: ToggleFocusIntent()) {
       if compact {
         HStack(spacing:s * 0.15) {
-          switch FocusStore.phase(at:date) {
+          switch currentPhase {
           case .running(let end):
             Image(systemName:"pause.circle.fill")
             Text(timerInterval:min(date,end)...end,countsDown:true).monospacedDigit()
@@ -401,10 +442,10 @@ struct LiveFocusButton: View {
         .lineLimit(1).minimumScaleFactor(0.4)
         .frame(maxWidth:.infinity,maxHeight:.infinity)
         .contentShape(Rectangle())
-        .accessibilityLabel("Start or pause focus")
+        .accessibilityLabel(actionLabel)
       } else {
       VStack(spacing: s * 0.03) {
-        switch FocusStore.phase(at: date) {
+        switch currentPhase {
         case .running(let end):
           Text(timerInterval: min(date, end)...end, countsDown: true)
             .font(theme.typeface(size: max(14, s * 0.24), weight: .semibold))
