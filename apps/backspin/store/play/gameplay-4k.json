@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "package": "com.jared797.backspin.playtest",
+  "steps": [
+    "Next",
+    "Next",
+    "Let's play",
+    "Allow microphone",
+    "Quick play",
+    "Recorder prepared after 9.86s",
+    "Play",
+    "Now copy it",
+    "Recorder prepared after 12.28s",
+    "Save take",
+    "Share clip",
+    "Takes"
+  ],
+  "audio": "Synthetic speech routed through host microphone into real Android recording",
+  "checked": [
+    "onboarding",
+    "microphone permission",
+    "record original",
+    "AAC to PCM",
+    "reverse playback",
+    "record copy",
+    "score",
+    "save",
+    "share sheet",
+    "free-go consumption",
+    "process-restart persistence"
+  ],
+  "device_page_size": 4096,
+  "not_checked": [
+    "human voice quality",
+    "physical phone routes and interruptions",
+    "Play Billing transaction and restore"
+  ]
+}

@@ -1,38 +1,39 @@
-# Backspin Android release — 3 November 2026
+# Backspin Android release — 4 November 2026
 
-Jared authorized Android simulation and Google Play review/release for **Backspin**. This checkout, `Apps/backspin-google-play-release` on `codex/backspin-google-play-release-20261103`, is the live Android release preparation. It starts from current App-Projects main and brings over only Backspin's Android support from PR106. Desktop/Apps/backspin remains a refreshed test copy.
+Jared authorized Backspin Android simulation and Google Play review/release. Live checkout: Apps/backspin-google-play-release, branch codex/backspin-google-play-release-20261103, [PR202](https://github.com/MerlinWerlin/App-Projects/pull/202). Google identity/phone gates still block app creation and submission. No Play application, billing transaction, review submission or public release is claimed.
 
-## Current evidence
+## Verified results
 
-- 33 Node tests and TypeScript pass locally.
-- Native AAC-to-PCM module and separate Android profiles retained from PR106. [Run 41612177418](https://github.com/MerlinWerlin/App-Projects/actions/runs/41612177418) compiled, verified, installed and launched the APK. Its first gameplay attempt rejected silent emulator input. A later harness attempt encountered a captured Pixel Launcher ANR; neither is reported as gameplay success. Host audio activation and a narrowly scoped launcher-dialog recovery are now explicit. [Run 41617261644](https://github.com/MerlinWerlin/App-Projects/actions/runs/41617261644) builds the final foreground-only, restricted-permission configuration and gates the unsigned production AAB on gameplay success.
-- New emulator flow exercises onboarding, the microphone prompt, actual recording/decoding, reverse playback, copy recording, score, save, Android share sheet, free-go accounting and persistence after process restart. A synthetic host microphone supplies the sound. A test script's presence is not a passing test result; read the run receipt.
-- Preview package: `com.jared797.backspin.playtest`, embedded JS, OTA disabled, generated test signing key. **Do not upload the preview APK to Play.**
-- Intended store package: `com.jared797.backspin`, AAB via `play-production`. A durable RSA4096 upload key and public certificate were generated and read back successfully outside Git, with a Windows-user DPAPI password record. Certificate SHA256: `1E87EC4C603A4B12721ADD35C75D2753A37A5FC6EDC59357E226CE4F03BB3DB8`. No signed production bundle or Google key registration is claimed.
-- Original iOS release profile and RELEASE.json are unchanged. No Apple resubmission is part of this work.
+[Run41701424210](https://github.com/MerlinWerlin/App-Projects/actions/runs/41701424210) completed successfully with runtime source155a67047b63dcc4655c5de65963145c75dba951.
 
-## 4 November continuation
+- Full API35/x86_64 gameplay on4096-byte pages PASS: onboarding, actual microphone permission, original recording, AAC decoding, reverse playback, copy recording, scoring, save, Android share sheet, exactly one free go consumed, and persistence after process restart. Input was synthetic speech through the host microphone.
+- Two native decoder instrumentation tests PASS, including valid AAC conversion and invalid input rejection.
+- 33 app tests,5configuration checks,TypeScript and a fresh iOS export PASS. Existing iOS build profiles and RELEASE.json remain unchanged; no Apple resubmission occurred.
+- Preview APK: com.jared797.backspin.playtest,target36,embedded JS,OTA disabled. Downloaded SHA256:12aa3f6af825c425b22cefac0097c59e268719c0221bcef68d11cf13843a6d01. Never upload this test-signed APK to Google Play.
+- Production AAB: com.jared797.backspin,version1.0.0/versionCode1,target36. Official Google bundletool validation and compiled-package check PASS. Durable RSA4096 upload signature and strict signature verification PASS. Signed SHA256:e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa;45,511,317bytes.
+- Signed AAB audit:54 native libraries across arm64-v8a/x86_64,all ELF load alignments at least16384;embedded code and OTA-disabled configuration confirmed. No overlay,broad storage or foreground-service permissions. Compiled Play Billing version9.1.0; no real purchase result is implied.
+- Five unmodified actual screenshots from the passing run are in store/play/screenshots with source hashes. Visual review confirms the repaired two-column audio controls and save confirmation. Icon512px and feature graphic1024x500 are prepared.
 
-The final restricted-permission APK from run41617261644 is downloaded and independently hash-verified: SHA256 `89e4f6575ee9f28f24e737b1c5bd7886414cf679e6ab5e0b09a9e8659da6bfc0`. Native build, signature, embedded bundle and static 16KB alignment passed. Run41622116518 completed original recording, AAC decoding and reversed playback but rejected the copy recording as too short. Recording screenshots show multiple elapsed seconds and transient sound; this is not a completed gameplay pass. Run41698872892 reuses the identical APK with synthetic speech instead of a constant sine, plus complete gameplay logs, to investigate possible microphone signal suppression. Production AAB remains gated on gameplay success.
+Private upload key/password remain outside Git/public artifacts. Signed AAB and receipts are also saved in an owner-accessible release folder outside this checkout. Public summaries:store/play/bundle-verification.json and store/play/gameplay-4k.json.
 
-Run41698872892 with synthetic speech reached scoring and saved the take. Its final assertion failed because the visible save confirmation was below the scroll viewport; the complete gameplay log records the actual `✓ Saved to Takes` node. Screenshots also exposed row sizing on the animated pressable child, which squeezed the four audio controls. Commit `af5a3b9` moves parent-row sizing to the actual pressable and scrolls to the save confirmation. All33 tests, TypeScript and a fresh iOS export pass after that repair. Fresh native build/gameplay/AAB run41700129048 tests the changed runtime; prior APK evidence cannot qualify this new source.
+## 16KB and physical-audio limitations
 
-Commit `155a670` adds an accessible Settings link to the full platform-specific privacy policy and a separate Android policy at `docs/backspin/privacy-android.html`. The existing published iOS policy is unchanged. The Android page must be published and its URL checked before store submission. This changes runtime input, so final native run41701424210 supersedes the earlier layout-only build for release qualification. Final source checks:33app tests,5config checks,TypeScript and fresh iOS export pass. A same-APK16KB gameplay run is prepared but not yet passed.
+The identical APK installed and launched on a device reporting16384-byte pages. Run41704766267 stopped at the microphone dialog because the test waited too briefly. Corrected run41705876794 passed permission handling but rejected a silent original recording despite nonzero host input. No full16KB gameplay pass is claimed; the emulator route versus app behavior remains unresolved.
 
-## Confirmed submission blocker
+[Diagnostic run41710351145](https://github.com/MerlinWerlin/App-Projects/actions/runs/41710351145) retains audio-policy/client diagnostics and runs decoder instrumentation even if gameplay fails. Read its result separately. Static alignment, launch and codec instrumentation do not substitute for complete audio gameplay.
 
-**Website verified:** the existing portfolio website was registered and verified in Google Search Console, and Play Console independently shows **Website verified**. [Homepage verification commit](https://github.com/MerlinWerlin/App-Projects/commit/21e9e0cd0b65e5d0acb5299437eed77e25e2d600). Do not remove the verification meta tag. Screenshots are retained privately under `.expo/` and are not committed.
+Human voice quality and physical phone routes/interruptions remain unverified. Jared has no Android phone or paid testers. Do not invent those results or purchase testers. Earlier failures and screenshots remain retained, including Pixel Launcher ANR/ADB loss, silent constant-tone input and an offscreen save assertion. Actual cramped audio controls were repaired and visually rechecked.
 
-Identity/organization document approval remains outstanding. Google explicitly disables phone verification until the documents are approved. App creation/release remain blocked on those account gates. Source emails and document retrieval receipts are stored outside Git; no current registration certificate was recovered from the expired email download links. No government-ID upload or identity approval is claimed.
+## Website and privacy
 
-No Backspin Google Play app, purchase product, review submission or public release is claimed. Complete Google's account gates before creating the app. The registration payment does not establish verification approval.
+Play Console website ownership is VERIFIED through Search Console. Preserve the homepage tag from [commit21e9e0c](https://github.com/MerlinWerlin/App-Projects/commit/21e9e0cd0b65e5d0acb5299437eed77e25e2d600).
 
-## Remaining release evidence
+Settings opens the full platform-specific policy. The [Android privacy page](https://merlinwerlin.github.io/App-Projects/backspin/privacy-android.html) was published by [commitff7f742](https://github.com/MerlinWerlin/App-Projects/commit/ff7f742023a6b5744c439fc3a1832c3439f61d77);HTTPS200 and exact source hash verified. Existing iOS policy is unchanged. Android OTA updates are disabled; do not copy Apple's update-service disclosures without checking the Android binary/SDK behavior.
 
-1. Finish organization/identity verification, then both phone verifications, and create Backspin with the stable production package. Website verification is already complete.
-2. Establish durable protected upload signing, produce the production AAB, and verify its final manifest, SDK level, native alignment and embedded assets. Keep keys and passwords outside Git and public artifacts.
-3. Configure the one-time Backspin Plus product (`com.jared797.backspin.plus`) at the authorized A$1.99 tier, then test actual Play Billing purchase/cancellation/restore using a Play-installed build. Native store guards prohibit a simulated paid unlock in a standalone build.
-4. Use the actual final build's phone screenshots; prepare the 512px icon and 1024×500 feature graphic, full listing, app access, content rating, ads, target audience and Data safety declarations from the final binary/SDK behavior. Do not copy Apple's declarations without checking Android's embedded-only build.
-5. Submit only after the main gameplay run and these store gates are verified. Human voice quality, physical microphone/audio routes and interruptions, and a 16 KB runtime remain separate from the API35 synthetic-microphone emulator result.
+## Remaining store gates
 
-The user has no Android phone or paid testers. Do not invent device or billing success, or purchase tester services. Organization-account eligibility is visible; no personal-account testing rule is assumed.
+1. Obtain organization/identity approval,then both phone verifications. Google currently disables phone verification and app creation. Original emails,expired certificate-link evidence and current public ABR record are saved privately; no original current registration PDF was recovered. A public lookup is not claimed as that certificate. No government-ID upload or approval occurred.
+2. Create the app with the stable package,register the upload certificate with Play App Signing,and preserve an owner-controlled recoverable key/password backup before upload. A signed bundle alone is not Google registration or approval.
+3. Configure Plus com.jared797.backspin.plus:10 scored goes free,then authorized A$1.99 lifetime purchase,no ads/subscription. Test actual Play-installed purchase,cancellation and restore. Standalone guards prohibit fake paid unlocks.
+4. Resolve or explicitly qualify the16KB microphone result;complete app access,target audience,content rating,ads and Data safety declarations from actual behavior.
+5. Submit after those gates are verified. Jared already authorized review/release;do not repeatedly request generic release permission or fabricate identity evidence.

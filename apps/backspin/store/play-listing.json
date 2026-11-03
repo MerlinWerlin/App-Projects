@@ -5,14 +5,13 @@
   "shortDescription": "Record a line, hear it backwards, copy it and reveal the result.",
   "fullDescription": "Your voice, with a twist.\n\nSay a short line, hear it backwards, then try copying that sound. Backspin flips your attempt forwards and scores its sound, rhythm and length.\n\nPlay a quick round, pick a daily challenge, try freestyle or pass one phone between friends in party mode. Loop or slow down the backwards clip while you practise. Save takes on your phone and share a four-part clip: original, backwards, your copy and flipped.\n\nYour first 10 scored rounds are free with all packs, effects and party sizes available. Backspin Plus is one optional lifetime purchase for unlimited rounds. No subscription or ads. Saved takes remain playable and shareable.\n\nNo account is needed. Recording and audio processing happen on your phone; clips leave it only when you choose to share.",
   "releaseBlockers": [
-    "Google developer account verification and app creation",
-    "Current native emulator gameplay evidence",
-    "Durable upload signing and final AAB",
-    "Actual Play Billing purchase/cancellation/restore",
-    "Final permissions and Data safety/content-rating declarations"
+    "Organization/identity approval, then phone verification and app creation",
+    "Actual Play Billing purchase/cancellation/restore using a Play-installed build",
+    "16KB emulator microphone gameplay remains unresolved; static alignment, launch and permission flow are distinct evidence",
+    "Final Data safety, app access, target audience and content rating declarations"
   ],
-  "assets": "512px store icon and 1024x500 feature graphic generated and visually inspected; final gameplay screenshots pending.",
-  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted",
+  "assets": "512px icon and 1024x500 feature graphic verified; five unmodified actual emulator screenshots exported from passing run41701424210.",
+  "privacy": "Separate Android privacy policy published and exact source hash verified over HTTPS; final Data safety declarations not submitted.",
   "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/backspin/privacy-android.html",
   "supportUrl": "https://merlinwerlin.github.io/App-Projects/backspin/support.html",
   "monetization": {
@@ -26,7 +25,15 @@
   "artwork": {
     "icon": "store/play/icon-512.png",
     "featureGraphic": "store/play/feature-1024x500.png",
-    "phoneScreenshots": "pending_actual_emulator_run"
+    "phoneScreenshots": "store/play/screenshots"
   },
-  "accountStatus": "Website verified in Play Console; identity/organization documents remain pending, and phone verification is disabled until approval. Last signed-in observation 3 Nov 2026."
+  "accountStatus": "Website verified in Play Console; identity/organization documents remain pending, and phone verification is disabled until approval. Last signed-in observation 3 Nov 2026.",
+  "buildEvidence": {
+    "runtimeSource": "155a67047b63dcc4655c5de65963145c75dba951",
+    "run": 41701424210,
+    "gameplay4KB": "PASS",
+    "nativeDecoderTests": 2,
+    "signedProductionAabSha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa",
+    "storeSubmission": false
+  }
 }

@@ -1,0 +1,26 @@
+{
+  "status": "PASS_SIGNED_BUNDLE_STATIC_AUDIT",
+  "package": "com.jared797.backspin",
+  "versionCode": 1,
+  "targetSdk": 36,
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.MODIFY_AUDIO_SETTINGS",
+    "android.permission.RECORD_AUDIO",
+    "android.permission.VIBRATE",
+    "com.android.vending.BILLING",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.WAKE_LOCK",
+    "com.jared797.backspin.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "nativeLibraries": 54,
+  "abis": [
+    "arm64-v8a",
+    "x86_64"
+  ],
+  "allElfLoadAlignmentsAtLeast16384": true,
+  "embeddedJs": true,
+  "otaUpdates": false,
+  "sha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa",
+  "playSubmission": false
+}
