@@ -8,8 +8,6 @@ on:
       - 'apps/cue/package*.json'
       - 'apps/cue/app.config.js'
       - 'apps/cue/ops/play-variant.cjs'
-      - 'scripts/play/**'
-      - '.github/workflows/cue-play-validation.yml'
   workflow_dispatch:
     inputs:
       apk_run_id:
