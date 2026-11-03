@@ -36,6 +36,20 @@ The older October test APK is not the release candidate.
 - Current inspected APK: 72,279,195 bytes, source f572a109a0dc6fa9f8ef5ffc24572b792fe0581c,
   SHA-256 dbf7f03738c708f08e34962d9a58727ee9c62e3a6b411c555938a7cdfb137425.
 
+4 November follow-up: the 4 KB flow passed again in run41698286454 and
+run41698547987. The latter 16 KB flow passed script creation/editing/prompter,
+then its next Maestro process reported `device offline` / `DeviceServerDiedException`.
+No app native/JavaScript crash was recorded. The harness now uses one Maestro
+session with nested flows and explicit stopApp/relaunch for persistence; no
+assertions were removed. These are runner-transport findings, not a 16 KB pass.
+
+The check bot subsequently aligned SDK patch dependencies at dac129c, including
+Expo58.0.23 and router58.0.30. The older APK cannot validate those changed native
+dependencies. Fresh native build and simulations at source070ad0c:
+https://github.com/MerlinWerlin/App-Projects/actions/runs/41699589503
+Generic checks were also dispatched for that source (run41699624923).
+Both are pending at this checkpoint. Do not reuse f572a10 as current-source proof.
+
 The emulator flows create and edit a script, open the prompter, toggle mirror,
 then force-stop/restart and verify the saved title/body. They also start the
 Android trial and verify its persisted date, deny/recover camera permission,
@@ -87,7 +101,7 @@ needed before the Android listing; this is not a submitted Data safety form.
 
 ## Live Console blocker
 
-The signed-in Astro Labs AU organisation Console was read on 3 November.
+The signed-in Astro Labs AU organisation Console was rechecked on 4 November.
 It displays “To publish apps, finish setting up your developer account” and
 “Complete account verifications to create apps”. Create app is disabled.
 
