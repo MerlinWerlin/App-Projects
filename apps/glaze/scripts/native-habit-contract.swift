@@ -83,6 +83,9 @@ enum GlazeShared { static let appGroup = "com.glaze.habit-contract.unused.\(UUID
     check(HabitStore.readLog(in: store)?.events.count == 400, "native log bounded at400")
     check(HabitStore.readLog(in: store)?.seq == 450, "pruning does not reuse sequence ids")
 
+    check(HabitColours.rgb(" #abc ") == HabitColours.rgb("#AABBCC"), "short and whitespace hex matches SwiftUI colour parser")
+    check(HabitColours.resolve("#fff", stops: ["#000"], secondary: true) == "#FFFFFF", "short white resolves without losing theme colour")
+    check(HabitColours.rgb("invalid") == HabitColours.rgb("#17201D"), "invalid colour safely falls back")
     var colours: [[String: Any]] = []
     for p in root["palettes"] as? [[String: Any]] ?? [] {
       let id=p["id"] as! String,stops=p["stops"] as! [String]

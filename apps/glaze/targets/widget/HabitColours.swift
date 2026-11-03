@@ -14,9 +14,15 @@ enum HabitColours {
   }
   private static let cache = ColourCache()
 
+  private static func canonical(_ hex: String) -> String {
+    var s = hex.trimmingCharacters(in: .whitespaces)
+    if s.hasPrefix("#") { s.removeFirst() }
+    if s.count == 3 { s = s.map { "\($0)\($0)" }.joined() }
+    guard s.count == 6, UInt32(s, radix: 16) != nil else { return "#17201D" }
+    return "#" + s.uppercased()
+  }
   static func rgb(_ hex: String) -> [Double] {
-    let s = hex.hasPrefix("#") ? String(hex.dropFirst()) : hex
-    guard s.count == 6, let n = UInt32(s, radix: 16) else { return [23, 32, 29] }
+    let n = UInt32(canonical(hex).dropFirst(), radix: 16)!
     return [Double((n >> 16) & 255), Double((n >> 8) & 255), Double(n & 255)]
   }
   static func mix(_ a: String, _ b: String, _ amount: Double) -> String {
@@ -44,8 +50,7 @@ enum HabitColours {
     backgrounds.map { bg in min(contrast(accent,bg),contrast(accent,mix(bg,accent,0.15))*1.5) }.min() ?? 21
   }
   static func resolve(_ preferred: String, stops: [String], secondary: Bool) -> String {
-    let raw = preferred.hasPrefix("#") ? String(preferred.dropFirst()) : preferred
-    let preferred = raw.count == 6 && UInt32(raw, radix: 16) != nil ? "#" + raw.uppercased() : "#17201D"
+    let preferred = canonical(preferred)
     let key = preferred + "|" + stops.joined(separator: "|") + (secondary ? "|ink" : "|accent")
     if let hit = cache.get(key) { return hit }
     let backgrounds=samples(stops)
