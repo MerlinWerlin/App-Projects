@@ -5,6 +5,8 @@ import subprocess
 import sys
 import time
 import traceback
+import math
+import struct
 import uiautomator2 as u2
 from backspin_test_scope import assert_backspin_test_package
 
@@ -78,6 +80,26 @@ def record():
             assert time.monotonic() < until, 'Recorder never entered its recording state'
             time.sleep(.2)
         steps.append('Recorder prepared after %.2fs' % (time.monotonic() - began))
+        # Observe the host stream while Android is actually recording. A probe
+        # taken only before boot cannot establish that input remains available.
+        tag='recording-live-%d' % len(steps)
+        for label,command in [('pulse-source-outputs',['pactl','list','source-outputs']),
+                              ('pulse-sink-inputs',['pactl','list','sink-inputs']),
+                              ('audio-flinger',['adb','shell','dumpsys','media.audio_flinger'])]:
+            result=subprocess.run(command,capture_output=True,timeout=20)
+            (out/(tag+'-'+label+'.txt')).write_bytes(result.stdout+result.stderr)
+        probe=subprocess.Popen(['parec','--device=backspin_input.monitor','--raw','--latency-msec=20',
+                                '--format=s16le','--rate=44100','--channels=1'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        try:
+            raw,error=probe.communicate(timeout=1.5)
+        except subprocess.TimeoutExpired:
+            probe.kill();raw,error=probe.communicate()
+        samples=struct.unpack('<'+'h'*(len(raw)//2),raw[:len(raw)//2*2])
+        rms=math.sqrt(sum(v*v for v in samples)/len(samples)) if samples else 0
+        (out/(tag+'-host-probe.json')).write_text(json.dumps(dict(samples=len(samples),rms_pcm16=rms,
+                                                               source='backspin_input.monitor',during_recording=True),indent=2))
+        (out/(tag+'-host-probe-stderr.txt')).write_bytes(error)
+        assert rms>100, 'Synthetic host source is silent during the actual Android recording'
         time.sleep(3)
         capture('recording-%d' % len(steps))
     finally:
