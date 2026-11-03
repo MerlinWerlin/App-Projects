@@ -1,5 +1,5 @@
 name: Glaze full native simulator app
-# Current qualification includes native saved habit names and readability corrections.
+# Current qualification includes version3 Lock Screen habits and their Widgets deep link.
 on:
   workflow_dispatch:
   push:
@@ -74,6 +74,9 @@ jobs:
           xcrun simctl launch "$DEVICE" "$BUNDLE" | tee "$RUNNER_TEMP/glaze-full-simulator/launch.txt"
           sleep 12
           xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/glaze-full-simulator/app-launch.png"
+          xcrun simctl openurl "$DEVICE" glaze://widgets
+          sleep 4
+          xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/glaze-full-simulator/widgets-deeplink.png"
           xcrun simctl spawn "$DEVICE" launchctl list > "$RUNNER_TEMP/glaze-full-simulator/processes.txt"
           grep -F "$BUNDLE" "$RUNNER_TEMP/glaze-full-simulator/processes.txt"
       - uses: actions/upload-artifact@v4
