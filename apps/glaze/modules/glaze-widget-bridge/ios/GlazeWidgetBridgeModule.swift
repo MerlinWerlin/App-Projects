@@ -36,7 +36,7 @@ public class GlazeWidgetBridgeModule: Module {
     Name("GlazeWidgetBridge")
 
     // Version handshake: old installed binaries must not claim that v2 designs were applied.
-    AsyncFunction("widgetDesignVersion") { () -> Int in 2 }
+    AsyncFunction("widgetDesignVersion") { () -> Int in 3 }
 
     AsyncFunction("setTheme") { (json: String) -> Bool in
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),

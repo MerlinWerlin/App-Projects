@@ -1,4 +1,4 @@
-import { nativeWidgetSupported } from '../src/core/widgetDelivery';
+import { nativeWidgetSupported, requiredNativeWidgetVersion } from '../src/core/widgetDelivery';
 // Widget Studio (T59, M4b-ui; docs/WIDGETS.md "Widget Studio"). Edit one widget of a theme's
 // matching set: type and size, background (photo, colour, gradient or the theme's art), accent and
 // text colours, text, font and text size. The live preview stays pinned on top.
@@ -338,7 +338,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
         next = 'preview';
       } else if (!nativeWidgetSupported(catSpec?.kind ?? spec.kind, catSpec?.size ?? spec.size)) {
         next = 'unsupported';
-      } else if (await widgets.designVersion() < 2) {
+      } else if (await widgets.designVersion() < requiredNativeWidgetVersion(catSpec?.kind ?? spec.kind, catSpec?.size ?? spec.size)) {
         next = 'updateRequired';
       } else {
         const photo = state.catalogue ? null : needsPhotoCopy(set, state);

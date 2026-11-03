@@ -2,7 +2,7 @@ name: Glaze native habit layouts
 on:
   push:
     branches: ['codex/glaze-theme-release-20261101']
-    paths: ['apps/glaze/scripts/native-habit-review.swift', 'apps/glaze/docs/native-habit*-review*.json', 'apps/glaze/targets/widget/HabitWidget.swift', 'apps/glaze/targets/widget/HabitColours.swift', 'apps/glaze/targets/widget/HabitDesign.swift', 'apps/glaze/targets/widget/ThemeStore.swift', 'apps/glaze/targets/widget/SavedWidgetView.swift', '.github/workflows/glaze-native-habit-capture.yml']
+    paths: ['apps/glaze/scripts/native-habit-review.swift', 'apps/glaze/docs/native-habit*-review*.json', 'apps/glaze/targets/widget/Habit*.swift', 'apps/glaze/targets/widget/ThemeStore.swift', 'apps/glaze/targets/widget/SavedWidgetView.swift', '.github/workflows/glaze-native-habit-capture.yml']
   workflow_dispatch:
 permissions:
   contents: read

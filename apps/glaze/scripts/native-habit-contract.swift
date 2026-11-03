@@ -14,6 +14,10 @@ enum GlazeShared { static let appGroup = "com.glaze.habit-contract.unused.\(UUID
     func same(_ actual: Any, _ expected: Any, _ label: String) {
       check(NSDictionary(dictionary: ["v": actual]).isEqual(NSDictionary(dictionary: ["v": expected])), label)
     }
+    let familySupport = root["familySupport"] as! [String: [String]]
+    for kind in HabitKindID.allCases {
+      check(kind.nativeSizes == familySupport[kind.rawValue], "\(kind.rawValue): actual native family contract matches app delivery")
+    }
     func logObject(_ log: HabitStore.Log?) -> Any {
       guard let log else { return NSNull() }
       return ["logId": log.logId, "seq": log.seq, "events": log.events.map { e -> [String: Any] in

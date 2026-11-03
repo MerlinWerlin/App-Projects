@@ -2,6 +2,7 @@ import {readFileSync,writeFileSync} from 'node:fs';
 import {HABIT_KINDS,createHabit} from '../src/core/habits.ts';
 import {parseHabitsDoc,parseHabitLog,habitTodayValue} from '../src/core/habitLog.ts';
 import {widgetBackgroundStops} from '../src/core/widgetTheme.ts';
+import {NATIVE_WIDGET_SIZES} from '../src/core/widgetDelivery.ts';
 const now=new Date('2026-11-02T12:00:00Z'),at=now.getTime();
 const base=HABIT_KINDS.map(kind=>createHabit(kind,now,{utcOffsetMinutes:0}));
 const trackers=(patches={})=>({v:1,habits:base.map(s=>({...s,...patches[s.kind]}))});
@@ -34,4 +35,5 @@ add('utc-plus14-midnight',null,log([event(1,'water',150,{at:boundary.getTime()-1
 add('utc-minus12',null,log([event(1,'water',150,{at,off:-720})]),-720,now);
 const palettes=JSON.parse(readFileSync(new URL('../docs/native-habit-review-profiles.json',import.meta.url),'utf8')).themes.map(t=>({id:t.id,ink:t.nativeTheme.ink,accent:t.nativeTheme.accent,stops:widgetBackgroundStops(t.nativeTheme)}));
 const savedCases=JSON.parse(readFileSync(new URL('../docs/native-habit-saved-review.json',import.meta.url),'utf8')).cases;
-writeFileSync(process.argv[2],JSON.stringify({schema:'GLAZE_NATIVE_HABIT_PARITY_V1',cases,palettes,savedCases},null,2)+'\n');console.log('Prepared',cases.length,'app/native habit parity cases and',savedCases.length,'saved editor designs.');
+const familySupport=Object.fromEntries(HABIT_KINDS.map(k=>[k,NATIVE_WIDGET_SIZES['habit'+k[0].toUpperCase()+k.slice(1)]]));
+writeFileSync(process.argv[2],JSON.stringify({schema:'GLAZE_NATIVE_HABIT_PARITY_V1',cases,palettes,savedCases,familySupport},null,2)+'\n');console.log('Prepared',cases.length,'app/native habit parity cases and',savedCases.length,'saved editor designs.');

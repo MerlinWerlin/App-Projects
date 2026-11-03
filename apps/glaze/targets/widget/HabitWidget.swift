@@ -4,9 +4,9 @@
 // Values come from HabitStore (the app's trackers + taps the app hasn't read yet).
 // T86: every name, unit and accessibility label comes from HabitText (Localizable.strings), and the
 // goal shown is the person's own daily goal when they set one in the app (Habit goals screen).
-// Lock Screen accessory habit widgets carry no buttons in the catalogue and are a follow-up here.
+// Lock Screen accessories show the same live values and open the app for logging.
 //
-// Not compiled or run on a device yet. VERIFY: button hit areas at small size, `.invalidatableContent()`
+// Native simulator rendering/storage checks pass. VERIFY on a phone: hit areas, `.invalidatableContent()`
 // look while a tap is pending, and mood faces in the tinted / StandBy rendering modes.
 import AppIntents
 import SwiftUI
@@ -62,7 +62,12 @@ struct HabitWidgetView: View {
   let entry: HabitEntry
 
   var body: some View {
-    HabitWidgetContent(entry: entry, family: family, design: ThemeStore.savedDesign(kind: entry.habit.designKind, family: family, theme: entry.theme))
+    let design = ThemeStore.savedDesign(kind: entry.habit.designKind, family: family, theme: entry.theme)
+    if family == .accessoryCircular || family == .accessoryRectangular || family == .accessoryInline {
+      HabitAccessoryView(entry: entry, family: family, design: design)
+    } else {
+      HabitWidgetContent(entry: entry, family: family, design: design)
+    }
   }
 }
 
@@ -258,18 +263,19 @@ private struct ProgressMeter: View {
 }
 
 /// Original line-drawn face: the mouth curves from a frown (1) to a wide smile (5).
-private struct MoodFace: View {
+struct MoodFace: View {
   let level: Int
   let selected: Bool
   let theme: WidgetTheme
+  var monochrome = false
 
   var body: some View {
     GeometryReader { geo in
       let s = min(geo.size.width, geo.size.height)
-      let colour = selected ? theme.accentColor : theme.inkColor.opacity(0.6)
+      let colour = monochrome ? Color.primary : (selected ? theme.accentColor : theme.inkColor.opacity(0.6))
       ZStack {
         Circle()
-          .fill(selected ? theme.accentColor.opacity(0.15) : Color.clear)
+          .fill(selected && !monochrome ? theme.accentColor.opacity(0.15) : Color.clear)
         Circle()
           .strokeBorder(colour, lineWidth: max(1.5, s * 0.06))
         Path { p in
@@ -302,7 +308,7 @@ private func habitConfiguration(_ habit: HabitKindID, name: String, description:
   }
   .configurationDisplayName(name)
   .description(description)
-  .supportedFamilies([.systemSmall, .systemMedium])
+  .supportedFamilies(habit.widgetFamilies)
 }
 
 @available(iOS 17.0, *)
