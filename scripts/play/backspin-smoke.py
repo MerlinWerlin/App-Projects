@@ -131,6 +131,9 @@ try:
                                'Play Billing transaction and restore'])
     (out / 'backspin-gameplay.json').write_text(json.dumps(result, indent=2))
 except Exception:
-    capture('failure')
     (out / 'backspin-gameplay-failure.txt').write_text(traceback.format_exc())
+    try:
+        capture('failure')
+    except Exception:
+        (out / 'failure-capture-error.txt').write_text(traceback.format_exc())
     raise

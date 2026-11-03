@@ -83,6 +83,11 @@ if [[ "${APP:-}" == backspin ]]; then
   fi
 fi
 adb shell input keyevent 82
+# Let first-boot Google services settle before adding the app and UI test server.
+sleep 20
+adb shell settings put global window_animation_scale 0
+adb shell settings put global transition_animation_scale 0
+adb shell settings put global animator_duration_scale 0
 adb install "$apk" | tee "$output/install.txt"
 adb logcat -c
 adb shell am start -W -n "$package/.MainActivity" | tee "$output/launch.txt"
