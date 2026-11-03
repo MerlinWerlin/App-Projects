@@ -52,7 +52,9 @@ Path(sys.argv[1],'host-microphone-probe.json').write_text(json.dumps({'samples':
 assert rms>100, 'Synthetic host microphone is silent before emulator startup'
 PY
 fi
-"$ANDROID_HOME/emulator/emulator" -avd play-smoke -no-window -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory 3072 > "$output/emulator.txt" 2>&1 &
+# Use the GUI-enabled binary under a private virtual display. The SDK's
+# headless binary can provide stub PulseAudio calls despite a working host source.
+xvfb-run -a -s '-screen 0 1080x1920x24' "$ANDROID_HOME/emulator/emulator" -avd play-smoke -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory 3072 > "$output/emulator.txt" 2>&1 &
 trap 'adb emu kill || true' EXIT
 timeout 180 adb wait-for-device
 for i in $(seq 1 90); do
