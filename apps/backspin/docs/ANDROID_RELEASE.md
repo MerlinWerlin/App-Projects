@@ -17,6 +17,8 @@ The final restricted-permission APK from run41617261644 is downloaded and indepe
 
 Run41698872892 with synthetic speech reached scoring and saved the take. Its final assertion failed because the visible save confirmation was below the scroll viewport; the complete gameplay log records the actual `✓ Saved to Takes` node. Screenshots also exposed row sizing on the animated pressable child, which squeezed the four audio controls. Commit `af5a3b9` moves parent-row sizing to the actual pressable and scrolls to the save confirmation. All33 tests, TypeScript and a fresh iOS export pass after that repair. Fresh native build/gameplay/AAB run41700129048 tests the changed runtime; prior APK evidence cannot qualify this new source.
 
+Commit `155a670` adds an accessible Settings link to the full platform-specific privacy policy and a separate Android policy at `docs/backspin/privacy-android.html`. The existing published iOS policy is unchanged. The Android page must be published and its URL checked before store submission. This changes runtime input, so final native run41701424210 supersedes the earlier layout-only build for release qualification. Final source checks:33app tests,5config checks,TypeScript and fresh iOS export pass. A same-APK16KB gameplay run is prepared but not yet passed.
+
 ## Confirmed submission blocker
 
 **Website verified:** the existing portfolio website was registered and verified in Google Search Console, and Play Console independently shows **Website verified**. [Homepage verification commit](https://github.com/MerlinWerlin/App-Projects/commit/21e9e0cd0b65e5d0acb5299437eed77e25e2d600). Do not remove the verification meta tag. Screenshots are retained privately under `.expo/` and are not committed.
