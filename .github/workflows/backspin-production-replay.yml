@@ -1,6 +1,26 @@
 name: Backspin production bundle gameplay
 
 on:
+  workflow_call:
+    inputs:
+      bundleRun:
+        required: true
+        type: string
+      pageSize:
+        type: string
+        default: '4096'
+      apiLevel:
+        type: string
+        default: '35'
+      emulatorVersion:
+        type: string
+        default: sdk-current
+      emulatorProfile:
+        type: string
+        default: standard
+      microphoneSource:
+        type: string
+        default: host-speech
   workflow_dispatch:
     inputs:
       bundleRun:

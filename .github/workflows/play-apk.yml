@@ -45,6 +45,10 @@ on:
         type: choice
         default: host-speech
         options: ['host-speech', 'hal-tone']
+      productionReplayRun:
+        description: Optional successful AAB run; replay its actual production package instead of compiling a preview
+        type: string
+        default: ''
 
 permissions:
   contents: read
@@ -52,6 +56,7 @@ permissions:
 
 jobs:
   apk:
+    if: inputs.productionReplayRun == ''
     runs-on: ubuntu-latest
     timeout-minutes: 75
     env:
@@ -124,6 +129,7 @@ jobs:
           path: apk-output/
           if-no-files-found: error
           retention-days: 30
+
       - name: Reuse an already verified test APK
         if: inputs.artifactRun != ''
         env:
@@ -209,3 +215,14 @@ jobs:
           path: aab-output/
           if-no-files-found: error
           retention-days: 30
+
+  production-replay:
+    if: inputs.productionReplayRun != ''
+    uses: ./.github/workflows/backspin-production-replay.yml
+    with:
+      bundleRun: ${{ inputs.productionReplayRun }}
+      pageSize: ${{ inputs.pageSize || '4096' }}
+      apiLevel: ${{ inputs.apiLevel || '35' }}
+      emulatorVersion: ${{ inputs.emulatorVersion || 'sdk-current' }}
+      emulatorProfile: ${{ inputs.emulatorProfile || 'standard' }}
+      microphoneSource: ${{ inputs.microphoneSource || 'host-speech' }}

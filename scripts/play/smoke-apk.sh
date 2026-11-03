@@ -86,7 +86,9 @@ extra_emulator_args=()
 if [[ "$microphone_source" == hal-tone ]]; then
   # Official Ranchu HAL test input; app code/guards and permissions are unchanged.
   # https://android.googlesource.com/device/generic/goldfish/+/refs/heads/android14-dev/audio/device_port_source.cpp
-  extra_emulator_args=(-prop ro.boot.audio.tinyalsa.simulate_input=1)
+  # -prop accepts only qemu.*. The launcher appends -qemu/-append to its
+  # existing kernel arguments; verify the resulting Android boot property below.
+  extra_emulator_args=(-qemu -append androidboot.audio.tinyalsa.simulate_input=1)
 fi
 xvfb-run -a -s '-screen 0 1080x1920x24' "$ANDROID_HOME/emulator/emulator" -avd play-smoke -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory "$memory" "${extra_emulator_args[@]}" > "$output/emulator.txt" 2>&1 &
 trap 'adb emu kill || true' EXIT
@@ -110,6 +112,7 @@ if [[ "${ANDROID_PAGE_SIZE:-4096}" == 16384 ]]; then
   [[ "$(awk '{print $2}' "$output/device-memory.txt")" -ge 4194304 ]]
 fi
 if [[ "$microphone_source" == hal-tone ]]; then
+  adb shell cat /proc/cmdline > "$output/hal-tone-kernel-cmdline.txt"
   adb shell getprop ro.boot.audio.tinyalsa.simulate_input | tr -d '\r' > "$output/hal-tone-property.txt"
   [[ "$(cat "$output/hal-tone-property.txt")" == 1 ]]
 fi
