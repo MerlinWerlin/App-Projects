@@ -59,7 +59,8 @@ jobs:
           LINK_PID=$!
           READY=0
           for TRY in $(seq 1 180); do
-            if grep -q GLAZE_DEEPLINK_READY "$RUNNER_TEMP/glaze-link-test.log"; then READY=1; break; fi
+            RUNNER_DATA=$(xcrun simctl get_app_container "$DEVICE" com.glaze.link-ui-tests.xctrunner data 2>/dev/null || true)
+            if [[ -n "$RUNNER_DATA" && -f "$RUNNER_DATA/Library/Caches/glaze-deeplink-ready" ]] || grep -q GLAZE_DEEPLINK_READY "$RUNNER_TEMP/glaze-link-test.log"; then READY=1; break; fi
             if ! kill -0 "$LINK_PID" 2>/dev/null; then break; fi
             sleep 1
           done

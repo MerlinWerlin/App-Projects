@@ -2,11 +2,14 @@ import XCTest
 import Darwin
 
 @MainActor final class GlazeDeepLinkTests: XCTestCase {
-  func testWidgetLinkReachesWidgets() {
+  func testWidgetLinkReachesWidgets() throws {
     continueAfterFailure = false
     let glaze = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     glaze.launch()
     XCTAssertTrue(glaze.wait(for: .runningForeground, timeout: 20))
+    let ready = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+      .appendingPathComponent("glaze-deeplink-ready")
+    try Data("ready".utf8).write(to: ready, options: .atomic)
     print("GLAZE_DEEPLINK_READY")
     fflush(stdout)
     let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
