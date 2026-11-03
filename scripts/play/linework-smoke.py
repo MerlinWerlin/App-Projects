@@ -179,6 +179,9 @@ try:
         find(r'^Record timelapse$', tap=True, camera=True)
         capture('linework-native-record-requested-retry')
     find(r'^Stop recording$', camera=True)
+    # The Stop button exists while the video session is being armed. Count
+    # clip time only after the app reports it has reached native recording.
+    find(r'^Recording\. Only the camera view is saved, not the overlay\.$', attempts=12, camera=True)
     time.sleep(4)
     adb('shell', 'input', 'tap', '160', '250')
     find(r'^Stop recording$', tap=True, camera=True)
