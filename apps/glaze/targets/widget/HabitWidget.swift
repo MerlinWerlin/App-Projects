@@ -192,7 +192,6 @@ private struct MoodBody: View {
         HStack {
           MoodFace(level: max(1, level), selected: level > 0, theme: t)
             .frame(width: 48, height: 48)
-            .opacity(level > 0 ? 1 : 0.5)
             .invalidatableContent()
           Text(HabitText.mood(min(5, max(0, level))))
             .font(t.typeface(size: 15, weight: .semibold))
