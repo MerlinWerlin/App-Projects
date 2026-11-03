@@ -38,6 +38,8 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v4
+      - name: Test binary permission inspection
+        run: python -B -m unittest discover -s scripts/play -p 'test_*.py'
       - name: Install current source
         working-directory: apps/cue
         run: npm ci --no-audit --no-fund
@@ -105,6 +107,7 @@ jobs:
           github-token: ${{ github.token }}
       - name: Bind APK app source and simulation source
         run: |
+          python -B -m unittest discover -s scripts/play -p 'test_*.py'
           source=$(cat cue-android-output/source-commit.txt)
           [[ "$source" =~ ^[0-9a-f]{40}$ ]]
           git fetch origin "$source"
