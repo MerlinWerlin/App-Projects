@@ -112,7 +112,9 @@ if [[ "${ANDROID_PAGE_SIZE:-4096}" == 16384 ]]; then
   [[ "$(awk '{print $2}' "$output/device-memory.txt")" -ge 4194304 ]]
 fi
 if [[ "$microphone_source" == hal-tone ]]; then
-  adb shell cat /proc/cmdline > "$output/hal-tone-kernel-cmdline.txt"
+  # Some images protect /proc/cmdline from shell. Its diagnostic is optional;
+  # the actual boot property and measured 300Hz recording remain mandatory.
+  adb shell cat /proc/cmdline > "$output/hal-tone-kernel-cmdline.txt" 2>&1 || true
   adb shell getprop ro.boot.audio.tinyalsa.simulate_input | tr -d '\r' > "$output/hal-tone-property.txt"
   [[ "$(cat "$output/hal-tone-property.txt")" == 1 ]]
 fi
