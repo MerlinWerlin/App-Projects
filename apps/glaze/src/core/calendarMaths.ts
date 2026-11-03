@@ -82,7 +82,7 @@ export function localDayKey(now: Date, utcOffsetMinutes?: number): DayKey {
 
 /** Parse a real calendar day (`2026-02-30` is rejected). */
 export function parseDayKey(key: unknown): { year: number; month: number; day: number } | null {
-  if (typeof key !== 'string') return null;
+  if (typeof key !== 'string' || key.length !== 10) return null;
   const m = DAY_KEY.exec(key);
   if (!m) return null;
   const [year, month, day] = [Number(m[1]), Number(m[2]), Number(m[3])];

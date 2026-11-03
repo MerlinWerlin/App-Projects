@@ -14,6 +14,7 @@
 // User-facing copy stays in the catalogue: this file returns i18n keys, never English.
 
 import { isHex, mix, normalizeHex } from './colour.ts';
+import { parseDayKey } from './calendarMaths.ts';
 import { DISPLAY_FONTS, type DisplayFont } from './artwork.ts';
 import {
   applyWidgetEdits,
@@ -423,12 +424,18 @@ export function parseGradientValue(v: string): { from: string; to: string } | nu
 
 /** Whole days from `today` (local calendar day) to `YYYY-MM-DD`; null when not a date. */
 export function daysUntil(day: string | null, today: Date): number | null {
-  if (!day) return null;
-  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(day);
-  if (!m) return null;
-  const target = Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
-  const now = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
-  return Math.round((target - now) / 86400000);
+  const parts = parseDayKey(day);
+  if (!parts || !Number.isFinite(today.getTime())) return null;
+  // setUTCFullYear avoids Date.UTC's special interpretation of years1...99 as1901...1999.
+  const target = new Date(0); target.setUTCFullYear(parts.year, parts.month - 1, parts.day); target.setUTCHours(0, 0, 0, 0);
+  const now = new Date(0); now.setUTCFullYear(today.getFullYear(), today.getMonth(), today.getDate()); now.setUTCHours(0, 0, 0, 0);
+  return Math.round((target.getTime() - now.getTime()) / 86400000);
+}
+
+/** Display policy shared with native widgets: unknown remains unknown, elapsed targets show zero. */
+export function remainingCountdownDays(day: string | null, today: Date): number | null {
+  const days = daysUntil(day, today);
+  return days === null ? null : Math.max(0, days);
 }
 
 // ---------------------------------------------------------------------------------- payload

@@ -43,6 +43,12 @@ import Foundation
       verify(WidgetDay.distance(to: target,from: begin,calendar: buddhist) == expected)
       verify(WidgetDay.distance(to: target,from: end.addingTimeInterval(12*3600),calendar: c) == 0)
     }
+    let reference = WidgetDay.parse("2026-11-02",timeZone: cal.timeZone)!
+    verify(WidgetDay.remaining(to: "2026-11-01",from: reference,calendar: cal) == 0)
+    verify(WidgetDay.remaining(to: "2026-11-02",from: reference,calendar: cal) == 0)
+    verify(WidgetDay.remaining(to: "2026-11-03",from: reference,calendar: cal) == 1)
+    verify(WidgetDay.remaining(to: "",from: reference,calendar: cal) == nil)
+    verify(WidgetDay.remaining(to: "2026-02-30",from: reference,calendar: cal) == nil)
     print("Swift editor-payload/calendar contract plus \(countdownChecks) strict civil-day, alternate-calendar and DST assertions passed")
   }
 }

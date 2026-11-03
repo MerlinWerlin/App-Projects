@@ -26,6 +26,7 @@ import {
   currentDraft,
   currentStudioSpec,
   daysUntil,
+  remainingCountdownDays,
   draftEdits,
   editableRegions,
   fractionOfScale,
@@ -383,4 +384,19 @@ test('Widgets tab / studio copy for catalogue kinds is in every locale', () => {
     assert.equal(typeof lookup(en as unknown as CatalogueTree, key), 'string', `en missing ${key}`);
     for (const [locale, cat] of Object.entries(TRANSLATIONS)) assert.equal(typeof lookup(cat as CatalogueTree, key), 'string', `${locale} missing ${key}`);
   }
+});
+
+
+test('countdown preview keeps missing and invalid dates unknown and elapsed dates at zero', () => {
+  const now = new Date(2026, 10, 2, 23, 59);
+  assert.equal(remainingCountdownDays(null, now), null);
+  assert.equal(remainingCountdownDays('2026-02-30', now), null);
+  assert.equal(remainingCountdownDays('2026-11-02\n', now), null);
+  assert.equal(remainingCountdownDays('0000-11-02', now), null);
+  assert.equal(remainingCountdownDays('2026-11-01', now), 0);
+  assert.equal(remainingCountdownDays('2026-11-02', now), 0);
+  assert.equal(remainingCountdownDays('2026-11-03', now), 1);
+  assert.equal(remainingCountdownDays('2026-11-03', new Date(NaN)), null);
+  assert.equal(daysUntil('2026-02-30', now), null);
+  assert.equal(daysUntil('2026-11-01', now), -1);
 });

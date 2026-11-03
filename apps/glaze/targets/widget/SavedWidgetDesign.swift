@@ -68,6 +68,10 @@ enum WidgetDay {
     return calendar.startOfDay(for: date)
   }
 
+  static func remaining(to raw: String, from date: Date, calendar: Calendar = .current) -> Int? {
+    distance(to: raw, from: date, calendar: calendar).map { max(0, $0) }
+  }
+
   static func distance(to raw: String, from date: Date, calendar: Calendar = .current) -> Int? {
     guard let target = parse(raw, timeZone: calendar.timeZone) else { return nil }
     return calendar.dateComponents([.day], from: calendar.startOfDay(for: date), to: calendar.startOfDay(for: target)).day
