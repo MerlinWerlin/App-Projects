@@ -1,0 +1,23 @@
+appId: com.jared797.cue.playtest
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- takeScreenshot: 01-library
+- tapOn: New script
+- tapOn: Title
+- inputText: Android release rehearsal
+- tapOn: 'Type or paste your script.*'
+- inputText: This script checks Cue on Android. Read at your own pace. The script must remain saved after closing the app.
+- hideKeyboard
+- takeScreenshot: 02-editor
+- tapOn: Prompt
+- assertVisible: Steady
+- takeScreenshot: 03-prompter
+- tapOn: Mirror
+- tapOn: Mirror
+- tapOn: Close prompter
+- back
+- assertVisible: Android release rehearsal

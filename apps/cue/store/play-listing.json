@@ -1,0 +1,14 @@
+{
+  "status": "draft_not_uploaded",
+  "locale": "en-US",
+  "title": "Cue: Teleprompter",
+  "shortDescription": "Read scripts near the camera with scrolling, mirrors and recording tools.",
+  "fullDescription": "Prepare scripts and read at a comfortable pace. Adjust the text, reading line and scrolling speed, use mirrored text with a teleprompter rig, and record a take with the script near your camera.\n\nVoice features depend on device support and installed on-device recognition resources.",
+  "releaseBlockers": [
+    "On-device speech availability/fallback QA",
+    "Camera and microphone interruption/save QA",
+    "Play Billing purchase and restore verification"
+  ],
+  "assets": "Android device screenshots, 512px store icon and 1024x500 feature graphic still require verification",
+  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
+}
