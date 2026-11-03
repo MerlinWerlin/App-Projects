@@ -35,6 +35,11 @@ on:
         type: choice
         default: sdk-current
         options: ['sdk-current', '36.6.11']
+      emulatorProfile:
+        description: Display load for the emulator capture comparison
+        type: choice
+        default: standard
+        options: ['standard', 'low-load']
 
 permissions:
   contents: read
@@ -52,6 +57,7 @@ jobs:
       CI: '1'
       ANDROID_PAGE_SIZE: ${{ inputs.pageSize || '4096' }}
       ANDROID_API_LEVEL: ${{ inputs.apiLevel || '35' }}
+      ANDROID_EMULATOR_PROFILE: ${{ inputs.emulatorProfile || 'standard' }}
     steps:
       - uses: actions/checkout@v4
         with:

@@ -10,7 +10,7 @@ mkdir -p "$ANDROID_USER_HOME" "$ANDROID_AVD_HOME"
 apk=$(realpath "$1")
 output=$(realpath "$2")
 package=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["android"]["package"])' "$output/config.json")
-[[ "$package" == *.playtest ]]
+[[ "$package" == *.playtest || ( "$package" == com.jared797.backspin && "${CI:-}" == 1 && "${BACKSPIN_PRODUCTION_REPLAY:-}" == 1 ) ]]
 case "${ANDROID_API_LEVEL:-35}" in 35|36) ;; *) exit 2;; esac
 case "${ANDROID_PAGE_SIZE:-4096}" in
   4096) image="system-images;android-${ANDROID_API_LEVEL:-35};google_apis;x86_64";;
@@ -27,7 +27,10 @@ values={}
 for line in p.read_text().splitlines():
     if '=' in line:
         k,v=line.split('=',1);values[k]=v
-values.update({'hw.audioInput':'yes','hw.audioOutput':'yes','hw.lcd.width':'1080','hw.lcd.height':'1920','hw.lcd.density':'420'})
+profile=os.environ.get('ANDROID_EMULATOR_PROFILE','standard')
+assert profile in ('standard','low-load')
+width,height,density=('540','960','210') if profile=='low-load' else ('1080','1920','420')
+values.update({'hw.audioInput':'yes','hw.audioOutput':'yes','hw.lcd.width':width,'hw.lcd.height':height,'hw.lcd.density':density})
 p.write_text(''.join(k+'='+v+'\n' for k,v in values.items()))
 PY
 "$ANDROID_HOME/emulator/emulator" -list-avds | tee "$output/avds.txt" | grep -qx play-smoke
@@ -74,11 +77,16 @@ for i in $(seq 1 90); do
   sleep 2
 done
 [[ "$(adb shell getprop sys.boot_completed | tr -d '\r')" == 1 ]]
+if [[ "${BACKSPIN_PRODUCTION_REPLAY:-}" == 1 ]]; then
+  python scripts/play/backspin_test_scope.py "$package"
+fi
 adb shell getconf PAGE_SIZE | tr -d '\r' > "$output/device-page-size.txt"
 [[ "$(cat "$output/device-page-size.txt")" == "${ANDROID_PAGE_SIZE:-4096}" ]]
 adb shell getprop ro.build.version.sdk | tr -d '\r' > "$output/device-api-level.txt"
 [[ "$(cat "$output/device-api-level.txt")" == "${ANDROID_API_LEVEL:-35}" ]]
 adb shell grep MemTotal /proc/meminfo | tr -d '\r' > "$output/device-memory.txt"
+adb shell wm size > "$output/device-display.txt"
+adb shell wm density >> "$output/device-display.txt"
 if [[ "${ANDROID_PAGE_SIZE:-4096}" == 16384 ]]; then
   [[ "$(awk '{print $2}' "$output/device-memory.txt")" -ge 4194304 ]]
 fi
@@ -130,7 +138,15 @@ if [[ "${APP:-}" == backspin ]]; then
   adb shell dumpsys media.audio_policy > "$output/gameplay-audio-policy.txt"
   python scripts/play/inspect-backspin-recordings.py --self-test
   python scripts/play/inspect-backspin-recordings.py "$output"
+  microphone_status=0
+  python scripts/play/qualify-backspin-microphone.py --self-test
+  python scripts/play/qualify-backspin-microphone.py "$output" || microphone_status=$?
   # Decoder instrumentation is independent evidence, not a substitute gameplay pass.
-  (cd apps/backspin/android && ./gradlew :backspin-pcm:connectedDebugAndroidTest --no-daemon --max-workers=2 -PreactNativeArchitectures=x86_64 -Dorg.gradle.jvmargs=-Xmx3g) 2>&1 | tee "$output/pcm-instrumentation.txt"
+  if [[ "${BACKSPIN_PRODUCTION_REPLAY:-}" == 1 ]]; then
+    echo 'Not rerun in production bundle replay; full native recording/conversion is exercised above. Separate decoder instrumentation evidence is retained in the source build.' > "$output/pcm-instrumentation.txt"
+  else
+    (cd apps/backspin/android && ./gradlew :backspin-pcm:connectedDebugAndroidTest --no-daemon --max-workers=2 -PreactNativeArchitectures=x86_64 -Dorg.gradle.jvmargs=-Xmx3g) 2>&1 | tee "$output/pcm-instrumentation.txt"
+  fi
   [[ "$gameplay_status" == 0 ]]
+  [[ "$microphone_status" == 0 ]]
 fi

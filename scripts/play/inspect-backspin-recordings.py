@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+from backspin_test_scope import assert_backspin_test_package
 
 
 def statistics(values, rate=44100):
@@ -32,7 +33,7 @@ if sys.argv[1:] == ['--self-test']:
 
 out = Path(sys.argv[1])
 package = json.loads((out/'config.json').read_text())['android']['package']
-assert package == 'com.jared797.backspin.playtest'
+assert_backspin_test_package(package, device=True)
 target = out/'microphone-diagnostics'
 target.mkdir()
 result = dict(scope='Fresh emulator; synthetic test recordings only', files=[])

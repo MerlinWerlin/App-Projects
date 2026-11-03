@@ -6,12 +6,14 @@ import re
 import struct
 import sys
 import zipfile
+from backspin_test_scope import production_replay_enabled
 
 apk, output = Path(sys.argv[1]), Path(sys.argv[2])
 config = json.loads((output / "config.json").read_text())
 badging = (output / "badging.txt").read_text()
 package = re.search(r"package: name='([^']+)'", badging).group(1)
-assert package == config["android"]["package"] and package.endswith(".playtest"), package
+assert package == config["android"]["package"] and (package.endswith(".playtest") or
+       (package == 'com.jared797.backspin' and production_replay_enabled())), package
 assert "application-debuggable" not in badging, "Release build must not require Metro"
 target = int(re.search(r"targetSdkVersion:'(\d+)'", badging).group(1))
 assert target >= 36, target
@@ -51,7 +53,8 @@ receipt = {
     "sha256": hashlib.sha256(apk.read_bytes()).hexdigest(),
     "bytes": apk.stat().st_size,
     "sourceCommit": (output / "source-commit.txt").read_text().strip(),
-    "signing": "Expo generated Android test key; not a Google Play upload key",
+    "signing": ("Production bundle-derived APK with ephemeral CI test signature; never upload this APK" if production_replay_enabled()
+                else "Expo generated Android test key; not a Google Play upload key"),
     "embeddedBundle": True,
     "permissions": permissions,
     "nativeLibraries": libraries,

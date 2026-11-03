@@ -6,10 +6,11 @@ import sys
 import time
 import traceback
 import uiautomator2 as u2
+from backspin_test_scope import assert_backspin_test_package
 
 out = Path(sys.argv[1]); out.mkdir(exist_ok=True)
 package = json.loads((out / 'config.json').read_text())['android']['package']
-assert package == 'com.jared797.backspin.playtest'
+assert_backspin_test_package(package, device=True)
 d = u2.connect()
 d.jsonrpc.setConfigurator({'waitForIdleTimeout': 0, 'waitForSelectorTimeout': 0})
 d.implicitly_wait(15)
