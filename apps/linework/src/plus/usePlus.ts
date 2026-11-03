@@ -5,6 +5,7 @@
 // mounted usePlus re-reads storage when any of them changes something, so Home, Templates and Prepare unlock as soon
 // as the trial starts on the Plus screen.
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   NOT_OWNED,
@@ -55,7 +56,10 @@ export type UsePlus = {
 const DAY = 24 * 60 * 60 * 1000;
 
 export function usePlus(): UsePlus {
-  const iap = useMemo(() => createIapStore(asyncStorage), []);
+  const iap = useMemo(
+    () => createIapStore(asyncStorage, Date.now, undefined, Platform.OS === 'android' ? 'android' : 'ios'),
+    [],
+  );
   const store = useMemo(() => iap ?? createMockStore(asyncStorage), [iap]);
   const [state, setState] = useState<PlusState>(NOT_OWNED);
   // undefined: not read yet; null: the trial has not started.

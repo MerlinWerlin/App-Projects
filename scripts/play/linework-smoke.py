@@ -27,9 +27,10 @@ def snapshot(name='linework-current'):
     return ET.fromstring(xml)
 
 
-def find(pattern, tap=False, attempts=8):
+def find(pattern, tap=False, attempts=8, scroll=False):
     for _ in range(attempts):
-        for node in snapshot().iter('node'):
+        tree = snapshot()
+        for node in tree.iter('node'):
             label = node.get('content-desc') or node.get('text') or ''
             bounds = [int(n) for n in re.findall(r'\d+', node.get('bounds', ''))]
             if re.search(pattern, label) and len(bounds) == 4:
@@ -40,6 +41,10 @@ def find(pattern, tap=False, attempts=8):
                     adb('shell', 'input', 'tap', str((x1+x2)//2), str((y1+y2)//2))
                     time.sleep(0.8)
                 return label
+        if scroll:
+            size = re.search(r'(\d+)x(\d+)', adb('shell', 'wm', 'size').decode())
+            w, h = map(int, size.groups())
+            adb('shell', 'input', 'swipe', str(w//2), str(h*4//5), str(w//2), str(h//3), '350')
         time.sleep(0.7)
     raise AssertionError('Missing UI: ' + pattern)
 
@@ -92,6 +97,18 @@ try:
     find(r'^No image to show$')
     find(r'^Go back$', tap=True)
     checks.append('empty Lightbox gives a recoverable no-image state')
+    route('plus')
+    find(r'^Start free trial$', tap=True, scroll=True)
+    size = re.search(r'(\d+)x(\d+)', adb('shell', 'wm', 'size').decode())
+    w, h = map(int, size.groups())
+    adb('shell', 'input', 'swipe', str(w//2), str(h//3), str(w//2), str(h*4//5), '350')
+    find(r'^Free trial: 14 days left$')
+    capture('linework-android-trial')
+    adb('shell', 'am', 'force-stop', package)
+    adb('shell', 'am', 'start', '-W', '-n', package + '/.MainActivity')
+    route('plus')
+    find(r'^Free trial: 14 days left$')
+    checks.append('Android local trial starts without Apple product and survives process restart; no purchase performed')
     result = 'PASS'
 except Exception as error:
     result = 'FAIL'

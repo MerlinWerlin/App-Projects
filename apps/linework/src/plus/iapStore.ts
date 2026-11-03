@@ -1,12 +1,14 @@
 // Real App Store / Play purchases through expo-iap (owner decision 22 Oct 2026): Linework Plus (A$2.99) and the free
-// "14-day Trial" (App Store Review Guideline 3.1.1, docs/OWNER_1024.md). Works only in a store build (TestFlight /
+// "14-day Trial" on Apple; Android uses an explicitly started local 14-day evaluation period.
+// The Android evaluation persists on this device and is not backed by a store-account trial.
+// The paid unlock works only in a store build (TestFlight /
 // App Store); in Expo Go the native module is missing, this returns null and the app falls back to the local mock
 // store. Loaded with a guarded require so Expo Go never crashes.
 // Written defensively against the expo-iap API (function names and purchase fields changed between major versions);
 // only a TestFlight sandbox purchase proves it end to end (docs/RELEASE_CHECKLIST.md). Imports carry `.ts` so Node
 // tests can run it with a fake store module (src/plus/iapStore.test.ts).
 import { NOT_OWNED, PLUS_STORAGE_KEY, type PlusState, type PlusStorage, type PlusStore } from './entitlement.ts';
-import { TRIAL_KEY, trialStartFromPurchase } from './access.ts';
+import { TRIAL_KEY, parseTrialStart, trialStartFromPurchase } from './access.ts';
 
 /** Product id to create in App Store Connect (non-consumable, A$2.99). */
 export const PLUS_SKU = 'com.jared797.linework.plus';
@@ -66,9 +68,14 @@ const describe = (e: unknown): string => {
 };
 
 /** `module` is for tests (a fake expo-iap); the app passes nothing and gets the guarded require. */
-export function createIapStore(storage: PlusStorage, now: () => number = () => Date.now(), module?: Iap | null): IapStore | null {
+export function createIapStore(storage: PlusStorage, now: () => number = () => Date.now(), module?: Iap | null, platform: 'ios' | 'android' = 'ios'): IapStore | null {
   const iap = module === undefined ? loadIap() : module;
   if (!iap) return null;
+  // Play sells the lifetime unlock. Its explicitly started local evaluation
+  // period does not purchase Apple's free non-consumable trial product.
+  const skus = platform === 'android' ? [PLUS_SKU] : SKUS;
+  const purchasedPlus = (p: Purchase | null | undefined) =>
+    isPlus(p) && (platform !== 'android' || p?.purchaseState === 'purchased');
   let connected: Promise<boolean> | null = null;
   const connect = () => {
     connected ??= Promise.resolve()
@@ -109,9 +116,9 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
   };
   const products = async (): Promise<Product[]> => {
     const tries: (() => Promise<unknown>)[] = [];
-    if (typeof iap.fetchProducts === 'function') tries.push(() => iap.fetchProducts({ skus: SKUS, type: 'in-app' }));
-    if (typeof iap.requestProducts === 'function') tries.push(() => iap.requestProducts({ skus: SKUS, type: 'inapp' }));
-    if (typeof iap.getProducts === 'function') tries.push(() => iap.getProducts(SKUS));
+    if (typeof iap.fetchProducts === 'function') tries.push(() => iap.fetchProducts({ skus, type: 'in-app' }));
+    if (typeof iap.requestProducts === 'function') tries.push(() => iap.requestProducts({ skus, type: 'inapp' }));
+    if (typeof iap.getProducts === 'function') tries.push(() => iap.getProducts(skus));
     for (const f of tries) {
       try {
         const r = await f();
@@ -132,6 +139,7 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
   };
   /** The trial transaction among `list`, earliest first if the store lists it more than once. */
   const trialIn = (list: Purchase[]): Purchase | null => {
+    if (platform === 'android') return null;
     const all = list.filter(isTrial);
     if (all.length === 0) return null;
     const t = now();
@@ -218,7 +226,7 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
     if (list) {
       const trial = trialIn(list);
       if (trial) await saveTrial(trial);
-      if (list.some(isPlus)) return saveOwned();
+      if (list.some(purchasedPlus)) return saveOwned();
     }
     return readSaved();
   };
@@ -235,16 +243,30 @@ export function createIapStore(storage: PlusStorage, now: () => number = () => D
       const saved = await readSaved();
       if (saved.owned) return saved;
       if (!(await connect())) return saved;
-      const r = await buy(PLUS_SKU, isPlus);
+      const r = await buy(PLUS_SKU, purchasedPlus);
       if (r.status === 'bought') return saveOwned();
       // A failed request can still mean it's owned already (bought before, or delivered late): check the store.
       if (r.status === 'failed') {
         const list = await owned();
-        if (list?.some(isPlus)) return saveOwned();
+        if (list?.some(purchasedPlus)) return saveOwned();
       }
       return saved;
     },
     async startTrial() {
+      if (platform === 'android') {
+        // Persist before granting access; failing storage cannot silently start
+        // an unrecorded trial. Reinstall can clear this local evaluation period:
+        // this is not an account/server-backed entitlement.
+        try {
+          const t = now();
+          const saved = parseTrialStart(await storage.get(TRIAL_KEY), t);
+          const start = saved.start ?? t;
+          if (saved.start === null || saved.fixed) await storage.set(TRIAL_KEY, String(start));
+          return { status: saved.start === null ? 'started' : 'restored', start };
+        } catch {
+          return { status: 'failed', start: null };
+        }
+      }
       if (!(await connect())) return { status: 'unavailable', start: null };
       // Already owned (reinstall, second phone on the same Apple ID): keep the original date, never restart.
       const list = await owned();
