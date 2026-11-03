@@ -49,7 +49,7 @@ receipt = {
     "signing": "Expo generated Android test key; not a Google Play upload key",
     "embeddedBundle": True,
     "nativeLibraries": libraries,
-    "deviceTest": "Recorded separately by smoke-apk.sh; static checks alone do not prove runtime behavior",
+    "deviceTest": "Recorded separately by cue-simulate.sh; static checks alone do not prove runtime behavior",
 }
 (output / "verification.json").write_text(json.dumps(receipt, indent=2) + "\n")
 print(f"Verified {package}: {len(libraries)} native libraries, target {target}, {receipt['sha256']}")

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+export MAESTRO_CLI_NO_ANALYTICS=1
 output="$(realpath cue-android-output)"
 maestro --version > "$output/maestro-version.txt"
 adb version > "$output/adb-version.txt"
@@ -9,7 +10,7 @@ printf '%s\n' "$actual" > "$output/page-size.txt"
 adb install "$output/cue-play-test.apk" | tee "$output/install.txt"
 adb logcat -c
 mkdir -p "$output/captures"
-trap 'adb logcat -d > "$output/logcat.txt"; adb exec-out screencap -p > "$output/final.png"' EXIT
+trap 'adb devices -l > "$output/adb-devices-final.txt"; adb logcat -d > "$output/logcat.txt"; adb exec-out screencap -p > "$output/final.png"' EXIT
 MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=180000 \
   maestro test --test-output-dir "$output/captures" --debug-output "$output/captures" scripts/play/cue-release-flow.yaml
 printf 'Process restart verified by stopApp then persistence subflow launchApp; see Maestro commands.json.\n' > "$output/restart.txt"
