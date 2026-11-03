@@ -266,6 +266,10 @@ try:
     capture('linework-imported-outline')
     find(r'^Start tracing$', tap=True, attempts=20, interactive=True)
     find(r'^Image to trace$', attempts=16, camera=True)
+    # Accessibility mounts before the 900ms camera cover and preview startup
+    # finish. Review a settled frame rather than the opening graphite cover.
+    time.sleep(5)
+    find(r'^Image to trace$', camera=True)
     capture('linework-imported-outline-trace')
     checks.append('owned PNG selected through Android system picker, imported, converted to an outline and opened in camera tracing without broad photo permission')
     result = 'PASS'
