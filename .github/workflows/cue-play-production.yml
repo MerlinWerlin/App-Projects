@@ -1,5 +1,8 @@
 name: Cue Play production build
 on:
+  push:
+    branches: [codex/cue-google-play-release-20261103]
+    paths: ['.github/workflows/cue-play-production.yml']
   workflow_dispatch:
     inputs:
       build_id:
@@ -10,6 +13,7 @@ permissions:
   contents: read
 jobs:
   production:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
