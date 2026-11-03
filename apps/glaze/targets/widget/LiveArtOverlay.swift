@@ -208,21 +208,7 @@ struct LiveArtLayer: View {
 
   var body: some View {
     if let spec = LiveArtStore.spec(pieceID: pieceID, family: family) {
-      GeometryReader { geo in
-        let inset = min(geo.size.width, geo.size.height) * insetFraction
-        let box = CGSize(width: max(0, geo.size.width - 2 * inset), height: max(0, geo.size.height - 2 * inset))
-        let frame = LiveArtLayer.fitted(imageSize, in: box).offsetBy(dx: inset, dy: inset)
-        let r = CGRect(
-          x: frame.minX + spec.rect.minX * frame.width,
-          y: frame.minY + spec.rect.minY * frame.height,
-          width: spec.rect.width * frame.width,
-          height: spec.rect.height * frame.height
-        )
-        let side = min(r.width, r.height)
-        LiveArtValueView(spec: spec, theme: theme, date: date)
-          .frame(width: spec.circle ? side : r.width, height: spec.circle ? side : r.height)
-          .position(x: r.midX, y: r.midY)
-      }
+      LiveArtPlacedValue(spec: spec, imageSize: imageSize, theme: theme, date: date, insetFraction: insetFraction)
     }
   }
 
@@ -235,6 +221,39 @@ struct LiveArtLayer: View {
     let w = image.width * k
     let h = image.height * k
     return CGRect(x: (box.width - w) / 2, y: (box.height - h) / 2, width: w, height: h)
+  }
+}
+
+/// Source-art rectangles use physical image coordinates. RTL changes text order, never their position.
+/// Shared with the native capture host so its placement is the production placement.
+@available(iOS 17.0, *)
+struct LiveArtPlacedValue: View {
+  @Environment(\.layoutDirection) private var textDirection
+  let spec: LiveArtSpec
+  let imageSize: CGSize
+  let theme: WidgetTheme
+  let date: Date
+  var insetFraction: CGFloat = 0
+  var readings: LiveArtReadings = .device
+
+  var body: some View {
+    GeometryReader { geo in
+        let inset = min(geo.size.width, geo.size.height) * insetFraction
+        let box = CGSize(width: max(0, geo.size.width - 2 * inset), height: max(0, geo.size.height - 2 * inset))
+        let frame = LiveArtLayer.fitted(imageSize, in: box).offsetBy(dx: inset, dy: inset)
+        let r = CGRect(
+          x: frame.minX + spec.rect.minX * frame.width,
+          y: frame.minY + spec.rect.minY * frame.height,
+          width: spec.rect.width * frame.width,
+          height: spec.rect.height * frame.height
+        )
+        let side = min(r.width, r.height)
+        LiveArtValueView(spec: spec, theme: theme, date: date, readings: readings)
+          .environment(\.layoutDirection, textDirection)
+          .frame(width: spec.circle ? side : r.width, height: spec.circle ? side : r.height)
+          .position(x: r.midX, y: r.midY)
+      }
+      .environment(\.layoutDirection, .leftToRight)
   }
 }
 

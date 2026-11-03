@@ -1,6 +1,9 @@
 import Foundation
+import SwiftUI
+import UIKit
 
 /// Runs inside the isolated review app; no real App Group state is touched.
+@MainActor
 enum NativeComponentContract {
   static func verify() throws -> [String: Any] {
     enum Failure: Error { case assertion(String) }
@@ -75,6 +78,24 @@ enum NativeComponentContract {
     try check(LiveArtReadings.snapshot(focus:.idle,battery:101).battery==nil,"snapshot rejects oversized level")
     try check(LiveArtReadings.snapshot(focus:.idle,battery:0).battery==0,"empty battery is valid")
     try check(LiveArtReadings.snapshot(focus:.idle,battery:100).battery==100,"full battery is valid")
+    // Rasterize the real placement on a transparent canvas. With a directional position bug,
+    // RTL sends the value to the right half even though the source rectangle is on the left.
+    let leftSpec = LiveArtSpec.parse(["kind":"battery","rect":[0.05,0.1,0.4,0.15],"shape":"plate","cleanFace":true,"valueStyle":"compact","ink":"#FFFFFF"])!
+    for direction in [LayoutDirection.leftToRight, .rightToLeft] {
+      let view = LiveArtPlacedValue(spec:leftSpec,imageSize:CGSize(width:200,height:200),theme:WidgetTheme(),date:start,readings:.snapshot(focus:.idle,battery:100))
+        .frame(width:200,height:200).environment(\.layoutDirection,direction)
+      let renderer=ImageRenderer(content:view);renderer.scale=1
+      guard let image=renderer.cgImage else {throw Failure.assertion("placement raster")}
+      let width=image.width,height=image.height,row=width*4
+      var pixels=[UInt8](repeating:0,count:row*height)
+      var minX=width,maxX = -1
+      try pixels.withUnsafeMutableBytes { buffer in
+        guard let context=CGContext(data:buffer.baseAddress,width:width,height:height,bitsPerComponent:8,bytesPerRow:row,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue) else {throw Failure.assertion("placement context")}
+        context.draw(image,in:CGRect(x:0,y:0,width:width,height:height))
+        for y in 0..<height { for x in 0..<width where buffer[y*row+x*4+3]>20 {minX=min(minX,x);maxX=max(maxX,x)} }
+      }
+      try check(minX>=0 && minX<100 && maxX>=minX && maxX<105,"physical art placement remains left for \(direction)")
+    }
     return ["checks":checks,"focusPersistenceAndTransitions":true,"batteryUnknownHandling":true,"nativeMetadata":true,"realAppGroupTouched":false,"physicalDeviceTest":false]
   }
 }

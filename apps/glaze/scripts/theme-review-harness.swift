@@ -110,14 +110,9 @@ struct NativeClockComposition: View {
   var body: some View {
     let inset = fit ? min(width,height) * 0.06 : 0
     let scale = min((width-2*inset)/width, (height-2*inset)/height)
-    let w = width*scale, h = height*scale
-    let x = (width-w)/2, y = (height-h)/2
-    let r = CGRect(x:x+spec.rect.minX*w,y:y+spec.rect.minY*h,width:spec.rect.width*w,height:spec.rect.height*h)
     ZStack(alignment: .topLeading) {
       artwork.scaleEffect(scale).frame(width:width,height:height)
-      LiveArtValueView(spec:spec,theme:theme,date:date,readings:readings)
-        .frame(width:spec.circle ? min(r.width,r.height) : r.width,height:spec.circle ? min(r.width,r.height) : r.height)
-        .position(x:r.midX,y:r.midY)
+      LiveArtPlacedValue(spec:spec,imageSize:CGSize(width:width,height:height),theme:theme,date:date,insetFraction:fit ? 0.06 : 0,readings:readings)
     }.frame(width:width,height:height).clipped()
   }
 }
