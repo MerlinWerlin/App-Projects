@@ -5,6 +5,7 @@ import json
 import math
 from pathlib import Path
 import re
+import shlex
 import subprocess
 import sys
 from backspin_test_scope import assert_backspin_test_package
@@ -48,7 +49,9 @@ try:
         remote = remote.strip()
         if not remote.startswith(remote_root+'/') or not re.search(r'\.(m4a|wav|aac)$', remote):
             continue
-        length = int(subprocess.check_output(['adb','shell','stat','-c','%s',remote],timeout=20))
+        # adb shell joins arguments into a remote command. Quote filenames such
+        # as the genuine share clip "Backspin 80.wav" before the remote shell.
+        length = int(subprocess.check_output(['adb','shell','stat -c %s '+shlex.quote(remote)],timeout=20))
         if length > 20*1024*1024:
             continue
         local = target/('%02d'%len(result['files'])+Path(remote).suffix)
