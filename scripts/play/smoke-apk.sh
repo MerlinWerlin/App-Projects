@@ -15,8 +15,33 @@ sdkmanager 'system-images;android-35;google_apis;x86_64' > "$output/emulator-set
 echo no | avdmanager create avd --name play-smoke --path "$ANDROID_AVD_HOME/play-smoke.avd" --package 'system-images;android-35;google_apis;x86_64' --force >> "$output/emulator-setup.txt" 2>&1
 "$ANDROID_HOME/emulator/emulator" -list-avds | tee "$output/avds.txt" | grep -qx play-smoke
 sudo chmod 666 /dev/kvm
-"$ANDROID_HOME/emulator/emulator" -avd play-smoke -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory 2048 > "$output/emulator.txt" 2>&1 &
-trap 'adb emu kill || true' EXIT
+gpu_args=(-gpu swiftshader_indirect)
+if [[ "${APP:-}" == linework ]]; then
+  # Current emulator guidance deprecates *_indirect. Keep this change scoped
+  # to Linework until its evidence is reviewed; do not restart a failed guest.
+  gpu_args=(-gpu swiftshader -feature -Vulkan -cores 2 -no-metrics)
+fi
+"$ANDROID_HOME/emulator/emulator" -avd play-smoke -no-window -no-audio -no-boot-anim -no-snapshot "${gpu_args[@]}" -memory 2048 > "$output/emulator.txt" 2>&1 &
+emulator_pid=$!
+diagnostics() {
+  result=$?
+  trap - EXIT
+  if [[ "${APP:-}" == linework ]]; then
+    {
+      date -u --iso-8601=seconds
+      printf 'script_exit=%s emulator_pid=%s\n' "$result" "$emulator_pid"
+      ps -p "$emulator_pid" -o pid,ppid,stat,etime,rss,args || true
+      timeout 10 adb devices -l || true
+      timeout 10 adb get-state || true
+      free -m
+      df -h "$RUNNER_TEMP"
+      dmesg -T 2>&1 | tail -60 || true
+    } > "$output/emulator-health.txt" 2>&1
+  fi
+  timeout 10 adb emu kill || true
+  exit "$result"
+}
+trap diagnostics EXIT
 timeout 180 adb wait-for-device
 for i in $(seq 1 90); do
   if [[ "$(adb shell getprop sys.boot_completed | tr -d '\r')" == 1 ]]; then break; fi
@@ -29,7 +54,7 @@ adb logcat -c
 adb shell am start -W -n "$package/.MainActivity" | tee "$output/launch.txt"
 sleep 20
 # Preserve crash evidence even when the process already exited.
-adb logcat -d > "$output/logcat.txt"
+adb logcat -d > "$output/logcat.txt" 2> "$output/logcat-stderr.txt"
 adb exec-out screencap -p > "$output/launch.png"
 adb shell pidof "$package" > "$output/process.txt"
 # Some apps keep animating, so UIAutomator cannot reach idle. A screenshot and

@@ -111,6 +111,7 @@ jobs:
           path: |
             apk-output/*.txt
             apk-output/*.json
+            apk-output/*.jsonl
             apk-output/*.png
             apk-output/*.xml
           if-no-files-found: ignore

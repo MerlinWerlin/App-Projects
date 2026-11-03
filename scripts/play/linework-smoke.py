@@ -4,6 +4,7 @@ No store purchases or production credentials. Deep links test actual native
 screens; they do not establish photo-picker, physical-camera or billing QA.
 """
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 import re
 import subprocess
@@ -17,7 +18,20 @@ checks = []
 
 
 def adb(*args):
-    return subprocess.check_output(['adb', *args], timeout=35)
+    started = time.monotonic()
+    record = {'at_utc': datetime.now(timezone.utc).isoformat(), 'args': args}
+    try:
+        result = subprocess.run(['adb', *args], capture_output=True, timeout=35)
+        record.update(returncode=result.returncode, stderr=result.stderr.decode(errors='replace')[-4000:])
+        result.check_returncode()
+        return result.stdout
+    except subprocess.TimeoutExpired:
+        record['timeout_seconds'] = 35
+        raise
+    finally:
+        record['elapsed_seconds'] = round(time.monotonic() - started, 3)
+        with (output / 'adb-commands.jsonl').open('a') as journal:
+            journal.write(json.dumps(record) + '\n')
 
 
 def snapshot(name='linework-current'):
