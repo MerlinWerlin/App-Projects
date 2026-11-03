@@ -104,7 +104,7 @@ try:
     wait('Closeness')
     capture('06-score')
     click('Save take')
-    wait('✓ Saved to Takes')
+    find('✓ Saved to Takes')
     capture('07-saved')
     click('Share clip')
     time.sleep(2)

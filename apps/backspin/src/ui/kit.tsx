@@ -112,8 +112,11 @@ export function Press({ children, onPress, onPressIn, onPressOut, style, label, 
   const { calm } = useApp();
   const s = useRef(new Animated.Value(1)).current;
   const to = (v: number) => !calm && Animated.spring(s, { toValue: v, useNativeDriver: true, speed: 40, bounciness: 6 }).start();
+  // Parent-row sizing belongs on the actual flex item, not its animated child.
+  const { width, flex, flexGrow, flexShrink, flexBasis, ...surface } = StyleSheet.flatten(style) ?? {};
   return (
     <Pressable
+      style={{ width, flex, flexGrow, flexShrink, flexBasis }}
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityHint={hint}
@@ -130,7 +133,7 @@ export function Press({ children, onPress, onPressIn, onPressOut, style, label, 
       }}
       hitSlop={6}
     >
-      <Animated.View style={[style, { transform: [{ scale: s }], opacity: disabled ? 0.45 : 1 }]}>{children}</Animated.View>
+      <Animated.View style={[surface, { transform: [{ scale: s }], opacity: disabled ? 0.45 : 1 }]}>{children}</Animated.View>
     </Pressable>
   );
 }
