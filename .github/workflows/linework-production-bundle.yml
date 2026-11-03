@@ -2,12 +2,15 @@ name: Linework signed production bundle
 
 on:
   workflow_dispatch:
-  push:
-    branches: [codex/google-play-prep]
-    paths: ['.github/workflows/linework-production-bundle.yml']
+    inputs:
+      artifactRun:
+        description: Optional prior production bundle run to retest without recompiling
+        type: string
+        default: ''
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: linework-production-bundle
@@ -38,6 +41,7 @@ jobs:
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v4
       - name: Install dependencies and generate production Android project
+        if: inputs.artifactRun == ''
         working-directory: apps/linework
         run: |
           npm ci --no-audit --no-fund
@@ -61,6 +65,7 @@ jobs:
           }
           GRADLE
       - name: Compile upload-signed bundle and derive test APK
+        if: inputs.artifactRun == ''
         env:
           LINEWORK_KEYSTORE_B64: ${{ secrets.LINEWORK_KEYSTORE_B64 }}
           LINEWORK_STORE_PASSWORD: ${{ secrets.LINEWORK_STORE_PASSWORD }}
@@ -88,11 +93,24 @@ jobs:
           unzip -p "$RUNNER_TEMP/linework.apks" universal.apk > bundle-output/linework-production.apk
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs bundle-output/linework-production.apk > bundle-output/apk-signature.txt
           "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 bundle-output/linework-production.apk > bundle-output/apk-zipalign.txt
+      - name: Reuse this workflow's prior signed candidate
+        if: inputs.artifactRun != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_RUN: ${{ inputs.artifactRun }}
+        run: |
+          [[ "$ARTIFACT_RUN" =~ ^[0-9]+$ ]]
+          workflow=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$ARTIFACT_RUN" --jq .path)
+          [[ "$workflow" == .github/workflows/linework-production-bundle.yml ]]
+          gh run download "$ARTIFACT_RUN" -n linework-signed-production-bundle -D bundle-output
       - name: Independently check production identity, signature, permissions and native libraries
         env:
           LINEWORK_CERT_SHA256: ${{ secrets.LINEWORK_CERT_SHA256 }}
-        run: python scripts/play/verify_linework_aab.py bundle-output "$LINEWORK_CERT_SHA256"
+        run: |
+          git rev-parse HEAD > bundle-output/harness-commit.txt
+          python scripts/play/verify_linework_aab.py bundle-output "$LINEWORK_CERT_SHA256"
       - uses: actions/upload-artifact@v4
+        if: inputs.artifactRun == ''
         with:
           name: linework-signed-production-bundle
           path: bundle-output/

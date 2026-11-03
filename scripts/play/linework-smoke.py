@@ -122,6 +122,9 @@ try:
     checks.append('Android local trial starts without Apple product; exact 14-day status visible; no purchase performed')
     adb('shell', 'am', 'force-stop', package)
     adb('shell', 'am', 'start', '-W', '-n', package + '/.MainActivity')
+    # am start -W waits for the Activity, not the JS router's initial Home
+    # render. Sending the deep link earlier can be replaced by that startup.
+    find(r'^Trace a photo$')
     route('plus')
     find(r'^Free trial: 14 days left$', scroll=True, direction='up')
     capture('linework-android-trial-restarted')
