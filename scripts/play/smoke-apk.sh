@@ -113,11 +113,13 @@ fi
 printf 'Installed and alive 20 seconds after launch on API 35 x86_64. Feature/device QA still required.\n' > "$output/smoke-result.txt"
 if [[ "${APP:-}" == backspin ]]; then
   # Capture the complete gameplay log even if a later assertion fails.
-  if ! python scripts/play/backspin-smoke.py "$output"; then
-    adb logcat -d > "$output/gameplay-logcat.txt"
-    pactl list short source-outputs > "$output/gameplay-audio-clients.txt"
-    exit 1
-  fi
+  gameplay_status=0
+  python scripts/play/backspin-smoke.py "$output" || gameplay_status=$?
   adb logcat -d > "$output/gameplay-logcat.txt"
+  pactl list source-outputs > "$output/gameplay-audio-clients.txt"
+  adb shell dumpsys media.audio_flinger > "$output/gameplay-audio-flinger.txt"
+  adb shell dumpsys media.audio_policy > "$output/gameplay-audio-policy.txt"
+  # Decoder instrumentation is independent evidence, not a substitute gameplay pass.
   (cd apps/backspin/android && ./gradlew :backspin-pcm:connectedDebugAndroidTest --no-daemon --max-workers=2 -PreactNativeArchitectures=x86_64 -Dorg.gradle.jvmargs=-Xmx3g) 2>&1 | tee "$output/pcm-instrumentation.txt"
+  [[ "$gameplay_status" == 0 ]]
 fi

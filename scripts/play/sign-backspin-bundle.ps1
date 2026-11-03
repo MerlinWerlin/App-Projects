@@ -12,7 +12,7 @@ $taskOutput = [IO.Path]::GetFullPath($SignedBundle)
 if (Test-Path -LiteralPath $taskOutput) { throw 'Output already exists; refusing to overwrite a release artifact.' }
 if (-not(Test-Path -LiteralPath $taskSigner)) { throw 'Verified local Temurin JDK17 signer is required.' }
 if ((Get-FileHash -LiteralPath $taskBundletool -Algorithm SHA256).Hash.ToLower() -ne 'a099cfa1543f55593bc2ed16a70a7c67fe54b1747bb7301f37fdfd6d91028e29') { throw 'Official Google bundletool checksum mismatch.' }
-& $taskJava -Xms16m -Xmx256m -XX:+UseSerialGC -jar $taskBundletool validate --bundle=$taskInput
+& $taskJava -Xms16m -Xmx256m -XX:+UseSerialGC -jar $taskBundletool validate --bundle=$taskInput *> ($taskOutput+'.bundletool-validation.txt')
 if ($LASTEXITCODE -ne 0) { throw 'Google bundletool validation failed.' }
 $taskActualPackage = (& $taskJava -Xms16m -Xmx256m -XX:+UseSerialGC -jar $taskBundletool dump manifest --bundle=$taskInput --xpath=/manifest/@package | Out-String).Trim()
 if ($LASTEXITCODE -ne 0 -or $taskActualPackage -ne 'com.jared797.backspin') { throw 'Actual compiled manifest is not the production package.' }
