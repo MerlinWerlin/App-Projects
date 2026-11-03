@@ -1,5 +1,6 @@
 name: Glaze full native simulator app
 on:
+  workflow_dispatch:
   push:
     branches: ['codex/glaze-theme-release-20261101']
     paths: ['.github/workflows/glaze-native-simulator-app.yml']
