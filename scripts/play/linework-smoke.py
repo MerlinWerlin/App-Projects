@@ -45,7 +45,7 @@ def snapshot(name='linework-current'):
         started = time.monotonic()
         xml = hierarchy_device.dump_hierarchy().encode('utf-8')
         tree = ET.fromstring(xml)
-        assert any(tree.iter('node')), 'Empty continuous-screen hierarchy'
+        assert len(list(tree.iter('node'))) > 0, 'Empty continuous-screen hierarchy'
         (output / (name + '.xml')).write_bytes(xml)
         with (output / 'ui-hierarchies.jsonl').open('a') as journal:
             journal.write(json.dumps({'at_utc': datetime.now(timezone.utc).isoformat(),

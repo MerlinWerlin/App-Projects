@@ -20,6 +20,10 @@ system_image='system-images;android-35;google_apis;x86_64'
 expected_pages=4096
 guest_memory=2048
 if [[ "${APP:-}" == linework ]]; then
+  # Use current target-API images for qualification. The retained API35
+  # images showed transport/system-server failures unrelated to app asserts.
+  system_image='system-images;android-36;google_apis;x86_64'
+  guest_memory=4096
   case "${LINEWORK_PAGE_SIZE:-4k}" in
     4k) ;;
     16k) system_image='system-images;android-36;google_apis_ps16k;x86_64'; expected_pages=16384; guest_memory=4096 ;;
