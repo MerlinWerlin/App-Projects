@@ -1,0 +1,65 @@
+name: Cue Play production build
+on:
+  workflow_dispatch:
+    inputs:
+      build_id:
+        description: Optional existing EAS build UUID to inspect instead of queueing a build
+        type: string
+        default: ''
+permissions:
+  contents: read
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      PLAY_VARIANT: production
+      EAS_BUILD_PLATFORM: android
+      CI: '1'
+      BUILD_ID: ${{ inputs.build_id }}
+    defaults:
+      run:
+        working-directory: apps/cue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check existing Expo connection
+        run: test -n "$EXPO_TOKEN"
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - name: Prepare evidence folder
+        run: |
+          mkdir -p ../../cue-play-production-output
+          git rev-parse HEAD > ../../cue-play-production-output/source-commit.txt
+      - name: Inspect existing EAS build
+        if: inputs.build_id != ''
+        run: |
+          [[ "$BUILD_ID" =~ ^[0-9a-fA-F-]{36}$ ]]
+          eas build:view "$BUILD_ID" --json > ../../cue-play-production-output/build.json
+      - name: Install source
+        if: inputs.build_id == ''
+        run: npm ci --no-audit --no-fund
+      - name: Link existing Expo project
+        if: inputs.build_id == ''
+        run: |
+          set -o pipefail
+          eas init --non-interactive --force 2>&1 | tee ../../cue-play-production-output/project-link.txt
+      - name: Verify production configuration
+        if: inputs.build_id == ''
+        run: |
+          npx expo config --type public --json > ../../cue-play-production-output/config.json
+          node -e 'const c=require("../../cue-play-production-output/config.json");if(c.android.package!=="com.jared797.cue"||c.updates.enabled!==false||c.extra.playVariant!=="production")throw Error("Wrong Play production configuration");const e=require("./eas.json");if(e.build["play-production"].android.buildType!=="app-bundle")throw Error("Expected AAB profile")'
+      - name: Queue Android production AAB without submitting
+        if: inputs.build_id == ''
+        run: eas build --platform android --profile play-production --non-interactive --no-wait --json --message "Cue Android production candidate; no store submission" > ../../cue-play-production-output/build.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cue-play-production-build-state
+          path: cue-play-production-output/
+          retention-days: 14
