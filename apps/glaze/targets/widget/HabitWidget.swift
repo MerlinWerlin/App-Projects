@@ -96,13 +96,14 @@ struct HabitWidgetContent: View {
   }
 
   private var def: HabitDef { HabitDef.of(entry.habit) }
+  private var title: String { design?.habitTitle ?? def.name }
   private var stepText: String { HabitStore.format(entry.step, decimals: def.decimals) }
 
   var body: some View {
     let t = controlTheme
     Group {
       if entry.habit == .mood {
-        MoodBody(entry: entry, medium: family == .systemMedium, theme: t)
+        MoodBody(entry: entry, medium: family == .systemMedium, theme: t, title: title)
       } else {
         countBody(t)
       }
@@ -120,10 +121,11 @@ struct HabitWidgetContent: View {
     let valueText = HabitStore.format(entry.value, decimals: def.decimals)
     let goalText = HabitStore.format(goal, decimals: def.decimals)
     return VStack(alignment: .leading, spacing: 4) {
-      Text(def.name.uppercased(with: .current))
+      Text(title.uppercased(with: .current))
         .font(t.typeface(size: 11, weight: .bold))
         .foregroundStyle(t.accentColor)
         .lineLimit(1)
+        .minimumScaleFactor(0.85)
       HStack(alignment: .firstTextBaseline, spacing: 4) {
         Text(valueText)
           .font(t.typeface(size: family == .systemMedium ? 34 : 28, weight: .bold))
@@ -164,14 +166,17 @@ private struct MoodBody: View {
   let entry: HabitEntry
   let medium: Bool
   let theme: WidgetTheme
+  let title: String
 
   var body: some View {
     let t = theme
     let level = Int(entry.value)
     VStack(alignment: .leading, spacing: 6) {
-      Text(HabitText.name(.mood).uppercased(with: .current))
+      Text(title.uppercased(with: .current))
         .font(t.typeface(size: 11, weight: .bold))
         .foregroundStyle(t.accentColor)
+        .lineLimit(1)
+        .minimumScaleFactor(0.85)
       if medium {
         Text(HabitText.mood(min(5, max(0, level))))
           .font(t.typeface(size: 20, weight: .bold))

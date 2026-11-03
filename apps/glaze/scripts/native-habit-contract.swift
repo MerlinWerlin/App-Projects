@@ -86,6 +86,35 @@ enum GlazeShared { static let appGroup = "com.glaze.habit-contract.unused.\(UUID
     check(HabitColours.rgb(" #abc ") == HabitColours.rgb("#AABBCC"), "short and whitespace hex matches SwiftUI colour parser")
     check(HabitColours.resolve("#fff", stops: ["#000"], secondary: true) == "#FFFFFF", "short white resolves without losing theme colour")
     check(HabitColours.rgb("invalid") == HabitColours.rgb("#17201D"), "invalid colour safely falls back")
+    let savedCases = root["savedCases"] as? [[String: Any]] ?? []
+    check(savedCases.count == 48, "48 real editor saved-design cases supplied")
+    var savedColours: [[String: Any]] = []
+    for c in savedCases {
+      let design = SavedWidgetDesign(raw: c["raw"] as! [String: Any], texts: c["texts"] as! [String: String])
+      check(design.habitTitle == (c["expectedTitle"] as? String), "\(c["id"]!): native title matches actual editor payload")
+      let fill = design.background
+      let stops: [String] = fill["kind"] as? String == "gradient"
+        ? [fill["from"] as! String, fill["to"] as! String]
+        : [fill["colour"] as! String, fill["colour"] as! String]
+      let ink = HabitColours.resolve(design.textColour, stops: stops, secondary: true)
+      let accent = HabitColours.resolve(design.accent, stops: stops, secondary: false)
+      let backgrounds = HabitColours.samples(stops)
+      check(HabitColours.inkScore(ink, backgrounds: backgrounds) >= 4.5, "\(c["id"]!): saved text/button/mood ink readable")
+      check(HabitColours.accentScore(accent, backgrounds: backgrounds) >= 4.5, "\(c["id"]!): saved title/mood accent readable")
+      savedColours.append(["theme": c["id"]!, "ink": ink, "accent": accent, "stops": stops, "preferredInk": design.textColour, "preferredAccent": design.accent])
+    }
+    func title(_ text: Any?, role: String = "text", resolved: String? = nil) -> String? {
+      let region: [String: Any] = ["id": "name", "role": role, "text": ["userText": text ?? NSNull()]]
+      return SavedWidgetDesign(raw: ["regions": [region]], texts: resolved.map { ["name": $0] } ?? [:]).habitTitle
+    }
+    check(title(nil, resolved: "Hydration") == "Hydration", "resolved editor translation used without custom title")
+    check(title("Drink up", resolved: "Water") == "Drink up", "user title takes precedence over saved translation")
+    check(title("   ", resolved: "Water") == nil, "empty explicit title falls back to native localized name")
+    check(title(123, resolved: "Water") == "Water", "malformed user title falls back to resolved translation")
+    check(title("  Drink\nwater  ") == "Drink water", "multiline corrupt title becomes a single trimmed line")
+    check(title("x", role: "photo") == nil, "non-text name region ignored")
+    check(title(String(repeating: "a", count: 100))?.count == 40, "corrupt unbounded title is capped")
+    check(title("水分補給 💧") == "水分補給 💧", "Unicode title survives decoding")
     var colours: [[String: Any]] = []
     for p in root["palettes"] as? [[String: Any]] ?? [] {
       let id=p["id"] as! String,stops=p["stops"] as! [String]
@@ -98,7 +127,7 @@ enum GlazeShared { static let appGroup = "com.glaze.habit-contract.unused.\(UUID
       check(HabitColours.resolve(preferredInk,stops:stops,secondary:true)==ink,id+": cached ink stable")
       colours.append(["theme":id,"ink":ink,"accent":accent,"stops":stops,"preferredInk":preferredInk,"preferredAccent":preferredAccent])
     }
-    let result: [String: Any] = ["schema": "GLAZE_NATIVE_HABIT_CONTRACT_V1", "sourceSHA": ProcessInfo.processInfo.environment["GITHUB_SHA"] ?? "local", "fixtureCases": cases.count, "palettes": colours, "checks": checks, "failures": failures, "sameProcessConcurrency": 200, "realAppGroupTouched": false, "physicalDeviceTest": false, "installedWidgetTapTest": false]
+    let result: [String: Any] = ["schema": "GLAZE_NATIVE_HABIT_CONTRACT_V1", "sourceSHA": ProcessInfo.processInfo.environment["GITHUB_SHA"] ?? "local", "fixtureCases": cases.count, "savedDesignCases": savedCases.count, "savedPalettes": savedColours, "palettes": colours, "checks": checks, "failures": failures, "sameProcessConcurrency": 200, "realAppGroupTouched": false, "physicalDeviceTest": false, "installedWidgetTapTest": false]
     try JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys]).write(to: URL(fileURLWithPath: CommandLine.arguments[2]))
     for failure in failures { print("FAIL: \(failure)") }
     print("Native habit contract: \(checks) assertions / \(cases.count) cross-language cases / \(failures.count) failures")

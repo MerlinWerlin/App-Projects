@@ -33,4 +33,5 @@ const boundary=new Date('2026-11-02T10:01:00Z');
 add('utc-plus14-midnight',null,log([event(1,'water',150,{at:boundary.getTime()-120000,off:840}),event(2,'water',150,{at:boundary.getTime(),off:840})]),840,boundary);
 add('utc-minus12',null,log([event(1,'water',150,{at,off:-720})]),-720,now);
 const palettes=JSON.parse(readFileSync(new URL('../docs/native-habit-review-profiles.json',import.meta.url),'utf8')).themes.map(t=>({id:t.id,ink:t.nativeTheme.ink,accent:t.nativeTheme.accent,stops:widgetBackgroundStops(t.nativeTheme)}));
-writeFileSync(process.argv[2],JSON.stringify({schema:'GLAZE_NATIVE_HABIT_PARITY_V1',cases,palettes},null,2)+'\n');console.log('Prepared',cases.length,'app/native habit parity cases.');
+const savedCases=JSON.parse(readFileSync(new URL('../docs/native-habit-saved-review.json',import.meta.url),'utf8')).cases;
+writeFileSync(process.argv[2],JSON.stringify({schema:'GLAZE_NATIVE_HABIT_PARITY_V1',cases,palettes,savedCases},null,2)+'\n');console.log('Prepared',cases.length,'app/native habit parity cases and',savedCases.length,'saved editor designs.');

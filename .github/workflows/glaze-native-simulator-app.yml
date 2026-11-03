@@ -1,4 +1,5 @@
 name: Glaze full native simulator app
+# Current qualification includes native saved habit names and readability corrections.
 on:
   workflow_dispatch:
   push:
