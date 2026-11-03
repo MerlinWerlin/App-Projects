@@ -25,6 +25,11 @@ on:
         type: choice
         default: '4096'
         options: ['4096', '16384']
+      apiLevel:
+        description: Android emulator API level
+        type: choice
+        default: '35'
+        options: ['35', '36']
 
 permissions:
   contents: read
@@ -41,6 +46,7 @@ jobs:
       GLAZE_NATIVE: '1'
       CI: '1'
       ANDROID_PAGE_SIZE: ${{ inputs.pageSize || '4096' }}
+      ANDROID_API_LEVEL: ${{ inputs.apiLevel || '35' }}
     steps:
       - uses: actions/checkout@v4
         with:

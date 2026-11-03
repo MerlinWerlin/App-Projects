@@ -11,9 +11,10 @@ apk=$(realpath "$1")
 output=$(realpath "$2")
 package=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["android"]["package"])' "$output/config.json")
 [[ "$package" == *.playtest ]]
+case "${ANDROID_API_LEVEL:-35}" in 35|36) ;; *) exit 2;; esac
 case "${ANDROID_PAGE_SIZE:-4096}" in
-  4096) image='system-images;android-35;google_apis;x86_64';;
-  16384) image='system-images;android-35;google_apis_ps16k;x86_64';;
+  4096) image="system-images;android-${ANDROID_API_LEVEL:-35};google_apis;x86_64";;
+  16384) image="system-images;android-${ANDROID_API_LEVEL:-35};google_apis_ps16k;x86_64";;
   *) echo 'Unsupported page size' >&2; exit 2;;
 esac
 sdkmanager "$image" > "$output/emulator-setup.txt" 2>&1
@@ -72,6 +73,8 @@ done
 [[ "$(adb shell getprop sys.boot_completed | tr -d '\r')" == 1 ]]
 adb shell getconf PAGE_SIZE | tr -d '\r' > "$output/device-page-size.txt"
 [[ "$(cat "$output/device-page-size.txt")" == "${ANDROID_PAGE_SIZE:-4096}" ]]
+adb shell getprop ro.build.version.sdk | tr -d '\r' > "$output/device-api-level.txt"
+[[ "$(cat "$output/device-api-level.txt")" == "${ANDROID_API_LEVEL:-35}" ]]
 if [[ "${APP:-}" == backspin ]]; then
   adb emu avd hostmicon | tee "$output/emulator-microphone.txt"
   grep -q OK "$output/emulator-microphone.txt"
@@ -109,7 +112,7 @@ fi
 if [[ "${APP:-}" == linework ]]; then
   python scripts/play/linework-smoke.py "$output"
 fi
-printf 'Installed and alive 20 seconds after launch on API 35 x86_64. Feature/device QA still required.\n' > "$output/smoke-result.txt"
+printf 'Installed and alive 20 seconds after launch on API %s x86_64. Feature/device QA recorded separately.\n' "$(cat "$output/device-api-level.txt")" > "$output/smoke-result.txt"
 if [[ "${APP:-}" == backspin ]]; then
   # Capture the complete gameplay log even if a later assertion fails.
   gameplay_status=0

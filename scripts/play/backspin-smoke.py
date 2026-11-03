@@ -126,6 +126,7 @@ try:
                            'reverse playback', 'record copy', 'score', 'save', 'share sheet',
                            'free-go consumption', 'process-restart persistence'],
                   device_page_size=int((out / 'device-page-size.txt').read_text()),
+                  device_api_level=int((out / 'device-api-level.txt').read_text()),
                   not_checked=['human voice quality', 'physical phone routes and interruptions',
                                'Play Billing transaction and restore'])
     (out / 'backspin-gameplay.json').write_text(json.dumps(result, indent=2))
