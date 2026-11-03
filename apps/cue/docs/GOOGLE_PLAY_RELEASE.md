@@ -171,10 +171,21 @@ No identity document, phone code or legal agreement was submitted by this work.
 
 ## Remaining release checks
 
+Production EAS build `637caa56-f5d2-46d0-801e-6d644f26c359` was queued on
+4 November from `2a16e7fe1e5bf70a320ca44c8ae5549d51e140fd`: profile
+`play-production`, package `com.jared797.cue`, version 1.0.0/build 2,
+embedded JavaScript and Expo updates disabled. Queue run 41735078444 passed;
+inspection run 41737020536 confirmed `IN_QUEUE`. No finished AAB or production
+signature is claimed yet. The workflow can inspect this same UUID without
+queueing another build, and optionally wait up to twelve minutes. The pinned
+bundle validator checks manifest, signature/public certificate, embedded JS,
+64-bit ELF alignment and the bundle's 16 KB APK-packaging setting. Its seven
+regression tests pass. Early status-checker dependency/project-link failures
+were repaired; they were not production-build failures.
+
 After account verification enables app creation, create the Cue app record,
-configure Play App Signing and a durable upload key, build the production AAB,
-and prepare the listing, Android screenshots, content rating and Data safety
-from the final binary and SDK behaviour.
+configure Play App Signing against the verified upload certificate, and finish
+content rating and Data safety from the final binary and SDK behaviour.
 
 The English listing assets are now prepared and visually inspected in
 `store/assets`: four actual 1080×1920 Android UI captures, the existing-brand

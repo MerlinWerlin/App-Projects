@@ -9,7 +9,7 @@
     "Camera and microphone interruption QA",
     "Play Billing purchase and restore verification",
     "Complete identity and phone verification before Play enables app creation",
-    "Build and sign the production AAB with a durable upload key",
+    "Finish and verify the queued production AAB and its managed upload certificate",
     "Complete final SDK/network Data safety review and publish the prepared privacy copy"
   ],
   "assets": "Four inspected 1080x1920 Android UI screenshots, 512px existing-brand icon and 1024x500 feature graphic are prepared under assets; not uploaded",
