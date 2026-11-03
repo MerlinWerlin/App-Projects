@@ -100,9 +100,8 @@ adb shell pidof "$package" > "$output/process.txt"
 # live process still establish launch; XML is supplementary except in Rowlight's functional test.
 adb shell uiautomator dump /sdcard/window.xml > "$output/ui-dump.txt" 2>&1 || true
 adb pull /sdcard/window.xml "$output/window.xml" >> "$output/ui-dump.txt" 2>&1 || true
-if grep -E 'FATAL EXCEPTION|Fatal signal|ReactNativeJS:.*(Error:|Exception)' "$output/logcat.txt"; then
-  exit 1
-fi
+python scripts/play/check-android-crashes.py --self-test
+python scripts/play/check-android-crashes.py "$output/logcat.txt" "$package" "$output/process.txt" "$output/launch-crash-check.json"
 grep -q 'Status: ok' "$output/launch.txt"
 if [[ "${APP:-}" == crochet ]]; then
   python scripts/play/rowlight-smoke.py "$output"
