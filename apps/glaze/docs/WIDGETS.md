@@ -312,8 +312,7 @@ value straight away and runs every native read / write one at a time.
 
 **Not yet.** No Lock Screen accessory
 habit widgets natively (the catalogue's accessory specs have no buttons anyway; T89's Swift half is
-held, D79-1). The extension still doesn't read the catalogue specs (`glaze.widgets.v2`), so the
-habit widgets don't pick up per-widget Studio edits (colours, name text). No in-app undo for a hand
+held, D79-1). Since T155 the extension reads `glaze.widgets.v2` and applies saved background, accent and text colours per size. Custom name text and catalogue geometry are still not applied to the interactive habit layout. No in-app undo for a hand
 tap yet (mood wraps round; count trackers only go up); a custom step size per tracker isn't
 offered (goals only).
 
@@ -776,7 +775,7 @@ T136 compile audit of every Swift file (what was checked and fixed, what is stil
 `docs/RELEASING.md` section 7.
 
 - T73 habit widgets: `Button(intent:)` taps update the value without opening the app; two widgets
-  of the same tracker both refresh; small-size layout fits (value, goal, bar, two 36 pt buttons);
+  of the same tracker both refresh; small-size layout fits (value, goal, bar, two 44 pt buttons);
   `invalidatableContent()` while a tap is pending; mood faces in tinted / StandBy modes; the app
   picks up taps after midnight onto the right day; `getHabits` returning `[String: String]` maps to
   a plain JS object through Expo Modules.
@@ -805,3 +804,14 @@ Validation: `.github/workflows/glaze-widgets-check.yml` compiles the actual widg
 
 Cut on 1 Nov 2026 (owner-1101d #1, T198): no pets, no Live Activity, no Dynamic Island. Notes and art: [future/pets-game/README.md](future/pets-game/README.md).
 - T236/T237 merge (run 218): live values sit on the Fill layout only; in Fit the painted picture shows as art.
+
+
+## Native habit storage and readability (4 November 2026)
+
+`HabitWidgetContent` is the shared production content used by WidgetKit and the isolated simulator review host. Water, sleep, steps and mood retain their native AppIntent buttons. Counter controls have a minimum44pt height; the capture host models16pt WidgetKit margins at small and medium sizes. It injects empty, progress and upper-bound values rather than claiming actual button delivery.
+
+Habit backgrounds retain their source colour/gradient stops. The controls avoid the glass material that washed dark themes grey in the review host. `HabitColours.swift` keeps the preferred foreground where readable, otherwise mixes its hue toward black or white. Secondary labels use85% opacity. The contract and independent app colour-library checker sample21 positions per gradient, requiring4.5:1 for text and3:1 for mood outlines. These thresholds qualify the105 reviewed source palettes; arbitrary user gradients can make a single foreground impossible. This is not pixel-level, tinted-mode or physical-device qualification. It does not alter the original artwork clock/date/focus/battery editions.
+
+Native storage and app parsers agree on19 valid, malformed and date-boundary fixture cases. Native contracts additionally exercise persistence, acknowledgements, a400-event bound, next-day reset, invalid timestamps and200 concurrent writes within one process. Isolated UserDefaults suites are disposable and never use the real App Group. Installed WidgetKit taps, actual App Group delivery, cross-process races, phone locales and accessibility rendering still require separate checks.
+
+Reproducible checks: `.github/workflows/glaze-native-habit-contract.yml` and `.github/workflows/glaze-native-habit-capture.yml`. Review source lives in `scripts/native-habit-contract.swift`, `scripts/native-habit-colours.mjs` and `scripts/native-habit-review.swift`; the fixed105-theme profile is derived from real app theme payloads by `scripts/prepare-native-habit-review.mjs`. Local review: `Apps/outputs/glaze-theme-reviews/release-simulation/native-habits-20261103.html`. Native registration and durable multi-photo delivery for photo albums remain unimplemented; their preview-only flag stays in place.
