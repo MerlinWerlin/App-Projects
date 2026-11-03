@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "scope": "Sustained synthetic CI input, independently decoded AAC",
+  "input_mode": "hal-tone",
+  "host_speech_qualified": false,
+  "expected_recordings": 2,
+  "recordings": [
+    {
+      "file": "00.m4a",
+      "pcm": {
+        "samples": 230400,
+        "duration_seconds": 5.224489795918367,
+        "peak": 1.0029081106185913,
+        "rms": 0.6904514926064829,
+        "positive_zero_crossings_hz": 297.828125,
+        "active_windows": 259,
+        "total_windows": 262,
+        "active_span_seconds": 5.18
+      },
+      "sustained": true
+    },
+    {
+      "file": "01.m4a",
+      "pcm": {
+        "samples": 197632,
+        "duration_seconds": 4.481451247165533,
+        "peak": 1.0029081106185913,
+        "rms": 0.6877986304549388,
+        "positive_zero_crossings_hz": 297.8945717292746,
+        "active_windows": 222,
+        "total_windows": 225,
+        "active_span_seconds": 4.44
+      },
+      "sustained": true
+    }
+  ],
+  "not_proven": [
+    "human voice quality",
+    "physical phone routes",
+    "actual Play purchase"
+  ]
+}
