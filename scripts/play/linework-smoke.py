@@ -13,7 +13,10 @@ import time
 import xml.etree.ElementTree as ET
 
 output = Path(sys.argv[1])
-package = 'com.jared797.linework.playtest'
+package = sys.argv[2] if len(sys.argv) > 2 else 'com.jared797.linework.playtest'
+scheme = sys.argv[3] if len(sys.argv) > 3 else 'linework-play-test'
+assert (package, scheme) in [('com.jared797.linework.playtest', 'linework-play-test'),
+                            ('com.jared797.linework', 'linework')]
 checks = []
 
 
@@ -71,7 +74,7 @@ def capture(name):
 
 def route(path):
     adb('shell', 'am', 'start', '-W', '-a', 'android.intent.action.VIEW',
-        '-d', 'linework-play-test://' + path, package)
+        '-d', scheme + '://' + path, package)
     time.sleep(1)
 
 

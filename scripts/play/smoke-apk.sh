@@ -10,7 +10,12 @@ mkdir -p "$ANDROID_USER_HOME" "$ANDROID_AVD_HOME"
 apk=$(realpath "$1")
 output=$(realpath "$2")
 package=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["android"]["package"])' "$output/config.json")
-[[ "$package" == *.playtest ]]
+if [[ "$package" != *.playtest ]]; then
+  # Only the explicit Linework production-bundle job may test a store identity
+  # on this disposable emulator. Never accept arbitrary production packages.
+  [[ "${APP:-}" == linework && "${LINEWORK_PRODUCTION_QA:-}" == 1 && "$package" == com.jared797.linework ]]
+  python -c 'import json,sys; c=json.load(open(sys.argv[1])); assert c["extra"]["playVariant"]=="production" and c["updates"]["enabled"] is False' "$output/config.json"
+fi
 sdkmanager 'system-images;android-35;google_apis;x86_64' > "$output/emulator-setup.txt" 2>&1
 echo no | avdmanager create avd --name play-smoke --path "$ANDROID_AVD_HOME/play-smoke.avd" --package 'system-images;android-35;google_apis;x86_64' --force >> "$output/emulator-setup.txt" 2>&1
 "$ANDROID_HOME/emulator/emulator" -list-avds | tee "$output/avds.txt" | grep -qx play-smoke
@@ -69,7 +74,8 @@ if [[ "${APP:-}" == crochet ]]; then
   python scripts/play/rowlight-smoke.py "$output"
 fi
 if [[ "${APP:-}" == linework ]]; then
-  python scripts/play/linework-smoke.py "$output"
+  scheme=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["scheme"])' "$output/config.json")
+  python scripts/play/linework-smoke.py "$output" "$package" "$scheme"
 fi
 printf 'Installed and alive 20 seconds after launch on API 35 x86_64. Feature/device QA still required.\n' > "$output/smoke-result.txt"
 if [[ "${APP:-}" == backspin ]]; then

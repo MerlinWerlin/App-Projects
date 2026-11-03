@@ -21,6 +21,12 @@ module.exports = function withPlayVariant(config, env = process.env) {
       ...config.android,
       package: config.android.package + (preview ? '.playtest' : ''),
       versionCode: config.android.versionCode || 1,
+      // System photo picking and write-only clip saving need no broad modern
+      // media reads or overlay window permission. Keep the Apple config intact.
+      blockedPermissions: [...new Set([...(config.android.blockedPermissions || []),
+        'android.permission.SYSTEM_ALERT_WINDOW', 'android.permission.READ_MEDIA_AUDIO',
+        'android.permission.READ_MEDIA_IMAGES', 'android.permission.READ_MEDIA_VIDEO',
+        'android.permission.READ_MEDIA_VISUAL_USER_SELECTED'])],
     },
     // Keep initial builds embedded-only until Android runtime/update testing is complete.
     updates: { ...config.updates, enabled: false,

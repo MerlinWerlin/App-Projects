@@ -1,0 +1,117 @@
+name: Linework signed production bundle
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/google-play-prep]
+    paths: ['.github/workflows/linework-production-bundle.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: linework-production-bundle
+  cancel-in-progress: false
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: linework-play-signing
+    defaults:
+      run:
+        shell: bash
+    env:
+      APP: linework
+      PLAY_VARIANT: production
+      EAS_BUILD_PLATFORM: android
+      LINEWORK_PRODUCTION_QA: '1'
+      CI: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Install dependencies and generate production Android project
+        working-directory: apps/linework
+        run: |
+          npm ci --no-audit --no-fund
+          npx expo prebuild --platform android --no-install
+          mkdir -p ../../bundle-output
+          npx expo config --type public --json > ../../bundle-output/config.json
+          git rev-parse HEAD > ../../bundle-output/source-commit.txt
+          cat >> android/app/build.gradle <<'GRADLE'
+
+          // Explicit upload signing; no generated/debug key may sign this bundle.
+          android {
+            signingConfigs {
+              playUpload {
+                storeFile file(System.getenv('LINEWORK_UPLOAD_STORE'))
+                storePassword System.getenv('LINEWORK_STORE_PASSWORD')
+                keyAlias System.getenv('LINEWORK_KEY_ALIAS')
+                keyPassword System.getenv('LINEWORK_KEY_PASSWORD')
+              }
+            }
+            buildTypes { release { signingConfig signingConfigs.playUpload } }
+          }
+          GRADLE
+      - name: Compile upload-signed bundle and derive test APK
+        env:
+          LINEWORK_KEYSTORE_B64: ${{ secrets.LINEWORK_KEYSTORE_B64 }}
+          LINEWORK_STORE_PASSWORD: ${{ secrets.LINEWORK_STORE_PASSWORD }}
+          LINEWORK_KEY_PASSWORD: ${{ secrets.LINEWORK_KEY_PASSWORD }}
+          LINEWORK_KEY_ALIAS: ${{ secrets.LINEWORK_KEY_ALIAS }}
+        run: |
+          set +x
+          export LINEWORK_UPLOAD_STORE="$RUNNER_TEMP/linework-upload.jks"
+          test -n "$LINEWORK_KEYSTORE_B64" && test -n "$LINEWORK_STORE_PASSWORD" && test -n "$LINEWORK_KEY_ALIAS"
+          printf '%s' "$LINEWORK_KEYSTORE_B64" | base64 --decode > "$LINEWORK_UPLOAD_STORE"
+          chmod 600 "$LINEWORK_UPLOAD_STORE"
+          trap 'rm -f "$LINEWORK_UPLOAD_STORE" "$RUNNER_TEMP/linework-store-password" "$RUNNER_TEMP/linework-key-password"' EXIT
+          (cd apps/linework/android && ./gradlew :app:bundleRelease --no-daemon --max-workers=2 -PreactNativeArchitectures=arm64-v8a,x86_64 -Dorg.gradle.jvmargs=-Xmx4g)
+          cp apps/linework/android/app/build/outputs/bundle/release/app-release.aab bundle-output/linework-production.aab
+          curl --fail --location --silent --show-error https://github.com/google/bundletool/releases/download/1.18.3/bundletool-all-1.18.3.jar -o "$RUNNER_TEMP/bundletool.jar"
+          echo "a099cfa1543f55593bc2ed16a70a7c67fe54b1747bb7301f37fdfd6d91028e29  $RUNNER_TEMP/bundletool.jar" | sha256sum --check
+          java -jar "$RUNNER_TEMP/bundletool.jar" validate --bundle=bundle-output/linework-production.aab > bundle-output/bundletool-validation.txt
+          java -jar "$RUNNER_TEMP/bundletool.jar" dump manifest --bundle=bundle-output/linework-production.aab > bundle-output/bundle-manifest.xml
+          jarsigner -verify -verbose -certs bundle-output/linework-production.aab > bundle-output/signature.txt
+          keytool -printcert -jarfile bundle-output/linework-production.aab > bundle-output/certificate.txt
+          printf '%s' "$LINEWORK_STORE_PASSWORD" > "$RUNNER_TEMP/linework-store-password"
+          printf '%s' "$LINEWORK_KEY_PASSWORD" > "$RUNNER_TEMP/linework-key-password"
+          chmod 600 "$RUNNER_TEMP/linework-"*password
+          java -jar "$RUNNER_TEMP/bundletool.jar" build-apks --bundle=bundle-output/linework-production.aab --output="$RUNNER_TEMP/linework.apks" --mode=universal --ks="$LINEWORK_UPLOAD_STORE" --ks-key-alias="$LINEWORK_KEY_ALIAS" --ks-pass="file:$RUNNER_TEMP/linework-store-password" --key-pass="file:$RUNNER_TEMP/linework-key-password"
+          unzip -p "$RUNNER_TEMP/linework.apks" universal.apk > bundle-output/linework-production.apk
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs bundle-output/linework-production.apk > bundle-output/apk-signature.txt
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 bundle-output/linework-production.apk > bundle-output/apk-zipalign.txt
+      - name: Independently check production identity, signature, permissions and native libraries
+        env:
+          LINEWORK_CERT_SHA256: ${{ secrets.LINEWORK_CERT_SHA256 }}
+        run: python scripts/play/verify_linework_aab.py bundle-output "$LINEWORK_CERT_SHA256"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linework-signed-production-bundle
+          path: bundle-output/
+          retention-days: 90
+          if-no-files-found: error
+      - uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools emulator'
+          log-accepted-android-sdk-licenses: false
+      - name: Test APK derived from this production bundle
+        run: bash scripts/play/smoke-apk.sh bundle-output/linework-production.apk bundle-output
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linework-production-validation
+          path: |
+            bundle-output/*.txt
+            bundle-output/*.json
+            bundle-output/*.jsonl
+            bundle-output/*.png
+            bundle-output/*.xml
+          retention-days: 90
