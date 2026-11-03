@@ -15,12 +15,22 @@ d.jsonrpc.setConfigurator({'waitForIdleTimeout': 0, 'waitForSelectorTimeout': 0}
 d.implicitly_wait(15)
 steps = []
 
+def check_system_dialog():
+    # Emulator launcher startup can ANR while the game itself remains responsive.
+    # Dismiss only this named system component; never suppress a Backspin ANR.
+    if d(text="Pixel Launcher isn't responding").exists:
+        capture('emulator-launcher-anr')
+        d(text='Close app').click()
+        steps.append('Dismissed emulator Pixel Launcher ANR; evidence retained')
+        time.sleep(.5)
+
 def capture(name):
     d.screenshot(str(out / (name + '.png')))
     (out / (name + '.xml')).write_text(d.dump_hierarchy(), encoding='utf-8')
 
 def find(label):
     for _ in range(7):
+        check_system_dialog()
         for selector in [d(description=label), d(text=label)]:
             if selector.exists:
                 return selector
@@ -37,6 +47,7 @@ def click(label):
 def wait(label, timeout=30):
     until = time.monotonic() + timeout
     while time.monotonic() < until:
+        check_system_dialog()
         if d(description=label).exists or d(text=label).exists:
             return
         time.sleep(.3)
@@ -85,12 +96,13 @@ try:
     time.sleep(2)
     capture('08-share-sheet')
     current = d.app_current()
-    assert current['package'] != package, current
+    assert current['package'] == 'com.android.intentresolver' or 'ChooserActivity' in str(current.get('activity')), current
     d.press('back')
     d.app_stop(package)
     d.app_start(package)
     wait('Quick play')
-    assert not d(text='10 free goes left').exists, 'Completed round did not consume a free go'
+    assert d(description='9 free goes left').exists or d(textContains='9 free goes left').exists, 'Completed round did not persist exactly one consumed free go'
+    capture('09-restarted-home-counter')
     click('Takes')
     wait('Saved takes')
     assert not d(text='No takes yet').exists, 'Saved take was lost on process restart'

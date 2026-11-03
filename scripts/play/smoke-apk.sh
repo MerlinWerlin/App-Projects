@@ -35,7 +35,7 @@ if [[ "${APP:-}" == backspin ]]; then
   ffmpeg -hide_banner -loglevel error -re -f lavfi -i 'sine=frequency=440:sample_rate=44100' -f s16le -ac 1 -ar 44100 - | pacat --playback --device=backspin_input --raw --format=s16le --rate=44100 --channels=1 &
   pactl info > "$output/host-audio.txt"
 fi
-"$ANDROID_HOME/emulator/emulator" -avd play-smoke -no-window -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory 2048 > "$output/emulator.txt" 2>&1 &
+"$ANDROID_HOME/emulator/emulator" -avd play-smoke -no-window -allow-host-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -memory 3072 > "$output/emulator.txt" 2>&1 &
 trap 'adb emu kill || true' EXIT
 timeout 180 adb wait-for-device
 for i in $(seq 1 90); do
