@@ -1,5 +1,15 @@
 # Google Play release preparation
 
+## Linework Android trial update, 3 November 2026
+
+Source `6ce7e66` separates the Android 14-day evaluation from Apple's free trial product. Android starts the trial only on an explicit tap, saves its original start before granting access and does not restart an existing expired trial. This is device-local evaluation, not a reinstall-proof store-account entitlement. Android requests only the lifetime Plus product; pending, unknown or missing purchase states cannot grant permanent Plus. Existing Apple product behavior and owner prices remain unchanged.
+
+All **815 Node tests** and TypeScript pass, including **35 targeted entitlement/billing checks**. Raw logs are `apk-output/linework-20261103-trial-full-suite.txt`, `linework-play-billing-20261103.txt` and `linework-play-typecheck-final-20261103.txt`. Native build/emulator run [41614075351](https://github.com/MerlinWerlin/App-Projects/actions/runs/41614075351) tests this runtime change and trial persistence; its result must be inspected before claiming native success.
+
+Fresh signed-in checks confirm the website is **already verified** in Search Console and associated with Astro Labs AU. Play now shows identity-document approval and subsequent phone verification as the account requirements; Create app remains disabled. Lane 2 is independently searching original registration email/documents, so this checkout does not duplicate that account process. Current identity is the sole trader JARED JAMES BRADLEY, not the cancelled historical business-name registration.
+
+Real Play purchase, pending-payment, cancellation, acknowledgement and restore tests remain blocked on an app/product record. Production upload signing and AAB also remain outstanding: the generated test key must not become the upload identity. The existing `play-production` EAS profile is configuration only; no paid EAS build or store upload has been performed. See [Android signing requirements](https://developer.android.com/studio/publish/app-signing).
+
 ## Linework continuation, 3 November 2026
 
 Jared selected Linework for Android simulation and Google Play release preparation. Astro Labs AU now exists as a Google Play **organisation** account, but the signed-in Console disables Create app pending identity/organisation documents, Search Console website ownership and subsequent phone verification. No app listing, store upload or production rollout was performed.
