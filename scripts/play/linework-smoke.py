@@ -77,6 +77,8 @@ def find(pattern, tap=False, attempts=8, scroll=False, direction='down', camera=
                 if x2 <= x1 or y2 <= y1:
                     continue
                 if tap:
+                    if node.get('enabled') == 'false':
+                        continue
                     if camera:
                         adb('shell', 'input', 'tap', '160', '250')
                     adb('shell', 'input', 'tap', str((x1+x2)//2), str((y1+y2)//2))
@@ -208,6 +210,56 @@ try:
     (output / 'video-duration-verification.json').write_text(json.dumps(duration_check, indent=2) + '\n')
     assert native_seconds > 0 and abs(displayed_seconds-native_seconds) <= 2, duration_check
     checks.append('displayed clip length excludes camera preparation and agrees with native video duration within two seconds')
+
+    # Seed one owned image into the disposable guest, then use the actual
+    # system picker and the app's native import/outline path. No app data is
+    # injected and no broad photo permission is granted.
+    find(r'^Done$', tap=True)
+    adb('shell', 'am', 'force-stop', package)
+    adb('shell', 'am', 'start', '-W', '-n', package + '/.MainActivity')
+    find(r'^Trace a photo$')
+    seed = Path('apps/linework/assets/icon.png').resolve()
+    adb('shell', 'mkdir', '-p', '/sdcard/Pictures')
+    adb('push', str(seed), '/sdcard/Pictures/Linework-QA.png')
+    adb('shell', 'am', 'broadcast', '-a', 'android.intent.action.MEDIA_SCANNER_SCAN_FILE',
+        '-d', 'file:///sdcard/Pictures/Linework-QA.png')
+    for _ in range(12):
+        gallery = adb('shell', 'content', 'query', '--uri', 'content://media/external/images/media',
+                      '--projection', '_id:_display_name').decode(errors='replace')
+        if 'Linework-QA.png' in gallery:
+            break
+        time.sleep(0.5)
+    (output / 'photo-store-seed.txt').write_text(gallery)
+    assert gallery.count('Row:') == 1 and 'Linework-QA.png' in gallery, 'Picker fixture must be the only gallery image'
+    find(r'^Trace a photo$', tap=True)
+    capture('linework-system-photo-picker')
+    selected = False
+    for _ in range(12):
+        tree = snapshot()
+        for n in tree.iter('node'):
+            owner = n.get('package', '')
+            label = n.get('content-desc') or n.get('text') or ''
+            thumbnail = n.get('resource-id', '').endswith('/icon_thumbnail') or re.match(r'^Photo taken on ', label)
+            bounds = [int(x) for x in re.findall(r'\d+', n.get('bounds', ''))]
+            if ('providers.media' in owner or 'photopicker' in owner) and thumbnail and len(bounds) == 4:
+                x1, y1, x2, y2 = bounds
+                if x2-x1 > 32 and y2-y1 > 32:
+                    adb('shell', 'input', 'tap', str((x1+x2)//2), str((y1+y2)//2))
+                    selected = True
+                    break
+        if selected:
+            break
+        time.sleep(0.7)
+    assert selected, 'Seed image not selectable in the actual system photo picker'
+    find(r'^Image preview$', attempts=16)
+    capture('linework-imported-photo')
+    find(r'^Outline$', tap=True, scroll=True)
+    find(r'^Outline preview$', attempts=20)
+    capture('linework-imported-outline')
+    find(r'^Start tracing$', tap=True, attempts=20, scroll=True)
+    find(r'^Image to trace$', attempts=16, camera=True)
+    capture('linework-imported-outline-trace')
+    checks.append('owned PNG selected through Android system picker, imported, converted to an outline and opened in camera tracing without broad photo permission')
     result = 'PASS'
 except Exception as error:
     result = 'FAIL'
@@ -221,5 +273,5 @@ finally:
         'status': result,
         'package': package,
         'checks': checks,
-        'scope': 'Disposable emulator; actual image/page size recorded separately. Virtual camera and native video save tested when completed; physical camera, photo import and real Play Billing remain unverified.',
+        'scope': 'Disposable emulator; actual image/page size recorded separately. Virtual camera, native video save, duration and system-picker import of the owned PNG tested when completed; physical camera, personal photos and real Play Billing remain unverified.',
     }, indent=2) + '\n')
