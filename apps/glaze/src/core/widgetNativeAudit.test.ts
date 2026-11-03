@@ -81,7 +81,7 @@ test('no duplicate top-level type names across the extension target', () => {
 test('extension imports only system frameworks (never ExpoModulesCore or a Glaze pod)', () => {
   for (const f of widgetSwift()) {
     for (const m of read(`${WIDGET_DIR}/${f}`).matchAll(/^import\s+(\w+)/gm)) {
-      assert.ok(['SwiftUI', 'WidgetKit', 'Foundation', 'UIKit', 'AppIntents'].includes(m[1]), `${f} imports ${m[1]}`);
+      assert.ok(['SwiftUI', 'WidgetKit', 'Foundation', 'CoreFoundation', 'UIKit', 'AppIntents'].includes(m[1]), `${f} imports ${m[1]}`);
     }
   }
 });
