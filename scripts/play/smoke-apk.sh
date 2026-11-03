@@ -35,16 +35,17 @@ if [[ "${APP:-}" == backspin ]]; then
   # QEMU's bundled PulseAudio client must use the explicit private Unix socket.
   export PULSE_SERVER="unix:$(pactl info | sed -n 's/^Server String: //p')"
   export QEMU_PA_SERVER="$PULSE_SERVER" QEMU_PA_SOURCE="$PULSE_SOURCE" QEMU_PA_SINK="$PULSE_SINK"
-  ffmpeg -hide_banner -loglevel error -re -f lavfi -i 'sine=frequency=440:sample_rate=44100' -f s16le -ac 1 -ar 44100 - | pacat --playback --device=backspin_input --raw --format=s16le --rate=44100 --channels=1 &
+  ffmpeg -nostdin -hide_banner -loglevel error -re -f lavfi -i 'sine=frequency=440:sample_rate=44100' -f s16le -ac 1 -ar 44100 - 2>"$output/tone-generator.txt" | pacat --playback --device=backspin_input --raw --latency-msec=20 --format=s16le --rate=44100 --channels=1 2>"$output/tone-playback.txt" &
   pactl info > "$output/host-audio.txt"
   python - "$output" <<'PY'
 import subprocess,struct,math,json,sys
 from pathlib import Path
-p=subprocess.Popen(['parec','--device=backspin_input.monitor','--raw','--format=s16le','--rate=44100','--channels=1'],stdout=subprocess.PIPE)
+p=subprocess.Popen(['parec','--device=backspin_input.monitor','--raw','--latency-msec=20','--format=s16le','--rate=44100','--channels=1'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 try:
-    data,_=p.communicate(timeout=2)
+    data,error=p.communicate(timeout=5)
 except subprocess.TimeoutExpired:
-    p.kill();data,_=p.communicate()
+    p.kill();data,error=p.communicate()
+Path(sys.argv[1],'host-probe-stderr.txt').write_bytes(error)
 values=struct.unpack('<'+'h'*(len(data)//2),data[:len(data)//2*2])
 rms=math.sqrt(sum(v*v for v in values)/len(values)) if values else 0
 Path(sys.argv[1],'host-microphone-probe.json').write_text(json.dumps({'samples':len(values),'rms_pcm16':rms,'source':'synthetic tone monitor'},indent=2))
