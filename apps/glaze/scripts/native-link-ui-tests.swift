@@ -9,6 +9,7 @@ import Darwin
     XCTAssertTrue(glaze.wait(for: .runningForeground, timeout: 20))
     let ready = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
       .appendingPathComponent("glaze-deeplink-ready")
+    try FileManager.default.createDirectory(at: ready.deletingLastPathComponent(), withIntermediateDirectories: true)
     try Data("ready".utf8).write(to: ready, options: .atomic)
     print("GLAZE_DEEPLINK_READY")
     fflush(stdout)
