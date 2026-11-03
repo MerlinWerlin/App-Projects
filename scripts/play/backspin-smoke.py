@@ -1,5 +1,6 @@
 """Exercise the installed Android app. Synthetic host microphone; no fake app unlocks."""
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -130,7 +131,9 @@ try:
     assert not d(text='No takes yet').exists, 'Saved take was lost on process restart'
     capture('09-persisted-takes')
     result = dict(status='PASS', package=package, steps=steps,
-                  audio='Synthetic speech routed through host microphone into real Android recording',
+                  audio=('Synthetic speech through authenticated emulator gRPC virtual microphone into real Android recording'
+                         if os.environ.get('BACKSPIN_AUDIO_MODE') == 'grpc' else
+                         'Synthetic speech routed through host microphone into real Android recording'),
                   checked=['onboarding', 'microphone permission', 'record original', 'AAC to PCM',
                            'reverse playback', 'record copy', 'score', 'save', 'share sheet',
                            'free-go consumption', 'process-restart persistence'],

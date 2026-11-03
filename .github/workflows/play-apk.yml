@@ -30,6 +30,11 @@ on:
         type: choice
         default: '35'
         options: ['35', '36']
+      audioMode:
+        description: Synthetic microphone route (app recording and scoring stay real)
+        type: choice
+        default: host
+        options: [host, grpc]
 
 permissions:
   contents: read
@@ -47,6 +52,7 @@ jobs:
       CI: '1'
       ANDROID_PAGE_SIZE: ${{ inputs.pageSize || '4096' }}
       ANDROID_API_LEVEL: ${{ inputs.apiLevel || '35' }}
+      BACKSPIN_AUDIO_MODE: ${{ inputs.audioMode || 'host' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -77,6 +83,7 @@ jobs:
             sudo apt-get update -qq
             sudo apt-get install -y -qq ffmpeg espeak-ng pulseaudio pulseaudio-utils xvfb xauth libxcb-cursor0 libxkbcommon-x11-0
             python -m pip install 'uiautomator2==3.4.2'
+            if [ "$BACKSPIN_AUDIO_MODE" = grpc ]; then python -m pip install 'grpcio==1.85.1' 'grpcio-tools==1.85.1'; fi
             mkdir -p modules/backspin-pcm/android/src/androidTest/assets
             ffmpeg -hide_banner -loglevel error -f lavfi -i 'sine=frequency=440:duration=0.25:sample_rate=44100' -ac 1 -c:a aac modules/backspin-pcm/android/src/androidTest/assets/tone.m4a
           fi
