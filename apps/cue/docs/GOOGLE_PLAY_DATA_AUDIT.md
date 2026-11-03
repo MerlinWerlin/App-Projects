@@ -1,6 +1,6 @@
 # Cue Android data review — draft, not submitted
 
-This review describes the Play overlay and repairs at app source f572a10. It is preparation
+This review describes the Play overlay and repairs through candidate c809ffd. It is preparation
 for the Console forms, not a completed Data safety declaration or a network
 capture. Recheck against the signed production AAB before submission.
 
@@ -11,7 +11,7 @@ capture. Recheck against the signed production AAB before submission.
 | Voice Pace | Local microphone level metering through a cached audio recording; explicit stop/delete cleanup | `src/native/voiceRecording.ts`; cancellation, partial recording, denied permission and stop failure are unit-tested. Verify native cache cleanup and interruption before release |
 | Voice Follow | Requests `requiresOnDeviceRecognition: true`; unsupported recognition returns a fallback | `src/native/speech.ts`; Google recognizer availability/resources vary; verify native fallback |
 | Import and export | System document picker and share sheet; user chooses files and destinations | Native document-picker/sharing modules; no broad media-read declaration in inspected APK |
-| Plus purchase | Google Play Billing queries Plus only, store handles payment; app checks ownership and caches access | `src/plus/purchases.ts`; licensed purchase/pending/cancel/restore/revocation tests still required |
+| Plus purchase | Google Play Billing queries Plus only, store handles payment; app checks ownership and caches access. Refresh/restore retry failed acknowledgement for confirmed, unacknowledged purchases | `src/plus/purchases.ts`; retry and pending/unknown exclusion are unit-tested; licensed purchase/pending/cancel/restore/revocation tests still required |
 | Android trial | Earliest start timestamp in local storage and SecureStore; not a Google trial SKU | `src/plus/androidTrial.ts`; clearing data/reinstall can remove local state |
 | Updates | Play overlay sets `updates.enabled: false` and embeds JS | Compiled manifest/config; do not reuse iOS EAS Update disclosure as Android behaviour |
 | Feedback | Opens mail composer, sending remains the user's action | Support correspondence may contain the information the user chooses to send |

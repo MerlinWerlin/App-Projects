@@ -7,9 +7,27 @@ The older October test APK is not the release candidate.
 
 ## Verified so far
 
-- Current local TypeScript check passes.
-- All 90 Jest tests and three native speech guard checks pass; the binary
+- Latest candidate is c809ffd, which adds bounded Android acknowledgement
+  recovery to the previously built SDK-aligned source.
+- Current local TypeScript check and all 92 Jest tests pass. The three native
+  speech guards passed on the unchanged speech source; the binary
   permission checker also has five passing Python regression tests.
+- Current-candidate native build and simulations:
+  https://github.com/MerlinWerlin/App-Projects/actions/runs/41724507628
+  Generic checks: run41724507470. Await their completion before treating the
+  acknowledgement repair as natively validated.
+- Latest completed APK is source070ad0c: 72,286,111 bytes, target36, embedded
+  JavaScript and 58 native libraries passing 16 KB alignment inspection.
+  SHA-256 2e5aec751b67ffbd088c860788026040af1c53422d92fbd6f41f3105e3a65843.
+  Its complete 4 KB flow passed in run41723153512, saving an 8,456 ms,1280×720
+  video. This binary predates c809ffd's acknowledgement recovery.
+- The same binary's 16 KB checks exposed two harness failures: an emulator
+  disappeared during installation, and run41723866270 timed out starting
+  Maestro's driver. The latter's guest log explicitly records lowmemorykiller
+  killing dev.mobile.maestro(pid5011) because the minimum watermark was breached.
+  The host still had11.7GB available and no host OOM event. The guest image's
+  2560MB default is now raised to4096MB; the next candidate simulation must use
+  this workflow revision. No full 16 KB pass is claimed at this checkpoint.
 - Play preview uses com.jared797.cue.playtest, separate data, embedded JavaScript
   and disabled OTA. Play production preserves com.jared797.cue.
 - Existing iOS profiles, app.json and RELEASE.json are unchanged.
@@ -24,16 +42,15 @@ The older October test APK is not the release candidate.
   https://github.com/MerlinWerlin/App-Projects/actions/runs/41621450349
   The Expo SDK's root MediaLibrary export throws for the old save API. Cue now
   uses the supported `expo-media-library/legacy` entry point.
-- Current binary with the save and Voice Pace repairs:
+- Historical binary with the save and Voice Pace repairs:
   https://github.com/MerlinWerlin/App-Projects/actions/runs/41622370763
   Native build/static inspection passed. The complete 4 KB simulation passed,
   including a saved 8,528 ms video at 1280×720. The 16 KB runner exited during
   its initial launch command without an app-crash record; it did not pass.
-- Identical-APK rerun, started 4 November:
+- Historical identical-APK rerun, started 4 November:
   https://github.com/MerlinWerlin/App-Projects/actions/runs/41698286454
-  App source must match the compiled commit before reuse. Await this run's
-  results before claiming complete 4 KB / 16 KB validation.
-- Current inspected APK: 72,279,195 bytes, source f572a109a0dc6fa9f8ef5ffc24572b792fe0581c,
+  The 4 KB job passed; the 16 KB job failed its KVM access check.
+- Historical inspected APK: 72,279,195 bytes, source f572a109a0dc6fa9f8ef5ffc24572b792fe0581c,
   SHA-256 dbf7f03738c708f08e34962d9a58727ee9c62e3a6b411c555938a7cdfb137425.
 
 4 November follow-up: the 4 KB flow passed again in run41698286454 and
@@ -47,8 +64,17 @@ The check bot subsequently aligned SDK patch dependencies at dac129c, including
 Expo58.0.23 and router58.0.30. The older APK cannot validate those changed native
 dependencies. Fresh native build and simulations at source070ad0c:
 https://github.com/MerlinWerlin/App-Projects/actions/runs/41699589503
-Generic checks were also dispatched for that source (run41699624923).
-Both are pending at this checkpoint. Do not reuse f572a10 as current-source proof.
+Compilation/static checks passed. Both Maestro2.12 simulation jobs failed their
+transport connection. Generic checks passed in run41699709429 (the earlier
+dispatch was superseded by that docs-inclusive check). Do not reuse f572a10 as
+current-source proof.
+
+Maestro2.10 still includes the direct ADB socket transport. The changelog places
+the transition at2.5, so the current harness pins checksum-verified2.4. It keeps
+every UI assertion in one session, caps its JVM heap and captures host memory,
+process and kernel state on exit. Harness-only commits no longer trigger a
+redundant native compilation; dispatch can reuse an APK only after app-source
+equality checks. Failed runs and their artifacts are retained.
 
 The emulator flows create and edit a script, open the prompter, toggle mirror,
 then force-stop/restart and verify the saved title/body. They also start the
@@ -92,6 +118,12 @@ currency workaround. Purchase wording now applies to either store.
 
 These cases are unit-tested; real Play Billing still needs licensed testing
 after an app/product record can be created.
+
+Android refresh/restore now retry failed acknowledgement for purchased items
+that Google marks unacknowledged. Pending, unknown and unrelated products are
+excluded; successful acknowledgements and concurrent attempts are deduplicated.
+A failed attempt retains the store-confirmed ownership and is retried on a
+later read. Both recovery and exclusion cases are unit-tested.
 
 Voice Pace now explicitly stops and deletes its temporary microphone cache.
 Leaving while permission or preparation is pending cannot start recording
