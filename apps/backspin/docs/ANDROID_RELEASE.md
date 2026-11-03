@@ -5,7 +5,7 @@ Jared authorized Android simulation and Google Play review/release for **Backspi
 ## Current evidence
 
 - 33 Node tests and TypeScript pass locally.
-- Native AAC-to-PCM module and separate Android profiles retained from PR106. The current source is being built and tested in [run 41612177418](https://github.com/MerlinWerlin/App-Projects/actions/runs/41612177418).
+- Native AAC-to-PCM module and separate Android profiles retained from PR106. [Run 41612177418](https://github.com/MerlinWerlin/App-Projects/actions/runs/41612177418) compiled, verified, installed and launched the APK. Its first gameplay attempt rejected silent emulator input. A later harness attempt encountered a captured Pixel Launcher ANR; neither is reported as gameplay success. Host audio activation and a narrowly scoped launcher-dialog recovery are now explicit. [Run 41617261644](https://github.com/MerlinWerlin/App-Projects/actions/runs/41617261644) builds the final foreground-only, restricted-permission configuration and gates the unsigned production AAB on gameplay success.
 - New emulator flow exercises onboarding, the microphone prompt, actual recording/decoding, reverse playback, copy recording, score, save, Android share sheet, free-go accounting and persistence after process restart. A synthetic host microphone supplies the sound. A test script's presence is not a passing test result; read the run receipt.
 - Preview package: `com.jared797.backspin.playtest`, embedded JS, OTA disabled, generated test signing key. **Do not upload the preview APK to Play.**
 - Intended store package: `com.jared797.backspin`, AAB via `play-production`. A production signing key and signed store bundle are not yet established by this checkout.
@@ -13,13 +13,15 @@ Jared authorized Android simulation and Google Play review/release for **Backspi
 
 ## Confirmed submission blocker
 
-The signed-in Astro Labs AU organization account at Play Console still shows identity, organization website and phone verification as **Action required**. Create app is disabled. A screenshot is retained locally at `apps/backspin/.expo/play-console-account-gates.png`; it contains account information and is not committed.
+**Website verified:** the existing portfolio website was registered and verified in Google Search Console, and Play Console independently shows **Website verified**. [Homepage verification commit](https://github.com/MerlinWerlin/App-Projects/commit/21e9e0cd0b65e5d0acb5299437eed77e25e2d600). Do not remove the verification meta tag. Screenshots are retained privately under `.expo/` and are not committed.
+
+Identity/organization document approval remains outstanding. Google explicitly disables phone verification until the documents are approved. App creation/release remain blocked on those account gates. Source emails and document retrieval receipts are stored outside Git; no current registration certificate was recovered from the expired email download links. No government-ID upload or identity approval is claimed.
 
 No Backspin Google Play app, purchase product, review submission or public release is claimed. Complete Google's account gates before creating the app. The registration payment does not establish verification approval.
 
 ## Remaining release evidence
 
-1. Finish account verification and create Backspin with the stable production package.
+1. Finish organization/identity verification, then both phone verifications, and create Backspin with the stable production package. Website verification is already complete.
 2. Establish durable protected upload signing, produce the production AAB, and verify its final manifest, SDK level, native alignment and embedded assets. Keep keys and passwords outside Git and public artifacts.
 3. Configure the one-time Backspin Plus product (`com.jared797.backspin.plus`) at the authorized A$1.99 tier, then test actual Play Billing purchase/cancellation/restore using a Play-installed build. Native store guards prohibit a simulated paid unlock in a standalone build.
 4. Use the actual final build's phone screenshots; prepare the 512px icon and 1024×500 feature graphic, full listing, app access, content rating, ads, target audience and Data safety declarations from the final binary/SDK behavior. Do not copy Apple's declarations without checking Android's embedded-only build.
