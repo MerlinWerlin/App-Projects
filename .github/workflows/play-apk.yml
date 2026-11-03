@@ -30,6 +30,11 @@ on:
         type: choice
         default: '35'
         options: ['35', '36']
+      emulatorVersion:
+        description: Host emulator version for controlled capture-driver comparisons
+        type: choice
+        default: sdk-current
+        options: ['sdk-current', '36.6.11']
 
 permissions:
   contents: read
@@ -122,6 +127,11 @@ jobs:
         with:
           packages: 'platform-tools emulator'
           log-accepted-android-sdk-licenses: false
+      - name: Select and verify the host emulator version
+        if: inputs.smoke
+        env:
+          EMULATOR_VERSION: ${{ inputs.emulatorVersion || 'sdk-current' }}
+        run: bash scripts/play/select-backspin-emulator.sh
       - name: Emulator install and launch
         if: inputs.smoke
         shell: bash
