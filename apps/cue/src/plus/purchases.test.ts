@@ -18,6 +18,31 @@ function fake() {
   return {api,removed,update:(p:StorePurchase)=>updated(p),error:(e:unknown)=>error(e),setOwned:(p:StorePurchase[])=>{list=p;}};
 }
 afterEach(()=>jest.useRealTimers());
+test('Android refresh retries failed acknowledgement and deduplicates successful recovery', async()=>{
+  const f=fake();
+  const purchase={productId:PLUS,purchaseState:'purchased',purchaseToken:'google-token',isAcknowledgedAndroid:false};
+  f.setOwned([purchase]);
+  const finish=jest.fn().mockRejectedValueOnce(new Error('network')).mockResolvedValue(undefined);
+  f.api.finishTransaction=finish;
+  const store=createPurchaseProvider(f.api,()=>NOW,[PLUS],'android');
+  expect(await store.refresh()).toMatchObject({plus:true});
+  expect(finish).toHaveBeenCalledTimes(1);
+  expect(await store.restore()).toMatchObject({ok:true,access:{plus:true}});
+  expect(finish).toHaveBeenCalledTimes(2);
+  await store.refresh();
+  expect(finish).toHaveBeenCalledTimes(2);
+});
+test('Android recovery never acknowledges pending, unknown, or already acknowledged purchases', async()=>{
+  const f=fake();
+  f.setOwned([
+    {productId:PLUS,purchaseState:'pending',purchaseToken:'pending',isAcknowledgedAndroid:false},
+    {productId:'other.product',purchaseState:'purchased',purchaseToken:'other',isAcknowledgedAndroid:false},
+    {productId:PLUS,purchaseState:'unknown',purchaseToken:'unknown',isAcknowledgedAndroid:false},
+    {productId:PLUS,purchaseState:'purchased',purchaseToken:'finished',isAcknowledgedAndroid:true},
+  ]);
+  expect(await createPurchaseProvider(f.api,()=>NOW,[PLUS],'android').refresh()).toMatchObject({plus:true});
+  expect(f.api.finishTransaction).not.toHaveBeenCalled();
+});
 test('missing store, connection failure and missing product never unlock', async()=>{
   expect(await createPurchaseProvider(null).buy()).toMatchObject({ok:false,reason:'unavailable'});
   expect(await createPurchaseProvider(null).refresh()).toBeNull();

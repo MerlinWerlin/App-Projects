@@ -52,6 +52,24 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
   const iap = module === undefined ? loadIap() : module;
   let connection: Promise<boolean> | null = null;
   let busy = false;
+  const acknowledged = new Set<string>();
+  const acknowledging = new Map<string, Promise<void>>();
+  const acknowledgeAndroid = (purchase: StorePurchase, recovery = false): Promise<void> => {
+    if (platform !== 'android' || purchase.purchaseState !== 'purchased' || purchase.isAcknowledgedAndroid === true ||
+        (recovery && purchase.isAcknowledgedAndroid !== false) ||
+        !skus.some(sku => matches(purchase, sku))) return Promise.resolve();
+    const key = typeof purchase.purchaseToken === 'string' ? purchase.purchaseToken : String(purchase.productId);
+    if (acknowledged.has(key)) return Promise.resolve();
+    const active = acknowledging.get(key);
+    if (active) return active;
+    const work = Promise.resolve().then(() => bounded(iap!.finishTransaction({ purchase, isConsumable: false }), 5000))
+      .then(() => { acknowledged.add(key); })
+      // Keep verified ownership; retry a failed acknowledgement on a later store read.
+      .catch(() => undefined)
+      .finally(() => { acknowledging.delete(key); });
+    acknowledging.set(key, work);
+    return work;
+  };
   const connect = (): Promise<boolean> => {
     if (!iap) return Promise.resolve(false);
     connection ??= Promise.resolve().then(() => bounded(iap.initConnection(), 20_000)).then(ok => {
@@ -61,7 +79,12 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
     return connection;
   };
   const owned = async (): Promise<StorePurchase[] | null> => {
-    try { const list = await bounded(iap!.getAvailablePurchases(), 10_000); return Array.isArray(list) ? list : null; } catch { return null; }
+    try {
+      const list = await bounded(iap!.getAvailablePurchases(), 10_000);
+      if (!Array.isArray(list)) return null;
+      await Promise.all(list.map(purchase => acknowledgeAndroid(purchase, true)));
+      return list;
+    } catch { return null; }
   };
   const exclusive = async (action: () => Promise<PurchaseResult>): Promise<PurchaseResult> => {
     if (busy) return failure('E_PURCHASE_IN_PROGRESS');
@@ -99,7 +122,8 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
         if (sku === TRIAL_PRODUCT_ID && access.trialStart === null) { error = 'E_TRIAL_DATE'; return; }
         // Settle once before acknowledgement: event and return may be the same transaction.
         finish({ ok: true, access });
-        void Promise.resolve().then(() => iap.finishTransaction({ purchase, isConsumable: false })).catch(() => undefined);
+        if (platform === 'android') void acknowledgeAndroid(purchase);
+        else void Promise.resolve().then(() => iap.finishTransaction({ purchase, isConsumable: false })).catch(() => undefined);
       };
       const onError = (e: unknown) => {
         if (/cancel/i.test(codeOf(e))) return finish({ ok: false, reason: 'cancelled', message: t('plus.cancelled') });
