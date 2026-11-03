@@ -9,6 +9,7 @@
 // T86: a tracker's `goal` is the person's own daily goal (app › Habit goals, src/core/habitGoals.ts);
 // names, units and labels come from HabitText (Localizable.strings in targets/widget/<lang>.lproj).
 import Foundation
+import CoreFoundation
 
 enum HabitKindID: String, CaseIterable {
   case water, mood, sleep, steps
@@ -121,6 +122,8 @@ enum HabitStore {
   static let maxEvents = 400
   static let historyDays = 400
   private static let maxOffsetMinutes = 14 * 60
+  private static let maxSafeInteger: Double = 9_007_199_254_740_991
+  private static let maxTimestamp: Double = 8_640_000_000_000_000
   /// Taps can arrive back to back; serialise read-modify-write of the log inside this process.
   private static let lock = NSLock()
 
@@ -170,9 +173,9 @@ enum HabitStore {
 
   private static var defaults: UserDefaults? { UserDefaults(suiteName: GlazeShared.appGroup) }
 
-  private static func object(forKey key: String) -> [String: Any]? {
+  private static func object(forKey key: String, in store: UserDefaults) -> [String: Any]? {
     guard
-      let json = defaults?.string(forKey: key),
+      let json = store.string(forKey: key),
       let data = json.data(using: .utf8),
       let obj = try? JSONSerialization.jsonObject(with: data),
       let dict = obj as? [String: Any]
@@ -190,34 +193,47 @@ enum HabitStore {
 
   /// Whole number in a safe range (Int(Double) traps outside Int's range).
   private static func int(_ any: Any?) -> Int? {
-    guard let d = number(any), d >= -9_000_000_000_000_000, d <= 9_000_000_000_000_000 else { return nil }
-    return Int(d.rounded(.towardZero))
+    guard let d = number(any), abs(d) <= maxSafeInteger, d.rounded(.towardZero) == d else { return nil }
+    return Int(d)
   }
 
   private static func validLogId(_ any: Any?) -> String? {
-    guard let s = any as? String, !s.isEmpty, s.count <= 64 else { return nil }
+    guard let raw = any as? String else { return nil }
+    let s = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+    guard !s.isEmpty, s.count <= 64 else { return nil }
     let allowed = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "._-"))
     return s.unicodeScalars.allSatisfy { allowed.contains($0) && $0.isASCII } ? s : nil
   }
 
   /// The app's trackers (by kind) and how far into the log it has applied.
   static func readTrackers() -> (trackers: [HabitKindID: Tracker], mark: Mark?) {
-    guard let root = object(forKey: habitsKey), number(root["v"]) == 1 else { return ([:], nil) }
+    guard let store = defaults else { return ([:], nil) }
+    return readTrackers(in: store)
+  }
+
+  static func readTrackers(in store: UserDefaults) -> (trackers: [HabitKindID: Tracker], mark: Mark?) {
+    guard let root = object(forKey: habitsKey, in: store), number(root["v"]) == 1 else { return ([:], nil) }
     var out: [HabitKindID: Tracker] = [:]
     for item in (root["habits"] as? [Any]) ?? [] {
       guard
         let o = item as? [String: Any],
         let kind = (o["kind"] as? String).flatMap(HabitKindID.init(rawValue:)),
-        let day = o["day"] as? String, day.count == 10,
+        let day = o["day"] as? String, let baseDay = WidgetDay.parse(day, timeZone: TimeZone(secondsFromGMT: 0)!),
         out[kind] == nil
       else { continue }
       let def = HabitDef.of(kind)
       var history: [String: Double] = [:]
+      var calendar = Calendar(identifier: .gregorian); calendar.timeZone = TimeZone(secondsFromGMT: 0)!
       for (k, v) in (o["history"] as? [String: Any]) ?? [:] {
-        if let n = number(v), k.count == 10 { history[k] = n }
+        guard let n = number(v), let d = WidgetDay.parse(k, timeZone: calendar.timeZone),
+              let age = calendar.dateComponents([.day], from: d, to: baseDay).day,
+              age != 0, age >= -1, age <= historyDays else { continue }
+        let value = apply(kind, value: 0, op: "set", amount: n)
+        if value > 0 { history[k] = value }
       }
-      let step = number(o["step"]).flatMap { $0 > 0 ? min($0, def.max) : nil } ?? def.step
-      out[kind] = Tracker(day: day, value: number(o["value"]) ?? 0, step: step, goal: number(o["goal"]) ?? def.goal, history: history)
+      let step = def.mode == .scale ? 1 : number(o["step"]).flatMap { $0 > 0 ? round2(min($0, def.max)) : nil } ?? def.step
+      let goal = def.mode == .scale ? nil : number(o["goal"]).flatMap { $0 > 0 ? round2(min($0, def.max)) : nil } ?? def.goal
+      out[kind] = Tracker(day: day, value: apply(kind, value: 0, op: "set", amount: number(o["value"]) ?? 0), step: step, goal: goal, history: history)
     }
     var mark: Mark?
     if let m = root["applied"] as? [String: Any], let id = validLogId(m["logId"]), let seq = int(m["seq"]), seq >= 0 {
@@ -227,7 +243,12 @@ enum HabitStore {
   }
 
   static func readLog() -> Log? {
-    guard let root = object(forKey: logKey), number(root["v"]) == 1, let logId = validLogId(root["logId"]) else { return nil }
+    guard let store = defaults else { return nil }
+    return readLog(in: store)
+  }
+
+  static func readLog(in store: UserDefaults) -> Log? {
+    guard let root = object(forKey: logKey, in: store), number(root["v"]) == 1, let logId = validLogId(root["logId"]) else { return nil }
     var events: [Event] = []
     var seen = Set<Int>()
     for item in (root["events"] as? [Any]) ?? [] {
@@ -237,17 +258,27 @@ enum HabitStore {
         let kind = (o["kind"] as? String).flatMap(HabitKindID.init(rawValue:)),
         let op = o["op"] as? String, op == "add" || op == "set",
         let amount = number(o["amount"]),
-        let at = int(o["at"]), at >= 0
+        let rawAt = number(o["at"]), rawAt >= 0, rawAt <= maxTimestamp
       else { continue }
       if seen.contains(seq) { continue }
+      let rawOff = number(o["off"]) ?? 0
+      let off = abs(rawOff) <= Double(maxOffsetMinutes) ? Int(floor(rawOff + 0.5)) : 0
+      let def = HabitDef.of(kind)
+      let capped: Double
+      if op == "set" { capped = apply(kind, value: 0, op: "set", amount: amount) }
+      else if amount == 0 { continue }
+      else if def.mode == .scale { capped = amount > 0 ? 1 : -1 }
+      else {
+        let magnitude = round2(min(def.max, abs(amount)))
+        if magnitude == 0 { continue }
+        capped = amount > 0 ? magnitude : -magnitude
+      }
       seen.insert(seq)
-      let rawOff = int(o["off"]) ?? 0
-      let off = abs(rawOff) <= maxOffsetMinutes ? rawOff : 0
-      events.append(Event(seq: seq, kind: kind, op: op, amount: amount, at: Int64(at), off: off))
+      events.append(Event(seq: seq, kind: kind, op: op, amount: capped, at: Int64(floor(rawAt + 0.5)), off: off))
     }
     events.sort { $0.seq < $1.seq }
     let top = events.last?.seq ?? 0
-    return Log(logId: logId, seq: max(int(root["seq"]) ?? 0, top), events: events)
+    return Log(logId: logId, seq: max(int(root["seq"]) ?? 0, top), events: Array(events.suffix(maxEvents)))
   }
 
   private static func pending(_ log: Log?, _ mark: Mark?) -> [Event] {
@@ -279,15 +310,20 @@ enum HabitStore {
 
   /// Today's value as the widget shows it: the app's value for today plus today's pending taps.
   static func todayValue(_ kind: HabitKindID, now: Date) -> Double {
-    let off = offsetMinutes(at: now)
+    guard let store = defaults else { return 0 }
+    return todayValue(kind, now: now, in: store)
+  }
+
+  static func todayValue(_ kind: HabitKindID, now: Date, in store: UserDefaults, offsetMinutes: Int? = nil) -> Double {
+    let off = offsetMinutes ?? self.offsetMinutes(at: now)
     let today = dayKey(now, offsetMinutes: off)
-    let (trackers, mark) = readTrackers()
+    let (trackers, mark) = readTrackers(in: store)
     var value: Double = 0
     if let t = trackers[kind] {
       value = t.day == today ? t.value : (t.history[today] ?? 0)
     }
     value = apply(kind, value: 0, op: "set", amount: value) // clamp whatever was stored
-    for e in pending(readLog(), mark) where e.kind == kind {
+    for e in pending(readLog(in: store), mark) where e.kind == kind {
       let day = dayKey(Date(timeIntervalSince1970: TimeInterval(e.at) / 1000), offsetMinutes: e.off)
       if day == today { value = apply(kind, value: value, op: e.op, amount: e.amount) }
     }
@@ -310,11 +346,20 @@ enum HabitStore {
   /// Append one tap to the log. `direction` +1 / -1 for count and mood steps; `setTo` picks a mood face.
   @discardableResult
   static func record(_ kind: HabitKindID, direction: Int = 1, setTo: Double? = nil, now: Date = Date()) -> Bool {
+    guard let store = defaults else { return false }
+    return record(kind, direction: direction, setTo: setTo, now: now, in: store)
+  }
+
+  /// Explicit disposable storage is used by the native contract; real intents retain the App Group wrapper.
+  @discardableResult
+  static func record(_ kind: HabitKindID, direction: Int = 1, setTo: Double? = nil, now: Date = Date(), in store: UserDefaults) -> Bool {
+    guard now.timeIntervalSince1970.isFinite, now.timeIntervalSince1970 >= 0,
+          now.timeIntervalSince1970 * 1000 <= maxTimestamp,
+          setTo == nil || setTo?.isFinite == true else { return false }
     lock.lock()
     defer { lock.unlock() }
-    guard let defaults = defaults else { return false }
     let def = HabitDef.of(kind)
-    let (trackers, mark) = readTrackers()
+    let (trackers, mark) = readTrackers(in: store)
     let op: String
     var amount: Double
     if let v = setTo {
@@ -327,7 +372,8 @@ enum HabitStore {
       if amount == 0 { return false }
     }
     amount = round2(amount)
-    var log = readLog() ?? Log(logId: UUID().uuidString, seq: 0, events: [])
+    var log = readLog(in: store) ?? Log(logId: UUID().uuidString, seq: 0, events: [])
+    guard Double(log.seq) < maxSafeInteger else { return false }
     let seq = log.seq + 1
     let off = offsetMinutes(at: now)
     let at = Int64((now.timeIntervalSince1970 * 1000).rounded())
@@ -352,7 +398,7 @@ enum HabitStore {
       let data = try? JSONSerialization.data(withJSONObject: json),
       let text = String(data: data, encoding: .utf8)
     else { return false }
-    defaults.set(text, forKey: logKey)
+    store.set(text, forKey: logKey)
     return true
   }
 

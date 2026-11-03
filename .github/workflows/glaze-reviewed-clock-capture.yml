@@ -2,7 +2,9 @@ name: Glaze reviewed clock rendering
 on:
   push:
     branches: ['codex/glaze-theme-release-20261101']
-    paths: ['apps/glaze/scripts/theme-review-harness.swift', 'apps/glaze/docs/themed-clock-profiles.json', 'apps/glaze/docs/themed-clock-fixtures/**', 'apps/glaze/targets/widget/**', 'apps/glaze/modules/glaze-widget-bridge/ios/ClockArtRenderer.swift', '.github/workflows/glaze-reviewed-clock-capture.yml']
+    paths: ['apps/glaze/scripts/theme-review-harness.swift', 'apps/glaze/docs/themed-clock-profiles.json', 'apps/glaze/docs/themed-clock-fixtures/**', 'apps/glaze/targets/widget/**', '!apps/glaze/targets/widget/HabitStore.swift', 'apps/glaze/modules/glaze-widget-bridge/ios/ClockArtRenderer.swift', '.github/workflows/glaze-reviewed-clock-capture.yml']
+# HabitStore-only changes get cross-language behavior tests and full iOS typechecking in
+# glaze-native-habit-contract.yml; unchanged clock/value images need no repeat capture.
 permissions:
   contents: read
 jobs:

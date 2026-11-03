@@ -95,6 +95,7 @@ function cleanEvent(raw: unknown): HabitLogEvent | null {
   const o = raw as Record<string, unknown>;
   if (!isSeq(o.seq) || o.seq === 0 || !isHabitKind(o.kind) || (o.op !== 'add' && o.op !== 'set')) return null;
   if (typeof o.amount !== 'number' || typeof o.at !== 'number' || !Number.isFinite(o.at) || o.at < 0) return null;
+  if (!Number.isSafeInteger(Math.round(o.at)) || !Number.isFinite(new Date(o.at).getTime())) return null;
   const off = typeof o.off === 'number' && Number.isFinite(o.off) && Math.abs(o.off) <= MAX_OFFSET_MINUTES ? Math.round(o.off) : 0;
   const amount = capAmount(o.kind, o.op, o.amount);
   if (amount === null) return null;
