@@ -62,7 +62,15 @@ test('every Home Screen widget paints the theme background through containerBack
   for (const f of ['ClockWidget.swift', 'DateWidget.swift', 'QuoteWidget.swift', 'PhotoWidget.swift', 'HabitWidget.swift']) {
     const src = code(read(`targets/widget/${f}`));
     assert.match(src, /\.containerBackground\(for: \.widget\)/, f);
-    assert.match(src, /GlazeBackground\(theme: t\)/, `${f} has no themed background`);
+    if (f === 'HabitWidget.swift') {
+      // Habit controls retain the original stops without a legibility-changing glass material.
+      assert.match(src, /return entry\.theme\.backgroundHexes/);
+      assert.match(src, /LinearGradient\(colors: stops\.map/);
+      assert.match(src, /SavedWidgetFill\(fill: fill\)/);
+      assert.doesNotMatch(src, /ultraThinMaterial/);
+    } else {
+      assert.match(src, /GlazeBackground\(theme: t\)/, `${f} has no themed background`);
+    }
     assert.match(src, /t\.(inkColor|accentColor)/, `${f} has no themed ink/accent`);
   }
   // The shared background uses the pale-aware stops.
