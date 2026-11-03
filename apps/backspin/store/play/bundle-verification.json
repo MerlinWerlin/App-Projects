@@ -22,5 +22,7 @@
   "embeddedJs": true,
   "otaUpdates": false,
   "sha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa",
-  "playSubmission": false
+  "playSubmission": false,
+  "releaseDisposition": "SUPERSEDED_DO_NOT_UPLOAD",
+  "reason": "Later Android pending-payment acceptance and acknowledgement repair requires a fresh verified binary."
 }

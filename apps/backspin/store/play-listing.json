@@ -39,8 +39,19 @@
       "api35_decoder_tests": "2 PASS",
       "api36_decoder_tests": "2 PASS",
       "full_microphone_gameplay": "UNQUALIFIED",
-      "latest_host_run": 41715297715,
-      "sdk_injection_experiment": "Archived after pre-install emulator crashes"
+      "latest_host_run": 41726474225,
+      "sdk_injection_experiment": "Archived after pre-install emulator crashes",
+      "microphone_diagnosis": "Captured AAC is already effectively silent; matching195584 frames in AAC/WAV.42 Ranchu input errors/277 inserted-silence messages.2 native decoder tests PASS; full gameplay unqualified.",
+      "pinned_official_emulator_control_run": 41728835831
+    },
+    "priorSignedBundleDisposition": "SUPERSEDED_DO_NOT_UPLOAD: lacks Android payment-state/acknowledgement repair",
+    "replacement": {
+      "runtimeSource": "5ac7dd3",
+      "buildRun": 41728527170,
+      "status": "RUNNING_NOT_VERIFIED",
+      "appTests": 40,
+      "typecheck": "PASS",
+      "iosExport": "PASS"
     }
   }
 }
