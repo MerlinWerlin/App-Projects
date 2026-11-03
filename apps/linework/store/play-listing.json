@@ -5,11 +5,11 @@
   "shortDescription": "Use a camera overlay or lightbox to practise drawing from your own images.",
   "fullDescription": "Choose an image, place your phone securely and follow the overlay on paper. Adjust position and visibility, lock the image in place, or use the lightbox view.\n\nUse a stable stand for camera tracing. This is an overlay drawing aid; it does not project an image onto your paper.",
   "releaseBlockers": [
-    "Google account identity/phone approval (Lane 2)",
+    "Google account/app-record prerequisites owned by Lane2; current approval not asserted here",
     "Real Play Billing licence-test purchase, pending payment, cancellation, acknowledgement and restore",
-    "Repaired native video-save and 16KB runtime qualification",
-    "Photo import/physical camera QA and final SDK/Data safety/listing review"
+    "Physical camera and representative personal-photo/formats QA",
+    "Final SDK/Data safety/listing review and publication of the privacy draft"
   ],
-  "assets": "Actual Android Home/Lightbox/Plus test screenshots are retained under apk-output; store icon, feature graphic and final listing assets need review",
-  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
+  "assets": "Actual Android Home/Lightbox/Plus/owned-image/outline screenshots and settled4KB/16KB camera tests retained under apk-output; final store assets need review",
+  "privacy": "Draft policy reconciles Android OTA-off, OS backup and operator; actual unused barcode SDK removal verified. Final Data safety form not submitted."
 }

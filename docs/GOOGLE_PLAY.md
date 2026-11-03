@@ -2,6 +2,27 @@
 
 ## Current Linework checkpoint, 4 November 2026
 
+**Signed version11 is ready for Google Play testing. Public release is not yet approved.** Source `48283624ec3610189aaaea018529504a3efde85a`, original build [41720065293](https://github.com/MerlinWerlin/App-Projects/actions/runs/41720065293). Actual AAB: **63,360,758bytes**, SHA256 `8214b87ea9be6eea7802a53f0b8f845c9cee1406abfa6348923c525b8eac86da`. Package `com.jared797.linework`, versionCode11, minSDK24/target36, arm64+x86_64. Dedicated upload certificate matches local keytool verification; no key was regenerated. AAB/APK and public receipts: `apk-output/linework-production-v11-20261104/`. Final evidence index: `apk-output/LINEWORK_PRODUCTION_V11_VERIFICATION_20261104.json` (166 selected files hashed).
+
+| Exact unchanged candidate / harnessdcd8cd7 | Guest | Native result | Actual MP4 / displayed length |
+|---|---|---|---|
+| [41726267099](https://github.com/MerlinWerlin/App-Projects/actions/runs/41726267099) | API36 /4096-byte pages | **11/11 PASS**,167 ADB commands /0 failures | 4.451s /5s |
+| [41726272100](https://github.com/MerlinWerlin/App-Projects/actions/runs/41726272100) | API36 /16384-byte pages | **11/11 PASS**,167 ADB commands /0 failures | 5.154s /6s |
+
+The tests drive real onboarding, camera-denial/Lightbox fallback, lock/unlock/reset/exit, onboarding and exact14day local-trial persistence, native virtual-camera recording/Stop/save, duration comparison within2seconds, system-picker import of the owned PNG, native image manipulation/line-art generation and camera tracing. Both settled tracing frames visibly show the live virtual-camera scene with the generated outline. Outline, saved-video and restarted-trial screenshots were also reviewed. The fixture is the app's own PNG, not representative personal-photo or physical-camera QA. Evidence folders end in `linework-v11-{4kb,16kb}-settled-qualified-20261104/`.
+
+Actual release dependency graph, manifest and native library checks prove the unused barcode SDK, initializer, native barcode libraries and model-download hint are absent. Expo Camera builds from its pinned source for Android; Apple/base configuration is preserved. All50 native libraries satisfy16KB ELF alignment, and the derived APK passes ZIP alignment/signature checks. Actual native OTA is disabled. Microphone, overlay and modern broad media reads are absent; legacy storage permissions end at SDK32. OS backup remains enabled and is explained in the unpublished privacy draft.
+
+**Software validation:**817/817 app tests PASS with2workers, TypeScript PASS,38 variant/version/configuration checks PASS. The first default-concurrency full run's unchanged one-second catalogue threshold failure (816/817,2163ms) is retained; the same test passes isolated482ms and at510ms in the controlled full run. No performance threshold or catalogue code was relaxed.
+
+**Why the original builder is red:** its signing/static stages passed, but its first UI harness selected the noninteractive Outline heading. Later runs selected a child inside the disabled Start button. Those failed full runs remain FAIL, with ten earlier checks and actual import/outline evidence retained. Harnessfd01340 passes all11 checks; harnessdcd8cd7 adds a settled-frame capture after the normal900ms opening cover. The final green jobs above retest the exact unchanged binary. Local Windows verification initially failed to decode the UTF8 Gradle report; explicit UTF8/LF handling fixes the verifier and reproduces the original CI verification JSON byte for byte. All source-bound issues and earlier candidates remain indexed.
+
+**Next release gates:** real Play Billing purchase/pending/cancellation/acknowledgement/restore, physical camera and representative personal-photo/formats testing, and final SDK/Data safety/listing review plus publication of the privacy draft. Account verification remains assigned to Lane2; no fresh approval is asserted by this lane. No Google app record/upload, public release, paid EAS build or Apple submission action was performed. Main remains release authority; PR106 is a conflicting draft covering seven apps and must not be blindly merged. Fresh main comparison still shows only Linework SHIP_BASE bookkeeping differences, with no missed runtime patch.
+
+## Earlier 4 November checkpoints, retained chronology
+
+These paragraphs preserve what was known during development. The current signed-bundle qualification above supersedes their pending statuses; the raw earlier successes and failures remain retained.
+
 The Android camera-session repair is now **native verified**. Signed version6 from source4d48e7b/build41709948524 is 68,938,669bytes, SHA256 `d9043d7a1ac1abc00045ba19e312b524dd648756aa2d0f52ae9626c761ddec1c`. Local keytool independently matches the dedicated upload certificate; package `com.jared797.linework`, target36, 52 native ELF libraries and production/OTA-off configuration pass. The actual manifest excludes microphone, overlay and modern broad media reads; legacy storage is limited to maxSDK32. No Google upload occurred.
 
 | Exact version6 test | Guest | Result | New native MP4 |
