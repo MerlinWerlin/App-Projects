@@ -3,6 +3,7 @@ import { useAudioRecorder, useAudioRecorderState } from 'expo-audio';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { micPermission, modeForRecording, RECORDING, requestMic, stop as stopPlayback, type MicPermission } from '../native/audio.ts';
 import { haptic } from '../native/device.ts';
+import { recordingToWav } from '../native/pcm.ts';
 
 export type RecPhase = 'idle' | 'preparing' | 'countdown' | 'recording' | 'stopping';
 
@@ -55,7 +56,8 @@ export function useRecorder(maxSeconds: number, countdown: boolean) {
     setPhase('stopping');
     try {
       await recorder.stop();
-      const uri = recorder.uri;
+      const recordedUri = recorder.uri;
+      const uri = recordedUri ? await recordingToWav(recordedUri) : null;
       haptic.press();
       resolver.current?.(uri ?? null, uri ? undefined : 'no file');
     } catch (e) {
