@@ -68,10 +68,10 @@ jobs:
           sudo apt-get install -y xvfb libcurl4 libglfw3 libuv1 libpng16-16 libicu74 libjpeg-turbo8 libwebp7 libopengl0 libegl1 libgles2 mesa-utils
       - name: Install pmtiles CLI
         run: |
-          gh release download -R protomaps/go-pmtiles --pattern '*Linux_x86_64.tar.gz' -D /tmp/pmt
+          gh release download v1.31.2 -R protomaps/go-pmtiles --pattern '*Linux_x86_64.tar.gz' -D /tmp/pmt
           tar -xzf /tmp/pmt/*.tar.gz -C /tmp/pmt
           sudo install /tmp/pmt/pmtiles /usr/local/bin/pmtiles
-          pmtiles --version
+          pmtiles --help > /dev/null
       - name: Install build dependencies
         run: npm ci --no-audit --no-fund
       - name: Build real city packs
