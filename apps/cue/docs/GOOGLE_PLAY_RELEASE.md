@@ -1,4 +1,4 @@
-# Cue Google Play preparation — 3 November 2026
+# Cue Google Play preparation — updated 4 November 2026
 
 Jared requested that Cue be simulated and pushed toward Google Play release.
 Source is current App-Projects main at dc444372ca15ba1c88d9badca11d67e0d20b56b7,
@@ -20,15 +20,21 @@ The older October test APK is not the release candidate.
   the compiled manifest shows no read declaration; aapt derives it from WRITE
   capped at API32. The repaired checker distinguishes declared from implied
   permissions, has five regression tests, and passes this exact APK.
-- Guarded APK reuse and current 4 KB / 16 KB emulator evidence:
+- Guarded APK reuse exposed a real video-save API failure on both page sizes:
   https://github.com/MerlinWerlin/App-Projects/actions/runs/41621450349
-  App source must match the compiled commit before reuse. Simulations are still
-  running; this is not a runtime-pass claim.
-- The subsequent Voice Pace cleanup fix requires its own final binary:
-  https://github.com/MerlinWerlin/App-Projects/actions/runs/41622056532
-  It is building at source 421bff5. Earlier APKs do not include this repair.
-- Inspected APK: 72,288,523 bytes,
-  SHA-256 b282e31d15dde8a6f929c209004a89883da7fa772fdefcd86a3eeed9dff588ca.
+  The Expo SDK's root MediaLibrary export throws for the old save API. Cue now
+  uses the supported `expo-media-library/legacy` entry point.
+- Current binary with the save and Voice Pace repairs:
+  https://github.com/MerlinWerlin/App-Projects/actions/runs/41622370763
+  Native build/static inspection passed. The complete 4 KB simulation passed,
+  including a saved 8,528 ms video at 1280×720. The 16 KB runner exited during
+  its initial launch command without an app-crash record; it did not pass.
+- Identical-APK rerun, started 4 November:
+  https://github.com/MerlinWerlin/App-Projects/actions/runs/41698286454
+  App source must match the compiled commit before reuse. Await this run's
+  results before claiming complete 4 KB / 16 KB validation.
+- Current inspected APK: 72,279,195 bytes, source f572a109a0dc6fa9f8ef5ffc24572b792fe0581c,
+  SHA-256 dbf7f03738c708f08e34962d9a58727ee9c62e3a6b411c555938a7cdfb137425.
 
 The emulator flows create and edit a script, open the prompter, toggle mirror,
 then force-stop/restart and verify the saved title/body. They also start the
@@ -44,6 +50,12 @@ The earlier 83ad50c APK compiled successfully: target SDK 36, embedded JavaScrip
 Its manifest exposed unused SDK media-read, overlay and background-playback
 declarations. The final Play overlay removes these capabilities; final binary
 inspection rejects them. This baseline APK is not the release candidate.
+
+Legacy WRITE_EXTERNAL_STORAGE is capped at API32. Android's packaging tool
+also reports implied READ_EXTERNAL_STORAGE with that same cap. The compiled
+manifest contains no explicit read declaration. This is legacy platform
+compatibility access, not a claim that older Android versions enforce add-only
+library access.
 
 The initial generic CI check exposed a missing explicit sharing config plugin;
 the SDK-aligned follow-up passes TypeScript, tests and both mobile exports.

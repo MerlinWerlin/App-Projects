@@ -1,6 +1,6 @@
 # Cue Android data review — draft, not submitted
 
-This review describes the Play overlay at app source 263b645. It is preparation
+This review describes the Play overlay and repairs at app source f572a10. It is preparation
 for the Console forms, not a completed Data safety declaration or a network
 capture. Recheck against the signed production AAB before submission.
 
@@ -15,6 +15,11 @@ capture. Recheck against the signed production AAB before submission.
 | Android trial | Earliest start timestamp in local storage and SecureStore; not a Google trial SKU | `src/plus/androidTrial.ts`; clearing data/reinstall can remove local state |
 | Updates | Play overlay sets `updates.enabled: false` and embeds JS | Compiled manifest/config; do not reuse iOS EAS Update disclosure as Android behaviour |
 | Feedback | Opens mail composer, sending remains the user's action | Support correspondence may contain the information the user chooses to send |
+
+On older Android versions, the capped legacy write permission also implies
+storage read access. The absence of explicit read declarations does not prove
+the operating system enforces add-only access there. Cue's code saves its own
+takes and does not browse the collection; describe that behaviour precisely.
 
 The installed package includes Billing and Google Android Data Transport
 components from dependencies. Their presence alone proves neither collection

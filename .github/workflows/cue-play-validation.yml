@@ -126,6 +126,14 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
+          sudo udevadm settle
+          # Device permission updates can lag the trigger on a fresh runner.
+          for attempt in $(seq 1 10); do
+            if test -r /dev/kvm && test -w /dev/kvm; then break; fi
+            sleep 1
+          done
+          ls -l /dev/kvm
+          id
           test -r /dev/kvm
           test -w /dev/kvm
       - name: Run current APK on Android emulator
