@@ -14,19 +14,19 @@ The older October test APK is not the release candidate.
   permission checker also has five passing Python regression tests.
 - Current-candidate native build and simulations:
   https://github.com/MerlinWerlin/App-Projects/actions/runs/41724507628
-  Generic checks: run41724507470. Await their completion before treating the
+  Generic checks: run 41724507470. Await their completion before treating the
   acknowledgement repair as natively validated.
-- Latest completed APK is source070ad0c: 72,286,111 bytes, target36, embedded
+- Latest completed APK is source 070ad0c: 72,286,111 bytes, target SDK 36, embedded
   JavaScript and 58 native libraries passing 16 KB alignment inspection.
   SHA-256 2e5aec751b67ffbd088c860788026040af1c53422d92fbd6f41f3105e3a65843.
-  Its complete 4 KB flow passed in run41723153512, saving an 8,456 ms,1280×720
+  Its complete 4 KB flow passed in run 41723153512, saving an 8,456 ms, 1280×720
   video. This binary predates c809ffd's acknowledgement recovery.
 - The same binary's 16 KB checks exposed two harness failures: an emulator
-  disappeared during installation, and run41723866270 timed out starting
+  disappeared during installation, and run 41723866270 timed out starting
   Maestro's driver. The latter's guest log explicitly records lowmemorykiller
-  killing dev.mobile.maestro(pid5011) because the minimum watermark was breached.
-  The host still had11.7GB available and no host OOM event. The guest image's
-  2560MB default is now raised to4096MB; the next candidate simulation must use
+  killing dev.mobile.maestro (PID 5011) because the minimum watermark was breached.
+  The host still had 11.7 GB available and no host OOM event. The guest image's
+  2560 MB default is now raised to4096 MB; the next candidate simulation must use
   this workflow revision. No full 16 KB pass is claimed at this checkpoint.
 - Play preview uses com.jared797.cue.playtest, separate data, embedded JavaScript
   and disabled OTA. Play production preserves com.jared797.cue.
@@ -53,24 +53,24 @@ The older October test APK is not the release candidate.
 - Historical inspected APK: 72,279,195 bytes, source f572a109a0dc6fa9f8ef5ffc24572b792fe0581c,
   SHA-256 dbf7f03738c708f08e34962d9a58727ee9c62e3a6b411c555938a7cdfb137425.
 
-4 November follow-up: the 4 KB flow passed again in run41698286454 and
-run41698547987. The latter 16 KB flow passed script creation/editing/prompter,
+4 November follow-up: the 4 KB flow passed again in run 41698286454 and
+run 41698547987. The latter 16 KB flow passed script creation/editing/prompter,
 then its next Maestro process reported `device offline` / `DeviceServerDiedException`.
 No app native/JavaScript crash was recorded. The harness now uses one Maestro
 session with nested flows and explicit stopApp/relaunch for persistence; no
 assertions were removed. These are runner-transport findings, not a 16 KB pass.
 
 The check bot subsequently aligned SDK patch dependencies at dac129c, including
-Expo58.0.23 and router58.0.30. The older APK cannot validate those changed native
-dependencies. Fresh native build and simulations at source070ad0c:
+Expo 58.0.23 and router 58.0.30. The older APK cannot validate those changed native
+dependencies. Fresh native build and simulations at source 070ad0c:
 https://github.com/MerlinWerlin/App-Projects/actions/runs/41699589503
-Compilation/static checks passed. Both Maestro2.12 simulation jobs failed their
-transport connection. Generic checks passed in run41699709429 (the earlier
+Compilation/static checks passed. Both Maestro 2.12 simulation jobs failed their
+transport connection. Generic checks passed in run 41699709429 (the earlier
 dispatch was superseded by that docs-inclusive check). Do not reuse f572a10 as
 current-source proof.
 
-Maestro2.10 still includes the direct ADB socket transport. The changelog places
-the transition at2.5, so the current harness pins checksum-verified2.4. It keeps
+Maestro 2.10 still includes the direct ADB socket transport. The changelog places
+the transition at 2.5, so the current harness pins checksum-verified 2.4. It keeps
 every UI assertion in one session, caps its JVM heap and captures host memory,
 process and kernel state on exit. Harness-only commits no longer trigger a
 redundant native compilation; dispatch can reuse an APK only after app-source

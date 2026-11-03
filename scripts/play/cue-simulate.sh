@@ -6,7 +6,8 @@ output="$(realpath cue-android-output)"
 mkdir -p "$output/captures"
 capture_diagnostics() {
   adb devices -l > "$output/adb-devices-final.txt" 2>&1 || true
-  adb logcat -d > "$output/logcat.txt" 2>&1 || true
+  adb logcat -d -v threadtime > "$output/logcat-final.txt" 2>&1 || true
+  if [[ ! -f "$output/logcat.txt" ]]; then cp "$output/logcat-final.txt" "$output/logcat.txt"; fi
   adb shell cat /proc/meminfo > "$output/guest-memory.txt" 2>&1 || true
   adb exec-out screencap -p > "$output/final.png" 2>/dev/null || true
   free -m > "$output/host-memory.txt" || true
@@ -30,6 +31,7 @@ for attempt in $(seq 1 10); do
   sleep 1
 done
 python scripts/play/verify_cue_video.py "$output/saved-video.txt"
-adb logcat -d > "$output/logcat.txt"
-if grep -E 'FATAL EXCEPTION|Fatal signal|ReactNativeJS:.*(Error:|Exception)' "$output/logcat.txt"; then exit 1; fi
+adb shell pidof com.jared797.cue.playtest > "$output/app-final-pids.txt"
+adb logcat -d -v threadtime > "$output/logcat.txt"
+python scripts/play/verify_cue_logcat.py "$output"
 printf 'Library/edit/prompter/script persistence, Android trial persistence, permission-denial recovery and synthetic-camera video save passed on API35, page size %s. No Play purchase, physical microphone or production signing claim.\n' "$actual" > "$output/result.txt"
