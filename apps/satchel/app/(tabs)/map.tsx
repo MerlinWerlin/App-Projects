@@ -26,6 +26,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
 import kyotoData from '../../src/content/demo_pois_kyoto.json';
+import { availablePoiSets, poiSetKey as setKey, selectPoiSet } from '../../src/core/mapsets.ts';
 import tagData from '../../src/content/osm_poi_tags.json';
 import tokyoData from '../../src/content/demo_pois_tokyo.json';
 import { formatSize, overallProgress, pickCityFor, regionForCity, type CityCatalog, type CityMap } from '../../src/core/citymaps.ts';
@@ -102,6 +103,7 @@ import { usePersisted } from '../../src/state/persisted.ts';
 
 const CATS = parsePoiCategories(tagData);
 const SETS: PoiSet[] = [parsePoiSet(tokyoData, CATS), parsePoiSet(kyotoData, CATS)].filter((s): s is PoiSet => s !== null);
+const NO_SAMPLE_SETS: PoiSet[] = [];
 const MAP_HEIGHT = 280;
 const NO_LINES: MapLine[] = [];
 /** "Nearest to you" only when you're actually in that city; otherwise distances are from the city's middle. */
@@ -125,7 +127,6 @@ type SaveForm = { name: string; tripId: string | null; errors: (PlaceError | 'tr
 /** A category's label key: the Map v0 ones under map.cat., the ones T13 added under packpois.cat. */
 // T156: lifts' label lives with the step-free strings.
 const catKey = (id: OfferedCategory): Key => (id === 'lift' ? 'stepfree.cat.lift' : isMapCategory(id) ? `map.cat.${id}` : `packpois.cat.${id as 'supermarket' | 'police' | 'embassy'}`);
-import { availablePoiSets, poiSetKey as setKey, selectPoiSet } from '../../src/core/mapsets.ts';
 const NO_TOGGLES: unknown = null;
 
 // ---- Offline city maps (T47) ----
@@ -731,7 +732,7 @@ export default function MapScreen() {
         <SectionHeader title={t('f99.map.sectionFind')} icon="navigate-outline" tone="sea" />
         <MapSearch
           key={showSamples ? 'sample-search' : 'real-search'}
-          sets={showSamples ? SETS : []}
+          sets={showSamples ? SETS : NO_SAMPLE_SETS}
           reveal={reveal}
           from={here}
           installedKey={installed.map((c) => c.id).join(',')}
@@ -838,7 +839,6 @@ export default function MapScreen() {
           setForm(null);
         }}
       />
-      {!set ? <Body muted>{t('packpois.noCityHere')}</Body> : null}
       {sets.length > 1 ? (
         <View style={{ gap: space.s }}>
           <Label>{t(packSets.length ? 'packpois.city' : 'map.city')}</Label>
@@ -983,7 +983,7 @@ export default function MapScreen() {
         keyExtractor={(p) => p.id}
         ListHeaderComponent={header}
         ListEmptyComponent={
-          set && origin && listEmpty ? (
+          !set ? <Body muted>{t('packpois.noCityHere')}</Body> : origin && listEmpty ? (
             <View style={{ gap: space.xs }}>
               <Body muted>{t(listEmpty.kind === 'noneOn' ? 'map.noneOn' : listEmpty.kind === 'noneInCats' ? 'map.noneInCats' : 'packpois.none')}</Body>
               {listEmpty.showAll ? <Button label={t('map.catsShowAll')} hint={t('map.catsShowAllHint')} kind="quiet" onPress={showAllCats} /> : null}

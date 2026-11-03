@@ -39,7 +39,9 @@ jobs:
           node-version: '24'
       - name: App tests (includes real pack and demo-place regressions)
         working-directory: apps/satchel
-        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test --test-concurrency=4 'src/**/*.test.ts'
+        run: |
+          node --test tools/maps/*.test.mjs
+          node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test --test-concurrency=4 'src/**/*.test.ts'
   build:
     needs: app-contract
     runs-on: ubuntu-24.04
@@ -88,6 +90,7 @@ jobs:
             apps/satchel/tools/maps/out/catalog.json
             apps/satchel/tools/maps/out/*preview.png
             apps/satchel/tools/maps/out/verification.json
+            apps/satchel/tools/maps/out/*-poi-source.json
           if-no-files-found: ignore
           retention-days: 14
       - name: Publish verified packs, then catalog.json last
