@@ -16,6 +16,10 @@ on:
         description: Optional existing run ID; reuse its verified APK for emulator testing
         type: string
         default: ''
+      productionBundle:
+        description: Also prepare an unsigned production-package AAB after gameplay passes (not uploadable until signed)
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -51,6 +55,9 @@ jobs:
           case "$APP" in crochet|glaze|linework|couch|cue|backspin|satchel) ;; *) exit 2;; esac
           cd "apps/$APP"
           npm ci --no-audit --no-fund
+          npm test
+          npm run typecheck
+          (cd ../.. && node --test scripts/play/backspin-config.test.cjs)
           if [ "$APP" = glaze ]; then node scripts/native-link.mjs; fi
           if [ "$APP" = backspin ]; then
             sudo apt-get update -qq
@@ -115,4 +122,48 @@ jobs:
             apk-output/*.png
             apk-output/*.xml
           if-no-files-found: ignore
+          retention-days: 30
+      - name: Prepare unsigned production bundle after verified gameplay
+        if: inputs.productionBundle && inputs.smoke && inputs.artifactRun == ''
+        shell: bash
+        env:
+          PLAY_VARIANT: production
+        run: |
+          cd apps/backspin
+          npx expo prebuild --platform android --no-install --clean
+          npx expo config --type public --json > /tmp/play-production-config.json
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('android/app/build.gradle')
+          s=p.read_text()
+          assert s.count('signingConfig signingConfigs.debug') >= 1
+          s=s.replace('signingConfig signingConfigs.debug', '// Unsigned candidate; durable upload signing is a separate release gate.')
+          p.write_text(s)
+          PY
+          cd android
+          ./gradlew :app:bundleRelease --no-daemon --max-workers=2 -PreactNativeArchitectures=arm64-v8a,x86_64 -Dorg.gradle.jvmargs=-Xmx4g
+          cd ../../..
+          mkdir -p aab-output
+          cp apps/backspin/android/app/build/outputs/bundle/release/app-release.aab aab-output/backspin-UNSIGNED.aab
+          cp /tmp/play-production-config.json aab-output/config.json
+          git rev-parse HEAD > aab-output/source-commit.txt
+          python - <<'PY'
+          from pathlib import Path
+          import json,zipfile,hashlib
+          p=Path('aab-output/backspin-UNSIGNED.aab')
+          c=json.loads(Path('aab-output/config.json').read_text())
+          assert c['android']['package']=='com.jared797.backspin' and c['updates']['enabled'] is False
+          with zipfile.ZipFile(p) as z:
+            assert 'base/manifest/AndroidManifest.xml' in z.namelist()
+            assert 'base/assets/index.android.bundle' in z.namelist()
+            assert not any(n.startswith('META-INF/') and n.endswith(('.RSA','.DSA','.EC')) for n in z.namelist())
+          Path('aab-output/receipt.json').write_text(json.dumps(dict(status='UNSIGNED_NOT_UPLOADABLE',sha256=hashlib.sha256(p.read_bytes()).hexdigest(),bytes=p.stat().st_size,package=c['android']['package'],signing='Durable upload key and final signature required; do not submit this unsigned file'),indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: inputs.productionBundle && inputs.smoke && inputs.artifactRun == ''
+        with:
+          name: backspin-unsigned-production-bundle
+          path: aab-output/
+          if-no-files-found: error
           retention-days: 30

@@ -1,14 +1,32 @@
 {
   "status": "draft_not_uploaded",
-  "locale": "en-US",
+  "locale": "en-AU",
   "title": "Backspin: Reverse Your Voice",
   "shortDescription": "Record a line, hear it backwards, copy it and reveal the result.",
-  "fullDescription": "Say a line, listen to it backwards, try copying that sound, then flip your attempt to hear what comes out. Play alone or pass the phone between friends.",
+  "fullDescription": "Your voice, with a twist.\n\nSay a short line, hear it backwards, then try copying that sound. Backspin flips your attempt forwards and scores its sound, rhythm and length.\n\nPlay a quick round, pick a daily challenge, try freestyle or pass one phone between friends in party mode. Loop or slow down the backwards clip while you practise. Save takes on your phone and share a four-part clip: original, backwards, your copy and flipped.\n\nYour first 10 scored rounds are free with all packs, effects and party sizes available. Backspin Plus is one optional lifetime purchase for unlimited rounds. No subscription or ads. Saved takes remain playable and shareable.\n\nNo account is needed. Recording and audio processing happen on your phone; clips leave it only when you choose to share.",
   "releaseBlockers": [
-    "Validate new native AAC-to-PCM conversion in the compiled APK and complete a recorded gameplay round",
-    "Audio interruptions, route changes, playback and recording device QA",
-    "Play Billing and entitlement restore verification"
+    "Google developer account verification and app creation",
+    "Current native emulator gameplay evidence",
+    "Durable upload signing and final AAB",
+    "Actual Play Billing purchase/cancellation/restore",
+    "Final permissions and Data safety/content-rating declarations"
   ],
   "assets": "Android device screenshots, 512px store icon and 1024x500 feature graphic still require verification",
-  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
+  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/backspin/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/backspin/support.html",
+  "monetization": {
+    "app": "free",
+    "freeScoredRounds": 10,
+    "productId": "com.jared797.backspin.plus",
+    "productType": "one_time_non_consumable",
+    "authorizedAustraliaPrice": "1.99",
+    "playProductConfigured": false
+  },
+  "artwork": {
+    "icon": "store/play/icon-512.png",
+    "featureGraphic": "store/play/feature-1024x500.png",
+    "phoneScreenshots": "pending_actual_emulator_run"
+  },
+  "accountStatus": "Create app disabled pending identity, organization website and phone verification; signed-in observation 3 Nov 2026"
 }
