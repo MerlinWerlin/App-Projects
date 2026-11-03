@@ -18,10 +18,11 @@ if [[ "$package" != *.playtest ]]; then
 fi
 system_image='system-images;android-35;google_apis;x86_64'
 expected_pages=4096
+guest_memory=2048
 if [[ "${APP:-}" == linework ]]; then
   case "${LINEWORK_PAGE_SIZE:-4k}" in
     4k) ;;
-    16k) system_image='system-images;android-35;google_apis_ps16k;x86_64'; expected_pages=16384 ;;
+    16k) system_image='system-images;android-35;google_apis_ps16k;x86_64'; expected_pages=16384; guest_memory=4096 ;;
     *) exit 2 ;;
   esac
 fi
@@ -36,7 +37,7 @@ if [[ "${APP:-}" == linework ]]; then
   # to Linework until its evidence is reviewed; do not restart a failed guest.
   gpu_args=(-gpu swiftshader -feature -Vulkan -cores 2 -no-metrics)
 fi
-"$ANDROID_HOME/emulator/emulator" -avd play-smoke -no-window -no-audio -no-boot-anim -no-snapshot "${gpu_args[@]}" -memory 2048 > "$output/emulator.txt" 2>&1 &
+"$ANDROID_HOME/emulator/emulator" -avd play-smoke -no-window -no-audio -no-boot-anim -no-snapshot "${gpu_args[@]}" -memory "$guest_memory" > "$output/emulator.txt" 2>&1 &
 emulator_pid=$!
 diagnostics() {
   result=$?
@@ -48,6 +49,7 @@ diagnostics() {
       ps -p "$emulator_pid" -o pid,ppid,stat,etime,rss,args || true
       timeout 10 adb devices -l || true
       timeout 10 adb get-state || true
+      timeout 10 adb shell cat /proc/meminfo > "$output/guest-meminfo.txt" 2>&1 || true
       free -m
       df -h "$RUNNER_TEMP"
       dmesg -T 2>&1 | tail -60 || true
@@ -71,16 +73,27 @@ adb shell input keyevent 82
 adb install "$apk" | tee "$output/install.txt"
 adb logcat -c
 adb shell am start -W -n "$package/.MainActivity" | tee "$output/launch.txt"
+if [[ "${APP:-}" == linework ]]; then
+  adb shell pidof "$package" | tr -d '\r' > "$output/launch-process.txt"
+  [[ "$(cat "$output/launch-process.txt")" =~ ^[0-9]+$ ]]
+fi
 sleep 20
 # Preserve crash evidence even when the process already exited.
 adb logcat -d > "$output/logcat.txt" 2> "$output/logcat-stderr.txt"
 adb exec-out screencap -p > "$output/launch.png"
-adb shell pidof "$package" > "$output/process.txt"
+adb shell pidof "$package" | tr -d '\r' > "$output/process.txt"
 # Some apps keep animating, so UIAutomator cannot reach idle. A screenshot and
 # live process still establish launch; XML is supplementary except in Rowlight's functional test.
 adb shell uiautomator dump /sdcard/window.xml > "$output/ui-dump.txt" 2>&1 || true
 adb pull /sdcard/window.xml "$output/window.xml" >> "$output/ui-dump.txt" 2>&1 || true
-if grep -E 'FATAL EXCEPTION|Fatal signal|ReactNativeJS:.*(Error:|Exception)' "$output/logcat.txt"; then
+crash_log="$output/logcat.txt"
+if [[ "${APP:-}" == linework ]]; then
+  [[ "$(cat "$output/launch-process.txt")" == "$(cat "$output/process.txt")" ]]
+  awk -v pid="$(cat "$output/process.txt")" '$3 == pid' "$output/logcat.txt" > "$output/app-logcat.txt"
+  [[ -s "$output/app-logcat.txt" ]]
+  crash_log="$output/app-logcat.txt"
+fi
+if grep -E 'FATAL EXCEPTION|Fatal signal|ReactNativeJS:.*(Error:|Exception)' "$crash_log"; then
   exit 1
 fi
 grep -q 'Status: ok' "$output/launch.txt"
