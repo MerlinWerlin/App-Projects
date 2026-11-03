@@ -16,8 +16,18 @@ if [[ "$package" != *.playtest ]]; then
   [[ "${APP:-}" == linework && "${LINEWORK_PRODUCTION_QA:-}" == 1 && "$package" == com.jared797.linework ]]
   python -c 'import json,sys; c=json.load(open(sys.argv[1])); assert c["extra"]["playVariant"]=="production" and c["updates"]["enabled"] is False' "$output/config.json"
 fi
-sdkmanager 'system-images;android-35;google_apis;x86_64' > "$output/emulator-setup.txt" 2>&1
-echo no | avdmanager create avd --name play-smoke --path "$ANDROID_AVD_HOME/play-smoke.avd" --package 'system-images;android-35;google_apis;x86_64' --force >> "$output/emulator-setup.txt" 2>&1
+system_image='system-images;android-35;google_apis;x86_64'
+expected_pages=4096
+if [[ "${APP:-}" == linework ]]; then
+  case "${LINEWORK_PAGE_SIZE:-4k}" in
+    4k) ;;
+    16k) system_image='system-images;android-35;google_apis_ps16k;x86_64'; expected_pages=16384 ;;
+    *) exit 2 ;;
+  esac
+fi
+printf '%s\n' "$system_image" > "$output/system-image.txt"
+sdkmanager "$system_image" > "$output/emulator-setup.txt" 2>&1
+echo no | avdmanager create avd --name play-smoke --path "$ANDROID_AVD_HOME/play-smoke.avd" --package "$system_image" --force >> "$output/emulator-setup.txt" 2>&1
 "$ANDROID_HOME/emulator/emulator" -list-avds | tee "$output/avds.txt" | grep -qx play-smoke
 sudo chmod 666 /dev/kvm
 gpu_args=(-gpu swiftshader_indirect)
@@ -53,6 +63,10 @@ for i in $(seq 1 90); do
   sleep 2
 done
 [[ "$(adb shell getprop sys.boot_completed | tr -d '\r')" == 1 ]]
+if [[ "${APP:-}" == linework ]]; then
+  adb shell getconf PAGE_SIZE | tr -d '\r' > "$output/emulator-page-size.txt"
+  [[ "$(cat "$output/emulator-page-size.txt")" == "$expected_pages" ]]
+fi
 adb shell input keyevent 82
 adb install "$apk" | tee "$output/install.txt"
 adb logcat -c

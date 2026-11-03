@@ -7,6 +7,11 @@ on:
         description: Optional prior production bundle run to retest without recompiling
         type: string
         default: ''
+      pageSize:
+        description: Runtime page-size environment for the derived APK
+        type: choice
+        default: 4k
+        options: [4k, 16k]
 
 permissions:
   contents: read
@@ -29,6 +34,7 @@ jobs:
       PLAY_VARIANT: production
       EAS_BUILD_PLATFORM: android
       LINEWORK_PRODUCTION_QA: '1'
+      LINEWORK_PAGE_SIZE: ${{ inputs.pageSize || '4k' }}
       CI: '1'
     steps:
       - uses: actions/checkout@v4

@@ -16,6 +16,11 @@ on:
         description: Optional existing run ID; reuse its verified APK for emulator testing
         type: string
         default: ''
+      pageSize:
+        description: Linework runtime page-size environment
+        type: choice
+        default: 4k
+        options: [4k, 16k]
 
 permissions:
   contents: read
@@ -31,6 +36,7 @@ jobs:
       EAS_BUILD_PLATFORM: android
       GLAZE_NATIVE: '1'
       CI: '1'
+      LINEWORK_PAGE_SIZE: ${{ inputs.pageSize || '4k' }}
     steps:
       - uses: actions/checkout@v4
         with:
