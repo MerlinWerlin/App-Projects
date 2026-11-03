@@ -32,7 +32,7 @@ import CryptoKit
               // WidgetKit supplies content margins on a real Home Screen widget. Model16pt here;
               // the explicit background also paints them in this isolated SwiftUI host.
               let view=HabitWidgetContent(entry:entry,family:family).padding(16).frame(width:width,height:170)
-                .background(GlazeBackground(theme:theme))
+                .background(LinearGradient(colors:theme.backgroundColors,startPoint:.topLeading,endPoint:.bottomTrailing))
                 .environment(\.colorScheme,.light).environment(\.locale,Locale(identifier:"en_US"))
               let renderer=ImageRenderer(content:view);renderer.scale=2
               guard let image=renderer.uiImage,let data=image.jpegData(compressionQuality:0.94) else {throw failure("native image")}

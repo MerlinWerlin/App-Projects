@@ -83,7 +83,19 @@ enum GlazeShared { static let appGroup = "com.glaze.habit-contract.unused.\(UUID
     check(HabitStore.readLog(in: store)?.events.count == 400, "native log bounded at400")
     check(HabitStore.readLog(in: store)?.seq == 450, "pruning does not reuse sequence ids")
 
-    let result: [String: Any] = ["schema": "GLAZE_NATIVE_HABIT_CONTRACT_V1", "sourceSHA": ProcessInfo.processInfo.environment["GITHUB_SHA"] ?? "local", "fixtureCases": cases.count, "checks": checks, "failures": failures, "sameProcessConcurrency": 200, "realAppGroupTouched": false, "physicalDeviceTest": false, "installedWidgetTapTest": false]
+    var colours: [[String: Any]] = []
+    for p in root["palettes"] as? [[String: Any]] ?? [] {
+      let id=p["id"] as! String,stops=p["stops"] as! [String]
+      let preferredInk=p["ink"] as! String,preferredAccent=p["accent"] as! String
+      let ink=HabitColours.resolve(preferredInk,stops:stops,secondary:true)
+      let accent=HabitColours.resolve(preferredAccent,stops:stops,secondary:false)
+      let backgrounds=HabitColours.samples(stops)
+      check(HabitColours.inkScore(ink,backgrounds:backgrounds)>=4.5,id+": readable primary/secondary/button ink")
+      check(HabitColours.accentScore(accent,backgrounds:backgrounds)>=4.5,id+": readable title and mood accent")
+      check(HabitColours.resolve(preferredInk,stops:stops,secondary:true)==ink,id+": cached ink stable")
+      colours.append(["theme":id,"ink":ink,"accent":accent,"stops":stops,"preferredInk":preferredInk,"preferredAccent":preferredAccent])
+    }
+    let result: [String: Any] = ["schema": "GLAZE_NATIVE_HABIT_CONTRACT_V1", "sourceSHA": ProcessInfo.processInfo.environment["GITHUB_SHA"] ?? "local", "fixtureCases": cases.count, "palettes": colours, "checks": checks, "failures": failures, "sameProcessConcurrency": 200, "realAppGroupTouched": false, "physicalDeviceTest": false, "installedWidgetTapTest": false]
     try JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys]).write(to: URL(fileURLWithPath: CommandLine.arguments[2]))
     for failure in failures { print("FAIL: \(failure)") }
     print("Native habit contract: \(checks) assertions / \(cases.count) cross-language cases / \(failures.count) failures")

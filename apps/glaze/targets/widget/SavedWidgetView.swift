@@ -211,8 +211,8 @@ extension HabitKindID {
 }
 
 /// Keeps all existing interactive habit actions while applying the saved colours/gradient per size.
-func savedHabitTheme(_ theme: WidgetTheme, kind: String, family: WidgetFamily) -> WidgetTheme {
-  guard let design = ThemeStore.savedDesign(kind: kind, family: family, theme: theme) else { return theme }
+func savedHabitTheme(_ theme: WidgetTheme, design: SavedWidgetDesign?) -> WidgetTheme {
+  guard let design else { return theme }
   var changed = theme
   let bg = design.background
   changed.bg = string(bg, "kind") == "gradient" ? [string(bg, "from"), string(bg, "to")] : [string(bg, "colour", theme.bg.first ?? "#F6F3F5")]

@@ -61,7 +61,9 @@ struct HabitWidgetView: View {
   @Environment(\.widgetFamily) private var family
   let entry: HabitEntry
 
-  var body: some View { HabitWidgetContent(entry: entry, family: family) }
+  var body: some View {
+    HabitWidgetContent(entry: entry, family: family, design: ThemeStore.savedDesign(kind: entry.habit.designKind, family: family, theme: entry.theme))
+  }
 }
 
 /// The actual widget content accepts its WidgetKit family explicitly for native layout review.
@@ -69,24 +71,44 @@ struct HabitWidgetView: View {
 struct HabitWidgetContent: View {
   let entry: HabitEntry
   let family: WidgetFamily
+  var design: SavedWidgetDesign? = nil
+
+  private var validFill: [String: Any]? {
+    guard let raw = design?.background else { return nil }
+    if string(raw, "kind") == "gradient", Color.isHex(string(raw, "from")), Color.isHex(string(raw, "to")) { return raw }
+    if string(raw, "kind") == "colour", Color.isHex(string(raw, "colour")) { return raw }
+    return nil
+  }
+  private var stops: [String] {
+    guard let raw = validFill else { return entry.theme.backgroundHexes }
+    if string(raw, "kind") == "gradient" { return [string(raw, "from"), string(raw, "to")] }
+    let colour = string(raw, "colour")
+    return [colour, colour]
+  }
+  private var controlTheme: WidgetTheme {
+    var t = savedHabitTheme(entry.theme, design: design)
+    t.style = .solid
+    t.ink = HabitColours.resolve(t.ink, stops: stops, secondary: true)
+    t.accent = HabitColours.resolve(t.accent, stops: stops, secondary: false)
+    return t
+  }
 
   private var def: HabitDef { HabitDef.of(entry.habit) }
   private var stepText: String { HabitStore.format(entry.step, decimals: def.decimals) }
 
   var body: some View {
-    let t = savedHabitTheme(entry.theme, kind: entry.habit.designKind, family: family)
+    let t = controlTheme
     Group {
       if entry.habit == .mood {
-        MoodBody(entry: entry, medium: family == .systemMedium, family: family)
+        MoodBody(entry: entry, medium: family == .systemMedium, theme: t)
       } else {
         countBody(t)
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     .containerBackground(for: .widget) {
-      if let design = ThemeStore.savedDesign(kind: entry.habit.designKind, family: family, theme: entry.theme) {
-        SavedWidgetFill(fill: design.background)
-      } else { GlazeBackground(theme: t) }
+      if let fill = validFill { SavedWidgetFill(fill: fill) }
+      else { LinearGradient(colors: stops.map { Color(hex: $0) }, startPoint: .topLeading, endPoint: .bottomTrailing) }
     }
   }
 
@@ -139,10 +161,10 @@ struct HabitWidgetContent: View {
 private struct MoodBody: View {
   let entry: HabitEntry
   let medium: Bool
-  let family: WidgetFamily
+  let theme: WidgetTheme
 
   var body: some View {
-    let t = savedHabitTheme(entry.theme, kind: entry.habit.designKind, family: family)
+    let t = theme
     let level = Int(entry.value)
     VStack(alignment: .leading, spacing: 6) {
       Text(HabitText.name(.mood).uppercased(with: .current))

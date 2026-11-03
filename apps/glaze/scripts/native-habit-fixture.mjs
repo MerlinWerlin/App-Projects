@@ -1,6 +1,7 @@
-import {writeFileSync} from 'node:fs';
+import {readFileSync,writeFileSync} from 'node:fs';
 import {HABIT_KINDS,createHabit} from '../src/core/habits.ts';
 import {parseHabitsDoc,parseHabitLog,habitTodayValue} from '../src/core/habitLog.ts';
+import {widgetBackgroundStops} from '../src/core/widgetTheme.ts';
 const now=new Date('2026-11-02T12:00:00Z'),at=now.getTime();
 const base=HABIT_KINDS.map(kind=>createHabit(kind,now,{utcOffsetMinutes:0}));
 const trackers=(patches={})=>({v:1,habits:base.map(s=>({...s,...patches[s.kind]}))});
@@ -31,4 +32,5 @@ add('history-and-clock-back',trackers({water:{day:'2026-11-03',value:450,history
 const boundary=new Date('2026-11-02T10:01:00Z');
 add('utc-plus14-midnight',null,log([event(1,'water',150,{at:boundary.getTime()-120000,off:840}),event(2,'water',150,{at:boundary.getTime(),off:840})]),840,boundary);
 add('utc-minus12',null,log([event(1,'water',150,{at,off:-720})]),-720,now);
-writeFileSync(process.argv[2],JSON.stringify({schema:'GLAZE_NATIVE_HABIT_PARITY_V1',cases},null,2)+'\n');console.log('Prepared',cases.length,'app/native habit parity cases.');
+const palettes=JSON.parse(readFileSync(new URL('../docs/native-habit-review-profiles.json',import.meta.url),'utf8')).themes.map(t=>({id:t.id,ink:t.nativeTheme.ink,accent:t.nativeTheme.accent,stops:widgetBackgroundStops(t.nativeTheme)}));
+writeFileSync(process.argv[2],JSON.stringify({schema:'GLAZE_NATIVE_HABIT_PARITY_V1',cases,palettes},null,2)+'\n');console.log('Prepared',cases.length,'app/native habit parity cases.');
