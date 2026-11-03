@@ -9,19 +9,24 @@ on:
         description: Optional existing EAS build UUID to inspect instead of queueing a build
         type: string
         default: ''
+      wait_for_build:
+        description: Wait up to twelve minutes for the existing build before inspecting its bundle
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
   production:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
       PLAY_VARIANT: production
       EAS_BUILD_PLATFORM: android
       CI: '1'
       BUILD_ID: ${{ inputs.build_id }}
+      WAIT_FOR_BUILD: ${{ inputs.wait_for_build }}
     defaults:
       run:
         working-directory: apps/cue
@@ -57,6 +62,15 @@ jobs:
         run: |
           [[ "$BUILD_ID" =~ ^[0-9a-fA-F-]{36}$ ]]
           eas build:view "$BUILD_ID" --json > ../../cue-play-production-output/build.json
+          if [[ "$WAIT_FOR_BUILD" == 'true' ]]; then
+            for attempt in $(seq 1 24); do
+              status=$(node -p 'require("../../cue-play-production-output/build.json").status')
+              echo "Existing production build: $status"
+              case "$status" in FINISHED|ERRORED|CANCELED) break;; esac
+              sleep 30
+              eas build:view "$BUILD_ID" --json > ../../cue-play-production-output/build.json
+            done
+          fi
       - name: Verify production configuration
         if: inputs.build_id == ''
         run: |
