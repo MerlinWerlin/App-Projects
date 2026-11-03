@@ -18,6 +18,7 @@ scheme = sys.argv[3] if len(sys.argv) > 3 else 'linework-play-test'
 assert (package, scheme) in [('com.jared797.linework.playtest', 'linework-play-test'),
                             ('com.jared797.linework', 'linework')]
 checks = []
+hierarchy_device = None
 
 
 def adb(*args):
@@ -40,6 +41,17 @@ def adb(*args):
 
 
 def snapshot(name='linework-current'):
+    if hierarchy_device is not None:
+        started = time.monotonic()
+        xml = hierarchy_device.dump_hierarchy().encode('utf-8')
+        tree = ET.fromstring(xml)
+        assert any(tree.iter('node')), 'Empty continuous-screen hierarchy'
+        (output / (name + '.xml')).write_bytes(xml)
+        with (output / 'ui-hierarchies.jsonl').open('a') as journal:
+            journal.write(json.dumps({'at_utc': datetime.now(timezone.utc).isoformat(),
+                                     'name': name, 'elapsed_seconds': round(time.monotonic()-started, 3),
+                                     'nodes': len(list(tree.iter('node')))}) + '\n')
+        return tree
     # Never accept a previous screen when an animated screen cannot reach idle.
     adb('shell', 'rm', '-f', '/sdcard/linework.xml')
     response = adb('shell', 'uiautomator', 'dump', '/sdcard/linework.xml')
@@ -144,6 +156,10 @@ try:
 
     # Real native CameraView -> MediaStore path on a disposable virtual camera.
     # Grant only CAMERA; modern photo/audio/video reads stay ungranted.
+    import uiautomator2 as u2
+    hierarchy_device = u2.connect()
+    hierarchy_device.jsonrpc.setConfigurator({'waitForIdleTimeout': 0, 'waitForSelectorTimeout': 0})
+    hierarchy_device.settings['max_depth'] = 100
     adb('shell', 'pm', 'grant', package, 'android.permission.CAMERA')
     adb('shell', 'am', 'force-stop', package)
     adb('shell', 'am', 'start', '-W', '-n', package + '/.MainActivity')
@@ -155,6 +171,13 @@ try:
     adb('shell', 'input', 'tap', '160', '250')  # wake focus-mode controls
     find(r'^Record timelapse$', tap=True, camera=True)
     capture('linework-native-record-requested')
+    initial = ET.fromstring((output / 'linework-native-record-requested.xml').read_bytes())
+    labels = [n.get('text') or n.get('content-desc') or '' for n in initial.iter('node')]
+    if 'The camera is still starting. Try again in a moment.' in labels:
+        checks.append('observed explicit camera-starting guard; one bounded warm-up retry')
+        time.sleep(3)
+        find(r'^Record timelapse$', tap=True, camera=True)
+        capture('linework-native-record-requested-retry')
     find(r'^Stop recording$', camera=True)
     time.sleep(4)
     adb('shell', 'input', 'tap', '160', '250')

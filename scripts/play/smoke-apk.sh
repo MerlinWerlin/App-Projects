@@ -102,6 +102,7 @@ if [[ "${APP:-}" == crochet ]]; then
   python scripts/play/rowlight-smoke.py "$output"
 fi
 if [[ "${APP:-}" == linework ]]; then
+  python -m pip install 'uiautomator2==3.4.2' > "$output/ui-driver-install.txt" 2>&1
   scheme=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["scheme"])' "$output/config.json")
   python scripts/play/linework-smoke.py "$output" "$package" "$scheme"
 fi
