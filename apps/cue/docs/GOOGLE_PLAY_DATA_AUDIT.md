@@ -27,11 +27,11 @@ nor absence of collection. Audit resolved SDK behaviour and final network
 traffic before answering the Console's collection/sharing questions. The
 review did not find an app analytics or advertising dependency in package.json.
 
-## Privacy page changes needed before an Android listing
+## Privacy page changes prepared for review
 
-The existing public `docs/cue/privacy.html` describes the shipped iOS behaviour.
-Keep its iOS purchase, Keychain and update descriptions accurate, and add
-explicit Android qualifications before using it for Google Play:
+The existing public policy describes the shipped iOS behaviour. This branch's
+`docs/cue/privacy.html` now preserves those iOS descriptions and adds explicit
+Android qualifications. This proposed copy has not been published:
 
 - Google Play processes the optional one-time Android Plus purchase. Cue does
   not receive payment-card details.
@@ -43,7 +43,7 @@ explicit Android qualifications before using it for Google Play:
   use the update service described by the current policy.
 - Photos/gallery sync, operating-system backups and store purchase records
   are controlled separately by the relevant platform and user settings.
-- Mention Google Play purchase approval alongside Apple's approval controls.
+- Store purchase approval follows the platform's account and family settings.
 
 No policy page was published and no Data safety answers were submitted by this
 review. Avoid claiming that all SDK/network behaviour has been tested.

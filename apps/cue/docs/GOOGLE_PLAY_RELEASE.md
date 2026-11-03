@@ -1,7 +1,7 @@
 # Cue Google Play preparation — updated 4 November 2026
 
 Jared requested that Cue be simulated and pushed toward Google Play release.
-Source is current App-Projects main at dc444372ca15ba1c88d9badca11d67e0d20b56b7,
+Work started from App-Projects main at dc444372ca15ba1c88d9badca11d67e0d20b56b7,
 with Cue-only Android preparation in codex/cue-google-play-release-20261103.
 The older October test APK is not the release candidate.
 
@@ -9,14 +9,26 @@ The older October test APK is not the release candidate.
 
 - Latest candidate is c809ffd, which adds bounded Android acknowledgement
   recovery to the previously built SDK-aligned source.
-- Current local TypeScript check and all 92 Jest tests pass. The three native
-  speech guards passed on the unchanged speech source; the binary
-  permission checker also has five passing Python regression tests.
-- Current-candidate native build and simulations:
-  https://github.com/MerlinWerlin/App-Projects/actions/runs/41724507628
-  Generic checks: run 41724507470. Await their completion before treating the
-  acknowledgement repair as natively validated.
-- Latest completed APK is source 070ad0c: 72,286,111 bytes, target SDK 36, embedded
+- TypeScript, 92 Jest tests, three native speech guards and eleven Python
+  validation tests pass. Generic check run 41729425808 also passes both mobile
+  exports on the same app source.
+- Current-candidate native build job passed:
+  https://github.com/MerlinWerlin/App-Projects/actions/runs/41724507628/job/126225642242
+  Its original undersized-guest simulations were cancelled after the artifact
+  was secured; the successful build result is retained.
+- Complete current-candidate 4 KB and 16 KB simulations passed:
+  https://github.com/MerlinWerlin/App-Projects/actions/runs/41729426511
+  Workflow e254802 verifies unchanged app source against compiled c809ffd.
+  Both flows cover editing, prompting/mirror, process-restart persistence,
+  trial persistence, camera denial/recovery and saved synthetic-camera video.
+  Saved videos are 8424 ms and 8431 ms respectively, both 1280×720.
+  Cue runtime reports contain no app failures and bind to the checked log hash.
+  Two unrelated Google Services crashes on the 16 KB guest remain recorded
+  separately; these results do not establish overall emulator health or billing.
+- Current APK: 72,287,275 bytes, target SDK 36, embedded JavaScript and 58 native
+  libraries passing 16 KB alignment inspection. SHA-256:
+  7b2205a5920af4fb26d4c05ee6a3a2c01ebaae157d4990a356aa58ee1b3b98ec.
+- Previous completed APK was source 070ad0c: 72,286,111 bytes, target SDK 36, embedded
   JavaScript and 58 native libraries passing 16 KB alignment inspection.
   SHA-256 2e5aec751b67ffbd088c860788026040af1c53422d92fbd6f41f3105e3a65843.
   Its complete 4 KB flow passed in run 41723153512, saving an 8,456 ms, 1280×720
@@ -26,11 +38,14 @@ The older October test APK is not the release candidate.
   Maestro's driver. The latter's guest log explicitly records lowmemorykiller
   killing dev.mobile.maestro (PID 5011) because the minimum watermark was breached.
   The host still had 11.7 GB available and no host OOM event. The guest image's
-  2560 MB default is now raised to4096 MB; the next candidate simulation must use
-  this workflow revision. No full 16 KB pass is claimed at this checkpoint.
+  2560 MB default was raised to 4096 MB, confirmed by final guest-memory receipts.
+  The current candidate passes under that configuration.
 - Play preview uses com.jared797.cue.playtest, separate data, embedded JavaScript
   and disabled OTA. Play production preserves com.jared797.cue.
 - Existing iOS profiles, app.json and RELEASE.json are unchanged.
+
+## Earlier evidence retained
+
 - Permission-restricted native build:
   https://github.com/MerlinWerlin/App-Projects/actions/runs/41618079984
   Compilation, signing and ZIP alignment passed. The original static check
@@ -75,6 +90,12 @@ every UI assertion in one session, caps its JVM heap and captures host memory,
 process and kernel state on exit. Harness-only commits no longer trigger a
 redundant native compilation; dispatch can reuse an APK only after app-source
 equality checks. Failed runs and their artifacts are retained.
+
+Run 41727921756 completed every Cue UI/video assertion on 16 KB but failed its
+global crash grep because Google Services crashed. The corrected checker
+attributes errors to Cue PIDs, including previous app processes, and rejects
+Cue native/JavaScript failures and ANRs. Six regression tests protect this
+attribution. The original run remains failed; fresh run 41729426511 is the pass.
 
 The emulator flows create and edit a script, open the prompter, toggle mirror,
 then force-stop/restart and verify the saved title/body. They also start the
@@ -161,13 +182,14 @@ receipts and the guest-memory failure log are preserved in
 `C:/Users/jared/Documents/ChatGPT/Apps/outputs/cue-google-play-20261104`.
 Open its README.md and INDEX.json for scope, hashes and source runs.
 
-Verify camera/microphone interruption and video save, on-device recognition
-availability and its truthful fallback, and real Play Billing purchase,
+Verify real Play Billing purchase,
 pending/cancel, acknowledgement, revocation and restore using a licensed tester.
-The Android trial is device-local; verify its native start/restart simulation
-before advertising it. The Apple trial remains transaction-backed on iOS.
+The device-local Android trial's native start/restart simulation has passed;
+the Apple trial remains transaction-backed on iOS. Audio interruption and
+on-device speech availability/fallback still need separate validation. Current
+camera/audio proof is synthetic, with no physical-microphone quality claim.
 Keep the existing one-time price decision and avoid inventing subscriptions.
 
-Emulator library/prompter checks do not establish those purchase, real-speech
+The emulator flows do not establish those purchase, real-speech
 or physical-camera results. No store upload, review submission or public
 availability is claimed.

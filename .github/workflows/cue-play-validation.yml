@@ -18,6 +18,10 @@ on:
         description: Reuse a verified APK only when app source is identical
         type: string
         default: ''
+      store_captures:
+        description: Capture listing UI from the verified APK instead of repeating validation
+        type: boolean
+        default: false
 permissions:
   contents: read
   actions: read
@@ -83,6 +87,7 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
   simulate:
+    name: ${{ inputs.store_captures && 'Store captures' || 'simulate' }} (${{ matrix.target }}, ${{ matrix.page }})
     needs: build
     if: always() && !cancelled() && (needs.build.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.apk_run_id != ''))
     runs-on: ubuntu-latest
@@ -90,11 +95,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - target: google_apis
-            page: '4096'
-          - target: google_apis_ps16k
-            page: '16384'
+        include: ${{ fromJSON(inputs.store_captures && '[{"target":"google_apis","page":"4096"}]' || '[{"target":"google_apis","page":"4096"},{"target":"google_apis_ps16k","page":"16384"}]') }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -149,16 +150,17 @@ jobs:
           api-level: 35
           target: ${{ matrix.target }}
           arch: x86_64
+          profile: ${{ inputs.store_captures && 'pixel_2' || '' }}
           # The 16 KB Google image kills the foreground test driver at its
           # 2560 MB default (confirmed in guest lowmemorykiller logs).
           ram-size: 4096M
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back emulated -camera-front emulated
-          script: bash scripts/play/cue-simulate.sh
+          script: ${{ inputs.store_captures && 'bash scripts/play/cue-store-capture.sh' || 'bash scripts/play/cue-simulate.sh' }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: cue-android-simulation-${{ matrix.page }}
+          name: ${{ inputs.store_captures && 'cue-android-store-captures' || format('cue-android-simulation-{0}', matrix.page) }}
           path: |
             cue-android-output/captures/
             cue-android-output/*.txt
