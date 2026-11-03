@@ -1,0 +1,52 @@
+{
+  "status": "prepared_not_uploaded",
+  "rules": "https://support.google.com/googleplay/android-developer/answer/9866151?hl=en",
+  "renderer": "@resvg/resvg-js2.6.2; Pillow format conversion",
+  "captureSource": "Signed v11/source4828362, run41726267099; UI layout unchanged by payment recovery2014ef0. The v11 binary is superseded for upload; captures retained.",
+  "assets": [
+    {
+      "file": "01-home.png",
+      "source": "apk-output/linework-v11-4kb-settled-qualified-20261104/linework-home.png",
+      "sourceSha256": "f9eebe55e7e543d047fa596fdd13fae6a9f22cd8820d6a67655a877af3b1fdb4",
+      "alt": "Choose a photo or a built-in template from Linework Home.",
+      "conversion": "RGB PNG only; no UI retouch or pixel scaling",
+      "width": 320,
+      "height": 640,
+      "mode": "RGB",
+      "bytes": 46499,
+      "sha256": "c2a3aec697bc3f4f813f22f8b32b9d72b5478e05275291718386dd6e0333087d"
+    },
+    {
+      "file": "02-lightbox.png",
+      "source": "apk-output/linework-v11-4kb-settled-qualified-20261104/linework-lightbox-template.png",
+      "sourceSha256": "ce16af665a695b75e90e12e1c5204898f417126fa8b0f06966dc0ffcb5669993",
+      "alt": "Trace a cat in Lightbox, with lock and reset controls.",
+      "conversion": "RGB PNG only; no UI retouch or pixel scaling",
+      "width": 320,
+      "height": 640,
+      "mode": "RGB",
+      "bytes": 34965,
+      "sha256": "9bafd48f4d47c572934425900d5ef3829fde37cb3df3185753f4acaf76a72173"
+    },
+    {
+      "file": "icon.png",
+      "source": "apps/linework/assets/brand/icon.svg",
+      "alt": "A looping blue pencil stroke on warm paper.",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 9718,
+      "sha256": "00ab59aa4d13579bbc76cfe5ca721159f537d497b068bdb062ffe6dd75c81f44"
+    },
+    {
+      "file": "feature.png",
+      "source": "feature.svg and the original bot-sunflower-head.svg template",
+      "alt": "Find your own line, with a sunflower drawing on paper.",
+      "width": 1024,
+      "height": 500,
+      "mode": "RGB",
+      "bytes": 73291,
+      "sha256": "c8c101644bb0f37e33f12ea0f573f2676872a5c3c43e1e9fb1d281798e35ccf4"
+    }
+  ]
+}

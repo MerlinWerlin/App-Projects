@@ -3,13 +3,42 @@
   "locale": "en-US",
   "title": "Linework: Trace & Draw",
   "shortDescription": "Use a camera overlay or lightbox to practise drawing from your own images.",
-  "fullDescription": "Choose an image, place your phone securely and follow the overlay on paper. Adjust position and visibility, lock the image in place, or use the lightbox view.\n\nUse a stable stand for camera tracing. This is an overlay drawing aid; it does not project an image onto your paper.",
+  "fullDescription": "Trace photos and templates onto real paper with a camera overlay, or use your screen as a bright lightbox.\n\nChoose an image, stand your phone securely above your paper, and follow the lines with your own pencil. Resize, rotate, move and fade the picture, then lock it in place while you draw. Linework shows an overlay through your phone; it does not project an image onto your paper.\n\nMAKE IT YOURS\nImport a picture using the system photo picker. Turn it into an outline on your device, adjust the line style, or trace the original image. Browse built-in templates, lettering and Workshop layouts for drawing and craft projects.\n\nDRAW AT YOUR PACE\nUse opacity, grid, mirror and touch-lock controls. Lightbox mode works without camera access: place thin paper over the screen and trace. Record a drawing clip and save it to your Photos library when you choose.\n\nTRY PLUS FOR 14 DAYS\nStart an optional 14-day trial from the Plus screen. When it ends, tracing your own photos, every tracing tool and 24 starter templates stay free. Linework Plus unlocks the full template library and photo-to-outline with a one-time purchase. No subscription or automatic charge at the end of the trial. Google Play displays your local purchase price.\n\nNo ads or app account. Image processing happens on your device. Use a stable phone stand for camera tracing.",
   "releaseBlockers": [
-    "Google account/app-record prerequisites owned by Lane2; current approval not asserted here",
-    "Real Play Billing licence-test purchase, pending payment, cancellation, acknowledgement and restore",
-    "Physical camera and representative personal-photo/formats QA",
-    "Final SDK/Data safety/listing review and publication of the privacy draft"
+    "Google identity approval and phone verification currently disable Create app; account documents are already in review with Lane2",
+    "Replacement signed bundle and exact-artifact checks after payment recovery2014ef0; retain v11 evidence but do not upload v11",
+    "Real Play Billing licence-test purchase, pending-to-completed payment, cancellation, acknowledgement retry, refund/revocation and restore",
+    "Final Data safety/content-rating/store review and publication of the reconciled privacy draft"
   ],
-  "assets": "Actual Android Home/Lightbox/Plus/owned-image/outline screenshots and settled4KB/16KB camera tests retained under apk-output; final store assets need review",
-  "privacy": "Draft policy reconciles Android OTA-off, OS backup and operator; actual unused barcode SDK removal verified. Final Data safety form not submitted."
+  "assets": {
+    "manifest": "play/assets.json",
+    "icon": "play/icon.png",
+    "featureGraphic": "play/feature.png",
+    "phoneScreenshots": ["play/01-home.png", "play/02-lightbox.png"],
+    "status": "prepared_not_uploaded"
+  },
+  "privacy": "Draft policy reconciles Android OTA-off, OS backup and operator. Barcode removal is verified, but required Billing9.1.0 includes CCT transport and the actual app process logs a successful logging request. Payload and exact caller are unverified. Final SDK/technical-data mapping must be reconciled before privacy publication or any blanket no-data declaration; Data safety form not submitted. See apk-output/LINEWORK_BILLING_SDK_DISCLOSURE_REVIEW_20261104.json.",
+  "inAppProducts": [
+    {
+      "productId": "com.jared797.linework.plus",
+      "type": "one_time_non_consumable",
+      "title": "Linework Plus",
+      "description": "Unlock the full template library and photo-to-outline.",
+      "defaultPrice": { "currency": "AUD", "amount": "2.99" },
+      "status": "not_created_in_console",
+      "trial": "Explicit device-local14-day evaluation; do not create or sell the Apple trial14 SKU on Play."
+    }
+  ],
+  "appContent": {
+    "status": "draft_not_submitted",
+    "category": "ART_AND_DESIGN",
+    "ads": false,
+    "appLoginRequired": false,
+    "audience": "General audience; not specifically designed or marketed for children or families, per owner clarification. Answer actual age/content questionnaires after artwork review.",
+    "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/linework/privacy.html",
+    "supportUrl": "https://merlinwerlin.github.io/App-Projects/linework/support.html",
+    "supportEmail": "jaredbradley272@gmail.com"
+  },
+  "reviewNotes": "No app account or credentials are required. Choose a template, or Trace a photo and select an image with the system picker. Place the phone on a stable stand above paper for camera tracing, or choose Lightbox without camera access. The Plus tab contains Start free trial, the one-time Plus unlock and Restore purchases. The trial is an explicitly started local14-day evaluation and does not charge automatically. Core drawing and image processing run on the device; Google Play handles optional purchases.",
+  "releaseNotes": "Initial Android release: trace your own photos, explore drawing templates, generate outlines and use the camera overlay or Lightbox."
 }
