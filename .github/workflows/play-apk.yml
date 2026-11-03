@@ -150,6 +150,9 @@ jobs:
         env:
           EMULATOR_VERSION: ${{ inputs.emulatorVersion || 'sdk-current' }}
         run: bash scripts/play/select-backspin-emulator.sh
+      - name: Verify the native toolchain before emulator QA
+        if: inputs.smoke && inputs.app == 'backspin'
+        run: bash scripts/play/ensure-backspin-ndk.sh
       - name: Emulator install and launch
         if: inputs.smoke
         shell: bash
