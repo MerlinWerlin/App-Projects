@@ -7,7 +7,7 @@
   "releaseBlockers": [
     "Organization/identity approval, then phone verification and app creation",
     "Actual Play Billing purchase/cancellation/restore using a Play-installed build",
-    "16KB emulator microphone gameplay remains unresolved; static alignment, launch and permission flow are distinct evidence",
+    "Sustained Android microphone capture remains unqualified; current4KB candidate captured silence and16KB control captured short fragments despite a UI flow pass.",
     "Final Data safety, app access, target audience and content rating declarations"
   ],
   "assets": "512px icon and 1024x500 feature graphic verified; five unmodified actual emulator screenshots exported from passing run41701424210.",
@@ -42,16 +42,20 @@
       "latest_host_run": 41726474225,
       "sdk_injection_experiment": "Archived after pre-install emulator crashes",
       "microphone_diagnosis": "Captured AAC is already effectively silent; matching195584 frames in AAC/WAV.42 Ranchu input errors/277 inserted-silence messages.2 native decoder tests PASS; full gameplay unqualified.",
-      "pinned_official_emulator_control_run": 41728835831
+      "pinned_official_emulator_control_run": 41728835831,
+      "pinned_emulator_result": "UI flow and2decoder tests PASS; only0.24/0.26second active spans, sustained microphone UNQUALIFIED"
     },
     "priorSignedBundleDisposition": "SUPERSEDED_DO_NOT_UPLOAD: lacks Android payment-state/acknowledgement repair",
     "replacement": {
-      "runtimeSource": "5ac7dd3",
+      "runtimeSource": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
       "buildRun": 41728527170,
-      "status": "RUNNING_NOT_VERIFIED",
+      "status": "APK_STATIC_PASS_GAMEPLAY_FAILED_NO_NEW_AAB",
       "appTests": 40,
       "typecheck": "PASS",
-      "iosExport": "PASS"
+      "iosExport": "PASS",
+      "apkSha256": "53ddb029be0f3d0a057acaac5bc1e54d33736117af0457d493d3a3be084b5bd5",
+      "next4KBRun": 41731776160,
+      "next16KBRun": 41731111761
     }
   }
 }

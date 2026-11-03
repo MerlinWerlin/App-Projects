@@ -1,0 +1,74 @@
+{
+  "run": 41728527170,
+  "runtime_source": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
+  "apk_sha256": "53ddb029be0f3d0a057acaac5bc1e54d33736117af0457d493d3a3be084b5bd5",
+  "apk_bytes": 61333185,
+  "static_audit": "PASS_54_ALIGNED_LIBRARIES_TARGET36_EMBEDDED_JS",
+  "api": 35,
+  "page_size": 4096,
+  "gameplay": "FAILED_ORIGINAL_SILENT",
+  "native_decoder_tests": "2 PASS",
+  "recordings": [
+    {
+      "file": "00.m4a",
+      "app_cache_path": "/data/user/0/com.jared797.backspin.playtest/cache/Audio/recording-a68223ca-1bc5-4053-9ccf-cb1d917cab21.m4a",
+      "sha256": "64ade290941ed05323117136079ebb4e53feb69a3da73c4f49477bfaf0039d98",
+      "bytes": 56173,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "aac",
+            "sample_rate": "44100",
+            "channels": 1,
+            "bit_rate": "95999"
+          }
+        ],
+        "format": {
+          "duration": "4.411791"
+        }
+      },
+      "independent_pcm": {
+        "samples": 194560,
+        "duration_seconds": 4.4117913832199545,
+        "peak": 8.610505756223574e-05,
+        "rms": 2.281509663193623e-06,
+        "active_windows": 0,
+        "total_windows": 221,
+        "active_span_seconds": 0
+      }
+    },
+    {
+      "file": "01.wav",
+      "app_cache_path": "/data/user/0/com.jared797.backspin.playtest/cache/round/recording-7134491471567150735.wav",
+      "sha256": "1ceaee9c9ef3deeba4b6f0f69b490873449f7c1fdd91555fa12cdaf08ff8016b",
+      "bytes": 389164,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "pcm_s16le",
+            "sample_rate": "44100",
+            "channels": 1,
+            "bit_rate": "705600"
+          }
+        ],
+        "format": {
+          "duration": "4.411791"
+        }
+      },
+      "independent_pcm": {
+        "samples": 194560,
+        "duration_seconds": 4.4117913832199545,
+        "peak": 9.1552734375e-05,
+        "rms": 2.3174998499849215e-06,
+        "active_windows": 0,
+        "total_windows": 221,
+        "active_span_seconds": 0
+      }
+    }
+  ],
+  "hal_pcm_read_errors": 43,
+  "hal_silence_insertions": 279,
+  "production_bundle": "NOT_GENERATED_AFTER_GAMEPLAY_FAILURE"
+}
