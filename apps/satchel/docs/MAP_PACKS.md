@@ -29,6 +29,35 @@ pack stored on the phone. Bookings and saved places remain available.
 
 Run results are linked in the pull request. No downloaded-city or real-phone success is claimed until evidenced.
 
+### Build repair, 4 November 2026
+
+The second preview built Kyoto (811 tiles, 34.3 MB) and rendered Tokyo, then failed while collecting Tokyo places.
+`tools/maps/overpass.mjs` now collects each city's places in four sequential geographic cells, deduplicated by
+OSM type and ID. Each query has a 60-second server budget and a 90-second client timeout, including its response
+body. Transient failures retry up to three times with a cooldown; HTTP 429 honors `Retry-After`. A runtime
+`remark`, malformed response or failed cell rejects the city instead of packaging partial results.
+The build artifact includes per-city `*-poi-source.json` request bounds, counts and OSM base timestamps.
+Six offline collector checks cover coverage/deduplication, retry behavior, partial results, malformed responses
+and stalled bodies. This follows the [Overpass resource and rate-limit guidance](https://dev.overpass-api.de/overpass-doc/en/preface/commons.html).
+
+**Third preview passed:** [Actions run 41722754832](https://github.com/MerlinWerlin/App-Projects/actions/runs/41722754832),
+source `1076eb9`, passed all 1,850 app tests, six collector checks and the all-city pack verifier.
+All 12 source requests succeeded on their first attempt. Downloaded archives independently match their catalog
+hashes and sizes; all 2,177 PNG structures and metadata/POI counts passed local checks. The three downtown
+mosaics were visually reviewed: roads, water, parks and labels present, with no obvious blank tile or alignment gap
+in those samples. The strict UI stub typecheck also passed; this is not a full Expo/native build or iPhone test.
+
+| City | Download size (decimal MB) | Tiles | Places, including toilets |
+| --- | ---: | ---: | ---: |
+| Kyoto | 34.3 | 811 | 5,411 |
+| Tokyo (central) | 56.6 | 985 | 20,019 |
+| Sydney (city) | 16.4 | 381 | 4,075 |
+
+The run artifact `satchel-city-maps-41722754832` contains the packs, catalog, request receipts, previews and
+`verification.json`. It is retained for 14 days; the owner checkout also retains the downloaded artifact and
+local validation under `output/map-build-attempt-3`. These packs are review artifacts, not published downloads.
+Approved merge/publication and the iPhone flight-mode check above remain required.
+
 **What the app does.** Map tab > Offline city maps lists the cities in
 `https://github.com/MerlinWerlin/App-Projects/releases/download/satchel-maps-v1/catalog.json`.
 Download fetches `<city>.tar`, unpacks it into the app's documents folder (`maps/<id>/meta.json`, `pois.json`,
