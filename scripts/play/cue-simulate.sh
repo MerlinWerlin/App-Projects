@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 output="$(realpath cue-android-output)"
+maestro --version > "$output/maestro-version.txt"
+adb version > "$output/adb-version.txt"
 actual="$(adb shell getconf PAGE_SIZE | tr -d '\r')"
 printf '%s\n' "$actual" > "$output/page-size.txt"
 [[ "$actual" == "$EXPECTED_PAGE_SIZE" ]]
