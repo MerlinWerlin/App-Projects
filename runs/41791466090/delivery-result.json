@@ -1,0 +1,15 @@
+{
+  "source_sha": "afc71d1a98415207927549fc32bb1ac00972c5e4",
+  "results": {
+    "PREFLIGHT_RESULT": "success",
+    "ARCHIVE_RESULT": "failure",
+    "ENTITLEMENT_RESULT": "skipped",
+    "UPLOAD_RESULT": "skipped"
+  },
+  "errors": [
+    "/Users/runner/work/App-Projects/App-Projects/apps/cloud-companion/CloudCompanion.xcodeproj: error: Communication with Apple failed: Your team has no devices from which to generate a provisioning profile. Connect a device to use or manually add device IDs in Certificates, Identifiers & Profiles. https://developer.apple.com/account/ (in target 'CloudCompanion' from project 'CloudCompanion')",
+    "/Users/runner/work/App-Projects/App-Projects/apps/cloud-companion/CloudCompanion.xcodeproj: error: No profiles for 'com.jared797.cloudcompanion' were found: Xcode couldn't find any iOS App Development provisioning profiles matching 'com.jared797.cloudcompanion'. (in target 'CloudCompanion' from project 'CloudCompanion')",
+    "/Users/runner/work/App-Projects/App-Projects/apps/cloud-companion/CloudCompanion.xcodeproj: error: Communication with Apple failed: Your team has no devices from which to generate a provisioning profile. Connect a device to use or manually add device IDs in Certificates, Identifiers & Profiles. https://developer.apple.com/account/ (in target 'CloudCompanionWidget' from project 'CloudCompanion')",
+    "/Users/runner/work/App-Projects/App-Projects/apps/cloud-companion/CloudCompanion.xcodeproj: error: No profiles for 'com.jared797.cloudcompanion.widget' were found: Xcode couldn't find any iOS App Development provisioning profiles matching 'com.jared797.cloudcompanion.widget'. (in target 'CloudCompanionWidget' from project 'CloudCompanion')"
+  ]
+}
