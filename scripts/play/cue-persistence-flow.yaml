@@ -1,0 +1,11 @@
+appId: com.jared797.cue.playtest
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- assertVisible: Android release rehearsal
+- tapOn: Android release rehearsal
+- assertVisible: 'This script checks Cue on Android.*'
+- takeScreenshot: 04-persisted-editor

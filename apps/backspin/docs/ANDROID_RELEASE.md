@@ -8,6 +8,8 @@ Runtime **7ce6f25fdb7be15738b270f81f5fa54938c7d4ed** removes raw native diagnost
 
 Independent preview APK comparison matches all54 native library bytes to5ac7dd3; store/play/native-copy-comparison.json records every source hash.
 
+Main integration reconciles the shared APK checker with Cue's compiled-permission rules. All5 existing permission cases and Backspin scope guards pass; both actual Backspin preview/production APKs pass the merged checker, and the production APK is rejected without explicit replay scope. Runtime inputs still match7ce6f25 and the signed AAB is unchanged. See store/play/merged-verifier-check.json.
+
 [Native/AAB run41748574006](https://github.com/MerlinWerlin/App-Projects/actions/runs/41748574006) PASS: API36/16384-byte pages, real microphone permission, recording/AAC conversion/reverse/copy/score/save/share, exact one free go consumed, saved take and9goes after process restart, two decoder fixtures and independent sustained AAC analysis. The input is the official Ranchu300Hz HAL fixture; host/human/physical voice is unqualified.
 
 Signed production AAB: **45515173 bytes**, SHA256 **b473dfefa649a9a74d13830d15beea515a4a9c0dcfe9a239376ed6ff991b1d66**. Packagecom.jared797.backspin,version1.0.0/code1,target36,Billing9.1.0. Official bundletool/compiled package, strict signature/actual existing RSA4096 certificate,54native16KB alignments, embedded code/OTA disabled and1675 unchanged non-signature payload entries PASS. Private signing material stays outside Git/public release files.
