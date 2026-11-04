@@ -5,7 +5,7 @@ import { FlatList, Pressable, ScrollView, Text, View, useWindowDimensions } from
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { percent, started } from '../src/core/progress';
 import { type Scene, type Theme, type Difficulty, layout } from '../src/core/scene';
-import { browseScenes, type BrowseFilter } from '../src/core/catalog';
+import { browseScenes, type BrowseCollection } from '../src/core/catalog';
 import { currentLanguage, languageName, t, tx } from '../src/i18n';
 import { CATALOG_SCENES, SCENES } from '../src/scenes';
 import { getProgress, useProgressVersion } from '../src/store/progress';
@@ -14,7 +14,6 @@ import { radius, space, type as ty, useColors } from '../src/theme/tokens';
 import { Button, Chip, IconButton, Meter } from '../src/ui/kit';
 import { SceneThumb } from '../src/ui/SceneArt';
 
-type Filter = BrowseFilter;
 const icons: Partial<Record<Theme, string>> = { animals: 'cat', flowers: 'flower-outline', sealife: 'fish', places: 'home-city-outline', patterns: 'flower-tulip-outline' };
 
 function CategoryBubble({ label, icon, selected, onPress, testID }: { label: string; icon: string; selected: boolean; onPress: () => void; testID: string }) {
@@ -38,6 +37,7 @@ const SceneCard = memo(function SceneCard({ scene, width, version }: { scene: Sc
   void version;
   return (
     <Pressable
+      testID={`scene-${scene.id}`}
       accessibilityRole="button"
       accessibilityLabel={t('gallery.open', { name })}
       onPress={() => router.push(`/scene/${scene.id}`)}
@@ -83,15 +83,17 @@ export default function Gallery() {
   const { width } = useWindowDimensions();
   const settings = useSettings();
   const version = useProgressVersion();
-  const [filter, setFilter] = useState<Filter>('all');
+  const [collection, setCollection] = useState<BrowseCollection>('single');
+  const [topic, setTopic] = useState<Theme | 'all'>('all');
   const [difficulty, setDifficulty] = useState<Difficulty | 'all'>('all');
   const list = useRef<FlatList<Scene>>(null);
   useEffect(() => {
     list.current?.scrollToOffset({ offset: 0, animated: false });
-  }, [filter, difficulty]);
+  }, [collection, topic, difficulty]);
 
   const themes = useMemo(() => (['animals', 'flowers', 'sealife', 'places', 'patterns'] as Theme[]).filter((theme) => CATALOG_SCENES.some((scene) => scene.theme === theme)), []);
-  const shown = browseScenes(SCENES, filter, difficulty, (scene) => started(getProgress(scene)));
+  const shown = browseScenes(SCENES, collection, topic, difficulty, (scene) => started(getProgress(scene)));
+  const chooseCollection = (value: BrowseCollection) => { setCollection(value); setTopic('all'); setDifficulty('all'); };
   const pad = space.lg;
   const maxW = Math.min(width, 1180);
   const cols = maxW >= 900 ? 3 : maxW >= 560 ? 2 : 1;
@@ -106,7 +108,7 @@ export default function Gallery() {
             {t('gallery.title')}
           </Text>
         </View>
-        <IconButton icon="palette-outline" label={t('gallery.saved')} onPress={() => { setFilter('saved'); setDifficulty('all'); }} />
+        <IconButton icon="palette-outline" label={t('gallery.saved')} onPress={() => chooseCollection('saved')} />
         <IconButton icon="cog-outline" label={t('gallery.settings')} onPress={() => router.push('/settings')} />
       </View>
       <Text style={[ty.body, { color: c.ink2 }]}>{t('gallery.subtitle')}</Text>
@@ -130,13 +132,14 @@ export default function Gallery() {
         <Text style={[ty.small, { color: c.ink2 }]}>{t('release.body')}</Text>
       </View>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.sm }}>
-        <Chip testID="collection-all" label={t('gallery.filter.all')} on={filter !== 'mega' && filter !== 'saved'} onPress={() => setFilter('all')} />
-        <Chip testID="collection-mega" label={t('gallery.mega')} on={filter === 'mega'} onPress={() => { setFilter('mega'); setDifficulty('all'); }} />
-        <Chip testID="collection-saved" label={t('gallery.saved')} on={filter === 'saved'} onPress={() => { setFilter('saved'); setDifficulty('all'); }} />
+        <Chip testID="collection-single" label={t('gallery.singleCollection')} on={collection === 'single'} onPress={() => chooseCollection('single')} />
+        <Chip testID="collection-zoom" label={t('gallery.zoomCollection')} on={collection === 'zoom'} onPress={() => chooseCollection('zoom')} />
+        <Chip testID="collection-mega" label={t('gallery.mega')} on={collection === 'mega'} onPress={() => chooseCollection('mega')} />
+        <Chip testID="collection-saved" label={t('gallery.saved')} on={collection === 'saved'} onPress={() => chooseCollection('saved')} />
       </View>
-      {filter !== 'mega' && filter !== 'saved' ? <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: space.sm, paddingVertical: space.xs }}>
-        <CategoryBubble testID="category-all" label={t('gallery.filter.all')} icon="view-grid-outline" selected={filter === 'all'} onPress={() => setFilter('all')} />
-        {themes.map((theme) => <CategoryBubble key={theme} testID={`category-${theme}`} label={tx(`theme.${theme}`)} icon={icons[theme] ?? 'shape-outline'} selected={filter === theme} onPress={() => setFilter(theme)} />)}
+      {collection !== 'mega' ? <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: space.sm, paddingVertical: space.xs }}>
+        <CategoryBubble testID="category-all" label={t('gallery.filter.all')} icon="view-grid-outline" selected={topic === 'all'} onPress={() => setTopic('all')} />
+        {themes.map((theme) => <CategoryBubble key={theme} testID={`category-${theme}`} label={tx(`theme.${theme}`)} icon={icons[theme] ?? 'shape-outline'} selected={topic === theme} onPress={() => setTopic(theme)} />)}
       </ScrollView> : null}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: space.sm }}>
         <Chip testID="difficulty-all" label={t('gallery.allLevels')} on={difficulty === 'all'} onPress={() => setDifficulty('all')} />
@@ -161,8 +164,8 @@ export default function Gallery() {
         ListHeaderComponent={header}
         ListEmptyComponent={
           <View style={{ alignItems: 'center', gap: space.md, padding: space.xl }}>
-            <Text style={[ty.body, { color: c.ink2 }]}>{filter === 'saved' ? t('gallery.noSaved') : t('gallery.empty')}</Text>
-            <Button kind="soft" label={t('gallery.showAll')} onPress={() => { setFilter('all'); setDifficulty('all'); }} />
+            <Text style={[ty.body, { color: c.ink2 }]}>{collection === 'saved' ? t('gallery.noSaved') : t('gallery.empty')}</Text>
+            <Button kind="soft" label={t('gallery.showAll')} onPress={() => { setTopic('all'); setDifficulty('all'); }} />
           </View>
         }
         ListFooterComponent={<Text style={[ty.small, { color: c.ink3, textAlign: 'center', marginTop: space.xl }]}>{t('gallery.comingSoon')}</Text>}

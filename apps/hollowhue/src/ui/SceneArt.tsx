@@ -128,6 +128,10 @@ const LevelArt = memo(
               );
             }
             const paint = fills?.[r.id] ?? linkMap[r.id] ?? ART.paper;
+            // Traced cells do not overlap. The paper already supplies their white; coloured paper,
+            // linked colours and clipped strokes still need their original masking cells.
+            if (level.flatArtwork && i > 0 && !inside && paint === ART.paper
+              && (fills?.paper ?? linkMap.paper ?? ART.paper) === ART.paper) return null;
             // A nested level's background has no outline: its edge is the portal edge, and a drawn border there
             // would show the seam between the two pictures.
             const seam = (i === 0 && level.depth > 0) || r.outline === false;

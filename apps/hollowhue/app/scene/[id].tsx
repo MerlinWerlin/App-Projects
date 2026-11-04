@@ -5,7 +5,7 @@ import { Alert, Pressable, ScrollView, Text, View, useWindowDimensions } from 'r
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PALETTES, paletteById } from '../../src/core/palettes';
 import { type Edit, type History, apply, markFound, redo, undo } from '../../src/core/progress';
-import { layout } from '../../src/core/scene';
+import { layout, releaseHitGeometry } from '../../src/core/scene';
 import { t, tx } from '../../src/i18n';
 import { sceneById } from '../../src/scenes';
 import { flushProgress, getProgress, setProgress } from '../../src/store/progress';
@@ -113,6 +113,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
   }, [toast]);
 
   useEffect(() => () => { void flushProgress().catch(() => {}); }, []);
+  useEffect(() => () => releaseHitGeometry(L), [L]);
 
   const focusLevel = L.byId.get(focus) ?? L.root;
   const depthTotal = Math.max(...L.order.map((p) => p.depth)) + 1;
@@ -189,7 +190,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
               <Text style={[ty.small, { color: c.ink3, textAlign: 'center', fontSize: wide ? 13 : 11 }]} numberOfLines={1}>
                 {t('level.where', { name: tx(`scene.${scene.id}.level.${focusLevel.id}`), i: focusLevel.depth, n: depthTotal - 1 })}
               </Text>
-            ) : null}
+            ) : <Text style={[ty.small, { color: c.ink3, textAlign: 'center' }]}>{t('gallery.single')}</Text>}
           </View>
         </View>
         <Bubble row>
@@ -231,7 +232,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
         <ScrollView style={{ width: panelW, maxHeight: trayMaxHeight }} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
         {hint ? (
           <View pointerEvents="none" style={{ marginBottom: space.sm, backgroundColor: c.card, borderRadius: radius.md, paddingHorizontal: space.md, paddingVertical: space.sm, maxWidth: panelW }}>
-            <Text style={[ty.small, { color: c.ink2, textAlign: 'center' }]}>{erasing ? (mode === 'fill' ? t('hint.eraseFill') : t('hint.eraseDraw')) : mode === 'fill' ? t('hint.fill') : t('hint.draw')}</Text>
+            <Text style={[ty.small, { color: c.ink2, textAlign: 'center' }]}>{erasing ? (mode === 'fill' ? t('hint.eraseFill') : t('hint.eraseDraw')) : mode === 'fill' ? t(depthTotal > 1 ? 'hint.fill' : 'hint.single') : t('hint.draw')}</Text>
           </View>
         ) : null}
         <View style={{ width: panelW, backgroundColor: c.card, borderRadius: radius.lg, borderWidth: 1, borderColor: c.line, padding: space.sm, gap: space.sm }}>

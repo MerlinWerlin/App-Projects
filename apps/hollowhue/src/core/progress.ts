@@ -1,7 +1,7 @@
 // A scene's colouring progress (fills + freehand strokes), the edits that change it, and undo/redo.
 // Pure TS: the app store saves `Progress` as JSON per scene.
 import { segDist, simplify } from './geom.ts';
-import { type Scene, fillableCount } from './scene.ts';
+import { type Scene, fillableCount, fillIds } from './scene.ts';
 
 export type Tool = 'pencil' | 'marker';
 
@@ -55,7 +55,7 @@ export function restoreProgress(scene: Scene, raw: unknown): Progress {
   if (!raw || typeof raw !== 'object') return base;
   const r = raw as Partial<Progress>;
   const fills: Progress['fills'] = {};
-  const levelIds = new Map(scene.levels.map((l) => [l.id, new Set(l.regions.filter((x) => !x.line && !x.ink).map((x) => x.id))]));
+  const levelIds = new Map(scene.levels.map((l) => [l.id, new Set(fillIds(l))]));
   if (r.fills && typeof r.fills === 'object') {
     for (const [lv, m] of Object.entries(r.fills)) {
       const ids = levelIds.get(lv);

@@ -35,22 +35,26 @@ inspired it ("Infinity Coloring Book") has a single theme.
 - Export / share a finished picture (whole scene or the current zoom), time-lapse replay.
 - Scene versioning: region ids are stable per scene `version`; restore trims ids that no longer exist.
 
-## Artwork and depth revision (4 November)
+## Artwork and depth correction (5 November)
 
-- Owner feedback: keep the improved zoom motion; replace the starter artwork and add categories and
-  difficulty levels like Linework. A regular world needs six zooms and Mega Zoom needs twenty.
-- The owner rejected the first Linework-based art preview and requested more realistic, detailed art.
-  The final replacement uses 42 original newly illustrated pictures. Animals, Flowers, Sea life, Places
-  and Patterns combine with Beginner, Intermediate and Advanced filters. Garden Blooms has seven simpler
-  beginner pictures; botanicals and sea life are intermediate; wildlife, places and ornaments are advanced.
-- Six regular worlds each contain seven pictures: the opening picture plus six actual zoom transitions.
-  The separate Mega Zoom collection has one world with twenty-one distinct pictures and twenty transitions.
-- Earlier artwork remains available in My colouring when it has saved progress. Its geometry, versions
-  and region IDs remain unchanged. The custom colour picker, recent colours and update controls continue.
-- The importer, preserved source images and generation prompts live in `scripts/art` and
-  `scripts/import-illustrated-art.py`. Cubic ink curves sit above closed tappable regions; vector data is
-  compressed locally with pure-JS fflate, with no native module change.
-  Native iPhone verification and delivery evidence belong in `docs/qa-art-20261104` when complete.
+- Jared approves the new picture quality and confirms that six zooms means newly illustrated detail
+  inside each individual artwork. The 42 approved pictures remain separate Single artworks.
+- Six new Zoom editions each contain six discoveries within their own scene: Cottage, Camellia & Bee,
+  Barn Owl, Coral Turtle, Gentle Daisy, Rose Engraving. Mega Rose Engraving contains twenty inner tiers
+  of the same engraving. The cottage leads through its window into the book, its bee illustration,
+  wing, pollen and pore. This uses 47 new illustrated details, with shared bee microtexture plates.
+- Single artwork, Zoom artworks, Mega Zoom and My colouring are distinct collections; topic and
+  difficulty filters compose with them. Singles have precision zoom without discovery controls.
+- The previous seven chained illustration scenes and six original authored scenes retain exact
+  geometry, region IDs and saves. Saved chains remain in My colouring. On first use only, the latest
+  painted occurrence can be copied into an independent Single edition; that edition is never overwritten.
+- Canonical source/portals are in `scripts/art/nested-source.json`; full built-in image generation
+  prompts/references are in `nested-generation.json`. Rebuild with `scripts/build-art-library.py`.
+  Art decoding is per illustration with a bounded cache, and unpainted white cells avoid extra SVG views.
+- 159 offline checks and strict type checks pass, including all six/twenty stops, landscape framing,
+  deep colour persistence, and hashes of all approved/released geometry. Native iPhone checks and
+  delivery receipts are recorded in `docs/qa-nested-20261105` when complete. Current correction is
+  not yet published; production remains Beta4/OTA28b985e9 until verification finishes.
 
 ## Money (later, not in phase 1)
 Same factory model: free core forever, no ads, no tracking.

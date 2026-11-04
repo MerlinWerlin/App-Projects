@@ -1,13 +1,10 @@
 {
   "app": "hollowhue",
   "stage": "testflight",
-  "headline": "Illustrated update LIVE in production OTA and TestFlight0.1.0(4):42new realistic pictures, five topics, three difficulty levels, six regular zooms and twenty in Mega. Apple COMPLETE/VALID/IN_BETA_TESTING; no errors/warnings.",
-  "next_for_owner": [
-    "Update Hollowhue to0.1.0(4) in TestFlight. Look for New art. Six zooms. Twenty in Mega.",
-    "Existing installations can also use Settings > App updates > Check for updates > Save & apply update."
-  ],
-  "tests": 57,
-  "typecheck": "57 tests and full/stub strict types pass. iOS/Hermes export passes; illustrated bundle packed to29MB. All old scene geometry/IDs/versions retain exact SHA. Expo doctor21/21pass.",
+  "headline": "Nested correction in verification:42 approved Single artworks,6 coherent six-discovery editions,20 inner engraving tiers in Mega.47 new detail illustrations;159 tests pass. Current released Beta4 is superseded in design, new correction not yet published.",
+  "next_for_owner": [],
+  "tests": 159,
+  "typecheck": "159 tests and full/stub strict types pass. Exact original42 illustration geometry and seven shipped chains verified; original6 legacy scenes unchanged. Native correction verification pending.",
   "previous_native_qa": {
     "run": "41788606169",
     "source": "774e53289c785914495d303f06729039c8f2fb10",
@@ -70,5 +67,20 @@
     "upload_id": "234f6929-1c10-4393-a8ae-08ecee0f1885",
     "physical_phone_uptake": "unverified",
     "apple_receipt": "docs/qa-art-20261104/apple-complete-status.json"
+  },
+  "correction": {
+    "date": "2026-11-05",
+    "branch": "codex/hollowhue-individual-zooms-20261105",
+    "state": "native verification pending; not published",
+    "original_single_artworks": 42,
+    "nested_standard_editions": 6,
+    "standard_discoveries_each": 6,
+    "mega_discoveries": 20,
+    "new_illustrations": 47,
+    "source": "scripts/art/nested-source.json",
+    "prompts": "scripts/art/nested-generation.json",
+    "evidence": "docs/qa-nested-20261105",
+    "saves": "all thirteen previously shipped scenes preserved; first-use painted art copied to independent edition without overwriting a single save",
+    "runtime": "0.1.0; unchanged native dependencies"
   }
 }

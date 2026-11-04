@@ -3,7 +3,8 @@
 import { flatten } from '../src/core/geom.ts';
 import { SCENES } from '../src/scenes/index.ts';
 
-const out = SCENES.map((s) => ({
+const requested = process.argv.slice(2);
+const out = SCENES.filter((s) => !requested.length || requested.includes(s.id)).map((s) => ({
   id: s.id,
   levels: s.levels.map((l) => ({
     id: l.id,
