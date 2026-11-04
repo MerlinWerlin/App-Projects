@@ -52,6 +52,8 @@ import { textStyleFor } from './i18nLayout';
 import { PillButton } from './PillButton';
 import { existingLocalFile, localAssetUri, seamlessDeviceHere } from './seamlessSetup';
 import { WidgetArtMenu, type ArtSource, type MenuOption, type MenuWallpaper } from './WidgetArtMenu';
+import { DesignedThemeWidgets } from './DesignedThemeWidgets';
+import { isReplacedArtEdition } from '../core/designedWidgets';
 
 type Status = 'idle' | 'busy' | 'saved' | 'savedLibrary' | 'unavailable' | 'failed';
 
@@ -68,6 +70,13 @@ type Props = {
 const NONE: readonly MenuOption[] = Object.freeze([]) as readonly MenuOption[];
 
 export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: Props) {
+  return <View style={style}>
+    <DesignedThemeWidgets theme={theme} size={size} width={width} onLibraryChange={onLibraryChange} />
+    <ThemeDecorativeArt theme={theme} size={size} width={width} onLibraryChange={onLibraryChange} />
+  </View>;
+}
+
+function ThemeDecorativeArt({ theme, size, width, style, onLibraryChange }: Props) {
   const { c } = useColorsV2();
   const { t, script } = useT();
   const router = useRouter();
@@ -96,7 +105,7 @@ export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: P
       if (!remote.widgetOptions.length) return NONE;
       // T245: countdown pictures are live only once the person picked a day for them.
       const live = withLiveArt(theme.id, remote.widgetOptions.map((o) => o.option), { targets });
-      return remote.widgetOptions.map((o, i) => ({ option: live[i], source: { uri: o.uri } }));
+      return remote.widgetOptions.map((o, i) => ({ option: live[i], source: { uri: o.uri } })).filter(o => !isReplacedArtEdition(o.option));
     }
     if (!artId) return NONE;
     // A bundled art pack: its hero pieces, as a v1 pack would list them.

@@ -148,3 +148,7 @@
 "Tick a habit" = "Marcar um hábito";
 "Streak habit" = "Hábito da sequência";
 "Choose the habit this streak widget follows." = "Escolha o hábito que este widget de sequência acompanha.";
+
+"Unavailable" = "Indisponível";
+"Full" = "Completa";
+"Remaining" = "Restante";

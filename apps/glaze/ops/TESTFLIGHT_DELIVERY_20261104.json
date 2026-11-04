@@ -1,0 +1,238 @@
+{
+  "schema": "GLAZE_TESTFLIGHT_DELIVERY_20261104",
+  "recordedAt": "2026-11-04T17:46:51.954273+11:00",
+  "version": "1.0.2",
+  "build": "25",
+  "sourcePR": "https://github.com/MerlinWerlin/App-Projects/pull/210",
+  "sourceCommit": "60cbfaee0251e57472843d20a78c49c8d3de176e",
+  "easBuildId": "cb1faa1e-c5b0-4eeb-b10d-566a7ccaed05",
+  "easSubmissionId": "adbf6f01-47c8-4af0-a107-7ce76981279d",
+  "appleBuild": {
+    "id": "8b4f0313-4ca9-4e74-b7ae-3330cbb90c79",
+    "version": "1.0.2",
+    "build": "25",
+    "uploadedAt": "2026-11-03T22:42:50-08:00",
+    "processingState": "VALID",
+    "expired": false,
+    "expiresAt": "2027-02-01T22:42:50-08:00",
+    "internalBuildState": "IN_BETA_TESTING",
+    "externalBuildState": "READY_FOR_BETA_SUBMISSION"
+  },
+  "appleObservedAt": "2026-11-04T07:36:13.004857+00:00",
+  "internalGroup": {
+    "id": "a83240a1-58c5-4c81-83d8-1366a12cc0ff",
+    "name": "Team (Expo)",
+    "internal": true,
+    "allBuilds": true
+  },
+  "signedPackage": {
+    "schema": "GLAZE_EXISTING_SIGNED_PACKAGE_CHECK_V1",
+    "harnessSourceSHA": "91ef0493eef4dbe5383af37cb023c524ba308507",
+    "expectedVersion": "1.0.2",
+    "expectedBuild": "25",
+    "createdNewBuild": false,
+    "uploadedToApple": false,
+    "physicalDeviceExecution": false,
+    "packageSHA256": "941baeb8f7b084ea32b70d792dda84a719ae6d14272c6d9ad85a89a354d86fc8",
+    "packageBytes": 34380268,
+    "signedGroupPreflightPassed": true
+  },
+  "library": {
+    "themes": 141,
+    "updatedThemes": 105,
+    "parsedOptions": 874,
+    "productionCatalogue": "glaze-packs-v5",
+    "publication": [
+      {
+        "tag": "glaze-packs-v12",
+        "releaseId": 433628404,
+        "url": "https://github.com/MerlinWerlin/App-Projects/releases/tag/glaze-packs-v12",
+        "publishedAt": "2026-11-04T07:34:18Z",
+        "verifiedAt": "2026-11-04T07:36:17.170987+00:00",
+        "assets": 687,
+        "bytes": 71140834,
+        "allGitHubSHA256DigestsMatch": true,
+        "catalogUploadedLast": true,
+        "oldReleasesChanged": false
+      },
+      {
+        "tag": "glaze-packs-v13",
+        "releaseId": 433629922,
+        "url": "https://github.com/MerlinWerlin/App-Projects/releases/tag/glaze-packs-v13",
+        "publishedAt": "2026-11-04T07:36:18Z",
+        "verifiedAt": "2026-11-04T07:36:43.637819+00:00",
+        "assets": 130,
+        "bytes": 9691090,
+        "allGitHubSHA256DigestsMatch": true,
+        "catalogUploadedLast": true,
+        "oldReleasesChanged": false
+      },
+      {
+        "tag": "glaze-packs-v11",
+        "releaseId": 433630243,
+        "url": "https://github.com/MerlinWerlin/App-Projects/releases/tag/glaze-packs-v11",
+        "publishedAt": "2026-11-04T07:36:44Z",
+        "verifiedAt": "2026-11-04T07:38:40.407538+00:00",
+        "assets": 688,
+        "bytes": 61408102,
+        "allGitHubSHA256DigestsMatch": true,
+        "catalogUploadedLast": true,
+        "oldReleasesChanged": false
+      }
+    ],
+    "sourceBranches": [
+      {
+        "tag": "glaze-packs-v11",
+        "branch": "codex/glaze-packs-v11-20261104",
+        "files": 692,
+        "commit": "5cbbb27092f6df953624d7c415f89f4bb24ed0f5"
+      },
+      {
+        "tag": "glaze-packs-v12",
+        "branch": "codex/glaze-packs-v12-20261104",
+        "files": 691,
+        "commit": "be678adfceb2afad8d66a6fddea9cb27f9f5fd17"
+      },
+      {
+        "tag": "glaze-packs-v13",
+        "branch": "codex/glaze-packs-v13-20261104",
+        "files": 134,
+        "commit": "82d3bc8797479ab18a33555c2cdc08cd1fa34a90"
+      }
+    ],
+    "oldLibrary": {
+      "oldCatalogueByteIdentical": true,
+      "oldCatalogueSHA256": "41a87b487fb7808b6004de1341bf8af2112c06ca8d7150d2c794bb234e140778",
+      "unchangedAssets": {
+        "glaze-packs-v2": 684,
+        "glaze-packs-v3": 682,
+        "glaze-packs-v4": 642
+      }
+    },
+    "initialPublication": [
+      {
+        "tag": "glaze-packs-v6",
+        "releaseId": 433585842,
+        "url": "https://github.com/MerlinWerlin/App-Projects/releases/tag/glaze-packs-v6",
+        "publishedAt": "2026-11-04T06:33:26Z",
+        "verifiedAt": "2026-11-04T06:35:29.602358+00:00",
+        "assets": 736,
+        "bytes": 78953435,
+        "allGitHubSHA256DigestsMatch": true,
+        "catalogUploadedLast": true,
+        "oldReleasesChanged": false
+      },
+      {
+        "tag": "glaze-packs-v7",
+        "releaseId": 433587295,
+        "url": "https://github.com/MerlinWerlin/App-Projects/releases/tag/glaze-packs-v7",
+        "publishedAt": "2026-11-04T06:35:30Z",
+        "verifiedAt": "2026-11-04T06:35:58.484949+00:00",
+        "assets": 139,
+        "bytes": 10708014,
+        "allGitHubSHA256DigestsMatch": true,
+        "catalogUploadedLast": true,
+        "oldReleasesChanged": false
+      },
+      {
+        "tag": "glaze-packs-v5",
+        "releaseId": 433587626,
+        "url": "https://github.com/MerlinWerlin/App-Projects/releases/tag/glaze-packs-v5",
+        "publishedAt": "2026-11-04T06:35:59Z",
+        "verifiedAt": "2026-11-04T06:38:06.970616+00:00",
+        "assets": 737,
+        "bytes": 68742816,
+        "allGitHubSHA256DigestsMatch": true,
+        "catalogUploadedLast": true,
+        "oldReleasesChanged": false
+      }
+    ],
+    "initialSourceBranches": [
+      {
+        "tag": "glaze-packs-v5",
+        "branch": "codex/glaze-packs-v5-20261104",
+        "files": 741,
+        "commit": "b3b1659ee8aa7c555ee522d78d414366378effc6"
+      },
+      {
+        "tag": "glaze-packs-v6",
+        "branch": "codex/glaze-packs-v6-20261104",
+        "files": 740,
+        "commit": "3059aeaa036a6105bec6796d8e767037870d8906"
+      },
+      {
+        "tag": "glaze-packs-v7",
+        "branch": "codex/glaze-packs-v7-20261104",
+        "files": 143,
+        "commit": "3eb5c23c5d9ffc5e04f3bef512bc64684d328b20"
+      }
+    ],
+    "retainedDedicatedArtClocks": 2,
+    "withdrawnAutomaticClocks": 103,
+    "withheldRepeatedComponents": 315,
+    "themeDesignReady": false,
+    "catalogueDesignHold": {
+      "catalogueRelease": "glaze-packs-v5",
+      "url": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5/catalog.json",
+      "verifiedAt": "2026-11-04T07:45:43.221935+00:00",
+      "sha256": "948bc573b1a41c16fd8a1160f2905cc772a11f19ad3b9bef7db179ac4430c46c",
+      "bytes": 117627,
+      "themes": 141,
+      "updatedPacks": 105,
+      "withdrawnAutomaticClockEditions": 103,
+      "withheldRepeatedComponents": 315,
+      "retainedDedicatedArtClocks": 2,
+      "onlyMutableCatalogueReplaced": true,
+      "freshClientRequestHelper": "catalogRequestUrl in remoteCatalog.ts; cache nonce verified",
+      "replacementBuildRequired": true,
+      "immutableAssetsOverwritten": false
+    },
+    "UTF8OriginalMetadataPreserved": true
+  },
+  "checks": {
+    "corePassed": 1903,
+    "coreFailed": 0,
+    "typecheck": "app and Node PASS with installed dependencies",
+    "packScriptsPassed": 27,
+    "packScriptsFailed": 0,
+    "packScriptsSkipped": 2,
+    "skipsReason": "Two optional encoder-dependent cases skipped; see pack-scripts-fixed.log.",
+    "nativeHabitChecks": 628,
+    "nativeAlbumAssertionsPerLocale": 477,
+    "nativeAlbumLocales": 11,
+    "nativeWidgetSDKCheck": "PASS",
+    "nativeRuns": [
+      41785213726,
+      41785217911,
+      41785221314
+    ],
+    "signedAndAppleRun": 41787403172,
+    "finalAppleRun": 41793393674
+  },
+  "physicalDeviceTested": false,
+  "publicAppReviewSubmitted": false,
+  "remaining": "Ship and verify replacement build26 with catalogRequestUrl freshness fix. Dedicated themed widget redesign remains unfinished; no public App Review submission.",
+  "state": "BUILD25_AVAILABLE_REPLACEMENT26_REQUIRED_FOR_CATALOGUE_CACHE_FIX",
+  "designGate": {
+    "result": "FAIL for automatic reused-art editions; technical tests are not design approval",
+    "reviewedThemes": 105,
+    "automaticTinyClockOverlays": 103,
+    "repeatedDateFocusBatteryEditions": 315,
+    "dedicatedArtClocksRetained": 2,
+    "action": "Withdraw103 automatic clocks and exclude315 repeated components. Preserve141themes and other original options. Use new immutable pack versions original+3 onv11/v12/v13, then replace only the mutable v5catalogue.",
+    "redesignNeeded": "Dedicated layouts make each function the main feature with readable values, proper calendar/battery/focus hierarchy and theme-specific motifs. Individual art/size/locale review and real iPhone behavior remain unqualified.",
+    "sourceEvidence": "docs/themed-clock-profiles.json, docs/themed-component-profiles.json, old/current published manifests; owner layout complaint was independently identified in the existing Fix Glaze widget layouts chat.",
+    "draftOnly": "v8/v9/v10 correction must not be promoted.",
+    "actionApplied": true,
+    "newImmutablePackVersion": "original+3; v11/v12/v13",
+    "existingInstalledWidgets": "Catalogue changes do not remove or re-save existing Home Screen widgets. Choose a fallback and re-save while dedicated layouts are redesigned.",
+    "supersededPreparation": "v8/v9/v10 were not promoted to the app catalogue; v9 and part of v10 remain immutable review history."
+  },
+  "catalogueFreshnessFix": {
+    "observed": "Canonical GitHub download URL retained the old redirect after catalog replacement; Cache-Control:no-cache did not refresh it.",
+    "fix": "Production catalogRequestUrl adds a fresh per-request nonce only to GitHub catalogue URLs; retains If-None-Match, six-hour fetch throttling and immutable manifest/art URLs. Cache revision bumped.",
+    "publicReadback": "Actual production helper returned the new SHA256948bc573b1a41c16fd8a1160f2905cc772a11f19ad3b9bef7db179ac4430c46c.",
+    "replacementBuild": "26 pending",
+    "regressionCases": 3
+  }
+}

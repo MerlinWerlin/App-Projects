@@ -41,6 +41,7 @@ struct LiveArtSpec {
   let ink: String
   /// Countdown target (start of that day, current calendar).
   let target: Date?
+  var design: DesignedWidgetSpec? = nil
 
   /// Tolerant parse of a record's `live` value (same rules as parseLiveArtSpec in TS).
   static func parse(_ raw: Any?) -> LiveArtSpec? {
@@ -61,6 +62,10 @@ struct LiveArtSpec {
     let plate = (r["plate"] as? String).flatMap { Color.isHex($0) ? $0 : nil } ?? "#000000"
     let ink = (r["ink"] as? String).flatMap { Color.isHex($0) ? $0 : nil } ?? "#FFFFFF"
     let clockStyle = r["clockStyle"] as? String ?? "legacy"
+    let design = DesignedWidgetSpec.parse(r["design"])
+    if r["design"] != nil {
+      guard let design = design, (design.kind == "calendar" ? "date" : design.kind) == kindRaw else { return nil }
+    }
     return LiveArtSpec(
       kind: kind,
       rect: CGRect(x: v[0], y: v[1], width: v[2], height: v[3]),
@@ -71,7 +76,8 @@ struct LiveArtSpec {
       compact: (r["valueStyle"] as? String) == "compact" && [.date,.focus,.battery].contains(kind),
       plate: plate,
       ink: ink,
-      target: target
+      target: target,
+      design: design
     )
   }
 

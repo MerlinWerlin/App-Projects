@@ -43,6 +43,7 @@ import {
   catalogCacheStamp,
   catalogNeedsFetch,
   catalogRequestEtag,
+  catalogRequestUrl,
   catalogStatus,
   decideCatalog,
   parseCatalogCache,
@@ -144,10 +145,11 @@ export const deviceTransport: Transport = {
   },
   // T254: catalog.json with If-None-Match, so an unchanged catalogue answers 304 with no body.
   async fetchConditional(url, etag, limit) {
-    const res = await fetch(url, etag ? { headers: { 'If-None-Match': etag } } : undefined);
+    const requestUrl = catalogRequestUrl(url, Date.now());
+    const res = await fetch(requestUrl, etag ? { headers: { 'If-None-Match': etag } } : undefined);
     if (res.status === 304) return { status: 304 };
     if (res.status !== 200) throw new Error(`HTTP ${res.status}`);
-    if (!finalUrlOk(url, (res as { url?: unknown }).url)) throw new Error('redirected off HTTPS');
+    if (!finalUrlOk(requestUrl, (res as { url?: unknown }).url)) throw new Error('redirected off HTTPS');
     const text = await res.text();
     if (text.length > limit) throw new Error('response too large');
     let tag: string | null = null;

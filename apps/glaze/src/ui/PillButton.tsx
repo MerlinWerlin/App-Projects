@@ -31,6 +31,7 @@ type Props = {
   haptic?: HapticKind | false;
   accessibilityLabel?: string;
   accessibilityHint?: string;
+  accessibilityState?: PressableScaleProps['accessibilityState'];
   /** T94: optional secondary action (long-press) and matching VoiceOver/TalkBack actions. */
   onLongPress?: () => void;
   accessibilityActions?: PressableScaleProps['accessibilityActions'];
@@ -52,6 +53,7 @@ export function PillButton({
   haptic,
   accessibilityLabel,
   accessibilityHint,
+  accessibilityState,
   onLongPress,
   accessibilityActions,
   onAccessibilityAction,
@@ -84,7 +86,7 @@ export function PillButton({
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel ?? label}
       accessibilityHint={accessibilityHint}
-      accessibilityState={{ disabled: inactive, busy }}
+      accessibilityState={{ ...accessibilityState, disabled: inactive, busy }}
       hitSlop={size === 'small' ? 4 : 0}
       style={[
         styles.base,

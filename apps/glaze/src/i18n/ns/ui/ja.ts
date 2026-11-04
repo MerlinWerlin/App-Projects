@@ -2,6 +2,17 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ja: NonNullable<LocaleMessages['ui']> = {
+  designedWidgets: {
+      "title": "このテーマのためのデザイン",
+      "body": "アイコンと同じ色で、見やすいライブウィジェット。",
+      "clock": "時計",
+      "battery": "バッテリー",
+      "calendar": "カレンダー",
+      "setup": "Glaze Seamlessウィジェットを追加し、「ウィジェットを編集」→「アート」でこのデザインを選びます。",
+      "update": "このウィジェットを使うには、TestFlightからGlazeの最新ビルドをインストールしてください。",
+      "batteryNote": "バッテリー残量は定期的に更新されます。ダッシュはiOSから残量が取得できないことを示します。",
+      "unavailable": "取得できません"
+  },
   error: {
     body: 'この画面で問題が起きて停止しました。アイコン、テーマ、ループはスマートフォンに保存されており影響はありません。もう一度お試しください。繰り返し起きる場合は下のメモを送ってください。',
     retryHint: 'この画面を再読み込みします',

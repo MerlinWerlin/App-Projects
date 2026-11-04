@@ -148,3 +148,7 @@
 "Tick a habit" = "习惯打卡";
 "Streak habit" = "连续打卡的习惯";
 "Choose the habit this streak widget follows." = "选择这个连续打卡小组件跟踪的习惯。";
+
+"Unavailable" = "暂不可用";
+"Full" = "已充满";
+"Remaining" = "剩余";

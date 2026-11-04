@@ -5,9 +5,9 @@ root = File.expand_path(ARGV.fetch(0))
 FileUtils.mkdir_p(root)
 FileUtils.cp(File.join(__dir__, 'native-link-test-host.swift'), File.join(root, 'NativeLinkHost.swift'))
 fixture = ARGV[1] || 'native-link-ui-tests.swift'
-abort 'Unexpected UI fixture' unless ['native-link-ui-tests.swift', 'native-widget-tap-tests.swift', 'native-album-ui-tests.swift'].include?(fixture)
+abort 'Unexpected UI fixture' unless ['native-link-ui-tests.swift', 'native-widget-tap-tests.swift', 'native-album-ui-tests.swift', 'native-designed-widget-ui-tests.swift'].include?(fixture)
 scenario = ARGV[2] || 'route'
-abort 'Unexpected UI scenario' unless ['route', 'widget', 'album', 'album-widget'].include?(scenario)
+abort 'Unexpected UI scenario' unless ['route', 'widget', 'album', 'album-widget', 'design'].include?(scenario)
 FileUtils.cp(File.join(__dir__, fixture), File.join(root, 'GlazeDeepLinkTests.swift'))
 if fixture == 'native-album-ui-tests.swift'
   FileUtils.cp(File.join(__dir__, 'native-album-widget-ui-helper.swift'), File.join(root, 'NativeAlbumWidgetTests.swift'))

@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.2: artwork-preserving native clocks/date/focus widgets, working habit controls and photo albums; refreshed matching widget choices for 105 themes, keeping all 141 themes.",
+  "note": "Glaze 1.0.3: readable theme-matched clocks, battery gauges and full month calendars for every theme; fresh catalogue requests. Existing functional widgets upgrade in place; original artwork and personal photos are preserved.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

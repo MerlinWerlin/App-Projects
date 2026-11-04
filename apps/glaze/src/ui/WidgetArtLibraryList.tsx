@@ -203,18 +203,21 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
       ) : null}
       {pieces.map((p) => {
         const on = selected.has(p.id);
-        const body = (
-          <>
-          {dir ? (
-            <ExpoImage
+        const thumbnail = () => {
+          if (p.live?.design) return <DesignedWidgetThumbnail design={p.live.design} size={p.size ?? 'small'} width={sizeV2.touch} />; // i18n-ignore (JSX return, no literal text)
+          if (!dir) return null;
+          return <ExpoImage
               source={{ uri: `${base}${p.file}` }}
               recyclingKey={`${p.id}-${p.created}`}
               cachePolicy="none"
               contentFit="contain"
               style={[styles.thumb, { backgroundColor: c.surfaceRaised }]}
               accessibilityIgnoresInvertColors
-            />
-          ) : null}
+            />;
+        };
+        const body = (
+          <>
+          {thumbnail()}
           <View style={styles.text}>
             <Text numberOfLines={2} maxFontSizeMultiplier={fontScaleCap('body')} style={[...label('body'), { color: c.ink }]}>
               {p.name}
@@ -275,3 +278,4 @@ const styles = StyleSheet.create({
   thumb: { width: THUMB, height: THUMB, borderRadius: chromeRadiusV2.control },
   text: { flex: 1, gap: spaceV2.xxs },
 });
+import { DesignedWidgetThumbnail } from './DesignedThemeWidgets';

@@ -148,3 +148,7 @@
 "Tick a habit" = "تسجيل عادة";
 "Streak habit" = "عادة السلسلة";
 "Choose the habit this streak widget follows." = "اختر العادة التي تتابعها أداة السلسلة هذه.";
+
+"Unavailable" = "غير متاح";
+"Full" = "ممتلئة";
+"Remaining" = "المتبقي";
