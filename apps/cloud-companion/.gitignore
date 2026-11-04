@@ -6,3 +6,4 @@ output/
 Generated/
 App/Assets.xcassets/AppIcon.appiconset/icon.png
 *.log
+project-signing.yml

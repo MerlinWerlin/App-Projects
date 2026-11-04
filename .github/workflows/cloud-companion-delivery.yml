@@ -20,6 +20,7 @@ jobs:
       ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
       ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
       APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,18 +36,18 @@ jobs:
       - name: Prepare existing signing credentials
         id: preflight
         run: |
-          python3 -m pip install --quiet pyjwt cryptography requests
+          python3 -m pip install --quiet pyjwt cryptography requests pyyaml
           python3 tools/prepare_signing.py
       - name: Generate native icon and project
         run: |
           swift tools/MakeIcon.swift
           brew list xcodegen >/dev/null 2>&1 || brew install xcodegen
-          xcodegen generate
+          xcodegen generate --spec project-signing.yml
       - name: Archive with automatic provisioning
         id: archive
         run: |
           set -o pipefail
-          xcodebuild -project CloudCompanion.xcodeproj -scheme CloudCompanion -configuration Release -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/CloudCompanion.xcarchive" DEVELOPMENT_TEAM="$CLOUD_TEAM_ID" CURRENT_PROJECT_VERSION="$CLOUD_BUILD_NUMBER" -allowProvisioningUpdates -authenticationKeyPath "$CLOUD_KEY_PATH" -authenticationKeyID "$CLOUD_KEY_ID" -authenticationKeyIssuerID "$CLOUD_ISSUER_ID" archive 2>&1 | tee "$RUNNER_TEMP/cloud-archive.log"
+          xcodebuild -project CloudCompanion.xcodeproj -scheme CloudCompanion -configuration Release -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/CloudCompanion.xcarchive" CURRENT_PROJECT_VERSION="$CLOUD_BUILD_NUMBER" archive 2>&1 | tee "$RUNNER_TEMP/cloud-archive.log"
       - name: Verify signed app and widget entitlements
         id: entitlements
         run: |
@@ -68,10 +69,11 @@ jobs:
         run: |
           set -o pipefail
           python3 - <<'PY'
-          import plistlib,os
+          import plistlib,os,json
           from pathlib import Path
           plistlib.dump({'method':'app-store-connect','destination':'upload','teamID':os.environ['CLOUD_TEAM_ID'],
-            'signingStyle':'automatic','uploadSymbols':False,'manageAppVersionAndBuildNumber':False,
+            'signingStyle':'manual','signingCertificate':'Apple Distribution','provisioningProfiles':json.load(open(os.environ['CLOUD_PROFILES_PATH'])),
+            'uploadSymbols':False,'manageAppVersionAndBuildNumber':False,
             'testFlightInternalTestingOnly':True,'generateAppStoreInformation':True},
             open(Path(os.environ['RUNNER_TEMP'])/'cloud-export.plist','wb'))
           PY
