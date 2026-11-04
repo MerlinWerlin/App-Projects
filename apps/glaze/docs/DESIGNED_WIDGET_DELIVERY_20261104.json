@@ -1,0 +1,131 @@
+{
+  "schema": "GLAZE_DESIGNED_WIDGET_DELIVERY_V1",
+  "version": "1.0.3",
+  "build": "31",
+  "productSourceSHA": "06c59b5650779a461d9edbfd889a29942937b75c",
+  "mergedPullRequests": [
+    218,
+    220,
+    222,
+    223
+  ],
+  "coverage": {
+    "catalogueThemes": 141,
+    "additionalBundledThemes": 66,
+    "spacePhotoThemes": 8,
+    "totalThemeEntries": 215,
+    "functions": [
+      "clock",
+      "battery",
+      "calendar"
+    ],
+    "homeSizes": [
+      "small",
+      "medium",
+      "large"
+    ],
+    "baselineLayouts": 1935
+  },
+  "validation": {
+    "integratedCoreTests": 1908,
+    "previewBaselineFocusedTests": 5,
+    "appTypeScriptPassed": true,
+    "nodeTypeScriptPassed": true,
+    "iosHermesExportPassed": true,
+    "nativeReview": {
+      "run": 41798611406,
+      "sourceSHA": "f29c713b3e73ec1d70587dea40322e697554c248",
+      "themes": 215,
+      "baselineLayouts": 1935,
+      "renders": 2727,
+      "assertions": 58263,
+      "catalogueThemes": 141,
+      "physicalDeviceTest": false,
+      "allFileHashesAndDimensionsVerified": true,
+      "nativeContactSheets": [
+        "native-contact-01.jpg",
+        "native-contact-02.jpg",
+        "native-contact-03.jpg",
+        "native-contact-04.jpg",
+        "native-contact-05.jpg",
+        "native-contact-06.jpg",
+        "native-contact-07.jpg",
+        "native-contact-08.jpg",
+        "native-contact-09.jpg",
+        "native-contact-10.jpg",
+        "native-contact-11.jpg",
+        "native-contact-12.jpg",
+        "native-contact-13.jpg",
+        "native-contact-14.jpg",
+        "native-contact-15.jpg",
+        "native-contact-16.jpg",
+        "native-contact-17.jpg",
+        "native-contact-18.jpg"
+      ]
+    },
+    "fullNativeAppBuildInstallLaunch": {
+      "run": 41800078795,
+      "sourceSHA": "f0c54b8c09b9b45e13b8599085fe76abaaee8aa0",
+      "productTreeMatchesRelease": true
+    },
+    "installedSaveRestartSharedSpecs": {
+      "run": 41803909254,
+      "receipt": {
+        "harnessSourceSHA": "06c59b5650779a461d9edbfd889a29942937b75c",
+        "simulatorRun": "41800078795",
+        "simulatorZipSHA256": "8226007c4f1f1c869ac8c1a39b983a1b0ec9f48f7d6253c3bb3b25edd1b9261b",
+        "runnerBuildOnly": false,
+        "scenario": "design",
+        "routeTestPassed": false,
+        "installedWidgetTapTest": false,
+        "fullExpoHabitBridgeQualifiedInSimulator": false,
+        "physicalDeviceTest": false,
+        "scope": "Real installed Expo app selects and saves all three functional widget designs through the native bridge; shared semantic specs survive app restart. Home Screen interaction/physical phone not inferred.",
+        "systemAlbumPickerUITest": false,
+        "designedWidgetSaveUITest": true,
+        "designedWidgetSharedSpecsVerified": true,
+        "installedAlbumNextTest": false,
+        "installedAlbumCursorVerified": false,
+        "albumSharedManifestVerified": false
+      },
+      "threeSavedPreviewScreenshotsVisuallyReviewed": true
+    }
+  },
+  "signedPackage": {
+    "run": 41802223196,
+    "sourceSHA": "06c59b5650779a461d9edbfd889a29942937b75c",
+    "version": "1.0.3",
+    "build": "31",
+    "packageSHA256": "d0cda7191b3ee9674285484d307bac640c4c1dfbe90ae481a15990f6247b5dec",
+    "packageBytes": 34493165,
+    "signedGroupPreflightPassed": true,
+    "physicalDeviceTest": false
+  },
+  "appleSubmissionId": "8d8b236b-b096-4fac-88a4-a813bc17071d",
+  "appleAvailability": {
+    "readonlyRun": 41804170802,
+    "observedAt": "2026-11-04T09:02:37.611319+00:00",
+    "id": "244d280b-6603-4df1-b3b3-672ef9c9d570",
+    "version": "1.0.3",
+    "build": "31",
+    "uploadedAt": "2026-11-04T00:56:54-08:00",
+    "processingState": "VALID",
+    "expired": false,
+    "expiresAt": "2027-02-02T00:56:54-08:00",
+    "internalBuildState": "IN_BETA_TESTING",
+    "externalBuildState": "READY_FOR_BETA_SUBMISSION",
+    "automaticInternalGroups": [
+      {
+        "id": "a83240a1-58c5-4c81-83d8-1366a12cc0ff",
+        "name": "Team (Expo)",
+        "internal": true,
+        "allBuilds": true
+      }
+    ]
+  },
+  "physicalDeviceTest": false,
+  "publicAppReviewSubmitted": false,
+  "evidenceFolder": "Apps/outputs/glaze-designed-widgets-20261104",
+  "nativeGallery": "corrected-native-review/native-gallery.html",
+  "qualification": "Native render review, complete simulator app integration, real app save/restart/shared specs, signed package and Apple internal TestFlight availability. Physical phone and installed Home Screen taps are not inferred."
+}
