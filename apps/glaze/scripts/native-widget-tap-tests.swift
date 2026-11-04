@@ -1,5 +1,7 @@
 import XCTest
 import Darwin
+import UIKit
+import Vision
 
 @MainActor final class GlazeWidgetTapTests: XCTestCase {
   func testWidgetTapRoundTripsThroughSharedStorage() throws {
@@ -7,6 +9,24 @@ import Darwin
     continueAfterFailure = false
     let glaze = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    func observedText(_ match: (String) -> Bool) throws -> CGRect? {
+      guard let image = UIImage(data: XCUIScreen.main.screenshot().pngRepresentation)?.cgImage else { return nil }
+      let request = VNRecognizeTextRequest(); request.recognitionLevel = .accurate
+      request.recognitionLanguages = ["en-US"]; request.usesLanguageCorrection = false
+      try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
+      let items = request.results ?? []
+      print("GLAZE_SCREEN_OCR " + items.compactMap { $0.topCandidates(1).first?.string }.joined(separator: " | ")); fflush(stdout)
+      guard let item = items.first(where: { match($0.topCandidates(1).first?.string ?? "") }) else { return nil }
+      let b = item.boundingBox, screen = spring.frame
+      return CGRect(x: b.minX * screen.width, y: (1 - b.maxY) * screen.height, width: b.width * screen.width, height: b.height * screen.height)
+    }
+    func tapObserved(_ rect: CGRect) {
+      spring.coordinate(withNormalizedOffset: .zero).withOffset(CGVector(dx: rect.midX, dy: rect.midY)).tap()
+    }
+    func displayedValue(_ expected: String) throws -> Bool {
+      if spring.staticTexts[expected].firstMatch.exists { return true }
+      return try observedText { $0 == expected || $0.hasPrefix(expected + " ") } != nil
+    }
     // CI runner only. Xcode26 exposes this private XCTest switch (also recorded in
     // Appium's SDK26.4 XCUIApplication header); never linked into the shipped app.
     // Live clocks/repeating artwork do not become animation-idle. Keep explicit content waits.
@@ -81,19 +101,32 @@ import Darwin
     XCTAssertTrue(spring.staticTexts["Water"].firstMatch.exists, spring.debugDescription)
     stage("water-widget-selected")
     let addControl = spring.buttons["Add Widget"].firstMatch
-    XCTAssertTrue(addControl.exists); addControl.tap()
+    if addControl.exists && addControl.isHittable { addControl.tap() }
+    else {
+      let button = try XCTUnwrap(observedText { $0.lowercased().contains("add widget") }, "Visible Add Widget control required")
+      tapObserved(button)
+    }
     for _ in 0..<2 {
       let done = spring.buttons["Done"].firstMatch
       if done.waitForExistence(timeout: 3) { done.tap() }
     }
+    XCUIDevice.shared.press(.home)
     let plus = spring.buttons["Add 150 ml"].firstMatch
-    XCTAssertTrue(plus.waitForExistence(timeout: 20), spring.debugDescription)
-    XCTAssertTrue(spring.staticTexts["150"].firstMatch.exists, spring.debugDescription)
+    XCTAssertTrue(try displayedValue("150"), spring.debugDescription)
     stage("native-widget-shows-150")
     let before = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); before.name = "installed-water-before-150"; before.lifetime = .keepAlways; add(before)
-    plus.tap()
+    if plus.exists && plus.isHittable { plus.tap() }
+    else {
+      let button = try XCTUnwrap(observedText { $0.replacingOccurrences(of: " ", with: "").hasPrefix("+150") }, "Visible +150 widget button required")
+      tapObserved(button)
+    }
     XCTAssertNotEqual(glaze.state, .runningForeground, "Widget intent should log without opening Glaze")
-    XCTAssertTrue(spring.staticTexts["300"].firstMatch.waitForExistence(timeout: 20), spring.debugDescription)
+    var showed300 = false
+    for _ in 0..<20 {
+      if try displayedValue("300") { showed300 = true; break }
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+    }
+    XCTAssertTrue(showed300, spring.debugDescription)
     stage("native-widget-shows-300")
     let after = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); after.name = "installed-water-after-300"; after.lifetime = .keepAlways; add(after)
     glaze.activate()
