@@ -2,7 +2,7 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ko: NonNullable<LocaleMessages['themes']> = {
-  subtitle: '배경화면, 아이콘, 위젯, 루프까지 갖춘 완성된 룩.',
+  subtitle: '배경화면, 아이콘, 위젯이 어울리는 완성된 룩.',
   tipsA11y: '도움말',
   dismissTip: '도움말 닫기: {title}',
   makeWallpaper: {

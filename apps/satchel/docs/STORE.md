@@ -1,10 +1,12 @@
-# Store listing (draft)
+# Store listing (release 0.1.0)
 
-Written for T20 from the OpenAI lane draft in `docs/spec/STORE.md`, checked against what is built today (TRIAL milestone) and docs/PLAN.md. "Satchel" is a working title: check App Store and trademark availability before launch (PLAN.md). No competitor names, no brand names, no battery-life numbers.
+Rewritten for T158 (run 111, 1 Nov 2026) from what is in the build: the done tasks in ops/backlog.json, ops/RUNLOG.md, docs/TRIAL.md and the screens under app/. The 24 Oct draft (T20) described only the first trial build. "Satchel" is a working title: check App Store and trademark availability before launch (PLAN.md).
 
-**Rule for this file:** the paste-ready copy below only describes features that exist in the app now. Anything unbuilt (downloadable offline maps, offline points of interest, trip export/import, share extension, iCloud sync, shared trips, widgets, Wallet passes, Satchel Plus itself) is kept out of the copy and listed under "Add when shipped" at the end. Before each submission, re-read the copy against the build and the owner's trial answers in docs/TRIAL.md (Starter Standard §3: never claim a feature works on a real phone until the owner confirms it).
+**Rule for this file:** the paste-ready copy below only describes features that exist in the build and work without anything still unpublished. Offline city map downloads are in the build but not live (the map files, GitHub release `satchel-maps-v1`, are not published), so they, the offline places that come with them and Satchel Plus (which only unlocks extra offline cities per trip) stay out of the copy and wait under "Add when shipped". Before each submission, re-read the copy against the build and the owner's answers in docs/TRIAL.md (Starter Standard §3: never claim something works on a real phone until the owner confirms it).
 
-Character counts were measured with a script; recount after any edit.
+House rules for the copy: no competitor or brand names, no battery-life numbers, no "works on your phone" claims, no medical or legal guarantees, emergency numbers always "verify locally". No ads, no tracking, no account; everything described is free.
+
+**Checked by a script.** `node tools/store/limits.mjs` reads the tables and the fenced blocks under each "(N limit)" heading in the App Store and Google Play sections, prints each field's character count and fails on a field over its limit, a wrong count in a table, a keyword already in the name or subtitle, a brand name or a banned claim. `npm test` runs the same checks (src/core/storelimits.test.ts). Paste the fenced text exactly as it is.
 
 ## App Store (iOS)
 
@@ -17,106 +19,197 @@ Fallback name if "Satchel" is taken: `Flight Mode Travel Wallet` (25).
 
 ### Keywords (100 limit)
 
+```text
+itinerary,planner,boarding,pass,packing,passport,emergency,toilet,phrasebook,jetlag,currency,journal
 ```
-itinerary,planner,boarding,pass,packing,emergency,passport,visa,documents,hotel,airplane,QR,map
+
+Comma-separated, no spaces. Words Apple already indexes from the name and subtitle (satchel, offline, travel, wallet, trip, tickets, flight, mode) are left out, and so are brand names. Swap ideas if a word underperforms: holiday, vacation, converter, documents, layover, checklist.
+
+### Promotional text (170 limit)
+
+Can change without review.
+
+```text
+Your plan, tickets, documents and emergency card in one calm place, saved on your phone and ready in flight mode. Free, with no ads, no account and no tracking.
 ```
 
-**95 characters**, comma-separated, no spaces. Words already in the name or subtitle (satchel, offline, travel, wallet, trips, tickets, flight, mode) are left out because Apple indexes those already. No brand or competitor names. Swap ideas if a word underperforms: holiday, vacation, journey, checklist, timeline.
+### Description (4000 limit)
 
-### Promotional text (170 limit, can change without review)
+```text
+Leave your phone in flight mode. Your trip is still there.
 
-> Keep your itinerary, tickets, documents and emergency card together on your phone. Save what you need before you travel, then open it in flight mode.
+Satchel keeps everything for the trip in one calm place, saved on your phone: the plan, the tickets, the documents and the details you need when there is no signal at the gate, on the train or at the taxi rank.
 
-(149 characters)
+PLAN THE TRIP
+- A day-by-day timeline with a Next up card and a Your day brief each morning.
+- Flights, trains, ferries, buses, stays, car hire, activities and notes, each in its own time zone.
+- Paste a confirmation email and Satchel drafts the booking, or share a PDF or text into Satchel from other apps.
+- A Ready to go? check for passport dates, plus flags for missing stays, clashes, tight connections and check-in times.
+- Places to go, Plan my day, trip to-dos, public holidays, jet lag tips and a Call home planner.
+- Sunrise, sunset and golden hour for every day, plus a saved forecast and a rainy-day Plan B.
+- Illustrated trip covers or your own photo. Add to Calendar, share the plan as text, or plan a trip again.
 
-### Description
+TICKETS AND WALLET
+- Tickets full screen at full brightness, with the code cropped big. PDFs open inside the app.
+- Loyalty cards, stay details with room, door code and a Wi-Fi code to join.
+- Currency converter with your own rates, bill split, cash on hand, units and a tipping guide.
+- Trip spending: budget, shared costs with travel companions, receipt photos and a spreadsheet export.
 
-> Leave your phone in flight mode. Your trip is still there.
->
-> Satchel keeps the details you need on the day in one calm place, saved on your phone, so you are not hunting for a signal at the gate, on the train or at the taxi rank.
->
-> PLAN THE TRIP
-> - A day-by-day timeline for each trip, with a Next up card at the top.
-> - Add flights, trains, ferries, buses, hotels, car hire, activities and notes.
-> - Each booking keeps its own time zone, so departure and arrival times read correctly.
-> - Warnings for nights with no bed booked and bookings that clash.
-> - Attach PDFs and images from Files or Photos.
->
-> TICKETS AT THE GATE
-> - Open a ticket full screen at full brightness.
-> - Save a crop of the QR code so it opens big in one tap.
->
-> KEEP ESSENTIALS CLOSE
-> - Hotel address card: shows the address in large text, with room for the local-language address to show a taxi driver.
-> - Document vault for passport, visa and licence copies, with expiry warnings and a Face ID or passcode lock.
-> - Emergency card: local emergency numbers (always check them locally), your insurance details, emergency contacts and private medical notes.
-> - Packing lists with templates for different kinds of trip.
->
-> WHEN THE BATTERY IS LOW
-> - Essentials mode: a plain black screen with your next ticket, hotel address and emergency card. Satchel offers it when your battery is low, and you can switch it on any time.
->
-> MAP
-> - See your bookings and saved places on a map, and check where you are with a single tap. Location is checked once when you ask and is never tracked in the background. The map background needs a signal in this version.
->
-> PRIVATE BY DESIGN
-> - No account. No ads. No analytics. No tracking.
-> - Your trips, documents and medical notes stay on your phone.
->
-> Try it straight away with a sample trip.
+SAFETY
+- Emergency card: local emergency numbers (verify locally), your insurance, contacts and private medical notes.
+- Step-by-step guides for a lost passport, lost cards, lost luggage and more.
+- I'm safe: share where you are with one location check, only when you tap.
+- Medicine times that follow you across time zones.
+- Help cards for children and companions, and a step-free card for access needs, in the local language.
+- Local customs, plugs and voltage, driving abroad with a rental car checklist, and getting around guides.
+
+WORDS AND SIGNS
+- Show-a-local phrase cards, a sign reader and a numbers and prices trainer in 12 languages, plus a menu helper.
+
+TOILETS
+- Find public toilets near you or your hotel, with filters for free, wheelchair, changing table and open now. Needs a signal.
+
+PACKING
+- Packing lists from templates, scaled to the number of nights, sorted into bags.
+- Outfit planner, lost-bag kit, gifts and postcards lists.
+- Leaving home and coming home checklists.
+
+MEMORIES
+- A trip journal with photos, a recap of each trip, passport stamps and Your travels: countries, cities and days away.
+- Travel games for queues, flights and car trips.
+- An In the air card while you fly.
+
+DOCUMENTS AND LOW BATTERY
+- Document vault for passport, visa and licence copies, with expiry warnings and a Face ID or passcode lock.
+- Essentials mode: a plain dark screen with your next ticket, hotel address and emergency card when the battery is low.
+
+MAP
+- Your bookings, saved places and each day's stops on the map, with search and a compass back to your hotel. The map background needs a signal.
+
+PRIVATE BY DESIGN
+- No account. No ads. No tracking. Your trips, documents and notes stay on your phone.
+- Back up everything to one file and restore it on a new phone. Send a trip to a friend as a file.
+- Light and dark mode.
+
+Try it straight away with the demo trip.
+```
+
+### What's New in 0.1.0 (4000 limit)
+
+```text
+First release.
+
+- Trips with a day-by-day timeline, Your day brief, readiness check, connections and check-in times.
+- Paste a booking or share one in from other apps.
+- Tickets full screen with the code cropped big, loyalty cards and stay details.
+- Emergency card with local numbers (verify locally), guides for when things go wrong, medicine times and help cards.
+- Phrase cards, sign reader and numbers trainer in 12 languages, and a menu helper.
+- Toilet finder, packing lists with bags and outfits, spending with shared costs, journal and trip recap.
+- Document vault with a lock, low-battery essentials mode, backup and restore.
+
+Everything stays on your phone. No account, no ads, no tracking.
+```
 
 ### Six screenshot captions
 
-Shots, states and sizes are in docs/SCREENSHOTS.md.
+Shots, states and sizes are in docs/SCREENSHOTS.md (the shot table there must use these captions in this order; the test checks it).
 
-1. **Your whole trip, day by day** — trip timeline with the Next up card.
-2. **Tickets ready at the gate** — ticket full screen with its QR crop.
-3. **Show the driver your hotel** — hotel address card with the local-language address.
-4. **Help, one tap away** — emergency card (numbers marked "check locally").
-5. **Documents, locked and dated** — document vault with expiry warnings.
-6. **Pack with a clear checklist** — packing list from a template.
-
-### What's New (first release)
-
-> First release. Trips with a day-by-day timeline, tickets with QR crops, hotel address card, document vault, emergency card, packing lists and low-battery essentials mode, all saved on your phone.
+1. **Your whole trip, day by day** — demo trip cover hero and timeline with Next up.
+2. **Tickets ready at the gate** — ticket full screen with the code cropped big.
+3. **Find a toilet, fast** — Toilets tab near the demo hotel, with filter chips.
+4. **Help, one tap away** — emergency card, numbers marked "verify locally".
+5. **Show a local** — phrase card "Where is the toilet?" in Japanese.
+6. **Pack once, pack right** — packing list sorted into bags.
+7. **Every trip, remembered** — Your travels with countries, days away and stamps.
 
 ## Google Play
 
 | Field | Text | Chars / limit |
 |---|---|---|
 | App name | Satchel: Offline Travel Wallet | 30 / 30 |
-| Short description | Trips, tickets, documents and emergency card, ready in flight mode. | 67 / 80 |
+| Short description | Your trip, tickets, documents and emergency card, ready in flight mode. | 71 / 80 |
 
-- **Full description (4000 limit):** use the App Store description above unchanged (1,768 characters). Play has no keyword field; the words in the description do that job, so keep "timeline", "tickets", "packing lists", "document vault" and "flight mode" in the text when editing (adding "itinerary" and "offline" to the first paragraph for Play is worth testing).
-- **Screenshots:** the same six shots and captions (docs/SCREENSHOTS.md, Play phone size).
+### Full description (4000 limit)
+
+Same as the App Store description, with "Face ID or passcode lock" made general for Android phones.
+
+```text
+Leave your phone in flight mode. Your trip is still there.
+
+Satchel keeps everything for the trip in one calm place, saved on your phone: the plan, the tickets, the documents and the details you need when there is no signal at the gate, on the train or at the taxi rank. An offline travel wallet and itinerary planner.
+
+PLAN THE TRIP
+- A day-by-day timeline with a Next up card and a Your day brief each morning.
+- Flights, trains, ferries, buses, stays, car hire, activities and notes, each in its own time zone.
+- Paste a confirmation email and Satchel drafts the booking, or share a PDF or text into Satchel from other apps.
+- A Ready to go? check for passport dates, plus flags for missing stays, clashes, tight connections and check-in times.
+- Places to go, Plan my day, trip to-dos, public holidays, jet lag tips and a Call home planner.
+- Sunrise, sunset and golden hour for every day, plus a saved forecast and a rainy-day Plan B.
+- Illustrated trip covers or your own photo. Add to Calendar, share the plan as text, or plan a trip again.
+
+TICKETS AND WALLET
+- Tickets full screen at full brightness, with the code cropped big. PDFs open inside the app.
+- Loyalty cards, stay details with room, door code and a Wi-Fi code to join.
+- Currency converter with your own rates, bill split, cash on hand, units and a tipping guide.
+- Trip spending: budget, shared costs with travel companions, receipt photos and a spreadsheet export.
+
+SAFETY
+- Emergency card: local emergency numbers (verify locally), your insurance, contacts and private medical notes.
+- Step-by-step guides for a lost passport, lost cards, lost luggage and more.
+- I'm safe: share where you are with one location check, only when you tap.
+- Medicine times that follow you across time zones.
+- Help cards for children and companions, and a step-free card for access needs, in the local language.
+- Local customs, plugs and voltage, driving abroad with a rental car checklist, and getting around guides.
+
+WORDS AND SIGNS
+- Show-a-local phrase cards, a sign reader and a numbers and prices trainer in 12 languages, plus a menu helper.
+
+TOILETS
+- Find public toilets near you or your hotel, with filters for free, wheelchair, changing table and open now. Needs a signal.
+
+PACKING
+- Packing lists from templates, scaled to the number of nights, sorted into bags.
+- Outfit planner, lost-bag kit, gifts and postcards lists.
+- Leaving home and coming home checklists.
+
+MEMORIES
+- A trip journal with photos, a recap of each trip, passport stamps and Your travels: countries, cities and days away.
+- Travel games for queues, flights and car trips.
+- An In the air card while you fly.
+
+DOCUMENTS AND LOW BATTERY
+- Document vault for passport, visa and licence copies, with expiry warnings and a fingerprint, face or passcode lock.
+- Essentials mode: a plain dark screen with your next ticket, hotel address and emergency card when the battery is low.
+
+MAP
+- Your bookings, saved places and each day's stops on the map, with search and a compass back to your hotel. The map background needs a signal.
+
+PRIVATE BY DESIGN
+- No account. No ads. No tracking. Your trips, documents and notes stay on your phone.
+- Back up everything to one file and restore it on a new phone. Send a trip to a friend as a file.
+- Light and dark mode.
+
+Try it straight away with the demo trip.
+```
+
+- **Release notes:** the What's New text above.
+- **Screenshots:** the same shots and captions (docs/SCREENSHOTS.md, Play phone size; Play takes 2 to 8).
 - **Feature graphic (1024 x 500, required):** paper background (#F4F1EA) with the satchel mark and the line "Your trip, ready in flight mode". Original art only, no logos or device frames from other brands.
-- **Release notes:** same as What's New.
 - **Category:** Travel & Local. **App Store category:** Travel (secondary: Productivity).
+- The Android build is not tested yet (iOS first). Re-check the Play copy against an Android build before the first Play upload: share-in, the vault lock and Add to Calendar behave differently there.
 
-## Checked from the OpenAI draft (docs/spec/STORE.md)
+## Notes on the copy
 
-Kept (true of the build): day-by-day timeline, booking kinds, attaching PDFs and images, tickets with QR crops, hotel address with local-language field, document vault with biometric lock, packing templates, emergency card with insurance, contacts and medical notes, dark essentials screen, no account / backend / ads / tracking, promotional text (lightly edited), captions 1, 2, 4 and 6.
+- **Signal-only parts are labelled.** The toilet finder, the weather forecast (saved once fetched), nearest help and the map background need a connection until offline city maps go live; the copy says "Needs a signal" for toilets and the map, and says the forecast is saved. Sunrise, golden hour, phrases, guides, converters and everything you saved work offline.
+- **Emergency numbers:** every field that mentions them says "verify locally" (the in-app card has a source and checked date per country, but numbers change).
+- **Medical notes and medicine times** are the traveller's own notes and reminders, not advice; keep the copy that way.
+- **Face ID** is named only in the App Store text; Play says "fingerprint, face or passcode".
+- **Not in the copy although built:** the In-flight games and recap details beyond one line, arrival cards, photo light details, kids' rows, Plan B dismissals, and other smaller follow-ups. Fine to rotate in when a feature gets owner confirmation in docs/TRIAL.md.
+- **Owner confirmation:** the pitch "ready in flight mode" and every feature above still need the owner's yes on a TestFlight build (docs/TRIAL.md). Do not submit while any line above has a "no" there.
 
-Rejected or changed:
+## Add when shipped (do not paste before the feature is live and confirmed)
 
-| Draft text | Why |
-|---|---|
-| "Download one city map per trip for offline use"; caption 3 "A city map that works offline" | Offline maps are not built (T12). The map today is the online system map. Caption 3 replaced with the hotel address card. |
-| "Use saved places and map points such as pharmacies, food, toilets and transport stops" | The only map points are invented sample data for the demo trip; real offline points of interest are T13. |
-| "Export or import a trip as a file" | Not built (T15). |
-| The Plus paragraph (unlimited offline cities, offline points of interest, sync across devices, shared trips, widgets, themes) and "one offline city per trip" in the free list | Satchel Plus and all of those features are unbuilt (T12-T17). |
-| "stored on your device unless you choose to enable cloud sync" | There is no sync to enable yet (T17). |
-| "Numbers include a source and date" | Most rows have no source and none has a checked date (ops/DECISIONS.md); the copy says "check them locally" instead. |
-| "Use the app in flight mode" as a flat claim | Kept as the pitch ("ready in flight mode"), but the owner has not yet confirmed flight-mode behaviour on a real phone; confirm the TRIAL.md flight-mode questions before submitting. |
-| Caption 5 "expiry reminders" | The vault shows expiry warnings; there are no reminder notifications. |
-| Keyword field `offline,travel,wallet,map,itinerary,tickets,trip,packing,documents,flight` | Repeated words already in the name/subtitle and wasted about 40 characters. |
-| Extra keyword ideas "QR ticket wallet", "trip file sharing" | "Wallet" in a QR context can read as the Apple Wallet feature (not built); file sharing is not built. |
-
-No competitor names or battery-life numbers were found in the draft.
-
-## Add when shipped (do not paste before the feature is in the build and confirmed)
-
-- Offline city maps: "Download your destination city before you fly; the map and your blue dot work in flight mode." (T12, needs OpenStreetMap attribution in the app, see docs/THIRD_PARTY.md)
-- Offline points of interest: toilets, drinking water, pharmacies, food, ATMs, hospitals and transport stops. (T13)
-- Export and import a trip as a file to AirDrop or message. (T15)
-- Satchel Plus, one-time purchase, no subscription: unlimited offline cities and regions, offline points of interest everywhere, iCloud sync, shared trips, widgets and themes (only the parts that exist at the time). Add the price-free wording "An optional one-time purchase"; the store shows the price. (T16-T17)
-- "Save to Satchel" from the share sheet (T14), Wallet pass hand-off (T17), Lock Screen and home-screen widgets (T17).
+- **Offline city maps**, when the map files (GitHub release `satchel-maps-v1`) are published and the owner confirms the TRIAL.md map test: "The map works online, plus downloaded cities when available: download your destination before you fly and the streets, labels and your position show in flight mode." Needs "© OpenStreetMap contributors" attribution in the app (docs/THIRD_PARTY.md). Remove "The map background needs a signal" from the MAP lines then.
+- **Offline places from downloaded cities:** toilets, pharmacies, hospitals, police, ATMs, food and transport stops in flight mode; then drop "Needs a signal" from the TOILETS line.
+- **Satchel Plus**, at the same time as offline city maps: "Everything is free. Satchel Plus, an optional one-time purchase with no subscription, adds extra offline cities for each trip." Store pages show the price; never write it in the copy. Plus unlocks nothing else.
+- iCloud sync, shared trips, widgets, Wallet passes: not built.

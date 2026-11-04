@@ -31,6 +31,9 @@ import { connectionsDetail, useLayoverOverrides, useLayoverPrefs } from './layov
 import { gapsDetail, openGapAdd, useGapDismissals } from './gaps.tsx';
 import { checkinDetail } from './checkin.tsx';
 import { checkinCheck } from '../core/checkin.ts';
+import { assistanceCheck } from '../core/stepfree.ts';
+import { useStepFree } from '../state/stepfree.ts';
+import { assistanceDetail } from './stepfree.tsx';
 
 const STATUS_LOOK: Record<CheckStatus, { tone: Tone; icon: IconName }> = {
   pass: { tone: 'ok', icon: 'checkmark-circle' },
@@ -50,17 +53,19 @@ export function checkDetail(t: T, c: Check, lang: string): string {
   if (c.id === 'gaps') return gapsDetail(t, c);
   // T143: the check-in row's words live with the other check-in strings.
   if (c.id === 'checkin') return checkinDetail(t, c);
+  // T156: the travel-assistance row's words live with the other step-free strings.
+  if (c.id === 'assistance') return assistanceDetail(t, c);
   const vars = { until: c.until ? formatExpiry(c.until, lang) : '', done: c.done ?? 0, total: c.total ?? 0, city: c.city ?? '' };
   if (c.id === 'map' && !c.city && (c.reason === 'catalogUnavailable' || c.reason === 'notInCatalog')) return t(`readiness.map.${c.reason}Any`, vars);
   return t(`readiness.${c.id}.${c.reason}` as Key, vars);
 }
 
-const fixKey = (f: Fix): 'vault' | 'packing' | 'emergency' | 'address' | 'map' => (f.kind === 'todos' || f.kind === 'connection' || f.kind === 'gap' || f.kind === 'checkin' ? 'packing' : f.kind);
+const fixKey = (f: Fix): 'vault' | 'packing' | 'emergency' | 'address' | 'map' => (f.kind === 'todos' || f.kind === 'connection' || f.kind === 'gap' || f.kind === 'checkin' || f.kind === 'assistance' ? 'packing' : f.kind);
 /** T93 / T131 / T135: the to-dos, connections and gaps rows' title and fix words come from their own strings. */
 const checkTitle = (t: T, id: Check['id']): string =>
-  id === 'todos' ? t('todos.readiness.check') : id === 'connections' ? t('layover.readiness.check') : id === 'gaps' ? t('gaps.readiness.check') : id === 'checkin' ? t('checkin.readiness.check') : t(`readiness.check.${id}`);
+  id === 'todos' ? t('todos.readiness.check') : id === 'connections' ? t('layover.readiness.check') : id === 'gaps' ? t('gaps.readiness.check') : id === 'checkin' ? t('checkin.readiness.check') : id === 'assistance' ? t('stepfree.readiness.check') : t(`readiness.check.${id}`);
 const fixLabel = (t: T, f: Fix): string =>
-  f.kind === 'todos' ? t('todos.readiness.fix') : f.kind === 'connection' ? t('layover.readiness.fix') : f.kind === 'gap' ? t('gaps.readiness.fix') : f.kind === 'checkin' ? t('checkin.readiness.fix') : t(`readiness.fix.${fixKey(f)}`);
+  f.kind === 'todos' ? t('todos.readiness.fix') : f.kind === 'connection' ? t('layover.readiness.fix') : f.kind === 'gap' ? t('gaps.readiness.fix') : f.kind === 'checkin' ? t('checkin.readiness.fix') : f.kind === 'assistance' ? t('stepfree.readiness.fix') : t(`readiness.fix.${fixKey(f)}`);
 const fixHint = (t: T, f: Fix): string =>
   f.kind === 'todos'
     ? t('todos.readiness.fixHint')
@@ -70,7 +75,9 @@ const fixHint = (t: T, f: Fix): string =>
         ? t('gaps.readiness.fixHint')
         : f.kind === 'checkin'
           ? t('checkin.readiness.fixHint')
-          : t(`readiness.fix.${fixKey(f)}Hint`);
+          : f.kind === 'assistance'
+            ? t('stepfree.readiness.fixHint')
+            : t(`readiness.fix.${fixKey(f)}Hint`);
 
 /**
  * Loads the city-map list saved on this phone and the installed cities (no network), again on each focus and
@@ -160,6 +167,8 @@ export function ReadinessCard({ trip }: { trip: Trip }) {
   // T134: a change's own limits (set on its card) decide its row too.
   const [layoverOwn] = useLayoverOverrides();
   const [gapDismissed] = useGapDismissals(trip.id);
+  // T156: access needs on this phone (the travel-assistance row).
+  const [stepFree] = useStepFree();
   const [now, setNow] = useState(() => Date.now());
   useFocusEffect(useCallback(() => setNow(Date.now()), []));
 
@@ -179,9 +188,10 @@ export function ReadinessCard({ trip }: { trip: Trip }) {
             connections: connectionsCheck(trip, layoverPrefs, layoverOwn),
             gaps: gapsCheck(trip, gapDismissed),
             checkin: checkinCheck(trip, now),
+            assistance: assistanceCheck(trip, stepFree, now),
           })
         : null,
-    [loaded, trip, docs, store, rawCard, maps, now, layoverPrefs, layoverOwn, gapDismissed],
+    [loaded, trip, docs, store, rawCard, maps, now, layoverPrefs, layoverOwn, gapDismissed, stepFree],
   );
 
   const onFix = useCallback(
@@ -205,6 +215,8 @@ export function ReadinessCard({ trip }: { trip: Trip }) {
           if (f.add) return openGapAdd(router, f.tripId, f.add);
           return f.itemId ? router.push(`/item/${f.itemId}`) : undefined;
         case 'checkin':
+          return router.push(`/item/${f.itemId}`);
+        case 'assistance':
           return router.push(`/item/${f.itemId}`);
       }
     },

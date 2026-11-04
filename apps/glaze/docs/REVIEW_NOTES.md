@@ -9,7 +9,7 @@ Glaze has no Live Activities and no Dynamic Island content: the Island pets feat
 ## Notes to paste for version 1.0.1 (T266, first App Store release)
 
 Paste the block below into App Store Connect > Apps > Glaze > version 1.0.1 > App Review Information > Notes
-(limit 4,000 characters; this block is about 3,700). Sign-in required: **off** (no demo account). Attach the
+(limit 4,000 characters; this block is about 3,954; src/core/weatherCodes.test.ts checks the limit). Sign-in required: **off** (no demo account). Attach the
 screen recording (owner step). It matches a `production-native` build with `PROFILE_INSTALL_ENABLED = true`; if the
 switch is false, replace paragraph 3 with the "Switch OFF" text under "Icon install" below.
 
@@ -33,6 +33,9 @@ Glaze Plus (com.jared797.glaze.plus) is a non-consumable, one-time unlock bought
 
 NETWORK AND PRIVACY
 No accounts, analytics, ads or tracking; photos and videos never leave the device. Network use: theme packs are plain files from GitHub Releases (each checked against a SHA-256 in its manifest); app fixes come from Expo's update service (app version and a random per-install ID, not a device or account identifier); when "Scan my Home Screen" finds an app name Glaze doesn't know, only that app name and the store country code are sent to Apple's public App Store search to pick a symbol category. Without a connection the app still works with bundled and downloaded themes.
+
+CALENDAR AND LOCATION
+Asked only after the user adds the Next event or Weather widget and taps it. Events are read on the device, never sent. Weather: When-In-Use location rounded to ~1 km, sent only to Open-Meteo for the forecast, never to us.
 
 OTHER NOTES
 - No background audio and no UIBackgroundModes; no Live Activities.
@@ -64,6 +67,23 @@ Paste after the feature sections (release standard §3; same pattern as the othe
 4. External services: none for core functionality. Only Apple In-App Purchase (StoreKit) for the one-time Glaze Plus unlock (non-consumable `com.jared797.glaze.plus`; Restore purchases is on the Plus sheet and in Settings). No server of our own, accounts, analytics, ads or AI; app fixes arrive through Expo's update service (EAS Update, `u.expo.dev`), whose library sends the app version and a random per-install ID (not a device or account identifier, not used for tracking); photos and videos never leave the device. The theme-pack catalogue and art packs are downloaded from GitHub (public GitHub Releases on `MerlinWerlin/App-Projects`) as plain files over HTTPS; no personal data, account or identifier is sent with these requests, each file is checked against the SHA-256 in its pack manifest, and without a connection the app keeps working with its bundled and already downloaded themes.
 5. Regional differences: none; works the same in all regions (only the purchase price is localised).
 6. Regulated industry / third-party material: not applicable. All icons, themes and art are original or licensed (licences in the app's records); no brand logos or third-party characters.
+
+## Next event and Weather widgets (owner-1102b T280/T281, native build only)
+
+To test: long-press the Home Screen > Edit > Add Widget > Glaze > "Next event" or "Weather". Until access is
+given, the widget shows "Open Glaze to show your next event" / "Open Glaze to set weather" in the theme's
+colours. Tapping it opens Glaze's widget-access screen (glaze://widget-access?kind=calendar|weather), which
+explains the use and has one button that shows the system prompt. Nothing is asked at launch or anywhere else.
+
+- **Why calendar:** the Next event widget shows the next event's title, time and calendar colour. Full access
+  (`NSCalendarsFullAccessUsageDescription`, iOS 17 `requestFullAccessToEvents`) is needed to read events;
+  Glaze never writes events. Events are read on the device by the widget extension and never sent anywhere.
+- **Why location:** the Weather widget shows the weather where the user is. "While Using the App" only
+  (`NSLocationWhenInUseUsageDescription`; the extension sets `NSWidgetWantsLocation`). Coordinates are rounded
+  to 2 decimals (about 1 km) and sent only to Open-Meteo (api.open-meteo.com, free, no key or account) to get
+  the forecast; the developer never receives them. The last forecast and the rounded coordinates are kept in
+  the app's App Group on the device. Weather data credited "Weather data by Open-Meteo.com" (CC BY 4.0).
+- **Saying no** changes nothing else: the widget keeps its "Open Glaze" state and the screen links to Settings.
 
 ## Installed-app check (LSApplicationQueriesSchemes, T229)
 

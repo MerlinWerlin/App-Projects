@@ -30,6 +30,7 @@ import { forgetRentals } from './rental.ts';
 import { forgetTripLostBags } from './lostbag.ts';
 import { forgetTripPostcards } from './postcards.ts';
 import { forgetTripKids } from './kids.ts';
+import { forgetCoverPhoto } from './coverPhotos.ts';
 import { dropLayoverOverrides, LAYOVER_OVERRIDE_KEY } from '../core/layovers.ts';
 
 const KEY = 'satchel.trips.v1';
@@ -195,6 +196,8 @@ function cleanUpTrip(id: string, trip: Trip | undefined, remaining: Trip[]): voi
     forgetTripPostcards(id);
     // T149: the trip's phone-only kids data (children's names, lost-card number, kid-friendly marks) goes with it.
     forgetTripKids(id);
+    // T152: the trip's phone-only cover photo (record and file) goes with it.
+    forgetCoverPhoto(id);
     // T134: each change's own layover limits on this trip go with it.
     forgetLayoverOverrides(id);
     // Load the stored lists first so dropping one never overwrites the others with an empty store.

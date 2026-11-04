@@ -47,6 +47,9 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
       artBadge: '插画',
       liveOnArt: '可在主屏幕上使用：Glaze 小组件会在这幅插画上显示实时数值。',
       focusNote: '轻点小组件上的“开始”进行 25 分钟专注，再次轻点即可暂停。',
+      countdownNote: '在上方选择一个日期，然后轻点“用于我的小组件”：小组件会在这幅作品上显示到那天的倒计时。没有日期时它只是一幅图片。',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: '实时数值在“填充”布局中显示（长按小组件，编辑小组件，布局）。“适应”目前只显示插画。',
       heroNames: { small: '小幅插画', medium: '宽幅插画', large: '大幅插画' },
       download: '在主题页面下载此主题后，这里会显示它的全部小组件插画。',
       kinds: { art: '插画', clock: '时钟', date: '日期', calendar: '日历', countdown: '倒计时', habits: '习惯', battery: '电池', photo: '照片', quote: '语录', focus: '专注' },
@@ -57,7 +60,7 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
     open: '{kind}，{size}。打开小组件工作室。',
     soon: '即将推出',
     soonA11y: '{kind}，{size}。即将推出。',
-    lockNote: '锁定屏幕小组件尚未就绪。以下小组件即将推出。',
+    lockNote: 'Glaze 锁定屏幕小组件（时钟、日期、电池、倒计时、月相）需在锁定屏幕上添加：长按锁定屏幕，轻点“自定”>“锁定屏幕”> 小组件区域，然后选择 Glaze。它们使用主题字体，颜色由 iOS 决定。',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
       ok: '主屏幕小组件已连接',
@@ -119,5 +122,19 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
       openClip: '打开片段',
       kind: { collage: '拼贴', theme: '壁纸', live: '实况照片静帧' },
     },
+  },
+  widgetAccess: {
+    title: "小组件权限",
+    calendarTitle: "“下一个日程”小组件",
+    calendarBody: "“下一个日程”小组件以你的主题显示下一个日历日程。Glaze 只在这台 iPhone 上读取你的日历，绝不会发送到任何地方。",
+    calendarAllow: "允许访问日历",
+    weatherTitle: "天气小组件",
+    weatherBody: "天气小组件显示你所在地的天气。你的大致位置（约精确到 1 公里）只会发送给 Open-Meteo 以获取预报。Glaze 从不接收，也不会在服务器上保存。",
+    weatherAllow: "允许在使用 Glaze 期间获取位置",
+    granted: "权限已开启。小组件将在几分钟内更新。",
+    denied: "权限已关闭。你可以在“设置”>“Glaze”中开启。",
+    openSettings: "打开设置",
+    unavailable: "需要 App Store 或 TestFlight 版 Glaze 才能请求权限。",
+    credit: "天气数据来自 Open-Meteo.com（CC BY 4.0）",
   },
 };

@@ -15,6 +15,7 @@ import type { LegInfo } from './layovers.ts';
 import type { TripOutfits } from './outfits.ts';
 import type { PlanSetting } from './plansetting.ts';
 import type { CheckinInfo } from './checkin.ts';
+import type { AccessNote } from './stepfree.ts';
 
 /** Wall-clock local time, minute precision: 'YYYY-MM-DDTHH:mm'. */
 export type LocalDateTime = string;
@@ -62,7 +63,12 @@ export type Attachment = {
   role: 'ticket' | 'booking' | 'other';
   /** Saved crop of the QR / barcode, for the full-brightness ticket view. */
   qrCropUri?: string;
+  /** T28: in-app crop of this image to its QR / barcode, as fractions of the image (src/core/qrcrop.ts). */
+  qrCrop?: CropRect;
 };
+
+/** T28: a region of an image as fractions 0..1 (x / y top-left corner, w / h size). */
+export type CropRect = { x: number; y: number; w: number; h: number };
 
 export type Item = {
   id: string;
@@ -90,6 +96,8 @@ export type Item = {
   setting?: PlanSetting;
   /** T143 check-in times: own opening / closing offsets, bag-drop minutes, car desk hours, the "Mark checked in" tick and (T146, stays) the "Mark checked out" tick. Read defensively in src/core/checkin.ts. */
   checkin?: CheckinInfo;
+  /** T156 step-free travel: step-free room, assistance booked, lift and a short note. Read defensively in src/core/stepfree.ts. */
+  access?: AccessNote;
   attachments: Attachment[];
 };
 

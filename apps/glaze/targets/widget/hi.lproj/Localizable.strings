@@ -49,7 +49,7 @@
 "A photo you pick in Glaze." = "Glaze में आपकी चुनी हुई फ़ोटो।";
 "Choose a photo in Glaze" = "Glaze में एक फ़ोटो चुनें";
 "Little Line" = "छोटी पंक्ति";
-"A short, gentle line that changes every hour." = "हर घंटे बदलने वाली एक छोटी, कोमल पंक्ति।";
+"A short, gentle line that changes every day." = "हर दिन बदलने वाली एक छोटी, कोमल पंक्ति।";
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "सीमलेस";
@@ -81,3 +81,70 @@
 "Next photo" = "अगली फ़ोटो";
 
 "Widget size" = "विजेट का आकार";
+/* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
+   The word clock's phrase is English only by design; other languages show a big digital time. */
+"widgets.moon.new" = "अमावस्या";
+"widgets.moon.waxingCrescent" = "बढ़ता अर्धचंद्र";
+"widgets.moon.firstQuarter" = "शुक्ल अष्टमी";
+"widgets.moon.waxingGibbous" = "बढ़ता चंद्र";
+"widgets.moon.full" = "पूर्णिमा";
+"widgets.moon.waningGibbous" = "घटता चंद्र";
+"widgets.moon.lastQuarter" = "कृष्ण अष्टमी";
+"widgets.moon.waningCrescent" = "घटता अर्धचंद्र";
+"widgets.moon.lit" = "%1$@ प्रकाशित";
+"widgets.moon.fullTonight" = "आज रात पूर्णिमा";
+"widgets.moon.fullTomorrow" = "कल पूर्णिमा";
+"widgets.moon.fullIn" = "%1$@ दिन में पूर्णिमा";
+"widgets.moon.nextNights" = "अगली 7 रातें";
+"Moon" = "चाँद";
+"Tonight's moon phase, worked out on your phone, in your Glaze theme." = "आज रात की चंद्र कला, आपके फ़ोन पर गणना की गई, आपकी Glaze थीम में।";
+"Word clock" = "शब्द घड़ी";
+"The time in words, in your Glaze theme." = "शब्दों में समय, आपकी Glaze थीम में।";
+"Big clock" = "बड़ी घड़ी";
+"Big, bold numerals in your Glaze theme. Made for StandBy." = "बड़े, मोटे अंक आपकी Glaze थीम में। StandBy के लिए बनी।";
+/* Lock Screen widgets: clock, date, battery, countdown, moon (LockAccessoryWidget.swift, T279) */
+"Glaze Lock" = "Glaze Lock";
+"Lock Screen date" = "तारीख़ (लॉक स्क्रीन)";
+"The weekday and date for your Lock Screen." = "लॉक स्क्रीन के लिए दिन और तारीख़।";
+"Lock Screen battery" = "बैटरी (लॉक स्क्रीन)";
+"Your battery level for your Lock Screen." = "लॉक स्क्रीन पर आपकी बैटरी का स्तर।";
+"Lock Screen countdown" = "काउंटडाउन (लॉक स्क्रीन)";
+"Days left to the date you choose in Glaze." = "Glaze में चुनी गई तारीख़ तक बचे दिन।";
+"Lock Screen moon" = "चाँद (लॉक स्क्रीन)";
+"Tonight's moon and the days to the next full moon." = "आज रात का चाँद और अगली पूर्णिमा तक के दिन।";
+"Choose a date in Glaze" = "Glaze में एक तारीख़ चुनें";
+"lock.battery" = "बैटरी";
+"lock.moon" = "चाँद";
+"lock.moon.fullToday" = "आज पूर्णिमा";
+"lock.countdown.days" = "%1$@ दिन";
+"lock.moon.fullIn" = "पूर्णिमा %1$@ दिन में";
+"lock.moon.lit" = "%1$@ रोशन";
+/* Next event and Weather widgets (CalendarEventWidget.swift, WeatherWidget.swift; owner-1102b T280/T281) */
+"Next event" = "अगला इवेंट";
+"Your next calendar event, in your Glaze theme." = "आपका अगला कैलेंडर इवेंट, आपकी Glaze थीम में।";
+"Open Glaze to show your next event" = "अगला इवेंट दिखाने के लिए Glaze खोलें";
+"No events in the next 7 days" = "अगले 7 दिनों में कोई इवेंट नहीं";
+"All day" = "पूरा दिन";
+"Now" = "अभी";
+"Tomorrow" = "कल";
+"calendar.untitled" = "इवेंट";
+"calendar.sample.1" = "सैम के साथ कॉफ़ी";
+"calendar.sample.2" = "टीम मीटिंग";
+"calendar.sample.3" = "योग";
+"Weather" = "मौसम";
+"The weather where you are, in your Glaze theme." = "आपकी जगह का मौसम, आपकी Glaze थीम में।";
+"Open Glaze to set weather" = "मौसम सेट करने के लिए Glaze खोलें";
+"Updated %@" = "%@ अपडेट हुआ";
+"H:%@ L:%@" = "अधि:%1$@ न्यू:%2$@";
+"Weather data by Open-Meteo.com" = "मौसम डेटा: Open-Meteo.com";
+/* Streak widget (HabitStreakWidget.swift, TickHabitIntent, T284). habit.a11y.*: 1 = days / habit name */
+"habit.streak.caption" = "सिलसिला";
+"habit.streak.tick" = "आज टिक करें";
+"habit.streak.done" = "आज हो गया";
+"habit.streak.name" = "सिलसिले";
+"habit.streak.desc" = "हर दिन एक आदत टिक करें और अपना सिलसिला बढ़ता देखें।";
+"habit.a11y.streak" = "%1$@ दिन का सिलसिला";
+"habit.a11y.tick" = "आज के लिए %1$@ टिक करें";
+"Tick a habit" = "आदत टिक करें";
+"Streak habit" = "सिलसिले की आदत";
+"Choose the habit this streak widget follows." = "वह आदत चुनें जिसे यह सिलसिला विजेट दिखाए।";

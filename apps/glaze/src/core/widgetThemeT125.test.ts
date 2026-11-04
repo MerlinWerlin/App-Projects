@@ -44,6 +44,7 @@ test('no widget renders the theme name', () => {
 test('every provider placeholder reads the stored theme, never the built-in fallback', () => {
   const providers = code(read('targets/widget/Providers.swift'));
   const placeholders = providers.match(/func placeholder\(in context: Context\) -> GlazeEntry \{[^}]*\}/g) ?? [];
+  // Minute, Day, Hour (Moon widget, T277) and Static.
   assert.equal(placeholders.length, 4);
   for (const p of placeholders) {
     assert.match(p, /ThemeStore\.load\(\)/);
@@ -59,7 +60,7 @@ test('every provider placeholder reads the stored theme, never the built-in fall
 });
 
 test('every Home Screen widget paints the theme background through containerBackground', () => {
-  for (const f of ['ClockWidget.swift', 'DateWidget.swift', 'QuoteWidget.swift', 'PhotoWidget.swift', 'HabitWidget.swift']) {
+  for (const f of ['ClockWidget.swift', 'DateWidget.swift', 'QuoteWidget.swift', 'PhotoWidget.swift', 'HabitWidget.swift', 'HabitStreakWidget.swift']) {
     const src = code(read(`targets/widget/${f}`));
     assert.match(src, /\.containerBackground\(for: \.widget\)/, f);
     if (f === 'HabitWidget.swift') {

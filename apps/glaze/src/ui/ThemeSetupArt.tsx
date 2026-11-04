@@ -397,6 +397,8 @@ const styles = StyleSheet.create({
   tileRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spaceV2.sm },
   wall: { borderRadius: radiusV2.control, overflow: 'hidden', justifyContent: 'center' },
   wallBand: { flex: 1, opacity: 0.7 },
+  // T276: the absolute fill spelled out (StyleSheet.absoluteFillObject is deprecated and gone from
+  // newer react-native typings); same values.
   wallOver: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center', padding: spaceV2.sm },
   sheetCard: { borderRadius: radiusV2.control, paddingHorizontal: spaceV2.sm, paddingVertical: spaceV2.xs },
   tile: { alignItems: 'center', justifyContent: 'center' },

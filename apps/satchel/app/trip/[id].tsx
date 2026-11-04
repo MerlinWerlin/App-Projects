@@ -28,6 +28,7 @@ import { ItemRow } from '../../src/ui/ItemRow.tsx';
 import { JetLagCard } from '../../src/ui/JetLagCard.tsx';
 import { MedTimesCard } from '../../src/ui/MedTimesCard.tsx';
 import { ReadinessCard } from '../../src/ui/ReadinessCard.tsx';
+import { StepFreeEntry } from '../../src/ui/stepfree.tsx';
 import { KindIcon, kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, Chip, EmptyState, Label, PressableScale, Screen, Warning } from '../../src/ui/kit.tsx';
 import { TripPackingSlot } from '../../src/ui/slots/TripPackingSlot.tsx';
@@ -50,7 +51,9 @@ import { PostcardsTripCard } from '../../src/ui/postcards.tsx';
 import { KidsTripCard } from '../../src/ui/kids.tsx';
 import { InflightTripCard } from '../../src/ui/InflightCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
+import { useCoverPhoto } from '../../src/state/coverPhotos.ts';
 import { TripExport } from '../../src/ui/TripExport.tsx';
+import { canExportTrip } from '../../src/core/sampletravels.ts';
 import { PlanAgainButton } from '../../src/ui/PlanAgainButton.tsx';
 import { WeatherCard } from '../../src/ui/WeatherCard.tsx';
 import { HolidayBadge, HolidaysCard, useTripHolidays } from '../../src/ui/HolidaysCard.tsx';
@@ -160,6 +163,8 @@ export default function TripScreen() {
   // T138: the stop card's heading; VoiceOver focus moves there once the scroll has settled.
   const arrivalHeading = useRef<View | null>(null);
   const cover = useMemo(() => (trip ? tripCover(trip) : null), [trip]);
+  // T152: the trip's own cover photo (phone-only) wins over the illustration.
+  const coverPhoto = useCoverPhoto(trip?.id);
   const accent = useMemo(() => (cover ? tripAccent(cover, theme) : null), [cover, theme]);
   // T106: public holidays at the trip's stops, for the day-header badges.
   const holidays = useTripHolidays(trip);
@@ -303,7 +308,7 @@ export default function TripScreen() {
         ListHeaderComponent={
           <View style={{ gap: space.s, marginBottom: space.s }}>
             {/* T83: the trip's illustrated cover with its name and dates. */}
-            {cover ? <TripCoverHero scene={cover} title={trip.name} subtitle={formatRange(trip.startDate, trip.endDate, lang)} /> : null}
+            {cover ? <TripCoverHero scene={cover} photo={coverPhoto} title={trip.name} subtitle={formatRange(trip.startDate, trip.endDate, lang)} /> : null}
             {/* T113: "In the air" for this trip's flight (24 h before to 6 h after). */}
             {past ? null : <InflightTripCard trip={trip} />}
             {past ? (
@@ -360,6 +365,8 @@ export default function TripScreen() {
             <PostcardsTripCard trip={trip} />
             {/* T149: travelling with kids (who is coming, lost card, packing rows, journey reminders). */}
             {past ? null : <KidsTripCard trip={trip} />}
+            {/* T156: step-free travel (needs on this phone, local-language card, assistance advice). */}
+            {past ? null : <StepFreeEntry />}
             <ReadinessCard trip={trip} />
             {/* T143: when check-in opens and closes for the next bookings (each on its own clock). */}
             {past ? null : <CheckinTripCard trip={trip} />}
@@ -401,7 +408,8 @@ export default function TripScreen() {
             <PlanAgainButton trip={trip} />
             <SharePlan trip={trip} />
             {empty ? null : <AddToCalendar trip={trip} scope={{ kind: 'trip' }} />}
-            <TripExport trip={trip} />
+            {/* T163: sample past trips never leave the phone as a .satchel file. */}
+            {canExportTrip(trip) ? <TripExport trip={trip} /> : <Body muted>{t('demo2.noExport')}</Body>}
           </View>
         }
       />

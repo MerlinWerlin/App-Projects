@@ -338,10 +338,10 @@ export function PhotoLightBriefRow({ trip, today, now }: { trip: Trip; today: Lo
           <Ionicons name="sunny-outline" size={18} color={theme.heroAccent} />
         </View>
         <View style={{ flex: 1, gap: 2 }}>
-          <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: theme.heroInk, fontVariant: ['tabular-nums'] }]}>
+          <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.6} style={[typeScale.bodyStrong, { color: theme.heroInk, fontVariant: ['tabular-nums'] }]}>
             {line}
           </Text>
-          <Text numberOfLines={1} style={[typeScale.small, { color: theme.heroMuted }]}>
+          <Text numberOfLines={2} style={[typeScale.small, { color: theme.heroMuted }]}>
             {place}
           </Text>
         </View>

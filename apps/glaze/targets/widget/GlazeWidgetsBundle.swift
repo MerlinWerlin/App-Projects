@@ -13,13 +13,17 @@ struct GlazeWidgetsBundle: WidgetBundle {
   var body: some Widget {
     ClockWidget()
     DateWidget()
-    QuoteWidget()
-    PhotoWidget()
     // T131: wallpaper-matched background + hero art (written by the bridge's setSeamless).
     SeamlessWidget()
-    LockAccessoryWidget()
+    GlazeLockWidgetsBundle().body
     GlazeHabitWidgetsBundle().body
     GlazeCatalogueWidgetsBundle().body
+    // owner-1102b: Quote + Photo moved into a nested bundle to keep this block at 9 entries max.
+    GlazePersonalWidgetsBundle().body
+    // owner-1102b slots (each defined in its own file): GlazeExtraWidgetsBundle (moon, word clock,
+    // big digital clock) and GlazeDataWidgetsBundle (calendar, weather) are added here as `.body`.
+    GlazeExtraWidgetsBundle().body
+    GlazeDataWidgetsBundle().body
     // TODO(T10): "Live Lock" start/stop control. Needs an iOS 18 ControlWidget backed by an
     // App Intent that calls into the GlazeLivelock module (modules/glaze-livelock, reached from JS
     // via src/native/livelock.ts). The intent must run in the app process (openAppWhenRun or
@@ -39,6 +43,8 @@ struct GlazeHabitWidgetsBundle: WidgetBundle {
     HabitSleepWidget()
     HabitStepsWidget()
     HabitMoodWidget()
+    // T284: 7-day streak ticks + tap-to-tick (HabitStreakWidget.swift).
+    HabitStreakWidget()
   }
 }
 
@@ -50,5 +56,13 @@ struct GlazeCatalogueWidgetsBundle: WidgetBundle {
     MonthCalendarWidget()
     CountdownWidget()
     PhotoAlbumWidget()
+  }
+}
+
+/// owner-1102b: personal widgets (quote, photo frame) in their own nested bundle.
+struct GlazePersonalWidgetsBundle: WidgetBundle {
+  var body: some Widget {
+    QuoteWidget()
+    PhotoWidget()
   }
 }

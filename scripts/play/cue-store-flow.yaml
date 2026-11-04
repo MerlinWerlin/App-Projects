@@ -1,0 +1,36 @@
+appId: com.jared797.cue.playtest
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- tapOn: Settings
+- scrollUntilVisible:
+    element:
+      text: Dark
+    direction: DOWN
+    timeout: 20000
+- tapOn: Dark
+- back
+- tapOn: New script
+- tapOn: Title
+- inputText: Your next idea
+- tapOn: 'Type or paste your script.*'
+- inputText: Take a breath. Look towards the lens. Share one useful idea. Let the words guide you, then make them your own.
+- hideKeyboard
+- takeScreenshot: store-02-editor
+- tapOn: Prompt
+- assertVisible: Steady
+- takeScreenshot: store-03-prompter
+- tapOn: Close prompter
+- back
+- assertVisible: Your next idea
+- takeScreenshot: store-01-library
+- tapOn: Settings
+- scrollUntilVisible:
+    element:
+      text: Text size
+    direction: UP
+    timeout: 20000
+- takeScreenshot: store-04-settings

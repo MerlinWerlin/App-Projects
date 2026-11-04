@@ -36,6 +36,12 @@ jobs:
         with:
           node-version: 22
 
+      - name: Enforce owner release platform
+        working-directory: .
+        env:
+          APP_FOLDER: ${{ inputs.app }}
+        run: node scripts/check-ios-release.cjs
+
       - name: Use the newest Xcode on the runner
         run: |
           ls -d /Applications/Xcode*.app

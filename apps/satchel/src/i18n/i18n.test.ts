@@ -31,3 +31,20 @@ test('no English string quotes battery numbers (never claim them before the owne
     assert.doesNotMatch(v, /\d+\s?(hours?|hrs?)\s+(more|longer|of battery)/i, k);
   }
 });
+
+test('every generated locale module passes the drop checks and the coverage gate (T21)', async () => {
+  const { checkDrop, readyToShip } = await import('./localecheck.ts');
+  const { CATALOGS } = await import('./catalogs.ts');
+  const files = existsSync(dir) ? readdirSync(dir).filter((f) => /^[a-z]{2}\.ts$/.test(f)) : [];
+  for (const f of files) {
+    const lang = f.slice(0, 2);
+    const mod = (await import(new URL(f, dir).href)) as Record<string, Record<string, string>>;
+    const cat = mod[lang];
+    assert.ok(cat, `${f} exports ${lang}`);
+    const r = checkDrop(cat, en as Record<string, string>);
+    assert.equal(Object.keys(r.accepted).length, Object.keys(cat).length, `${f} has entries the drop checks reject`);
+    assert.ok(readyToShip(cat, en as Record<string, string>), `${f} is below the coverage gate`);
+    assert.ok(lang in CATALOGS, `catalogs.ts bundles ${lang}`);
+  }
+  assert.equal(Object.keys(CATALOGS).length, files.length, 'catalogs.ts bundles exactly the generated locales');
+});

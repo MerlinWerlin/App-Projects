@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { Alert, Text, View } from 'react-native';
 import { attachmentKind } from '../core/tickets.ts';
+import { hasCropRect } from '../core/qrcrop.ts';
 import type { Attachment, ItemKind } from '../core/model.ts';
 import { haptic } from '../native/device.ts';
 import { importAttachment } from '../native/pickers.ts';
@@ -73,12 +74,12 @@ export function AttachmentsField({ attachments, kind, onAdd, onRemove, savedIds 
       {attachments.length === 0 ? <Body muted>{t('itemEdit.attachmentsEmpty')}</Body> : null}
       {attachments.map((a) => {
         const fileKind = attachmentKind(a.mime, a.name);
-        const meta = [t(`ticket.role.${a.role}`), t(`ticket.kind.${fileKind}`), a.qrCropUri ? t('ticket.qrSaved') : ''].filter(Boolean).join(' · ');
+        const meta = [t(`ticket.role.${a.role}`), t(`ticket.kind.${fileKind}`), a.qrCropUri || hasCropRect(a) ? t('ticket.qrSaved') : ''].filter(Boolean).join(' · ');
         return (
           <View key={a.id} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, minHeight: TOUCH }}>
             <View accessible accessibilityLabel={`${t('itemEdit.attachmentRow', { name: a.name })}, ${meta}`} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.m }}>
               <View style={{ width: 40, height: 40, borderRadius: radius.s, backgroundColor: theme.accentSoft, alignItems: 'center', justifyContent: 'center' }}>
-                <Ionicons name={a.qrCropUri ? 'qr-code-outline' : fileKind === 'pdf' ? 'document-outline' : 'image-outline'} size={22} color={theme.accent} />
+                <Ionicons name={a.qrCropUri || hasCropRect(a) ? 'qr-code-outline' : fileKind === 'pdf' ? 'document-outline' : 'image-outline'} size={22} color={theme.accent} />
               </View>
               <View style={{ flex: 1, gap: 2 }}>
                 <Text numberOfLines={2} style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: theme.ink }}>

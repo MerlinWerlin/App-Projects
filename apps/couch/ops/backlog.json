@@ -1016,7 +1016,7 @@
     {
       "id": "T79",
       "title": "M3b step 8: remote screen chrome on DESIGN_V2 (header, TV switcher, sheets; d-pad geometry untouched, never mirrored), one commit",
-      "status": "todo",
+      "status": "done",
       "deps": [
         "T68"
       ],
@@ -1025,8 +1025,8 @@
         "M3"
       ],
       "priority": 1,
-      "hold": "D73-1",
-      "note": "Oversight D73-1: keep the remote on the old code until the owner's VERIFY report (T18) or an Expo Go retest comes back clean."
+      "note": "Hold D73-1 closed by oversight v229. Done run 171: remote tab wrapped in RemoteDesignProvider; TvHeader on v2 roles (remoteDesignPalette), continuous corners, system footnote status line; Sheet uses radii.sheet + continuous corners; d-pad/keys untouched. tests/remote-v2.test.ts.",
+      "commit": "8edb60a"
     },
     {
       "id": "T80",

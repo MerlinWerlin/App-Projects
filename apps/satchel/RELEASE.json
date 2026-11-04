@@ -1,6 +1,6 @@
 {
   "mode": "update",
-  "note": "Satchel: numbers and prices trainer, postcards, travelling with kids, follow-up fixes",
+  "note": "Satchel: real downloaded city places on the map; fictional sample places are opt-in, with the verified city-map publishing workflow installed",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

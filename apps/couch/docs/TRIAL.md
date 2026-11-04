@@ -24,6 +24,9 @@ Afternoon of 1 Nov (your chats #173-#175, now in the build too):
 11. If the TV shows a black screen while casting: does the "from this phone at …" line now end with a short phone check result in brackets? (screenshot it) yes / no
 12. Cast tab while casting to the TCL: tap "Send test picture". Does a picture of the Couch remote appear on the TV? (yes = the TV can show pictures but can't reach your phone; black = the TV's cast viewer is at fault) yes / no
 
+Evening of 1 Nov (build run 171):
+14. Remote tab: does the TV name bar at the top, and the keyboard / 123 / input / sleep timer sheets, look tidy in your theme (smooth rounded corners, readable text) with nothing cut off? yes / no
+
 ## New since your last test (25 Oct late): your TCL Google TV
 Thanks for the TV model. Two fixes. The first is over the air. The second needs TestFlight 1.0.2, which is building now (sent 26 Oct 11:26 Sydney).
 Over the air (restart Couch twice), Cast tab with your TV connected:

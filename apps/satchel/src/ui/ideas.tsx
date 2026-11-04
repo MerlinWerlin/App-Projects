@@ -259,7 +259,7 @@ export function PlannedIdeas({ trip, day }: { trip: Trip; day: string }) {
           </View>
           <View style={{ flex: 1 }}>
             <Text style={[typeScale.caption, { color: theme.muted }]}>{t(i.done ? 'ideas.planned.been' : 'ideas.planned.label')}</Text>
-            <Text style={[typeScale.body, { color: theme.ink }]} numberOfLines={1}>
+            <Text style={[typeScale.body, { color: theme.ink }]} numberOfLines={2}>
               {i.name}
             </Text>
           </View>

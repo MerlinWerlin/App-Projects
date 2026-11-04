@@ -2,7 +2,7 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ar: NonNullable<LocaleMessages['themes']> = {
-  subtitle: 'إطلالات كاملة: خلفية وأيقونات وأدوات وحلقة متحركة.',
+  subtitle: 'إطلالات كاملة: خلفية وأيقونات وأدوات متناسقة.',
   tipsA11y: 'نصائح',
   dismissTip: 'إغلاق النصيحة: {title}',
   makeWallpaper: {

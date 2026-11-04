@@ -237,7 +237,9 @@ function PlusHero() {
 const styles = StyleSheet.create({
   hero: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spaceV2.sm, paddingTop: spaceV2.xs },
   heroTile: { flex: 1, maxWidth: 104, borderRadius: radiusV2.card },
-  heroImage: { width: '100%', height: '100%', borderRadius: radiusV2.card },
+  // T276: borderCurve sits in the entry (not the ViewStyle `continuous` token): expo-image's style is
+  // StyleProp<ImageStyle>, which a ViewStyle is not assignable to (overflow 'scroll'). Same look.
+  heroImage: { width: '100%', height: '100%', borderRadius: radiusV2.card, borderCurve: 'continuous' },
   lede: { gap: spaceV2.xs },
   upper: { textTransform: 'uppercase' },
   list: { gap: spaceV2.sm },

@@ -6,6 +6,8 @@
 // T58 allergen slot: on "I have an allergy." the allergens the traveller picked (saved once on this phone under
 // ALLERGENS_KEY) are listed in the card's language, each with its English name and, for non-Latin scripts, how to
 // say it. "Choose allergens" opens checkboxes for the nine common allergens.
+// T157: ?phrase=lift opens "Where is the lift?" on its own (src/core/liftcard.ts, from the step-free lines): the same
+// card without Previous / Next, plus a line saying it has not been checked by a native speaker yet.
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo, useRef, useState } from 'react';
@@ -17,14 +19,16 @@ import {
   allergenLines,
   cardFontSize,
   parseLangParam,
-  parsePhraseParam,
   PHRASE_IDS,
   phraseCard,
   toggleAllergen,
   type AllergenId,
   type PhraseId,
 } from '../src/core/phrases.ts';
+import { liftCard, parseCardParam } from '../src/core/liftcard.ts';
 import { menuLangFor } from '../src/core/menu.ts';
+import type { StepFreeTable } from '../src/core/stepfree.ts';
+import sfData from '../src/content/stepfree_lines.json';
 import type { Key } from '../src/i18n/en.ts';
 import { useScreenAwake } from '../src/native/keepAwake.ts';
 import { useApp } from '../src/state/app.tsx';
@@ -35,6 +39,7 @@ import { Body, Button, PressableScale } from '../src/ui/kit.tsx';
 import { LANG_KEY, PHRASE_TABLE, usePhraseLang } from '../src/ui/phrases.ts';
 
 const NO_ALLERGENS: string[] = [];
+const SF = sfData as StepFreeTable;
 const ALLERGEN_KEY = (id: AllergenId) => `phrases.allergen.${id}` as Key;
 
 export default function PhraseCardScreen() {
@@ -43,8 +48,12 @@ export default function PhraseCardScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { lang } = usePhraseLang(parseLangParam(params.lang));
-  const [id, setId] = useState<PhraseId>(() => parsePhraseParam(params.phrase) ?? 'toilet');
-  const card = useMemo(() => phraseCard(PHRASE_TABLE, lang, id), [lang, id]);
+  const asked = parseCardParam(params.phrase);
+  const lift = asked?.kind === 'lift';
+  const [id, setId] = useState<PhraseId>(() => (asked?.kind === 'phrase' ? asked.id : 'toilet'));
+  const phrase = useMemo(() => (lift ? null : phraseCard(PHRASE_TABLE, lang, id)), [lift, lang, id]);
+  const liftLine = useMemo(() => (lift ? liftCard(SF, PHRASE_TABLE, lang) : null), [lift, lang]);
+  const card = lift ? liftLine : phrase;
   const fade = useRef(new Animated.Value(1)).current;
   useScreenAwake('satchel-phrase');
   const [storedAllergens, setAllergens] = usePersisted<string[]>(ALLERGENS_KEY, NO_ALLERGENS);
@@ -109,7 +118,8 @@ export default function PhraseCardScreen() {
                 </Text>
               </View>
             ) : null}
-            {id === 'allergy' ? (
+            {liftLine?.check ? <Text style={[typeScale.small, { color: theme.muted }]}>{t('f110.lift.check')}</Text> : null}
+            {!lift && id === 'allergy' ? (
               <View style={{ gap: space.m }}>
                 {label(t('phrases.allergens.heading'))}
                 {allergens.length === 0 ? <Body muted>{t('phrases.allergens.none')}</Body> : null}
@@ -132,7 +142,7 @@ export default function PhraseCardScreen() {
         ) : (
           <Body>{t('phrases.card.missing')}</Body>
         )}
-        {card && id === 'allergy' ? (
+        {card && !lift && id === 'allergy' ? (
           <View style={{ gap: space.s }}>
             <Button
               kind="quiet"
@@ -185,13 +195,15 @@ export default function PhraseCardScreen() {
         ) : null}
       </ScrollView>
       <View style={{ gap: space.m, paddingHorizontal: space.l, paddingTop: space.m, paddingBottom: insets.bottom + space.l, borderTopWidth: 1, borderTopColor: theme.line, backgroundColor: theme.card }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          {stepButton(-1, 'chevron-back', t('phrases.card.prev'))}
-          <Text accessibilityLiveRegion="polite" style={[typeScale.bodyStrong, { color: theme.muted, fontVariant: ['tabular-nums'] }]}>
-            {t('phrases.card.position', { n: index + 1, total: PHRASE_IDS.length })}
-          </Text>
-          {stepButton(1, 'chevron-forward', t('phrases.card.next'))}
-        </View>
+        {lift ? null : (
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+            {stepButton(-1, 'chevron-back', t('phrases.card.prev'))}
+            <Text accessibilityLiveRegion="polite" style={[typeScale.bodyStrong, { color: theme.muted, fontVariant: ['tabular-nums'] }]}>
+              {t('phrases.card.position', { n: index + 1, total: PHRASE_IDS.length })}
+            </Text>
+            {stepButton(1, 'chevron-forward', t('phrases.card.next'))}
+          </View>
+        )}
         <Button label={t('phrases.card.close')} hint={t('phrases.card.closeHint')} onPress={close} />
       </View>
     </View>

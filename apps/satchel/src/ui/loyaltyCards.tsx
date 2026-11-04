@@ -96,7 +96,7 @@ export const LoyaltyCardFace = memo(function LoyaltyCardFace({ card, size = 'com
       {card.memberName || note ? (
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
           {card.memberName ? (
-            <Text style={[typeScale.small, { color: paint.muted, flex: 1 }]} numberOfLines={1}>
+            <Text style={[typeScale.small, { color: paint.muted, flex: 1 }]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
               {card.memberName}
             </Text>
           ) : (
@@ -189,10 +189,10 @@ export function LoyaltyShortcuts({ cards }: { cards: readonly LoyaltyCard[] }) {
               <Ionicons name={LOYALTY_ICON[c.kind]} size={20} color={paint.ink} />
             </View>
             <View style={{ flex: 1, paddingVertical: space.s }}>
-              <Text style={[typeScale.bodyStrong, { color: theme.ink }]} numberOfLines={1}>
+              <Text style={[typeScale.bodyStrong, { color: theme.ink }]} numberOfLines={2}>
                 {label}
               </Text>
-              <Text style={[typeScale.small, { color: theme.muted, fontVariant: ['tabular-nums'] }]} numberOfLines={1}>
+              <Text style={[typeScale.small, { color: theme.muted, fontVariant: ['tabular-nums'] }]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
                 {displayNumber(c.number)}
               </Text>
             </View>

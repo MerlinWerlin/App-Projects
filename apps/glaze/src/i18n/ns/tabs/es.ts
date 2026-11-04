@@ -47,6 +47,9 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
       artBadge: 'Arte',
       liveOnArt: 'Funciona en tu pantalla de inicio: el widget de Glaze muestra el valor real sobre este arte.',
       focusNote: 'Toca Empezar en el widget para 25 minutos de concentración; vuelve a tocar para pausar.',
+      countdownNote: 'Elige un día arriba y toca Usar en mi widget: el widget cuenta los días que faltan sobre este arte. Sin día, se queda como imagen.',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: 'Los valores en vivo se ven con el diseño «Rellenar» (mantén pulsado el widget, Editar widget, Diseño). «Ajustar» muestra solo el arte por ahora.',
       heroNames: { small: 'Pieza pequeña', medium: 'Pieza ancha', large: 'Pieza grande' },
       download: 'Descarga este tema en su página para ver aquí todo su arte para widgets.',
       kinds: { art: 'Arte', clock: 'Relojes', date: 'Fechas', calendar: 'Calendarios', countdown: 'Cuentas atrás', habits: 'Hábitos', battery: 'Batería', photo: 'Fotos', quote: 'Citas', focus: 'Enfoque' },
@@ -57,7 +60,7 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
     open: '{kind}, {size}. Abre el Estudio de widgets.',
     soon: 'Próximamente',
     soonA11y: '{kind}, {size}. Próximamente.',
-    lockNote: 'Los widgets de la pantalla bloqueada aún no están listos. Estos llegarán pronto.',
+    lockNote: 'Los widgets de Glaze para la pantalla bloqueada (reloj, fecha, batería, cuenta atrás, luna) se añaden en la propia pantalla bloqueada: mantenla pulsada, toca Personalizar > Pantalla bloqueada > la zona de widgets y elige Glaze. Usan la fuente de tu tema; iOS elige el color.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
       ok: 'Widgets de la pantalla de inicio conectados',
@@ -119,5 +122,19 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
       openClip: 'Abrir el clip',
       kind: { collage: 'Collage', theme: 'Fondo', live: 'Fotograma de Live Photo' },
     },
+  },
+  widgetAccess: {
+    title: "Acceso de widgets",
+    calendarTitle: "Widget Próximo evento",
+    calendarBody: "El widget Próximo evento muestra tu siguiente evento del calendario con tu tema. Glaze lee tus calendarios solo en este iPhone y nunca los envía a ningún sitio.",
+    calendarAllow: "Permitir acceso al calendario",
+    weatherTitle: "Widget Tiempo",
+    weatherBody: "El widget Tiempo muestra el tiempo donde estás. Tu ubicación aproximada (redondeada a 1 km) solo se envía a Open-Meteo para obtener el pronóstico. Glaze nunca la recibe ni la guarda en un servidor.",
+    weatherAllow: "Permitir ubicación mientras uso Glaze",
+    granted: "Acceso activado. El widget se actualiza en unos minutos.",
+    denied: "Acceso desactivado. Puedes activarlo en Ajustes > Glaze.",
+    openSettings: "Abrir Ajustes",
+    unavailable: "Para pedir acceso necesitas la versión de Glaze de la App Store o TestFlight.",
+    credit: "Datos meteorológicos de Open-Meteo.com (CC BY 4.0)",
   },
 };

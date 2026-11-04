@@ -18,7 +18,7 @@ export const pastebooking = {
   'paste.fromClipboard': 'Paste from clipboard',
   'paste.fromClipboardHint': 'Reads the text you copied and puts it in the box. Nothing leaves your phone.',
   'paste.clipboardEmpty': 'There’s no text on the clipboard. Copy the confirmation first, then try again.',
-  'paste.clipboardUnavailable': 'This build can’t read the clipboard. Press and hold in the box and choose Paste.',
+  'paste.clipboardUnavailable': 'Satchel can’t read the clipboard here. Press and hold in the box and choose Paste.',
   'paste.clear': 'Clear',
   'paste.clearHint': 'Empties the box.',
   'paste.dateOrder': 'Dates like 03/12/2027 mean',

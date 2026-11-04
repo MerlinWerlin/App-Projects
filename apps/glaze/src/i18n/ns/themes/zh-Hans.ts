@@ -2,7 +2,7 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const zhHans: NonNullable<LocaleMessages['themes']> = {
-  subtitle: '整套造型：壁纸、图标、小组件和循环动画。',
+  subtitle: '整套造型：相互搭配的壁纸、图标和小组件。',
   tipsA11y: '提示',
   dismissTip: '关闭提示：{title}',
   makeWallpaper: {

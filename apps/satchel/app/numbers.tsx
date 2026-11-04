@@ -47,6 +47,8 @@ import { FadeInView, HeroHeader } from '../src/ui/hero.tsx';
 import { Body, Button, Chip, Label, PressableScale, Screen, TextField } from '../src/ui/kit.tsx';
 import { LANG_KEY, PHRASE_TABLE, usePhraseLang } from '../src/ui/phrases.ts';
 import { displayCountryName } from '../src/ui/useTravelStats.ts';
+import { casualNumber, casualPrice } from '../src/core/followups107.ts';
+import { CasualLine } from '../src/ui/followups107.tsx';
 
 type Mode = 'read' | 'till' | 'quiz';
 const MODES: Mode[] = ['read', 'till', 'quiz'];
@@ -153,6 +155,9 @@ function Reader({ lang, country, languageName }: { lang: PhraseLang; country: st
   const [text, setText] = useState('12345');
   const n = parseWhole(text);
   const reading = n === null ? null : spellNumber(lang, n, { country });
+  // T151: how the number is often said (Thai ร้อย without หนึ่ง, Vietnamese ngàn), when it differs.
+  const casual = n === null ? null : casualNumber(lang, n, country);
+  const casualA11y = casual ? ` ${t('f107.numbers.casualA11y', { text: casual.roman ?? casual.text })}` : '';
   const another = () => {
     const r = Math.random();
     const v = r < 0.3 ? Math.floor(Math.random() * 100) : r < 0.7 ? Math.floor(Math.random() * 10_000) : Math.floor(Math.random() * 1_000_000);
@@ -167,11 +172,12 @@ function Reader({ lang, country, languageName }: { lang: PhraseLang; country: st
       {reading ? (
         <View
           accessible
-          accessibilityLabel={t('numbers.read.cardA11y', { number: groupedDigits(reading.value), language: languageName(lang), text: reading.roman ?? reading.text, check: t('numbers.notChecked') })}
+          accessibilityLabel={t('numbers.read.cardA11y', { number: groupedDigits(reading.value), language: languageName(lang), text: reading.roman ?? reading.text, check: t('numbers.notChecked') }) + casualA11y}
           style={[{ padding: space.l, borderRadius: radius.l, gap: space.m }, elevated(theme, 'low')]}
         >
           <Text style={[typeScale.title, { color: theme.accentInk, fontVariant: ['tabular-nums'] }]}>{groupedDigits(reading.value)}</Text>
           <ReadingView reading={reading} />
+          <CasualLine casual={casual} />
         </View>
       ) : null}
       <View style={{ gap: space.xs, padding: space.m, borderRadius: radius.m, backgroundColor: theme.seaSoft }}>
@@ -195,6 +201,9 @@ function Till({ countries, appLang, languageName }: { countries: string[]; appLa
   const digits = tillDigits(currency);
   const minor = parseTillAmount(text, currency);
   const card = minor === null ? null : tillCard(PHRASE_TABLE, country, minor);
+  // T151: the casual way to say the price (十二块五, năm mươi ngàn), when it differs.
+  const casual = card ? casualPrice(card.lang, minor ?? 0, card.currency, card.country) : null;
+  const casualA11y = casual ? ` ${t('f107.numbers.casualA11y', { text: casual.roman ?? casual.text })}` : '';
   const name = (c: string) => displayCountryName(c, appLang);
   const error = text.trim() && minor === null ? (digits ? t('numbers.till.error', { digits: String(digits) }) : t('numbers.till.errorWhole', { currency })) : undefined;
 
@@ -221,7 +230,7 @@ function Till({ countries, appLang, languageName }: { countries: string[]; appLa
       {card ? (
         <View
           accessible
-          accessibilityLabel={t('numbers.till.cardA11y', { country: name(card.country), written: card.written, language: languageName(card.lang), spoken: card.spoken.roman ?? card.spoken.text, check: t('numbers.notChecked') })}
+          accessibilityLabel={t('numbers.till.cardA11y', { country: name(card.country), written: card.written, language: languageName(card.lang), spoken: card.spoken.roman ?? card.spoken.text, check: t('numbers.notChecked') }) + casualA11y}
           style={[{ padding: space.l, borderRadius: radius.l, gap: space.m }, elevated(theme, 'low')]}
         >
           <View style={{ gap: space.xs }}>
@@ -233,6 +242,7 @@ function Till({ countries, appLang, languageName }: { countries: string[]; appLa
           <View style={{ gap: space.xs }}>
             <Label>{`${t('numbers.till.spoken')} · ${languageName(card.lang)}`}</Label>
             <ReadingView reading={card.spoken} size={24} />
+            <CasualLine casual={casual} />
           </View>
         </View>
       ) : (

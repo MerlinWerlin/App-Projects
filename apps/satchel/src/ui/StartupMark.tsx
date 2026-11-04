@@ -21,7 +21,7 @@ type Palette = (typeof brand)['light'] | (typeof brand)['dark'];
 /** The satchel / boarding-pass glyph from assets/brand/icon.svg. Notches drawn in the background colour. */
 export function BrandGlyph({ size, palette }: { size: number; palette: Palette }) {
   return (
-    <Svg width={size} height={size} viewBox={VIEWBOX}>
+    <Svg width={size} height={size} viewBox={VIEWBOX} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
       <Path d="M362 392 V350 A150 104 0 0 1 662 350 V392" fill="none" stroke={palette.body} strokeWidth={64} strokeLinecap="round" />
       <Rect x={212} y={372} width={600} height={470} rx={88} fill={palette.body} />
       <Path d="M212 460 A88 88 0 0 1 300 372 H724 A88 88 0 0 1 812 460 V592 L512 652 L212 592 Z" fill={palette.flap} />

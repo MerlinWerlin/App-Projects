@@ -19,7 +19,7 @@
 // A newer apply supersedes an older run (it stops before its index write). Never throws.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES, HERO_SIZES, isArtPackTheme } from '../core/artPack';
-import { liveArtPlan, liveArtSpec, withLiveArt } from '../core/liveArt';
+import { liveArtPlan, liveArtSpec, withLiveArt, type CountdownArtTargets } from '../core/liveArt';
 import { pickWallpaper } from '../core/packCatalog';
 import { isRemoteArtTheme, remoteArtFiles } from '../core/remoteCatalog';
 import { normaliseSlot, seamlessCrop, widgetSizePx } from '../core/seamlessWidget';
@@ -32,6 +32,7 @@ import { getPackState, loadPackIndex, remoteArtFileUri, remoteArtOnDevice } from
 import { widgets, type WidgetsResult } from '../native/widgets';
 import { artPackHero, artPackWallpaper } from '../ui/artPackSources';
 import { existingLocalFile, localAssetUri, seamlessDeviceHere } from '../ui/seamlessSetup';
+import { loadCountdownArtTargets } from './countdownArtTargets';
 
 /** AsyncStorage: the theme whose art sync started and has not committed yet (cleared on commit). */
 export const THEME_ART_PENDING_KEY = 'glaze.themeArtSync.pending.v1';
@@ -104,8 +105,10 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
     if (!current.available) return NONE;
     await setPending(theme.id);
     // 2. Plan.
-    const art = await themeArt(theme);
-    const planned = plan(theme, art.options);
+    // T245: countdown art pieces go live with the day the person chose (none = Art).
+    const targets = await loadCountdownArtTargets();
+    const art = await themeArt(theme, targets);
+    const planned = plan(theme, art.options, targets);
     const lib: WidgetArtIndex = { v: 1, pieces: current.pieces };
     const todo = piecesToCompose(lib, planned);
     // 3. Compose the missing pieces, one at a time.
@@ -136,7 +139,7 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
   }
 }
 
-function plan(theme: Theme, options: WidgetOption[]): PlannedThemePiece[] {
+function plan(theme: Theme, options: WidgetOption[], targets: CountdownArtTargets): PlannedThemePiece[] {
   const device = seamlessDeviceHere();
   const tr = t as unknown as (k: string, p?: Record<string, unknown>) => string;
   const sizeLabel = (s: HomeOptionSize) =>
@@ -155,7 +158,7 @@ function plan(theme: Theme, options: WidgetOption[]): PlannedThemePiece[] {
     },
     live: (option, size) => {
       // T237: the same live spec "Use on my widget" saves (ThemeWidgetArt).
-      const p = liveArtPlan(theme.id, option);
+      const p = liveArtPlan(theme.id, option, { targets });
       if (!p) return null;
       const px = widgetSizePx(device, size);
       return liveArtSpec(p, { w: option.width, h: option.height }, px, option.background === 'wallpaper' ? 'fit' : 'bleed', {
@@ -167,7 +170,7 @@ function plan(theme: Theme, options: WidgetOption[]): PlannedThemePiece[] {
 }
 
 /** Every widget option of the theme with its art source (same lists as ThemeWidgetArt). */
-async function themeArt(theme: Theme): Promise<ThemeArt> {
+async function themeArt(theme: Theme, targets: CountdownArtTargets): Promise<ThemeArt> {
   const empty: ThemeArt = { options: [], sources: new Map(), wallpaper: async () => null, wallpaperPx: { w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height } };
   try {
     if (isRemoteArtTheme(theme)) {
@@ -177,7 +180,7 @@ async function themeArt(theme: Theme): Promise<ThemeArt> {
       const local = await remoteArtOnDevice(theme.id);
       if (!local) return empty;
       const raw = local.widgets ?? [];
-      const live = withLiveArt(theme.id, raw);
+      const live = withLiveArt(theme.id, raw, { targets });
       const sources = new Map<string, Source>();
       const options: WidgetOption[] = [];
       live.forEach((option) => {

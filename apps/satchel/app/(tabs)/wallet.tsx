@@ -17,6 +17,7 @@ import { deviceZone, formatDay, formatTime, todayIn, zoneCity } from '../../src/
 import { cashTripFor } from '../../src/core/cash.ts';
 import { tripCover } from '../../src/core/covers.ts';
 import { focusTrip } from '../../src/core/glance.ts';
+import { hasCropRect } from '../../src/core/qrcrop.ts';
 import { splitWallet, walletEntries, type WalletEntry } from '../../src/core/tickets.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
@@ -63,7 +64,7 @@ const TicketCard = memo(function TicketCard({ entry, past }: { entry: WalletEntr
               {item.title}
             </Text>
             <Text style={[typeScale.small, { color: theme.muted, fontVariant: ['tabular-nums'] }]}>{whenText}</Text>
-            <Text numberOfLines={1} style={[typeScale.small, { color: theme.muted }]}>
+            <Text numberOfLines={2} style={[typeScale.small, { color: theme.muted }]}>
               {[tripName, item.ref ? t('wallet.refShort', { ref: item.ref }) : ''].filter(Boolean).join(' · ')}
             </Text>
             {!past ? (
@@ -73,7 +74,7 @@ const TicketCard = memo(function TicketCard({ entry, past }: { entry: WalletEntr
               </View>
             ) : null}
           </View>
-          {ticket.qrCropUri ? (
+          {ticket.qrCropUri || hasCropRect(ticket) ? (
             <View style={{ alignItems: 'center', gap: rhythm.hair, backgroundColor: theme.accentSoft, borderRadius: radius.m, padding: space.s }}>
               <Ionicons name="qr-code" size={22} color={theme.accentInk} />
               <Text style={[typeScale.caption, { color: theme.accentInk }]}>{t('wallet.qrBadge')}</Text>
@@ -144,7 +145,7 @@ export default function WalletScreen() {
           <View accessible accessibilityRole="header" accessibilityLabel={row.label} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
             <View style={{ width: 4, alignSelf: 'stretch', borderRadius: radius.pill, backgroundColor: accent?.strong ?? theme.line }} />
             <Ionicons name="briefcase-outline" size={16} color={accent?.ink ?? theme.muted} />
-            <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: accent?.ink ?? theme.ink, flex: 1 }]}>
+            <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: accent?.ink ?? theme.ink, flex: 1 }]}>
               {row.label}
             </Text>
           </View>

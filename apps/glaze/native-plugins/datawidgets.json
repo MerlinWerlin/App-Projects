@@ -1,0 +1,7 @@
+{
+  "infoPlist": {
+    "NSCalendarsFullAccessUsageDescription": "Glaze reads your calendars only to show your next event in the Next event widget. Your events stay on this iPhone.",
+    "NSCalendarsUsageDescription": "Glaze reads your calendars only to show your next event in the Next event widget. Your events stay on this iPhone.",
+    "NSLocationWhenInUseUsageDescription": "Glaze uses your approximate location only for the Weather widget. It is rounded to about 1 km and sent only to Open-Meteo to get the forecast."
+  }
+}

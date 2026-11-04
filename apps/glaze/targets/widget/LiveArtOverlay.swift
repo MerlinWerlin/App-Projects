@@ -11,7 +11,7 @@
 //
 // What is drawn (never a made-up number):
 //   clock     live hands + the time (Text(date, style: .time)); the timeline has an entry per minute
-//   date      today's weekday, day and month (current locale); reloads after midnight
+//   date      today's weekday, day and month (current locale); a timeline entry at midnight
 //   countdown whole days to the stored target day; without a target the piece is never live
 //   battery   UIDevice batteryLevel with monitoring on, refreshed every 15 min; unknown (-1) = a dash
 //   focus     Button(intent: ToggleFocusIntent()): "25:00 · Start", Text(timerInterval:) while running
@@ -138,7 +138,7 @@ enum LiveArtSchedule {
       return (dates, .atEnd)
     case .date, .countdown:
       let tomorrow = nextMidnight(from:now,calendar:cal)
-      return ([now], .after(tomorrow))
+      return ([now, tomorrow], .atEnd)
     case .battery:
       return ([now], .after(now.addingTimeInterval(15 * 60)))
     case .focus:

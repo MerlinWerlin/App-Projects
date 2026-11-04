@@ -622,6 +622,8 @@ export async function downloadRemoteArtToDevice(id: string): Promise<string | nu
       baseUrl: PACK_BASE,
       id,
       packVersion: entry.packVersion,
+      // T274: the pack's own release (glaze-packs-v2+); absent = glaze-packs-v1.
+      ...(entry.release ? { release: entry.release } : {}),
       transport: deviceTransport,
       appVersion: appVersion(),
       screenLongEdgePx: screenLongEdgePx(),

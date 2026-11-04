@@ -47,6 +47,9 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
       artBadge: 'アート',
       liveOnArt: 'ホーム画面で動作します：Glazeウィジェットがこのアートの上に実際の値を表示します。',
       focusNote: 'ウィジェットの「開始」をタップすると25分間の集中セッション。もう一度タップで一時停止します。',
+      countdownNote: '上で日付を選んでから「ウィジェットに使う」をタップすると、このアートの上でその日までのカウントダウンを表示します。日付がなければ絵のままです。',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: '実際の値はレイアウト「全体に表示」で表示されます（ウィジェットを長押し、ウィジェットを編集、レイアウト）。「全体を収める」では今のところアートのみです。',
       heroNames: { small: '小さいアート', medium: '横長アート', large: '大きいアート' },
       download: 'テーマのページでダウンロードすると、ここにすべてのウィジェットアートが表示されます。',
       kinds: { art: 'アート', clock: '時計', date: '日付', calendar: 'カレンダー', countdown: 'カウントダウン', habits: '習慣', battery: 'バッテリー', photo: '写真', quote: '名言', focus: '集中' },
@@ -57,7 +60,7 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
     open: '{kind}、{size}。ウィジェットスタジオを開きます。',
     soon: '近日公開',
     soonA11y: '{kind}、{size}。近日公開。',
-    lockNote: 'ロック画面ウィジェットはまだ準備中です。以下を予定しています。',
+    lockNote: 'Glaze のロック画面ウィジェット（時計、日付、バッテリー、カウントダウン、月）はロック画面で追加します：ロック画面を長押しし、カスタマイズ > ロック画面 > ウィジェットの枠をタップして Glaze を選びます。フォントはテーマに合わせ、色は iOS が決めます。',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
       ok: 'ホーム画面のウィジェットと連携済み',
@@ -119,5 +122,19 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
       openClip: 'クリップを開く',
       kind: { collage: 'コラージュ', theme: '壁紙', live: 'ライブフォトの静止画' },
     },
+  },
+  widgetAccess: {
+    title: "ウィジェットのアクセス",
+    calendarTitle: "次の予定ウィジェット",
+    calendarBody: "次の予定ウィジェットは、次のカレンダーの予定をテーマに合わせて表示します。Glaze はこの iPhone 上でのみカレンダーを読み取り、どこにも送信しません。",
+    calendarAllow: "カレンダーへのアクセスを許可",
+    weatherTitle: "天気ウィジェット",
+    weatherBody: "天気ウィジェットは現在地の天気を表示します。おおよその位置（約1kmに丸めたもの）は予報の取得のために Open-Meteo にのみ送信されます。Glaze が受け取ったりサーバーに保存したりすることはありません。",
+    weatherAllow: "Glaze の使用中に位置情報を許可",
+    granted: "アクセスはオンです。数分以内にウィジェットが更新されます。",
+    denied: "アクセスはオフです。設定 > Glaze でオンにできます。",
+    openSettings: "設定を開く",
+    unavailable: "アクセスの許可には App Store 版または TestFlight 版の Glaze が必要です。",
+    credit: "気象データ: Open-Meteo.com（CC BY 4.0）",
   },
 };

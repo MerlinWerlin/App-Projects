@@ -36,7 +36,7 @@ export const dayplan = {
   // map
   'dayplan.map.a11y': 'Map of the day plan: numbered stops joined by a line.',
   'dayplan.map.noMapTitle': 'Stops in order',
-  'dayplan.map.noMapBody': 'The map is not available in this version of the app, so here are the stops as a list.',
+  'dayplan.map.noMapBody': 'The map can’t be shown right now, so here are the stops as a list.',
   'dayplan.pin.start': 'Start: {name}',
   'dayplan.pin.stopA11y': 'Stop {n}: {name}',
 

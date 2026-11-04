@@ -7,6 +7,7 @@
 // T58: Home country, the same saved choice (HOME_COUNTRY_KEY) as "Bring an adapter?" on the essentials card.
 // T68: Usual sleep (bedtime and wake-up, default 23:00 to 07:00), for the jet lag plan and the call finder. Each time
 // is one adjustable row like the threshold, moving in 30-minute steps.
+// T16: Satchel Plus (src/plus/PlusSection.tsx): price from the App Store, Unlock and Restore purchases.
 // T72: About carries the OpenStreetMap and MET Norway credits and opens Licences and credits (app/licences.tsx).
 import { Ionicons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
@@ -17,6 +18,7 @@ import table from '../src/content/emergency_numbers.json';
 import { DEFAULT_ESSENTIALS, ESSENTIALS_KEY, MAX_THRESHOLD, MIN_THRESHOLD, normalisePrefs, type EssentialsPrefs } from '../src/core/battery.ts';
 import { languageName, languageOptions } from '../src/core/languageHint.ts';
 import { APPEARANCES, formatPercent, SLEEP_STEP_MIN, sleepLimits, stepSleep, stepThreshold, thresholdLimits } from '../src/core/settings.ts';
+import { PlusSection } from '../src/plus/PlusSection.tsx';
 import { useApp } from '../src/state/app.tsx';
 import { usePersisted } from '../src/state/persisted.ts';
 import { fonts, radius, space, TOUCH } from '../src/theme/tokens.ts';
@@ -27,6 +29,8 @@ import { TEMP_UNITS } from '../src/core/weather.ts';
 import { useTempUnit } from '../src/ui/WeatherCard.tsx';
 import { FadeInView, HeroHeader, SectionHeader, type IconName, type Tone } from '../src/ui/hero.tsx';
 import { Body, Button, Card, Chip, PressableScale, Screen, ToggleRow } from '../src/ui/kit.tsx';
+import { StepFreeEntry } from '../src/ui/stepfree.tsx';
+import { SampleTravelsSection } from '../src/ui/SampleTravels.tsx';
 
 const LIST_DATE = typeof (table as { imported?: unknown }).imported === 'string' ? (table as { imported: string }).imported : null;
 
@@ -216,6 +220,26 @@ export default function SettingsScreen() {
       <AirportSettings />
       {/* T131: tight / long limits for a change between journeys. */}
       <LayoverSettings />
+
+      {/* T16: Satchel Plus, with Unlock and Restore purchases together. */}
+      <PlusSection />
+
+      {/* T14: how to use Save to Satchel (Open in / Copy to Satchel from the share sheet). */}
+      <Section title={t('openin.settings.title')} icon="share-outline" tone="sea">
+        <Body>{t('openin.settings.body')}</Body>
+      </Section>
+
+      {/* T156: step-free travel needs (phone only). */}
+      <StepFreeEntry />
+
+      {/* T17: backup and restore (changing phones). */}
+      <Section title={t('backup.settingsTitle')} icon="cloud-upload-outline" tone="sea">
+        <Body muted>{t('backup.settingsBody')}</Body>
+        <Button label={t('backup.settingsOpen')} hint={t('backup.settingsOpenHint')} kind="secondary" icon="cloud-upload-outline" onPress={() => router.push('/backup')} />
+      </Section>
+
+      {/* T163: invented past trips for screenshots of Your travels and the passport stamps. */}
+      <SampleTravelsSection />
 
       <Section title={t('settings.privacy')} icon="shield-checkmark-outline" tone="ok">
         <Text accessibilityRole="header" style={{ fontFamily: fonts.displayMedium, fontSize: 20, color: theme.ink }}>

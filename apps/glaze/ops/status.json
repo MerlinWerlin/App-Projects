@@ -1,18 +1,18 @@
 {
-  "tests": "1811/1811 core tests green; core + UI stub typecheck clean",
-  "typecheck": "core only (registry unreachable)",
-  "last_run": "2026-11-01 20:05 AEDT (run 223)",
-  "stage": "release-prep",
-  "oversight_seen": "v227 (1793515803-a8cf): no new directives, no patches; D211-1 followed (no pack marked Plus, price unchanged; options given to the owner); D225-3 followed (bridge Swift guards re-read by eye).",
-  "headline": "Run 223 (owner-1101i): guided 3-step Use this theme flow (wallpaper, icons, widgets) with drawn steps; crash hardening + Retry card on every tab; App Store release prep done except your steps, screenshots rendered.",
-  "next_for_owner": "1) When your chat ships this run (TestFlight newer than 1.0.1 (20)), answer docs/TRIAL.md \"New since your last test (1 Nov, owner-1101i)\" 1-5. 2) Pick what Glaze Plus unlocks: option A, B or C (docs/RELEASE_CHECKLIST.md §2b). 3) App Store Connect steps on the Workboard (glaze-release-*). (Full install + tsc + expo export needs PC verification: npm registry unreachable; new Swift uncompiled until the native build.)",
-  "trial_kit": true,
-  "trial_kit_commit": "32110a9",
-  "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested",
-  "slim_candidate": {
-    "state": "swapped run 220",
-    "root": "859241058f433be25f35ec1c618396837158dbf2",
-    "full_history": "history/repo-full-2026-11-01b.bundle.b64.txt (plus the older history/repo-full-2026-11-01.bundle.b64.txt)"
-  },
-  "size_note": "run 222: bundle base64 ~14.61 MB (owner reference screenshots synced)"
+ "tests": "1888/1888 core tests green + 29 pack-script tests; core typecheck clean",
+ "typecheck": "core only (registry unreachable)",
+ "last_run": "2026-11-02 15:55 AEDT (run 241)",
+ "stage": "release-prep",
+ "oversight_seen": "v233 (1793558948-7f71): no new directives; no patches (rechecked run 240).",
+ "headline": "Run 241: owner-1102b widgets (run 240) plus the synced pack release tags and a corrected Lock Screen note. Needs a TestFlight build.",
+ "next_for_owner": "1) Your Glaze chat ships run 241 (includes run 240) to TestFlight. 2) On that build answer docs/TRIAL.md '2 Nov owner-1102b' 1-8 (and owner-1102a 1-6). 3) Before release: decide on the weather source (Open-Meteo free tier is non-commercial) and pick what Glaze Plus unlocks. (Full install + tsc + expo export needs PC verification: npm registry unreachable.)",
+ "trial_kit": true,
+ "trial_kit_commit": "cbe1f96",
+ "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested",
+ "slim_candidate": {
+  "state": "swapped run 220",
+  "root": "859241058f433be25f35ec1c618396837158dbf2",
+  "full_history": "history/repo-full-2026-11-01b.bundle.b64.txt (plus the older history/repo-full-2026-11-01.bundle.b64.txt)"
+ },
+ "size_note": "run 240: bundle base64 ~15.05 MB; trial kit not rebuilt (16.7 MB base64, over the 16 MB file limit; owner tests on TestFlight)"
 }

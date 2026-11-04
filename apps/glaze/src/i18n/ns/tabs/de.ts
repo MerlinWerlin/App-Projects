@@ -47,6 +47,9 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
       artBadge: 'Kunst',
       liveOnArt: 'Funktioniert auf dem Home-Bildschirm: Das Glaze-Widget zeigt den echten Wert über diesem Bild.',
       focusNote: 'Tippe im Widget auf Start für 25 Minuten Fokus; tippe erneut zum Pausieren.',
+      countdownNote: 'Wähle oben einen Tag und tippe dann auf „Für mein Widget nutzen“: Das Widget zählt über diesem Bild bis dahin herunter. Ohne Tag bleibt es ein Bild.',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: 'Live-Werte erscheinen im Layout „Füllen“ (Widget gedrückt halten, Widget bearbeiten, Layout). „Einpassen“ zeigt vorerst nur das Bild.',
       heroNames: { small: 'Kleines Bild', medium: 'Breites Bild', large: 'Großes Bild' },
       download: 'Lade dieses Thema auf seiner Seite, um hier alle Widget-Bilder zu sehen.',
       kinds: { art: 'Kunst', clock: 'Uhren', date: 'Datum', calendar: 'Kalender', countdown: 'Countdowns', habits: 'Gewohnheiten', battery: 'Batterie', photo: 'Fotos', quote: 'Zitate', focus: 'Fokus' },
@@ -57,7 +60,7 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
     open: '{kind}, {size}. Öffnet das Widget-Studio.',
     soon: 'Bald verfügbar',
     soonA11y: '{kind}, {size}. Bald verfügbar.',
-    lockNote: 'Sperrbildschirm-Widgets sind noch nicht fertig. Diese kommen bald.',
+    lockNote: 'Glaze-Sperrbildschirm-Widgets (Uhr, Datum, Batterie, Countdown, Mond) fügst du direkt auf dem Sperrbildschirm hinzu: lange drücken, Anpassen > Sperrbildschirm > Widget-Bereich tippen, dann Glaze wählen. Sie nutzen die Schrift deines Themes; die Farbe legt iOS fest.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
       ok: 'Home-Bildschirm-Widgets verbunden',
@@ -119,5 +122,19 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
       openClip: 'Clip öffnen',
       kind: { collage: 'Collage', theme: 'Hintergrund', live: 'Live-Photo-Standbild' },
     },
+  },
+  widgetAccess: {
+    title: "Widget-Zugriff",
+    calendarTitle: "Widget „Nächster Termin“",
+    calendarBody: "Das Widget „Nächster Termin“ zeigt deinen nächsten Kalendertermin in deinem Theme. Glaze liest deine Kalender nur auf diesem iPhone und sendet sie nirgendwohin.",
+    calendarAllow: "Kalenderzugriff erlauben",
+    weatherTitle: "Wetter-Widget",
+    weatherBody: "Das Wetter-Widget zeigt das Wetter an deinem Ort. Dein ungefährer Standort (auf etwa 1 km gerundet) wird nur an Open-Meteo gesendet, um die Vorhersage zu laden. Glaze erhält ihn nie und speichert ihn auf keinem Server.",
+    weatherAllow: "Standort beim Verwenden von Glaze erlauben",
+    granted: "Zugriff ist an. Das Widget aktualisiert sich in wenigen Minuten.",
+    denied: "Zugriff ist aus. Du kannst ihn unter Einstellungen > Glaze einschalten.",
+    openSettings: "Einstellungen öffnen",
+    unavailable: "Für die Zugriffsanfrage brauchst du die App-Store- oder TestFlight-Version von Glaze.",
+    credit: "Wetterdaten von Open-Meteo.com (CC BY 4.0)",
   },
 };

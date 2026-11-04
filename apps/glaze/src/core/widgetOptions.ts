@@ -26,6 +26,33 @@ export const WIDGET_OPTION_KINDS: readonly WidgetOptionKind[] = Object.freeze([
   'focus',
 ] as WidgetOptionKind[]);
 
+/**
+ * T275 (owner-1102a A4): kind names used by the theme exports (themes 101-146 widget-options.json)
+ * mapped to Glaze kinds. Keys are normalised (lower case, no spaces / hyphens / underscores). A clock
+ * alias also names the clock style a liveFrame without its own clockStyle gets.
+ */
+export const WIDGET_KIND_ALIASES: Readonly<Record<string, { kind: WidgetOptionKind; clockStyle?: 'analog' | 'digital' }>> = Object.freeze({
+  digitalclock: { kind: 'clock', clockStyle: 'digital' },
+  analogclock: { kind: 'clock', clockStyle: 'analog' },
+  analogueclock: { kind: 'clock', clockStyle: 'analog' },
+  datecalendar: { kind: 'date' },
+  focustimer: { kind: 'focus' },
+});
+
+/**
+ * A pack's kind name -> a Glaze kind (and the clock style an alias implies), or null when unknown.
+ * Case, space, hyphen and underscore insensitive: 'digitalClock', 'analog clock', 'Analog-Clock',
+ * 'dateCalendar', 'focusTimer', 'Countdown', 'battery' all resolve.
+ */
+export function normalizeWidgetKind(raw: unknown): { kind: WidgetOptionKind; clockStyle?: 'analog' | 'digital' } | null {
+  if (typeof raw !== 'string') return null;
+  if (includes(WIDGET_OPTION_KINDS, raw)) return { kind: raw };
+  const key = raw.trim().toLowerCase().replace(/[\s_-]+/g, '');
+  if (includes(WIDGET_OPTION_KINDS, key)) return { kind: key };
+  const alias = Object.prototype.hasOwnProperty.call(WIDGET_KIND_ALIASES, key) ? WIDGET_KIND_ALIASES[key] : undefined;
+  return alias ? { ...alias } : null;
+}
+
 /** Where an option can go: the three Home Screen sizes and the Lock Screen. */
 export type WidgetOptionSize = 'small' | 'medium' | 'large' | 'lock';
 export const WIDGET_OPTION_SIZES: readonly WidgetOptionSize[] = Object.freeze(['small', 'medium', 'large', 'lock'] as WidgetOptionSize[]);
@@ -117,7 +144,9 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
     if (!isObj(o)) return void errors.push(`${at}: not an object`);
     if (typeof o.id !== 'string' || !ID.test(o.id)) return void errors.push(`${at}: bad id`);
     if (ids.has(o.id)) return void errors.push(`${at}: duplicate id ${o.id}`);
-    if (!includes(WIDGET_OPTION_KINDS, o.kind)) return void errors.push(`${at} (${o.id}): unknown kind ${String(o.kind)}`);
+    const nk = normalizeWidgetKind(o.kind);
+    if (!nk) return void errors.push(`${at} (${o.id}): unknown kind ${String(o.kind)}`);
+    const kind = nk.kind;
     const asset = typeof o.image === 'string' ? byPath.get(o.image) : undefined;
     if (!asset) return void errors.push(`${at} (${o.id}): image is not an asset of the pack`);
     if (!WIDGET_IMAGE_ROLES.includes(asset.role)) return void errors.push(`${at} (${o.id}): image asset has role ${asset.role}`);
@@ -148,12 +177,15 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
       if (w <= 0 || h <= 0 || x + w > 1 || y + h > 1) return void errors.push(`${at} (${o.id}): liveFrame outside art`);
       liveFrame = { rect: [x, y, w, h], shape: f.shape };
       if (f.valueStyle !== undefined) {
-        if (f.valueStyle !== 'compact' || !['date','calendar','focus','battery'].includes(String(o.kind))) return void errors.push(`${at} (${o.id}): bad valueStyle`);
+        if (f.valueStyle !== 'compact' || !['date','calendar','focus','battery'].includes(String(kind))) return void errors.push(`${at} (${o.id}): bad valueStyle`);
         liveFrame.valueStyle = 'compact';
       }
       if (f.clockStyle !== undefined) {
-        if (o.kind !== 'clock' || !['analog', 'digital', 'stacked'].includes(String(f.clockStyle))) return void errors.push(`${at} (${o.id}): bad clockStyle`);
+        if (kind !== 'clock' || !['analog', 'digital', 'stacked'].includes(String(f.clockStyle))) return void errors.push(`${at} (${o.id}): bad clockStyle`);
         liveFrame.clockStyle = f.clockStyle as 'analog' | 'digital' | 'stacked';
+      } else if (nk.clockStyle) {
+        // T275: 'digitalClock' / 'analogClock' name the style of a frame that does not give one.
+        liveFrame.clockStyle = nk.clockStyle;
       }
       if (f.ink !== undefined) {
         if (typeof f.ink !== 'string' || !/^#[0-9a-fA-F]{6}$/.test(f.ink)) return void errors.push(`${at} (${o.id}): bad liveFrame ink`);
@@ -163,7 +195,7 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
     ids.add(o.id);
     options.push({
       id: o.id,
-      kind: o.kind,
+      kind,
       image: asset.path,
       sizes,
       fit: (o.fit as WidgetOptionFit | undefined) ?? 'fit',

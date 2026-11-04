@@ -113,10 +113,24 @@ export const SPEC_SYNC_PREFIXES = [
   'numbers.',
   'kids.',
   'f106.',
+  'cover2.',
+  'plus.',
+  'openin.',
+  'backup.',
+  // T28 (run 109): in-app QR crop and the inline PDF viewer.
+  'tpolish.',
+  'f107.',
+  'f109.',
+  'stepfree.',
+  'f110.',
+  'e2e.',
+  'demo2.',
   'f98.',
   'helpcards.',
   'driving.',
   'f99.',
+  // T13 (run 109): offline POI layers.
+  'packpois.',
 ] as const;
 
 /** Single keys mirrored as well: map.online, the T48 emergency fallback wording, the Toilets tab, home country. */

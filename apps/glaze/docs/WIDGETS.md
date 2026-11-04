@@ -11,13 +11,21 @@ theme (background, accent, ink, glass/solid/outline surface, display/body font).
 
 | Widget | Kind | Families | Updates |
 | --- | --- | --- | --- |
-| Clock | `GlazeClock` | small, medium, large | one entry per minute for the next hour |
+| Clock | `GlazeClock` | small, medium, large; small is the StandBy clock (white numerals on black) | one entry per minute for the next hour |
 | Date | `GlazeDate` | small, medium, large | at midnight |
-| Little Line | `GlazeQuote` | small, medium, large | hourly; 24 original short lines bundled in Swift |
-| Photo | `GlazePhoto` | small, medium, large | when the app saves a new photo; gradient placeholder otherwise |
+| Little Line (T283) | `GlazeQuote` | small, medium, large | daily at midnight (`DayProvider`); 64 original lines bundled in Swift, picked by local day of the year |
+| Photo frame (T282) | `GlazePhoto` | small, medium, large | when the app saves a new photo, and at midnight (date caption); themed empty frame otherwise |
 | Seamless (T131) | `GlazeSeamless` | small, medium, large | when the app writes a new crop (`setSeamless`); theme background otherwise |
 | Glaze Lock | `GlazeLockAccessory` | Lock Screen rectangular, circular, inline | per minute (time, date, theme glyph) |
+| Moon (owner-1102b T277) | `GlazeMoon` | small, medium, large | hourly; phase worked out on-device (`MoonPhase.swift` = `src/core/moonPhase.ts`), disc drawn in theme accent/ink; large adds the next 7 nights |
+| Word clock (T278) | `GlazeWordClock` | small, medium, large | per minute; "IT'S HALF PAST TEN", rounded to 5 minutes (`WordClock.swift` = `src/core/wordClock.ts`); non-English languages show a big digital time |
+| Big clock (T278) | `GlazeBigClock` | small, medium, large; small and large suit StandBy | per minute; huge numerals, brightest theme colour when StandBy drops the background |
+| Lock Screen date (T279) | `GlazeLockDate` | Lock Screen rectangular, circular, inline | at midnight |
+| Lock Screen battery (T279) | `GlazeLockBattery` | Lock Screen rectangular, circular (gauge), inline | every 15 min; a dash when iOS reports no level |
+| Lock Screen countdown (T279) | `GlazeLockCountdown` | Lock Screen rectangular, circular, inline | at midnight; days to the Countdown widget's `countdownTo` |
+| Lock Screen moon (T279) | `GlazeLockMoon` | Lock Screen rectangular, circular (illumination gauge), inline | at midnight (`MoonPhase.swift`) |
 | Water / Sleep / Steps / Mood (T73) | `GlazeHabitWater`, `GlazeHabitSleep`, `GlazeHabitSteps`, `GlazeHabitMood` | small, medium | on every button tap, and just after midnight (back to 0) |
+| Streaks (T284) | `GlazeHabitStreak` | small, medium, large | on every habit tap (any habit widget), and just after midnight |
 
 | Month progress | `GlazeMonthProgress` | small, medium, circular, inline | at midnight |
 | Year progress | `GlazeYearProgress` | small, medium, circular, rectangular, inline | at midnight |
@@ -25,7 +33,30 @@ theme (background, accent, ink, glass/solid/outline surface, display/body font).
 | Month calendar | `GlazeMonthCalendar` | small (StandBy design), medium, large | at midnight |
 | Countdown | `GlazeCountdown` | small, medium, circular, rectangular, inline | at midnight |
 
-No battery widget (needs device APIs we don't want in v1).
+### Lock Screen widgets (T279, owner-1102b Part B)
+
+All five Lock Screen kinds live in `targets/widget/LockAccessoryWidget.swift` and are registered
+through the nested `GlazeLockWidgetsBundle` (`GlazeWidgetsBundle.swift` includes it as `.body`).
+`GlazeLockAccessory` keeps its kind id so widgets already placed stay. The system tints accessory
+widgets (vibrant / tinted), so they draw in one colour with `.widgetAccentable()` on the key part
+and `AccessoryWidgetBackground()` behind circular faces; the theme supplies only the typeface. No
+theme name anywhere.
+
+- **Date**: weekday + day number (circular), weekday / day and month / year (rectangular), one
+  line with a calendar glyph (inline).
+- **Battery**: `LiveBattery.percent()` (UIDevice with monitoring on, read in the extension when the
+  timeline is built, every 15 minutes). The app writes no battery value to the App Group, so when
+  iOS gives no level the widget shows a dash, never a guessed number. Circular is a
+  `Gauge(.accessoryCircular)`; rectangular adds an `.accessoryLinearCapacity` bar.
+- **Countdown**: whole days to the `countdownTo` day of the saved Countdown widget design
+  (`widgets.json`, any size, the current size first) and its typed label if any; without one it
+  asks the user to choose a date in Glaze.
+- **Moon**: `MoonPhase.info(at:)` phase symbol and illumination (circular gauge), "Full in N days"
+  from `MoonPhase.daysToFull(at:)` (inline / rectangular).
+
+StandBy: the separate big clock is `GlazeBigClock`; the Clock widget's small size also works in
+StandBy. When iOS removes its background (`showsWidgetContainerBackground == false`) the numerals
+turn white and grow to 56 pt.
 
 **Not yet:** a "Live Lock" start/stop control. That needs an iOS 18 `ControlWidget` backed by an
 App Intent that calls the T10 `GlazeLivelock` module from the app process. A `TODO(T10)` sits in
@@ -46,6 +77,17 @@ app/theme/[id].tsx  "Use this style"
 Photo widget: `widgets.setPhoto(fileUri)` makes the bridge re-encode the image as JPEG (long edge
 ≤ 1200 px) into the App Group container as `widget-photo.jpg`; `widgets.clearPhoto()` removes it.
 Widget Studio calls `setPhoto` before saving a photo design; a cleared photoRef displays the placeholder instead of reusing an old photo.
+T282 frame (`PhotoWidget.swift`, used when no Studio design is saved): the theme background is the
+mat (10 / 12 / 16 pt by size) with a soft accent corner, the photo is clipped to a rounded rectangle
+with an accent rule, and medium / large add a small date caption (localised weekday, day, month) in
+the theme typeface. With no photo the same frame is empty with "Choose a photo in Glaze". Tapping
+opens `glaze://widget-studio?theme=<themeId>&kind=photo&size=<small|medium|large>` (Widget Studio
+on the photo widget, where the photo is picked).
+
+Little Line (T283, `QuoteWidget.swift`): 64 short lines written for Glaze (no famous quotes, no
+attributions); `GlazeLines.index` = `(year * 7 + dayOfYear - 1) mod count`, so the line holds all
+day and changes at local midnight. `src/core/dailyLines.test.ts` pins the count, uniqueness,
+originality markers and the formula. The lines are English only for now.
 
 The App Group `group.com.jared797.glaze` is added to the app by `native-plugins/widgets.json` and to the
 extension by `targets/widget/expo-target.config.js`.
@@ -275,6 +317,21 @@ under an `NSLock`), `HabitIntents.swift` (`StepHabitIntent` with `habit` + `dire
 `HabitWidget.swift` (provider: one entry, refresh after midnight; views; original line-drawn mood
 faces), registered in `GlazeWidgetsBundle.swift`. The extension's deployment target is 17.0, so
 the bundle needs no `#available` check; `AppIntents` was added to the target's frameworks.
+
+**Streak ticks (T284).** `HabitStreakWidget.swift` (`GlazeHabitStreak`, in `GlazeHabitWidgetsBundle`):
+the last 7 days as dots (filled accent = goal met; today ringed), the current streak with a flame,
+and a tap-to-tick button. Small / medium follow the habit picked in Edit Widget
+(`HabitStreakConfigIntent`, an `AppIntentConfiguration`; water by default; medium adds weekday
+letters); large lists all four trackers, the picked one first. Data: `HabitStore.streakSummary`
+(the app's tracker value + `history`, plus taps the app hasn't read), with `habitStreak` /
+`habitHistory` rules from `src/core/habits.ts`: a count day is met at its goal, a mood day once
+logged; today counts only once met. `TickHabitIntent` (`isDiscoverable = false`) logs a `set`
+tap: count trackers jump to the day's goal, mood logs "Okay" (3) when nothing is logged; on a day
+already met it does nothing, so a tick never takes progress away. Every habit intent reloads the
+streak widget too (`HabitWidgetKinds.reload`), and the bridge's `setHabits` reloads it with the
+other habit kinds. The gallery preview (`context.isPreview`) with no streak yet shows a sample
+week in the theme. Ticks use the accent; the check mark is whichever of ink / surface stands out
+more on the accent.
 
 **Daily goals (T86).** Widgets tab › the **Goal: …** chip under a water / sleep / steps card
 opens *Daily goals* (`app/habit-goals.tsx`): a − / + stepper per tracker (water 250–6,000 ml in
@@ -713,6 +770,19 @@ gets an overlay). The menu shows "Live" or "Art" on every card. Plate rects were
 run-208 snapshot sheets: VERIFY alignment on device (and if T236 changes the composition geometry,
 `liveArtSpec`'s placeArt mapping must follow).
 
+**Fit layout (T246).** Edit Widget > Layout > Fit shows the raw art (`<id>-art.png`, same framing as
+the art) whole, inset by 6 % of the widget's short side, so the Fill rect (0..1 of the composed image)
+does not line up there. Each `live` spec now also stores `art: [x, y, w, h]` (the plate, 0..1 of the
+art itself), and `src/core/liveArtFit.ts` maps it onto the contained art (`fitLayoutPlate`, tested
+for square / wide / tall art in every size; no raw art file = the composed rect on the fitted composed
+image; an older record without `art` over a raw art file = no plate). **Native caveat:**
+`SeamlessWidget.swift` still skips `LiveArtLayer` in Fit (`if let image = image, !fit`) and new Swift
+is held (D225-3), so the widget shows live values in **Fill only**; `FIT_LAYOUT_LIVE_IN_WIDGET` is
+false and the theme art screen says so (`tabs.widgetsTab.art.liveFillOnly`). The native change, when
+allowed: in Fit, parse `art`, frame = `LiveArtLayer.fitted(raw.size, in: box inset by min(w,h)*0.06)`
+(or the composed image's rect with `rect` when there is no raw file), place the plate on that frame,
+then flip the flag (liveArtFit.test.ts checks the flag against the Swift source).
+
 ### Art blends with the wallpaper (T251, owner-1101h #2)
 
 Owner, TestFlight 1.0.1 (19): Alpine Starlight's white full moon (large) showed a light-grey frame
@@ -866,3 +936,22 @@ The actual system Photos-picker test passes against the complete8b89fda app with
 Installed Medium album Next also passes in run41767585363 with harness95ab978 against the same full8b89fda app. The real system picker feeds the actual bridge, SpringBoard installs the saved Medium widget, and its actual Next button changes from the selected teal fixture to orange without opening Glaze. One XCTest, zero failures. Independent original screenshot pixels identify different imported JPEGs before/after; the matching production cursor file contains1. Both screenshots are visually reviewed. The first selection attempt swiped past a still-redacted Medium snapshot; its recording and failed artifacts are retained. The corrected test waits for real WidgetKit content, rather than treating the gallery title as readiness. Review `native-album-next-20261104.html` and `native-album-next-verification-20261104.json`. This qualifies the tested Medium interaction in Simulator, not every size, concurrent process access or a physical phone.
 
 All 1,831 core tests and both app/tooling TypeScript configurations pass. Final verification receipts and galleries live in Apps/outputs/glaze-theme-reviews/release-simulation. Actual picker delivery, Water interaction and Medium album Next are qualified separately from native snapshots. Apple-signed phone sync, other sizes/interactions and device tint/accessibility remain separate checks. No new Apple archive/upload, pack publication or merge is performed.
+## Next event and Weather widgets (owner-1102b T280 / T281)
+
+Built: `targets/widget/CalendarEventWidget.swift` (kind `GlazeCalendarEvent`), `WeatherWidget.swift`
+(`GlazeWeather`), `WeatherCodes.swift` (mirror of `src/core/weatherCodes.ts`), nested bundle
+`DataWidgetsBundle.swift`. Both are small / medium / large in the theme's colours and fonts; the gallery
+shows sample data in the theme.
+
+- Permission flow: a widget cannot prompt. Without access each widget shows "Open Glaze to ..." and links
+  to `glaze://widget-access?kind=calendar|weather` (`app/widget-access.tsx`), whose button calls the bridge
+  (`requestCalendarAccess` = `requestFullAccessToEvents`, `requestLocationAccess` = When-In-Use) through
+  `dataWidgetAccess()` in `src/native/widgets.ts` ('unavailable' in Expo Go / Android / older builds).
+- Calendar: the extension reads events with EventKit once the app has full access; next 7 days, entries at
+  each start/end in the next 30 min, new timeline every 30 min.
+- Weather: Open-Meteo (`api.open-meteo.com`, no key, CC BY 4.0, credited in medium/large and in the app).
+  Location: the widget's own (`NSWidgetWantsLocation`, `isAuthorizedForWidgetUpdates`) or the app's last fix,
+  stored rounded to 2 decimals in App Group key `glaze.weather.coords.v1`. Last result cached in
+  `glaze.weather.cache.v1`; new timeline every 45 min (15 min after a failure with no cache). °F when
+  `Locale.current.measurementSystem == .us`.
+- Owner check: Open-Meteo's free tier is non-commercial (see "Options" above and docs/LICENSES.md).

@@ -2,11 +2,12 @@
 // share sheet (AirDrop, Messages, Files), and picks a .satchel file to import. Built on the same Expo Go modules
 // as the rest of src/native (expo-file-system/legacy, expo-sharing, expo-document-picker). Nothing here throws to
 // the UI; every function returns a result with a reason instead.
-// "Open in Satchel" from Files or Messages needs the .satchel document type registered in a dev build; until then
-// importing goes through the picker (see docs/TRIPFILE.md).
+// "Open in Satchel" from Files or Messages (T14, docs/OPEN_IN.md) needs a build with the .satchel document type; the
+// picker below stays the way in on Expo Go and older builds.
 import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Sharing from 'expo-sharing';
+import { TRIP_UTI } from '../core/openin.ts';
 import { MAX_TRIP_FILE_CHARS, TRIP_FILE_MIME } from '../core/tripfile.ts';
 import { appPath, writeAppFile } from './files.ts';
 
@@ -46,7 +47,9 @@ export async function shareTripFile(uri: string, dialogTitle: string): Promise<S
     return 'unavailable';
   }
   try {
-    await Sharing.shareAsync(uri, { mimeType: TRIP_FILE_MIME, UTI: 'public.json', dialogTitle });
+    // T154: the exported UTI (app.json), so the share sheet and AirDrop treat it as a Satchel trip and offer Satchel
+    // on the receiving phone. Android uses the MIME type.
+    await Sharing.shareAsync(uri, { mimeType: TRIP_FILE_MIME, UTI: TRIP_UTI, dialogTitle });
     return 'shared';
   } catch {
     return 'failed';
@@ -55,7 +58,7 @@ export async function shareTripFile(uri: string, dialogTitle: string): Promise<S
 
 export type PickedTrip = { ok: true; text: string } | { ok: false; reason: 'cancelled' | 'too-large' | 'unreadable' | 'unavailable' };
 
-/** Lets the user choose a .satchel file and reads its text. Any file type is offered (.satchel isn't registered yet). */
+/** Lets the user choose a .satchel file and reads its text. Any file type is offered (older builds don't declare .satchel, and mail apps rename files). */
 export async function pickTripFile(): Promise<PickedTrip> {
   let uri: string;
   try {

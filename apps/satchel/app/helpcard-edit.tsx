@@ -147,7 +147,15 @@ export default function HelpCardEditScreen() {
     if (r.ok) {
       if (!r.contact.phone) setError(t('helpcards.edit.err.noPhone'));
       else set({ callName: r.contact.name || f.callName, callPhone: r.contact.phone });
-    } else if (r.reason === 'denied') setError(t('helpcards.edit.err.contactsDenied'));
+    } else if (r.reason === 'denied') {
+      setError(t('helpcards.edit.err.contactsDenied'));
+      // T160: when only Settings can turn Contacts back on, offer the way there (as the photo errors do).
+      if (r.permission !== 'ask')
+        Alert.alert(t('permissions.contacts.title.off'), t('helpcards.edit.err.contactsDenied'), [
+          { text: t('common.cancel'), style: 'cancel' },
+          { text: t('common.openSettings'), onPress: openSettings },
+        ]);
+    }
     else if (r.reason !== 'cancelled') setError(t('helpcards.edit.err.contacts'));
   };
 

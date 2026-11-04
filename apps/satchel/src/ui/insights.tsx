@@ -234,7 +234,7 @@ const CategoryRing = memo(function CategoryRing({ slices, money }: { slices: Ret
           {slices.map((x) => (
             <View key={x.category} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, minHeight: 28 }}>
               <View style={{ width: 12, height: 12, borderRadius: 6, backgroundColor: toneColours(theme, CATEGORY_TONES[x.category]).fg }} />
-              <Text style={[typeScale.small, { flex: 1, color: theme.ink }]} numberOfLines={1}>
+              <Text style={[typeScale.small, { flex: 1, color: theme.ink }]} numberOfLines={2}>
                 {t(CATEGORY_KEYS[x.category])}
               </Text>
               <Text style={[typeScale.small, { fontFamily: typeScale.bodyStrong.fontFamily, color: theme.ink, fontVariant: ['tabular-nums'] }]}>{x.percent}%</Text>

@@ -27,7 +27,7 @@ import {
   type MotifLayer,
   type ThemeArt,
 } from './artwork.ts';
-import { isSha256Hex, sha256Hex, utf8Decode, utf8Encode } from './bytes.ts';
+import { isSha256Hex, sha256Hex, sha256HexChunked, utf8Decode, utf8Encode } from './bytes.ts';
 import { isHex } from './colour.ts';
 import { gunzip } from './inflate.ts';
 import type { IconStyle } from './iconspec.ts';
@@ -377,6 +377,12 @@ export type VerifyResult = { ok: true } | { ok: false; reason: 'size' | 'hash' }
 export function verifyAsset(asset: PackAsset, bytes: Uint8Array): VerifyResult {
   if (bytes.length !== asset.bytes) return { ok: false, reason: 'size' };
   return sha256Hex(bytes) === asset.sha256 ? { ok: true } : { ok: false, reason: 'hash' };
+}
+
+/** T258: verifyAsset with the hash done in slices that yield to the event loop (pack downloads). */
+export async function verifyAssetAsync(asset: PackAsset, bytes: Uint8Array): Promise<VerifyResult> {
+  if (bytes.length !== asset.bytes) return { ok: false, reason: 'size' };
+  return (await sha256HexChunked(bytes)) === asset.sha256 ? { ok: true } : { ok: false, reason: 'hash' };
 }
 
 // ------------------------------------------------------------ cache index (what's downloaded)

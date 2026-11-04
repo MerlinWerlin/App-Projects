@@ -47,6 +47,9 @@ export const fr: NonNullable<LocaleMessages['tabs']> = {
       artBadge: 'Illustration',
       liveOnArt: 'Fonctionne sur l’écran d’accueil : le widget Glaze affiche la vraie valeur sur cette illustration.',
       focusNote: 'Touchez Démarrer sur le widget pour 25 minutes de concentration ; touchez à nouveau pour mettre en pause.',
+      countdownNote: 'Choisissez un jour ci-dessus, puis touchez Utiliser sur mon widget : le widget affiche le compte à rebours sur cette illustration. Sans jour, elle reste une image.',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: 'Les valeurs en direct s’affichent avec la disposition « Remplir » (appui long sur le widget, Modifier le widget, Disposition). « Ajuster » montre seulement l’illustration pour l’instant.',
       heroNames: { small: 'Petite pièce', medium: 'Pièce large', large: 'Grande pièce' },
       download: 'Télécharge ce thème sur sa page pour voir ici toutes ses illustrations de widget.',
       kinds: { art: 'Illustrations', clock: 'Horloges', date: 'Dates', calendar: 'Calendriers', countdown: 'Comptes à rebours', habits: 'Habitudes', battery: 'Batterie', photo: 'Photos', quote: 'Citations', focus: 'Concentration' },
@@ -57,7 +60,7 @@ export const fr: NonNullable<LocaleMessages['tabs']> = {
     open: '{kind}, {size}. Ouvre le Studio de widgets.',
     soon: 'Bientôt',
     soonA11y: '{kind}, {size}. Bientôt disponible.',
-    lockNote: 'Les widgets de l’écran verrouillé ne sont pas encore prêts. Ceux-ci arrivent bientôt.',
+    lockNote: 'Les widgets Glaze de l’écran verrouillé (horloge, date, batterie, compte à rebours, lune) s’ajoutent sur l’écran verrouillé : maintenez-le, touchez Personnaliser > Écran verrouillé > la zone des widgets, puis choisissez Glaze. Ils prennent la police de votre thème ; iOS choisit leur couleur.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
       ok: 'Widgets de l’écran d’accueil connectés',
@@ -119,5 +122,19 @@ export const fr: NonNullable<LocaleMessages['tabs']> = {
       openClip: 'Ouvrir le clip',
       kind: { collage: 'Collage', theme: 'Fond d’écran', live: 'Image de Live Photo' },
     },
+  },
+  widgetAccess: {
+    title: "Accès des widgets",
+    calendarTitle: "Widget Prochain événement",
+    calendarBody: "Le widget Prochain événement affiche votre prochain événement de calendrier dans votre thème. Glaze lit vos calendriers uniquement sur cet iPhone et ne les envoie jamais nulle part.",
+    calendarAllow: "Autoriser l’accès au calendrier",
+    weatherTitle: "Widget Météo",
+    weatherBody: "Le widget Météo affiche la météo là où vous êtes. Votre position approximative (arrondie à environ 1 km) est envoyée uniquement à Open-Meteo pour obtenir la prévision. Glaze ne la reçoit jamais et ne la stocke sur aucun serveur.",
+    weatherAllow: "Autoriser la position pendant l’utilisation",
+    granted: "Accès activé. Le widget se met à jour dans quelques minutes.",
+    denied: "Accès désactivé. Vous pouvez l’activer dans Réglages > Glaze.",
+    openSettings: "Ouvrir Réglages",
+    unavailable: "Pour demander l’accès, il faut la version App Store ou TestFlight de Glaze.",
+    credit: "Données météo par Open-Meteo.com (CC BY 4.0)",
   },
 };

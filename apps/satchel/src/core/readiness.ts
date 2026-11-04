@@ -19,7 +19,7 @@ import { addMonths, isLocalDate, PASSPORT_MONTHS } from './vault.ts';
  * shown honestly and never counted against the score.
  */
 export type CheckStatus = 'pass' | 'warn' | 'fail' | 'missing' | 'unknown';
-export type CheckId = 'passport' | 'visa' | 'packing' | 'emergency' | 'hotels' | 'map' | 'todos' | 'connections' | 'gaps' | 'checkin';
+export type CheckId = 'passport' | 'visa' | 'packing' | 'emergency' | 'hotels' | 'map' | 'todos' | 'connections' | 'gaps' | 'checkin' | 'assistance';
 export const CHECK_ORDER: readonly CheckId[] = ['passport', 'visa', 'packing', 'emergency', 'hotels', 'map'];
 
 /** Where the one-tap fix goes. */
@@ -34,7 +34,9 @@ export type Fix =
   // T135: the first trip gap: its add form (prefilled) or its first booking.
   | { kind: 'gap'; tripId: string; add?: GapAdd; itemId?: string }
   // T143: the booking whose online check-in is open (or overdue) and not ticked.
-  | { kind: 'checkin'; itemId: string };
+  | { kind: 'checkin'; itemId: string }
+  // T156: the first journey ahead with no travel assistance marked (its booking's access notes).
+  | { kind: 'assistance'; itemId: string };
 
 /**
  * Why a row has its status (the UI turns it into words). Only dates, counts and city names, never document data.
@@ -124,6 +126,8 @@ export type ReadinessInput = {
   gaps?: Check | null;
   /** T143: the trip's check-in row (src/core/checkin.ts checkinCheck), after gaps; null: no flights / booked trains or ferries. */
   checkin?: Check | null;
+  /** T156: "Book travel assistance" (src/core/stepfree.ts assistanceCheck), after check-in; null: no access needs set or no journey ahead. */
+  assistance?: Check | null;
 };
 
 // ------------------------------------------------------------------ dates
@@ -284,6 +288,7 @@ export function readiness(input: ReadinessInput): Readiness {
     ...(input.connections ? [input.connections] : []),
     ...(input.gaps ? [input.gaps] : []),
     ...(input.checkin ? [input.checkin] : []),
+    ...(input.assistance ? [input.assistance] : []),
     ...(input.todos ? [input.todos] : []),
   ];
   const judged = checks.filter((c) => c.status !== 'unknown');
@@ -302,9 +307,11 @@ const order = (id: CheckId) =>
       ? CHECK_ORDER.length + 1
       : id === 'checkin'
         ? CHECK_ORDER.length + 2
-        : id === 'todos'
-          ? CHECK_ORDER.length + 3
-          : CHECK_ORDER.indexOf(id);
+        : id === 'assistance'
+          ? CHECK_ORDER.length + 2.5
+          : id === 'todos'
+            ? CHECK_ORDER.length + 3
+            : CHECK_ORDER.indexOf(id);
 
 /** The rows that still want something done, worst first (fail, missing, warn), then card order. */
 export function toFix(r: Readiness): Check[] {

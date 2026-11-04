@@ -81,24 +81,33 @@ test('no duplicate top-level type names across the extension target', () => {
 test('extension imports only system frameworks (never ExpoModulesCore or a Glaze pod)', () => {
   for (const f of widgetSwift()) {
     for (const m of read(`${WIDGET_DIR}/${f}`).matchAll(/^import\s+(\w+)/gm)) {
-      assert.ok(['SwiftUI', 'WidgetKit', 'Foundation', 'CoreFoundation', 'UIKit', 'AppIntents', 'CryptoKit', 'ImageIO'].includes(m[1]), `${f} imports ${m[1]}`);
+      assert.ok(['SwiftUI', 'WidgetKit', 'Foundation', 'CoreFoundation', 'UIKit', 'AppIntents', 'CryptoKit', 'ImageIO', 'EventKit', 'CoreLocation'].includes(m[1]), `${f} imports ${m[1]}`);
     }
   }
 });
 
 test('widget bundle: every Widget is registered once and no builder block exceeds 9 entries', () => {
   const bundle = code(read(`${WIDGET_DIR}/GlazeWidgetsBundle.swift`));
+  // owner-1102b: nested bundles may live in their own files (e.g. DataWidgetsBundle.swift); every
+  // one of them is included from the @main bundle as `<Name>().body`.
+  const nestedFiles = widgetSwift().filter((f) => f !== 'GlazeWidgetsBundle.swift' && /struct\s+\w+\s*:\s*WidgetBundle\s*\{/.test(code(read(`${WIDGET_DIR}/${f}`))));
+  for (const f of nestedFiles) {
+    for (const m of code(read(`${WIDGET_DIR}/${f}`)).matchAll(/struct\s+(\w+)\s*:\s*WidgetBundle\s*\{/g)) {
+      assert.equal((bundle.match(new RegExp(`^\\s*${m[1]}\\(\\)\\.body\\s*$`, 'gm')) ?? []).length, 1, `${m[1]} (${f}) included once`);
+    }
+  }
+  const allBundles = [bundle, ...nestedFiles.map((f) => code(read(`${WIDGET_DIR}/${f}`)))].join('\n');
   const widgets: string[] = [];
   for (const f of widgetSwift()) {
     for (const m of code(read(`${WIDGET_DIR}/${f}`)).matchAll(/struct\s+(\w+)\s*:\s*Widget\s*\{/g)) widgets.push(m[1]);
   }
   assert.ok(widgets.length >= 10);
   for (const w of widgets) {
-    const hits = bundle.match(new RegExp(`^\\s*${w}\\(\\)\\s*$`, 'gm')) ?? [];
+    const hits = allBundles.match(new RegExp(`^\\s*${w}\\(\\)\\s*$`, 'gm')) ?? [];
     assert.equal(hits.length, 1, `${w} registered exactly once`);
   }
   // Each `var body: some Widget { ... }` block: count entry lines.
-  const blocks = bundle.split(/var body: some Widget \{/).slice(1);
+  const blocks = allBundles.split(/var body: some Widget \{/).slice(1);
   assert.ok(blocks.length >= 2, 'habit widgets live in a nested bundle');
   for (const b of blocks) {
     const body = b.slice(0, b.indexOf('\n  }'));
@@ -109,8 +118,46 @@ test('widget bundle: every Widget is registered once and no builder block exceed
   assert.equal((bundle.match(/@main/g) ?? []).length, 1);
 });
 
+test('T279: Lock Screen widgets keep GlazeLockAccessory and add date, battery, countdown and moon', () => {
+  const lock = code(read(`${WIDGET_DIR}/LockAccessoryWidget.swift`));
+  for (const kind of ['GlazeLockAccessory', 'GlazeLockDate', 'GlazeLockBattery', 'GlazeLockCountdown', 'GlazeLockMoon']) {
+    assert.equal((lock.match(new RegExp(`let kind = "${kind}"`, 'g')) ?? []).length, 1, kind);
+  }
+  // Every Lock widget offers exactly the three accessory families.
+  const families = lock.match(/\.supportedFamilies\(\[[^\]]*\]\)/g) ?? [];
+  assert.equal(families.length, 5);
+  for (const f of families) {
+    assert.match(f, /\.accessoryRectangular/);
+    assert.match(f, /\.accessoryCircular/);
+    assert.match(f, /\.accessoryInline/);
+    assert.doesNotMatch(f, /\.system/);
+  }
+  assert.match(lock, /struct GlazeLockWidgetsBundle: WidgetBundle/);
+  assert.match(code(read(`${WIDGET_DIR}/GlazeWidgetsBundle.swift`)), /^\s*GlazeLockWidgetsBundle\(\)\.body\s*$/m);
+  assert.match(lock, /\.gaugeStyle\(\.accessoryCircular\)/);
+  assert.match(lock, /AccessoryWidgetBackground\(\)/);
+  assert.match(lock, /\.widgetAccentable\(\)/);
+  // Real data only: battery from LiveBattery (nil = a dash), moon from MoonPhase, countdown from the
+  // saved Countdown design's countdownTo day.
+  assert.match(lock, /LiveBattery\.percent\(\)/);
+  assert.match(lock, /MoonPhase\.info\(at: entry\.date\)/);
+  assert.match(lock, /MoonPhase\.daysToFull\(at: entry\.date\)/);
+  assert.match(lock, /savedDesign\(kind: "countdown"/);
+  assert.match(lock, /\["countdownTo"\]/);
+  // No theme name, no force unwraps / forced casts.
+  assert.doesNotMatch(lock, /themeName|\.name\b/);
+  assert.doesNotMatch(lock, /as!|try!|\w!\./);
+});
+
+test('T279: the Clock widget turns white in StandBy (background removed)', () => {
+  const clock = code(read(`${WIDGET_DIR}/ClockWidget.swift`));
+  assert.match(clock, /@Environment\(\\\.showsWidgetContainerBackground\)/);
+  assert.match(clock, /showsBackground \? t\.inkColor : Color\.white/);
+  assert.match(clock, /\.systemSmall/);
+});
+
 test('every widget view sets containerBackground(for: .widget); placeholders read the theme', () => {
-  for (const f of ['ClockWidget.swift', 'DateWidget.swift', 'QuoteWidget.swift', 'PhotoWidget.swift', 'SeamlessWidget.swift', 'HabitWidget.swift', 'LockAccessoryWidget.swift']) {
+  for (const f of ['ClockWidget.swift', 'DateWidget.swift', 'QuoteWidget.swift', 'PhotoWidget.swift', 'SeamlessWidget.swift', 'HabitWidget.swift', 'HabitStreakWidget.swift', 'LockAccessoryWidget.swift', 'CalendarEventWidget.swift', 'WeatherWidget.swift', 'MoonWidget.swift', 'ClockStyleWidgets.swift']) {
     assert.match(read(`${WIDGET_DIR}/${f}`), /\.containerBackground\(for: \.widget\)/, f);
   }
   const providers = code(read(`${WIDGET_DIR}/Providers.swift`)) + code(read(`${WIDGET_DIR}/HabitWidget.swift`));

@@ -22,7 +22,8 @@ export const MAP_V0_CATEGORIES = ['toilets', 'drinking_water', 'fuel', 'food', '
 export type MapCategory = (typeof MAP_V0_CATEGORIES)[number];
 export const isMapCategory = (id: string): id is MapCategory => (MAP_V0_CATEGORIES as readonly string[]).includes(id);
 
-export type Poi = LatLon & { id: string; name: string; category: string };
+/** T156: `wheelchair` (yes / limited / no) only on downloaded-pack points that carry the OSM tag. */
+export type Poi = LatLon & { id: string; name: string; category: string; wheelchair?: 'yes' | 'limited' | 'no' };
 export type PoiSet = { city: string; source: string; sample: boolean; center: LatLon; pois: Poi[] };
 
 const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
@@ -106,13 +107,6 @@ export function parsePoiSet(raw: unknown, cats: readonly PoiCategory[]): PoiSet 
     pois.push({ id, name, lat: p.lat as number, lon: p.lon as number, category });
   }
   return { city, source, sample: raw.sample !== false, center: { lat: raw.center.lat as number, lon: raw.center.lon as number }, pois };
-}
-
-/** Initial toggle state: each offered category's default_on from the content (on if unknown). */
-export function defaultToggles(cats: readonly PoiCategory[], offered: readonly string[] = MAP_V0_CATEGORIES): Record<string, boolean> {
-  const out: Record<string, boolean> = {};
-  for (const id of offered) out[id] = cats.find((c) => c.id === id)?.defaultOn ?? true;
-  return out;
 }
 
 export function filterByCategories<P extends { category: string }>(pois: readonly P[], on: Record<string, boolean>): P[] {

@@ -94,6 +94,30 @@ export function parseCity(raw: unknown): CityMap | null {
   return city;
 }
 
+/**
+ * A pack's own meta.json, as tools/maps/build.mjs writes it. It cannot carry `bytes` or `sha256` (they are the size
+ * and hash of the tar it sits inside), so those come from the catalog entry the pack was downloaded for (T153: before
+ * this, parseCity rejected every real meta.json and every download ended as 'bad-pack'). Null when the meta is
+ * invalid or is for another city than `entry`. Without an entry it is parseCity (a meta.json saved after install
+ * carries the catalog's bytes, see packMetaToSave).
+ */
+export function parsePackMeta(raw: unknown, entry?: Pick<CityMap, 'id' | 'bytes' | 'sha256'>): CityMap | null {
+  if (!entry) return parseCity(raw);
+  if (!isObj(raw) || raw.id !== entry.id) return null;
+  const merged: Record<string, unknown> = { ...raw };
+  if (!isInt(merged.bytes, 1, 4 * 1024 ** 3)) merged.bytes = entry.bytes;
+  if (merged.sha256 === undefined && entry.sha256) merged.sha256 = entry.sha256;
+  return parseCity(merged);
+}
+
+/** The meta.json kept on the phone after an install: the pack's own fields plus the catalog's bytes (and sha256). */
+export function packMetaToSave(raw: unknown, meta: CityMap): Record<string, unknown> {
+  const out: Record<string, unknown> = isObj(raw) ? { ...raw } : { ...meta };
+  out.bytes = meta.bytes;
+  if (meta.sha256) out.sha256 = meta.sha256;
+  return out;
+}
+
 /** The catalog with only its valid cities (duplicates by id dropped), or null when it is not a v1 catalog. */
 export function parseCatalog(raw: unknown): CityCatalog | null {
   if (!isObj(raw) || raw.version !== 1 || !Array.isArray(raw.cities)) return null;

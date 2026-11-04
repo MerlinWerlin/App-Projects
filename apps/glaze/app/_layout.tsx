@@ -163,6 +163,8 @@ function RootStack() {
       <Stack.Screen name="tips" options={{ title: t('tips.title') }} />
       <Stack.Screen name="habit-goals" options={{ title: t('tabs.widgetsTab.goals.title') }} />
       <Stack.Screen name="widget-studio" options={{ title: t('themeUi.widgetStudio.title') }} />
+      {/* owner-1102b T280/T281: opened by tapping the Next event / Weather widgets (glaze://widget-access?kind=...). */}
+      <Stack.Screen name="widget-access" options={{ title: t('tabs.widgetAccess.title') }} />
     </Stack>
   );
 }

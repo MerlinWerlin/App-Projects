@@ -25,7 +25,7 @@
 import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
 import { memo, useMemo, type ReactNode } from 'react';
-import { Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, Text, View, type ImageStyle, type StyleProp, type ViewStyle } from 'react-native';
 import {
   OPTION_SIZE_POINTS,
   optionName,
@@ -98,7 +98,8 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, selected,
   const live = showsLiveBadge(option);
   const sizeName = tl(widgetTabSizeKey(size));
   const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
-  const wallStyle = wall ? { position: 'absolute' as const, left: wall.x, top: wall.y, width: wall.w, height: wall.h } : undefined;
+  // T276: ImageStyle, not ViewStyle: it styles an expo-image (StyleProp<ImageStyle>).
+  const wallStyle: StyleProp<ImageStyle> = wall ? { position: 'absolute', left: wall.x, top: wall.y, width: wall.w, height: wall.h } : null;
   return (
     <Pressable
       onPress={() => onSelect(option.id)}

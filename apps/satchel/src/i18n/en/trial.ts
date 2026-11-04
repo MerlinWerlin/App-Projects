@@ -24,7 +24,7 @@ export const trial = {
   'settings.privacyHeading': 'Data Not Collected',
   'settings.privacyAccounts': 'No account, no ads, no analytics and no tracking.',
   'settings.privacyOnDevice': 'Trips, tickets, documents, packing lists and your emergency card are saved on this phone only.',
-  'settings.privacyLocation': 'Location is checked once, only when you tap "Where am I?", and never in the background.',
+  'settings.privacyLocation': 'Location is used only when you ask (Where am I?, a near-me search, Find my way back while it is open), never in the background.',
   'settings.privacyMap': 'The map uses your phone\'s built-in map service, which needs a signal.',
   'settings.sectionAbout': 'About',
   'settings.emergencyRef': 'Emergency numbers come with the app (list dated {date}) and work offline. Always verify them locally.',

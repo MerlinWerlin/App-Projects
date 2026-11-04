@@ -35,7 +35,7 @@ const SignRow = memo(function SignRow({ row, languageName }: { row: Row; languag
   const english = t(`signs.sign.${c.id}` as Key);
   const meaning = t(`signs.meaning.${c.id}` as Key);
   const size = c.text ? signFontSize(c.text) : 20;
-  const regionName = (r: string) => (r === 'HK' ? t('f106.signs.region.HK') : r === 'TW' ? t('f106.signs.region.TW') : r);
+  const regionName = (r: string) => (r === 'HK' ? t('f106.signs.region.HK') : r === 'TW' ? t('f106.signs.region.TW') : r === 'MO' ? t('f107.signs.region.MO') : r);
   const a11y = c.text
     ? t('signs.cardA11y', { english, meaning, language: languageName(c.lang), text: c.roman ?? c.text, check: c.needsCheck ? t('signs.notChecked') : '' }) +
       (c.alt ? ` ${t('f106.signs.altA11y', { place: regionName(c.alt.region), text: c.alt.roman ?? c.alt.text })}` : '')

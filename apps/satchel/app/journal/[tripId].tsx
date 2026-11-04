@@ -138,7 +138,7 @@ const EntryCard = memo(function EntryCard({ trip, entry, date, onPress }: { trip
             {place ? (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs, backgroundColor: theme.tealSoft, borderRadius: radius.pill, paddingHorizontal: space.m, paddingVertical: space.xs }}>
                 <Ionicons name="location-outline" size={16} color={theme.teal} />
-                <Text numberOfLines={1} style={[typeScale.small, { color: theme.ink, maxWidth: 200 }]}>
+                <Text numberOfLines={2} style={[typeScale.small, { color: theme.ink, maxWidth: 200 }]}>
                   {place.name}
                 </Text>
               </View>

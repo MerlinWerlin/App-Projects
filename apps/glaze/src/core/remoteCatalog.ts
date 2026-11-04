@@ -11,7 +11,7 @@
 
 import { ART_PACK_DEFAULT_ADDED_AT, ART_WALLPAPER_SIZE, HERO_SIZES, artPackTheme, isArtPackTheme, type ArtPackData, type ArtPackTheme, type HeroSize, type PixelSize } from './artPack.ts';
 import { parseCatalog, type Catalog, type CatalogPack, type RemoteArtManifest, type RemoteArtRole } from './packCatalog.ts';
-import { packObjectUrl } from './packHost.ts';
+import { packObjectUrl, packReleaseBase } from './packHost.ts';
 import type { PackAccessInput, PackDetailView } from './packDetail.ts';
 
 /** Re-fetch catalog.json at most this often (unless the person pulls to refresh). */
@@ -225,6 +225,8 @@ export type RemoteArtRef = {
   thumbUrl: string | null;
   /** ThumbHash (base64) for an instant blurred placeholder. */
   thumbhash: string;
+  /** T274: the release holding the pack's files (absent = glaze-packs-v1); pass to the downloader. */
+  release?: string;
 };
 
 export type RemoteArtTheme = Omit<ArtPackTheme, 'plus'> & { plus: boolean; remoteArt: RemoteArtRef };
@@ -254,8 +256,9 @@ export function remoteArtTheme(p: CatalogPack, baseUrl: string | null): RemoteAr
       packVersion: p.packVersion,
       plus: p.plus,
       bytes: p.bytes,
-      thumbUrl: baseUrl && baseUrl.trim() ? packObjectUrl(baseUrl, p.thumb) : null,
+      thumbUrl: baseUrl && baseUrl.trim() ? packObjectUrl(packReleaseBase(baseUrl, p.release), p.thumb) : null,
       thumbhash: p.thumbhash,
+      ...(p.release ? { release: p.release } : {}),
     }),
   };
 }

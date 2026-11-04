@@ -51,7 +51,7 @@ export function TripTodosSlot({ trip }: { trip: Trip }) {
       </View>
       {detail ? <Text style={[typeScale.small, { color: c.overdue ? theme.danger : theme.warn }]}>{detail}</Text> : null}
       {next ? (
-        <Text numberOfLines={1} style={[typeScale.body, { color: theme.ink }]}>
+        <Text numberOfLines={2} style={[typeScale.body, { color: theme.ink }]}>
           {next}
         </Text>
       ) : null}

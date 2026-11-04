@@ -586,3 +586,104 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - Brief imported (T264-T267, docs/OWNER_1101I.md). App-Projects: nothing new for apps/glaze since a342ed3. Oversight v227 (seen), no patches. No page comments. npm registry unreachable.
 - 4 parallel workers, all merged: T264 (7cdaf4a) crash hardening + per-screen Retry boundaries; T265 (bdb79cb) guided Use this theme flow + Set it up section (merge fix d0d4d0d: setup opens after the T264 try-wrapped celebration); T266 (37c4570) release docs, support/privacy pages, export-compliance guard; T267 (47019be) screenshot templates + renderer, 12 JPEGs published under store-screens/. Follow-ups T268-T270.
 - Needs a native build (bridge Swift guards). 1811/1811 core tests green, core + UI stub typecheck clean. Nothing device-tested.
+## 2026-11-01 run 224 (09:10Z, scheduled; artifact 1793521925-35f3; oversight v228)
+- Synced App-Projects 3e3a5e3 (categories for the 24 built-in themes + test) and 3516f7d (store/ASC_REQUEST.json); 99a7677/aac8726 are ships of runs 222/223. Oversight v228: no new directives, no patches. No page comments. npm registry unreachable (timeout); full install + tsc + expo export needs PC verification.
+- T258 (me, d36529a): pack/remote-art inventory and verify hash in 64 KB slices with an event-loop yield between (sha256HexChunked, verifyAssetAsync); +1 test. Other eligible tasks wait on the owner, the PC or a native build result (D225-3).
+- JS only (rides with the next build). 1815/1815 core tests green, core + UI stub typecheck clean. Nothing device-tested.
+- Bundle base64 ~14.74 MB (guard 15.6 MB). Trial kit rebuilt from 1fa8297.
+
+## 2026-11-01 21:50 AEDT, run 225 (scheduled)
+- Restored build page v1793524619-4941; synced App-Projects ab22f08 (85 new pack versions) and bcfedc7 (ASC_REQUEST) as ffd7437. Oversight still v228: no new directives or patches; no owner comments. Registry unreachable: core-only checks.
+- T245 (worker, 5b275bc): countdown art pieces take a per-piece target day; without one they stay Art. Uses T237's existing live.target path in Swift (no new Swift, D225-3).
+- T246 (worker, 31379eb): Fit-layout plate geometry (src/core/liveArtFit.ts) + art rect in the live spec; widget still draws live values in Fill only (SeamlessWidget.swift skips Fit), so the Widgets tab says so; native follow-up T271. Merge conflicts in tabs i18n + ThemeWidgetArt resolved (both kept).
+- T269 part (me, ac7b420): Themes tab subtitle drops "a loop" in 11 locales.
+- 1829/1829 core tests green; UI stub typecheck clean. Nothing device-tested. Full install + tsc + expo export needs PC verification.
+
+## 2026-11-01 22:30 AEDT, run 226 (scheduled)
+- Restored build page v1793528900-a951. App-Projects bab67b4 is the ship of run 224 (T258, already here): nothing to sync. Oversight v229: new D229-1 (T256 prep); no patches; no page comments. Registry not retried (core-only).
+- D229-1 (me): release downloads reachable, so ran blend-audit --download --fix on the live catalogue: 95 packs, 369 widget pieces (key 104, feather 265, transparent 9). Added scripts/packs/rebuild_widget_alpha.mjs (+3 tests): new pack version per pack, widget images as WebP with alpha, every option background 'wallpaper', catalogue last, superseded folders listed. Ready-to-install workflow ops/github/glaze-widget-alpha-publish.yml (batches + prune: a full copy would put ~1689 assets on a 1000-asset release; dry_run option). Locally all 95 packs rebuild and parse; nothing uploaded, no PNGs committed.
+- T272 (me): eye check found keying punching holes in yuzu-soak (cream subject on cream backdrop). --fix now keeps keyed interiors opaque; blend-overrides.json forces feather for yuzu-soak. Follow-up T273 (same fix phone-side, later, native).
+- No app code change (scripts + docs only). 1829/1829 core tests + 18 pack-script tests green. Nothing device-tested.
+
+## 2026-11-01 23:17 AEDT, run 227 (scheduled)
+- Restored build page v1793532607-e0f8. App-Projects: f805ace is the ship of run 225 (already here), nothing to sync. Oversight still v229 (seen): no new directives or patches. No page comments. Registry unreachable (npm view timed out): core-only checks.
+- No eligible cloud task worth a code change: the rest wait on the owner (TestFlight retest, Plus A/B/C, support email), the native build result (T224/T261/T271/T273) or the App Factory chat (widget-art workflow, pack v3). T263: checked the 10 locales; every step already has the position cue (red badge under the Apple Account card) and the General > VPN & Device Management fallback, so a wording mismatch still leads to the right row; Apple's exact localised labels couldn't be confirmed from public pages in a bounded search, left as-is (task stays open for a device glance).
+- Records only. 1829/1829 core tests green. Nothing device-tested.
+
+## 2026-11-02 00:13 AEDT, run 228 (scheduled)
+- Restored build page v1793535665-8c91. App-Projects: newest apps/glaze commit e3dd28a is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight v230: no new Glaze directives or patches. No page comments. 8 open Glaze needs on the Workboard, all waiting on Jared or the App Factory chat; none resolved this run.
+- No eligible cloud task worth a code change (same blockers as run 227). Records only; no trial kit rebuild.
+- 1829/1829 core tests green. Nothing device-tested.
+
+## 2026-11-02 01:15 AEDT, run 229 (scheduled)
+- Restored build page v1793538956-f04b. App-Projects: newest apps/glaze commit acaf8f5 is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight still v230: no new Glaze directives or patches. No page comments. 8 open Glaze needs on the Workboard, all waiting on Jared or the App Factory chat; none resolved.
+- No eligible cloud task worth a code change (same blockers as runs 227-228; query-scheme tasks T233/T247 touch Info.plist and stay held until the next native build result). Records only; no trial kit rebuild.
+- 1829/1829 core tests green. Nothing device-tested.
+
+## 2026-11-02 02:15 AEDT, run 230 (scheduled)
+- Restored build page v1793542630-6b6b. App-Projects: newest apps/glaze commit 84574b3 is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight v231: no new Glaze directives (latest D229-1, handled) or patches. No page comments. 8 open Glaze needs on the Workboard, all waiting on Jared or the App Factory chat; none resolved.
+- No eligible cloud task worth a code change (same blockers as runs 227-229). Records only; no trial kit rebuild.
+- 1829/1829 core tests green. Nothing device-tested.
+
+## 2026-11-02 03:15 AEDT, run 231 (scheduled)
+- Restored build page v1793546195-d448. App-Projects: newest apps/glaze commit afa7e73 is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight still v231 (seen): no new Glaze directives or patches. No page comments. 8 open Glaze needs on the Workboard, all waiting on Jared or the App Factory chat; none resolved.
+- No eligible cloud task worth a code change (same blockers as runs 227-230). Records only; no trial kit rebuild.
+- 1829/1829 core tests green. Nothing device-tested.
+
+## 2026-11-02 04:13 AEDT, run 232 (scheduled)
+- Restored build page v1793549792-289f. App-Projects: newest apps/glaze commit 8f87517 is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight v232 (1793551813-1e44): no new Glaze directives, no patches. No page comments. 8 open Glaze needs on the Workboard, all waiting on Jared or the App Factory chat; none resolved.
+- No eligible cloud task worth a code change (same blockers as runs 227-231; owner decision 24 Oct: no open-ended work). Records only; no trial kit rebuild.
+- 1829/1829 core tests green. Nothing device-tested.
+
+## 2026-11-02 05:11 AEDT, run 233 (scheduled)
+- Restored build page v1793553249-c609. App-Projects: newest apps/glaze commit 32f8f6e is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight still v232 (1793551813-1e44): no new directives, no patches. No page comments. 8 open Glaze needs on the Workboard, all waiting on Jared or the App Factory chat; none resolved.
+- No eligible cloud task worth a code change (same blockers as runs 227-232). Records only; no trial kit rebuild.
+- 1829/1829 core tests green. Nothing device-tested.
+
+## 2026-11-02 06:11 AEDT, run 234 (scheduled)
+- Restored build page v1793556830-c1a2. App-Projects: newest apps/glaze commit 128a64a is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight still v232: no new directives, no patches. No page comments. 8 open Glaze needs on the Workboard, unchanged, all waiting on Jared or the App Factory chat.
+- No eligible cloud task worth a code change (same blockers as runs 227-233). Records only; no trial kit rebuild.
+- 1829/1829 core tests green. Nothing device-tested.
+
+## 2026-11-02 07:11 AEDT, run 235 (scheduled)
+- Restored build page v1793560451-37d9. App-Projects: newest apps/glaze commit 16a1e98 is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight v233 (1793558948-7f71): no new Glaze directives, no patches. No page comments. 8 open Glaze needs on the Workboard, unchanged, all waiting on Jared or the App Factory chat.
+- No eligible cloud task worth a code change (same blockers as runs 227-234). Records only; no trial kit rebuild.
+- 1829/1829 core tests green; core typecheck clean. Nothing device-tested.
+
+## 2026-11-02 08:11 AEDT, run 236 (scheduled)
+- Restored build page v1793564044-0823. App-Projects: newest apps/glaze commit 98c1ed0 is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight v233 (1793558948-7f71) already handled: no new Glaze directives, no patches. No page comments. 8 open Glaze needs on the Workboard, unchanged, all waiting on Jared or the App Factory chat.
+- No eligible cloud task worth a code change (same blockers as runs 227-235). Records only; no trial kit rebuild.
+- 1829/1829 core tests green. Nothing device-tested.
+
+## 2026-11-02 09:13 AEDT, run 237 (scheduled)
+- Restored build page v1793567634-a7ef. App-Projects: newest apps/glaze commit c9b5d0a is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight still v233 (1793558948-7f71): no new directives, no patches. No page comments. 8 open Glaze needs on the Workboard, unchanged, all waiting on Jared or the App Factory chat.
+- No eligible cloud task worth a code change (same blockers as runs 227-236). Records only; no trial kit rebuild.
+- 1829/1829 core tests green. Nothing device-tested.
+
+## 2026-11-02 14:12 AEDT, run 238 (scheduled)
+- Restored build page v1793571307-15bc. App-Projects: newest apps/glaze commit 4df9de1 is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight still v233 (1793558948-7f71): no new directives, no patches. No page comments. 8 open Glaze needs on the Workboard, unchanged, all waiting on Jared or the App Factory chat.
+- No eligible cloud task worth a code change (same blockers as runs 227-237). Records only; no trial kit rebuild.
+- 1829/1829 core tests green. Nothing device-tested.
+
+## 2026-11-02 14:15-15:00 AEDT, run 239 (manual fire: owner brief owner-1102a)
+- Restored from this session's v245 (1793589260-9a8d). Imported owner-1102a (docs/OWNER_1102A.md, TRIAL.md "2 Nov owner-1102a" Q1-6, backlog T274-T286; part B = T277-T284 tagged owner-1102b, todo).
+- Sync: Codex draft PR #190 (codex/glaze-theme-release-20261101 0dbee8f, base bcfedc7) 3-way applied (c790511); one conflict in src/core/liveArt.ts resolved keeping both sides; `as!` in LiveArtOverlay.swift replaced (T264 guard); FIT_LAYOUT_LIVE_IN_WIDGET flipped true (Swift now draws live values in Fit). 105 fixture JPGs (5.8 MB) left on the branch (size guard).
+- Workers (worktrees): T274 multi-release packs (ecbe431), T275 clock editions + kind aliases (eb494cd), T286 review-folder adapter (d1ad82c), T276 practical-pieces audit: midnight timeline entries in LiveArt ArtProvider + DayProvider, contract tests, 3 UI typing fixes (87d9f25). One build_packs.mjs merge conflict resolved by hand.
+- 1849/1849 core tests green, 29 pack-script tests green, core + UI stub typecheck clean. Native Swift changes reviewed by eye only (no Mac): needs a TestFlight build. Nothing device-tested. Full install + tsc + expo export needs PC verification.
+- Old builds list a v2-release pack but can't download it (no crash); publish v2 packs once this build is out.
+
+## 2026-11-02 14:59-15:45 AEDT, run 240 (scheduled)
+- Restored build page v1793591777-1d73. App-Projects: newest apps/glaze commit c3896f5 is an App Factory ship (SHIP_BASE only); nothing to sync. Oversight v233 (1793558948-7f71) already handled: no new directives, no patches. No page comments. Registry unreachable (npm view timed out): core-only checks.
+- owner-1102b part B. Prep b64c1be (moon maths TS + Swift, GlazePersonalWidgetsBundle for Quote/Photo so the main bundle block stays at 9). Workers (worktrees): T277+T278 moon / word clock / big clock (97f5a9e), T279 Lock Screen date/battery/countdown/moon + StandBy clock (63f6d1e), T280+T281 next calendar event + Open-Meteo weather, bridge access methods, app/widget-access.tsx, privacy/review/store/licence docs (cd231a7), T282-T284 photo frame, daily line (64 original lines), habit streak widget + TickHabitIntent (49dd02e).
+- Merges: .strings files and the bundle-registration guard conflicted (union / took the nested-file-aware guard); the T283 worker had removed HourProvider, restored for the Moon widget (6d93618). No duplicate string keys.
+- 1888/1888 core tests green, core typecheck clean. Swift reviewed by eye only (no Mac): needs a TestFlight build (T287 for compile fixes). Nothing device-tested. Full install + tsc + expo export needs PC verification.
+- New: T288 (Open-Meteo free tier is non-commercial; Glaze sells Plus: owner decision before release), T289 (native review of new strings).
+- Trial kit not rebuilt: base64 would be 16.7 MB (over the artifact's 16 MB file limit); TestFlight is the test path. Bundle base64 15.05 MB.
+
+## 2026-11-02 15:37-15:55 AEDT, run 241 (manual fire: owner-1102b brief)
+- Same session as run 240; build page v247 (1793594171-38a5) is this session's own publish. The fired brief owner-1102b is part B, already built in run 240 (T277-T284 done): no re-import needed.
+- App-Projects: f59d663 (Jared chat ship of run 239) differs only in PC-only package pins: skipped. 79f0efd (pack versions + release tags for 141 themes, glaze-packs-v2..v4) 3-way applied (278514d). Oversight still v233. No page comments. Registry unreachable: core-only.
+- Gap fill (edab295): Widgets tab Lock note no longer says "not ready yet"; it says how to add the Glaze Lock Screen widgets (11 languages). STORE.md description lists the new widgets (1,865 chars).
+- 1888/1888 core tests green; 11 pack release tests green. Nothing device-tested; Swift not compiled.
+
+2026-11-04 Codex: Jared requested integration and TestFlight. Isolated release merges current main with PR190/capability4; retains both widget lines, calendar/weather/streak additions and localization. Core1900/1900 and app+Node TypeScript pass. New1.0.2 build uses separate v5 pack catalog so earlier builds retain existing library. Native SDK and signed upload receipts tracked separately in Apps/outputs/glaze-testflight-20261104.

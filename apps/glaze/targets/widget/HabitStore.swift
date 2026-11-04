@@ -341,6 +341,80 @@ enum HabitStore {
     return readTrackers().trackers[kind]?.goal ?? def.goal
   }
 
+  // MARK: Streaks (T284, mirrors habitStreak / habitHistory in src/core/habits.ts)
+
+  /// One day of the streak ticks. `weekday` is 1 (Sunday) … 7, as Calendar numbers them.
+  struct DayTick {
+    let day: String
+    let weekday: Int
+    let value: Double
+    let met: Bool
+  }
+
+  struct StreakSummary {
+    /// Oldest first; the last one is today.
+    let ticks: [DayTick]
+    /// Consecutive days the goal was met (mood: logged), counting today only once it is met.
+    let streak: Int
+    let today: Double
+    let goal: Double?
+
+    var metToday: Bool { ticks.last?.met ?? false }
+  }
+
+  /// Goal met on a day (habits.ts metOn): count trackers reach the goal, mood is logged at all.
+  static func met(_ kind: HabitKindID, value: Double, goal: Double?) -> Bool {
+    guard value > 0 else { return false }
+    if HabitDef.of(kind).mode == .scale { return true }
+    return value >= (goal ?? 1)
+  }
+
+  /// The last `days` days (today included) and the current streak, from the app's tracker plus the
+  /// taps it hasn't read yet. Same day keys and value rules as todayValue.
+  static func streakSummary(_ kind: HabitKindID, days: Int = 7, now: Date = Date()) -> StreakSummary {
+    let off = offsetMinutes(at: now)
+    var cal = Calendar(identifier: .gregorian)
+    cal.timeZone = TimeZone(secondsFromGMT: off * 60) ?? TimeZone(identifier: "UTC") ?? .current
+    let (trackers, mark) = readTrackers()
+    let tracker = trackers[kind]
+    let def = HabitDef.of(kind)
+    let goal: Double? = def.mode == .count ? (tracker?.goal ?? def.goal) : nil
+
+    var taps: [String: [Event]] = [:]
+    for e in pending(readLog(), mark) where e.kind == kind {
+      let day = dayKey(Date(timeIntervalSince1970: TimeInterval(e.at) / 1000), offsetMinutes: e.off)
+      taps[day, default: []].append(e)
+    }
+
+    func value(_ key: String) -> Double {
+      var v: Double = 0
+      if let t = tracker { v = t.day == key ? t.value : (t.history[key] ?? 0) }
+      v = apply(kind, value: 0, op: "set", amount: v)
+      for e in taps[key] ?? [] { v = apply(kind, value: v, op: e.op, amount: e.amount) }
+      return v
+    }
+
+    func date(_ back: Int) -> Date { cal.date(byAdding: .day, value: -back, to: now) ?? now }
+
+    let n = max(1, min(31, days))
+    var ticks: [DayTick] = []
+    for back in stride(from: n - 1, through: 0, by: -1) {
+      let d = date(back)
+      let key = dayKey(d, offsetMinutes: off)
+      let v = value(key)
+      ticks.append(DayTick(day: key, weekday: cal.component(.weekday, from: d), value: v, met: met(kind, value: v, goal: goal)))
+    }
+
+    let todayValue = ticks.last?.value ?? 0
+    var streak = met(kind, value: todayValue, goal: goal) ? 1 : 0
+    var back = 1
+    while streak <= historyDays && met(kind, value: value(dayKey(date(back), offsetMinutes: off)), goal: goal) {
+      streak += 1
+      back += 1
+    }
+    return StreakSummary(ticks: ticks, streak: streak, today: todayValue, goal: goal)
+  }
+
   // MARK: Writing (button taps)
 
   /// Append one tap to the log. `direction` +1 / -1 for count and mood steps; `setTo` picks a mood face.

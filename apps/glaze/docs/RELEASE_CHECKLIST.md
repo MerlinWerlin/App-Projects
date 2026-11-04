@@ -114,9 +114,12 @@ Answer in App Store Connect > Apps > Glaze > App Privacy > Get Started: **"No, w
 | Older Space themes (`cdn.esawebb.org`) | One image request, only if such a theme is opened | No identifier; not in the gallery since T177 |
 | StoreKit (Apple) | Purchase and restore, handled by Apple | Apple's data, not the developer's |
 | Send Feedback | Opens the user's own Mail app | Nothing is sent unless the user presses Send; optional user-initiated email is not collection |
+| Weather widget forecast (`api.open-meteo.com`, owner-1102b T281) | Latitude/longitude rounded to 2 decimals (~1 km), temperature unit; sent by the widget extension straight to Open-Meteo | The developer never receives or stores it (no server of ours in the path, no identifier, not linked, not tracking). Apple defines "collect" as transmitting data off the device in a way that lets the developer or its third-party partners access it for longer than needed to serve the request: Open-Meteo is a third-party API serving the request in real time. **Owner to confirm** this reading before publishing; the cautious alternative is Location > Coarse Location · App Functionality · Not linked to identity · Not used for tracking |
+| Next event widget (EventKit, T280) | Nothing: events are read on the device by the widget extension | Never leaves the device, so not collected |
 
 - [x] Answers and reasons written (this table, `docs/privacy.html`, `docs/site/privacy.html`)
 - [ ] Owner: App Privacy > "No, we do not collect data" > Publish; Privacy Policy URL from §6
+- [ ] Owner (owner-1102b): confirm the Open-Meteo row above (Data Not Collected vs. Coarse Location, App Functionality, not linked) and Open-Meteo's commercial-use terms (`docs/LICENSES.md` "Weather data")
 
 ## 4. Age rating (T266)
 App Store Connect > App Information > Age Rating > Edit. Answers:
