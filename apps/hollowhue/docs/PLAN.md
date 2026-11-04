@@ -54,7 +54,8 @@ inspired it ("Infinity Coloring Book") has a single theme.
 - 159 offline checks and strict type checks pass, including all six/twenty stops, landscape framing,
   deep colour persistence, and hashes of all approved/released geometry. Native iPhone checks now pass across two reviewed captures of identical compiled app source: all six
   regular journeys, Mega twenty, deep paint/drawing and restart persistence. Receipts and qualified
-  frames are in `docs/qa-nested-20261105`. Publication is pending; production remains Beta4/OTA28b985e9.
+  frames are in `docs/qa-nested-20261105`. PR234 is merged as df0c24a7. Production OTA9dd44b9b is live and its actual downloaded bundle hash
+  verifies. Fresh TestFlight build41912245091 is in progress; existing Beta4 installations can apply the OTA.
 
 ## Money (later, not in phase 1)
 Same factory model: free core forever, no ads, no tracking.

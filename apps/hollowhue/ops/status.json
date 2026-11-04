@@ -1,8 +1,11 @@
 {
   "app": "hollowhue",
   "stage": "testflight",
-  "headline": "Nested artwork correction verified on iPhone:42 approved Single artworks,6 coherent six-discovery editions,20 inner Mega tiers.47 new drawings;159 tests pass. Production publication pending.",
-  "next_for_owner": [],
+  "headline": "Nested artwork update LIVE in production OTA:42 separate Single artworks,6 coherent six-discovery editions,20 Mega tiers;47 new detail illustrations.159 tests and complete reviewed native coverage pass. Fresh TestFlight binary building.",
+  "next_for_owner": [
+    "In existing Hollowhue, Settings > App updates > Check for updates > Save & apply update.",
+    "Look for Hidden detail inside each artwork. Fresh TestFlight refresh is still building."
+  ],
   "tests": 159,
   "typecheck": "159 tests, full/stub strict types, Expo doctor21/21 and iOS/Hermes export pass. Exact prior geometry retained. Native all6x6 and20 stops,deep paint/drawing and restart save verified across2 reviewed captures of identical compiled runtime.",
   "previous_native_qa": {
@@ -25,26 +28,6 @@
     "physical_phone_uptake": "unverified"
   },
   "previous_delivery": {
-    "release_pr": 211,
-    "release_source": "4cb96f4e495c1a38b2072fe6e4d258a41c73e26b",
-    "ota": {
-      "project": "2f10e62c-2086-4e7d-9437-649fc240e82d",
-      "platform": "ios",
-      "runtime": "0.1.0",
-      "channel": "production",
-      "group": "889daefd-5069-47c7-aab4-7db47b71fb15",
-      "update": "01a1a56d-ca44-73fa-ab8c-fb62661c997b",
-      "createdAt": "2026-11-04T07:19:58.276Z",
-      "bundleBytes": 2604624,
-      "bundleSha256": "25be239f6da76dbb5e8f5d7b2886eade7638a842fdd7fb55ea5fd31cac3b3f7f",
-      "bundleHashMatches": true,
-      "phoneUptakeVerified": false
-    },
-    "testflight_build_run": "41791367613",
-    "testflight_state": "0.1.0 (3) COMPLETE, VALID and IN_BETA_TESTING; Apple probe41801311385, no errors or warnings",
-    "testflight_submission": "a9aee4e4-1f6a-44f1-8cc5-eb2bab86b3c2"
-  },
-  "delivery": {
     "state": "production OTA live; native0.1.0(4) COMPLETE/VALID/IN_BETA_TESTING",
     "release_pr": 224,
     "release_source": "94f119228f9259c8e77d67209c4e94e257edb286",
@@ -71,10 +54,32 @@
     "physical_phone_uptake": "unverified",
     "apple_receipt": "docs/qa-art-20261104/apple-complete-status.json"
   },
+  "delivery": {
+    "state": "Production iOS OTA live and downloaded bundle verified;fresh TestFlight binary building",
+    "release_pr": 234,
+    "release_source": "df0c24a7f908ed3cbd4129665c7b4a2e2426b0a9",
+    "ota_run": "41912203479",
+    "ota": {
+      "project": "2f10e62c-2086-4e7d-9437-649fc240e82d",
+      "platform": "ios",
+      "runtime": "0.1.0",
+      "channel": "production",
+      "group": "9dd44b9b-efec-4f06-b36d-0c75cfcdaa78",
+      "update": "01a1a860-176a-79e9-b752-a0b48dfd29a6",
+      "createdAt": "2026-11-04T21:03:52.170Z",
+      "bundleBytes": 42000780,
+      "bundleSha256": "d2ad60a17afad742272ed054145119c580e4f1a46679da54ee37e9c11e4b5ab9",
+      "bundleHashMatches": true,
+      "phoneUptakeVerified": false
+    },
+    "testflight_build_run": "41912245091",
+    "testflight_version": "pending",
+    "physical_phone_uptake": "unverified"
+  },
   "correction": {
     "date": "2026-11-05",
     "branch": "codex/hollowhue-individual-zooms-20261105",
-    "state": "Native verification complete;ready for production OTA and fresh TestFlight binary",
+    "state": "Production OTA live and bundle verified;fresh native TestFlight build41912245091 in progress",
     "original_single_artworks": 42,
     "nested_standard_editions": 6,
     "standard_discoveries_each": 6,

@@ -33,3 +33,12 @@ No app/src/assets/config/package runtime files changed after the compiled source
 are capture tooling and evidence. Offline validation:159 tests,full/stub strict types,Expo doctor21/21,
 and iOS/Hermes export. Original artwork and prior-scene geometry hashes match. Physical iPhone uptake
 is not independently verified. Production OTA and Apple delivery receipts are added after publication.
+
+## Production OTA live
+
+PR234 merged as `df0c24a7f908ed3cbd4129665c7b4a2e2426b0a9`. Ship run `41912203479` published iOS
+production update group `9dd44b9b-efec-4f06-b36d-0c75cfcdaa78` at `2026-11-04T21:03:52.170Z`.
+`production-update.json` verifies the served manifest, runtime0.1.0 and the actual downloaded bundle:
+42,000,780 bytes, SHA256 `d2ad60a17afad742272ed054145119c580e4f1a46679da54ee37e9c11e4b5ab9`.
+Existing installations can apply it through Settings → App updates → Check → Save & apply.
+Fresh signed TestFlight build run `41912245091` is in progress; no installable new binary is claimed yet.
