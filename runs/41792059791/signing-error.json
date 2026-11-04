@@ -1,0 +1,4 @@
+{
+  "type": "TypeError",
+  "detail": "'NoneType' object is not subscriptable"
+}

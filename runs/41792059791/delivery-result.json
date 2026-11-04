@@ -1,0 +1,10 @@
+{
+  "source_sha": "386724675764aa00eb9b1e967e5235b3a2e5d18e",
+  "results": {
+    "PREFLIGHT_RESULT": "failure",
+    "ARCHIVE_RESULT": "skipped",
+    "ENTITLEMENT_RESULT": "skipped",
+    "UPLOAD_RESULT": "skipped"
+  },
+  "errors": []
+}
