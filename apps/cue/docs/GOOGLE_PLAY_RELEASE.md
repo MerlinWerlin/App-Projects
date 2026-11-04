@@ -5,7 +5,7 @@ Work started from App-Projects main at dc444372ca15ba1c88d9badca11d67e0d20b56b7,
 with Cue-only Android preparation in codex/cue-google-play-release-20261103.
 The older October test APK is not the release candidate.
 
-## Android-only release direction
+## Android port alongside the existing iOS app
 
 On 4 November Jared clarified that this release is for Android, not TestFlight.
 A separate Claude App Factory ship run created PR206 after PR200 merged,
@@ -18,8 +18,11 @@ RELEASE.json. Both legacy ship.yml and ship-mac.yml must check that policy
 before Expo access; Cue's iOS builds and OTA releases fail closed. Inferred
 source changes or an automated RELEASE.json bump cannot authorise TestFlight.
 A later explicit owner decision is required to enable iOS shipping again.
-The completed TestFlight upload is not undone by this guard. The validated
-Android AAB and its existing evidence remain the Google Play candidate.
+The owner subsequently clarified that the existing iOS App Store submission
+must remain in review. Only accidental TestFlight build14 was expired in
+run41783651780. Independent read41783879096 confirmed the older App Store
+submission still WAITING_FOR_REVIEW. Do not withdraw or delete it. The validated
+Android AAB remains the Google Play candidate.
 
 ## Verified so far
 
@@ -168,24 +171,42 @@ later. Cancellation, stop failure, denial and single cleanup are unit-tested.
 See GOOGLE_PLAY_DATA_AUDIT.md for the source/SDK review and published privacy
 copy; this is not a submitted Data safety form.
 
-## Live Console blocker
+## Live Play Console progress
 
-The signed-in Astro Labs AU organisation Console was rechecked on 4 November.
-It displays “To publish apps, finish setting up your developer account” and
-“Complete account verifications to create apps”. Create app is disabled.
+Identity was approved on 4 November at18:14 Sydney, confirmed by Google's email
+and the live Console. Both contact and public developer phone numbers are now
+verified. The owner explicitly approved Developer Program Policies, Play App
+Signing Terms and the US export declaration; all three were accepted when
+creating Cue: Teleprompter, package `com.jared797.cue`, English(en-US), Free.
+Play app ID: `4974377533213924164`.
 
-Outstanding items displayed by Google:
+The original signed AAB was uploaded and accepted as version1.0.0/build2,
+target36, minimum API24. It was published to the internal track
+`4701155287852725598`, release1, at20:07 Sydney. Google reports it available to
+internal testers, not reviewed. The owner-only email list contains one account
+and is selected/saved. Joining/installing and licensed billing have not been
+verified. This is not a public production release or App Review submission.
 
-1. Google is verifying identity: the owner has uploaded documents and approval
-   is pending. Google says this may take a few days and it will email the owner.
-2. Verify phone numbers after organisation/identity documents are approved.
+Seven of eleven setup tasks are saved: privacy policy, no ads, non-government,
+no financial features, no health features, Productivity category/public support
+details, and the English listing with icon/feature graphic/four screenshots.
+Only the AI-assisted feature-graphic composition was AI-labeled; phone assets
+are actual emulator captures and the icon is an existing-brand export. Content
+changes are saved in Publishing overview but have not been sent for review.
 
-The website verification task was visible earlier but is absent in the latest
-live Home view. Identity and phone verification still block Create app.
+Remaining Console gates:
 
-The account exists; its existence and payment do not complete these checks.
-The owner completed the document upload; this agent did not upload identity
-documents, submit a phone code or accept a legal agreement.
+- Sign-in details requires full, non-expiring reviewer access to Plus; Google
+  explicitly says reviewers cannot pay or start free trials. No false full-access
+  certification was saved. Target audience is blocked until this section is done.
+- Content ratings is prepared with the existing support email and All Other
+  App Types. Its separate IARC Terms of Use awaits explicit owner confirmation.
+- Data safety still needs the final SDK/network review.
+- Google requires a merchant payments profile before Plus monetization. The
+  Payments profile page currently offers Create payments profile; none was created.
+
+Screenshots and operation evidence are in the local Cue release archive under
+`Apps/outputs/cue-google-play-20261104`.
 
 ## Remaining release checks
 
@@ -218,15 +239,16 @@ The same app source passed preview runtime simulations; the production AAB
 itself has not been installed through Play or used for licensed billing.
 The workflow can inspect the existing UUID without queueing another build.
 
-After account verification enables app creation, create the Cue app record,
-configure Play App Signing against the verified upload certificate, and finish
-content rating and Data safety from the final binary and SDK behaviour.
+The account/app creation and initial bundle upload are complete. Finish the
+remaining Console gates, merchant/Plus setup, content rating and Data safety
+from the final binary and SDK behaviour before production submission.
 
 The English listing assets are now prepared and visually inspected in
 `store/assets`: four actual 1080×1920 Android UI captures, the existing-brand
 512×512 icon and a 1024×500 feature graphic. Capture run 41732019758 passed on
 the same APK. MANIFEST.json records source/hashes and lossless screenshot
-pixel provenance; VISUAL_REVIEW.md records inspection. These remain unuploaded.
+pixel provenance; VISUAL_REVIEW.md records inspection. These are now saved in
+the English Play listing, pending review rather than publicly published.
 
 GOOGLE_PLAY_BILLING_QA.md contains the licensed, one-time purchase rehearsal;
 every case is explicitly unexecuted. Baseline simulation archives, source-bound
@@ -243,5 +265,5 @@ camera/audio proof is synthetic, with no physical-microphone quality claim.
 Keep the existing one-time price decision and avoid inventing subscriptions.
 
 The emulator flows do not establish those purchase, real-speech
-or physical-camera results. No store upload, review submission or public
-availability is claimed.
+or physical-camera results. Internal-track upload/publication is verified;
+production submission and public availability are not claimed.

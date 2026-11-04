@@ -1,5 +1,5 @@
 {
-  "status": "draft_not_uploaded",
+  "status": "saved_in_play_pending_review_not_public",
   "locale": "en-US",
   "title": "Cue: Teleprompter",
   "shortDescription": "Read scripts near the camera with scrolling, mirrors and recording tools.",
@@ -8,10 +8,13 @@
     "On-device speech availability/fallback QA",
     "Camera and microphone interruption QA",
     "Play Billing purchase and restore verification",
-    "Wait for Google's review of uploaded identity documents, then complete phone verification before app creation",
+    "Provide non-expiring reviewer access to Plus; free trial or payment is not accepted by the current Console instructions",
+    "Accept the separate IARC Terms of Use and complete content rating; target audience waits on app access",
+    "Complete merchant payments profile and configure the one-time Plus product",
     "Complete final SDK/network Data safety review; Android-qualified privacy copy is now published"
   ],
-  "assets": "Four inspected 1080x1920 Android UI screenshots, 512px existing-brand icon and 1024x500 feature graphic are prepared under assets; not uploaded",
+  "assets": "Four actual Android screenshots, existing-brand icon and feature graphic uploaded and saved in Play listing; feature graphic AI-labeled; not public",
+  "playAppId": "4974377533213924164",
   "assetManifest": "assets/MANIFEST.json",
   "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
 }
