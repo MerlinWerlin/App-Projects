@@ -1,0 +1,429 @@
+{
+  "date": "2026-11-05",
+  "mode": "built-in image_gen",
+  "artworks": [
+    {
+      "id": "rose-03",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 3, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains interwoven spiral rosebuds and slender curling ribbons. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-02",
+      "reference": "rose-01",
+      "file": "illustrations/rose-03.webp",
+      "sha256": "e0c0327747d32b9d0c1949b1d5747fcab13587cf6f9ed87a00a6b7ce75808833"
+    },
+    {
+      "id": "rose-04",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 4, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains a ring of rose-petal veins branching into tiny acanthus leaves. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-03",
+      "reference": "rose-01",
+      "file": "illustrations/rose-04.webp",
+      "sha256": "0ee83329c8b9162933998134270ddf5a8b457014324f4d679423ac373cd5a0db"
+    },
+    {
+      "id": "rose-05",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 5, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains dew-beaded rose petals with graceful scalloped scrollwork. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-04",
+      "reference": "rose-01",
+      "file": "illustrations/rose-05.webp",
+      "sha256": "7491ca0fd684816c74640afd1a9d9a6763cb7a15093bfdb3875f2ee22743a6b5"
+    },
+    {
+      "id": "rose-06",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 6, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains pearl-like botanical seeds cradled in folded petal cups. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-05",
+      "reference": "rose-01",
+      "file": "illustrations/rose-06.webp",
+      "sha256": "0f4f63f75464ca92fd678d7d1dd5137d887e4150e522f1b31d15196e7de6b70b"
+    },
+    {
+      "id": "rose-07",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 7, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains a clockwise whorl of delicate curled rose petals. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-06",
+      "reference": "rose-01",
+      "file": "illustrations/rose-07.webp",
+      "sha256": "e1cdb8514bcce65360a26ce7fa800337b0bffb5fec2699c86a564ed5e51aead0"
+    },
+    {
+      "id": "rose-08",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 8, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains paired scrolling stems woven through five small rosebuds. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-07",
+      "reference": "rose-01",
+      "file": "illustrations/rose-08.webp",
+      "sha256": "639e3b0f656a63f04b6ccc13f2650f0ffd3166e966175dff93f676c0b355533a"
+    },
+    {
+      "id": "rose-09",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 9, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains a lace-like net of fine rose veins and enclosed leaf cells. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-08",
+      "reference": "rose-01",
+      "file": "illustrations/rose-09.webp",
+      "sha256": "c6435e2a0780dea1b2c92498d1217790f0e23628d008b08aedc52a41fb9bc019"
+    },
+    {
+      "id": "rose-10",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 10, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains deeply folded miniature rose petals and soft S-shaped scrolls. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-09",
+      "reference": "rose-01",
+      "file": "illustrations/rose-10.webp",
+      "sha256": "de143cb96c1bd27b5bc81145c9423354e2d6d7792cc6660c990763cefabc1ea2"
+    },
+    {
+      "id": "rose-11",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 11, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains a ring of small seed pods beneath naturally curled petal tips. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-10",
+      "reference": "rose-01",
+      "file": "illustrations/rose-11.webp",
+      "sha256": "8e18107d2f64b1d70ad41f60dbf670965112227e022800cd91a415f22b84f425"
+    },
+    {
+      "id": "rose-12",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 12, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains a filigree of interlaced acanthus ribs and rose stamens. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-11",
+      "reference": "rose-01",
+      "file": "illustrations/rose-12.webp",
+      "sha256": "2b0790254eab72afa88099abd45d01758bc8bb87174dfa7e33a163b33ff47036"
+    },
+    {
+      "id": "rose-13",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 13, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains a graceful braided stem surrounding a whorl of rose petals. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-12",
+      "reference": "rose-01",
+      "file": "illustrations/rose-13.webp",
+      "sha256": "09434c314e098e354c6046241c94751874e4304df3786b58abededd2aaf2d9f6"
+    },
+    {
+      "id": "rose-14",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 14, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains tightly curled rosebud spirals set in flowing lobed leaves. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-13",
+      "reference": "rose-01",
+      "file": "illustrations/rose-14.webp",
+      "sha256": "8f4fd2d4c10843f69f8a16fc28d918de5eb02a5fc051eef8295bca512cbcd534"
+    },
+    {
+      "id": "rose-15",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 15, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains fine scalloped petal rims with enclosed teardrop textures. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-14",
+      "reference": "rose-01",
+      "file": "illustrations/rose-15.webp",
+      "sha256": "719ade5185c951a775eb230bff2764dadeed0e726850b088ede1ba414e52d0fd"
+    },
+    {
+      "id": "rose-16",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 16, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains slender branching veins curling into tiny budding spirals. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-15",
+      "reference": "rose-01",
+      "file": "illustrations/rose-16.webp",
+      "sha256": "50032acc131152b2d229c98d75a9fa6a550acf7d2de217bfd3e42a9eb4039a34"
+    },
+    {
+      "id": "rose-17",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 17, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains small folded petals cupping pearl-like pollen beads. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-16",
+      "reference": "rose-01",
+      "file": "illustrations/rose-17.webp",
+      "sha256": "87914a00e037834452fc457d24183ae0897ad41f8e820913b42aeed92be936b3"
+    },
+    {
+      "id": "rose-18",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 18, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains an intricate unfurling rosebud with an acanthus collar. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-17",
+      "reference": "rose-01",
+      "file": "illustrations/rose-18.webp",
+      "sha256": "9a51922a8c40bebf26d780fcdb7d94fdbb35dda49eeacbd55e85cbca18d36fdb"
+    },
+    {
+      "id": "rose-19",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 19, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains a delicate ring of minute botanical loops and rose stamens. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. Keep a perfectly circular clean white opening precisely centred at 50%,50%, diameter 38% of the square, surrounded by the tier, ready for the next still finer discovery. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-18",
+      "reference": "rose-01",
+      "file": "illustrations/rose-19.webp",
+      "sha256": "d978000c811a73ad54dceddbe99e72747777d16dbcc3f1964b6c132521be46d4"
+    },
+    {
+      "id": "rose-20",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNewly illustrated inner engraving tier 20, nested within the CENTRAL OPENING of the SAME rose-and-acanthus design. This closer tier contains the final exquisite rose heart, unfolding petals around a detailed closed spiral centre. Fill the square with a graceful circular tier of hand-inked botanical ornament. Use intricate naturalistic clean enclosed shapes and elegant spacing, all white interiors. This is a new inner part of the same engraving, not another subject or a copy of the outer wreath. This is the deepest tier: no blank centre, finish with a richly detailed small rose spiral. No panels, numbers or text. No hatching, no grey, no black shadows.",
+      "parent": "rose-19",
+      "reference": "rose-01",
+      "file": "illustrations/rose-20.webp",
+      "sha256": "a4dd73a5ac297d6b427be79dbe8c517626608fa13ea92247d0ada7efa04e422c"
+    },
+    {
+      "id": "cottage-01",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nFirst discovery INSIDE the reference cottage ground floor window: a cosy reading nook seen straight through its glass pane. A wooden table, chair, bookshelves, potted rose; a beautiful OPEN botanical book resting almost front-facing on a book stand in the CENTRE. The right page occupies the central 35% of the square and carries one rose branch and tiny bee, no text. Natural convincing cottage interior, carefully drawn books and wood grain, no window mullion across central book.",
+      "parent": "cottage",
+      "reference": "cottage",
+      "file": "illustrations/cottage-01.webp",
+      "sha256": "9bd8318728c6db92cb223851d142d8b6faa0905c14d5762dccc6e89494486496"
+    },
+    {
+      "id": "camellia-01",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nFirst discovery on the little bee at the right of the reference camellia: a gorgeous scientific-quality close view of that honeybee, from the same left-facing side profile. Fine outlined body hairs, six legs, natural striped abdomen, large translucent forewing in upper right with clearly enclosed veins. Little pollen grains caught on hairs. The middle of the large wing has a calm broad cell occupying about 25% of image width; one round pollen grain is visible inside that cell. White background, a few camellia petal contours at the edges.",
+      "parent": "botanical",
+      "reference": "botanical",
+      "file": "illustrations/camellia-01.webp",
+      "sha256": "1e98412a1dc84fac619792dff9877b60c90a88b527221a7060e3f395d936e979"
+    },
+    {
+      "id": "owl-01",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nFirst discovery INSIDE a long wing feather of the reference barn owl. A lovely macro illustration of one feather lying diagonally from top left to bottom right: clear central shaft, interlocking barbs, large outlined natural teardrop markings. The central 30% area reveals several fanned barbs and one small round dew droplet caught between them. New intricate feather structure, not another whole owl. No hatching. Contours form real colourable shapes.",
+      "parent": "owl",
+      "reference": "owl",
+      "file": "illustrations/owl-01.webp",
+      "sha256": "4e366d0946b2546984054afaff88598843f00d6e2bac8e674e65857813e76819"
+    },
+    {
+      "id": "turtle-01",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nFirst discovery INSIDE one shell scute of the reference sea turtle. Beautiful macro texture of a single naturally shaped hexagonal shell plate with concentric growth contours, delicate closed mosaic cells, adjacent scute borders around the edges. A tiny realistic barnacle sits clearly in the central 30% circle, six petal-like plates around a small opening. This is the turtle shell surface, no separate ocean scene, no full turtle. Realistic elegant enclosed organic contours.",
+      "parent": "reef",
+      "reference": "reef",
+      "file": "illustrations/turtle-01.webp",
+      "sha256": "368da11673226c09063e3ebde1eaa3186910ee0ee4e17a14d9100ea6a45e7644"
+    },
+    {
+      "id": "daisy-01",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nFirst discovery INSIDE the centre of the tall top daisy in the reference. A close view of a daisy disk with naturally spiralling simple florets. A realistic little ladybird is resting on the florets, centred and occupying 38% of square width. Beautiful broad outlines, about 60-100 spacious enclosed shapes, smooth natural ladybird anatomy and six legs, two wing cases with outlined empty spots. Beginner-friendly. No black filled spots; spots are white enclosed shapes.",
+      "parent": "begin-daisy",
+      "reference": "begin-daisy",
+      "file": "illustrations/daisy-01.webp",
+      "sha256": "8b87fb5983cb6e88de702ab9cc642ac679bd852675d2d12c88ef2ab26759688b"
+    },
+    {
+      "id": "rose-01",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nFirst discovery INSIDE the open centre of the reference rose-and-acanthus engraving: a gorgeous new inner tier of the SAME rose engraving. A circular wreath of six elegantly curled rose petals woven with slim acanthus scrolls, enclosed white colourable spaces, exquisite natural hand drawing. Centre a smaller open circular rosette about 38% of square width, which can reveal the next still-smaller engraved tier. New intricate structures, not a copy of the reference outer wreath. No other themes. Botanical engraving quality, no hatching.",
+      "parent": "orn-rose",
+      "reference": "orn-rose",
+      "file": "illustrations/rose-01.webp",
+      "sha256": "1206a2bfda5c9d091e954f2bd0180b0d1edbe3deb38a380a7b096e7e6b93fe7d"
+    },
+    {
+      "id": "cottage-02",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE RIGHT-HAND BOOK PAGE in the reference reading nook. The page illustration fills the square: one gorgeous realistic rose bloom with a bud, two graceful leaves and a honeybee hovering at its upper right. No book frame, no room or text. Natural flower contours, sophisticated clean outline detail, no hatching. Put the clearly drawn small bee at about x75%,y30%, occupying about 20% width. There are newly drawn flower folds and botanical details only visible this close.",
+      "parent": "cottage-01",
+      "reference": "cottage-01",
+      "file": "illustrations/cottage-02.webp",
+      "sha256": "0ead11180ad323cc4a7e37342aef78d7162b192ce535585c550c96197e31548a"
+    },
+    {
+      "id": "camellia-02",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE LARGE UPPER WING of the reference honeybee. Delicate translucent bee-wing membrane with a network of elegant curving, branching enclosed wing cells, more finely resolved structural contours and a few round pollen grains. No whole bee. Large veins curve across the square. A single round grain with a softly scalloped outline is precisely at the centre, occupying 33% of square width. This is magnified wing texture, no other scene.",
+      "parent": "camellia-01",
+      "reference": "camellia-01",
+      "file": "illustrations/camellia-02.webp",
+      "sha256": "4c8ec5924630009efe001dcc8fb6a5a2c3f2c4abd35c1bf62262ede35460f398"
+    },
+    {
+      "id": "owl-02",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE ROUND DEW DROPLET in the central feather in the reference. A beautiful circular dew lens fills most of the square, containing the tiny reflected oak branch above the owl: gracefully curved twig, realistic lobed oak leaves and one acorn. Feathery barbs just at the square edges indicate where the drop rests. The biggest central oak leaf occupies 38% of square width. Outline-only reflections, white interiors, no black or grey shaded water.",
+      "parent": "owl-01",
+      "reference": "owl-01",
+      "file": "illustrations/owl-02.webp",
+      "sha256": "805af240a8f9f1e2d58e3318cffaea47f7c848e7902f98307e5d81a2361b62cc"
+    },
+    {
+      "id": "turtle-02",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE CENTRAL BARNACLE on the reference turtle-shell scute. This single little barnacle now fills the image: realistic six curved calcite plates with elegant growth ridges and enclosed irregular surface cells, a central diamond-shaped aperture. Around the aperture is one rounded surface tile, clearly centred and about 30% of image width, showing smaller crystalline facets. No ocean scene or whole animal. Beautiful naturalistic macro detail.",
+      "parent": "turtle-01",
+      "reference": "turtle-01",
+      "file": "illustrations/turtle-02.webp",
+      "sha256": "4eecb136970dc099c51ff7c8ea9ecb1052ed2666c00db20c578323e1af9a5683"
+    },
+    {
+      "id": "daisy-02",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE CENTRAL SPOT ON THE LADYBIRD WING CASE in the reference daisy. A beautifully simple magnified wing case texture, large smooth curved outer contours and fine gently rippling enclosed surface cells. In the centre sits one clearly round dewdrop, 35% of square width, containing a little reflected daisy with 8 broad petals. Beginner-friendly, only 40-80 clearly enclosed larger shapes, bold smooth black lines, no shading or black spots.",
+      "parent": "daisy-01",
+      "reference": "daisy-01",
+      "file": "illustrations/daisy-02.webp",
+      "sha256": "e031e32ae49e9c9b5e0d6f4912291eef824ff173e3de7259db963a3453a67788"
+    },
+    {
+      "id": "rose-02",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nThe next newly drawn inner tier INSIDE THE OPEN CENTRE of the reference rose engraving. Beautiful small curled rose petals alternating with gently twisting acanthus ribbons in one ornate circular rosette, finer botanical details than the surrounding parent tier. Keep a perfectly circular clean white opening centred at 50%,50%, diameter 38% of square width, surrounded by delicate enclosed scrolling leaves. Match the hand-drawn engraving, no hatching or grey, do not repeat the exact outer motif.",
+      "parent": "rose-01",
+      "reference": "rose-01",
+      "file": "illustrations/rose-02.webp",
+      "sha256": "b2fcc276314af853e626695ccca99a2986777f853bcc0ba9a6493934ae6ef7ed"
+    },
+    {
+      "id": "cottage-03",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view of the little HONEYBEE IN THE BOOK ILLUSTRATION at the upper right of the reference rose page. Magnify this specific left-facing bee into a beautiful realistic close-up filling the square. Keep its natural pose, 6 legs and transparent upper-right wings; show NEW fine enclosed wing veins, outlined hairs, delicate joints and tiny pollen grains. A pollen grain is visible in the middle of the largest upper wing cell. White paper and a hint of rose petal at lower left; no book, flower garden or unrelated scene.",
+      "parent": "cottage-02",
+      "reference": "cottage-02",
+      "file": "illustrations/cottage-03.webp",
+      "sha256": "b3130a82c9c1e5ec704afb14566dc422925e9362aac881db4bdc2ed44fa39445"
+    },
+    {
+      "id": "camellia-03",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE LARGE CENTRAL POLLEN GRAIN in the reference bee wing. This single beautiful spherical pollen grain fills most of the square, showing elegant botanical reticulation: a curved lattice of irregular softly rounded surface cells and a few small pore openings. A larger circular pore at the precise centre occupies 30% width and shows a few simple scalloped internal folds. Crisp ink outlines on white, newly resolved structures, no stippling, shading or full bee.",
+      "parent": "camellia-02",
+      "reference": "camellia-02",
+      "file": "illustrations/camellia-03.webp",
+      "sha256": "2d4849cf581268c1f2a250f05757307ee59e04071446a2d2ba1a3ea481f0b44e"
+    },
+    {
+      "id": "owl-03",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE LARGE CENTRAL OAK LEAF REFLECTED IN THE DEWDROP in the reference. A graceful oak leaf surface filling the square with beautifully branching midrib and vein contours, enclosed vein cells and a tiny realistic leaf beetle resting centrally, about 32% image width, clearly outlined with six delicate legs and two smooth wing cases bearing gentle ridges. Natural realistic macro line illustration. No whole owl, no new forest scene, no grey shading.",
+      "parent": "owl-02",
+      "reference": "owl-02",
+      "file": "illustrations/owl-03.webp",
+      "sha256": "893ae71c10afb74f964a912030b03dd3a9c99954fe97780c6bf19fa37dae7840"
+    },
+    {
+      "id": "turtle-03",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE A CENTRAL CALCITE PLATE of the reference barnacle. Beautiful natural macro relief of mineral growth: interlocking rounded calcite facets and flowing growth bands, clean enclosed crystalline shapes rather than a mechanical grid. At the exact centre is one tiny circular spiral shell of a marine micro-organism, 32% of image width, with a delicate central spiral. This is finer surface life on the same barnacle plate. No whole turtle or unrelated ocean scene, no shading.",
+      "parent": "turtle-02",
+      "reference": "turtle-02",
+      "file": "illustrations/turtle-03.webp",
+      "sha256": "b13dee756a2c93d1564f49d54f2ce3080d61b541a21d1849ad64ef3ac0b153bb"
+    },
+    {
+      "id": "daisy-03",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE CENTRE OF THE DAISY REFLECTED IN THE DEWDROP in the reference. Beautiful simple broad petal-like disk florets fan outward and reveal new little cup-shaped florets. Exactly at the centre is one large round scalloped pollen grain, 35% image width, with a few broad outlined surface cells. Beginner colouring page: 40-70 large smooth enclosed shapes, thick clean contours, white interiors, no hatching or black shadows. No full ladybird or different garden.",
+      "parent": "daisy-02",
+      "reference": "daisy-02",
+      "file": "illustrations/daisy-03.webp",
+      "sha256": "6fc78e5b56bf295b7a7c3717e127e41677a584773dc6f0951dea4013ce7fd5be"
+    },
+    {
+      "id": "camellia-04",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE CENTRAL PORE OF THE POLLEN GRAIN in the reference. A beautiful natural microscopic botanical structure: soft scalloped folds surrounding a central opening, finely reticulated walls formed from many gracefully curved enclosed cells, realistic organic variation, no mechanical symmetry. One larger rounded wall cell lies at the exact centre, diameter 32% of image width, with a few finer internal strands. This is finer structure within the same pollen, no bee, flower or landscape. Detailed but graceful clear contour drawing, 100-180 colourable enclosures.",
+      "parent": "camellia-03",
+      "reference": "camellia-03",
+      "file": "illustrations/camellia-04.webp",
+      "sha256": "bfc2c35bd27a3ae82254df00f433481e7049d8f82ba014ab1b825e58fe0b2c72"
+    },
+    {
+      "id": "owl-04",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view of the LEAF BEETLE ON THE OAK LEAF in the reference. The same beetle, angled from bottom left to top right, now fills most of the square. Beautiful realistic anatomy, exactly six elegant legs, two antennae, paired elongated ridged wing cases. Show new delicate enclosed microscopic wing-case texture along its length. A rounded oval panel of texture in the middle of the left wing case occupies about 25% width. No owl, no other forest scene. Clear elegant contours, no grey shading or black-filled body.",
+      "parent": "owl-03",
+      "reference": "owl-03",
+      "file": "illustrations/owl-04.webp",
+      "sha256": "f6fd0e598d4aabd7a8ef293c9aca33fd921a946cd7e01eb206c4e24c97312022"
+    },
+    {
+      "id": "turtle-04",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE LITTLE CENTRAL SPIRAL MICRO-SHELL in the reference calcite plate. This spiral shell fills the square, revealing beautiful chambers, curved growth ribs and delicate enclosed surface facets, each with new finer structure. The central 30% circular spiral opening contains a little rosette of rounded mineral cells. Natural marine microscopic form, not a new sea scene, no whole turtle, no mechanical mandala, no shading or black shadows.",
+      "parent": "turtle-03",
+      "reference": "turtle-03",
+      "file": "illustrations/turtle-04.webp",
+      "sha256": "0fc950e91584b2548d077b4c56b234d61dce907e0565bc95059d328535595b95"
+    },
+    {
+      "id": "daisy-04",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE ROUND CENTRAL POLLEN GRAIN among the daisy florets in the reference. A round grain fills most of square, revealing new softly scalloped surface cells, a gentle ring of folds and one broad central rounded cell about 35% width. Beginner-friendly realistic-inspired botanical micro pattern, 35-70 spacious enclosed shapes, smooth bold black outlines, white interiors. No new flower scene, no shading, no hatching.",
+      "parent": "daisy-03",
+      "reference": "daisy-03",
+      "file": "illustrations/daisy-04.webp",
+      "sha256": "1cf7c3ae7beb1926e55bb64c4f0a9b2fea043447a617055728ceaab6a741b48f"
+    },
+    {
+      "id": "camellia-05",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE CENTRAL ROUNDED WALL CELL of the reference pollen pore. Fill the square with gracefully branching botanical wall fibres and gently curved enclosed reticulate compartments, fine organic structure rather than repeated geometric shapes. A single larger oval compartment sits exactly centrally, 32% image width, containing a delicate curling membrane. Beautiful detailed natural ink contours on white. No new flower or bee, no mandala ring, no shading.",
+      "parent": "camellia-04",
+      "reference": "camellia-04",
+      "file": "illustrations/camellia-05.webp",
+      "sha256": "f3c454edc779a641f80a2fb77cbacf00037fbd8fda9cab5165aa69210eef36fb"
+    },
+    {
+      "id": "owl-05",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE OVAL PATCH ON THE LEFT WING CASE of the reference leaf beetle. The square is filled with beautiful overlapping slender oval micro-scales following curved wing ridges, delicate enclosed veins on each scale. A single elongated central scale occupies 30% image width and shows new finer lattice-like texture. Natural macro illustration, convincingly organic, crisp closed outlines, no whole beetle or other scene, no hatching.",
+      "parent": "owl-04",
+      "reference": "owl-04",
+      "file": "illustrations/owl-05.webp",
+      "sha256": "098c713c62e0fc5f19eaa206276db7b04e03076da46dffc29868776ecd9e95d6"
+    },
+    {
+      "id": "turtle-05",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE CENTRAL LITTLE MINERAL ROSETTE of the reference marine spiral micro-shell. Large irregular softly rounded calcite cells meet in a graceful organic mosaic, each with fine new branching ridges and smaller facets. One large gently rounded crystal compartment exactly at the centre is 32% of square width and carries a few little internal facets. Beautiful naturalistic intricate line illustration, no whole shell, turtle or unrelated scene. No shading or black shadow.",
+      "parent": "turtle-04",
+      "reference": "turtle-04",
+      "file": "illustrations/turtle-05.webp",
+      "sha256": "ddef859f655d0fa2881d0d8f4d436e8b3b527259d2eaafb4bf2a3531a7324ac6"
+    },
+    {
+      "id": "daisy-05",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nNew closer view INSIDE THE LARGE CENTRAL SURFACE CELL of the reference daisy pollen grain. Smooth broad enclosed botanical compartments arranged naturally around one central rounded cell. Reveal a few gently curving internal membranes and softly folded walls, 35-60 generous simple colouring shapes. The centre contains one smooth oval compartment about 35% image width with a few broad curved internal sections. Beginner-friendly clean bold outlines, white interiors, no shading or new flower scene.",
+      "parent": "daisy-04",
+      "reference": "daisy-04",
+      "file": "illustrations/daisy-05.webp",
+      "sha256": "a3c74226f9e83ffb53dc2427e388293a3e0645f90f7a75a37c8ff466539e913a"
+    },
+    {
+      "id": "camellia-06",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nFinal deepest newly illustrated detail INSIDE THE CENTRAL MEMBRANE COMPARTMENT in the reference pollen cell. The entire square is a beautiful richly resolved natural botanical microtexture of flowing branching fibres, many softly curved polygonal wall cells, delicate folded inner membranes and small rounded granules. Calm realistic organic variety, 130-220 closed colourable compartments with subtle elegant contours. Fill the centre with new detail, NO empty circular centre and NO wreath. No whole bee or flower, no shading, no text, all interiors white.",
+      "parent": "camellia-05",
+      "reference": "camellia-05",
+      "file": "illustrations/camellia-06.webp",
+      "sha256": "cc74427c67156ff049a30707a186089b9b9fdb17d6b8bc58a51d552ce18fbdd3"
+    },
+    {
+      "id": "owl-06",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nFinal deepest newly illustrated detail INSIDE ONE CENTRAL LATTICE CELL on the reference beetle wing-case scale. Fill the square with exquisite organic pigment-cell texture: a branching network of softly curved enclosing ribs, slender overlapping folds, smooth tiny oval granules and fine inner compartments. Realistic natural macro pattern, intricate and beautifully composed, 100-160 closed shapes, no giant empty oval or central hole. No whole beetle or owl, no shading or hatching, pure black contours with white interiors.",
+      "parent": "owl-05",
+      "reference": "owl-05",
+      "file": "illustrations/owl-06.webp",
+      "sha256": "e4719e1c28bb741780f77c07627ede7eeef669ca2f4f1762cd00194aed7d43fb"
+    },
+    {
+      "id": "turtle-06",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nFinal deepest newly illustrated detail INSIDE THE CENTRAL CALCITE CELL of the reference micro-shell. A stunning natural mineral texture fills the square: softly irregular crystalline facets growing along curved bands, graceful tiny lamellar folds, delicate interlocking chambers and a few enclosed pearl-like granules. Beautiful professionally inked macro pattern, 100-170 clean enclosed shapes, centre richly detailed rather than an empty circle. No whole turtle or shell, no other scene, no shading or grey.",
+      "parent": "turtle-05",
+      "reference": "turtle-05",
+      "file": "illustrations/turtle-06.webp",
+      "sha256": "88a7ebe8a6b8c0eb14c89bc5e50fd04d3fdfc8c944250b31f0a93394599fe7e1"
+    },
+    {
+      "id": "daisy-06",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset: one square hand-inked colouring illustration for Hollowhue, no panels, no writing. Pure black closed contour lines on pure white, no greys, shadows, hatching, stippling or filled black backgrounds. Professional naturalistic detail and beautiful composition, varied clean enclosing shapes large enough to colour. Match reference line quality. The reference is context for the parent scene, not an edit target. Draw the NEW CLOSER VIEW described below, filling the square. Keep the next zoom detail clearly visible and centred, with a calm margin around it. No inset frame or magnifying-glass graphic.\nFinal deepest newly illustrated detail INSIDE THE CENTRAL OVAL MEMBRANE of the reference daisy pollen surface cell. Fill the square with a lovely simple natural microtexture: rounded interlocking botanical compartments, gently waving enclosed inner folds, a few soft oval granules and broad leaf-like cells. Only 40-65 generously sized enclosed shapes with smooth bold outlines, beginner-friendly. Centre fully patterned, no empty circle or hole, no new flower, no shading. Beautiful white spaces to colour.",
+      "parent": "daisy-05",
+      "reference": "daisy-05",
+      "file": "illustrations/daisy-06.webp",
+      "sha256": "17b6d9f6e78bf56e36ca7e5c81bf2488981ff97b261cc71fe372935756a0c26b"
+    }
+  ]
+}

@@ -180,7 +180,7 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
     const lv = focusAt(vis, w.x, w.y) ?? L.root;
     onFocus(
       lv.id,
-      vis.filter((v) => v.frac >= FOUND_AT).map((v) => v.level.id),
+      vis.filter((v) => v.frac >= (v.level.discoveryAt ?? FOUND_AT)).map((v) => v.level.id),
     );
   }, [focusKey, Math.round(Math.log2(cam.z) * 4), Math.round(cam.cx), Math.round(cam.cy)]);
 

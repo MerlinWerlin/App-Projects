@@ -3,7 +3,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSyncExternalStore } from 'react';
 import { type Progress, emptyProgress, restoreProgress } from '../core/progress';
 import type { Scene } from '../core/scene';
-import { SCENES } from '../scenes';
+import { SCENES, SHIPPED_ART_SCENES, SINGLE_SCENES } from '../scenes';
+import { singleEditionProgress } from '../core/artProgress';
 import { createSaveQueue } from '../core/saveQueue';
 
 const key = (id: string) => `hollowhue.scene.${id}.v1`;
@@ -28,6 +29,15 @@ export async function loadAllProgress(): Promise<void> {
       } catch {
         cache.set(scene.id, emptyProgress(scene));
       }
+    }
+    const existing = new Map(pairs);
+    const sources = SHIPPED_ART_SCENES.map((scene) => ({ scene, progress: getProgress(scene) }))
+      .filter(({ progress }) => progress.updated > 0);
+    if (sources.length) for (const single of SINGLE_SCENES) {
+      // A single edition written even once belongs to the user; clearing it must stay cleared.
+      if (existing.get(key(single.id)) !== null) continue;
+      const copy = singleEditionProgress(single, sources);
+      if (copy) { cache.set(single.id, copy); saves.put(key(single.id), JSON.stringify(copy)); }
     }
   } catch {
     // start fresh; nothing is lost on disk

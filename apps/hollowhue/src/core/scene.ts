@@ -24,6 +24,16 @@ export type Level = {
   w: number;
   h: number;
   regions: Region[];
+  /** Build-time metadata lets gallery/progress work without decoding the drawing. */
+  fillIds?: readonly string[];
+  regionSizeHints?: readonly number[];
+  /** Disjoint traced paper cells under separate ink (safe to omit unpainted white cells). */
+  flatArtwork?: boolean;
+  artworkId?: string;
+  /** Lightweight copies of borrowing links, for moving painted art into independent editions. */
+  colourLinks?: Readonly<Record<string, string>>;
+  /** Fraction of the viewport needed before this detail counts as the active discovery. */
+  discoveryAt?: number;
   /** Parent level id (absent for the root). */
   parent?: string;
   /** Where this level sits inside its parent, in the parent's coordinates. Same aspect ratio as w:h. */
@@ -48,6 +58,9 @@ export type Scene = {
   palette: string;
   difficulty?: Difficulty;
   mega?: boolean;
+  collection?: 'single' | 'zoom' | 'mega';
+  /** Allow a zoomed camera to centre an authored discovery close to an outer edge. */
+  frameEdgeDetails?: boolean;
   /** Kept available in My colouring so an artwork refresh cannot discard a saved picture. */
   legacy?: boolean;
 };
@@ -80,7 +93,7 @@ export function layout(scene: Scene): Layout {
   while (pending.length && guard++ < 1000) {
     const lv = pending.shift()!;
     if (!lv.parent) {
-      const p: Placed = { ...lv, depth: 0, ox: 0, oy: 0, s: 1, world: { x: 0, y: 0, w: lv.w, h: lv.h }, children: [] };
+      const p: Placed = Object.assign(Object.create(lv), { depth: 0, ox: 0, oy: 0, s: 1, world: { x: 0, y: 0, w: lv.w, h: lv.h }, children: [] });
       byId.set(lv.id, p);
       order.push(p);
       continue;
@@ -94,7 +107,7 @@ export function layout(scene: Scene): Layout {
     const s = (par.s * pr.w) / lv.w;
     const ox = par.ox + pr.x * par.s;
     const oy = par.oy + pr.y * par.s;
-    const p: Placed = { ...lv, depth: par.depth + 1, ox, oy, s, world: { x: ox, y: oy, w: lv.w * s, h: lv.h * s }, children: [] };
+    const p: Placed = Object.assign(Object.create(lv), { depth: par.depth + 1, ox, oy, s, world: { x: ox, y: oy, w: lv.w * s, h: lv.h * s }, children: [] });
     par.children.push(lv.id);
     byId.set(lv.id, p);
     order.push(p);
@@ -141,8 +154,9 @@ export function clampCamera(L: Layout, sc: Screen, cam: Camera): Camera {
   // The screen centre stays over the scene; when the scene is smaller than the screen it stays centred.
   const vw = sc.w / z;
   const vh = sc.h / z;
-  const cx = vw >= r.w ? r.w / 2 : Math.max(vw / 2, Math.min(r.w - vw / 2, cam.cx));
-  const cy = vh >= r.h ? r.h / 2 : Math.max(vh / 2, Math.min(r.h - vh / 2, cam.cy));
+  const frameEdge = L.scene.frameEdgeDetails && z > fitCamera(L, sc).z * 1.05;
+  const cx = frameEdge ? Math.max(0, Math.min(r.w, cam.cx)) : vw >= r.w ? r.w / 2 : Math.max(vw / 2, Math.min(r.w - vw / 2, cam.cx));
+  const cy = frameEdge ? Math.max(0, Math.min(r.h, cam.cy)) : vh >= r.h ? r.h / 2 : Math.max(vh / 2, Math.min(r.h - vh / 2, cam.cy));
   return { cx, cy, z };
 }
 
@@ -201,7 +215,7 @@ export const FOUND_AT = 0.3;
 /** Size of every region (max bbox side, level units), in region order. Lazily computed, cached. */
 export function regionSizes(p: Placed): number[] {
   if (!p.sizes) {
-    p.sizes = p.regions.map((r) => {
+    p.sizes = p.regionSizeHints ? [...p.regionSizeHints] : p.regions.map((r) => {
       const b = bboxOf(flatten(r.d, 4));
       return Math.max(b.w, b.h);
     });
@@ -243,7 +257,7 @@ function covers(c: Placed, vb: BBox) {
   );
 }
 
-/** frac: level width as a share of screen width. step: detailStep of the level at this zoom. */
+/** frac: discovery share of the viewport (short side for square editions). step: quantised detail zoom. */
 export type Visible = { level: Placed; frac: number; step: number }[];
 
 /**
@@ -260,7 +274,7 @@ export function visibleLevels(L: Layout, cam: Camera, sc: Screen): Visible {
   }
   const out: Visible = [];
   const walk = (p: Placed) => {
-    out.push({ level: p, frac: (p.world.w * cam.z) / sc.w, step: detailStep(p.s * cam.z) });
+    out.push({ level: p, frac: (p.world.w * cam.z) / (p.discoveryAt ? Math.min(sc.w, sc.h) : sc.w), step: detailStep(p.s * cam.z) });
     for (const id of p.children) {
       const c = L.byId.get(id)!;
       if (c.world.w * cam.z >= LEVEL_MIN_PX && overlaps(c.world, vb)) walk(c);
@@ -308,11 +322,20 @@ export function levelAt(vis: Visible, wx: number, wy: number): Placed | null {
 export function focusAt(vis: Visible, wx: number, wy: number): Placed | null {
   let best: Placed | null = null;
   for (const v of vis) {
-    if ((v.level.depth === 0 || v.frac >= FOUND_AT) && insideLevel(v.level, wx, wy) && (!best || v.level.depth > best.depth)) best = v.level;
+    if ((v.level.depth === 0 || v.frac >= (v.level.discoveryAt ?? FOUND_AT)) && insideLevel(v.level, wx, wy) && (!best || v.level.depth > best.depth)) best = v.level;
   }
   return best;
 }
 
 export function fillableCount(scene: Scene): number {
-  return scene.levels.reduce((n, l) => n + l.regions.filter((r) => !r.line && !r.ink).length, 0);
+  return scene.levels.reduce((n, l) => n + fillIds(l).length, 0);
+}
+
+export function fillIds(level: Level): readonly string[] {
+  return level.fillIds ?? level.regions.filter((r) => !r.line && !r.ink).map((r) => r.id);
+}
+
+/** Hit geometry belongs to an open canvas, not every drawing ever opened in this session. */
+export function releaseHitGeometry(L: Layout) {
+  for (const p of L.order) { delete p.hit; delete p.sizes; }
 }

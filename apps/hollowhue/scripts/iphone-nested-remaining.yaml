@@ -1,0 +1,319 @@
+appId: com.jared797.hollowhue
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: Hidden detail inside each artwork
+    timeout: 60000
+- takeScreenshot: 01-separated-collections
+- scrollUntilVisible:
+    element:
+      id: difficulty-beginner
+    direction: UP
+    timeout: 30000
+    visibilityPercentage: 40
+    centerElement: true
+- tapOn:
+    id: difficulty-beginner
+- waitForAnimationToEnd:
+    timeout: 10000
+- scrollUntilVisible:
+    element:
+      id: scene-art-begin-daisy
+    direction: DOWN
+    timeout: 60000
+    visibilityPercentage: 100
+    centerElement: true
+    speed: 55
+- tapOn:
+    id: scene-art-begin-daisy
+- assertNotVisible: Look closer
+- takeScreenshot: 02-independent-daisies
+- tapOn: Mix a colour
+- tapOn:
+    id: colour-hex
+- eraseText: 7
+- inputText: '#3388DD'
+- pressKey: Enter
+- scrollUntilVisible:
+    element:
+      text: Use this colour
+    direction: DOWN
+    timeout: 15000
+- tapOn: Use this colour
+- tapOn:
+    point: '30%,32%'
+- tapOn: Undo
+- tapOn: Redo
+- takeScreenshot: 03-single-colour
+- tapOn: Back to scenes
+- scrollUntilVisible:
+    element:
+      id: collection-zoom
+    direction: UP
+    timeout: 30000
+    visibilityPercentage: 40
+    centerElement: true
+- tapOn:
+    id: collection-zoom
+- waitForAnimationToEnd:
+    timeout: 10000
+- scrollUntilVisible:
+    element:
+      id: category-sealife
+    direction: UP
+    timeout: 30000
+    visibilityPercentage: 40
+    centerElement: true
+- tapOn:
+    id: category-sealife
+- waitForAnimationToEnd:
+    timeout: 10000
+- scrollUntilVisible:
+    element:
+      id: scene-zoom-turtle
+    direction: DOWN
+    timeout: 60000
+    visibilityPercentage: 100
+    centerElement: true
+    speed: 55
+- tapOn:
+    id: scene-zoom-turtle
+- assertVisible: '(?s).*Coral Turtle: Inside.*Zoom 0 of 6.*'
+- assertVisible: '.*Zoom 0 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 1 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 2 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 3 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 4 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 5 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 6 of 6.*'
+- takeScreenshot: 06-turtle-sixth-discovery
+- tapOn: Whole scene
+- waitForAnimationToEnd:
+    timeout: 15000
+- assertVisible: '.*Zoom 0 of 6.*'
+- tapOn: Back to scenes
+- scrollUntilVisible:
+    element:
+      id: collection-zoom
+    direction: UP
+    timeout: 30000
+    visibilityPercentage: 40
+    centerElement: true
+- tapOn:
+    id: collection-zoom
+- waitForAnimationToEnd:
+    timeout: 10000
+- swipe:
+    from:
+      id: category-sealife
+    direction: LEFT
+    duration: 600
+- waitForAnimationToEnd:
+    timeout: 10000
+- tapOn:
+    id: category-patterns
+- waitForAnimationToEnd:
+    timeout: 10000
+- scrollUntilVisible:
+    element:
+      id: scene-zoom-rose
+    direction: DOWN
+    timeout: 60000
+    visibilityPercentage: 100
+    centerElement: true
+    speed: 55
+- tapOn:
+    id: scene-zoom-rose
+- assertVisible: '(?s).*Rose Engraving: Inside.*Zoom 0 of 6.*'
+- assertVisible: '.*Zoom 0 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 1 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 2 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 3 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 4 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 5 of 6.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 6 of 6.*'
+- takeScreenshot: 06-rose-sixth-discovery
+- tapOn: Whole scene
+- waitForAnimationToEnd:
+    timeout: 15000
+- assertVisible: '.*Zoom 0 of 6.*'
+- tapOn: Back to scenes
+- scrollUntilVisible:
+    element:
+      id: collection-mega
+    direction: UP
+    timeout: 30000
+    visibilityPercentage: 40
+    centerElement: true
+- tapOn:
+    id: collection-mega
+- waitForAnimationToEnd:
+    timeout: 10000
+- scrollUntilVisible:
+    element:
+      id: scene-mega-rose
+    direction: DOWN
+    timeout: 60000
+    visibilityPercentage: 100
+    centerElement: true
+    speed: 55
+- tapOn:
+    id: scene-mega-rose
+- assertVisible: '.*Zoom 0 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 1 of 20.*'
+- takeScreenshot: 08-mega-detail-1
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 2 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 3 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 4 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 5 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 6 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 7 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 8 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 9 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 10 of 20.*'
+- takeScreenshot: 08-mega-detail-10
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 11 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 12 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 13 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 14 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 15 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 16 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 17 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 18 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 19 of 20.*'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '.*Zoom 20 of 20.*'
+- takeScreenshot: 08-mega-detail-20
+- tapOn: 'Recent colour #3388DD'
+- tapOn:
+    point: '30%,30%'
+- tapOn: Undo
+- tapOn: Redo
+- takeScreenshot: 09-painted-mega-heart
+- tapOn: Back to scenes
+- stopApp
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: Hidden detail inside each artwork
+    timeout: 60000
+- scrollUntilVisible:
+    element:
+      id: collection-saved
+    direction: UP
+    timeout: 30000
+    visibilityPercentage: 40
+    centerElement: true
+- tapOn:
+    id: collection-saved
+- waitForAnimationToEnd:
+    timeout: 10000
+- scrollUntilVisible:
+    element:
+      id: scene-art-begin-daisy
+    direction: DOWN
+    timeout: 60000
+    visibilityPercentage: 100
+    centerElement: true
+    speed: 55
+- tapOn:
+    id: scene-art-begin-daisy
+- assertVisible: 'Recent colour #3388DD'
+- assertNotVisible: Look closer
+- takeScreenshot: 10-saved-single-after-restart

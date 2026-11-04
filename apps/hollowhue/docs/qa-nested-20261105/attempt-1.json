@@ -1,0 +1,76 @@
+{
+  "run": "41900538055",
+  "result": "partial; workflow failed gallery scrolling to Rose",
+  "appSource": "af7c64ba799b77c04f702540b2d1af7b61a2740f",
+  "captureSource": "af7c64ba799b77c04f702540b2d1af7b61a2740f",
+  "verified": "Single artwork no discovery controls; custom blue fill; all six Cottage/Camellia/Owl/Daisy stops and fitted return; drawing/undo/redo at Daisy six.",
+  "notVerified": [
+    "Turtle: wrong target was selected by test",
+    "Rose: gallery scroll timed out",
+    "Mega twenty",
+    "Saved picture after restart"
+  ],
+  "excluded": {
+    "06-cottage-sixth-discovery.png": "Exact duplicate of 05-cottage-detail-6.png.",
+    "06-turtle-sixth-discovery.png": "Wrong scene: Maestro tapped Cottage again. Not Turtle verification."
+  },
+  "images": [
+    {
+      "file": "first-01-separated-collections.png",
+      "sha256": "9ba5e87a035a87c5570e91e7c0a32c4ebfdc4d1796c400bd6667f520cd57e93b"
+    },
+    {
+      "file": "first-02-independent-daisies.png",
+      "sha256": "4d31fc7700245b0227621b57078f32758ef3f05e3219eef05cf9a03da9dfe16e"
+    },
+    {
+      "file": "first-03-single-colour.png",
+      "sha256": "ba92442044f55f2fa5e6daf72f8570f5988d3099d1257ced6c6a94967220d9b9"
+    },
+    {
+      "file": "first-04-cottage-root.png",
+      "sha256": "470bcc6e1a4f38451583afe8db0118ac9d7b2ebcc87da65830051adece2071bd"
+    },
+    {
+      "file": "first-05-cottage-detail-1.png",
+      "sha256": "2361e1069dd460b8a77fc9ff18b1222eff4e8b8285e4f04a97bc8f9832956f8e"
+    },
+    {
+      "file": "first-05-cottage-detail-2.png",
+      "sha256": "f935e5e15f534d4c9d5d10d9355d9a233862b5c4fad6b824a100ab9c344f1e3e"
+    },
+    {
+      "file": "first-05-cottage-detail-3.png",
+      "sha256": "a0277657739e41d5f8c67c172ce9fec32e3deaa3f0cb735b26f6610c49b4e0e5"
+    },
+    {
+      "file": "first-05-cottage-detail-4.png",
+      "sha256": "57b932e943fd694c710ed60a32166d43fec295875e0234a88b743086822177d8"
+    },
+    {
+      "file": "first-05-cottage-detail-5.png",
+      "sha256": "6413c7672f9ba9d4591375a9b22858166620d1d17d74065ddcf350c4595cd6da"
+    },
+    {
+      "file": "first-05-cottage-detail-6.png",
+      "sha256": "6f366a1c2158250516b64d3e26b0625c8cc977edce75f78f5636ccf3d4928313"
+    },
+    {
+      "file": "first-06-camellia-sixth-discovery.png",
+      "sha256": "c18aadba0f5d2342575e4c3f34d217790b6da1ed240342443616de1ff5b7c79c"
+    },
+    {
+      "file": "first-06-daisy-sixth-discovery.png",
+      "sha256": "bcfce6fc057e78dc1831313eb824e6e0c3c7e4c7261dc05ad68a033682e3ed70"
+    },
+    {
+      "file": "first-06-owl-sixth-discovery.png",
+      "sha256": "7bc3c453a3ffe9b7f55dc020d04b73d21f6396ce6f4596082e28685b8faf9970"
+    },
+    {
+      "file": "first-07-drawing-at-six.png",
+      "sha256": "d702f4472bbe38cb993ae43f6c11848563ec90e62fe9952c79c8d3ab30cb0fcf"
+    }
+  ],
+  "physicalPhoneUptakeVerified": false
+}

@@ -1,13 +1,10 @@
 {
   "app": "hollowhue",
   "stage": "testflight",
-  "headline": "Illustrated update LIVE in production OTA and TestFlight0.1.0(4):42new realistic pictures, five topics, three difficulty levels, six regular zooms and twenty in Mega. Apple COMPLETE/VALID/IN_BETA_TESTING; no errors/warnings.",
-  "next_for_owner": [
-    "Update Hollowhue to0.1.0(4) in TestFlight. Look for New art. Six zooms. Twenty in Mega.",
-    "Existing installations can also use Settings > App updates > Check for updates > Save & apply update."
-  ],
-  "tests": 57,
-  "typecheck": "57 tests and full/stub strict types pass. iOS/Hermes export passes; illustrated bundle packed to29MB. All old scene geometry/IDs/versions retain exact SHA. Expo doctor21/21pass.",
+  "headline": "Nested artwork correction verified on iPhone:42 approved Single artworks,6 coherent six-discovery editions,20 inner Mega tiers.47 new drawings;159 tests pass. Production publication pending.",
+  "next_for_owner": [],
+  "tests": 159,
+  "typecheck": "159 tests, full/stub strict types, Expo doctor21/21 and iOS/Hermes export pass. Exact prior geometry retained. Native all6x6 and20 stops,deep paint/drawing and restart save verified across2 reviewed captures of identical compiled runtime.",
   "previous_native_qa": {
     "run": "41788606169",
     "source": "774e53289c785914495d303f06729039c8f2fb10",
@@ -16,12 +13,15 @@
     "physical_phone_uptake": "unverified"
   },
   "native_qa": {
-    "result": "pass",
-    "run": "41812677928",
-    "source": "2c585f9b780eb52b01b0eb5fad38656f1b2e1cf0",
-    "scope": "categories/difficulties, all six regular and twenty Mega stops, deep paint, drawing, undo/redo and saved work/recent colours after relaunch",
-    "evidence": "docs/qa-art-20261104/receipt.json",
-    "screenshotQualification": "10 usable current-source frames plus separately attributed earlier cottage reference with identical artwork data. Premature initial frame excluded; additional retakes ended in simulator accessibility-driver failures.",
+    "result": "pass across two reviewed native captures",
+    "runs": [
+      "41900538055",
+      "41907753409"
+    ],
+    "source": "af7c64ba799b77c04f702540b2d1af7b61a2740f",
+    "scope": "All six regular editions have six discoveries;Mega twenty;independent artwork;custom blue fill;drawing;undo/redo;fitted return;restart persistence.",
+    "evidence": "docs/qa-nested-20261105/receipt.json",
+    "qualification": "First run partial;wrong-target Turtle and duplicate frame excluded. Recovery41907753409 succeeds with scene-name assertions on same compiled runtime.",
     "physical_phone_uptake": "unverified"
   },
   "previous_delivery": {
@@ -70,5 +70,37 @@
     "upload_id": "234f6929-1c10-4393-a8ae-08ecee0f1885",
     "physical_phone_uptake": "unverified",
     "apple_receipt": "docs/qa-art-20261104/apple-complete-status.json"
+  },
+  "correction": {
+    "date": "2026-11-05",
+    "branch": "codex/hollowhue-individual-zooms-20261105",
+    "state": "Native verification complete;ready for production OTA and fresh TestFlight binary",
+    "original_single_artworks": 42,
+    "nested_standard_editions": 6,
+    "standard_discoveries_each": 6,
+    "mega_discoveries": 20,
+    "new_illustrations": 47,
+    "source": "scripts/art/nested-source.json",
+    "prompts": "scripts/art/nested-generation.json",
+    "evidence": "docs/qa-nested-20261105",
+    "saves": "all thirteen previously shipped scenes preserved; first-use painted art copied to independent edition without overwriting a single save",
+    "runtime": "0.1.0; unchanged native dependencies",
+    "native_partial": {
+      "run": "41900538055",
+      "source": "af7c64ba799b77c04f702540b2d1af7b61a2740f",
+      "result": "partial;4 regular six-step journeys verified;wrong-target Turtle frame excluded;Rose gallery scroll timed out",
+      "recovery": "41907753409",
+      "recovery_capture_source": "94212b400af26b0a125ac7659156ec6deef1a12c",
+      "receipt": "docs/qa-nested-20261105/attempt-1.json"
+    }
+  },
+  "previous_art_native_qa": {
+    "result": "pass",
+    "run": "41812677928",
+    "source": "2c585f9b780eb52b01b0eb5fad38656f1b2e1cf0",
+    "scope": "categories/difficulties, all six regular and twenty Mega stops, deep paint, drawing, undo/redo and saved work/recent colours after relaunch",
+    "evidence": "docs/qa-art-20261104/receipt.json",
+    "screenshotQualification": "10 usable current-source frames plus separately attributed earlier cottage reference with identical artwork data. Premature initial frame excluded; additional retakes ended in simulator accessibility-driver failures.",
+    "physical_phone_uptake": "unverified"
   }
 }

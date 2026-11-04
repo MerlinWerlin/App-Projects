@@ -45,6 +45,6 @@ for (const scene of SCENES) {
         if (r.from) assert.ok(all.has(r.from), `${lv.id}/${r.id} links to missing ${r.from}`);
       }
     }
-    assert.ok(fillableCount(scene) >= 60, 'enough to colour');
+    assert.ok(fillableCount(scene) >= (scene.collection === 'single' ? 12 : 60), 'enough to colour for this edition');
   });
 }

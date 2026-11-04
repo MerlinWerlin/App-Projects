@@ -52,9 +52,9 @@ test('no route can flash its raw name: root stack hides headers and holds the sp
   assert.match(rootLayout, /preventAutoHideAsync/);
 });
 
-test('filters start off and the language line is on first launch only', () => {
+test('gallery starts with the independent approved pictures and language line is first-launch only', () => {
   const gallery = readFileSync(join(root, 'app/index.tsx'), 'utf8');
-  assert.match(gallery, /useState<Filter>\('all'\)/);
+  assert.match(gallery, /useState<BrowseCollection>\('single'\)/);
   const store = readFileSync(join(root, 'src/store/settings.ts'), 'utf8');
   assert.match(store, /langLineDone: false/);
   assert.match(store, /langLineDone: settings\.langLineDone \|\| settings\.launches >= 1/);

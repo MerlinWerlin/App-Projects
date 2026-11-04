@@ -1,0 +1,472 @@
+[
+  {
+    "id": "cottage-01",
+    "sourceSha256": "9bd8318728c6db92cb223851d142d8b6faa0905c14d5762dccc6e89494486496",
+    "fillableRegions": 1067,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2605
+  },
+  {
+    "id": "cottage-02",
+    "sourceSha256": "0ead11180ad323cc4a7e37342aef78d7162b192ce535585c550c96197e31548a",
+    "fillableRegions": 116,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.103
+  },
+  {
+    "id": "cottage-03",
+    "sourceSha256": "b3130a82c9c1e5ec704afb14566dc422925e9362aac881db4bdc2ed44fa39445",
+    "fillableRegions": 159,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1158
+  },
+  {
+    "id": "camellia-01",
+    "sourceSha256": "1e98412a1dc84fac619792dff9877b60c90a88b527221a7060e3f395d936e979",
+    "fillableRegions": 319,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1246
+  },
+  {
+    "id": "camellia-02",
+    "sourceSha256": "4c8ec5924630009efe001dcc8fb6a5a2c3f2c4abd35c1bf62262ede35460f398",
+    "fillableRegions": 33,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.0685
+  },
+  {
+    "id": "camellia-03",
+    "sourceSha256": "2d4849cf581268c1f2a250f05757307ee59e04071446a2d2ba1a3ea481f0b44e",
+    "fillableRegions": 44,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.0871
+  },
+  {
+    "id": "camellia-04",
+    "sourceSha256": "bfc2c35bd27a3ae82254df00f433481e7049d8f82ba014ab1b825e58fe0b2c72",
+    "fillableRegions": 318,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1447
+  },
+  {
+    "id": "camellia-05",
+    "sourceSha256": "f3c454edc779a641f80a2fb77cbacf00037fbd8fda9cab5165aa69210eef36fb",
+    "fillableRegions": 168,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1183
+  },
+  {
+    "id": "camellia-06",
+    "sourceSha256": "cc74427c67156ff049a30707a186089b9b9fdb17d6b8bc58a51d552ce18fbdd3",
+    "fillableRegions": 475,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1609
+  },
+  {
+    "id": "owl-01",
+    "sourceSha256": "4e366d0946b2546984054afaff88598843f00d6e2bac8e674e65857813e76819",
+    "fillableRegions": 190,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1418
+  },
+  {
+    "id": "owl-02",
+    "sourceSha256": "805af240a8f9f1e2d58e3318cffaea47f7c848e7902f98307e5d81a2361b62cc",
+    "fillableRegions": 167,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1417
+  },
+  {
+    "id": "owl-03",
+    "sourceSha256": "893ae71c10afb74f964a912030b03dd3a9c99954fe97780c6bf19fa37dae7840",
+    "fillableRegions": 185,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.098
+  },
+  {
+    "id": "owl-04",
+    "sourceSha256": "f6fd0e598d4aabd7a8ef293c9aca33fd921a946cd7e01eb206c4e24c97312022",
+    "fillableRegions": 522,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1278
+  },
+  {
+    "id": "owl-05",
+    "sourceSha256": "098c713c62e0fc5f19eaa206276db7b04e03076da46dffc29868776ecd9e95d6",
+    "fillableRegions": 354,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.139
+  },
+  {
+    "id": "owl-06",
+    "sourceSha256": "e4719e1c28bb741780f77c07627ede7eeef669ca2f4f1762cd00194aed7d43fb",
+    "fillableRegions": 448,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.155
+  },
+  {
+    "id": "turtle-01",
+    "sourceSha256": "368da11673226c09063e3ebde1eaa3186910ee0ee4e17a14d9100ea6a45e7644",
+    "fillableRegions": 581,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.156
+  },
+  {
+    "id": "turtle-02",
+    "sourceSha256": "4eecb136970dc099c51ff7c8ea9ecb1052ed2666c00db20c578323e1af9a5683",
+    "fillableRegions": 172,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1143
+  },
+  {
+    "id": "turtle-03",
+    "sourceSha256": "b13dee756a2c93d1564f49d54f2ce3080d61b541a21d1849ad64ef3ac0b153bb",
+    "fillableRegions": 107,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.0864
+  },
+  {
+    "id": "turtle-04",
+    "sourceSha256": "0fc950e91584b2548d077b4c56b234d61dce907e0565bc95059d328535595b95",
+    "fillableRegions": 370,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1615
+  },
+  {
+    "id": "turtle-05",
+    "sourceSha256": "ddef859f655d0fa2881d0d8f4d436e8b3b527259d2eaafb4bf2a3531a7324ac6",
+    "fillableRegions": 319,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1373
+  },
+  {
+    "id": "turtle-06",
+    "sourceSha256": "88a7ebe8a6b8c0eb14c89bc5e50fd04d3fdfc8c944250b31f0a93394599fe7e1",
+    "fillableRegions": 429,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1353
+  },
+  {
+    "id": "daisy-01",
+    "sourceSha256": "8b87fb5983cb6e88de702ab9cc642ac679bd852675d2d12c88ef2ab26759688b",
+    "fillableRegions": 234,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1748
+  },
+  {
+    "id": "daisy-02",
+    "sourceSha256": "e031e32ae49e9c9b5e0d6f4912291eef824ff173e3de7259db963a3453a67788",
+    "fillableRegions": 47,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1031
+  },
+  {
+    "id": "daisy-03",
+    "sourceSha256": "6fc78e5b56bf295b7a7c3717e127e41677a584773dc6f0951dea4013ce7fd5be",
+    "fillableRegions": 112,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1438
+  },
+  {
+    "id": "daisy-04",
+    "sourceSha256": "1cf7c3ae7beb1926e55bb64c4f0a9b2fea043447a617055728ceaab6a741b48f",
+    "fillableRegions": 76,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1302
+  },
+  {
+    "id": "daisy-05",
+    "sourceSha256": "a3c74226f9e83ffb53dc2427e388293a3e0645f90f7a75a37c8ff466539e913a",
+    "fillableRegions": 62,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1486
+  },
+  {
+    "id": "daisy-06",
+    "sourceSha256": "17b6d9f6e78bf56e36ca7e5c81bf2488981ff97b261cc71fe372935756a0c26b",
+    "fillableRegions": 80,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1677
+  },
+  {
+    "id": "rose-01",
+    "sourceSha256": "1206a2bfda5c9d091e954f2bd0180b0d1edbe3deb38a380a7b096e7e6b93fe7d",
+    "fillableRegions": 155,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1281
+  },
+  {
+    "id": "rose-02",
+    "sourceSha256": "b2fcc276314af853e626695ccca99a2986777f853bcc0ba9a6493934ae6ef7ed",
+    "fillableRegions": 237,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1294
+  },
+  {
+    "id": "rose-03",
+    "sourceSha256": "e0c0327747d32b9d0c1949b1d5747fcab13587cf6f9ed87a00a6b7ce75808833",
+    "fillableRegions": 270,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1394
+  },
+  {
+    "id": "rose-04",
+    "sourceSha256": "0ee83329c8b9162933998134270ddf5a8b457014324f4d679423ac373cd5a0db",
+    "fillableRegions": 95,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1152
+  },
+  {
+    "id": "rose-05",
+    "sourceSha256": "7491ca0fd684816c74640afd1a9d9a6763cb7a15093bfdb3875f2ee22743a6b5",
+    "fillableRegions": 231,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1305
+  },
+  {
+    "id": "rose-06",
+    "sourceSha256": "0f4f63f75464ca92fd678d7d1dd5137d887e4150e522f1b31d15196e7de6b70b",
+    "fillableRegions": 209,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1183
+  },
+  {
+    "id": "rose-07",
+    "sourceSha256": "e1cdb8514bcce65360a26ce7fa800337b0bffb5fec2699c86a564ed5e51aead0",
+    "fillableRegions": 110,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1087
+  },
+  {
+    "id": "rose-08",
+    "sourceSha256": "639e3b0f656a63f04b6ccc13f2650f0ffd3166e966175dff93f676c0b355533a",
+    "fillableRegions": 145,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.131
+  },
+  {
+    "id": "rose-09",
+    "sourceSha256": "c6435e2a0780dea1b2c92498d1217790f0e23628d008b08aedc52a41fb9bc019",
+    "fillableRegions": 191,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1316
+  },
+  {
+    "id": "rose-10",
+    "sourceSha256": "de143cb96c1bd27b5bc81145c9423354e2d6d7792cc6660c990763cefabc1ea2",
+    "fillableRegions": 281,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1511
+  },
+  {
+    "id": "rose-11",
+    "sourceSha256": "8e18107d2f64b1d70ad41f60dbf670965112227e022800cd91a415f22b84f425",
+    "fillableRegions": 212,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1392
+  },
+  {
+    "id": "rose-12",
+    "sourceSha256": "2b0790254eab72afa88099abd45d01758bc8bb87174dfa7e33a163b33ff47036",
+    "fillableRegions": 237,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1345
+  },
+  {
+    "id": "rose-13",
+    "sourceSha256": "09434c314e098e354c6046241c94751874e4304df3786b58abededd2aaf2d9f6",
+    "fillableRegions": 201,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1364
+  },
+  {
+    "id": "rose-14",
+    "sourceSha256": "8f4fd2d4c10843f69f8a16fc28d918de5eb02a5fc051eef8295bca512cbcd534",
+    "fillableRegions": 165,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1383
+  },
+  {
+    "id": "rose-15",
+    "sourceSha256": "719ade5185c951a775eb230bff2764dadeed0e726850b088ede1ba414e52d0fd",
+    "fillableRegions": 137,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1174
+  },
+  {
+    "id": "rose-16",
+    "sourceSha256": "50032acc131152b2d229c98d75a9fa6a550acf7d2de217bfd3e42a9eb4039a34",
+    "fillableRegions": 143,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1351
+  },
+  {
+    "id": "rose-17",
+    "sourceSha256": "87914a00e037834452fc457d24183ae0897ad41f8e820913b42aeed92be936b3",
+    "fillableRegions": 184,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1296
+  },
+  {
+    "id": "rose-18",
+    "sourceSha256": "9a51922a8c40bebf26d780fcdb7d94fdbb35dda49eeacbd55e85cbca18d36fdb",
+    "fillableRegions": 124,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.13
+  },
+  {
+    "id": "rose-19",
+    "sourceSha256": "d978000c811a73ad54dceddbe99e72747777d16dbcc3f1964b6c132521be46d4",
+    "fillableRegions": 308,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1311
+  },
+  {
+    "id": "rose-20",
+    "sourceSha256": "a4dd73a5ac297d6b427be79dbe8c517626608fa13ea92247d0ada7efa04e422c",
+    "fillableRegions": 223,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1677
+  }
+]
