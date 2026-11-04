@@ -1,0 +1,59 @@
+Building for debugging...
+[0/7] Write sources
+[0/7] /Users/runner/work/App-Projects/App-Projects/apps/cloud-companion/.build/arm64-apple-macosx/debug/CloudCompanionPackageTests.derived/runner.swift
+[2/7] Write sources
+[4/7] Write swift-version--79AA4F9932D1E87A.txt
+[6/9] Emitting module CloudCore
+[7/9] Compiling CloudCore Core.swift
+[8/11] Compiling CloudCoreTests CloudCoreTests.swift
+[9/11] Emitting module CloudCoreTests
+[10/13] Emitting module CloudCompanionPackageTests
+[11/13] Compiling CloudCompanionPackageTests runner.swift
+[11/13] Write Objects.LinkFileList
+[12/13] Linking CloudCompanionPackageTests
+Build complete! (28.94s)
+Test Suite 'All tests' started at 2026-11-04 07:21:58.868.
+Test Suite 'CloudCompanionPackageTests.xctest' started at 2026-11-04 07:21:58.871.
+Test Suite 'CloudCoreTests' started at 2026-11-04 07:21:58.871.
+Test Case '-[CloudCoreTests.CloudCoreTests testCorruptCacheDoesNotCrashOrProduceWeather]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testCorruptCacheDoesNotCrashOrProduceWeather]' passed (0.009 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testEachSavedCityKeepsItsOwnOfflineForecast]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testEachSavedCityKeepsItsOwnOfflineForecast]' passed (0.007 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testExpiredAndWrongCityNeverDisplayOldTemperature]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testExpiredAndWrongCityNeverDisplayOldTemperature]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testFailedRefreshCanAdvanceToCachedPredictionWithoutFresheningFetchTime]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testFailedRefreshCanAdvanceToCachedPredictionWithoutFresheningFetchTime]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testFreshCurrentDoesNotUseAnOlderHourlyPrediction]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testFreshCurrentDoesNotUseAnOlderHourlyPrediction]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testFreshnessBoundariesUseObservationAndFetchTime]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testFreshnessBoundariesUseObservationAndFetchTime]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testFutureClockIsNotShownAsFresh]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testFutureClockIsNotShownAsFresh]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testFutureHourlyEntriesAreExplicitPredictions]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testFutureHourlyEntriesAreExplicitPredictions]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testInvalidForecastDetailsAreRejected]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testInvalidForecastDetailsAreRejected]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testInvalidInputsAreRejected]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testInvalidInputsAreRejected]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testMotionNameAndSavedCitiesRoundTrip]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testMotionNameAndSavedCitiesRoundTrip]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testNoFabricatedWeatherOnFirstLaunch]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testNoFabricatedWeatherOnFirstLaunch]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testOldPreferencesMigrateWithoutLosingTheCity]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testOldPreferencesMigrateWithoutLosingTheCity]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testPersistenceRejectsLateCityResponsesAndOlderForecasts]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testPersistenceRejectsLateCityResponsesAndOlderForecasts]' passed (0.005 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testUnitsAndRefreshBackoff]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testUnitsAndRefreshBackoff]' passed (0.000 seconds).
+Test Case '-[CloudCoreTests.CloudCoreTests testWeatherOverridesSleep]' started.
+Test Case '-[CloudCoreTests.CloudCoreTests testWeatherOverridesSleep]' passed (0.000 seconds).
+Test Suite 'CloudCoreTests' passed at 2026-11-04 07:21:58.894.
+	 Executed 16 tests, with 0 failures (0 unexpected) in 0.023 (0.023) seconds
+Test Suite 'CloudCompanionPackageTests.xctest' passed at 2026-11-04 07:21:58.894.
+	 Executed 16 tests, with 0 failures (0 unexpected) in 0.023 (0.024) seconds
+Test Suite 'All tests' passed at 2026-11-04 07:21:58.894.
+	 Executed 16 tests, with 0 failures (0 unexpected) in 0.023 (0.026) seconds
+◇ Test run started.
+↳ Testing Library Version: 124.4
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests passed after 0.001 seconds.
