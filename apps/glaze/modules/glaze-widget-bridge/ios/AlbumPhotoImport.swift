@@ -49,4 +49,16 @@ enum AlbumPhotoImport {
     }
     return true
   }
+  /// Only old, importer-owned cache files unreferenced by the committed manifest are eligible.
+  /// A seven-day grace period protects already-issued timelines and interrupted imports.
+  static func pruneUnused(_ payload: [String: Any], container: URL, now: Date = Date()) {
+    let catalogue = payload["catalogue"] as? [String: Any] ?? [:]
+    let specs = catalogue["specs"] as? [[String: Any]] ?? []
+    let keep = Set(specs.filter { $0["kind"] as? String == "photoAlbum" }.flatMap { $0["photoRefs"] as? [String] ?? [] })
+    guard let files = try? FileManager.default.contentsOfDirectory(at: container, includingPropertiesForKeys: [.contentModificationDateKey]) else { return }
+    for file in files where validRef(file.lastPathComponent) && !keep.contains(file.lastPathComponent) {
+      if let modified = try? file.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate,
+         now.timeIntervalSince(modified) > 7 * 24 * 3600 { try? FileManager.default.removeItem(at: file) }
+    }
+  }
 }

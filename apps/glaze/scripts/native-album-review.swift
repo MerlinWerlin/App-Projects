@@ -61,6 +61,19 @@ import CryptoKit
         try check(PhotoAlbumModel.index(at: Date(timeIntervalSince1970: -1), minutes: minutes, count: 3) == 2, "Negative epoch wraps")
         try check(PhotoAlbumModel.nextBoundary(after: boundary, minutes: minutes).timeIntervalSince(boundary) == Double(minutes * 60), "Strictly future reload")
       }
+      let abandoned = "album-" + String(repeating: "e", count: 40) + ".jpg"
+      let old = Date().addingTimeInterval(-8 * 24 * 3600)
+      let abandonedURL = scratch.appendingPathComponent(abandoned)
+      try Data([1,2,3]).write(to: abandonedURL)
+      try FileManager.default.setAttributes([.modificationDate: old], ofItemAtPath: abandonedURL.path)
+      try FileManager.default.setAttributes([.modificationDate: old], ofItemAtPath: scratch.appendingPathComponent(refs[0]).path)
+      let foreign = scratch.appendingPathComponent("user-original.jpg"); try Data([4]).write(to: foreign)
+      try FileManager.default.setAttributes([.modificationDate: old], ofItemAtPath: foreign.path)
+      AlbumPhotoImport.pruneUnused(["catalogue": ["specs": [["kind": "photoAlbum", "photoRefs": [refs[0]]]]]], container: scratch)
+      try check(!FileManager.default.fileExists(atPath: abandonedURL.path), "Old orphaned cache reclaimed")
+      try check(FileManager.default.fileExists(atPath: scratch.appendingPathComponent(refs[0]).path), "Old active photo retained")
+      try check(FileManager.default.fileExists(atPath: scratch.appendingPathComponent(refs[1]).path), "Recent interrupted import retained")
+      try check(FileManager.default.fileExists(atPath: foreign.path), "Unowned files never pruned")
       guard let fixture = Bundle.main.url(forResource: "native-album-review", withExtension: "json"),
             let root = try JSONSerialization.jsonObject(with: Data(contentsOf: fixture)) as? [String: Any],
             let cases = root["cases"] as? [[String: Any]] else { throw NSError(domain: "AlbumContract", code: 2) }

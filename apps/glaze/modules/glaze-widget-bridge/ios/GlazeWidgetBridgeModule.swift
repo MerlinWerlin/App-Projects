@@ -59,6 +59,7 @@ public class GlazeWidgetBridgeModule: Module {
       do { try data.write(to: container.appendingPathComponent("widgets.json"), options: .atomic) }
       catch { return false }
       UserDefaults(suiteName: appGroup)?.set(json, forKey: widgetSetKey)
+      AlbumPhotoImport.pruneUnused(payload, container: container)
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }
