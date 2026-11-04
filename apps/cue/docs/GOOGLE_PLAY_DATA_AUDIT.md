@@ -1,4 +1,4 @@
-# Cue Android data review — draft, not submitted
+# Cue Android data review — submitted with production release
 
 ## 5 November replacement candidate
 
@@ -28,7 +28,27 @@ undetected permissions may exist and is not evidence of no collection.
 Google's [Data safety instructions](https://support.google.com/googleplay/android-developer/answer/10787469?hl=en)
 require native SDK collection to be included. Payment-card information handled
 directly by Play is a separate exception; it does not automatically exempt
-SDK diagnostic traffic. No new Data safety declaration has been saved.
+SDK diagnostic traffic. The declaration was saved and sent with the11production
+changes on5November. Publishing overview confirms Changes in review, with
+Google's quick checks pending dispatch. It is not yet a public store label.
+
+Saved answers: diagnostics collected/shared for analytics, required and not
+ephemeral; purchase history collected optionally for app functionality, not
+ephemeral. Purchase tokens/records support purchase acknowledgement and Plus
+ownership; payment-card details remain solely with Google. User-initiated store
+transactions use the sharing exception. No credit-card, script, recording,
+document, location, advertising-ID or app-account collection is declared.
+Transport is encrypted. Cue has no account creation/external account login,
+independent security badge or general collected-data deletion badge. The
+developer cannot promise deletion of Google's diagnostic/store records.
+
+Official Billing9.1.0 AAR bytecode was also inspected: BillingClientImpl
+constructors generate a fresh Random.nextLong into zzM, and launchBillingFlow
+generates another random event number. No Android-ID, advertising-ID, app-set-ID,
+device-ID or IMEI reference was found in that library's classes. This supports
+distinguishing observed session/event numbers from persistent device IDs; it is
+not proof about every possible Google Play service implementation. Source URL,
+AAR hash and bytecode are retained in the local archive.
 
 Both repaired4KB/16KB flows41906973573 captured the synthetic preview app's
 own Data Transport queue after its complete UI flow. SQLite integrity is OK.

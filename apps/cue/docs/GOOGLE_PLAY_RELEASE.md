@@ -4,7 +4,18 @@
 
 The existing iOS App Store submission is outside this work. No Apple action or
 RELEASE.json change was made. The seven iOS release-policy checks still pass.
-The Console still has8of11 saved setup tasks; no production review submission.
+All initial Console setup tasks are saved. The production release and11changes
+were sent for review on5November. Publishing overview confirms Changes in
+review, with Google's quick checks still running before reviewer dispatch.
+There is no public-availability claim. Managed publishing remains off, so an
+approved release will publish automatically. Availability targets177countries/
+regions plus Rest of World; Plus retains its separately configured174regions.
+The additional Advertising ID declaration is No, matching the inspected build.
+Version1.0.0/code4 is available on the internal track (release2,5November07:46
+Sydney). Its release notes describe only Cue's script, prompter, recording and
+optional Plus features. The public listing likewise focuses on the product.
+Reviewer access is saved with the actual reusable complimentary code, and the
+target audience is13-15,16-17 and18+. No Cue account is required.
 
 The owner has created the merchant profile. Cue Plus is now active as
 `com.jared797.cue.plus`, purchase option `lifetime`, Buy, backwards compatible,
@@ -27,8 +38,8 @@ artifact upload. This is complimentary access, not a store transaction.
 Google's [review-access requirements](https://support.google.com/googleplay/android-developer/answer/15748846?hl=en)
 require reusable access and permit additional access resources. The current
 Console prohibits relying on reviewer payment or a free trial. Full-access
-certification must wait for a verified uploaded candidate; internal build2
-has no access-code screen. Target audience remains blocked on that declaration.
+certification was saved after qualified code4 was published internally. The
+older internal build2 had no access-code screen and is no longer included.
 
 The attempted d87a013d scanner exclusions did NOT remove ML Kit. Its actual
 72,320,983-byte preview APK (SHA256f7610e788d0222063d7b18d125148dd8f55e1384808ea6d9654b94fadd15a803)
@@ -77,7 +88,8 @@ inspection tests pass. Queued Billing diagnostics were captured from only the
 synthetic preview app:24events on4KB and20on16KB, with app/OS/model/build,
 language/country settings and network/carrier metadata. These are local queue
 observations, not proof of a successful network delivery or licensed purchase.
-Final Data safety, licensed billing and speech/interruption QA remain open.
+Data safety answers are saved pending review, based on source and the captured
+SDK behaviour. Licensed billing and speech/interruption QA remain open.
 
 The owner approved the official Android SDK license and installation. Stable
 platform-tools37.0.1, emulator37.2.13 and Google Play API35/x86_64 revision9 are
