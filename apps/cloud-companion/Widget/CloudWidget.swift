@@ -1,5 +1,20 @@
 import SwiftUI
 import WidgetKit
+import AppIntents
+
+struct RefreshCloudWeather: AppIntent {
+    static var title: LocalizedStringResource = "Refresh cloud weather"
+    static var openAppWhenRun = false
+    func perform() async throws -> some IntentResult {
+        let store = SkyStore.shared
+        if let place = store.preferences.place {
+            let forecast = try await WeatherClient().fetch(for: place)
+            store.save(forecast)
+        }
+        WidgetCenter.shared.reloadTimelines(ofKind: "CloudCompanionWeather")
+        return .result()
+    }
+}
 
 struct CloudEntry: TimelineEntry {
     var date: Date
@@ -28,7 +43,7 @@ struct CloudProvider: TimelineProvider {
             let initial = store.preferences
             var forecast = initial.place.flatMap { store.cached(for: $0) }
             var failed = false
-            if let place = initial.place {
+            if let place = initial.place, forecast == nil || Date().timeIntervalSince(forecast!.fetchedAt) >= 15 * 60 {
                 do {
                     let updated = try await WeatherClient().fetch(for: place)
                     store.save(updated)
@@ -51,7 +66,10 @@ struct CloudWidgetView: View {
     @Environment(\.widgetFamily) var family
     var entry: CloudEntry
     var body: some View {
-        WidgetCard(moment: entry.moment, place: entry.preferences.place, unit: entry.preferences.unit, medium: family == .systemMedium)
+        WidgetCard(moment: entry.moment, place: entry.preferences.place, unit: entry.preferences.unit, medium: family == .systemMedium,
+                   refreshAction: entry.preferences.place == nil ? nil : AnyView(Button(intent: RefreshCloudWeather()) {
+                       Image(systemName: "arrow.clockwise").font(.system(size: 11, weight: .semibold)).frame(width: 28, height: 25)
+                   }.buttonStyle(.plain).accessibilityLabel("Refresh weather without opening the app")))
             .containerBackground(SkyPalette.sky(entry.moment.mood), for: .widget)
             .widgetURL(URL(string: "cloudcompanion://weather"))
     }

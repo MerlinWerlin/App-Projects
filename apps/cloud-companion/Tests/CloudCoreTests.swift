@@ -111,4 +111,40 @@ final class CloudCoreTests: XCTestCase {
         XCTAssertEqual(TimelinePolicy.refreshDate(now: now, failed: false).timeIntervalSince(now), 1800)
         XCTAssertEqual(TimelinePolicy.refreshDate(now: now, failed: true).timeIntervalSince(now), 3600)
     }
+    func testOldPreferencesMigrateWithoutLosingTheCity() throws {
+        let old = """
+        {"place":{"name":"Sydney","latitude":-33.8688,"longitude":151.2093,"timeZoneIdentifier":"Australia/Sydney"},"unit":"fahrenheit"}
+        """
+        let preferences = try JSONDecoder().decode(Preferences.self, from: Data(old.utf8))
+        XCTAssertEqual(preferences.place, .sydney)
+        XCTAssertEqual(preferences.unit, .fahrenheit)
+        XCTAssertTrue(preferences.motionEnabled)
+        XCTAssertEqual(preferences.cloudName, "Nimbus")
+        XCTAssertTrue(preferences.savedPlaces.isEmpty)
+    }
+    func testMotionNameAndSavedCitiesRoundTrip() throws {
+        let preferences = Preferences(place: .sydney, savedPlaces: Place.suggestions, motionEnabled: false, cloudName: "Mallow")
+        XCTAssertEqual(try JSONDecoder().decode(Preferences.self, from: JSONEncoder().encode(preferences)), preferences)
+    }
+    func testEachSavedCityKeepsItsOwnOfflineForecast() {
+        let suite = "cloud-companion-cities-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let store = SkyStore(defaults: defaults)
+        store.preferences = Preferences(place: .sydney)
+        let sydney = Forecast.demo(at: now); store.save(sydney)
+        var tokyo = sydney; tokyo.place = Place.suggestions[2]; tokyo.temperatureC = 12
+        store.preferences = Preferences(place: tokyo.place); store.save(tokyo)
+        XCTAssertEqual(store.cached(for: .sydney)?.temperatureC, 23)
+        XCTAssertEqual(store.cached(for: tokyo.place)?.temperatureC, 12)
+    }
+    func testInvalidForecastDetailsAreRejected() {
+        var forecast = Forecast.demo(at: now)
+        forecast.humidity = 101
+        XCTAssertFalse(forecast.isValid)
+        forecast = .demo(at: now); forecast.windKph = -1
+        XCTAssertFalse(forecast.isValid)
+        forecast = .demo(at: now); forecast.days?[0].lowC = 100
+        XCTAssertFalse(forecast.isValid)
+    }
 }

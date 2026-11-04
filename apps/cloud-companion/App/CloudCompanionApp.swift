@@ -5,7 +5,7 @@ import WidgetKit
 
 @main
 struct CloudCompanionApp: App {
-    var body: some Scene { WindowGroup { SkyHome() } }
+    var body: some Scene { WindowGroup { SkyHome().preferredColorScheme(.light) } }
 }
 
 @MainActor
@@ -20,23 +20,33 @@ final class SkyModel: NSObject, ObservableObject, @preconcurrency CLLocationMana
     private var requestID = UUID()
     private var wantsLocation = false
     private var loadingPlace: Place?
+    private var selectionID = UUID()
 
     override init() {
         preferences = SkyStore.shared.preferences
         super.init()
         location.delegate = self
-        if demo { preferences = Preferences(place: .sydney); forecast = .demo() }
+        if demo {
+            preferences = Preferences(place: .sydney, motionEnabled: !ProcessInfo.processInfo.arguments.contains("--motion-off"))
+            forecast = .demo()
+        }
         else if let place = preferences.place { forecast = store.cached(for: place) }
     }
     func choose(_ place: Place) {
         guard place.isValid else { return }
+        selectionID = UUID(); wantsLocation = false
+        if !preferences.savedPlaces.contains(where: { $0.id == place.id }) {
+            preferences.savedPlaces.append(place)
+            preferences.savedPlaces = Array(preferences.savedPlaces.suffix(8))
+        }
         if preferences.place == place {
             Task { await refresh() }
             return
         }
         requestID = UUID()
         preferences.place = place
-        forecast = demo ? .demo() : store.cached(for: place)
+        forecast = store.cached(for: place)
+        if demo { forecast = .demo(); forecast?.place = place }
         persist()
         Task { await refresh() }
     }
@@ -44,6 +54,13 @@ final class SkyModel: NSObject, ObservableObject, @preconcurrency CLLocationMana
         preferences.unit = unit
         persist()
     }
+    func setMotion(_ enabled: Bool) { preferences.motionEnabled = enabled; persist() }
+    func setName(_ name: String) {
+        let trimmed = String(name.trimmingCharacters(in: .whitespacesAndNewlines).prefix(24))
+        preferences.cloudName = trimmed.isEmpty ? "Nimbus" : trimmed
+        persist()
+    }
+    func removeSaved(_ place: Place) { preferences.savedPlaces.removeAll { $0.id == place.id }; persist() }
     private func persist() {
         guard !demo else { return }
         store.preferences = preferences
@@ -72,6 +89,7 @@ final class SkyModel: NSObject, ObservableObject, @preconcurrency CLLocationMana
     func locate() {
         guard !demo else { return }
         wantsLocation = true
+        selectionID = UUID()
         switch location.authorizationStatus {
         case .notDetermined: location.requestWhenInUseAuthorization()
         case .authorizedAlways, .authorizedWhenInUse: location.requestLocation()
@@ -90,8 +108,10 @@ final class SkyModel: NSObject, ObservableObject, @preconcurrency CLLocationMana
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard wantsLocation, let point = locations.last, point.horizontalAccuracy >= 0 else { return }
         wantsLocation = false
+        let selection = selectionID
         Task {
             let names = try? await CLGeocoder().reverseGeocodeLocation(point)
+            guard selectionID == selection else { return }
             choose(Place(name: names?.first?.locality ?? "Current location",
                          latitude: point.coordinate.latitude, longitude: point.coordinate.longitude,
                          timeZoneIdentifier: names?.first?.timeZone?.identifier ?? TimeZone.current.identifier))
@@ -108,6 +128,9 @@ struct SkyHome: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var showCities = false
     @State private var showWidgets = ProcessInfo.processInfo.arguments.contains("--widget-preview")
+    @State private var showPlayground = ProcessInfo.processInfo.arguments.contains("--playground")
+    @State private var showSettings = false
+    @State private var delighted = false
     private var validForecast: Forecast? {
         guard let f = model.forecast, Freshness.evaluate(f, at: Date()) != .expired else { return nil }
         return f
@@ -122,9 +145,10 @@ struct SkyHome: View {
                             Text("Your little sky.").font(.system(size: 32, weight: .semibold, design: .rounded))
                         }
                         Spacer()
-                        Button { showCities = true } label: {
-                            Image(systemName: "location.circle").font(.system(size: 27, weight: .light))
-                        }.accessibilityLabel("Choose weather location")
+                        Button { showSettings = true } label: {
+                            Image(systemName: "slider.horizontal.3").font(.system(size: 23, weight: .light))
+                                .frame(width: 42, height: 42).background(.white.opacity(0.7), in: Circle())
+                        }.accessibilityLabel("Cloud settings")
                     }
                     Button { showCities = true } label: {
                         HStack(spacing: 6) {
@@ -132,13 +156,27 @@ struct SkyHome: View {
                             Text(model.preferences.place?.name ?? "Choose your city").font(.system(.subheadline, design: .rounded, weight: .medium))
                             Image(systemName: "chevron.down").font(.system(size: 9, weight: .bold))
                         }
-                    }.buttonStyle(.plain)
+                    }.buttonStyle(.plain).accessibilityIdentifier("selected-city")
                     if model.demo {
                         Label("Demo weather · sample forecast", systemImage: "sparkles")
                             .font(.caption).padding(.horizontal, 12).padding(.vertical, 8)
                             .background(SkyPalette.orange.opacity(0.3), in: Capsule())
                     }
                     hero
+                    if !model.preferences.savedPlaces.isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 8) {
+                                ForEach(model.preferences.savedPlaces) { place in
+                                    Button { model.choose(place) } label: {
+                                        Text(place.name).font(.system(.caption, design: .rounded, weight: .medium))
+                                            .padding(.horizontal, 14).padding(.vertical, 10)
+                                            .background(model.preferences.place == place ? SkyPalette.blue : .white, in: Capsule())
+                                    }.buttonStyle(.plain)
+                                }
+                                Button { showCities = true } label: { Image(systemName: "plus").padding(10).background(.white, in: Circle()) }.accessibilityLabel("Add a city")
+                            }
+                        }
+                    }
                     if let message = model.message {
                         VStack(alignment: .leading, spacing: 8) {
                             Text(message).font(.subheadline)
@@ -148,6 +186,7 @@ struct SkyHome: View {
                     }
                     if let f = validForecast {
                         hourly(f)
+                        ForecastDetails(forecast: f, unit: model.preferences.unit)
                     } else if model.preferences.place == nil {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("A tiny companion for your everyday weather.").font(.system(.title3, design: .rounded, weight: .medium))
@@ -155,6 +194,12 @@ struct SkyHome: View {
                             Button("Choose a city") { showCities = true }.buttonStyle(.borderedProminent).tint(SkyPalette.ink)
                         }.padding(20).frame(maxWidth: .infinity, alignment: .leading).background(.white, in: RoundedRectangle(cornerRadius: 24))
                     }
+                    Button { showPlayground = true } label: {
+                        Label("Spend a moment with \(model.preferences.cloudName)", systemImage: "sparkles")
+                            .font(.system(.subheadline, design: .rounded, weight: .medium))
+                            .frame(maxWidth: .infinity).padding(16)
+                            .background(.white, in: RoundedRectangle(cornerRadius: 20))
+                    }.buttonStyle(.plain).accessibilityIdentifier("open-playground")
                     Button { showWidgets = true } label: {
                         HStack(spacing: 14) {
                             Image(systemName: "square.grid.2x2").font(.title2)
@@ -176,13 +221,23 @@ struct SkyHome: View {
                 .onChange(of: scenePhase) { _, phase in if phase == .active { Task { await model.refresh() } } }
                 .sheet(isPresented: $showCities) { CityPicker { model.choose($0) } locate: { model.locate() } }
                 .sheet(isPresented: $showWidgets) { WidgetGallery(model: model) }
+                .sheet(isPresented: $showPlayground) { CloudPlayground(motionEnabled: model.preferences.motionEnabled, cloudName: model.preferences.cloudName) }
+                .sheet(isPresented: $showSettings) { CloudSettings(model: model) }
         }.tint(SkyPalette.ink)
     }
     private var hero: some View {
         let f = validForecast
         let mood = f?.mood ?? .cloudy
         return VStack(spacing: 4) {
-            CloudArt(mood: mood).frame(width: 230, height: 180).padding(.top, 15)
+            Button {
+                delighted = true
+                Task { try? await Task.sleep(for: .seconds(1.5)); delighted = false }
+            } label: {
+                CloudArt(mood: mood, animated: model.preferences.motionEnabled, delighted: delighted)
+                    .frame(width: 250, height: 192)
+            }.buttonStyle(.plain).padding(.top, 15)
+                .accessibilityLabel("Say hello to \(model.preferences.cloudName)")
+                .sensoryFeedback(.selection, trigger: delighted)
             Text(f.map { model.preferences.unit.display($0.temperatureC) } ?? "—")
                 .font(.system(size: 77, weight: .light, design: .rounded)).contentTransition(.numericText())
             Text(f?.condition ?? (model.loading ? "Checking your sky…" : "Your sky is waiting"))
@@ -205,7 +260,12 @@ struct SkyHome: View {
             }
         }.frame(maxWidth: .infinity).padding(.bottom, 26)
             .foregroundStyle(mood == .sleepy ? .white : SkyPalette.ink)
-            .background(SkyPalette.sky(mood), in: RoundedRectangle(cornerRadius: 34))
+            .background {
+                ZStack {
+                    LinearGradient(colors: [SkyPalette.sky(mood), SkyPalette.sky(mood).opacity(0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    WeatherScene(mood: mood, motionEnabled: model.preferences.motionEnabled)
+                }.clipShape(RoundedRectangle(cornerRadius: 34))
+            }
     }
     private func hourly(_ f: Forecast) -> some View {
         VStack(alignment: .leading, spacing: 14) {

@@ -4,3 +4,5 @@ CloudCompanion.xcodeproj/
 DerivedData/
 output/
 Generated/
+App/Assets.xcassets/AppIcon.appiconset/icon.png
+*.log

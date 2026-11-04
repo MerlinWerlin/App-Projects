@@ -68,6 +68,15 @@ struct ForecastHour: Codable, Equatable, Identifiable {
     var mood: CloudMood { .resolve(symbol: symbol, daylight: daylight) }
 }
 
+struct ForecastDay: Codable, Equatable, Identifiable {
+    var date: Date
+    var highC: Double
+    var lowC: Double
+    var rainChance: Double
+    var symbol: String
+    var id: Date { date }
+}
+
 struct Forecast: Codable, Equatable {
     var place: Place
     var fetchedAt: Date
@@ -82,6 +91,10 @@ struct Forecast: Codable, Equatable {
     var hours: [ForecastHour]
     var attributionURL: URL
     var attributionMark: Data? = nil
+    var days: [ForecastDay]? = nil
+    var windKph: Double? = nil
+    var humidity: Double? = nil
+    var uvIndex: Int? = nil
 
     var mood: CloudMood { .resolve(symbol: symbol, daylight: daylight) }
     var isValid: Bool {
@@ -89,8 +102,10 @@ struct Forecast: Codable, Equatable {
         (highC?.isFinite ?? true) && (lowC?.isFinite ?? true) &&
         fetchedAt.timeIntervalSince1970.isFinite && observedAt.timeIntervalSince1970.isFinite &&
         attributionURL.scheme == "https" && zip(hours, hours.dropFirst()).allSatisfy { $0.date < $1.date } && hours.allSatisfy {
-            $0.temperatureC.isFinite && $0.rainChance.isFinite && (0...1).contains($0.rainChance)
-        }
+            $0.date.timeIntervalSince1970.isFinite && $0.temperatureC.isFinite && $0.rainChance.isFinite && (0...1).contains($0.rainChance)
+        } && (windKph.map { $0.isFinite && $0 >= 0 } ?? true) &&
+        (humidity.map { $0.isFinite && (0...100).contains($0) } ?? true) &&
+        (days?.allSatisfy { $0.highC.isFinite && $0.lowC.isFinite && $0.lowC <= $0.highC && (0...1).contains($0.rainChance) } ?? true)
     }
 
     func rainNote(at date: Date) -> String {
@@ -108,11 +123,16 @@ struct Forecast: Codable, Equatable {
             return ForecastHour(date: hourDate, temperatureC: Double(25 - n),
                                 rainChance: n >= 4 ? 0.6 : 0.1, symbol: symbol, daylight: n < 7)
         }
-        return Forecast(place: .sydney, fetchedAt: date, observedAt: date,
+        var forecast = Forecast(place: .sydney, fetchedAt: date, observedAt: date,
             temperatureC: 23, feelsLikeC: 24, highC: 25, lowC: 17,
             condition: "Partly cloudy", symbol: "cloud.sun.fill", daylight: true,
             hours: hours,
             attributionURL: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
+        forecast.days = (0..<5).map { n in ForecastDay(date: start.addingTimeInterval(Double(n) * 86400),
+            highC: Double(25 - n), lowC: Double(17 - n), rainChance: n == 2 ? 0.7 : 0.1,
+            symbol: n == 2 ? "cloud.rain.fill" : "cloud.sun.fill") }
+        forecast.windKph = 14; forecast.humidity = 62; forecast.uvIndex = 5
+        return forecast
     }
 }
 
@@ -165,6 +185,23 @@ enum TimelinePolicy {
 struct Preferences: Codable, Equatable {
     var place: Place?
     var unit: TemperatureUnit = .celsius
+    var savedPlaces: [Place] = []
+    var motionEnabled = true
+    var cloudName = "Nimbus"
+
+    init(place: Place? = nil, unit: TemperatureUnit = .celsius, savedPlaces: [Place] = [], motionEnabled: Bool = true, cloudName: String = "Nimbus") {
+        self.place = place; self.unit = unit; self.savedPlaces = savedPlaces
+        self.motionEnabled = motionEnabled; self.cloudName = cloudName
+    }
+    enum CodingKeys: String, CodingKey { case place, unit, savedPlaces, motionEnabled, cloudName }
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        place = try c.decodeIfPresent(Place.self, forKey: .place)
+        unit = try c.decodeIfPresent(TemperatureUnit.self, forKey: .unit) ?? .celsius
+        savedPlaces = try c.decodeIfPresent([Place].self, forKey: .savedPlaces) ?? []
+        motionEnabled = try c.decodeIfPresent(Bool.self, forKey: .motionEnabled) ?? true
+        cloudName = try c.decodeIfPresent(String.self, forKey: .cloudName) ?? "Nimbus"
+    }
 }
 
 final class SkyStore {
@@ -177,14 +214,14 @@ final class SkyStore {
         set { encode(newValue, key: "preferences.v1") }
     }
     func cached(for place: Place) -> Forecast? {
-        guard let data = decode(Forecast.self, key: "forecast.v1"), data.place == place, data.isValid else { return nil }
+        guard let data = decode(Forecast.self, key: "forecast.v2.\(place.id)") ?? decode(Forecast.self, key: "forecast.v1"), data.place == place, data.isValid else { return nil }
         return data
     }
     func save(_ forecast: Forecast) {
         // A late response for a previously selected city cannot replace the active cache.
         guard forecast.isValid, preferences.place == forecast.place else { return }
         if let existing = cached(for: forecast.place), existing.fetchedAt > forecast.fetchedAt { return }
-        encode(forecast, key: "forecast.v1")
+        encode(forecast, key: "forecast.v2.\(forecast.place.id)")
     }
     private func decode<T: Decodable>(_ type: T.Type, key: String) -> T? {
         guard let data = defaults.data(forKey: key) else { return nil }

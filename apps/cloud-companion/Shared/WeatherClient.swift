@@ -22,6 +22,14 @@ struct WeatherClient {
                 ForecastHour(date: $0.date, temperatureC: $0.temperature.converted(to: .celsius).value,
                              rainChance: $0.precipitationChance, symbol: $0.symbolName, daylight: $0.isDaylight)
             }, attributionURL: attribution.legalPageURL)
+        forecast.days = daily.forecast.prefix(5).map {
+            ForecastDay(date: $0.date, highC: $0.highTemperature.converted(to: .celsius).value,
+                        lowC: $0.lowTemperature.converted(to: .celsius).value,
+                        rainChance: $0.precipitationChance, symbol: $0.symbolName)
+        }
+        forecast.windKph = current.wind.speed.converted(to: .kilometersPerHour).value
+        forecast.humidity = current.humidity * 100
+        forecast.uvIndex = current.uvIndex.value
         // Cache Apple's official attribution artwork so the widget can render it offline.
         var request = URLRequest(url: attribution.combinedMarkDarkURL)
         request.timeoutInterval = 8

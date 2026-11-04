@@ -7,13 +7,15 @@ struct WidgetCard: View {
     var unit: TemperatureUnit
     var medium = false
     var demo = false
+    var refreshAction: AnyView? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack {
                 Text(place?.name ?? "Your little sky").font(.system(.caption, design: .rounded, weight: .semibold)).lineLimit(1)
                 Spacer(minLength: 2)
-                if medium { Image(systemName: "location.circle").font(.caption) }
+                if let refreshAction { refreshAction }
+                else if medium { Image(systemName: "location.circle").font(.caption) }
             }
             HStack(spacing: 8) {
                 CloudArt(mood: moment.mood).frame(maxWidth: medium ? 120 : 65, maxHeight: medium ? 92 : 58)
