@@ -31,10 +31,20 @@
   "buildSource": "b643f1bd14decc2c7327d4cf12822c368c80e204",
   "nativeSimulationRun": 41740093949,
   "inputScope": "Official300HzRanchuHALtone; human/host/physical voice not qualified",
-  "productionReplayRun": 41743446116,
-  "productionReplayStatus": "RUNNING",
+  "productionReplayRun": 41747258218,
+  "productionReplayStatus": "PASS_CORE_GAMEPLAY_AND_UNAVAILABLE_STORE_UI",
   "actualPlayBilling": "NOT_TESTED",
   "playSubmission": false,
-  "releaseDisposition": "CURRENT_SIGNED_CANDIDATE_STORE_GATES_PENDING",
-  "priorCandidateSha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa"
+  "releaseDisposition": "SUPERSEDED_ANDROID_COPY_REPAIR_DO_NOT_UPLOAD",
+  "priorCandidateSha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa",
+  "pendingReplacement": {
+    "runtimeSource": "7ce6f25fdb7be15738b270f81f5fa54938c7d4ed",
+    "buildRun": 41748574006,
+    "status": "RUNNING_NOT_YET_QUALIFIED",
+    "change": "Remove raw native diagnostics from Android purchase failure text in14 languages; payment/audio logic unchanged",
+    "appTests": 40,
+    "configurationChecks": 5,
+    "typecheck": "PASS",
+    "iosExport": "PASS"
+  }
 }

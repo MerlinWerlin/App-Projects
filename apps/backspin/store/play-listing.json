@@ -3,17 +3,19 @@
   "locale": "en-AU",
   "title": "Backspin: Reverse Your Voice",
   "shortDescription": "Record a line, hear it backwards, copy it and reveal the result.",
-  "fullDescription": "Your voice, with a twist.\n\nSay a short line, hear it backwards, then try copying that sound. Backspin flips your attempt forwards and scores its sound, rhythm and length.\n\nPlay a quick round, pick a daily challenge, try freestyle or pass one phone between friends in party mode. Loop or slow down the backwards clip while you practise. Save takes on your phone and share a four-part clip: original, backwards, your copy and flipped.\n\nYour first 10 scored rounds are free with all packs, effects and party sizes available. Backspin Plus is one optional lifetime purchase for unlimited rounds. No subscription or ads. Saved takes remain playable and shareable.\n\nNo account is needed. Recording and audio processing happen on your phone; clips leave it only when you choose to share.",
+  "fullDescription": "Your voice, with a twist.\n\nSay a short line, hear it backwards, then try copying that sound. Backspin flips your attempt forwards and scores its sound, rhythm and length.\n\nPlay a quick round, pick a daily challenge, try freestyle or pass one phone between friends in party mode. Loop or slow down the backwards clip while you practise. Save takes on your phone and share a four-part clip: original, backwards, your copy and flipped.\n\nYour first 10 scored rounds are free with all packs, effects and party sizes available. Backspin Plus is one optional lifetime purchase for unlimited rounds. No subscription or ads. Saved takes remain playable and shareable.\n\nNo account is needed. Recording and audio processing happen on your phone. Backspin does not upload your recordings; you choose when to share them. Android device backups follow your device settings.",
   "releaseBlockers": [
     "Organization/identity approval, then phone verification and app creation",
     "Actual Play Billing purchase/cancellation/restore using a Play-installed build",
-    "Sustained Android microphone capture remains unqualified; current4KB candidate captured silence and16KB control captured short fragments despite a UI flow pass.",
+    "Native-tone and actual production-derived16KB simulations pass. Human/host/physical microphone quality remains unqualified.",
     "Final Data safety, app access, target audience and content rating declarations"
   ],
   "assets": "512px icon and 1024x500 feature graphic verified; five unmodified actual emulator screenshots exported from passing run41701424210.",
-  "privacy": "Separate Android privacy policy published and exact source hash verified over HTTPS; final Data safety declarations not submitted.",
+  "privacy": "Android privacy policy published with explicit Google Billing diagnostics; HTTPS200, browser text and canonical source hash verified. Data safety form remains unsubmitted.",
   "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/backspin/privacy-android.html",
   "supportUrl": "https://merlinwerlin.github.io/App-Projects/backspin/support-android.html",
+  "reviewerInstructionsDraft": "No Backspin account, login or access code is needed. Complete onboarding, allow microphone access when prompted and choose Quick play. Hold the record button while saying a short phrase, release it, listen to the backwards clip, choose Now copy it and record your attempt. The app flips and scores the attempt. Save take stores it in Takes; Share clip opens the Android share sheet. The first 10 scored rounds include all packs, effects and party sizes. Plus is an optional one-time lifetime purchase for unlimited rounds; actual Play purchase and Restore must be checked using the configured Play product before submission.",
+  "releaseNotesDraft": "First Android release: record a line, hear it backwards, copy it and reveal the result. Includes quick play, daily challenges, freestyle, party mode, saved takes and sharing.",
   "monetization": {
     "app": "free",
     "freeScoredRounds": 10,
@@ -27,19 +29,16 @@
     "featureGraphic": "store/play/feature-1024x500.png",
     "phoneScreenshots": "store/play/screenshots"
   },
-  "accountStatus": "4 Nov shared verification checkpoint confirmed against Lane 4: Organization Submitted; Authorized representative In review. Website verified. Await Google approval before phone verification and app creation; no current request for a replacement ABN letter.",
+  "accountStatus": "4 Nov00:21UTC direct signed-in Console readback: documents uploaded/Google verifying identity, Create app disabled and phone verification requires approval. Prior detailed checkpoint: Organization Submitted; representative In review. Website ownership verified. No duplicate ABN letter/upload unless Google requests it.",
   "buildEvidence": {
-    "runtimeSource": "155a67047b63dcc4655c5de65963145c75dba951",
-    "run": 41701424210,
-    "gameplay4KB": "PASS",
     "nativeDecoderTests": 2,
     "signedProductionAabSha256": "b2ef0b9caf5b215cd9ad7e3c809ff556fd714b3af3b0df79d88ee6bda1b129ff",
     "storeSubmission": false,
     "runtime16KB": {
       "api35_decoder_tests": "2 PASS",
       "api36_decoder_tests": "2 PASS",
-      "full_microphone_gameplay": "UNQUALIFIED",
-      "latest_host_run": 41726474225,
+      "full_microphone_gameplay": "PASS_OFFICIAL_HAL_TONE_ONLY; host/human/physical voice unqualified",
+      "latest_host_run": 41731111761,
       "sdk_injection_experiment": "Archived after pre-install emulator crashes",
       "microphone_diagnosis": "Captured AAC is already effectively silent; matching195584 frames in AAC/WAV.42 Ranchu input errors/277 inserted-silence messages.2 native decoder tests PASS; full gameplay unqualified.",
       "pinned_official_emulator_control_run": 41728835831,
@@ -50,21 +49,47 @@
     "priorSignedBundleDisposition": "SUPERSEDED_DO_NOT_UPLOAD: lacks Android payment-state/acknowledgement repair",
     "replacement": {
       "runtimeSource": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
-      "buildRun": 41728527170,
-      "status": "SIGNED_STATIC_AUDIT_PASS_PRODUCTION_REPLAY_RUNNING",
+      "status": "SUPERSEDED_ANDROID_COPY_REPAIR_DO_NOT_UPLOAD",
       "appTests": 40,
       "typecheck": "PASS",
       "iosExport": "PASS",
       "apkSha256": "53ddb029be0f3d0a057acaac5bc1e54d33736117af0457d493d3a3be084b5bd5",
-      "next4KBRun": 41731776160,
-      "next16KBRun": 41731111761,
       "nativeSimulationRun": 41740093949,
       "productionBundleRun": 41740093949,
       "signedProductionAabSha256": "b2ef0b9caf5b215cd9ad7e3c809ff556fd714b3af3b0df79d88ee6bda1b129ff",
       "signedProductionAabBytes": 45515212,
-      "productionReplayRun": 41743446116
+      "productionReplayRun": 41747258218,
+      "initialPreviewBuildRun": 41728527170,
+      "buildRun": 41740093949,
+      "historical4KBHostRun": 41731776160,
+      "historical16KBHostRun": 41731111761,
+      "productionReplayStatus": "PASS_CORE_GAMEPLAY_AND_UNAVAILABLE_STORE_UI"
     },
     "priorSignedProductionAabSha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa",
-    "signedProductionRuntimeSource": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8"
+    "signedProductionRuntimeSource": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
+    "historicalScreenshotRuntimeSource": "155a67047b63dcc4655c5de65963145c75dba951",
+    "historicalScreenshotRun": 41701424210,
+    "historicalGameplay4KB": "PASS",
+    "runtimeSource": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
+    "run": 41740093949,
+    "gameplay16KB": "PASS_OFFICIAL_HAL_TONE_ONLY"
+  },
+  "dataSafetyDraft": {
+    "diagnostics": "SDK collection; billing functionality/performance/error support. Confirm actual Console categories/purposes.",
+    "deviceOrOtherIds": "Review random billing-client session identifier under the actual form definitions; do not omit solely because Backspin has no user account.",
+    "paymentDetails": "Google processes card details directly; do not extend that payment-provider exemption to SDK diagnostics or all transaction data.",
+    "sharing": "Check applicable service-provider exception/terms instead of assuming no sharing.",
+    "audio": "App-side processing/storage is local; user-initiated Android share remains distinct. No audio is passed to the billing API in app source.",
+    "submitted": false
+  },
+  "nextCandidate": {
+    "runtimeSource": "7ce6f25fdb7be15738b270f81f5fa54938c7d4ed",
+    "buildRun": 41748574006,
+    "status": "RUNNING_NOT_YET_QUALIFIED",
+    "change": "Remove raw native diagnostics from Android purchase failure text in14 languages; payment/audio logic unchanged",
+    "appTests": 40,
+    "configurationChecks": 5,
+    "typecheck": "PASS",
+    "iosExport": "PASS"
   }
 }

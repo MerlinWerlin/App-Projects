@@ -53,9 +53,14 @@
     },
     {
       "run": 41740093949,
-      "status": "RUNNING",
-      "method": "Verified NDK setup and one bounded launch retry, with full UI/audio gates unchanged."
+      "status": "SUCCESS_NATIVE16KB_AND_PRODUCTION_AAB",
+      "method": "Verified NDK setup and one bounded launch retry, with full UI/audio gates unchanged.",
+      "bootProperty": "1",
+      "nativeDecoderTests": "2 PASS",
+      "originalActiveSeconds": 5.18,
+      "copyActiveSeconds": 4.44,
+      "reason": "Complete native UI/signal/decoder gates passed before production AAB generation."
     }
   ],
-  "production_bundle_replay": "Prepared as callable workflow through existing play-apk.yml; not run."
+  "production_bundle_replay": "PASS in41747258218: production-derived16KB gameplay, sustained tone, unavailable-store/Restore UI and no fake Plus. Actual Play transactions untested."
 }

@@ -1,0 +1,14 @@
+{
+  "checkedUtc": "2026-11-04T00:21:00Z",
+  "source": "Signed-in Google Play Console Home, directly read through browser UI",
+  "identity": "Google is verifying your identity",
+  "documents": "Uploaded; Google will email the account owner when verification completes",
+  "phoneVerification": "Unavailable until organization and identity documents are approved",
+  "createAppEnabled": false,
+  "priorDetailedCheckpoint": "Organization Submitted; Authorized representative In review",
+  "websiteOwnership": "Previously verified; preserve existing homepage ownership tag",
+  "action": "Wait for Google decision; no duplicate identity upload or replacement ABN letter unless requested",
+  "appCreated": false,
+  "appSubmittedForReview": false,
+  "publicRelease": false
+}

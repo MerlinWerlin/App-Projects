@@ -1,0 +1,30 @@
+{
+  "status": "BILLING_DIAGNOSTIC_PATH_IDENTIFIED_PRIVACY_REPAIRED_FORM_NOT_SUBMITTED",
+  "backspinRuntimeSource": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
+  "productionAabSha256": "b2ef0b9caf5b215cd9ad7e3c809ff556fd714b3af3b0df79d88ee6bda1b129ff",
+  "runtimeEvidenceRun": 41745380369,
+  "appProcessAtRequest": 3946,
+  "runtimeObservation": "ActivityManager maps PID3946 to com.jared797.backspin. The same PID logs an HTTPS request to firebaselogging.googleapis.com/v0cc/log/batch and status200.",
+  "rawLogSha256": "865eb3662b03a2853bb47e6a4e34eccc00e1567a7acb1a38a03c5210d669bd8c",
+  "manifestObservation": "Production APK declares the CCT TransportBackendDiscovery/backend and transport scheduler services.",
+  "billingVersion": "9.1.0",
+  "officialArtifactUrl": "https://dl.google.com/dl/android/maven2/com/android/billingclient/billing/9.1.0/billing-9.1.0.aar",
+  "officialArtifactSha256": "d28286d4e4c18725510980de01211d9b72501e7146d96817fa0c9999af9b0d22",
+  "sourceReuse": "Verified hashes of the same official provider artifact/decompilation already inspected by the Linework lane; no Linework runtime result borrowed.",
+  "sourceObservations": [
+    "BillingClientImpl creates a random client-session long and packages app/package/version, Android/Billing versions and device metadata.",
+    "The default zzdr/zzdt logger creates PLAY_BILLING_LIBRARY protobuf transport through CCTDestination.INSTANCE.",
+    "Vendor release notes describe API success/failure and connection logging for billing performance/error support."
+  ],
+  "vendorReference": "https://developer.android.com/google/play/billing/release-notes",
+  "disclosureReference": "https://support.google.com/googleplay/android-developer/answer/10787469?hl=en",
+  "limits": "Exact on-wire payload, recipient retention and deletion are not decoded or controlled. An SDK diagnostic request is not evidence of audio transmission. No blanket no-data declaration or actual Play transaction is claimed.",
+  "draftDataSafety": {
+    "diagnostics": "SDK collection; billing functionality/performance/error support. Confirm actual Console categories/purposes.",
+    "deviceOrOtherIds": "Review random billing-client session identifier under the actual form definitions; do not omit solely because Backspin has no user account.",
+    "paymentDetails": "Google processes card details directly; do not extend that payment-provider exemption to SDK diagnostics or all transaction data.",
+    "sharing": "Check applicable service-provider exception/terms instead of assuming no sharing.",
+    "audio": "App-side processing/storage is local; user-initiated Android share remains distinct. No audio is passed to the billing API in app source.",
+    "submitted": false
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "status": "PASS_SIGNED_BUNDLE_STATIC_AUDIT",
+  "package": "com.jared797.backspin",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "targetSdk": 36,
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.MODIFY_AUDIO_SETTINGS",
+    "android.permission.RECORD_AUDIO",
+    "android.permission.VIBRATE",
+    "com.android.vending.BILLING",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.WAKE_LOCK",
+    "com.jared797.backspin.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "nativeLibraries": 54,
+  "abis": [
+    "arm64-v8a",
+    "x86_64"
+  ],
+  "allElfLoadAlignmentsAtLeast16384": true,
+  "embeddedJs": true,
+  "otaUpdates": false,
+  "playBillingVersion": "9.1.0",
+  "certificateSha256": "1e87ec4c603a4b12721add35c75d2753a37a5fc6edc59357e226ce4f03bb3db8",
+  "sha256": "b2ef0b9caf5b215cd9ad7e3c809ff556fd714b3af3b0df79d88ee6bda1b129ff",
+  "bytes": 45515212,
+  "unsignedPayloadEntriesVerifiedUnchanged": 1675,
+  "runtimeSource": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
+  "buildSource": "b643f1bd14decc2c7327d4cf12822c368c80e204",
+  "nativeSimulationRun": 41740093949,
+  "inputScope": "Official300HzRanchuHALtone; human/host/physical voice not qualified",
+  "productionReplayRun": 41747258218,
+  "productionReplayStatus": "PASS_CORE_GAMEPLAY_AND_UNAVAILABLE_STORE_UI",
+  "actualPlayBilling": "NOT_TESTED",
+  "playSubmission": false,
+  "releaseDisposition": "SUPERSEDED_ANDROID_COPY_REPAIR_DO_NOT_UPLOAD",
+  "priorCandidateSha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa",
+  "pendingReplacement": {
+    "runtimeSource": "7ce6f25fdb7be15738b270f81f5fa54938c7d4ed",
+    "buildRun": 41748574006,
+    "status": "RUNNING_NOT_YET_QUALIFIED",
+    "change": "Remove raw native diagnostics from Android purchase failure text in14 languages; payment/audio logic unchanged",
+    "appTests": 40,
+    "configurationChecks": 5,
+    "typecheck": "PASS",
+    "iosExport": "PASS"
+  }
+}
