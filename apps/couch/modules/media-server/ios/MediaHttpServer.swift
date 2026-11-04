@@ -10,7 +10,7 @@ import Security
  * started on that same queue.
  *
  * Request handling: read the request head until CRLF CRLF (16 KiB cap, 15 s timeout), GET and
- * HEAD only (else 405), path `/<token>` or `/<token>.<ext>` (else 404), one byte range
+ * HEAD and token-checked OPTIONS (else 405), path `/<token>` or `/<token>.<ext>` (else 404), one byte range
  * (`bytes=a-b`, `a-`, `-n`) -> 206, unsatisfiable -> 416, several ranges -> full 200. The file is
  * streamed with FileHandle in 64 KiB chunks; the next chunk is read only after NWConnection has
  * processed the previous one, so a video is never loaded into memory. Every response carries
@@ -413,7 +413,9 @@ final class MediaHttpServer: @unchecked Sendable {
     }
     c.file = handle
     c.remaining = length
-    c.connection.send(content: head, contentContext: .defaultMessage, isComplete: false, completion: .contentProcessed { [weak self] error in
+    // Finish each TCP write so contentProcessed fires before scheduling the next chunk.
+    // Only finalMessage closes the stream; an unfinished defaultMessage can stall the body.
+    c.connection.send(content: head, contentContext: .defaultMessage, isComplete: true, completion: .contentProcessed { [weak self] error in
       guard let self = self else { return }
       if error != nil {
         self.drop(c)
@@ -446,7 +448,7 @@ final class MediaHttpServer: @unchecked Sendable {
     c.remaining = count >= c.remaining ? 0 : c.remaining - count
     let last = c.remaining == 0
     let context: NWConnection.ContentContext = last ? .finalMessage : .defaultMessage
-    c.connection.send(content: chunk, contentContext: context, isComplete: last, completion: .contentProcessed { [weak self] error in
+    c.connection.send(content: chunk, contentContext: context, isComplete: true, completion: .contentProcessed { [weak self] error in
       guard let self = self else { return }
       if error != nil || last {
         self.drop(c)
