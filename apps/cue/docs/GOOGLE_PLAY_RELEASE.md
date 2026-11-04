@@ -1,4 +1,4 @@
-# Cue Google Play preparation â€” updated 5 November 2026
+# Cue Google Play preparation — updated 5 November 2026
 
 ## 5 November Android continuation
 
@@ -144,7 +144,7 @@ Android AAB remains the internal-test baseline; the replacement needs separate v
   Workflow e254802 verifies unchanged app source against compiled c809ffd.
   Both flows cover editing, prompting/mirror, process-restart persistence,
   trial persistence, camera denial/recovery and saved synthetic-camera video.
-  Saved videos are 8424 ms and 8431 ms respectively, both 1280Ã—720.
+  Saved videos are 8424 ms and 8431 ms respectively, both 1280×720.
   Cue runtime reports contain no app failures and bind to the checked log hash.
   Two unrelated Google Services crashes on the 16 KB guest remain recorded
   separately; these results do not establish overall emulator health or billing.
@@ -154,7 +154,7 @@ Android AAB remains the internal-test baseline; the replacement needs separate v
 - Previous completed APK was source 070ad0c: 72,286,111 bytes, target SDK 36, embedded
   JavaScript and 58 native libraries passing 16 KB alignment inspection.
   SHA-256 2e5aec751b67ffbd088c860788026040af1c53422d92fbd6f41f3105e3a65843.
-  Its complete 4 KB flow passed in run 41723153512, saving an 8,456 ms, 1280Ã—720
+  Its complete 4 KB flow passed in run 41723153512, saving an 8,456 ms, 1280×720
   video. This binary predates c809ffd's acknowledgement recovery.
 - The same binary's 16 KB checks exposed two harness failures: an emulator
   disappeared during installation, and run 41723866270 timed out starting
@@ -183,7 +183,7 @@ Android AAB remains the internal-test baseline; the replacement needs separate v
 - Historical binary with the save and Voice Pace repairs:
   https://github.com/MerlinWerlin/App-Projects/actions/runs/41622370763
   Native build/static inspection passed. The complete 4 KB simulation passed,
-  including a saved 8,528 ms video at 1280Ã—720. The 16 KB runner exited during
+  including a saved 8,528 ms video at 1280×720. The 16 KB runner exited during
   its initial launch command without an app-crash record; it did not pass.
 - Historical identical-APK rerun, started 4 November:
   https://github.com/MerlinWerlin/App-Projects/actions/runs/41698286454
@@ -355,8 +355,8 @@ remaining Console gates, actual Plus transactions and Data safety
 from the final binary and SDK behaviour before production submission.
 
 The English listing assets are now prepared and visually inspected in
-`store/assets`: four actual 1080Ã—1920 Android UI captures, the existing-brand
-512Ã—512 icon and a 1024Ã—500 feature graphic. Capture run 41732019758 passed on
+`store/assets`: four actual 1080×1920 Android UI captures, the existing-brand
+512×512 icon and a 1024×500 feature graphic. Capture run 41732019758 passed on
 the same APK. MANIFEST.json records source/hashes and lossless screenshot
 pixel provenance; VISUAL_REVIEW.md records inspection. These are now saved in
 the English Play listing, pending review rather than publicly published.
