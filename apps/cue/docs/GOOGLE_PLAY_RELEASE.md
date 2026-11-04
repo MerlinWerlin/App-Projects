@@ -5,8 +5,8 @@
 The existing iOS App Store submission is outside this work. No Apple action or
 RELEASE.json change was made. The seven iOS release-policy checks still pass.
 All initial Console setup tasks are saved. The production release and11changes
-were sent for review on5November. Publishing overview confirms Changes in
-review, with Google's quick checks still running before reviewer dispatch.
+were sent for review on5November. After refreshing, Publishing overview
+confirms: Your changes are now in review. The quick-check queue has completed.
 There is no public-availability claim. Managed publishing remains off, so an
 approved release will publish automatically. Availability targets177countries/
 regions plus Rest of World; Plus retains its separately configured174regions.

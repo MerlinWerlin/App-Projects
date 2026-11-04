@@ -29,8 +29,8 @@ Google's [Data safety instructions](https://support.google.com/googleplay/androi
 require native SDK collection to be included. Payment-card information handled
 directly by Play is a separate exception; it does not automatically exempt
 SDK diagnostic traffic. The declaration was saved and sent with the11production
-changes on5November. Publishing overview confirms Changes in review, with
-Google's quick checks pending dispatch. It is not yet a public store label.
+changes on5November. After quick checks completed, Publishing overview confirmed
+Your changes are now in review. It is not yet a public store label.
 
 Saved answers: diagnostics collected/shared for analytics, required and not
 ephemeral; purchase history collected optionally for app functionality, not
