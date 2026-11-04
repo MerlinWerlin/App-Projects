@@ -10,7 +10,6 @@
     "Play Billing purchase and restore verification",
     "Provide non-expiring reviewer access to Plus; free trial or payment is not accepted by the current Console instructions",
     "Complete target audience after reviewer-access requirements are satisfied",
-    "Complete merchant payments profile and configure the one-time Plus product",
     "Complete final SDK/network Data safety review; Android-qualified privacy copy is now published"
   ],
   "assets": "Four actual Android screenshots, existing-brand icon and feature graphic uploaded and saved in Play listing; feature graphic AI-labeled; not public",
@@ -25,5 +24,23 @@
     "interactiveElements": "In-App Purchases"
   },
   "assetManifest": "assets/MANIFEST.json",
-  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
+  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted",
+  "plusProduct": {
+    "status": "Active",
+    "productId": "com.jared797.cue.plus",
+    "purchaseOptionId": "lifetime",
+    "type": "Buy",
+    "backwardsCompatible": true,
+    "regions": 174,
+    "australianPrice": "AUD 2.99",
+    "otherPrices": "Google regional conversion",
+    "actualPurchaseTested": false
+  },
+  "licenseTesting": {
+    "status": "owner-only list selected and saved",
+    "users": 1,
+    "response": "RESPOND_NORMALLY",
+    "transactionsTested": false
+  },
+  "merchantProfile": "Created by owner and verified in Console5November; payout-method verification pending, not confirmed as release blocker."
 }
