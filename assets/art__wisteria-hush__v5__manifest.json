@@ -1,0 +1,398 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "wisteria-hush",
+  "packVersion": 5,
+  "name": "Wisteria Hush",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#E4DAF2",
+    "tile": "#C8BFD3",
+    "glyph": "#1C1816",
+    "accent": "#E0D6F2",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Wisteria Hush",
+    "mood": "Soft wisteria blooms in a hushed garden.",
+    "tags": [
+      "wisteria",
+      "hush",
+      "soft",
+      "blooms",
+      "hushed",
+      "garden",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 WISTERIA HUSH. Fine-art BOTANICAL MACRO PHOTOGRAPH aesthetic, delicate natural lavender WISTERIA flowers, misty pastel LILAC background #EEEAF5, romantic serene softness. UPPER68percent EMPTY uniform misty pale lilac with only very faint out-of-focus tonal gradient, no objects bokeh dots pattern or lettering. Bottom30percent one graceful slender natural wisteria branch entering from lower left around72percentheight, sweeping gently right, holding THREE small hanging lilac/lavender wisteria flower racemes with dozens of delicate pea-like petals, a few small fresh sage-green compound leaflets. Whole botanical arrangement compact around60percent image width, low with full bottom safe margin; longest raceme descends toward90percentheight, not cropped. Natural flowers anatomically plausible, subtle petal translucency, soft overcast morning light, pale buttery highlights and true lavender shadows, no harsh contrast. Quiet clean pastel botanical editorial photography, graceful sparse composition, rich fine petal details against smooth background. No animals faces characters ribbons cherries textiles embroidery toys clay resin buildings watermarks phoneframes UI text logos. Original generated photographic-style image, not a copy of a photograph.",
+    "addedAt": "2026-11-01",
+    "category": "Dreamy & Pastel"
+  },
+  "thumbhash": "dhcGAwKWj4aIdIp3AHyABXg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.5d0032b3.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 98946,
+      "sha256": "5d0032b3b5215b285a522fcf1dc79bacfc036fcdcf9fc9642865796368514b13",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.d973fb4a.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 88904,
+      "sha256": "d973fb4acdc70516a0271d767e9a96dfa12427673f352f3ce06c80ff625b9f5f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.6bd6bcef.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 50414,
+      "sha256": "6bd6bceff6b24ca3a8629ec0379adee3c013134537f75f2791190bc4517dfc23",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.b5fc346d.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 17194,
+      "sha256": "b5fc346d61bd19aa5fbfffbbfdbb97f71bb3c8888a7e348ce45849cb17281cbe",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.578d9928.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 46482,
+      "sha256": "578d9928a5137913a5cca3fd7867baf16d6be47da3d3c1ec9aa59fbddc25ebdc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.bc400c2d.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 65386,
+      "sha256": "bc400c2d42390376863dc165b3748b30777e5955839ba1e332870fde1d1c19da",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.1a69eb79.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9456,
+      "sha256": "1a69eb79fb68a7ece00ec1c556e76b6d744795ae37fdac92e8dfcb8f4c7e729b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.f8cc9506.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 40640,
+      "sha256": "f8cc95065f180f1b1c97aa8b93a22fd83d20c057fbfe16e177f1aed3093ca3bb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-hush-focus.356312c1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 33558,
+      "sha256": "356312c1a60e3ec206d729d92993d50120ff0174b1ba4579b67d31b35cc7af8c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wisteria-lacewing.0450b0e6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 58186,
+      "sha256": "0450b0e60793c99c462728bd9ccc6f15a280603413d9077f205b93e7b238a705",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.92e04654.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6210,
+      "sha256": "92e04654c408ee0118e63b7e45e7776296c9a0451c5edc5611b7d945cc4c2b1f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.f046279a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3048,
+      "sha256": "f046279a79a84dae474dfc6c8d7e0b420217f196d9fecaa52b658d719ac06919",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.eb8d0a1b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6112,
+      "sha256": "eb8d0a1b38b6b9e682d811cc0ab9c8e1e46c80fcd9e90f0ecaa86ef868cb305b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wisteria-dew.0ef82a2f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 45184,
+      "sha256": "0ef82a2fac6748ef3cc8668849b658bd227b10ab2e471508ddf08b8819c9ee9e",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 569720,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-wisteria-dew.0ef82a2f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-wisteria-dew.0ef82a2f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-wisteria-dew.0ef82a2f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-wisteria-dew.0ef82a2f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "hush-focus",
+      "kind": "focus",
+      "image": "widget-hush-focus.356312c1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Hush focus"
+    },
+    {
+      "id": "wisteria-lacewing",
+      "kind": "art",
+      "image": "widget-wisteria-lacewing.0450b0e6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wisteria lacewing"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.92e04654.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.f046279a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.eb8d0a1b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.b5fc346d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.578d9928.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.bc400c2d.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

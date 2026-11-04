@@ -1,0 +1,9 @@
+art__stellar-cradle__v5__manifest.json
+art__summit-line__v5__manifest.json
+art__sundew-ember__v3__manifest.json
+art__tempest-noir__v5__manifest.json
+art__velvet-observatory__v5__manifest.json
+art__verdigris-voyage__v5__manifest.json
+art__wickling-hollow__v5__manifest.json
+art__wisteria-hush__v5__manifest.json
+art__yuzu-soak__v5__manifest.json

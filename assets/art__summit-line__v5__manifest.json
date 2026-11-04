@@ -1,0 +1,402 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "summit-line",
+  "packVersion": 5,
+  "name": "Summit Line",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#162829",
+    "tile": "#364545",
+    "glyph": "#FAF8F2",
+    "accent": "#64768F",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Summit Line",
+    "mood": "Pine-black, snowy ivory and signal-red alpine cable-car theme.",
+    "tags": [
+      "summit",
+      "line",
+      "pine",
+      "black",
+      "snowy",
+      "ivory",
+      "signal",
+      "alpine",
+      "cable",
+      "theme",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original cinematic landscape photography artwork. Portrait iPhone wallpaper approx9:19.5 SUMMIT LINE, alpine cable-car theme. Upper58percent almost uniform very dark pine-black #172725 overcast dusk sky, no stars aurora moon clouds bright gradients texture patterns cables silhouettes or text in upper58percent, quiet clean space for ivory app icons. Lower42percent realistic snowy alpine mountain landscape at blue hour, jagged distant snow peaks kept low behind a dark snow-dusted evergreen ridge, very soft cold mist. ONE compact vintage SIGNAL RED gondola cable-car cabin with black glass panoramic windows hangs from a realistic dark hanger and TWO fine taut cable lines that cross ONLY the lower-middle screen at about64percent height; cable cabin at lower-center-right around70percent height, whole cabin and hanger visible, warm tiny cream cabin light, NO people inside visible. Snow-laden dark pine trees form low bottom corners with snow-covered rock ledge, one warm red accent from cable car, cinematic refined natural photographic realism. Gondola appears physically suspended, no giant floating cabin. Dark pine-black, cool ivory snow and restrained red. Landscape concentrated below60percent, calm large upper sky matches #172725. Fictional location not a real resort, full bleed. No resort text signs logos crosses UI icons phone frames borders or watermarks, no extra gondolas, no nebula stars aurora glass jars people animals trains or ski racers.",
+    "addedAt": "2026-11-01",
+    "category": "Seasonal"
+  },
+  "thumbhash": "jNcFCwBocHl5a5fEh493CMg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.9a5b10de.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 190076,
+      "sha256": "9a5b10deab1ab9d08201da4b27782562fbd82277e19c6fa319a31874a115c154",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c993af20.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 172588,
+      "sha256": "c993af20123e9c866876506df7369b705b91d9cb84c8a7ae3951b43f779b40b9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.360124b9.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 82352,
+      "sha256": "360124b905c4f89b34aa5582dcc9b6476c830561468646799470858461a03012",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.73fa8577.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 37412,
+      "sha256": "73fa8577d5ae2b4147a8177b3832c10bb9a7b79cb20fcdc66fa85145a2e94f99",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.b2c60cb4.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 80558,
+      "sha256": "b2c60cb49a99401ad52566e73a83fd7460eaf004c97c1ee08eda11f1874bc1c4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.3edc15a8.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 129188,
+      "sha256": "3edc15a8bc1a03cc5edd5d18c776ab4bd524f8e478e0292c2b3c784888bccb27",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.d453cf3e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14226,
+      "sha256": "d453cf3e191c07af95dbf253104c9dd2ce7bebc0a17d1b28f04e8e19feda4e35",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.c6e7f066.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 98526,
+      "sha256": "c6e7f066d00250816fbd6c95ae776a6493bad414f03e5795486dd1865454ceee",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pine-rope-pendant.38e56c1c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 61748,
+      "sha256": "38e56c1c0fd6c7f6d56124256addc6fc0b80aa3122929c48ada4b5470b4c0a63",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-summit-countdown.571a0609.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 98468,
+      "sha256": "571a0609c65febb3d09a8758b2338fdc352f71f1a5738b65bfb458355df8dcb9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.9cb0f0d5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6858,
+      "sha256": "9cb0f0d5722bed21bb9c322ef5f63451bada19539ef09df3a99755a58b1040a1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.4df22611.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3224,
+      "sha256": "4df226119ec9ee78fc52402d23adf087268adc0d9972cbbf11fdac445d2ae670",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.7d3f01b0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6726,
+      "sha256": "7d3f01b035df37b8505e232196d4dc71ad012cf1455bb257ecd9f574287d3fba",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-cable-car.e08d8036.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 107264,
+      "sha256": "e08d8036d50a821b1921bdb598b059f8fcbe6e2a18945d2c1cfd01ce95676531",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1089214,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-paper-cable-car.e08d8036.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-paper-cable-car.e08d8036.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-paper-cable-car.e08d8036.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-paper-cable-car.e08d8036.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "pine-rope-pendant",
+      "kind": "art",
+      "image": "widget-pine-rope-pendant.38e56c1c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pine rope pendant"
+    },
+    {
+      "id": "summit-countdown",
+      "kind": "countdown",
+      "image": "widget-summit-countdown.571a0609.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Summit countdown"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.9cb0f0d5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.4df22611.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.7d3f01b0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.73fa8577.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.b2c60cb4.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.3edc15a8.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

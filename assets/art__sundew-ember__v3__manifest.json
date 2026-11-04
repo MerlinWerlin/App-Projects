@@ -1,0 +1,401 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "sundew-ember",
+  "packVersion": 3,
+  "name": "Sundew Ember",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#1A121B",
+    "tile": "#393239",
+    "glyph": "#FAF8F2",
+    "accent": "#9E6143",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Sundew Ember",
+    "mood": "Glowing sundew droplets in warm copper light.",
+    "tags": [
+      "sundew",
+      "ember",
+      "glowing",
+      "droplets",
+      "warm",
+      "copper",
+      "light",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original Glaze iPhone wallpaper, tall portrait 9:19.5 composition, theme SUNDEW EMBER. Fine-art botanical macro photography aesthetic: one elegant fan of carnivorous sundew leaves, rounded slender leaves with exquisite rose-copper glandular hairs holding tiny luminous clear dewdrops, warm peach refractions. The small sundew cluster emerges from the bottom-right corner and occupies only bottom 27 percent of canvas; graceful natural stems cross bottom edge, no pot, no soil heap. Upper 70 percent absolutely quiet smooth uniform BLACK-CHERRY #1B1520 background for phone icons. Palette dark wine-charcoal, rose copper #D99E8E, muted sage and tiny warm cream highlights. Delicate light grazing droplets, plausible photographic plant detail, shallow depth of field confined to plant, restrained editorial still life, beautiful intimate jewel-like natural specimen. Natural asymmetry, no fantasy extra objects, no cartoon faces. No insects, trapped animals, flowers, other plants, gold jewelry, fairy dust, text, UI, clock, phone frame, logo, borders or watermarks. Background remains constant behind future icons. Original generated botanical photographic-style scene, not an external photograph.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "SigKGwRkoKloaIZ5dKBLB7o=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.95ba94b3.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 166336,
+      "sha256": "95ba94b39c6d32fe88175e85247ecba620cd5be0f5e248644b27764f019f8c9c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.913a5b1a.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 151372,
+      "sha256": "913a5b1ab443f7fc6733f1e7cbca763a6b725e02245fd730331d2a946b4f11c7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.4bc6990c.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 74756,
+      "sha256": "4bc6990cb875e6e7e96e5cb93d26897963a721ad41dd7eae29da003bb88b68fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.03f3bad8.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 43892,
+      "sha256": "03f3bad8c9f9d11fd37f7069684825453d0e46efa67eab982361bf63c57f9f01",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.a515df73.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 39682,
+      "sha256": "a515df7315baca172155d8ffc064adea5fe25aa4b8598c25f03773eed03c2db4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.e262e902.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 170290,
+      "sha256": "e262e9023b591f1b0fb3201c222a97495db433e3c248e432932e3b2e25a67ec5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.25e66bd7.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14158,
+      "sha256": "25e66bd7fb2241a20294d92d427cd6a62e99c6c430adfb0c68a5ea623c974ff6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.bd921ed2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 107866,
+      "sha256": "bd921ed2492b33c862bbc1ecb01ce935fb4414a8d4ba603209676025227bad9b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dew-focus.2737ffd5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 24708,
+      "sha256": "2737ffd5c36e21d50aba009f722778eac523d7ab68a304aecb2f2c1a431f2469",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dew-orbit.8dd77a90.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 56628,
+      "sha256": "8dd77a90e4b58eefccfc93cffd7dc8babe983acc169dc613c8adee0dedabebb3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ember-clock.7ef99329.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 67088,
+      "sha256": "7ef9932963cb472146ae17a250b9bb57067ecac7e00ebc5f2aa42278c9f51216",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-petal-date.723944f1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 27894,
+      "sha256": "723944f1dc6bf312098f57d6a3e2175b4100107b69cc56e7118da481dfc25404",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sundew-crown.9abc93d3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 135732,
+      "sha256": "9abc93d315fd50e2f5f3ef3a6b8f1c84732e8fa0c9a9608ea2a365d9e57d3545",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.053cfb28.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7932,
+      "sha256": "053cfb283ca990e9d989221ad33c15923731233210a995fb9af20e7b8ee6c494",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-copper-unfurl.aa919637.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 116902,
+      "sha256": "aa9196370cac06d07a4cf167acbb9e1b2eeb42011e9c9e0d106eaf31b53f3cac",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1205236,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-copper-unfurl.aa919637.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-copper-unfurl.aa919637.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-copper-unfurl.aa919637.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-copper-unfurl.aa919637.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "dew-focus",
+      "kind": "focus",
+      "image": "widget-dew-focus.2737ffd5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dew focus"
+    },
+    {
+      "id": "dew-orbit",
+      "kind": "art",
+      "image": "widget-dew-orbit.8dd77a90.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dew orbit"
+    },
+    {
+      "id": "ember-clock",
+      "kind": "clock",
+      "image": "widget-ember-clock.7ef99329.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ember clock"
+    },
+    {
+      "id": "petal-date",
+      "kind": "calendar",
+      "image": "widget-petal-date.723944f1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Petal date"
+    },
+    {
+      "id": "sundew-crown",
+      "kind": "art",
+      "image": "widget-sundew-crown.9abc93d3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sundew crown"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.053cfb28.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.03f3bad8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.a515df73.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.e262e902.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
