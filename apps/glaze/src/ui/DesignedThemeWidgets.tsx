@@ -56,11 +56,11 @@ export function DesignedThemeWidgets({ theme, size, width, style, onLibraryChang
     finally { setBusy(false); }
   };
   return (
-    <View style={[styles.wrap, style]}>
+    <View testID="designed-widgets" style={[styles.wrap, style]}>
       <SectionHeader title={t('ui.designedWidgets.title')} body={t('ui.designedWidgets.body')} flushTop />
       <View style={styles.choices}>
         {DESIGNED_KINDS.map(value => (
-          <PillButton key={value} label={name(value)} size="small" variant={value === kind ? 'filled' : 'tinted'}
+          <PillButton key={value} testID={`designed-${value}`} label={name(value)} size="small" variant={value === kind ? 'filled' : 'tinted'}
             accessibilityLabel={name(value)} accessibilityState={{ selected: value === kind }} disabled={busy}
             onPress={() => setKind(value)} />
         ))}
@@ -68,7 +68,7 @@ export function DesignedThemeWidgets({ theme, size, width, style, onLibraryChang
       <View style={[styles.preview, continuous, { width: previewWidth, height: previewHeight, backgroundColor: design.background[0] }]}>
         <SvgXml xml={xml} width={previewWidth} height={previewHeight} accessible accessibilityLabel={[name(kind), theme.name].join(', ')} />
       </View>
-      <PillButton label={t('tabs.widgetsTab.art.use')} icon="check-circle" variant="filled" block busy={busy} onPress={() => { void save(); }} />
+      <PillButton testID="save-designed-widget" label={t('tabs.widgetsTab.art.use')} icon="check-circle" variant="filled" block busy={busy} onPress={() => { void save(); }} />
       <Text style={[textV2.footnote, { color: c.inkSecondary }]} maxFontSizeMultiplier={fontScaleCap('footnote')}>
         {status === 'saved' ? t('ui.seamless.library.added') : status === 'update' ? t('ui.designedWidgets.update') : status === 'failed' ? t('ui.seamless.failed') : t('ui.designedWidgets.setup')}
       </Text>
