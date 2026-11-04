@@ -27,7 +27,7 @@ This is a record of what was done and verified. The single project roadmap is `C
 - Switched the complete interface to Japanese and inspected it at 390 × 844. The bottom navigation, text wrapping, cat and task cards rendered. The browser cannot verify calendar permissions or phone notifications.
 - Browser semantics check found that React Native Web dropped the legacy selected/checked state props. Added explicit ARIA states for tabs, task/step/ritual checkboxes and language/personality choices; final DOM verification confirmed English aria-checked=true and active-tab aria-selected=true.
 - Saved browser proof in docs/screenshots: English/Japanese 390x844 and the complete desktop example day. Preview tasks and a ritual were explicitly labelled as preview data. Assistant guidance was also exercised through the visible UI.
-- Initial GitHub check run41787852572 passed at code36460148. A new check is required after the accessibility fix.
+- Initial GitHub check run41787852572 passed at code36460148. Final code6a2f459a passed local tests, typecheck, three exports and browser ARIA checks. Two final-code workflow dispatch requests returned HTTP403 API rate limit, so no final-code remote run is claimed.
 - GitHub checks and the final commit/PR are recorded in `ops/RUNLOG.md` and `ops/status.json` when available.
 
 ## Items still requiring evidence

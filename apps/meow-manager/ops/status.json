@@ -25,7 +25,15 @@
   ],
   "roadmap": "C:/BTB/_ATLAS/MASTER_ROADMAP.md#project-apps",
   "expoDoctor": "21/21 passed locally",
-  "githubChecks": "initial code36460148 passed run41787852572; post-accessibility-fix run pending",
+  "verifiedCodeCommit": "6a2f459ae8c5ba6e43f91b7152a0c1db5542bc20",
+  "githubChecks": {
+    "initialRun": "https://github.com/MerlinWerlin/App-Projects/actions/runs/41787852572",
+    "initialCodeCommit": "36460148f5fc640231537cda57662f442ba05499",
+    "initialResult": "passed",
+    "postAccessibilityFix": "Two dispatch requests returned HTTP403 API rate limit at workflows/check.yml. No second run was created.",
+    "finalLocalResult": "26 tests, strict TypeScript and iOS/Android/web exports passed; fixed ARIA states verified in browser."
+  },
+  "preview": "http://127.0.0.1:8102/ (this PC only)",
   "pullRequest": "https://github.com/MerlinWerlin/App-Projects/pull/216",
   "browserVerified": [
     "capture/edit/save/reload",
