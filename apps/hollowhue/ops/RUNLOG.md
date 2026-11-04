@@ -22,3 +22,5 @@
   picker, new scenes and recent colours after relaunch passed; all8screenshots reviewed and preserved
   in docs/qa-20261104 with a runtime-source equality receipt. Release PR211 is prepared to publish OTA
   and trigger a fresh signed TestFlight binary. Publication/Apple beta state still to verify.
+
+- 2026-11-04 07:19UTC: PR211 merged4cb96f4; production OTA41791352443 PASS. Group889daefd-5069-47c7-aab4-7db47b71fb15 now served to iOS/runtime0.1.0. Actual2604624B download matches manifest SHA25be239f6da76dbb5e8f5d7b2886eade7638a842fdd7fb55ea5fd31cac3b3f7f; receipt in docs/qa-20261104. Fresh signed TestFlight41791367613 is building; Apple availability and physical-phone uptake are not yet verified.
