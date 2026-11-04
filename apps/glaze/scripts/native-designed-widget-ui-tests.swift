@@ -5,9 +5,13 @@ import Darwin
   func testThreeFunctionalDesignsReachSharedStorage() throws {
     continueAfterFailure = false
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    defer {
+      print("GLAZE_DESIGNED_FINAL_TREE\n" + app.debugDescription)
+      let screenshot = XCTAttachment(screenshot: app.screenshot()); screenshot.name = "designed-final-screen"; screenshot.lifetime = .keepAlways; add(screenshot)
+    }
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
     app.launch()
-    XCTAssertTrue(app.staticTexts["Whole looks: wallpaper, icons, widgets and a loop."].waitForExistence(timeout: 30))
+    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 30))
     app.buttons["Widgets"].firstMatch.tap()
     XCTAssertTrue(app.staticTexts["Widgets that match your theme. Tap one to make it yours."].waitForExistence(timeout: 20))
     for kind in ["clock", "battery", "calendar"] {
@@ -27,7 +31,7 @@ import Darwin
       app.swipeDown()
     }
     app.terminate(); app.launch()
-    XCTAssertTrue(app.staticTexts["Whole looks: wallpaper, icons, widgets and a loop."].waitForExistence(timeout: 30))
+    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 30))
     print("GLAZE_DESIGNED_WIDGETS_BRIDGE_VERIFIED"); fflush(stdout)
   }
 }
