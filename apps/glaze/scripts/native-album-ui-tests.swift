@@ -77,5 +77,8 @@ import Darwin
     XCTAssertTrue(revealStudioControl(save), app.debugDescription); tapStudioControl(save)
     XCTAssertTrue(app.staticTexts["Saved for your widgets"].waitForExistence(timeout: 25), app.debugDescription)
     print("GLAZE_ALBUM_PICKER_DELIVERED\n" + app.debugDescription); fflush(stdout)
+    #if GLAZE_INSTALLED_ALBUM_TEST
+    try verifyInstalledAlbumNext(app: app, spring: spring, test: self)
+    #endif
   }
 }

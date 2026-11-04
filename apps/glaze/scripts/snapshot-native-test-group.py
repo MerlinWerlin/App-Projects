@@ -34,5 +34,12 @@ if len(matches)==1:
             images.append({'file':ref,'bytes':len(raw),'contentHashMatches':ref=='album-'+digest[:40]+'.jpg','jpeg':raw[:2]==b'\xff\xd8'})
             target=out/'native-images';target.mkdir(exist_ok=True);shutil.copy2(image,target/ref)
         report['albumImages']=images
+        cursors=[]
+        for cursor in sorted(folder.glob('album-cursor-*.json')):
+            if not re.fullmatch(r'album-cursor-[a-f0-9]{64}\.json',cursor.name):continue
+            value=json.loads(cursor.read_text())
+            if isinstance(value,int) and not isinstance(value,bool) and 0<=value<12:
+                cursors.append({'file':cursor.name,'offset':value});shutil.copy2(cursor,out/cursor.name)
+        report['albumCursors']=cursors
 (out/'group-capture.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print('Preserved test-only Group files; capture alone is not a passing UI test')
