@@ -1,4 +1,51 @@
-# Cue Google Play preparation — updated 4 November 2026
+# Cue Google Play preparation — updated 5 November 2026
+
+## 5 November Android continuation
+
+The existing iOS App Store submission is outside this work. No Apple action or
+RELEASE.json change is authorised by the Android continuation. The seven iOS
+release-policy checks still pass.
+
+Android candidate source `d87a013daa35e8a1ba61fcf49f9b41114dbd565e` adds a
+visible Settings > Access code screen. A reusable complimentary code grants
+all Plus features without an account, payment or trial, with no expiry or
+location restriction. Its digest is in source; the actual code is held outside
+Git and supplied to CI as CUE_PLAY_REVIEW_CODE. The code field is masked, and
+CI redacts it from text reports before artifact upload. This is complimentary
+feature access, not a store transaction or proof of paid ownership. Store
+refresh/revocation and the original trial remain independent. The same code
+can be re-entered after clearing data or reinstalling. Removing it preserves
+actual purchases and the original trial. iOS cannot activate this access.
+
+Google's [review-access requirements](https://support.google.com/googleplay/android-developer/answer/15748846?hl=en)
+permit additional access resources and require them to be reusable and valid
+at all times. The current Console prohibits relying on reviewer payment or a
+free trial. Do not save full-access certification until the candidate is
+verified and uploaded; internal build2 does not contain this screen.
+
+The Android-only overlay also excludes both unused Expo Camera scanner
+modules: barcodeScannerEnabled=false plus the supported Gradle property
+expo.camera.document-scanner-enabled=false. Camera/video/audio remain enabled;
+ordinary profiles retain the original configuration. This removes unused SDK
+surface, not a claim about Billing's separate diagnostics.
+
+Local checks: 95 Jest tests, TypeScript, three native speech privacy guards,
+two Play configuration checks and seven iOS shipping-policy checks pass.
+Twenty Python inspection tests pass, including rejection of superseded build2
+and unused ML Kit manifest components. New production inspection is pinned to
+EAS build `fc348389-4fde-4dd9-b8ab-5d438454592f`, version1.0.0/code3 and the exact
+d87a013d source. Queue run41893764540 succeeded; the queue receipt itself does
+not prove build completion. Native run41893758645 and production inspection
+41894234330 were started; results must be read before claiming a pass. The
+initial superseded native run41893557395 was cancelled while preparing the
+separate document-scanner exclusion, not relabeled as a successful validation.
+
+On 5 November the merchant page still offers Create payments profile. Owner
+handoff is pending; no financial profile was created. Google Play SDK Index
+lists Billing9.1.0 but supplies no data-collection guidance in that entry.
+Final Billing/SDK data handling, Data safety, target audience and licensed
+billing remain open. The Console still has8of11 saved setup tasks at this
+checkpoint. No production submission or public Android release is claimed.
 
 Jared requested that Cue be simulated and pushed toward Google Play release.
 Work started from App-Projects main at dc444372ca15ba1c88d9badca11d67e0d20b56b7,

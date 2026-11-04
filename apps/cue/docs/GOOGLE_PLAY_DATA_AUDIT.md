@@ -1,5 +1,32 @@
 # Cue Android data review — draft, not submitted
 
+## 5 November replacement candidate
+
+Candidate d87a013d excludes both unused Expo Camera scanners on Android only.
+Expo Camera58.0.14's build.gradle independently enables barcode and document
+scanning by default; disabling barcode alone does not exclude the document
+scanner. The Play overlay disables barcode via its plugin option and document
+scanning via the supported expo.camera.document-scanner-enabled Gradle property.
+The original iOS configuration is preserved. Compiled SDK absence must still
+be verified in build3; do not apply this source claim to uploaded build2.
+
+Complimentary Plus access uses only local storage of a code digest, without
+network requests, account creation, payment or trial mutation. No raw code is
+stored by the app. Source network-call review finds only the user-opened privacy
+URL and mail composer; this does not rule out native SDK network activity.
+
+The official [Billing SDK Index entry](https://play.google.com/sdks/details/com-android-billingclient-billing)
+was inspected on5November, including version9.1.0. It does not provide a
+data-collection guide. Its “No permissions found” text explicitly warns that
+undetected permissions may exist and is not evidence of no collection.
+Google's [Data safety instructions](https://support.google.com/googleplay/android-developer/answer/10787469?hl=en)
+require native SDK collection to be included. Payment-card information handled
+directly by Play is a separate exception; it does not automatically exempt
+SDK diagnostic traffic. No new Data safety declaration has been saved.
+
+The remaining table and production-build2 inspection below are historical
+baseline evidence; new candidate results must be recorded separately.
+
 This review describes the Play overlay and repairs through candidate c809ffd. It is preparation
 for the Console forms, not a completed Data safety declaration or a network
 capture. Recheck against the signed production AAB before submission.
