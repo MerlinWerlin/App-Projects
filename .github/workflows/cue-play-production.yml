@@ -72,8 +72,17 @@ jobs:
           eas build:view "$BUILD_ID" --json > ../../cue-play-production-output/build.json
           if [[ '${{ inputs.cancel_superseded }}' == 'true' ]]; then
             node -e 'const b=require("../../cue-play-production-output/build.json");if(b.id!=="fc348389-4fde-4dd9-b8ab-5d438454592f"||b.gitCommitHash!=="d87a013daa35e8a1ba61fcf49f9b41114dbd565e"||b.platform!=="ANDROID"||b.buildProfile!=="play-production")throw Error("Refusing unknown build cancellation")'
-            eas build:cancel "$BUILD_ID" --non-interactive
-            eas build:view "$BUILD_ID" --json > ../../cue-play-production-output/build.json
+            status=$(node -p 'require("../../cue-play-production-output/build.json").status')
+            case "$status" in
+              NEW|IN_QUEUE|IN_PROGRESS) eas build:cancel "$BUILD_ID" --non-interactive;;
+              *) echo "Existing build state $status; no repeated cancellation issued";;
+            esac
+            for attempt in $(seq 1 6); do
+              eas build:view "$BUILD_ID" --json > ../../cue-play-production-output/build.json
+              status=$(node -p 'require("../../cue-play-production-output/build.json").status')
+              case "$status" in CANCELED|FINISHED|ERRORED) break;; esac
+              sleep 3
+            done
           fi
           if [[ "$WAIT_FOR_BUILD" == 'true' ]]; then
             for attempt in $(seq 1 24); do

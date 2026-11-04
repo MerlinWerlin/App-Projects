@@ -4,6 +4,11 @@ on:
     branches: [codex/cue-android-review-access-20261105]
     paths: ['.github/workflows/cue-play-local-production.yml']
   workflow_dispatch:
+    inputs:
+      artifact_run_id:
+        description: Optional existing signed-local-build artifact to inspect without rebuilding
+        type: string
+        default: ''
 permissions:
   contents: read
 jobs:
@@ -19,6 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
+        if: inputs.artifact_run_id == ''
         with:
           ref: 49c8992756fd505ce14710c81c3e719ae5d99d0c
           path: frozen-source
@@ -35,6 +41,7 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
       - name: Bind exact source and test validation gates
+        if: inputs.artifact_run_id == ''
         run: |
           test -n "$EXPO_TOKEN"
           mkdir cue-play-local-production-output
@@ -42,9 +49,11 @@ jobs:
           test "$(cat cue-play-local-production-output/source-commit.txt)" = '49c8992756fd505ce14710c81c3e719ae5d99d0c'
           python -B -m unittest discover -s scripts/play -p 'test_*.py'
       - name: Install frozen source
+        if: inputs.artifact_run_id == ''
         working-directory: frozen-source/apps/cue
         run: npm ci --no-audit --no-fund
       - name: Link existing project and freeze Android version
+        if: inputs.artifact_run_id == ''
         working-directory: frozen-source/apps/cue
         run: |
           eas init --id 6a599954-54e2-4010-b7ff-54640715ff1a --non-interactive --force
@@ -54,11 +63,21 @@ jobs:
           git diff -- app.json eas.json > ../../../cue-play-local-production-output/ci-config-delta.diff
           git diff --exit-code -- . ':!app.json' ':!eas.json'
       - name: Build signed Android AAB with existing managed credentials
+        if: inputs.artifact_run_id == ''
         working-directory: frozen-source/apps/cue
         env:
           EAS_LOCAL_BUILD_WORKINGDIR: ${{ runner.temp }}/cue-eas-local-work
         run: eas build --local --platform android --profile play-production --non-interactive --output "$GITHUB_WORKSPACE/cue-play-local-production-output/cue-production.aab"
+      - uses: actions/download-artifact@v4
+        if: inputs.artifact_run_id != ''
+        with:
+          name: cue-play-local-production
+          path: cue-play-local-production-output
+          run-id: ${{ inputs.artifact_run_id }}
+          github-token: ${{ github.token }}
       - name: Inspect signed bundle using the common production gates
+        env:
+          BUILD_ARTIFACT_RUN_ID: ${{ inputs.artifact_run_id }}
         run: python scripts/play/verify_local_aab.py cue-play-local-production-output
       - uses: actions/upload-artifact@v4
         if: always()
