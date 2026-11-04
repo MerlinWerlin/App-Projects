@@ -15,12 +15,14 @@ import Darwin
     }
     app.launch()
     XCTAssertTrue(app.staticTexts["Whole looks: wallpaper, icons, widgets and a loop."].waitForExistence(timeout: 30))
-    let ready = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("glaze-deeplink-ready")
-    try FileManager.default.createDirectory(at: ready.deletingLastPathComponent(), withIntermediateDirectories: true)
-    try Data("ready".utf8).write(to: ready, options: .atomic)
-    print("GLAZE_DEEPLINK_READY"); fflush(stdout)
-    let open = spring.alerts.buttons["Open"]
-    if open.waitForExistence(timeout: 20) { open.tap() }
+    app.buttons["Widgets"].firstMatch.tap()
+    XCTAssertTrue(app.staticTexts["Widgets that match your theme. Tap one to make it yours."].waitForExistence(timeout: 20))
+    let album = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", "Photo album")).firstMatch
+    for _ in 0..<14 { if album.exists && album.isHittable { break }; app.swipeUp() }
+    XCTAssertTrue(album.exists && album.isHittable, app.debugDescription); album.tap()
+    let medium = app.buttons["Medium"].firstMatch
+    for _ in 0..<8 { if medium.exists && medium.isHittable { break }; app.swipeUp() }
+    XCTAssertTrue(medium.exists && medium.isHittable, app.debugDescription); medium.tap()
     let choose = app.buttons["Choose photos"].firstMatch
     for _ in 0..<12 {
       if choose.exists && choose.isHittable { break }; app.swipeUp()

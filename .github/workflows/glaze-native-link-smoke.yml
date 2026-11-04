@@ -82,9 +82,13 @@ jobs:
           if [[ "$GLAZE_UI_SCENARIO" == album ]]; then TEST=GlazeLinkUITests/GlazeAlbumPickerTests/testSelectedPhotosReachNativeAlbum; fi
           xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -destination "platform=iOS Simulator,id=$DEVICE" -derivedDataPath "$RUNNER_TEMP/link-build" -parallel-testing-enabled NO -resultBundlePath "$RUNNER_TEMP/glaze-link.xcresult" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO "-only-testing:$TEST" test-without-building > "$RUNNER_TEMP/glaze-link-test.log" 2>&1 &
           LINK_PID=$!
-          if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then
+          if [[ "$GLAZE_UI_SCENARIO" == widget || "$GLAZE_UI_SCENARIO" == album ]]; then
             if ! wait "$LINK_PID"; then tail -160 "$RUNNER_TEMP/glaze-link-test.log"; exit 1; fi
-            grep -F GLAZE_WIDGET_TAP_BRIDGE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
+            if [[ "$GLAZE_UI_SCENARIO" == album ]]; then
+              grep -F GLAZE_ALBUM_PICKER_DELIVERED "$RUNNER_TEMP/glaze-link-test.log"
+            else
+              grep -F GLAZE_WIDGET_TAP_BRIDGE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
+            fi
             grep -F '** TEST EXECUTE SUCCEEDED **' "$RUNNER_TEMP/glaze-link-test.log"
             exit 0
           fi
@@ -96,15 +100,8 @@ jobs:
             sleep 1
           done
           if [[ "$READY" != 1 ]]; then wait "$LINK_PID" || true; tail -120 "$RUNNER_TEMP/glaze-link-test.log"; exit 1; fi
-          URL=glaze://widgets
-          if [[ "$GLAZE_UI_SCENARIO" == album ]]; then URL='glaze://widget-studio?theme=starry-night&kind=photoAlbum&size=medium'; fi
-          xcrun simctl openurl "$DEVICE" "$URL"
+          xcrun simctl openurl "$DEVICE" glaze://widgets
           if ! wait "$LINK_PID"; then tail -160 "$RUNNER_TEMP/glaze-link-test.log"; exit 1; fi
-          if [[ "$GLAZE_UI_SCENARIO" == album ]]; then
-            grep -F GLAZE_ALBUM_PICKER_DELIVERED "$RUNNER_TEMP/glaze-link-test.log"
-            grep -F '** TEST EXECUTE SUCCEEDED **' "$RUNNER_TEMP/glaze-link-test.log"
-            exit 0
-          fi
           grep -F GLAZE_WIDGETS_ROUTE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
           grep -F '** TEST EXECUTE SUCCEEDED **' "$RUNNER_TEMP/glaze-link-test.log"
           grep -F 'Executed 1 test, with 0 failures' "$RUNNER_TEMP/glaze-link-test.log"
