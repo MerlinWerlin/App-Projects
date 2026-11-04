@@ -15,7 +15,7 @@ from apk_permissions import FORBIDDEN
 from unused_scanners import verify_scanner_manifest, verify_scanner_archive
 
 BUILD_ID = "f4821a5c-945c-4a22-8662-84c0c95ea8f7"
-SOURCE = "49c8992756fd505ce14710c81c3e719ae5d99d0c"
+SOURCE = "1290bdf42acaf5f2bd216f5443b4a83e31001d5f"
 VERSION_CODE = 4
 UPLOAD_CERT_SHA256 = "BD:CA:03:41:01:5C:37:B8:39:EA:74:69:B8:01:88:C1:EA:8C:07:00:23:43:05:8A:66:99:10:C9:83:53:AD:AB"
 BUNDLETOOL_URL = "https://github.com/google/bundletool/releases/download/1.18.3/bundletool-all-1.18.3.jar"

@@ -174,6 +174,7 @@ jobs:
           name: ${{ inputs.store_captures && 'cue-android-store-captures' || format('cue-android-simulation-{0}', matrix.page) }}
           path: |
             cue-android-output/captures/
+            cue-android-output/sdk-audit/
             cue-android-output/*.txt
             cue-android-output/*.json
             cue-android-output/*.png

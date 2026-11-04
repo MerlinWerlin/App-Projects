@@ -1,0 +1,68 @@
+name: Cue Android JS repair QA package
+on:
+  push:
+    branches: [codex/cue-android-review-access-20261105]
+    paths: ['.github/workflows/cue-play-repack-qa.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  repack:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PLAY_VARIANT: preview
+      EAS_BUILD_PLATFORM: android
+      CI: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 1290bdf42acaf5f2bd216f5443b4a83e31001d5f
+          path: candidate-source
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/download-artifact@v4
+        with:
+          name: cue-android-current-apk
+          path: native-base
+          run-id: 41897835294
+          github-token: ${{ github.token }}
+      - name: Install repaired source and prove native compatibility
+        working-directory: candidate-source/apps/cue
+        run: |
+          npm ci --no-audit --no-fund
+          mkdir "$GITHUB_WORKSPACE/cue-android-output"
+          node "$GITHUB_WORKSPACE/scripts/play/cue-repack-fingerprint.cjs" "$GITHUB_WORKSPACE/candidate-source" "$GITHUB_WORKSPACE/cue-android-output"
+          npx expo prebuild --platform android --no-install
+      - name: Export and repack JS only for QA
+        working-directory: candidate-source/apps/cue
+        run: npx --yes @expo/repack-app@0.10.4 --platform android --source-app "$GITHUB_WORKSPACE/native-base/cue-play-test.apk" --js-bundle-only --output "$RUNNER_TEMP/cue-repacked-unsigned.apk"
+      - name: Align and sign only with the public Android test key
+        run: |
+          tools="$ANDROID_HOME/build-tools/36.0.0"
+          "$tools/zipalign" -f -P 16 4 "$RUNNER_TEMP/cue-repacked-unsigned.apk" "$RUNNER_TEMP/cue-repacked-aligned.apk"
+          "$tools/apksigner" sign --ks candidate-source/apps/cue/android/app/debug.keystore --ks-key-alias androiddebugkey --ks-pass pass:android --key-pass pass:android --out cue-android-output/cue-play-test.apk "$RUNNER_TEMP/cue-repacked-aligned.apk"
+          cp native-base/config.json cue-android-output/config.json
+          cp native-base/runtime-dependencies.txt cue-android-output/runtime-dependencies.txt
+          git -C candidate-source rev-parse HEAD > cue-android-output/source-commit.txt
+          "$tools/apksigner" verify --verbose --print-certs cue-android-output/cue-play-test.apk > cue-android-output/signature.txt
+          "$tools/aapt" dump badging cue-android-output/cue-play-test.apk > cue-android-output/badging.txt
+          "$tools/aapt" dump xmltree cue-android-output/cue-play-test.apk AndroidManifest.xml > cue-android-output/manifest.txt
+          "$tools/zipalign" -c -P 16 -v 4 cue-android-output/cue-play-test.apk > cue-android-output/zipalign.txt
+          python scripts/play/verify_qa_repack.py native-base/cue-play-test.apk cue-android-output/cue-play-test.apk cue-android-output
+          python scripts/play/verify_apk.py cue-android-output/cue-play-test.apk cue-android-output
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cue-android-current-apk
+          path: cue-android-output/
+          if-no-files-found: ignore
+          retention-days: 14
