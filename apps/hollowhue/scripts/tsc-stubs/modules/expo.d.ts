@@ -416,4 +416,3 @@ declare module 'expo-updates' {
   export function fetchUpdateAsync(): Promise<{ isNew: boolean; isRollBackToEmbedded: boolean }>;
   export function reloadAsync(): Promise<void>;
 }
-

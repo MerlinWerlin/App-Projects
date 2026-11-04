@@ -1,5 +1,14 @@
 # Run log
 
+- 2026-11-04 (Codex, Jared's request to continue; target TestFlight on iPhone): resumed phase 2 in
+  isolated `Apps/hollowhue-update`. Added four-level Hidden Library and Owlwood Forest, custom HSV/hex
+  colours and ten persistent recent colours, a visible release marker and Settings update check/apply.
+  Serialized retryable saves are awaited before an update reload. Kept original scene IDs/progress,
+  native dependency versions and runtime 0.1.0. Corrected stale first-build status: build 2 and PR188 OTA
+  were already delivered on 1 November; public production manifest still served that OTA on 4 November.
+  38 tests, full/stub strict typechecks and iOS/Hermes export pass; art raster previews reviewed.
+  Native iPhone simulator QA and this update's publication are pending; PR211 is draft.
+
 - 2026-11-01 (Claude, from Jared's brief): Started Hollowhue. Pure-TS core (SVG path flattening and even-odd hit
   tests, nested level layout, camera/zoom maths, reveal + culling, progress with undo/redo), four scenes (Bookshop Lane
   4 levels, Endless Mandala 3 levels, Café Window, Dinosaur Jungle; about 1,950 colourable shapes), canvas with

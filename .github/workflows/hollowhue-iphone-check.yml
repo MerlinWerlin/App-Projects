@@ -2,7 +2,7 @@ name: Hollowhue iPhone checks
 on:
   push:
     branches: ['codex/hollowhue-*']
-    paths: ['apps/hollowhue/**', '.github/workflows/hollowhue-iphone-check.yml']
+    paths: ['apps/hollowhue/app/**', 'apps/hollowhue/src/**', 'apps/hollowhue/app.json', 'apps/hollowhue/package*.json', 'apps/hollowhue/scripts/iphone-flow.yaml']
   workflow_dispatch:
     inputs:
       simulator_run_id:
@@ -87,7 +87,6 @@ jobs:
           devices=json.load(open(os.environ['RUNNER_TEMP']+'/hollowhue-devices.json'))['devices']
           all_devices=[d for runtime,ds in sorted(devices.items(),reverse=True) if 'iOS' in runtime for d in ds]
           phone=next((d for d in all_devices if d['name']=='iPhone 16'),None) or next(d for d in all_devices if 'iPhone' in d['name'] and 'Max' not in d['name'] and 'Plus' not in d['name'])
-          tablet=next(d for d in all_devices if 'iPad Pro 13' in d['name'] or 'iPad Pro (12.9-inch)' in d['name'])
           with open(os.environ['RUNNER_TEMP']+'/hollowhue-targets.txt','w') as f:
               for name,d in [('iphone',phone)]:
                   f.write(name+' '+d['udid']+'\n')
