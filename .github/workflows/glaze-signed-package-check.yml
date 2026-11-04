@@ -1,4 +1,5 @@
 name: Glaze existing signed package check
+# Read-only verification of an already-built IPA; no signing or Apple service mutations.
 on:
   push:
     branches: ['codex/glaze-theme-release-20261101']
