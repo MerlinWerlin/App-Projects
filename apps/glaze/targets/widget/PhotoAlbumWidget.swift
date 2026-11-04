@@ -97,6 +97,7 @@ struct PhotoAlbumWidgetView: View {
   var reviewImage: UIImage? = nil
   var body: some View {
     let image = reviewImage ?? PhotoAlbumStore.image(entry.photoRef)
+    let emptyTheme = albumPlaceholderTheme(entry.theme)
     Group {
       if let design = entry.design, let image {
         SavedWidgetView(design: design, date: entry.date, albumImage: image)
@@ -104,13 +105,21 @@ struct PhotoAlbumWidgetView: View {
         VStack(alignment: .leading, spacing: 8) {
           Image(systemName: "photo.on.rectangle.angled").font(.system(size: 24))
           Text("Choose album photos in Glaze").font(.system(size: 14, weight: .semibold)).lineLimit(4).minimumScaleFactor(0.75)
-        }.foregroundStyle(entry.theme.inkColor).padding(16)
+        }.foregroundStyle(emptyTheme.inkColor).padding(16)
           .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
-          .containerBackground(for: .widget) { GlazeBackground(theme: entry.theme) }
+          .containerBackground(for: .widget) { GlazeBackground(theme: emptyTheme) }
       }
     }
     .widgetURL(URL(string: "glaze://widgets"))
   }
+}
+
+/// Empty albums keep the palette's real stops; system glass can wash them out unpredictably.
+func albumPlaceholderTheme(_ theme: WidgetTheme) -> WidgetTheme {
+  var result = theme
+  result.style = .solid
+  result.ink = HabitColours.resolve(theme.ink, stops: theme.backgroundHexes, secondary: false)
+  return result
 }
 
 struct PhotoAlbumWidget: Widget {

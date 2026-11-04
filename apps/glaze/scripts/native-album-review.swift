@@ -78,6 +78,15 @@ import CryptoKit
             let root = try JSONSerialization.jsonObject(with: Data(contentsOf: fixture)) as? [String: Any],
             let cases = root["cases"] as? [[String: Any]] else { throw NSError(domain: "AlbumContract", code: 2) }
       let date = Date(timeIntervalSince1970: 1800000000)
+      let palettes = root["palettes"] as! [[String: Any]]
+      try check(palettes.count == 105, "All release palettes present")
+      for raw in palettes {
+        let theme = try JSONDecoder().decode(WidgetTheme.self, from: JSONSerialization.data(withJSONObject: raw))
+        let empty = albumPlaceholderTheme(theme)
+        try check(empty.style == .solid, "Empty state avoids material wash")
+        try check(empty.bg == theme.bg, "Empty state retains source palette")
+        try check(HabitColours.samples(empty.backgroundHexes).allSatisfy { HabitColours.contrast(empty.ink, $0) >= 4.5 }, "Empty state text readable across source gradient")
+      }
       var records: [[String: Any]] = []
       for c in cases where c["language"] as? String == language {
         let theme = try JSONDecoder().decode(WidgetTheme.self, from: JSONSerialization.data(withJSONObject: c["nativeTheme"]!))
@@ -102,7 +111,7 @@ import CryptoKit
             .environment(\.layoutDirection, language == "ar" ? .rightToLeft : .leftToRight)
             // containerBackground is installed by WidgetKit in production; this isolated host
             // must supply the same actual background when rendering an empty/missing image.
-            .background { GlazeBackground(theme: theme) }
+            .background { GlazeBackground(theme: albumPlaceholderTheme(theme)) }
           let renderer = ImageRenderer(content: view); renderer.scale = 2
           guard let rendered = renderer.uiImage, let data = rendered.pngData() else { throw NSError(domain: "AlbumContract", code: 3) }
           let file = "\(c["id"]!)_\(state).png"

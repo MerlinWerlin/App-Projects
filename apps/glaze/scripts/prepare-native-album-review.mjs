@@ -5,7 +5,8 @@ import {TRANSLATIONS} from '../src/i18n/locales/index.ts';
 import {en} from '../src/i18n/locales/en.ts';
 import {lookup} from '../src/core/i18n.ts';
 const ids = ['001-alpine-starlight','005-rainlight','014-frostglass-passage','025-lavender-nocturne','062-froggy-picnic','063-boba-bear-club'];
-const profiles = JSON.parse(readFileSync('docs/native-habit-review-profiles.json','utf8')).themes.filter(t => ids.includes(t.id));
+const palettes = JSON.parse(readFileSync('docs/native-habit-review-profiles.json','utf8')).themes;
+const profiles = palettes.filter(t => ids.includes(t.id));
 if (profiles.length !== 6) throw Error('Missing review palette');
 const cases = [];
 const longCaptions = {
@@ -24,5 +25,5 @@ for (const [language, translations] of Object.entries({en,...TRANSLATIONS})) for
     {translate: k => lookup(translations,k) ?? k, now:new Date('2026-11-04T00:00:00Z')}));
   cases.push({id:`${language}_${theme.id}_${size}`,language,size,nativeTheme:theme.nativeTheme,raw:payload.catalogue.specs[0],texts:payload.catalogue.texts[spec.id]});
 }
-writeFileSync(process.argv[2] ?? 'docs/native-album-review.json', JSON.stringify({schema:'GLAZE_ALBUM_EDITOR_FIXTURES_V1',cases})+'\n');
+writeFileSync(process.argv[2] ?? 'docs/native-album-review.json', JSON.stringify({schema:'GLAZE_ALBUM_EDITOR_FIXTURES_V1',cases,palettes:palettes.map(t=>t.nativeTheme)})+'\n');
 console.log('Prepared',cases.length,'real editor album designs');
