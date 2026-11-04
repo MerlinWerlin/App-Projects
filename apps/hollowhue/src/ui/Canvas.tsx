@@ -155,12 +155,15 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
 
   const onLayout = (e: LayoutChangeEvent) => {
     const { width, height } = e.nativeEvent.layout;
+    if (width <= 0 || height <= 0) return;
     const first = scRef.current.w === 0;
+    const oldFit = first ? null : fitCamera(L, scRef.current);
+    const wasFit = !oldFit || (Math.abs(camRef.current.z / oldFit.z - 1) < 0.01 && Math.abs(camRef.current.cx - oldFit.cx) < 1 && Math.abs(camRef.current.cy - oldFit.cy) < 1);
     const s = { w: width, h: height };
     scRef.current = s;
     setSc(s);
-    // First layout: show the whole scene. Rotation: keep the same view, re-clamped.
-    commitCam(first ? fitCamera(L, s) : camRef.current, true);
+    // Keep a fitted scene wholly visible when the tray grows; preserve a deliberate zoom/pan.
+    commitCam(wasFit ? fitCamera(L, s) : camRef.current, true);
   };
 
   const ready = sc.w > 0 && sc.h > 0;

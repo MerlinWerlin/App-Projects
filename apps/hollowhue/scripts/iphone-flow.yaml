@@ -34,6 +34,7 @@ appId: com.jared797.hollowhue
 - eraseText: 7
 - inputText: '#3388DD'
 - pressKey: Enter
+- takeScreenshot: 03-colour-picker
 - scrollUntilVisible:
     element:
       text: Use this colour
@@ -58,6 +59,12 @@ appId: com.jared797.hollowhue
     timeout: 20000
 - tapOn: Open Owlwood Forest
 - tapOn: Draw
+- swipe:
+    start: '30%,30%'
+    end: '55%,35%'
+    duration: 500
+- tapOn: Undo
+- tapOn: Redo
 - takeScreenshot: 05-phone-draw-tools
 - assertVisible: 'Recent colour #3388DD'
 - tapOn: Look closer

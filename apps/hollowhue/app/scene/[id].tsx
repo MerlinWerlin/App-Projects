@@ -37,7 +37,8 @@ function Colouring({ sceneId }: { sceneId: string }) {
   const L = layout(scene);
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
+  const [trayHeight, setTrayHeight] = useState(240);
   const { c } = useColors();
   const h = useHaptics();
   const settings = useSettings();
@@ -139,10 +140,12 @@ function Colouring({ sceneId }: { sceneId: string }) {
   const wide = width >= 700;
   const panelW = Math.min(width - space.lg * 2, 760);
   const swatchSize = 40;
+  const trayMaxHeight = Math.max(120, height * 0.45);
 
   return (
     <View style={{ flex: 1, backgroundColor: c.canvas }}>
-      <Canvas
+      <View style={{ position: 'absolute', left: space.md, right: space.md, top: insets.top + 84, bottom: insets.bottom + space.md + trayHeight + space.sm }}>
+        <Canvas
         ref={canvas}
         L={L}
         progress={progress}
@@ -154,7 +157,8 @@ function Colouring({ sceneId }: { sceneId: string }) {
         onEdit={onEdit}
         onFocus={onFocus}
         onTouchStart={() => setHint(false)}
-      />
+        />
+      </View>
 
       {/* top bar */}
       <View
@@ -178,11 +182,11 @@ function Colouring({ sceneId }: { sceneId: string }) {
             accessibilityRole="header"
             style={{ backgroundColor: c.card, borderRadius: radius.pill, paddingHorizontal: space.lg, paddingVertical: space.sm, borderWidth: 1, borderColor: c.line, maxWidth: '100%' }}
           >
-            <Text style={[ty.bodyBold, { color: c.ink, textAlign: 'center' }]} numberOfLines={1}>
+            <Text style={[ty.bodyBold, { color: c.ink, textAlign: 'center', fontSize: wide ? 16 : 14 }]} numberOfLines={1}>
               {tx(`scene.${scene.id}.title`)}
             </Text>
             {depthTotal > 1 ? (
-              <Text style={[ty.small, { color: c.ink3, textAlign: 'center' }]} numberOfLines={1}>
+              <Text style={[ty.small, { color: c.ink3, textAlign: 'center', fontSize: wide ? 13 : 11 }]} numberOfLines={1}>
                 {t('level.where', { name: tx(`scene.${scene.id}.level.${focusLevel.id}`), i: focusLevel.depth + 1, n: depthTotal })}
               </Text>
             ) : null}
@@ -223,7 +227,8 @@ function Colouring({ sceneId }: { sceneId: string }) {
       ) : null}
 
       {/* tools + palette */}
-      <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, bottom: insets.bottom + space.md, alignItems: 'center' }}>
+      <View pointerEvents="box-none" onLayout={(e) => setTrayHeight(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 0, right: 0, bottom: insets.bottom + space.md, alignItems: 'center', maxHeight: trayMaxHeight }}>
+        <ScrollView style={{ width: panelW, maxHeight: trayMaxHeight }} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
         {hint ? (
           <View pointerEvents="none" style={{ marginBottom: space.sm, backgroundColor: c.card, borderRadius: radius.md, paddingHorizontal: space.md, paddingVertical: space.sm, maxWidth: panelW }}>
             <Text style={[ty.small, { color: c.ink2, textAlign: 'center' }]}>{erasing ? (mode === 'fill' ? t('hint.eraseFill') : t('hint.eraseDraw')) : mode === 'fill' ? t('hint.fill') : t('hint.draw')}</Text>
@@ -371,6 +376,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
             </View>
           ) : null}
         </View>
+        </ScrollView>
       </View>
       {picking ? <ColourPicker initial={color} onClose={() => setPicking(false)} onChoose={(col) => { chooseColor(col); setPicking(false); }} /> : null}
     </View>
