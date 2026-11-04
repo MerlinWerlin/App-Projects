@@ -5,6 +5,22 @@ Work started from App-Projects main at dc444372ca15ba1c88d9badca11d67e0d20b56b7,
 with Cue-only Android preparation in codex/cue-google-play-release-20261103.
 The older October test APK is not the release candidate.
 
+## Android-only release direction
+
+On 4 November Jared clarified that this release is for Android, not TestFlight.
+A separate Claude App Factory ship run created PR206 after PR200 merged,
+changed only RELEASE.json, and triggered the legacy iOS ship workflow at
+12:22 Sydney time (run41753643435 succeeded). This was not the Android
+production workflow. The original Android PR did not change RELEASE.json.
+
+`ops/release-policy.json` now records Android-only intent separately from
+RELEASE.json. Both legacy ship.yml and ship-mac.yml must check that policy
+before Expo access; Cue's iOS builds and OTA releases fail closed. Inferred
+source changes or an automated RELEASE.json bump cannot authorise TestFlight.
+A later explicit owner decision is required to enable iOS shipping again.
+The completed TestFlight upload is not undone by this guard. The validated
+Android AAB and its existing evidence remain the Google Play candidate.
+
 ## Verified so far
 
 - Latest candidate is c809ffd, which adds bounded Android acknowledgement

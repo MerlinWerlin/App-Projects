@@ -1,0 +1,6 @@
+{
+  "target": "android",
+  "iosReleaseEnabled": false,
+  "ownerDecision": "2026-11-04: Jared clarified Cue is going to Android, not TestFlight.",
+  "note": "Do not change this policy from inferred source changes or RELEASE.json updates. A new explicit owner decision is required to enable iOS releases. Use cue-play-production for Android; Google account approval and billing QA remain required."
+}
