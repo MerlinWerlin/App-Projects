@@ -1,5 +1,15 @@
 # Satchel run log
 
+**4 November 2026 - Codex map release:** PR201 merged as64bbc92 after Jared continued the reviewed release.
+Ship41782740556 installed dependencies, exported the full iOS JS bundle and published production runtime0.1.0,
+update group9034d409-f5e6-45e0-85e3-709bebbc6dfd. Main map run41782742602 passed1,850app+6collector checks,
+the app pack parsers, complete coverage and512px PNGs, then published `satchel-maps-v1`. Unauthenticated public
+catalog and tar downloads match CI bytes/hashes:2,177tiles/29,515places. All three release mosaics reviewed.
+One Kyoto capacity error recovered on attempt3; earlier preview/failures retained. Phone update uptake,
+native download/unpack, restart/flight-mode and PDF import remain owner checks. No App Store submission or
+new native build claimed. See docs/MAP_PACKS.md for live pack sizes and source receipts. Factory run fields below
+are historical; the map-only owner action and release checklist now reflect publication.
+
 - 2026-10-24 · set up (serverless, flight-mode first rewrite of the 12 Oct plan); backlog T00–T17, TRIAL = T00–T10.
 - 2026-10-24 20:50 Sydney · run 1: T00 (starter standard -> T18-T23), T01 scaffold (Expo SDK 57, router tabs + stack, tokens, motion, i18n, splash hold, route-flash test, eas profiles, placeholder icon), T02 core model/tz/timeline (DST + dateline tests), T03 trips UI + demo trip. 32 tests green; core typecheck + typecheck:ui + ui-check clean (no stub-only errors left; stubs extended for tab options and Space Grotesk). npm registry unreachable: full install + tsc + expo export needs PC verification. Oversight v133: no directives or patches for travel. No owner comments. OpenAI drops (arrived 20:38 Sydney, mid-run): spec pack -> docs/spec, emergency numbers -> src/content (all 'source pending': no dated sources; T25), packing templates + OSM POI tags -> src/content, MAP_SPIKE -> docs/research; spec tasks T25-T26; MANIFESTs stamped 0da4de7. PC copy at Desktop\Apps\satchel; _auto does not serve satchel yet (auto-start comes at trial, port 8098). Removed `expo install expo@latest` from the trial scripts (would jump to SDK 58). Follow-up T24 (date/time pickers).
 - 2026-10-24 21:15 Sydney · run 2 (manual fire): prep commit 624d886 (per-feature string files, pre-registered routes, UI slots, persisted store, files adapter, deps) then 4 parallel worktree workers: T04 tickets + wallet (f932ca2), T05 emergency + address card (204f94c), T06 document vault + Face ID lock (0c8e7a6), T08 packing lists (debe52d); merged one at a time, suite green after each. 84 tests; core typecheck + typecheck:ui + ui-check clean. Stub-only (unverified, PC to confirm): expo-brightness, expo-sharing, expo-contacts, expo-local-authentication stubs written from the SDK API. Full install + tsc + expo export needs PC verification. No new oversight directives (v133), no owner comments, no new OpenAI drops. Follow-ups T27 (paths, shortcuts, modal discard, trip delete cleanup) and T28 (native polish).

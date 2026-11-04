@@ -55,8 +55,40 @@ in those samples. The strict UI stub typecheck also passed; this is not a full E
 
 The run artifact `satchel-city-maps-41722754832` contains the packs, catalog, request receipts, previews and
 `verification.json`. It is retained for 14 days; the owner checkout also retains the downloaded artifact and
-local validation under `output/map-build-attempt-3`. These packs are review artifacts, not published downloads.
-Approved merge/publication and the iPhone flight-mode check above remain required.
+local validation under `output/map-build-attempt-3`. These are the earlier preview packs; the published release
+and public-download checks are recorded below. The iPhone flight-mode check remains outstanding.
+
+### Live release, 4 November 2026
+
+[PR201](https://github.com/MerlinWerlin/App-Projects/pull/201) is merged as `64bbc92`.
+[Production ship 41782740556](https://github.com/MerlinWerlin/App-Projects/actions/runs/41782740556)
+installed dependencies, exported the full iOS JS bundle and published to channel `production`, runtime `0.1.0`.
+Update group: `9034d409-f5e6-45e0-85e3-709bebbc6dfd`. Installed-phone uptake has not been verified.
+
+[Map publication 41782742602](https://github.com/MerlinWerlin/App-Projects/actions/runs/41782742602)
+passed all 1,850 app tests, six collector checks and the all-city pack verifier, then published
+[`satchel-maps-v1`](https://github.com/MerlinWerlin/App-Projects/releases/tag/satchel-maps-v1).
+The production [catalog URL](https://github.com/MerlinWerlin/App-Projects/releases/download/satchel-maps-v1/catalog.json)
+and all three pack URLs were downloaded without authentication and checked independently. Catalog and archive
+bytes match the verified CI artifact; archive metadata, place counts and all 2,177 tile dimensions match.
+The three release mosaics were visually reviewed again. One Kyoto cell recovered from capacity errors on its
+third attempt with the configured cooldown; no partial data was packaged.
+
+| Published city | Download size (decimal MB) | Tiles | Places, including toilets |
+| --- | ---: | ---: | ---: |
+| Kyoto | 34.3 | 811 | 5,412 |
+| Tokyo (central) | 56.6 | 985 | 20,021 |
+| Sydney (city) | 16.5 | 381 | 4,082 |
+
+These are the live counts; the preceding table describes the earlier preview snapshot. Source data and map packs
+are retained in `satchel-city-maps-41782742602` (14-day CI retention). The owner checkout retains the artifact,
+public downloads, logs and comparison receipts under `output/map-publish-20261104-artifact` and
+`output/satchel-maps-live-20261104`, with receipts alongside them.
+
+**Next phone check:** open Satchel online, let it fetch the update, then close and reopen it. Map > Offline city maps >
+Sydney > Download > Show on map is the smallest initial test (about 16.5 MB). Enable flight mode, close and reopen
+Satchel, and check streets, labels and real places inside the city area. A desktop pack check does not establish
+native installation, rendering, restart behavior or actual flight-mode success.
 
 **What the app does.** Map tab > Offline city maps lists the cities in
 `https://github.com/MerlinWerlin/App-Projects/releases/download/satchel-maps-v1/catalog.json`.
