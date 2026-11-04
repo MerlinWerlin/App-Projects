@@ -7,6 +7,12 @@ import Darwin
     continueAfterFailure = false
     let glaze = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    // CI runner only. Xcode26 exposes this private XCTest switch (also recorded in
+    // Appium's SDK26.4 XCUIApplication header); never linked into the shipped app.
+    // Live clocks/repeating artwork do not become animation-idle. Keep explicit content waits.
+    for app in [glaze, spring] where app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) {
+      app.setValue(false, forKey: "idleAnimationWaitEnabled")
+    }
     defer {
       let picture = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
       picture.name = "widget-tap-final-screen"; picture.lifetime = .keepAlways; add(picture)
@@ -51,11 +57,22 @@ import Darwin
     let search = spring.searchFields.firstMatch
     XCTAssertTrue(search.waitForExistence(timeout: 10), spring.debugDescription)
     search.tap(); search.typeText("Glaze")
+    let searchKey = spring.keyboards.buttons["Search"].firstMatch
+    if searchKey.exists && searchKey.isHittable { searchKey.tap() }
+    let gallery = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); gallery.name = "gallery-search-glaze"; gallery.lifetime = .keepAlways; add(gallery)
+    print("GLAZE_GALLERY_TREE\n" + spring.debugDescription); fflush(stdout)
     let result = spring.buttons["Glaze"].firstMatch
     if result.waitForExistence(timeout: 5) { result.tap() }
     else {
       let title = spring.staticTexts["Glaze"].firstMatch
-      XCTAssertTrue(title.waitForExistence(timeout: 5), spring.debugDescription); title.tap()
+      XCTAssertTrue(title.waitForExistence(timeout: 10), spring.debugDescription)
+      if title.isHittable { title.tap() }
+      else {
+        // Remote WidgetKit gallery labels may report a frame but no hit point. Use that
+        // observed label's centre; the subsequent Water/widget/value checks still must pass.
+        XCTAssertGreaterThan(title.frame.width, 1)
+        title.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+      }
     }
     for _ in 0..<45 {
       if spring.staticTexts["Water"].firstMatch.exists { break }
