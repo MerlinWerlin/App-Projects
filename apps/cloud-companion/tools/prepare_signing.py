@@ -28,6 +28,7 @@ def main():
     if not team: raise RuntimeError('Existing APPLE_TEAM_ID repository secret is unavailable')
     with open(os.environ['GITHUB_ENV'], 'a') as env:
         env.write(f'CLOUD_KEY_PATH={key}\nCLOUD_KEY_ID={asc.KID()}\nCLOUD_ISSUER_ID={asc.ISS()}\nCLOUD_TEAM_ID={team}\n')
+        env.write(f'CLOUD_ASC_APP_ID={apps[0]["id"] if apps else ""}\n')
     Path('output').mkdir(exist_ok=True)
     Path('output/signing-preflight.json').write_text(json.dumps({
         'existing_api_key_authenticated': True, 'app_record_exists': bool(apps),
