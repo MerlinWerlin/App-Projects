@@ -29,7 +29,8 @@ export function designedWidgetSvg(d: DesignedWidget, size: HomeOptionSize, value
     // renderer measures actual locale glyphs instead of estimating.
     const estimated = [...value].length * fs * 0.57;
     const fitted = Math.max(fs * 0.64, Math.min(fs, fs * width / Math.max(1, estimated)));
-    elements.push(`<text x="${x}" y="${y}" font-size="${fitted}" font-weight="${weight}" fill="${color}" text-anchor="${anchor}" dominant-baseline="central">${esc(value)}</text>`);
+    // react-native-svg uses alignmentBaseline; browsers also honour dominant-baseline.
+    elements.push(`<text x="${x}" y="${y}" font-size="${fitted}" font-weight="${weight}" fill="${color}" text-anchor="${anchor}" dominant-baseline="central" alignment-baseline="central">${esc(value)}</text>`);
   };
   const num = (n: number, digits = 1) => new Intl.NumberFormat(locale, { useGrouping: false, minimumIntegerDigits: digits }).format(n);
   const fmt = (options: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat(locale, options).format(date);
