@@ -65,11 +65,16 @@ jobs:
         run: |
           npx expo prebuild --platform android --no-install
           mkdir -p ../../cue-android-output
+          cp android/gradle.properties ../../cue-android-output/gradle.properties
+          npx expo-modules-autolinking resolve --platform android --json > ../../cue-android-output/autolinking.json
           npx expo config --type public --json > ../../cue-android-output/config.json
           node -e 'const c=require("../../cue-android-output/config.json");if(c.android.package!=="com.jared797.cue.playtest"||c.updates.enabled!==false)throw Error("Expected isolated offline test variant")'
       - name: Build actual standalone test APK
         working-directory: apps/cue/android
         run: ./gradlew :app:assembleRelease --no-daemon --max-workers=2 -PreactNativeArchitectures=arm64-v8a,x86_64 -Dorg.gradle.jvmargs=-Xmx4g
+      - name: Capture final runtime dependency resolution
+        working-directory: apps/cue/android
+        run: ./gradlew :app:dependencies --configuration releaseRuntimeClasspath --console=plain > ../../../cue-android-output/runtime-dependencies.txt
       - name: Inspect actual APK
         run: |
           cp apps/cue/android/app/build/outputs/apk/release/app-release.apk cue-android-output/cue-play-test.apk
