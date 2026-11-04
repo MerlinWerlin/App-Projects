@@ -112,18 +112,16 @@ jobs:
               return {'id':g['id'],'name':a.get('name'),'internal':a.get('isInternalGroup'),'allBuilds':a.get('hasAccessToAllBuilds')}
           report={'schema':'GLAZE_TESTFLIGHT_READONLY_STATUS_V1','observedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),
                   'appId':app_id,'bundleId':app['bundleId'],'groups':[group(g) for g in groups],
-                  'builds':[],'appleMutations':False,'phoneInstalledBuildObserved':False}
+                  'builds':[],'appleMutations':False,'phoneInstalledBuildObserved':False,'explicitGroupMembershipQueried':False}
           builds=asc.get('/v1/builds',**{'filter[app]':app_id,'sort':'-uploadedDate','limit':5})['data']
           for b in builds:
               a=asc.attrs(b);path='/v1/builds/'+b['id']
               version=asc.attrs(asc.get(path+'/preReleaseVersion')['data'])
               beta=asc.attrs(asc.get(path+'/buildBetaDetail')['data'] or {})
-              related=asc.get(path+'/betaGroups',limit=50)['data']
               report['builds'].append({'id':b['id'],'version':version.get('version'),'build':a.get('version'),
                   'uploadedAt':a.get('uploadedDate'),'processingState':a.get('processingState'),
                   'expired':a.get('expired'),'expiresAt':a.get('expirationDate'),
-                  'internalBuildState':beta.get('internalBuildState'),'externalBuildState':beta.get('externalBuildState'),
-                  'groups':[group(g) for g in related]})
+                  'internalBuildState':beta.get('internalBuildState'),'externalBuildState':beta.get('externalBuildState')})
           pathlib.Path('glaze-testflight-status.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
           print(json.dumps({'builds':report['builds'],'groups':report['groups']},indent=2))
           PY
