@@ -1,41 +1,29 @@
 {
   "schema": "GLAZE_TESTFLIGHT_DELIVERY_20261104",
-  "recordedAt": "2026-11-04T17:46:51.954273+11:00",
+  "recordedAt": "2026-11-04T19:19:53.011727+11:00",
   "version": "1.0.2",
-  "build": "25",
-  "sourcePR": "https://github.com/MerlinWerlin/App-Projects/pull/210",
-  "sourceCommit": "60cbfaee0251e57472843d20a78c49c8d3de176e",
-  "easBuildId": "cb1faa1e-c5b0-4eeb-b10d-566a7ccaed05",
-  "easSubmissionId": "adbf6f01-47c8-4af0-a107-7ce76981279d",
+  "build": "27",
+  "sourcePR": "https://github.com/MerlinWerlin/App-Projects/pull/219",
+  "sourceCommit": "d5a6f03ce0bb09179fb7b1eee5944a6fc5f82823",
+  "easBuildId": null,
+  "easSubmissionId": "b2c18f26-2a18-4aec-a1d6-2cec428a4fd1",
   "appleBuild": {
-    "id": "8b4f0313-4ca9-4e74-b7ae-3330cbb90c79",
+    "id": "056428bb-3094-4a24-9ed4-25608e3d7af8",
     "version": "1.0.2",
-    "build": "25",
-    "uploadedAt": "2026-11-03T22:42:50-08:00",
+    "build": "27",
+    "uploadedAt": "2026-11-04T00:13:36-08:00",
     "processingState": "VALID",
     "expired": false,
-    "expiresAt": "2027-02-01T22:42:50-08:00",
+    "expiresAt": "2027-02-02T00:13:36-08:00",
     "internalBuildState": "IN_BETA_TESTING",
     "externalBuildState": "READY_FOR_BETA_SUBMISSION"
   },
-  "appleObservedAt": "2026-11-04T07:36:13.004857+00:00",
+  "appleObservedAt": "2026-11-04T08:18:03.730812+00:00",
   "internalGroup": {
     "id": "a83240a1-58c5-4c81-83d8-1366a12cc0ff",
     "name": "Team (Expo)",
     "internal": true,
     "allBuilds": true
-  },
-  "signedPackage": {
-    "schema": "GLAZE_EXISTING_SIGNED_PACKAGE_CHECK_V1",
-    "harnessSourceSHA": "91ef0493eef4dbe5383af37cb023c524ba308507",
-    "expectedVersion": "1.0.2",
-    "expectedBuild": "25",
-    "createdNewBuild": false,
-    "uploadedToApple": false,
-    "physicalDeviceExecution": false,
-    "packageSHA256": "941baeb8f7b084ea32b70d792dda84a719ae6d14272c6d9ad85a89a354d86fc8",
-    "packageBytes": 34380268,
-    "signedGroupPreflightPassed": true
   },
   "library": {
     "themes": 141,
@@ -187,7 +175,17 @@
       "replacementBuildRequired": true,
       "immutableAssetsOverwritten": false
     },
-    "UTF8OriginalMetadataPreserved": true
+    "UTF8OriginalMetadataPreserved": true,
+    "legacyFinal": {
+      "observedAt": "2026-11-04T08:17:56.648971+00:00",
+      "oldCatalogueDigestUnchanged": true,
+      "oldCatalogueSHA256": "41a87b487fb7808b6004de1341bf8af2112c06ca8d7150d2c794bb234e140778",
+      "unchangedOldAssets": {
+        "glaze-packs-v2": 684,
+        "glaze-packs-v3": 682,
+        "glaze-packs-v4": 642
+      }
+    }
   },
   "checks": {
     "corePassed": 1903,
@@ -206,13 +204,13 @@
       41785217911,
       41785221314
     ],
-    "signedAndAppleRun": 41787403172,
-    "finalAppleRun": 41793393674
+    "finalAppleRun": 41798413254,
+    "initialSignedPackageRun": 41787403172
   },
   "physicalDeviceTested": false,
   "publicAppReviewSubmitted": false,
-  "remaining": "Ship and verify replacement build26 with catalogRequestUrl freshness fix. Dedicated themed widget redesign remains unfinished; no public App Review submission.",
-  "state": "BUILD25_AVAILABLE_REPLACEMENT26_REQUIRED_FOR_CATALOGUE_CACHE_FIX",
+  "remaining": "Dedicated themed-widget redesign and physical iPhone QA remain unfinished. No further build/upload or owner approval is pending for this delivery.",
+  "state": "TESTFLIGHT_AVAILABLE_THEMED_WIDGET_DESIGN_HELD",
   "designGate": {
     "result": "FAIL for automatic reused-art editions; technical tests are not design approval",
     "reviewedThemes": 105,
@@ -225,14 +223,46 @@
     "draftOnly": "v8/v9/v10 correction must not be promoted.",
     "actionApplied": true,
     "newImmutablePackVersion": "original+3; v11/v12/v13",
-    "existingInstalledWidgets": "Catalogue changes do not remove or re-save existing Home Screen widgets. Choose a fallback and re-save while dedicated layouts are redesigned.",
+    "existingInstalledWidgets": "Existing placed widgets may retain their previous artwork; check, reselect and re-save as needed. No automatic removal or phone behavior is claimed.",
     "supersededPreparation": "v8/v9/v10 were not promoted to the app catalogue; v9 and part of v10 remain immutable review history."
   },
   "catalogueFreshnessFix": {
     "observed": "Canonical GitHub download URL retained the old redirect after catalog replacement; Cache-Control:no-cache did not refresh it.",
     "fix": "Production catalogRequestUrl adds a fresh per-request nonce only to GitHub catalogue URLs; retains If-None-Match, six-hour fetch throttling and immutable manifest/art URLs. Cache revision bumped.",
     "publicReadback": "Actual production helper returned the new SHA256948bc573b1a41c16fd8a1160f2905cc772a11f19ad3b9bef7db179ac4430c46c.",
-    "replacementBuild": "26 pending",
+    "replacementBuild": "27: Apple VALID / IN_BETA_TESTING",
     "regressionCases": 3
+  },
+  "initialBuild25": {
+    "version": "1.0.2",
+    "build": "25",
+    "sourcePR": "https://github.com/MerlinWerlin/App-Projects/pull/210",
+    "sourceCommit": "60cbfaee0251e57472843d20a78c49c8d3de176e",
+    "easBuildId": "cb1faa1e-c5b0-4eeb-b10d-566a7ccaed05",
+    "easSubmissionId": "adbf6f01-47c8-4af0-a107-7ce76981279d",
+    "signedPackage": {
+      "schema": "GLAZE_EXISTING_SIGNED_PACKAGE_CHECK_V1",
+      "harnessSourceSHA": "91ef0493eef4dbe5383af37cb023c524ba308507",
+      "expectedVersion": "1.0.2",
+      "expectedBuild": "25",
+      "createdNewBuild": false,
+      "uploadedToApple": false,
+      "physicalDeviceExecution": false,
+      "packageSHA256": "941baeb8f7b084ea32b70d792dda84a719ae6d14272c6d9ad85a89a354d86fc8",
+      "packageBytes": 34380268,
+      "signedGroupPreflightPassed": true
+    }
+  },
+  "buildRoute": {
+    "primaryRun": 41795055142,
+    "primaryResult": "Monthly free EAS quota; reserved26 not submitted",
+    "macRun": 41795214159,
+    "archiveResult": "SUCCESS",
+    "uploadResult": "SUCCESS",
+    "observedCounter": "26to27",
+    "uploadCompletedAt": "2026-11-04T08:12:08Z",
+    "retainedReplacementIPA": false,
+    "independentReplacementSignaturePreflight": false,
+    "initial25SignaturePreflightIsNotReplacementProof": true
   }
 }
