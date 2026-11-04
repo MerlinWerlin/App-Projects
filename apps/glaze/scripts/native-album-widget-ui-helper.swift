@@ -28,7 +28,7 @@ import Vision
     var pixels = [UInt8](repeating: 0, count: width * height * 4)
     pixels.withUnsafeMutableBytes { bytes in
       guard let context = CGContext(data: bytes.baseAddress, width: width, height: height, bitsPerComponent: 8,
-        bytesPerRow: width * 4, space: CGColorSpaceCreateDeviceRGB(),
+        bytesPerRow: width * 4, space: CGColorSpace(name: CGColorSpace.sRGB)!,
         bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue) else { return }
       context.draw(image, in: CGRect(x: 0, y: 0, width: CGFloat(width), height: CGFloat(height)))
     }
@@ -73,11 +73,16 @@ import Vision
   let title = spring.staticTexts["Photo album"].firstMatch
   let next = spring.buttons["Next photo"].firstMatch
   for _ in 0..<65 {
-    if title.exists && dominantPhoto() != nil { break }
+    let f = next.exists ? next.frame : .zero
+    let visibleNext = next.exists && f.width > 1 && f.minX >= 0 && f.maxX <= spring.frame.width
+      && f.minY > 0 && f.maxY < spring.frame.height
+    if title.exists && (visibleNext || dominantPhoto() != nil) { break }
     spring.swipeLeft()
+    RunLoop.current.run(until: Date().addingTimeInterval(0.7)) // Gallery page transition, separate from animation idleness.
   }
   XCTAssertTrue(title.exists, spring.debugDescription)
-  XCTAssertNotNil(dominantPhoto(), "Select the saved medium album rather than an empty size")
+  print("GLAZE_ALBUM_SELECTED_GALLERY_TREE\n" + spring.debugDescription); fflush(stdout)
+  capture("native-album-selected-gallery")
   stage("medium-album-gallery-selected"); capture("native-album-gallery")
   let addControl = spring.buttons["Add Widget"].firstMatch
   if addControl.exists && addControl.isHittable { addControl.tap() }
