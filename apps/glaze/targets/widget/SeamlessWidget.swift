@@ -102,7 +102,7 @@ struct SeamlessWidgetView: View {
     }
   }
 
-  private var artBody: some View {
+  @ViewBuilder private var artBody: some View {
     let t = theme
     let image = WidgetArtStore.load(pieceID, preferSize: SeamlessStore.familyName(family)) ?? SeamlessStore.load(family)
     let fit = layout == .fit
