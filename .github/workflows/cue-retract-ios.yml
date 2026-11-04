@@ -1,0 +1,45 @@
+name: Cue retract accidental iOS build
+on:
+  push:
+    branches: [codex/cue-retract-ios-build14-20261104]
+    paths: ['.github/workflows/cue-retract-ios.yml']
+  workflow_dispatch:
+    inputs:
+      expire_build:
+        description: Expire only the inspected accidental Cue 1.0.0 build14
+        type: boolean
+        default: false
+      expected_build_id:
+        description: Exact App Store Connect build UUID returned by prior inspection
+        type: string
+        default: ''
+permissions:
+  contents: read
+concurrency:
+  group: cue-retract-ios-build14
+  cancel-in-progress: false
+jobs:
+  retract:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pyjwt cryptography requests
+      - name: Inspect or expire only the accidental upload
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          EXPIRE_BUILD: ${{ inputs.expire_build }}
+          EXPECTED_BUILD_ID: ${{ inputs.expected_build_id }}
+        run: python scripts/asc/cue_retract_ios.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cue-ios-retraction-state
+          path: cue-ios-retraction-output/
+          retention-days: 30
