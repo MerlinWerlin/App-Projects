@@ -25,6 +25,9 @@ This is a record of what was done and verified. The single project roadmap is `C
 - Browser UI check used the exported real app at `http://127.0.0.1:8102/`, not a separate mockup. `localhost` initially resolved to an unavailable interface; the IPv4 URL worked.
 - Entered two clearly labelled `Preview:` tasks, edited a proposed title, saved and reloaded. Both persisted. Completed the grocery task; progress and completion changed. Opened the assignment and generated its four-step checklist.
 - Switched the complete interface to Japanese and inspected it at 390 × 844. The bottom navigation, text wrapping, cat and task cards rendered. The browser cannot verify calendar permissions or phone notifications.
+- Browser semantics check found that React Native Web dropped the legacy selected/checked state props. Added explicit ARIA states for tabs, task/step/ritual checkboxes and language/personality choices; final DOM verification confirmed English aria-checked=true and active-tab aria-selected=true.
+- Saved browser proof in docs/screenshots: English/Japanese 390x844 and the complete desktop example day. Preview tasks and a ritual were explicitly labelled as preview data. Assistant guidance was also exercised through the visible UI.
+- Initial GitHub check run41787852572 passed at code36460148. A new check is required after the accessibility fix.
 - GitHub checks and the final commit/PR are recorded in `ops/RUNLOG.md` and `ops/status.json` when available.
 
 ## Items still requiring evidence

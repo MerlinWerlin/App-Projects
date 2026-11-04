@@ -442,6 +442,7 @@ export default function MeowManager() {
                   key={n.tab}
                   accessibilityRole="tab"
                   accessibilityState={{ selected: tab === n.tab }}
+                  aria-selected={tab === n.tab}
                   onPress={() => setTab(n.tab)}
                   style={[s.nav, tab === n.tab && s.navSelected]}
                 >
@@ -892,6 +893,7 @@ export default function MeowManager() {
                         hitSlop={12}
                         accessibilityRole="checkbox"
                         accessibilityState={{ checked }}
+                        aria-checked={checked}
                         accessibilityLabel={h.title}
                         style={[s.check, checked && s.checked]}
                         onPress={() =>
@@ -1213,6 +1215,7 @@ export default function MeowManager() {
                     accessibilityRole="tab"
                     accessibilityLabel={L(n.label)}
                     accessibilityState={{ selected: tab === n.tab }}
+                  aria-selected={tab === n.tab}
                     onPress={() => setTab(n.tab)}
                     style={[
                       s.mobileTab,
@@ -1483,6 +1486,7 @@ export default function MeowManager() {
                     hitSlop={12}
                     accessibilityRole="checkbox"
                     accessibilityState={{ checked: step.done }}
+                    aria-checked={step.done}
                     onPress={() =>
                       updateTask({
                         ...selected,
@@ -1759,6 +1763,7 @@ export default function MeowManager() {
       <Pressable
         accessibilityRole="radio"
         accessibilityState={{ checked: selected }}
+        aria-checked={selected}
         onPress={onPress}
         style={[s.choice, selected && s.choiceSelected]}
       >
@@ -1783,6 +1788,7 @@ export default function MeowManager() {
           hitSlop={12}
           accessibilityRole="checkbox"
           accessibilityState={{ checked: !!task.doneAt }}
+          aria-checked={!!task.doneAt}
           accessibilityLabel={
             L(task.doneAt ? "undo" : "complete") + ": " + task.title
           }
@@ -1870,6 +1876,7 @@ function Sheet({
         />
         <View
           accessibilityViewIsModal
+          aria-modal={true}
           style={[
             s.sheet,
             { maxWidth: 600, width: width >= 850 ? "90%" : "100%" },

@@ -25,5 +25,14 @@
   ],
   "roadmap": "C:/BTB/_ATLAS/MASTER_ROADMAP.md#project-apps",
   "expoDoctor": "21/21 passed locally",
-  "githubChecks": "not yet run"
+  "githubChecks": "initial code36460148 passed run41787852572; post-accessibility-fix run pending",
+  "pullRequest": "https://github.com/MerlinWerlin/App-Projects/pull/216",
+  "browserVerified": [
+    "capture/edit/save/reload",
+    "completion/checklist",
+    "assistant guidance",
+    "ritual creation",
+    "English/Japanese phone layout",
+    "explicit ARIA state"
+  ]
 }
