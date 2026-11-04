@@ -19,6 +19,7 @@ assert changed == ['assets/index.android.bundle'], 'Unexpected payload changes: 
 receipt = {'status': 'native_payloads_identical_new_JS_QA_only', 'baseApkSha256': hashlib.sha256(base.read_bytes()).hexdigest(),
            'repackedApkSha256': hashlib.sha256(repacked.read_bytes()).hexdigest(), 'changedPayloads': changed,
            'unchangedPayloads': len(before) - 1, 'nativeSourceCommit': '49c8992756fd505ce14710c81c3e719ae5d99d0c',
+           'signingScope': 'Payload identity only; apksigner verifies the separately signed CI artifact',
            'javascriptSourceCommit': '1290bdf42acaf5f2bd216f5443b4a83e31001d5f', 'productionUse': 'Prohibited; the production AAB uses the complete signed build pipeline'}
 (output / 'repack-provenance.json').write_text(json.dumps(receipt, indent=2) + '\n')
-print('Verified exact native payload identity; JS-only QA package is separately signed with the test key.')
+print('Verified exact native payload identity; signing is checked separately by apksigner.')
