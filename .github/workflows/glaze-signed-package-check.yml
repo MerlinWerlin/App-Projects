@@ -1,0 +1,73 @@
+name: Glaze existing signed package check
+on:
+  push:
+    branches: ['codex/glaze-theme-release-20261101']
+    paths: ['.github/workflows/glaze-signed-package-check.yml']
+  workflow_dispatch:
+    inputs:
+      artifact_filename:
+        description: 'Existing EAS IPA filename, from read-only build history; does not create a build'
+        required: true
+        default: 'jZyCNCJ-5KyEoAzU_zBKjQ_65mUXn_5HE_ft7DwLJqA.ipa'
+        type: string
+      expected_version:
+        description: 'Expected app and extension version'
+        required: true
+        default: '1.0.1'
+        type: string
+      expected_build:
+        description: 'Expected app and extension build number'
+        required: true
+        default: '24'
+        type: string
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: macos-latest
+    timeout-minutes: 10
+    env:
+      EAS_ARTIFACT_FILENAME: ${{ inputs.artifact_filename }}
+      EXPECTED_VERSION: ${{ inputs.expected_version }}
+      EXPECTED_BUILD: ${{ inputs.expected_build }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download an existing archive and verify signatures and Group authorization
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/signed-check"
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,re,subprocess,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'signed-check'
+          name=os.environ['EAS_ARTIFACT_FILENAME']
+          assert re.fullmatch(r'[A-Za-z0-9_-]+\.ipa',name),'Expected one EAS IPA filename'
+          receipt={'schema':'GLAZE_EXISTING_SIGNED_PACKAGE_CHECK_V1','harnessSourceSHA':os.environ['GITHUB_SHA'],
+                   'expectedVersion':os.environ['EXPECTED_VERSION'],'expectedBuild':os.environ['EXPECTED_BUILD'],
+                   'createdNewBuild':False,'uploadedToApple':False,'physicalDeviceExecution':False}
+          try:
+              package=root/'existing.ipa'
+              with urllib.request.urlopen('https://expo.dev/artifacts/eas/'+name,timeout=120) as response,package.open('wb') as dest:
+                  while chunk:=response.read(1024*1024):dest.write(chunk)
+              receipt.update(packageSHA256=hashlib.file_digest(package.open('rb'),'sha256').hexdigest(),packageBytes=package.stat().st_size)
+              result=subprocess.run(['python3','apps/glaze/scripts/verify-signed-widget-groups.py',str(package),'--output',str(root/'signed-group-report.json')],capture_output=True,text=True)
+              (root/'verification.log').write_text(result.stdout+result.stderr,encoding='utf-8')
+              assert result.returncode==0,'Signed preflight failed; see verification.log'
+              report=json.loads((root/'signed-group-report.json').read_text())
+              for binary in report['binaries']:
+                  assert binary['version']==receipt['expectedVersion'] and binary['build']==receipt['expectedBuild'],'Archive version/build mismatch'
+              receipt['signedGroupPreflightPassed']=True
+          except Exception as error:
+              receipt.update(signedGroupPreflightPassed=False,error=str(error));raise
+          finally:
+              (root/'package-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Retain metadata and verification log only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: glaze-existing-signed-package-report
+          path: |
+            ${{ runner.temp }}/signed-check/*.json
+            ${{ runner.temp }}/signed-check/*.log
+          if-no-files-found: error

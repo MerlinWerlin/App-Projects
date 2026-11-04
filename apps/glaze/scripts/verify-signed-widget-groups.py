@@ -27,8 +27,13 @@ def verify(app):
         expected=permitted.get('application-identifier','')
         assert expected==app_id or (expected.endswith('.*') and app_id.startswith(expected[:-1])),f'{identifier}: profile app identity mismatch'
         exe=bundle/info['CFBundleExecutable'];raw=exe.read_bytes()
-        records.append({'bundle':identifier,'team':team,'profileExpires':expiry.isoformat(),'executableSHA256':hashlib.sha256(raw).hexdigest(),'profileSHA256':hashlib.sha256(profile.read_bytes()).hexdigest(),'groupAuthorized':True})
+        records.append({'bundle':identifier,'version':info['CFBundleShortVersionString'],'build':str(info['CFBundleVersion']),
+                        'team':team,'profileExpires':expiry.isoformat(),'executableSHA256':hashlib.sha256(raw).hexdigest(),
+                        'profileSHA256':hashlib.sha256(profile.read_bytes()).hexdigest(),'groupAuthorized':True,
+                        'albumImporterSymbolPresent':b'importAlbumPhotos' in raw,
+                        'albumWidgetTypeMetadataPresent':b'PhotoAlbumWidget' in raw})
     assert records[0]['team']==records[1]['team'],'App and extension signing teams differ'
+    assert (records[0]['version'],records[0]['build'])==(records[1]['version'],records[1]['build']),'App and extension versions differ'
     return {'schema':'GLAZE_SIGNED_GROUP_PREFLIGHT_V1','binaries':records,'signedGroupPreflightPassed':True,
             'actualBridgeSyncTest':False,'actualWidgetTapTest':False,'scope':'Signature, identity and provisioning authorization only; does not prove on-device synchronization or taps.'}
 
