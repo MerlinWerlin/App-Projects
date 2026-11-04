@@ -114,7 +114,7 @@ const sourceSHA256 = Object.fromEntries(
     ].map(async (path) => [
       path,
       createHash("sha256")
-        .update(await readFile(path))
+        .update((await readFile(path, "utf8")).replace(/\r\n/g, "\n"))
         .digest("hex"),
     ]),
   ),

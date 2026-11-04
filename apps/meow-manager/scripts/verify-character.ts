@@ -8,7 +8,7 @@ const manifest = JSON.parse(
 for (const [path, expected] of Object.entries(manifest.sourceSHA256 ?? {}))
   if (
     createHash("sha256")
-      .update(await readFile(path))
+      .update((await readFile(path, "utf8")).replace(/\r\n/g, "\n"))
       .digest("hex") !== expected
   )
     throw new Error(`Stale generated asset: ${path}`);

@@ -236,7 +236,7 @@ export function createStage(
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     // A portrait phone keeps the ears and paws in frame; landscape remains a room, not a stretched cat.
-    camera.fov = camera.aspect < 0.55 ? 44 : 38;
+    camera.fov = camera.aspect < 0.55 ? 52 : 38;
     camera.updateProjectionMatrix();
   }
   return {

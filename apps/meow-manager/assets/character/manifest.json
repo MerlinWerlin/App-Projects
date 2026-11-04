@@ -4,7 +4,7 @@
   "sourceSHA256": {
     "src/character/motion.ts": "4a26e0fa454859d13df0f3c2bf0db1e3da83a65cac0d06a2bcf71dca840e48a9",
     "src/character/rig.ts": "08a5318835cc7f28bcd34efd41aab97cae875a9680680b413c10d3f7a11d9a66",
-    "scripts/export-character.ts": "a1b375ab4ffb1aa8972c2c029e8ddd840251d7810600396ca513beae94676783"
+    "scripts/export-character.ts": "e46eb89d89cf5f443b54ab37dbf3a0cb2fa09ad3472be14b35186a1518f23925"
   },
   "fps": 30,
   "paws": [
