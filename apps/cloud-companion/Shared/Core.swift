@@ -128,9 +128,14 @@ struct Forecast: Codable, Equatable {
             condition: "Partly cloudy", symbol: "cloud.sun.fill", daylight: true,
             hours: hours,
             attributionURL: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
-        forecast.days = (0..<5).map { n in ForecastDay(date: start.addingTimeInterval(Double(n) * 86400),
-            highC: Double(25 - n), lowC: Double(17 - n), rainChance: n == 2 ? 0.7 : 0.1,
-            symbol: n == 2 ? "cloud.rain.fill" : "cloud.sun.fill") }
+        let days: [ForecastDay] = (0..<5).map { (n: Int) in
+            let dayDate = start.addingTimeInterval(Double(n) * 86400)
+            let high = Double(25 - n), low = Double(17 - n)
+            let symbol = n == 2 ? "cloud.rain.fill" : "cloud.sun.fill"
+            return ForecastDay(date: dayDate, highC: high, lowC: low,
+                               rainChance: n == 2 ? 0.7 : 0.1, symbol: symbol)
+        }
+        forecast.days = days
         forecast.windKph = 14; forecast.humidity = 62; forecast.uvIndex = 5
         return forecast
     }

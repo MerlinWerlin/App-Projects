@@ -197,4 +197,3 @@ struct WeatherScene: View {
         }.allowsHitTesting(false).accessibilityHidden(true)
     }
 }
-
