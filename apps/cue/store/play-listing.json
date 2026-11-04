@@ -9,7 +9,7 @@
     "Camera and microphone interruption QA",
     "Play Billing purchase and restore verification",
     "Wait for Google's review of uploaded identity documents, then complete phone verification before app creation",
-    "Complete final SDK/network Data safety review and publish the prepared privacy copy"
+    "Complete final SDK/network Data safety review; Android-qualified privacy copy is now published"
   ],
   "assets": "Four inspected 1080x1920 Android UI screenshots, 512px existing-brand icon and 1024x500 feature graphic are prepared under assets; not uploaded",
   "assetManifest": "assets/MANIFEST.json",
