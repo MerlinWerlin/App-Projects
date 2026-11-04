@@ -1,0 +1,10 @@
+{
+  "source_sha": "29996e8c274a1951db56edc7925083f4a3e7642f",
+  "run_id": "41790926392",
+  "results": {
+    "CORE_RESULT": "success",
+    "BUILD_RESULT": "success",
+    "UI_RESULT": "skipped",
+    "RENDER_RESULT": "skipped"
+  }
+}
