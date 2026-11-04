@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-11-04T10:09:40.023930+00:00",
+  "schema": "GLAZE_FALLBACK_REMOVAL_DELIVERY_V1",
+  "sourceSHA": "2e266cb70cc3e9b3df705fb5b245695f353002c6",
+  "pullRequest": "https://github.com/MerlinWerlin/App-Projects/pull/229",
+  "shipRun": 41811848345,
+  "shipConclusion": "success",
+  "channel": "production",
+  "branch": "production",
+  "runtimeVersion": "1.0.3",
+  "testFlightBuild": "31",
+  "nativeBinaryRebuilt": false,
+  "projectId": "8dcff573-80a3-457e-9791-f41552a0d678",
+  "updateGroupId": "5752b1bb-757a-4c63-93b6-1b123e350a19",
+  "iosUpdateId": "01a1a606-dae2-793a-980d-3e51452e84d2",
+  "publishedAt": "2026-11-04T10:07:09.538Z",
+  "productionManifestMatched": true,
+  "launchAssetHashVerified": true,
+  "launchAssetBytes": 7013488,
+  "launchAssetSha256": "cff6afcc1e2b077f0166e3d2667c127234e334d01e614f7c4823db0efecf0f10",
+  "physicalPhoneActivationVerified": false,
+  "scope": "Retire legacy live-clock from theme menus, automatic art sync, saved theme-art library and future pack generation. Preserve working designed widgets, original art, photos and other selections.",
+  "validation": {
+    "core": {
+      "pass": 1909,
+      "fail": 0
+    },
+    "packScripts": {
+      "pass": 27,
+      "fail": 0,
+      "optionalEncoderSkips": 2
+    },
+    "focusedMigration": {
+      "pass": 6,
+      "fail": 0
+    },
+    "appAndNodeTypeScript": true,
+    "iosHermesExport": true
+  },
+  "checks": {
+    "widget": 41811583388,
+    "otherAppCheck": 41811574029
+  },
+  "phoneInstructions": "Use TestFlight1.0.3(31). Fully close and reopen Glaze twice online to fetch and activate the compatible update; allow deferred library cleanup after launch."
+}
