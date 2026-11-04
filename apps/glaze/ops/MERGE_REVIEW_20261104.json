@@ -138,6 +138,19 @@
     "fail_count": 0
   },
   "typecheck": "app and Node PASS",
-  "native_compile": "PENDING",
-  "prototype_icon_exports": "Excluded; existing installed icon renderer/styles retained"
+  "native_compile": {
+    "widgetContract": 41785213726,
+    "photoAlbum11Languages": 41785217911,
+    "habitBehavior": 41785221314,
+    "result": "PASS"
+  },
+  "prototype_icon_exports": "Excluded; existing installed icon renderer/styles retained",
+  "scope": "Glaze only; unrelated Couch and Satchel source-branch differences restored to main",
+  "packValidation": {
+    "library": 141,
+    "updated": 105,
+    "nativeEditions": 420,
+    "parsedWidgets": 1292,
+    "pricingPaletteCredits": "preserved"
+  }
 }
