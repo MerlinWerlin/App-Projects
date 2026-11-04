@@ -66,7 +66,8 @@ public class GlazeWidgetBridgeModule: Module {
     /// in JS (syncHabitStore) and writes the trackers back with setHabits. This never writes the log.
     AsyncFunction("getHabits") { () -> [String: String] in
       var out: [String: String] = [:]
-      guard let defaults = UserDefaults(suiteName: appGroup) else { return out }
+      guard FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) != nil,
+            let defaults = UserDefaults(suiteName: appGroup) else { return out }
       if let habits = defaults.string(forKey: habitsKey) { out["habits"] = habits }
       if let log = defaults.string(forKey: habitLogKey) { out["log"] = log }
       return out
@@ -74,7 +75,8 @@ public class GlazeWidgetBridgeModule: Module {
 
     /// T73: stores the app's trackers (with the `applied` mark) and reloads the habit widgets.
     AsyncFunction("setHabits") { (json: String) -> Bool in
-      guard let defaults = UserDefaults(suiteName: appGroup) else { return false }
+      guard FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) != nil,
+            let defaults = UserDefaults(suiteName: appGroup) else { return false }
       guard json.utf8.count < 256 * 1024 else { return false }
       defaults.set(json, forKey: habitsKey)
       if #available(iOS 14.0, *) {

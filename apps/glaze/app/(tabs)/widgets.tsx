@@ -215,6 +215,7 @@ const WidgetCell = memo(function WidgetCell({
     const hint = canUndo ? `${tapHint} ${t('tabs.widgetsTab.log.undoHint')}` : tapHint;
     return (
       <PillButton
+        testID={`habit-log-${k}`}
         label={t('tabs.widgetsTab.log.today', { value: valueText })}
         icon={HABIT_DEFS[k].mode === 'scale' ? 'smile' : 'plus-circle'}
         variant="glass"

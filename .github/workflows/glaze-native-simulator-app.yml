@@ -19,6 +19,7 @@ jobs:
       CI: '1'
       EXPO_NO_TELEMETRY: '1'
       RCT_NO_LAUNCH_PACKAGER: '1'
+      GLAZE_SIMULATOR_GROUP_TEST: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -43,6 +44,8 @@ jobs:
           cd ios
           pod install > "$RUNNER_TEMP/glaze-pods.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-pods.log"; exit 1; }
           test -f 'Pods/Local Podspecs/GlazeWidgetBridge.podspec.json'
+      - name: Enable shared Group access in simulator app and extension
+        run: ruby scripts/prepare-native-simulator-groups.rb ios
       - name: Build complete unsigned simulator app with bundled JavaScript
         run: |
           set -euo pipefail
@@ -60,7 +63,7 @@ jobs:
           app=pathlib.Path(os.environ['APP'])
           info=plistlib.loads((app/'Info.plist').read_bytes())
           assert (app/'main.jsbundle').exists() and (app/'PlugIns/GlazeWidgets.appex').exists()
-          receipt={'sourceSHA':os.environ['GITHUB_SHA'],'bundleId':info['CFBundleIdentifier'],'bundledJavaScript':True,'unsignedSimulatorOnly':True,'signedReleaseArchive':False}
+          receipt={'sourceSHA':os.environ['GITHUB_SHA'],'bundleId':info['CFBundleIdentifier'],'bundledJavaScript':True,'unsignedSimulatorOnly':True,'signedReleaseArchive':False,'simulatorGroupEntitlements':True,'simulatorTeam':'GLAZETEST0'}
           (pathlib.Path(os.environ['RUNNER_TEMP'])/'simulator-app-source.json').write_text(json.dumps(receipt,indent=2))
           PY
       - uses: actions/upload-artifact@v4
@@ -110,4 +113,5 @@ jobs:
             ${{ runner.temp }}/glaze-pods.log
             ${{ runner.temp }}/glaze-full-build.log
             ${{ runner.temp }}/glaze-full-simulator
+            ${{ runner.temp }}/glaze-simulator-groups
           retention-days: 14
