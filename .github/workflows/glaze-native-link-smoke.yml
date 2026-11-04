@@ -75,7 +75,7 @@ jobs:
               png=b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',1600,1000,8,2,0,0,0))+chunk(b'IDAT',zlib.compress(row*1000))+chunk(b'IEND',b'')
               (pathlib.Path(os.environ['RUNNER_TEMP'])/('glaze-picker-'+name+'.png')).write_bytes(png)
           PY
-            xcrun simctl addphotos "$DEVICE" "$RUNNER_TEMP/glaze-picker-first.png" "$RUNNER_TEMP/glaze-picker-second.png"
+            xcrun simctl addmedia "$DEVICE" "$RUNNER_TEMP/glaze-picker-first.png" "$RUNNER_TEMP/glaze-picker-second.png"
           fi
           TEST=GlazeLinkUITests/GlazeDeepLinkTests/testWidgetLinkReachesWidgets
           if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then TEST=GlazeLinkUITests/GlazeWidgetTapTests/testWidgetTapRoundTripsThroughSharedStorage; fi
