@@ -35,10 +35,11 @@ func request(_ path: String, _ method: String = "GET", _ headers: [String: Strin
   let done = DispatchSemaphore(value: 0)
   var result: (HTTPURLResponse, Data)?
   session.dataTask(with: req) { data, response, error in
-    check(error == nil, "HTTP transport error")
+    if let error = error as NSError? { fatalError("HTTP \(method) transport code \(error.code)") }
     result = (response as! HTTPURLResponse, data ?? Data()); done.signal()
   }.resume()
   check(done.wait(timeout: .now() + 15) == .success, "HTTP timeout")
+  print("HTTP \(method) status \(result!.0.statusCode), bytes \(result!.1.count)"); fflush(stdout)
   return result!
 }
 let preflight = request(resource, "OPTIONS", ["Access-Control-Request-Method":"GET", "Access-Control-Request-Headers":"range", "Access-Control-Request-Private-Network":"true"])

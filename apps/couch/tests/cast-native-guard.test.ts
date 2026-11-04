@@ -1,3 +1,4 @@
+jest.mock('expo-image-picker', () => ({}));
 /**
  * Oversight D133-2 (OTA safety for cast-1024). A 1.0.0 binary that receives an OTA update, and
  * Expo Go, do not contain modules/media-server, modules/route-picker or expo-image-picker's native
