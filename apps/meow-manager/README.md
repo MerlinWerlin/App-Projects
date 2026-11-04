@@ -1,8 +1,8 @@
 # Meow Manager
 
-**Current build:** the first iOS-targeted 3D motion pass is implemented. The default screen has an articulated kitty, nap/chips openings, idle/wave/listening/speaking and menu interaction. Start with [the animation build record](docs/ANIMATION_BUILD.md) and [the experience brief](docs/IOS_CHARACTER_EXPERIENCE.md). The earlier planner is preserved at `/planner-reference`. The procedural character is a motion rig; concept-art-quality fur and real iPhone performance remain outstanding. No TestFlight build has been delivered.
+**Current build:** an iOS-targeted 2D character study with original fluffy kitty artwork, two quiet doze/watch arrivals, slow blinks and a small ear reaction. The body and paws use one fixed drawing. Start with [the frame-animation build record](docs/FRAME_ANIMATION_BUILD.md). Jared rejected the earlier 3D acting; its code/assets/evidence remain at `/rig-reference`, and the planner at `/planner-reference`. Full-body 2D acting, real iPhone playback and final animation approval remain outstanding. No TestFlight build has been delivered.
 
-A little cat personal assistant that helps organise a day, remember things and take the next step. Started for Jared on 4 November 2026. This is a real Expo app in the existing App Factory release repository, with an original articulated 3D cat called Mochi. Codex owns this first implementation. It serves the **Meow Manager** row of `C:/BTB/_ATLAS/MASTER_ROADMAP.md`, the only project roadmap.
+A little cat personal assistant that helps organise a day, remember things and take the next step. Started for Jared on 4 November 2026. This is a real Expo app in the existing App Factory release repository, with an original illustrated cat called Mochi. Codex owns this implementation. It serves the **Meow Manager** row of `C:/BTB/_ATLAS/MASTER_ROADMAP.md`, the only project roadmap.
 
 ## Run and check
 

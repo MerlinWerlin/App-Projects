@@ -6,7 +6,7 @@
   "scripts": {
     "start": "expo start",
     "web": "expo start --web",
-    "test": "node --test \"src/core/*.test.ts\" && node scripts/verify-character.ts",
+    "test": "node --test \"src/core/*.test.ts\" && node scripts/verify-character.ts && node scripts/verify-frames.ts",
     "typecheck": "tsc --noEmit && tsc -p scripts/tsconfig.json",
     "export": "expo export --platform ios --platform android --platform web",
     "character:export": "node scripts/export-character.ts"

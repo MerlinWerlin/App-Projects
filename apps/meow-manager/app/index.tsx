@@ -1,1 +1,1 @@
-export { default } from "../src/character/CharacterExperience";
+export { default } from "../src/companion/FrameExperience";

@@ -1,5 +1,8 @@
 # Decisions
 
+- 2026-11-04 Jared M06: reject the first wake-up as unlike a cat and the snack paw gesture as inappropriate-looking; Codex should choose a better approach. Blended2D frames may be better.
+- 2026-11-04 Codex M06: replace the default renderer with original2D facial keyframes and a single fixed lower-body crop. Quiet doze/watch arrivals, slow blink and small ear changes first. Exclude the proposed head tilt after silhouette-ghosting review; defer large movement until proper sequential drawings exist. Preserve the first3D build and its checks as rejected visual development history, not animation-quality approval.
+
 - 2026-11-04 Jared: start building the kitty animations.
 - 2026-11-04 Codex M05: build an original articulated procedural 3D rig and authored nap/chips timelines as the first executable motion proof in the existing Expo app. Preserve planner source at planner-reference. Reuse one director on web/iOS GL, export six editable GLB clips and a Blender source file; current art is a timing rig requiring further refinement toward the accepted concept. No real microphone capture, cloud AI or TestFlight delivery added.
 

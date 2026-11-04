@@ -1,64 +1,79 @@
 {
   "app": "meow-manager",
-  "stage": "animation-prototype",
+  "stage": "2d-frame-animation-prototype",
   "targetPlatform": "iOS",
-  "headline": "First articulated 3D motion pass built: nap/chips into ready, idle, wave, listening/speaking and menu interaction. Art refinement and physical iPhone verification remain.",
-  "prototypeInterface": "parked; source and historical verification retained",
-  "currentBrief": "docs/IOS_CHARACTER_EXPERIENCE.md",
-  "concept": "docs/character-direction/ios-character-concept-v2-four-paws.png (static AI-generated visual direction)",
-  "ownerDirectionFeedback": "General visual direction liked; varied startup activities required; original extra-paw error corrected in v2.",
-  "openingScenesImplemented": true,
-  "characterAnimationImplemented": true,
+  "headline": "Original 2D facial study replaces rejected 3D acting: fixed body/paws, quiet doze/watch arrivals, slow blink and small ear changes. Full-body animation and physical iPhone proof remain open.",
   "source": "apps/meow-manager",
   "branch": "codex/meow-manager-20261104",
   "baseCommit": "44448898badfae0cf312fafc29aacd4dd9e2c0ad",
-  "tests": 39,
-  "typecheck": "passed locally",
+  "currentBrief": "docs/FRAME_ANIMATION_BUILD.md",
+  "currentBuild": "docs/FRAME_ANIMATION_BUILD.md",
+  "ownerDirectionFeedback": "First 3D wake-up and snack acting rejected; authorise fresh approach and consider blended 2D frames.",
+  "characterAnimationImplemented": true,
+  "openingScenesImplemented": [
+    "seated doze",
+    "watching the room"
+  ],
+  "openingScenesNotImplementedIn2D": [
+    "curled-up full-body wake-up",
+    "eating chips",
+    "walking"
+  ],
+  "prototypeInterface": "Planner parked at /planner-reference; rejected 3D pass at /rig-reference",
+  "tests": 47,
+  "testBreakdown": {
+    "planner": 26,
+    "historicalRig": 13,
+    "current2DFacialDirector": 8
+  },
+  "typecheck": "app and asset scripts passed locally",
   "exports": {
-    "ios": "animation build exported locally",
-    "web": "animation build exported and reviewed locally",
-    "android": "current CI bundle passed; iOS remains the target"
+    "ios": "2D build exported locally",
+    "web": "2D build exported and reviewed locally",
+    "android": "current CI pending; iOS is the target"
+  },
+  "verifiedCodeCommit": null,
+  "githubChecks": {
+    "current2DBuild": "pending",
+    "historical3DRig": "41802532126 passed at caa95176; visual movement subsequently rejected"
   },
   "nativeDeviceVerified": false,
   "cloudAIConnected": false,
-  "externalActions": [
-    "editable draft",
-    "explicit browser search",
-    "native system calendar editor"
-  ],
+  "microphoneListening": false,
+  "speech": "device voice preview; closed mouth, no lip sync",
+  "externalActions": "preserved in parked planner; not exposed as current companion capabilities",
   "storeSubmitted": false,
+  "testFlightUploaded": false,
   "next_for_owner": [],
   "roadmap": "C:/BTB/_ATLAS/MASTER_ROADMAP.md#project-apps",
-  "expoDoctor": "21/21 passed locally",
-  "verifiedCodeCommit": "caa95176c7ea2f7c8a2395cba53f8afac14ad286",
-  "githubChecks": {
-    "currentAnimationBuild": "41802532126 passed at caa95176; typecheck, 39 tests plus GLB verification, mobile bundles and doctor",
-    "currentAnimationBuildURL": "https://github.com/MerlinWerlin/App-Projects/actions/runs/41802532126",
-    "initialAnimationBuild": "41801694552 passed at 182cde7e",
-    "historicalPlannerRun": "41787852572 passed at36460148"
-  },
   "preview": "http://127.0.0.1:8102/ (this PC only)",
   "pullRequest": "https://github.com/MerlinWerlin/App-Projects/pull/216",
-  "browserVerified": [
-    "3D renderer",
-    "nap/chips replay",
-    "canvas clip recording",
-    "listening pose",
-    "menu interruption",
-    "390x844 framing"
-  ],
-  "currentBuild": "docs/ANIMATION_BUILD.md",
-  "animationAsset": "assets/character/mochi-motion-proof.glb",
-  "animationSource": "assets/character/mochi-motion-proof.blend",
-  "animationPreview": "docs/animation-proof/opening-animations.mp4",
-  "animationPreviewDetails": "8.03 seconds, 780x844 H.264 at 30fps; two real browser canvas recordings side by side, chips end held; no audio",
-  "appScreenshot": "docs/animation-proof/app-ready.jpg",
+  "animationAsset": "assets/companion/manifest.json",
+  "animationSource": "assets/companion/master-sheet-alpha-v2.png",
+  "generationPrompts": "docs/character-direction/2d-generation-prompts.md",
+  "animationPreview": "docs/frame-animation-proof/meow-2d-final.mp4",
+  "appScreenshot": "docs/frame-animation-proof/app-ready.jpg",
   "animationVerification": {
-    "clips": 6,
-    "exportedFramesChecked": 126,
-    "pawJoints": 4,
-    "blenderVersion": "4.4.3",
-    "physicalIPhoneVerified": false,
-    "finalArtQuality": false
-  }
+    "sourceKeyframes": 6,
+    "activeFacialKeyframes": 5,
+    "fixedLowerBodyFrame": 0,
+    "facialRegion": 0.55,
+    "proposedTiltFrameExcluded": 5,
+    "imageHashes": 10,
+    "finalArtApproved": false,
+    "physicalIPhoneVerified": false
+  },
+  "browserVerified": [
+    "2D canvas playback",
+    "quiet wake-up",
+    "listening caption keeps microphone off",
+    "menu and recording",
+    "390x844 composition"
+  ],
+  "remaining": [
+    "More authored in-between drawings for larger movement",
+    "Final art and timing review",
+    "Physical iPhone playback, memory and lifecycle verification",
+    "Assistant integrations"
+  ]
 }

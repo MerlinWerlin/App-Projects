@@ -1,5 +1,7 @@
 # M05 animation build — 4 November 2026
 
+**Superseded by owner feedback:** Jared rejected this pass's wake-up and snack movement. Its technical checks and editable assets are preserved as development history, not acceptable-motion evidence. The active2D replacement is documented in [FRAME_ANIMATION_BUILD.md](FRAME_ANIMATION_BUILD.md); this rig is parked at `/rig-reference`.
+
 Jared asked to start building the kitty animations. Codex built the first executable motion pass in the existing Meow Manager app and kept the earlier planner at `/planner-reference`. The default route now opens the original 3D character scene. This is a motion/timing prototype; the accepted furry concept remains the art target. Physical iPhone performance, final body-joint skinning and production character art remain unverified.
 
 ## Delivered motion
