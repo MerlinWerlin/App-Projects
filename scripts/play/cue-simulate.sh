@@ -23,7 +23,7 @@ printf '%s\n' "$actual" > "$output/page-size.txt"
 adb install "$output/cue-play-test.apk" | tee "$output/install.txt"
 adb logcat -c
 MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=180000 \
-  maestro test --test-output-dir "$output/captures" --debug-output "$output/captures" scripts/play/cue-release-flow.yaml
+  maestro test -e REVIEW_CODE="${REVIEW_CODE:?Review access code must be configured}" --test-output-dir "$output/captures" --debug-output "$output/captures" scripts/play/cue-release-flow.yaml
 printf 'Process restart verified by stopApp then persistence subflow launchApp; see Maestro commands.json.\n' > "$output/restart.txt"
 for attempt in $(seq 1 10); do
   adb shell content query --uri content://media/external/video/media --projection duration:width:height > "$output/saved-video.txt"
@@ -34,4 +34,4 @@ python scripts/play/verify_cue_video.py "$output/saved-video.txt"
 adb shell pidof com.jared797.cue.playtest > "$output/app-final-pids.txt"
 adb logcat -d -v threadtime > "$output/logcat.txt"
 python scripts/play/verify_cue_logcat.py "$output"
-printf 'Library/edit/prompter/script persistence, Android trial persistence, permission-denial recovery and synthetic-camera video save passed on API35, page size %s. No Play purchase, physical microphone or production signing claim.\n' "$actual" > "$output/result.txt"
+printf 'Library/edit/prompter/script persistence, Android trial persistence, permission-denial recovery, synthetic-camera video save and reusable Plus access-code validation/restart/removal passed on API35, page size %s. No Play purchase, physical microphone or production signing claim.\n' "$actual" > "$output/result.txt"

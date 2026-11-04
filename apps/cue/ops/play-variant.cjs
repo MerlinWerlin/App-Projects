@@ -22,7 +22,9 @@ module.exports = function withPlayVariant(config, env = process.env) {
       const options = Array.isArray(plugin) ? plugin[1] : {};
       return name === 'expo-audio'
         ? [name, { ...options, enableBackgroundPlayback: false, enableBackgroundRecording: false }]
-        : plugin;
+        : name === 'expo-camera'
+          ? [name, { ...options, barcodeScannerEnabled: false }]
+          : plugin;
     }),
     android: {
       ...config.android,

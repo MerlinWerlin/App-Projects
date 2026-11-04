@@ -146,6 +146,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         env:
           EXPECTED_PAGE_SIZE: ${{ matrix.page }}
+          REVIEW_CODE: ${{ secrets.CUE_PLAY_REVIEW_CODE }}
         with:
           api-level: 35
           target: ${{ matrix.target }}
@@ -157,6 +158,11 @@ jobs:
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back emulated -camera-front emulated
           script: ${{ inputs.store_captures && 'bash scripts/play/cue-store-capture.sh' || 'bash scripts/play/cue-simulate.sh' }}
+      - name: Redact complimentary access code from test reports
+        if: always()
+        env:
+          REVIEW_CODE: ${{ secrets.CUE_PLAY_REVIEW_CODE }}
+        run: python scripts/play/redact_review_code.py cue-android-output
       - uses: actions/upload-artifact@v4
         if: always()
         with:
