@@ -17,7 +17,7 @@
   "exports": {
     "ios": "animation build exported locally",
     "web": "animation build exported and reviewed locally",
-    "android": "historical planner only; not current target"
+    "android": "current CI bundle passed; iOS remains the target"
   },
   "nativeDeviceVerified": false,
   "cloudAIConnected": false,
@@ -30,9 +30,11 @@
   "next_for_owner": [],
   "roadmap": "C:/BTB/_ATLAS/MASTER_ROADMAP.md#project-apps",
   "expoDoctor": "21/21 passed locally",
-  "verifiedCodeCommit": null,
+  "verifiedCodeCommit": "caa95176c7ea2f7c8a2395cba53f8afac14ad286",
   "githubChecks": {
-    "currentAnimationBuild": "not yet run",
+    "currentAnimationBuild": "41802532126 passed at caa95176; typecheck, 39 tests plus GLB verification, mobile bundles and doctor",
+    "currentAnimationBuildURL": "https://github.com/MerlinWerlin/App-Projects/actions/runs/41802532126",
+    "initialAnimationBuild": "41801694552 passed at 182cde7e",
     "historicalPlannerRun": "41787852572 passed at36460148"
   },
   "preview": "http://127.0.0.1:8102/ (this PC only)",
@@ -48,6 +50,9 @@
   "currentBuild": "docs/ANIMATION_BUILD.md",
   "animationAsset": "assets/character/mochi-motion-proof.glb",
   "animationSource": "assets/character/mochi-motion-proof.blend",
+  "animationPreview": "docs/animation-proof/opening-animations.mp4",
+  "animationPreviewDetails": "8.03 seconds, 780x844 H.264 at 30fps; two real browser canvas recordings side by side, chips end held; no audio",
+  "appScreenshot": "docs/animation-proof/app-ready.jpg",
   "animationVerification": {
     "clips": 6,
     "exportedFramesChecked": 126,

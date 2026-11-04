@@ -1,1 +1,1 @@
-Meow Manager implementation, written by Codex for the APPS Meow Manager build. Pure logic is in core; native services, strings, visual components and tokens stay separate.
+Meow Manager implementation, written by Codex for the APPS Meow Manager build. `character/` contains the current 3D motion rig, authored director, office scene, full-screen interface and native/web renderers. `core/`, `services/`, `components/` and the older strings/tokens preserve the parked planner and its functional checks. Start with `../docs/ANIMATION_BUILD.md` for current evidence and limitations.
