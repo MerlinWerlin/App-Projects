@@ -1,0 +1,402 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "midnight-conservatory",
+  "packVersion": 5,
+  "name": "Midnight Conservatory",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#122227",
+    "tile": "#324043",
+    "glyph": "#FAF8F2",
+    "accent": "#0D232B",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Midnight Conservatory",
+    "mood": "A moonlit glasshouse in dark teal with a glasswing butterfly.",
+    "tags": [
+      "midnight",
+      "conservatory",
+      "moonlit",
+      "glasshouse",
+      "dark",
+      "teal",
+      "with",
+      "glasswing",
+      "butterfly"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by stephen packwood (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "iOcFEwIET6dlendWqoCXDYk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.87ae23d8.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 319810,
+      "sha256": "87ae23d85b20d19f02dd509998de545dc4742c54761ee95c602d1df67567223e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.23c661e3.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 293312,
+      "sha256": "23c661e314e97939a831639e06399713f7998aa82f305e7f96655dff05e9b2ce",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.be87942b.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 149640,
+      "sha256": "be87942b330c7574502e70465d0478a261f314570e474be2fde077239d4c97f6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.f60d8251.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 81122,
+      "sha256": "f60d82513b80836dcd773f26be67f1b436b23d23aae5dcff3262e6ac502e880b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.add205de.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 154278,
+      "sha256": "add205de0e2a7736bf86a5991c6d88cf1e781fc9777f85de46f0cdc7f4d4cf87",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.13108fde.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 160892,
+      "sha256": "13108fde338aab2d6d3287ef80f64b3db98f1941e71ace2c38324c089c7bab67",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.44ebedfd.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 26436,
+      "sha256": "44ebedfd65c991d3508069692a9d1636eca1350a94885a2f258f0ff538a0cbf8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.5be1b610.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 224144,
+      "sha256": "5be1b6107d535e6df070846f9495d520b993830827934a3ccdc168d6ba911106",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-water-clock.83ab17bb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 207658,
+      "sha256": "83ab17bb5c4d822935e0f7448cfdb111dd471bb37b8ce105e60ba30206c08bc1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-conservatory-focus.8c9a2c05.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 138956,
+      "sha256": "8c9a2c05b4c6457ea12765ebd26358418c299093800e545b62c132eaa19c054d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dew-capsule.eee37a31.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 127506,
+      "sha256": "eee37a31d42ceab6818a361b8d81be135a5f5774fc1684d46b6ef1347975b507",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-night-orchid.d8e5c85c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 187626,
+      "sha256": "d8e5c85c7f575af3afee8e838b343011f692a78e9f3a83a981fc6721dc3bf97a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-hanging-garden.3dd7fa50.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 217474,
+      "sha256": "3dd7fa500a4ad582bb94f45bcb41861f0d7f21eb5fe8087c921db265ff9796cb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.b4a2c4b8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6822,
+      "sha256": "b4a2c4b833082524048629bb0e3a879f6aeffdb8744ebf00a5dd789a6ed9ba60",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glasswing.5fa6dea7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 240848,
+      "sha256": "5fa6dea7efaf785c59987f0f8a7b028e972698ed43f2f9617afca575f6031856",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2536524,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-glasswing.5fa6dea7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-glasswing.5fa6dea7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-glasswing.5fa6dea7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-glasswing.5fa6dea7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "audit-20261101-water-clock",
+      "kind": "clock",
+      "image": "widget-audit-20261101-water-clock.83ab17bb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 water clock"
+    },
+    {
+      "id": "conservatory-focus",
+      "kind": "focus",
+      "image": "widget-conservatory-focus.8c9a2c05.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Conservatory focus"
+    },
+    {
+      "id": "dew-capsule",
+      "kind": "art",
+      "image": "widget-dew-capsule.eee37a31.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dew capsule"
+    },
+    {
+      "id": "night-orchid",
+      "kind": "art",
+      "image": "widget-night-orchid.d8e5c85c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Night orchid"
+    },
+    {
+      "id": "hanging-garden",
+      "kind": "art",
+      "image": "widget-hanging-garden.3dd7fa50.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Hanging garden"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.b4a2c4b8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.f60d8251.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.add205de.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.13108fde.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

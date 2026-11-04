@@ -1,0 +1,400 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "labradorite-hush",
+  "packVersion": 3,
+  "name": "Labradorite Hush",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#262C34",
+    "tile": "#44494F",
+    "glyph": "#FAF8F2",
+    "accent": "#242B32",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Labradorite Hush",
+    "mood": "A flash of labradorite colour on calm stone.",
+    "tags": [
+      "labradorite",
+      "hush",
+      "flash",
+      "colour",
+      "calm",
+      "stone",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original premium Glaze wallpaper LABRADORITE HUSH, tall iPhone portrait9:19.5. Fine-art mineral product photography aesthetic: one modest naturally irregular polished LABRADORITE stone resting low at bottom-right, dark grey feldspar with restrained true-looking blue/teal/gold labradorescent flash across one broad plane, fine cleavage lines and tiny natural imperfections, not a shiny faceted gem. One much smaller raw dark fragment at bottom-left balances scene. Stones confined bottom25percent of canvas with quiet charcoal-slate #252C34 seamless matte background across upper75percent, no objects/light rays/texture there. Soft directional studio sidelight gives realistic grounded stone contact shadows and velvety surfaces, not glowing from within. Palette slate charcoal, silver-blue #B8CED8, muted teal #496F7C, restrained old gold #BB985D. Calm sophisticated geological still life, no decorative jewelry. No crystals towers, rings, magic, stars, mountains, ocean, flowers, gold coins, text, phone, UI, frame, watermark or borders. Original generated photographic-style fictional mineral specimen; no external photograph.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "jfcFAwBHgMp4aKNclpCrv4U=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2c6d9107.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 102504,
+      "sha256": "2c6d9107a9705e43e4b5870ab91adac6e4f9fa3f36557a3d5ebb9dc8868f63db",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.ec9040e0.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 92330,
+      "sha256": "ec9040e0a86baff72ec2e4e23c6707893315e1f6ded25d413200dd10cc44df3e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.23484c7d.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 47464,
+      "sha256": "23484c7d5d4f13b35ffb6c7916a392c58545bf0f848083b463309beb82bdccf8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.c983374f.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 67252,
+      "sha256": "c983374f579166f3b6ec5077dc538d9e8e00939c79e8c3b17fffbbd60c2c1f0d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.3dfeb121.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 198714,
+      "sha256": "3dfeb121800faa95239178367bb37c65416bf4d771fdfe23193f83484ec472c7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.b5992e0d.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 220022,
+      "sha256": "b5992e0d130336ec3a6c7cedc1412a963aeece9413b2b477c4496e958a5aea6f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.043252a3.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6724,
+      "sha256": "043252a3c9425c72cc58f9eb61fd81651bca0e184a98a6944b7ce9717d7a4610",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.6762fe80.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 224582,
+      "sha256": "6762fe80963811ff2093407759bb7e35542298c575630403d08d8730e9a7e49f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cleavage-lines.bd104ad5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 364292,
+      "sha256": "bd104ad5583a3568603c01b137fc20b9f0d5b5d2eab25d40791a628b5b2a8aba",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mineral-clock.b2357ff2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 97686,
+      "sha256": "b2357ff2b51c4e16ddb893c06806ee624b3dee204e3f2e85d2db48c0528d1534",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-quiet-focus.2bf6e826.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 21380,
+      "sha256": "2bf6e826ca39af5fbc6b06df90044a026dd2e73b8d8e667e33b0cae0469c97b2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-slate-date.803c23a5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 50002,
+      "sha256": "803c23a50df2d7eec4fe547e1f2fb43053477cce3a63919192a86ad031fdd123",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-stone-pair.f8478e24.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 149224,
+      "sha256": "f8478e240ce3e0ff1f769d28e946353c61f2972dbfd9ebbcc3fe3660c6045796",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.c94838de.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6674,
+      "sha256": "c94838de4a9ce893f37ea4ee0319489086874853d5e173b07d767432f56f517a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-blue-flash.ac6fc6ec.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 240850,
+      "sha256": "ac6fc6ec0ee752fe04abaca96ef8a571531185c4bf1884657046bf6b16f2b8c3",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1889700,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-blue-flash.ac6fc6ec.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-blue-flash.ac6fc6ec.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-blue-flash.ac6fc6ec.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-blue-flash.ac6fc6ec.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "cleavage-lines",
+      "kind": "art",
+      "image": "widget-cleavage-lines.bd104ad5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cleavage lines"
+    },
+    {
+      "id": "mineral-clock",
+      "kind": "clock",
+      "image": "widget-mineral-clock.b2357ff2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mineral clock"
+    },
+    {
+      "id": "quiet-focus",
+      "kind": "focus",
+      "image": "widget-quiet-focus.2bf6e826.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Quiet focus"
+    },
+    {
+      "id": "slate-date",
+      "kind": "calendar",
+      "image": "widget-slate-date.803c23a5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Slate date"
+    },
+    {
+      "id": "stone-pair",
+      "kind": "art",
+      "image": "widget-stone-pair.f8478e24.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Stone pair"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.c94838de.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.c983374f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.3dfeb121.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.b5992e0d.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

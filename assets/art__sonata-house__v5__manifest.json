@@ -1,0 +1,401 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "sonata-house",
+  "packVersion": 5,
+  "name": "Sonata House",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#E2D6C4",
+    "tile": "#C6BBAC",
+    "glyph": "#1C1816",
+    "accent": "#88542F",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Sonata House",
+    "mood": "Warm ivory, walnut and burgundy chamber-music theme.",
+    "tags": [
+      "sonata",
+      "house",
+      "warm",
+      "ivory",
+      "walnut",
+      "burgundy",
+      "chamber",
+      "music",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium photographic artwork. Portrait iPhone wallpaper approximately9:19.5. SONATA HOUSE, quiet acoustic chamber-music design. Upper58percent clean uniform warm ivory #EEE7DB, matte subtly plastered wall, visually nearly flat, NO objects lines text shadows or bright patterns in upper58percent, calm background for dark line app icons. In the lower42percent a beautiful intimate miniature chamber music salon as an exquisite architectural scale model, no enclosing box or glass dome: dark warm walnut baby grand piano open lid, visible ivory-and-ebony keys, a tiny oxblood velvet piano stool, sculptural curved ivory plaster alcove rising only to58percent height, warm walnut parquet stage with one burgundy textile rug, soft afternoon sunlight grazing from lower right, very elegant refined editorial interior photography. Piano correctly constructed and recognizable, sensible perspective, small gold pedals, model fills bottom38percent while margins remain generous. Warm ivory, dark walnut, very restrained burgundy, tiny brushed brass. Tactile fine wood grain, real velvet, soft diffuse shadows, restrained luxury. Wallpaper continues ivory to all edges, no dark sky, no space nebula aurora storm coastal scene, no fruit animals people plants signage text UI icons phone frame borders or watermark. Full bleed.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "KTkSEwSnj1aHh3iHhpB5B6g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.e5a69ecf.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 145676,
+      "sha256": "e5a69ecf85fd905f83bd60a8b084fc949f39c66cc8187dccc31503fd6c0a333a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.44e7a72f.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 125278,
+      "sha256": "44e7a72f9728b5b5977342b203a001212b8099d7b854348c12ea11a8c830b263",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.326a4f29.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 59042,
+      "sha256": "326a4f29c6b310cfb0cb551e1df8ade72597a73fcd249940db4355061dc5c369",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.20939f9b.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 40482,
+      "sha256": "20939f9be022ba266c42988c312c9fca44428d52c8b5510042d636d88624bf5b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.447106e6.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 35476,
+      "sha256": "447106e6d0843d3c2a0ac6ad9a07451bab572f2fa22d1f774dc053c88f0b6624",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.c7a03e79.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 115248,
+      "sha256": "c7a03e79130a7f14fd7a378a3dd30fd42e3bea38f2c1b92f35da92620b8622be",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.f35310ca.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9898,
+      "sha256": "f35310ca010ea4809921e304594a18c2db2343f809cd9f16efeeb5c1a882637c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.444d2484.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 104666,
+      "sha256": "444d24846d2ab62b9107259da8c2f240aab5341c4b17578901fa84349c6d3cd1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-practice-chapters.1090c2b9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 57818,
+      "sha256": "1090c2b9aae19d102e0a4937f0573bfd3ca9f5770a82d06108f9eabab7f83a30",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-string-butterfly.7ef3bab5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 81710,
+      "sha256": "7ef3bab57cc57f52fce734b6b120c517ae9bf8fb578f2b9367a308d36604bf38",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.30a9e7ce.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5830,
+      "sha256": "30a9e7ce693690fe13dbdb464e97bd759d95d7da12848119703cb89caaaffea2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.db022399.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2940,
+      "sha256": "db022399bf26cf3992cb747e22519f2497cc819ee2ef1fa47b02eacb72c09e51",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.2da095bc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5718,
+      "sha256": "2da095bcad0baf5883750948cc38a576d53b99f608e785c48ec24b725e8b74ae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-piano-garden.5b48129c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 114450,
+      "sha256": "5b48129cc6d7a819ad1f5293a56d54eb2bff32a3e240bd410825380e6382bcbb",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 904232,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-piano-garden.5b48129c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-piano-garden.5b48129c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-piano-garden.5b48129c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-piano-garden.5b48129c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "practice-chapters",
+      "kind": "art",
+      "image": "widget-practice-chapters.1090c2b9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Practice chapters"
+    },
+    {
+      "id": "string-butterfly",
+      "kind": "art",
+      "image": "widget-string-butterfly.7ef3bab5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "String butterfly"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.30a9e7ce.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.db022399.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.2da095bc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.20939f9b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.447106e6.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.c7a03e79.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

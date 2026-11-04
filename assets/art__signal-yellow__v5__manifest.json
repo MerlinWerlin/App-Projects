@@ -1,0 +1,383 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "signal-yellow",
+  "packVersion": 5,
+  "name": "Signal Yellow",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#BFB7AF",
+    "tile": "#A8A19A",
+    "glyph": "#1C1816",
+    "accent": "#C7A369",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Signal Yellow",
+    "mood": "Concrete grey, black icons, yellow metro station, route sculpture and station clock.",
+    "tags": [
+      "signal",
+      "yellow",
+      "concrete",
+      "grey",
+      "black",
+      "icons",
+      "metro",
+      "station",
+      "route",
+      "sculpture",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Gül Işık (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "pxgOEwKGj0eId4l3aXCZBpc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.fdbda710.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 341430,
+      "sha256": "fdbda710ae3cfa456358095bfb5ec4d56d0e96b38baa48391a57f49b60cc66d1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.b10ff389.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 309922,
+      "sha256": "b10ff38940c4240bd808acdb004f206081a1177d4959afe9d6431b2b6465359c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.3ad6cc88.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 136268,
+      "sha256": "3ad6cc8881286e82404987c56b5d9926e61fb504f3a1af69324ef81b1dfd026d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.d0cb2226.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 42142,
+      "sha256": "d0cb2226575902eb9df921b3564bf921de0944a1c934788badba5a4ccf15e0d0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.95dbff12.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 141070,
+      "sha256": "95dbff12d632817f2e401bb406895c36b6ec0355514bac6b880ee23a999c9c94",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.ffa55735.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 290706,
+      "sha256": "ffa55735a0c51192efa4ece1cb8ec0e60f644ec274597e2079578244a578bbe4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.d316d195.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11778,
+      "sha256": "d316d195aa00a5f68cc31f3132f3bc1e0b70ab94ed456d28c7cf93b41aa1ac26",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.1df2eee6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 188734,
+      "sha256": "1df2eee63218ec7197590ecbeb38280956b786a4061a31da16d79a7694a6c8fa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-platform-focus.1ee20e0a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 216708,
+      "sha256": "1ee20e0add1e6e798235c50f85ede69b75376c3d14983a5c4de6d373b5c313ae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-signal-lantern.4ca883f4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 253268,
+      "sha256": "4ca883f4a345916034e55c143f8c4534ff455f1f3414e0e4929fb7525031212e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-transit-ticket-fold.60eb656b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 196410,
+      "sha256": "60eb656b9ebb12b53b5a3748f381dca01d5ca65fbd3942ee8d3dd8bfacbe28f9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-platform-slice.8c78d32f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 197066,
+      "sha256": "8c78d32f1b97961f68f3df16699840551d88033aa42db59e1b70160f2f96f15d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.c9e6cf4d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5908,
+      "sha256": "c9e6cf4d747807de32fc4b02a404b8a3deac9e931d6e2559441f4680915d1c58",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-interchange.58c3e23e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 205926,
+      "sha256": "58c3e23e16f92d1100b602b47726657a59adab4aae17271f3471f5d4d5df0068",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2537336,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-interchange.58c3e23e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-interchange.58c3e23e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-interchange.58c3e23e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-interchange.58c3e23e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "platform-focus",
+      "kind": "focus",
+      "image": "widget-platform-focus.1ee20e0a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Platform focus"
+    },
+    {
+      "id": "signal-lantern",
+      "kind": "art",
+      "image": "widget-signal-lantern.4ca883f4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Signal lantern"
+    },
+    {
+      "id": "transit-ticket-fold",
+      "kind": "art",
+      "image": "widget-transit-ticket-fold.60eb656b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Transit ticket fold"
+    },
+    {
+      "id": "platform-slice",
+      "kind": "art",
+      "image": "widget-platform-slice.8c78d32f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Platform slice"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.c9e6cf4d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.d0cb2226.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.95dbff12.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.ffa55735.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

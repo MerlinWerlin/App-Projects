@@ -1,0 +1,416 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "saltveil",
+  "packVersion": 5,
+  "name": "Saltveil",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#DCA2A0",
+    "tile": "#C18F8D",
+    "glyph": "#1C1816",
+    "accent": "#D99C9B",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Saltveil",
+    "mood": "A photographic-style rose salt lagoon with blush backgrounds, wine icons, salt crystal, brine ripples.",
+    "tags": [
+      "saltveil",
+      "photographic",
+      "style",
+      "rose",
+      "salt",
+      "lagoon",
+      "with",
+      "blush",
+      "backgrounds",
+      "wine",
+      "icons",
+      "crystal",
+      "brine",
+      "ripples",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Ocean & Water"
+  },
+  "thumbhash": "rVgCCwJ31YhwrdiTZo1Q9jg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.7563b760.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 162570,
+      "sha256": "7563b76003038dc8f9106d3b1b13c771d267eabc718403a4fdda6e8cbe2f1316",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.57dcdc65.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 146500,
+      "sha256": "57dcdc65b35b1034f76933bbfba4932b6127b05665bd31aca9bd2e897503556d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.37660905.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 71704,
+      "sha256": "37660905e7b514c2ce93f7cb1ae0d5e67f1f2e7f32197035b5b23b0f9d6656f3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.c09f7282.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 50658,
+      "sha256": "c09f7282eddfb3fab8870637a436c9ba8c07931037d83d2819a76206130cd476",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.9ae9158d.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 100906,
+      "sha256": "9ae9158dc9b607817e9c8e433be7f695b6e681f146a1ea9f10b2212a22fbf4a7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.28aa5bf9.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 205632,
+      "sha256": "28aa5bf9731a81487aa14f05482a82e33297c4698c6ae7c68664e432f01fd1c5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.bfc24321.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11026,
+      "sha256": "bfc243217a35bf01c0d58a6b8e7da769b6236ed54ab1aacbae579d1b2fbcb46d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.ad16bbc9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 124328,
+      "sha256": "ad16bbc929c6b03f2af3e21f1f0cf358141957b600ec285588544d63c698785d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-salt-crystal.a68920a7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 97336,
+      "sha256": "a68920a735e352dcc6ece702a74820b64021c794f3c1a6c4fc2650fffd2ea66f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.e3200b0e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5578,
+      "sha256": "e3200b0e2729233f13352cba886fbeb4da0799970ad39c24cb550d66206d78df",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.53f82f30.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3128,
+      "sha256": "53f82f30e9fdbe160f092af7808ba3c0e0f96a95993a9c55774d02c8d58bf8b0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.645b806e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5492,
+      "sha256": "645b806ecc03d19aa8ec213af1d4d103fb8f1ebc5eea1b52a98a3190c2c18226",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-battery.bd261317.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2618,
+      "sha256": "bd261317e004df6a1e8c6949c1814ea03fe885ce23116897549b1011d7054595",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-brine-ripples.01423885.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 136302,
+      "sha256": "01423885e8bda51b9369c56c76b8661bbab29efa7eb74771c62938f6ced5f3ed",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1123778,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-brine-ripples.01423885.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-brine-ripples.01423885.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-brine-ripples.01423885.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-brine-ripples.01423885.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "salt-crystal",
+      "kind": "art",
+      "image": "widget-salt-crystal.a68920a7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Salt crystal"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.e3200b0e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.53f82f30.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.645b806e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-battery",
+      "kind": "battery",
+      "image": "widget-live-battery.bd261317.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Battery level",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.22,
+          0.27,
+          0.56,
+          0.46
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.c09f7282.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.9ae9158d.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.28aa5bf9.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "sea-glass-sunday",
+  "packVersion": 5,
+  "name": "Sea Glass Sunday",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#EEE5D9",
+    "tile": "#D1C8BE",
+    "glyph": "#1C1816",
+    "accent": "#EDE2D3",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Sea Glass Sunday",
+    "mood": "Sea glass and shells on a lazy Sunday shore.",
+    "tags": [
+      "glass",
+      "sunday",
+      "shells",
+      "lazy",
+      "shore",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 SEA GLASS SUNDAY. Fine-art coastal STILL-LIFE PHOTOGRAPH aesthetic, pale warm SAND-CREAM background #F3EFE5, upper70percent EMPTY quiet uniform sandcream with extremely subtle fine sand texture, no patterns lettering objects footprints or horizons. Bottom28percent tiny carefully arranged natural beach collection: THREE small irregular rounded FROSTED SEA-GLASS pieces in pale aqua, seafoam and translucent pale blue, edges smoothly weathered and surfaces finely sea-worn matte, beside ONE small delicate ivory SPIRAL SEASHELL with faint peach ridges. A short graceful strand of pale sage seaweed lies nearby; tiny scatter of natural sand grains only near collection, no beads jewelry or ribbons. Full small arrangement around52percent canvas width, low centered with full margins, tallest object8percent image height. Soft natural morning windowlike light casts gentle short shadows, subtle realistic frosted translucency and shell growth details, beautiful minimal coastal editorial photography. Cream/sand/aqua/seafoam/peach palette. No water scene lake lotus flowers forests animals faces craft toys plastic resin jewelry typography branding frames UI watermark. Original generated photographic-style still life, no external photo input.",
+    "addedAt": "2026-11-01",
+    "category": "Ocean & Water"
+  },
+  "thumbhash": "thgGAwCoj3aHhH2TkqAHjYw=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.6c3511f6.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 120806,
+      "sha256": "6c3511f64a8a8763adb4b8fd12f980802e7866893ce7c3825cd3e577976da878",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.b5e0b3c4.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 107658,
+      "sha256": "b5e0b3c4e2d944075c3f7d01a9259f749d2bcb4579426c85df0c9db645ad7682",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.2c927e55.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 54412,
+      "sha256": "2c927e553d23fc6abcf0b171f51438b8df7e823facdbe1516b4165e204bc7aca",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.68634812.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 37104,
+      "sha256": "68634812599ee2824a39f0e443e41ae824b2ce3f839e436f5f931473d898f313",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.0018f08f.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 39662,
+      "sha256": "0018f08f1c95af4c8c27e3d7e6dda6c276a1316fcdc539389985ef9c3fd04b67",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.7c8fe5f9.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 159168,
+      "sha256": "7c8fe5f9261f23f383ed52417375f568f730adecf026e839d5832dc5ff02e183",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.509024f5.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 8178,
+      "sha256": "509024f5bd7841c8e45e2006100390adef8eab3aecbd8350e3cd86132a4466ee",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.de220988.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 117618,
+      "sha256": "de220988eef9f3f2f8c598d2105d5f3b9f48847246fb6bfd0b6eb561cc4e4606",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-coastal-countdown.30176c4b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 90234,
+      "sha256": "30176c4b2b58c913785c72bb66c0be33ac6c9e37cf4ffb44fb36296184899720",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sea-glass-bottle.72804a7b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 104046,
+      "sha256": "72804a7b9f6e16e4021d4b6bb87a92b61c3d8b630d1e9daf03a91c674a3194a3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.b6407aba.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6974,
+      "sha256": "b6407aba11f62c9e185e6e6daaffe1c706a33d8f3b48d46a180e3942d8797548",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.c34a8550.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3540,
+      "sha256": "c34a8550328d0f33fb01160d4477c98127314e7f031a810c55d28c0cda3363af",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.129bd826.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6830,
+      "sha256": "129bd8260376e34a19fd32677f45f6a19cb3be964bc86605aaec48f2bdb04420",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sand-dollar.adc55b58.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 130822,
+      "sha256": "adc55b58c48213997e2326955fd51b7783e14ecc0b55bd1940d968495da53114",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 987052,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-sand-dollar.adc55b58.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-sand-dollar.adc55b58.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-sand-dollar.adc55b58.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-sand-dollar.adc55b58.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "coastal-countdown",
+      "kind": "countdown",
+      "image": "widget-coastal-countdown.30176c4b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Coastal countdown"
+    },
+    {
+      "id": "sea-glass-bottle",
+      "kind": "art",
+      "image": "widget-sea-glass-bottle.72804a7b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sea glass bottle"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.b6407aba.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.c34a8550.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.129bd826.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.68634812.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.0018f08f.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.7c8fe5f9.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

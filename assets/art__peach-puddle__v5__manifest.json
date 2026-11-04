@@ -1,0 +1,399 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "peach-puddle",
+  "packVersion": 5,
+  "name": "Peach Puddle",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#FAE2D8",
+    "tile": "#DBC6BD",
+    "glyph": "#1C1816",
+    "accent": "#ECB798",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Peach Puddle",
+    "mood": "A chalk-pastel duckling splashing in peach puddles.",
+    "tags": [
+      "peach",
+      "puddle",
+      "chalk",
+      "pastel",
+      "duckling",
+      "splashing",
+      "puddles",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper 9:19.5 PEACH PUDDLE. Very cute almost-kawaii picture-book illustration in SOFT CHALK PASTEL and colored-pencil on pale warm BLUSH PAPER #F8E7E0. Clearly FLAT 2D drawing, visible delicate dry pigment grain, gently smudged edges, tiny pencil details; NO3D renders plastic ceramic felt plush resin photographic lighting. Palette soft peach/custard/sage/dusty coral, cocoa line details. UPPER68percent quiet EMPTY blush paper with very fine paper tooth only, no pattern objects text. Bottom30percent a small chubby peach-yellow DUCKLING with little orange flat bill, round black dot eyes, pink cheeks, tiny wings, wearing comically oversized sage-green rain boots; holding a folded peach leaf as a small umbrella on a thin stem. It stands in a little muted coral-pink puddle with two simple drawn ripple lines. A tiny cream folded paper boat floats beside it; one fallen peach blossom. Full small scene approx58percent canvas width with generous margins, duckling about12percent total canvas height, whole scene LOW with ample empty space above. Soft sweet minimal storybook fantasy, hand-drawn crayon softness, restrained paper art, not garish. No axolotl resin terrarium capybara citrus bath ghost laundry moon snail cat tea imagery. No lettering branding phone frames UI watermarks.",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "+DgGCwLYf1SXhoqlJ4B6A6g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.29a5e941.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 87088,
+      "sha256": "29a5e941c8eff18fea0825443c1c275ed0dd6e2f0a30b18f751e5b552a70c859",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.673e9be8.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 75036,
+      "sha256": "673e9be8a11b6fd4a8c5c0298c3ba8fbfd37d8d54f92f877374ab250f4ad35ec",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.f2ffcecd.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 31456,
+      "sha256": "f2ffcecd3fa707ee50be0d2f5bfd5e50d57ff9b683d6bc4ab734e35a490cfac4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.c2bce4f1.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 24824,
+      "sha256": "c2bce4f1eca8a7682b2d55808a855cb9473f2c23487f0ede3c35ee082215e778",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.572f1653.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 65036,
+      "sha256": "572f1653a05e5ff60cd6873b62c1724fd293fc06d87b0d1fe7d36d34bee3a3eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.1e8d72a6.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 185852,
+      "sha256": "1e8d72a683bf2327dca4e711be092565c8415657ef9becbc7d5ccc462bda45b5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.7f3817b2.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4028,
+      "sha256": "7f3817b2716897d4dae84b259d0721dc01c8fc0bd15dda4157f3464b3ca5e4fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.cebb76a8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 85796,
+      "sha256": "cebb76a81520f26bc511c97d82be6bc9de41ee4b1ae0853a50a5f45d8fda402f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-peach-umbrella-snail.44a1b298.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 79876,
+      "sha256": "44a1b298dad448b8087862b76ce2fa0000cb66769800079b457c03580d41a84f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-puddle-date.0f9e46a5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 102890,
+      "sha256": "0f9e46a508f367f2057e122f4030385c86152ac4beb45a809ec8d5ca12f361c1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.ed58ea89.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6742,
+      "sha256": "ed58ea8977e75313e197c475cf25abe51e96de8a4f964495b4b622a9a4d791c3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.dc84614a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3422,
+      "sha256": "dc84614a793c4eb91cb0f3473d68e2c53cb39960a3ff2c340f252f2f1469a926",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.6ec0f303.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6572,
+      "sha256": "6ec0f3030825e9c0ead694d0cfad01deea05a4eeae6c8a7ee0ff0a61c1039900",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lily-pad-boat.4a4aff17.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 96730,
+      "sha256": "4a4aff173549a60018b81c1b75cf9c4cd87374be915fac28e6ad3ccc84b1c36d",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 855348,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-lily-pad-boat.4a4aff17.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-lily-pad-boat.4a4aff17.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-lily-pad-boat.4a4aff17.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-lily-pad-boat.4a4aff17.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "peach-umbrella-snail",
+      "kind": "art",
+      "image": "widget-peach-umbrella-snail.44a1b298.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Peach umbrella snail"
+    },
+    {
+      "id": "puddle-date",
+      "kind": "calendar",
+      "image": "widget-puddle-date.0f9e46a5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Puddle date"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.ed58ea89.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.dc84614a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.6ec0f303.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.c2bce4f1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.572f1653.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.1e8d72a6.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
