@@ -238,7 +238,7 @@ struct DesignedDrawing {
 
   mutating func battery(percent: Int?, wide: Bool, large: Bool) {
     let w=size.width,h=size.height
-    let value=percent.map { number($0) } ?? "â€”"
+    let value=percent.map { number($0) } ?? "\u{2014}"
     let label=NSLocalizedString("Battery",comment:"Battery widget")
     if spec.battery == "ring" {
       let cx:CGFloat=wide ? 88 : w/2,cy:CGFloat=large ? 161 : 78,r:CGFloat=large ? 118 : 57
