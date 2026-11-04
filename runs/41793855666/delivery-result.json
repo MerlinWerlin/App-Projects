@@ -1,0 +1,11 @@
+{
+  "source_sha": "80c21b7959d81b11556d17dea7abfc33085de0fc",
+  "results": {
+    "PREFLIGHT_RESULT": "success",
+    "ARCHIVE_RESULT": "success",
+    "ENTITLEMENT_RESULT": "success",
+    "EXPORT_RESULT": "success",
+    "UPLOAD_RESULT": "skipped"
+  },
+  "errors": []
+}
