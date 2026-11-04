@@ -35,3 +35,6 @@ adb shell pidof com.jared797.cue.playtest > "$output/app-final-pids.txt"
 adb logcat -d -v threadtime > "$output/logcat.txt"
 python scripts/play/verify_cue_logcat.py "$output"
 printf 'Library/edit/prompter/script persistence, Android trial persistence, permission-denial recovery, synthetic-camera video save and reusable Plus access-code validation/restart/removal passed on API35, page size %s. No Play purchase, physical microphone or production signing claim.\n' "$actual" > "$output/result.txt"
+if ! python scripts/play/capture_cue_sdk_data.py "$output"; then
+  printf 'SDK queue capture failed separately; inspect its commands/receipt. No Data safety conclusion.\n' > "$output/sdk-audit-failure.txt"
+fi
