@@ -13,6 +13,8 @@ export type Region = {
    * Keeps a zoomed-in wall the colour you gave it from further out, and stand-ins matching the detail.
    */
   from?: string;
+  /** Filled regions beneath separately authored ink do not need their own outline. */
+  outline?: boolean;
 };
 
 export type Level = {
@@ -30,7 +32,8 @@ export type Level = {
   stroke?: number;
 };
 
-export type Theme = 'cosy' | 'animals' | 'fantasy' | 'dinosaurs' | 'patterns' | 'cute';
+export type Theme = 'cosy' | 'animals' | 'fantasy' | 'dinosaurs' | 'patterns' | 'cute' | 'flowers' | 'sealife' | 'places';
+export type Difficulty = 'beginner' | 'intermediate' | 'advanced';
 
 export type Scene = {
   id: string;
@@ -41,6 +44,10 @@ export type Scene = {
   levels: Level[];
   /** Palette suggested when the scene opens. */
   palette: string;
+  difficulty?: Difficulty;
+  mega?: boolean;
+  /** Kept available in My colouring so an artwork refresh cannot discard a saved picture. */
+  legacy?: boolean;
 };
 
 export type Placed = Level & {

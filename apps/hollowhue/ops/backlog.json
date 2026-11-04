@@ -67,6 +67,18 @@
       "phase": 2,
       "title": "Visible app update check/download/apply, awaiting all autosaves before restart",
       "status": "done; native QA passed, publication pending"
+    },
+    {
+      "id": "H12",
+      "phase": 2,
+      "title": "Replace placeholder catalogue with original Linework illustrations, topic categories and Beginner/Intermediate/Advanced filters",
+      "status": "implemented; native iPhone QA pending"
+    },
+    {
+      "id": "H13",
+      "phase": 2,
+      "title": "Six actual zoom transitions in standard worlds; separate Mega Zoom collection with twenty transitions and reliable deepest-level painting",
+      "status": "56 tests pass including every Mega stop, deep persistence and legacy integrity; native iPhone QA pending"
     }
   ]
 }

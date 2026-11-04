@@ -13,7 +13,7 @@ Colour by tapping a shape (fill) or freehand with finger / Apple Pencil (pencil,
 ## Current iPhone update (4 November 2026)
 
 The active isolated checkout is `C:/Users/jared/Documents/ChatGPT/Apps/hollowhue-update`,
-branch `codex/hollowhue-update-20261104`. App Store Connect: **6829399355**; bundle ID:
+branch `codex/hollowhue-art-categories-20261104`. App Store Connect: **6829399355**; bundle ID:
 `com.jared797.hollowhue`; Expo project: `@jared797/hollowhue`, UUID
 `2f10e62c-2086-4e7d-9437-649fc240e82d`.
 
@@ -38,3 +38,16 @@ that the current runtime source matches the captured commit.
 the downloaded launch bundle. The read-only **Hollowhue release status** workflow also reports Apple's
 latest build/processing/internal-beta state using existing CI credentials. Never treat a successful build
 queue or upload as proof the owner can install it: check the Apple beta state too.
+
+## Artwork and depth revision
+
+Owner feedback on4November requests better art, Linework-style categories/difficulties, six normal zooms
+and twenty in Mega Zoom. The new default catalogue contains six standard worlds and one Mega world;
+all57 source illustrations are original vector art from this repo's Linework catalogue. Beginner pictures
+have larger simple regions; higher difficulties add botanical/architectural/ornamental detail.
+`My colouring` keeps all previously saved scenes accessible without changing their shapes or region IDs.
+
+The opening picture counts as zoom0. Standard worlds have7pictures/6transitions; Mega has21pictures/20
+transitions, each a distinct illustration. `scripts/art/README.md` explains the preserved source and build
+process. 56 tests include every Mega stop, deepest-level painting/persistence and an exact legacy-art
+checksum. Native iPhone QA and this revision's release status are recorded in `ops/status.json`.

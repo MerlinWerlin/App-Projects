@@ -10,3 +10,5 @@
 - 2026-11-01 · Claude · No purchases in phase 1; packs + optional lifetime Plus later (docs/PLAN.md).
 - 2026-11-01 · Claude · Replaced the 15% hard reveal and hand-drawn stand-ins with continuous per-shape fade-in by on-screen size (Jared saw the pop).
 - 2026-11-01 · Jared · Eraser must be an obvious tool in both modes.
+
+- 2026-11-04 (Jared): zoom movement now looks good; artwork rejected. Add Linework-style topic categories and Beginner/Intermediate/Advanced choices, six actual standard zoom transitions, and a separate twenty-transition Mega Zoom category. Opening picture is zoom0; standard scenes have7levels and Mega21. Preserve old colouring in My colouring while replacing the default catalogue.

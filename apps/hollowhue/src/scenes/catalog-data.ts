@@ -1,0 +1,137 @@
+// Curated scene sequences from scripts/art/catalog-source.json.
+export const catalogData = [
+  {
+    "id": "lace-petals",
+    "theme": "patterns",
+    "difficulty": "advanced",
+    "palette": "jewel",
+    "title": "Lace & Petals",
+    "blurb": "Intricate filigree, layered petals and ornamental detail, six zooms deep.",
+    "art": [
+      "orn-mandala-filigree",
+      "mandala-radial-lace",
+      "mandala-tiered-lotus",
+      "geo-compass-ornate",
+      "mandala-paisley-ring",
+      "mand2-layered-16",
+      "mandala-leaf-vine"
+    ]
+  },
+  {
+    "id": "botanical-treasury",
+    "theme": "flowers",
+    "difficulty": "intermediate",
+    "palette": "garden",
+    "title": "Botanical Treasury",
+    "blurb": "Camellias, magnolia and garden bouquets, with finer details as you explore.",
+    "art": [
+      "flor2-camellia",
+      "flora-magnolia-branch",
+      "bot-rose",
+      "flor2-hydrangea",
+      "flora-succulent-trio",
+      "flora-wildflower-bouquet",
+      "bot-peony-arrangement"
+    ]
+  },
+  {
+    "id": "storybook-places",
+    "theme": "places",
+    "difficulty": "intermediate",
+    "palette": "dusk",
+    "title": "Storybook Places",
+    "blurb": "A cottage garden opens into cafes, treehouses, canals and a rose window.",
+    "art": [
+      "scn-cottage-garden",
+      "place-street-cafe",
+      "place3-terrace-houses",
+      "place-treehouse",
+      "scn-lighthouse",
+      "place-canal-houses",
+      "scn-rose-window-arch"
+    ]
+  },
+  {
+    "id": "forest-friends",
+    "theme": "animals",
+    "difficulty": "beginner",
+    "palette": "cosy",
+    "title": "Forest Friends",
+    "blurb": "Friendly animals, bold shapes and six little worlds to discover.",
+    "art": [
+      "ani-panda",
+      "ani-koala",
+      "ani-rabbit",
+      "ani-elephant",
+      "ani-tortoise",
+      "ani-hamster",
+      "ani-bear"
+    ]
+  },
+  {
+    "id": "ocean-friends",
+    "theme": "sealife",
+    "difficulty": "beginner",
+    "palette": "pastel",
+    "title": "Ocean Friends",
+    "blurb": "Gentle sea creatures with roomy shapes for your first colouring adventures.",
+    "art": [
+      "sea-simple-turtle",
+      "sea-banded-fish",
+      "sea-simple-octopus",
+      "sea-jellyfish",
+      "sea-crab",
+      "sea-pufferfish",
+      "sea-scallop"
+    ]
+  },
+  {
+    "id": "garden-blooms",
+    "theme": "flowers",
+    "difficulty": "beginner",
+    "palette": "garden",
+    "title": "Garden Blooms",
+    "blurb": "Start with five soft petals, then discover six more flowers inside.",
+    "art": [
+      "flor2-frangipani",
+      "flor2-hibiscus",
+      "flor2-cosmos",
+      "flora-rose-bud",
+      "bot-tulip-pair",
+      "flor2-gerbera",
+      "daisy"
+    ]
+  },
+  {
+    "id": "mega-ornament",
+    "theme": "patterns",
+    "difficulty": "advanced",
+    "palette": "jewel",
+    "mega": true,
+    "title": "The Twentyfold Garden",
+    "blurb": "Twenty real zooms through twenty-one different ornamental worlds.",
+    "art": [
+      "mandala-layered-floral",
+      "mandala-starburst",
+      "geo-compass-sixteen-point",
+      "mandala-curling-waves",
+      "mandala-radial-lace",
+      "mandala-tiered-lotus",
+      "geo-compass-ornate",
+      "mandala-paisley-ring",
+      "geo-eight-fold-star",
+      "mandala-leaf-vine",
+      "orn-mandala-lotus",
+      "orn-mandala-filigree",
+      "orn-mandala-star",
+      "orn-mandala-petal",
+      "orn-flower-of-life",
+      "orn-compass-rose",
+      "mand2-lotus-10",
+      "mand2-sun-16",
+      "mand2-compass-16",
+      "mand2-layered-rosette",
+      "mand2-lace-12"
+    ]
+  }
+] as const;

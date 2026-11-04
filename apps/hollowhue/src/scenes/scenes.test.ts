@@ -9,8 +9,7 @@ import { SCENES } from './index.ts';
 
 test('scene ids are unique and the deep scenes go at least six and five levels down', () => {
   assert.equal(new Set(SCENES.map((s) => s.id)).size, SCENES.length);
-  assert.equal(SCENES[0]!.id, 'bookshop');
-  assert.ok(SCENES[0]!.levels.length >= 6);
+  assert.ok(SCENES.find((s) => s.id === 'bookshop')!.levels.length >= 6);
   assert.ok(SCENES.find((s) => s.id === 'mandala')!.levels.length >= 5);
   assert.ok(SCENES.length >= 3);
 });

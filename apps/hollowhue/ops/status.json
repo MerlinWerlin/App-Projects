@@ -1,20 +1,24 @@
 {
   "app": "hollowhue",
   "stage": "build",
-  "headline": "November update is live over the air. Native 0.1.0 (3) uploaded successfully; Apple upload API confirms PROCESSING with no errors/warnings. Owner now confirms zoom movement improved and requests replacement art, Linework-style topic/difficulty filters, six standard zooms and twenty in Mega Zoom.",
+  "headline": "Artwork and category revision in progress from owner feedback: seven curated worlds, six standard zoom transitions and twenty in Mega Zoom. 57 original vector illustrations, difficulty/topic filters and My colouring preserve existing work. 56 checks and strict types pass; native iPhone validation and publication pending.",
   "next_for_owner": [
-    "Replacement artwork, categories, Beginner/Intermediate/Advanced and 6/20 zoom transitions are being built from the 4 November feedback."
+    "The mixed art direction preview is in docs/art-direction-20261104.png. Native category/6/20-zoom tests are running before release."
   ],
-  "tests": 38,
-  "typecheck": "38 tests pass; full SDK57 and offline UI strict types clean; native iPhone compile and interaction flow pass; all 8 screenshots preserved in docs/qa-20261104. Expo doctor 21/21.",
-  "native_qa": {
+  "tests": 56,
+  "typecheck": "56 tests; strict installed SDK and offline UI types clean. Deepest-level paint/restore and every Mega focus stop pass; old scene SHA unchanged.",
+  "previous_native_qa": {
     "run": "41788606169",
     "source": "774e53289c785914495d303f06729039c8f2fb10",
     "result": "pass",
     "screenshots": "docs/qa-20261104",
     "physical_phone_uptake": "unverified"
   },
-  "delivery": {
+  "native_qa": {
+    "result": "pending",
+    "scope": "new artwork/category filters, all six standard and twenty Mega transitions, paint and saved work"
+  },
+  "previous_delivery": {
     "release_pr": 211,
     "release_source": "4cb96f4e495c1a38b2072fe6e4d258a41c73e26b",
     "ota": {
@@ -33,5 +37,8 @@
     "testflight_build_run": "41791367613",
     "testflight_state": "0.1.0 (3) uploaded; Apple PROCESSING, no reported errors/warnings, beta availability pending",
     "testflight_submission": "a9aee4e4-1f6a-44f1-8cc5-eb2bab86b3c2"
+  },
+  "delivery": {
+    "state": "new artwork/category revision not yet published"
   }
 }

@@ -125,7 +125,7 @@ const LevelArt = memo(
             const paint = fills?.[r.id] ?? linkMap[r.id] ?? ART.paper;
             // A nested level's background has no outline: its edge is the portal edge, and a drawn border there
             // would show the seam between the two pictures.
-            const seam = i === 0 && level.depth > 0;
+            const seam = (i === 0 && level.depth > 0) || r.outline === false;
             if (!inside) {
               return (
                 <Path key={r.id} opacity={op} d={r.d} fill={paint} fillRule="evenodd" stroke={seam ? 'none' : ART.ink} strokeWidth={sw} strokeLinejoin="round" />
