@@ -1,0 +1,25 @@
+name: Release platform policy checks
+on:
+  push:
+    paths:
+      - '.github/workflows/ship*.yml'
+      - '.github/workflows/release-policy-check.yml'
+      - 'scripts/check-ios-release*.cjs'
+      - 'apps/cue/ops/release-policy.json'
+  pull_request:
+    paths:
+      - '.github/workflows/ship*.yml'
+      - '.github/workflows/release-policy-check.yml'
+      - 'scripts/check-ios-release*.cjs'
+      - 'apps/cue/ops/release-policy.json'
+permissions:
+  contents: read
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test scripts/check-ios-release.test.cjs
