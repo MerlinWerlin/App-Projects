@@ -92,8 +92,8 @@ enum DesignedWidgetReview {
         .frame(width:width,height:height).environment(\.locale,Locale(identifier:locale)).environment(\.calendar,calendar).environment(\.timeZone,calendar.timeZone)
         .environment(\.layoutDirection,locale.hasPrefix("ar") ? .rightToLeft : .leftToRight).environment(\.colorScheme,.light)
       let renderer=ImageRenderer(content:view);renderer.scale=2
-      guard let image=renderer.uiImage,let data=image.pngData() else {throw fail("Native render \(id)")}
-      let file="\(id)_\(spec.kind)_\(size)_\(state)_\(locale).png"
+      guard let image=renderer.uiImage,let data=image.jpegData(compressionQuality:0.94) else {throw fail("Native render \(id)")}
+      let file="\(id)_\(spec.kind)_\(size)_\(state)_\(locale).jpg"
       try data.write(to:folder.appendingPathComponent(file),options:.atomic)
       records.append(["theme":id,"kind":spec.kind,"size":size,"state":state,"locale":locale,"file":file,"width":Int(width*2),"height":Int(height*2),"sha256":SHA256.hash(data:data).map{String(format:"%02x",$0)}.joined()])
     }

@@ -119,10 +119,10 @@ struct DesignedDrawing {
   func text(_ value: String, x: CGFloat, y: CGFloat, font: CGFloat, width: CGFloat, color: Color? = nil, weight: Font.Weight = .medium, anchor: UnitPoint = .center) {
     var pointSize = font
     let minimum = font * 0.64
-    var resolved = context.resolve(Text(value).font(.system(size: pointSize, weight: weight, design: spec.fontDesign)).monospacedDigit().foregroundColor(color ?? ink))
+    var resolved = context.resolve(Text(value).font(.system(size: pointSize, weight: weight, design: spec.fontDesign)).monospacedDigit().foregroundColor(color ?? ink).lineLimit(1).fixedSize())
     while resolved.measure(in: CGSize(width: 10000, height: 1000)).width > width && pointSize > minimum {
       pointSize -= 0.5
-      resolved = context.resolve(Text(value).font(.system(size: pointSize, weight: weight, design: spec.fontDesign)).monospacedDigit().foregroundColor(color ?? ink))
+      resolved = context.resolve(Text(value).font(.system(size: pointSize, weight: weight, design: spec.fontDesign)).monospacedDigit().foregroundColor(color ?? ink).lineLimit(1).fixedSize())
     }
     context.draw(resolved, at: CGPoint(x: x, y: y), anchor: anchor)
   }
@@ -143,6 +143,12 @@ struct DesignedDrawing {
   }
   func dateText(_ d: Date, _ template: String) -> String {
     LiveDateText.format(d, template: template, locale: locale, calendar: calendar, timeZone: timeZone)
+  }
+  func clockParts(_ date: Date) -> (time: String, period: String) {
+    let uses12 = (DateFormatter.dateFormat(fromTemplate:"j",options:0,locale:locale) ?? "H").contains("a")
+    let hour = calendar.component(.hour, from:date), minute = calendar.component(.minute, from:date)
+    let value = uses12 ? (hour % 12 == 0 ? 12 : hour % 12) : hour
+    return (number(value) + ":" + number(minute,digits:2), uses12 ? dateText(date,"a") : "")
   }
 
   // Original small corner studies: orbital arcs, cut leaves, wave ribbons, petals and stitch marks.
@@ -194,8 +200,10 @@ struct DesignedDrawing {
       line(cx,cy,cx+CGFloat(cos(ma))*r*0.72,cy+CGFloat(sin(ma))*r*0.72,color:accent,width:large ? 4 : 2.8)
       circle(cx,cy,large ? 6 : 4,color:accent)
       if wide {
-        text(dateText(date,"jmm"),x:249,y:65,font:44,width:184,weight:.semibold)
-        text(dateText(date,"EEE d MMM"),x:249,y:108,font:15,width:184,color:secondary)
+        let parts = clockParts(date)
+        text(parts.time,x:264,y:61,font:48,width:164,weight:.semibold)
+        if !parts.period.isEmpty {text(parts.period,x:264,y:93,font:11,width:164,color:secondary)}
+        text(dateText(date,"EEE d MMM"),x:264,y:121,font:15,width:164,color:secondary)
         line(172,37,172,133,color:lineColor.opacity(0.18))
       } else if large {
         text(dateText(date,"jmm"),x:w/2,y:313,font:34,width:w-40,weight:.semibold)
@@ -220,8 +228,10 @@ struct DesignedDrawing {
       // Include AM/PM where the system uses a 12-hour clock.
       if uses12 {text(dateText(date,"a"),x:wide ? 310 : w/2,y:large ? 266 : wide ? 127 : 122,font:large ? 14 : 11,width:wide ? 83 : w-28,color:secondary)}
     } else {
-      text(dateText(date,"jmm"),x:w/2,y:large ? 166 : 78,font:large ? 96 : wide ? 78 : 51,width:w-24,weight:.semibold)
-      text(dateText(date,"EEEE d MMMM"),x:w/2,y:large ? 266 : 132,font:large ? 23 : 14,width:w-28,color:secondary)
+      let parts = clockParts(date)
+      text(parts.time,x:w/2,y:large ? 166 : 73,font:large ? 96 : wide ? 78 : 54,width:w-28,weight:.semibold)
+      if !parts.period.isEmpty {text(parts.period,x:w/2,y:large ? 228 : 106,font:large ? 17 : 11,width:w-28,color:secondary)}
+      text(dateText(date,large || wide ? "EEEE d MMMM" : "EEE d MMM"),x:w/2,y:large ? 274 : 132,font:large ? 23 : 13,width:w-28,color:secondary)
       line(w*0.3,large ? 302 : 151,w*0.7,large ? 302 : 151,color:accent.opacity(0.45),width:2)
     }
   }
@@ -276,8 +286,13 @@ struct DesignedDrawing {
       text(dateText(date,"MMM y"),x:74,y:135,font:14,width:116,color:secondary)
       line(137,23,137,148,color:lineColor.opacity(0.18))
     } else {
-      text(dateText(date,"LLLL"),x:large ? 27 : 14,y:large ? 39 : 23,font:large ? 29 : 19,width:large ? 220 : 108,color:ink,weight:.semibold,anchor:.leading)
-      text(dateText(date,"y"),x:w-(large ? 27 : 14),y:large ? 42 : 25,font:large ? 16 : 12,width:70,color:secondary,anchor:.trailing)
+      if large {
+        text(dateText(date,"LLLL"),x:27,y:39,font:29,width:220,color:ink,weight:.semibold,anchor:.leading)
+        text(dateText(date,"y"),x:w-27,y:42,font:16,width:70,color:secondary,anchor:.trailing)
+      } else {
+        text(dateText(date,"LLLL"),x:66,y:24,font:17,width:104,color:ink,weight:.semibold)
+        text(dateText(date,"y"),x:142,y:25,font:11,width:32,color:secondary)
+      }
       if large {text(dateText(date,"EEEE d"),x:27,y:75,font:16,width:280,color:secondary,anchor:.leading)}
     }
     let f=DateFormatter();f.locale=locale;f.calendar=calendar;f.timeZone=timeZone

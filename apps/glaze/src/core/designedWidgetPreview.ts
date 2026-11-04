@@ -35,6 +35,10 @@ export function designedWidgetSvg(d: DesignedWidget, size: HomeOptionSize, value
   const fmt = (options: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat(locale, options).format(date);
   const dayDate = (long = false) => fmt({ weekday: long ? 'long' : 'short', day: 'numeric', month: long ? 'long' : 'short' });
   const time = () => fmt({ hour: 'numeric', minute: '2-digit' });
+  const clockParts = () => {
+    const parts=new Intl.DateTimeFormat(locale,{hour:'numeric',minute:'2-digit'}).formatToParts(date);
+    return {time:parts.filter(p=>p.type==='hour'||p.type==='minute'||p.type==='literal'&&p.value.includes(':')).map(p=>p.value).join(''),period:parts.find(p=>p.type==='dayPeriod')?.value??''};
+  };
   const ornament = d.accent;
   if (d.motif === 'orbit') {
     elements.push(`<path d="M ${w-33} 14 A 29 29 0 0 0 ${w-15} 36" fill="none" stroke="${ornament}" opacity=".24"/>`);circle(w-28,30,2.5,ornament,0,.6);
@@ -62,7 +66,7 @@ export function designedWidgetSvg(d: DesignedWidget, size: HomeOptionSize, value
       const minute=date.getMinutes(),ha=(date.getHours()%12+minute/60)*Math.PI/6-Math.PI/2,ma=minute*Math.PI/30-Math.PI/2;
       line(cx,cy,cx+Math.cos(ha)*r*.46,cy+Math.sin(ha)*r*.46,d.ink,large?7:4);
       line(cx,cy,cx+Math.cos(ma)*r*.72,cy+Math.sin(ma)*r*.72,d.accent,large?4:2.8);circle(cx,cy,large?6:4,d.accent);
-      if(wide){text(time(),249,65,44,184,d.ink,600);text(dayDate(),249,108,15,184,d.secondary);line(172,37,172,133,d.line,1,.18);}
+      if(wide){const p=clockParts();text(p.time,264,61,48,164,d.ink,600);if(p.period)text(p.period,264,93,11,164,d.secondary);text(dayDate(),264,121,15,164,d.secondary);line(172,37,172,133,d.line,1,.18);}
       else if(large){text(time(),w/2,313,34,w-40,d.ink,600);text(dayDate(true),w/2,352,17,w-40,d.secondary);}
       else text(dayDate(),w/2,150,13,w-28,d.secondary);
     } else if (d.clock === 'split') {
@@ -74,7 +78,7 @@ export function designedWidgetSvg(d: DesignedWidget, size: HomeOptionSize, value
       else text(dayDate(true),w/2,large?307:145,large?20:13,w-26,d.secondary);
       if(hour12){const period=new Intl.DateTimeFormat(locale,{hour:'numeric'}).formatToParts(date).find(p=>p.type==='dayPeriod')?.value??'';text(period,wide?310:w/2,large?266:wide?127:122,large?14:11,wide?83:w-28,d.secondary);}
     } else {
-      text(time(),w/2,large?166:78,large?96:wide?78:51,w-24,d.ink,600);text(dayDate(true),w/2,large?266:132,large?23:14,w-28,d.secondary);line(w*.3,large?302:151,w*.7,large?302:151,d.accent,2,.45);
+      const p=clockParts();text(p.time,w/2,large?166:73,large?96:wide?78:54,w-28,d.ink,600);if(p.period)text(p.period,w/2,large?228:106,large?17:11,w-28,d.secondary);text(dayDate(large||wide),w/2,large?274:132,large?23:13,w-28,d.secondary);line(w*.3,large?302:151,w*.7,large?302:151,d.accent,2,.45);
     }
   } else if (d.kind === 'battery') {
     const value=battery===null?'—':num(battery),label=values.batteryLabel??'Battery';
@@ -97,7 +101,7 @@ export function designedWidgetSvg(d: DesignedWidget, size: HomeOptionSize, value
     const firstWeekday=localeFirstWeekday(locale),m=calendarMonth(date,firstWeekday),rtl=/^(ar|he|fa|ur)/.test(locale);
     const gx=wide?148:large?26:12,gw=wide?201:large?312:146,top=wide?37:large?104:52,rh=wide?17:large?34:15,cw=gw/7;
     if(wide){text(fmt({weekday:'short'}),74,32,16,116,d.accent);text(num(m.today),74,82,62,116,d.ink,600);text(fmt({month:'short',year:'numeric'}),74,135,14,116,d.secondary);line(137,23,137,148,d.line,1,.18);}
-    else {text(fmt({month:'long'}),large?27:14,large?39:23,large?29:19,large?220:108,d.ink,600,'start');text(fmt({year:'numeric'}),w-(large?27:14),large?42:25,large?16:12,70,d.secondary,500,'end');if(large)text(fmt({weekday:'long',day:'numeric'}),27,75,16,280,d.secondary,500,'start');}
+    else {if(large){text(fmt({month:'long'}),27,39,29,220,d.ink,600,'start');text(fmt({year:'numeric'}),w-27,42,16,70,d.secondary,500,'end');text(fmt({weekday:'long',day:'numeric'}),27,75,16,280,d.secondary,500,'start');}else{text(fmt({month:'long'}),66,24,17,104,d.ink,600);text(fmt({year:'numeric'}),142,25,11,32,d.secondary);}}
     for(let col=0;col<7;col++) {const weekday=(firstWeekday+col)%7,x=gx+((rtl?6-col:col)+.5)*cw;const wd=new Intl.DateTimeFormat(locale,{weekday:'narrow'}).format(new Date(2026,10,1+weekday));text(wd,x,top,large?15:10,cw,d.secondary,600);}
     m.cells.forEach((day,cell)=>{if(day===null)return;const col=cell%7,row=Math.floor(cell/7),x=gx+((rtl?6-col:col)+.5)*cw,y=top+rh*(row+1.18);if(day===m.today)circle(x,y,large?14:9,d.accent);text(num(day),x,y,large?19:12,cw,day===m.today?d.onAccent:d.ink,day===m.today?700:500);});
     if(large)line(27,350,w-27,350,d.line,1,.15);
