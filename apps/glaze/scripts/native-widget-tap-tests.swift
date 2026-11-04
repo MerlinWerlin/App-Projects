@@ -76,7 +76,12 @@ import Vision
     stage("widget-gallery")
     let search = spring.searchFields.firstMatch
     XCTAssertTrue(search.waitForExistence(timeout: 10), spring.debugDescription)
-    search.tap(); search.typeText("Glaze")
+    search.tap()
+    if !spring.keyboards.firstMatch.waitForExistence(timeout: 10) {
+      search.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+    }
+    XCTAssertTrue(spring.keyboards.firstMatch.waitForExistence(timeout: 10), spring.debugDescription)
+    search.typeText("Glaze")
     let searchKey = spring.keyboards.buttons["Search"].firstMatch
     if searchKey.exists && searchKey.isHittable { searchKey.tap() }
     let gallery = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); gallery.name = "gallery-search-glaze"; gallery.lifetime = .keepAlways; add(gallery)
