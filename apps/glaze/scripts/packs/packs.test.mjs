@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import http from 'node:http';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { basename, join } from 'node:path';
 import { buildPacks, nextVersion, pickEncoder } from './build_packs.mjs';
 import { CACHE_CATALOG, CACHE_IMMUTABLE, parseEnv, planUpload, publish } from './publish_r2.mjs';
 import { decodePng, encodePng, resizeRgba } from './png.mjs';
@@ -49,7 +49,7 @@ function checkBuild(out, r) {
 
 test('build: the 3 bundled themes with the best available encoder', async () => {
   const out = tmp('packs');
-  const versions = join(out, '..', `${out.split('/').pop()}-versions.json`);
+  const versions = join(out, '..', `${basename(out)}-versions.json`);
   try {
     const r = await buildPacks({ outDir: out, versionsFile: versions, log: quiet, plus: new Set(['starry-night']) });
     assert.deepEqual(r.failed, []);

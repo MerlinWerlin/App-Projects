@@ -7,13 +7,16 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
 import { POIS_FORMAT, toPois, type OverpassElement } from '../../tools/maps/pois.mjs';
 import {
   CATALOG_URL,
+  darkPackEntryPath,
+  darkPackMetaOk,
+  darkPackUrl,
   MAPS_BASE_URL,
   MAPS_RELEASE,
   MAX_ZOOM,
@@ -25,6 +28,7 @@ import {
   parseCity,
   parsePackMeta,
   tileCountEstimate,
+  tilePathForScheme,
   tilePathTemplate,
   type BBox,
   type CityMap,
@@ -39,6 +43,16 @@ const cfg = JSON.parse(read('../../tools/maps/cities.json')) as { release: strin
 const build = read('../../tools/maps/build.mjs');
 const workflow = read('../../ops/github/satchel-maps-publish.yml');
 const REPO = 'MerlinWerlin/App-Projects';
+
+// The installed copy lives at the App-Projects root; the standalone build-page repo has no .github folder, so this
+// half only runs inside App-Projects (where CI runs it), and the workflow-text checks below run everywhere.
+const INSTALLED = new URL('../../../../.github/workflows/satchel-maps-publish.yml', import.meta.url);
+test('map publisher is installed as an Actions workflow, with preview builds separated from publishing', { skip: !existsSync(INSTALLED) && 'standalone repo: no App-Projects .github' }, () => {
+  const installed = readFileSync(INSTALLED, 'utf8');
+  assert.equal(installed, workflow);
+  assert.ok(installed.includes('node verify.mjs out'));
+  assert.ok(installed.includes("github.ref == 'refs/heads/main' && inputs.publish"));
+});
 
 // ---- mirrors of build.mjs (kept honest by the text checks below) ----
 
@@ -103,7 +117,7 @@ test('contract: release tag, catalog URL and pack URLs match the pipeline and th
   assert.ok(workflow.indexOf('upload-1-packs.txt') < workflow.indexOf('--clobber catalog.json'));
   assert.ok(build.includes("writeFileSync(join(OUT, 'catalog.json')"));
   // asset names: <id>.tar next to catalog.json in the release
-  assert.ok(build.includes('const file = `${city.id}.tar`;'));
+  assert.ok(build.includes("const file = DARK ? `${city.id}-dark.tar` : `${city.id}.tar`;"));
   for (const c of cfg.cities) {
     const city = parseCity({ ...pipelineMeta(c, 1, 0), bytes: 1 }) as CityMap;
     assert.ok(city, c.id);
@@ -168,7 +182,9 @@ test('contract: tile layout, extension, zooms and tile size agree', () => {
   assert.ok(build.includes("execFileSync('find', ['tiles', '-type', 'f', '-name', '*.png']"));
   assert.ok(build.includes("['meta.json', 'pois.json', ...list]"));
   assert.ok(build.includes('width: 256 * RATIO, height: 256 * RATIO'), '256-pt tiles');
-  assert.ok(read('../native/maps.tsx').includes('<LocalTile pathTemplate={tiles.pathTemplate} tileSize={256} />'));
+  const mapsSrc = read('../native/maps.tsx');
+  assert.ok(mapsSrc.includes('<LocalTile key={tilePath} pathTemplate={tilePath} tileSize={256} />'));
+  assert.ok(mapsSrc.includes('tilePathForScheme(tiles, theme.dark)'), 'dark mode picks the dark tiles when installed (T166)');
   assert.equal(tilePathTemplate('file:///var/mobile/Documents/maps/kyoto/'), '/var/mobile/Documents/maps/kyoto/tiles/{z}/{x}/{y}.png');
   for (const c of cfg.cities) {
     assert.ok(c.minzoom >= 0 && c.maxzoom <= MAX_ZOOM, c.id);
@@ -272,4 +288,80 @@ test('contract: src/native/cityMaps.ts installs through parsePackMeta and saves 
   assert.ok(src.includes('JSON.stringify(packMetaToSave(rawMeta, meta))'));
   assert.ok(src.indexOf('packMetaToSave(rawMeta, meta)') < src.indexOf("writeAsStringAsync(`${dir}.complete`"), 'meta saved before .complete');
   assert.ok(src.includes('if (res.status === 404) failure = \'not-published\';'), 'honest being-published state');
+});
+
+// ---- T166: the optional dark tile pack ----
+
+const DARK_KEYS = ['file', 'bytes', 'sha256', 'tiles'];
+
+test('contract (T166): build.mjs --flavor dark writes <id>-dark.tar and a catalog `dark` object the app parses', () => {
+  // the dark flavour of the same Protomaps basemap, its own sprite, light stays the default
+  assert.ok(build.includes("const FLAVOR = args.flavor || 'light';"));
+  assert.ok(build.includes("layers('protomaps', namedFlavor(FLAVOR), { lang: 'en' })"));
+  assert.ok(build.includes('sprites/v4/${FLAVOR}'));
+  assert.ok(build.includes("if (DARK) meta.flavor = 'dark';"), 'dark meta.json says flavor dark');
+  // the dark object's keys are exactly what parseDarkPack reads; merged into the light catalog, version stays 1
+  const m = /darkBuilt\.push\(\{ id: city\.id, dark: \{ ([^}]*) \} \}\);/.exec(build);
+  assert.ok(m, 'build.mjs records the dark pack in one object literal');
+  assert.deepEqual(m[1].split(',').map((k) => k.trim().split(':')[0].trim()), DARK_KEYS);
+  assert.ok(build.includes("lightCatalog.cities.find((c) => c.id === id).dark = dark;"), 'merged into the light catalog entries');
+  assert.ok(build.includes("readFileSync(join(OUT, 'catalog.json'), 'utf8')"));
+  assert.ok(build.includes('c.dark ? [c.file, c.dark.file] : [c.file]'), 'dark packs are in the upload list (before catalog.json)');
+
+  for (const c of cfg.cities) {
+    const tiles = tileCountEstimate(c.bbox, c.minzoom, c.maxzoom);
+    const dark = { file: `${c.id}-dark.tar`, bytes: 30_000_000, sha256: 'cd'.repeat(32), tiles };
+    const catalog = parseCatalog({ version: 1, release: cfg.release, cities: [{ ...pipelineMeta(c, tiles, 1), bytes: 40_000_000, sha256: 'ab'.repeat(32), dark }] });
+    const city = catalog?.cities[0];
+    assert.ok(city, c.id);
+    assert.deepEqual(city.dark, dark, `${c.id}: the dark object comes through whole`);
+    assert.equal(darkPackUrl(city), `${MAPS_BASE_URL}${c.id}-dark.tar`);
+    // an entry without `dark` (the live satchel-maps-v1 catalog today) is unchanged
+    const plain = parseCity({ ...pipelineMeta(c, tiles, 1), bytes: 1 });
+    assert.ok(plain);
+    assert.equal(plain.dark, undefined);
+    assert.equal(darkPackUrl(plain), null);
+  }
+});
+
+test('contract (T166): a dark pack walks on the phone to its meta.json + tiles only, and verify.mjs checks it', () => {
+  const city = cfg.cities[0];
+  const tiles = tilesFor(city.bbox, city.minzoom).map(([z, x, y]) => `tiles/${z}/${x}/${y}.png`).sort();
+  const png = Uint8Array.from([0x89, 0x50, 0x4e, 0x47]);
+  const meta = { ...pipelineMeta(city, tiles.length, 3), file: `${city.id}-dark.tar`, flavor: 'dark' };
+  const tar = makeTar([
+    { name: 'meta.json', body: utf8Encode(JSON.stringify(meta)) },
+    { name: 'pois.json', body: utf8Encode(JSON.stringify(toPois(OVERPASS, '2026-11-01'))) },
+    ...tiles.map((name) => ({ name, body: png })),
+  ]);
+  const kept: string[] = [];
+  let off = 0;
+  while (off + BLOCK <= tar.length) {
+    const h = parseTarHeader(tar.subarray(off, off + BLOCK));
+    if (h === 'end' || typeof h === 'string') break;
+    const rel = h.type === 'file' ? darkPackEntryPath(h.name) : null;
+    if (rel) kept.push(rel);
+    off = nextHeaderOffset(off, h.size);
+  }
+  assert.deepEqual(kept, ['meta.json', ...tiles], 'pois.json is skipped; it is the same as the main pack');
+  assert.equal(darkPackMetaOk(meta, city.id), true);
+  assert.equal(darkPackMetaOk(pipelineMeta(city, 1, 1), city.id), false, 'the light meta.json is not a dark pack');
+
+  const verify = read('../../tools/maps/verify.mjs');
+  assert.ok(verify.includes('if (city.dark) {'));
+  assert.ok(verify.includes('darkPackMetaOk('));
+  assert.ok(verify.includes('-dark-preview.png'));
+});
+
+test('contract (T166): the phone installs dark tiles inside the city folder and uses them only in dark mode', () => {
+  const src = read('../native/cityMaps.ts');
+  assert.ok(src.includes('const dir = darkDirOf(root);'));
+  assert.ok(src.includes('darkPackEntryPath);'), 'unpack keeps only meta.json and tiles');
+  assert.ok(src.includes('darkPackMetaOk(JSON.parse('));
+  assert.ok(src.indexOf('darkPackMetaOk(JSON.parse(') < src.lastIndexOf("writeAsStringAsync(`${dir}.complete`"), 'meta checked before .complete');
+  assert.ok(src.includes('`${dir}${name}/dark/.complete`'), 'listInstalled marks complete dark tiles');
+  const t = { pathTemplate: tilePathTemplate('file:///d/maps/kyoto/'), darkPathTemplate: tilePathTemplate('file:///d/maps/kyoto/dark/') };
+  assert.equal(tilePathForScheme(t, true), '/d/maps/kyoto/dark/tiles/{z}/{x}/{y}.png');
+  assert.equal(tilePathForScheme(t, false), '/d/maps/kyoto/tiles/{z}/{x}/{y}.png');
+  assert.equal(tilePathForScheme({ pathTemplate: t.pathTemplate, darkPathTemplate: null }, true), t.pathTemplate);
 });

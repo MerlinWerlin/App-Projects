@@ -15,13 +15,15 @@ export function Card({ children, style }: { children: ReactNode; style?: ViewSty
   );
 }
 
-export function Button({ label, onPress, kind = 'primary', style }: { label: string; onPress: () => void; kind?: 'primary' | 'soft'; style?: ViewStyle }) {
+export function Button({ label, onPress, kind = 'primary', style, disabled = false }: { label: string; onPress: () => void; kind?: 'primary' | 'soft'; style?: ViewStyle; disabled?: boolean }) {
   const { c } = useColors();
   const h = useHaptics();
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={label}
+      accessibilityState={{ disabled }}
+      disabled={disabled}
       onPress={() => {
         h.tap();
         onPress();
@@ -34,7 +36,7 @@ export function Button({ label, onPress, kind = 'primary', style }: { label: str
           backgroundColor: kind === 'primary' ? c.accent : c.accentSoft,
           alignItems: 'center',
           justifyContent: 'center',
-          opacity: pressed ? 0.85 : 1,
+          opacity: disabled ? 0.45 : pressed ? 0.85 : 1,
           transform: [{ scale: pressed ? 0.97 : 1 }],
         },
         style,
@@ -89,11 +91,12 @@ export function IconButton({
   );
 }
 
-export function Chip({ label, on, onPress }: { label: string; on: boolean; onPress: () => void }) {
+export function Chip({ label, on, onPress, testID }: { label: string; on: boolean; onPress: () => void; testID?: string }) {
   const { c } = useColors();
   const h = useHaptics();
   return (
     <Pressable
+      testID={testID}
       accessibilityRole="button"
       accessibilityState={{ selected: on }}
       accessibilityLabel={label}
@@ -102,7 +105,7 @@ export function Chip({ label, on, onPress }: { label: string; on: boolean; onPre
         onPress();
       }}
       style={{
-        minHeight: 40,
+        minHeight: 48,
         paddingHorizontal: space.lg,
         justifyContent: 'center',
         borderRadius: radius.pill,

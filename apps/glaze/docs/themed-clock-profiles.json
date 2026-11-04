@@ -1727,10 +1727,10 @@
         "numberFree": true,
         "liveFrame": {
           "rect": [
-            0.12,
+            0.045,
             0.025,
-            0.76,
-            0.14
+            0.52,
+            0.11
           ],
           "shape": "plate",
           "clockStyle": "digital",
@@ -1741,10 +1741,10 @@
         "small": {
           "kind": "clock",
           "rect": [
-            0.12,
+            0.045,
             0.025,
-            0.76,
-            0.14
+            0.52,
+            0.11
           ],
           "shape": "plate",
           "cover": false,
@@ -1756,10 +1756,10 @@
         "medium": {
           "kind": "clock",
           "rect": [
-            0.3225,
+            0.2875,
             0.025,
-            0.3549,
-            0.14
+            0.2429,
+            0.11
           ],
           "shape": "plate",
           "cover": false,
@@ -1771,10 +1771,10 @@
         "large": {
           "kind": "clock",
           "rect": [
-            0.12,
+            0.045,
             0.0474,
-            0.76,
-            0.1334
+            0.52,
+            0.1048
           ],
           "shape": "plate",
           "cover": false,

@@ -72,6 +72,15 @@
 "Resume" = "继续";
 "Days" = "天";
 
+"Photo album" = "相册";
+
+"Choose album photos in Glaze" = "在Glaze中选择相册照片";
+
+"Your selected photos, changing through the day." = "所选照片在一天中轮流显示。";
+
+"Next photo" = "下一张照片";
+
+"Widget size" = "小组件尺寸";
 /* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
    The word clock's phrase is English only by design; other languages show a big digital time. */
 "widgets.moon.new" = "新月";
@@ -139,3 +148,7 @@
 "Tick a habit" = "习惯打卡";
 "Streak habit" = "连续打卡的习惯";
 "Choose the habit this streak widget follows." = "选择这个连续打卡小组件跟踪的习惯。";
+
+"Unavailable" = "暂不可用";
+"Full" = "已充满";
+"Remaining" = "剩余";

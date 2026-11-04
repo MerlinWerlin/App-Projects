@@ -4,8 +4,11 @@ Glaze's downloadable theme packs are hosted as **release assets on the public re
 
 | | Release tag | Base URL the app uses (`src/config/packs.ts`) |
 |---|---|---|
-| Production | `glaze-packs-v1` | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1` |
+| Production (1.0.2+) | `glaze-packs-v5` | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5` |
+| Legacy (1.0.1 and earlier) | `glaze-packs-v1` | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1` |
 | Staging | `glaze-packs-staging` (pre-release) | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-staging` |
+
+The 1.0.2 catalogue lives on v5. Design-hold immutable packs on v11/v12/v13 preserve141themes while removing103 small automatic clock overlays and withholding315 repeated component editions;2dedicated art clocks and other original choices remain. Source branches `codex/glaze-packs-v11-20261104` through v13 contain exact assets and upload plans. Historical versioned files remain intact. The rebuild-template commands below describe the legacy v1 publisher: do not use that catalogue default for1.0.2 or replace older clients' catalogue. Current locks/digests are in `versions.json`, `releases.json` and `testflight-1.0.2.json`.
 
 The app picks staging only when the build has Expo extra `packEnv: "staging"`; otherwise production.
 
@@ -174,3 +177,11 @@ To use the workflow instead, the theme folders (with `widgets/`) must be committ
 ## Not used any more
 - `scripts/packs/publish_r2.mjs` and `scripts/packs/sigv4.mjs` (S3/R2 uploader) stay in the repo, tested, in case the packs ever move to a bucket. A bucket would be a `folder` host, so only the base URL changes.
 - `docs/R2_SETUP.md`: reference only. Jared has nothing to do there.
+
+## 4 Nov 2026 TestFlight design gate
+
+Technical compilation and automated checks passed, but103/105 automatically generated themed clocks use small values above reused decorative artwork. The315 added date/focus/battery editions repeat that composition. They do not meet the intended dedicated functional widget design and must not be described as complete. The v11/v12/v13 design-hold packs restore original metadata/choices and omit those automatic variants; all141 themes keep their palettes, prices and credits. Existing placed widgets may retain their earlier artwork; check, reselect and re-save as needed. Native habits, photo albums and the general widget runtime are available for testing in 1.0.2 (27); dedicated themed layouts still require redesign, per-theme visual qualification and iPhone QA. Prototype flat icons remain excluded. Evidence: `ops/TESTFLIGHT_DELIVERY_20261104.json`.
+
+The canonical GitHub catalogue URL can retain an old redirect after replacement. TestFlight 1.0.2 (27) uses `catalogRequestUrl` to give each actual catalogue fetch a fresh URL, while retaining conditional ETag checks, the six-hour/offline policy, and unchanged immutable asset URLs. Publication readback uses that same production helper. A successful upload alone does not establish that an older client's cached redirect has refreshed.
+
+Final Apple observation on 4 Nov 2026 at08:18:03UTC:1.0.2(27) is VALID / IN_BETA_TESTING in the existing internal group. This is native-runtime delivery with a themed-design hold, not completion of the full themed widget suite.

@@ -49,12 +49,12 @@ const tag = (tags, k) => {
 };
 
 /** Overpass QL for toilets and every POI_TAGS feature inside bbox [west, south, east, north], with centres. */
-export function overpassQuery(bbox) {
+export function overpassQuery(bbox, timeout = 120) {
   const [w, s, e, n] = bbox;
   const b = `${s},${w},${n},${e}`;
   const parts = [`nwr["amenity"="toilets"](${b});`];
   for (const tags of Object.values(POI_TAGS)) for (const [k, v] of tags) parts.push(`nwr["${k}"="${v}"](${b});`);
-  return `[out:json][timeout:120];(${parts.join('')});out center tags;`;
+  return `[out:json][timeout:${timeout}];(${parts.join('')});out center tags;`;
 }
 
 /** The help details for a place in one of HELP_POI_CATEGORIES (only the tags that are present). */

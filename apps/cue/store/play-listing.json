@@ -1,0 +1,29 @@
+{
+  "status": "saved_in_play_pending_review_not_public",
+  "locale": "en-US",
+  "title": "Cue: Teleprompter",
+  "shortDescription": "Read scripts near the camera with scrolling, mirrors and recording tools.",
+  "fullDescription": "Read your next take with Cue. Write or import a script, choose a comfortable text size and scrolling speed, and keep your words close to the camera.\n\nFREE TELEPROMPTER AND RECORDING\nKeep unlimited scripts, scroll steadily, mirror or flip the text for a teleprompter rig, use a countdown, and record without a watermark. Your scripts and steady-scroll tools stay available when a trial ends.\n\nOPTIONAL CUE PLUS\nPlus adds Voice Pace, Voice Follow, caption-file export, prompter colours, Word document import and rehearsal stats. Start a free seven-day trial when you choose. Plus is a separate one-time purchase at the price shown in the app; the trial does not charge automatically. The Android trial is stored on your device. Clearing app data or reinstalling can lose its record.\n\nVoice features need microphone permission. Voice Follow also needs compatible on-device speech recognition and installed language resources; availability varies by device and language.\n\nCue uses the system file picker for imports and the system share sheet for exports. Camera and microphone permission are needed to record a take.",
+  "releaseBlockers": [
+    "On-device speech availability/fallback QA",
+    "Camera and microphone interruption QA",
+    "Play Billing purchase and restore verification",
+    "Provide non-expiring reviewer access to Plus; free trial or payment is not accepted by the current Console instructions",
+    "Complete target audience after reviewer-access requirements are satisfied",
+    "Complete merchant payments profile and configure the one-time Plus product",
+    "Complete final SDK/network Data safety review; Android-qualified privacy copy is now published"
+  ],
+  "assets": "Four actual Android screenshots, existing-brand icon and feature graphic uploaded and saved in Play listing; feature graphic AI-labeled; not public",
+  "playAppId": "4974377533213924164",
+  "contentRatings": {
+    "status": "questionnaire_saved_pending_review",
+    "ESRB": "Everyone",
+    "PEGI": "3",
+    "USK": "All ages",
+    "IARC": "3+",
+    "Brazil": "14+",
+    "interactiveElements": "In-App Purchases"
+  },
+  "assetManifest": "assets/MANIFEST.json",
+  "privacy": "Data safety and privacy-policy claims require final binary/SDK audit; not submitted"
+}

@@ -7,3 +7,21 @@ Plus is the non-consumable `com.jared797.cue.plus`, Australia A$2.99. The user-s
 The older `jpg/ios/` and `src/render.mjs` assets are retained historical illustrative mockups. Their old orange palette and trial wording are superseded and must not be reused for this release. The release checklist records the actual native capture workflow and source revision; visually inspect every replacement before uploading.
 
 The current `native/` folders contain inspected simulator captures of build 13 source `d73a869`: three iPhone screenshots, two iPad screenshots and one complete paywall image for both purchase reviews. Capture run 40476615975 succeeded using the compiled app preserved by run 40472424782. The public website uses the same iPhone images. The iPad library capture caught the launch animation and is intentionally excluded. Each folder records its provenance and purpose; the review image's USD $1.99 label is the US storefront, separate from the verified Australian A$2.99 schedule.
+
+## Android Google Play listing preparation
+
+Codex maintains these drafts for APPS / Cue Android simulation and release.
+play-listing.json is the proposed English listing. assets contains exported
+graphics and actual Android UI captures, with hashes and source provenance.
+These Android drafts do not publish or submit an app.
+Android's trial is device-local; do not configure Apple's free trial SKU in Play.
+
+To reproduce the graphics, install @resvg/resvg-js@2.6.2, opentype.js@2.0.0 and
+pngjs@7.0.0 in an external tool folder. Run generate-play-assets.cjs with that
+folder's node_modules path, the downloaded store-capture artifact folder and
+its GitHub run ID. App dependencies and original branding files are unchanged.
+The generator exports the existing icon, outlines the app's own fonts in SVG,
+and losslessly converts opaque UI captures to RGB PNG.
+
+Sizes and formats follow [Google's preview-asset guidance](https://support.google.com/googleplay/android-developer/answer/9866151)
+and [icon specifications](https://developer.android.com/distribute/google-play/resources/icon-design-specifications).

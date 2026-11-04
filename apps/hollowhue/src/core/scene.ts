@@ -13,6 +13,10 @@ export type Region = {
    * Keeps a zoomed-in wall the colour you gave it from further out, and stand-ins matching the detail.
    */
   from?: string;
+  /** Filled regions beneath separately authored ink do not need their own outline. */
+  outline?: boolean;
+  /** A closed silhouette of the illustrator's ink, drawn above fills and never colourable. */
+  ink?: boolean;
 };
 
 export type Level = {
@@ -30,7 +34,8 @@ export type Level = {
   stroke?: number;
 };
 
-export type Theme = 'cosy' | 'animals' | 'fantasy' | 'dinosaurs' | 'patterns' | 'cute';
+export type Theme = 'cosy' | 'animals' | 'fantasy' | 'dinosaurs' | 'patterns' | 'cute' | 'flowers' | 'sealife' | 'places';
+export type Difficulty = 'beginner' | 'intermediate' | 'advanced';
 
 export type Scene = {
   id: string;
@@ -41,6 +46,10 @@ export type Scene = {
   levels: Level[];
   /** Palette suggested when the scene opens. */
   palette: string;
+  difficulty?: Difficulty;
+  mega?: boolean;
+  /** Kept available in My colouring so an artwork refresh cannot discard a saved picture. */
+  legacy?: boolean;
 };
 
 export type Placed = Level & {
@@ -100,7 +109,7 @@ export function layout(scene: Scene): Layout {
 export function hitShapes(p: Placed) {
   if (!p.hit) {
     p.hit = p.regions
-      .filter((r) => !r.line)
+      .filter((r) => !r.line && !r.ink)
       .map((r) => {
         const rings = flatten(r.d);
         return { id: r.id, rings, box: bboxOf(rings) };
@@ -305,5 +314,5 @@ export function focusAt(vis: Visible, wx: number, wy: number): Placed | null {
 }
 
 export function fillableCount(scene: Scene): number {
-  return scene.levels.reduce((n, l) => n + l.regions.filter((r) => !r.line).length, 0);
+  return scene.levels.reduce((n, l) => n + l.regions.filter((r) => !r.line && !r.ink).length, 0);
 }

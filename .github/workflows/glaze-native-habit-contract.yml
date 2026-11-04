@@ -1,0 +1,42 @@
+name: Glaze native habit behavior
+on:
+  push:
+    branches: ['codex/glaze-theme-release-20261101']
+    paths: ['apps/glaze/targets/widget/Habit*.swift', 'apps/glaze/targets/widget/SavedWidgetDesign.swift', 'apps/glaze/src/core/habit*.ts', 'apps/glaze/src/core/calendarMaths.ts', 'apps/glaze/scripts/native-habit-*', 'apps/glaze/docs/native-habit*-review*.json', '.github/workflows/glaze-native-habit-contract.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  habits:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: apps/glaze
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Compare real Swift storage behavior with app parser and counters
+        run: |
+          set -euo pipefail
+          node --no-warnings scripts/native-habit-fixture.mjs "$RUNNER_TEMP/native-habit-fixture.json"
+          swiftc targets/widget/SavedWidgetDesign.swift targets/widget/HabitStore.swift targets/widget/HabitColours.swift targets/widget/HabitDesign.swift scripts/native-habit-contract.swift -o "$RUNNER_TEMP/glaze-habit-check"
+          "$RUNNER_TEMP/glaze-habit-check" "$RUNNER_TEMP/native-habit-fixture.json" "$RUNNER_TEMP/native-habit-result.json"
+      - name: Independently check native colour results with the app colour library
+        run: node --no-warnings scripts/native-habit-colours.mjs "$RUNNER_TEMP/native-habit-result.json" "$RUNNER_TEMP/native-habit-colours.json"
+      - name: Typecheck the full widget extension against iOS
+        if: always()
+        run: |
+          SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
+          xcrun swiftc -typecheck -parse-as-library -sdk "$SDK" -target arm64-apple-ios17.0-simulator targets/widget/*.swift
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: glaze-native-habit-contract
+          path: |
+            ${{ runner.temp }}/native-habit-fixture.json
+            ${{ runner.temp }}/native-habit-result.json
+            ${{ runner.temp }}/native-habit-colours.json
+          retention-days: 14

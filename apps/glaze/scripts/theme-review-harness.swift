@@ -22,6 +22,10 @@ enum NativeReviewCapture {
     let folder = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("GlazeNativeReview")
     do {
       try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+      if Bundle.main.object(forInfoDictionaryKey:"ReviewComponents") as? Bool == true {
+        try NativeComponentCapture.run(folder:folder)
+        return
+      }
       guard let url = Bundle.main.url(forResource: "themed-clock-profiles", withExtension: "json"),
             let root = try JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any],
             let themes = root["themes"] as? [[String: Any]], themes.count == 105 else {
@@ -102,17 +106,13 @@ struct NativeClockComposition: View {
   let width: CGFloat
   let height: CGFloat
   let fit: Bool
+  var readings: LiveArtReadings = .device
   var body: some View {
     let inset = fit ? min(width,height) * 0.06 : 0
     let scale = min((width-2*inset)/width, (height-2*inset)/height)
-    let w = width*scale, h = height*scale
-    let x = (width-w)/2, y = (height-h)/2
-    let r = CGRect(x:x+spec.rect.minX*w,y:y+spec.rect.minY*h,width:spec.rect.width*w,height:spec.rect.height*h)
     ZStack(alignment: .topLeading) {
       artwork.scaleEffect(scale).frame(width:width,height:height)
-      LiveArtValueView(spec:spec,theme:theme,date:date)
-        .frame(width:spec.circle ? min(r.width,r.height) : r.width,height:spec.circle ? min(r.width,r.height) : r.height)
-        .position(x:r.midX,y:r.midY)
+      LiveArtPlacedValue(spec:spec,imageSize:CGSize(width:width,height:height),theme:theme,date:date,insetFraction:fit ? 0.06 : 0,readings:readings)
     }.frame(width:width,height:height).clipped()
   }
 }

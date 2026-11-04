@@ -452,7 +452,7 @@ test('Widgets tab shows the theme widget art menu above the grid', () => {
   assert.match(art, /widgets\.setSeamless\(/);
   // T251: every piece tries the wallpaper crop first; setWidgetArt only when there is no wallpaper file.
   assert.match(art, /ok = preserveArtwork \? false : await seamless\(artUri\);\s*if \(ok === false && option\.background !== 'wallpaper'\)/);
-  assert.match(art, /option\.kind === 'clock' && option\.numberFree === true && !!option\.liveFrame\?\.clockStyle/);
+  assert.match(art, /option\.numberFree === true && !!option\.liveFrame/);
 });
 
 test('menu previews fit the art (never crop): placeArt / fullBleedArt rectangle + contain; T251 no blurred copy', () => {

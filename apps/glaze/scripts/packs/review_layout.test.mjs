@@ -122,19 +122,19 @@ test('T275b: --themes <reviews root> builds review folders directly; normal fold
     assert.deepEqual(m.palette, { bg: '#0F1217', tile: '#0F1217', glyph: '#EEECE3', accent: '#EEECE3', text: '#EEECE3' });
     assert.equal(m.meta.addedAt, '2026-11-01');
     assert.deepEqual(m.assets.filter((a) => /^widget-(small|medium|large)$/.test(a.role)), [], 'no hero files needed');
-    assert.deepEqual(m.widgets.map((w) => w.id), ['themed-live-clock', 'live-clock', 'live-date', 'live-focus', 'live-battery', 'aurora', 'constellation-clock-concept', 'glasswing', 'moon-gate']);
+    assert.deepEqual(m.widgets.map((w) => w.id), ['themed-live-clock', 'live-date', 'live-focus', 'live-battery', 'aurora', 'constellation-clock-concept', 'glasswing', 'moon-gate']);
     const glass = m.widgets.find((w) => w.id === 'glasswing');
     assert.equal(m.assets.find((a) => a.path === glass.image).sha256, sha(facePng(200, 210, 220)), 'catalogue override file is used');
     assert.equal(m.widgets.find((w) => w.id === 'moon-gate').kind, 'art');
     assert.equal(m.widgets.find((w) => w.id === 'moon-gate').label, 'moon gate');
-    assert.equal(m.widgets[1].label, 'Plain clock (fallback)');
+    assert.ok(!m.widgets.some(w => w.id === 'live-clock' || /fallback/i.test(w.label ?? '')));
     const pm = parseRemoteArtManifest(m, 'alpine-starlight');
     assert.equal(pm.ok, true, pm.ok ? '' : pm.error);
     assert.deepEqual(validateWidgetOptions(m.widgets, m.assets), []);
     const plan = liveArtPlan('alpine-starlight', pm.value.widgets[0]);
     assert.equal(plan.kind, 'clock');
     assert.equal(plan.clockStyle, 'analog');
-    assert.equal(withLiveArt('alpine-starlight', pm.value.widgets).filter((w) => w.liveArt).length, 5);
+    assert.equal(withLiveArt('alpine-starlight', pm.value.widgets).filter((w) => w.liveArt).length, 4);
     assert.deepEqual(r.catalog.packs.find((p) => p.id === 'alpine-starlight').tags, ['review-candidate']);
 
     // deep-sea next to review folders: byte-identical to a build of the repo's themes/deep-sea.

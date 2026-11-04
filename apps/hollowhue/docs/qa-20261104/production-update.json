@@ -1,0 +1,13 @@
+{
+  "project": "2f10e62c-2086-4e7d-9437-649fc240e82d",
+  "platform": "ios",
+  "runtime": "0.1.0",
+  "channel": "production",
+  "group": "889daefd-5069-47c7-aab4-7db47b71fb15",
+  "update": "01a1a56d-ca44-73fa-ab8c-fb62661c997b",
+  "createdAt": "2026-11-04T07:19:58.276Z",
+  "bundleBytes": 2604624,
+  "bundleSha256": "25be239f6da76dbb5e8f5d7b2886eade7638a842fdd7fb55ea5fd31cac3b3f7f",
+  "bundleHashMatches": true,
+  "phoneUptakeVerified": false
+}

@@ -41,17 +41,17 @@ const catalogText = (...packs: object[]) => JSON.stringify({ format: 'glaze-cata
 const BASE = 'https://pub-0123.r2.dev';
 
 test('config: GitHub release bases (T169), production by default, staging only when asked', () => {
-  assert.equal(PACK_BASE_URL, 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1');
+  assert.equal(PACK_BASE_URL, 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5');
   assert.deepEqual(
     { ...PACK_BASE_URLS },
     {
       staging: 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-staging',
-      production: 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1',
+      production: 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5',
     },
   );
   assert.equal(packHostKind(PACK_BASE_URLS.production), 'github-release');
   assert.equal(packHostKind(PACK_BASE_URLS.staging), 'github-release');
-  assert.equal(PACK_RELEASE_TAGS.production, 'glaze-packs-v1');
+  assert.equal(PACK_RELEASE_TAGS.production, 'glaze-packs-v5');
   assert.equal(packEnvFrom(undefined), 'production');
   assert.equal(packEnvFrom('Staging '), 'staging');
   assert.equal(packEnvFrom('stage'), 'production');
@@ -122,6 +122,7 @@ test('catalogue packs become art-pack gallery themes; bundled ids win; disabled 
   assert.equal(free.packId, undefined, 'not a bundled-Plus theme pack');
   assert.equal(free.iconStyle.background.kind, 'solid');
   assert.equal(free.palette.bg, palette.bg);
+  assert.ok(free.categories);
   assert.ok(free.categories.includes('nature') && free.categories.includes('dark'));
   assert.equal(free.addedAt, '2026-10-29');
   assert.equal(isRemoteArtTheme(ART_PACK_THEMES[0]), false);

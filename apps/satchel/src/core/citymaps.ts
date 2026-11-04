@@ -37,7 +37,15 @@ export type CityMap = {
   attribution?: string;
   /** Pack format (see PACK_FORMAT); absent on the first packs, which are format 1. */
   format?: number;
+  /**
+   * T166: an optional second tar with the same tiles drawn in the dark Protomaps flavour (`<id>-dark.tar`, tiles only
+   * matter on the phone). Absent on older catalogs; a malformed one is dropped and the city still lists.
+   */
+  dark?: DarkPack;
 };
+
+/** T166: the dark-flavour tile pack of a city (catalog entry field `dark`). */
+export type DarkPack = { file: string; bytes: number; sha256?: string; tiles?: number };
 
 export type CityCatalog = {
   version: number;
@@ -52,6 +60,8 @@ export const MAX_LAT = 85.0511287798;
 export const MAX_ZOOM = 20;
 
 const ID_RE = /^[a-z0-9][a-z0-9-]{0,47}$/;
+/** A pack file is a plain release asset name, never a path or a URL. */
+const PACK_FILE_RE = /^[a-z0-9][a-z0-9._-]{0,63}\.tar$/;
 const isObj = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v);
 const isNum = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v);
 const isInt = (v: unknown, lo: number, hi: number): v is number => Number.isInteger(v) && (v as number) >= lo && (v as number) <= hi;
@@ -82,7 +92,7 @@ export function parseCity(raw: unknown): CityMap | null {
   if (!bboxContains(bbox, center[1], center[0])) return null;
   if (!isInt(raw.minzoom, 0, MAX_ZOOM) || !isInt(raw.maxzoom, 0, MAX_ZOOM) || raw.minzoom > raw.maxzoom) return null;
   // the pack file must be a plain name in the release (never a path or a URL)
-  if (typeof raw.file !== 'string' || !/^[a-z0-9][a-z0-9._-]{0,63}\.tar$/.test(raw.file) || raw.file.includes('..')) return null;
+  if (typeof raw.file !== 'string' || !PACK_FILE_RE.test(raw.file) || raw.file.includes('..')) return null;
   if (!isInt(raw.bytes, 1, 4 * 1024 ** 3)) return null;
   const city: CityMap = { id, name, country, bbox, center, minzoom: raw.minzoom, maxzoom: raw.maxzoom, file: raw.file, bytes: raw.bytes };
   if (typeof raw.sha256 === 'string' && /^[0-9a-f]{64}$/i.test(raw.sha256)) city.sha256 = raw.sha256.toLowerCase();
@@ -91,7 +101,24 @@ export function parseCity(raw: unknown): CityMap | null {
   const attribution = str(raw.attribution, 300);
   if (attribution) city.attribution = attribution;
   if (isInt(raw.format, 1, 999)) city.format = raw.format;
+  const dark = parseDarkPack(raw.dark);
+  if (dark) city.dark = dark;
   return city;
+}
+
+
+/**
+ * T166: a catalog entry's `dark` object, or null when it is missing or anything is off. Same rules as the main pack
+ * file: a plain release asset name (never a path or URL) that ends in -dark.tar, 1 B-4 GB, optional hex sha256.
+ */
+export function parseDarkPack(raw: unknown): DarkPack | null {
+  if (!isObj(raw)) return null;
+  if (typeof raw.file !== 'string' || !PACK_FILE_RE.test(raw.file) || !raw.file.endsWith('-dark.tar') || raw.file.includes('..')) return null;
+  if (!isInt(raw.bytes, 1, 4 * 1024 ** 3)) return null;
+  const dark: DarkPack = { file: raw.file, bytes: raw.bytes };
+  if (typeof raw.sha256 === 'string' && /^[0-9a-f]{64}$/i.test(raw.sha256)) dark.sha256 = raw.sha256.toLowerCase();
+  if (isInt(raw.tiles, 0, 1e8)) dark.tiles = raw.tiles;
+  return dark;
 }
 
 /**
@@ -144,6 +171,35 @@ export const packFormat = (city: Pick<CityMap, 'format'>): number => city.format
 /** Download URL of a city's pack. */
 export const packUrl = (city: CityMap) => `${MAPS_BASE_URL}${city.file}`;
 
+/** T166: download URL of a city's dark tile pack, or null when the catalog offers none. */
+export const darkPackUrl = (city: Pick<CityMap, 'dark'>): string | null => (city.dark ? `${MAPS_BASE_URL}${city.dark.file}` : null);
+
+/** T166: where a city's dark tiles live, under its own folder (so deleting the city deletes them too). */
+export const DARK_DIR = 'dark/';
+export const darkDirOf = (cityDirUri: string) => `${cityDirUri.endsWith('/') ? cityDirUri : `${cityDirUri}/`}${DARK_DIR}`;
+
+/**
+ * T166: the tar entries a dark pack may write: its meta.json (checked, see darkPackMetaOk) and tiles. Its pois.json
+ * is the same as the main pack's, so it is skipped; anything else is skipped as in packEntryPath.
+ */
+export function darkPackEntryPath(name: string): string | null {
+  const rel = packEntryPath(name);
+  return rel === 'meta.json' || (rel !== null && rel.startsWith('tiles/')) ? rel : null;
+}
+
+/** T166: a dark pack's meta.json is for this city and says `flavor: 'dark'`. */
+export function darkPackMetaOk(raw: unknown, id: string): boolean {
+  return isObj(raw) && raw.id === id && raw.flavor === 'dark';
+}
+
+/** T166: the offline tile settings LocalTile gets: the light tiles, plus the dark ones once installed. */
+export type OfflineTiles = { pathTemplate: string; darkPathTemplate?: string | null; minZoom: number; maxZoom: number };
+
+/** T166: the tile path for the phone's appearance: dark tiles in dark mode when they are installed, else light. */
+export function tilePathForScheme(tiles: Pick<OfflineTiles, 'pathTemplate' | 'darkPathTemplate'>, dark: boolean): string {
+  return dark && tiles.darkPathTemplate ? tiles.darkPathTemplate : tiles.pathTemplate;
+}
+
 /**
  * The relative path a tar entry may be written to, or null for anything else. Only meta.json, pois.json and
  * tiles/<z>/<x>/<y>.png with z in 0..20 and x, y inside that zoom's grid. A leading "./" is tolerated.
@@ -192,6 +248,11 @@ export function formatSize(bytes: number): string {
   }
   const n = v < 10 && i > 0 ? Math.round(v * 10) / 10 : Math.round(v);
   return `${n} ${units[i]}`;
+}
+
+/** T167: bytes deleting a city frees: its pack, plus the dark tiles when they are installed. */
+export function cityDiskBytes(city: Pick<CityMap, 'bytes' | 'dark'>, darkInstalled: boolean): number {
+  return city.bytes + (darkInstalled && city.dark ? city.dark.bytes : 0);
 }
 
 /** The zoom levels a city pack has tiles for. */

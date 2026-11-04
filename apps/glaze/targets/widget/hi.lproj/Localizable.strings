@@ -72,6 +72,15 @@
 "Resume" = "जारी रखें";
 "Days" = "दिन";
 
+"Photo album" = "फ़ोटो एल्बम";
+
+"Choose album photos in Glaze" = "Glaze में एल्बम की फ़ोटो चुनें";
+
+"Your selected photos, changing through the day." = "दिन भर बदलती आपकी चुनी हुई फ़ोटो।";
+
+"Next photo" = "अगली फ़ोटो";
+
+"Widget size" = "विजेट का आकार";
 /* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
    The word clock's phrase is English only by design; other languages show a big digital time. */
 "widgets.moon.new" = "अमावस्या";
@@ -139,3 +148,7 @@
 "Tick a habit" = "आदत टिक करें";
 "Streak habit" = "सिलसिले की आदत";
 "Choose the habit this streak widget follows." = "वह आदत चुनें जिसे यह सिलसिला विजेट दिखाए।";
+
+"Unavailable" = "उपलब्ध नहीं";
+"Full" = "पूर्ण";
+"Remaining" = "शेष";

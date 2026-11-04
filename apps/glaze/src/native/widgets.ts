@@ -31,6 +31,11 @@ import {
   type WidgetArtSourceFile,
 } from '../core/widgetArtLibrary';
 import { commitThemeArt, type PlannedThemePiece } from '../core/themeArtSync';
+import { ALBUM_LIMIT, isAlbumSharedRef } from '../core/widgetAlbum';
+import { parseDesignedWidget } from '../core/designedWidgets';
+import { upgradedDesignedLibrary } from '../core/designedWidgetLibrary';
+import type { Theme } from '../core/themes';
+import { t } from '../i18n';
 
 export type WidgetsReason = 'expo-go' | 'android' | 'not-built' | 'failed' | null;
 export type WidgetsResult = { available: boolean; ok: boolean; reason: WidgetsReason };
@@ -47,9 +52,13 @@ export interface WidgetsAdapter {
   /** Write the active theme to the App Group and reload widget timelines. */
   setTheme(theme: WidgetTheme): Promise<WidgetsResult>;
   designVersion(): Promise<number>;
+  designedBattery(): Promise<number | null>;
+  saveDesignedWidget(piece: Omit<WidgetArtPiece, 'file'>): Promise<WidgetsResult>;
+  upgradeDesignedWidgets(theme: Theme): Promise<WidgetsResult>;
   /** Copy a local image (file:// URI) into the App Group for the Photo widget. */
   setPhoto(uri: string): Promise<WidgetsResult>;
   clearPhoto(): Promise<WidgetsResult>;
+  importAlbumPhotos(uris: string[]): Promise<WidgetsResult & { refs: string[] }>;
   /**
    * T59: write a widget-set payload (src/core/widgetStudio.ts `studioPayload`) to App Group key
    * `glaze.widgets.v2` and reload timelines. A build whose bridge predates T59 reports
@@ -137,6 +146,7 @@ export interface WidgetsAdapter {
 
 /** T252: one piece for widgets.composeArtPiece (local file:// URIs; never uploaded anywhere). */
 export type ComposeArtPieceInput =
+  | { id: string; kind: 'design'; colour: string }
   | { id: string; kind: 'art'; artUri: string; widthPx: number; heightPx: number; colour: string; skipIfPresent?: boolean; preserveArtwork?: boolean }
   | { id: string; kind: 'seamless'; wallpaperUri: string; cropPx: { x: number; y: number; w: number; h: number }; heroUri: string; skipIfPresent?: boolean };
 
@@ -203,6 +213,7 @@ type NativeBridge = {
   widgetDesignVersion?(): Promise<number>;
   setPhoto(uri: string): Promise<boolean>;
   clearPhoto?(): Promise<boolean>;
+  importAlbumPhotos?(uris: string[]): Promise<string[]>;
   setWidgetSet?(json: string): Promise<boolean>;
   getHabits?(): Promise<{ habits?: string | null; log?: string | null } | null>;
   setHabits?(json: string): Promise<boolean>;
@@ -220,6 +231,8 @@ type NativeBridge = {
   setWidgetArt?(artUri: string, w: number, h: number, background: string, colour: string, fit: string, family: string): Promise<boolean>;
   setClockArt?(artUri: string, w: number, h: number, colour: string, family: string): Promise<boolean>;
   composeClockArtPiece?(id: string, artUri: string, w: number, h: number, colour: string, skipIfPresent: boolean): Promise<boolean>;
+  composeDesignedWidgetPiece?(id: string, colour: string): Promise<boolean>;
+  designedWidgetBattery?(): Promise<number | null>;
   /** T146: { containerOk, themeStored, lastRead, storedTheme } (read-only). */
   linkStatus?(): Promise<unknown>;
   /** T221: copy an App Group file into widget-art/<id>.jpg. */
@@ -336,9 +349,42 @@ export const widgets: WidgetsAdapter = {
   designVersion: async () => {
     try { return (await loadNative()?.widgetDesignVersion?.()) ?? 0; } catch { return 0; }
   },
+  designedBattery: async () => {
+    try {
+      const value = await loadNative()?.designedWidgetBattery?.();
+      return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 100 ? value : null;
+    } catch { return null; }
+  },
+  saveDesignedWidget: (piece) => serialArt(async () => {
+    try {
+      const { mod, reason } = await artBridge();
+      if (!mod?.composeDesignedWidgetPiece) return { available: false, ok: false, reason: reason ?? 'not-built' };
+      const design = parseDesignedWidget(piece.live?.design);
+      if (!design || !isValidPieceId(piece.id) || !piece.size) return { available: true, ok: false, reason: 'failed' };
+      if (!await mod.composeDesignedWidgetPiece(piece.id, design.background[0])) return { available: true, ok: false, reason: 'failed' };
+      const { lib } = await readArtIndex(mod);
+      const added = addPiece(lib, piece).lib;
+      const next = piece.themeId ? replaceThemeArt(added, piece.themeId).lib : added;
+      next.unpinned = { ...next.unpinned, [piece.size]: piece.id };
+      const ok = await mod.setWidgetArtIndex?.(serializeLibrary(next)) === true;
+      return { available: true, ok, reason: ok ? null : 'failed' };
+    } catch { return { available: true, ok: false, reason: 'failed' }; }
+  }),
+  upgradeDesignedWidgets: (theme) => editArtIndex(lib => upgradedDesignedLibrary(lib, theme, (kind, size) => `${t(`ui.designedWidgets.${kind}`)} · ${t(`ui.seamless.sizes.${size}`)}`)),
   setTheme: (theme) => run((mod) => mod.setTheme(serializeWidgetTheme(theme))),
   setPhoto: (uri) => run((mod) => mod.setPhoto(uri)),
   clearPhoto: () => run((mod) => mod.clearPhoto?.()),
+  importAlbumPhotos: async (uris) => {
+    const status = await isAvailable();
+    const mod = status.available ? loadNative() : null;
+    if (!mod?.importAlbumPhotos) return { available: false, ok: false, reason: status.reason ?? 'not-built', refs: [] };
+    try {
+      if (!uris.length || uris.length > ALBUM_LIMIT || uris.some((u) => !u.startsWith('file://'))) throw new Error('Invalid album');
+      const refs = await mod.importAlbumPhotos(uris);
+      if (!Array.isArray(refs) || refs.length !== uris.length || !refs.every(isAlbumSharedRef)) throw new Error('Photo import failed');
+      return { available: true, ok: true, reason: null, refs: [...new Set(refs)] };
+    } catch { return { available: true, ok: false, reason: 'failed', refs: [] }; }
+  },
   setWidgetSet: async (json) => {
     const mod = (await isAvailable()).available ? loadNative() : null;
     if (mod && typeof mod.setWidgetSet !== 'function') return { available: false, ok: false, reason: 'not-built' };
@@ -386,6 +432,12 @@ async function composeArtPiece(input: ComposeArtPieceInput): Promise<WidgetsResu
       return { available: false, ok: false, reason: 'not-built' };
     }
     if (!input || !isValidPieceId(input.id)) return { available: true, ok: false, reason: 'failed' };
+    if (input.kind === 'design') {
+      if (!mod.composeDesignedWidgetPiece) return { available: false, ok: false, reason: 'not-built' };
+      if (!/^#[0-9a-fA-F]{6}$/.test(input.colour)) return { available: true, ok: false, reason: 'failed' };
+      const ok = await mod.composeDesignedWidgetPiece(input.id, input.colour) === true;
+      return { available: true, ok, reason: ok ? null : 'failed' };
+    }
     const skip = input.skipIfPresent !== false;
     let ok = false;
     if (input.kind === 'art') {

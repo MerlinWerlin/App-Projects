@@ -1,0 +1,132 @@
+name: Glaze existing signed package check
+# Read-only verification of an already-built IPA; no signing or Apple service mutations.
+on:
+  push:
+    branches: ['codex/glaze-theme-release-20261101']
+    paths: ['.github/workflows/glaze-signed-package-check.yml']
+  workflow_dispatch:
+    inputs:
+      check_mode:
+        description: 'Read-only archive signatures, TestFlight availability, or both'
+        type: choice
+        options: [both, signatures, testflight]
+        default: both
+      artifact_filename:
+        description: 'Existing EAS IPA filename, from read-only build history; does not create a build'
+        required: true
+        default: 'jZyCNCJ-5KyEoAzU_zBKjQ_65mUXn_5HE_ft7DwLJqA.ipa'
+        type: string
+      expected_version:
+        description: 'Expected app and extension version'
+        required: true
+        default: '1.0.1'
+        type: string
+      expected_build:
+        description: 'Expected app and extension build number'
+        required: true
+        default: '24'
+        type: string
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.event_name == 'workflow_dispatch' && inputs.check_mode != 'testflight'
+    runs-on: macos-latest
+    timeout-minutes: 10
+    env:
+      EAS_ARTIFACT_FILENAME: ${{ inputs.artifact_filename }}
+      EXPECTED_VERSION: ${{ inputs.expected_version }}
+      EXPECTED_BUILD: ${{ inputs.expected_build }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download an existing archive and verify signatures and Group authorization
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/signed-check"
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,re,subprocess
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'signed-check'
+          name=os.environ['EAS_ARTIFACT_FILENAME']
+          assert re.fullmatch(r'[A-Za-z0-9_-]+\.ipa',name),'Expected one EAS IPA filename'
+          receipt={'schema':'GLAZE_EXISTING_SIGNED_PACKAGE_CHECK_V1','harnessSourceSHA':os.environ['GITHUB_SHA'],
+                   'expectedVersion':os.environ['EXPECTED_VERSION'],'expectedBuild':os.environ['EXPECTED_BUILD'],
+                   'createdNewBuild':False,'uploadedToApple':False,'physicalDeviceExecution':False}
+          try:
+              package=root/'existing.ipa'
+              subprocess.run(['curl','--fail','--location','--silent','--show-error','--retry','2',
+                              '--max-time','180','--output',str(package),'https://expo.dev/artifacts/eas/'+name],check=True)
+              with package.open('rb') as source: digest=hashlib.file_digest(source,'sha256').hexdigest()
+              receipt.update(packageSHA256=digest,packageBytes=package.stat().st_size)
+              result=subprocess.run(['python3','apps/glaze/scripts/verify-signed-widget-groups.py',str(package),'--output',str(root/'signed-group-report.json')],capture_output=True,text=True)
+              (root/'verification.log').write_text(result.stdout+result.stderr,encoding='utf-8')
+              assert result.returncode==0,'Signed preflight failed; see verification.log'
+              report=json.loads((root/'signed-group-report.json').read_text())
+              for binary in report['binaries']:
+                  assert binary['version']==receipt['expectedVersion'] and binary['build']==receipt['expectedBuild'],'Archive version/build mismatch'
+              receipt['signedGroupPreflightPassed']=True
+          except Exception as error:
+              receipt.update(signedGroupPreflightPassed=False,error=str(error));raise
+          finally:
+              (root/'package-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Retain metadata and verification log only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: glaze-existing-signed-package-report
+          path: |
+            ${{ runner.temp }}/signed-check/*.json
+            ${{ runner.temp }}/signed-check/*.log
+          if-no-files-found: error
+  testflight-status:
+    if: github.event_name == 'workflow_dispatch' && inputs.check_mode != 'signatures'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pyjwt cryptography requests
+      - name: Read current Glaze TestFlight builds using existing ASC integration
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          python3 - <<'PY'
+          import datetime,importlib.util,json,pathlib
+          spec=importlib.util.spec_from_file_location('asc','scripts/asc/asc.py')
+          asc=importlib.util.module_from_spec(spec);spec.loader.exec_module(asc)
+          original_call=asc.call
+          def readonly(method,*args,**kwargs):
+              assert method=='GET','This workflow permits GET requests only'
+              return original_call(method,*args,**kwargs)
+          asc.call=readonly
+          app_id=asc.app_cfg('glaze')[0]['ascAppId']
+          app=asc.attrs(asc.get('/v1/apps/'+app_id)['data'])
+          assert app['bundleId']=='com.jared797.glaze'
+          groups=asc.get('/v1/apps/'+app_id+'/betaGroups',limit=50)['data']
+          def group(g):
+              a=asc.attrs(g)
+              return {'id':g['id'],'name':a.get('name'),'internal':a.get('isInternalGroup'),'allBuilds':a.get('hasAccessToAllBuilds')}
+          report={'schema':'GLAZE_TESTFLIGHT_READONLY_STATUS_V1','observedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                  'appId':app_id,'bundleId':app['bundleId'],'groups':[group(g) for g in groups],
+                  'builds':[],'appleMutations':False,'phoneInstalledBuildObserved':False,'explicitGroupMembershipQueried':False}
+          builds=asc.get('/v1/builds',**{'filter[app]':app_id,'sort':'-uploadedDate','limit':5})['data']
+          for b in builds:
+              a=asc.attrs(b);path='/v1/builds/'+b['id']
+              version=asc.attrs(asc.get(path+'/preReleaseVersion')['data'])
+              beta=asc.attrs(asc.get(path+'/buildBetaDetail')['data'] or {})
+              report['builds'].append({'id':b['id'],'version':version.get('version'),'build':a.get('version'),
+                  'uploadedAt':a.get('uploadedDate'),'processingState':a.get('processingState'),
+                  'expired':a.get('expired'),'expiresAt':a.get('expirationDate'),
+                  'internalBuildState':beta.get('internalBuildState'),'externalBuildState':beta.get('externalBuildState')})
+          pathlib.Path('glaze-testflight-status.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps({'builds':report['builds'],'groups':report['groups']},indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: glaze-testflight-readonly-status
+          path: glaze-testflight-status.json
+          if-no-files-found: error

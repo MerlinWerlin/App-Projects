@@ -9,8 +9,7 @@ import { SCENES } from './index.ts';
 
 test('scene ids are unique and the deep scenes go at least six and five levels down', () => {
   assert.equal(new Set(SCENES.map((s) => s.id)).size, SCENES.length);
-  assert.equal(SCENES[0]!.id, 'bookshop');
-  assert.ok(SCENES[0]!.levels.length >= 6);
+  assert.ok(SCENES.find((s) => s.id === 'bookshop')!.levels.length >= 6);
   assert.ok(SCENES.find((s) => s.id === 'mandala')!.levels.length >= 5);
   assert.ok(SCENES.length >= 3);
 });
@@ -40,7 +39,7 @@ for (const scene of SCENES) {
       for (const r of lv.regions) {
         const rings = flatten(r.d);
         assert.ok(rings.length > 0, `${lv.id}/${r.id} has no shape`);
-        if (r.line) continue;
+        if (r.line || r.ink) continue;
         const area = Math.max(...rings.map(ringArea));
         assert.ok(area >= 25, `${lv.id}/${r.id} too small to tap (${area.toFixed(1)})`);
         if (r.from) assert.ok(all.has(r.from), `${lv.id}/${r.id} links to missing ${r.from}`);

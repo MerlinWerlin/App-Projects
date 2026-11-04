@@ -10,6 +10,9 @@
 
 import { CATALOGUE_KIND_SIZES } from './widgetKinds.ts';
 
+/** Retired clean-face clock export; working designed clocks use themed-live-clock. */
+export const LEGACY_FALLBACK_CLOCK_ID = 'live-clock';
+
 /** What an option is. `art` is a picture; the others are pictures for a widget that can also be live. */
 /** T237: `focus` is a focus-timer piece (the Seamless widget can run it: liveArt.ts). */
 export type WidgetOptionKind = 'art' | 'clock' | 'date' | 'calendar' | 'habits' | 'battery' | 'countdown' | 'photo' | 'quote' | 'focus';
@@ -100,7 +103,7 @@ export type WidgetOption = {
    */
   numberFree?: boolean;
   /** Optional value area on a verified number-free face, in source-art coordinates. */
-  liveFrame?: { rect: [number, number, number, number]; shape: 'circle' | 'plate'; clockStyle?: 'analog' | 'digital' | 'stacked'; ink?: string };
+  liveFrame?: { rect: [number, number, number, number]; shape: 'circle' | 'plate'; clockStyle?: 'analog' | 'digital' | 'stacked'; valueStyle?: 'compact'; ink?: string };
   /**
    * T237: the Glaze widget draws this piece's live value over it (src/core/liveArt.ts withLiveArt),
    * so it is a working widget even though a value is painted in. Set by the app, never by a pack.
@@ -176,6 +179,10 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
       const [x, y, w, h] = f.rect as number[];
       if (w <= 0 || h <= 0 || x + w > 1 || y + h > 1) return void errors.push(`${at} (${o.id}): liveFrame outside art`);
       liveFrame = { rect: [x, y, w, h], shape: f.shape };
+      if (f.valueStyle !== undefined) {
+        if (f.valueStyle !== 'compact' || !['date','calendar','focus','battery'].includes(String(kind))) return void errors.push(`${at} (${o.id}): bad valueStyle`);
+        liveFrame.valueStyle = 'compact';
+      }
       if (f.clockStyle !== undefined) {
         if (kind !== 'clock' || !['analog', 'digital', 'stacked'].includes(String(f.clockStyle))) return void errors.push(`${at} (${o.id}): bad clockStyle`);
         liveFrame.clockStyle = f.clockStyle as 'analog' | 'digital' | 'stacked';

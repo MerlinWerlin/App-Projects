@@ -274,7 +274,8 @@ test('guard: Swift art paths draw no border, shadow, blur, material panel or out
   const view = widget.slice(widget.indexOf('struct SeamlessWidgetView'), widget.indexOf('struct SeamlessWidget: Widget'));
   assert.ok(view.length > 500);
   // The art background (containerBackground with an image) and the ArtBackdrop.
-  const art = view.slice(view.indexOf('.containerBackground(for: .widget)'), view.indexOf('} else {\n        GlazeBackground'));
+  const artView = view.slice(view.indexOf('private var artBody:'));
+  const art = artView.slice(artView.indexOf('.containerBackground(for: .widget)'), artView.indexOf('} else {\n        GlazeBackground'));
   assert.ok(art.length > 200, 'art background found');
   for (const bad of [/\.border\(/, /\.shadow\(/, /\.blur\(/, /strokeBorder/, /\.stroke\(/, /Material/, /GlazeBackground/, /\.opacity\(/, /\.padding\(inset\)[\s\S]*\.background\(/]) {
     assert.doesNotMatch(art, bad, `art path: ${bad}`);
@@ -300,7 +301,8 @@ test('guard: Swift art paths draw no border, shadow, blur, material panel or out
 test('guard: in-app preview blends art on the wallpaper crop, never on a blurred copy or a box', () => {
   const menu = read('src', 'ui', 'WidgetArtMenu.tsx');
   assert.doesNotMatch(strip(menu), /blurRadius|blurBackdrop\(|shadow|borderWidth: 1/);
-  assert.match(menu, /const wall = wallpaper \? wallpaperUnderSlot\(/, 'every option over the wallpaper crop when there is one');
+  assert.match(menu, /const wall = wallpaper && !preserveArtwork \? wallpaperUnderSlot\(/, 'legacy art blends; curated live art retains its background');
+  assert.match(menu, /preserveArtwork \? \(/);
   const blended = read('src', 'ui', 'BlendedArt.tsx');
   assert.match(blended, /mixBlendMode: 'screen'/);
   assert.match(blended, /mixBlendMode: 'multiply'/);

@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const read = (rel: string): string => readFileSync(join(process.cwd(), rel), 'utf8');
+const read = (rel: string): string => readFileSync(join(process.cwd(), rel), 'utf8').replace(/\r\n/g, '\n');
 
 test('PUSH_UPDATE.cmd publishes to the production channel and pauses', () => {
   const cmd = read('PUSH_UPDATE.cmd');
@@ -33,9 +33,10 @@ test('app config carries no placeholder URLs or ids', () => {
   }
 });
 
-test('expo-updates is pinned to the SDK 54 range', () => {
+test('expo-updates matches the installed Expo SDK native module range', () => {
   const pkg = JSON.parse(read('package.json')) as { dependencies?: Record<string, string> };
-  assert.match(pkg.dependencies?.['expo-updates'] ?? '', /^~29\.0\.\d+$/);
+  const bundled=JSON.parse(read('node_modules/expo/bundledNativeModules.json')) as Record<string,string>;
+  assert.equal(pkg.dependencies?.['expo-updates'],bundled['expo-updates']);
 });
 
 test('eas.json channels equal their profile names', () => {

@@ -143,7 +143,8 @@ describe('reloadApp', () => {
     expect(await reloadApp()).toBe(false);
   });
 
-  it('returns false with the default loaders in tests (no native modules)', async () => {
+  it('returns false with no native reload modules', async () => {
+    _setUpdateDeps({ loadUpdates: () => null, loadDevSettings: () => null });
     expect(await reloadApp()).toBe(false);
   });
 });

@@ -18,6 +18,31 @@ function fake() {
   return {api,removed,update:(p:StorePurchase)=>updated(p),error:(e:unknown)=>error(e),setOwned:(p:StorePurchase[])=>{list=p;}};
 }
 afterEach(()=>jest.useRealTimers());
+test('Android refresh retries failed acknowledgement and deduplicates successful recovery', async()=>{
+  const f=fake();
+  const purchase={productId:PLUS,purchaseState:'purchased',purchaseToken:'google-token',isAcknowledgedAndroid:false};
+  f.setOwned([purchase]);
+  const finish=jest.fn().mockRejectedValueOnce(new Error('network')).mockResolvedValue(undefined);
+  f.api.finishTransaction=finish;
+  const store=createPurchaseProvider(f.api,()=>NOW,[PLUS],'android');
+  expect(await store.refresh()).toMatchObject({plus:true});
+  expect(finish).toHaveBeenCalledTimes(1);
+  expect(await store.restore()).toMatchObject({ok:true,access:{plus:true}});
+  expect(finish).toHaveBeenCalledTimes(2);
+  await store.refresh();
+  expect(finish).toHaveBeenCalledTimes(2);
+});
+test('Android recovery never acknowledges pending, unknown, or already acknowledged purchases', async()=>{
+  const f=fake();
+  f.setOwned([
+    {productId:PLUS,purchaseState:'pending',purchaseToken:'pending',isAcknowledgedAndroid:false},
+    {productId:'other.product',purchaseState:'purchased',purchaseToken:'other',isAcknowledgedAndroid:false},
+    {productId:PLUS,purchaseState:'unknown',purchaseToken:'unknown',isAcknowledgedAndroid:false},
+    {productId:PLUS,purchaseState:'purchased',purchaseToken:'finished',isAcknowledgedAndroid:true},
+  ]);
+  expect(await createPurchaseProvider(f.api,()=>NOW,[PLUS],'android').refresh()).toMatchObject({plus:true});
+  expect(f.api.finishTransaction).not.toHaveBeenCalled();
+});
 test('missing store, connection failure and missing product never unlock', async()=>{
   expect(await createPurchaseProvider(null).buy()).toMatchObject({ok:false,reason:'unavailable'});
   expect(await createPurchaseProvider(null).refresh()).toBeNull();
@@ -53,6 +78,14 @@ test('purchase failure shows error code after reconciliation and removes listene
 });
 test('cancel and pending approval never unlock',async()=>{
   for(const code of ['user-cancelled','deferred-payment']){const f=fake();f.api.requestPurchase=async()=>{f.error({code});};expect(await createPurchaseProvider(f.api).buy()).toMatchObject({ok:false,reason:code==='user-cancelled'?'cancelled':'pending'});expect(f.removed).toHaveBeenCalledTimes(2);}
+});
+
+test('listener-only pending Google purchase settles as pending without acknowledgement or unlock', async () => {
+  const f = fake();
+  f.api.requestPurchase = async () => { f.update({ productId: PLUS, purchaseState: 'pending' }); };
+  expect(await createPurchaseProvider(f.api).buy()).toMatchObject({ ok: false, reason: 'pending' });
+  expect(f.api.finishTransaction).not.toHaveBeenCalled();
+  expect(f.removed).toHaveBeenCalledTimes(2);
 });
 test('trial never grants permanent Plus; restore does not restart its clock',async()=>{
   const f=fake();f.api.requestPurchase=async()=>({productId:TRIAL,transactionDate:NOW});

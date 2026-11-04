@@ -2,6 +2,17 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ar: NonNullable<LocaleMessages['ui']> = {
+  designedWidgets: {
+      "title": "مصممة لهذا المظهر",
+      "body": "أدوات مباشرة واضحة بألوان تتناسق مع أيقوناتك.",
+      "clock": "الساعة",
+      "battery": "البطارية",
+      "calendar": "التقويم",
+      "setup": "أضف أداة Glaze Seamless، ثم اختر هذا التصميم من تحرير الأداة ← الفن.",
+      "update": "ثبّت أحدث إصدار من Glaze عبر TestFlight لاستخدام هذه الأدوات.",
+      "batteryNote": "تُحدّث قراءة البطارية دوريًا. تعني الشرطة أن iOS لم يوفّر مستوى البطارية.",
+      "unavailable": "غير متاح"
+  },
   error: {
     body: 'واجهت هذه الشاشة مشكلة وتوقفت. أيقوناتك وسماتك وحلقاتك محفوظة على هاتفك ولم تتأثر. حاول مجددًا، وإن تكرر ذلك فأرسل لنا الملاحظة أدناه.',
     retryHint: 'يعيد تحميل هذه الشاشة',

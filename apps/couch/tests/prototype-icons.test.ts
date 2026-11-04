@@ -15,7 +15,6 @@ import { DPAD_KEY_RATIO, dpadGeometry } from '../src/core/dpadGeometry';
 import { uiEn } from '../src/i18n/catalog/en/ui';
 import { ICON_NAMES } from '../src/ui/icons/names';
 import { ICON_PATHS, ICON_STROKE, ICON_VIEWBOX } from '../src/ui/icons/paths';
-// @ts-expect-error plain .mjs module without types
 import { BRAND_RE } from '../store/brand-guard.mjs';
 
 const root = join(__dirname, '..');

@@ -20,6 +20,7 @@
 // Pure TS (Node runs it directly), tested in liveArt.test.ts.
 
 import { fullBleedArt } from './widgetPreview.ts';
+import { parseDesignedWidget, type DesignedWidget } from './designedWidgets.ts';
 import { placeArt, type Box, type WidgetOption, type WidgetOptionFit, type WidgetOptionKind } from './widgetOptions.ts';
 
 /** What the widget can draw live over art. */
@@ -85,18 +86,19 @@ const DAY = /^(\d{4})-(\d{2})-(\d{2})$/;
 
 /** A valid calendar day `YYYY-MM-DD`, or null. */
 export function validTargetDay(day: unknown): string | null {
-  if (typeof day !== 'string') return null;
+  if (typeof day !== 'string' || day.length !== 10) return null;
   const m = DAY.exec(day);
   if (!m) return null;
   const y = Number(m[1]);
   const mo = Number(m[2]);
   const d = Number(m[3]);
-  if (mo < 1 || mo > 12 || d < 1) return null;
+  if (y < 1 || mo < 1 || mo > 12 || d < 1) return null;
   const days = new Date(Date.UTC(y, mo, 0)).getUTCDate();
   return d <= days ? day : null;
 }
 
 export type LiveArtPlan = {
+  valueStyle?: 'compact';
   clockStyle?: 'analog' | 'digital' | 'stacked';
   ink?: string;
   kind: LiveArtKind;
@@ -216,6 +218,7 @@ export function liveArtPlan(
         plan = { kind, rect: { x, y, w, h }, shape: f.shape, cover: false, cleanFace: true };
         if (kind === 'clock' && f.clockStyle) plan.clockStyle = f.clockStyle;
         if (f.ink) plan.ink = f.ink;
+        if (f.valueStyle === 'compact' && ['date','focus','battery'].includes(kind)) plan.valueStyle = 'compact';
       } else plan = { kind, rect: { ...DEFAULT_BADGE_RECT }, shape: 'plate', cover: false };
     }
   }
@@ -233,7 +236,7 @@ export function liveArtPlan(
  * `liveArt` and listed under its live kind (harbour-focus becomes a `focus` piece); every other
  * option is returned unchanged (and is shown as Art when it has values painted in: fixedValues).
  */
-export function withLiveArt<T extends Pick<WidgetOption, 'id' | 'kind' | 'numberFree' | 'liveFrame'>>(themeId: string, options: readonly T[], opts: LiveArtOpts = {}): T[] {
+export function withLiveArt<T extends Pick<WidgetOption, 'id' | 'kind' | 'numberFree' | 'liveFrame'>>(themeId: string, options: readonly T[], opts: LiveArtOpts = {}): Array<T & { liveArt?: LiveArtPlan }> {
   return options.map((o) => {
     const plan = liveArtPlan(themeId, o, opts);
     if (!plan) return o;
@@ -252,6 +255,9 @@ const clamp01 = (n: number): number => (n < 0 ? 0 : n > 1 ? 1 : n);
 
 /** Stored with the piece (widget-art/index.json `live`); read by LiveArtOverlay.swift. */
 export type LiveArtSpec = {
+  /** Purpose-designed native content; replaces image/overlay composition entirely. */
+  design?: DesignedWidget;
+  valueStyle?: 'compact';
   clockStyle?: 'analog' | 'digital' | 'stacked';
   kind: LiveArtKind;
   /** [x, y, w, h], 0..1 of the composed image the widget shows (Fill layout). */
@@ -301,6 +307,7 @@ export function liveArtSpec(plan: LiveArtPlan, art: Box, composed: Box, fit: Wid
   const ah = Math.min(clamp01(plan.rect.h), 1 - ay);
   if (aw > 0 && ah > 0) spec.art = [r4(ax), r4(ay), r4(aw), r4(ah)];
   if (plan.kind === 'clock' && plan.clockStyle) spec.clockStyle = plan.clockStyle;
+  if (plan.valueStyle) spec.valueStyle = plan.valueStyle;
   if (plan.target) spec.target = plan.target;
   if (plan.cleanFace === true && !plan.cover) spec.cleanFace = true;
   if (plan.kind === 'focus') spec.minutes = FOCUS_MINUTES;
@@ -335,6 +342,7 @@ export function parseLiveArtSpec(raw: unknown): LiveArtSpec | null {
   const art = unitRect(r.art);
   if (art) spec.art = art;
   if (r.cleanFace === true && !spec.cover) spec.cleanFace = true;
+  if (r.valueStyle === 'compact' && ['date','focus','battery'].includes(kind)) spec.valueStyle = 'compact';
   if (kind === 'clock' && ['analog', 'digital', 'stacked'].includes(String(r.clockStyle))) spec.clockStyle = r.clockStyle as 'analog' | 'digital' | 'stacked';
   if (kind === 'countdown') {
     const t = validTargetDay(r.target);
@@ -342,5 +350,10 @@ export function parseLiveArtSpec(raw: unknown): LiveArtSpec | null {
     spec.target = t;
   }
   if (kind === 'focus') spec.minutes = FOCUS_MINUTES;
+  if (r.design !== undefined) {
+    const design = parseDesignedWidget(r.design);
+    if (!design || (design.kind === 'calendar' ? 'date' : design.kind) !== kind) return null;
+    spec.design = design;
+  }
   return spec;
 }

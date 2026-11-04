@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 // T126: icon profile served to Safari from the iPhone. Pure logic, the method switch, the
 // adapter's never-throw shape (source guard: it imports React Native) and the native module's
 // contract (source guard: Swift can't be compiled here).
@@ -36,8 +37,8 @@ import { PROFILE_INSTALL_ENABLED } from '../config/install.ts';
 import { en } from '../i18n/locales/en.ts';
 import type { IconSpec } from './iconspec.ts';
 
-const root = new URL('../../', import.meta.url).pathname;
-const read = (rel: string) => readFileSync(join(root, rel), 'utf8');
+const root = fileURLToPath(new URL('../../', import.meta.url));
+const read = (rel: string) => readFileSync(join(root, rel), 'utf8').replace(/\r\n/g, '\n');
 
 // ---- constants shared with Swift ----
 

@@ -72,6 +72,15 @@
 "Resume" = "Weiter";
 "Days" = "Tage";
 
+"Photo album" = "Fotoalbum";
+
+"Choose album photos in Glaze" = "Albumfotos in Glaze auswählen";
+
+"Your selected photos, changing through the day." = "Deine ausgewählten Fotos wechseln im Laufe des Tages.";
+
+"Next photo" = "Nächstes Foto";
+
+"Widget size" = "Widgetgröße";
 /* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
    The word clock's phrase is English only by design; other languages show a big digital time. */
 "widgets.moon.new" = "Neumond";
@@ -139,3 +148,7 @@
 "Tick a habit" = "Gewohnheit abhaken";
 "Streak habit" = "Serien-Gewohnheit";
 "Choose the habit this streak widget follows." = "Wähle die Gewohnheit, der dieses Serien-Widget folgt.";
+
+"Unavailable" = "Nicht verfügbar";
+"Full" = "Voll";
+"Remaining" = "Verbleibend";

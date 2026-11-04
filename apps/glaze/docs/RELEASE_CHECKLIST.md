@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**4 November 2026 TestFlight correction:** `1.0.3` adds designed functional clock, battery and month-calendar widgets for every theme, with capability 5 and a separate appVersion runtime. This owner-requested native update supersedes the historical 1.0.1 train guidance below. **Build 31 is delivered:** Apple VALID / IN_BETA_TESTING in the existing internal TestFlight group, observed 4 November at 09:02 UTC. Native render, full app integration, three-function save/restart and signed shared Group checks pass; [delivery receipt](DESIGNED_WIDGET_DELIVERY_20261104.json). Open Glaze once after updating. Public App Review submission remains owner-controlled and has not been requested here.
+
 - [x] **Release as `1.0.1`**, the version already on TestFlight (build 20), with build numbers that keep rising.
   - App Store Connect groups builds into version "trains" by marketing version. The App Store version you create must
     match the train of the build you attach, and a train can't go backwards once Apple approves something, so "1.0.0"

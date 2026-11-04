@@ -1,0 +1,117 @@
+name: Glaze full native simulator app
+# Full integration plus a reusable simulator-only app for the separate XCTest link check.
+on:
+  workflow_dispatch:
+  push:
+    branches: ['codex/glaze-theme-release-20261101', 'codex/glaze-designed-widgets-20261104']
+    paths: ['.github/workflows/glaze-native-simulator-app.yml']
+permissions:
+  contents: read
+jobs:
+  simulator:
+    runs-on: macos-latest
+    timeout-minutes: 70
+    defaults:
+      run:
+        working-directory: apps/glaze
+    env:
+      GLAZE_NATIVE: '1'
+      CI: '1'
+      EXPO_NO_TELEMETRY: '1'
+      RCT_NO_LAUNCH_PACKAGER: '1'
+      GLAZE_SIMULATOR_GROUP_TEST: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Select current Xcode
+        run: |
+          set -euo pipefail
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          xcodebuild -version
+      - name: Install the native build dependencies
+        run: |
+          set -euo pipefail
+          node scripts/native-link.mjs 1
+          npm install --no-audit --no-fund > "$RUNNER_TEMP/glaze-native-install.log" 2>&1 || { tail -100 "$RUNNER_TEMP/glaze-native-install.log"; exit 1; }
+          node scripts/eas-native-deps.js >> "$RUNNER_TEMP/glaze-native-install.log" 2>&1 || { tail -100 "$RUNNER_TEMP/glaze-native-install.log"; exit 1; }
+      - name: Generate iOS app and widget targets
+        run: |
+          set -euo pipefail
+          npx expo prebuild --platform ios --no-install > "$RUNNER_TEMP/glaze-prebuild.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-prebuild.log"; exit 1; }
+          cd ios
+          pod install > "$RUNNER_TEMP/glaze-pods.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-pods.log"; exit 1; }
+          test -f 'Pods/Local Podspecs/GlazeWidgetBridge.podspec.json'
+      - name: Enable shared Group access in simulator app and extension
+        run: ruby scripts/prepare-native-simulator-groups.rb ios
+      - name: Build complete unsigned simulator app with bundled JavaScript
+        run: |
+          set -euo pipefail
+          WORKSPACE=$(python3 -c 'from pathlib import Path; print(next(Path("ios").glob("*.xcworkspace")))')
+          SCHEME=$(basename "$WORKSPACE" .xcworkspace)
+          xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/glaze-full-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build > "$RUNNER_TEMP/glaze-full-build.log" 2>&1 || { tail -160 "$RUNNER_TEMP/glaze-full-build.log"; exit 1; }
+      - name: Package the unsigned simulator app for isolated route testing
+        run: |
+          set -euo pipefail
+          APP=$(python3 -c 'import os; from pathlib import Path; print(next((Path(os.environ["RUNNER_TEMP"])/"glaze-full-build/Build/Products/Release-iphonesimulator").glob("*.app")))')
+          export APP
+          ditto -c -k --keepParent "$APP" "$RUNNER_TEMP/glaze-simulator-app.zip"
+          python3 - <<'PY'
+          import os,json,pathlib,plistlib
+          app=pathlib.Path(os.environ['APP'])
+          info=plistlib.loads((app/'Info.plist').read_bytes())
+          assert (app/'main.jsbundle').exists() and (app/'PlugIns/GlazeWidgets.appex').exists()
+          receipt={'sourceSHA':os.environ['GITHUB_SHA'],'bundleId':info['CFBundleIdentifier'],'bundledJavaScript':True,'unsignedSimulatorOnly':True,'signedReleaseArchive':False,'simulatorGroupEntitlements':True,'simulatorTeam':'GLAZETEST0'}
+          (pathlib.Path(os.environ['RUNNER_TEMP'])/'simulator-app-source.json').write_text(json.dumps(receipt,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: glaze-simulator-installable
+          path: |
+            ${{ runner.temp }}/glaze-simulator-app.zip
+            ${{ runner.temp }}/simulator-app-source.json
+          retention-days: 14
+      - name: Install and launch the app on iOS Simulator
+        run: |
+          set -euo pipefail
+          APP=$(python3 -c 'import os; from pathlib import Path; print(next((Path(os.environ["RUNNER_TEMP"])/"glaze-full-build/Build/Products/Release-iphonesimulator").glob("*.app")))')
+          export APP
+          python3 - <<'PY'
+          import os,plistlib,json,pathlib
+          app=pathlib.Path(os.environ['APP']); info=plistlib.loads((app/'Info.plist').read_bytes())
+          widgets=list((app/'PlugIns').glob('*.appex'))
+          assert widgets, 'Glaze widget extension missing from full app'
+          assert (app/'main.jsbundle').exists(), 'Release JavaScript bundle missing'
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-full-simulator'
+          p.mkdir(exist_ok=True)
+          (p/'build-receipt.json').write_text(json.dumps({'sourceSHA':os.environ['GITHUB_SHA'],'bundleId':info['CFBundleIdentifier'],'extensions':[w.name for w in widgets],'bundledJavaScript':True,'unsignedSimulatorOnly':True,'physicalDeviceTest':False,'installedWidgetBehavior':False,'published':False},indent=2))
+          print(info['CFBundleIdentifier'])
+          PY
+          BUNDLE=$(python3 -c 'import os,plistlib,pathlib; print(plistlib.loads((pathlib.Path(os.environ["APP"])/"Info.plist").read_bytes())["CFBundleIdentifier"])')
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["udid"] for xs in d["devices"].values() for x in xs if "iPhone" in x["name"]))')
+          codesign --force --deep --sign - "$APP"
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl install "$DEVICE" "$APP"
+          xcrun simctl launch "$DEVICE" "$BUNDLE" | tee "$RUNNER_TEMP/glaze-full-simulator/launch.txt"
+          sleep 12
+          xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/glaze-full-simulator/app-launch.png"
+          xcrun simctl openurl "$DEVICE" glaze://widgets
+          sleep 4
+          xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/glaze-full-simulator/widgets-deeplink.png"
+          xcrun simctl spawn "$DEVICE" launchctl list > "$RUNNER_TEMP/glaze-full-simulator/processes.txt"
+          grep -F "$BUNDLE" "$RUNNER_TEMP/glaze-full-simulator/processes.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: glaze-full-native-simulator
+          path: |
+            ${{ runner.temp }}/glaze-native-install.log
+            ${{ runner.temp }}/glaze-prebuild.log
+            ${{ runner.temp }}/glaze-pods.log
+            ${{ runner.temp }}/glaze-full-build.log
+            ${{ runner.temp }}/glaze-full-simulator
+            ${{ runner.temp }}/glaze-simulator-groups
+          retention-days: 14

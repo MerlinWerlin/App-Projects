@@ -1,0 +1,17 @@
+{
+  "releaseSource": "4cb96f4e495c1a38b2072fe6e4d258a41c73e26b",
+  "nativeBuildRun": "41791367613",
+  "nativeBuildResult": "success",
+  "appStoreConnectAppId": "6829399355",
+  "expoProjectId": "2f10e62c-2086-4e7d-9437-649fc240e82d",
+  "submissionId": "a9aee4e4-1f6a-44f1-8cc5-eb2bab86b3c2",
+  "uploadVerifiedAt": "2026-11-04T07:30:50Z",
+  "uploadStatus": "successfully uploaded to App Store Connect; Apple processing pending",
+  "appleBuildVersion": "3",
+  "internalBetaState": "PROCESSING; not yet available",
+  "phoneUptakeVerified": false,
+  "appleStatusRun": "41794648774",
+  "appleUploadId": "aa4d8ff5-e8f5-4e13-9f73-b7ab83607930",
+  "appleErrors": [],
+  "appleWarnings": []
+}

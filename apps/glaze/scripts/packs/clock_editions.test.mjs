@@ -63,7 +63,7 @@ function makeEditionTheme(root, folder, { profileSource, runtime = ['clock', 'da
   return dir;
 }
 
-test('clock editions: themed clock first, live runtime faces, fallback label, v2 manifest that parses', async () => {
+test('clock editions: themed clock retained, retired fallback clock omitted, v2 manifest that parses', async () => {
   const root = tmp('editions');
   const out = tmp('editions-out');
   try {
@@ -77,14 +77,14 @@ test('clock editions: themed clock first, live runtime faces, fallback label, v2
     const pm = parseRemoteArtManifest(m, 'alpine-starlight');
     assert.equal(pm.ok, true, pm.ok ? '' : pm.error);
     assert.deepEqual(validateWidgetOptions(m.widgets, m.assets), []);
-    assert.deepEqual(m.widgets.map((w) => w.id), ['themed-live-clock', 'live-clock', 'live-date', 'live-focus', 'live-battery', 'hero-small', 'hero-medium', 'hero-large']);
-    const [themed, plain] = m.widgets;
+    assert.deepEqual(m.widgets.map((w) => w.id), ['themed-live-clock', 'live-date', 'live-focus', 'live-battery', 'hero-small', 'hero-medium', 'hero-large']);
+    const [themed, date] = m.widgets;
     assert.equal(themed.background, 'blur');
     assert.equal(themed.label, 'Art clock · live');
     assert.deepEqual(themed.liveFrame, { rect: [0.12, 0.81, 0.76, 0.14], shape: 'plate', clockStyle: 'digital', ink: '#F5F3EC' });
-    assert.equal(plain.label, 'Plain clock (fallback)');
-    assert.equal(m.widgets[2].label, 'Today');
-    for (const w of m.widgets.slice(0, 5)) {
+    assert.ok(!m.widgets.some(w => w.id === 'live-clock' || /fallback/i.test(w.label ?? '')));
+    assert.equal(date.label, 'Today');
+    for (const w of m.widgets.slice(0, 4)) {
       assert.equal(w.numberFree, true);
       assert.ok(w.liveFrame, w.id);
       assert.ok(!('sha256' in w) && !('bytes' in w), 'export-only fields are dropped');
@@ -94,9 +94,9 @@ test('clock editions: themed clock first, live runtime faces, fallback label, v2
     }
     const live = withLiveArt('alpine-starlight', pm.value.widgets);
     const clocks = live.filter((w) => liveArtPlan('alpine-starlight', w)?.kind === 'clock');
-    assert.deepEqual(clocks.map((w) => w.id), ['themed-live-clock', 'live-clock']);
+    assert.deepEqual(clocks.map((w) => w.id), ['themed-live-clock']);
     assert.equal(liveArtPlan('alpine-starlight', pm.value.widgets[0]).clockStyle, 'digital');
-    assert.equal(live.filter((w) => w.liveArt).length, 5);
+    assert.equal(live.filter((w) => w.liveArt).length, 4);
     assert.ok(!logs.some((l) => /warning: alpine/.test(l)), logs.join('\n'));
     // Folder ids: NNN- is stripped; --only takes either form.
     assert.equal(packIdOfFolder('101-alpine-starlight'), 'alpine-starlight');
@@ -116,7 +116,7 @@ test('clock editions: the profile image resolves via the theme folder; missing /
     const plain = makeEditionTheme(root, 'opal-abyss', { profileSource: '012-opal-abyss/widgets/decorative.png', missing: ['battery'], badSha: ['date'] });
     const e = readWidgetEditions(plain, root);
     assert.deepEqual(e.errors, []);
-    assert.deepEqual(e.items.map((i) => i.option.id), ['themed-live-clock', 'live-clock', 'live-focus']);
+    assert.deepEqual(e.items.map((i) => i.option.id), ['themed-live-clock', 'live-focus']);
     assert.equal(e.items[0].src, join(plain, 'widgets', 'decorative.png'));
     assert.equal(e.warnings.length, 2, e.warnings.join('\n'));
     assert.ok(e.warnings.some((w) => /live-battery.*not found/.test(w)));
@@ -127,7 +127,7 @@ test('clock editions: the profile image resolves via the theme folder; missing /
     // Profile image gone everywhere: a warning, not a crash.
     rmSync(join(plain, 'widgets', 'decorative.png'));
     const e2 = readWidgetEditions(plain, root);
-    assert.deepEqual(e2.items.map((i) => i.option.id), ['live-clock', 'live-focus']);
+    assert.deepEqual(e2.items.map((i) => i.option.id), ['live-focus']);
     assert.ok(e2.warnings.some((w) => /themed-live-clock.*not found/.test(w)));
     // No widgets folder / no export files: nothing to do.
     const bare = join(root, 'bare');

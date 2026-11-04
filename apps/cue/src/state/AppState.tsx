@@ -3,10 +3,11 @@
  * until `loaded`, so there is no empty-list or "index" flash), then writes through to storage.
  */
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { AccessibilityInfo, AppState as RNAppState, useColorScheme } from 'react-native';
+import { AccessibilityInfo, AppState as RNAppState, Platform, useColorScheme } from 'react-native';
 import { LIBRARY_KEY, WELCOME_BODY, makeScript, parseLibrary, serializeLibrary, sortScripts, upsert, type Script } from '../core/library';
 import { DEFAULT_PREFS, PREFS_KEY, parsePrefs, type Prefs } from '../core/prefs';
-import { ENTITLEMENT_KEY, canUse, parseEntitlement, type PlusFeature, type Tier } from '../plus/entitlement';
+import { ENTITLEMENT_KEY, PLUS_PRODUCT_ID, canUse, parseEntitlement, type PlusFeature, type Tier } from '../plus/entitlement';
+import { createAndroidPurchaseProvider } from '../plus/androidTrial';
 import { createPurchaseProvider, type PurchaseProvider, type PurchaseResult, type StoreAccess } from '../plus/purchases';
 import { t } from '../i18n';
 import { readStoredTrial, saveStoredTrial, trialState, type TrialState } from '../plus/trial';
@@ -19,7 +20,7 @@ interface AppState {
   scripts: Script[];
   prefs: Prefs;
   tier: Tier;
-  /** Seven days from the user-started free App Store trial transaction. */
+  /** Seven days from a user-started trial; Android persists its start on-device. */
   trial: TrialState;
   theme: Theme;
   reduceMotion: boolean;
@@ -39,8 +40,10 @@ const Ctx = createContext<AppState | null>(null);
 
 export function AppStateProvider({ children }: { children: ReactNode }) {
   const [kv] = useState(() => loadKv());
-  const [purchases] = useState<PurchaseProvider>(() => createPurchaseProvider());
   const [secure] = useState(() => loadSecureStore());
+  const [purchases] = useState<PurchaseProvider>(() => Platform.OS === 'android'
+    ? createAndroidPurchaseProvider(createPurchaseProvider(undefined, Date.now, [PLUS_PRODUCT_ID], 'android'), kv, secure)
+    : createPurchaseProvider());
   const accessRevision = useRef(0);
   const [loaded, setLoaded] = useState(false);
   const [scripts, setScripts] = useState<Script[]>([]);
@@ -132,7 +135,9 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     setTrialStart(access.trialStart);
     await Promise.all([
       kv.setItem(ENTITLEMENT_KEY, JSON.stringify({ version: 1, tier: access.plus ? 'plus' : 'free', source: access.plus ? source : 'none', updatedAt: Date.now() })).catch(() => undefined),
-      saveStoredTrial(kv, secure, access.trialStart),
+      Platform.OS === 'android' && access.trialStart === null
+        ? Promise.resolve()
+        : saveStoredTrial(kv, secure, access.trialStart),
     ]);
   }, [kv, secure]);
 

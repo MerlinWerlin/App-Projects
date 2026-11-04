@@ -2,6 +2,17 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ko: NonNullable<LocaleMessages['ui']> = {
+  designedWidgets: {
+      "title": "이 테마를 위한 디자인",
+      "body": "아이콘과 같은 색상의 읽기 쉬운 실시간 위젯입니다.",
+      "clock": "시계",
+      "battery": "배터리",
+      "calendar": "달력",
+      "setup": "Glaze Seamless 위젯을 추가하고 위젯 편집 → 아트에서 이 디자인을 선택하세요.",
+      "update": "이 위젯을 사용하려면 TestFlight에서 최신 Glaze 빌드를 설치하세요.",
+      "batteryNote": "배터리는 주기적으로 새로 고침됩니다. 대시는 iOS에서 잔량을 제공하지 않았음을 뜻합니다.",
+      "unavailable": "사용할 수 없음"
+  },
   error: {
     body: '이 화면에 문제가 생겨 멈췄습니다. 아이콘, 테마, 반복 영상은 휴대폰에 저장되어 있으며 영향이 없습니다. 다시 시도하고, 계속되면 아래 메모를 보내 주세요.',
     retryHint: '이 화면을 다시 불러옵니다',

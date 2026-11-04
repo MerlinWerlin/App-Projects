@@ -1,1 +1,4 @@
-{"mode":"apply","run":"review-info"}
+{
+  "mode": "status",
+  "run": "couch-cast-1.0.3-build13-20261104"
+}

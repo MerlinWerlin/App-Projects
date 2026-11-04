@@ -1,11 +1,74 @@
 {
   "app": "hollowhue",
-  "stage": "build",
-  "headline": "Phase 1 merged 1 Nov (PR #181). Expo project linked, bundle id com.jared797.hollowhue registered and signing set up on Expo. Waiting only on the App Store Connect app record.",
+  "stage": "testflight",
+  "headline": "Illustrated update LIVE in production OTA and TestFlight0.1.0(4):42new realistic pictures, five topics, three difficulty levels, six regular zooms and twenty in Mega. Apple COMPLETE/VALID/IN_BETA_TESTING; no errors/warnings.",
   "next_for_owner": [
-    "In App Store Connect: Apps > + > New App: iOS, name Hollowhue, primary language English (Australia), bundle ID com.jared797.hollowhue, SKU hollowhue, Full access. Then tell Claude the app's Apple ID number (App Information > Apple ID) and the first TestFlight build ships straight away.",
-    "Then open the build in TestFlight on the iPad and answer docs/TRIAL.md"
+    "Update Hollowhue to0.1.0(4) in TestFlight. Look for New art. Six zooms. Twenty in Mega.",
+    "Existing installations can also use Settings > App updates > Check for updates > Save & apply update."
   ],
-  "tests": 24,
-  "typecheck": "real tsc on GitHub: clean; expo-doctor 21/21; iOS + Android bundle OK"
+  "tests": 57,
+  "typecheck": "57 tests and full/stub strict types pass. iOS/Hermes export passes; illustrated bundle packed to29MB. All old scene geometry/IDs/versions retain exact SHA. Expo doctor21/21pass.",
+  "previous_native_qa": {
+    "run": "41788606169",
+    "source": "774e53289c785914495d303f06729039c8f2fb10",
+    "result": "pass",
+    "screenshots": "docs/qa-20261104",
+    "physical_phone_uptake": "unverified"
+  },
+  "native_qa": {
+    "result": "pass",
+    "run": "41812677928",
+    "source": "2c585f9b780eb52b01b0eb5fad38656f1b2e1cf0",
+    "scope": "categories/difficulties, all six regular and twenty Mega stops, deep paint, drawing, undo/redo and saved work/recent colours after relaunch",
+    "evidence": "docs/qa-art-20261104/receipt.json",
+    "screenshotQualification": "10 usable current-source frames plus separately attributed earlier cottage reference with identical artwork data. Premature initial frame excluded; additional retakes ended in simulator accessibility-driver failures.",
+    "physical_phone_uptake": "unverified"
+  },
+  "previous_delivery": {
+    "release_pr": 211,
+    "release_source": "4cb96f4e495c1a38b2072fe6e4d258a41c73e26b",
+    "ota": {
+      "project": "2f10e62c-2086-4e7d-9437-649fc240e82d",
+      "platform": "ios",
+      "runtime": "0.1.0",
+      "channel": "production",
+      "group": "889daefd-5069-47c7-aab4-7db47b71fb15",
+      "update": "01a1a56d-ca44-73fa-ab8c-fb62661c997b",
+      "createdAt": "2026-11-04T07:19:58.276Z",
+      "bundleBytes": 2604624,
+      "bundleSha256": "25be239f6da76dbb5e8f5d7b2886eade7638a842fdd7fb55ea5fd31cac3b3f7f",
+      "bundleHashMatches": true,
+      "phoneUptakeVerified": false
+    },
+    "testflight_build_run": "41791367613",
+    "testflight_state": "0.1.0 (3) COMPLETE, VALID and IN_BETA_TESTING; Apple probe41801311385, no errors or warnings",
+    "testflight_submission": "a9aee4e4-1f6a-44f1-8cc5-eb2bab86b3c2"
+  },
+  "delivery": {
+    "state": "production OTA live; native0.1.0(4) COMPLETE/VALID/IN_BETA_TESTING",
+    "release_pr": 224,
+    "release_source": "94f119228f9259c8e77d67209c4e94e257edb286",
+    "ota_run": "41817626284",
+    "ota": {
+      "project": "2f10e62c-2086-4e7d-9437-649fc240e82d",
+      "platform": "ios",
+      "runtime": "0.1.0",
+      "channel": "production",
+      "group": "28b985e9-003d-4211-8cba-f73de9565c9f",
+      "update": "01a1a636-0322-7e89-aad8-4b780bee7e6e",
+      "createdAt": "2026-11-04T10:58:40.034Z",
+      "bundleBytes": 28726172,
+      "bundleSha256": "29ab81377870abd715a2af76d93f047a6b99be50b9026bd23aa07786367bdbcf",
+      "bundleHashMatches": true,
+      "phoneUptakeVerified": false
+    },
+    "testflight_build_run": "41817626016",
+    "testflight_version": "0.1.0 (4)",
+    "testflight_submission": "1c7e39ae-8994-489a-a718-6d8487c32996",
+    "apple_probe_run": "41821210892",
+    "apple_state": "COMPLETE; VALID; IN_BETA_TESTING; no errors or warnings",
+    "upload_id": "234f6929-1c10-4393-a8ae-08ecee0f1885",
+    "physical_phone_uptake": "unverified",
+    "apple_receipt": "docs/qa-art-20261104/apple-complete-status.json"
+  }
 }

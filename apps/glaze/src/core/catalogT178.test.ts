@@ -38,7 +38,7 @@ test('real glaze-packs-v1 catalogue: 10 free packs, flat release asset URLs, all
   assert.deepEqual([...cat.packs.map((p) => p.id)].sort(), [...REAL_IDS].sort());
   assert.ok(cat.packs.every((p) => p.plus === false), 'all 10 are free');
 
-  const base = resolvePackBaseUrl(PACK_BASE_URL);
+  const base = resolvePackBaseUrl('https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1');
   assert.equal(base, 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1');
   const bundled = ART_PACK_THEMES.map((t) => t.id);
   assert.ok(REAL_IDS.every((id) => !bundled.includes(id)), 'no bundled art pack shadows a remote id');

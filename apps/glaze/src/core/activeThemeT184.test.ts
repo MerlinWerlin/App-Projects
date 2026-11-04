@@ -19,7 +19,7 @@ import {
   wallpaperSaveView,
 } from './activeTheme.ts';
 
-const read = (...p: string[]) => readFileSync(join(process.cwd(), ...p), 'utf8');
+const read = (...p: string[]) => readFileSync(join(process.cwd(), ...p), 'utf8').replace(/\r\n/g, '\n');
 const strip = (src: string) => src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:'"`])\/\/.*$/gm, '$1');
 
 test('active theme round-trips and rejects junk', () => {

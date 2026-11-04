@@ -1,0 +1,19 @@
+name: Couch native media HTTP
+on:
+  pull_request:
+    paths: ['apps/couch/modules/media-server/**', 'apps/couch/tools/test-media-http.swift', '.github/workflows/couch-media-http.yml']
+  workflow_dispatch:
+jobs:
+  swift-http:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile and exercise production Swift HTTP server
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp=$(mktemp -d)
+          sed '/^import ExpoModulesCore$/d' apps/couch/modules/media-server/ios/MediaHttpServer.swift > "$tmp/MediaHttpServer.swift"
+          cp apps/couch/tools/test-media-http.swift "$tmp/main.swift"
+          swiftc -swift-version 5 "$tmp/MediaHttpServer.swift" "$tmp/main.swift" -o "$tmp/media-http-test"
+          "$tmp/media-http-test"

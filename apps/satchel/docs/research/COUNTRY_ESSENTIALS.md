@@ -20,6 +20,12 @@ The card always says "Verify locally". A live re-check against the three pages i
 - Driving side (3): GS, PN, TK (few or no public roads).
 - Calling code (1): EH (Western Sahara; Moroccan +212 is in use, but the territory is disputed).
 
+**Run 173 (4 Nov) re-check:** filled only where two public references agree (the Wikipedia mains-electricity table and
+worldstandards.eu's plug list; iec.ch is still unreachable): PN plugs I, 230 V, 50 Hz; SH plugs G, 230 V, 50 Hz; TV 230 V;
+MS 230 V, 60 Hz (plugs disagree: A/B vs A/B/G, left null); SO plugs C, G. Still null because the references disagree or
+only one lists it: BQ (Bonaire 127 V 50 Hz vs Saba 110 V 60 Hz: one row cannot hold both), PF (C/E 230 V vs A/B/C/E/F
+110/220 V), RW plugs (C/E/G vs C/E/F/G), WF, EH, GS. The lists above are the original 31 Oct nulls.
+
 **Rules and caveats in the data:**
 - Plug letters are IEC A–N only. Thailand's own type O socket is left out (the row note says so); TH lists A, B, C, F.
 - Voltage and frequency are arrays: Brazil is 127 / 220 V (by state and city); Japan is 50 / 60 Hz (east / west);

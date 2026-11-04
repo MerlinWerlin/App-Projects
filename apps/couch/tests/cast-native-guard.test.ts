@@ -1,3 +1,4 @@
+jest.mock('expo-image-picker', () => ({}));
 /**
  * Oversight D133-2 (OTA safety for cast-1024). A 1.0.0 binary that receives an OTA update, and
  * Expo Go, do not contain modules/media-server, modules/route-picker or expo-image-picker's native
@@ -48,7 +49,7 @@ function specifiers(src: string): string[] {
     /\brequire\(\s*['"]([^'"]+)['"]\s*\)/g,
     /\bimport\(\s*['"]([^'"]+)['"]\s*\)/g,
   ];
-  for (const re of res) for (let m = re.exec(src); m; m = re.exec(src)) out.push(m[1]);
+  for (const re of res) for (let m = re.exec(src); m; m = re.exec(src)) out.push(m[1]!);
   return out;
 }
 
@@ -75,13 +76,13 @@ describe('cast native modules are only reached through guarded adapters (D133-2)
     for (const g of GUARDED) {
       const src = files.find((f) => f.rel === g.adapter)?.src ?? '';
       const staticSpecs = [/\b(?:import|export)\b[^'";]*?\bfrom\s*['"]([^'"]+)['"]/g, /\bimport\s*['"]([^'"]+)['"]/g, /\bimport\(\s*['"]([^'"]+)['"]\s*\)/g]
-        .flatMap((re) => [...src.matchAll(re)].map((m) => m[1]))
+        .flatMap((re) => [...src.matchAll(re)].map((m) => m[1]!))
         .filter((spec) => g.spec.test(spec));
       expect({ adapter: g.adapter, staticSpecs }).toEqual({ adapter: g.adapter, staticSpecs: [] });
       const re = /require\(\s*['"]([^'"]+)['"]\s*\)/g;
       let found = 0;
       for (let m = re.exec(src); m; m = re.exec(src)) {
-        if (!g.spec.test(m[1])) continue;
+        if (!g.spec.test(m[1]!)) continue;
         found += 1;
         const before = src.slice(0, m.index);
         const guarded = before.lastIndexOf('try {') > before.lastIndexOf('} catch');
