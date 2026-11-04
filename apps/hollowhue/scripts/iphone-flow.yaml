@@ -15,14 +15,16 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: difficulty-beginner
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: scene-art-begin-daisy
     direction: DOWN
-    timeout: 30000
-    visibilityPercentage: 40
+    timeout: 60000
+    visibilityPercentage: 100
     centerElement: true
-    speed: 20
+    speed: 55
 - tapOn:
     id: scene-art-begin-daisy
 - assertNotVisible: Look closer
@@ -54,16 +56,19 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: collection-zoom
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: scene-zoom-cottage
     direction: DOWN
-    timeout: 30000
-    visibilityPercentage: 40
+    timeout: 60000
+    visibilityPercentage: 100
     centerElement: true
-    speed: 20
+    speed: 55
 - tapOn:
     id: scene-zoom-cottage
+- assertVisible: '(?s).*Rose Cottage: Inside.*Zoom 0 of 6.*'
 - assertVisible: '.*Zoom 0 of 6.*'
 - takeScreenshot: 04-cottage-root
 - tapOn: Look closer
@@ -111,6 +116,8 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: collection-zoom
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: category-flowers
@@ -120,16 +127,19 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: category-flowers
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: scene-zoom-camellia
     direction: DOWN
-    timeout: 30000
-    visibilityPercentage: 40
+    timeout: 60000
+    visibilityPercentage: 100
     centerElement: true
-    speed: 20
+    speed: 55
 - tapOn:
     id: scene-zoom-camellia
+- assertVisible: '(?s).*Camellia & Bee: Inside.*Zoom 0 of 6.*'
 - assertVisible: '.*Zoom 0 of 6.*'
 - tapOn: Look closer
 - waitForAnimationToEnd:
@@ -170,6 +180,8 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: collection-zoom
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: category-animals
@@ -179,16 +191,19 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: category-animals
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: scene-zoom-owl
     direction: DOWN
-    timeout: 30000
-    visibilityPercentage: 40
+    timeout: 60000
+    visibilityPercentage: 100
     centerElement: true
-    speed: 20
+    speed: 55
 - tapOn:
     id: scene-zoom-owl
+- assertVisible: '(?s).*Barn Owl: Inside.*Zoom 0 of 6.*'
 - assertVisible: '.*Zoom 0 of 6.*'
 - tapOn: Look closer
 - waitForAnimationToEnd:
@@ -229,16 +244,30 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: collection-zoom
+- waitForAnimationToEnd:
+    timeout: 10000
+- scrollUntilVisible:
+    element:
+      id: category-sealife
+    direction: UP
+    timeout: 30000
+    visibilityPercentage: 40
+    centerElement: true
+- tapOn:
+    id: category-sealife
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: scene-zoom-turtle
     direction: DOWN
-    timeout: 30000
-    visibilityPercentage: 40
+    timeout: 60000
+    visibilityPercentage: 100
     centerElement: true
-    speed: 20
+    speed: 55
 - tapOn:
     id: scene-zoom-turtle
+- assertVisible: '(?s).*Coral Turtle: Inside.*Zoom 0 of 6.*'
 - assertVisible: '.*Zoom 0 of 6.*'
 - tapOn: Look closer
 - waitForAnimationToEnd:
@@ -279,6 +308,8 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: collection-zoom
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: category-flowers
@@ -288,6 +319,8 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: category-flowers
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: difficulty-beginner
@@ -297,16 +330,19 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: difficulty-beginner
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: scene-zoom-daisy
     direction: DOWN
-    timeout: 30000
-    visibilityPercentage: 40
+    timeout: 60000
+    visibilityPercentage: 100
     centerElement: true
-    speed: 20
+    speed: 55
 - tapOn:
     id: scene-zoom-daisy
+- assertVisible: '(?s).*Gentle Daisy: Inside.*Zoom 0 of 6.*'
 - assertVisible: '.*Zoom 0 of 6.*'
 - tapOn: Look closer
 - waitForAnimationToEnd:
@@ -355,16 +391,35 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: collection-zoom
+- waitForAnimationToEnd:
+    timeout: 10000
+- scrollUntilVisible:
+    element:
+      id: category-sealife
+    direction: UP
+    timeout: 30000
+- swipe:
+    from:
+      id: category-sealife
+    direction: LEFT
+    duration: 600
+- waitForAnimationToEnd:
+    timeout: 10000
+- tapOn:
+    id: category-patterns
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: scene-zoom-rose
     direction: DOWN
-    timeout: 30000
-    visibilityPercentage: 40
+    timeout: 60000
+    visibilityPercentage: 100
     centerElement: true
-    speed: 20
+    speed: 55
 - tapOn:
     id: scene-zoom-rose
+- assertVisible: '(?s).*Rose Engraving: Inside.*Zoom 0 of 6.*'
 - assertVisible: '.*Zoom 0 of 6.*'
 - tapOn: Look closer
 - waitForAnimationToEnd:
@@ -405,14 +460,16 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: collection-mega
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: scene-mega-rose
     direction: DOWN
-    timeout: 30000
-    visibilityPercentage: 40
+    timeout: 60000
+    visibilityPercentage: 100
     centerElement: true
-    speed: 20
+    speed: 55
 - tapOn:
     id: scene-mega-rose
 - assertVisible: '.*Zoom 0 of 20.*'
@@ -521,14 +578,16 @@ appId: com.jared797.hollowhue
     centerElement: true
 - tapOn:
     id: collection-saved
+- waitForAnimationToEnd:
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: scene-art-begin-daisy
     direction: DOWN
-    timeout: 30000
-    visibilityPercentage: 40
+    timeout: 60000
+    visibilityPercentage: 100
     centerElement: true
-    speed: 20
+    speed: 55
 - tapOn:
     id: scene-art-begin-daisy
 - assertVisible: 'Recent colour #3388DD'
