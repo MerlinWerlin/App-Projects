@@ -1,0 +1,95 @@
+{
+  "status": "visually_reviewed_draft_not_uploaded",
+  "sourceCommit": "c809ffd86b5e30014e798409c2f5d996ca3a9d0b",
+  "apkSha256": "7b2205a5920af4fb26d4c05ee6a3a2c01ebaae157d4990a356aa58ee1b3b98ec",
+  "captureRun": "https://github.com/MerlinWerlin/App-Projects/actions/runs/41732019758",
+  "brandIconSha256": "a221880382e866b607585920255d9667c03784030af0d3b8c480f5196330de6a",
+  "titleFontSha256": "a737b146fe0d77ffe8a86e3cd16700dd431d3b1e420d4fd80e142cd68a1cb50d",
+  "bodyFontSha256": "752bace0a9820236f24d65d680ac07aeb543c92dd903c871e09f6627261b812f",
+  "renderers": {
+    "resvg": "2.6.2",
+    "opentype": "2.0.0",
+    "pngjs": "7.0.0"
+  },
+  "screenshots": [
+    {
+      "file": "phone-01-library.png",
+      "sourceFile": "captures\\screenshots\\store-01-library.png",
+      "sourceSha256": "14a666d0fc7ff162ca80f8d5e52e3c75a8b8591553e1808ef425383c1f3fd1bd",
+      "rgbaPixelSha256": "36651a5f309ae83297a4b04ef6a2799a6aa02e771ac3dff6b655b3c972b0124c",
+      "transform": "Lossless opaque RGB PNG export; no crop, overlays or UI edits"
+    },
+    {
+      "file": "phone-02-editor.png",
+      "sourceFile": "captures\\screenshots\\store-02-editor.png",
+      "sourceSha256": "eed0e2764592910d656fe48ec3b93f40330182f01c1856eab49f30c141f87bb3",
+      "rgbaPixelSha256": "abd3e48574b17d524ec18ce96acc1534f480fd7c9f76505077c97c6c8cb18c31",
+      "transform": "Lossless opaque RGB PNG export; no crop, overlays or UI edits"
+    },
+    {
+      "file": "phone-03-prompter.png",
+      "sourceFile": "captures\\screenshots\\store-03-prompter.png",
+      "sourceSha256": "b76526af921e5ab1e69b06e8b6896939252bc3d5b0f0199fddbf8b58e46c52a0",
+      "rgbaPixelSha256": "7bc8f0a81df2b8a886a9f1476528a4b9e0eb793ca32957283ab46743ad193c12",
+      "transform": "Lossless opaque RGB PNG export; no crop, overlays or UI edits"
+    },
+    {
+      "file": "phone-04-settings.png",
+      "sourceFile": "captures\\screenshots\\store-04-settings.png",
+      "sourceSha256": "bc11bae43cb890c9c7bbb0570390d220cfa825193d22024efb32b711c1585e1b",
+      "rgbaPixelSha256": "f1c486432108b4197738495b289d159488ba3875596d3f8b1bc13ea07d9237ed",
+      "transform": "Lossless opaque RGB PNG export; no crop, overlays or UI edits"
+    }
+  ],
+  "files": [
+    {
+      "file": "icon-512.png",
+      "width": 512,
+      "height": 512,
+      "colorType": 6,
+      "bytes": 282394,
+      "sha256": "21a4744c8206ba69b5c70d99d355fe24091c58093bbc09735671234d16507886"
+    },
+    {
+      "file": "feature-1024x500.png",
+      "width": 1024,
+      "height": 500,
+      "colorType": 2,
+      "bytes": 83883,
+      "sha256": "fa3cf19eae099e0ede9a381dc44c7977061cfd5dc3afdb499a1ccc07a11d2df8"
+    },
+    {
+      "file": "phone-01-library.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 195645,
+      "sha256": "77e2eee11cb10014c778e0750fe7197ce2f45023d3cdac57a9ace53dc19efc73"
+    },
+    {
+      "file": "phone-02-editor.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 188850,
+      "sha256": "c6f984a7a52f7418a76b90e6192f4cef0a8e9753c588656e38bb18975ecc88e2"
+    },
+    {
+      "file": "phone-03-prompter.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 213466,
+      "sha256": "2b89270041c223c5e46032b0bc55168f1adae7b48dc472617b7b68d38b3be8d1"
+    },
+    {
+      "file": "phone-04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 153863,
+      "sha256": "d24739feb2735e96168f85d24cf8c3c8221957e73eef33ca9b7bc262a3bedc7b"
+    }
+  ],
+  "visualReview": "VISUAL_REVIEW.md"
+}

@@ -3,7 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Alert, AppState, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, AppState, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { t, type MessageKey } from '../src/i18n';
 import { success } from '../src/native/haptics';
@@ -129,7 +129,7 @@ export default function Plus() {
         </Txt>
       ) : (
         <View style={{ marginTop: 22, gap: 10 }}>
-          {!app.trial.started ? <Btn label={t('plus.trial.start')} icon="hourglass-outline" kind="secondary" onPress={() => void act('trial')} disabled={busy || price === null} /> : null}
+          {!app.trial.started ? <Btn label={t('plus.trial.start')} icon="hourglass-outline" kind="secondary" onPress={() => void act('trial')} disabled={busy || (Platform.OS !== 'android' && price === null)} /> : null}
           <Btn label={price ? t('plus.buy', { price }) : t('plus.buyNoPrice')} icon="sparkles" onPress={() => void act('buy')} disabled={busy} />
           {price === null ? <Btn label={t('plus.reloadPrice')} kind="secondary" onPress={() => void reloadPrice()} disabled={busy} /> : null}
           <Txt v="caption" tone="faint" style={{ textAlign: 'center' }}>
