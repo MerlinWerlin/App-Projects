@@ -1,0 +1,59 @@
+name: cloud-companion-ios
+on:
+  push:
+    branches: ['codex/cloud-companion-*']
+    paths: ['apps/cloud-companion/**', '.github/workflows/cloud-companion-ios.yml']
+  pull_request:
+    paths: ['apps/cloud-companion/**', '.github/workflows/cloud-companion-ios.yml']
+permissions:
+  contents: read
+concurrency:
+  group: cloud-companion-ios-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  native:
+    runs-on: macos-15
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: apps/cloud-companion
+    steps:
+      - uses: actions/checkout@v4
+      - name: Core tests
+        run: swift test
+      - name: Generate native project
+        run: |
+          brew list xcodegen >/dev/null 2>&1 || brew install xcodegen
+          xcodegen generate
+      - name: Build app and real WidgetKit extension
+        run: |
+          set -o pipefail
+          xcodebuild -project CloudCompanion.xcodeproj -scheme CloudCompanion -sdk iphonesimulator -configuration Debug -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build | tee native-build.log
+      - name: Capture native simulator renders
+        run: |
+          mkdir -p output
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["udid"] for v in d["devices"].values() for x in v if "iPhone" in x["name"]))')
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+          xcrun simctl install "$DEVICE" DerivedData/Build/Products/Debug-iphonesimulator/CloudCompanion.app
+          xcrun simctl launch "$DEVICE" com.jared797.cloudcompanion --demo
+          sleep 8
+          xcrun simctl io "$DEVICE" screenshot output/01-home-demo.png
+          xcrun simctl terminate "$DEVICE" com.jared797.cloudcompanion
+          xcrun simctl launch "$DEVICE" com.jared797.cloudcompanion --demo --widget-preview
+          sleep 5
+          xcrun simctl io "$DEVICE" screenshot output/02-widget-layouts-demo.png
+          xcrun simctl terminate "$DEVICE" com.jared797.cloudcompanion
+          xcrun simctl launch "$DEVICE" com.jared797.cloudcompanion
+          sleep 4
+          xcrun simctl io "$DEVICE" screenshot output/03-first-launch.png
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cloud-companion-native-evidence
+          path: |
+            apps/cloud-companion/output/*.png
+            apps/cloud-companion/native-build.log
+            apps/cloud-companion/DerivedData/Build/Products/Debug-iphonesimulator/CloudCompanion.app
+          retention-days: 14
