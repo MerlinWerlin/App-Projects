@@ -28,6 +28,12 @@ the native iPhone app, colour entry, fill/undo/redo, both new worlds, drawing co
 after relaunch. The capture workflow disables OTA only in its isolated simulator build to keep screenshots
 on the tested source. It does not prove physical-device uptake or production update networking.
 
+`RELEASE.json` requests the compatible production OTA. Changing `TESTFLIGHT_REQUEST.json` on main
+also dispatches the existing signed `ship-mac` build/upload, so the tested changes are embedded in
+a fresh TestFlight binary. A queued build still needs upload and Apple beta-state verification.
+`QA_EVIDENCE_REQUEST.json` preserves successful native-run screenshots in the app docs after checking
+that the current runtime source matches the captured commit.
+
 `python scripts/verify-update.py [expected-group]` checks the public production iOS manifest and hashes
 the downloaded launch bundle. The read-only **Hollowhue release status** workflow also reports Apple's
 latest build/processing/internal-beta state using existing CI credentials. Never treat a successful build

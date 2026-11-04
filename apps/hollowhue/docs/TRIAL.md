@@ -1,8 +1,20 @@
 # Trying Hollowhue (TestFlight only)
 
-Open the Hollowhue build in TestFlight on your iPad (or iPhone) and tell Claude what you think.
+Open Hollowhue from TestFlight on your iPhone or iPad.
 
 ## New since your last test
+
+November colour & discovery update (4 Nov 2026; publication status in `ops/status.json`):
+1. Look for the **November colour & discovery update** banner at the top of the gallery.
+2. Open **Hidden Library** or **Owlwood Forest**. Each has four nested levels; use Look closer or pinch in.
+3. Tap the palette icon (**Mix a colour**), adjust hue/saturation/brightness or enter a hex colour, then
+   **Use this colour**. The chosen shade appears in **Recent colours** and works in Fill and Draw.
+4. Colour a shape, try Undo/Redo, leave the scene, and reopen the app. Colouring and recent colours should persist.
+5. Switch to Draw. The fitted picture should remain above the tool tray on iPhone; short screens can scroll
+   the tray to reach its controls. Pinch/pan still works while zoomed in.
+6. Open Settings and scroll to **App updates**. **Check for updates** downloads compatible improvements;
+   **Save & apply update** appears when one is ready. It saves first and then restarts Hollowhue.
+
 Round 1 fixes (1 Nov 2026, arrives as an update: open Hollowhue, close it fully, open it again):
 1. Is there an "Eraser" button next to Fill / Draw? In Fill, does tapping a shape with it clear the colour? (yes/no)
 2. In Draw, does the Eraser rub out drawing, and does a tap on a shape clear its colour? (yes/no)
