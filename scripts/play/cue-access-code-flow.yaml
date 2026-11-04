@@ -6,7 +6,9 @@ appId: com.jared797.cue.playtest
     visible: Scripts
     timeout: 60000
 - tapOn: Settings
-- tapOn: Access code
+- tapOn:
+    text: Access code
+    index: 1
 - tapOn:
     id: access-code-input
 - inputText: INVALID-CODE
@@ -28,7 +30,9 @@ appId: com.jared797.cue.playtest
     visible: Scripts
     timeout: 60000
 - tapOn: Settings
-- tapOn: Access code
+- tapOn:
+    text: Access code
+    index: 1
 - assertVisible: Complimentary Plus is active
 - takeScreenshot: 12-access-code-persisted
 - back
@@ -45,7 +49,9 @@ appId: com.jared797.cue.playtest
       text: Access code
     direction: UP
     timeout: 20000
-- tapOn: Access code
+- tapOn:
+    text: Access code
+    index: 1
 - tapOn: Remove access code
 - assertVisible: Activate access code
 - takeScreenshot: 13-access-code-removed
