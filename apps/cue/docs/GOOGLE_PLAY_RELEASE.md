@@ -187,7 +187,7 @@ internal testers, not reviewed. The owner-only email list contains one account
 and is selected/saved. Joining/installing and licensed billing have not been
 verified. This is not a public production release or App Review submission.
 
-Seven of eleven setup tasks are saved: privacy policy, no ads, non-government,
+Eight of eleven setup tasks are saved: content ratings, privacy policy, no ads, non-government,
 no financial features, no health features, Productivity category/public support
 details, and the English listing with icon/feature graphic/four screenshots.
 Only the AI-assisted feature-graphic composition was AI-labeled; phone assets
@@ -199,8 +199,15 @@ Remaining Console gates:
 - Sign-in details requires full, non-expiring reviewer access to Plus; Google
   explicitly says reviewers cannot pay or start free trials. No false full-access
   certification was saved. Target audience is blocked until this section is done.
-- Content ratings is prepared with the existing support email and All Other
-  App Types. Its separate IARC Terms of Use awaits explicit owner confirmation.
+- The owner explicitly approved IARC Terms of Use, which were accepted. The
+  All Other App Types questionnaire is complete and saved: ESRB Everyone,
+  PEGI3, USK All Ages, IARC Generic3+, Russia/South Korea3+, and Brazil14+.
+  In-App Purchases is declared, without random/chance purchases. No packaged
+  ratings-relevant content, native user-to-user exchange, online content feed,
+  age-restricted product promotion, location sharing, rewards, browser/search
+  engine or primary news/education features were declared. These answers match
+  Cue's supplied content and functionality; user-authored local scripts are not
+  a hosted content feed. Ratings are saved pending Publishing overview review.
 - Data safety still needs the final SDK/network review.
 - Google requires a merchant payments profile before Plus monetization. The
   Payments profile page currently offers Create payments profile; none was created.
